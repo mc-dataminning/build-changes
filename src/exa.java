@@ -1,135 +1,127 @@
 import com.mojang.blaze3d.systems.RenderSystem;
-import javax.annotation.Nullable;
 
-public class exa extends ewp {
-   private static final ahd a = new ahd("widget/checkbox_selected_highlighted");
-   private static final ahd b = new ahd("widget/checkbox_selected");
-   private static final ahd c = new ahd("widget/checkbox_highlighted");
-   private static final ahd d = new ahd("widget/checkbox");
-   private static final int f = 14737632;
-   private static final int m = 4;
-   private static final int n = 8;
+public abstract class exa extends exc {
+   private static final ahg a = new ahg("widget/slider");
+   private static final ahg d = new ahg("widget/slider_highlighted");
+   private static final ahg e = new ahg("widget/slider_handle");
+   private static final ahg f = new ahg("widget/slider_handle_highlighted");
+   protected static final int b = 2;
+   private static final int m = 8;
+   private static final int n = 4;
+   protected double c;
    private boolean o;
-   private final exa.b p;
 
-   exa(int $$0, int $$1, vd $$2, ewk $$3, boolean $$4, exa.b $$5) {
-      super($$0, $$1, a($$3) + 4 + $$3.a($$2), a($$3), $$2);
-      this.o = $$4;
-      this.p = $$5;
+   public exa(int $$0, int $$1, int $$2, int $$3, vf $$4, double $$5) {
+      super($$0, $$1, $$2, $$3, $$4);
+      this.c = $$5;
    }
 
-   public static exa.a a(vd $$0, ewk $$1) {
-      return new exa.a($$0, $$1);
+   private ahg d() {
+      return this.aI_() && !this.o ? d : a;
    }
 
-   private static int a(ewk $$0) {
-      return 9 + 8;
-   }
-
-   @Override
-   public void b() {
-      this.o = !this.o;
-      this.p.onValueChange(this, this.o);
-   }
-
-   public boolean a() {
-      return this.o;
+   private ahg e() {
+      return !this.i && !this.o ? e : f;
    }
 
    @Override
-   public void a(far $$0) {
-      $$0.a(faq.a, this.aK_());
+   protected vt aK_() {
+      return vf.a("gui.narrate.slider", this.x());
+   }
+
+   @Override
+   public void a(fax $$0) {
+      $$0.a(faw.a, this.aK_());
       if (this.j) {
          if (this.aI_()) {
-            $$0.a(faq.d, vd.c("narration.checkbox.usage.focused"));
+            $$0.a(faw.d, vf.c("narration.slider.usage.focused"));
          } else {
-            $$0.a(faq.d, vd.c("narration.checkbox.usage.hovered"));
+            $$0.a(faw.d, vf.c("narration.slider.usage.hovered"));
          }
       }
    }
 
    @Override
-   public void b(ewm $$0, int $$1, int $$2, float $$3) {
-      eva $$4 = eva.N();
-      RenderSystem.enableDepthTest();
-      ewk $$5 = $$4.h;
+   public void b(ews $$0, int $$1, int $$2, float $$3) {
+      evg $$4 = evg.O();
       $$0.a(1.0F, 1.0F, 1.0F, this.l);
       RenderSystem.enableBlend();
-      ahd $$6;
-      if (this.o) {
-         $$6 = this.aI_() ? a : b;
-      } else {
-         $$6 = this.aI_() ? c : d;
-      }
-
-      int $$8 = a($$5);
-      int $$9 = this.B() + $$8 + 4;
-      int $$10 = this.C() + (this.h >> 1) - (9 >> 1);
-      $$0.a($$6, this.B(), this.C(), $$8, $$8);
+      RenderSystem.defaultBlendFunc();
+      RenderSystem.enableDepthTest();
+      $$0.a(this.d(), this.B(), this.C(), this.w(), this.u());
+      $$0.a(this.e(), this.B() + (int)(this.c * (double)(this.g - 8)), this.C(), 8, this.u());
       $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
-      $$0.b($$5, this.x(), $$9, $$10, 14737632 | aui.f(this.l * 255.0F) << 24);
+      int $$5 = this.j ? 16777215 : 10526880;
+      this.a($$0, $$4.h, 2, $$5 | aun.f(this.l * 255.0F) << 24);
    }
 
-   public static class a {
-      private final vd a;
-      private final ewk b;
-      private int c = 0;
-      private int d = 0;
-      private exa.b e = exa.b.a;
-      private boolean f = false;
-      @Nullable
-      private evd<Boolean> g = null;
-      @Nullable
-      private eyj h = null;
+   @Override
+   public void a(double $$0, double $$1) {
+      this.a($$0);
+   }
 
-      a(vd $$0, ewk $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public exa.a a(int $$0, int $$1) {
-         this.c = $$0;
-         this.d = $$1;
-         return this;
-      }
-
-      public exa.a a(exa.b $$0) {
-         this.e = $$0;
-         return this;
-      }
-
-      public exa.a a(boolean $$0) {
-         this.f = $$0;
-         this.g = null;
-         return this;
-      }
-
-      public exa.a a(evd<Boolean> $$0) {
-         this.g = $$0;
-         this.f = $$0.c();
-         return this;
-      }
-
-      public exa.a a(eyj $$0) {
-         this.h = $$0;
-         return this;
-      }
-
-      public exa a() {
-         exa.b $$0 = this.g == null ? this.e : ($$0x, $$1x) -> {
-            this.g.a($$1x);
-            this.e.onValueChange($$0x, $$1x);
-         };
-         exa $$1 = new exa(this.c, this.d, this.a, this.b, this.f, $$0);
-         $$1.a(this.h);
-         return $$1;
+   @Override
+   public void a(boolean $$0) {
+      super.a($$0);
+      if (!$$0) {
+         this.o = false;
+      } else {
+         evd $$1 = evg.O().aU();
+         if ($$1 == evd.b || $$1 == evd.d) {
+            this.o = true;
+         }
       }
    }
 
-   public interface b {
-      exa.b a = ($$0, $$1) -> {
-      };
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if (fbc.a($$0)) {
+         this.o = !this.o;
+         return true;
+      } else {
+         if (this.o) {
+            boolean $$3 = $$0 == 263;
+            if ($$3 || $$0 == 262) {
+               float $$4 = $$3 ? -1.0F : 1.0F;
+               this.b(this.c + (double)($$4 / (float)(this.g - 8)));
+               return true;
+            }
+         }
 
-      void onValueChange(exa var1, boolean var2);
+         return false;
+      }
    }
+
+   private void a(double $$0) {
+      this.b(($$0 - (double)(this.B() + 4)) / (double)(this.g - 8));
+   }
+
+   private void b(double $$0) {
+      double $$1 = this.c;
+      this.c = aun.a($$0, 0.0, 1.0);
+      if ($$1 != this.c) {
+         this.a();
+      }
+
+      this.b();
+   }
+
+   @Override
+   protected void b(double $$0, double $$1, double $$2, double $$3) {
+      this.a($$0);
+      super.b($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   public void a(gjc $$0) {
+   }
+
+   @Override
+   public void a_(double $$0, double $$1) {
+      super.a(evg.O().ai());
+   }
+
+   protected abstract void b();
+
+   protected abstract void a();
 }

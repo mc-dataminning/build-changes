@@ -1,37 +1,99 @@
-import org.joml.Vector3f;
+import com.google.common.collect.ImmutableList;
+import com.mojang.logging.LogUtils;
+import java.io.PrintWriter;
+import java.io.StringWriter;
+import java.util.List;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public record evq(evq.c a, evs... b) {
-   public interface a {
-      Vector3f apply(Vector3f var1, float var2, evs[] var3, int var4, int var5, float var6);
+public class evq {
+   private static final Logger a = LogUtils.getLogger();
+   @Nullable
+   private evq.c b;
+   private int c;
+
+   public void a(evq.b $$0, List<aov> $$1) {
+      this.c++;
+      if (this.b != null && !this.b.d) {
+         a.warn("Reload already ongoing, replacing");
+      }
+
+      this.b = new evq.c($$0, $$1.stream().map(aov::a).collect(ImmutableList.toImmutableList()));
    }
 
-   public static class b {
-      public static final evq.a a = ($$0, $$1, $$2, $$3, $$4, $$5) -> {
-         Vector3f $$6 = $$2[$$3].b();
-         Vector3f $$7 = $$2[$$4].b();
-         return $$6.lerp($$7, $$1, $$0).mul($$5);
-      };
-      public static final evq.a b = ($$0, $$1, $$2, $$3, $$4, $$5) -> {
-         Vector3f $$6 = $$2[Math.max(0, $$3 - 1)].b();
-         Vector3f $$7 = $$2[$$3].b();
-         Vector3f $$8 = $$2[$$4].b();
-         Vector3f $$9 = $$2[Math.min($$2.length - 1, $$4 + 1)].b();
-         $$0.set(
-            aui.a($$1, $$6.x(), $$7.x(), $$8.x(), $$9.x()) * $$5,
-            aui.a($$1, $$6.y(), $$7.y(), $$8.y(), $$9.y()) * $$5,
-            aui.a($$1, $$6.z(), $$7.z(), $$8.z(), $$9.z()) * $$5
-         );
-         return $$0;
-      };
+   public void a(Throwable $$0) {
+      if (this.b == null) {
+         a.warn("Trying to signal reload recovery, but nothing was started");
+         this.b = new evq.c(evq.b.c, ImmutableList.of());
+      }
+
+      this.b.c = new evq.a($$0);
    }
 
-   public interface c {
-      void apply(fmp var1, Vector3f var2);
+   public void a() {
+      if (this.b == null) {
+         a.warn("Trying to finish reload, but nothing was started");
+      } else {
+         this.b.d = true;
+      }
    }
 
-   public static class d {
-      public static final evq.c a = fmp::a;
-      public static final evq.c b = fmp::b;
-      public static final evq.c c = fmp::c;
+   public void a(o $$0) {
+      p $$1 = $$0.a("Last reload");
+      $$1.a("Reload number", this.c);
+      if (this.b != null) {
+         this.b.a($$1);
+      }
+   }
+
+   static class a {
+      private final Throwable a;
+
+      a(Throwable $$0) {
+         this.a = $$0;
+      }
+
+      public void a(p $$0) {
+         $$0.a("Recovery", "Yes");
+         $$0.a("Recovery reason", () -> {
+            StringWriter $$0x = new StringWriter();
+            this.a.printStackTrace(new PrintWriter($$0x));
+            return $$0x.toString();
+         });
+      }
+   }
+
+   public static enum b {
+      a("initial"),
+      b("manual"),
+      c("unknown");
+
+      final String d;
+
+      private b(String $$0) {
+         this.d = $$0;
+      }
+   }
+
+   static class c {
+      private final evq.b a;
+      private final List<String> b;
+      @Nullable
+      evq.a c;
+      boolean d;
+
+      c(evq.b $$0, List<String> $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public void a(p $$0) {
+         $$0.a("Reload reason", this.a.d);
+         $$0.a("Finished", this.d ? "Yes" : "No");
+         $$0.a("Packs", () -> String.join(", ", this.b));
+         if (this.c != null) {
+            this.c.a($$0);
+         }
+      }
    }
 }

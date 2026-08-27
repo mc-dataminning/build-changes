@@ -1,5 +1,3 @@
-public record afx(ahd a) implements afv {
-   @Override
-   public void a(ug $$0) {
-   }
+public interface afx {
+   void a(ui var1);
 }

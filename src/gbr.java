@@ -1,24 +1,17 @@
-public class gbr extends gcq<cbz, fjn<cbz>> {
-   private final ftt a;
+public class gbr extends fzc<cdi, fmo<cdi>> {
+   private static final ahg a = new ahg("textures/entity/zombie_villager/zombie_villager.png");
 
-   public gbr(gaa<cbz, fjn<cbz>> $$0, ftt $$1) {
-      super($$0);
-      this.a = $$1;
+   public gbr(fyl.a $$0) {
+      super($$0, new fmo<>($$0.a(fmu.cg)), 0.5F);
+      this.a(new gcm<>(this, new fmo($$0.a(fmu.ch)), new fmo($$0.a(fmu.ci)), $$0.g()));
+      this.a(new gdh<>(this, $$0.e(), "zombie_villager"));
    }
 
-   public void a(ept $$0, fsz $$1, int $$2, cbz $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      dja $$10 = $$3.ge();
-      if ($$10 != null) {
-         $$0.a();
-         $$0.a(0.0F, 0.6875F, -0.75F);
-         $$0.a(a.b.rotationDegrees(20.0F));
-         $$0.a(a.d.rotationDegrees(45.0F));
-         $$0.a(0.25F, 0.1875F, 0.25F);
-         float $$11 = 0.5F;
-         $$0.b(-0.5F, -0.5F, 0.5F);
-         $$0.a(a.d.rotationDegrees(90.0F));
-         this.a.a($$10, $$0, $$1, $$2, gdw.d);
-         $$0.b();
-      }
+   public ahg a(cdi $$0) {
+      return a;
+   }
+
+   protected boolean b(cdi $$0) {
+      return super.a($$0) || $$0.go();
    }
 }

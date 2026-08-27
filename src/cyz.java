@@ -1,39 +1,27 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class cyz extends dcr {
-   public static final MapCodec<cyz> b = b(cyz::new);
-
-   @Override
-   public MapCodec<cyz> a() {
-      return b;
-   }
-
-   protected cyz(diz.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(a, ic.b));
-   }
+public class cyz extends cwp {
+   public static final MapCodec<cyz> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(bjf.b(0, 10).fieldOf("experience").forGetter($$0x -> $$0x.b), u()).apply($$0, cyz::new)
+   );
+   private final bjf b;
 
    @Override
-   public dja a(cpa $$0) {
-      ic $$1 = $$0.k();
-      dja $$2 = $$0.q().a_($$0.a().a($$1.g()));
-      return $$2.a(this) && $$2.c(a) == $$1 ? this.o().a(a, $$1.g()) : this.o().a(a, $$1);
+   public MapCodec<? extends cyz> a() {
+      return a;
+   }
+
+   public cyz(bjf $$0, djf.d $$1) {
+      super($$1);
+      this.b = $$0;
    }
 
    @Override
-   public void a(dja $$0, cti $$1, hx $$2, aup $$3) {
-      ic $$4 = $$0.c(a);
-      double $$5 = (double)$$2.u() + 0.55 - (double)($$3.i() * 0.1F);
-      double $$6 = (double)$$2.v() + 0.55 - (double)($$3.i() * 0.1F);
-      double $$7 = (double)$$2.w() + 0.55 - (double)($$3.i() * 0.1F);
-      double $$8 = (double)(0.4F - ($$3.i() + $$3.i()) * 0.4F);
-      if ($$3.a(5) == 0) {
-         $$1.a(jx.u, $$5 + (double)$$4.j() * $$8, $$6 + (double)$$4.k() * $$8, $$7 + (double)$$4.l() * $$8, $$3.k() * 0.005, $$3.k() * 0.005, $$3.k() * 0.005);
+   public void a(djg $$0, and $$1, hx $$2, cmx $$3, boolean $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      if ($$4) {
+         this.a($$1, $$2, $$3, this.b);
       }
-   }
-
-   @Override
-   protected void a(djb.a<cwj, dja> $$0) {
-      $$0.a(a);
    }
 }

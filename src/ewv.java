@@ -1,26 +1,46 @@
-public abstract class ewv extends eww {
-   private final ewk a;
-   private int b = 16777215;
+import com.mojang.blaze3d.systems.RenderSystem;
 
-   public ewv(int $$0, int $$1, int $$2, int $$3, vd $$4, ewk $$5) {
+public abstract class ewv extends exc {
+   protected static final int e = 2;
+   private static final eyr a = new eyr(new ahg("widget/button"), new ahg("widget/button_disabled"), new ahg("widget/button_highlighted"));
+
+   public ewv(int $$0, int $$1, int $$2, int $$3, vf $$4) {
       super($$0, $$1, $$2, $$3, $$4);
-      this.a = $$5;
+   }
+
+   public abstract void b();
+
+   @Override
+   protected void b(ews $$0, int $$1, int $$2, float $$3) {
+      evg $$4 = evg.O();
+      $$0.a(1.0F, 1.0F, 1.0F, this.l);
+      RenderSystem.enableBlend();
+      RenderSystem.enableDepthTest();
+      $$0.a(a.a(this.j, this.z()), this.B(), this.C(), this.w(), this.u());
+      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+      int $$5 = this.j ? 16777215 : 10526880;
+      this.a($$0, $$4.h, $$5 | aun.f(this.l * 255.0F) << 24);
+   }
+
+   public void a(ews $$0, ewq $$1, int $$2) {
+      this.a($$0, $$1, 2, $$2);
    }
 
    @Override
-   protected void a(far $$0) {
+   public void a(double $$0, double $$1) {
+      this.b();
    }
 
-   public ewv a(int $$0) {
-      this.b = $$0;
-      return this;
-   }
-
-   protected final ewk a() {
-      return this.a;
-   }
-
-   protected final int b() {
-      return this.b;
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if (!this.j || !this.k) {
+         return false;
+      } else if (fbc.a($$0)) {
+         this.a(evg.O().ai());
+         this.b();
+         return true;
+      } else {
+         return false;
+      }
    }
 }

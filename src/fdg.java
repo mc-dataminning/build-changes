@@ -1,133 +1,176 @@
-enum fdg {
-   a(
-      new fdg.a(
-         new ahd("advancements/tab_above_left_selected"), new ahd("advancements/tab_above_middle_selected"), new ahd("advancements/tab_above_right_selected")
-      ),
-      new fdg.a(new ahd("advancements/tab_above_left"), new ahd("advancements/tab_above_middle"), new ahd("advancements/tab_above_right")),
-      28,
-      32,
-      8
-   ),
-   b(
-      new fdg.a(
-         new ahd("advancements/tab_below_left_selected"), new ahd("advancements/tab_below_middle_selected"), new ahd("advancements/tab_below_right_selected")
-      ),
-      new fdg.a(new ahd("advancements/tab_below_left"), new ahd("advancements/tab_below_middle"), new ahd("advancements/tab_below_right")),
-      28,
-      32,
-      8
-   ),
-   c(
-      new fdg.a(
-         new ahd("advancements/tab_left_top_selected"), new ahd("advancements/tab_left_middle_selected"), new ahd("advancements/tab_left_bottom_selected")
-      ),
-      new fdg.a(new ahd("advancements/tab_left_top"), new ahd("advancements/tab_left_middle"), new ahd("advancements/tab_left_bottom")),
-      32,
-      28,
-      5
-   ),
-   d(
-      new fdg.a(
-         new ahd("advancements/tab_right_top_selected"), new ahd("advancements/tab_right_middle_selected"), new ahd("advancements/tab_right_bottom_selected")
-      ),
-      new fdg.a(new ahd("advancements/tab_right_top"), new ahd("advancements/tab_right_middle"), new ahd("advancements/tab_right_bottom")),
-      32,
-      28,
-      5
-   );
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.Optional;
 
-   private final fdg.a e;
-   private final fdg.a f;
-   private final int g;
-   private final int h;
-   private final int i;
+public class fdg extends fcr {
+   private static final vf c = vf.c("options.graphics.fabulous").a(n.u);
+   private static final vf k = vf.a("options.graphics.warning.message", c, c);
+   private static final vf l = vf.c("options.graphics.warning.title").a(n.m);
+   private static final vf m = vf.c("options.graphics.warning.accept");
+   private static final vf n = vf.c("options.graphics.warning.cancel");
+   private eyb o;
+   private final fsz p;
+   private final int q;
 
-   private fdg(fdg.a $$0, fdg.a $$1, int $$2, int $$3, int $$4) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.h = $$3;
-      this.i = $$4;
+   private static evj<?>[] a(evk $$0) {
+      return new evj[]{
+         $$0.j(),
+         $$0.e(),
+         $$0.l(),
+         $$0.f(),
+         $$0.k(),
+         $$0.h(),
+         $$0.L(),
+         $$0.Y(),
+         $$0.an(),
+         $$0.B(),
+         $$0.am(),
+         $$0.i(),
+         $$0.X(),
+         $$0.ao(),
+         $$0.A(),
+         $$0.M(),
+         $$0.ag(),
+         $$0.g(),
+         $$0.ah(),
+         $$0.ac(),
+         $$0.aj(),
+         $$0.ak()
+      };
    }
 
-   public int a() {
-      return this.i;
+   public fdg(fcz $$0, evk $$1) {
+      super($$0, $$1, vf.c("options.videoTitle"));
+      this.p = $$0.f.ah();
+      this.p.i();
+      if ($$1.j().c() == euz.c) {
+         this.p.e();
+      }
+
+      this.q = $$1.A().c();
    }
 
-   public void a(ewm $$0, int $$1, int $$2, boolean $$3, int $$4) {
-      fdg.a $$5 = $$3 ? this.e : this.f;
-      ahd $$6;
-      if ($$4 == 0) {
-         $$6 = $$5.a();
-      } else if ($$4 == this.i - 1) {
-         $$6 = $$5.c();
+   @Override
+   protected void aN_() {
+      this.o = this.d(new eyb(this.f, this.g, this.h - 64, 32, 25));
+      int $$0 = -1;
+      epd $$1 = this.f.aM();
+      eoy $$2 = $$1.t();
+      int $$3;
+      if ($$2 == null) {
+         $$3 = -1;
       } else {
-         $$6 = $$5.b();
+         Optional<epc> $$4 = $$1.f();
+         $$3 = $$4.<Integer>map($$2::a).orElse(-1);
       }
 
-      $$0.a($$6, $$1 + this.a($$4), $$2 + this.b($$4), this.g, this.h);
+      evj<Integer> $$6 = new evj<>("options.fullscreen.resolution", evj.a(), ($$1x, $$2x) -> {
+         if ($$2 == null) {
+            return vf.c("options.fullscreen.unavailable");
+         } else if ($$2x == -1) {
+            return evk.a($$1x, vf.c("options.fullscreen.current"));
+         } else {
+            epc $$3x = $$2.a($$2x);
+            return evk.a($$1x, vf.a("options.fullscreen.entry", $$3x.a(), $$3x.b(), $$3x.f(), $$3x.c() + $$3x.d() + $$3x.e()));
+         }
+      }, new evj.f(-1, $$2 != null ? $$2.e() - 1 : -1), $$3, $$2x -> {
+         if ($$2 != null) {
+            $$1.a($$2x == -1 ? Optional.empty() : Optional.of($$2.a($$2x)));
+         }
+      });
+      this.o.a($$6);
+      this.o.a(this.b.C());
+      this.o.a(a(this.b));
+      this.d(exe.a(ve.d, $$1x -> {
+         this.f.m.as();
+         $$1.g();
+         this.f.a(this.a);
+      }).a(this.g / 2 - 100, this.h - 27, 200, 20).a());
    }
 
-   public void a(ewm $$0, int $$1, int $$2, int $$3, cmr $$4) {
-      int $$5 = $$1 + this.a($$3);
-      int $$6 = $$2 + this.b($$3);
-      switch (this) {
-         case a:
-            $$5 += 6;
-            $$6 += 9;
-            break;
-         case b:
-            $$5 += 6;
-            $$6 += 6;
-            break;
-         case c:
-            $$5 += 10;
-            $$6 += 5;
-            break;
-         case d:
-            $$5 += 6;
-            $$6 += 5;
+   @Override
+   public void j() {
+      if (this.b.A().c() != this.q) {
+         this.f.b(this.b.A().c());
+         this.f.P();
       }
 
-      $$0.b($$4, $$5, $$6);
+      super.j();
    }
 
-   public int a(int $$0) {
-      switch (this) {
-         case a:
-            return (this.g + 4) * $$0;
-         case b:
-            return (this.g + 4) * $$0;
-         case c:
-            return -this.g + 4;
-         case d:
-            return 248;
-         default:
-            throw new UnsupportedOperationException("Don't know what this tab type is!" + this);
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      int $$3 = this.b.an().c();
+      if (super.a($$0, $$1, $$2)) {
+         if (this.b.an().c() != $$3) {
+            this.f.a();
+         }
+
+         if (this.p.g()) {
+            List<vf> $$4 = Lists.newArrayList(new vf[]{k, ve.r});
+            String $$5 = this.p.j();
+            if ($$5 != null) {
+               $$4.add(ve.r);
+               $$4.add(vf.a("options.graphics.warning.renderer", $$5).a(n.h));
+            }
+
+            String $$6 = this.p.l();
+            if ($$6 != null) {
+               $$4.add(ve.r);
+               $$4.add(vf.a("options.graphics.warning.vendor", $$6).a(n.h));
+            }
+
+            String $$7 = this.p.k();
+            if ($$7 != null) {
+               $$4.add(ve.r);
+               $$4.add(vf.a("options.graphics.warning.version", $$7).a(n.h));
+            }
+
+            this.f.a(new fdf(l, $$4, ImmutableList.of(new fdf.a(m, $$0x -> {
+               this.b.j().a(euz.c);
+               evg.O().f.f();
+               this.p.e();
+               this.f.a(this);
+            }), new fdf.a(n, $$0x -> {
+               this.p.f();
+               this.f.a(this);
+            }))));
+         }
+
+         return true;
+      } else {
+         return false;
       }
    }
 
-   public int b(int $$0) {
-      switch (this) {
-         case a:
-            return -this.h + 4;
-         case b:
-            return 136;
-         case c:
-            return this.h * $$0;
-         case d:
-            return this.h * $$0;
-         default:
-            throw new UnsupportedOperationException("Don't know what this tab type is!" + this);
+   @Override
+   public boolean a(double $$0, double $$1, double $$2, double $$3) {
+      if (fcz.r()) {
+         evj<Integer> $$4 = this.b.an();
+         int $$5 = $$4.c() + (int)Math.signum($$3);
+         if ($$5 != 0) {
+            $$4.a($$5);
+            if ($$4.c() == $$5) {
+               this.f.a();
+               return true;
+            }
+         }
+
+         return false;
+      } else {
+         return super.a($$0, $$1, $$2, $$3);
       }
    }
 
-   public boolean a(int $$0, int $$1, int $$2, double $$3, double $$4) {
-      int $$5 = $$0 + this.a($$2);
-      int $$6 = $$1 + this.b($$2);
-      return $$3 > (double)$$5 && $$3 < (double)($$5 + this.g) && $$4 > (double)$$6 && $$4 < (double)($$6 + this.h);
+   @Override
+   public void a(ews $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, this.e, this.g / 2, 20, 16777215);
    }
 
-   static record a(ahd a, ahd b, ahd c) {
+   @Override
+   public void b(ews $$0, int $$1, int $$2, float $$3) {
+      this.b($$0);
    }
 }

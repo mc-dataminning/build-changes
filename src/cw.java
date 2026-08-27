@@ -9,14 +9,14 @@ public class cw extends cv<cw.a> {
       return cw.a.a;
    }
 
-   public void a(ana $$0, dja $$1) {
+   public void a(ane $$0, djg $$1) {
       this.a($$0, $$1x -> $$1x.a($$1));
    }
 
-   public static record a(Optional<bb> b, Optional<ih<cwj>> c, Optional<cz> d) implements cv.a {
-      public static final Codec<cw.a> a = atq.a(
+   public static record a(Optional<bb> b, Optional<ih<cwp>> c, Optional<cz> d) implements cv.a {
+      public static final Codec<cw.a> a = atv.a(
          RecordCodecBuilder.create(
-            $$0 -> $$0.group(atq.a(bp.b, "player").forGetter(cw.a::a), atq.a(kd.e.r(), "block").forGetter(cw.a::b), atq.a(cz.a, "state").forGetter(cw.a::c))
+            $$0 -> $$0.group(atv.a(bp.b, "player").forGetter(cw.a::a), atv.a(kd.e.r(), "block").forGetter(cw.a::b), atv.a(cz.a, "state").forGetter(cw.a::c))
                   .apply($$0, cw.a::new)
          ),
          cw.a::a
@@ -25,16 +25,16 @@ public class cw extends cv<cw.a> {
       private static DataResult<cw.a> a(cw.a $$0) {
          return $$0.c
             .<DataResult<cw.a>>flatMap(
-               $$1 -> $$0.d.<String>flatMap($$1x -> $$1x.a(((cwj)$$1.a()).n())).map($$1x -> DataResult.error(() -> "Block" + $$1 + " has no property " + $$1x))
+               $$1 -> $$0.d.<String>flatMap($$1x -> $$1x.a(((cwp)$$1.a()).n())).map($$1x -> DataResult.error(() -> "Block" + $$1 + " has no property " + $$1x))
             )
             .orElseGet(() -> DataResult.success($$0));
       }
 
-      public static an<cw.a> a(cwj $$0) {
+      public static an<cw.a> a(cwp $$0) {
          return am.K.a(new cw.a(Optional.empty(), Optional.of($$0.r()), Optional.empty()));
       }
 
-      public boolean a(dja $$0) {
+      public boolean a(djg $$0) {
          return this.c.isPresent() && !$$0.a(this.c.get()) ? false : !this.d.isPresent() || this.d.get().a($$0);
       }
 
@@ -43,7 +43,7 @@ public class cw extends cv<cw.a> {
          return this.b;
       }
 
-      public Optional<ih<cwj>> b() {
+      public Optional<ih<cwp>> b() {
          return this.c;
       }
 

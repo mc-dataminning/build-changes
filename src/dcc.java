@@ -1,125 +1,88 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import java.util.Optional;
-import javax.annotation.Nullable;
+import java.util.Map;
 
-public class dcc extends cwj implements cwq {
-   public static final MapCodec<dcc> a = b(dcc::new);
-   private static final float b = 0.083333336F;
-   private static final float c = 0.9F;
-   private static final float d = 1.5F;
-   private static final float e = 2.5F;
-   private static final emf f = emc.a(0.0, 0.0, 0.0, 1.0, 0.9F, 1.0);
-   private static final double g = 4.0;
-   private static final double h = 7.0;
+public abstract class dcc extends cwp {
+   private static final ic[] a = ic.values();
+   public static final djx b = djw.L;
+   public static final djx c = djw.M;
+   public static final djx d = djw.N;
+   public static final djx e = djw.O;
+   public static final djx f = djw.J;
+   public static final djx g = djw.K;
+   public static final Map<ic, djx> h = ImmutableMap.copyOf(ac.a(Maps.newEnumMap(ic.class), $$0 -> {
+      $$0.put(ic.c, b);
+      $$0.put(ic.f, c);
+      $$0.put(ic.d, d);
+      $$0.put(ic.e, e);
+      $$0.put(ic.b, f);
+      $$0.put(ic.a, g);
+   }));
+   protected final eml[] i;
 
-   @Override
-   public MapCodec<dcc> a() {
-      return a;
-   }
-
-   public dcc(diz.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   public boolean a(dja $$0, dja $$1, ic $$2) {
-      return $$1.a(this) ? true : super.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public emf f(dja $$0, cso $$1, hx $$2) {
-      return emc.a();
+   protected dcc(float $$0, djf.d $$1) {
+      super($$1);
+      this.i = this.a($$0);
    }
 
    @Override
-   public void a(dja $$0, cti $$1, hx $$2, blp $$3) {
-      if (!($$3 instanceof bmf) || $$3.dn().a(this)) {
-         $$3.a($$0, new elm(0.9F, 1.5, 0.9F));
-         if ($$1.B) {
-            aup $$4 = $$1.F_();
-            boolean $$5 = $$3.ac != $$3.dr() || $$3.ae != $$3.dx();
-            if ($$5 && $$4.h()) {
-               $$1.a(
-                  jx.aH,
-                  $$3.dr(),
-                  (double)($$2.v() + 1),
-                  $$3.dx(),
-                  (double)(aui.b($$4, -1.0F, 1.0F) * 0.083333336F),
-                  0.05F,
-                  (double)(aui.b($$4, -1.0F, 1.0F) * 0.083333336F)
-               );
+   protected abstract MapCodec<? extends dcc> a();
+
+   private eml[] a(float $$0) {
+      float $$1 = 0.5F - $$0;
+      float $$2 = 0.5F + $$0;
+      eml $$3 = cwp.a((double)($$1 * 16.0F), (double)($$1 * 16.0F), (double)($$1 * 16.0F), (double)($$2 * 16.0F), (double)($$2 * 16.0F), (double)($$2 * 16.0F));
+      eml[] $$4 = new eml[a.length];
+
+      for (int $$5 = 0; $$5 < a.length; $$5++) {
+         ic $$6 = a[$$5];
+         $$4[$$5] = emi.a(
+            0.5 + Math.min((double)(-$$0), (double)$$6.j() * 0.5),
+            0.5 + Math.min((double)(-$$0), (double)$$6.k() * 0.5),
+            0.5 + Math.min((double)(-$$0), (double)$$6.l() * 0.5),
+            0.5 + Math.max((double)$$0, (double)$$6.j() * 0.5),
+            0.5 + Math.max((double)$$0, (double)$$6.k() * 0.5),
+            0.5 + Math.max((double)$$0, (double)$$6.l() * 0.5)
+         );
+      }
+
+      eml[] $$7 = new eml[64];
+
+      for (int $$8 = 0; $$8 < 64; $$8++) {
+         eml $$9 = $$3;
+
+         for (int $$10 = 0; $$10 < a.length; $$10++) {
+            if (($$8 & 1 << $$10) != 0) {
+               $$9 = emi.a($$9, $$4[$$10]);
             }
+         }
+
+         $$7[$$8] = $$9;
+      }
+
+      return $$7;
+   }
+
+   @Override
+   public boolean a_(djg $$0, csu $$1, hx $$2) {
+      return false;
+   }
+
+   @Override
+   public eml a(djg $$0, csu $$1, hx $$2, elx $$3) {
+      return this.i[this.h($$0)];
+   }
+
+   protected int h(djg $$0) {
+      int $$1 = 0;
+
+      for (int $$2 = 0; $$2 < a.length; $$2++) {
+         if ($$0.c(h.get(a[$$2]))) {
+            $$1 |= 1 << $$2;
          }
       }
 
-      $$3.o(true);
-      if (!$$1.B) {
-         if ($$3.bN() && ($$1.Z().b(cte.c) || $$3 instanceof cfb) && $$3.a($$1, $$2)) {
-            $$1.b($$2, false);
-         }
-
-         $$3.a_(false);
-      }
-   }
-
-   @Override
-   public void a(cti $$0, dja $$1, hx $$2, blp $$3, float $$4) {
-      if (!((double)$$4 < 4.0) && $$3 instanceof bmf $$5) {
-         bmf.a $$7 = $$5.eG();
-         arl $$8 = (double)$$4 < 7.0 ? $$7.a() : $$7.b();
-         $$3.a($$8, 1.0F, 1.0F);
-      }
-   }
-
-   @Override
-   public emf b(dja $$0, cso $$1, hx $$2, elr $$3) {
-      if ($$3 instanceof elw $$4) {
-         blp $$5 = $$4.c();
-         if ($$5 != null) {
-            if ($$5.ab > 2.5F) {
-               return f;
-            }
-
-            boolean $$6 = $$5 instanceof cbn;
-            if ($$6 || a($$5) && $$3.a(emc.b(), $$2, false) && !$$3.b()) {
-               return super.b($$0, $$1, $$2, $$3);
-            }
-         }
-      }
-
-      return emc.a();
-   }
-
-   @Override
-   public emf c(dja $$0, cso $$1, hx $$2, elr $$3) {
-      return emc.a();
-   }
-
-   public static boolean a(blp $$0) {
-      if ($$0.ai().a(ase.h)) {
-         return true;
-      } else {
-         return $$0 instanceof bmf ? ((bmf)$$0).c(blu.c).a(cmu.py) : false;
-      }
-   }
-
-   @Override
-   public cmr a(@Nullable cfb $$0, ctj $$1, hx $$2, dja $$3) {
-      $$1.a($$2, cwl.a.o(), 11);
-      if (!$$1.y_()) {
-         $$1.c(2001, $$2, cwj.i($$3));
-      }
-
-      return new cmr(cmu.qy);
-   }
-
-   @Override
-   public Optional<arl> au_() {
-      return Optional.of(arm.cO);
-   }
-
-   @Override
-   public boolean a(dja $$0, cso $$1, hx $$2, efa $$3) {
-      return true;
+      return $$1;
    }
 }

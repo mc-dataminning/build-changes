@@ -1,70 +1,59 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.UUID;
-import javax.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
-public record dnr(dnk b, float c, elm d, @Nullable UUID e, @Nullable UUID f, @Nullable blp g) {
-   public static final Codec<dnr> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               kd.a.q().fieldOf("game_event").forGetter(dnr::a),
-               Codec.floatRange(0.0F, Float.MAX_VALUE).fieldOf("distance").forGetter(dnr::b),
-               elm.a.fieldOf("pos").forGetter(dnr::c),
-               ja.a.optionalFieldOf("source").forGetter($$0x -> Optional.ofNullable($$0x.d())),
-               ja.a.optionalFieldOf("projectile_owner").forGetter($$0x -> Optional.ofNullable($$0x.e()))
-            )
-            .apply($$0, ($$0x, $$1, $$2, $$3, $$4) -> new dnr($$0x, $$1, $$2, (UUID)$$3.orElse(null), (UUID)$$4.orElse(null)))
-   );
+public class dnr {
+   private final and a;
 
-   public dnr(dnk $$0, float $$1, elm $$2, @Nullable UUID $$3, @Nullable UUID $$4) {
-      this($$0, $$1, $$2, $$3, $$4, null);
+   public dnr(and $$0) {
+      this.a = $$0;
    }
 
-   public dnr(dnk $$0, float $$1, elm $$2, @Nullable blp $$3) {
-      this($$0, $$1, $$2, $$3 == null ? null : $$3.cw(), a($$3), $$3);
-   }
+   public void a(dnq $$0, els $$1, dnq.a $$2) {
+      int $$3 = $$0.a();
+      hx $$4 = hx.a($$1);
+      int $$5 = iz.a($$4.u() - $$3);
+      int $$6 = iz.a($$4.v() - $$3);
+      int $$7 = iz.a($$4.w() - $$3);
+      int $$8 = iz.a($$4.u() + $$3);
+      int $$9 = iz.a($$4.v() + $$3);
+      int $$10 = iz.a($$4.w() + $$3);
+      List<dnq.b> $$11 = new ArrayList<>();
+      dnt.a $$12 = ($$4x, $$5x) -> {
+         if ($$4x.c() == dns.a.b) {
+            $$11.add(new dnq.b($$0, $$1, $$2, $$4x, $$5x));
+         } else {
+            $$4x.a(this.a, $$0, $$2, $$1);
+         }
+      };
+      boolean $$13 = false;
 
-   @Nullable
-   private static UUID a(@Nullable blp $$0) {
-      if ($$0 instanceof cft $$1 && $$1.w() != null) {
-         return $$1.w().cw();
+      for (int $$14 = $$5; $$14 <= $$8; $$14++) {
+         for (int $$15 = $$7; $$15 <= $$10; $$15++) {
+            dlc $$16 = this.a.l().a($$14, $$15);
+            if ($$16 != null) {
+               for (int $$17 = $$6; $$17 <= $$9; $$17++) {
+                  $$13 |= $$16.a($$17).a($$0, $$1, $$2, $$12);
+               }
+            }
+         }
       }
 
-      return null;
+      if (!$$11.isEmpty()) {
+         this.a($$11);
+      }
+
+      if ($$13) {
+         adi.a(this.a, $$0, $$1);
+      }
    }
 
-   public Optional<blp> a(amz $$0) {
-      return Optional.ofNullable(this.g).or(() -> Optional.ofNullable(this.e).map($$0::a));
-   }
+   private void a(List<dnq.b> $$0) {
+      Collections.sort($$0);
 
-   public Optional<blp> b(amz $$0) {
-      return this.a($$0).filter($$0x -> $$0x instanceof cft).map($$0x -> (cft)$$0x).map(cft::w).or(() -> Optional.ofNullable(this.f).map($$0::a));
-   }
-
-   public dnk a() {
-      return this.b;
-   }
-
-   public float b() {
-      return this.c;
-   }
-
-   public elm c() {
-      return this.d;
-   }
-
-   @Nullable
-   public UUID d() {
-      return this.e;
-   }
-
-   @Nullable
-   public UUID e() {
-      return this.f;
-   }
-
-   @Nullable
-   public blp f() {
-      return this.g;
+      for (dnq.b $$1 : $$0) {
+         dns $$2 = $$1.d();
+         $$2.a(this.a, $$1.a(), $$1.c(), $$1.b());
+      }
    }
 }

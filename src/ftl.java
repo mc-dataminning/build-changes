@@ -1,64 +1,62 @@
-import com.google.common.collect.Queues;
-import com.mojang.logging.LogUtils;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Queue;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap;
+import java.util.SortedMap;
 
 public class ftl {
-   private static final Logger b = LogUtils.getLogger();
-   public static final int a = 4;
-   private final Queue<ftk> c;
-   private volatile int d;
+   private final ftq a = new ftq();
+   private final ftr b;
+   private final ftf.a c;
+   private final ftf.a d;
+   private final ftg e;
 
-   private ftl(List<ftk> $$0) {
-      this.c = Queues.newArrayDeque($$0);
-      this.d = this.c.size();
+   public ftl(int $$0) {
+      this.b = ftr.a($$0);
+      SortedMap<ftn, epu> $$1 = ac.a(new Object2ObjectLinkedOpenHashMap(), $$0x -> {
+         $$0x.put(ftu.h(), this.a.a(ftn.c()));
+         $$0x.put(ftu.i(), this.a.a(ftn.e()));
+         $$0x.put(ftu.a(), this.a.a(ftn.d()));
+         $$0x.put(ftu.k(), this.a.a(ftn.f()));
+         a($$0x, ftu.b());
+         a($$0x, ftu.c());
+         a($$0x, ftu.d());
+         a($$0x, ftu.e());
+         a($$0x, ftu.f());
+         $$0x.put(ftu.g(), new epu(786432));
+         a($$0x, ftn.j());
+         a($$0x, ftn.k());
+         a($$0x, ftn.m());
+         a($$0x, ftn.n());
+         a($$0x, ftn.l());
+         a($$0x, ftn.o());
+         a($$0x, ftn.p());
+         a($$0x, ftn.i());
+         ggq.l.forEach($$1x -> a($$0x, $$1x));
+      });
+      this.d = ftf.a(new epu(1536));
+      this.c = ftf.a($$1, new epu(786432));
+      this.e = new ftg(this.c);
    }
 
-   public static ftl a(int $$0) {
-      int $$1 = Math.max(1, (int)((double)Runtime.getRuntime().maxMemory() * 0.3) / ftk.a);
-      int $$2 = Math.max(1, Math.min($$0, $$1));
-      List<ftk> $$3 = new ArrayList<>($$2);
-
-      try {
-         for (int $$4 = 0; $$4 < $$2; $$4++) {
-            $$3.add(new ftk());
-         }
-      } catch (OutOfMemoryError var7) {
-         b.warn("Allocated only {}/{} buffers", $$3.size(), $$2);
-         int $$6 = Math.min($$3.size() * 2 / 3, $$3.size() - 1);
-
-         for (int $$7 = 0; $$7 < $$6; $$7++) {
-            $$3.remove($$3.size() - 1).close();
-         }
-      }
-
-      return new ftl($$3);
+   private static void a(Object2ObjectLinkedOpenHashMap<ftn, epu> $$0, ftn $$1) {
+      $$0.put($$1, new epu($$1.G()));
    }
 
-   @Nullable
-   public ftk a() {
-      ftk $$0 = this.c.poll();
-      if ($$0 != null) {
-         this.d = this.c.size();
-         return $$0;
-      } else {
-         return null;
-      }
+   public ftq a() {
+      return this.a;
    }
 
-   public void a(ftk $$0) {
-      this.c.add($$0);
-      this.d = this.c.size();
+   public ftr b() {
+      return this.b;
    }
 
-   public boolean b() {
-      return this.c.isEmpty();
+   public ftf.a c() {
+      return this.c;
    }
 
-   public int c() {
+   public ftf.a d() {
       return this.d;
+   }
+
+   public ftg e() {
+      return this.e;
    }
 }

@@ -1,127 +1,102 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Function;
 import javax.annotation.Nullable;
 
-public class dhy {
-   private static final Codec<vd[]> c = vf.b
-      .listOf()
-      .comapFlatMap(
-         $$0 -> ac.a($$0, 4).map($$0x -> new vd[]{(vd)$$0x.get(0), (vd)$$0x.get(1), (vd)$$0x.get(2), (vd)$$0x.get(3)}),
-         $$0 -> List.of($$0[0], $$0[1], $$0[2], $$0[3])
-      );
-   public static final Codec<dhy> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               c.fieldOf("messages").forGetter($$0x -> $$0x.d),
-               c.optionalFieldOf("filtered_messages").forGetter(dhy::d),
-               clf.q.fieldOf("color").orElse(clf.p).forGetter($$0x -> $$0x.f),
-               Codec.BOOL.fieldOf("has_glowing_text").orElse(false).forGetter($$0x -> $$0x.g)
-            )
-            .apply($$0, dhy::a)
-   );
-   public static final int b = 4;
-   private final vd[] d;
-   private final vd[] e;
-   private final clf f;
-   private final boolean g;
+public abstract class dhy extends dgo implements bkh {
    @Nullable
-   private atu[] h;
-   private boolean i;
+   protected ahg m;
+   protected long n;
 
-   public dhy() {
-      this(c(), c(), clf.p, false);
+   protected dhy(dgw<?> $$0, hx $$1, djg $$2) {
+      super($$0, $$1, $$2);
    }
 
-   public dhy(vd[] $$0, vd[] $$1, clf $$2, boolean $$3) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
+   @Nullable
+   @Override
+   public ahg az_() {
+      return this.m;
    }
 
-   private static vd[] c() {
-      return new vd[]{vc.a, vc.a, vc.a, vc.a};
+   @Override
+   public void a(@Nullable ahg $$0) {
+      this.m = $$0;
    }
 
-   private static dhy a(vd[] $$0, Optional<vd[]> $$1, clf $$2, boolean $$3) {
-      return new dhy($$0, $$1.orElse(Arrays.copyOf($$0, $$0.length)), $$2, $$3);
+   @Override
+   public long aA_() {
+      return this.n;
    }
 
-   public boolean a() {
-      return this.g;
+   @Override
+   public void a(long $$0) {
+      this.n = $$0;
    }
 
-   public dhy a(boolean $$0) {
-      return $$0 == this.g ? this : new dhy(this.d, this.e, this.f, $$0);
+   @Override
+   public boolean ai_() {
+      this.e_(null);
+      return this.k().stream().allMatch(cmx::b);
    }
 
-   public clf b() {
-      return this.f;
+   @Override
+   public cmx a(int $$0) {
+      this.e_(null);
+      return this.k().get($$0);
    }
 
-   public dhy a(clf $$0) {
-      return $$0 == this.b() ? this : new dhy(this.d, this.e, $$0, this.g);
-   }
-
-   public vd a(int $$0, boolean $$1) {
-      return this.b($$1)[$$0];
-   }
-
-   public dhy a(int $$0, vd $$1) {
-      return this.a($$0, $$1, $$1);
-   }
-
-   public dhy a(int $$0, vd $$1, vd $$2) {
-      vd[] $$3 = Arrays.copyOf(this.d, this.d.length);
-      vd[] $$4 = Arrays.copyOf(this.e, this.e.length);
-      $$3[$$0] = $$1;
-      $$4[$$0] = $$2;
-      return new dhy($$3, $$4, this.f, this.g);
-   }
-
-   public boolean a(cfb $$0) {
-      return Arrays.stream(this.b($$0.Y())).anyMatch($$0x -> !$$0x.getString().isEmpty());
-   }
-
-   public vd[] b(boolean $$0) {
-      return $$0 ? this.e : this.d;
-   }
-
-   public atu[] a(boolean $$0, Function<vd, atu> $$1) {
-      if (this.h == null || this.i != $$0) {
-         this.i = $$0;
-         this.h = new atu[4];
-
-         for (int $$2 = 0; $$2 < 4; $$2++) {
-            this.h[$$2] = $$1.apply(this.a($$2, $$0));
-         }
+   @Override
+   public cmx a(int $$0, int $$1) {
+      this.e_(null);
+      cmx $$2 = bju.a(this.k(), $$0, $$1);
+      if (!$$2.b()) {
+         this.e();
       }
 
-      return this.h;
+      return $$2;
    }
 
-   private Optional<vd[]> d() {
-      for (int $$0 = 0; $$0 < 4; $$0++) {
-         if (!this.e[$$0].equals(this.d[$$0])) {
-            return Optional.of(this.e);
-         }
-      }
-
-      return Optional.empty();
+   @Override
+   public cmx b(int $$0) {
+      this.e_(null);
+      return bju.a(this.k(), $$0);
    }
 
-   public boolean b(cfb $$0) {
-      for (vd $$1 : this.b($$0.Y())) {
-         wa $$2 = $$1.a();
-         vb $$3 = $$2.h();
-         if ($$3 != null && $$3.a() == vb.a.c) {
-            return true;
-         }
+   @Override
+   public void a(int $$0, cmx $$1) {
+      this.e_(null);
+      this.k().set($$0, $$1);
+      if ($$1.L() > this.ak_()) {
+         $$1.f(this.ak_());
       }
 
-      return false;
+      this.e();
+   }
+
+   @Override
+   public boolean a(cfh $$0) {
+      return bjt.a(this, $$0);
+   }
+
+   @Override
+   public void a() {
+      this.k().clear();
+   }
+
+   protected abstract iq<cmx> k();
+
+   protected abstract void a(iq<cmx> var1);
+
+   @Override
+   public boolean d(cfh $$0) {
+      return super.d($$0) && (this.m == null || !$$0.P_());
+   }
+
+   @Nullable
+   @Override
+   public cia createMenu(int $$0, cfg $$1, cfh $$2) {
+      if (this.d($$2)) {
+         this.e_($$1.m);
+         return this.a($$0, $$1);
+      } else {
+         return null;
+      }
    }
 }

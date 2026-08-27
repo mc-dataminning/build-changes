@@ -1,9 +1,8 @@
-public class ahh {
-   public final String a;
-   public final ds b;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   public ahh(String $$0, ds $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface ahh {
 }

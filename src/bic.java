@@ -1,13 +1,13 @@
-import java.time.Instant;
+public interface bic {
+   void a();
 
-public final class bic {
-   public final Instant a;
-   public final int b;
-   public final bgl c;
+   void b();
 
-   public bic(Instant $$0, int $$1, bgl $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-   }
+   void c();
+
+   boolean e();
+
+   bgr f();
+
+   void d();
 }

@@ -1,164 +1,151 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
-import it.unimi.dsi.fastutil.ints.IntSet;
+import com.google.common.collect.Queues;
+import java.util.ArrayList;
+import java.util.BitSet;
+import java.util.Deque;
 import java.util.List;
-import java.util.Set;
+import javax.annotation.Nullable;
 
-public class ezn implements AutoCloseable {
-   private static final aup a = aup.a();
-   private static final float b = 32.0F;
-   private final geg c;
-   private final ahd d;
-   private ezr e;
-   private ezr f;
-   private final List<enw> g = Lists.newArrayList();
-   private final ezl<ezr> h = new ezl<>(ezr[]::new, ezr[][]::new);
-   private final ezl<ezn.a> i = new ezl<>(ezn.a[]::new, ezn.a[][]::new);
-   private final Int2ObjectMap<IntList> j = new Int2ObjectOpenHashMap();
-   private final List<ezo> k = Lists.newArrayList();
+public class ezn {
+   private static final int a = 5;
+   private static final int b = -1;
+   final evg c;
+   private final List<ezn.a<?>> d = new ArrayList<>();
+   private final BitSet e = new BitSet(5);
+   private final Deque<ezm> f = Queues.newArrayDeque();
 
-   public ezn(geg $$0, ahd $$1) {
+   public ezn(evg $$0) {
       this.c = $$0;
-      this.d = $$1;
    }
 
-   public void a(List<enw> $$0) {
-      this.b();
-      this.c();
-      this.h.a();
-      this.i.a();
-      this.j.clear();
-      this.e = ezt.b.bake(this::a);
-      this.f = ezt.a.bake(this::a);
-      IntSet $$1 = new IntOpenHashSet();
-
-      for (enw $$2 : $$0) {
-         $$1.addAll($$2.a());
-      }
-
-      Set<enw> $$3 = Sets.newHashSet();
-      $$1.forEach($$2x -> {
-         for (enw $$3x : $$0) {
-            env $$4 = $$3x.a($$2x);
-            if ($$4 != null) {
-               $$3.add($$3x);
-               if ($$4 != ezt.b) {
-                  ((IntList)this.j.computeIfAbsent(aui.f($$4.a(false)), $$0xx -> new IntArrayList())).add($$2x);
+   public void a(ews $$0) {
+      if (!this.c.m.Z) {
+         int $$1 = $$0.a();
+         this.d.removeIf($$2 -> {
+            if ($$2 != null && $$2.a($$1, $$0)) {
+               this.e.clear($$2.d, $$2.d + $$2.e);
+               return true;
+            } else {
+               return false;
+            }
+         });
+         if (!this.f.isEmpty() && this.d() > 0) {
+            this.f.removeIf($$0x -> {
+               int $$1x = $$0x.f();
+               int $$2 = this.a($$1x);
+               if ($$2 != -1) {
+                  this.d.add(new ezn.a<>($$0x, $$2, $$1x));
+                  this.e.set($$2, $$2 + $$1x);
+                  return true;
+               } else {
+                  return false;
                }
-               break;
-            }
+            });
          }
-      });
-      $$0.stream().filter($$3::contains).forEach(this.g::add);
-   }
-
-   @Override
-   public void close() {
-      this.b();
-      this.c();
-   }
-
-   private void b() {
-      for (enw $$0 : this.g) {
-         $$0.close();
-      }
-
-      this.g.clear();
-   }
-
-   private void c() {
-      for (ezo $$0 : this.k) {
-         $$0.close();
-      }
-
-      this.k.clear();
-   }
-
-   private static boolean b(env $$0) {
-      float $$1 = $$0.a(false);
-      if (!($$1 < 0.0F) && !($$1 > 32.0F)) {
-         float $$2 = $$0.a(true);
-         return $$2 < 0.0F || $$2 > 32.0F;
-      } else {
-         return true;
       }
    }
 
-   private ezn.a b(int $$0) {
-      env $$1 = null;
+   private int a(int $$0) {
+      if (this.d() >= $$0) {
+         int $$1 = 0;
 
-      for (enw $$2 : this.g) {
-         env $$3 = $$2.a($$0);
-         if ($$3 != null) {
-            if ($$1 == null) {
-               $$1 = $$3;
-            }
-
-            if (!b($$3)) {
-               return new ezn.a($$1, $$3);
+         for (int $$2 = 0; $$2 < 5; $$2++) {
+            if (this.e.get($$2)) {
+               $$1 = 0;
+            } else if (++$$1 == $$0) {
+               return $$2 + 1 - $$1;
             }
          }
       }
 
-      return $$1 != null ? new ezn.a($$1, ezt.b) : ezn.a.c;
+      return -1;
    }
 
-   public env a(int $$0, boolean $$1) {
-      return this.i.a($$0, this::b).a($$1);
+   private int d() {
+      return 5 - this.e.cardinality();
    }
 
-   private ezr c(int $$0) {
-      for (enw $$1 : this.g) {
-         env $$2 = $$1.a($$0);
-         if ($$2 != null) {
-            return $$2.bake(this::a);
+   @Nullable
+   public <T extends ezm> T a(Class<? extends T> $$0, Object $$1) {
+      for (ezn.a<?> $$2 : this.d) {
+         if ($$2 != null && $$0.isAssignableFrom($$2.a().getClass()) && $$2.a().e().equals($$1)) {
+            return (T)$$2.a();
          }
       }
 
-      return this.e;
-   }
-
-   public ezr a(int $$0) {
-      return this.h.a($$0, this::c);
-   }
-
-   private ezr a(enx $$0) {
-      for (ezo $$1 : this.k) {
-         ezr $$2 = $$1.a($$0);
-         if ($$2 != null) {
-            return $$2;
+      for (ezm $$3 : this.f) {
+         if ($$0.isAssignableFrom($$3.getClass()) && $$3.e().equals($$1)) {
+            return (T)$$3;
          }
       }
 
-      ahd $$3 = this.d.e("/" + this.k.size());
-      boolean $$4 = $$0.c();
-      ezp $$5 = $$4 ? ezp.b($$3) : ezp.a($$3);
-      ezo $$6 = new ezo($$5, $$4);
-      this.k.add($$6);
-      this.c.a($$3, $$6);
-      ezr $$7 = $$6.a($$0);
-      return $$7 == null ? this.e : $$7;
+      return null;
    }
 
-   public ezr a(env $$0) {
-      IntList $$1 = (IntList)this.j.get(aui.f($$0.a(false)));
-      return $$1 != null && !$$1.isEmpty() ? this.a($$1.getInt(a.a($$1.size()))) : this.e;
+   public void a() {
+      this.e.clear();
+      this.d.clear();
+      this.f.clear();
    }
 
-   public ezr a() {
-      return this.f;
+   public void a(ezm $$0) {
+      this.f.add($$0);
    }
 
-   static record a(env a, env b) {
-      static final ezn.a c = new ezn.a(ezt.b, ezt.b);
+   public evg b() {
+      return this.c;
+   }
 
-      env a(boolean $$0) {
-         return $$0 ? this.b : this.a;
+   public double c() {
+      return this.c.m.z().c();
+   }
+
+   class a<T extends ezm> {
+      private static final long b = 600L;
+      private final T c;
+      final int d;
+      final int e;
+      private long f = -1L;
+      private long g = -1L;
+      private ezm.a h = ezm.a.a;
+
+      a(T $$0, int $$1, int $$2) {
+         this.c = $$0;
+         this.d = $$1;
+         this.e = $$2;
+      }
+
+      public T a() {
+         return this.c;
+      }
+
+      private float a(long $$0) {
+         float $$1 = aun.a((float)($$0 - this.f) / 600.0F, 0.0F, 1.0F);
+         $$1 *= $$1;
+         return this.h == ezm.a.b ? 1.0F - $$1 : $$1;
+      }
+
+      public boolean a(int $$0, ews $$1) {
+         long $$2 = ac.b();
+         if (this.f == -1L) {
+            this.f = $$2;
+            this.h.a(ezn.this.c.ai());
+         }
+
+         if (this.h == ezm.a.a && $$2 - this.f <= 600L) {
+            this.g = $$2;
+         }
+
+         $$1.c().a();
+         $$1.c().a((float)$$0 - (float)this.c.a() * this.a($$2), (float)(this.d * 32), 800.0F);
+         ezm.a $$3 = this.c.a($$1, ezn.this, $$2 - this.g);
+         $$1.c().b();
+         if ($$3 != this.h) {
+            this.f = $$2 - (long)((int)((1.0F - this.a($$2)) * 600.0F));
+            this.h = $$3;
+            this.h.a(ezn.this.c.ai());
+         }
+
+         return this.h == ezm.a.b && $$2 - this.f > 600L;
       }
    }
 }

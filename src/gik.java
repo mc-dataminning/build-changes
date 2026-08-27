@@ -1,87 +1,63 @@
-import com.google.common.collect.Sets;
-import java.util.Iterator;
-import java.util.Objects;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.function.Consumer;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
 
-public class gik {
-   private final Set<gik.a> a = Sets.newIdentityHashSet();
-   final enp b;
-   final Executor c;
+public class gik implements aqi {
+   public static final gik.a<cmx> a = new gik.a<>();
+   public static final gik.a<cmx> b = new gik.a<>();
+   public static final gik.a<fgr> c = new gik.a<>();
+   private final Map<gik.a<?>, gik.c<?>> d = new HashMap<>();
 
-   public gik(enp $$0, Executor $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   @Override
+   public void a(aqh $$0) {
+      for (gik.c<?> $$1 : this.d.values()) {
+         $$1.a();
+      }
    }
 
-   public CompletableFuture<gik.a> a(enp.c $$0) {
-      CompletableFuture<gik.a> $$1 = new CompletableFuture<>();
-      this.c.execute(() -> {
-         eno $$2 = this.b.a($$0);
-         if ($$2 != null) {
-            gik.a $$3 = new gik.a($$2);
-            this.a.add($$3);
-            $$1.complete($$3);
-         } else {
-            $$1.complete(null);
-         }
-      });
-      return $$1;
+   public <T> void a(gik.a<T> $$0, gik.b<T> $$1) {
+      this.d.put($$0, new gik.c<>($$1));
    }
 
-   public void a(Consumer<Stream<eno>> $$0) {
-      this.c.execute(() -> $$0.accept(this.a.stream().map($$0xx -> $$0xx.b).filter(Objects::nonNull)));
+   private <T> gik.c<T> b(gik.a<T> $$0) {
+      gik.c<T> $$1 = (gik.c<T>)this.d.get($$0);
+      if ($$1 == null) {
+         throw new IllegalStateException("Tree builder not registered");
+      } else {
+         return $$1;
+      }
    }
 
-   public void a() {
-      this.c.execute(() -> {
-         Iterator<gik.a> $$0 = this.a.iterator();
-
-         while ($$0.hasNext()) {
-            gik.a $$1 = $$0.next();
-            $$1.b.j();
-            if ($$1.b.h()) {
-               $$1.b();
-               $$0.remove();
-            }
-         }
-      });
+   public <T> void a(gik.a<T> $$0, List<T> $$1) {
+      this.b($$0).a($$1);
    }
 
-   public void b() {
-      this.a.forEach(gik.a::b);
-      this.a.clear();
+   public <T> gil<T> a(gik.a<T> $$0) {
+      return this.b($$0).b;
    }
 
-   public class a {
-      @Nullable
-      eno b;
-      private boolean c;
+   public static class a<T> {
+   }
 
-      public boolean a() {
-         return this.c;
+   public interface b<T> extends Function<List<T>, gii<T>> {
+   }
+
+   static class c<T> {
+      private final gik.b<T> a;
+      gii<T> b = gii.b();
+
+      c(gik.b<T> $$0) {
+         this.a = $$0;
       }
 
-      public a(eno $$1) {
-         this.b = $$1;
+      void a(List<T> $$0) {
+         this.b = this.a.apply($$0);
+         this.b.a();
       }
 
-      public void a(Consumer<eno> $$0) {
-         gik.this.c.execute(() -> {
-            if (this.b != null) {
-               $$0.accept(this.b);
-            }
-         });
-      }
-
-      public void b() {
-         this.c = true;
-         gik.this.b.a(this.b);
-         this.b = null;
+      void a() {
+         this.b.a();
       }
    }
 }

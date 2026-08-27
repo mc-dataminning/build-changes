@@ -1,51 +1,80 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class ddm extends czz {
+public class ddm extends cwy implements cws, dbf {
    public static final MapCodec<ddm> a = b(ddm::new);
+   protected static final float b = 6.0F;
+   protected static final eml c = cwp.a(2.0, 0.0, 2.0, 14.0, 12.0, 14.0);
 
    @Override
    public MapCodec<ddm> a() {
       return a;
    }
 
-   public ddm(diz.d $$0) {
+   protected ddm(djf.d $$0) {
       super($$0);
    }
 
    @Override
-   public void a(cti $$0, dja $$1, hx $$2, blp $$3, float $$4) {
-      if ($$3.bU()) {
-         super.a($$0, $$1, $$2, $$3, $$4);
-      } else {
-         $$3.a($$4, 0.0F, $$0.ai().k());
+   public eml a(djg $$0, csu $$1, hx $$2, elx $$3) {
+      return c;
+   }
+
+   @Override
+   protected boolean b(djg $$0, csu $$1, hx $$2) {
+      return $$0.d($$1, $$2, ic.b) && !$$0.a(cwr.kJ);
+   }
+
+   @Nullable
+   @Override
+   public djg a(cpg $$0) {
+      eeq $$1 = $$0.q().b_($$0.a());
+      return $$1.a(asl.a) && $$1.e() == 8 ? super.a($$0) : null;
+   }
+
+   @Override
+   public djg a(djg $$0, ic $$1, djg $$2, ctp $$3, hx $$4, hx $$5) {
+      djg $$6 = super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      if (!$$6.i()) {
+         $$3.a($$4, eer.c, eer.c.a($$3));
+      }
+
+      return $$6;
+   }
+
+   @Override
+   public boolean b(ctr $$0, hx $$1, djg $$2) {
+      return true;
+   }
+
+   @Override
+   public boolean a(cto $$0, auu $$1, hx $$2, djg $$3) {
+      return true;
+   }
+
+   @Override
+   public eeq c_(djg $$0) {
+      return eer.c.a(false);
+   }
+
+   @Override
+   public void a(and $$0, auu $$1, hx $$2, djg $$3) {
+      djg $$4 = cwr.bx.o();
+      djg $$5 = $$4.a(deu.d, dkc.a);
+      hx $$6 = $$2.c();
+      if ($$0.a_($$6).a(cwr.G)) {
+         $$0.a($$2, $$4, 2);
+         $$0.a($$6, $$5, 2);
       }
    }
 
    @Override
-   public void a(cso $$0, blp $$1) {
-      if ($$1.bU()) {
-         super.a($$0, $$1);
-      } else {
-         this.a($$1);
-      }
-   }
-
-   private void a(blp $$0) {
-      elm $$1 = $$0.dp();
-      if ($$1.d < 0.0) {
-         double $$2 = $$0 instanceof bmf ? 1.0 : 0.8;
-         $$0.o($$1.c, -$$1.d * $$2, $$1.e);
-      }
+   public boolean a(@Nullable cfh $$0, csu $$1, hx $$2, djg $$3, eep $$4) {
+      return false;
    }
 
    @Override
-   public void a(cti $$0, hx $$1, dja $$2, blp $$3) {
-      double $$4 = Math.abs($$3.dp().d);
-      if ($$4 < 0.1 && !$$3.bT()) {
-         double $$5 = 0.4 + $$4 * 0.2;
-         $$3.g($$3.dp().d($$5, 1.0, $$5));
-      }
-
-      super.a($$0, $$1, $$2, $$3);
+   public boolean a(ctp $$0, hx $$1, djg $$2, eeq $$3) {
+      return false;
    }
 }

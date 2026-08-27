@@ -1,38 +1,46 @@
-import com.google.common.math.IntMath;
+import it.unimi.dsi.fastutil.doubles.DoubleArrayList;
 import it.unimi.dsi.fastutil.doubles.DoubleList;
+import java.util.Arrays;
 
-public final class elu implements ely {
-   private final els a;
-   private final int b;
-   private final int c;
+public class elu extends eml {
+   private final DoubleList b;
+   private final DoubleList c;
+   private final DoubleList d;
 
-   elu(int $$0, int $$1) {
-      this.a = new els((int)emc.a($$0, $$1));
-      int $$2 = IntMath.gcd($$0, $$1);
-      this.b = $$0 / $$2;
-      this.c = $$1 / $$2;
+   protected elu(emb $$0, double[] $$1, double[] $$2, double[] $$3) {
+      this(
+         $$0,
+         DoubleArrayList.wrap(Arrays.copyOf($$1, $$0.b() + 1)),
+         DoubleArrayList.wrap(Arrays.copyOf($$2, $$0.c() + 1)),
+         DoubleArrayList.wrap(Arrays.copyOf($$3, $$0.d() + 1))
+      );
    }
 
-   @Override
-   public boolean a(ely.a $$0) {
-      int $$1 = this.a.size() - 1;
-
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         if (!$$0.merge($$2 / this.c, $$2 / this.b, $$2)) {
-            return false;
-         }
+   elu(emb $$0, DoubleList $$1, DoubleList $$2, DoubleList $$3) {
+      super($$0);
+      int $$4 = $$0.b() + 1;
+      int $$5 = $$0.c() + 1;
+      int $$6 = $$0.d() + 1;
+      if ($$4 == $$1.size() && $$5 == $$2.size() && $$6 == $$3.size()) {
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+      } else {
+         throw (IllegalArgumentException)ac.b(new IllegalArgumentException("Lengths of point arrays must be consistent with the size of the VoxelShape."));
       }
-
-      return true;
    }
 
    @Override
-   public int size() {
-      return this.a.size();
-   }
-
-   @Override
-   public DoubleList a() {
-      return this.a;
+   protected DoubleList a(ic.a $$0) {
+      switch ($$0) {
+         case a:
+            return this.b;
+         case b:
+            return this.c;
+         case c:
+            return this.d;
+         default:
+            throw new IllegalArgumentException();
+      }
    }
 }

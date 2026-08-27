@@ -1,30 +1,40 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.function.BiFunction;
 
-public class eim extends eib {
+public class eim implements eii {
    public static final Codec<eim> a = RecordCodecBuilder.create(
-      $$0 -> a($$0).and(asq.b(ke.D).fieldOf("options").forGetter($$0x -> $$0x.b)).apply($$0, eim::new)
+      $$0 -> $$0.group(eik.b.listOf().fieldOf("functions").forGetter($$0x -> $$0x.c)).apply($$0, eim::new)
    );
-   private final asq<cmj> b;
+   public static final Codec<eim> b = eik.b.listOf().xmap(eim::new, $$0 -> $$0.c);
+   private final List<eii> c;
+   private final BiFunction<cmx, egv, cmx> d;
 
-   private eim(List<ejo> $$0, asq<cmj> $$1) {
-      super($$0);
-      this.b = $$1;
+   private eim(List<eii> $$0) {
+      this.c = $$0;
+      this.d = eik.a($$0);
+   }
+
+   public static eim a(List<eii> $$0) {
+      return new eim(List.copyOf($$0));
+   }
+
+   public cmx a(cmx $$0, egv $$1) {
+      return this.d.apply($$0, $$1);
    }
 
    @Override
-   public eid b() {
-      return eie.A;
+   public void a(ehe $$0) {
+      eii.super.a($$0);
+
+      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
+         this.c.get($$1).a($$0.a(".function[" + $$1 + "]"));
+      }
    }
 
    @Override
-   public cmr a(cmr $$0, egp $$1) {
-      cmk.a($$0, this.b, $$1.b());
-      return $$0;
-   }
-
-   public static eib.a<?> a(asq<cmj> $$0) {
-      return a($$1 -> new eim($$1, $$0));
+   public eij b() {
+      return eik.C;
    }
 }

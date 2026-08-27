@@ -11,9 +11,9 @@ import java.util.Collection;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
-public class en implements ArgumentType<emt> {
+public class en implements ArgumentType<emz> {
    private static final Collection<String> b = Arrays.asList("foo", "foo.bar.baz", "minecraft:foo");
-   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> vd.b("argument.criteria.invalid", $$0));
+   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> vf.b("argument.criteria.invalid", $$0));
 
    private en() {
    }
@@ -22,11 +22,11 @@ public class en implements ArgumentType<emt> {
       return new en();
    }
 
-   public static emt a(CommandContext<ds> $$0, String $$1) {
-      return (emt)$$0.getArgument($$1, emt.class);
+   public static emz a(CommandContext<ds> $$0, String $$1) {
+      return (emz)$$0.getArgument($$1, emz.class);
    }
 
-   public emt a(StringReader $$0) throws CommandSyntaxException {
+   public emz a(StringReader $$0) throws CommandSyntaxException {
       int $$1 = $$0.getCursor();
 
       while ($$0.canRead() && $$0.peek() != ' ') {
@@ -34,16 +34,16 @@ public class en implements ArgumentType<emt> {
       }
 
       String $$2 = $$0.getString().substring($$1, $$0.getCursor());
-      return emt.a($$2).orElseThrow(() -> {
+      return emz.a($$2).orElseThrow(() -> {
          $$0.setCursor($$1);
          return a.create($$2);
       });
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      List<String> $$2 = Lists.newArrayList(emt.c());
+      List<String> $$2 = Lists.newArrayList(emz.c());
 
-      for (arv<?> $$3 : kd.x) {
+      for (asa<?> $$3 : kd.x) {
          for (Object $$4 : $$3.a()) {
             String $$5 = this.a($$3, $$4);
             $$2.add($$5);
@@ -53,8 +53,8 @@ public class en implements ArgumentType<emt> {
       return dx.b($$2, $$1);
    }
 
-   public <T> String a(arv<T> $$0, Object $$1) {
-      return art.a($$0, (T)$$1);
+   public <T> String a(asa<T> $$0, Object $$1) {
+      return ary.a($$0, (T)$$1);
    }
 
    public Collection<String> getExamples() {

@@ -3,6 +3,6 @@ import java.util.concurrent.CompletableFuture;
 
 public class kq {
    public static kn a(km $$0, CompletableFuture<ij.b> $$1) {
-      return new kn($$0, $$1, List.of(new kv(), new ks(), new kr(), new kt(), new ku()));
+      return new kn($$0, $$1, List.of(new kr()));
    }
 }

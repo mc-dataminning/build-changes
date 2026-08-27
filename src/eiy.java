@@ -1,70 +1,28 @@
-import com.google.common.base.Joiner;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Sets;
-import java.util.Set;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class eiy {
-   private final Set<eix<?>> a;
-   private final Set<eix<?>> b;
+public class eiy extends eih {
+   public static final Codec<eiy> a = RecordCodecBuilder.create($$0 -> a($$0).and(kd.i.r().fieldOf("id").forGetter($$0x -> $$0x.b)).apply($$0, eiy::new));
+   private final ih<cov> b;
 
-   eiy(Set<eix<?>> $$0, Set<eix<?>> $$1) {
-      this.a = ImmutableSet.copyOf($$0);
-      this.b = ImmutableSet.copyOf(Sets.union($$0, $$1));
-   }
-
-   public boolean a(eix<?> $$0) {
-      return this.b.contains($$0);
-   }
-
-   public Set<eix<?>> a() {
-      return this.a;
-   }
-
-   public Set<eix<?>> b() {
-      return this.b;
+   private eiy(List<eju> $$0, ih<cov> $$1) {
+      super($$0);
+      this.b = $$1;
    }
 
    @Override
-   public String toString() {
-      return "[" + Joiner.on(", ").join(this.b.stream().map($$0 -> (this.a.contains($$0) ? "!" : "") + $$0.a()).iterator()) + "]";
+   public eij b() {
+      return eik.z;
    }
 
-   public void a(egy $$0, egq $$1) {
-      Set<eix<?>> $$2 = $$1.a();
-      Set<eix<?>> $$3 = Sets.difference($$2, this.b);
-      if (!$$3.isEmpty()) {
-         $$0.b("Parameters " + $$3 + " are not provided in this context");
-      }
+   @Override
+   public cmx a(cmx $$0, egv $$1) {
+      cox.a($$0, this.b.a());
+      return $$0;
    }
 
-   public static eiy.a c() {
-      return new eiy.a();
-   }
-
-   public static class a {
-      private final Set<eix<?>> a = Sets.newIdentityHashSet();
-      private final Set<eix<?>> b = Sets.newIdentityHashSet();
-
-      public eiy.a a(eix<?> $$0) {
-         if (this.b.contains($$0)) {
-            throw new IllegalArgumentException("Parameter " + $$0.a() + " is already optional");
-         } else {
-            this.a.add($$0);
-            return this;
-         }
-      }
-
-      public eiy.a b(eix<?> $$0) {
-         if (this.a.contains($$0)) {
-            throw new IllegalArgumentException("Parameter " + $$0.a() + " is already required");
-         } else {
-            this.b.add($$0);
-            return this;
-         }
-      }
-
-      public eiy a() {
-         return new eiy(this.a, this.b);
-      }
+   public static eih.a<?> a(cov $$0) {
+      return a($$1 -> new eiy($$1, $$0.c()));
    }
 }

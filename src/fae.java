@@ -1,20 +1,28 @@
-import java.util.function.Consumer;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 
-public class fae {
-   private static final int a = 4;
+public enum fae implements avj {
+   a("bitmap", fac.a.a),
+   b("ttf", fag.a),
+   c("space", eoe.a.a),
+   d("unihex", fah.b.a),
+   e("reference", faf.a);
 
-   private fae() {
+   public static final Codec<fae> f = avj.a(fae::values);
+   private final String g;
+   private final MapCodec<? extends fad> h;
+
+   private fae(String $$0, MapCodec<? extends fad> $$1) {
+      this.g = $$0;
+      this.h = $$1;
    }
 
-   public static faj a(ewk $$0, fak $$1, vd $$2) {
-      return a($$0, $$1, $$2, $$0x -> {
-      });
+   @Override
+   public String c() {
+      return this.g;
    }
 
-   public static faj a(ewk $$0, fak $$1, vd $$2, Consumer<fal> $$3) {
-      fam $$4 = fam.d().a(4);
-      $$4.a(new eyf($$2, $$0));
-      $$4.a($$1, $$3);
-      return $$4;
+   public MapCodec<? extends fad> a() {
+      return this.h;
    }
 }

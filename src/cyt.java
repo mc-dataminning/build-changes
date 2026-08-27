@@ -1,27 +1,55 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class cyt extends cwj {
-   public static final MapCodec<cyt> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(bja.b(0, 10).fieldOf("experience").forGetter($$0x -> $$0x.b), u()).apply($$0, cyt::new)
-   );
-   private final bja b;
+public class cyt extends cwp {
+   public static final MapCodec<cyt> a = b(cyt::new);
+   protected static final eml b = czm.c;
 
    @Override
-   public MapCodec<? extends cyt> a() {
+   public MapCodec<cyt> a() {
       return a;
    }
 
-   public cyt(bja $$0, diz.d $$1) {
-      super($$1);
-      this.b = $$0;
+   protected cyt(djf.d $$0) {
+      super($$0);
    }
 
    @Override
-   public void a(dja $$0, amz $$1, hx $$2, cmr $$3, boolean $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      if ($$4) {
-         this.a($$1, $$2, $$3, this.b);
+   public boolean g_(djg $$0) {
+      return true;
+   }
+
+   @Override
+   public djg a(cpg $$0) {
+      return !this.o().a((ctr)$$0.q(), $$0.a()) ? cwp.a(this.o(), cwr.j.o(), $$0.q(), $$0.a()) : super.a($$0);
+   }
+
+   @Override
+   public djg a(djg $$0, ic $$1, djg $$2, ctp $$3, hx $$4, hx $$5) {
+      if ($$1 == ic.b && !$$0.a($$3, $$4)) {
+         $$3.a($$4, this, 1);
       }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   public void a(djg $$0, and $$1, hx $$2, auu $$3) {
+      czm.a(null, $$0, $$1, $$2);
+   }
+
+   @Override
+   public boolean a(djg $$0, ctr $$1, hx $$2) {
+      djg $$3 = $$1.a_($$2.c());
+      return !$$3.e() || $$3.b() instanceof czo;
+   }
+
+   @Override
+   public eml a(djg $$0, csu $$1, hx $$2, elx $$3) {
+      return b;
+   }
+
+   @Override
+   public boolean a(djg $$0, csu $$1, hx $$2, efg $$3) {
+      return false;
    }
 }

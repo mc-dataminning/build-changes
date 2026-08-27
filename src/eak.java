@@ -1,37 +1,81 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.BiConsumer;
-import java.util.function.Function;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public interface eak {
-   Codec<eak> b = kd.aj.q().dispatch(eak::b, Function.identity());
+public class eak extends eam {
+   public static final Codec<eak> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(eam.e.listOf().fieldOf("elements").forGetter($$0x -> $$0x.b), d()).apply($$0, eak::new)
+   );
+   private final List<eam> b;
 
-   void a(aup var1, BiConsumer<ahc<eai>, ahc<eai>> var2);
-
-   Stream<ahc<eai>> a();
-
-   static eaj a(String $$0, String $$1) {
-      return a(pj.a($$0), pj.a($$1));
+   public eak(List<eam> $$0, eao.a $$1) {
+      super($$1);
+      if ($$0.isEmpty()) {
+         throw new IllegalArgumentException("Elements are empty");
+      } else {
+         this.b = $$0;
+         this.b($$1);
+      }
    }
 
-   static eaj a(ahc<eai> $$0, ahc<eai> $$1) {
-      return new eaj($$0, $$1);
+   @Override
+   public jb a(edg $$0, ddb $$1) {
+      int $$2 = 0;
+      int $$3 = 0;
+      int $$4 = 0;
+
+      for (eam $$5 : this.b) {
+         jb $$6 = $$5.a($$0, $$1);
+         $$2 = Math.max($$2, $$6.u());
+         $$3 = Math.max($$3, $$6.v());
+         $$4 = Math.max($$4, $$6.w());
+      }
+
+      return new jb($$2, $$3, $$4);
    }
 
-   static ean a(String $$0, bif<String> $$1) {
-      bif.a<ahc<eai>> $$2 = bif.a();
-      $$1.e().forEach($$1x -> $$2.a(pj.a((String)$$1x.b()), $$1x.a().a()));
-      return a(pj.a($$0), $$2.a());
+   @Override
+   public List<edf.c> a(edg $$0, hx $$1, ddb $$2, auu $$3) {
+      return this.b.get(0).a($$0, $$1, $$2, $$3);
    }
 
-   static ean a(ahc<eai> $$0, bif<ahc<eai>> $$1) {
-      return new ean($$0, $$1);
+   @Override
+   public dyx a(edg $$0, hx $$1, ddb $$2) {
+      Stream<dyx> $$3 = this.b.stream().filter($$0x -> $$0x != eaf.b).map($$3x -> $$3x.a($$0, $$1, $$2));
+      return dyx.b($$3::iterator).orElseThrow(() -> new IllegalStateException("Unable to calculate boundingbox for ListPoolElement"));
    }
 
-   static eao a(bif<List<eak>> $$0) {
-      return new eao($$0);
+   @Override
+   public boolean a(edg $$0, cuj $$1, cuh $$2, dld $$3, hx $$4, hx $$5, ddb $$6, dyx $$7, auu $$8, boolean $$9) {
+      for (eam $$10 : this.b) {
+         if (!$$10.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9)) {
+            return false;
+         }
+      }
+
+      return true;
    }
 
-   Codec<? extends eak> b();
+   @Override
+   public ean<?> a() {
+      return ean.b;
+   }
+
+   @Override
+   public eam a(eao.a $$0) {
+      super.a($$0);
+      this.b($$0);
+      return this;
+   }
+
+   @Override
+   public String toString() {
+      return "List[" + this.b.stream().map(Object::toString).collect(Collectors.joining(", ")) + "]";
+   }
+
+   private void b(eao.a $$0) {
+      this.b.forEach($$1 -> $$1.a($$0));
+   }
 }

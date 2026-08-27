@@ -1,9 +1,13 @@
 import com.mojang.serialization.Codec;
 
-public abstract class ect {
-   public static final Codec<ect> c = kd.o.q().dispatch("predicate_type", ect::a, ecu::codec);
+public interface ect<P extends ecs> {
+   ect<ecr> a = a("always_true", ecr.a);
+   ect<ecp> b = a("linear_pos", ecp.a);
+   ect<ece> c = a("axis_aligned_linear_pos", ece.a);
 
-   public abstract boolean a(dja var1, aup var2);
+   Codec<P> codec();
 
-   protected abstract ecu<?> a();
+   static <P extends ecs> ect<P> a(String $$0, Codec<P> $$1) {
+      return it.a(kd.q, $$0, () -> $$1);
+   }
 }

@@ -1,73 +1,192 @@
+import com.google.common.annotations.VisibleForTesting;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.context.ContextChain;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
+import com.mojang.brigadier.suggestion.SuggestionProvider;
+import com.mojang.datafixers.util.Pair;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
 public class ajl {
-   public static final int a = 100;
+   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> vf.b("commands.function.error.argument_not_compound", $$0));
+   static final DynamicCommandExceptionType d = new DynamicCommandExceptionType($$0 -> vf.b("commands.function.scheduled.no_functions", $$0));
+   @VisibleForTesting
+   public static final Dynamic2CommandExceptionType a = new Dynamic2CommandExceptionType(($$0, $$1) -> vf.b("commands.function.instantiationFailure", $$0, $$1));
+   public static final SuggestionProvider<ds> b = ($$0, $$1) -> {
+      ahu $$2 = ((ds)$$0.getSource()).l().aC();
+      dx.a($$2.e(), $$1, "#");
+      return dx.a($$2.d(), $$1);
+   };
+   static final ajl.b<ds> e = new ajl.b<ds>() {
+      public void a(ds $$0, ahg $$1, int $$2) {
+         $$0.a(() -> vf.a("commands.function.result", vf.a($$1), $$2), true);
+      }
+   };
 
-   public static void a(CommandDispatcher<ds> $$0, dn $$1) {
+   public static void a(CommandDispatcher<ds> $$0) {
+      LiteralArgumentBuilder<ds> $$1 = dt.a("with");
+
+      for (alu.c $$2 : alu.c) {
+         $$2.a($$1, $$1x -> $$1x.executes(new ajl.c() {
+               @Override
+               protected sn a(CommandContext<ds> $$0) throws CommandSyntaxException {
+                  return $$2.a($$0).a();
+               }
+            }).then(dt.a("path", ek.a()).executes(new ajl.c() {
+               @Override
+               protected sn a(CommandContext<ds> $$0) throws CommandSyntaxException {
+                  return ajl.a(ek.a($$0, "path"), $$2.a($$0));
+               }
+            })));
+      }
+
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("give").requires($$0x -> $$0x.c(2)))
-            .then(
-               dt.a("targets", ef.d())
-                  .then(
-                     ((RequiredArgumentBuilder)dt.a("item", fy.a($$1)).executes($$0x -> a((ds)$$0x.getSource(), fy.a($$0x, "item"), ef.f($$0x, "targets"), 1)))
-                        .then(
-                           dt.a("count", IntegerArgumentType.integer(1))
-                              .executes(
-                                 $$0x -> a((ds)$$0x.getSource(), fy.a($$0x, "item"), ef.f($$0x, "targets"), IntegerArgumentType.getInteger($$0x, "count"))
-                              )
-                        )
-                  )
-            )
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("function").requires($$0x -> $$0x.c(2)))
+            .then(((RequiredArgumentBuilder)((RequiredArgumentBuilder)dt.a("name", fx.a()).suggests(b).executes(new ajl.c() {
+               @Nullable
+               @Override
+               protected sn a(CommandContext<ds> $$0) {
+                  return null;
+               }
+            })).then(dt.a("arguments", ec.a()).executes(new ajl.c() {
+               @Override
+               protected sn a(CommandContext<ds> $$0) {
+                  return ec.a($$0, "arguments");
+               }
+            }))).then($$1))
       );
    }
 
-   private static int a(ds $$0, fz $$1, Collection<ana> $$2, int $$3) throws CommandSyntaxException {
-      int $$4 = $$1.a().l();
-      int $$5 = $$4 * 100;
-      cmr $$6 = $$1.a($$3, false);
-      if ($$3 > $$5) {
-         $$0.b(vd.a("commands.give.failed.toomanyitems", $$5, $$6.J()));
-         return 0;
+   static sn a(ek.g $$0, alt $$1) throws CommandSyntaxException {
+      tk $$2 = alu.a($$0, $$1);
+      if ($$2 instanceof sn) {
+         return (sn)$$2;
       } else {
-         for (ana $$7 : $$2) {
-            int $$8 = $$3;
+         throw c.create($$2.c().a());
+      }
+   }
 
-            while ($$8 > 0) {
-               int $$9 = Math.min($$4, $$8);
-               $$8 -= $$9;
-               cmr $$10 = $$1.a($$9, false);
-               boolean $$11 = $$7.fS().e($$10);
-               if ($$11 && $$10.b()) {
-                  $$10.f(1);
-                  cbo $$13 = $$7.a($$10, false);
-                  if ($$13 != null) {
-                     $$13.C();
-                  }
+   public static ds a(ds $$0) {
+      return $$0.a().b(2);
+   }
 
-                  $$7.dM().a(null, $$7.dr(), $$7.dt(), $$7.dx(), arm.mO, arn.h, 0.2F, (($$7.eg().i() - $$7.eg().i()) * 0.7F + 1.0F) * 2.0F);
-                  $$7.bS.d();
-               } else {
-                  cbo $$12 = $$7.a($$10, false);
-                  if ($$12 != null) {
-                     $$12.x();
-                     $$12.b($$7.cw());
-                  }
+   public static <T extends du<T>> void a(Collection<hb<T>> $$0, @Nullable sn $$1, T $$2, T $$3, gp<T> $$4, ajl.b<T> $$5, gj $$6) throws CommandSyntaxException {
+      if ($$6.c()) {
+         a($$0, $$1, $$2, $$3, $$4, $$5);
+      } else {
+         b($$0, $$1, $$2, $$3, $$4, $$5);
+      }
+   }
+
+   private static <T extends du<T>> void a(@Nullable sn $$0, gp<T> $$1, CommandDispatcher<T> $$2, T $$3, hb<T> $$4, ahg $$5, dp $$6, boolean $$7) throws CommandSyntaxException {
+      try {
+         hd<T> $$8 = $$4.a($$0, $$2, $$3);
+         $$1.a(new gv<>($$8, $$6, $$7).bind($$3));
+      } catch (dv var9) {
+         throw a.create($$5, var9.a());
+      }
+   }
+
+   private static <T extends du<T>> dp a(T $$0, ajl.b<T> $$1, ahg $$2, dp $$3) {
+      return $$0.y() ? $$3 : ($$4, $$5) -> {
+         $$1.a($$0, $$2, $$5);
+         $$3.onSuccess($$5);
+      };
+   }
+
+   private static <T extends du<T>> void a(Collection<hb<T>> $$0, @Nullable sn $$1, T $$2, T $$3, gp<T> $$4, ajl.b<T> $$5) throws CommandSyntaxException {
+      CommandDispatcher<T> $$6 = $$2.x();
+      T $$7 = $$3.a_();
+      dp $$8 = dp.chain($$2.p(), $$4.b().d());
+
+      for (hb<T> $$9 : $$0) {
+         ahg $$10 = $$9.a();
+         dp $$11 = a($$2, $$5, $$10, $$8);
+         a($$1, $$4, $$6, $$7, $$9, $$10, $$11, true);
+      }
+
+      if ($$8 != dp.a) {
+         $$4.a(gy.a());
+      }
+   }
+
+   private static <T extends du<T>> void b(Collection<hb<T>> $$0, @Nullable sn $$1, T $$2, T $$3, gp<T> $$4, ajl.b<T> $$5) throws CommandSyntaxException {
+      CommandDispatcher<T> $$6 = $$2.x();
+      T $$7 = $$3.a_();
+      dp $$8 = $$2.p();
+      if (!$$0.isEmpty()) {
+         if ($$0.size() == 1) {
+            hb<T> $$9 = $$0.iterator().next();
+            ahg $$10 = $$9.a();
+            dp $$11 = a($$2, $$5, $$10, $$8);
+            a($$1, $$4, $$6, $$7, $$9, $$10, $$11, false);
+         } else if ($$8 == dp.a) {
+            for (hb<T> $$12 : $$0) {
+               ahg $$13 = $$12.a();
+               dp $$14 = a($$2, $$5, $$13, $$8);
+               a($$1, $$4, $$6, $$7, $$12, $$13, $$14, false);
+            }
+         } else {
+            class a {
+               boolean a;
+               int b;
+
+               public void a(int $$0) {
+                  this.a = true;
+                  this.b += $$0;
                }
             }
-         }
 
-         if ($$2.size() == 1) {
-            $$0.a(() -> vd.a("commands.give.success.single", $$3, $$6.J(), $$2.iterator().next().Q_()), true);
+            a $$15 = new a();
+            dp $$16 = ($$1x, $$2x) -> $$15.a($$2x);
+
+            for (hb<T> $$17 : $$0) {
+               ahg $$18 = $$17.a();
+               dp $$19 = a($$2, $$5, $$18, $$16);
+               a($$1, $$4, $$6, $$7, $$17, $$18, $$19, false);
+            }
+
+            $$4.a(($$2x, $$3x) -> {
+               if ($$15.a) {
+                  $$8.onSuccess($$15.b);
+               }
+            });
+         }
+      }
+   }
+
+   public interface b<T> {
+      void a(T var1, ahg var2, int var3);
+   }
+
+   abstract static class c extends gl.b<ds> implements gl.a<ds> {
+      @Nullable
+      protected abstract sn a(CommandContext<ds> var1) throws CommandSyntaxException;
+
+      public void a(ds $$0, ContextChain<ds> $$1, gj $$2, gp<ds> $$3) throws CommandSyntaxException {
+         CommandContext<ds> $$4 = $$1.getTopContext().copyFor($$0);
+         Pair<ahg, Collection<hb<ds>>> $$5 = fx.b($$4, "name").mapSecond($$0x -> (Collection)$$0x.map(Collections::singleton, Function.identity()));
+         Collection<hb<ds>> $$6 = (Collection<hb<ds>>)$$5.getSecond();
+         if ($$6.isEmpty()) {
+            throw ajl.d.create(vf.a((ahg)$$5.getFirst()));
          } else {
-            $$0.a(() -> vd.a("commands.give.success.single", $$3, $$6.J(), $$2.size()), true);
-         }
+            sn $$7 = this.a($$4);
+            ds $$8 = ajl.a($$0);
+            if ($$6.size() == 1) {
+               $$0.a(() -> vf.a("commands.function.scheduled.single", vf.a($$6.iterator().next().a())), true);
+            } else {
+               $$0.a(() -> vf.a("commands.function.scheduled.multiple", vi.b($$6.stream().map(hb::a).toList(), vf::a)), true);
+            }
 
-         return $$2.size();
+            ajl.a($$6, $$7, $$0, $$8, $$3, ajl.e, $$2);
+         }
       }
    }
 }

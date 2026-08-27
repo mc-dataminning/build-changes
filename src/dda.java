@@ -1,55 +1,48 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dda extends cvv {
-   public static final MapCodec<dda> a = b(dda::new);
-   public static final djr b = djq.E;
-   private final bja c = bix.a(5);
+public class dda extends cwp {
+   public static final MapCodec<dda> h = b(dda::new);
+   public static final dke<ic.a> i = djw.I;
 
    @Override
-   public MapCodec<dda> a() {
-      return a;
+   public MapCodec<? extends dda> a() {
+      return h;
    }
 
-   public dda(diz.d $$0) {
+   public dda(djf.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b, Boolean.valueOf(false)));
+      this.k(this.o().a(i, ic.a.b));
    }
 
    @Override
-   protected void a(djb.a<cwj, dja> $$0) {
-      $$0.a(b);
+   public djg a(djg $$0, ddb $$1) {
+      return b($$0, $$1);
    }
 
-   @Override
-   public void a(dja $$0, amz $$1, hx $$2, aup $$3) {
-      if ($$0.c(b)) {
-         $$1.a($$2, $$0.a(b, Boolean.valueOf(false)), 3);
+   public static djg b(djg $$0, ddb $$1) {
+      switch ($$1) {
+         case d:
+         case b:
+            switch ((ic.a)$$0.c(i)) {
+               case a:
+                  return $$0.a(i, ic.a.c);
+               case c:
+                  return $$0.a(i, ic.a.a);
+               default:
+                  return $$0;
+            }
+         default:
+            return $$0;
       }
    }
 
-   @Nullable
    @Override
-   public dgo a(hx $$0, dja $$1) {
-      return new dht($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dgo> dgp<T> a(cti $$0, dja $$1, dgq<T> $$2) {
-      return $$0.B ? null : a($$2, dgq.K, dht::a);
+   protected void a(djh.a<cwp, djg> $$0) {
+      $$0.a(i);
    }
 
    @Override
-   public dco b_(dja $$0) {
-      return dco.c;
-   }
-
-   @Override
-   public void a(dja $$0, amz $$1, hx $$2, cmr $$3, boolean $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      if ($$4) {
-         this.a($$1, $$2, $$3, this.c);
-      }
+   public djg a(cpg $$0) {
+      return this.o().a(i, $$0.k().o());
    }
 }

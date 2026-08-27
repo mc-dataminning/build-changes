@@ -1,11 +1,17 @@
-public class asu {
-   public static final asq<dyo> a = a("normal");
-   public static final asq<dyo> b = a("extended");
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-   private asu() {
+public record asu(List<ast> b, boolean c) {
+   public static final Codec<asu> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(ast.a.listOf().fieldOf("values").forGetter(asu::a), Codec.BOOL.optionalFieldOf("replace", false).forGetter(asu::b)).apply($$0, asu::new)
+   );
+
+   public List<ast> a() {
+      return this.b;
    }
 
-   private static asq<dyo> a(String $$0) {
-      return asq.a(ke.aK, new ahd($$0));
+   public boolean b() {
+      return this.c;
    }
 }

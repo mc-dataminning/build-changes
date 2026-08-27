@@ -1,193 +1,172 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Dynamic;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import java.util.OptionalInt;
+import com.google.common.annotations.VisibleForTesting;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class dhv extends dgo implements dnm.b<dnt.b>, dnt {
-   private static final Logger b = LogUtils.getLogger();
-   private static final int c = 10;
-   private static final int d = 20;
-   private static final int e = 5;
-   private static final int g = 6;
-   private static final int h = 40;
-   private static final int i = 90;
-   private static final Int2ObjectMap<arl> j = ac.a(new Int2ObjectOpenHashMap(), $$0 -> {
-      $$0.put(1, arm.AG);
-      $$0.put(2, arm.AH);
-      $$0.put(3, arm.AI);
-      $$0.put(4, arm.AF);
-   });
-   private int k;
-   private final dnt.d l = new dhv.a();
-   private dnt.a m = new dnt.a();
-   private final dnt.b n = new dnt.b(this);
+public class dhv extends dgu implements bjr, end {
+   private static final int c = 20;
+   private cmx d = cmx.f;
+   private int e;
+   private long f;
+   private long g;
+   private boolean h;
 
-   public dhv(hx $$0, dja $$1) {
-      super(dgq.L, $$0, $$1);
+   public dhv(hx $$0, djg $$1) {
+      super(dgw.e, $$0, $$1);
    }
 
    @Override
-   public dnt.a gg() {
-      return this.m;
-   }
-
-   @Override
-   public dnt.d gh() {
-      return this.l;
-   }
-
-   @Override
-   public void a(sl $$0) {
+   public void a(sn $$0) {
       super.a($$0);
-      if ($$0.b("warning_level", 99)) {
-         this.k = $$0.h("warning_level");
+      if ($$0.b("RecordItem", 10)) {
+         this.d = cmx.a($$0.p("RecordItem"));
       }
 
-      if ($$0.b("listener", 10)) {
-         dnt.a.a.parse(new Dynamic(sz.a, $$0.p("listener"))).resultOrPartial(b::error).ifPresent($$0x -> this.m = $$0x);
+      this.h = $$0.q("IsPlaying");
+      this.g = $$0.i("RecordStartTick");
+      this.f = $$0.i("TickCount");
+   }
+
+   @Override
+   protected void b(sn $$0) {
+      super.b($$0);
+      if (!this.x().b()) {
+         $$0.a("RecordItem", this.x().b(new sn()));
+      }
+
+      $$0.a("IsPlaying", this.h);
+      $$0.a("RecordStartTick", this.g);
+      $$0.a("TickCount", this.f);
+   }
+
+   public boolean f() {
+      return !this.x().b() && this.h;
+   }
+
+   private void a(@Nullable blu $$0, boolean $$1) {
+      if (this.o.a_(this.aB_()) == this.r()) {
+         this.o.a(this.aB_(), this.r().a(dar.b, Boolean.valueOf($$1)), 2);
+         this.o.a(dnq.c, this.aB_(), dnq.a.a($$0, this.r()));
+      }
+   }
+
+   @VisibleForTesting
+   public void g() {
+      this.g = this.f;
+      this.h = true;
+      this.o.a(this.aB_(), this.r().b());
+      this.o.a(null, 1010, this.aB_(), cms.a(this.x().d()));
+      this.e();
+   }
+
+   private void l() {
+      this.h = false;
+      this.o.a(dnq.F, this.aB_(), dnq.a.a(this.r()));
+      this.o.a(this.aB_(), this.r().b());
+      this.o.c(1011, this.aB_(), 0);
+      this.e();
+   }
+
+   private void b(cto $$0, hx $$1, djg $$2) {
+      this.e++;
+      if (this.f() && this.x().d() instanceof cnp $$3) {
+         if (this.a($$3)) {
+            this.l();
+         } else if (this.m()) {
+            this.e = 0;
+            $$0.a(dnq.E, $$1, dnq.a.a($$2));
+            this.a($$0, $$1);
+         }
+      }
+
+      this.f++;
+   }
+
+   private boolean a(cnp $$0) {
+      return this.f >= this.g + (long)$$0.y() + 20L;
+   }
+
+   private boolean m() {
+      return this.e >= 20;
+   }
+
+   @Override
+   public cmx x() {
+      return this.d;
+   }
+
+   @Override
+   public cmx c(int $$0) {
+      cmx $$1 = this.d;
+      this.d = cmx.f;
+      if (!$$1.b()) {
+         this.a(null, false);
+         this.l();
+      }
+
+      return $$1;
+   }
+
+   @Override
+   public void b(cmx $$0) {
+      if ($$0.a(aso.aq) && this.o != null) {
+         this.d = $$0;
+         this.a(null, true);
+         this.g();
+      } else if ($$0.b()) {
+         this.c(1);
       }
    }
 
    @Override
-   protected void b(sl $$0) {
-      super.b($$0);
-      $$0.a("warning_level", this.k);
-      dnt.a.a.encodeStart(sz.a, this.m).resultOrPartial(b::error).ifPresent($$1 -> $$0.a("listener", $$1));
+   public int ak_() {
+      return 1;
    }
 
-   @Nullable
-   public static ana a(@Nullable blp $$0) {
-      if ($$0 instanceof ana) {
-         return (ana)$$0;
-      } else {
-         if ($$0 != null) {
-            bmf $$6 = $$0.cN();
-            if ($$6 instanceof ana) {
-               return (ana)$$6;
-            }
-         }
+   @Override
+   public dgu y() {
+      return this;
+   }
 
-         if ($$0 instanceof cft $$3) {
-            blp var3 = $$3.w();
-            if (var3 instanceof ana) {
-               return (ana)var3;
-            }
-         }
+   @Override
+   public boolean b(int $$0, cmx $$1) {
+      return $$1.a(aso.aq) && this.a($$0).b();
+   }
 
-         if ($$0 instanceof cbo $$5) {
-            blp var9 = $$5.w();
-            if (var9 instanceof ana) {
-               return (ana)var9;
-            }
-         }
+   @Override
+   public boolean a(bjt $$0, int $$1, cmx $$2) {
+      return $$0.a_(cmx::b);
+   }
 
-         return null;
+   private void a(cto $$0, hx $$1) {
+      if ($$0 instanceof and $$2) {
+         els $$3 = els.c($$1).b(0.0, 1.2F, 0.0);
+         float $$4 = (float)$$0.F_().a(4) / 24.0F;
+         $$2.a(jx.X, $$3.a(), $$3.b(), $$3.c(), 0, (double)$$4, 0.0, 0.0, 1.0);
       }
    }
 
-   public void a(amz $$0, @Nullable ana $$1) {
-      if ($$1 != null) {
-         dja $$2 = this.r();
-         if (!$$2.c(ddc.b)) {
-            this.k = 0;
-            if (!this.b($$0) || this.b($$0, $$1)) {
-               this.a($$0, (blp)$$1);
-            }
+   public void k() {
+      if (this.o != null && !this.o.B) {
+         hx $$0 = this.aB_();
+         cmx $$1 = this.x();
+         if (!$$1.b()) {
+            this.h();
+            els $$2 = els.a($$0, 0.5, 1.01, 0.5).a(this.o.z, 0.7F);
+            cmx $$3 = $$1.p();
+            cbt $$4 = new cbt(this.o, $$2.a(), $$2.b(), $$2.c(), $$3);
+            $$4.u();
+            this.o.b($$4);
          }
       }
    }
 
-   private boolean b(amz $$0, ana $$1) {
-      OptionalInt $$2 = ceh.a($$0, this.aB_(), $$1);
-      $$2.ifPresent($$0x -> this.k = $$0x);
-      return $$2.isPresent();
+   public static void a(cto $$0, hx $$1, djg $$2, dhv $$3) {
+      $$3.b($$0, $$1, $$2);
    }
 
-   private void a(amz $$0, @Nullable blp $$1) {
-      hx $$2 = this.aB_();
-      dja $$3 = this.r();
-      $$0.a($$2, $$3.a(ddc.b, Boolean.valueOf(true)), 2);
-      $$0.a($$2, $$3.b(), 90);
-      $$0.c(3007, $$2, 0);
-      $$0.a(dnk.N, $$2, dnk.a.a($$1));
-   }
-
-   private boolean b(amz $$0) {
-      return this.r().c(ddc.d) && $$0.ak() != bjs.a && $$0.Z().b(cte.M);
-   }
-
-   public void a(amz $$0) {
-      if (this.b($$0) && this.k > 0) {
-         if (!this.c($$0)) {
-            this.b((cti)$$0);
-         }
-
-         cef.a($$0, elm.b(this.aB_()), null, 40);
-      }
-   }
-
-   private void b(cti $$0) {
-      arl $$1 = (arl)j.get(this.k);
-      if ($$1 != null) {
-         hx $$2 = this.aB_();
-         int $$3 = $$2.u() + aui.b($$0.z, -10, 10);
-         int $$4 = $$2.v() + aui.b($$0.z, -10, 10);
-         int $$5 = $$2.w() + aui.b($$0.z, -10, 10);
-         $$0.a(null, (double)$$3, (double)$$4, (double)$$5, $$1, arn.f, 5.0F, 1.0F);
-      }
-   }
-
-   private boolean c(amz $$0) {
-      return this.k < 4 ? false : avc.a(blt.bj, bmj.k, $$0, this.aB_(), 20, 5, 6, avc.a.b).isPresent();
-   }
-
-   public dnt.b c() {
-      return this.n;
-   }
-
-   class a implements dnt.d {
-      private static final int b = 8;
-      private final dno c = new dng(dhv.this.p);
-
-      public a() {
-      }
-
-      @Override
-      public int a() {
-         return 8;
-      }
-
-      @Override
-      public dno b() {
-         return this.c;
-      }
-
-      @Override
-      public asq<dnk> c() {
-         return ash.c;
-      }
-
-      @Override
-      public boolean a(amz $$0, hx $$1, dnk $$2, dnk.a $$3) {
-         return !dhv.this.r().c(ddc.b) && dhv.a($$3.a()) != null;
-      }
-
-      @Override
-      public void a(amz $$0, hx $$1, dnk $$2, @Nullable blp $$3, @Nullable blp $$4, float $$5) {
-         dhv.this.a($$0, dhv.a($$4 != null ? $$4 : $$3));
-      }
-
-      @Override
-      public void e() {
-         dhv.this.e();
-      }
-
-      @Override
-      public boolean f() {
-         return true;
-      }
+   @VisibleForTesting
+   public void a(cmx $$0) {
+      this.d = $$0;
+      this.o.a(this.aB_(), this.r().b());
+      this.e();
    }
 }

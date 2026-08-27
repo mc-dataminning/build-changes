@@ -1,97 +1,70 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.BitSet;
 import java.util.Optional;
-import java.util.Set;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import java.util.stream.LongStream;
+import java.util.UUID;
 import javax.annotation.Nullable;
 
-public final class dnx {
-   private static final BitSet c = new BitSet(0);
-   private static final Codec<BitSet> d = Codec.LONG_STREAM.xmap($$0 -> BitSet.valueOf($$0.toArray()), $$0 -> LongStream.of($$0.toLongArray()));
-   private static final Codec<dlb> e = kd.n
-      .q()
-      .comapFlatMap($$0 -> $$0 == dlb.c ? DataResult.error(() -> "target_status cannot be empty") : DataResult.success($$0), Function.identity());
+public record dnx(dnq b, float c, els d, @Nullable UUID e, @Nullable UUID f, @Nullable blu g) {
    public static final Codec<dnx> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               e.fieldOf("target_status").forGetter(dnx::a),
-               d.optionalFieldOf("missing_bedrock").forGetter($$0x -> $$0x.h.isEmpty() ? Optional.empty() : Optional.of($$0x.h))
+               kd.a.q().fieldOf("game_event").forGetter(dnx::a),
+               Codec.floatRange(0.0F, Float.MAX_VALUE).fieldOf("distance").forGetter(dnx::b),
+               els.a.fieldOf("pos").forGetter(dnx::c),
+               ja.a.optionalFieldOf("source").forGetter($$0x -> Optional.ofNullable($$0x.d())),
+               ja.a.optionalFieldOf("projectile_owner").forGetter($$0x -> Optional.ofNullable($$0x.e()))
             )
-            .apply($$0, dnx::new)
+            .apply($$0, ($$0x, $$1, $$2, $$3, $$4) -> new dnx($$0x, $$1, $$2, (UUID)$$3.orElse(null), (UUID)$$4.orElse(null)))
    );
-   private static final Set<ahc<cuh>> f = Set.of(cuo.aa, cuo.Z, cuo.ab);
-   public static final ctk b = new ctk() {
-      @Override
-      public int K_() {
-         return 64;
-      }
 
-      @Override
-      public int J_() {
-         return -64;
-      }
-   };
-   private final dlb g;
-   private final BitSet h;
+   public dnx(dnq $$0, float $$1, els $$2, @Nullable UUID $$3, @Nullable UUID $$4) {
+      this($$0, $$1, $$2, $$3, $$4, null);
+   }
 
-   private dnx(dlb $$0, Optional<BitSet> $$1) {
-      this.g = $$0;
-      this.h = $$1.orElse(c);
+   public dnx(dnq $$0, float $$1, els $$2, @Nullable blu $$3) {
+      this($$0, $$1, $$2, $$3 == null ? null : $$3.cw(), a($$3), $$3);
    }
 
    @Nullable
-   public static dnx a(sl $$0) {
-      dlb $$1 = dlb.a($$0.l("target_status"));
-      return $$1 == dlb.c ? null : new dnx($$1, Optional.of(BitSet.valueOf($$0.o("missing_bedrock"))));
-   }
-
-   public static void a(dlr $$0) {
-      int $$1 = 4;
-      hx.b(0, 0, 0, 15, 4, 15).forEach($$1x -> {
-         if ($$0.a_($$1x).a(cwl.F)) {
-            $$0.a($$1x, cwl.sJ.o(), false);
-         }
-      });
-   }
-
-   public void b(dlr $$0) {
-      ctk $$1 = $$0.z();
-      int $$2 = $$1.J_();
-      int $$3 = $$1.al() - 1;
-
-      for (int $$4 = 0; $$4 < 16; $$4++) {
-         for (int $$5 = 0; $$5 < 16; $$5++) {
-            if (this.a($$4, $$5)) {
-               hx.b($$4, $$2, $$5, $$4, $$3, $$5).forEach($$1x -> $$0.a($$1x, cwl.a.o(), false));
-            }
-         }
+   private static UUID a(@Nullable blu $$0) {
+      if ($$0 instanceof cfz $$1 && $$1.w() != null) {
+         return $$1.w().cw();
       }
+
+      return null;
    }
 
-   public dlb a() {
+   public Optional<blu> a(and $$0) {
+      return Optional.ofNullable(this.g).or(() -> Optional.ofNullable(this.e).map($$0::a));
+   }
+
+   public Optional<blu> b(and $$0) {
+      return this.a($$0).filter($$0x -> $$0x instanceof cfz).map($$0x -> (cfz)$$0x).map(cfz::w).or(() -> Optional.ofNullable(this.f).map($$0::a));
+   }
+
+   public dnq a() {
+      return this.b;
+   }
+
+   public float b() {
+      return this.c;
+   }
+
+   public els c() {
+      return this.d;
+   }
+
+   @Nullable
+   public UUID d() {
+      return this.e;
+   }
+
+   @Nullable
+   public UUID e() {
+      return this.f;
+   }
+
+   @Nullable
+   public blu f() {
       return this.g;
-   }
-
-   public boolean b() {
-      return !this.h.isEmpty();
-   }
-
-   public boolean a(int $$0, int $$1) {
-      return this.h.get(($$1 & 15) * 16 + ($$0 & 15));
-   }
-
-   public static cuk a(cuk $$0, dkw $$1) {
-      if (!$$1.y()) {
-         return $$0;
-      } else {
-         Predicate<ahc<cuh>> $$2 = f::contains;
-         return ($$3, $$4, $$5, $$6) -> {
-            ih<cuh> $$7 = $$0.getNoiseBiome($$3, $$4, $$5, $$6);
-            return $$7.a($$2) ? $$7 : $$1.getNoiseBiome($$3, 0, $$5);
-         };
-      }
    }
 }

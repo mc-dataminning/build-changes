@@ -1,210 +1,163 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import java.util.Map;
 import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class cdm {
-   public static final int a = 8;
-   public static final int b = 4;
-   private static final bjg c = avj.a(5, 20);
-   private static final int d = 200;
-   private static final int e = 8;
-   private static final int f = 15;
-   private static final int g = 40;
-   private static final int h = 15;
-   private static final int i = 200;
-   private static final bjg j = bjg.a(5, 16);
-   private static final float k = 1.0F;
-   private static final float l = 1.3F;
-   private static final float m = 0.6F;
-   private static final float n = 0.4F;
-   private static final float o = 0.6F;
+public class cdm extends bob<cdk> {
+   private static final int c = 4;
+   private static final double d = 50.0;
+   private static final int e = 10;
+   private static final int f = 2;
+   private static final int g = Math.round(10.0F);
+   private static final float h = 1.4F;
+   private static final ObjectArrayList<Integer> i = new ObjectArrayList(Lists.newArrayList(new Integer[]{40, 55, 60, 75, 80}));
 
-   protected static bnf<?> a(bnf<cdl> $$0) {
-      b($$0);
-      c($$0);
-      d($$0);
-      e($$0);
-      $$0.a(ImmutableSet.of(cgn.a));
-      $$0.b(cgn.b);
-      $$0.f();
-      return $$0;
+   @VisibleForTesting
+   public cdm() {
+      super(Map.of(bvm.o, bvn.a, bvm.aT, bvn.b, bvm.aY, bvn.c, bvm.aZ, bvn.c, bvm.aU, bvn.b, bvm.m, bvn.b), 200);
    }
 
-   private static void b(bnf<cdl> $$0) {
-      $$0.a(cgn.a, 0, ImmutableList.of(new bpc(45, 90), new bpg()));
-   }
-
-   private static void c(bnf<cdl> $$0) {
-      $$0.a(
-         cgn.b,
-         10,
-         ImmutableList.of(
-            bnv.a(bvh.av, 200),
-            new bnq(blt.X, 0.6F),
-            bqa.a(bvh.av, 1.0F, 8, true),
-            bqi.a(cdm::d),
-            brj.a(cdl::w, bqa.b(bvh.ap, 0.4F, 8, false)),
-            bpw.a(8.0F, bjg.a(30, 60)),
-            bnt.a(j, 0.6F),
-            a()
-         )
-      );
-   }
-
-   private static void d(bnf<cdl> $$0) {
-      $$0.a(
-         cgn.k,
-         10,
-         ImmutableList.of(
-            bnv.a(bvh.av, 200), new bnq(blt.X, 0.6F), bqb.a(1.0F), brj.a(cdl::w, bpd.a(40)), brj.a(blk::o_, bpd.a(15)), bql.a(), boi.a(cdm::i, bvh.o)
-         ),
-         bvh.o
-      );
-   }
-
-   private static void e(bnf<cdl> $$0) {
-      $$0.a(cgn.n, 10, ImmutableList.of(bqa.b(bvh.z, 1.3F, 15, false), a(), bpw.a(8.0F, bjg.a(30, 60)), boi.a(cdm::e, bvh.z)), bvh.z);
-   }
-
-   private static bpt<cdl> a() {
-      return new bpt<>(ImmutableList.of(Pair.of(bpo.a(0.4F), 2), Pair.of(bqd.a(0.4F, 3), 2), Pair.of(new bog(30, 60), 1)));
-   }
-
-   protected static void a(cdl $$0) {
-      bnf<cdl> $$1 = $$0.dO();
-      cgn $$2 = $$1.g().orElse(null);
-      $$1.a(ImmutableList.of(cgn.k, cgn.n, cgn.b));
-      cgn $$3 = $$1.g().orElse(null);
-      if ($$2 != $$3) {
-         b($$0).ifPresent($$0::b);
-      }
-
-      $$0.v($$1.a(bvh.o));
-   }
-
-   protected static void a(cdl $$0, bmf $$1) {
-      if (!$$0.o_()) {
-         if ($$1.ai() == blt.ax && f($$0)) {
-            e($$0, $$1);
-            c($$0, $$1);
-         } else {
-            h($$0, $$1);
-         }
-      }
-   }
-
-   private static void c(cdl $$0, bmf $$1) {
-      g($$0).forEach($$1x -> d($$1x, $$1));
-   }
-
-   private static void d(cdl $$0, bmf $$1) {
-      bnf<cdl> $$3 = $$0.dO();
-      bmf $$2 = bny.a($$0, $$3.c(bvh.z), $$1);
-      $$2 = bny.a($$0, $$3.c(bvh.o), $$2);
-      e($$0, $$2);
-   }
-
-   private static void e(cdl $$0, bmf $$1) {
-      $$0.dO().b(bvh.o);
-      $$0.dO().b(bvh.m);
-      $$0.dO().a(bvh.z, $$1, (long)c.a($$0.dM().z));
-   }
-
-   private static Optional<? extends bmf> d(cdl $$0) {
-      return !c($$0) && !i($$0) ? $$0.dO().c(bvh.l) : Optional.empty();
-   }
-
-   static boolean a(cdl $$0, hx $$1) {
-      Optional<hx> $$2 = $$0.dO().c(bvh.av);
-      return $$2.isPresent() && $$2.get().a($$1, 8.0);
-   }
-
-   private static boolean e(cdl $$0) {
-      return $$0.w() && !f($$0);
-   }
-
-   private static boolean f(cdl $$0) {
-      if ($$0.o_()) {
+   protected boolean a(and $$0, cdk $$1) {
+      if (!$$1.aC() && !$$1.aZ()) {
          return false;
+      } else if ($$1.dO().a(bvm.aZ, bvn.a)) {
+         return true;
       } else {
-         int $$1 = $$0.dO().c(bvh.ar).orElse(0);
-         int $$2 = $$0.dO().c(bvh.as).orElse(0) + 1;
-         return $$1 > $$2;
-      }
-   }
-
-   protected static void b(cdl $$0, bmf $$1) {
-      bnf<cdl> $$2 = $$0.dO();
-      $$2.b(bvh.aw);
-      $$2.b(bvh.r);
-      if ($$0.o_()) {
-         d($$0, $$1);
-      } else {
-         f($$0, $$1);
-      }
-   }
-
-   private static void f(cdl $$0, bmf $$1) {
-      if (!$$0.dO().c(cgn.n) || $$1.ai() != blt.ax) {
-         if ($$1.ai() != blt.X) {
-            if (!bny.a($$0, $$1, 4.0)) {
-               if (bwm.c($$0, $$1)) {
-                  g($$0, $$1);
-                  h($$0, $$1);
-               }
+         bmk $$2 = $$1.dO().c(bvm.o).orElse(null);
+         if ($$2 == null) {
+            return false;
+         } else if (a($$1, $$2)) {
+            $$1.dO().b(bvm.o);
+            return false;
+         } else if (b($$1, $$2)) {
+            return false;
+         } else if (!b($$0, $$1)) {
+            return false;
+         } else {
+            hx $$3 = a((bmk)$$1, a($$2, $$1.eg()));
+            if ($$3 == null) {
+               return false;
+            } else if (!a($$1, $$3.b()) && !a($$1, $$3.b(4).b())) {
+               return false;
+            } else {
+               $$1.dO().a(bvm.aZ, $$3);
+               return true;
             }
          }
       }
    }
 
-   private static void g(cdl $$0, bmf $$1) {
-      bnf<cdl> $$2 = $$0.dO();
-      $$2.b(bvh.E);
-      $$2.b(bvh.r);
-      $$2.a(bvh.o, $$1, 200L);
+   protected boolean a(and $$0, cdk $$1, long $$2) {
+      return $$1.ap() != bmw.a && !$$1.dO().a(bvm.aT);
    }
 
-   private static void h(cdl $$0, bmf $$1) {
-      g($$0).forEach($$1x -> i($$1x, $$1));
+   protected void b(and $$0, cdk $$1, long $$2) {
+      if ($$1.dO().a(bvm.aY, bvn.b)) {
+         $$1.dO().a(bvm.aY, avr.a, (long)g);
+      }
+
+      $$1.b(bmw.r);
+      $$1.dO().c(bvm.aZ).ifPresent($$1x -> $$1.a(ee.a.b, $$1x.b()));
    }
 
-   private static void i(cdl $$0, bmf $$1) {
-      if (!c($$0)) {
-         Optional<bmf> $$2 = $$0.dO().c(bvh.o);
-         bmf $$3 = bny.a($$0, $$2, $$1);
-         g($$0, $$3);
+   protected void c(and $$0, cdk $$1, long $$2) {
+      if (a($$1)) {
+         els $$3 = $$1.dO().c(bvm.aZ).flatMap($$1x -> a($$1, $$1.eg(), els.c($$1x))).orElse(null);
+         if ($$3 == null) {
+            $$1.b(bmw.a);
+            return;
+         }
+
+         $$1.a(arr.co, 1.0F, 1.0F);
+         $$1.b(bmw.g);
+         $$1.r($$1.aU);
+         $$1.p(true);
+         $$1.g($$3);
+      } else if (b($$1)) {
+         $$1.a(arr.cp, 1.0F, 1.0F);
+         $$1.b(bmw.a);
+         $$1.p(false);
+         boolean $$4 = $$1.dO().a(bvm.x);
+         $$1.dO().a(bvm.aT, avr.a, $$4 ? 2L : 10L);
+         $$1.dO().a(bvm.aU, avr.a, 100L);
       }
    }
 
-   public static Optional<arl> b(cdl $$0) {
-      return $$0.dO().g().map($$1 -> a($$0, $$1));
+   protected void d(and $$0, cdk $$1, long $$2) {
+      if ($$1.ap() == bmw.g || $$1.ap() == bmw.r) {
+         $$1.b(bmw.a);
+      }
+
+      $$1.dO().b(bvm.aZ);
+      $$1.dO().b(bvm.aY);
    }
 
-   private static arl a(cdl $$0, cgn $$1) {
-      if ($$1 == cgn.n || $$0.A()) {
-         return arm.lG;
-      } else if ($$1 == cgn.k) {
-         return arm.lB;
+   private static boolean a(cdk $$0) {
+      return $$0.dO().c(bvm.aY).isEmpty() && $$0.ap() == bmw.r;
+   }
+
+   private static boolean b(cdk $$0) {
+      return $$0.ap() == bmw.g && $$0.aC();
+   }
+
+   private static els a(bmk $$0, auu $$1) {
+      int $$2 = 90;
+      float $$3 = $$0.aW + 180.0F + (float)$$1.k() * 90.0F / 2.0F;
+      float $$4 = aun.i($$1.i(), 4.0F, 8.0F);
+      els $$5 = els.a(0.0F, $$3).a((double)$$4);
+      return $$0.dk().e($$5);
+   }
+
+   @Nullable
+   private static hx a(bmk $$0, els $$1) {
+      csx $$2 = new csx($$1, $$1.a(ic.a, 10.0), csx.a.a, csx.b.a, $$0);
+      elq $$3 = $$0.dM().a($$2);
+      if ($$3.c() == elq.a.b) {
+         return hx.a($$3.e()).c();
       } else {
-         return h($$0) ? arm.lG : arm.lA;
+         csx $$4 = new csx($$1, $$1.a(ic.b, 10.0), csx.a.a, csx.b.a, $$0);
+         elq $$5 = $$0.dM().a($$4);
+         return $$5.c() == elq.a.b ? hx.a($$3.e()).c() : null;
       }
    }
 
-   private static List<cdl> g(cdl $$0) {
-      return $$0.dO().c(bvh.ao).orElse(ImmutableList.of());
+   @VisibleForTesting
+   public static boolean a(cdk $$0, els $$1) {
+      els $$2 = new els($$0.dr(), $$0.dt(), $$0.dx());
+      return $$1.f($$2) > 50.0 ? false : $$0.dM().a(new csx($$2, $$1, csx.a.a, csx.b.a, $$0)).c() == elq.a.a;
    }
 
-   private static boolean h(cdl $$0) {
-      return $$0.dO().a(bvh.av);
+   private static boolean a(cdk $$0, bmk $$1) {
+      return !$$1.a($$0, 24.0);
    }
 
-   private static boolean i(cdl $$0) {
-      return $$0.dO().a(bvh.r);
+   private static boolean b(cdk $$0, bmk $$1) {
+      return $$1.e($$0) - 4.0F <= 0.0F;
    }
 
-   protected static boolean c(cdl $$0) {
-      return $$0.dO().a(bvh.aw);
+   private static boolean b(and $$0, cdk $$1) {
+      hx $$2 = $$1.dm();
+
+      for (int $$3 = 1; $$3 <= 4; $$3++) {
+         hx $$4 = $$2.a(ic.b, $$3);
+         if (!$$0.a_($$4).i() && !$$0.b_($$4).a(asl.a)) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   private static Optional<els> a(cdk $$0, auu $$1, els $$2) {
+      for (int $$4 : ac.a(i, $$1)) {
+         Optional<els> $$5 = bpf.a($$0, $$2, 1.4F, $$4, false);
+         if ($$5.isPresent()) {
+            return $$5;
+         }
+      }
+
+      return Optional.empty();
    }
 }

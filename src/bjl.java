@@ -1,147 +1,53 @@
-import java.util.UUID;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Function;
 
-public abstract class bjl {
-   private final UUID h;
-   protected vd a;
-   protected float b;
-   protected bjl.a c;
-   protected bjl.b d;
-   protected boolean e;
-   protected boolean f;
-   protected boolean g;
+public class bjl extends bjf {
+   public static final Codec<bjl> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(Codec.INT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.b), Codec.INT.fieldOf("max_inclusive").forGetter($$0x -> $$0x.f))
+               .apply($$0, bjl::new)
+      )
+      .comapFlatMap(
+         $$0 -> $$0.f < $$0.b
+               ? DataResult.error(() -> "Max must be at least min, min_inclusive: " + $$0.b + ", max_inclusive: " + $$0.f)
+               : DataResult.success($$0),
+         Function.identity()
+      );
+   private final int b;
+   private final int f;
 
-   public bjl(UUID $$0, vd $$1, bjl.a $$2, bjl.b $$3) {
-      this.h = $$0;
-      this.a = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.b = 1.0F;
+   private bjl(int $$0, int $$1) {
+      this.b = $$0;
+      this.f = $$1;
    }
 
-   public UUID i() {
-      return this.h;
+   public static bjl a(int $$0, int $$1) {
+      return new bjl($$0, $$1);
    }
 
-   public vd j() {
-      return this.a;
+   @Override
+   public int a(auu $$0) {
+      return aun.b($$0, this.b, this.f);
    }
 
-   public void a(vd $$0) {
-      this.a = $$0;
-   }
-
-   public float k() {
+   @Override
+   public int a() {
       return this.b;
    }
 
-   public void a(float $$0) {
-      this.b = $$0;
-   }
-
-   public bjl.a l() {
-      return this.c;
-   }
-
-   public void a(bjl.a $$0) {
-      this.c = $$0;
-   }
-
-   public bjl.b m() {
-      return this.d;
-   }
-
-   public void a(bjl.b $$0) {
-      this.d = $$0;
-   }
-
-   public boolean n() {
-      return this.e;
-   }
-
-   public bjl a(boolean $$0) {
-      this.e = $$0;
-      return this;
-   }
-
-   public boolean o() {
+   @Override
+   public int b() {
       return this.f;
    }
 
-   public bjl b(boolean $$0) {
-      this.f = $$0;
-      return this;
+   @Override
+   public bjg<?> c() {
+      return bjg.b;
    }
 
-   public bjl c(boolean $$0) {
-      this.g = $$0;
-      return this;
-   }
-
-   public boolean p() {
-      return this.g;
-   }
-
-   public static enum a {
-      a("pink", n.m),
-      b("blue", n.j),
-      c("red", n.e),
-      d("green", n.k),
-      e("yellow", n.o),
-      f("purple", n.b),
-      g("white", n.p);
-
-      private final String h;
-      private final n i;
-
-      private a(String $$0, n $$1) {
-         this.h = $$0;
-         this.i = $$1;
-      }
-
-      public n a() {
-         return this.i;
-      }
-
-      public String b() {
-         return this.h;
-      }
-
-      public static bjl.a a(String $$0) {
-         for (bjl.a $$1 : values()) {
-            if ($$1.h.equals($$0)) {
-               return $$1;
-            }
-         }
-
-         return g;
-      }
-   }
-
-   public static enum b {
-      a("progress"),
-      b("notched_6"),
-      c("notched_10"),
-      d("notched_12"),
-      e("notched_20");
-
-      private final String f;
-
-      private b(String $$0) {
-         this.f = $$0;
-      }
-
-      public String a() {
-         return this.f;
-      }
-
-      public static bjl.b a(String $$0) {
-         for (bjl.b $$1 : values()) {
-            if ($$1.f.equals($$0)) {
-               return $$1;
-            }
-         }
-
-         return a;
-      }
+   @Override
+   public String toString() {
+      return "[" + this.b + "-" + this.f + "]";
    }
 }

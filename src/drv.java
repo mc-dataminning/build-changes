@@ -1,46 +1,43 @@
-import com.mojang.serialization.Codec;
+import java.util.Optional;
 
-public class drv extends dqq {
-   public drv(Codec<dtt> $$0) {
-      super($$0);
+public class drv<FC extends dtx> {
+   private final Optional<drg<?, ?>> a;
+   private final cuj b;
+   private final dld c;
+   private final auu d;
+   private final hx e;
+   private final FC f;
+
+   public drv(Optional<drg<?, ?>> $$0, cuj $$1, dld $$2, auu $$3, hx $$4, FC $$5) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
    }
 
-   @Override
-   protected void a(ctj $$0, aup $$1, hx $$2, int $$3, hx.a $$4, dtt $$5) {
-      int $$6 = $$5.d;
-
-      for (int $$7 = -$$6; $$7 <= $$6; $$7++) {
-         for (int $$8 = -$$6; $$8 <= $$6; $$8++) {
-            boolean $$9 = $$7 == -$$6;
-            boolean $$10 = $$7 == $$6;
-            boolean $$11 = $$8 == -$$6;
-            boolean $$12 = $$8 == $$6;
-            boolean $$13 = $$9 || $$10;
-            boolean $$14 = $$11 || $$12;
-            if (!$$13 || !$$14) {
-               $$4.a($$2, $$7, $$3, $$8);
-               if (!$$0.a_($$4).i($$0, $$4)) {
-                  boolean $$15 = $$9 || $$14 && $$7 == 1 - $$6;
-                  boolean $$16 = $$10 || $$14 && $$7 == $$6 - 1;
-                  boolean $$17 = $$11 || $$13 && $$8 == 1 - $$6;
-                  boolean $$18 = $$12 || $$13 && $$8 == $$6 - 1;
-                  dja $$19 = $$5.b.a($$1, $$2);
-                  if ($$19.b(daf.e) && $$19.b(daf.c) && $$19.b(daf.b) && $$19.b(daf.d)) {
-                     $$19 = $$19.a(daf.e, Boolean.valueOf($$15))
-                        .a(daf.c, Boolean.valueOf($$16))
-                        .a(daf.b, Boolean.valueOf($$17))
-                        .a(daf.d, Boolean.valueOf($$18));
-                  }
-
-                  this.a($$0, $$4, $$19);
-               }
-            }
-         }
-      }
+   public Optional<drg<?, ?>> a() {
+      return this.a;
    }
 
-   @Override
-   protected int a(int $$0, int $$1, int $$2, int $$3) {
-      return $$3 <= 3 ? 0 : $$2;
+   public cuj b() {
+      return this.b;
+   }
+
+   public dld c() {
+      return this.c;
+   }
+
+   public auu d() {
+      return this.d;
+   }
+
+   public hx e() {
+      return this.e;
+   }
+
+   public FC f() {
+      return this.f;
    }
 }

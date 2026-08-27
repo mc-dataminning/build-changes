@@ -1,58 +1,47 @@
 import com.mojang.logging.LogUtils;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.StandardOpenOption;
-import java.util.function.Supplier;
+import java.io.File;
+import java.util.function.LongSupplier;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 
 public class bgu {
    private static final Logger a = LogUtils.getLogger();
-   private final Runnable b;
+   private final LongSupplier b;
+   private final long c;
+   private int d;
+   private final File e;
+   private bgp f = bgo.a;
 
-   protected bgu(Runnable $$0) {
+   public bgu(LongSupplier $$0, String $$1, long $$2) {
       this.b = $$0;
+      this.e = new File("debug", $$1);
+      this.c = $$2;
    }
 
-   public void a(@Nullable Path $$0) {
-      if ($$0 != null) {
-         this.b.run();
-         a(() -> "Dumped flight recorder profiling to " + $$0);
+   public bgr a() {
+      this.f = new bgk(this.b, () -> this.d, false);
+      this.d++;
+      return this.f;
+   }
 
-         bhb $$1;
-         try {
-            $$1 = bha.a($$0);
-         } catch (Throwable var5) {
-            a(() -> "Failed to parse JFR recording", var5);
-            return;
-         }
-
-         try {
-            a($$1::b);
-            Path $$4 = $$0.resolveSibling("jfr-report-" + StringUtils.substringBefore($$0.getFileName().toString(), ".jfr") + ".json");
-            Files.writeString($$4, $$1.b(), StandardOpenOption.CREATE);
-            a(() -> "Dumped recording summary to " + $$4);
-         } catch (Throwable var4) {
-            a(() -> "Failed to output JFR report", var4);
+   public void b() {
+      if (this.f != bgo.a) {
+         bgq $$0 = this.f.d();
+         this.f = bgo.a;
+         if ($$0.g() >= this.c) {
+            File $$1 = new File(this.e, "tick-results-" + ac.e() + ".txt");
+            $$0.a($$1.toPath());
+            a.info("Recorded long tick -- wrote info to: {}", $$1.getAbsolutePath());
          }
       }
    }
 
-   private static void a(Supplier<String> $$0) {
-      if (LogUtils.isLoggerActive()) {
-         a.info($$0.get());
-      } else {
-         ahf.a($$0.get());
-      }
+   @Nullable
+   public static bgu a(String $$0) {
+      return null;
    }
 
-   private static void a(Supplier<String> $$0, Throwable $$1) {
-      if (LogUtils.isLoggerActive()) {
-         a.warn($$0.get(), $$1);
-      } else {
-         ahf.a($$0.get());
-         $$1.printStackTrace(ahf.a);
-      }
+   public static bgr a(bgr $$0, @Nullable bgu $$1) {
+      return $$1 != null ? bgr.a($$1.a(), $$0) : $$0;
    }
 }

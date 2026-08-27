@@ -1,95 +1,96 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public class dar extends cvc {
-   public static final MapCodec<dar> d = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(cuh.c.d.fieldOf("precipitation").forGetter($$0x -> $$0x.j), jd.b.fieldOf("interactions").forGetter($$0x -> $$0x.c), u())
-            .apply($$0, dar::new)
-   );
-   public static final int e = 1;
-   public static final int f = 3;
-   public static final dka g = djq.aK;
-   private static final int h = 6;
-   private static final double i = 3.0;
-   private final cuh.c j;
+public class dar extends cwb {
+   public static final MapCodec<dar> a = b(dar::new);
+   public static final djx b = djw.n;
 
    @Override
    public MapCodec<dar> a() {
-      return d;
+      return a;
    }
 
-   public dar(cuh.c $$0, jd.a $$1, diz.d $$2) {
-      super($$2, $$1);
-      this.j = $$0;
-      this.k(this.E.b().a(g, Integer.valueOf(1)));
-   }
-
-   @Override
-   public boolean d(dja $$0) {
-      return $$0.c(g) == 3;
+   protected dar(djf.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(b, Boolean.valueOf(false)));
    }
 
    @Override
-   protected boolean a(eej $$0) {
-      return $$0 == eel.c && this.j == cuh.c.b;
-   }
-
-   @Override
-   protected double b(dja $$0) {
-      return (6.0 + (double)$$0.c(g).intValue() * 3.0) / 16.0;
-   }
-
-   @Override
-   public void a(dja $$0, cti $$1, hx $$2, blp $$3) {
-      if (!$$1.B && $$3.bN() && this.a($$0, $$2, $$3)) {
-         $$3.aA();
-         if ($$3.a($$1, $$2)) {
-            this.e($$0, $$1, $$2);
-         }
+   public void a(cto $$0, hx $$1, djg $$2, @Nullable bmk $$3, cmx $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      sn $$5 = ckq.a($$4);
+      if ($$5 != null && $$5.e("RecordItem")) {
+         $$0.a($$1, $$2.a(b, Boolean.valueOf(true)), 2);
       }
    }
 
-   private void e(dja $$0, cti $$1, hx $$2) {
-      if (this.j == cuh.c.c) {
-         d(cwl.fu.o().a(g, $$0.c(g)), $$1, $$2);
+   @Override
+   public bka a(djg $$0, cto $$1, hx $$2, cfh $$3, bjz $$4, elo $$5) {
+      if ($$0.c(b) && $$1.c_($$2) instanceof dhv $$6) {
+         $$6.k();
+         return bka.a($$1.B);
       } else {
-         d($$0, $$1, $$2);
-      }
-   }
-
-   public static void d(dja $$0, cti $$1, hx $$2) {
-      int $$3 = $$0.c(g) - 1;
-      dja $$4 = $$3 == 0 ? cwl.ft.o() : $$0.a(g, Integer.valueOf($$3));
-      $$1.b($$2, $$4);
-      $$1.a(dnk.c, $$2, dnk.a.a($$4));
-   }
-
-   @Override
-   public void a(dja $$0, cti $$1, hx $$2, cuh.c $$3) {
-      if (cxe.a($$1, $$3) && $$0.c(g) != 3 && $$3 == this.j) {
-         dja $$4 = $$0.a(g);
-         $$1.b($$2, $$4);
-         $$1.a(dnk.c, $$2, dnk.a.a($$4));
+         return bka.d;
       }
    }
 
    @Override
-   public int a(dja $$0, cti $$1, hx $$2) {
-      return $$0.c(g);
-   }
+   public void a(djg $$0, cto $$1, hx $$2, djg $$3, boolean $$4) {
+      if (!$$0.a($$3.b())) {
+         if ($$1.c_($$2) instanceof dhv $$5) {
+            $$5.k();
+         }
 
-   @Override
-   protected void a(djb.a<cwj, dja> $$0) {
-      $$0.a(g);
-   }
-
-   @Override
-   protected void a(dja $$0, cti $$1, hx $$2, eej $$3) {
-      if (!this.d($$0)) {
-         dja $$4 = $$0.a(g, Integer.valueOf($$0.c(g) + 1));
-         $$1.b($$2, $$4);
-         $$1.a(dnk.c, $$2, dnk.a.a($$4));
-         $$1.c(1047, $$2, 0);
+         super.a($$0, $$1, $$2, $$3, $$4);
       }
+   }
+
+   @Override
+   public dgu a(hx $$0, djg $$1) {
+      return new dhv($$0, $$1);
+   }
+
+   @Override
+   public boolean f_(djg $$0) {
+      return true;
+   }
+
+   @Override
+   public int a(djg $$0, csu $$1, hx $$2, ic $$3) {
+      if ($$1.c_($$2) instanceof dhv $$4 && $$4.f()) {
+         return 15;
+      }
+
+      return 0;
+   }
+
+   @Override
+   public boolean d_(djg $$0) {
+      return true;
+   }
+
+   @Override
+   public int a(djg $$0, cto $$1, hx $$2) {
+      if ($$1.c_($$2) instanceof dhv $$3 && $$3.x().d() instanceof cnp $$4) {
+         return $$4.h();
+      }
+
+      return 0;
+   }
+
+   @Override
+   public dcu b_(djg $$0) {
+      return dcu.c;
+   }
+
+   @Override
+   protected void a(djh.a<cwp, djg> $$0) {
+      $$0.a(b);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dgu> dgv<T> a(cto $$0, djg $$1, dgw<T> $$2) {
+      return $$1.c(b) ? a($$2, dgw.e, dhv::a) : null;
    }
 }

@@ -1,4 +1,5 @@
-import com.google.gson.JsonElement;
+import com.google.common.collect.UnmodifiableIterator;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import java.nio.file.Path;
 import java.util.concurrent.CompletableFuture;
@@ -13,34 +14,61 @@ public class la implements kk {
    @Override
    public CompletableFuture<?> a(ki $$0) {
       JsonObject $$1 = new JsonObject();
-      kd.as.h().forEach($$1x -> $$1.add($$1x.g().a().toString(), a((it)$$1x.a())));
-      Path $$2 = this.d.a(km.b.c).resolve("registries.json");
-      return kk.a($$0, $$1, $$2);
-   }
 
-   private static <T> JsonElement a(it<T> $$0) {
-      JsonObject $$1 = new JsonObject();
-      if ($$0 instanceof ib) {
-         ahd $$2 = ((ib)$$0).a();
-         $$1.addProperty("default", $$2.toString());
+      for (cwp $$2 : kd.e) {
+         ahg $$3 = kd.e.b($$2);
+         JsonObject $$4 = new JsonObject();
+         djh<cwp, djg> $$5 = $$2.n();
+         if (!$$5.d().isEmpty()) {
+            JsonObject $$6 = new JsonObject();
+
+            for (dkj<?> $$7 : $$5.d()) {
+               JsonArray $$8 = new JsonArray();
+
+               for (Comparable<?> $$9 : $$7.a()) {
+                  $$8.add(ac.a($$7, $$9));
+               }
+
+               $$6.add($$7.f(), $$8);
+            }
+
+            $$4.add("properties", $$6);
+         }
+
+         JsonArray $$10 = new JsonArray();
+         UnmodifiableIterator var17 = $$5.a().iterator();
+
+         while (var17.hasNext()) {
+            djg $$11 = (djg)var17.next();
+            JsonObject $$12 = new JsonObject();
+            JsonObject $$13 = new JsonObject();
+
+            for (dkj<?> $$14 : $$5.d()) {
+               $$13.addProperty($$14.f(), ac.a($$14, $$11.c($$14)));
+            }
+
+            if ($$13.size() > 0) {
+               $$12.add("properties", $$13);
+            }
+
+            $$12.addProperty("id", cwp.i($$11));
+            if ($$11 == $$2.o()) {
+               $$12.addProperty("default", true);
+            }
+
+            $$10.add($$12);
+         }
+
+         $$4.add("states", $$10);
+         $$1.add($$3.toString(), $$4);
       }
 
-      int $$3 = kd.as.a($$0);
-      $$1.addProperty("protocol_id", $$3);
-      JsonObject $$4 = new JsonObject();
-      $$0.h().forEach($$2 -> {
-         T $$3x = $$2.a();
-         int $$4x = $$0.a($$3x);
-         JsonObject $$5 = new JsonObject();
-         $$5.addProperty("protocol_id", $$4x);
-         $$4.add($$2.g().a().toString(), $$5);
-      });
-      $$1.add("entries", $$4);
-      return $$1;
+      Path $$15 = this.d.a(km.b.c).resolve("blocks.json");
+      return kk.a($$0, $$1, $$15);
    }
 
    @Override
    public final String a() {
-      return "Registry Dump";
+      return "Block List";
    }
 }

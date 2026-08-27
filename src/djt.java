@@ -1,6 +1,6 @@
-public enum djt implements ave {
-   a("compare"),
-   b("subtract");
+public enum djt implements avj {
+   a("head"),
+   b("foot");
 
    private final String c;
 

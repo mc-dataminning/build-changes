@@ -1,80 +1,53 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Map;
-
 public class eax {
-   public static final int a = 90;
-   static final ahd b = new ahd("igloo/top");
-   private static final ahd c = new ahd("igloo/middle");
-   private static final ahd d = new ahd("igloo/bottom");
-   static final Map<ahd, hx> e = ImmutableMap.of(b, new hx(3, 5, 5), c, new hx(1, 3, 1), d, new hx(3, 6, 7));
-   static final Map<ahd, hx> f = ImmutableMap.of(b, hx.b, c, new hx(2, -3, 4), d, new hx(0, -3, -2));
-
-   public static void a(eda $$0, hx $$1, dcv $$2, dze $$3, aup $$4) {
-      if ($$4.j() < 0.5) {
-         int $$5 = $$4.a(8) + 4;
-         $$3.a(new eax.a($$0, d, $$1, $$2, $$5 * 3));
-
-         for (int $$6 = 0; $$6 < $$5 - 1; $$6++) {
-            $$3.a(new eax.a($$0, c, $$1, $$2, $$6 * 3));
-         }
-      }
-
-      $$3.a(new eax.a($$0, b, $$1, $$2, 0));
-   }
-
    public static class a extends dzj {
-      public a(eda $$0, ahd $$1, hx $$2, dcv $$3, int $$4) {
-         super(dzq.I, 0, $$0, $$1, $$1.toString(), a($$3, $$1), a($$1, $$2, $$4));
+      public a(hx $$0) {
+         super(dzw.aa, 0, new dyx($$0));
       }
 
-      public a(eda $$0, sl $$1) {
-         super(dzq.I, $$1, $$0, $$1x -> a(dcv.valueOf($$1.l("Rot")), $$1x));
-      }
-
-      private static ecv a(dcv $$0, ahd $$1) {
-         return new ecv().a($$0).a(dbf.a).a(eax.e.get($$1)).a(ecb.b);
-      }
-
-      private static hx a(ahd $$0, hx $$1, int $$2) {
-         return $$1.a(eax.f.get($$0)).c($$2);
+      public a(sn $$0) {
+         super(dzw.aa, $$0);
       }
 
       @Override
-      protected void a(dzp $$0, sl $$1) {
-         super.a($$0, $$1);
-         $$1.a("Rot", this.c.d().name());
+      protected void a(dzv $$0, sn $$1) {
       }
 
       @Override
-      protected void a(String $$0, hx $$1, ctx $$2, aup $$3, dyr $$4) {
-         if ("chest".equals($$0)) {
-            $$2.a($$1, cwl.a.o(), 3);
-            dgo $$5 = $$2.c_($$1.d());
-            if ($$5 instanceof dgv) {
-               ((dgv)$$5).a(egn.C, $$3.g());
+      public void a(cuj $$0, cuh $$1, dld $$2, auu $$3, dyx $$4, csv $$5, hx $$6) {
+         int $$7 = $$0.a(dop.a.c, this.f.h(), this.f.j());
+         hx.a $$8 = new hx.a(this.f.h(), $$7, this.f.j());
+
+         while ($$8.v() > $$0.J_()) {
+            djg $$9 = $$0.a_($$8);
+            djg $$10 = $$0.a_($$8.d());
+            if ($$10 == cwr.aV.o() || $$10 == cwr.b.o() || $$10 == cwr.g.o() || $$10 == cwr.c.o() || $$10 == cwr.e.o()) {
+               djg $$11 = !$$9.i() && !this.b($$9) ? $$9 : cwr.I.o();
+
+               for (ic $$12 : ic.values()) {
+                  hx $$13 = $$8.a($$12);
+                  djg $$14 = $$0.a_($$13);
+                  if ($$14.i() || this.b($$14)) {
+                     hx $$15 = $$13.d();
+                     djg $$16 = $$0.a_($$15);
+                     if (($$16.i() || this.b($$16)) && $$12 != ic.b) {
+                        $$0.a($$13, $$10, 3);
+                     } else {
+                        $$0.a($$13, $$11, 3);
+                     }
+                  }
+               }
+
+               this.f = new dyx($$8);
+               this.a($$0, $$4, $$3, $$8, egt.G, null);
+               return;
             }
+
+            $$8.e(0, -1, 0);
          }
       }
 
-      @Override
-      public void a(cud $$0, cub $$1, dkx $$2, aup $$3, dyr $$4, csp $$5, hx $$6) {
-         ahd $$7 = new ahd(this.a);
-         ecv $$8 = a(this.c.d(), $$7);
-         hx $$9 = eax.f.get($$7);
-         hx $$10 = this.d.a((jb)ecz.a($$8, new hx(3 - $$9.u(), 0, -$$9.w())));
-         int $$11 = $$0.a(doj.a.a, $$10.u(), $$10.w());
-         hx $$12 = this.d;
-         this.d = this.d.b(0, $$11 - 90 - 1, 0);
-         super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-         if ($$7.equals(eax.b)) {
-            hx $$13 = this.d.a((jb)ecz.a($$8, new hx(3, 0, 5)));
-            dja $$14 = $$0.a_($$13.d());
-            if (!$$14.i() && !$$14.a(cwl.cO)) {
-               $$0.a($$13, cwl.dP.o(), 3);
-            }
-         }
-
-         this.d = $$12;
+      private boolean b(djg $$0) {
+         return $$0 == cwr.G.o() || $$0 == cwr.H.o();
       }
    }
 }

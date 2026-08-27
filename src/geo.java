@@ -1,29 +1,44 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Collection;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class geo implements gej {
-   public static final Codec<geo> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.STRING.fieldOf("source").forGetter($$0x -> $$0x.c), Codec.STRING.fieldOf("prefix").forGetter($$0x -> $$0x.d)).apply($$0, geo::new)
-   );
-   private final String c;
-   private final String d;
+@FunctionalInterface
+public interface geo {
+   Logger a = LogUtils.getLogger();
 
-   public geo(String $$0, String $$1) {
-      this.c = $$0;
-      this.d = $$1;
+   static geo create(Collection<aph<?>> $$0) {
+      return ($$1, $$2) -> {
+         aqj $$3;
+         try {
+            $$3 = $$2.f().a($$0);
+         } catch (Exception var9) {
+            a.error("Unable to parse metadata from {}", $$1, var9);
+            return null;
+         }
+
+         epa $$7;
+         try (InputStream $$6 = $$2.d()) {
+            $$7 = epa.a($$6);
+         } catch (IOException var11) {
+            a.error("Using missing texture, unable to load {}", $$1, var11);
+            return null;
+         }
+
+         gfv $$11 = $$3.a(gfv.a).orElse(gfv.e);
+         gfx $$12 = $$11.a($$7.a(), $$7.b());
+         if (aun.c($$7.a(), $$12.a()) && aun.c($$7.b(), $$12.b())) {
+            return new gef($$1, $$12, $$7, $$3);
+         } else {
+            a.error("Image {} size {},{} is not multiple of frame size {},{}", new Object[]{$$1, $$7.a(), $$7.b(), $$12.a(), $$12.b()});
+            $$7.close();
+            return null;
+         }
+      };
    }
 
-   @Override
-   public void a(aqc $$0, gej.a $$1) {
-      agw $$2 = new agw("textures/" + this.c, ".png");
-      $$2.a($$0).forEach(($$2x, $$3) -> {
-         ahd $$4 = $$2.b($$2x).d(this.d);
-         $$1.a($$4, $$3);
-      });
-   }
-
-   @Override
-   public gel a() {
-      return gem.b;
-   }
+   @Nullable
+   gef loadSprite(ahg var1, aqf var2);
 }

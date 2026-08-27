@@ -1,13 +1,35 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Iterables;
+import java.util.Collection;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.Predicate;
 
-public class bww {
-   @Nullable
-   public static elm a(bmo $$0, int $$1, int $$2, int $$3, elm $$4, double $$5) {
-      elm $$6 = $$4.a($$0.dr(), $$0.dt(), $$0.dx());
-      boolean $$7 = bwy.a($$0, $$1);
-      return bxb.a($$0, () -> {
-         hx $$7x = bwv.a($$0, $$1, $$2, $$3, $$6.c, $$6.e, $$5, $$7);
-         return $$7x != null && !bwy.a($$0, $$7x) ? $$7x : null;
-      });
+public class bww extends bwk<cel> {
+   @Override
+   public Set<bvm<?>> a() {
+      return ImmutableSet.copyOf(Iterables.concat(super.a(), List.of(bvm.B)));
+   }
+
+   protected void a(and $$0, cel $$1) {
+      super.a($$0, $$1);
+      a($$1, $$0x -> $$0x.ai() == bly.bv)
+         .or(() -> a($$1, $$0xx -> $$0xx.ai() != bly.bv))
+         .ifPresentOrElse($$1x -> $$1.dO().a(bvm.B, $$1x), () -> $$1.dO().b(bvm.B));
+   }
+
+   private static Optional<bmk> a(cel $$0, Predicate<bmk> $$1) {
+      return $$0.dO().c(bvm.g).stream().flatMap(Collection::stream).filter($$0::a).filter($$1).findFirst();
+   }
+
+   @Override
+   protected int b() {
+      return 24;
+   }
+
+   @Override
+   protected int c() {
+      return 24;
    }
 }

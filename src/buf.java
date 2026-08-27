@@ -1,67 +1,94 @@
 import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-public class buf extends btb {
-   private final bzr a;
-   private final double b;
-   private double c;
-   private double d;
-   private double e;
+public class buf extends btg {
+   private final bmm a;
+   private final ccs b;
+   @Nullable
+   private bmk c;
+   private int d = -1;
+   private final double e;
+   private int f;
+   private final int g;
+   private final int h;
+   private final float i;
+   private final float j;
 
-   public buf(bzr $$0, double $$1) {
-      this.a = $$0;
-      this.b = $$1;
-      this.a(EnumSet.of(btb.a.a));
+   public buf(ccs $$0, double $$1, int $$2, float $$3) {
+      this($$0, $$1, $$2, $$2, $$3);
+   }
+
+   public buf(ccs $$0, double $$1, int $$2, int $$3, float $$4) {
+      if (!($$0 instanceof bmk)) {
+         throw new IllegalArgumentException("ArrowAttackGoal requires Mob implements RangedAttackMob");
+      } else {
+         this.b = $$0;
+         this.a = (bmm)$$0;
+         this.e = $$1;
+         this.g = $$2;
+         this.h = $$3;
+         this.i = $$4;
+         this.j = $$4 * $$4;
+         this.a(EnumSet.of(btg.a.a, btg.a.b));
+      }
    }
 
    @Override
    public boolean a() {
-      if (!this.a.gt() && this.a.bP()) {
-         elm $$0 = bwx.a(this.a, 5, 4);
-         if ($$0 == null) {
-            return false;
-         } else {
-            this.c = $$0.c;
-            this.d = $$0.d;
-            this.e = $$0.e;
-            return true;
-         }
+      bmk $$0 = this.a.q();
+      if ($$0 != null && $$0.bx()) {
+         this.c = $$0;
+         return true;
       } else {
          return false;
       }
    }
 
    @Override
-   public void c() {
-      this.a.N().a(this.c, this.d, this.e, this.b);
+   public boolean b() {
+      return this.a() || this.c.bx() && !this.a.N().l();
    }
 
    @Override
-   public boolean b() {
-      return !this.a.gt() && !this.a.N().l() && this.a.bP();
+   public void d() {
+      this.c = null;
+      this.f = 0;
+      this.d = -1;
+   }
+
+   @Override
+   public boolean T_() {
+      return true;
    }
 
    @Override
    public void e() {
-      if (!this.a.gt() && this.a.eg().a(this.a(50)) == 0) {
-         blp $$0 = this.a.cQ();
-         if ($$0 == null) {
+      double $$0 = this.a.i(this.c.dr(), this.c.dt(), this.c.dx());
+      boolean $$1 = this.a.O().a(this.c);
+      if ($$1) {
+         this.f++;
+      } else {
+         this.f = 0;
+      }
+
+      if (!($$0 > (double)this.j) && this.f >= 5) {
+         this.a.N().n();
+      } else {
+         this.a.N().a(this.c, this.e);
+      }
+
+      this.a.I().a(this.c, 30.0F, 30.0F);
+      if (--this.d == 0) {
+         if (!$$1) {
             return;
          }
 
-         if ($$0 instanceof cfb $$1) {
-            int $$2 = this.a.gz();
-            int $$3 = this.a.gF();
-            if ($$3 > 0 && this.a.eg().a($$3) < $$2) {
-               this.a.h($$1);
-               return;
-            }
-
-            this.a.v(5);
-         }
-
-         this.a.bB();
-         this.a.gK();
-         this.a.dM().a(this.a, (byte)6);
+         float $$2 = (float)Math.sqrt($$0) / this.i;
+         float $$3 = aun.a($$2, 0.1F, 1.0F);
+         this.b.a(this.c, $$3);
+         this.d = aun.d($$2 * (float)(this.h - this.g) + (float)this.g);
+      } else if (this.d < 0) {
+         this.d = aun.a(aun.d(Math.sqrt($$0) / (double)this.i, (double)this.g, (double)this.h));
       }
    }
 }

@@ -1,99 +1,49 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class dbk extends cws implements cwm {
-   public static final MapCodec<dbk> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ahc.a(ke.aw).fieldOf("feature").forGetter($$0x -> $$0x.d), u()).apply($$0, dbk::new)
-   );
-   protected static final float b = 3.0F;
-   protected static final emf c = cwj.a(5.0, 0.0, 5.0, 11.0, 6.0, 11.0);
-   private final ahc<dra<?, ?>> d;
+public class dbk extends cwp implements ddp {
+   public static final MapCodec<dbk> a = b(dbk::new);
+   public static final djx b = djw.C;
 
    @Override
    public MapCodec<dbk> a() {
       return a;
    }
 
-   public dbk(ahc<dra<?, ?>> $$0, diz.d $$1) {
-      super($$1);
-      this.d = $$0;
+   protected dbk(djf.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(b, Boolean.valueOf(false)));
    }
 
    @Override
-   public emf a(dja $$0, cso $$1, hx $$2, elr $$3) {
-      return c;
+   public boolean a(djg $$0, djg $$1, ic $$2) {
+      return $$1.a(cwr.ac) && $$2.o() == ic.a.b;
+   }
+
+   @Nullable
+   @Override
+   public djg a(cpg $$0) {
+      eeq $$1 = $$0.q().b_($$0.a());
+      boolean $$2 = $$1.a() == eer.c;
+      return super.a($$0).a(b, Boolean.valueOf($$2));
    }
 
    @Override
-   public void b(dja $$0, amz $$1, hx $$2, aup $$3) {
-      if ($$3.a(25) == 0) {
-         int $$4 = 5;
-         int $$5 = 4;
-
-         for (hx $$6 : hx.a($$2.b(-4, -1, -4), $$2.b(4, 1, 4))) {
-            if ($$1.a_($$6).a(this)) {
-               if (--$$4 <= 0) {
-                  return;
-               }
-            }
-         }
-
-         hx $$7 = $$2.b($$3.a(3) - 1, $$3.a(2) - $$3.a(2), $$3.a(3) - 1);
-
-         for (int $$8 = 0; $$8 < 4; $$8++) {
-            if ($$1.u($$7) && $$0.a($$1, $$7)) {
-               $$2 = $$7;
-            }
-
-            $$7 = $$2.b($$3.a(3) - 1, $$3.a(2) - $$3.a(2), $$3.a(3) - 1);
-         }
-
-         if ($$1.u($$7) && $$0.a($$1, $$7)) {
-            $$1.a($$7, $$0, 2);
-         }
+   public djg a(djg $$0, ic $$1, djg $$2, ctp $$3, hx $$4, hx $$5) {
+      if ($$0.c(b)) {
+         $$3.a($$4, eer.c, eer.c.a($$3));
       }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected boolean b(dja $$0, cso $$1, hx $$2) {
-      return $$0.i($$1, $$2);
+   public eeq c_(djg $$0) {
+      return $$0.c(b) ? eer.c.a(false) : super.c_($$0);
    }
 
    @Override
-   public boolean a(dja $$0, ctl $$1, hx $$2) {
-      hx $$3 = $$2.d();
-      dja $$4 = $$1.a_($$3);
-      return $$4.a(asb.aZ) ? true : $$1.b($$2, 0) < 13 && this.b($$4, $$1, $$3);
-   }
-
-   public boolean a(amz $$0, hx $$1, dja $$2, aup $$3) {
-      Optional<? extends ih<dra<?, ?>>> $$4 = $$0.I_().d(ke.aw).b(this.d);
-      if ($$4.isEmpty()) {
-         return false;
-      } else {
-         $$0.a($$1, false);
-         if ($$4.get().a().a($$0, $$0.l().g(), $$3, $$1)) {
-            return true;
-         } else {
-            $$0.a($$1, $$2, 3);
-            return false;
-         }
-      }
-   }
-
-   @Override
-   public boolean b(ctl $$0, hx $$1, dja $$2) {
-      return true;
-   }
-
-   @Override
-   public boolean a(cti $$0, aup $$1, hx $$2, dja $$3) {
-      return (double)$$1.i() < 0.4;
-   }
-
-   @Override
-   public void a(amz $$0, aup $$1, hx $$2, dja $$3) {
-      this.a($$0, $$2, $$3, $$1);
+   protected void a(djh.a<cwp, djg> $$0) {
+      $$0.a(b);
    }
 }

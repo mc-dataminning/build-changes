@@ -8,7 +8,7 @@ public class df extends cv<df.a> {
       return df.a.a;
    }
 
-   public void a(ana $$0, hx $$1) {
+   public void a(ane $$0, hx $$1) {
       double $$2 = $$0.dr() - (double)$$1.u();
       double $$3 = $$0.dx() - (double)$$1.w();
       double $$4 = $$2 * $$2 + $$3 * $$3;
@@ -17,7 +17,7 @@ public class df extends cv<df.a> {
 
    public static record a(Optional<bb> b, ck.c c) implements cv.a {
       public static final Codec<df.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(atq.a(bp.b, "player").forGetter(df.a::a), atq.a(ck.c.d, "distance", ck.c.c).forGetter(df.a::b)).apply($$0, df.a::new)
+         $$0 -> $$0.group(atv.a(bp.b, "player").forGetter(df.a::a), atv.a(ck.c.d, "distance", ck.c.c).forGetter(df.a::b)).apply($$0, df.a::new)
       );
 
       public boolean a(double $$0) {

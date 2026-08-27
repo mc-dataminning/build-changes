@@ -1,10 +1,21 @@
-public class atd {
-   public static final int a = -1;
-   public static final int b = -16777216;
-   public static final int c = -8355712;
-   public static final int d = -6250336;
-   public static final int e = -65536;
-   public static final int f = -2142128;
-   public static final int g = -256;
-   public static final int h = -171;
+import java.util.function.IntConsumer;
+
+public interface atd {
+   int a(int var1, int var2);
+
+   void b(int var1, int var2);
+
+   int a(int var1);
+
+   long[] a();
+
+   int b();
+
+   int c();
+
+   void a(IntConsumer var1);
+
+   void a(int[] var1);
+
+   atd d();
 }

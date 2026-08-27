@@ -1,73 +1,51 @@
-public class gjq implements gjv {
-   private static final int a = 6000;
-   private static final vd b = vd.c("tutorial.find_tree.title");
-   private static final vd c = vd.c("tutorial.find_tree.description");
-   private final gju d;
-   private ezi e;
-   private int f;
+import java.time.Duration;
+import java.time.Instant;
+import javax.annotation.Nullable;
 
-   public gjq(gju $$0) {
-      this.d = $$0;
-   }
+public abstract class gjq {
+   private static final int a = 60000;
+   private static final int b = 10;
+   private int c;
+   private boolean d = false;
+   @Nullable
+   private Instant e;
 
-   @Override
    public void a() {
-      this.f++;
-      if (!this.d.f()) {
-         this.d.a(gjw.f);
-      } else {
-         if (this.f == 1) {
-            fsb $$0 = this.d.e().s;
-            if ($$0 != null && (b($$0) || a($$0))) {
-               this.d.a(gjw.e);
-               return;
-            }
-         }
+      this.d = true;
+      this.e = Instant.now();
+      this.c = 0;
+   }
 
-         if (this.f >= 6000 && this.e == null) {
-            this.e = new ezi(ezi.a.c, b, c, false);
-            this.d.e().ax().a(this.e);
-         }
+   public void a(gjk $$0) {
+      if (this.b()) {
+         this.f();
+         this.c++;
+         this.e = Instant.now();
+      }
+
+      if (this.c()) {
+         this.b($$0);
+         this.c = 0;
       }
    }
 
-   @Override
-   public void b() {
-      if (this.e != null) {
-         this.e.c();
-         this.e = null;
-      }
+   public boolean b() {
+      return this.d && this.e != null && Duration.between(this.e, Instant.now()).toMillis() > 60000L;
    }
 
-   @Override
-   public void a(fnk $$0, elk $$1) {
-      if ($$1.c() == elk.a.b) {
-         dja $$2 = $$0.a_(((eli)$$1).a());
-         if ($$2.a(asb.ai)) {
-            this.d.a(gjw.c);
-         }
-      }
+   public boolean c() {
+      return this.c >= 10;
    }
 
-   @Override
-   public void a(cmr $$0) {
-      if ($$0.a(asj.al)) {
-         this.d.a(gjw.e);
-      }
+   public void d() {
+      this.d = false;
    }
 
-   private static boolean b(fsb $$0) {
-      return $$0.fS().a_($$0x -> $$0x.a(asj.al));
+   protected int e() {
+      return this.c;
    }
 
-   public static boolean a(fsb $$0) {
-      for (ih<cwj> $$1 : kd.e.c(asb.ai)) {
-         cwj $$2 = $$1.a();
-         if ($$0.j().a(arw.a.b($$2)) > 0) {
-            return true;
-         }
-      }
+   public abstract void f();
 
-      return false;
-   }
+   public abstract void b(gjk var1);
 }

@@ -1,39 +1,44 @@
 import com.mojang.serialization.Codec;
 
-public class dsw extends drn<dty> {
-   public dsw(Codec<dty> $$0) {
+public class dsw extends drt<duf> {
+   private static final int a = 7;
+
+   dsw(Codec<duf> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(drp<dty> $$0) {
-      cud $$1 = $$0.b();
-      hx $$2 = $$0.e();
-      hx.a $$3 = new hx.a();
-      hx.a $$4 = new hx.a();
+   public boolean a(drv<duf> $$0) {
+      cuj $$1 = $$0.b();
+      auu $$2 = $$0.d();
+      duf $$3 = $$0.f();
+      hx $$4 = $$0.e();
+      int $$5 = $$2.a($$3.c + 1);
+      hx.a $$6 = new hx.a();
 
-      for (int $$5 = 0; $$5 < 16; $$5++) {
-         for (int $$6 = 0; $$6 < 16; $$6++) {
-            int $$7 = $$2.u() + $$5;
-            int $$8 = $$2.w() + $$6;
-            int $$9 = $$1.a(doj.a.e, $$7, $$8);
-            $$3.d($$7, $$9, $$8);
-            $$4.g($$3).c(ic.a, 1);
-            cuh $$10 = $$1.t($$3).a();
-            if ($$10.a($$1, $$4, false)) {
-               $$1.a($$4, cwl.dO.o(), 2);
-            }
+      for (int $$7 = 0; $$7 < $$5; $$7++) {
+         this.a($$6, $$2, $$4, Math.min($$7, 7));
+         djg $$8 = $$1.a_($$6);
 
-            if ($$10.b($$1, $$3)) {
-               $$1.a($$3, cwl.dN.o(), 2);
-               dja $$11 = $$1.a_($$4);
-               if ($$11.b(dds.c)) {
-                  $$1.a($$4, $$11.a(dds.c, Boolean.valueOf(true)), 2);
-               }
+         for (duf.a $$9 : $$3.b) {
+            if (dso.a($$8, $$1::a_, $$2, $$3, $$9, $$6)) {
+               $$1.a($$6, $$9.c, 2);
+               break;
             }
          }
       }
 
       return true;
+   }
+
+   private void a(hx.a $$0, auu $$1, hx $$2, int $$3) {
+      int $$4 = this.a($$1, $$3);
+      int $$5 = this.a($$1, $$3);
+      int $$6 = this.a($$1, $$3);
+      $$0.a($$2, $$4, $$5, $$6);
+   }
+
+   private int a(auu $$0, int $$1) {
+      return Math.round(($$0.i() - $$0.i()) * (float)$$1);
    }
 }

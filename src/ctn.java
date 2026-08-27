@@ -1,2 +1,3 @@
-public interface ctn extends cto, ctq {
+public interface ctn {
+   cms k();
 }

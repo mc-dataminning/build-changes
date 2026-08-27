@@ -1,8 +1,5 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface afy {
+   ahg a();
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface afy {
+   void a(ui var1);
 }

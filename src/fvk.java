@@ -1,23 +1,30 @@
-public class fvk implements fuz<dhq> {
-   private final fix a;
+public class fvk implements fvf<dha> {
+   private static final float a = 0.375F;
+   private final fzj b;
 
-   public fvk(fva.a $$0) {
-      this.a = new fix($$0.a(fmo.m));
+   public fvk(fvg.a $$0) {
+      this.b = $$0.d();
    }
 
-   public void a(dhq $$0, float $$1, ept $$2, fsz $$3, int $$4, int $$5) {
-      dja $$6 = $$0.r();
-      if ($$6.c(dat.d)) {
-         $$2.a();
-         $$2.a(0.5F, 1.0625F, 0.5F);
-         float $$7 = $$6.c(dat.b).h().p();
-         $$2.a(a.d.rotationDegrees(-$$7));
-         $$2.a(a.f.rotationDegrees(67.5F));
-         $$2.a(0.0F, -0.125F, 0.0F);
-         this.a.a(0.0F, 0.1F, 0.9F, 1.2F);
-         epx $$8 = fvi.a.a($$3, fth::c);
-         this.a.b($$2, $$8, $$4, $$5, 1.0F, 1.0F, 1.0F, 1.0F);
-         $$2.b();
+   public void a(dha $$0, float $$1, epz $$2, ftf $$3, int $$4, int $$5) {
+      ic $$6 = $$0.r().c(cxd.f);
+      iq<cmx> $$7 = $$0.c();
+      int $$8 = (int)$$0.aB_().a();
+
+      for (int $$9 = 0; $$9 < $$7.size(); $$9++) {
+         cmx $$10 = $$7.get($$9);
+         if ($$10 != cmx.f) {
+            $$2.a();
+            $$2.a(0.5F, 0.44921875F, 0.5F);
+            ic $$11 = ic.b(($$9 + $$6.e()) % 4);
+            float $$12 = -$$11.p();
+            $$2.a(a.d.rotationDegrees($$12));
+            $$2.a(a.b.rotationDegrees(90.0F));
+            $$2.a(-0.3125F, -0.3125F, 0.0F);
+            $$2.b(0.375F, 0.375F, 0.375F);
+            this.b.a($$10, cmu.i, $$4, $$5, $$2, $$3, $$0.i(), $$8 + $$9);
+            $$2.b();
+         }
       }
    }
 }

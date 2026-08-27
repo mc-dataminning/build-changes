@@ -1,24 +1,13 @@
-public class gde extends gcb<cbc, fmf<cbc>> {
-   private static final ahd a = new ahd("textures/entity/wither/wither_armor.png");
-   private final fmf<cbc> b;
+public class gde<T extends bmm & ccs, M extends fjv<T>> extends gcw<T, M> {
+   private static final ahg a = new ahg("textures/entity/skeleton/stray_overlay.png");
+   private final flq<T> b;
 
-   public gde(gaa<cbc, fmf<cbc>> $$0, fml $$1) {
+   public gde(gag<T, M> $$0, fmr $$1) {
       super($$0);
-      this.b = new fmf<>($$1.a(fmo.bT));
+      this.b = new flq<>($$1.a(fmu.bz));
    }
 
-   @Override
-   protected float a(float $$0) {
-      return aui.b($$0 * 0.02F) * 3.0F;
-   }
-
-   @Override
-   protected ahd a() {
-      return a;
-   }
-
-   @Override
-   protected fjp<cbc> b() {
-      return this.b;
+   public void a(epz $$0, ftf $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      a(this.c(), this.b, a, $$0, $$1, $$2, $$3, $$4, $$5, $$7, $$8, $$9, $$6, 1.0F, 1.0F, 1.0F);
    }
 }

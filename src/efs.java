@@ -1,46 +1,44 @@
-public class efs {
-   private final hx a;
-   private final int b;
-   private final int c;
+import java.util.Locale;
+import javax.annotation.Nullable;
 
-   public efs(hx $$0, int $$1, int $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+public interface efs {
+   ic[] a = new ic[]{ic.e, ic.f, ic.a, ic.b, ic.c, ic.d};
+
+   void a(ic var1, djg var2, hx var3, hx var4, int var5, int var6);
+
+   void a(hx var1, cwp var2, hx var3);
+
+   void a(djg var1, hx var2, cwp var3, hx var4, boolean var5);
+
+   default void a(hx $$0, cwp $$1, @Nullable ic $$2) {
+      for (ic $$3 : a) {
+         if ($$3 != $$2) {
+            this.a($$0.a($$3), $$1, $$0);
+         }
+      }
    }
 
-   public static efs a(sl $$0) {
-      hx $$1 = ta.b($$0.p("Pos"));
-      int $$2 = $$0.h("Rotation");
-      int $$3 = $$0.h("EntityId");
-      return new efs($$1, $$2, $$3);
+   static void a(ctp $$0, ic $$1, djg $$2, hx $$3, hx $$4, int $$5, int $$6) {
+      djg $$7 = $$0.a_($$3);
+      djg $$8 = $$7.a($$1, $$2, $$0, $$3, $$4);
+      cwp.a($$7, $$8, $$0, $$3, $$5, $$6);
    }
 
-   public sl a() {
-      sl $$0 = new sl();
-      $$0.a("Pos", ta.a(this.a));
-      $$0.a("Rotation", this.b);
-      $$0.a("EntityId", this.c);
-      return $$0;
-   }
-
-   public hx b() {
-      return this.a;
-   }
-
-   public int c() {
-      return this.b;
-   }
-
-   public int d() {
-      return this.c;
-   }
-
-   public String e() {
-      return a(this.a);
-   }
-
-   public static String a(hx $$0) {
-      return "frame-" + $$0.u() + "," + $$0.v() + "," + $$0.w();
+   static void a(cto $$0, djg $$1, hx $$2, cwp $$3, hx $$4, boolean $$5) {
+      try {
+         $$1.a($$0, $$2, $$3, $$4, $$5);
+      } catch (Throwable var9) {
+         o $$7 = o.a(var9, "Exception while updating neighbours");
+         p $$8 = $$7.a("Block being updated");
+         $$8.a("Source block type", () -> {
+            try {
+               return String.format(Locale.ROOT, "ID #%s (%s // %s)", kd.e.b($$3), $$3.h(), $$3.getClass().getCanonicalName());
+            } catch (Throwable var2x) {
+               return "ID #" + kd.e.b($$3);
+            }
+         });
+         p.a($$8, $$0, $$2, $$1);
+         throw new y($$7);
+      }
    }
 }

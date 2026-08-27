@@ -1,8 +1,368 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import com.google.common.collect.Lists;
+import com.google.common.util.concurrent.RateLimiter;
+import com.mojang.logging.LogUtils;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Locale;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.locks.ReentrantLock;
+import java.util.zip.GZIPOutputStream;
+import javax.annotation.Nullable;
+import org.apache.commons.compress.archivers.tar.TarArchiveEntry;
+import org.apache.commons.compress.archivers.tar.TarArchiveOutputStream;
+import org.apache.commons.compress.utils.IOUtils;
+import org.slf4j.Logger;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface etl {
+public class etl extends gkn {
+   private static final Logger a = LogUtils.getLogger();
+   private static final ReentrantLock b = new ReentrantLock();
+   private static final int c = 200;
+   private static final int v = 80;
+   private static final int w = 95;
+   private static final int x = 1;
+   private static final String[] y = new String[]{"", ".", ". .", ". . ."};
+   private static final vf z = vf.c("mco.upload.verifying");
+   private final ete A;
+   private final egm B;
+   private final long C;
+   private final int D;
+   private final eqt E;
+   private final RateLimiter F;
+   @Nullable
+   private volatile vf[] G;
+   private volatile vf H = vf.c("mco.upload.preparing");
+   private volatile String I;
+   private volatile boolean J;
+   private volatile boolean K;
+   private volatile boolean L = true;
+   private volatile boolean M;
+   private exe N;
+   private exe O;
+   private int P;
+   @Nullable
+   private Long Q;
+   @Nullable
+   private Long R;
+   private long S;
+
+   public etl(long $$0, int $$1, ete $$2, egm $$3) {
+      super(euy.a);
+      this.C = $$0;
+      this.D = $$1;
+      this.A = $$2;
+      this.B = $$3;
+      this.E = new eqt();
+      this.F = RateLimiter.create(0.1F);
+   }
+
+   @Override
+   public void aN_() {
+      this.N = this.d(exe.a(ve.k, $$0 -> this.C()).a((this.g - 200) / 2, this.h - 42, 200, 20).a());
+      this.N.k = false;
+      this.O = this.d(exe.a(ve.e, $$0 -> this.D()).a((this.g - 200) / 2, this.h - 42, 200, 20).a());
+      if (!this.M) {
+         if (this.A.b == -1) {
+            this.H();
+         } else {
+            this.A.a(() -> {
+               if (!this.M) {
+                  this.M = true;
+                  this.f.a(this);
+                  this.H();
+               }
+            });
+         }
+      }
+   }
+
+   private void C() {
+      this.f.a(new esp(new eqk(new fde()), this.C));
+   }
+
+   private void D() {
+      this.J = true;
+      this.f.a(this.A);
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 256) {
+         if (this.L) {
+            this.D();
+         } else {
+            this.C();
+         }
+
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2);
+      }
+   }
+
+   @Override
+   public void a(ews $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if (!this.K && this.E.a != 0L && this.E.a == this.E.b) {
+         this.H = z;
+         this.O.j = false;
+      }
+
+      $$0.a(this.i, this.H, this.g / 2, 50, 16777215);
+      if (this.L) {
+         this.c($$0);
+      }
+
+      if (this.E.a != 0L && !this.J) {
+         this.d($$0);
+         this.e($$0);
+      }
+
+      if (this.G != null) {
+         for (int $$4 = 0; $$4 < this.G.length; $$4++) {
+            $$0.a(this.i, this.G[$$4], this.g / 2, 110 + 12 * $$4, 16711680);
+         }
+      }
+   }
+
+   private void c(ews $$0) {
+      int $$1 = this.i.a(this.H);
+      $$0.a(this.i, y[this.P / 10 % y.length], this.g / 2 + $$1 / 2 + 5, 50, 16777215, false);
+   }
+
+   private void d(ews $$0) {
+      double $$1 = Math.min((double)this.E.a / (double)this.E.b, 1.0);
+      this.I = String.format(Locale.ROOT, "%.1f", $$1 * 100.0);
+      int $$2 = (this.g - 200) / 2;
+      int $$3 = $$2 + (int)Math.round(200.0 * $$1);
+      $$0.a($$2 - 1, 79, $$3 + 1, 96, -2501934);
+      $$0.a($$2, 80, $$3, 95, -8355712);
+      $$0.a(this.i, vf.a("mco.upload.percent", this.I), this.g / 2, 84, 16777215);
+   }
+
+   private void e(ews $$0) {
+      if (this.P % 20 == 0) {
+         if (this.Q != null) {
+            long $$1 = ac.b() - this.R;
+            if ($$1 == 0L) {
+               $$1 = 1L;
+            }
+
+            this.S = 1000L * (this.E.a - this.Q) / $$1;
+            this.a($$0, this.S);
+         }
+
+         this.Q = this.E.a;
+         this.R = ac.b();
+      } else {
+         this.a($$0, this.S);
+      }
+   }
+
+   private void a(ews $$0, long $$1) {
+      if ($$1 > 0L) {
+         int $$2 = this.i.b(this.I);
+         String $$3 = "(" + eql.b($$1) + "/s)";
+         $$0.a(this.i, $$3, this.g / 2 + $$2 / 2 + 15, 84, 16777215, false);
+      }
+   }
+
+   @Override
+   public void d() {
+      super.d();
+      this.P++;
+      if (this.H != null && this.F.tryAcquire(1)) {
+         vf $$0 = this.E();
+         this.f.aV().c($$0);
+      }
+   }
+
+   private vf E() {
+      List<vf> $$0 = Lists.newArrayList();
+      $$0.add(this.H);
+      if (this.I != null) {
+         $$0.add(vf.a("mco.upload.percent", this.I));
+      }
+
+      if (this.G != null) {
+         $$0.addAll(Arrays.asList(this.G));
+      }
+
+      return ve.a($$0);
+   }
+
+   private void H() {
+      this.M = true;
+      new Thread(
+            () -> {
+               File $$0 = null;
+               eqp $$1 = eqp.a();
+               long $$2 = this.C;
+
+               try {
+                  if (!b.tryLock(1L, TimeUnit.SECONDS)) {
+                     this.H = vf.c("mco.upload.close.failure");
+                  } else {
+                     eru $$3 = null;
+
+                     for (int $$4 = 0; $$4 < 20; $$4++) {
+                        try {
+                           if (this.J) {
+                              this.I();
+                              return;
+                           }
+
+                           $$3 = $$1.e($$2, ety.a($$2));
+                           if ($$3 != null) {
+                              break;
+                           }
+                        } catch (esd var20) {
+                           Thread.sleep((long)(var20.c * 1000));
+                        }
+                     }
+
+                     if ($$3 == null) {
+                        this.H = vf.c("mco.upload.close.failure");
+                     } else {
+                        ety.a($$2, $$3.a());
+                        if (!$$3.c()) {
+                           this.H = vf.c("mco.upload.close.failure");
+                        } else if (this.J) {
+                           this.I();
+                        } else {
+                           File $$6 = new File(this.f.p.getAbsolutePath(), "saves");
+                           $$0 = this.b(new File($$6, this.B.a()));
+                           if (this.J) {
+                              this.I();
+                           } else if (this.a($$0)) {
+                              this.H = vf.a("mco.upload.uploading", this.B.b());
+                              eqn $$11 = new eqn($$0, this.C, this.D, $$3, this.f.V(), aa.b().c(), this.E);
+                              $$11.a($$1x -> {
+                                 if ($$1x.a >= 200 && $$1x.a < 300) {
+                                    this.K = true;
+                                    this.H = vf.c("mco.upload.done");
+                                    this.N.b(ve.d);
+                                    ety.b($$2);
+                                 } else if ($$1x.a == 400 && $$1x.b != null) {
+                                    this.a(vf.a("mco.upload.failed", $$1x.b));
+                                 } else {
+                                    this.a(vf.a("mco.upload.failed", $$1x.a));
+                                 }
+                              });
+
+                              while (!$$11.b()) {
+                                 if (this.J) {
+                                    $$11.a();
+                                    this.I();
+                                    return;
+                                 }
+
+                                 try {
+                                    Thread.sleep(500L);
+                                 } catch (InterruptedException var19) {
+                                    a.error("Failed to check Realms file upload status");
+                                 }
+                              }
+                           } else {
+                              long $$7 = $$0.length();
+                              eql $$8 = eql.a($$7);
+                              eql $$9 = eql.a(5368709120L);
+                              if (eql.b($$7, $$8).equals(eql.b(5368709120L, $$9)) && $$8 != eql.a) {
+                                 eql $$10 = eql.values()[$$8.ordinal() - 1];
+                                 this.a(
+                                    vf.a("mco.upload.size.failure.line1", this.B.b()),
+                                    vf.a("mco.upload.size.failure.line2", eql.b($$7, $$10), eql.b(5368709120L, $$10))
+                                 );
+                              } else {
+                                 this.a(
+                                    vf.a("mco.upload.size.failure.line1", this.B.b()),
+                                    vf.a("mco.upload.size.failure.line2", eql.b($$7, $$8), eql.b(5368709120L, $$9))
+                                 );
+                              }
+                           }
+                        }
+                     }
+                  }
+               } catch (IOException var21) {
+                  this.a(vf.a("mco.upload.failed", var21.getMessage()));
+               } catch (esc var22) {
+                  this.a(vf.a("mco.upload.failed", var22.a.b()));
+               } catch (InterruptedException var23) {
+                  a.error("Could not acquire upload lock");
+               } finally {
+                  this.K = true;
+                  if (b.isHeldByCurrentThread()) {
+                     b.unlock();
+                     this.L = false;
+                     this.N.k = true;
+                     this.O.k = false;
+                     if ($$0 != null) {
+                        a.debug("Deleting file {}", $$0.getAbsolutePath());
+                        $$0.delete();
+                     }
+                  } else {
+                     return;
+                  }
+               }
+            }
+         )
+         .start();
+   }
+
+   private void a(vf... $$0) {
+      this.G = $$0;
+   }
+
+   private void I() {
+      this.H = vf.c("mco.upload.cancelled");
+      a.debug("Upload was cancelled");
+   }
+
+   private boolean a(File $$0) {
+      return $$0.length() < 5368709120L;
+   }
+
+   private File b(File $$0) throws IOException {
+      TarArchiveOutputStream $$1 = null;
+
+      File var4;
+      try {
+         File $$2 = File.createTempFile("realms-upload-file", ".tar.gz");
+         $$1 = new TarArchiveOutputStream(new GZIPOutputStream(new FileOutputStream($$2)));
+         $$1.setLongFileMode(3);
+         this.a($$1, $$0.getAbsolutePath(), "world", true);
+         $$1.finish();
+         var4 = $$2;
+      } finally {
+         if ($$1 != null) {
+            $$1.close();
+         }
+      }
+
+      return var4;
+   }
+
+   private void a(TarArchiveOutputStream $$0, String $$1, String $$2, boolean $$3) throws IOException {
+      if (!this.J) {
+         File $$4 = new File($$1);
+         String $$5 = $$3 ? $$2 : $$2 + $$4.getName();
+         TarArchiveEntry $$6 = new TarArchiveEntry($$4, $$5);
+         $$0.putArchiveEntry($$6);
+         if ($$4.isFile()) {
+            IOUtils.copy(new FileInputStream($$4), $$0);
+            $$0.closeArchiveEntry();
+         } else {
+            $$0.closeArchiveEntry();
+            File[] $$7 = $$4.listFiles();
+            if ($$7 != null) {
+               for (File $$8 : $$7) {
+                  this.a($$0, $$8.getAbsolutePath(), $$5 + "/", false);
+               }
+            }
+         }
+      }
+   }
 }

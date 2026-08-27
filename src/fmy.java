@@ -1,44 +1,61 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Maps;
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.stream.Collectors;
+import java.util.Set;
+import javax.annotation.Nullable;
+import org.joml.Vector3f;
 
-public class fmy {
-   private final List<fms> a;
-   private final fmr b;
-   private final Map<String, fmy> c = Maps.newHashMap();
+public final class fmy {
+   @Nullable
+   private final String a;
+   private final Vector3f b;
+   private final Vector3f c;
+   private final fmz d;
+   private final boolean e;
+   private final fnf f;
+   private final fnf g;
+   private final Set<ic> h;
 
-   fmy(List<fms> $$0, fmr $$1) {
+   protected fmy(
+      @Nullable String $$0,
+      float $$1,
+      float $$2,
+      float $$3,
+      float $$4,
+      float $$5,
+      float $$6,
+      float $$7,
+      float $$8,
+      fmz $$9,
+      boolean $$10,
+      float $$11,
+      float $$12,
+      Set<ic> $$13
+   ) {
       this.a = $$0;
-      this.b = $$1;
+      this.f = new fnf($$1, $$2);
+      this.b = new Vector3f($$3, $$4, $$5);
+      this.c = new Vector3f($$6, $$7, $$8);
+      this.d = $$9;
+      this.e = $$10;
+      this.g = new fnf($$11, $$12);
+      this.h = $$13;
    }
 
-   public fmy a(String $$0, fmu $$1, fmr $$2) {
-      fmy $$3 = new fmy($$1.b(), $$2);
-      fmy $$4 = this.c.put($$0, $$3);
-      if ($$4 != null) {
-         $$3.c.putAll($$4.c);
-      }
-
-      return $$3;
-   }
-
-   public fmp a(int $$0, int $$1) {
-      Object2ObjectArrayMap<String, fmp> $$2 = this.c
-         .entrySet()
-         .stream()
-         .collect(Collectors.toMap(Entry::getKey, $$2x -> ((fmy)$$2x.getValue()).a($$0, $$1), ($$0x, $$1x) -> $$0x, Object2ObjectArrayMap::new));
-      List<fmp.a> $$3 = this.a.stream().map($$2x -> $$2x.a($$0, $$1)).collect(ImmutableList.toImmutableList());
-      fmp $$4 = new fmp($$3, $$2);
-      $$4.a(this.b);
-      $$4.b(this.b);
-      return $$4;
-   }
-
-   public fmy a(String $$0) {
-      return this.c.get($$0);
+   public fmv.a a(int $$0, int $$1) {
+      return new fmv.a(
+         (int)this.f.a(),
+         (int)this.f.b(),
+         this.b.x(),
+         this.b.y(),
+         this.b.z(),
+         this.c.x(),
+         this.c.y(),
+         this.c.z(),
+         this.d.b,
+         this.d.c,
+         this.d.d,
+         this.e,
+         (float)$$0 * this.g.a(),
+         (float)$$1 * this.g.b(),
+         this.h
+      );
    }
 }

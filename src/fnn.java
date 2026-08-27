@@ -1,162 +1,209 @@
-import com.google.common.collect.Lists;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashSet;
+import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.logging.LogUtils;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.time.Duration;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
-import java.util.Locale;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.stream.Stream;
+import java.util.Map;
+import java.util.Objects;
+import java.util.UUID;
+import java.util.function.BooleanSupplier;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class fnn implements dx {
-   private final fnl a;
-   private final eva b;
-   private int c = -1;
+public abstract class fnn implements xi {
+   private static final vf g = vf.c("disconnect.lost");
+   private static final Logger h = LogUtils.getLogger();
+   protected final evg a;
+   protected final ug b;
    @Nullable
-   private CompletableFuture<Suggestions> d;
-   private final Set<String> e = new HashSet<>();
+   protected final fob c;
+   @Nullable
+   protected String d;
+   protected final gjp e;
+   @Nullable
+   protected final fcz f;
+   private final List<fnn.a> i = new ArrayList<>();
 
-   public fnn(fnl $$0, eva $$1) {
+   protected fnn(evg $$0, ug $$1, fnu $$2) {
       this.a = $$0;
       this.b = $$1;
+      this.c = $$2.f();
+      this.d = $$2.e();
+      this.e = $$2.b();
+      this.f = $$2.g();
    }
 
    @Override
-   public Collection<String> q() {
-      List<String> $$0 = Lists.newArrayList();
+   public void a(xl $$0) {
+      this.a(new xt($$0.a()), () -> !RenderSystem.isFrozenAtPollEvents(), Duration.ofMinutes(1L));
+   }
 
-      for (fnt $$1 : this.a.o()) {
-         $$0.add($$1.a().getName());
+   @Override
+   public void a(xm $$0) {
+      xh.a($$0, this, this.a);
+      this.b(new xu($$0.a()));
+   }
+
+   @Override
+   public void a(xj $$0) {
+      ya $$1 = $$0.a();
+      if (!($$1 instanceof yb)) {
+         xh.a($$0, this, this.a);
+         if ($$1 instanceof xy $$2) {
+            this.d = $$2.b();
+            this.e.a($$2.b());
+         } else {
+            this.a($$1);
+         }
       }
-
-      return $$0;
    }
 
+   protected abstract void a(ya var1);
+
+   protected abstract iu.b f();
+
    @Override
-   public Collection<String> z() {
-      if (this.e.isEmpty()) {
-         return this.q();
+   public void a(xo $$0) {
+      xh.a($$0, this, this.a);
+      UUID $$1 = $$0.a();
+      URL $$2 = a($$0.d());
+      if ($$2 == null) {
+         this.b.a(new xv($$1, xv.a.e));
       } else {
-         Set<String> $$0 = new HashSet<>(this.q());
-         $$0.addAll(this.e);
-         return $$0;
+         String $$3 = $$0.e();
+         boolean $$4 = $$0.f();
+         if (this.c != null && this.c.b() != fob.a.c && (!$$4 || this.c.b() != fob.a.b)) {
+            this.a.ac().a($$1, $$2, $$3);
+         } else {
+            this.a($$1, $$2, $$3, $$4, $$0.g());
+         }
       }
    }
 
    @Override
-   public Collection<String> A() {
-      return (Collection<String>)(this.b.v != null && this.b.v.c() == elk.a.c ? Collections.singleton(((elj)this.b.v).a().cx()) : Collections.emptyList());
+   public void a(xn $$0) {
+      xh.a($$0, this, this.a);
+      $$0.a().ifPresentOrElse($$0x -> this.a.ac().a($$0x), () -> this.a.ac().e());
    }
 
-   @Override
-   public Collection<String> r() {
-      return this.a.t().K().f();
+   private void a(UUID $$0, URL $$1, String $$2, boolean $$3, @Nullable vf $$4) {
+      fcz $$5 = this.a.y;
+      this.a
+         .a(
+            new fbs(
+               $$5x -> {
+                  this.a.a($$5);
+                  gha $$6 = this.a.ac();
+                  $$6.a($$0, $$1, $$2);
+                  if ($$5x) {
+                     if (this.c != null) {
+                        this.c.a(fob.a.a);
+                     }
+
+                     $$6.g();
+                  } else {
+                     $$6.h();
+                     if ($$3) {
+                        this.b.a(vf.c("multiplayer.requiredTexturePrompt.disconnect"));
+                     } else if (this.c != null) {
+                        this.c.a(fob.a.b);
+                     }
+                  }
+
+                  if (this.c != null) {
+                     foc.b(this.c);
+                  }
+               },
+               $$3 ? vf.c("multiplayer.requiredTexturePrompt.line1") : vf.c("multiplayer.texturePrompt.line1"),
+               a($$3 ? vf.c("multiplayer.requiredTexturePrompt.line2").a(n.o, n.r) : vf.c("multiplayer.texturePrompt.line2"), $$4),
+               $$3 ? ve.i : ve.f,
+               (vf)($$3 ? vf.c("menu.disconnect") : ve.g)
+            )
+         );
    }
 
-   @Override
-   public Stream<ahd> s() {
-      return this.b.ah().b().stream();
+   private static vf a(vf $$0, @Nullable vf $$1) {
+      return (vf)($$1 == null ? $$0 : vf.a("multiplayer.texturePrompt.serverPrompt", $$0, $$1));
    }
 
-   @Override
-   public Stream<ahd> t() {
-      return this.a.l().d();
-   }
-
-   @Override
-   public boolean c(int $$0) {
-      fsb $$1 = this.b.s;
-      return $$1 != null ? $$1.l($$0) : $$0 == 0;
-   }
-
-   @Override
-   public CompletableFuture<Suggestions> a(ahc<? extends it<?>> $$0, dx.a $$1, SuggestionsBuilder $$2, CommandContext<?> $$3) {
-      return this.v().c($$0).map($$2x -> {
-         this.a($$2x, $$1, $$2);
-         return $$2.buildFuture();
-      }).orElseGet(() -> this.a($$3));
-   }
-
-   @Override
-   public CompletableFuture<Suggestions> a(CommandContext<?> $$0) {
-      if (this.d != null) {
-         this.d.cancel(false);
+   @Nullable
+   private static URL a(String $$0) {
+      try {
+         URL $$1 = new URL($$0);
+         String $$2 = $$1.getProtocol();
+         return !"http".equals($$2) && !"https".equals($$2) ? null : $$1;
+      } catch (MalformedURLException var3) {
+         return null;
       }
+   }
 
-      this.d = new CompletableFuture<>();
-      int $$1 = ++this.c;
-      this.a.b(new ads($$1, $$0.getInput()));
+   @Override
+   public void a(xp $$0) {
+      xh.a($$0, this, this.a);
+      $$0.a().forEach(this::a);
+   }
+
+   private <T> void a(ahf<? extends it<? extends T>> $$0, asy.a $$1) {
+      if (!$$1.a()) {
+         it<T> $$2 = this.f().c($$0).orElseThrow(() -> new IllegalStateException("Unknown registry " + $$0));
+         Map<asv<T>, List<ih<T>>> $$4 = new HashMap<>();
+         asy.a($$0, $$2, $$1, $$4::put);
+         $$2.a($$4);
+      }
+   }
+
+   @Override
+   public void a(xk $$0) {
+      this.b.a($$0.a());
+   }
+
+   protected void g() {
+      Iterator<fnn.a> $$0 = this.i.iterator();
+
+      while ($$0.hasNext()) {
+         fnn.a $$1 = $$0.next();
+         if ($$1.b().getAsBoolean()) {
+            this.b($$1.a);
+            $$0.remove();
+         } else if ($$1.c() <= ac.b()) {
+            $$0.remove();
+         }
+      }
+   }
+
+   public void b(xf<?> $$0) {
+      this.b.a($$0);
+   }
+
+   @Override
+   public void a(vf $$0) {
+      this.e.c();
+      this.a.b(this.b($$0));
+      h.warn("Client disconnected with reason: {}", $$0.getString());
+   }
+
+   protected fcz b(vf $$0) {
+      fcz $$1 = Objects.requireNonNullElseGet(this.f, () -> new ffx(new fde()));
+      return (fcz)(this.c != null && this.c.e() ? new gkj($$1, g, $$0) : new fcb($$1, g, $$0));
+   }
+
+   @Nullable
+   public String h() {
       return this.d;
    }
 
-   private static String a(double $$0) {
-      return String.format(Locale.ROOT, "%.2f", $$0);
-   }
-
-   private static String a(int $$0) {
-      return Integer.toString($$0);
-   }
-
-   @Override
-   public Collection<dx.b> B() {
-      elk $$0 = this.b.v;
-      if ($$0 != null && $$0.c() == elk.a.b) {
-         hx $$1 = ((eli)$$0).a();
-         return Collections.singleton(new dx.b(a($$1.u()), a($$1.v()), a($$1.w())));
+   private void a(xf<? extends us> $$0, BooleanSupplier $$1, Duration $$2) {
+      if ($$1.getAsBoolean()) {
+         this.b($$0);
       } else {
-         return dx.super.B();
+         this.i.add(new fnn.a($$0, $$1, ac.b() + $$2.toMillis()));
       }
    }
 
-   @Override
-   public Collection<dx.b> C() {
-      elk $$0 = this.b.v;
-      if ($$0 != null && $$0.c() == elk.a.b) {
-         elm $$1 = $$0.e();
-         return Collections.singleton(new dx.b(a($$1.c), a($$1.d), a($$1.e)));
-      } else {
-         return dx.super.C();
-      }
-   }
-
-   @Override
-   public Set<ahc<cti>> u() {
-      return this.a.w();
-   }
-
-   @Override
-   public iu v() {
-      return this.a.f();
-   }
-
-   @Override
-   public chl w() {
-      return this.a.y();
-   }
-
-   public void a(int $$0, Suggestions $$1) {
-      if ($$0 == this.c) {
-         this.d.complete($$1);
-         this.d = null;
-         this.c = -1;
-      }
-   }
-
-   public void a(zv.a $$0, List<String> $$1) {
-      switch ($$0) {
-         case a:
-            this.e.addAll($$1);
-            break;
-         case b:
-            $$1.forEach(this.e::remove);
-            break;
-         case c:
-            this.e.clear();
-            this.e.addAll($$1);
-      }
+   static record a(xf<? extends us> a, BooleanSupplier b, long c) {
    }
 }

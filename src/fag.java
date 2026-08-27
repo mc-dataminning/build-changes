@@ -1,111 +1,79 @@
-import java.util.ArrayList;
+import com.mojang.blaze3d.platform.TextureUtil;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.ByteBuffer;
 import java.util.List;
-import java.util.function.Consumer;
+import org.lwjgl.stb.STBTTFontinfo;
+import org.lwjgl.stb.STBTruetype;
+import org.lwjgl.system.MemoryUtil;
 
-public class fag extends fad {
-   private final List<fag.a> c = new ArrayList<>();
-   private int d;
-   private int e;
-   private final fal f = fal.i().a(0.5F, 0.5F);
+public record fag(ahg c, float d, float e, fag.a f, String g) implements fad {
+   private static final Codec<String> h = atv.a(Codec.STRING, Codec.STRING.listOf(), $$0 -> String.join("", $$0));
+   public static final MapCodec<fag> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               ahg.a.fieldOf("file").forGetter(fag::c),
+               Codec.FLOAT.optionalFieldOf("size", 11.0F).forGetter(fag::d),
+               Codec.FLOAT.optionalFieldOf("oversample", 1.0F).forGetter(fag::e),
+               fag.a.b.optionalFieldOf("shift", fag.a.a).forGetter(fag::f),
+               h.optionalFieldOf("skip", "").forGetter(fag::g)
+            )
+            .apply($$0, fag::new)
+   );
 
-   public fag() {
-      this(0, 0, 0, 0);
-   }
-
-   public fag(int $$0, int $$1) {
-      this(0, 0, $$0, $$1);
-   }
-
-   public fag(int $$0, int $$1, int $$2, int $$3) {
-      super($$0, $$1, $$2, $$3);
-      this.a($$2, $$3);
-   }
-
-   public fag a(int $$0, int $$1) {
-      return this.b($$0).a($$1);
-   }
-
-   public fag a(int $$0) {
-      this.e = $$0;
-      return this;
-   }
-
-   public fag b(int $$0) {
-      this.d = $$0;
-      return this;
-   }
-
-   public fal b() {
-      return this.f.g();
-   }
-
-   public fal c() {
-      return this.f;
+   @Override
+   public fae a() {
+      return fae.b;
    }
 
    @Override
-   public void a() {
-      super.a();
-      int $$0 = this.d;
-      int $$1 = this.e;
+   public Either<fad.a, fad.b> b() {
+      return Either.left(this::a);
+   }
 
-      for (fag.a $$2 : this.c) {
-         $$0 = Math.max($$0, $$2.b());
-         $$1 = Math.max($$1, $$2.a());
+   private eoc a(aqh $$0) throws IOException {
+      STBTTFontinfo $$1 = null;
+      ByteBuffer $$2 = null;
+
+      try {
+         eof var5;
+         try (InputStream $$3 = $$0.open(this.c.d("font/"))) {
+            $$1 = STBTTFontinfo.malloc();
+            $$2 = TextureUtil.readResource($$3);
+            $$2.flip();
+            if (!STBTruetype.stbtt_InitFont($$1, $$2)) {
+               throw new IOException("Invalid ttf");
+            }
+
+            var5 = new eof($$2, $$1, this.d, this.e, this.f.c, this.f.d, this.g);
+         }
+
+         return var5;
+      } catch (Exception var9) {
+         if ($$1 != null) {
+            $$1.free();
+         }
+
+         MemoryUtil.memFree($$2);
+         throw var9;
+      }
+   }
+
+   public static record a(float c, float d) {
+      public static final fag.a a = new fag.a(0.0F, 0.0F);
+      public static final Codec<fag.a> b = Codec.FLOAT
+         .listOf()
+         .comapFlatMap($$0 -> ac.a($$0, 2).map($$0x -> new fag.a((Float)$$0x.get(0), (Float)$$0x.get(1))), $$0 -> List.of($$0.c, $$0.d));
+
+      public float a() {
+         return this.c;
       }
 
-      for (fag.a $$3 : this.c) {
-         $$3.a(this.B(), $$0);
-         $$3.b(this.C(), $$1);
-      }
-
-      this.a = $$0;
-      this.b = $$1;
-   }
-
-   public <T extends fak> T a(T $$0) {
-      return this.a($$0, this.b());
-   }
-
-   public <T extends fak> T a(T $$0, fal $$1) {
-      this.c.add(new fag.a($$0, $$1));
-      return $$0;
-   }
-
-   public <T extends fak> T a(T $$0, Consumer<fal> $$1) {
-      return this.a($$0, ac.a(this.b(), $$1));
-   }
-
-   @Override
-   public void b(Consumer<fak> $$0) {
-      this.c.forEach($$1 -> $$0.accept($$1.a));
-   }
-
-   public static void a(fak $$0, int $$1, int $$2, int $$3, int $$4) {
-      a($$0, $$1, $$2, $$3, $$4, 0.5F, 0.5F);
-   }
-
-   public static void a(fak $$0, fbb $$1) {
-      a($$0, $$1.f().a(), $$1.f().b(), $$1.g(), $$1.h());
-   }
-
-   public static void a(fak $$0, fbb $$1, float $$2, float $$3) {
-      a($$0, $$1.d(), $$1.b(), $$1.g(), $$1.h(), $$2, $$3);
-   }
-
-   public static void a(fak $$0, int $$1, int $$2, int $$3, int $$4, float $$5, float $$6) {
-      a($$1, $$3, $$0.w(), $$0::n, $$5);
-      a($$2, $$4, $$0.u(), $$0::o, $$6);
-   }
-
-   public static void a(int $$0, int $$1, int $$2, Consumer<Integer> $$3, float $$4) {
-      int $$5 = (int)aui.i($$4, 0.0F, (float)($$1 - $$2));
-      $$3.accept($$0 + $$5);
-   }
-
-   static class a extends fad.a {
-      protected a(fak $$0, fal $$1) {
-         super($$0, $$1);
+      public float b() {
+         return this.d;
       }
    }
 }

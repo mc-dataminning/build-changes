@@ -1,101 +1,162 @@
-import com.google.common.base.Suppliers;
-import com.mojang.authlib.GameProfile;
+import com.google.common.collect.Lists;
+import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.suggestion.Suggestions;
+import com.mojang.brigadier.suggestion.SuggestionsBuilder;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Locale;
+import java.util.Set;
 import java.util.concurrent.CompletableFuture;
-import java.util.function.Supplier;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public class fnt {
-   private final GameProfile a;
-   private final Supplier<gff> b;
-   private ctf c = ctf.e;
-   private int d;
+public class fnt implements dx {
+   private final fnr a;
+   private final evg b;
+   private int c = -1;
    @Nullable
-   private vd e;
-   @Nullable
-   private vu f;
-   private vz g;
+   private CompletableFuture<Suggestions> d;
+   private final Set<String> e = new HashSet<>();
 
-   public fnt(GameProfile $$0, boolean $$1) {
+   public fnt(fnr $$0, evg $$1) {
       this.a = $$0;
-      this.g = b($$1);
-      Supplier<Supplier<gff>> $$2 = Suppliers.memoize(() -> a($$0));
-      this.b = () -> $$2.get().get();
+      this.b = $$1;
    }
 
-   private static Supplier<gff> a(GameProfile $$0) {
-      eva $$1 = eva.N();
-      gfg $$2 = $$1.ak();
-      CompletableFuture<gff> $$3 = $$2.c($$0);
-      boolean $$4 = !$$1.b($$0.getId());
-      gff $$5 = gex.a($$0);
-      return () -> {
-         gff $$3x = $$3.getNow($$5);
-         return $$4 && !$$3x.f() ? $$5 : $$3x;
-      };
+   @Override
+   public Collection<String> q() {
+      List<String> $$0 = Lists.newArrayList();
+
+      for (fnz $$1 : this.a.o()) {
+         $$0.add($$1.a().getName());
+      }
+
+      return $$0;
    }
 
-   public GameProfile a() {
-      return this.a;
+   @Override
+   public Collection<String> z() {
+      if (this.e.isEmpty()) {
+         return this.q();
+      } else {
+         Set<String> $$0 = new HashSet<>(this.q());
+         $$0.addAll(this.e);
+         return $$0;
+      }
    }
 
-   @Nullable
-   public vu b() {
-      return this.f;
+   @Override
+   public Collection<String> A() {
+      return (Collection<String>)(this.b.v != null && this.b.v.c() == elq.a.c ? Collections.singleton(((elp)this.b.v).a().cx()) : Collections.emptyList());
    }
 
-   public vz c() {
-      return this.g;
+   @Override
+   public Collection<String> r() {
+      return this.a.t().K().f();
    }
 
-   public boolean d() {
-      return this.f != null;
+   @Override
+   public Stream<ahg> s() {
+      return this.b.ai().b().stream();
    }
 
-   protected void a(vu $$0) {
-      this.f = $$0;
-      this.g = $$0.a(cfe.b);
+   @Override
+   public Stream<ahg> t() {
+      return this.a.l().d();
    }
 
-   protected void a(boolean $$0) {
-      this.f = null;
-      this.g = b($$0);
+   @Override
+   public boolean c(int $$0) {
+      fsh $$1 = this.b.s;
+      return $$1 != null ? $$1.l($$0) : $$0 == 0;
    }
 
-   private static vz b(boolean $$0) {
-      return $$0 ? vz.c : vz.b;
+   @Override
+   public CompletableFuture<Suggestions> a(ahf<? extends it<?>> $$0, dx.a $$1, SuggestionsBuilder $$2, CommandContext<?> $$3) {
+      return this.v().c($$0).map($$2x -> {
+         this.a($$2x, $$1, $$2);
+         return $$2.buildFuture();
+      }).orElseGet(() -> this.a($$3));
    }
 
-   public ctf e() {
-      return this.c;
-   }
+   @Override
+   public CompletableFuture<Suggestions> a(CommandContext<?> $$0) {
+      if (this.d != null) {
+         this.d.cancel(false);
+      }
 
-   protected void a(ctf $$0) {
-      this.c = $$0;
-   }
-
-   public int f() {
+      this.d = new CompletableFuture<>();
+      int $$1 = ++this.c;
+      this.a.b(new adv($$1, $$0.getInput()));
       return this.d;
    }
 
-   protected void a(int $$0) {
-      this.d = $$0;
+   private static String a(double $$0) {
+      return String.format(Locale.ROOT, "%.2f", $$0);
    }
 
-   public gff g() {
-      return this.b.get();
+   private static String a(int $$0) {
+      return Integer.toString($$0);
    }
 
-   @Nullable
-   public eml h() {
-      return eva.N().r.K().e(this.a().getName());
+   @Override
+   public Collection<dx.b> B() {
+      elq $$0 = this.b.v;
+      if ($$0 != null && $$0.c() == elq.a.b) {
+         hx $$1 = ((elo)$$0).a();
+         return Collections.singleton(new dx.b(a($$1.u()), a($$1.v()), a($$1.w())));
+      } else {
+         return dx.super.B();
+      }
    }
 
-   public void a(@Nullable vd $$0) {
-      this.e = $$0;
+   @Override
+   public Collection<dx.b> C() {
+      elq $$0 = this.b.v;
+      if ($$0 != null && $$0.c() == elq.a.b) {
+         els $$1 = $$0.e();
+         return Collections.singleton(new dx.b(a($$1.c), a($$1.d), a($$1.e)));
+      } else {
+         return dx.super.C();
+      }
    }
 
-   @Nullable
-   public vd i() {
-      return this.e;
+   @Override
+   public Set<ahf<cto>> u() {
+      return this.a.w();
+   }
+
+   @Override
+   public iu v() {
+      return this.a.f();
+   }
+
+   @Override
+   public chr w() {
+      return this.a.y();
+   }
+
+   public void a(int $$0, Suggestions $$1) {
+      if ($$0 == this.c) {
+         this.d.complete($$1);
+         this.d = null;
+         this.c = -1;
+      }
+   }
+
+   public void a(zy.a $$0, List<String> $$1) {
+      switch ($$0) {
+         case a:
+            this.e.addAll($$1);
+            break;
+         case b:
+            $$1.forEach(this.e::remove);
+            break;
+         case c:
+            this.e.clear();
+            this.e.addAll($$1);
+      }
    }
 }

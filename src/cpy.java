@@ -1,170 +1,186 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.JsonOps;
+import com.google.common.collect.Lists;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntComparators;
+import it.unimi.dsi.fastutil.ints.IntList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Map.Entry;
-import java.util.stream.Collectors;
+import java.util.function.Predicate;
 import java.util.stream.Stream;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class cpy extends aqg {
-   private static final Gson a = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
-   private static final Logger b = LogUtils.getLogger();
-   private Map<cqa<?>, Map<ahd, cpx<?>>> c = ImmutableMap.of();
-   private Map<ahd, cpx<?>> d = ImmutableMap.of();
-   private boolean e;
+public final class cpy implements Predicate<cmx> {
+   public static final cpy a = new cpy(Stream.empty());
+   private final cpy.c[] d;
+   @Nullable
+   private cmx[] e;
+   @Nullable
+   private IntList f;
+   public static final Codec<cpy> b = a(true);
+   public static final Codec<cpy> c = a(false);
 
-   public cpy() {
-      super(a, "recipes");
+   private cpy(Stream<? extends cpy.c> $$0) {
+      this.d = $$0.toArray(cpy.c[]::new);
    }
 
-   protected void a(Map<ahd, JsonElement> $$0, aqc $$1, bgm $$2) {
-      this.e = false;
-      Map<cqa<?>, Builder<ahd, cpx<?>>> $$3 = Maps.newHashMap();
-      Builder<ahd, cpx<?>> $$4 = ImmutableMap.builder();
+   private cpy(cpy.c[] $$0) {
+      this.d = $$0;
+   }
 
-      for (Entry<ahd, JsonElement> $$5 : $$0.entrySet()) {
-         ahd $$6 = $$5.getKey();
-
-         try {
-            cpx<?> $$7 = a($$6, aty.m($$5.getValue(), "top element"));
-            $$3.computeIfAbsent($$7.b().e(), $$0x -> ImmutableMap.builder()).put($$6, $$7);
-            $$4.put($$6, $$7);
-         } catch (IllegalArgumentException | JsonParseException var10) {
-            b.error("Parsing error loading recipe {}", $$6, var10);
-         }
+   public cmx[] a() {
+      if (this.e == null) {
+         this.e = Arrays.stream(this.d).flatMap($$0 -> $$0.a().stream()).distinct().toArray(cmx[]::new);
       }
 
-      this.c = $$3.entrySet().stream().collect(ImmutableMap.toImmutableMap(Entry::getKey, $$0x -> ((Builder)$$0x.getValue()).build()));
-      this.d = $$4.build();
-      b.info("Loaded {} recipes", $$3.size());
-   }
-
-   public boolean a() {
       return this.e;
    }
 
-   public <C extends bjo, T extends cpv<C>> Optional<cpx<T>> a(cqa<T> $$0, C $$1, cti $$2) {
-      return this.c($$0).values().stream().filter($$2x -> $$2x.b().a($$1, $$2)).findFirst();
-   }
-
-   public <C extends bjo, T extends cpv<C>> Optional<Pair<ahd, cpx<T>>> a(cqa<T> $$0, C $$1, cti $$2, @Nullable ahd $$3) {
-      Map<ahd, cpx<T>> $$4 = this.c($$0);
-      if ($$3 != null) {
-         cpx<T> $$5 = $$4.get($$3);
-         if ($$5 != null && $$5.b().a($$1, $$2)) {
-            return Optional.of(Pair.of($$3, $$5));
-         }
-      }
-
-      return $$4.entrySet()
-         .stream()
-         .filter($$2x -> ((cpx)$$2x.getValue()).b().a($$1, $$2))
-         .findFirst()
-         .map($$0x -> Pair.of((ahd)$$0x.getKey(), (cpx)$$0x.getValue()));
-   }
-
-   public <C extends bjo, T extends cpv<C>> List<cpx<T>> a(cqa<T> $$0) {
-      return List.copyOf(this.c($$0).values());
-   }
-
-   public <C extends bjo, T extends cpv<C>> List<cpx<T>> b(cqa<T> $$0, C $$1, cti $$2) {
-      return this.c($$0)
-         .values()
-         .stream()
-         .filter($$2x -> $$2x.b().a($$1, $$2))
-         .sorted(Comparator.comparing($$1x -> $$1x.b().a($$2.I_()).q()))
-         .collect(Collectors.toList());
-   }
-
-   private <C extends bjo, T extends cpv<C>> Map<ahd, cpx<T>> c(cqa<T> $$0) {
-      return (Map<ahd, cpx<T>>)this.c.getOrDefault($$0, Collections.emptyMap());
-   }
-
-   public <C extends bjo, T extends cpv<C>> iq<cmr> c(cqa<T> $$0, C $$1, cti $$2) {
-      Optional<cpx<T>> $$3 = this.a($$0, $$1, $$2);
-      if ($$3.isPresent()) {
-         return $$3.get().b().a($$1);
+   public boolean a(@Nullable cmx $$0) {
+      if ($$0 == null) {
+         return false;
+      } else if (this.c()) {
+         return $$0.b();
       } else {
-         iq<cmr> $$4 = iq.a($$1.b(), cmr.f);
-
-         for (int $$5 = 0; $$5 < $$4.size(); $$5++) {
-            $$4.set($$5, $$1.a($$5));
-         }
-
-         return $$4;
-      }
-   }
-
-   public Optional<cpx<?>> a(ahd $$0) {
-      return Optional.ofNullable(this.d.get($$0));
-   }
-
-   public Collection<cpx<?>> b() {
-      return this.c.values().stream().flatMap($$0 -> $$0.values().stream()).collect(Collectors.toSet());
-   }
-
-   public Stream<ahd> d() {
-      return this.c.values().stream().flatMap($$0 -> $$0.keySet().stream());
-   }
-
-   protected static cpx<?> a(ahd $$0, JsonObject $$1) {
-      cpv<?> $$2 = ac.a(cpv.h.parse(JsonOps.INSTANCE, $$1), JsonParseException::new);
-      return new cpx<>($$0, $$2);
-   }
-
-   public void a(Iterable<cpx<?>> $$0) {
-      this.e = false;
-      Map<cqa<?>, Map<ahd, cpx<?>>> $$1 = Maps.newHashMap();
-      Builder<ahd, cpx<?>> $$2 = ImmutableMap.builder();
-      $$0.forEach($$2x -> {
-         Map<ahd, cpx<?>> $$3 = $$1.computeIfAbsent($$2x.b().e(), $$0xx -> Maps.newHashMap());
-         ahd $$4 = $$2x.a();
-         cpx<?> $$5 = $$3.put($$4, $$2x);
-         $$2.put($$4, $$2x);
-         if ($$5 != null) {
-            throw new IllegalStateException("Duplicate recipe ignored with ID " + $$4);
-         }
-      });
-      this.c = ImmutableMap.copyOf($$1);
-      this.d = $$2.build();
-   }
-
-   public static <C extends bjo, T extends cpv<C>> cpy.a<C, T> b(final cqa<T> $$0) {
-      return new cpy.a<C, T>() {
-         @Nullable
-         private ahd b;
-
-         @Override
-         public Optional<cpx<T>> a(C $$0x, cti $$1) {
-            cpy $$2 = $$1.r();
-            Optional<Pair<ahd, cpx<T>>> $$3 = $$2.a($$0, $$0, $$1, this.b);
-            if ($$3.isPresent()) {
-               Pair<ahd, cpx<T>> $$4 = $$3.get();
-               this.b = (ahd)$$4.getFirst();
-               return Optional.of((cpx<T>)$$4.getSecond());
-            } else {
-               return Optional.empty();
+         for (cmx $$1 : this.a()) {
+            if ($$1.a($$0.d())) {
+               return true;
             }
          }
-      };
+
+         return false;
+      }
    }
 
-   public interface a<C extends bjo, T extends cpv<C>> {
-      Optional<cpx<T>> a(C var1, cti var2);
+   public IntList b() {
+      if (this.f == null) {
+         cmx[] $$0 = this.a();
+         this.f = new IntArrayList($$0.length);
+
+         for (cmx $$1 : $$0) {
+            this.f.add(cfl.c($$1));
+         }
+
+         this.f.sort(IntComparators.NATURAL_COMPARATOR);
+      }
+
+      return this.f;
+   }
+
+   public void a(ui $$0) {
+      $$0.a(Arrays.asList(this.a()), ui::a);
+   }
+
+   public boolean c() {
+      return this.d.length == 0;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      return $$0 instanceof cpy $$1 ? Arrays.equals((Object[])this.d, (Object[])$$1.d) : false;
+   }
+
+   private static cpy b(Stream<? extends cpy.c> $$0) {
+      cpy $$1 = new cpy($$0);
+      return $$1.c() ? a : $$1;
+   }
+
+   public static cpy d() {
+      return a;
+   }
+
+   public static cpy a(ctn... $$0) {
+      return a(Arrays.stream($$0).map(cmx::new));
+   }
+
+   public static cpy a(cmx... $$0) {
+      return a(Arrays.stream($$0));
+   }
+
+   public static cpy a(Stream<cmx> $$0) {
+      return b($$0.filter($$0x -> !$$0x.b()).map(cpy.a::new));
+   }
+
+   public static cpy a(asv<cms> $$0) {
+      return b(Stream.of(new cpy.b($$0)));
+   }
+
+   public static cpy b(ui $$0) {
+      return b($$0.<cmx>a(ui::r).stream().map(cpy.a::new));
+   }
+
+   private static Codec<cpy> a(boolean $$0) {
+      Codec<cpy.c[]> $$1 = Codec.list(cpy.c.a)
+         .comapFlatMap(
+            $$1x -> !$$0 && $$1x.size() < 1
+                  ? DataResult.error(() -> "Item array cannot be empty, at least one item must be defined")
+                  : DataResult.success($$1x.toArray(new cpy.c[0])),
+            List::of
+         );
+      return atv.c($$1, cpy.c.a)
+         .flatComapMap(
+            $$0x -> (cpy)$$0x.map(cpy::new, $$0xx -> new cpy(new cpy.c[]{$$0xx})),
+            $$1x -> {
+               if ($$1x.d.length == 1) {
+                  return DataResult.success(Either.right($$1x.d[0]));
+               } else {
+                  return $$1x.d.length == 0 && !$$0
+                     ? DataResult.error(() -> "Item array cannot be empty, at least one item must be defined")
+                     : DataResult.success(Either.left($$1x.d));
+               }
+            }
+         );
+   }
+
+   static record a(cmx b) implements cpy.c {
+      static final Codec<cpy.a> c = RecordCodecBuilder.create($$0 -> $$0.group(cmx.d.fieldOf("item").forGetter($$0x -> $$0x.b)).apply($$0, cpy.a::new));
+
+      @Override
+      public boolean equals(Object $$0) {
+         return !($$0 instanceof cpy.a $$1) ? false : $$1.b.d().equals(this.b.d()) && $$1.b.L() == this.b.L();
+      }
+
+      @Override
+      public Collection<cmx> a() {
+         return Collections.singleton(this.b);
+      }
+   }
+
+   static record b(asv<cms> b) implements cpy.c {
+      static final Codec<cpy.b> c = RecordCodecBuilder.create($$0 -> $$0.group(asv.a(ke.F).fieldOf("tag").forGetter($$0x -> $$0x.b)).apply($$0, cpy.b::new));
+
+      @Override
+      public boolean equals(Object $$0) {
+         return $$0 instanceof cpy.b $$1 ? $$1.b.b().equals(this.b.b()) : false;
+      }
+
+      @Override
+      public Collection<cmx> a() {
+         List<cmx> $$0 = Lists.newArrayList();
+
+         for (ih<cms> $$1 : kd.h.c(this.b)) {
+            $$0.add(new cmx($$1));
+         }
+
+         return $$0;
+      }
+   }
+
+   interface c {
+      Codec<cpy.c> a = atv.a(cpy.a.c, cpy.b.c).xmap($$0 -> (cpy.c)$$0.map($$0x -> $$0x, $$0x -> $$0x), $$0 -> {
+         if ($$0 instanceof cpy.b $$1) {
+            return Either.right($$1);
+         } else if ($$0 instanceof cpy.a $$2) {
+            return Either.left($$2);
+         } else {
+            throw new UnsupportedOperationException("This is neither an item value nor a tag value.");
+         }
+      });
+
+      Collection<cmx> a();
    }
 }

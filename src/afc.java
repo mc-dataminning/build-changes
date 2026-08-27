@@ -1,32 +1,24 @@
-public class afc implements xd<adg> {
-   private final bju a;
-   private final int b;
+public class afc implements xf<adj> {
+   private final bjz a;
 
-   public afc(bju $$0, int $$1) {
+   public afc(bjz $$0) {
       this.a = $$0;
-      this.b = $$1;
    }
 
-   public afc(ug $$0) {
-      this.a = $$0.b(bju.class);
-      this.b = $$0.n();
+   public afc(ui $$0) {
+      this.a = $$0.b(bjz.class);
    }
 
    @Override
-   public void a(ug $$0) {
+   public void a(ui $$0) {
       $$0.a(this.a);
-      $$0.c(this.b);
    }
 
-   public void a(adg $$0) {
+   public void a(adj $$0) {
       $$0.a(this);
    }
 
-   public bju a() {
+   public bjz a() {
       return this.a;
-   }
-
-   public int d() {
-      return this.b;
    }
 }

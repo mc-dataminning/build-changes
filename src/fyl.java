@@ -1,27 +1,60 @@
-public class fyl extends fye<cfo> {
-   private final fzd a;
+@FunctionalInterface
+public interface fyl<T extends blu> {
+   fyk<T> create(fyl.a var1);
 
-   public fyl(fyf.a $$0) {
-      super($$0);
-      this.a = $$0.b();
-   }
+   public static class a {
+      private final fyj a;
+      private final fzj b;
+      private final ftz c;
+      private final ftb d;
+      private final aqh e;
+      private final fmr f;
+      private final ewq g;
 
-   public void a(cfo $$0, float $$1, float $$2, ept $$3, fsz $$4, int $$5) {
-      $$3.a();
-      $$3.a(this.c.b());
-      $$3.a(a.d.rotationDegrees(180.0F));
-      if ($$0.s()) {
-         $$3.a(a.f.rotationDegrees(180.0F));
-         $$3.a(a.d.rotationDegrees(180.0F));
-         $$3.a(a.b.rotationDegrees(90.0F));
+      public a(fyj $$0, fzj $$1, ftz $$2, ftb $$3, aqh $$4, fmr $$5, ewq $$6) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+         this.f = $$5;
+         this.g = $$6;
       }
 
-      this.a.a($$0.q(), cmo.h, $$5, gdw.d, $$3, $$4, $$0.dM(), $$0.aj());
-      $$3.b();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
+      public fyj a() {
+         return this.a;
+      }
 
-   public ahd a(cfo $$0) {
-      return gee.e;
+      public fzj b() {
+         return this.b;
+      }
+
+      public ftz c() {
+         return this.c;
+      }
+
+      public ftb d() {
+         return this.d;
+      }
+
+      public aqh e() {
+         return this.e;
+      }
+
+      public fmr f() {
+         return this.f;
+      }
+
+      public ggr g() {
+         return this.c.a().a();
+      }
+
+      public fmv a(fmt $$0) {
+         return this.f.a($$0);
+      }
+
+      public ewq h() {
+         return this.g;
+      }
    }
 }

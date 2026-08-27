@@ -1,22 +1,21 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.stream.Stream;
 
-public class dud implements dtr {
-   public static final Codec<dud> a = RecordCodecBuilder.create(
-      $$0 -> $$0.apply2(dud::new, dth.a.listOf().fieldOf("features").forGetter($$0x -> $$0x.b), dyd.b.fieldOf("default").forGetter($$0x -> $$0x.c))
+public class dud extends dtp {
+   public static final Codec<dud> c = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dvy.a.fieldOf("state_provider").forGetter($$0x -> $$0x.b),
+               atv.j.fieldOf("spread_width").forGetter($$0x -> $$0x.d),
+               atv.j.fieldOf("spread_height").forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, dud::new)
    );
-   public final List<dth> b;
-   public final ih<dyd> c;
+   public final int d;
+   public final int e;
 
-   public dud(List<dth> $$0, ih<dyd> $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
-
-   @Override
-   public Stream<dra<?, ?>> e() {
-      return Stream.concat(this.b.stream().flatMap($$0 -> $$0.b.a().a()), this.c.a().a());
+   public dud(dvy $$0, int $$1, int $$2) {
+      super($$0);
+      this.d = $$1;
+      this.e = $$2;
    }
 }

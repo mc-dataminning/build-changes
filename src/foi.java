@@ -1,65 +1,119 @@
-import com.mojang.authlib.minecraft.report.AbuseReport;
-import com.mojang.authlib.minecraft.report.AbuseReportLimits;
-import com.mojang.authlib.minecraft.report.ReportedEntity;
-import com.mojang.datafixers.util.Either;
+import com.mojang.authlib.GameProfile;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 import java.util.UUID;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
 
-public class foi extends foj {
-   private final String f;
-
-   foi(UUID $$0, Instant $$1, UUID $$2, String $$3) {
-      super($$0, $$1, $$2);
-      this.f = $$3;
+public interface foi extends foh {
+   static foi.a a(GameProfile $$0, vv $$1, fog $$2) {
+      return new foi.a($$0, $$1, $$2);
    }
 
-   public String a() {
-      return this.f;
+   static foi.b a(vf $$0, Instant $$1) {
+      return new foi.b($$0, $$1);
    }
 
-   public foi c() {
-      foi $$0 = new foi(this.a, this.b, this.c, this.f);
-      $$0.d = this.d;
-      return $$0;
+   vf b();
+
+   default vf c() {
+      return this.b();
    }
 
-   @Override
-   public fct a(fct $$0, fon $$1) {
-      return new fgv($$0, $$1, this);
-   }
+   boolean a(UUID var1);
 
-   public static class a extends foj.a<foi> {
-      public a(foi $$0, AbuseReportLimits $$1) {
-         super($$0, $$1);
-      }
-
-      public a(UUID $$0, String $$1, AbuseReportLimits $$2) {
-         super(new foi(UUID.randomUUID(), Instant.now(), $$0, $$1), $$2);
-      }
+   public static record a(GameProfile c, vv d, fog e) implements foi {
+      public static final Codec<foi.a> b = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  atv.u.fieldOf("profile").forGetter(foi.a::f), vv.a.forGetter(foi.a::g), fog.d.optionalFieldOf("trust_level", fog.a).forGetter(foi.a::h)
+               )
+               .apply($$0, foi.a::new)
+      );
+      private static final DateTimeFormatter f = DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT);
 
       @Override
-      public boolean b() {
-         return StringUtils.isNotEmpty(this.g());
-      }
-
-      @Nullable
-      @Override
-      public foj.b c() {
-         return this.a.d.length() > this.b.maxOpinionCommentsLength() ? foj.b.d : null;
-      }
-
-      @Override
-      public Either<foj.c, foj.b> a(fon $$0) {
-         foj.b $$1 = this.c();
-         if ($$1 != null) {
-            return Either.right($$1);
+      public vf b() {
+         if (!this.d.n().a()) {
+            vf $$0 = this.d.n().b(this.d.b());
+            return (vf)($$0 != null ? $$0 : vf.i());
          } else {
-            ReportedEntity $$2 = new ReportedEntity(this.a.c);
-            AbuseReport $$3 = AbuseReport.name(this.a.d, $$2, this.a.b);
-            return Either.left(new foj.c(this.a.a, fom.c, $$3));
+            return this.d.c();
          }
+      }
+
+      @Override
+      public vf c() {
+         vf $$0 = this.b();
+         vf $$1 = this.i();
+         return vf.a("gui.chatSelection.message.narrate", this.c.getName(), $$0, $$1);
+      }
+
+      public vf d() {
+         vf $$0 = this.i();
+         return vf.a("gui.chatSelection.heading", this.c.getName(), $$0);
+      }
+
+      private vf i() {
+         LocalDateTime $$0 = LocalDateTime.ofInstant(this.d.d(), ZoneOffset.systemDefault());
+         return vf.b($$0.format(f)).a(n.u, n.h);
+      }
+
+      @Override
+      public boolean a(UUID $$0) {
+         return this.d.a($$0);
+      }
+
+      public UUID e() {
+         return this.c.getId();
+      }
+
+      @Override
+      public foh.a a() {
+         return foh.a.a;
+      }
+
+      public GameProfile f() {
+         return this.c;
+      }
+
+      public vv g() {
+         return this.d;
+      }
+
+      public fog h() {
+         return this.e;
+      }
+   }
+
+   public static record b(vf c, Instant d) implements foi {
+      public static final Codec<foi.b> b = RecordCodecBuilder.create(
+         $$0 -> $$0.group(vh.a.fieldOf("message").forGetter(foi.b::d), atv.m.fieldOf("time_stamp").forGetter(foi.b::e)).apply($$0, foi.b::new)
+      );
+
+      @Override
+      public vf b() {
+         return this.c;
+      }
+
+      @Override
+      public boolean a(UUID $$0) {
+         return false;
+      }
+
+      @Override
+      public foh.a a() {
+         return foh.a.b;
+      }
+
+      public vf d() {
+         return this.c;
+      }
+
+      public Instant e() {
+         return this.d;
       }
    }
 }

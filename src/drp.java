@@ -1,43 +1,111 @@
-import java.util.Optional;
+import java.util.function.Consumer;
 
-public class drp<FC extends dtr> {
-   private final Optional<dra<?, ?>> a;
-   private final cud b;
-   private final dkx c;
-   private final aup d;
-   private final hx e;
-   private final FC f;
+public class drp {
+   protected static double a(double $$0, double $$1, double $$2, double $$3) {
+      if ($$0 < $$3) {
+         $$0 = $$3;
+      }
 
-   public drp(Optional<dra<?, ?>> $$0, cud $$1, dkx $$2, aup $$3, hx $$4, FC $$5) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
+      double $$4 = 0.384;
+      double $$5 = $$0 / $$1 * 0.384;
+      double $$6 = 0.75 * Math.pow($$5, 1.3333333333333333);
+      double $$7 = Math.pow($$5, 0.6666666666666666);
+      double $$8 = 0.3333333333333333 * Math.log($$5);
+      double $$9 = $$2 * ($$6 - $$7 - $$8);
+      $$9 = Math.max($$9, 0.0);
+      return $$9 / 0.384 * $$1;
    }
 
-   public Optional<dra<?, ?>> a() {
-      return this.a;
+   protected static boolean a(cuj $$0, hx $$1, int $$2) {
+      if (b($$0, $$1)) {
+         return false;
+      } else {
+         float $$3 = 6.0F;
+         float $$4 = 6.0F / (float)$$2;
+
+         for (float $$5 = 0.0F; $$5 < (float) (Math.PI * 2); $$5 += $$4) {
+            int $$6 = (int)(aun.b($$5) * (float)$$2);
+            int $$7 = (int)(aun.a($$5) * (float)$$2);
+            if (b($$0, $$1.b($$6, 0, $$7))) {
+               return false;
+            }
+         }
+
+         return true;
+      }
    }
 
-   public cud b() {
-      return this.b;
+   protected static boolean a(ctp $$0, hx $$1) {
+      return $$0.a($$1, drp::c);
    }
 
-   public dkx c() {
-      return this.c;
+   protected static boolean b(ctp $$0, hx $$1) {
+      return $$0.a($$1, drp::e);
    }
 
-   public aup d() {
-      return this.d;
+   protected static void a(ic $$0, int $$1, boolean $$2, Consumer<djg> $$3) {
+      if ($$1 >= 3) {
+         $$3.accept(a($$0, dkd.e));
+
+         for (int $$4 = 0; $$4 < $$1 - 3; $$4++) {
+            $$3.accept(a($$0, dkd.d));
+         }
+      }
+
+      if ($$1 >= 2) {
+         $$3.accept(a($$0, dkd.c));
+      }
+
+      if ($$1 >= 1) {
+         $$3.accept(a($$0, $$2 ? dkd.a : dkd.b));
+      }
    }
 
-   public hx e() {
-      return this.e;
+   protected static void a(ctp $$0, hx $$1, ic $$2, int $$3, boolean $$4) {
+      if (b($$0.a_($$1.a($$2.g())))) {
+         hx.a $$5 = $$1.j();
+         a($$2, $$3, $$4, $$3x -> {
+            if ($$3x.a(cwr.st)) {
+               $$3x = $$3x.a(dcg.d, Boolean.valueOf($$0.z($$5)));
+            }
+
+            $$0.a($$5, $$3x, 2);
+            $$5.c($$2);
+         });
+      }
    }
 
-   public FC f() {
-      return this.f;
+   protected static boolean c(ctp $$0, hx $$1) {
+      djg $$2 = $$0.a_($$1);
+      if ($$2.a(asg.br)) {
+         $$0.a($$1, cwr.su.o(), 2);
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   private static djg a(ic $$0, dkd $$1) {
+      return cwr.st.o().a(dcg.b, $$0).a(dcg.c, $$1);
+   }
+
+   public static boolean a(djg $$0) {
+      return b($$0) || $$0.a(cwr.H);
+   }
+
+   public static boolean b(djg $$0) {
+      return $$0.a(cwr.su) || $$0.a(asg.br);
+   }
+
+   public static boolean c(djg $$0) {
+      return $$0.i() || $$0.a(cwr.G);
+   }
+
+   public static boolean d(djg $$0) {
+      return !$$0.i() && !$$0.a(cwr.G);
+   }
+
+   public static boolean e(djg $$0) {
+      return $$0.i() || $$0.a(cwr.G) || $$0.a(cwr.H);
    }
 }

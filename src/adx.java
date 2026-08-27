@@ -1,24 +1,32 @@
-public record adx(int a, int b, boolean c) implements xd<adg> {
-   public adx(ug $$0) {
-      this($$0.n(), $$0.n(), $$0.readBoolean());
+public class adx implements xf<adj> {
+   private final int a;
+   private final int b;
+
+   public adx(int $$0, int $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
+
+   public void a(adj $$0) {
+      $$0.a(this);
+   }
+
+   public adx(ui $$0) {
+      this.a = $$0.readByte();
+      this.b = $$0.readByte();
    }
 
    @Override
-   public void a(ug $$0) {
-      $$0.c(this.a);
-      $$0.c(this.b);
-      $$0.a(this.c);
+   public void a(ui $$0) {
+      $$0.k(this.a);
+      $$0.k(this.b);
    }
 
-   public void a(adg $$0) {
-      $$0.a(this);
+   public int a() {
+      return this.a;
    }
 
    public int d() {
       return this.b;
-   }
-
-   public boolean e() {
-      return this.c;
    }
 }

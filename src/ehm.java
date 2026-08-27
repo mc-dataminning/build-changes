@@ -1,64 +1,17 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
-import java.util.List;
 
-public class ehm extends ehb {
-   public static final Codec<ehm> a = a(ehm::new);
+public class ehm {
+   public static final Codec<eho> a = kd.F.q().dispatch(eho::a, ehp::a);
+   public static final ehp b = a("empty", ehj.a);
+   public static final ehp c = a("item", ehl.a);
+   public static final ehp d = a("loot_table", ehr.a);
+   public static final ehp e = a("dynamic", ehi.a);
+   public static final ehp f = a("tag", eht.a);
+   public static final ehp g = a("alternatives", ehf.a);
+   public static final ehp h = a("sequence", ehs.a);
+   public static final ehp i = a("group", ehk.a);
 
-   ehm(List<ehi> $$0, List<ejo> $$1) {
-      super($$0, $$1);
-   }
-
-   @Override
-   public ehj a() {
-      return ehg.h;
-   }
-
-   @Override
-   protected eha a(List<? extends eha> $$0) {
-      return switch ($$0.size()) {
-         case 0 -> c;
-         case 1 -> (eha)$$0.get(0);
-         case 2 -> $$0.get(0).and($$0.get(1));
-         default -> ($$1, $$2) -> {
-         for (eha $$3 : $$0) {
-            if (!$$3.expand($$1, $$2)) {
-               return false;
-            }
-         }
-
-         return true;
-      };
-      };
-   }
-
-   public static ehm.a a(ehi.a<?>... $$0) {
-      return new ehm.a($$0);
-   }
-
-   public static class a extends ehi.a<ehm.a> {
-      private final Builder<ehi> a = ImmutableList.builder();
-
-      public a(ehi.a<?>... $$0) {
-         for (ehi.a<?> $$1 : $$0) {
-            this.a.add($$1.b());
-         }
-      }
-
-      protected ehm.a a() {
-         return this;
-      }
-
-      @Override
-      public ehm.a c(ehi.a<?> $$0) {
-         this.a.add($$0.b());
-         return this;
-      }
-
-      @Override
-      public ehi b() {
-         return new ehm(this.a.build(), this.f());
-      }
+   private static ehp a(String $$0, Codec<? extends eho> $$1) {
+      return it.a(kd.F, new ahg($$0), new ehp($$1));
    }
 }

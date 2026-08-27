@@ -1,28 +1,19 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class duz extends duy {
-   public static final Codec<duz> c = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, duz::new));
+public class duz<P extends duy> {
+   public static final duz<dvb> a = a("two_layers_feature_size", dvb.d);
+   public static final duz<dva> b = a("three_layers_feature_size", dva.d);
+   private final Codec<P> c;
 
-   public duz(bja $$0, bja $$1, int $$2) {
-      super($$0, $$1, $$2);
+   private static <P extends duy> duz<P> a(String $$0, Codec<P> $$1) {
+      return it.a(kd.aa, $$0, new duz<>($$1));
    }
 
-   @Override
-   protected dve<?> a() {
-      return dve.e;
+   private duz(Codec<P> $$0) {
+      this.c = $$0;
    }
 
-   @Override
-   protected void a(cto $$0, dvd.b $$1, aup $$2, dun $$3, int $$4, dvd.a $$5, int $$6, int $$7, int $$8) {
-      for (int $$9 = $$8; $$9 >= $$8 - $$6; $$9--) {
-         int $$10 = $$7 + $$5.b() - 1 - $$9;
-         this.a($$0, $$1, $$2, $$3, $$5.a(), $$10, $$9, $$5.c());
-      }
-   }
-
-   @Override
-   protected boolean a(aup $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$1 == $$4 && $$3 == $$4 && $$0.a(2) == 0;
+   public Codec<P> a() {
+      return this.c;
    }
 }

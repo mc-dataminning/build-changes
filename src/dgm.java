@@ -1,147 +1,91 @@
-import java.util.List;
-import org.apache.commons.lang3.mutable.MutableInt;
+public class dgm {
+   public static final ahf<dgl> a = a("base");
+   public static final ahf<dgl> b = a("square_bottom_left");
+   public static final ahf<dgl> c = a("square_bottom_right");
+   public static final ahf<dgl> d = a("square_top_left");
+   public static final ahf<dgl> e = a("square_top_right");
+   public static final ahf<dgl> f = a("stripe_bottom");
+   public static final ahf<dgl> g = a("stripe_top");
+   public static final ahf<dgl> h = a("stripe_left");
+   public static final ahf<dgl> i = a("stripe_right");
+   public static final ahf<dgl> j = a("stripe_center");
+   public static final ahf<dgl> k = a("stripe_middle");
+   public static final ahf<dgl> l = a("stripe_downright");
+   public static final ahf<dgl> m = a("stripe_downleft");
+   public static final ahf<dgl> n = a("small_stripes");
+   public static final ahf<dgl> o = a("cross");
+   public static final ahf<dgl> p = a("straight_cross");
+   public static final ahf<dgl> q = a("triangle_bottom");
+   public static final ahf<dgl> r = a("triangle_top");
+   public static final ahf<dgl> s = a("triangles_bottom");
+   public static final ahf<dgl> t = a("triangles_top");
+   public static final ahf<dgl> u = a("diagonal_left");
+   public static final ahf<dgl> v = a("diagonal_up_right");
+   public static final ahf<dgl> w = a("diagonal_up_left");
+   public static final ahf<dgl> x = a("diagonal_right");
+   public static final ahf<dgl> y = a("circle");
+   public static final ahf<dgl> z = a("rhombus");
+   public static final ahf<dgl> A = a("half_vertical");
+   public static final ahf<dgl> B = a("half_horizontal");
+   public static final ahf<dgl> C = a("half_vertical_right");
+   public static final ahf<dgl> D = a("half_horizontal_bottom");
+   public static final ahf<dgl> E = a("border");
+   public static final ahf<dgl> F = a("curly_border");
+   public static final ahf<dgl> G = a("gradient");
+   public static final ahf<dgl> H = a("gradient_up");
+   public static final ahf<dgl> I = a("bricks");
+   public static final ahf<dgl> J = a("globe");
+   public static final ahf<dgl> K = a("creeper");
+   public static final ahf<dgl> L = a("skull");
+   public static final ahf<dgl> M = a("flower");
+   public static final ahf<dgl> N = a("mojang");
+   public static final ahf<dgl> O = a("piglin");
 
-public class dgm extends dgo {
-   private static final int d = 50;
-   private static final int e = 60;
-   private static final int f = 60;
-   private static final int g = 40;
-   private static final int h = 5;
-   private static final int i = 48;
-   private static final int j = 32;
-   private static final int k = 48;
-   private long l;
-   public int a;
-   public boolean b;
-   public ic c;
-   private List<bmf> m;
-   private boolean n;
-   private int r;
-
-   public dgm(hx $$0, dja $$1) {
-      super(dgq.E, $$0, $$1);
+   private static ahf<dgl> a(String $$0) {
+      return ahf.a(ke.d, new ahg($$0));
    }
 
-   @Override
-   public boolean a_(int $$0, int $$1) {
-      if ($$0 == 1) {
-         this.c();
-         this.r = 0;
-         this.c = ic.a($$1);
-         this.a = 0;
-         this.b = true;
-         return true;
-      } else {
-         return super.a_($$0, $$1);
-      }
-   }
-
-   private static void a(cti $$0, hx $$1, dja $$2, dgm $$3, dgm.a $$4) {
-      if ($$3.b) {
-         $$3.a++;
-      }
-
-      if ($$3.a >= 50) {
-         $$3.b = false;
-         $$3.a = 0;
-      }
-
-      if ($$3.a >= 5 && $$3.r == 0 && a($$1, $$3.m)) {
-         $$3.n = true;
-         $$0.a(null, $$1, arm.bL, arn.e, 1.0F, 1.0F);
-      }
-
-      if ($$3.n) {
-         if ($$3.r < 40) {
-            $$3.r++;
-         } else {
-            $$4.run($$0, $$1, $$3.m);
-            $$3.n = false;
-         }
-      }
-   }
-
-   public static void a(cti $$0, hx $$1, dja $$2, dgm $$3) {
-      a($$0, $$1, $$2, $$3, dgm::b);
-   }
-
-   public static void b(cti $$0, hx $$1, dja $$2, dgm $$3) {
-      a($$0, $$1, $$2, $$3, dgm::a);
-   }
-
-   public void a(ic $$0) {
-      hx $$1 = this.aB_();
-      this.c = $$0;
-      if (this.b) {
-         this.a = 0;
-      } else {
-         this.b = true;
-      }
-
-      this.o.a($$1, this.r().b(), 1, $$0.d());
-   }
-
-   private void c() {
-      hx $$0 = this.aB_();
-      if (this.o.X() > this.l + 60L || this.m == null) {
-         this.l = this.o.X();
-         elh $$1 = new elh($$0).g(48.0);
-         this.m = this.o.a(bmf.class, $$1);
-      }
-
-      if (!this.o.B) {
-         for (bmf $$2 : this.m) {
-            if ($$2.bx() && !$$2.dH() && $$0.a($$2.dk(), 32.0)) {
-               $$2.dO().a(bvh.D, this.o.X());
-            }
-         }
-      }
-   }
-
-   private static boolean a(hx $$0, List<bmf> $$1) {
-      for (bmf $$2 : $$1) {
-         if ($$2.bx() && !$$2.dH() && $$0.a($$2.dk(), 32.0) && $$2.ai().a(ase.c)) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   private static void a(cti $$0, hx $$1, List<bmf> $$2) {
-      $$2.stream().filter($$1x -> a($$1, $$1x)).forEach(dgm::a);
-   }
-
-   private static void b(cti $$0, hx $$1, List<bmf> $$2) {
-      MutableInt $$3 = new MutableInt(16700985);
-      int $$4 = (int)$$2.stream().filter($$1x -> $$1.a($$1x.dk(), 48.0)).count();
-      $$2.stream().filter($$1x -> a($$1, $$1x)).forEach($$4x -> {
-         float $$5 = 1.0F;
-         double $$6 = Math.sqrt(($$4x.dr() - (double)$$1.u()) * ($$4x.dr() - (double)$$1.u()) + ($$4x.dx() - (double)$$1.w()) * ($$4x.dx() - (double)$$1.w()));
-         double $$7 = (double)((float)$$1.u() + 0.5F) + 1.0 / $$6 * ($$4x.dr() - (double)$$1.u());
-         double $$8 = (double)((float)$$1.w() + 0.5F) + 1.0 / $$6 * ($$4x.dx() - (double)$$1.w());
-         int $$9 = aui.a(($$4 - 21) / -2, 3, 15);
-
-         for (int $$10 = 0; $$10 < $$9; $$10++) {
-            int $$11 = $$3.addAndGet(5);
-            double $$12 = (double)ats.b.b($$11) / 255.0;
-            double $$13 = (double)ats.b.c($$11) / 255.0;
-            double $$14 = (double)ats.b.d($$11) / 255.0;
-            $$0.a(jx.v, $$7, (double)((float)$$1.v() + 0.5F), $$8, $$12, $$13, $$14);
-         }
-      });
-   }
-
-   private static boolean a(hx $$0, bmf $$1) {
-      return $$1.bx() && !$$1.dH() && $$0.a($$1.dk(), 48.0) && $$1.ai().a(ase.c);
-   }
-
-   private static void a(bmf $$0) {
-      $$0.b(new blc(ble.x, 60));
-   }
-
-   @FunctionalInterface
-   interface a {
-      void run(cti var1, hx var2, List<bmf> var3);
+   public static dgl a(it<dgl> $$0) {
+      it.a($$0, a, new dgl("b"));
+      it.a($$0, b, new dgl("bl"));
+      it.a($$0, c, new dgl("br"));
+      it.a($$0, d, new dgl("tl"));
+      it.a($$0, e, new dgl("tr"));
+      it.a($$0, f, new dgl("bs"));
+      it.a($$0, g, new dgl("ts"));
+      it.a($$0, h, new dgl("ls"));
+      it.a($$0, i, new dgl("rs"));
+      it.a($$0, j, new dgl("cs"));
+      it.a($$0, k, new dgl("ms"));
+      it.a($$0, l, new dgl("drs"));
+      it.a($$0, m, new dgl("dls"));
+      it.a($$0, n, new dgl("ss"));
+      it.a($$0, o, new dgl("cr"));
+      it.a($$0, p, new dgl("sc"));
+      it.a($$0, q, new dgl("bt"));
+      it.a($$0, r, new dgl("tt"));
+      it.a($$0, s, new dgl("bts"));
+      it.a($$0, t, new dgl("tts"));
+      it.a($$0, u, new dgl("ld"));
+      it.a($$0, v, new dgl("rd"));
+      it.a($$0, w, new dgl("lud"));
+      it.a($$0, x, new dgl("rud"));
+      it.a($$0, y, new dgl("mc"));
+      it.a($$0, z, new dgl("mr"));
+      it.a($$0, A, new dgl("vh"));
+      it.a($$0, B, new dgl("hh"));
+      it.a($$0, C, new dgl("vhr"));
+      it.a($$0, D, new dgl("hhb"));
+      it.a($$0, E, new dgl("bo"));
+      it.a($$0, F, new dgl("cbo"));
+      it.a($$0, G, new dgl("gra"));
+      it.a($$0, H, new dgl("gru"));
+      it.a($$0, I, new dgl("bri"));
+      it.a($$0, J, new dgl("glb"));
+      it.a($$0, K, new dgl("cre"));
+      it.a($$0, L, new dgl("sku"));
+      it.a($$0, M, new dgl("flo"));
+      it.a($$0, N, new dgl("moj"));
+      return it.a($$0, O, new dgl("pig"));
    }
 }

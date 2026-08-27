@@ -1,13 +1,34 @@
-public class euc extends eue {
-   private final ett b;
+public class euc extends eug {
+   private static final vf b = vf.c("mco.connect.connecting");
+   private final gkk c;
+   private final erg d;
+   private final erh e;
 
-   public euc(ett $$0, long $$1, vd $$2, Runnable $$3) {
-      super($$1, $$2, $$3);
-      this.b = $$0;
+   public euc(fcz $$0, erg $$1, erh $$2) {
+      this.d = $$1;
+      this.e = $$2;
+      this.c = new gkk($$0);
    }
 
    @Override
-   protected void a(eqj $$0, long $$1) throws erw {
-      $$0.a($$1, this.b);
+   public void run() {
+      this.c.a(this.d, fpd.a(this.e.a));
+   }
+
+   @Override
+   public void b() {
+      super.b();
+      this.c.a();
+      evg.O().ac().i();
+   }
+
+   @Override
+   public void c() {
+      this.c.b();
+   }
+
+   @Override
+   public vf a() {
+      return b;
    }
 }

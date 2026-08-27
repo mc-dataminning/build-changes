@@ -1,71 +1,36 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import javax.annotation.Nullable;
+public class fvv implements fvf<dih> {
+   private final fyj a;
 
-class fvv {
-   private final Map<hx, dgo> a;
-   @Nullable
-   private final List<dlp<dja>> b;
-   private final boolean c;
-   private final dlh d;
+   public fvv(fvg.a $$0) {
+      this.a = $$0.c();
+   }
 
-   fvv(dlh $$0) {
-      this.d = $$0;
-      this.c = $$0.F().ah();
-      this.a = ImmutableMap.copyOf($$0.G());
-      if ($$0 instanceof dld) {
-         this.b = null;
-      } else {
-         dli[] $$1 = $$0.d();
-         this.b = new ArrayList<>($$1.length);
-
-         for (dli $$2 : $$1) {
-            this.b.add($$2.c() ? null : $$2.h().d());
+   public void a(dih $$0, float $$1, epz $$2, ftf $$3, int $$4, int $$5) {
+      cto $$6 = $$0.i();
+      if ($$6 != null) {
+         csq $$7 = $$0.d();
+         blu $$8 = $$7.b($$6, $$0.aB_());
+         if ($$8 != null) {
+            a($$1, $$2, $$3, $$4, $$8, this.a, $$7.b(), $$7.a());
          }
       }
    }
 
-   @Nullable
-   public dgo a(hx $$0) {
-      return this.a.get($$0);
-   }
-
-   public dja b(hx $$0) {
-      int $$1 = $$0.u();
-      int $$2 = $$0.v();
-      int $$3 = $$0.w();
-      if (this.c) {
-         dja $$4 = null;
-         if ($$2 == 60) {
-            $$4 = cwl.hW.o();
-         }
-
-         if ($$2 == 70) {
-            $$4 = doa.a($$1, $$3);
-         }
-
-         return $$4 == null ? cwl.a.o() : $$4;
-      } else if (this.b == null) {
-         return cwl.a.o();
-      } else {
-         try {
-            int $$5 = this.d.e($$2);
-            if ($$5 >= 0 && $$5 < this.b.size()) {
-               dlp<dja> $$6 = this.b.get($$5);
-               if ($$6 != null) {
-                  return $$6.a($$1 & 15, $$2 & 15, $$3 & 15);
-               }
-            }
-
-            return cwl.a.o();
-         } catch (Throwable var8) {
-            o $$8 = o.a(var8, "Getting block state");
-            p $$9 = $$8.a("Block being got");
-            $$9.a("Location", () -> p.a(this.d, $$1, $$2, $$3));
-            throw new y($$8);
-         }
+   public static void a(float $$0, epz $$1, ftf $$2, int $$3, blu $$4, fyj $$5, double $$6, double $$7) {
+      $$1.a();
+      $$1.a(0.5F, 0.0F, 0.5F);
+      float $$8 = 0.53125F;
+      float $$9 = Math.max($$4.dg(), $$4.dh());
+      if ((double)$$9 > 1.0) {
+         $$8 /= $$9;
       }
+
+      $$1.a(0.0F, 0.4F, 0.0F);
+      $$1.a(a.d.rotationDegrees((float)aun.d((double)$$0, $$6, $$7) * 10.0F));
+      $$1.a(0.0F, -0.2F, 0.0F);
+      $$1.a(a.b.rotationDegrees(-30.0F));
+      $$1.b($$8, $$8, $$8);
+      $$5.a($$4, 0.0, 0.0, 0.0, 0.0F, $$0, $$1, $$2, $$3);
+      $$1.b();
    }
 }

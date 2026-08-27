@@ -1,24 +1,20 @@
 import com.mojang.logging.LogUtils;
 import org.slf4j.Logger;
 
-public class eub extends eua {
+public class eub extends eug {
    private static final Logger b = LogUtils.getLogger();
-   private static final vd c = vd.c("mco.configure.world.opening");
-   private final era d;
-   private final fct e;
-   private final boolean f;
-   private final eva g;
+   private static final vf c = vf.c("mco.configure.world.closing");
+   private final erg d;
+   private final esp e;
 
-   public eub(era $$0, fct $$1, boolean $$2, eva $$3) {
+   public eub(erg $$0, esp $$1) {
       this.d = $$0;
       this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
    }
 
    @Override
    public void run() {
-      eqj $$0 = eqj.a();
+      eqp $$0 = eqp.a();
 
       for (int $$1 = 0; $$1 < 25; $$1++) {
          if (this.d()) {
@@ -26,23 +22,14 @@ public class eub extends eua {
          }
 
          try {
-            boolean $$2 = $$0.f(this.d.a);
+            boolean $$2 = $$0.g(this.d.a);
             if ($$2) {
-               this.g.execute(() -> {
-                  if (this.e instanceof esj) {
-                     ((esj)this.e).e();
-                  }
-
-                  this.d.e = era.c.b;
-                  if (this.f) {
-                     eqe.a(this.d, this.e);
-                  } else {
-                     this.g.a(this.e);
-                  }
-               });
+               this.e.e();
+               this.d.e = erg.c.a;
+               a(this.e);
                break;
             }
-         } catch (erx var4) {
+         } catch (esd var4) {
             if (this.d()) {
                return;
             }
@@ -53,14 +40,14 @@ public class eub extends eua {
                return;
             }
 
-            b.error("Failed to open server", var5);
+            b.error("Failed to close server", var5);
             this.a(var5);
          }
       }
    }
 
    @Override
-   public vd a() {
+   public vf a() {
       return c;
    }
 }

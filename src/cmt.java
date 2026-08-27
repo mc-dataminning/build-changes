@@ -1,44 +1,65 @@
-import java.util.stream.Stream;
+import com.google.common.collect.Maps;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
 
 public class cmt {
-   public static bjw<cmr> a(cti $$0, cfb $$1, bju $$2) {
-      $$1.c($$2);
-      return bjw.b($$1.b($$2));
+   private final Map<cms, cmt.a> a = Maps.newHashMap();
+   private int b;
+
+   public boolean a(cms $$0) {
+      return this.a($$0, 0.0F) > 0.0F;
    }
 
-   public static cmr a(cmr $$0, cfb $$1, cmr $$2, boolean $$3) {
-      boolean $$4 = $$1.fT().d;
-      if ($$3 && $$4) {
-         if (!$$1.fS().h($$2)) {
-            $$1.fS().e($$2);
-         }
-
-         return $$0;
+   public float a(cms $$0, float $$1) {
+      cmt.a $$2 = this.a.get($$0);
+      if ($$2 != null) {
+         float $$3 = (float)($$2.b - $$2.a);
+         float $$4 = (float)$$2.b - ((float)this.b + $$1);
+         return aun.a($$4 / $$3, 0.0F, 1.0F);
       } else {
-         if (!$$4) {
-            $$0.h(1);
-         }
+         return 0.0F;
+      }
+   }
 
-         if ($$0.b()) {
-            return $$2;
-         } else {
-            if (!$$1.fS().e($$2)) {
-               $$1.a($$2, false);
+   public void a() {
+      this.b++;
+      if (!this.a.isEmpty()) {
+         Iterator<Entry<cms, cmt.a>> $$0 = this.a.entrySet().iterator();
+
+         while ($$0.hasNext()) {
+            Entry<cms, cmt.a> $$1 = $$0.next();
+            if ($$1.getValue().b <= this.b) {
+               $$0.remove();
+               this.c($$1.getKey());
             }
-
-            return $$0;
          }
       }
    }
 
-   public static cmr a(cmr $$0, cfb $$1, cmr $$2) {
-      return a($$0, $$1, $$2, true);
+   public void a(cms $$0, int $$1) {
+      this.a.put($$0, new cmt.a(this.b, this.b + $$1));
+      this.b($$0, $$1);
    }
 
-   public static void a(cbo $$0, Stream<cmr> $$1) {
-      cti $$2 = $$0.dM();
-      if (!$$2.B) {
-         $$1.forEach($$2x -> $$2.b(new cbo($$2, $$0.dr(), $$0.dt(), $$0.dx(), $$2x)));
+   public void b(cms $$0) {
+      this.a.remove($$0);
+      this.c($$0);
+   }
+
+   protected void b(cms $$0, int $$1) {
+   }
+
+   protected void c(cms $$0) {
+   }
+
+   static class a {
+      final int a;
+      final int b;
+
+      a(int $$0, int $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
    }
 }

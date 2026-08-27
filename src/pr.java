@@ -1,203 +1,202 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+
 public class pr {
-   private static final float a = -0.51F;
-   private static final float b = -0.4F;
-   private static final float c = 0.1F;
-   private static final float d = -0.15F;
-   private static final avk<Float> e = avk.a;
-   private static final avk<Float> f = avk.a($$0 -> $$0 < 0.0F ? $$0 : $$0 * 2.0F);
-   private static final avk<Float> g = avk.a($$0 -> 1.25F - 6.25F / ($$0 + 5.0F));
-   private static final avk<Float> h = avk.a($$0 -> $$0 * 2.0F);
+   private static final dpg.o a = a(cwr.a);
+   private static final dpg.o b = a(cwr.F);
+   private static final dpg.o c = a(cwr.hj);
+   private static final dpg.o d = a(cwr.hk);
+   private static final dpg.o e = a(cwr.iA);
+   private static final dpg.o f = a(cwr.K);
+   private static final dpg.o g = a(cwr.jp);
+   private static final dpg.o h = a(cwr.b);
+   private static final dpg.o i = a(cwr.sJ);
+   private static final dpg.o j = a(cwr.j);
+   private static final dpg.o k = a(cwr.l);
+   private static final dpg.o l = a(cwr.k);
+   private static final dpg.o m = a(cwr.fl);
+   private static final dpg.o n = a(cwr.i);
+   private static final dpg.o o = a(cwr.qN);
+   private static final dpg.o p = a(cwr.L);
+   private static final dpg.o q = a(cwr.I);
+   private static final dpg.o r = a(cwr.aV);
+   private static final dpg.o s = a(cwr.iC);
+   private static final dpg.o t = a(cwr.dP);
+   private static final dpg.o u = a(cwr.sI);
+   private static final dpg.o v = a(cwr.qP);
+   private static final dpg.o w = a(cwr.dO);
+   private static final dpg.o x = a(cwr.G);
+   private static final dpg.o y = a(cwr.H);
+   private static final dpg.o z = a(cwr.dV);
+   private static final dpg.o A = a(cwr.dW);
+   private static final dpg.o B = a(cwr.dX);
+   private static final dpg.o C = a(cwr.dY);
+   private static final dpg.o D = a(cwr.pr);
+   private static final dpg.o E = a(cwr.op);
+   private static final dpg.o F = a(cwr.on);
+   private static final dpg.o G = a(cwr.kK);
+   private static final dpg.o H = a(cwr.ow);
+   private static final dpg.o I = a(cwr.fz);
 
-   public static <C, I extends avk<C>> atk<C, I> a(I $$0, I $$1, I $$2, boolean $$3) {
-      avk<Float> $$4 = $$3 ? f : e;
-      atk<C, I> $$5 = a($$1, $$2, -0.15F, 0.0F, 0.0F, 0.1F, 0.0F, -0.03F, false, false, $$4);
-      atk<C, I> $$6 = a($$1, $$2, -0.1F, 0.03F, 0.1F, 0.1F, 0.01F, -0.03F, false, false, $$4);
-      atk<C, I> $$7 = a($$1, $$2, -0.1F, 0.03F, 0.1F, 0.7F, 0.01F, -0.03F, true, true, $$4);
-      atk<C, I> $$8 = a($$1, $$2, -0.05F, 0.03F, 0.1F, 1.0F, 0.01F, 0.01F, true, true, $$4);
-      return atk.<C, I>a($$0, $$4)
-         .a(-1.1F, 0.044F)
-         .a(-1.02F, -0.2222F)
-         .a(-0.51F, -0.2222F)
-         .a(-0.44F, -0.12F)
-         .a(-0.18F, -0.12F)
-         .a(-0.16F, $$5)
-         .a(-0.15F, $$5)
-         .a(-0.1F, $$6)
-         .a(0.25F, $$7)
-         .a(1.0F, $$8)
-         .a();
+   private static dpg.o a(cwp $$0) {
+      return dpg.a($$0.o());
    }
 
-   public static <C, I extends avk<C>> atk<C, I> a(I $$0, I $$1, I $$2, I $$3, boolean $$4) {
-      avk<Float> $$5 = $$4 ? g : e;
-      return atk.<C, I>a($$0, e)
-         .a(-0.19F, 3.95F)
-         .a(-0.15F, a($$1, $$2, $$3, 6.25F, true, e))
-         .a(-0.1F, a($$1, $$2, $$3, 5.47F, true, $$5))
-         .a(0.03F, a($$1, $$2, $$3, 5.08F, true, $$5))
-         .a(0.06F, a($$1, $$2, $$3, 4.69F, false, $$5))
-         .a();
+   public static dpg.o a() {
+      return a(true, false, true);
    }
 
-   public static <C, I extends avk<C>> atk<C, I> b(I $$0, I $$1, I $$2, I $$3, boolean $$4) {
-      avk<Float> $$5 = $$4 ? h : e;
-      float $$6 = 0.65F;
-      return atk.<C, I>a($$0, $$5)
-         .a(-0.11F, 0.0F)
-         .a(0.03F, a($$1, $$2, $$3, 1.0F, 0.5F, 0.0F, 0.0F, $$5))
-         .a(0.65F, a($$1, $$2, $$3, 1.0F, 1.0F, 1.0F, 0.0F, $$5))
-         .a();
-   }
-
-   private static <C, I extends avk<C>> atk<C, I> a(I $$0, I $$1, I $$2, float $$3, float $$4, float $$5, float $$6, avk<Float> $$7) {
-      float $$8 = -0.5775F;
-      atk<C, I> $$9 = a($$1, $$2, $$3, $$5, $$7);
-      atk<C, I> $$10 = a($$1, $$2, $$4, $$6, $$7);
-      return atk.<C, I>a($$0, $$7).a(-1.0F, $$9).a(-0.78F, $$10).a(-0.5775F, $$10).a(-0.375F, 0.0F).a();
-   }
-
-   private static <C, I extends avk<C>> atk<C, I> a(I $$0, I $$1, float $$2, float $$3, avk<Float> $$4) {
-      float $$5 = doq.a(0.4F);
-      float $$6 = doq.a(0.56666666F);
-      float $$7 = ($$5 + $$6) / 2.0F;
-      atk.b<C, I> $$8 = atk.a($$1, $$4);
-      $$8.a($$5, 0.0F);
-      if ($$3 > 0.0F) {
-         $$8.a($$7, a($$0, $$3, $$4));
-      } else {
-         $$8.a($$7, 0.0F);
+   public static dpg.o a(boolean $$0, boolean $$1, boolean $$2) {
+      dpg.f $$3 = dpg.a(dpj.a(97), 2);
+      dpg.f $$4 = dpg.a(dpj.a(256), 0);
+      dpg.f $$5 = dpg.b(dpj.a(63), -1);
+      dpg.f $$6 = dpg.b(dpj.a(74), 1);
+      dpg.f $$7 = dpg.a(dpj.a(60), 0);
+      dpg.f $$8 = dpg.a(dpj.a(62), 0);
+      dpg.f $$9 = dpg.a(dpj.a(63), 0);
+      dpg.f $$10 = dpg.a(-1, 0);
+      dpg.f $$11 = dpg.a(0, 0);
+      dpg.f $$12 = dpg.b(-6, -1);
+      dpg.f $$13 = dpg.b();
+      dpg.f $$14 = dpg.a(cuu.W, cuu.X);
+      dpg.f $$15 = dpg.a();
+      dpg.o $$16 = dpg.a(dpg.a($$11, n), j);
+      dpg.o $$17 = dpg.a(dpg.a(dpg.e, r), q);
+      dpg.o $$18 = dpg.a(dpg.a(dpg.e, h), p);
+      dpg.f $$19 = dpg.a(cuu.P, cuu.M, cuu.N);
+      dpg.f $$20 = dpg.a(cuu.f);
+      dpg.o $$21 = dpg.a(
+         dpg.a(dpg.a(cuu.J), dpg.a(dpg.a(dpg.a(doy.X, -0.0125, 0.0125), o), h)),
+         dpg.a(dpg.a(cuu.O), dpg.a(dpg.a(dpg.a(doy.Y, -0.05, 0.05), $$18), h)),
+         dpg.a(dpg.a(cuu.t), dpg.a(a(1.0), h)),
+         dpg.a($$19, $$17),
+         dpg.a($$20, $$17),
+         dpg.a(dpg.a(cuu.Z), h)
+      );
+      dpg.o $$22 = dpg.a(dpg.a(doy.Z, 0.45, 0.58), dpg.a($$11, v));
+      dpg.o $$23 = dpg.a(dpg.a(doy.Z, 0.35, 0.6), dpg.a($$11, v));
+      dpg.o $$24 = dpg.a(
+         dpg.a(dpg.a(cuu.H), dpg.a(dpg.a($$15, s), dpg.a(dpg.a(doy.aa, -0.5, 0.2), s), dpg.a(dpg.a(doy.ab, -0.0625, 0.025), w), dpg.a($$11, t))),
+         dpg.a(dpg.a(cuu.G), dpg.a(dpg.a($$15, h), $$22, dpg.a($$11, t))),
+         dpg.a(dpg.a(cuu.I), h),
+         dpg.a(dpg.a(cuu.F), dpg.a($$22, j)),
+         $$21,
+         dpg.a(dpg.a(cuu.w), dpg.a(a(1.75), h)),
+         dpg.a(dpg.a(cuu.u), dpg.a(dpg.a(a(2.0), $$18), dpg.a(a(1.0), h), dpg.a(a(-1.0), j), $$18)),
+         dpg.a(dpg.a(cuu.h), u),
+         j
+      );
+      dpg.o $$25 = dpg.a(
+         dpg.a(dpg.a(cuu.H), dpg.a(dpg.a($$15, s), dpg.a(dpg.a(doy.aa, 0.0, 0.2), s), dpg.a(dpg.a(doy.ab, 0.0, 0.025), w), dpg.a($$11, t))),
+         dpg.a(dpg.a(cuu.G), dpg.a(dpg.a($$15, h), $$23, dpg.a($$11, t))),
+         dpg.a(dpg.a(cuu.I), dpg.a(dpg.a($$15, h), dpg.a($$11, t))),
+         dpg.a(dpg.a(cuu.F), dpg.a($$23, dpg.a($$11, t))),
+         $$21,
+         dpg.a(dpg.a(cuu.w), dpg.a(dpg.a(a(1.75), h), dpg.a(a(-0.5), l))),
+         dpg.a(dpg.a(cuu.u), dpg.a(dpg.a(a(2.0), $$18), dpg.a(a(1.0), h), dpg.a(a(-1.0), $$16), $$18)),
+         dpg.a(dpg.a(cuu.n, cuu.o), dpg.a(dpg.a(a(1.75), l), dpg.a(a(-0.95), k))),
+         dpg.a(dpg.a(cuu.e), dpg.a($$11, t)),
+         dpg.a(dpg.a(cuu.h), u),
+         dpg.a(dpg.a(cuu.Y), m),
+         $$16
+      );
+      dpg.f $$26 = dpg.a(doy.N, -0.909, -0.5454);
+      dpg.f $$27 = dpg.a(doy.N, -0.1818, 0.1818);
+      dpg.f $$28 = dpg.a(doy.N, 0.5454, 0.909);
+      dpg.o $$29 = dpg.a(
+         dpg.a(
+            dpg.a,
+            dpg.a(
+               dpg.a(dpg.a(cuu.C), dpg.a($$3, dpg.a(dpg.a($$26, l), dpg.a($$27, l), dpg.a($$28, l), $$16))),
+               dpg.a(dpg.a(cuu.g), dpg.a($$8, dpg.a(dpg.a($$9), dpg.a(dpg.a(doy.W, 0.0), x)))),
+               dpg.a(dpg.a(cuu.h), dpg.a($$7, dpg.a(dpg.a($$9), dpg.a(dpg.a(doy.W, 0.0), x))))
+            )
+         ),
+         dpg.a(
+            dpg.a(cuu.A, cuu.B, cuu.C),
+            dpg.a(
+               dpg.a(
+                  dpg.a,
+                  dpg.a(
+                     dpg.a($$4, d),
+                     dpg.a($$6, dpg.a(dpg.a($$26, e), dpg.a($$27, e), dpg.a($$28, e), dpg.e())),
+                     dpg.a($$10, dpg.a(dpg.a(dpg.e, g), f)),
+                     dpg.a(dpg.a($$13), d),
+                     dpg.a($$12, c),
+                     $$18
+                  )
+               ),
+               dpg.a($$5, dpg.a(dpg.a($$9, dpg.a(dpg.a($$6), d)), dpg.e())),
+               dpg.a(dpg.b, dpg.a($$12, c))
+            )
+         ),
+         dpg.a(dpg.a, dpg.a($$10, dpg.a(dpg.a($$14, dpg.a($$13, dpg.a(dpg.a($$11, a), dpg.a(dpg.d(), w), x))), $$25))),
+         dpg.a($$12, dpg.a(dpg.a(dpg.a, dpg.a($$14, dpg.a($$13, x))), dpg.a(dpg.b, $$24), dpg.a($$19, dpg.a(dpg.c, r)), dpg.a($$20, dpg.a(dpg.d, r)))),
+         dpg.a(dpg.a, dpg.a(dpg.a(dpg.a(cuu.H, cuu.I), h), dpg.a(dpg.a(cuu.P, cuu.Q, cuu.R), $$17), $$18))
+      );
+      Builder<dpg.o> $$30 = ImmutableList.builder();
+      if ($$1) {
+         $$30.add(dpg.a(dpg.a(dpg.a("bedrock_roof", dpj.c(5), dpj.b())), b));
       }
 
-      if ($$2 > 0.0F) {
-         $$8.a(1.0F, a($$0, $$2, $$4));
-      } else {
-         $$8.a(1.0F, 0.0F);
+      if ($$2) {
+         $$30.add(dpg.a(dpg.a("bedrock_floor", dpj.a(), dpj.b(5)), b));
       }
 
-      return $$8.a();
+      dpg.o $$31 = dpg.a(dpg.c(), $$29);
+      $$30.add($$0 ? $$31 : $$29);
+      $$30.add(dpg.a(dpg.a("deepslate", dpj.a(0), dpj.a(8)), i));
+      return dpg.a((dpg.o[])$$30.build().toArray(dpg.o[]::new));
    }
 
-   private static <C, I extends avk<C>> atk<C, I> a(I $$0, float $$1, avk<Float> $$2) {
-      float $$3 = 0.63F * $$1;
-      float $$4 = 0.3F * $$1;
-      return atk.<C, I>a($$0, $$2).a(-0.01F, $$3).a(0.01F, $$4).a();
+   public static dpg.o b() {
+      dpg.f $$0 = dpg.a(dpj.a(31), 0);
+      dpg.f $$1 = dpg.a(dpj.a(32), 0);
+      dpg.f $$2 = dpg.b(dpj.a(30), 0);
+      dpg.f $$3 = dpg.a(dpg.b(dpj.a(35), 0));
+      dpg.f $$4 = dpg.a(dpj.c(5), 0);
+      dpg.f $$5 = dpg.b();
+      dpg.f $$6 = dpg.a(doy.ac, -0.012);
+      dpg.f $$7 = dpg.a(doy.ad, -0.012);
+      dpg.f $$8 = dpg.a(doy.ae, -0.012);
+      dpg.f $$9 = dpg.a(doy.af, 0.54);
+      dpg.f $$10 = dpg.a(doy.ag, 1.17);
+      dpg.f $$11 = dpg.a(doy.ah, 0.0);
+      dpg.o $$12 = dpg.a($$8, dpg.a($$2, dpg.a($$3, p)));
+      return dpg.a(
+         dpg.a(dpg.a("bedrock_floor", dpj.a(), dpj.b(5)), b),
+         dpg.a(dpg.a(dpg.a("bedrock_roof", dpj.c(5), dpj.b())), b),
+         dpg.a($$4, z),
+         dpg.a(dpg.a(cuu.ag), dpg.a(dpg.a(dpg.f, C), dpg.a(dpg.b, dpg.a($$12, dpg.a($$11, C), D)))),
+         dpg.a(dpg.a(cuu.af), dpg.a(dpg.a(dpg.f, dpg.a(dpg.a($$11, A), B)), dpg.a(dpg.b, dpg.a($$12, dpg.a($$11, A), B)))),
+         dpg.a(
+            dpg.a,
+            dpg.a(
+               dpg.a(dpg.a($$1), dpg.a($$5, y)),
+               dpg.a(dpg.a(cuu.ad), dpg.a(dpg.a($$9), dpg.a($$0, dpg.a(dpg.a($$10, E), F)))),
+               dpg.a(dpg.a(cuu.ae), dpg.a(dpg.a($$9), dpg.a($$0, dpg.a(dpg.a($$10, G), H))))
+            )
+         ),
+         dpg.a(
+            dpg.a(cuu.ac),
+            dpg.a(
+               dpg.a(dpg.b, dpg.a($$6, dpg.a(dpg.a(dpg.a($$5), dpg.a($$2, dpg.a($$3, A))), z))),
+               dpg.a(dpg.a, dpg.a($$0, dpg.a($$3, dpg.a($$7, dpg.a(dpg.a($$1, p), dpg.a(dpg.a($$5), p))))))
+            )
+         ),
+         z
+      );
    }
 
-   private static <C, I extends avk<C>> atk<C, I> a(I $$0, I $$1, I $$2, float $$3, boolean $$4, avk<Float> $$5) {
-      atk<C, I> $$6 = atk.<C, I>a($$1, $$5).a(-0.2F, 6.3F).a(0.2F, $$3).a();
-      atk.b<C, I> $$7 = atk.<C, I>a($$0, $$5)
-         .a(-0.6F, $$6)
-         .a(-0.5F, atk.<C, I>a($$1, $$5).a(-0.05F, 6.3F).a(0.05F, 2.67F).a())
-         .a(-0.35F, $$6)
-         .a(-0.25F, $$6)
-         .a(-0.1F, atk.<C, I>a($$1, $$5).a(-0.05F, 2.67F).a(0.05F, 6.3F).a())
-         .a(0.03F, $$6);
-      if ($$4) {
-         atk<C, I> $$8 = atk.<C, I>a($$1, $$5).a(0.0F, $$3).a(0.1F, 0.625F).a();
-         atk<C, I> $$9 = atk.<C, I>a($$2, $$5).a(-0.9F, $$3).a(-0.69F, $$8).a();
-         $$7.a(0.35F, $$3).a(0.45F, $$9).a(0.55F, $$9).a(0.62F, $$3);
-      } else {
-         atk<C, I> $$10 = atk.<C, I>a($$2, $$5).a(-0.7F, $$6).a(-0.15F, 1.37F).a();
-         atk<C, I> $$11 = atk.<C, I>a($$2, $$5).a(0.45F, $$6).a(0.7F, 1.56F).a();
-         $$7.a(0.05F, $$11).a(0.4F, $$11).a(0.45F, $$10).a(0.55F, $$10).a(0.58F, $$3);
-      }
-
-      return $$7.a();
+   public static dpg.o c() {
+      return I;
    }
 
-   private static float a(float $$0, float $$1, float $$2, float $$3) {
-      return ($$1 - $$0) / ($$3 - $$2);
+   public static dpg.o d() {
+      return a;
    }
 
-   private static <C, I extends avk<C>> atk<C, I> a(I $$0, float $$1, boolean $$2, avk<Float> $$3) {
-      atk.b<C, I> $$4 = atk.a($$0, $$3);
-      float $$5 = -0.7F;
-      float $$6 = -1.0F;
-      float $$7 = a(-1.0F, $$1, -0.7F);
-      float $$8 = 1.0F;
-      float $$9 = a(1.0F, $$1, -0.7F);
-      float $$10 = a($$1);
-      float $$11 = -0.65F;
-      if (-0.65F < $$10 && $$10 < 1.0F) {
-         float $$12 = a(-0.65F, $$1, -0.7F);
-         float $$13 = -0.75F;
-         float $$14 = a(-0.75F, $$1, -0.7F);
-         float $$15 = a($$7, $$14, -1.0F, -0.75F);
-         $$4.a(-1.0F, $$7, $$15);
-         $$4.a(-0.75F, $$14);
-         $$4.a(-0.65F, $$12);
-         float $$16 = a($$10, $$1, -0.7F);
-         float $$17 = a($$16, $$9, $$10, 1.0F);
-         float $$18 = 0.01F;
-         $$4.a($$10 - 0.01F, $$16);
-         $$4.a($$10, $$16, $$17);
-         $$4.a(1.0F, $$9, $$17);
-      } else {
-         float $$19 = a($$7, $$9, -1.0F, 1.0F);
-         if ($$2) {
-            $$4.a(-1.0F, Math.max(0.2F, $$7));
-            $$4.a(0.0F, aui.i(0.5F, $$7, $$9), $$19);
-         } else {
-            $$4.a(-1.0F, $$7, $$19);
-         }
-
-         $$4.a(1.0F, $$9, $$19);
-      }
-
-      return $$4.a();
-   }
-
-   private static float a(float $$0, float $$1, float $$2) {
-      float $$3 = 1.17F;
-      float $$4 = 0.46082947F;
-      float $$5 = 1.0F - (1.0F - $$1) * 0.5F;
-      float $$6 = 0.5F * (1.0F - $$1);
-      float $$7 = ($$0 + 1.17F) * 0.46082947F;
-      float $$8 = $$7 * $$5 - $$6;
-      return $$0 < $$2 ? Math.max($$8, -0.2222F) : Math.max($$8, 0.0F);
-   }
-
-   private static float a(float $$0) {
-      float $$1 = 1.17F;
-      float $$2 = 0.46082947F;
-      float $$3 = 1.0F - (1.0F - $$0) * 0.5F;
-      float $$4 = 0.5F * (1.0F - $$0);
-      return $$4 / (0.46082947F * $$3) - 1.17F;
-   }
-
-   public static <C, I extends avk<C>> atk<C, I> a(
-      I $$0, I $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, boolean $$8, boolean $$9, avk<Float> $$10
-   ) {
-      float $$11 = 0.6F;
-      float $$12 = 0.5F;
-      float $$13 = 0.5F;
-      atk<C, I> $$14 = a($$1, aui.i($$5, 0.6F, 1.5F), $$9, $$10);
-      atk<C, I> $$15 = a($$1, aui.i($$5, 0.6F, 1.0F), $$9, $$10);
-      atk<C, I> $$16 = a($$1, $$5, $$9, $$10);
-      atk<C, I> $$17 = a($$1, $$2 - 0.15F, 0.5F * $$5, aui.i(0.5F, 0.5F, 0.5F) * $$5, 0.5F * $$5, 0.6F * $$5, 0.5F, $$10);
-      atk<C, I> $$18 = a($$1, $$2, $$6 * $$5, $$3 * $$5, 0.5F * $$5, 0.6F * $$5, 0.5F, $$10);
-      atk<C, I> $$19 = a($$1, $$2, $$6, $$6, $$3, $$4, 0.5F, $$10);
-      atk<C, I> $$20 = a($$1, $$2, $$6, $$6, $$3, $$4, 0.5F, $$10);
-      atk<C, I> $$21 = atk.<C, I>a($$1, $$10).a(-1.0F, $$2).a(-0.4F, $$19).a(0.0F, $$4 + 0.07F).a();
-      atk<C, I> $$22 = a($$1, -0.02F, $$7, $$7, $$3, $$4, 0.0F, $$10);
-      atk.b<C, I> $$23 = atk.<C, I>a($$0, $$10).a(-0.85F, $$14).a(-0.7F, $$15).a(-0.4F, $$16).a(-0.35F, $$17).a(-0.1F, $$18).a(0.2F, $$19);
-      if ($$8) {
-         $$23.a(0.4F, $$20).a(0.45F, $$21).a(0.55F, $$21).a(0.58F, $$20);
-      }
-
-      $$23.a(0.7F, $$22);
-      return $$23.a();
-   }
-
-   private static <C, I extends avk<C>> atk<C, I> a(I $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, avk<Float> $$7) {
-      float $$8 = Math.max(0.5F * ($$2 - $$1), $$6);
-      float $$9 = 5.0F * ($$3 - $$2);
-      return atk.<C, I>a($$0, $$7)
-         .a(-1.0F, $$1, $$8)
-         .a(-0.4F, $$2, Math.min($$8, $$9))
-         .a(0.0F, $$3, $$9)
-         .a(0.4F, $$4, 2.0F * ($$4 - $$3))
-         .a(1.0F, $$5, 0.7F * ($$5 - $$4))
-         .a();
+   private static dpg.f a(double $$0) {
+      return dpg.a(doy.N, $$0 / 8.25, Double.MAX_VALUE);
    }
 }

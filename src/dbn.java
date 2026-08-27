@@ -1,25 +1,40 @@
 import com.mojang.serialization.MapCodec;
 
-public class dbn extends cws {
+public class dbn extends cwp {
    public static final MapCodec<dbn> a = b(dbn::new);
-   protected static final emf b = cwj.a(2.0, 0.0, 2.0, 14.0, 3.0, 14.0);
+   protected static final eml b = cwp.a(0.0, 0.0, 0.0, 16.0, 14.0, 16.0);
 
    @Override
    public MapCodec<dbn> a() {
       return a;
    }
 
-   public dbn(diz.d $$0) {
+   public dbn(djf.d $$0) {
       super($$0);
    }
 
    @Override
-   public emf a(dja $$0, cso $$1, hx $$2, elr $$3) {
+   public eml b(djg $$0, csu $$1, hx $$2, elx $$3) {
       return b;
    }
 
    @Override
-   protected boolean b(dja $$0, cso $$1, hx $$2) {
-      return $$0.a(asb.aK) || $$0.a(cwl.dX) || super.b($$0, $$1, $$2);
+   public eml b_(djg $$0, csu $$1, hx $$2) {
+      return emi.b();
+   }
+
+   @Override
+   public eml c(djg $$0, csu $$1, hx $$2, elx $$3) {
+      return emi.b();
+   }
+
+   @Override
+   public boolean a(djg $$0, csu $$1, hx $$2, efg $$3) {
+      return false;
+   }
+
+   @Override
+   public float d(djg $$0, csu $$1, hx $$2) {
+      return 0.2F;
    }
 }

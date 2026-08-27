@@ -1,128 +1,123 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import javax.annotation.Nullable;
 
-public class dbd extends dcw implements ddj {
-   public static final MapCodec<dbd> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dip.a.fieldOf("tree").forGetter($$0x -> $$0x.i), u()).apply($$0, dbd::new)
-   );
-   public static final dka b = djq.at;
-   public static final int c = 4;
-   private static final emf[] j = new emf[]{
-      cwj.a(7.0, 13.0, 7.0, 9.0, 16.0, 9.0),
-      cwj.a(7.0, 10.0, 7.0, 9.0, 16.0, 9.0),
-      cwj.a(7.0, 7.0, 7.0, 9.0, 16.0, 9.0),
-      cwj.a(7.0, 3.0, 7.0, 9.0, 16.0, 9.0),
-      cwj.a(7.0, 0.0, 7.0, 9.0, 16.0, 9.0)
-   };
-   private static final djr k = djq.C;
-   public static final djr d = djq.j;
+public class dbd extends dcx implements ddp {
+   public static final MapCodec<dbd> b = b(dbd::new);
+   public static final djx c = djw.C;
+   public static final djx d = djw.w;
+   private static final int k = 8;
+   public static final int e = 128;
+   private static final int l = 200;
 
    @Override
    public MapCodec<dbd> a() {
-      return a;
+      return b;
    }
 
-   public dbd(dip $$0, diz.d $$1) {
-      super($$0, $$1);
-      this.k(this.E.b().a(f, Integer.valueOf(0)).a(b, Integer.valueOf(0)).a(k, Boolean.valueOf(false)).a(d, Boolean.valueOf(false)));
-   }
-
-   @Override
-   protected void a(djb.a<cwj, dja> $$0) {
-      $$0.a(f).a(b).a(k).a(d);
+   public dbd(djf.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(a, ic.b).a(c, Boolean.valueOf(false)).a(d, Boolean.valueOf(false)));
    }
 
    @Override
-   protected boolean b(dja $$0, cso $$1, hx $$2) {
-      return super.b($$0, $$1, $$2) || $$0.a(cwl.dR);
-   }
-
-   @Nullable
-   @Override
-   public dja a(cpa $$0) {
-      eek $$1 = $$0.q().b_($$0.a());
-      boolean $$2 = $$1.a() == eel.c;
-      return super.a($$0).a(k, Boolean.valueOf($$2)).a(b, Integer.valueOf(4));
+   public djg a(cpg $$0) {
+      eeq $$1 = $$0.q().b_($$0.a());
+      boolean $$2 = $$1.a() == eer.c;
+      return this.o().a(a, $$0.k()).a(c, Boolean.valueOf($$2));
    }
 
    @Override
-   public emf a(dja $$0, cso $$1, hx $$2, elr $$3) {
-      elm $$4 = $$0.n($$1, $$2);
-      emf $$5;
-      if (!$$0.c(d)) {
-         $$5 = j[4];
-      } else {
-         $$5 = j[$$0.c(b)];
+   public djg a(djg $$0, ic $$1, djg $$2, ctp $$3, hx $$4, hx $$5) {
+      if ($$0.c(c)) {
+         $$3.a($$4, eer.c, eer.c.a($$3));
       }
 
-      return $$5.a($$4.c, $$4.d, $$4.e);
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public boolean a(dja $$0, ctl $$1, hx $$2) {
-      return h($$0) ? $$1.a_($$2.c()).a(cwl.aL) : super.a($$0, $$1, $$2);
+   public eeq c_(djg $$0) {
+      return $$0.c(c) ? eer.c.a(false) : super.c_($$0);
    }
 
    @Override
-   public dja a(dja $$0, ic $$1, dja $$2, ctj $$3, hx $$4, hx $$5) {
-      if ($$0.c(k)) {
-         $$3.a($$4, eel.c, eel.c.a($$3));
+   public int a(djg $$0, csu $$1, hx $$2, ic $$3) {
+      return $$0.c(d) ? 15 : 0;
+   }
+
+   @Override
+   public int b(djg $$0, csu $$1, hx $$2, ic $$3) {
+      return $$0.c(d) && $$0.c(a) == $$3 ? 15 : 0;
+   }
+
+   public void d(djg $$0, cto $$1, hx $$2) {
+      $$1.a($$2, $$0.a(d, Boolean.valueOf(true)), 3);
+      this.e($$0, $$1, $$2);
+      $$1.a($$2, this, 8);
+      $$1.c(3002, $$2, $$0.c(a).o().ordinal());
+   }
+
+   private void e(djg $$0, cto $$1, hx $$2) {
+      $$1.a($$2.a($$0.c(a).g()), this);
+   }
+
+   @Override
+   public void a(djg $$0, and $$1, hx $$2, auu $$3) {
+      $$1.a($$2, $$0.a(d, Boolean.valueOf(false)), 3);
+      this.e($$0, $$1, $$2);
+   }
+
+   @Override
+   public void a(djg $$0, cto $$1, hx $$2, auu $$3) {
+      if ($$1.aa() && (long)$$1.z.a(200) <= $$1.X() % 200L && $$2.v() == $$1.a(dop.a.b, $$2.u(), $$2.w()) - 1) {
+         auq.a($$0.c(a).o(), $$1, $$2, 0.125, jx.aQ, bjl.a(1, 2));
       }
-
-      return $$1 == ic.b && !$$0.a($$3, $$4) ? cwl.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public eek c_(dja $$0) {
-      return $$0.c(k) ? eel.c.a(false) : super.c_($$0);
-   }
-
-   @Override
-   public void b(dja $$0, amz $$1, hx $$2, aup $$3) {
-      if (!h($$0)) {
-         if ($$3.a(7) == 0) {
-            this.a($$1, $$2, $$0, $$3);
+   public void a(djg $$0, cto $$1, hx $$2, djg $$3, boolean $$4) {
+      if (!$$0.a($$3.b())) {
+         if ($$0.c(d)) {
+            this.e($$0, $$1, $$2);
          }
-      } else {
-         if (!n($$0)) {
-            $$1.a($$2, $$0.a(b), 2);
+
+         super.a($$0, $$1, $$2, $$3, $$4);
+      }
+   }
+
+   @Override
+   public void b(djg $$0, cto $$1, hx $$2, djg $$3, boolean $$4) {
+      if (!$$0.a($$3.b())) {
+         if ($$0.c(d) && !$$1.N().a($$2, this)) {
+            $$1.a($$2, $$0.a(d, Boolean.valueOf(false)), 18);
          }
       }
    }
 
    @Override
-   public boolean b(ctl $$0, hx $$1, dja $$2) {
-      return !h($$2) || !n($$2);
-   }
+   public void a(cto $$0, djg $$1, elo $$2, cfz $$3) {
+      if ($$0.aa() && $$3 instanceof cgl && ((cgl)$$3).M()) {
+         hx $$4 = $$2.a();
+         if ($$0.h($$4)) {
+            bmj $$5 = bly.aj.a($$0);
+            if ($$5 != null) {
+               $$5.e(els.c($$4.c()));
+               blu $$6 = $$3.w();
+               $$5.b($$6 instanceof ane ? (ane)$$6 : null);
+               $$0.b($$5);
+            }
 
-   @Override
-   public boolean a(cti $$0, aup $$1, hx $$2, dja $$3) {
-      return h($$3) ? !n($$3) : super.a($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   public void a(amz $$0, aup $$1, hx $$2, dja $$3) {
-      if (h($$3) && !n($$3)) {
-         $$0.a($$2, $$3.a(b), 2);
-      } else {
-         super.a($$0, $$1, $$2, $$3);
+            $$0.a(null, $$4, arr.yK, ars.d, 5.0F, 1.0F);
+         }
       }
    }
 
-   private static boolean h(dja $$0) {
-      return $$0.c(d);
+   @Override
+   protected void a(djh.a<cwp, djg> $$0) {
+      $$0.a(a, d, c);
    }
 
-   private static boolean n(dja $$0) {
-      return $$0.c(b) == 4;
-   }
-
-   public static dja c() {
-      return b(0);
-   }
-
-   public static dja b(int $$0) {
-      return cwl.E.o().a(d, Boolean.valueOf(true)).a(b, Integer.valueOf($$0));
+   @Override
+   public boolean f_(djg $$0) {
+      return true;
    }
 }

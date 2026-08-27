@@ -1,16 +1,15 @@
-import javax.annotation.Nullable;
+public abstract class xd<T extends uo> implements xf<T> {
+   private final Iterable<xf<T>> a;
 
-public interface xd<T extends um> {
-   void a(ug var1);
-
-   void a(T var1);
-
-   default boolean b() {
-      return false;
+   protected xd(Iterable<xf<T>> $$0) {
+      this.a = $$0;
    }
 
-   @Nullable
-   default uf c() {
-      return null;
+   public final Iterable<xf<T>> a() {
+      return this.a;
+   }
+
+   @Override
+   public final void a(ui $$0) {
    }
 }

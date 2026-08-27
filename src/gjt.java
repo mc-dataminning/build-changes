@@ -1,74 +1,60 @@
-public class gjt implements gjv {
-   private static final int a = 600;
-   private static final vd b = vd.c("tutorial.punch_tree.title");
-   private static final vd c = vd.a("tutorial.punch_tree.description", gju.a("attack"));
-   private final gju d;
-   private ezi e;
-   private int f;
-   private int g;
+import javax.annotation.Nullable;
 
-   public gjt(gju $$0) {
+public class gjt {
+   private boolean a;
+   @Nullable
+   private gjn.b b;
+   @Nullable
+   private String c;
+   @Nullable
+   private final String d;
+
+   public gjt(@Nullable String $$0) {
       this.d = $$0;
    }
 
-   @Override
-   public void a() {
-      this.f++;
-      if (!this.d.f()) {
-         this.d.a(gjw.f);
+   public void a(gjo.a $$0) {
+      if (this.c != null) {
+         $$0.a(gjn.j, !this.c.equals("vanilla"));
+      }
+
+      $$0.a(gjn.k, this.a());
+   }
+
+   private gjn.c a() {
+      fob $$0 = evg.O().Q();
+      if ($$0 != null && $$0.e()) {
+         return gjn.c.a;
       } else {
-         if (this.f == 1) {
-            fsb $$0 = this.d.e().s;
-            if ($$0 != null) {
-               if ($$0.fS().a(asj.r)) {
-                  this.d.a(gjw.e);
-                  return;
-               }
+         return evg.O().S() ? gjn.c.b : gjn.c.c;
+      }
+   }
 
-               if (gjq.a($$0)) {
-                  this.d.a(gjw.e);
-                  return;
-               }
+   public boolean a(gjk $$0) {
+      if (!this.a && this.b != null && this.c != null) {
+         this.a = true;
+         $$0.send(gjl.b, $$0x -> {
+            $$0x.a(gjn.n, this.b);
+            if (this.d != null) {
+               $$0x.a(gjn.o, this.d);
             }
-         }
-
-         if ((this.f >= 600 || this.g > 3) && this.e == null) {
-            this.e = new ezi(ezi.a.c, b, c, true);
-            this.d.e().ax().a(this.e);
-         }
+         });
+         return true;
+      } else {
+         return false;
       }
    }
 
-   @Override
-   public void b() {
-      if (this.e != null) {
-         this.e.c();
-         this.e = null;
-      }
+   public void a(ctl $$0, boolean $$1) {
+      this.b = switch ($$0) {
+         case a -> $$1 ? gjn.b.e : gjn.b.a;
+         case b -> gjn.b.b;
+         case c -> gjn.b.c;
+         case d -> gjn.b.d;
+      };
    }
 
-   @Override
-   public void a(fnk $$0, hx $$1, dja $$2, float $$3) {
-      boolean $$4 = $$2.a(asb.t);
-      if ($$4 && $$3 > 0.0F) {
-         if (this.e != null) {
-            this.e.a($$3);
-         }
-
-         if ($$3 >= 1.0F) {
-            this.d.a(gjw.d);
-         }
-      } else if (this.e != null) {
-         this.e.a(0.0F);
-      } else if ($$4) {
-         this.g++;
-      }
-   }
-
-   @Override
-   public void a(cmr $$0) {
-      if ($$0.a(asj.r)) {
-         this.d.a(gjw.e);
-      }
+   public void a(String $$0) {
+      this.c = $$0;
    }
 }

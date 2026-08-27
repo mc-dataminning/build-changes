@@ -1,55 +1,33 @@
-import com.google.gson.annotations.SerializedName;
-import java.util.UUID;
+import com.google.common.collect.Lists;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
+import java.util.Iterator;
+import java.util.List;
+import org.slf4j.Logger;
 
-public class eqw extends erp implements erj {
-   @SerializedName("name")
-   private String a;
-   @SerializedName("uuid")
-   private UUID b;
-   @SerializedName("operator")
-   private boolean c;
-   @SerializedName("accepted")
-   private boolean d;
-   @SerializedName("online")
-   private boolean e;
+public class eqw extends erv {
+   private static final Logger b = LogUtils.getLogger();
+   public List<eqv> a;
 
-   public String a() {
-      return this.a;
-   }
+   public static eqw a(String $$0) {
+      JsonParser $$1 = new JsonParser();
+      eqw $$2 = new eqw();
+      $$2.a = Lists.newArrayList();
 
-   public void a(String $$0) {
-      this.a = $$0;
-   }
+      try {
+         JsonElement $$3 = $$1.parse($$0).getAsJsonObject().get("backups");
+         if ($$3.isJsonArray()) {
+            Iterator<JsonElement> $$4 = $$3.getAsJsonArray().iterator();
 
-   public UUID b() {
-      return this.b;
-   }
+            while ($$4.hasNext()) {
+               $$2.a.add(eqv.a($$4.next()));
+            }
+         }
+      } catch (Exception var5) {
+         b.error("Could not parse BackupList: {}", var5.getMessage());
+      }
 
-   public void a(UUID $$0) {
-      this.b = $$0;
-   }
-
-   public boolean c() {
-      return this.c;
-   }
-
-   public void a(boolean $$0) {
-      this.c = $$0;
-   }
-
-   public boolean d() {
-      return this.d;
-   }
-
-   public void b(boolean $$0) {
-      this.d = $$0;
-   }
-
-   public boolean e() {
-      return this.e;
-   }
-
-   public void c(boolean $$0) {
-      this.e = $$0;
+      return $$2;
    }
 }

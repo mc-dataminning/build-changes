@@ -1,40 +1,27 @@
-public class fqm extends frn {
-   fqm(fnk $$0, double $$1, double $$2, double $$3, double $$4) {
+public class fqm extends fqr {
+   fqm(fnq $$0, double $$1, double $$2, double $$3) {
       super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.B = 0.66F;
-      this.C = true;
-      this.j *= 0.01F;
-      this.k *= 0.01F;
-      this.l *= 0.01F;
-      this.k += 0.2;
-      this.v = Math.max(0.0F, aui.a(((float)$$4 + 0.0F) * (float) (Math.PI * 2)) * 0.65F + 0.35F);
-      this.w = Math.max(0.0F, aui.a(((float)$$4 + 0.33333334F) * (float) (Math.PI * 2)) * 0.65F + 0.35F);
-      this.x = Math.max(0.0F, aui.a(((float)$$4 + 0.6666667F) * (float) (Math.PI * 2)) * 0.65F + 0.35F);
-      this.D *= 1.5F;
-      this.t = 6;
+      this.t = 8;
    }
 
    @Override
-   public fqr b() {
-      return fqr.b;
-   }
-
-   @Override
-   public float b(float $$0) {
-      return this.D * aui.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
-   }
-
-   public static class a implements fqq<ka> {
-      private final fri a;
-
-      public a(fri $$0) {
-         this.a = $$0;
+   public void a() {
+      for (int $$0 = 0; $$0 < 6; $$0++) {
+         double $$1 = this.g + (this.r.j() - this.r.j()) * 4.0;
+         double $$2 = this.h + (this.r.j() - this.r.j()) * 4.0;
+         double $$3 = this.i + (this.r.j() - this.r.j()) * 4.0;
+         this.c.a(jx.x, $$1, $$2, $$3, (double)((float)this.s / (float)this.t), 0.0, 0.0);
       }
 
-      public fqn a(ka $$0, fnk $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fqm $$8 = new fqm($$1, $$2, $$3, $$4, $$5);
-         $$8.a(this.a);
-         return $$8;
+      this.s++;
+      if (this.s == this.t) {
+         this.k();
+      }
+   }
+
+   public static class a implements fqw<ka> {
+      public fqt a(ka $$0, fnq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fqm($$1, $$2, $$3, $$4);
       }
    }
 }

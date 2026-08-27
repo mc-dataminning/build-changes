@@ -9,19 +9,19 @@ import java.util.Optional;
 import java.util.stream.Stream;
 
 public class ix {
-   private static final Map<ahc<? extends it<?>>, ix.a<?>> b = ac.a(() -> {
-      Builder<ahc<? extends it<?>>, ix.a<?>> $$0 = ImmutableMap.builder();
-      a($$0, ke.at, cuh.b);
-      a($$0, ke.au, uz.a);
-      a($$0, ke.aJ, cox.a);
-      a($$0, ke.aI, cov.a);
-      a($$0, ke.ay, dmj.h);
-      a($$0, ke.r, bkp.a);
+   private static final Map<ahf<? extends it<?>>, ix.a<?>> b = ac.a(() -> {
+      Builder<ahf<? extends it<?>>, ix.a<?>> $$0 = ImmutableMap.builder();
+      a($$0, ke.at, cun.b);
+      a($$0, ke.au, vb.a);
+      a($$0, ke.aJ, cpd.a);
+      a($$0, ke.aI, cpb.a);
+      a($$0, ke.ay, dmp.h);
+      a($$0, ke.r, bku.a);
       return $$0.build();
    });
    public static final Codec<iu> a = a();
 
-   private static <E> void a(Builder<ahc<? extends it<?>>, ix.a<?>> $$0, ahc<? extends it<E>> $$1, Codec<E> $$2) {
+   private static <E> void a(Builder<ahf<? extends it<?>>, ix.a<?>> $$0, ahf<? extends it<E>> $$1, Codec<E> $$2) {
       $$0.put($$1, new ix.a<>($$1, $$2));
    }
 
@@ -29,7 +29,7 @@ public class ix {
       return $$0.c().filter($$0x -> b.containsKey($$0x.a()));
    }
 
-   private static <E> DataResult<? extends Codec<E>> a(ahc<? extends it<E>> $$0) {
+   private static <E> DataResult<? extends Codec<E>> a(ahf<? extends it<E>> $$0) {
       return Optional.ofNullable(b.get($$0))
          .map($$0x -> $$0x.b())
          .<DataResult<? extends Codec<E>>>map(DataResult::success)
@@ -37,28 +37,28 @@ public class ix {
    }
 
    private static <E> Codec<iu> a() {
-      Codec<ahc<? extends it<E>>> $$0 = ahd.a.xmap(ahc::a, ahc::a);
+      Codec<ahf<? extends it<E>>> $$0 = ahg.a.xmap(ahf::a, ahf::a);
       Codec<it<E>> $$1 = $$0.partialDispatch(
          "type", $$0x -> DataResult.success($$0x.c()), $$0x -> a($$0x).map($$1x -> iv.a($$0x, Lifecycle.experimental(), $$1x))
       );
-      UnboundedMapCodec<? extends ahc<? extends it<?>>, ? extends it<?>> $$2 = Codec.unboundedMap($$0, $$1);
+      UnboundedMapCodec<? extends ahf<? extends it<?>>, ? extends it<?>> $$2 = Codec.unboundedMap($$0, $$1);
       return a($$2);
    }
 
-   private static <K extends ahc<? extends it<?>>, V extends it<?>> Codec<iu> a(UnboundedMapCodec<K, V> $$0) {
+   private static <K extends ahf<? extends it<?>>, V extends it<?>> Codec<iu> a(UnboundedMapCodec<K, V> $$0) {
       return $$0.xmap(iu.c::new, $$0x -> a($$0x).collect(ImmutableMap.toImmutableMap($$0xx -> $$0xx.a(), $$0xx -> $$0xx.b())));
    }
 
-   public static Stream<iu.d<?>> a(io<ahm> $$0) {
-      return a($$0.c(ahm.b));
+   public static Stream<iu.d<?>> a(io<ahp> $$0) {
+      return a($$0.c(ahp.b));
    }
 
-   public static Stream<iu.d<?>> b(io<ahm> $$0) {
-      Stream<iu.d<?>> $$1 = $$0.a(ahm.a).c();
+   public static Stream<iu.d<?>> b(io<ahp> $$0) {
+      Stream<iu.d<?>> $$1 = $$0.a(ahp.a).c();
       Stream<iu.d<?>> $$2 = a($$0);
       return Stream.concat($$2, $$1);
    }
 
-   static record a<E>(ahc<? extends it<E>> a, Codec<E> b) {
+   static record a<E>(ahf<? extends it<E>> a, Codec<E> b) {
    }
 }

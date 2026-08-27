@@ -1,181 +1,141 @@
-import java.util.function.Predicate;
+import java.util.Arrays;
+import javax.annotation.Nullable;
 
 public class dli {
    public static final int a = 16;
-   public static final int b = 16;
-   public static final int c = 4096;
-   public static final int d = 2;
-   private short e;
-   private short f;
-   private short g;
-   private final dlp<dja> h;
-   private dlq<ih<cuh>> i;
+   public static final int b = 128;
+   public static final int c = 2048;
+   private static final int e = 4;
+   @Nullable
+   protected byte[] d;
+   private int f;
 
-   public dli(dlp<dja> $$0, dlq<ih<cuh>> $$1) {
-      this.h = $$0;
-      this.i = $$1;
-      this.g();
+   public dli() {
+      this(0);
    }
 
-   public dli(it<cuh> $$0) {
-      this.h = new dlp<>(cwj.q, cwl.a.o(), dlp.d.d);
-      this.i = new dlp<>($$0.t(), $$0.f(cuo.b), dlp.d.e);
+   public dli(int $$0) {
+      this.f = $$0;
    }
 
-   public dja a(int $$0, int $$1, int $$2) {
-      return this.h.a($$0, $$1, $$2);
+   public dli(byte[] $$0) {
+      this.d = $$0;
+      this.f = 0;
+      if ($$0.length != 2048) {
+         throw (IllegalArgumentException)ac.b(new IllegalArgumentException("DataLayer should be 2048 bytes not: " + $$0.length));
+      }
    }
 
-   public eek b(int $$0, int $$1, int $$2) {
-      return this.h.a($$0, $$1, $$2).u();
+   public int a(int $$0, int $$1, int $$2) {
+      return this.d(b($$0, $$1, $$2));
    }
 
-   public void a() {
-      this.h.a();
+   public void a(int $$0, int $$1, int $$2, int $$3) {
+      this.a(b($$0, $$1, $$2), $$3);
    }
 
-   public void b() {
-      this.h.b();
+   private static int b(int $$0, int $$1, int $$2) {
+      return $$1 << 8 | $$2 << 4 | $$0;
    }
 
-   public dja a(int $$0, int $$1, int $$2, dja $$3) {
-      return this.a($$0, $$1, $$2, $$3, true);
-   }
-
-   public dja a(int $$0, int $$1, int $$2, dja $$3, boolean $$4) {
-      dja $$5;
-      if ($$4) {
-         $$5 = this.h.a($$0, $$1, $$2, $$3);
+   private int d(int $$0) {
+      if (this.d == null) {
+         return this.f;
       } else {
-         $$5 = this.h.b($$0, $$1, $$2, $$3);
+         int $$1 = f($$0);
+         int $$2 = e($$0);
+         return this.d[$$1] >> 4 * $$2 & 15;
+      }
+   }
+
+   private void a(int $$0, int $$1) {
+      byte[] $$2 = this.a();
+      int $$3 = f($$0);
+      int $$4 = e($$0);
+      int $$5 = ~(15 << 4 * $$4);
+      int $$6 = ($$1 & 15) << 4 * $$4;
+      $$2[$$3] = (byte)($$2[$$3] & $$5 | $$6);
+   }
+
+   private static int e(int $$0) {
+      return $$0 & 1;
+   }
+
+   private static int f(int $$0) {
+      return $$0 >> 1;
+   }
+
+   public void a(int $$0) {
+      this.f = $$0;
+      this.d = null;
+   }
+
+   private static byte g(int $$0) {
+      byte $$1 = (byte)$$0;
+
+      for (int $$2 = 4; $$2 < 8; $$2 += 4) {
+         $$1 = (byte)($$1 | $$0 << $$2);
       }
 
-      eek $$7 = $$5.u();
-      eek $$8 = $$3.u();
-      if (!$$5.i()) {
-         this.e--;
-         if ($$5.v()) {
-            this.f--;
+      return $$1;
+   }
+
+   public byte[] a() {
+      if (this.d == null) {
+         this.d = new byte[2048];
+         if (this.f != 0) {
+            Arrays.fill(this.d, g(this.f));
          }
       }
 
-      if (!$$7.c()) {
-         this.g--;
-      }
+      return this.d;
+   }
 
-      if (!$$3.i()) {
-         this.e++;
-         if ($$3.v()) {
-            this.f++;
+   public dli b() {
+      return this.d == null ? new dli(this.f) : new dli((byte[])this.d.clone());
+   }
+
+   @Override
+   public String toString() {
+      StringBuilder $$0 = new StringBuilder();
+
+      for (int $$1 = 0; $$1 < 4096; $$1++) {
+         $$0.append(Integer.toHexString(this.d($$1)));
+         if (($$1 & 15) == 15) {
+            $$0.append("\n");
+         }
+
+         if (($$1 & 0xFF) == 255) {
+            $$0.append("\n");
          }
       }
 
-      if (!$$8.c()) {
-         this.g++;
+      return $$0.toString();
+   }
+
+   @avs
+   public String b(int $$0) {
+      StringBuilder $$1 = new StringBuilder();
+
+      for (int $$2 = 0; $$2 < 256; $$2++) {
+         $$1.append(Integer.toHexString(this.d($$2)));
+         if (($$2 & 15) == 15) {
+            $$1.append("\n");
+         }
       }
 
-      return $$5;
+      return $$1.toString();
    }
 
    public boolean c() {
-      return this.e == 0;
+      return this.d == null;
+   }
+
+   public boolean c(int $$0) {
+      return this.d == null && this.f == $$0;
    }
 
    public boolean d() {
-      return this.e() || this.f();
-   }
-
-   public boolean e() {
-      return this.f > 0;
-   }
-
-   public boolean f() {
-      return this.g > 0;
-   }
-
-   public void g() {
-      class a implements dlp.b<dja> {
-         public int a;
-         public int b;
-         public int c;
-
-         public void a(dja $$0, int $$1) {
-            eek $$2 = $$0.u();
-            if (!$$0.i()) {
-               this.a += $$1;
-               if ($$0.v()) {
-                  this.b += $$1;
-               }
-            }
-
-            if (!$$2.c()) {
-               this.a += $$1;
-               if ($$2.f()) {
-                  this.c += $$1;
-               }
-            }
-         }
-      }
-
-      a $$0 = new a();
-      this.h.a($$0);
-      this.e = (short)$$0.a;
-      this.f = (short)$$0.b;
-      this.g = (short)$$0.c;
-   }
-
-   public dlp<dja> h() {
-      return this.h;
-   }
-
-   public dlq<ih<cuh>> i() {
-      return this.i;
-   }
-
-   public void a(ug $$0) {
-      this.e = $$0.readShort();
-      this.h.a($$0);
-      dlp<ih<cuh>> $$1 = this.i.e();
-      $$1.a($$0);
-      this.i = $$1;
-   }
-
-   public void b(ug $$0) {
-      dlp<ih<cuh>> $$1 = this.i.e();
-      $$1.a($$0);
-      this.i = $$1;
-   }
-
-   public void c(ug $$0) {
-      $$0.l(this.e);
-      this.h.b($$0);
-      this.i.b($$0);
-   }
-
-   public int j() {
-      return 2 + this.h.c() + this.i.c();
-   }
-
-   public boolean a(Predicate<dja> $$0) {
-      return this.h.a($$0);
-   }
-
-   public ih<cuh> c(int $$0, int $$1, int $$2) {
-      return this.i.a($$0, $$1, $$2);
-   }
-
-   public void a(cuk $$0, cuq.f $$1, int $$2, int $$3, int $$4) {
-      dlp<ih<cuh>> $$5 = this.i.e();
-      int $$6 = 4;
-
-      for (int $$7 = 0; $$7 < 4; $$7++) {
-         for (int $$8 = 0; $$8 < 4; $$8++) {
-            for (int $$9 = 0; $$9 < 4; $$9++) {
-               $$5.b($$7, $$8, $$9, $$0.getNoiseBiome($$2 + $$7, $$3 + $$8, $$4 + $$9, $$1));
-            }
-         }
-      }
-
-      this.i = $$5;
+      return this.d == null && this.f == 0;
    }
 }

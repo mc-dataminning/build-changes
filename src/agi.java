@@ -1,8 +1,8 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface agi extends adk, adl {
+   @Override
+   default uh b() {
+      return uh.c;
+   }
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface agi {
+   void a(agk var1);
 }

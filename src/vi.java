@@ -1,99 +1,131 @@
-import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import com.mojang.brigadier.Message;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.datafixers.DataFixUtils;
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public interface vi {
-   Optional<avm> a = Optional.of(avm.a);
-   vi b = new vi() {
-      @Override
-      public <T> Optional<T> a(vi.a<T> $$0) {
-         return Optional.empty();
+public class vi {
+   public static final String a = ", ";
+   public static final vf b = vf.b(", ").a(n.h);
+   public static final vf c = vf.b(", ");
+
+   public static vt a(vt $$0, wc $$1) {
+      if ($$1.g()) {
+         return $$0;
+      } else {
+         wc $$2 = $$0.a();
+         if ($$2.g()) {
+            return $$0.b($$1);
+         } else {
+            return $$2.equals($$1) ? $$0 : $$0.b($$2.a($$1));
+         }
+      }
+   }
+
+   public static Optional<vt> a(@Nullable ds $$0, Optional<vf> $$1, @Nullable blu $$2, int $$3) throws CommandSyntaxException {
+      return $$1.isPresent() ? Optional.of(a($$0, $$1.get(), $$2, $$3)) : Optional.empty();
+   }
+
+   public static vt a(@Nullable ds $$0, vf $$1, @Nullable blu $$2, int $$3) throws CommandSyntaxException {
+      if ($$3 > 100) {
+         return $$1.f();
+      } else {
+         vt $$4 = $$1.b().a($$0, $$2, $$3 + 1);
+
+         for (vf $$5 : $$1.c()) {
+            $$4.b(a($$0, $$5, $$2, $$3 + 1));
+         }
+
+         return $$4.c(a($$0, $$1.a(), $$2, $$3));
+      }
+   }
+
+   private static wc a(@Nullable ds $$0, wc $$1, @Nullable blu $$2, int $$3) throws CommandSyntaxException {
+      vl $$4 = $$1.i();
+      if ($$4 != null) {
+         vf $$5 = $$4.a(vl.a.a);
+         if ($$5 != null) {
+            vl $$6 = new vl(vl.a.a, a($$0, $$5, $$2, $$3 + 1));
+            return $$1.a($$6);
+         }
       }
 
-      @Override
-      public <T> Optional<T> a(vi.b<T> $$0, wa $$1) {
-         return Optional.empty();
+      return $$1;
+   }
+
+   public static vf a(Collection<String> $$0) {
+      return a($$0, $$0x -> vf.b($$0x).a(n.k));
+   }
+
+   public static <T extends Comparable<T>> vf a(Collection<T> $$0, Function<T, vf> $$1) {
+      if ($$0.isEmpty()) {
+         return ve.a;
+      } else if ($$0.size() == 1) {
+         return $$1.apply($$0.iterator().next());
+      } else {
+         List<T> $$2 = Lists.newArrayList($$0);
+         $$2.sort(Comparable::compareTo);
+         return b($$2, $$1);
       }
-   };
-
-   <T> Optional<T> a(vi.a<T> var1);
-
-   <T> Optional<T> a(vi.b<T> var1, wa var2);
-
-   static vi e(final String $$0) {
-      return new vi() {
-         @Override
-         public <T> Optional<T> a(vi.a<T> $$0x) {
-            return $$0.accept($$0);
-         }
-
-         @Override
-         public <T> Optional<T> a(vi.b<T> $$0x, wa $$1) {
-            return $$0.accept($$1, $$0);
-         }
-      };
    }
 
-   static vi a(final String $$0, final wa $$1) {
-      return new vi() {
-         @Override
-         public <T> Optional<T> a(vi.a<T> $$0x) {
-            return $$0.accept($$0);
-         }
-
-         @Override
-         public <T> Optional<T> a(vi.b<T> $$0x, wa $$1x) {
-            return $$0.accept($$1.a($$1), $$0);
-         }
-      };
+   public static <T> vf b(Collection<? extends T> $$0, Function<T, vf> $$1) {
+      return a($$0, b, $$1);
    }
 
-   static vi a(vi... $$0) {
-      return a(ImmutableList.copyOf($$0));
+   public static <T> vt a(Collection<? extends T> $$0, Optional<? extends vf> $$1, Function<T, vf> $$2) {
+      return a($$0, (vf)DataFixUtils.orElse($$1, b), $$2);
    }
 
-   static vi a(final List<? extends vi> $$0) {
-      return new vi() {
-         @Override
-         public <T> Optional<T> a(vi.a<T> $$0x) {
-            for (vi $$1 : $$0) {
-               Optional<T> $$2 = $$1.a($$0);
-               if ($$2.isPresent()) {
-                  return $$2;
-               }
+   public static vf a(Collection<? extends vf> $$0, vf $$1) {
+      return a($$0, $$1, Function.identity());
+   }
+
+   public static <T> vt a(Collection<? extends T> $$0, vf $$1, Function<T, vf> $$2) {
+      if ($$0.isEmpty()) {
+         return vf.i();
+      } else if ($$0.size() == 1) {
+         return $$2.apply((T)$$0.iterator().next()).f();
+      } else {
+         vt $$3 = vf.i();
+         boolean $$4 = true;
+
+         for (T $$5 : $$0) {
+            if (!$$4) {
+               $$3.b($$1);
             }
 
-            return Optional.empty();
+            $$3.b($$2.apply($$5));
+            $$4 = false;
          }
 
-         @Override
-         public <T> Optional<T> a(vi.b<T> $$0x, wa $$1) {
-            for (vi $$2 : $$0) {
-               Optional<T> $$3 = $$2.a($$0, $$1);
-               if ($$3.isPresent()) {
-                  return $$3;
-               }
-            }
-
-            return Optional.empty();
-         }
-      };
+         return $$3;
+      }
    }
 
-   default String getString() {
-      StringBuilder $$0 = new StringBuilder();
-      this.a($$1 -> {
-         $$0.append($$1);
-         return Optional.empty();
-      });
-      return $$0.toString();
+   public static vt a(vf $$0) {
+      return vf.a("chat.square_brackets", $$0);
    }
 
-   public interface a<T> {
-      Optional<T> accept(String var1);
+   public static vf a(Message $$0) {
+      return (vf)($$0 instanceof vf ? (vf)$$0 : vf.b($$0.getString()));
    }
 
-   public interface b<T> {
-      Optional<T> accept(wa var1, String var2);
+   public static boolean b(@Nullable vf $$0) {
+      if ($$0 != null && $$0.b() instanceof wq $$1) {
+         String $$2 = $$1.b();
+         String $$3 = $$1.c();
+         return $$3 != null || si.a().b($$2);
+      } else {
+         return true;
+      }
+   }
+
+   public static vt a(String $$0) {
+      return a((vf)vf.b($$0).a($$1 -> $$1.a(n.k).a(new vd(vd.a.f, $$0)).a(new vl(vl.a.a, vf.c("chat.copy.click"))).a($$0)));
    }
 }

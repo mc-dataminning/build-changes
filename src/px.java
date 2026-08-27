@@ -1,24 +1,26 @@
-import java.util.Arrays;
-import java.util.Optional;
-import java.util.stream.Collectors;
+import java.util.List;
 
 public class px {
-   public static void a(pc<dyz> $$0) {
-      ii<cuh> $$1 = $$0.a(ke.at);
-      ii<eai> $$2 = $$0.a(ke.aG);
-      $$0.a(
-         dyt.H,
-         new eaz(
-            po.a($$1.b(asa.I), Arrays.stream(bmi.values()).collect(Collectors.toMap($$0x -> $$0x, $$0x -> new dzg(dzg.a.a, bij.c()))), dof.b.d, dzk.b),
-            $$2.b(pt.a),
-            Optional.empty(),
-            20,
-            dxj.a(dpd.a(-40), dpd.a(-20)),
-            false,
-            Optional.empty(),
-            116,
-            pt.d
+   public static final ahf<edd> a = ahf.a(ke.aE, new ahg("trial_chambers_copper_bulb_degradation"));
+
+   public static void a(pe<edd> $$0) {
+      a(
+         $$0,
+         a,
+         List.of(
+            new ecy(
+               List.of(
+                  new ecu(new ecw(cwr.so, 0.1F), ecd.b, cwr.sn.o().a(cyd.c, Boolean.valueOf(true))),
+                  new ecu(new ecw(cwr.so, 0.33333334F), ecd.b, cwr.sm.o().a(cyd.c, Boolean.valueOf(true))),
+                  new ecu(new ecw(cwr.so, 0.5F), ecd.b, cwr.sl.o().a(cyd.c, Boolean.valueOf(true)))
+               )
+            ),
+            new ecv(asg.bH)
          )
       );
+   }
+
+   private static void a(pe<edd> $$0, ahf<edd> $$1, List<edc> $$2) {
+      $$0.a($$1, new edd($$2));
    }
 }

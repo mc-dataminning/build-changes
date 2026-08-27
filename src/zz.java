@@ -1,35 +1,63 @@
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public class zz implements xd<yx> {
-   private final int a;
-   private final byte b;
-
-   public zz(blp $$0, byte $$1) {
-      this.a = $$0.aj();
-      this.b = $$1;
+public record zz(int a, int b, int c, int d, Optional<els> e) implements xf<za> {
+   public zz(blu $$0, bks $$1) {
+      this($$0.aj(), $$0.dM().I_().d(ke.r).a($$1.j()), $$1.d() != null ? $$1.d().aj() : -1, $$1.c() != null ? $$1.c().aj() : -1, Optional.ofNullable($$1.i()));
    }
 
-   public zz(ug $$0) {
-      this.a = $$0.readInt();
-      this.b = $$0.readByte();
+   public zz(ui $$0) {
+      this($$0.n(), $$0.n(), b($$0), b($$0), $$0.b((ui.a<els>)($$0x -> new els($$0x.readDouble(), $$0x.readDouble(), $$0x.readDouble()))));
+   }
+
+   private static void a(ui $$0, int $$1) {
+      $$0.c($$1 + 1);
+   }
+
+   private static int b(ui $$0) {
+      return $$0.n() - 1;
    }
 
    @Override
-   public void a(ug $$0) {
-      $$0.p(this.a);
-      $$0.k(this.b);
+   public void a(ui $$0) {
+      $$0.c(this.a);
+      $$0.c(this.b);
+      a($$0, this.c);
+      a($$0, this.d);
+      $$0.a(this.e, ($$0x, $$1) -> {
+         $$0x.a($$1.a());
+         $$0x.a($$1.b());
+         $$0x.a($$1.c());
+      });
    }
 
-   public void a(yx $$0) {
+   public void a(za $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public blp a(cti $$0) {
-      return $$0.a(this.a);
+   public bks a(cto $$0) {
+      ih<bku> $$1 = $$0.I_().d(ke.r).c(this.b).get();
+      if (this.e.isPresent()) {
+         return new bks($$1, this.e.get());
+      } else {
+         blu $$2 = $$0.a(this.c);
+         blu $$3 = $$0.a(this.d);
+         return new bks($$1, $$3, $$2);
+      }
    }
 
-   public byte a() {
+   public int d() {
       return this.b;
+   }
+
+   public int e() {
+      return this.c;
+   }
+
+   public int f() {
+      return this.d;
+   }
+
+   public Optional<els> g() {
+      return this.e;
    }
 }

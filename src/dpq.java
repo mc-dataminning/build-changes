@@ -1,119 +1,132 @@
+import com.google.common.annotations.VisibleForTesting;
 import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.function.BiPredicate;
 
-public interface dpq extends BiPredicate<cud, hx> {
-   Codec<dpq> b = kd.O.q().dispatch(dpq::a, dpr::codec);
-   dpq c = a(cwl.a);
-   dpq d = a(cwl.a, cwl.G);
+public class dpq implements auu {
+   private static final float c = 5.9604645E-8F;
+   private static final double d = 1.110223E-16F;
+   public static final Codec<dpq> b = dpp.a.xmap($$0 -> new dpq($$0), $$0 -> $$0.e);
+   private dpp e;
+   private final dor f = new dor(this);
 
-   dpr<?> a();
-
-   static dpq a(List<dpq> $$0) {
-      return new dpo($$0);
+   public dpq(long $$0) {
+      this.e = new dpp(dpe.c($$0));
    }
 
-   static dpq a(dpq... $$0) {
-      return a(List.of($$0));
+   public dpq(dpe.a $$0) {
+      this.e = new dpp($$0);
    }
 
-   static dpq a(dpq $$0, dpq $$1) {
-      return a(List.of($$0, $$1));
+   public dpq(long $$0, long $$1) {
+      this.e = new dpp($$0, $$1);
    }
 
-   static dpq b(List<dpq> $$0) {
-      return new dpp($$0);
+   private dpq(dpp $$0) {
+      this.e = $$0;
    }
 
-   static dpq b(dpq... $$0) {
-      return b(List.of($$0));
+   @Override
+   public auu d() {
+      return new dpq(this.e.a(), this.e.a());
    }
 
-   static dpq b(dpq $$0, dpq $$1) {
-      return b(List.of($$0, $$1));
+   @Override
+   public dpc e() {
+      return new dpq.a(this.e.a(), this.e.a());
    }
 
-   static dpq a(jb $$0, List<cwj> $$1) {
-      return new dpw($$0, il.a(cwj::r, $$1));
+   @Override
+   public void b(long $$0) {
+      this.e = new dpp(dpe.c($$0));
+      this.f.a();
    }
 
-   static dpq c(List<cwj> $$0) {
-      return a(jb.g, $$0);
+   @Override
+   public int f() {
+      return (int)this.e.a();
    }
 
-   static dpq a(jb $$0, cwj... $$1) {
-      return a($$0, List.of($$1));
+   @Override
+   public int a(int $$0) {
+      if ($$0 <= 0) {
+         throw new IllegalArgumentException("Bound must be positive");
+      } else {
+         long $$1 = Integer.toUnsignedLong(this.f());
+         long $$2 = $$1 * (long)$$0;
+         long $$3 = $$2 & 4294967295L;
+         if ($$3 < (long)$$0) {
+            for (int $$4 = Integer.remainderUnsigned(~$$0 + 1, $$0); $$3 < (long)$$4; $$3 = $$2 & 4294967295L) {
+               $$1 = Integer.toUnsignedLong(this.f());
+               $$2 = $$1 * (long)$$0;
+            }
+         }
+
+         long $$5 = $$2 >> 32;
+         return (int)$$5;
+      }
    }
 
-   static dpq a(cwj... $$0) {
-      return a(jb.g, $$0);
+   @Override
+   public long g() {
+      return this.e.a();
    }
 
-   static dpq a(jb $$0, asq<cwj> $$1) {
-      return new dpv($$0, $$1);
+   @Override
+   public boolean h() {
+      return (this.e.a() & 1L) != 0L;
    }
 
-   static dpq a(asq<cwj> $$0) {
-      return a(jb.g, $$0);
+   @Override
+   public float i() {
+      return (float)this.c(24) * 5.9604645E-8F;
    }
 
-   static dpq b(jb $$0, List<eej> $$1) {
-      return new dpx($$0, il.a(eej::k, $$1));
+   @Override
+   public double j() {
+      return (double)this.c(53) * 1.110223E-16F;
    }
 
-   static dpq a(jb $$0, eej... $$1) {
-      return b($$0, List.of($$1));
+   @Override
+   public double k() {
+      return this.f.b();
    }
 
-   static dpq a(eej... $$0) {
-      return a(jb.g, $$0);
+   @Override
+   public void b(int $$0) {
+      for (int $$1 = 0; $$1 < $$0; $$1++) {
+         this.e.a();
+      }
    }
 
-   static dpq a(dpq $$0) {
-      return new dpy($$0);
+   private long c(int $$0) {
+      return this.e.a() >>> 64 - $$0;
    }
 
-   static dpq a(jb $$0) {
-      return new dpz($$0);
-   }
+   public static class a implements dpc {
+      private final long a;
+      private final long b;
 
-   static dpq b() {
-      return a(jb.g);
-   }
+      public a(long $$0, long $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
 
-   static dpq a(dja $$0, jb $$1) {
-      return new dqd($$1, $$0);
-   }
+      @Override
+      public auu a(int $$0, int $$1, int $$2) {
+         long $$3 = aun.b($$0, $$1, $$2);
+         long $$4 = $$3 ^ this.a;
+         return new dpq($$4, this.b);
+      }
 
-   static dpq a(jb $$0, ic $$1) {
-      return new dpt($$0, $$1);
-   }
+      @Override
+      public auu a(String $$0) {
+         dpe.a $$1 = dpe.a($$0);
+         return new dpq($$1.a(this.a, this.b));
+      }
 
-   static dpq a(ic $$0) {
-      return a(jb.g, $$0);
-   }
-
-   static dpq b(jb $$0) {
-      return new dqa($$0);
-   }
-
-   static dpq c() {
-      return b(jb.g);
-   }
-
-   static dpq d() {
-      return c(jb.g);
-   }
-
-   static dpq c(jb $$0) {
-      return a($$0, eel.a);
-   }
-
-   static dpq d(jb $$0) {
-      return new dpu($$0);
-   }
-
-   static dpq e() {
-      return dqc.a;
+      @VisibleForTesting
+      @Override
+      public void a(StringBuilder $$0) {
+         $$0.append("seedLo: ").append(this.a).append(", seedHi: ").append(this.b);
+      }
    }
 }

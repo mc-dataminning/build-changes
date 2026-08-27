@@ -1,22 +1,25 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class dpu implements dpq {
-   public static final Codec<dpu> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(jb.v(16).optionalFieldOf("offset", hx.b).forGetter($$0x -> $$0x.e)).apply($$0, dpu::new)
-   );
-   private final jb e;
+class dpu extends dpy {
+   public static final Codec<dpu> a = a(dpu::new);
 
-   public dpu(jb $$0) {
-      this.e = $$0;
+   public dpu(List<dpw> $$0) {
+      super($$0);
    }
 
-   public boolean a(cud $$0, hx $$1) {
-      return !$$0.s($$1.a(this.e));
+   public boolean a(cuj $$0, hx $$1) {
+      for (dpw $$2 : this.e) {
+         if (!$$2.test($$0, $$1)) {
+            return false;
+         }
+      }
+
+      return true;
    }
 
    @Override
-   public dpr<?> a() {
-      return dpr.h;
+   public dpx<?> a() {
+      return dpx.j;
    }
 }

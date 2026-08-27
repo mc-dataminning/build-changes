@@ -1,27 +1,17 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Streams;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
-import java.util.List;
-
-public class fqo {
-   private final List<ahd> a;
-
-   private fqo(List<ahd> $$0) {
-      this.a = $$0;
+public class fqo extends frh {
+   protected fqo(fnq $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fro $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6, 2.5F, $$7);
    }
 
-   public List<ahd> a() {
-      return this.a;
-   }
+   public static class a implements fqw<ka> {
+      private final fro a;
 
-   public static fqo a(JsonObject $$0) {
-      JsonArray $$1 = aty.a($$0, "textures", null);
-      if ($$1 == null) {
-         return new fqo(List.of());
-      } else {
-         List<ahd> $$2 = Streams.stream($$1).map($$0x -> aty.a($$0x, "texture")).map(ahd::new).collect(ImmutableList.toImmutableList());
-         return new fqo($$2);
+      public a(fro $$0) {
+         this.a = $$0;
+      }
+
+      public fqt a(ka $$0, fnq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fqo($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
       }
    }
 }

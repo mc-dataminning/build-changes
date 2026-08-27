@@ -1,11 +1,11 @@
-public class fxs extends fzl<bxz, fji<bxz>> {
-   private static final ahd a = new ahd("textures/entity/cow/cow.png");
+public class fxs extends fzr<bzj, fjf<bzj>> {
+   private static final ahg a = new ahg("textures/entity/camel/camel.png");
 
-   public fxs(fyf.a $$0) {
-      super($$0, new fji<>($$0.a(fmo.D)), 0.7F);
+   public fxs(fyl.a $$0, fmt $$1) {
+      super($$0, new fjf<>($$0.a($$1)), 0.7F);
    }
 
-   public ahd a(bxz $$0) {
+   public ahg a(bzj $$0) {
       return a;
    }
 }

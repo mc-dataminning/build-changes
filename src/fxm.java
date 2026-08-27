@@ -1,11 +1,19 @@
-public class fxm extends fzl<bze, fiz<bze>> {
-   private static final ahd a = new ahd("textures/entity/camel/camel.png");
+import com.google.common.collect.Maps;
+import java.util.Locale;
+import java.util.Map;
 
-   public fxm(fyf.a $$0, fmn $$1) {
-      super($$0, new fiz<>($$0.a($$1)), 0.7F);
+public class fxm extends fzr<bze, fiy<bze>> {
+   private static final Map<bze.d, ahg> a = ac.a(Maps.newHashMap(), $$0 -> {
+      for (bze.d $$1 : bze.d.values()) {
+         $$0.put($$1, new ahg(String.format(Locale.ROOT, "textures/entity/axolotl/axolotl_%s.png", $$1.b())));
+      }
+   });
+
+   public fxm(fyl.a $$0) {
+      super($$0, new fiy<>($$0.a(fmu.e)), 0.5F);
    }
 
-   public ahd a(bze $$0) {
-      return a;
+   public ahg a(bze $$0) {
+      return a.get($$0.ge());
    }
 }

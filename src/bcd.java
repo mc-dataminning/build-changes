@@ -1,59 +1,69 @@
+import com.google.common.collect.ImmutableMap;
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.DataFixUtils;
 import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.templates.TaggedChoice.TaggedChoiceType;
+import com.mojang.serialization.Dynamic;
 import java.util.Map;
+import javax.annotation.Nullable;
 
 public class bcd extends DataFix {
-   private final String a;
-   private final Map<String, String> b;
+   private static final Map<String, String> a = ImmutableMap.builder()
+      .put("slot_0", "list")
+      .put("slot_1", "sidebar")
+      .put("slot_2", "below_name")
+      .put("slot_3", "sidebar.team.black")
+      .put("slot_4", "sidebar.team.dark_blue")
+      .put("slot_5", "sidebar.team.dark_green")
+      .put("slot_6", "sidebar.team.dark_aqua")
+      .put("slot_7", "sidebar.team.dark_red")
+      .put("slot_8", "sidebar.team.dark_purple")
+      .put("slot_9", "sidebar.team.gold")
+      .put("slot_10", "sidebar.team.gray")
+      .put("slot_11", "sidebar.team.dark_gray")
+      .put("slot_12", "sidebar.team.blue")
+      .put("slot_13", "sidebar.team.green")
+      .put("slot_14", "sidebar.team.aqua")
+      .put("slot_15", "sidebar.team.red")
+      .put("slot_16", "sidebar.team.light_purple")
+      .put("slot_17", "sidebar.team.yellow")
+      .put("slot_18", "sidebar.team.white")
+      .build();
 
-   public bcd(Schema $$0, String $$1, Map<String, String> $$2) {
+   public bcd(Schema $$0) {
       super($$0, false);
-      this.a = $$1;
-      this.b = $$2;
+   }
+
+   @Nullable
+   private static String a(String $$0) {
+      return a.get($$0);
    }
 
    protected TypeRewriteRule makeRule() {
-      return TypeRewriteRule.seq(this.b(), this.a());
-   }
-
-   private TypeRewriteRule a() {
-      Type<?> $$0 = this.getOutputSchema().getType(bbq.D);
-      Type<?> $$1 = this.getInputSchema().getType(bbq.D);
-      OpticFinder<?> $$2 = $$1.findField("CriteriaType");
-      TaggedChoiceType<?> $$3 = (TaggedChoiceType<?>)$$2.type()
-         .findChoiceType("type", -1)
-         .orElseThrow(() -> new IllegalStateException("Can't find choice type for criteria"));
-      Type<?> $$4 = (Type<?>)$$3.types().get("minecraft:custom");
-      if ($$4 == null) {
-         throw new IllegalStateException("Failed to find custom criterion type variant");
-      } else {
-         OpticFinder<?> $$5 = DSL.namedChoice("minecraft:custom", $$4);
-         OpticFinder<String> $$6 = DSL.fieldFinder("id", bcy.a());
-         return this.fixTypeEverywhereTyped(
-            this.a,
-            $$1,
-            $$0,
-            $$3x -> $$3x.updateTyped($$2, $$2xx -> $$2xx.updateTyped($$5, $$1xxx -> $$1xxx.update($$6, $$0xxxx -> this.b.getOrDefault($$0xxxx, $$0xxxx))))
-         );
-      }
-   }
-
-   private TypeRewriteRule b() {
-      Type<?> $$0 = this.getOutputSchema().getType(bbq.g);
-      Type<?> $$1 = this.getInputSchema().getType(bbq.g);
-      OpticFinder<?> $$2 = $$1.findField("stats");
-      OpticFinder<?> $$3 = $$2.type().findField("minecraft:custom");
-      OpticFinder<String> $$4 = bcy.a().finder();
+      Type<?> $$0 = this.getInputSchema().getType(bbv.o);
+      OpticFinder<?> $$1 = $$0.findField("data");
       return this.fixTypeEverywhereTyped(
-         this.a,
-         $$1,
+         "Scoreboard DisplaySlot rename",
          $$0,
-         $$3x -> $$3x.updateTyped($$2, $$2xx -> $$2xx.updateTyped($$3, $$1xxx -> $$1xxx.update($$4, $$0xxxx -> this.b.getOrDefault($$0xxxx, $$0xxxx))))
+         $$1x -> $$1x.updateTyped(
+               $$1,
+               $$0xx -> $$0xx.update(
+                     DSL.remainderFinder(),
+                     $$0xxx -> $$0xxx.update(
+                           "DisplaySlots",
+                           $$0xxxx -> $$0xxxx.updateMapValues(
+                                 $$0xxxxx -> $$0xxxxx.mapFirst(
+                                       $$0xxxxxx -> (Dynamic)DataFixUtils.orElse(
+                                             $$0xxxxxx.asString().result().map(bcd::a).map($$0xxxxxx::createString), $$0xxxxxx
+                                          )
+                                    )
+                              )
+                        )
+                  )
+            )
       );
    }
 }

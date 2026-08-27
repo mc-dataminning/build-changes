@@ -1,9 +1,9 @@
-public record jg(amz a, hx b, dja c, dhg d) {
-   public elm a() {
+public record jg(and a, hx b, djg c, dhm d) {
+   public els a() {
       return this.b.b();
    }
 
-   public amz b() {
+   public and b() {
       return this.a;
    }
 
@@ -11,11 +11,11 @@ public record jg(amz a, hx b, dja c, dhg d) {
       return this.b;
    }
 
-   public dja d() {
+   public djg d() {
       return this.c;
    }
 
-   public dhg e() {
+   public dhm e() {
       return this.d;
    }
 }

@@ -1,4 +1,11 @@
-import com.mojang.serialization.Codec;
+import java.util.Set;
+import javax.annotation.Nullable;
 
-public record eki(Codec<? extends ekj> a) {
+public interface eki {
+   @Nullable
+   tk a(egv var1);
+
+   Set<ejd<?>> b();
+
+   ekh a();
 }

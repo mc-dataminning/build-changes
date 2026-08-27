@@ -1,61 +1,39 @@
 import com.mojang.serialization.MapCodec;
 
-public class det extends cye {
+public class det extends cwy implements cws {
    public static final MapCodec<det> a = b(det::new);
-   public static final int b = 2;
-   public static final dka c = djq.aq;
-   private static final float g = 3.0F;
-   private static final emf[] h = new emf[]{cwj.a(5.0, 0.0, 5.0, 11.0, 6.0, 11.0), cwj.a(5.0, 0.0, 5.0, 11.0, 10.0, 11.0)};
-   private static final int i = 1;
+   protected static final float b = 6.0F;
+   protected static final eml c = cwp.a(2.0, 0.0, 2.0, 14.0, 13.0, 14.0);
 
    @Override
    public MapCodec<det> a() {
       return a;
    }
 
-   public det(diz.d $$0) {
+   protected det(djf.d $$0) {
       super($$0);
    }
 
    @Override
-   protected void a(djb.a<cwj, dja> $$0) {
-      $$0.a(c);
-   }
-
-   @Override
-   public emf a(dja $$0, cso $$1, hx $$2, elr $$3) {
-      return h[this.g($$0)];
-   }
-
-   @Override
-   protected dka b() {
+   public eml a(djg $$0, csu $$1, hx $$2, elx $$3) {
       return c;
    }
 
    @Override
-   public int c() {
-      return 2;
+   public boolean b(ctr $$0, hx $$1, djg $$2) {
+      return true;
    }
 
    @Override
-   protected cth d() {
-      return cmu.vb;
+   public boolean a(cto $$0, auu $$1, hx $$2, djg $$3) {
+      return true;
    }
 
    @Override
-   public dja b(int $$0) {
-      return $$0 == 2 ? cwl.bS.o() : super.b($$0);
-   }
-
-   @Override
-   public void b(dja $$0, amz $$1, hx $$2, aup $$3) {
-      if ($$3.a(3) != 0) {
-         super.b($$0, $$1, $$2, $$3);
+   public void a(and $$0, auu $$1, hx $$2, djg $$3) {
+      cyx $$4 = (cyx)($$3.a(cwr.bu) ? cwr.iI : cwr.iH);
+      if ($$4.o().a($$0, $$2) && $$0.u($$2.c())) {
+         cyx.a($$0, $$4.o(), $$2, 2);
       }
-   }
-
-   @Override
-   protected int a(cti $$0) {
-      return 1;
    }
 }

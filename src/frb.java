@@ -1,17 +1,13 @@
-public class frb extends fpf {
-   protected frb(fnk $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, fri $$8) {
-      super($$0, $$1, $$2, $$3, 0.1F, 0.1F, 0.1F, $$4, $$5, $$6, $$7, $$8, 0.3F, 8, -0.1F, true);
-   }
-
-   public static class a implements fqq<ka> {
-      private final fri a;
-
-      public a(fri $$0) {
-         this.a = $$0;
-      }
-
-      public fqn a(ka $$0, fnk $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new frb($$1, $$2, $$3, $$4, $$5, $$6, $$7, 1.0F, this.a);
-      }
+public abstract class frb extends frt {
+   protected frb(fnq $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      this.B = 0.96F;
+      this.j = this.j * 0.01F + $$4;
+      this.k = this.k * 0.01F + $$5;
+      this.l = this.l * 0.01F + $$6;
+      this.g = this.g + (double)((this.r.i() - this.r.i()) * 0.05F);
+      this.h = this.h + (double)((this.r.i() - this.r.i()) * 0.05F);
+      this.i = this.i + (double)((this.r.i() - this.r.i()) * 0.05F);
+      this.t = (int)(8.0 / (Math.random() * 0.8 + 0.2)) + 4;
    }
 }

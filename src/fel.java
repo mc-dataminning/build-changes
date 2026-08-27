@@ -1,96 +1,90 @@
-public class fel {
-   private static final ahd a = new ahd("minecraft", "alt");
-   private static final wa b = wa.a.a(a);
-   private static final fel c = new fel();
-   private final aup d = aup.a();
-   private final String[] e = new String[]{
-      "the",
-      "elder",
-      "scrolls",
-      "klaatu",
-      "berata",
-      "niktu",
-      "xyzzy",
-      "bless",
-      "curse",
-      "light",
-      "darkness",
-      "fire",
-      "air",
-      "earth",
-      "water",
-      "hot",
-      "dry",
-      "cold",
-      "wet",
-      "ignite",
-      "snuff",
-      "embiggen",
-      "twist",
-      "shorten",
-      "stretch",
-      "fiddle",
-      "destroy",
-      "imbue",
-      "galvanize",
-      "enchant",
-      "free",
-      "limited",
-      "range",
-      "of",
-      "towards",
-      "inside",
-      "sphere",
-      "cube",
-      "self",
-      "other",
-      "ball",
-      "mental",
-      "physical",
-      "grow",
-      "shrink",
-      "demon",
-      "elemental",
-      "spirit",
-      "animal",
-      "creature",
-      "beast",
-      "humanoid",
-      "undead",
-      "fresh",
-      "stale",
-      "phnglui",
-      "mglwnafh",
-      "cthulhu",
-      "rlyeh",
-      "wgahnagl",
-      "fhtagn",
-      "baguette"
-   };
+public class fel extends fdy<cir> implements fgt {
+   private static final ahg x = new ahg("textures/gui/container/crafting_table.png");
+   private final fgn y = new fgn();
+   private boolean z;
 
-   private fel() {
+   public fel(cir $$0, cfg $$1, vf $$2) {
+      super($$0, $$1, $$2);
    }
 
-   public static fel a() {
-      return c;
+   @Override
+   protected void aN_() {
+      super.aN_();
+      this.z = this.g < 379;
+      this.y.a(this.g, this.h, this.f, this.z, this.p);
+      this.t = this.y.a(this.g, this.c);
+      this.d(new exq(this.t + 5, this.h / 2 - 49, 20, 18, fgn.a, $$0 -> {
+         this.y.e();
+         this.t = this.y.a(this.g, this.c);
+         $$0.c(this.t + 5, this.h / 2 - 49);
+      }));
+      this.e(this.y);
+      this.c(this.y);
+      this.l = 29;
    }
 
-   public vi a(ewk $$0, int $$1) {
-      StringBuilder $$2 = new StringBuilder();
-      int $$3 = this.d.a(2) + 3;
+   @Override
+   public void C() {
+      super.C();
+      this.y.g();
+   }
 
-      for (int $$4 = 0; $$4 < $$3; $$4++) {
-         if ($$4 != 0) {
-            $$2.append(" ");
-         }
-
-         $$2.append(ac.a(this.e, this.d));
+   @Override
+   public void a(ews $$0, int $$1, int $$2, float $$3) {
+      if (this.y.f() && this.z) {
+         this.b($$0, $$1, $$2, $$3);
+         this.y.a($$0, $$1, $$2, $$3);
+      } else {
+         super.a($$0, $$1, $$2, $$3);
+         this.y.a($$0, $$1, $$2, $$3);
+         this.y.a($$0, this.t, this.u, true, $$3);
       }
 
-      return $$0.b().a(vd.b($$2.toString()).c(b), $$1, wa.a);
+      this.a($$0, $$1, $$2);
+      this.y.a($$0, this.t, this.u, $$1, $$2);
    }
 
-   public void a(long $$0) {
-      this.d.b($$0);
+   @Override
+   protected void a(ews $$0, float $$1, int $$2, int $$3) {
+      int $$4 = this.t;
+      int $$5 = (this.h - this.k) / 2;
+      $$0.a(x, $$4, $$5, 0, 0, this.c, this.k);
+   }
+
+   @Override
+   protected boolean a(int $$0, int $$1, int $$2, int $$3, double $$4, double $$5) {
+      return (!this.z || !this.y.f()) && super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      if (this.y.a($$0, $$1, $$2)) {
+         this.a(this.y);
+         return true;
+      } else {
+         return this.z && this.y.f() ? true : super.a($$0, $$1, $$2);
+      }
+   }
+
+   @Override
+   protected boolean a(double $$0, double $$1, int $$2, int $$3, int $$4) {
+      boolean $$5 = $$0 < (double)$$2 || $$1 < (double)$$3 || $$0 >= (double)($$2 + this.c) || $$1 >= (double)($$3 + this.k);
+      return this.y.a($$0, $$1, this.t, this.u, this.c, this.k, $$4) && $$5;
+   }
+
+   @Override
+   protected void a(cjv $$0, int $$1, int $$2, cij $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.y.a($$0);
+   }
+
+   @Override
+   public void E() {
+      this.y.i();
+   }
+
+   @Override
+   public fgn H() {
+      return this.y;
    }
 }

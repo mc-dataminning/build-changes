@@ -1,34 +1,54 @@
+import com.mojang.serialization.Codec;
+
 public class dol {
-   public final aup a;
-   private double b;
-   private boolean c;
+   public static enum a implements avj {
+      a("air"),
+      b("liquid");
 
-   public dol(aup $$0) {
-      this.a = $$0;
+      public static final Codec<dol.a> c = avj.a(dol.a::values);
+      private final String d;
+
+      private a(String $$0) {
+         this.d = $$0;
+      }
+
+      public String a() {
+         return this.d;
+      }
+
+      @Override
+      public String c() {
+         return this.d;
+      }
    }
 
-   public void a() {
-      this.c = false;
-   }
+   public static enum b implements avj {
+      a("raw_generation"),
+      b("lakes"),
+      c("local_modifications"),
+      d("underground_structures"),
+      e("surface_structures"),
+      f("strongholds"),
+      g("underground_ores"),
+      h("underground_decoration"),
+      i("fluid_springs"),
+      j("vegetal_decoration"),
+      k("top_layer_modification");
 
-   public double b() {
-      if (this.c) {
-         this.c = false;
-         return this.b;
-      } else {
-         double $$0;
-         double $$1;
-         double $$2;
-         do {
-            $$0 = 2.0 * this.a.j() - 1.0;
-            $$1 = 2.0 * this.a.j() - 1.0;
-            $$2 = aui.k($$0) + aui.k($$1);
-         } while ($$2 >= 1.0 || $$2 == 0.0);
+      public static final Codec<dol.b> l = avj.a(dol.b::values);
+      private final String m;
 
-         double $$3 = Math.sqrt(-2.0 * Math.log($$2) / $$2);
-         this.b = $$1 * $$3;
-         this.c = true;
-         return $$0 * $$3;
+      private b(String $$0) {
+         this.m = $$0;
+      }
+
+      public String a() {
+         return this.m;
+      }
+
+      @Override
+      public String c() {
+         return this.m;
       }
    }
 }

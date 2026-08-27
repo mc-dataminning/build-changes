@@ -1,81 +1,125 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class cxw extends cvv implements ddj {
+public class cxw extends dak implements cws {
    public static final MapCodec<cxw> a = b(cxw::new);
-   public static final djr b = djq.C;
-   private static final int d = 3;
-   protected static final emf c = cwj.a(5.0, 5.0, 5.0, 11.0, 11.0, 11.0);
+   public static final int b = 2;
+   public static final dkg c = djw.ar;
+   protected static final int d = 4;
+   protected static final int e = 5;
+   protected static final int f = 2;
+   protected static final int g = 6;
+   protected static final int h = 7;
+   protected static final int i = 3;
+   protected static final int j = 8;
+   protected static final int k = 9;
+   protected static final int l = 4;
+   protected static final eml[] m = new eml[]{
+      cwp.a(11.0, 7.0, 6.0, 15.0, 12.0, 10.0), cwp.a(9.0, 5.0, 5.0, 15.0, 12.0, 11.0), cwp.a(7.0, 3.0, 4.0, 15.0, 12.0, 12.0)
+   };
+   protected static final eml[] n = new eml[]{
+      cwp.a(1.0, 7.0, 6.0, 5.0, 12.0, 10.0), cwp.a(1.0, 5.0, 5.0, 7.0, 12.0, 11.0), cwp.a(1.0, 3.0, 4.0, 9.0, 12.0, 12.0)
+   };
+   protected static final eml[] o = new eml[]{
+      cwp.a(6.0, 7.0, 1.0, 10.0, 12.0, 5.0), cwp.a(5.0, 5.0, 1.0, 11.0, 12.0, 7.0), cwp.a(4.0, 3.0, 1.0, 12.0, 12.0, 9.0)
+   };
+   protected static final eml[] F = new eml[]{
+      cwp.a(6.0, 7.0, 11.0, 10.0, 12.0, 15.0), cwp.a(5.0, 5.0, 9.0, 11.0, 12.0, 15.0), cwp.a(4.0, 3.0, 7.0, 12.0, 12.0, 15.0)
+   };
 
    @Override
    public MapCodec<cxw> a() {
       return a;
    }
 
-   public cxw(diz.d $$0) {
+   public cxw(djf.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b, Boolean.valueOf(true)));
+      this.k(this.E.b().a(aE, ic.c).a(c, Integer.valueOf(0)));
    }
 
    @Override
-   protected void a(djb.a<cwj, dja> $$0) {
-      $$0.a(b);
+   public boolean e_(djg $$0) {
+      return $$0.c(c) < 2;
    }
 
    @Override
-   public dgo a(hx $$0, dja $$1) {
-      return new dha($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dgo> dgp<T> a(cti $$0, dja $$1, dgq<T> $$2) {
-      return a($$2, dgq.z, $$0.B ? dha::a : dha::b);
-   }
-
-   @Override
-   public dco b_(dja $$0) {
-      return dco.b;
-   }
-
-   @Override
-   public eek c_(dja $$0) {
-      return $$0.c(b) ? eel.c.a(false) : super.c_($$0);
-   }
-
-   @Override
-   public dja a(dja $$0, ic $$1, dja $$2, ctj $$3, hx $$4, hx $$5) {
-      if ($$0.c(b)) {
-         $$3.a($$4, eel.c, eel.c.a($$3));
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   public emf a(dja $$0, cso $$1, hx $$2, elr $$3) {
-      return c;
-   }
-
-   @Override
-   public void a(cti $$0, hx $$1, dja $$2, @Nullable bmf $$3, cmr $$4) {
-      if ($$4.A()) {
-         dgo $$5 = $$0.c_($$1);
-         if ($$5 instanceof dgj) {
-            ((dgj)$$5).a($$4.y());
+   public void b(djg $$0, and $$1, hx $$2, auu $$3) {
+      if ($$1.z.a(5) == 0) {
+         int $$4 = $$0.c(c);
+         if ($$4 < 2) {
+            $$1.a($$2, $$0.a(c, Integer.valueOf($$4 + 1)), 2);
          }
       }
    }
 
-   @Nullable
    @Override
-   public dja a(cpa $$0) {
-      eek $$1 = $$0.q().b_($$0.a());
-      return this.o().a(b, Boolean.valueOf($$1.a(asg.a) && $$1.e() == 8));
+   public boolean a(djg $$0, ctr $$1, hx $$2) {
+      djg $$3 = $$1.a_($$2.a($$0.c(aE)));
+      return $$3.a(asg.z);
    }
 
    @Override
-   public boolean a(dja $$0, cso $$1, hx $$2, efa $$3) {
+   public eml a(djg $$0, csu $$1, hx $$2, elx $$3) {
+      int $$4 = $$0.c(c);
+      switch ((ic)$$0.c(aE)) {
+         case d:
+            return F[$$4];
+         case c:
+         default:
+            return o[$$4];
+         case e:
+            return n[$$4];
+         case f:
+            return m[$$4];
+      }
+   }
+
+   @Nullable
+   @Override
+   public djg a(cpg $$0) {
+      djg $$1 = this.o();
+      ctr $$2 = $$0.q();
+      hx $$3 = $$0.a();
+
+      for (ic $$4 : $$0.f()) {
+         if ($$4.o().d()) {
+            $$1 = $$1.a(aE, $$4);
+            if ($$1.a($$2, $$3)) {
+               return $$1;
+            }
+         }
+      }
+
+      return null;
+   }
+
+   @Override
+   public djg a(djg $$0, ic $$1, djg $$2, ctp $$3, hx $$4, hx $$5) {
+      return $$1 == $$0.c(aE) && !$$0.a($$3, $$4) ? cwr.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   public boolean b(ctr $$0, hx $$1, djg $$2) {
+      return $$2.c(c) < 2;
+   }
+
+   @Override
+   public boolean a(cto $$0, auu $$1, hx $$2, djg $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(and $$0, auu $$1, hx $$2, djg $$3) {
+      $$0.a($$2, $$3.a(c, Integer.valueOf($$3.c(c) + 1)), 2);
+   }
+
+   @Override
+   protected void a(djh.a<cwp, djg> $$0) {
+      $$0.a(aE, c);
+   }
+
+   @Override
+   public boolean a(djg $$0, csu $$1, hx $$2, efg $$3) {
       return false;
    }
 }

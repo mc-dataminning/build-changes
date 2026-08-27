@@ -1,49 +1,66 @@
-public class fqf extends frn {
-   private final fri a;
+public class fqf extends frb {
+   fqf(fnq $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+   }
 
-   protected fqf(fnk $$0, double $$1, double $$2, double $$3, double $$4, fri $$5) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.t = 6 + this.r.a(4);
-      float $$6 = this.r.i() * 0.6F + 0.4F;
-      this.v = $$6;
-      this.w = $$6;
-      this.x = $$6;
-      this.D = 2.0F * (1.0F - (float)$$4 * 0.5F);
-      this.a = $$5;
-      this.b($$5);
+   @Override
+   public fqx b() {
+      return fqx.b;
+   }
+
+   @Override
+   public void a(double $$0, double $$1, double $$2) {
+      this.a(this.n().d($$0, $$1, $$2));
+      this.l();
+   }
+
+   @Override
+   public float b(float $$0) {
+      float $$1 = ((float)this.s + $$0) / (float)this.t;
+      return this.D * (1.0F - $$1 * $$1 * 0.5F);
    }
 
    @Override
    public int a(float $$0) {
-      return 15728880;
-   }
-
-   @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
-      } else {
-         this.b(this.a);
+      float $$1 = ((float)this.s + $$0) / (float)this.t;
+      $$1 = aun.a($$1, 0.0F, 1.0F);
+      int $$2 = super.a($$0);
+      int $$3 = $$2 & 0xFF;
+      int $$4 = $$2 >> 16 & 0xFF;
+      $$3 += (int)($$1 * 15.0F * 16.0F);
+      if ($$3 > 240) {
+         $$3 = 240;
       }
+
+      return $$3 | $$4 << 16;
    }
 
-   @Override
-   public fqr b() {
-      return fqr.d;
-   }
+   public static class a implements fqw<ka> {
+      private final fro a;
 
-   public static class a implements fqq<ka> {
-      private final fri a;
-
-      public a(fri $$0) {
+      public a(fro $$0) {
          this.a = $$0;
       }
 
-      public fqn a(ka $$0, fnk $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fqf($$1, $$2, $$3, $$4, $$5, this.a);
+      public fqt a(ka $$0, fnq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fqf $$8 = new fqf($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         return $$8;
+      }
+   }
+
+   public static class b implements fqw<ka> {
+      private final fro a;
+
+      public b(fro $$0) {
+         this.a = $$0;
+      }
+
+      public fqt a(ka $$0, fnq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fqf $$8 = new fqf($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         $$8.d(0.5F);
+         return $$8;
       }
    }
 }

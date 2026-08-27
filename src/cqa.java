@@ -1,18 +1,54 @@
-public interface cqa<T extends cpv<?>> {
-   cqa<cpm> a = a("crafting");
-   cqa<cqk> b = a("smelting");
-   cqa<cph> c = a("blasting");
-   cqa<cqo> d = a("smoking");
-   cqa<cpj> e = a("campfire_cooking");
-   cqa<cqp> f = a("stonecutting");
-   cqa<cql> g = a("smithing");
+import java.util.Map;
 
-   static <T extends cpv<?>> cqa<T> a(final String $$0) {
-      return it.a(kd.s, new ahd($$0), new cqa<T>() {
-         @Override
-         public String toString() {
-            return $$0;
+public class cqa extends cqi {
+   public cqa(cpr $$0) {
+      super("", $$0, cqj.a(Map.of('#', cpy.a(cna.qL), 'x', cpy.a(cna.rR)), "###", "#x#", "###"), new cmx(cna.uc));
+   }
+
+   @Override
+   public boolean a(ciq $$0, cto $$1) {
+      if (!super.a($$0, $$1)) {
+         return false;
+      } else {
+         cmx $$2 = a($$0);
+         if ($$2.b()) {
+            return false;
+         } else {
+            ega $$3 = cne.b($$2, $$1);
+            if ($$3 == null) {
+               return false;
+            } else {
+               return $$3.f() ? false : $$3.f < 4;
+            }
          }
-      });
+      }
+   }
+
+   @Override
+   public cmx a(ciq $$0, iu $$1) {
+      cmx $$2 = a($$0).c(1);
+      $$2.w().a("map_scale_direction", 1);
+      return $$2;
+   }
+
+   private static cmx a(ciq $$0) {
+      for (int $$1 = 0; $$1 < $$0.b(); $$1++) {
+         cmx $$2 = $$0.a($$1);
+         if ($$2.a(cna.rR)) {
+            return $$2;
+         }
+      }
+
+      return cmx.f;
+   }
+
+   @Override
+   public boolean aq_() {
+      return true;
+   }
+
+   @Override
+   public cqf<?> ar_() {
+      return cqf.f;
    }
 }

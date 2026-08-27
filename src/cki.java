@@ -1,24 +1,17 @@
-import java.util.List;
-import javax.annotation.Nullable;
+public interface cki {
+   int a(ckh.a var1);
 
-public class cki extends cmm {
-   private final asq<dgf> a;
+   int b(ckh.a var1);
 
-   public cki(asq<dgf> $$0, cmm.a $$1) {
-      super($$1);
-      this.a = $$0;
-   }
+   int a();
 
-   public asq<dgf> b() {
-      return this.a;
-   }
+   arq b();
 
-   @Override
-   public void a(cmr $$0, @Nullable cti $$1, List<vd> $$2, coi $$3) {
-      $$2.add(this.d().a(n.h));
-   }
+   cpy d();
 
-   public vr d() {
-      return vd.c(this.a() + ".desc");
-   }
+   String e();
+
+   float f();
+
+   float g();
 }

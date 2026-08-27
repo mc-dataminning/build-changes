@@ -1,54 +1,32 @@
-import java.util.UUID;
-import javax.annotation.Nullable;
+public class aaw implements xf<za> {
+   private final hx a;
+   private final boolean b;
 
-public record aaw(UUID a, int b, @Nullable vp c, vw.a d, @Nullable vd e, vh f, uz.b g) implements xd<yx> {
-   public aaw(ug $$0) {
-      this($$0.p(), $$0.n(), $$0.c(vp::a), new vw.a($$0), $$0.c(ug::m), vh.a($$0), new uz.b($$0));
+   public aaw(hx $$0, boolean $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
+
+   public aaw(ui $$0) {
+      this.a = $$0.e();
+      this.b = $$0.readBoolean();
    }
 
    @Override
-   public void a(ug $$0) {
+   public void a(ui $$0) {
       $$0.a(this.a);
-      $$0.c(this.b);
-      $$0.a(this.c, vp::a);
-      this.d.a($$0);
-      $$0.a(this.e, ug::a);
-      vh.a($$0, this.f);
-      this.g.a($$0);
+      $$0.a(this.b);
    }
 
-   public void a(yx $$0) {
+   public void a(za $$0) {
       $$0.a(this);
    }
 
-   @Override
-   public boolean b() {
-      return true;
+   public hx a() {
+      return this.a;
    }
 
-   public int d() {
+   public boolean d() {
       return this.b;
-   }
-
-   @Nullable
-   public vp e() {
-      return this.c;
-   }
-
-   public vw.a f() {
-      return this.d;
-   }
-
-   @Nullable
-   public vd g() {
-      return this.e;
-   }
-
-   public vh h() {
-      return this.f;
-   }
-
-   public uz.b i() {
-      return this.g;
    }
 }

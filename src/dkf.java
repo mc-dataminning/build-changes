@@ -1,25 +1,20 @@
-public enum dkf implements ave {
-   a("up"),
-   b("side"),
-   c("none");
+public enum dkf implements avj {
+   a("top"),
+   b("bottom");
 
-   private final String d;
+   private final String c;
 
    private dkf(String $$0) {
-      this.d = $$0;
+      this.c = $$0;
    }
 
    @Override
    public String toString() {
-      return this.c();
+      return this.c;
    }
 
    @Override
    public String c() {
-      return this.d;
-   }
-
-   public boolean a() {
-      return this != c;
+      return this.c;
    }
 }

@@ -1,92 +1,127 @@
-import com.google.common.collect.Streams;
+import com.mojang.authlib.GameProfile;
 import com.mojang.logging.LogUtils;
-import java.io.File;
-import java.lang.management.ManagementFactory;
-import java.lang.management.ThreadInfo;
-import java.lang.management.ThreadMXBean;
-import java.util.Locale;
-import java.util.Timer;
-import java.util.TimerTask;
-import java.util.stream.Collectors;
+import java.io.IOException;
 import org.slf4j.Logger;
 
-public class alz implements Runnable {
+public class alz extends aqu {
    private static final Logger a = LogUtils.getLogger();
-   private static final long b = 10000L;
-   private static final int c = 1;
-   private final alw d;
-   private final long e;
 
-   public alz(alw $$0) {
-      this.d = $$0;
-      this.e = $$0.bo() * avj.b;
+   public alz(ama $$0, io<ahp> $$1, ego $$2) {
+      super($$0, $$1, $$2, $$0.a().H);
+      amb $$3 = $$0.a();
+      this.a($$3.F);
+      this.b($$3.G);
+      super.a($$3.V.get());
+      this.z();
+      this.x();
+      this.y();
+      this.w();
+      this.A();
+      this.C();
+      this.B();
+      if (!this.i().b().exists()) {
+         this.D();
+      }
    }
 
    @Override
-   public void run() {
-      while (this.d.v()) {
-         long $$0 = this.d.az();
-         long $$1 = ac.c();
-         long $$2 = $$1 - $$0;
-         if ($$2 > this.e) {
-            a.error(
-               LogUtils.FATAL_MARKER,
-               "A single server tick took {} seconds (should be max {})",
-               String.format(Locale.ROOT, "%.2f", (float)$$2 / (float)avj.a),
-               String.format(Locale.ROOT, "%.2f", this.d.aO().g() / (float)avj.c)
-            );
-            a.error(LogUtils.FATAL_MARKER, "Considering it to be crashed, server will forcibly shutdown.");
-            ThreadMXBean $$3 = ManagementFactory.getThreadMXBean();
-            ThreadInfo[] $$4 = $$3.dumpAllThreads(true, true);
-            StringBuilder $$5 = new StringBuilder();
-            Error $$6 = new Error("Watchdog");
+   public void a(boolean $$0) {
+      super.a($$0);
+      this.b().i($$0);
+   }
 
-            for (ThreadInfo $$7 : $$4) {
-               if ($$7.getThreadId() == this.d.aw().getId()) {
-                  $$6.setStackTrace($$7.getStackTrace());
-               }
+   @Override
+   public void a(GameProfile $$0) {
+      super.a($$0);
+      this.B();
+   }
 
-               $$5.append($$7);
-               $$5.append("\n");
-            }
+   @Override
+   public void b(GameProfile $$0) {
+      super.b($$0);
+      this.B();
+   }
 
-            o $$8 = new o("Watching Server", $$6);
-            this.d.b($$8.g());
-            p $$9 = $$8.a("Thread Dump");
-            $$9.a("Threads", $$5);
-            p $$10 = $$8.a("Performance stats");
-            $$10.a("Random tick rate", () -> this.d.aY().q().a(cte.o).toString());
-            $$10.a("Level stats", () -> Streams.stream(this.d.H()).map($$0x -> $$0x.ae() + ": " + $$0x.F()).collect(Collectors.joining(",\n")));
-            ahf.a("Crash report:\n" + $$8.e());
-            File $$11 = new File(new File(this.d.z(), "crash-reports"), "crash-" + ac.e() + "-server.txt");
-            if ($$8.a($$11)) {
-               a.error("This crash report has been saved to: {}", $$11.getAbsolutePath());
-            } else {
-               a.error("We were unable to save this crash report to disk.");
-            }
+   @Override
+   public void a() {
+      this.C();
+   }
 
-            this.a();
-         }
-
-         try {
-            Thread.sleep(($$0 + this.e - $$1) / avj.b);
-         } catch (InterruptedException var15) {
-         }
+   private void w() {
+      try {
+         this.g().e();
+      } catch (IOException var2) {
+         a.warn("Failed to save ip banlist: ", var2);
       }
    }
 
-   private void a() {
+   private void x() {
       try {
-         Timer $$0 = new Timer();
-         $$0.schedule(new TimerTask() {
-            @Override
-            public void run() {
-               Runtime.getRuntime().halt(1);
-            }
-         }, 10000L);
-         System.exit(1);
-      } catch (Throwable var2) {
-         Runtime.getRuntime().halt(1);
+         this.f().e();
+      } catch (IOException var2) {
+         a.warn("Failed to save user banlist: ", var2);
       }
+   }
+
+   private void y() {
+      try {
+         this.g().f();
+      } catch (IOException var2) {
+         a.warn("Failed to load ip banlist: ", var2);
+      }
+   }
+
+   private void z() {
+      try {
+         this.f().f();
+      } catch (IOException var2) {
+         a.warn("Failed to load user banlist: ", var2);
+      }
+   }
+
+   private void A() {
+      try {
+         this.k().f();
+      } catch (Exception var2) {
+         a.warn("Failed to load operators list: ", var2);
+      }
+   }
+
+   private void B() {
+      try {
+         this.k().e();
+      } catch (Exception var2) {
+         a.warn("Failed to save operators list: ", var2);
+      }
+   }
+
+   private void C() {
+      try {
+         this.i().f();
+      } catch (Exception var2) {
+         a.warn("Failed to load white-list: ", var2);
+      }
+   }
+
+   private void D() {
+      try {
+         this.i().e();
+      } catch (Exception var2) {
+         a.warn("Failed to save white-list: ", var2);
+      }
+   }
+
+   @Override
+   public boolean c(GameProfile $$0) {
+      return !this.o() || this.f($$0) || this.i().a($$0);
+   }
+
+   public ama b() {
+      return (ama)super.c();
+   }
+
+   @Override
+   public boolean d(GameProfile $$0) {
+      return this.k().a($$0);
    }
 }

@@ -1,25 +1,36 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableMap;
 
-public class bwv {
-   @Nullable
-   public static elm a(bmo $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6) {
-      boolean $$7 = bwy.a($$0, $$1);
-      return bxb.a($$0, () -> a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
+public class bwv extends bwl {
+   private static final ImmutableMap<bly<?>, Float> a = ImmutableMap.builder()
+      .put(bly.z, 8.0F)
+      .put(bly.H, 12.0F)
+      .put(bly.aa, 8.0F)
+      .put(bly.ab, 12.0F)
+      .put(bly.az, 15.0F)
+      .put(bly.aE, 12.0F)
+      .put(bly.bf, 8.0F)
+      .put(bly.bh, 10.0F)
+      .put(bly.bq, 10.0F)
+      .put(bly.br, 8.0F)
+      .put(bly.bt, 8.0F)
+      .build();
+
+   @Override
+   protected boolean a(bmk $$0, bmk $$1) {
+      return this.b($$1) && this.e($$0, $$1);
    }
 
-   @Nullable
-   public static hx a(bmo $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6, boolean $$7) {
-      hx $$8 = bxb.a($$0.eg(), $$1, $$2, $$3, $$4, $$5, $$6);
-      if ($$8 == null) {
-         return null;
-      } else {
-         hx $$9 = bxb.a($$0, $$1, $$0.eg(), $$8);
-         if (!bwy.a($$9, $$0) && !bwy.a($$7, $$0, $$9)) {
-            $$9 = bxb.a($$9, $$0.dM().al(), $$1x -> bwy.c($$0, $$1x));
-            return bwy.b($$0, $$9) ? null : $$9;
-         } else {
-            return null;
-         }
-      }
+   private boolean e(bmk $$0, bmk $$1) {
+      float $$2 = (Float)a.get($$1.ai());
+      return $$1.f((blu)$$0) <= (double)($$2 * $$2);
+   }
+
+   @Override
+   protected bvm<bmk> b() {
+      return bvm.A;
+   }
+
+   private boolean b(bmk $$0) {
+      return a.containsKey($$0.ai());
    }
 }

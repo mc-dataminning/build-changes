@@ -1,41 +1,25 @@
-import com.google.common.collect.Lists;
-import java.util.List;
+import javax.annotation.Nullable;
 
-public class ctw {
-   private final List<ctw.a> a = Lists.newArrayList();
+public interface ctw {
+   boolean a(hx var1, djg var2, int var3, int var4);
 
-   public void a(hx $$0, double $$1) {
-      if ($$1 != 0.0) {
-         this.a.add(new ctw.a($$0, $$1));
-      }
+   default boolean a(hx $$0, djg $$1, int $$2) {
+      return this.a($$0, $$1, $$2, 512);
    }
 
-   public double b(hx $$0, double $$1) {
-      if ($$1 == 0.0) {
-         return 0.0;
-      } else {
-         double $$2 = 0.0;
+   boolean a(hx var1, boolean var2);
 
-         for (ctw.a $$3 : this.a) {
-            $$2 += $$3.a($$0);
-         }
-
-         return $$2 * $$1;
-      }
+   default boolean b(hx $$0, boolean $$1) {
+      return this.a($$0, $$1, null);
    }
 
-   static class a {
-      private final hx a;
-      private final double b;
+   default boolean a(hx $$0, boolean $$1, @Nullable blu $$2) {
+      return this.a($$0, $$1, $$2, 512);
+   }
 
-      public a(hx $$0, double $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
+   boolean a(hx var1, boolean var2, @Nullable blu var3, int var4);
 
-      public double a(hx $$0) {
-         double $$1 = this.a.j($$0);
-         return $$1 == 0.0 ? Double.POSITIVE_INFINITY : this.b / Math.sqrt($$1);
-      }
+   default boolean b(blu $$0) {
+      return false;
    }
 }

@@ -1,35 +1,25 @@
-public class crr extends crc {
-   public crr(crc.a $$0, blu... $$1) {
-      super($$0, crd.b, $$1);
+public class crr extends cri {
+   protected crr(cri.a $$0, crj $$1, blz... $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
    public int a(int $$0) {
-      return $$0 * 10;
+      return 15 + ($$0 - 1) * 9;
    }
 
    @Override
    public int b(int $$0) {
-      return this.a($$0) + 15;
-   }
-
-   @Override
-   public boolean b() {
-      return true;
-   }
-
-   @Override
-   public boolean h() {
-      return false;
-   }
-
-   @Override
-   public boolean i() {
-      return false;
+      return super.a($$0) + 50;
    }
 
    @Override
    public int a() {
       return 3;
+   }
+
+   @Override
+   public boolean a(cri $$0) {
+      return super.a($$0) && $$0 != crm.v;
    }
 }

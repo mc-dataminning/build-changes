@@ -1,58 +1,16 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import org.slf4j.Logger;
+public class ejg {
+   public static final ejd<blu> a = a("this_entity");
+   public static final ejd<cfh> b = a("last_damage_player");
+   public static final ejd<bks> c = a("damage_source");
+   public static final ejd<blu> d = a("killer_entity");
+   public static final ejd<blu> e = a("direct_killer_entity");
+   public static final ejd<els> f = a("origin");
+   public static final ejd<djg> g = a("block_state");
+   public static final ejd<dgu> h = a("block_entity");
+   public static final ejd<cmx> i = a("tool");
+   public static final ejd<Float> j = a("explosion_radius");
 
-public record ejg(ahd b) implements ejo {
-   private static final Logger c = LogUtils.getLogger();
-   public static final Codec<ejg> a = RecordCodecBuilder.create($$0 -> $$0.group(ahd.a.fieldOf("name").forGetter(ejg::c)).apply($$0, ejg::new));
-
-   @Override
-   public ejp b() {
-      return ejq.q;
-   }
-
-   @Override
-   public void a(egy $$0) {
-      egr<ejo> $$1 = new egr<>(egu.a, this.b);
-      if ($$0.a($$1)) {
-         $$0.b("Condition " + this.b + " is recursively called");
-      } else {
-         ejo.super.a($$0);
-         $$0.a()
-            .getElementOptional($$1)
-            .ifPresentOrElse($$2 -> $$2.a($$0.a(".{" + this.b + "}", $$1)), () -> $$0.b("Unknown condition table called " + this.b));
-      }
-   }
-
-   public boolean a(egp $$0) {
-      ejo $$1 = $$0.a().getElement(egu.a, this.b);
-      if ($$1 == null) {
-         c.warn("Tried using unknown condition table called {}", this.b);
-         return false;
-      } else {
-         egp.c<?> $$2 = egp.a($$1);
-         if ($$0.b($$2)) {
-            boolean var4;
-            try {
-               var4 = $$1.test($$0);
-            } finally {
-               $$0.c($$2);
-            }
-
-            return var4;
-         } else {
-            c.warn("Detected infinite loop in loot tables");
-            return false;
-         }
-      }
-   }
-
-   public static ejo.a a(ahd $$0) {
-      return () -> new ejg($$0);
-   }
-
-   public ahd c() {
-      return this.b;
+   private static <T> ejd<T> a(String $$0) {
+      return new ejd<>(new ahg($$0));
    }
 }

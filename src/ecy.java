@@ -1,25 +1,36 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.UnmodifiableIterator;
 import com.mojang.serialization.Codec;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public interface ecy<P extends ecw> {
-   Codec<ecw> a = kd.ah.q().dispatch("processor_type", ecw::a, ecy::codec);
-   Codec<ecx> b = a.listOf().xmap(ecx::new, ecx::a);
-   Codec<ecx> c = atq.e(b.fieldOf("processors").codec(), b);
-   Codec<ih<ecx>> d = agz.a(ke.aE, c);
-   ecy<ecb> e = a("block_ignore", ecb.a);
-   ecy<ecd> f = a("block_rot", ecd.a);
-   ecy<ecg> g = a("gravity", ecg.a);
-   ecy<ech> h = a("jigsaw_replacement", ech.a);
-   ecy<ecs> i = a("rule", ecs.a);
-   ecy<eck> j = a("nop", eck.a);
-   ecy<eca> k = a("block_age", eca.a);
-   ecy<ebz> l = a("blackstone_replace", ebz.a);
-   ecy<eci> m = a("lava_submerged_block", eci.a);
-   ecy<ecp> n = a("protected_blocks", ecp.b);
-   ecy<ecf> o = a("capped", ecf.a);
+public class ecy extends edc {
+   public static final Codec<ecy> a = ecu.b.listOf().fieldOf("rules").xmap(ecy::new, $$0 -> $$0.b).codec();
+   private final ImmutableList<ecu> b;
 
-   Codec<P> codec();
+   public ecy(List<? extends ecu> $$0) {
+      this.b = ImmutableList.copyOf($$0);
+   }
 
-   static <P extends ecw> ecy<P> a(String $$0, Codec<P> $$1) {
-      return it.a(kd.ah, $$0, () -> $$1);
+   @Nullable
+   @Override
+   public edf.c a(ctr $$0, hx $$1, hx $$2, edf.c $$3, edf.c $$4, edb $$5) {
+      auu $$6 = auu.a(aun.a($$4.a()));
+      djg $$7 = $$0.a_($$4.a());
+      UnmodifiableIterator var9 = this.b.iterator();
+
+      while (var9.hasNext()) {
+         ecu $$8 = (ecu)var9.next();
+         if ($$8.a($$4.b(), $$7, $$3.a(), $$4.a(), $$2, $$6)) {
+            return new edf.c($$4.a(), $$8.a(), $$8.a($$6, $$4.c()));
+         }
+      }
+
+      return $$4;
+   }
+
+   @Override
+   protected ede<?> a() {
+      return ede.i;
    }
 }

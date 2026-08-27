@@ -1,24 +1,14 @@
-public class acm implements xd<yx> {
-   private final vd a;
-
-   public acm(vd $$0) {
-      this.a = $$0;
-   }
-
-   public acm(ug $$0) {
-      this.a = $$0.m();
+public record acm(int a) implements xf<za> {
+   public acm(ui $$0) {
+      this($$0.n());
    }
 
    @Override
-   public void a(ug $$0) {
-      $$0.a(this.a);
+   public void a(ui $$0) {
+      $$0.c(this.a);
    }
 
-   public void a(yx $$0) {
+   public void a(za $$0) {
       $$0.a(this);
-   }
-
-   public vd a() {
-      return this.a;
    }
 }

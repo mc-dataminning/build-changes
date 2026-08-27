@@ -1,151 +1,75 @@
-import com.google.common.base.Suppliers;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
 import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.ints.Int2IntMap;
-import it.unimi.dsi.fastutil.ints.Int2IntOpenHashMap;
-import java.io.IOException;
-import java.io.InputStream;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.JsonOps;
+import java.io.BufferedReader;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 import java.util.Map.Entry;
-import java.util.function.IntUnaryOperator;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+import java.util.function.Function;
+import java.util.function.Predicate;
 import org.slf4j.Logger;
 
-public class geq implements gej {
-   static final Logger c = LogUtils.getLogger();
-   public static final Codec<geq> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.list(ahd.a).fieldOf("textures").forGetter($$0x -> $$0x.d),
-               ahd.a.fieldOf("palette_key").forGetter($$0x -> $$0x.f),
-               Codec.unboundedMap(Codec.STRING, ahd.a).fieldOf("permutations").forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, geq::new)
-   );
-   private final List<ahd> d;
-   private final Map<String, ahd> e;
-   private final ahd f;
+public class geq {
+   private static final Logger a = LogUtils.getLogger();
+   private static final agz b = new agz("atlases", ".json");
+   private final List<gep> c;
 
-   private geq(List<ahd> $$0, ahd $$1, Map<String, ahd> $$2) {
-      this.d = $$0;
-      this.e = $$2;
-      this.f = $$1;
+   private geq(List<gep> $$0) {
+      this.c = $$0;
    }
 
-   @Override
-   public void a(aqc $$0, gej.a $$1) {
-      Supplier<int[]> $$2 = Suppliers.memoize(() -> a($$0, this.f));
-      Map<String, Supplier<IntUnaryOperator>> $$3 = new HashMap<>();
-      this.e.forEach(($$3x, $$4x) -> $$3.put($$3x, Suppliers.memoize(() -> a($$2.get(), a($$0, $$4x)))));
-
-      for (ahd $$4 : this.d) {
-         ahd $$5 = a.a($$4);
-         Optional<aqa> $$6 = $$0.getResource($$5);
-         if ($$6.isEmpty()) {
-            c.warn("Unable to find texture {}", $$5);
-         } else {
-            gep $$7 = new gep($$5, $$6.get(), $$3.size());
-
-            for (Entry<String, Supplier<IntUnaryOperator>> $$8 : $$3.entrySet()) {
-               ahd $$9 = $$4.e("_" + $$8.getKey());
-               $$1.a($$9, new geq.a($$7, $$8.getValue(), $$9));
-            }
-         }
-      }
-   }
-
-   private static IntUnaryOperator a(int[] $$0, int[] $$1) {
-      if ($$1.length != $$0.length) {
-         c.warn("Palette mapping has different sizes: {} and {}", $$0.length, $$1.length);
-         throw new IllegalArgumentException();
-      } else {
-         Int2IntMap $$2 = new Int2IntOpenHashMap($$1.length);
-
-         for (int $$3 = 0; $$3 < $$0.length; $$3++) {
-            int $$4 = $$0[$$3];
-            if (ats.a.a($$4) != 0) {
-               $$2.put(ats.a.e($$4), $$1[$$3]);
+   public List<Function<geo, gef>> a(aqh $$0) {
+      final Map<ahg, gep.b> $$1 = new HashMap<>();
+      gep.a $$2 = new gep.a() {
+         @Override
+         public void a(ahg $$0, gep.b $$1x) {
+            gep.b $$2 = $$1.put($$0, $$1);
+            if ($$2 != null) {
+               $$2.a();
             }
          }
 
-         return $$1x -> {
-            int $$2x = ats.a.a($$1x);
-            if ($$2x == 0) {
-               return $$1x;
-            } else {
-               int $$3x = ats.a.e($$1x);
-               int $$4x = $$2.getOrDefault($$3x, ats.a.f($$3x));
-               int $$5 = ats.a.a($$4x);
-               return ats.a.a($$2x * $$5 / 255, $$4x);
+         @Override
+         public void a(Predicate<ahg> $$0) {
+            Iterator<Entry<ahg, gep.b>> $$1 = $$1.entrySet().iterator();
+
+            while ($$1.hasNext()) {
+               Entry<ahg, gep.b> $$2 = $$1.next();
+               if ($$0.test($$2.getKey())) {
+                  $$2.getValue().a();
+                  $$1.remove();
+               }
             }
-         };
-      }
+         }
+      };
+      this.c.forEach($$2x -> $$2x.a($$0, $$2));
+      Builder<Function<geo, gef>> $$3 = ImmutableList.builder();
+      $$3.add((Function<geo, gef>)$$0x -> geb.a());
+      $$3.addAll($$1.values());
+      return $$3.build();
    }
 
-   public static int[] a(aqc $$0, ahd $$1) {
-      Optional<aqa> $$2 = $$0.getResource(a.a($$1));
-      if ($$2.isEmpty()) {
-         c.error("Failed to load palette image {}", $$1);
-         throw new IllegalArgumentException();
-      } else {
-         try {
-            int[] var5;
-            try (
-               InputStream $$3 = $$2.get().d();
-               eou $$4 = eou.a($$3);
-            ) {
-               var5 = $$4.d();
-            }
+   public static geq a(aqh $$0, ahg $$1) {
+      ahg $$2 = b.a($$1);
+      List<gep> $$3 = new ArrayList<>();
 
-            return var5;
+      for (aqf $$4 : $$0.a($$2)) {
+         try (BufferedReader $$5 = $$4.e()) {
+            Dynamic<JsonElement> $$6 = new Dynamic(JsonOps.INSTANCE, JsonParser.parseReader($$5));
+            $$3.addAll((Collection<? extends gep>)ges.h.parse($$6).getOrThrow(false, a::error));
          } catch (Exception var11) {
-            c.error("Couldn't load texture {}", $$1, var11);
-            throw new IllegalArgumentException();
+            a.warn("Failed to parse atlas definition {} in pack {}", new Object[]{$$2, $$4.b(), var11});
          }
       }
-   }
 
-   @Override
-   public gel a() {
-      return gem.e;
-   }
-
-   static record a(gep a, Supplier<IntUnaryOperator> b, ahd c) implements gej.b {
-      @Nullable
-      public gdz a(gei $$0) {
-         Object var3;
-         try {
-            eou $$1 = this.a.a().a(this.b.get());
-            return new gdz(this.c, new gfs($$1.a(), $$1.b()), $$1, aqe.a);
-         } catch (IllegalArgumentException | IOException var7) {
-            geq.c.error("unable to apply palette to {}", this.c, var7);
-            var3 = null;
-         } finally {
-            this.a.b();
-         }
-
-         return (gdz)var3;
-      }
-
-      @Override
-      public void a() {
-         this.a.b();
-      }
-
-      public gep b() {
-         return this.a;
-      }
-
-      public Supplier<IntUnaryOperator> c() {
-         return this.b;
-      }
-
-      public ahd d() {
-         return this.c;
-      }
+      return new geq($$3);
    }
 }

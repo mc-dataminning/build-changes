@@ -1,242 +1,276 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.ints.IntSet;
-import it.unimi.dsi.fastutil.ints.IntSets;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Function;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
 
-public class ezw implements enw {
-   static final Logger a = LogUtils.getLogger();
-   private final eou b;
-   private final ezl<ezw.b> c;
+public class ezw {
+   private final Supplier<String> a;
+   private final Consumer<String> b;
+   private final Supplier<String> c;
+   private final Consumer<String> d;
+   private final Predicate<String> e;
+   private int f;
+   private int g;
 
-   ezw(eou $$0, ezl<ezw.b> $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public ezw(Supplier<String> $$0, Consumer<String> $$1, Supplier<String> $$2, Consumer<String> $$3, Predicate<String> $$4) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f();
    }
 
-   @Override
-   public void close() {
-      this.b.close();
+   public static Supplier<String> a(evg $$0) {
+      return () -> b($$0);
    }
 
-   @Nullable
-   @Override
-   public env a(int $$0) {
-      return this.c.a($$0);
+   public static String b(evg $$0) {
+      return n.a($$0.o.a().replaceAll("\\r", ""));
    }
 
-   @Override
-   public IntSet a() {
-      return IntSets.unmodifiable(this.c.b());
+   public static Consumer<String> c(evg $$0) {
+      return $$1 -> a($$0, $$1);
    }
 
-   public static record a(ahd c, int d, int e, int[][] f) implements ezx {
-      private static final Codec<int[][]> g = atq.a(Codec.STRING.listOf().xmap($$0 -> {
-         int $$1 = $$0.size();
-         int[][] $$2 = new int[$$1][];
+   public static void a(evg $$0, String $$1) {
+      $$0.o.a($$1);
+   }
 
-         for (int $$3 = 0; $$3 < $$1; $$3++) {
-            $$2[$$3] = ((String)$$0.get($$3)).codePoints().toArray();
-         }
+   public boolean a(char $$0) {
+      if (aa.a($$0)) {
+         this.a(this.a.get(), Character.toString($$0));
+      }
 
-         return $$2;
-      }, $$0 -> {
-         List<String> $$1 = new ArrayList<>($$0.length);
+      return true;
+   }
 
-         for (int[] $$2 : $$0) {
-            $$1.add(new String($$2, 0, $$2.length));
-         }
-
-         return $$1;
-      }), ezw.a::a);
-      public static final MapCodec<ezw.a> a = atq.a(
-         RecordCodecBuilder.mapCodec(
-            $$0 -> $$0.group(
-                     ahd.a.fieldOf("file").forGetter(ezw.a::c),
-                     Codec.INT.optionalFieldOf("height", 8).forGetter(ezw.a::d),
-                     Codec.INT.fieldOf("ascent").forGetter(ezw.a::e),
-                     g.fieldOf("chars").forGetter(ezw.a::f)
-                  )
-                  .apply($$0, ezw.a::new)
-         ),
-         ezw.a::a
-      );
-
-      private static DataResult<int[][]> a(int[][] $$0) {
-         int $$1 = $$0.length;
-         if ($$1 == 0) {
-            return DataResult.error(() -> "Expected to find data in codepoint grid");
+   public boolean a(int $$0) {
+      if (fcz.f($$0)) {
+         this.d();
+         return true;
+      } else if (fcz.e($$0)) {
+         this.c();
+         return true;
+      } else if (fcz.d($$0)) {
+         this.b();
+         return true;
+      } else if (fcz.c($$0)) {
+         this.a();
+         return true;
+      } else {
+         ezw.a $$1 = fcz.r() ? ezw.a.b : ezw.a.a;
+         if ($$0 == 259) {
+            this.a(-1, $$1);
+            return true;
          } else {
-            int[] $$2 = $$0[0];
-            int $$3 = $$2.length;
-            if ($$3 == 0) {
-               return DataResult.error(() -> "Expected to find data in codepoint grid");
+            if ($$0 == 261) {
+               this.a(1, $$1);
             } else {
-               for (int $$4 = 1; $$4 < $$1; $$4++) {
-                  int[] $$5 = $$0[$$4];
-                  if ($$5.length != $$3) {
-                     return DataResult.error(
-                        () -> "Lines in codepoint grid have to be the same length (found: "
-                              + $$5.length
-                              + " codepoints, expected: "
-                              + $$3
-                              + "), pad with \\u0000"
-                     );
-                  }
+               if ($$0 == 263) {
+                  this.a(-1, fcz.s(), $$1);
+                  return true;
                }
 
-               return DataResult.success($$0);
-            }
-         }
-      }
+               if ($$0 == 262) {
+                  this.a(1, fcz.s(), $$1);
+                  return true;
+               }
 
-      private static DataResult<ezw.a> a(ezw.a $$0) {
-         return $$0.e > $$0.d ? DataResult.error(() -> "Ascent " + $$0.e + " higher than height " + $$0.d) : DataResult.success($$0);
-      }
+               if ($$0 == 268) {
+                  this.a(fcz.s());
+                  return true;
+               }
 
-      @Override
-      public ezy a() {
-         return ezy.a;
-      }
-
-      @Override
-      public Either<ezx.a, ezx.b> b() {
-         return Either.left(this::a);
-      }
-
-      private enw a(aqc $$0) throws IOException {
-         ahd $$1 = this.c.d("textures/");
-
-         ezw var22;
-         try (InputStream $$2 = $$0.open($$1)) {
-            eou $$3 = eou.a(eou.a.a, $$2);
-            int $$4 = $$3.a();
-            int $$5 = $$3.b();
-            int $$6 = $$4 / this.f[0].length;
-            int $$7 = $$5 / this.f.length;
-            float $$8 = (float)this.d / (float)$$7;
-            ezl<ezw.b> $$9 = new ezl<>(ezw.b[]::new, ezw.b[][]::new);
-
-            for (int $$10 = 0; $$10 < this.f.length; $$10++) {
-               int $$11 = 0;
-
-               for (int $$12 : this.f[$$10]) {
-                  int $$13 = $$11++;
-                  if ($$12 != 0) {
-                     int $$14 = this.a($$3, $$6, $$7, $$13, $$10);
-                     ezw.b $$15 = $$9.a($$12, new ezw.b($$8, $$3, $$13 * $$6, $$10 * $$7, $$6, $$7, (int)(0.5 + (double)((float)$$14 * $$8)) + 1, this.e));
-                     if ($$15 != null) {
-                        ezw.a.warn("Codepoint '{}' declared multiple times in {}", Integer.toHexString($$12), $$1);
-                     }
-                  }
+               if ($$0 == 269) {
+                  this.b(fcz.s());
+                  return true;
                }
             }
 
-            var22 = new ezw($$3, $$9);
+            return false;
          }
-
-         return var22;
-      }
-
-      private int a(eou $$0, int $$1, int $$2, int $$3, int $$4) {
-         int $$5;
-         for ($$5 = $$1 - 1; $$5 >= 0; $$5--) {
-            int $$6 = $$3 * $$1 + $$5;
-
-            for (int $$7 = 0; $$7 < $$2; $$7++) {
-               int $$8 = $$4 * $$2 + $$7;
-               if ($$0.e($$6, $$8) != 0) {
-                  return $$5 + 1;
-               }
-            }
-         }
-
-         return $$5 + 1;
       }
    }
 
-   static record b(float a, eou b, int c, int d, int e, int f, int g, int h) implements env {
+   private int h(int $$0) {
+      return aun.a($$0, 0, this.a.get().length());
+   }
 
-      @Override
-      public float getAdvance() {
-         return (float)this.g;
+   private void a(String $$0, String $$1) {
+      if (this.g != this.f) {
+         $$0 = this.c($$0);
       }
 
-      @Override
-      public ezr bake(Function<enx, ezr> $$0) {
-         return $$0.apply(new enx() {
-            @Override
-            public float d() {
-               return 1.0F / b.this.a;
+      this.f = aun.a(this.f, 0, $$0.length());
+      String $$2 = new StringBuilder($$0).insert(this.f, $$1).toString();
+      if (this.e.test($$2)) {
+         this.b.accept($$2);
+         this.g = this.f = Math.min($$2.length(), this.f + $$1.length());
+      }
+   }
+
+   public void a(String $$0) {
+      this.a(this.a.get(), $$0);
+   }
+
+   private void c(boolean $$0) {
+      if (!$$0) {
+         this.g = this.f;
+      }
+   }
+
+   public void a(int $$0, boolean $$1, ezw.a $$2) {
+      switch ($$2) {
+         case a:
+            this.a($$0, $$1);
+            break;
+         case b:
+            this.b($$0, $$1);
+      }
+   }
+
+   public void b(int $$0) {
+      this.a($$0, false);
+   }
+
+   public void a(int $$0, boolean $$1) {
+      this.f = ac.a(this.a.get(), this.f, $$0);
+      this.c($$1);
+   }
+
+   public void c(int $$0) {
+      this.b($$0, false);
+   }
+
+   public void b(int $$0, boolean $$1) {
+      this.f = evs.a(this.a.get(), $$0, this.f, true);
+      this.c($$1);
+   }
+
+   public void a(int $$0, ezw.a $$1) {
+      switch ($$1) {
+         case a:
+            this.e($$0);
+            break;
+         case b:
+            this.d($$0);
+      }
+   }
+
+   public void d(int $$0) {
+      int $$1 = evs.a(this.a.get(), $$0, this.f, true);
+      this.e($$1 - this.f);
+   }
+
+   public void e(int $$0) {
+      String $$1 = this.a.get();
+      if (!$$1.isEmpty()) {
+         String $$2;
+         if (this.g != this.f) {
+            $$2 = this.c($$1);
+         } else {
+            int $$3 = ac.a($$1, this.f, $$0);
+            int $$4 = Math.min($$3, this.f);
+            int $$5 = Math.max($$3, this.f);
+            $$2 = new StringBuilder($$1).delete($$4, $$5).toString();
+            if ($$0 < 0) {
+               this.g = this.f = $$4;
             }
+         }
 
-            @Override
-            public int a() {
-               return b.this.e;
-            }
-
-            @Override
-            public int b() {
-               return b.this.f;
-            }
-
-            @Override
-            public float j() {
-               return enx.super.j() + 7.0F - (float)b.this.h;
-            }
-
-            @Override
-            public void a(int $$0, int $$1) {
-               b.this.b.a(0, $$0, $$1, b.this.c, b.this.d, b.this.e, b.this.f, false, false);
-            }
-
-            @Override
-            public boolean c() {
-               return b.this.b.c().a() > 1;
-            }
-         });
+         this.b.accept($$2);
       }
+   }
 
-      public float c() {
-         return this.a;
-      }
+   public void a() {
+      String $$0 = this.a.get();
+      this.d.accept(this.b($$0));
+      this.b.accept(this.c($$0));
+   }
 
-      public eou d() {
-         return this.b;
-      }
+   public void b() {
+      this.a(this.a.get(), this.c.get());
+      this.g = this.f;
+   }
 
-      public int e() {
-         return this.c;
-      }
+   public void c() {
+      this.d.accept(this.b(this.a.get()));
+   }
 
-      public int f() {
-         return this.d;
-      }
+   public void d() {
+      this.g = 0;
+      this.f = this.a.get().length();
+   }
 
-      public int g() {
-         return this.e;
-      }
+   private String b(String $$0) {
+      int $$1 = Math.min(this.f, this.g);
+      int $$2 = Math.max(this.f, this.g);
+      return $$0.substring($$1, $$2);
+   }
 
-      public int h() {
-         return this.f;
+   private String c(String $$0) {
+      if (this.g == this.f) {
+         return $$0;
+      } else {
+         int $$1 = Math.min(this.f, this.g);
+         int $$2 = Math.max(this.f, this.g);
+         String $$3 = $$0.substring(0, $$1) + $$0.substring($$2);
+         this.g = this.f = $$1;
+         return $$3;
       }
+   }
 
-      public int i() {
-         return this.g;
-      }
+   public void e() {
+      this.a(false);
+   }
 
-      public int j() {
-         return this.h;
-      }
+   public void a(boolean $$0) {
+      this.f = 0;
+      this.c($$0);
+   }
+
+   public void f() {
+      this.b(false);
+   }
+
+   public void b(boolean $$0) {
+      this.f = this.a.get().length();
+      this.c($$0);
+   }
+
+   public int g() {
+      return this.f;
+   }
+
+   public void f(int $$0) {
+      this.c($$0, true);
+   }
+
+   public void c(int $$0, boolean $$1) {
+      this.f = this.h($$0);
+      this.c($$1);
+   }
+
+   public int h() {
+      return this.g;
+   }
+
+   public void g(int $$0) {
+      this.g = this.h($$0);
+   }
+
+   public void a(int $$0, int $$1) {
+      int $$2 = this.a.get().length();
+      this.f = aun.a($$0, 0, $$2);
+      this.g = aun.a($$1, 0, $$2);
+   }
+
+   public boolean i() {
+      return this.f != this.g;
+   }
+
+   public static enum a {
+      a,
+      b;
    }
 }

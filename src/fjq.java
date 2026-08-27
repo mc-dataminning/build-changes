@@ -1,47 +1,53 @@
-public class fjq<T extends blp> extends fjy<T> {
-   private static final String a = "base";
-   private static final String b = "upper_jaw";
-   private static final String f = "lower_jaw";
-   private final fmp g;
-   private final fmp h;
-   private final fmp i;
-   private final fmp j;
+public class fjq<T extends blu> extends fke<T> {
+   private final fmv a;
+   private final fmv b;
+   private final fmv f;
+   private final fmv g;
 
-   public fjq(fmp $$0) {
-      this.g = $$0;
-      this.h = $$0.b("base");
-      this.i = $$0.b("upper_jaw");
-      this.j = $$0.b("lower_jaw");
+   public fjq(fmv $$0) {
+      this.a = $$0;
+      this.b = $$0.b("body");
+      this.f = this.b.b("tail");
+      this.g = this.f.b("tail_fin");
    }
 
-   public static fmv b() {
-      fmx $$0 = new fmx();
-      fmy $$1 = $$0.a();
-      $$1.a("base", fmu.c().a(0, 0).a(0.0F, 0.0F, 0.0F, 10.0F, 12.0F, 10.0F), fmr.a(-5.0F, 24.0F, -5.0F));
-      fmu $$2 = fmu.c().a(40, 0).a(0.0F, 0.0F, 0.0F, 4.0F, 14.0F, 8.0F);
-      $$1.a("upper_jaw", $$2, fmr.a(1.5F, 24.0F, -4.0F));
-      $$1.a("lower_jaw", $$2, fmr.a(-1.5F, 24.0F, 4.0F, 0.0F, (float) Math.PI, 0.0F));
-      return fmv.a($$0, 64, 32);
+   public static fnb b() {
+      fnd $$0 = new fnd();
+      fne $$1 = $$0.a();
+      float $$2 = 18.0F;
+      float $$3 = -8.0F;
+      fne $$4 = $$1.a("body", fna.c().a(22, 0).a(-4.0F, -7.0F, 0.0F, 8.0F, 7.0F, 13.0F), fmx.a(0.0F, 22.0F, -5.0F));
+      $$4.a("back_fin", fna.c().a(51, 0).a(-0.5F, 0.0F, 8.0F, 1.0F, 4.0F, 5.0F), fmx.b((float) (Math.PI / 3), 0.0F, 0.0F));
+      $$4.a(
+         "left_fin",
+         fna.c().a(48, 20).a().a(-0.5F, -4.0F, 0.0F, 1.0F, 4.0F, 7.0F),
+         fmx.a(2.0F, -2.0F, 4.0F, (float) (Math.PI / 3), 0.0F, (float) (Math.PI * 2.0 / 3.0))
+      );
+      $$4.a(
+         "right_fin",
+         fna.c().a(48, 20).a(-0.5F, -4.0F, 0.0F, 1.0F, 4.0F, 7.0F),
+         fmx.a(-2.0F, -2.0F, 4.0F, (float) (Math.PI / 3), 0.0F, (float) (-Math.PI * 2.0 / 3.0))
+      );
+      fne $$5 = $$4.a("tail", fna.c().a(0, 19).a(-2.0F, -2.5F, 0.0F, 4.0F, 5.0F, 11.0F), fmx.a(0.0F, -2.5F, 11.0F, -0.10471976F, 0.0F, 0.0F));
+      $$5.a("tail_fin", fna.c().a(19, 20).a(-5.0F, -0.5F, 0.0F, 10.0F, 1.0F, 6.0F), fmx.a(0.0F, 0.0F, 9.0F));
+      fne $$6 = $$4.a("head", fna.c().a(0, 0).a(-4.0F, -3.0F, -3.0F, 8.0F, 7.0F, 6.0F), fmx.a(0.0F, -4.0F, -3.0F));
+      $$6.a("nose", fna.c().a(0, 13).a(-1.0F, 2.0F, -7.0F, 2.0F, 2.0F, 4.0F), fmx.a);
+      return fnb.a($$0, 64, 64);
+   }
+
+   @Override
+   public fmv a() {
+      return this.a;
    }
 
    @Override
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      float $$6 = $$1 * 2.0F;
-      if ($$6 > 1.0F) {
-         $$6 = 1.0F;
+      this.b.e = $$5 * (float) (Math.PI / 180.0);
+      this.b.f = $$4 * (float) (Math.PI / 180.0);
+      if ($$0.dp().i() > 1.0E-7) {
+         this.b.e = this.b.e + (-0.05F - 0.05F * aun.b($$3 * 0.3F));
+         this.f.e = -0.1F * aun.b($$3 * 0.3F);
+         this.g.e = -0.2F * aun.b($$3 * 0.3F);
       }
-
-      $$6 = 1.0F - $$6 * $$6 * $$6;
-      this.i.g = (float) Math.PI - $$6 * 0.35F * (float) Math.PI;
-      this.j.g = (float) Math.PI + $$6 * 0.35F * (float) Math.PI;
-      float $$7 = ($$1 + aui.a($$1 * 2.7F)) * 0.6F * 12.0F;
-      this.i.c = 24.0F - $$7;
-      this.j.c = this.i.c;
-      this.h.c = this.i.c;
-   }
-
-   @Override
-   public fmp a() {
-      return this.g;
    }
 }

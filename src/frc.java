@@ -1,43 +1,39 @@
-public class frc extends frn {
-   private final fri a;
+public class frc extends frt {
+   private final fro a;
 
-   protected frc(fnk $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fri $$7) {
-      super($$0, $$1, $$2, $$3);
-      this.u = 0.225F;
-      this.B = 1.0F;
+   frc(fnq $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fro $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      this.B = 0.96F;
       this.a = $$7;
-      this.j = $$4 + (Math.random() * 2.0 - 1.0) * 0.05F;
-      this.k = $$5 + (Math.random() * 2.0 - 1.0) * 0.05F;
-      this.l = $$6 + (Math.random() * 2.0 - 1.0) * 0.05F;
-      this.D = 0.1F * (this.r.i() * this.r.i() * 1.0F + 1.0F);
-      this.t = (int)(16.0 / ((double)this.r.i() * 0.8 + 0.2)) + 2;
+      this.d(1.5F);
+      this.n = false;
       this.b($$7);
    }
 
    @Override
-   public fqr b() {
-      return fqr.b;
+   public int a(float $$0) {
+      return 240;
+   }
+
+   @Override
+   public fqx b() {
+      return fqx.c;
    }
 
    @Override
    public void a() {
       super.a();
       this.b(this.a);
-      this.j *= 0.95F;
-      this.k *= 0.9F;
-      this.l *= 0.95F;
    }
 
-   public static class a implements fqq<ka> {
-      private final fri a;
-
-      public a(fri $$0) {
-         this.a = $$0;
-      }
-
-      public fqn a(ka $$0, fnk $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+   public static record a(fro a) implements fqw<jy> {
+      public fqt a(jy $$0, fnq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
          frc $$8 = new frc($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-         $$8.a(0.923F, 0.964F, 0.999F);
+         $$8.e(1.0F);
+         $$8.b($$5, $$6, $$7);
+         $$8.A = $$0.c();
+         $$8.z = $$0.c();
+         $$8.a($$1.z.a(12) + 8);
          return $$8;
       }
    }

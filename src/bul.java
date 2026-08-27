@@ -1,30 +1,44 @@
-public class bul extends btb {
-   private final bmo a;
+import java.util.EnumSet;
 
-   public bul(bmo $$0) {
+public class bul extends btg {
+   private final bnf a;
+
+   public bul(bnf $$0) {
       this.a = $$0;
+      this.a(EnumSet.of(btg.a.c, btg.a.a));
+   }
+
+   @Override
+   public boolean b() {
+      return this.a.ge();
    }
 
    @Override
    public boolean a() {
-      return this.a.aC() && !this.a.dM().b_(this.a.dm()).a(asg.a);
+      if (!this.a.u()) {
+         return false;
+      } else if (this.a.bc()) {
+         return false;
+      } else if (!this.a.aC()) {
+         return false;
+      } else {
+         bmk $$0 = this.a.R_();
+         if ($$0 == null) {
+            return true;
+         } else {
+            return this.a.f($$0) < 144.0 && $$0.eh() != null ? false : this.a.ge();
+         }
+      }
    }
 
    @Override
    public void c() {
-      hx $$0 = null;
+      this.a.N().n();
+      this.a.y(true);
+   }
 
-      for (hx $$2 : hx.b(
-         aui.a(this.a.dr() - 2.0), aui.a(this.a.dt() - 2.0), aui.a(this.a.dx() - 2.0), aui.a(this.a.dr() + 2.0), this.a.ds(), aui.a(this.a.dx() + 2.0)
-      )) {
-         if (this.a.dM().b_($$2).a(asg.a)) {
-            $$0 = $$2;
-            break;
-         }
-      }
-
-      if ($$0 != null) {
-         this.a.K().a((double)$$0.u(), (double)$$0.v(), (double)$$0.w(), 1.0);
-      }
+   @Override
+   public void d() {
+      this.a.y(false);
    }
 }

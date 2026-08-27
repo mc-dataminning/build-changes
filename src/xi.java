@@ -1,24 +1,15 @@
-public class xi implements xd<xg> {
-   private final vd a;
+public interface xi extends ud {
+   void a(xl var1);
 
-   public xi(vd $$0) {
-      this.a = $$0;
-   }
+   void a(xm var1);
 
-   public xi(ug $$0) {
-      this.a = $$0.m();
-   }
+   void a(xj var1);
 
-   @Override
-   public void a(ug $$0) {
-      $$0.a(this.a);
-   }
+   void a(xk var1);
 
-   public void a(xg $$0) {
-      $$0.a(this);
-   }
+   void a(xo var1);
 
-   public vd a() {
-      return this.a;
-   }
+   void a(xn var1);
+
+   void a(xp var1);
 }

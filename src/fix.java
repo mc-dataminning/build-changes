@@ -1,61 +1,75 @@
-public class fix extends fkl {
-   private static final String a = "left_pages";
-   private static final String b = "right_pages";
-   private static final String c = "flip_page1";
-   private static final String d = "flip_page2";
-   private final fmp e;
-   private final fmp f;
-   private final fmp g;
-   private final fmp h;
-   private final fmp i;
-   private final fmp j;
-   private final fmp k;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Iterables;
 
-   public fix(fmp $$0) {
-      super(fth::c);
-      this.e = $$0;
-      this.f = $$0.b("left_lid");
-      this.g = $$0.b("right_lid");
-      this.h = $$0.b("left_pages");
-      this.i = $$0.b("right_pages");
-      this.j = $$0.b("flip_page1");
-      this.k = $$0.b("flip_page2");
+public class fix extends fiw {
+   private static final String a = "right_body_stick";
+   private static final String b = "left_body_stick";
+   private static final String w = "shoulder_stick";
+   private static final String x = "base_plate";
+   private final fmv y;
+   private final fmv z;
+   private final fmv A;
+   private final fmv B;
+
+   public fix(fmv $$0) {
+      super($$0);
+      this.y = $$0.b("right_body_stick");
+      this.z = $$0.b("left_body_stick");
+      this.A = $$0.b("shoulder_stick");
+      this.B = $$0.b("base_plate");
+      this.l.k = false;
    }
 
-   public static fmv a() {
-      fmx $$0 = new fmx();
-      fmy $$1 = $$0.a();
-      $$1.a("left_lid", fmu.c().a(0, 0).a(-6.0F, -5.0F, -0.005F, 6.0F, 10.0F, 0.005F), fmr.a(0.0F, 0.0F, -1.0F));
-      $$1.a("right_lid", fmu.c().a(16, 0).a(0.0F, -5.0F, -0.005F, 6.0F, 10.0F, 0.005F), fmr.a(0.0F, 0.0F, 1.0F));
-      $$1.a("seam", fmu.c().a(12, 0).a(-1.0F, -5.0F, 0.0F, 2.0F, 10.0F, 0.005F), fmr.b(0.0F, (float) (Math.PI / 2), 0.0F));
-      $$1.a("left_pages", fmu.c().a(0, 10).a(0.0F, -4.0F, -0.99F, 5.0F, 8.0F, 1.0F), fmr.a);
-      $$1.a("right_pages", fmu.c().a(12, 10).a(0.0F, -4.0F, -0.01F, 5.0F, 8.0F, 1.0F), fmr.a);
-      fmu $$2 = fmu.c().a(24, 10).a(0.0F, -4.0F, 0.0F, 5.0F, 8.0F, 0.005F);
-      $$1.a("flip_page1", $$2, fmr.a);
-      $$1.a("flip_page2", $$2, fmr.a);
-      return fmv.a($$0, 64, 32);
+   public static fnb c() {
+      fnd $$0 = fki.a(fmz.a, 0.0F);
+      fne $$1 = $$0.a();
+      $$1.a("head", fna.c().a(0, 0).a(-1.0F, -7.0F, -1.0F, 2.0F, 7.0F, 2.0F), fmx.a(0.0F, 1.0F, 0.0F));
+      $$1.a("body", fna.c().a(0, 26).a(-6.0F, 0.0F, -1.5F, 12.0F, 3.0F, 3.0F), fmx.a);
+      $$1.a("right_arm", fna.c().a(24, 0).a(-2.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F), fmx.a(-5.0F, 2.0F, 0.0F));
+      $$1.a("left_arm", fna.c().a(32, 16).a().a(0.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F), fmx.a(5.0F, 2.0F, 0.0F));
+      $$1.a("right_leg", fna.c().a(8, 0).a(-1.0F, 0.0F, -1.0F, 2.0F, 11.0F, 2.0F), fmx.a(-1.9F, 12.0F, 0.0F));
+      $$1.a("left_leg", fna.c().a(40, 16).a().a(-1.0F, 0.0F, -1.0F, 2.0F, 11.0F, 2.0F), fmx.a(1.9F, 12.0F, 0.0F));
+      $$1.a("right_body_stick", fna.c().a(16, 0).a(-3.0F, 3.0F, -1.0F, 2.0F, 7.0F, 2.0F), fmx.a);
+      $$1.a("left_body_stick", fna.c().a(48, 16).a(1.0F, 3.0F, -1.0F, 2.0F, 7.0F, 2.0F), fmx.a);
+      $$1.a("shoulder_stick", fna.c().a(0, 48).a(-4.0F, 10.0F, -1.0F, 8.0F, 2.0F, 2.0F), fmx.a);
+      $$1.a("base_plate", fna.c().a(0, 32).a(-6.0F, 11.0F, -6.0F, 12.0F, 1.0F, 12.0F), fmx.a(0.0F, 12.0F, 0.0F));
+      return fnb.a($$0, 64, 64);
+   }
+
+   public void a(cbj $$0, float $$1, float $$2, float $$3) {
+      this.B.e = 0.0F;
+      this.B.f = (float) (Math.PI / 180.0) * -aun.j($$3, $$0.N, $$0.dC());
+      this.B.g = 0.0F;
    }
 
    @Override
-   public void a(ept $$0, epx $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-      this.b($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   public void a(cbj $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      this.o.k = $$0.w();
+      this.n.k = $$0.w();
+      this.B.k = !$$0.y();
+      this.y.e = (float) (Math.PI / 180.0) * $$0.C().b();
+      this.y.f = (float) (Math.PI / 180.0) * $$0.C().c();
+      this.y.g = (float) (Math.PI / 180.0) * $$0.C().d();
+      this.z.e = (float) (Math.PI / 180.0) * $$0.C().b();
+      this.z.f = (float) (Math.PI / 180.0) * $$0.C().c();
+      this.z.g = (float) (Math.PI / 180.0) * $$0.C().d();
+      this.A.e = (float) (Math.PI / 180.0) * $$0.C().b();
+      this.A.f = (float) (Math.PI / 180.0) * $$0.C().c();
+      this.A.g = (float) (Math.PI / 180.0) * $$0.C().d();
    }
 
-   public void b(ept $$0, epx $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-      this.e.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   @Override
+   protected Iterable<fmv> b() {
+      return Iterables.concat(super.b(), ImmutableList.of(this.y, this.z, this.A, this.B));
    }
 
-   public void a(float $$0, float $$1, float $$2, float $$3) {
-      float $$4 = (aui.a($$0 * 0.02F) * 0.1F + 1.25F) * $$3;
-      this.f.f = (float) Math.PI + $$4;
-      this.g.f = -$$4;
-      this.h.f = $$4;
-      this.i.f = -$$4;
-      this.j.f = $$4 - $$4 * 2.0F * $$1;
-      this.k.f = $$4 - $$4 * 2.0F * $$2;
-      this.h.b = aui.a($$4);
-      this.i.b = aui.a($$4);
-      this.j.b = aui.a($$4);
-      this.k.b = aui.a($$4);
+   @Override
+   public void a(bme $$0, epz $$1) {
+      fmv $$2 = this.a($$0);
+      boolean $$3 = $$2.k;
+      $$2.k = true;
+      super.a($$0, $$1);
+      $$2.k = $$3;
    }
 }

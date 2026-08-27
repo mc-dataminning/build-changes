@@ -1,89 +1,61 @@
-import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Map;
-import javax.annotation.Nullable;
 
-public class cvu extends cvr {
-   public static final MapCodec<cvu> b = b(cvu::new);
-   public static final dju c = dae.aE;
-   private static final Map<ic, emf> e = Maps.newEnumMap(
-      ImmutableMap.of(
-         ic.c,
-         cwj.a(0.0, 4.0, 5.0, 16.0, 12.0, 16.0),
-         ic.d,
-         cwj.a(0.0, 4.0, 0.0, 16.0, 12.0, 11.0),
-         ic.e,
-         cwj.a(5.0, 4.0, 0.0, 16.0, 12.0, 16.0),
-         ic.f,
-         cwj.a(0.0, 4.0, 0.0, 11.0, 12.0, 16.0)
-      )
-   );
+public class cvu extends cvg {
+   public static final MapCodec<cvu> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cll.q.fieldOf("color").forGetter(cvg::b), u()).apply($$0, cvu::new));
+   public static final dkg b = djw.ba;
+   private static final Map<cll, cwp> c = Maps.newHashMap();
+   private static final eml d = cwp.a(4.0, 0.0, 4.0, 12.0, 16.0, 12.0);
 
    @Override
-   public MapCodec<? extends cvu> a() {
-      return b;
+   public MapCodec<cvu> a() {
+      return a;
    }
 
-   protected cvu(diz.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(c, ic.c).a(d, Boolean.valueOf(true)));
+   public cvu(cll $$0, djf.d $$1) {
+      super($$0, $$1);
+      this.k(this.E.b().a(b, Integer.valueOf(0)));
+      c.put($$0, this);
    }
 
    @Override
-   public emf a(dja $$0, cso $$1, hx $$2, elr $$3) {
-      return e.get($$0.c(c));
+   public boolean a(djg $$0, ctr $$1, hx $$2) {
+      return $$1.a_($$2.d()).e();
    }
 
    @Override
-   public dja a(dja $$0, dcv $$1) {
-      return $$0.a(c, $$1.a($$0.c(c)));
+   public eml a(djg $$0, csu $$1, hx $$2, elx $$3) {
+      return d;
    }
 
    @Override
-   public dja a(dja $$0, dbf $$1) {
-      return $$0.a($$1.a($$0.c(c)));
+   public djg a(cpg $$0) {
+      return this.o().a(b, Integer.valueOf(dkm.a($$0.i() + 180.0F)));
    }
 
    @Override
-   protected void a(djb.a<cwj, dja> $$0) {
-      $$0.a(c, d);
+   public djg a(djg $$0, ic $$1, djg $$2, ctp $$3, hx $$4, hx $$5) {
+      return $$1 == ic.a && !$$0.a($$3, $$4) ? cwr.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public dja a(dja $$0, ic $$1, dja $$2, ctj $$3, hx $$4, hx $$5) {
-      if ($$0.c(d)) {
-         $$3.a($$4, eel.c, eel.c.a($$3));
-      }
-
-      return $$1.g() == $$0.c(c) && !$$0.a($$3, $$4) ? cwl.a.o() : $$0;
+   public djg a(djg $$0, ddb $$1) {
+      return $$0.a(b, Integer.valueOf($$1.a($$0.c(b), 16)));
    }
 
    @Override
-   public boolean a(dja $$0, ctl $$1, hx $$2) {
-      ic $$3 = $$0.c(c);
-      hx $$4 = $$2.a($$3.g());
-      dja $$5 = $$1.a_($$4);
-      return $$5.d($$1, $$4, $$3);
+   public djg a(djg $$0, dbl $$1) {
+      return $$0.a(b, Integer.valueOf($$1.a($$0.c(b), 16)));
    }
 
-   @Nullable
    @Override
-   public dja a(cpa $$0) {
-      dja $$1 = super.a($$0);
-      ctl $$2 = $$0.q();
-      hx $$3 = $$0.a();
-      ic[] $$4 = $$0.f();
+   protected void a(djh.a<cwp, djg> $$0) {
+      $$0.a(b);
+   }
 
-      for (ic $$5 : $$4) {
-         if ($$5.o().d()) {
-            $$1 = $$1.a(c, $$5.g());
-            if ($$1.a($$2, $$3)) {
-               return $$1;
-            }
-         }
-      }
-
-      return null;
+   public static cwp a(cll $$0) {
+      return c.getOrDefault($$0, cwr.iJ);
    }
 }

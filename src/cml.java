@@ -1,27 +1,58 @@
-public interface cml {
-   int a = 256;
-   int b = 140;
-   ahc<cmj> c = a("ponder_goat_horn");
-   ahc<cmj> d = a("sing_goat_horn");
-   ahc<cmj> e = a("seek_goat_horn");
-   ahc<cmj> f = a("feel_goat_horn");
-   ahc<cmj> g = a("admire_goat_horn");
-   ahc<cmj> h = a("call_goat_horn");
-   ahc<cmj> i = a("yearn_goat_horn");
-   ahc<cmj> j = a("dream_goat_horn");
+public class cml extends cms {
+   private static final int a = 40;
 
-   private static ahc<cmj> a(String $$0) {
-      return ahc.a(ke.D, new ahd($$0));
+   public cml(cms.a $$0) {
+      super($$0);
    }
 
-   static cmj a(it<cmj> $$0) {
-      it.a($$0, c, new cmj((ih<arl>)arm.lR.get(0), 140, 256.0F));
-      it.a($$0, d, new cmj((ih<arl>)arm.lR.get(1), 140, 256.0F));
-      it.a($$0, e, new cmj((ih<arl>)arm.lR.get(2), 140, 256.0F));
-      it.a($$0, f, new cmj((ih<arl>)arm.lR.get(3), 140, 256.0F));
-      it.a($$0, g, new cmj((ih<arl>)arm.lR.get(4), 140, 256.0F));
-      it.a($$0, h, new cmj((ih<arl>)arm.lR.get(5), 140, 256.0F));
-      it.a($$0, i, new cmj((ih<arl>)arm.lR.get(6), 140, 256.0F));
-      return it.a($$0, j, new cmj((ih<arl>)arm.lR.get(7), 140, 256.0F));
+   @Override
+   public cmx a(cmx $$0, cto $$1, bmk $$2) {
+      super.a($$0, $$1, $$2);
+      if ($$2 instanceof ane $$3) {
+         am.A.a($$3, $$0);
+         $$3.b(asb.c.b(this));
+      }
+
+      if (!$$1.B) {
+         $$2.d(blj.s);
+      }
+
+      if ($$0.b()) {
+         return new cmx(cna.si);
+      } else {
+         if ($$2 instanceof cfh $$4 && !$$4.fT().d) {
+            cmx $$5 = new cmx(cna.si);
+            if (!$$4.fS().e($$5)) {
+               $$4.a($$5, false);
+            }
+         }
+
+         return $$0;
+      }
+   }
+
+   @Override
+   public int b(cmx $$0) {
+      return 40;
+   }
+
+   @Override
+   public cor c(cmx $$0) {
+      return cor.c;
+   }
+
+   @Override
+   public arq an_() {
+      return arr.lP;
+   }
+
+   @Override
+   public arq ao_() {
+      return arr.lP;
+   }
+
+   @Override
+   public bkb<cmx> a(cto $$0, cfh $$1, bjz $$2) {
+      return cmz.a($$0, $$1, $$2);
    }
 }

@@ -1,17 +1,73 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Function;
+import java.util.function.Supplier;
 
-public record ezz(ahd c) implements ezx {
-   public static final MapCodec<ezz> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ahd.a.fieldOf("id").forGetter(ezz::c)).apply($$0, ezz::new));
+public enum ezz implements eob {
+   a(() -> a(5, 8, ($$0, $$1) -> -1)),
+   b(() -> {
+      int $$0 = 5;
+      int $$1 = 8;
+      return a(5, 8, ($$0x, $$1x) -> {
+         boolean $$2 = $$0x == 0 || $$0x + 1 == 5 || $$1x == 0 || $$1x + 1 == 8;
+         return $$2 ? -1 : 0;
+      });
+   });
 
-   @Override
-   public ezy a() {
-      return ezy.e;
+   final epa c;
+
+   private static epa a(int $$0, int $$1, ezz.a $$2) {
+      epa $$3 = new epa(epa.a.a, $$0, $$1, false);
+
+      for (int $$4 = 0; $$4 < $$1; $$4++) {
+         for (int $$5 = 0; $$5 < $$0; $$5++) {
+            $$3.a($$5, $$4, $$2.getColor($$5, $$4));
+         }
+      }
+
+      $$3.i();
+      return $$3;
+   }
+
+   private ezz(Supplier<epa> $$0) {
+      this.c = $$0.get();
    }
 
    @Override
-   public Either<ezx.a, ezx.b> b() {
-      return Either.right(new ezx.b(this.c));
+   public float getAdvance() {
+      return (float)(this.c.a() + 1);
+   }
+
+   @Override
+   public ezx bake(Function<eod, ezx> $$0) {
+      return $$0.apply(new eod() {
+         @Override
+         public int a() {
+            return ezz.this.c.a();
+         }
+
+         @Override
+         public int b() {
+            return ezz.this.c.b();
+         }
+
+         @Override
+         public float d() {
+            return 1.0F;
+         }
+
+         @Override
+         public void a(int $$0, int $$1) {
+            ezz.this.c.a(0, $$0, $$1, false);
+         }
+
+         @Override
+         public boolean c() {
+            return true;
+         }
+      });
+   }
+
+   @FunctionalInterface
+   interface a {
+      int getColor(int var1, int var2);
    }
 }

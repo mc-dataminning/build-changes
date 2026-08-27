@@ -1,87 +1,350 @@
-import com.google.gson.JsonElement;
-import java.util.function.BiConsumer;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.function.Supplier;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import java.util.Map;
+import java.util.Set;
+import java.util.function.UnaryOperator;
+import java.util.stream.Stream;
 
 public class mq {
-   public static final mq.a a = a(mo::a, mn.c);
-   public static final mq.a b = a(mo::a, mn.d);
-   public static final mq.a c = a(mo::a, mn.e);
-   public static final mq.a d = a(mo::k, mn.j);
-   public static final mq.a e = a(mo::k, mn.k);
-   public static final mq.a f = a(mo::q, mn.n);
-   public static final mq.a g = a(mo::l, mn.m);
-   public static final mq.a h = a(mo::B, mn.p);
-   public static final mq.a i = a(mo::A, mn.q);
-   public static final mq.a j = a(mo::f, mn.aw);
-   public static final mq.a k = a(mo::g, mn.ax);
-   public static final mq.a l = a(mo::g, mn.ay);
-   public static final mq.a m = a(mo::g, mn.az);
-   public static final mq.a n = a(mo::g, mn.aA);
-   public static final mq.a o = a(mo::i, mn.aD);
-   public static final mq.a p = a(mo::j, mn.aB);
-   public static final mq.a q = a(mo::u, mn.aa);
-   public static final mq.a r = a(mo::D, mn.aS);
-   public static final mq.a s = a(mo::a, mn.ad);
-   public static final mq.a t = a(mo::x, mn.bd);
-   public static final mq.a u = a(mo::x, mn.be);
-   public static final mq.a v = a(mo::b, mn.bk);
-   public static final mq.a w = a(mo::n, mn.j);
-   public static final mq.a x = a(mo::n, mn.k);
-   public static final mq.a y = a(mo::r, mn.n);
-   public static final mq.a z = a(mo::s, mn.j);
-   private final mo A;
-   private final mm B;
+   private final Map<mr, ahg> a = Maps.newHashMap();
+   private final Set<mr> b = Sets.newHashSet();
 
-   private mq(mo $$0, mm $$1) {
-      this.A = $$0;
-      this.B = $$1;
-   }
-
-   public mm a() {
-      return this.B;
-   }
-
-   public mo b() {
-      return this.A;
-   }
-
-   public mq a(Consumer<mo> $$0) {
-      $$0.accept(this.A);
+   public mq a(mr $$0, ahg $$1) {
+      this.a.put($$0, $$1);
       return this;
    }
 
-   public ahd a(cwj $$0, BiConsumer<ahd, Supplier<JsonElement>> $$1) {
-      return this.B.a($$0, this.A, $$1);
+   public mq b(mr $$0, ahg $$1) {
+      this.a.put($$0, $$1);
+      this.b.add($$0);
+      return this;
    }
 
-   public ahd a(cwj $$0, String $$1, BiConsumer<ahd, Supplier<JsonElement>> $$2) {
-      return this.B.a($$0, $$1, this.A, $$2);
+   public Stream<mr> a() {
+      return this.b.stream();
    }
 
-   private static mq.a a(Function<cwj, mo> $$0, mm $$1) {
-      return $$2 -> new mq($$0.apply($$2), $$1);
+   public mq a(mr $$0, mr $$1) {
+      this.a.put($$1, this.a.get($$0));
+      return this;
    }
 
-   public static mq a(ahd $$0) {
-      return new mq(mo.b($$0), mn.c);
+   public mq b(mr $$0, mr $$1) {
+      this.a.put($$1, this.a.get($$0));
+      this.b.add($$1);
+      return this;
    }
 
-   @FunctionalInterface
-   public interface a {
-      mq get(cwj var1);
-
-      default ahd create(cwj $$0, BiConsumer<ahd, Supplier<JsonElement>> $$1) {
-         return this.get($$0).a($$0, $$1);
+   public ahg a(mr $$0) {
+      for (mr $$1 = $$0; $$1 != null; $$1 = $$1.b()) {
+         ahg $$2 = this.a.get($$1);
+         if ($$2 != null) {
+            return $$2;
+         }
       }
 
-      default ahd createWithSuffix(cwj $$0, String $$1, BiConsumer<ahd, Supplier<JsonElement>> $$2) {
-         return this.get($$0).a($$0, $$1, $$2);
-      }
+      throw new IllegalStateException("Can't find texture for slot " + $$0);
+   }
 
-      default mq.a updateTexture(Consumer<mo> $$0) {
-         return $$1 -> this.get($$1).a($$0);
-      }
+   public mq c(mr $$0, ahg $$1) {
+      mq $$2 = new mq();
+      $$2.a.putAll(this.a);
+      $$2.b.addAll(this.b);
+      $$2.a($$0, $$1);
+      return $$2;
+   }
+
+   public static mq a(cwp $$0) {
+      ahg $$1 = G($$0);
+      return b($$1);
+   }
+
+   public static mq b(cwp $$0) {
+      ahg $$1 = G($$0);
+      return a($$1);
+   }
+
+   public static mq a(ahg $$0) {
+      return new mq().a(mr.b, $$0);
+   }
+
+   public static mq b(ahg $$0) {
+      return new mq().a(mr.a, $$0);
+   }
+
+   public static mq c(cwp $$0) {
+      return d(mr.p, G($$0));
+   }
+
+   public static mq c(ahg $$0) {
+      return d(mr.p, $$0);
+   }
+
+   public static mq d(cwp $$0) {
+      return d(mr.q, G($$0));
+   }
+
+   public static mq d(ahg $$0) {
+      return d(mr.q, $$0);
+   }
+
+   public static mq e(cwp $$0) {
+      return d(mr.s, G($$0));
+   }
+
+   public static mq e(ahg $$0) {
+      return d(mr.s, $$0);
+   }
+
+   public static mq f(cwp $$0) {
+      return d(mr.t, G($$0));
+   }
+
+   public static mq g(cwp $$0) {
+      return new mq().a(mr.P, G($$0)).a(mr.y, a($$0, "_stem"));
+   }
+
+   public static mq f(ahg $$0) {
+      return d(mr.t, $$0);
+   }
+
+   public static mq h(cwp $$0) {
+      return d(mr.y, G($$0));
+   }
+
+   public static mq a(cwp $$0, cwp $$1) {
+      return new mq().a(mr.y, G($$0)).a(mr.z, G($$1));
+   }
+
+   public static mq i(cwp $$0) {
+      return d(mr.u, G($$0));
+   }
+
+   public static mq j(cwp $$0) {
+      return d(mr.x, G($$0));
+   }
+
+   public static mq g(ahg $$0) {
+      return d(mr.A, $$0);
+   }
+
+   public static mq b(cwp $$0, cwp $$1) {
+      return new mq().a(mr.v, G($$0)).a(mr.w, a($$1, "_top"));
+   }
+
+   public static mq d(mr $$0, ahg $$1) {
+      return new mq().a($$0, $$1);
+   }
+
+   public static mq k(cwp $$0) {
+      return new mq().a(mr.i, a($$0, "_side")).a(mr.d, a($$0, "_top"));
+   }
+
+   public static mq l(cwp $$0) {
+      return new mq().a(mr.i, a($$0, "_side")).a(mr.f, a($$0, "_top"));
+   }
+
+   public static mq m(cwp $$0) {
+      return new mq().a(mr.q, a($$0, "_plant")).a(mr.i, a($$0, "_side")).a(mr.f, a($$0, "_top"));
+   }
+
+   public static mq n(cwp $$0) {
+      return new mq().a(mr.i, G($$0)).a(mr.d, a($$0, "_top")).a(mr.c, G($$0));
+   }
+
+   public static mq a(ahg $$0, ahg $$1) {
+      return new mq().a(mr.i, $$0).a(mr.d, $$1);
+   }
+
+   public static mq o(cwp $$0) {
+      return new mq().a(mr.b, G($$0)).a(mr.i, a($$0, "_side")).a(mr.f, a($$0, "_top"));
+   }
+
+   public static mq p(cwp $$0) {
+      return new mq().a(mr.b, G($$0)).a(mr.c, a($$0, "_particle"));
+   }
+
+   public static mq q(cwp $$0) {
+      return new mq().a(mr.i, a($$0, "_side")).a(mr.f, a($$0, "_top")).a(mr.e, a($$0, "_bottom"));
+   }
+
+   public static mq r(cwp $$0) {
+      ahg $$1 = G($$0);
+      return new mq().a(mr.r, $$1).a(mr.i, $$1).a(mr.f, a($$0, "_top")).a(mr.e, a($$0, "_bottom"));
+   }
+
+   public static mq s(cwp $$0) {
+      ahg $$1 = G($$0);
+      return new mq().a(mr.b, $$1).a(mr.r, $$1).a(mr.i, $$1).a(mr.d, a($$0, "_top"));
+   }
+
+   public static mq b(ahg $$0, ahg $$1) {
+      return new mq().a(mr.f, $$0).a(mr.e, $$1);
+   }
+
+   public static mq t(cwp $$0) {
+      return new mq().a(mr.f, a($$0, "_top")).a(mr.e, a($$0, "_bottom"));
+   }
+
+   public static mq u(cwp $$0) {
+      return new mq().a(mr.c, G($$0));
+   }
+
+   public static mq h(ahg $$0) {
+      return new mq().a(mr.c, $$0);
+   }
+
+   public static mq v(cwp $$0) {
+      return new mq().a(mr.C, a($$0, "_0"));
+   }
+
+   public static mq w(cwp $$0) {
+      return new mq().a(mr.C, a($$0, "_1"));
+   }
+
+   public static mq x(cwp $$0) {
+      return new mq().a(mr.D, G($$0));
+   }
+
+   public static mq y(cwp $$0) {
+      return new mq().a(mr.G, G($$0));
+   }
+
+   public static mq i(ahg $$0) {
+      return new mq().a(mr.G, $$0);
+   }
+
+   public static mq a(cwp $$0, String $$1, String $$2) {
+      return new mq().a(mr.i, a($$0, $$1)).a(mr.f, a($$0, $$2)).a(mr.e, a($$0, "_bottom"));
+   }
+
+   public static mq a(cms $$0) {
+      return new mq().a(mr.c, c($$0));
+   }
+
+   public static mq z(cwp $$0) {
+      return new mq().a(mr.i, a($$0, "_side")).a(mr.g, a($$0, "_front")).a(mr.h, a($$0, "_back"));
+   }
+
+   public static mq A(cwp $$0) {
+      return new mq().a(mr.i, a($$0, "_side")).a(mr.g, a($$0, "_front")).a(mr.f, a($$0, "_top")).a(mr.e, a($$0, "_bottom"));
+   }
+
+   public static mq B(cwp $$0) {
+      return new mq().a(mr.i, a($$0, "_side")).a(mr.g, a($$0, "_front")).a(mr.f, a($$0, "_top"));
+   }
+
+   public static mq C(cwp $$0) {
+      return new mq().a(mr.i, a($$0, "_side")).a(mr.g, a($$0, "_front")).a(mr.d, a($$0, "_end"));
+   }
+
+   public static mq D(cwp $$0) {
+      return new mq().a(mr.f, a($$0, "_top"));
+   }
+
+   public static mq c(cwp $$0, cwp $$1) {
+      return new mq()
+         .a(mr.c, a($$0, "_front"))
+         .a(mr.o, G($$1))
+         .a(mr.n, a($$0, "_top"))
+         .a(mr.j, a($$0, "_front"))
+         .a(mr.l, a($$0, "_side"))
+         .a(mr.k, a($$0, "_side"))
+         .a(mr.m, a($$0, "_front"));
+   }
+
+   public static mq d(cwp $$0, cwp $$1) {
+      return new mq()
+         .a(mr.c, a($$0, "_front"))
+         .a(mr.o, G($$1))
+         .a(mr.n, a($$0, "_top"))
+         .a(mr.j, a($$0, "_front"))
+         .a(mr.k, a($$0, "_front"))
+         .a(mr.l, a($$0, "_side"))
+         .a(mr.m, a($$0, "_side"));
+   }
+
+   public static mq a(String $$0) {
+      return new mq()
+         .a(mr.c, a(cwr.mg, $$0 + "_north"))
+         .a(mr.e, a(cwr.mg, $$0 + "_bottom"))
+         .a(mr.f, a(cwr.mg, $$0 + "_top"))
+         .a(mr.j, a(cwr.mg, $$0 + "_north"))
+         .a(mr.k, a(cwr.mg, $$0 + "_south"))
+         .a(mr.l, a(cwr.mg, $$0 + "_east"))
+         .a(mr.m, a(cwr.mg, $$0 + "_west"));
+   }
+
+   public static mq E(cwp $$0) {
+      return new mq().a(mr.K, a($$0, "_log_lit")).a(mr.C, a($$0, "_fire"));
+   }
+
+   public static mq a(cwp $$0, boolean $$1) {
+      return new mq()
+         .a(mr.c, a(cwr.eg, "_side"))
+         .a(mr.e, a(cwr.eg, "_bottom"))
+         .a(mr.f, a(cwr.eg, "_top"))
+         .a(mr.i, a(cwr.eg, "_side"))
+         .a(mr.L, a($$0, $$1 ? "_lit" : ""));
+   }
+
+   public static mq j(ahg $$0) {
+      return new mq()
+         .a(mr.c, a(cwr.ft, "_side"))
+         .a(mr.i, a(cwr.ft, "_side"))
+         .a(mr.f, a(cwr.ft, "_top"))
+         .a(mr.e, a(cwr.ft, "_bottom"))
+         .a(mr.M, a(cwr.ft, "_inner"))
+         .a(mr.N, $$0);
+   }
+
+   public static mq a(boolean $$0) {
+      String $$1 = $$0 ? "_can_summon" : "";
+      return new mq()
+         .a(mr.c, a(cwr.qV, "_bottom"))
+         .a(mr.i, a(cwr.qV, "_side"))
+         .a(mr.f, a(cwr.qV, "_top"))
+         .a(mr.O, a(cwr.qV, $$1 + "_inner_top"))
+         .a(mr.e, a(cwr.qV, "_bottom"));
+   }
+
+   public static mq b(cms $$0) {
+      return new mq().a(mr.H, c($$0));
+   }
+
+   public static mq F(cwp $$0) {
+      return new mq().a(mr.H, G($$0));
+   }
+
+   public static mq k(ahg $$0) {
+      return new mq().a(mr.H, $$0);
+   }
+
+   public static mq c(ahg $$0, ahg $$1) {
+      return new mq().a(mr.H, $$0).a(mr.I, $$1);
+   }
+
+   public static mq a(ahg $$0, ahg $$1, ahg $$2) {
+      return new mq().a(mr.H, $$0).a(mr.I, $$1).a(mr.J, $$2);
+   }
+
+   public static ahg G(cwp $$0) {
+      ahg $$1 = kd.e.b($$0);
+      return $$1.d("block/");
+   }
+
+   public static ahg a(cwp $$0, String $$1) {
+      ahg $$2 = kd.e.b($$0);
+      return $$2.a((UnaryOperator<String>)($$1x -> "block/" + $$1x + $$1));
+   }
+
+   public static ahg c(cms $$0) {
+      ahg $$1 = kd.h.b($$0);
+      return $$1.d("item/");
+   }
+
+   public static ahg a(cms $$0, String $$1) {
+      ahg $$2 = kd.h.b($$0);
+      return $$2.a((UnaryOperator<String>)($$1x -> "item/" + $$1x + $$1));
    }
 }

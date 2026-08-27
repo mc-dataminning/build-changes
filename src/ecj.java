@@ -1,41 +1,41 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class ecj extends ecm {
+public class ecj extends edc {
    public static final Codec<ecj> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               Codec.FLOAT.fieldOf("min_chance").orElse(0.0F).forGetter($$0x -> $$0x.b),
-               Codec.FLOAT.fieldOf("max_chance").orElse(0.0F).forGetter($$0x -> $$0x.d),
-               Codec.INT.fieldOf("min_dist").orElse(0).forGetter($$0x -> $$0x.e),
-               Codec.INT.fieldOf("max_dist").orElse(0).forGetter($$0x -> $$0x.f)
+               iv.a(ke.f).optionalFieldOf("rottable_blocks").forGetter($$0x -> $$0x.b),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("integrity").forGetter($$0x -> $$0x.c)
             )
             .apply($$0, ecj::new)
    );
-   private final float b;
-   private final float d;
-   private final int e;
-   private final int f;
+   private final Optional<il<cwp>> b;
+   private final float c;
 
-   public ecj(float $$0, float $$1, int $$2, int $$3) {
-      if ($$2 >= $$3) {
-         throw new IllegalArgumentException("Invalid range: [" + $$2 + "," + $$3 + "]");
-      } else {
-         this.b = $$0;
-         this.d = $$1;
-         this.e = $$2;
-         this.f = $$3;
-      }
+   public ecj(il<cwp> $$0, float $$1) {
+      this(Optional.of($$0), $$1);
+   }
+
+   public ecj(float $$0) {
+      this(Optional.empty(), $$0);
+   }
+
+   private ecj(Optional<il<cwp>> $$0, float $$1) {
+      this.c = $$1;
+      this.b = $$0;
+   }
+
+   @Nullable
+   @Override
+   public edf.c a(ctr $$0, hx $$1, hx $$2, edf.c $$3, edf.c $$4, edb $$5) {
+      auu $$6 = $$5.b($$4.a());
+      return (!this.b.isPresent() || $$3.b().a(this.b.get())) && !($$6.i() <= this.c) ? null : $$4;
    }
 
    @Override
-   public boolean a(hx $$0, hx $$1, hx $$2, aup $$3) {
-      int $$4 = $$1.k($$2);
-      float $$5 = $$3.i();
-      return $$5 <= aui.b(this.b, this.d, aui.g((float)$$4, (float)this.e, (float)this.f));
-   }
-
-   @Override
-   protected ecn<?> a() {
-      return ecn.b;
+   protected ede<?> a() {
+      return ede.f;
    }
 }

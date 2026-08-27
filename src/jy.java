@@ -13,7 +13,7 @@ public record jy(float c) implements jv {
          return new jy($$2);
       }
 
-      public jy a(jw<jy> $$0, ug $$1) {
+      public jy a(jw<jy> $$0, ui $$1) {
          return new jy($$1.readFloat());
       }
    };
@@ -24,7 +24,7 @@ public record jy(float c) implements jv {
    }
 
    @Override
-   public void a(ug $$0) {
+   public void a(ui $$0) {
       $$0.a(this.c);
    }
 

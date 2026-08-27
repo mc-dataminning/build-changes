@@ -1,24 +1,14 @@
-public class zn implements xd<yx> {
-   private final boolean a;
-
-   public zn(boolean $$0) {
-      this.a = $$0;
-   }
-
-   public zn(ug $$0) {
-      this.a = $$0.readBoolean();
+public record zn(int a) implements xf<za> {
+   public zn(ui $$0) {
+      this($$0.n());
    }
 
    @Override
-   public void a(ug $$0) {
-      $$0.a(this.a);
+   public void a(ui $$0) {
+      $$0.c(this.a);
    }
 
-   public void a(yx $$0) {
+   public void a(za $$0) {
       $$0.a(this);
-   }
-
-   public boolean a() {
-      return this.a;
    }
 }

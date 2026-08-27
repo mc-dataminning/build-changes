@@ -1,134 +1,245 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.function.Function;
-import java.util.stream.Stream;
+import java.util.Optional;
+import java.util.OptionalInt;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
 public class cut {
-   private static final Logger d = LogUtils.getLogger();
-   private static final float e = 0.1F;
-   public static final bij<cut.c> a = bij.c();
-   public static final cut b = new cut.a().a();
-   public static final MapCodec<cut> c = RecordCodecBuilder.mapCodec(
+   public static final Codec<cut> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               Codec.floatRange(0.0F, 0.9999999F).optionalFieldOf("creature_spawn_probability", 0.1F).forGetter($$0x -> $$0x.f),
-               Codec.simpleMap(bmi.i, bij.c(cut.c.a).promotePartial(ac.a("Spawn data: ", d::error)), ave.a(bmi.values()))
-                  .fieldOf("spawners")
-                  .forGetter($$0x -> $$0x.g),
-               Codec.simpleMap(kd.g.q(), cut.b.a, kd.g).fieldOf("spawn_costs").forGetter($$0x -> $$0x.h)
+               Codec.INT.fieldOf("fog_color").forGetter($$0x -> $$0x.b),
+               Codec.INT.fieldOf("water_color").forGetter($$0x -> $$0x.c),
+               Codec.INT.fieldOf("water_fog_color").forGetter($$0x -> $$0x.d),
+               Codec.INT.fieldOf("sky_color").forGetter($$0x -> $$0x.e),
+               Codec.INT.optionalFieldOf("foliage_color").forGetter($$0x -> $$0x.f),
+               Codec.INT.optionalFieldOf("grass_color").forGetter($$0x -> $$0x.g),
+               cut.b.d.optionalFieldOf("grass_color_modifier", cut.b.a).forGetter($$0x -> $$0x.h),
+               cum.a.optionalFieldOf("particle").forGetter($$0x -> $$0x.i),
+               arq.b.optionalFieldOf("ambient_sound").forGetter($$0x -> $$0x.j),
+               cul.a.optionalFieldOf("mood_sound").forGetter($$0x -> $$0x.k),
+               cuk.a.optionalFieldOf("additions_sound").forGetter($$0x -> $$0x.l),
+               aro.a.optionalFieldOf("music").forGetter($$0x -> $$0x.m)
             )
             .apply($$0, cut::new)
    );
-   private final float f;
-   private final Map<bmi, bij<cut.c>> g;
-   private final Map<blt<?>, cut.b> h;
+   private final int b;
+   private final int c;
+   private final int d;
+   private final int e;
+   private final Optional<Integer> f;
+   private final Optional<Integer> g;
+   private final cut.b h;
+   private final Optional<cum> i;
+   private final Optional<ih<arq>> j;
+   private final Optional<cul> k;
+   private final Optional<cuk> l;
+   private final Optional<aro> m;
 
-   cut(float $$0, Map<bmi, bij<cut.c>> $$1, Map<blt<?>, cut.b> $$2) {
-      this.f = $$0;
-      this.g = ImmutableMap.copyOf($$1);
-      this.h = ImmutableMap.copyOf($$2);
+   cut(
+      int $$0,
+      int $$1,
+      int $$2,
+      int $$3,
+      Optional<Integer> $$4,
+      Optional<Integer> $$5,
+      cut.b $$6,
+      Optional<cum> $$7,
+      Optional<ih<arq>> $$8,
+      Optional<cul> $$9,
+      Optional<cuk> $$10,
+      Optional<aro> $$11
+   ) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.i = $$7;
+      this.j = $$8;
+      this.k = $$9;
+      this.l = $$10;
+      this.m = $$11;
    }
 
-   public bij<cut.c> a(bmi $$0) {
-      return this.g.getOrDefault($$0, a);
+   public int a() {
+      return this.b;
    }
 
-   @Nullable
-   public cut.b a(blt<?> $$0) {
-      return this.h.get($$0);
+   public int b() {
+      return this.c;
    }
 
-   public float a() {
+   public int c() {
+      return this.d;
+   }
+
+   public int d() {
+      return this.e;
+   }
+
+   public Optional<Integer> e() {
       return this.f;
    }
 
+   public Optional<Integer> f() {
+      return this.g;
+   }
+
+   public cut.b g() {
+      return this.h;
+   }
+
+   public Optional<cum> h() {
+      return this.i;
+   }
+
+   public Optional<ih<arq>> i() {
+      return this.j;
+   }
+
+   public Optional<cul> j() {
+      return this.k;
+   }
+
+   public Optional<cuk> k() {
+      return this.l;
+   }
+
+   public Optional<aro> l() {
+      return this.m;
+   }
+
    public static class a {
-      private final Map<bmi, List<cut.c>> a = Stream.of(bmi.values()).collect(ImmutableMap.toImmutableMap($$0 -> $$0, $$0 -> Lists.newArrayList()));
-      private final Map<blt<?>, cut.b> b = Maps.newLinkedHashMap();
-      private float c = 0.1F;
+      private OptionalInt a = OptionalInt.empty();
+      private OptionalInt b = OptionalInt.empty();
+      private OptionalInt c = OptionalInt.empty();
+      private OptionalInt d = OptionalInt.empty();
+      private Optional<Integer> e = Optional.empty();
+      private Optional<Integer> f = Optional.empty();
+      private cut.b g = cut.b.a;
+      private Optional<cum> h = Optional.empty();
+      private Optional<ih<arq>> i = Optional.empty();
+      private Optional<cul> j = Optional.empty();
+      private Optional<cuk> k = Optional.empty();
+      private Optional<aro> l = Optional.empty();
 
-      public cut.a a(bmi $$0, cut.c $$1) {
-         this.a.get($$0).add($$1);
+      public cut.a a(int $$0) {
+         this.a = OptionalInt.of($$0);
          return this;
       }
 
-      public cut.a a(blt<?> $$0, double $$1, double $$2) {
-         this.b.put($$0, new cut.b($$2, $$1));
+      public cut.a b(int $$0) {
+         this.b = OptionalInt.of($$0);
          return this;
       }
 
-      public cut.a a(float $$0) {
-         this.c = $$0;
+      public cut.a c(int $$0) {
+         this.c = OptionalInt.of($$0);
+         return this;
+      }
+
+      public cut.a d(int $$0) {
+         this.d = OptionalInt.of($$0);
+         return this;
+      }
+
+      public cut.a e(int $$0) {
+         this.e = Optional.of($$0);
+         return this;
+      }
+
+      public cut.a f(int $$0) {
+         this.f = Optional.of($$0);
+         return this;
+      }
+
+      public cut.a a(cut.b $$0) {
+         this.g = $$0;
+         return this;
+      }
+
+      public cut.a a(cum $$0) {
+         this.h = Optional.of($$0);
+         return this;
+      }
+
+      public cut.a a(ih<arq> $$0) {
+         this.i = Optional.of($$0);
+         return this;
+      }
+
+      public cut.a a(cul $$0) {
+         this.j = Optional.of($$0);
+         return this;
+      }
+
+      public cut.a a(cuk $$0) {
+         this.k = Optional.of($$0);
+         return this;
+      }
+
+      public cut.a a(@Nullable aro $$0) {
+         this.l = Optional.ofNullable($$0);
          return this;
       }
 
       public cut a() {
          return new cut(
-            this.c,
-            this.a.entrySet().stream().collect(ImmutableMap.toImmutableMap(Entry::getKey, $$0 -> bij.a((List)$$0.getValue()))),
-            ImmutableMap.copyOf(this.b)
+            this.a.orElseThrow(() -> new IllegalStateException("Missing 'fog' color.")),
+            this.b.orElseThrow(() -> new IllegalStateException("Missing 'water' color.")),
+            this.c.orElseThrow(() -> new IllegalStateException("Missing 'water fog' color.")),
+            this.d.orElseThrow(() -> new IllegalStateException("Missing 'sky' color.")),
+            this.e,
+            this.f,
+            this.g,
+            this.h,
+            this.i,
+            this.j,
+            this.k,
+            this.l
          );
       }
    }
 
-   public static record b(double b, double c) {
-      public static final Codec<cut.b> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(Codec.DOUBLE.fieldOf("energy_budget").forGetter($$0x -> $$0x.b), Codec.DOUBLE.fieldOf("charge").forGetter($$0x -> $$0x.c))
-               .apply($$0, cut.b::new)
-      );
+   public static enum b implements avj {
+      a("none") {
+         @Override
+         public int a(double $$0, double $$1, int $$2) {
+            return $$2;
+         }
+      },
+      b("dark_forest") {
+         @Override
+         public int a(double $$0, double $$1, int $$2) {
+            return ($$2 & 16711422) + 2634762 >> 1;
+         }
+      },
+      c("swamp") {
+         @Override
+         public int a(double $$0, double $$1, int $$2) {
+            double $$3 = cun.e.a($$0 * 0.0225, $$1 * 0.0225, false);
+            return $$3 < -0.1 ? 5011004 : 6975545;
+         }
+      };
 
-      public double a() {
-         return this.b;
+      private final String e;
+      public static final Codec<cut.b> d = avj.a(cut.b::values);
+
+      public abstract int a(double var1, double var3, int var5);
+
+      b(String $$0) {
+         this.e = $$0;
       }
 
-      public double b() {
-         return this.c;
-      }
-   }
-
-   public static class c extends bih.a {
-      public static final Codec<cut.c> a = atq.a(
-         RecordCodecBuilder.create(
-            $$0 -> $$0.group(
-                     kd.g.q().fieldOf("type").forGetter($$0x -> $$0x.b),
-                     big.a.fieldOf("weight").forGetter(bih.a::a),
-                     atq.j.fieldOf("minCount").forGetter($$0x -> $$0x.c),
-                     atq.j.fieldOf("maxCount").forGetter($$0x -> $$0x.d)
-                  )
-                  .apply($$0, cut.c::new)
-         ),
-         (Function<cut.c, DataResult<cut.c>>)($$0 -> $$0.c > $$0.d
-               ? DataResult.error(() -> "minCount needs to be smaller or equal to maxCount")
-               : DataResult.success($$0))
-      );
-      public final blt<?> b;
-      public final int c;
-      public final int d;
-
-      public c(blt<?> $$0, int $$1, int $$2, int $$3) {
-         this($$0, big.a($$1), $$2, $$3);
-      }
-
-      public c(blt<?> $$0, big $$1, int $$2, int $$3) {
-         super($$1);
-         this.b = $$0.f() == bmi.h ? blt.aw : $$0;
-         this.c = $$2;
-         this.d = $$3;
+      public String a() {
+         return this.e;
       }
 
       @Override
-      public String toString() {
-         return blt.a(this.b) + "*(" + this.c + "-" + this.d + "):" + this.a();
+      public String c() {
+         return this.e;
       }
    }
 }

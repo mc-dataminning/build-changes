@@ -1,49 +1,86 @@
-import java.util.function.IntFunction;
-import javax.annotation.Nullable;
+public class bjs implements bjt {
+   private final bjt c;
+   private final bjt d;
 
-public enum bjs implements ave {
-   a(0, "peaceful"),
-   b(1, "easy"),
-   c(2, "normal"),
-   d(3, "hard");
-
-   public static final ave.a<bjs> e = ave.a(bjs::values);
-   private static final IntFunction<bjs> f = ata.a(bjs::a, values(), ata.a.b);
-   private final int g;
-   private final String h;
-
-   private bjs(int $$0, String $$1) {
-      this.g = $$0;
-      this.h = $$1;
-   }
-
-   public int a() {
-      return this.g;
-   }
-
-   public vd b() {
-      return vd.c("options.difficulty." + this.h);
-   }
-
-   public vd d() {
-      return vd.c("options.difficulty." + this.h + ".info");
-   }
-
-   public static bjs a(int $$0) {
-      return f.apply($$0);
-   }
-
-   @Nullable
-   public static bjs a(String $$0) {
-      return e.a($$0);
-   }
-
-   public String e() {
-      return this.h;
+   public bjs(bjt $$0, bjt $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
    @Override
-   public String c() {
-      return this.h;
+   public int b() {
+      return this.c.b() + this.d.b();
+   }
+
+   @Override
+   public boolean ai_() {
+      return this.c.ai_() && this.d.ai_();
+   }
+
+   public boolean a(bjt $$0) {
+      return this.c == $$0 || this.d == $$0;
+   }
+
+   @Override
+   public cmx a(int $$0) {
+      return $$0 >= this.c.b() ? this.d.a($$0 - this.c.b()) : this.c.a($$0);
+   }
+
+   @Override
+   public cmx a(int $$0, int $$1) {
+      return $$0 >= this.c.b() ? this.d.a($$0 - this.c.b(), $$1) : this.c.a($$0, $$1);
+   }
+
+   @Override
+   public cmx b(int $$0) {
+      return $$0 >= this.c.b() ? this.d.b($$0 - this.c.b()) : this.c.b($$0);
+   }
+
+   @Override
+   public void a(int $$0, cmx $$1) {
+      if ($$0 >= this.c.b()) {
+         this.d.a($$0 - this.c.b(), $$1);
+      } else {
+         this.c.a($$0, $$1);
+      }
+   }
+
+   @Override
+   public int ak_() {
+      return this.c.ak_();
+   }
+
+   @Override
+   public void e() {
+      this.c.e();
+      this.d.e();
+   }
+
+   @Override
+   public boolean a(cfh $$0) {
+      return this.c.a($$0) && this.d.a($$0);
+   }
+
+   @Override
+   public void d_(cfh $$0) {
+      this.c.d_($$0);
+      this.d.d_($$0);
+   }
+
+   @Override
+   public void c(cfh $$0) {
+      this.c.c($$0);
+      this.d.c($$0);
+   }
+
+   @Override
+   public boolean b(int $$0, cmx $$1) {
+      return $$0 >= this.c.b() ? this.d.b($$0 - this.c.b(), $$1) : this.c.b($$0, $$1);
+   }
+
+   @Override
+   public void a() {
+      this.c.a();
+      this.d.a();
    }
 }

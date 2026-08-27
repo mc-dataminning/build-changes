@@ -1,65 +1,70 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import java.util.List;
+import java.util.Optional;
 
-public class daa extends cwj implements ddj {
+public class daa extends def implements cws {
    public static final MapCodec<daa> a = b(daa::new);
-   private static final djr c = djq.C;
-   protected static final emf b = cwj.a(2.0, 10.0, 2.0, 14.0, 16.0, 14.0);
 
    @Override
    public MapCodec<daa> a() {
       return a;
    }
 
-   protected daa(diz.d $$0) {
+   public daa(djf.d $$0) {
       super($$0);
-      this.k(this.E.b().a(c, Boolean.valueOf(false)));
    }
 
    @Override
-   protected void a(djb.a<cwj, dja> $$0) {
-      $$0.a(c);
+   public boolean b(ctr $$0, hx $$1, djg $$2) {
+      return $$0.a_($$1.c()).i();
    }
 
    @Override
-   public eek c_(dja $$0) {
-      return $$0.c(c) ? eel.c.a(false) : super.c_($$0);
-   }
-
-   @Nullable
-   @Override
-   public dja a(cpa $$0) {
-      dja $$1 = super.a($$0);
-      if ($$1 != null) {
-         eek $$2 = $$0.q().b_($$0.a());
-         return $$1.a(c, Boolean.valueOf($$2.a() == eel.c));
-      } else {
-         return null;
-      }
+   public boolean a(cto $$0, auu $$1, hx $$2, djg $$3) {
+      return true;
    }
 
    @Override
-   public boolean a(dja $$0, ctl $$1, hx $$2) {
-      hx $$3 = $$2.c();
-      dja $$4 = $$1.a_($$3);
-      return $$4.d($$1, $$3, ic.a);
-   }
+   public void a(and $$0, auu $$1, hx $$2, djg $$3) {
+      hx $$4 = $$2.c();
+      djg $$5 = cwr.bt.o();
+      Optional<ih.c<dyj>> $$6 = $$0.I_().d(ke.aC).b(ra.n);
 
-   @Override
-   public emf a(dja $$0, cso $$1, hx $$2, elr $$3) {
-      return b;
-   }
+      label49:
+      for (int $$7 = 0; $$7 < 128; $$7++) {
+         hx $$8 = $$4;
 
-   @Override
-   public dja a(dja $$0, ic $$1, dja $$2, ctj $$3, hx $$4, hx $$5) {
-      if ($$1 == ic.b && !this.a($$0, $$3, $$4)) {
-         return cwl.a.o();
-      } else {
-         if ($$0.c(c)) {
-            $$3.a($$4, eel.c, eel.c.a($$3));
+         for (int $$9 = 0; $$9 < $$7 / 16; $$9++) {
+            $$8 = $$8.b($$1.a(3) - 1, ($$1.a(3) - 1) * $$1.a(3) / 2, $$1.a(3) - 1);
+            if (!$$0.a_($$8.d()).a(this) || $$0.a_($$8).r($$0, $$8)) {
+               continue label49;
+            }
          }
 
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+         djg $$10 = $$0.a_($$8);
+         if ($$10.a($$5.b()) && $$1.a(10) == 0) {
+            ((cws)$$5.b()).a($$0, $$1, $$8, $$10);
+         }
+
+         if ($$10.i()) {
+            ih<dyj> $$12;
+            if ($$1.a(8) == 0) {
+               List<drg<?, ?>> $$11 = $$0.t($$8).a().d().a();
+               if ($$11.isEmpty()) {
+                  continue;
+               }
+
+               $$12 = ((duk)$$11.get(0).c()).d();
+            } else {
+               if (!$$6.isPresent()) {
+                  continue;
+               }
+
+               $$12 = $$6.get();
+            }
+
+            $$12.a().a($$0, $$0.l().g(), $$1, $$8);
+         }
       }
    }
 }

@@ -1,64 +1,27 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.Function;
+public abstract class biu<R extends Runnable> extends biq<R> {
+   private int b;
 
-public class biu extends biy {
-   public static final Codec<biu> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  Codec.FLOAT.fieldOf("mean").forGetter($$0x -> $$0x.b),
-                  Codec.FLOAT.fieldOf("deviation").forGetter($$0x -> $$0x.d),
-                  Codec.FLOAT.fieldOf("min").forGetter($$0x -> $$0x.e),
-                  Codec.FLOAT.fieldOf("max").forGetter($$0x -> $$0x.f)
-               )
-               .apply($$0, biu::new)
-      )
-      .comapFlatMap(
-         $$0 -> $$0.f < $$0.e ? DataResult.error(() -> "Max must be larger than min: [" + $$0.e + ", " + $$0.f + "]") : DataResult.success($$0),
-         Function.identity()
-      );
-   private final float b;
-   private final float d;
-   private final float e;
-   private final float f;
-
-   public static biu a(float $$0, float $$1, float $$2, float $$3) {
-      return new biu($$0, $$1, $$2, $$3);
-   }
-
-   private biu(float $$0, float $$1, float $$2, float $$3) {
-      this.b = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
+   public biu(String $$0) {
+      super($$0);
    }
 
    @Override
-   public float a(aup $$0) {
-      return a($$0, this.b, this.d, this.e, this.f);
+   public boolean av() {
+      return this.bw() || super.av();
    }
 
-   public static float a(aup $$0, float $$1, float $$2, float $$3, float $$4) {
-      return aui.a(aui.c($$0, $$1, $$2), $$3, $$4);
-   }
-
-   @Override
-   public float a() {
-      return this.e;
+   protected boolean bw() {
+      return this.b != 0;
    }
 
    @Override
-   public float b() {
-      return this.f;
-   }
+   public void d(R $$0) {
+      this.b++;
 
-   @Override
-   public biz<?> c() {
-      return biz.c;
-   }
-
-   @Override
-   public String toString() {
-      return "normal(" + this.b + ", " + this.d + ") in [" + this.e + "-" + this.f + "]";
+      try {
+         super.d($$0);
+      } finally {
+         this.b--;
+      }
    }
 }

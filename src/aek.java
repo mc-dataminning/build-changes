@@ -1,32 +1,28 @@
-public class aek implements xd<adg> {
+public class aek implements xf<adj> {
    private final int a;
-   private final aek.a b;
-   private final int c;
+   private final ahg b;
+   private final boolean c;
 
-   public aek(blp $$0, aek.a $$1) {
-      this($$0, $$1, 0);
-   }
-
-   public aek(blp $$0, aek.a $$1, int $$2) {
-      this.a = $$0.aj();
-      this.b = $$1;
+   public aek(int $$0, cqd<?> $$1, boolean $$2) {
+      this.a = $$0;
+      this.b = $$1.a();
       this.c = $$2;
    }
 
-   public aek(ug $$0) {
-      this.a = $$0.n();
-      this.b = $$0.b(aek.a.class);
-      this.c = $$0.n();
+   public aek(ui $$0) {
+      this.a = $$0.readByte();
+      this.b = $$0.t();
+      this.c = $$0.readBoolean();
    }
 
    @Override
-   public void a(ug $$0) {
-      $$0.c(this.a);
+   public void a(ui $$0) {
+      $$0.k(this.a);
       $$0.a(this.b);
-      $$0.c(this.c);
+      $$0.a(this.c);
    }
 
-   public void a(adg $$0) {
+   public void a(adj $$0) {
       $$0.a(this);
    }
 
@@ -34,23 +30,11 @@ public class aek implements xd<adg> {
       return this.a;
    }
 
-   public aek.a d() {
+   public ahg d() {
       return this.b;
    }
 
-   public int e() {
+   public boolean e() {
       return this.c;
-   }
-
-   public static enum a {
-      a,
-      b,
-      c,
-      d,
-      e,
-      f,
-      g,
-      h,
-      i;
    }
 }

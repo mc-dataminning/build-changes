@@ -1,25 +1,55 @@
-import javax.annotation.Nullable;
-
 public interface ctq {
-   boolean a(hx var1, dja var2, int var3, int var4);
+   int K_();
 
-   default boolean a(hx $$0, dja $$1, int $$2) {
-      return this.a($$0, $$1, $$2, 512);
+   int J_();
+
+   default int al() {
+      return this.J_() + this.K_();
    }
 
-   boolean a(hx var1, boolean var2);
-
-   default boolean b(hx $$0, boolean $$1) {
-      return this.a($$0, $$1, null);
+   default int am() {
+      return this.ao() - this.an();
    }
 
-   default boolean a(hx $$0, boolean $$1, @Nullable blp $$2) {
-      return this.a($$0, $$1, $$2, 512);
+   default int an() {
+      return iz.a(this.J_());
    }
 
-   boolean a(hx var1, boolean var2, @Nullable blp var3, int var4);
+   default int ao() {
+      return iz.a(this.al() - 1) + 1;
+   }
 
-   default boolean b(blp $$0) {
-      return false;
+   default boolean s(hx $$0) {
+      return this.d($$0.v());
+   }
+
+   default boolean d(int $$0) {
+      return $$0 < this.J_() || $$0 >= this.al();
+   }
+
+   default int e(int $$0) {
+      return this.f(iz.a($$0));
+   }
+
+   default int f(int $$0) {
+      return $$0 - this.an();
+   }
+
+   default int g(int $$0) {
+      return $$0 + this.an();
+   }
+
+   static ctq e(final int $$0, final int $$1) {
+      return new ctq() {
+         @Override
+         public int K_() {
+            return $$1;
+         }
+
+         @Override
+         public int J_() {
+            return $$0;
+         }
+      };
    }
 }

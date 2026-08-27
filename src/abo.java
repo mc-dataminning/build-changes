@@ -1,32 +1,28 @@
-public class abo implements xd<yx> {
-   private final double a;
-   private final double b;
+import javax.annotation.Nullable;
 
-   public abo(dkr $$0) {
-      this.a = $$0.a();
-      this.b = $$0.b();
+public class abo implements xf<za> {
+   @Nullable
+   private final ahg a;
+
+   public abo(@Nullable ahg $$0) {
+      this.a = $$0;
    }
 
-   public abo(ug $$0) {
-      this.a = $$0.readDouble();
-      this.b = $$0.readDouble();
-   }
-
-   @Override
-   public void a(ug $$0) {
-      $$0.a(this.a);
-      $$0.a(this.b);
-   }
-
-   public void a(yx $$0) {
+   public void a(za $$0) {
       $$0.a(this);
    }
 
-   public double a() {
-      return this.b;
+   public abo(ui $$0) {
+      this.a = $$0.c(ui::t);
    }
 
-   public double d() {
+   @Override
+   public void a(ui $$0) {
+      $$0.a(this.a, ui::a);
+   }
+
+   @Nullable
+   public ahg a() {
       return this.a;
    }
 }

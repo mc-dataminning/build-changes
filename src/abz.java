@@ -1,47 +1,24 @@
-import java.util.ArrayList;
-import java.util.List;
+public class abz implements xf<za> {
+   private final int a;
 
-public record abz(int b, List<agm.b<?>> c) implements xd<yx> {
-   public static final int a = 255;
-
-   public abz(ug $$0) {
-      this($$0.n(), b($$0));
+   public abz(int $$0) {
+      this.a = $$0;
    }
 
-   private static void a(List<agm.b<?>> $$0, ug $$1) {
-      for (agm.b<?> $$2 : $$0) {
-         $$2.a($$1);
-      }
-
-      $$1.k(255);
-   }
-
-   private static List<agm.b<?>> b(ug $$0) {
-      List<agm.b<?>> $$1 = new ArrayList<>();
-
-      int $$2;
-      while (($$2 = $$0.readUnsignedByte()) != 255) {
-         $$1.add(agm.b.a($$0, $$2));
-      }
-
-      return $$1;
+   public abz(ui $$0) {
+      this.a = $$0.n();
    }
 
    @Override
-   public void a(ug $$0) {
-      $$0.c(this.b);
-      a(this.c, $$0);
+   public void a(ui $$0) {
+      $$0.c(this.a);
    }
 
-   public void a(yx $$0) {
+   public void a(za $$0) {
       $$0.a(this);
    }
 
    public int a() {
-      return this.b;
-   }
-
-   public List<agm.b<?>> d() {
-      return this.c;
+      return this.a;
    }
 }

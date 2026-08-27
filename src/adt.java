@@ -1,18 +1,14 @@
-public record adt() implements xd<adg> {
-   public adt(ug $$0) {
-      this();
+public record adt(float a) implements xf<adj> {
+   public adt(ui $$0) {
+      this($$0.readFloat());
    }
 
    @Override
-   public void a(ug $$0) {
+   public void a(ui $$0) {
+      $$0.a(this.a);
    }
 
-   public void a(adg $$0) {
+   public void a(adj $$0) {
       $$0.a(this);
-   }
-
-   @Override
-   public uf c() {
-      return uf.e;
    }
 }

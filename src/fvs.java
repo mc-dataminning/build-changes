@@ -1,46 +1,39 @@
-import org.joml.Matrix4f;
+public class fvs implements fvf<dic> {
+   private final flo<?> a;
 
-public class fvs<T extends die> implements fuz<T> {
-   public static final ahd a = new ahd("textures/environment/end_sky.png");
-   public static final ahd b = new ahd("textures/entity/end_portal.png");
-
-   public fvs(fva.a $$0) {
+   public fvs(fvg.a $$0) {
+      this.a = new flo($$0.a(fmu.bh));
    }
 
-   public void a(T $$0, float $$1, ept $$2, fsz $$3, int $$4, int $$5) {
-      Matrix4f $$6 = $$2.c().a();
-      this.a($$0, $$6, $$3.getBuffer(this.d()));
-   }
-
-   private void a(T $$0, Matrix4f $$1, epx $$2) {
-      float $$3 = this.c();
-      float $$4 = this.b();
-      this.a($$0, $$1, $$2, 0.0F, 1.0F, 0.0F, 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, ic.d);
-      this.a($$0, $$1, $$2, 0.0F, 1.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, ic.c);
-      this.a($$0, $$1, $$2, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 0.0F, ic.f);
-      this.a($$0, $$1, $$2, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 1.0F, 1.0F, 0.0F, ic.e);
-      this.a($$0, $$1, $$2, 0.0F, 1.0F, $$3, $$3, 0.0F, 0.0F, 1.0F, 1.0F, ic.a);
-      this.a($$0, $$1, $$2, 0.0F, 1.0F, $$4, $$4, 1.0F, 1.0F, 0.0F, 0.0F, ic.b);
-   }
-
-   private void a(T $$0, Matrix4f $$1, epx $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9, float $$10, ic $$11) {
-      if ($$0.a($$11)) {
-         $$2.a($$1, $$3, $$5, $$7).e();
-         $$2.a($$1, $$4, $$5, $$8).e();
-         $$2.a($$1, $$4, $$6, $$9).e();
-         $$2.a($$1, $$3, $$6, $$10).e();
+   public void a(dic $$0, float $$1, epz $$2, ftf $$3, int $$4, int $$5) {
+      ic $$6 = ic.b;
+      if ($$0.n()) {
+         djg $$7 = $$0.i().a_($$0.aB_());
+         if ($$7.b() instanceof ddn) {
+            $$6 = $$7.c(ddn.b);
+         }
       }
-   }
 
-   protected float b() {
-      return 0.75F;
-   }
+      cll $$8 = $$0.w();
+      ggo $$9;
+      if ($$8 == null) {
+         $$9 = ftu.i;
+      } else {
+         $$9 = ftu.j.get($$8.a());
+      }
 
-   protected float c() {
-      return 0.375F;
-   }
-
-   protected fth d() {
-      return fth.u();
+      $$2.a();
+      $$2.a(0.5F, 0.5F, 0.5F);
+      float $$11 = 0.9995F;
+      $$2.b(0.9995F, 0.9995F, 0.9995F);
+      $$2.a($$6.b());
+      $$2.b(1.0F, -1.0F, -1.0F);
+      $$2.a(0.0F, -1.0F, 0.0F);
+      fmv $$12 = this.a.b();
+      $$12.a(0.0F, 24.0F - $$0.a($$1) * 0.5F * 16.0F, 0.0F);
+      $$12.f = 270.0F * $$0.a($$1) * (float) (Math.PI / 180.0);
+      eqd $$13 = $$9.a($$3, ftn::e);
+      this.a.a($$2, $$13, $$4, $$5, 1.0F, 1.0F, 1.0F, 1.0F);
+      $$2.b();
    }
 }

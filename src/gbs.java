@@ -1,16 +1,24 @@
-public class gbs extends gcq<bxv, fja<bxv>> {
-   private static final ahd a = new ahd("textures/entity/cat/cat_collar.png");
-   private final fja<bxv> b;
+public class gbs<T extends bmk, M extends fla<T>> extends gdf<T, M> {
+   private final fyj a;
 
-   public gbs(gaa<bxv, fja<bxv>> $$0, fml $$1) {
-      super($$0);
-      this.b = new fja<>($$1.a(fmo.r));
+   public gbs(fyl.a $$0, fzm<T, M> $$1) {
+      super($$1);
+      this.a = $$0.a();
    }
 
-   public void a(ept $$0, fsz $$1, int $$2, bxv $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ($$3.u()) {
-         float[] $$10 = $$3.go().d();
-         a(this.c(), this.b, a, $$0, $$1, $$2, $$3, $$4, $$5, $$7, $$8, $$9, $$6, $$10[0], $$10[1], $$10[2]);
-      }
+   @Override
+   protected int a(T $$0) {
+      return $$0.eO();
+   }
+
+   @Override
+   protected void a(epz $$0, ftf $$1, int $$2, blu $$3, float $$4, float $$5, float $$6, float $$7) {
+      float $$8 = aun.c($$4 * $$4 + $$6 * $$6);
+      cfp $$9 = new cfp($$3.dM(), $$3.dr(), $$3.dt(), $$3.dx(), cmx.f);
+      $$9.r((float)(Math.atan2((double)$$4, (double)$$6) * 180.0F / (float)Math.PI));
+      $$9.s((float)(Math.atan2((double)$$5, (double)$$8) * 180.0F / (float)Math.PI));
+      $$9.N = $$9.dC();
+      $$9.O = $$9.dE();
+      this.a.a($$9, 0.0, 0.0, 0.0, 0.0F, $$7, $$0, $$1, $$2);
    }
 }

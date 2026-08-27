@@ -1,28 +1,42 @@
-import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Lists;
 import java.util.List;
 import java.util.Set;
 
-public class bwp extends bwm<bmf> {
-   @Override
-   public Set<bvh<?>> a() {
-      return ImmutableSet.of(bvh.i);
+public class bwp extends bwr<ceu> {
+   private static final int a = 40;
+
+   public bwp() {
+      super(40);
+   }
+
+   protected void a(and $$0, ceu $$1) {
+      ahf<cto> $$2 = $$0.ae();
+      hx $$3 = $$1.dm();
+      List<ig> $$4 = Lists.newArrayList();
+      int $$5 = 4;
+
+      for (int $$6 = -4; $$6 <= 4; $$6++) {
+         for (int $$7 = -2; $$7 <= 2; $$7++) {
+            for (int $$8 = -4; $$8 <= 4; $$8++) {
+               hx $$9 = $$3.b($$6, $$7, $$8);
+               if ($$1.gp().b().e().contains($$0.a_($$9).b())) {
+                  $$4.add(ig.a($$2, $$9));
+               }
+            }
+         }
+      }
+
+      bnk<?> $$10 = $$1.dO();
+      if (!$$4.isEmpty()) {
+         $$10.a(bvm.f, $$4);
+      } else {
+         $$10.b(bvm.f);
+      }
    }
 
    @Override
-   protected void a(amz $$0, bmf $$1) {
-      $$1.dO().a(bvh.i, this.a($$1));
-   }
-
-   private List<bmf> a(bmf $$0) {
-      return ImmutableList.copyOf(this.c($$0).b(this::b));
-   }
-
-   private boolean b(bmf $$0) {
-      return $$0.ai() == blt.bg && $$0.o_();
-   }
-
-   private bvj c(bmf $$0) {
-      return $$0.dO().c(bvh.h).orElse(bvj.a());
+   public Set<bvm<?>> a() {
+      return ImmutableSet.of(bvm.f);
    }
 }

@@ -7,28 +7,28 @@ public class jt implements jv {
       public jt a(jw<jt> $$0, StringReader $$1) throws CommandSyntaxException {
          $$1.expect(' ');
          ga.a $$2 = ga.a(kd.h.p(), $$1);
-         cmr $$3 = new fz($$2.a(), $$2.b()).a(1, false);
+         cmx $$3 = new fz($$2.a(), $$2.b()).a(1, false);
          return new jt($$0, $$3);
       }
 
-      public jt a(jw<jt> $$0, ug $$1) {
+      public jt a(jw<jt> $$0, ui $$1) {
          return new jt($$0, $$1.r());
       }
    };
    private final jw<jt> b;
-   private final cmr c;
+   private final cmx c;
 
    public static Codec<jt> a(jw<jt> $$0) {
-      return cmr.a.xmap($$1 -> new jt($$0, $$1), $$0x -> $$0x.c);
+      return cmx.a.xmap($$1 -> new jt($$0, $$1), $$0x -> $$0x.c);
    }
 
-   public jt(jw<jt> $$0, cmr $$1) {
+   public jt(jw<jt> $$0, cmx $$1) {
       this.b = $$0;
       this.c = $$1;
    }
 
    @Override
-   public void a(ug $$0) {
+   public void a(ui $$0) {
       $$0.a(this.c);
    }
 
@@ -42,7 +42,7 @@ public class jt implements jv {
       return this.b;
    }
 
-   public cmr c() {
+   public cmx c() {
       return this.c;
    }
 }

@@ -1,36 +1,17 @@
-import javax.annotation.Nullable;
-
-public abstract class eyr implements eys {
-   @Nullable
-   private eyt a;
-   private boolean b;
-
-   @Override
-   public final boolean aG_() {
-      return this.b;
+public record eyr(ahg a, ahg b, ahg c, ahg d) {
+   public eyr(ahg $$0, ahg $$1) {
+      this($$0, $$0, $$1, $$1);
    }
 
-   @Override
-   public final void b(boolean $$0) {
-      this.b = $$0;
+   public eyr(ahg $$0, ahg $$1, ahg $$2) {
+      this($$0, $$1, $$2, $$1);
    }
 
-   @Nullable
-   @Override
-   public eyt aH_() {
-      return this.a;
-   }
-
-   @Override
-   public void a(@Nullable eyt $$0) {
-      if (this.a != null) {
-         this.a.a(false);
+   public ahg a(boolean $$0, boolean $$1) {
+      if ($$0) {
+         return $$1 ? this.c : this.a;
+      } else {
+         return $$1 ? this.d : this.b;
       }
-
-      if ($$0 != null) {
-         $$0.a(true);
-      }
-
-      this.a = $$0;
    }
 }

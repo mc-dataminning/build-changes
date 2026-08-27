@@ -1,37 +1,53 @@
-public class fqk extends fqn {
-   private final fkl a;
-   private final fth b = fth.i(fxy.a);
-
-   fqk(fnk $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3);
-      this.a = new fjw(eva.N().aO().a(fmo.S));
-      this.u = 0.0F;
-      this.t = 30;
+public class fqk extends frt {
+   fqk(fnq $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.C = true;
+      this.B = 0.86F;
+      this.j *= 0.01F;
+      this.k *= 0.01F;
+      this.l *= 0.01F;
+      this.k += 0.1;
+      this.D *= 1.5F;
+      this.t = 16;
+      this.n = false;
    }
 
    @Override
-   public fqr b() {
-      return fqr.e;
+   public fqx b() {
+      return fqx.b;
    }
 
    @Override
-   public void a(epx $$0, eul $$1, float $$2) {
-      float $$3 = ((float)this.s + $$2) / (float)this.t;
-      float $$4 = 0.05F + 0.5F * aui.a($$3 * (float) Math.PI);
-      ept $$5 = new ept();
-      $$5.a($$1.f());
-      $$5.a(a.b.rotationDegrees(150.0F * $$3 - 60.0F));
-      $$5.b(-1.0F, -1.0F, 1.0F);
-      $$5.a(0.0F, -1.101F, 1.5F);
-      fsz.a $$6 = eva.N().aN().c();
-      epx $$7 = $$6.getBuffer(this.b);
-      this.a.a($$5, $$7, 15728880, gdw.d, 1.0F, 1.0F, 1.0F, $$4);
-      $$6.b();
+   public float b(float $$0) {
+      return this.D * aun.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
    }
 
-   public static class a implements fqq<ka> {
-      public fqn a(ka $$0, fnk $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fqk($$1, $$2, $$3, $$4);
+   public static class a implements fqw<ka> {
+      private final fro a;
+
+      public a(fro $$0) {
+         this.a = $$0;
+      }
+
+      public fqt a(ka $$0, fnq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fqk $$8 = new fqk($$1, $$2, $$3 + 0.5, $$4);
+         $$8.a(this.a);
+         $$8.a(1.0F, 1.0F, 1.0F);
+         return $$8;
+      }
+   }
+
+   public static class b implements fqw<ka> {
+      private final fro a;
+
+      public b(fro $$0) {
+         this.a = $$0;
+      }
+
+      public fqt a(ka $$0, fnq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fqk $$8 = new fqk($$1, $$2, $$3, $$4);
+         $$8.a(this.a);
+         return $$8;
       }
    }
 }

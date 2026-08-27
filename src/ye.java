@@ -1,31 +1,20 @@
-public record ye(ye.a b) implements xx {
-   public static final ahd a = new ahd("debug/hive");
+public record ye(hx b, int c, String d, int e) implements ya {
+   public static final ahg a = new ahg("debug/game_test_add_marker");
 
-   public ye(ug $$0) {
-      this(new ye.a($$0));
+   public ye(ui $$0) {
+      this($$0.e(), $$0.readInt(), $$0.s(), $$0.readInt());
    }
 
    @Override
-   public void a(ug $$0) {
-      this.b.a($$0);
+   public void a(ui $$0) {
+      $$0.a(this.b);
+      $$0.p(this.c);
+      $$0.a(this.d);
+      $$0.p(this.e);
    }
 
    @Override
-   public ahd a() {
+   public ahg a() {
       return a;
-   }
-
-   public static record a(hx a, String b, int c, int d, boolean e) {
-      public a(ug $$0) {
-         this($$0.e(), $$0.s(), $$0.readInt(), $$0.readInt(), $$0.readBoolean());
-      }
-
-      public void a(ug $$0) {
-         $$0.a(this.a);
-         $$0.a(this.b);
-         $$0.p(this.c);
-         $$0.p(this.d);
-         $$0.a(this.e);
-      }
    }
 }

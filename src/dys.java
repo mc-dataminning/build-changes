@@ -1,26 +1,29 @@
-public interface dys {
-   ahc<dzf> a = a("villages");
-   ahc<dzf> b = a("desert_pyramids");
-   ahc<dzf> c = a("igloos");
-   ahc<dzf> d = a("jungle_temples");
-   ahc<dzf> e = a("swamp_huts");
-   ahc<dzf> f = a("pillager_outposts");
-   ahc<dzf> g = a("ocean_monuments");
-   ahc<dzf> h = a("woodland_mansions");
-   ahc<dzf> i = a("buried_treasures");
-   ahc<dzf> j = a("mineshafts");
-   ahc<dzf> k = a("ruined_portals");
-   ahc<dzf> l = a("shipwrecks");
-   ahc<dzf> m = a("ocean_ruins");
-   ahc<dzf> n = a("nether_complexes");
-   ahc<dzf> o = a("nether_fossils");
-   ahc<dzf> p = a("end_cities");
-   ahc<dzf> q = a("ancient_cities");
-   ahc<dzf> r = a("strongholds");
-   ahc<dzf> s = a("trail_ruins");
-   ahc<dzf> t = a("trial_chambers");
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   private static ahc<dzf> a(String $$0) {
-      return ahc.a(ke.aF, new ahd($$0));
+public class dys extends dyl {
+   public static final Codec<dys> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.INT.fieldOf("max_water_depth").forGetter($$0x -> $$0x.c)).apply($$0, dys::new)
+   );
+   private final int c;
+
+   private dys(int $$0) {
+      this.c = $$0;
+   }
+
+   public static dys a(int $$0) {
+      return new dys($$0);
+   }
+
+   @Override
+   protected boolean a(dyk $$0, auu $$1, hx $$2) {
+      int $$3 = $$0.a(dop.a.d, $$2.u(), $$2.w());
+      int $$4 = $$0.a(dop.a.b, $$2.u(), $$2.w());
+      return $$4 - $$3 <= this.c;
+   }
+
+   @Override
+   public dyn<?> b() {
+      return dyn.d;
    }
 }

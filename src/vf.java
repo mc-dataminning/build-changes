@@ -1,110 +1,256 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
+import com.google.common.collect.Lists;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParseException;
+import com.google.gson.JsonParser;
+import com.google.gson.JsonSerializationContext;
+import com.google.gson.JsonSerializer;
+import com.google.gson.stream.JsonReader;
+import com.mojang.brigadier.Message;
 import com.mojang.serialization.JsonOps;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.MapDecoder;
-import com.mojang.serialization.MapEncoder;
-import com.mojang.serialization.MapLike;
-import com.mojang.serialization.RecordBuilder;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.io.StringReader;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Date;
 import java.util.List;
-import java.util.function.Function;
-import java.util.function.Supplier;
-import java.util.stream.Stream;
+import java.util.Optional;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-public class vf {
-   public static final Codec<vd> a = atq.a("Component", vf::a);
-   public static final Codec<vd> b = atq.c.flatXmap($$0 -> a.parse(JsonOps.INSTANCE, $$0), $$0 -> a.encodeStart(JsonOps.INSTANCE, $$0));
+public interface vf extends Message, vk {
+   wc a();
 
-   private static vr a(List<vd> $$0) {
-      vr $$1 = $$0.get(0).f();
+   vg b();
 
-      for (int $$2 = 1; $$2 < $$0.size(); $$2++) {
-         $$1.b($$0.get($$2));
+   @Override
+   default String getString() {
+      return vk.super.getString();
+   }
+
+   default String a(int $$0) {
+      StringBuilder $$1 = new StringBuilder();
+      this.a((vk.a)($$2 -> {
+         int $$3 = $$0 - $$1.length();
+         if ($$3 <= 0) {
+            return a;
+         } else {
+            $$1.append($$2.length() <= $$3 ? $$2 : $$2.substring(0, $$3));
+            return Optional.empty();
+         }
+      }));
+      return $$1.toString();
+   }
+
+   List<vf> c();
+
+   @Nullable
+   default String d() {
+      if (this.b() instanceof wm $$0 && this.c().isEmpty() && this.a().g()) {
+         return $$0.b();
       }
 
-      return $$1;
+      return null;
    }
 
-   public static <T extends ave, E> MapCodec<E> a(T[] $$0, Function<T, MapCodec<? extends E>> $$1, Function<E, T> $$2, String $$3) {
-      MapCodec<E> $$4 = new vf.a<>(Stream.<T>of($$0).map($$1).toList(), $$2x -> (MapEncoder<? extends E>)$$1.apply($$2.apply((E)$$2x)));
-      Codec<T> $$5 = ave.b((Supplier<T[]>)(() -> $$0));
-      MapCodec<E> $$6 = $$5.dispatchMap($$3, $$2, $$1x -> $$1.apply((T)$$1x).codec());
-      MapCodec<E> $$7 = new vf.b($$3, $$6, $$4);
-      return atq.a($$7, $$6);
+   default vt e() {
+      return vt.a(this.b());
    }
 
-   private static Codec<vd> a(Codec<vd> $$0) {
-      ve.a<?>[] $$1 = new ve.a[]{wk.b, wo.c, wh.b, wl.c, wm.b, wj.b};
-      MapCodec<ve> $$2 = a($$1, ve.a::a, ve::a, "type");
-      Codec<vd> $$3 = RecordCodecBuilder.create(
-         $$2x -> $$2x.group($$2.forGetter(vd::b), atq.a(atq.a($$0.listOf()), "extra", List.of()).forGetter(vd::c), wa.b.a.forGetter(vd::a))
-               .apply($$2x, vr::new)
-      );
-      return Codec.either(Codec.either(Codec.STRING, atq.a($$0.listOf())), $$3)
-         .xmap($$0x -> (vd)$$0x.map($$0xx -> (vd)$$0xx.map(vd::b, vf::a), $$0xx -> $$0xx), $$0x -> {
-            String $$1x = $$0x.d();
-            return $$1x != null ? Either.left(Either.left($$1x)) : Either.right($$0x);
-         });
+   default vt f() {
+      return new vt(this.b(), new ArrayList<>(this.c()), this.a());
    }
 
-   static class a<T> extends MapCodec<T> {
-      private final List<MapCodec<? extends T>> a;
-      private final Function<T, MapEncoder<? extends T>> b;
+   atz g();
 
-      public a(List<MapCodec<? extends T>> $$0, Function<T, MapEncoder<? extends T>> $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public <S> DataResult<T> decode(DynamicOps<S> $$0, MapLike<S> $$1) {
-         for (MapDecoder<? extends T> $$2 : this.a) {
-            DataResult<? extends T> $$3 = $$2.decode($$0, $$1);
-            if ($$3.result().isPresent()) {
-               return (DataResult<T>)$$3;
+   @Override
+   default <T> Optional<T> a(vk.b<T> $$0, wc $$1) {
+      wc $$2 = this.a().a($$1);
+      Optional<T> $$3 = this.b().a($$0, $$2);
+      if ($$3.isPresent()) {
+         return $$3;
+      } else {
+         for (vf $$4 : this.c()) {
+            Optional<T> $$5 = $$4.a($$0, $$2);
+            if ($$5.isPresent()) {
+               return $$5;
             }
          }
 
-         return DataResult.error(() -> "No matching codec found");
-      }
-
-      public <S> RecordBuilder<S> encode(T $$0, DynamicOps<S> $$1, RecordBuilder<S> $$2) {
-         MapEncoder<T> $$3 = (MapEncoder<T>)this.b.apply($$0);
-         return $$3.encode($$0, $$1, $$2);
-      }
-
-      public <S> Stream<S> keys(DynamicOps<S> $$0) {
-         return this.a.stream().flatMap($$1 -> $$1.keys($$0)).distinct();
-      }
-
-      public String toString() {
-         return "FuzzyCodec[" + this.a + "]";
+         return Optional.empty();
       }
    }
 
-   static class b<T> extends MapCodec<T> {
-      private final String a;
-      private final MapCodec<T> b;
-      private final MapCodec<T> c;
+   @Override
+   default <T> Optional<T> a(vk.a<T> $$0) {
+      Optional<T> $$1 = this.b().a($$0);
+      if ($$1.isPresent()) {
+         return $$1;
+      } else {
+         for (vf $$2 : this.c()) {
+            Optional<T> $$3 = $$2.a($$0);
+            if ($$3.isPresent()) {
+               return $$3;
+            }
+         }
 
-      public b(String $$0, MapCodec<T> $$1, MapCodec<T> $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
+         return Optional.empty();
+      }
+   }
+
+   default List<vf> h() {
+      return this.a(wc.a);
+   }
+
+   default List<vf> a(wc $$0) {
+      List<vf> $$1 = Lists.newArrayList();
+      this.a(($$1x, $$2) -> {
+         if (!$$2.isEmpty()) {
+            $$1.add(b($$2).c($$1x));
+         }
+
+         return Optional.empty();
+      }, $$0);
+      return $$1;
+   }
+
+   default boolean a(vf $$0) {
+      if (this.equals($$0)) {
+         return true;
+      } else {
+         List<vf> $$1 = this.h();
+         List<vf> $$2 = $$0.a(this.a());
+         return Collections.indexOfSubList($$1, $$2) != -1;
+      }
+   }
+
+   static vf a(@Nullable String $$0) {
+      return (vf)($$0 != null ? b($$0) : ve.a);
+   }
+
+   static vt b(String $$0) {
+      return vt.a(wm.a($$0));
+   }
+
+   static vt c(String $$0) {
+      return vt.a(new wq($$0, null, wq.a));
+   }
+
+   static vt a(String $$0, Object... $$1) {
+      return vt.a(new wq($$0, null, $$1));
+   }
+
+   static vt b(String $$0, Object... $$1) {
+      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
+         Object $$3 = $$1[$$2];
+         if (!wq.a($$3) && !($$3 instanceof vf)) {
+            $$1[$$2] = String.valueOf($$3);
+         }
       }
 
-      public <O> DataResult<T> decode(DynamicOps<O> $$0, MapLike<O> $$1) {
-         return $$1.get(this.a) != null ? this.b.decode($$0, $$1) : this.c.decode($$0, $$1);
+      return a($$0, $$1);
+   }
+
+   static vt a(String $$0, @Nullable String $$1) {
+      return vt.a(new wq($$0, $$1, wq.a));
+   }
+
+   static vt a(String $$0, @Nullable String $$1, Object... $$2) {
+      return vt.a(new wq($$0, $$1, $$2));
+   }
+
+   static vt i() {
+      return vt.a(wm.c);
+   }
+
+   static vt d(String $$0) {
+      return vt.a(new wj($$0));
+   }
+
+   static vt a(String $$0, boolean $$1, Optional<vf> $$2, wh $$3) {
+      return vt.a(new wl($$0, $$1, $$2, $$3));
+   }
+
+   static vt b(String $$0, String $$1) {
+      return vt.a(new wn($$0, $$1));
+   }
+
+   static vt a(String $$0, Optional<vf> $$1) {
+      return vt.a(new wo($$0, $$1));
+   }
+
+   static vf a(Date $$0) {
+      return b($$0.toString());
+   }
+
+   static vf a(Message $$0) {
+      return (vf)($$0 instanceof vf $$1 ? $$1 : b($$0.getString()));
+   }
+
+   static vf a(UUID $$0) {
+      return b($$0.toString());
+   }
+
+   static vf a(ahg $$0) {
+      return b($$0.toString());
+   }
+
+   static vf a(csv $$0) {
+      return b($$0.toString());
+   }
+
+   public static class a {
+      private static final Gson a = new GsonBuilder().disableHtmlEscaping().create();
+
+      private a() {
       }
 
-      public <O> RecordBuilder<O> encode(T $$0, DynamicOps<O> $$1, RecordBuilder<O> $$2) {
-         return this.c.encode($$0, $$1, $$2);
+      static vt b(JsonElement $$0) {
+         return ac.a(vh.a.parse(JsonOps.INSTANCE, $$0), JsonParseException::new);
       }
 
-      public <T1> Stream<T1> keys(DynamicOps<T1> $$0) {
-         return Stream.concat(this.b.keys($$0), this.c.keys($$0)).distinct();
+      static JsonElement c(vf $$0) {
+         return ac.a(vh.a.encodeStart(JsonOps.INSTANCE, $$0), JsonParseException::new);
+      }
+
+      public static String a(vf $$0) {
+         return a.toJson(c($$0));
+      }
+
+      public static JsonElement b(vf $$0) {
+         return c($$0);
+      }
+
+      @Nullable
+      public static vt a(String $$0) {
+         JsonElement $$1 = JsonParser.parseString($$0);
+         return $$1 == null ? null : b($$1);
+      }
+
+      @Nullable
+      public static vt a(@Nullable JsonElement $$0) {
+         return $$0 == null ? null : b($$0);
+      }
+
+      @Nullable
+      public static vt b(String $$0) {
+         JsonReader $$1 = new JsonReader(new StringReader($$0));
+         $$1.setLenient(true);
+         JsonElement $$2 = JsonParser.parseReader($$1);
+         return $$2 == null ? null : b($$2);
+      }
+   }
+
+   public static class b implements JsonDeserializer<vt>, JsonSerializer<vf> {
+      public vt a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         return vf.a.b($$0);
+      }
+
+      public JsonElement a(vf $$0, Type $$1, JsonSerializationContext $$2) {
+         return vf.a.c($$0);
       }
    }
 }

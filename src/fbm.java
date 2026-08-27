@@ -1,102 +1,47 @@
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import java.util.List;
+public class fbm extends fcz {
+   private static final int a = 90;
+   private final vf b;
+   private exx c = exx.a;
+   private final Runnable k;
+   private final vf l;
+   private final boolean m;
 
-public class fbm extends fct {
-   private static final int k = 20;
-   private final vd l;
-   private exr m = exr.a;
-   protected vd a;
-   protected vd b;
-   private int n;
-   protected final BooleanConsumer c;
-   private final List<ewy> o = Lists.newArrayList();
-
-   public fbm(BooleanConsumer $$0, vd $$1, vd $$2) {
-      this($$0, $$1, $$2, vc.f, vc.g);
+   public fbm(Runnable $$0, vf $$1, vf $$2) {
+      this($$0, $$1, $$2, ve.k, true);
    }
 
-   public fbm(BooleanConsumer $$0, vd $$1, vd $$2, vd $$3, vd $$4) {
+   public fbm(Runnable $$0, vf $$1, vf $$2, vf $$3, boolean $$4) {
       super($$1);
-      this.c = $$0;
-      this.l = $$2;
-      this.a = $$3;
-      this.b = $$4;
+      this.k = $$0;
+      this.b = $$2;
+      this.l = $$3;
+      this.m = $$4;
    }
 
    @Override
-   public vd h() {
-      return vc.a(super.h(), this.l);
+   public vf h() {
+      return ve.a(super.h(), this.b);
    }
 
    @Override
    protected void aN_() {
       super.aN_();
-      this.m = exr.a(this.i, this.l, this.g - 50);
-      int $$0 = aui.a(this.C() + this.D() + 20, this.h / 6 + 96, this.h - 24);
-      this.o.clear();
-      this.a($$0);
-   }
-
-   protected void a(int $$0) {
-      this.a(ewy.a(this.a, $$0x -> this.c.accept(true)).a(this.g / 2 - 155, $$0, 150, 20).a());
-      this.a(ewy.a(this.b, $$0x -> this.c.accept(false)).a(this.g / 2 - 155 + 160, $$0, 150, 20).a());
-   }
-
-   protected void a(ewy $$0) {
-      this.o.add(this.d($$0));
+      this.c = exx.a(this.i, this.b, this.g - 50);
+      int $$0 = this.c.a() * 9;
+      int $$1 = aun.a(90 + $$0 + 12, this.h / 6 + 96, this.h - 24);
+      int $$2 = 150;
+      this.d(exe.a(this.l, $$0x -> this.k.run()).a((this.g - 150) / 2, $$1, 150, 20).a());
    }
 
    @Override
-   public void a(ewm $$0, int $$1, int $$2, float $$3) {
+   public void a(ews $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, this.n(), 16777215);
-      this.m.a($$0, this.g / 2, this.C());
-   }
-
-   private int n() {
-      int $$0 = (this.h - this.D()) / 2;
-      return aui.a($$0 - 20 - 9, 10, 80);
-   }
-
-   private int C() {
-      return this.n() + 20;
-   }
-
-   private int D() {
-      return this.m.a() * 9;
-   }
-
-   public void b(int $$0) {
-      this.n = $$0;
-
-      for (ewy $$1 : this.o) {
-         $$1.j = false;
-      }
-   }
-
-   @Override
-   public void d() {
-      super.d();
-      if (--this.n == 0) {
-         for (ewy $$0 : this.o) {
-            $$0.j = true;
-         }
-      }
+      $$0.a(this.i, this.e, this.g / 2, 70, 16777215);
+      this.c.a($$0, this.g / 2, 90);
    }
 
    @Override
    public boolean aL_() {
-      return false;
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.c.accept(false);
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
-      }
+      return this.m;
    }
 }

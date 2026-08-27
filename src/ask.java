@@ -1,10 +1,10 @@
 public class ask {
-   public static final asq<cbk> a = a("placeable");
+   public static final asv<dxg> a = a("visible");
 
    private ask() {
    }
 
-   private static asq<cbk> a(String $$0) {
-      return asq.a(ke.R, new ahd($$0));
+   private static asv<dxg> a(String $$0) {
+      return asv.a(ke.az, new ahg($$0));
    }
 }

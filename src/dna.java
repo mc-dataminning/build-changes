@@ -1,19 +1,14 @@
-import java.util.UUID;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import java.io.IOException;
+import java.util.concurrent.CompletableFuture;
 
-public interface dna<T extends dmr> {
-   @Nullable
-   T a(int var1);
+public interface dna<T> extends AutoCloseable {
+   CompletableFuture<dmv<T>> a(csv var1);
 
-   @Nullable
-   T a(UUID var1);
+   void a(dmv<T> var1);
 
-   Iterable<T> a();
+   void a(boolean var1);
 
-   <U extends T> void a(dmy<T, U> var1, asw<U> var2);
-
-   void a(elh var1, Consumer<T> var2);
-
-   <U extends T> void a(dmy<T, U> var1, elh var2, asw<U> var3);
+   @Override
+   default void close() throws IOException {
+   }
 }

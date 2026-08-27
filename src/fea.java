@@ -1,48 +1,175 @@
-public class fea extends fds<chz> {
-   private static final ahd x = new ahd("container/brewing_stand/fuel_length");
-   private static final ahd y = new ahd("container/brewing_stand/brew_progress");
-   private static final ahd z = new ahd("container/brewing_stand/bubbles");
-   private static final ahd A = new ahd("textures/gui/container/brewing_stand.png");
-   private static final int[] B = new int[]{29, 24, 20, 16, 11, 6, 0};
+import java.util.stream.IntStream;
+import javax.annotation.Nullable;
+import org.joml.Vector3f;
 
-   public fea(chz $$0, cfa $$1, vd $$2) {
-      super($$0, $$1, $$2);
+public abstract class fea extends fcz {
+   private final did b;
+   private die c;
+   private final String[] k;
+   private final boolean l;
+   protected final dkt a;
+   private int m;
+   private int n;
+   @Nullable
+   private ezw o;
+
+   public fea(did $$0, boolean $$1, boolean $$2) {
+      this($$0, $$1, $$2, vf.c("sign.edit"));
+   }
+
+   public fea(did $$0, boolean $$1, boolean $$2, vf $$3) {
+      super($$3);
+      this.b = $$0;
+      this.c = $$0.a($$1);
+      this.l = $$1;
+      this.a = ddo.a($$0.r().b());
+      this.k = IntStream.range(0, 4).mapToObj($$1x -> this.c.a($$1x, $$2)).map(vf::getString).toArray(String[]::new);
    }
 
    @Override
    protected void aN_() {
-      super.aN_();
-      this.l = (this.c - this.i.a(this.e)) / 2;
+      this.d(exe.a(ve.d, $$0 -> this.D()).a(this.g / 2 - 100, this.h / 4 + 144, 200, 20).a());
+      this.o = new ezw(() -> this.k[this.n], this::a, ezw.a(this.f), ezw.c(this.f), $$0 -> this.f.h.b($$0) <= this.b.d());
    }
 
    @Override
-   public void a(ewm $$0, int $$1, int $$2, float $$3) {
+   public void d() {
+      this.m++;
+      if (!this.C()) {
+         this.D();
+      }
+   }
+
+   private boolean C() {
+      return this.f != null && this.f.s != null && !this.b.s() && !this.b.b(this.f.s.cw());
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 265) {
+         this.n = this.n - 1 & 3;
+         this.o.f();
+         return true;
+      } else if ($$0 == 264 || $$0 == 257 || $$0 == 335) {
+         this.n = this.n + 1 & 3;
+         this.o.f();
+         return true;
+      } else {
+         return this.o.a($$0) ? true : super.a($$0, $$1, $$2);
+      }
+   }
+
+   @Override
+   public boolean a(char $$0, int $$1) {
+      this.o.a($$0);
+      return true;
+   }
+
+   @Override
+   public void a(ews $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      this.a($$0, $$1, $$2);
+      eov.a();
+      $$0.a(this.i, this.e, this.g / 2, 40, 16777215);
+      this.c($$0);
+      eov.b();
    }
 
    @Override
-   protected void a(ewm $$0, float $$1, int $$2, int $$3) {
-      int $$4 = (this.g - this.c) / 2;
-      int $$5 = (this.h - this.k) / 2;
-      $$0.a(A, $$4, $$5, 0, 0, this.c, this.k);
-      int $$6 = this.p.l();
-      int $$7 = aui.a((18 * $$6 + 20 - 1) / 20, 0, 18);
-      if ($$7 > 0) {
-         $$0.a(x, 18, 4, 0, 0, $$4 + 60, $$5 + 44, $$7, 4);
+   public void aE_() {
+      this.D();
+   }
+
+   @Override
+   public void j() {
+      fnr $$0 = this.f.J();
+      if ($$0 != null) {
+         $$0.b(new afb(this.b.aB_(), this.l, this.k[0], this.k[1], this.k[2], this.k[3]));
+      }
+   }
+
+   @Override
+   public boolean k() {
+      return false;
+   }
+
+   protected abstract void a(ews var1, djg var2);
+
+   protected abstract Vector3f n();
+
+   protected void b(ews $$0, djg $$1) {
+      $$0.c().a((float)this.g / 2.0F, 90.0F, 50.0F);
+   }
+
+   private void c(ews $$0) {
+      djg $$1 = this.b.r();
+      $$0.c().a();
+      this.b($$0, $$1);
+      $$0.c().a();
+      this.a($$0, $$1);
+      $$0.c().b();
+      this.d($$0);
+      $$0.c().b();
+   }
+
+   private void d(ews $$0) {
+      $$0.c().a(0.0F, 0.0F, 4.0F);
+      Vector3f $$1 = this.n();
+      $$0.c().b($$1.x(), $$1.y(), $$1.z());
+      int $$2 = this.c.a() ? this.c.b().g() : fvt.a(this.c);
+      boolean $$3 = this.m / 6 % 2 == 0;
+      int $$4 = this.o.g();
+      int $$5 = this.o.h();
+      int $$6 = 4 * this.b.c() / 2;
+      int $$7 = this.n * this.b.c() - $$6;
+
+      for (int $$8 = 0; $$8 < this.k.length; $$8++) {
+         String $$9 = this.k[$$8];
+         if ($$9 != null) {
+            if (this.i.a()) {
+               $$9 = this.i.a($$9);
+            }
+
+            int $$10 = -this.i.b($$9) / 2;
+            $$0.a(this.i, $$9, $$10, $$8 * this.b.c() - $$6, $$2, false);
+            if ($$8 == this.n && $$4 >= 0 && $$3) {
+               int $$11 = this.i.b($$9.substring(0, Math.max(Math.min($$4, $$9.length()), 0)));
+               int $$12 = $$11 - this.i.b($$9) / 2;
+               if ($$4 >= $$9.length()) {
+                  $$0.a(this.i, "_", $$12, $$7, $$2, false);
+               }
+            }
+         }
       }
 
-      int $$8 = this.p.m();
-      if ($$8 > 0) {
-         int $$9 = (int)(28.0F * (1.0F - (float)$$8 / 400.0F));
-         if ($$9 > 0) {
-            $$0.a(y, 9, 28, 0, 0, $$4 + 97, $$5 + 16, 9, $$9);
-         }
+      for (int $$13 = 0; $$13 < this.k.length; $$13++) {
+         String $$14 = this.k[$$13];
+         if ($$14 != null && $$13 == this.n && $$4 >= 0) {
+            int $$15 = this.i.b($$14.substring(0, Math.max(Math.min($$4, $$14.length()), 0)));
+            int $$16 = $$15 - this.i.b($$14) / 2;
+            if ($$3 && $$4 < $$14.length()) {
+               $$0.a($$16, $$7 - 1, $$16 + 1, $$7 + this.b.c(), 0xFF000000 | $$2);
+            }
 
-         $$9 = B[$$8 / 2 % 7];
-         if ($$9 > 0) {
-            $$0.a(z, 12, 29, 0, 29 - $$9, $$4 + 63, $$5 + 14 + 29 - $$9, 12, $$9);
+            if ($$5 != $$4) {
+               int $$17 = Math.min($$4, $$5);
+               int $$18 = Math.max($$4, $$5);
+               int $$19 = this.i.b($$14.substring(0, $$17)) - this.i.b($$14) / 2;
+               int $$20 = this.i.b($$14.substring(0, $$18)) - this.i.b($$14) / 2;
+               int $$21 = Math.min($$19, $$20);
+               int $$22 = Math.max($$19, $$20);
+               $$0.a(ftn.D(), $$21, $$7, $$22, $$7 + this.b.c(), -16776961);
+            }
          }
       }
+   }
+
+   private void a(String $$0) {
+      this.k[this.n] = $$0;
+      this.c = this.c.a(this.n, vf.b($$0));
+      this.b.a(this.c, this.l);
+   }
+
+   private void D() {
+      this.f.a(null);
    }
 }

@@ -1,53 +1,54 @@
-import com.google.common.collect.HashMultimap;
-import com.google.common.collect.Multimap;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
-import java.util.function.BiConsumer;
-import java.util.function.Consumer;
+import com.google.common.collect.Lists;
+import java.io.IOException;
+import java.io.Writer;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringEscapeUtils;
 
-public class atn<K, V extends atn.a<K>> {
-   private final Map<K, V> a = new HashMap<>();
+public class atn {
+   private static final String a = "\r\n";
+   private static final String b = ",";
+   private final Writer c;
+   private final int d;
 
-   public atn<K, V> a(K $$0, V $$1) {
-      this.a.put($$0, $$1);
-      return this;
+   atn(Writer $$0, List<String> $$1) throws IOException {
+      this.c = $$0;
+      this.d = $$1.size();
+      this.a($$1.stream());
    }
 
-   private void a(Multimap<K, K> $$0, Set<K> $$1, K $$2, BiConsumer<K, V> $$3) {
-      if ($$1.add($$2)) {
-         $$0.get($$2).forEach($$3x -> this.a($$0, $$1, (K)$$3x, $$3));
-         V $$4 = this.a.get($$2);
-         if ($$4 != null) {
-            $$3.accept($$2, $$4);
-         }
+   public static atn.a a() {
+      return new atn.a();
+   }
+
+   public void a(Object... $$0) throws IOException {
+      if ($$0.length != this.d) {
+         throw new IllegalArgumentException("Invalid number of columns, expected " + this.d + ", but got " + $$0.length);
+      } else {
+         this.a(Stream.of($$0));
       }
    }
 
-   private static <K> boolean a(Multimap<K, K> $$0, K $$1, K $$2) {
-      Collection<K> $$3 = $$0.get($$2);
-      return $$3.contains($$1) ? true : $$3.stream().anyMatch($$2x -> a($$0, $$1, $$2x));
+   private void a(Stream<?> $$0) throws IOException {
+      this.c.write($$0.<CharSequence>map(atn::a).collect(Collectors.joining(",")) + "\r\n");
    }
 
-   private static <K> void b(Multimap<K, K> $$0, K $$1, K $$2) {
-      if (!a($$0, $$1, $$2)) {
-         $$0.put($$1, $$2);
+   private static String a(@Nullable Object $$0) {
+      return StringEscapeUtils.escapeCsv($$0 != null ? $$0.toString() : "[null]");
+   }
+
+   public static class a {
+      private final List<String> a = Lists.newArrayList();
+
+      public atn.a a(String $$0) {
+         this.a.add($$0);
+         return this;
       }
-   }
 
-   public void a(BiConsumer<K, V> $$0) {
-      Multimap<K, K> $$1 = HashMultimap.create();
-      this.a.forEach(($$1x, $$2x) -> $$2x.a($$2xx -> b($$1, $$1x, $$2xx)));
-      this.a.forEach(($$1x, $$2x) -> $$2x.b($$2xx -> b($$1, $$1x, $$2xx)));
-      Set<K> $$2 = new HashSet<>();
-      this.a.keySet().forEach($$3 -> this.a($$1, $$2, (K)$$3, $$0));
-   }
-
-   public interface a<K> {
-      void a(Consumer<K> var1);
-
-      void b(Consumer<K> var1);
+      public atn a(Writer $$0) throws IOException {
+         return new atn($$0, this.a);
+      }
    }
 }

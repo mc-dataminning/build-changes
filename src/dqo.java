@@ -1,173 +1,61 @@
-import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
-import java.util.Set;
-import java.util.function.Function;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.mutable.MutableBoolean;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class dqo<C extends dqh> {
-   public static final dqo<dqk> a = a("cave", new dql(dqk.a));
-   public static final dqo<dqk> b = a("nether_cave", new dqn(dqk.a));
-   public static final dqo<dqf> c = a("canyon", new dqg(dqf.a));
-   protected static final dja d = cwl.a.o();
-   protected static final dja e = cwl.nc.o();
-   protected static final eek f = eel.c.g();
-   protected static final eek g = eel.e.g();
-   protected Set<eej> h = ImmutableSet.of(eel.c);
-   private final Codec<dqm<C>> i;
+public class dqo {
+   public static final dqo a = new dqo(false, cwr.gz.o(), cwr.pL.o(), cwr.ej.o(), cwr.aQ.o());
+   public static final Codec<dqo> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.BOOL.optionalFieldOf("debug_mode", false).forGetter(dqo::a),
+               djg.b.optionalFieldOf("air_state", a.b()).forGetter(dqo::b),
+               djg.b.optionalFieldOf("water_state", a.b()).forGetter(dqo::c),
+               djg.b.optionalFieldOf("lava_state", a.b()).forGetter(dqo::d),
+               djg.b.optionalFieldOf("barrier_state", a.b()).forGetter(dqo::e)
+            )
+            .apply($$0, dqo::new)
+   );
+   private final boolean c;
+   private final djg d;
+   private final djg e;
+   private final djg f;
+   private final djg g;
 
-   private static <C extends dqh, F extends dqo<C>> F a(String $$0, F $$1) {
-      return it.a(kd.P, $$0, $$1);
+   public static dqo a(boolean $$0, djg $$1, djg $$2, djg $$3, djg $$4) {
+      return new dqo($$0, $$1, $$2, $$3, $$4);
    }
 
-   public dqo(Codec<C> $$0) {
-      this.i = $$0.fieldOf("config").xmap(this::a, dqm::b).codec();
+   public static dqo a(djg $$0, djg $$1, djg $$2, djg $$3) {
+      return new dqo(false, $$0, $$1, $$2, $$3);
    }
 
-   public dqm<C> a(C $$0) {
-      return new dqm<>(this, $$0);
+   public static dqo a(boolean $$0, djg $$1) {
+      return new dqo($$0, $$1, a.c(), a.d(), a.e());
    }
 
-   public Codec<dqm<C>> c() {
-      return this.i;
+   private dqo(boolean $$0, djg $$1, djg $$2, djg $$3, djg $$4) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
    }
 
-   public int d() {
-      return 4;
+   public boolean a() {
+      return this.c;
    }
 
-   protected boolean a(
-      dqj $$0, C $$1, dkw $$2, Function<hx, ih<cuh>> $$3, dnv $$4, double $$5, double $$6, double $$7, double $$8, double $$9, dkv $$10, dqo.a $$11
-   ) {
-      csp $$12 = $$2.f();
-      double $$13 = (double)$$12.b();
-      double $$14 = (double)$$12.c();
-      double $$15 = 16.0 + $$8 * 2.0;
-      if (!(Math.abs($$5 - $$13) > $$15) && !(Math.abs($$7 - $$14) > $$15)) {
-         int $$16 = $$12.d();
-         int $$17 = $$12.e();
-         int $$18 = Math.max(aui.a($$5 - $$8) - $$16 - 1, 0);
-         int $$19 = Math.min(aui.a($$5 + $$8) - $$16, 15);
-         int $$20 = Math.max(aui.a($$6 - $$9) - 1, $$0.a() + 1);
-         int $$21 = $$2.y() ? 0 : 7;
-         int $$22 = Math.min(aui.a($$6 + $$9) + 1, $$0.a() + $$0.b() - 1 - $$21);
-         int $$23 = Math.max(aui.a($$7 - $$8) - $$17 - 1, 0);
-         int $$24 = Math.min(aui.a($$7 + $$8) - $$17, 15);
-         boolean $$25 = false;
-         hx.a $$26 = new hx.a();
-         hx.a $$27 = new hx.a();
-
-         for (int $$28 = $$18; $$28 <= $$19; $$28++) {
-            int $$29 = $$12.a($$28);
-            double $$30 = ((double)$$29 + 0.5 - $$5) / $$8;
-
-            for (int $$31 = $$23; $$31 <= $$24; $$31++) {
-               int $$32 = $$12.b($$31);
-               double $$33 = ((double)$$32 + 0.5 - $$7) / $$8;
-               if (!($$30 * $$30 + $$33 * $$33 >= 1.0)) {
-                  MutableBoolean $$34 = new MutableBoolean(false);
-
-                  for (int $$35 = $$22; $$35 > $$20; $$35--) {
-                     double $$36 = ((double)$$35 - 0.5 - $$6) / $$9;
-                     if (!$$11.shouldSkip($$0, $$30, $$36, $$33, $$35) && (!$$10.b($$28, $$35, $$31) || b($$1))) {
-                        $$10.a($$28, $$35, $$31);
-                        $$26.d($$29, $$35, $$32);
-                        $$25 |= this.a($$0, $$1, $$2, $$3, $$10, $$26, $$27, $$4, $$34);
-                     }
-                  }
-               }
-            }
-         }
-
-         return $$25;
-      } else {
-         return false;
-      }
+   public djg b() {
+      return this.d;
    }
 
-   protected boolean a(dqj $$0, C $$1, dkw $$2, Function<hx, ih<cuh>> $$3, dkv $$4, hx.a $$5, hx.a $$6, dnv $$7, MutableBoolean $$8) {
-      dja $$9 = $$2.a_($$5);
-      if ($$9.a(cwl.i) || $$9.a(cwl.fl)) {
-         $$8.setTrue();
-      }
-
-      if (!this.a($$1, $$9) && !b($$1)) {
-         return false;
-      } else {
-         dja $$10 = this.a($$0, $$1, $$5, $$7);
-         if ($$10 == null) {
-            return false;
-         } else {
-            $$2.a($$5, $$10, false);
-            if ($$7.a() && !$$10.u().c()) {
-               $$2.e($$5);
-            }
-
-            if ($$8.isTrue()) {
-               $$6.a($$5, ic.a);
-               if ($$2.a_($$6).a(cwl.j)) {
-                  $$0.a($$3, $$2, $$6, !$$10.u().c()).ifPresent($$2x -> {
-                     $$2.a($$6, $$2x, false);
-                     if (!$$2x.u().c()) {
-                        $$2.e($$6);
-                     }
-                  });
-               }
-            }
-
-            return true;
-         }
-      }
+   public djg c() {
+      return this.e;
    }
 
-   @Nullable
-   private dja a(dqj $$0, C $$1, hx $$2, dnv $$3) {
-      if ($$2.v() <= $$1.g.a($$0)) {
-         return g.g();
-      } else {
-         dja $$4 = $$3.a(new doc.e($$2.u(), $$2.v(), $$2.w()), 0.0);
-         if ($$4 == null) {
-            return b($$1) ? $$1.h.e() : null;
-         } else {
-            return b($$1) ? b($$1, $$4) : $$4;
-         }
-      }
+   public djg d() {
+      return this.f;
    }
 
-   private static dja b(dqh $$0, dja $$1) {
-      if ($$1.a(cwl.a)) {
-         return $$0.h.b();
-      } else if ($$1.a(cwl.G)) {
-         dja $$2 = $$0.h.c();
-         return $$2.b(djq.C) ? $$2.a(djq.C, Boolean.valueOf(true)) : $$2;
-      } else {
-         return $$1.a(cwl.H) ? $$0.h.d() : $$1;
-      }
-   }
-
-   public abstract boolean a(dqj var1, C var2, dkw var3, Function<hx, ih<cuh>> var4, aup var5, dnv var6, csp var7, dkv var8);
-
-   public abstract boolean a(C var1, aup var2);
-
-   protected boolean a(C $$0, dja $$1) {
-      return $$1.a($$0.i);
-   }
-
-   protected static boolean a(csp $$0, double $$1, double $$2, int $$3, int $$4, float $$5) {
-      double $$6 = (double)$$0.b();
-      double $$7 = (double)$$0.c();
-      double $$8 = $$1 - $$6;
-      double $$9 = $$2 - $$7;
-      double $$10 = (double)($$4 - $$3);
-      double $$11 = (double)($$5 + 2.0F + 16.0F);
-      return $$8 * $$8 + $$9 * $$9 - $$10 * $$10 <= $$11 * $$11;
-   }
-
-   private static boolean b(dqh $$0) {
-      return $$0.h.a();
-   }
-
-   public interface a {
-      boolean shouldSkip(dqj var1, double var2, double var4, double var6, int var8);
+   public djg e() {
+      return this.g;
    }
 }

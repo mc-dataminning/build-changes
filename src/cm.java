@@ -1,34 +1,34 @@
 import com.mojang.serialization.Codec;
 import javax.annotation.Nullable;
 
-public record cm(sl b) {
-   public static final Codec<cm> a = tj.i.xmap(cm::new, cm::a);
+public record cm(sn b) {
+   public static final Codec<cm> a = tl.i.xmap(cm::new, cm::a);
 
-   public boolean a(cmr $$0) {
+   public boolean a(cmx $$0) {
       return this.a($$0.v());
    }
 
-   public boolean a(blp $$0) {
+   public boolean a(blu $$0) {
       return this.a(b($$0));
    }
 
-   public boolean a(@Nullable ti $$0) {
-      return $$0 != null && ta.a(this.b, $$0, true);
+   public boolean a(@Nullable tk $$0) {
+      return $$0 != null && tc.a(this.b, $$0, true);
    }
 
-   public static sl b(blp $$0) {
-      sl $$1 = $$0.f(new sl());
-      if ($$0 instanceof cfb) {
-         cmr $$2 = ((cfb)$$0).fS().f();
+   public static sn b(blu $$0) {
+      sn $$1 = $$0.f(new sn());
+      if ($$0 instanceof cfh) {
+         cmx $$2 = ((cfh)$$0).fS().f();
          if (!$$2.b()) {
-            $$1.a("SelectedItem", $$2.b(new sl()));
+            $$1.a("SelectedItem", $$2.b(new sn()));
          }
       }
 
       return $$1;
    }
 
-   public sl a() {
+   public sn a() {
       return this.b;
    }
 }

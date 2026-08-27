@@ -1,176 +1,179 @@
-import com.google.common.collect.Maps;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
 import javax.annotation.Nullable;
 
-public class cgl extends efp {
-   private static final String a = "raids";
-   private final Map<Integer, cgj> b = Maps.newHashMap();
-   private final amz c;
-   private int d;
-   private int e;
+public class cgl extends cfn {
+   private static final agm<Byte> g = agp.a(cgl.class, ago.a);
+   private static final agm<Boolean> h = agp.a(cgl.class, ago.k);
+   private static final cmx i = new cmx(cna.vI);
+   private boolean j;
+   public int f;
 
-   public static efp.a<cgl> a(amz $$0) {
-      return new efp.a<>(() -> new cgl($$0), $$1 -> a($$0, $$1), avq.l);
+   public cgl(bly<? extends cgl> $$0, cto $$1) {
+      super($$0, $$1, i);
    }
 
-   public cgl(amz $$0) {
-      this.c = $$0;
-      this.d = 1;
-      this.c();
-   }
-
-   public cgj a(int $$0) {
-      return this.b.get($$0);
-   }
-
-   public void a() {
-      this.e++;
-      Iterator<cgj> $$0 = this.b.values().iterator();
-
-      while ($$0.hasNext()) {
-         cgj $$1 = $$0.next();
-         if (this.c.Z().b(cte.B)) {
-            $$1.n();
-         }
-
-         if ($$1.d()) {
-            $$0.remove();
-            this.c();
-         } else {
-            $$1.o();
-         }
-      }
-
-      if (this.e % 200 == 0) {
-         this.c();
-      }
-
-      adf.a(this.c, this.b.values());
-   }
-
-   public static boolean a(cgk $$0, cgj $$1) {
-      return $$0 != null && $$1 != null && $$1.i() != null ? $$0.bx() && $$0.gr() && $$0.el() <= 2400 && $$0.dM().E_() == $$1.i().E_() : false;
-   }
-
-   @Nullable
-   public cgj a(ana $$0) {
-      if ($$0.P_()) {
-         return null;
-      } else if (this.c.Z().b(cte.B)) {
-         return null;
-      } else {
-         dmj $$1 = $$0.dM().E_();
-         if (!$$1.c()) {
-            return null;
-         } else {
-            hx $$2 = $$0.dm();
-            List<bxh> $$3 = this.c.y().c($$0x -> $$0x.a(asl.b), $$2, 64, bxg.b.b).toList();
-            int $$4 = 0;
-            elm $$5 = elm.b;
-
-            for (bxh $$6 : $$3) {
-               hx $$7 = $$6.f();
-               $$5 = $$5.b((double)$$7.u(), (double)$$7.v(), (double)$$7.w());
-               $$4++;
-            }
-
-            hx $$8;
-            if ($$4 > 0) {
-               $$5 = $$5.a(1.0 / (double)$$4);
-               $$8 = hx.a($$5);
-            } else {
-               $$8 = $$2;
-            }
-
-            cgj $$10 = this.a($$0.z(), $$8);
-            boolean $$11 = false;
-            if (!$$10.j()) {
-               if (!this.b.containsKey($$10.u())) {
-                  this.b.put($$10.u(), $$10);
-               }
-
-               $$11 = true;
-            } else if ($$10.m() < $$10.l()) {
-               $$11 = true;
-            } else {
-               $$0.d(ble.E);
-               $$0.c.b(new zz($$0, (byte)43));
-            }
-
-            if ($$11) {
-               $$10.a((cfb)$$0);
-               $$0.c.b(new zz($$0, (byte)43));
-               if (!$$10.c()) {
-                  $$0.a(arw.aA);
-                  am.J.a($$0);
-               }
-            }
-
-            this.c();
-            return $$10;
-         }
-      }
-   }
-
-   private cgj a(amz $$0, hx $$1) {
-      cgj $$2 = $$0.d($$1);
-      return $$2 != null ? $$2 : new cgj(this.b(), $$0, $$1);
-   }
-
-   public static cgl a(amz $$0, sl $$1) {
-      cgl $$2 = new cgl($$0);
-      $$2.d = $$1.h("NextAvailableID");
-      $$2.e = $$1.h("Tick");
-      sr $$3 = $$1.c("Raids", 10);
-
-      for (int $$4 = 0; $$4 < $$3.size(); $$4++) {
-         sl $$5 = $$3.a($$4);
-         cgj $$6 = new cgj($$0, $$5);
-         $$2.b.put($$6.u(), $$6);
-      }
-
-      return $$2;
+   public cgl(cto $$0, bmk $$1, cmx $$2) {
+      super(bly.bc, $$1, $$0, $$2);
+      this.an.b(g, (byte)crk.g($$2));
+      this.an.b(h, $$2.B());
    }
 
    @Override
-   public sl a(sl $$0) {
-      $$0.a("NextAvailableID", this.d);
-      $$0.a("Tick", this.e);
-      sr $$1 = new sr();
+   protected void c_() {
+      super.c_();
+      this.an.a(g, (byte)0);
+      this.an.a(h, false);
+   }
 
-      for (cgj $$2 : this.b.values()) {
-         sl $$3 = new sl();
-         $$2.a($$3);
-         $$1.add($$3);
+   @Override
+   public void l() {
+      if (this.c > 4) {
+         this.j = true;
       }
 
-      $$0.a("Raids", $$1);
-      return $$0;
-   }
+      blu $$0 = this.w();
+      int $$1 = this.an.b(g);
+      if ($$1 > 0 && (this.j || this.H()) && $$0 != null) {
+         if (!this.N()) {
+            if (!this.dM().B && this.d == cfn.a.b) {
+               this.a(this.y(), 0.1F);
+            }
 
-   public static String a(ih<dmj> $$0) {
-      return $$0.a(dmh.c) ? "raids_end" : "raids";
-   }
+            this.am();
+         } else {
+            this.p(true);
+            els $$2 = $$0.br().d(this.dk());
+            this.p(this.dr(), this.dt() + $$2.d * 0.015 * (double)$$1, this.dx());
+            if (this.dM().B) {
+               this.ad = this.dt();
+            }
 
-   private int b() {
-      return ++this.d;
-   }
+            double $$3 = 0.05 * (double)$$1;
+            this.g(this.dp().a(0.95).e($$2.d().a($$3)));
+            if (this.f == 0) {
+               this.a(arr.yF, 10.0F, 1.0F);
+            }
 
-   @Nullable
-   public cgj a(hx $$0, int $$1) {
-      cgj $$2 = null;
-      double $$3 = (double)$$1;
-
-      for (cgj $$4 : this.b.values()) {
-         double $$5 = $$4.t().j($$0);
-         if ($$4.v() && $$5 < $$3) {
-            $$2 = $$4;
-            $$3 = $$5;
+            this.f++;
          }
       }
 
-      return $$2;
+      super.l();
+   }
+
+   private boolean N() {
+      blu $$0 = this.w();
+      return $$0 == null || !$$0.bx() ? false : !($$0 instanceof ane) || !$$0.P_();
+   }
+
+   @Override
+   public boolean I() {
+      return this.an.b(h);
+   }
+
+   @Nullable
+   @Override
+   protected elp a(els $$0, els $$1) {
+      return this.j ? null : super.a($$0, $$1);
+   }
+
+   @Override
+   protected void a(elp $$0) {
+      blu $$1 = $$0.a();
+      float $$2 = 8.0F;
+      if ($$1 instanceof bmk $$3) {
+         $$2 += crk.a(this.z(), $$3.eS());
+      }
+
+      blu $$4 = this.w();
+      bks $$5 = this.dN().a(this, (blu)($$4 == null ? this : $$4));
+      this.j = true;
+      arq $$6 = arr.yD;
+      if ($$1.a($$5, $$2)) {
+         if ($$1.ai() == bly.F) {
+            return;
+         }
+
+         if ($$1 instanceof bmk $$7) {
+            if ($$4 instanceof bmk) {
+               crk.a($$7, $$4);
+               crk.b((bmk)$$4, $$7);
+            }
+
+            this.a($$7);
+         }
+      } else if ($$1.ai().a(asj.s)) {
+         this.s();
+         return;
+      }
+
+      this.g(this.dp().d(-0.01, -0.1, -0.01));
+      float $$8 = 1.0F;
+      if (this.dM() instanceof and && this.dM().aa() && this.M()) {
+         hx $$9 = $$1.dm();
+         if (this.dM().h($$9)) {
+            bmj $$10 = bly.aj.a(this.dM());
+            if ($$10 != null) {
+               $$10.e(els.c($$9));
+               $$10.b($$4 instanceof ane ? (ane)$$4 : null);
+               this.dM().b($$10);
+               $$6 = arr.yK;
+               $$8 = 5.0F;
+            }
+         }
+      }
+
+      this.a($$6, $$8, 1.0F);
+   }
+
+   public boolean M() {
+      return crk.i(this.z());
+   }
+
+   @Override
+   protected boolean a(cfh $$0) {
+      return super.a($$0) || this.H() && this.d((blu)$$0) && $$0.fS().e(this.y());
+   }
+
+   @Override
+   protected arq u() {
+      return arr.yE;
+   }
+
+   @Override
+   public void b_(cfh $$0) {
+      if (this.d((blu)$$0) || this.w() == null) {
+         super.b_($$0);
+      }
+   }
+
+   @Override
+   public void a(sn $$0) {
+      super.a($$0);
+      this.j = $$0.q("DealtDamage");
+      this.an.b(g, (byte)crk.g(this.z()));
+   }
+
+   @Override
+   public void b(sn $$0) {
+      super.b($$0);
+      $$0.a("DealtDamage", this.j);
+   }
+
+   @Override
+   public void q() {
+      int $$0 = this.an.b(g);
+      if (this.d != cfn.a.b || $$0 <= 0) {
+         super.q();
+      }
+   }
+
+   @Override
+   protected float G() {
+      return 0.99F;
+   }
+
+   @Override
+   public boolean k(double $$0, double $$1, double $$2) {
+      return true;
    }
 }

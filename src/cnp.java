@@ -1,59 +1,71 @@
 import com.google.common.collect.Maps;
-import com.google.common.collect.ImmutableMap.Builder;
+import java.util.List;
 import java.util.Map;
+import javax.annotation.Nullable;
 
-public class cnp extends clb {
-   protected static final Map<cwj, dja> a = Maps.newHashMap(
-      new Builder()
-         .put(cwl.i, cwl.kE.o())
-         .put(cwl.j, cwl.kE.o())
-         .put(cwl.l, cwl.kE.o())
-         .put(cwl.k, cwl.kE.o())
-         .put(cwl.fl, cwl.kE.o())
-         .put(cwl.sH, cwl.kE.o())
-         .build()
-   );
+public class cnp extends cms {
+   private static final Map<arq, cnp> a = Maps.newHashMap();
+   private final int b;
+   private final arq c;
+   private final int d;
 
-   public cnp(coe $$0, float $$1, float $$2, cmm.a $$3) {
-      super($$1, $$2, $$0, asb.bC, $$3);
+   protected cnp(int $$0, arq $$1, cms.a $$2, int $$3) {
+      super($$2);
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$3 * 20;
+      a.put(this.c, this);
    }
 
    @Override
-   public bjv a(cpc $$0) {
-      cti $$1 = $$0.q();
+   public bka a(cpi $$0) {
+      cto $$1 = $$0.q();
       hx $$2 = $$0.a();
-      dja $$3 = $$1.a_($$2);
-      if ($$0.k() == ic.a) {
-         return bjv.d;
+      djg $$3 = $$1.a_($$2);
+      if ($$3.a(cwr.dT) && !$$3.c(dar.b)) {
+         cmx $$4 = $$0.n();
+         if (!$$1.B) {
+            cfh $$5 = $$0.o();
+            if ($$1.c_($$2) instanceof dhv $$6) {
+               $$6.b($$4.p());
+               $$1.a(dnq.c, $$2, dnq.a.a($$5, $$3));
+            }
+
+            $$4.h(1);
+            if ($$5 != null) {
+               $$5.a(asb.al);
+            }
+         }
+
+         return bka.a($$1.B);
       } else {
-         cfb $$4 = $$0.o();
-         dja $$5 = a.get($$3.b());
-         dja $$6 = null;
-         if ($$5 != null && $$1.a_($$2.c()).i()) {
-            $$1.a($$4, $$2, arm.vN, arn.e, 1.0F, 1.0F);
-            $$6 = $$5;
-         } else if ($$3.b() instanceof cwx && $$3.c(cwx.c)) {
-            if (!$$1.y_()) {
-               $$1.a(null, 1009, $$2, 0);
-            }
-
-            cwx.a($$0.o(), $$1, $$2, $$3);
-            $$6 = $$3.a(cwx.c, Boolean.valueOf(false));
-         }
-
-         if ($$6 != null) {
-            if (!$$1.B) {
-               $$1.a($$2, $$6, 11);
-               $$1.a(dnk.c, $$2, dnk.a.a($$4, $$6));
-               if ($$4 != null) {
-                  $$0.n().a(1, $$4, $$1x -> $$1x.d($$0.p()));
-               }
-            }
-
-            return bjv.a($$1.B);
-         } else {
-            return bjv.d;
-         }
+         return bka.d;
       }
+   }
+
+   public int h() {
+      return this.b;
+   }
+
+   @Override
+   public void a(cmx $$0, @Nullable cto $$1, List<vf> $$2, cop $$3) {
+      $$2.add(this.i().a(n.h));
+   }
+
+   public vt i() {
+      return vf.c(this.a() + ".desc");
+   }
+
+   @Nullable
+   public static cnp a(arq $$0) {
+      return a.get($$0);
+   }
+
+   public arq x() {
+      return this.c;
+   }
+
+   public int y() {
+      return this.d;
    }
 }

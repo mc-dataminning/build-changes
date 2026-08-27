@@ -1,104 +1,25 @@
-public enum crd {
-   a {
-      @Override
-      public boolean a(cmm $$0) {
-         return $$0 instanceof ckb;
-      }
-   },
-   b {
-      @Override
-      public boolean a(cmm $$0) {
-         if ($$0 instanceof ckb $$1 && $$1.g() == blu.c) {
-            return true;
-         }
+public class crd extends cri {
+   public crd(cri.a $$0, blz... $$1) {
+      super($$0, crj.m, $$1);
+   }
 
-         return false;
-      }
-   },
-   c {
-      @Override
-      public boolean a(cmm $$0) {
-         if ($$0 instanceof ckb $$1 && $$1.g() == blu.d) {
-            return true;
-         }
+   @Override
+   public int a(int $$0) {
+      return 1 + ($$0 - 1) * 10;
+   }
 
-         return false;
-      }
-   },
-   d {
-      @Override
-      public boolean a(cmm $$0) {
-         if ($$0 instanceof ckb $$1 && $$1.g() == blu.e) {
-            return true;
-         }
+   @Override
+   public int b(int $$0) {
+      return 50;
+   }
 
-         return false;
-      }
-   },
-   e {
-      @Override
-      public boolean a(cmm $$0) {
-         if ($$0 instanceof ckb $$1 && $$1.g() == blu.f) {
-            return true;
-         }
+   @Override
+   public int a() {
+      return 4;
+   }
 
-         return false;
-      }
-   },
-   f {
-      @Override
-      public boolean a(cmm $$0) {
-         return $$0 instanceof coc;
-      }
-   },
-   g {
-      @Override
-      public boolean a(cmm $$0) {
-         return $$0 instanceof clb;
-      }
-   },
-   h {
-      @Override
-      public boolean a(cmm $$0) {
-         return $$0 instanceof clx;
-      }
-   },
-   i {
-      @Override
-      public boolean a(cmm $$0) {
-         return $$0 instanceof coj;
-      }
-   },
-   j {
-      @Override
-      public boolean a(cmm $$0) {
-         return $$0.o();
-      }
-   },
-   k {
-      @Override
-      public boolean a(cmm $$0) {
-         return $$0 instanceof ckp;
-      }
-   },
-   l {
-      @Override
-      public boolean a(cmm $$0) {
-         return $$0 instanceof cls || cwj.a($$0) instanceof cls;
-      }
-   },
-   m {
-      @Override
-      public boolean a(cmm $$0) {
-         return $$0 instanceof ckz;
-      }
-   },
-   n {
-      @Override
-      public boolean a(cmm $$0) {
-         return $$0 instanceof col || cwj.a($$0) instanceof col || j.a($$0);
-      }
-   };
-
-   public abstract boolean a(cmm var1);
+   @Override
+   public boolean a(cri $$0) {
+      return super.a($$0) && $$0 != crm.I;
+   }
 }

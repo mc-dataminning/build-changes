@@ -1,56 +1,44 @@
-import java.util.function.Supplier;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-public enum cog implements coe {
-   a(0, 59, 2.0F, 0.0F, 15, () -> cps.a(asj.b)),
-   b(1, 131, 4.0F, 1.0F, 5, () -> cps.a(asj.ax)),
-   c(2, 250, 6.0F, 2.0F, 14, () -> cps.a(cmu.oB)),
-   d(3, 1561, 8.0F, 3.0F, 10, () -> cps.a(cmu.ov)),
-   e(0, 32, 12.0F, 0.0F, 22, () -> cps.a(cmu.oF)),
-   f(4, 2031, 9.0F, 4.0F, 15, () -> cps.a(cmu.oG));
+public class cog extends ckq {
+   protected final cwp d;
+   private final ic c;
 
-   private final int g;
-   private final int h;
-   private final float i;
-   private final float j;
-   private final int k;
-   private final aud<cps> l;
+   public cog(cwp $$0, cwp $$1, cms.a $$2, ic $$3) {
+      super($$0, $$2);
+      this.d = $$1;
+      this.c = $$3;
+   }
 
-   private cog(int $$0, int $$1, float $$2, float $$3, int $$4, Supplier<cps> $$5) {
-      this.g = $$0;
-      this.h = $$1;
-      this.i = $$2;
-      this.j = $$3;
-      this.k = $$4;
-      this.l = new aud<>($$5);
+   protected boolean a(ctr $$0, djg $$1, hx $$2) {
+      return $$1.a($$0, $$2);
+   }
+
+   @Nullable
+   @Override
+   protected djg c(cpg $$0) {
+      djg $$1 = this.d.a($$0);
+      djg $$2 = null;
+      ctr $$3 = $$0.q();
+      hx $$4 = $$0.a();
+
+      for (ic $$5 : $$0.f()) {
+         if ($$5 != this.c.g()) {
+            djg $$6 = $$5 == this.c ? this.e().a($$0) : $$1;
+            if ($$6 != null && this.a($$3, $$6, $$4)) {
+               $$2 = $$6;
+               break;
+            }
+         }
+      }
+
+      return $$2 != null && $$3.a($$2, $$4, elx.a()) ? $$2 : null;
    }
 
    @Override
-   public int a() {
-      return this.h;
-   }
-
-   @Override
-   public float b() {
-      return this.i;
-   }
-
-   @Override
-   public float c() {
-      return this.j;
-   }
-
-   @Override
-   public int d() {
-      return this.g;
-   }
-
-   @Override
-   public int e() {
-      return this.k;
-   }
-
-   @Override
-   public cps f() {
-      return this.l.a();
+   public void a(Map<cwp, cms> $$0, cms $$1) {
+      super.a($$0, $$1);
+      $$0.put(this.d, $$1);
    }
 }

@@ -1,27 +1,31 @@
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.DSL.TypeReference;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.Optional;
+import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.util.Pair;
+import java.util.Objects;
+import java.util.function.UnaryOperator;
 
-public class bax extends azy {
-   public bax(Schema $$0) {
-      super($$0, "OminousBannerRenameFix", $$0x -> $$0x.equals("minecraft:white_banner"));
+public class bax extends DataFix {
+   private final String a;
+   private final TypeReference b;
+   private final UnaryOperator<String> c;
+
+   public bax(Schema $$0, String $$1, TypeReference $$2, UnaryOperator<String> $$3) {
+      super($$0, false);
+      this.a = $$1;
+      this.b = $$2;
+      this.c = $$3;
    }
 
-   @Override
-   protected <T> Dynamic<T> a(Dynamic<T> $$0) {
-      Optional<? extends Dynamic<?>> $$1 = $$0.get("display").result();
-      if ($$1.isPresent()) {
-         Dynamic<?> $$2 = (Dynamic<?>)$$1.get();
-         Optional<String> $$3 = $$2.get("Name").asString().result();
-         if ($$3.isPresent()) {
-            String $$4 = $$3.get();
-            $$4 = $$4.replace("\"translate\":\"block.minecraft.illager_banner\"", "\"translate\":\"block.minecraft.ominous_banner\"");
-            $$2 = $$2.set("Name", $$2.createString($$4));
-         }
-
-         return $$0.set("display", $$2);
+   protected TypeRewriteRule makeRule() {
+      Type<Pair<String, String>> $$0 = DSL.named(this.b.typeName(), bdd.a());
+      if (!Objects.equals($$0, this.getInputSchema().getType(this.b))) {
+         throw new IllegalStateException("\"" + this.b.typeName() + "\" is not what was expected.");
       } else {
-         return $$0;
+         return this.fixTypeEverywhere(this.a, $$0, $$0x -> $$0xx -> $$0xx.mapSecond(this.c));
       }
    }
 }

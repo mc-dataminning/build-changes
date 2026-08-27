@@ -1,24 +1,26 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class cxr extends czf {
-   public static final MapCodec<cxr> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(atc.a.fieldOf("falling_dust_color").forGetter($$0x -> $$0x.b), u()).apply($$0, cxr::new)
-   );
-   private final atc b;
+public class cxr extends day {
+   public static final MapCodec<cxr> a = b(cxr::new);
 
    @Override
    public MapCodec<cxr> a() {
       return a;
    }
 
-   public cxr(atc $$0, diz.d $$1) {
-      super($$1);
-      this.b = $$0;
+   public cxr(djf.d $$0) {
+      super($$0);
    }
 
    @Override
-   public int b(dja $$0, cso $$1, hx $$2) {
-      return this.b.a();
+   public void a(djg $$0, cto $$1, hx $$2, auu $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if ($$3.a(10) == 0) {
+         hx $$4 = $$2.d();
+         djg $$5 = $$1.a_($$4);
+         if (!a($$5.k($$1, $$4), ic.b)) {
+            auq.a($$1, $$2, $$3, jx.F);
+         }
+      }
    }
 }

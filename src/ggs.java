@@ -1,77 +1,57 @@
-import com.google.common.collect.Lists;
-import java.util.Collections;
-import java.util.List;
+import com.google.common.annotations.VisibleForTesting;
+import java.util.Locale;
 import javax.annotation.Nullable;
 
-public class ggs implements ggg {
-   private final int a;
-   private final List<bih.b<ggg>> b;
-   private final ggg c;
+public class ggs extends ahg {
+   @VisibleForTesting
+   static final char e = '#';
+   private final String f;
 
-   public ggs(List<bih.b<ggg>> $$0) {
-      this.b = $$0;
-      this.a = bii.a($$0);
-      this.c = $$0.get(0).b();
+   private ggs(String $$0, String $$1, String $$2, @Nullable ahg.a $$3) {
+      super($$0, $$1, $$3);
+      this.f = $$2;
+   }
+
+   public ggs(String $$0, String $$1, String $$2) {
+      super($$0, $$1);
+      this.f = j($$2);
+   }
+
+   public ggs(ahg $$0, String $$1) {
+      this($$0.b(), $$0.a(), j($$1), null);
+   }
+
+   public static ggs c(String $$0, String $$1) {
+      return new ggs("minecraft", $$0, $$1);
+   }
+
+   private static String j(String $$0) {
+      return $$0.toLowerCase(Locale.ROOT);
+   }
+
+   public String f() {
+      return this.f;
    }
 
    @Override
-   public List<ftw> a(@Nullable dja $$0, @Nullable ic $$1, aup $$2) {
-      return bii.a(this.b, Math.abs((int)$$2.g()) % this.a).map($$3 -> $$3.b().a($$0, $$1, $$2)).orElse(Collections.emptyList());
-   }
-
-   @Override
-   public boolean a() {
-      return this.c.a();
-   }
-
-   @Override
-   public boolean b() {
-      return this.c.b();
-   }
-
-   @Override
-   public boolean c() {
-      return this.c.c();
-   }
-
-   @Override
-   public boolean d() {
-      return this.c.d();
-   }
-
-   @Override
-   public gef e() {
-      return this.c.e();
-   }
-
-   @Override
-   public fui f() {
-      return this.c.f();
-   }
-
-   @Override
-   public fug g() {
-      return this.c.g();
-   }
-
-   public static class a {
-      private final List<bih.b<ggg>> a = Lists.newArrayList();
-
-      public ggs.a a(@Nullable ggg $$0, int $$1) {
-         if ($$0 != null) {
-            this.a.add(bih.a($$0, $$1));
-         }
-
-         return this;
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 instanceof ggs && super.equals($$0)) {
+         ggs $$1 = (ggs)$$0;
+         return this.f.equals($$1.f);
+      } else {
+         return false;
       }
+   }
 
-      @Nullable
-      public ggg a() {
-         if (this.a.isEmpty()) {
-            return null;
-         } else {
-            return (ggg)(this.a.size() == 1 ? this.a.get(0).b() : new ggs(this.a));
-         }
-      }
+   @Override
+   public int hashCode() {
+      return 31 * super.hashCode() + this.f.hashCode();
+   }
+
+   @Override
+   public String toString() {
+      return super.toString() + "#" + this.f;
    }
 }

@@ -8,14 +8,14 @@ public class cp extends cv<cp.a> {
       return cp.a.a;
    }
 
-   public void a(ana $$0, cmr $$1, blp $$2) {
-      egp $$3 = bp.b($$0, $$2);
+   public void a(ane $$0, cmx $$1, blu $$2) {
+      egv $$3 = bp.b($$0, $$2);
       this.a($$0, $$2x -> $$2x.a($$1, $$3));
    }
 
    public static record a(Optional<bb> b, Optional<ca> c, Optional<bb> d) implements cv.a {
       public static final Codec<cp.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(atq.a(bp.b, "player").forGetter(cp.a::a), atq.a(ca.a, "item").forGetter(cp.a::b), atq.a(bp.b, "entity").forGetter(cp.a::c))
+         $$0 -> $$0.group(atv.a(bp.b, "player").forGetter(cp.a::a), atv.a(ca.a, "item").forGetter(cp.a::b), atv.a(bp.b, "entity").forGetter(cp.a::c))
                .apply($$0, cp.a::new)
       );
 
@@ -27,7 +27,7 @@ public class cp extends cv<cp.a> {
          return a(Optional.empty(), $$0, $$1);
       }
 
-      public boolean a(cmr $$0, egp $$1) {
+      public boolean a(cmx $$0, egv $$1) {
          return this.c.isPresent() && !this.c.get().a($$0) ? false : this.d.isEmpty() || this.d.get().a($$1);
       }
 

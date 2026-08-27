@@ -1,20 +1,15 @@
-public class gal<T extends ccu> extends fzl<T, flq<T>> {
-   private static final ahd a = new ahd("textures/entity/spider/spider.png");
+public class gal extends fzr<ccv, flp<ccv>> {
+   private static final ahg a = new ahg("textures/entity/silverfish.png");
 
-   public gal(fyf.a $$0) {
-      this($$0, fmo.bu);
+   public gal(fyl.a $$0) {
+      super($$0, new flp<>($$0.a(fmu.bj)), 0.3F);
    }
 
-   public gal(fyf.a $$0, fmn $$1) {
-      super($$0, new flq<>($$0.a($$1)), 0.8F);
-      this.a(new gcw<>(this));
-   }
-
-   protected float b(T $$0) {
+   protected float a(ccv $$0) {
       return 180.0F;
    }
 
-   public ahd a(T $$0) {
+   public ahg b(ccv $$0) {
       return a;
    }
 }

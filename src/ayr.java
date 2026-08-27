@@ -1,26 +1,17 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
+import com.google.common.collect.ImmutableMap;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 
-public class ayr extends baq {
-   public ayr(Schema $$0) {
-      super($$0, false, "EntityShulkerRotationFix", bbq.x, "minecraft:shulker");
-   }
+public class ayr extends bcf {
+   public static final Map<String, String> a = ImmutableMap.builder().put("minecraft:illager_beast_spawn_egg", "minecraft:ravager_spawn_egg").build();
 
-   public Dynamic<?> a(Dynamic<?> $$0) {
-      List<Double> $$1 = $$0.get("Rotation").asList($$0x -> $$0x.asDouble(180.0));
-      if (!$$1.isEmpty()) {
-         $$1.set(0, $$1.get(0) - 180.0);
-         return $$0.set("Rotation", $$0.createList($$1.stream().map($$0::createDouble)));
-      } else {
-         return $$0;
-      }
+   public ayr(Schema $$0, boolean $$1) {
+      super("EntityRavagerRenameFix", $$0, $$1);
    }
 
    @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), this::a);
+   protected String a(String $$0) {
+      return Objects.equals("minecraft:illager_beast", $$0) ? "minecraft:ravager" : $$0;
    }
 }

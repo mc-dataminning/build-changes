@@ -1,24 +1,24 @@
-public class xk implements xd<xg> {
-   private final int a;
+public class xk implements xf<xi> {
+   private final vf a;
 
-   public xk(int $$0) {
+   public xk(vf $$0) {
       this.a = $$0;
    }
 
-   public xk(ug $$0) {
-      this.a = $$0.readInt();
+   public xk(ui $$0) {
+      this.a = $$0.m();
    }
 
    @Override
-   public void a(ug $$0) {
-      $$0.p(this.a);
+   public void a(ui $$0) {
+      $$0.a(this.a);
    }
 
-   public void a(xg $$0) {
+   public void a(xi $$0) {
       $$0.a(this);
    }
 
-   public int a() {
+   public vf a() {
       return this.a;
    }
 }

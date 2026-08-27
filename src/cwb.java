@@ -1,61 +1,35 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class cwb extends cvv implements cwa {
-   public static final MapCodec<cwb> a = b(cwb::new);
-
-   @Override
-   public MapCodec<cwb> a() {
-      return a;
-   }
-
-   public cwb(diz.d $$0) {
+public abstract class cwb extends cwp implements czh {
+   protected cwb(djf.d $$0) {
       super($$0);
    }
 
    @Override
-   public clf b() {
-      return clf.a;
+   protected abstract MapCodec<? extends cwb> a();
+
+   @Override
+   public dcu b_(djg $$0) {
+      return dcu.a;
    }
 
    @Override
-   public dgo a(hx $$0, dja $$1) {
-      return new dgj($$0, $$1);
+   public boolean a(djg $$0, cto $$1, hx $$2, int $$3, int $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      dgu $$5 = $$1.c_($$2);
+      return $$5 == null ? false : $$5.a_($$3, $$4);
    }
 
    @Nullable
    @Override
-   public <T extends dgo> dgp<T> a(cti $$0, dja $$1, dgq<T> $$2) {
-      return a($$2, dgq.o, dgj::a);
+   public bkd b(djg $$0, cto $$1, hx $$2) {
+      dgu $$3 = $$1.c_($$2);
+      return $$3 instanceof bkd ? (bkd)$$3 : null;
    }
 
-   @Override
-   public bjv a(dja $$0, cti $$1, hx $$2, cfb $$3, bju $$4, eli $$5) {
-      if ($$1.B) {
-         return bjv.a;
-      } else {
-         dgo $$6 = $$1.c_($$2);
-         if ($$6 instanceof dgj) {
-            $$3.a((dgj)$$6);
-            $$3.a(arw.ab);
-         }
-
-         return bjv.b;
-      }
-   }
-
-   @Override
-   public dco b_(dja $$0) {
-      return dco.c;
-   }
-
-   @Override
-   public void a(cti $$0, hx $$1, dja $$2, bmf $$3, cmr $$4) {
-      if ($$4.A()) {
-         dgo $$5 = $$0.c_($$1);
-         if ($$5 instanceof dgj) {
-            ((dgj)$$5).a($$4.y());
-         }
-      }
+   @Nullable
+   protected static <E extends dgu, A extends dgu> dgv<A> a(dgw<A> $$0, dgw<E> $$1, dgv<? super E> $$2) {
+      return $$1 == $$0 ? $$2 : null;
    }
 }

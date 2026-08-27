@@ -1,22 +1,78 @@
-import java.util.Optional;
-import javax.annotation.Nullable;
+import com.google.common.collect.Lists;
+import java.util.Collection;
+import java.util.List;
 
-public record add(ahc<dmj> a, ahc<cti> b, long c, ctf d, @Nullable ctf e, boolean f, boolean g, Optional<ig> h, int i) {
-   public add(ug $$0) {
-      this(
-         $$0.a(ke.ay), $$0.a(ke.aM), $$0.readLong(), ctf.a($$0.readByte()), ctf.b($$0.readByte()), $$0.readBoolean(), $$0.readBoolean(), $$0.b(ug::h), $$0.n()
-      );
+public class add implements xf<za> {
+   private final int a;
+   private final List<add.a> b;
+
+   public add(int $$0, Collection<bnm> $$1) {
+      this.a = $$0;
+      this.b = Lists.newArrayList();
+
+      for (bnm $$2 : $$1) {
+         this.b.add(new add.a($$2.a(), $$2.b(), $$2.c()));
+      }
    }
 
-   public void a(ug $$0) {
-      $$0.b(this.a);
-      $$0.b(this.b);
-      $$0.b(this.c);
-      $$0.k(this.d.a());
-      $$0.k(ctf.a(this.e));
-      $$0.a(this.f);
-      $$0.a(this.g);
-      $$0.a(this.h, ug::a);
-      $$0.c(this.i);
+   public add(ui $$0) {
+      this.a = $$0.n();
+      this.b = $$0.a((ui.a<add.a>)($$0x -> {
+         ahg $$1 = $$0x.t();
+         bnl $$2 = kd.u.a($$1);
+         double $$3 = $$0x.readDouble();
+         List<bno> $$4 = $$0x.a((ui.a<bno>)($$0xx -> new bno($$0xx.p(), "Unknown synced attribute modifier", $$0xx.readDouble(), bno.a.a($$0xx.readByte()))));
+         return new add.a($$2, $$3, $$4);
+      }));
+   }
+
+   @Override
+   public void a(ui $$0) {
+      $$0.c(this.a);
+      $$0.a(this.b, ($$0x, $$1) -> {
+         $$0x.a(kd.u.b($$1.a()));
+         $$0x.a($$1.b());
+         $$0x.a($$1.c(), ($$0xx, $$1x) -> {
+            $$0xx.a($$1x.a());
+            $$0xx.a($$1x.c());
+            $$0xx.k($$1x.b().a());
+         });
+      });
+   }
+
+   public void a(za $$0) {
+      $$0.a(this);
+   }
+
+   public int a() {
+      return this.a;
+   }
+
+   public List<add.a> d() {
+      return this.b;
+   }
+
+   public static class a {
+      private final bnl a;
+      private final double b;
+      private final Collection<bno> c;
+
+      public a(bnl $$0, double $$1, Collection<bno> $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+      }
+
+      public bnl a() {
+         return this.a;
+      }
+
+      public double b() {
+         return this.b;
+      }
+
+      public Collection<bno> c() {
+         return this.c;
+      }
    }
 }

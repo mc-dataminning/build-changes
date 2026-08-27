@@ -1,92 +1,50 @@
-public interface cty extends cso {
-   ic[] C = ic.values();
+import com.google.common.collect.Maps;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import java.util.List;
+import java.util.Map;
 
-   default int a(hx $$0, ic $$1) {
-      return this.a_($$0).c(this, $$0, $$1);
+public class cty {
+   private final Long2ObjectMap<List<ane>> a = new Long2ObjectOpenHashMap();
+   private final Map<ane, cty.a> b = Maps.newHashMap();
+   private final amn c;
+
+   public cty(amn $$0) {
+      this.c = $$0;
    }
 
-   default int e_(hx $$0) {
-      int $$1 = 0;
-      $$1 = Math.max($$1, this.a($$0.d(), ic.a));
-      if ($$1 >= 15) {
-         return $$1;
-      } else {
-         $$1 = Math.max($$1, this.a($$0.c(), ic.b));
-         if ($$1 >= 15) {
-            return $$1;
-         } else {
-            $$1 = Math.max($$1, this.a($$0.e(), ic.c));
-            if ($$1 >= 15) {
-               return $$1;
-            } else {
-               $$1 = Math.max($$1, this.a($$0.f(), ic.d));
-               if ($$1 >= 15) {
-                  return $$1;
-               } else {
-                  $$1 = Math.max($$1, this.a($$0.g(), ic.e));
-                  if ($$1 >= 15) {
-                     return $$1;
-                  } else {
-                     $$1 = Math.max($$1, this.a($$0.h(), ic.f));
-                     return $$1 >= 15 ? $$1 : $$1;
-                  }
-               }
-            }
-         }
+   private List<ane> a(csv $$0) {
+      return (List<ane>)this.a.computeIfAbsent($$0.a(), $$1 -> this.c.d($$0));
+   }
+
+   public void a(csv $$0, bmn $$1) {
+      for (ane $$2 : this.a($$0)) {
+         this.b.computeIfAbsent($$2, $$0x -> new cty.a()).a($$1);
       }
    }
 
-   default int a(hx $$0, ic $$1, boolean $$2) {
-      dja $$3 = this.a_($$0);
-      if ($$2) {
-         return cyl.h($$3) ? this.a($$0, $$1) : 0;
-      } else if ($$3.a(cwl.ha)) {
-         return 15;
-      } else if ($$3.a(cwl.cw)) {
-         return $$3.c(dck.f);
-      } else {
-         return $$3.m() ? this.a($$0, $$1) : 0;
-      }
-   }
-
-   default boolean b(hx $$0, ic $$1) {
-      return this.c($$0, $$1) > 0;
-   }
-
-   default int c(hx $$0, ic $$1) {
-      dja $$2 = this.a_($$0);
-      int $$3 = $$2.b(this, $$0, $$1);
-      return $$2.g(this, $$0) ? Math.max($$3, this.e_($$0)) : $$3;
-   }
-
-   default boolean C(hx $$0) {
-      if (this.c($$0.d(), ic.a) > 0) {
-         return true;
-      } else if (this.c($$0.c(), ic.b) > 0) {
-         return true;
-      } else if (this.c($$0.e(), ic.c) > 0) {
-         return true;
-      } else if (this.c($$0.f(), ic.d) > 0) {
-         return true;
-      } else {
-         return this.c($$0.g(), ic.e) > 0 ? true : this.c($$0.h(), ic.f) > 0;
-      }
-   }
-
-   default int D(hx $$0) {
-      int $$1 = 0;
-
-      for (ic $$2 : C) {
-         int $$3 = this.c($$0.a($$2), $$2);
-         if ($$3 >= 15) {
-            return 15;
-         }
-
-         if ($$3 > $$1) {
-            $$1 = $$3;
+   public boolean a(bmn $$0, csv $$1) {
+      for (ane $$2 : this.a($$1)) {
+         cty.a $$3 = this.b.get($$2);
+         if ($$3 == null || $$3.b($$0)) {
+            return true;
          }
       }
 
-      return $$1;
+      return false;
+   }
+
+   static class a {
+      private final Object2IntMap<bmn> a = new Object2IntOpenHashMap(bmn.values().length);
+
+      public void a(bmn $$0) {
+         this.a.computeInt($$0, ($$0x, $$1) -> $$1 == null ? 1 : $$1 + 1);
+      }
+
+      public boolean b(bmn $$0) {
+         return this.a.getOrDefault($$0, 0) < $$0.b();
+      }
    }
 }

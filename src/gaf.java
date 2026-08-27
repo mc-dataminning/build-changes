@@ -1,15 +1,11 @@
-public class gaf extends fzl<ccq, flj<ccq>> {
-   private static final ahd a = new ahd("textures/entity/silverfish.png");
+public class gaf extends fzr<cct, fli> {
+   private static final ahg a = new ahg("textures/entity/illager/ravager.png");
 
-   public gaf(fyf.a $$0) {
-      super($$0, new flj<>($$0.a(fmo.bj)), 0.3F);
+   public gaf(fyl.a $$0) {
+      super($$0, new fli($$0.a(fmu.bc)), 1.1F);
    }
 
-   protected float a(ccq $$0) {
-      return 180.0F;
-   }
-
-   public ahd b(ccq $$0) {
+   public ahg a(cct $$0) {
       return a;
    }
 }

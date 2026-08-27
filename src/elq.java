@@ -1,20 +1,26 @@
-public interface elq {
-   elq a = ($$0, $$1) -> false;
-   elq b = ($$0, $$1) -> !$$0 && !$$1;
-   elq c = ($$0, $$1) -> $$1 && !$$0;
-   elq d = ($$0, $$1) -> !$$0;
-   elq e = ($$0, $$1) -> $$0 && !$$1;
-   elq f = ($$0, $$1) -> !$$1;
-   elq g = ($$0, $$1) -> $$0 != $$1;
-   elq h = ($$0, $$1) -> !$$0 || !$$1;
-   elq i = ($$0, $$1) -> $$0 && $$1;
-   elq j = ($$0, $$1) -> $$0 == $$1;
-   elq k = ($$0, $$1) -> $$1;
-   elq l = ($$0, $$1) -> !$$0 || $$1;
-   elq m = ($$0, $$1) -> $$0;
-   elq n = ($$0, $$1) -> $$0 || !$$1;
-   elq o = ($$0, $$1) -> $$0 || $$1;
-   elq p = ($$0, $$1) -> true;
+public abstract class elq {
+   protected final els a;
 
-   boolean apply(boolean var1, boolean var2);
+   protected elq(els $$0) {
+      this.a = $$0;
+   }
+
+   public double a(blu $$0) {
+      double $$1 = this.a.c - $$0.dr();
+      double $$2 = this.a.d - $$0.dt();
+      double $$3 = this.a.e - $$0.dx();
+      return $$1 * $$1 + $$2 * $$2 + $$3 * $$3;
+   }
+
+   public abstract elq.a c();
+
+   public els e() {
+      return this.a;
+   }
+
+   public static enum a {
+      a,
+      b,
+      c;
+   }
 }

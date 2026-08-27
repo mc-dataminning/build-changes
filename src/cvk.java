@@ -1,91 +1,95 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.mojang.datafixers.DataFixUtils;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class cvk extends cws {
-   public static final MapCodec<cvk> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               ahc.a(ke.f).fieldOf("fruit").forGetter($$0x -> $$0x.e),
-               ahc.a(ke.f).fieldOf("stem").forGetter($$0x -> $$0x.f),
-               ahc.a(ke.F).fieldOf("seed").forGetter($$0x -> $$0x.g),
-               u()
-            )
-            .apply($$0, cvk::new)
-   );
-   public static final dju b = dae.aE;
-   protected static final float c = 2.0F;
-   private static final Map<ic, emf> d = Maps.newEnumMap(
-      ImmutableMap.of(
-         ic.d,
-         cwj.a(6.0, 0.0, 6.0, 10.0, 10.0, 16.0),
-         ic.e,
-         cwj.a(0.0, 0.0, 6.0, 10.0, 10.0, 10.0),
-         ic.c,
-         cwj.a(6.0, 0.0, 0.0, 10.0, 10.0, 10.0),
-         ic.f,
-         cwj.a(6.0, 0.0, 6.0, 16.0, 10.0, 10.0)
-      )
-   );
-   private final ahc<cwj> e;
-   private final ahc<cwj> f;
-   private final ahc<cmm> g;
+public abstract class cvk extends cwb {
+   public static final dka a = dak.aE;
+   public static final djx b = djw.r;
 
-   @Override
-   public MapCodec<cvk> a() {
-      return a;
-   }
-
-   protected cvk(ahc<cwj> $$0, ahc<cwj> $$1, ahc<cmm> $$2, diz.d $$3) {
-      super($$3);
-      this.k(this.E.b().a(b, ic.c));
-      this.f = $$0;
-      this.e = $$1;
-      this.g = $$2;
+   protected cvk(djf.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(a, ic.c).a(b, Boolean.valueOf(false)));
    }
 
    @Override
-   public emf a(dja $$0, cso $$1, hx $$2, elr $$3) {
-      return d.get($$0.c(b));
+   protected abstract MapCodec<? extends cvk> a();
+
+   @Override
+   public bka a(djg $$0, cto $$1, hx $$2, cfh $$3, bjz $$4, elo $$5) {
+      if ($$1.B) {
+         return bka.a;
+      } else {
+         this.a($$1, $$2, $$3);
+         return bka.b;
+      }
+   }
+
+   protected abstract void a(cto var1, hx var2, cfh var3);
+
+   @Override
+   public djg a(cpg $$0) {
+      return this.o().a(a, $$0.g().g());
    }
 
    @Override
-   public dja a(dja $$0, ic $$1, dja $$2, ctj $$3, hx $$4, hx $$5) {
-      if (!$$2.a(this.e) && $$1 == $$0.c(b)) {
-         Optional<cwj> $$6 = $$3.I_().d(ke.f).d(this.f);
-         if ($$6.isPresent()) {
-            return $$6.get().o().b(dee.c, Integer.valueOf(7));
+   public void a(cto $$0, hx $$1, djg $$2, bmk $$3, cmx $$4) {
+      if ($$4.A()) {
+         dgu $$5 = $$0.c_($$1);
+         if ($$5 instanceof dgj) {
+            ((dgj)$$5).a($$4.y());
          }
       }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected boolean b(dja $$0, cso $$1, hx $$2) {
-      return $$0.a(cwl.cC);
+   public void a(djg $$0, cto $$1, hx $$2, djg $$3, boolean $$4) {
+      if (!$$0.a($$3.b())) {
+         dgu $$5 = $$1.c_($$2);
+         if ($$5 instanceof dgj) {
+            if ($$1 instanceof and) {
+               bjw.a($$1, $$2, (dgj)$$5);
+               ((dgj)$$5).a((and)$$1, els.b($$2));
+            }
+
+            super.a($$0, $$1, $$2, $$3, $$4);
+            $$1.c($$2, this);
+         } else {
+            super.a($$0, $$1, $$2, $$3, $$4);
+         }
+      }
    }
 
    @Override
-   public cmr a(ctl $$0, hx $$1, dja $$2) {
-      return new cmr((cth)DataFixUtils.orElse($$0.I_().d(ke.F).d(this.g), this));
+   public boolean d_(djg $$0) {
+      return true;
    }
 
    @Override
-   public dja a(dja $$0, dcv $$1) {
-      return $$0.a(b, $$1.a($$0.c(b)));
+   public int a(djg $$0, cto $$1, hx $$2) {
+      return cia.a($$1.c_($$2));
    }
 
    @Override
-   public dja a(dja $$0, dbf $$1) {
-      return $$0.a($$1.a($$0.c(b)));
+   public dcu b_(djg $$0) {
+      return dcu.c;
    }
 
    @Override
-   protected void a(djb.a<cwj, dja> $$0) {
-      $$0.a(b);
+   public djg a(djg $$0, ddb $$1) {
+      return $$0.a(a, $$1.a($$0.c(a)));
+   }
+
+   @Override
+   public djg a(djg $$0, dbl $$1) {
+      return $$0.a($$1.a($$0.c(a)));
+   }
+
+   @Override
+   protected void a(djh.a<cwp, djg> $$0) {
+      $$0.a(a, b);
+   }
+
+   @Nullable
+   protected static <T extends dgu> dgv<T> a(cto $$0, dgw<T> $$1, dgw<? extends dgj> $$2) {
+      return $$0.B ? null : a($$1, $$2, dgj::a);
    }
 }

@@ -1,34 +1,32 @@
-import javax.annotation.Nullable;
+public class aca implements xf<za> {
+   private final hx a;
+   private final float b;
 
-public class aca implements xd<yx> {
-   private final int a;
-   private final int b;
-
-   public aca(blp $$0, @Nullable blp $$1) {
-      this.a = $$0.aj();
-      this.b = $$1 != null ? $$1.aj() : 0;
+   public aca(hx $$0, float $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public aca(ug $$0) {
-      this.a = $$0.readInt();
-      this.b = $$0.readInt();
+   public aca(ui $$0) {
+      this.a = $$0.e();
+      this.b = $$0.readFloat();
    }
 
    @Override
-   public void a(ug $$0) {
-      $$0.p(this.a);
-      $$0.p(this.b);
+   public void a(ui $$0) {
+      $$0.a(this.a);
+      $$0.a(this.b);
    }
 
-   public void a(yx $$0) {
+   public void a(za $$0) {
       $$0.a(this);
    }
 
-   public int a() {
+   public hx a() {
       return this.a;
    }
 
-   public int d() {
+   public float d() {
       return this.b;
    }
 }

@@ -1,121 +1,92 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.Collection;
+import com.mojang.logging.LogUtils;
+import java.time.Duration;
 import java.util.List;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class esw extends gkc {
-   private static final vd a = vd.c("mco.selectServer.popup");
-   private static final vd b = vd.c("mco.selectServer.close");
-   private static final ahd c = new ahd("popup/background");
-   private static final ahd v = new ahd("icon/trial_available");
-   private static final eyl w = new eyl(new ahd("widget/cross_button"), new ahd("widget/cross_button_highlighted"));
-   private static final int x = 236;
-   private static final int y = 34;
-   private static final int z = 6;
-   private static final int A = 195;
-   private static final int B = 152;
-   private static final int C = 4;
-   private static final int D = 10;
-   private static final int E = 320;
-   private static final int F = 172;
-   private static final int G = 100;
-   private static final int H = 99;
-   private static final int I = 100;
-   private static List<ahd> J = List.of();
-   private final fct K;
-   private final boolean L;
+public class esw extends gkn {
+   private static final Logger a = LogUtils.getLogger();
+   private static final gko b = new gko(Duration.ofSeconds(5L));
+   private final List<eug> c;
+   private final fcz v;
+   private final fas w = fas.d();
+   private volatile vf x;
    @Nullable
-   private ewy M;
-   private int N;
-   private int O;
+   private ext y;
 
-   public esw(fct $$0, boolean $$1) {
-      super(a);
-      this.K = $$0;
-      this.L = $$1;
-   }
+   public esw(fcz $$0, eug... $$1) {
+      super(euy.a);
+      this.v = $$0;
+      this.c = List.of($$1);
+      if (this.c.isEmpty()) {
+         throw new IllegalArgumentException("No tasks added");
+      } else {
+         this.x = this.c.get(0).a();
+         Runnable $$2 = () -> {
+            for (eug $$1x : $$1) {
+               this.a($$1x.a());
+               if ($$1x.d()) {
+                  break;
+               }
 
-   public static void a(aqc $$0) {
-      Collection<ahd> $$1 = $$0.b("textures/gui/images", $$0x -> $$0x.a().endsWith(".png")).keySet();
-      J = $$1.stream().filter($$0x -> $$0x.b().equals("realms")).toList();
-   }
-
-   @Override
-   protected void aN_() {
-      this.K.a(this.f, this.g, this.h);
-      if (this.L) {
-         this.M = this.d(
-            ewy.a(vd.c("mco.selectServer.trial"), fbl.b(this, "https://aka.ms/startjavarealmstrial")).a(this.E() - 10 - 99, this.H() - 10 - 4 - 40, 99, 20).a()
-         );
+               $$1x.run();
+            }
+         };
+         Thread $$3 = new Thread($$2, "Realms-long-running-task");
+         $$3.setUncaughtExceptionHandler(new esa(a));
+         $$3.start();
       }
-
-      this.d(ewy.a(vd.c("mco.selectServer.buy"), fbl.b(this, "https://aka.ms/BuyJavaRealms")).a(this.E() - 10 - 99, this.H() - 10 - 20, 99, 20).a());
-      exk $$0 = this.d(new exk(this.C() + 4, this.D() + 4, 14, 14, w, $$0x -> this.aE_(), b));
-      $$0.a(eyj.a(b));
-      int $$1 = 142 - (this.L ? 40 : 20);
-      exi $$2 = new exi(this.E() - 10 - 100, this.D() + 10, 100, $$1, a, this.i);
-      if ($$2.j()) {
-         $$2.l(100 - $$2.f());
-      }
-
-      this.d($$2);
    }
 
    @Override
    public void d() {
       super.d();
-      if (++this.O > 100) {
-         this.O = 0;
-         this.N = (this.N + 1) % J.size();
+      if (this.y != null) {
+         b.a(this.f.aV(), this.y.x());
       }
    }
 
    @Override
-   public void a(ewm $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      if (this.M != null) {
-         a($$0, this.M);
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 256) {
+         this.e();
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2);
       }
    }
 
-   public static void a(ewm $$0, ewy $$1) {
-      int $$2 = 8;
-      $$0.c().a();
-      $$0.c().a(0.0F, 0.0F, 110.0F);
-      $$0.a(v, $$1.B() + $$1.w() - 8 - 4, $$1.C() + $$1.u() / 2 - 4, 8, 8);
-      $$0.c().b();
+   @Override
+   public void aN_() {
+      this.w.c().b();
+      this.y = new ext(this.i, this.x);
+      this.w.a(this.y, $$0 -> $$0.e(30));
+      this.w.a(exe.a(ve.e, $$0 -> this.e()).a());
+      this.w.a($$1 -> {
+         exc var10000 = this.d($$1);
+      });
+      this.c();
    }
 
    @Override
-   public void b(ewm $$0, int $$1, int $$2, float $$3) {
-      this.K.a($$0, -1, -1, $$3);
-      $$0.e();
-      RenderSystem.clear(256, eva.a);
-      this.a($$0);
-      $$0.a(c, this.C(), this.D(), 320, 172);
-      if (!J.isEmpty()) {
-         $$0.a(J.get(this.N), this.C() + 10, this.D() + 10, 0, 0.0F, 0.0F, 195, 152, 195, 152);
+   protected void c() {
+      this.w.a();
+      fam.a(this.w, this.F());
+   }
+
+   protected void e() {
+      for (eug $$0 : this.c) {
+         $$0.b();
       }
+
+      this.f.a(this.v);
    }
 
-   private int C() {
-      return (this.g - 320) / 2;
-   }
+   public void a(vf $$0) {
+      if (this.y != null) {
+         this.y.b($$0);
+      }
 
-   private int D() {
-      return (this.h - 172) / 2;
-   }
-
-   private int E() {
-      return this.C() + 320;
-   }
-
-   private int H() {
-      return this.D() + 172;
-   }
-
-   @Override
-   public void aE_() {
-      this.f.a(this.K);
+      this.x = $$0;
    }
 }

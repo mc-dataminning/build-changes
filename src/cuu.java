@@ -1,84 +1,70 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.Lifecycle;
-import com.mojang.serialization.MapCodec;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Stream;
+public abstract class cuu {
+   public static final ahf<cun> a = a("the_void");
+   public static final ahf<cun> b = a("plains");
+   public static final ahf<cun> c = a("sunflower_plains");
+   public static final ahf<cun> d = a("snowy_plains");
+   public static final ahf<cun> e = a("ice_spikes");
+   public static final ahf<cun> f = a("desert");
+   public static final ahf<cun> g = a("swamp");
+   public static final ahf<cun> h = a("mangrove_swamp");
+   public static final ahf<cun> i = a("forest");
+   public static final ahf<cun> j = a("flower_forest");
+   public static final ahf<cun> k = a("birch_forest");
+   public static final ahf<cun> l = a("dark_forest");
+   public static final ahf<cun> m = a("old_growth_birch_forest");
+   public static final ahf<cun> n = a("old_growth_pine_taiga");
+   public static final ahf<cun> o = a("old_growth_spruce_taiga");
+   public static final ahf<cun> p = a("taiga");
+   public static final ahf<cun> q = a("snowy_taiga");
+   public static final ahf<cun> r = a("savanna");
+   public static final ahf<cun> s = a("savanna_plateau");
+   public static final ahf<cun> t = a("windswept_hills");
+   public static final ahf<cun> u = a("windswept_gravelly_hills");
+   public static final ahf<cun> v = a("windswept_forest");
+   public static final ahf<cun> w = a("windswept_savanna");
+   public static final ahf<cun> x = a("jungle");
+   public static final ahf<cun> y = a("sparse_jungle");
+   public static final ahf<cun> z = a("bamboo_jungle");
+   public static final ahf<cun> A = a("badlands");
+   public static final ahf<cun> B = a("eroded_badlands");
+   public static final ahf<cun> C = a("wooded_badlands");
+   public static final ahf<cun> D = a("meadow");
+   public static final ahf<cun> E = a("cherry_grove");
+   public static final ahf<cun> F = a("grove");
+   public static final ahf<cun> G = a("snowy_slopes");
+   public static final ahf<cun> H = a("frozen_peaks");
+   public static final ahf<cun> I = a("jagged_peaks");
+   public static final ahf<cun> J = a("stony_peaks");
+   public static final ahf<cun> K = a("river");
+   public static final ahf<cun> L = a("frozen_river");
+   public static final ahf<cun> M = a("beach");
+   public static final ahf<cun> N = a("snowy_beach");
+   public static final ahf<cun> O = a("stony_shore");
+   public static final ahf<cun> P = a("warm_ocean");
+   public static final ahf<cun> Q = a("lukewarm_ocean");
+   public static final ahf<cun> R = a("deep_lukewarm_ocean");
+   public static final ahf<cun> S = a("ocean");
+   public static final ahf<cun> T = a("deep_ocean");
+   public static final ahf<cun> U = a("cold_ocean");
+   public static final ahf<cun> V = a("deep_cold_ocean");
+   public static final ahf<cun> W = a("frozen_ocean");
+   public static final ahf<cun> X = a("deep_frozen_ocean");
+   public static final ahf<cun> Y = a("mushroom_fields");
+   public static final ahf<cun> Z = a("dripstone_caves");
+   public static final ahf<cun> aa = a("lush_caves");
+   public static final ahf<cun> ab = a("deep_dark");
+   public static final ahf<cun> ac = a("nether_wastes");
+   public static final ahf<cun> ad = a("warped_forest");
+   public static final ahf<cun> ae = a("crimson_forest");
+   public static final ahf<cun> af = a("soul_sand_valley");
+   public static final ahf<cun> ag = a("basalt_deltas");
+   public static final ahf<cun> ah = a("the_end");
+   public static final ahf<cun> ai = a("end_highlands");
+   public static final ahf<cun> aj = a("end_midlands");
+   public static final ahf<cun> ak = a("small_end_islands");
+   public static final ahf<cun> al = a("end_barrens");
 
-public class cuu extends cul {
-   private static final MapCodec<ih<cuh>> d = cuh.c.fieldOf("biome");
-   public static final MapCodec<cuq.c<ih<cuh>>> b = cuq.c.a(d).fieldOf("biomes");
-   private static final MapCodec<ih<cuv>> e = cuv.b.fieldOf("preset").withLifecycle(Lifecycle.stable());
-   public static final Codec<cuu> c = Codec.mapEither(b, e).xmap(cuu::new, $$0 -> $$0.f).codec();
-   private final Either<cuq.c<ih<cuh>>, ih<cuv>> f;
-
-   private cuu(Either<cuq.c<ih<cuh>>, ih<cuv>> $$0) {
-      this.f = $$0;
-   }
-
-   public static cuu a(cuq.c<ih<cuh>> $$0) {
-      return new cuu(Either.left($$0));
-   }
-
-   public static cuu a(ih<cuv> $$0) {
-      return new cuu(Either.right($$0));
-   }
-
-   private cuq.c<ih<cuh>> d() {
-      return (cuq.c<ih<cuh>>)this.f.map($$0 -> $$0, $$0 -> ((cuv)$$0.a()).a());
-   }
-
-   @Override
-   protected Stream<ih<cuh>> b() {
-      return this.d().a().stream().map(Pair::getSecond);
-   }
-
-   @Override
-   protected Codec<? extends cul> a() {
-      return c;
-   }
-
-   public boolean a(ahc<cuv> $$0) {
-      Optional<ih<cuv>> $$1 = this.f.right();
-      return $$1.isPresent() && $$1.get().a($$0);
-   }
-
-   @Override
-   public ih<cuh> getNoiseBiome(int $$0, int $$1, int $$2, cuq.f $$3) {
-      return this.a($$3.a($$0, $$1, $$2));
-   }
-
-   @avn
-   public ih<cuh> a(cuq.h $$0) {
-      return this.d().a($$0);
-   }
-
-   @Override
-   public void a(List<String> $$0, hx $$1, cuq.f $$2) {
-      int $$3 = is.a($$1.u());
-      int $$4 = is.a($$1.v());
-      int $$5 = is.a($$1.w());
-      cuq.h $$6 = $$2.a($$3, $$4, $$5);
-      float $$7 = cuq.a($$6.d());
-      float $$8 = cuq.a($$6.e());
-      float $$9 = cuq.a($$6.b());
-      float $$10 = cuq.a($$6.c());
-      float $$11 = cuq.a($$6.g());
-      double $$12 = (double)doq.a($$11);
-      cux $$13 = new cux();
-      $$0.add(
-         "Biome builder PV: "
-            + cux.a($$12)
-            + " C: "
-            + $$13.b((double)$$7)
-            + " E: "
-            + $$13.c((double)$$8)
-            + " T: "
-            + $$13.d((double)$$9)
-            + " H: "
-            + $$13.e((double)$$10)
-      );
+   private static ahf<cun> a(String $$0) {
+      return ahf.a(ke.at, new ahg($$0));
    }
 }

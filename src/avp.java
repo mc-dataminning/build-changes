@@ -1,33 +1,50 @@
-import com.google.gson.JsonObject;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
+import it.unimi.dsi.fastutil.floats.Float2FloatFunction;
+import java.util.function.Function;
 
-public class avp {
-   private static final String a = a("");
+public interface avp<C> {
+   avp<Float> a = a($$0 -> $$0);
 
-   public static <T> Dynamic<T> a(DynamicOps<T> $$0, String $$1) {
-      String $$2 = a($$1);
-      return new Dynamic($$0, $$0.createString($$2));
+   float a(C var1);
+
+   float b();
+
+   float c();
+
+   static avp<Float> a(final Float2FloatFunction $$0) {
+      return new avp<Float>() {
+         public float a(Float $$0x) {
+            return (Float)$$0.apply($$0);
+         }
+
+         @Override
+         public float b() {
+            return Float.NEGATIVE_INFINITY;
+         }
+
+         @Override
+         public float c() {
+            return Float.POSITIVE_INFINITY;
+         }
+      };
    }
 
-   public static <T> Dynamic<T> a(DynamicOps<T> $$0) {
-      return new Dynamic($$0, $$0.createString(a));
-   }
+   default <C2> avp<C2> a(final Function<C2, C> $$0) {
+      final avp<C> $$1 = this;
+      return new avp<C2>() {
+         @Override
+         public float a(C2 $$0x) {
+            return $$1.a($$0.apply($$0));
+         }
 
-   private static String a(String $$0) {
-      JsonObject $$1 = new JsonObject();
-      $$1.addProperty("text", $$0);
-      return aty.e($$1);
-   }
+         @Override
+         public float b() {
+            return $$1.b();
+         }
 
-   public static <T> Dynamic<T> b(DynamicOps<T> $$0, String $$1) {
-      JsonObject $$2 = new JsonObject();
-      $$2.addProperty("translate", $$1);
-      return new Dynamic($$0, $$0.createString(aty.e($$2)));
-   }
-
-   public static <T> Dynamic<T> a(Dynamic<T> $$0) {
-      return (Dynamic<T>)DataFixUtils.orElse($$0.asString().map($$1 -> a($$0.getOps(), $$1)).result(), $$0);
+         @Override
+         public float c() {
+            return $$1.c();
+         }
+      };
    }
 }

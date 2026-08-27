@@ -1,56 +1,21 @@
-import java.util.List;
+import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
 
 public class nn {
-   private static final iw a = new iw()
-      .a(ke.ay, pf::a)
-      .a(ke.av, pd::a)
-      .a(ke.aw, qh::a)
-      .a(ke.aC, qw::a)
-      .a(ke.aD, po::a)
-      .a(ke.aF, pn::a)
-      .a(ke.aE, pk::a)
-      .a(ke.aG, pj::a)
-      .a(ke.at, pz::a)
-      .a(ke.aL, cuw::a)
-      .a(ke.aB, pg::a)
-      .a(ke.ax, doq::a)
-      .a(ke.aA, doo::a)
-      .a(ke.aK, dyp::a)
-      .a(ke.az, dxb::a)
-      .a(ke.au, uz::a)
-      .a(ke.aJ, coy::a)
-      .a(ke.aI, cow::a)
-      .a(ke.r, bkq::a);
+   public static CompletableFuture<iw.e> a(CompletableFuture<ij.b> $$0, iw $$1) {
+      return $$0.thenApply($$1x -> {
+         iu.b $$2 = iu.a(kd.as);
+         hy.a $$3 = new hy.a();
+         ahb.a.forEach($$1xx -> $$1xx.a($$3::a));
+         iw.e $$4 = $$1.a($$2, $$1x, $$3);
+         ij.b $$5 = $$4.a();
+         Optional<ij.c<cun>> $$6 = $$5.a(ke.at);
+         Optional<ij.c<dyj>> $$7 = $$5.a(ke.aC);
+         if ($$6.isPresent() || $$7.isPresent()) {
+            np.a($$7.orElseGet(() -> $$1x.b(ke.aC)), $$6.orElseGet(() -> $$1x.b(ke.at)));
+         }
 
-   private static void a(ij.b $$0) {
-      a($$0.b(ke.aC), $$0.b(ke.at));
-   }
-
-   public static void a(ii<dyd> $$0, ij<cuh> $$1) {
-      $$1.b().forEach($$1x -> {
-         ahd $$2 = $$1x.g().a();
-         List<il<dyd>> $$3 = ((cuh)$$1x.a()).d().b();
-         $$3.stream().flatMap(il::a).forEach($$3x -> $$3x.d().ifLeft($$2xx -> {
-               ih.c<dyd> $$3xx = $$0.b($$2xx);
-               if (!a($$3xx.a())) {
-                  ac.a("Placed feature " + $$2xx.a() + " in biome " + $$2 + " is missing BiomeFilter.biome()");
-               }
-            }).ifRight($$1xxx -> {
-               if (!a($$1xxx)) {
-                  ac.a("Placed inline feature in biome " + $$1x + " is missing BiomeFilter.biome()");
-               }
-            }));
+         return $$4;
       });
-   }
-
-   private static boolean a(dyd $$0) {
-      return $$0.c().contains(dxr.a());
-   }
-
-   public static ij.b a() {
-      iu.b $$0 = iu.a(kd.as);
-      ij.b $$1 = a.a($$0);
-      a($$1);
-      return $$1;
    }
 }

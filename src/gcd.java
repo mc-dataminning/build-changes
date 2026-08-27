@@ -1,45 +1,25 @@
-public class gcd extends gcq<byc, fjr<byc>> {
-   private final fsv a;
+public class gcd extends gcw<byf, fjq<byf>> {
+   private final ftb a;
 
-   public gcd(gaa<byc, fjr<byc>> $$0, fsv $$1) {
+   public gcd(gag<byf, fjq<byf>> $$0, ftb $$1) {
       super($$0);
       this.a = $$1;
    }
 
-   public void a(ept $$0, fsz $$1, int $$2, byc $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      boolean $$10 = $$3.fD();
-      boolean $$11 = $$3.o_();
+   public void a(epz $$0, ftf $$1, int $$2, byf $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      boolean $$10 = $$3.fm() == bme.b;
       $$0.a();
-      if ($$11) {
-         float $$12 = 0.75F;
-         $$0.b(0.75F, 0.75F, 0.75F);
-         $$0.a(0.0F, 0.5F, 0.209375F);
-      }
-
-      $$0.a(this.c().a.b / 16.0F, this.c().a.c / 16.0F, this.c().a.d / 16.0F);
-      float $$13 = $$3.E($$6);
-      $$0.a(a.f.rotation($$13));
-      $$0.a(a.d.rotationDegrees($$8));
-      $$0.a(a.b.rotationDegrees($$9));
-      if ($$3.o_()) {
-         if ($$10) {
-            $$0.a(0.4F, 0.26F, 0.15F);
-         } else {
-            $$0.a(0.06F, 0.26F, -0.5F);
-         }
-      } else if ($$10) {
-         $$0.a(0.46F, 0.26F, 0.22F);
+      float $$11 = 1.0F;
+      float $$12 = -1.0F;
+      float $$13 = aun.e($$3.dE()) / 60.0F;
+      if ($$3.dE() < 0.0F) {
+         $$0.a(0.0F, 1.0F - $$13 * 0.5F, -1.0F + $$13 * 0.5F);
       } else {
-         $$0.a(0.06F, 0.27F, -0.5F);
+         $$0.a(0.0F, 1.0F + $$13 * 0.8F, -1.0F + $$13 * 0.2F);
       }
 
-      $$0.a(a.b.rotationDegrees(90.0F));
-      if ($$10) {
-         $$0.a(a.f.rotationDegrees(90.0F));
-      }
-
-      cmr $$14 = $$3.c(blu.a);
-      this.a.a($$3, $$14, cmo.h, false, $$0, $$1, $$2);
+      cmx $$14 = $$10 ? $$3.eT() : $$3.eU();
+      this.a.a($$3, $$14, cmu.h, false, $$0, $$1, $$2);
       $$0.b();
    }
 }

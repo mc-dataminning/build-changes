@@ -1,44 +1,162 @@
-import java.util.Locale;
-import javax.annotation.Nullable;
+import java.util.Comparator;
+import java.util.Optional;
 
-public interface efm {
-   ic[] a = new ic[]{ic.e, ic.f, ic.a, ic.b, ic.c, ic.d};
+public class efm {
+   private static final int a = 3;
+   private static final int b = 128;
+   private static final int c = 16;
+   private static final int d = 5;
+   private static final int e = 4;
+   private static final int f = 3;
+   private static final int g = -1;
+   private static final int h = 4;
+   private static final int i = -1;
+   private static final int j = 3;
+   private static final int k = -1;
+   private static final int l = 2;
+   private static final int m = -1;
+   private final and n;
 
-   void a(ic var1, dja var2, hx var3, hx var4, int var5, int var6);
+   public efm(and $$0) {
+      this.n = $$0;
+   }
 
-   void a(hx var1, cwj var2, hx var3);
+   public Optional<l.a> a(hx $$0, boolean $$1, dkx $$2) {
+      bxl $$3 = this.n.y();
+      int $$4 = $$1 ? 16 : 128;
+      $$3.a(this.n, $$0, $$4);
+      Optional<bxm> $$5 = $$3.b($$0x -> $$0x.a(bxp.r), $$0, $$4, bxl.b.c)
+         .filter($$1x -> $$2.a($$1x.f()))
+         .sorted(Comparator.<bxm>comparingDouble($$1x -> $$1x.f().j($$0)).thenComparingInt($$0x -> $$0x.f().v()))
+         .filter($$0x -> this.n.a_($$0x.f()).b(djw.H))
+         .findFirst();
+      return $$5.map($$0x -> {
+         hx $$1x = $$0x.f();
+         this.n.l().a(ani.f, new csv($$1x), 3, $$1x);
+         djg $$2x = this.n.a_($$1x);
+         return l.a($$1x, $$2x.c(djw.H), 21, ic.a.b, 21, $$1xx -> this.n.a_($$1xx) == $$2x);
+      });
+   }
 
-   void a(dja var1, hx var2, cwj var3, hx var4, boolean var5);
+   public Optional<l.a> a(hx $$0, ic.a $$1) {
+      ic $$2 = ic.a(ic.b.a, $$1);
+      double $$3 = -1.0;
+      hx $$4 = null;
+      double $$5 = -1.0;
+      hx $$6 = null;
+      dkx $$7 = this.n.D_();
+      int $$8 = Math.min(this.n.al(), this.n.J_() + this.n.k()) - 1;
+      hx.a $$9 = $$0.j();
 
-   default void a(hx $$0, cwj $$1, @Nullable ic $$2) {
-      for (ic $$3 : a) {
-         if ($$3 != $$2) {
-            this.a($$0.a($$3), $$1, $$0);
+      for (hx.a $$10 : hx.a($$0, 16, ic.f, ic.d)) {
+         int $$11 = Math.min($$8, this.n.a(dop.a.e, $$10.u(), $$10.w()));
+         int $$12 = 1;
+         if ($$7.a($$10) && $$7.a($$10.c($$2, 1))) {
+            $$10.c($$2.g(), 1);
+
+            for (int $$13 = $$11; $$13 >= this.n.J_(); $$13--) {
+               $$10.q($$13);
+               if (this.a($$10)) {
+                  int $$14 = $$13;
+
+                  while ($$13 > this.n.J_() && this.a($$10.c(ic.a))) {
+                     $$13--;
+                  }
+
+                  if ($$13 + 4 <= $$8) {
+                     int $$15 = $$14 - $$13;
+                     if ($$15 <= 0 || $$15 >= 3) {
+                        $$10.q($$13);
+                        if (this.a($$10, $$9, $$2, 0)) {
+                           double $$16 = $$0.j($$10);
+                           if (this.a($$10, $$9, $$2, -1) && this.a($$10, $$9, $$2, 1) && ($$3 == -1.0 || $$3 > $$16)) {
+                              $$3 = $$16;
+                              $$4 = $$10.i();
+                           }
+
+                           if ($$3 == -1.0 && ($$5 == -1.0 || $$5 > $$16)) {
+                              $$5 = $$16;
+                              $$6 = $$10.i();
+                           }
+                        }
+                     }
+                  }
+               }
+            }
          }
       }
-   }
 
-   static void a(ctj $$0, ic $$1, dja $$2, hx $$3, hx $$4, int $$5, int $$6) {
-      dja $$7 = $$0.a_($$3);
-      dja $$8 = $$7.a($$1, $$2, $$0, $$3, $$4);
-      cwj.a($$7, $$8, $$0, $$3, $$5, $$6);
-   }
-
-   static void a(cti $$0, dja $$1, hx $$2, cwj $$3, hx $$4, boolean $$5) {
-      try {
-         $$1.a($$0, $$2, $$3, $$4, $$5);
-      } catch (Throwable var9) {
-         o $$7 = o.a(var9, "Exception while updating neighbours");
-         p $$8 = $$7.a("Block being updated");
-         $$8.a("Source block type", () -> {
-            try {
-               return String.format(Locale.ROOT, "ID #%s (%s // %s)", kd.e.b($$3), $$3.h(), $$3.getClass().getCanonicalName());
-            } catch (Throwable var2x) {
-               return "ID #" + kd.e.b($$3);
-            }
-         });
-         p.a($$8, $$0, $$2, $$1);
-         throw new y($$7);
+      if ($$3 == -1.0 && $$5 != -1.0) {
+         $$4 = $$6;
+         $$3 = $$5;
       }
+
+      if ($$3 == -1.0) {
+         int $$17 = Math.max(this.n.J_() - -1, 70);
+         int $$18 = $$8 - 9;
+         if ($$18 < $$17) {
+            return Optional.empty();
+         }
+
+         $$4 = new hx($$0.u(), aun.a($$0.v(), $$17, $$18), $$0.w()).i();
+         ic $$19 = $$2.h();
+         if (!$$7.a($$4)) {
+            return Optional.empty();
+         }
+
+         for (int $$20 = -1; $$20 < 2; $$20++) {
+            for (int $$21 = 0; $$21 < 2; $$21++) {
+               for (int $$22 = -1; $$22 < 3; $$22++) {
+                  djg $$23 = $$22 < 0 ? cwr.co.o() : cwr.a.o();
+                  $$9.a($$4, $$21 * $$2.j() + $$20 * $$19.j(), $$22, $$21 * $$2.l() + $$20 * $$19.l());
+                  this.n.b($$9, $$23);
+               }
+            }
+         }
+      }
+
+      for (int $$24 = -1; $$24 < 3; $$24++) {
+         for (int $$25 = -1; $$25 < 4; $$25++) {
+            if ($$24 == -1 || $$24 == 2 || $$25 == -1 || $$25 == 3) {
+               $$9.a($$4, $$24 * $$2.j(), $$25, $$24 * $$2.l());
+               this.n.a($$9, cwr.co.o(), 3);
+            }
+         }
+      }
+
+      djg $$26 = cwr.ed.o().a(dbs.b, $$1);
+
+      for (int $$27 = 0; $$27 < 2; $$27++) {
+         for (int $$28 = 0; $$28 < 3; $$28++) {
+            $$9.a($$4, $$27 * $$2.j(), $$28, $$27 * $$2.l());
+            this.n.a($$9, $$26, 18);
+         }
+      }
+
+      return Optional.of(new l.a($$4.i(), 2, 3));
+   }
+
+   private boolean a(hx.a $$0) {
+      djg $$1 = this.n.a_($$0);
+      return $$1.r() && $$1.u().c();
+   }
+
+   private boolean a(hx $$0, hx.a $$1, ic $$2, int $$3) {
+      ic $$4 = $$2.h();
+
+      for (int $$5 = -1; $$5 < 3; $$5++) {
+         for (int $$6 = -1; $$6 < 4; $$6++) {
+            $$1.a($$0, $$2.j() * $$5 + $$4.j() * $$3, $$6, $$2.l() * $$5 + $$4.l() * $$3);
+            if ($$6 < 0 && !this.n.a_($$1).e()) {
+               return false;
+            }
+
+            if ($$6 >= 0 && !this.a($$1)) {
+               return false;
+            }
+         }
+      }
+
+      return true;
    }
 }

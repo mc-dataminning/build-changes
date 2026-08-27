@@ -1,3 +1,6 @@
-public interface us extends um {
-   void e();
+public interface us extends uo {
+   @Override
+   default xg a() {
+      return xg.a;
+   }
 }

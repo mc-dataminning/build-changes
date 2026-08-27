@@ -1,55 +1,60 @@
-public interface dny extends aup {
-   float b = 5.9604645E-8F;
-   double c = 1.110223E-16F;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import org.apache.commons.lang3.tuple.Pair;
 
-   int c(int var1);
+public class dny {
+   public static final Codec<dny> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dnx.a.optionalFieldOf("event").forGetter($$0x -> $$0x.b.map(Pair::getLeft)),
+               Codec.LONG.fieldOf("tick").forGetter($$0x -> $$0x.b.<Long>map(Pair::getRight).orElse(-1L))
+            )
+            .apply($$0, dny::new)
+   );
+   private Optional<Pair<dnx, Long>> b;
 
-   @Override
-   default int f() {
-      return this.c(32);
+   public dny(Optional<dnx> $$0, long $$1) {
+      this.b = $$0.map($$1x -> Pair.of($$1x, $$1));
    }
 
-   @Override
-   default int a(int $$0) {
-      if ($$0 <= 0) {
-         throw new IllegalArgumentException("Bound must be positive");
-      } else if (($$0 & $$0 - 1) == 0) {
-         return (int)((long)$$0 * (long)this.c(31) >> 31);
-      } else {
-         int $$1;
-         int $$2;
-         do {
-            $$1 = this.c(31);
-            $$2 = $$1 % $$0;
-         } while ($$1 - $$2 + ($$0 - 1) < 0);
+   public dny() {
+      this.b = Optional.empty();
+   }
 
-         return $$2;
+   public void a(dnx $$0, long $$1) {
+      if (this.b($$0, $$1)) {
+         this.b = Optional.of(Pair.of($$0, $$1));
       }
    }
 
-   @Override
-   default long g() {
-      int $$0 = this.c(32);
-      int $$1 = this.c(32);
-      long $$2 = (long)$$0 << 32;
-      return $$2 + (long)$$1;
+   private boolean b(dnx $$0, long $$1) {
+      if (this.b.isEmpty()) {
+         return true;
+      } else {
+         Pair<dnx, Long> $$2 = this.b.get();
+         long $$3 = (Long)$$2.getRight();
+         if ($$1 != $$3) {
+            return false;
+         } else {
+            dnx $$4 = (dnx)$$2.getLeft();
+            if ($$0.b() < $$4.b()) {
+               return true;
+            } else {
+               return $$0.b() > $$4.b() ? false : dnz.a_($$0.a()) > dnz.a_($$4.a());
+            }
+         }
+      }
    }
 
-   @Override
-   default boolean h() {
-      return this.c(1) != 0;
+   public Optional<dnx> a(long $$0) {
+      if (this.b.isEmpty()) {
+         return Optional.empty();
+      } else {
+         return this.b.get().getRight() < $$0 ? Optional.of((dnx)this.b.get().getLeft()) : Optional.empty();
+      }
    }
 
-   @Override
-   default float i() {
-      return (float)this.c(24) * 5.9604645E-8F;
-   }
-
-   @Override
-   default double j() {
-      int $$0 = this.c(26);
-      int $$1 = this.c(27);
-      long $$2 = ((long)$$0 << 27) + (long)$$1;
-      return (double)$$2 * 1.110223E-16F;
+   public void a() {
+      this.b = Optional.empty();
    }
 }

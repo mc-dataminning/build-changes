@@ -1,24 +1,32 @@
-public class aec implements xd<adg> {
-   private final boolean a;
+public class aec implements xf<adj> {
+   private final int a;
+   private final int b;
 
-   public aec(boolean $$0) {
+   public aec(int $$0, int $$1) {
       this.a = $$0;
+      this.b = $$1;
    }
 
-   public void a(adg $$0) {
-      $$0.a(this);
-   }
-
-   public aec(ug $$0) {
-      this.a = $$0.readBoolean();
+   public aec(ui $$0) {
+      this.a = $$0.n();
+      this.b = $$0.n();
    }
 
    @Override
-   public void a(ug $$0) {
-      $$0.a(this.a);
+   public void a(ui $$0) {
+      $$0.c(this.a);
+      $$0.c(this.b);
    }
 
-   public boolean a() {
+   public void a(adj $$0) {
+      $$0.a(this);
+   }
+
+   public int a() {
       return this.a;
+   }
+
+   public int d() {
+      return this.b;
    }
 }

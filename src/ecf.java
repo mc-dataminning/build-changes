@@ -1,64 +1,65 @@
+import com.google.common.collect.Maps;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntIterator;
-import java.util.List;
-import java.util.stream.IntStream;
+import java.util.Map;
 
-public class ecf extends ecw {
-   public static final Codec<ecf> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ecy.a.fieldOf("delegate").forGetter($$0x -> $$0x.b), bja.e.fieldOf("limit").forGetter($$0x -> $$0x.c)).apply($$0, ecf::new)
-   );
-   private final ecw b;
-   private final bja c;
+public class ecf extends edc {
+   public static final Codec<ecf> a = Codec.unit(() -> ecf.b);
+   public static final ecf b = new ecf();
+   private final Map<cwp, cwp> c = ac.a(Maps.newHashMap(), $$0 -> {
+      $$0.put(cwr.m, cwr.pr);
+      $$0.put(cwr.cn, cwr.pr);
+      $$0.put(cwr.b, cwr.pv);
+      $$0.put(cwr.eH, cwr.pw);
+      $$0.put(cwr.eI, cwr.pw);
+      $$0.put(cwr.cQ, cwr.ps);
+      $$0.put(cwr.ni, cwr.ps);
+      $$0.put(cwr.nk, cwr.pD);
+      $$0.put(cwr.fj, cwr.pA);
+      $$0.put(cwr.ng, cwr.pA);
+      $$0.put(cwr.jI, cwr.pu);
+      $$0.put(cwr.nw, cwr.pu);
+      $$0.put(cwr.jE, cwr.pE);
+      $$0.put(cwr.jD, cwr.pE);
+      $$0.put(cwr.jK, cwr.pz);
+      $$0.put(cwr.nu, cwr.pz);
+      $$0.put(cwr.nK, cwr.pB);
+      $$0.put(cwr.nI, cwr.pB);
+      $$0.put(cwr.fP, cwr.pt);
+      $$0.put(cwr.fQ, cwr.pt);
+      $$0.put(cwr.eK, cwr.py);
+      $$0.put(cwr.eJ, cwr.px);
+      $$0.put(cwr.eW, cwr.eX);
+   });
 
-   public ecf(ecw $$0, bja $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   private ecf() {
    }
 
    @Override
-   protected ecy<?> a() {
-      return ecy.o;
-   }
-
-   @Override
-   public final List<ecz.c> a(ctx $$0, hx $$1, hx $$2, List<ecz.c> $$3, List<ecz.c> $$4, ecv $$5) {
-      if (this.c.b() != 0 && !$$4.isEmpty()) {
-         if ($$3.size() != $$4.size()) {
-            ac.a(
-               "Original block info list not in sync with processed list, skipping processing. Original size: "
-                  + $$3.size()
-                  + ", Processed size: "
-                  + $$4.size()
-            );
-            return $$4;
-         } else {
-            aup $$6 = aup.a($$0.E().C()).e().a($$1);
-            int $$7 = Math.min(this.c.a($$6), $$4.size());
-            if ($$7 < 1) {
-               return $$4;
-            } else {
-               IntArrayList $$8 = ac.a(IntStream.range(0, $$4.size()), $$6);
-               IntIterator $$9 = $$8.intIterator();
-               int $$10 = 0;
-
-               while ($$9.hasNext() && $$10 < $$7) {
-                  int $$11 = $$9.nextInt();
-                  ecz.c $$12 = $$3.get($$11);
-                  ecz.c $$13 = $$4.get($$11);
-                  ecz.c $$14 = this.b.a($$0, $$1, $$2, $$12, $$13, $$5);
-                  if ($$14 != null && !$$13.equals($$14)) {
-                     $$10++;
-                     $$4.set($$11, $$14);
-                  }
-               }
-
-               return $$4;
-            }
-         }
-      } else {
+   public edf.c a(ctr $$0, hx $$1, hx $$2, edf.c $$3, edf.c $$4, edb $$5) {
+      cwp $$6 = this.c.get($$4.b().b());
+      if ($$6 == null) {
          return $$4;
+      } else {
+         djg $$7 = $$4.b();
+         djg $$8 = $$6.o();
+         if ($$7.b(dei.b)) {
+            $$8 = $$8.a(dei.b, $$7.c(dei.b));
+         }
+
+         if ($$7.b(dei.c)) {
+            $$8 = $$8.a(dei.c, $$7.c(dei.c));
+         }
+
+         if ($$7.b(ddr.b)) {
+            $$8 = $$8.a(ddr.b, $$7.c(ddr.b));
+         }
+
+         return new edf.c($$4.a(), $$8, $$4.c());
       }
+   }
+
+   @Override
+   protected ede<?> a() {
+      return ede.l;
    }
 }

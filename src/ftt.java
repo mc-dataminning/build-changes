@@ -1,84 +1,494 @@
-public class ftt implements aqd {
-   private final fts a;
-   private final ftv b;
-   private final fsm c;
-   private final ftu d;
-   private final aup e = aup.a();
-   private final ewd f;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import com.google.common.collect.UnmodifiableIterator;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.Reader;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import javax.annotation.Nullable;
+import org.apache.commons.io.IOUtils;
+import org.slf4j.Logger;
 
-   public ftt(fts $$0, fsm $$1, ewd $$2) {
-      this.a = $$0;
-      this.c = $$1;
-      this.f = $$2;
-      this.b = new ftv(this.f);
-      this.d = new ftu();
-   }
+public class ftt implements epp, AutoCloseable {
+   public static final String a = "shaders";
+   private static final String r = "shaders/core/";
+   private static final String s = "shaders/include/";
+   static final Logger t = LogUtils.getLogger();
+   private static final epi u = new epi();
+   private static final boolean v = true;
+   private static ftt w;
+   private static int x = -1;
+   private final Map<String, Object> y = Maps.newHashMap();
+   private final List<String> z = Lists.newArrayList();
+   private final List<Integer> A = Lists.newArrayList();
+   private final List<epq> B = Lists.newArrayList();
+   private final List<Integer> C = Lists.newArrayList();
+   private final Map<String, epq> D = Maps.newHashMap();
+   private final int E;
+   private final String F;
+   private boolean G;
+   private final epj H;
+   private final List<Integer> I;
+   private final List<String> J;
+   private final epn K;
+   private final epn L;
+   private final eqe M;
+   @Nullable
+   public final epq b;
+   @Nullable
+   public final epq c;
+   @Nullable
+   public final epq d;
+   @Nullable
+   public final epq e;
+   @Nullable
+   public final epq f;
+   @Nullable
+   public final epq g;
+   @Nullable
+   public final epq h;
+   @Nullable
+   public final epq i;
+   @Nullable
+   public final epq j;
+   @Nullable
+   public final epq k;
+   @Nullable
+   public final epq l;
+   @Nullable
+   public final epq m;
+   @Nullable
+   public final epq n;
+   @Nullable
+   public final epq o;
+   @Nullable
+   public final epq p;
+   @Nullable
+   public final epq q;
 
-   public fts a() {
-      return this.a;
-   }
+   public ftt(aqk $$0, String $$1, eqe $$2) throws IOException {
+      this.F = $$1;
+      this.M = $$2;
+      ahg $$3 = new ahg("shaders/core/" + $$1 + ".json");
 
-   public void a(dja $$0, hx $$1, csl $$2, ept $$3, epx $$4) {
-      if ($$0.l() == dco.c) {
-         ggg $$5 = this.a.b($$0);
-         long $$6 = $$0.a($$1);
-         this.b.a($$2, $$5, $$0, $$1, $$3, $$4, true, this.e, $$6, gdw.d);
-      }
-   }
+      try (Reader $$4 = $$0.openAsReader($$3)) {
+         JsonObject $$5 = aud.a($$4);
+         String $$6 = aud.i($$5, "vertex");
+         String $$7 = aud.i($$5, "fragment");
+         JsonArray $$8 = aud.a($$5, "samplers", null);
+         if ($$8 != null) {
+            int $$9 = 0;
 
-   public void a(dja $$0, hx $$1, csl $$2, ept $$3, epx $$4, boolean $$5, aup $$6) {
-      try {
-         dco $$7 = $$0.l();
-         if ($$7 == dco.c) {
-            this.b.a($$2, this.a($$0), $$0, $$1, $$3, $$4, $$5, $$6, $$0.a($$1), gdw.d);
+            for (JsonElement $$10 : $$8) {
+               try {
+                  this.a($$10);
+               } catch (Exception var20) {
+                  ahj $$12 = ahj.a(var20);
+                  $$12.a("samplers[" + $$9 + "]");
+                  throw $$12;
+               }
+
+               $$9++;
+            }
          }
-      } catch (Throwable var11) {
-         o $$9 = o.a(var11, "Tesselating block in world");
-         p $$10 = $$9.a("Block being tesselated");
-         p.a($$10, $$2, $$1, $$0);
-         throw new y($$9);
+
+         JsonArray $$13 = aud.a($$5, "attributes", null);
+         if ($$13 != null) {
+            int $$14 = 0;
+            this.I = Lists.newArrayListWithCapacity($$13.size());
+            this.J = Lists.newArrayListWithCapacity($$13.size());
+
+            for (JsonElement $$15 : $$13) {
+               try {
+                  this.J.add(aud.a($$15, "attribute"));
+               } catch (Exception var19) {
+                  ahj $$17 = ahj.a(var19);
+                  $$17.a("attributes[" + $$14 + "]");
+                  throw $$17;
+               }
+
+               $$14++;
+            }
+         } else {
+            this.I = null;
+            this.J = null;
+         }
+
+         JsonArray $$18 = aud.a($$5, "uniforms", null);
+         if ($$18 != null) {
+            int $$19 = 0;
+
+            for (JsonElement $$20 : $$18) {
+               try {
+                  this.b($$20);
+               } catch (Exception var18) {
+                  ahj $$22 = ahj.a(var18);
+                  $$22.a("uniforms[" + $$19 + "]");
+                  throw $$22;
+               }
+
+               $$19++;
+            }
+         }
+
+         this.H = a(aud.a($$5, "blend", null));
+         this.K = a($$0, epn.a.a, $$6);
+         this.L = a($$0, epn.a.b, $$7);
+         this.E = epo.a();
+         if (this.J != null) {
+            int $$23 = 0;
+
+            for (UnmodifiableIterator var31 = $$2.d().iterator(); var31.hasNext(); $$23++) {
+               String $$24 = (String)var31.next();
+               epq.a(this.E, $$23, $$24);
+               this.I.add($$23);
+            }
+         }
+
+         epo.b(this);
+         this.j();
+      } catch (Exception var22) {
+         ahj $$27 = ahj.a(var22);
+         $$27.b($$3.a());
+         throw $$27;
       }
+
+      this.b();
+      this.b = this.a("ModelViewMat");
+      this.c = this.a("ProjMat");
+      this.d = this.a("IViewRotMat");
+      this.e = this.a("TextureMat");
+      this.f = this.a("ScreenSize");
+      this.g = this.a("ColorModulator");
+      this.h = this.a("Light0_Direction");
+      this.i = this.a("Light1_Direction");
+      this.j = this.a("GlintAlpha");
+      this.k = this.a("FogStart");
+      this.l = this.a("FogEnd");
+      this.m = this.a("FogColor");
+      this.n = this.a("FogShape");
+      this.o = this.a("LineWidth");
+      this.p = this.a("GameTime");
+      this.q = this.a("ChunkOffset");
    }
 
-   public void a(hx $$0, csl $$1, epx $$2, dja $$3, eek $$4) {
-      try {
-         this.d.a($$1, $$0, $$2, $$3, $$4);
-      } catch (Throwable var9) {
-         o $$6 = o.a(var9, "Tesselating liquid in world");
-         p $$7 = $$6.a("Block being tesselated");
-         p.a($$7, $$1, $$0, null);
-         throw new y($$6);
+   private static epn a(final aqk $$0, epn.a $$1, String $$2) throws IOException {
+      epn $$3 = $$1.c().get($$2);
+      epn $$8;
+      if ($$3 == null) {
+         String $$4 = "shaders/core/" + $$2 + $$1.b();
+         aqf $$5 = $$0.getResourceOrThrow(new ahg($$4));
+
+         try (InputStream $$6 = $$5.d()) {
+            final String $$7 = v.a($$4);
+            $$8 = epn.a($$1, $$2, $$6, $$5.b(), new epg() {
+               private final Set<String> c = Sets.newHashSet();
+
+               @Override
+               public String a(boolean $$0x, String $$1) {
+                  $$1 = v.b(($$0 ? $$7 : "shaders/include/") + $$1);
+                  if (!this.c.add($$1)) {
+                     return null;
+                  } else {
+                     ahg $$2 = new ahg($$1);
+
+                     try {
+                        String var5;
+                        try (Reader $$3 = $$0.openAsReader($$2)) {
+                           var5 = IOUtils.toString($$3);
+                        }
+
+                        return var5;
+                     } catch (IOException var9) {
+                        ftt.t.error("Could not open GLSL import {}: {}", $$1, var9.getMessage());
+                        return "#error " + var9.getMessage();
+                     }
+                  }
+               }
+            });
+         }
+      } else {
+         $$8 = $$3;
       }
+
+      return $$8;
    }
 
-   public ftv b() {
-      return this.b;
-   }
+   public static epj a(JsonObject $$0) {
+      if ($$0 == null) {
+         return new epj();
+      } else {
+         int $$1 = 32774;
+         int $$2 = 1;
+         int $$3 = 0;
+         int $$4 = 1;
+         int $$5 = 0;
+         boolean $$6 = true;
+         boolean $$7 = false;
+         if (aud.a($$0, "func")) {
+            $$1 = epj.a($$0.get("func").getAsString());
+            if ($$1 != 32774) {
+               $$6 = false;
+            }
+         }
 
-   public ggg a(dja $$0) {
-      return this.a.b($$0);
-   }
+         if (aud.a($$0, "srcrgb")) {
+            $$2 = epj.b($$0.get("srcrgb").getAsString());
+            if ($$2 != 1) {
+               $$6 = false;
+            }
+         }
 
-   public void a(dja $$0, ept $$1, fsz $$2, int $$3, int $$4) {
-      dco $$5 = $$0.l();
-      if ($$5 != dco.a) {
-         switch ($$5) {
-            case c:
-               ggg $$6 = this.a($$0);
-               int $$7 = this.f.a($$0, null, null, 0);
-               float $$8 = (float)($$7 >> 16 & 0xFF) / 255.0F;
-               float $$9 = (float)($$7 >> 8 & 0xFF) / 255.0F;
-               float $$10 = (float)($$7 & 0xFF) / 255.0F;
-               this.b.a($$1.c(), $$2.getBuffer(fsu.a($$0, false)), $$0, $$6, $$8, $$9, $$10, $$3, $$4);
-               break;
-            case b:
-               this.c.a(new cmr($$0.b()), cmo.a, $$1, $$2, $$3, $$4);
+         if (aud.a($$0, "dstrgb")) {
+            $$3 = epj.b($$0.get("dstrgb").getAsString());
+            if ($$3 != 0) {
+               $$6 = false;
+            }
+         }
+
+         if (aud.a($$0, "srcalpha")) {
+            $$4 = epj.b($$0.get("srcalpha").getAsString());
+            if ($$4 != 1) {
+               $$6 = false;
+            }
+
+            $$7 = true;
+         }
+
+         if (aud.a($$0, "dstalpha")) {
+            $$5 = epj.b($$0.get("dstalpha").getAsString());
+            if ($$5 != 0) {
+               $$6 = false;
+            }
+
+            $$7 = true;
+         }
+
+         if ($$6) {
+            return new epj();
+         } else {
+            return $$7 ? new epj($$2, $$3, $$4, $$5, $$1) : new epj($$2, $$3, $$1);
          }
       }
    }
 
    @Override
-   public void a(aqc $$0) {
-      this.d.a();
+   public void close() {
+      for (epq $$0 : this.B) {
+         $$0.close();
+      }
+
+      epo.a(this);
+   }
+
+   public void f() {
+      RenderSystem.assertOnRenderThread();
+      epo.a(0);
+      x = -1;
+      w = null;
+      int $$0 = GlStateManager._getActiveTexture();
+
+      for (int $$1 = 0; $$1 < this.A.size(); $$1++) {
+         if (this.y.get(this.z.get($$1)) != null) {
+            GlStateManager._activeTexture(33984 + $$1);
+            GlStateManager._bindTexture(0);
+         }
+      }
+
+      GlStateManager._activeTexture($$0);
+   }
+
+   public void g() {
+      RenderSystem.assertOnRenderThread();
+      this.G = false;
+      w = this;
+      this.H.a();
+      if (this.E != x) {
+         epo.a(this.E);
+         x = this.E;
+      }
+
+      int $$0 = GlStateManager._getActiveTexture();
+
+      for (int $$1 = 0; $$1 < this.A.size(); $$1++) {
+         String $$2 = this.z.get($$1);
+         if (this.y.get($$2) != null) {
+            int $$3 = epq.a(this.E, $$2);
+            epq.b($$3, $$1);
+            RenderSystem.activeTexture(33984 + $$1);
+            Object $$4 = this.y.get($$2);
+            int $$5 = -1;
+            if ($$4 instanceof eol) {
+               $$5 = ((eol)$$4).f();
+            } else if ($$4 instanceof gdw) {
+               $$5 = ((gdw)$$4).a();
+            } else if ($$4 instanceof Integer) {
+               $$5 = (Integer)$$4;
+            }
+
+            if ($$5 != -1) {
+               RenderSystem.bindTexture($$5);
+            }
+         }
+      }
+
+      GlStateManager._activeTexture($$0);
+
+      for (epq $$6 : this.B) {
+         $$6.b();
+      }
+   }
+
+   @Override
+   public void b() {
+      this.G = true;
+   }
+
+   @Nullable
+   public epq a(String $$0) {
+      RenderSystem.assertOnRenderThread();
+      return this.D.get($$0);
+   }
+
+   public epi b(String $$0) {
+      RenderSystem.assertOnGameThread();
+      epq $$1 = this.a($$0);
+      return (epi)($$1 == null ? u : $$1);
+   }
+
+   private void j() {
+      RenderSystem.assertOnRenderThread();
+      IntList $$0 = new IntArrayList();
+
+      for (int $$1 = 0; $$1 < this.z.size(); $$1++) {
+         String $$2 = this.z.get($$1);
+         int $$3 = epq.a(this.E, $$2);
+         if ($$3 == -1) {
+            t.warn("Shader {} could not find sampler named {} in the specified shader program.", this.F, $$2);
+            this.y.remove($$2);
+            $$0.add($$1);
+         } else {
+            this.A.add($$3);
+         }
+      }
+
+      for (int $$4 = $$0.size() - 1; $$4 >= 0; $$4--) {
+         int $$5 = $$0.getInt($$4);
+         this.z.remove($$5);
+      }
+
+      for (epq $$6 : this.B) {
+         String $$7 = $$6.a();
+         int $$8 = epq.a(this.E, $$7);
+         if ($$8 == -1) {
+            t.warn("Shader {} could not find uniform named {} in the specified shader program.", this.F, $$7);
+         } else {
+            this.C.add($$8);
+            $$6.b($$8);
+            this.D.put($$7, $$6);
+         }
+      }
+   }
+
+   private void a(JsonElement $$0) {
+      JsonObject $$1 = aud.m($$0, "sampler");
+      String $$2 = aud.i($$1, "name");
+      if (!aud.a($$1, "file")) {
+         this.y.put($$2, null);
+         this.z.add($$2);
+      } else {
+         this.z.add($$2);
+      }
+   }
+
+   public void a(String $$0, Object $$1) {
+      this.y.put($$0, $$1);
+      this.b();
+   }
+
+   private void b(JsonElement $$0) throws ahj {
+      JsonObject $$1 = aud.m($$0, "uniform");
+      String $$2 = aud.i($$1, "name");
+      int $$3 = epq.a(aud.i($$1, "type"));
+      int $$4 = aud.o($$1, "count");
+      float[] $$5 = new float[Math.max($$4, 16)];
+      JsonArray $$6 = aud.v($$1, "values");
+      if ($$6.size() != $$4 && $$6.size() > 1) {
+         throw new ahj("Invalid amount of values specified (expected " + $$4 + ", found " + $$6.size() + ")");
+      } else {
+         int $$7 = 0;
+
+         for (JsonElement $$8 : $$6) {
+            try {
+               $$5[$$7] = aud.e($$8, "value");
+            } catch (Exception var13) {
+               ahj $$10 = ahj.a(var13);
+               $$10.a("values[" + $$7 + "]");
+               throw $$10;
+            }
+
+            $$7++;
+         }
+
+         if ($$4 > 1 && $$6.size() == 1) {
+            while ($$7 < $$4) {
+               $$5[$$7] = $$5[0];
+               $$7++;
+            }
+         }
+
+         int $$11 = $$4 > 1 && $$4 <= 4 && $$3 < 8 ? $$4 - 1 : 0;
+         epq $$12 = new epq($$2, $$3 + $$11, $$4, this);
+         if ($$3 <= 3) {
+            $$12.a((int)$$5[0], (int)$$5[1], (int)$$5[2], (int)$$5[3]);
+         } else if ($$3 <= 7) {
+            $$12.b($$5[0], $$5[1], $$5[2], $$5[3]);
+         } else {
+            $$12.a(Arrays.copyOfRange($$5, 0, $$4));
+         }
+
+         this.B.add($$12);
+      }
+   }
+
+   @Override
+   public epn c() {
+      return this.K;
+   }
+
+   @Override
+   public epn d() {
+      return this.L;
+   }
+
+   @Override
+   public void e() {
+      this.L.a(this);
+      this.K.a(this);
+   }
+
+   public eqe h() {
+      return this.M;
+   }
+
+   public String i() {
+      return this.F;
+   }
+
+   @Override
+   public int a() {
+      return this.E;
    }
 }

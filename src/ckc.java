@@ -1,17 +1,17 @@
-public interface ckc {
-   int a(ckb.a var1);
+public class ckc implements ckd {
+   private final iq<cmx> a;
+   private final int b;
 
-   int b(ckb.a var1);
+   public ckc(iq<cmx> $$0, int $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
 
-   int a();
+   public iq<cmx> a() {
+      return this.a;
+   }
 
-   arl b();
-
-   cps d();
-
-   String e();
-
-   float f();
-
-   float g();
+   public int b() {
+      return this.b;
+   }
 }

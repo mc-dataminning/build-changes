@@ -1,24 +1,13 @@
-public class bue extends btb {
-   private final bmo a;
+import javax.annotation.Nullable;
 
-   public bue(bmo $$0) {
-      this.a = $$0;
+public class bue extends bud {
+   public bue(bmt $$0, double $$1, int $$2) {
+      super($$0, $$1, $$2);
    }
 
+   @Nullable
    @Override
-   public boolean a() {
-      return this.a.dM().P() && this.a.c(blu.f).b() && bwy.a(this.a);
-   }
-
-   @Override
-   public void c() {
-      ((bvo)this.a.N()).d(true);
-   }
-
-   @Override
-   public void d() {
-      if (bwy.a(this.a)) {
-         ((bvo)this.a.N()).d(false);
-      }
+   protected els h() {
+      return bod.a(this.b, 10, 7);
    }
 }

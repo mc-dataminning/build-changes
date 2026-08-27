@@ -1,19 +1,41 @@
-public interface csl extends cso {
-   float a(ic var1, boolean var2);
+import java.util.OptionalInt;
+import javax.annotation.Nullable;
 
-   edz z_();
+public interface csl {
+   void f(@Nullable cfh var1);
 
-   int a(hx var1, cst var2);
+   @Nullable
+   cfh ge();
 
-   default int a(ctr $$0, hx $$1) {
-      return this.z_().a($$0).b($$1);
+   csn gg();
+
+   void a(csn var1);
+
+   void a(csm var1);
+
+   void l(cmx var1);
+
+   int w();
+
+   void t(int var1);
+
+   boolean gh();
+
+   arq gi();
+
+   default boolean gq() {
+      return false;
    }
 
-   default int b(hx $$0, int $$1) {
-      return this.z_().a($$0, $$1);
+   default void a(cfh $$0, vf $$1, int $$2) {
+      OptionalInt $$3 = $$0.a(new bkj(($$0x, $$1x, $$2x) -> new cjj($$0x, $$1x, this), $$1));
+      if ($$3.isPresent()) {
+         csn $$4 = this.gg();
+         if (!$$4.isEmpty()) {
+            $$0.a($$3.getAsInt(), $$4, $$2, this.w(), this.gh(), this.gq());
+         }
+      }
    }
 
-   default boolean h(hx $$0) {
-      return this.a(ctr.a, $$0) >= this.O();
-   }
+   boolean gm();
 }

@@ -1,37 +1,14 @@
-import com.google.common.base.MoreObjects;
 import java.time.Duration;
-import java.time.Instant;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
-import java.util.stream.Collectors;
 import jdk.jfr.consumer.RecordedEvent;
-import jdk.jfr.consumer.RecordedThread;
 
-public record bhk(Instant a, String b, long c) {
-   private static final String d = "unknown";
-
+public record bhk(Duration a, csv b, amt c, dlh d, String e) implements bhr {
    public static bhk a(RecordedEvent $$0) {
-      RecordedThread $$1 = $$0.getThread("thread");
-      String $$2 = $$1 == null ? "unknown" : (String)MoreObjects.firstNonNull($$1.getJavaName(), "unknown");
-      return new bhk($$0.getStartTime(), $$2, $$0.getLong("allocated"));
-   }
-
-   public static bhk.a a(List<bhk> $$0) {
-      Map<String, Double> $$1 = new TreeMap<>();
-      Map<String, List<bhk>> $$2 = $$0.stream().collect(Collectors.groupingBy($$0x -> $$0x.b));
-      $$2.forEach(($$1x, $$2x) -> {
-         if ($$2x.size() >= 2) {
-            bhk $$3 = (bhk)$$2x.get(0);
-            bhk $$4 = (bhk)$$2x.get($$2x.size() - 1);
-            long $$5 = Duration.between($$3.a, $$4.a).getSeconds();
-            long $$6 = $$4.c - $$3.c;
-            $$1.put($$1x, (double)$$6 / (double)$$5);
-         }
-      });
-      return new bhk.a($$1);
-   }
-
-   public static record a(Map<String, Double> a) {
+      return new bhk(
+         $$0.getDuration(),
+         new csv($$0.getInt("chunkPosX"), $$0.getInt("chunkPosX")),
+         new amt($$0.getInt("worldPosX"), $$0.getInt("worldPosZ")),
+         dlh.a($$0.getString("status")),
+         $$0.getString("level")
+      );
    }
 }

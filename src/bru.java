@@ -1,20 +1,31 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
 
-public class bru {
-   public static bnx<bmf> a() {
-      return brj.a(
-         (Function<brj.b<bmf>, ? extends App<brj.c<bmf>, brm<bmf>>>)($$0 -> $$0.group($$0.a(bvh.n), $$0.a(bvh.ay), $$0.a(bvh.ax), $$0.c(bvh.o))
-               .apply($$0, ($$1, $$2, $$3, $$4) -> ($$4x, $$5, $$6) -> {
-                     Optional<hx> $$7 = $$0.<bmf>a($$3).map(blp::dm).or(() -> $$0.a($$2));
-                     if ($$7.isEmpty()) {
-                        return false;
-                     } else {
-                        $$1.a(new bnz($$7.get()));
-                        return true;
-                     }
-                  }))
-      );
+public class bru<E extends cel> extends bob<E> {
+   public bru(int $$0) {
+      super(ImmutableMap.of(bvm.o, bvn.b, bvm.m, bvn.b), $$0);
+   }
+
+   protected boolean a(and $$0, E $$1, long $$2) {
+      return $$1.dI() == null;
+   }
+
+   protected boolean a(and $$0, E $$1) {
+      return $$1.aC() || $$1.aZ() || $$1.bn();
+   }
+
+   protected void b(and $$0, E $$1, long $$2) {
+      if ($$1.aC()) {
+         $$1.b(bmw.o);
+         $$1.a(arr.AA, 5.0F, 1.0F);
+      } else {
+         $$1.a(arr.Av, 5.0F, 1.0F);
+         this.c($$0, $$1, $$2);
+      }
+   }
+
+   protected void c(and $$0, E $$1, long $$2) {
+      if ($$1.dI() == null) {
+         $$1.a(blu.c.b);
+      }
    }
 }

@@ -1,2 +1,8 @@
-public record egc(egl a, dpe.b b) {
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface egc {
 }

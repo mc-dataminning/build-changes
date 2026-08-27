@@ -1,22 +1,34 @@
-public class gbo extends gcq<cdf, fiy<cdf>> {
-   private final ahd a;
-   private final fiy<cdf> b;
+public class gbo extends fzr<bza, fmm<bza>> {
+   private static final ahg a = new ahg("textures/entity/wolf/wolf.png");
+   private static final ahg i = new ahg("textures/entity/wolf/wolf_tame.png");
+   private static final ahg j = new ahg("textures/entity/wolf/wolf_angry.png");
 
-   public gbo(gaa<cdf, fiy<cdf>> $$0, fml $$1, ahd $$2) {
-      super($$0);
-      this.b = new fiy<>($$1.a(fmo.p));
-      this.a = $$2;
+   public gbo(fyl.a $$0) {
+      super($$0, new fmm<>($$0.a(fmu.bZ)), 0.5F);
+      this.a(new gdl(this));
    }
 
-   public void a(ept $$0, fsz $$1, int $$2, cdf $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      this.b.a($$3, $$4, $$5, $$6);
-      this.c().a(this.b);
-      epx $$10 = $$1.getBuffer(fth.q(this.a));
-      this.b.a($$3, $$4, $$5, $$7, $$8, $$9);
-      this.b.a().a($$0, $$10, $$2, gdw.d, 1.0F, 1.0F, 1.0F, 1.0F);
+   protected float a(bza $$0, float $$1) {
+      return $$0.gm();
    }
 
-   protected ahd a(cdf $$0) {
-      return this.a;
+   public void a(bza $$0, float $$1, float $$2, epz $$3, ftf $$4, int $$5) {
+      if ($$0.gl()) {
+         float $$6 = $$0.E($$2);
+         this.f.a($$6, $$6, $$6);
+      }
+
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      if ($$0.gl()) {
+         this.f.a(1.0F, 1.0F, 1.0F);
+      }
+   }
+
+   public ahg a(bza $$0) {
+      if ($$0.u()) {
+         return i;
+      } else {
+         return $$0.aa_() ? j : a;
+      }
    }
 }

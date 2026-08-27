@@ -1,42 +1,42 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Lifecycle;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
-import java.util.Optional;
+import java.util.stream.Stream;
 
-public class dyo {
-   public static final Codec<dyo> a = atq.a(
-      RecordCodecBuilder.create($$0 -> $$0.group(Codec.unboundedMap(ahc.a(ke.aN), dmk.a).fieldOf("dimensions").forGetter($$0x -> $$0x.c)).apply($$0, dyo::new)),
-      dyo::a
+public class dyo extends dym {
+   public static final Codec<dyo> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(bjf.b(-16, 16).fieldOf("xz_spread").forGetter($$0x -> $$0x.c), bjf.b(-16, 16).fieldOf("y_spread").forGetter($$0x -> $$0x.d))
+            .apply($$0, dyo::new)
    );
-   public static final Codec<ih<dyo>> b = agz.a(ke.aK, a);
-   private final Map<ahc<dmk>, dmk> c;
+   private final bjf c;
+   private final bjf d;
 
-   public dyo(Map<ahc<dmk>, dmk> $$0) {
+   public static dyo a(bjf $$0, bjf $$1) {
+      return new dyo($$0, $$1);
+   }
+
+   public static dyo a(bjf $$0) {
+      return new dyo(bjc.a(0), $$0);
+   }
+
+   public static dyo b(bjf $$0) {
+      return new dyo($$0, bjc.a(0));
+   }
+
+   private dyo(bjf $$0, bjf $$1) {
       this.c = $$0;
+      this.d = $$1;
    }
 
-   private it<dmk> c() {
-      jc<dmk> $$0 = new ip<>(ke.aN, Lifecycle.experimental());
-      dpe.a(this.c.keySet().stream()).forEach($$1 -> {
-         dmk $$2 = this.c.get($$1);
-         if ($$2 != null) {
-            $$0.a((ahc<dmk>)$$1, $$2, Lifecycle.stable());
-         }
-      });
-      return $$0.l();
+   @Override
+   public Stream<hx> a_(dyk $$0, auu $$1, hx $$2) {
+      int $$3 = $$2.u() + this.c.a($$1);
+      int $$4 = $$2.v() + this.d.a($$1);
+      int $$5 = $$2.w() + this.c.a($$1);
+      return Stream.of(new hx($$3, $$4, $$5));
    }
 
-   public dpe a() {
-      return new dpe(this.c());
-   }
-
-   public Optional<dmk> b() {
-      return Optional.ofNullable(this.c.get(dmk.b));
-   }
-
-   private static DataResult<dyo> a(dyo $$0) {
-      return $$0.b().isEmpty() ? DataResult.error(() -> "Missing overworld dimension") : DataResult.success($$0, Lifecycle.stable());
+   @Override
+   public dyn<?> b() {
+      return dyn.n;
    }
 }

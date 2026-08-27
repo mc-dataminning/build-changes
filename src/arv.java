@@ -1,39 +1,153 @@
-import java.util.IdentityHashMap;
-import java.util.Iterator;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.mojang.datafixers.util.Pair;
 import java.util.Map;
 
-public class arv<T> implements Iterable<art<T>> {
-   private final it<T> a;
-   private final Map<T, art<T>> b = new IdentityHashMap<>();
-   private final vd c;
+public final class arv {
+   private static final Map<cjo, Pair<String, String>> a = ImmutableMap.of(
+      cjo.a,
+      Pair.of("isGuiOpen", "isFilteringCraftable"),
+      cjo.b,
+      Pair.of("isFurnaceGuiOpen", "isFurnaceFilteringCraftable"),
+      cjo.c,
+      Pair.of("isBlastingFurnaceGuiOpen", "isBlastingFurnaceFilteringCraftable"),
+      cjo.d,
+      Pair.of("isSmokerGuiOpen", "isSmokerFilteringCraftable")
+   );
+   private final Map<cjo, arv.a> b;
 
-   public arv(it<T> $$0, vd $$1) {
-      this.a = $$0;
-      this.c = $$1;
+   private arv(Map<cjo, arv.a> $$0) {
+      this.b = $$0;
    }
 
-   public boolean a(T $$0) {
-      return this.b.containsKey($$0);
+   public arv() {
+      this(ac.a(Maps.newEnumMap(cjo.class), $$0 -> {
+         for (cjo $$1 : cjo.values()) {
+            $$0.put($$1, new arv.a(false, false));
+         }
+      }));
    }
 
-   public art<T> a(T $$0, aru $$1) {
-      return this.b.computeIfAbsent($$0, $$1x -> new art<>(this, (T)$$1x, $$1));
+   public boolean a(cjo $$0) {
+      return this.b.get($$0).a;
    }
 
-   public it<T> a() {
-      return this.a;
+   public void a(cjo $$0, boolean $$1) {
+      this.b.get($$0).a = $$1;
+   }
+
+   public boolean b(cjo $$0) {
+      return this.b.get($$0).b;
+   }
+
+   public void b(cjo $$0, boolean $$1) {
+      this.b.get($$0).b = $$1;
+   }
+
+   public static arv a(ui $$0) {
+      Map<cjo, arv.a> $$1 = Maps.newEnumMap(cjo.class);
+
+      for (cjo $$2 : cjo.values()) {
+         boolean $$3 = $$0.readBoolean();
+         boolean $$4 = $$0.readBoolean();
+         $$1.put($$2, new arv.a($$3, $$4));
+      }
+
+      return new arv($$1);
+   }
+
+   public void b(ui $$0) {
+      for (cjo $$1 : cjo.values()) {
+         arv.a $$2 = this.b.get($$1);
+         if ($$2 == null) {
+            $$0.a(false);
+            $$0.a(false);
+         } else {
+            $$0.a($$2.a);
+            $$0.a($$2.b);
+         }
+      }
+   }
+
+   public static arv a(sn $$0) {
+      Map<cjo, arv.a> $$1 = Maps.newEnumMap(cjo.class);
+      a.forEach(($$2, $$3) -> {
+         boolean $$4 = $$0.q((String)$$3.getFirst());
+         boolean $$5 = $$0.q((String)$$3.getSecond());
+         $$1.put($$2, new arv.a($$4, $$5));
+      });
+      return new arv($$1);
+   }
+
+   public void b(sn $$0) {
+      a.forEach(($$1, $$2) -> {
+         arv.a $$3 = this.b.get($$1);
+         $$0.a((String)$$2.getFirst(), $$3.a);
+         $$0.a((String)$$2.getSecond(), $$3.b);
+      });
+   }
+
+   public arv a() {
+      Map<cjo, arv.a> $$0 = Maps.newEnumMap(cjo.class);
+
+      for (cjo $$1 : cjo.values()) {
+         arv.a $$2 = this.b.get($$1);
+         $$0.put($$1, $$2.a());
+      }
+
+      return new arv($$0);
+   }
+
+   public void a(arv $$0) {
+      this.b.clear();
+
+      for (cjo $$1 : cjo.values()) {
+         arv.a $$2 = $$0.b.get($$1);
+         this.b.put($$1, $$2.a());
+      }
    }
 
    @Override
-   public Iterator<art<T>> iterator() {
-      return this.b.values().iterator();
+   public boolean equals(Object $$0) {
+      return this == $$0 || $$0 instanceof arv && this.b.equals(((arv)$$0).b);
    }
 
-   public art<T> b(T $$0) {
-      return this.a($$0, aru.b);
+   @Override
+   public int hashCode() {
+      return this.b.hashCode();
    }
 
-   public vd b() {
-      return this.c;
+   static final class a {
+      boolean a;
+      boolean b;
+
+      public a(boolean $$0, boolean $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public arv.a a() {
+         return new arv.a(this.a, this.b);
+      }
+
+      @Override
+      public boolean equals(Object $$0) {
+         if (this == $$0) {
+            return true;
+         } else {
+            return !($$0 instanceof arv.a $$1) ? false : this.a == $$1.a && this.b == $$1.b;
+         }
+      }
+
+      @Override
+      public int hashCode() {
+         int $$0 = this.a ? 1 : 0;
+         return 31 * $$0 + (this.b ? 1 : 0);
+      }
+
+      @Override
+      public String toString() {
+         return "[open=" + this.a + ", filtering=" + this.b + "]";
+      }
    }
 }

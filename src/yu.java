@@ -1,8 +1,18 @@
-public interface yu extends xn {
-   @Override
-   default uf b() {
-      return uf.e;
+public record yu() implements xf<yt> {
+   public yu(ui $$0) {
+      this();
    }
 
-   void a(yv var1);
+   @Override
+   public void a(ui $$0) {
+   }
+
+   public void a(yt $$0) {
+      $$0.a(this);
+   }
+
+   @Override
+   public uh c() {
+      return uh.b;
+   }
 }

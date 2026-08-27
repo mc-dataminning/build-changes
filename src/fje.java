@@ -1,64 +1,123 @@
-import com.google.common.collect.ImmutableList;
+public class fje<T extends cdk> extends fke<T> {
+   private static final float a = 0.6F;
+   private static final float b = 0.8F;
+   private static final float f = 1.0F;
+   private final fmv g;
+   private final fmv h;
+   private final fmv i;
+   private final fmv j;
+   private final fmv k;
+   private final fmv l;
+   private final fmv m;
 
-public class fje<T extends blp> extends fim<T> {
-   public static final String a = "red_thing";
-   private final fmp b;
-   private final fmp f;
-   private final fmp g;
-   private final fmp h;
-   private final fmp i;
-   private final fmp j;
-   private final fmp k;
-   private final fmp l;
-
-   public fje(fmp $$0) {
-      this.b = $$0.b("head");
-      this.k = $$0.b("beak");
-      this.l = $$0.b("red_thing");
-      this.f = $$0.b("body");
-      this.g = $$0.b("right_leg");
-      this.h = $$0.b("left_leg");
-      this.i = $$0.b("right_wing");
-      this.j = $$0.b("left_wing");
+   public fje(fmv $$0) {
+      super(ftn::i);
+      this.g = $$0;
+      this.i = $$0.b("wind_body");
+      this.l = this.i.b("wind_bottom");
+      this.k = this.l.b("wind_mid");
+      this.j = this.k.b("wind_top");
+      this.h = $$0.b("body").b("head");
+      this.m = $$0.b("body").b("rods");
    }
 
-   public static fmv c() {
-      fmx $$0 = new fmx();
-      fmy $$1 = $$0.a();
-      int $$2 = 16;
-      $$1.a("head", fmu.c().a(0, 0).a(-2.0F, -6.0F, -2.0F, 4.0F, 6.0F, 3.0F), fmr.a(0.0F, 15.0F, -4.0F));
-      $$1.a("beak", fmu.c().a(14, 0).a(-2.0F, -4.0F, -4.0F, 4.0F, 2.0F, 2.0F), fmr.a(0.0F, 15.0F, -4.0F));
-      $$1.a("red_thing", fmu.c().a(14, 4).a(-1.0F, -2.0F, -3.0F, 2.0F, 2.0F, 2.0F), fmr.a(0.0F, 15.0F, -4.0F));
-      $$1.a("body", fmu.c().a(0, 9).a(-3.0F, -4.0F, -3.0F, 6.0F, 8.0F, 6.0F), fmr.a(0.0F, 16.0F, 0.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
-      fmu $$3 = fmu.c().a(26, 0).a(-1.0F, 0.0F, -3.0F, 3.0F, 5.0F, 3.0F);
-      $$1.a("right_leg", $$3, fmr.a(-2.0F, 19.0F, 1.0F));
-      $$1.a("left_leg", $$3, fmr.a(1.0F, 19.0F, 1.0F));
-      $$1.a("right_wing", fmu.c().a(24, 13).a(0.0F, 0.0F, -3.0F, 1.0F, 4.0F, 6.0F), fmr.a(-4.0F, 13.0F, 0.0F));
-      $$1.a("left_wing", fmu.c().a(24, 13).a(-1.0F, 0.0F, -3.0F, 1.0F, 4.0F, 6.0F), fmr.a(4.0F, 13.0F, 0.0F));
-      return fmv.a($$0, 64, 32);
+   public static fnb b() {
+      fnd $$0 = new fnd();
+      fne $$1 = $$0.a();
+      fne $$2 = $$1.a("body", fna.c(), fmx.a(0.0F, 0.0F, 0.0F));
+      fne $$3 = $$2.a("rods", fna.c(), fmx.a(0.0F, 8.0F, 0.0F));
+      $$3.a("rod_1", fna.c().a(0, 17).a(-1.0F, 0.0F, -3.0F, 2.0F, 8.0F, 2.0F, new fmz(0.0F)), fmx.a(2.5981F, -3.0F, 1.5F, -2.7489F, -1.0472F, 3.1416F));
+      $$3.a("rod_2", fna.c().a(0, 17).a(-1.0F, 0.0F, -3.0F, 2.0F, 8.0F, 2.0F, new fmz(0.0F)), fmx.a(-2.5981F, -3.0F, 1.5F, -2.7489F, 1.0472F, 3.1416F));
+      $$3.a("rod_3", fna.c().a(0, 17).a(-1.0F, 0.0F, -3.0F, 2.0F, 8.0F, 2.0F, new fmz(0.0F)), fmx.a(0.0F, -3.0F, -3.0F, 0.3927F, 0.0F, 0.0F));
+      fne $$4 = $$2.a("head", fna.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new fmz(0.0F)), fmx.a(0.0F, 4.0F, 0.0F));
+      fne $$5 = $$1.a("wind_body", fna.c(), fmx.a(0.0F, 0.0F, 0.0F));
+      fne $$6 = $$5.a("wind_bottom", fna.c(), fmx.a(0.0F, 24.0F, 0.0F));
+      fne $$7 = $$6.a("wind_mid", fna.c(), fmx.a(0.0F, -7.0F, 0.0F));
+      $$7.a("wind_top", fna.c(), fmx.a(0.0F, -6.0F, 0.0F));
+      return fnb.a($$0, 32, 32);
    }
 
-   @Override
-   protected Iterable<fmp> a() {
-      return ImmutableList.of(this.b, this.k, this.l);
+   public static fnb c() {
+      fnd $$0 = new fnd();
+      fne $$1 = $$0.a();
+      fne $$2 = $$1.a("body", fna.c(), fmx.a(0.0F, 0.0F, 0.0F));
+      fne $$3 = $$2.a("rods", fna.c(), fmx.a(0.0F, 8.0F, 0.0F));
+      fne $$4 = $$2.a("head", fna.c(), fmx.a(0.0F, 4.0F, 0.0F));
+      $$4.a(
+         "eyes",
+         fna.c().a(4, 24).a(-5.0F, -5.0F, -4.2F, 10.0F, 3.0F, 4.0F, new fmz(0.0F)).a(7, 16).a(-4.0F, -2.0F, -4.0F, 8.0F, 1.0F, 1.0F, new fmz(0.0F)),
+         fmx.a(0.0F, 0.0F, 0.0F)
+      );
+      fne $$5 = $$1.a("wind_body", fna.c(), fmx.a(0.0F, 0.0F, 0.0F));
+      fne $$6 = $$5.a("wind_bottom", fna.c(), fmx.a(0.0F, 24.0F, 0.0F));
+      fne $$7 = $$6.a("wind_mid", fna.c(), fmx.a(0.0F, -7.0F, 0.0F));
+      $$7.a("wind_top", fna.c(), fmx.a(0.0F, -6.0F, 0.0F));
+      return fnb.a($$0, 32, 32);
    }
 
-   @Override
-   protected Iterable<fmp> b() {
-      return ImmutableList.of(this.f, this.g, this.h, this.i, this.j);
+   public static fnb d() {
+      fnd $$0 = new fnd();
+      fne $$1 = $$0.a();
+      fne $$2 = $$1.a("body", fna.c(), fmx.a(0.0F, 0.0F, 0.0F));
+      fne $$3 = $$2.a("rods", fna.c(), fmx.a(0.0F, 8.0F, 0.0F));
+      $$2.a("head", fna.c(), fmx.a(0.0F, 4.0F, 0.0F));
+      fne $$4 = $$1.a("wind_body", fna.c(), fmx.a(0.0F, 0.0F, 0.0F));
+      fne $$5 = $$4.a("wind_bottom", fna.c().a(1, 83).a(-2.5F, -7.0F, -2.5F, 5.0F, 7.0F, 5.0F, new fmz(0.0F)), fmx.a(0.0F, 24.0F, 0.0F));
+      fne $$6 = $$5.a(
+         "wind_mid",
+         fna.c()
+            .a(74, 28)
+            .a(-6.0F, -6.0F, -6.0F, 12.0F, 6.0F, 12.0F, new fmz(0.0F))
+            .a(78, 32)
+            .a(-4.0F, -6.0F, -4.0F, 8.0F, 6.0F, 8.0F, new fmz(0.0F))
+            .a(49, 71)
+            .a(-2.5F, -6.0F, -2.5F, 5.0F, 6.0F, 5.0F, new fmz(0.0F)),
+         fmx.a(0.0F, -7.0F, 0.0F)
+      );
+      $$6.a(
+         "wind_top",
+         fna.c()
+            .a(0, 0)
+            .a(-9.0F, -8.0F, -9.0F, 18.0F, 8.0F, 18.0F, new fmz(0.0F))
+            .a(6, 6)
+            .a(-6.0F, -8.0F, -6.0F, 12.0F, 8.0F, 12.0F, new fmz(0.0F))
+            .a(105, 57)
+            .a(-2.5F, -8.0F, -2.5F, 5.0F, 8.0F, 5.0F, new fmz(0.0F)),
+         fmx.a(0.0F, -6.0F, 0.0F)
+      );
+      return fnb.a($$0, 128, 128);
    }
 
-   @Override
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.b.e = $$5 * (float) (Math.PI / 180.0);
-      this.b.f = $$4 * (float) (Math.PI / 180.0);
-      this.k.e = this.b.e;
-      this.k.f = this.b.f;
-      this.l.e = this.b.e;
-      this.l.f = this.b.f;
-      this.g.e = aui.b($$1 * 0.6662F) * 1.4F * $$2;
-      this.h.e = aui.b($$1 * 0.6662F + (float) Math.PI) * 1.4F * $$2;
-      this.i.g = $$3;
-      this.j.g = -$$3;
+      this.a().e().forEach(fmv::c);
+      float $$6 = $$3 * (float) Math.PI * -0.1F;
+      this.j.b = aun.b($$6) * 1.0F * 0.6F;
+      this.j.d = aun.a($$6) * 1.0F * 0.6F;
+      this.k.b = aun.a($$6) * 0.5F * 0.8F;
+      this.k.d = aun.b($$6) * 0.8F;
+      this.l.b = aun.b($$6) * -0.25F * 1.0F;
+      this.l.d = aun.a($$6) * -0.25F * 1.0F;
+      this.h.c = 4.0F + aun.b($$6) / 4.0F;
+      this.m.f = $$3 * (float) Math.PI * 0.1F;
+      this.a($$0.e, ewb.a, $$3);
+      this.a($$0.c, ewb.c, $$3);
+      this.a($$0.d, ewb.b, $$3);
+   }
+
+   @Override
+   public fmv a() {
+      return this.g;
+   }
+
+   public fmv e() {
+      return this.j;
+   }
+
+   public fmv f() {
+      return this.k;
+   }
+
+   public fmv g() {
+      return this.l;
    }
 }

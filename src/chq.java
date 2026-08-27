@@ -1,117 +1,107 @@
+import com.google.common.collect.Sets;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.function.Consumer;
+import org.slf4j.Logger;
+
 public class chq {
-   private int a = 20;
-   private float b;
-   private float c;
-   private int d;
-   private int e = 20;
+   private static final Logger a = LogUtils.getLogger();
+   private final chs b;
+   private final Map<ahg, chp> c;
+   private final chr d;
 
-   public chq() {
-      this.b = 5.0F;
-   }
-
-   public void a(int $$0, float $$1) {
-      this.a = Math.min($$0 + this.a, 20);
-      this.b = Math.min(this.b + (float)$$0 * $$1 * 2.0F, (float)this.a);
-   }
-
-   public void a(cmm $$0, cmr $$1) {
-      if ($$0.u()) {
-         chr $$2 = $$0.v();
-         this.a($$2.a(), $$2.b());
-      }
-   }
-
-   public void a(cfb $$0) {
-      bjs $$1 = $$0.dM().ak();
-      this.e = this.a;
-      if (this.c > 4.0F) {
-         this.c -= 4.0F;
-         if (this.b > 0.0F) {
-            this.b = Math.max(this.b - 1.0F, 0.0F);
-         } else if ($$1 != bjs.a) {
-            this.a = Math.max(this.a - 1, 0);
-         }
-      }
-
-      boolean $$2 = $$0.dM().Z().b(cte.k);
-      if ($$2 && this.b > 0.0F && $$0.gd() && this.a >= 20) {
-         this.d++;
-         if (this.d >= 10) {
-            float $$3 = Math.min(this.b, 6.0F);
-            $$0.b($$3 / 6.0F);
-            this.a($$3);
-            this.d = 0;
-         }
-      } else if ($$2 && this.a >= 18 && $$0.gd()) {
-         this.d++;
-         if (this.d >= 80) {
-            $$0.b(1.0F);
-            this.a(6.0F);
-            this.d = 0;
-         }
-      } else if (this.a <= 0) {
-         this.d++;
-         if (this.d >= 80) {
-            if ($$0.ev() > 10.0F || $$1 == bjs.d || $$0.ev() > 1.0F && $$1 == bjs.c) {
-               $$0.a($$0.dN().i(), 1.0F);
-            }
-
-            this.d = 0;
-         }
-      } else {
-         this.d = 0;
-      }
-   }
-
-   public void a(sl $$0) {
-      if ($$0.b("foodLevel", 99)) {
-         this.a = $$0.h("foodLevel");
-         this.d = $$0.h("foodTickTimer");
-         this.b = $$0.j("foodSaturationLevel");
-         this.c = $$0.j("foodExhaustionLevel");
-      }
-   }
-
-   public void b(sl $$0) {
-      $$0.a("foodLevel", this.a);
-      $$0.a("foodTickTimer", this.d);
-      $$0.a("foodSaturationLevel", this.b);
-      $$0.a("foodExhaustionLevel", this.c);
-   }
-
-   public int a() {
-      return this.a;
-   }
-
-   public int b() {
-      return this.e;
-   }
-
-   public boolean c() {
-      return this.a < 20;
-   }
-
-   public void a(float $$0) {
-      this.c = Math.min(this.c + $$0, 40.0F);
-   }
-
-   public float d() {
-      return this.c;
-   }
-
-   public float e() {
-      return this.b;
-   }
-
-   public void a(int $$0) {
-      this.a = $$0;
-   }
-
-   public void b(float $$0) {
+   chq(chs $$0, chr $$1, Map<ahg, chp> $$2) {
       this.b = $$0;
+      this.c = $$2;
+      this.d = $$1;
    }
 
-   public void c(float $$0) {
-      this.c = $$0;
+   public boolean a(chr $$0) {
+      return $$0.a(this.d);
+   }
+
+   public chr a() {
+      return this.d;
+   }
+
+   public chr a(Iterable<ahg> $$0) {
+      return this.a($$0, $$0x -> a.warn("Unknown feature flag: {}", $$0x));
+   }
+
+   public chr a(chp... $$0) {
+      return chr.a(this.b, Arrays.asList($$0));
+   }
+
+   public chr a(Iterable<ahg> $$0, Consumer<ahg> $$1) {
+      Set<chp> $$2 = Sets.newIdentityHashSet();
+
+      for (ahg $$3 : $$0) {
+         chp $$4 = this.c.get($$3);
+         if ($$4 == null) {
+            $$1.accept($$3);
+         } else {
+            $$2.add($$4);
+         }
+      }
+
+      return chr.a(this.b, $$2);
+   }
+
+   public Set<ahg> b(chr $$0) {
+      Set<ahg> $$1 = new HashSet<>();
+      this.c.forEach(($$2, $$3) -> {
+         if ($$0.b($$3)) {
+            $$1.add($$2);
+         }
+      });
+      return $$1;
+   }
+
+   public Codec<chr> b() {
+      return ahg.a.listOf().comapFlatMap($$0 -> {
+         Set<ahg> $$1 = new HashSet<>();
+         chr $$2 = this.a($$0, $$1::add);
+         return !$$1.isEmpty() ? DataResult.error(() -> "Unknown feature ids: " + $$1, $$2) : DataResult.success($$2);
+      }, $$0 -> List.copyOf(this.b($$0)));
+   }
+
+   public static class a {
+      private final chs a;
+      private int b;
+      private final Map<ahg, chp> c = new LinkedHashMap<>();
+
+      public a(String $$0) {
+         this.a = new chs($$0);
+      }
+
+      public chp a(String $$0) {
+         return this.a(new ahg("minecraft", $$0));
+      }
+
+      public chp a(ahg $$0) {
+         if (this.b >= 64) {
+            throw new IllegalStateException("Too many feature flags");
+         } else {
+            chp $$1 = new chp(this.a, this.b++);
+            chp $$2 = this.c.put($$0, $$1);
+            if ($$2 != null) {
+               throw new IllegalStateException("Duplicate feature flag " + $$0);
+            } else {
+               return $$1;
+            }
+         }
+      }
+
+      public chq a() {
+         chr $$0 = chr.a(this.a, this.c.values());
+         return new chq(this.a, $$0, Map.copyOf(this.c));
+      }
    }
 }

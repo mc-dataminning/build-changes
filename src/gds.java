@@ -1,77 +1,159 @@
-import com.mojang.blaze3d.platform.TextureUtil;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.file.Path;
+import com.google.common.collect.Maps;
+import java.util.Map;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class gds extends gdq implements gdr {
-   private static final Logger e = LogUtils.getLogger();
-   @Nullable
-   private eou f;
+public class gds {
+   private static final Map<ahg, gdt> a = Maps.newHashMap();
+   private static final String b = "CustomModelData";
+   private static final ahg c = new ahg("damaged");
+   private static final ahg d = new ahg("damage");
+   private static final gdq e = ($$0x, $$1, $$2, $$3) -> $$0x.j() ? 1.0F : 0.0F;
+   private static final gdq f = ($$0x, $$1, $$2, $$3) -> aun.a((float)$$0x.k() / (float)$$0x.l(), 0.0F, 1.0F);
+   private static final Map<cms, Map<ahg, gdt>> g = Maps.newHashMap();
 
-   public gds(eou $$0) {
-      this.f = $$0;
-      if (!RenderSystem.isOnRenderThread()) {
-         RenderSystem.recordRenderCall(() -> {
-            TextureUtil.prepareImage(this.a(), this.f.a(), this.f.b());
-            this.d();
-         });
-      } else {
-         TextureUtil.prepareImage(this.a(), this.f.a(), this.f.b());
-         this.d();
-      }
+   private static gdq a(ahg $$0, gdq $$1) {
+      a.put($$0, $$1);
+      return $$1;
    }
 
-   public gds(int $$0, int $$1, boolean $$2) {
-      RenderSystem.assertOnGameThreadOrInit();
-      this.f = new eou($$0, $$1, $$2);
-      TextureUtil.prepareImage(this.a(), this.f.a(), this.f.b());
+   private static void a(gdt $$0) {
+      a.put(new ahg("custom_model_data"), $$0);
    }
 
-   @Override
-   public void a(aqc $$0) {
-   }
-
-   @Override
-   public void d() {
-      if (this.f != null) {
-         this.c();
-         this.f.a(0, 0, 0, false);
-      } else {
-         e.warn("Trying to upload disposed texture {}", this.a());
-      }
+   private static void a(cms $$0, ahg $$1, gdq $$2) {
+      g.computeIfAbsent($$0, $$0x -> Maps.newHashMap()).put($$1, $$2);
    }
 
    @Nullable
-   public eou e() {
-      return this.f;
-   }
+   public static gdt a(cms $$0, ahg $$1) {
+      if ($$0.n() > 0) {
+         if (d.equals($$1)) {
+            return f;
+         }
 
-   public void a(eou $$0) {
-      if (this.f != null) {
-         this.f.close();
+         if (c.equals($$1)) {
+            return e;
+         }
       }
 
-      this.f = $$0;
-   }
-
-   @Override
-   public void close() {
-      if (this.f != null) {
-         this.f.close();
-         this.b();
-         this.f = null;
+      gdt $$2 = a.get($$1);
+      if ($$2 != null) {
+         return $$2;
+      } else {
+         Map<ahg, gdt> $$3 = g.get($$0);
+         return $$3 == null ? null : $$3.get($$1);
       }
    }
 
-   @Override
-   public void a(ahd $$0, Path $$1) throws IOException {
-      if (this.f != null) {
-         String $$2 = $$0.c() + ".png";
-         Path $$3 = $$1.resolve($$2);
-         this.f.a($$3);
-      }
+   static {
+      a(new ahg("lefthanded"), ($$0x, $$1, $$2, $$3) -> $$2 != null && $$2.fm() != bme.b ? 1.0F : 0.0F);
+      a(new ahg("cooldown"), ($$0x, $$1, $$2, $$3) -> $$2 instanceof cfh ? ((cfh)$$2).gn().a($$0x.d(), 0.0F) : 0.0F);
+      gdq $$0 = ($$0x, $$1, $$2, $$3) -> {
+         if (!$$0x.a(aso.aH)) {
+            return Float.NEGATIVE_INFINITY;
+         } else {
+            return $$1 == null ? 0.0F : cpa.a($$1.I_(), $$0x, true).map(cpa::b).map(ih::a).map(cpb::c).orElse(0.0F);
+         }
+      };
+      a(ma.a, $$0);
+      a(($$0x, $$1, $$2, $$3) -> $$0x.u() ? (float)$$0x.v().h("CustomModelData") : 0.0F);
+      a(cna.or, new ahg("pull"), ($$0x, $$1, $$2, $$3) -> {
+         if ($$2 == null) {
+            return 0.0F;
+         } else {
+            return $$2.fp() != $$0x ? 0.0F : (float)($$0x.r() - $$2.fq()) / 20.0F;
+         }
+      });
+      a(cna.xi, new ahg("brushing"), ($$0x, $$1, $$2, $$3) -> $$2 != null && $$2.fp() == $$0x ? (float)($$2.fq() % 10) / 10.0F : 0.0F);
+      a(cna.or, new ahg("pulling"), ($$0x, $$1, $$2, $$3) -> $$2 != null && $$2.fn() && $$2.fp() == $$0x ? 1.0F : 0.0F);
+      a(cna.qR, new ahg("filled"), ($$0x, $$1, $$2, $$3) -> ckz.d($$0x));
+      a(cna.qT, new ahg("time"), new gdq() {
+         private double a;
+         private double b;
+         private long c;
+
+         @Override
+         public float unclampedCall(cmx $$0, @Nullable fnq $$1, @Nullable bmk $$2, int $$3) {
+            blu $$4 = (blu)($$2 != null ? $$2 : $$0.H());
+            if ($$4 == null) {
+               return 0.0F;
+            } else {
+               if ($$1 == null && $$4.dM() instanceof fnq) {
+                  $$1 = (fnq)$$4.dM();
+               }
+
+               if ($$1 == null) {
+                  return 0.0F;
+               } else {
+                  double $$5;
+                  if ($$1.E_().j()) {
+                     $$5 = (double)$$1.f(1.0F);
+                  } else {
+                     $$5 = Math.random();
+                  }
+
+                  $$5 = this.a($$1, $$5);
+                  return (float)$$5;
+               }
+            }
+         }
+
+         private double a(cto $$0, double $$1) {
+            if ($$0.X() != this.c) {
+               this.c = $$0.X();
+               double $$2 = $$1 - this.a;
+               $$2 = aun.c($$2 + 0.5, 1.0) - 0.5;
+               this.b += $$2 * 0.1;
+               this.b *= 0.9;
+               this.a = aun.c(this.a + this.b, 1.0);
+            }
+
+            return this.a;
+         }
+      });
+      a(cna.qP, new ahg("angle"), new gdr(($$0x, $$1, $$2) -> clb.d($$1) ? clb.a($$1.w()) : clb.a($$0x)));
+      a(cna.qQ, new ahg("angle"), new gdr(($$0x, $$1, $$2) -> $$2 instanceof cfh $$3 ? $$3.gr().orElse(null) : null));
+      a(cna.vM, new ahg("pull"), ($$0x, $$1, $$2, $$3) -> {
+         if ($$2 == null) {
+            return 0.0F;
+         } else {
+            return clf.d($$0x) ? 0.0F : (float)($$0x.r() - $$2.fq()) / (float)clf.k($$0x);
+         }
+      });
+      a(cna.vM, new ahg("pulling"), ($$0x, $$1, $$2, $$3) -> $$2 != null && $$2.fn() && $$2.fp() == $$0x && !clf.d($$0x) ? 1.0F : 0.0F);
+      a(cna.vM, new ahg("charged"), ($$0x, $$1, $$2, $$3) -> clf.d($$0x) ? 1.0F : 0.0F);
+      a(cna.vM, new ahg("firework"), ($$0x, $$1, $$2, $$3) -> clf.d($$0x) && clf.a($$0x, cna.un) ? 1.0F : 0.0F);
+      a(cna.nS, new ahg("broken"), ($$0x, $$1, $$2, $$3) -> clr.d($$0x) ? 0.0F : 1.0F);
+      a(cna.qS, new ahg("cast"), ($$0x, $$1, $$2, $$3) -> {
+         if ($$2 == null) {
+            return 0.0F;
+         } else {
+            boolean $$4 = $$2.eT() == $$0x;
+            boolean $$5 = $$2.eU() == $$0x;
+            if ($$2.eT().d() instanceof cmd) {
+               $$5 = false;
+            }
+
+            return ($$4 || $$5) && $$2 instanceof cfh && ((cfh)$$2).ck != null ? 1.0F : 0.0F;
+         }
+      });
+      a(cna.vl, new ahg("blocking"), ($$0x, $$1, $$2, $$3) -> $$2 != null && $$2.fn() && $$2.fp() == $$0x ? 1.0F : 0.0F);
+      a(cna.vI, new ahg("throwing"), ($$0x, $$1, $$2, $$3) -> $$2 != null && $$2.fn() && $$2.fp() == $$0x ? 1.0F : 0.0F);
+      a(cna.hB, new ahg("level"), ($$0x, $$1, $$2, $$3) -> {
+         sn $$4 = $$0x.b("BlockStateTag");
+
+         try {
+            if ($$4 != null) {
+               tk $$5 = $$4.c(dbc.c.f());
+               if ($$5 != null) {
+                  return (float)Integer.parseInt($$5.t_()) / 16.0F;
+               }
+            }
+         } catch (NumberFormatException var6) {
+         }
+
+         return 1.0F;
+      });
+      a(cna.vV, new ahg("tooting"), ($$0x, $$1, $$2, $$3) -> $$2 != null && $$2.fn() && $$2.fp() == $$0x ? 1.0F : 0.0F);
    }
 }

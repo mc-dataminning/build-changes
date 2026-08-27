@@ -1,22 +1,57 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
 
-public class dbl extends ddz {
-   public static final MapCodec<dbl> a = b(dbl::new);
+public enum dbl implements avj {
+   a("none", h.a),
+   b("left_right", h.B),
+   c("front_back", h.z);
 
-   @Override
-   public MapCodec<dbl> a() {
-      return a;
+   public static final Codec<dbl> d = avj.a(dbl::values);
+   private final String e;
+   private final vf f;
+   private final h g;
+
+   private dbl(String $$0, h $$1) {
+      this.e = $$0;
+      this.f = vf.c("mirror." + $$0);
+      this.g = $$1;
    }
 
-   public dbl(diz.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   public void a(dja $$0, cti $$1, hx $$2, aup $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      if ($$3.a(10) == 0) {
-         $$1.a(jx.W, (double)$$2.u() + $$3.j(), (double)$$2.v() + 1.1, (double)$$2.w() + $$3.j(), 0.0, 0.0, 0.0);
+   public int a(int $$0, int $$1) {
+      int $$2 = $$1 / 2;
+      int $$3 = $$0 > $$2 ? $$0 - $$1 : $$0;
+      switch (this) {
+         case c:
+            return ($$1 - $$3) % $$1;
+         case b:
+            return ($$2 - $$3 + $$1) % $$1;
+         default:
+            return $$0;
       }
+   }
+
+   public ddb a(ic $$0) {
+      ic.a $$1 = $$0.o();
+      return (this != b || $$1 != ic.a.c) && (this != c || $$1 != ic.a.a) ? ddb.a : ddb.c;
+   }
+
+   public ic b(ic $$0) {
+      if (this == c && $$0.o() == ic.a.a) {
+         return $$0.g();
+      } else {
+         return this == b && $$0.o() == ic.a.c ? $$0.g() : $$0;
+      }
+   }
+
+   public h a() {
+      return this.g;
+   }
+
+   public vf b() {
+      return this.f;
+   }
+
+   @Override
+   public String c() {
+      return this.e;
    }
 }

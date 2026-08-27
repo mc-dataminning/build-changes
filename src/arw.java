@@ -1,98 +1,106 @@
-public class arw {
-   public static final arv<cwj> a = a("mined", kd.e);
-   public static final arv<cmm> b = a("crafted", kd.h);
-   public static final arv<cmm> c = a("used", kd.h);
-   public static final arv<cmm> d = a("broken", kd.h);
-   public static final arv<cmm> e = a("picked_up", kd.h);
-   public static final arv<cmm> f = a("dropped", kd.h);
-   public static final arv<blt<?>> g = a("killed", kd.g);
-   public static final arv<blt<?>> h = a("killed_by", kd.g);
-   public static final arv<ahd> i = a("custom", kd.m);
-   public static final ahd j = a("leave_game", aru.b);
-   public static final ahd k = a("play_time", aru.e);
-   public static final ahd l = a("total_world_time", aru.e);
-   public static final ahd m = a("time_since_death", aru.e);
-   public static final ahd n = a("time_since_rest", aru.e);
-   public static final ahd o = a("sneak_time", aru.e);
-   public static final ahd p = a("walk_one_cm", aru.d);
-   public static final ahd q = a("crouch_one_cm", aru.d);
-   public static final ahd r = a("sprint_one_cm", aru.d);
-   public static final ahd s = a("walk_on_water_one_cm", aru.d);
-   public static final ahd t = a("fall_one_cm", aru.d);
-   public static final ahd u = a("climb_one_cm", aru.d);
-   public static final ahd v = a("fly_one_cm", aru.d);
-   public static final ahd w = a("walk_under_water_one_cm", aru.d);
-   public static final ahd x = a("minecart_one_cm", aru.d);
-   public static final ahd y = a("boat_one_cm", aru.d);
-   public static final ahd z = a("pig_one_cm", aru.d);
-   public static final ahd A = a("horse_one_cm", aru.d);
-   public static final ahd B = a("aviate_one_cm", aru.d);
-   public static final ahd C = a("swim_one_cm", aru.d);
-   public static final ahd D = a("strider_one_cm", aru.d);
-   public static final ahd E = a("jump", aru.b);
-   public static final ahd F = a("drop", aru.b);
-   public static final ahd G = a("damage_dealt", aru.c);
-   public static final ahd H = a("damage_dealt_absorbed", aru.c);
-   public static final ahd I = a("damage_dealt_resisted", aru.c);
-   public static final ahd J = a("damage_taken", aru.c);
-   public static final ahd K = a("damage_blocked_by_shield", aru.c);
-   public static final ahd L = a("damage_absorbed", aru.c);
-   public static final ahd M = a("damage_resisted", aru.c);
-   public static final ahd N = a("deaths", aru.b);
-   public static final ahd O = a("mob_kills", aru.b);
-   public static final ahd P = a("animals_bred", aru.b);
-   public static final ahd Q = a("player_kills", aru.b);
-   public static final ahd R = a("fish_caught", aru.b);
-   public static final ahd S = a("talked_to_villager", aru.b);
-   public static final ahd T = a("traded_with_villager", aru.b);
-   public static final ahd U = a("eat_cake_slice", aru.b);
-   public static final ahd V = a("fill_cauldron", aru.b);
-   public static final ahd W = a("use_cauldron", aru.b);
-   public static final ahd X = a("clean_armor", aru.b);
-   public static final ahd Y = a("clean_banner", aru.b);
-   public static final ahd Z = a("clean_shulker_box", aru.b);
-   public static final ahd aa = a("interact_with_brewingstand", aru.b);
-   public static final ahd ab = a("interact_with_beacon", aru.b);
-   public static final ahd ac = a("inspect_dropper", aru.b);
-   public static final ahd ad = a("inspect_hopper", aru.b);
-   public static final ahd ae = a("inspect_dispenser", aru.b);
-   public static final ahd af = a("play_noteblock", aru.b);
-   public static final ahd ag = a("tune_noteblock", aru.b);
-   public static final ahd ah = a("pot_flower", aru.b);
-   public static final ahd ai = a("trigger_trapped_chest", aru.b);
-   public static final ahd aj = a("open_enderchest", aru.b);
-   public static final ahd ak = a("enchant_item", aru.b);
-   public static final ahd al = a("play_record", aru.b);
-   public static final ahd am = a("interact_with_furnace", aru.b);
-   public static final ahd an = a("interact_with_crafting_table", aru.b);
-   public static final ahd ao = a("open_chest", aru.b);
-   public static final ahd ap = a("sleep_in_bed", aru.b);
-   public static final ahd aq = a("open_shulker_box", aru.b);
-   public static final ahd ar = a("open_barrel", aru.b);
-   public static final ahd as = a("interact_with_blast_furnace", aru.b);
-   public static final ahd at = a("interact_with_smoker", aru.b);
-   public static final ahd au = a("interact_with_lectern", aru.b);
-   public static final ahd av = a("interact_with_campfire", aru.b);
-   public static final ahd aw = a("interact_with_cartography_table", aru.b);
-   public static final ahd ax = a("interact_with_loom", aru.b);
-   public static final ahd ay = a("interact_with_stonecutter", aru.b);
-   public static final ahd az = a("bell_ring", aru.b);
-   public static final ahd aA = a("raid_trigger", aru.b);
-   public static final ahd aB = a("raid_win", aru.b);
-   public static final ahd aC = a("interact_with_anvil", aru.b);
-   public static final ahd aD = a("interact_with_grindstone", aru.b);
-   public static final ahd aE = a("target_hit", aru.b);
-   public static final ahd aF = a("interact_with_smithing_table", aru.b);
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Consumer;
+import org.slf4j.Logger;
 
-   private static ahd a(String $$0, aru $$1) {
-      ahd $$2 = new ahd($$0);
-      it.a(kd.m, $$0, $$2);
-      i.a($$2, $$1);
-      return $$2;
+public class arw extends aru {
+   public static final String c = "recipeBook";
+   private static final Logger d = LogUtils.getLogger();
+
+   public int a(Collection<cqd<?>> $$0, ane $$1) {
+      List<ahg> $$2 = Lists.newArrayList();
+      int $$3 = 0;
+
+      for (cqd<?> $$4 : $$0) {
+         ahg $$5 = $$4.a();
+         if (!this.a.contains($$5) && !$$4.b().aq_()) {
+            this.a($$5);
+            this.d($$5);
+            $$2.add($$5);
+            am.g.a($$1, $$4);
+            $$3++;
+         }
+      }
+
+      if ($$2.size() > 0) {
+         this.a(abh.a.b, $$1, $$2);
+      }
+
+      return $$3;
    }
 
-   private static <T> arv<T> a(String $$0, it<T> $$1) {
-      vd $$2 = vd.c("stat_type.minecraft." + $$0);
-      return it.a(kd.x, $$0, new arv<>($$1, $$2));
+   public int b(Collection<cqd<?>> $$0, ane $$1) {
+      List<ahg> $$2 = Lists.newArrayList();
+      int $$3 = 0;
+
+      for (cqd<?> $$4 : $$0) {
+         ahg $$5 = $$4.a();
+         if (this.a.contains($$5)) {
+            this.c($$5);
+            $$2.add($$5);
+            $$3++;
+         }
+      }
+
+      this.a(abh.a.c, $$1, $$2);
+      return $$3;
+   }
+
+   private void a(abh.a $$0, ane $$1, List<ahg> $$2) {
+      $$1.c.b(new abh($$0, $$2, Collections.emptyList(), this.a()));
+   }
+
+   public sn b() {
+      sn $$0 = new sn();
+      this.a().b($$0);
+      st $$1 = new st();
+
+      for (ahg $$2 : this.a) {
+         $$1.add(ti.a($$2.toString()));
+      }
+
+      $$0.a("recipes", $$1);
+      st $$3 = new st();
+
+      for (ahg $$4 : this.b) {
+         $$3.add(ti.a($$4.toString()));
+      }
+
+      $$0.a("toBeDisplayed", $$3);
+      return $$0;
+   }
+
+   public void a(sn $$0, cqe $$1) {
+      this.a(arv.a($$0));
+      st $$2 = $$0.c("recipes", 8);
+      this.a($$2, this::a, $$1);
+      st $$3 = $$0.c("toBeDisplayed", 8);
+      this.a($$3, this::f, $$1);
+   }
+
+   private void a(st $$0, Consumer<cqd<?>> $$1, cqe $$2) {
+      for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
+         String $$4 = $$0.j($$3);
+
+         try {
+            ahg $$5 = new ahg($$4);
+            Optional<cqd<?>> $$6 = $$2.a($$5);
+            if ($$6.isEmpty()) {
+               d.error("Tried to load unrecognized recipe: {} removed now.", $$5);
+            } else {
+               $$1.accept($$6.get());
+            }
+         } catch (z var8) {
+            d.error("Tried to load improperly formatted recipe: {} removed now.", $$4);
+         }
+      }
+   }
+
+   public void a(ane $$0) {
+      $$0.c.b(new abh(abh.a.a, this.a, this.b, this.a()));
    }
 }

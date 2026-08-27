@@ -1,21 +1,52 @@
-public class gcr<T extends blp & bmv, M extends fjp<T>> extends gcq<T, M> {
-   private final ahd a;
-   private final M b;
+public class gcr<T extends byk> extends gcw<T, fjo<T>> {
+   private final ftz a;
 
-   public gcr(gaa<T, M> $$0, M $$1, ahd $$2) {
+   public gcr(gag<T, fjo<T>> $$0, ftz $$1) {
       super($$0);
-      this.b = $$1;
-      this.a = $$2;
+      this.a = $$1;
    }
 
-   @Override
-   public void a(ept $$0, fsz $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ($$3.i()) {
-         this.c().a(this.b);
-         this.b.a($$3, $$4, $$5, $$6);
-         this.b.a($$3, $$4, $$5, $$7, $$8, $$9);
-         epx $$10 = $$1.getBuffer(fth.e(this.a));
-         this.b.a($$0, $$10, $$2, gdw.d, 1.0F, 1.0F, 1.0F, 1.0F);
+   public void a(epz $$0, ftf $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if (!$$3.o_()) {
+         evg $$10 = evg.O();
+         boolean $$11 = $$10.b($$3) && $$3.ce();
+         if (!$$3.ce() || $$11) {
+            djg $$12 = $$3.w().a();
+            int $$13 = fzm.c($$3, 0.0F);
+            ggl $$14 = this.a.a($$12);
+            $$0.a();
+            $$0.a(0.2F, -0.35F, 0.5F);
+            $$0.a(a.d.rotationDegrees(-48.0F));
+            $$0.b(-1.0F, -1.0F, 1.0F);
+            $$0.a(-0.5F, -0.5F, -0.5F);
+            this.a($$0, $$1, $$2, $$11, $$12, $$13, $$14);
+            $$0.b();
+            $$0.a();
+            $$0.a(0.2F, -0.35F, 0.5F);
+            $$0.a(a.d.rotationDegrees(42.0F));
+            $$0.a(0.1F, 0.0F, -0.6F);
+            $$0.a(a.d.rotationDegrees(-48.0F));
+            $$0.b(-1.0F, -1.0F, 1.0F);
+            $$0.a(-0.5F, -0.5F, -0.5F);
+            this.a($$0, $$1, $$2, $$11, $$12, $$13, $$14);
+            $$0.b();
+            $$0.a();
+            this.c().d().a($$0);
+            $$0.a(0.0F, -0.7F, -0.2F);
+            $$0.a(a.d.rotationDegrees(-78.0F));
+            $$0.b(-1.0F, -1.0F, 1.0F);
+            $$0.a(-0.5F, -0.5F, -0.5F);
+            this.a($$0, $$1, $$2, $$11, $$12, $$13, $$14);
+            $$0.b();
+         }
+      }
+   }
+
+   private void a(epz $$0, ftf $$1, int $$2, boolean $$3, djg $$4, int $$5, ggl $$6) {
+      if ($$3) {
+         this.a.b().a($$0.c(), $$1.getBuffer(ftn.r(gek.e)), $$4, $$6, 0.0F, 0.0F, 0.0F, $$2, $$5);
+      } else {
+         this.a.a($$4, $$0, $$1, $$2, $$5);
       }
    }
 }

@@ -1,34 +1,41 @@
-public class etw extends eua {
-   private static final vd b = vd.c("mco.connect.connecting");
-   private final gjz c;
-   private final era d;
-   private final erb e;
+import com.mojang.authlib.yggdrasil.ProfileResult;
+import java.util.Date;
+import java.util.UUID;
 
-   public etw(fct $$0, era $$1, erb $$2) {
-      this.d = $$1;
-      this.e = $$2;
-      this.c = new gjz($$0);
+public class etw {
+   private static final vf a = vf.c("mco.util.time.now");
+   private static final int b = 60;
+   private static final int c = 3600;
+   private static final int d = 86400;
+
+   public static vf a(long $$0) {
+      if ($$0 < 0L) {
+         return a;
+      } else {
+         long $$1 = $$0 / 1000L;
+         if ($$1 < 60L) {
+            return vf.a("mco.time.secondsAgo", $$1);
+         } else if ($$1 < 3600L) {
+            long $$2 = $$1 / 60L;
+            return vf.a("mco.time.minutesAgo", $$2);
+         } else if ($$1 < 86400L) {
+            long $$3 = $$1 / 3600L;
+            return vf.a("mco.time.hoursAgo", $$3);
+         } else {
+            long $$4 = $$1 / 86400L;
+            return vf.a("mco.time.daysAgo", $$4);
+         }
+      }
    }
 
-   @Override
-   public void run() {
-      this.c.a(this.d, fox.a(this.e.a));
+   public static vf a(Date $$0) {
+      return a(System.currentTimeMillis() - $$0.getTime());
    }
 
-   @Override
-   public void b() {
-      super.b();
-      this.c.a();
-      eva.N().ab().a();
-   }
-
-   @Override
-   public void c() {
-      this.c.b();
-   }
-
-   @Override
-   public vd a() {
-      return b;
+   public static void a(ews $$0, int $$1, int $$2, int $$3, UUID $$4) {
+      evg $$5 = evg.O();
+      ProfileResult $$6 = $$5.ak().fetchProfile($$4, false);
+      gfk $$7 = $$6 != null ? $$5.al().b($$6.profile()) : gfd.a($$4);
+      eyd.a($$0, $$7.a(), $$1, $$2, $$3);
    }
 }

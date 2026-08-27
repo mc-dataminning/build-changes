@@ -1,101 +1,90 @@
-import com.google.common.collect.ImmutableMap;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.base.Splitter;
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.FieldFinder;
-import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.templates.CompoundList.CompoundListType;
-import com.mojang.datafixers.util.Either;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.datafixers.util.Unit;
 import com.mojang.serialization.Dynamic;
+import java.util.Iterator;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
+import org.apache.commons.lang3.math.NumberUtils;
 
 public class ban extends DataFix {
+   private static final String b = "generatorOptions";
+   @VisibleForTesting
+   static final String a = "minecraft:bedrock,2*minecraft:dirt,minecraft:grass_block;1;village";
+   private static final Splitter c = Splitter.on(';').limit(5);
+   private static final Splitter d = Splitter.on(',');
+   private static final Splitter e = Splitter.on('x').limit(2);
+   private static final Splitter f = Splitter.on('*').limit(2);
+   private static final Splitter g = Splitter.on(':').limit(3);
+
    public ban(Schema $$0, boolean $$1) {
       super($$0, $$1);
    }
 
-   protected static <A> Type<Pair<A, Dynamic<?>>> a(String $$0, Type<A> $$1) {
-      return DSL.and(DSL.field($$0, $$1), DSL.remainderType());
+   public TypeRewriteRule makeRule() {
+      return this.fixTypeEverywhereTyped("LevelFlatGeneratorInfoFix", this.getInputSchema().getType(bbv.a), $$0 -> $$0.update(DSL.remainderFinder(), this::a));
    }
 
-   protected static <A> Type<Pair<Either<A, Unit>, Dynamic<?>>> b(String $$0, Type<A> $$1) {
-      return DSL.and(DSL.optional(DSL.field($$0, $$1)), DSL.remainderType());
+   private Dynamic<?> a(Dynamic<?> $$0) {
+      return $$0.get("generatorName").asString("").equalsIgnoreCase("flat")
+         ? $$0.update("generatorOptions", $$0x -> (Dynamic)DataFixUtils.orElse($$0x.asString().map(this::a).map($$0x::createString).result(), $$0x))
+         : $$0;
    }
 
-   protected static <A1, A2> Type<Pair<Either<A1, Unit>, Pair<Either<A2, Unit>, Dynamic<?>>>> a(String $$0, Type<A1> $$1, String $$2, Type<A2> $$3) {
-      return DSL.and(DSL.optional(DSL.field($$0, $$1)), DSL.optional(DSL.field($$2, $$3)), DSL.remainderType());
-   }
-
-   protected TypeRewriteRule makeRule() {
-      Schema $$0 = this.getInputSchema();
-      Type<?> $$1 = DSL.taggedChoiceType(
-         "type",
-         DSL.string(),
-         ImmutableMap.of(
-            "minecraft:debug",
-            DSL.remainderType(),
-            "minecraft:flat",
-            a($$0),
-            "minecraft:noise",
-            a(
-               "biome_source",
-               DSL.taggedChoiceType(
-                  "type",
-                  DSL.string(),
-                  ImmutableMap.of(
-                     "minecraft:fixed",
-                     a("biome", $$0.getType(bbq.G)),
-                     "minecraft:multi_noise",
-                     DSL.list(a("biome", $$0.getType(bbq.G))),
-                     "minecraft:checkerboard",
-                     a("biomes", DSL.list($$0.getType(bbq.G))),
-                     "minecraft:vanilla_layered",
-                     DSL.remainderType(),
-                     "minecraft:the_end",
-                     DSL.remainderType()
-                  )
-               ),
-               "settings",
-               DSL.or(DSL.string(), a("default_block", $$0.getType(bbq.y), "default_fluid", $$0.getType(bbq.y)))
-            )
-         )
-      );
-      CompoundListType<String, ?> $$2 = DSL.compoundList(bcy.a(), a("generator", $$1));
-      Type<?> $$3 = DSL.and($$2, DSL.remainderType());
-      Type<?> $$4 = $$0.getType(bbq.I);
-      FieldFinder<?> $$5 = new FieldFinder("dimensions", $$3);
-      if (!$$4.findFieldType("dimensions").equals($$3)) {
-         throw new IllegalStateException();
+   @VisibleForTesting
+   String a(String $$0) {
+      if ($$0.isEmpty()) {
+         return "minecraft:bedrock,2*minecraft:dirt,minecraft:grass_block;1;village";
       } else {
-         OpticFinder<? extends List<? extends Pair<String, ?>>> $$6 = $$2.finder();
-         return this.fixTypeEverywhereTyped("MissingDimensionFix", $$4, $$3x -> $$3x.updateTyped($$5, $$3xx -> $$3xx.updateTyped($$6, $$2xxx -> {
-                  if (!($$2xxx.getValue() instanceof List)) {
-                     throw new IllegalStateException("List exptected");
-                  } else if (((List)$$2xxx.getValue()).isEmpty()) {
-                     Dynamic<?> $$3xxx = (Dynamic<?>)$$3x.get(DSL.remainderFinder());
-                     Dynamic<?> $$4x = this.a($$3xxx);
-                     return (Typed)DataFixUtils.orElse($$2.readTyped($$4x).result().map(Pair::getFirst), $$2xxx);
-                  } else {
-                     return $$2xxx;
-                  }
-               })));
+         Iterator<String> $$1 = c.split($$0).iterator();
+         String $$2 = $$1.next();
+         int $$3;
+         String $$4;
+         if ($$1.hasNext()) {
+            $$3 = NumberUtils.toInt($$2, 0);
+            $$4 = $$1.next();
+         } else {
+            $$3 = 0;
+            $$4 = $$2;
+         }
+
+         if ($$3 >= 0 && $$3 <= 3) {
+            StringBuilder $$7 = new StringBuilder();
+            Splitter $$8 = $$3 < 3 ? e : f;
+            $$7.append(StreamSupport.<String>stream(d.split($$4).spliterator(), false).map($$2x -> {
+               List<String> $$3x = $$8.splitToList($$2x);
+               int $$4x;
+               String $$5x;
+               if ($$3x.size() == 2) {
+                  $$4x = NumberUtils.toInt($$3x.get(0));
+                  $$5x = $$3x.get(1);
+               } else {
+                  $$4x = 1;
+                  $$5x = $$3x.get(0);
+               }
+
+               List<String> $$8x = g.splitToList($$5x);
+               int $$9 = $$8x.get(0).equals("minecraft") ? 1 : 0;
+               String $$10 = $$8x.get($$9);
+               int $$11 = $$3 == 3 ? axy.a("minecraft:" + $$10) : NumberUtils.toInt($$10, 0);
+               int $$12 = $$9 + 1;
+               int $$13 = $$8x.size() > $$12 ? NumberUtils.toInt($$8x.get($$12), 0) : 0;
+               return ($$4x == 1 ? "" : $$4x + "*") + awz.b($$11 << 4 | $$13).get("Name").asString("");
+            }).collect(Collectors.joining(",")));
+
+            while ($$1.hasNext()) {
+               $$7.append(';').append($$1.next());
+            }
+
+            return $$7.toString();
+         } else {
+            return "minecraft:bedrock,2*minecraft:dirt,minecraft:grass_block;1;village";
+         }
       }
-   }
-
-   protected static Type<? extends Pair<? extends Either<? extends Pair<? extends Either<?, Unit>, ? extends Pair<? extends Either<? extends List<? extends Pair<? extends Either<?, Unit>, Dynamic<?>>>, Unit>, Dynamic<?>>>, Unit>, Dynamic<?>>> a(
-      Schema $$0
-   ) {
-      return b("settings", a("biome", $$0.getType(bbq.G), "layers", DSL.list(b("block", $$0.getType(bbq.y)))));
-   }
-
-   private <T> Dynamic<T> a(Dynamic<T> $$0) {
-      long $$1 = $$0.get("seed").asLong(0L);
-      return new Dynamic($$0.getOps(), bcs.a($$0, $$1, bcs.a($$0, $$1), false));
    }
 }

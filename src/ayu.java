@@ -1,57 +1,87 @@
-import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableList;
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.DataFixUtils;
+import com.mojang.datafixers.OpticFinder;
+import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import java.util.Map;
+import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.util.Either;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.datafixers.util.Unit;
+import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
 
-public class ayu extends bca {
-   public static final Map<String, String> a = ImmutableMap.builder()
-      .put("minecraft:commandblock_minecart", "minecraft:command_block_minecart")
-      .put("minecraft:ender_crystal", "minecraft:end_crystal")
-      .put("minecraft:snowman", "minecraft:snow_golem")
-      .put("minecraft:evocation_illager", "minecraft:evoker")
-      .put("minecraft:evocation_fangs", "minecraft:evoker_fangs")
-      .put("minecraft:illusion_illager", "minecraft:illusioner")
-      .put("minecraft:vindication_illager", "minecraft:vindicator")
-      .put("minecraft:villager_golem", "minecraft:iron_golem")
-      .put("minecraft:xp_orb", "minecraft:experience_orb")
-      .put("minecraft:xp_bottle", "minecraft:experience_bottle")
-      .put("minecraft:eye_of_ender_signal", "minecraft:eye_of_ender")
-      .put("minecraft:fireworks_rocket", "minecraft:firework_rocket")
-      .build();
-   public static final Map<String, String> b = ImmutableMap.builder()
-      .put("minecraft:portal", "minecraft:nether_portal")
-      .put("minecraft:oak_bark", "minecraft:oak_wood")
-      .put("minecraft:spruce_bark", "minecraft:spruce_wood")
-      .put("minecraft:birch_bark", "minecraft:birch_wood")
-      .put("minecraft:jungle_bark", "minecraft:jungle_wood")
-      .put("minecraft:acacia_bark", "minecraft:acacia_wood")
-      .put("minecraft:dark_oak_bark", "minecraft:dark_oak_wood")
-      .put("minecraft:stripped_oak_bark", "minecraft:stripped_oak_wood")
-      .put("minecraft:stripped_spruce_bark", "minecraft:stripped_spruce_wood")
-      .put("minecraft:stripped_birch_bark", "minecraft:stripped_birch_wood")
-      .put("minecraft:stripped_jungle_bark", "minecraft:stripped_jungle_wood")
-      .put("minecraft:stripped_acacia_bark", "minecraft:stripped_acacia_wood")
-      .put("minecraft:stripped_dark_oak_bark", "minecraft:stripped_dark_oak_wood")
-      .put("minecraft:mob_spawner", "minecraft:spawner")
-      .build();
-   public static final Map<String, String> c = ImmutableMap.builder()
-      .putAll(b)
-      .put("minecraft:clownfish", "minecraft:tropical_fish")
-      .put("minecraft:chorus_fruit_popped", "minecraft:popped_chorus_fruit")
-      .put("minecraft:evocation_illager_spawn_egg", "minecraft:evoker_spawn_egg")
-      .put("minecraft:vindication_illager_spawn_egg", "minecraft:vindicator_spawn_egg")
-      .build();
-   private static final String d = "minecraft:bred_";
-
+public class ayu extends DataFix {
    public ayu(Schema $$0, boolean $$1) {
-      super("EntityTheRenameningBlock", $$0, $$1);
+      super($$0, $$1);
    }
 
-   @Override
-   protected String a(String $$0) {
-      if ($$0.startsWith("minecraft:bred_")) {
-         $$0 = "minecraft:" + $$0.substring("minecraft:bred_".length());
-      }
+   public TypeRewriteRule makeRule() {
+      Schema $$0 = this.getInputSchema();
+      Schema $$1 = this.getOutputSchema();
+      Type<?> $$2 = $$0.getTypeRaw(bbv.w);
+      Type<?> $$3 = $$1.getTypeRaw(bbv.w);
+      Type<?> $$4 = $$0.getTypeRaw(bbv.x);
+      return this.a($$0, $$1, $$2, $$3, $$4);
+   }
 
-      return a.getOrDefault($$0, $$0);
+   private <OldEntityTree, NewEntityTree, Entity> TypeRewriteRule a(Schema $$0, Schema $$1, Type<OldEntityTree> $$2, Type<NewEntityTree> $$3, Type<Entity> $$4) {
+      Type<Pair<String, Pair<Either<OldEntityTree, Unit>, Entity>>> $$5 = DSL.named(bbv.w.typeName(), DSL.and(DSL.optional(DSL.field("Riding", $$2)), $$4));
+      Type<Pair<String, Pair<Either<List<NewEntityTree>, Unit>, Entity>>> $$6 = DSL.named(
+         bbv.w.typeName(), DSL.and(DSL.optional(DSL.field("Passengers", DSL.list($$3))), $$4)
+      );
+      Type<?> $$7 = $$0.getType(bbv.w);
+      Type<?> $$8 = $$1.getType(bbv.w);
+      if (!Objects.equals($$7, $$5)) {
+         throw new IllegalStateException("Old entity type is not what was expected.");
+      } else if (!$$8.equals($$6, true, true)) {
+         throw new IllegalStateException("New entity type is not what was expected.");
+      } else {
+         OpticFinder<Pair<String, Pair<Either<OldEntityTree, Unit>, Entity>>> $$9 = DSL.typeFinder($$5);
+         OpticFinder<Pair<String, Pair<Either<List<NewEntityTree>, Unit>, Entity>>> $$10 = DSL.typeFinder($$6);
+         OpticFinder<NewEntityTree> $$11 = DSL.typeFinder($$3);
+         Type<?> $$12 = $$0.getType(bbv.b);
+         Type<?> $$13 = $$1.getType(bbv.b);
+         return TypeRewriteRule.seq(
+            this.fixTypeEverywhere(
+               "EntityRidingToPassengerFix",
+               $$5,
+               $$6,
+               $$5x -> $$6x -> {
+                     Optional<Pair<String, Pair<Either<List<NewEntityTree>, Unit>, Entity>>> $$7x = Optional.empty();
+                     Pair<String, Pair<Either<OldEntityTree, Unit>, Entity>> $$8x = $$6x;
+
+                     while (true) {
+                        Either<List<NewEntityTree>, Unit> $$9x = (Either<List<NewEntityTree>, Unit>)DataFixUtils.orElse(
+                           $$7x.map(
+                              $$4xxx -> {
+                                 Typed<NewEntityTree> $$5xxx = (Typed<NewEntityTree>)$$3.pointTyped($$5x)
+                                    .orElseThrow(() -> new IllegalStateException("Could not create new entity tree"));
+                                 NewEntityTree $$6xx = (NewEntityTree)$$5xxx.set($$10, $$4xxx)
+                                    .getOptional($$11)
+                                    .orElseThrow(() -> new IllegalStateException("Should always have an entity tree here"));
+                                 return Either.left(ImmutableList.of($$6xx));
+                              }
+                           ),
+                           Either.right(DSL.unit())
+                        );
+                        $$7x = Optional.of(Pair.of(bbv.w.typeName(), Pair.of($$9x, ((Pair)$$8x.getSecond()).getSecond())));
+                        Optional<OldEntityTree> $$10x = ((Either)((Pair)$$8x.getSecond()).getFirst()).left();
+                        if ($$10x.isEmpty()) {
+                           return $$7x.orElseThrow(() -> new IllegalStateException("Should always have an entity tree here"));
+                        }
+
+                        $$8x = (Pair<String, Pair<Either<OldEntityTree, Unit>, Entity>>)new Typed($$2, $$5x, $$10x.get())
+                           .getOptional($$9)
+                           .orElseThrow(() -> new IllegalStateException("Should always have an entity here"));
+                     }
+                  }
+            ),
+            this.writeAndRead("player RootVehicle injecter", $$12, $$13)
+         );
+      }
    }
 }

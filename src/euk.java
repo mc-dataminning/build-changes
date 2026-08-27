@@ -1,30 +1,59 @@
-import java.util.function.IntFunction;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public enum euk implements auk {
-   a(0, "options.off"),
-   b(1, "options.attack.crosshair"),
-   c(2, "options.attack.hotbar");
+public abstract class euk extends eug {
+   private static final Logger b = LogUtils.getLogger();
+   private final long c;
+   private final vf d;
+   private final Runnable e;
 
-   private static final IntFunction<euk> d = ata.a(euk::a, values(), ata.a.b);
-   private final int e;
-   private final String f;
+   public euk(long $$0, vf $$1, Runnable $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+   }
 
-   private euk(int $$0, String $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   protected abstract void a(eqp var1, long var2) throws esc;
+
+   @Override
+   public void run() {
+      eqp $$0 = eqp.a();
+      int $$1 = 0;
+
+      while ($$1 < 25) {
+         try {
+            if (this.d()) {
+               return;
+            }
+
+            this.a($$0, this.c);
+            if (this.d()) {
+               return;
+            }
+
+            this.e.run();
+            return;
+         } catch (esd var4) {
+            if (this.d()) {
+               return;
+            }
+
+            a((long)var4.c);
+            $$1++;
+         } catch (Exception var5) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Couldn't reset world");
+            this.a(var5);
+            return;
+         }
+      }
    }
 
    @Override
-   public int a() {
-      return this.e;
-   }
-
-   @Override
-   public String b() {
-      return this.f;
-   }
-
-   public static euk a(int $$0) {
-      return d.apply($$0);
+   public vf a() {
+      return this.d;
    }
 }

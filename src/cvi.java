@@ -1,103 +1,77 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import javax.annotation.Nullable;
 
-public class cvi extends cvh implements ddj {
-   public static final MapCodec<cvi> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.FLOAT.fieldOf("height").forGetter($$0x -> $$0x.k), Codec.FLOAT.fieldOf("aabb_offset").forGetter($$0x -> $$0x.l), u())
-            .apply($$0, cvi::new)
+public abstract class cvi extends cwp {
+   private static final int d = 2;
+   private static final int e = 4;
+   private static final int f = 3;
+   private static final int g = 2;
+   protected static final int a = 4;
+   private static final eml h = a(2.0, 4.0, 2.0, 14.0, 16.0, 14.0);
+   protected static final eml b = emi.a(
+      emi.b(), emi.a(a(0.0, 0.0, 4.0, 16.0, 3.0, 12.0), a(4.0, 0.0, 0.0, 12.0, 3.0, 16.0), a(2.0, 0.0, 2.0, 14.0, 3.0, 14.0), h), elw.e
    );
-   public static final djr c = djq.C;
-   public static final dju d = djq.P;
-   private final float k;
-   private final float l;
-   protected final emf e;
-   protected final emf f;
-   protected final emf g;
-   protected final emf h;
-   protected final emf i;
-   protected final emf j;
+   protected final jd.a c;
 
    @Override
-   public MapCodec<cvi> a() {
+   protected abstract MapCodec<? extends cvi> a();
+
+   public cvi(djf.d $$0, jd.a $$1) {
+      super($$0);
+      this.c = $$1;
+   }
+
+   protected double b(djg $$0) {
+      return 0.0;
+   }
+
+   protected boolean a(djg $$0, hx $$1, blu $$2) {
+      return $$2.dt() < (double)$$1.v() + this.b($$0) && $$2.cH().e > (double)$$1.v() + 0.25;
+   }
+
+   @Override
+   public bka a(djg $$0, cto $$1, hx $$2, cfh $$3, bjz $$4, elo $$5) {
+      cmx $$6 = $$3.b($$4);
+      jd $$7 = this.c.b().get($$6.d());
+      return $$7.interact($$0, $$1, $$2, $$3, $$4, $$6);
+   }
+
+   @Override
+   public eml a(djg $$0, csu $$1, hx $$2, elx $$3) {
       return b;
    }
 
-   public cvi(float $$0, float $$1, diz.d $$2) {
-      super($$2);
-      this.k(this.o().a(c, Boolean.valueOf(false)).a(d, ic.b));
-      this.i = cwj.a((double)$$1, 0.0, (double)$$1, (double)(16.0F - $$1), (double)$$0, (double)(16.0F - $$1));
-      this.j = cwj.a((double)$$1, (double)(16.0F - $$0), (double)$$1, (double)(16.0F - $$1), 16.0, (double)(16.0F - $$1));
-      this.e = cwj.a((double)$$1, (double)$$1, (double)(16.0F - $$0), (double)(16.0F - $$1), (double)(16.0F - $$1), 16.0);
-      this.f = cwj.a((double)$$1, (double)$$1, 0.0, (double)(16.0F - $$1), (double)(16.0F - $$1), (double)$$0);
-      this.g = cwj.a(0.0, (double)$$1, (double)$$1, (double)$$0, (double)(16.0F - $$1), (double)(16.0F - $$1));
-      this.h = cwj.a((double)(16.0F - $$0), (double)$$1, (double)$$1, 16.0, (double)(16.0F - $$1), (double)(16.0F - $$1));
-      this.k = $$0;
-      this.l = $$1;
+   @Override
+   public eml a(djg $$0, csu $$1, hx $$2) {
+      return h;
    }
 
    @Override
-   public emf a(dja $$0, cso $$1, hx $$2, elr $$3) {
-      ic $$4 = $$0.c(d);
-      switch ($$4) {
-         case c:
-            return this.e;
-         case d:
-            return this.f;
-         case f:
-            return this.g;
-         case e:
-            return this.h;
-         case a:
-            return this.j;
-         case b:
-         default:
-            return this.i;
+   public boolean d_(djg $$0) {
+      return true;
+   }
+
+   @Override
+   public boolean a(djg $$0, csu $$1, hx $$2, efg $$3) {
+      return false;
+   }
+
+   public abstract boolean d(djg var1);
+
+   @Override
+   public void a(djg $$0, and $$1, hx $$2, auu $$3) {
+      hx $$4 = dcg.a((cto)$$1, $$2);
+      if ($$4 != null) {
+         eep $$5 = dcg.a($$1, $$4);
+         if ($$5 != eer.a && this.a($$5)) {
+            this.a($$0, $$1, $$2, $$5);
+         }
       }
    }
 
-   @Override
-   public boolean a(dja $$0, ctl $$1, hx $$2) {
-      ic $$3 = $$0.c(d);
-      hx $$4 = $$2.a($$3.g());
-      return $$1.a_($$4).d($$1, $$4, $$3);
+   protected boolean a(eep $$0) {
+      return false;
    }
 
-   @Override
-   public dja a(dja $$0, ic $$1, dja $$2, ctj $$3, hx $$4, hx $$5) {
-      if ($$0.c(c)) {
-         $$3.a($$4, eel.c, eel.c.a($$3));
-      }
-
-      return $$1 == $$0.c(d).g() && !$$0.a($$3, $$4) ? cwl.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Nullable
-   @Override
-   public dja a(cpa $$0) {
-      ctj $$1 = $$0.q();
-      hx $$2 = $$0.a();
-      return this.o().a(c, Boolean.valueOf($$1.b_($$2).a() == eel.c)).a(d, $$0.k());
-   }
-
-   @Override
-   public dja a(dja $$0, dcv $$1) {
-      return $$0.a(d, $$1.a($$0.c(d)));
-   }
-
-   @Override
-   public dja a(dja $$0, dbf $$1) {
-      return $$0.a($$1.a($$0.c(d)));
-   }
-
-   @Override
-   public eek c_(dja $$0) {
-      return $$0.c(c) ? eel.c.a(false) : super.c_($$0);
-   }
-
-   @Override
-   protected void a(djb.a<cwj, dja> $$0) {
-      $$0.a(c, d);
+   protected void a(djg $$0, cto $$1, hx $$2, eep $$3) {
    }
 }

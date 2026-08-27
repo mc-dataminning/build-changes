@@ -1,58 +1,59 @@
 import com.mojang.serialization.Codec;
 
-public class dqx extends drn<dty> {
-   public dqx(Codec<dty> $$0) {
+public class dqx extends drt<duh> {
+   private static final djg a = cwr.mZ.o().a(cvt.h, Integer.valueOf(1)).a(cvt.i, djs.a).a(cvt.j, Integer.valueOf(0));
+   private static final djg b = a.a(cvt.i, djs.c).a(cvt.j, Integer.valueOf(1));
+   private static final djg c = a.a(cvt.i, djs.c);
+   private static final djg d = a.a(cvt.i, djs.b);
+
+   public dqx(Codec<duh> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(drp<dty> $$0) {
-      hx $$1 = $$0.e();
-      cud $$2 = $$0.b();
-      aup $$3 = $$0.d();
-      if ($$1.v() > $$2.A_() - 1) {
-         return false;
-      } else if (!$$2.a_($$1).a(cwl.G) && !$$2.a_($$1.d()).a(cwl.G)) {
-         return false;
-      } else {
-         boolean $$4 = false;
+   public boolean a(drv<duh> $$0) {
+      int $$1 = 0;
+      hx $$2 = $$0.e();
+      cuj $$3 = $$0.b();
+      auu $$4 = $$0.d();
+      duh $$5 = $$0.f();
+      hx.a $$6 = $$2.j();
+      hx.a $$7 = $$2.j();
+      if ($$3.u($$6)) {
+         if (cwr.mZ.o().a($$3, $$6)) {
+            int $$8 = $$4.a(12) + 5;
+            if ($$4.i() < $$5.l) {
+               int $$9 = $$4.a(4) + 1;
 
-         for (ic $$5 : ic.values()) {
-            if ($$5 != ic.a && $$2.a_($$1.a($$5)).a(cwl.iC)) {
-               $$4 = true;
-               break;
-            }
-         }
-
-         if (!$$4) {
-            return false;
-         } else {
-            $$2.a($$1, cwl.mW.o(), 2);
-
-            for (int $$6 = 0; $$6 < 200; $$6++) {
-               int $$7 = $$3.a(5) - $$3.a(6);
-               int $$8 = 3;
-               if ($$7 < 2) {
-                  $$8 += $$7 / 2;
-               }
-
-               if ($$8 >= 1) {
-                  hx $$9 = $$1.b($$3.a($$8) - $$3.a($$8), $$7, $$3.a($$8) - $$3.a($$8));
-                  dja $$10 = $$2.a_($$9);
-                  if ($$10.i() || $$10.a(cwl.G) || $$10.a(cwl.iC) || $$10.a(cwl.dO)) {
-                     for (ic $$11 : ic.values()) {
-                        dja $$12 = $$2.a_($$9.a($$11));
-                        if ($$12.a(cwl.mW)) {
-                           $$2.a($$9, cwl.mW.o(), 2);
-                           break;
+               for (int $$10 = $$2.u() - $$9; $$10 <= $$2.u() + $$9; $$10++) {
+                  for (int $$11 = $$2.w() - $$9; $$11 <= $$2.w() + $$9; $$11++) {
+                     int $$12 = $$10 - $$2.u();
+                     int $$13 = $$11 - $$2.w();
+                     if ($$12 * $$12 + $$13 * $$13 <= $$9 * $$9) {
+                        $$7.d($$10, $$3.a(dop.a.b, $$10, $$11) - 1, $$11);
+                        if (b($$3.a_($$7))) {
+                           $$3.a($$7, cwr.l.o(), 2);
                         }
                      }
                   }
                }
             }
 
-            return true;
+            for (int $$14 = 0; $$14 < $$8 && $$3.u($$6); $$14++) {
+               $$3.a($$6, a, 2);
+               $$6.c(ic.b, 1);
+            }
+
+            if ($$6.v() - $$2.v() >= 3) {
+               $$3.a($$6, b, 2);
+               $$3.a($$6.c(ic.a, 1), c, 2);
+               $$3.a($$6.c(ic.a, 1), d, 2);
+            }
          }
+
+         $$1++;
       }
+
+      return $$1 > 0;
    }
 }

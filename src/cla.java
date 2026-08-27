@@ -1,87 +1,44 @@
-import java.util.Collection;
-import javax.annotation.Nullable;
-
-public class cla extends cmm {
-   public cla(cmm.a $$0) {
+public class cla extends cms {
+   public cla(cms.a $$0) {
       super($$0);
    }
 
    @Override
-   public boolean i(cmr $$0) {
-      return true;
-   }
-
-   @Override
-   public boolean a(dja $$0, cti $$1, hx $$2, cfb $$3) {
+   public cmx a(cmx $$0, cto $$1, bmk $$2) {
+      cmx $$3 = super.a($$0, $$1, $$2);
       if (!$$1.B) {
-         this.a($$3, $$0, $$1, $$2, false, $$3.b(bju.a));
-      }
-
-      return false;
-   }
-
-   @Override
-   public bjv a(cpc $$0) {
-      cfb $$1 = $$0.o();
-      cti $$2 = $$0.q();
-      if (!$$2.B && $$1 != null) {
-         hx $$3 = $$0.a();
-         if (!this.a($$1, $$2.a_($$3), $$2, $$3, true, $$0.n())) {
-            return bjv.e;
-         }
-      }
-
-      return bjv.a($$2.B);
-   }
-
-   private boolean a(cfb $$0, dja $$1, ctj $$2, hx $$3, boolean $$4, cmr $$5) {
-      if (!$$0.gp()) {
-         return false;
-      } else {
-         cwj $$6 = $$1.b();
-         djb<cwj, dja> $$7 = $$6.n();
-         Collection<dkd<?>> $$8 = $$7.d();
-         String $$9 = kd.e.b($$6).toString();
-         if ($$8.isEmpty()) {
-            a($$0, vd.a(this.a() + ".empty", $$9));
-            return false;
-         } else {
-            sl $$10 = $$5.a("DebugProperty");
-            String $$11 = $$10.l($$9);
-            dkd<?> $$12 = $$7.a($$11);
-            if ($$4) {
-               if ($$12 == null) {
-                  $$12 = $$8.iterator().next();
-               }
-
-               dja $$13 = a($$1, $$12, $$0.fI());
-               $$2.a($$3, $$13, 18);
-               a($$0, vd.a(this.a() + ".update", $$12.f(), a($$13, $$12)));
-            } else {
-               $$12 = a($$8, $$12, $$0.fI());
-               String $$14 = $$12.f();
-               $$10.a($$9, $$14);
-               a($$0, vd.a(this.a() + ".select", $$14, a($$1, $$12)));
+         for (int $$4 = 0; $$4 < 16; $$4++) {
+            double $$5 = $$2.dr() + ($$2.eg().j() - 0.5) * 16.0;
+            double $$6 = aun.a($$2.dt() + (double)($$2.eg().a(16) - 8), (double)$$1.J_(), (double)($$1.J_() + ((and)$$1).k() - 1));
+            double $$7 = $$2.dx() + ($$2.eg().j() - 0.5) * 16.0;
+            if ($$2.bO()) {
+               $$2.ac();
             }
 
-            return true;
+            els $$8 = $$2.dk();
+            if ($$2.b($$5, $$6, $$7, true)) {
+               $$1.a(dnq.R, $$8, dnq.a.a($$2));
+               ars $$10;
+               arq $$9;
+               if ($$2 instanceof byh) {
+                  $$9 = arr.iL;
+                  $$10 = ars.g;
+               } else {
+                  $$9 = arr.eJ;
+                  $$10 = ars.h;
+               }
+
+               $$1.a(null, $$2.dr(), $$2.dt(), $$2.dx(), $$9, $$10);
+               $$2.n();
+               break;
+            }
+         }
+
+         if ($$2 instanceof cfh $$13) {
+            $$13.gn().a(this, 20);
          }
       }
-   }
 
-   private static <T extends Comparable<T>> dja a(dja $$0, dkd<T> $$1, boolean $$2) {
-      return $$0.a($$1, a($$1.a(), $$0.c($$1), $$2));
-   }
-
-   private static <T> T a(Iterable<T> $$0, @Nullable T $$1, boolean $$2) {
-      return $$2 ? ac.b($$0, $$1) : ac.a($$0, $$1);
-   }
-
-   private static void a(cfb $$0, vd $$1) {
-      ((ana)$$0).b($$1, true);
-   }
-
-   private static <T extends Comparable<T>> String a(dja $$0, dkd<T> $$1) {
-      return $$1.a($$0.c($$1));
+      return $$3;
    }
 }

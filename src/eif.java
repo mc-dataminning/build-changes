@@ -1,83 +1,22 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Sets;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Set;
+import java.util.Arrays;
+import java.util.function.Function;
 
-public class eif extends eib {
-   public static final int a = 0;
-   public static final Codec<eif> b = RecordCodecBuilder.create(
-      $$0 -> a($$0)
-            .and($$0.group(ekk.a.fieldOf("count").forGetter($$0x -> $$0x.c), atq.a(Codec.INT, "limit", Integer.valueOf(0)).forGetter($$0x -> $$0x.d)))
-            .apply($$0, eif::new)
-   );
-   private final ekj c;
-   private final int d;
+public interface eif<T extends eif<T>> {
+   T b(eii.a var1);
 
-   eif(List<ejo> $$0, ekj $$1, int $$2) {
-      super($$0);
-      this.c = $$1;
-      this.d = $$2;
-   }
+   default <E> T a(Iterable<E> $$0, Function<E, eii.a> $$1) {
+      T $$2 = this.c();
 
-   @Override
-   public eid b() {
-      return eie.i;
-   }
-
-   @Override
-   public Set<eix<?>> a() {
-      return Sets.union(ImmutableSet.of(eja.d), this.c.a());
-   }
-
-   private boolean c() {
-      return this.d > 0;
-   }
-
-   @Override
-   public cmr a(cmr $$0, egp $$1) {
-      blp $$2 = $$1.c(eja.d);
-      if ($$2 instanceof bmf) {
-         int $$3 = cre.h((bmf)$$2);
-         if ($$3 == 0) {
-            return $$0;
-         }
-
-         float $$4 = (float)$$3 * this.c.b($$1);
-         $$0.g(Math.round($$4));
-         if (this.c() && $$0.L() > this.d) {
-            $$0.f(this.d);
-         }
+      for (E $$3 : $$0) {
+         $$2 = $$2.b($$1.apply($$3));
       }
 
-      return $$0;
+      return $$2;
    }
 
-   public static eif.a a(ekj $$0) {
-      return new eif.a($$0);
+   default <E> T a(E[] $$0, Function<E, eii.a> $$1) {
+      return this.a(Arrays.asList($$0), $$1);
    }
 
-   public static class a extends eib.a<eif.a> {
-      private final ekj a;
-      private int b = 0;
-
-      public a(ekj $$0) {
-         this.a = $$0;
-      }
-
-      protected eif.a a() {
-         return this;
-      }
-
-      public eif.a a(int $$0) {
-         this.b = $$0;
-         return this;
-      }
-
-      @Override
-      public eic b() {
-         return new eif(this.g(), this.a, this.b);
-      }
-   }
+   T c();
 }

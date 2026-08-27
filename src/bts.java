@@ -1,49 +1,130 @@
+import com.google.common.collect.Lists;
 import java.util.EnumSet;
+import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.function.BooleanSupplier;
+import javax.annotation.Nullable;
 
-public class bts extends btb {
-   private static final bwt b = bwt.b().a(6.0);
-   public static final int a = 400;
-   private final bye c;
-   private ceo d;
-   private int e;
+public class bts extends btg {
+   protected final bmt a;
+   private final double b;
+   @Nullable
+   private eff c;
+   private hx d;
+   private final boolean e;
+   private final List<hx> f = Lists.newArrayList();
+   private final int g;
+   private final BooleanSupplier h;
 
-   public bts(bye $$0) {
-      this.c = $$0;
-      this.a(EnumSet.of(btb.a.a, btb.a.b));
+   public bts(bmt $$0, double $$1, boolean $$2, int $$3, BooleanSupplier $$4) {
+      this.a = $$0;
+      this.b = $$1;
+      this.e = $$2;
+      this.g = $$3;
+      this.h = $$4;
+      this.a(EnumSet.of(btg.a.a));
+      if (!bxd.a($$0)) {
+         throw new IllegalArgumentException("Unsupported mob for MoveThroughVillageGoal");
+      }
    }
 
    @Override
    public boolean a() {
-      if (!this.c.dM().P()) {
-         return false;
-      } else if (this.c.eg().a(8000) != 0) {
+      if (!bxd.a(this.a)) {
          return false;
       } else {
-         this.d = this.c.dM().a(ceo.class, b, this.c, this.c.dr(), this.c.dt(), this.c.dx(), this.c.cH().c(6.0, 2.0, 6.0));
-         return this.d != null;
+         this.h();
+         if (this.e && this.a.dM().P()) {
+            return false;
+         } else {
+            and $$0 = (and)this.a.dM();
+            hx $$1 = this.a.dm();
+            if (!$$0.a($$1, 6)) {
+               return false;
+            } else {
+               els $$2 = bxf.a(this.a, 15, 7, $$2x -> {
+                  if (!$$0.c($$2x)) {
+                     return Double.NEGATIVE_INFINITY;
+                  } else {
+                     Optional<hx> $$3x = $$0.y().d($$0xx -> $$0xx.a(asq.b), this::a, $$2x, 10, bxl.b.b);
+                     return $$3x.<Double>map($$1xx -> -$$1xx.j($$1)).orElse(Double.NEGATIVE_INFINITY);
+                  }
+               });
+               if ($$2 == null) {
+                  return false;
+               } else {
+                  Optional<hx> $$3 = $$0.y().d($$0x -> $$0x.a(asq.b), this::a, hx.a($$2), 10, bxl.b.b);
+                  if ($$3.isEmpty()) {
+                     return false;
+                  } else {
+                     this.d = $$3.get().i();
+                     bvt $$4 = (bvt)this.a.N();
+                     boolean $$5 = $$4.f();
+                     $$4.b(this.h.getAsBoolean());
+                     this.c = $$4.a(this.d, 0);
+                     $$4.b($$5);
+                     if (this.c == null) {
+                        els $$6 = bxc.a(this.a, 10, 7, els.c(this.d), (float) (Math.PI / 2));
+                        if ($$6 == null) {
+                           return false;
+                        }
+
+                        $$4.b(this.h.getAsBoolean());
+                        this.c = this.a.N().a($$6.c, $$6.d, $$6.e, 0);
+                        $$4.b($$5);
+                        if (this.c == null) {
+                           return false;
+                        }
+                     }
+
+                     for (int $$7 = 0; $$7 < this.c.e(); $$7++) {
+                        efd $$8 = this.c.a($$7);
+                        hx $$9 = new hx($$8.a, $$8.b + 1, $$8.c);
+                        if (cyv.a(this.a.dM(), $$9)) {
+                           this.c = this.a.N().a((double)$$8.a, (double)$$8.b, (double)$$8.c, 0);
+                           break;
+                        }
+                     }
+
+                     return this.c != null;
+                  }
+               }
+            }
+         }
       }
    }
 
    @Override
    public boolean b() {
-      return this.e > 0;
+      return this.a.N().l() ? false : !this.d.a(this.a.dk(), (double)(this.a.dg() + (float)this.g));
    }
 
    @Override
    public void c() {
-      this.e = this.a(400);
-      this.c.w(true);
+      this.a.N().a(this.c, this.b);
    }
 
    @Override
    public void d() {
-      this.c.w(false);
-      this.d = null;
+      if (this.a.N().l() || this.d.a(this.a.dk(), (double)this.g)) {
+         this.f.add(this.d);
+      }
    }
 
-   @Override
-   public void e() {
-      this.c.I().a(this.d, 30.0F, 30.0F);
-      this.e--;
+   private boolean a(hx $$0) {
+      for (hx $$1 : this.f) {
+         if (Objects.equals($$0, $$1)) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   private void h() {
+      if (this.f.size() > 15) {
+         this.f.remove(0);
+      }
    }
 }

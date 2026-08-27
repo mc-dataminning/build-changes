@@ -1,102 +1,143 @@
-public class aaj implements xd<yx> {
-   private final double a;
-   private final double b;
-   private final double c;
-   private final float d;
-   private final float e;
-   private final float f;
-   private final float g;
-   private final int h;
-   private final boolean i;
-   private final jv j;
+import com.google.common.collect.Lists;
+import io.netty.buffer.ByteBuf;
+import io.netty.buffer.Unpooled;
+import java.util.List;
+import java.util.Map.Entry;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-   public <T extends jv> aaj(T $$0, boolean $$1, double $$2, double $$3, double $$4, float $$5, float $$6, float $$7, float $$8, int $$9) {
-      this.j = $$0;
-      this.i = $$1;
-      this.a = $$2;
-      this.b = $$3;
-      this.c = $$4;
-      this.d = $$5;
-      this.e = $$6;
-      this.f = $$7;
-      this.g = $$8;
-      this.h = $$9;
+public class aaj {
+   private static final int a = 2097152;
+   private final sn b;
+   private final byte[] c;
+   private final List<aaj.a> d;
+
+   public aaj(dln $$0) {
+      this.b = new sn();
+
+      for (Entry<dop.a, dop> $$1 : $$0.e()) {
+         if ($$1.getKey().b()) {
+            this.b.a($$1.getKey().a(), new su($$1.getValue().a()));
+         }
+      }
+
+      this.c = new byte[a($$0)];
+      a(new ui(this.c()), $$0);
+      this.d = Lists.newArrayList();
+
+      for (Entry<hx, dgu> $$2 : $$0.G().entrySet()) {
+         this.d.add(aaj.a.a($$2.getValue()));
+      }
    }
 
-   public aaj(ug $$0) {
-      jw<?> $$1 = $$0.a(kd.j);
-      this.i = $$0.readBoolean();
-      this.a = $$0.readDouble();
-      this.b = $$0.readDouble();
-      this.c = $$0.readDouble();
-      this.d = $$0.readFloat();
-      this.e = $$0.readFloat();
-      this.f = $$0.readFloat();
-      this.g = $$0.readFloat();
-      this.h = $$0.readInt();
-      this.j = this.a($$0, (jw<jv>)$$1);
+   public aaj(ui $$0, int $$1, int $$2) {
+      this.b = $$0.q();
+      if (this.b == null) {
+         throw new RuntimeException("Can't read heightmap in packet for [" + $$1 + ", " + $$2 + "]");
+      } else {
+         int $$3 = $$0.n();
+         if ($$3 > 2097152) {
+            throw new RuntimeException("Chunk Packet trying to allocate too much memory on read.");
+         } else {
+            this.c = new byte[$$3];
+            $$0.b(this.c);
+            this.d = $$0.a(aaj.a::new);
+         }
+      }
    }
 
-   private <T extends jv> T a(ug $$0, jw<T> $$1) {
-      return $$1.d().b($$1, $$0);
+   public void a(ui $$0) {
+      $$0.a((tk)this.b);
+      $$0.c(this.c.length);
+      $$0.c(this.c);
+      $$0.a(this.d, ($$0x, $$1) -> $$1.a($$0x));
    }
 
-   @Override
-   public void a(ug $$0) {
-      $$0.a(kd.j, this.j.b());
-      $$0.a(this.i);
-      $$0.a(this.a);
-      $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
-      $$0.a(this.f);
-      $$0.a(this.g);
-      $$0.p(this.h);
-      this.j.a($$0);
+   private static int a(dln $$0) {
+      int $$1 = 0;
+
+      for (dlo $$2 : $$0.d()) {
+         $$1 += $$2.j();
+      }
+
+      return $$1;
    }
 
-   public boolean a() {
-      return this.i;
+   private ByteBuf c() {
+      ByteBuf $$0 = Unpooled.wrappedBuffer(this.c);
+      $$0.writerIndex(0);
+      return $$0;
    }
 
-   public double d() {
-      return this.a;
+   public static void a(ui $$0, dln $$1) {
+      for (dlo $$2 : $$1.d()) {
+         $$2.c($$0);
+      }
    }
 
-   public double e() {
+   public Consumer<aaj.b> a(int $$0, int $$1) {
+      return $$2 -> this.a($$2, $$0, $$1);
+   }
+
+   private void a(aaj.b $$0, int $$1, int $$2) {
+      int $$3 = 16 * $$1;
+      int $$4 = 16 * $$2;
+      hx.a $$5 = new hx.a();
+
+      for (aaj.a $$6 : this.d) {
+         int $$7 = $$3 + iz.b($$6.a >> 4);
+         int $$8 = $$4 + iz.b($$6.a);
+         $$5.d($$7, $$6.b, $$8);
+         $$0.accept($$5, $$6.c, $$6.d);
+      }
+   }
+
+   public ui a() {
+      return new ui(Unpooled.wrappedBuffer(this.c));
+   }
+
+   public sn b() {
       return this.b;
    }
 
-   public double f() {
-      return this.c;
+   static class a {
+      final int a;
+      final int b;
+      final dgw<?> c;
+      @Nullable
+      final sn d;
+
+      private a(int $$0, int $$1, dgw<?> $$2, @Nullable sn $$3) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+      }
+
+      private a(ui $$0) {
+         this.a = $$0.readByte();
+         this.b = $$0.readShort();
+         this.c = $$0.a(kd.k);
+         this.d = $$0.q();
+      }
+
+      void a(ui $$0) {
+         $$0.k(this.a);
+         $$0.l(this.b);
+         $$0.a(kd.k, this.c);
+         $$0.a((tk)this.d);
+      }
+
+      static aaj.a a(dgu $$0) {
+         sn $$1 = $$0.ax_();
+         hx $$2 = $$0.aB_();
+         int $$3 = iz.b($$2.u()) << 4 | iz.b($$2.w());
+         return new aaj.a($$3, $$2.v(), $$0.v(), $$1.g() ? null : $$1);
+      }
    }
 
-   public float g() {
-      return this.d;
-   }
-
-   public float h() {
-      return this.e;
-   }
-
-   public float i() {
-      return this.f;
-   }
-
-   public float j() {
-      return this.g;
-   }
-
-   public int k() {
-      return this.h;
-   }
-
-   public jv l() {
-      return this.j;
-   }
-
-   public void a(yx $$0) {
-      $$0.a(this);
+   @FunctionalInterface
+   public interface b {
+      void accept(hx var1, dgw<?> var2, @Nullable sn var3);
    }
 }

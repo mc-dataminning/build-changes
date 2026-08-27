@@ -1,44 +1,46 @@
 import com.mojang.serialization.Codec;
 
-public class dsb extends drn<dty> {
-   public dsb(Codec<dty> $$0) {
+public class dsb extends dqw {
+   public dsb(Codec<dtz> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(drp<dty> $$0) {
-      int $$1 = 0;
-      cud $$2 = $$0.b();
-      hx $$3 = $$0.e();
-      aup $$4 = $$0.d();
-      int $$5 = $$2.a(doj.a.d, $$3.u(), $$3.w());
-      hx $$6 = new hx($$3.u(), $$5, $$3.w());
-      if ($$2.a_($$6).a(cwl.G)) {
-         dja $$7 = cwl.mc.o();
-         dja $$8 = cwl.md.o();
-         int $$9 = 1 + $$4.a(10);
+   protected void a(ctp $$0, auu $$1, hx $$2, int $$3, hx.a $$4, dtz $$5) {
+      int $$6 = $$5.d;
 
-         for (int $$10 = 0; $$10 <= $$9; $$10++) {
-            if ($$2.a_($$6).a(cwl.G) && $$2.a_($$6.c()).a(cwl.G) && $$8.a($$2, $$6)) {
-               if ($$10 == $$9) {
-                  $$2.a($$6, $$7.a(dam.e, Integer.valueOf($$4.a(4) + 20)), 2);
-                  $$1++;
-               } else {
-                  $$2.a($$6, $$8, 2);
+      for (int $$7 = -$$6; $$7 <= $$6; $$7++) {
+         for (int $$8 = -$$6; $$8 <= $$6; $$8++) {
+            boolean $$9 = $$7 == -$$6;
+            boolean $$10 = $$7 == $$6;
+            boolean $$11 = $$8 == -$$6;
+            boolean $$12 = $$8 == $$6;
+            boolean $$13 = $$9 || $$10;
+            boolean $$14 = $$11 || $$12;
+            if (!$$13 || !$$14) {
+               $$4.a($$2, $$7, $$3, $$8);
+               if (!$$0.a_($$4).i($$0, $$4)) {
+                  boolean $$15 = $$9 || $$14 && $$7 == 1 - $$6;
+                  boolean $$16 = $$10 || $$14 && $$7 == $$6 - 1;
+                  boolean $$17 = $$11 || $$13 && $$8 == 1 - $$6;
+                  boolean $$18 = $$12 || $$13 && $$8 == $$6 - 1;
+                  djg $$19 = $$5.b.a($$1, $$2);
+                  if ($$19.b(dal.e) && $$19.b(dal.c) && $$19.b(dal.b) && $$19.b(dal.d)) {
+                     $$19 = $$19.a(dal.e, Boolean.valueOf($$15))
+                        .a(dal.c, Boolean.valueOf($$16))
+                        .a(dal.b, Boolean.valueOf($$17))
+                        .a(dal.d, Boolean.valueOf($$18));
+                  }
+
+                  this.a($$0, $$4, $$19);
                }
-            } else if ($$10 > 0) {
-               hx $$11 = $$6.d();
-               if ($$7.a($$2, $$11) && !$$2.a_($$11.d()).a(cwl.mc)) {
-                  $$2.a($$11, $$7.a(dam.e, Integer.valueOf($$4.a(4) + 20)), 2);
-                  $$1++;
-               }
-               break;
             }
-
-            $$6 = $$6.c();
          }
       }
+   }
 
-      return $$1 > 0;
+   @Override
+   protected int a(int $$0, int $$1, int $$2, int $$3) {
+      return $$3 <= 3 ? 0 : $$2;
    }
 }

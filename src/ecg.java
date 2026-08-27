@@ -1,44 +1,92 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import javax.annotation.Nullable;
 
-public class ecg extends ecw {
-   public static final Codec<ecg> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(doj.a.g.fieldOf("heightmap").orElse(doj.a.a).forGetter($$0x -> $$0x.b), Codec.INT.fieldOf("offset").orElse(0).forGetter($$0x -> $$0x.c))
-            .apply($$0, ecg::new)
-   );
-   private final doj.a b;
-   private final int c;
+public class ecg extends edc {
+   public static final Codec<ecg> a = Codec.FLOAT.fieldOf("mossiness").xmap(ecg::new, $$0 -> $$0.f).codec();
+   private static final float b = 0.5F;
+   private static final float c = 0.5F;
+   private static final float d = 0.15F;
+   private static final djg[] e = new djg[]{cwr.jD.o(), cwr.jK.o()};
+   private final float f;
 
-   public ecg(doj.a $$0, int $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public ecg(float $$0) {
+      this.f = $$0;
    }
 
    @Nullable
    @Override
-   public ecz.c a(ctl $$0, hx $$1, hx $$2, ecz.c $$3, ecz.c $$4, ecv $$5) {
-      doj.a $$6;
-      if ($$0 instanceof amz) {
-         if (this.b == doj.a.a) {
-            $$6 = doj.a.b;
-         } else if (this.b == doj.a.c) {
-            $$6 = doj.a.d;
-         } else {
-            $$6 = this.b;
-         }
-      } else {
-         $$6 = this.b;
+   public edf.c a(ctr $$0, hx $$1, hx $$2, edf.c $$3, edf.c $$4, edb $$5) {
+      auu $$6 = $$5.b($$4.a());
+      djg $$7 = $$4.b();
+      hx $$8 = $$4.a();
+      djg $$9 = null;
+      if ($$7.a(cwr.eH) || $$7.a(cwr.b) || $$7.a(cwr.eK)) {
+         $$9 = this.a($$6);
+      } else if ($$7.a(asg.J)) {
+         $$9 = this.a($$6, $$4.b());
+      } else if ($$7.a(asg.K)) {
+         $$9 = this.b($$6);
+      } else if ($$7.a(asg.L)) {
+         $$9 = this.c($$6);
+      } else if ($$7.a(cwr.co)) {
+         $$9 = this.d($$6);
       }
 
-      hx $$10 = $$4.a();
-      int $$11 = $$0.a($$6, $$10.u(), $$10.w()) + this.c;
-      int $$12 = $$3.a().v();
-      return new ecz.c(new hx($$10.u(), $$11 + $$12, $$10.w()), $$4.b(), $$4.c());
+      return $$9 != null ? new edf.c($$8, $$9, $$4.c()) : $$4;
+   }
+
+   @Nullable
+   private djg a(auu $$0) {
+      if ($$0.i() >= 0.5F) {
+         return null;
+      } else {
+         djg[] $$1 = new djg[]{cwr.eJ.o(), a($$0, cwr.fj)};
+         djg[] $$2 = new djg[]{cwr.eI.o(), a($$0, cwr.ng)};
+         return this.a($$0, $$1, $$2);
+      }
+   }
+
+   @Nullable
+   private djg a(auu $$0, djg $$1) {
+      ic $$2 = $$1.c(dei.b);
+      dkf $$3 = $$1.c(dei.c);
+      if ($$0.i() >= 0.5F) {
+         return null;
+      } else {
+         djg[] $$4 = new djg[]{cwr.ng.o().a(dei.b, $$2).a(dei.c, $$3), cwr.nu.o()};
+         return this.a($$0, e, $$4);
+      }
+   }
+
+   @Nullable
+   private djg b(auu $$0) {
+      return $$0.i() < this.f ? cwr.nu.o() : null;
+   }
+
+   @Nullable
+   private djg c(auu $$0) {
+      return $$0.i() < this.f ? cwr.nI.o() : null;
+   }
+
+   @Nullable
+   private djg d(auu $$0) {
+      return $$0.i() < 0.15F ? cwr.pk.o() : null;
+   }
+
+   private static djg a(auu $$0, cwp $$1) {
+      return $$1.o().a(dei.b, ic.c.a.a($$0)).a(dei.c, ac.a(dkf.values(), $$0));
+   }
+
+   private djg a(auu $$0, djg[] $$1, djg[] $$2) {
+      return $$0.i() < this.f ? a($$0, $$2) : a($$0, $$1);
+   }
+
+   private static djg a(auu $$0, djg[] $$1) {
+      return $$1[$$0.a($$1.length)];
    }
 
    @Override
-   protected ecy<?> a() {
-      return ecy.g;
+   protected ede<?> a() {
+      return ede.k;
    }
 }

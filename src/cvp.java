@@ -1,99 +1,110 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class cvp extends cvv {
+public class cvp extends czl {
    public static final MapCodec<cvp> a = b(cvp::new);
-   public static final dju b = djq.P;
-   public static final djr c = djq.u;
+   public static final dka b = dak.aE;
+   private static final eml c = cwp.a(2.0, 0.0, 2.0, 14.0, 4.0, 14.0);
+   private static final eml d = cwp.a(3.0, 4.0, 4.0, 13.0, 5.0, 12.0);
+   private static final eml e = cwp.a(4.0, 5.0, 6.0, 12.0, 10.0, 10.0);
+   private static final eml f = cwp.a(0.0, 10.0, 3.0, 16.0, 16.0, 13.0);
+   private static final eml g = cwp.a(4.0, 4.0, 3.0, 12.0, 5.0, 13.0);
+   private static final eml h = cwp.a(6.0, 5.0, 4.0, 10.0, 10.0, 12.0);
+   private static final eml i = cwp.a(3.0, 10.0, 0.0, 13.0, 16.0, 16.0);
+   private static final eml j = emi.a(c, d, e, f);
+   private static final eml k = emi.a(c, g, h, i);
+   private static final vf l = vf.c("container.repair");
+   private static final float m = 2.0F;
+   private static final int n = 40;
 
    @Override
    public MapCodec<cvp> a() {
       return a;
    }
 
-   public cvp(diz.d $$0) {
+   public cvp(djf.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b, ic.c).a(c, Boolean.valueOf(false)));
+      this.k(this.E.b().a(b, ic.c));
    }
 
    @Override
-   public bjv a(dja $$0, cti $$1, hx $$2, cfb $$3, bju $$4, eli $$5) {
+   public djg a(cpg $$0) {
+      return this.o().a(b, $$0.g().h());
+   }
+
+   @Override
+   public bka a(djg $$0, cto $$1, hx $$2, cfh $$3, bjz $$4, elo $$5) {
       if ($$1.B) {
-         return bjv.a;
+         return bka.a;
       } else {
-         dgo $$6 = $$1.c_($$2);
-         if ($$6 instanceof dgh) {
-            $$3.a((dgh)$$6);
-            $$3.a(arw.ar);
-            cds.a($$3, true);
-         }
-
-         return bjv.b;
-      }
-   }
-
-   @Override
-   public void a(dja $$0, cti $$1, hx $$2, dja $$3, boolean $$4) {
-      bjr.a($$0, $$3, $$1, $$2);
-      super.a($$0, $$1, $$2, $$3, $$4);
-   }
-
-   @Override
-   public void a(dja $$0, amz $$1, hx $$2, aup $$3) {
-      dgo $$4 = $$1.c_($$2);
-      if ($$4 instanceof dgh) {
-         ((dgh)$$4).m();
+         $$3.a($$0.b($$1, $$2));
+         $$3.a(asb.aC);
+         return bka.b;
       }
    }
 
    @Nullable
    @Override
-   public dgo a(hx $$0, dja $$1) {
-      return new dgh($$0, $$1);
+   public bkd b(djg $$0, cto $$1, hx $$2) {
+      return new bkj(($$2x, $$3, $$4) -> new cic($$2x, $$3, cil.a($$1, $$2)), l);
    }
 
    @Override
-   public dco b_(dja $$0) {
-      return dco.c;
+   public eml a(djg $$0, csu $$1, hx $$2, elx $$3) {
+      ic $$4 = $$0.c(b);
+      return $$4.o() == ic.a.a ? j : k;
    }
 
    @Override
-   public void a(cti $$0, hx $$1, dja $$2, @Nullable bmf $$3, cmr $$4) {
-      if ($$4.A()) {
-         dgo $$5 = $$0.c_($$1);
-         if ($$5 instanceof dgh) {
-            ((dgh)$$5).a($$4.y());
-         }
+   protected void a(cbs $$0) {
+      $$0.b(2.0F, 40);
+   }
+
+   @Override
+   public void a(cto $$0, hx $$1, djg $$2, djg $$3, cbs $$4) {
+      if (!$$4.aU()) {
+         $$0.c(1031, $$1, 0);
       }
    }
 
    @Override
-   public boolean d_(dja $$0) {
-      return true;
+   public void a(cto $$0, hx $$1, cbs $$2) {
+      if (!$$2.aU()) {
+         $$0.c(1029, $$1, 0);
+      }
    }
 
    @Override
-   public int a(dja $$0, cti $$1, hx $$2) {
-      return chu.a($$1.c_($$2));
+   public bks a(blu $$0) {
+      return $$0.dN().b($$0);
+   }
+
+   @Nullable
+   public static djg e(djg $$0) {
+      if ($$0.a(cwr.gS)) {
+         return cwr.gT.o().a(b, $$0.c(b));
+      } else {
+         return $$0.a(cwr.gT) ? cwr.gU.o().a(b, $$0.c(b)) : null;
+      }
    }
 
    @Override
-   public dja a(dja $$0, dcv $$1) {
+   public djg a(djg $$0, ddb $$1) {
       return $$0.a(b, $$1.a($$0.c(b)));
    }
 
    @Override
-   public dja a(dja $$0, dbf $$1) {
-      return $$0.a($$1.a($$0.c(b)));
+   protected void a(djh.a<cwp, djg> $$0) {
+      $$0.a(b);
    }
 
    @Override
-   protected void a(djb.a<cwj, dja> $$0) {
-      $$0.a(b, c);
+   public boolean a(djg $$0, csu $$1, hx $$2, efg $$3) {
+      return false;
    }
 
    @Override
-   public dja a(cpa $$0) {
-      return this.o().a(b, $$0.d().g());
+   public int b(djg $$0, csu $$1, hx $$2) {
+      return $$0.d($$1, $$2).ak;
    }
 }

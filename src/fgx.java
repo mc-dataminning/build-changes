@@ -1,155 +1,154 @@
+import com.mojang.authlib.minecraft.report.AbuseReportLimits;
+import com.mojang.logging.LogUtils;
+import java.util.concurrent.CancellationException;
+import java.util.concurrent.CompletableFuture;
 import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class fgx extends fct {
-   private static final vd a = vd.c("gui.abuseReport.reason.title");
-   private static final vd b = vd.c("gui.abuseReport.reason.description");
-   private static final vd c = vd.c("gui.abuseReport.read_info");
-   private static final int k = 95;
-   private static final int l = 150;
-   private static final int m = 20;
-   private static final int n = 320;
-   private static final int o = 4;
-   @Nullable
-   private final fct p;
-   @Nullable
-   private fgx.a q;
-   @Nullable
-   fol r;
-   private final Consumer<fol> t;
+public abstract class fgx<B extends fop.a<?>> extends fcz {
+   private static final vf r = vf.c("gui.abuseReport.report_sent_msg");
+   private static final vf t = vf.c("gui.abuseReport.sending.title").a(n.r);
+   private static final vf u = vf.c("gui.abuseReport.sent.title").a(n.r);
+   private static final vf v = vf.c("gui.abuseReport.error.title").a(n.r);
+   private static final vf w = vf.c("gui.abuseReport.send.generic_error");
+   protected static final vf a = vf.c("gui.abuseReport.send");
+   protected static final vf b = vf.c("gui.abuseReport.observed_what");
+   protected static final vf c = vf.c("gui.abuseReport.select_reason");
+   private static final vf x = vf.c("gui.abuseReport.describe");
+   protected static final vf k = vf.c("gui.abuseReport.more_comments");
+   private static final vf y = vf.c("gui.abuseReport.comments");
+   protected static final int l = 20;
+   protected static final int m = 280;
+   protected static final int n = 8;
+   private static final Logger z = LogUtils.getLogger();
+   protected final fcz o;
+   protected final fou p;
+   protected B q;
 
-   public fgx(@Nullable fct $$0, @Nullable fol $$1, Consumer<fol> $$2) {
-      super(a);
-      this.p = $$0;
-      this.r = $$1;
-      this.t = $$2;
+   protected fgx(vf $$0, fcz $$1, fou $$2, B $$3) {
+      super($$0);
+      this.o = $$1;
+      this.p = $$2;
+      this.q = $$3;
    }
 
-   @Override
-   protected void aN_() {
-      this.q = this.d(new fgx.a(this.f));
-      fgx.a.a $$0 = x.a(this.r, this.q::a);
-      this.q.a($$0);
-      int $$1 = this.g / 2 - 150 - 5;
-      this.d(ewy.a(c, fbl.b(this, "https://aka.ms/aboutjavareporting")).a($$1, this.n(), 150, 20).a());
-      int $$2 = this.g / 2 + 5;
-      this.d(ewy.a(vc.d, $$0x -> {
-         fgx.a.a $$1x = this.q.i();
-         if ($$1x != null) {
-            this.t.accept($$1x.b());
-         }
-
-         this.f.a(this.p);
-      }).a($$2, this.n(), 150, 20).a());
-      super.aN_();
+   protected exw a(int $$0, int $$1, Consumer<String> $$2) {
+      AbuseReportLimits $$3 = this.p.a().b();
+      exw $$4 = new exw(this.i, 0, 0, $$0, $$1, x, y);
+      $$4.a(this.q.g());
+      $$4.a($$3.maxOpinionCommentsLength());
+      $$4.b($$2);
+      return $$4;
    }
 
-   @Override
-   public void a(ewm $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 16, 16777215);
-      $$0.a(this.C(), this.E(), this.D(), this.H(), 2130706432);
-      $$0.b(this.i, b, this.C() + 4, this.E() + 4, -8421505);
-      fgx.a.a $$4 = this.q.i();
-      if ($$4 != null) {
-         int $$5 = this.C() + 4 + 16;
-         int $$6 = this.D() - 4;
-         int $$7 = this.E() + 4 + 9 + 2;
-         int $$8 = this.H() - 4;
-         int $$9 = $$6 - $$5;
-         int $$10 = $$8 - $$7;
-         int $$11 = this.i.b($$4.b.c(), $$9);
-         $$0.a(this.i, $$4.b.c(), $$5, $$7 + ($$10 - $$11) / 2, $$9, -1);
+   protected void n() {
+      this.q.a(this.p).ifLeft($$0 -> {
+         CompletableFuture<?> $$1 = this.p.a().a($$0.a(), $$0.b(), $$0.c());
+         this.f.a(fcg.a(t, ve.e, () -> {
+            this.f.a(this);
+            $$1.cancel(true);
+         }));
+         $$1.handleAsync(($$0x, $$1x) -> {
+            if ($$1x == null) {
+               this.C();
+            } else {
+               if ($$1x instanceof CancellationException) {
+                  return null;
+               }
+
+               this.a($$1x);
+            }
+
+            return null;
+         }, this.f);
+      }).ifRight($$0 -> this.a($$0.b()));
+   }
+
+   private void C() {
+      this.E();
+      this.f.a(fcg.a(u, r, ve.d, () -> this.f.a(null)));
+   }
+
+   private void a(Throwable $$0) {
+      z.error("Encountered error while sending abuse report", $$0);
+      vf $$2;
+      if ($$0.getCause() instanceof wf $$1) {
+         $$2 = $$1.b();
+      } else {
+         $$2 = w;
+      }
+
+      this.a($$2);
+   }
+
+   private void a(vf $$0) {
+      vf $$1 = $$0.f().a(n.m);
+      this.f.a(fcg.a(v, $$1, ve.k, () -> this.f.a(this)));
+   }
+
+   void D() {
+      if (this.q.b()) {
+         this.p.a(this.q.e().b());
       }
    }
 
-   @Override
-   public void b(ewm $$0, int $$1, int $$2, float $$3) {
-      this.b($$0);
-   }
-
-   private int n() {
-      return this.h - 20 - 4;
-   }
-
-   private int C() {
-      return (this.g - 320) / 2;
-   }
-
-   private int D() {
-      return (this.g + 320) / 2;
-   }
-
-   private int E() {
-      return this.h - 95 + 4;
-   }
-
-   private int H() {
-      return this.n() - 4;
+   void E() {
+      this.p.a(null);
    }
 
    @Override
    public void aE_() {
-      this.f.a(this.p);
+      if (this.q.b()) {
+         this.f.a(new fgx.a());
+      } else {
+         this.f.a(this.o);
+      }
    }
 
-   public class a extends exu<fgx.a.a> {
-      public a(eva $$1) {
-         super($$1, fgx.this.g, fgx.this.h - 95 - 40, 40, 18);
+   @Override
+   public void j() {
+      this.D();
+      super.j();
+   }
 
-         for (fol $$2 : fol.values()) {
-            this.b(new fgx.a.a($$2));
-         }
-      }
+   class a extends fgc {
+      private static final int c = 20;
+      private static final vf k = vf.c("gui.abuseReport.discard.title").a(n.r);
+      private static final vf l = vf.c("gui.abuseReport.discard.content");
+      private static final vf m = vf.c("gui.abuseReport.discard.return");
+      private static final vf n = vf.c("gui.abuseReport.discard.draft");
+      private static final vf o = vf.c("gui.abuseReport.discard.discard");
 
-      @Nullable
-      public fgx.a.a a(fol $$0) {
-         return this.l().stream().filter($$1 -> $$1.b == $$0).findFirst().orElse(null);
+      protected a() {
+         super(k, l, l);
       }
 
       @Override
-      public int b() {
-         return 320;
+      protected void a(int $$0) {
+         this.d(exe.a(m, $$0x -> this.aE_()).a(this.g / 2 - 155, 100 + $$0).a());
+         this.d(exe.a(n, $$0x -> {
+            fgx.this.D();
+            this.f.a(fgx.this.o);
+         }).a(this.g / 2 + 5, 100 + $$0).a());
+         this.d(exe.a(o, $$0x -> {
+            fgx.this.E();
+            this.f.a(fgx.this.o);
+         }).a(this.g / 2 - 75, 130 + $$0).a());
       }
 
       @Override
-      protected int c() {
-         return this.r() - 2;
+      public void aE_() {
+         this.f.a(fgx.this);
       }
 
-      public void a(@Nullable fgx.a.a $$0) {
-         super.a($$0);
-         fgx.this.r = $$0 != null ? $$0.b() : null;
+      @Override
+      public boolean aL_() {
+         return false;
       }
 
-      public class a extends exu.a<fgx.a.a> {
-         final fol b;
-
-         public a(fol $$1) {
-            this.b = $$1;
-         }
-
-         @Override
-         public void a(ewm $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-            int $$10 = $$3 + 1;
-            int $$11 = $$2 + ($$5 - 9) / 2 + 1;
-            $$0.b(fgx.this.i, this.b.b(), $$10, $$11, -1);
-         }
-
-         @Override
-         public vd a() {
-            return vd.a("gui.abuseReport.reason.narration", this.b.b(), this.b.c());
-         }
-
-         @Override
-         public boolean a(double $$0, double $$1, int $$2) {
-            a.this.a(this);
-            return true;
-         }
-
-         public fol b() {
-            return this.b;
-         }
+      @Override
+      protected void c(ews $$0) {
+         $$0.b(this.i, this.e, this.g / 2 - 155, 30, -1);
       }
    }
 }

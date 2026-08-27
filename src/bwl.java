@@ -1,37 +1,27 @@
-import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
-import it.unimi.dsi.fastutil.ints.IntSet;
+import com.google.common.collect.ImmutableSet;
+import java.util.Optional;
+import java.util.Set;
 
-public class bwl {
-   private final bmh a;
-   private final IntSet b = new IntOpenHashSet();
-   private final IntSet c = new IntOpenHashSet();
+public abstract class bwl extends bwr<bmk> {
+   protected abstract boolean a(bmk var1, bmk var2);
 
-   public bwl(bmh $$0) {
-      this.a = $$0;
+   protected abstract bvm<bmk> b();
+
+   @Override
+   public Set<bvm<?>> a() {
+      return ImmutableSet.of(this.b());
    }
 
-   public void a() {
-      this.b.clear();
-      this.c.clear();
+   @Override
+   protected void a(and $$0, bmk $$1) {
+      $$1.dO().a(this.b(), this.b($$1));
    }
 
-   public boolean a(blp $$0) {
-      int $$1 = $$0.aj();
-      if (this.b.contains($$1)) {
-         return true;
-      } else if (this.c.contains($$1)) {
-         return false;
-      } else {
-         this.a.dM().af().a("hasLineOfSight");
-         boolean $$2 = this.a.E($$0);
-         this.a.dM().af().c();
-         if ($$2) {
-            this.b.add($$1);
-         } else {
-            this.c.add($$1);
-         }
+   private Optional<bmk> b(bmk $$0) {
+      return this.a($$0).flatMap($$1 -> $$1.a($$1x -> this.a($$0, $$1x)));
+   }
 
-         return $$2;
-      }
+   protected Optional<bvo> a(bmk $$0) {
+      return $$0.dO().c(bvm.h);
    }
 }

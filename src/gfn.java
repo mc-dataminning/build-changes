@@ -1,74 +1,42 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.SortedMap;
-import java.util.TreeMap;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.Set;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
 
-public class gfn implements aqd {
-   private static final Logger a = LogUtils.getLogger();
-   private static final gfm b = new gfm("US", "English", false);
-   private Map<String, gfm> c = ImmutableMap.of("en_us", b);
-   private String d;
+public abstract class gfn implements aqb, AutoCloseable {
+   private final gek a;
+   private final ahg b;
+   private final Set<aph<?>> c;
 
-   public gfn(String $$0) {
-      this.d = $$0;
+   public gfn(gem $$0, ahg $$1, ahg $$2) {
+      this($$0, $$1, $$2, geg.a);
    }
 
-   private static Map<String, gfm> a(Stream<aoq> $$0) {
-      Map<String, gfm> $$1 = Maps.newHashMap();
-      $$0.forEach($$1x -> {
-         try {
-            gfz $$2 = $$1x.a(gfz.c);
-            if ($$2 != null) {
-               $$2.a().forEach($$1::putIfAbsent);
-            }
-         } catch (IOException | RuntimeException var3) {
-            a.warn("Unable to parse language metadata section of resourcepack: {}", $$1x.a(), var3);
-         }
-      });
-      return ImmutableMap.copyOf($$1);
+   public gfn(gem $$0, ahg $$1, ahg $$2, Set<aph<?>> $$3) {
+      this.b = $$2;
+      this.a = new gek($$1);
+      $$0.a(this.a.g(), this.a);
+      this.c = $$3;
+   }
+
+   protected gel a(ahg $$0) {
+      return this.a.a($$0);
    }
 
    @Override
-   public void a(aqc $$0) {
-      this.c = a($$0.b());
-      List<String> $$1 = new ArrayList<>(2);
-      boolean $$2 = b.d();
-      $$1.add("en_us");
-      if (!this.d.equals("en_us")) {
-         gfm $$3 = this.c.get(this.d);
-         if ($$3 != null) {
-            $$1.add(this.d);
-            $$2 = $$3.d();
-         }
-      }
-
-      gfj $$4 = gfj.a($$0, $$1, $$2);
-      gfl.a($$4);
-      sg.a($$4);
+   public final CompletableFuture<Void> a(aqb.a $$0, aqh $$1, bgr $$2, bgr $$3, Executor $$4, Executor $$5) {
+      return geg.a(this.a).a($$1, this.b, 0, $$4, this.c).thenCompose(geg.a::a).thenCompose($$0::a).thenAcceptAsync($$1x -> this.a($$1x, $$3), $$5);
    }
 
-   public void a(String $$0) {
-      this.d = $$0;
+   private void a(geg.a $$0, bgr $$1) {
+      $$1.a();
+      $$1.a("upload");
+      this.a.a($$0);
+      $$1.c();
+      $$1.b();
    }
 
-   public String a() {
-      return this.d;
-   }
-
-   public SortedMap<String, gfm> b() {
-      return new TreeMap<>(this.c);
-   }
-
-   @Nullable
-   public gfm b(String $$0) {
-      return this.c.get($$0);
+   @Override
+   public void close() {
+      this.a.f();
    }
 }

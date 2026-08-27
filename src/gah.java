@@ -1,27 +1,29 @@
-public class gah extends fzl<ccs, fln<ccs>> {
-   private static final ahd a = new ahd("textures/entity/slime/slime.png");
+public class gah extends fzr<bys, flj<bys>> {
+   private static final ahg a = new ahg("textures/entity/fish/salmon.png");
 
-   public gah(fyf.a $$0) {
-      super($$0, new fln<>($$0.a(fmo.bp)), 0.25F);
-      this.a(new gcu<>(this, $$0.f()));
+   public gah(fyl.a $$0) {
+      super($$0, new flj<>($$0.a(fmu.bd)), 0.4F);
    }
 
-   public void a(ccs $$0, float $$1, float $$2, ept $$3, fsz $$4, int $$5) {
-      this.d = 0.25F * (float)$$0.gf();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   protected void a(ccs $$0, ept $$1, float $$2) {
-      float $$3 = 0.999F;
-      $$1.b(0.999F, 0.999F, 0.999F);
-      $$1.a(0.0F, 0.001F, 0.0F);
-      float $$4 = (float)$$0.gf();
-      float $$5 = aui.i($$2, $$0.bS, $$0.e) / ($$4 * 0.5F + 1.0F);
-      float $$6 = 1.0F / ($$5 + 1.0F);
-      $$1.b($$6 * $$4, 1.0F / $$6 * $$4, $$6 * $$4);
-   }
-
-   public ahd a(ccs $$0) {
+   public ahg a(bys $$0) {
       return a;
+   }
+
+   protected void a(bys $$0, epz $$1, float $$2, float $$3, float $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      float $$5 = 1.0F;
+      float $$6 = 1.0F;
+      if (!$$0.aZ()) {
+         $$5 = 1.3F;
+         $$6 = 1.7F;
+      }
+
+      float $$7 = $$5 * 4.3F * aun.a($$6 * 0.6F * $$2);
+      $$1.a(a.d.rotationDegrees($$7));
+      $$1.a(0.0F, 0.0F, -0.4F);
+      if (!$$0.aZ()) {
+         $$1.a(0.2F, 0.1F, 0.0F);
+         $$1.a(a.f.rotationDegrees(90.0F));
+      }
    }
 }

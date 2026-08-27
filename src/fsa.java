@@ -1,31 +1,62 @@
-public class fsa extends frz {
-   private final eve i;
-
-   public fsa(eve $$0) {
-      this.i = $$0;
-   }
-
-   private static float a(boolean $$0, boolean $$1) {
-      if ($$0 == $$1) {
-         return 0.0F;
-      } else {
-         return $$0 ? 1.0F : -1.0F;
-      }
+public class fsa extends frt {
+   protected fsa(fnq $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.j *= 0.3F;
+      this.k = Math.random() * 0.2F + 0.1F;
+      this.l *= 0.3F;
+      this.b(0.01F, 0.01F);
+      this.u = 0.06F;
+      this.t = (int)(8.0 / (Math.random() * 0.8 + 0.2));
    }
 
    @Override
-   public void a(boolean $$0, float $$1) {
-      this.c = this.i.x.e();
-      this.d = this.i.z.e();
-      this.e = this.i.y.e();
-      this.f = this.i.A.e();
-      this.b = a(this.c, this.d);
-      this.a = a(this.e, this.f);
-      this.g = this.i.B.e();
-      this.h = this.i.C.e();
-      if ($$0) {
-         this.a *= $$1;
-         this.b *= $$1;
+   public fqx b() {
+      return fqx.b;
+   }
+
+   @Override
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.t-- <= 0) {
+         this.k();
+      } else {
+         this.k = this.k - (double)this.u;
+         this.a(this.j, this.k, this.l);
+         this.j *= 0.98F;
+         this.k *= 0.98F;
+         this.l *= 0.98F;
+         if (this.m) {
+            if (Math.random() < 0.5) {
+               this.k();
+            }
+
+            this.j *= 0.7F;
+            this.l *= 0.7F;
+         }
+
+         hx $$0 = hx.a(this.g, this.h, this.i);
+         double $$1 = Math.max(
+            this.c.a_($$0).k(this.c, $$0).b(ic.a.b, this.g - (double)$$0.u(), this.i - (double)$$0.w()), (double)this.c.b_($$0).a((csu)this.c, $$0)
+         );
+         if ($$1 > 0.0 && this.h < (double)$$0.v() + $$1) {
+            this.k();
+         }
+      }
+   }
+
+   public static class a implements fqw<ka> {
+      private final fro a;
+
+      public a(fro $$0) {
+         this.a = $$0;
+      }
+
+      public fqt a(ka $$0, fnq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fsa $$8 = new fsa($$1, $$2, $$3, $$4);
+         $$8.a(this.a);
+         return $$8;
       }
    }
 }

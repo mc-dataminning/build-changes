@@ -1,62 +1,94 @@
-import it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap;
-import java.util.SortedMap;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Sets;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.Set;
 
-public class ftf {
-   private final ftk a = new ftk();
-   private final ftl b;
-   private final fsz.a c;
-   private final fsz.a d;
-   private final fta e;
-
-   public ftf(int $$0) {
-      this.b = ftl.a($$0);
-      SortedMap<fth, epo> $$1 = ac.a(new Object2ObjectLinkedOpenHashMap(), $$0x -> {
-         $$0x.put(fto.h(), this.a.a(fth.c()));
-         $$0x.put(fto.i(), this.a.a(fth.e()));
-         $$0x.put(fto.a(), this.a.a(fth.d()));
-         $$0x.put(fto.k(), this.a.a(fth.f()));
-         a($$0x, fto.b());
-         a($$0x, fto.c());
-         a($$0x, fto.d());
-         a($$0x, fto.e());
-         a($$0x, fto.f());
-         $$0x.put(fto.g(), new epo(786432));
-         a($$0x, fth.j());
-         a($$0x, fth.k());
-         a($$0x, fth.m());
-         a($$0x, fth.n());
-         a($$0x, fth.l());
-         a($$0x, fth.o());
-         a($$0x, fth.p());
-         a($$0x, fth.i());
-         ggl.l.forEach($$1x -> a($$0x, $$1x));
-      });
-      this.d = fsz.a(new epo(1536));
-      this.c = fsz.a($$1, new epo(786432));
-      this.e = new fta(this.c);
+public interface ftf {
+   static ftf.a a(epu $$0) {
+      return a(ImmutableMap.of(), $$0);
    }
 
-   private static void a(Object2ObjectLinkedOpenHashMap<fth, epo> $$0, fth $$1) {
-      $$0.put($$1, new epo($$1.G()));
+   static ftf.a a(Map<ftn, epu> $$0, epu $$1) {
+      return new ftf.a($$1, $$0);
    }
 
-   public ftk a() {
-      return this.a;
-   }
+   eqd getBuffer(ftn var1);
 
-   public ftl b() {
-      return this.b;
-   }
+   public static class a implements ftf {
+      protected final epu a;
+      protected final Map<ftn, epu> b;
+      protected Optional<ftn> c = Optional.empty();
+      protected final Set<epu> d = Sets.newHashSet();
 
-   public fsz.a c() {
-      return this.c;
-   }
+      protected a(epu $$0, Map<ftn, epu> $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
 
-   public fsz.a d() {
-      return this.d;
-   }
+      @Override
+      public eqd getBuffer(ftn $$0) {
+         Optional<ftn> $$1 = $$0.N();
+         epu $$2 = this.b($$0);
+         if (!Objects.equals(this.c, $$1) || !$$0.M()) {
+            if (this.c.isPresent()) {
+               ftn $$3 = this.c.get();
+               if (!this.b.containsKey($$3)) {
+                  this.a($$3);
+               }
+            }
 
-   public fta e() {
-      return this.e;
+            if (this.d.add($$2)) {
+               $$2.a($$0.I(), $$0.H());
+            }
+
+            this.c = $$1;
+         }
+
+         return $$2;
+      }
+
+      private epu b(ftn $$0) {
+         return this.b.getOrDefault($$0, this.a);
+      }
+
+      public void a() {
+         if (this.c.isPresent()) {
+            ftn $$0 = this.c.get();
+            if (!this.b.containsKey($$0)) {
+               this.a($$0);
+            }
+
+            this.c = Optional.empty();
+         }
+      }
+
+      public void b() {
+         this.c.ifPresent($$0x -> {
+            eqd $$1 = this.getBuffer($$0x);
+            if ($$1 == this.a) {
+               this.a($$0x);
+            }
+         });
+
+         for (ftn $$0 : this.b.keySet()) {
+            this.a($$0);
+         }
+      }
+
+      public void a(ftn $$0) {
+         epu $$1 = this.b($$0);
+         boolean $$2 = Objects.equals(this.c, $$0.N());
+         if ($$2 || $$1 != this.a) {
+            if (this.d.remove($$1)) {
+               $$0.a($$1, RenderSystem.getVertexSorting());
+               if ($$2) {
+                  this.c = Optional.empty();
+               }
+            }
+         }
+      }
    }
 }

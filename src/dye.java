@@ -1,42 +1,34 @@
-import java.util.Optional;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
 
-public class dye extends dpg {
-   private final cud a;
-   private final dkx b;
-   private final Optional<dyd> c;
+public class dye extends dym {
+   public static final Codec<dye> a = RecordCodecBuilder.create($$0 -> $$0.group(dxm.c.fieldOf("height").forGetter($$0x -> $$0x.c)).apply($$0, dye::new));
+   private final dxm c;
 
-   public dye(cud $$0, dkx $$1, Optional<dyd> $$2) {
-      super($$1, $$0);
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   private dye(dxm $$0) {
+      this.c = $$0;
    }
 
-   public int a(doj.a $$0, int $$1, int $$2) {
-      return this.a.a($$0, $$1, $$2);
+   public static dye a(dxm $$0) {
+      return new dye($$0);
    }
 
-   public dkv a(csp $$0, dof.a $$1) {
-      return ((dlr)this.a.a($$0.e, $$0.f)).b($$1);
+   public static dye a(dpj $$0, dpj $$1) {
+      return a(dxp.a($$0, $$1));
    }
 
-   public dja a(hx $$0) {
-      return this.a.a_($$0);
+   public static dye b(dpj $$0, dpj $$1) {
+      return a(dxo.a($$0, $$1));
    }
 
-   public int c() {
-      return this.a.J_();
+   @Override
+   public Stream<hx> a_(dyk $$0, auu $$1, hx $$2) {
+      return Stream.of($$2.h(this.c.a($$1, $$0)));
    }
 
-   public cud d() {
-      return this.a;
-   }
-
-   public Optional<dyd> e() {
-      return this.c;
-   }
-
-   public dkx f() {
-      return this.b;
+   @Override
+   public dyn<?> b() {
+      return dyn.l;
    }
 }

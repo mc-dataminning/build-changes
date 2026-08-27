@@ -1,11 +1,11 @@
 import com.mojang.serialization.Codec;
 
-public enum bkr implements ave {
-   a("default"),
-   b("fall_variants"),
-   c("intentional_game_design");
+public enum bkr implements avj {
+   a("never"),
+   b("when_caused_by_living_non_player"),
+   c("always");
 
-   public static final Codec<bkr> d = ave.a(bkr::values);
+   public static final Codec<bkr> d = avj.a(bkr::values);
    private final String e;
 
    private bkr(String $$0) {

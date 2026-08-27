@@ -1,20 +1,30 @@
 import com.google.gson.JsonObject;
 import com.mojang.authlib.GameProfile;
-import java.util.Date;
 import java.util.UUID;
 import javax.annotation.Nullable;
 
-public class aqw extends aqk<GameProfile> {
-   public aqw(@Nullable GameProfile $$0) {
-      this($$0, null, null, null, null);
-   }
+public class aqw extends aqy<GameProfile> {
+   private final int a;
+   private final boolean b;
 
-   public aqw(@Nullable GameProfile $$0, @Nullable Date $$1, @Nullable String $$2, @Nullable Date $$3, @Nullable String $$4) {
-      super($$0, $$1, $$2, $$3, $$4);
+   public aqw(GameProfile $$0, int $$1, boolean $$2) {
+      super($$0);
+      this.a = $$1;
+      this.b = $$2;
    }
 
    public aqw(JsonObject $$0) {
-      super(b($$0), $$0);
+      super(b($$0));
+      this.a = $$0.has("level") ? $$0.get("level").getAsInt() : 0;
+      this.b = $$0.has("bypassesPlayerLimit") && $$0.get("bypassesPlayerLimit").getAsBoolean();
+   }
+
+   public int a() {
+      return this.a;
+   }
+
+   public boolean b() {
+      return this.b;
    }
 
    @Override
@@ -22,14 +32,9 @@ public class aqw extends aqk<GameProfile> {
       if (this.g() != null) {
          $$0.addProperty("uuid", this.g().getId().toString());
          $$0.addProperty("name", this.g().getName());
-         super.a($$0);
+         $$0.addProperty("level", this.a);
+         $$0.addProperty("bypassesPlayerLimit", this.b);
       }
-   }
-
-   @Override
-   public vd e() {
-      GameProfile $$0 = this.g();
-      return $$0 != null ? vd.b($$0.getName()) : vd.c("commands.banlist.entry.unknown");
    }
 
    @Nullable

@@ -1,3 +1,6 @@
-public interface geh {
-   void e();
+public interface geh extends AutoCloseable {
+   void a(int var1, int var2);
+
+   @Override
+   void close();
 }

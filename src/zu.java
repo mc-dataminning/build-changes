@@ -1,32 +1,55 @@
-public class zu implements xd<yx> {
-   private final cmm a;
-   private final int b;
+import java.util.List;
 
-   public zu(cmm $$0, int $$1) {
+public class zu implements xf<za> {
+   private final int a;
+   private final int b;
+   private final List<cmx> c;
+   private final cmx d;
+
+   public zu(int $$0, int $$1, iq<cmx> $$2, cmx $$3) {
       this.a = $$0;
       this.b = $$1;
+      this.c = iq.a($$2.size(), cmx.f);
+
+      for (int $$4 = 0; $$4 < $$2.size(); $$4++) {
+         this.c.set($$4, $$2.get($$4).p());
+      }
+
+      this.d = $$3.p();
    }
 
-   public zu(ug $$0) {
-      this.a = $$0.a(kd.h);
+   public zu(ui $$0) {
+      this.a = $$0.readUnsignedByte();
       this.b = $$0.n();
+      this.c = $$0.a(iq::a, ui::r);
+      this.d = $$0.r();
    }
 
    @Override
-   public void a(ug $$0) {
-      $$0.a(kd.h, this.a);
+   public void a(ui $$0) {
+      $$0.k(this.a);
       $$0.c(this.b);
+      $$0.a(this.c, ui::a);
+      $$0.a(this.d);
    }
 
-   public void a(yx $$0) {
+   public void a(za $$0) {
       $$0.a(this);
    }
 
-   public cmm a() {
+   public int a() {
       return this.a;
    }
 
-   public int d() {
+   public List<cmx> d() {
+      return this.c;
+   }
+
+   public cmx e() {
+      return this.d;
+   }
+
+   public int f() {
       return this.b;
    }
 }

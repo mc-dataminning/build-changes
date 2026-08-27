@@ -1,4 +1,13 @@
-public class erd extends erp {
-   public volatile String a = "0";
-   public volatile String b = "";
+import com.google.gson.annotations.SerializedName;
+
+public class erd extends erv implements erp {
+   @SerializedName("name")
+   public String a;
+   @SerializedName("description")
+   public String b;
+
+   public erd(String $$0, String $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
 }

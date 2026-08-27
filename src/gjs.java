@@ -1,38 +1,53 @@
-public class gjs implements gjv {
-   private static final int a = 600;
-   private static final vd b = vd.c("tutorial.open_inventory.title");
-   private static final vd c = vd.a("tutorial.open_inventory.description", gju.a("inventory"));
-   private final gju d;
-   private ezi e;
-   private int f;
+import it.unimi.dsi.fastutil.longs.LongArrayList;
+import it.unimi.dsi.fastutil.longs.LongList;
 
-   public gjs(gju $$0) {
-      this.d = $$0;
-   }
+public final class gjs extends gjq {
+   private static final long a = a(Runtime.getRuntime().maxMemory());
+   private final LongList b = new LongArrayList();
+   private final LongList c = new LongArrayList();
+   private final LongList d = new LongArrayList();
 
    @Override
-   public void a() {
-      this.f++;
-      if (!this.d.f()) {
-         this.d.a(gjw.f);
-      } else {
-         if (this.f >= 600 && this.e == null) {
-            this.e = new ezi(ezi.a.d, b, c, false);
-            this.d.e().ax().a(this.e);
-         }
+   public void a(gjk $$0) {
+      if (evg.O().A()) {
+         super.a($$0);
       }
    }
 
-   @Override
-   public void b() {
-      if (this.e != null) {
-         this.e.c();
-         this.e = null;
-      }
+   private void g() {
+      this.b.clear();
+      this.c.clear();
+      this.d.clear();
    }
 
    @Override
-   public void c() {
-      this.d.a(gjw.e);
+   public void f() {
+      this.b.add((long)evg.O().n());
+      this.h();
+      this.c.add(evg.O().o());
+   }
+
+   private void h() {
+      long $$0 = Runtime.getRuntime().totalMemory();
+      long $$1 = Runtime.getRuntime().freeMemory();
+      long $$2 = $$0 - $$1;
+      this.d.add(a($$2));
+   }
+
+   @Override
+   public void b(gjk $$0) {
+      $$0.send(gjl.c, $$0x -> {
+         $$0x.a(gjn.r, new LongArrayList(this.b));
+         $$0x.a(gjn.s, new LongArrayList(this.c));
+         $$0x.a(gjn.t, new LongArrayList(this.d));
+         $$0x.a(gjn.u, this.e());
+         $$0x.a(gjn.v, evg.O().m.aA());
+         $$0x.a(gjn.w, (int)a);
+      });
+      this.g();
+   }
+
+   private static long a(long $$0) {
+      return $$0 / 1000L;
    }
 }

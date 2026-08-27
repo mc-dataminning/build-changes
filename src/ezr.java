@@ -1,76 +1,110 @@
-import org.joml.Matrix4f;
+import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
+import it.unimi.dsi.fastutil.ints.IntSet;
+import java.util.Arrays;
+import java.util.function.IntFunction;
+import javax.annotation.Nullable;
 
-public class ezr {
-   private final ezp a;
-   private final float b;
-   private final float c;
-   private final float d;
-   private final float e;
-   private final float f;
-   private final float g;
-   private final float h;
-   private final float i;
+public class ezr<T> {
+   private static final int a = 8;
+   private static final int b = 256;
+   private static final int c = 255;
+   private static final int d = 4351;
+   private static final int e = 4352;
+   private final T[] f;
+   private final T[][] g;
+   private final IntFunction<T[]> h;
 
-   public ezr(ezp $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
-      this.g = $$6;
-      this.h = $$7;
-      this.i = $$8;
+   public ezr(IntFunction<T[]> $$0, IntFunction<T[][]> $$1) {
+      this.f = (T[])((Object[])$$0.apply(256));
+      this.g = (T[][])((Object[][])$$1.apply(4352));
+      Arrays.fill(this.g, this.f);
+      this.h = $$0;
    }
 
-   public void a(boolean $$0, float $$1, float $$2, Matrix4f $$3, epx $$4, float $$5, float $$6, float $$7, float $$8, int $$9) {
-      int $$10 = 3;
-      float $$11 = $$1 + this.f;
-      float $$12 = $$1 + this.g;
-      float $$13 = this.h - 3.0F;
-      float $$14 = this.i - 3.0F;
-      float $$15 = $$2 + $$13;
-      float $$16 = $$2 + $$14;
-      float $$17 = $$0 ? 1.0F - 0.25F * $$13 : 0.0F;
-      float $$18 = $$0 ? 1.0F - 0.25F * $$14 : 0.0F;
-      $$4.a($$3, $$11 + $$17, $$15, 0.0F).a($$5, $$6, $$7, $$8).a(this.b, this.d).b($$9).e();
-      $$4.a($$3, $$11 + $$18, $$16, 0.0F).a($$5, $$6, $$7, $$8).a(this.b, this.e).b($$9).e();
-      $$4.a($$3, $$12 + $$18, $$16, 0.0F).a($$5, $$6, $$7, $$8).a(this.c, this.e).b($$9).e();
-      $$4.a($$3, $$12 + $$17, $$15, 0.0F).a($$5, $$6, $$7, $$8).a(this.c, this.d).b($$9).e();
+   public void a() {
+      Arrays.fill(this.g, this.f);
    }
 
-   public void a(ezr.a $$0, Matrix4f $$1, epx $$2, int $$3) {
-      $$2.a($$1, $$0.a, $$0.b, $$0.e).a($$0.f, $$0.g, $$0.h, $$0.i).a(this.b, this.d).b($$3).e();
-      $$2.a($$1, $$0.c, $$0.b, $$0.e).a($$0.f, $$0.g, $$0.h, $$0.i).a(this.b, this.e).b($$3).e();
-      $$2.a($$1, $$0.c, $$0.d, $$0.e).a($$0.f, $$0.g, $$0.h, $$0.i).a(this.c, this.e).b($$3).e();
-      $$2.a($$1, $$0.a, $$0.d, $$0.e).a($$0.f, $$0.g, $$0.h, $$0.i).a(this.c, this.d).b($$3).e();
+   @Nullable
+   public T a(int $$0) {
+      int $$1 = $$0 >> 8;
+      int $$2 = $$0 & 0xFF;
+      return this.g[$$1][$$2];
    }
 
-   public fth a(ewk.a $$0) {
-      return this.a.a($$0);
-   }
-
-   public static class a {
-      protected final float a;
-      protected final float b;
-      protected final float c;
-      protected final float d;
-      protected final float e;
-      protected final float f;
-      protected final float g;
-      protected final float h;
-      protected final float i;
-
-      public a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$4;
-         this.f = $$5;
-         this.g = $$6;
-         this.h = $$7;
-         this.i = $$8;
+   @Nullable
+   public T a(int $$0, T $$1) {
+      int $$2 = $$0 >> 8;
+      int $$3 = $$0 & 0xFF;
+      T[] $$4 = this.g[$$2];
+      if ($$4 == this.f) {
+         $$4 = (T[])((Object[])this.h.apply(256));
+         this.g[$$2] = $$4;
+         $$4[$$3] = $$1;
+         return null;
+      } else {
+         T $$5 = $$4[$$3];
+         $$4[$$3] = $$1;
+         return $$5;
       }
+   }
+
+   public T a(int $$0, IntFunction<T> $$1) {
+      int $$2 = $$0 >> 8;
+      int $$3 = $$0 & 0xFF;
+      T[] $$4 = this.g[$$2];
+      T $$5 = $$4[$$3];
+      if ($$5 != null) {
+         return $$5;
+      } else {
+         if ($$4 == this.f) {
+            $$4 = (T[])((Object[])this.h.apply(256));
+            this.g[$$2] = $$4;
+         }
+
+         T $$6 = $$1.apply($$0);
+         $$4[$$3] = $$6;
+         return $$6;
+      }
+   }
+
+   @Nullable
+   public T b(int $$0) {
+      int $$1 = $$0 >> 8;
+      int $$2 = $$0 & 0xFF;
+      T[] $$3 = this.g[$$1];
+      if ($$3 == this.f) {
+         return null;
+      } else {
+         T $$4 = $$3[$$2];
+         $$3[$$2] = null;
+         return $$4;
+      }
+   }
+
+   public void a(ezr.a<T> $$0) {
+      for (int $$1 = 0; $$1 < this.g.length; $$1++) {
+         T[] $$2 = this.g[$$1];
+         if ($$2 != this.f) {
+            for (int $$3 = 0; $$3 < $$2.length; $$3++) {
+               T $$4 = $$2[$$3];
+               if ($$4 != null) {
+                  int $$5 = $$1 << 8 | $$3;
+                  $$0.accept($$5, $$4);
+               }
+            }
+         }
+      }
+   }
+
+   public IntSet b() {
+      IntOpenHashSet $$0 = new IntOpenHashSet();
+      this.a(($$1, $$2) -> $$0.add($$1));
+      return $$0;
+   }
+
+   @FunctionalInterface
+   public interface a<T> {
+      void accept(int var1, T var2);
    }
 }

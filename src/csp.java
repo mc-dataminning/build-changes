@@ -1,205 +1,194 @@
-import java.util.Spliterators.AbstractSpliterator;
-import java.util.function.Consumer;
-import java.util.stream.Stream;
-import java.util.stream.StreamSupport;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 
-public class csp {
-   private static final int g = 1056;
-   public static final long a = c(1875066, 1875066);
-   public static final csp b = new csp(0, 0);
-   private static final long h = 32L;
-   private static final long i = 4294967295L;
-   private static final int j = 5;
-   public static final int c = 32;
-   private static final int k = 31;
-   public static final int d = 31;
-   public final int e;
-   public final int f;
-   private static final int l = 1664525;
-   private static final int m = 1013904223;
-   private static final int n = -559038737;
+public abstract class csp implements dr {
+   private static final SimpleDateFormat b = new SimpleDateFormat("HH:mm:ss");
+   private static final vf c = vf.b("@");
+   private long d = -1L;
+   private boolean e = true;
+   private int f;
+   private boolean g = true;
+   @Nullable
+   private vf h;
+   private String i = "";
+   private vf j = c;
 
-   public csp(int $$0, int $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   public int k() {
+      return this.f;
    }
 
-   public csp(hx $$0) {
-      this.e = iz.a($$0.u());
-      this.f = iz.a($$0.w());
+   public void a(int $$0) {
+      this.f = $$0;
    }
 
-   public csp(long $$0) {
-      this.e = (int)$$0;
-      this.f = (int)($$0 >> 32);
+   public vf l() {
+      return this.h == null ? ve.a : this.h;
    }
 
-   public static csp a(int $$0, int $$1) {
-      return new csp($$0 << 5, $$1 << 5);
+   public sn a(sn $$0) {
+      $$0.a("Command", this.i);
+      $$0.a("SuccessCount", this.f);
+      $$0.a("CustomName", vf.a.a(this.j));
+      $$0.a("TrackOutput", this.g);
+      if (this.h != null && this.g) {
+         $$0.a("LastOutput", vf.a.a(this.h));
+      }
+
+      $$0.a("UpdateLastExecution", this.e);
+      if (this.e && this.d > 0L) {
+         $$0.a("LastExecution", this.d);
+      }
+
+      return $$0;
    }
 
-   public static csp b(int $$0, int $$1) {
-      return new csp(($$0 << 5) + 31, ($$1 << 5) + 31);
-   }
+   public void b(sn $$0) {
+      this.i = $$0.l("Command");
+      this.f = $$0.h("SuccessCount");
+      if ($$0.b("CustomName", 8)) {
+         this.b(vf.a.a($$0.l("CustomName")));
+      }
 
-   public long a() {
-      return c(this.e, this.f);
-   }
+      if ($$0.b("TrackOutput", 1)) {
+         this.g = $$0.q("TrackOutput");
+      }
 
-   public static long c(int $$0, int $$1) {
-      return (long)$$0 & 4294967295L | ((long)$$1 & 4294967295L) << 32;
-   }
-
-   public static long a(hx $$0) {
-      return c(iz.a($$0.u()), iz.a($$0.w()));
-   }
-
-   public static int a(long $$0) {
-      return (int)($$0 & 4294967295L);
-   }
-
-   public static int b(long $$0) {
-      return (int)($$0 >>> 32 & 4294967295L);
-   }
-
-   @Override
-   public int hashCode() {
-      return d(this.e, this.f);
-   }
-
-   public static int d(int $$0, int $$1) {
-      int $$2 = 1664525 * $$0 + 1013904223;
-      int $$3 = 1664525 * ($$1 ^ -559038737) + 1013904223;
-      return $$2 ^ $$3;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
+      if ($$0.b("LastOutput", 8) && this.g) {
+         try {
+            this.h = vf.a.a($$0.l("LastOutput"));
+         } catch (Throwable var3) {
+            this.h = vf.b(var3.getMessage());
+         }
       } else {
-         return !($$0 instanceof csp $$1) ? false : this.e == $$1.e && this.f == $$1.f;
+         this.h = null;
+      }
+
+      if ($$0.e("UpdateLastExecution")) {
+         this.e = $$0.q("UpdateLastExecution");
+      }
+
+      if (this.e && $$0.e("LastExecution")) {
+         this.d = $$0.i("LastExecution");
+      } else {
+         this.d = -1L;
       }
    }
 
-   public int b() {
-      return this.a(8);
+   public void a(String $$0) {
+      this.i = $$0;
+      this.f = 0;
    }
 
-   public int c() {
-      return this.b(8);
+   public String m() {
+      return this.i;
    }
 
-   public int d() {
-      return iz.c(this.e);
+   public boolean a(cto $$0) {
+      if ($$0.B || $$0.X() == this.d) {
+         return false;
+      } else if ("Searge".equalsIgnoreCase(this.i)) {
+         this.h = vf.b("#itzlipofutzli");
+         this.f = 1;
+         return true;
+      } else {
+         this.f = 0;
+         MinecraftServer $$1 = this.e().o();
+         if ($$1.o() && !avk.b(this.i)) {
+            try {
+               this.h = null;
+               ds $$2 = this.i().a((dp)(($$0x, $$1x) -> {
+                  if ($$0x) {
+                     this.f++;
+                  }
+               }));
+               $$1.aE().a($$2, this.i);
+            } catch (Throwable var6) {
+               o $$4 = o.a(var6, "Executing command block");
+               p $$5 = $$4.a("Command to be executed");
+               $$5.a("Command", this::m);
+               $$5.a("Name", () -> this.n().getString());
+               throw new y($$4);
+            }
+         }
+
+         if (this.e) {
+            this.d = $$0.X();
+         } else {
+            this.d = -1L;
+         }
+
+         return true;
+      }
    }
 
-   public int e() {
-      return iz.c(this.f);
+   public vf n() {
+      return this.j;
    }
 
-   public int f() {
-      return this.a(15);
-   }
-
-   public int g() {
-      return this.b(15);
-   }
-
-   public int h() {
-      return this.e >> 5;
-   }
-
-   public int i() {
-      return this.f >> 5;
-   }
-
-   public int j() {
-      return this.e & 31;
-   }
-
-   public int k() {
-      return this.f & 31;
-   }
-
-   public hx a(int $$0, int $$1, int $$2) {
-      return new hx(this.a($$0), $$1, this.b($$2));
-   }
-
-   public int a(int $$0) {
-      return iz.a(this.e, $$0);
-   }
-
-   public int b(int $$0) {
-      return iz.a(this.f, $$0);
-   }
-
-   public hx c(int $$0) {
-      return new hx(this.b(), $$0, this.c());
+   public void b(@Nullable vf $$0) {
+      if ($$0 != null) {
+         this.j = $$0;
+      } else {
+         this.j = c;
+      }
    }
 
    @Override
-   public String toString() {
-      return "[" + this.e + ", " + this.f + "]";
+   public void a(vf $$0) {
+      if (this.g) {
+         this.h = vf.b("[" + b.format(new Date()) + "] ").b($$0);
+         this.f();
+      }
    }
 
-   public hx l() {
-      return new hx(this.d(), 0, this.e());
+   public abstract and e();
+
+   public abstract void f();
+
+   public void c(@Nullable vf $$0) {
+      this.h = $$0;
    }
 
-   public int a(csp $$0) {
-      return Math.max(Math.abs(this.e - $$0.e), Math.abs(this.f - $$0.f));
+   public void a(boolean $$0) {
+      this.g = $$0;
    }
 
-   public int b(csp $$0) {
-      return this.e($$0.e, $$0.f);
+   public boolean o() {
+      return this.g;
    }
 
-   public int c(long $$0) {
-      return this.e(a($$0), b($$0));
-   }
-
-   private int e(int $$0, int $$1) {
-      int $$2 = $$0 - this.e;
-      int $$3 = $$1 - this.f;
-      return $$2 * $$2 + $$3 * $$3;
-   }
-
-   public static Stream<csp> a(csp $$0, int $$1) {
-      return a(new csp($$0.e - $$1, $$0.f - $$1), new csp($$0.e + $$1, $$0.f + $$1));
-   }
-
-   public static Stream<csp> a(final csp $$0, final csp $$1) {
-      int $$2 = Math.abs($$0.e - $$1.e) + 1;
-      int $$3 = Math.abs($$0.f - $$1.f) + 1;
-      final int $$4 = $$0.e < $$1.e ? 1 : -1;
-      final int $$5 = $$0.f < $$1.f ? 1 : -1;
-      return StreamSupport.stream(new AbstractSpliterator<csp>((long)($$2 * $$3), 64) {
-         @Nullable
-         private csp e;
-
-         @Override
-         public boolean tryAdvance(Consumer<? super csp> $$0x) {
-            if (this.e == null) {
-               this.e = $$0;
-            } else {
-               int $$1 = this.e.e;
-               int $$2 = this.e.f;
-               if ($$1 == $$1.e) {
-                  if ($$2 == $$1.f) {
-                     return false;
-                  }
-
-                  this.e = new csp($$0.e, $$2 + $$5);
-               } else {
-                  this.e = new csp($$1 + $$4, $$2);
-               }
-            }
-
-            $$0.accept(this.e);
-            return true;
+   public bka a(cfh $$0) {
+      if (!$$0.gp()) {
+         return bka.d;
+      } else {
+         if ($$0.cK().B) {
+            $$0.a(this);
          }
-      }, false);
+
+         return bka.a($$0.dM().B);
+      }
    }
+
+   public abstract els g();
+
+   public abstract ds i();
+
+   @Override
+   public boolean l_() {
+      return this.e().Z().b(ctk.p) && this.g;
+   }
+
+   @Override
+   public boolean x_() {
+      return this.g;
+   }
+
+   @Override
+   public boolean W_() {
+      return this.e().Z().b(ctk.j);
+   }
+
+   public abstract boolean j();
 }

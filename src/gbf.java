@@ -1,26 +1,24 @@
-public class gbf extends fzl<cbc, fmf<cbc>> {
-   private static final ahd a = new ahd("textures/entity/wither/wither_invulnerable.png");
-   private static final ahd i = new ahd("textures/entity/wither/wither.png");
+public class gbf extends fzr<ceu, fmg<ceu>> {
+   private static final ahg a = new ahg("textures/entity/villager/villager.png");
 
-   public gbf(fyf.a $$0) {
-      super($$0, new fmf<>($$0.a(fmo.bS)), 1.0F);
-      this.a(new gde(this, $$0.f()));
+   public gbf(fyl.a $$0) {
+      super($$0, new fmg<>($$0.a(fmu.bM)), 0.5F);
+      this.a(new gcb<>(this, $$0.f(), $$0.d()));
+      this.a(new gdh<>(this, $$0.e(), "villager"));
+      this.a(new gca<>(this, $$0.d()));
    }
 
-   protected int a(cbc $$0, hx $$1) {
-      return 15;
+   public ahg a(ceu $$0) {
+      return a;
    }
 
-   public ahd a(cbc $$0) {
-      int $$1 = $$0.A();
-      return $$1 > 0 && ($$1 > 80 || $$1 / 5 % 2 != 1) ? a : i;
-   }
-
-   protected void a(cbc $$0, ept $$1, float $$2) {
-      float $$3 = 2.0F;
-      int $$4 = $$0.A();
-      if ($$4 > 0) {
-         $$3 -= ((float)$$4 - $$2) / 220.0F * 0.5F;
+   protected void a(ceu $$0, epz $$1, float $$2) {
+      float $$3 = 0.9375F;
+      if ($$0.o_()) {
+         $$3 *= 0.5F;
+         this.d = 0.25F;
+      } else {
+         this.d = 0.5F;
       }
 
       $$1.b($$3, $$3, $$3);

@@ -1,96 +1,75 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import java.util.Map;
 
-public class dal extends cvv {
+public class dal extends cwp {
    public static final MapCodec<dal> a = b(dal::new);
-   public static final djr b = djq.n;
+   public static final djx b = dcc.b;
+   public static final djx c = dcc.c;
+   public static final djx d = dcc.d;
+   public static final djx e = dcc.e;
+   public static final djx f = dcc.f;
+   public static final djx g = dcc.g;
+   private static final Map<ic, djx> h = dcc.h;
 
    @Override
    public MapCodec<dal> a() {
       return a;
    }
 
-   protected dal(diz.d $$0) {
+   public dal(djf.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b, Boolean.valueOf(false)));
+      this.k(
+         this.E
+            .b()
+            .a(b, Boolean.valueOf(true))
+            .a(c, Boolean.valueOf(true))
+            .a(d, Boolean.valueOf(true))
+            .a(e, Boolean.valueOf(true))
+            .a(f, Boolean.valueOf(true))
+            .a(g, Boolean.valueOf(true))
+      );
    }
 
    @Override
-   public void a(cti $$0, hx $$1, dja $$2, @Nullable bmf $$3, cmr $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      sl $$5 = ckk.a($$4);
-      if ($$5 != null && $$5.e("RecordItem")) {
-         $$0.a($$1, $$2.a(b, Boolean.valueOf(true)), 2);
-      }
+   public djg a(cpg $$0) {
+      csu $$1 = $$0.q();
+      hx $$2 = $$0.a();
+      return this.o()
+         .a(g, Boolean.valueOf(!$$1.a_($$2.d()).a(this)))
+         .a(f, Boolean.valueOf(!$$1.a_($$2.c()).a(this)))
+         .a(b, Boolean.valueOf(!$$1.a_($$2.e()).a(this)))
+         .a(c, Boolean.valueOf(!$$1.a_($$2.h()).a(this)))
+         .a(d, Boolean.valueOf(!$$1.a_($$2.f()).a(this)))
+         .a(e, Boolean.valueOf(!$$1.a_($$2.g()).a(this)));
    }
 
    @Override
-   public bjv a(dja $$0, cti $$1, hx $$2, cfb $$3, bju $$4, eli $$5) {
-      if ($$0.c(b) && $$1.c_($$2) instanceof dhp $$6) {
-         $$6.k();
-         return bjv.a($$1.B);
-      } else {
-         return bjv.d;
-      }
+   public djg a(djg $$0, ic $$1, djg $$2, ctp $$3, hx $$4, hx $$5) {
+      return $$2.a(this) ? $$0.a(h.get($$1), Boolean.valueOf(false)) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public void a(dja $$0, cti $$1, hx $$2, dja $$3, boolean $$4) {
-      if (!$$0.a($$3.b())) {
-         if ($$1.c_($$2) instanceof dhp $$5) {
-            $$5.k();
-         }
-
-         super.a($$0, $$1, $$2, $$3, $$4);
-      }
+   public djg a(djg $$0, ddb $$1) {
+      return $$0.a(h.get($$1.a(ic.c)), $$0.c(b))
+         .a(h.get($$1.a(ic.d)), $$0.c(d))
+         .a(h.get($$1.a(ic.f)), $$0.c(c))
+         .a(h.get($$1.a(ic.e)), $$0.c(e))
+         .a(h.get($$1.a(ic.b)), $$0.c(f))
+         .a(h.get($$1.a(ic.a)), $$0.c(g));
    }
 
    @Override
-   public dgo a(hx $$0, dja $$1) {
-      return new dhp($$0, $$1);
+   public djg a(djg $$0, dbl $$1) {
+      return $$0.a(h.get($$1.b(ic.c)), $$0.c(b))
+         .a(h.get($$1.b(ic.d)), $$0.c(d))
+         .a(h.get($$1.b(ic.f)), $$0.c(c))
+         .a(h.get($$1.b(ic.e)), $$0.c(e))
+         .a(h.get($$1.b(ic.b)), $$0.c(f))
+         .a(h.get($$1.b(ic.a)), $$0.c(g));
    }
 
    @Override
-   public boolean f_(dja $$0) {
-      return true;
-   }
-
-   @Override
-   public int a(dja $$0, cso $$1, hx $$2, ic $$3) {
-      if ($$1.c_($$2) instanceof dhp $$4 && $$4.f()) {
-         return 15;
-      }
-
-      return 0;
-   }
-
-   @Override
-   public boolean d_(dja $$0) {
-      return true;
-   }
-
-   @Override
-   public int a(dja $$0, cti $$1, hx $$2) {
-      if ($$1.c_($$2) instanceof dhp $$3 && $$3.x().d() instanceof cnj $$4) {
-         return $$4.h();
-      }
-
-      return 0;
-   }
-
-   @Override
-   public dco b_(dja $$0) {
-      return dco.c;
-   }
-
-   @Override
-   protected void a(djb.a<cwj, dja> $$0) {
-      $$0.a(b);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dgo> dgp<T> a(cti $$0, dja $$1, dgq<T> $$2) {
-      return $$1.c(b) ? a($$2, dgq.e, dhp::a) : null;
+   protected void a(djh.a<cwp, djg> $$0) {
+      $$0.a(f, g, b, c, d, e);
    }
 }

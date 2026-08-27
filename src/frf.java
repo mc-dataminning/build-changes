@@ -1,115 +1,53 @@
-public class frf extends frn {
-   private static final aup a = aup.a();
-   private final fri b;
+public class frf extends frt {
+   protected final fro a;
+   private float b;
+   private float F;
+   private float G;
+   private boolean H;
 
-   frf(fnk $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fri $$7) {
-      super($$0, $$1, $$2, $$3, 0.5 - a.j(), $$5, 0.5 - a.j());
-      this.B = 0.96F;
-      this.u = -0.1F;
-      this.C = true;
-      this.b = $$7;
-      this.k *= 0.2F;
-      if ($$4 == 0.0 && $$6 == 0.0) {
-         this.j *= 0.1F;
-         this.l *= 0.1F;
-      }
+   protected frf(fnq $$0, double $$1, double $$2, double $$3, fro $$4, float $$5) {
+      super($$0, $$1, $$2, $$3);
+      this.B = 0.91F;
+      this.u = $$5;
+      this.a = $$4;
+   }
 
-      this.D *= 0.75F;
-      this.t = (int)(8.0 / (Math.random() * 0.8 + 0.2));
-      this.n = false;
-      this.b($$7);
-      if (this.g()) {
-         this.e(0.0F);
-      }
+   public void b(int $$0) {
+      float $$1 = (float)(($$0 & 0xFF0000) >> 16) / 255.0F;
+      float $$2 = (float)(($$0 & 0xFF00) >> 8) / 255.0F;
+      float $$3 = (float)(($$0 & 0xFF) >> 0) / 255.0F;
+      float $$4 = 1.0F;
+      this.a($$1 * 1.0F, $$2 * 1.0F, $$3 * 1.0F);
+   }
+
+   public void c(int $$0) {
+      this.b = (float)(($$0 & 0xFF0000) >> 16) / 255.0F;
+      this.F = (float)(($$0 & 0xFF00) >> 8) / 255.0F;
+      this.G = (float)(($$0 & 0xFF) >> 0) / 255.0F;
+      this.H = true;
    }
 
    @Override
-   public fqr b() {
-      return fqr.c;
+   public fqx b() {
+      return fqx.c;
    }
 
    @Override
    public void a() {
       super.a();
-      this.b(this.b);
-      if (this.g()) {
-         this.e(0.0F);
-      } else {
-         this.e(aui.i(0.05F, this.y, 1.0F));
+      this.b(this.a);
+      if (this.s > this.t / 2) {
+         this.e(1.0F - ((float)this.s - (float)(this.t / 2)) / (float)this.t);
+         if (this.H) {
+            this.v = this.v + (this.b - this.v) * 0.2F;
+            this.w = this.w + (this.F - this.w) * 0.2F;
+            this.x = this.x + (this.G - this.x) * 0.2F;
+         }
       }
    }
 
-   private boolean g() {
-      eva $$0 = eva.N();
-      fsb $$1 = $$0.s;
-      return $$1 != null && $$1.br().c(this.g, this.h, this.i) <= 9.0 && $$0.m.ax().a() && $$1.gq();
-   }
-
-   public static class a implements fqq<ka> {
-      private final fri a;
-
-      public a(fri $$0) {
-         this.a = $$0;
-      }
-
-      public fqn a(ka $$0, fnk $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fqn $$8 = new frf($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-         $$8.e(0.15F);
-         $$8.a((float)$$5, (float)$$6, (float)$$7);
-         return $$8;
-      }
-   }
-
-   public static class b implements fqq<ka> {
-      private final fri a;
-
-      public b(fri $$0) {
-         this.a = $$0;
-      }
-
-      public fqn a(ka $$0, fnk $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new frf($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-      }
-   }
-
-   public static class c implements fqq<ka> {
-      private final fri a;
-
-      public c(fri $$0) {
-         this.a = $$0;
-      }
-
-      public fqn a(ka $$0, fnk $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fqn $$8 = new frf($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-         $$8.a((float)$$5, (float)$$6, (float)$$7);
-         return $$8;
-      }
-   }
-
-   public static class d implements fqq<ka> {
-      private final fri a;
-
-      public d(fri $$0) {
-         this.a = $$0;
-      }
-
-      public fqn a(ka $$0, fnk $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new frf($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-      }
-   }
-
-   public static class e implements fqq<ka> {
-      private final fri a;
-
-      public e(fri $$0) {
-         this.a = $$0;
-      }
-
-      public fqn a(ka $$0, fnk $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         frf $$8 = new frf($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-         float $$9 = $$1.z.i() * 0.5F + 0.35F;
-         $$8.a(1.0F * $$9, 0.0F * $$9, 1.0F * $$9);
-         return $$8;
-      }
+   @Override
+   public int a(float $$0) {
+      return 15728880;
    }
 }

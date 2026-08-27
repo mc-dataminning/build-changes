@@ -1,96 +1,145 @@
-import com.google.common.base.Suppliers;
-import com.google.common.collect.BiMap;
-import com.google.common.collect.ImmutableBiMap;
-import com.mojang.serialization.Codec;
-import java.util.Optional;
-import java.util.function.Supplier;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-public interface dfm extends cxk<dfm.a> {
-   Supplier<BiMap<cwj, cwj>> v_ = Suppliers.memoize(
-      () -> ImmutableBiMap.builder()
-            .put(cwl.qW, cwl.qX)
-            .put(cwl.qX, cwl.qY)
-            .put(cwl.qY, cwl.qZ)
-            .put(cwl.rf, cwl.re)
-            .put(cwl.re, cwl.rd)
-            .put(cwl.rd, cwl.rc)
-            .put(cwl.rj, cwl.ri)
-            .put(cwl.ri, cwl.rh)
-            .put(cwl.rh, cwl.rg)
-            .put(cwl.rv, cwl.ru)
-            .put(cwl.ru, cwl.rt)
-            .put(cwl.rt, cwl.rs)
-            .put(cwl.rr, cwl.rq)
-            .put(cwl.rq, cwl.rp)
-            .put(cwl.rp, cwl.ro)
-            .put(cwl.rM, cwl.rN)
-            .put(cwl.rN, cwl.rP)
-            .put(cwl.rP, cwl.rO)
-            .put(cwl.rU, cwl.rV)
-            .put(cwl.rV, cwl.rX)
-            .put(cwl.rX, cwl.rW)
-            .put(cwl.sc, cwl.sd)
-            .put(cwl.sd, cwl.se)
-            .put(cwl.se, cwl.sf)
-            .put(cwl.sk, cwl.sl)
-            .put(cwl.sl, cwl.sm)
-            .put(cwl.sm, cwl.sn)
-            .build()
-   );
-   Supplier<BiMap<cwj, cwj>> w_ = Suppliers.memoize(() -> v_.get().inverse());
+public class dfm extends ddo {
+   public static final MapCodec<dfm> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dkt.a.fieldOf("wood_type").forGetter(ddo::d), u()).apply($$0, dfm::new));
+   public static final dka b = dak.aE;
+   public static final eml c = cwp.a(0.0, 14.0, 6.0, 16.0, 16.0, 10.0);
+   public static final eml d = cwp.a(6.0, 14.0, 0.0, 10.0, 16.0, 16.0);
+   public static final eml e = emi.a(c, cwp.a(1.0, 0.0, 7.0, 15.0, 10.0, 9.0));
+   public static final eml i = emi.a(d, cwp.a(7.0, 0.0, 1.0, 9.0, 10.0, 15.0));
+   private static final Map<ic, eml> j = Maps.newEnumMap(ImmutableMap.of(ic.c, e, ic.d, e, ic.f, i, ic.e, i));
 
-   static Optional<cwj> a(cwj $$0) {
-      return Optional.ofNullable((cwj)w_.get().get($$0));
+   @Override
+   public MapCodec<dfm> a() {
+      return a;
    }
 
-   static cwj b(cwj $$0) {
-      cwj $$1 = $$0;
-
-      for (cwj $$2 = (cwj)w_.get().get($$0); $$2 != null; $$2 = (cwj)w_.get().get($$2)) {
-         $$1 = $$2;
-      }
-
-      return $$1;
-   }
-
-   static Optional<dja> b(dja $$0) {
-      return a($$0.b()).map($$1 -> $$1.l($$0));
-   }
-
-   static Optional<cwj> c(cwj $$0) {
-      return Optional.ofNullable((cwj)v_.get().get($$0));
-   }
-
-   static dja c(dja $$0) {
-      return b($$0.b()).l($$0);
+   public dfm(dkt $$0, djf.d $$1) {
+      super($$0, $$1.a($$0.e()));
+      this.k(this.E.b().a(b, ic.c).a(f, Boolean.valueOf(false)));
    }
 
    @Override
-   default Optional<dja> i_(dja $$0) {
-      return c($$0.b()).map($$1 -> $$1.l($$0));
+   public bka a(djg $$0, cto $$1, hx $$2, cfh $$3, bjz $$4, elo $$5) {
+      if ($$1.c_($$2) instanceof did $$6) {
+         cmx $$7 = $$3.b($$4);
+         if (this.a($$0, $$3, $$5, $$6, $$7)) {
+            return bka.d;
+         }
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   private boolean a(djg $$0, cfh $$1, elo $$2, did $$3, cmx $$4) {
+      return !$$3.a($$3.a($$1), $$1) && $$4.d() instanceof cmj && !this.a($$2, $$0);
+   }
+
+   private boolean a(elo $$0, djg $$1) {
+      return $$0.b().o() == $$1.c(b).o();
    }
 
    @Override
-   default float aw_() {
-      return this.c() == dfm.a.a ? 0.75F : 1.0F;
+   public String h() {
+      return this.k().a();
    }
 
-   public static enum a implements ave {
-      a("unaffected"),
-      b("exposed"),
-      c("weathered"),
-      d("oxidized");
+   @Override
+   public eml a(djg $$0, csu $$1, hx $$2, elx $$3) {
+      return j.get($$0.c(b));
+   }
 
-      public static final Codec<dfm.a> e = ave.a(dfm.a::values);
-      private final String f;
+   @Override
+   public eml b_(djg $$0, csu $$1, hx $$2) {
+      return this.a($$0, $$1, $$2, elx.a());
+   }
 
-      private a(String $$0) {
-         this.f = $$0;
+   @Override
+   public eml b(djg $$0, csu $$1, hx $$2, elx $$3) {
+      switch ((ic)$$0.c(b)) {
+         case f:
+         case e:
+            return d;
+         default:
+            return c;
+      }
+   }
+
+   public boolean b(djg $$0, ctr $$1, hx $$2) {
+      ic $$3 = $$0.c(b).h();
+      ic $$4 = $$0.c(b).i();
+      return this.a($$1, $$0, $$2.a($$3), $$4) || this.a($$1, $$0, $$2.a($$4), $$3);
+   }
+
+   public boolean a(ctr $$0, djg $$1, hx $$2, ic $$3) {
+      djg $$4 = $$0.a_($$2);
+      return $$4.a(asg.ay) ? $$4.c(b).o().a($$1.c(b)) : $$4.a($$0, $$2, $$3, dep.a);
+   }
+
+   @Nullable
+   @Override
+   public djg a(cpg $$0) {
+      djg $$1 = this.o();
+      eeq $$2 = $$0.q().b_($$0.a());
+      ctr $$3 = $$0.q();
+      hx $$4 = $$0.a();
+
+      for (ic $$5 : $$0.f()) {
+         if ($$5.o().d() && !$$5.o().a($$0.k())) {
+            ic $$6 = $$5.g();
+            $$1 = $$1.a(b, $$6);
+            if ($$1.a($$3, $$4) && this.b($$1, $$3, $$4)) {
+               return $$1.a(f, Boolean.valueOf($$2.a() == eer.c));
+            }
+         }
       }
 
-      @Override
-      public String c() {
-         return this.f;
-      }
+      return null;
+   }
+
+   @Override
+   public djg a(djg $$0, ic $$1, djg $$2, ctp $$3, hx $$4, hx $$5) {
+      return $$1.o() == $$0.c(b).h().o() && !$$0.a($$3, $$4) ? cwr.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   public float g(djg $$0) {
+      return $$0.c(b).p();
+   }
+
+   @Override
+   public djg a(djg $$0, ddb $$1) {
+      return $$0.a(b, $$1.a($$0.c(b)));
+   }
+
+   @Override
+   public djg a(djg $$0, dbl $$1) {
+      return $$0.a($$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected void a(djh.a<cwp, djg> $$0) {
+      $$0.a(b, f);
+   }
+
+   @Override
+   public dgu a(hx $$0, djg $$1) {
+      return new dhr($$0, $$1);
+   }
+
+   @Override
+   public boolean a(djg $$0, csu $$1, hx $$2, efg $$3) {
+      return false;
+   }
+
+   @Nullable
+   @Override
+   public <T extends dgu> dgv<T> a(cto $$0, djg $$1, dgw<T> $$2) {
+      return a($$2, dgw.i, did::a);
    }
 }

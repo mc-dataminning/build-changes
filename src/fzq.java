@@ -1,86 +1,87 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
+public class fzq<T extends cgz> extends fyk<T> {
+   private static final ahg f = new ahg("textures/entity/minecart.png");
+   protected final fjv<T> a;
+   private final ftz g;
 
-public class fzq extends fzl<byh, fko<byh>> {
-   private static final Map<byh.a, ahd> a = ac.a(Maps.newEnumMap(byh.a.class), $$0 -> {
-      $$0.put(byh.a.a, new ahd("textures/entity/panda/panda.png"));
-      $$0.put(byh.a.b, new ahd("textures/entity/panda/lazy_panda.png"));
-      $$0.put(byh.a.c, new ahd("textures/entity/panda/worried_panda.png"));
-      $$0.put(byh.a.d, new ahd("textures/entity/panda/playful_panda.png"));
-      $$0.put(byh.a.e, new ahd("textures/entity/panda/brown_panda.png"));
-      $$0.put(byh.a.f, new ahd("textures/entity/panda/weak_panda.png"));
-      $$0.put(byh.a.g, new ahd("textures/entity/panda/aggressive_panda.png"));
-   });
-
-   public fzq(fyf.a $$0) {
-      super($$0, new fko<>($$0.a(fmo.aC)), 0.9F);
-      this.a(new gcm(this, $$0.d()));
+   public fzq(fyl.a $$0, fmt $$1) {
+      super($$0);
+      this.d = 0.7F;
+      this.a = new fkq<>($$0.a($$1));
+      this.g = $$0.c();
    }
 
-   public ahd a(byh $$0) {
-      return a.getOrDefault($$0.gq(), a.get(byh.a.a));
-   }
+   public void a(T $$0, float $$1, float $$2, epz $$3, ftf $$4, int $$5) {
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      $$3.a();
+      long $$6 = (long)$$0.aj() * 493286711L;
+      $$6 = $$6 * $$6 * 4392167121L + $$6 * 98761L;
+      float $$7 = (((float)($$6 >> 16 & 7L) + 0.5F) / 8.0F - 0.5F) * 0.004F;
+      float $$8 = (((float)($$6 >> 20 & 7L) + 0.5F) / 8.0F - 0.5F) * 0.004F;
+      float $$9 = (((float)($$6 >> 24 & 7L) + 0.5F) / 8.0F - 0.5F) * 0.004F;
+      $$3.a($$7, $$8, $$9);
+      double $$10 = aun.d((double)$$2, $$0.ac, $$0.dr());
+      double $$11 = aun.d((double)$$2, $$0.ad, $$0.dt());
+      double $$12 = aun.d((double)$$2, $$0.ae, $$0.dx());
+      double $$13 = 0.3F;
+      els $$14 = $$0.q($$10, $$11, $$12);
+      float $$15 = aun.i($$2, $$0.O, $$0.dE());
+      if ($$14 != null) {
+         els $$16 = $$0.a($$10, $$11, $$12, 0.3F);
+         els $$17 = $$0.a($$10, $$11, $$12, -0.3F);
+         if ($$16 == null) {
+            $$16 = $$14;
+         }
 
-   protected void a(byh $$0, ept $$1, float $$2, float $$3, float $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      if ($$0.bU > 0) {
-         int $$5 = $$0.bU;
-         int $$6 = $$5 + 1;
-         float $$7 = 7.0F;
-         float $$8 = $$0.o_() ? 0.3F : 0.8F;
-         if ($$5 < 8) {
-            float $$9 = (float)(90 * $$5) / 7.0F;
-            float $$10 = (float)(90 * $$6) / 7.0F;
-            float $$11 = this.a($$9, $$10, $$6, $$4, 8.0F);
-            $$1.a(0.0F, ($$8 + 0.2F) * ($$11 / 90.0F), 0.0F);
-            $$1.a(a.b.rotationDegrees(-$$11));
-         } else if ($$5 < 16) {
-            float $$12 = ((float)$$5 - 8.0F) / 7.0F;
-            float $$13 = 90.0F + 90.0F * $$12;
-            float $$14 = 90.0F + 90.0F * ((float)$$6 - 8.0F) / 7.0F;
-            float $$15 = this.a($$13, $$14, $$6, $$4, 16.0F);
-            $$1.a(0.0F, $$8 + 0.2F + ($$8 - 0.2F) * ($$15 - 90.0F) / 90.0F, 0.0F);
-            $$1.a(a.b.rotationDegrees(-$$15));
-         } else if ((float)$$5 < 24.0F) {
-            float $$16 = ((float)$$5 - 16.0F) / 7.0F;
-            float $$17 = 180.0F + 90.0F * $$16;
-            float $$18 = 180.0F + 90.0F * ((float)$$6 - 16.0F) / 7.0F;
-            float $$19 = this.a($$17, $$18, $$6, $$4, 24.0F);
-            $$1.a(0.0F, $$8 + $$8 * (270.0F - $$19) / 90.0F, 0.0F);
-            $$1.a(a.b.rotationDegrees(-$$19));
-         } else if ($$5 < 32) {
-            float $$20 = ((float)$$5 - 24.0F) / 7.0F;
-            float $$21 = 270.0F + 90.0F * $$20;
-            float $$22 = 270.0F + 90.0F * ((float)$$6 - 24.0F) / 7.0F;
-            float $$23 = this.a($$21, $$22, $$6, $$4, 32.0F);
-            $$1.a(0.0F, $$8 * ((360.0F - $$23) / 90.0F), 0.0F);
-            $$1.a(a.b.rotationDegrees(-$$23));
+         if ($$17 == null) {
+            $$17 = $$14;
+         }
+
+         $$3.a($$14.c - $$10, ($$16.d + $$17.d) / 2.0 - $$11, $$14.e - $$12);
+         els $$18 = $$17.b(-$$16.c, -$$16.d, -$$16.e);
+         if ($$18.f() != 0.0) {
+            $$18 = $$18.d();
+            $$1 = (float)(Math.atan2($$18.e, $$18.c) * 180.0 / Math.PI);
+            $$15 = (float)(Math.atan($$18.d) * 73.0);
          }
       }
 
-      float $$24 = $$0.E($$4);
-      if ($$24 > 0.0F) {
-         $$1.a(0.0F, 0.8F * $$24, 0.0F);
-         $$1.a(a.b.rotationDegrees(aui.i($$24, $$0.dE(), $$0.dE() + 90.0F)));
-         $$1.a(0.0F, -1.0F * $$24, 0.0F);
-         if ($$0.gw()) {
-            float $$25 = (float)(Math.cos((double)$$0.ah * 1.25) * Math.PI * 0.05F);
-            $$1.a(a.d.rotationDegrees($$25));
-            if ($$0.o_()) {
-               $$1.a(0.0F, 0.8F, 0.55F);
-            }
-         }
+      $$3.a(0.0F, 0.375F, 0.0F);
+      $$3.a(a.d.rotationDegrees(180.0F - $$1));
+      $$3.a(a.f.rotationDegrees(-$$15));
+      float $$19 = (float)$$0.O() - $$2;
+      float $$20 = $$0.N() - $$2;
+      if ($$20 < 0.0F) {
+         $$20 = 0.0F;
       }
 
-      float $$26 = $$0.F($$4);
-      if ($$26 > 0.0F) {
-         float $$27 = $$0.o_() ? 0.5F : 1.3F;
-         $$1.a(0.0F, $$27 * $$26, 0.0F);
-         $$1.a(a.b.rotationDegrees(aui.i($$26, $$0.dE(), $$0.dE() + 180.0F)));
+      if ($$19 > 0.0F) {
+         $$3.a(a.b.rotationDegrees(aun.a($$19) * $$19 * $$20 / 10.0F * (float)$$0.P()));
       }
+
+      int $$21 = $$0.z();
+      djg $$22 = $$0.x();
+      if ($$22.l() != dcu.a) {
+         $$3.a();
+         float $$23 = 0.75F;
+         $$3.b(0.75F, 0.75F, 0.75F);
+         $$3.a(-0.5F, (float)($$21 - 8) / 16.0F, 0.5F);
+         $$3.a(a.d.rotationDegrees(90.0F));
+         this.a($$0, $$2, $$22, $$3, $$4, $$5);
+         $$3.b();
+      }
+
+      $$3.b(-1.0F, -1.0F, 1.0F);
+      this.a.a($$0, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F);
+      eqd $$24 = $$4.getBuffer(this.a.a(this.a($$0)));
+      this.a.a($$3, $$24, $$5, gec.d, 1.0F, 1.0F, 1.0F, 1.0F);
+      $$3.b();
    }
 
-   private float a(float $$0, float $$1, int $$2, float $$3, float $$4) {
-      return (float)$$2 < $$4 ? aui.i($$3, $$0, $$1) : $$0;
+   public ahg a(T $$0) {
+      return f;
+   }
+
+   protected void a(T $$0, float $$1, djg $$2, epz $$3, ftf $$4, int $$5) {
+      this.g.a($$2, $$3, $$4, $$5, gec.d);
    }
 }

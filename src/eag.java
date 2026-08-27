@@ -1,81 +1,59 @@
-import com.mojang.datafixers.util.Either;
+import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
 
-public abstract class eag {
-   public static final Codec<eag> e = kd.ai.q().dispatch("element_type", eag::a, eah::codec);
-   private static final ih<ecx> a = ih.a(new ecx(List.of()));
-   @Nullable
-   private volatile eai.a b;
+public class eag extends eam {
+   public static final Codec<eag> a = RecordCodecBuilder.create($$0 -> $$0.group(dyj.b.fieldOf("feature").forGetter($$0x -> $$0x.b), d()).apply($$0, eag::new));
+   private final ih<dyj> b;
+   private final sn c;
 
-   protected static <E extends eag> RecordCodecBuilder<E, eai.a> d() {
-      return eai.a.c.fieldOf("projection").forGetter(eag::e);
-   }
-
-   protected eag(eai.a $$0) {
+   protected eag(ih<dyj> $$0, eao.a $$1) {
+      super($$1);
       this.b = $$0;
+      this.c = this.b();
    }
 
-   public abstract jb a(eda var1, dcv var2);
-
-   public abstract List<ecz.c> a(eda var1, hx var2, dcv var3, aup var4);
-
-   public abstract dyr a(eda var1, hx var2, dcv var3);
-
-   public abstract boolean a(eda var1, cud var2, cub var3, dkx var4, hx var5, hx var6, dcv var7, dyr var8, aup var9, boolean var10);
-
-   public abstract eah<?> a();
-
-   public void a(ctj $$0, ecz.c $$1, hx $$2, dcv $$3, aup $$4, dyr $$5) {
+   private sn b() {
+      sn $$0 = new sn();
+      $$0.a("name", "minecraft:bottom");
+      $$0.a("final_state", "minecraft:air");
+      $$0.a("pool", "minecraft:empty");
+      $$0.a("target", "minecraft:empty");
+      $$0.a("joint", dhu.a.a.c());
+      return $$0;
    }
 
-   public eag a(eai.a $$0) {
-      this.b = $$0;
-      return this;
+   @Override
+   public jb a(edg $$0, ddb $$1) {
+      return jb.g;
    }
 
-   public eai.a e() {
-      eai.a $$0 = this.b;
-      if ($$0 == null) {
-         throw new IllegalStateException();
-      } else {
-         return $$0;
-      }
+   @Override
+   public List<edf.c> a(edg $$0, hx $$1, ddb $$2, auu $$3) {
+      List<edf.c> $$4 = Lists.newArrayList();
+      $$4.add(new edf.c($$1, cwr.pb.o().a(daq.b, ie.a(ic.a, ic.d)), this.c));
+      return $$4;
    }
 
-   public int f() {
-      return 1;
+   @Override
+   public dyx a(edg $$0, hx $$1, ddb $$2) {
+      jb $$3 = this.a($$0, $$2);
+      return new dyx($$1.u(), $$1.v(), $$1.w(), $$1.u() + $$3.u(), $$1.v() + $$3.v(), $$1.w() + $$3.w());
    }
 
-   public static Function<eai.a, dzz> g() {
-      return $$0 -> dzz.b;
+   @Override
+   public boolean a(edg $$0, cuj $$1, cuh $$2, dld $$3, hx $$4, hx $$5, ddb $$6, dyx $$7, auu $$8, boolean $$9) {
+      return this.b.a().a($$1, $$3, $$8, $$4);
    }
 
-   public static Function<eai.a, ead> a(String $$0) {
-      return $$1 -> new ead(Either.left(new ahd($$0)), a, $$1);
+   @Override
+   public ean<?> a() {
+      return ean.c;
    }
 
-   public static Function<eai.a, ead> a(String $$0, ih<ecx> $$1) {
-      return $$2 -> new ead(Either.left(new ahd($$0)), $$1, $$2);
-   }
-
-   public static Function<eai.a, eaf> b(String $$0) {
-      return $$1 -> new eaf(Either.left(new ahd($$0)), a, $$1);
-   }
-
-   public static Function<eai.a, eaf> b(String $$0, ih<ecx> $$1) {
-      return $$2 -> new eaf(Either.left(new ahd($$0)), $$1, $$2);
-   }
-
-   public static Function<eai.a, eaa> a(ih<dyd> $$0) {
-      return $$1 -> new eaa($$0, $$1);
-   }
-
-   public static Function<eai.a, eae> b(List<Function<eai.a, ? extends eag>> $$0) {
-      return $$1 -> new eae($$0.stream().map($$1x -> (eag)$$1x.apply($$1)).collect(Collectors.toList()), $$1);
+   @Override
+   public String toString() {
+      return "Feature[" + this.b + "]";
    }
 }

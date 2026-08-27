@@ -1,22 +1,19 @@
-public class cip extends cjp {
-   private final chv a;
+public class cip extends cjv {
+   private final cio a;
 
-   public cip(chv $$0, bjo $$1, int $$2, int $$3, int $$4) {
-      super($$1, $$2, $$3, $$4);
-      this.a = $$0;
+   public cip(bjt $$0, int $$1, int $$2, int $$3, cio $$4) {
+      super($$0, $$1, $$2, $$3);
+      this.a = $$4;
    }
 
    @Override
-   public boolean a(cmr $$0) {
-      return this.a.d($$0) || c($$0);
+   public boolean a(cmx $$0) {
+      return !this.a.e(this.e) && super.a($$0);
    }
 
    @Override
-   public int a_(cmr $$0) {
-      return c($$0) ? 1 : super.a_($$0);
-   }
-
-   public static boolean c(cmr $$0) {
-      return $$0.a(cmu.qv);
+   public void b() {
+      super.b();
+      this.a.a(this.d);
    }
 }

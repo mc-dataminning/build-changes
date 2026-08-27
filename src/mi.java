@@ -1,43 +1,47 @@
+import com.google.common.collect.Maps;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import java.util.function.Function;
+import java.util.List;
+import java.util.Map;
+import java.util.function.Supplier;
 
-public class mi<T> {
-   final String a;
-   final Function<T, JsonElement> b;
+public class mi implements Supplier<JsonElement> {
+   private final Map<mk<?>, mk<?>.a> a = Maps.newLinkedHashMap();
 
-   public mi(String $$0, Function<T, JsonElement> $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public <T> mi a(mk<T> $$0, T $$1) {
+      mk<?>.a $$2 = this.a.put($$0, $$0.a($$1));
+      if ($$2 != null) {
+         throw new IllegalStateException("Replacing value of " + $$2 + " with " + $$1);
+      } else {
+         return this;
+      }
    }
 
-   public mi<T>.a a(T $$0) {
-      return new mi.a($$0);
+   public static mi a() {
+      return new mi();
    }
 
-   @Override
-   public String toString() {
-      return this.a;
+   public static mi a(mi $$0, mi $$1) {
+      mi $$2 = new mi();
+      $$2.a.putAll($$0.a);
+      $$2.a.putAll($$1.a);
+      return $$2;
    }
 
-   public class a {
-      private final T b;
+   public JsonElement b() {
+      JsonObject $$0 = new JsonObject();
+      this.a.values().forEach($$1 -> $$1.a($$0));
+      return $$0;
+   }
 
-      public a(T $$1) {
-         this.b = $$1;
-      }
-
-      public mi<T> a() {
-         return mi.this;
-      }
-
-      public void a(JsonObject $$0) {
-         $$0.add(mi.this.a, mi.this.b.apply(this.b));
-      }
-
-      @Override
-      public String toString() {
-         return mi.this.a + "=" + this.b;
+   public static JsonElement a(List<mi> $$0) {
+      if ($$0.size() == 1) {
+         return $$0.get(0).b();
+      } else {
+         JsonArray $$1 = new JsonArray();
+         $$0.forEach($$1x -> $$1.add($$1x.b()));
+         return $$1;
       }
    }
 }

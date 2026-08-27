@@ -1,12 +1,97 @@
-import java.util.concurrent.TimeUnit;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.Keyable;
+import java.util.Arrays;
+import java.util.Map;
+import java.util.Objects;
+import java.util.function.Function;
+import java.util.function.Supplier;
+import java.util.function.ToIntFunction;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public class avj {
-   public static final long a = TimeUnit.SECONDS.toNanos(1L);
-   public static final long b = TimeUnit.MILLISECONDS.toNanos(1L);
-   public static final long c = TimeUnit.SECONDS.toMillis(1L);
-   public static final long d = TimeUnit.HOURS.toSeconds(1L);
+public interface avj {
+   int W = 16;
 
-   public static bjg a(int $$0, int $$1) {
-      return bjg.a($$0 * 20, $$1 * 20);
+   String c();
+
+   static <E extends Enum<E> & avj> avj.a<E> a(Supplier<E[]> $$0) {
+      return a($$0, $$0x -> $$0x);
+   }
+
+   static <E extends Enum<E> & avj> avj.a<E> a(Supplier<E[]> $$0, Function<String, String> $$1) {
+      E[] $$2 = (E[])$$0.get();
+      Function<String, E> $$3 = a($$2, $$1);
+      return new avj.a<>($$2, $$3);
+   }
+
+   static <T extends avj> Codec<T> b(Supplier<T[]> $$0) {
+      T[] $$1 = (T[])$$0.get();
+      Function<String, T> $$2 = a($$1, $$0x -> $$0x);
+      ToIntFunction<T> $$3 = ac.e(Arrays.asList($$1));
+      return new avj.b<>($$1, $$2, $$3);
+   }
+
+   static <T extends avj> Function<String, T> a(T[] $$0, Function<String, String> $$1) {
+      if ($$0.length > 16) {
+         Map<String, T> $$2 = Arrays.<avj>stream($$0).collect(Collectors.toMap($$1x -> $$1.apply($$1x.c()), $$0x -> (T)$$0x));
+         return $$1x -> $$1x == null ? null : $$2.get($$1x);
+      } else {
+         return $$2x -> {
+            for (T $$3 : $$0) {
+               if ($$1.apply($$3.c()).equals($$2x)) {
+                  return $$3;
+               }
+            }
+
+            return null;
+         };
+      }
+   }
+
+   static Keyable a(final avj[] $$0) {
+      return new Keyable() {
+         public <T> Stream<T> keys(DynamicOps<T> $$0x) {
+            return Arrays.stream($$0).map(avj::c).map($$0::createString);
+         }
+      };
+   }
+
+   @Deprecated
+   public static class a<E extends Enum<E> & avj> extends avj.b<E> {
+      private final Function<String, E> a;
+
+      public a(E[] $$0, Function<String, E> $$1) {
+         super($$0, $$1, $$0x -> ((Enum)$$0x).ordinal());
+         this.a = $$1;
+      }
+
+      @Nullable
+      public E a(@Nullable String $$0) {
+         return this.a.apply($$0);
+      }
+
+      public E a(@Nullable String $$0, E $$1) {
+         return Objects.requireNonNullElse(this.a($$0), $$1);
+      }
+   }
+
+   public static class b<S extends avj> implements Codec<S> {
+      private final Codec<S> a;
+
+      public b(S[] $$0, Function<String, S> $$1, ToIntFunction<S> $$2) {
+         this.a = atv.b(atv.a(avj::c, $$1), atv.a($$2, $$1x -> $$1x >= 0 && $$1x < $$0.length ? $$0[$$1x] : null, -1));
+      }
+
+      public <T> DataResult<Pair<S, T>> decode(DynamicOps<T> $$0, T $$1) {
+         return this.a.decode($$0, $$1);
+      }
+
+      public <T> DataResult<T> a(S $$0, DynamicOps<T> $$1, T $$2) {
+         return this.a.encode($$0, $$1, $$2);
+      }
    }
 }

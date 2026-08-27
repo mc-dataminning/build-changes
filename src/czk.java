@@ -1,19 +1,11 @@
-import com.mojang.serialization.MapCodec;
-
-public class czk extends cyd {
-   public static final MapCodec<czk> b = b(czk::new);
-
-   @Override
-   public MapCodec<czk> a() {
-      return b;
+public interface czk {
+   default void a(cto $$0, hx $$1, djg $$2, djg $$3, cbs $$4) {
    }
 
-   protected czk(diz.d $$0) {
-      super($$0);
+   default void a(cto $$0, hx $$1, cbs $$2) {
    }
 
-   @Override
-   public bjv a(dja $$0, cti $$1, hx $$2, cfb $$3, bju $$4, eli $$5) {
-      return bjv.d;
+   default bks a(blu $$0) {
+      return $$0.dN().a($$0);
    }
 }

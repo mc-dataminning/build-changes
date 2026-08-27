@@ -1,40 +1,136 @@
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.util.Map;
+import java.util.UUID;
 
-public class zb implements xd<yx> {
-   private final Object2IntMap<art<?>> a;
+public class zb implements xf<za> {
+   private static final double a = 8000.0;
+   private static final double b = 3.9;
+   private final int c;
+   private final UUID d;
+   private final bly<?> e;
+   private final double f;
+   private final double g;
+   private final double h;
+   private final int i;
+   private final int j;
+   private final int k;
+   private final byte l;
+   private final byte m;
+   private final byte n;
+   private final int o;
 
-   public zb(Object2IntMap<art<?>> $$0) {
-      this.a = $$0;
+   public zb(blu $$0) {
+      this($$0, 0);
    }
 
-   public zb(ug $$0) {
-      this.a = $$0.a(Object2IntOpenHashMap::new, $$1 -> {
-         arv<?> $$2 = $$1.a(kd.x);
-         return a($$0, $$2);
-      }, ug::n);
+   public zb(blu $$0, int $$1) {
+      this($$0.aj(), $$0.cw(), $$0.dr(), $$0.dt(), $$0.dx(), $$0.dE(), $$0.dC(), $$0.ai(), $$1, $$0.dp(), (double)$$0.cp());
    }
 
-   private static <T> art<T> a(ug $$0, arv<T> $$1) {
-      return $$1.b($$0.a($$1.a()));
+   public zb(blu $$0, int $$1, hx $$2) {
+      this($$0.aj(), $$0.cw(), (double)$$2.u(), (double)$$2.v(), (double)$$2.w(), $$0.dE(), $$0.dC(), $$0.ai(), $$1, $$0.dp(), (double)$$0.cp());
    }
 
-   public void a(yx $$0) {
-      $$0.a(this);
+   public zb(int $$0, UUID $$1, double $$2, double $$3, double $$4, float $$5, float $$6, bly<?> $$7, int $$8, els $$9, double $$10) {
+      this.c = $$0;
+      this.d = $$1;
+      this.f = $$2;
+      this.g = $$3;
+      this.h = $$4;
+      this.l = (byte)aun.d($$5 * 256.0F / 360.0F);
+      this.m = (byte)aun.d($$6 * 256.0F / 360.0F);
+      this.n = (byte)aun.a($$10 * 256.0 / 360.0);
+      this.e = $$7;
+      this.o = $$8;
+      this.i = (int)(aun.a($$9.c, -3.9, 3.9) * 8000.0);
+      this.j = (int)(aun.a($$9.d, -3.9, 3.9) * 8000.0);
+      this.k = (int)(aun.a($$9.e, -3.9, 3.9) * 8000.0);
+   }
+
+   public zb(ui $$0) {
+      this.c = $$0.n();
+      this.d = $$0.p();
+      this.e = $$0.a(kd.g);
+      this.f = $$0.readDouble();
+      this.g = $$0.readDouble();
+      this.h = $$0.readDouble();
+      this.l = $$0.readByte();
+      this.m = $$0.readByte();
+      this.n = $$0.readByte();
+      this.o = $$0.n();
+      this.i = $$0.readShort();
+      this.j = $$0.readShort();
+      this.k = $$0.readShort();
    }
 
    @Override
-   public void a(ug $$0) {
-      $$0.a(this.a, zb::a, ug::c);
+   public void a(ui $$0) {
+      $$0.c(this.c);
+      $$0.a(this.d);
+      $$0.a(kd.g, this.e);
+      $$0.a(this.f);
+      $$0.a(this.g);
+      $$0.a(this.h);
+      $$0.k(this.l);
+      $$0.k(this.m);
+      $$0.k(this.n);
+      $$0.c(this.o);
+      $$0.l(this.i);
+      $$0.l(this.j);
+      $$0.l(this.k);
    }
 
-   private static <T> void a(ug $$0, art<T> $$1) {
-      $$0.a(kd.x, $$1.a());
-      $$0.a($$1.a().a(), $$1.b());
+   public void a(za $$0) {
+      $$0.a(this);
    }
 
-   public Map<art<?>, Integer> a() {
-      return this.a;
+   public int a() {
+      return this.c;
+   }
+
+   public UUID d() {
+      return this.d;
+   }
+
+   public bly<?> e() {
+      return this.e;
+   }
+
+   public double f() {
+      return this.f;
+   }
+
+   public double g() {
+      return this.g;
+   }
+
+   public double h() {
+      return this.h;
+   }
+
+   public double i() {
+      return (double)this.i / 8000.0;
+   }
+
+   public double j() {
+      return (double)this.j / 8000.0;
+   }
+
+   public double k() {
+      return (double)this.k / 8000.0;
+   }
+
+   public float l() {
+      return (float)(this.l * 360) / 256.0F;
+   }
+
+   public float m() {
+      return (float)(this.m * 360) / 256.0F;
+   }
+
+   public float n() {
+      return (float)(this.n * 360) / 256.0F;
+   }
+
+   public int o() {
+      return this.o;
    }
 }

@@ -1,25 +1,15 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.BiConsumer;
-import java.util.stream.Stream;
 
-record ean(ahc<eai> c, bif<ahc<eai>> d) implements eak {
-   static Codec<ean> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ahc.a(ke.aG).fieldOf("alias").forGetter(ean::c), bif.b(ahc.a(ke.aG)).fieldOf("targets").forGetter(ean::d)).apply($$0, ean::new)
-   );
+public interface ean<P extends eam> {
+   ean<eal> a = a("single_pool_element", eal.b);
+   ean<eak> b = a("list_pool_element", eak.a);
+   ean<eag> c = a("feature_pool_element", eag.a);
+   ean<eaf> d = a("empty_pool_element", eaf.a);
+   ean<eaj> e = a("legacy_single_pool_element", eaj.a);
 
-   @Override
-   public void a(aup $$0, BiConsumer<ahc<eai>, ahc<eai>> $$1) {
-      this.d.b($$0).ifPresent($$1x -> $$1.accept(this.c, (ahc<eai>)$$1x.b()));
-   }
+   Codec<P> codec();
 
-   @Override
-   public Stream<ahc<eai>> a() {
-      return this.d.e().stream().map(bih.b::b);
-   }
-
-   @Override
-   public Codec<ean> b() {
-      return a;
+   static <P extends eam> ean<P> a(String $$0, Codec<P> $$1) {
+      return it.a(kd.ai, $$0, () -> $$1);
    }
 }

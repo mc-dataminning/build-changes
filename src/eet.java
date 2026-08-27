@@ -1,98 +1,213 @@
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class eet extends efe {
-   private final boolean l;
-   private float m;
-   private float n;
+public abstract class eet extends eeo {
+   public static final float e = 0.44444445F;
 
-   public eet(boolean $$0) {
-      this.l = $$0;
+   @Override
+   public eep d() {
+      return eer.d;
    }
 
    @Override
-   public void a(ctv $$0, bmh $$1) {
-      super.a($$0, $$1);
-      $$1.a(eev.j, 0.0F);
-      this.m = $$1.a(eev.c);
-      $$1.a(eev.c, 6.0F);
-      this.n = $$1.a(eev.k);
-      $$1.a(eev.k, 4.0F);
+   public eep e() {
+      return eer.e;
    }
 
    @Override
-   public void b() {
-      this.b.a(eev.c, this.m);
-      this.b.a(eev.k, this.n);
-      super.b();
+   public cms a() {
+      return cna.qx;
    }
 
    @Override
-   public eex a() {
-      return !this.b.aZ() ? super.a() : this.c(new hx(aui.a(this.b.cH().a), aui.a(this.b.cH().b + 0.5), aui.a(this.b.cH().c)));
-   }
+   public void a(cto $$0, hx $$1, eeq $$2, auu $$3) {
+      hx $$4 = $$1.c();
+      if ($$0.a_($$4).i() && !$$0.a_($$4).i($$0, $$4)) {
+         if ($$3.a(100) == 0) {
+            double $$5 = (double)$$1.u() + $$3.j();
+            double $$6 = (double)$$1.v() + 1.0;
+            double $$7 = (double)$$1.w() + $$3.j();
+            $$0.a(jx.V, $$5, $$6, $$7, 0.0, 0.0, 0.0);
+            $$0.a($$5, $$6, $$7, arr.nd, ars.e, 0.2F + $$3.i() * 0.2F, 0.9F + $$3.i() * 0.15F, false);
+         }
 
-   @Override
-   public efd a(double $$0, double $$1, double $$2) {
-      return this.a(this.b(aui.a($$0), aui.a($$1 + 0.5), aui.a($$2)));
-   }
-
-   @Override
-   public int a(eex[] $$0, eex $$1) {
-      int $$2 = super.a($$0, $$1);
-      eev $$3 = this.a(this.b, $$1.a, $$1.b + 1, $$1.c);
-      eev $$4 = this.a(this.b, $$1.a, $$1.b, $$1.c);
-      int $$5;
-      if (this.b.a($$3) >= 0.0F && $$4 != eev.w) {
-         $$5 = aui.d(Math.max(1.0F, this.b.dG()));
-      } else {
-         $$5 = 0;
+         if ($$3.a(200) == 0) {
+            $$0.a((double)$$1.u(), (double)$$1.v(), (double)$$1.w(), arr.nb, ars.e, 0.2F + $$3.i() * 0.2F, 0.9F + $$3.i() * 0.15F, false);
+         }
       }
+   }
 
-      double $$7 = this.d(new hx($$1.a, $$1.b, $$1.c));
-      eex $$8 = this.a($$1.a, $$1.b + 1, $$1.c, Math.max(0, $$5 - 1), $$7, ic.b, $$4);
-      eex $$9 = this.a($$1.a, $$1.b - 1, $$1.c, $$5, $$7, ic.a, $$4);
-      if (this.b($$8, $$1)) {
-         $$0[$$2++] = $$8;
+   @Override
+   public void b(cto $$0, hx $$1, eeq $$2, auu $$3) {
+      if ($$0.Z().b(ctk.b)) {
+         int $$4 = $$3.a(3);
+         if ($$4 > 0) {
+            hx $$5 = $$1;
+
+            for (int $$6 = 0; $$6 < $$4; $$6++) {
+               $$5 = $$5.b($$3.a(3) - 1, 1, $$3.a(3) - 1);
+               if (!$$0.p($$5)) {
+                  return;
+               }
+
+               djg $$7 = $$0.a_($$5);
+               if ($$7.i()) {
+                  if (this.a((ctr)$$0, $$5)) {
+                     $$0.b($$5, cwc.a($$0, $$5));
+                     return;
+                  }
+               } else if ($$7.d()) {
+                  return;
+               }
+            }
+         } else {
+            for (int $$8 = 0; $$8 < 3; $$8++) {
+               hx $$9 = $$1.b($$3.a(3) - 1, 0, $$3.a(3) - 1);
+               if (!$$0.p($$9)) {
+                  return;
+               }
+
+               if ($$0.u($$9.c()) && this.b($$0, $$9)) {
+                  $$0.b($$9.c(), cwc.a($$0, $$9));
+               }
+            }
+         }
       }
+   }
 
-      if (this.b($$9, $$1) && $$4 != eev.e) {
-         $$0[$$2++] = $$9;
-      }
-
-      for (int $$10 = 0; $$10 < $$2; $$10++) {
-         eex $$11 = $$0[$$10];
-         if ($$11.l == eev.j && this.l && $$11.b < this.b.dM().A_() - 10) {
-            $$11.k++;
+   private boolean a(ctr $$0, hx $$1) {
+      for (ic $$2 : ic.values()) {
+         if (this.b($$0, $$1.a($$2))) {
+            return true;
          }
       }
 
-      return $$2;
+      return false;
    }
 
-   private boolean b(@Nullable eex $$0, eex $$1) {
-      return this.a($$0, $$1) && $$0.l == eev.j;
+   private boolean b(ctr $$0, hx $$1) {
+      return $$1.v() >= $$0.J_() && $$1.v() < $$0.al() && !$$0.B($$1) ? false : $$0.a_($$1).j();
+   }
+
+   @Nullable
+   @Override
+   public jv h() {
+      return jx.j;
    }
 
    @Override
-   protected boolean c() {
+   protected void a(ctp $$0, hx $$1, djg $$2) {
+      this.a($$0, $$1);
+   }
+
+   @Override
+   public int b(ctr $$0) {
+      return $$0.E_().i() ? 4 : 2;
+   }
+
+   @Override
+   public djg b(eeq $$0) {
+      return cwr.H.o().a(dbe.b, Integer.valueOf(e($$0)));
+   }
+
+   @Override
+   public boolean a(eep $$0) {
+      return $$0 == eer.e || $$0 == eer.d;
+   }
+
+   @Override
+   public int c(ctr $$0) {
+      return $$0.E_().i() ? 1 : 2;
+   }
+
+   @Override
+   public boolean a(eeq $$0, csu $$1, hx $$2, eep $$3, ic $$4) {
+      return $$0.a($$1, $$2) >= 0.44444445F && $$3.a(asl.a);
+   }
+
+   @Override
+   public int a(ctr $$0) {
+      return $$0.E_().i() ? 10 : 30;
+   }
+
+   @Override
+   public int a(cto $$0, hx $$1, eeq $$2, eeq $$3) {
+      int $$4 = this.a((ctr)$$0);
+      if (!$$2.c() && !$$3.c() && !$$2.c(a) && !$$3.c(a) && $$3.a((csu)$$0, $$1) > $$2.a((csu)$$0, $$1) && $$0.F_().a(4) != 0) {
+         $$4 *= 4;
+      }
+
+      return $$4;
+   }
+
+   private void a(ctp $$0, hx $$1) {
+      $$0.c(1501, $$1, 0);
+   }
+
+   @Override
+   protected boolean a(cto $$0) {
+      return $$0.Z().b(ctk.V);
+   }
+
+   @Override
+   protected void a(ctp $$0, hx $$1, djg $$2, ic $$3, eeq $$4) {
+      if ($$3 == ic.a) {
+         eeq $$5 = $$0.b_($$1);
+         if (this.a(asl.b) && $$5.a(asl.a)) {
+            if ($$2.b() instanceof dbe) {
+               $$0.a($$1, cwr.b.o(), 3);
+            }
+
+            this.a($$0, $$1);
+            return;
+         }
+      }
+
+      super.a($$0, $$1, $$2, $$3, $$4);
+   }
+
+   @Override
+   protected boolean i() {
       return true;
    }
 
    @Override
-   public eev a(cso $$0, int $$1, int $$2, int $$3) {
-      hx.a $$4 = new hx.a();
-      eev $$5 = b($$0, $$4.d($$1, $$2, $$3));
-      if ($$5 == eev.j) {
-         for (ic $$6 : ic.values()) {
-            eev $$7 = b($$0, $$4.d($$1, $$2, $$3).c($$6));
-            if ($$7 == eev.a) {
-               return eev.k;
-            }
-         }
+   protected float c() {
+      return 100.0F;
+   }
 
-         return eev.j;
-      } else {
-         return a($$0, $$4);
+   @Override
+   public Optional<arq> j() {
+      return Optional.of(arr.cN);
+   }
+
+   public static class a extends eet {
+      @Override
+      protected void a(djh.a<eep, eeq> $$0) {
+         super.a($$0);
+         $$0.a(b);
+      }
+
+      @Override
+      public int d(eeq $$0) {
+         return $$0.c(b);
+      }
+
+      @Override
+      public boolean c(eeq $$0) {
+         return false;
+      }
+   }
+
+   public static class b extends eet {
+      @Override
+      public int d(eeq $$0) {
+         return 8;
+      }
+
+      @Override
+      public boolean c(eeq $$0) {
+         return true;
       }
    }
 }

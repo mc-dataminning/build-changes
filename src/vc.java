@@ -1,75 +1,92 @@
-import java.util.Arrays;
-import java.util.Collection;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-public class vc {
-   public static final vd a = vd.i();
-   public static final vd b = vd.c("options.on");
-   public static final vd c = vd.c("options.off");
-   public static final vd d = vd.c("gui.done");
-   public static final vd e = vd.c("gui.cancel");
-   public static final vd f = vd.c("gui.yes");
-   public static final vd g = vd.c("gui.no");
-   public static final vd h = vd.c("gui.ok");
-   public static final vd i = vd.c("gui.proceed");
-   public static final vd j = vd.c("gui.continue");
-   public static final vd k = vd.c("gui.back");
-   public static final vd l = vd.c("gui.toTitle");
-   public static final vd m = vd.c("gui.acknowledge");
-   public static final vd n = vd.c("chat.link.open");
-   public static final vd o = vd.c("gui.copy_link_to_clipboard");
-   public static final vd p = vd.c("menu.disconnect");
-   public static final vd q = vd.c("connect.failed");
-   public static final vd r = vd.b("\n");
-   public static final vd s = vd.b(". ");
-   public static final vd t = vd.b("...");
-   public static final vd u = a();
+public record vc(String b, List<vc.a> c, wc d) {
+   public static final Codec<vc> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.STRING.fieldOf("translation_key").forGetter(vc::a),
+               vc.a.d.listOf().fieldOf("parameters").forGetter(vc::b),
+               wc.b.b.optionalFieldOf("style", wc.a).forGetter(vc::c)
+            )
+            .apply($$0, vc::new)
+   );
 
-   public static vr a() {
-      return vd.b(" ");
+   public static vc a(String $$0) {
+      return new vc($$0, List.of(vc.a.a, vc.a.c), wc.a);
    }
 
-   public static vr a(long $$0) {
-      return vd.a("gui.days", $$0);
+   public static vc b(String $$0) {
+      wc $$1 = wc.a.a(n.h).b(true);
+      return new vc($$0, List.of(vc.a.a, vc.a.c), $$1);
    }
 
-   public static vr b(long $$0) {
-      return vd.a("gui.hours", $$0);
+   public static vc c(String $$0) {
+      wc $$1 = wc.a.a(n.h).b(true);
+      return new vc($$0, List.of(vc.a.b, vc.a.c), $$1);
    }
 
-   public static vr c(long $$0) {
-      return vd.a("gui.minutes", $$0);
+   public static vc d(String $$0) {
+      return new vc($$0, List.of(vc.a.b, vc.a.a, vc.a.c), wc.a);
    }
 
-   public static vd a(boolean $$0) {
-      return $$0 ? b : c;
+   public vf a(vf $$0, vb.a $$1) {
+      Object[] $$2 = this.b($$0, $$1);
+      return vf.a(this.b, $$2).c(this.d);
    }
 
-   public static vr a(vd $$0, boolean $$1) {
-      return vd.a($$1 ? "options.on.composed" : "options.off.composed", $$0);
-   }
+   private vf[] b(vf $$0, vb.a $$1) {
+      vf[] $$2 = new vf[this.c.size()];
 
-   public static vr a(vd $$0, vd $$1) {
-      return vd.a("options.generic_value", $$0, $$1);
-   }
-
-   public static vr a(vd... $$0) {
-      vr $$1 = vd.i();
-
-      for (int $$2 = 0; $$2 < $$0.length; $$2++) {
-         $$1.b($$0[$$2]);
-         if ($$2 != $$0.length - 1) {
-            $$1.b(s);
-         }
+      for (int $$3 = 0; $$3 < $$2.length; $$3++) {
+         vc.a $$4 = this.c.get($$3);
+         $$2[$$3] = $$4.a($$0, $$1);
       }
 
-      return $$1;
+      return $$2;
    }
 
-   public static vd b(vd... $$0) {
-      return a(Arrays.asList($$0));
+   public String a() {
+      return this.b;
    }
 
-   public static vd a(Collection<? extends vd> $$0) {
-      return vg.a($$0, r);
+   public List<vc.a> b() {
+      return this.c;
+   }
+
+   public wc c() {
+      return this.d;
+   }
+
+   public static enum a implements avj {
+      a("sender", ($$0, $$1) -> $$1.b()),
+      b("target", ($$0, $$1) -> $$1.c()),
+      c("content", ($$0, $$1) -> $$0);
+
+      public static final Codec<vc.a> d = avj.a(vc.a::values);
+      private final String e;
+      private final vc.a.a f;
+
+      private a(String $$0, vc.a.a $$1) {
+         this.e = $$0;
+         this.f = $$1;
+      }
+
+      public vf a(vf $$0, vb.a $$1) {
+         vf $$2 = this.f.select($$0, $$1);
+         return Objects.requireNonNullElse($$2, ve.a);
+      }
+
+      @Override
+      public String c() {
+         return this.e;
+      }
+
+      public interface a {
+         @Nullable
+         vf select(vf var1, vb.a var2);
+      }
    }
 }

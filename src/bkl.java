@@ -1,28 +1,9 @@
-import com.mojang.serialization.Codec;
+import javax.annotation.Nullable;
 
-public enum bkl implements ave {
-   a("hurt", arm.to),
-   b("thorns", arm.yA),
-   c("drowning", arm.tp),
-   d("burning", arm.tr),
-   e("poking", arm.ts),
-   f("freezing", arm.tq);
+public interface bkl extends bjt {
+   int[] a(ic var1);
 
-   public static final Codec<bkl> g = ave.a(bkl::values);
-   private final String h;
-   private final arl i;
+   boolean a(int var1, cmx var2, @Nullable ic var3);
 
-   private bkl(String $$0, arl $$1) {
-      this.h = $$0;
-      this.i = $$1;
-   }
-
-   @Override
-   public String c() {
-      return this.h;
-   }
-
-   public arl a() {
-      return this.i;
-   }
+   boolean b(int var1, cmx var2, ic var3);
 }

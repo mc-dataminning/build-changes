@@ -1,285 +1,112 @@
-import com.google.common.collect.Lists;
-import java.util.Collection;
-import java.util.List;
-import java.util.Set;
-import java.util.function.Consumer;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+public class ckx extends cms {
+   public static final int a = 10;
+   private static final int b = 200;
 
-public class ckx {
-   private final vd a;
-   String b = "items.png";
-   boolean c = true;
-   boolean d = true;
-   boolean e = false;
-   private final ckx.f f;
-   private final int g;
-   private final ckx.h h;
-   @Nullable
-   private cmr i;
-   private Collection<cmr> j = cms.a();
-   private Set<cmr> k = cms.a();
-   @Nullable
-   private Consumer<List<cmr>> l;
-   private final Supplier<cmr> m;
-   private final ckx.b n;
-
-   ckx(ckx.f $$0, int $$1, ckx.h $$2, vd $$3, Supplier<cmr> $$4, ckx.b $$5) {
-      this.f = $$0;
-      this.g = $$1;
-      this.a = $$3;
-      this.m = $$4;
-      this.n = $$5;
-      this.h = $$2;
+   public ckx(cms.a $$0) {
+      super($$0);
    }
 
-   public static ckx.a a(ckx.f $$0, int $$1) {
-      return new ckx.a($$0, $$1);
-   }
-
-   public vd a() {
-      return this.a;
-   }
-
-   public cmr b() {
-      if (this.i == null) {
-         this.i = this.m.get();
+   @Override
+   public bka a(cpi $$0) {
+      cfh $$1 = $$0.o();
+      if ($$1 != null && this.a($$1).c() == elq.a.b) {
+         $$1.c($$0.p());
       }
 
-      return this.i;
+      return bka.b;
    }
 
-   public String c() {
-      return this.b;
+   @Override
+   public cor c(cmx $$0) {
+      return cor.j;
    }
 
-   public boolean d() {
-      return this.d;
+   @Override
+   public int b(cmx $$0) {
+      return 200;
    }
 
-   public boolean e() {
-      return this.c;
-   }
+   @Override
+   public void a(cto $$0, bmk $$1, cmx $$2, int $$3) {
+      if ($$3 >= 0 && $$1 instanceof cfh $$4) {
+         elq $$6 = this.a($$4);
+         if ($$6 instanceof elo $$7 && $$6.c() == elq.a.b) {
+            int $$9 = this.b($$2) - $$3 + 1;
+            boolean $$10 = $$9 % 10 == 5;
+            if ($$10) {
+               hx $$11 = $$7.a();
+               djg $$12 = $$0.a_($$11);
+               bme $$13 = $$1.fo() == bjz.a ? $$4.fm() : $$4.fm().e();
+               if ($$12.z() && $$12.l() != dcu.a) {
+                  this.a($$0, $$7, $$12, $$1.f(0.0F), $$13);
+               }
 
-   public int f() {
-      return this.g;
-   }
+               arq $$15;
+               if ($$12.b() instanceof cwu $$14) {
+                  $$15 = $$14.c();
+               } else {
+                  $$15 = arr.cu;
+               }
 
-   public ckx.f g() {
-      return this.f;
-   }
-
-   public boolean h() {
-      return !this.j.isEmpty();
-   }
-
-   public boolean i() {
-      return this.h != ckx.h.a || this.h();
-   }
-
-   public boolean j() {
-      return this.e;
-   }
-
-   public ckx.h k() {
-      return this.h;
-   }
-
-   public void a(ckx.d $$0) {
-      ckx.c $$1 = new ckx.c(this, $$0.a);
-      ahc<ckx> $$2 = kd.ap.c(this).orElseThrow(() -> new IllegalStateException("Unregistered creative tab: " + this));
-      this.n.accept($$0, $$1);
-      this.j = $$1.a;
-      this.k = $$1.b;
-      this.n();
-   }
-
-   public Collection<cmr> l() {
-      return this.j;
-   }
-
-   public Collection<cmr> m() {
-      return this.k;
-   }
-
-   public boolean a(cmr $$0) {
-      return this.k.contains($$0);
-   }
-
-   public void a(Consumer<List<cmr>> $$0) {
-      this.l = $$0;
-   }
-
-   public void n() {
-      if (this.l != null) {
-         this.l.accept(Lists.newArrayList(this.k));
-      }
-   }
-
-   public static class a {
-      private static final ckx.b a = ($$0, $$1) -> {
-      };
-      private final ckx.f b;
-      private final int c;
-      private vd d = vd.i();
-      private Supplier<cmr> e = () -> cmr.f;
-      private ckx.b f = a;
-      private boolean g = true;
-      private boolean h = true;
-      private boolean i = false;
-      private ckx.h j = ckx.h.a;
-      private String k = "items.png";
-
-      public a(ckx.f $$0, int $$1) {
-         this.b = $$0;
-         this.c = $$1;
-      }
-
-      public ckx.a a(vd $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      public ckx.a a(Supplier<cmr> $$0) {
-         this.e = $$0;
-         return this;
-      }
-
-      public ckx.a a(ckx.b $$0) {
-         this.f = $$0;
-         return this;
-      }
-
-      public ckx.a a() {
-         this.i = true;
-         return this;
-      }
-
-      public ckx.a b() {
-         this.h = false;
-         return this;
-      }
-
-      public ckx.a c() {
-         this.g = false;
-         return this;
-      }
-
-      protected ckx.a a(ckx.h $$0) {
-         this.j = $$0;
-         return this;
-      }
-
-      public ckx.a a(String $$0) {
-         this.k = $$0;
-         return this;
-      }
-
-      public ckx d() {
-         if ((this.j == ckx.h.c || this.j == ckx.h.b) && this.f != a) {
-            throw new IllegalStateException("Special tabs can't have display items");
-         } else {
-            ckx $$0 = new ckx(this.b, this.c, this.j, this.d, this.e, this.f);
-            $$0.e = this.i;
-            $$0.d = this.h;
-            $$0.c = this.g;
-            $$0.b = this.k;
-            return $$0;
-         }
-      }
-   }
-
-   @FunctionalInterface
-   public interface b {
-      void accept(ckx.d var1, ckx.e var2);
-   }
-
-   static class c implements ckx.e {
-      public final Collection<cmr> a = cms.a();
-      public final Set<cmr> b = cms.a();
-      private final ckx c;
-      private final chl d;
-
-      public c(ckx $$0, chl $$1) {
-         this.c = $$0;
-         this.d = $$1;
-      }
-
-      @Override
-      public void a(cmr $$0, ckx.g $$1) {
-         if ($$0.L() != 1) {
-            throw new IllegalArgumentException("Stack size must be exactly 1");
-         } else {
-            boolean $$2 = this.a.contains($$0) && $$1 != ckx.g.c;
-            if ($$2) {
-               throw new IllegalStateException(
-                  "Accidentally adding the same item stack twice " + $$0.J().getString() + " to a Creative Mode Tab: " + this.c.a().getString()
-               );
-            } else {
-               if ($$0.d().a(this.d)) {
-                  switch ($$1) {
-                     case a:
-                        this.a.add($$0);
-                        this.b.add($$0);
-                        break;
-                     case b:
-                        this.a.add($$0);
-                        break;
-                     case c:
-                        this.b.add($$0);
+               $$0.a($$4, $$11, $$15, ars.e);
+               if (!$$0.y_() && $$0.c_($$11) instanceof dgy $$17) {
+                  boolean $$18 = $$17.a($$0.X(), $$4, $$7.b());
+                  if ($$18) {
+                     blz $$19 = $$2.equals($$4.c(blz.b)) ? blz.b : blz.a;
+                     $$2.a(1, $$1, $$1x -> $$1x.d($$19));
                   }
                }
             }
+
+            return;
          }
+
+         $$1.fs();
+      } else {
+         $$1.fs();
       }
    }
 
-   public static record d(chl a, boolean b, ij.b c) {
+   private elq a(cfh $$0) {
+      return cga.a($$0, $$0x -> !$$0x.P_() && $$0x.bt(), (double)cfh.v($$0.f()));
+   }
 
-      public boolean a(chl $$0, boolean $$1, ij.b $$2) {
-         return !this.a.equals($$0) || this.b != $$1 || this.c != $$2;
+   private void a(cto $$0, elo $$1, djg $$2, els $$3, bme $$4) {
+      double $$5 = 3.0;
+      int $$6 = $$4 == bme.b ? 1 : -1;
+      int $$7 = $$0.F_().b(7, 12);
+      jp $$8 = new jp(jx.c, $$2);
+      ic $$9 = $$1.b();
+      ckx.a $$10 = ckx.a.a($$3, $$9);
+      els $$11 = $$1.e();
+
+      for (int $$12 = 0; $$12 < $$7; $$12++) {
+         $$0.a(
+            $$8,
+            $$11.c - (double)($$9 == ic.e ? 1.0E-6F : 0.0F),
+            $$11.d,
+            $$11.e - (double)($$9 == ic.c ? 1.0E-6F : 0.0F),
+            $$10.a() * (double)$$6 * 3.0 * $$0.F_().j(),
+            0.0,
+            $$10.c() * (double)$$6 * 3.0 * $$0.F_().j()
+         );
       }
    }
 
-   public interface e {
-      void a(cmr var1, ckx.g var2);
+   static record a(double a, double b, double c) {
+      private static final double d = 1.0;
+      private static final double e = 0.1;
 
-      default void a(cmr $$0) {
-         this.a($$0, ckx.g.a);
+      public static ckx.a a(els $$0, ic $$1) {
+         double $$2 = 0.0;
+
+         return switch ($$1) {
+            case a, b -> new ckx.a($$0.c(), 0.0, -$$0.a());
+            case c -> new ckx.a(1.0, 0.0, -0.1);
+            case d -> new ckx.a(-1.0, 0.0, 0.1);
+            case e -> new ckx.a(-0.1, 0.0, -1.0);
+            case f -> new ckx.a(0.1, 0.0, 1.0);
+         };
       }
-
-      default void a(cth $$0, ckx.g $$1) {
-         this.a(new cmr($$0), $$1);
-      }
-
-      default void a(cth $$0) {
-         this.a(new cmr($$0), ckx.g.a);
-      }
-
-      default void a(Collection<cmr> $$0, ckx.g $$1) {
-         $$0.forEach($$1x -> this.a($$1x, $$1));
-      }
-
-      default void a(Collection<cmr> $$0) {
-         this.a($$0, ckx.g.a);
-      }
-   }
-
-   public static enum f {
-      a,
-      b;
-   }
-
-   protected static enum g {
-      a,
-      b,
-      c;
-   }
-
-   public static enum h {
-      a,
-      b,
-      c,
-      d;
    }
 }

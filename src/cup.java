@@ -1,34 +1,101 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.stream.Stream;
+import com.google.common.hash.Hashing;
 
-public class cup extends cul {
-   public static final Codec<cup> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(cuh.d.fieldOf("biomes").forGetter($$0x -> $$0x.c), Codec.intRange(0, 62).fieldOf("scale").orElse(2).forGetter($$0x -> $$0x.e))
-            .apply($$0, cup::new)
-   );
-   private final il<cuh> c;
-   private final int d;
-   private final int e;
+public class cup {
+   public static final int a = is.a(8);
+   private static final int b = 2;
+   private static final int c = 4;
+   private static final int d = 3;
+   private final cup.a e;
+   private final long f;
 
-   public cup(il<cuh> $$0, int $$1) {
-      this.c = $$0;
-      this.d = $$1 + 2;
-      this.e = $$1;
+   public cup(cup.a $$0, long $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
-   @Override
-   protected Stream<ih<cuh>> b() {
-      return this.c.a();
+   public static long a(long $$0) {
+      return Hashing.sha256().hashLong($$0).asLong();
    }
 
-   @Override
-   protected Codec<? extends cul> a() {
-      return b;
+   public cup a(cup.a $$0) {
+      return new cup($$0, this.f);
    }
 
-   @Override
-   public ih<cuh> getNoiseBiome(int $$0, int $$1, int $$2, cuq.f $$3) {
-      return this.c.a(Math.floorMod(($$0 >> this.d) + ($$2 >> this.d), this.c.b()));
+   public ih<cun> a(hx $$0) {
+      int $$1 = $$0.u() - 2;
+      int $$2 = $$0.v() - 2;
+      int $$3 = $$0.w() - 2;
+      int $$4 = $$1 >> 2;
+      int $$5 = $$2 >> 2;
+      int $$6 = $$3 >> 2;
+      double $$7 = (double)($$1 & 3) / 4.0;
+      double $$8 = (double)($$2 & 3) / 4.0;
+      double $$9 = (double)($$3 & 3) / 4.0;
+      int $$10 = 0;
+      double $$11 = Double.POSITIVE_INFINITY;
+
+      for (int $$12 = 0; $$12 < 8; $$12++) {
+         boolean $$13 = ($$12 & 4) == 0;
+         boolean $$14 = ($$12 & 2) == 0;
+         boolean $$15 = ($$12 & 1) == 0;
+         int $$16 = $$13 ? $$4 : $$4 + 1;
+         int $$17 = $$14 ? $$5 : $$5 + 1;
+         int $$18 = $$15 ? $$6 : $$6 + 1;
+         double $$19 = $$13 ? $$7 : $$7 - 1.0;
+         double $$20 = $$14 ? $$8 : $$8 - 1.0;
+         double $$21 = $$15 ? $$9 : $$9 - 1.0;
+         double $$22 = a(this.f, $$16, $$17, $$18, $$19, $$20, $$21);
+         if ($$11 > $$22) {
+            $$10 = $$12;
+            $$11 = $$22;
+         }
+      }
+
+      int $$23 = ($$10 & 4) == 0 ? $$4 : $$4 + 1;
+      int $$24 = ($$10 & 2) == 0 ? $$5 : $$5 + 1;
+      int $$25 = ($$10 & 1) == 0 ? $$6 : $$6 + 1;
+      return this.e.getNoiseBiome($$23, $$24, $$25);
+   }
+
+   public ih<cun> a(double $$0, double $$1, double $$2) {
+      int $$3 = is.a(aun.a($$0));
+      int $$4 = is.a(aun.a($$1));
+      int $$5 = is.a(aun.a($$2));
+      return this.a($$3, $$4, $$5);
+   }
+
+   public ih<cun> b(hx $$0) {
+      int $$1 = is.a($$0.u());
+      int $$2 = is.a($$0.v());
+      int $$3 = is.a($$0.w());
+      return this.a($$1, $$2, $$3);
+   }
+
+   public ih<cun> a(int $$0, int $$1, int $$2) {
+      return this.e.getNoiseBiome($$0, $$1, $$2);
+   }
+
+   private static double a(long $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6) {
+      long $$7 = auj.a($$0, (long)$$1);
+      $$7 = auj.a($$7, (long)$$2);
+      $$7 = auj.a($$7, (long)$$3);
+      $$7 = auj.a($$7, (long)$$1);
+      $$7 = auj.a($$7, (long)$$2);
+      $$7 = auj.a($$7, (long)$$3);
+      double $$8 = b($$7);
+      $$7 = auj.a($$7, $$0);
+      double $$9 = b($$7);
+      $$7 = auj.a($$7, $$0);
+      double $$10 = b($$7);
+      return aun.k($$6 + $$10) + aun.k($$5 + $$9) + aun.k($$4 + $$8);
+   }
+
+   private static double b(long $$0) {
+      double $$1 = (double)Math.floorMod($$0 >> 24, 1024) / 1024.0;
+      return ($$1 - 0.5) * 0.9;
+   }
+
+   public interface a {
+      ih<cun> getNoiseBiome(int var1, int var2, int var3);
    }
 }

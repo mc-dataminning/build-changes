@@ -1,119 +1,166 @@
-import com.mojang.authlib.GameProfile;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.time.Instant;
-import java.time.LocalDateTime;
-import java.time.ZoneOffset;
-import java.time.format.DateTimeFormatter;
-import java.time.format.FormatStyle;
-import java.util.UUID;
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.List;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public interface foc extends fob {
-   static foc.a a(GameProfile $$0, vt $$1, foa $$2) {
-      return new foc.a($$0, $$1, $$2);
+public class foc {
+   private static final Logger a = LogUtils.getLogger();
+   private static final bit<Runnable> b = bit.a(ac.f(), "server-list-io");
+   private static final int c = 16;
+   private final evg d;
+   private final List<fob> e = Lists.newArrayList();
+   private final List<fob> f = Lists.newArrayList();
+
+   public foc(evg $$0) {
+      this.d = $$0;
    }
 
-   static foc.b a(vd $$0, Instant $$1) {
-      return new foc.b($$0, $$1);
+   public void a() {
+      try {
+         this.e.clear();
+         this.f.clear();
+         sn $$0 = ta.a(this.d.p.toPath().resolve("servers.dat"));
+         if ($$0 == null) {
+            return;
+         }
+
+         st $$1 = $$0.c("servers", 10);
+
+         for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+            sn $$3 = $$1.a($$2);
+            fob $$4 = fob.a($$3);
+            if ($$3.q("hidden")) {
+               this.f.add($$4);
+            } else {
+               this.e.add($$4);
+            }
+         }
+      } catch (Exception var6) {
+         a.error("Couldn't load server list", var6);
+      }
    }
 
-   vd b();
+   public void b() {
+      try {
+         st $$0 = new st();
 
-   default vd c() {
-      return this.b();
+         for (fob $$1 : this.e) {
+            sn $$2 = $$1.a();
+            $$2.a("hidden", false);
+            $$0.add($$2);
+         }
+
+         for (fob $$3 : this.f) {
+            sn $$4 = $$3.a();
+            $$4.a("hidden", true);
+            $$0.add($$4);
+         }
+
+         sn $$5 = new sn();
+         $$5.a("servers", $$0);
+         Path $$6 = this.d.p.toPath();
+         Path $$7 = Files.createTempFile($$6, "servers", ".dat");
+         ta.b($$5, $$7);
+         Path $$8 = $$6.resolve("servers.dat_old");
+         Path $$9 = $$6.resolve("servers.dat");
+         ac.a($$9, $$7, $$8);
+      } catch (Exception var7) {
+         a.error("Couldn't save server list", var7);
+      }
    }
 
-   boolean a(UUID var1);
+   public fob a(int $$0) {
+      return this.e.get($$0);
+   }
 
-   public static record a(GameProfile c, vt d, foa e) implements foc {
-      public static final Codec<foc.a> b = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  atq.u.fieldOf("profile").forGetter(foc.a::f), vt.a.forGetter(foc.a::g), foa.d.optionalFieldOf("trust_level", foa.a).forGetter(foc.a::h)
-               )
-               .apply($$0, foc.a::new)
-      );
-      private static final DateTimeFormatter f = DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT);
-
-      @Override
-      public vd b() {
-         if (!this.d.n().a()) {
-            vd $$0 = this.d.n().b(this.d.b());
-            return (vd)($$0 != null ? $$0 : vd.i());
-         } else {
-            return this.d.c();
+   @Nullable
+   public fob a(String $$0) {
+      for (fob $$1 : this.e) {
+         if ($$1.b.equals($$0)) {
+            return $$1;
          }
       }
 
-      @Override
-      public vd c() {
-         vd $$0 = this.b();
-         vd $$1 = this.i();
-         return vd.a("gui.chatSelection.message.narrate", this.c.getName(), $$0, $$1);
+      for (fob $$2 : this.f) {
+         if ($$2.b.equals($$0)) {
+            return $$2;
+         }
       }
 
-      public vd d() {
-         vd $$0 = this.i();
-         return vd.a("gui.chatSelection.heading", this.c.getName(), $$0);
+      return null;
+   }
+
+   @Nullable
+   public fob b(String $$0) {
+      for (int $$1 = 0; $$1 < this.f.size(); $$1++) {
+         fob $$2 = this.f.get($$1);
+         if ($$2.b.equals($$0)) {
+            this.f.remove($$1);
+            this.e.add($$2);
+            return $$2;
+         }
       }
 
-      private vd i() {
-         LocalDateTime $$0 = LocalDateTime.ofInstant(this.d.d(), ZoneOffset.systemDefault());
-         return vd.b($$0.format(f)).a(n.u, n.h);
-      }
+      return null;
+   }
 
-      @Override
-      public boolean a(UUID $$0) {
-         return this.d.a($$0);
-      }
-
-      public UUID e() {
-         return this.c.getId();
-      }
-
-      @Override
-      public fob.a a() {
-         return fob.a.a;
-      }
-
-      public GameProfile f() {
-         return this.c;
-      }
-
-      public vt g() {
-         return this.d;
-      }
-
-      public foa h() {
-         return this.e;
+   public void a(fob $$0) {
+      if (!this.e.remove($$0)) {
+         this.f.remove($$0);
       }
    }
 
-   public static record b(vd c, Instant d) implements foc {
-      public static final Codec<foc.b> b = RecordCodecBuilder.create(
-         $$0 -> $$0.group(vf.a.fieldOf("message").forGetter(foc.b::d), atq.m.fieldOf("time_stamp").forGetter(foc.b::e)).apply($$0, foc.b::new)
-      );
+   public void a(fob $$0, boolean $$1) {
+      if ($$1) {
+         this.f.add(0, $$0);
 
-      @Override
-      public vd b() {
-         return this.c;
+         while (this.f.size() > 16) {
+            this.f.remove(this.f.size() - 1);
+         }
+      } else {
+         this.e.add($$0);
+      }
+   }
+
+   public int c() {
+      return this.e.size();
+   }
+
+   public void a(int $$0, int $$1) {
+      fob $$2 = this.a($$0);
+      this.e.set($$0, this.a($$1));
+      this.e.set($$1, $$2);
+      this.b();
+   }
+
+   public void a(int $$0, fob $$1) {
+      this.e.set($$0, $$1);
+   }
+
+   private static boolean a(fob $$0, List<fob> $$1) {
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         fob $$3 = $$1.get($$2);
+         if ($$3.a.equals($$0.a) && $$3.b.equals($$0.b)) {
+            $$1.set($$2, $$0);
+            return true;
+         }
       }
 
-      @Override
-      public boolean a(UUID $$0) {
-         return false;
-      }
+      return false;
+   }
 
-      @Override
-      public fob.a a() {
-         return fob.a.b;
-      }
+   public static void b(fob $$0) {
+      b.a(() -> {
+         foc $$1 = new foc(evg.O());
+         $$1.a();
+         if (!a($$0, $$1.e)) {
+            a($$0, $$1.f);
+         }
 
-      public vd d() {
-         return this.c;
-      }
-
-      public Instant e() {
-         return this.d;
-      }
+         $$1.b();
+      });
    }
 }

@@ -1,13 +1,6 @@
+import java.util.Set;
+import java.util.function.Supplier;
+
 public interface bhx {
-   void a();
-
-   void b();
-
-   void c();
-
-   boolean e();
-
-   bgm f();
-
-   void d();
+   Set<bhv> a(Supplier<bgp> var1);
 }

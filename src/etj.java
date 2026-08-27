@@ -1,41 +1,138 @@
 import com.mojang.logging.LogUtils;
+import java.text.DateFormat;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.TimeZone;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public interface etj {
-   etj a = new etj() {
-      @Override
-      public long a() {
-         return 1L;
+public class etj extends gkn {
+   static final Logger a = LogUtils.getLogger();
+   private static final vf b = vf.c("mco.configure.world.subscription.title");
+   private static final vf c = vf.c("mco.configure.world.subscription.start");
+   private static final vf v = vf.c("mco.configure.world.subscription.timeleft");
+   private static final vf w = vf.c("mco.configure.world.subscription.recurring.daysleft");
+   private static final vf x = vf.c("mco.configure.world.subscription.expired");
+   private static final vf y = vf.c("mco.configure.world.subscription.less_than_a_day");
+   private static final vf z = vf.c("mco.configure.world.subscription.unknown");
+   private static final vf A = vf.c("mco.configure.world.subscription.recurring.info");
+   private final fcz B;
+   final erg C;
+   final fcz D;
+   private vf E = z;
+   private vf F = z;
+   @Nullable
+   private ert.a G;
+
+   public etj(fcz $$0, erg $$1, fcz $$2) {
+      super(euy.a);
+      this.B = $$0;
+      this.C = $$1;
+      this.D = $$2;
+   }
+
+   @Override
+   public void aN_() {
+      this.a(this.C.a);
+      this.d(exe.a(vf.c("mco.configure.world.subscription.extend"), $$0 -> fbr.a(this, atj.a(this.C.b, this.f.V().b()))).a(this.g / 2 - 100, g(6), 200, 20).a());
+      if (this.C.j) {
+         this.d(exe.a(vf.c("mco.configure.world.delete.button"), $$0 -> {
+            vf $$1 = vf.c("mco.configure.world.delete.question.line1");
+            vf $$2 = vf.c("mco.configure.world.delete.question.line2");
+            this.f.a(new esv(this::c, esv.a.a, $$1, $$2, true));
+         }).a(this.g / 2 - 100, g(10), 200, 20).a());
+      } else if (eqk.b() && this.C.s != null) {
+         this.d(new exo(this.g / 2 - 100, g(8), 200, 46, vf.a("mco.snapshot.subscription.info", this.C.s), this.i).a(-6250336));
+      } else {
+         this.d(new exo(this.g / 2 - 100, g(8), 200, 46, A, this.i).a(-6250336));
       }
 
-      @Override
-      public long b() {
-         return 1L;
+      this.d(exe.a(ve.k, $$0 -> this.aE_()).a(this.g / 2 - 100, g(12), 200, 20).a());
+   }
+
+   @Override
+   public vf h() {
+      return ve.b(b, c, this.F, v, this.E);
+   }
+
+   private void c(boolean $$0) {
+      if ($$0) {
+         (new Thread("Realms-delete-realm") {
+            @Override
+            public void run() {
+               try {
+                  eqp $$0 = eqp.a();
+                  $$0.i(etj.this.C.a);
+               } catch (esc var2) {
+                  etj.a.error("Couldn't delete world", var2);
+               }
+
+               etj.this.f.execute(() -> etj.this.f.a(etj.this.D));
+            }
+         }).start();
       }
-   };
 
-   long a();
+      this.f.a(this);
+   }
 
-   long b();
+   private void a(long $$0) {
+      eqp $$1 = eqp.a();
 
-   static etj a(final int $$0) {
-      return new etj() {
-         private static final Logger c = LogUtils.getLogger();
-         private int d;
+      try {
+         ert $$2 = $$1.h($$0);
+         this.E = this.a($$2.b);
+         this.F = b($$2.a);
+         this.G = $$2.c;
+      } catch (esc var5) {
+         a.error("Couldn't get subscription", var5);
+         this.f.a(new est(var5, this.B));
+      }
+   }
 
-         @Override
-         public long a() {
-            this.d = 0;
-            return 1L;
+   private static vf b(long $$0) {
+      Calendar $$1 = new GregorianCalendar(TimeZone.getDefault());
+      $$1.setTimeInMillis($$0);
+      return vf.b(DateFormat.getDateTimeInstance().format($$1.getTime()));
+   }
+
+   @Override
+   public void aE_() {
+      this.f.a(this.B);
+   }
+
+   @Override
+   public void a(ews $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      int $$4 = this.g / 2 - 100;
+      $$0.a(this.i, b, this.g / 2, 17, -1);
+      $$0.a(this.i, c, $$4, g(0), -6250336, false);
+      $$0.a(this.i, this.F, $$4, g(1), -1, false);
+      if (this.G == ert.a.a) {
+         $$0.a(this.i, v, $$4, g(3), -6250336, false);
+      } else if (this.G == ert.a.b) {
+         $$0.a(this.i, w, $$4, g(3), -6250336, false);
+      }
+
+      $$0.a(this.i, this.E, $$4, g(4), -1, false);
+   }
+
+   private vf a(int $$0) {
+      if ($$0 < 0 && this.C.j) {
+         return x;
+      } else if ($$0 <= 1) {
+         return y;
+      } else {
+         int $$1 = $$0 / 30;
+         int $$2 = $$0 % 30;
+         boolean $$3 = $$1 > 0;
+         boolean $$4 = $$2 > 0;
+         if ($$3 && $$4) {
+            return vf.a("mco.configure.world.subscription.remaining.months.days", $$1, $$2);
+         } else if ($$3) {
+            return vf.a("mco.configure.world.subscription.remaining.months", $$1);
+         } else {
+            return $$4 ? vf.a("mco.configure.world.subscription.remaining.days", $$2) : vf.i();
          }
-
-         @Override
-         public long b() {
-            this.d++;
-            long $$0 = Math.min(1L << this.d, (long)$$0);
-            c.debug("Skipping for {} extra cycles", $$0);
-            return $$0;
-         }
-      };
+      }
    }
 }

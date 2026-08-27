@@ -1,32 +1,29 @@
-public class adu implements xd<adg> {
-   private final int a;
-   private final int b;
+public class adu implements xf<adj> {
+   private final adu.a a;
 
-   public adu(int $$0, int $$1) {
+   public adu(adu.a $$0) {
       this.a = $$0;
-      this.b = $$1;
    }
 
-   public void a(adg $$0) {
-      $$0.a(this);
-   }
-
-   public adu(ug $$0) {
-      this.a = $$0.readByte();
-      this.b = $$0.readByte();
+   public adu(ui $$0) {
+      this.a = $$0.b(adu.a.class);
    }
 
    @Override
-   public void a(ug $$0) {
-      $$0.k(this.a);
-      $$0.k(this.b);
+   public void a(ui $$0) {
+      $$0.a(this.a);
    }
 
-   public int a() {
+   public void a(adj $$0) {
+      $$0.a(this);
+   }
+
+   public adu.a a() {
       return this.a;
    }
 
-   public int d() {
-      return this.b;
+   public static enum a {
+      a,
+      b;
    }
 }

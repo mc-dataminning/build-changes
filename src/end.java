@@ -1,69 +1,55 @@
-import it.unimi.dsi.fastutil.Hash.Strategy;
-import java.util.Comparator;
-import javax.annotation.Nullable;
+public interface end extends bjt {
+   cmx x();
 
-public record end<T>(T d, hx e, long f, enh g, long h) {
-   public static final Comparator<end<?>> a = ($$0, $$1) -> {
-      int $$2 = Long.compare($$0.f, $$1.f);
-      if ($$2 != 0) {
-         return $$2;
-      } else {
-         $$2 = $$0.g.compareTo($$1.g);
-         return $$2 != 0 ? $$2 : Long.compare($$0.h, $$1.h);
+   cmx c(int var1);
+
+   void b(cmx var1);
+
+   dgu y();
+
+   default cmx h() {
+      return this.c(this.ak_());
+   }
+
+   @Override
+   default int b() {
+      return 1;
+   }
+
+   @Override
+   default boolean ai_() {
+      return this.x().b();
+   }
+
+   @Override
+   default void a() {
+      this.h();
+   }
+
+   @Override
+   default cmx b(int $$0) {
+      return this.a($$0, this.ak_());
+   }
+
+   @Override
+   default cmx a(int $$0) {
+      return $$0 == 0 ? this.x() : cmx.f;
+   }
+
+   @Override
+   default cmx a(int $$0, int $$1) {
+      return $$0 != 0 ? cmx.f : this.c($$1);
+   }
+
+   @Override
+   default void a(int $$0, cmx $$1) {
+      if ($$0 == 0) {
+         this.b($$1);
       }
-   };
-   public static final Comparator<end<?>> b = ($$0, $$1) -> {
-      int $$2 = $$0.g.compareTo($$1.g);
-      return $$2 != 0 ? $$2 : Long.compare($$0.h, $$1.h);
-   };
-   public static final Strategy<end<?>> c = new Strategy<end<?>>() {
-      public int a(end<?> $$0) {
-         return 31 * $$0.b().hashCode() + $$0.a().hashCode();
-      }
-
-      public boolean a(@Nullable end<?> $$0, @Nullable end<?> $$1) {
-         if ($$0 == $$1) {
-            return true;
-         } else {
-            return $$0 != null && $$1 != null ? $$0.a() == $$1.a() && $$0.b().equals($$1.b()) : false;
-         }
-      }
-   };
-
-   public end(T $$0, hx $$1, long $$2, long $$3) {
-      this($$0, $$1, $$2, enh.d, $$3);
    }
 
-   public end(T d, hx e, long f, enh g, long h) {
-      e = e.i();
-      this.d = d;
-      this.e = e;
-      this.f = f;
-      this.g = g;
-      this.h = h;
-   }
-
-   public static <T> end<T> a(T $$0, hx $$1) {
-      return new end<>($$0, $$1, 0L, enh.d, 0L);
-   }
-
-   public T a() {
-      return this.d;
-   }
-
-   public hx b() {
-      return this.e;
-   }
-
-   public long c() {
-      return this.f;
-   }
-
-   public enh d() {
-      return this.g;
-   }
-
-   public long e() {
-      return this.h;
+   @Override
+   default boolean a(cfh $$0) {
+      return bjt.a(this.y(), $$0);
    }
 }

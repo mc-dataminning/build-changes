@@ -1,11 +1,11 @@
 public class ash {
-   public static final asq<dnk> a = a("vibrations");
-   public static final asq<dnk> b = a("warden_can_listen");
-   public static final asq<dnk> c = a("shrieker_can_listen");
-   public static final asq<dnk> d = a("ignore_vibrations_sneaking");
-   public static final asq<dnk> e = a("allay_can_listen");
+   public static final asv<byb> a = a("default_spawns");
+   public static final asv<byb> b = a("full_moon_spawns");
 
-   private static asq<dnk> a(String $$0) {
-      return asq.a(ke.B, new ahd($$0));
+   private ash() {
+   }
+
+   private static asv<byb> a(String $$0) {
+      return asv.a(ke.l, new ahg($$0));
    }
 }

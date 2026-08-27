@@ -1,80 +1,79 @@
-public class aew implements xd<adg> {
-   private final hx a;
-   private final ahd b;
-   private final ahd c;
-   private final ahd d;
+public class aew implements xf<adj> {
+   private static final int a = 1;
+   private static final int b = 2;
+   private static final int c = 4;
+   private final hx d;
    private final String e;
-   private final dho.a f;
-   private final int g;
-   private final int h;
+   private final boolean f;
+   private final boolean g;
+   private final boolean h;
+   private final dhe.a i;
 
-   public aew(hx $$0, ahd $$1, ahd $$2, ahd $$3, String $$4, dho.a $$5, int $$6, int $$7) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
-      this.g = $$6;
-      this.h = $$7;
+   public aew(hx $$0, String $$1, dhe.a $$2, boolean $$3, boolean $$4, boolean $$5) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$3;
+      this.g = $$4;
+      this.h = $$5;
+      this.i = $$2;
    }
 
-   public aew(ug $$0) {
-      this.a = $$0.e();
-      this.b = $$0.t();
-      this.c = $$0.t();
-      this.d = $$0.t();
+   public aew(ui $$0) {
+      this.d = $$0.e();
       this.e = $$0.s();
-      this.f = dho.a.a($$0.s()).orElse(dho.a.b);
-      this.g = $$0.n();
-      this.h = $$0.n();
+      this.i = $$0.b(dhe.a.class);
+      int $$1 = $$0.readByte();
+      this.f = ($$1 & 1) != 0;
+      this.g = ($$1 & 2) != 0;
+      this.h = ($$1 & 4) != 0;
    }
 
    @Override
-   public void a(ug $$0) {
-      $$0.a(this.a);
-      $$0.a(this.b);
-      $$0.a(this.c);
+   public void a(ui $$0) {
       $$0.a(this.d);
       $$0.a(this.e);
-      $$0.a(this.f.c());
-      $$0.c(this.g);
-      $$0.c(this.h);
+      $$0.a(this.i);
+      int $$1 = 0;
+      if (this.f) {
+         $$1 |= 1;
+      }
+
+      if (this.g) {
+         $$1 |= 2;
+      }
+
+      if (this.h) {
+         $$1 |= 4;
+      }
+
+      $$0.k($$1);
    }
 
-   public void a(adg $$0) {
+   public void a(adj $$0) {
       $$0.a(this);
    }
 
    public hx a() {
-      return this.a;
-   }
-
-   public ahd d() {
-      return this.b;
-   }
-
-   public ahd e() {
-      return this.c;
-   }
-
-   public ahd f() {
       return this.d;
    }
 
-   public String g() {
+   public String d() {
       return this.e;
    }
 
-   public dho.a h() {
+   public boolean e() {
       return this.f;
    }
 
-   public int i() {
+   public boolean f() {
       return this.g;
    }
 
-   public int j() {
+   public boolean g() {
       return this.h;
+   }
+
+   public dhe.a h() {
+      return this.i;
    }
 }

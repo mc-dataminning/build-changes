@@ -1,37 +1,11 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Optional;
+public interface boc<E extends bmk> {
+   bob.a a();
 
-public class boc extends bnw<bmf> {
-   private final bvh<Integer> c;
+   boolean e(and var1, E var2, long var3);
 
-   public boc(bvh<Integer> $$0) {
-      super(ImmutableMap.of($$0, bvi.a));
-      this.c = $$0;
-   }
+   void f(and var1, E var2, long var3);
 
-   private Optional<Integer> b(bmf $$0) {
-      return $$0.dO().c(this.c);
-   }
+   void g(and var1, E var2, long var3);
 
-   @Override
-   protected boolean a(long $$0) {
-      return false;
-   }
-
-   @Override
-   protected boolean a(amz $$0, bmf $$1, long $$2) {
-      Optional<Integer> $$3 = this.b($$1);
-      return $$3.isPresent() && $$3.get() > 0;
-   }
-
-   @Override
-   protected void c(amz $$0, bmf $$1, long $$2) {
-      Optional<Integer> $$3 = this.b($$1);
-      $$1.dO().a(this.c, $$3.get() - 1);
-   }
-
-   @Override
-   protected void b(amz $$0, bmf $$1, long $$2) {
-      $$1.dO().b(this.c);
-   }
+   String b();
 }

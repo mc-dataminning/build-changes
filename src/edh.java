@@ -1,11 +1,20 @@
 import com.mojang.serialization.Codec;
-import javax.annotation.Nullable;
 
-public interface edh {
-   Codec<edh> c = kd.p.q().dispatch(edh::a, edi::codec);
+public class edh extends ecz {
+   public static final Codec<edh> a = asv.a(ke.f).fieldOf("tag").xmap(edh::new, $$0 -> $$0.b).codec();
+   private final asv<cwp> b;
 
-   @Nullable
-   sl a(aup var1, @Nullable sl var2);
+   public edh(asv<cwp> $$0) {
+      this.b = $$0;
+   }
 
-   edi<?> a();
+   @Override
+   public boolean a(djg $$0, auu $$1) {
+      return $$0.a(this.b);
+   }
+
+   @Override
+   protected eda<?> a() {
+      return eda.d;
+   }
 }

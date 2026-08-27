@@ -1,90 +1,36 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.Objects;
-import java.util.function.UnaryOperator;
+import com.google.common.base.Preconditions;
+import com.mojang.serialization.Codec;
+import java.nio.ByteBuffer;
+import java.util.Arrays;
+import java.util.Base64;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class vr implements vd {
-   private final ve c;
-   private final List<vd> d;
-   private wa e;
-   private atu f = atu.a;
-   @Nullable
-   private sg g;
+public record vr(byte[] c) {
+   public static final Codec<vr> a = atv.n.xmap(vr::new, vr::b);
+   public static final int b = 256;
 
-   vr(ve $$0, List<vd> $$1, wa $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
+   public vr(byte[] c) {
+      Preconditions.checkState(c.length == 256, "Invalid message signature size");
+      this.c = c;
    }
 
-   public static vr a(ve $$0) {
-      return new vr($$0, Lists.newArrayList(), wa.a);
+   public static vr a(ui $$0) {
+      byte[] $$1 = new byte[256];
+      $$0.b($$1);
+      return new vr($$1);
    }
 
-   @Override
-   public ve b() {
-      return this.c;
+   public static void a(ui $$0, vr $$1) {
+      $$0.c($$1.c);
    }
 
-   @Override
-   public List<vd> c() {
-      return this.d;
+   public boolean a(avb $$0, ava $$1) {
+      return $$0.validate($$1, this.c);
    }
 
-   public vr b(wa $$0) {
-      this.e = $$0;
-      return this;
-   }
-
-   @Override
-   public wa a() {
-      return this.e;
-   }
-
-   public vr f(String $$0) {
-      return this.b(vd.b($$0));
-   }
-
-   public vr b(vd $$0) {
-      this.d.add($$0);
-      return this;
-   }
-
-   public vr a(UnaryOperator<wa> $$0) {
-      this.b($$0.apply(this.a()));
-      return this;
-   }
-
-   public vr c(wa $$0) {
-      this.b($$0.a(this.a()));
-      return this;
-   }
-
-   public vr a(n... $$0) {
-      this.b(this.a().a($$0));
-      return this;
-   }
-
-   public vr a(n $$0) {
-      this.b(this.a().b($$0));
-      return this;
-   }
-
-   public vr b(int $$0) {
-      this.b(this.a().a($$0));
-      return this;
-   }
-
-   @Override
-   public atu g() {
-      sg $$0 = sg.a();
-      if (this.g != $$0) {
-         this.f = $$0.a(this);
-         this.g = $$0;
-      }
-
-      return this.f;
+   public ByteBuffer a() {
+      return ByteBuffer.wrap(this.c);
    }
 
    @Override
@@ -92,39 +38,67 @@ public class vr implements vd {
       if (this == $$0) {
          return true;
       } else {
-         return !($$0 instanceof vr $$1) ? false : this.c.equals($$1.c) && this.e.equals($$1.e) && this.d.equals($$1.d);
+         if ($$0 instanceof vr $$1 && Arrays.equals(this.c, $$1.c)) {
+            return true;
+         }
+
+         return false;
       }
    }
 
    @Override
    public int hashCode() {
-      return Objects.hash(this.c, this.e, this.d);
+      return Arrays.hashCode(this.c);
    }
 
    @Override
    public String toString() {
-      StringBuilder $$0 = new StringBuilder(this.c.toString());
-      boolean $$1 = !this.e.g();
-      boolean $$2 = !this.d.isEmpty();
-      if ($$1 || $$2) {
-         $$0.append('[');
-         if ($$1) {
-            $$0.append("style=");
-            $$0.append(this.e);
-         }
+      return Base64.getEncoder().encodeToString(this.c);
+   }
 
-         if ($$1 && $$2) {
-            $$0.append(", ");
-         }
+   public vr.a a(vs $$0) {
+      int $$1 = $$0.a(this);
+      return $$1 != -1 ? new vr.a($$1) : new vr.a(this);
+   }
 
-         if ($$2) {
-            $$0.append("siblings=");
-            $$0.append(this.d);
-         }
+   public byte[] b() {
+      return this.c;
+   }
 
-         $$0.append(']');
+   public static record a(int b, @Nullable vr c) {
+      public static final int a = -1;
+
+      public a(vr $$0) {
+         this(-1, $$0);
       }
 
-      return $$0.toString();
+      public a(int $$0) {
+         this($$0, null);
+      }
+
+      public static vr.a a(ui $$0) {
+         int $$1 = $$0.n() - 1;
+         return $$1 == -1 ? new vr.a(vr.a($$0)) : new vr.a($$1);
+      }
+
+      public static void a(ui $$0, vr.a $$1) {
+         $$0.c($$1.a() + 1);
+         if ($$1.b() != null) {
+            vr.a($$0, $$1.b());
+         }
+      }
+
+      public Optional<vr> a(vs $$0) {
+         return this.c != null ? Optional.of(this.c) : Optional.ofNullable($$0.a(this.b));
+      }
+
+      public int a() {
+         return this.b;
+      }
+
+      @Nullable
+      public vr b() {
+         return this.c;
+      }
    }
 }

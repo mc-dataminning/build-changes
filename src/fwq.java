@@ -1,151 +1,177 @@
-import java.time.Duration;
-import java.time.Instant;
+import java.util.Optional;
+import java.util.function.Predicate;
 import javax.annotation.Nullable;
 import org.joml.Matrix4f;
-import org.joml.Vector4f;
 
-public class fwq implements fwk.a {
-   private static final Duration a = Duration.ofMillis(500L);
-   private static final int b = 10;
-   private static final Vector4f c = new Vector4f(1.0F, 1.0F, 0.0F, 0.25F);
-   private static final Vector4f d = new Vector4f(0.25F, 0.125F, 0.0F, 0.125F);
-   private final eva e;
-   private final ctr f;
-   private Instant g = Instant.now();
-   @Nullable
-   private fwq.a h;
+public class fwq {
+   public final fwy a = new fwy();
+   public final fwq.a b;
+   public final fwq.a c;
+   public final fwq.a d;
+   public final fwq.a e;
+   public final fwq.a f;
+   public final fwq.a g;
+   public final fxb h;
+   public final fwq.a i;
+   public final fwq.a j;
+   public final fwq.a k;
+   public final fwq.a l;
+   public final fwl m;
+   public final fxd n;
+   public final fwk o;
+   public final fwz p;
+   public final fwt q;
+   public final fws r;
+   public final fwr s;
+   public final fww t;
+   public final fwm u;
+   private boolean v;
 
-   public fwq(eva $$0, ctr $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   public fwq(evg $$0) {
+      this.b = new fxe($$0);
+      this.c = new fwn($$0);
+      this.d = new fwu($$0);
+      this.e = new fwp($$0);
+      this.f = new fxc($$0);
+      this.g = new fwx($$0);
+      this.h = new fxb($$0);
+      this.i = new fwv($$0);
+      this.j = new fxf();
+      this.k = new fxa($$0);
+      this.l = new fwo($$0);
+      this.m = new fwl($$0);
+      this.n = new fxd();
+      this.o = new fwk($$0);
+      this.p = new fwz($$0);
+      this.q = new fwt($$0);
+      this.r = new fws();
+      this.s = new fwr($$0);
+      this.t = new fww($$0, ctx.a);
+      this.u = new fwm($$0);
    }
 
-   @Override
-   public void a(ept $$0, fsz $$1, double $$2, double $$3, double $$4) {
-      Instant $$5 = Instant.now();
-      if (this.h == null || Duration.between(this.g, $$5).compareTo(a) > 0) {
-         this.g = $$5;
-         this.h = new fwq.a(this.e.r.z_(), iz.a(this.e.s.dm()), 10, this.f);
+   public void a() {
+      this.a.a();
+      this.b.a();
+      this.c.a();
+      this.d.a();
+      this.e.a();
+      this.f.a();
+      this.g.a();
+      this.h.a();
+      this.i.a();
+      this.j.a();
+      this.k.a();
+      this.l.a();
+      this.m.a();
+      this.n.a();
+      this.o.a();
+      this.p.a();
+      this.q.a();
+      this.r.a();
+      this.s.a();
+      this.t.a();
+      this.u.a();
+   }
+
+   public boolean b() {
+      this.v = !this.v;
+      return this.v;
+   }
+
+   public void a(epz $$0, ftf.a $$1, double $$2, double $$3, double $$4) {
+      if (this.v && !evg.O().ax()) {
+         this.c.a($$0, $$1, $$2, $$3, $$4);
       }
 
-      a($$0, this.h.a, this.h.c, $$1, $$2, $$3, $$4, c);
-      a($$0, this.h.b, this.h.c, $$1, $$2, $$3, $$4, d);
-      epx $$6 = $$1.getBuffer(fth.A());
-      a($$0, this.h.a, this.h.c, $$6, $$2, $$3, $$4, c);
-      a($$0, this.h.b, this.h.c, $$6, $$2, $$3, $$4, d);
+      this.r.a($$0, $$1, $$2, $$3, $$4);
    }
 
-   private static void a(ept $$0, elv $$1, iz $$2, epx $$3, double $$4, double $$5, double $$6, Vector4f $$7) {
-      $$1.a(($$7x, $$8, $$9, $$10) -> {
-         int $$11 = $$8 + $$2.u();
-         int $$12 = $$9 + $$2.v();
-         int $$13 = $$10 + $$2.w();
-         a($$0, $$3, $$7x, $$4, $$5, $$6, $$11, $$12, $$13, $$7);
-      });
-   }
-
-   private static void a(ept $$0, elv $$1, iz $$2, fsz $$3, double $$4, double $$5, double $$6, Vector4f $$7) {
-      $$1.a(($$7x, $$8, $$9, $$10, $$11, $$12) -> {
-         int $$13 = $$7x + $$2.u();
-         int $$14 = $$8 + $$2.v();
-         int $$15 = $$9 + $$2.w();
-         int $$16 = $$10 + $$2.u();
-         int $$17 = $$11 + $$2.v();
-         int $$18 = $$12 + $$2.w();
-         epx $$19 = $$3.getBuffer(fth.a(1.0));
-         a($$0, $$19, $$4, $$5, $$6, $$13, $$14, $$15, $$16, $$17, $$18, $$7);
-      }, true);
-   }
-
-   private static void a(ept $$0, epx $$1, ic $$2, double $$3, double $$4, double $$5, int $$6, int $$7, int $$8, Vector4f $$9) {
-      float $$10 = (float)((double)iz.c($$6) - $$3);
-      float $$11 = (float)((double)iz.c($$7) - $$4);
-      float $$12 = (float)((double)iz.c($$8) - $$5);
-      float $$13 = $$10 + 16.0F;
-      float $$14 = $$11 + 16.0F;
-      float $$15 = $$12 + 16.0F;
-      float $$16 = $$9.x();
-      float $$17 = $$9.y();
-      float $$18 = $$9.z();
-      float $$19 = $$9.w();
-      Matrix4f $$20 = $$0.c().a();
-      switch ($$2) {
-         case a:
-            $$1.a($$20, $$10, $$11, $$12).a($$16, $$17, $$18, $$19).e();
-            $$1.a($$20, $$13, $$11, $$12).a($$16, $$17, $$18, $$19).e();
-            $$1.a($$20, $$13, $$11, $$15).a($$16, $$17, $$18, $$19).e();
-            $$1.a($$20, $$10, $$11, $$15).a($$16, $$17, $$18, $$19).e();
-            break;
-         case b:
-            $$1.a($$20, $$10, $$14, $$12).a($$16, $$17, $$18, $$19).e();
-            $$1.a($$20, $$10, $$14, $$15).a($$16, $$17, $$18, $$19).e();
-            $$1.a($$20, $$13, $$14, $$15).a($$16, $$17, $$18, $$19).e();
-            $$1.a($$20, $$13, $$14, $$12).a($$16, $$17, $$18, $$19).e();
-            break;
-         case c:
-            $$1.a($$20, $$10, $$11, $$12).a($$16, $$17, $$18, $$19).e();
-            $$1.a($$20, $$10, $$14, $$12).a($$16, $$17, $$18, $$19).e();
-            $$1.a($$20, $$13, $$14, $$12).a($$16, $$17, $$18, $$19).e();
-            $$1.a($$20, $$13, $$11, $$12).a($$16, $$17, $$18, $$19).e();
-            break;
-         case d:
-            $$1.a($$20, $$10, $$11, $$15).a($$16, $$17, $$18, $$19).e();
-            $$1.a($$20, $$13, $$11, $$15).a($$16, $$17, $$18, $$19).e();
-            $$1.a($$20, $$13, $$14, $$15).a($$16, $$17, $$18, $$19).e();
-            $$1.a($$20, $$10, $$14, $$15).a($$16, $$17, $$18, $$19).e();
-            break;
-         case e:
-            $$1.a($$20, $$10, $$11, $$12).a($$16, $$17, $$18, $$19).e();
-            $$1.a($$20, $$10, $$11, $$15).a($$16, $$17, $$18, $$19).e();
-            $$1.a($$20, $$10, $$14, $$15).a($$16, $$17, $$18, $$19).e();
-            $$1.a($$20, $$10, $$14, $$12).a($$16, $$17, $$18, $$19).e();
-            break;
-         case f:
-            $$1.a($$20, $$13, $$11, $$12).a($$16, $$17, $$18, $$19).e();
-            $$1.a($$20, $$13, $$14, $$12).a($$16, $$17, $$18, $$19).e();
-            $$1.a($$20, $$13, $$14, $$15).a($$16, $$17, $$18, $$19).e();
-            $$1.a($$20, $$13, $$11, $$15).a($$16, $$17, $$18, $$19).e();
-      }
-   }
-
-   private static void a(ept $$0, epx $$1, double $$2, double $$3, double $$4, int $$5, int $$6, int $$7, int $$8, int $$9, int $$10, Vector4f $$11) {
-      float $$12 = (float)((double)iz.c($$5) - $$2);
-      float $$13 = (float)((double)iz.c($$6) - $$3);
-      float $$14 = (float)((double)iz.c($$7) - $$4);
-      float $$15 = (float)((double)iz.c($$8) - $$2);
-      float $$16 = (float)((double)iz.c($$9) - $$3);
-      float $$17 = (float)((double)iz.c($$10) - $$4);
-      Matrix4f $$18 = $$0.c().a();
-      $$1.a($$18, $$12, $$13, $$14).a($$11.x(), $$11.y(), $$11.z(), 1.0F).e();
-      $$1.a($$18, $$15, $$16, $$17).a($$11.x(), $$11.y(), $$11.z(), 1.0F).e();
-   }
-
-   static final class a {
-      final elv a;
-      final elv b;
-      final iz c;
-
-      a(edz $$0, iz $$1, int $$2, ctr $$3) {
-         int $$4 = $$2 * 2 + 1;
-         this.a = new elp($$4, $$4, $$4);
-         this.b = new elp($$4, $$4, $$4);
-
-         for (int $$5 = 0; $$5 < $$4; $$5++) {
-            for (int $$6 = 0; $$6 < $$4; $$6++) {
-               for (int $$7 = 0; $$7 < $$4; $$7++) {
-                  iz $$8 = iz.a($$1.a() + $$7 - $$2, $$1.b() + $$6 - $$2, $$1.c() + $$5 - $$2);
-                  edy.b $$9 = $$0.b($$3, $$8);
-                  if ($$9 == edy.b.c) {
-                     this.a.c($$7, $$6, $$5);
-                     this.b.c($$7, $$6, $$5);
-                  } else if ($$9 == edy.b.b) {
-                     this.b.c($$7, $$6, $$5);
-                  }
-               }
-            }
+   public static Optional<blu> a(@Nullable blu $$0, int $$1) {
+      if ($$0 == null) {
+         return Optional.empty();
+      } else {
+         els $$2 = $$0.br();
+         els $$3 = $$0.f(1.0F).a((double)$$1);
+         els $$4 = $$2.e($$3);
+         eln $$5 = $$0.cH().b($$3).g(1.0);
+         int $$6 = $$1 * $$1;
+         Predicate<blu> $$7 = $$0x -> !$$0x.P_() && $$0x.bt();
+         elp $$8 = cga.a($$0, $$2, $$4, $$5, $$7, (double)$$6);
+         if ($$8 == null) {
+            return Optional.empty();
+         } else {
+            return $$2.g($$8.e()) > (double)$$6 ? Optional.empty() : Optional.of($$8.a());
          }
+      }
+   }
 
-         this.c = iz.a($$1.a() - $$2, $$1.b() - $$2, $$1.c() - $$2);
+   public static void a(epz $$0, ftf $$1, hx $$2, float $$3, float $$4, float $$5, float $$6) {
+      a($$0, $$1, $$2, $$2.b(1, 1, 1), $$3, $$4, $$5, $$6);
+   }
+
+   public static void a(epz $$0, ftf $$1, hx $$2, hx $$3, float $$4, float $$5, float $$6, float $$7) {
+      eur $$8 = evg.O().j.m();
+      if ($$8.h()) {
+         els $$9 = $$8.b().e();
+         eln $$10 = eln.a($$2, $$3).c($$9);
+         a($$0, $$1, $$10, $$4, $$5, $$6, $$7);
+      }
+   }
+
+   public static void a(epz $$0, ftf $$1, hx $$2, float $$3, float $$4, float $$5, float $$6, float $$7) {
+      eur $$8 = evg.O().j.m();
+      if ($$8.h()) {
+         els $$9 = $$8.b().e();
+         eln $$10 = new eln($$2).c($$9).g((double)$$3);
+         a($$0, $$1, $$10, $$4, $$5, $$6, $$7);
+      }
+   }
+
+   public static void a(epz $$0, ftf $$1, eln $$2, float $$3, float $$4, float $$5, float $$6) {
+      a($$0, $$1, $$2.a, $$2.b, $$2.c, $$2.d, $$2.e, $$2.f, $$3, $$4, $$5, $$6);
+   }
+
+   public static void a(epz $$0, ftf $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7, float $$8, float $$9, float $$10, float $$11) {
+      eqd $$12 = $$1.getBuffer(ftn.y());
+      ftd.b($$0, $$12, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10, $$11);
+   }
+
+   public static void a(epz $$0, ftf $$1, String $$2, int $$3, int $$4, int $$5, int $$6) {
+      a($$0, $$1, $$2, (double)$$3 + 0.5, (double)$$4 + 0.5, (double)$$5 + 0.5, $$6);
+   }
+
+   public static void a(epz $$0, ftf $$1, String $$2, double $$3, double $$4, double $$5, int $$6) {
+      a($$0, $$1, $$2, $$3, $$4, $$5, $$6, 0.02F);
+   }
+
+   public static void a(epz $$0, ftf $$1, String $$2, double $$3, double $$4, double $$5, int $$6, float $$7) {
+      a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, true, 0.0F, false);
+   }
+
+   public static void a(epz $$0, ftf $$1, String $$2, double $$3, double $$4, double $$5, int $$6, float $$7, boolean $$8, float $$9, boolean $$10) {
+      evg $$11 = evg.O();
+      eur $$12 = $$11.j.m();
+      if ($$12.h() && $$11.ao().d != null) {
+         ewq $$13 = $$11.h;
+         double $$14 = $$12.b().c;
+         double $$15 = $$12.b().d;
+         double $$16 = $$12.b().e;
+         $$0.a();
+         $$0.a((float)($$3 - $$14), (float)($$4 - $$15) + 0.07F, (float)($$5 - $$16));
+         $$0.a(new Matrix4f().rotation($$12.f()));
+         $$0.b(-$$7, -$$7, $$7);
+         float $$17 = $$8 ? (float)(-$$13.b($$2)) / 2.0F : 0.0F;
+         $$17 -= $$9 / $$7;
+         $$13.a($$2, $$17, 0.0F, $$6, false, $$0.c().a(), $$1, $$10 ? ewq.a.b : ewq.a.a, 0, 15728880);
+         $$0.b();
+      }
+   }
+
+   public interface a {
+      void a(epz var1, ftf var2, double var3, double var5, double var7);
+
+      default void a() {
       }
    }
 }

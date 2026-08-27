@@ -1,17 +1,23 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import java.util.Map;
+public class gax extends fyk<cgl> {
+   public static final ahg a = new ahg("textures/entity/trident.png");
+   private final fma f;
 
-public class gax extends fxb<bzr, fka<bzr>> {
-   private static final Map<blt<?>, ahd> a = Maps.newHashMap(
-      ImmutableMap.of(blt.bs, new ahd("textures/entity/horse/horse_zombie.png"), blt.aL, new ahd("textures/entity/horse/horse_skeleton.png"))
-   );
-
-   public gax(fyf.a $$0, fmn $$1) {
-      super($$0, new fka<>($$0.a($$1)), 1.0F);
+   public gax(fyl.a $$0) {
+      super($$0);
+      this.f = new fma($$0.a(fmu.bF));
    }
 
-   public ahd a(bzr $$0) {
-      return a.get($$0.ai());
+   public void a(cgl $$0, float $$1, float $$2, epz $$3, ftf $$4, int $$5) {
+      $$3.a();
+      $$3.a(a.d.rotationDegrees(aun.i($$2, $$0.N, $$0.dC()) - 90.0F));
+      $$3.a(a.f.rotationDegrees(aun.i($$2, $$0.O, $$0.dE()) + 90.0F));
+      eqd $$6 = fzj.c($$4, this.f.a(this.a($$0)), false, $$0.I());
+      this.f.a($$3, $$6, $$5, gec.d, 1.0F, 1.0F, 1.0F, 1.0F);
+      $$3.b();
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   public ahg a(cgl $$0) {
+      return a;
    }
 }

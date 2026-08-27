@@ -1,7 +1,8 @@
-public interface git<T> {
-   int e();
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   T b(aup var1);
-
-   void a(gio var1);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface git {
 }

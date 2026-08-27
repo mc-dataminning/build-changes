@@ -1,24 +1,23 @@
-public class aaz implements xd<yx> {
-   private final int a;
-   private final vd b;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-   public aaz(int $$0, vd $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
-
-   public aaz(ug $$0) {
-      this.a = $$0.n();
-      this.b = $$0.m();
+public record aaz(UUID a, int b, @Nullable vr c, vy.a d, @Nullable vf e, vj f, vb.b g) implements xf<za> {
+   public aaz(ui $$0) {
+      this($$0.p(), $$0.n(), $$0.c(vr::a), new vy.a($$0), $$0.c(ui::m), vj.a($$0), new vb.b($$0));
    }
 
    @Override
-   public void a(ug $$0) {
-      $$0.c(this.a);
-      $$0.a(this.b);
+   public void a(ui $$0) {
+      $$0.a(this.a);
+      $$0.c(this.b);
+      $$0.a(this.c, vr::a);
+      this.d.a($$0);
+      $$0.a(this.e, ui::a);
+      vj.a($$0, this.f);
+      this.g.a($$0);
    }
 
-   public void a(yx $$0) {
+   public void a(za $$0) {
       $$0.a(this);
    }
 
@@ -27,11 +26,29 @@ public class aaz implements xd<yx> {
       return true;
    }
 
-   public int a() {
-      return this.a;
+   public int d() {
+      return this.b;
    }
 
-   public vd d() {
-      return this.b;
+   @Nullable
+   public vr e() {
+      return this.c;
+   }
+
+   public vy.a f() {
+      return this.d;
+   }
+
+   @Nullable
+   public vf g() {
+      return this.e;
+   }
+
+   public vj h() {
+      return this.f;
+   }
+
+   public vb.b i() {
+      return this.g;
    }
 }

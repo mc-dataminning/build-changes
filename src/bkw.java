@@ -1,25 +1,19 @@
-class bkw extends bla {
-   protected bkw(blb $$0, int $$1) {
-      super($$0, $$1);
+import com.mojang.serialization.Codec;
+
+public enum bkw implements avj {
+   a("default"),
+   b("fall_variants"),
+   c("intentional_game_design");
+
+   public static final Codec<bkw> d = avj.a(bkw::values);
+   private final String e;
+
+   private bkw(String $$0) {
+      this.e = $$0;
    }
 
    @Override
-   public boolean a(int $$0, int $$1) {
-      return true;
-   }
-
-   @Override
-   public void a(bmf $$0, int $$1) {
-      super.a($$0, $$1);
-      if ($$0 instanceof ana $$2 && !$$0.P_()) {
-         amz $$3 = $$2.z();
-         if ($$3.ak() == bjs.a) {
-            return;
-         }
-
-         if ($$3.c($$0.dm())) {
-            $$3.z().a($$2);
-         }
-      }
+   public String c() {
+      return this.e;
    }
 }

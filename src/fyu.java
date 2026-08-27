@@ -1,15 +1,9 @@
-public class fyu extends fzl<cdl, fjz<cdl>> {
-   private static final ahd a = new ahd("textures/entity/hoglin/hoglin.png");
-
-   public fyu(fyf.a $$0) {
-      super($$0, new fjz<>($$0.a(fmo.ak)), 0.7F);
+public class fyu extends fzr<bzm, fjy<bzm>> {
+   public fyu(fyl.a $$0) {
+      super($$0, new fjy<>($$0.a(fmu.ab)), 0.3F);
    }
 
-   public ahd a(cdl $$0) {
-      return a;
-   }
-
-   protected boolean b(cdl $$0) {
-      return super.a($$0) || $$0.A();
+   public ahg a(bzm $$0) {
+      return $$0.A().a();
    }
 }

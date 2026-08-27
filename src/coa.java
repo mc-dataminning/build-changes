@@ -1,44 +1,24 @@
-import java.util.Map;
-import javax.annotation.Nullable;
-
-public class coa extends ckk {
-   protected final cwj d;
-   private final ic c;
-
-   public coa(cwj $$0, cwj $$1, cmm.a $$2, ic $$3) {
-      super($$0, $$2);
-      this.d = $$1;
-      this.c = $$3;
+public class coa extends cms {
+   public coa(cms.a $$0) {
+      super($$0);
    }
 
-   protected boolean a(ctl $$0, dja $$1, hx $$2) {
-      return $$1.a($$0, $$2);
-   }
-
-   @Nullable
    @Override
-   protected dja c(cpa $$0) {
-      dja $$1 = this.d.a($$0);
-      dja $$2 = null;
-      ctl $$3 = $$0.q();
-      hx $$4 = $$0.a();
-
-      for (ic $$5 : $$0.f()) {
-         if ($$5 != this.c.g()) {
-            dja $$6 = $$5 == this.c ? this.e().a($$0) : $$1;
-            if ($$6 != null && this.a($$3, $$6, $$4)) {
-               $$2 = $$6;
-               break;
-            }
-         }
+   public bkb<cmx> a(cto $$0, cfh $$1, bjz $$2) {
+      cmx $$3 = $$1.b($$2);
+      $$0.a(null, $$1.dr(), $$1.dt(), $$1.dx(), arr.xD, ars.g, 0.5F, 0.4F / ($$0.F_().i() * 0.4F + 0.8F));
+      if (!$$0.B) {
+         cgd $$4 = new cgd($$0, $$1);
+         $$4.a($$3);
+         $$4.a($$1, $$1.dE(), $$1.dC(), 0.0F, 1.5F, 1.0F);
+         $$0.b($$4);
       }
 
-      return $$2 != null && $$3.a($$2, $$4, elr.a()) ? $$2 : null;
-   }
+      $$1.b(asb.c.b(this));
+      if (!$$1.fT().d) {
+         $$3.h(1);
+      }
 
-   @Override
-   public void a(Map<cwj, cmm> $$0, cmm $$1) {
-      super.a($$0, $$1);
-      $$0.put(this.d, $$1);
+      return bkb.a($$3, $$0.y_());
    }
 }

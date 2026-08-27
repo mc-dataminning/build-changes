@@ -1,117 +1,229 @@
-import java.nio.file.Path;
+import com.google.common.collect.ImmutableList;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
 
-public class fhg extends fct {
-   private static final int a = 8;
-   private static final vd b = vd.c("telemetry_info.screen.title");
-   private static final vd c = vd.c("telemetry_info.screen.description").a(n.h);
-   private static final vd k = vd.c("telemetry_info.button.privacy_statement");
-   private static final vd l = vd.c("telemetry_info.button.give_feedback");
-   private static final vd m = vd.c("telemetry_info.button.show_data");
-   private static final vd n = vd.c("telemetry_info.opt_in.description");
-   private final fct o;
-   private final eve p;
+public class fhg extends exk.a<fhg> {
+   private static final ahg f = new ahg("icon/draft_report");
+   private static final int g = 10;
+   private static final eyr h = new eyr(
+      new ahg("social_interactions/report_button"),
+      new ahg("social_interactions/report_button_disabled"),
+      new ahg("social_interactions/report_button_highlighted")
+   );
+   private static final eyr i = new eyr(new ahg("social_interactions/mute_button"), new ahg("social_interactions/mute_button_highlighted"));
+   private static final eyr j = new eyr(new ahg("social_interactions/unmute_button"), new ahg("social_interactions/unmute_button_highlighted"));
+   private final evg k;
+   private final List<exc> l;
+   private final UUID m;
+   private final String n;
+   private final Supplier<gfk> o;
+   private boolean p;
+   private boolean q;
+   private final boolean r;
+   private final boolean t;
+   private final boolean u;
    @Nullable
-   private fhf q;
-   private double r;
+   private exe v;
+   @Nullable
+   private exe w;
+   @Nullable
+   private exe x;
+   private float y;
+   private static final vf z = vf.c("gui.socialInteractions.status_hidden").a(n.u);
+   private static final vf A = vf.c("gui.socialInteractions.status_blocked").a(n.u);
+   private static final vf B = vf.c("gui.socialInteractions.status_offline").a(n.u);
+   private static final vf C = vf.c("gui.socialInteractions.status_hidden_offline").a(n.u);
+   private static final vf D = vf.c("gui.socialInteractions.status_blocked_offline").a(n.u);
+   private static final vf E = vf.c("gui.socialInteractions.tooltip.report.disabled");
+   private static final vf F = vf.c("gui.socialInteractions.tooltip.hide");
+   private static final vf G = vf.c("gui.socialInteractions.tooltip.show");
+   private static final vf H = vf.c("gui.socialInteractions.tooltip.report");
+   private static final int I = 24;
+   private static final int J = 4;
+   public static final int a = atx.b.a(190, 0, 0, 0);
+   private static final int K = 20;
+   public static final int b = atx.b.a(255, 74, 74, 74);
+   public static final int c = atx.b.a(255, 48, 48, 48);
+   public static final int d = atx.b.a(255, 255, 255, 255);
+   public static final int e = atx.b.a(140, 255, 255, 255);
 
-   public fhg(fct $$0, eve $$1) {
-      super(b);
-      this.o = $$0;
-      this.p = $$1;
+   public fhg(evg $$0, fhj $$1, UUID $$2, String $$3, Supplier<gfk> $$4, boolean $$5) {
+      this.k = $$0;
+      this.m = $$2;
+      this.n = $$3;
+      this.o = $$4;
+      fou $$6 = $$0.aX();
+      this.r = $$6.a().a();
+      this.u = $$5;
+      this.t = $$6.a($$2);
+      vf $$7 = vf.a("gui.socialInteractions.narration.hide", $$3);
+      vf $$8 = vf.a("gui.socialInteractions.narration.show", $$3);
+      fhh $$9 = $$0.aK();
+      boolean $$10 = $$0.H().a($$0.R());
+      boolean $$11 = !$$0.s.cw().equals($$2);
+      if ($$11 && $$10 && !$$9.e($$2)) {
+         this.x = new exq(0, 0, 20, 20, h, $$3x -> $$6.a($$0, $$1, () -> $$0.a(new fhc($$1, $$6, this)), false), vf.c("gui.socialInteractions.report")) {
+            @Override
+            protected vt aK_() {
+               return fhg.this.a(super.aK_());
+            }
+         };
+         this.x.j = this.r;
+         this.x.a(this.k());
+         this.x.j(10);
+         this.v = new exq(0, 0, 20, 20, i, $$3x -> {
+            $$9.a($$2);
+            this.a(true, vf.a("gui.socialInteractions.hidden_in_chat", $$3));
+         }, vf.c("gui.socialInteractions.hide")) {
+            @Override
+            protected vt aK_() {
+               return fhg.this.a(super.aK_());
+            }
+         };
+         this.v.a(eyp.a(F, $$7));
+         this.v.j(10);
+         this.w = new exq(0, 0, 20, 20, j, $$3x -> {
+            $$9.b($$2);
+            this.a(false, vf.a("gui.socialInteractions.shown_in_chat", $$3));
+         }, vf.c("gui.socialInteractions.show")) {
+            @Override
+            protected vt aK_() {
+               return fhg.this.a(super.aK_());
+            }
+         };
+         this.w.a(eyp.a(G, $$8));
+         this.w.j(10);
+         this.l = new ArrayList<>();
+         this.l.add(this.v);
+         this.l.add(this.x);
+         this.e($$9.d(this.m));
+      } else {
+         this.l = ImmutableList.of();
+      }
+   }
+
+   private eyp k() {
+      return !this.r ? eyp.a(E) : eyp.a(H, vf.a("gui.socialInteractions.narration.report", this.n));
    }
 
    @Override
-   public vd h() {
-      return vc.a(super.h(), c);
-   }
-
-   @Override
-   protected void aN_() {
-      fag $$0 = new fag();
-      $$0.c().a(8);
-      $$0.a(this.h);
-      fam $$1 = $$0.a(fam.d(), $$0.b().a(0.5F, 0.0F));
-      $$1.c().b().e(8);
-      $$1.a(new eyf(this.o(), this.i));
-      $$1.a(new exs(c, this.i).c(this.g - 16).b(true));
-      fah $$2 = this.a(ewy.a(k, this::b).a(), ewy.a(l, this::c).a());
-      $$1.a($$2);
-      faj $$3 = this.n();
-      $$0.a();
-      $$3.a();
-      int $$4 = $$2.C() + $$2.u();
-      int $$5 = $$3.u();
-      int $$6 = this.h - $$4 - $$5 - 16;
-      this.q = new fhf(0, 0, this.g - 40, $$6, this.f.h);
-      this.q.a(this.r);
-      this.q.a($$0x -> this.r = $$0x);
-      this.c(this.q);
-      $$1.a(this.q);
-      $$1.a($$3);
-      $$0.a();
-      fag.a($$0, 0, 0, this.g, this.h, 0.5F, 0.0F);
-      $$0.a($$1x -> {
-         eww var10000 = this.d($$1x);
-      });
-   }
-
-   private faj n() {
-      fam $$0 = fam.d();
-      $$0.c().b().e(4);
-      if (this.f.A()) {
-         $$0.a(this.C());
+   public void a(ews $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+      int $$10 = $$3 + 4;
+      int $$11 = $$2 + ($$5 - 24) / 2;
+      int $$12 = $$10 + 24 + 4;
+      vf $$13 = this.m();
+      int $$14;
+      if ($$13 == ve.a) {
+         $$0.a($$3, $$2, $$3 + $$4, $$2 + $$5, b);
+         $$14 = $$2 + ($$5 - 9) / 2;
+      } else {
+         $$0.a($$3, $$2, $$3 + $$4, $$2 + $$5, c);
+         $$14 = $$2 + ($$5 - (9 + 9)) / 2;
+         $$0.a(this.k.h, $$13, $$12, $$14 + 12, e, false);
       }
 
-      $$0.a(this.a(ewy.a(m, this::d).a(), ewy.a(vc.d, this::a).a()));
-      return $$0;
-   }
+      eyd.a($$0, this.o.get(), $$10, $$11, 24);
+      $$0.a(this.k.h, this.n, $$12, $$14, d, false);
+      if (this.p) {
+         $$0.a($$10, $$11, $$10 + 24, $$11 + 24, a);
+      }
 
-   private eww C() {
-      evd<Boolean> $$0 = this.p.af();
-      exa $$1 = exa.a(n, this.f.h).a($$0).a(this::a).a();
-      $$1.j = this.f.A();
-      return $$1;
-   }
+      if (this.v != null && this.w != null && this.x != null) {
+         float $$16 = this.y;
+         this.v.n($$3 + ($$4 - this.v.w() - 4) - 20 - 4);
+         this.v.o($$2 + ($$5 - this.v.u()) / 2);
+         this.v.a($$0, $$6, $$7, $$9);
+         this.w.n($$3 + ($$4 - this.w.w() - 4) - 20 - 4);
+         this.w.o($$2 + ($$5 - this.w.u()) / 2);
+         this.w.a($$0, $$6, $$7, $$9);
+         this.x.n($$3 + ($$4 - this.w.w() - 4));
+         this.x.o($$2 + ($$5 - this.w.u()) / 2);
+         this.x.a($$0, $$6, $$7, $$9);
+         if ($$16 == this.y) {
+            this.y = 0.0F;
+         }
+      }
 
-   private void a(eww $$0, boolean $$1) {
-      if (this.q != null) {
-         this.q.b($$1);
+      if (this.t && this.x != null) {
+         $$0.a(f, this.x.B() + 5, this.x.C() + 1, 15, 15);
       }
    }
 
-   private void a(ewy $$0) {
-      this.f.a(this.o);
-   }
-
-   private void b(ewy $$0) {
-      fbl.a(this, "http://go.microsoft.com/fwlink/?LinkId=521839");
-   }
-
-   private void c(ewy $$0) {
-      fbl.a(this, "https://aka.ms/javafeedback?ref=game");
-   }
-
-   private void d(ewy $$0) {
-      Path $$1 = this.f.t().b();
-      ac.i().a($$1.toUri());
+   @Override
+   public List<? extends eyz> l() {
+      return this.l;
    }
 
    @Override
-   public void aE_() {
-      this.f.a(this.o);
+   public List<? extends fav> a() {
+      return this.l;
    }
 
-   @Override
-   public void b(ewm $$0, int $$1, int $$2, float $$3) {
-      this.b($$0);
+   public String b() {
+      return this.n;
    }
 
-   private fah a(eww $$0, eww $$1) {
-      fah $$2 = new fah();
-      $$2.c().b().f(4);
-      $$2.a($$0, 0, 0);
-      $$2.a($$1, 0, 1);
-      return $$2;
+   public UUID c() {
+      return this.m;
+   }
+
+   public Supplier<gfk> d() {
+      return this.o;
+   }
+
+   public void c(boolean $$0) {
+      this.p = $$0;
+   }
+
+   public boolean e() {
+      return this.p;
+   }
+
+   public void d(boolean $$0) {
+      this.q = $$0;
+   }
+
+   public boolean i() {
+      return this.q;
+   }
+
+   public boolean j() {
+      return this.u;
+   }
+
+   private void a(boolean $$0, vf $$1) {
+      this.e($$0);
+      this.k.l.d().a($$1);
+      this.k.aV().c($$1);
+   }
+
+   private void e(boolean $$0) {
+      this.w.k = $$0;
+      this.v.k = !$$0;
+      this.l.set(0, $$0 ? this.w : this.v);
+   }
+
+   vt a(vt $$0) {
+      vf $$1 = this.m();
+      return $$1 == ve.a ? vf.b(this.n).f(", ").b($$0) : vf.b(this.n).f(", ").b($$1).f(", ").b($$0);
+   }
+
+   private vf m() {
+      boolean $$0 = this.k.aK().d(this.m);
+      boolean $$1 = this.k.aK().e(this.m);
+      if ($$1 && this.p) {
+         return D;
+      } else if ($$0 && this.p) {
+         return C;
+      } else if ($$1) {
+         return A;
+      } else if ($$0) {
+         return z;
+      } else {
+         return this.p ? B : ve.a;
+      }
    }
 }

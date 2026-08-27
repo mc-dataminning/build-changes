@@ -1,58 +1,41 @@
-public class fvd implements fuz<dgs> {
-   private final fzd a;
+public class fvd implements fvf<dgs> {
+   public static final ggo a = new ggo(gek.e, new ahg("entity/bell/bell_body"));
+   private static final String b = "bell_body";
+   private final fmv c;
 
-   public fvd(fva.a $$0) {
-      this.a = $$0.d();
+   public fvd(fvg.a $$0) {
+      fmv $$1 = $$0.a(fmu.k);
+      this.c = $$1.b("bell_body");
    }
 
-   public void a(dgs $$0, float $$1, ept $$2, fsz $$3, int $$4, int $$5) {
-      if ($$0.i() != null) {
-         int $$6 = $$0.r().c(djq.bv);
-         if ($$6 > 0) {
-            ic $$7 = $$0.f();
-            if ($$7 != null) {
-               cmr $$8 = $$0.g();
-               if (!$$8.b()) {
-                  $$2.a();
-                  $$2.a(0.0F, 0.5F, 0.0F);
-                  float[] $$9 = this.a($$7, $$6);
-                  $$2.a($$9[0], $$9[1], $$9[2]);
-                  $$2.a(a.d.rotationDegrees(75.0F));
-                  boolean $$10 = $$7 == ic.f || $$7 == ic.e;
-                  $$2.a(a.d.rotationDegrees((float)(($$10 ? 90 : 0) + 11)));
-                  $$2.b(0.5F, 0.5F, 0.5F);
-                  int $$11 = fsx.a($$0.i(), $$0.r(), $$0.aB_().a($$7));
-                  this.a.a($$8, cmo.i, $$11, gdw.d, $$2, $$3, $$0.i(), 0);
-                  $$2.b();
-               }
-            }
+   public static fnb b() {
+      fnd $$0 = new fnd();
+      fne $$1 = $$0.a();
+      fne $$2 = $$1.a("bell_body", fna.c().a(0, 0).a(-3.0F, -6.0F, -3.0F, 6.0F, 7.0F, 6.0F), fmx.a(8.0F, 12.0F, 8.0F));
+      $$2.a("bell_base", fna.c().a(0, 13).a(4.0F, 4.0F, 4.0F, 8.0F, 2.0F, 8.0F), fmx.a(-8.0F, -12.0F, -8.0F));
+      return fnb.a($$0, 32, 32);
+   }
+
+   public void a(dgs $$0, float $$1, epz $$2, ftf $$3, int $$4, int $$5) {
+      float $$6 = (float)$$0.a + $$1;
+      float $$7 = 0.0F;
+      float $$8 = 0.0F;
+      if ($$0.b) {
+         float $$9 = aun.a($$6 / (float) Math.PI) / (4.0F + $$6 / 3.0F);
+         if ($$0.c == ic.c) {
+            $$7 = -$$9;
+         } else if ($$0.c == ic.d) {
+            $$7 = $$9;
+         } else if ($$0.c == ic.f) {
+            $$8 = -$$9;
+         } else if ($$0.c == ic.e) {
+            $$8 = $$9;
          }
       }
-   }
 
-   private float[] a(ic $$0, int $$1) {
-      float[] $$2 = new float[]{0.5F, 0.0F, 0.5F};
-      float $$3 = (float)$$1 / 10.0F * 0.75F;
-      switch ($$0) {
-         case f:
-            $$2[0] = 0.73F + $$3;
-            break;
-         case e:
-            $$2[0] = 0.25F - $$3;
-            break;
-         case b:
-            $$2[1] = 0.25F + $$3;
-            break;
-         case a:
-            $$2[1] = -0.23F - $$3;
-            break;
-         case c:
-            $$2[2] = 0.25F - $$3;
-            break;
-         case d:
-            $$2[2] = 0.73F + $$3;
-      }
-
-      return $$2;
+      this.c.e = $$7;
+      this.c.g = $$8;
+      eqd $$10 = a.a($$3, ftn::c);
+      this.c.a($$2, $$10, $$4, $$5);
    }
 }

@@ -1,51 +1,39 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.OptionalInt;
 
-public class dvb extends dvd {
-   public static final Codec<dvb> a = RecordCodecBuilder.create($$0 -> b($$0).apply($$0, dvb::new));
+public class dvb extends duy {
+   public static final Codec<dvb> d = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.intRange(0, 81).fieldOf("limit").orElse(1).forGetter($$0x -> $$0x.e),
+               Codec.intRange(0, 16).fieldOf("lower_size").orElse(0).forGetter($$0x -> $$0x.f),
+               Codec.intRange(0, 16).fieldOf("upper_size").orElse(1).forGetter($$0x -> $$0x.g),
+               a()
+            )
+            .apply($$0, dvb::new)
+   );
+   private final int e;
+   private final int f;
+   private final int g;
 
-   public dvb(bja $$0, bja $$1) {
-      super($$0, $$1);
+   public dvb(int $$0, int $$1, int $$2) {
+      this($$0, $$1, $$2, OptionalInt.empty());
+   }
+
+   public dvb(int $$0, int $$1, int $$2, OptionalInt $$3) {
+      super($$3);
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
    @Override
-   protected dve<?> a() {
-      return dve.i;
+   protected duz<?> b() {
+      return duz.a;
    }
 
    @Override
-   protected void a(cto $$0, dvd.b $$1, aup $$2, dun $$3, int $$4, dvd.a $$5, int $$6, int $$7, int $$8) {
-      hx $$9 = $$5.a().b($$8);
-      boolean $$10 = $$5.c();
-      if ($$10) {
-         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 2, -1, $$10);
-         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 3, 0, $$10);
-         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 2, 1, $$10);
-         if ($$2.h()) {
-            this.a($$0, $$1, $$2, $$3, $$9, $$7, 2, $$10);
-         }
-      } else {
-         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 2, -1, $$10);
-         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 1, 0, $$10);
-      }
-   }
-
-   @Override
-   public int a(aup $$0, int $$1, dun $$2) {
-      return 4;
-   }
-
-   @Override
-   protected boolean b(aup $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$2 != 0 || !$$5 || $$1 != -$$4 && $$1 < $$4 || $$3 != -$$4 && $$3 < $$4 ? super.b($$0, $$1, $$2, $$3, $$4, $$5) : true;
-   }
-
-   @Override
-   protected boolean a(aup $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      if ($$2 == -1 && !$$5) {
-         return $$1 == $$4 && $$3 == $$4;
-      } else {
-         return $$2 == 1 ? $$1 + $$3 > $$4 * 2 - 2 : false;
-      }
+   public int a(int $$0, int $$1) {
+      return $$1 < this.e ? this.f : this.g;
    }
 }

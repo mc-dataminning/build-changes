@@ -47,7 +47,7 @@ public class ab {
       this.a("CPUs", () -> String.valueOf(Runtime.getRuntime().availableProcessors()));
       this.a("hardware", () -> this.a(new SystemInfo()));
       this.a("JVM Flags", () -> {
-         List<String> $$0 = ac.j().collect(Collectors.toList());
+         List<String> $$0 = ac.k().collect(Collectors.toList());
          return String.format(Locale.ROOT, "%d total; %s", $$0.size(), String.join(" ", $$0));
       });
    }

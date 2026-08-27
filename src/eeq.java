@@ -1,117 +1,118 @@
-import java.util.Optional;
+import com.google.common.collect.ImmutableMap;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public abstract class eeq extends eei {
-   @Override
-   public eej d() {
-      return eel.b;
+public final class eeq extends dji<eep, eeq> {
+   public static final Codec<eeq> a = a(kd.c.q(), eep::g).stable();
+   public static final int b = 9;
+   public static final int g = 8;
+
+   public eeq(eep $$0, ImmutableMap<dkj<?>, Comparable<?>> $$1, MapCodec<eeq> $$2) {
+      super($$0, $$1, $$2);
    }
 
-   @Override
-   public eej e() {
-      return eel.c;
+   public eep a() {
+      return this.e;
    }
 
-   @Override
-   public cmm a() {
-      return cmu.qw;
+   public boolean b() {
+      return this.a().c(this);
    }
 
-   @Override
-   public void a(cti $$0, hx $$1, eek $$2, aup $$3) {
-      if (!$$2.b() && !$$2.c(a)) {
-         if ($$3.a(64) == 0) {
-            $$0.a((double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, arm.AR, arn.e, $$3.i() * 0.25F + 0.75F, $$3.i() + 0.5F, false);
+   public boolean a(eep $$0) {
+      return this.e == $$0 && this.e.c(this);
+   }
+
+   public boolean c() {
+      return this.a().b();
+   }
+
+   public float a(csu $$0, hx $$1) {
+      return this.a().a(this, $$0, $$1);
+   }
+
+   public float d() {
+      return this.a().a(this);
+   }
+
+   public int e() {
+      return this.a().d(this);
+   }
+
+   public boolean b(csu $$0, hx $$1) {
+      for (int $$2 = -1; $$2 <= 1; $$2++) {
+         for (int $$3 = -1; $$3 <= 1; $$3++) {
+            hx $$4 = $$1.b($$2, 0, $$3);
+            eeq $$5 = $$0.b_($$4);
+            if (!$$5.a().a(this.a()) && !$$0.a_($$4).i($$0, $$4)) {
+               return true;
+            }
          }
-      } else if ($$3.a(10) == 0) {
-         $$0.a(jx.ai, (double)$$1.u() + $$3.j(), (double)$$1.v() + $$3.j(), (double)$$1.w() + $$3.j(), 0.0, 0.0, 0.0);
       }
+
+      return false;
+   }
+
+   public void a(cto $$0, hx $$1) {
+      this.a().b($$0, $$1, this);
+   }
+
+   public void a(cto $$0, hx $$1, auu $$2) {
+      this.a().a($$0, $$1, this, $$2);
+   }
+
+   public boolean f() {
+      return this.a().i();
+   }
+
+   public void b(cto $$0, hx $$1, auu $$2) {
+      this.a().b($$0, $$1, this, $$2);
+   }
+
+   public els c(csu $$0, hx $$1) {
+      return this.a().a($$0, $$1, this);
+   }
+
+   public djg g() {
+      return this.a().b(this);
    }
 
    @Nullable
-   @Override
    public jv h() {
-      return jx.m;
+      return this.a().h();
    }
 
-   @Override
-   protected boolean a(cti $$0) {
-      return $$0.Z().b(cte.U);
+   public boolean a(asv<eep> $$0) {
+      return this.a().k().a($$0);
    }
 
-   @Override
-   protected void a(ctj $$0, hx $$1, dja $$2) {
-      dgo $$3 = $$2.t() ? $$0.c_($$1) : null;
-      cwj.a($$2, $$0, $$1, $$3);
+   public boolean a(il<eep> $$0) {
+      return $$0.a(this.a().k());
    }
 
-   @Override
-   public int b(ctl $$0) {
-      return 4;
+   public boolean b(eep $$0) {
+      return this.a() == $$0;
    }
 
-   @Override
-   public dja b(eek $$0) {
-      return cwl.G.o().a(day.b, Integer.valueOf(e($$0)));
+   public float i() {
+      return this.a().c();
    }
 
-   @Override
-   public boolean a(eej $$0) {
-      return $$0 == eel.c || $$0 == eel.b;
+   public boolean a(csu $$0, hx $$1, eep $$2, ic $$3) {
+      return this.a().a(this, $$0, $$1, $$2, $$3);
    }
 
-   @Override
-   public int c(ctl $$0) {
-      return 1;
+   public eml d(csu $$0, hx $$1) {
+      return this.a().b(this, $$0, $$1);
    }
 
-   @Override
-   public int a(ctl $$0) {
-      return 5;
+   public ih<eep> j() {
+      return this.e.k();
    }
 
-   @Override
-   public boolean a(eek $$0, cso $$1, hx $$2, eej $$3, ic $$4) {
-      return $$4 == ic.a && !$$3.a(asg.a);
-   }
-
-   @Override
-   protected float c() {
-      return 100.0F;
-   }
-
-   @Override
-   public Optional<arl> j() {
-      return Optional.of(arm.cK);
-   }
-
-   public static class a extends eeq {
-      @Override
-      protected void a(djb.a<eej, eek> $$0) {
-         super.a($$0);
-         $$0.a(b);
-      }
-
-      @Override
-      public int d(eek $$0) {
-         return $$0.c(b);
-      }
-
-      @Override
-      public boolean c(eek $$0) {
-         return false;
-      }
-   }
-
-   public static class b extends eeq {
-      @Override
-      public int d(eek $$0) {
-         return 8;
-      }
-
-      @Override
-      public boolean c(eek $$0) {
-         return true;
-      }
+   public Stream<asv<eep>> k() {
+      return this.e.k().c();
    }
 }

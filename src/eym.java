@@ -1,71 +1,124 @@
-public abstract class eym {
-   protected static final int a = 14737632;
-   protected static final int b = 60;
-   protected static final int c = 1;
-   protected final ewk d;
-   protected final aur e;
+import com.google.common.collect.Lists;
+import java.util.Iterator;
+import java.util.List;
 
-   protected eym(ewk $$0, aur $$1) {
-      this.d = $$0;
-      this.e = $$1;
+public class eym implements gjb {
+   private static final long a = 3000L;
+   private final evg b;
+   private final List<eym.a> c = Lists.newArrayList();
+   private boolean d;
+
+   public eym(evg $$0) {
+      this.b = $$0;
    }
 
-   public int a(int $$0) {
-      return Math.min(this.e.a() + 2, $$0);
-   }
-
-   public void a(ewm $$0, int $$1, int $$2) {
-      int $$3 = $$0.b();
-      $$0.a(fth.C(), $$1, $$3 - 60, $$1 + $$2, $$3, -1873784752);
-      long $$4 = 0L;
-      long $$5 = 2147483647L;
-      long $$6 = -2147483648L;
-      int $$7 = Math.max(0, this.e.a() - ($$2 - 2));
-      int $$8 = this.e.b() - $$7;
-
-      for (int $$9 = 0; $$9 < $$8; $$9++) {
-         int $$10 = $$1 + $$9 + 1;
-         long $$11 = this.e.a($$7 + $$9);
-         $$5 = Math.min($$5, $$11);
-         $$6 = Math.max($$6, $$11);
-         $$4 += $$11;
-         int $$12 = this.b((double)$$11);
-         int $$13 = this.a($$11);
-         $$0.a(fth.C(), $$10, $$3 - $$12, $$10 + 1, $$3, $$13);
+   public void a(ews $$0) {
+      if (!this.d && this.b.m.T().c()) {
+         this.b.ai().a(this);
+         this.d = true;
+      } else if (this.d && !this.b.m.T().c()) {
+         this.b.ai().b(this);
+         this.d = false;
       }
 
-      $$0.a(fth.C(), $$1, $$1 + $$2 - 1, $$3 - 60, -1);
-      $$0.a(fth.C(), $$1, $$1 + $$2 - 1, $$3 - 1, -1);
-      $$0.b(fth.C(), $$1, $$3 - 60, $$3, -1);
-      $$0.b(fth.C(), $$1 + $$2 - 1, $$3 - 60, $$3, -1);
-      if ($$8 > 0) {
-         String $$14 = this.a((double)$$5) + " min";
-         String $$15 = this.a((double)$$4 / (double)$$8) + " avg";
-         String $$16 = this.a((double)$$6) + " max";
-         $$0.b(this.d, $$14, $$1 + 2, $$3 - 60 - 9, 14737632);
-         $$0.a(this.d, $$15, $$1 + $$2 / 2, $$3 - 60 - 9, 14737632);
-         $$0.b(this.d, $$16, $$1 + $$2 - this.d.b($$16) - 2, $$3 - 60 - 9, 14737632);
+      if (this.d && !this.c.isEmpty()) {
+         els $$1 = new els(this.b.s.dr(), this.b.s.dv(), this.b.s.dx());
+         els $$2 = new els(0.0, 0.0, -1.0).a(-this.b.s.dE() * (float) (Math.PI / 180.0)).b(-this.b.s.dC() * (float) (Math.PI / 180.0));
+         els $$3 = new els(0.0, 1.0, 0.0).a(-this.b.s.dE() * (float) (Math.PI / 180.0)).b(-this.b.s.dC() * (float) (Math.PI / 180.0));
+         els $$4 = $$2.c($$3);
+         int $$5 = 0;
+         int $$6 = 0;
+         double $$7 = this.b.m.z().c();
+         Iterator<eym.a> $$8 = this.c.iterator();
+
+         while ($$8.hasNext()) {
+            eym.a $$9 = $$8.next();
+            if ((double)$$9.b() + 3000.0 * $$7 <= (double)ac.b()) {
+               $$8.remove();
+            } else {
+               $$6 = Math.max($$6, this.b.h.a($$9.a()));
+            }
+         }
+
+         $$6 += this.b.h.b("<") + this.b.h.b(" ") + this.b.h.b(">") + this.b.h.b(" ");
+
+         for (eym.a $$10 : this.c) {
+            int $$11 = 255;
+            vf $$12 = $$10.a();
+            els $$13 = $$10.c().d($$1).d();
+            double $$14 = -$$4.b($$13);
+            double $$15 = -$$2.b($$13);
+            boolean $$16 = $$15 > 0.5;
+            int $$17 = $$6 / 2;
+            int $$18 = 9;
+            int $$19 = $$18 / 2;
+            float $$20 = 1.0F;
+            int $$21 = this.b.h.a($$12);
+            int $$22 = aun.d(aun.b(255.0F, 75.0F, (float)(ac.b() - $$10.b()) / (float)(3000.0 * $$7)));
+            int $$23 = $$22 << 16 | $$22 << 8 | $$22;
+            $$0.c().a();
+            $$0.c().a((float)$$0.a() - (float)$$17 * 1.0F - 2.0F, (float)($$0.b() - 35) - (float)($$5 * ($$18 + 1)) * 1.0F, 0.0F);
+            $$0.c().b(1.0F, 1.0F, 1.0F);
+            $$0.a(-$$17 - 1, -$$19 - 1, $$17 + 1, $$19 + 1, this.b.m.b(0.8F));
+            int $$24 = $$23 + -16777216;
+            if (!$$16) {
+               if ($$14 > 0.0) {
+                  $$0.b(this.b.h, ">", $$17 - this.b.h.b(">"), -$$19, $$24);
+               } else if ($$14 < 0.0) {
+                  $$0.b(this.b.h, "<", -$$17, -$$19, $$24);
+               }
+            }
+
+            $$0.b(this.b.h, $$12, -$$21 / 2, -$$19, $$24);
+            $$0.c().b();
+            $$5++;
+         }
+      }
+   }
+
+   @Override
+   public void a(ghy $$0, gjd $$1) {
+      if ($$1.a() != null) {
+         vf $$2 = $$1.a();
+         if (!this.c.isEmpty()) {
+            for (eym.a $$3 : this.c) {
+               if ($$3.a().equals($$2)) {
+                  $$3.a(new els($$0.h(), $$0.i(), $$0.j()));
+                  return;
+               }
+            }
+         }
+
+         this.c.add(new eym.a($$2, new els($$0.h(), $$0.i(), $$0.j())));
+      }
+   }
+
+   public static class a {
+      private final vf a;
+      private long b;
+      private els c;
+
+      public a(vf $$0, els $$1) {
+         this.a = $$0;
+         this.c = $$1;
+         this.b = ac.b();
       }
 
-      this.a($$0, $$1, $$2, $$3);
-   }
+      public vf a() {
+         return this.a;
+      }
 
-   protected void a(ewm $$0, int $$1, int $$2, int $$3) {
-   }
+      public long b() {
+         return this.b;
+      }
 
-   protected void a(ewm $$0, String $$1, int $$2, int $$3) {
-      $$0.a(fth.C(), $$2, $$3, $$2 + this.d.b($$1) + 1, $$3 + 9, -1873784752);
-      $$0.a(this.d, $$1, $$2 + 1, $$3 + 1, 14737632, false);
-   }
+      public els c() {
+         return this.c;
+      }
 
-   protected abstract String a(double var1);
-
-   protected abstract int b(double var1);
-
-   protected abstract int a(long var1);
-
-   protected int a(double $$0, double $$1, int $$2, double $$3, int $$4, double $$5, int $$6) {
-      $$0 = aui.a($$0, $$1, $$5);
-      return $$0 < $$3 ? ats.b.a((float)($$0 / ($$3 - $$1)), $$2, $$4) : ats.b.a((float)(($$0 - $$3) / ($$5 - $$3)), $$4, $$6);
+      public void a(els $$0) {
+         this.c = $$0;
+         this.b = ac.b();
+      }
    }
 }

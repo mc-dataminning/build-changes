@@ -1,26 +1,42 @@
-public class frv extends fpf {
-   private static final int a = 12235202;
+public class frv extends fqr {
+   private final blu a;
+   private int b;
+   private final int D;
+   private final jv E;
 
-   protected frv(fnk $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, fri $$8) {
-      super($$0, $$1, $$2, $$3, 0.1F, -0.1F, 0.1F, $$4, $$5, $$6, $$7, $$8, 0.0F, 20, 0.0125F, false);
-      this.v = (float)ats.b.b(12235202) / 255.0F;
-      this.w = (float)ats.b.c(12235202) / 255.0F;
-      this.x = (float)ats.b.d(12235202) / 255.0F;
+   public frv(fnq $$0, blu $$1, jv $$2) {
+      this($$0, $$1, $$2, 3);
    }
 
-   public static class a implements fqq<ka> {
-      private final fri a;
+   public frv(fnq $$0, blu $$1, jv $$2, int $$3) {
+      this($$0, $$1, $$2, $$3, $$1.dp());
+   }
 
-      public a(fri $$0) {
-         this.a = $$0;
+   private frv(fnq $$0, blu $$1, jv $$2, int $$3, els $$4) {
+      super($$0, $$1.dr(), $$1.e(0.5), $$1.dx(), $$4.c, $$4.d, $$4.e);
+      this.a = $$1;
+      this.D = $$3;
+      this.E = $$2;
+      this.a();
+   }
+
+   @Override
+   public void a() {
+      for (int $$0 = 0; $$0 < 16; $$0++) {
+         double $$1 = (double)(this.r.i() * 2.0F - 1.0F);
+         double $$2 = (double)(this.r.i() * 2.0F - 1.0F);
+         double $$3 = (double)(this.r.i() * 2.0F - 1.0F);
+         if (!($$1 * $$1 + $$2 * $$2 + $$3 * $$3 > 1.0)) {
+            double $$4 = this.a.c($$1 / 4.0);
+            double $$5 = this.a.e(0.5 + $$2 / 4.0);
+            double $$6 = this.a.f($$3 / 4.0);
+            this.c.a(this.E, false, $$4, $$5, $$6, $$1, $$2 + 0.2, $$3);
+         }
       }
 
-      public fqn a(ka $$0, fnk $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         aup $$8 = $$1.z;
-         double $$9 = (double)$$8.i() * -1.9 * (double)$$8.i() * 0.1;
-         double $$10 = (double)$$8.i() * -0.5 * (double)$$8.i() * 0.1 * 5.0;
-         double $$11 = (double)$$8.i() * -1.9 * (double)$$8.i() * 0.1;
-         return new frv($$1, $$2, $$3, $$4, $$9, $$10, $$11, 1.0F, this.a);
+      this.b++;
+      if (this.b >= this.D) {
+         this.k();
       }
    }
 }

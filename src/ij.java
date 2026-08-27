@@ -8,20 +8,20 @@ import java.util.stream.Stream;
 public interface ij<T> extends ii<T> {
    Stream<ih.c<T>> b();
 
-   default Stream<ahc<T>> c() {
+   default Stream<ahf<T>> c() {
       return this.b().map(ih.c::g);
    }
 
    Stream<il.c<T>> d();
 
-   default Stream<asq<T>> e() {
+   default Stream<asv<T>> e() {
       return this.d().map(il.c::f);
    }
 
    default ij<T> a(final Predicate<T> $$0) {
       return new ij.a<T>(this) {
          @Override
-         public Optional<ih.c<T>> a(ahc<T> $$0x) {
+         public Optional<ih.c<T>> a(ahf<T> $$0x) {
             return this.c.a($$0).filter($$1 -> $$0.test($$1.a()));
          }
 
@@ -40,7 +40,7 @@ public interface ij<T> extends ii<T> {
       }
 
       @Override
-      public Optional<ih.c<T>> a(ahc<T> $$0) {
+      public Optional<ih.c<T>> a(ahf<T> $$0) {
          return this.c.a($$0);
       }
 
@@ -50,7 +50,7 @@ public interface ij<T> extends ii<T> {
       }
 
       @Override
-      public Optional<il.c<T>> a(asq<T> $$0) {
+      public Optional<il.c<T>> a(asv<T> $$0) {
          return this.c.a($$0);
       }
 
@@ -61,33 +61,33 @@ public interface ij<T> extends ii<T> {
    }
 
    public interface b {
-      Stream<ahc<? extends it<?>>> a();
+      Stream<ahf<? extends it<?>>> a();
 
-      <T> Optional<ij.c<T>> a(ahc<? extends it<? extends T>> var1);
+      <T> Optional<ij.c<T>> a(ahf<? extends it<? extends T>> var1);
 
-      default <T> ij.c<T> b(ahc<? extends it<? extends T>> $$0) {
+      default <T> ij.c<T> b(ahf<? extends it<? extends T>> $$0) {
          return this.a($$0).orElseThrow(() -> new IllegalStateException("Registry " + $$0.a() + " not found"));
       }
 
       default ii.a b() {
          return new ii.a() {
             @Override
-            public <T> Optional<ii<T>> a(ahc<? extends it<? extends T>> $$0) {
+            public <T> Optional<ii<T>> a(ahf<? extends it<? extends T>> $$0) {
                return b.this.a($$0).map($$0x -> $$0x);
             }
          };
       }
 
       static ij.b a(Stream<ij.c<?>> $$0) {
-         final Map<ahc<? extends it<?>>, ij.c<?>> $$1 = $$0.collect(Collectors.toUnmodifiableMap(ij.c::f, $$0x -> $$0x));
+         final Map<ahf<? extends it<?>>, ij.c<?>> $$1 = $$0.collect(Collectors.toUnmodifiableMap(ij.c::f, $$0x -> $$0x));
          return new ij.b() {
             @Override
-            public Stream<ahc<? extends it<?>>> a() {
+            public Stream<ahf<? extends it<?>>> a() {
                return $$1.keySet().stream();
             }
 
             @Override
-            public <T> Optional<ij.c<T>> a(ahc<? extends it<? extends T>> $$0) {
+            public <T> Optional<ij.c<T>> a(ahf<? extends it<? extends T>> $$0) {
                return Optional.ofNullable((ij.c<T>)$$1.get($$0));
             }
          };
@@ -95,19 +95,19 @@ public interface ij<T> extends ii<T> {
    }
 
    public interface c<T> extends ij<T>, ik<T> {
-      ahc<? extends it<? extends T>> f();
+      ahf<? extends it<? extends T>> f();
 
       Lifecycle g();
 
-      default ij<T> a(chl $$0) {
-         return (ij<T>)(chi.bx.contains(this.f()) ? this.a($$1 -> ((chi)$$1).a($$0)) : this);
+      default ij<T> a(chr $$0) {
+         return (ij<T>)(cho.bx.contains(this.f()) ? this.a($$1 -> ((cho)$$1).a($$0)) : this);
       }
 
       public abstract static class a<T> implements ij.c<T> {
          protected abstract ij.c<T> a();
 
          @Override
-         public ahc<? extends it<? extends T>> f() {
+         public ahf<? extends it<? extends T>> f() {
             return this.a().f();
          }
 
@@ -117,7 +117,7 @@ public interface ij<T> extends ii<T> {
          }
 
          @Override
-         public Optional<ih.c<T>> a(ahc<T> $$0) {
+         public Optional<ih.c<T>> a(ahf<T> $$0) {
             return this.a().a($$0);
          }
 
@@ -127,7 +127,7 @@ public interface ij<T> extends ii<T> {
          }
 
          @Override
-         public Optional<il.c<T>> a(asq<T> $$0) {
+         public Optional<il.c<T>> a(asv<T> $$0) {
             return this.a().a($$0);
          }
 

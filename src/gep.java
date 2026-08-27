@@ -1,46 +1,25 @@
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.atomic.AtomicReference;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public class gep {
-   private final ahd a;
-   private final aqa b;
-   private final AtomicReference<eou> c = new AtomicReference<>();
-   private final AtomicInteger d;
+public interface gep {
+   agz a = new agz("textures", ".png");
 
-   public gep(ahd $$0, aqa $$1, int $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.d = new AtomicInteger($$2);
-   }
+   void a(aqh var1, gep.a var2);
 
-   public eou a() throws IOException {
-      eou $$0 = this.c.get();
-      if ($$0 == null) {
-         synchronized (this) {
-            $$0 = this.c.get();
-            if ($$0 == null) {
-               try (InputStream $$1 = this.b.d()) {
-                  $$0 = eou.a($$1);
-                  this.c.set($$0);
-               } catch (IOException var9) {
-                  throw new IOException("Failed to load image " + this.a, var9);
-               }
-            }
-         }
+   ger a();
+
+   public interface a {
+      default void a(ahg $$0, aqf $$1) {
+         this.a($$0, $$2 -> $$2.loadSprite($$0, $$1));
       }
 
-      return $$0;
+      void a(ahg var1, gep.b var2);
+
+      void a(Predicate<ahg> var1);
    }
 
-   public void b() {
-      int $$0 = this.d.decrementAndGet();
-      if ($$0 <= 0) {
-         eou $$1 = this.c.getAndSet(null);
-         if ($$1 != null) {
-            $$1.close();
-         }
+   public interface b extends Function<geo, gef> {
+      default void a() {
       }
    }
 }

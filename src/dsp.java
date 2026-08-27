@@ -1,107 +1,55 @@
 import com.mojang.serialization.Codec;
-import java.util.function.Predicate;
+import java.util.Optional;
 
-public class dsp extends drn<duh> {
-   public dsp(Codec<duh> $$0) {
+public class dsp extends drt<dug> {
+   public dsp(Codec<dug> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(drp<duh> $$0) {
-      cud $$1 = $$0.b();
+   public boolean a(drv<dug> $$0) {
+      ctp $$1 = $$0.b();
       hx $$2 = $$0.e();
-      if (!$$1.a_($$2).i()) {
+      auu $$3 = $$0.d();
+      dug $$4 = $$0.f();
+      Optional<ic> $$5 = a($$1, $$2, $$3);
+      if ($$5.isEmpty()) {
          return false;
       } else {
-         aup $$3 = $$0.d();
-         hx $$4 = $$0.e();
-         duh $$5 = $$0.f();
-         hx.a $$6 = $$4.j();
-         if (a($$1, $$0.c(), $$5, $$3, $$6, $$4)) {
-            a($$1, $$5, $$3, $$4, $$6);
-         }
-
+         hx $$6 = $$2.a($$5.get().g());
+         a($$1, $$3, $$6, $$4);
+         int $$7 = $$3.i() < $$4.b && drp.c($$1.a_($$2.a($$5.get()))) ? 2 : 1;
+         drp.a($$1, $$2, $$5.get(), $$7, false);
          return true;
       }
    }
 
-   private static boolean a(cud $$0, duh $$1, hx $$2) {
-      hx.a $$3 = $$2.j();
-
-      for (int $$4 = 1; $$4 <= $$1.c; $$4++) {
-         $$3.c(ic.b);
-         dja $$5 = $$0.a_($$3);
-         if (!a($$5, $$4, $$1.n)) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   private static boolean a(dja $$0, int $$1, int $$2) {
-      if ($$0.i()) {
-         return true;
+   private static Optional<ic> a(ctp $$0, hx $$1, auu $$2) {
+      boolean $$3 = drp.b($$0.a_($$1.c()));
+      boolean $$4 = drp.b($$0.a_($$1.d()));
+      if ($$3 && $$4) {
+         return Optional.of($$2.h() ? ic.a : ic.b);
+      } else if ($$3) {
+         return Optional.of(ic.a);
       } else {
-         int $$3 = $$1 + 1;
-         return $$3 <= $$2 && $$0.u().a(asg.a);
+         return $$4 ? Optional.of(ic.b) : Optional.empty();
       }
    }
 
-   private static boolean a(cud $$0, dkx $$1, duh $$2, aup $$3, hx.a $$4, hx $$5) {
-      for (int $$6 = 0; $$6 < $$2.h; $$6++) {
-         $$4.c(ic.b);
-         if ($$2.o.test($$0, $$4) && a($$0, $$2, $$4)) {
-            hx $$7 = $$4.d();
-            if ($$0.b_($$7).a(asg.b) || !$$0.a_($$7).e()) {
-               return false;
-            }
+   private static void a(ctp $$0, auu $$1, hx $$2, dug $$3) {
+      drp.c($$0, $$2);
 
-            if ($$2.b.a().a($$0, $$1, $$3, $$4)) {
-               a($$5, $$5.v() + $$6, $$0, $$2, $$3);
-               return true;
-            }
-         }
-      }
-
-      return false;
-   }
-
-   private static void a(hx $$0, int $$1, cud $$2, duh $$3, aup $$4) {
-      int $$5 = $$0.u();
-      int $$6 = $$0.w();
-      hx.a $$7 = $$0.j();
-
-      for (int $$8 = $$0.v(); $$8 < $$1; $$8++) {
-         a($$2, $$3, $$4, $$5, $$6, $$7.d($$5, $$8, $$6));
-      }
-   }
-
-   private static void a(cud $$0, duh $$1, aup $$2, int $$3, int $$4, hx.a $$5) {
-      int $$6 = $$1.d;
-      Predicate<dja> $$7 = $$1x -> $$1x.a($$1.e);
-
-      for (int $$8 = 0; $$8 < $$1.g; $$8++) {
-         $$5.a($$5, $$2.a($$6) - $$2.a($$6), 0, $$2.a($$6) - $$2.a($$6));
-         if ($$7.test($$0.a_($$5))) {
-            $$0.a($$5, $$1.f.a($$2, $$5), 2);
-         }
-
-         $$5.p($$3);
-         $$5.r($$4);
-      }
-   }
-
-   private static void a(cud $$0, duh $$1, aup $$2, hx $$3, hx.a $$4) {
-      int $$5 = $$1.i;
-      int $$6 = $$1.j;
-
-      for (int $$7 = 0; $$7 < $$1.l; $$7++) {
-         $$4.a($$3, $$2.a($$5) - $$2.a($$5), $$2.a($$6) - $$2.a($$6), $$2.a($$5) - $$2.a($$5));
-         if ($$0.u($$4)) {
-            dja $$8 = $$1.k.a($$2, $$4);
-            if ($$8.a($$0, $$4) && $$0.a_($$4.c()).d($$0, $$4, ic.a)) {
-               $$0.a($$4, $$8, 2);
+      for (ic $$4 : ic.c.a) {
+         if (!($$1.i() > $$3.c)) {
+            hx $$5 = $$2.a($$4);
+            drp.c($$0, $$5);
+            if (!($$1.i() > $$3.d)) {
+               hx $$6 = $$5.a(ic.b($$1));
+               drp.c($$0, $$6);
+               if (!($$1.i() > $$3.e)) {
+                  hx $$7 = $$6.a(ic.b($$1));
+                  drp.c($$0, $$7);
+               }
             }
          }
       }

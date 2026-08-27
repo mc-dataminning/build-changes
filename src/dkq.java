@@ -1,15 +1,23 @@
-public enum dkq {
-   a(4259712),
-   b(16724016),
-   c(2138367);
+public enum dkq implements avj {
+   a("save"),
+   b("load"),
+   c("corner"),
+   d("data");
 
-   private final int d;
+   private final String e;
+   private final vf f;
 
-   private dkq(int $$0) {
-      this.d = $$0;
+   private dkq(String $$0) {
+      this.e = $$0;
+      this.f = vf.c("structure_block.mode_info." + $$0);
    }
 
-   public int a() {
-      return this.d;
+   @Override
+   public String c() {
+      return this.e;
+   }
+
+   public vf a() {
+      return this.f;
    }
 }

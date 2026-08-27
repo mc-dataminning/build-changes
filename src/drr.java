@@ -1,58 +1,29 @@
 import com.mojang.serialization.Codec;
-import org.apache.commons.lang3.mutable.MutableInt;
 
-public class drr extends drn<drs> {
-   public drr(Codec<drs> $$0) {
+public class drr extends drt<due> {
+   public drr(Codec<due> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(drp<drs> $$0) {
-      aup $$1 = $$0.d();
-      cud $$2 = $$0.b();
+   public boolean a(drv<due> $$0) {
+      cuj $$1 = $$0.b();
+      auu $$2 = $$0.d();
       hx $$3 = $$0.e();
-      dcv $$4 = dcv.a($$1);
-      drs $$5 = $$0.f();
-      int $$6 = $$1.a($$5.b.size());
-      eda $$7 = $$2.E().o().aX();
-      ecz $$8 = $$7.a($$5.b.get($$6));
-      ecz $$9 = $$7.a($$5.c.get($$6));
-      csp $$10 = new csp($$3);
-      dyr $$11 = new dyr($$10.d() - 16, $$2.J_(), $$10.e() - 16, $$10.f() + 16, $$2.al(), $$10.g() + 16);
-      ecv $$12 = new ecv().a($$4).a($$11).a($$1);
-      jb $$13 = $$8.a($$4);
-      hx $$14 = $$3.b(-$$13.u() / 2, 0, -$$13.w() / 2);
-      int $$15 = $$3.v();
+      float $$4 = (float)$$2.a(3) + 4.0F;
 
-      for (int $$16 = 0; $$16 < $$13.u(); $$16++) {
-         for (int $$17 = 0; $$17 < $$13.w(); $$17++) {
-            $$15 = Math.min($$15, $$2.a(doj.a.c, $$14.u() + $$16, $$14.w() + $$17));
+      for (int $$5 = 0; $$4 > 0.5F; $$5--) {
+         for (int $$6 = aun.d(-$$4); $$6 <= aun.f($$4); $$6++) {
+            for (int $$7 = aun.d(-$$4); $$7 <= aun.f($$4); $$7++) {
+               if ((float)($$6 * $$6 + $$7 * $$7) <= ($$4 + 1.0F) * ($$4 + 1.0F)) {
+                  this.a($$1, $$3.b($$6, $$5, $$7), cwr.fz.o());
+               }
+            }
          }
+
+         $$4 -= (float)$$2.a(2) + 0.5F;
       }
 
-      int $$18 = Math.max($$15 - 15 - $$1.a(10), $$2.J_() + 10);
-      hx $$19 = $$8.a($$14.h($$18), dbf.a, $$4);
-      if (a($$2, $$8.b($$12, $$19)) > $$5.f) {
-         return false;
-      } else {
-         $$12.b();
-         $$5.d.a().a().forEach($$12::a);
-         $$8.a($$2, $$19, $$19, $$12, $$1, 4);
-         $$12.b();
-         $$5.e.a().a().forEach($$12::a);
-         $$9.a($$2, $$19, $$19, $$12, $$1, 4);
-         return true;
-      }
-   }
-
-   private static int a(cud $$0, dyr $$1) {
-      MutableInt $$2 = new MutableInt(0);
-      $$1.a($$2x -> {
-         dja $$3 = $$0.a_($$2x);
-         if ($$3.i() || $$3.a(cwl.H) || $$3.a(cwl.G)) {
-            $$2.add(1);
-         }
-      });
-      return $$2.getValue();
+      return true;
    }
 }

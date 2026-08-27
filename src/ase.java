@@ -1,28 +1,16 @@
-public final class ase {
-   public static final asq<blt<?>> a = a("skeletons");
-   public static final asq<blt<?>> b = a("zombies");
-   public static final asq<blt<?>> c = a("raiders");
-   public static final asq<blt<?>> d = a("undead");
-   public static final asq<blt<?>> e = a("beehive_inhabitors");
-   public static final asq<blt<?>> f = a("arrows");
-   public static final asq<blt<?>> g = a("impact_projectiles");
-   public static final asq<blt<?>> h = a("powder_snow_walkable_mobs");
-   public static final asq<blt<?>> i = a("axolotl_always_hostiles");
-   public static final asq<blt<?>> j = a("axolotl_hunt_targets");
-   public static final asq<blt<?>> k = a("freeze_immune_entity_types");
-   public static final asq<blt<?>> l = a("freeze_hurts_extra_types");
-   public static final asq<blt<?>> m = a("can_breathe_under_water");
-   public static final asq<blt<?>> n = a("frog_food");
-   public static final asq<blt<?>> o = a("fall_damage_immune");
-   public static final asq<blt<?>> p = a("dismounts_underwater");
-   public static final asq<blt<?>> q = a("non_controlling_rider");
-   public static final asq<blt<?>> r = a("deflects_arrows");
-   public static final asq<blt<?>> s = a("deflects_tridents");
+public class ase {
+   public static final asv<dgl> a = a("no_item_required");
+   public static final asv<dgl> b = a("pattern_item/flower");
+   public static final asv<dgl> c = a("pattern_item/creeper");
+   public static final asv<dgl> d = a("pattern_item/skull");
+   public static final asv<dgl> e = a("pattern_item/mojang");
+   public static final asv<dgl> f = a("pattern_item/globe");
+   public static final asv<dgl> g = a("pattern_item/piglin");
 
    private ase() {
    }
 
-   private static asq<blt<?>> a(String $$0) {
-      return asq.a(ke.u, new ahd($$0));
+   private static asv<dgl> a(String $$0) {
+      return asv.a(ke.d, new ahg($$0));
    }
 }

@@ -1,39 +1,60 @@
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-public class nd {
-   private final mv a;
-   private final cps b;
-   private final cps c;
-   private final cps d;
-   private final Map<String, an<?>> e = new LinkedHashMap<>();
+public class nd implements mw {
+   private final mx b;
+   private final cms c;
+   private final cpy d;
+   private final int e;
+   private final Map<String, an<?>> f = new LinkedHashMap<>();
+   @Nullable
+   private String g;
+   private final cqp.a<?> h;
 
-   public nd(mv $$0, cps $$1, cps $$2, cps $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+   public nd(mx $$0, cqp.a<?> $$1, cpy $$2, ctn $$3, int $$4) {
+      this.b = $$0;
+      this.h = $$1;
+      this.c = $$3.k();
+      this.d = $$2;
+      this.e = $$4;
    }
 
-   public static nd a(cps $$0, cps $$1, cps $$2, mv $$3) {
-      return new nd($$3, $$0, $$1, $$2);
+   public static nd a(cpy $$0, mx $$1, ctn $$2) {
+      return new nd($$1, cqv::new, $$0, $$2, 1);
    }
 
-   public nd a(String $$0, an<?> $$1) {
-      this.e.put($$0, $$1);
+   public static nd a(cpy $$0, mx $$1, ctn $$2, int $$3) {
+      return new nd($$1, cqv::new, $$0, $$2, $$3);
+   }
+
+   public nd b(String $$0, an<?> $$1) {
+      this.f.put($$0, $$1);
       return this;
    }
 
-   public void a(mw $$0, ahd $$1) {
-      this.a($$1);
-      ae.a $$2 = $$0.a().a("has_the_recipe", ct.a($$1)).a(aj.a.c($$1)).a(ai.a.b);
-      this.e.forEach($$2::a);
-      cqn $$3 = new cqn(this.b, this.c, this.d);
-      $$0.a($$1, $$3, $$2.b($$1.d("recipes/" + this.a.a() + "/")));
+   public nd b(@Nullable String $$0) {
+      this.g = $$0;
+      return this;
    }
 
-   private void a(ahd $$0) {
-      if (this.e.isEmpty()) {
+   @Override
+   public cms a() {
+      return this.c;
+   }
+
+   @Override
+   public void a(my $$0, ahg $$1) {
+      this.a($$1);
+      ae.a $$2 = $$0.a().a("has_the_recipe", ct.a($$1)).a(aj.a.c($$1)).a(ai.a.b);
+      this.f.forEach($$2::a);
+      cqp $$3 = this.h.create(Objects.requireNonNullElse(this.g, ""), this.d, new cmx(this.c, this.e));
+      $$0.a($$1, $$3, $$2.b($$1.d("recipes/" + this.b.a() + "/")));
+   }
+
+   private void a(ahg $$0) {
+      if (this.f.isEmpty()) {
          throw new IllegalStateException("No way of obtaining recipe " + $$0);
       }
    }

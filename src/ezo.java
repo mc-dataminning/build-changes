@@ -1,115 +1,84 @@
-import com.mojang.blaze3d.platform.TextureUtil;
-import java.nio.file.Path;
+import com.mojang.blaze3d.systems.RenderSystem;
 import javax.annotation.Nullable;
 
-public class ezo extends gdq implements gdr {
-   private static final int e = 256;
-   private final ezp f;
-   private final boolean g;
+public class ezo implements ezm {
+   private static final ahg g = new ahg("toast/tutorial");
+   public static final int a = 154;
+   public static final int d = 1;
+   public static final int e = 3;
+   public static final int f = 28;
    private final ezo.a h;
-
-   public ezo(ezp $$0, boolean $$1) {
-      this.g = $$1;
-      this.h = new ezo.a(0, 0, 256, 256);
-      TextureUtil.prepareImage($$1 ? eou.b.a : eou.b.d, this.a(), 256, 256);
-      this.f = $$0;
-   }
-
-   @Override
-   public void a(aqc $$0) {
-   }
-
-   @Override
-   public void close() {
-      this.b();
-   }
-
+   private final vf i;
    @Nullable
-   public ezr a(enx $$0) {
-      if ($$0.c() != this.g) {
-         return null;
-      } else {
-         ezo.a $$1 = this.h.a($$0);
-         if ($$1 != null) {
-            this.c();
-            $$0.a($$1.a, $$1.b);
-            float $$2 = 256.0F;
-            float $$3 = 256.0F;
-            float $$4 = 0.01F;
-            return new ezr(
-               this.f,
-               ((float)$$1.a + 0.01F) / 256.0F,
-               ((float)$$1.a - 0.01F + (float)$$0.a()) / 256.0F,
-               ((float)$$1.b + 0.01F) / 256.0F,
-               ((float)$$1.b - 0.01F + (float)$$0.b()) / 256.0F,
-               $$0.e(),
-               $$0.f(),
-               $$0.g(),
-               $$0.h()
-            );
-         } else {
-            return null;
-         }
-      }
+   private final vf j;
+   private ezm.a k = ezm.a.a;
+   private long l;
+   private float m;
+   private float n;
+   private final boolean o;
+
+   public ezo(ezo.a $$0, vf $$1, @Nullable vf $$2, boolean $$3) {
+      this.h = $$0;
+      this.i = $$1;
+      this.j = $$2;
+      this.o = $$3;
    }
 
    @Override
-   public void a(ahd $$0, Path $$1) {
-      String $$2 = $$0.c();
-      TextureUtil.writeAsPNG($$1, $$2, this.a(), 0, 256, 256, $$0x -> ($$0x & 0xFF000000) == 0 ? -16777216 : $$0x);
-   }
-
-   static class a {
-      final int a;
-      final int b;
-      private final int c;
-      private final int d;
-      @Nullable
-      private ezo.a e;
-      @Nullable
-      private ezo.a f;
-      private boolean g;
-
-      a(int $$0, int $$1, int $$2, int $$3) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
+   public ezm.a a(ews $$0, ezn $$1, long $$2) {
+      $$0.a(g, 0, 0, this.a(), this.b());
+      this.h.a($$0, 6, 6);
+      if (this.j == null) {
+         $$0.a($$1.b().h, this.i, 30, 12, -11534256, false);
+      } else {
+         $$0.a($$1.b().h, this.i, 30, 7, -11534256, false);
+         $$0.a($$1.b().h, this.j, 30, 18, -16777216, false);
       }
 
-      @Nullable
-      ezo.a a(enx $$0) {
-         if (this.e != null && this.f != null) {
-            ezo.a $$1 = this.e.a($$0);
-            if ($$1 == null) {
-               $$1 = this.f.a($$0);
-            }
-
-            return $$1;
-         } else if (this.g) {
-            return null;
+      if (this.o) {
+         $$0.a(3, 28, 157, 29, -1);
+         float $$3 = aun.b(this.m, this.n, (float)($$2 - this.l) / 100.0F);
+         int $$4;
+         if (this.n >= this.m) {
+            $$4 = -16755456;
          } else {
-            int $$2 = $$0.a();
-            int $$3 = $$0.b();
-            if ($$2 > this.c || $$3 > this.d) {
-               return null;
-            } else if ($$2 == this.c && $$3 == this.d) {
-               this.g = true;
-               return this;
-            } else {
-               int $$4 = this.c - $$2;
-               int $$5 = this.d - $$3;
-               if ($$4 > $$5) {
-                  this.e = new ezo.a(this.a, this.b, $$2, this.d);
-                  this.f = new ezo.a(this.a + $$2 + 1, this.b, this.c - $$2 - 1, this.d);
-               } else {
-                  this.e = new ezo.a(this.a, this.b, this.c, $$3);
-                  this.f = new ezo.a(this.a, this.b + $$3 + 1, this.c, this.d - $$3 - 1);
-               }
-
-               return this.e.a($$0);
-            }
+            $$4 = -11206656;
          }
+
+         $$0.a(3, 28, (int)(3.0F + 154.0F * $$3), 29, $$4);
+         this.m = $$3;
+         this.l = $$2;
+      }
+
+      return this.k;
+   }
+
+   public void c() {
+      this.k = ezm.a.b;
+   }
+
+   public void a(float $$0) {
+      this.n = $$0;
+   }
+
+   public static enum a {
+      a(new ahg("toast/movement_keys")),
+      b(new ahg("toast/mouse")),
+      c(new ahg("toast/tree")),
+      d(new ahg("toast/recipe_book")),
+      e(new ahg("toast/wooden_planks")),
+      f(new ahg("toast/social_interactions")),
+      g(new ahg("toast/right_click"));
+
+      private final ahg h;
+
+      private a(ahg $$0) {
+         this.h = $$0;
+      }
+
+      public void a(ews $$0, int $$1, int $$2) {
+         RenderSystem.enableBlend();
+         $$0.a(this.h, $$1, $$2, 20, 20);
       }
    }
 }

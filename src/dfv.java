@@ -1,30 +1,33 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dfv extends czy {
-   public static final MapCodec<dfv> c = b(dfv::new);
-   protected static final emf g = cwj.a(4.0, 9.0, 4.0, 12.0, 16.0, 12.0);
+public class dfv extends cwp implements dfs {
+   public static final MapCodec<dfv> d = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dfs.a.e.fieldOf("weathering_state").forGetter(cxq::c), u()).apply($$0, dfv::new)
+   );
+   private final dfs.a e;
 
    @Override
    public MapCodec<dfv> a() {
-      return c;
+      return d;
    }
 
-   public dfv(diz.d $$0) {
-      super($$0, ic.a, g, false, 0.1);
-   }
-
-   @Override
-   protected int a(aup $$0) {
-      return dbo.a($$0);
+   public dfv(dfs.a $$0, djf.d $$1) {
+      super($$1);
+      this.e = $$0;
    }
 
    @Override
-   protected cwj b() {
-      return cwl.oA;
+   public void b(djg $$0, and $$1, hx $$2, auu $$3) {
+      this.a_($$0, $$1, $$2, $$3);
    }
 
    @Override
-   protected boolean g(dja $$0) {
-      return dbo.a($$0);
+   public boolean e_(djg $$0) {
+      return dfs.c($$0.b()).isPresent();
+   }
+
+   public dfs.a g() {
+      return this.e;
    }
 }

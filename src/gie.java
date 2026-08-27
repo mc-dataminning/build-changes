@@ -1,259 +1,33 @@
-import com.google.common.base.MoreObjects;
-import com.google.common.collect.Lists;
-import com.mojang.authlib.GameProfile;
-import com.mojang.logging.LogUtils;
-import java.io.File;
-import java.io.IOException;
-import java.util.UUID;
-import java.util.function.BooleanSupplier;
-import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
-import org.slf4j.Logger;
+import com.google.common.collect.ImmutableList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.function.Function;
+import java.util.function.ToIntFunction;
+import java.util.stream.Stream;
 
-public class gie extends MinecraftServer {
-   private static final Logger l = LogUtils.getLogger();
-   private static final int m = 2;
-   private final eva n;
-   private boolean o = true;
-   private int p = -1;
-   @Nullable
-   private ctf q;
-   @Nullable
-   private gih r;
-   @Nullable
-   private UUID s;
-   private int t = 0;
+public class gie<T> implements gii<T> {
+   protected final Comparator<T> a;
+   protected final gij<T> b;
 
-   public gie(Thread $$0, eva $$1, egf.c $$2, apn $$3, ahz $$4, ahw $$5, anj $$6) {
-      super($$0, $$2, $$3, $$4, $$1.W(), $$1.aq(), $$5, $$6);
-      this.b($$1.V());
-      this.c($$1.H());
-      this.a(new gid(this, this.ba(), this.h));
-      this.n = $$1;
+   public gie(Function<T, Stream<ahg>> $$0, List<T> $$1) {
+      ToIntFunction<T> $$2 = ac.e($$1);
+      this.a = Comparator.comparingInt($$2);
+      this.b = gij.a($$1, $$0);
    }
 
    @Override
-   public boolean e() {
-      l.info("Starting integrated minecraft server version {}", aa.b().c());
-      this.d(true);
-      this.f(true);
-      this.g(true);
-      this.R();
-      this.u_();
-      GameProfile $$0 = this.P();
-      String $$1 = this.aY().g();
-      this.d($$0 != null ? $$0.getName() + " - " + $$1 : $$1);
-      return true;
+   public List<T> search(String $$0) {
+      int $$1 = $$0.indexOf(58);
+      return $$1 == -1 ? this.a($$0) : this.a($$0.substring(0, $$1).trim(), $$0.substring($$1 + 1).trim());
    }
 
-   @Override
-   public boolean A() {
-      return this.o;
+   protected List<T> a(String $$0) {
+      return this.b.b($$0);
    }
 
-   @Override
-   public void a(BooleanSupplier $$0) {
-      boolean $$1 = this.o;
-      this.o = eva.N().af();
-      bgm $$2 = this.aR();
-      if (!$$1 && this.o) {
-         $$2.a("autoSave");
-         l.info("Saving and pausing game...");
-         this.b(false, false, false);
-         $$2.c();
-      }
-
-      boolean $$3 = eva.N().I() != null;
-      if ($$3 && this.o) {
-         this.a();
-      } else {
-         if ($$1 && !this.o) {
-            this.C();
-         }
-
-         super.a($$0);
-         int $$4 = Math.max(2, this.n.m.e().c());
-         if ($$4 != this.ae().p()) {
-            l.info("Changing view distance to {}, from {}", $$4, this.ae().p());
-            this.ae().a($$4);
-         }
-
-         int $$5 = Math.max(2, this.n.m.f().c());
-         if ($$5 != this.t) {
-            l.info("Changing simulation distance to {}, from {}", $$5, this.t);
-            this.ae().b($$5);
-            this.t = $$5;
-         }
-      }
-   }
-
-   @Override
-   public void a(long $$0) {
-      this.n.aM().b($$0);
-   }
-
-   private void a() {
-      for (ana $$0 : this.ae().t()) {
-         $$0.a(arw.l);
-      }
-   }
-
-   @Override
-   public boolean k() {
-      return true;
-   }
-
-   @Override
-   public boolean W_() {
-      return true;
-   }
-
-   @Override
-   public File z() {
-      return this.n.p;
-   }
-
-   @Override
-   public boolean l() {
-      return false;
-   }
-
-   @Override
-   public int m() {
-      return 0;
-   }
-
-   @Override
-   public boolean n() {
-      return false;
-   }
-
-   @Override
-   public void a(o $$0) {
-      this.n.b($$0);
-   }
-
-   @Override
-   public ab a(ab $$0) {
-      $$0.a("Type", "Integrated Server (map_client.txt)");
-      $$0.a("Is Modded", () -> this.M().b());
-      $$0.a("Launched Version", this.n::h);
-      return $$0;
-   }
-
-   @Override
-   public auh M() {
-      return eva.e().a(super.M());
-   }
-
-   @Override
-   public boolean a(@Nullable ctf $$0, boolean $$1, int $$2) {
-      try {
-         this.n.aQ();
-         this.n.v().a().thenAcceptAsync($$0x -> $$0x.ifPresent($$0xx -> {
-               fnl $$1x = this.n.I();
-               if ($$1x != null) {
-                  $$1x.a($$0xx);
-               }
-            }), this.n);
-         this.af().a(null, $$2);
-         l.info("Started serving on {}", $$2);
-         this.p = $$2;
-         this.r = new gih(this.ac(), $$2 + "");
-         this.r.start();
-         this.q = $$0;
-         this.ae().b($$1);
-         int $$3 = this.c(this.n.s.fR());
-         this.n.s.a($$3);
-
-         for (ana $$4 : this.ae().t()) {
-            this.aE().a($$4);
-         }
-
-         return true;
-      } catch (IOException var7) {
-         return false;
-      }
-   }
-
-   @Override
-   public void t() {
-      super.t();
-      if (this.r != null) {
-         this.r.interrupt();
-         this.r = null;
-      }
-   }
-
-   @Override
-   public void a(boolean $$0) {
-      this.h(() -> {
-         for (ana $$1 : Lists.newArrayList(this.ae().t())) {
-            if (!$$1.cw().equals(this.s)) {
-               this.ae().c($$1);
-            }
-         }
-      });
-      super.a($$0);
-      if (this.r != null) {
-         this.r.interrupt();
-         this.r = null;
-      }
-   }
-
-   @Override
-   public boolean p() {
-      return this.p > -1;
-   }
-
-   @Override
-   public int O() {
-      return this.p;
-   }
-
-   @Override
-   public void a(ctf $$0) {
-      super.a($$0);
-      this.q = null;
-   }
-
-   @Override
-   public boolean o() {
-      return true;
-   }
-
-   @Override
-   public int i() {
-      return 2;
-   }
-
-   @Override
-   public int j() {
-      return 2;
-   }
-
-   public void a(UUID $$0) {
-      this.s = $$0;
-   }
-
-   @Override
-   public boolean a(GameProfile $$0) {
-      return this.P() != null && $$0.getName().equalsIgnoreCase(this.P().getName());
-   }
-
-   @Override
-   public int b(int $$0) {
-      return (int)(this.n.m.g().c() * (double)$$0);
-   }
-
-   @Override
-   public boolean aW() {
-      return this.n.m.af;
-   }
-
-   @Nullable
-   @Override
-   public ctf bb() {
-      return this.p() ? (ctf)MoreObjects.firstNonNull(this.q, this.k.m()) : null;
+   protected List<T> a(String $$0, String $$1) {
+      List<T> $$2 = this.b.a($$0);
+      List<T> $$3 = this.b.b($$1);
+      return ImmutableList.copyOf(new gif<T>($$2.iterator(), $$3.iterator(), this.a));
    }
 }

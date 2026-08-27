@@ -1,94 +1,168 @@
 import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Sets;
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.Set;
+import com.google.common.collect.Lists;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.google.gson.JsonSyntaxException;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.io.Reader;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public interface fsz {
-   static fsz.a a(epo $$0) {
-      return a(ImmutableMap.of(), $$0);
+public class fsz extends aqm<fsz.a> {
+   private static final Logger a = LogUtils.getLogger();
+   private static final ahg b = new ahg("gpu_warnlist.json");
+   private ImmutableMap<String, String> c = ImmutableMap.of();
+   private boolean d;
+   private boolean e;
+   private boolean f;
+
+   public boolean a() {
+      return !this.c.isEmpty();
    }
 
-   static fsz.a a(Map<fth, epo> $$0, epo $$1) {
-      return new fsz.a($$1, $$0);
+   public boolean b() {
+      return this.a() && !this.e;
    }
 
-   epx getBuffer(fth var1);
+   public void d() {
+      this.d = true;
+   }
 
-   public static class a implements fsz {
-      protected final epo a;
-      protected final Map<fth, epo> b;
-      protected Optional<fth> c = Optional.empty();
-      protected final Set<epo> d = Sets.newHashSet();
+   public void e() {
+      this.e = true;
+   }
 
-      protected a(epo $$0, Map<fth, epo> $$1) {
+   public void f() {
+      this.e = true;
+      this.f = true;
+   }
+
+   public boolean g() {
+      return this.d && !this.e;
+   }
+
+   public boolean h() {
+      return this.f;
+   }
+
+   public void i() {
+      this.d = false;
+      this.e = false;
+      this.f = false;
+   }
+
+   @Nullable
+   public String j() {
+      return (String)this.c.get("renderer");
+   }
+
+   @Nullable
+   public String k() {
+      return (String)this.c.get("version");
+   }
+
+   @Nullable
+   public String l() {
+      return (String)this.c.get("vendor");
+   }
+
+   @Nullable
+   public String m() {
+      StringBuilder $$0 = new StringBuilder();
+      this.c.forEach(($$1, $$2) -> $$0.append($$1).append(": ").append($$2));
+      return $$0.length() == 0 ? null : $$0.toString();
+   }
+
+   protected fsz.a a(aqh $$0, bgr $$1) {
+      List<Pattern> $$2 = Lists.newArrayList();
+      List<Pattern> $$3 = Lists.newArrayList();
+      List<Pattern> $$4 = Lists.newArrayList();
+      $$1.a();
+      JsonObject $$5 = c($$0, $$1);
+      if ($$5 != null) {
+         $$1.a("compile_regex");
+         a($$5.getAsJsonArray("renderer"), $$2);
+         a($$5.getAsJsonArray("version"), $$3);
+         a($$5.getAsJsonArray("vendor"), $$4);
+         $$1.c();
+      }
+
+      $$1.b();
+      return new fsz.a($$2, $$3, $$4);
+   }
+
+   protected void a(fsz.a $$0, aqh $$1, bgr $$2) {
+      this.c = $$0.a();
+   }
+
+   private static void a(JsonArray $$0, List<Pattern> $$1) {
+      $$0.forEach($$1x -> $$1.add(Pattern.compile($$1x.getAsString(), 2)));
+   }
+
+   @Nullable
+   private static JsonObject c(aqh $$0, bgr $$1) {
+      $$1.a("parse_json");
+      JsonObject $$2 = null;
+
+      try (Reader $$3 = $$0.openAsReader(b)) {
+         $$2 = JsonParser.parseReader($$3).getAsJsonObject();
+      } catch (JsonSyntaxException | IOException var8) {
+         a.warn("Failed to load GPU warnlist");
+      }
+
+      $$1.c();
+      return $$2;
+   }
+
+   protected static final class a {
+      private final List<Pattern> a;
+      private final List<Pattern> b;
+      private final List<Pattern> c;
+
+      a(List<Pattern> $$0, List<Pattern> $$1, List<Pattern> $$2) {
          this.a = $$0;
          this.b = $$1;
+         this.c = $$2;
       }
 
-      @Override
-      public epx getBuffer(fth $$0) {
-         Optional<fth> $$1 = $$0.N();
-         epo $$2 = this.b($$0);
-         if (!Objects.equals(this.c, $$1) || !$$0.M()) {
-            if (this.c.isPresent()) {
-               fth $$3 = this.c.get();
-               if (!this.b.containsKey($$3)) {
-                  this.a($$3);
-               }
-            }
+      private static String a(List<Pattern> $$0, String $$1) {
+         List<String> $$2 = Lists.newArrayList();
 
-            if (this.d.add($$2)) {
-               $$2.a($$0.I(), $$0.H());
-            }
+         for (Pattern $$3 : $$0) {
+            Matcher $$4 = $$3.matcher($$1);
 
-            this.c = $$1;
-         }
-
-         return $$2;
-      }
-
-      private epo b(fth $$0) {
-         return this.b.getOrDefault($$0, this.a);
-      }
-
-      public void a() {
-         if (this.c.isPresent()) {
-            fth $$0 = this.c.get();
-            if (!this.b.containsKey($$0)) {
-               this.a($$0);
-            }
-
-            this.c = Optional.empty();
-         }
-      }
-
-      public void b() {
-         this.c.ifPresent($$0x -> {
-            epx $$1 = this.getBuffer($$0x);
-            if ($$1 == this.a) {
-               this.a($$0x);
-            }
-         });
-
-         for (fth $$0 : this.b.keySet()) {
-            this.a($$0);
-         }
-      }
-
-      public void a(fth $$0) {
-         epo $$1 = this.b($$0);
-         boolean $$2 = Objects.equals(this.c, $$0.N());
-         if ($$2 || $$1 != this.a) {
-            if (this.d.remove($$1)) {
-               $$0.a($$1, RenderSystem.getVertexSorting());
-               if ($$2) {
-                  this.c = Optional.empty();
-               }
+            while ($$4.find()) {
+               $$2.add($$4.group());
             }
          }
+
+         return String.join(", ", $$2);
+      }
+
+      ImmutableMap<String, String> a() {
+         Builder<String, String> $$0 = new Builder();
+         String $$1 = a(this.a, eos.c());
+         if (!$$1.isEmpty()) {
+            $$0.put("renderer", $$1);
+         }
+
+         String $$2 = a(this.b, eos.d());
+         if (!$$2.isEmpty()) {
+            $$0.put("version", $$2);
+         }
+
+         String $$3 = a(this.c, eos.a());
+         if (!$$3.isEmpty()) {
+            $$0.put("vendor", $$3);
+         }
+
+         return $$0.build();
       }
    }
 }

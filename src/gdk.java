@@ -1,11 +1,24 @@
-import javax.annotation.Nullable;
+public class gdk extends gch<cbh, fml<cbh>> {
+   private static final ahg a = new ahg("textures/entity/wither/wither_armor.png");
+   private final fml<cbh> b;
 
-public interface gdk extends gdn {
-   @Deprecated
-   @Override
-   default float call(cmr $$0, @Nullable fnk $$1, @Nullable bmf $$2, int $$3) {
-      return aui.a(this.unclampedCall($$0, $$1, $$2, $$3), 0.0F, 1.0F);
+   public gdk(gag<cbh, fml<cbh>> $$0, fmr $$1) {
+      super($$0);
+      this.b = new fml<>($$1.a(fmu.bT));
    }
 
-   float unclampedCall(cmr var1, @Nullable fnk var2, @Nullable bmf var3, int var4);
+   @Override
+   protected float a(float $$0) {
+      return aun.b($$0 * 0.02F) * 3.0F;
+   }
+
+   @Override
+   protected ahg a() {
+      return a;
+   }
+
+   @Override
+   protected fjv<cbh> b() {
+      return this.b;
+   }
 }

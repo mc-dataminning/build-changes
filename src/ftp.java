@@ -1,61 +1,140 @@
-public class ftp implements epx {
-   private final epx a;
-   private final gef b;
+import com.mojang.blaze3d.systems.RenderSystem;
+import javax.annotation.Nullable;
+import org.joml.Matrix4f;
 
-   public ftp(epx $$0, gef $$1) {
-      this.a = $$0;
-      this.b = $$1;
+public class ftp {
+   private static final ahg a = new ahg("textures/misc/underwater.png");
+
+   public static void a(evg $$0, epz $$1) {
+      cfh $$2 = $$0.s;
+      if (!$$2.af) {
+         djg $$3 = a($$2);
+         if ($$3 != null) {
+            a($$0.an().a().a($$3), $$1);
+         }
+      }
+
+      if (!$$0.s.P_()) {
+         if ($$0.s.a(asl.a)) {
+            b($$0, $$1);
+         }
+
+         if ($$0.s.bN()) {
+            c($$0, $$1);
+         }
+      }
    }
 
-   @Override
-   public epx a(double $$0, double $$1, double $$2) {
-      return this.a.a($$0, $$1, $$2);
+   @Nullable
+   private static djg a(cfh $$0) {
+      hx.a $$1 = new hx.a();
+
+      for (int $$2 = 0; $$2 < 8; $$2++) {
+         double $$3 = $$0.dr() + (double)(((float)(($$2 >> 0) % 2) - 0.5F) * $$0.dg() * 0.8F);
+         double $$4 = $$0.dv() + (double)(((float)(($$2 >> 1) % 2) - 0.5F) * 0.1F);
+         double $$5 = $$0.dx() + (double)(((float)(($$2 >> 2) % 2) - 0.5F) * $$0.dg() * 0.8F);
+         $$1.b($$3, $$4, $$5);
+         djg $$6 = $$0.dM().a_($$1);
+         if ($$6.l() != dcu.a && $$6.p($$0.dM(), $$1)) {
+            return $$6;
+         }
+      }
+
+      return null;
    }
 
-   @Override
-   public epx a(int $$0, int $$1, int $$2, int $$3) {
-      return this.a.a($$0, $$1, $$2, $$3);
+   private static void a(gel $$0, epz $$1) {
+      RenderSystem.setShaderTexture(0, $$0.i());
+      RenderSystem.setShader(fsy::r);
+      epu $$2 = eqb.b().d();
+      float $$3 = 0.1F;
+      float $$4 = -1.0F;
+      float $$5 = 1.0F;
+      float $$6 = -1.0F;
+      float $$7 = 1.0F;
+      float $$8 = -0.5F;
+      float $$9 = $$0.c();
+      float $$10 = $$0.d();
+      float $$11 = $$0.g();
+      float $$12 = $$0.h();
+      Matrix4f $$13 = $$1.c().a();
+      $$2.a(eqe.b.h, epx.r);
+      $$2.a($$13, -1.0F, -1.0F, -0.5F).a(0.1F, 0.1F, 0.1F, 1.0F).a($$10, $$12).e();
+      $$2.a($$13, 1.0F, -1.0F, -0.5F).a(0.1F, 0.1F, 0.1F, 1.0F).a($$9, $$12).e();
+      $$2.a($$13, 1.0F, 1.0F, -0.5F).a(0.1F, 0.1F, 0.1F, 1.0F).a($$9, $$11).e();
+      $$2.a($$13, -1.0F, 1.0F, -0.5F).a(0.1F, 0.1F, 0.1F, 1.0F).a($$10, $$11).e();
+      epv.a($$2.d());
    }
 
-   @Override
-   public epx a(float $$0, float $$1) {
-      return this.a.a(this.b.a($$0), this.b.c($$1));
+   private static void b(evg $$0, epz $$1) {
+      RenderSystem.setShader(fsy::s);
+      RenderSystem.setShaderTexture(0, a);
+      epu $$2 = eqb.b().d();
+      hx $$3 = hx.a($$0.s.dr(), $$0.s.dv(), $$0.s.dx());
+      float $$4 = fte.a($$0.s.dM().E_(), $$0.s.dM().A($$3));
+      RenderSystem.enableBlend();
+      RenderSystem.setShaderColor($$4, $$4, $$4, 0.1F);
+      float $$5 = 4.0F;
+      float $$6 = -1.0F;
+      float $$7 = 1.0F;
+      float $$8 = -1.0F;
+      float $$9 = 1.0F;
+      float $$10 = -0.5F;
+      float $$11 = -$$0.s.dC() / 64.0F;
+      float $$12 = $$0.s.dE() / 64.0F;
+      Matrix4f $$13 = $$1.c().a();
+      $$2.a(eqe.b.h, epx.q);
+      $$2.a($$13, -1.0F, -1.0F, -0.5F).a(4.0F + $$11, 4.0F + $$12).e();
+      $$2.a($$13, 1.0F, -1.0F, -0.5F).a(0.0F + $$11, 4.0F + $$12).e();
+      $$2.a($$13, 1.0F, 1.0F, -0.5F).a(0.0F + $$11, 0.0F + $$12).e();
+      $$2.a($$13, -1.0F, 1.0F, -0.5F).a(4.0F + $$11, 0.0F + $$12).e();
+      epv.a($$2.d());
+      RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
+      RenderSystem.disableBlend();
    }
 
-   @Override
-   public epx a(int $$0, int $$1) {
-      return this.a.a($$0, $$1);
-   }
+   private static void c(evg $$0, epz $$1) {
+      epu $$2 = eqb.b().d();
+      RenderSystem.setShader(fsy::r);
+      RenderSystem.depthFunc(519);
+      RenderSystem.depthMask(false);
+      RenderSystem.enableBlend();
+      gel $$3 = ggq.b.c();
+      RenderSystem.setShaderTexture(0, $$3.i());
+      float $$4 = $$3.c();
+      float $$5 = $$3.d();
+      float $$6 = ($$4 + $$5) / 2.0F;
+      float $$7 = $$3.g();
+      float $$8 = $$3.h();
+      float $$9 = ($$7 + $$8) / 2.0F;
+      float $$10 = $$3.k();
+      float $$11 = aun.i($$10, $$4, $$6);
+      float $$12 = aun.i($$10, $$5, $$6);
+      float $$13 = aun.i($$10, $$7, $$9);
+      float $$14 = aun.i($$10, $$8, $$9);
+      float $$15 = 1.0F;
 
-   @Override
-   public epx b(int $$0, int $$1) {
-      return this.a.b($$0, $$1);
-   }
+      for (int $$16 = 0; $$16 < 2; $$16++) {
+         $$1.a();
+         float $$17 = -0.5F;
+         float $$18 = 0.5F;
+         float $$19 = -0.5F;
+         float $$20 = 0.5F;
+         float $$21 = -0.5F;
+         $$1.a((float)(-($$16 * 2 - 1)) * 0.24F, -0.3F, 0.0F);
+         $$1.a(a.d.rotationDegrees((float)($$16 * 2 - 1) * 10.0F));
+         Matrix4f $$22 = $$1.c().a();
+         $$2.a(eqe.b.h, epx.r);
+         $$2.a($$22, -0.5F, -0.5F, -0.5F).a(1.0F, 1.0F, 1.0F, 0.9F).a($$12, $$14).e();
+         $$2.a($$22, 0.5F, -0.5F, -0.5F).a(1.0F, 1.0F, 1.0F, 0.9F).a($$11, $$14).e();
+         $$2.a($$22, 0.5F, 0.5F, -0.5F).a(1.0F, 1.0F, 1.0F, 0.9F).a($$11, $$13).e();
+         $$2.a($$22, -0.5F, 0.5F, -0.5F).a(1.0F, 1.0F, 1.0F, 0.9F).a($$12, $$13).e();
+         epv.a($$2.d());
+         $$1.b();
+      }
 
-   @Override
-   public epx a(float $$0, float $$1, float $$2) {
-      return this.a.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public void e() {
-      this.a.e();
-   }
-
-   @Override
-   public void b(int $$0, int $$1, int $$2, int $$3) {
-      this.a.b($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   public void l() {
-      this.a.l();
-   }
-
-   @Override
-   public void a(
-      float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, int $$9, int $$10, float $$11, float $$12, float $$13
-   ) {
-      this.a.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, this.b.a($$7), this.b.c($$8), $$9, $$10, $$11, $$12, $$13);
+      RenderSystem.disableBlend();
+      RenderSystem.depthMask(true);
+      RenderSystem.depthFunc(515);
    }
 }

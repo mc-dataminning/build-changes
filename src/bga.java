@@ -1,44 +1,21 @@
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParseException;
-import com.google.gson.JsonParser;
-import com.google.gson.stream.JsonReader;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.JsonOps;
-import java.io.Closeable;
-import java.io.EOFException;
-import java.io.IOException;
-import java.io.Reader;
-import javax.annotation.Nullable;
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.templates.TypeTemplate;
+import java.util.Map;
+import java.util.function.Supplier;
 
-public interface bga<T> extends Closeable {
-   static <T> bga<T> a(final Codec<T> $$0, Reader $$1) {
-      final JsonReader $$2 = new JsonReader($$1);
-      $$2.setLenient(true);
-      return new bga<T>() {
-         @Nullable
-         @Override
-         public T a() throws IOException {
-            try {
-               if (!$$2.hasNext()) {
-                  return null;
-               } else {
-                  JsonElement $$0 = JsonParser.parseReader($$2);
-                  return ac.a($$0.parse(JsonOps.INSTANCE, $$0), IOException::new);
-               }
-            } catch (JsonParseException var2) {
-               throw new IOException(var2);
-            } catch (EOFException var3) {
-               return null;
-            }
-         }
-
-         @Override
-         public void close() throws IOException {
-            $$2.close();
-         }
-      };
+public class bga extends bdd {
+   public bga(int $$0, Schema $$1) {
+      super($$0, $$1);
    }
 
-   @Nullable
-   T a() throws IOException;
+   protected static void a(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, String $$2) {
+      $$0.register($$1, $$2, () -> DSL.optionalFields("Items", DSL.list(bbv.t.in($$0))));
+   }
+
+   public Map<String, Supplier<TypeTemplate>> registerBlockEntities(Schema $$0) {
+      Map<String, Supplier<TypeTemplate>> $$1 = super.registerBlockEntities($$0);
+      a($$0, $$1, "minecraft:shulker_box");
+      return $$1;
+   }
 }

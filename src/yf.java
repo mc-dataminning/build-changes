@@ -1,18 +1,16 @@
-public record yf(long b, hx c) implements xx {
-   public static final ahd a = new ahd("debug/neighbors_update");
+public record yf() implements ya {
+   public static final ahg a = new ahg("debug/game_test_clear");
 
-   public yf(ug $$0) {
-      this($$0.o(), $$0.e());
+   public yf(ui $$0) {
+      this();
    }
 
    @Override
-   public void a(ug $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
+   public void a(ui $$0) {
    }
 
    @Override
-   public ahd a() {
+   public ahg a() {
       return a;
    }
 }

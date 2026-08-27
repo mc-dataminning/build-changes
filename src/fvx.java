@@ -1,76 +1,41 @@
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import javax.annotation.Nullable;
+public class fvx extends fvy<dij> {
+   private static final ahg c = new ahg("textures/entity/end_gateway_beam.png");
 
-public class fvx {
-   private final Long2ObjectMap<fvx.a> a = new Long2ObjectOpenHashMap();
-
-   @Nullable
-   public fvw a(cti $$0, hx $$1, hx $$2, int $$3) {
-      int $$4 = iz.a($$1.u() - $$3);
-      int $$5 = iz.a($$1.w() - $$3);
-      int $$6 = iz.a($$2.u() + $$3);
-      int $$7 = iz.a($$2.w() + $$3);
-      fvx.a[][] $$8 = new fvx.a[$$6 - $$4 + 1][$$7 - $$5 + 1];
-
-      for (int $$9 = $$4; $$9 <= $$6; $$9++) {
-         for (int $$10 = $$5; $$10 <= $$7; $$10++) {
-            $$8[$$9 - $$4][$$10 - $$5] = (fvx.a)this.a.computeIfAbsent(csp.c($$9, $$10), $$1x -> new fvx.a($$0.d(csp.a($$1x), csp.b($$1x))));
-         }
-      }
-
-      if (a($$1, $$2, $$4, $$5, $$8)) {
-         return null;
-      } else {
-         fvv[][] $$11 = new fvv[$$6 - $$4 + 1][$$7 - $$5 + 1];
-
-         for (int $$12 = $$4; $$12 <= $$6; $$12++) {
-            for (int $$13 = $$5; $$13 <= $$7; $$13++) {
-               $$11[$$12 - $$4][$$13 - $$5] = $$8[$$12 - $$4][$$13 - $$5].b();
-            }
-         }
-
-         return new fvw($$0, $$4, $$5, $$11);
-      }
+   public fvx(fvg.a $$0) {
+      super($$0);
    }
 
-   private static boolean a(hx $$0, hx $$1, int $$2, int $$3, fvx.a[][] $$4) {
-      int $$5 = iz.a($$0.u());
-      int $$6 = iz.a($$0.w());
-      int $$7 = iz.a($$1.u());
-      int $$8 = iz.a($$1.w());
-
-      for (int $$9 = $$5; $$9 <= $$7; $$9++) {
-         for (int $$10 = $$6; $$10 <= $$8; $$10++) {
-            dlh $$11 = $$4[$$9 - $$2][$$10 - $$3].a();
-            if (!$$11.a($$0.v(), $$1.v())) {
-               return false;
-            }
-         }
+   public void a(dij $$0, float $$1, epz $$2, ftf $$3, int $$4, int $$5) {
+      if ($$0.c() || $$0.d()) {
+         float $$6 = $$0.c() ? $$0.a($$1) : $$0.b($$1);
+         double $$7 = $$0.c() ? (double)$$0.i().al() : 50.0;
+         $$6 = aun.a($$6 * (float) Math.PI);
+         int $$8 = aun.a((double)$$6 * $$7);
+         float[] $$9 = $$0.c() ? cll.c.d() : cll.k.d();
+         long $$10 = $$0.i().X();
+         fvb.a($$2, $$3, c, $$1, $$6, $$10, -$$8, $$8 * 2, $$9, 0.15F, 0.175F);
       }
 
-      return true;
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   static final class a {
-      private final dlh a;
-      @Nullable
-      private fvv b;
+   @Override
+   protected float b() {
+      return 1.0F;
+   }
 
-      a(dlh $$0) {
-         this.a = $$0;
-      }
+   @Override
+   protected float c() {
+      return 0.0F;
+   }
 
-      public dlh a() {
-         return this.a;
-      }
+   @Override
+   protected ftn d() {
+      return ftn.v();
+   }
 
-      public fvv b() {
-         if (this.b == null) {
-            this.b = new fvv(this.a);
-         }
-
-         return this.b;
-      }
+   @Override
+   public int aQ_() {
+      return 256;
    }
 }

@@ -1,40 +1,44 @@
-public class cly extends cmm {
-   public cly(cmm.a $$0) {
-      super($$0);
+import javax.annotation.Nullable;
+
+public interface cly extends cos {
+   blz g();
+
+   default arq as_() {
+      return arr.af;
    }
 
-   @Override
-   public bjv a(cpc $$0) {
-      cfb $$1 = $$0.o();
-      cti $$2 = $$0.q();
-      hx $$3 = $$0.a();
-      dja $$4 = $$2.a_($$3);
-      if (!cwx.h($$4) && !cwy.g($$4) && !cwz.g($$4)) {
-         hx $$5 = $$3.a($$0.k());
-         if (cvw.a($$2, $$5, $$0.g())) {
-            $$2.a($$1, $$5, arm.iv, arn.e, 1.0F, $$2.F_().i() * 0.4F + 0.8F);
-            dja $$6 = cvw.a($$2, $$5);
-            $$2.a($$5, $$6, 11);
-            $$2.a($$1, dnk.i, $$3);
-            cmr $$7 = $$0.n();
-            if ($$1 instanceof ana) {
-               am.z.a((ana)$$1, $$5, $$7);
-               $$7.a(1, $$1, $$1x -> $$1x.d($$0.p()));
-            }
-
-            return bjv.a($$2.y_());
-         } else {
-            return bjv.e;
+   default bkb<cmx> a(cms $$0, cto $$1, cfh $$2, bjz $$3) {
+      cmx $$4 = $$2.b($$3);
+      blz $$5 = bmm.h($$4);
+      cmx $$6 = $$2.c($$5);
+      if ((!crk.d($$6) || $$2.f()) && !cmx.a($$4, $$6)) {
+         if (!$$1.y_()) {
+            $$2.b(asb.c.b($$0));
          }
+
+         cmx $$7 = $$6.b() ? $$4 : $$6.c();
+         cmx $$8 = $$4.c();
+         $$2.a($$5, $$8);
+         return bkb.a($$7, $$1.y_());
       } else {
-         $$2.a($$1, $$3, arm.iv, arn.e, 1.0F, $$2.F_().i() * 0.4F + 0.8F);
-         $$2.a($$3, $$4.a(djq.r, Boolean.valueOf(true)), 11);
-         $$2.a($$1, dnk.c, $$3);
-         if ($$1 != null) {
-            $$0.n().a(1, $$1, $$1x -> $$1x.d($$0.p()));
+         return bkb.d($$4);
+      }
+   }
+
+   @Nullable
+   static cly c_(cmx $$0) {
+      cms $$3 = $$0.d();
+      if ($$3 instanceof cly) {
+         return (cly)$$3;
+      } else {
+         if ($$0.d() instanceof ckq $$2) {
+            cwp var6 = $$2.e();
+            if (var6 instanceof cly) {
+               return (cly)var6;
+            }
          }
 
-         return bjv.a($$2.y_());
+         return null;
       }
    }
 }

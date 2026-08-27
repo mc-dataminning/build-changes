@@ -2,21 +2,22 @@ import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
 
-public class sq extends tb {
-   private static final int b = 12;
-   public static final tk<sq> a = new tk.a<sq>() {
-      public sq a(DataInput $$0, su $$1) throws IOException {
+public class sq extends td {
+   private static final int c = 12;
+   public static final sq a = new sq(0.0F);
+   public static final tm<sq> b = new tm.a<sq>() {
+      public sq a(DataInput $$0, sw $$1) throws IOException {
          return sq.a(d($$0, $$1));
       }
 
       @Override
-      public tf.b a(DataInput $$0, tf $$1, su $$2) throws IOException {
+      public th.b a(DataInput $$0, th $$1, sw $$2) throws IOException {
          return $$1.a(d($$0, $$2));
       }
 
-      private static int d(DataInput $$0, su $$1) throws IOException {
+      private static float d(DataInput $$0, sw $$1) throws IOException {
          $$1.b(12L);
-         return $$0.readInt();
+         return $$0.readFloat();
       }
 
       @Override
@@ -26,12 +27,12 @@ public class sq extends tb {
 
       @Override
       public String a() {
-         return "INT";
+         return "FLOAT";
       }
 
       @Override
       public String b() {
-         return "TAG_Int";
+         return "TAG_Float";
       }
 
       @Override
@@ -39,19 +40,19 @@ public class sq extends tb {
          return true;
       }
    };
-   private final int c;
+   private final float w;
 
-   sq(int $$0) {
-      this.c = $$0;
+   private sq(float $$0) {
+      this.w = $$0;
    }
 
-   public static sq a(int $$0) {
-      return $$0 >= -128 && $$0 <= 1024 ? sq.a.a[$$0 - -128] : new sq($$0);
+   public static sq a(float $$0) {
+      return $$0 == 0.0F ? a : new sq($$0);
    }
 
    @Override
    public void a(DataOutput $$0) throws IOException {
-      $$0.writeInt(this.c);
+      $$0.writeFloat(this.w);
    }
 
    @Override
@@ -61,12 +62,12 @@ public class sq extends tb {
 
    @Override
    public byte b() {
-      return 3;
+      return 5;
    }
 
    @Override
-   public tk<sq> c() {
-      return a;
+   public tm<sq> c() {
+      return b;
    }
 
    public sq e() {
@@ -75,71 +76,56 @@ public class sq extends tb {
 
    @Override
    public boolean equals(Object $$0) {
-      return this == $$0 ? true : $$0 instanceof sq && this.c == ((sq)$$0).c;
+      return this == $$0 ? true : $$0 instanceof sq && this.w == ((sq)$$0).w;
    }
 
    @Override
    public int hashCode() {
-      return this.c;
+      return Float.floatToIntBits(this.w);
    }
 
    @Override
-   public void a(tm $$0) {
+   public void a(to $$0) {
       $$0.a(this);
    }
 
    @Override
    public long f() {
-      return (long)this.c;
+      return (long)this.w;
    }
 
    @Override
    public int g() {
-      return this.c;
+      return aun.d(this.w);
    }
 
    @Override
    public short h() {
-      return (short)(this.c & 65535);
+      return (short)(aun.d(this.w) & 65535);
    }
 
    @Override
    public byte i() {
-      return (byte)(this.c & 0xFF);
+      return (byte)(aun.d(this.w) & 0xFF);
    }
 
    @Override
    public double j() {
-      return (double)this.c;
+      return (double)this.w;
    }
 
    @Override
    public float k() {
-      return (float)this.c;
+      return this.w;
    }
 
    @Override
    public Number l() {
-      return this.c;
+      return this.w;
    }
 
    @Override
-   public tf.b a(tf $$0) {
-      return $$0.a(this.c);
-   }
-
-   static class a {
-      private static final int b = 1024;
-      private static final int c = -128;
-      static final sq[] a = new sq[1153];
-
-      private a() {
-      }
-
-      static {
-         for (int $$0 = 0; $$0 < a.length; $$0++) {
-            a[$$0] = new sq(-128 + $$0);
-         }
-      }
+   public th.b a(th $$0) {
+      return $$0.a(this.w);
    }
 }

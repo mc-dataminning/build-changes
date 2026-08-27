@@ -1,148 +1,267 @@
-import java.util.Optional;
-import java.util.function.Predicate;
+import java.util.OptionalInt;
 import javax.annotation.Nullable;
 
-public final class cfu {
-   private static final float a = 0.3F;
-
-   public static elk a(blp $$0, Predicate<blp> $$1) {
-      elm $$2 = $$0.dp();
-      cti $$3 = $$0.dM();
-      elm $$4 = $$0.dk();
-      return a($$4, $$0, $$1, $$2, $$3, 0.3F, csr.a.a);
-   }
-
-   public static elk a(blp $$0, Predicate<blp> $$1, csr.a $$2) {
-      elm $$3 = $$0.dp();
-      cti $$4 = $$0.dM();
-      elm $$5 = $$0.dk();
-      return a($$5, $$0, $$1, $$3, $$4, 0.3F, $$2);
-   }
-
-   public static elk a(blp $$0, Predicate<blp> $$1, double $$2) {
-      elm $$3 = $$0.f(0.0F).a($$2);
-      cti $$4 = $$0.dM();
-      elm $$5 = $$0.br();
-      return a($$5, $$0, $$1, $$3, $$4, 0.0F, csr.a.a);
-   }
-
-   private static elk a(elm $$0, blp $$1, Predicate<blp> $$2, elm $$3, cti $$4, float $$5, csr.a $$6) {
-      elm $$7 = $$0.e($$3);
-      elk $$8 = $$4.a(new csr($$0, $$7, $$6, csr.b.a, $$1));
-      if ($$8.c() != elk.a.a) {
-         $$7 = $$8.e();
-      }
-
-      elk $$9 = a($$4, $$1, $$0, $$7, $$1.cH().b($$3).g(1.0), $$2, $$5);
-      if ($$9 != null) {
-         $$8 = $$9;
-      }
-
-      return $$8;
-   }
-
+public class cfu extends cfz implements cfw {
+   private static final agm<cmx> b = agp.a(cfu.class, ago.h);
+   private static final agm<OptionalInt> c = agp.a(cfu.class, ago.u);
+   private static final agm<Boolean> d = agp.a(cfu.class, ago.k);
+   private int e;
+   private int f;
    @Nullable
-   public static elj a(blp $$0, elm $$1, elm $$2, elh $$3, Predicate<blp> $$4, double $$5) {
-      cti $$6 = $$0.dM();
-      double $$7 = $$5;
-      blp $$8 = null;
-      elm $$9 = null;
+   private bmk g;
 
-      for (blp $$10 : $$6.a($$0, $$3, $$4)) {
-         elh $$11 = $$10.cH().g((double)$$10.bE());
-         Optional<elm> $$12 = $$11.b($$1, $$2);
-         if ($$11.d($$1)) {
-            if ($$7 >= 0.0) {
-               $$8 = $$10;
-               $$9 = $$12.orElse($$1);
-               $$7 = 0.0;
+   public cfu(bly<? extends cfu> $$0, cto $$1) {
+      super($$0, $$1);
+   }
+
+   public cfu(cto $$0, double $$1, double $$2, double $$3, cmx $$4) {
+      super(bly.N, $$0);
+      this.e = 0;
+      this.a_($$1, $$2, $$3);
+      int $$5 = 1;
+      if (!$$4.b() && $$4.u()) {
+         this.an.b(b, $$4.p());
+         $$5 += $$4.a("Fireworks").f("Flight");
+      }
+
+      this.o(this.ag.a(0.0, 0.002297), 0.05, this.ag.a(0.0, 0.002297));
+      this.f = 10 * $$5 + this.ag.a(6) + this.ag.a(7);
+   }
+
+   public cfu(cto $$0, @Nullable blu $$1, double $$2, double $$3, double $$4, cmx $$5) {
+      this($$0, $$2, $$3, $$4, $$5);
+      this.b($$1);
+   }
+
+   public cfu(cto $$0, cmx $$1, bmk $$2) {
+      this($$0, $$2, $$2.dr(), $$2.dt(), $$2.dx(), $$1);
+      this.an.b(c, OptionalInt.of($$2.aj()));
+      this.g = $$2;
+   }
+
+   public cfu(cto $$0, cmx $$1, double $$2, double $$3, double $$4, boolean $$5) {
+      this($$0, $$2, $$3, $$4, $$1);
+      this.an.b(d, $$5);
+   }
+
+   public cfu(cto $$0, cmx $$1, blu $$2, double $$3, double $$4, double $$5, boolean $$6) {
+      this($$0, $$1, $$3, $$4, $$5, $$6);
+      this.b($$2);
+   }
+
+   @Override
+   protected void c_() {
+      this.an.a(b, cmx.f);
+      this.an.a(c, OptionalInt.empty());
+      this.an.a(d, false);
+   }
+
+   @Override
+   public boolean a(double $$0) {
+      return $$0 < 4096.0 && !this.z();
+   }
+
+   @Override
+   public boolean k(double $$0, double $$1, double $$2) {
+      return super.k($$0, $$1, $$2) && !this.z();
+   }
+
+   @Override
+   public void l() {
+      super.l();
+      if (this.z()) {
+         if (this.g == null) {
+            this.an.b(c).ifPresent($$0x -> {
+               blu $$1x = this.dM().a($$0x);
+               if ($$1x instanceof bmk) {
+                  this.g = (bmk)$$1x;
+               }
+            });
+         }
+
+         if (this.g != null) {
+            els $$4;
+            if (this.g.fw()) {
+               els $$0 = this.g.bF();
+               double $$1 = 1.5;
+               double $$2 = 0.1;
+               els $$3 = this.g.dp();
+               this.g.g($$3.b($$0.c * 0.1 + ($$0.c * 1.5 - $$3.c) * 0.5, $$0.d * 0.1 + ($$0.d * 1.5 - $$3.d) * 0.5, $$0.e * 0.1 + ($$0.e * 1.5 - $$3.e) * 0.5));
+               $$4 = this.g.a(cna.un);
+            } else {
+               $$4 = els.b;
             }
-         } else if ($$12.isPresent()) {
-            elm $$13 = $$12.get();
-            double $$14 = $$1.g($$13);
-            if ($$14 < $$7 || $$7 == 0.0) {
-               if ($$10.cW() == $$0.cW()) {
-                  if ($$7 == 0.0) {
-                     $$8 = $$10;
-                     $$9 = $$13;
+
+            this.a_(this.g.dr() + $$4.c, this.g.dt() + $$4.d, this.g.dx() + $$4.e);
+            this.g(this.g.dp());
+         }
+      } else {
+         if (!this.s()) {
+            double $$6 = this.P ? 1.0 : 1.15;
+            this.g(this.dp().d($$6, 1.0, $$6).b(0.0, 0.04, 0.0));
+         }
+
+         els $$7 = this.dp();
+         this.a(bmq.a, $$7);
+         this.g($$7);
+      }
+
+      elq $$8 = cga.a(this, this::a);
+      if (!this.af) {
+         this.a($$8);
+         this.au = true;
+      }
+
+      this.K();
+      if (this.e == 0 && !this.aU()) {
+         this.dM().a(null, this.dr(), this.dt(), this.dx(), arr.il, ars.i, 3.0F, 1.0F);
+      }
+
+      this.e++;
+      if (this.dM().B && this.e % 2 < 2) {
+         this.dM().a(jx.C, this.dr(), this.dt(), this.dx(), this.ag.k() * 0.05, -this.dp().d * 0.5, this.ag.k() * 0.05);
+      }
+
+      if (!this.dM().B && this.e > this.f) {
+         this.u();
+      }
+   }
+
+   private void u() {
+      this.dM().a(this, (byte)17);
+      this.a(dnq.w, this.w());
+      this.y();
+      this.am();
+   }
+
+   @Override
+   protected void a(elp $$0) {
+      super.a($$0);
+      if (!this.dM().B) {
+         this.u();
+      }
+   }
+
+   @Override
+   protected void a(elo $$0) {
+      hx $$1 = new hx($$0.a());
+      this.dM().a_($$1).a(this.dM(), $$1, this);
+      if (!this.dM().y_() && this.x()) {
+         this.u();
+      }
+
+      super.a($$0);
+   }
+
+   private boolean x() {
+      cmx $$0 = this.an.b(b);
+      sn $$1 = $$0.b() ? null : $$0.b("Fireworks");
+      st $$2 = $$1 != null ? $$1.c("Explosions", 10) : null;
+      return $$2 != null && !$$2.isEmpty();
+   }
+
+   private void y() {
+      float $$0 = 0.0F;
+      cmx $$1 = this.an.b(b);
+      sn $$2 = $$1.b() ? null : $$1.b("Fireworks");
+      st $$3 = $$2 != null ? $$2.c("Explosions", 10) : null;
+      if ($$3 != null && !$$3.isEmpty()) {
+         $$0 = 5.0F + (float)($$3.size() * 2);
+      }
+
+      if ($$0 > 0.0F) {
+         if (this.g != null) {
+            this.g.a(this.dN().a(this, this.w()), 5.0F + (float)($$3.size() * 2));
+         }
+
+         double $$4 = 5.0;
+         els $$5 = this.dk();
+
+         for (bmk $$7 : this.dM().a(bmk.class, this.cH().g(5.0))) {
+            if ($$7 != this.g && !(this.f($$7) > 25.0)) {
+               boolean $$8 = false;
+
+               for (int $$9 = 0; $$9 < 2; $$9++) {
+                  els $$10 = new els($$7.dr(), $$7.e(0.5 * (double)$$9), $$7.dx());
+                  elq $$11 = this.dM().a(new csx($$5, $$10, csx.a.a, csx.b.a, this));
+                  if ($$11.c() == elq.a.a) {
+                     $$8 = true;
+                     break;
                   }
-               } else {
-                  $$8 = $$10;
-                  $$9 = $$13;
-                  $$7 = $$14;
+               }
+
+               if ($$8) {
+                  float $$12 = $$0 * (float)Math.sqrt((5.0 - (double)this.e($$7)) / 5.0);
+                  $$7.a(this.dN().a(this, this.w()), $$12);
                }
             }
          }
       }
-
-      return $$8 == null ? null : new elj($$8, $$9);
    }
 
-   @Nullable
-   public static elj a(cti $$0, blp $$1, elm $$2, elm $$3, elh $$4, Predicate<blp> $$5) {
-      return a($$0, $$1, $$2, $$3, $$4, $$5, 0.3F);
+   private boolean z() {
+      return this.an.b(c).isPresent();
    }
 
-   @Nullable
-   public static elj a(cti $$0, blp $$1, elm $$2, elm $$3, elh $$4, Predicate<blp> $$5, float $$6) {
-      double $$7 = Double.MAX_VALUE;
-      blp $$8 = null;
+   @Override
+   public boolean s() {
+      return this.an.b(d);
+   }
 
-      for (blp $$9 : $$0.a($$1, $$4, $$5)) {
-         elh $$10 = $$9.cH().g((double)$$6);
-         Optional<elm> $$11 = $$10.b($$2, $$3);
-         if ($$11.isPresent()) {
-            double $$12 = $$2.g($$11.get());
-            if ($$12 < $$7) {
-               $$8 = $$9;
-               $$7 = $$12;
+   @Override
+   public void b(byte $$0) {
+      if ($$0 == 17 && this.dM().B) {
+         if (!this.x()) {
+            for (int $$1 = 0; $$1 < this.ag.a(3) + 2; $$1++) {
+               this.dM().a(jx.Y, this.dr(), this.dt(), this.dx(), this.ag.k() * 0.05, 0.005, this.ag.k() * 0.05);
             }
+         } else {
+            cmx $$2 = this.an.b(b);
+            sn $$3 = $$2.b() ? null : $$2.b("Fireworks");
+            els $$4 = this.dp();
+            this.dM().a(this.dr(), this.dt(), this.dx(), $$4.c, $$4.d, $$4.e, $$3);
          }
       }
 
-      return $$8 == null ? null : new elj($$8);
+      super.b($$0);
    }
 
-   public static void a(blp $$0, float $$1) {
-      elm $$2 = $$0.dp();
-      if ($$2.g() != 0.0) {
-         double $$3 = $$2.h();
-         $$0.r((float)(aui.d($$2.e, $$2.c) * 180.0F / (float)Math.PI) + 90.0F);
-         $$0.s((float)(aui.d($$3, $$2.d) * 180.0F / (float)Math.PI) - 90.0F);
+   @Override
+   public void b(sn $$0) {
+      super.b($$0);
+      $$0.a("Life", this.e);
+      $$0.a("LifeTime", this.f);
+      cmx $$1 = this.an.b(b);
+      if (!$$1.b()) {
+         $$0.a("FireworksItem", $$1.b(new sn()));
+      }
 
-         while ($$0.dE() - $$0.O < -180.0F) {
-            $$0.O -= 360.0F;
-         }
+      $$0.a("ShotAtAngle", this.an.b(d));
+   }
 
-         while ($$0.dE() - $$0.O >= 180.0F) {
-            $$0.O += 360.0F;
-         }
+   @Override
+   public void a(sn $$0) {
+      super.a($$0);
+      this.e = $$0.h("Life");
+      this.f = $$0.h("LifeTime");
+      cmx $$1 = cmx.a($$0.p("FireworksItem"));
+      if (!$$1.b()) {
+         this.an.b(b, $$1);
+      }
 
-         while ($$0.dC() - $$0.N < -180.0F) {
-            $$0.N -= 360.0F;
-         }
-
-         while ($$0.dC() - $$0.N >= 180.0F) {
-            $$0.N += 360.0F;
-         }
-
-         $$0.s(aui.i($$1, $$0.O, $$0.dE()));
-         $$0.r(aui.i($$1, $$0.N, $$0.dC()));
+      if ($$0.e("ShotAtAngle")) {
+         this.an.b(d, $$0.q("ShotAtAngle"));
       }
    }
 
-   public static bju a(bmf $$0, cmm $$1) {
-      return $$0.eT().a($$1) ? bju.a : bju.b;
+   @Override
+   public cmx q() {
+      cmx $$0 = this.an.b(b);
+      return $$0.b() ? new cmx(cna.un) : $$0;
    }
 
-   public static cfh a(bmf $$0, cmr $$1, float $$2) {
-      ckf $$3 = (ckf)($$1.d() instanceof ckf ? $$1.d() : cmu.os);
-      cfh $$4 = $$3.a($$0.dM(), $$1, $$0);
-      $$4.a($$0, $$2);
-      if ($$1.a(cmu.vj) && $$4 instanceof cfj) {
-         ((cfj)$$4).a($$1);
-      }
-
-      return $$4;
+   @Override
+   public boolean cq() {
+      return false;
    }
 }

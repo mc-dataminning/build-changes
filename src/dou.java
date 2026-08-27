@@ -1,95 +1,117 @@
-public class dou implements csv {
-   private int a;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-   @Override
-   public int a(amz $$0, boolean $$1, boolean $$2) {
-      if (!$$1) {
-         return 0;
-      } else if (!$$0.Z().b(cte.K)) {
-         return 0;
-      } else {
-         aup $$3 = $$0.z;
-         this.a--;
-         if (this.a > 0) {
-            return 0;
-         } else {
-            this.a = this.a + 12000 + $$3.a(1200);
-            long $$4 = $$0.Y() / 24000L;
-            if ($$4 < 5L || !$$0.P()) {
-               return 0;
-            } else if ($$3.a(5) != 0) {
-               return 0;
-            } else {
-               int $$5 = $$0.x().size();
-               if ($$5 < 1) {
-                  return 0;
-               } else {
-                  cfb $$6 = $$0.x().get($$3.a($$5));
-                  if ($$6.P_()) {
-                     return 0;
-                  } else if ($$0.a($$6.dm(), 2)) {
-                     return 0;
-                  } else {
-                     int $$7 = (24 + $$3.a(24)) * ($$3.h() ? -1 : 1);
-                     int $$8 = (24 + $$3.a(24)) * ($$3.h() ? -1 : 1);
-                     hx.a $$9 = $$6.dm().j().e($$7, 0, $$8);
-                     int $$10 = 10;
-                     if (!$$0.b($$9.u() - 10, $$9.w() - 10, $$9.u() + 10, $$9.w() + 10)) {
-                        return 0;
-                     } else {
-                        ih<cuh> $$11 = $$0.t($$9);
-                        if ($$11.a(asa.ag)) {
-                           return 0;
-                        } else {
-                           int $$12 = 0;
-                           int $$13 = (int)Math.ceil((double)$$0.d_($$9).b()) + 1;
+public record dou(dox j, djg k, djg l, dov m, dpg.o n, List<cuw.d> o, int p, boolean q, boolean r, boolean s, boolean t) {
+   public static final Codec<dou> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dox.a.fieldOf("noise").forGetter(dou::f),
+               djg.b.fieldOf("default_block").forGetter(dou::g),
+               djg.b.fieldOf("default_fluid").forGetter(dou::h),
+               dov.a.fieldOf("noise_router").forGetter(dou::i),
+               dpg.o.b.fieldOf("surface_rule").forGetter(dou::j),
+               cuw.d.a.listOf().fieldOf("spawn_target").forGetter(dou::k),
+               Codec.INT.fieldOf("sea_level").forGetter(dou::l),
+               Codec.BOOL.fieldOf("disable_mob_generation").forGetter(dou::a),
+               Codec.BOOL.fieldOf("aquifers_enabled").forGetter(dou::b),
+               Codec.BOOL.fieldOf("ore_veins_enabled").forGetter(dou::c),
+               Codec.BOOL.fieldOf("legacy_random_source").forGetter(dou::n)
+            )
+            .apply($$0, dou::new)
+   );
+   public static final Codec<ih<dou>> b = ahc.a(ke.aA, a);
+   public static final ahf<dou> c = ahf.a(ke.aA, new ahg("overworld"));
+   public static final ahf<dou> d = ahf.a(ke.aA, new ahg("large_biomes"));
+   public static final ahf<dou> e = ahf.a(ke.aA, new ahg("amplified"));
+   public static final ahf<dou> f = ahf.a(ke.aA, new ahg("nether"));
+   public static final ahf<dou> g = ahf.a(ke.aA, new ahg("end"));
+   public static final ahf<dou> h = ahf.a(ke.aA, new ahg("caves"));
+   public static final ahf<dou> i = ahf.a(ke.aA, new ahg("floating_islands"));
 
-                           for (int $$14 = 0; $$14 < $$13; $$14++) {
-                              $$12++;
-                              $$9.q($$0.a(doj.a.f, $$9).v());
-                              if ($$14 == 0) {
-                                 if (!this.a($$0, $$9, $$3, true)) {
-                                    break;
-                                 }
-                              } else {
-                                 this.a($$0, $$9, $$3, false);
-                              }
-
-                              $$9.p($$9.u() + $$3.a(5) - $$3.a(5));
-                              $$9.r($$9.w() + $$3.a(5) - $$3.a(5));
-                           }
-
-                           return $$12;
-                        }
-                     }
-                  }
-               }
-            }
-         }
-      }
+   @Deprecated
+   public boolean a() {
+      return this.q;
    }
 
-   private boolean a(amz $$0, hx $$1, aup $$2, boolean $$3) {
-      dja $$4 = $$0.a_($$1);
-      if (!ctt.a($$0, $$1, $$4, $$4.u(), blt.az)) {
-         return false;
-      } else if (!cck.b(blt.az, $$0, bmj.p, $$1, $$2)) {
-         return false;
-      } else {
-         cck $$5 = blt.az.a((cti)$$0);
-         if ($$5 != null) {
-            if ($$3) {
-               $$5.w(true);
-               $$5.gm();
-            }
+   public boolean b() {
+      return this.r;
+   }
 
-            $$5.a_((double)$$1.u(), (double)$$1.v(), (double)$$1.w());
-            $$5.a($$0, $$0.d_($$1), bmj.p, null, null);
-            $$0.a_($$5);
-            return true;
-         } else {
-            return false;
-         }
-      }
+   public boolean c() {
+      return this.s;
+   }
+
+   public dpo.a d() {
+      return this.t ? dpo.a.a : dpo.a.b;
+   }
+
+   public static void a(pe<dou> $$0) {
+      $$0.a(c, a($$0, false, false));
+      $$0.a(d, a($$0, false, true));
+      $$0.a(e, a($$0, true, false));
+      $$0.a(f, c($$0));
+      $$0.a(g, b($$0));
+      $$0.a(h, d($$0));
+      $$0.a(i, e($$0));
+   }
+
+   private static dou b(pe<?> $$0) {
+      return new dou(dox.d, cwr.fz.o(), cwr.a.o(), dow.a($$0.a(ke.ax)), pr.c(), List.of(), 0, true, false, false, true);
+   }
+
+   private static dou c(pe<?> $$0) {
+      return new dou(dox.c, cwr.dV.o(), cwr.H.o(), dow.a($$0.a(ke.ax), $$0.a(ke.aB)), pr.b(), List.of(), 32, false, false, false, true);
+   }
+
+   private static dou a(pe<?> $$0, boolean $$1, boolean $$2) {
+      return new dou(dox.b, cwr.b.o(), cwr.G.o(), dow.a($$0.a(ke.ax), $$0.a(ke.aB), $$2, $$1), pr.a(), new cvd().a(), 63, false, true, true, false);
+   }
+
+   private static dou d(pe<?> $$0) {
+      return new dou(dox.e, cwr.b.o(), cwr.G.o(), dow.b($$0.a(ke.ax), $$0.a(ke.aB)), pr.a(false, true, true), List.of(), 32, false, false, false, true);
+   }
+
+   private static dou e(pe<?> $$0) {
+      return new dou(dox.f, cwr.b.o(), cwr.G.o(), dow.c($$0.a(ke.ax), $$0.a(ke.aB)), pr.a(false, false, false), List.of(), -64, false, false, false, true);
+   }
+
+   public static dou e() {
+      return new dou(dox.b, cwr.b.o(), cwr.a.o(), dow.a(), pr.d(), List.of(), 63, true, false, false, false);
+   }
+
+   public dox f() {
+      return this.j;
+   }
+
+   public djg g() {
+      return this.k;
+   }
+
+   public djg h() {
+      return this.l;
+   }
+
+   public dov i() {
+      return this.m;
+   }
+
+   public dpg.o j() {
+      return this.n;
+   }
+
+   public List<cuw.d> k() {
+      return this.o;
+   }
+
+   public int l() {
+      return this.p;
+   }
+
+   public boolean m() {
+      return this.r;
+   }
+
+   public boolean n() {
+      return this.t;
    }
 }

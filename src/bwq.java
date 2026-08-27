@@ -1,36 +1,37 @@
-import com.google.common.collect.ImmutableMap;
+import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
+import it.unimi.dsi.fastutil.ints.IntSet;
 
-public class bwq extends bwg {
-   private static final ImmutableMap<blt<?>, Float> a = ImmutableMap.builder()
-      .put(blt.z, 8.0F)
-      .put(blt.H, 12.0F)
-      .put(blt.aa, 8.0F)
-      .put(blt.ab, 12.0F)
-      .put(blt.az, 15.0F)
-      .put(blt.aE, 12.0F)
-      .put(blt.bf, 8.0F)
-      .put(blt.bh, 10.0F)
-      .put(blt.bq, 10.0F)
-      .put(blt.br, 8.0F)
-      .put(blt.bt, 8.0F)
-      .build();
+public class bwq {
+   private final bmm a;
+   private final IntSet b = new IntOpenHashSet();
+   private final IntSet c = new IntOpenHashSet();
 
-   @Override
-   protected boolean a(bmf $$0, bmf $$1) {
-      return this.b($$1) && this.e($$0, $$1);
+   public bwq(bmm $$0) {
+      this.a = $$0;
    }
 
-   private boolean e(bmf $$0, bmf $$1) {
-      float $$2 = (Float)a.get($$1.ai());
-      return $$1.f((blp)$$0) <= (double)($$2 * $$2);
+   public void a() {
+      this.b.clear();
+      this.c.clear();
    }
 
-   @Override
-   protected bvh<bmf> b() {
-      return bvh.A;
-   }
+   public boolean a(blu $$0) {
+      int $$1 = $$0.aj();
+      if (this.b.contains($$1)) {
+         return true;
+      } else if (this.c.contains($$1)) {
+         return false;
+      } else {
+         this.a.dM().af().a("hasLineOfSight");
+         boolean $$2 = this.a.E($$0);
+         this.a.dM().af().c();
+         if ($$2) {
+            this.b.add($$1);
+         } else {
+            this.c.add($$1);
+         }
 
-   private boolean b(bmf $$0) {
-      return a.containsKey($$0.ai());
+         return $$2;
+      }
    }
 }

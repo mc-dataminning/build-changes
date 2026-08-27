@@ -1,37 +1,47 @@
-import java.util.Locale;
+import javax.annotation.Nullable;
 
 public enum fol {
-   a("generic"),
-   b("hate_speech"),
-   c("harassment_or_bullying"),
-   d("self_harm_or_suicide"),
-   e("imminent_harm"),
+   a("generic_violation"),
+   b("false_reporting"),
+   c("hate_speech"),
+   d("hate_terrorism_notorious_figure"),
+   e("harassment_or_bullying"),
    f("defamation_impersonation_false_information"),
-   g("alcohol_tobacco_drugs"),
-   h("child_sexual_exploitation_or_abuse"),
-   i("terrorism_or_violent_extremism"),
-   j("non_consensual_intimate_imagery");
+   g("drugs"),
+   h("fraud"),
+   i("spam_or_advertising"),
+   j("nudity_or_pornography"),
+   k("sexually_inappropriate"),
+   l("extreme_violence_or_gore"),
+   m("imminent_harm_to_person_or_property");
 
-   private final String k;
-   private final vd l;
-   private final vd m;
+   private final vf n;
 
    private fol(String $$0) {
-      this.k = $$0.toUpperCase(Locale.ROOT);
-      String $$1 = "gui.abuseReport.reason." + $$0;
-      this.l = vd.c($$1);
-      this.m = vd.c($$1 + ".description");
+      this.n = vf.c("gui.banned.reason." + $$0);
    }
 
-   public String a() {
-      return this.k;
+   public vf a() {
+      return this.n;
    }
 
-   public vd b() {
-      return this.l;
-   }
-
-   public vd c() {
-      return this.m;
+   @Nullable
+   public static fol a(int $$0) {
+      return switch ($$0) {
+         case 2 -> b;
+         default -> null;
+         case 5 -> c;
+         case 16, 25 -> d;
+         case 17, 19, 23, 31 -> a;
+         case 21 -> e;
+         case 27 -> f;
+         case 28 -> g;
+         case 29 -> h;
+         case 30 -> i;
+         case 32 -> j;
+         case 33 -> k;
+         case 34 -> l;
+         case 53 -> m;
+      };
    }
 }

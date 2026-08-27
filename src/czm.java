@@ -1,90 +1,109 @@
-import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
+import javax.annotation.Nullable;
 
-public class czm extends cwj {
-   public static final MapCodec<czm> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(kd.e.q().fieldOf("potted").forGetter($$0x -> $$0x.e), u()).apply($$0, czm::new)
-   );
-   private static final Map<cwj, cwj> d = Maps.newHashMap();
-   public static final float b = 3.0F;
-   protected static final emf c = cwj.a(5.0, 0.0, 5.0, 11.0, 6.0, 11.0);
-   private final cwj e;
+public class czm extends cwp {
+   public static final MapCodec<czm> a = b(czm::new);
+   public static final dkg b = djw.aQ;
+   protected static final eml c = cwp.a(0.0, 0.0, 0.0, 16.0, 15.0, 16.0);
+   public static final int d = 7;
 
    @Override
    public MapCodec<czm> a() {
       return a;
    }
 
-   public czm(cwj $$0, diz.d $$1) {
-      super($$1);
-      this.e = $$0;
-      d.put($$0, this);
+   protected czm(djf.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(b, Integer.valueOf(0)));
    }
 
    @Override
-   public emf a(dja $$0, cso $$1, hx $$2, elr $$3) {
+   public djg a(djg $$0, ic $$1, djg $$2, ctp $$3, hx $$4, hx $$5) {
+      if ($$1 == ic.b && !$$0.a($$3, $$4)) {
+         $$3.a($$4, this, 1);
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   public boolean a(djg $$0, ctr $$1, hx $$2) {
+      djg $$3 = $$1.a_($$2.c());
+      return !$$3.e() || $$3.b() instanceof czo || $$3.b() instanceof diy;
+   }
+
+   @Override
+   public djg a(cpg $$0) {
+      return !this.o().a((ctr)$$0.q(), $$0.a()) ? cwr.j.o() : super.a($$0);
+   }
+
+   @Override
+   public boolean g_(djg $$0) {
+      return true;
+   }
+
+   @Override
+   public eml a(djg $$0, csu $$1, hx $$2, elx $$3) {
       return c;
    }
 
    @Override
-   public dco b_(dja $$0) {
-      return dco.c;
-   }
-
-   @Override
-   public bjv a(dja $$0, cti $$1, hx $$2, cfb $$3, bju $$4, eli $$5) {
-      cmr $$6 = $$3.b($$4);
-      cmm $$7 = $$6.d();
-      dja $$8 = ($$7 instanceof ckk ? d.getOrDefault(((ckk)$$7).e(), cwl.a) : cwl.a).o();
-      boolean $$9 = $$8.a(cwl.a);
-      boolean $$10 = this.g();
-      if ($$9 != $$10) {
-         if ($$10) {
-            $$1.a($$2, $$8, 3);
-            $$3.a(arw.ah);
-            if (!$$3.fT().d) {
-               $$6.h(1);
-            }
-         } else {
-            cmr $$11 = new cmr(this.e);
-            if ($$6.b()) {
-               $$3.a($$4, $$11);
-            } else if (!$$3.i($$11)) {
-               $$3.a($$11, false);
-            }
-
-            $$1.a($$2, cwl.fR.o(), 3);
-         }
-
-         $$1.a($$3, dnk.c, $$2);
-         return bjv.a($$1.B);
-      } else {
-         return bjv.b;
+   public void a(djg $$0, and $$1, hx $$2, auu $$3) {
+      if (!$$0.a($$1, $$2)) {
+         a(null, $$0, $$1, $$2);
       }
    }
 
    @Override
-   public cmr a(ctl $$0, hx $$1, dja $$2) {
-      return this.g() ? super.a($$0, $$1, $$2) : new cmr(this.e);
-   }
-
-   private boolean g() {
-      return this.e == cwl.a;
-   }
-
-   @Override
-   public dja a(dja $$0, ic $$1, dja $$2, ctj $$3, hx $$4, hx $$5) {
-      return $$1 == ic.a && !$$0.a($$3, $$4) ? cwl.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   public cwj b() {
-      return this.e;
+   public void b(djg $$0, and $$1, hx $$2, auu $$3) {
+      int $$4 = $$0.c(b);
+      if (!a((ctr)$$1, $$2) && !$$1.r($$2.c())) {
+         if ($$4 > 0) {
+            $$1.a($$2, $$0.a(b, Integer.valueOf($$4 - 1)), 2);
+         } else if (!a((csu)$$1, $$2)) {
+            a(null, $$0, $$1, $$2);
+         }
+      } else if ($$4 < 7) {
+         $$1.a($$2, $$0.a(b, Integer.valueOf(7)), 2);
+      }
    }
 
    @Override
-   public boolean a(dja $$0, cso $$1, hx $$2, efa $$3) {
+   public void a(cto $$0, djg $$1, hx $$2, blu $$3, float $$4) {
+      if (!$$0.B && $$0.z.i() < $$4 - 0.5F && $$3 instanceof bmk && ($$3 instanceof cfh || $$0.Z().b(ctk.c)) && $$3.dg() * $$3.dg() * $$3.dh() > 0.512F) {
+         a($$3, $$1, $$0, $$2);
+      }
+
+      super.a($$0, $$1, $$2, $$3, $$4);
+   }
+
+   public static void a(@Nullable blu $$0, djg $$1, cto $$2, hx $$3) {
+      djg $$4 = a($$1, cwr.j.o(), $$2, $$3);
+      $$2.b($$3, $$4);
+      $$2.a(dnq.c, $$3, dnq.a.a($$0, $$4));
+   }
+
+   private static boolean a(csu $$0, hx $$1) {
+      return $$0.a_($$1.c()).a(asg.cp);
+   }
+
+   private static boolean a(ctr $$0, hx $$1) {
+      for (hx $$2 : hx.a($$1.b(-4, 0, -4), $$1.b(4, 1, 4))) {
+         if ($$0.b_($$2).a(asl.a)) {
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   @Override
+   protected void a(djh.a<cwp, djg> $$0) {
+      $$0.a(b);
+   }
+
+   @Override
+   public boolean a(djg $$0, csu $$1, hx $$2, efg $$3) {
       return false;
    }
 }

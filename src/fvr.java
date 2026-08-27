@@ -1,41 +1,50 @@
-public class fvr extends fvs<did> {
-   private static final ahd c = new ahd("textures/entity/end_gateway_beam.png");
+public class fvr implements fvf<djc> {
+   private final ftz a;
 
-   public fvr(fva.a $$0) {
-      super($$0);
+   public fvr(fvg.a $$0) {
+      this.a = $$0.b();
    }
 
-   public void a(did $$0, float $$1, ept $$2, fsz $$3, int $$4, int $$5) {
-      if ($$0.c() || $$0.d()) {
-         float $$6 = $$0.c() ? $$0.a($$1) : $$0.b($$1);
-         double $$7 = $$0.c() ? (double)$$0.i().al() : 50.0;
-         $$6 = aui.a($$6 * (float) Math.PI);
-         int $$8 = aui.a((double)$$6 * $$7);
-         float[] $$9 = $$0.c() ? clf.c.d() : clf.k.d();
-         long $$10 = $$0.i().X();
-         fuv.a($$2, $$3, c, $$1, $$6, $$10, -$$8, $$8 * 2, $$9, 0.15F, 0.175F);
+   public void a(djc $$0, float $$1, epz $$2, ftf $$3, int $$4, int $$5) {
+      cto $$6 = $$0.i();
+      if ($$6 != null) {
+         hx $$7 = $$0.aB_().a($$0.g().g());
+         djg $$8 = $$0.k();
+         if (!$$8.i()) {
+            fub.a();
+            $$2.a();
+            $$2.a($$0.b($$1), $$0.c($$1), $$0.d($$1));
+            if ($$8.a(cwr.bz) && $$0.a($$1) <= 4.0F) {
+               $$8 = $$8.a(dja.d, Boolean.valueOf($$0.a($$1) <= 0.5F));
+               this.a($$7, $$8, $$2, $$3, $$6, false, $$5);
+            } else if ($$0.f() && !$$0.c()) {
+               dki $$9 = $$8.a(cwr.br) ? dki.b : dki.a;
+               djg $$10 = cwr.bz.o().a(dja.c, $$9).a(dja.a, $$8.c(diz.a));
+               $$10 = $$10.a(dja.d, Boolean.valueOf($$0.a($$1) >= 0.5F));
+               this.a($$7, $$10, $$2, $$3, $$6, false, $$5);
+               hx $$11 = $$7.a($$0.g());
+               $$2.b();
+               $$2.a();
+               $$8 = $$8.a(diz.c, Boolean.valueOf(true));
+               this.a($$11, $$8, $$2, $$3, $$6, true, $$5);
+            } else {
+               this.a($$7, $$8, $$2, $$3, $$6, false, $$5);
+            }
+
+            $$2.b();
+            fub.b();
+         }
       }
-
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   @Override
-   protected float b() {
-      return 1.0F;
-   }
-
-   @Override
-   protected float c() {
-      return 0.0F;
-   }
-
-   @Override
-   protected fth d() {
-      return fth.v();
+   private void a(hx $$0, djg $$1, epz $$2, ftf $$3, cto $$4, boolean $$5, int $$6) {
+      ftn $$7 = fta.b($$1);
+      eqd $$8 = $$3.getBuffer($$7);
+      this.a.b().a($$4, this.a.a($$1), $$1, $$0, $$2, $$8, $$5, auu.a(), $$1.a($$0), $$6);
    }
 
    @Override
    public int aQ_() {
-      return 256;
+      return 68;
    }
 }

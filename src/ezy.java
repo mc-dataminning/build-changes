@@ -1,28 +1,13 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
+import org.joml.Matrix4f;
 
-public enum ezy implements ave {
-   a("bitmap", ezw.a.a),
-   b("ttf", faa.a),
-   c("space", eny.a.a),
-   d("unihex", fab.b.a),
-   e("reference", ezz.a);
+public class ezy extends ezx {
+   public static final ezy a = new ezy();
 
-   public static final Codec<ezy> f = ave.a(ezy::values);
-   private final String g;
-   private final MapCodec<? extends ezx> h;
-
-   private ezy(String $$0, MapCodec<? extends ezx> $$1) {
-      this.g = $$0;
-      this.h = $$1;
+   public ezy() {
+      super(ezv.b(new ahg("")), 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F);
    }
 
    @Override
-   public String c() {
-      return this.g;
-   }
-
-   public MapCodec<? extends ezx> a() {
-      return this.h;
+   public void a(boolean $$0, float $$1, float $$2, Matrix4f $$3, eqd $$4, float $$5, float $$6, float $$7, float $$8, int $$9) {
    }
 }

@@ -1,54 +1,47 @@
-import java.util.List;
-import java.util.Locale;
-import java.util.function.Function;
-import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public interface ghy<T> {
-   static <T> ghy<T> a() {
-      return new ghy<T>() {
-         @Override
-         public List<T> a(String $$0) {
-            return List.of();
-         }
+public interface ghy {
+   ahg a();
 
-         @Override
-         public List<T> b(String $$0) {
-            return List.of();
-         }
-      };
+   @Nullable
+   gjd a(gjc var1);
+
+   ghv b();
+
+   ars c();
+
+   boolean d();
+
+   boolean l();
+
+   int e();
+
+   float f();
+
+   float g();
+
+   double h();
+
+   double i();
+
+   double j();
+
+   ghy.a k();
+
+   default boolean r() {
+      return false;
    }
 
-   static <T> ghy<T> a(List<T> $$0, Function<T, Stream<ahd>> $$1) {
-      if ($$0.isEmpty()) {
-         return a();
-      } else {
-         final gib<T> $$2 = new gib<>();
-         final gib<T> $$3 = new gib<>();
-
-         for (T $$4 : $$0) {
-            $$1.apply($$4).forEach($$3x -> {
-               $$2.a($$4, $$3x.b().toLowerCase(Locale.ROOT));
-               $$3.a($$4, $$3x.a().toLowerCase(Locale.ROOT));
-            });
-         }
-
-         $$2.a();
-         $$3.a();
-         return new ghy<T>() {
-            @Override
-            public List<T> a(String $$0) {
-               return $$2.a($$0);
-            }
-
-            @Override
-            public List<T> b(String $$0) {
-               return $$3.a($$0);
-            }
-         };
-      }
+   default boolean s() {
+      return true;
    }
 
-   List<T> a(String var1);
+   static auu t() {
+      return auu.a();
+   }
 
-   List<T> b(String var1);
+   public static enum a {
+      a,
+      b;
+   }
 }

@@ -1,16 +1,44 @@
 import com.mojang.serialization.Codec;
 
-public interface bjb<P extends bja> {
-   bjb<bix> a = a("constant", bix.b);
-   bjb<bjg> b = a("uniform", bjg.a);
-   bjb<bis> c = a("biased_to_bottom", bis.a);
-   bjb<bit> d = a("clamped", bit.a);
-   bjb<bjh> e = a("weighted_list", bjh.a);
-   bjb<biv> f = a("clamped_normal", biv.a);
+public class bjb extends bjd {
+   public static final bjb a = new bjb(0.0F);
+   public static final Codec<bjb> b = atv.e(Codec.FLOAT, Codec.FLOAT.fieldOf("value").codec()).xmap(bjb::new, bjb::d);
+   private final float d;
 
-   Codec<P> codec();
+   public static bjb a(float $$0) {
+      return $$0 == 0.0F ? a : new bjb($$0);
+   }
 
-   static <P extends bja> bjb<P> a(String $$0, Codec<P> $$1) {
-      return it.a(kd.M, $$0, () -> $$1);
+   private bjb(float $$0) {
+      this.d = $$0;
+   }
+
+   public float d() {
+      return this.d;
+   }
+
+   @Override
+   public float a(auu $$0) {
+      return this.d;
+   }
+
+   @Override
+   public float a() {
+      return this.d;
+   }
+
+   @Override
+   public float b() {
+      return this.d + 1.0F;
+   }
+
+   @Override
+   public bje<?> c() {
+      return bje.a;
+   }
+
+   @Override
+   public String toString() {
+      return Float.toString(this.d);
    }
 }

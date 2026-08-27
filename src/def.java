@@ -1,76 +1,46 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class def extends cwj {
-   public static final MapCodec<def> a = b(def::new);
-   private static final vd d = vd.c("container.stonecutter");
-   public static final dju b = dae.aE;
-   protected static final emf c = cwj.a(0.0, 0.0, 0.0, 16.0, 9.0, 16.0);
-
-   @Override
-   public MapCodec<def> a() {
-      return a;
-   }
-
-   public def(diz.d $$0) {
+public abstract class def extends ddy {
+   protected def(djf.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b, ic.c));
    }
 
-   @Override
-   public dja a(cpa $$0) {
-      return this.o().a(b, $$0.g().g());
-   }
-
-   @Override
-   public bjv a(dja $$0, cti $$1, hx $$2, cfb $$3, bju $$4, eli $$5) {
-      if ($$1.B) {
-         return bjv.a;
+   private static boolean b(djg $$0, ctr $$1, hx $$2) {
+      hx $$3 = $$2.c();
+      djg $$4 = $$1.a_($$3);
+      if ($$4.a(cwr.dN) && $$4.c(ddx.c) == 1) {
+         return true;
+      } else if ($$4.u().e() == 8) {
+         return false;
       } else {
-         $$3.a($$0.b($$1, $$2));
-         $$3.a(arw.ay);
-         return bjv.b;
+         int $$5 = eeh.a($$1, $$0, $$2, $$4, $$3, ic.b, $$4.b($$1, $$3));
+         return $$5 < $$1.O();
       }
    }
 
-   @Nullable
    @Override
-   public bjy b(dja $$0, cti $$1, hx $$2) {
-      return new bke(($$2x, $$3, $$4) -> new cjt($$2x, $$3, cif.a($$1, $$2)), d);
+   protected abstract MapCodec<? extends def> a();
+
+   private static boolean c(djg $$0, ctr $$1, hx $$2) {
+      hx $$3 = $$2.c();
+      return b($$0, $$1, $$2) && !$$1.b_($$3).a(asl.a);
    }
 
    @Override
-   public emf a(dja $$0, cso $$1, hx $$2, elr $$3) {
-      return c;
-   }
+   public void b(djg $$0, and $$1, hx $$2, auu $$3) {
+      if (!b($$0, $$1, $$2)) {
+         $$1.b($$2, cwr.j.o());
+      } else {
+         if ($$1.A($$2.c()) >= 9) {
+            djg $$4 = this.o();
 
-   @Override
-   public boolean g_(dja $$0) {
-      return true;
-   }
-
-   @Override
-   public dco b_(dja $$0) {
-      return dco.c;
-   }
-
-   @Override
-   public dja a(dja $$0, dcv $$1) {
-      return $$0.a(b, $$1.a($$0.c(b)));
-   }
-
-   @Override
-   public dja a(dja $$0, dbf $$1) {
-      return $$0.a($$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected void a(djb.a<cwj, dja> $$0) {
-      $$0.a(b);
-   }
-
-   @Override
-   public boolean a(dja $$0, cso $$1, hx $$2, efa $$3) {
-      return false;
+            for (int $$5 = 0; $$5 < 4; $$5++) {
+               hx $$6 = $$2.b($$3.a(3) - 1, $$3.a(5) - 3, $$3.a(3) - 1);
+               if ($$1.a_($$6).a(cwr.j) && c($$4, $$1, $$6)) {
+                  $$1.b($$6, $$4.a(c, Boolean.valueOf($$1.a_($$6.c()).a(cwr.dN))));
+               }
+            }
+         }
+      }
    }
 }

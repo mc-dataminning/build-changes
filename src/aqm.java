@@ -1,43 +1,13 @@
-import com.google.gson.JsonObject;
-import java.io.File;
-import java.net.SocketAddress;
-import javax.annotation.Nullable;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
 
-public class aqm extends aqu<String, aqn> {
-   public aqm(File $$0) {
-      super($$0);
-   }
-
+public abstract class aqm<T> implements aqb {
    @Override
-   protected aqt<String> a(JsonObject $$0) {
-      return new aqn($$0);
+   public final CompletableFuture<Void> a(aqb.a $$0, aqh $$1, bgr $$2, bgr $$3, Executor $$4, Executor $$5) {
+      return CompletableFuture.<T>supplyAsync(() -> this.b($$1, $$2), $$4).thenCompose($$0::a).thenAcceptAsync($$2x -> this.a((T)$$2x, $$1, $$3), $$5);
    }
 
-   public boolean a(SocketAddress $$0) {
-      String $$1 = this.c($$0);
-      return this.d($$1);
-   }
+   protected abstract T b(aqh var1, bgr var2);
 
-   public boolean a(String $$0) {
-      return this.d($$0);
-   }
-
-   @Nullable
-   public aqn b(SocketAddress $$0) {
-      String $$1 = this.c($$0);
-      return this.b($$1);
-   }
-
-   private String c(SocketAddress $$0) {
-      String $$1 = $$0.toString();
-      if ($$1.contains("/")) {
-         $$1 = $$1.substring($$1.indexOf(47) + 1);
-      }
-
-      if ($$1.contains(":")) {
-         $$1 = $$1.substring(0, $$1.indexOf(58));
-      }
-
-      return $$1;
-   }
+   protected abstract void a(T var1, aqh var2, bgr var3);
 }

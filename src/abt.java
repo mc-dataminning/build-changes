@@ -1,27 +1,24 @@
-import javax.annotation.Nullable;
+public class abt implements xf<za> {
+   private final double a;
 
-public class abt implements xd<yx> {
-   private final int a;
-
-   public abt(blp $$0) {
-      this.a = $$0.aj();
+   public abt(dkx $$0) {
+      this.a = $$0.k();
    }
 
-   public abt(ug $$0) {
-      this.a = $$0.n();
+   public abt(ui $$0) {
+      this.a = $$0.readDouble();
    }
 
    @Override
-   public void a(ug $$0) {
-      $$0.c(this.a);
+   public void a(ui $$0) {
+      $$0.a(this.a);
    }
 
-   public void a(yx $$0) {
+   public void a(za $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public blp a(cti $$0) {
-      return $$0.a(this.a);
+   public double a() {
+      return this.a;
    }
 }

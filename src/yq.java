@@ -1,12 +1,22 @@
-public interface yq extends xg {
-   @Override
-   default uf b() {
-      return uf.e;
+public record yq(hx b, float c, float d, float e, float f, float g) implements ya {
+   public static final ahg a = new ahg("debug/worldgen_attempt");
+
+   public yq(ui $$0) {
+      this($$0.e(), $$0.readFloat(), $$0.readFloat(), $$0.readFloat(), $$0.readFloat(), $$0.readFloat());
    }
 
-   void a(yr var1);
+   @Override
+   public void a(ui $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
+      $$0.a(this.f);
+      $$0.a(this.g);
+   }
 
-   void a(ys var1);
-
-   void a(yt var1);
+   @Override
+   public ahg a() {
+      return a;
+   }
 }

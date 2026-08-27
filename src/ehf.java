@@ -1,30 +1,81 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Collection;
 import java.util.List;
-import java.util.function.Consumer;
+import java.util.function.Function;
 
-public class ehf extends ehk {
-   public static final Codec<ehf> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(kd.h.r().fieldOf("name").forGetter($$0x -> $$0x.j)).and(b($$0)).apply($$0, ehf::new)
-   );
-   private final ih<cmm> j;
+public class ehf extends ehh {
+   public static final Codec<ehf> a = a(ehf::new);
 
-   private ehf(ih<cmm> $$0, int $$1, int $$2, List<ejo> $$3, List<eic> $$4) {
-      super($$1, $$2, $$3, $$4);
-      this.j = $$0;
+   ehf(List<eho> $$0, List<eju> $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public ehj a() {
-      return ehg.c;
+   public ehp a() {
+      return ehm.g;
    }
 
    @Override
-   public void a(Consumer<cmr> $$0, egp $$1) {
-      $$0.accept(new cmr(this.j));
+   protected ehg a(List<? extends ehg> $$0) {
+      return switch ($$0.size()) {
+         case 0 -> b;
+         case 1 -> (ehg)$$0.get(0);
+         case 2 -> $$0.get(0).or($$0.get(1));
+         default -> ($$1, $$2) -> {
+         for (ehg $$3 : $$0) {
+            if ($$3.expand($$1, $$2)) {
+               return true;
+            }
+         }
+
+         return false;
+      };
+      };
    }
 
-   public static ehk.a<?> a(cth $$0) {
-      return a(($$1, $$2, $$3, $$4) -> new ehf($$0.k().j(), $$1, $$2, $$3, $$4));
+   @Override
+   public void a(ehe $$0) {
+      super.a($$0);
+
+      for (int $$1 = 0; $$1 < this.d.size() - 1; $$1++) {
+         if (this.d.get($$1).e.isEmpty()) {
+            $$0.b("Unreachable entry!");
+         }
+      }
+   }
+
+   public static ehf.a a(eho.a<?>... $$0) {
+      return new ehf.a($$0);
+   }
+
+   public static <E> ehf.a a(Collection<E> $$0, Function<E, eho.a<?>> $$1) {
+      return new ehf.a($$0.stream().map($$1::apply).toArray(eho.a[]::new));
+   }
+
+   public static class a extends eho.a<ehf.a> {
+      private final Builder<eho> a = ImmutableList.builder();
+
+      public a(eho.a<?>... $$0) {
+         for (eho.a<?> $$1 : $$0) {
+            this.a.add($$1.b());
+         }
+      }
+
+      protected ehf.a a() {
+         return this;
+      }
+
+      @Override
+      public ehf.a a(eho.a<?> $$0) {
+         this.a.add($$0.b());
+         return this;
+      }
+
+      @Override
+      public eho b() {
+         return new ehf(this.a.build(), this.f());
+      }
    }
 }

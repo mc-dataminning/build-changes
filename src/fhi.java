@@ -1,120 +1,159 @@
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import com.google.common.base.Strings;
+import com.google.common.collect.Lists;
+import com.mojang.authlib.GameProfile;
+import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
 import java.util.Collection;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Set;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-public class fhi extends fct {
-   private static final vd a = vd.c("selectWorld.experimental.title");
-   private static final vd b = vd.c("selectWorld.experimental.message");
-   private static final vd c = vd.c("selectWorld.experimental.details");
-   private static final int k = 10;
-   private static final int l = 100;
-   private final BooleanConsumer m;
-   final Collection<apk> n;
-   private final fah o = new fah().a(10).b(20);
+public class fhi extends exk<fhg> {
+   private final fhj a;
+   private final List<fhg> m = Lists.newArrayList();
+   @Nullable
+   private String n;
 
-   public fhi(Collection<apk> $$0, BooleanConsumer $$1) {
-      super(a);
-      this.n = $$0;
-      this.m = $$1;
+   public fhi(fhj $$0, evg $$1, int $$2, int $$3, int $$4, int $$5) {
+      super($$1, $$2, $$3, $$4, $$5);
+      this.a = $$0;
+      this.c(false);
    }
 
    @Override
-   public vd h() {
-      return vc.a(super.h(), b);
+   protected void a(ews $$0) {
+      $$0.c(this.B(), this.C() + 4, this.D(), this.E());
    }
 
-   @Override
-   protected void aN_() {
-      super.aN_();
-      fah.b $$0 = this.o.d(2);
-      fal $$1 = $$0.b().b();
-      $$0.a(new eyf(this.e, this.i), 2, $$1);
-      exs $$2 = $$0.a(new exs(b, this.i).b(true), 2, $$1);
-      $$2.c(310);
-      $$0.a(ewy.a(c, $$0x -> this.f.a(new fhi.a())).a(100).a(), 2, $$1);
-      $$0.a(ewy.a(vc.i, $$0x -> this.m.accept(true)).a());
-      $$0.a(ewy.a(vc.k, $$0x -> this.m.accept(false)).a());
-      this.o.a($$1x -> {
-         eww var10000 = this.d($$1x);
-      });
-      this.o.a();
-      this.c();
+   public void a(Collection<UUID> $$0, double $$1, boolean $$2) {
+      Map<UUID, fhg> $$3 = new HashMap<>();
+      this.a($$0, $$3);
+      this.a($$3, $$2);
+      this.a($$3.values(), $$1);
    }
 
-   @Override
-   protected void c() {
-      fag.a(this.o, 0, 0, this.g, this.h, 0.5F, 0.5F);
+   private void a(Collection<UUID> $$0, Map<UUID, fhg> $$1) {
+      fnr $$2 = this.c.s.cn;
+
+      for (UUID $$3 : $$0) {
+         fnz $$4 = $$2.a($$3);
+         if ($$4 != null) {
+            boolean $$5 = $$4.d();
+            $$1.put($$3, new fhg(this.c, this.a, $$3, $$4.a().getName(), $$4::g, $$5));
+         }
+      }
    }
 
-   @Override
-   public void aE_() {
-      this.m.accept(false);
-   }
-
-   class a extends fct {
-      private fhi.a.a b;
-
-      a() {
-         super(vd.c("selectWorld.experimental.details.title"));
-      }
-
-      @Override
-      public void aE_() {
-         this.f.a(fhi.this);
-      }
-
-      @Override
-      protected void aN_() {
-         super.aN_();
-         this.d(ewy.a(vc.k, $$0 -> this.aE_()).a(this.g / 2 - 100, this.h / 4 + 120 + 24, 200, 20).a());
-         this.b = this.d(new fhi.a.a(this.f, fhi.this.n));
-      }
-
-      @Override
-      public void a(ewm $$0, int $$1, int $$2, float $$3) {
-         super.a($$0, $$1, $$2, $$3);
-         $$0.a(this.i, this.e, this.g / 2, 10, 16777215);
-      }
-
-      class a extends exu<fhi.a.b> {
-         public a(eva $$0, Collection<apk> $$1) {
-            super($$0, a.this.g, a.this.h - 96, 32, (9 + 2) * 3);
-
-            for (apk $$2 : $$1) {
-               String $$3 = chn.a(chn.g, $$2.d());
-               if (!$$3.isEmpty()) {
-                  vd $$4 = vg.a($$2.a().f(), wa.a.a(true));
-                  vd $$5 = vd.a("selectWorld.experimental.details.entry", $$3);
-                  this.b(a.this.new b($$4, $$5, exr.a(a.this.i, $$5, this.b())));
-               }
+   private void a(Map<UUID, fhg> $$0, boolean $$1) {
+      for (GameProfile $$3 : a(this.c.aX().b())) {
+         fhg $$4;
+         if ($$1) {
+            $$4 = $$0.computeIfAbsent($$3.getId(), $$1x -> {
+               fhg $$2 = new fhg(this.c, this.a, $$3.getId(), $$3.getName(), this.c.al().a($$3), true);
+               $$2.c(true);
+               return $$2;
+            });
+         } else {
+            $$4 = $$0.get($$3.getId());
+            if ($$4 == null) {
+               continue;
             }
          }
 
-         @Override
-         public int b() {
-            return this.g * 3 / 4;
+         $$4.d(true);
+      }
+   }
+
+   private static Collection<GameProfile> a(fof $$0) {
+      Set<GameProfile> $$1 = new ObjectLinkedOpenHashSet();
+
+      for (int $$2 = $$0.b(); $$2 >= $$0.a(); $$2--) {
+         foh $$3 = $$0.b($$2);
+         if ($$3 instanceof foi.a) {
+            foi.a $$4 = (foi.a)$$3;
+            if ($$4.g().h()) {
+               $$1.add($$4.f());
+            }
          }
       }
 
-      class b extends exu.a<fhi.a.b> {
-         private final vd b;
-         private final vd c;
-         private final exr d;
+      return $$1;
+   }
 
-         b(vd $$0, vd $$1, exr $$2) {
-            this.b = $$0;
-            this.c = $$1;
-            this.d = $$2;
+   private void e() {
+      this.m.sort(Comparator.<fhg, Integer>comparing($$0 -> {
+         if (this.c.b($$0.c())) {
+            return 0;
+         } else if (this.c.aX().a($$0.c())) {
+            return 1;
+         } else if ($$0.c().version() == 2) {
+            return 4;
+         } else {
+            return $$0.i() ? 2 : 3;
+         }
+      }).thenComparing($$0 -> {
+         if (!$$0.b().isBlank()) {
+            int $$1 = $$0.b().codePointAt(0);
+            if ($$1 == 95 || $$1 >= 97 && $$1 <= 122 || $$1 >= 65 && $$1 <= 90 || $$1 >= 48 && $$1 <= 57) {
+               return 0;
+            }
          }
 
-         @Override
-         public void a(ewm $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-            $$0.b(a.this.f.h, this.b, $$3, $$2, 16777215);
-            this.d.b($$0, $$3, $$2 + 12, 9, 16777215);
-         }
+         return 1;
+      }).thenComparing(fhg::b, String::compareToIgnoreCase));
+   }
 
-         @Override
-         public vd a() {
-            return vd.a("narrator.select", vc.a(this.b, this.c));
+   private void a(Collection<fhg> $$0, double $$1) {
+      this.m.clear();
+      this.m.addAll($$0);
+      this.e();
+      this.H();
+      this.a(this.m);
+      this.a($$1);
+   }
+
+   private void H() {
+      if (this.n != null) {
+         this.m.removeIf($$0 -> !$$0.b().toLowerCase(Locale.ROOT).contains(this.n));
+         this.a(this.m);
+      }
+   }
+
+   public void a(String $$0) {
+      this.n = $$0;
+   }
+
+   public boolean d() {
+      return this.m.isEmpty();
+   }
+
+   public void a(fnz $$0, fhj.a $$1) {
+      UUID $$2 = $$0.a().getId();
+
+      for (fhg $$3 : this.m) {
+         if ($$3.c().equals($$2)) {
+            $$3.c(false);
+            return;
+         }
+      }
+
+      if (($$1 == fhj.a.a || this.c.aK().c($$2)) && (Strings.isNullOrEmpty(this.n) || $$0.a().getName().toLowerCase(Locale.ROOT).contains(this.n))) {
+         boolean $$4 = $$0.d();
+         fhg $$5 = new fhg(this.c, this.a, $$0.a().getId(), $$0.a().getName(), $$0::g, $$4);
+         this.b($$5);
+         this.m.add($$5);
+      }
+   }
+
+   public void a(UUID $$0) {
+      for (fhg $$1 : this.m) {
+         if ($$1.c().equals($$0)) {
+            $$1.c(true);
+            return;
          }
       }
    }

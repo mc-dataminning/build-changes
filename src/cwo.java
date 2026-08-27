@@ -1,104 +1,56 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import javax.annotation.Nullable;
 
-public class cwo extends cvv implements cze {
-   public static final MapCodec<cwo> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               kd.e.q().fieldOf("turns_into").forGetter(cwo::b),
-               kd.b.q().fieldOf("brush_sound").forGetter(cwo::c),
-               kd.b.q().fieldOf("brush_comleted_sound").forGetter(cwo::d),
-               u()
-            )
-            .apply($$0, cwo::new)
-   );
-   private static final dka c = djq.bv;
-   public static final int b = 2;
-   private final cwj d;
-   private final arl e;
-   private final arl f;
+public class cwo extends cvk {
+   public static final MapCodec<cwo> c = b(cwo::new);
 
    @Override
    public MapCodec<cwo> a() {
-      return a;
+      return c;
    }
 
-   public cwo(cwj $$0, arl $$1, arl $$2, diz.d $$3) {
-      super($$3);
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.k(this.E.b().a(c, Integer.valueOf(0)));
+   protected cwo(djf.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected void a(djb.a<cwj, dja> $$0) {
-      $$0.a(c);
-   }
-
-   @Override
-   public dco b_(dja $$0) {
-      return dco.c;
-   }
-
-   @Override
-   public void b(dja $$0, cti $$1, hx $$2, dja $$3, boolean $$4) {
-      $$1.a($$2, this, 2);
-   }
-
-   @Override
-   public dja a(dja $$0, ic $$1, dja $$2, ctj $$3, hx $$4, hx $$5) {
-      $$3.a($$4, this, 2);
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   public void a(dja $$0, amz $$1, hx $$2, aup $$3) {
-      if ($$1.c_($$2) instanceof dgs $$4) {
-         $$4.c();
-      }
-
-      if (czf.h($$1.a_($$2.d())) && $$2.v() >= $$1.J_()) {
-         cbn $$5 = cbn.a($$1, $$2, $$0);
-         $$5.s();
-      }
-   }
-
-   @Override
-   public void a(cti $$0, hx $$1, cbn $$2) {
-      elm $$3 = $$2.cH().f();
-      $$0.c(2001, hx.a($$3), cwj.i($$2.u()));
-      $$0.a($$2, dnk.f, $$3);
-   }
-
-   @Override
-   public void a(dja $$0, cti $$1, hx $$2, aup $$3) {
-      if ($$3.a(16) == 0) {
-         hx $$4 = $$2.d();
-         if (czf.h($$1.a_($$4))) {
-            double $$5 = (double)$$2.u() + $$3.j();
-            double $$6 = (double)$$2.v() - 0.05;
-            double $$7 = (double)$$2.w() + $$3.j();
-            $$1.a(new jp(jx.B, $$0), $$5, $$6, $$7, 0.0, 0.0, 0.0);
-         }
-      }
+   public dgu a(hx $$0, djg $$1) {
+      return new dgt($$0, $$1);
    }
 
    @Nullable
    @Override
-   public dgo a(hx $$0, dja $$1) {
-      return new dgs($$0, $$1);
+   public <T extends dgu> dgv<T> a(cto $$0, djg $$1, dgw<T> $$2) {
+      return a($$0, $$2, dgw.C);
    }
 
-   public cwj b() {
-      return this.d;
+   @Override
+   protected void a(cto $$0, hx $$1, cfh $$2) {
+      dgu $$3 = $$0.c_($$1);
+      if ($$3 instanceof dgt) {
+         $$2.a((bkd)$$3);
+         $$2.a(asb.as);
+      }
    }
 
-   public arl c() {
-      return this.e;
-   }
+   @Override
+   public void a(djg $$0, cto $$1, hx $$2, auu $$3) {
+      if ($$0.c(b)) {
+         double $$4 = (double)$$2.u() + 0.5;
+         double $$5 = (double)$$2.v();
+         double $$6 = (double)$$2.w() + 0.5;
+         if ($$3.j() < 0.1) {
+            $$1.a($$4, $$5, $$6, arr.cg, ars.e, 1.0F, 1.0F, false);
+         }
 
-   public arl d() {
-      return this.f;
+         ic $$7 = $$0.c(a);
+         ic.a $$8 = $$7.o();
+         double $$9 = 0.52;
+         double $$10 = $$3.j() * 0.6 - 0.3;
+         double $$11 = $$8 == ic.a.a ? (double)$$7.j() * 0.52 : $$10;
+         double $$12 = $$3.j() * 9.0 / 16.0;
+         double $$13 = $$8 == ic.a.c ? (double)$$7.l() * 0.52 : $$10;
+         $$1.a(jx.ab, $$4 + $$11, $$5 + $$12, $$6 + $$13, 0.0, 0.0, 0.0);
+      }
    }
 }

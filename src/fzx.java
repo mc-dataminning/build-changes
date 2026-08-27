@@ -1,39 +1,31 @@
-public class fzx extends fzl<byl, fjp<byl>> {
-   private static final ahd a = new ahd("textures/entity/fish/pufferfish.png");
-   private int i = 3;
-   private final fjp<byl> j;
-   private final fjp<byl> k;
-   private final fjp<byl> l = this.a();
+public class fzx extends fzr<byn, fkv> {
+   private static final ahg a = new ahg("textures/entity/parrot/parrot_red_blue.png");
+   private static final ahg i = new ahg("textures/entity/parrot/parrot_blue.png");
+   private static final ahg j = new ahg("textures/entity/parrot/parrot_green.png");
+   private static final ahg k = new ahg("textures/entity/parrot/parrot_yellow_blue.png");
+   private static final ahg l = new ahg("textures/entity/parrot/parrot_grey.png");
 
-   public fzx(fyf.a $$0) {
-      super($$0, new fkw<>($$0.a(fmo.aY)), 0.2F);
-      this.k = new fkx<>($$0.a(fmo.aZ));
-      this.j = new fky<>($$0.a(fmo.ba));
+   public fzx(fyl.a $$0) {
+      super($$0, new fkv($$0.a(fmu.aD)), 0.3F);
    }
 
-   public ahd a(byl $$0) {
-      return a;
+   public ahg a(byn $$0) {
+      return a($$0.gm());
    }
 
-   public void a(byl $$0, float $$1, float $$2, ept $$3, fsz $$4, int $$5) {
-      int $$6 = $$0.gg();
-      if ($$6 != this.i) {
-         if ($$6 == 0) {
-            this.f = this.j;
-         } else if ($$6 == 1) {
-            this.f = this.k;
-         } else {
-            this.f = this.l;
-         }
-      }
-
-      this.i = $$6;
-      this.d = 0.1F + 0.1F * (float)$$6;
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   public static ahg a(byn.b $$0) {
+      return switch ($$0) {
+         case a -> a;
+         case b -> i;
+         case c -> j;
+         case d -> k;
+         case e -> l;
+      };
    }
 
-   protected void a(byl $$0, ept $$1, float $$2, float $$3, float $$4) {
-      $$1.a(0.0F, aui.b($$2 * 0.05F) * 0.08F, 0.0F);
-      super.a($$0, $$1, $$2, $$3, $$4);
+   public float a(byn $$0, float $$1) {
+      float $$2 = aun.i($$1, $$0.bZ, $$0.bW);
+      float $$3 = aun.i($$1, $$0.bY, $$0.bX);
+      return (aun.a($$2) + 1.0F) * $$3;
    }
 }

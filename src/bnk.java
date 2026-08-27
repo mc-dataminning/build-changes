@@ -1,96 +1,483 @@
-import com.google.common.collect.ImmutableMap;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import com.google.common.collect.UnmodifiableIterator;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.MapLike;
+import com.mojang.serialization.RecordBuilder;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import java.util.Collection;
+import java.util.List;
 import java.util.Map;
-import java.util.UUID;
-import java.util.function.Consumer;
+import java.util.Optional;
+import java.util.Set;
+import java.util.Map.Entry;
+import java.util.function.Supplier;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
+import org.apache.commons.lang3.mutable.MutableObject;
+import org.slf4j.Logger;
 
-public class bnk {
-   private final Map<bng, bnh> a;
+public class bnk<E extends bmk> {
+   static final Logger a = LogUtils.getLogger();
+   private final Supplier<Codec<bnk<E>>> b;
+   private static final int c = 20;
+   private final Map<bvm<?>, Optional<? extends bvl<?>>> d = Maps.newHashMap();
+   private final Map<bws<? extends bwr<? super E>>, bwr<? super E>> e = Maps.newLinkedHashMap();
+   private final Map<Integer, Map<cgt, Set<boc<? super E>>>> f = Maps.newTreeMap();
+   private cgv g = cgv.c;
+   private final Map<cgt, Set<Pair<bvm<?>, bvn>>> h = Maps.newHashMap();
+   private final Map<cgt, Set<bvm<?>>> i = Maps.newHashMap();
+   private Set<cgt> j = Sets.newHashSet();
+   private final Set<cgt> k = Sets.newHashSet();
+   private cgt l = cgt.b;
+   private long m = -9999L;
 
-   public bnk(Map<bng, bnh> $$0) {
-      this.a = ImmutableMap.copyOf($$0);
+   public static <E extends bmk> bnk.b<E> a(Collection<? extends bvm<?>> $$0, Collection<? extends bws<? extends bwr<? super E>>> $$1) {
+      return new bnk.b<>($$0, $$1);
    }
 
-   private bnh d(bng $$0) {
-      bnh $$1 = this.a.get($$0);
-      if ($$1 == null) {
-         throw new IllegalArgumentException("Can't find attribute " + kd.u.b($$0));
-      } else {
-         return $$1;
+   public static <E extends bmk> Codec<bnk<E>> b(final Collection<? extends bvm<?>> $$0, final Collection<? extends bws<? extends bwr<? super E>>> $$1) {
+      final MutableObject<Codec<bnk<E>>> $$2 = new MutableObject();
+      $$2.setValue(
+         (new MapCodec<bnk<E>>() {
+               public <T> Stream<T> keys(DynamicOps<T> $$0x) {
+                  return $$0.stream().flatMap($$0xx -> $$0xx.a().map($$1xxx -> kd.B.b($$0xx)).stream()).map($$1xx -> (T)$$0.createString($$1xx.toString()));
+               }
+
+               public <T> DataResult<bnk<E>> decode(DynamicOps<T> $$0x, MapLike<T> $$1x) {
+                  MutableObject<DataResult<Builder<bnk.a<?>>>> $$2 = new MutableObject(DataResult.success(ImmutableList.builder()));
+                  $$1.entries().forEach($$2xxx -> {
+                     DataResult<bvm<?>> $$3x = kd.B.q().parse($$0, $$2xxx.getFirst());
+                     DataResult<? extends bnk.a<?>> $$4 = $$3x.flatMap($$2xxxxx -> this.a($$2xxxxx, $$0, (T)$$2xxx.getSecond()));
+                     $$2.setValue(((DataResult)$$2.getValue()).apply2(Builder::add, $$4));
+                  });
+                  ImmutableList<bnk.a<?>> $$3 = ((DataResult)$$2.getValue())
+                     .resultOrPartial(bnk.a::error)
+                     .<ImmutableList<bnk.a<?>>>map(Builder::build)
+                     .orElseGet(ImmutableList::of);
+                  return DataResult.success(new bnk<>($$0, $$1, $$3, $$2::getValue));
+               }
+
+               private <T, U> DataResult<bnk.a<U>> a(bvm<U> $$0x, DynamicOps<T> $$1x, T $$2x) {
+                  return $$0.a()
+                     .<DataResult>map(DataResult::success)
+                     .orElseGet(() -> DataResult.error(() -> "No codec for memory: " + $$0))
+                     .flatMap($$2xxx -> $$2xxx.parse($$1, $$2))
+                     .map($$1xxx -> new bnk.a<>($$0, Optional.of($$1xxx)));
+               }
+
+               public <T> RecordBuilder<T> a(bnk<E> $$0x, DynamicOps<T> $$1x, RecordBuilder<T> $$2x) {
+                  $$0.j().forEach($$2xxx -> $$2xxx.a($$1, $$2));
+                  return $$2;
+               }
+            })
+            .fieldOf("memories")
+            .codec()
+      );
+      return (Codec<bnk<E>>)$$2.getValue();
+   }
+
+   public bnk(
+      Collection<? extends bvm<?>> $$0, Collection<? extends bws<? extends bwr<? super E>>> $$1, ImmutableList<bnk.a<?>> $$2, Supplier<Codec<bnk<E>>> $$3
+   ) {
+      this.b = $$3;
+
+      for (bvm<?> $$4 : $$0) {
+         this.d.put($$4, Optional.empty());
+      }
+
+      for (bws<? extends bwr<? super E>> $$5 : $$1) {
+         this.e.put($$5, (bwr<? super E>)$$5.a());
+      }
+
+      for (bwr<? super E> $$6 : this.e.values()) {
+         for (bvm<?> $$7 : $$6.a()) {
+            this.d.put($$7, Optional.empty());
+         }
+      }
+
+      UnmodifiableIterator var11 = $$2.iterator();
+
+      while (var11.hasNext()) {
+         bnk.a<?> $$8 = (bnk.a<?>)var11.next();
+         $$8.a(this);
       }
    }
 
-   public double a(bng $$0) {
-      return this.d($$0).f();
+   public <T> DataResult<T> a(DynamicOps<T> $$0) {
+      return this.b.get().encodeStart($$0, this);
    }
 
-   public double b(bng $$0) {
-      return this.d($$0).b();
+   Stream<bnk.a<?>> j() {
+      return this.d.entrySet().stream().map($$0 -> bnk.a.a($$0.getKey(), $$0.getValue()));
    }
 
-   public double a(bng $$0, UUID $$1) {
-      bnj $$2 = this.d($$0).a($$1);
-      if ($$2 == null) {
-         throw new IllegalArgumentException("Can't find modifier " + $$1 + " on attribute " + kd.u.b($$0));
+   public boolean a(bvm<?> $$0) {
+      return this.a($$0, bvn.a);
+   }
+
+   public void a() {
+      this.d.keySet().forEach($$0 -> this.d.put((bvm<?>)$$0, Optional.empty()));
+   }
+
+   public <U> void b(bvm<U> $$0) {
+      this.a($$0, Optional.empty());
+   }
+
+   public <U> void a(bvm<U> $$0, @Nullable U $$1) {
+      this.a($$0, Optional.ofNullable($$1));
+   }
+
+   public <U> void a(bvm<U> $$0, U $$1, long $$2) {
+      this.b($$0, Optional.of(bvl.a($$1, $$2)));
+   }
+
+   public <U> void a(bvm<U> $$0, Optional<? extends U> $$1) {
+      this.b($$0, $$1.map(bvl::a));
+   }
+
+   <U> void b(bvm<U> $$0, Optional<? extends bvl<?>> $$1) {
+      if (this.d.containsKey($$0)) {
+         if ($$1.isPresent() && this.a($$1.get().c())) {
+            this.b($$0);
+         } else {
+            this.d.put($$0, $$1);
+         }
+      }
+   }
+
+   public <U> Optional<U> c(bvm<U> $$0) {
+      Optional<? extends bvl<?>> $$1 = this.d.get($$0);
+      if ($$1 == null) {
+         throw new IllegalStateException("Unregistered memory fetched: " + $$0);
       } else {
-         return $$2.c();
+         return $$1.map(bvl::c);
       }
    }
 
    @Nullable
-   public bnh a(Consumer<bnh> $$0, bng $$1) {
-      bnh $$2 = this.a.get($$1);
-      if ($$2 == null) {
-         return null;
-      } else {
-         bnh $$3 = new bnh($$1, $$0);
-         $$3.a($$2);
-         return $$3;
-      }
+   public <U> Optional<U> d(bvm<U> $$0) {
+      Optional<? extends bvl<?>> $$1 = this.d.get($$0);
+      return $$1 == null ? null : $$1.map(bvl::c);
    }
 
-   public static bnk.a a() {
-      return new bnk.a();
+   public <U> long e(bvm<U> $$0) {
+      Optional<? extends bvl<?>> $$1 = this.d.get($$0);
+      return $$1.<Long>map(bvl::b).orElse(0L);
    }
 
-   public boolean c(bng $$0) {
-      return this.a.containsKey($$0);
+   @Deprecated
+   @avs
+   public Map<bvm<?>, Optional<? extends bvl<?>>> b() {
+      return this.d;
    }
 
-   public boolean b(bng $$0, UUID $$1) {
-      bnh $$2 = this.a.get($$0);
-      return $$2 != null && $$2.a($$1) != null;
+   public <U> boolean b(bvm<U> $$0, U $$1) {
+      return !this.a($$0) ? false : this.c($$0).filter($$1x -> $$1x.equals($$1)).isPresent();
    }
 
-   public static class a {
-      private final Map<bng, bnh> a = Maps.newHashMap();
-      private boolean b;
+   public boolean a(bvm<?> $$0, bvn $$1) {
+      Optional<? extends bvl<?>> $$2 = this.d.get($$0);
+      return $$2 == null ? false : $$1 == bvn.c || $$1 == bvn.a && $$2.isPresent() || $$1 == bvn.b && $$2.isEmpty();
+   }
 
-      private bnh b(bng $$0) {
-         bnh $$1 = new bnh($$0, $$1x -> {
-            if (this.b) {
-               throw new UnsupportedOperationException("Tried to change value for default attribute instance: " + kd.u.b($$0));
+   public cgv c() {
+      return this.g;
+   }
+
+   public void a(cgv $$0) {
+      this.g = $$0;
+   }
+
+   public void a(Set<cgt> $$0) {
+      this.j = $$0;
+   }
+
+   @Deprecated
+   @avs
+   public Set<cgt> d() {
+      return this.k;
+   }
+
+   @Deprecated
+   @avs
+   public List<boc<? super E>> e() {
+      List<boc<? super E>> $$0 = new ObjectArrayList();
+
+      for (Map<cgt, Set<boc<? super E>>> $$1 : this.f.values()) {
+         for (Set<boc<? super E>> $$2 : $$1.values()) {
+            for (boc<? super E> $$3 : $$2) {
+               if ($$3.a() == bob.a.b) {
+                  $$0.add($$3);
+               }
             }
-         });
-         this.a.put($$0, $$1);
-         return $$1;
+         }
       }
 
-      public bnk.a a(bng $$0) {
-         this.b($$0);
-         return this;
+      return $$0;
+   }
+
+   public void f() {
+      this.d(this.l);
+   }
+
+   public Optional<cgt> g() {
+      for (cgt $$0 : this.k) {
+         if (!this.j.contains($$0)) {
+            return Optional.of($$0);
+         }
       }
 
-      public bnk.a a(bng $$0, double $$1) {
-         bnh $$2 = this.b($$0);
-         $$2.a($$1);
-         return this;
+      return Optional.empty();
+   }
+
+   public void a(cgt $$0) {
+      if (this.f($$0)) {
+         this.d($$0);
+      } else {
+         this.f();
+      }
+   }
+
+   private void d(cgt $$0) {
+      if (!this.c($$0)) {
+         this.e($$0);
+         this.k.clear();
+         this.k.addAll(this.j);
+         this.k.add($$0);
+      }
+   }
+
+   private void e(cgt $$0) {
+      for (cgt $$1 : this.k) {
+         if ($$1 != $$0) {
+            Set<bvm<?>> $$2 = this.i.get($$1);
+            if ($$2 != null) {
+               for (bvm<?> $$3 : $$2) {
+                  this.b($$3);
+               }
+            }
+         }
+      }
+   }
+
+   public void a(long $$0, long $$1) {
+      if ($$1 - this.m > 20L) {
+         this.m = $$1;
+         cgt $$2 = this.c().a((int)($$0 % 24000L));
+         if (!this.k.contains($$2)) {
+            this.a($$2);
+         }
+      }
+   }
+
+   public void a(List<cgt> $$0) {
+      for (cgt $$1 : $$0) {
+         if (this.f($$1)) {
+            this.d($$1);
+            break;
+         }
+      }
+   }
+
+   public void b(cgt $$0) {
+      this.l = $$0;
+   }
+
+   public void a(cgt $$0, int $$1, ImmutableList<? extends boc<? super E>> $$2) {
+      this.a($$0, this.a($$1, $$2));
+   }
+
+   public void a(cgt $$0, int $$1, ImmutableList<? extends boc<? super E>> $$2, bvm<?> $$3) {
+      Set<Pair<bvm<?>, bvn>> $$4 = ImmutableSet.of(Pair.of($$3, bvn.a));
+      Set<bvm<?>> $$5 = ImmutableSet.of($$3);
+      this.a($$0, this.a($$1, $$2), $$4, $$5);
+   }
+
+   public void a(cgt $$0, ImmutableList<? extends Pair<Integer, ? extends boc<? super E>>> $$1) {
+      this.a($$0, $$1, ImmutableSet.of(), Sets.newHashSet());
+   }
+
+   public void a(cgt $$0, ImmutableList<? extends Pair<Integer, ? extends boc<? super E>>> $$1, Set<Pair<bvm<?>, bvn>> $$2) {
+      this.a($$0, $$1, $$2, Sets.newHashSet());
+   }
+
+   public void a(cgt $$0, ImmutableList<? extends Pair<Integer, ? extends boc<? super E>>> $$1, Set<Pair<bvm<?>, bvn>> $$2, Set<bvm<?>> $$3) {
+      this.h.put($$0, $$2);
+      if (!$$3.isEmpty()) {
+         this.i.put($$0, $$3);
       }
 
-      public bnk a() {
-         this.b = true;
-         return new bnk(this.a);
+      UnmodifiableIterator var5 = $$1.iterator();
+
+      while (var5.hasNext()) {
+         Pair<Integer, ? extends boc<? super E>> $$4 = (Pair<Integer, ? extends boc<? super E>>)var5.next();
+         this.f
+            .computeIfAbsent((Integer)$$4.getFirst(), $$0x -> Maps.newHashMap())
+            .computeIfAbsent($$0, $$0x -> Sets.newLinkedHashSet())
+            .add((boc<? super E>)$$4.getSecond());
+      }
+   }
+
+   @VisibleForTesting
+   public void h() {
+      this.f.clear();
+   }
+
+   public boolean c(cgt $$0) {
+      return this.k.contains($$0);
+   }
+
+   public bnk<E> i() {
+      bnk<E> $$0 = new bnk<>(this.d.keySet(), this.e.keySet(), ImmutableList.of(), this.b);
+
+      for (Entry<bvm<?>, Optional<? extends bvl<?>>> $$1 : this.d.entrySet()) {
+         bvm<?> $$2 = $$1.getKey();
+         if ($$1.getValue().isPresent()) {
+            $$0.d.put($$2, $$1.getValue());
+         }
+      }
+
+      return $$0;
+   }
+
+   public void a(and $$0, E $$1) {
+      this.k();
+      this.c($$0, $$1);
+      this.d($$0, $$1);
+      this.e($$0, $$1);
+   }
+
+   private void c(and $$0, E $$1) {
+      for (bwr<? super E> $$2 : this.e.values()) {
+         $$2.b($$0, $$1);
+      }
+   }
+
+   private void k() {
+      for (Entry<bvm<?>, Optional<? extends bvl<?>>> $$0 : this.d.entrySet()) {
+         if ($$0.getValue().isPresent()) {
+            bvl<?> $$1 = (bvl<?>)$$0.getValue().get();
+            if ($$1.d()) {
+               this.b($$0.getKey());
+            }
+
+            $$1.a();
+         }
+      }
+   }
+
+   public void b(and $$0, E $$1) {
+      long $$2 = $$1.dM().X();
+
+      for (boc<? super E> $$3 : this.e()) {
+         $$3.g($$0, $$1, $$2);
+      }
+   }
+
+   private void d(and $$0, E $$1) {
+      long $$2 = $$0.X();
+
+      for (Map<cgt, Set<boc<? super E>>> $$3 : this.f.values()) {
+         for (Entry<cgt, Set<boc<? super E>>> $$4 : $$3.entrySet()) {
+            cgt $$5 = $$4.getKey();
+            if (this.k.contains($$5)) {
+               for (boc<? super E> $$7 : $$4.getValue()) {
+                  if ($$7.a() == bob.a.a) {
+                     $$7.e($$0, $$1, $$2);
+                  }
+               }
+            }
+         }
+      }
+   }
+
+   private void e(and $$0, E $$1) {
+      long $$2 = $$0.X();
+
+      for (boc<? super E> $$3 : this.e()) {
+         $$3.f($$0, $$1, $$2);
+      }
+   }
+
+   private boolean f(cgt $$0) {
+      if (!this.h.containsKey($$0)) {
+         return false;
+      } else {
+         for (Pair<bvm<?>, bvn> $$1 : this.h.get($$0)) {
+            bvm<?> $$2 = (bvm<?>)$$1.getFirst();
+            bvn $$3 = (bvn)$$1.getSecond();
+            if (!this.a($$2, $$3)) {
+               return false;
+            }
+         }
+
+         return true;
+      }
+   }
+
+   private boolean a(Object $$0) {
+      return $$0 instanceof Collection && ((Collection)$$0).isEmpty();
+   }
+
+   ImmutableList<? extends Pair<Integer, ? extends boc<? super E>>> a(int $$0, ImmutableList<? extends boc<? super E>> $$1) {
+      int $$2 = $$0;
+      Builder<Pair<Integer, ? extends boc<? super E>>> $$3 = ImmutableList.builder();
+      UnmodifiableIterator var5 = $$1.iterator();
+
+      while (var5.hasNext()) {
+         boc<? super E> $$4 = (boc<? super E>)var5.next();
+         $$3.add(Pair.of($$2++, $$4));
+      }
+
+      return $$3.build();
+   }
+
+   static final class a<U> {
+      private final bvm<U> a;
+      private final Optional<? extends bvl<U>> b;
+
+      static <U> bnk.a<U> a(bvm<U> $$0, Optional<? extends bvl<?>> $$1) {
+         return new bnk.a<>($$0, (Optional<? extends bvl<U>>)$$1);
+      }
+
+      a(bvm<U> $$0, Optional<? extends bvl<U>> $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      void a(bnk<?> $$0) {
+         $$0.b(this.a, this.b);
+      }
+
+      public <T> void a(DynamicOps<T> $$0, RecordBuilder<T> $$1) {
+         this.a.a().ifPresent($$2 -> this.b.ifPresent($$3 -> $$1.add(kd.B.q().encodeStart($$0, this.a), $$2.encodeStart($$0, $$3))));
+      }
+   }
+
+   public static final class b<E extends bmk> {
+      private final Collection<? extends bvm<?>> a;
+      private final Collection<? extends bws<? extends bwr<? super E>>> b;
+      private final Codec<bnk<E>> c;
+
+      b(Collection<? extends bvm<?>> $$0, Collection<? extends bws<? extends bwr<? super E>>> $$1) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = bnk.b($$0, $$1);
+      }
+
+      public bnk<E> a(Dynamic<?> $$0) {
+         return this.c.parse($$0).resultOrPartial(bnk.a::error).orElseGet(() -> new bnk<>(this.a, this.b, ImmutableList.of(), () -> this.c));
       }
    }
 }

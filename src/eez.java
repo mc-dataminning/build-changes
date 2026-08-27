@@ -1,201 +1,98 @@
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 import javax.annotation.Nullable;
 
-public class eez {
-   private final List<eex> a;
-   @Nullable
-   private eez.a b;
-   private int c;
-   private final hx d;
-   private final float e;
-   private final boolean f;
+public class eez extends efk {
+   private final boolean l;
+   private float m;
+   private float n;
 
-   public eez(List<eex> $$0, hx $$1, boolean $$2) {
-      this.a = $$0;
-      this.d = $$1;
-      this.e = $$0.isEmpty() ? Float.MAX_VALUE : this.a.get(this.a.size() - 1).c(this.d);
-      this.f = $$2;
-   }
-
-   public void a() {
-      this.c++;
-   }
-
-   public boolean b() {
-      return this.c <= 0;
-   }
-
-   public boolean c() {
-      return this.c >= this.a.size();
-   }
-
-   @Nullable
-   public eex d() {
-      return !this.a.isEmpty() ? this.a.get(this.a.size() - 1) : null;
-   }
-
-   public eex a(int $$0) {
-      return this.a.get($$0);
-   }
-
-   public void b(int $$0) {
-      if (this.a.size() > $$0) {
-         this.a.subList($$0, this.a.size()).clear();
-      }
-   }
-
-   public void a(int $$0, eex $$1) {
-      this.a.set($$0, $$1);
-   }
-
-   public int e() {
-      return this.a.size();
-   }
-
-   public int f() {
-      return this.c;
-   }
-
-   public void c(int $$0) {
-      this.c = $$0;
-   }
-
-   public elm a(blp $$0, int $$1) {
-      eex $$2 = this.a.get($$1);
-      double $$3 = (double)$$2.a + (double)((int)($$0.dg() + 1.0F)) * 0.5;
-      double $$4 = (double)$$2.b;
-      double $$5 = (double)$$2.c + (double)((int)($$0.dg() + 1.0F)) * 0.5;
-      return new elm($$3, $$4, $$5);
-   }
-
-   public hx d(int $$0) {
-      return this.a.get($$0).a();
-   }
-
-   public elm a(blp $$0) {
-      return this.a($$0, this.c);
-   }
-
-   public hx g() {
-      return this.a.get(this.c).a();
-   }
-
-   public eex h() {
-      return this.a.get(this.c);
-   }
-
-   @Nullable
-   public eex i() {
-      return this.c > 0 ? this.a.get(this.c - 1) : null;
-   }
-
-   public boolean a(@Nullable eez $$0) {
-      if ($$0 == null) {
-         return false;
-      } else if ($$0.a.size() != this.a.size()) {
-         return false;
-      } else {
-         for (int $$1 = 0; $$1 < this.a.size(); $$1++) {
-            eex $$2 = this.a.get($$1);
-            eex $$3 = $$0.a.get($$1);
-            if ($$2.a != $$3.a || $$2.b != $$3.b || $$2.c != $$3.c) {
-               return false;
-            }
-         }
-
-         return true;
-      }
-   }
-
-   public boolean j() {
-      return this.f;
-   }
-
-   @avn
-   void a(eex[] $$0, eex[] $$1, Set<efd> $$2) {
-      this.b = new eez.a($$0, $$1, $$2);
-   }
-
-   @Nullable
-   public eez.a k() {
-      return this.b;
-   }
-
-   public void a(ug $$0) {
-      if (this.b != null && !this.b.c.isEmpty()) {
-         $$0.a(this.f);
-         $$0.p(this.c);
-         $$0.a(this.d);
-         $$0.a(this.a, ($$0x, $$1) -> $$1.a($$0x));
-         this.b.a($$0);
-      }
-   }
-
-   public static eez b(ug $$0) {
-      boolean $$1 = $$0.readBoolean();
-      int $$2 = $$0.readInt();
-      hx $$3 = $$0.e();
-      List<eex> $$4 = $$0.a(eex::b);
-      eez.a $$5 = eez.a.b($$0);
-      eez $$6 = new eez($$4, $$3, $$1);
-      $$6.b = $$5;
-      $$6.c = $$2;
-      return $$6;
+   public eez(boolean $$0) {
+      this.l = $$0;
    }
 
    @Override
-   public String toString() {
-      return "Path(length=" + this.a.size() + ")";
+   public void a(cub $$0, bmm $$1) {
+      super.a($$0, $$1);
+      $$1.a(efb.j, 0.0F);
+      this.m = $$1.a(efb.c);
+      $$1.a(efb.c, 6.0F);
+      this.n = $$1.a(efb.k);
+      $$1.a(efb.k, 4.0F);
    }
 
-   public hx l() {
-      return this.d;
+   @Override
+   public void b() {
+      this.b.a(efb.c, this.m);
+      this.b.a(efb.k, this.n);
+      super.b();
    }
 
-   public float m() {
-      return this.e;
+   @Override
+   public efd a() {
+      return !this.b.aZ() ? super.a() : this.c(new hx(aun.a(this.b.cH().a), aun.a(this.b.cH().b + 0.5), aun.a(this.b.cH().c)));
    }
 
-   static eex[] c(ug $$0) {
-      eex[] $$1 = new eex[$$0.n()];
+   @Override
+   public efj a(double $$0, double $$1, double $$2) {
+      return this.a(this.b(aun.a($$0), aun.a($$1 + 0.5), aun.a($$2)));
+   }
 
-      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
-         $$1[$$2] = eex.b($$0);
+   @Override
+   public int a(efd[] $$0, efd $$1) {
+      int $$2 = super.a($$0, $$1);
+      efb $$3 = this.a(this.b, $$1.a, $$1.b + 1, $$1.c);
+      efb $$4 = this.a(this.b, $$1.a, $$1.b, $$1.c);
+      int $$5;
+      if (this.b.a($$3) >= 0.0F && $$4 != efb.w) {
+         $$5 = aun.d(Math.max(1.0F, this.b.dG()));
+      } else {
+         $$5 = 0;
       }
 
-      return $$1;
-   }
-
-   static void a(ug $$0, eex[] $$1) {
-      $$0.c($$1.length);
-
-      for (eex $$2 : $$1) {
-         $$2.a($$0);
-      }
-   }
-
-   public eez n() {
-      eez $$0 = new eez(this.a, this.d, this.f);
-      $$0.b = this.b;
-      $$0.c = this.c;
-      return $$0;
-   }
-
-   public static record a(eex[] a, eex[] b, Set<efd> c) {
-
-      public void a(ug $$0) {
-         $$0.a(this.c, ($$0x, $$1) -> $$1.a($$0x));
-         eez.a($$0, this.a);
-         eez.a($$0, this.b);
+      double $$7 = this.d(new hx($$1.a, $$1.b, $$1.c));
+      efd $$8 = this.a($$1.a, $$1.b + 1, $$1.c, Math.max(0, $$5 - 1), $$7, ic.b, $$4);
+      efd $$9 = this.a($$1.a, $$1.b - 1, $$1.c, $$5, $$7, ic.a, $$4);
+      if (this.b($$8, $$1)) {
+         $$0[$$2++] = $$8;
       }
 
-      public static eez.a b(ug $$0) {
-         HashSet<efd> $$1 = $$0.a(HashSet::new, efd::c);
-         eex[] $$2 = eez.c($$0);
-         eex[] $$3 = eez.c($$0);
-         return new eez.a($$2, $$3, $$1);
+      if (this.b($$9, $$1) && $$4 != efb.e) {
+         $$0[$$2++] = $$9;
+      }
+
+      for (int $$10 = 0; $$10 < $$2; $$10++) {
+         efd $$11 = $$0[$$10];
+         if ($$11.l == efb.j && this.l && $$11.b < this.b.dM().A_() - 10) {
+            $$11.k++;
+         }
+      }
+
+      return $$2;
+   }
+
+   private boolean b(@Nullable efd $$0, efd $$1) {
+      return this.a($$0, $$1) && $$0.l == efb.j;
+   }
+
+   @Override
+   protected boolean c() {
+      return true;
+   }
+
+   @Override
+   public efb a(csu $$0, int $$1, int $$2, int $$3) {
+      hx.a $$4 = new hx.a();
+      efb $$5 = b($$0, $$4.d($$1, $$2, $$3));
+      if ($$5 == efb.j) {
+         for (ic $$6 : ic.values()) {
+            efb $$7 = b($$0, $$4.d($$1, $$2, $$3).c($$6));
+            if ($$7 == efb.a) {
+               return efb.k;
+            }
+         }
+
+         return efb.j;
+      } else {
+         return a($$0, $$4);
       }
    }
 }

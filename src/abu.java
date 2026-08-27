@@ -1,20 +1,20 @@
-public class abu implements xd<yx> {
+public class abu implements xf<za> {
    private final int a;
 
-   public abu(int $$0) {
-      this.a = $$0;
+   public abu(dkx $$0) {
+      this.a = $$0.q();
    }
 
-   public abu(ug $$0) {
-      this.a = $$0.readByte();
+   public abu(ui $$0) {
+      this.a = $$0.n();
    }
 
    @Override
-   public void a(ug $$0) {
-      $$0.k(this.a);
+   public void a(ui $$0) {
+      $$0.c(this.a);
    }
 
-   public void a(yx $$0) {
+   public void a(za $$0) {
       $$0.a(this);
    }
 

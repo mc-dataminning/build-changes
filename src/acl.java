@@ -1,40 +1,38 @@
-public class acl implements xd<yx> {
-   private final long a;
-   private final long b;
+import javax.annotation.Nullable;
 
-   public acl(long $$0, long $$1, boolean $$2) {
-      this.a = $$0;
-      long $$3 = $$1;
-      if (!$$2) {
-         $$3 = -$$1;
-         if ($$3 == 0L) {
-            $$3 = -1L;
-         }
-      }
-
-      this.b = $$3;
-   }
-
-   public acl(ug $$0) {
-      this.a = $$0.readLong();
-      this.b = $$0.readLong();
+public record acl(String a, String b, int c, @Nullable vf d, @Nullable wv e) implements xf<za> {
+   public acl(ui $$0) {
+      this($$0.s(), $$0.s(), $$0.n(), $$0.c(ui::m), $$0.c(wx::a));
    }
 
    @Override
-   public void a(ug $$0) {
-      $$0.b(this.a);
-      $$0.b(this.b);
+   public void a(ui $$0) {
+      $$0.a(this.a);
+      $$0.a(this.b);
+      $$0.c(this.c);
+      $$0.a(this.d, ui::a);
+      $$0.a(this.e, wx::a);
    }
 
-   public void a(yx $$0) {
+   public void a(za $$0) {
       $$0.a(this);
    }
 
-   public long a() {
-      return this.a;
+   public String d() {
+      return this.b;
    }
 
-   public long d() {
-      return this.b;
+   public int e() {
+      return this.c;
+   }
+
+   @Nullable
+   public vf f() {
+      return this.d;
+   }
+
+   @Nullable
+   public wv g() {
+      return this.e;
    }
 }

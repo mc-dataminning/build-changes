@@ -1,50 +1,78 @@
-import com.google.common.collect.Maps;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.util.List;
-import java.util.Map;
+import com.mojang.serialization.Dynamic;
 
-public class cts {
-   private final Long2ObjectMap<List<ana>> a = new Long2ObjectOpenHashMap();
-   private final Map<ana, cts.a> b = Maps.newHashMap();
-   private final amj c;
+public final class cts {
+   private final String a;
+   private final ctl b;
+   private final boolean c;
+   private final bjx d;
+   private final boolean e;
+   private final ctk f;
+   private final cui g;
 
-   public cts(amj $$0) {
-      this.c = $$0;
+   public cts(String $$0, ctl $$1, boolean $$2, bjx $$3, boolean $$4, ctk $$5, cui $$6) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
+      this.g = $$6;
    }
 
-   private List<ana> a(csp $$0) {
-      return (List<ana>)this.a.computeIfAbsent($$0.a(), $$1 -> this.c.d($$0));
+   public static cts a(Dynamic<?> $$0, cui $$1) {
+      ctl $$2 = ctl.a($$0.get("GameType").asInt(0));
+      return new cts(
+         $$0.get("LevelName").asString(""),
+         $$2,
+         $$0.get("hardcore").asBoolean(false),
+         $$0.get("Difficulty").asNumber().map($$0x -> bjx.a($$0x.byteValue())).result().orElse(bjx.c),
+         $$0.get("allowCommands").asBoolean($$2 == ctl.b),
+         new ctk($$0.get("GameRules")),
+         $$1
+      );
    }
 
-   public void a(csp $$0, bmi $$1) {
-      for (ana $$2 : this.a($$0)) {
-         this.b.computeIfAbsent($$2, $$0x -> new cts.a()).a($$1);
-      }
+   public String a() {
+      return this.a;
    }
 
-   public boolean a(bmi $$0, csp $$1) {
-      for (ana $$2 : this.a($$1)) {
-         cts.a $$3 = this.b.get($$2);
-         if ($$3 == null || $$3.b($$0)) {
-            return true;
-         }
-      }
-
-      return false;
+   public ctl b() {
+      return this.b;
    }
 
-   static class a {
-      private final Object2IntMap<bmi> a = new Object2IntOpenHashMap(bmi.values().length);
+   public boolean c() {
+      return this.c;
+   }
 
-      public void a(bmi $$0) {
-         this.a.computeInt($$0, ($$0x, $$1) -> $$1 == null ? 1 : $$1 + 1);
-      }
+   public bjx d() {
+      return this.d;
+   }
 
-      public boolean b(bmi $$0) {
-         return this.a.getOrDefault($$0, 0) < $$0.b();
-      }
+   public boolean e() {
+      return this.e;
+   }
+
+   public ctk f() {
+      return this.f;
+   }
+
+   public cui g() {
+      return this.g;
+   }
+
+   public cts a(ctl $$0) {
+      return new cts(this.a, $$0, this.c, this.d, this.e, this.f, this.g);
+   }
+
+   public cts a(bjx $$0) {
+      return new cts(this.a, this.b, this.c, $$0, this.e, this.f, this.g);
+   }
+
+   public cts a(cui $$0) {
+      return new cts(this.a, this.b, this.c, this.d, this.e, this.f, $$0);
+   }
+
+   public cts h() {
+      return new cts(this.a, this.b, this.c, this.d, this.e, this.f.b(), this.g);
    }
 }

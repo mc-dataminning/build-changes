@@ -1,35 +1,64 @@
-public interface vs {
-   vd a();
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import java.util.ArrayDeque;
+import java.util.List;
+import java.util.Set;
+import javax.annotation.Nullable;
+import org.jetbrains.annotations.VisibleForTesting;
 
-   void a(ana var1, boolean var2, uz.a var3);
+public class vs {
+   public static final int a = -1;
+   private static final int b = 128;
+   private final vr[] c;
 
-   static vs a(vt $$0) {
-      return (vs)($$0.g() ? new vs.a($$0.c()) : new vs.b($$0));
+   public vs(int $$0) {
+      this.c = new vr[$$0];
    }
 
-   public static record a(vd a) implements vs {
-      @Override
-      public void a(ana $$0, boolean $$1, uz.a $$2) {
-         $$0.c.a(this.a, $$2);
-      }
+   public static vs a() {
+      return new vs(128);
    }
 
-   public static record b(vt a) implements vs {
-      @Override
-      public vd a() {
-         return this.a.c();
-      }
-
-      @Override
-      public void a(ana $$0, boolean $$1, uz.a $$2) {
-         vt $$3 = this.a.a($$1);
-         if (!$$3.i()) {
-            $$0.c.a($$3, $$2);
+   public int a(vr $$0) {
+      for (int $$1 = 0; $$1 < this.c.length; $$1++) {
+         if ($$0.equals(this.c[$$1])) {
+            return $$1;
          }
       }
 
-      public vt b() {
-         return this.a;
+      return -1;
+   }
+
+   @Nullable
+   public vr a(int $$0) {
+      return this.c[$$0];
+   }
+
+   public void a(vv $$0) {
+      List<vr> $$1 = $$0.l().d().a();
+      ArrayDeque<vr> $$2 = new ArrayDeque<>($$1.size() + 1);
+      $$2.addAll($$1);
+      vr $$3 = $$0.k();
+      if ($$3 != null) {
+         $$2.add($$3);
+      }
+
+      this.a($$2);
+   }
+
+   @VisibleForTesting
+   void a(List<vr> $$0) {
+      this.a(new ArrayDeque<>($$0));
+   }
+
+   private void a(ArrayDeque<vr> $$0) {
+      Set<vr> $$1 = new ObjectOpenHashSet($$0);
+
+      for (int $$2 = 0; !$$0.isEmpty() && $$2 < this.c.length; $$2++) {
+         vr $$3 = this.c[$$2];
+         this.c[$$2] = $$0.removeLast();
+         if ($$3 != null && !$$1.contains($$3)) {
+            $$0.addFirst($$3);
+         }
       }
    }
 }

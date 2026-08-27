@@ -1,245 +1,384 @@
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.longs.Long2FloatLinkedOpenHashMap;
 import java.util.Optional;
-import java.util.OptionalInt;
 import javax.annotation.Nullable;
 
-public class cun {
+public final class cun {
    public static final Codec<cun> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               Codec.INT.fieldOf("fog_color").forGetter($$0x -> $$0x.b),
-               Codec.INT.fieldOf("water_color").forGetter($$0x -> $$0x.c),
-               Codec.INT.fieldOf("water_fog_color").forGetter($$0x -> $$0x.d),
-               Codec.INT.fieldOf("sky_color").forGetter($$0x -> $$0x.e),
-               Codec.INT.optionalFieldOf("foliage_color").forGetter($$0x -> $$0x.f),
-               Codec.INT.optionalFieldOf("grass_color").forGetter($$0x -> $$0x.g),
-               cun.b.d.optionalFieldOf("grass_color_modifier", cun.b.a).forGetter($$0x -> $$0x.h),
-               cug.a.optionalFieldOf("particle").forGetter($$0x -> $$0x.i),
-               arl.b.optionalFieldOf("ambient_sound").forGetter($$0x -> $$0x.j),
-               cuf.a.optionalFieldOf("mood_sound").forGetter($$0x -> $$0x.k),
-               cue.a.optionalFieldOf("additions_sound").forGetter($$0x -> $$0x.l),
-               arj.a.optionalFieldOf("music").forGetter($$0x -> $$0x.m)
+               cun.b.a.forGetter($$0x -> $$0x.i),
+               cut.a.fieldOf("effects").forGetter($$0x -> $$0x.l),
+               cuo.b.forGetter($$0x -> $$0x.j),
+               cuz.c.forGetter($$0x -> $$0x.k)
             )
             .apply($$0, cun::new)
    );
-   private final int b;
-   private final int c;
-   private final int d;
-   private final int e;
-   private final Optional<Integer> f;
-   private final Optional<Integer> g;
-   private final cun.b h;
-   private final Optional<cug> i;
-   private final Optional<ih<arl>> j;
-   private final Optional<cuf> k;
-   private final Optional<cue> l;
-   private final Optional<arj> m;
+   public static final Codec<cun> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(cun.b.a.forGetter($$0x -> $$0x.i), cut.a.fieldOf("effects").forGetter($$0x -> $$0x.l))
+            .apply($$0, ($$0x, $$1) -> new cun($$0x, $$1, cuo.a, cuz.b))
+   );
+   public static final Codec<ih<cun>> c = ahc.a(ke.at, a);
+   public static final Codec<il<cun>> d = iv.a(ke.at, a);
+   private static final edv f = new edv(new dpo(new doq(1234L)), ImmutableList.of(0));
+   static final edv g = new edv(new dpo(new doq(3456L)), ImmutableList.of(-2, -1, 0));
+   @Deprecated(
+      forRemoval = true
+   )
+   public static final edv e = new edv(new dpo(new doq(2345L)), ImmutableList.of(0));
+   private static final int h = 1024;
+   private final cun.b i;
+   private final cuo j;
+   private final cuz k;
+   private final cut l;
+   private final ThreadLocal<Long2FloatLinkedOpenHashMap> m = ThreadLocal.withInitial(() -> ac.a(() -> {
+         Long2FloatLinkedOpenHashMap $$0x = new Long2FloatLinkedOpenHashMap(1024, 0.25F) {
+            protected void rehash(int $$0) {
+            }
+         };
+         $$0x.defaultReturnValue(Float.NaN);
+         return $$0x;
+      }));
 
-   cun(
-      int $$0,
-      int $$1,
-      int $$2,
-      int $$3,
-      Optional<Integer> $$4,
-      Optional<Integer> $$5,
-      cun.b $$6,
-      Optional<cug> $$7,
-      Optional<ih<arl>> $$8,
-      Optional<cuf> $$9,
-      Optional<cue> $$10,
-      Optional<arj> $$11
-   ) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = $$7;
-      this.j = $$8;
-      this.k = $$9;
-      this.l = $$10;
-      this.m = $$11;
+   cun(cun.b $$0, cut $$1, cuo $$2, cuz $$3) {
+      this.i = $$0;
+      this.j = $$2;
+      this.k = $$3;
+      this.l = $$1;
    }
 
    public int a() {
-      return this.b;
+      return this.l.d();
    }
 
-   public int b() {
-      return this.c;
-   }
-
-   public int c() {
-      return this.d;
-   }
-
-   public int d() {
-      return this.e;
-   }
-
-   public Optional<Integer> e() {
-      return this.f;
-   }
-
-   public Optional<Integer> f() {
-      return this.g;
-   }
-
-   public cun.b g() {
-      return this.h;
-   }
-
-   public Optional<cug> h() {
-      return this.i;
-   }
-
-   public Optional<ih<arl>> i() {
-      return this.j;
-   }
-
-   public Optional<cuf> j() {
+   public cuz b() {
       return this.k;
    }
 
-   public Optional<cue> k() {
+   public boolean c() {
+      return this.i.a();
+   }
+
+   public cun.c a(hx $$0) {
+      if (!this.c()) {
+         return cun.c.a;
+      } else {
+         return this.b($$0) ? cun.c.c : cun.c.b;
+      }
+   }
+
+   private float e(hx $$0) {
+      float $$1 = this.i.d.a($$0, this.g());
+      if ($$0.v() > 80) {
+         float $$2 = (float)(f.a((double)((float)$$0.u() / 8.0F), (double)((float)$$0.w() / 8.0F), false) * 8.0);
+         return $$1 - ($$2 + (float)$$0.v() - 80.0F) * 0.05F / 40.0F;
+      } else {
+         return $$1;
+      }
+   }
+
+   @Deprecated
+   private float f(hx $$0) {
+      long $$1 = $$0.a();
+      Long2FloatLinkedOpenHashMap $$2 = this.m.get();
+      float $$3 = $$2.get($$1);
+      if (!Float.isNaN($$3)) {
+         return $$3;
+      } else {
+         float $$4 = this.e($$0);
+         if ($$2.size() == 1024) {
+            $$2.removeFirstFloat();
+         }
+
+         $$2.put($$1, $$4);
+         return $$4;
+      }
+   }
+
+   public boolean a(ctr $$0, hx $$1) {
+      return this.a($$0, $$1, true);
+   }
+
+   public boolean a(ctr $$0, hx $$1, boolean $$2) {
+      if (this.c($$1)) {
+         return false;
+      } else {
+         if ($$1.v() >= $$0.J_() && $$1.v() < $$0.al() && $$0.a(ctx.b, $$1) < 10) {
+            djg $$3 = $$0.a_($$1);
+            eeq $$4 = $$0.b_($$1);
+            if ($$4.a() == eer.c && $$3.b() instanceof dbe) {
+               if (!$$2) {
+                  return true;
+               }
+
+               boolean $$5 = $$0.z($$1.g()) && $$0.z($$1.h()) && $$0.z($$1.e()) && $$0.z($$1.f());
+               if (!$$5) {
+                  return true;
+               }
+            }
+         }
+
+         return false;
+      }
+   }
+
+   public boolean b(hx $$0) {
+      return !this.c($$0);
+   }
+
+   public boolean c(hx $$0) {
+      return this.f($$0) >= 0.15F;
+   }
+
+   public boolean d(hx $$0) {
+      return this.f($$0) > 0.1F;
+   }
+
+   public boolean b(ctr $$0, hx $$1) {
+      if (this.c($$1)) {
+         return false;
+      } else {
+         if ($$1.v() >= $$0.J_() && $$1.v() < $$0.al() && $$0.a(ctx.b, $$1) < 10) {
+            djg $$2 = $$0.a_($$1);
+            if (($$2.i() || $$2.a(cwr.dN)) && cwr.dN.o().a($$0, $$1)) {
+               return true;
+            }
+         }
+
+         return false;
+      }
+   }
+
+   public cuo d() {
+      return this.j;
+   }
+
+   public int e() {
+      return this.l.a();
+   }
+
+   public int a(double $$0, double $$1) {
+      int $$2 = this.l.f().orElseGet(this::p);
+      return this.l.g().a($$0, $$1, $$2);
+   }
+
+   private int p() {
+      double $$0 = (double)aun.a(this.i.c, 0.0F, 1.0F);
+      double $$1 = (double)aun.a(this.i.e, 0.0F, 1.0F);
+      return ctm.a($$0, $$1);
+   }
+
+   public int f() {
+      return this.l.e().orElseGet(this::q);
+   }
+
+   private int q() {
+      double $$0 = (double)aun.a(this.i.c, 0.0F, 1.0F);
+      double $$1 = (double)aun.a(this.i.e, 0.0F, 1.0F);
+      return cti.a($$0, $$1);
+   }
+
+   public float g() {
+      return this.i.c;
+   }
+
+   public cut h() {
       return this.l;
    }
 
-   public Optional<arj> l() {
-      return this.m;
+   public int i() {
+      return this.l.b();
+   }
+
+   public int j() {
+      return this.l.c();
+   }
+
+   public Optional<cum> k() {
+      return this.l.h();
+   }
+
+   public Optional<ih<arq>> l() {
+      return this.l.i();
+   }
+
+   public Optional<cul> m() {
+      return this.l.j();
+   }
+
+   public Optional<cuk> n() {
+      return this.l.k();
+   }
+
+   public Optional<aro> o() {
+      return this.l.l();
    }
 
    public static class a {
-      private OptionalInt a = OptionalInt.empty();
-      private OptionalInt b = OptionalInt.empty();
-      private OptionalInt c = OptionalInt.empty();
-      private OptionalInt d = OptionalInt.empty();
-      private Optional<Integer> e = Optional.empty();
-      private Optional<Integer> f = Optional.empty();
-      private cun.b g = cun.b.a;
-      private Optional<cug> h = Optional.empty();
-      private Optional<ih<arl>> i = Optional.empty();
-      private Optional<cuf> j = Optional.empty();
-      private Optional<cue> k = Optional.empty();
-      private Optional<arj> l = Optional.empty();
+      private boolean a = true;
+      @Nullable
+      private Float b;
+      private cun.d c = cun.d.a;
+      @Nullable
+      private Float d;
+      @Nullable
+      private cut e;
+      @Nullable
+      private cuz f;
+      @Nullable
+      private cuo g;
 
-      public cun.a a(int $$0) {
-         this.a = OptionalInt.of($$0);
+      public cun.a a(boolean $$0) {
+         this.a = $$0;
          return this;
       }
 
-      public cun.a b(int $$0) {
-         this.b = OptionalInt.of($$0);
+      public cun.a a(float $$0) {
+         this.b = $$0;
          return this;
       }
 
-      public cun.a c(int $$0) {
-         this.c = OptionalInt.of($$0);
+      public cun.a b(float $$0) {
+         this.d = $$0;
          return this;
       }
 
-      public cun.a d(int $$0) {
-         this.d = OptionalInt.of($$0);
+      public cun.a a(cut $$0) {
+         this.e = $$0;
          return this;
       }
 
-      public cun.a e(int $$0) {
-         this.e = Optional.of($$0);
+      public cun.a a(cuz $$0) {
+         this.f = $$0;
          return this;
       }
 
-      public cun.a f(int $$0) {
-         this.f = Optional.of($$0);
-         return this;
-      }
-
-      public cun.a a(cun.b $$0) {
+      public cun.a a(cuo $$0) {
          this.g = $$0;
          return this;
       }
 
-      public cun.a a(cug $$0) {
-         this.h = Optional.of($$0);
-         return this;
-      }
-
-      public cun.a a(ih<arl> $$0) {
-         this.i = Optional.of($$0);
-         return this;
-      }
-
-      public cun.a a(cuf $$0) {
-         this.j = Optional.of($$0);
-         return this;
-      }
-
-      public cun.a a(cue $$0) {
-         this.k = Optional.of($$0);
-         return this;
-      }
-
-      public cun.a a(@Nullable arj $$0) {
-         this.l = Optional.ofNullable($$0);
+      public cun.a a(cun.d $$0) {
+         this.c = $$0;
          return this;
       }
 
       public cun a() {
-         return new cun(
-            this.a.orElseThrow(() -> new IllegalStateException("Missing 'fog' color.")),
-            this.b.orElseThrow(() -> new IllegalStateException("Missing 'water' color.")),
-            this.c.orElseThrow(() -> new IllegalStateException("Missing 'water fog' color.")),
-            this.d.orElseThrow(() -> new IllegalStateException("Missing 'sky' color.")),
-            this.e,
-            this.f,
-            this.g,
-            this.h,
-            this.i,
-            this.j,
-            this.k,
-            this.l
-         );
+         if (this.b != null && this.d != null && this.e != null && this.f != null && this.g != null) {
+            return new cun(new cun.b(this.a, this.b, this.c, this.d), this.e, this.g, this.f);
+         } else {
+            throw new IllegalStateException("You are missing parameters to build a proper biome\n" + this);
+         }
+      }
+
+      @Override
+      public String toString() {
+         return "BiomeBuilder{\nhasPrecipitation="
+            + this.a
+            + ",\ntemperature="
+            + this.b
+            + ",\ntemperatureModifier="
+            + this.c
+            + ",\ndownfall="
+            + this.d
+            + ",\nspecialEffects="
+            + this.e
+            + ",\nmobSpawnSettings="
+            + this.f
+            + ",\ngenerationSettings="
+            + this.g
+            + ",\n}";
       }
    }
 
-   public static enum b implements ave {
-      a("none") {
-         @Override
-         public int a(double $$0, double $$1, int $$2) {
-            return $$2;
-         }
-      },
-      b("dark_forest") {
-         @Override
-         public int a(double $$0, double $$1, int $$2) {
-            return ($$2 & 16711422) + 2634762 >> 1;
-         }
-      },
-      c("swamp") {
-         @Override
-         public int a(double $$0, double $$1, int $$2) {
-            double $$3 = cuh.e.a($$0 * 0.0225, $$1 * 0.0225, false);
-            return $$3 < -0.1 ? 5011004 : 6975545;
-         }
-      };
+   static record b(boolean b, float c, cun.d d, float e) {
+      public static final MapCodec<cun.b> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(
+                  Codec.BOOL.fieldOf("has_precipitation").forGetter($$0x -> $$0x.b),
+                  Codec.FLOAT.fieldOf("temperature").forGetter($$0x -> $$0x.c),
+                  cun.d.c.optionalFieldOf("temperature_modifier", cun.d.a).forGetter($$0x -> $$0x.d),
+                  Codec.FLOAT.fieldOf("downfall").forGetter($$0x -> $$0x.e)
+               )
+               .apply($$0, cun.b::new)
+      );
 
-      private final String e;
-      public static final Codec<cun.b> d = ave.a(cun.b::values);
-
-      public abstract int a(double var1, double var3, int var5);
-
-      b(String $$0) {
-         this.e = $$0;
+      public boolean a() {
+         return this.b;
       }
 
-      public String a() {
+      public float b() {
+         return this.c;
+      }
+
+      public cun.d c() {
+         return this.d;
+      }
+
+      public float d() {
          return this.e;
+      }
+   }
+
+   public static enum c implements avj {
+      a("none"),
+      b("rain"),
+      c("snow");
+
+      public static final Codec<cun.c> d = avj.a(cun.c::values);
+      private final String e;
+
+      private c(String $$0) {
+         this.e = $$0;
       }
 
       @Override
       public String c() {
          return this.e;
+      }
+   }
+
+   public static enum d implements avj {
+      a("none") {
+         @Override
+         public float a(hx $$0, float $$1) {
+            return $$1;
+         }
+      },
+      b("frozen") {
+         @Override
+         public float a(hx $$0, float $$1) {
+            double $$2 = cun.g.a((double)$$0.u() * 0.05, (double)$$0.w() * 0.05, false) * 7.0;
+            double $$3 = cun.e.a((double)$$0.u() * 0.2, (double)$$0.w() * 0.2, false);
+            double $$4 = $$2 + $$3;
+            if ($$4 < 0.3) {
+               double $$5 = cun.e.a((double)$$0.u() * 0.09, (double)$$0.w() * 0.09, false);
+               if ($$5 < 0.8) {
+                  return 0.2F;
+               }
+            }
+
+            return $$1;
+         }
+      };
+
+      private final String d;
+      public static final Codec<cun.d> c = avj.a(cun.d::values);
+
+      public abstract float a(hx var1, float var2);
+
+      d(String $$0) {
+         this.d = $$0;
+      }
+
+      public String a() {
+         return this.d;
+      }
+
+      @Override
+      public String c() {
+         return this.d;
       }
    }
 }

@@ -1,37 +1,63 @@
-import java.util.function.IntFunction;
+import com.mojang.datafixers.DataFixer;
+import com.mojang.logging.LogUtils;
+import java.nio.file.Path;
+import org.slf4j.Logger;
 
-public enum evc {
-   a(0, "options.narrator.off"),
-   b(1, "options.narrator.all"),
-   c(2, "options.narrator.chat"),
-   d(3, "options.narrator.system");
+public class evc {
+   private static final Logger b = LogUtils.getLogger();
+   public static final int a = 9;
+   private final Path c;
+   private final DataFixer d;
+   private final fsj[] e = new fsj[9];
+   private boolean f;
 
-   private static final IntFunction<evc> e = ata.a(evc::a, values(), ata.a.b);
-   private final int f;
-   private final vd g;
+   public evc(Path $$0, DataFixer $$1) {
+      this.c = $$0.resolve("hotbar.nbt");
+      this.d = $$1;
 
-   private evc(int $$0, String $$1) {
-      this.f = $$0;
-      this.g = vd.c($$1);
+      for (int $$2 = 0; $$2 < 9; $$2++) {
+         this.e[$$2] = new fsj();
+      }
    }
 
-   public int a() {
-      return this.f;
+   private void b() {
+      try {
+         sn $$0 = ta.a(this.c);
+         if ($$0 == null) {
+            return;
+         }
+
+         int $$1 = tc.b($$0, 1343);
+         $$0 = avv.d.a(this.d, $$0, $$1);
+
+         for (int $$2 = 0; $$2 < 9; $$2++) {
+            this.e[$$2].a($$0.c(String.valueOf($$2), 10));
+         }
+      } catch (Exception var4) {
+         b.error("Failed to load creative mode options", var4);
+      }
    }
 
-   public vd b() {
-      return this.g;
+   public void a() {
+      try {
+         sn $$0 = tc.g(new sn());
+
+         for (int $$1 = 0; $$1 < 9; $$1++) {
+            $$0.a(String.valueOf($$1), this.a($$1).a());
+         }
+
+         ta.b($$0, this.c);
+      } catch (Exception var3) {
+         b.error("Failed to save creative mode options", var3);
+      }
    }
 
-   public static evc a(int $$0) {
-      return e.apply($$0);
-   }
+   public fsj a(int $$0) {
+      if (!this.f) {
+         this.b();
+         this.f = true;
+      }
 
-   public boolean c() {
-      return this == b || this == c;
-   }
-
-   public boolean d() {
-      return this == b || this == d;
+      return this.e[$$0];
    }
 }

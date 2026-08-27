@@ -1,17 +1,18 @@
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
 
-public interface aqd extends apw {
-   @Override
-   default CompletableFuture<Void> a(apw.a $$0, aqc $$1, bgm $$2, bgm $$3, Executor $$4, Executor $$5) {
-      return $$0.a(avm.a).thenRunAsync(() -> {
-         $$3.a();
-         $$3.a("listener");
-         this.a($$1);
-         $$3.c();
-         $$3.b();
-      }, $$5);
+public interface aqd {
+   CompletableFuture<?> a();
+
+   float b();
+
+   default boolean c() {
+      return this.a().isDone();
    }
 
-   void a(aqc var1);
+   default void d() {
+      CompletableFuture<?> $$0 = this.a();
+      if ($$0.isCompletedExceptionally()) {
+         $$0.join();
+      }
+   }
 }

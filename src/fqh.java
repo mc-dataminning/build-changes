@@ -1,53 +1,67 @@
-public class fqh extends fqn {
-   private static final int a = 3;
-   private final ftf b;
-   private final blp D;
-   private final blp E;
-   private int F;
-   private final fyd G;
+import org.joml.Vector3f;
 
-   public fqh(fyd $$0, ftf $$1, fnk $$2, blp $$3, blp $$4) {
-      this($$0, $$1, $$2, $$3, $$4, $$3.dp());
-   }
+public class fqh extends frt {
+   private final Vector3f a = new Vector3f(0.5F, 0.5F, 0.5F);
+   private final Vector3f b = new Vector3f(1.0F, 1.0F, 1.0F);
 
-   private fqh(fyd $$0, ftf $$1, fnk $$2, blp $$3, blp $$4, elm $$5) {
-      super($$2, $$3.dr(), $$3.dt(), $$3.dx(), $$5.c, $$5.d, $$5.e);
-      this.b = $$1;
-      this.D = this.a($$3);
-      this.E = $$4;
-      this.G = $$0;
-   }
-
-   private blp a(blp $$0) {
-      return (blp)(!($$0 instanceof cbo) ? $$0 : ((cbo)$$0).D());
+   fqh(fnq $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super($$0, $$1, $$2, $$3);
+      this.n = false;
+      this.j = $$4 + (double)aun.b(this.r, -0.4F, 0.4F);
+      this.l = $$6 + (double)aun.b(this.r, -0.4F, 0.4F);
+      double $$7 = Math.random() * 2.0;
+      double $$8 = Math.sqrt(this.j * this.j + this.k * this.k + this.l * this.l);
+      this.j = this.j / $$8 * $$7 * 0.4F;
+      this.l = this.l / $$8 * $$7 * 0.4F;
+      this.D *= 2.5F;
+      this.j *= 0.08F;
+      this.l *= 0.08F;
+      this.t = 18 + this.r.a(4);
    }
 
    @Override
-   public fqr b() {
-      return fqr.e;
+   public void a(eqd $$0, eur $$1, float $$2) {
+      this.f($$2);
+      super.a($$0, $$1, $$2);
+   }
+
+   private void f(float $$0) {
+      float $$1 = ((float)this.s + $$0) / (float)(this.t + 1);
+      Vector3f $$2 = new Vector3f(this.a).lerp(this.b, $$1);
+      this.v = $$2.x();
+      this.w = $$2.y();
+      this.x = $$2.z();
    }
 
    @Override
-   public void a(epx $$0, eul $$1, float $$2) {
-      float $$3 = ((float)this.F + $$2) / 3.0F;
-      $$3 *= $$3;
-      double $$4 = aui.d((double)$$2, this.E.ac, this.E.dr());
-      double $$5 = aui.d((double)$$2, this.E.ad, (this.E.dt() + this.E.dv()) / 2.0);
-      double $$6 = aui.d((double)$$2, this.E.ae, this.E.dx());
-      double $$7 = aui.d((double)$$3, this.D.dr(), $$4);
-      double $$8 = aui.d((double)$$3, this.D.dt(), $$5);
-      double $$9 = aui.d((double)$$3, this.D.dx(), $$6);
-      fsz.a $$10 = this.b.c();
-      elm $$11 = $$1.b();
-      this.G.a(this.D, $$7 - $$11.a(), $$8 - $$11.b(), $$9 - $$11.c(), this.D.dC(), $$2, new ept(), $$10, this.G.a(this.D, $$2));
-      $$10.b();
+   public fqx b() {
+      return fqx.c;
    }
 
    @Override
    public void a() {
-      this.F++;
-      if (this.F == 3) {
+      if (this.s++ >= this.t) {
          this.k();
+      } else {
+         this.d = this.g;
+         this.f = this.i;
+         this.a(this.j, 0.0, this.l);
+         this.j *= 0.99;
+         this.l *= 0.99;
+      }
+   }
+
+   public static class a implements fqw<ka> {
+      private final fro a;
+
+      public a(fro $$0) {
+         this.a = $$0;
+      }
+
+      public fqt a(ka $$0, fnq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fqh $$8 = new fqh($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         return $$8;
       }
    }
 }

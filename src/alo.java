@@ -1,62 +1,51 @@
-import com.mojang.brigadier.builder.ArgumentBuilder;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Locale;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableList;
+import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
+import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import java.util.Collection;
 
-public class alo implements alp {
-   static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(vd.c("commands.data.block.invalid"));
-   public static final Function<String, alq.c> a = $$0 -> new alq.c() {
-         @Override
-         public alp a(CommandContext<ds> $$0x) throws CommandSyntaxException {
-            hx $$1 = fm.a($$0, $$0 + "Pos");
-            dgo $$2 = ((ds)$$0.getSource()).e().c_($$1);
-            if ($$2 == null) {
-               throw alo.b.create();
-            } else {
-               return new alo($$2, $$1);
-            }
-         }
-
-         @Override
-         public ArgumentBuilder<ds, ?> a(ArgumentBuilder<ds, ?> $$0x, Function<ArgumentBuilder<ds, ?>, ArgumentBuilder<ds, ?>> $$1) {
-            return $$0.then(dt.a("block").then($$1.apply(dt.a($$0 + "Pos", fm.a()))));
-         }
-      };
-   private final dgo c;
-   private final hx d;
-
-   public alo(dgo $$0, hx $$1) {
-      this.c = $$0;
-      this.d = $$1;
+public class alo {
+   public static void a(CommandDispatcher<ds> $$0) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("warden_spawn_tracker").requires($$0x -> $$0x.c(2)))
+               .then(dt.a("clear").executes($$0x -> a((ds)$$0x.getSource(), ImmutableList.of(((ds)$$0x.getSource()).h())))))
+            .then(
+               dt.a("set")
+                  .then(
+                     dt.a("warning_level", IntegerArgumentType.integer(0, 4))
+                        .executes(
+                           $$0x -> a((ds)$$0x.getSource(), ImmutableList.of(((ds)$$0x.getSource()).h()), IntegerArgumentType.getInteger($$0x, "warning_level"))
+                        )
+                  )
+            )
+      );
    }
 
-   @Override
-   public void a(sl $$0) {
-      dja $$1 = this.c.i().a_(this.d);
-      this.c.a($$0);
-      this.c.e();
-      this.c.i().a(this.d, $$1, $$1, 3);
+   private static int a(ds $$0, Collection<? extends cfh> $$1, int $$2) {
+      for (cfh $$3 : $$1) {
+         $$3.aa().ifPresent($$1x -> $$1x.a($$2));
+      }
+
+      if ($$1.size() == 1) {
+         $$0.a(() -> vf.a("commands.warden_spawn_tracker.set.success.single", $$1.iterator().next().Q_()), true);
+      } else {
+         $$0.a(() -> vf.a("commands.warden_spawn_tracker.set.success.multiple", $$1.size()), true);
+      }
+
+      return $$1.size();
    }
 
-   @Override
-   public sl a() {
-      return this.c.o();
-   }
+   private static int a(ds $$0, Collection<? extends cfh> $$1) {
+      for (cfh $$2 : $$1) {
+         $$2.aa().ifPresent(cen::b);
+      }
 
-   @Override
-   public vd b() {
-      return vd.a("commands.data.block.modified", this.d.u(), this.d.v(), this.d.w());
-   }
+      if ($$1.size() == 1) {
+         $$0.a(() -> vf.a("commands.warden_spawn_tracker.clear.success.single", $$1.iterator().next().Q_()), true);
+      } else {
+         $$0.a(() -> vf.a("commands.warden_spawn_tracker.clear.success.multiple", $$1.size()), true);
+      }
 
-   @Override
-   public vd a(ti $$0) {
-      return vd.a("commands.data.block.query", this.d.u(), this.d.v(), this.d.w(), ta.c($$0));
-   }
-
-   @Override
-   public vd a(ek.g $$0, double $$1, int $$2) {
-      return vd.a("commands.data.block.get", $$0.a(), this.d.u(), this.d.v(), this.d.w(), String.format(Locale.ROOT, "%.2f", $$1), $$2);
+      return $$1.size();
    }
 }

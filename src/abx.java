@@ -1,32 +1,24 @@
-public class abx implements xd<yx> {
-   private final hx a;
-   private final float b;
+public class abx implements xf<za> {
+   private final int a;
 
-   public abx(hx $$0, float $$1) {
+   public abx(int $$0) {
       this.a = $$0;
-      this.b = $$1;
    }
 
-   public abx(ug $$0) {
-      this.a = $$0.e();
-      this.b = $$0.readFloat();
+   public abx(ui $$0) {
+      this.a = $$0.readByte();
    }
 
    @Override
-   public void a(ug $$0) {
-      $$0.a(this.a);
-      $$0.a(this.b);
+   public void a(ui $$0) {
+      $$0.k(this.a);
    }
 
-   public void a(yx $$0) {
+   public void a(za $$0) {
       $$0.a(this);
    }
 
-   public hx a() {
+   public int a() {
       return this.a;
-   }
-
-   public float d() {
-      return this.b;
    }
 }

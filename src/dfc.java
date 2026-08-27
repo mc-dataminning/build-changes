@@ -1,20 +1,39 @@
 import com.mojang.serialization.MapCodec;
 
-public class dfc extends czx {
-   public static final MapCodec<dfc> c = b(dfc::new);
-   public static final emf e = cwj.a(4.0, 0.0, 4.0, 12.0, 16.0, 12.0);
+public class dfc extends cxs {
+   public static final MapCodec<dfc> n = b(dfc::new);
 
    @Override
    public MapCodec<dfc> a() {
-      return c;
+      return n;
    }
 
-   public dfc(diz.d $$0) {
-      super($$0, ic.b, e, false);
+   public dfc(djf.d $$0) {
+      super($$0, () -> dgw.c);
    }
 
    @Override
-   protected czy c() {
-      return (czy)cwl.oB;
+   public dgu a(hx $$0, djg $$1) {
+      return new dim($$0, $$1);
+   }
+
+   @Override
+   protected ary<ahg> c() {
+      return asb.i.b(asb.ai);
+   }
+
+   @Override
+   public boolean f_(djg $$0) {
+      return true;
+   }
+
+   @Override
+   public int a(djg $$0, csu $$1, hx $$2, ic $$3) {
+      return aun.a(dhb.a($$1, $$2), 0, 15);
+   }
+
+   @Override
+   public int b(djg $$0, csu $$1, hx $$2, ic $$3) {
+      return $$3 == ic.b ? $$0.b($$1, $$2, $$3) : 0;
    }
 }

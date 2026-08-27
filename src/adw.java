@@ -1,24 +1,18 @@
-public class adw implements xd<adg> {
-   private final int a;
-
-   public adw(int $$0) {
-      this.a = $$0;
-   }
-
-   public void a(adg $$0) {
-      $$0.a(this);
-   }
-
-   public adw(ug $$0) {
-      this.a = $$0.readByte();
+public record adw() implements xf<adj> {
+   public adw(ui $$0) {
+      this();
    }
 
    @Override
-   public void a(ug $$0) {
-      $$0.k(this.a);
+   public void a(ui $$0) {
    }
 
-   public int a() {
-      return this.a;
+   public void a(adj $$0) {
+      $$0.a(this);
+   }
+
+   @Override
+   public uh c() {
+      return uh.e;
    }
 }

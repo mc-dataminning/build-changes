@@ -1,72 +1,88 @@
-public class fsi {
-   public static final vd a = vd.c("quickplay.error.title");
-   private static final vd b = vd.c("quickplay.error.invalid_identifier");
-   private static final vd c = vd.c("quickplay.error.realm_connect");
-   private static final vd d = vd.c("quickplay.error.realm_permission");
-   private static final vd e = vd.c("gui.toTitle");
-   private static final vd f = vd.c("gui.toWorld");
-   private static final vd g = vd.c("gui.toRealms");
+import com.mojang.authlib.GameProfile;
 
-   public static void a(eva $$0, fih.c $$1, eqj $$2) {
-      String $$3 = $$1.c();
-      String $$4 = $$1.d();
-      String $$5 = $$1.e();
-      if (!ac.b($$3)) {
-         a($$0, $$3);
-      } else if (!ac.b($$4)) {
-         b($$0, $$4);
-      } else if (!ac.b($$5)) {
-         a($$0, $$2, $$5);
-      }
+public class fsi extends fse {
+   private els cm = els.b;
+   private int cn;
+
+   public fsi(fnq $$0, GameProfile $$1) {
+      super($$0, $$1);
+      this.t(1.0F);
+      this.af = true;
    }
 
-   private static void a(eva $$0, String $$1) {
-      if (!$$0.l().b($$1)) {
-         fct $$2 = new fhp(new fcy());
-         $$0.a(new fbv($$2, a, b, f));
+   @Override
+   public boolean a(double $$0) {
+      double $$1 = this.cH().a() * 10.0;
+      if (Double.isNaN($$1)) {
+         $$1 = 1.0;
+      }
+
+      $$1 *= 64.0 * cA();
+      return $$0 < $$1 * $$1;
+   }
+
+   @Override
+   public boolean a(bks $$0, float $$1) {
+      return true;
+   }
+
+   @Override
+   public void l() {
+      super.l();
+      this.q(false);
+   }
+
+   @Override
+   public void d_() {
+      if (this.bn > 0) {
+         this.a(this.bn, this.bo, this.bp, this.bq, this.br, this.bs);
+         this.bn--;
+      }
+
+      if (this.bu > 0) {
+         this.a(this.bu, this.bt);
+         this.bu--;
+      }
+
+      if (this.cn > 0) {
+         this.h(new els((this.cm.c - this.dp().c) / (double)this.cn, (this.cm.d - this.dp().d) / (double)this.cn, (this.cm.e - this.dp().e) / (double)this.cn));
+         this.cn--;
+      }
+
+      this.bV = this.bW;
+      this.eQ();
+      float $$1;
+      if (this.aC() && !this.ew()) {
+         $$1 = (float)Math.min(0.1, this.dp().h());
       } else {
-         $$0.w().a($$1, () -> $$0.a(new fcy()));
+         $$1 = 0.0F;
       }
+
+      this.bW = this.bW + ($$1 - this.bW) * 0.4F;
+      this.dM().af().a("push");
+      this.M_();
+      this.dM().af().c();
    }
 
-   private static void b(eva $$0, String $$1) {
-      fnw $$2 = new fnw($$0);
-      $$2.a();
-      fnv $$3 = $$2.a($$1);
-      if ($$3 == null) {
-         $$3 = new fnv(gfl.a("selectServer.defaultName"), $$1, fnv.b.c);
-         $$2.a($$3, true);
-         $$2.b();
-      }
-
-      fox $$4 = fox.a($$1);
-      fbn.a(new ffr(new fcy()), $$0, $$4, $$3, true);
+   @Override
+   public void l(double $$0, double $$1, double $$2) {
+      this.cm = new els($$0, $$1, $$2);
+      this.cn = this.ai().p() + 1;
    }
 
-   private static void a(eva $$0, eqj $$1, String $$2) {
-      long $$3;
-      erc $$4;
-      try {
-         $$3 = Long.parseLong($$2);
-         $$4 = $$1.b();
-      } catch (NumberFormatException var9) {
-         fct $$6 = new eqe(new fcy());
-         $$0.a(new fbv($$6, a, b, g));
-         return;
-      } catch (erw var10) {
-         fct $$8 = new fcy();
-         $$0.a(new fbv($$8, a, c, e));
-         return;
-      }
+   @Override
+   protected void fM() {
+   }
 
-      era $$11 = $$4.a.stream().filter($$1x -> $$1x.a == $$3).findFirst().orElse(null);
-      if ($$11 == null) {
-         fct $$12 = new eqe(new fcy());
-         $$0.a(new fbv($$12, a, d, g));
-      } else {
-         fcy $$13 = new fcy();
-         etz $$14 = new etz($$13, $$11);
-         $$0.a(new esq($$13, $$14));
-      }
+   @Override
+   public void a(vf $$0) {
+      evg $$1 = evg.O();
+      $$1.l.d().a($$0);
+   }
+
+   @Override
+   public void a(zb $$0) {
+      super.a($$0);
+      this.bp();
    }
 }

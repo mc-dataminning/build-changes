@@ -1,119 +1,91 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
-import java.util.Collections;
+import com.google.common.collect.Sets;
+import com.mojang.datafixers.kinds.App;
+import com.mojang.datafixers.kinds.OptionalBox.Mu;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
-import java.util.function.BiPredicate;
+import java.util.Set;
 import java.util.function.Function;
-import java.util.stream.Collectors;
 import javax.annotation.Nullable;
+import org.apache.commons.lang3.mutable.MutableInt;
+import org.apache.commons.lang3.mutable.MutableObject;
 
-public class boz<E extends bmh> extends bnw<E> {
-   protected static final int c = 20;
-   private static final int m = 40;
-   protected static final int d = 8;
-   private static final int n = 200;
-   private static final List<Integer> o = Lists.newArrayList(new Integer[]{65, 70, 75, 80});
-   private final bjg p;
-   protected final int e;
-   protected final int f;
-   protected final float g;
-   protected List<boz.a> h = Lists.newArrayList();
-   protected Optional<elm> i = Optional.empty();
-   @Nullable
-   protected elm j;
-   protected int k;
-   protected long l;
-   private final Function<E, arl> q;
-   private final BiPredicate<E, hx> r;
+public class boz {
+   private static final int a = 20;
+   private static final double b = 3.0;
+   private static final double c = 2.0;
 
-   public boz(bjg $$0, int $$1, int $$2, float $$3, Function<E, arl> $$4) {
-      this($$0, $$1, $$2, $$3, $$4, boz::a);
+   public static boc<bmk> a() {
+      MutableObject<efd> $$0 = new MutableObject(null);
+      MutableInt $$1 = new MutableInt(0);
+      return bro.a(
+         (Function<bro.b<bmk>, ? extends App<bro.c<bmk>, brr<bmk>>>)($$2 -> $$2.group($$2.b(bvm.t), $$2.a(bvm.v), $$2.a(bvm.g))
+               .apply($$2, ($$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
+                     eff $$9 = $$2.b($$3);
+                     Optional<Set<ig>> $$10 = $$2.a($$4);
+                     if (!$$9.b() && !$$9.c()) {
+                        if (Objects.equals($$0.getValue(), $$9.h())) {
+                           $$1.setValue(20);
+                        } else if ($$1.decrementAndGet() > 0) {
+                           return false;
+                        }
+
+                        $$0.setValue($$9.h());
+                        efd $$11 = $$9.i();
+                        efd $$12 = $$9.h();
+                        hx $$13 = $$11.a();
+                        djg $$14 = $$6.a_($$13);
+                        if ($$14.a(asg.h, $$0xxxx -> $$0xxxx.b() instanceof cyv)) {
+                           cyv $$15 = (cyv)$$14.b();
+                           if (!$$15.h($$14)) {
+                              $$15.a($$7, $$6, $$14, $$13, true);
+                           }
+
+                           $$10 = a($$4, $$10, $$6, $$13);
+                        }
+
+                        hx $$16 = $$12.a();
+                        djg $$17 = $$6.a_($$16);
+                        if ($$17.a(asg.h, $$0xxxx -> $$0xxxx.b() instanceof cyv)) {
+                           cyv $$18 = (cyv)$$17.b();
+                           if (!$$18.h($$17)) {
+                              $$18.a($$7, $$6, $$17, $$16, true);
+                              $$10 = a($$4, $$10, $$6, $$16);
+                           }
+                        }
+
+                        $$10.ifPresent($$6x -> a($$6, $$7, $$11, $$12, $$6x, $$2.a($$5)));
+                        return true;
+                     } else {
+                        return false;
+                     }
+                  }))
+      );
    }
 
-   public static <E extends bmh> boolean a(E $$0, hx $$1) {
-      cti $$2 = $$0.dM();
-      hx $$3 = $$1.d();
-      return $$2.a_($$3).i($$2, $$3) && $$0.a(efe.a($$2, $$1.j())) == 0.0F;
-   }
+   public static void a(and $$0, bmk $$1, @Nullable efd $$2, @Nullable efd $$3, Set<ig> $$4, Optional<List<bmk>> $$5) {
+      Iterator<ig> $$6 = $$4.iterator();
 
-   public boz(bjg $$0, int $$1, int $$2, float $$3, Function<E, arl> $$4, BiPredicate<E, hx> $$5) {
-      super(ImmutableMap.of(bvh.n, bvi.c, bvh.R, bvi.b, bvh.S, bvi.b), 200);
-      this.p = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
-      this.q = $$4;
-      this.r = $$5;
-   }
-
-   protected boolean a(amz $$0, bmh $$1) {
-      boolean $$2 = $$1.aC() && !$$1.aZ() && !$$1.bn() && !$$0.a_($$1.dm()).a(cwl.pg);
-      if (!$$2) {
-         $$1.dO().a(bvh.R, this.p.a($$0.z) / 2);
-      }
-
-      return $$2;
-   }
-
-   protected boolean b(amz $$0, bmh $$1, long $$2) {
-      boolean $$3 = this.i.isPresent() && this.i.get().equals($$1.dk()) && this.k > 0 && !$$1.bc() && (this.j != null || !this.h.isEmpty());
-      if (!$$3 && $$1.dO().c(bvh.S).isEmpty()) {
-         $$1.dO().a(bvh.R, this.p.a($$0.z) / 2);
-         $$1.dO().b(bvh.n);
-      }
-
-      return $$3;
-   }
-
-   protected void a(amz $$0, E $$1, long $$2) {
-      this.j = null;
-      this.k = 20;
-      this.i = Optional.of($$1.dk());
-      hx $$3 = $$1.dm();
-      int $$4 = $$3.u();
-      int $$5 = $$3.v();
-      int $$6 = $$3.w();
-      this.h = hx.a($$4 - this.f, $$5 - this.e, $$6 - this.f, $$4 + this.f, $$5 + this.e, $$6 + this.f)
-         .filter($$1x -> !$$1x.equals($$3))
-         .map($$1x -> new boz.a($$1x.i(), aui.c($$3.j($$1x))))
-         .collect(Collectors.toCollection(Lists::newArrayList));
-   }
-
-   protected void c(amz $$0, E $$1, long $$2) {
-      if (this.j != null) {
-         if ($$2 - this.l >= 40L) {
-            $$1.r($$1.aU);
-            $$1.p(true);
-            double $$3 = this.j.f();
-            double $$4 = $$3 + (double)$$1.fa();
-            $$1.g(this.j.a($$4 / $$3));
-            $$1.dO().a(bvh.S, true);
-            $$0.a(null, $$1, this.q.apply($$1), arn.g, 1.0F, 1.0F);
-         }
-      } else {
-         this.k--;
-         this.d($$0, $$1, $$2);
-      }
-   }
-
-   protected void d(amz $$0, E $$1, long $$2) {
-      while (!this.h.isEmpty()) {
-         Optional<boz.a> $$3 = this.a($$0);
-         if (!$$3.isEmpty()) {
-            boz.a $$4 = $$3.get();
-            hx $$5 = $$4.b();
-            if (this.a($$0, $$1, $$5)) {
-               elm $$6 = elm.b($$5);
-               elm $$7 = this.a($$1, $$6);
-               if ($$7 != null) {
-                  $$1.dO().a(bvh.n, new bnz($$5));
-                  bvp $$8 = $$1.N();
-                  eez $$9 = $$8.a($$5, 0, 8);
-                  if ($$9 == null || !$$9.j()) {
-                     this.j = $$7;
-                     this.l = $$2;
-                     return;
+      while ($$6.hasNext()) {
+         ig $$7 = $$6.next();
+         hx $$8 = $$7.b();
+         if (($$2 == null || !$$2.a().equals($$8)) && ($$3 == null || !$$3.a().equals($$8))) {
+            if (a($$0, $$1, $$7)) {
+               $$6.remove();
+            } else {
+               djg $$9 = $$0.a_($$8);
+               if (!$$9.a(asg.h, $$0x -> $$0x.b() instanceof cyv)) {
+                  $$6.remove();
+               } else {
+                  cyv $$10 = (cyv)$$9.b();
+                  if (!$$10.h($$9)) {
+                     $$6.remove();
+                  } else if (a($$1, $$8, $$5)) {
+                     $$6.remove();
+                  } else {
+                     $$10.a($$1, $$0, $$9, $$8, false);
+                     $$6.remove();
                   }
                }
             }
@@ -121,44 +93,44 @@ public class boz<E extends bmh> extends bnw<E> {
       }
    }
 
-   protected Optional<boz.a> a(amz $$0) {
-      Optional<boz.a> $$1 = bii.a($$0.z, this.h);
-      $$1.ifPresent(this.h::remove);
-      return $$1;
+   private static boolean a(bmk $$0, hx $$1, Optional<List<bmk>> $$2) {
+      return $$2.isEmpty()
+         ? false
+         : $$2.get().stream().filter($$1x -> $$1x.ai() == $$0.ai()).filter($$1x -> $$1.a($$1x.dk(), 2.0)).anyMatch($$1x -> a($$1x.dO(), $$1));
    }
 
-   private boolean a(amz $$0, E $$1, hx $$2) {
-      hx $$3 = $$1.dm();
-      int $$4 = $$3.u();
-      int $$5 = $$3.w();
-      return $$4 == $$2.u() && $$5 == $$2.w() ? false : this.r.test($$1, $$2);
-   }
-
-   @Nullable
-   protected elm a(bmh $$0, elm $$1) {
-      List<Integer> $$2 = Lists.newArrayList(o);
-      Collections.shuffle($$2);
-
-      for (int $$3 : $$2) {
-         Optional<elm> $$4 = bpa.a($$0, $$1, this.g, $$3, true);
-         if ($$4.isPresent()) {
-            return $$4.get();
+   private static boolean a(bnk<?> $$0, hx $$1) {
+      if (!$$0.a(bvm.t)) {
+         return false;
+      } else {
+         eff $$2 = $$0.c(bvm.t).get();
+         if ($$2.c()) {
+            return false;
+         } else {
+            efd $$3 = $$2.i();
+            if ($$3 == null) {
+               return false;
+            } else {
+               efd $$4 = $$2.h();
+               return $$1.equals($$3.a()) || $$1.equals($$4.a());
+            }
          }
       }
-
-      return null;
    }
 
-   public static class a extends bih.a {
-      private final hx a;
+   private static boolean a(and $$0, bmk $$1, ig $$2) {
+      return $$2.a() != $$0.ae() || !$$2.b().a($$1.dk(), 3.0);
+   }
 
-      public a(hx $$0, int $$1) {
-         super($$1);
-         this.a = $$0;
-      }
-
-      public hx b() {
-         return this.a;
-      }
+   private static Optional<Set<ig>> a(brp<Mu, Set<ig>> $$0, Optional<Set<ig>> $$1, and $$2, hx $$3) {
+      ig $$4 = ig.a($$2.ae(), $$3);
+      return Optional.of($$1.<Set<ig>>map($$1x -> {
+         $$1x.add($$4);
+         return $$1x;
+      }).orElseGet(() -> {
+         Set<ig> $$2x = Sets.newHashSet(new ig[]{$$4});
+         $$0.a($$2x);
+         return $$2x;
+      }));
    }
 }

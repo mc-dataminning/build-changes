@@ -1,20 +1,30 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dgb extends dfi {
-   public static final MapCodec<dgb> b = b(dgb::new);
+public class dgb extends dae {
+   public static final MapCodec<dgb> c = b(dgb::new);
+   protected static final eml g = cwp.a(4.0, 9.0, 4.0, 12.0, 16.0, 12.0);
 
    @Override
    public MapCodec<dgb> a() {
-      return b;
+      return c;
    }
 
-   protected dgb(diz.d $$0) {
-      super(ddk.b.d, $$0);
+   public dgb(djf.d $$0) {
+      super($$0, ic.a, g, false, 0.1);
    }
 
    @Override
-   public void a(cti $$0, hx $$1, dja $$2, @Nullable bmf $$3, cmr $$4) {
-      cwl.gG.a($$0, $$1, $$2, $$3, $$4);
+   protected int a(auu $$0) {
+      return dbu.a($$0);
+   }
+
+   @Override
+   protected cwp b() {
+      return cwr.oA;
+   }
+
+   @Override
+   protected boolean g(djg $$0) {
+      return dbu.a($$0);
    }
 }

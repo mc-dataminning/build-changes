@@ -1,106 +1,147 @@
-public class chd extends cgu implements dhm {
-   private boolean i = true;
+import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 
-   public chd(blt<? extends chd> $$0, cti $$1) {
-      super($$0, $$1);
-   }
+public interface chd extends bjt, bkd {
+   els dk();
 
-   public chd(cti $$0, double $$1, double $$2, double $$3) {
-      super(blt.Y, $$1, $$2, $$3, $$0);
-   }
+   @Nullable
+   ahg C();
 
-   @Override
-   public cgt.a w() {
-      return cgt.a.f;
-   }
+   void a(@Nullable ahg var1);
 
-   @Override
-   public dja y() {
-      return cwl.hc.o();
-   }
+   long D();
 
-   @Override
-   public int A() {
-      return 1;
-   }
+   void a(long var1);
+
+   iq<cmx> E();
+
+   void G();
+
+   cto dM();
+
+   boolean dH();
 
    @Override
-   public int b() {
-      return 5;
+   default boolean ai_() {
+      return this.g();
    }
 
-   @Override
-   public void a(int $$0, int $$1, int $$2, boolean $$3) {
-      boolean $$4 = !$$3;
-      if ($$4 != this.H()) {
-         this.p($$4);
-      }
-   }
-
-   public boolean H() {
-      return this.i;
-   }
-
-   public void p(boolean $$0) {
-      this.i = $$0;
-   }
-
-   @Override
-   public double I() {
-      return this.dr();
-   }
-
-   @Override
-   public double J() {
-      return this.dt() + 0.5;
-   }
-
-   @Override
-   public double K() {
-      return this.dx();
-   }
-
-   @Override
-   public void l() {
-      super.l();
-      if (!this.dM().B && this.bx() && this.H() && this.M()) {
-         this.e();
-      }
-   }
-
-   public boolean M() {
-      if (dhn.a(this.dM(), this)) {
-         return true;
+   default void c(sn $$0) {
+      if (this.C() != null) {
+         $$0.a("LootTable", this.C().toString());
+         if (this.D() != 0L) {
+            $$0.a("LootTableSeed", this.D());
+         }
       } else {
-         for (cbo $$1 : this.dM().a(cbo.class, this.cH().c(0.25, 0.0, 0.25), bls.a)) {
-            if (dhn.a(this, $$1)) {
-               return true;
+         bju.a($$0, this.E());
+      }
+   }
+
+   default void b_(sn $$0) {
+      this.G();
+      if ($$0.b("LootTable", 8)) {
+         this.a(new ahg($$0.l("LootTable")));
+         this.a($$0.i("LootTableSeed"));
+      } else {
+         bju.b($$0, this.E());
+      }
+   }
+
+   default void a(bks $$0, cto $$1, blu $$2) {
+      if ($$1.Z().b(ctk.i)) {
+         bjw.a($$1, $$2, this);
+         if (!$$1.B) {
+            blu $$3 = $$0.c();
+            if ($$3 != null && $$3.ai() == bly.bv) {
+               cdy.a((cfh)$$3, true);
             }
          }
-
-         return false;
       }
    }
 
-   @Override
-   protected cmm ah_() {
-      return cmu.nP;
+   default bka c_(cfh $$0) {
+      $$0.a(this);
+      return !$$0.dM().B ? bka.b : bka.a;
    }
 
-   @Override
-   protected void b(sl $$0) {
-      super.b($$0);
-      $$0.a("Enabled", this.i);
+   default void f(@Nullable cfh $$0) {
+      MinecraftServer $$1 = this.dM().o();
+      if (this.C() != null && $$1 != null) {
+         ehd $$2 = $$1.aJ().getLootTable(this.C());
+         if ($$0 != null) {
+            am.O.a((ane)$$0, this.C());
+         }
+
+         this.a(null);
+         ehb.a $$3 = new ehb.a((and)this.dM()).a(ejg.f, this.dk());
+         if ($$0 != null) {
+            $$3.a($$0.go()).a(ejg.a, $$0);
+         }
+
+         $$2.a(this, $$3.a(ejf.c), this.D());
+      }
    }
 
-   @Override
-   protected void a(sl $$0) {
-      super.a($$0);
-      this.i = $$0.e("Enabled") ? $$0.q("Enabled") : true;
+   default void f() {
+      this.f(null);
+      this.E().clear();
    }
 
-   @Override
-   public chu a(int $$0, cfa $$1) {
-      return new cit($$0, $$1, this);
+   default boolean g() {
+      for (cmx $$0 : this.E()) {
+         if (!$$0.b()) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   default cmx e_(int $$0) {
+      this.f(null);
+      cmx $$1 = this.E().get($$0);
+      if ($$1.b()) {
+         return cmx.f;
+      } else {
+         this.E().set($$0, cmx.f);
+         return $$1;
+      }
+   }
+
+   default cmx f_(int $$0) {
+      this.f(null);
+      return this.E().get($$0);
+   }
+
+   default cmx b(int $$0, int $$1) {
+      this.f(null);
+      return bju.a(this.E(), $$0, $$1);
+   }
+
+   default void c(int $$0, cmx $$1) {
+      this.f(null);
+      this.E().set($$0, $$1);
+      if (!$$1.b() && $$1.L() > this.ak_()) {
+         $$1.f(this.ak_());
+      }
+   }
+
+   default bnc g_(final int $$0) {
+      return $$0 >= 0 && $$0 < this.b() ? new bnc() {
+         @Override
+         public cmx a() {
+            return chd.this.f_($$0);
+         }
+
+         @Override
+         public boolean a(cmx $$0x) {
+            chd.this.c($$0, $$0);
+            return true;
+         }
+      } : bnc.b;
+   }
+
+   default boolean g(cfh $$0) {
+      return !this.dH() && this.dk().a((ir)$$0.dk(), 8.0);
    }
 }

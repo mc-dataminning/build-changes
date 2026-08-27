@@ -1,6 +1,6 @@
-public enum djz implements ave {
-   a("top"),
-   b("bottom");
+public enum djz implements avj {
+   a("compare"),
+   b("subtract");
 
    private final String c;
 

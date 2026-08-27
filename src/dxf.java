@@ -1,34 +1,29 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dxf extends dxg {
-   public static final dxf a = new dxf(dpd.a(0));
-   public static final Codec<dxf> b = atq.e(dpd.a, dpd.a.fieldOf("value").codec()).xmap(dxf::new, dxf::b);
-   private final dpd d;
+public class dxf {
+   public static final Codec<dxf> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.intRange(0, dmp.c).fieldOf("height").forGetter(dxf::a), kd.e.q().fieldOf("block").orElse(cwr.a).forGetter($$0x -> $$0x.b().b()))
+            .apply($$0, dxf::new)
+   );
+   private final cwp b;
+   private final int c;
 
-   public static dxf a(dpd $$0) {
-      return new dxf($$0);
+   public dxf(int $$0, cwp $$1) {
+      this.c = $$0;
+      this.b = $$1;
    }
 
-   private dxf(dpd $$0) {
-      this.d = $$0;
+   public int a() {
+      return this.c;
    }
 
-   public dpd b() {
-      return this.d;
-   }
-
-   @Override
-   public int a(aup $$0, dpg $$1) {
-      return this.d.a($$1);
-   }
-
-   @Override
-   public dxh<?> a() {
-      return dxh.a;
+   public djg b() {
+      return this.b.o();
    }
 
    @Override
    public String toString() {
-      return this.d.toString();
+      return (this.c != 1 ? this.c + "*" : "") + kd.e.b(this.b);
    }
 }

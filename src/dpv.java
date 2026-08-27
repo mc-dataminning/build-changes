@@ -1,22 +1,25 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class dpv extends dqb {
-   final asq<cwj> a;
-   public static final Codec<dpv> e = RecordCodecBuilder.create($$0 -> a($$0).and(asq.a(ke.f).fieldOf("tag").forGetter($$0x -> $$0x.a)).apply($$0, dpv::new));
+class dpv extends dpy {
+   public static final Codec<dpv> a = a(dpv::new);
 
-   protected dpv(jb $$0, asq<cwj> $$1) {
+   public dpv(List<dpw> $$0) {
       super($$0);
-      this.a = $$1;
+   }
+
+   public boolean a(cuj $$0, hx $$1) {
+      for (dpw $$2 : this.e) {
+         if ($$2.test($$0, $$1)) {
+            return true;
+         }
+      }
+
+      return false;
    }
 
    @Override
-   protected boolean a(dja $$0) {
-      return $$0.a(this.a);
-   }
-
-   @Override
-   public dpr<?> a() {
-      return dpr.b;
+   public dpx<?> a() {
+      return dpx.i;
    }
 }

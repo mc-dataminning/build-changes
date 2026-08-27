@@ -1,33 +1,41 @@
-import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.Set;
+import java.util.List;
 
-public record eji(Optional<bf> b) implements ejo {
-   public static final Codec<eji> a = RecordCodecBuilder.create($$0 -> $$0.group(atq.a(bf.a, "predicate").forGetter(eji::c)).apply($$0, eji::new));
+public class eji extends ejl {
+   public static final Codec<eji> a = a(eji::new);
+   public static final Codec<eji> b = b(eji::new);
 
-   @Override
-   public ejp b() {
-      return ejq.n;
+   eji(List<eju> $$0) {
+      super($$0, ejw.a($$0));
+   }
+
+   public static eji a(List<eju> $$0) {
+      return new eji(List.copyOf($$0));
    }
 
    @Override
-   public Set<eix<?>> a() {
-      return ImmutableSet.of(eja.f, eja.c);
+   public ejv b() {
+      return ejw.d;
    }
 
-   public boolean a(egp $$0) {
-      bkn $$1 = $$0.c(eja.c);
-      elm $$2 = $$0.c(eja.f);
-      return $$2 != null && $$1 != null ? this.b.isEmpty() || this.b.get().a($$0.d(), $$2, $$1) : false;
+   public static eji.a a(eju.a... $$0) {
+      return new eji.a($$0);
    }
 
-   public static ejo.a a(bf.a $$0) {
-      return () -> new eji(Optional.of($$0.b()));
-   }
+   public static class a extends ejl.a {
+      public a(eju.a... $$0) {
+         super($$0);
+      }
 
-   public Optional<bf> c() {
-      return this.b;
+      @Override
+      public eji.a and(eju.a $$0) {
+         this.a($$0);
+         return this;
+      }
+
+      @Override
+      protected eju a(List<eju> $$0) {
+         return new eji($$0);
+      }
    }
 }

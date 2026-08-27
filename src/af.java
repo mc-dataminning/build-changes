@@ -1,10 +1,10 @@
-public record af(ahd a, ae b) {
-   public void a(ug $$0) {
+public record af(ahg a, ae b) {
+   public void a(ui $$0) {
       $$0.a(this.a);
       this.b.a($$0);
    }
 
-   public static af b(ug $$0) {
+   public static af b(ui $$0) {
       return new af($$0.t(), ae.b($$0));
    }
 

@@ -1,47 +1,60 @@
+import com.google.common.annotations.VisibleForTesting;
 import java.util.concurrent.CompletableFuture;
-import java.util.function.Function;
-import java.util.stream.Stream;
 
-public abstract class od<T> extends oi<T> {
-   private final Function<T, ahc<T>> d;
+public class od extends of<dnq> {
+   @VisibleForTesting
+   static final dnq[] d = new dnq[]{
+      dnq.b,
+      dnq.c,
+      dnq.d,
+      dnq.f,
+      dnq.g,
+      dnq.h,
+      dnq.i,
+      dnq.a,
+      dnq.e,
+      dnq.j,
+      dnq.k,
+      dnq.l,
+      dnq.m,
+      dnq.n,
+      dnq.o,
+      dnq.p,
+      dnq.q,
+      dnq.r,
+      dnq.s,
+      dnq.t,
+      dnq.u,
+      dnq.v,
+      dnq.w,
+      dnq.y,
+      dnq.z,
+      dnq.A,
+      dnq.B,
+      dnq.C,
+      dnq.G,
+      dnq.H,
+      dnq.I,
+      dnq.J,
+      dnq.K,
+      dnq.M,
+      dnq.O,
+      dnq.P,
+      dnq.Q,
+      dnq.R,
+      dnq.S
+   };
 
-   public od(km $$0, ahc<? extends it<T>> $$1, CompletableFuture<ij.b> $$2, Function<T, ahc<T>> $$3) {
-      super($$0, $$1, $$2);
-      this.d = $$3;
+   public od(km $$0, CompletableFuture<ij.b> $$1) {
+      super($$0, ke.B, $$1, $$0x -> $$0x.b().g());
    }
 
-   public od(km $$0, ahc<? extends it<T>> $$1, CompletableFuture<ij.b> $$2, CompletableFuture<oi.c<T>> $$3, Function<T, ahc<T>> $$4) {
-      super($$0, $$1, $$2, $$3);
-      this.d = $$4;
-   }
-
-   protected od.a<T> a(asq<T> $$0) {
-      asn $$1 = this.c($$0);
-      return new od.a<>($$1, this.d);
-   }
-
-   protected static class a<T> extends oi.b<T> {
-      private final Function<T, ahc<T>> a;
-
-      a(asn $$0, Function<T, ahc<T>> $$1) {
-         super($$0);
-         this.a = $$1;
-      }
-
-      public od.a<T> a(asq<T> $$0) {
-         super.b($$0);
-         return this;
-      }
-
-      public final od.a<T> a(T $$0) {
-         this.a(this.a.apply($$0));
-         return this;
-      }
-
-      @SafeVarargs
-      public final od.a<T> a(T... $$0) {
-         Stream.<T>of($$0).map(this.a).forEach(this::a);
-         return this;
-      }
+   @Override
+   protected void a(ij.b $$0) {
+      this.a(asm.a).a(d).a(dnz.e_).a(dnq.x);
+      this.a(asm.c).a(dnq.L);
+      this.a(asm.b).a(d).a(dnz.e_).a(dnq.N).a(asm.c);
+      this.a(asm.d).a(dnq.A, dnq.K, dnq.P, dnq.Q, dnq.D, dnq.C);
+      this.a(asm.e).a(dnq.H);
    }
 }

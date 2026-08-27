@@ -1,18 +1,13 @@
-import java.util.function.Function;
-
-public abstract class fkh<E extends blp> extends fjp<E> {
-   public fkh() {
-      this(fth::e);
-   }
-
-   public fkh(Function<ahd, fth> $$0) {
+public class fkh<T extends bmk> extends fki<T> {
+   public fkh(fmv $$0) {
       super($$0);
    }
 
-   @Override
-   public void a(ept $$0, epx $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-      this.d().forEach($$8 -> $$8.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
+   public static fnd a(fmz $$0) {
+      fnd $$1 = fki.a($$0, 0.0F);
+      fne $$2 = $$1.a();
+      $$2.a("right_leg", fna.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(-0.1F)), fmx.a(-1.9F, 12.0F, 0.0F));
+      $$2.a("left_leg", fna.c().a(0, 16).a().a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(-0.1F)), fmx.a(1.9F, 12.0F, 0.0F));
+      return $$1;
    }
-
-   public abstract Iterable<fmp> d();
 }

@@ -1,28 +1,25 @@
 import com.mojang.serialization.Codec;
 import java.util.Optional;
 
-public class eay extends dyz {
+public class eay extends dzf {
    public static final Codec<eay> d = a(eay::new);
 
-   public eay(dyz.c $$0) {
+   public eay(dzf.c $$0) {
       super($$0);
    }
 
    @Override
-   public Optional<dyz.b> a(dyz.a $$0) {
-      return a($$0, doj.a.a, $$1 -> this.a($$1, $$0));
+   public Optional<dzf.b> a(dzf.a $$0) {
+      return a($$0, dop.a.c, $$1 -> a($$1, $$0));
    }
 
-   private void a(dzr $$0, dyz.a $$1) {
-      csp $$2 = $$1.h();
-      dpi $$3 = $$1.f();
-      hx $$4 = new hx($$2.d(), 90, $$2.e());
-      dcv $$5 = dcv.a($$3);
-      eax.a($$1.e(), $$4, $$5, $$0, $$3);
+   private static void a(dzx $$0, dzf.a $$1) {
+      hx $$2 = new hx($$1.h().a(9), 90, $$1.h().b(9));
+      $$0.a(new eax.a($$2));
    }
 
    @Override
-   public dzi<?> e() {
-      return dzi.e;
+   public dzo<?> e() {
+      return dzo.a;
    }
 }

@@ -1,73 +1,83 @@
 import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import java.util.Optional;
-import java.util.function.Function;
 
-public class boj extends bnw<bmo> {
-   public static final int c = 100;
-   public static final double d = 2.5;
-   public static final double e = 3.5;
-   private final Function<bmf, Float> f;
-   private final Function<bmf, Double> g;
+public class boj<E extends bmm & ccb, T extends bmk> extends bob<E> {
+   private static final int c = 1200;
+   private int d;
+   private boj.a e = boj.a.a;
 
-   public boj(Function<bmf, Float> $$0) {
-      this($$0, $$0x -> 2.5);
+   public boj() {
+      super(ImmutableMap.of(bvm.n, bvn.c, bvm.o, bvn.a), 1200);
    }
 
-   public boj(Function<bmf, Float> $$0, Function<bmf, Double> $$1) {
-      super(ac.a(() -> {
-         Builder<bvh<?>, bvi> $$0x = ImmutableMap.builder();
-         $$0x.put(bvh.n, bvi.c);
-         $$0x.put(bvh.m, bvi.c);
-         $$0x.put(bvh.O, bvi.b);
-         $$0x.put(bvh.Q, bvi.c);
-         $$0x.put(bvh.N, bvi.a);
-         $$0x.put(bvh.r, bvi.b);
-         $$0x.put(bvh.Y, bvi.b);
-         return $$0x.build();
-      }));
-      this.f = $$0;
-      this.g = $$1;
+   protected boolean a(and $$0, E $$1) {
+      bmk $$2 = b($$1);
+      return $$1.b(cna.vM) && bod.b($$1, $$2) && bod.a($$1, $$2, 0);
    }
 
-   protected float a(bmo $$0) {
-      return this.f.apply($$0);
+   protected boolean a(and $$0, E $$1, long $$2) {
+      return $$1.dO().a(bvm.o) && this.a($$0, $$1);
    }
 
-   private Optional<cfb> b(bmo $$0) {
-      return $$0.dO().c(bvh.N);
+   protected void b(and $$0, E $$1, long $$2) {
+      bmk $$3 = b($$1);
+      this.b($$1, $$3);
+      this.a($$1, $$3);
    }
 
-   @Override
-   protected boolean a(long $$0) {
-      return false;
-   }
-
-   protected boolean a(amz $$0, bmo $$1, long $$2) {
-      return this.b($$1).isPresent() && !$$1.dO().a(bvh.r) && !$$1.dO().a(bvh.Y);
-   }
-
-   protected void b(amz $$0, bmo $$1, long $$2) {
-      $$1.dO().a(bvh.Q, true);
-   }
-
-   protected void c(amz $$0, bmo $$1, long $$2) {
-      bnf<?> $$3 = $$1.dO();
-      $$3.a(bvh.O, 100);
-      $$3.a(bvh.Q, false);
-      $$3.b(bvh.m);
-      $$3.b(bvh.n);
-   }
-
-   protected void d(amz $$0, bmo $$1, long $$2) {
-      cfb $$3 = this.b($$1).get();
-      bnf<?> $$4 = $$1.dO();
-      $$4.a(bvh.n, new boh($$3, true));
-      double $$5 = this.g.apply($$1);
-      if ($$1.f($$3) < aui.k($$5)) {
-         $$4.b(bvh.m);
-      } else {
-         $$4.a(bvh.m, new bvk(new boh($$3, false), this.a($$1), 2));
+   protected void c(and $$0, E $$1, long $$2) {
+      if ($$1.fn()) {
+         $$1.ft();
       }
+
+      if ($$1.b(cna.vM)) {
+         $$1.b(false);
+         clf.a($$1.fp(), false);
+      }
+   }
+
+   private void a(E $$0, bmk $$1) {
+      if (this.e == boj.a.a) {
+         $$0.c(cga.a($$0, cna.vM));
+         this.e = boj.a.b;
+         $$0.b(true);
+      } else if (this.e == boj.a.b) {
+         if (!$$0.fn()) {
+            this.e = boj.a.a;
+         }
+
+         int $$2 = $$0.fr();
+         cmx $$3 = $$0.fp();
+         if ($$2 >= clf.k($$3)) {
+            $$0.fs();
+            this.e = boj.a.c;
+            this.d = 20 + $$0.eg().a(20);
+            $$0.b(false);
+         }
+      } else if (this.e == boj.a.c) {
+         this.d--;
+         if (this.d == 0) {
+            this.e = boj.a.d;
+         }
+      } else if (this.e == boj.a.d) {
+         $$0.a($$1, 1.0F);
+         cmx $$4 = $$0.b(cga.a($$0, cna.vM));
+         clf.a($$4, false);
+         this.e = boj.a.a;
+      }
+   }
+
+   private void b(bmm $$0, bmk $$1) {
+      $$0.dO().a(bvm.n, new bom($$1, true));
+   }
+
+   private static bmk b(bmk $$0) {
+      return $$0.dO().c(bvm.o).get();
+   }
+
+   static enum a {
+      a,
+      b,
+      c,
+      d;
    }
 }

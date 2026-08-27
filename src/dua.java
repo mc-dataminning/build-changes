@@ -1,25 +1,40 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dua implements dtr {
+public class dua implements dtx {
    public static final Codec<dua> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_taller_dripstone").orElse(0.2F).forGetter($$0x -> $$0x.b),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_directional_spread").orElse(0.7F).forGetter($$0x -> $$0x.c),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_spread_radius2").orElse(0.5F).forGetter($$0x -> $$0x.d),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_spread_radius3").orElse(0.5F).forGetter($$0x -> $$0x.e)
+               Codec.intRange(1, 512).fieldOf("floor_to_ceiling_search_range").orElse(30).forGetter($$0x -> $$0x.b),
+               bjf.b(1, 60).fieldOf("column_radius").forGetter($$0x -> $$0x.c),
+               bjd.a(0.0F, 20.0F).fieldOf("height_scale").forGetter($$0x -> $$0x.d),
+               Codec.floatRange(0.1F, 1.0F).fieldOf("max_column_radius_to_cave_height_ratio").forGetter($$0x -> $$0x.e),
+               bjd.a(0.1F, 10.0F).fieldOf("stalactite_bluntness").forGetter($$0x -> $$0x.f),
+               bjd.a(0.1F, 10.0F).fieldOf("stalagmite_bluntness").forGetter($$0x -> $$0x.g),
+               bjd.a(0.0F, 2.0F).fieldOf("wind_speed").forGetter($$0x -> $$0x.h),
+               Codec.intRange(0, 100).fieldOf("min_radius_for_wind").forGetter($$0x -> $$0x.i),
+               Codec.floatRange(0.0F, 5.0F).fieldOf("min_bluntness_for_wind").forGetter($$0x -> $$0x.j)
             )
             .apply($$0, dua::new)
    );
-   public final float b;
-   public final float c;
-   public final float d;
+   public final int b;
+   public final bjf c;
+   public final bjd d;
    public final float e;
+   public final bjd f;
+   public final bjd g;
+   public final bjd h;
+   public final int i;
+   public final float j;
 
-   public dua(float $$0, float $$1, float $$2, float $$3) {
+   public dua(int $$0, bjf $$1, bjd $$2, float $$3, bjd $$4, bjd $$5, bjd $$6, int $$7, float $$8) {
       this.b = $$0;
       this.c = $$1;
       this.d = $$2;
       this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.i = $$7;
+      this.j = $$8;
    }
 }

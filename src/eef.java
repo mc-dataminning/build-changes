@@ -1,213 +1,154 @@
-import it.unimi.dsi.fastutil.HashCommon;
-import it.unimi.dsi.fastutil.longs.Long2LongLinkedOpenHashMap;
-import it.unimi.dsi.fastutil.longs.LongLinkedOpenHashSet;
-import java.util.NoSuchElementException;
+import javax.annotation.Nullable;
 
-public class eef extends LongLinkedOpenHashSet {
-   private final eef.a a;
+public class eef implements eei {
+   public static final int b = 1;
+   protected final ctq c;
+   @Nullable
+   private final eeh<?, ?> a;
+   @Nullable
+   private final eeh<?, ?> d;
 
-   public eef(int $$0, float $$1) {
-      super($$0, $$1);
-      this.a = new eef.a($$0 / 64, $$1);
+   public eef(dlq $$0, boolean $$1, boolean $$2) {
+      this.c = $$0.q();
+      this.a = $$1 ? new edy($$0) : null;
+      this.d = $$2 ? new eej($$0) : null;
    }
 
-   public boolean add(long $$0) {
-      return this.a.c($$0);
+   @Override
+   public void a(hx $$0) {
+      if (this.a != null) {
+         this.a.a($$0);
+      }
+
+      if (this.d != null) {
+         this.d.a($$0);
+      }
    }
 
-   public boolean rem(long $$0) {
-      return this.a.d($$0);
+   @Override
+   public boolean L_() {
+      return this.d != null && this.d.L_() ? true : this.a != null && this.a.L_();
    }
 
-   public long removeFirstLong() {
-      return this.a.a();
+   @Override
+   public int a() {
+      int $$0 = 0;
+      if (this.a != null) {
+         $$0 += this.a.a();
+      }
+
+      if (this.d != null) {
+         $$0 += this.d.a();
+      }
+
+      return $$0;
    }
 
-   public int size() {
-      throw new UnsupportedOperationException();
+   @Override
+   public void a(iz $$0, boolean $$1) {
+      if (this.a != null) {
+         this.a.a($$0, $$1);
+      }
+
+      if (this.d != null) {
+         this.d.a($$0, $$1);
+      }
    }
 
-   public boolean isEmpty() {
-      return this.a.isEmpty();
+   @Override
+   public void a(csv $$0, boolean $$1) {
+      if (this.a != null) {
+         this.a.a($$0, $$1);
+      }
+
+      if (this.d != null) {
+         this.d.a($$0, $$1);
+      }
    }
 
-   protected static class a extends Long2LongLinkedOpenHashMap {
-      private static final int a = aui.f(60000000);
-      private static final int b = aui.f(60000000);
-      private static final int c = 64 - a - b;
-      private static final int d = 0;
-      private static final int e = c;
-      private static final int g = c + b;
-      private static final long h = 3L << g | 3L | 3L << e;
-      private int i = -1;
-      private long j;
-      private final int k;
-
-      public a(int $$0, float $$1) {
-         super($$0, $$1);
-         this.k = $$0;
+   @Override
+   public void b(csv $$0) {
+      if (this.a != null) {
+         this.a.b($$0);
       }
 
-      static long a(long $$0) {
-         return $$0 & ~h;
+      if (this.d != null) {
+         this.d.b($$0);
       }
+   }
 
-      static int b(long $$0) {
-         int $$1 = (int)($$0 >>> g & 3L);
-         int $$2 = (int)($$0 >>> 0 & 3L);
-         int $$3 = (int)($$0 >>> e & 3L);
-         return $$1 << 4 | $$3 << 2 | $$2;
+   public eed a(ctx $$0) {
+      if ($$0 == ctx.b) {
+         return (eed)(this.a == null ? eed.a.a : this.a);
+      } else {
+         return (eed)(this.d == null ? eed.a.a : this.d);
       }
+   }
 
-      static long a(long $$0, int $$1) {
-         $$0 |= (long)($$1 >>> 4 & 3) << g;
-         $$0 |= (long)($$1 >>> 2 & 3) << e;
-         return $$0 | (long)($$1 >>> 0 & 3) << 0;
-      }
-
-      public boolean c(long $$0) {
-         long $$1 = a($$0);
-         int $$2 = b($$0);
-         long $$3 = 1L << $$2;
-         int $$4;
-         if ($$1 == 0L) {
-            if (this.containsNullKey) {
-               return this.a(this.n, $$3);
-            }
-
-            this.containsNullKey = true;
-            $$4 = this.n;
-         } else {
-            if (this.i != -1 && $$1 == this.j) {
-               return this.a(this.i, $$3);
-            }
-
-            long[] $$5 = this.key;
-            $$4 = (int)HashCommon.mix($$1) & this.mask;
-
-            for (long $$7 = $$5[$$4]; $$7 != 0L; $$7 = $$5[$$4]) {
-               if ($$7 == $$1) {
-                  this.i = $$4;
-                  this.j = $$1;
-                  return this.a($$4, $$3);
-               }
-
-               $$4 = $$4 + 1 & this.mask;
-            }
+   public String a(ctx $$0, iz $$1) {
+      if ($$0 == ctx.b) {
+         if (this.a != null) {
+            return this.a.b($$1.s());
          }
-
-         this.key[$$4] = $$1;
-         this.value[$$4] = $$3;
-         if (this.size == 0) {
-            this.first = this.last = $$4;
-            this.link[$$4] = -1L;
-         } else {
-            this.link[this.last] = this.link[this.last] ^ (this.link[this.last] ^ (long)$$4 & 4294967295L) & 4294967295L;
-            this.link[$$4] = ((long)this.last & 4294967295L) << 32 | 4294967295L;
-            this.last = $$4;
-         }
-
-         if (this.size++ >= this.maxFill) {
-            this.rehash(HashCommon.arraySize(this.size + 1, this.f));
-         }
-
-         return false;
+      } else if (this.d != null) {
+         return this.d.b($$1.s());
       }
 
-      private boolean a(int $$0, long $$1) {
-         boolean $$2 = (this.value[$$0] & $$1) != 0L;
-         this.value[$$0] = this.value[$$0] | $$1;
-         return $$2;
-      }
+      return "n/a";
+   }
 
-      public boolean d(long $$0) {
-         long $$1 = a($$0);
-         int $$2 = b($$0);
-         long $$3 = 1L << $$2;
-         if ($$1 == 0L) {
-            return this.containsNullKey ? this.e($$3) : false;
-         } else if (this.i != -1 && $$1 == this.j) {
-            return this.b(this.i, $$3);
-         } else {
-            long[] $$4 = this.key;
-            int $$5 = (int)HashCommon.mix($$1) & this.mask;
-
-            for (long $$6 = $$4[$$5]; $$6 != 0L; $$6 = $$4[$$5]) {
-               if ($$1 == $$6) {
-                  this.i = $$5;
-                  this.j = $$1;
-                  return this.b($$5, $$3);
-               }
-
-               $$5 = $$5 + 1 & this.mask;
-            }
-
-            return false;
+   public eee.b b(ctx $$0, iz $$1) {
+      if ($$0 == ctx.b) {
+         if (this.a != null) {
+            return this.a.c($$1.s());
          }
+      } else if (this.d != null) {
+         return this.d.c($$1.s());
       }
 
-      private boolean e(long $$0) {
-         if ((this.value[this.n] & $$0) == 0L) {
-            return false;
-         } else {
-            this.value[this.n] = this.value[this.n] & ~$$0;
-            if (this.value[this.n] != 0L) {
-               return true;
-            } else {
-               this.containsNullKey = false;
-               this.size--;
-               this.fixPointers(this.n);
-               if (this.size < this.maxFill / 4 && this.n > 16) {
-                  this.rehash(this.n / 2);
-               }
+      return eee.b.a;
+   }
 
-               return true;
-            }
+   public void a(ctx $$0, iz $$1, @Nullable dli $$2) {
+      if ($$0 == ctx.b) {
+         if (this.a != null) {
+            this.a.a($$1.s(), $$2);
          }
+      } else if (this.d != null) {
+         this.d.a($$1.s(), $$2);
+      }
+   }
+
+   public void b(csv $$0, boolean $$1) {
+      if (this.a != null) {
+         this.a.b($$0, $$1);
       }
 
-      private boolean b(int $$0, long $$1) {
-         if ((this.value[$$0] & $$1) == 0L) {
-            return false;
-         } else {
-            this.value[$$0] = this.value[$$0] & ~$$1;
-            if (this.value[$$0] != 0L) {
-               return true;
-            } else {
-               this.i = -1;
-               this.size--;
-               this.fixPointers($$0);
-               this.shiftKeys($$0);
-               if (this.size < this.maxFill / 4 && this.n > 16) {
-                  this.rehash(this.n / 2);
-               }
-
-               return true;
-            }
-         }
+      if (this.d != null) {
+         this.d.b($$0, $$1);
       }
+   }
 
-      public long a() {
-         if (this.size == 0) {
-            throw new NoSuchElementException();
-         } else {
-            int $$0 = this.first;
-            long $$1 = this.key[$$0];
-            int $$2 = Long.numberOfTrailingZeros(this.value[$$0]);
-            this.value[$$0] = this.value[$$0] & ~(1L << $$2);
-            if (this.value[$$0] == 0L) {
-               this.removeFirstLong();
-               this.i = -1;
-            }
+   public int a(hx $$0, int $$1) {
+      int $$2 = this.d == null ? 0 : this.d.b($$0) - $$1;
+      int $$3 = this.a == null ? 0 : this.a.b($$0);
+      return Math.max($$3, $$2);
+   }
 
-            return a($$1, $$2);
-         }
-      }
+   public boolean a(iz $$0) {
+      long $$1 = $$0.s();
+      return this.a == null || this.a.f.j($$1) && (this.d == null || this.d.f.j($$1));
+   }
 
-      protected void rehash(int $$0) {
-         if ($$0 > this.k) {
-            super.rehash($$0);
-         }
-      }
+   public int c() {
+      return this.c.am() + 2;
+   }
+
+   public int d() {
+      return this.c.an() - 1;
+   }
+
+   public int e() {
+      return this.d() + this.c();
    }
 }

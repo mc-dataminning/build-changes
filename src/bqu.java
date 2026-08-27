@@ -1,46 +1,32 @@
 import com.mojang.datafixers.kinds.App;
+import java.util.List;
 import java.util.function.Function;
 import org.apache.commons.lang3.mutable.MutableLong;
 
 public class bqu {
-   public static bnx<bmo> a(int $$0, float $$1) {
-      MutableLong $$2 = new MutableLong(0L);
-      return brj.a(
-         (Function<brj.b<bmo>, ? extends App<brj.c<bmo>, brm<bmo>>>)($$3 -> $$3.group($$3.c(bvh.o), $$3.c(bvh.m), $$3.a(bvh.n))
-               .apply(
-                  $$3,
-                  ($$3x, $$4, $$5) -> ($$5x, $$6, $$7) -> {
-                        if ($$5x.b_($$6.dm()).a(asg.a)) {
-                           return false;
-                        } else if ($$7 < $$2.getValue()) {
-                           $$2.setValue($$7 + 40L);
-                           return true;
-                        } else {
-                           elr $$8 = elr.a($$6);
-                           hx $$9 = $$6.dm();
-                           hx.a $$10 = new hx.a();
-
-                           label45:
-                           for (hx $$11 : hx.a($$9, $$0, $$0, $$0)) {
-                              if (($$11.u() != $$9.u() || $$11.w() != $$9.w())
-                                 && $$5x.a_($$11).b($$5x, $$11, $$8).c()
-                                 && !$$5x.a_($$10.a($$11, ic.a)).b($$5x, $$11, $$8).c()) {
-                                 for (ic $$12 : ic.c.a) {
-                                    $$10.a($$11, $$12);
-                                    if ($$5x.a_($$10).i() && $$5x.a_($$10.c(ic.a)).a(cwl.G)) {
-                                       $$5.a(new bnz($$11));
-                                       $$4.a(new bvk(new bnz($$11), $$1, 0));
-                                       break label45;
-                                    }
-                                 }
-                              }
+   public static boc<ceu> a(bvm<List<ig>> $$0, float $$1, int $$2, int $$3, bvm<ig> $$4) {
+      MutableLong $$5 = new MutableLong(0L);
+      return bro.a(
+         (Function<bro.b<ceu>, ? extends App<bro.c<ceu>, brr<ceu>>>)($$6 -> $$6.group($$6.a(bvm.m), $$6.b($$0), $$6.b($$4))
+               .apply($$6, ($$5xx, $$6x, $$7) -> ($$8, $$9, $$10) -> {
+                     List<ig> $$11 = $$6.b($$6x);
+                     ig $$12 = $$6.b($$7);
+                     if ($$11.isEmpty()) {
+                        return false;
+                     } else {
+                        ig $$13 = $$11.get($$8.F_().a($$11.size()));
+                        if ($$13 != null && $$8.ae() == $$13.a() && $$12.b().a($$9.dk(), (double)$$3)) {
+                           if ($$10 > $$5.getValue()) {
+                              $$5xx.a(new bvp($$13.b(), $$1, $$2));
+                              $$5.setValue($$10 + 100L);
                            }
 
-                           $$2.setValue($$7 + 40L);
                            return true;
+                        } else {
+                           return false;
                         }
                      }
-               ))
+                  }))
       );
    }
 }

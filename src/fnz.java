@@ -1,67 +1,101 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.ArrayList;
-import java.util.List;
+import com.google.common.base.Suppliers;
+import com.mojang.authlib.GameProfile;
+import java.util.concurrent.CompletableFuture;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
 
 public class fnz {
-   private final fob[] a;
-   private int b;
+   private final GameProfile a;
+   private final Supplier<gfk> b;
+   private ctl c = ctl.e;
+   private int d;
+   @Nullable
+   private vf e;
+   @Nullable
+   private vw f;
+   private wb g;
 
-   public static Codec<fnz> a(int $$0) {
-      return Codec.list(fob.a)
-         .comapFlatMap(
-            $$1 -> {
-               int $$2 = $$1.size();
-               return $$2 > $$0
-                  ? DataResult.error(() -> "Expected: a buffer of size less than or equal to " + $$0 + " but: " + $$2 + " is greater than " + $$0)
-                  : DataResult.success(new fnz($$0, $$1));
-            },
-            fnz::c
-         );
+   public fnz(GameProfile $$0, boolean $$1) {
+      this.a = $$0;
+      this.g = b($$1);
+      Supplier<Supplier<gfk>> $$2 = Suppliers.memoize(() -> a($$0));
+      this.b = () -> $$2.get().get();
    }
 
-   public fnz(int $$0) {
-      this.a = new fob[$$0];
+   private static Supplier<gfk> a(GameProfile $$0) {
+      evg $$1 = evg.O();
+      gfl $$2 = $$1.al();
+      CompletableFuture<gfk> $$3 = $$2.c($$0);
+      boolean $$4 = !$$1.b($$0.getId());
+      gfk $$5 = gfd.a($$0);
+      return () -> {
+         gfk $$3x = $$3.getNow($$5);
+         return $$4 && !$$3x.f() ? $$5 : $$3x;
+      };
    }
 
-   private fnz(int $$0, List<fob> $$1) {
-      this.a = $$1.toArray(fob[]::new);
-      this.b = $$1.size();
-   }
-
-   private List<fob> c() {
-      List<fob> $$0 = new ArrayList<>(this.d());
-
-      for (int $$1 = this.a(); $$1 <= this.b(); $$1++) {
-         $$0.add(this.b($$1));
-      }
-
-      return $$0;
-   }
-
-   public void a(fob $$0) {
-      this.a[this.c(this.b++)] = $$0;
+   public GameProfile a() {
+      return this.a;
    }
 
    @Nullable
-   public fob b(int $$0) {
-      return $$0 >= this.a() && $$0 <= this.b() ? this.a[this.c($$0)] : null;
+   public vw b() {
+      return this.f;
    }
 
-   private int c(int $$0) {
-      return $$0 % this.a.length;
+   public wb c() {
+      return this.g;
    }
 
-   public int a() {
-      return Math.max(this.b - this.a.length, 0);
+   public boolean d() {
+      return this.f != null;
    }
 
-   public int b() {
-      return this.b - 1;
+   protected void a(vw $$0) {
+      this.f = $$0;
+      this.g = $$0.a(cfk.b);
    }
 
-   private int d() {
-      return this.b() - this.a() + 1;
+   protected void a(boolean $$0) {
+      this.f = null;
+      this.g = b($$0);
+   }
+
+   private static wb b(boolean $$0) {
+      return $$0 ? wb.c : wb.b;
+   }
+
+   public ctl e() {
+      return this.c;
+   }
+
+   protected void a(ctl $$0) {
+      this.c = $$0;
+   }
+
+   public int f() {
+      return this.d;
+   }
+
+   protected void a(int $$0) {
+      this.d = $$0;
+   }
+
+   public gfk g() {
+      return this.b.get();
+   }
+
+   @Nullable
+   public emr h() {
+      return evg.O().r.K().e(this.a().getName());
+   }
+
+   public void a(@Nullable vf $$0) {
+      this.e = $$0;
+   }
+
+   @Nullable
+   public vf i() {
+      return this.e;
    }
 }

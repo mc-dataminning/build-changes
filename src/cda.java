@@ -1,96 +1,45 @@
-import javax.annotation.Nullable;
-
-public class cda extends cbs {
-   public cda(blt<? extends cda> $$0, cti $$1) {
+public class cda extends cbx {
+   public cda(bly<? extends cda> $$0, cto $$1) {
       super($$0, $$1);
-      this.a(eev.i, 8.0F);
+   }
+
+   public static boolean a(bly<cda> $$0, cud $$1, bmo $$2, hx $$3, auu $$4) {
+      hx $$5 = $$3;
+
+      do {
+         $$5 = $$5.c();
+      } while ($$1.a_($$5).a(cwr.qP));
+
+      return b($$0, $$1, $$2, $$3, $$4) && (bmo.a($$2) || $$1.h($$5.d()));
    }
 
    @Override
-   protected void B() {
-      this.bP.a(3, new buu<>(this, cdq.class, true));
-      super.B();
+   protected arq y() {
+      return arr.yp;
    }
 
    @Override
-   protected arl y() {
-      return arm.Bq;
+   protected arq d(bks $$0) {
+      return arr.yr;
    }
 
    @Override
-   protected arl d(bkn $$0) {
-      return arm.Bs;
+   protected arq n_() {
+      return arr.yq;
    }
 
    @Override
-   protected arl n_() {
-      return arm.Br;
+   arq w() {
+      return arr.ys;
    }
 
    @Override
-   arl w() {
-      return arm.Bt;
-   }
-
-   @Override
-   protected void a(bkn $$0, int $$1, boolean $$2) {
-      super.a($$0, $$1, $$2);
-      if ($$0.d() instanceof cbv $$4 && $$4.gf()) {
-         $$4.gg();
-         this.a((cth)cmu.uf);
+   protected cfn b(cmx $$0, float $$1) {
+      cfn $$2 = super.b($$0, $$1);
+      if ($$2 instanceof cfp) {
+         ((cfp)$$2).a(new blh(blj.b, 600));
       }
-   }
 
-   @Override
-   protected void a(aup $$0, bjt $$1) {
-      this.a(blu.a, new cmr(cmu.oN));
-   }
-
-   @Override
-   protected void b(aup $$0, bjt $$1) {
-   }
-
-   @Nullable
-   @Override
-   public bmy a(ctx $$0, bjt $$1, bmj $$2, @Nullable bmy $$3, @Nullable sl $$4) {
-      bmy $$5 = super.a($$0, $$1, $$2, $$3, $$4);
-      this.a(bnl.c).a(4.0);
-      this.A();
-      return $$5;
-   }
-
-   @Override
-   protected float b(bmr $$0, blq $$1) {
-      return 2.1F;
-   }
-
-   @Override
-   protected float l(blp $$0) {
-      return -0.875F;
-   }
-
-   @Override
-   public boolean C(blp $$0) {
-      if (!super.C($$0)) {
-         return false;
-      } else {
-         if ($$0 instanceof bmf) {
-            ((bmf)$$0).b(new blc(ble.t, 200), this);
-         }
-
-         return true;
-      }
-   }
-
-   @Override
-   protected cfh b(cmr $$0, float $$1) {
-      cfh $$2 = super.b($$0, $$1);
-      $$2.g(100);
       return $$2;
-   }
-
-   @Override
-   public boolean c(blc $$0) {
-      return $$0.c() == ble.t ? false : super.c($$0);
    }
 }

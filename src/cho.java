@@ -1,8 +1,11 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.Set;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface cho {
+public interface cho {
+   Set<ahf<? extends it<? extends cho>>> bx = Set.of(ke.F, ke.f, ke.u, ke.P);
+
+   chr m();
+
+   default boolean a(chr $$0) {
+      return this.m().a($$0);
+   }
 }

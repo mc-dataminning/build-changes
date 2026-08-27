@@ -1,73 +1,124 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class ddx extends cwj {
+public class ddx extends cwp {
    public static final MapCodec<ddx> a = b(ddx::new);
-   public static final int b = 6;
-   public static final int c = 64;
-   private static final ic[] d = ic.values();
+   public static final int b = 8;
+   public static final dkg c = djw.aF;
+   protected static final eml[] d = new eml[]{
+      emi.a(),
+      cwp.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0),
+      cwp.a(0.0, 0.0, 0.0, 16.0, 4.0, 16.0),
+      cwp.a(0.0, 0.0, 0.0, 16.0, 6.0, 16.0),
+      cwp.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0),
+      cwp.a(0.0, 0.0, 0.0, 16.0, 10.0, 16.0),
+      cwp.a(0.0, 0.0, 0.0, 16.0, 12.0, 16.0),
+      cwp.a(0.0, 0.0, 0.0, 16.0, 14.0, 16.0),
+      cwp.a(0.0, 0.0, 0.0, 16.0, 16.0, 16.0)
+   };
+   public static final int e = 5;
 
    @Override
    public MapCodec<ddx> a() {
       return a;
    }
 
-   protected ddx(diz.d $$0) {
+   protected ddx(djf.d $$0) {
       super($$0);
+      this.k(this.E.b().a(c, Integer.valueOf(1)));
    }
 
    @Override
-   public void b(dja $$0, cti $$1, hx $$2, dja $$3, boolean $$4) {
-      if (!$$3.a($$0.b())) {
-         this.a($$1, $$2);
+   public boolean a(djg $$0, csu $$1, hx $$2, efg $$3) {
+      switch ($$3) {
+         case a:
+            return $$0.c(c) < 5;
+         case b:
+            return false;
+         case c:
+            return false;
+         default:
+            return false;
       }
    }
 
    @Override
-   public void a(dja $$0, cti $$1, hx $$2, cwj $$3, hx $$4, boolean $$5) {
-      this.a($$1, $$2);
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   public eml a(djg $$0, csu $$1, hx $$2, elx $$3) {
+      return d[$$0.c(c)];
    }
 
-   protected void a(cti $$0, hx $$1) {
-      if (this.b($$0, $$1)) {
-         $$0.a($$1, cwl.aP.o(), 2);
-         $$0.a(null, $$1, arm.xZ, arn.e, 1.0F, 1.0F);
+   @Override
+   public eml b(djg $$0, csu $$1, hx $$2, elx $$3) {
+      return d[$$0.c(c) - 1];
+   }
+
+   @Override
+   public eml b_(djg $$0, csu $$1, hx $$2) {
+      return d[$$0.c(c)];
+   }
+
+   @Override
+   public eml c(djg $$0, csu $$1, hx $$2, elx $$3) {
+      return d[$$0.c(c)];
+   }
+
+   @Override
+   public boolean g_(djg $$0) {
+      return true;
+   }
+
+   @Override
+   public float d(djg $$0, csu $$1, hx $$2) {
+      return $$0.c(c) == 8 ? 0.2F : 1.0F;
+   }
+
+   @Override
+   public boolean a(djg $$0, ctr $$1, hx $$2) {
+      djg $$3 = $$1.a_($$2.d());
+      if ($$3.a(asg.cg)) {
+         return false;
+      } else {
+         return $$3.a(asg.ch) ? true : cwp.a($$3.k($$1, $$2.d()), ic.b) || $$3.a(this) && $$3.c(c) == 8;
       }
    }
 
-   private boolean b(cti $$0, hx $$1) {
-      return hx.a($$1, 6, 65, ($$0x, $$1x) -> {
-         for (ic $$2 : d) {
-            $$1x.accept($$0x.a($$2));
-         }
-      }, $$2 -> {
-         if ($$2.equals($$1)) {
-            return true;
-         } else {
-            dja $$3 = $$0.a_($$2);
-            eek $$4 = $$0.b_($$2);
-            if (!$$4.a(asg.a)) {
-               return false;
-            } else {
-               if ($$3.b() instanceof cwq $$6 && !$$6.a(null, $$0, $$2, $$3).b()) {
-                  return true;
-               }
+   @Override
+   public djg a(djg $$0, ic $$1, djg $$2, ctp $$3, hx $$4, hx $$5) {
+      return !$$0.a($$3, $$4) ? cwr.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
 
-               if ($$3.b() instanceof day) {
-                  $$0.a($$2, cwl.a.o(), 3);
-               } else {
-                  if (!$$3.a(cwl.mc) && !$$3.a(cwl.md) && !$$3.a(cwl.bw) && !$$3.a(cwl.bx)) {
-                     return false;
-                  }
+   @Override
+   public void b(djg $$0, and $$1, hx $$2, auu $$3) {
+      if ($$1.a(ctx.b, $$2) > 11) {
+         c($$0, $$1, $$2);
+         $$1.a($$2, false);
+      }
+   }
 
-                  dgo $$7 = $$3.t() ? $$0.c_($$2) : null;
-                  a($$3, $$0, $$2, $$7);
-                  $$0.a($$2, cwl.a.o(), 3);
-               }
+   @Override
+   public boolean a(djg $$0, cpg $$1) {
+      int $$2 = $$0.c(c);
+      if (!$$1.n().a(this.k()) || $$2 >= 8) {
+         return $$2 == 1;
+      } else {
+         return $$1.c() ? $$1.k() == ic.b : true;
+      }
+   }
 
-               return true;
-            }
-         }
-      }) > 1;
+   @Nullable
+   @Override
+   public djg a(cpg $$0) {
+      djg $$1 = $$0.q().a_($$0.a());
+      if ($$1.a(this)) {
+         int $$2 = $$1.c(c);
+         return $$1.a(c, Integer.valueOf(Math.min(8, $$2 + 1)));
+      } else {
+         return super.a($$0);
+      }
+   }
+
+   @Override
+   protected void a(djh.a<cwp, djg> $$0) {
+      $$0.a(c);
    }
 }

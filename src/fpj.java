@@ -1,49 +1,17 @@
-public class fpj extends frn {
-   fpj(fnk $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3);
-      this.b(0.02F, 0.02F);
-      this.D = this.D * (this.r.i() * 0.6F + 0.2F);
-      this.j = $$4 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
-      this.k = $$5 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
-      this.l = $$6 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
-      this.t = (int)(8.0 / (Math.random() * 0.8 + 0.2));
+public class fpj extends fpl {
+   protected fpj(fnq $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, fro $$8) {
+      super($$0, $$1, $$2, $$3, 0.1F, -0.1F, 0.1F, $$4, $$5, $$6, $$7, $$8, 0.5F, 20, 0.1F, false);
    }
 
-   @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.t-- <= 0) {
-         this.k();
-      } else {
-         this.k += 0.002;
-         this.a(this.j, this.k, this.l);
-         this.j *= 0.85F;
-         this.k *= 0.85F;
-         this.l *= 0.85F;
-         if (!this.c.b_(hx.a(this.g, this.h, this.i)).a(asg.a)) {
-            this.k();
-         }
-      }
-   }
+   public static class a implements fqw<ka> {
+      private final fro a;
 
-   @Override
-   public fqr b() {
-      return fqr.b;
-   }
-
-   public static class a implements fqq<ka> {
-      private final fri a;
-
-      public a(fri $$0) {
+      public a(fro $$0) {
          this.a = $$0;
       }
 
-      public fqn a(ka $$0, fnk $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fpj $$8 = new fpj($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         return $$8;
+      public fqt a(ka $$0, fnq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fpj($$1, $$2, $$3, $$4, 0.0, 0.0, 0.0, 1.0F, this.a);
       }
    }
 }

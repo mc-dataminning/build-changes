@@ -1,11 +1,10 @@
-public class cny extends cod {
-   public cny(cmm.a $$0) {
+public class cny extends cms {
+   public cny(cms.a $$0) {
       super($$0);
    }
 
    @Override
-   public bjw<cmr> a(cti $$0, cfb $$1, bju $$2) {
-      $$0.a(null, $$1.dr(), $$1.dt(), $$1.dx(), arm.xT, arn.h, 0.5F, 0.4F / ($$0.F_().i() * 0.4F + 0.8F));
-      return super.a($$0, $$1, $$2);
+   public boolean i(cmx $$0) {
+      return true;
    }
 }

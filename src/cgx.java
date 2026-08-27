@@ -1,147 +1,59 @@
-import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.ints.Int2ObjectAVLTreeMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectSortedMap;
+import java.util.Collection;
+import java.util.List;
 
-public interface cgx extends bjo, bjy {
-   elm dk();
+public class cgx {
+   private final List<cgu> a = Lists.newArrayList();
+   private int b;
 
-   @Nullable
-   ahd C();
-
-   void a(@Nullable ahd var1);
-
-   long D();
-
-   void a(long var1);
-
-   iq<cmr> E();
-
-   void G();
-
-   cti dM();
-
-   boolean dH();
-
-   @Override
-   default boolean ai_() {
-      return this.g();
+   public ImmutableList<cgu> a() {
+      return ImmutableList.copyOf(this.a);
    }
 
-   default void c(sl $$0) {
-      if (this.C() != null) {
-         $$0.a("LootTable", this.C().toString());
-         if (this.D() != 0L) {
-            $$0.a("LootTableSeed", this.D());
-         }
+   public cgx a(int $$0, float $$1) {
+      this.a.add(new cgu($$0, $$1));
+      this.b();
+      return this;
+   }
+
+   public cgx a(Collection<cgu> $$0) {
+      this.a.addAll($$0);
+      this.b();
+      return this;
+   }
+
+   private void b() {
+      Int2ObjectSortedMap<cgu> $$0 = new Int2ObjectAVLTreeMap();
+      this.a.forEach($$1 -> $$0.put($$1.a(), $$1));
+      this.a.clear();
+      this.a.addAll($$0.values());
+      this.b = 0;
+   }
+
+   public float a(int $$0) {
+      if (this.a.size() <= 0) {
+         return 0.0F;
       } else {
-         bjp.a($$0, this.E());
-      }
-   }
+         cgu $$1 = this.a.get(this.b);
+         cgu $$2 = this.a.get(this.a.size() - 1);
+         boolean $$3 = $$0 < $$1.a();
+         int $$4 = $$3 ? 0 : this.b;
+         float $$5 = $$3 ? $$2.b() : $$1.b();
 
-   default void b_(sl $$0) {
-      this.G();
-      if ($$0.b("LootTable", 8)) {
-         this.a(new ahd($$0.l("LootTable")));
-         this.a($$0.i("LootTableSeed"));
-      } else {
-         bjp.b($$0, this.E());
-      }
-   }
-
-   default void a(bkn $$0, cti $$1, blp $$2) {
-      if ($$1.Z().b(cte.i)) {
-         bjr.a($$1, $$2, this);
-         if (!$$1.B) {
-            blp $$3 = $$0.c();
-            if ($$3 != null && $$3.ai() == blt.bv) {
-               cds.a((cfb)$$3, true);
+         for (int $$6 = $$4; $$6 < this.a.size(); $$6++) {
+            cgu $$7 = this.a.get($$6);
+            if ($$7.a() > $$0) {
+               break;
             }
+
+            this.b = $$6;
+            $$5 = $$7.b();
          }
+
+         return $$5;
       }
-   }
-
-   default bjv c_(cfb $$0) {
-      $$0.a(this);
-      return !$$0.dM().B ? bjv.b : bjv.a;
-   }
-
-   default void f(@Nullable cfb $$0) {
-      MinecraftServer $$1 = this.dM().o();
-      if (this.C() != null && $$1 != null) {
-         egx $$2 = $$1.aJ().getLootTable(this.C());
-         if ($$0 != null) {
-            am.O.a((ana)$$0, this.C());
-         }
-
-         this.a(null);
-         egv.a $$3 = new egv.a((amz)this.dM()).a(eja.f, this.dk());
-         if ($$0 != null) {
-            $$3.a($$0.go()).a(eja.a, $$0);
-         }
-
-         $$2.a(this, $$3.a(eiz.c), this.D());
-      }
-   }
-
-   default void f() {
-      this.f(null);
-      this.E().clear();
-   }
-
-   default boolean g() {
-      for (cmr $$0 : this.E()) {
-         if (!$$0.b()) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   default cmr e_(int $$0) {
-      this.f(null);
-      cmr $$1 = this.E().get($$0);
-      if ($$1.b()) {
-         return cmr.f;
-      } else {
-         this.E().set($$0, cmr.f);
-         return $$1;
-      }
-   }
-
-   default cmr f_(int $$0) {
-      this.f(null);
-      return this.E().get($$0);
-   }
-
-   default cmr b(int $$0, int $$1) {
-      this.f(null);
-      return bjp.a(this.E(), $$0, $$1);
-   }
-
-   default void c(int $$0, cmr $$1) {
-      this.f(null);
-      this.E().set($$0, $$1);
-      if (!$$1.b() && $$1.L() > this.ak_()) {
-         $$1.f(this.ak_());
-      }
-   }
-
-   default bmx g_(final int $$0) {
-      return $$0 >= 0 && $$0 < this.b() ? new bmx() {
-         @Override
-         public cmr a() {
-            return cgx.this.f_($$0);
-         }
-
-         @Override
-         public boolean a(cmr $$0x) {
-            cgx.this.c($$0, $$0);
-            return true;
-         }
-      } : bmx.b;
-   }
-
-   default boolean g(cfb $$0) {
-      return !this.dH() && this.dk().a((ir)$$0.dk(), 8.0);
    }
 }

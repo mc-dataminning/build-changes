@@ -1,41 +1,53 @@
-import java.util.Arrays;
+import java.util.function.BooleanSupplier;
 
-public class fcx extends fcl {
-   private exv c;
+public class fcx extends fcz {
+   private static final vf a = vf.c("multiplayer.downloadingTerrain");
+   private static final long b = 30000L;
+   private final long c;
+   private final BooleanSupplier k;
 
-   private static evd<?>[] a(eve $$0) {
-      return new evd[]{$$0.T(), $$0.U()};
-   }
-
-   public fcx(fct $$0, eve $$1) {
-      super($$0, $$1, vd.c("options.sounds.title"));
-   }
-
-   @Override
-   protected void aN_() {
-      this.c = this.d(new exv(this.f, this.g, this.h - 64, 32, 25));
-      this.c.a(this.b.b(arn.a));
-      this.c.a(this.n());
-      this.c.a(this.b.aq());
-      this.c.a(a(this.b));
-      this.d(ewy.a(vc.d, $$0 -> {
-         this.f.m.as();
-         this.f.a(this.a);
-      }).a(this.g / 2 - 100, this.h - 27, 200, 20).a());
-   }
-
-   private evd<?>[] n() {
-      return Arrays.stream(arn.values()).filter($$0 -> $$0 != arn.a).map($$0 -> this.b.b($$0)).toArray(evd[]::new);
+   public fcx(BooleanSupplier $$0) {
+      super(euy.a);
+      this.k = $$0;
+      this.c = System.currentTimeMillis();
    }
 
    @Override
-   public void a(ewm $$0, int $$1, int $$2, float $$3) {
+   public boolean aL_() {
+      return false;
+   }
+
+   @Override
+   protected boolean aM_() {
+      return false;
+   }
+
+   @Override
+   public void a(ews $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 20, 16777215);
+      $$0.a(this.i, a, this.g / 2, this.h / 2 - 50, 16777215);
    }
 
    @Override
-   public void b(ewm $$0, int $$1, int $$2, float $$3) {
+   public void b(ews $$0, int $$1, int $$2, float $$3) {
       this.b($$0);
+   }
+
+   @Override
+   public void d() {
+      if (this.k.getAsBoolean() || System.currentTimeMillis() > this.c + 30000L) {
+         this.aE_();
+      }
+   }
+
+   @Override
+   public void aE_() {
+      this.f.aV().c(vf.c("narrator.ready_to_play"));
+      super.aE_();
+   }
+
+   @Override
+   public boolean k() {
+      return false;
    }
 }

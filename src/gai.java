@@ -1,11 +1,12 @@
-public class gai extends fzl<cae, flo<cae>> {
-   private static final ahd a = new ahd("textures/entity/sniffer/sniffer.png");
+public class gai extends fzr<byt, fll<byt>> {
+   private static final ahg a = new ahg("textures/entity/sheep/sheep.png");
 
-   public gai(fyf.a $$0) {
-      super($$0, new flo<>($$0.a(fmo.br)), 1.1F);
+   public gai(fyl.a $$0) {
+      super($$0, new fll<>($$0.a(fmu.be)), 0.7F);
+      this.a(new gcy(this, $$0.f()));
    }
 
-   public ahd a(cae $$0) {
+   public ahg a(byt $$0) {
       return a;
    }
 }

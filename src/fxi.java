@@ -1,18 +1,16 @@
-public class fxi extends fzl<bxt, fiu<bxt>> {
-   private static final ahd a = new ahd("textures/entity/bee/bee_angry.png");
-   private static final ahd i = new ahd("textures/entity/bee/bee_angry_nectar.png");
-   private static final ahd j = new ahd("textures/entity/bee/bee.png");
-   private static final ahd k = new ahd("textures/entity/bee/bee_nectar.png");
+public abstract class fxi<T extends cdh, M extends fmn<T>> extends fzc<T, M> {
+   private static final ahg a = new ahg("textures/entity/zombie/zombie.png");
 
-   public fxi(fyf.a $$0) {
-      super($$0, new fiu<>($$0.a(fmo.j)), 0.4F);
+   protected fxi(fyl.a $$0, M $$1, M $$2, M $$3) {
+      super($$0, $$1, 0.5F);
+      this.a(new gcm<>(this, $$2, $$3, $$0.g()));
    }
 
-   public ahd a(bxt $$0) {
-      if ($$0.aa_()) {
-         return $$0.go() ? i : a;
-      } else {
-         return $$0.go() ? k : j;
-      }
+   public ahg a(cdh $$0) {
+      return a;
+   }
+
+   protected boolean b(T $$0) {
+      return super.a($$0) || $$0.gl();
    }
 }

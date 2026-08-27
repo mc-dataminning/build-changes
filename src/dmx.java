@@ -1,63 +1,24 @@
-import it.unimi.dsi.fastutil.ints.Int2ObjectLinkedOpenHashMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMaps;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap.Entry;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import java.util.UUID;
+import java.util.stream.Stream;
 
-public class dmx {
-   private Int2ObjectMap<blp> a = new Int2ObjectLinkedOpenHashMap();
-   private Int2ObjectMap<blp> b = new Int2ObjectLinkedOpenHashMap();
-   @Nullable
-   private Int2ObjectMap<blp> c;
+public interface dmx {
+   int aj();
 
-   private void a() {
-      if (this.c == this.a) {
-         this.b.clear();
-         ObjectIterator $$1 = Int2ObjectMaps.fastIterable(this.a).iterator();
+   UUID cw();
 
-         while ($$1.hasNext()) {
-            Entry<blp> $$0 = (Entry<blp>)$$1.next();
-            this.b.put($$0.getIntKey(), (blp)$$0.getValue());
-         }
+   hx dm();
 
-         Int2ObjectMap<blp> $$1x = this.a;
-         this.a = this.b;
-         this.b = $$1x;
-      }
-   }
+   eln cH();
 
-   public void a(blp $$0) {
-      this.a();
-      this.a.put($$0.aj(), $$0);
-   }
+   void a(dmy var1);
 
-   public void b(blp $$0) {
-      this.a();
-      this.a.remove($$0.aj());
-   }
+   Stream<? extends dmx> cR();
 
-   public boolean c(blp $$0) {
-      return this.a.containsKey($$0.aj());
-   }
+   Stream<? extends dmx> cS();
 
-   public void a(Consumer<blp> $$0) {
-      if (this.c != null) {
-         throw new UnsupportedOperationException("Only one concurrent iteration supported");
-      } else {
-         this.c = this.a;
+   void b(blu.c var1);
 
-         try {
-            ObjectIterator var2 = this.a.values().iterator();
+   boolean dK();
 
-            while (var2.hasNext()) {
-               blp $$1 = (blp)var2.next();
-               $$0.accept($$1);
-            }
-         } finally {
-            this.c = null;
-         }
-      }
-   }
+   boolean dL();
 }

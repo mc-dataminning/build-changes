@@ -6,12 +6,12 @@ import java.util.Locale;
 import org.joml.Vector3f;
 
 public class jq extends js {
-   public static final Vector3f a = elm.a(3790560).j();
+   public static final Vector3f a = els.a(3790560).j();
    public static final jq b = new jq(a, jr.a, 1.0F);
    public static final Codec<jq> c = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               atq.d.fieldOf("fromColor").forGetter($$0x -> $$0x.g),
-               atq.d.fieldOf("toColor").forGetter($$0x -> $$0x.i),
+               atv.d.fieldOf("fromColor").forGetter($$0x -> $$0x.g),
+               atv.d.fieldOf("toColor").forGetter($$0x -> $$0x.i),
                Codec.FLOAT.fieldOf("scale").forGetter($$0x -> $$0x.h)
             )
             .apply($$0, jq::new)
@@ -25,7 +25,7 @@ public class jq extends js {
          return new jq($$2, $$4, $$3);
       }
 
-      public jq a(jw<jq> $$0, ug $$1) {
+      public jq a(jw<jq> $$0, ui $$1) {
          Vector3f $$2 = js.b($$1);
          float $$3 = $$1.readFloat();
          Vector3f $$4 = js.b($$1);
@@ -48,7 +48,7 @@ public class jq extends js {
    }
 
    @Override
-   public void a(ug $$0) {
+   public void a(ui $$0) {
       super.a($$0);
       $$0.a(this.i.x());
       $$0.a(this.i.y());

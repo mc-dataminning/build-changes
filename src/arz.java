@@ -1,16 +1,37 @@
-public class arz {
-   public static final asq<dgf> a = a("no_item_required");
-   public static final asq<dgf> b = a("pattern_item/flower");
-   public static final asq<dgf> c = a("pattern_item/creeper");
-   public static final asq<dgf> d = a("pattern_item/skull");
-   public static final asq<dgf> e = a("pattern_item/mojang");
-   public static final asq<dgf> f = a("pattern_item/globe");
-   public static final asq<dgf> g = a("pattern_item/piglin");
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.text.NumberFormat;
+import java.util.Locale;
 
-   private arz() {
-   }
+public interface arz {
+   DecimalFormat a = ac.a(new DecimalFormat("########0.00"), $$0 -> $$0.setDecimalFormatSymbols(DecimalFormatSymbols.getInstance(Locale.ROOT)));
+   arz b = NumberFormat.getIntegerInstance(Locale.US)::format;
+   arz c = $$0 -> a.format((double)$$0 * 0.1);
+   arz d = $$0 -> {
+      double $$1 = (double)$$0 / 100.0;
+      double $$2 = $$1 / 1000.0;
+      if ($$2 > 0.5) {
+         return a.format($$2) + " km";
+      } else {
+         return $$1 > 0.5 ? a.format($$1) + " m" : $$0 + " cm";
+      }
+   };
+   arz e = $$0 -> {
+      double $$1 = (double)$$0 / 20.0;
+      double $$2 = $$1 / 60.0;
+      double $$3 = $$2 / 60.0;
+      double $$4 = $$3 / 24.0;
+      double $$5 = $$4 / 365.0;
+      if ($$5 > 0.5) {
+         return a.format($$5) + " y";
+      } else if ($$4 > 0.5) {
+         return a.format($$4) + " d";
+      } else if ($$3 > 0.5) {
+         return a.format($$3) + " h";
+      } else {
+         return $$2 > 0.5 ? a.format($$2) + " m" : $$1 + " s";
+      }
+   };
 
-   private static asq<dgf> a(String $$0) {
-      return asq.a(ke.d, new ahd($$0));
-   }
+   String format(int var1);
 }

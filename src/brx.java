@@ -1,19 +1,40 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
 
-public class brx {
-   private static final bja a = bjg.a(100, 200);
+public class brx extends bob<cel> {
+   private static final int c = 25;
+   private static final int d = 20;
 
-   public static bnx<bmf> a() {
-      return brj.a(
-         (Function<brj.b<bmf>, ? extends App<brj.c<bmf>, brm<bmf>>>)($$0 -> $$0.group($$0.a(bvh.aA), $$0.a(bvh.m), $$0.c(bvh.aF), $$0.b(bvh.B), $$0.c(bvh.ay))
-               .apply($$0, ($$0x, $$1, $$2, $$3, $$4) -> ($$3x, $$4x, $$5) -> {
-                     $$0x.a(avm.a);
-                     $$2.a(avm.a, (long)a.a($$3x.F_()));
-                     $$1.b();
-                     $$4x.b(bmr.m);
-                     return true;
-                  }))
-      );
+   public brx() {
+      super(ImmutableMap.of(bvm.ax, bvn.a, bvm.o, bvn.b, bvm.aE, bvn.c, bvm.aC, bvn.c), cem.b);
+   }
+
+   protected void a(and $$0, cel $$1, long $$2) {
+      bnk<cel> $$3 = $$1.dO();
+      $$3.a(bvm.aC, avr.a, 25L);
+      $$3.b(bvm.m);
+      bmk $$4 = $$1.dO().c(bvm.ax).get();
+      bod.a($$1, $$4);
+      $$1.b(bmw.l);
+      $$1.a($$4, 20, false);
+   }
+
+   protected boolean b(and $$0, cel $$1, long $$2) {
+      return true;
+   }
+
+   protected void c(and $$0, cel $$1, long $$2) {
+      if (!$$1.dO().a(bvm.aC) && !$$1.dO().a(bvm.aE)) {
+         $$1.dO().a(bvm.aE, avr.a, (long)(cem.b - 25));
+         $$1.a(arr.AJ, 3.0F, 1.0F);
+      }
+   }
+
+   protected void d(and $$0, cel $$1, long $$2) {
+      if ($$1.c(bmw.l)) {
+         $$1.b(bmw.a);
+      }
+
+      $$1.dO().c(bvm.ax).ifPresent($$1::j);
+      $$1.dO().b(bvm.ax);
    }
 }

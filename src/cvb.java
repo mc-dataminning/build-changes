@@ -1,76 +1,89 @@
-import com.mojang.serialization.MapCodec;
-import java.util.function.BiConsumer;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public abstract class cvb extends cwj {
-   public static final int a = 3;
-   public static final djr b = djq.r;
+public class cvb {
+   public static final Codec<cvb> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(cvb.a.c.fieldOf("preset").forGetter($$0x -> $$0x.c), ahe.c(ke.at)).apply($$0, cvb::new)
+   );
+   public static final Codec<ih<cvb>> b = ahc.a(ke.aL, a);
+   private final cvb.a c;
+   private final cuw.c<ih<cun>> d;
 
-   @Override
-   protected abstract MapCodec<? extends cvb> a();
-
-   protected cvb(diz.d $$0) {
-      super($$0);
+   public cvb(cvb.a $$0, ii<cun> $$1) {
+      this.c = $$0;
+      this.d = $$0.e.apply($$1::b);
    }
 
-   protected abstract Iterable<elm> b(dja var1);
-
-   public static boolean c(dja $$0) {
-      return $$0.b(b) && ($$0.a(asb.ae) || $$0.a(asb.bj)) && $$0.c(b);
+   public cuw.c<ih<cun>> a() {
+      return this.d;
    }
 
-   @Override
-   public void a(cti $$0, dja $$1, eli $$2, cft $$3) {
-      if (!$$0.B && $$3.bN() && this.d($$1)) {
-         a($$0, $$1, $$2.a(), true);
-      }
+   public static Map<cvb.a, cuw.c<ahf<cun>>> b() {
+      return cvb.a.f.values().stream().collect(Collectors.toMap($$0 -> (cvb.a)$$0, $$0 -> $$0.c().apply($$0x -> $$0x)));
    }
 
-   protected boolean d(dja $$0) {
-      return !$$0.c(b);
-   }
-
-   @Override
-   public void a(dja $$0, cti $$1, hx $$2, aup $$3) {
-      if ($$0.c(b)) {
-         this.b($$0).forEach($$3x -> a($$1, $$3x.b((double)$$2.u(), (double)$$2.v(), (double)$$2.w()), $$3));
-      }
-   }
-
-   private static void a(cti $$0, elm $$1, aup $$2) {
-      float $$3 = $$2.i();
-      if ($$3 < 0.3F) {
-         $$0.a(jx.ab, $$1.c, $$1.d, $$1.e, 0.0, 0.0, 0.0);
-         if ($$3 < 0.17F) {
-            $$0.a($$1.c + 0.5, $$1.d + 0.5, $$1.e + 0.5, arm.dl, arn.e, 1.0F + $$2.i(), $$2.i() * 0.7F + 0.3F, false);
+   public static record a(ahg d, cvb.a.a e) {
+      public static final cvb.a a = new cvb.a(
+         new ahg("nether"),
+         new cvb.a.a() {
+            @Override
+            public <T> cuw.c<T> apply(Function<ahf<cun>, T> $$0) {
+               return new cuw.c<>(
+                  List.of(
+                     Pair.of(cuw.a(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), $$0.apply(cuu.ac)),
+                     Pair.of(cuw.a(0.0F, -0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), $$0.apply(cuu.af)),
+                     Pair.of(cuw.a(0.4F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), $$0.apply(cuu.ae)),
+                     Pair.of(cuw.a(0.0F, 0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.375F), $$0.apply(cuu.ad)),
+                     Pair.of(cuw.a(-0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.175F), $$0.apply(cuu.ag))
+                  )
+               );
+            }
          }
+      );
+      public static final cvb.a b = new cvb.a(new ahg("overworld"), new cvb.a.a() {
+         @Override
+         public <T> cuw.c<T> apply(Function<ahf<cun>, T> $$0) {
+            return cvb.a.a($$0);
+         }
+      });
+      static final Map<ahg, cvb.a> f = Stream.of(a, b).collect(Collectors.toMap(cvb.a::b, $$0 -> (cvb.a)$$0));
+      public static final Codec<cvb.a> c = ahg.a
+         .flatXmap(
+            $$0 -> Optional.ofNullable(f.get($$0)).<DataResult>map(DataResult::success).orElseGet(() -> DataResult.error(() -> "Unknown preset: " + $$0)),
+            $$0 -> DataResult.success($$0.d)
+         );
+
+      static <T> cuw.c<T> a(Function<ahf<cun>, T> $$0) {
+         Builder<Pair<cuw.d, T>> $$1 = ImmutableList.builder();
+         new cvd().a($$2 -> $$1.add($$2.mapSecond($$0)));
+         return new cuw.c<>($$1.build());
       }
 
-      $$0.a(jx.aG, $$1.c, $$1.d, $$1.e, 0.0, 0.0, 0.0);
-   }
-
-   public static void a(@Nullable cfb $$0, dja $$1, ctj $$2, hx $$3) {
-      a($$2, $$1, $$3, false);
-      if ($$1.b() instanceof cvb) {
-         ((cvb)$$1.b())
-            .b($$1)
-            .forEach($$2x -> $$2.a(jx.ab, (double)$$3.u() + $$2x.a(), (double)$$3.v() + $$2x.b(), (double)$$3.w() + $$2x.c(), 0.0, 0.1F, 0.0));
+      public Stream<ahf<cun>> a() {
+         return this.e.apply($$0 -> $$0).a().stream().<ahf<cun>>map(Pair::getSecond).distinct();
       }
 
-      $$2.a(null, $$3, arm.dn, arn.e, 1.0F, 1.0F);
-      $$2.a($$0, dnk.c, $$3);
-   }
-
-   private static void a(ctj $$0, dja $$1, hx $$2, boolean $$3) {
-      $$0.a($$2, $$1.a(b, Boolean.valueOf($$3)), 11);
-   }
-
-   @Override
-   public void a(dja $$0, cti $$1, hx $$2, cta $$3, BiConsumer<cmr, hx> $$4) {
-      if ($$3.j() == cta.a.d && !$$1.y_() && $$0.c(b)) {
-         a(null, $$0, $$1, $$2);
+      public ahg b() {
+         return this.d;
       }
 
-      super.a($$0, $$1, $$2, $$3, $$4);
+      public cvb.a.a c() {
+         return this.e;
+      }
+
+      @FunctionalInterface
+      interface a {
+         <T> cuw.c<T> apply(Function<ahf<cun>, T> var1);
+      }
    }
 }

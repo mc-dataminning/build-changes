@@ -1,27 +1,40 @@
-import java.util.List;
+public class zv implements xf<za> {
+   private final int a;
+   private final int b;
+   private final int c;
 
-public record zv(zv.a a, List<String> b) implements xd<yx> {
-   public zv(ug $$0) {
-      this($$0.b(zv.a.class), $$0.a(ug::s));
+   public zv(int $$0, int $$1, int $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+   }
+
+   public zv(ui $$0) {
+      this.a = $$0.readUnsignedByte();
+      this.b = $$0.readShort();
+      this.c = $$0.readShort();
    }
 
    @Override
-   public void a(ug $$0) {
-      $$0.a(this.a);
-      $$0.a(this.b, ug::a);
+   public void a(ui $$0) {
+      $$0.k(this.a);
+      $$0.l(this.b);
+      $$0.l(this.c);
    }
 
-   public void a(yx $$0) {
+   public void a(za $$0) {
       $$0.a(this);
    }
 
-   public List<String> d() {
+   public int a() {
+      return this.a;
+   }
+
+   public int d() {
       return this.b;
    }
 
-   public static enum a {
-      a,
-      b,
-      c;
+   public int e() {
+      return this.c;
    }
 }

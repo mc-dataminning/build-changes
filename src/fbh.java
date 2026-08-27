@@ -1,57 +1,97 @@
-public class fbh extends fct {
-   private final Runnable c;
-   protected final fbh.a a;
-   private final vd k;
-   private final boolean l;
-   private exr m = exr.a;
-   protected int b;
-   private exa n;
+import javax.annotation.Nullable;
 
-   public fbh(Runnable $$0, fbh.a $$1, vd $$2, vd $$3, boolean $$4) {
-      super($$2);
-      this.c = $$0;
-      this.a = $$1;
-      this.k = $$3;
-      this.l = $$4;
+public record fbh(fbg a, int b, int c) {
+   private static final fbh d = new fbh(0, 0, 0, 0);
+
+   public fbh(int $$0, int $$1, int $$2, int $$3) {
+      this(new fbg($$0, $$1), $$2, $$3);
    }
 
-   @Override
-   protected void aN_() {
-      super.aN_();
-      this.m = exr.a(this.i, this.k, this.g - 50);
-      int $$0 = (this.m.a() + 1) * 9;
-      this.d(ewy.a(vd.c("selectWorld.backupJoinConfirmButton"), $$0x -> this.a.proceed(true, this.n.a())).a(this.g / 2 - 155, 100 + $$0, 150, 20).a());
-      this.d(ewy.a(vd.c("selectWorld.backupJoinSkipButton"), $$0x -> this.a.proceed(false, this.n.a())).a(this.g / 2 - 155 + 160, 100 + $$0, 150, 20).a());
-      this.d(ewy.a(vc.e, $$0x -> this.c.run()).a(this.g / 2 - 155 + 80, 124 + $$0, 150, 20).a());
-      this.n = exa.a(vd.c("selectWorld.backupEraseCache"), this.i).a(this.g / 2 - 155 + 80, 76 + $$0).a();
-      if (this.l) {
-         this.d(this.n);
-      }
+   public static fbh a() {
+      return d;
    }
 
-   @Override
-   public void a(ewm $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 50, 16777215);
-      this.m.a($$0, this.g / 2, 70);
+   public static fbh a(fbe $$0, int $$1, int $$2, int $$3, int $$4) {
+      return switch ($$0) {
+         case a -> new fbh($$1, $$2, $$3, $$4);
+         case b -> new fbh($$2, $$1, $$4, $$3);
+      };
    }
 
-   @Override
-   public boolean aL_() {
-      return false;
+   public fbh a(fbf $$0) {
+      return new fbh(this.a.a($$0), this.b, this.c);
    }
 
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.c.run();
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
-      }
+   public int a(fbe $$0) {
+      return switch ($$0) {
+         case a -> this.b;
+         case b -> this.c;
+      };
    }
 
-   public interface a {
-      void proceed(boolean var1, boolean var2);
+   public int b(fbf $$0) {
+      fbe $$1 = $$0.a();
+      return $$0.c() ? this.a.a($$1) + this.a($$1) - 1 : this.a.a($$1);
+   }
+
+   public fbh c(fbf $$0) {
+      int $$1 = this.b($$0);
+      fbe $$2 = $$0.a().a();
+      int $$3 = this.b($$2.c());
+      int $$4 = this.a($$2);
+      return a($$0.a(), $$1, $$3, 1, $$4).a($$0);
+   }
+
+   public boolean a(fbh $$0) {
+      return this.a($$0, fbe.a) && this.a($$0, fbe.b);
+   }
+
+   public boolean a(fbh $$0, fbe $$1) {
+      int $$2 = this.b($$1.c());
+      int $$3 = $$0.b($$1.c());
+      int $$4 = this.b($$1.b());
+      int $$5 = $$0.b($$1.b());
+      return Math.max($$2, $$3) <= Math.min($$4, $$5);
+   }
+
+   public int b(fbe $$0) {
+      return (this.b($$0.b()) + this.b($$0.c())) / 2;
+   }
+
+   @Nullable
+   public fbh b(fbh $$0) {
+      int $$1 = Math.max(this.d(), $$0.d());
+      int $$2 = Math.max(this.b(), $$0.b());
+      int $$3 = Math.min(this.e(), $$0.e());
+      int $$4 = Math.min(this.c(), $$0.c());
+      return $$1 < $$3 && $$2 < $$4 ? new fbh($$1, $$2, $$3 - $$1, $$4 - $$2) : null;
+   }
+
+   public int b() {
+      return this.a.b();
+   }
+
+   public int c() {
+      return this.a.b() + this.c;
+   }
+
+   public int d() {
+      return this.a.a();
+   }
+
+   public int e() {
+      return this.a.a() + this.b;
+   }
+
+   public fbg f() {
+      return this.a;
+   }
+
+   public int g() {
+      return this.b;
+   }
+
+   public int h() {
+      return this.c;
    }
 }

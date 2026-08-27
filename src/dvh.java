@@ -1,48 +1,51 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dvh extends dvd {
-   public static final Codec<dvh> a = RecordCodecBuilder.create(
-      $$0 -> b($$0).and(bja.b(0, 24).fieldOf("height").forGetter($$0x -> $$0x.b)).apply($$0, dvh::new)
-   );
-   private final bja b;
+public class dvh extends dvj {
+   public static final Codec<dvh> a = RecordCodecBuilder.create($$0 -> b($$0).apply($$0, dvh::new));
 
-   public dvh(bja $$0, bja $$1, bja $$2) {
+   public dvh(bjf $$0, bjf $$1) {
       super($$0, $$1);
-      this.b = $$2;
    }
 
    @Override
-   protected dve<?> a() {
-      return dve.c;
+   protected dvk<?> a() {
+      return dvk.i;
    }
 
    @Override
-   protected void a(cto $$0, dvd.b $$1, aup $$2, dun $$3, int $$4, dvd.a $$5, int $$6, int $$7, int $$8) {
-      int $$9 = 0;
-
-      for (int $$10 = $$8; $$10 >= $$8 - $$6; $$10--) {
-         this.a($$0, $$1, $$2, $$3, $$5.a(), $$9, $$10, $$5.c());
-         if ($$9 >= 1 && $$10 == $$8 - $$6 + 1) {
-            $$9--;
-         } else if ($$9 < $$7 + $$5.b()) {
-            $$9++;
+   protected void a(ctu $$0, dvj.b $$1, auu $$2, dut $$3, int $$4, dvj.a $$5, int $$6, int $$7, int $$8) {
+      hx $$9 = $$5.a().b($$8);
+      boolean $$10 = $$5.c();
+      if ($$10) {
+         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 2, -1, $$10);
+         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 3, 0, $$10);
+         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 2, 1, $$10);
+         if ($$2.h()) {
+            this.a($$0, $$1, $$2, $$3, $$9, $$7, 2, $$10);
          }
+      } else {
+         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 2, -1, $$10);
+         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 1, 0, $$10);
       }
    }
 
    @Override
-   public int a(aup $$0, int $$1) {
-      return super.a($$0, $$1) + $$0.a(Math.max($$1 + 1, 1));
+   public int a(auu $$0, int $$1, dut $$2) {
+      return 4;
    }
 
    @Override
-   public int a(aup $$0, int $$1, dun $$2) {
-      return this.b.a($$0);
+   protected boolean b(auu $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$2 != 0 || !$$5 || $$1 != -$$4 && $$1 < $$4 || $$3 != -$$4 && $$3 < $$4 ? super.b($$0, $$1, $$2, $$3, $$4, $$5) : true;
    }
 
    @Override
-   protected boolean a(aup $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$1 == $$4 && $$3 == $$4 && $$4 > 0;
+   protected boolean a(auu $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      if ($$2 == -1 && !$$5) {
+         return $$1 == $$4 && $$3 == $$4;
+      } else {
+         return $$2 == 1 ? $$1 + $$3 > $$4 * 2 - 2 : false;
+      }
    }
 }

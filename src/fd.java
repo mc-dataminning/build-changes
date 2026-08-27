@@ -1,15 +1,15 @@
 import com.mojang.brigadier.context.CommandContext;
 
-public class fd extends fa<dbf> {
+public class fd extends fa<dbl> {
    private fd() {
-      super(dbf.d, dbf::values);
+      super(dbl.d, dbl::values);
    }
 
-   public static fa<dbf> a() {
+   public static fa<dbl> a() {
       return new fd();
    }
 
-   public static dbf a(CommandContext<ds> $$0, String $$1) {
-      return (dbf)$$0.getArgument($$1, dbf.class);
+   public static dbl a(CommandContext<ds> $$0, String $$1) {
+      return (dbl)$$0.getArgument($$1, dbl.class);
    }
 }

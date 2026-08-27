@@ -3,45 +3,52 @@ import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 
 public class all {
-   private static final int a = -1;
-
    public static void a(CommandDispatcher<ds> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("weather").requires($$0x -> $$0x.c(2)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("time").requires($$0x -> $$0x.c(2)))
                   .then(
-                     ((LiteralArgumentBuilder)dt.a("clear").executes($$0x -> a((ds)$$0x.getSource(), -1)))
-                        .then(dt.a("duration", ff.a(1)).executes($$0x -> a((ds)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "duration"))))
+                     ((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("set")
+                                    .then(dt.a("day").executes($$0x -> a((ds)$$0x.getSource(), 1000))))
+                                 .then(dt.a("noon").executes($$0x -> a((ds)$$0x.getSource(), 6000))))
+                              .then(dt.a("night").executes($$0x -> a((ds)$$0x.getSource(), 13000))))
+                           .then(dt.a("midnight").executes($$0x -> a((ds)$$0x.getSource(), 18000))))
+                        .then(dt.a("time", ff.a()).executes($$0x -> a((ds)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "time"))))
                   ))
-               .then(
-                  ((LiteralArgumentBuilder)dt.a("rain").executes($$0x -> b((ds)$$0x.getSource(), -1)))
-                     .then(dt.a("duration", ff.a(1)).executes($$0x -> b((ds)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "duration"))))
-               ))
+               .then(dt.a("add").then(dt.a("time", ff.a()).executes($$0x -> b((ds)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "time"))))))
             .then(
-               ((LiteralArgumentBuilder)dt.a("thunder").executes($$0x -> c((ds)$$0x.getSource(), -1)))
-                  .then(dt.a("duration", ff.a(1)).executes($$0x -> c((ds)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "duration"))))
+               ((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("query")
+                        .then(dt.a("daytime").executes($$0x -> c((ds)$$0x.getSource(), a(((ds)$$0x.getSource()).e())))))
+                     .then(dt.a("gametime").executes($$0x -> c((ds)$$0x.getSource(), (int)(((ds)$$0x.getSource()).e().X() % 2147483647L)))))
+                  .then(dt.a("day").executes($$0x -> c((ds)$$0x.getSource(), (int)(((ds)$$0x.getSource()).e().Y() / 24000L % 2147483647L))))
             )
       );
    }
 
-   private static int a(ds $$0, int $$1, bja $$2) {
-      return $$1 == -1 ? $$2.a($$0.e().F_()) : $$1;
-   }
-
-   private static int a(ds $$0, int $$1) {
-      $$0.e().a(a($$0, $$1, amz.b), 0, false, false);
-      $$0.a(() -> vd.c("commands.weather.set.clear"), true);
-      return $$1;
-   }
-
-   private static int b(ds $$0, int $$1) {
-      $$0.e().a(0, a($$0, $$1, amz.c), true, false);
-      $$0.a(() -> vd.c("commands.weather.set.rain"), true);
-      return $$1;
+   private static int a(and $$0) {
+      return (int)($$0.Y() % 24000L);
    }
 
    private static int c(ds $$0, int $$1) {
-      $$0.e().a(0, a($$0, $$1, amz.d), true, true);
-      $$0.a(() -> vd.c("commands.weather.set.thunder"), true);
+      $$0.a(() -> vf.a("commands.time.query", $$1), false);
       return $$1;
+   }
+
+   public static int a(ds $$0, int $$1) {
+      for (and $$2 : $$0.l().H()) {
+         $$2.b((long)$$1);
+      }
+
+      $$0.a(() -> vf.a("commands.time.set", $$1), true);
+      return a($$0.e());
+   }
+
+   public static int b(ds $$0, int $$1) {
+      for (and $$2 : $$0.l().H()) {
+         $$2.b($$2.Y() + (long)$$1);
+      }
+
+      int $$3 = a($$0.e());
+      $$0.a(() -> vf.a("commands.time.set", $$3), true);
+      return $$3;
    }
 }

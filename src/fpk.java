@@ -1,15 +1,21 @@
-public class fpk extends frn {
-   private final fri a;
+public class fpk extends frt {
+   private final fro a;
 
-   fpk(fnk $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fri $$7) {
-      super($$0, $$1, $$2, $$3);
-      this.a = $$7;
+   fpk(fnq $$0, double $$1, double $$2, double $$3, double $$4, fro $$5) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.a = $$5;
       this.t = 4;
-      this.u = 0.008F;
-      this.j = $$4;
-      this.k = $$5;
-      this.l = $$6;
-      this.b($$7);
+      float $$6 = this.r.i() * 0.6F + 0.4F;
+      this.v = $$6;
+      this.w = $$6;
+      this.x = $$6;
+      this.D = 1.0F - (float)$$4 * 0.5F;
+      this.b($$5);
+   }
+
+   @Override
+   public int a(float $$0) {
+      return 15728880;
    }
 
    @Override
@@ -20,26 +26,24 @@ public class fpk extends frn {
       if (this.s++ >= this.t) {
          this.k();
       } else {
-         this.k = this.k - (double)this.u;
-         this.a(this.j, this.k, this.l);
          this.b(this.a);
       }
    }
 
    @Override
-   public fqr b() {
-      return fqr.b;
+   public fqx b() {
+      return fqx.d;
    }
 
-   public static class a implements fqq<ka> {
-      private final fri a;
+   public static class a implements fqw<ka> {
+      private final fro a;
 
-      public a(fri $$0) {
+      public a(fro $$0) {
          this.a = $$0;
       }
 
-      public fqn a(ka $$0, fnk $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fpk($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+      public fqt a(ka $$0, fnq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fpk($$1, $$2, $$3, $$4, $$5, this.a);
       }
    }
 }

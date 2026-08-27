@@ -1,59 +1,118 @@
-public class fci extends fct {
-   private static final vd a = vd.c("symlink_warning.title.world").a(n.r);
-   private static final vd b = vd.a("symlink_warning.message.world", "https://aka.ms/MinecraftSymLinks");
-   private static final vd c = vd.c("symlink_warning.title.pack").a(n.r);
-   private static final vd k = vd.a("symlink_warning.message.pack", "https://aka.ms/MinecraftSymLinks");
-   private final vd l;
-   private final String m;
-   private final Runnable n;
-   private final fah o = new fah().b(10);
+public class fci extends fcr {
+   private static final vf c = vf.c("options.languageAccuracyWarning").a(n.h);
+   private fci.a k;
+   final gfs l;
 
-   public fci(vd $$0, vd $$1, String $$2, Runnable $$3) {
-      super($$0);
-      this.l = $$1;
-      this.m = $$2;
-      this.n = $$3;
-   }
-
-   public static fct a(Runnable $$0) {
-      return new fci(a, b, "https://aka.ms/MinecraftSymLinks", $$0);
-   }
-
-   public static fct b(Runnable $$0) {
-      return new fci(c, k, "https://aka.ms/MinecraftSymLinks", $$0);
+   public fci(fcz $$0, evk $$1, gfs $$2) {
+      super($$0, $$1, vf.c("options.language.title"));
+      this.l = $$2;
    }
 
    @Override
    protected void aN_() {
-      super.aN_();
-      this.o.c().b();
-      fah.b $$0 = this.o.d(1);
-      $$0.a(new eyf(this.e, this.i));
-      $$0.a(new exs(this.l, this.i).c(this.g - 50).b(true));
-      int $$1 = 120;
-      fah $$2 = new fah().a(5);
-      fah.b $$3 = $$2.d(3);
-      $$3.a(ewy.a(vc.n, $$0x -> ac.i().a(this.m)).b(120, 20).a());
-      $$3.a(ewy.a(vc.o, $$0x -> this.f.o.a(this.m)).b(120, 20).a());
-      $$3.a(ewy.a(vc.k, $$0x -> this.aE_()).b(120, 20).a());
-      $$0.a($$2);
-      this.c();
-      this.o.a(this::d);
+      this.k = this.d(new fci.a(this.f));
+      this.d(this.b.N().a(this.b, this.g / 2 - 155, this.h - 38, 150));
+      this.d(exe.a(ve.d, $$0 -> this.n()).a(this.g / 2 - 155 + 160, this.h - 38, 150, 20).a());
+   }
+
+   void n() {
+      fci.a.a $$0 = this.k.i();
+      if ($$0 != null && !$$0.b.equals(this.l.a())) {
+         this.l.a($$0.b);
+         this.b.ad = $$0.b;
+         this.f.k();
+         this.b.as();
+      }
+
+      this.f.a(this.a);
    }
 
    @Override
-   protected void c() {
-      this.o.a();
-      fag.a(this.o, this.F());
+   public boolean a(int $$0, int $$1, int $$2) {
+      if (fbc.a($$0)) {
+         fci.a.a $$3 = this.k.i();
+         if ($$3 != null) {
+            $$3.b();
+            this.n();
+            return true;
+         }
+      }
+
+      return super.a($$0, $$1, $$2);
    }
 
    @Override
-   public vd h() {
-      return vc.a(super.h(), this.l);
+   public void a(ews $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, this.e, this.g / 2, 16, 16777215);
+      $$0.a(this.i, c, this.g / 2, this.h - 56, -8355712);
    }
 
    @Override
-   public void aE_() {
-      this.n.run();
+   public void b(ews $$0, int $$1, int $$2, float $$3) {
+      this.b($$0);
+   }
+
+   class a extends eya<fci.a.a> {
+      public a(evg $$0) {
+         super($$0, fci.this.g, fci.this.h - 93, 32, 18);
+         String $$1 = fci.this.l.a();
+         fci.this.l.b().forEach(($$1x, $$2) -> {
+            fci.a.a $$3 = new fci.a.a($$1x, $$2);
+            this.b($$3);
+            if ($$1.equals($$1x)) {
+               this.a($$3);
+            }
+         });
+         if (this.i() != null) {
+            this.e(this.i());
+         }
+      }
+
+      @Override
+      protected int c() {
+         return super.c() + 20;
+      }
+
+      @Override
+      public int b() {
+         return super.b() + 50;
+      }
+
+      public class a extends eya.a<fci.a.a> {
+         final String b;
+         private final vf c;
+         private long d;
+
+         public a(String $$1, gfr $$2) {
+            this.b = $$1;
+            this.c = $$2.a();
+         }
+
+         @Override
+         public void a(ews $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+            $$0.a(fci.this.i, this.c, a.this.g / 2, $$2 + 1, 16777215);
+         }
+
+         @Override
+         public boolean a(double $$0, double $$1, int $$2) {
+            this.b();
+            if (ac.b() - this.d < 250L) {
+               fci.this.n();
+            }
+
+            this.d = ac.b();
+            return true;
+         }
+
+         void b() {
+            a.this.a(this);
+         }
+
+         @Override
+         public vf a() {
+            return vf.a("narrator.select", this.c);
+         }
+      }
    }
 }

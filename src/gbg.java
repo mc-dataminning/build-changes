@@ -1,16 +1,18 @@
-public class gbg extends gag {
-   private static final ahd a = new ahd("textures/entity/skeleton/wither_skeleton.png");
+public class gbg extends fze<cdd> {
+   private static final ahg a = new ahg("textures/entity/illager/vindicator.png");
 
-   public gbg(fyf.a $$0) {
-      super($$0, fmo.bU, fmo.bV, fmo.bW);
+   public gbg(fyl.a $$0) {
+      super($$0, new fkj<>($$0.a(fmu.bN)), 0.5F);
+      this.a(new gcp<cdd, fkj<cdd>>(this, $$0.d()) {
+         public void a(epz $$0, ftf $$1, int $$2, cdd $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+            if ($$3.fW()) {
+               super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
+            }
+         }
+      });
    }
 
-   @Override
-   public ahd a(cbs $$0) {
+   public ahg a(cdd $$0) {
       return a;
-   }
-
-   protected void a(cbs $$0, ept $$1, float $$2) {
-      $$1.b(1.2F, 1.2F, 1.2F);
    }
 }

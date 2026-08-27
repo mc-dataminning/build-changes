@@ -1,70 +1,89 @@
-public class che extends cgt {
-   private final csk c = new csk() {
-      @Override
-      public void a(cti $$0, hx $$1, int $$2) {
-         $$0.a(che.this, (byte)$$2);
+import java.util.function.Function;
+import javax.annotation.Nullable;
+
+public class che {
+   public static int[][] a(ic $$0) {
+      ic $$1 = $$0.h();
+      ic $$2 = $$1.g();
+      ic $$3 = $$0.g();
+      return new int[][]{
+         {$$1.j(), $$1.l()},
+         {$$2.j(), $$2.l()},
+         {$$3.j() + $$1.j(), $$3.l() + $$1.l()},
+         {$$3.j() + $$2.j(), $$3.l() + $$2.l()},
+         {$$0.j() + $$1.j(), $$0.l() + $$1.l()},
+         {$$0.j() + $$2.j(), $$0.l() + $$2.l()},
+         {$$3.j(), $$3.l()},
+         {$$0.j(), $$0.l()}
+      };
+   }
+
+   public static boolean a(double $$0) {
+      return !Double.isInfinite($$0) && $$0 < 1.0;
+   }
+
+   public static boolean a(csy $$0, bmk $$1, eln $$2) {
+      for (eml $$4 : $$0.e($$1, $$2)) {
+         if (!$$4.c()) {
+            return false;
+         }
       }
-   };
-   private final Runnable d;
 
-   public che(blt<? extends che> $$0, cti $$1) {
-      super($$0, $$1);
-      this.d = this.b($$1);
+      return $$0.D_().a($$2);
    }
 
-   public che(cti $$0, double $$1, double $$2, double $$3) {
-      super(blt.aR, $$0, $$1, $$2, $$3);
-      this.d = this.b($$0);
+   public static boolean a(csy $$0, els $$1, bmk $$2, bmw $$3) {
+      return a($$0, $$2, $$2.e($$3).c($$1));
    }
 
-   @Override
-   protected cmm ah_() {
-      return cmu.nL;
+   public static eml a(csu $$0, hx $$1) {
+      djg $$2 = $$0.a_($$1);
+      return !$$2.a(asg.aO) && (!($$2.b() instanceof dfb) || !$$2.c(dfb.b)) ? $$2.k($$0, $$1) : emi.a();
    }
 
-   private Runnable b(cti $$0) {
-      return $$0 instanceof amz ? () -> this.c.a((amz)$$0, this.dm()) : () -> this.c.a($$0, this.dm());
+   public static double a(hx $$0, int $$1, Function<hx, eml> $$2) {
+      hx.a $$3 = $$0.j();
+      int $$4 = 0;
+
+      while ($$4 < $$1) {
+         eml $$5 = $$2.apply($$3);
+         if (!$$5.c()) {
+            return (double)($$0.v() + $$4) + $$5.b(ic.a.b);
+         }
+
+         $$4++;
+         $$3.c(ic.b);
+      }
+
+      return Double.POSITIVE_INFINITY;
    }
 
-   @Override
-   public cgt.a w() {
-      return cgt.a.e;
-   }
+   @Nullable
+   public static els a(bly<?> $$0, csy $$1, hx $$2, boolean $$3) {
+      if ($$3 && $$0.a($$1.a_($$2))) {
+         return null;
+      } else {
+         double $$4 = $$1.a(a((csu)$$1, $$2), () -> a((csu)$$1, $$2.d()));
+         if (!a($$4)) {
+            return null;
+         } else if ($$3 && $$4 <= 0.0 && $$0.a($$1.a_($$2.d()))) {
+            return null;
+         } else {
+            els $$5 = els.a($$2, $$4);
+            eln $$6 = $$0.n().a($$5);
 
-   @Override
-   public dja y() {
-      return cwl.ct.o();
-   }
+            for (eml $$8 : $$1.e(null, $$6)) {
+               if (!$$8.c()) {
+                  return null;
+               }
+            }
 
-   @Override
-   protected void a(sl $$0) {
-      super.a($$0);
-      this.c.a(this.dM(), this.dm(), $$0);
-   }
-
-   @Override
-   protected void b(sl $$0) {
-      super.b($$0);
-      this.c.a($$0);
-   }
-
-   @Override
-   public void b(byte $$0) {
-      this.c.a(this.dM(), $$0);
-   }
-
-   @Override
-   public void l() {
-      super.l();
-      this.d.run();
-   }
-
-   public csk C() {
-      return this.c;
-   }
-
-   @Override
-   public boolean cM() {
-      return true;
+            if ($$0 != bly.bv || !$$1.a_($$2).a(asg.ci) && !$$1.a_($$2.c()).a(asg.ci)) {
+               return !$$1.D_().a($$6) ? null : $$5;
+            } else {
+               return null;
+            }
+         }
+      }
    }
 }

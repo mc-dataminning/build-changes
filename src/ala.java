@@ -2,60 +2,39 @@ import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import javax.annotation.Nullable;
 
 public class ala {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vd.c("commands.summon.failed"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(vd.c("commands.summon.failed.uuid"));
-   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(vd.c("commands.summon.invalidPosition"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vf.c("commands.spectate.self"));
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> vf.b("commands.spectate.not_spectator", $$0));
 
-   public static void a(CommandDispatcher<ds> $$0, dn $$1) {
+   public static void a(CommandDispatcher<ds> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("summon").requires($$0x -> $$0x.c(2)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("spectate").requires($$0x -> $$0x.c(2)))
+               .executes($$0x -> a((ds)$$0x.getSource(), null, ((ds)$$0x.getSource()).h())))
             .then(
-               ((RequiredArgumentBuilder)dt.a("entity", er.a($$1, ke.u))
-                     .suggests(hn.d)
-                     .executes($$0x -> b((ds)$$0x.getSource(), er.e($$0x, "entity"), ((ds)$$0x.getSource()).d(), new sl(), true)))
-                  .then(
-                     ((RequiredArgumentBuilder)dt.a("pos", ft.a())
-                           .executes($$0x -> b((ds)$$0x.getSource(), er.e($$0x, "entity"), ft.a($$0x, "pos"), new sl(), true)))
-                        .then(dt.a("nbt", ec.a()).executes($$0x -> b((ds)$$0x.getSource(), er.e($$0x, "entity"), ft.a($$0x, "pos"), ec.a($$0x, "nbt"), false)))
-                  )
+               ((RequiredArgumentBuilder)dt.a("target", ef.a()).executes($$0x -> a((ds)$$0x.getSource(), ef.a($$0x, "target"), ((ds)$$0x.getSource()).h())))
+                  .then(dt.a("player", ef.c()).executes($$0x -> a((ds)$$0x.getSource(), ef.a($$0x, "target"), ef.e($$0x, "player"))))
             )
       );
    }
 
-   public static blp a(ds $$0, ih.c<blt<?>> $$1, elm $$2, sl $$3, boolean $$4) throws CommandSyntaxException {
-      hx $$5 = hx.a($$2);
-      if (!cti.l($$5)) {
-         throw c.create();
+   private static int a(ds $$0, @Nullable blu $$1, ane $$2) throws CommandSyntaxException {
+      if ($$2 == $$1) {
+         throw a.create();
+      } else if ($$2.e.b() != ctl.d) {
+         throw b.create($$2.Q_());
       } else {
-         sl $$6 = $$3.h();
-         $$6.a("id", $$1.g().a().toString());
-         amz $$7 = $$0.e();
-         blp $$8 = blt.a($$6, $$7, $$1x -> {
-            $$1x.b($$2.c, $$2.d, $$2.e, $$1x.dC(), $$1x.dE());
-            return $$1x;
-         });
-         if ($$8 == null) {
-            throw a.create();
+         $$2.c($$1);
+         if ($$1 != null) {
+            $$0.a(() -> vf.a("commands.spectate.success.started", $$1.Q_()), false);
          } else {
-            if ($$4 && $$8 instanceof bmh) {
-               ((bmh)$$8).a($$0.e(), $$0.e().d_($$8.dm()), bmj.n, null, null);
-            }
-
-            if (!$$7.e($$8)) {
-               throw b.create();
-            } else {
-               return $$8;
-            }
+            $$0.a(() -> vf.c("commands.spectate.success.stopped"), false);
          }
-      }
-   }
 
-   private static int b(ds $$0, ih.c<blt<?>> $$1, elm $$2, sl $$3, boolean $$4) throws CommandSyntaxException {
-      blp $$5 = a($$0, $$1, $$2, $$3, $$4);
-      $$0.a(() -> vd.a("commands.summon.success", $$5.Q_()), true);
-      return 1;
+         return 1;
+      }
    }
 }

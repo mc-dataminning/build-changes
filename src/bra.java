@@ -1,33 +1,53 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
 import java.util.function.Function;
+import org.apache.commons.lang3.mutable.MutableLong;
 
 public class bra {
-   private static final int a = 10;
-   private static final int b = 7;
+   public static boc<bmt> a(int $$0, float $$1) {
+      MutableLong $$2 = new MutableLong(0L);
+      return bro.a(
+         (Function<bro.b<bmt>, ? extends App<bro.c<bmt>, brr<bmt>>>)($$3 -> $$3.group($$3.c(bvm.o), $$3.c(bvm.m), $$3.a(bvm.n))
+               .apply($$3, ($$3x, $$4, $$5) -> ($$5x, $$6, $$7) -> {
+                     if ($$5x.b_($$6.dm()).a(asl.a)) {
+                        return false;
+                     } else if ($$7 < $$2.getValue()) {
+                        $$2.setValue($$7 + 20L + 2L);
+                        return true;
+                     } else {
+                        hx $$8 = null;
+                        hx $$9 = null;
+                        hx $$10 = $$6.dm();
 
-   public static bph<bmo> a(float $$0) {
-      return a($$0, 10, 7);
-   }
+                        for (hx $$12 : hx.a($$10, $$0, $$0, $$0)) {
+                           if ($$12.u() != $$10.u() || $$12.w() != $$10.w()) {
+                              djg $$13 = $$6.dM().a_($$12.c());
+                              djg $$14 = $$6.dM().a_($$12);
+                              if ($$14.a(cwr.G)) {
+                                 if ($$13.i()) {
+                                    $$8 = $$12.i();
+                                    break;
+                                 }
 
-   public static bph<bmo> a(float $$0, int $$1, int $$2) {
-      return brj.a((Function<brj.b<bmo>, ? extends App<brj.c<bmo>, brm<bmo>>>)($$3 -> $$3.group($$3.c(bvh.m)).apply($$3, $$3x -> ($$4, $$5, $$6) -> {
-               hx $$7 = $$5.dm();
-               elm $$8;
-               if ($$4.c($$7)) {
-                  $$8 = bxa.a($$5, $$1, $$2);
-               } else {
-                  iz $$9 = iz.a($$7);
-                  iz $$10 = bny.a($$4, $$9, 2);
-                  if ($$10 != $$9) {
-                     $$8 = bwx.a($$5, $$1, $$2, elm.c($$10.q()), (float) (Math.PI / 2));
-                  } else {
-                     $$8 = bxa.a($$5, $$1, $$2);
-                  }
-               }
+                                 if ($$9 == null && !$$12.a($$6.dk(), 1.5)) {
+                                    $$9 = $$12.i();
+                                 }
+                              }
+                           }
+                        }
 
-               $$3x.a(Optional.ofNullable($$8).map($$1xxxx -> new bvk($$1xxxx, $$0, 0)));
-               return true;
-            })));
+                        if ($$8 == null) {
+                           $$8 = $$9;
+                        }
+
+                        if ($$8 != null) {
+                           $$5.a(new boe($$8));
+                           $$4.a(new bvp(new boe($$8), $$1, 0));
+                        }
+
+                        $$2.setValue($$7 + 40L);
+                        return true;
+                     }
+                  }))
+      );
    }
 }

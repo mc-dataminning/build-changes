@@ -1,26 +1,26 @@
 import com.mojang.serialization.Codec;
 
-public enum al implements ave {
+public enum al implements avj {
    a("task", n.k),
    b("challenge", n.f),
    c("goal", n.k);
 
-   public static final Codec<al> d = ave.a(al::values);
+   public static final Codec<al> d = avj.a(al::values);
    private final String e;
    private final n f;
-   private final vd g;
+   private final vf g;
 
    private al(String $$0, n $$1) {
       this.e = $$0;
       this.f = $$1;
-      this.g = vd.c("advancements.toast." + $$0);
+      this.g = vf.c("advancements.toast." + $$0);
    }
 
    public n a() {
       return this.f;
    }
 
-   public vd b() {
+   public vf b() {
       return this.g;
    }
 
@@ -29,7 +29,7 @@ public enum al implements ave {
       return this.e;
    }
 
-   public vr a(af $$0, ana $$1) {
-      return vd.a("chat.type.advancement." + this.e, $$1.Q_(), ae.a($$0));
+   public vt a(af $$0, ane $$1) {
+      return vf.a("chat.type.advancement." + this.e, $$1.Q_(), ae.a($$0));
    }
 }

@@ -1,6 +1,8 @@
-import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-@Deprecated
-public interface gdn {
-   float call(cmr var1, @Nullable fnk var2, @Nullable bmf var3, int var4);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface gdn {
 }

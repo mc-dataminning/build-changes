@@ -1,32 +1,17 @@
-import it.unimi.dsi.fastutil.doubles.DoubleList;
-
-public class elx implements ely {
-   private final DoubleList a;
-
-   public elx(DoubleList $$0) {
-      this.a = $$0;
+public interface elx {
+   static elx a() {
+      return emc.a;
    }
 
-   @Override
-   public boolean a(ely.a $$0) {
-      int $$1 = this.a.size() - 1;
-
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         if (!$$0.merge($$2, $$2, $$2)) {
-            return false;
-         }
-      }
-
-      return true;
+   static elx a(blu $$0) {
+      return new emc($$0);
    }
 
-   @Override
-   public int size() {
-      return this.a.size();
-   }
+   boolean b();
 
-   @Override
-   public DoubleList a() {
-      return this.a;
-   }
+   boolean a(eml var1, hx var2, boolean var3);
+
+   boolean a(cms var1);
+
+   boolean a(eeq var1, eeq var2);
 }

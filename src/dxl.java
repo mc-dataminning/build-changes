@@ -1,23 +1,34 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dxl extends dxg {
-   public static final Codec<dxl> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(bif.b(dxg.c).fieldOf("distribution").forGetter($$0x -> $$0x.b)).apply($$0, dxl::new)
-   );
-   private final bif<dxg> b;
+public class dxl extends dxm {
+   public static final dxl a = new dxl(dpj.a(0));
+   public static final Codec<dxl> b = atv.e(dpj.a, dpj.a.fieldOf("value").codec()).xmap(dxl::new, dxl::b);
+   private final dpj d;
 
-   public dxl(bif<dxg> $$0) {
-      this.b = $$0;
+   public static dxl a(dpj $$0) {
+      return new dxl($$0);
+   }
+
+   private dxl(dpj $$0) {
+      this.d = $$0;
+   }
+
+   public dpj b() {
+      return this.d;
    }
 
    @Override
-   public int a(aup $$0, dpg $$1) {
-      return this.b.a($$0).orElseThrow(IllegalStateException::new).a($$0, $$1);
+   public int a(auu $$0, dpm $$1) {
+      return this.d.a($$1);
    }
 
    @Override
-   public dxh<?> a() {
-      return dxh.f;
+   public dxn<?> a() {
+      return dxn.a;
+   }
+
+   @Override
+   public String toString() {
+      return this.d.toString();
    }
 }

@@ -1,39 +1,24 @@
-public class agj<T> {
-   private final int a;
-   private final agk<T> b;
+public class agj implements xf<adl> {
+   private final long a;
 
-   public agj(int $$0, agk<T> $$1) {
+   public agj(long $$0) {
       this.a = $$0;
-      this.b = $$1;
    }
 
-   public int a() {
+   public agj(ui $$0) {
+      this.a = $$0.readLong();
+   }
+
+   @Override
+   public void a(ui $$0) {
+      $$0.b(this.a);
+   }
+
+   public void a(adl $$0) {
+      $$0.a(this);
+   }
+
+   public long a() {
       return this.a;
-   }
-
-   public agk<T> b() {
-      return this.b;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         agj<?> $$1 = (agj<?>)$$0;
-         return this.a == $$1.a;
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return this.a;
-   }
-
-   @Override
-   public String toString() {
-      return "<entity data: " + this.a + ">";
    }
 }

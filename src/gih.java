@@ -1,91 +1,67 @@
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.net.DatagramPacket;
-import java.net.DatagramSocket;
-import java.net.InetAddress;
-import java.nio.charset.StandardCharsets;
-import java.util.concurrent.atomic.AtomicInteger;
-import org.slf4j.Logger;
+import java.util.List;
+import java.util.Locale;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
-public class gih extends Thread {
-   private static final AtomicInteger c = new AtomicInteger(0);
-   private static final Logger d = LogUtils.getLogger();
-   public static final String a = "224.0.2.60";
-   public static final int b = 4445;
-   private static final long e = 1500L;
-   private final String f;
-   private final DatagramSocket g;
-   private boolean h = true;
-   private final String i;
-
-   public gih(String $$0, String $$1) throws IOException {
-      super("LanServerPinger #" + c.incrementAndGet());
-      this.f = $$0;
-      this.i = $$1;
-      this.setDaemon(true);
-      this.setUncaughtExceptionHandler(new r(d));
-      this.g = new DatagramSocket();
+public interface gih<T> {
+   static <T> gih<T> a() {
+      return $$0 -> List.of();
    }
 
-   @Override
-   public void run() {
-      String $$0 = a(this.f, this.i);
-      byte[] $$1 = $$0.getBytes(StandardCharsets.UTF_8);
-
-      while (!this.isInterrupted() && this.h) {
-         try {
-            InetAddress $$2 = InetAddress.getByName("224.0.2.60");
-            DatagramPacket $$3 = new DatagramPacket($$1, $$1.length, $$2, 4445);
-            this.g.send($$3);
-         } catch (IOException var6) {
-            d.warn("LanServerPinger: {}", var6.getMessage());
-            break;
-         }
-
-         try {
-            sleep(1500L);
-         } catch (InterruptedException var5) {
-         }
-      }
+   static <T> gih<T> a(List<T> $$0, Function<T, Stream<String>> $$1) {
+      // $VF: Couldn't be decompiled
+      // Please report this to the Vineflower issue tracker, at https://github.com/Vineflower/vineflower/issues with a copy of the class file (if you have the rights to distribute it!)
+      // java.lang.NullPointerException: Cannot invoke "org.jetbrains.java.decompiler.struct.gen.VarType.equals(Object)" because "curType" is null
+      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.NewExprent.setLambdaGenericTypes(NewExprent.java:668)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.NewExprent.toJava(NewExprent.java:401)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.ExprProcessor.getCastedExprent(ExprProcessor.java:1018)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.ExitExprent.toJava(ExitExprent.java:86)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.ExprProcessor.listToJava(ExprProcessor.java:895)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.stats.BasicBlockStatement.toJava(BasicBlockStatement.java:90)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.ExprProcessor.jmpWrapper(ExprProcessor.java:833)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.stats.SequenceStatement.toJava(SequenceStatement.java:107)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.ExprProcessor.jmpWrapper(ExprProcessor.java:833)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.stats.IfStatement.toJava(IfStatement.java:261)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.stats.RootStatement.toJava(RootStatement.java:36)
+      //   at org.jetbrains.java.decompiler.main.ClassWriter.writeMethod(ClassWriter.java:1283)
+      //
+      // Bytecode:
+      // 00: aload 0
+      // 01: invokeinterface java/util/List.isEmpty ()Z 1
+      // 06: ifeq 0d
+      // 09: invokestatic gih.a ()Lgih;
+      // 0c: areturn
+      // 0d: new gim
+      // 10: dup
+      // 11: invokespecial gim.<init> ()V
+      // 14: astore 2
+      // 15: aload 0
+      // 16: invokeinterface java/util/List.iterator ()Ljava/util/Iterator; 1
+      // 1b: astore 3
+      // 1c: aload 3
+      // 1d: invokeinterface java/util/Iterator.hasNext ()Z 1
+      // 22: ifeq 48
+      // 25: aload 3
+      // 26: invokeinterface java/util/Iterator.next ()Ljava/lang/Object; 1
+      // 2b: astore 4
+      // 2d: aload 1
+      // 2e: aload 4
+      // 30: invokeinterface java/util/function/Function.apply (Ljava/lang/Object;)Ljava/lang/Object; 2
+      // 35: checkcast java/util/stream/Stream
+      // 38: aload 2
+      // 39: aload 4
+      // 3b: invokedynamic accept (Lgim;Ljava/lang/Object;)Ljava/util/function/Consumer; bsm=java/lang/invoke/LambdaMetafactory.metafactory (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite; args=[ (Ljava/lang/Object;)V, gih.a (Lgim;Ljava/lang/Object;Ljava/lang/String;)V, (Ljava/lang/String;)V ]
+      // 40: invokeinterface java/util/stream/Stream.forEach (Ljava/util/function/Consumer;)V 2
+      // 45: goto 1c
+      // 48: aload 2
+      // 49: invokevirtual gim.a ()V
+      // 4c: aload 2
+      // 4d: dup
+      // 4e: invokestatic java/util/Objects.requireNonNull (Ljava/lang/Object;)Ljava/lang/Object;
+      // 51: pop
+      // 52: invokedynamic search (Lgim;)Lgih; bsm=java/lang/invoke/LambdaMetafactory.metafactory (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite; args=[ (Ljava/lang/String;)Ljava/util/List;, gim.a (Ljava/lang/String;)Ljava/util/List;, (Ljava/lang/String;)Ljava/util/List; ]
+      // 57: areturn
    }
 
-   @Override
-   public void interrupt() {
-      super.interrupt();
-      this.h = false;
-   }
-
-   public static String a(String $$0, String $$1) {
-      return "[MOTD]" + $$0 + "[/MOTD][AD]" + $$1 + "[/AD]";
-   }
-
-   public static String a(String $$0) {
-      int $$1 = $$0.indexOf("[MOTD]");
-      if ($$1 < 0) {
-         return "missing no";
-      } else {
-         int $$2 = $$0.indexOf("[/MOTD]", $$1 + "[MOTD]".length());
-         return $$2 < $$1 ? "missing no" : $$0.substring($$1 + "[MOTD]".length(), $$2);
-      }
-   }
-
-   public static String b(String $$0) {
-      int $$1 = $$0.indexOf("[/MOTD]");
-      if ($$1 < 0) {
-         return null;
-      } else {
-         int $$2 = $$0.indexOf("[/MOTD]", $$1 + "[/MOTD]".length());
-         if ($$2 >= 0) {
-            return null;
-         } else {
-            int $$3 = $$0.indexOf("[AD]", $$1 + "[/MOTD]".length());
-            if ($$3 < 0) {
-               return null;
-            } else {
-               int $$4 = $$0.indexOf("[/AD]", $$3 + "[AD]".length());
-               return $$4 < $$3 ? null : $$0.substring($$3 + "[AD]".length(), $$4);
-            }
-         }
-      }
-   }
+   List<T> search(String var1);
 }

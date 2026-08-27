@@ -1,20 +1,28 @@
-public enum dkc implements ave {
-   a("normal"),
-   b("sticky");
+public enum dkc implements avj {
+   a(ic.a),
+   b(ic.b);
 
-   private final String c;
+   private final ic c;
 
-   private dkc(String $$0) {
+   private dkc(ic $$0) {
       this.c = $$0;
+   }
+
+   public ic a() {
+      return this.c;
    }
 
    @Override
    public String toString() {
-      return this.c;
+      return this.c();
    }
 
    @Override
    public String c() {
-      return this.c;
+      return this == a ? "upper" : "lower";
+   }
+
+   public dkc b() {
+      return this == a ? b : a;
    }
 }

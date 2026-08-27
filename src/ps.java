@@ -1,167 +1,249 @@
+import com.google.common.collect.ImmutableList;
 import com.mojang.datafixers.util.Pair;
-import java.util.List;
 
 public class ps {
-   public static final ahc<eai> a = pj.a("trail_ruins/tower");
+   public static final ahf<eao> a = pl.a("village/taiga/town_centers");
+   private static final ahf<eao> b = pl.a("village/taiga/terminators");
 
-   public static void a(pc<eai> $$0) {
-      ii<eai> $$1 = $$0.a(ke.aG);
-      ih<eai> $$2 = $$1.b(pj.a);
-      ii<ecx> $$3 = $$0.a(ke.aE);
-      ih<ecx> $$4 = $$3.b(pk.J);
-      ih<ecx> $$5 = $$3.b(pk.K);
-      ih<ecx> $$6 = $$3.b(pk.L);
+   public static void a(pe<eao> $$0) {
+      ii<dyj> $$1 = $$0.a(ke.aC);
+      ih<dyj> $$2 = $$1.b(rb.h);
+      ih<dyj> $$3 = $$1.b(rb.i);
+      ih<dyj> $$4 = $$1.b(rb.e);
+      ih<dyj> $$5 = $$1.b(rb.l);
+      ih<dyj> $$6 = $$1.b(rb.m);
+      ii<edd> $$7 = $$0.a(ke.aE);
+      ih<edd> $$8 = $$7.b(pm.f);
+      ih<edd> $$9 = $$7.b(pm.d);
+      ih<edd> $$10 = $$7.b(pm.k);
+      ih<edd> $$11 = $$7.b(pm.o);
+      ii<eao> $$12 = $$0.a(ke.aG);
+      ih<eao> $$13 = $$12.b(pl.a);
+      ih<eao> $$14 = $$12.b(b);
       $$0.a(
          a,
-         new eai(
-            $$2,
-            List.of(
-               Pair.of(eag.b("trail_ruins/tower/tower_1", $$4), 1),
-               Pair.of(eag.b("trail_ruins/tower/tower_2", $$4), 1),
-               Pair.of(eag.b("trail_ruins/tower/tower_3", $$4), 1),
-               Pair.of(eag.b("trail_ruins/tower/tower_4", $$4), 1),
-               Pair.of(eag.b("trail_ruins/tower/tower_5", $$4), 1)
+         new eao(
+            $$13,
+            ImmutableList.of(
+               Pair.of(eam.a("village/taiga/town_centers/taiga_meeting_point_1", $$8), 49),
+               Pair.of(eam.a("village/taiga/town_centers/taiga_meeting_point_2", $$8), 49),
+               Pair.of(eam.a("village/taiga/zombie/town_centers/taiga_meeting_point_1", $$9), 1),
+               Pair.of(eam.a("village/taiga/zombie/town_centers/taiga_meeting_point_2", $$9), 1)
             ),
-            eai.a.b
+            eao.a.b
          )
       );
-      pj.a(
+      pl.a(
          $$0,
-         "trail_ruins/tower/tower_top",
-         new eai(
-            $$2,
-            List.of(
-               Pair.of(eag.b("trail_ruins/tower/tower_top_1", $$6), 1),
-               Pair.of(eag.b("trail_ruins/tower/tower_top_2", $$6), 1),
-               Pair.of(eag.b("trail_ruins/tower/tower_top_3", $$6), 1),
-               Pair.of(eag.b("trail_ruins/tower/tower_top_4", $$6), 1),
-               Pair.of(eag.b("trail_ruins/tower/tower_top_5", $$6), 1)
+         "village/taiga/streets",
+         new eao(
+            $$14,
+            ImmutableList.of(
+               Pair.of(eam.a("village/taiga/streets/corner_01", $$10), 2),
+               Pair.of(eam.a("village/taiga/streets/corner_02", $$10), 2),
+               Pair.of(eam.a("village/taiga/streets/corner_03", $$10), 2),
+               Pair.of(eam.a("village/taiga/streets/straight_01", $$10), 4),
+               Pair.of(eam.a("village/taiga/streets/straight_02", $$10), 4),
+               Pair.of(eam.a("village/taiga/streets/straight_03", $$10), 4),
+               Pair.of(eam.a("village/taiga/streets/straight_04", $$10), 7),
+               Pair.of(eam.a("village/taiga/streets/straight_05", $$10), 7),
+               Pair.of(eam.a("village/taiga/streets/straight_06", $$10), 4),
+               Pair.of(eam.a("village/taiga/streets/crossroad_01", $$10), 1),
+               Pair.of(eam.a("village/taiga/streets/crossroad_02", $$10), 1),
+               Pair.of(eam.a("village/taiga/streets/crossroad_03", $$10), 2),
+               new Pair[]{
+                  Pair.of(eam.a("village/taiga/streets/crossroad_04", $$10), 2),
+                  Pair.of(eam.a("village/taiga/streets/crossroad_05", $$10), 2),
+                  Pair.of(eam.a("village/taiga/streets/crossroad_06", $$10), 2),
+                  Pair.of(eam.a("village/taiga/streets/turn_01", $$10), 3)
+               }
             ),
-            eai.a.b
+            eao.a.a
          )
       );
-      pj.a(
+      pl.a(
          $$0,
-         "trail_ruins/tower/additions",
-         new eai(
-            $$2,
-            List.of(
-               Pair.of(eag.b("trail_ruins/tower/hall_1", $$4), 1),
-               Pair.of(eag.b("trail_ruins/tower/hall_2", $$4), 1),
-               Pair.of(eag.b("trail_ruins/tower/hall_3", $$4), 1),
-               Pair.of(eag.b("trail_ruins/tower/hall_4", $$4), 1),
-               Pair.of(eag.b("trail_ruins/tower/hall_5", $$4), 1),
-               Pair.of(eag.b("trail_ruins/tower/large_hall_1", $$4), 1),
-               Pair.of(eag.b("trail_ruins/tower/large_hall_2", $$4), 1),
-               Pair.of(eag.b("trail_ruins/tower/large_hall_3", $$4), 1),
-               Pair.of(eag.b("trail_ruins/tower/large_hall_4", $$4), 1),
-               Pair.of(eag.b("trail_ruins/tower/large_hall_5", $$4), 1),
-               Pair.of(eag.b("trail_ruins/tower/one_room_1", $$4), 1),
-               Pair.of(eag.b("trail_ruins/tower/one_room_2", $$4), 1),
-               Pair.of(eag.b("trail_ruins/tower/one_room_3", $$4), 1),
-               Pair.of(eag.b("trail_ruins/tower/one_room_4", $$4), 1),
-               Pair.of(eag.b("trail_ruins/tower/one_room_5", $$4), 1),
-               Pair.of(eag.b("trail_ruins/tower/platform_1", $$4), 1),
-               Pair.of(eag.b("trail_ruins/tower/platform_2", $$4), 1),
-               Pair.of(eag.b("trail_ruins/tower/platform_3", $$4), 1),
-               Pair.of(eag.b("trail_ruins/tower/platform_4", $$4), 1),
-               Pair.of(eag.b("trail_ruins/tower/platform_5", $$4), 1),
-               Pair.of(eag.b("trail_ruins/tower/stable_1", $$4), 1),
-               Pair.of(eag.b("trail_ruins/tower/stable_2", $$4), 1),
-               Pair.of(eag.b("trail_ruins/tower/stable_3", $$4), 1),
-               Pair.of(eag.b("trail_ruins/tower/stable_4", $$4), 1),
-               Pair.of(eag.b("trail_ruins/tower/stable_5", $$4), 1)
+         "village/taiga/zombie/streets",
+         new eao(
+            $$14,
+            ImmutableList.of(
+               Pair.of(eam.a("village/taiga/zombie/streets/corner_01", $$10), 2),
+               Pair.of(eam.a("village/taiga/zombie/streets/corner_02", $$10), 2),
+               Pair.of(eam.a("village/taiga/zombie/streets/corner_03", $$10), 2),
+               Pair.of(eam.a("village/taiga/zombie/streets/straight_01", $$10), 4),
+               Pair.of(eam.a("village/taiga/zombie/streets/straight_02", $$10), 4),
+               Pair.of(eam.a("village/taiga/zombie/streets/straight_03", $$10), 4),
+               Pair.of(eam.a("village/taiga/zombie/streets/straight_04", $$10), 7),
+               Pair.of(eam.a("village/taiga/zombie/streets/straight_05", $$10), 7),
+               Pair.of(eam.a("village/taiga/zombie/streets/straight_06", $$10), 4),
+               Pair.of(eam.a("village/taiga/zombie/streets/crossroad_01", $$10), 1),
+               Pair.of(eam.a("village/taiga/zombie/streets/crossroad_02", $$10), 1),
+               Pair.of(eam.a("village/taiga/zombie/streets/crossroad_03", $$10), 2),
+               new Pair[]{
+                  Pair.of(eam.a("village/taiga/zombie/streets/crossroad_04", $$10), 2),
+                  Pair.of(eam.a("village/taiga/zombie/streets/crossroad_05", $$10), 2),
+                  Pair.of(eam.a("village/taiga/zombie/streets/crossroad_06", $$10), 2),
+                  Pair.of(eam.a("village/taiga/zombie/streets/turn_01", $$10), 3)
+               }
             ),
-            eai.a.b
+            eao.a.a
          )
       );
-      pj.a(
+      pl.a(
          $$0,
-         "trail_ruins/roads",
-         new eai(
-            $$2,
-            List.of(
-               Pair.of(eag.b("trail_ruins/roads/long_road_end", $$5), 1),
-               Pair.of(eag.b("trail_ruins/roads/road_end_1", $$5), 1),
-               Pair.of(eag.b("trail_ruins/roads/road_section_1", $$5), 1),
-               Pair.of(eag.b("trail_ruins/roads/road_section_2", $$5), 1),
-               Pair.of(eag.b("trail_ruins/roads/road_section_3", $$5), 1),
-               Pair.of(eag.b("trail_ruins/roads/road_section_4", $$5), 1),
-               Pair.of(eag.b("trail_ruins/roads/road_spacer_1", $$5), 1)
+         "village/taiga/houses",
+         new eao(
+            $$14,
+            ImmutableList.of(
+               Pair.of(eam.a("village/taiga/houses/taiga_small_house_1", $$8), 4),
+               Pair.of(eam.a("village/taiga/houses/taiga_small_house_2", $$8), 4),
+               Pair.of(eam.a("village/taiga/houses/taiga_small_house_3", $$8), 4),
+               Pair.of(eam.a("village/taiga/houses/taiga_small_house_4", $$8), 4),
+               Pair.of(eam.a("village/taiga/houses/taiga_small_house_5", $$8), 4),
+               Pair.of(eam.a("village/taiga/houses/taiga_medium_house_1", $$8), 2),
+               Pair.of(eam.a("village/taiga/houses/taiga_medium_house_2", $$8), 2),
+               Pair.of(eam.a("village/taiga/houses/taiga_medium_house_3", $$8), 2),
+               Pair.of(eam.a("village/taiga/houses/taiga_medium_house_4", $$8), 2),
+               Pair.of(eam.a("village/taiga/houses/taiga_butcher_shop_1", $$8), 2),
+               Pair.of(eam.a("village/taiga/houses/taiga_tool_smith_1", $$8), 2),
+               Pair.of(eam.a("village/taiga/houses/taiga_fletcher_house_1", $$8), 2),
+               new Pair[]{
+                  Pair.of(eam.a("village/taiga/houses/taiga_shepherds_house_1", $$8), 2),
+                  Pair.of(eam.a("village/taiga/houses/taiga_armorer_house_1", $$8), 1),
+                  Pair.of(eam.a("village/taiga/houses/taiga_armorer_2", $$8), 1),
+                  Pair.of(eam.a("village/taiga/houses/taiga_fisher_cottage_1", $$8), 3),
+                  Pair.of(eam.a("village/taiga/houses/taiga_tannery_1", $$8), 2),
+                  Pair.of(eam.a("village/taiga/houses/taiga_cartographer_house_1", $$8), 2),
+                  Pair.of(eam.a("village/taiga/houses/taiga_library_1", $$8), 2),
+                  Pair.of(eam.a("village/taiga/houses/taiga_masons_house_1", $$8), 2),
+                  Pair.of(eam.a("village/taiga/houses/taiga_weaponsmith_1", $$8), 2),
+                  Pair.of(eam.a("village/taiga/houses/taiga_weaponsmith_2", $$8), 2),
+                  Pair.of(eam.a("village/taiga/houses/taiga_temple_1", $$8), 2),
+                  Pair.of(eam.a("village/taiga/houses/taiga_large_farm_1", $$11), 6),
+                  Pair.of(eam.a("village/taiga/houses/taiga_large_farm_2", $$11), 6),
+                  Pair.of(eam.a("village/taiga/houses/taiga_small_farm_1", $$8), 1),
+                  Pair.of(eam.a("village/taiga/houses/taiga_animal_pen_1", $$8), 2),
+                  Pair.of(eam.g(), 6)
+               }
             ),
-            eai.a.b
+            eao.a.b
          )
       );
-      pj.a(
+      pl.a(
          $$0,
-         "trail_ruins/buildings",
-         new eai(
-            $$2,
-            List.of(
-               Pair.of(eag.b("trail_ruins/buildings/group_hall_1", $$4), 1),
-               Pair.of(eag.b("trail_ruins/buildings/group_hall_2", $$4), 1),
-               Pair.of(eag.b("trail_ruins/buildings/group_hall_3", $$4), 1),
-               Pair.of(eag.b("trail_ruins/buildings/group_hall_4", $$4), 1),
-               Pair.of(eag.b("trail_ruins/buildings/group_hall_5", $$4), 1),
-               Pair.of(eag.b("trail_ruins/buildings/large_room_1", $$4), 1),
-               Pair.of(eag.b("trail_ruins/buildings/large_room_2", $$4), 1),
-               Pair.of(eag.b("trail_ruins/buildings/large_room_3", $$4), 1),
-               Pair.of(eag.b("trail_ruins/buildings/large_room_4", $$4), 1),
-               Pair.of(eag.b("trail_ruins/buildings/large_room_5", $$4), 1),
-               Pair.of(eag.b("trail_ruins/buildings/one_room_1", $$4), 1),
-               Pair.of(eag.b("trail_ruins/buildings/one_room_2", $$4), 1),
-               Pair.of(eag.b("trail_ruins/buildings/one_room_3", $$4), 1),
-               Pair.of(eag.b("trail_ruins/buildings/one_room_4", $$4), 1),
-               Pair.of(eag.b("trail_ruins/buildings/one_room_5", $$4), 1)
+         "village/taiga/zombie/houses",
+         new eao(
+            $$14,
+            ImmutableList.of(
+               Pair.of(eam.a("village/taiga/zombie/houses/taiga_small_house_1", $$9), 4),
+               Pair.of(eam.a("village/taiga/zombie/houses/taiga_small_house_2", $$9), 4),
+               Pair.of(eam.a("village/taiga/zombie/houses/taiga_small_house_3", $$9), 4),
+               Pair.of(eam.a("village/taiga/zombie/houses/taiga_small_house_4", $$9), 4),
+               Pair.of(eam.a("village/taiga/zombie/houses/taiga_small_house_5", $$9), 4),
+               Pair.of(eam.a("village/taiga/zombie/houses/taiga_medium_house_1", $$9), 2),
+               Pair.of(eam.a("village/taiga/zombie/houses/taiga_medium_house_2", $$9), 2),
+               Pair.of(eam.a("village/taiga/zombie/houses/taiga_medium_house_3", $$9), 2),
+               Pair.of(eam.a("village/taiga/zombie/houses/taiga_medium_house_4", $$9), 2),
+               Pair.of(eam.a("village/taiga/houses/taiga_butcher_shop_1", $$9), 2),
+               Pair.of(eam.a("village/taiga/zombie/houses/taiga_tool_smith_1", $$9), 2),
+               Pair.of(eam.a("village/taiga/houses/taiga_fletcher_house_1", $$9), 2),
+               new Pair[]{
+                  Pair.of(eam.a("village/taiga/zombie/houses/taiga_shepherds_house_1", $$9), 2),
+                  Pair.of(eam.a("village/taiga/houses/taiga_armorer_house_1", $$9), 1),
+                  Pair.of(eam.a("village/taiga/zombie/houses/taiga_fisher_cottage_1", $$9), 2),
+                  Pair.of(eam.a("village/taiga/houses/taiga_tannery_1", $$9), 2),
+                  Pair.of(eam.a("village/taiga/zombie/houses/taiga_cartographer_house_1", $$9), 2),
+                  Pair.of(eam.a("village/taiga/zombie/houses/taiga_library_1", $$9), 2),
+                  Pair.of(eam.a("village/taiga/houses/taiga_masons_house_1", $$9), 2),
+                  Pair.of(eam.a("village/taiga/houses/taiga_weaponsmith_1", $$9), 2),
+                  Pair.of(eam.a("village/taiga/zombie/houses/taiga_weaponsmith_2", $$9), 2),
+                  Pair.of(eam.a("village/taiga/zombie/houses/taiga_temple_1", $$9), 2),
+                  Pair.of(eam.a("village/taiga/houses/taiga_large_farm_1", $$9), 6),
+                  Pair.of(eam.a("village/taiga/zombie/houses/taiga_large_farm_2", $$9), 6),
+                  Pair.of(eam.a("village/taiga/houses/taiga_small_farm_1", $$9), 1),
+                  Pair.of(eam.a("village/taiga/houses/taiga_animal_pen_1", $$9), 2),
+                  Pair.of(eam.g(), 6)
+               }
             ),
-            eai.a.b
+            eao.a.b
          )
       );
-      pj.a(
-         $$0,
-         "trail_ruins/buildings/grouped",
-         new eai(
-            $$2,
-            List.of(
-               Pair.of(eag.b("trail_ruins/buildings/group_full_1", $$4), 1),
-               Pair.of(eag.b("trail_ruins/buildings/group_full_2", $$4), 1),
-               Pair.of(eag.b("trail_ruins/buildings/group_full_3", $$4), 1),
-               Pair.of(eag.b("trail_ruins/buildings/group_full_4", $$4), 1),
-               Pair.of(eag.b("trail_ruins/buildings/group_full_5", $$4), 1),
-               Pair.of(eag.b("trail_ruins/buildings/group_lower_1", $$4), 1),
-               Pair.of(eag.b("trail_ruins/buildings/group_lower_2", $$4), 1),
-               Pair.of(eag.b("trail_ruins/buildings/group_lower_3", $$4), 1),
-               Pair.of(eag.b("trail_ruins/buildings/group_lower_4", $$4), 1),
-               Pair.of(eag.b("trail_ruins/buildings/group_lower_5", $$4), 1),
-               Pair.of(eag.b("trail_ruins/buildings/group_upper_1", $$4), 1),
-               Pair.of(eag.b("trail_ruins/buildings/group_upper_2", $$4), 1),
-               Pair.of(eag.b("trail_ruins/buildings/group_upper_3", $$4), 1),
-               Pair.of(eag.b("trail_ruins/buildings/group_upper_4", $$4), 1),
-               Pair.of(eag.b("trail_ruins/buildings/group_upper_5", $$4), 1),
-               Pair.of(eag.b("trail_ruins/buildings/group_room_1", $$4), 1),
-               Pair.of(eag.b("trail_ruins/buildings/group_room_2", $$4), 1),
-               Pair.of(eag.b("trail_ruins/buildings/group_room_3", $$4), 1),
-               Pair.of(eag.b("trail_ruins/buildings/group_room_4", $$4), 1),
-               Pair.of(eag.b("trail_ruins/buildings/group_room_5", $$4), 1)
+      $$0.a(
+         b,
+         new eao(
+            $$13,
+            ImmutableList.of(
+               Pair.of(eam.a("village/plains/terminators/terminator_01", $$10), 1),
+               Pair.of(eam.a("village/plains/terminators/terminator_02", $$10), 1),
+               Pair.of(eam.a("village/plains/terminators/terminator_03", $$10), 1),
+               Pair.of(eam.a("village/plains/terminators/terminator_04", $$10), 1)
             ),
-            eai.a.b
+            eao.a.a
          )
       );
-      pj.a(
+      pl.a(
          $$0,
-         "trail_ruins/decor",
-         new eai(
-            $$2,
-            List.of(
-               Pair.of(eag.b("trail_ruins/decor/decor_1", $$4), 1),
-               Pair.of(eag.b("trail_ruins/decor/decor_2", $$4), 1),
-               Pair.of(eag.b("trail_ruins/decor/decor_3", $$4), 1),
-               Pair.of(eag.b("trail_ruins/decor/decor_4", $$4), 1),
-               Pair.of(eag.b("trail_ruins/decor/decor_5", $$4), 1),
-               Pair.of(eag.b("trail_ruins/decor/decor_6", $$4), 1),
-               Pair.of(eag.b("trail_ruins/decor/decor_7", $$4), 1)
+         "village/taiga/decor",
+         new eao(
+            $$13,
+            ImmutableList.of(
+               Pair.of(eam.a("village/taiga/taiga_lamp_post_1"), 10),
+               Pair.of(eam.a("village/taiga/taiga_decoration_1"), 4),
+               Pair.of(eam.a("village/taiga/taiga_decoration_2"), 1),
+               Pair.of(eam.a("village/taiga/taiga_decoration_3"), 1),
+               Pair.of(eam.a("village/taiga/taiga_decoration_4"), 1),
+               Pair.of(eam.a("village/taiga/taiga_decoration_5"), 2),
+               Pair.of(eam.a("village/taiga/taiga_decoration_6"), 1),
+               Pair.of(eam.a($$2), 4),
+               Pair.of(eam.a($$3), 4),
+               Pair.of(eam.a($$4), 2),
+               Pair.of(eam.a($$5), 4),
+               Pair.of(eam.a($$6), 1),
+               new Pair[]{Pair.of(eam.g(), 4)}
             ),
-            eai.a.b
+            eao.a.b
+         )
+      );
+      pl.a(
+         $$0,
+         "village/taiga/zombie/decor",
+         new eao(
+            $$13,
+            ImmutableList.of(
+               Pair.of(eam.a("village/taiga/taiga_decoration_1"), 4),
+               Pair.of(eam.a("village/taiga/taiga_decoration_2"), 1),
+               Pair.of(eam.a("village/taiga/taiga_decoration_3"), 1),
+               Pair.of(eam.a("village/taiga/taiga_decoration_4"), 1),
+               Pair.of(eam.a($$2), 4),
+               Pair.of(eam.a($$3), 4),
+               Pair.of(eam.a($$4), 2),
+               Pair.of(eam.a($$5), 4),
+               Pair.of(eam.a($$6), 1),
+               Pair.of(eam.g(), 4)
+            ),
+            eao.a.b
+         )
+      );
+      pl.a(
+         $$0,
+         "village/taiga/villagers",
+         new eao(
+            $$13,
+            ImmutableList.of(
+               Pair.of(eam.a("village/taiga/villagers/nitwit"), 1),
+               Pair.of(eam.a("village/taiga/villagers/baby"), 1),
+               Pair.of(eam.a("village/taiga/villagers/unemployed"), 10)
+            ),
+            eao.a.b
+         )
+      );
+      pl.a(
+         $$0,
+         "village/taiga/zombie/villagers",
+         new eao(
+            $$13,
+            ImmutableList.of(Pair.of(eam.a("village/taiga/zombie/villagers/nitwit"), 1), Pair.of(eam.a("village/taiga/zombie/villagers/unemployed"), 10)),
+            eao.a.b
          )
       );
    }

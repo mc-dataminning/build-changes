@@ -1,118 +1,140 @@
-import com.google.common.collect.ImmutableMap;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.longs.Long2IntOpenHashMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
 
-public final class eek extends djc<eej, eek> {
-   public static final Codec<eek> a = a(kd.c.q(), eej::g).stable();
-   public static final int b = 9;
-   public static final int g = 8;
-
-   public eek(eej $$0, ImmutableMap<dkd<?>, Comparable<?>> $$1, MapCodec<eek> $$2) {
-      super($$0, $$1, $$2);
+public class eek extends eee<eek.a> {
+   protected eek(dlq $$0) {
+      super(ctx.a, $$0, new eek.a(new Long2ObjectOpenHashMap(), new Long2IntOpenHashMap(), Integer.MAX_VALUE));
    }
 
-   public eej a() {
-      return this.e;
+   @Override
+   protected int a(long $$0) {
+      return this.e($$0, false);
    }
 
-   public boolean b() {
-      return this.a().c(this);
-   }
+   protected int e(long $$0, boolean $$1) {
+      long $$2 = iz.e($$0);
+      int $$3 = iz.c($$2);
+      eek.a $$4 = $$1 ? this.d : this.c;
+      int $$5 = $$4.c.get(iz.f($$2));
+      if ($$5 != $$4.b && $$3 < $$5) {
+         dli $$6 = this.a($$4, $$2);
+         if ($$6 == null) {
+            for ($$0 = hx.e($$0); $$6 == null; $$6 = this.a($$4, $$2)) {
+               if (++$$3 >= $$5) {
+                  return 15;
+               }
 
-   public boolean a(eej $$0) {
-      return this.e == $$0 && this.e.c(this);
-   }
-
-   public boolean c() {
-      return this.a().b();
-   }
-
-   public float a(cso $$0, hx $$1) {
-      return this.a().a(this, $$0, $$1);
-   }
-
-   public float d() {
-      return this.a().a(this);
-   }
-
-   public int e() {
-      return this.a().d(this);
-   }
-
-   public boolean b(cso $$0, hx $$1) {
-      for (int $$2 = -1; $$2 <= 1; $$2++) {
-         for (int $$3 = -1; $$3 <= 1; $$3++) {
-            hx $$4 = $$1.b($$2, 0, $$3);
-            eek $$5 = $$0.b_($$4);
-            if (!$$5.a().a(this.a()) && !$$0.a_($$4).i($$0, $$4)) {
-               return true;
+               $$2 = iz.a($$2, ic.b);
             }
          }
+
+         return $$6.a(iz.b(hx.a($$0)), iz.b(hx.b($$0)), iz.b(hx.c($$0)));
+      } else {
+         return $$1 && !this.j($$2) ? 0 : 15;
+      }
+   }
+
+   @Override
+   protected void h(long $$0) {
+      int $$1 = iz.c($$0);
+      if (this.d.b > $$1) {
+         this.d.b = $$1;
+         this.d.c.defaultReturnValue(this.d.b);
       }
 
-      return false;
+      long $$2 = iz.f($$0);
+      int $$3 = this.d.c.get($$2);
+      if ($$3 < $$1 + 1) {
+         this.d.c.put($$2, $$1 + 1);
+      }
    }
 
-   public void a(cti $$0, hx $$1) {
-      this.a().b($$0, $$1, this);
+   @Override
+   protected void i(long $$0) {
+      long $$1 = iz.f($$0);
+      int $$2 = iz.c($$0);
+      if (this.d.c.get($$1) == $$2 + 1) {
+         long $$3;
+         for ($$3 = $$0; !this.b($$3) && this.a($$2); $$3 = iz.a($$3, ic.a)) {
+            $$2--;
+         }
+
+         if (this.b($$3)) {
+            this.d.c.put($$1, $$2 + 1);
+         } else {
+            this.d.c.remove($$1);
+         }
+      }
    }
 
-   public void a(cti $$0, hx $$1, aup $$2) {
-      this.a().a($$0, $$1, this, $$2);
+   @Override
+   protected dli g(long $$0) {
+      dli $$1 = (dli)this.g.get($$0);
+      if ($$1 != null) {
+         return $$1;
+      } else {
+         int $$2 = this.d.c.get(iz.f($$0));
+         if ($$2 != this.d.b && iz.c($$0) < $$2) {
+            long $$3 = iz.a($$0, ic.b);
+
+            dli $$4;
+            while (($$4 = this.a($$3, true)) == null) {
+               $$3 = iz.a($$3, ic.b);
+            }
+
+            return a($$4);
+         } else {
+            return this.j($$0) ? new dli(15) : new dli();
+         }
+      }
    }
 
-   public boolean f() {
-      return this.a().i();
+   private static dli a(dli $$0) {
+      if ($$0.c()) {
+         return $$0.b();
+      } else {
+         byte[] $$1 = $$0.a();
+         byte[] $$2 = new byte[2048];
+
+         for (int $$3 = 0; $$3 < 16; $$3++) {
+            System.arraycopy($$1, 0, $$2, $$3 * 128, 128);
+         }
+
+         return new dli($$2);
+      }
    }
 
-   public void b(cti $$0, hx $$1, aup $$2) {
-      this.a().b($$0, $$1, this, $$2);
+   protected boolean a(int $$0) {
+      return $$0 >= this.d.b;
    }
 
-   public elm c(cso $$0, hx $$1) {
-      return this.a().a($$0, $$1, this);
+   protected boolean l(long $$0) {
+      long $$1 = iz.f($$0);
+      int $$2 = this.d.c.get($$1);
+      return $$2 == this.d.b || iz.c($$0) >= $$2;
    }
 
-   public dja g() {
-      return this.a().b(this);
+   protected int m(long $$0) {
+      return this.d.c.get($$0);
    }
 
-   @Nullable
-   public jv h() {
-      return this.a().h();
+   protected int c() {
+      return this.d.b;
    }
 
-   public boolean a(asq<eej> $$0) {
-      return this.a().k().a($$0);
-   }
+   protected static final class a extends eeb<eek.a> {
+      int b;
+      final Long2IntOpenHashMap c;
 
-   public boolean a(il<eej> $$0) {
-      return $$0.a(this.a().k());
-   }
+      public a(Long2ObjectOpenHashMap<dli> $$0, Long2IntOpenHashMap $$1, int $$2) {
+         super($$0);
+         this.c = $$1;
+         $$1.defaultReturnValue($$2);
+         this.b = $$2;
+      }
 
-   public boolean b(eej $$0) {
-      return this.a() == $$0;
-   }
-
-   public float i() {
-      return this.a().c();
-   }
-
-   public boolean a(cso $$0, hx $$1, eej $$2, ic $$3) {
-      return this.a().a(this, $$0, $$1, $$2, $$3);
-   }
-
-   public emf d(cso $$0, hx $$1) {
-      return this.a().b(this, $$0, $$1);
-   }
-
-   public ih<eej> j() {
-      return this.e.k();
-   }
-
-   public Stream<asq<eej>> k() {
-      return this.e.k().c();
+      public eek.a a() {
+         return new eek.a(this.a.clone(), this.c.clone(), this.b);
+      }
    }
 }

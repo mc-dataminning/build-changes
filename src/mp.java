@@ -1,76 +1,164 @@
-import javax.annotation.Nullable;
+import java.util.Optional;
+import java.util.stream.IntStream;
 
-public final class mp {
-   public static final mp a = a("all");
-   public static final mp b = a("texture", a);
-   public static final mp c = a("particle", b);
-   public static final mp d = a("end", a);
-   public static final mp e = a("bottom", d);
-   public static final mp f = a("top", d);
-   public static final mp g = a("front", a);
-   public static final mp h = a("back", a);
-   public static final mp i = a("side", a);
-   public static final mp j = a("north", i);
-   public static final mp k = a("south", i);
-   public static final mp l = a("east", i);
-   public static final mp m = a("west", i);
-   public static final mp n = a("up");
-   public static final mp o = a("down");
-   public static final mp p = a("cross");
-   public static final mp q = a("plant");
-   public static final mp r = a("wall", a);
-   public static final mp s = a("rail");
-   public static final mp t = a("wool");
-   public static final mp u = a("pattern");
-   public static final mp v = a("pane");
-   public static final mp w = a("edge");
-   public static final mp x = a("fan");
-   public static final mp y = a("stem");
-   public static final mp z = a("upperstem");
-   public static final mp A = a("crop");
-   public static final mp B = a("dirt");
-   public static final mp C = a("fire");
-   public static final mp D = a("lantern");
-   public static final mp E = a("platform");
-   public static final mp F = a("unsticky");
-   public static final mp G = a("torch");
-   public static final mp H = a("layer0");
-   public static final mp I = a("layer1");
-   public static final mp J = a("layer2");
-   public static final mp K = a("lit_log");
-   public static final mp L = a("candle");
-   public static final mp M = a("inside");
-   public static final mp N = a("content");
-   public static final mp O = a("inner_top");
-   public static final mp P = a("flowerbed");
-   private final String Q;
-   @Nullable
-   private final mp R;
+public class mp {
+   public static final mo a = a("cube", mr.c, mr.j, mr.k, mr.l, mr.m, mr.n, mr.o);
+   public static final mo b = a("cube_directional", mr.c, mr.j, mr.k, mr.l, mr.m, mr.n, mr.o);
+   public static final mo c = a("cube_all", mr.a);
+   public static final mo d = a("cube_all_inner_faces", mr.a);
+   public static final mo e = a("cube_mirrored_all", "_mirrored", mr.a);
+   public static final mo f = a("cube_north_west_mirrored_all", "_north_west_mirrored", mr.a);
+   public static final mo g = a("cube_column_uv_locked_x", "_x", mr.d, mr.i);
+   public static final mo h = a("cube_column_uv_locked_y", "_y", mr.d, mr.i);
+   public static final mo i = a("cube_column_uv_locked_z", "_z", mr.d, mr.i);
+   public static final mo j = a("cube_column", mr.d, mr.i);
+   public static final mo k = a("cube_column_horizontal", "_horizontal", mr.d, mr.i);
+   public static final mo l = a("cube_column_mirrored", "_mirrored", mr.d, mr.i);
+   public static final mo m = a("cube_top", mr.f, mr.i);
+   public static final mo n = a("cube_bottom_top", mr.f, mr.e, mr.i);
+   public static final mo o = a("cube_bottom_top_inner_faces", mr.f, mr.e, mr.i);
+   public static final mo p = a("orientable", mr.f, mr.g, mr.i);
+   public static final mo q = a("orientable_with_bottom", mr.f, mr.e, mr.i, mr.g);
+   public static final mo r = a("orientable_vertical", "_vertical", mr.g, mr.i);
+   public static final mo s = a("button", mr.b);
+   public static final mo t = a("button_pressed", "_pressed", mr.b);
+   public static final mo u = a("button_inventory", "_inventory", mr.b);
+   public static final mo v = a("door_bottom_left", "_bottom_left", mr.f, mr.e);
+   public static final mo w = a("door_bottom_left_open", "_bottom_left_open", mr.f, mr.e);
+   public static final mo x = a("door_bottom_right", "_bottom_right", mr.f, mr.e);
+   public static final mo y = a("door_bottom_right_open", "_bottom_right_open", mr.f, mr.e);
+   public static final mo z = a("door_top_left", "_top_left", mr.f, mr.e);
+   public static final mo A = a("door_top_left_open", "_top_left_open", mr.f, mr.e);
+   public static final mo B = a("door_top_right", "_top_right", mr.f, mr.e);
+   public static final mo C = a("door_top_right_open", "_top_right_open", mr.f, mr.e);
+   public static final mo D = a("custom_fence_post", "_post", mr.b, mr.c);
+   public static final mo E = a("custom_fence_side_north", "_side_north", mr.b);
+   public static final mo F = a("custom_fence_side_east", "_side_east", mr.b);
+   public static final mo G = a("custom_fence_side_south", "_side_south", mr.b);
+   public static final mo H = a("custom_fence_side_west", "_side_west", mr.b);
+   public static final mo I = a("custom_fence_inventory", "_inventory", mr.b);
+   public static final mo J = a("fence_post", "_post", mr.b);
+   public static final mo K = a("fence_side", "_side", mr.b);
+   public static final mo L = a("fence_inventory", "_inventory", mr.b);
+   public static final mo M = a("template_wall_post", "_post", mr.r);
+   public static final mo N = a("template_wall_side", "_side", mr.r);
+   public static final mo O = a("template_wall_side_tall", "_side_tall", mr.r);
+   public static final mo P = a("wall_inventory", "_inventory", mr.r);
+   public static final mo Q = a("template_custom_fence_gate", mr.b, mr.c);
+   public static final mo R = a("template_custom_fence_gate_open", "_open", mr.b, mr.c);
+   public static final mo S = a("template_custom_fence_gate_wall", "_wall", mr.b, mr.c);
+   public static final mo T = a("template_custom_fence_gate_wall_open", "_wall_open", mr.b, mr.c);
+   public static final mo U = a("template_fence_gate", mr.b);
+   public static final mo V = a("template_fence_gate_open", "_open", mr.b);
+   public static final mo W = a("template_fence_gate_wall", "_wall", mr.b);
+   public static final mo X = a("template_fence_gate_wall_open", "_wall_open", mr.b);
+   public static final mo Y = a("pressure_plate_up", mr.b);
+   public static final mo Z = a("pressure_plate_down", "_down", mr.b);
+   public static final mo aa = a(mr.c);
+   public static final mo ab = a("slab", mr.e, mr.f, mr.i);
+   public static final mo ac = a("slab_top", "_top", mr.e, mr.f, mr.i);
+   public static final mo ad = a("leaves", mr.a);
+   public static final mo ae = a("stairs", mr.e, mr.f, mr.i);
+   public static final mo af = a("inner_stairs", "_inner", mr.e, mr.f, mr.i);
+   public static final mo ag = a("outer_stairs", "_outer", mr.e, mr.f, mr.i);
+   public static final mo ah = a("template_trapdoor_top", "_top", mr.b);
+   public static final mo ai = a("template_trapdoor_bottom", "_bottom", mr.b);
+   public static final mo aj = a("template_trapdoor_open", "_open", mr.b);
+   public static final mo ak = a("template_orientable_trapdoor_top", "_top", mr.b);
+   public static final mo al = a("template_orientable_trapdoor_bottom", "_bottom", mr.b);
+   public static final mo am = a("template_orientable_trapdoor_open", "_open", mr.b);
+   public static final mo an = a("pointed_dripstone", mr.p);
+   public static final mo ao = a("cross", mr.p);
+   public static final mo ap = a("tinted_cross", mr.p);
+   public static final mo aq = a("flower_pot_cross", mr.q);
+   public static final mo ar = a("tinted_flower_pot_cross", mr.q);
+   public static final mo as = a("rail_flat", mr.s);
+   public static final mo at = a("rail_curved", "_corner", mr.s);
+   public static final mo au = a("template_rail_raised_ne", "_raised_ne", mr.s);
+   public static final mo av = a("template_rail_raised_sw", "_raised_sw", mr.s);
+   public static final mo aw = a("carpet", mr.t);
+   public static final mo ax = a("flowerbed_1", "_1", mr.P, mr.y);
+   public static final mo ay = a("flowerbed_2", "_2", mr.P, mr.y);
+   public static final mo az = a("flowerbed_3", "_3", mr.P, mr.y);
+   public static final mo aA = a("flowerbed_4", "_4", mr.P, mr.y);
+   public static final mo aB = a("coral_fan", mr.x);
+   public static final mo aC = a("coral_wall_fan", mr.x);
+   public static final mo aD = a("template_glazed_terracotta", mr.u);
+   public static final mo aE = a("template_chorus_flower", mr.b);
+   public static final mo aF = a("template_daylight_detector", mr.f, mr.i);
+   public static final mo aG = a("template_glass_pane_noside", "_noside", mr.v);
+   public static final mo aH = a("template_glass_pane_noside_alt", "_noside_alt", mr.v);
+   public static final mo aI = a("template_glass_pane_post", "_post", mr.v, mr.w);
+   public static final mo aJ = a("template_glass_pane_side", "_side", mr.v, mr.w);
+   public static final mo aK = a("template_glass_pane_side_alt", "_side_alt", mr.v, mr.w);
+   public static final mo aL = a("template_command_block", mr.g, mr.h, mr.i);
+   public static final mo aM = a("template_chiseled_bookshelf_slot_top_left", "_slot_top_left", mr.b);
+   public static final mo aN = a("template_chiseled_bookshelf_slot_top_mid", "_slot_top_mid", mr.b);
+   public static final mo aO = a("template_chiseled_bookshelf_slot_top_right", "_slot_top_right", mr.b);
+   public static final mo aP = a("template_chiseled_bookshelf_slot_bottom_left", "_slot_bottom_left", mr.b);
+   public static final mo aQ = a("template_chiseled_bookshelf_slot_bottom_mid", "_slot_bottom_mid", mr.b);
+   public static final mo aR = a("template_chiseled_bookshelf_slot_bottom_right", "_slot_bottom_right", mr.b);
+   public static final mo aS = a("template_anvil", mr.f);
+   public static final mo[] aT = IntStream.range(0, 8).mapToObj($$0 -> a("stem_growth" + $$0, "_stage" + $$0, mr.y)).toArray(mo[]::new);
+   public static final mo aU = a("stem_fruit", mr.y, mr.z);
+   public static final mo aV = a("crop", mr.A);
+   public static final mo aW = a("template_farmland", mr.B, mr.f);
+   public static final mo aX = a("template_fire_floor", mr.C);
+   public static final mo aY = a("template_fire_side", mr.C);
+   public static final mo aZ = a("template_fire_side_alt", mr.C);
+   public static final mo ba = a("template_fire_up", mr.C);
+   public static final mo bb = a("template_fire_up_alt", mr.C);
+   public static final mo bc = a("template_campfire", mr.C, mr.K);
+   public static final mo bd = a("template_lantern", mr.D);
+   public static final mo be = a("template_hanging_lantern", "_hanging", mr.D);
+   public static final mo bf = a("template_torch", mr.G);
+   public static final mo bg = a("template_torch_wall", mr.G);
+   public static final mo bh = a("template_piston", mr.E, mr.e, mr.i);
+   public static final mo bi = a("template_piston_head", mr.E, mr.i, mr.F);
+   public static final mo bj = a("template_piston_head_short", mr.E, mr.i, mr.F);
+   public static final mo bk = a("template_seagrass", mr.b);
+   public static final mo bl = a("template_turtle_egg", mr.a);
+   public static final mo bm = a("template_two_turtle_eggs", mr.a);
+   public static final mo bn = a("template_three_turtle_eggs", mr.a);
+   public static final mo bo = a("template_four_turtle_eggs", mr.a);
+   public static final mo bp = a("template_single_face", mr.b);
+   public static final mo bq = a("template_cauldron_level1", mr.N, mr.M, mr.c, mr.f, mr.e, mr.i);
+   public static final mo br = a("template_cauldron_level2", mr.N, mr.M, mr.c, mr.f, mr.e, mr.i);
+   public static final mo bs = a("template_cauldron_full", mr.N, mr.M, mr.c, mr.f, mr.e, mr.i);
+   public static final mo bt = a("template_azalea", mr.f, mr.i);
+   public static final mo bu = a("template_potted_azalea_bush", mr.q, mr.f, mr.i);
+   public static final mo bv = a("template_potted_azalea_bush", mr.q, mr.f, mr.i);
+   public static final mo bw = a("sniffer_egg", mr.f, mr.e, mr.j, mr.k, mr.l, mr.m);
+   public static final mo bx = b("generated", mr.H);
+   public static final mo by = b("template_music_disc", mr.H);
+   public static final mo bz = b("handheld", mr.H);
+   public static final mo bA = b("handheld_rod", mr.H);
+   public static final mo bB = b("generated", mr.H, mr.I);
+   public static final mo bC = b("generated", mr.H, mr.I, mr.J);
+   public static final mo bD = b("template_shulker_box", mr.c);
+   public static final mo bE = b("template_bed", mr.c);
+   public static final mo bF = b("template_banner");
+   public static final mo bG = b("template_skull");
+   public static final mo bH = a("template_candle", mr.a, mr.c);
+   public static final mo bI = a("template_two_candles", mr.a, mr.c);
+   public static final mo bJ = a("template_three_candles", mr.a, mr.c);
+   public static final mo bK = a("template_four_candles", mr.a, mr.c);
+   public static final mo bL = a("template_cake_with_candle", mr.L, mr.e, mr.i, mr.f, mr.c);
+   public static final mo bM = a("template_sculk_shrieker", mr.e, mr.i, mr.f, mr.c, mr.O);
 
-   private static mp a(String $$0) {
-      return new mp($$0, null);
+   private static mo a(mr... $$0) {
+      return new mo(Optional.empty(), Optional.empty(), $$0);
    }
 
-   private static mp a(String $$0, mp $$1) {
-      return new mp($$0, $$1);
+   private static mo a(String $$0, mr... $$1) {
+      return new mo(Optional.of(new ahg("minecraft", "block/" + $$0)), Optional.empty(), $$1);
    }
 
-   private mp(String $$0, @Nullable mp $$1) {
-      this.Q = $$0;
-      this.R = $$1;
+   private static mo b(String $$0, mr... $$1) {
+      return new mo(Optional.of(new ahg("minecraft", "item/" + $$0)), Optional.empty(), $$1);
    }
 
-   public String a() {
-      return this.Q;
-   }
-
-   @Nullable
-   public mp b() {
-      return this.R;
-   }
-
-   @Override
-   public String toString() {
-      return "#" + this.Q;
+   private static mo a(String $$0, String $$1, mr... $$2) {
+      return new mo(Optional.of(new ahg("minecraft", "block/" + $$0)), Optional.of($$1), $$2);
    }
 }

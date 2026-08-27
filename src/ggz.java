@@ -1,15 +1,8 @@
-public class ggz extends gha {
-   public ggz(bxt $$0) {
-      super($$0, arm.bC, arn.g);
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   @Override
-   protected ggw o() {
-      return new ggy(this.n);
-   }
-
-   @Override
-   protected boolean p() {
-      return this.n.aa_();
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface ggz {
 }

@@ -1,23 +1,14 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-
-public record cmj(ih<arl> b, int c, float d) {
-   public static final Codec<cmj> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               arl.b.fieldOf("sound_event").forGetter(cmj::a), atq.j.fieldOf("use_duration").forGetter(cmj::b), atq.k.fieldOf("range").forGetter(cmj::c)
-            )
-            .apply($$0, cmj::new)
-   );
-
-   public ih<arl> a() {
-      return this.b;
+public class cmj extends cnx {
+   public cmj(cwp $$0, cwp $$1, cms.a $$2) {
+      super($$2, $$0, $$1, ic.b);
    }
 
-   public int b() {
-      return this.c;
-   }
+   @Override
+   protected boolean a(ctr $$0, djg $$1, hx $$2) {
+      if ($$1.b() instanceof dfm $$3 && !$$3.b($$1, $$0, $$2)) {
+         return false;
+      }
 
-   public float c() {
-      return this.d;
+      return super.a($$0, $$1, $$2);
    }
 }

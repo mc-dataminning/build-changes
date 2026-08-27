@@ -1,24 +1,40 @@
-public class abs implements xd<yx> {
-   private final int a;
+public class abs implements xf<za> {
+   private final double a;
+   private final double b;
+   private final long c;
 
-   public abs(dkr $$0) {
-      this.a = $$0.r();
+   public abs(dkx $$0) {
+      this.a = $$0.i();
+      this.b = $$0.k();
+      this.c = $$0.j();
    }
 
-   public abs(ug $$0) {
-      this.a = $$0.n();
+   public abs(ui $$0) {
+      this.a = $$0.readDouble();
+      this.b = $$0.readDouble();
+      this.c = $$0.o();
    }
 
    @Override
-   public void a(ug $$0) {
-      $$0.c(this.a);
+   public void a(ui $$0) {
+      $$0.a(this.a);
+      $$0.a(this.b);
+      $$0.a(this.c);
    }
 
-   public void a(yx $$0) {
+   public void a(za $$0) {
       $$0.a(this);
    }
 
-   public int a() {
+   public double a() {
       return this.a;
+   }
+
+   public double d() {
+      return this.b;
+   }
+
+   public long e() {
+      return this.c;
    }
 }

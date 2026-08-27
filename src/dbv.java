@@ -1,89 +1,57 @@
 import com.mojang.serialization.MapCodec;
-import java.util.function.BiFunction;
 
-public class dbv extends cws implements cwm {
+public class dbv extends cwy {
    public static final MapCodec<dbv> a = b(dbv::new);
-   public static final int b = 1;
-   public static final int c = 4;
-   public static final dju d = djq.R;
-   public static final dka e = djq.S;
-   private static final BiFunction<ic, Integer, emf> f = ac.a(
-      ($$0, $$1) -> {
-         emf[] $$2 = new emf[]{
-            cwj.a(8.0, 0.0, 8.0, 16.0, 3.0, 16.0),
-            cwj.a(8.0, 0.0, 0.0, 16.0, 3.0, 8.0),
-            cwj.a(0.0, 0.0, 0.0, 8.0, 3.0, 8.0),
-            cwj.a(0.0, 0.0, 8.0, 8.0, 3.0, 16.0)
-         };
-         emf $$3 = emc.a();
-
-         for (int $$4 = 0; $$4 < $$1; $$4++) {
-            int $$5 = Math.floorMod($$4 - $$0.e(), 4);
-            $$3 = emc.a($$3, $$2[$$5]);
-         }
-
-         return $$3.b();
-      }
-   );
+   public static final int b = 3;
+   public static final dkg c = djw.as;
+   private static final eml[] d = new eml[]{
+      cwp.a(0.0, 0.0, 0.0, 16.0, 5.0, 16.0),
+      cwp.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0),
+      cwp.a(0.0, 0.0, 0.0, 16.0, 11.0, 16.0),
+      cwp.a(0.0, 0.0, 0.0, 16.0, 14.0, 16.0)
+   };
 
    @Override
    public MapCodec<dbv> a() {
       return a;
    }
 
-   protected dbv(diz.d $$0) {
+   protected dbv(djf.d $$0) {
       super($$0);
-      this.k(this.E.b().a(d, ic.c).a(e, Integer.valueOf(1)));
+      this.k(this.E.b().a(c, Integer.valueOf(0)));
    }
 
    @Override
-   public dja a(dja $$0, dcv $$1) {
-      return $$0.a(d, $$1.a($$0.c(d)));
+   public eml a(djg $$0, csu $$1, hx $$2, elx $$3) {
+      return d[$$0.c(c)];
    }
 
    @Override
-   public dja a(dja $$0, dbf $$1) {
-      return $$0.a($$1.a($$0.c(d)));
+   protected boolean b(djg $$0, csu $$1, hx $$2) {
+      return $$0.a(cwr.dW);
    }
 
    @Override
-   public boolean a(dja $$0, cpa $$1) {
-      return !$$1.h() && $$1.n().a(this.k()) && $$0.c(e) < 4 ? true : super.a($$0, $$1);
+   public boolean e_(djg $$0) {
+      return $$0.c(c) < 3;
    }
 
    @Override
-   public emf a(dja $$0, cso $$1, hx $$2, elr $$3) {
-      return f.apply($$0.c(d), $$0.c(e));
-   }
-
-   @Override
-   public dja a(cpa $$0) {
-      dja $$1 = $$0.q().a_($$0.a());
-      return $$1.a(this) ? $$1.a(e, Integer.valueOf(Math.min(4, $$1.c(e) + 1))) : this.o().a(d, $$0.g().g());
-   }
-
-   @Override
-   protected void a(djb.a<cwj, dja> $$0) {
-      $$0.a(d, e);
-   }
-
-   @Override
-   public boolean b(ctl $$0, hx $$1, dja $$2) {
-      return true;
-   }
-
-   @Override
-   public boolean a(cti $$0, aup $$1, hx $$2, dja $$3) {
-      return true;
-   }
-
-   @Override
-   public void a(amz $$0, aup $$1, hx $$2, dja $$3) {
-      int $$4 = $$3.c(e);
-      if ($$4 < 4) {
-         $$0.a($$2, $$3.a(e, Integer.valueOf($$4 + 1)), 2);
-      } else {
-         a($$0, $$2, new cmr(this));
+   public void b(djg $$0, and $$1, hx $$2, auu $$3) {
+      int $$4 = $$0.c(c);
+      if ($$4 < 3 && $$3.a(10) == 0) {
+         $$0 = $$0.a(c, Integer.valueOf($$4 + 1));
+         $$1.a($$2, $$0, 2);
       }
+   }
+
+   @Override
+   public cmx a(ctr $$0, hx $$1, djg $$2) {
+      return new cmx(cna.sg);
+   }
+
+   @Override
+   protected void a(djh.a<cwp, djg> $$0) {
+      $$0.a(c);
    }
 }

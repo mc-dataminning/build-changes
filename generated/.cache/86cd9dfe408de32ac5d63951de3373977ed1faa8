@@ -1,4 +1,4 @@
-// 23w46a	2026-08-28T01:00:02.6454464	vanilla/Tags for minecraft:block
+// 1.20.3 Pre-Release 1	2026-08-28T01:02:25.806365	vanilla/Tags for minecraft:block
 882f7161808179f92ed953b9200fdaf74eec6c36 data\minecraft\tags\blocks\infiniburn_overworld.json
 84150f9be2fa26f9202962b031c722718dd23ca0 data\minecraft\tags\blocks\stone_ore_replaceables.json
 60f661a9b26b7f6b1910e5390a40644354fe0919 data\minecraft\tags\blocks\frogs_spawnable_on.json
@@ -18,7 +18,7 @@ f7a73e2bb61eb03dfdfa33cddc872856d40eadf5 data\minecraft\tags\blocks\combination_
 ed346d15e3bcb5e92e5045b4c6da0d19ad0243b0 data\minecraft\tags\blocks\inside_step_sound_blocks.json
 01c83076a79daac23b51bcb33b623b81a2c21856 data\minecraft\tags\blocks\needs_diamond_tool.json
 c7ea382c3711cc470f33079f0c7c3413eddaa0fd data\minecraft\tags\blocks\convertable_to_mud.json
-6042716e42e327e1da387c316cf69b6b1f108bce data\minecraft\tags\blocks\replaceable_by_trees.json
+166b1b2932705a5eb271b0c3794389ec79c1ff4e data\minecraft\tags\blocks\replaceable_by_trees.json
 af12451a6897e7ada9cfb050679665ae3017838e data\minecraft\tags\blocks\corals.json
 2bfdd47c936c1bc7e9948da6d2ad59e4cb9a11cb data\minecraft\tags\blocks\nylium.json
 aeaa445db335760020004d563a198676fdad5ddf data\minecraft\tags\blocks\guarded_by_piglins.json
@@ -53,7 +53,7 @@ dcfcde0b3716705215c339c3ed7bb1fe6da2cdb2 data\minecraft\tags\blocks\vibration_re
 f90b8e6674252583fae1583255b371b3c95c36d5 data\minecraft\tags\blocks\mooshrooms_spawnable_on.json
 8dd9194492a51b40153c68f2381b0eaa8f09a217 data\minecraft\tags\blocks\dripstone_replaceable_blocks.json
 837bf053d44a820743fe76f981febdde02bc78a2 data\minecraft\tags\blocks\underwater_bonemeals.json
-e036750713ce729029711c23180c04d1e51256e6 data\minecraft\tags\blocks\mineable\axe.json
+4aa5ae0247090aefba258a0a60d9a9189a9d378e data\minecraft\tags\blocks\mineable\axe.json
 af26b6f8afbcb74c6e990850cb8baf45137075f4 data\minecraft\tags\blocks\dirt.json
 9cf89cc089a03f7415393823473c106253d62661 data\minecraft\tags\blocks\wall_corals.json
 11016ca20eef8807f79a3d6958510957c0501d65 data\minecraft\tags\blocks\iron_ores.json
@@ -130,7 +130,7 @@ da1d12f678963493519caaff63a76241b220579f data\minecraft\tags\blocks\axolotls_spa
 1babc3647a545dddb5fe13e06599fb605cf5ca16 data\minecraft\tags\blocks\all_signs.json
 734b007dbed51424bf1bd5bdb7084531d4e0f010 data\minecraft\tags\blocks\logs.json
 12567916f0340a8d2a6baf0d253dcc8f8b4817b5 data\minecraft\tags\blocks\overworld_natural_logs.json
-d0686ee5ec85947de2ce509c6d6b849983ea8d0e data\minecraft\tags\blocks\replaceable.json
+0cc76a2a135e15e63ba435b9ae22e215cc9637fb data\minecraft\tags\blocks\replaceable.json
 6434eab593808ccdda380aa89dbf4977e908d7b4 data\minecraft\tags\blocks\mangrove_roots_can_grow_through.json
 042f4a31ec358e6815cd7410f054de80cc7c8fb7 data\minecraft\tags\blocks\cherry_logs.json
 fef1644c33bdd401b55824ed29a4df7cd9464fd0 data\minecraft\tags\blocks\wool.json
@@ -149,7 +149,7 @@ f28dc9f2c7d071fef84fb760a59427d564938731 data\minecraft\tags\blocks\diamond_ores
 2279d1f34e9b03831a4631584ee0fcdf1ea0fc66 data\minecraft\tags\blocks\rails.json
 504b82b5cf5555c70a8dea493720a2a5139f1e55 data\minecraft\tags\blocks\fence_gates.json
 7ff1531dc7f287a36682c786f864934ac10ba0dc data\minecraft\tags\blocks\portals.json
-aed8b700fe72fa0af5894e299b41da331f1cf0c9 data\minecraft\tags\blocks\sword_efficient.json
+51ce2bcc8e2afb893169c1f8562e87206632ea5a data\minecraft\tags\blocks\sword_efficient.json
 3e070569b31d1100ac334efd44a58e52df25df1a data\minecraft\tags\blocks\flowers.json
 88e03262431177ee3001a61830532ea6b37dfcce data\minecraft\tags\blocks\wall_signs.json
 76ac0bd2e48021aef9ecffd104321ebc03c694eb data\minecraft\tags\blocks\standing_signs.json

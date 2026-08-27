@@ -1,22 +1,59 @@
 import java.time.Duration;
-import java.util.Comparator;
+import java.time.Instant;
 import java.util.List;
 import java.util.Map;
-import javax.annotation.Nullable;
+import java.util.stream.Collectors;
+import jdk.jfr.consumer.RecordedEvent;
 
-public record bhn<T extends bhm>(T a, T b, @Nullable T c, int d, Map<Integer, Double> e, Duration f) {
-   public static <T extends bhm> bhn<T> a(List<T> $$0) {
-      if ($$0.isEmpty()) {
-         throw new IllegalArgumentException("No values");
-      } else {
-         List<T> $$1 = $$0.stream().sorted(Comparator.comparing(bhm::a)).toList();
-         Duration $$2 = $$1.stream().map(bhm::a).reduce(Duration::plus).orElse(Duration.ZERO);
-         T $$3 = (T)$$1.get(0);
-         T $$4 = (T)$$1.get($$1.size() - 1);
-         T $$5 = $$1.size() > 1 ? $$1.get($$1.size() - 2) : null;
-         int $$6 = $$1.size();
-         Map<Integer, Double> $$7 = bgt.a($$1.stream().mapToLong($$0x -> $$0x.a().toNanos()).toArray());
-         return new bhn<>($$3, $$4, $$5, $$6, $$7, $$2);
+public record bhn(Instant a, long b, bhn.b c) {
+   public static bhn a(RecordedEvent $$0) {
+      return new bhn($$0.getStartTime(), $$0.getLong("heapUsed"), $$0.getString("when").equalsIgnoreCase("before gc") ? bhn.b.a : bhn.b.b);
+   }
+
+   public static bhn.a a(Duration $$0, List<bhn> $$1, Duration $$2, int $$3) {
+      return new bhn.a($$0, $$2, $$3, a($$1));
+   }
+
+   private static double a(List<bhn> $$0) {
+      long $$1 = 0L;
+      Map<bhn.b, List<bhn>> $$2 = $$0.stream().collect(Collectors.groupingBy($$0x -> $$0x.c));
+      List<bhn> $$3 = $$2.get(bhn.b.a);
+      List<bhn> $$4 = $$2.get(bhn.b.b);
+
+      for (int $$5 = 1; $$5 < $$3.size(); $$5++) {
+         bhn $$6 = $$3.get($$5);
+         bhn $$7 = $$4.get($$5 - 1);
+         $$1 += $$6.b - $$7.b;
       }
+
+      Duration $$8 = Duration.between($$0.get(1).a, $$0.get($$0.size() - 1).a);
+      return (double)$$1 / (double)$$8.getSeconds();
+   }
+
+   public static record a(Duration a, Duration b, int c, double d) {
+      public float a() {
+         return (float)this.b.toMillis() / (float)this.a.toMillis();
+      }
+
+      public Duration b() {
+         return this.a;
+      }
+
+      public Duration c() {
+         return this.b;
+      }
+
+      public int d() {
+         return this.c;
+      }
+
+      public double e() {
+         return this.d;
+      }
+   }
+
+   static enum b {
+      a,
+      b;
    }
 }

@@ -1,73 +1,31 @@
-import com.google.common.collect.Lists;
-import java.util.Collection;
-import java.util.List;
+import java.util.BitSet;
 import javax.annotation.Nullable;
 
-public class aan implements xd<yx> {
+public class aan implements xf<za> {
    private final int a;
-   private final byte b;
-   private final boolean c;
-   @Nullable
-   private final List<efr> d;
-   @Nullable
-   private final efu.b e;
+   private final int b;
+   private final aao c;
 
-   public aan(int $$0, byte $$1, boolean $$2, @Nullable Collection<efr> $$3, @Nullable efu.b $$4) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3 != null ? Lists.newArrayList($$3) : null;
-      this.e = $$4;
+   public aan(csv $$0, eef $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
+      this.a = $$0.e;
+      this.b = $$0.f;
+      this.c = new aao($$0, $$1, $$2, $$3);
    }
 
-   public aan(ug $$0) {
+   public aan(ui $$0) {
       this.a = $$0.n();
-      this.b = $$0.readByte();
-      this.c = $$0.readBoolean();
-      this.d = $$0.c($$0x -> $$0x.a((ug.a)($$0xx -> {
-            efr.a $$1x = $$0xx.b(efr.a.class);
-            byte $$2x = $$0xx.readByte();
-            byte $$3x = $$0xx.readByte();
-            byte $$4x = (byte)($$0xx.readByte() & 15);
-            vd $$5x = $$0xx.c(ug::m);
-            return new efr($$1x, $$2x, $$3x, $$4x, $$5x);
-         })));
-      int $$1 = $$0.readUnsignedByte();
-      if ($$1 > 0) {
-         int $$2 = $$0.readUnsignedByte();
-         int $$3 = $$0.readUnsignedByte();
-         int $$4 = $$0.readUnsignedByte();
-         byte[] $$5 = $$0.b();
-         this.e = new efu.b($$3, $$4, $$1, $$2, $$5);
-      } else {
-         this.e = null;
-      }
+      this.b = $$0.n();
+      this.c = new aao($$0, this.a, this.b);
    }
 
    @Override
-   public void a(ug $$0) {
+   public void a(ui $$0) {
       $$0.c(this.a);
-      $$0.k(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d, ($$0x, $$1) -> $$0x.a($$1, ($$0xx, $$1x) -> {
-            $$0xx.a($$1x.c());
-            $$0xx.k($$1x.d());
-            $$0xx.k($$1x.e());
-            $$0xx.k($$1x.f() & 15);
-            $$0xx.a($$1x.g(), ug::a);
-         }));
-      if (this.e != null) {
-         $$0.k(this.e.c);
-         $$0.k(this.e.d);
-         $$0.k(this.e.a);
-         $$0.k(this.e.b);
-         $$0.a(this.e.e);
-      } else {
-         $$0.k(0);
-      }
+      $$0.c(this.b);
+      this.c.a($$0);
    }
 
-   public void a(yx $$0) {
+   public void a(za $$0) {
       $$0.a(this);
    }
 
@@ -75,21 +33,11 @@ public class aan implements xd<yx> {
       return this.a;
    }
 
-   public void a(efu $$0) {
-      if (this.d != null) {
-         $$0.a(this.d);
-      }
-
-      if (this.e != null) {
-         this.e.a($$0);
-      }
-   }
-
-   public byte d() {
+   public int d() {
       return this.b;
    }
 
-   public boolean e() {
+   public aao e() {
       return this.c;
    }
 }

@@ -1,21 +1,90 @@
-public abstract class eps implements epx {
-   protected boolean a;
-   protected int b = 255;
-   protected int c = 255;
-   protected int d = 255;
-   protected int e = 255;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.Optional;
+import javax.annotation.Nullable;
+import org.lwjgl.opengl.ARBTimerQuery;
+import org.lwjgl.opengl.GL;
+import org.lwjgl.opengl.GL32C;
 
-   @Override
-   public void b(int $$0, int $$1, int $$2, int $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.a = true;
+public class eps {
+   private int a;
+
+   public static Optional<eps> a() {
+      return eps.b.a;
    }
 
-   @Override
-   public void l() {
-      this.a = false;
+   public void b() {
+      RenderSystem.assertOnRenderThread();
+      if (this.a != 0) {
+         throw new IllegalStateException("Current profile not ended");
+      } else {
+         this.a = GL32C.glGenQueries();
+         GL32C.glBeginQuery(35007, this.a);
+      }
+   }
+
+   public eps.a c() {
+      RenderSystem.assertOnRenderThread();
+      if (this.a == 0) {
+         throw new IllegalStateException("endProfile called before beginProfile");
+      } else {
+         GL32C.glEndQuery(35007);
+         eps.a $$0 = new eps.a(this.a);
+         this.a = 0;
+         return $$0;
+      }
+   }
+
+   public static class a {
+      private static final long a = 0L;
+      private static final long b = -1L;
+      private final int c;
+      private long d;
+
+      a(int $$0) {
+         this.c = $$0;
+      }
+
+      public void a() {
+         RenderSystem.assertOnRenderThread();
+         if (this.d == 0L) {
+            this.d = -1L;
+            GL32C.glDeleteQueries(this.c);
+         }
+      }
+
+      public boolean b() {
+         RenderSystem.assertOnRenderThread();
+         if (this.d != 0L) {
+            return true;
+         } else if (1 == GL32C.glGetQueryObjecti(this.c, 34919)) {
+            this.d = ARBTimerQuery.glGetQueryObjecti64(this.c, 34918);
+            GL32C.glDeleteQueries(this.c);
+            return true;
+         } else {
+            return false;
+         }
+      }
+
+      public long c() {
+         RenderSystem.assertOnRenderThread();
+         if (this.d == 0L) {
+            this.d = ARBTimerQuery.glGetQueryObjecti64(this.c, 34918);
+            GL32C.glDeleteQueries(this.c);
+         }
+
+         return this.d;
+      }
+   }
+
+   static class b {
+      static final Optional<eps> a = Optional.ofNullable(a());
+
+      private b() {
+      }
+
+      @Nullable
+      private static eps a() {
+         return !GL.getCapabilities().GL_ARB_timer_query ? null : new eps();
+      }
    }
 }

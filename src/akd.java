@@ -1,154 +1,218 @@
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.FloatArgumentType;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import javax.annotation.Nullable;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.suggestion.SuggestionProvider;
+import java.util.Optional;
 
 public class akd {
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vf.c("commands.place.feature.failed"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(vf.c("commands.place.jigsaw.failed"));
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(vf.c("commands.place.structure.failed"));
+   private static final DynamicCommandExceptionType d = new DynamicCommandExceptionType($$0 -> vf.b("commands.place.template.invalid", $$0));
+   private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(vf.c("commands.place.template.failed"));
+   private static final SuggestionProvider<ds> f = ($$0, $$1) -> {
+      edg $$2 = ((ds)$$0.getSource()).e().q();
+      return dx.a($$2.a(), $$1);
+   };
+
    public static void a(CommandDispatcher<ds> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a(
-                                    "raid"
-                                 )
-                                 .requires($$0x -> $$0x.c(3)))
-                              .then(
-                                 dt.a("start")
-                                    .then(
-                                       dt.a("omenlvl", IntegerArgumentType.integer(0))
-                                          .executes($$0x -> b((ds)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "omenlvl")))
-                                    )
-                              ))
-                           .then(dt.a("stop").executes($$0x -> c((ds)$$0x.getSource()))))
-                        .then(dt.a("check").executes($$0x -> d((ds)$$0x.getSource()))))
-                     .then(dt.a("sound").then(dt.a("type", eb.a()).executes($$0x -> a((ds)$$0x.getSource(), eb.a($$0x, "type"))))))
-                  .then(dt.a("spawnleader").executes($$0x -> b((ds)$$0x.getSource()))))
-               .then(
-                  dt.a("setomen")
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("place")
+                        .requires($$0x -> $$0x.c(2)))
                      .then(
-                        dt.a("level", IntegerArgumentType.integer(0)).executes($$0x -> a((ds)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "level")))
+                        dt.a("feature")
+                           .then(
+                              ((RequiredArgumentBuilder)dt.a("feature", es.a(ke.aw))
+                                    .executes($$0x -> a((ds)$$0x.getSource(), es.a($$0x, "feature"), hx.a(((ds)$$0x.getSource()).d()))))
+                                 .then(dt.a("pos", fm.a()).executes($$0x -> a((ds)$$0x.getSource(), es.a($$0x, "feature"), fm.a($$0x, "pos"))))
+                           )
+                     ))
+                  .then(
+                     dt.a("jigsaw")
+                        .then(
+                           dt.a("pool", es.a(ke.aG))
+                              .then(
+                                 dt.a("target", et.a())
+                                    .then(
+                                       ((RequiredArgumentBuilder)dt.a("max_depth", IntegerArgumentType.integer(1, 7))
+                                             .executes(
+                                                $$0x -> a(
+                                                      (ds)$$0x.getSource(),
+                                                      es.c($$0x, "pool"),
+                                                      et.e($$0x, "target"),
+                                                      IntegerArgumentType.getInteger($$0x, "max_depth"),
+                                                      hx.a(((ds)$$0x.getSource()).d())
+                                                   )
+                                             ))
+                                          .then(
+                                             dt.a("position", fm.a())
+                                                .executes(
+                                                   $$0x -> a(
+                                                         (ds)$$0x.getSource(),
+                                                         es.c($$0x, "pool"),
+                                                         et.e($$0x, "target"),
+                                                         IntegerArgumentType.getInteger($$0x, "max_depth"),
+                                                         fm.a($$0x, "position")
+                                                      )
+                                                )
+                                          )
+                                    )
+                              )
+                        )
+                  ))
+               .then(
+                  dt.a("structure")
+                     .then(
+                        ((RequiredArgumentBuilder)dt.a("structure", es.a(ke.aD))
+                              .executes($$0x -> b((ds)$$0x.getSource(), es.b($$0x, "structure"), hx.a(((ds)$$0x.getSource()).d()))))
+                           .then(dt.a("pos", fm.a()).executes($$0x -> b((ds)$$0x.getSource(), es.b($$0x, "structure"), fm.a($$0x, "pos"))))
                      )
                ))
-            .then(dt.a("glow").executes($$0x -> a((ds)$$0x.getSource())))
+            .then(
+               dt.a("template")
+                  .then(
+                     ((RequiredArgumentBuilder)dt.a("template", et.a())
+                           .suggests(f)
+                           .executes($$0x -> a((ds)$$0x.getSource(), et.e($$0x, "template"), hx.a(((ds)$$0x.getSource()).d()), ddb.a, dbl.a, 1.0F, 0)))
+                        .then(
+                           ((RequiredArgumentBuilder)dt.a("pos", fm.a())
+                                 .executes($$0x -> a((ds)$$0x.getSource(), et.e($$0x, "template"), fm.a($$0x, "pos"), ddb.a, dbl.a, 1.0F, 0)))
+                              .then(
+                                 ((RequiredArgumentBuilder)dt.a("rotation", fe.a())
+                                       .executes(
+                                          $$0x -> a((ds)$$0x.getSource(), et.e($$0x, "template"), fm.a($$0x, "pos"), fe.a($$0x, "rotation"), dbl.a, 1.0F, 0)
+                                       ))
+                                    .then(
+                                       ((RequiredArgumentBuilder)dt.a("mirror", fd.a())
+                                             .executes(
+                                                $$0x -> a(
+                                                      (ds)$$0x.getSource(),
+                                                      et.e($$0x, "template"),
+                                                      fm.a($$0x, "pos"),
+                                                      fe.a($$0x, "rotation"),
+                                                      fd.a($$0x, "mirror"),
+                                                      1.0F,
+                                                      0
+                                                   )
+                                             ))
+                                          .then(
+                                             ((RequiredArgumentBuilder)dt.a("integrity", FloatArgumentType.floatArg(0.0F, 1.0F))
+                                                   .executes(
+                                                      $$0x -> a(
+                                                            (ds)$$0x.getSource(),
+                                                            et.e($$0x, "template"),
+                                                            fm.a($$0x, "pos"),
+                                                            fe.a($$0x, "rotation"),
+                                                            fd.a($$0x, "mirror"),
+                                                            FloatArgumentType.getFloat($$0x, "integrity"),
+                                                            0
+                                                         )
+                                                   ))
+                                                .then(
+                                                   dt.a("seed", IntegerArgumentType.integer())
+                                                      .executes(
+                                                         $$0x -> a(
+                                                               (ds)$$0x.getSource(),
+                                                               et.e($$0x, "template"),
+                                                               fm.a($$0x, "pos"),
+                                                               fe.a($$0x, "rotation"),
+                                                               fd.a($$0x, "mirror"),
+                                                               FloatArgumentType.getFloat($$0x, "integrity"),
+                                                               IntegerArgumentType.getInteger($$0x, "seed")
+                                                            )
+                                                      )
+                                                )
+                                          )
+                                    )
+                              )
+                        )
+                  )
+            )
       );
    }
 
-   private static int a(ds $$0) throws CommandSyntaxException {
-      cgj $$1 = a($$0.h());
-      if ($$1 != null) {
-         for (cgk $$3 : $$1.h()) {
-            $$3.b(new blc(ble.x, 1000, 1));
-         }
+   public static int a(ds $$0, ih.c<drg<?, ?>> $$1, hx $$2) throws CommandSyntaxException {
+      and $$3 = $$0.e();
+      drg<?, ?> $$4 = $$1.a();
+      csv $$5 = new csv($$2);
+      a($$3, new csv($$5.e - 1, $$5.f - 1), new csv($$5.e + 1, $$5.f + 1));
+      if (!$$4.a($$3, $$3.l().g(), $$3.F_(), $$2)) {
+         throw a.create();
+      } else {
+         String $$6 = $$1.g().a().toString();
+         $$0.a(() -> vf.a("commands.place.feature.success", $$6, $$2.u(), $$2.v(), $$2.w()), true);
+         return 1;
       }
-
-      return 1;
    }
 
-   private static int a(ds $$0, int $$1) throws CommandSyntaxException {
-      cgj $$2 = a($$0.h());
-      if ($$2 != null) {
-         int $$3 = $$2.l();
-         if ($$1 > $$3) {
-            $$0.b(vd.b("Sorry, the max bad omen level you can set is " + $$3));
+   public static int a(ds $$0, ih<eao> $$1, ahg $$2, int $$3, hx $$4) throws CommandSyntaxException {
+      and $$5 = $$0.e();
+      if (!eai.a($$5, $$1, $$2, $$3, $$4, false)) {
+         throw b.create();
+      } else {
+         $$0.a(() -> vf.a("commands.place.jigsaw.success", $$4.u(), $$4.v(), $$4.w()), true);
+         return 1;
+      }
+   }
+
+   public static int b(ds $$0, ih.c<dzf> $$1, hx $$2) throws CommandSyntaxException {
+      and $$3 = $$0.e();
+      dzf $$4 = $$1.a();
+      dld $$5 = $$3.l().g();
+      dzn $$6 = $$4.a($$0.v(), $$5, $$5.c(), $$3.l().i(), $$3.q(), $$3.C(), new csv($$2), 0, $$3, $$0x -> true);
+      if (!$$6.b()) {
+         throw c.create();
+      } else {
+         dyx $$7 = $$6.a();
+         csv $$8 = new csv(iz.a($$7.h()), iz.a($$7.j()));
+         csv $$9 = new csv(iz.a($$7.k()), iz.a($$7.m()));
+         a($$3, $$8, $$9);
+         csv.a($$8, $$9).forEach($$3x -> $$6.a($$3, $$3.a(), $$5, $$3.F_(), new dyx($$3x.d(), $$3.J_(), $$3x.e(), $$3x.f(), $$3.al(), $$3x.g()), $$3x));
+         String $$10 = $$1.g().a().toString();
+         $$0.a(() -> vf.a("commands.place.structure.success", $$10, $$2.u(), $$2.v(), $$2.w()), true);
+         return 1;
+      }
+   }
+
+   public static int a(ds $$0, ahg $$1, hx $$2, ddb $$3, dbl $$4, float $$5, int $$6) throws CommandSyntaxException {
+      and $$7 = $$0.e();
+      edg $$8 = $$7.q();
+
+      Optional<edf> $$9;
+      try {
+         $$9 = $$8.b($$1);
+      } catch (z var13) {
+         throw d.create($$1);
+      }
+
+      if ($$9.isEmpty()) {
+         throw d.create($$1);
+      } else {
+         edf $$12 = $$9.get();
+         a($$7, new csv($$2), new csv($$2.a($$12.a())));
+         edb $$13 = new edb().a($$4).a($$3);
+         if ($$5 < 1.0F) {
+            $$13.b().a(new ecj($$5)).a(dii.b((long)$$6));
+         }
+
+         boolean $$14 = $$12.a($$7, $$2, $$2, $$13, dii.b((long)$$6), 2);
+         if (!$$14) {
+            throw e.create();
          } else {
-            int $$4 = $$2.m();
-            $$2.a($$1);
-            $$0.a(() -> vd.b("Changed village's bad omen level from " + $$4 + " to " + $$1), false);
+            $$0.a(() -> vf.a("commands.place.template.success", vf.a($$1), $$2.u(), $$2.v(), $$2.w()), true);
+            return 1;
          }
-      } else {
-         $$0.b(vd.b("No raid found here"));
-      }
-
-      return 1;
-   }
-
-   private static int b(ds $$0) {
-      $$0.a(() -> vd.b("Spawned a raid captain"), false);
-      cgk $$1 = blt.az.a((cti)$$0.e());
-      if ($$1 == null) {
-         $$0.b(vd.b("Pillager failed to spawn"));
-         return 0;
-      } else {
-         $$1.w(true);
-         $$1.a(blu.f, cgj.s());
-         $$1.a_($$0.d().c, $$0.d().d, $$0.d().e);
-         $$1.a($$0.e(), $$0.e().d_(hx.a($$0.d())), bmj.n, null, null);
-         $$0.e().a_($$1);
-         return 1;
       }
    }
 
-   private static int a(ds $$0, @Nullable vd $$1) {
-      if ($$1 != null && $$1.getString().equals("local")) {
-         amz $$2 = $$0.e();
-         elm $$3 = $$0.d().b(5.0, 0.0, 0.0);
-         $$2.a(null, $$3.c, $$3.d, $$3.e, arm.uf, arn.g, 2.0F, 1.0F, $$2.z.g());
+   private static void a(and $$0, csv $$1, csv $$2) throws CommandSyntaxException {
+      if (csv.a($$1, $$2).filter($$1x -> !$$0.p($$1x.l())).findAny().isPresent()) {
+         throw fm.a.create();
       }
-
-      return 1;
-   }
-
-   private static int b(ds $$0, int $$1) throws CommandSyntaxException {
-      ana $$2 = $$0.h();
-      hx $$3 = $$2.dm();
-      if ($$2.z().e($$3)) {
-         $$0.b(vd.b("Raid already started close by"));
-         return -1;
-      } else {
-         cgl $$4 = $$2.z().z();
-         cgj $$5 = $$4.a($$2);
-         if ($$5 != null) {
-            $$5.a($$1);
-            $$4.c();
-            $$0.a(() -> vd.b("Created a raid in your local village"), false);
-         } else {
-            $$0.b(vd.b("Failed to create a raid in your local village"));
-         }
-
-         return 1;
-      }
-   }
-
-   private static int c(ds $$0) throws CommandSyntaxException {
-      ana $$1 = $$0.h();
-      hx $$2 = $$1.dm();
-      cgj $$3 = $$1.z().d($$2);
-      if ($$3 != null) {
-         $$3.n();
-         $$0.a(() -> vd.b("Stopped raid"), false);
-         return 1;
-      } else {
-         $$0.b(vd.b("No raid here"));
-         return -1;
-      }
-   }
-
-   private static int d(ds $$0) throws CommandSyntaxException {
-      cgj $$1 = a($$0.h());
-      if ($$1 != null) {
-         StringBuilder $$2 = new StringBuilder();
-         $$2.append("Found a started raid! ");
-         $$0.a(() -> vd.b($$2.toString()), false);
-         StringBuilder $$3 = new StringBuilder();
-         $$3.append("Num groups spawned: ");
-         $$3.append($$1.k());
-         $$3.append(" Bad omen level: ");
-         $$3.append($$1.m());
-         $$3.append(" Num mobs: ");
-         $$3.append($$1.r());
-         $$3.append(" Raid health: ");
-         $$3.append($$1.q());
-         $$3.append(" / ");
-         $$3.append($$1.g());
-         $$0.a(() -> vd.b($$3.toString()), false);
-         return 1;
-      } else {
-         $$0.b(vd.b("Found no started raids"));
-         return 0;
-      }
-   }
-
-   @Nullable
-   private static cgj a(ana $$0) {
-      return $$0.z().d($$0.dm());
    }
 }

@@ -3,40 +3,51 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Set;
 
-public record ekm(ekj b, ekj c) implements ekj {
+public record ekm(ekp b, ekp c) implements ekp {
    public static final Codec<ekm> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ekk.a.fieldOf("min").forGetter(ekm::c), ekk.a.fieldOf("max").forGetter(ekm::d)).apply($$0, ekm::new)
+      $$0 -> $$0.group(ekq.a.fieldOf("n").forGetter(ekm::c), ekq.a.fieldOf("p").forGetter(ekm::d)).apply($$0, ekm::new)
    );
 
    @Override
-   public eki b() {
-      return ekk.c;
-   }
-
-   public static ekm a(float $$0, float $$1) {
-      return new ekm(ekh.a($$0), ekh.a($$1));
+   public eko b() {
+      return ekq.d;
    }
 
    @Override
-   public int a(egp $$0) {
-      return aui.a($$0.b(), this.b.a($$0), this.c.a($$0));
+   public int a(egv $$0) {
+      int $$1 = this.b.a($$0);
+      float $$2 = this.c.b($$0);
+      auu $$3 = $$0.b();
+      int $$4 = 0;
+
+      for (int $$5 = 0; $$5 < $$1; $$5++) {
+         if ($$3.i() < $$2) {
+            $$4++;
+         }
+      }
+
+      return $$4;
    }
 
    @Override
-   public float b(egp $$0) {
-      return aui.a($$0.b(), this.b.b($$0), this.c.b($$0));
+   public float b(egv $$0) {
+      return (float)this.a($$0);
+   }
+
+   public static ekm a(int $$0, float $$1) {
+      return new ekm(ekn.a((float)$$0), ekn.a($$1));
    }
 
    @Override
-   public Set<eix<?>> a() {
+   public Set<ejd<?>> a() {
       return Sets.union(this.b.a(), this.c.a());
    }
 
-   public ekj c() {
+   public ekp c() {
       return this.b;
    }
 
-   public ekj d() {
+   public ekp d() {
       return this.c;
    }
 }

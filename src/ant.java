@@ -1,30 +1,14 @@
-import net.minecraft.server.MinecraftServer;
+import java.util.function.Consumer;
 
-public class ant implements afh {
-   private final MinecraftServer a;
-   private final ue b;
+public interface ant {
+   void a(Consumer<xf<?>> var1);
 
-   public ant(MinecraftServer $$0, ue $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
+   ant.a a();
 
-   @Override
-   public void a(afg $$0) {
-      if ($$0.f() != aff.b) {
-         throw new UnsupportedOperationException("Invalid intention " + $$0.f());
-      } else {
-         this.b.a(aff.b);
-         this.b.a(new aoa(this.a, this.b));
+   public static record a(String a) {
+      @Override
+      public String toString() {
+         return this.a;
       }
-   }
-
-   @Override
-   public void a(vd $$0) {
-   }
-
-   @Override
-   public boolean c() {
-      return this.b.k();
    }
 }

@@ -1,82 +1,75 @@
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
 
-public class fca extends fct {
-   private static final int a = 80;
-   private static final int b = 120;
-   private static final int c = 360;
-   @Nullable
-   private final vd k;
-   private final vd l;
-   private final Runnable m;
-   @Nullable
-   private exr n;
-   private ewy o;
-   private int p;
+public class fca extends fcz {
+   private static final vf a = vf.c("addServer.enterIp");
+   private exe b;
+   private final fob c;
+   private exn k;
+   private final BooleanConsumer l;
+   private final fcz m;
 
-   public static fca a(vd $$0, vd $$1, Runnable $$2) {
-      return new fca($$0, null, $$1, $$2, 0);
+   public fca(fcz $$0, BooleanConsumer $$1, fob $$2) {
+      super(vf.c("selectServer.direct"));
+      this.m = $$0;
+      this.c = $$2;
+      this.l = $$1;
    }
 
-   public static fca a(vd $$0, vd $$1, vd $$2, Runnable $$3) {
-      return new fca($$0, $$1, $$2, $$3, 20);
-   }
-
-   protected fca(vd $$0, @Nullable vd $$1, vd $$2, Runnable $$3, int $$4) {
-      super($$0);
-      this.k = $$1;
-      this.l = $$2;
-      this.m = $$3;
-      this.p = $$4;
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if (!this.b.j || this.aH_() != this.k || $$0 != 257 && $$0 != 335) {
+         return super.a($$0, $$1, $$2);
+      } else {
+         this.n();
+         return true;
+      }
    }
 
    @Override
    protected void aN_() {
-      super.aN_();
-      if (this.k != null) {
-         this.n = exr.a(this.i, this.k, 360);
-      }
-
-      int $$0 = 150;
-      int $$1 = 20;
-      int $$2 = this.n != null ? this.n.a() : 1;
-      int $$3 = Math.max($$2, 5) * 9;
-      int $$4 = Math.min(120 + $$3, this.h - 40);
-      this.o = this.d(ewy.a(this.l, $$0x -> this.aE_()).a((this.g - 150) / 2, $$4, 150, 20).a());
+      this.k = new exn(this.i, this.g / 2 - 100, 116, 200, 20, vf.c("addServer.enterIp"));
+      this.k.f(128);
+      this.k.a(this.f.m.aa);
+      this.k.b($$0 -> this.C());
+      this.e(this.k);
+      this.b = this.d(exe.a(vf.c("selectServer.select"), $$0 -> this.n()).a(this.g / 2 - 100, this.h / 4 + 96 + 12, 200, 20).a());
+      this.d(exe.a(ve.e, $$0 -> this.l.accept(false)).a(this.g / 2 - 100, this.h / 4 + 120 + 12, 200, 20).a());
+      this.c(this.k);
+      this.C();
    }
 
    @Override
-   public void d() {
-      if (this.p > 0) {
-         this.p--;
-      }
-
-      this.o.j = this.p == 0;
+   public void a(evg $$0, int $$1, int $$2) {
+      String $$3 = this.k.a();
+      this.b($$0, $$1, $$2);
+      this.k.a($$3);
    }
 
-   @Override
-   public void a(ewm $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 80, 16777215);
-      if (this.n == null) {
-         String $$4 = fce.a(ac.b());
-         $$0.a(this.i, $$4, this.g / 2, 120, 10526880);
-      } else {
-         this.n.a($$0, this.g / 2, 120);
-      }
-   }
-
-   @Override
-   public boolean aL_() {
-      return this.n != null && this.o.j;
+   private void n() {
+      this.c.b = this.k.a();
+      this.l.accept(true);
    }
 
    @Override
    public void aE_() {
-      this.m.run();
+      this.f.a(this.m);
    }
 
    @Override
-   public vd h() {
-      return vc.a(this.e, this.k != null ? this.k : vc.a);
+   public void j() {
+      this.f.m.aa = this.k.a();
+      this.f.m.as();
+   }
+
+   private void C() {
+      this.b.j = fpd.b(this.k.a());
+   }
+
+   @Override
+   public void a(ews $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, this.e, this.g / 2, 20, 16777215);
+      $$0.b(this.i, a, this.g / 2 - 100 + 1, 100, 10526880);
+      this.k.a($$0, $$1, $$2, $$3);
    }
 }

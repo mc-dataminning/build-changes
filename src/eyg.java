@@ -1,124 +1,146 @@
-import com.google.common.collect.Lists;
-import java.util.Iterator;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public class eyg implements giq {
-   private static final long a = 3000L;
-   private final eva b;
-   private final List<eyg.a> c = Lists.newArrayList();
-   private boolean d;
+public class eyg extends fcz {
+   private static final ahg a = new ahg("popup/background");
+   private static final int b = 12;
+   private static final int c = 18;
+   private static final int k = 6;
+   private static final int l = 130;
+   private static final int m = 64;
+   private static final int n = 250;
+   private final fcz o;
+   @Nullable
+   private final ahg p;
+   private final vf q;
+   private final List<eyg.b> r;
+   @Nullable
+   private final Runnable t;
+   private final int u;
+   private final fas v = fas.d();
 
-   public eyg(eva $$0) {
-      this.b = $$0;
-   }
-
-   public void a(ewm $$0) {
-      if (!this.d && this.b.m.T().c()) {
-         this.b.ah().a(this);
-         this.d = true;
-      } else if (this.d && !this.b.m.T().c()) {
-         this.b.ah().b(this);
-         this.d = false;
-      }
-
-      if (this.d && !this.c.isEmpty()) {
-         elm $$1 = new elm(this.b.s.dr(), this.b.s.dv(), this.b.s.dx());
-         elm $$2 = new elm(0.0, 0.0, -1.0).a(-this.b.s.dE() * (float) (Math.PI / 180.0)).b(-this.b.s.dC() * (float) (Math.PI / 180.0));
-         elm $$3 = new elm(0.0, 1.0, 0.0).a(-this.b.s.dE() * (float) (Math.PI / 180.0)).b(-this.b.s.dC() * (float) (Math.PI / 180.0));
-         elm $$4 = $$2.c($$3);
-         int $$5 = 0;
-         int $$6 = 0;
-         double $$7 = this.b.m.z().c();
-         Iterator<eyg.a> $$8 = this.c.iterator();
-
-         while ($$8.hasNext()) {
-            eyg.a $$9 = $$8.next();
-            if ((double)$$9.b() + 3000.0 * $$7 <= (double)ac.b()) {
-               $$8.remove();
-            } else {
-               $$6 = Math.max($$6, this.b.h.a($$9.a()));
-            }
-         }
-
-         $$6 += this.b.h.b("<") + this.b.h.b(" ") + this.b.h.b(">") + this.b.h.b(" ");
-
-         for (eyg.a $$10 : this.c) {
-            int $$11 = 255;
-            vd $$12 = $$10.a();
-            elm $$13 = $$10.c().d($$1).d();
-            double $$14 = -$$4.b($$13);
-            double $$15 = -$$2.b($$13);
-            boolean $$16 = $$15 > 0.5;
-            int $$17 = $$6 / 2;
-            int $$18 = 9;
-            int $$19 = $$18 / 2;
-            float $$20 = 1.0F;
-            int $$21 = this.b.h.a($$12);
-            int $$22 = aui.d(aui.b(255.0F, 75.0F, (float)(ac.b() - $$10.b()) / (float)(3000.0 * $$7)));
-            int $$23 = $$22 << 16 | $$22 << 8 | $$22;
-            $$0.c().a();
-            $$0.c().a((float)$$0.a() - (float)$$17 * 1.0F - 2.0F, (float)($$0.b() - 35) - (float)($$5 * ($$18 + 1)) * 1.0F, 0.0F);
-            $$0.c().b(1.0F, 1.0F, 1.0F);
-            $$0.a(-$$17 - 1, -$$19 - 1, $$17 + 1, $$19 + 1, this.b.m.b(0.8F));
-            int $$24 = $$23 + -16777216;
-            if (!$$16) {
-               if ($$14 > 0.0) {
-                  $$0.b(this.b.h, ">", $$17 - this.b.h.b(">"), -$$19, $$24);
-               } else if ($$14 < 0.0) {
-                  $$0.b(this.b.h, "<", -$$17, -$$19, $$24);
-               }
-            }
-
-            $$0.b(this.b.h, $$12, -$$21 / 2, -$$19, $$24);
-            $$0.c().b();
-            $$5++;
-         }
-      }
+   eyg(fcz $$0, int $$1, @Nullable ahg $$2, vf $$3, vf $$4, List<eyg.b> $$5, @Nullable Runnable $$6) {
+      super($$3);
+      this.o = $$0;
+      this.p = $$2;
+      this.q = $$4;
+      this.r = $$5;
+      this.t = $$6;
+      this.u = $$1 - 36;
    }
 
    @Override
-   public void a(ghn $$0, gis $$1) {
-      if ($$1.a() != null) {
-         vd $$2 = $$1.a();
-         if (!this.c.isEmpty()) {
-            for (eyg.a $$3 : this.c) {
-               if ($$3.a().equals($$2)) {
-                  $$3.a(new elm($$0.h(), $$0.i(), $$0.j()));
-                  return;
-               }
-            }
-         }
-
-         this.c.add(new eyg.a($$2, new elm($$0.h(), $$0.i(), $$0.j())));
+   protected void aN_() {
+      this.v.a(12).c().b();
+      this.v.a(new exy(this.e.f().a(n.r), this.i).c(this.u).b(true));
+      if (this.p != null) {
+         this.v.a(exr.a(130, 64, this.p, 130, 64));
       }
+
+      this.v.a(new exy(this.q, this.i).c(this.u).b(true));
+      this.v.a(this.n());
+      this.v.a($$1 -> {
+         exc var10000 = this.d($$1);
+      });
+      this.c();
+   }
+
+   private fas n() {
+      int $$0 = 6 * (this.r.size() - 1);
+      int $$1 = Math.min((this.u - $$0) / this.r.size(), 150);
+      fas $$2 = fas.e();
+      $$2.a(6);
+
+      for (eyg.b $$3 : this.r) {
+         $$2.a(exe.a($$3.a(), $$1x -> $$3.b().accept(this)).a($$1).a());
+      }
+
+      return $$2;
+   }
+
+   @Override
+   protected void c() {
+      this.o.a(this.f, this.g, this.h);
+      this.v.a();
+      fam.a(this.v, this.F());
+   }
+
+   @Override
+   public void b(ews $$0, int $$1, int $$2, float $$3) {
+      this.o.a($$0, -1, -1, $$3);
+      $$0.e();
+      RenderSystem.clear(256, evg.a);
+      this.a($$0);
+      $$0.a(a, this.v.B() - 18, this.v.C() - 18, this.v.w() + 36, this.v.u() + 36);
+   }
+
+   @Override
+   public vf h() {
+      return ve.a(this.e, this.q);
+   }
+
+   @Override
+   public void aE_() {
+      if (this.t != null) {
+         this.t.run();
+      }
+
+      this.f.a(this.o);
    }
 
    public static class a {
-      private final vd a;
-      private long b;
-      private elm c;
+      private final fcz a;
+      private final vf b;
+      private vf c = ve.a;
+      private int d = 250;
+      @Nullable
+      private ahg e;
+      private final List<eyg.b> f = new ArrayList<>();
+      @Nullable
+      private Runnable g = null;
 
-      public a(vd $$0, elm $$1) {
+      public a(fcz $$0, vf $$1) {
          this.a = $$0;
-         this.c = $$1;
-         this.b = ac.b();
+         this.b = $$1;
       }
 
-      public vd a() {
-         return this.a;
+      public eyg.a a(int $$0) {
+         this.d = $$0;
+         return this;
       }
 
-      public long b() {
-         return this.b;
+      public eyg.a a(ahg $$0) {
+         this.e = $$0;
+         return this;
       }
 
-      public elm c() {
-         return this.c;
-      }
-
-      public void a(elm $$0) {
+      public eyg.a a(vf $$0) {
          this.c = $$0;
-         this.b = ac.b();
+         return this;
       }
+
+      public eyg.a a(vf $$0, Consumer<eyg> $$1) {
+         this.f.add(new eyg.b($$0, $$1));
+         return this;
+      }
+
+      public eyg.a a(Runnable $$0) {
+         this.g = $$0;
+         return this;
+      }
+
+      public eyg a() {
+         if (this.f.isEmpty()) {
+            throw new IllegalStateException("Popup must have at least one button");
+         } else {
+            return new eyg(this.a, this.d, this.e, this.b, this.c, List.copyOf(this.f), this.g);
+         }
+      }
+   }
+
+   static record b(vf a, Consumer<eyg> b) {
    }
 }

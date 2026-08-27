@@ -1,9 +1,7 @@
-import java.util.List;
+public interface cik {
+   int a(int var1);
 
-public interface cik extends bjo, cjs {
-   int f();
+   void a(int var1, int var2);
 
-   int g();
-
-   List<cmr> h();
+   int a();
 }

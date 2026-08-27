@@ -1,133 +1,39 @@
-import com.google.common.collect.Lists;
 import com.mojang.serialization.MapCodec;
-import java.util.List;
-import java.util.Map;
-import java.util.WeakHashMap;
 
-public class dcm extends cvz {
-   public static final MapCodec<dcm> c = b(dcm::new);
-   public static final djr d = djq.r;
-   private static final Map<cso, List<dcm.a>> h = new WeakHashMap<>();
-   public static final int e = 60;
-   public static final int f = 8;
-   public static final int g = 160;
-   private static final int i = 2;
+public class dcm extends cwp {
+   public static final MapCodec<dcm> a = b(dcm::new);
 
    @Override
-   public MapCodec<? extends dcm> a() {
-      return c;
+   public MapCodec<dcm> a() {
+      return a;
    }
 
-   protected dcm(diz.d $$0) {
+   protected dcm(djf.d $$0) {
       super($$0);
-      this.k(this.E.b().a(d, Boolean.valueOf(true)));
    }
 
    @Override
-   public void b(dja $$0, cti $$1, hx $$2, dja $$3, boolean $$4) {
-      for (ic $$5 : ic.values()) {
-         $$1.a($$2.a($$5), this);
-      }
-   }
-
-   @Override
-   public void a(dja $$0, cti $$1, hx $$2, dja $$3, boolean $$4) {
-      if (!$$4) {
-         for (ic $$5 : ic.values()) {
-            $$1.a($$2.a($$5), this);
+   public bka a(djg $$0, cto $$1, hx $$2, cfh $$3, bjz $$4, elo $$5) {
+      cmx $$6 = $$3.b($$4);
+      if ($$6.a(cna.rS)) {
+         if (!$$1.B) {
+            ic $$7 = $$5.b();
+            ic $$8 = $$7.o() == ic.a.b ? $$3.cE().g() : $$7;
+            $$1.a(null, $$2, arr.tZ, ars.e, 1.0F, 1.0F);
+            $$1.a($$2, cwr.ee.o().a(cxj.b, $$8), 11);
+            cbt $$9 = new cbt(
+               $$1, (double)$$2.u() + 0.5 + (double)$$8.j() * 0.65, (double)$$2.v() + 0.1, (double)$$2.w() + 0.5 + (double)$$8.l() * 0.65, new cmx(cna.rV, 4)
+            );
+            $$9.o(0.05 * (double)$$8.j() + $$1.z.j() * 0.02, 0.05, 0.05 * (double)$$8.l() + $$1.z.j() * 0.02);
+            $$1.b($$9);
+            $$6.a(1, $$3, $$1x -> $$1x.d($$4));
+            $$1.a($$3, dnq.M, $$2);
+            $$3.b(asb.c.b(cna.rS));
          }
-      }
-   }
 
-   @Override
-   public int a(dja $$0, cso $$1, hx $$2, ic $$3) {
-      return $$0.c(d) && ic.b != $$3 ? 15 : 0;
-   }
-
-   protected boolean a(cti $$0, hx $$1, dja $$2) {
-      return $$0.b($$1.d(), ic.a);
-   }
-
-   @Override
-   public void a(dja $$0, amz $$1, hx $$2, aup $$3) {
-      boolean $$4 = this.a($$1, $$2, $$0);
-      List<dcm.a> $$5 = h.get($$1);
-
-      while ($$5 != null && !$$5.isEmpty() && $$1.X() - $$5.get(0).b > 60L) {
-         $$5.remove(0);
-      }
-
-      if ($$0.c(d)) {
-         if ($$4) {
-            $$1.a($$2, $$0.a(d, Boolean.valueOf(false)), 3);
-            if (a($$1, $$2, true)) {
-               $$1.c(1502, $$2, 0);
-               $$1.a($$2, $$1.a_($$2).b(), 160);
-            }
-         }
-      } else if (!$$4 && !a($$1, $$2, false)) {
-         $$1.a($$2, $$0.a(d, Boolean.valueOf(true)), 3);
-      }
-   }
-
-   @Override
-   public void a(dja $$0, cti $$1, hx $$2, cwj $$3, hx $$4, boolean $$5) {
-      if ($$0.c(d) == this.a($$1, $$2, $$0) && !$$1.N().b($$2, this)) {
-         $$1.a($$2, this, 2);
-      }
-   }
-
-   @Override
-   public int b(dja $$0, cso $$1, hx $$2, ic $$3) {
-      return $$3 == ic.a ? $$0.b($$1, $$2, $$3) : 0;
-   }
-
-   @Override
-   public boolean f_(dja $$0) {
-      return true;
-   }
-
-   @Override
-   public void a(dja $$0, cti $$1, hx $$2, aup $$3) {
-      if ($$0.c(d)) {
-         double $$4 = (double)$$2.u() + 0.5 + ($$3.j() - 0.5) * 0.2;
-         double $$5 = (double)$$2.v() + 0.7 + ($$3.j() - 0.5) * 0.2;
-         double $$6 = (double)$$2.w() + 0.5 + ($$3.j() - 0.5) * 0.2;
-         $$1.a(jr.b, $$4, $$5, $$6, 0.0, 0.0, 0.0);
-      }
-   }
-
-   @Override
-   protected void a(djb.a<cwj, dja> $$0) {
-      $$0.a(d);
-   }
-
-   private static boolean a(cti $$0, hx $$1, boolean $$2) {
-      List<dcm.a> $$3 = h.computeIfAbsent($$0, $$0x -> Lists.newArrayList());
-      if ($$2) {
-         $$3.add(new dcm.a($$1.i(), $$0.X()));
-      }
-
-      int $$4 = 0;
-
-      for (dcm.a $$5 : $$3) {
-         if ($$5.a.equals($$1)) {
-            if (++$$4 >= 8) {
-               return true;
-            }
-         }
-      }
-
-      return false;
-   }
-
-   public static class a {
-      final hx a;
-      final long b;
-
-      public a(hx $$0, long $$1) {
-         this.a = $$0;
-         this.b = $$1;
+         return bka.a($$1.B);
+      } else {
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
       }
    }
 }

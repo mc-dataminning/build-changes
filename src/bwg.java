@@ -1,27 +1,30 @@
 import com.google.common.collect.ImmutableSet;
-import java.util.Optional;
 import java.util.Set;
 
-public abstract class bwg extends bwm<bmf> {
-   protected abstract boolean a(bmf var1, bmf var2);
-
-   protected abstract bvh<bmf> b();
-
+public class bwg extends bwr<bmk> {
    @Override
-   public Set<bvh<?>> a() {
-      return ImmutableSet.of(this.b());
+   public Set<bvm<?>> a() {
+      return ImmutableSet.of(bvm.x, bvm.y);
    }
 
    @Override
-   protected void a(amz $$0, bmf $$1) {
-      $$1.dO().a(this.b(), this.b($$1));
-   }
+   protected void a(and $$0, bmk $$1) {
+      bnk<?> $$2 = $$1.dO();
+      bks $$3 = $$1.ex();
+      if ($$3 != null) {
+         $$2.a(bvm.x, $$1.ex());
+         blu $$4 = $$3.d();
+         if ($$4 instanceof bmk) {
+            $$2.a(bvm.y, (bmk)$$4);
+         }
+      } else {
+         $$2.b(bvm.x);
+      }
 
-   private Optional<bmf> b(bmf $$0) {
-      return this.a($$0).flatMap($$1 -> $$1.a($$1x -> this.a($$0, $$1x)));
-   }
-
-   protected Optional<bvj> a(bmf $$0) {
-      return $$0.dO().c(bvh.h);
+      $$2.c(bvm.y).ifPresent($$2x -> {
+         if (!$$2x.bx() || $$2x.dM() != $$0) {
+            $$2.b(bvm.y);
+         }
+      });
    }
 }

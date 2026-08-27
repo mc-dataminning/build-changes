@@ -1,80 +1,39 @@
+import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
+import java.util.function.Function;
+import org.apache.commons.lang3.mutable.MutableBoolean;
 
-public class dqt extends drn<dty> {
-   public dqt(Codec<dty> $$0) {
+public class dqt extends dqr {
+   public dqt(Codec<dqq> $$0) {
       super($$0);
+      this.h = ImmutableSet.of(eer.e, eer.c);
    }
 
    @Override
-   public boolean a(drp<dty> $$0) {
-      hx $$1 = $$0.e();
-      cud $$2 = $$0.b();
-      aup $$3 = $$0.d();
-      if ($$2.u($$1) && !$$2.u($$1.c())) {
-         hx.a $$4 = $$1.j();
-         hx.a $$5 = $$1.j();
-         boolean $$6 = true;
-         boolean $$7 = true;
-         boolean $$8 = true;
-         boolean $$9 = true;
-
-         while ($$2.u($$4)) {
-            if ($$2.s($$4)) {
-               return true;
-            }
-
-            $$2.a($$4, cwl.dY.o(), 2);
-            $$6 = $$6 && this.b($$2, $$3, $$5.a($$4, ic.c));
-            $$7 = $$7 && this.b($$2, $$3, $$5.a($$4, ic.d));
-            $$8 = $$8 && this.b($$2, $$3, $$5.a($$4, ic.e));
-            $$9 = $$9 && this.b($$2, $$3, $$5.a($$4, ic.f));
-            $$4.c(ic.a);
-         }
-
-         $$4.c(ic.b);
-         this.a($$2, $$3, $$5.a($$4, ic.c));
-         this.a($$2, $$3, $$5.a($$4, ic.d));
-         this.a($$2, $$3, $$5.a($$4, ic.e));
-         this.a($$2, $$3, $$5.a($$4, ic.f));
-         $$4.c(ic.a);
-         hx.a $$10 = new hx.a();
-
-         for (int $$11 = -3; $$11 < 4; $$11++) {
-            for (int $$12 = -3; $$12 < 4; $$12++) {
-               int $$13 = aui.a($$11) * aui.a($$12);
-               if ($$3.a(10) < 10 - $$13) {
-                  $$10.g($$4.b($$11, 0, $$12));
-                  int $$14 = 3;
-
-                  while ($$2.u($$5.a($$10, ic.a))) {
-                     $$10.c(ic.a);
-                     if (--$$14 <= 0) {
-                        break;
-                     }
-                  }
-
-                  if (!$$2.u($$5.a($$10, ic.a))) {
-                     $$2.a($$10, cwl.dY.o(), 2);
-                  }
-               }
-            }
-         }
-
-         return true;
-      } else {
-         return false;
-      }
+   protected int a() {
+      return 10;
    }
 
-   private void a(ctj $$0, aup $$1, hx $$2) {
-      if ($$1.h()) {
-         $$0.a($$2, cwl.dY.o(), 2);
-      }
+   @Override
+   protected float a(auu $$0) {
+      return ($$0.i() * 2.0F + $$0.i()) * 2.0F;
    }
 
-   private boolean b(ctj $$0, aup $$1, hx $$2) {
-      if ($$1.a(10) != 0) {
-         $$0.a($$2, cwl.dY.o(), 2);
+   @Override
+   protected double b() {
+      return 5.0;
+   }
+
+   protected boolean a(dqp $$0, dqq $$1, dlc $$2, Function<hx, ih<cun>> $$3, dlb $$4, hx.a $$5, hx.a $$6, dob $$7, MutableBoolean $$8) {
+      if (this.a($$1, $$2.a_($$5))) {
+         djg $$9;
+         if ($$5.v() <= $$0.a() + 31) {
+            $$9 = g.g();
+         } else {
+            $$9 = e;
+         }
+
+         $$2.a($$5, $$9, false);
          return true;
       } else {
          return false;

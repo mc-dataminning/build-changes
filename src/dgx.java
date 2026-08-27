@@ -1,120 +1,250 @@
-import com.mojang.logging.LogUtils;
-import java.util.Objects;
-import java.util.function.Predicate;
-import org.slf4j.Logger;
+import java.util.Arrays;
+import javax.annotation.Nullable;
 
-public class dgx extends dgo implements bjo {
-   public static final int c = 6;
-   private static final Logger d = LogUtils.getLogger();
-   private final iq<cmr> e = iq.a(6, cmr.f);
-   private int f = -1;
-
-   public dgx(hx $$0, dja $$1) {
-      super(dgq.M, $$0, $$1);
-   }
-
-   private void c(int $$0) {
-      if ($$0 >= 0 && $$0 < 6) {
-         this.f = $$0;
-         dja $$1 = this.r();
-
-         for (int $$2 = 0; $$2 < cxn.c.size(); $$2++) {
-            boolean $$3 = !this.a($$2).b();
-            djr $$4 = cxn.c.get($$2);
-            $$1 = $$1.a($$4, Boolean.valueOf($$3));
+public class dgx extends dgo implements bkl {
+   private static final int h = 3;
+   private static final int i = 4;
+   private static final int[] j = new int[]{3};
+   private static final int[] k = new int[]{0, 1, 2, 3};
+   private static final int[] l = new int[]{0, 1, 2, 4};
+   public static final int c = 20;
+   public static final int d = 0;
+   public static final int e = 1;
+   public static final int f = 2;
+   private iq<cmx> m = iq.a(5, cmx.f);
+   int n;
+   private boolean[] r;
+   private cms s;
+   int t;
+   protected final cik g = new cik() {
+      @Override
+      public int a(int $$0) {
+         switch ($$0) {
+            case 0:
+               return dgx.this.n;
+            case 1:
+               return dgx.this.t;
+            default:
+               return 0;
          }
-
-         Objects.requireNonNull(this.o).a(this.p, $$1, 3);
-         this.o.a(dnk.c, this.p, dnk.a.a($$1));
-      } else {
-         d.error("Expected slot 0-5, got {}", $$0);
       }
+
+      @Override
+      public void a(int $$0, int $$1) {
+         switch ($$0) {
+            case 0:
+               dgx.this.n = $$1;
+               break;
+            case 1:
+               dgx.this.t = $$1;
+         }
+      }
+
+      @Override
+      public int a() {
+         return 2;
+      }
+   };
+
+   public dgx(hx $$0, djg $$1) {
+      super(dgw.l, $$0, $$1);
    }
 
    @Override
-   public void a(sl $$0) {
-      this.e.clear();
-      bjp.b($$0, this.e);
-      this.f = $$0.h("last_interacted_slot");
-   }
-
-   @Override
-   protected void b(sl $$0) {
-      bjp.a($$0, this.e, true);
-      $$0.a("last_interacted_slot", this.f);
-   }
-
-   public int f() {
-      return (int)this.e.stream().filter(Predicate.not(cmr::b)).count();
-   }
-
-   @Override
-   public void a() {
-      this.e.clear();
+   protected vf l() {
+      return vf.c("container.brewing");
    }
 
    @Override
    public int b() {
-      return 6;
+      return this.m.size();
    }
 
    @Override
    public boolean ai_() {
-      return this.e.stream().allMatch(cmr::b);
-   }
-
-   @Override
-   public cmr a(int $$0) {
-      return this.e.get($$0);
-   }
-
-   @Override
-   public cmr a(int $$0, int $$1) {
-      cmr $$2 = Objects.requireNonNullElse(this.e.get($$0), cmr.f);
-      this.e.set($$0, cmr.f);
-      if (!$$2.b()) {
-         this.c($$0);
+      for (cmx $$0 : this.m) {
+         if (!$$0.b()) {
+            return false;
+         }
       }
 
-      return $$2;
+      return true;
+   }
+
+   public static void a(cto $$0, hx $$1, djg $$2, dgx $$3) {
+      cmx $$4 = $$3.m.get(4);
+      if ($$3.t <= 0 && $$4.a(cna.sl)) {
+         $$3.t = 20;
+         $$4.h(1);
+         a($$0, $$1, $$2);
+      }
+
+      boolean $$5 = a($$3.m);
+      boolean $$6 = $$3.n > 0;
+      cmx $$7 = $$3.m.get(3);
+      if ($$6) {
+         $$3.n--;
+         boolean $$8 = $$3.n == 0;
+         if ($$8 && $$5) {
+            a($$0, $$1, $$3.m);
+            a($$0, $$1, $$2);
+         } else if (!$$5 || !$$7.a($$3.s)) {
+            $$3.n = 0;
+            a($$0, $$1, $$2);
+         }
+      } else if ($$5 && $$3.t > 0) {
+         $$3.t--;
+         $$3.n = 400;
+         $$3.s = $$7.d();
+         a($$0, $$1, $$2);
+      }
+
+      boolean[] $$9 = $$3.f();
+      if (!Arrays.equals($$9, $$3.r)) {
+         $$3.r = $$9;
+         djg $$10 = $$2;
+         if (!($$2.b() instanceof cwt)) {
+            return;
+         }
+
+         for (int $$11 = 0; $$11 < cwt.b.length; $$11++) {
+            $$10 = $$10.a(cwt.b[$$11], Boolean.valueOf($$9[$$11]));
+         }
+
+         $$0.a($$1, $$10, 2);
+      }
+   }
+
+   private boolean[] f() {
+      boolean[] $$0 = new boolean[3];
+
+      for (int $$1 = 0; $$1 < 3; $$1++) {
+         if (!this.m.get($$1).b()) {
+            $$0[$$1] = true;
+         }
+      }
+
+      return $$0;
+   }
+
+   private static boolean a(iq<cmx> $$0) {
+      cmx $$1 = $$0.get(3);
+      if ($$1.b()) {
+         return false;
+      } else if (!cow.a($$1)) {
+         return false;
+      } else {
+         for (int $$2 = 0; $$2 < 3; $$2++) {
+            cmx $$3 = $$0.get($$2);
+            if (!$$3.b() && cow.a($$3, $$1)) {
+               return true;
+            }
+         }
+
+         return false;
+      }
+   }
+
+   private static void a(cto $$0, hx $$1, iq<cmx> $$2) {
+      cmx $$3 = $$2.get(3);
+
+      for (int $$4 = 0; $$4 < 3; $$4++) {
+         $$2.set($$4, cow.d($$3, $$2.get($$4)));
+      }
+
+      $$3.h(1);
+      if ($$3.d().t()) {
+         cmx $$5 = new cmx($$3.d().s());
+         if ($$3.b()) {
+            $$3 = $$5;
+         } else {
+            bjw.a($$0, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), $$5);
+         }
+      }
+
+      $$2.set(3, $$3);
+      $$0.c(1035, $$1, 0);
    }
 
    @Override
-   public cmr b(int $$0) {
-      return this.a($$0, 1);
+   public void a(sn $$0) {
+      super.a($$0);
+      this.m = iq.a(this.b(), cmx.f);
+      bju.b($$0, this.m);
+      this.n = $$0.g("BrewTime");
+      this.t = $$0.f("Fuel");
    }
 
    @Override
-   public void a(int $$0, cmr $$1) {
-      if ($$1.a(asj.av)) {
-         this.e.set($$0, $$1);
-         this.c($$0);
-      } else if ($$1.b()) {
-         this.a($$0, 1);
+   protected void b(sn $$0) {
+      super.b($$0);
+      $$0.a("BrewTime", (short)this.n);
+      bju.a($$0, this.m);
+      $$0.a("Fuel", (byte)this.t);
+   }
+
+   @Override
+   public cmx a(int $$0) {
+      return $$0 >= 0 && $$0 < this.m.size() ? this.m.get($$0) : cmx.f;
+   }
+
+   @Override
+   public cmx a(int $$0, int $$1) {
+      return bju.a(this.m, $$0, $$1);
+   }
+
+   @Override
+   public cmx b(int $$0) {
+      return bju.a(this.m, $$0);
+   }
+
+   @Override
+   public void a(int $$0, cmx $$1) {
+      if ($$0 >= 0 && $$0 < this.m.size()) {
+         this.m.set($$0, $$1);
       }
    }
 
    @Override
-   public boolean a(bjo $$0, int $$1, cmr $$2) {
-      return $$0.a_($$2x -> $$2x.b() ? true : cmr.c($$2, $$2x) && $$2x.L() + $$2.L() <= Math.min($$2x.g(), $$0.ak_()));
+   public boolean a(cfh $$0) {
+      return bjt.a(this, $$0);
    }
 
    @Override
-   public int ak_() {
-      return 1;
+   public boolean b(int $$0, cmx $$1) {
+      if ($$0 == 3) {
+         return cow.a($$1);
+      } else {
+         return $$0 == 4 ? $$1.a(cna.sl) : ($$1.a(cna.sh) || $$1.a(cna.vh) || $$1.a(cna.vk) || $$1.a(cna.si)) && this.a($$0).b();
+      }
    }
 
    @Override
-   public boolean a(cfb $$0) {
-      return bjo.a(this, $$0);
+   public int[] a(ic $$0) {
+      if ($$0 == ic.b) {
+         return j;
+      } else {
+         return $$0 == ic.a ? k : l;
+      }
    }
 
    @Override
-   public boolean b(int $$0, cmr $$1) {
-      return $$1.a(asj.av) && this.a($$0).b() && $$1.L() == this.ak_();
+   public boolean a(int $$0, cmx $$1, @Nullable ic $$2) {
+      return this.b($$0, $$1);
    }
 
-   public int g() {
-      return this.f;
+   @Override
+   public boolean b(int $$0, cmx $$1, ic $$2) {
+      return $$0 == 3 ? $$1.a(cna.si) : true;
+   }
+
+   @Override
+   public void a() {
+      this.m.clear();
+   }
+
+   @Override
+   protected cia a(int $$0, cfg $$1) {
+      return new cif($$0, $$1, this, this.g);
    }
 }

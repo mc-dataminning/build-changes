@@ -1,91 +1,52 @@
-public class crp extends crc {
-   public final crp.a a;
-
-   public crp(crc.a $$0, crp.a $$1, blu... $$2) {
-      super($$0, $$1 == crp.a.c ? crd.b : crd.a, $$2);
-      this.a = $$1;
+public class crp extends cri {
+   public crp(cri.a $$0, blz... $$1) {
+      super($$0, crj.b, $$1);
    }
 
    @Override
    public int a(int $$0) {
-      return this.a.a() + ($$0 - 1) * this.a.b();
+      return $$0 * 10;
    }
 
    @Override
    public int b(int $$0) {
-      return this.a($$0) + this.a.b();
+      return this.a($$0) + 15;
+   }
+
+   @Override
+   public boolean b() {
+      return true;
    }
 
    @Override
    public int a() {
-      return 4;
+      return 2;
+   }
+
+   public static void a(bmk $$0, cto $$1, hx $$2, int $$3) {
+      if ($$0.aC()) {
+         djg $$4 = cwr.kI.o();
+         int $$5 = Math.min(16, 2 + $$3);
+         hx.a $$6 = new hx.a();
+
+         for (hx $$7 : hx.a($$2.b(-$$5, -1, -$$5), $$2.b($$5, -1, $$5))) {
+            if ($$7.a($$0.dk(), (double)$$5)) {
+               $$6.d($$7.u(), $$7.v() + 1, $$7.w());
+               djg $$8 = $$1.a_($$6);
+               if ($$8.i()) {
+                  djg $$9 = $$1.a_($$7);
+                  if ($$9 == czu.b() && $$4.a((ctr)$$1, $$7) && $$1.a($$4, $$7, elx.a())) {
+                     $$1.b($$7, $$4);
+                     $$1.a($$7, cwr.kI, aun.a($$0.eg(), 60, 120));
+                  }
+               }
+            }
+         }
+      }
    }
 
    @Override
-   public int a(int $$0, bkn $$1) {
-      if ($$1.a(asd.e)) {
-         return 0;
-      } else if (this.a == crp.a.a) {
-         return $$0;
-      } else if (this.a == crp.a.b && $$1.a(asd.j)) {
-         return $$0 * 2;
-      } else if (this.a == crp.a.c && $$1.a(asd.n)) {
-         return $$0 * 3;
-      } else if (this.a == crp.a.d && $$1.a(asd.m)) {
-         return $$0 * 2;
-      } else {
-         return this.a == crp.a.e && $$1.a(asd.k) ? $$0 * 2 : 0;
-      }
-   }
-
-   @Override
-   public boolean a(crc $$0) {
-      if ($$0 instanceof crp $$1) {
-         return this.a == $$1.a ? false : this.a == crp.a.c || $$1.a == crp.a.c;
-      } else {
-         return super.a($$0);
-      }
-   }
-
-   public static int a(bmf $$0, int $$1) {
-      int $$2 = cre.a(crg.b, $$0);
-      if ($$2 > 0) {
-         $$1 -= aui.d((float)$$1 * (float)$$2 * 0.15F);
-      }
-
-      return $$1;
-   }
-
-   public static double a(bmf $$0, double $$1) {
-      int $$2 = cre.a(crg.d, $$0);
-      if ($$2 > 0) {
-         $$1 *= aui.a(1.0 - (double)$$2 * 0.15, 0.0, 1.0);
-      }
-
-      return $$1;
-   }
-
-   public static enum a {
-      a(1, 11),
-      b(10, 8),
-      c(5, 6),
-      d(5, 8),
-      e(3, 6);
-
-      private final int f;
-      private final int g;
-
-      private a(int $$0, int $$1) {
-         this.f = $$0;
-         this.g = $$1;
-      }
-
-      public int a() {
-         return this.f;
-      }
-
-      public int b() {
-         return this.g;
-      }
+   public boolean a(cri $$0) {
+      return super.a($$0) && $$0 != crm.i;
    }
 }

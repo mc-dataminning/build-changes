@@ -1,104 +1,194 @@
-import com.google.common.collect.ImmutableMap;
-import com.mojang.logging.LogUtils;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import it.unimi.dsi.fastutil.objects.ObjectArraySet;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Map;
-import org.slf4j.Logger;
+import java.util.Set;
+import java.util.UUID;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
 public class bnm {
-   private static final Logger a = LogUtils.getLogger();
-   private static final Map<blt<? extends bmf>, bnk> b = ImmutableMap.builder()
-      .put(blt.b, byw.u().a())
-      .put(blt.d, bmf.dQ().a())
-      .put(blt.f, byz.gl().a())
-      .put(blt.g, bxn.u().a())
-      .put(blt.h, bxt.gq().a())
-      .put(blt.i, cbt.u().a())
-      .put(blt.n, bxv.gq().a())
-      .put(blt.m, bze.u().a())
-      .put(blt.o, cbu.u().a())
-      .put(blt.r, bxx.u().a())
-      .put(blt.s, bxp.u().a())
-      .put(blt.u, bxz.u().a())
-      .put(blt.v, cbv.u().a())
-      .put(blt.w, bya.ge().a())
-      .put(blt.x, bzq.u().a())
-      .put(blt.z, cdc.gi().a())
-      .put(blt.B, cby.u().a())
-      .put(blt.F, cbz.u().a())
-      .put(blt.G, cca.u().a())
-      .put(blt.D, cai.w().a())
-      .put(blt.H, ccc.w().a())
-      .put(blt.l, cdf.u().a())
-      .put(blt.O, byc.u().a())
-      .put(blt.P, bzh.ge().a())
-      .put(blt.R, ccd.A().a())
-      .put(blt.S, cce.u().a())
-      .put(blt.U, blx.ge().a())
-      .put(blt.V, bzn.w().a())
-      .put(blt.W, ccf.ge().a())
-      .put(blt.X, cdl.u().a())
-      .put(blt.Z, bzr.gE().a())
-      .put(blt.aa, cdc.gi().a())
-      .put(blt.ab, cch.w().a())
-      .put(blt.ad, bye.u().a())
-      .put(blt.ak, bzu.gp().a())
-      .put(blt.am, cci.u().a())
-      .put(blt.ap, bxz.u().a())
-      .put(blt.aq, bzq.u().a())
-      .put(blt.ar, byg.u().a())
-      .put(blt.at, byh.gp().a())
-      .put(blt.au, byi.gk().a())
-      .put(blt.av, ccj.gk().a())
-      .put(blt.aw, byj.u().a())
-      .put(blt.ax, cdr.gl().a())
-      .put(blt.ay, cdu.A().a())
-      .put(blt.az, ccm.w().a())
-      .put(blt.bv, cfb.fH().a())
-      .put(blt.aA, byk.u().a())
-      .put(blt.aC, bxp.u().a())
-      .put(blt.aD, bym.w().a())
-      .put(blt.aE, cco.u().a())
-      .put(blt.aF, bxp.u().a())
-      .put(blt.aG, byo.u().a())
-      .put(blt.aH, ccp.u().a())
-      .put(blt.aJ, ccq.u().a())
-      .put(blt.aK, cbs.u().a())
-      .put(blt.aL, bzx.u().a())
-      .put(blt.aM, ccj.gk().a())
-      .put(blt.aO, cae.u().a())
-      .put(blt.aP, byq.u().a())
-      .put(blt.aT, ccu.w().a())
-      .put(blt.aU, byr.ge().a())
-      .put(blt.aV, cbs.u().a())
-      .put(blt.aW, ccw.w().a())
-      .put(blt.aX, bzk.gg().a())
-      .put(blt.bb, bzu.gp().a())
-      .put(blt.bd, bxp.u().a())
-      .put(blt.be, byt.A().a())
-      .put(blt.bf, ccx.u().a())
-      .put(blt.bg, ceo.gn().a())
-      .put(blt.bh, ccy.w().a())
-      .put(blt.bj, cef.u().a())
-      .put(blt.bi, bmh.C().a())
-      .put(blt.bl, ccz.w().a())
-      .put(blt.bm, cbc.w().a())
-      .put(blt.bn, cbs.u().a())
-      .put(blt.bp, byv.gk().a())
-      .put(blt.bq, cdb.u().a())
-      .put(blt.br, cdc.gi().a())
-      .put(blt.bs, cab.u().a())
-      .put(blt.bt, cdc.gi().a())
-      .put(blt.bu, cde.go().a())
-      .build();
+   private final bnl a;
+   private final Map<bno.a, Set<bno>> b = Maps.newEnumMap(bno.a.class);
+   private final Map<UUID, bno> c = new Object2ObjectArrayMap();
+   private final Set<bno> d = new ObjectArraySet();
+   private double e;
+   private boolean f = true;
+   private double g;
+   private final Consumer<bnm> h;
 
-   public static bnk a(blt<? extends bmf> $$0) {
-      return b.get($$0);
+   public bnm(bnl $$0, Consumer<bnm> $$1) {
+      this.a = $$0;
+      this.h = $$1;
+      this.e = $$0.a();
    }
 
-   public static boolean b(blt<?> $$0) {
-      return b.containsKey($$0);
+   public bnl a() {
+      return this.a;
    }
 
-   public static void a() {
-      kd.g.s().filter($$0 -> $$0.f() != bmi.h).filter($$0 -> !b((blt<?>)$$0)).map(kd.g::b).forEach($$0 -> ac.a("Entity " + $$0 + " has no attributes"));
+   public double b() {
+      return this.e;
+   }
+
+   public void a(double $$0) {
+      if ($$0 != this.e) {
+         this.e = $$0;
+         this.d();
+      }
+   }
+
+   public Set<bno> a(bno.a $$0) {
+      return this.b.computeIfAbsent($$0, $$0x -> Sets.newHashSet());
+   }
+
+   public Set<bno> c() {
+      return ImmutableSet.copyOf(this.c.values());
+   }
+
+   @Nullable
+   public bno a(UUID $$0) {
+      return this.c.get($$0);
+   }
+
+   public boolean a(bno $$0) {
+      return this.c.get($$0.a()) != null;
+   }
+
+   private void d(bno $$0) {
+      bno $$1 = this.c.putIfAbsent($$0.a(), $$0);
+      if ($$1 != null) {
+         throw new IllegalArgumentException("Modifier is already applied on this attribute!");
+      } else {
+         this.a($$0.b()).add($$0);
+         this.d();
+      }
+   }
+
+   public void b(bno $$0) {
+      this.d($$0);
+   }
+
+   public void c(bno $$0) {
+      this.d($$0);
+      this.d.add($$0);
+   }
+
+   protected void d() {
+      this.f = true;
+      this.h.accept(this);
+   }
+
+   private void e(bno $$0) {
+      this.a($$0.b()).remove($$0);
+      this.c.remove($$0.a());
+      this.d.remove($$0);
+      this.d();
+   }
+
+   public void b(UUID $$0) {
+      bno $$1 = this.a($$0);
+      if ($$1 != null) {
+         this.e($$1);
+      }
+   }
+
+   public boolean c(UUID $$0) {
+      bno $$1 = this.a($$0);
+      if ($$1 != null && this.d.contains($$1)) {
+         this.e($$1);
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   public void e() {
+      for (bno $$0 : this.c()) {
+         this.e($$0);
+      }
+   }
+
+   public double f() {
+      if (this.f) {
+         this.g = this.h();
+         this.f = false;
+      }
+
+      return this.g;
+   }
+
+   private double h() {
+      double $$0 = this.b();
+
+      for (bno $$1 : this.b(bno.a.a)) {
+         $$0 += $$1.c();
+      }
+
+      double $$2 = $$0;
+
+      for (bno $$3 : this.b(bno.a.b)) {
+         $$2 += $$0 * $$3.c();
+      }
+
+      for (bno $$4 : this.b(bno.a.c)) {
+         $$2 *= 1.0 + $$4.c();
+      }
+
+      return this.a.a($$2);
+   }
+
+   private Collection<bno> b(bno.a $$0) {
+      return this.b.getOrDefault($$0, Collections.emptySet());
+   }
+
+   public void a(bnm $$0) {
+      this.e = $$0.e;
+      this.c.clear();
+      this.c.putAll($$0.c);
+      this.d.clear();
+      this.d.addAll($$0.d);
+      this.b.clear();
+      $$0.b.forEach(($$0x, $$1) -> this.a($$0x).addAll($$1));
+      this.d();
+   }
+
+   public sn g() {
+      sn $$0 = new sn();
+      $$0.a("Name", kd.u.b(this.a).toString());
+      $$0.a("Base", this.e);
+      if (!this.d.isEmpty()) {
+         st $$1 = new st();
+
+         for (bno $$2 : this.d) {
+            $$1.add($$2.d());
+         }
+
+         $$0.a("Modifiers", $$1);
+      }
+
+      return $$0;
+   }
+
+   public void a(sn $$0) {
+      this.e = $$0.k("Base");
+      if ($$0.b("Modifiers", 9)) {
+         st $$1 = $$0.c("Modifiers", 10);
+
+         for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+            bno $$3 = bno.a($$1.a($$2));
+            if ($$3 != null) {
+               this.c.put($$3.a(), $$3);
+               this.a($$3.b()).add($$3);
+               this.d.add($$3);
+            }
+         }
+      }
+
+      this.d();
    }
 }

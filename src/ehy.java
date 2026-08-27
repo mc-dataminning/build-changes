@@ -1,60 +1,59 @@
-import com.mojang.logging.LogUtils;
+import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import org.slf4j.Logger;
+import java.util.Set;
 
-public class ehy extends eib {
-   private static final Logger b = LogUtils.getLogger();
-   public static final Codec<ehy> a = RecordCodecBuilder.create($$0 -> a($$0).and(ahd.a.fieldOf("name").forGetter($$0x -> $$0x.c)).apply($$0, ehy::new));
-   private final ahd c;
+public class ehy extends eih {
+   public static final Codec<ehy> a = RecordCodecBuilder.create($$0 -> a($$0).and(ehy.a.e.fieldOf("source").forGetter($$0x -> $$0x.b)).apply($$0, ehy::new));
+   private final ehy.a b;
 
-   private ehy(List<ejo> $$0, ahd $$1) {
+   private ehy(List<eju> $$0, ehy.a $$1) {
       super($$0);
-      this.c = $$1;
+      this.b = $$1;
    }
 
    @Override
-   public eid b() {
-      return eie.B;
+   public eij b() {
+      return eik.o;
    }
 
    @Override
-   public void a(egy $$0) {
-      egr<eic> $$1 = new egr<>(egu.b, this.c);
-      if ($$0.a($$1)) {
-         $$0.b("Function " + this.c + " is recursively called");
-      } else {
-         super.a($$0);
-         $$0.a().getElementOptional($$1).ifPresentOrElse($$2 -> $$2.a($$0.a(".{" + this.c + "}", $$1)), () -> $$0.b("Unknown function table called " + this.c));
+   public Set<ejd<?>> a() {
+      return ImmutableSet.of(this.b.g);
+   }
+
+   @Override
+   public cmx a(cmx $$0, egv $$1) {
+      if ($$1.c(this.b.g) instanceof bke $$3 && $$3.ae()) {
+         $$0.a($$3.Q_());
       }
+
+      return $$0;
    }
 
-   @Override
-   protected cmr a(cmr $$0, egp $$1) {
-      eic $$2 = $$1.a().getElement(egu.b, this.c);
-      if ($$2 == null) {
-         b.warn("Unknown function: {}", this.c);
-         return $$0;
-      } else {
-         egp.c<?> $$3 = egp.a($$2);
-         if ($$1.b($$3)) {
-            cmr var5;
-            try {
-               var5 = $$2.apply($$0, $$1);
-            } finally {
-               $$1.c($$3);
-            }
-
-            return var5;
-         } else {
-            b.warn("Detected infinite loop in loot tables");
-            return $$0;
-         }
-      }
-   }
-
-   public static eib.a<?> a(ahd $$0) {
+   public static eih.a<?> a(ehy.a $$0) {
       return a($$1 -> new ehy($$1, $$0));
+   }
+
+   public static enum a implements avj {
+      a("this", ejg.a),
+      b("killer", ejg.d),
+      c("killer_player", ejg.b),
+      d("block_entity", ejg.h);
+
+      public static final Codec<ehy.a> e = avj.a(ehy.a::values);
+      private final String f;
+      final ejd<?> g;
+
+      private a(String $$0, ejd<?> $$1) {
+         this.f = $$0;
+         this.g = $$1;
+      }
+
+      @Override
+      public String c() {
+         return this.f;
+      }
    }
 }

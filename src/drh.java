@@ -1,47 +1,57 @@
 import com.mojang.serialization.Codec;
+import java.util.List;
+import java.util.stream.Stream;
 
-public class drh extends drn<dto> {
-   public drh(Codec<dto> $$0) {
+public class drh extends dri {
+   public drh(Codec<due> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(drp<dto> $$0) {
-      dto $$1 = $$0.f();
-      hx $$2 = $$0.e();
-      cud $$3 = $$0.b();
-      aup $$4 = $$0.d();
-      boolean $$5 = false;
-      int $$6 = $$2.v();
-      int $$7 = $$6 + $$1.d();
-      int $$8 = $$6 - $$1.d() - 1;
-      int $$9 = $$1.c().a($$4);
-      hx.a $$10 = new hx.a();
+   protected boolean a(ctp $$0, auu $$1, hx $$2, djg $$3) {
+      if (!this.b($$0, $$1, $$2, $$3)) {
+         return false;
+      } else {
+         ic $$4 = ic.c.a.a($$1);
+         int $$5 = $$1.a(2) + 2;
+         List<ic> $$6 = ac.a(Stream.of($$4, $$4.h(), $$4.i()), $$1);
 
-      for (hx $$11 : hx.a($$2.b(-$$9, 0, -$$9), $$2.b($$9, 0, $$9))) {
-         int $$12 = $$11.u() - $$2.u();
-         int $$13 = $$11.w() - $$2.w();
-         if ($$12 * $$12 + $$13 * $$13 <= $$9 * $$9) {
-            $$5 |= this.a($$1, $$3, $$4, $$7, $$8, $$10.g($$11));
+         for (ic $$8 : $$6.subList(0, $$5)) {
+            hx.a $$9 = $$2.j();
+            int $$10 = $$1.a(2) + 1;
+            $$9.c($$8);
+            int $$12;
+            ic $$11;
+            if ($$8 == $$4) {
+               $$11 = $$4;
+               $$12 = $$1.a(3) + 2;
+            } else {
+               $$9.c(ic.b);
+               ic[] $$13 = new ic[]{$$8, ic.b};
+               $$11 = ac.a($$13, $$1);
+               $$12 = $$1.a(3) + 3;
+            }
+
+            for (int $$16 = 0; $$16 < $$10 && this.b($$0, $$1, $$9, $$3); $$16++) {
+               $$9.c($$11);
+            }
+
+            $$9.c($$11.g());
+            $$9.c(ic.b);
+
+            for (int $$17 = 0; $$17 < $$12; $$17++) {
+               $$9.c($$4);
+               if (!this.b($$0, $$1, $$9, $$3)) {
+                  break;
+               }
+
+               if ($$1.i() < 0.25F) {
+                  $$9.c(ic.b);
+               }
+            }
          }
+
+         return true;
       }
-
-      return $$5;
-   }
-
-   protected boolean a(dto $$0, cud $$1, aup $$2, int $$3, int $$4, hx.a $$5) {
-      boolean $$6 = false;
-
-      for (int $$7 = $$3; $$7 > $$4; $$7--) {
-         $$5.q($$7);
-         if ($$0.b().test($$1, $$5)) {
-            dja $$8 = $$0.a().a($$1, $$2, $$5);
-            $$1.a($$5, $$8, 2);
-            this.a($$1, $$5);
-            $$6 = true;
-         }
-      }
-
-      return $$6;
    }
 }

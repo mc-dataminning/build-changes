@@ -1,40 +1,34 @@
-public class acd implements xd<yx> {
-   private final float a;
-   private final int b;
-   private final int c;
+import javax.annotation.Nullable;
 
-   public acd(float $$0, int $$1, int $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+public class acd implements xf<za> {
+   private final int a;
+   private final int b;
+
+   public acd(blu $$0, @Nullable blu $$1) {
+      this.a = $$0.aj();
+      this.b = $$1 != null ? $$1.aj() : 0;
    }
 
-   public acd(ug $$0) {
-      this.a = $$0.readFloat();
-      this.c = $$0.n();
-      this.b = $$0.n();
+   public acd(ui $$0) {
+      this.a = $$0.readInt();
+      this.b = $$0.readInt();
    }
 
    @Override
-   public void a(ug $$0) {
-      $$0.a(this.a);
-      $$0.c(this.c);
-      $$0.c(this.b);
+   public void a(ui $$0) {
+      $$0.p(this.a);
+      $$0.p(this.b);
    }
 
-   public void a(yx $$0) {
+   public void a(za $$0) {
       $$0.a(this);
    }
 
-   public float a() {
+   public int a() {
       return this.a;
    }
 
    public int d() {
       return this.b;
-   }
-
-   public int e() {
-      return this.c;
    }
 }

@@ -1,29 +1,12 @@
-import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ead extends eaf {
-   public static final Codec<ead> a = RecordCodecBuilder.create($$0 -> $$0.group(c(), b(), d()).apply($$0, ead::new));
+public interface ead<SP extends eac> {
+   ead<eaa> a = a("random_spread", eaa.a);
+   ead<dzz> b = a("concentric_rings", dzz.a);
 
-   protected ead(Either<ahd, ecz> $$0, ih<ecx> $$1, eai.a $$2) {
-      super($$0, $$1, $$2);
-   }
+   Codec<SP> codec();
 
-   @Override
-   protected ecv a(dcv $$0, dyr $$1, boolean $$2) {
-      ecv $$3 = super.a($$0, $$1, $$2);
-      $$3.b(ecb.b);
-      $$3.a(ecb.d);
-      return $$3;
-   }
-
-   @Override
-   public eah<?> a() {
-      return eah.e;
-   }
-
-   @Override
-   public String toString() {
-      return "LegacySingle[" + this.c + "]";
+   private static <SP extends eac> ead<SP> a(String $$0, Codec<SP> $$1) {
+      return it.a(kd.R, $$0, () -> $$1);
    }
 }

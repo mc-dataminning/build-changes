@@ -1,83 +1,165 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dcn extends dcm {
-   public static final MapCodec<dcn> h = b(dcn::new);
-   public static final dju i = dae.aE;
-   public static final djr j = dcm.d;
+public class dcn extends cwe {
+   public static final MapCodec<dcn> d = b(dcn::new);
+   public static final dke<dkk> e = djw.ag;
 
    @Override
    public MapCodec<dcn> a() {
-      return h;
+      return d;
    }
 
-   protected dcn(diz.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(i, ic.c).a(j, Boolean.valueOf(true)));
-   }
-
-   @Override
-   public String h() {
-      return this.k().a();
+   protected dcn(djf.d $$0) {
+      super(false, $$0);
+      this.k(this.E.b().a(e, dkk.a).a(c, Boolean.valueOf(false)));
    }
 
    @Override
-   public emf a(dja $$0, cso $$1, hx $$2, elr $$3) {
-      return dfj.h($$0);
-   }
-
-   @Override
-   public boolean a(dja $$0, ctl $$1, hx $$2) {
-      return cwl.cq.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public dja a(dja $$0, ic $$1, dja $$2, ctj $$3, hx $$4, hx $$5) {
-      return cwl.cq.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Nullable
-   @Override
-   public dja a(cpa $$0) {
-      dja $$1 = cwl.cq.a($$0);
-      return $$1 == null ? null : this.o().a(i, $$1.c(i));
-   }
-
-   @Override
-   public void a(dja $$0, cti $$1, hx $$2, aup $$3) {
-      if ($$0.c(j)) {
-         ic $$4 = $$0.c(i).g();
-         double $$5 = 0.27;
-         double $$6 = (double)$$2.u() + 0.5 + ($$3.j() - 0.5) * 0.2 + 0.27 * (double)$$4.j();
-         double $$7 = (double)$$2.v() + 0.7 + ($$3.j() - 0.5) * 0.2 + 0.22;
-         double $$8 = (double)$$2.w() + 0.5 + ($$3.j() - 0.5) * 0.2 + 0.27 * (double)$$4.l();
-         $$1.a(jr.b, $$6, $$7, $$8, 0.0, 0.0, 0.0);
+   protected void a(djg $$0, cto $$1, hx $$2, cwp $$3) {
+      if ($$3.o().m() && new dco($$1, $$2, $$0).b() == 3) {
+         this.a($$1, $$2, $$0, false);
       }
    }
 
    @Override
-   protected boolean a(cti $$0, hx $$1, dja $$2) {
-      ic $$3 = $$2.c(i).g();
-      return $$0.b($$1.a($$3), $$3);
+   public dkj<dkk> c() {
+      return e;
    }
 
    @Override
-   public int a(dja $$0, cso $$1, hx $$2, ic $$3) {
-      return $$0.c(j) && $$0.c(i) != $$3 ? 15 : 0;
+   public djg a(djg $$0, ddb $$1) {
+      dkk $$2 = $$0.c(e);
+
+      return $$0.a(e, switch ($$1) {
+         case c -> {
+            switch ($$2) {
+               case a:
+                  yield dkk.a;
+               case b:
+                  yield dkk.b;
+               case c:
+                  yield dkk.d;
+               case d:
+                  yield dkk.c;
+               case e:
+                  yield dkk.f;
+               case f:
+                  yield dkk.e;
+               case g:
+                  yield dkk.i;
+               case h:
+                  yield dkk.j;
+               case i:
+                  yield dkk.g;
+               case j:
+                  yield dkk.h;
+               default:
+                  throw new IncompatibleClassChangeError();
+            }
+         }
+         case d -> {
+            switch ($$2) {
+               case a:
+                  yield dkk.b;
+               case b:
+                  yield dkk.a;
+               case c:
+                  yield dkk.e;
+               case d:
+                  yield dkk.f;
+               case e:
+                  yield dkk.d;
+               case f:
+                  yield dkk.c;
+               case g:
+                  yield dkk.j;
+               case h:
+                  yield dkk.g;
+               case i:
+                  yield dkk.h;
+               case j:
+                  yield dkk.i;
+               default:
+                  throw new IncompatibleClassChangeError();
+            }
+         }
+         case b -> {
+            switch ($$2) {
+               case a:
+                  yield dkk.b;
+               case b:
+                  yield dkk.a;
+               case c:
+                  yield dkk.f;
+               case d:
+                  yield dkk.e;
+               case e:
+                  yield dkk.c;
+               case f:
+                  yield dkk.d;
+               case g:
+                  yield dkk.h;
+               case h:
+                  yield dkk.i;
+               case i:
+                  yield dkk.j;
+               case j:
+                  yield dkk.g;
+               default:
+                  throw new IncompatibleClassChangeError();
+            }
+         }
+         default -> $$2;
+      });
    }
 
    @Override
-   public dja a(dja $$0, dcv $$1) {
-      return cwl.cq.a($$0, $$1);
+   public djg a(djg $$0, dbl $$1) {
+      dkk $$2 = $$0.c(e);
+      switch ($$1) {
+         case b:
+            switch ($$2) {
+               case e:
+                  return $$0.a(e, dkk.f);
+               case f:
+                  return $$0.a(e, dkk.e);
+               case g:
+                  return $$0.a(e, dkk.j);
+               case h:
+                  return $$0.a(e, dkk.i);
+               case i:
+                  return $$0.a(e, dkk.h);
+               case j:
+                  return $$0.a(e, dkk.g);
+               default:
+                  return super.a($$0, $$1);
+            }
+         case c:
+            switch ($$2) {
+               case c:
+                  return $$0.a(e, dkk.d);
+               case d:
+                  return $$0.a(e, dkk.c);
+               case e:
+               case f:
+               default:
+                  break;
+               case g:
+                  return $$0.a(e, dkk.h);
+               case h:
+                  return $$0.a(e, dkk.g);
+               case i:
+                  return $$0.a(e, dkk.j);
+               case j:
+                  return $$0.a(e, dkk.i);
+            }
+      }
+
+      return super.a($$0, $$1);
    }
 
    @Override
-   public dja a(dja $$0, dbf $$1) {
-      return cwl.cq.a($$0, $$1);
-   }
-
-   @Override
-   protected void a(djb.a<cwj, dja> $$0) {
-      $$0.a(i, j);
+   protected void a(djh.a<cwp, djg> $$0) {
+      $$0.a(e, c);
    }
 }

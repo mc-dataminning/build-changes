@@ -1,71 +1,45 @@
-import javax.annotation.Nullable;
+import java.util.Map;
+import java.util.Optional;
 
 public class cpc {
-   @Nullable
-   private final cfb a;
-   private final bju b;
-   private final eli c;
-   private final cti d;
-   private final cmr e;
+   public static final ahf<cpb> a = a("quartz");
+   public static final ahf<cpb> b = a("iron");
+   public static final ahf<cpb> c = a("netherite");
+   public static final ahf<cpb> d = a("redstone");
+   public static final ahf<cpb> e = a("copper");
+   public static final ahf<cpb> f = a("gold");
+   public static final ahf<cpb> g = a("emerald");
+   public static final ahf<cpb> h = a("diamond");
+   public static final ahf<cpb> i = a("lapis");
+   public static final ahf<cpb> j = a("amethyst");
 
-   public cpc(cfb $$0, bju $$1, eli $$2) {
-      this($$0.dM(), $$0, $$1, $$0.b($$1), $$2);
+   public static void a(pe<cpb> $$0) {
+      a($$0, a, cna.oy, wc.a.a(14931140), 0.1F);
+      a($$0, b, cna.oB, wc.a.a(15527148), 0.2F, Map.of(ckj.c, "iron_darker"));
+      a($$0, c, cna.oG, wc.a.a(6445145), 0.3F, Map.of(ckj.g, "netherite_darker"));
+      a($$0, d, cna.lG, wc.a.a(9901575), 0.4F);
+      a($$0, e, cna.oD, wc.a.a(11823181), 0.5F);
+      a($$0, f, cna.oF, wc.a.a(14594349), 0.6F, Map.of(ckj.d, "gold_darker"));
+      a($$0, g, cna.ow, wc.a.a(1155126), 0.7F);
+      a($$0, h, cna.ov, wc.a.a(7269586), 0.8F, Map.of(ckj.e, "diamond_darker"));
+      a($$0, i, cna.ox, wc.a.a(4288151), 0.9F);
+      a($$0, j, cna.oz, wc.a.a(10116294), 1.0F);
    }
 
-   protected cpc(cti $$0, @Nullable cfb $$1, bju $$2, cmr $$3, eli $$4) {
-      this.a = $$1;
-      this.b = $$2;
-      this.c = $$4;
-      this.e = $$3;
-      this.d = $$0;
+   public static Optional<ih.c<cpb>> a(iu $$0, cmx $$1) {
+      return $$0.d(ke.aI).h().filter($$1x -> $$1.a(((cpb)$$1x.a()).b())).findFirst();
    }
 
-   protected final eli j() {
-      return this.c;
+   private static void a(pe<cpb> $$0, ahf<cpb> $$1, cms $$2, wc $$3, float $$4) {
+      a($$0, $$1, $$2, $$3, $$4, Map.of());
    }
 
-   public hx a() {
-      return this.c.a();
+   private static void a(pe<cpb> $$0, ahf<cpb> $$1, cms $$2, wc $$3, float $$4, Map<ckj, String> $$5) {
+      cpb $$6 = cpb.a($$1.a().a(), $$2, $$4, vf.c(ac.a("trim_material", $$1.a())).c($$3), $$5);
+      $$0.a($$1, $$6);
    }
 
-   public ic k() {
-      return this.c.b();
-   }
-
-   public elm l() {
-      return this.c.e();
-   }
-
-   public boolean m() {
-      return this.c.d();
-   }
-
-   public cmr n() {
-      return this.e;
-   }
-
-   @Nullable
-   public cfb o() {
-      return this.a;
-   }
-
-   public bju p() {
-      return this.b;
-   }
-
-   public cti q() {
-      return this.d;
-   }
-
-   public ic g() {
-      return this.a == null ? ic.c : this.a.cE();
-   }
-
-   public boolean h() {
-      return this.a != null && this.a.fI();
-   }
-
-   public float i() {
-      return this.a == null ? 0.0F : this.a.dC();
+   private static ahf<cpb> a(String $$0) {
+      return ahf.a(ke.aI, new ahg($$0));
    }
 }

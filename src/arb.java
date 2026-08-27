@@ -1,33 +1,52 @@
-import java.nio.charset.StandardCharsets;
+import com.google.gson.JsonObject;
+import com.mojang.authlib.GameProfile;
+import java.util.Date;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-public class arb {
-   public static final int a = 1460;
-   public static final char[] b = new char[]{'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'};
+public class arb extends aqp<GameProfile> {
+   public arb(@Nullable GameProfile $$0) {
+      this($$0, null, null, null, null);
+   }
 
-   public static String a(byte[] $$0, int $$1, int $$2) {
-      int $$3 = $$2 - 1;
-      int $$4 = $$1 > $$3 ? $$3 : $$1;
+   public arb(@Nullable GameProfile $$0, @Nullable Date $$1, @Nullable String $$2, @Nullable Date $$3, @Nullable String $$4) {
+      super($$0, $$1, $$2, $$3, $$4);
+   }
 
-      while (0 != $$0[$$4] && $$4 < $$3) {
-         $$4++;
+   public arb(JsonObject $$0) {
+      super(b($$0), $$0);
+   }
+
+   @Override
+   protected void a(JsonObject $$0) {
+      if (this.g() != null) {
+         $$0.addProperty("uuid", this.g().getId().toString());
+         $$0.addProperty("name", this.g().getName());
+         super.a($$0);
       }
-
-      return new String($$0, $$1, $$4 - $$1, StandardCharsets.UTF_8);
    }
 
-   public static int a(byte[] $$0, int $$1) {
-      return b($$0, $$1, $$0.length);
+   @Override
+   public vf e() {
+      GameProfile $$0 = this.g();
+      return $$0 != null ? vf.b($$0.getName()) : vf.c("commands.banlist.entry.unknown");
    }
 
-   public static int b(byte[] $$0, int $$1, int $$2) {
-      return 0 > $$2 - $$1 - 4 ? 0 : $$0[$$1 + 3] << 24 | ($$0[$$1 + 2] & 0xFF) << 16 | ($$0[$$1 + 1] & 0xFF) << 8 | $$0[$$1] & 0xFF;
-   }
+   @Nullable
+   private static GameProfile b(JsonObject $$0) {
+      if ($$0.has("uuid") && $$0.has("name")) {
+         String $$1 = $$0.get("uuid").getAsString();
 
-   public static int c(byte[] $$0, int $$1, int $$2) {
-      return 0 > $$2 - $$1 - 4 ? 0 : $$0[$$1] << 24 | ($$0[$$1 + 1] & 0xFF) << 16 | ($$0[$$1 + 2] & 0xFF) << 8 | $$0[$$1 + 3] & 0xFF;
-   }
+         UUID $$2;
+         try {
+            $$2 = UUID.fromString($$1);
+         } catch (Throwable var4) {
+            return null;
+         }
 
-   public static String a(byte $$0) {
-      return "" + b[($$0 & 240) >>> 4] + b[$$0 & 15];
+         return new GameProfile($$2, $$0.get("name").getAsString());
+      } else {
+         return null;
+      }
    }
 }

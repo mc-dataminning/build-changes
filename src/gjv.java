@@ -1,25 +1,37 @@
-public interface gjv {
-   default void b() {
+import java.time.Duration;
+import java.time.Instant;
+import java.util.Optional;
+
+public class gjv {
+   private static final int a = -1;
+   private Optional<Instant> b = Optional.empty();
+   private long c;
+   private long d;
+
+   public void a() {
+      this.d = -1L;
+      if (this.b.isEmpty()) {
+         this.b = Optional.of(Instant.now());
+      }
    }
 
-   default void a() {
+   public void a(long $$0) {
+      if (this.d != -1L) {
+         this.c = this.c + Math.max(0L, $$0 - this.d);
+      }
+
+      this.d = $$0;
    }
 
-   default void a(frz $$0) {
+   private int a(Instant $$0) {
+      Duration $$1 = Duration.between($$0, Instant.now());
+      return (int)$$1.toSeconds();
    }
 
-   default void a(double $$0, double $$1) {
-   }
-
-   default void a(fnk $$0, elk $$1) {
-   }
-
-   default void a(fnk $$0, hx $$1, dja $$2, float $$3) {
-   }
-
-   default void c() {
-   }
-
-   default void a(cmr $$0) {
+   public void a(gjk $$0) {
+      this.b.ifPresent($$1 -> $$0.send(gjl.e, $$1x -> {
+            $$1x.a(gjn.p, this.a($$1));
+            $$1x.a(gjn.q, (int)this.c);
+         }));
    }
 }

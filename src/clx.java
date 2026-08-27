@@ -1,36 +1,25 @@
-public class clx extends cmm implements col {
-   public clx(cmm.a $$0) {
+public class clx extends cms {
+   public clx(cms.a $$0) {
       super($$0);
    }
 
    @Override
-   public bjw<cmr> a(cti $$0, cfb $$1, bju $$2) {
-      cmr $$3 = $$1.b($$2);
-      if ($$1.ck != null) {
-         if (!$$0.B) {
-            int $$4 = $$1.ck.a($$3);
-            $$3.a($$4, $$1, $$1x -> $$1x.d($$2));
-         }
-
-         $$0.a(null, $$1.dr(), $$1.dt(), $$1.dx(), arm.is, arn.g, 1.0F, 0.4F / ($$0.F_().i() * 0.4F + 0.8F));
-         $$1.a(dnk.C);
-      } else {
-         $$0.a(null, $$1.dr(), $$1.dt(), $$1.dx(), arm.iu, arn.g, 0.5F, 0.4F / ($$0.F_().i() * 0.4F + 0.8F));
-         if (!$$0.B) {
-            int $$5 = cre.c($$3);
-            int $$6 = cre.b($$3);
-            $$0.b(new cfp($$1, $$0, $$6, $$5));
-         }
-
-         $$1.b(arw.c.b(this));
-         $$1.a(dnk.D);
+   public bkb<cmx> a(cto $$0, cfh $$1, bjz $$2) {
+      cmx $$3 = $$1.b($$2);
+      $$0.a(null, $$1.dr(), $$1.dt(), $$1.dx(), arr.hP, ars.g, 0.5F, 0.4F / ($$0.F_().i() * 0.4F + 0.8F));
+      $$1.gn().a(this, 20);
+      if (!$$0.B) {
+         cgi $$4 = new cgi($$0, $$1);
+         $$4.a($$3);
+         $$4.a($$1, $$1.dE(), $$1.dC(), 0.0F, 1.5F, 1.0F);
+         $$0.b($$4);
       }
 
-      return bjw.a($$3, $$0.y_());
-   }
+      $$1.b(asb.c.b(this));
+      if (!$$1.fT().d) {
+         $$3.h(1);
+      }
 
-   @Override
-   public int c() {
-      return 1;
+      return bkb.a($$3, $$0.y_());
    }
 }

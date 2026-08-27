@@ -1,18 +1,19 @@
-public record yj(hx b, int c) implements xx {
-   public static final ahd a = new ahd("debug/poi_ticket_count");
+public record yj(int b, eff c, float d) implements ya {
+   public static final ahg a = new ahg("debug/path");
 
-   public yj(ug $$0) {
-      this($$0.e(), $$0.readInt());
+   public yj(ui $$0) {
+      this($$0.readInt(), eff.b($$0), $$0.readFloat());
    }
 
    @Override
-   public void a(ug $$0) {
-      $$0.a(this.b);
-      $$0.p(this.c);
+   public void a(ui $$0) {
+      $$0.p(this.b);
+      this.c.a($$0);
+      $$0.a(this.d);
    }
 
    @Override
-   public ahd a() {
+   public ahg a() {
       return a;
    }
 }

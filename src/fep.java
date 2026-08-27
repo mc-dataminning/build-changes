@@ -1,30 +1,26 @@
-import org.joml.Vector3f;
+public class fep extends fdy<cit> {
+   private static final ahg x = new ahg("textures/gui/container/dispenser.png");
 
-public class fep extends fdu {
-   public static final float b = 4.5F;
-   private static final Vector3f c = new Vector3f(1.0F, 1.0F, 1.0F);
-   private static final int k = 16;
-   private static final int l = 16;
-   private final ahd m = new ahd("textures/gui/hanging_signs/" + this.a.b() + ".png");
-
-   public fep(dhx $$0, boolean $$1, boolean $$2) {
-      super($$0, $$1, $$2, vd.c("hanging_sign.edit"));
+   public fep(cit $$0, cfg $$1, vf $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   protected void b(ewm $$0, dja $$1) {
-      $$0.c().a((float)this.g / 2.0F, 125.0F, 50.0F);
+   protected void aN_() {
+      super.aN_();
+      this.l = (this.c - this.i.a(this.e)) / 2;
    }
 
    @Override
-   protected void a(ewm $$0, dja $$1) {
-      $$0.c().a(0.0F, -13.0F, 0.0F);
-      $$0.c().b(4.5F, 4.5F, 1.0F);
-      $$0.a(this.m, -8, -8, 0.0F, 0.0F, 16, 16, 16, 16);
+   public void a(ews $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.a($$0, $$1, $$2);
    }
 
    @Override
-   protected Vector3f n() {
-      return c;
+   protected void a(ews $$0, float $$1, int $$2, int $$3) {
+      int $$4 = (this.g - this.c) / 2;
+      int $$5 = (this.h - this.k) / 2;
+      $$0.a(x, $$4, $$5, 0, 0, this.c, this.k);
    }
 }

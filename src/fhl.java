@@ -1,136 +1,144 @@
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import org.apache.commons.io.FileUtils;
-import org.slf4j.Logger;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.function.DoubleConsumer;
+import javax.annotation.Nullable;
 
-public class fhl extends fct {
-   private static final Logger a = LogUtils.getLogger();
-   private static final vd b = vd.c("selectWorld.enterName").a(n.h);
-   private static final vd c = vd.c("selectWorld.edit.resetIcon");
-   private static final vd k = vd.c("selectWorld.edit.openFolder");
-   private static final vd l = vd.c("selectWorld.edit.backup");
-   private static final vd m = vd.c("selectWorld.edit.backupFolder");
-   private static final vd n = vd.c("selectWorld.edit.optimize");
-   private static final vd o = vd.c("optimizeWorld.confirm.title");
-   private static final vd p = vd.c("optimizeWorld.confirm.description");
-   private static final vd q = vd.c("selectWorld.edit.save");
-   private static final int r = 200;
-   private static final int t = 4;
-   private static final int u = 98;
-   private final fam v = fam.d().a(5);
-   private final BooleanConsumer w;
-   private final egf.c x;
+public class fhl extends ewy {
+   private static final int a = 32;
+   private static final String b = "telemetry.event.required";
+   private static final String c = "telemetry.event.optional";
+   private static final String d = "telemetry.event.optional.disabled";
+   private static final vf e = vf.c("telemetry_info.property_title").a(n.t);
+   private final ewq f;
+   private fhl.a m;
+   @Nullable
+   private DoubleConsumer n;
 
-   public static fhl a(eva $$0, egf.c $$1, BooleanConsumer $$2) throws IOException {
-      egg $$3 = $$1.a($$1.f());
-      return new fhl($$0, $$1, $$3.b(), $$2);
+   public fhl(int $$0, int $$1, int $$2, int $$3, ewq $$4) {
+      super($$0, $$1, $$2, $$3, vf.i());
+      this.f = $$4;
+      this.m = this.c(evg.O().A());
    }
 
-   private fhl(eva $$0, egf.c $$1, String $$2, BooleanConsumer $$3) {
-      super(vd.c("selectWorld.edit.title"));
-      this.w = $$3;
-      this.x = $$1;
-      ewk $$4 = $$0.h;
-      this.v.a(new fan(200, 20));
-      this.v.a(new eyf(b, $$4));
-      exh $$5 = this.v.a(new exh($$4, 200, 20, b));
-      $$5.a($$2);
-      fam $$6 = fam.e().a(4);
-      ewy $$7 = $$6.a(ewy.a(q, $$1x -> this.a($$5.a())).a(98).a());
-      $$6.a(ewy.a(vc.e, $$0x -> this.aE_()).a(98).a());
-      $$5.b($$1x -> $$7.j = !ac.b($$1x));
-      this.v.a(ewy.a(c, $$1x -> {
-         $$1.h().ifPresent($$0xx -> FileUtils.deleteQuietly($$0xx.toFile()));
-         $$1x.j = false;
-      }).a(200).a()).j = $$1.h().filter($$0x -> Files.isRegularFile($$0x)).isPresent();
-      this.v.a(ewy.a(k, $$1x -> ac.i().a($$1.a(egd.l).toFile())).a(200).a());
-      this.v.a(ewy.a(l, $$1x -> {
-         boolean $$2x = a($$1);
-         this.w.accept(!$$2x);
-      }).a(200).a());
-      this.v.a(ewy.a(m, $$1x -> {
-         egf $$2x = $$0.l();
-         Path $$3x = $$2x.d();
+   public void b(boolean $$0) {
+      this.m = this.c($$0);
+      this.a(this.c());
+   }
 
-         try {
-            v.c($$3x);
-         } catch (IOException var5x) {
-            throw new RuntimeException(var5x);
+   private fhl.a c(boolean $$0) {
+      fhl.b $$1 = new fhl.b(this.j());
+      List<gjl> $$2 = new ArrayList<>(gjl.g());
+      $$2.sort(Comparator.comparing(gjl::d));
+
+      for (int $$3 = 0; $$3 < $$2.size(); $$3++) {
+         gjl $$4 = $$2.get($$3);
+         boolean $$5 = $$4.d() && !$$0;
+         this.a($$1, $$4, $$5);
+         if ($$3 < $$2.size() - 1) {
+            $$1.a(9);
          }
-
-         ac.i().a($$3x.toFile());
-      }).a(200).a());
-      this.v.a(ewy.a(n, $$2x -> $$0.a(new fbh(() -> $$0.a(this), ($$2xx, $$3x) -> {
-            if ($$2xx) {
-               a($$1);
-            }
-
-            $$0.a(fhn.a($$0, this.w, $$0.aq(), $$1, $$3x));
-         }, o, p, true))).a(200).a());
-      this.v.a(new fan(200, 20));
-      this.v.a($$6);
-      this.c($$5);
-      this.v.a($$1x -> {
-         eww var10000 = this.d($$1x);
-      });
-   }
-
-   @Override
-   protected void aN_() {
-      this.c();
-   }
-
-   @Override
-   protected void c() {
-      this.v.a();
-      fag.a(this.v, this.F());
-   }
-
-   @Override
-   public void aE_() {
-      this.w.accept(false);
-   }
-
-   private void a(String $$0) {
-      try {
-         this.x.a($$0);
-      } catch (sw | tc | IOException var3) {
-         a.error("Failed to access world '{}'", this.x.d(), var3);
-         ezf.a(this.f, this.x.d());
       }
 
-      this.w.accept(true);
+      return $$1.a();
    }
 
-   public static boolean a(egf.c $$0) {
-      long $$1 = 0L;
-      IOException $$2 = null;
+   public void a(@Nullable DoubleConsumer $$0) {
+      this.n = $$0;
+   }
 
-      try {
-         $$1 = $$0.j();
-      } catch (IOException var6) {
-         $$2 = var6;
-      }
-
-      if ($$2 != null) {
-         vd $$4 = vd.c("selectWorld.edit.backupFailed");
-         vd $$5 = vd.b($$2.getMessage());
-         eva.N().ax().a(new ezf(ezf.a.c, $$4, $$5));
-         return false;
-      } else {
-         vd $$6 = vd.a("selectWorld.edit.backupCreated", $$0.d());
-         vd $$7 = vd.a("selectWorld.edit.backupSize", aui.c((double)$$1 / 1048576.0));
-         eva.N().ax().a(new ezf(ezf.a.c, $$6, $$7));
-         return true;
+   @Override
+   protected void a(double $$0) {
+      super.a($$0);
+      if (this.n != null) {
+         this.n.accept(this.c());
       }
    }
 
    @Override
-   public void a(ewm $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 15, 16777215);
+   protected int g() {
+      return this.m.a().u();
+   }
+
+   @Override
+   protected double i() {
+      return 9.0;
+   }
+
+   @Override
+   protected void c(ews $$0, int $$1, int $$2, float $$3) {
+      int $$4 = this.C() + this.a();
+      int $$5 = this.B() + this.a();
+      $$0.c().a();
+      $$0.c().a((double)$$5, (double)$$4, 0.0);
+      this.m.a().a($$4x -> $$4x.a($$0, $$1, $$2, $$3));
+      $$0.c().b();
+   }
+
+   @Override
+   protected void a(fax $$0) {
+      $$0.a(faw.a, this.m.b());
+   }
+
+   private vf a(vf $$0, boolean $$1) {
+      return (vf)($$1 ? $$0.f().a(n.h) : $$0);
+   }
+
+   private void a(fhl.b $$0, gjl $$1, boolean $$2) {
+      String $$3 = $$1.d() ? ($$2 ? "telemetry.event.optional.disabled" : "telemetry.event.optional") : "telemetry.event.required";
+      $$0.b(this.f, this.a(vf.a($$3, $$1.e()), $$2));
+      $$0.b(this.f, $$1.f().a(n.h));
+      $$0.a(9 / 2);
+      $$0.a(this.f, this.a(e, $$2), 2);
+      this.a($$1, $$0, $$2);
+   }
+
+   private void a(gjl $$0, fhl.b $$1, boolean $$2) {
+      for (gjn<?> $$3 : $$0.b()) {
+         $$1.a(this.f, this.a($$3.a(), $$2));
+      }
+   }
+
+   private int j() {
+      return this.g - this.b();
+   }
+
+   static record a(fap a, vf b) {
+   }
+
+   static class b {
+      private final int a;
+      private final fas b;
+      private final vt c = vf.i();
+
+      public b(int $$0) {
+         this.a = $$0;
+         this.b = fas.d();
+         this.b.c().a();
+         this.b.a(fat.a($$0));
+      }
+
+      public void a(ewq $$0, vf $$1) {
+         this.a($$0, $$1, 0);
+      }
+
+      public void a(ewq $$0, vf $$1, int $$2) {
+         this.b.a(new exy($$1, $$0).c(this.a), $$1x -> $$1x.e($$2));
+         this.c.b($$1).f("\n");
+      }
+
+      public void b(ewq $$0, vf $$1) {
+         this.b.a(new exy($$1, $$0).c(this.a - 64).b(true), $$0x -> $$0x.b().f(32));
+         this.c.b($$1).f("\n");
+      }
+
+      public void a(int $$0) {
+         this.b.a(fat.b($$0));
+      }
+
+      public fhl.a a() {
+         this.b.a();
+         return new fhl.a(this.b, this.c);
+      }
    }
 }

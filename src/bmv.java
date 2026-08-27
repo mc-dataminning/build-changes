@@ -1,13 +1,13 @@
-import javax.annotation.Nullable;
+public interface bmv extends bmu {
+   void b(int var1);
 
-public interface bmv {
-   boolean g();
+   boolean a();
 
-   void a(@Nullable arn var1);
+   void c(int var1);
 
-   default arl Z_() {
-      return arm.mc;
+   void b();
+
+   default int ad_() {
+      return 0;
    }
-
-   boolean i();
 }

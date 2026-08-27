@@ -1,125 +1,96 @@
-import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.util.Pair;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import java.util.HashSet;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import java.util.Map;
+import java.util.UUID;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.mutable.MutableLong;
 
 public class bnp {
-   public static final int a = 48;
+   private final Map<bnl, bnm> a;
 
-   public static bnx<bmo> a(Predicate<ih<bxj>> $$0, bvh<ig> $$1, boolean $$2, Optional<Byte> $$3) {
-      return a($$0, $$1, $$1, $$2, $$3);
+   public bnp(Map<bnl, bnm> $$0) {
+      this.a = ImmutableMap.copyOf($$0);
    }
 
-   public static bnx<bmo> a(Predicate<ih<bxj>> $$0, bvh<ig> $$1, bvh<ig> $$2, boolean $$3, Optional<Byte> $$4) {
-      int $$5 = 5;
-      int $$6 = 20;
-      MutableLong $$7 = new MutableLong(0L);
-      Long2ObjectMap<bnp.a> $$8 = new Long2ObjectOpenHashMap();
-      bph<bmo> $$9 = brj.a(
-         (Function<brj.b<bmo>, ? extends App<brj.c<bmo>, brm<bmo>>>)($$6x -> $$6x.group($$6x.c($$2)).apply($$6x, $$5xx -> ($$6xx, $$7x, $$8x) -> {
-                  if ($$3 && $$7x.o_()) {
-                     return false;
-                  } else if ($$7.getValue() == 0L) {
-                     $$7.setValue($$6xx.X() + (long)$$6xx.z.a(20));
-                     return false;
-                  } else if ($$6xx.X() < $$7.getValue()) {
-                     return false;
-                  } else {
-                     $$7.setValue($$8x + 20L + (long)$$6xx.F_().a(20));
-                     bxg $$9x = $$6xx.y();
-                     $$8.long2ObjectEntrySet().removeIf($$1xxxx -> !((bnp.a)$$1xxxx.getValue()).b($$8x));
-                     Predicate<hx> $$10 = $$2xxxx -> {
-                        bnp.a $$3xxxx = (bnp.a)$$8.get($$2xxxx.a());
-                        if ($$3xxxx == null) {
-                           return true;
-                        } else if (!$$3xxxx.c($$8x)) {
-                           return false;
-                        } else {
-                           $$3xxxx.a($$8x);
-                           return true;
-                        }
-                     };
-                     Set<Pair<ih<bxj>, hx>> $$11 = $$9x.c($$0, $$10, $$7x.dm(), 48, bxg.b.a).limit(5L).collect(Collectors.toSet());
-                     eez $$12 = a($$7x, $$11);
-                     if ($$12 != null && $$12.j()) {
-                        hx $$13 = $$12.l();
-                        $$9x.c($$13).ifPresent($$8xx -> {
-                           $$9x.a($$0, ($$1xxxxx, $$2xxxxx) -> $$2xxxxx.equals($$13), $$13, 1);
-                           $$5xx.a(ig.a($$6xx.ae(), $$13));
-                           $$4.ifPresent($$2xxxxx -> $$6xx.a($$7x, $$2xxxxx));
-                           $$8.clear();
-                           adf.c($$6xx, $$13);
-                        });
-                     } else {
-                        for (Pair<ih<bxj>, hx> $$14 : $$11) {
-                           $$8.computeIfAbsent(((hx)$$14.getSecond()).a(), $$2xxxx -> new bnp.a($$6xx.z, $$8x));
-                        }
-                     }
+   private bnm d(bnl $$0) {
+      bnm $$1 = this.a.get($$0);
+      if ($$1 == null) {
+         throw new IllegalArgumentException("Can't find attribute " + kd.u.b($$0));
+      } else {
+         return $$1;
+      }
+   }
 
-                     return true;
-                  }
-               }))
-      );
-      return $$2 == $$1 ? $$9 : brj.a((Function<brj.b<bmo>, ? extends App<brj.c<bmo>, brm<bmo>>>)($$2x -> $$2x.group($$2x.c($$1)).apply($$2x, $$1xx -> $$9)));
+   public double a(bnl $$0) {
+      return this.d($$0).f();
+   }
+
+   public double b(bnl $$0) {
+      return this.d($$0).b();
+   }
+
+   public double a(bnl $$0, UUID $$1) {
+      bno $$2 = this.d($$0).a($$1);
+      if ($$2 == null) {
+         throw new IllegalArgumentException("Can't find modifier " + $$1 + " on attribute " + kd.u.b($$0));
+      } else {
+         return $$2.c();
+      }
    }
 
    @Nullable
-   public static eez a(bmh $$0, Set<Pair<ih<bxj>, hx>> $$1) {
-      if ($$1.isEmpty()) {
+   public bnm a(Consumer<bnm> $$0, bnl $$1) {
+      bnm $$2 = this.a.get($$1);
+      if ($$2 == null) {
          return null;
       } else {
-         Set<hx> $$2 = new HashSet<>();
-         int $$3 = 1;
-
-         for (Pair<ih<bxj>, hx> $$4 : $$1) {
-            $$3 = Math.max($$3, ((bxj)((ih)$$4.getFirst()).a()).c());
-            $$2.add((hx)$$4.getSecond());
-         }
-
-         return $$0.N().a($$2, $$3);
+         bnm $$3 = new bnm($$1, $$0);
+         $$3.a($$2);
+         return $$3;
       }
    }
 
-   static class a {
-      private static final int a = 40;
-      private static final int b = 80;
-      private static final int c = 400;
-      private final aup d;
-      private long e;
-      private long f;
-      private int g;
+   public static bnp.a a() {
+      return new bnp.a();
+   }
 
-      a(aup $$0, long $$1) {
-         this.d = $$0;
-         this.a($$1);
+   public boolean c(bnl $$0) {
+      return this.a.containsKey($$0);
+   }
+
+   public boolean b(bnl $$0, UUID $$1) {
+      bnm $$2 = this.a.get($$0);
+      return $$2 != null && $$2.a($$1) != null;
+   }
+
+   public static class a {
+      private final Map<bnl, bnm> a = Maps.newHashMap();
+      private boolean b;
+
+      private bnm b(bnl $$0) {
+         bnm $$1 = new bnm($$0, $$1x -> {
+            if (this.b) {
+               throw new UnsupportedOperationException("Tried to change value for default attribute instance: " + kd.u.b($$0));
+            }
+         });
+         this.a.put($$0, $$1);
+         return $$1;
       }
 
-      public void a(long $$0) {
-         this.e = $$0;
-         int $$1 = this.g + this.d.a(40) + 40;
-         this.g = Math.min($$1, 400);
-         this.f = $$0 + (long)this.g;
+      public bnp.a a(bnl $$0) {
+         this.b($$0);
+         return this;
       }
 
-      public boolean b(long $$0) {
-         return $$0 - this.e < 400L;
+      public bnp.a a(bnl $$0, double $$1) {
+         bnm $$2 = this.b($$0);
+         $$2.a($$1);
+         return this;
       }
 
-      public boolean c(long $$0) {
-         return $$0 >= this.f;
-      }
-
-      @Override
-      public String toString() {
-         return "RetryMarker{, previousAttemptAt=" + this.e + ", nextScheduledAttemptAt=" + this.f + ", currentDelay=" + this.g + "}";
+      public bnp a() {
+         this.b = true;
+         return new bnp(this.a);
       }
    }
 }

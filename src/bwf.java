@@ -1,29 +1,43 @@
 import com.google.common.collect.ImmutableSet;
-import java.util.Comparator;
+import com.google.common.collect.Lists;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
-public class bwf<T extends bmf> extends bwm<T> {
+public class bwf extends bwr<cdr> {
    @Override
-   protected void a(amz $$0, T $$1) {
-      elh $$2 = $$1.cH().c((double)this.b(), (double)this.c(), (double)this.b());
-      List<bmf> $$3 = $$0.a(bmf.class, $$2, $$1x -> $$1x != $$1 && $$1x.bx());
-      $$3.sort(Comparator.comparingDouble($$1::f));
-      bnf<?> $$4 = $$1.dO();
-      $$4.a(bvh.g, $$3);
-      $$4.a(bvh.h, new bvj($$1, $$3));
+   public Set<bvm<?>> a() {
+      return ImmutableSet.of(bvm.h, bvm.av, bvm.ap, bvm.ao, bvm.ar, bvm.as, new bvm[0]);
    }
 
-   protected int b() {
-      return 16;
+   protected void a(and $$0, cdr $$1) {
+      bnk<?> $$2 = $$1.dO();
+      $$2.a(bvm.av, this.b($$0, $$1));
+      Optional<cdx> $$3 = Optional.empty();
+      int $$4 = 0;
+      List<cdr> $$5 = Lists.newArrayList();
+      bvo $$6 = $$2.c(bvm.h).orElse(bvo.a());
+
+      for (bmk $$7 : $$6.b($$0x -> !$$0x.o_() && ($$0x instanceof cdx || $$0x instanceof cdr))) {
+         if ($$7 instanceof cdx $$8) {
+            $$4++;
+            if ($$3.isEmpty()) {
+               $$3 = Optional.of($$8);
+            }
+         }
+
+         if ($$7 instanceof cdr $$9) {
+            $$5.add($$9);
+         }
+      }
+
+      $$2.a(bvm.ap, $$3);
+      $$2.a(bvm.ao, $$5);
+      $$2.a(bvm.ar, $$4);
+      $$2.a(bvm.as, $$5.size());
    }
 
-   protected int c() {
-      return 16;
-   }
-
-   @Override
-   public Set<bvh<?>> a() {
-      return ImmutableSet.of(bvh.g, bvh.h);
+   private Optional<hx> b(and $$0, cdr $$1) {
+      return hx.a($$1.dm(), 8, 4, $$1x -> $$0.a_($$1x).a(asg.aR));
    }
 }

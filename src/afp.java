@@ -1,14 +1,42 @@
-public interface afp extends adh {
-   @Override
-   default uf b() {
-      return uf.d;
+import java.security.PublicKey;
+
+public class afp implements xf<afm> {
+   private final String a;
+   private final byte[] b;
+   private final byte[] c;
+
+   public afp(String $$0, byte[] $$1, byte[] $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   void a(afr var1);
+   public afp(ui $$0) {
+      this.a = $$0.d(20);
+      this.b = $$0.b();
+      this.c = $$0.b();
+   }
 
-   void a(afs var1);
+   @Override
+   public void a(ui $$0) {
+      $$0.a(this.a);
+      $$0.a(this.b);
+      $$0.a(this.c);
+   }
 
-   void a(afq var1);
+   public void a(afm $$0) {
+      $$0.a(this);
+   }
 
-   void a(aft var1);
+   public String a() {
+      return this.a;
+   }
+
+   public PublicKey d() throws atm {
+      return atl.a(this.b);
+   }
+
+   public byte[] e() {
+      return this.c;
+   }
 }

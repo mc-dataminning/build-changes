@@ -1,44 +1,33 @@
+import com.mojang.util.UndashedUuid;
+import java.util.UUID;
+
 public class atj {
-   private static final int a = 2;
-   private static final int b = 6;
-   private static final double[] c = new double[]{0.0, 1.0, 4.0, 6.0, 4.0, 1.0, 0.0};
+   public static final String a = "https://aka.ms/MinecraftGDPR";
+   public static final String b = "https://aka.ms/MinecraftEULA";
+   public static final String c = "http://go.microsoft.com/fwlink/?LinkId=521839";
+   public static final String d = "https://aka.ms/MinecraftJavaAttribution";
+   public static final String e = "https://aka.ms/MinecraftJavaLicenses";
+   public static final String f = "https://aka.ms/BuyMinecraftJava";
+   public static final String g = "https://aka.ms/JavaAccountSettings";
+   public static final String h = "https://aka.ms/snapshotfeedback?ref=game";
+   public static final String i = "https://aka.ms/javafeedback?ref=game";
+   public static final String j = "https://aka.ms/snapshotbugs?ref=game";
+   public static final String k = "https://aka.ms/Minecraft-Support";
+   public static final String l = "https://aka.ms/MinecraftJavaAccessibility";
+   public static final String m = "https://aka.ms/aboutjavareporting";
+   public static final String n = "https://aka.ms/mcjavamoderation";
+   public static final String o = "https://aka.ms/javablocking";
+   public static final String p = "https://aka.ms/MinecraftSymLinks";
+   public static final String q = "https://aka.ms/startjavarealmstrial";
+   public static final String r = "https://aka.ms/BuyJavaRealms";
+   public static final String s = "https://aka.ms/MinecraftRealmsTerms";
+   public static final String t = "https://aka.ms/MinecraftRealmsContentCreator";
 
-   private atj() {
+   public static String a(String $$0, UUID $$1, boolean $$2) {
+      return a($$0, $$1) + "&ref=" + ($$2 ? "expiredTrial" : "expiredRealm");
    }
 
-   public static elm a(elm $$0, atj.a $$1) {
-      int $$2 = aui.a($$0.a());
-      int $$3 = aui.a($$0.b());
-      int $$4 = aui.a($$0.c());
-      double $$5 = $$0.a() - (double)$$2;
-      double $$6 = $$0.b() - (double)$$3;
-      double $$7 = $$0.c() - (double)$$4;
-      double $$8 = 0.0;
-      elm $$9 = elm.b;
-
-      for (int $$10 = 0; $$10 < 6; $$10++) {
-         double $$11 = aui.d($$5, c[$$10 + 1], c[$$10]);
-         int $$12 = $$2 - 2 + $$10;
-
-         for (int $$13 = 0; $$13 < 6; $$13++) {
-            double $$14 = aui.d($$6, c[$$13 + 1], c[$$13]);
-            int $$15 = $$3 - 2 + $$13;
-
-            for (int $$16 = 0; $$16 < 6; $$16++) {
-               double $$17 = aui.d($$7, c[$$16 + 1], c[$$16]);
-               int $$18 = $$4 - 2 + $$16;
-               double $$19 = $$11 * $$14 * $$17;
-               $$8 += $$19;
-               $$9 = $$9.e($$1.fetch($$12, $$15, $$18).a($$19));
-            }
-         }
-      }
-
-      return $$9.a(1.0 / $$8);
-   }
-
-   @FunctionalInterface
-   public interface a {
-      elm fetch(int var1, int var2, int var3);
+   public static String a(String $$0, UUID $$1) {
+      return "https://aka.ms/ExtendJavaRealms?subscriptionId=" + $$0 + "&profileId=" + UndashedUuid.toString($$1);
    }
 }

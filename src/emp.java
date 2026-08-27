@@ -1,53 +1,34 @@
-import com.mojang.authlib.GameProfile;
+import java.util.Objects;
 import javax.annotation.Nullable;
 
-public interface emp {
-   String a_ = "*";
-   emp cv = new emp() {
-      @Override
-      public String cy() {
-         return "*";
-      }
-   };
+public record emp(String a, int b, @Nullable vf c, @Nullable wv d) {
+   public boolean a() {
+      return this.a.startsWith("#");
+   }
 
-   String cy();
+   public vf b() {
+      return (vf)(this.c != null ? this.c : vf.b(this.c()));
+   }
+
+   public vt a(wv $$0) {
+      return Objects.requireNonNullElse(this.d, $$0).a(this.b);
+   }
+
+   public String c() {
+      return this.a;
+   }
+
+   public int d() {
+      return this.b;
+   }
 
    @Nullable
-   default vd Q_() {
-      return null;
+   public vf e() {
+      return this.c;
    }
 
-   default vd gU() {
-      vd $$0 = this.Q_();
-      return $$0 != null ? $$0.f().a($$0x -> $$0x.a(new vj(vj.a.a, vd.b(this.cy())))) : vd.b(this.cy());
-   }
-
-   static emp d(final String $$0) {
-      if ($$0.equals("*")) {
-         return cv;
-      } else {
-         final vd $$1 = vd.b($$0);
-         return new emp() {
-            @Override
-            public String cy() {
-               return $$0;
-            }
-
-            @Override
-            public vd gU() {
-               return $$1;
-            }
-         };
-      }
-   }
-
-   static emp a(GameProfile $$0) {
-      final String $$1 = $$0.getName();
-      return new emp() {
-         @Override
-         public String cy() {
-            return $$1;
-         }
-      };
+   @Nullable
+   public wv f() {
+      return this.d;
    }
 }

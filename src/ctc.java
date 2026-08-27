@@ -1,31 +1,27 @@
+import com.google.common.collect.ImmutableList;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+
 public class ctc {
-   private static int[] a = new int[65536];
+   public static final ctc a = new ctc(ImmutableList.of("vanilla"), ImmutableList.of());
+   public static final Codec<ctc> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.STRING.listOf().fieldOf("Enabled").forGetter($$0x -> $$0x.c), Codec.STRING.listOf().fieldOf("Disabled").forGetter($$0x -> $$0x.d))
+            .apply($$0, ctc::new)
+   );
+   private final List<String> c;
+   private final List<String> d;
 
-   public static void a(int[] $$0) {
-      a = $$0;
+   public ctc(List<String> $$0, List<String> $$1) {
+      this.c = ImmutableList.copyOf($$0);
+      this.d = ImmutableList.copyOf($$1);
    }
 
-   public static int a(double $$0, double $$1) {
-      $$1 *= $$0;
-      int $$2 = (int)((1.0 - $$0) * 255.0);
-      int $$3 = (int)((1.0 - $$1) * 255.0);
-      int $$4 = $$3 << 8 | $$2;
-      return $$4 >= a.length ? c() : a[$$4];
+   public List<String> a() {
+      return this.c;
    }
 
-   public static int a() {
-      return 6396257;
-   }
-
-   public static int b() {
-      return 8431445;
-   }
-
-   public static int c() {
-      return 4764952;
-   }
-
-   public static int d() {
-      return 9619016;
+   public List<String> b() {
+      return this.d;
    }
 }

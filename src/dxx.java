@@ -1,65 +1,26 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.stream.Stream;
 
-public class dxx extends dyg {
-   private final ic c;
-   private final dpq d;
-   private final dpq e;
-   private final int f;
-   public static final Codec<dxx> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ic.h.fieldOf("direction_of_search").forGetter($$0x -> $$0x.c),
-               dpq.b.fieldOf("target_condition").forGetter($$0x -> $$0x.d),
-               dpq.b.optionalFieldOf("allowed_search_condition", dpq.e()).forGetter($$0x -> $$0x.e),
-               Codec.intRange(1, 32).fieldOf("max_steps").forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, dxx::new)
-   );
+public class dxx extends dyl {
+   private static final dxx c = new dxx();
+   public static Codec<dxx> a = Codec.unit(() -> c);
 
-   private dxx(ic $$0, dpq $$1, dpq $$2, int $$3) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
+   private dxx() {
    }
 
-   public static dxx a(ic $$0, dpq $$1, dpq $$2, int $$3) {
-      return new dxx($$0, $$1, $$2, $$3);
-   }
-
-   public static dxx a(ic $$0, dpq $$1, int $$2) {
-      return a($$0, $$1, dpq.e(), $$2);
+   public static dxx a() {
+      return c;
    }
 
    @Override
-   public Stream<hx> a_(dye $$0, aup $$1, hx $$2) {
-      hx.a $$3 = $$2.j();
-      cud $$4 = $$0.d();
-      if (!this.e.test($$4, $$3)) {
-         return Stream.of();
-      } else {
-         for (int $$5 = 0; $$5 < this.f; $$5++) {
-            if (this.d.test($$4, $$3)) {
-               return Stream.of($$3);
-            }
-
-            $$3.c(this.c);
-            if ($$4.d($$3.v())) {
-               return Stream.of();
-            }
-
-            if (!this.e.test($$4, $$3)) {
-               break;
-            }
-         }
-
-         return this.d.test($$4, $$3) ? Stream.of($$3) : Stream.of();
-      }
+   protected boolean a(dyk $$0, auu $$1, hx $$2) {
+      dyj $$3 = $$0.e()
+         .orElseThrow(() -> new IllegalStateException("Tried to biome check an unregistered feature, or a feature that should not restrict the biome"));
+      ih<cun> $$4 = $$0.d().t($$2);
+      return $$0.f().a($$4).a($$3);
    }
 
    @Override
-   public dyh<?> b() {
-      return dyh.j;
+   public dyn<?> b() {
+      return dyn.e;
    }
 }

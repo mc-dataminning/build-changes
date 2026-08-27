@@ -10,48 +10,48 @@ import javax.annotation.Nullable;
 
 public class ge {
    public static final int a = Integer.MAX_VALUE;
-   public static final BiConsumer<elm, List<? extends blp>> b = ($$0, $$1) -> {
+   public static final BiConsumer<els, List<? extends blu>> b = ($$0, $$1) -> {
    };
-   private static final dmy<blp, ?> c = new dmy<blp, blp>() {
-      public blp a(blp $$0) {
+   private static final dne<blu, ?> c = new dne<blu, blu>() {
+      public blu a(blu $$0) {
          return $$0;
       }
 
       @Override
-      public Class<? extends blp> a() {
-         return blp.class;
+      public Class<? extends blu> a() {
+         return blu.class;
       }
    };
    private final int d;
    private final boolean e;
    private final boolean f;
-   private final Predicate<blp> g;
+   private final Predicate<blu> g;
    private final ck.c h;
-   private final Function<elm, elm> i;
+   private final Function<els, els> i;
    @Nullable
-   private final elh j;
-   private final BiConsumer<elm, List<? extends blp>> k;
+   private final eln j;
+   private final BiConsumer<els, List<? extends blu>> k;
    private final boolean l;
    @Nullable
    private final String m;
    @Nullable
    private final UUID n;
-   private final dmy<blp, ?> o;
+   private final dne<blu, ?> o;
    private final boolean p;
 
    public ge(
       int $$0,
       boolean $$1,
       boolean $$2,
-      Predicate<blp> $$3,
+      Predicate<blu> $$3,
       ck.c $$4,
-      Function<elm, elm> $$5,
-      @Nullable elh $$6,
-      BiConsumer<elm, List<? extends blp>> $$7,
+      Function<els, els> $$5,
+      @Nullable eln $$6,
+      BiConsumer<els, List<? extends blu>> $$7,
       boolean $$8,
       @Nullable String $$9,
       @Nullable UUID $$10,
-      @Nullable blt<?> $$11,
+      @Nullable bly<?> $$11,
       boolean $$12
    ) {
       this.d = $$0;
@@ -65,7 +65,7 @@ public class ge {
       this.l = $$8;
       this.m = $$9;
       this.n = $$10;
-      this.o = (dmy<blp, ?>)($$11 == null ? c : $$11);
+      this.o = (dne<blu, ?>)($$11 == null ? c : $$11);
       this.p = $$12;
    }
 
@@ -95,9 +95,9 @@ public class ge {
       }
    }
 
-   public blp a(ds $$0) throws CommandSyntaxException {
+   public blu a(ds $$0) throws CommandSyntaxException {
       this.e($$0);
-      List<? extends blp> $$1 = this.b($$0);
+      List<? extends blu> $$1 = this.b($$0);
       if ($$1.isEmpty()) {
          throw ef.d.create();
       } else if ($$1.size() > 1) {
@@ -107,37 +107,37 @@ public class ge {
       }
    }
 
-   public List<? extends blp> b(ds $$0) throws CommandSyntaxException {
+   public List<? extends blu> b(ds $$0) throws CommandSyntaxException {
       return this.f($$0).stream().filter($$1 -> $$1.ai().a($$0.w())).toList();
    }
 
-   private List<? extends blp> f(ds $$0) throws CommandSyntaxException {
+   private List<? extends blu> f(ds $$0) throws CommandSyntaxException {
       this.e($$0);
       if (!this.e) {
          return this.d($$0);
       } else if (this.m != null) {
-         ana $$1 = $$0.l().ae().a(this.m);
-         return (List<? extends blp>)($$1 == null ? Collections.emptyList() : Lists.newArrayList(new ana[]{$$1}));
+         ane $$1 = $$0.l().ae().a(this.m);
+         return (List<? extends blu>)($$1 == null ? Collections.emptyList() : Lists.newArrayList(new ane[]{$$1}));
       } else if (this.n != null) {
-         for (amz $$2 : $$0.l().H()) {
-            blp $$3 = $$2.a(this.n);
+         for (and $$2 : $$0.l().H()) {
+            blu $$3 = $$2.a(this.n);
             if ($$3 != null) {
-               return Lists.newArrayList(new blp[]{$$3});
+               return Lists.newArrayList(new blu[]{$$3});
             }
          }
 
          return Collections.emptyList();
       } else {
-         elm $$4 = this.i.apply($$0.d());
-         Predicate<blp> $$5 = this.a($$4);
+         els $$4 = this.i.apply($$0.d());
+         Predicate<blu> $$5 = this.a($$4);
          if (this.l) {
-            return (List<? extends blp>)($$0.f() != null && $$5.test($$0.f()) ? Lists.newArrayList(new blp[]{$$0.f()}) : Collections.emptyList());
+            return (List<? extends blu>)($$0.f() != null && $$5.test($$0.f()) ? Lists.newArrayList(new blu[]{$$0.f()}) : Collections.emptyList());
          } else {
-            List<blp> $$6 = Lists.newArrayList();
+            List<blu> $$6 = Lists.newArrayList();
             if (this.d()) {
                this.a($$6, $$0.e(), $$4, $$5);
             } else {
-               for (amz $$7 : $$0.l().H()) {
+               for (and $$7 : $$0.l().H()) {
                   this.a($$6, $$7, $$4, $$5);
                }
             }
@@ -147,7 +147,7 @@ public class ge {
       }
    }
 
-   private void a(List<blp> $$0, amz $$1, elm $$2, Predicate<blp> $$3) {
+   private void a(List<blu> $$0, and $$1, els $$2, Predicate<blu> $$3) {
       int $$4 = this.f();
       if ($$0.size() < $$4) {
          if (this.j != null) {
@@ -162,9 +162,9 @@ public class ge {
       return this.k == b ? this.d : Integer.MAX_VALUE;
    }
 
-   public ana c(ds $$0) throws CommandSyntaxException {
+   public ane c(ds $$0) throws CommandSyntaxException {
       this.e($$0);
-      List<ana> $$1 = this.d($$0);
+      List<ane> $$1 = this.d($$0);
       if ($$1.size() != 1) {
          throw ef.e.create();
       } else {
@@ -172,32 +172,32 @@ public class ge {
       }
    }
 
-   public List<ana> d(ds $$0) throws CommandSyntaxException {
+   public List<ane> d(ds $$0) throws CommandSyntaxException {
       this.e($$0);
       if (this.m != null) {
-         ana $$1 = $$0.l().ae().a(this.m);
-         return (List<ana>)($$1 == null ? Collections.emptyList() : Lists.newArrayList(new ana[]{$$1}));
+         ane $$1 = $$0.l().ae().a(this.m);
+         return (List<ane>)($$1 == null ? Collections.emptyList() : Lists.newArrayList(new ane[]{$$1}));
       } else if (this.n != null) {
-         ana $$2 = $$0.l().ae().a(this.n);
-         return (List<ana>)($$2 == null ? Collections.emptyList() : Lists.newArrayList(new ana[]{$$2}));
+         ane $$2 = $$0.l().ae().a(this.n);
+         return (List<ane>)($$2 == null ? Collections.emptyList() : Lists.newArrayList(new ane[]{$$2}));
       } else {
-         elm $$3 = this.i.apply($$0.d());
-         Predicate<blp> $$4 = this.a($$3);
+         els $$3 = this.i.apply($$0.d());
+         Predicate<blu> $$4 = this.a($$3);
          if (this.l) {
-            if ($$0.f() instanceof ana $$5 && $$4.test($$5)) {
-               return Lists.newArrayList(new ana[]{$$5});
+            if ($$0.f() instanceof ane $$5 && $$4.test($$5)) {
+               return Lists.newArrayList(new ane[]{$$5});
             }
 
             return Collections.emptyList();
          } else {
             int $$6 = this.f();
-            List<ana> $$7;
+            List<ane> $$7;
             if (this.d()) {
                $$7 = $$0.e().a($$4, $$6);
             } else {
                $$7 = Lists.newArrayList();
 
-               for (ana $$9 : $$0.l().ae().t()) {
+               for (ane $$9 : $$0.l().ae().t()) {
                   if ($$4.test($$9)) {
                      $$7.add($$9);
                      if ($$7.size() >= $$6) {
@@ -212,10 +212,10 @@ public class ge {
       }
    }
 
-   private Predicate<blp> a(elm $$0) {
-      Predicate<blp> $$1 = this.g;
+   private Predicate<blu> a(els $$0) {
+      Predicate<blu> $$1 = this.g;
       if (this.j != null) {
-         elh $$2 = this.j.c($$0);
+         eln $$2 = this.j.c($$0);
          $$1 = $$1.and($$1x -> $$2.c($$1x.cH()));
       }
 
@@ -226,7 +226,7 @@ public class ge {
       return $$1;
    }
 
-   private <T extends blp> List<T> a(elm $$0, List<T> $$1) {
+   private <T extends blu> List<T> a(els $$0, List<T> $$1) {
       if ($$1.size() > 1) {
          this.k.accept($$0, $$1);
       }
@@ -234,7 +234,7 @@ public class ge {
       return $$1.subList(0, Math.min(this.d, $$1.size()));
    }
 
-   public static vd a(List<? extends blp> $$0) {
-      return vg.b($$0, blp::Q_);
+   public static vf a(List<? extends blu> $$0) {
+      return vi.b($$0, blu::Q_);
    }
 }

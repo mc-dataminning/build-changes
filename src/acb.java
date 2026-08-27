@@ -1,56 +1,40 @@
-public class acb implements xd<yx> {
-   private final int a;
-   private final int b;
-   private final int c;
-   private final int d;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-   public acb(blp $$0) {
-      this($$0.aj(), $$0.dp());
-   }
+public class acb implements xf<za> {
+   private final emn a;
+   private final String b;
 
-   public acb(int $$0, elm $$1) {
+   public acb(emn $$0, @Nullable emo $$1) {
       this.a = $$0;
-      double $$2 = 3.9;
-      double $$3 = aui.a($$1.c, -3.9, 3.9);
-      double $$4 = aui.a($$1.d, -3.9, 3.9);
-      double $$5 = aui.a($$1.e, -3.9, 3.9);
-      this.b = (int)($$3 * 8000.0);
-      this.c = (int)($$4 * 8000.0);
-      this.d = (int)($$5 * 8000.0);
+      if ($$1 == null) {
+         this.b = "";
+      } else {
+         this.b = $$1.b();
+      }
    }
 
-   public acb(ug $$0) {
-      this.a = $$0.n();
-      this.b = $$0.readShort();
-      this.c = $$0.readShort();
-      this.d = $$0.readShort();
+   public acb(ui $$0) {
+      this.a = $$0.a(emn.u);
+      this.b = $$0.s();
    }
 
    @Override
-   public void a(ug $$0) {
-      $$0.c(this.a);
-      $$0.l(this.b);
-      $$0.l(this.c);
-      $$0.l(this.d);
+   public void a(ui $$0) {
+      $$0.a(emn::a, this.a);
+      $$0.a(this.b);
    }
 
-   public void a(yx $$0) {
+   public void a(za $$0) {
       $$0.a(this);
    }
 
-   public int a() {
+   public emn a() {
       return this.a;
    }
 
-   public int d() {
-      return this.b;
-   }
-
-   public int e() {
-      return this.c;
-   }
-
-   public int f() {
-      return this.d;
+   @Nullable
+   public String d() {
+      return Objects.equals(this.b, "") ? null : this.b;
    }
 }

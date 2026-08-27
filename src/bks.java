@@ -1,46 +1,120 @@
-import java.util.Optional;
 import javax.annotation.Nullable;
 
-public record bks(String i) {
-   public static final bks a = new bks("generic");
-   public static final bks b = new bks("ladder");
-   public static final bks c = new bks("vines");
-   public static final bks d = new bks("weeping_vines");
-   public static final bks e = new bks("twisting_vines");
-   public static final bks f = new bks("scaffolding");
-   public static final bks g = new bks("other_climbable");
-   public static final bks h = new bks("water");
+public class bks {
+   private final ih<bku> a;
+   @Nullable
+   private final blu b;
+   @Nullable
+   private final blu c;
+   @Nullable
+   private final els d;
 
-   public static bks a(dja $$0) {
-      if ($$0.a(cwl.cO) || $$0.a(asb.P)) {
-         return b;
-      } else if ($$0.a(cwl.ff)) {
-         return c;
-      } else if ($$0.a(cwl.oz) || $$0.a(cwl.oA)) {
-         return d;
-      } else if ($$0.a(cwl.oB) || $$0.a(cwl.oC)) {
-         return e;
+   @Override
+   public String toString() {
+      return "DamageSource (" + this.j().a() + ")";
+   }
+
+   public float a() {
+      return this.j().c();
+   }
+
+   public boolean b() {
+      return this.b != this.c;
+   }
+
+   private bks(ih<bku> $$0, @Nullable blu $$1, @Nullable blu $$2, @Nullable els $$3) {
+      this.a = $$0;
+      this.b = $$2;
+      this.c = $$1;
+      this.d = $$3;
+   }
+
+   public bks(ih<bku> $$0, @Nullable blu $$1, @Nullable blu $$2) {
+      this($$0, $$1, $$2, null);
+   }
+
+   public bks(ih<bku> $$0, els $$1) {
+      this($$0, null, null, $$1);
+   }
+
+   public bks(ih<bku> $$0, @Nullable blu $$1) {
+      this($$0, $$1, $$1);
+   }
+
+   public bks(ih<bku> $$0) {
+      this($$0, null, null, null);
+   }
+
+   @Nullable
+   public blu c() {
+      return this.c;
+   }
+
+   @Nullable
+   public blu d() {
+      return this.b;
+   }
+
+   public vf a(bmk $$0) {
+      String $$1 = "death.attack." + this.j().a();
+      if (this.b == null && this.c == null) {
+         bmk $$5 = $$0.eL();
+         String $$6 = $$1 + ".player";
+         return $$5 != null ? vf.a($$6, $$0.Q_(), $$5.Q_()) : vf.a($$1, $$0.Q_());
       } else {
-         return $$0.a(cwl.nS) ? f : g;
+         vf $$2 = this.b == null ? this.c.Q_() : this.b.Q_();
+         cmx $$4 = this.b instanceof bmk $$3 ? $$3.eT() : cmx.f;
+         return !$$4.b() && $$4.A() ? vf.a($$1 + ".item", $$0.Q_(), $$2, $$4.J()) : vf.a($$1, $$0.Q_(), $$2);
+      }
+   }
+
+   public String e() {
+      return this.j().a();
+   }
+
+   public boolean f() {
+      return switch (this.j().b()) {
+         case a -> false;
+         case b -> this.b instanceof bmk && !(this.b instanceof cfh);
+         case c -> true;
+      };
+   }
+
+   public boolean g() {
+      if (this.d() instanceof cfh $$0 && $$0.fT().d) {
+         return true;
+      }
+
+      return false;
+   }
+
+   @Nullable
+   public els h() {
+      if (this.d != null) {
+         return this.d;
+      } else {
+         return this.c != null ? this.c.dk() : null;
       }
    }
 
    @Nullable
-   public static bks a(bmf $$0) {
-      Optional<hx> $$1 = $$0.eH();
-      if ($$1.isPresent()) {
-         dja $$2 = $$0.dM().a_($$1.get());
-         return a($$2);
-      } else {
-         return $$0.aZ() ? h : null;
-      }
+   public els i() {
+      return this.d;
    }
 
-   public String a() {
-      return "death.fell.accident." + this.i;
+   public boolean a(asv<bku> $$0) {
+      return this.a.a($$0);
    }
 
-   public String b() {
-      return this.i;
+   public boolean a(ahf<bku> $$0) {
+      return this.a.a($$0);
+   }
+
+   public bku j() {
+      return this.a.a();
+   }
+
+   public ih<bku> k() {
+      return this.a;
    }
 }

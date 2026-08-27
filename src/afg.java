@@ -1,44 +1,51 @@
-public record afg(int a, String b, int c, aff d) implements xd<afh> {
-   private static final int e = 255;
+import org.jetbrains.annotations.VisibleForTesting;
 
-   @Deprecated
-   public afg(int a, String b, int c, aff d) {
-      this.a = a;
-      this.b = b;
-      this.c = c;
-      this.d = d;
+public class afg {
+   private static final double a = 4096.0;
+   private els b;
+
+   public afg() {
+      this.b = els.b;
    }
 
-   public afg(ug $$0) {
-      this($$0.n(), $$0.d(255), $$0.readUnsignedShort(), aff.a($$0.n()));
+   @VisibleForTesting
+   static long a(double $$0) {
+      return Math.round($$0 * 4096.0);
    }
 
-   @Override
-   public void a(ug $$0) {
-      $$0.c(this.a);
-      $$0.a(this.b);
-      $$0.l(this.c);
-      $$0.c(this.d.a());
+   @VisibleForTesting
+   static double a(long $$0) {
+      return (double)$$0 / 4096.0;
    }
 
-   public void a(afh $$0) {
-      $$0.a(this);
+   public els a(long $$0, long $$1, long $$2) {
+      if ($$0 == 0L && $$1 == 0L && $$2 == 0L) {
+         return this.b;
+      } else {
+         double $$3 = $$0 == 0L ? this.b.c : a(a(this.b.c) + $$0);
+         double $$4 = $$1 == 0L ? this.b.d : a(a(this.b.d) + $$1);
+         double $$5 = $$2 == 0L ? this.b.e : a(a(this.b.e) + $$2);
+         return new els($$3, $$4, $$5);
+      }
    }
 
-   @Override
-   public uf c() {
-      return this.d.b();
+   public long a(els $$0) {
+      return a($$0.c) - a(this.b.c);
    }
 
-   public String d() {
-      return this.b;
+   public long b(els $$0) {
+      return a($$0.d) - a(this.b.d);
    }
 
-   public int e() {
-      return this.c;
+   public long c(els $$0) {
+      return a($$0.e) - a(this.b.e);
    }
 
-   public aff f() {
-      return this.d;
+   public els d(els $$0) {
+      return $$0.d(this.b);
+   }
+
+   public void e(els $$0) {
+      this.b = $$0;
    }
 }

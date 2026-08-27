@@ -1,128 +1,112 @@
-import com.mojang.authlib.GameProfile;
 import com.mojang.logging.LogUtils;
-import java.util.Queue;
-import java.util.concurrent.ConcurrentLinkedQueue;
-import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
+import io.netty.buffer.ByteBuf;
+import io.netty.buffer.ByteBufAllocator;
+import io.netty.channel.ChannelFutureListener;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.ChannelInboundHandlerAdapter;
+import java.net.SocketAddress;
+import java.util.Locale;
 import org.slf4j.Logger;
 
-public class anw extends anv implements us, yu {
-   private static final Logger d = LogUtils.getLogger();
-   private static final vd e = vd.c("multiplayer.disconnect.invalid_player_data");
-   private final GameProfile f;
-   private final Queue<anp> g = new ConcurrentLinkedQueue<>();
-   @Nullable
-   private anp h;
-   private amo i;
+public class anw extends ChannelInboundHandlerAdapter {
+   private static final Logger a = LogUtils.getLogger();
+   private final ahv b;
 
-   public anw(MinecraftServer $$0, ue $$1, ano $$2) {
-      super($$0, $$1, $$2);
-      this.f = $$2.a();
-      this.i = $$2.c();
+   public anw(ahv $$0) {
+      this.b = $$0;
    }
 
-   @Override
-   protected GameProfile j() {
-      return this.f;
-   }
-
-   @Override
-   public void a(vd $$0) {
-      d.info("{} lost connection: {}", this.f, $$0.getString());
-      super.a($$0);
-   }
-
-   @Override
-   public boolean c() {
-      return this.c.k();
-   }
-
-   public void m() {
-      this.b(new xh(new xv(this.b.getServerModName())));
-      io<ahm> $$0 = this.b.ba();
-      this.b(new yt(chn.e.b(this.b.aY().M())));
-      this.b(new ys(new iu.c(ix.a($$0)).d()));
-      this.b(new xm(ast.a($$0)));
-      this.o();
-      this.g.add(new aof());
-      this.p();
-   }
-
-   public void n() {
-      this.g.add(new aof());
-      this.p();
-   }
-
-   private void o() {
-      this.b.U().ifPresent($$0 -> this.g.add(new aog($$0)));
-   }
-
-   @Override
-   public void a(xo $$0) {
-      this.i = $$0.a();
-   }
-
-   @Override
-   public void a(xs $$0) {
-      super.a($$0);
-      if ($$0.a() != xs.a.d) {
-         this.a(aog.a);
-      }
-   }
-
-   @Override
-   public void a(yv $$0) {
-      this.c.a();
-      xf.a($$0, this, this.b);
-      this.a(aof.a);
+   public void channelRead(ChannelHandlerContext $$0, Object $$1) {
+      ByteBuf $$2 = (ByteBuf)$$1;
+      $$2.markReaderIndex();
+      boolean $$3 = true;
 
       try {
-         aqp $$1 = this.b.ae();
-         if ($$1.a(this.f.getId()) != null) {
-            this.b(aqp.g);
-            return;
-         }
+         try {
+            if ($$2.readUnsignedByte() != 254) {
+               return;
+            }
 
-         vd $$2 = $$1.a(this.c.f(), this.f);
-         if ($$2 != null) {
-            this.b($$2);
-            return;
-         }
+            SocketAddress $$4 = $$0.channel().remoteAddress();
+            int $$5 = $$2.readableBytes();
+            if ($$5 == 0) {
+               a.debug("Ping: (<1.3.x) from {}", $$4);
+               String $$6 = a(this.b);
+               a($$0, a($$0.alloc(), $$6));
+            } else {
+               if ($$2.readUnsignedByte() != 1) {
+                  return;
+               }
 
-         ana $$3 = $$1.a(this.f, this.i);
-         $$1.a(this.c, $$3, this.a(this.i));
-         this.c.b();
-      } catch (Exception var5) {
-         d.error("Couldn't place player in world", var5);
-         this.c.a(new xi(e));
-         this.c.a(e);
+               if ($$2.isReadable()) {
+                  if (!a($$2)) {
+                     return;
+                  }
+
+                  a.debug("Ping: (1.6) from {}", $$4);
+               } else {
+                  a.debug("Ping: (1.4-1.5.x) from {}", $$4);
+               }
+
+               String $$7 = b(this.b);
+               a($$0, a($$0.alloc(), $$7));
+            }
+
+            $$2.release();
+            $$3 = false;
+         } catch (RuntimeException var11) {
+         }
+      } finally {
+         if ($$3) {
+            $$2.resetReaderIndex();
+            $$0.channel().pipeline().remove(this);
+            $$0.fireChannelRead($$1);
+         }
       }
    }
 
-   @Override
-   public void e() {
-      this.f();
-   }
-
-   private void p() {
-      if (this.h != null) {
-         throw new IllegalStateException("Task " + this.h.a().a() + " has not finished yet");
-      } else if (this.c()) {
-         anp $$0 = this.g.poll();
-         if ($$0 != null) {
-            this.h = $$0;
-            $$0.a(this::b);
-         }
-      }
-   }
-
-   private void a(anp.a $$0) {
-      anp.a $$1 = this.h != null ? this.h.a() : null;
-      if (!$$0.equals($$1)) {
-         throw new IllegalStateException("Unexpected request for task finish, current task: " + $$1 + ", requested: " + $$0);
+   private static boolean a(ByteBuf $$0) {
+      short $$1 = $$0.readUnsignedByte();
+      if ($$1 != 250) {
+         return false;
       } else {
-         this.h = null;
-         this.p();
+         String $$2 = anv.a($$0);
+         if (!"MC|PingHost".equals($$2)) {
+            return false;
+         } else {
+            int $$3 = $$0.readUnsignedShort();
+            if ($$0.readableBytes() != $$3) {
+               return false;
+            } else {
+               short $$4 = $$0.readUnsignedByte();
+               if ($$4 < 73) {
+                  return false;
+               } else {
+                  String $$5 = anv.a($$0);
+                  int $$6 = $$0.readInt();
+                  return $$6 <= 65535;
+               }
+            }
+         }
       }
+   }
+
+   private static String a(ahv $$0) {
+      return String.format(Locale.ROOT, "%s§%d§%d", $$0.ac(), $$0.J(), $$0.K());
+   }
+
+   private static String b(ahv $$0) {
+      return String.format(Locale.ROOT, "§1\u0000%d\u0000%s\u0000%s\u0000%d\u0000%d", 127, $$0.I(), $$0.ac(), $$0.J(), $$0.K());
+   }
+
+   private static void a(ChannelHandlerContext $$0, ByteBuf $$1) {
+      $$0.pipeline().firstContext().writeAndFlush($$1).addListener(ChannelFutureListener.CLOSE);
+   }
+
+   private static ByteBuf a(ByteBufAllocator $$0, String $$1) {
+      ByteBuf $$2 = $$0.buffer();
+      $$2.writeByte(255);
+      anv.a($$2, $$1);
+      return $$2;
    }
 }

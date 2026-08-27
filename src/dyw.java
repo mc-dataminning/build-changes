@@ -1,7 +1,8 @@
-@FunctionalInterface
-public interface dyw {
-   dyw a = ($$0, $$1, $$2, $$3, $$4, $$5, $$6) -> {
-   };
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   void afterPlace(cud var1, cub var2, dkx var3, aup var4, dyr var5, csp var6, dzo var7);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface dyw {
 }

@@ -1,22 +1,15 @@
-public abstract class cpn implements cpm {
-   private final cpl a;
-
-   public cpn(cpl $$0) {
-      this.a = $$0;
+public class cpn extends cpk {
+   public cpn(String $$0, cpq $$1, cpy $$2, cmx $$3, float $$4, int $$5) {
+      super(cqg.c, $$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public boolean aq_() {
-      return true;
+   public cmx g() {
+      return new cmx(cwr.nW);
    }
 
    @Override
-   public cmr a(iu $$0) {
-      return cmr.f;
-   }
-
-   @Override
-   public cpl d() {
-      return this.a;
+   public cqf<?> ar_() {
+      return cqf.q;
    }
 }

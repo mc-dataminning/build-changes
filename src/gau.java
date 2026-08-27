@@ -1,34 +1,26 @@
-public class gau extends fye<cbp> {
-   private final ftt a;
+public class gau extends fzr<cdb, fly<cdb>> {
+   private static final ahg a = new ahg("textures/entity/strider/strider.png");
+   private static final ahg i = new ahg("textures/entity/strider/strider_cold.png");
 
-   public gau(fyf.a $$0) {
-      super($$0);
-      this.d = 0.5F;
-      this.a = $$0.c();
+   public gau(fyl.a $$0) {
+      super($$0, new fly<>($$0.a(fmu.bA)), 0.5F);
+      this.a(new gcx<>(this, new fly<>($$0.a(fmu.bB)), new ahg("textures/entity/strider/strider_saddle.png")));
    }
 
-   public void a(cbp $$0, float $$1, float $$2, ept $$3, fsz $$4, int $$5) {
-      $$3.a();
-      $$3.a(0.0F, 0.5F, 0.0F);
-      int $$6 = $$0.s();
-      if ((float)$$6 - $$2 + 1.0F < 10.0F) {
-         float $$7 = 1.0F - ((float)$$6 - $$2 + 1.0F) / 10.0F;
-         $$7 = aui.a($$7, 0.0F, 1.0F);
-         $$7 *= $$7;
-         $$7 *= $$7;
-         float $$8 = 1.0F + $$7 * 0.3F;
-         $$3.b($$8, $$8, $$8);
+   public ahg a(cdb $$0) {
+      return $$0.u() ? i : a;
+   }
+
+   protected void a(cdb $$0, epz $$1, float $$2) {
+      if ($$0.o_()) {
+         $$1.b(0.5F, 0.5F, 0.5F);
+         this.d = 0.25F;
+      } else {
+         this.d = 0.5F;
       }
-
-      $$3.a(a.d.rotationDegrees(-90.0F));
-      $$3.a(-0.5F, -0.5F, 0.5F);
-      $$3.a(a.d.rotationDegrees(90.0F));
-      gat.a(this.a, $$0.u(), $$3, $$4, $$5, $$6 / 5 % 2 == 0);
-      $$3.b();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   public ahd a(cbp $$0) {
-      return gee.e;
+   protected boolean b(cdb $$0) {
+      return super.a($$0) || $$0.u();
    }
 }

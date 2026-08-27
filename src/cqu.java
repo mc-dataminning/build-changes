@@ -1,15 +1,15 @@
-public class cqu extends crc {
-   public cqu(crc.a $$0, blu... $$1) {
-      super($$0, crd.k, $$1);
+public class cqu extends cpk {
+   public cqu(String $$0, cpq $$1, cpy $$2, cmx $$3, float $$4, int $$5) {
+      super(cqg.d, $$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public int a(int $$0) {
-      return 20;
+   public cmx g() {
+      return new cmx(cwr.nV);
    }
 
    @Override
-   public int b(int $$0) {
-      return 50;
+   public cqf<?> ar_() {
+      return cqf.r;
    }
 }

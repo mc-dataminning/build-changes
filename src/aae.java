@@ -1,23 +1,14 @@
-public record aae(int a, float b) implements xd<yx> {
-   public aae(bmf $$0) {
-      this($$0.aj(), $$0.eE());
-   }
-
-   public aae(ug $$0) {
-      this($$0.n(), $$0.readFloat());
+public record aae(csv a) implements xf<za> {
+   public aae(ui $$0) {
+      this($$0.f());
    }
 
    @Override
-   public void a(ug $$0) {
-      $$0.c(this.a);
-      $$0.a(this.b);
+   public void a(ui $$0) {
+      $$0.a(this.a);
    }
 
-   public void a(yx $$0) {
+   public void a(za $$0) {
       $$0.a(this);
-   }
-
-   public float d() {
-      return this.b;
    }
 }

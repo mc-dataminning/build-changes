@@ -1,84 +1,124 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
-import java.util.stream.Stream;
+import com.mojang.serialization.Codec;
+import javax.annotation.Nullable;
 
-public class efx {
-   private static final String a = "command_storage_";
-   private final Map<String, efx.a> b = Maps.newHashMap();
-   private final ega c;
-
-   public efx(ega $$0) {
-      this.c = $$0;
+public record efx(efx.a a, byte b, byte c, byte d, @Nullable vf e) {
+   public byte a() {
+      return this.a.a();
    }
 
-   private efx.a a(String $$0) {
-      efx.a $$1 = new efx.a();
-      this.b.put($$0, $$1);
-      return $$1;
+   public boolean b() {
+      return this.a.d();
    }
 
-   private efp.a<efx.a> b(String $$0) {
-      return new efp.a<>(() -> this.a($$0), $$1 -> this.a($$0).b($$1), avq.h);
+   public efx.a c() {
+      return this.a;
    }
 
-   public sl a(ahd $$0) {
-      String $$1 = $$0.b();
-      efx.a $$2 = this.c.b(this.b($$1), c($$1));
-      return $$2 != null ? $$2.a($$0.a()) : new sl();
+   public byte d() {
+      return this.b;
    }
 
-   public void a(ahd $$0, sl $$1) {
-      String $$2 = $$0.b();
-      this.c.a(this.b($$2), c($$2)).a($$0.a(), $$1);
+   public byte e() {
+      return this.c;
    }
 
-   public Stream<ahd> a() {
-      return this.b.entrySet().stream().flatMap($$0 -> $$0.getValue().b($$0.getKey()));
+   public byte f() {
+      return this.d;
    }
 
-   private static String c(String $$0) {
-      return "command_storage_" + $$0;
+   @Nullable
+   public vf g() {
+      return this.e;
    }
 
-   static class a extends efp {
-      private static final String a = "contents";
-      private final Map<String, sl> b = Maps.newHashMap();
+   public static enum a implements avj {
+      a("player", false, true),
+      b("frame", true, true),
+      c("red_marker", false, true),
+      d("blue_marker", false, true),
+      e("target_x", true, false),
+      f("target_point", true, false),
+      g("player_off_map", false, true),
+      h("player_off_limits", false, true),
+      i("mansion", true, 5393476, false, true),
+      j("monument", true, 3830373, false, true),
+      k("banner_white", true, true),
+      l("banner_orange", true, true),
+      m("banner_magenta", true, true),
+      n("banner_light_blue", true, true),
+      o("banner_yellow", true, true),
+      p("banner_lime", true, true),
+      q("banner_pink", true, true),
+      r("banner_gray", true, true),
+      s("banner_light_gray", true, true),
+      t("banner_cyan", true, true),
+      u("banner_purple", true, true),
+      v("banner_blue", true, true),
+      w("banner_brown", true, true),
+      x("banner_green", true, true),
+      y("banner_red", true, true),
+      z("banner_black", true, true),
+      A("red_x", true, false),
+      B("village_desert", true, eeu.w.ak, false, true),
+      C("village_plains", true, eeu.w.ak, false, true),
+      D("village_savanna", true, eeu.w.ak, false, true),
+      E("village_snowy", true, eeu.w.ak, false, true),
+      F("village_taiga", true, eeu.w.ak, false, true),
+      G("jungle_temple", true, eeu.w.ak, false, true),
+      H("swamp_hut", true, eeu.w.ak, false, true);
 
-      efx.a b(sl $$0) {
-         sl $$1 = $$0.p("contents");
+      public static final Codec<efx.a> I = avj.a(efx.a::values);
+      private final String J;
+      private final byte K;
+      private final boolean L;
+      private final int M;
+      private final boolean N;
+      private final boolean O;
 
-         for (String $$2 : $$1.e()) {
-            this.b.put($$2, $$1.p($$2));
-         }
+      private a(String $$0, boolean $$1, boolean $$2) {
+         this($$0, $$1, -1, $$2, false);
+      }
 
-         return this;
+      private a(String $$0, boolean $$1, int $$2, boolean $$3, boolean $$4) {
+         this.J = $$0;
+         this.O = $$3;
+         this.K = (byte)this.ordinal();
+         this.L = $$1;
+         this.M = $$2;
+         this.N = $$4;
+      }
+
+      public byte a() {
+         return this.K;
+      }
+
+      public boolean b() {
+         return this.N;
+      }
+
+      public boolean d() {
+         return this.L;
+      }
+
+      public boolean e() {
+         return this.M >= 0;
+      }
+
+      public int f() {
+         return this.M;
+      }
+
+      public static efx.a a(byte $$0) {
+         return values()[aun.a($$0, 0, values().length - 1)];
+      }
+
+      public boolean g() {
+         return this.O;
       }
 
       @Override
-      public sl a(sl $$0) {
-         sl $$1 = new sl();
-         this.b.forEach(($$1x, $$2) -> $$1.a($$1x, $$2.h()));
-         $$0.a("contents", $$1);
-         return $$0;
-      }
-
-      public sl a(String $$0) {
-         sl $$1 = this.b.get($$0);
-         return $$1 != null ? $$1 : new sl();
-      }
-
-      public void a(String $$0, sl $$1) {
-         if ($$1.g()) {
-            this.b.remove($$0);
-         } else {
-            this.b.put($$0, $$1);
-         }
-
-         this.c();
-      }
-
-      public Stream<ahd> b(String $$0) {
-         return this.b.keySet().stream().map($$1 -> new ahd($$0, $$1));
+      public String c() {
+         return this.J;
       }
    }
 }

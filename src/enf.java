@@ -1,7 +1,3 @@
-public interface enf<T> {
-   void a(end<T> var1);
-
-   boolean a(hx var1, T var2);
-
-   int a();
+public interface enf<T> extends enl<T> {
+   boolean b(hx var1, T var2);
 }

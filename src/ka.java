@@ -7,7 +7,7 @@ public class ka extends jw<ka> implements jv {
          return (ka)$$0;
       }
 
-      public ka a(jw<ka> $$0, ug $$1) {
+      public ka a(jw<ka> $$0, ui $$1) {
          return (ka)$$0;
       }
    };
@@ -27,7 +27,7 @@ public class ka extends jw<ka> implements jv {
    }
 
    @Override
-   public void a(ug $$0) {
+   public void a(ui $$0) {
    }
 
    @Override

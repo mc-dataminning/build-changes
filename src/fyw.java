@@ -1,12 +1,19 @@
-public abstract class fyw<T extends bmh, M extends fkc<T>> extends fzl<T, M> {
-   public fyw(fyf.a $$0, M $$1, float $$2) {
-      this($$0, $$1, $$2, 1.0F, 1.0F, 1.0F);
+public class fyw extends fzr<ccj, fki<ccj>> {
+   private static final ahg a = new ahg("textures/entity/zombie/zombie.png");
+   private final float i;
+
+   public fyw(fyl.a $$0, float $$1) {
+      super($$0, new fka($$0.a(fmu.ae)), 0.5F * $$1);
+      this.i = $$1;
+      this.a(new gcp<>(this, $$0.d()));
+      this.a(new gcm<>(this, new fka($$0.a(fmu.af)), new fka($$0.a(fmu.ag)), $$0.g()));
    }
 
-   public fyw(fyf.a $$0, M $$1, float $$2, float $$3, float $$4, float $$5) {
-      super($$0, $$1, $$2);
-      this.a(new gbv<>(this, $$0.f(), $$3, $$4, $$5, $$0.d()));
-      this.a(new gbz<>(this, $$0.f()));
-      this.a(new gcj<>(this, $$0.d()));
+   protected void a(ccj $$0, epz $$1, float $$2) {
+      $$1.b(this.i, this.i, this.i);
+   }
+
+   public ahg a(ccj $$0) {
+      return a;
    }
 }

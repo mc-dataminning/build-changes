@@ -1,16 +1,15 @@
-public class fkr<T extends blp> extends fkz<T> {
-   public fkr(fmp $$0) {
-      super($$0, false, 4.0F, 4.0F, 2.0F, 2.0F, 24);
+import java.util.function.Function;
+
+public abstract class fkr {
+   protected final Function<ahg, ftn> v;
+
+   public fkr(Function<ahg, ftn> $$0) {
+      this.v = $$0;
    }
 
-   public static fmv a(fmt $$0) {
-      fmx $$1 = fkz.a(6, $$0);
-      fmy $$2 = $$1.a();
-      $$2.a(
-         "head",
-         fmu.c().a(0, 0).a(-4.0F, -4.0F, -8.0F, 8.0F, 8.0F, 8.0F, $$0).a(16, 16).a(-2.0F, 0.0F, -9.0F, 4.0F, 3.0F, 1.0F, $$0),
-         fmr.a(0.0F, 12.0F, -6.0F)
-      );
-      return fmv.a($$1, 64, 32);
+   public final ftn a(ahg $$0) {
+      return this.v.apply($$0);
    }
+
+   public abstract void a(epz var1, eqd var2, int var3, int var4, float var5, float var6, float var7, float var8);
 }

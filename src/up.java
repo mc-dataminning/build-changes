@@ -1,24 +1,38 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-public class up extends ue {
-   private static final Logger j = LogUtils.getLogger();
-   private static final vd k = vd.c("disconnect.exceeded_packet_rate");
-   private final int l;
+public interface up {
+   static up a(final Runnable $$0) {
+      return new up() {
+         @Override
+         public void a() {
+            $$0.run();
+         }
 
-   public up(int $$0) {
-      super(xe.a);
-      this.l = $$0;
+         @Nullable
+         @Override
+         public xf<?> b() {
+            $$0.run();
+            return null;
+         }
+      };
    }
 
-   @Override
-   protected void e() {
-      super.e();
-      float $$0 = this.q();
-      if ($$0 > (float)this.l) {
-         j.warn("Player exceeded rate-limit (sent {} packets per second)", $$0);
-         this.a(new xi(k), un.a(() -> this.a(k)));
-         this.o();
-      }
+   static up a(final Supplier<xf<?>> $$0) {
+      return new up() {
+         @Nullable
+         @Override
+         public xf<?> b() {
+            return $$0.get();
+         }
+      };
+   }
+
+   default void a() {
+   }
+
+   @Nullable
+   default xf<?> b() {
+      return null;
    }
 }

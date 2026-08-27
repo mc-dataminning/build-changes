@@ -1,26 +1,105 @@
 import com.mojang.serialization.MapCodec;
-import java.util.List;
-import javax.annotation.Nullable;
 
-public class dbz extends dfi {
+public class dbz extends cys {
    public static final MapCodec<dbz> b = b(dbz::new);
+   public static final djx c = djw.w;
 
    @Override
    public MapCodec<dbz> a() {
       return b;
    }
 
-   protected dbz(diz.d $$0) {
-      super(ddk.b.e, $$0);
+   public dbz(djf.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(a, ic.d).a(c, Boolean.valueOf(false)));
    }
 
    @Override
-   public void a(cti $$0, hx $$1, dja $$2, @Nullable bmf $$3, cmr $$4) {
-      cwl.gK.a($$0, $$1, $$2, $$3, $$4);
+   protected void a(djh.a<cwp, djg> $$0) {
+      $$0.a(a, c);
    }
 
    @Override
-   public List<cmr> a(dja $$0, egv.a $$1) {
-      return cwl.gK.a($$0, $$1);
+   public djg a(djg $$0, ddb $$1) {
+      return $$0.a(a, $$1.a($$0.c(a)));
+   }
+
+   @Override
+   public djg a(djg $$0, dbl $$1) {
+      return $$0.a($$1.a($$0.c(a)));
+   }
+
+   @Override
+   public void a(djg $$0, and $$1, hx $$2, auu $$3) {
+      if ($$0.c(c)) {
+         $$1.a($$2, $$0.a(c, Boolean.valueOf(false)), 2);
+      } else {
+         $$1.a($$2, $$0.a(c, Boolean.valueOf(true)), 2);
+         $$1.a($$2, this, 2);
+      }
+
+      this.a($$1, $$2, $$0);
+   }
+
+   @Override
+   public djg a(djg $$0, ic $$1, djg $$2, ctp $$3, hx $$4, hx $$5) {
+      if ($$0.c(a) == $$1 && !$$0.c(c)) {
+         this.a($$3, $$4);
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   private void a(ctp $$0, hx $$1) {
+      if (!$$0.y_() && !$$0.N().a($$1, this)) {
+         $$0.a($$1, this, 2);
+      }
+   }
+
+   protected void a(cto $$0, hx $$1, djg $$2) {
+      ic $$3 = $$2.c(a);
+      hx $$4 = $$1.a($$3.g());
+      $$0.a($$4, this, $$1);
+      $$0.a($$4, this, $$3);
+   }
+
+   @Override
+   public boolean f_(djg $$0) {
+      return true;
+   }
+
+   @Override
+   public int b(djg $$0, csu $$1, hx $$2, ic $$3) {
+      return $$0.b($$1, $$2, $$3);
+   }
+
+   @Override
+   public int a(djg $$0, csu $$1, hx $$2, ic $$3) {
+      return $$0.c(c) && $$0.c(a) == $$3 ? 15 : 0;
+   }
+
+   @Override
+   public void b(djg $$0, cto $$1, hx $$2, djg $$3, boolean $$4) {
+      if (!$$0.a($$3.b())) {
+         if (!$$1.y_() && $$0.c(c) && !$$1.N().a($$2, this)) {
+            djg $$5 = $$0.a(c, Boolean.valueOf(false));
+            $$1.a($$2, $$5, 18);
+            this.a($$1, $$2, $$5);
+         }
+      }
+   }
+
+   @Override
+   public void a(djg $$0, cto $$1, hx $$2, djg $$3, boolean $$4) {
+      if (!$$0.a($$3.b())) {
+         if (!$$1.B && $$0.c(c) && $$1.N().a($$2, this)) {
+            this.a($$1, $$2, $$0.a(c, Boolean.valueOf(false)));
+         }
+      }
+   }
+
+   @Override
+   public djg a(cpg $$0) {
+      return this.o().a(a, $$0.d().g().g());
    }
 }

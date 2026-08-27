@@ -1,78 +1,26 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import org.slf4j.Logger;
+import com.mojang.serialization.Codec;
 
-public record dzo(List<dzd> a) {
-   private static final Logger b = LogUtils.getLogger();
-   private static final ahd c = new ahd("jigsaw");
-   private static final Map<ahd, ahd> d = ImmutableMap.builder()
-      .put(new ahd("nvi"), c)
-      .put(new ahd("pcp"), c)
-      .put(new ahd("bastionremnant"), c)
-      .put(new ahd("runtime"), c)
-      .build();
+public interface dzo<S extends dzf> {
+   dzo<eay> a = a("buried_treasure", eay.d);
+   dzo<eba> b = a("desert_pyramid", eba.d);
+   dzo<ebc> c = a("end_city", ebc.d);
+   dzo<ebl> d = a("fortress", ebl.e);
+   dzo<ebe> e = a("igloo", ebe.d);
+   dzo<ebf> f = a("jigsaw", ebf.f);
+   dzo<ebh> g = a("jungle_temple", ebh.d);
+   dzo<ebj> h = a("mineshaft", ebj.d);
+   dzo<ebn> i = a("nether_fossil", ebn.d);
+   dzo<ebp> j = a("ocean_monument", ebp.d);
+   dzo<ebr> k = a("ocean_ruin", ebr.d);
+   dzo<ebt> l = a("ruined_portal", ebt.d);
+   dzo<ebv> m = a("shipwreck", ebv.d);
+   dzo<ebx> n = a("stronghold", ebx.d);
+   dzo<ebz> o = a("swamp_hut", ebz.d);
+   dzo<ecb> p = a("woodland_mansion", ecb.d);
 
-   public dzo(List<dzd> a) {
-      this.a = List.copyOf(a);
-   }
+   Codec<S> codec();
 
-   public boolean a() {
-      return this.a.isEmpty();
-   }
-
-   public boolean a(hx $$0) {
-      for (dzd $$1 : this.a) {
-         if ($$1.f().b($$0)) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   public ti a(dzp $$0) {
-      sr $$1 = new sr();
-
-      for (dzd $$2 : this.a) {
-         $$1.add($$2.a($$0));
-      }
-
-      return $$1;
-   }
-
-   public static dzo a(sr $$0, dzp $$1) {
-      List<dzd> $$2 = Lists.newArrayList();
-
-      for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
-         sl $$4 = $$0.a($$3);
-         String $$5 = $$4.l("id").toLowerCase(Locale.ROOT);
-         ahd $$6 = new ahd($$5);
-         ahd $$7 = d.getOrDefault($$6, $$6);
-         dzq $$8 = kd.S.a($$7);
-         if ($$8 == null) {
-            b.error("Unknown structure piece id: {}", $$7);
-         } else {
-            try {
-               dzd $$9 = $$8.load($$1, $$4);
-               $$2.add($$9);
-            } catch (Exception var10) {
-               b.error("Exception loading structure piece with id {}", $$7, var10);
-            }
-         }
-      }
-
-      return new dzo($$2);
-   }
-
-   public dyr b() {
-      return dzd.a(this.a.stream());
-   }
-
-   public List<dzd> c() {
-      return this.a;
+   private static <S extends dzf> dzo<S> a(String $$0, Codec<S> $$1) {
+      return it.a(kd.T, $$0, () -> $$1);
    }
 }

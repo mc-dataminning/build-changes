@@ -1,10 +1,23 @@
-public class cmp extends cmc {
-   public cmp(blt<? extends cbg> $$0, cmm.a $$1) {
-      super($$0, $$1);
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+
+public record cmp(ih<arq> b, int c, float d) {
+   public static final Codec<cmp> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               arq.b.fieldOf("sound_event").forGetter(cmp::a), atv.j.fieldOf("use_duration").forGetter(cmp::b), atv.k.fieldOf("range").forGetter(cmp::c)
+            )
+            .apply($$0, cmp::new)
+   );
+
+   public ih<arq> a() {
+      return this.b;
    }
 
-   @Override
-   protected boolean a(cfb $$0, ic $$1, cmr $$2, hx $$3) {
-      return !$$0.dM().s($$3) && $$0.a($$3, $$1, $$2);
+   public int b() {
+      return this.c;
+   }
+
+   public float c() {
+      return this.d;
    }
 }

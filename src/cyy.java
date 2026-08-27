@@ -1,82 +1,68 @@
-import com.google.common.base.Predicates;
 import com.mojang.serialization.MapCodec;
 
-public class cyy extends cwj {
+public class cyy extends czl {
    public static final MapCodec<cyy> a = b(cyy::new);
-   public static final dju b = dae.aE;
-   public static final djr c = djq.h;
-   protected static final emf d = cwj.a(0.0, 0.0, 0.0, 16.0, 13.0, 16.0);
-   protected static final emf e = cwj.a(4.0, 13.0, 4.0, 12.0, 16.0, 12.0);
-   protected static final emf f = emc.a(d, e);
-   private static djf g;
+   protected static final eml b = cwp.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
 
    @Override
    public MapCodec<cyy> a() {
       return a;
    }
 
-   public cyy(diz.d $$0) {
+   public cyy(djf.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b, ic.c).a(c, Boolean.valueOf(false)));
    }
 
    @Override
-   public boolean g_(dja $$0) {
-      return true;
+   public eml a(djg $$0, csu $$1, hx $$2, elx $$3) {
+      return b;
    }
 
    @Override
-   public emf a(dja $$0, cso $$1, hx $$2, elr $$3) {
-      return $$0.c(c) ? f : d;
+   public bka a(djg $$0, cto $$1, hx $$2, cfh $$3, bjz $$4, elo $$5) {
+      this.d($$0, $$1, $$2);
+      return bka.a($$1.B);
    }
 
    @Override
-   public dja a(cpa $$0) {
-      return this.o().a(b, $$0.g().g()).a(c, Boolean.valueOf(false));
+   public void a(djg $$0, cto $$1, hx $$2, cfh $$3) {
+      this.d($$0, $$1, $$2);
    }
 
-   @Override
-   public boolean d_(dja $$0) {
-      return true;
-   }
+   private void d(djg $$0, cto $$1, hx $$2) {
+      dkx $$3 = $$1.D_();
 
-   @Override
-   public int a(dja $$0, cti $$1, hx $$2) {
-      return $$0.c(c) ? 15 : 0;
-   }
+      for (int $$4 = 0; $$4 < 1000; $$4++) {
+         hx $$5 = $$2.b($$1.z.a(16) - $$1.z.a(16), $$1.z.a(8) - $$1.z.a(8), $$1.z.a(16) - $$1.z.a(16));
+         if ($$1.a_($$5).i() && $$3.a($$5)) {
+            if ($$1.B) {
+               for (int $$6 = 0; $$6 < 128; $$6++) {
+                  double $$7 = $$1.z.j();
+                  float $$8 = ($$1.z.i() - 0.5F) * 0.2F;
+                  float $$9 = ($$1.z.i() - 0.5F) * 0.2F;
+                  float $$10 = ($$1.z.i() - 0.5F) * 0.2F;
+                  double $$11 = aun.d($$7, (double)$$5.u(), (double)$$2.u()) + ($$1.z.j() - 0.5) + 0.5;
+                  double $$12 = aun.d($$7, (double)$$5.v(), (double)$$2.v()) + $$1.z.j() - 0.5;
+                  double $$13 = aun.d($$7, (double)$$5.w(), (double)$$2.w()) + ($$1.z.j() - 0.5) + 0.5;
+                  $$1.a(jx.Z, $$11, $$12, $$13, (double)$$8, (double)$$9, (double)$$10);
+               }
+            } else {
+               $$1.a($$5, $$0, 2);
+               $$1.a($$2, false);
+            }
 
-   @Override
-   public dja a(dja $$0, dcv $$1) {
-      return $$0.a(b, $$1.a($$0.c(b)));
-   }
-
-   @Override
-   public dja a(dja $$0, dbf $$1) {
-      return $$0.a($$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected void a(djb.a<cwj, dja> $$0) {
-      $$0.a(b, c);
-   }
-
-   public static djf b() {
-      if (g == null) {
-         g = djg.a()
-            .a("?vvv?", ">???<", ">???<", ">???<", "?^^^?")
-            .a('?', dje.a(djj.a))
-            .a('^', dje.a(djj.a(cwl.fy).a(c, Predicates.equalTo(true)).a(b, Predicates.equalTo(ic.d))))
-            .a('>', dje.a(djj.a(cwl.fy).a(c, Predicates.equalTo(true)).a(b, Predicates.equalTo(ic.e))))
-            .a('v', dje.a(djj.a(cwl.fy).a(c, Predicates.equalTo(true)).a(b, Predicates.equalTo(ic.c))))
-            .a('<', dje.a(djj.a(cwl.fy).a(c, Predicates.equalTo(true)).a(b, Predicates.equalTo(ic.f))))
-            .b();
+            return;
+         }
       }
-
-      return g;
    }
 
    @Override
-   public boolean a(dja $$0, cso $$1, hx $$2, efa $$3) {
+   protected int b() {
+      return 5;
+   }
+
+   @Override
+   public boolean a(djg $$0, csu $$1, hx $$2, efg $$3) {
       return false;
    }
 }

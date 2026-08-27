@@ -1,8 +1,3 @@
-import javax.annotation.ParametersAreNonnullByDefault;
-
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@u
-@w
-interface cjy {
+public interface cjy {
+   void a(cfl var1);
 }

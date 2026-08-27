@@ -1,17 +1,18 @@
-public class fxo extends gal<cbu> {
-   private static final ahd a = new ahd("textures/entity/spider/cave_spider.png");
-   private static final float i = 0.7F;
+public class fxo extends fzr<bxy, fja<bxy>> {
+   private static final ahg a = new ahg("textures/entity/bee/bee_angry.png");
+   private static final ahg i = new ahg("textures/entity/bee/bee_angry_nectar.png");
+   private static final ahg j = new ahg("textures/entity/bee/bee.png");
+   private static final ahg k = new ahg("textures/entity/bee/bee_nectar.png");
 
-   public fxo(fyf.a $$0) {
-      super($$0, fmo.t);
-      this.d *= 0.7F;
+   public fxo(fyl.a $$0) {
+      super($$0, new fja<>($$0.a(fmu.j)), 0.4F);
    }
 
-   protected void a(cbu $$0, ept $$1, float $$2) {
-      $$1.b(0.7F, 0.7F, 0.7F);
-   }
-
-   public ahd a(cbu $$0) {
-      return a;
+   public ahg a(bxy $$0) {
+      if ($$0.aa_()) {
+         return $$0.go() ? i : a;
+      } else {
+         return $$0.go() ? k : j;
+      }
    }
 }

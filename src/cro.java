@@ -1,16 +1,16 @@
-public class cro extends crc {
-   public cro(crc.a $$0, blu... $$1) {
-      super($$0, crd.e, $$1);
+public class cro extends cri {
+   protected cro(cri.a $$0, crj $$1, blz... $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
    public int a(int $$0) {
-      return 10 * $$0;
+      return 15 + ($$0 - 1) * 9;
    }
 
    @Override
    public int b(int $$0) {
-      return this.a($$0) + 30;
+      return super.a($$0) + 50;
    }
 
    @Override

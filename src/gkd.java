@@ -1,29 +1,38 @@
-import com.google.common.util.concurrent.RateLimiter;
-import java.time.Duration;
-import java.util.concurrent.atomic.AtomicReference;
+public class gkd implements gkg {
+   private static final int a = 600;
+   private static final vf b = vf.c("tutorial.open_inventory.title");
+   private static final vf c = vf.a("tutorial.open_inventory.description", gkf.a("inventory"));
+   private final gkf d;
+   private ezo e;
+   private int f;
 
-public class gkd {
-   private final float a;
-   private final AtomicReference<gkd.a> b = new AtomicReference<>();
-
-   public gkd(Duration $$0) {
-      this.a = 1000.0F / (float)$$0.toMillis();
+   public gkd(gkf $$0) {
+      this.d = $$0;
    }
 
-   public void a(eus $$0, vd $$1) {
-      gkd.a $$2 = this.b.updateAndGet($$1x -> $$1x != null && $$1.equals($$1x.a) ? $$1x : new gkd.a($$1, RateLimiter.create((double)this.a)));
-      if ($$2.b.tryAcquire(1)) {
-         $$0.c($$1);
+   @Override
+   public void a() {
+      this.f++;
+      if (!this.d.f()) {
+         this.d.a(gkh.f);
+      } else {
+         if (this.f >= 600 && this.e == null) {
+            this.e = new ezo(ezo.a.d, b, c, false);
+            this.d.e().ay().a(this.e);
+         }
       }
    }
 
-   static class a {
-      final vd a;
-      final RateLimiter b;
-
-      a(vd $$0, RateLimiter $$1) {
-         this.a = $$0;
-         this.b = $$1;
+   @Override
+   public void b() {
+      if (this.e != null) {
+         this.e.c();
+         this.e = null;
       }
+   }
+
+   @Override
+   public void c() {
+      this.d.a(gkh.e);
    }
 }

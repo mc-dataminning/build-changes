@@ -11,33 +11,33 @@ import java.util.function.Function;
 import javax.annotation.Nullable;
 
 public class ga {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vd.c("argument.item.tag.disallowed"));
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> vd.b("argument.item.id.invalid", $$0));
-   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> vd.b("arguments.item.tag.unknown", $$0));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vf.c("argument.item.tag.disallowed"));
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> vf.b("argument.item.id.invalid", $$0));
+   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> vf.b("arguments.item.tag.unknown", $$0));
    private static final char d = '{';
    private static final char e = '#';
    private static final Function<SuggestionsBuilder, CompletableFuture<Suggestions>> f = SuggestionsBuilder::buildFuture;
-   private final ij<cmm> g;
+   private final ij<cms> g;
    private final StringReader h;
    private final boolean i;
-   private Either<ih<cmm>, il<cmm>> j;
+   private Either<ih<cms>, il<cms>> j;
    @Nullable
-   private sl k;
+   private sn k;
    private Function<SuggestionsBuilder, CompletableFuture<Suggestions>> l = f;
 
-   private ga(ij<cmm> $$0, StringReader $$1, boolean $$2) {
+   private ga(ij<cms> $$0, StringReader $$1, boolean $$2) {
       this.g = $$0;
       this.h = $$1;
       this.i = $$2;
    }
 
-   public static ga.a a(ij<cmm> $$0, StringReader $$1) throws CommandSyntaxException {
+   public static ga.a a(ij<cms> $$0, StringReader $$1) throws CommandSyntaxException {
       int $$2 = $$1.getCursor();
 
       try {
          ga $$3 = new ga($$0, $$1, false);
          $$3.d();
-         ih<cmm> $$4 = (ih<cmm>)$$3.j.left().orElseThrow(() -> new IllegalStateException("Parser returned unexpected tag name"));
+         ih<cms> $$4 = (ih<cms>)$$3.j.left().orElseThrow(() -> new IllegalStateException("Parser returned unexpected tag name"));
          return new ga.a($$4, $$3.k);
       } catch (CommandSyntaxException var5) {
          $$1.setCursor($$2);
@@ -45,7 +45,7 @@ public class ga {
       }
    }
 
-   public static Either<ga.a, ga.b> b(ij<cmm> $$0, StringReader $$1) throws CommandSyntaxException {
+   public static Either<ga.a, ga.b> b(ij<cms> $$0, StringReader $$1) throws CommandSyntaxException {
       int $$2 = $$1.getCursor();
 
       try {
@@ -58,7 +58,7 @@ public class ga {
       }
    }
 
-   public static CompletableFuture<Suggestions> a(ij<cmm> $$0, SuggestionsBuilder $$1, boolean $$2) {
+   public static CompletableFuture<Suggestions> a(ij<cms> $$0, SuggestionsBuilder $$1, boolean $$2) {
       StringReader $$3 = new StringReader($$1.getInput());
       $$3.setCursor($$1.getStart());
       ga $$4 = new ga($$0, $$3, $$2);
@@ -73,8 +73,8 @@ public class ga {
 
    private void a() throws CommandSyntaxException {
       int $$0 = this.h.getCursor();
-      ahd $$1 = ahd.a(this.h);
-      Optional<? extends ih<cmm>> $$2 = this.g.a(ahc.a(ke.F, $$1));
+      ahg $$1 = ahg.a(this.h);
+      Optional<? extends ih<cms>> $$2 = this.g.a(ahf.a(ke.F, $$1));
       this.j = Either.left($$2.orElseThrow(() -> {
          this.h.setCursor($$0);
          return b.createWithContext(this.h, $$1);
@@ -88,8 +88,8 @@ public class ga {
          int $$0 = this.h.getCursor();
          this.h.expect('#');
          this.l = this::b;
-         ahd $$1 = ahd.a(this.h);
-         Optional<? extends il<cmm>> $$2 = this.g.a(asq.a(ke.F, $$1));
+         ahg $$1 = ahg.a(this.h);
+         Optional<? extends il<cms>> $$2 = this.g.a(asv.a(ke.F, $$1));
          this.j = Either.right($$2.orElseThrow(() -> {
             this.h.setCursor($$0);
             return c.createWithContext(this.h, $$1);
@@ -98,7 +98,7 @@ public class ga {
    }
 
    private void c() throws CommandSyntaxException {
-      this.k = new tj(this.h).f();
+      this.k = new tl(this.h).f();
    }
 
    private void d() throws CommandSyntaxException {
@@ -130,11 +130,11 @@ public class ga {
    }
 
    private CompletableFuture<Suggestions> b(SuggestionsBuilder $$0) {
-      return dx.a(this.g.e().map(asq::b), $$0, String.valueOf('#'));
+      return dx.a(this.g.e().map(asv::b), $$0, String.valueOf('#'));
    }
 
    private CompletableFuture<Suggestions> c(SuggestionsBuilder $$0) {
-      return dx.a(this.g.c().map(ahc::a), $$0);
+      return dx.a(this.g.c().map(ahf::a), $$0);
    }
 
    private CompletableFuture<Suggestions> d(SuggestionsBuilder $$0) {
@@ -142,9 +142,9 @@ public class ga {
       return this.c($$0);
    }
 
-   public static record a(ih<cmm> a, @Nullable sl b) {
+   public static record a(ih<cms> a, @Nullable sn b) {
    }
 
-   public static record b(il<cmm> a, @Nullable sl b) {
+   public static record b(il<cms> a, @Nullable sn b) {
    }
 }

@@ -1,44 +1,49 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public abstract class dcr extends cym {
-   protected static final float f = 6.0F;
-   protected static final float g = 10.0F;
-   protected static final emf h = cwj.a(6.0, 0.0, 6.0, 10.0, 16.0, 10.0);
-   protected static final emf i = cwj.a(6.0, 6.0, 0.0, 10.0, 10.0, 16.0);
-   protected static final emf j = cwj.a(0.0, 6.0, 6.0, 16.0, 10.0, 10.0);
+public class dcr extends cwp {
+   public static final MapCodec<dcr> a = b(dcr::new);
+   public static final djx b = dcs.d;
 
-   protected dcr(diz.d $$0) {
+   @Override
+   public MapCodec<dcr> a() {
+      return a;
+   }
+
+   public dcr(djf.d $$0) {
       super($$0);
+      this.k(this.o().a(b, Boolean.valueOf(false)));
+   }
+
+   @Nullable
+   @Override
+   public djg a(cpg $$0) {
+      return this.o().a(b, Boolean.valueOf($$0.q().C($$0.a())));
    }
 
    @Override
-   protected abstract MapCodec<? extends dcr> a();
-
-   @Override
-   public emf a(dja $$0, cso $$1, hx $$2, elr $$3) {
-      switch ($$0.c(a).o()) {
-         case a:
-         default:
-            return j;
-         case c:
-            return i;
-         case b:
-            return h;
+   public void a(djg $$0, cto $$1, hx $$2, cwp $$3, hx $$4, boolean $$5) {
+      if (!$$1.B) {
+         boolean $$6 = $$0.c(b);
+         if ($$6 != $$1.C($$2)) {
+            if ($$6) {
+               $$1.a($$2, this, 4);
+            } else {
+               $$1.a($$2, $$0.a(b), 2);
+            }
+         }
       }
    }
 
    @Override
-   public dja a(dja $$0, dcv $$1) {
-      return $$0.a(a, $$1.a($$0.c(a)));
+   public void a(djg $$0, and $$1, hx $$2, auu $$3) {
+      if ($$0.c(b) && !$$1.C($$2)) {
+         $$1.a($$2, $$0.a(b), 2);
+      }
    }
 
    @Override
-   public dja a(dja $$0, dbf $$1) {
-      return $$0.a(a, $$1.b($$0.c(a)));
-   }
-
-   @Override
-   public boolean a(dja $$0, cso $$1, hx $$2, efa $$3) {
-      return false;
+   protected void a(djh.a<cwp, djg> $$0) {
+      $$0.a(b);
    }
 }

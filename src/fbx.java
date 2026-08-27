@@ -1,27 +1,27 @@
-public class fbx extends fct {
-   private final vd a;
+public class fbx extends fcz {
+   private exx a;
+   private final Runnable b;
+   private final Runnable c;
 
-   public fbx(vd $$0, vd $$1) {
-      super($$0);
-      this.a = $$1;
+   public fbx(Runnable $$0, Runnable $$1) {
+      super(vf.c("datapackFailure.title"));
+      this.a = exx.a;
+      this.b = $$0;
+      this.c = $$1;
    }
 
    @Override
    protected void aN_() {
       super.aN_();
-      this.d(ewy.a(vc.e, $$0 -> this.f.a(null)).a(this.g / 2 - 100, 140, 200, 20).a());
+      this.a = exx.a(this.i, this.o(), this.g - 50);
+      this.d(exe.a(vf.c("datapackFailure.safeMode"), $$0 -> this.c.run()).a(this.g / 2 - 155, this.h / 6 + 96, 150, 20).a());
+      this.d(exe.a(ve.k, $$0 -> this.b.run()).a(this.g / 2 - 155 + 160, this.h / 6 + 96, 150, 20).a());
    }
 
    @Override
-   public void a(ewm $$0, int $$1, int $$2, float $$3) {
+   public void a(ews $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 90, 16777215);
-      $$0.a(this.i, this.a, this.g / 2, 110, 16777215);
-   }
-
-   @Override
-   public void b(ewm $$0, int $$1, int $$2, float $$3) {
-      $$0.b(0, 0, this.g, this.h, -12574688, -11530224);
+      this.a.a($$0, this.g / 2, 70);
    }
 
    @Override

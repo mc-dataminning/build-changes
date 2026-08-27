@@ -1,17 +1,39 @@
-public class cbk {
-   private final int a;
-   private final int b;
-
-   public cbk(int $$0, int $$1) {
-      this.a = $$0;
-      this.b = $$1;
+public class cbk extends cbm {
+   public cbk(bly<? extends cbm> $$0, cto $$1) {
+      super($$0, $$1);
    }
 
-   public int a() {
-      return this.a;
+   public cbk(cto $$0, hx $$1, ic $$2) {
+      super(bly.T, $$0, $$1, $$2);
    }
 
-   public int b() {
-      return this.b;
+   @Override
+   public arq q() {
+      return arr.ka;
+   }
+
+   @Override
+   public arq s() {
+      return arr.jY;
+   }
+
+   @Override
+   public arq u() {
+      return arr.jZ;
+   }
+
+   @Override
+   public arq w() {
+      return arr.jX;
+   }
+
+   @Override
+   public arq x() {
+      return arr.kb;
+   }
+
+   @Override
+   protected cmx y() {
+      return new cmx(cna.tW);
    }
 }

@@ -1,43 +1,97 @@
-import com.mojang.logging.LogUtils;
-import java.util.concurrent.CancellationException;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionException;
-import java.util.concurrent.Executor;
-import java.util.function.Consumer;
-import org.slf4j.Logger;
+import java.io.IOException;
+import java.io.InputStream;
 
-public class atw implements avg, AutoCloseable {
-   private static final Logger b = LogUtils.getLogger();
-   private CompletableFuture<?> c = CompletableFuture.completedFuture(null);
-   private final Executor d;
-   private volatile boolean e;
+public class atw extends InputStream {
+   private static final int a = 8192;
+   private final InputStream b;
+   private final byte[] c;
+   private int d;
+   private int e;
 
-   public atw(Executor $$0) {
-      this.d = $$0;
+   public atw(InputStream $$0) {
+      this($$0, 8192);
+   }
+
+   public atw(InputStream $$0, int $$1) {
+      this.b = $$0;
+      this.c = new byte[$$1];
    }
 
    @Override
-   public <T> void append(CompletableFuture<T> $$0, Consumer<T> $$1) {
-      this.c = this.c.<T, Object>thenCombine($$0, ($$0x, $$1x) -> $$1x).thenAcceptAsync($$1x -> {
-         if (!this.e) {
-            $$1.accept((T)$$1x);
+   public int read() throws IOException {
+      if (this.e >= this.d) {
+         this.b();
+         if (this.e >= this.d) {
+            return -1;
          }
-      }, this.d).exceptionally($$0x -> {
-         if ($$0x instanceof CompletionException $$1x) {
-            $$0x = $$1x.getCause();
+      }
+
+      return Byte.toUnsignedInt(this.c[this.e++]);
+   }
+
+   @Override
+   public int read(byte[] $$0, int $$1, int $$2) throws IOException {
+      int $$3 = this.a();
+      if ($$3 <= 0) {
+         if ($$2 >= this.c.length) {
+            return this.b.read($$0, $$1, $$2);
          }
 
-         if ($$0x instanceof CancellationException $$2) {
-            throw $$2;
+         this.b();
+         $$3 = this.a();
+         if ($$3 <= 0) {
+            return -1;
+         }
+      }
+
+      if ($$2 > $$3) {
+         $$2 = $$3;
+      }
+
+      System.arraycopy(this.c, this.e, $$0, $$1, $$2);
+      this.e += $$2;
+      return $$2;
+   }
+
+   @Override
+   public long skip(long $$0) throws IOException {
+      if ($$0 <= 0L) {
+         return 0L;
+      } else {
+         long $$1 = (long)this.a();
+         if ($$1 <= 0L) {
+            return this.b.skip($$0);
          } else {
-            b.error("Chain link failed, continuing to next one", $$0x);
-            return null;
+            if ($$0 > $$1) {
+               $$0 = $$1;
+            }
+
+            this.e = (int)((long)this.e + $$0);
+            return $$0;
          }
-      });
+      }
    }
 
    @Override
-   public void close() {
-      this.e = true;
+   public int available() throws IOException {
+      return this.a() + this.b.available();
+   }
+
+   @Override
+   public void close() throws IOException {
+      this.b.close();
+   }
+
+   private int a() {
+      return this.d - this.e;
+   }
+
+   private void b() throws IOException {
+      this.d = 0;
+      this.e = 0;
+      int $$0 = this.b.read(this.c, 0, this.c.length);
+      if ($$0 > 0) {
+         this.d = $$0;
+      }
    }
 }

@@ -1,38 +1,117 @@
-public class fqx extends frn {
-   private final fri a;
+import com.mojang.blaze3d.systems.RenderSystem;
 
-   fqx(fnk $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fri $$7) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      this.B = 0.96F;
-      this.a = $$7;
-      this.d(1.0F);
-      this.n = false;
-      this.b($$7);
-   }
-
-   @Override
-   public int a(float $$0) {
-      return 240;
-   }
-
-   @Override
-   public fqr b() {
-      return fqr.c;
-   }
-
-   @Override
-   public void a() {
-      super.a();
-      this.b(this.a);
-   }
-
-   public static record a(fri a) implements fqq<ka> {
-      public fqn a(ka $$0, fnk $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fqx $$8 = new fqx($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-         $$8.e(1.0F);
-         $$8.b($$5, $$6, $$7);
-         $$8.a($$1.z.a(4) + 6);
-         return $$8;
+public interface fqx {
+   fqx a = new fqx() {
+      @Override
+      public void a(epu $$0, gem $$1) {
+         RenderSystem.enableBlend();
+         RenderSystem.defaultBlendFunc();
+         RenderSystem.depthMask(true);
+         RenderSystem.setShaderTexture(0, gek.e);
+         $$0.a(eqe.b.h, epx.l);
       }
-   }
+
+      @Override
+      public void a(eqb $$0) {
+         $$0.c();
+      }
+
+      @Override
+      public String toString() {
+         return "TERRAIN_SHEET";
+      }
+   };
+   fqx b = new fqx() {
+      @Override
+      public void a(epu $$0, gem $$1) {
+         RenderSystem.disableBlend();
+         RenderSystem.depthMask(true);
+         RenderSystem.setShader(fsy::u);
+         RenderSystem.setShaderTexture(0, gek.f);
+         $$0.a(eqe.b.h, epx.l);
+      }
+
+      @Override
+      public void a(eqb $$0) {
+         $$0.c();
+      }
+
+      @Override
+      public String toString() {
+         return "PARTICLE_SHEET_OPAQUE";
+      }
+   };
+   fqx c = new fqx() {
+      @Override
+      public void a(epu $$0, gem $$1) {
+         RenderSystem.depthMask(true);
+         RenderSystem.setShaderTexture(0, gek.f);
+         RenderSystem.enableBlend();
+         RenderSystem.defaultBlendFunc();
+         $$0.a(eqe.b.h, epx.l);
+      }
+
+      @Override
+      public void a(eqb $$0) {
+         $$0.c();
+      }
+
+      @Override
+      public String toString() {
+         return "PARTICLE_SHEET_TRANSLUCENT";
+      }
+   };
+   fqx d = new fqx() {
+      @Override
+      public void a(epu $$0, gem $$1) {
+         RenderSystem.disableBlend();
+         RenderSystem.depthMask(true);
+         RenderSystem.setShaderTexture(0, gek.f);
+         $$0.a(eqe.b.h, epx.l);
+      }
+
+      @Override
+      public void a(eqb $$0) {
+         $$0.c();
+      }
+
+      @Override
+      public String toString() {
+         return "PARTICLE_SHEET_LIT";
+      }
+   };
+   fqx e = new fqx() {
+      @Override
+      public void a(epu $$0, gem $$1) {
+         RenderSystem.depthMask(true);
+         RenderSystem.disableBlend();
+      }
+
+      @Override
+      public void a(eqb $$0) {
+      }
+
+      @Override
+      public String toString() {
+         return "CUSTOM";
+      }
+   };
+   fqx f = new fqx() {
+      @Override
+      public void a(epu $$0, gem $$1) {
+      }
+
+      @Override
+      public void a(eqb $$0) {
+      }
+
+      @Override
+      public String toString() {
+         return "NO_RENDER";
+      }
+   };
+
+   void a(epu var1, gem var2);
+
+   void a(eqb var1);
 }

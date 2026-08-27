@@ -1,19 +1,18 @@
-public final class bke implements bjy {
-   private final vd a;
-   private final cja b;
+import javax.annotation.Nullable;
 
-   public bke(cja $$0, vd $$1) {
-      this.b = $$0;
-      this.a = $$1;
+public interface bke {
+   vf ad();
+
+   default boolean ae() {
+      return this.af() != null;
    }
 
-   @Override
-   public vd Q_() {
-      return this.a;
+   default vf Q_() {
+      return this.ad();
    }
 
-   @Override
-   public chu createMenu(int $$0, cfa $$1, cfb $$2) {
-      return this.b.createMenu($$0, $$1, $$2);
+   @Nullable
+   default vf af() {
+      return null;
    }
 }

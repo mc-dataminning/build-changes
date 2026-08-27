@@ -11,7 +11,7 @@ public abstract class js implements jv {
 
    public js(Vector3f $$0, float $$1) {
       this.g = $$0;
-      this.h = aui.a($$1, 0.01F, 4.0F);
+      this.h = aun.a($$1, 0.01F, 4.0F);
    }
 
    public static Vector3f a(StringReader $$0) throws CommandSyntaxException {
@@ -24,12 +24,12 @@ public abstract class js implements jv {
       return new Vector3f($$1, $$2, $$3);
    }
 
-   public static Vector3f b(ug $$0) {
+   public static Vector3f b(ui $$0) {
       return new Vector3f($$0.readFloat(), $$0.readFloat(), $$0.readFloat());
    }
 
    @Override
-   public void a(ug $$0) {
+   public void a(ui $$0) {
       $$0.a(this.g.x());
       $$0.a(this.g.y());
       $$0.a(this.g.z());

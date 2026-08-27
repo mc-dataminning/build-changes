@@ -1,26 +1,19 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ecr extends ect {
-   public static final Codec<ecr> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(dja.b.fieldOf("block_state").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("probability").forGetter($$0x -> $$0x.d))
-            .apply($$0, ecr::new)
-   );
-   private final dja b;
-   private final float d;
+public class ecr extends ecs {
+   public static final Codec<ecr> a = Codec.unit(() -> ecr.b);
+   public static final ecr b = new ecr();
 
-   public ecr(dja $$0, float $$1) {
-      this.b = $$0;
-      this.d = $$1;
+   private ecr() {
    }
 
    @Override
-   public boolean a(dja $$0, aup $$1) {
-      return $$0 == this.b && $$1.i() < this.d;
+   public boolean a(hx $$0, hx $$1, hx $$2, auu $$3) {
+      return true;
    }
 
    @Override
-   protected ecu<?> a() {
-      return ecu.f;
+   protected ect<?> a() {
+      return ect.a;
    }
 }

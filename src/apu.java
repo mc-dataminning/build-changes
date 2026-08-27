@@ -1,19 +1,6 @@
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipFile;
+import java.util.function.Consumer;
 
 @FunctionalInterface
-public interface apu<T> {
-   static apu<InputStream> create(Path $$0) {
-      return () -> Files.newInputStream($$0);
-   }
-
-   static apu<InputStream> create(ZipFile $$0, ZipEntry $$1) {
-      return () -> $$0.getInputStream($$1);
-   }
-
-   T get() throws IOException;
+public interface apu {
+   void loadPacks(Consumer<app> var1);
 }

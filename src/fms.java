@@ -1,61 +1,228 @@
-import java.util.Set;
-import javax.annotation.Nullable;
-import org.joml.Vector3f;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
-public final class fms {
-   @Nullable
-   private final String a;
-   private final Vector3f b;
-   private final Vector3f c;
-   private final fmt d;
-   private final boolean e;
-   private final fmz f;
-   private final fmz g;
-   private final Set<ic> h;
+public class fms {
+   private static final fmz a = new fmz(0.008F);
+   private static final fmz b = new fmz(1.0F);
+   private static final fmz c = new fmz(0.5F);
 
-   protected fms(
-      @Nullable String $$0,
-      float $$1,
-      float $$2,
-      float $$3,
-      float $$4,
-      float $$5,
-      float $$6,
-      float $$7,
-      float $$8,
-      fmt $$9,
-      boolean $$10,
-      float $$11,
-      float $$12,
-      Set<ic> $$13
-   ) {
-      this.a = $$0;
-      this.f = new fmz($$1, $$2);
-      this.b = new Vector3f($$3, $$4, $$5);
-      this.c = new Vector3f($$6, $$7, $$8);
-      this.d = $$9;
-      this.e = $$10;
-      this.g = new fmz($$11, $$12);
-      this.h = $$13;
-   }
+   public static Map<fmt, fnb> a() {
+      Builder<fmt, fnb> $$0 = ImmutableMap.builder();
+      fnb $$1 = fnb.a(fki.a(fmz.a, 0.0F), 64, 64);
+      fnb $$2 = fnb.a(fkh.a(b), 64, 32);
+      fnb $$3 = fnb.a(fkh.a(new fmz(1.02F)), 64, 32);
+      fnb $$4 = fnb.a(fkh.a(c), 64, 32);
+      fnb $$5 = fkq.b();
+      fnb $$6 = flr.c();
+      fnb $$7 = fnb.a(fkg.a(fmz.a), 64, 64);
+      fnb $$8 = fkj.b();
+      fnb $$9 = fjo.c();
+      fnb $$10 = fnb.a(fkt.a(fmz.a), 64, 32);
+      fnb $$11 = fnb.a(fkz.a(fmz.a), 64, 64);
+      fnb $$12 = fnb.a(fky.a(), 64, 64);
+      fnb $$13 = flr.b();
+      fnb $$14 = fko.a(fmz.a);
+      fnb $$15 = fly.b();
+      fnb $$16 = fkf.c();
+      fnb $$17 = flq.c();
+      fnb $$18 = fnb.a(fmg.b(), 64, 64);
+      fnb $$19 = flw.b();
+      $$0.put(fmu.a, fit.b());
+      $$0.put(fmu.b, fix.c());
+      $$0.put(fmu.c, fiw.a(c));
+      $$0.put(fmu.d, fiw.a(b));
+      $$0.put(fmu.e, fiy.c());
+      $$0.put(fmu.f, fva.a());
+      $$0.put(fmu.g, fiz.b());
+      $$0.put(fmu.h, fvc.c());
+      $$0.put(fmu.i, fvc.b());
+      $$0.put(fmu.j, fja.c());
+      $$0.put(fmu.k, fvd.b());
+      $$0.put(fmu.l, fjb.b());
+      $$0.put(fmu.m, fjd.a());
+      $$0.put(fmu.n, fje.b());
+      $$0.put(fmu.p, fje.c());
+      $$0.put(fmu.o, fje.d());
+      $$0.put(fmu.q, $$10);
+      $$0.put(fmu.r, fnb.a(fkt.a(new fmz(0.01F)), 64, 32));
+      $$0.put(fmu.s, fjf.b());
+      $$0.put(fmu.t, $$19);
+      $$0.put(fmu.u, fvl.b());
+      $$0.put(fmu.v, $$5);
+      $$0.put(fmu.w, fjk.c());
+      $$0.put(fmu.x, fjl.b());
+      $$0.put(fmu.y, $$5);
+      $$0.put(fmu.A, fvm.b());
+      $$0.put(fmu.C, fvm.c());
+      $$0.put(fmu.B, fvm.d());
+      $$0.put(fmu.z, fvm.e());
+      $$0.put(fmu.D, $$9);
+      $$0.put(fmu.E, fjp.a(fmz.a));
+      $$0.put(fmu.F, fjp.a(new fmz(2.0F)));
+      $$0.put(fmu.G, $$6);
+      $$0.put(fmu.H, fvn.b());
+      $$0.put(fmu.I, fvn.c());
+      $$0.put(fmu.J, fjq.b());
+      $$0.put(fmu.K, fjj.c());
+      $$0.put(fmu.L, fvl.d());
+      $$0.put(fmu.M, fvl.c());
+      $$0.put(fmu.N, fmp.a());
+      $$0.put(fmu.O, fjr.a(fmz.a));
+      $$0.put(fmu.P, $$4);
+      $$0.put(fmu.Q, $$4);
+      $$0.put(fmu.R, fjr.a(new fmz(0.25F)));
+      $$0.put(fmu.S, fkc.b());
+      $$0.put(fmu.T, fjs.c());
+      $$0.put(fmu.U, fjt.c());
+      $$0.put(fmu.V, fju.b());
+      $$0.put(fmu.W, fyg.a());
+      $$0.put(fmu.X, fyf.a());
+      $$0.put(fmu.Y, $$8);
+      $$0.put(fmu.Z, fjw.b());
+      $$0.put(fmu.aa, fjx.c());
+      $$0.put(fmu.ab, fjy.b());
+      $$0.put(fmu.ac, $$5);
+      $$0.put(fmu.ad, fjz.b());
+      $$0.put(fmu.ae, $$1);
+      $$0.put(fmu.af, $$4);
+      $$0.put(fmu.ag, $$2);
+      $$0.put(fmu.ah, flx.b());
+      $$0.put(fmu.ai, fkb.c());
+      $$0.put(fmu.aj, fkc.b());
+      $$0.put(fmu.ak, $$16);
+      $$0.put(fmu.al, $$5);
+      $$0.put(fmu.am, $$7);
+      $$0.put(fmu.an, fnb.a(fkg.a(new fmz(0.1F)), 64, 64));
+      $$0.put(fmu.ao, $$1);
+      $$0.put(fmu.ap, $$4);
+      $$0.put(fmu.aq, $$2);
+      $$0.put(fmu.ar, $$8);
+      $$0.put(fmu.as, fkk.b());
+      $$0.put(fmu.at, fkm.b());
+      $$0.put(fmu.au, $$14);
+      $$0.put(fmu.av, fko.a(new fmz(0.5F)));
+      $$0.put(fmu.aw, fkp.b());
+      $$0.put(fmu.ax, fkl.b());
+      $$0.put(fmu.ay, $$5);
+      $$0.put(fmu.az, $$9);
+      $$0.put(fmu.aA, fjj.c());
+      $$0.put(fmu.aB, $$10);
+      $$0.put(fmu.aC, fku.c());
+      $$0.put(fmu.aD, fkv.b());
+      $$0.put(fmu.aE, fkw.b());
+      $$0.put(fmu.aF, fkx.a(fmz.a));
+      $$0.put(fmu.aN, fkx.a(new fmz(0.5F)));
+      $$0.put(fmu.aG, $$11);
+      $$0.put(fmu.aL, $$4);
+      $$0.put(fmu.aM, $$3);
+      $$0.put(fmu.aH, $$11);
+      $$0.put(fmu.aI, $$4);
+      $$0.put(fmu.aJ, $$3);
+      $$0.put(fmu.aK, $$12);
+      $$0.put(fmu.aO, $$8);
+      $$0.put(fmu.aP, fnb.a(fla.a(fmz.a, false), 64, 64));
+      $$0.put(fmu.aQ, $$13);
+      $$0.put(fmu.aR, $$4);
+      $$0.put(fmu.aS, $$2);
+      $$0.put(fmu.aT, fnb.a(fla.a(fmz.a, true), 64, 64));
+      $$0.put(fmu.aU, $$4);
+      $$0.put(fmu.aV, $$2);
+      $$0.put(fmu.aW, gdd.a());
+      $$0.put(fmu.aX, flb.c());
+      $$0.put(fmu.aY, flc.b());
+      $$0.put(fmu.aZ, fld.b());
+      $$0.put(fmu.ba, fle.b());
+      $$0.put(fmu.bb, flg.a());
+      $$0.put(fmu.bc, fli.b());
+      $$0.put(fmu.bd, flj.b());
+      $$0.put(fmu.be, fll.c());
+      $$0.put(fmu.bf, flk.c());
+      $$0.put(fmu.bg, flm.a());
+      $$0.put(fmu.bh, flo.a());
+      $$0.put(fmu.bi, fln.b());
+      $$0.put(fmu.bj, flp.b());
+      $$0.put(fmu.bk, $$17);
+      $$0.put(fmu.bm, $$4);
+      $$0.put(fmu.bn, $$2);
+      $$0.put(fmu.bl, $$7);
+      $$0.put(fmu.bo, $$6);
+      $$0.put(fmu.bp, flt.c());
+      $$0.put(fmu.bq, flt.b());
+      $$0.put(fmu.br, flu.b());
+      $$0.put(fmu.bs, flv.b());
+      $$0.put(fmu.bt, $$5);
+      $$0.put(fmu.bu, $$19);
+      $$0.put(fmu.bv, flx.b());
+      $$0.put(fmu.bw, $$17);
+      $$0.put(fmu.bx, $$4);
+      $$0.put(fmu.by, $$2);
+      $$0.put(fmu.bz, fnb.a(fki.a(new fmz(0.25F), 0.0F), 64, 32));
+      $$0.put(fmu.bA, $$15);
+      $$0.put(fmu.bB, $$15);
+      $$0.put(fmu.bC, flz.c());
+      $$0.put(fmu.bD, $$5);
+      $$0.put(fmu.bE, $$14);
+      $$0.put(fmu.bF, fma.a());
+      $$0.put(fmu.bG, fmc.a(fmz.a));
+      $$0.put(fmu.bH, fmc.a(a));
+      $$0.put(fmu.bI, fmb.a(fmz.a));
+      $$0.put(fmu.bJ, fmb.a(a));
+      $$0.put(fmu.bK, fmd.c());
+      $$0.put(fmu.bL, fme.b());
+      $$0.put(fmu.bM, $$18);
+      $$0.put(fmu.bN, $$8);
+      $$0.put(fmu.bO, fmh.b());
+      $$0.put(fmu.bP, $$18);
+      $$0.put(fmu.bQ, fmj.b());
+      $$0.put(fmu.bR, fmk.c());
+      $$0.put(fmu.bS, fml.a(fmz.a));
+      $$0.put(fmu.bT, fml.a(c));
+      $$0.put(fmu.bY, gbn.a());
+      $$0.put(fmu.bU, $$17);
+      $$0.put(fmu.bV, $$4);
+      $$0.put(fmu.bW, $$2);
+      $$0.put(fmu.bX, $$6);
+      $$0.put(fmu.bZ, fmm.c());
+      $$0.put(fmu.ca, $$16);
+      $$0.put(fmu.cb, $$1);
+      $$0.put(fmu.ce, $$4);
+      $$0.put(fmu.cf, $$2);
+      $$0.put(fmu.cc, $$13);
+      $$0.put(fmu.cd, $$7);
+      $$0.put(fmu.cg, fmo.c());
+      $$0.put(fmu.ch, fmo.a(c));
+      $$0.put(fmu.ci, fmo.a(b));
+      $$0.put(fmu.cj, $$11);
+      $$0.put(fmu.ck, $$4);
+      $$0.put(fmu.cl, $$3);
+      fnb $$20 = fjc.a();
+      fnb $$21 = fjh.e();
+      fnb $$22 = flh.b();
+      fnb $$23 = fji.a();
 
-   public fmp.a a(int $$0, int $$1) {
-      return new fmp.a(
-         (int)this.f.a(),
-         (int)this.f.b(),
-         this.b.x(),
-         this.b.y(),
-         this.b.z(),
-         this.c.x(),
-         this.c.y(),
-         this.c.z(),
-         this.d.b,
-         this.d.c,
-         this.d.d,
-         this.e,
-         (float)$$0 * this.g.a(),
-         (float)$$1 * this.g.b(),
-         this.h
-      );
+      for (chb.b $$24 : chb.b.values()) {
+         if ($$24 == chb.b.i) {
+            $$0.put(fmu.c($$24), $$22);
+            $$0.put(fmu.d($$24), $$23);
+         } else {
+            $$0.put(fmu.c($$24), $$20);
+            $$0.put(fmu.d($$24), $$21);
+         }
+      }
+
+      fnb $$25 = fvt.f();
+      dkt.a().forEach($$2x -> $$0.put(fmu.a($$2x), $$25));
+      fnb $$26 = fvp.e();
+      dkt.a().forEach($$2x -> $$0.put(fmu.b($$2x), $$26));
+      ImmutableMap<fmt, fnb> $$27 = $$0.build();
+      List<fmt> $$28 = fmu.a().filter($$1x -> !$$27.containsKey($$1x)).collect(Collectors.toList());
+      if (!$$28.isEmpty()) {
+         throw new IllegalStateException("Missing layer definitions: " + $$28);
+      } else {
+         return $$27;
+      }
    }
 }

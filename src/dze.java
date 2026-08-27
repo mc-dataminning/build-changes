@@ -1,8 +1,29 @@
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public interface dze {
-   void a(dzd var1);
+public abstract class dze extends dzf {
+   private final dze.a d;
+   private final int e;
+   private final int f;
 
-   @Nullable
-   dzd a(dyr var1);
+   protected dze(dze.a $$0, int $$1, int $$2, dzf.c $$3) {
+      super($$3);
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+   }
+
+   @Override
+   public Optional<dzf.b> a(dzf.a $$0) {
+      return a($$0, this.e, this.f) < $$0.b().e() ? Optional.empty() : a($$0, dop.a.a, $$1 -> this.a($$1, $$0));
+   }
+
+   private void a(dzx $$0, dzf.a $$1) {
+      csv $$2 = $$1.h();
+      $$0.a(this.d.construct($$1.f(), $$2.d(), $$2.e()));
+   }
+
+   @FunctionalInterface
+   protected interface a {
+      dzj construct(dpo var1, int var2, int var3);
+   }
 }

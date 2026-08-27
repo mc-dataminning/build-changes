@@ -1,58 +1,33 @@
-public class cmf extends cmm {
-   private static final int a = 40;
+public class cmf<T extends blu & bmh> extends cms {
+   private final bly<T> a;
+   private final int b;
 
-   public cmf(cmm.a $$0) {
+   public cmf(cms.a $$0, bly<T> $$1, int $$2) {
       super($$0);
+      this.a = $$1;
+      this.b = $$2;
    }
 
    @Override
-   public cmr a(cmr $$0, cti $$1, bmf $$2) {
-      super.a($$0, $$1, $$2);
-      if ($$2 instanceof ana $$3) {
-         am.A.a($$3, $$0);
-         $$3.b(arw.c.b(this));
-      }
-
-      if (!$$1.B) {
-         $$2.d(ble.s);
-      }
-
-      if ($$0.b()) {
-         return new cmr(cmu.si);
+   public bkb<cmx> a(cto $$0, cfh $$1, bjz $$2) {
+      cmx $$3 = $$1.b($$2);
+      if ($$0.B) {
+         return bkb.c($$3);
       } else {
-         if ($$2 instanceof cfb $$4 && !$$4.fT().d) {
-            cmr $$5 = new cmr(cmu.si);
-            if (!$$4.fS().e($$5)) {
-               $$4.a($$5, false);
+         blu $$4 = $$1.da();
+         if ($$1.bO() && $$4 instanceof bmh $$5 && $$4.ai() == this.a && $$5.a()) {
+            $$3.a(this.b, $$1, $$1x -> $$1x.d($$2));
+            if ($$3.b()) {
+               cmx $$6 = new cmx(cna.qS);
+               $$6.c($$3.v());
+               return bkb.a($$6);
             }
+
+            return bkb.a($$3);
          }
 
-         return $$0;
+         $$1.b(asb.c.b(this));
+         return bkb.c($$3);
       }
-   }
-
-   @Override
-   public int b(cmr $$0) {
-      return 40;
-   }
-
-   @Override
-   public cok c(cmr $$0) {
-      return cok.c;
-   }
-
-   @Override
-   public arl an_() {
-      return arm.lP;
-   }
-
-   @Override
-   public arl ao_() {
-      return arm.lP;
-   }
-
-   @Override
-   public bjw<cmr> a(cti $$0, cfb $$1, bju $$2) {
-      return cmt.a($$0, $$1, $$2);
    }
 }

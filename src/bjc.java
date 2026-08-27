@@ -1,25 +1,44 @@
-import java.util.Arrays;
+import com.mojang.serialization.Codec;
 
-public class bjc implements bjd {
-   private final bjd[] a;
+public class bjc extends bjf {
+   public static final bjc a = new bjc(0);
+   public static final Codec<bjc> b = atv.e(Codec.INT, Codec.INT.fieldOf("value").codec()).xmap(bjc::new, bjc::d);
+   private final int f;
 
-   public bjc(bjd... $$0) {
-      this.a = $$0;
+   public static bjc a(int $$0) {
+      return $$0 == 0 ? a : new bjc($$0);
+   }
+
+   private bjc(int $$0) {
+      this.f = $$0;
+   }
+
+   public int d() {
+      return this.f;
    }
 
    @Override
-   public float a(aup $$0) {
-      float $$1 = 1.0F;
+   public int a(auu $$0) {
+      return this.f;
+   }
 
-      for (bjd $$2 : this.a) {
-         $$1 *= $$2.a($$0);
-      }
+   @Override
+   public int a() {
+      return this.f;
+   }
 
-      return $$1;
+   @Override
+   public int b() {
+      return this.f;
+   }
+
+   @Override
+   public bjg<?> c() {
+      return bjg.a;
    }
 
    @Override
    public String toString() {
-      return "MultipliedFloats" + Arrays.toString((Object[])this.a);
+      return Integer.toString(this.f);
    }
 }

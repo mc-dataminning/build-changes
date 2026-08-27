@@ -1,43 +1,19 @@
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
-public class dul implements dtr {
+public class dul implements dtx {
    public static final Codec<dul> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.BOOL.fieldOf("crystal_invulnerable").orElse(false).forGetter($$0x -> $$0x.b),
-               dsx.a.a.listOf().fieldOf("spikes").forGetter($$0x -> $$0x.c),
-               hx.a.optionalFieldOf("crystal_beam_target").forGetter($$0x -> Optional.ofNullable($$0x.d))
-            )
-            .apply($$0, dul::new)
+      $$0 -> $$0.group(Codec.list(duf.a.a).fieldOf("targets").forGetter($$0x -> $$0x.b)).apply($$0, dul::new)
    );
-   private final boolean b;
-   private final List<dsx.a> c;
-   @Nullable
-   private final hx d;
+   public final List<duf.a> b;
 
-   public dul(boolean $$0, List<dsx.a> $$1, @Nullable hx $$2) {
-      this($$0, $$1, Optional.ofNullable($$2));
+   public dul(djg $$0, djg $$1) {
+      this(ImmutableList.of(duf.a(new eck($$0), $$1)));
    }
 
-   private dul(boolean $$0, List<dsx.a> $$1, Optional<hx> $$2) {
+   public dul(List<duf.a> $$0) {
       this.b = $$0;
-      this.c = $$1;
-      this.d = $$2.orElse(null);
-   }
-
-   public boolean a() {
-      return this.b;
-   }
-
-   public List<dsx.a> b() {
-      return this.c;
-   }
-
-   @Nullable
-   public hx c() {
-      return this.d;
    }
 }

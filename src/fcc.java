@@ -1,118 +1,76 @@
-public class fcc extends fcl {
-   private static final vd c = vd.c("options.languageAccuracyWarning").a(n.h);
-   private fcc.a k;
-   final gfn l;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
 
-   public fcc(fct $$0, eve $$1, gfn $$2) {
-      super($$0, $$1, vd.c("options.language.title"));
+public class fcc extends fcz {
+   private static final vf a = vf.c("addServer.enterName");
+   private static final vf b = vf.c("addServer.enterIp");
+   private exe c;
+   private final BooleanConsumer k;
+   private final fob l;
+   private exn m;
+   private exn n;
+   private final fcz o;
+
+   public fcc(fcz $$0, BooleanConsumer $$1, fob $$2) {
+      super(vf.c("addServer.title"));
+      this.o = $$0;
+      this.k = $$1;
       this.l = $$2;
    }
 
    @Override
    protected void aN_() {
-      this.k = this.d(new fcc.a(this.f));
-      this.d(this.b.N().a(this.b, this.g / 2 - 155, this.h - 38, 150));
-      this.d(ewy.a(vc.d, $$0 -> this.n()).a(this.g / 2 - 155 + 160, this.h - 38, 150, 20).a());
-   }
-
-   void n() {
-      fcc.a.a $$0 = this.k.i();
-      if ($$0 != null && !$$0.b.equals(this.l.a())) {
-         this.l.a($$0.b);
-         this.b.ad = $$0.b;
-         this.f.k();
-         this.b.as();
-      }
-
-      this.f.a(this.a);
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (faw.a($$0)) {
-         fcc.a.a $$3 = this.k.i();
-         if ($$3 != null) {
-            $$3.b();
-            this.n();
-            return true;
-         }
-      }
-
-      return super.a($$0, $$1, $$2);
+      this.n = new exn(this.i, this.g / 2 - 100, 66, 200, 20, vf.c("addServer.enterName"));
+      this.n.a(this.l.a);
+      this.n.b($$0 -> this.C());
+      this.e(this.n);
+      this.m = new exn(this.i, this.g / 2 - 100, 106, 200, 20, vf.c("addServer.enterIp"));
+      this.m.f(128);
+      this.m.a(this.l.b);
+      this.m.b($$0 -> this.C());
+      this.e(this.m);
+      this.d(
+         exl.a(fob.a::a)
+            .a(fob.a.values())
+            .a(this.l.b())
+            .a(this.g / 2 - 100, this.h / 4 + 72, 200, 20, vf.c("addServer.resourcePack"), ($$0, $$1) -> this.l.a($$1))
+      );
+      this.c = this.d(exe.a(vf.c("addServer.add"), $$0 -> this.n()).a(this.g / 2 - 100, this.h / 4 + 96 + 18, 200, 20).a());
+      this.d(exe.a(ve.e, $$0 -> this.k.accept(false)).a(this.g / 2 - 100, this.h / 4 + 120 + 18, 200, 20).a());
+      this.c(this.n);
+      this.C();
    }
 
    @Override
-   public void a(ewm $$0, int $$1, int $$2, float $$3) {
+   public void a(evg $$0, int $$1, int $$2) {
+      String $$3 = this.m.a();
+      String $$4 = this.n.a();
+      this.b($$0, $$1, $$2);
+      this.m.a($$3);
+      this.n.a($$4);
+   }
+
+   private void n() {
+      this.l.a = this.n.a();
+      this.l.b = this.m.a();
+      this.k.accept(true);
+   }
+
+   @Override
+   public void aE_() {
+      this.f.a(this.o);
+   }
+
+   private void C() {
+      this.c.j = fpd.b(this.m.a()) && !this.n.a().isEmpty();
+   }
+
+   @Override
+   public void a(ews $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 16, 16777215);
-      $$0.a(this.i, c, this.g / 2, this.h - 56, -8355712);
-   }
-
-   @Override
-   public void b(ewm $$0, int $$1, int $$2, float $$3) {
-      this.b($$0);
-   }
-
-   class a extends exu<fcc.a.a> {
-      public a(eva $$0) {
-         super($$0, fcc.this.g, fcc.this.h - 93, 32, 18);
-         String $$1 = fcc.this.l.a();
-         fcc.this.l.b().forEach(($$1x, $$2) -> {
-            fcc.a.a $$3 = new fcc.a.a($$1x, $$2);
-            this.b($$3);
-            if ($$1.equals($$1x)) {
-               this.a($$3);
-            }
-         });
-         if (this.i() != null) {
-            this.e(this.i());
-         }
-      }
-
-      @Override
-      protected int c() {
-         return super.c() + 20;
-      }
-
-      @Override
-      public int b() {
-         return super.b() + 50;
-      }
-
-      public class a extends exu.a<fcc.a.a> {
-         final String b;
-         private final vd c;
-         private long d;
-
-         public a(String $$1, gfm $$2) {
-            this.b = $$1;
-            this.c = $$2.a();
-         }
-
-         @Override
-         public void a(ewm $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-            $$0.a(fcc.this.i, this.c, a.this.g / 2, $$2 + 1, 16777215);
-         }
-
-         @Override
-         public boolean a(double $$0, double $$1, int $$2) {
-            this.b();
-            if (ac.b() - this.d < 250L) {
-               fcc.this.n();
-            }
-
-            this.d = ac.b();
-            return true;
-         }
-
-         void b() {
-            a.this.a(this);
-         }
-
-         @Override
-         public vd a() {
-            return vd.a("narrator.select", this.c);
-         }
-      }
+      $$0.a(this.i, this.e, this.g / 2, 17, 16777215);
+      $$0.b(this.i, a, this.g / 2 - 100 + 1, 53, 10526880);
+      $$0.b(this.i, b, this.g / 2 - 100 + 1, 94, 10526880);
+      this.n.a($$0, $$1, $$2, $$3);
+      this.m.a($$0, $$1, $$2, $$3);
    }
 }

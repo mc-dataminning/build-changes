@@ -1,8 +1,8 @@
-public interface afh extends adh {
-   @Override
-   default uf b() {
-      return uf.a;
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   void a(afg var1);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface afh {
 }

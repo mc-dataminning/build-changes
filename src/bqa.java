@@ -1,48 +1,34 @@
 import com.mojang.datafixers.kinds.App;
 import java.util.Optional;
 import java.util.function.Function;
+import java.util.function.Predicate;
 
 public class bqa {
-   public static bnx<bmo> a(bvh<hx> $$0, float $$1, int $$2, boolean $$3) {
-      return a($$0, $$1, $$2, $$3, elm::c);
+   public static boc<bmk> a(bmn $$0, float $$1) {
+      return a($$1x -> $$0.equals($$1x.ai().f()), $$1);
    }
 
-   public static bph<bmo> b(bvh<? extends blp> $$0, float $$1, int $$2, boolean $$3) {
-      return a($$0, $$1, $$2, $$3, blp::dk);
+   public static bpm<bmk> a(bly<?> $$0, float $$1) {
+      return a($$1x -> $$0.equals($$1x.ai()), $$1);
    }
 
-   private static <T> bph<bmo> a(bvh<T> $$0, float $$1, int $$2, boolean $$3, Function<T, elm> $$4) {
-      return brj.a(
-         (Function<brj.b<bmo>, ? extends App<brj.c<bmo>, brm<bmo>>>)($$5 -> $$5.group($$5.a(bvh.m), $$5.b($$0)).apply($$5, ($$5x, $$6) -> ($$7, $$8, $$9) -> {
-                  Optional<bvk> $$10 = $$5.a($$5x);
-                  if ($$10.isPresent() && !$$3) {
-                     return false;
-                  } else {
-                     elm $$11 = $$8.dk();
-                     elm $$12 = $$4.apply($$5.b($$6));
-                     if (!$$11.a((ir)$$12, (double)$$2)) {
+   public static bpm<bmk> a(float $$0) {
+      return a($$0x -> true, $$0);
+   }
+
+   public static bpm<bmk> a(Predicate<bmk> $$0, float $$1) {
+      float $$2 = $$1 * $$1;
+      return bro.a(
+         (Function<bro.b<bmk>, ? extends App<bro.c<bmk>, brr<bmk>>>)($$2x -> $$2x.group($$2x.c(bvm.n), $$2x.b(bvm.h))
+               .apply($$2x, ($$3, $$4) -> ($$5, $$6, $$7) -> {
+                     Optional<bmk> $$8 = $$2x.<bvo>b($$4).a($$0.and($$2xxxx -> $$2xxxx.f((blu)$$6) <= (double)$$2 && !$$6.x($$2xxxx)));
+                     if ($$8.isEmpty()) {
                         return false;
                      } else {
-                        if ($$10.isPresent() && $$10.get().b() == $$1) {
-                           elm $$13 = $$10.get().a().a().d($$11);
-                           elm $$14 = $$12.d($$11);
-                           if ($$13.b($$14) < 0.0) {
-                              return false;
-                           }
-                        }
-
-                        for (int $$15 = 0; $$15 < 10; $$15++) {
-                           elm $$16 = bxa.b($$8, 16, 7, $$12);
-                           if ($$16 != null) {
-                              $$5x.a(new bvk($$16, $$1, 0));
-                              break;
-                           }
-                        }
-
+                        $$3.a(new bom($$8.get(), true));
                         return true;
                      }
-                  }
-               }))
+                  }))
       );
    }
 }

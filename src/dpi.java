@@ -1,84 +1,47 @@
-import java.util.function.LongFunction;
+import java.util.concurrent.atomic.AtomicLong;
 
-public class dpi extends dok {
-   private final aup d;
-   private int e;
+@Deprecated
+public class dpi implements doe {
+   private static final int d = 48;
+   private static final long e = 281474976710655L;
+   private static final long f = 25214903917L;
+   private static final long g = 11L;
+   private final AtomicLong h = new AtomicLong();
+   private final dor i = new dor(this);
 
-   public dpi(aup $$0) {
-      super(0L);
-      this.d = $$0;
-   }
-
-   public int l() {
-      return this.e;
-   }
-
-   @Override
-   public aup d() {
-      return this.d.d();
+   public dpi(long $$0) {
+      this.b($$0);
    }
 
    @Override
-   public dow e() {
-      return this.d.e();
+   public auu d() {
+      return new dpi(this.g());
+   }
+
+   @Override
+   public dpc e() {
+      return new doq.a(this.g());
+   }
+
+   @Override
+   public void b(long $$0) {
+      this.h.set(($$0 ^ 25214903917L) & 281474976710655L);
    }
 
    @Override
    public int c(int $$0) {
-      this.e++;
-      return this.d instanceof dok $$1 ? $$1.c($$0) : (int)(this.d.g() >>> 64 - $$0);
+      long $$1;
+      long $$2;
+      do {
+         $$1 = this.h.get();
+         $$2 = $$1 * 25214903917L + 11L & 281474976710655L;
+      } while (!this.h.compareAndSet($$1, $$2));
+
+      return (int)($$2 >>> 48 - $$0);
    }
 
    @Override
-   public synchronized void b(long $$0) {
-      if (this.d != null) {
-         this.d.b($$0);
-      }
-   }
-
-   public long a(long $$0, int $$1, int $$2) {
-      this.b($$0);
-      long $$3 = this.g() | 1L;
-      long $$4 = this.g() | 1L;
-      long $$5 = (long)$$1 * $$3 + (long)$$2 * $$4 ^ $$0;
-      this.b($$5);
-      return $$5;
-   }
-
-   public void b(long $$0, int $$1, int $$2) {
-      long $$3 = $$0 + (long)$$1 + (long)(10000 * $$2);
-      this.b($$3);
-   }
-
-   public void c(long $$0, int $$1, int $$2) {
-      this.b($$0);
-      long $$3 = this.g();
-      long $$4 = this.g();
-      long $$5 = (long)$$1 * $$3 ^ (long)$$2 * $$4 ^ $$0;
-      this.b($$5);
-   }
-
-   public void a(long $$0, int $$1, int $$2, int $$3) {
-      long $$4 = (long)$$1 * 341873128712L + (long)$$2 * 132897987541L + $$0 + (long)$$3;
-      this.b($$4);
-   }
-
-   public static aup a(int $$0, int $$1, long $$2, long $$3) {
-      return aup.a($$2 + (long)($$0 * $$0 * 4987142) + (long)($$0 * 5947611) + (long)($$1 * $$1) * 4392871L + (long)($$1 * 389711) ^ $$3);
-   }
-
-   public static enum a {
-      a(dok::new),
-      b(dpk::new);
-
-      private final LongFunction<aup> c;
-
-      private a(LongFunction<aup> $$0) {
-         this.c = $$0;
-      }
-
-      public aup a(long $$0) {
-         return this.c.apply($$0);
-      }
+   public double k() {
+      return this.i.b();
    }
 }

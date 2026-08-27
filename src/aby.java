@@ -1,40 +1,32 @@
-import java.util.Objects;
-import javax.annotation.Nullable;
+public class aby implements xf<za> {
+   private final int a;
+   private final int b;
 
-public class aby implements xd<yx> {
-   private final emh a;
-   private final String b;
-
-   public aby(emh $$0, @Nullable emi $$1) {
+   public aby(int $$0, int $$1) {
       this.a = $$0;
-      if ($$1 == null) {
-         this.b = "";
-      } else {
-         this.b = $$1.b();
-      }
+      this.b = $$1;
    }
 
-   public aby(ug $$0) {
-      this.a = $$0.a(emh.u);
-      this.b = $$0.s();
+   public aby(ui $$0) {
+      this.a = $$0.n();
+      this.b = $$0.n();
    }
 
    @Override
-   public void a(ug $$0) {
-      $$0.a(emh::a, this.a);
-      $$0.a(this.b);
+   public void a(ui $$0) {
+      $$0.c(this.a);
+      $$0.c(this.b);
    }
 
-   public void a(yx $$0) {
+   public void a(za $$0) {
       $$0.a(this);
    }
 
-   public emh a() {
+   public int a() {
       return this.a;
    }
 
-   @Nullable
-   public String d() {
-      return Objects.equals(this.b, "") ? null : this.b;
+   public int d() {
+      return this.b;
    }
 }

@@ -1,82 +1,56 @@
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.BoolArgumentType;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Collection;
-import java.util.Collections;
+import javax.annotation.Nullable;
 
 public class akf {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vd.c("commands.recipe.give.failed"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(vd.c("commands.recipe.take.failed"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vf.c("commands.publish.failed"));
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> vf.b("commands.publish.alreadyPublished", $$0));
 
    public static void a(CommandDispatcher<ds> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("recipe").requires($$0x -> $$0x.c(2)))
-               .then(
-                  dt.a("give")
-                     .then(
-                        ((RequiredArgumentBuilder)dt.a("targets", ef.d())
-                              .then(
-                                 dt.a("recipe", et.a())
-                                    .suggests(hn.b)
-                                    .executes($$0x -> a((ds)$$0x.getSource(), ef.f($$0x, "targets"), Collections.singleton(et.b($$0x, "recipe"))))
-                              ))
-                           .then(dt.a("*").executes($$0x -> a((ds)$$0x.getSource(), ef.f($$0x, "targets"), ((ds)$$0x.getSource()).l().aG().b())))
-                     )
-               ))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("publish").requires($$0x -> $$0x.c(4)))
+               .executes($$0x -> a((ds)$$0x.getSource(), aue.a(), false, null)))
             .then(
-               dt.a("take")
+               ((RequiredArgumentBuilder)dt.a("allowCommands", BoolArgumentType.bool())
+                     .executes($$0x -> a((ds)$$0x.getSource(), aue.a(), BoolArgumentType.getBool($$0x, "allowCommands"), null)))
                   .then(
-                     ((RequiredArgumentBuilder)dt.a("targets", ef.d())
-                           .then(
-                              dt.a("recipe", et.a())
-                                 .suggests(hn.b)
-                                 .executes($$0x -> b((ds)$$0x.getSource(), ef.f($$0x, "targets"), Collections.singleton(et.b($$0x, "recipe"))))
-                           ))
-                        .then(dt.a("*").executes($$0x -> b((ds)$$0x.getSource(), ef.f($$0x, "targets"), ((ds)$$0x.getSource()).l().aG().b())))
+                     ((RequiredArgumentBuilder)dt.a("gamemode", eg.a())
+                           .executes($$0x -> a((ds)$$0x.getSource(), aue.a(), BoolArgumentType.getBool($$0x, "allowCommands"), eg.a($$0x, "gamemode"))))
+                        .then(
+                           dt.a("port", IntegerArgumentType.integer(0, 65535))
+                              .executes(
+                                 $$0x -> a(
+                                       (ds)$$0x.getSource(),
+                                       IntegerArgumentType.getInteger($$0x, "port"),
+                                       BoolArgumentType.getBool($$0x, "allowCommands"),
+                                       eg.a($$0x, "gamemode")
+                                    )
+                              )
+                        )
                   )
             )
       );
    }
 
-   private static int a(ds $$0, Collection<ana> $$1, Collection<cpx<?>> $$2) throws CommandSyntaxException {
-      int $$3 = 0;
-
-      for (ana $$4 : $$1) {
-         $$3 += $$4.a($$2);
-      }
-
-      if ($$3 == 0) {
+   private static int a(ds $$0, int $$1, boolean $$2, @Nullable ctl $$3) throws CommandSyntaxException {
+      if ($$0.l().p()) {
+         throw b.create($$0.l().O());
+      } else if (!$$0.l().a($$3, $$2, $$1)) {
          throw a.create();
       } else {
-         if ($$1.size() == 1) {
-            $$0.a(() -> vd.a("commands.recipe.give.success.single", $$2.size(), $$1.iterator().next().Q_()), true);
-         } else {
-            $$0.a(() -> vd.a("commands.recipe.give.success.multiple", $$2.size(), $$1.size()), true);
-         }
-
-         return $$3;
+         $$0.a(() -> a($$1), true);
+         return $$1;
       }
    }
 
-   private static int b(ds $$0, Collection<ana> $$1, Collection<cpx<?>> $$2) throws CommandSyntaxException {
-      int $$3 = 0;
-
-      for (ana $$4 : $$1) {
-         $$3 += $$4.b($$2);
-      }
-
-      if ($$3 == 0) {
-         throw b.create();
-      } else {
-         if ($$1.size() == 1) {
-            $$0.a(() -> vd.a("commands.recipe.take.success.single", $$2.size(), $$1.iterator().next().Q_()), true);
-         } else {
-            $$0.a(() -> vd.a("commands.recipe.take.success.multiple", $$2.size(), $$1.size()), true);
-         }
-
-         return $$3;
-      }
+   public static vt a(int $$0) {
+      vf $$1 = vi.a(String.valueOf($$0));
+      return vf.a("commands.publish.started", $$1);
    }
 }

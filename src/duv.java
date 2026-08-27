@@ -1,39 +1,22 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.OptionalInt;
 
-public class duv extends dus {
-   public static final Codec<duv> d = RecordCodecBuilder.create(
+public class duv implements dtx {
+   public static final Codec<duv> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               Codec.intRange(0, 81).fieldOf("limit").orElse(1).forGetter($$0x -> $$0x.e),
-               Codec.intRange(0, 16).fieldOf("lower_size").orElse(0).forGetter($$0x -> $$0x.f),
-               Codec.intRange(0, 16).fieldOf("upper_size").orElse(1).forGetter($$0x -> $$0x.g),
-               a()
+               Codec.intRange(0, 512).fieldOf("floor_search_range").forGetter($$0x -> $$0x.b),
+               Codec.intRange(0, 64).fieldOf("placement_radius_around_floor").forGetter($$0x -> $$0x.c),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("placement_probability_per_valid_position").forGetter($$0x -> $$0x.d)
             )
             .apply($$0, duv::new)
    );
-   private final int e;
-   private final int f;
-   private final int g;
+   public final int b;
+   public final int c;
+   public final float d;
 
-   public duv(int $$0, int $$1, int $$2) {
-      this($$0, $$1, $$2, OptionalInt.empty());
-   }
-
-   public duv(int $$0, int $$1, int $$2, OptionalInt $$3) {
-      super($$3);
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
-   }
-
-   @Override
-   protected dut<?> b() {
-      return dut.a;
-   }
-
-   @Override
-   public int a(int $$0, int $$1) {
-      return $$1 < this.e ? this.f : this.g;
+   public duv(int $$0, int $$1, float $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 }

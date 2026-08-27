@@ -1,3 +1,8 @@
-public interface fip {
-   void a(blz var1, ept var2);
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface fip {
 }

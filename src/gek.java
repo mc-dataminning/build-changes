@@ -1,75 +1,156 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
+import com.mojang.blaze3d.platform.TextureUtil;
+import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.JsonOps;
-import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.Writer;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.function.Function;
-import java.util.function.Predicate;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class gek {
-   private static final Logger a = LogUtils.getLogger();
-   private static final agw b = new agw("atlases", ".json");
-   private final List<gej> c;
+public class gek extends gdw implements gdx, gen {
+   private static final Logger g = LogUtils.getLogger();
+   @Deprecated
+   public static final ahg e = cjb.v;
+   @Deprecated
+   public static final ahg f = new ahg("textures/atlas/particles.png");
+   private List<gef> h = List.of();
+   private List<gel.a> i = List.of();
+   private Map<ahg, gel> j = Map.of();
+   @Nullable
+   private gel k;
+   private final ahg l;
+   private final int m;
+   private int n;
+   private int o;
+   private int p;
 
-   private gek(List<gej> $$0) {
-      this.c = $$0;
+   public gek(ahg $$0) {
+      this.l = $$0;
+      this.m = RenderSystem.maxSupportedTextureSize();
    }
 
-   public List<Function<gei, gdz>> a(aqc $$0) {
-      final Map<ahd, gej.b> $$1 = new HashMap<>();
-      gej.a $$2 = new gej.a() {
-         @Override
-         public void a(ahd $$0, gej.b $$1x) {
-            gej.b $$2 = $$1.put($$0, $$1);
-            if ($$2 != null) {
-               $$2.a();
+   @Override
+   public void a(aqh $$0) {
+   }
+
+   public void a(geg.a $$0) {
+      g.info("Created: {}x{}x{} {}-atlas", new Object[]{$$0.b(), $$0.c(), $$0.d(), this.l});
+      TextureUtil.prepareImage(this.a(), $$0.d(), $$0.b(), $$0.c());
+      this.n = $$0.b();
+      this.o = $$0.c();
+      this.p = $$0.d();
+      this.f();
+      this.j = Map.copyOf($$0.f());
+      this.k = this.j.get(geb.b());
+      if (this.k == null) {
+         throw new IllegalStateException("Atlas '" + this.l + "' (" + this.j.size() + " sprites) has no missing texture sprite");
+      } else {
+         List<gef> $$1 = new ArrayList<>();
+         List<gel.a> $$2 = new ArrayList<>();
+
+         for (gel $$3 : $$0.f().values()) {
+            $$1.add($$3.e());
+
+            try {
+               $$3.j();
+            } catch (Throwable var9) {
+               o $$5 = o.a(var9, "Stitching texture atlas");
+               p $$6 = $$5.a("Texture being stitched together");
+               $$6.a("Atlas path", this.l);
+               $$6.a("Sprite", $$3);
+               throw new y($$5);
+            }
+
+            gel.a $$7 = $$3.f();
+            if ($$7 != null) {
+               $$2.add($$7);
             }
          }
 
-         @Override
-         public void a(Predicate<ahd> $$0) {
-            Iterator<Entry<ahd, gej.b>> $$1 = $$1.entrySet().iterator();
-
-            while ($$1.hasNext()) {
-               Entry<ahd, gej.b> $$2 = $$1.next();
-               if ($$0.test($$2.getKey())) {
-                  $$2.getValue().a();
-                  $$1.remove();
-               }
-            }
-         }
-      };
-      this.c.forEach($$2x -> $$2x.a($$0, $$2));
-      Builder<Function<gei, gdz>> $$3 = ImmutableList.builder();
-      $$3.add((Function<gei, gdz>)$$0x -> gdv.a());
-      $$3.addAll($$1.values());
-      return $$3.build();
-   }
-
-   public static gek a(aqc $$0, ahd $$1) {
-      ahd $$2 = b.a($$1);
-      List<gej> $$3 = new ArrayList<>();
-
-      for (aqa $$4 : $$0.a($$2)) {
-         try (BufferedReader $$5 = $$4.e()) {
-            Dynamic<JsonElement> $$6 = new Dynamic(JsonOps.INSTANCE, JsonParser.parseReader($$5));
-            $$3.addAll((Collection<? extends gej>)gem.h.parse($$6).getOrThrow(false, a::error));
-         } catch (Exception var11) {
-            a.warn("Failed to parse atlas definition {} in pack {}", new Object[]{$$2, $$4.b(), var11});
-         }
+         this.h = List.copyOf($$1);
+         this.i = List.copyOf($$2);
       }
+   }
 
-      return new gek($$3);
+   @Override
+   public void a(ahg $$0, Path $$1) throws IOException {
+      String $$2 = $$0.c();
+      TextureUtil.writeAsPNG($$1, $$2, this.a(), this.p, this.n, this.o);
+      a($$1, $$2, this.j);
+   }
+
+   private static void a(Path $$0, String $$1, Map<ahg, gel> $$2) {
+      Path $$3 = $$0.resolve($$1 + ".txt");
+
+      try (Writer $$4 = Files.newBufferedWriter($$3)) {
+         for (Entry<ahg, gel> $$5 : $$2.entrySet().stream().sorted(Entry.comparingByKey()).toList()) {
+            gel $$6 = $$5.getValue();
+            $$4.write(String.format(Locale.ROOT, "%s\tx=%d\ty=%d\tw=%d\th=%d%n", $$5.getKey(), $$6.a(), $$6.b(), $$6.e().a(), $$6.e().b()));
+         }
+      } catch (IOException var10) {
+         g.warn("Failed to write file {}", $$3, var10);
+      }
+   }
+
+   @Override
+   public void d() {
+      this.c();
+
+      for (gel.a $$0 : this.i) {
+         $$0.a();
+      }
+   }
+
+   @Override
+   public void e() {
+      if (!RenderSystem.isOnRenderThread()) {
+         RenderSystem.recordRenderCall(this::d);
+      } else {
+         this.d();
+      }
+   }
+
+   public gel a(ahg $$0) {
+      gel $$1 = this.j.getOrDefault($$0, this.k);
+      if ($$1 == null) {
+         throw new IllegalStateException("Tried to lookup sprite, but atlas is not initialized");
+      } else {
+         return $$1;
+      }
+   }
+
+   public void f() {
+      this.h.forEach(gef::close);
+      this.i.forEach(gel.a::close);
+      this.h = List.of();
+      this.i = List.of();
+      this.j = Map.of();
+      this.k = null;
+   }
+
+   public ahg g() {
+      return this.l;
+   }
+
+   public int h() {
+      return this.m;
+   }
+
+   int i() {
+      return this.n;
+   }
+
+   int j() {
+      return this.o;
+   }
+
+   public void b(geg.a $$0) {
+      this.a(false, $$0.d() > 0);
    }
 }

@@ -3,14 +3,15 @@ import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class bdr extends bcy {
+public class bdr extends bdd {
    public bdr(int $$0, Schema $$1) {
       super($$0, $$1);
    }
 
    public Map<String, Supplier<TypeTemplate>> registerBlockEntities(Schema $$0) {
       Map<String, Supplier<TypeTemplate>> $$1 = super.registerBlockEntities($$0);
-      $$0.registerSimple($$1, "minecraft:conduit");
+      $$1.remove("minecraft:flower_pot");
+      $$1.remove("minecraft:noteblock");
       return $$1;
    }
 }

@@ -1,7 +1,7 @@
-public enum djs implements ave {
-   a("single"),
-   b("left"),
-   c("right");
+public enum djs implements avj {
+   a("none"),
+   b("small"),
+   c("large");
 
    private final String d;
 
@@ -10,15 +10,12 @@ public enum djs implements ave {
    }
 
    @Override
-   public String c() {
+   public String toString() {
       return this.d;
    }
 
-   public djs a() {
-      return switch (this) {
-         case a -> a;
-         case b -> c;
-         case c -> b;
-      };
+   @Override
+   public String c() {
+      return this.d;
    }
 }

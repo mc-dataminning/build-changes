@@ -1,16 +1,44 @@
-public interface afj extends ub {
-   @Override
-   default uf b() {
-      return uf.d;
+public record afj(int a, String b, int c, afi d) implements xf<afk> {
+   private static final int e = 255;
+
+   @Deprecated
+   public afj(int a, String b, int c, afi d) {
+      this.a = a;
+      this.b = b;
+      this.c = c;
+      this.d = d;
    }
 
-   void a(afm var1);
+   public afj(ui $$0) {
+      this($$0.n(), $$0.d(255), $$0.readUnsignedShort(), afi.a($$0.n()));
+   }
 
-   void a(afl var1);
+   @Override
+   public void a(ui $$0) {
+      $$0.c(this.a);
+      $$0.a(this.b);
+      $$0.l(this.c);
+      $$0.c(this.d.a());
+   }
 
-   void a(afo var1);
+   public void a(afk $$0) {
+      $$0.a(this);
+   }
 
-   void a(afn var1);
+   @Override
+   public uh c() {
+      return this.d.b();
+   }
 
-   void a(afk var1);
+   public String d() {
+      return this.b;
+   }
+
+   public int e() {
+      return this.c;
+   }
+
+   public afi f() {
+      return this.d;
+   }
 }

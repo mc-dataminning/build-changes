@@ -1,73 +1,87 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class deo extends cyr implements daz {
-   public static final MapCodec<deo> c = b(deo::new);
-   public static final djy<djw> d = cyr.b;
-   protected static final float e = 6.0F;
-   protected static final emf f = cwj.a(2.0, 0.0, 2.0, 14.0, 16.0, 14.0);
+public class deo extends cwp {
+   public static final MapCodec<deo> a = b(deo::new);
+   public static final dkg b = djw.aw;
+   protected static final float c = 6.0F;
+   protected static final eml d = cwp.a(2.0, 0.0, 2.0, 14.0, 16.0, 14.0);
 
    @Override
    public MapCodec<deo> a() {
-      return c;
+      return a;
    }
 
-   public deo(diz.d $$0) {
+   protected deo(djf.d $$0) {
       super($$0);
+      this.k(this.E.b().a(b, Integer.valueOf(0)));
    }
 
    @Override
-   public emf a(dja $$0, cso $$1, hx $$2, elr $$3) {
-      return f;
+   public eml a(djg $$0, csu $$1, hx $$2, elx $$3) {
+      return d;
    }
 
    @Override
-   protected boolean b(dja $$0, cso $$1, hx $$2) {
-      return $$0.d($$1, $$2, ic.b) && !$$0.a(cwl.kJ);
+   public void a(djg $$0, and $$1, hx $$2, auu $$3) {
+      if (!$$0.a($$1, $$2)) {
+         $$1.b($$2, true);
+      }
    }
 
    @Override
-   public cmr a(ctl $$0, hx $$1, dja $$2) {
-      return new cmr(cwl.bw);
-   }
+   public void b(djg $$0, and $$1, hx $$2, auu $$3) {
+      if ($$1.u($$2.c())) {
+         int $$4 = 1;
 
-   @Nullable
-   @Override
-   public dja a(cpa $$0) {
-      dja $$1 = super.a($$0);
-      if ($$1 != null) {
-         eek $$2 = $$0.q().b_($$0.a().c());
-         if ($$2.a(asg.a) && $$2.e() == 8) {
-            return $$1;
+         while ($$1.a_($$2.c($$4)).a(this)) {
+            $$4++;
+         }
+
+         if ($$4 < 3) {
+            int $$5 = $$0.c(b);
+            if ($$5 == 15) {
+               $$1.b($$2.c(), this.o());
+               $$1.a($$2, $$0.a(b, Integer.valueOf(0)), 4);
+            } else {
+               $$1.a($$2, $$0.a(b, Integer.valueOf($$5 + 1)), 4);
+            }
          }
       }
-
-      return null;
    }
 
    @Override
-   public boolean a(dja $$0, ctl $$1, hx $$2) {
-      if ($$0.c(d) == djw.a) {
-         dja $$3 = $$1.a_($$2.d());
-         return $$3.a(this) && $$3.c(d) == djw.b;
+   public djg a(djg $$0, ic $$1, djg $$2, ctp $$3, hx $$4, hx $$5) {
+      if (!$$0.a($$3, $$4)) {
+         $$3.a($$4, this, 1);
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   public boolean a(djg $$0, ctr $$1, hx $$2) {
+      djg $$3 = $$1.a_($$2.d());
+      if ($$3.a(this)) {
+         return true;
       } else {
-         eek $$4 = $$1.b_($$2);
-         return super.a($$0, $$1, $$2) && $$4.a(asg.a) && $$4.e() == 8;
+         if ($$3.a(asg.af) || $$3.a(asg.H)) {
+            hx $$4 = $$2.d();
+
+            for (ic $$5 : ic.c.a) {
+               djg $$6 = $$1.a_($$4.a($$5));
+               eeq $$7 = $$1.b_($$4.a($$5));
+               if ($$7.a(asl.a) || $$6.a(cwr.kI)) {
+                  return true;
+               }
+            }
+         }
+
+         return false;
       }
    }
 
    @Override
-   public eek c_(dja $$0) {
-      return eel.c.a(false);
-   }
-
-   @Override
-   public boolean a(@Nullable cfb $$0, cso $$1, hx $$2, dja $$3, eej $$4) {
-      return false;
-   }
-
-   @Override
-   public boolean a(ctj $$0, hx $$1, dja $$2, eek $$3) {
-      return false;
+   protected void a(djh.a<cwp, djg> $$0) {
+      $$0.a(b);
    }
 }

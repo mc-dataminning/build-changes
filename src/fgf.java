@@ -1,86 +1,255 @@
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
+import java.util.Collections;
 import java.util.List;
-import javax.annotation.Nullable;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
 public class fgf {
-   @Nullable
-   private cpx<?> a;
-   private final List<fgf.a> b = Lists.newArrayList();
-   float c;
+   private final aps a;
+   final List<app> b;
+   final List<app> c;
+   final Function<app, ahg> d;
+   final Runnable e;
+   private final Consumer<aps> f;
 
-   public void a() {
-      this.a = null;
-      this.b.clear();
-      this.c = 0.0F;
+   public fgf(Runnable $$0, Function<app, ahg> $$1, aps $$2, Consumer<aps> $$3) {
+      this.e = $$0;
+      this.d = $$1;
+      this.a = $$2;
+      this.b = Lists.newArrayList($$2.f());
+      Collections.reverse(this.b);
+      this.c = Lists.newArrayList($$2.c());
+      this.c.removeAll(this.b);
+      this.f = $$3;
    }
 
-   public void a(cps $$0, int $$1, int $$2) {
-      this.b.add(new fgf.a($$0, $$1, $$2));
+   public Stream<fgf.a> a() {
+      return this.c.stream().map($$0 -> new fgf.d($$0));
    }
 
-   public fgf.a a(int $$0) {
-      return this.b.get($$0);
+   public Stream<fgf.a> b() {
+      return this.b.stream().map($$0 -> new fgf.c($$0));
    }
 
-   public int b() {
-      return this.b.size();
+   void e() {
+      this.a.a(Lists.reverse(this.b).stream().map(app::f).collect(ImmutableList.toImmutableList()));
    }
 
-   @Nullable
-   public cpx<?> c() {
-      return this.a;
+   public void c() {
+      this.e();
+      this.f.accept(this.a);
    }
 
-   public void a(cpx<?> $$0) {
-      this.a = $$0;
+   public void d() {
+      this.a.a();
+      this.b.retainAll(this.a.c());
+      this.c.clear();
+      this.c.addAll(this.a.c());
+      this.c.removeAll(this.b);
    }
 
-   public void a(ewm $$0, eva $$1, int $$2, int $$3, boolean $$4, float $$5) {
-      if (!fct.r()) {
-         this.c += $$5;
+   public interface a {
+      ahg a();
+
+      apq b();
+
+      String c();
+
+      vf d();
+
+      vf e();
+
+      apt f();
+
+      default vf g() {
+         return this.f().a(this.e());
       }
 
-      for (int $$6 = 0; $$6 < this.b.size(); $$6++) {
-         fgf.a $$7 = this.b.get($$6);
-         int $$8 = $$7.a() + $$2;
-         int $$9 = $$7.b() + $$3;
-         if ($$6 == 0 && $$4) {
-            $$0.a($$8 - 4, $$9 - 4, $$8 + 20, $$9 + 20, 822018048);
-         } else {
-            $$0.a($$8, $$9, $$8 + 16, $$9 + 16, 822018048);
+      boolean h();
+
+      boolean i();
+
+      void j();
+
+      void k();
+
+      void l();
+
+      void m();
+
+      boolean n();
+
+      default boolean o() {
+         return !this.n();
+      }
+
+      default boolean p() {
+         return this.n() && !this.i();
+      }
+
+      boolean q();
+
+      boolean r();
+   }
+
+   abstract class b implements fgf.a {
+      private final app b;
+
+      public b(app $$0) {
+         this.b = $$0;
+      }
+
+      protected abstract List<app> s();
+
+      protected abstract List<app> t();
+
+      @Override
+      public ahg a() {
+         return fgf.this.d.apply(this.b);
+      }
+
+      @Override
+      public apq b() {
+         return this.b.c();
+      }
+
+      @Override
+      public String c() {
+         return this.b.f();
+      }
+
+      @Override
+      public vf d() {
+         return this.b.a();
+      }
+
+      @Override
+      public vf e() {
+         return this.b.b();
+      }
+
+      @Override
+      public apt f() {
+         return this.b.j();
+      }
+
+      @Override
+      public boolean h() {
+         return this.b.h();
+      }
+
+      @Override
+      public boolean i() {
+         return this.b.g();
+      }
+
+      protected void u() {
+         this.s().remove(this.b);
+         this.b.i().a(this.t(), this.b, Function.identity(), true);
+         fgf.this.e.run();
+         fgf.this.e();
+         this.v();
+      }
+
+      private void v() {
+         if (this.b.f().equals("high_contrast")) {
+            evj<Boolean> $$0 = evg.O().m.r();
+            $$0.a(!$$0.c());
          }
+      }
 
-         cmr $$10 = $$7.c();
-         $$0.b($$10, $$8, $$9);
-         $$0.a(fth.E(), $$8, $$9, $$8 + 16, $$9 + 16, 822083583);
-         if ($$6 == 0) {
-            $$0.a($$1.h, $$10, $$8, $$9);
-         }
+      protected void a(int $$0) {
+         List<app> $$1 = this.s();
+         int $$2 = $$1.indexOf(this.b);
+         $$1.remove($$2);
+         $$1.add($$2 + $$0, this.b);
+         fgf.this.e.run();
+      }
+
+      @Override
+      public boolean q() {
+         List<app> $$0 = this.s();
+         int $$1 = $$0.indexOf(this.b);
+         return $$1 > 0 && !$$0.get($$1 - 1).h();
+      }
+
+      @Override
+      public void l() {
+         this.a(-1);
+      }
+
+      @Override
+      public boolean r() {
+         List<app> $$0 = this.s();
+         int $$1 = $$0.indexOf(this.b);
+         return $$1 >= 0 && $$1 < $$0.size() - 1 && !$$0.get($$1 + 1).h();
+      }
+
+      @Override
+      public void m() {
+         this.a(1);
       }
    }
 
-   public class a {
-      private final cps b;
-      private final int c;
-      private final int d;
-
-      public a(cps $$1, int $$2, int $$3) {
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
+   class c extends fgf.b {
+      public c(app $$0) {
+         super($$0);
       }
 
-      public int a() {
-         return this.c;
+      @Override
+      protected List<app> s() {
+         return fgf.this.b;
       }
 
-      public int b() {
-         return this.d;
+      @Override
+      protected List<app> t() {
+         return fgf.this.c;
       }
 
-      public cmr c() {
-         cmr[] $$0 = this.b.a();
-         return $$0.length == 0 ? cmr.f : $$0[aui.d(fgf.this.c / 30.0F) % $$0.length];
+      @Override
+      public boolean n() {
+         return true;
+      }
+
+      @Override
+      public void j() {
+      }
+
+      @Override
+      public void k() {
+         this.u();
+      }
+   }
+
+   class d extends fgf.b {
+      public d(app $$0) {
+         super($$0);
+      }
+
+      @Override
+      protected List<app> s() {
+         return fgf.this.c;
+      }
+
+      @Override
+      protected List<app> t() {
+         return fgf.this.b;
+      }
+
+      @Override
+      public boolean n() {
+         return false;
+      }
+
+      @Override
+      public void j() {
+         this.u();
+      }
+
+      @Override
+      public void k() {
       }
    }
 }

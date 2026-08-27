@@ -1,110 +1,74 @@
-public class gjr implements gjv {
-   private static final int a = 40;
-   private static final int b = 40;
-   private static final int c = 100;
-   private static final int d = 20;
-   private static final int e = -1;
-   private static final vd f = vd.a("tutorial.move.title", gju.a("forward"), gju.a("left"), gju.a("back"), gju.a("right"));
-   private static final vd g = vd.a("tutorial.move.description", gju.a("jump"));
-   private static final vd h = vd.c("tutorial.look.title");
-   private static final vd i = vd.c("tutorial.look.description");
-   private final gju j;
-   private ezi k;
-   private ezi l;
-   private int m;
-   private int n;
-   private int o;
-   private boolean p;
-   private boolean q;
-   private int r = -1;
-   private int s = -1;
+import com.google.common.base.Stopwatch;
+import com.google.common.base.Ticker;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.OptionalLong;
+import java.util.concurrent.TimeUnit;
+import java.util.function.Function;
+import org.slf4j.Logger;
 
-   public gjr(gju $$0) {
-      this.j = $$0;
+public class gjr {
+   public static final gjr a = new gjr(Ticker.systemTicker());
+   private static final Logger b = LogUtils.getLogger();
+   private final Ticker c;
+   private final Map<gjn<gjr.a>, Stopwatch> d = new HashMap<>();
+   private OptionalLong e = OptionalLong.empty();
+
+   protected gjr(Ticker $$0) {
+      this.c = $$0;
    }
 
-   @Override
-   public void a() {
-      this.m++;
-      if (this.p) {
-         this.n++;
-         this.p = false;
-      }
+   public synchronized void a(gjn<gjr.a> $$0) {
+      this.a($$0, (Function<gjn<gjr.a>, Stopwatch>)($$0x -> Stopwatch.createStarted(this.c)));
+   }
 
-      if (this.q) {
-         this.o++;
-         this.q = false;
-      }
+   public synchronized void a(gjn<gjr.a> $$0, Stopwatch $$1) {
+      this.a($$0, (Function<gjn<gjr.a>, Stopwatch>)($$1x -> $$1));
+   }
 
-      if (this.r == -1 && this.n > 40) {
-         if (this.k != null) {
-            this.k.c();
-            this.k = null;
-         }
+   private synchronized void a(gjn<gjr.a> $$0, Function<gjn<gjr.a>, Stopwatch> $$1) {
+      this.d.computeIfAbsent($$0, $$1);
+   }
 
-         this.r = this.m;
-      }
-
-      if (this.s == -1 && this.o > 40) {
-         if (this.l != null) {
-            this.l.c();
-            this.l = null;
-         }
-
-         this.s = this.m;
-      }
-
-      if (this.r != -1 && this.s != -1) {
-         if (this.j.f()) {
-            this.j.a(gjw.b);
-         } else {
-            this.j.a(gjw.f);
-         }
-      }
-
-      if (this.k != null) {
-         this.k.a((float)this.n / 40.0F);
-      }
-
-      if (this.l != null) {
-         this.l.a((float)this.o / 40.0F);
-      }
-
-      if (this.m >= 100) {
-         if (this.r == -1 && this.k == null) {
-            this.k = new ezi(ezi.a.a, f, g, true);
-            this.j.e().ax().a(this.k);
-         } else if (this.r != -1 && this.m - this.r >= 20 && this.s == -1 && this.l == null) {
-            this.l = new ezi(ezi.a.b, h, i, true);
-            this.j.e().ax().a(this.l);
+   public synchronized void b(gjn<gjr.a> $$0) {
+      Stopwatch $$1 = this.d.get($$0);
+      if ($$1 == null) {
+         b.warn("Attempted to end step for {} before starting it", $$0.b());
+      } else {
+         if ($$1.isRunning()) {
+            $$1.stop();
          }
       }
    }
 
-   @Override
-   public void b() {
-      if (this.k != null) {
-         this.k.c();
-         this.k = null;
-      }
-
-      if (this.l != null) {
-         this.l.c();
-         this.l = null;
-      }
+   public void a(gjk $$0) {
+      $$0.send(gjl.g, $$0x -> {
+         synchronized (this) {
+            this.d.forEach(($$1, $$2) -> {
+               if (!$$2.isRunning()) {
+                  long $$3 = $$2.elapsed(TimeUnit.MILLISECONDS);
+                  $$0x.a((gjn<gjr.a>)$$1, new gjr.a((int)$$3));
+               } else {
+                  b.warn("Measurement {} was discarded since it was still ongoing when the event {} was sent.", $$1.b(), gjl.g.a());
+               }
+            });
+            this.e.ifPresent($$1 -> $$0x.a(gjn.B, new gjr.a((int)$$1)));
+            this.d.clear();
+         }
+      });
    }
 
-   @Override
-   public void a(frz $$0) {
-      if ($$0.c || $$0.d || $$0.e || $$0.f || $$0.g) {
-         this.p = true;
-      }
+   public synchronized void a(long $$0) {
+      this.e = OptionalLong.of($$0);
    }
 
-   @Override
-   public void a(double $$0, double $$1) {
-      if (Math.abs($$0) > 0.01 || Math.abs($$1) > 0.01) {
-         this.q = true;
+   public static record a(int b) {
+      public static final Codec<gjr.a> a = Codec.INT.xmap(gjr.a::new, $$0 -> $$0.b);
+
+      public int a() {
+         return this.b;
       }
    }
 }

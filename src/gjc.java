@@ -1,165 +1,276 @@
-import com.mojang.authlib.minecraft.TelemetryPropertyContainer;
-import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.longs.LongArrayList;
-import it.unimi.dsi.fastutil.longs.LongList;
-import java.time.Instant;
-import java.time.ZoneId;
-import java.time.ZoneOffset;
-import java.time.format.DateTimeFormatter;
-import java.util.UUID;
-import java.util.function.Function;
-import java.util.stream.Collectors;
+import com.google.common.collect.Maps;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.io.Reader;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public record gjc<T>(String F, String G, Codec<T> H, gjc.a<T> I) {
-   private static final DateTimeFormatter J = DateTimeFormatter.ISO_OFFSET_DATE_TIME.withZone(ZoneId.from(ZoneOffset.UTC));
-   public static final gjc<String> a = b("user_id", "userId");
-   public static final gjc<String> b = b("client_id", "clientId");
-   public static final gjc<UUID> c = e("minecraft_session_id", "deviceSessionId");
-   public static final gjc<String> d = b("game_version", "buildDisplayName");
-   public static final gjc<String> e = b("operating_system", "buildPlatform");
-   public static final gjc<String> f = b("platform", "platform");
-   public static final gjc<Boolean> g = a("client_modded", "clientModded");
-   public static final gjc<String> h = b("launcher_name", "launcherName");
-   public static final gjc<UUID> i = e("world_session_id", "worldSessionId");
-   public static final gjc<Boolean> j = a("server_modded", "serverModded");
-   public static final gjc<gjc.c> k = a("server_type", "serverType", gjc.c.d, ($$0, $$1, $$2) -> $$0.addProperty($$1, $$2.c()));
-   public static final gjc<Boolean> l = a("opt_in", "isOptional");
-   public static final gjc<Instant> m = a("event_timestamp_utc", "eventTimestampUtc", atq.m, ($$0, $$1, $$2) -> $$0.addProperty($$1, J.format($$2)));
-   public static final gjc<gjc.b> n = a("game_mode", "playerGameMode", gjc.b.f, ($$0, $$1, $$2) -> $$0.addProperty($$1, $$2.a()));
-   public static final gjc<String> o = b("realms_map_content", "realmsMapContent");
-   public static final gjc<Integer> p = c("seconds_since_load", "secondsSinceLoad");
-   public static final gjc<Integer> q = c("ticks_since_load", "ticksSinceLoad");
-   public static final gjc<LongList> r = g("frame_rate_samples", "serializedFpsSamples");
-   public static final gjc<LongList> s = g("render_time_samples", "serializedRenderTimeSamples");
-   public static final gjc<LongList> t = g("used_memory_samples", "serializedUsedMemoryKbSamples");
-   public static final gjc<Integer> u = c("number_of_samples", "numSamples");
-   public static final gjc<Integer> v = c("render_distance", "renderDistance");
-   public static final gjc<Integer> w = c("dedicated_memory_kb", "dedicatedMemoryKb");
-   public static final gjc<Integer> x = c("world_load_time_ms", "worldLoadTimeMs");
-   public static final gjc<Boolean> y = a("new_world", "newWorld");
-   public static final gjc<gjg.a> z = f("load_time_total_time_ms", "loadTimeTotalTimeMs");
-   public static final gjc<gjg.a> A = f("load_time_pre_window_ms", "loadTimePreWindowMs");
-   public static final gjc<gjg.a> B = f("load_time_bootstrap_ms", "loadTimeBootstrapMs");
-   public static final gjc<gjg.a> C = f("load_time_loading_overlay_ms", "loadTimeLoadingOverlayMs");
-   public static final gjc<String> D = b("advancement_id", "advancementId");
-   public static final gjc<Long> E = d("advancement_game_time", "advancementGameTime");
+public class gjc extends aqm<gjc.a> {
+   public static final ghv a = new ghv("minecraft:empty", bjb.a(1.0F), bjb.a(1.0F), 1, ghv.a.a, false, false, 16);
+   public static final ahg b = new ahg("minecraft", "intentionally_empty");
+   public static final gjd c = new gjd(b, null);
+   public static final ghv d = new ghv(b.toString(), bjb.a(1.0F), bjb.a(1.0F), 1, ghv.a.a, false, false, 16);
+   static final Logger e = LogUtils.getLogger();
+   private static final String f = "sounds.json";
+   private static final Gson g = new GsonBuilder().registerTypeHierarchyAdapter(vf.class, new vf.b()).registerTypeAdapter(ghw.class, new ghx()).create();
+   private static final TypeToken<Map<String, ghw>> h = new TypeToken<Map<String, ghw>>() {
+   };
+   private final Map<ahg, gjd> i = Maps.newHashMap();
+   private final giz j;
+   private final Map<ahg, aqf> k = new HashMap<>();
 
-   public static <T> gjc<T> a(String $$0, String $$1, Codec<T> $$2, gjc.a<T> $$3) {
-      return new gjc<>($$0, $$1, $$2, $$3);
+   public gjc(evk $$0) {
+      this.j = new giz(this, $$0, aqk.fromMap(this.k));
    }
 
-   public static gjc<Boolean> a(String $$0, String $$1) {
-      return a($$0, $$1, Codec.BOOL, TelemetryPropertyContainer::addProperty);
+   protected gjc.a a(aqh $$0, bgr $$1) {
+      gjc.a $$2 = new gjc.a();
+      $$1.a();
+      $$1.a("list");
+      $$2.a($$0);
+      $$1.c();
+
+      for (String $$3 : $$0.a()) {
+         $$1.a($$3);
+
+         try {
+            for (aqf $$5 : $$0.a(new ahg($$3, "sounds.json"))) {
+               $$1.a($$5.b());
+
+               try (Reader $$6 = $$5.e()) {
+                  $$1.a("parse");
+                  Map<String, ghw> $$7 = aud.a(g, $$6, h);
+                  $$1.b("register");
+
+                  for (Entry<String, ghw> $$8 : $$7.entrySet()) {
+                     $$2.a(new ahg($$3, $$8.getKey()), $$8.getValue());
+                  }
+
+                  $$1.c();
+               } catch (RuntimeException var15) {
+                  e.warn("Invalid {} in resourcepack: '{}'", new Object[]{"sounds.json", $$5.b(), var15});
+               }
+
+               $$1.c();
+            }
+         } catch (IOException var16) {
+         }
+
+         $$1.c();
+      }
+
+      $$1.b();
+      return $$2;
    }
 
-   public static gjc<String> b(String $$0, String $$1) {
-      return a($$0, $$1, Codec.STRING, TelemetryPropertyContainer::addProperty);
+   protected void a(gjc.a $$0, aqh $$1, bgr $$2) {
+      $$0.a(this.i, this.k, this.j);
+      if (aa.aW) {
+         for (ahg $$3 : this.i.keySet()) {
+            gjd $$4 = this.i.get($$3);
+            if (!vi.b($$4.a()) && kd.b.c($$3)) {
+               e.error("Missing subtitle {} for sound event: {}", $$4.a(), $$3);
+            }
+         }
+      }
+
+      if (e.isDebugEnabled()) {
+         for (ahg $$5 : this.i.keySet()) {
+            if (!kd.b.c($$5)) {
+               e.debug("Not having sound event for: {}", $$5);
+            }
+         }
+      }
+
+      this.j.a();
    }
 
-   public static gjc<Integer> c(String $$0, String $$1) {
-      return a($$0, $$1, Codec.INT, TelemetryPropertyContainer::addProperty);
+   public List<String> a() {
+      return this.j.h();
    }
 
-   public static gjc<Long> d(String $$0, String $$1) {
-      return a($$0, $$1, Codec.LONG, TelemetryPropertyContainer::addProperty);
-   }
-
-   public static gjc<UUID> e(String $$0, String $$1) {
-      return a($$0, $$1, ja.c, ($$0x, $$1x, $$2) -> $$0x.addProperty($$1x, $$2.toString()));
-   }
-
-   public static gjc<gjg.a> f(String $$0, String $$1) {
-      return a($$0, $$1, gjg.a.a, ($$0x, $$1x, $$2) -> $$0x.addProperty($$1x, $$2.a()));
-   }
-
-   public static gjc<LongList> g(String $$0, String $$1) {
-      return a(
-         $$0,
-         $$1,
-         Codec.LONG.listOf().xmap(LongArrayList::new, Function.identity()),
-         ($$0x, $$1x, $$2) -> $$0x.addProperty($$1x, $$2.longStream().mapToObj(String::valueOf).collect(Collectors.joining(";")))
-      );
-   }
-
-   public void a(gjd $$0, TelemetryPropertyContainer $$1) {
-      T $$2 = $$0.a(this);
-      if ($$2 != null) {
-         this.I.apply($$1, this.G, $$2);
+   static boolean a(ghv $$0, ahg $$1, aqk $$2) {
+      ahg $$3 = $$0.b();
+      if ($$2.getResource($$3).isEmpty()) {
+         e.warn("File {} does not exist, cannot add it to event {}", $$3, $$1);
+         return false;
       } else {
-         $$1.addNullProperty(this.G);
+         return true;
       }
    }
 
-   public vr a() {
-      return vd.c("telemetry.property." + this.F + ".title");
+   @Nullable
+   public gjd a(ahg $$0) {
+      return this.i.get($$0);
    }
 
-   @Override
-   public String toString() {
-      return "TelemetryProperty[" + this.F + "]";
+   public Collection<ahg> b() {
+      return this.i.keySet();
    }
 
-   public String b() {
-      return this.F;
+   public void a(ghz $$0) {
+      this.j.a($$0);
    }
 
-   public String c() {
-      return this.G;
+   public void a(ghy $$0) {
+      this.j.c($$0);
    }
 
-   public Codec<T> d() {
-      return this.H;
+   public void a(ghy $$0, int $$1) {
+      this.j.a($$0, $$1);
    }
 
-   public gjc.a<T> e() {
-      return this.I;
+   public void a(eur $$0) {
+      this.j.a($$0);
    }
 
-   public interface a<T> {
-      void apply(TelemetryPropertyContainer var1, String var2, T var3);
+   public void d() {
+      this.j.e();
    }
 
-   public static enum b implements ave {
-      a("survival", 0),
-      b("creative", 1),
-      c("adventure", 2),
-      d("spectator", 6),
-      e("hardcore", 99);
+   public void e() {
+      this.j.d();
+   }
 
-      public static final Codec<gjc.b> f = ave.a(gjc.b::values);
-      private final String g;
-      private final int h;
+   public void f() {
+      this.j.b();
+   }
 
-      private b(String $$0, int $$1) {
-         this.g = $$0;
-         this.h = $$1;
+   public void g() {
+      this.j.c();
+   }
+
+   public void a(boolean $$0) {
+      this.j.a($$0);
+   }
+
+   public void h() {
+      this.j.f();
+   }
+
+   public void a(ars $$0, float $$1) {
+      if ($$0 == ars.a && $$1 <= 0.0F) {
+         this.e();
       }
 
-      public int a() {
-         return this.h;
-      }
-
-      @Override
-      public String c() {
-         return this.g;
-      }
+      this.j.a($$0, $$1);
    }
 
-   public static enum c implements ave {
-      a("realm"),
-      b("local"),
-      c("server");
+   public void b(ghy $$0) {
+      this.j.a($$0);
+   }
 
-      public static final Codec<gjc.c> d = ave.a(gjc.c::values);
-      private final String e;
+   public boolean c(ghy $$0) {
+      return this.j.b($$0);
+   }
 
-      private c(String $$0) {
-         this.e = $$0;
+   public void a(gjb $$0) {
+      this.j.a($$0);
+   }
+
+   public void b(gjb $$0) {
+      this.j.b($$0);
+   }
+
+   public void a(@Nullable ahg $$0, @Nullable ars $$1) {
+      this.j.a($$0, $$1);
+   }
+
+   public String i() {
+      return this.j.g();
+   }
+
+   public void j() {
+      this.j.a();
+   }
+
+   protected static class a {
+      final Map<ahg, gjd> a = Maps.newHashMap();
+      private Map<ahg, aqf> b = Map.of();
+
+      void a(aqh $$0) {
+         this.b = ghv.a.a($$0);
       }
 
-      @Override
-      public String c() {
-         return this.e;
+      void a(ahg $$0, ghw $$1) {
+         gjd $$2 = this.a.get($$0);
+         boolean $$3 = $$2 == null;
+         if ($$3 || $$1.b()) {
+            if (!$$3) {
+               gjc.e.debug("Replaced sound event location {}", $$0);
+            }
+
+            $$2 = new gjd($$0, $$1.c());
+            this.a.put($$0, $$2);
+         }
+
+         aqk $$4 = aqk.fromMap(this.b);
+
+         for (final ghv $$5 : $$1.a()) {
+            final ahg $$6 = $$5.a();
+            gje<ghv> $$8;
+            switch ($$5.f()) {
+               case a:
+                  if (!gjc.a($$5, $$0, $$4)) {
+                     continue;
+                  }
+
+                  $$8 = $$5;
+                  break;
+               case b:
+                  $$8 = new gje<ghv>() {
+                     @Override
+                     public int e() {
+                        gjd $$0 = a.this.a.get($$6);
+                        return $$0 == null ? 0 : $$0.e();
+                     }
+
+                     public ghv a(auu $$0) {
+                        gjd $$1 = a.this.a.get($$6);
+                        if ($$1 == null) {
+                           return gjc.a;
+                        } else {
+                           ghv $$2 = $$1.a($$0);
+                           return new ghv(
+                              $$2.a().toString(), new bjh($$2.c(), $$5.c()), new bjh($$2.d(), $$5.d()), $$5.e(), ghv.a.a, $$2.g() || $$5.g(), $$2.h(), $$2.i()
+                           );
+                        }
+                     }
+
+                     @Override
+                     public void a(giz $$0) {
+                        gjd $$1 = a.this.a.get($$6);
+                        if ($$1 != null) {
+                           $$1.a($$0);
+                        }
+                     }
+                  };
+                  break;
+               default:
+                  throw new IllegalStateException("Unknown SoundEventRegistration type: " + $$5.f());
+            }
+
+            $$2.a($$8);
+         }
+      }
+
+      public void a(Map<ahg, gjd> $$0, Map<ahg, aqf> $$1, giz $$2) {
+         $$0.clear();
+         $$1.clear();
+         $$1.putAll(this.b);
+
+         for (Entry<ahg, gjd> $$3 : this.a.entrySet()) {
+            $$0.put($$3.getKey(), $$3.getValue());
+            $$3.getValue().a($$2);
+         }
       }
    }
 }

@@ -1,112 +1,69 @@
-public class ckr extends cmm {
-   public static final int a = 10;
-   private static final int b = 200;
+import java.util.List;
+import java.util.function.Predicate;
 
-   public ckr(cmm.a $$0) {
-      super($$0);
+public class ckr extends cms {
+   private static final Predicate<blu> a = blx.f.and(blu::bt);
+   private final chb.b b;
+   private final boolean c;
+
+   public ckr(boolean $$0, chb.b $$1, cms.a $$2) {
+      super($$2);
+      this.c = $$0;
+      this.b = $$1;
    }
 
    @Override
-   public bjv a(cpc $$0) {
-      cfb $$1 = $$0.o();
-      if ($$1 != null && this.a($$1).c() == elk.a.b) {
-         $$1.c($$0.p());
-      }
+   public bkb<cmx> a(cto $$0, cfh $$1, bjz $$2) {
+      cmx $$3 = $$1.b($$2);
+      elq $$4 = a($$0, $$1, csx.b.c);
+      if ($$4.c() == elq.a.a) {
+         return bkb.c($$3);
+      } else {
+         els $$5 = $$1.f(1.0F);
+         double $$6 = 5.0;
+         List<blu> $$7 = $$0.a($$1, $$1.cH().b($$5.a(5.0)).g(1.0), a);
+         if (!$$7.isEmpty()) {
+            els $$8 = $$1.br();
 
-      return bjv.b;
-   }
-
-   @Override
-   public cok c(cmr $$0) {
-      return cok.j;
-   }
-
-   @Override
-   public int b(cmr $$0) {
-      return 200;
-   }
-
-   @Override
-   public void a(cti $$0, bmf $$1, cmr $$2, int $$3) {
-      if ($$3 >= 0 && $$1 instanceof cfb $$4) {
-         elk $$6 = this.a($$4);
-         if ($$6 instanceof eli $$7 && $$6.c() == elk.a.b) {
-            int $$9 = this.b($$2) - $$3 + 1;
-            boolean $$10 = $$9 % 10 == 5;
-            if ($$10) {
-               hx $$11 = $$7.a();
-               dja $$12 = $$0.a_($$11);
-               blz $$13 = $$1.fo() == bju.a ? $$4.fm() : $$4.fm().e();
-               if ($$12.z() && $$12.l() != dco.a) {
-                  this.a($$0, $$7, $$12, $$1.f(0.0F), $$13);
-               }
-
-               arl $$15;
-               if ($$12.b() instanceof cwo $$14) {
-                  $$15 = $$14.c();
-               } else {
-                  $$15 = arm.cu;
-               }
-
-               $$0.a($$4, $$11, $$15, arn.e);
-               if (!$$0.y_() && $$0.c_($$11) instanceof dgs $$17) {
-                  boolean $$18 = $$17.a($$0.X(), $$4, $$7.b());
-                  if ($$18) {
-                     blu $$19 = $$2.equals($$4.c(blu.b)) ? blu.b : blu.a;
-                     $$2.a(1, $$1, $$1x -> $$1x.d($$19));
-                  }
+            for (blu $$9 : $$7) {
+               eln $$10 = $$9.cH().g((double)$$9.bE());
+               if ($$10.d($$8)) {
+                  return bkb.c($$3);
                }
             }
-
-            return;
          }
 
-         $$1.fs();
-      } else {
-         $$1.fs();
+         if ($$4.c() == elq.a.b) {
+            chb $$11 = this.a($$0, $$4, $$3, $$1);
+            $$11.a(this.b);
+            $$11.r($$1.dC());
+            if (!$$0.a($$11, $$11.cH())) {
+               return bkb.d($$3);
+            } else {
+               if (!$$0.B) {
+                  $$0.b($$11);
+                  $$0.a($$1, dnq.t, $$4.e());
+                  if (!$$1.fT().d) {
+                     $$3.h(1);
+                  }
+               }
+
+               $$1.b(asb.c.b(this));
+               return bkb.a($$3, $$0.y_());
+            }
+         } else {
+            return bkb.c($$3);
+         }
       }
    }
 
-   private elk a(cfb $$0) {
-      return cfu.a($$0, $$0x -> !$$0x.P_() && $$0x.bt(), (double)cfb.v($$0.f()));
-   }
-
-   private void a(cti $$0, eli $$1, dja $$2, elm $$3, blz $$4) {
-      double $$5 = 3.0;
-      int $$6 = $$4 == blz.b ? 1 : -1;
-      int $$7 = $$0.F_().b(7, 12);
-      jp $$8 = new jp(jx.c, $$2);
-      ic $$9 = $$1.b();
-      ckr.a $$10 = ckr.a.a($$3, $$9);
-      elm $$11 = $$1.e();
-
-      for (int $$12 = 0; $$12 < $$7; $$12++) {
-         $$0.a(
-            $$8,
-            $$11.c - (double)($$9 == ic.e ? 1.0E-6F : 0.0F),
-            $$11.d,
-            $$11.e - (double)($$9 == ic.c ? 1.0E-6F : 0.0F),
-            $$10.a() * (double)$$6 * 3.0 * $$0.F_().j(),
-            0.0,
-            $$10.c() * (double)$$6 * 3.0 * $$0.F_().j()
-         );
+   private chb a(cto $$0, elq $$1, cmx $$2, cfh $$3) {
+      els $$4 = $$1.e();
+      chb $$5 = (chb)(this.c ? new chc($$0, $$4.c, $$4.d, $$4.e) : new chb($$0, $$4.c, $$4.d, $$4.e));
+      if ($$0 instanceof and $$6) {
+         bly.<chb>a($$6, $$2, $$3).accept($$5);
       }
-   }
 
-   static record a(double a, double b, double c) {
-      private static final double d = 1.0;
-      private static final double e = 0.1;
-
-      public static ckr.a a(elm $$0, ic $$1) {
-         double $$2 = 0.0;
-
-         return switch ($$1) {
-            case a, b -> new ckr.a($$0.c(), 0.0, -$$0.a());
-            case c -> new ckr.a(1.0, 0.0, -0.1);
-            case d -> new ckr.a(-1.0, 0.0, 0.1);
-            case e -> new ckr.a(-0.1, 0.0, -1.0);
-            case f -> new ckr.a(0.1, 0.0, 1.0);
-         };
-      }
+      return $$5;
    }
 }

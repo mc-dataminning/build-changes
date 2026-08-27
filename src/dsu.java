@@ -1,30 +1,23 @@
 import com.mojang.serialization.Codec;
 
-public class dsu extends drn<duj> {
-   public dsu(Codec<duj> $$0) {
+public class dsu extends drt<dul> {
+   public dsu(Codec<dul> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(drp<duj> $$0) {
-      duj $$1 = $$0.f();
-      cud $$2 = $$0.b();
-      hx $$3 = $$0.e();
-      dja $$4 = $$1.a().a($$0.d(), $$3);
-      if ($$4.a($$2, $$3)) {
-         if ($$4.b() instanceof cyr) {
-            if (!$$2.u($$3.c())) {
-               return false;
-            }
+   public boolean a(drv<dul> $$0) {
+      cuj $$1 = $$0.b();
+      hx $$2 = $$0.e();
+      dul $$3 = $$0.f();
 
-            cyr.a($$2, $$4, $$3, 2);
-         } else {
-            $$2.a($$3, $$4, 2);
+      for (duf.a $$4 : $$3.b) {
+         if ($$4.b.a($$1.a_($$2), $$0.d())) {
+            $$1.a($$2, $$4.c, 2);
+            break;
          }
-
-         return true;
-      } else {
-         return false;
       }
+
+      return true;
    }
 }

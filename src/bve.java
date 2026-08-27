@@ -1,32 +1,40 @@
-import com.mojang.serialization.Codec;
+import java.util.EnumSet;
 
-public enum bve implements ave {
-   a("major_negative", -5, 100, 10, 10),
-   b("minor_negative", -1, 200, 20, 20),
-   c("minor_positive", 1, 25, 1, 5),
-   d("major_positive", 5, 20, 0, 20),
-   e("trading", 1, 25, 2, 20);
+public class bve extends bvg {
+   private final bnf a;
+   private bmk b;
+   private int c;
 
-   public static final int f = 25;
-   public static final int g = 20;
-   public static final int h = 2;
-   public final String i;
-   public final int j;
-   public final int k;
-   public final int l;
-   public final int m;
-   public static final Codec<bve> n = ave.a(bve::values);
-
-   private bve(String $$0, int $$1, int $$2, int $$3, int $$4) {
-      this.i = $$0;
-      this.j = $$1;
-      this.k = $$2;
-      this.l = $$3;
-      this.m = $$4;
+   public bve(bnf $$0) {
+      super($$0, false);
+      this.a = $$0;
+      this.a(EnumSet.of(btg.a.d));
    }
 
    @Override
-   public String c() {
-      return this.i;
+   public boolean a() {
+      if (this.a.u() && !this.a.ge()) {
+         bmk $$0 = this.a.R_();
+         if ($$0 == null) {
+            return false;
+         } else {
+            this.b = $$0.ej();
+            int $$1 = $$0.ek();
+            return $$1 != this.c && this.a(this.b, bwy.a) && this.a.a(this.b, $$0);
+         }
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   public void c() {
+      this.e.h(this.b);
+      bmk $$0 = this.a.R_();
+      if ($$0 != null) {
+         this.c = $$0.ek();
+      }
+
+      super.c();
    }
 }

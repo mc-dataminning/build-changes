@@ -1,124 +1,111 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class ddr extends cwj {
+public class ddr extends cwp implements ddp {
    public static final MapCodec<ddr> a = b(ddr::new);
-   public static final int b = 8;
-   public static final dka c = djq.aF;
-   protected static final emf[] d = new emf[]{
-      emc.a(),
-      cwj.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0),
-      cwj.a(0.0, 0.0, 0.0, 16.0, 4.0, 16.0),
-      cwj.a(0.0, 0.0, 0.0, 16.0, 6.0, 16.0),
-      cwj.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0),
-      cwj.a(0.0, 0.0, 0.0, 16.0, 10.0, 16.0),
-      cwj.a(0.0, 0.0, 0.0, 16.0, 12.0, 16.0),
-      cwj.a(0.0, 0.0, 0.0, 16.0, 14.0, 16.0),
-      cwj.a(0.0, 0.0, 0.0, 16.0, 16.0, 16.0)
-   };
-   public static final int e = 5;
+   public static final dke<dko> b = djw.bh;
+   public static final djx c = djw.C;
+   protected static final eml d = cwp.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0);
+   protected static final eml e = cwp.a(0.0, 8.0, 0.0, 16.0, 16.0, 16.0);
 
    @Override
-   public MapCodec<ddr> a() {
+   public MapCodec<? extends ddr> a() {
       return a;
    }
 
-   protected ddr(diz.d $$0) {
+   public ddr(djf.d $$0) {
       super($$0);
-      this.k(this.E.b().a(c, Integer.valueOf(1)));
+      this.k(this.o().a(b, dko.b).a(c, Boolean.valueOf(false)));
    }
 
    @Override
-   public boolean a(dja $$0, cso $$1, hx $$2, efa $$3) {
-      switch ($$3) {
-         case a:
-            return $$0.c(c) < 5;
-         case b:
-            return false;
+   public boolean g_(djg $$0) {
+      return $$0.c(b) != dko.c;
+   }
+
+   @Override
+   protected void a(djh.a<cwp, djg> $$0) {
+      $$0.a(b, c);
+   }
+
+   @Override
+   public eml a(djg $$0, csu $$1, hx $$2, elx $$3) {
+      dko $$4 = $$0.c(b);
+      switch ($$4) {
          case c:
-            return false;
+            return emi.b();
+         case a:
+            return e;
          default:
-            return false;
-      }
-   }
-
-   @Override
-   public emf a(dja $$0, cso $$1, hx $$2, elr $$3) {
-      return d[$$0.c(c)];
-   }
-
-   @Override
-   public emf b(dja $$0, cso $$1, hx $$2, elr $$3) {
-      return d[$$0.c(c) - 1];
-   }
-
-   @Override
-   public emf b_(dja $$0, cso $$1, hx $$2) {
-      return d[$$0.c(c)];
-   }
-
-   @Override
-   public emf c(dja $$0, cso $$1, hx $$2, elr $$3) {
-      return d[$$0.c(c)];
-   }
-
-   @Override
-   public boolean g_(dja $$0) {
-      return true;
-   }
-
-   @Override
-   public float d(dja $$0, cso $$1, hx $$2) {
-      return $$0.c(c) == 8 ? 0.2F : 1.0F;
-   }
-
-   @Override
-   public boolean a(dja $$0, ctl $$1, hx $$2) {
-      dja $$3 = $$1.a_($$2.d());
-      if ($$3.a(asb.cg)) {
-         return false;
-      } else {
-         return $$3.a(asb.ch) ? true : cwj.a($$3.k($$1, $$2.d()), ic.b) || $$3.a(this) && $$3.c(c) == 8;
-      }
-   }
-
-   @Override
-   public dja a(dja $$0, ic $$1, dja $$2, ctj $$3, hx $$4, hx $$5) {
-      return !$$0.a($$3, $$4) ? cwl.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   public void b(dja $$0, amz $$1, hx $$2, aup $$3) {
-      if ($$1.a(ctr.b, $$2) > 11) {
-         c($$0, $$1, $$2);
-         $$1.a($$2, false);
-      }
-   }
-
-   @Override
-   public boolean a(dja $$0, cpa $$1) {
-      int $$2 = $$0.c(c);
-      if (!$$1.n().a(this.k()) || $$2 >= 8) {
-         return $$2 == 1;
-      } else {
-         return $$1.c() ? $$1.k() == ic.b : true;
+            return d;
       }
    }
 
    @Nullable
    @Override
-   public dja a(cpa $$0) {
-      dja $$1 = $$0.q().a_($$0.a());
-      if ($$1.a(this)) {
-         int $$2 = $$1.c(c);
-         return $$1.a(c, Integer.valueOf(Math.min(8, $$2 + 1)));
+   public djg a(cpg $$0) {
+      hx $$1 = $$0.a();
+      djg $$2 = $$0.q().a_($$1);
+      if ($$2.a(this)) {
+         return $$2.a(b, dko.c).a(c, Boolean.valueOf(false));
       } else {
-         return super.a($$0);
+         eeq $$3 = $$0.q().b_($$1);
+         djg $$4 = this.o().a(b, dko.b).a(c, Boolean.valueOf($$3.a() == eer.c));
+         ic $$5 = $$0.k();
+         return $$5 != ic.a && ($$5 == ic.b || !($$0.l().d - (double)$$1.v() > 0.5)) ? $$4 : $$4.a(b, dko.a);
       }
    }
 
    @Override
-   protected void a(djb.a<cwj, dja> $$0) {
-      $$0.a(c);
+   public boolean a(djg $$0, cpg $$1) {
+      cmx $$2 = $$1.n();
+      dko $$3 = $$0.c(b);
+      if ($$3 == dko.c || !$$2.a(this.k())) {
+         return false;
+      } else if ($$1.c()) {
+         boolean $$4 = $$1.l().d - (double)$$1.a().v() > 0.5;
+         ic $$5 = $$1.k();
+         return $$3 == dko.b ? $$5 == ic.b || $$4 && $$5.o().d() : $$5 == ic.a || !$$4 && $$5.o().d();
+      } else {
+         return true;
+      }
+   }
+
+   @Override
+   public eeq c_(djg $$0) {
+      return $$0.c(c) ? eer.c.a(false) : super.c_($$0);
+   }
+
+   @Override
+   public boolean a(ctp $$0, hx $$1, djg $$2, eeq $$3) {
+      return $$2.c(b) != dko.c ? ddp.super.a($$0, $$1, $$2, $$3) : false;
+   }
+
+   @Override
+   public boolean a(@Nullable cfh $$0, csu $$1, hx $$2, djg $$3, eep $$4) {
+      return $$3.c(b) != dko.c ? ddp.super.a($$0, $$1, $$2, $$3, $$4) : false;
+   }
+
+   @Override
+   public djg a(djg $$0, ic $$1, djg $$2, ctp $$3, hx $$4, hx $$5) {
+      if ($$0.c(c)) {
+         $$3.a($$4, eer.c, eer.c.a($$3));
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   public boolean a(djg $$0, csu $$1, hx $$2, efg $$3) {
+      switch ($$3) {
+         case a:
+            return false;
+         case b:
+            return $$1.b_($$2).a(asl.a);
+         case c:
+            return false;
+         default:
+            return false;
+      }
    }
 }

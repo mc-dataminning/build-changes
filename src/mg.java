@@ -1,47 +1,339 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
-import java.util.function.Supplier;
+import java.util.function.BiFunction;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public class mg implements Supplier<JsonElement> {
-   private final Map<mi<?>, mi<?>.a> a = Maps.newLinkedHashMap();
+public abstract class mg {
+   private final Map<mh, List<mi>> a = Maps.newHashMap();
 
-   public <T> mg a(mi<T> $$0, T $$1) {
-      mi<?>.a $$2 = this.a.put($$0, $$0.a($$1));
+   protected void a(mh $$0, List<mi> $$1) {
+      List<mi> $$2 = this.a.put($$0, $$1);
       if ($$2 != null) {
-         throw new IllegalStateException("Replacing value of " + $$2 + " with " + $$1);
-      } else {
+         throw new IllegalStateException("Value " + $$0 + " is already defined");
+      }
+   }
+
+   Map<mh, List<mi>> a() {
+      this.c();
+      return ImmutableMap.copyOf(this.a);
+   }
+
+   private void c() {
+      List<dkj<?>> $$0 = this.b();
+      Stream<mh> $$1 = Stream.of(mh.a());
+
+      for (dkj<?> $$2 : $$0) {
+         $$1 = $$1.flatMap($$1x -> $$2.c().map($$1x::a));
+      }
+
+      List<mh> $$3 = $$1.filter($$0x -> !this.a.containsKey($$0x)).collect(Collectors.toList());
+      if (!$$3.isEmpty()) {
+         throw new IllegalStateException("Missing definition for properties: " + $$3);
+      }
+   }
+
+   abstract List<dkj<?>> b();
+
+   public static <T1 extends Comparable<T1>> mg.a<T1> a(dkj<T1> $$0) {
+      return new mg.a<>($$0);
+   }
+
+   public static <T1 extends Comparable<T1>, T2 extends Comparable<T2>> mg.b<T1, T2> a(dkj<T1> $$0, dkj<T2> $$1) {
+      return new mg.b<>($$0, $$1);
+   }
+
+   public static <T1 extends Comparable<T1>, T2 extends Comparable<T2>, T3 extends Comparable<T3>> mg.c<T1, T2, T3> a(dkj<T1> $$0, dkj<T2> $$1, dkj<T3> $$2) {
+      return new mg.c<>($$0, $$1, $$2);
+   }
+
+   public static <T1 extends Comparable<T1>, T2 extends Comparable<T2>, T3 extends Comparable<T3>, T4 extends Comparable<T4>> mg.d<T1, T2, T3, T4> a(
+      dkj<T1> $$0, dkj<T2> $$1, dkj<T3> $$2, dkj<T4> $$3
+   ) {
+      return new mg.d<>($$0, $$1, $$2, $$3);
+   }
+
+   public static <T1 extends Comparable<T1>, T2 extends Comparable<T2>, T3 extends Comparable<T3>, T4 extends Comparable<T4>, T5 extends Comparable<T5>> mg.e<T1, T2, T3, T4, T5> a(
+      dkj<T1> $$0, dkj<T2> $$1, dkj<T3> $$2, dkj<T4> $$3, dkj<T5> $$4
+   ) {
+      return new mg.e<>($$0, $$1, $$2, $$3, $$4);
+   }
+
+   public static class a<T1 extends Comparable<T1>> extends mg {
+      private final dkj<T1> a;
+
+      a(dkj<T1> $$0) {
+         this.a = $$0;
+      }
+
+      @Override
+      public List<dkj<?>> b() {
+         return ImmutableList.of(this.a);
+      }
+
+      public mg.a<T1> a(T1 $$0, List<mi> $$1) {
+         mh $$2 = mh.a(this.a.b($$0));
+         this.a($$2, $$1);
+         return this;
+      }
+
+      public mg.a<T1> a(T1 $$0, mi $$1) {
+         return this.a($$0, Collections.singletonList($$1));
+      }
+
+      public mg a(Function<T1, mi> $$0) {
+         this.a.a().forEach($$1 -> this.a((T1)$$1, $$0.apply((T1)$$1)));
+         return this;
+      }
+
+      public mg b(Function<T1, List<mi>> $$0) {
+         this.a.a().forEach($$1 -> this.a((T1)$$1, $$0.apply((T1)$$1)));
          return this;
       }
    }
 
-   public static mg a() {
-      return new mg();
-   }
+   public static class b<T1 extends Comparable<T1>, T2 extends Comparable<T2>> extends mg {
+      private final dkj<T1> a;
+      private final dkj<T2> b;
 
-   public static mg a(mg $$0, mg $$1) {
-      mg $$2 = new mg();
-      $$2.a.putAll($$0.a);
-      $$2.a.putAll($$1.a);
-      return $$2;
-   }
-
-   public JsonElement b() {
-      JsonObject $$0 = new JsonObject();
-      this.a.values().forEach($$1 -> $$1.a($$0));
-      return $$0;
-   }
-
-   public static JsonElement a(List<mg> $$0) {
-      if ($$0.size() == 1) {
-         return $$0.get(0).b();
-      } else {
-         JsonArray $$1 = new JsonArray();
-         $$0.forEach($$1x -> $$1.add($$1x.b()));
-         return $$1;
+      b(dkj<T1> $$0, dkj<T2> $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
+
+      @Override
+      public List<dkj<?>> b() {
+         return ImmutableList.of(this.a, this.b);
+      }
+
+      public mg.b<T1, T2> a(T1 $$0, T2 $$1, List<mi> $$2) {
+         mh $$3 = mh.a(this.a.b($$0), this.b.b($$1));
+         this.a($$3, $$2);
+         return this;
+      }
+
+      public mg.b<T1, T2> a(T1 $$0, T2 $$1, mi $$2) {
+         return this.a($$0, $$1, Collections.singletonList($$2));
+      }
+
+      public mg a(BiFunction<T1, T2, mi> $$0) {
+         this.a.a().forEach($$1 -> this.b.a().forEach($$2 -> this.a((T1)$$1, (T2)$$2, $$0.apply((T1)$$1, (T2)$$2))));
+         return this;
+      }
+
+      public mg b(BiFunction<T1, T2, List<mi>> $$0) {
+         this.a.a().forEach($$1 -> this.b.a().forEach($$2 -> this.a((T1)$$1, (T2)$$2, $$0.apply((T1)$$1, (T2)$$2))));
+         return this;
+      }
+   }
+
+   public static class c<T1 extends Comparable<T1>, T2 extends Comparable<T2>, T3 extends Comparable<T3>> extends mg {
+      private final dkj<T1> a;
+      private final dkj<T2> b;
+      private final dkj<T3> c;
+
+      c(dkj<T1> $$0, dkj<T2> $$1, dkj<T3> $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+      }
+
+      @Override
+      public List<dkj<?>> b() {
+         return ImmutableList.of(this.a, this.b, this.c);
+      }
+
+      public mg.c<T1, T2, T3> a(T1 $$0, T2 $$1, T3 $$2, List<mi> $$3) {
+         mh $$4 = mh.a(this.a.b($$0), this.b.b($$1), this.c.b($$2));
+         this.a($$4, $$3);
+         return this;
+      }
+
+      public mg.c<T1, T2, T3> a(T1 $$0, T2 $$1, T3 $$2, mi $$3) {
+         return this.a($$0, $$1, $$2, Collections.singletonList($$3));
+      }
+
+      public mg a(mg.h<T1, T2, T3, mi> $$0) {
+         this.a
+            .a()
+            .forEach($$1 -> this.b.a().forEach($$2 -> this.c.a().forEach($$3 -> this.a((T1)$$1, (T2)$$2, (T3)$$3, $$0.apply((T1)$$1, (T2)$$2, (T3)$$3)))));
+         return this;
+      }
+
+      public mg b(mg.h<T1, T2, T3, List<mi>> $$0) {
+         this.a
+            .a()
+            .forEach($$1 -> this.b.a().forEach($$2 -> this.c.a().forEach($$3 -> this.a((T1)$$1, (T2)$$2, (T3)$$3, $$0.apply((T1)$$1, (T2)$$2, (T3)$$3)))));
+         return this;
+      }
+   }
+
+   public static class d<T1 extends Comparable<T1>, T2 extends Comparable<T2>, T3 extends Comparable<T3>, T4 extends Comparable<T4>> extends mg {
+      private final dkj<T1> a;
+      private final dkj<T2> b;
+      private final dkj<T3> c;
+      private final dkj<T4> d;
+
+      d(dkj<T1> $$0, dkj<T2> $$1, dkj<T3> $$2, dkj<T4> $$3) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+      }
+
+      @Override
+      public List<dkj<?>> b() {
+         return ImmutableList.of(this.a, this.b, this.c, this.d);
+      }
+
+      public mg.d<T1, T2, T3, T4> a(T1 $$0, T2 $$1, T3 $$2, T4 $$3, List<mi> $$4) {
+         mh $$5 = mh.a(this.a.b($$0), this.b.b($$1), this.c.b($$2), this.d.b($$3));
+         this.a($$5, $$4);
+         return this;
+      }
+
+      public mg.d<T1, T2, T3, T4> a(T1 $$0, T2 $$1, T3 $$2, T4 $$3, mi $$4) {
+         return this.a($$0, $$1, $$2, $$3, Collections.singletonList($$4));
+      }
+
+      public mg a(mg.g<T1, T2, T3, T4, mi> $$0) {
+         this.a
+            .a()
+            .forEach(
+               $$1 -> this.b
+                     .a()
+                     .forEach(
+                        $$2 -> this.c
+                              .a()
+                              .forEach(
+                                 $$3 -> this.d.a().forEach($$4 -> this.a((T1)$$1, (T2)$$2, (T3)$$3, (T4)$$4, $$0.apply((T1)$$1, (T2)$$2, (T3)$$3, (T4)$$4)))
+                              )
+                     )
+            );
+         return this;
+      }
+
+      public mg b(mg.g<T1, T2, T3, T4, List<mi>> $$0) {
+         this.a
+            .a()
+            .forEach(
+               $$1 -> this.b
+                     .a()
+                     .forEach(
+                        $$2 -> this.c
+                              .a()
+                              .forEach(
+                                 $$3 -> this.d.a().forEach($$4 -> this.a((T1)$$1, (T2)$$2, (T3)$$3, (T4)$$4, $$0.apply((T1)$$1, (T2)$$2, (T3)$$3, (T4)$$4)))
+                              )
+                     )
+            );
+         return this;
+      }
+   }
+
+   public static class e<T1 extends Comparable<T1>, T2 extends Comparable<T2>, T3 extends Comparable<T3>, T4 extends Comparable<T4>, T5 extends Comparable<T5>>
+      extends mg {
+      private final dkj<T1> a;
+      private final dkj<T2> b;
+      private final dkj<T3> c;
+      private final dkj<T4> d;
+      private final dkj<T5> e;
+
+      e(dkj<T1> $$0, dkj<T2> $$1, dkj<T3> $$2, dkj<T4> $$3, dkj<T5> $$4) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+      }
+
+      @Override
+      public List<dkj<?>> b() {
+         return ImmutableList.of(this.a, this.b, this.c, this.d, this.e);
+      }
+
+      public mg.e<T1, T2, T3, T4, T5> a(T1 $$0, T2 $$1, T3 $$2, T4 $$3, T5 $$4, List<mi> $$5) {
+         mh $$6 = mh.a(this.a.b($$0), this.b.b($$1), this.c.b($$2), this.d.b($$3), this.e.b($$4));
+         this.a($$6, $$5);
+         return this;
+      }
+
+      public mg.e<T1, T2, T3, T4, T5> a(T1 $$0, T2 $$1, T3 $$2, T4 $$3, T5 $$4, mi $$5) {
+         return this.a($$0, $$1, $$2, $$3, $$4, Collections.singletonList($$5));
+      }
+
+      public mg a(mg.f<T1, T2, T3, T4, T5, mi> $$0) {
+         this.a
+            .a()
+            .forEach(
+               $$1 -> this.b
+                     .a()
+                     .forEach(
+                        $$2 -> this.c
+                              .a()
+                              .forEach(
+                                 $$3 -> this.d
+                                       .a()
+                                       .forEach(
+                                          $$4 -> this.e
+                                                .a()
+                                                .forEach(
+                                                   $$5 -> this.a(
+                                                         (T1)$$1, (T2)$$2, (T3)$$3, (T4)$$4, (T5)$$5, $$0.apply((T1)$$1, (T2)$$2, (T3)$$3, (T4)$$4, (T5)$$5)
+                                                      )
+                                                )
+                                       )
+                              )
+                     )
+            );
+         return this;
+      }
+
+      public mg b(mg.f<T1, T2, T3, T4, T5, List<mi>> $$0) {
+         this.a
+            .a()
+            .forEach(
+               $$1 -> this.b
+                     .a()
+                     .forEach(
+                        $$2 -> this.c
+                              .a()
+                              .forEach(
+                                 $$3 -> this.d
+                                       .a()
+                                       .forEach(
+                                          $$4 -> this.e
+                                                .a()
+                                                .forEach(
+                                                   $$5 -> this.a(
+                                                         (T1)$$1, (T2)$$2, (T3)$$3, (T4)$$4, (T5)$$5, $$0.apply((T1)$$1, (T2)$$2, (T3)$$3, (T4)$$4, (T5)$$5)
+                                                      )
+                                                )
+                                       )
+                              )
+                     )
+            );
+         return this;
+      }
+   }
+
+   @FunctionalInterface
+   public interface f<P1, P2, P3, P4, P5, R> {
+      R apply(P1 var1, P2 var2, P3 var3, P4 var4, P5 var5);
+   }
+
+   @FunctionalInterface
+   public interface g<P1, P2, P3, P4, R> {
+      R apply(P1 var1, P2 var2, P3 var3, P4 var4);
+   }
+
+   @FunctionalInterface
+   public interface h<P1, P2, P3, R> {
+      R apply(P1 var1, P2 var2, P3 var3);
    }
 }

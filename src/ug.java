@@ -1,1541 +1,538 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
-import com.mojang.authlib.GameProfile;
-import com.mojang.authlib.properties.Property;
-import com.mojang.authlib.properties.PropertyMap;
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.JsonOps;
-import io.netty.buffer.ByteBuf;
-import io.netty.buffer.ByteBufAllocator;
-import io.netty.buffer.ByteBufInputStream;
-import io.netty.buffer.ByteBufOutputStream;
-import io.netty.handler.codec.DecoderException;
-import io.netty.handler.codec.EncoderException;
-import io.netty.util.ByteProcessor;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
-import java.nio.channels.FileChannel;
-import java.nio.channels.GatheringByteChannel;
-import java.nio.channels.ScatteringByteChannel;
-import java.nio.charset.Charset;
-import java.security.PublicKey;
-import java.time.Instant;
-import java.util.Arrays;
-import java.util.BitSet;
-import java.util.Collection;
-import java.util.Date;
-import java.util.EnumSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.UUID;
-import java.util.function.BiConsumer;
+import com.google.common.base.Suppliers;
+import com.google.common.collect.Queues;
+import com.google.common.util.concurrent.ThreadFactoryBuilder;
+import com.mojang.logging.LogUtils;
+import io.netty.bootstrap.Bootstrap;
+import io.netty.channel.Channel;
+import io.netty.channel.ChannelException;
+import io.netty.channel.ChannelFuture;
+import io.netty.channel.ChannelFutureListener;
+import io.netty.channel.ChannelHandler;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.ChannelInitializer;
+import io.netty.channel.ChannelOption;
+import io.netty.channel.ChannelPipeline;
+import io.netty.channel.DefaultEventLoopGroup;
+import io.netty.channel.EventLoopGroup;
+import io.netty.channel.SimpleChannelInboundHandler;
+import io.netty.channel.epoll.Epoll;
+import io.netty.channel.epoll.EpollEventLoopGroup;
+import io.netty.channel.epoll.EpollSocketChannel;
+import io.netty.channel.local.LocalChannel;
+import io.netty.channel.local.LocalServerChannel;
+import io.netty.channel.nio.NioEventLoopGroup;
+import io.netty.channel.socket.SocketChannel;
+import io.netty.channel.socket.nio.NioSocketChannel;
+import io.netty.handler.flow.FlowControlHandler;
+import io.netty.handler.timeout.ReadTimeoutHandler;
+import io.netty.handler.timeout.TimeoutException;
+import io.netty.util.AttributeKey;
+import java.net.InetSocketAddress;
+import java.net.SocketAddress;
+import java.util.Objects;
+import java.util.Queue;
+import java.util.concurrent.RejectedExecutionException;
 import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.function.IntFunction;
-import java.util.function.ToIntFunction;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
+import javax.crypto.Cipher;
+import org.apache.commons.lang3.Validate;
+import org.slf4j.Logger;
+import org.slf4j.Marker;
+import org.slf4j.MarkerFactory;
 
-public class ug extends ByteBuf {
-   public static final int a = 2097152;
-   private final ByteBuf d;
-   public static final short b = 32767;
-   public static final int c = 262144;
-   private static final int e = 256;
-   private static final int f = 256;
-   private static final int g = 512;
-   private static final Gson h = new Gson();
-
-   public ug(ByteBuf $$0) {
-      this.d = $$0;
-   }
-
-   @Deprecated
-   public <T> T a(DynamicOps<ti> $$0, Codec<T> $$1) {
-      return this.a($$0, $$1, su.a());
-   }
-
-   @Deprecated
-   public <T> T a(DynamicOps<ti> $$0, Codec<T> $$1, su $$2) {
-      ti $$3 = this.a($$2);
-      return ac.a($$1.parse($$0, $$3), $$1x -> new DecoderException("Failed to decode: " + $$1x + " " + $$3));
-   }
-
-   @Deprecated
-   public <T> ug a(DynamicOps<ti> $$0, Codec<T> $$1, T $$2) {
-      ti $$3 = ac.a($$1.encodeStart($$0, $$2), $$1x -> new EncoderException("Failed to encode: " + $$1x + " " + $$2));
-      this.a($$3);
-      return this;
-   }
-
-   public <T> T a(Codec<T> $$0) {
-      JsonElement $$1 = aty.a(h, this.s(), JsonElement.class);
-      DataResult<T> $$2 = $$0.parse(JsonOps.INSTANCE, $$1);
-      return ac.a($$2, $$0x -> new DecoderException("Failed to decode json: " + $$0x));
-   }
-
-   public <T> void a(Codec<T> $$0, T $$1) {
-      DataResult<JsonElement> $$2 = $$0.encodeStart(JsonOps.INSTANCE, $$1);
-      this.a(h.toJson(ac.a($$2, $$1x -> new EncoderException("Failed to encode: " + $$1x + " " + $$1))));
-   }
-
-   public <T> void a(im<T> $$0, T $$1) {
-      int $$2 = $$0.a($$1);
-      if ($$2 == -1) {
-         throw new IllegalArgumentException("Can't find id for '" + $$1 + "' in map " + $$0);
-      } else {
-         this.c($$2);
-      }
-   }
-
-   public <T> void a(im<ih<T>> $$0, ih<T> $$1, ug.b<T> $$2) {
-      switch ($$1.f()) {
-         case a:
-            int $$3 = $$0.a($$1);
-            if ($$3 == -1) {
-               throw new IllegalArgumentException("Can't find id for '" + $$1.a() + "' in map " + $$0);
-            }
-
-            this.c($$3 + 1);
-            break;
-         case b:
-            this.c(0);
-            $$2.accept(this, $$1.a());
-      }
-   }
-
+public class ug extends SimpleChannelInboundHandler<xf<?>> {
+   private static final float j = 0.75F;
+   private static final Logger k = LogUtils.getLogger();
+   public static final Marker a = MarkerFactory.getMarker("NETWORK");
+   public static final Marker b = ac.a(MarkerFactory.getMarker("NETWORK_PACKETS"), $$0 -> $$0.add(a));
+   public static final Marker c = ac.a(MarkerFactory.getMarker("PACKET_RECEIVED"), $$0 -> $$0.add(b));
+   public static final Marker d = ac.a(MarkerFactory.getMarker("PACKET_SENT"), $$0 -> $$0.add(b));
+   public static final AttributeKey<uh.a<?>> e = AttributeKey.valueOf("serverbound_protocol");
+   public static final AttributeKey<uh.a<?>> f = AttributeKey.valueOf("clientbound_protocol");
+   public static final Supplier<NioEventLoopGroup> g = Suppliers.memoize(
+      () -> new NioEventLoopGroup(0, new ThreadFactoryBuilder().setNameFormat("Netty Client IO #%d").setDaemon(true).build())
+   );
+   public static final Supplier<EpollEventLoopGroup> h = Suppliers.memoize(
+      () -> new EpollEventLoopGroup(0, new ThreadFactoryBuilder().setNameFormat("Netty Epoll Client IO #%d").setDaemon(true).build())
+   );
+   public static final Supplier<DefaultEventLoopGroup> i = Suppliers.memoize(
+      () -> new DefaultEventLoopGroup(0, new ThreadFactoryBuilder().setNameFormat("Netty Local Client IO #%d").setDaemon(true).build())
+   );
+   private final xg l;
+   private final Queue<Consumer<ug>> m = Queues.newConcurrentLinkedQueue();
+   private Channel n;
+   private SocketAddress o;
    @Nullable
-   public <T> T a(im<T> $$0) {
-      int $$1 = this.n();
-      return $$0.a($$1);
+   private volatile uo p;
+   @Nullable
+   private volatile uo q;
+   @Nullable
+   private vf r;
+   private boolean s;
+   private boolean t;
+   private int u;
+   private int v;
+   private float w;
+   private float x;
+   private int y;
+   private boolean z;
+   @Nullable
+   private volatile vf A;
+   @Nullable
+   ty B;
+
+   public ug(xg $$0) {
+      this.l = $$0;
    }
 
-   public <T> ih<T> a(im<ih<T>> $$0, ug.a<T> $$1) {
-      int $$2 = this.n();
-      if ($$2 == 0) {
-         return ih.a($$1.apply(this));
+   public void channelActive(ChannelHandlerContext $$0) throws Exception {
+      super.channelActive($$0);
+      this.n = $$0.channel();
+      this.o = this.n.remoteAddress();
+      if (this.A != null) {
+         this.a(this.A);
+      }
+   }
+
+   public static void a(Channel $$0) {
+      $$0.attr(e).set(uh.a.b(xg.a));
+      $$0.attr(f).set(uh.a.b(xg.b));
+   }
+
+   public void channelInactive(ChannelHandlerContext $$0) {
+      this.a(vf.c("disconnect.endOfStream"));
+   }
+
+   public void exceptionCaught(ChannelHandlerContext $$0, Throwable $$1) {
+      if ($$1 instanceof ut) {
+         k.debug("Skipping packet due to errors", $$1.getCause());
       } else {
-         ih<T> $$3 = $$0.a($$2 - 1);
-         if ($$3 == null) {
-            throw new IllegalArgumentException("Can't find element with id " + $$2);
-         } else {
-            return $$3;
+         boolean $$2 = !this.z;
+         this.z = true;
+         if (this.n.isOpen()) {
+            if ($$1 instanceof TimeoutException) {
+               k.debug("Timeout", $$1);
+               this.a(vf.c("disconnect.timeout"));
+            } else {
+               vf $$3 = vf.a("disconnect.genericReason", "Internal Exception: " + $$1);
+               if ($$2) {
+                  k.debug("Failed to sent packet", $$1);
+                  if (this.i() == xg.b) {
+                     uh $$4 = ((uh.a)this.n.attr(f).get()).a();
+                     xf<?> $$5 = (xf<?>)($$4 == uh.d ? new afr($$3) : new xk($$3));
+                     this.a($$5, up.a(() -> this.a($$3)));
+                  } else {
+                     this.a($$3);
+                  }
+
+                  this.o();
+               } else {
+                  k.debug("Double fault", $$1);
+                  this.a($$3);
+               }
+            }
          }
       }
    }
 
-   public static <T> IntFunction<T> a(IntFunction<T> $$0, int $$1) {
-      return $$2 -> {
-         if ($$2 > $$1) {
-            throw new DecoderException("Value " + $$2 + " is larger than limit " + $$1);
+   protected void a(ChannelHandlerContext $$0, xf<?> $$1) {
+      if (this.n.isOpen()) {
+         uo $$2 = this.q;
+         if ($$2 == null) {
+            throw new IllegalStateException("Received a packet before the packet listener was initialized");
          } else {
-            return $$0.apply($$2);
+            if ($$2.a($$1)) {
+               try {
+                  a($$1, $$2);
+               } catch (ahr var5) {
+               } catch (RejectedExecutionException var6) {
+                  this.a(vf.c("multiplayer.disconnect.server_shutdown"));
+               } catch (ClassCastException var7) {
+                  k.error("Received {} that couldn't be processed", $$1.getClass(), var7);
+                  this.a(vf.c("multiplayer.disconnect.invalid_packet"));
+               }
+
+               this.u++;
+            }
          }
-      };
-   }
-
-   public <T, C extends Collection<T>> C a(IntFunction<C> $$0, ug.a<T> $$1) {
-      int $$2 = this.n();
-      C $$3 = (C)$$0.apply($$2);
-
-      for (int $$4 = 0; $$4 < $$2; $$4++) {
-         $$3.add($$1.apply(this));
-      }
-
-      return $$3;
-   }
-
-   public <T> void a(Collection<T> $$0, ug.b<T> $$1) {
-      this.c($$0.size());
-
-      for (T $$2 : $$0) {
-         $$1.accept(this, $$2);
       }
    }
 
-   public <T> List<T> a(ug.a<T> $$0) {
-      return this.a(Lists::newArrayListWithCapacity, $$0);
+   private static <T extends uo> void a(xf<T> $$0, uo $$1) {
+      $$0.a((T)$$1);
    }
 
-   public IntList a() {
-      int $$0 = this.n();
-      IntList $$1 = new IntArrayList();
+   public void a() {
+      this.n.config().setAutoRead(false);
+   }
 
-      for (int $$2 = 0; $$2 < $$0; $$2++) {
-         $$1.add(this.n());
+   public void b() {
+      this.n.config().setAutoRead(true);
+   }
+
+   public void a(uo $$0) {
+      Validate.notNull($$0, "packetListener", new Object[0]);
+      xg $$1 = $$0.a();
+      if ($$1 != this.l) {
+         throw new IllegalStateException("Trying to set listener for wrong side: connection is " + this.l + ", but listener is " + $$1);
+      } else {
+         uh $$2 = $$0.b();
+         uh $$3 = ((uh.a)this.n.attr(a($$1)).get()).a();
+         if ($$3 != $$2) {
+            throw new IllegalStateException("Trying to set listener for protocol " + $$2.a() + ", but current " + $$1 + " protocol is " + $$3.a());
+         } else {
+            this.q = $$0;
+            this.p = null;
+         }
       }
-
-      return $$1;
    }
 
-   public void a(IntList $$0) {
-      this.c($$0.size());
-      $$0.forEach(this::c);
-   }
-
-   public <K, V, M extends Map<K, V>> M a(IntFunction<M> $$0, ug.a<K> $$1, ug.a<V> $$2) {
-      int $$3 = this.n();
-      M $$4 = (M)$$0.apply($$3);
-
-      for (int $$5 = 0; $$5 < $$3; $$5++) {
-         K $$6 = $$1.apply(this);
-         V $$7 = $$2.apply(this);
-         $$4.put($$6, $$7);
+   public void b(uo $$0) {
+      if (this.q != null) {
+         throw new IllegalStateException("Listener already set");
+      } else if (this.l == xg.a && $$0.a() == xg.a && $$0.b() == uh.a) {
+         this.q = $$0;
+      } else {
+         throw new IllegalStateException("Invalid initial listener");
       }
-
-      return $$4;
    }
 
-   public <K, V> Map<K, V> a(ug.a<K> $$0, ug.a<V> $$1) {
-      return this.a(Maps::newHashMapWithExpectedSize, $$0, $$1);
+   public void a(String $$0, int $$1, age $$2) {
+      this.a($$0, $$1, $$2, afi.a);
    }
 
-   public <K, V> void a(Map<K, V> $$0, ug.b<K> $$1, ug.b<V> $$2) {
-      this.c($$0.size());
-      $$0.forEach(($$2x, $$3) -> {
-         $$1.accept(this, (K)$$2x);
-         $$2.accept(this, (V)$$3);
-      });
+   public void a(String $$0, int $$1, afm $$2) {
+      this.a($$0, $$1, $$2, afi.b);
+   }
+
+   private void a(String $$0, int $$1, uo $$2, afi $$3) {
+      this.p = $$2;
+      this.a((Consumer<ug>)($$4 -> {
+         $$4.a($$3);
+         this.a($$2);
+         $$4.b(new afj(aa.b().e(), $$0, $$1, $$3), null, true);
+      }));
+   }
+
+   public void a(afi $$0) {
+      this.n.attr(f).set($$0.b().b(xg.b));
+   }
+
+   public void a(xf<?> $$0) {
+      this.a($$0, null);
+   }
+
+   public void a(xf<?> $$0, @Nullable up $$1) {
+      this.a($$0, $$1, true);
+   }
+
+   public void a(xf<?> $$0, @Nullable up $$1, boolean $$2) {
+      if (this.k()) {
+         this.t();
+         this.b($$0, $$1, $$2);
+      } else {
+         this.m.add($$3 -> $$3.b($$0, $$1, $$2));
+      }
    }
 
    public void a(Consumer<ug> $$0) {
-      int $$1 = this.n();
-
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
+      if (this.k()) {
+         this.t();
          $$0.accept(this);
+      } else {
+         this.m.add($$0);
       }
    }
 
-   public <E extends Enum<E>> void a(EnumSet<E> $$0, Class<E> $$1) {
-      E[] $$2 = (E[])$$1.getEnumConstants();
-      BitSet $$3 = new BitSet($$2.length);
-
-      for (int $$4 = 0; $$4 < $$2.length; $$4++) {
-         $$3.set($$4, $$0.contains($$2[$$4]));
+   private void b(xf<?> $$0, @Nullable up $$1, boolean $$2) {
+      this.v++;
+      if (this.n.eventLoop().inEventLoop()) {
+         this.c($$0, $$1, $$2);
+      } else {
+         this.n.eventLoop().execute(() -> this.c($$0, $$1, $$2));
       }
-
-      this.a($$3, $$2.length);
    }
 
-   public <E extends Enum<E>> EnumSet<E> a(Class<E> $$0) {
-      E[] $$1 = (E[])$$0.getEnumConstants();
-      BitSet $$2 = this.e($$1.length);
-      EnumSet<E> $$3 = EnumSet.noneOf($$0);
+   private void c(xf<?> $$0, @Nullable up $$1, boolean $$2) {
+      ChannelFuture $$3 = $$2 ? this.n.writeAndFlush($$0) : this.n.write($$0);
+      if ($$1 != null) {
+         $$3.addListener($$1x -> {
+            if ($$1x.isSuccess()) {
+               $$1.a();
+            } else {
+               xf<?> $$2x = $$1.b();
+               if ($$2x != null) {
+                  ChannelFuture $$3x = this.n.writeAndFlush($$2x);
+                  $$3x.addListener(ChannelFutureListener.FIRE_EXCEPTION_ON_FAILURE);
+               }
+            }
+         });
+      }
 
-      for (int $$4 = 0; $$4 < $$1.length; $$4++) {
-         if ($$2.get($$4)) {
-            $$3.add($$1[$$4]);
+      $$3.addListener(ChannelFutureListener.FIRE_EXCEPTION_ON_FAILURE);
+   }
+
+   public void c() {
+      if (this.k()) {
+         this.s();
+      } else {
+         this.m.add(ug::s);
+      }
+   }
+
+   private void s() {
+      if (this.n.eventLoop().inEventLoop()) {
+         this.n.flush();
+      } else {
+         this.n.eventLoop().execute(() -> this.n.flush());
+      }
+   }
+
+   private static AttributeKey<uh.a<?>> a(xg $$0) {
+      return switch ($$0) {
+         case b -> f;
+         case a -> e;
+      };
+   }
+
+   private void t() {
+      if (this.n != null && this.n.isOpen()) {
+         synchronized (this.m) {
+            Consumer<ug> $$0;
+            while (($$0 = this.m.poll()) != null) {
+               $$0.accept(this);
+            }
          }
       }
+   }
 
+   public void d() {
+      this.t();
+      if (this.q instanceof uu $$0) {
+         $$0.e();
+      }
+
+      if (!this.k() && !this.t) {
+         this.p();
+      }
+
+      if (this.n != null) {
+         this.n.flush();
+      }
+
+      if (this.y++ % 20 == 0) {
+         this.e();
+      }
+
+      if (this.B != null) {
+         this.B.a();
+      }
+   }
+
+   protected void e() {
+      this.x = aun.i(0.75F, (float)this.v, this.x);
+      this.w = aun.i(0.75F, (float)this.u, this.w);
+      this.v = 0;
+      this.u = 0;
+   }
+
+   public SocketAddress f() {
+      return this.o;
+   }
+
+   public String a(boolean $$0) {
+      if (this.o == null) {
+         return "local";
+      } else {
+         return $$0 ? this.o.toString() : "IP hidden";
+      }
+   }
+
+   public void a(vf $$0) {
+      if (this.n == null) {
+         this.A = $$0;
+      }
+
+      if (this.k()) {
+         this.n.close().awaitUninterruptibly();
+         this.r = $$0;
+      }
+   }
+
+   public boolean g() {
+      return this.n instanceof LocalChannel || this.n instanceof LocalServerChannel;
+   }
+
+   public xg h() {
+      return this.l;
+   }
+
+   public xg i() {
+      return this.l.a();
+   }
+
+   public static ug a(InetSocketAddress $$0, boolean $$1, @Nullable auw $$2) {
+      ug $$3 = new ug(xg.b);
+      if ($$2 != null) {
+         $$3.a($$2);
+      }
+
+      ChannelFuture $$4 = a($$0, $$1, $$3);
+      $$4.syncUninterruptibly();
       return $$3;
    }
 
-   public <T> void a(Optional<T> $$0, ug.b<T> $$1) {
-      if ($$0.isPresent()) {
-         this.a(true);
-         $$1.accept(this, $$0.get());
+   public static ChannelFuture a(InetSocketAddress $$0, boolean $$1, final ug $$2) {
+      Class<? extends SocketChannel> $$3;
+      EventLoopGroup $$4;
+      if (Epoll.isAvailable() && $$1) {
+         $$3 = EpollSocketChannel.class;
+         $$4 = (EventLoopGroup)h.get();
       } else {
-         this.a(false);
+         $$3 = NioSocketChannel.class;
+         $$4 = (EventLoopGroup)g.get();
       }
+
+      return ((Bootstrap)((Bootstrap)((Bootstrap)new Bootstrap().group($$4)).handler(new ChannelInitializer<Channel>() {
+         protected void initChannel(Channel $$0) {
+            ug.a($$0);
+
+            try {
+               $$0.config().setOption(ChannelOption.TCP_NODELAY, true);
+            } catch (ChannelException var3) {
+            }
+
+            ChannelPipeline $$1 = $$0.pipeline().addLast("timeout", new ReadTimeoutHandler(30));
+            ug.a($$1, xg.b, $$2.B);
+            $$2.a($$1);
+         }
+      })).channel($$3)).connect($$0.getAddress(), $$0.getPort());
    }
 
-   public <T> Optional<T> b(ug.a<T> $$0) {
-      return this.readBoolean() ? Optional.of($$0.apply(this)) : Optional.empty();
+   public static void a(ChannelPipeline $$0, xg $$1, @Nullable ty $$2) {
+      xg $$3 = $$1.a();
+      AttributeKey<uh.a<?>> $$4 = a($$1);
+      AttributeKey<uh.a<?>> $$5 = a($$3);
+      $$0.addLast("splitter", new uy($$2))
+         .addLast("decoder", new ul($$4))
+         .addLast("prepender", new uz())
+         .addLast("encoder", new um($$5))
+         .addLast("unbundler", new uk($$5))
+         .addLast("bundler", new uj($$4));
+   }
+
+   public void a(ChannelPipeline $$0) {
+      $$0.addLast(new ChannelHandler[]{new FlowControlHandler()}).addLast("packet_handler", this);
+   }
+
+   private static void b(ChannelPipeline $$0, xg $$1) {
+      xg $$2 = $$1.a();
+      AttributeKey<uh.a<?>> $$3 = a($$1);
+      AttributeKey<uh.a<?>> $$4 = a($$2);
+      $$0.addLast("validator", new un($$3, $$4));
+   }
+
+   public static void a(ChannelPipeline $$0, xg $$1) {
+      b($$0, $$1);
+   }
+
+   public static ug a(SocketAddress $$0) {
+      final ug $$1 = new ug(xg.b);
+      ((Bootstrap)((Bootstrap)((Bootstrap)new Bootstrap().group((EventLoopGroup)i.get())).handler(new ChannelInitializer<Channel>() {
+         protected void initChannel(Channel $$0) {
+            ug.a($$0);
+            ChannelPipeline $$1 = $$0.pipeline();
+            ug.a($$1, xg.b);
+            $$1.a($$1);
+         }
+      })).channel(LocalChannel.class)).connect($$0).syncUninterruptibly();
+      return $$1;
+   }
+
+   public void a(Cipher $$0, Cipher $$1) {
+      this.s = true;
+      this.n.pipeline().addBefore("splitter", "decrypt", new ua($$0));
+      this.n.pipeline().addBefore("prepender", "encrypt", new ub($$1));
+   }
+
+   public boolean j() {
+      return this.s;
+   }
+
+   public boolean k() {
+      return this.n != null && this.n.isOpen();
+   }
+
+   public boolean l() {
+      return this.n == null;
    }
 
    @Nullable
-   public <T> T c(ug.a<T> $$0) {
-      return this.readBoolean() ? $$0.apply(this) : null;
-   }
-
-   public <T> void a(@Nullable T $$0, ug.b<T> $$1) {
-      if ($$0 != null) {
-         this.a(true);
-         $$1.accept(this, $$0);
-      } else {
-         this.a(false);
-      }
-   }
-
-   public <L, R> void a(Either<L, R> $$0, ug.b<L> $$1, ug.b<R> $$2) {
-      $$0.ifLeft($$1x -> {
-         this.a(true);
-         $$1.accept(this, (L)$$1x);
-      }).ifRight($$1x -> {
-         this.a(false);
-         $$2.accept(this, (R)$$1x);
-      });
-   }
-
-   public <L, R> Either<L, R> b(ug.a<L> $$0, ug.a<R> $$1) {
-      return this.readBoolean() ? Either.left($$0.apply(this)) : Either.right($$1.apply(this));
-   }
-
-   public byte[] b() {
-      return this.a(this.readableBytes());
-   }
-
-   public ug a(byte[] $$0) {
-      this.c($$0.length);
-      this.c($$0);
-      return this;
-   }
-
-   public byte[] a(int $$0) {
-      int $$1 = this.n();
-      if ($$1 > $$0) {
-         throw new DecoderException("ByteArray with size " + $$1 + " is bigger than allowed " + $$0);
-      } else {
-         byte[] $$2 = new byte[$$1];
-         this.b($$2);
-         return $$2;
-      }
-   }
-
-   public ug a(int[] $$0) {
-      this.c($$0.length);
-
-      for (int $$1 : $$0) {
-         this.c($$1);
-      }
-
-      return this;
-   }
-
-   public int[] c() {
-      return this.b(this.readableBytes());
-   }
-
-   public int[] b(int $$0) {
-      int $$1 = this.n();
-      if ($$1 > $$0) {
-         throw new DecoderException("VarIntArray with size " + $$1 + " is bigger than allowed " + $$0);
-      } else {
-         int[] $$2 = new int[$$1];
-
-         for (int $$3 = 0; $$3 < $$2.length; $$3++) {
-            $$2[$$3] = this.n();
-         }
-
-         return $$2;
-      }
-   }
-
-   public ug a(long[] $$0) {
-      this.c($$0.length);
-
-      for (long $$1 : $$0) {
-         this.b($$1);
-      }
-
-      return this;
-   }
-
-   public long[] d() {
-      return this.b(null);
-   }
-
-   public long[] b(@Nullable long[] $$0) {
-      return this.a($$0, this.readableBytes() / 8);
-   }
-
-   public long[] a(@Nullable long[] $$0, int $$1) {
-      int $$2 = this.n();
-      if ($$0 == null || $$0.length != $$2) {
-         if ($$2 > $$1) {
-            throw new DecoderException("LongArray with size " + $$2 + " is bigger than allowed " + $$1);
-         }
-
-         $$0 = new long[$$2];
-      }
-
-      for (int $$3 = 0; $$3 < $$0.length; $$3++) {
-         $$0[$$3] = this.readLong();
-      }
-
-      return $$0;
-   }
-
-   public hx e() {
-      return hx.d(this.readLong());
-   }
-
-   public ug a(hx $$0) {
-      this.b($$0.a());
-      return this;
-   }
-
-   public csp f() {
-      return new csp(this.readLong());
-   }
-
-   public ug a(csp $$0) {
-      this.b($$0.a());
-      return this;
-   }
-
-   public iz g() {
-      return iz.a(this.readLong());
-   }
-
-   public ug a(iz $$0) {
-      this.b($$0.s());
-      return this;
-   }
-
-   public ig h() {
-      ahc<cti> $$0 = this.a(ke.aM);
-      hx $$1 = this.e();
-      return ig.a($$0, $$1);
-   }
-
-   public void a(ig $$0) {
-      this.b($$0.a());
-      this.a($$0.b());
-   }
-
-   public Vector3f i() {
-      return new Vector3f(this.readFloat(), this.readFloat(), this.readFloat());
-   }
-
-   public void a(Vector3f $$0) {
-      this.a($$0.x());
-      this.a($$0.y());
-      this.a($$0.z());
-   }
-
-   public Quaternionf j() {
-      return new Quaternionf(this.readFloat(), this.readFloat(), this.readFloat(), this.readFloat());
-   }
-
-   public void a(Quaternionf $$0) {
-      this.a($$0.x);
-      this.a($$0.y);
-      this.a($$0.z);
-      this.a($$0.w);
-   }
-
-   public elm k() {
-      return new elm(this.readDouble(), this.readDouble(), this.readDouble());
-   }
-
-   public void a(elm $$0) {
-      this.a($$0.a());
-      this.a($$0.b());
-      this.a($$0.c());
-   }
-
-   public vd l() {
-      return this.a(sz.a, vf.a, su.a(2097152L));
-   }
-
-   public vd m() {
-      return this.a(sz.a, vf.a);
-   }
-
-   public ug a(vd $$0) {
-      return this.a(sz.a, vf.a, $$0);
-   }
-
-   public <T extends Enum<T>> T b(Class<T> $$0) {
-      return $$0.getEnumConstants()[this.n()];
-   }
-
-   public ug a(Enum<?> $$0) {
-      return this.c($$0.ordinal());
-   }
-
-   public <T> T a(IntFunction<T> $$0) {
-      int $$1 = this.n();
-      return $$0.apply($$1);
-   }
-
-   public <T> ug a(ToIntFunction<T> $$0, T $$1) {
-      int $$2 = $$0.applyAsInt($$1);
-      return this.c($$2);
-   }
-
-   public int n() {
-      return uu.a(this.d);
-   }
-
-   public long o() {
-      return uv.a(this.d);
-   }
-
-   public ug a(UUID $$0) {
-      this.b($$0.getMostSignificantBits());
-      this.b($$0.getLeastSignificantBits());
-      return this;
-   }
-
-   public UUID p() {
-      return new UUID(this.readLong(), this.readLong());
-   }
-
-   public ug c(int $$0) {
-      uu.a(this.d, $$0);
-      return this;
-   }
-
-   public ug a(long $$0) {
-      uv.a(this.d, $$0);
-      return this;
-   }
-
-   public ug a(@Nullable ti $$0) {
-      if ($$0 == null) {
-         $$0 = sn.b;
-      }
-
-      try {
-         sy.a($$0, new ByteBufOutputStream(this));
-         return this;
-      } catch (IOException var3) {
-         throw new EncoderException(var3);
-      }
+   public uo m() {
+      return this.q;
    }
 
    @Nullable
-   public sl q() {
-      ti $$0 = this.a(su.a(2097152L));
-      if ($$0 != null && !($$0 instanceof sl)) {
-         throw new DecoderException("Not a compound tag: " + $$0);
-      } else {
-         return (sl)$$0;
+   public vf n() {
+      return this.r;
+   }
+
+   public void o() {
+      if (this.n != null) {
+         this.n.config().setAutoRead(false);
       }
    }
 
-   @Nullable
-   public ti a(su $$0) {
-      try {
-         ti $$1 = sy.b(new ByteBufInputStream(this), $$0);
-         return $$1.b() == 0 ? null : $$1;
-      } catch (IOException var3) {
-         throw new EncoderException(var3);
-      }
-   }
-
-   public ug a(cmr $$0) {
-      if ($$0.b()) {
-         this.a(false);
-      } else {
-         this.a(true);
-         cmm $$1 = $$0.d();
-         this.a(kd.h, $$1);
-         this.k($$0.L());
-         sl $$2 = null;
-         if ($$1.o() || $$1.r()) {
-            $$2 = $$0.v();
+   public void a(int $$0, boolean $$1) {
+      if ($$0 >= 0) {
+         if (this.n.pipeline().get("decompress") instanceof ue) {
+            ((ue)this.n.pipeline().get("decompress")).a($$0, $$1);
+         } else {
+            this.n.pipeline().addBefore("decoder", "decompress", new ue($$0, $$1));
          }
 
-         this.a((ti)$$2);
-      }
-
-      return this;
-   }
-
-   public cmr r() {
-      if (!this.readBoolean()) {
-         return cmr.f;
+         if (this.n.pipeline().get("compress") instanceof uf) {
+            ((uf)this.n.pipeline().get("compress")).a($$0);
+         } else {
+            this.n.pipeline().addBefore("encoder", "compress", new uf($$0));
+         }
       } else {
-         cmm $$0 = this.a(kd.h);
-         int $$1 = this.readByte();
-         cmr $$2 = new cmr($$0, $$1);
-         $$2.c(this.q());
-         return $$2;
+         if (this.n.pipeline().get("decompress") instanceof ue) {
+            this.n.pipeline().remove("decompress");
+         }
+
+         if (this.n.pipeline().get("compress") instanceof uf) {
+            this.n.pipeline().remove("compress");
+         }
       }
    }
 
-   public String s() {
-      return this.d(32767);
-   }
-
-   public String d(int $$0) {
-      return ut.a(this.d, $$0);
-   }
-
-   public ug a(String $$0) {
-      return this.a($$0, 32767);
-   }
-
-   public ug a(String $$0, int $$1) {
-      ut.a(this.d, $$0, $$1);
-      return this;
-   }
-
-   public ahd t() {
-      return new ahd(this.d(32767));
-   }
-
-   public ug a(ahd $$0) {
-      this.a($$0.toString());
-      return this;
-   }
-
-   public <T> ahc<T> a(ahc<? extends it<T>> $$0) {
-      ahd $$1 = this.t();
-      return ahc.a($$0, $$1);
-   }
-
-   public void b(ahc<?> $$0) {
-      this.a($$0.a());
-   }
-
-   public <T> ahc<? extends it<T>> u() {
-      ahd $$0 = this.t();
-      return ahc.a($$0);
-   }
-
-   public Date v() {
-      return new Date(this.readLong());
-   }
-
-   public ug a(Date $$0) {
-      this.b($$0.getTime());
-      return this;
-   }
-
-   public Instant w() {
-      return Instant.ofEpochMilli(this.readLong());
-   }
-
-   public void a(Instant $$0) {
-      this.b($$0.toEpochMilli());
-   }
-
-   public PublicKey x() {
-      try {
-         return atg.a(this.a(512));
-      } catch (ath var2) {
-         throw new DecoderException("Malformed public key bytes", var2);
+   public void p() {
+      if (this.n != null && !this.n.isOpen()) {
+         if (this.t) {
+            k.warn("handleDisconnection() called twice");
+         } else {
+            this.t = true;
+            uo $$0 = this.m();
+            uo $$1 = $$0 != null ? $$0 : this.p;
+            if ($$1 != null) {
+               vf $$2 = Objects.requireNonNullElseGet(this.n(), () -> vf.c("multiplayer.disconnect.generic"));
+               $$1.a($$2);
+            }
+         }
       }
    }
 
-   public ug a(PublicKey $$0) {
-      this.a($$0.getEncoded());
-      return this;
+   public float q() {
+      return this.w;
    }
 
-   public eli y() {
-      hx $$0 = this.e();
-      ic $$1 = this.b(ic.class);
-      float $$2 = this.readFloat();
-      float $$3 = this.readFloat();
-      float $$4 = this.readFloat();
-      boolean $$5 = this.readBoolean();
-      return new eli(new elm((double)$$0.u() + (double)$$2, (double)$$0.v() + (double)$$3, (double)$$0.w() + (double)$$4), $$1, $$0, $$5);
+   public float r() {
+      return this.x;
    }
 
-   public void a(eli $$0) {
-      hx $$1 = $$0.a();
-      this.a($$1);
-      this.a($$0.b());
-      elm $$2 = $$0.e();
-      this.a((float)($$2.c - (double)$$1.u()));
-      this.a((float)($$2.d - (double)$$1.v()));
-      this.a((float)($$2.e - (double)$$1.w()));
-      this.a($$0.d());
-   }
-
-   public BitSet z() {
-      return BitSet.valueOf(this.d());
-   }
-
-   public void a(BitSet $$0) {
-      this.a($$0.toLongArray());
-   }
-
-   public BitSet e(int $$0) {
-      byte[] $$1 = new byte[aui.e($$0, 8)];
-      this.b($$1);
-      return BitSet.valueOf($$1);
-   }
-
-   public void a(BitSet $$0, int $$1) {
-      if ($$0.length() > $$1) {
-         throw new EncoderException("BitSet is larger than expected size (" + $$0.length() + ">" + $$1 + ")");
-      } else {
-         byte[] $$2 = $$0.toByteArray();
-         this.c(Arrays.copyOf($$2, aui.e($$1, 8)));
-      }
-   }
-
-   public GameProfile A() {
-      UUID $$0 = this.p();
-      String $$1 = this.d(16);
-      GameProfile $$2 = new GameProfile($$0, $$1);
-      $$2.getProperties().putAll(this.B());
-      return $$2;
-   }
-
-   public void a(GameProfile $$0) {
-      this.a($$0.getId());
-      this.a($$0.getName());
-      this.a($$0.getProperties());
-   }
-
-   public PropertyMap B() {
-      PropertyMap $$0 = new PropertyMap();
-      this.a((Consumer<ug>)($$1 -> {
-         Property $$2 = this.C();
-         $$0.put($$2.name(), $$2);
-      }));
-      return $$0;
-   }
-
-   public void a(PropertyMap $$0) {
-      this.a($$0.values(), ug::a);
-   }
-
-   public Property C() {
-      String $$0 = this.s();
-      String $$1 = this.s();
-      String $$2 = this.c(ug::s);
-      return new Property($$0, $$1, $$2);
-   }
-
-   public void a(Property $$0) {
-      this.a($$0.name());
-      this.a($$0.value());
-      this.a($$0.signature(), ug::a);
-   }
-
-   public boolean isContiguous() {
-      return this.d.isContiguous();
-   }
-
-   public int maxFastWritableBytes() {
-      return this.d.maxFastWritableBytes();
-   }
-
-   public int capacity() {
-      return this.d.capacity();
-   }
-
-   public ug f(int $$0) {
-      this.d.capacity($$0);
-      return this;
-   }
-
-   public int maxCapacity() {
-      return this.d.maxCapacity();
-   }
-
-   public ByteBufAllocator alloc() {
-      return this.d.alloc();
-   }
-
-   public ByteOrder order() {
-      return this.d.order();
-   }
-
-   public ByteBuf order(ByteOrder $$0) {
-      return this.d.order($$0);
-   }
-
-   public ByteBuf unwrap() {
-      return this.d;
-   }
-
-   public boolean isDirect() {
-      return this.d.isDirect();
-   }
-
-   public boolean isReadOnly() {
-      return this.d.isReadOnly();
-   }
-
-   public ByteBuf asReadOnly() {
-      return this.d.asReadOnly();
-   }
-
-   public int readerIndex() {
-      return this.d.readerIndex();
-   }
-
-   public ug g(int $$0) {
-      this.d.readerIndex($$0);
-      return this;
-   }
-
-   public int writerIndex() {
-      return this.d.writerIndex();
-   }
-
-   public ug h(int $$0) {
-      this.d.writerIndex($$0);
-      return this;
-   }
-
-   public ug a(int $$0, int $$1) {
-      this.d.setIndex($$0, $$1);
-      return this;
-   }
-
-   public int readableBytes() {
-      return this.d.readableBytes();
-   }
-
-   public int writableBytes() {
-      return this.d.writableBytes();
-   }
-
-   public int maxWritableBytes() {
-      return this.d.maxWritableBytes();
-   }
-
-   public boolean isReadable() {
-      return this.d.isReadable();
-   }
-
-   public boolean isReadable(int $$0) {
-      return this.d.isReadable($$0);
-   }
-
-   public boolean isWritable() {
-      return this.d.isWritable();
-   }
-
-   public boolean isWritable(int $$0) {
-      return this.d.isWritable($$0);
-   }
-
-   public ug D() {
-      this.d.clear();
-      return this;
-   }
-
-   public ug E() {
-      this.d.markReaderIndex();
-      return this;
-   }
-
-   public ug F() {
-      this.d.resetReaderIndex();
-      return this;
-   }
-
-   public ug G() {
-      this.d.markWriterIndex();
-      return this;
-   }
-
-   public ug H() {
-      this.d.resetWriterIndex();
-      return this;
-   }
-
-   public ug I() {
-      this.d.discardReadBytes();
-      return this;
-   }
-
-   public ug J() {
-      this.d.discardSomeReadBytes();
-      return this;
-   }
-
-   public ug i(int $$0) {
-      this.d.ensureWritable($$0);
-      return this;
-   }
-
-   public int ensureWritable(int $$0, boolean $$1) {
-      return this.d.ensureWritable($$0, $$1);
-   }
-
-   public boolean getBoolean(int $$0) {
-      return this.d.getBoolean($$0);
-   }
-
-   public byte getByte(int $$0) {
-      return this.d.getByte($$0);
-   }
-
-   public short getUnsignedByte(int $$0) {
-      return this.d.getUnsignedByte($$0);
-   }
-
-   public short getShort(int $$0) {
-      return this.d.getShort($$0);
-   }
-
-   public short getShortLE(int $$0) {
-      return this.d.getShortLE($$0);
-   }
-
-   public int getUnsignedShort(int $$0) {
-      return this.d.getUnsignedShort($$0);
-   }
-
-   public int getUnsignedShortLE(int $$0) {
-      return this.d.getUnsignedShortLE($$0);
-   }
-
-   public int getMedium(int $$0) {
-      return this.d.getMedium($$0);
-   }
-
-   public int getMediumLE(int $$0) {
-      return this.d.getMediumLE($$0);
-   }
-
-   public int getUnsignedMedium(int $$0) {
-      return this.d.getUnsignedMedium($$0);
-   }
-
-   public int getUnsignedMediumLE(int $$0) {
-      return this.d.getUnsignedMediumLE($$0);
-   }
-
-   public int getInt(int $$0) {
-      return this.d.getInt($$0);
-   }
-
-   public int getIntLE(int $$0) {
-      return this.d.getIntLE($$0);
-   }
-
-   public long getUnsignedInt(int $$0) {
-      return this.d.getUnsignedInt($$0);
-   }
-
-   public long getUnsignedIntLE(int $$0) {
-      return this.d.getUnsignedIntLE($$0);
-   }
-
-   public long getLong(int $$0) {
-      return this.d.getLong($$0);
-   }
-
-   public long getLongLE(int $$0) {
-      return this.d.getLongLE($$0);
-   }
-
-   public char getChar(int $$0) {
-      return this.d.getChar($$0);
-   }
-
-   public float getFloat(int $$0) {
-      return this.d.getFloat($$0);
-   }
-
-   public double getDouble(int $$0) {
-      return this.d.getDouble($$0);
-   }
-
-   public ug a(int $$0, ByteBuf $$1) {
-      this.d.getBytes($$0, $$1);
-      return this;
-   }
-
-   public ug a(int $$0, ByteBuf $$1, int $$2) {
-      this.d.getBytes($$0, $$1, $$2);
-      return this;
-   }
-
-   public ug a(int $$0, ByteBuf $$1, int $$2, int $$3) {
-      this.d.getBytes($$0, $$1, $$2, $$3);
-      return this;
-   }
-
-   public ug a(int $$0, byte[] $$1) {
-      this.d.getBytes($$0, $$1);
-      return this;
-   }
-
-   public ug a(int $$0, byte[] $$1, int $$2, int $$3) {
-      this.d.getBytes($$0, $$1, $$2, $$3);
-      return this;
-   }
-
-   public ug a(int $$0, ByteBuffer $$1) {
-      this.d.getBytes($$0, $$1);
-      return this;
-   }
-
-   public ug a(int $$0, OutputStream $$1, int $$2) throws IOException {
-      this.d.getBytes($$0, $$1, $$2);
-      return this;
-   }
-
-   public int getBytes(int $$0, GatheringByteChannel $$1, int $$2) throws IOException {
-      return this.d.getBytes($$0, $$1, $$2);
-   }
-
-   public int getBytes(int $$0, FileChannel $$1, long $$2, int $$3) throws IOException {
-      return this.d.getBytes($$0, $$1, $$2, $$3);
-   }
-
-   public CharSequence getCharSequence(int $$0, int $$1, Charset $$2) {
-      return this.d.getCharSequence($$0, $$1, $$2);
-   }
-
-   public ug a(int $$0, boolean $$1) {
-      this.d.setBoolean($$0, $$1);
-      return this;
-   }
-
-   public ug b(int $$0, int $$1) {
-      this.d.setByte($$0, $$1);
-      return this;
-   }
-
-   public ug c(int $$0, int $$1) {
-      this.d.setShort($$0, $$1);
-      return this;
-   }
-
-   public ug d(int $$0, int $$1) {
-      this.d.setShortLE($$0, $$1);
-      return this;
-   }
-
-   public ug e(int $$0, int $$1) {
-      this.d.setMedium($$0, $$1);
-      return this;
-   }
-
-   public ug f(int $$0, int $$1) {
-      this.d.setMediumLE($$0, $$1);
-      return this;
-   }
-
-   public ug g(int $$0, int $$1) {
-      this.d.setInt($$0, $$1);
-      return this;
-   }
-
-   public ug h(int $$0, int $$1) {
-      this.d.setIntLE($$0, $$1);
-      return this;
-   }
-
-   public ug a(int $$0, long $$1) {
-      this.d.setLong($$0, $$1);
-      return this;
-   }
-
-   public ug b(int $$0, long $$1) {
-      this.d.setLongLE($$0, $$1);
-      return this;
-   }
-
-   public ug i(int $$0, int $$1) {
-      this.d.setChar($$0, $$1);
-      return this;
-   }
-
-   public ug a(int $$0, float $$1) {
-      this.d.setFloat($$0, $$1);
-      return this;
-   }
-
-   public ug a(int $$0, double $$1) {
-      this.d.setDouble($$0, $$1);
-      return this;
-   }
-
-   public ug b(int $$0, ByteBuf $$1) {
-      this.d.setBytes($$0, $$1);
-      return this;
-   }
-
-   public ug b(int $$0, ByteBuf $$1, int $$2) {
-      this.d.setBytes($$0, $$1, $$2);
-      return this;
-   }
-
-   public ug b(int $$0, ByteBuf $$1, int $$2, int $$3) {
-      this.d.setBytes($$0, $$1, $$2, $$3);
-      return this;
-   }
-
-   public ug b(int $$0, byte[] $$1) {
-      this.d.setBytes($$0, $$1);
-      return this;
-   }
-
-   public ug b(int $$0, byte[] $$1, int $$2, int $$3) {
-      this.d.setBytes($$0, $$1, $$2, $$3);
-      return this;
-   }
-
-   public ug b(int $$0, ByteBuffer $$1) {
-      this.d.setBytes($$0, $$1);
-      return this;
-   }
-
-   public int setBytes(int $$0, InputStream $$1, int $$2) throws IOException {
-      return this.d.setBytes($$0, $$1, $$2);
-   }
-
-   public int setBytes(int $$0, ScatteringByteChannel $$1, int $$2) throws IOException {
-      return this.d.setBytes($$0, $$1, $$2);
-   }
-
-   public int setBytes(int $$0, FileChannel $$1, long $$2, int $$3) throws IOException {
-      return this.d.setBytes($$0, $$1, $$2, $$3);
-   }
-
-   public ug j(int $$0, int $$1) {
-      this.d.setZero($$0, $$1);
-      return this;
-   }
-
-   public int setCharSequence(int $$0, CharSequence $$1, Charset $$2) {
-      return this.d.setCharSequence($$0, $$1, $$2);
-   }
-
-   public boolean readBoolean() {
-      return this.d.readBoolean();
-   }
-
-   public byte readByte() {
-      return this.d.readByte();
-   }
-
-   public short readUnsignedByte() {
-      return this.d.readUnsignedByte();
-   }
-
-   public short readShort() {
-      return this.d.readShort();
-   }
-
-   public short readShortLE() {
-      return this.d.readShortLE();
-   }
-
-   public int readUnsignedShort() {
-      return this.d.readUnsignedShort();
-   }
-
-   public int readUnsignedShortLE() {
-      return this.d.readUnsignedShortLE();
-   }
-
-   public int readMedium() {
-      return this.d.readMedium();
-   }
-
-   public int readMediumLE() {
-      return this.d.readMediumLE();
-   }
-
-   public int readUnsignedMedium() {
-      return this.d.readUnsignedMedium();
-   }
-
-   public int readUnsignedMediumLE() {
-      return this.d.readUnsignedMediumLE();
-   }
-
-   public int readInt() {
-      return this.d.readInt();
-   }
-
-   public int readIntLE() {
-      return this.d.readIntLE();
-   }
-
-   public long readUnsignedInt() {
-      return this.d.readUnsignedInt();
-   }
-
-   public long readUnsignedIntLE() {
-      return this.d.readUnsignedIntLE();
-   }
-
-   public long readLong() {
-      return this.d.readLong();
-   }
-
-   public long readLongLE() {
-      return this.d.readLongLE();
-   }
-
-   public char readChar() {
-      return this.d.readChar();
-   }
-
-   public float readFloat() {
-      return this.d.readFloat();
-   }
-
-   public double readDouble() {
-      return this.d.readDouble();
-   }
-
-   public ByteBuf readBytes(int $$0) {
-      return this.d.readBytes($$0);
-   }
-
-   public ByteBuf readSlice(int $$0) {
-      return this.d.readSlice($$0);
-   }
-
-   public ByteBuf readRetainedSlice(int $$0) {
-      return this.d.readRetainedSlice($$0);
-   }
-
-   public ug a(ByteBuf $$0) {
-      this.d.readBytes($$0);
-      return this;
-   }
-
-   public ug a(ByteBuf $$0, int $$1) {
-      this.d.readBytes($$0, $$1);
-      return this;
-   }
-
-   public ug a(ByteBuf $$0, int $$1, int $$2) {
-      this.d.readBytes($$0, $$1, $$2);
-      return this;
-   }
-
-   public ug b(byte[] $$0) {
-      this.d.readBytes($$0);
-      return this;
-   }
-
-   public ug a(byte[] $$0, int $$1, int $$2) {
-      this.d.readBytes($$0, $$1, $$2);
-      return this;
-   }
-
-   public ug a(ByteBuffer $$0) {
-      this.d.readBytes($$0);
-      return this;
-   }
-
-   public ug a(OutputStream $$0, int $$1) throws IOException {
-      this.d.readBytes($$0, $$1);
-      return this;
-   }
-
-   public int readBytes(GatheringByteChannel $$0, int $$1) throws IOException {
-      return this.d.readBytes($$0, $$1);
-   }
-
-   public CharSequence readCharSequence(int $$0, Charset $$1) {
-      return this.d.readCharSequence($$0, $$1);
-   }
-
-   public int readBytes(FileChannel $$0, long $$1, int $$2) throws IOException {
-      return this.d.readBytes($$0, $$1, $$2);
-   }
-
-   public ug j(int $$0) {
-      this.d.skipBytes($$0);
-      return this;
-   }
-
-   public ug a(boolean $$0) {
-      this.d.writeBoolean($$0);
-      return this;
-   }
-
-   public ug k(int $$0) {
-      this.d.writeByte($$0);
-      return this;
-   }
-
-   public ug l(int $$0) {
-      this.d.writeShort($$0);
-      return this;
-   }
-
-   public ug m(int $$0) {
-      this.d.writeShortLE($$0);
-      return this;
-   }
-
-   public ug n(int $$0) {
-      this.d.writeMedium($$0);
-      return this;
-   }
-
-   public ug o(int $$0) {
-      this.d.writeMediumLE($$0);
-      return this;
-   }
-
-   public ug p(int $$0) {
-      this.d.writeInt($$0);
-      return this;
-   }
-
-   public ug q(int $$0) {
-      this.d.writeIntLE($$0);
-      return this;
-   }
-
-   public ug b(long $$0) {
-      this.d.writeLong($$0);
-      return this;
-   }
-
-   public ug c(long $$0) {
-      this.d.writeLongLE($$0);
-      return this;
-   }
-
-   public ug r(int $$0) {
-      this.d.writeChar($$0);
-      return this;
-   }
-
-   public ug a(float $$0) {
-      this.d.writeFloat($$0);
-      return this;
-   }
-
-   public ug a(double $$0) {
-      this.d.writeDouble($$0);
-      return this;
-   }
-
-   public ug b(ByteBuf $$0) {
-      this.d.writeBytes($$0);
-      return this;
-   }
-
-   public ug b(ByteBuf $$0, int $$1) {
-      this.d.writeBytes($$0, $$1);
-      return this;
-   }
-
-   public ug b(ByteBuf $$0, int $$1, int $$2) {
-      this.d.writeBytes($$0, $$1, $$2);
-      return this;
-   }
-
-   public ug c(byte[] $$0) {
-      this.d.writeBytes($$0);
-      return this;
-   }
-
-   public ug b(byte[] $$0, int $$1, int $$2) {
-      this.d.writeBytes($$0, $$1, $$2);
-      return this;
-   }
-
-   public ug b(ByteBuffer $$0) {
-      this.d.writeBytes($$0);
-      return this;
-   }
-
-   public int writeBytes(InputStream $$0, int $$1) throws IOException {
-      return this.d.writeBytes($$0, $$1);
-   }
-
-   public int writeBytes(ScatteringByteChannel $$0, int $$1) throws IOException {
-      return this.d.writeBytes($$0, $$1);
-   }
-
-   public int writeBytes(FileChannel $$0, long $$1, int $$2) throws IOException {
-      return this.d.writeBytes($$0, $$1, $$2);
-   }
-
-   public ug s(int $$0) {
-      this.d.writeZero($$0);
-      return this;
-   }
-
-   public int writeCharSequence(CharSequence $$0, Charset $$1) {
-      return this.d.writeCharSequence($$0, $$1);
-   }
-
-   public int indexOf(int $$0, int $$1, byte $$2) {
-      return this.d.indexOf($$0, $$1, $$2);
-   }
-
-   public int bytesBefore(byte $$0) {
-      return this.d.bytesBefore($$0);
-   }
-
-   public int bytesBefore(int $$0, byte $$1) {
-      return this.d.bytesBefore($$0, $$1);
-   }
-
-   public int bytesBefore(int $$0, int $$1, byte $$2) {
-      return this.d.bytesBefore($$0, $$1, $$2);
-   }
-
-   public int forEachByte(ByteProcessor $$0) {
-      return this.d.forEachByte($$0);
-   }
-
-   public int forEachByte(int $$0, int $$1, ByteProcessor $$2) {
-      return this.d.forEachByte($$0, $$1, $$2);
-   }
-
-   public int forEachByteDesc(ByteProcessor $$0) {
-      return this.d.forEachByteDesc($$0);
-   }
-
-   public int forEachByteDesc(int $$0, int $$1, ByteProcessor $$2) {
-      return this.d.forEachByteDesc($$0, $$1, $$2);
-   }
-
-   public ByteBuf copy() {
-      return this.d.copy();
-   }
-
-   public ByteBuf copy(int $$0, int $$1) {
-      return this.d.copy($$0, $$1);
-   }
-
-   public ByteBuf slice() {
-      return this.d.slice();
-   }
-
-   public ByteBuf retainedSlice() {
-      return this.d.retainedSlice();
-   }
-
-   public ByteBuf slice(int $$0, int $$1) {
-      return this.d.slice($$0, $$1);
-   }
-
-   public ByteBuf retainedSlice(int $$0, int $$1) {
-      return this.d.retainedSlice($$0, $$1);
-   }
-
-   public ByteBuf duplicate() {
-      return this.d.duplicate();
-   }
-
-   public ByteBuf retainedDuplicate() {
-      return this.d.retainedDuplicate();
-   }
-
-   public int nioBufferCount() {
-      return this.d.nioBufferCount();
-   }
-
-   public ByteBuffer nioBuffer() {
-      return this.d.nioBuffer();
-   }
-
-   public ByteBuffer nioBuffer(int $$0, int $$1) {
-      return this.d.nioBuffer($$0, $$1);
-   }
-
-   public ByteBuffer internalNioBuffer(int $$0, int $$1) {
-      return this.d.internalNioBuffer($$0, $$1);
-   }
-
-   public ByteBuffer[] nioBuffers() {
-      return this.d.nioBuffers();
-   }
-
-   public ByteBuffer[] nioBuffers(int $$0, int $$1) {
-      return this.d.nioBuffers($$0, $$1);
-   }
-
-   public boolean hasArray() {
-      return this.d.hasArray();
-   }
-
-   public byte[] array() {
-      return this.d.array();
-   }
-
-   public int arrayOffset() {
-      return this.d.arrayOffset();
-   }
-
-   public boolean hasMemoryAddress() {
-      return this.d.hasMemoryAddress();
-   }
-
-   public long memoryAddress() {
-      return this.d.memoryAddress();
-   }
-
-   public String toString(Charset $$0) {
-      return this.d.toString($$0);
-   }
-
-   public String toString(int $$0, int $$1, Charset $$2) {
-      return this.d.toString($$0, $$1, $$2);
-   }
-
-   public int hashCode() {
-      return this.d.hashCode();
-   }
-
-   public boolean equals(Object $$0) {
-      return this.d.equals($$0);
-   }
-
-   public int compareTo(ByteBuf $$0) {
-      return this.d.compareTo($$0);
-   }
-
-   public String toString() {
-      return this.d.toString();
-   }
-
-   public ug t(int $$0) {
-      this.d.retain($$0);
-      return this;
-   }
-
-   public ug K() {
-      this.d.retain();
-      return this;
-   }
-
-   public ug L() {
-      this.d.touch();
-      return this;
-   }
-
-   public ug a(Object $$0) {
-      this.d.touch($$0);
-      return this;
-   }
-
-   public int refCnt() {
-      return this.d.refCnt();
-   }
-
-   public boolean release() {
-      return this.d.release();
-   }
-
-   public boolean release(int $$0) {
-      return this.d.release($$0);
-   }
-
-   @FunctionalInterface
-   public interface a<T> extends Function<ug, T> {
-      default ug.a<Optional<T>> asOptional() {
-         return $$0 -> $$0.b(this);
-      }
-   }
-
-   @FunctionalInterface
-   public interface b<T> extends BiConsumer<ug, T> {
-      default ug.b<Optional<T>> asOptional() {
-         return ($$0, $$1) -> $$0.a($$1, this);
-      }
+   public void a(auw $$0) {
+      this.B = new ty($$0);
    }
 }

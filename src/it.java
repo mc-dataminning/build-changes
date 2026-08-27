@@ -17,35 +17,35 @@ import java.util.stream.StreamSupport;
 import javax.annotation.Nullable;
 
 public interface it<T> extends Keyable, im<T> {
-   ahc<? extends it<T>> c();
+   ahf<? extends it<T>> c();
 
    default Codec<T> q() {
-      Codec<T> $$0 = ahd.a
+      Codec<T> $$0 = ahg.a
          .flatXmap(
             $$0x -> Optional.ofNullable(this.a($$0x))
                   .<DataResult>map(DataResult::success)
                   .orElseGet(() -> DataResult.error(() -> "Unknown registry key in " + this.c() + ": " + $$0x)),
             $$0x -> this.c((T)$$0x)
-                  .map(ahc::a)
+                  .map(ahf::a)
                   .<DataResult>map(DataResult::success)
                   .orElseGet(() -> DataResult.error(() -> "Unknown registry element in " + this.c() + ":" + $$0x))
          );
-      Codec<T> $$1 = atq.a($$0x -> this.c((T)$$0x).isPresent() ? this.a((T)$$0x) : -1, this::a, -1);
-      return atq.a(atq.b($$0, $$1), this::e, this::e);
+      Codec<T> $$1 = atv.a($$0x -> this.c((T)$$0x).isPresent() ? this.a((T)$$0x) : -1, this::a, -1);
+      return atv.a(atv.b($$0, $$1), this::e, this::e);
    }
 
    default Codec<ih<T>> r() {
-      Codec<ih<T>> $$0 = ahd.a
+      Codec<ih<T>> $$0 = ahg.a
          .flatXmap(
-            $$0x -> this.b(ahc.a(this.c(), $$0x))
+            $$0x -> this.b(ahf.a(this.c(), $$0x))
                   .<DataResult>map(DataResult::success)
                   .orElseGet(() -> DataResult.error(() -> "Unknown registry key in " + this.c() + ": " + $$0x)),
             $$0x -> $$0x.e()
-                  .map(ahc::a)
+                  .map(ahf::a)
                   .<DataResult>map(DataResult::success)
                   .orElseGet(() -> DataResult.error(() -> "Unknown registry element in " + this.c() + ":" + $$0x))
          );
-      return atq.a($$0, (Function<ih<T>, Lifecycle>)($$0x -> this.e((T)$$0x.a())), $$0x -> this.e((T)$$0x.a()));
+      return atv.a($$0, (Function<ih<T>, Lifecycle>)($$0x -> this.e((T)$$0x.a())), $$0x -> this.e((T)$$0x.a()));
    }
 
    default <U> Stream<U> keys(DynamicOps<U> $$0) {
@@ -53,32 +53,32 @@ public interface it<T> extends Keyable, im<T> {
    }
 
    @Nullable
-   ahd b(T var1);
+   ahg b(T var1);
 
-   Optional<ahc<T>> c(T var1);
+   Optional<ahf<T>> c(T var1);
 
    @Override
    int a(@Nullable T var1);
 
    @Nullable
-   T a(@Nullable ahc<T> var1);
+   T a(@Nullable ahf<T> var1);
 
    @Nullable
-   T a(@Nullable ahd var1);
+   T a(@Nullable ahg var1);
 
    Lifecycle e(T var1);
 
    Lifecycle d();
 
-   default Optional<T> b(@Nullable ahd $$0) {
+   default Optional<T> b(@Nullable ahg $$0) {
       return Optional.ofNullable(this.a($$0));
    }
 
-   default Optional<T> d(@Nullable ahc<T> $$0) {
+   default Optional<T> d(@Nullable ahf<T> $$0) {
       return Optional.ofNullable(this.a($$0));
    }
 
-   default T e(ahc<T> $$0) {
+   default T e(ahf<T> $$0) {
       T $$1 = this.a($$0);
       if ($$1 == null) {
          throw new IllegalStateException("Missing key in " + this.c() + ": " + $$0);
@@ -87,41 +87,41 @@ public interface it<T> extends Keyable, im<T> {
       }
    }
 
-   Set<ahd> e();
+   Set<ahg> e();
 
-   Set<Entry<ahc<T>, T>> g();
+   Set<Entry<ahf<T>, T>> g();
 
-   Set<ahc<T>> f();
+   Set<ahf<T>> f();
 
-   Optional<ih.c<T>> a(aup var1);
+   Optional<ih.c<T>> a(auu var1);
 
    default Stream<T> s() {
       return StreamSupport.stream(this.spliterator(), false);
    }
 
-   boolean c(ahd var1);
+   boolean c(ahg var1);
 
-   boolean c(ahc<T> var1);
+   boolean c(ahf<T> var1);
 
    static <T> T a(it<? super T> $$0, String $$1, T $$2) {
-      return a($$0, new ahd($$1), $$2);
+      return a($$0, new ahg($$1), $$2);
    }
 
-   static <V, T extends V> T a(it<V> $$0, ahd $$1, T $$2) {
-      return a($$0, ahc.a($$0.c(), $$1), $$2);
+   static <V, T extends V> T a(it<V> $$0, ahg $$1, T $$2) {
+      return a($$0, ahf.a($$0.c(), $$1), $$2);
    }
 
-   static <V, T extends V> T a(it<V> $$0, ahc<V> $$1, T $$2) {
+   static <V, T extends V> T a(it<V> $$0, ahf<V> $$1, T $$2) {
       ((jc)$$0).a($$1, (V)$$2, Lifecycle.stable());
       return $$2;
    }
 
-   static <T> ih.c<T> b(it<T> $$0, ahc<T> $$1, T $$2) {
+   static <T> ih.c<T> b(it<T> $$0, ahf<T> $$1, T $$2) {
       return ((jc)$$0).a($$1, $$2, Lifecycle.stable());
    }
 
-   static <T> ih.c<T> b(it<T> $$0, ahd $$1, T $$2) {
-      return b($$0, ahc.a($$0.c(), $$1), $$2);
+   static <T> ih.c<T> b(it<T> $$0, ahg $$1, T $$2) {
+      return b($$0, ahf.a($$0.c(), $$1), $$2);
    }
 
    it<T> l();
@@ -130,31 +130,31 @@ public interface it<T> extends Keyable, im<T> {
 
    Optional<ih.c<T>> c(int var1);
 
-   Optional<ih.c<T>> b(ahc<T> var1);
+   Optional<ih.c<T>> b(ahf<T> var1);
 
    ih<T> d(T var1);
 
-   default ih.c<T> f(ahc<T> $$0) {
+   default ih.c<T> f(ahf<T> $$0) {
       return this.b($$0).orElseThrow(() -> new IllegalStateException("Missing key in " + this.c() + ": " + $$0));
    }
 
    Stream<ih.c<T>> h();
 
-   Optional<il.c<T>> b(asq<T> var1);
+   Optional<il.c<T>> b(asv<T> var1);
 
-   default Iterable<ih<T>> c(asq<T> $$0) {
+   default Iterable<ih<T>> c(asv<T> $$0) {
       return (Iterable<ih<T>>)DataFixUtils.orElse(this.b($$0), List.of());
    }
 
-   il.c<T> a(asq<T> var1);
+   il.c<T> a(asv<T> var1);
 
-   Stream<Pair<asq<T>, il.c<T>>> i();
+   Stream<Pair<asv<T>, il.c<T>>> i();
 
-   Stream<asq<T>> j();
+   Stream<asv<T>> j();
 
    void m();
 
-   void a(Map<asq<T>, List<ih<T>>> var1);
+   void a(Map<asv<T>, List<ih<T>>> var1);
 
    default im<ih<T>> t() {
       return new im<ih<T>>() {
@@ -191,12 +191,12 @@ public interface it<T> extends Keyable, im<T> {
          }
 
          @Override
-         public Optional<il.c<T>> a(asq<T> $$0) {
+         public Optional<il.c<T>> a(asv<T> $$0) {
             return Optional.of(this.b($$0));
          }
 
          @Override
-         public il.c<T> b(asq<T> $$0) {
+         public il.c<T> b(asv<T> $$0) {
             return it.this.a($$0);
          }
       };

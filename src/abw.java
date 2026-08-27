@@ -1,24 +1,27 @@
-public class abw implements xd<yx> {
+import javax.annotation.Nullable;
+
+public class abw implements xf<za> {
    private final int a;
 
-   public abw(int $$0) {
-      this.a = $$0;
+   public abw(blu $$0) {
+      this.a = $$0.aj();
    }
 
-   public abw(ug $$0) {
+   public abw(ui $$0) {
       this.a = $$0.n();
    }
 
    @Override
-   public void a(ug $$0) {
+   public void a(ui $$0) {
       $$0.c(this.a);
    }
 
-   public void a(yx $$0) {
+   public void a(za $$0) {
       $$0.a(this);
    }
 
-   public int a() {
-      return this.a;
+   @Nullable
+   public blu a(cto $$0) {
+      return $$0.a(this.a);
    }
 }

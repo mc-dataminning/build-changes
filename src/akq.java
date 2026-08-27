@@ -2,12 +2,14 @@ import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 
 public class akq {
-   public static void a(CommandDispatcher<ds> $$0, boolean $$1) {
-      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("seed").requires($$1x -> !$$1 || $$1x.c(2))).executes($$0x -> {
-         long $$1x = ((ds)$$0x.getSource()).e().C();
-         vd $$2 = vg.a(String.valueOf($$1x));
-         ((ds)$$0x.getSource()).a(() -> vd.a("commands.seed.success", $$2), false);
-         return (int)$$1x;
-      }));
+   public static void a(CommandDispatcher<ds> $$0) {
+      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("say").requires($$0x -> $$0x.c(2))).then(dt.a("message", ej.a()).executes($$0x -> {
+         ej.a($$0x, "message", $$1 -> {
+            ds $$2 = (ds)$$0x.getSource();
+            aqu $$3 = $$2.l().ae();
+            $$3.a($$1, $$2, vb.a(vb.d, $$2));
+         });
+         return 1;
+      })));
    }
 }

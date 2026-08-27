@@ -1,26 +1,47 @@
-import org.joml.Vector2i;
-import org.joml.Vector2ic;
+import javax.annotation.Nullable;
+import org.joml.Vector3f;
 
-public class ffi implements ffm {
-   private final fbb a;
+public class ffi extends fea {
+   public static final float b = 62.500004F;
+   public static final float c = 0.9765628F;
+   private static final Vector3f k = new Vector3f(0.9765628F, 0.9765628F, 0.9765628F);
+   @Nullable
+   private fvt.a l;
 
-   public ffi(fbb $$0) {
-      this.a = $$0;
+   public ffi(did $$0, boolean $$1, boolean $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   public Vector2ic a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      Vector2i $$6 = new Vector2i();
-      $$6.x = this.a.d() + 3;
-      $$6.y = this.a.c() + 3 + 1;
-      if ($$6.y + $$5 + 3 > $$1) {
-         $$6.y = this.a.b() - $$5 - 3 - 1;
-      }
+   protected void aN_() {
+      super.aN_();
+      this.l = fvt.a(this.f.aP(), this.a);
+   }
 
-      if ($$6.x + $$4 > $$0) {
-         $$6.x = Math.max(this.a.e() - $$4 - 3, 4);
+   @Override
+   protected void b(ews $$0, djg $$1) {
+      super.b($$0, $$1);
+      boolean $$2 = $$1.b() instanceof dej;
+      if (!$$2) {
+         $$0.c().a(0.0F, 35.0F, 0.0F);
       }
+   }
 
-      return $$6;
+   @Override
+   protected void a(ews $$0, djg $$1) {
+      if (this.l != null) {
+         boolean $$2 = $$1.b() instanceof dej;
+         $$0.c().a(0.0F, 31.0F, 0.0F);
+         $$0.c().b(62.500004F, 62.500004F, -62.500004F);
+         ggo $$3 = ftu.a(this.a);
+         eqd $$4 = $$3.a($$0.d(), this.l::a);
+         this.l.b.k = $$2;
+         this.l.a.a($$0.c(), $$4, 15728880, gec.d);
+      }
+   }
+
+   @Override
+   protected Vector3f n() {
+      return k;
    }
 }

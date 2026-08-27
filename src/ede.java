@@ -1,22 +1,25 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import javax.annotation.Nullable;
 
-public class ede implements edh {
-   public static final Codec<ede> a = RecordCodecBuilder.create($$0 -> $$0.group(sl.a.fieldOf("data").forGetter($$0x -> $$0x.b)).apply($$0, ede::new));
-   private final sl b;
+public interface ede<P extends edc> {
+   Codec<edc> a = kd.ah.q().dispatch("processor_type", edc::a, ede::codec);
+   Codec<edd> b = a.listOf().xmap(edd::new, edd::a);
+   Codec<edd> c = atv.e(b.fieldOf("processors").codec(), b);
+   Codec<ih<edd>> d = ahc.a(ke.aE, c);
+   ede<ech> e = a("block_ignore", ech.a);
+   ede<ecj> f = a("block_rot", ecj.a);
+   ede<ecm> g = a("gravity", ecm.a);
+   ede<ecn> h = a("jigsaw_replacement", ecn.a);
+   ede<ecy> i = a("rule", ecy.a);
+   ede<ecq> j = a("nop", ecq.a);
+   ede<ecg> k = a("block_age", ecg.a);
+   ede<ecf> l = a("blackstone_replace", ecf.a);
+   ede<eco> m = a("lava_submerged_block", eco.a);
+   ede<ecv> n = a("protected_blocks", ecv.b);
+   ede<ecl> o = a("capped", ecl.a);
 
-   public ede(sl $$0) {
-      this.b = $$0;
-   }
+   Codec<P> codec();
 
-   @Override
-   public sl a(aup $$0, @Nullable sl $$1) {
-      return $$1 == null ? this.b.h() : $$1.a(this.b);
-   }
-
-   @Override
-   public edi<?> a() {
-      return edi.c;
+   static <P extends edc> ede<P> a(String $$0, Codec<P> $$1) {
+      return it.a(kd.ah, $$0, () -> $$1);
    }
 }

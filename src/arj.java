@@ -1,41 +1,58 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.logging.LogUtils;
+import java.util.concurrent.atomic.AtomicInteger;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class arj {
-   public static final Codec<arj> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               arl.b.fieldOf("sound").forGetter($$0x -> $$0x.b),
-               Codec.INT.fieldOf("min_delay").forGetter($$0x -> $$0x.c),
-               Codec.INT.fieldOf("max_delay").forGetter($$0x -> $$0x.d),
-               Codec.BOOL.fieldOf("replace_current_music").forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, arj::new)
-   );
-   private final ih<arl> b;
-   private final int c;
-   private final int d;
-   private final boolean e;
+public abstract class arj implements Runnable {
+   private static final Logger d = LogUtils.getLogger();
+   private static final AtomicInteger e = new AtomicInteger(0);
+   private static final int f = 5;
+   protected volatile boolean a;
+   protected final String b;
+   @Nullable
+   protected Thread c;
 
-   public arj(ih<arl> $$0, int $$1, int $$2, boolean $$3) {
+   protected arj(String $$0) {
       this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
    }
 
-   public ih<arl> a() {
-      return this.b;
+   public synchronized boolean a() {
+      if (this.a) {
+         return true;
+      } else {
+         this.a = true;
+         this.c = new Thread(this, this.b + " #" + e.incrementAndGet());
+         this.c.setUncaughtExceptionHandler(new s(d));
+         this.c.start();
+         d.info("Thread {} started", this.b);
+         return true;
+      }
    }
 
-   public int b() {
-      return this.c;
+   public synchronized void b() {
+      this.a = false;
+      if (null != this.c) {
+         int $$0 = 0;
+
+         while (this.c.isAlive()) {
+            try {
+               this.c.join(1000L);
+               if (++$$0 >= 5) {
+                  d.warn("Waited {} seconds attempting force stop!", $$0);
+               } else if (this.c.isAlive()) {
+                  d.warn("Thread {} ({}) failed to exit after {} second(s)", new Object[]{this, this.c.getState(), $$0, new Exception("Stack:")});
+                  this.c.interrupt();
+               }
+            } catch (InterruptedException var3) {
+            }
+         }
+
+         d.info("Thread {} stopped", this.b);
+         this.c = null;
+      }
    }
 
-   public int c() {
-      return this.d;
-   }
-
-   public boolean d() {
-      return this.e;
+   public boolean c() {
+      return this.a;
    }
 }

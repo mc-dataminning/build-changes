@@ -1,26 +1,46 @@
-import java.util.function.BooleanSupplier;
+import com.mojang.logging.LogUtils;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionException;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class evo extends euy {
-   private final BooleanSupplier h;
+public class evo {
+   private static final Logger a = LogUtils.getLogger();
+   private final evg b;
+   @Nullable
+   private CompletableFuture<Boolean> c;
+   private boolean d;
 
-   public evo(String $$0, int $$1, String $$2, BooleanSupplier $$3) {
-      super($$0, eoo.b.a, $$1, $$2);
-      this.h = $$3;
+   public evo(evg $$0) {
+      this.b = $$0;
    }
 
-   @Override
-   public void a(boolean $$0) {
-      if (this.h.getAsBoolean()) {
-         if ($$0) {
-            super.a(!this.e());
-         }
-      } else {
-         super.a($$0);
+   public void a(fcz $$0) {
+      if (!this.b.af() && !this.b.m.w && !this.d && this.a()) {
+         this.b.a(new ffy($$0));
+         this.d = true;
       }
    }
 
-   @Override
-   protected void n() {
-      super.a(false);
+   private Boolean a() {
+      if (this.c == null) {
+         this.c = CompletableFuture.supplyAsync(this::b, ac.f());
+      }
+
+      try {
+         return this.c.getNow(false);
+      } catch (CompletionException var2) {
+         a.warn("Failed to retrieve realms subscriptions", var2);
+         this.d = true;
+         return false;
+      }
+   }
+
+   private boolean b() {
+      try {
+         return eqp.a(this.b).b().a.stream().anyMatch($$0 -> !$$0.j && this.b.b($$0.g));
+      } catch (esc var2) {
+         return false;
+      }
    }
 }

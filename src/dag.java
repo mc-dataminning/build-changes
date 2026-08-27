@@ -1,51 +1,65 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class dag extends czz {
-   public static final MapCodec<dag> e = b(dag::new);
+public class dag extends cwp implements ddp {
+   public static final MapCodec<dag> a = b(dag::new);
+   private static final djx c = djw.C;
+   protected static final eml b = cwp.a(2.0, 10.0, 2.0, 14.0, 16.0, 14.0);
 
    @Override
-   public MapCodec<? extends dag> a() {
-      return e;
+   public MapCodec<dag> a() {
+      return a;
    }
 
-   public dag(diz.d $$0) {
+   protected dag(djf.d $$0) {
       super($$0);
-   }
-
-   public static dja b() {
-      return cwl.G.o();
+      this.k(this.E.b().a(c, Boolean.valueOf(false)));
    }
 
    @Override
-   public void a(cti $$0, cfb $$1, hx $$2, dja $$3, @Nullable dgo $$4, cmr $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      if (cre.a(crg.v, $$5) == 0) {
-         if ($$0.E_().i()) {
-            $$0.a($$2, false);
-            return;
-         }
-
-         dja $$6 = $$0.a_($$2.d());
-         if ($$6.d() || $$6.k()) {
-            $$0.b($$2, b());
-         }
-      }
+   protected void a(djh.a<cwp, djg> $$0) {
+      $$0.a(c);
    }
 
    @Override
-   public void b(dja $$0, amz $$1, hx $$2, aup $$3) {
-      if ($$1.a(ctr.b, $$2) > 11 - $$0.b($$1, $$2)) {
-         this.d($$0, $$1, $$2);
-      }
+   public eeq c_(djg $$0) {
+      return $$0.c(c) ? eer.c.a(false) : super.c_($$0);
    }
 
-   protected void d(dja $$0, cti $$1, hx $$2) {
-      if ($$1.E_().i()) {
-         $$1.a($$2, false);
+   @Nullable
+   @Override
+   public djg a(cpg $$0) {
+      djg $$1 = super.a($$0);
+      if ($$1 != null) {
+         eeq $$2 = $$0.q().b_($$0.a());
+         return $$1.a(c, Boolean.valueOf($$2.a() == eer.c));
       } else {
-         $$1.b($$2, b());
-         $$1.a($$2, b().b(), $$2);
+         return null;
+      }
+   }
+
+   @Override
+   public boolean a(djg $$0, ctr $$1, hx $$2) {
+      hx $$3 = $$2.c();
+      djg $$4 = $$1.a_($$3);
+      return $$4.d($$1, $$3, ic.a);
+   }
+
+   @Override
+   public eml a(djg $$0, csu $$1, hx $$2, elx $$3) {
+      return b;
+   }
+
+   @Override
+   public djg a(djg $$0, ic $$1, djg $$2, ctp $$3, hx $$4, hx $$5) {
+      if ($$1 == ic.b && !this.a($$0, $$3, $$4)) {
+         return cwr.a.o();
+      } else {
+         if ($$0.c(c)) {
+            $$3.a($$4, eer.c, eer.c.a($$3));
+         }
+
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
       }
    }
 }

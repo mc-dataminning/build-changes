@@ -1,77 +1,92 @@
-import javax.annotation.Nullable;
-import org.joml.Vector3f;
+import java.util.Optional;
 
-public class bxz extends bxs {
-   public bxz(blt<? extends bxz> $$0, cti $$1) {
-      super($$0, $$1);
+public interface bxz {
+   boolean w();
+
+   void w(boolean var1);
+
+   void l(cmx var1);
+
+   void c(sn var1);
+
+   cmx b();
+
+   arq A();
+
+   @Deprecated
+   static void a(bmm $$0, cmx $$1) {
+      sn $$2 = $$1.w();
+      if ($$0.ae()) {
+         $$1.a($$0.af());
+      }
+
+      if ($$0.fU()) {
+         $$2.a("NoAI", $$0.fU());
+      }
+
+      if ($$0.aU()) {
+         $$2.a("Silent", $$0.aU());
+      }
+
+      if ($$0.aV()) {
+         $$2.a("NoGravity", $$0.aV());
+      }
+
+      if ($$0.cc()) {
+         $$2.a("Glowing", $$0.cc());
+      }
+
+      if ($$0.cr()) {
+         $$2.a("Invulnerable", $$0.cr());
+      }
+
+      $$2.a("Health", $$0.ev());
    }
 
-   @Override
-   protected void B() {
-      this.bO.a(0, new bsv(this));
-      this.bO.a(1, new btu(this, 2.0));
-      this.bO.a(2, new bsn(this, 1.0));
-      this.bO.a(3, new buj(this, 1.25, cps.a(cmu.pt), false));
-      this.bO.a(4, new bta(this, 1.25));
-      this.bO.a(5, new buo(this, 1.0));
-      this.bO.a(6, new btj(this, cfb.class, 6.0F));
-      this.bO.a(7, new btw(this));
-   }
+   @Deprecated
+   static void a(bmm $$0, sn $$1) {
+      if ($$1.e("NoAI")) {
+         $$0.t($$1.q("NoAI"));
+      }
 
-   public static bnk.a u() {
-      return bmh.C().a(bnl.l, 10.0).a(bnl.m, 0.2F);
-   }
+      if ($$1.e("Silent")) {
+         $$0.d($$1.q("Silent"));
+      }
 
-   @Override
-   protected arl y() {
-      return arm.fy;
-   }
+      if ($$1.e("NoGravity")) {
+         $$0.e($$1.q("NoGravity"));
+      }
 
-   @Override
-   protected arl d(bkn $$0) {
-      return arm.fA;
-   }
+      if ($$1.e("Glowing")) {
+         $$0.i($$1.q("Glowing"));
+      }
 
-   @Override
-   protected arl n_() {
-      return arm.fz;
-   }
+      if ($$1.e("Invulnerable")) {
+         $$0.m($$1.q("Invulnerable"));
+      }
 
-   @Override
-   protected void b(hx $$0, dja $$1) {
-      this.a(arm.fC, 0.15F, 1.0F);
-   }
-
-   @Override
-   protected float eW() {
-      return 0.4F;
-   }
-
-   @Override
-   public bjv b(cfb $$0, bju $$1) {
-      cmr $$2 = $$0.b($$1);
-      if ($$2.a(cmu.qv) && !this.o_()) {
-         $$0.a(arm.fB, 1.0F, 1.0F);
-         cmr $$3 = cmt.a($$2, $$0, cmu.qB.am_());
-         $$0.a($$1, $$3);
-         return bjv.a(this.dM().B);
-      } else {
-         return super.b($$0, $$1);
+      if ($$1.b("Health", 99)) {
+         $$0.c($$1.j("Health"));
       }
    }
 
-   @Nullable
-   public bxz b(amz $$0, blk $$1) {
-      return blt.u.a((cti)$$0);
-   }
+   static <T extends bmk & bxz> Optional<bka> a(cfh $$0, bjz $$1, T $$2) {
+      cmx $$3 = $$0.b($$1);
+      if ($$3.d() == cna.qw && $$2.bx()) {
+         $$2.a($$2.A(), 1.0F, 1.0F);
+         cmx $$4 = $$2.b();
+         $$2.l($$4);
+         cmx $$5 = cmz.a($$3, $$0, $$4, false);
+         $$0.a($$1, $$5);
+         cto $$6 = $$2.dM();
+         if (!$$6.B) {
+            am.k.a((ane)$$0, $$4);
+         }
 
-   @Override
-   protected float b(bmr $$0, blq $$1) {
-      return this.o_() ? $$1.b * 0.95F : 1.3F;
-   }
-
-   @Override
-   protected Vector3f a(blp $$0, blq $$1, float $$2) {
-      return new Vector3f(0.0F, $$1.b - 0.03125F * $$2, 0.0F);
+         $$2.am();
+         return Optional.of(bka.a($$6.B));
+      } else {
+         return Optional.empty();
+      }
    }
 }

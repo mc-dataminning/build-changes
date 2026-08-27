@@ -1,18 +1,19 @@
-public class bkj {
-   public static final float a = 20.0F;
-   public static final float b = 25.0F;
-   public static final float c = 2.0F;
-   public static final float d = 0.2F;
-   private static final int e = 4;
+public final class bkj implements bkd {
+   private final vf a;
+   private final cjg b;
 
-   public static float a(float $$0, float $$1, float $$2) {
-      float $$3 = 2.0F + $$2 / 4.0F;
-      float $$4 = aui.a($$1 - $$0 / $$3, $$1 * 0.2F, 20.0F);
-      return $$0 * (1.0F - $$4 / 25.0F);
+   public bkj(cjg $$0, vf $$1) {
+      this.b = $$0;
+      this.a = $$1;
    }
 
-   public static float a(float $$0, float $$1) {
-      float $$2 = aui.a($$1, 0.0F, 20.0F);
-      return $$0 * (1.0F - $$2 / 25.0F);
+   @Override
+   public vf Q_() {
+      return this.a;
+   }
+
+   @Override
+   public cia createMenu(int $$0, cfg $$1, cfh $$2) {
+      return this.b.createMenu($$0, $$1, $$2);
    }
 }

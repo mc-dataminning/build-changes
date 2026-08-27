@@ -1,28 +1,26 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dum implements dtr {
+public class dum implements dtx {
    public static final Codec<dum> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               eek.a.fieldOf("state").forGetter($$0x -> $$0x.b),
-               Codec.BOOL.fieldOf("requires_block_below").orElse(true).forGetter($$0x -> $$0x.c),
-               Codec.INT.fieldOf("rock_count").orElse(4).forGetter($$0x -> $$0x.d),
-               Codec.INT.fieldOf("hole_count").orElse(1).forGetter($$0x -> $$0x.e),
-               iv.a(ke.f).fieldOf("valid_blocks").forGetter($$0x -> $$0x.f)
+               djg.b.fieldOf("target").forGetter($$0x -> $$0x.b),
+               djg.b.fieldOf("state").forGetter($$0x -> $$0x.c),
+               bjf.b(0, 12).fieldOf("radius").forGetter($$0x -> $$0x.d)
             )
             .apply($$0, dum::new)
    );
-   public final eek b;
-   public final boolean c;
-   public final int d;
-   public final int e;
-   public final il<cwj> f;
+   public final djg b;
+   public final djg c;
+   private final bjf d;
 
-   public dum(eek $$0, boolean $$1, int $$2, int $$3, il<cwj> $$4) {
+   public dum(djg $$0, djg $$1, bjf $$2) {
       this.b = $$0;
       this.c = $$1;
       this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
+   }
+
+   public bjf a() {
+      return this.d;
    }
 }

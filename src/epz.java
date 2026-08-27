@@ -1,182 +1,97 @@
-import com.mojang.blaze3d.platform.GlStateManager;
+import com.google.common.collect.Queues;
+import java.util.Deque;
+import org.joml.Matrix3f;
+import org.joml.Matrix4f;
+import org.joml.Quaternionf;
 
 public class epz {
-   private final epz.a a;
-   private final epz.b b;
-   private final int c;
-   private final int d;
-   private final int e;
+   private final Deque<epz.a> a = ac.a(Queues.newArrayDeque(), $$0 -> {
+      Matrix4f $$1 = new Matrix4f();
+      Matrix3f $$2 = new Matrix3f();
+      $$0.add(new epz.a($$1, $$2));
+   });
 
-   public epz(int $$0, epz.a $$1, epz.b $$2, int $$3) {
-      if (this.a($$0, $$2)) {
-         this.b = $$2;
-         this.a = $$1;
-         this.c = $$0;
-         this.d = $$3;
-         this.e = $$1.a() * this.d;
-      } else {
-         throw new IllegalStateException("Multiple vertex elements of the same type other than UVs are not supported");
-      }
+   public void a(double $$0, double $$1, double $$2) {
+      this.a((float)$$0, (float)$$1, (float)$$2);
    }
 
-   private boolean a(int $$0, epz.b $$1) {
-      return $$0 == 0 || $$1 == epz.b.d;
+   public void a(float $$0, float $$1, float $$2) {
+      epz.a $$3 = this.a.getLast();
+      $$3.a.translate($$0, $$1, $$2);
    }
 
-   public final epz.a a() {
-      return this.a;
-   }
-
-   public final epz.b b() {
-      return this.b;
-   }
-
-   public final int c() {
-      return this.d;
-   }
-
-   public final int d() {
-      return this.c;
-   }
-
-   @Override
-   public String toString() {
-      return this.d + "," + this.b.a() + "," + this.a.b();
-   }
-
-   public final int e() {
-      return this.e;
-   }
-
-   public final boolean f() {
-      return this.b == epz.b.a;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         epz $$1 = (epz)$$0;
-         if (this.d != $$1.d) {
-            return false;
-         } else if (this.c != $$1.c) {
-            return false;
-         } else {
-            return this.a != $$1.a ? false : this.b == $$1.b;
+   public void b(float $$0, float $$1, float $$2) {
+      epz.a $$3 = this.a.getLast();
+      $$3.a.scale($$0, $$1, $$2);
+      if ($$0 == $$1 && $$1 == $$2) {
+         if ($$0 > 0.0F) {
+            return;
          }
-      } else {
-         return false;
+
+         $$3.b.scale(-1.0F);
       }
+
+      float $$4 = 1.0F / $$0;
+      float $$5 = 1.0F / $$1;
+      float $$6 = 1.0F / $$2;
+      float $$7 = aun.j($$4 * $$5 * $$6);
+      $$3.b.scale($$7 * $$4, $$7 * $$5, $$7 * $$6);
    }
 
-   @Override
-   public int hashCode() {
-      int $$0 = this.a.hashCode();
-      $$0 = 31 * $$0 + this.b.hashCode();
-      $$0 = 31 * $$0 + this.c;
-      return 31 * $$0 + this.d;
+   public void a(Quaternionf $$0) {
+      epz.a $$1 = this.a.getLast();
+      $$1.a.rotate($$0);
+      $$1.b.rotate($$0);
    }
 
-   public void a(int $$0, long $$1, int $$2) {
-      this.b.a(this.d, this.a.c(), $$2, $$1, this.c, $$0);
+   public void a(Quaternionf $$0, float $$1, float $$2, float $$3) {
+      epz.a $$4 = this.a.getLast();
+      $$4.a.rotateAround($$0, $$1, $$2, $$3);
+      $$4.b.rotate($$0);
    }
 
-   public void a(int $$0) {
-      this.b.a(this.c, $$0);
+   public void a() {
+      epz.a $$0 = this.a.getLast();
+      this.a.addLast(new epz.a(new Matrix4f($$0.a), new Matrix3f($$0.b)));
    }
 
-   public static enum a {
-      a(4, "Float", 5126),
-      b(1, "Unsigned Byte", 5121),
-      c(1, "Byte", 5120),
-      d(2, "Unsigned Short", 5123),
-      e(2, "Short", 5122),
-      f(4, "Unsigned Int", 5125),
-      g(4, "Int", 5124);
-
-      private final int h;
-      private final String i;
-      private final int j;
-
-      private a(int $$0, String $$1, int $$2) {
-         this.h = $$0;
-         this.i = $$1;
-         this.j = $$2;
-      }
-
-      public int a() {
-         return this.h;
-      }
-
-      public String b() {
-         return this.i;
-      }
-
-      public int c() {
-         return this.j;
-      }
+   public void b() {
+      this.a.removeLast();
    }
 
-   public static enum b {
-      a("Position", ($$0, $$1, $$2, $$3, $$4, $$5) -> {
-         GlStateManager._enableVertexAttribArray($$5);
-         GlStateManager._vertexAttribPointer($$5, $$0, $$1, false, $$2, $$3);
-      }, ($$0, $$1) -> GlStateManager._disableVertexAttribArray($$1)),
-      b("Normal", ($$0, $$1, $$2, $$3, $$4, $$5) -> {
-         GlStateManager._enableVertexAttribArray($$5);
-         GlStateManager._vertexAttribPointer($$5, $$0, $$1, true, $$2, $$3);
-      }, ($$0, $$1) -> GlStateManager._disableVertexAttribArray($$1)),
-      c("Vertex Color", ($$0, $$1, $$2, $$3, $$4, $$5) -> {
-         GlStateManager._enableVertexAttribArray($$5);
-         GlStateManager._vertexAttribPointer($$5, $$0, $$1, true, $$2, $$3);
-      }, ($$0, $$1) -> GlStateManager._disableVertexAttribArray($$1)),
-      d("UV", ($$0, $$1, $$2, $$3, $$4, $$5) -> {
-         GlStateManager._enableVertexAttribArray($$5);
-         if ($$1 == 5126) {
-            GlStateManager._vertexAttribPointer($$5, $$0, $$1, false, $$2, $$3);
-         } else {
-            GlStateManager._vertexAttribIPointer($$5, $$0, $$1, $$2, $$3);
-         }
-      }, ($$0, $$1) -> GlStateManager._disableVertexAttribArray($$1)),
-      e("Padding", ($$0, $$1, $$2, $$3, $$4, $$5) -> {
-      }, ($$0, $$1) -> {
-      }),
-      f("Generic", ($$0, $$1, $$2, $$3, $$4, $$5) -> {
-         GlStateManager._enableVertexAttribArray($$5);
-         GlStateManager._vertexAttribPointer($$5, $$0, $$1, false, $$2, $$3);
-      }, ($$0, $$1) -> GlStateManager._disableVertexAttribArray($$1));
+   public epz.a c() {
+      return this.a.getLast();
+   }
 
-      private final String g;
-      private final epz.b.b h;
-      private final epz.b.a i;
+   public boolean d() {
+      return this.a.size() == 1;
+   }
 
-      private b(String $$0, epz.b.b $$1, epz.b.a $$2) {
-         this.g = $$0;
-         this.h = $$1;
-         this.i = $$2;
+   public void e() {
+      epz.a $$0 = this.a.getLast();
+      $$0.a.identity();
+      $$0.b.identity();
+   }
+
+   public void a(Matrix4f $$0) {
+      this.a.getLast().a.mul($$0);
+   }
+
+   public static final class a {
+      final Matrix4f a;
+      final Matrix3f b;
+
+      a(Matrix4f $$0, Matrix3f $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
 
-      void a(int $$0, int $$1, int $$2, long $$3, int $$4, int $$5) {
-         this.h.setupBufferState($$0, $$1, $$2, $$3, $$4, $$5);
+      public Matrix4f a() {
+         return this.a;
       }
 
-      public void a(int $$0, int $$1) {
-         this.i.clearBufferState($$0, $$1);
-      }
-
-      public String a() {
-         return this.g;
-      }
-
-      @FunctionalInterface
-      interface a {
-         void clearBufferState(int var1, int var2);
-      }
-
-      @FunctionalInterface
-      interface b {
-         void setupBufferState(int var1, int var2, int var3, long var4, int var6, int var7);
+      public Matrix3f b() {
+         return this.b;
       }
    }
 }

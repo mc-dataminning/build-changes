@@ -1,40 +1,67 @@
 import java.util.EnumSet;
 
-public class buk extends btb {
-   private final cej a;
+public class buk extends btg {
+   private final bzw a;
+   private final double b;
+   private double c;
+   private double d;
+   private double e;
 
-   public buk(cej $$0) {
+   public buk(bzw $$0, double $$1) {
       this.a = $$0;
-      this.a(EnumSet.of(btb.a.c, btb.a.a));
+      this.b = $$1;
+      this.a(EnumSet.of(btg.a.a));
    }
 
    @Override
    public boolean a() {
-      if (!this.a.bx()) {
-         return false;
-      } else if (this.a.aZ()) {
-         return false;
-      } else if (!this.a.aC()) {
-         return false;
-      } else if (this.a.T) {
-         return false;
-      } else {
-         cfb $$0 = this.a.ge();
+      if (!this.a.gt() && this.a.bP()) {
+         els $$0 = bxc.a(this.a, 5, 4);
          if ($$0 == null) {
             return false;
          } else {
-            return this.a.f($$0) > 16.0 ? false : $$0.bS != null;
+            this.c = $$0.c;
+            this.d = $$0.d;
+            this.e = $$0.e;
+            return true;
          }
+      } else {
+         return false;
       }
    }
 
    @Override
    public void c() {
-      this.a.N().n();
+      this.a.N().a(this.c, this.d, this.e, this.b);
    }
 
    @Override
-   public void d() {
-      this.a.f(null);
+   public boolean b() {
+      return !this.a.gt() && !this.a.N().l() && this.a.bP();
+   }
+
+   @Override
+   public void e() {
+      if (!this.a.gt() && this.a.eg().a(this.a(50)) == 0) {
+         blu $$0 = this.a.cQ();
+         if ($$0 == null) {
+            return;
+         }
+
+         if ($$0 instanceof cfh $$1) {
+            int $$2 = this.a.gz();
+            int $$3 = this.a.gF();
+            if ($$3 > 0 && this.a.eg().a($$3) < $$2) {
+               this.a.h($$1);
+               return;
+            }
+
+            this.a.v(5);
+         }
+
+         this.a.bB();
+         this.a.gK();
+         this.a.dM().a(this.a, (byte)6);
+      }
    }
 }

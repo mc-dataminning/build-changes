@@ -1,37 +1,44 @@
-import com.google.common.collect.ImmutableList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.function.Function;
-import java.util.stream.Stream;
+public class ghs extends ghh {
+   private static final float n = 0.0F;
+   private static final float o = 0.75F;
+   private final cfh p;
+   private final cgz q;
+   private final boolean r;
 
-public class ghs<T> extends ght<T> {
-   private final List<T> c;
-   private final Function<T, Stream<String>> d;
-   private ghw<T> e = ghw.a();
-
-   public ghs(Function<T, Stream<String>> $$0, Function<T, Stream<ahd>> $$1, List<T> $$2) {
-      super($$1, $$2);
-      this.c = $$2;
-      this.d = $$0;
+   public ghs(cfh $$0, cgz $$1, boolean $$2) {
+      super($$2 ? arr.nU : arr.nV, ars.g, ghy.t());
+      this.p = $$0;
+      this.q = $$1;
+      this.r = $$2;
+      this.k = ghy.a.a;
+      this.i = true;
+      this.j = 0;
+      this.d = 0.0F;
    }
 
    @Override
-   public void a() {
-      super.a();
-      this.e = ghw.a(this.c, this.d);
+   public boolean s() {
+      return !this.q.aU();
    }
 
    @Override
-   protected List<T> a(String $$0) {
-      return this.e.search($$0);
+   public boolean r() {
+      return true;
    }
 
    @Override
-   protected List<T> a(String $$0, String $$1) {
-      List<T> $$2 = this.b.a($$0);
-      List<T> $$3 = this.b.b($$1);
-      List<T> $$4 = this.e.search($$1);
-      Iterator<T> $$5 = new ghv<T>($$3.iterator(), $$4.iterator(), this.a);
-      return ImmutableList.copyOf(new ghu<T>($$2.iterator(), $$5, this.a));
+   public void q() {
+      if (this.q.dH() || !this.p.bO() || this.p.cZ() != this.q) {
+         this.n();
+      } else if (this.r != this.p.be()) {
+         this.d = 0.0F;
+      } else {
+         float $$0 = (float)this.q.dp().h();
+         if ($$0 >= 0.01F) {
+            this.d = aun.b(0.0F, 0.75F, $$0);
+         } else {
+            this.d = 0.0F;
+         }
+      }
    }
 }

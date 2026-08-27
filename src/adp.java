@@ -1,14 +1,14 @@
-public record adp(vu.a a) implements xd<adg> {
-   public adp(ug $$0) {
-      this(vu.a.a($$0));
+public record adp(int a) implements xf<adj> {
+   public adp(ui $$0) {
+      this($$0.n());
    }
 
    @Override
-   public void a(ug $$0) {
-      vu.a.a($$0, this.a);
+   public void a(ui $$0) {
+      $$0.c(this.a);
    }
 
-   public void a(adg $$0) {
+   public void a(adj $$0) {
       $$0.a(this);
    }
 }

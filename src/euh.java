@@ -1,34 +1,48 @@
 import com.mojang.logging.LogUtils;
 import org.slf4j.Logger;
 
-public class euh extends eua {
+public class euh extends eug {
    private static final Logger b = LogUtils.getLogger();
-   private static final vd c = vd.c("mco.minigame.world.slot.screen.title");
-   private final long d;
-   private final int e;
-   private final Runnable f;
+   private static final vf c = vf.c("mco.configure.world.opening");
+   private final erg d;
+   private final fcz e;
+   private final boolean f;
+   private final evg g;
 
-   public euh(long $$0, int $$1, Runnable $$2) {
+   public euh(erg $$0, fcz $$1, boolean $$2, evg $$3) {
       this.d = $$0;
       this.e = $$1;
       this.f = $$2;
+      this.g = $$3;
    }
 
    @Override
    public void run() {
-      eqj $$0 = eqj.a();
+      eqp $$0 = eqp.a();
 
       for (int $$1 = 0; $$1 < 25; $$1++) {
-         try {
-            if (this.d()) {
-               return;
-            }
+         if (this.d()) {
+            return;
+         }
 
-            if ($$0.a(this.d, this.e)) {
-               this.f.run();
+         try {
+            boolean $$2 = $$0.f(this.d.a);
+            if ($$2) {
+               this.g.execute(() -> {
+                  if (this.e instanceof esp) {
+                     ((esp)this.e).e();
+                  }
+
+                  this.d.e = erg.c.b;
+                  if (this.f) {
+                     eqk.a(this.d, this.e);
+                  } else {
+                     this.g.a(this.e);
+                  }
+               });
                break;
             }
-         } catch (erx var4) {
+         } catch (esd var4) {
             if (this.d()) {
                return;
             }
@@ -39,14 +53,14 @@ public class euh extends eua {
                return;
             }
 
-            b.error("Couldn't switch world!");
+            b.error("Failed to open server", var5);
             this.a(var5);
          }
       }
    }
 
    @Override
-   public vd a() {
+   public vf a() {
       return c;
    }
 }

@@ -1,95 +1,30 @@
-public class fev extends fdz implements fex<ciy> {
-   private final ciy q;
-   private final cig r = new cig() {
-      @Override
-      public void a(chu $$0, int $$1, cmr $$2) {
-         fev.this.K();
-      }
+import org.joml.Vector3f;
 
-      @Override
-      public void a(chu $$0, int $$1, int $$2) {
-         if ($$1 == 0) {
-            fev.this.L();
-         }
-      }
-   };
+public class fev extends fea {
+   public static final float b = 4.5F;
+   private static final Vector3f c = new Vector3f(1.0F, 1.0F, 1.0F);
+   private static final int k = 16;
+   private static final int l = 16;
+   private final ahg m = new ahg("textures/gui/hanging_signs/" + this.a.b() + ".png");
 
-   public fev(ciy $$0, cfa $$1, vd $$2) {
-      this.q = $$0;
-   }
-
-   public ciy J() {
-      return this.q;
+   public fev(did $$0, boolean $$1, boolean $$2) {
+      super($$0, $$1, $$2, vf.c("hanging_sign.edit"));
    }
 
    @Override
-   protected void aN_() {
-      super.aN_();
-      this.q.a(this.r);
+   protected void b(ews $$0, djg $$1) {
+      $$0.c().a((float)this.g / 2.0F, 125.0F, 50.0F);
    }
 
    @Override
-   public void aE_() {
-      this.f.s.r();
-      super.aE_();
+   protected void a(ews $$0, djg $$1) {
+      $$0.c().a(0.0F, -13.0F, 0.0F);
+      $$0.c().b(4.5F, 4.5F, 1.0F);
+      $$0.a(this.m, -8, -8, 0.0F, 0.0F, 16, 16, 16, 16);
    }
 
    @Override
-   public void j() {
-      super.j();
-      this.q.b(this.r);
-   }
-
-   @Override
-   protected void n() {
-      if (this.f.s.ge()) {
-         this.d(ewy.a(vc.d, $$0 -> this.aE_()).a(this.g / 2 - 100, 196, 98, 20).a());
-         this.d(ewy.a(vd.c("lectern.take_book"), $$0 -> this.g(3)).a(this.g / 2 + 2, 196, 98, 20).a());
-      } else {
-         super.n();
-      }
-   }
-
-   @Override
-   protected void E() {
-      this.g(1);
-   }
-
-   @Override
-   protected void H() {
-      this.g(2);
-   }
-
-   @Override
-   protected boolean b(int $$0) {
-      if ($$0 != this.q.m()) {
-         this.g(100 + $$0);
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   private void g(int $$0) {
-      this.f.q.a(this.q.j, $$0);
-   }
-
-   @Override
-   public boolean k() {
-      return false;
-   }
-
-   void K() {
-      cmr $$0 = this.q.l();
-      this.a(fdz.a.a($$0));
-   }
-
-   void L() {
-      this.a(this.q.m());
-   }
-
-   @Override
-   protected void I() {
-      this.f.s.r();
+   protected Vector3f n() {
+      return c;
    }
 }

@@ -1,30 +1,6 @@
-import com.mojang.serialization.Codec;
+import javax.annotation.Nullable;
 
-public enum dxu implements ave {
-   a(ic.b, 1, "ceiling"),
-   b(ic.a, -1, "floor");
-
-   public static final Codec<dxu> c = ave.a(dxu::values);
-   private final ic d;
-   private final int e;
-   private final String f;
-
-   private dxu(ic $$0, int $$1, String $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-   }
-
-   public ic a() {
-      return this.d;
-   }
-
-   public int b() {
-      return this.e;
-   }
-
-   @Override
-   public String c() {
-      return this.f;
-   }
+public interface dxu {
+   @Nullable
+   djg a(dot var1, int var2, int var3, int var4);
 }

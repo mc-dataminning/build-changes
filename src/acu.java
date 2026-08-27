@@ -1,41 +1,63 @@
 import javax.annotation.Nullable;
 
-public class acu implements xd<yx> {
-   private final int a;
+public class acu implements xf<za> {
+   private static final int a = 1;
+   private static final int b = 2;
    @Nullable
-   private final sl b;
+   private final ahg c;
+   @Nullable
+   private final ars d;
 
-   public acu(int $$0, @Nullable sl $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public acu(@Nullable ahg $$0, @Nullable ars $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
-   public acu(ug $$0) {
-      this.a = $$0.n();
-      this.b = $$0.q();
+   public acu(ui $$0) {
+      int $$1 = $$0.readByte();
+      if (($$1 & 1) > 0) {
+         this.d = $$0.b(ars.class);
+      } else {
+         this.d = null;
+      }
+
+      if (($$1 & 2) > 0) {
+         this.c = $$0.t();
+      } else {
+         this.c = null;
+      }
    }
 
    @Override
-   public void a(ug $$0) {
-      $$0.c(this.a);
-      $$0.a((ti)this.b);
+   public void a(ui $$0) {
+      if (this.d != null) {
+         if (this.c != null) {
+            $$0.k(3);
+            $$0.a(this.d);
+            $$0.a(this.c);
+         } else {
+            $$0.k(1);
+            $$0.a(this.d);
+         }
+      } else if (this.c != null) {
+         $$0.k(2);
+         $$0.a(this.c);
+      } else {
+         $$0.k(0);
+      }
    }
 
-   public void a(yx $$0) {
+   @Nullable
+   public ahg a() {
+      return this.c;
+   }
+
+   @Nullable
+   public ars d() {
+      return this.d;
+   }
+
+   public void a(za $$0) {
       $$0.a(this);
-   }
-
-   public int a() {
-      return this.a;
-   }
-
-   @Nullable
-   public sl d() {
-      return this.b;
-   }
-
-   @Override
-   public boolean b() {
-      return true;
    }
 }

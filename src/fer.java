@@ -1,47 +1,96 @@
-public class fer extends fds<ciu> {
-   private static final ahd x = new ahd("container/horse/chest_slots");
-   private static final ahd y = new ahd("container/horse/saddle_slot");
-   private static final ahd z = new ahd("container/horse/llama_armor_slot");
-   private static final ahd A = new ahd("container/horse/armor_slot");
-   private static final ahd B = new ahd("textures/gui/container/horse.png");
-   private final bzr C;
-   private float D;
-   private float E;
+public class fer {
+   private static final ahg a = new ahg("minecraft", "alt");
+   private static final wc b = wc.a.a(a);
+   private static final fer c = new fer();
+   private final auu d = auu.a();
+   private final String[] e = new String[]{
+      "the",
+      "elder",
+      "scrolls",
+      "klaatu",
+      "berata",
+      "niktu",
+      "xyzzy",
+      "bless",
+      "curse",
+      "light",
+      "darkness",
+      "fire",
+      "air",
+      "earth",
+      "water",
+      "hot",
+      "dry",
+      "cold",
+      "wet",
+      "ignite",
+      "snuff",
+      "embiggen",
+      "twist",
+      "shorten",
+      "stretch",
+      "fiddle",
+      "destroy",
+      "imbue",
+      "galvanize",
+      "enchant",
+      "free",
+      "limited",
+      "range",
+      "of",
+      "towards",
+      "inside",
+      "sphere",
+      "cube",
+      "self",
+      "other",
+      "ball",
+      "mental",
+      "physical",
+      "grow",
+      "shrink",
+      "demon",
+      "elemental",
+      "spirit",
+      "animal",
+      "creature",
+      "beast",
+      "humanoid",
+      "undead",
+      "fresh",
+      "stale",
+      "phnglui",
+      "mglwnafh",
+      "cthulhu",
+      "rlyeh",
+      "wgahnagl",
+      "fhtagn",
+      "baguette"
+   };
 
-   public fer(ciu $$0, cfa $$1, bzr $$2) {
-      super($$0, $$1, $$2.Q_());
-      this.C = $$2;
+   private fer() {
    }
 
-   @Override
-   protected void a(ewm $$0, float $$1, int $$2, int $$3) {
-      int $$4 = (this.g - this.c) / 2;
-      int $$5 = (this.h - this.k) / 2;
-      $$0.a(B, $$4, $$5, 0, 0, this.c, this.k);
-      if (this.C instanceof bzq $$6 && $$6.w()) {
-         $$0.a(x, 90, 54, 0, 0, $$4 + 79, $$5 + 17, $$6.gm() * 18, 54);
-      }
+   public static fer a() {
+      return c;
+   }
 
-      if (this.C.g()) {
-         $$0.a(y, $$4 + 7, $$5 + 35 - 18, 18, 18);
-      }
+   public vk a(ewq $$0, int $$1) {
+      StringBuilder $$2 = new StringBuilder();
+      int $$3 = this.d.a(2) + 3;
 
-      if (this.C.gN()) {
-         if (this.C instanceof bzu) {
-            $$0.a(z, $$4 + 7, $$5 + 35, 18, 18);
-         } else {
-            $$0.a(A, $$4 + 7, $$5 + 35, 18, 18);
+      for (int $$4 = 0; $$4 < $$3; $$4++) {
+         if ($$4 != 0) {
+            $$2.append(" ");
          }
+
+         $$2.append(ac.a(this.e, this.d));
       }
 
-      fes.a($$0, $$4 + 26, $$5 + 18, $$4 + 78, $$5 + 70, 17, 0.25F, this.D, this.E, this.C);
+      return $$0.b().a(vf.b($$2.toString()).c(b), $$1, wc.a);
    }
 
-   @Override
-   public void a(ewm $$0, int $$1, int $$2, float $$3) {
-      this.D = (float)$$1;
-      this.E = (float)$$2;
-      super.a($$0, $$1, $$2, $$3);
-      this.a($$0, $$1, $$2);
+   public void a(long $$0) {
+      this.d.b($$0);
    }
 }

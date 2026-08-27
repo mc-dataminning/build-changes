@@ -1,88 +1,100 @@
-import com.mojang.datafixers.util.Pair;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParseException;
+import java.lang.reflect.Type;
+import java.util.Collection;
 import java.util.List;
+import java.util.Objects;
+import java.util.Set;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public class fuu implements fuz<dge> {
-   private static final int b = 20;
-   private static final int c = 40;
-   private static final int d = 16;
-   public static final String a = "flag";
-   private static final String e = "pole";
-   private static final String f = "bar";
-   private final fmp g;
-   private final fmp h;
-   private final fmp i;
+public class fuu implements ggw {
+   private final djh<cwp, djg> a;
+   private final List<fuw> b;
 
-   public fuu(fva.a $$0) {
-      fmp $$1 = $$0.a(fmo.f);
-      this.g = $$1.b("flag");
-      this.h = $$1.b("pole");
-      this.i = $$1.b("bar");
+   public fuu(djh<cwp, djg> $$0, List<fuw> $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public static fmv a() {
-      fmx $$0 = new fmx();
-      fmy $$1 = $$0.a();
-      $$1.a("flag", fmu.c().a(0, 0).a(-10.0F, 0.0F, -2.0F, 20.0F, 40.0F, 1.0F), fmr.a);
-      $$1.a("pole", fmu.c().a(44, 0).a(-1.0F, -30.0F, -1.0F, 2.0F, 42.0F, 2.0F), fmr.a);
-      $$1.a("bar", fmu.c().a(0, 42).a(-10.0F, -32.0F, -1.0F, 20.0F, 2.0F, 2.0F), fmr.a);
-      return fmv.a($$0, 64, 64);
+   public List<fuw> a() {
+      return this.b;
    }
 
-   public void a(dge $$0, float $$1, ept $$2, fsz $$3, int $$4, int $$5) {
-      List<Pair<ih<dgf>, clf>> $$6 = $$0.c();
-      float $$7 = 0.6666667F;
-      boolean $$8 = $$0.i() == null;
-      $$2.a();
-      long $$9;
-      if ($$8) {
-         $$9 = 0L;
-         $$2.a(0.5F, 0.5F, 0.5F);
-         this.h.k = true;
+   public Set<fup> b() {
+      Set<fup> $$0 = Sets.newHashSet();
+
+      for (fuw $$1 : this.b) {
+         $$0.add($$1.a());
+      }
+
+      return $$0;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
       } else {
-         $$9 = $$0.i().X();
-         dja $$11 = $$0.r();
-         if ($$11.b() instanceof cvo) {
-            $$2.a(0.5F, 0.5F, 0.5F);
-            float $$12 = -dkg.b($$11.c(cvo.b));
-            $$2.a(a.d.rotationDegrees($$12));
-            this.h.k = true;
-         } else {
-            $$2.a(0.5F, -0.16666667F, 0.5F);
-            float $$13 = -$$11.c(dfe.b).p();
-            $$2.a(a.d.rotationDegrees($$13));
-            $$2.a(0.0F, -0.3125F, -0.4375F);
-            this.h.k = false;
+         return !($$0 instanceof fuu $$1) ? false : Objects.equals(this.a, $$1.a) && Objects.equals(this.b, $$1.b);
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return Objects.hash(this.a, this.b);
+   }
+
+   @Override
+   public Collection<ahg> f() {
+      return this.a().stream().flatMap($$0 -> $$0.a().f().stream()).collect(Collectors.toSet());
+   }
+
+   @Override
+   public void a(Function<ahg, ggw> $$0) {
+      this.a().forEach($$1 -> $$1.a().a($$0));
+   }
+
+   @Nullable
+   @Override
+   public ggl a(ggp $$0, Function<ggo, gel> $$1, ggt $$2, ahg $$3) {
+      ggu.a $$4 = new ggu.a();
+
+      for (fuw $$5 : this.a()) {
+         ggl $$6 = $$5.a().a($$0, $$1, $$2, $$3);
+         if ($$6 != null) {
+            $$4.a($$5.a(this.a), $$6);
          }
       }
 
-      $$2.a();
-      $$2.b(0.6666667F, -0.6666667F, -0.6666667F);
-      epx $$14 = ggl.f.a($$3, fth::c);
-      this.h.a($$2, $$14, $$4, $$5);
-      this.i.a($$2, $$14, $$4, $$5);
-      hx $$15 = $$0.aB_();
-      float $$16 = ((float)Math.floorMod((long)($$15.u() * 7 + $$15.v() * 9 + $$15.w() * 13) + $$9, 100L) + $$1) / 100.0F;
-      this.g.e = (-0.0125F + 0.01F * aui.b((float) (Math.PI * 2) * $$16)) * (float) Math.PI;
-      this.g.c = -32.0F;
-      a($$2, $$3, $$4, $$5, this.g, ggl.f, true, $$6);
-      $$2.b();
-      $$2.b();
+      return $$4.a();
    }
 
-   public static void a(ept $$0, fsz $$1, int $$2, int $$3, fmp $$4, ggj $$5, boolean $$6, List<Pair<ih<dgf>, clf>> $$7) {
-      a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, false);
-   }
+   public static class a implements JsonDeserializer<fuu> {
+      private final fui.a a;
 
-   public static void a(ept $$0, fsz $$1, int $$2, int $$3, fmp $$4, ggj $$5, boolean $$6, List<Pair<ih<dgf>, clf>> $$7, boolean $$8) {
-      $$4.a($$0, $$5.a($$1, fth::c, $$8), $$2, $$3);
+      public a(fui.a $$0) {
+         this.a = $$0;
+      }
 
-      for (int $$9 = 0; $$9 < 17 && $$9 < $$7.size(); $$9++) {
-         Pair<ih<dgf>, clf> $$10 = $$7.get($$9);
-         float[] $$11 = ((clf)$$10.getSecond()).d();
-         ((ih)$$10.getFirst())
-            .e()
-            .map($$1x -> $$6 ? fto.a($$1x) : fto.b($$1x))
-            .ifPresent($$6x -> $$4.a($$0, $$6x.a($$1, fth::m), $$2, $$3, $$11[0], $$11[1], $$11[2], 1.0F));
+      public fuu a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         return new fuu(this.a.a(), this.a($$2, $$0.getAsJsonArray()));
+      }
+
+      private List<fuw> a(JsonDeserializationContext $$0, JsonArray $$1) {
+         List<fuw> $$2 = Lists.newArrayList();
+
+         for (JsonElement $$3 : $$1) {
+            $$2.add((fuw)$$0.deserialize($$3, fuw.class));
+         }
+
+         return $$2;
       }
    }
 }

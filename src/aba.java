@@ -1,17 +1,24 @@
-import java.util.List;
-import java.util.UUID;
+public class aba implements xf<za> {
+   private final int a;
 
-public record aba(List<UUID> a) implements xd<yx> {
-   public aba(ug $$0) {
-      this($$0.a(ug::p));
+   public aba(bkp $$0) {
+      this($$0.b());
+   }
+
+   public aba(int $$0) {
+      this.a = $$0;
+   }
+
+   public aba(ui $$0) {
+      this.a = $$0.n();
    }
 
    @Override
-   public void a(ug $$0) {
-      $$0.a(this.a, ug::a);
+   public void a(ui $$0) {
+      $$0.c(this.a);
    }
 
-   public void a(yx $$0) {
+   public void a(za $$0) {
       $$0.a(this);
    }
 }

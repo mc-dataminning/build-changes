@@ -1,57 +1,88 @@
-public class cje extends cjp {
-   private final cjc a;
-   private final cfb b;
-   private int c;
-   private final csf h;
+public class cje extends cia {
+   private static final int o = 1;
+   private static final int p = 1;
+   public static final int k = 1;
+   public static final int l = 2;
+   public static final int m = 3;
+   public static final int n = 100;
+   private final bjt q;
+   private final cik r;
 
-   public cje(cfb $$0, csf $$1, cjc $$2, int $$3, int $$4, int $$5) {
-      super($$2, $$3, $$4, $$5);
-      this.b = $$0;
-      this.h = $$1;
-      this.a = $$2;
+   public cje(int $$0) {
+      this($$0, new bki(1), new cju(1));
    }
 
-   @Override
-   public boolean a(cmr $$0) {
-      return false;
-   }
-
-   @Override
-   public cmr a(int $$0) {
-      if (this.h()) {
-         this.c = this.c + Math.min($$0, this.g().L());
-      }
-
-      return super.a($$0);
-   }
-
-   @Override
-   protected void a(cmr $$0, int $$1) {
-      this.c += $$1;
-      this.b_($$0);
-   }
-
-   @Override
-   protected void b_(cmr $$0) {
-      $$0.a(this.b.dM(), this.b, this.c);
-      this.c = 0;
-   }
-
-   @Override
-   public void a(cfb $$0, cmr $$1) {
-      this.b_($$1);
-      csg $$2 = this.a.g();
-      if ($$2 != null) {
-         cmr $$3 = this.a.a(0);
-         cmr $$4 = this.a.a(1);
-         if ($$2.b($$3, $$4) || $$2.b($$4, $$3)) {
-            this.h.a($$2);
-            $$0.a(arw.T);
-            this.a.a(0, $$3);
-            this.a.a(1, $$4);
+   public cje(int $$0, bjt $$1, cik $$2) {
+      super(cjh.r, $$0);
+      a($$1, 1);
+      a($$2, 1);
+      this.q = $$1;
+      this.r = $$2;
+      this.a(new cjv($$1, 0, 0, 0) {
+         @Override
+         public void b() {
+            super.b();
+            cje.this.a(this.d);
          }
+      });
+      this.a($$2);
+   }
 
-         this.h.t(this.h.w() + $$2.o());
+   @Override
+   public boolean b(cfh $$0, int $$1) {
+      if ($$1 >= 100) {
+         int $$2 = $$1 - 100;
+         this.a(0, $$2);
+         return true;
+      } else {
+         switch ($$1) {
+            case 1:
+               int $$4 = this.r.a(0);
+               this.a(0, $$4 - 1);
+               return true;
+            case 2:
+               int $$3 = this.r.a(0);
+               this.a(0, $$3 + 1);
+               return true;
+            case 3:
+               if (!$$0.ge()) {
+                  return false;
+               }
+
+               cmx $$5 = this.q.b(0);
+               this.q.e();
+               if (!$$0.fS().e($$5)) {
+                  $$0.a($$5, false);
+               }
+
+               return true;
+            default:
+               return false;
+         }
       }
+   }
+
+   @Override
+   public cmx a(cfh $$0, int $$1) {
+      return cmx.f;
+   }
+
+   @Override
+   public void a(int $$0, int $$1) {
+      super.a($$0, $$1);
+      this.d();
+   }
+
+   @Override
+   public boolean a(cfh $$0) {
+      return this.q.a($$0);
+   }
+
+   public cmx l() {
+      return this.q.a(0);
+   }
+
+   public int m() {
+      return this.r.a(0);
    }
 }

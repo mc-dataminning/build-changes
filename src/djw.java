@@ -1,28 +1,131 @@
-public enum djw implements ave {
-   a(ic.a),
-   b(ic.b);
-
-   private final ic c;
-
-   private djw(ic $$0) {
-      this.c = $$0;
-   }
-
-   public ic a() {
-      return this.c;
-   }
-
-   @Override
-   public String toString() {
-      return this.c();
-   }
-
-   @Override
-   public String c() {
-      return this == a ? "upper" : "lower";
-   }
-
-   public djw b() {
-      return this == a ? b : a;
-   }
+public class djw {
+   public static final djx a = djx.a("attached");
+   public static final djx b = djx.a("bottom");
+   public static final djx c = djx.a("conditional");
+   public static final djx d = djx.a("disarmed");
+   public static final djx e = djx.a("drag");
+   public static final djx f = djx.a("enabled");
+   public static final djx g = djx.a("extended");
+   public static final djx h = djx.a("eye");
+   public static final djx i = djx.a("falling");
+   public static final djx j = djx.a("hanging");
+   public static final djx k = djx.a("has_bottle_0");
+   public static final djx l = djx.a("has_bottle_1");
+   public static final djx m = djx.a("has_bottle_2");
+   public static final djx n = djx.a("has_record");
+   public static final djx o = djx.a("has_book");
+   public static final djx p = djx.a("inverted");
+   public static final djx q = djx.a("in_wall");
+   public static final djx r = djx.a("lit");
+   public static final djx s = djx.a("locked");
+   public static final djx t = djx.a("occupied");
+   public static final djx u = djx.a("open");
+   public static final djx v = djx.a("persistent");
+   public static final djx w = djx.a("powered");
+   public static final djx x = djx.a("short");
+   public static final djx y = djx.a("signal_fire");
+   public static final djx z = djx.a("snowy");
+   public static final djx A = djx.a("triggered");
+   public static final djx B = djx.a("unstable");
+   public static final djx C = djx.a("waterlogged");
+   public static final djx D = djx.a("berries");
+   public static final djx E = djx.a("bloom");
+   public static final djx F = djx.a("shrieking");
+   public static final djx G = djx.a("can_summon");
+   public static final dke<ic.a> H = dke.a("axis", ic.a.class, ic.a.a, ic.a.c);
+   public static final dke<ic.a> I = dke.a("axis", ic.a.class);
+   public static final djx J = djx.a("up");
+   public static final djx K = djx.a("down");
+   public static final djx L = djx.a("north");
+   public static final djx M = djx.a("east");
+   public static final djx N = djx.a("south");
+   public static final djx O = djx.a("west");
+   public static final dka P = dka.a("facing", ic.c, ic.f, ic.d, ic.e, ic.b, ic.a);
+   public static final dka Q = dka.a("facing", $$0 -> $$0 != ic.b);
+   public static final dka R = dka.a("facing", ic.c.a);
+   public static final dkg S = dkg.a("flower_amount", 1, 4);
+   public static final dke<ie> T = dke.a("orientation", ie.class);
+   public static final dke<djr> U = dke.a("face", djr.class);
+   public static final dke<dju> V = dke.a("attachment", dju.class);
+   public static final dke<dks> W = dke.a("east", dks.class);
+   public static final dke<dks> X = dke.a("north", dks.class);
+   public static final dke<dks> Y = dke.a("south", dks.class);
+   public static final dke<dks> Z = dke.a("west", dks.class);
+   public static final dke<dkl> aa = dke.a("east", dkl.class);
+   public static final dke<dkl> ab = dke.a("north", dkl.class);
+   public static final dke<dkl> ac = dke.a("south", dkl.class);
+   public static final dke<dkl> ad = dke.a("west", dkl.class);
+   public static final dke<dkc> ae = dke.a("half", dkc.class);
+   public static final dke<dkf> af = dke.a("half", dkf.class);
+   public static final dke<dkk> ag = dke.a("shape", dkk.class);
+   public static final dke<dkk> ah = dke.a("shape", dkk.class, $$0 -> $$0 != dkk.j && $$0 != dkk.i && $$0 != dkk.g && $$0 != dkk.h);
+   public static final int ai = 1;
+   public static final int aj = 2;
+   public static final int ak = 3;
+   public static final int al = 4;
+   public static final int am = 5;
+   public static final int an = 7;
+   public static final int ao = 15;
+   public static final int ap = 25;
+   public static final dkg aq = dkg.a("age", 0, 1);
+   public static final dkg ar = dkg.a("age", 0, 2);
+   public static final dkg as = dkg.a("age", 0, 3);
+   public static final dkg at = dkg.a("age", 0, 4);
+   public static final dkg au = dkg.a("age", 0, 5);
+   public static final dkg av = dkg.a("age", 0, 7);
+   public static final dkg aw = dkg.a("age", 0, 15);
+   public static final dkg ax = dkg.a("age", 0, 25);
+   public static final dkg ay = dkg.a("bites", 0, 6);
+   public static final dkg az = dkg.a("candles", 1, 4);
+   public static final dkg aA = dkg.a("delay", 1, 4);
+   public static final int aB = 7;
+   public static final dkg aC = dkg.a("distance", 1, 7);
+   public static final dkg aD = dkg.a("eggs", 1, 4);
+   public static final dkg aE = dkg.a("hatch", 0, 2);
+   public static final dkg aF = dkg.a("layers", 1, 8);
+   public static final int aG = 0;
+   public static final int aH = 1;
+   public static final int aI = 3;
+   public static final int aJ = 8;
+   public static final dkg aK = dkg.a("level", 1, 3);
+   public static final dkg aL = dkg.a("level", 0, 8);
+   public static final dkg aM = dkg.a("level", 1, 8);
+   public static final dkg aN = dkg.a("honey_level", 0, 5);
+   public static final int aO = 15;
+   public static final dkg aP = dkg.a("level", 0, 15);
+   public static final dkg aQ = dkg.a("moisture", 0, 7);
+   public static final dkg aR = dkg.a("note", 0, 24);
+   public static final dkg aS = dkg.a("pickles", 1, 4);
+   public static final dkg aT = dkg.a("power", 0, 15);
+   public static final dkg aU = dkg.a("stage", 0, 1);
+   public static final int aV = 7;
+   public static final dkg aW = dkg.a("distance", 0, 7);
+   public static final int aX = 0;
+   public static final int aY = 4;
+   public static final dkg aZ = dkg.a("charges", 0, 4);
+   public static final dkg ba = dkg.a("rotation", 0, dkm.a());
+   public static final dke<djt> bb = dke.a("part", djt.class);
+   public static final dke<djy> bc = dke.a("type", djy.class);
+   public static final dke<djz> bd = dke.a("mode", djz.class);
+   public static final dke<dkb> be = dke.a("hinge", dkb.class);
+   public static final dke<dkh> bf = dke.a("instrument", dkh.class);
+   public static final dke<dki> bg = dke.a("type", dki.class);
+   public static final dke<dko> bh = dke.a("type", dko.class);
+   public static final dke<dkp> bi = dke.a("shape", dkp.class);
+   public static final dke<dkq> bj = dke.a("mode", dkq.class);
+   public static final dke<djs> bk = dke.a("leaves", djs.class);
+   public static final dke<dkr> bl = dke.a("tilt", dkr.class);
+   public static final dka bm = dka.a("vertical_direction", ic.b, ic.a);
+   public static final dke<dkd> bn = dke.a("thickness", dkd.class);
+   public static final dke<dkn> bo = dke.a("sculk_sensor_phase", dkn.class);
+   public static final djx bp = djx.a("slot_0_occupied");
+   public static final djx bq = djx.a("slot_1_occupied");
+   public static final djx br = djx.a("slot_2_occupied");
+   public static final djx bs = djx.a("slot_3_occupied");
+   public static final djx bt = djx.a("slot_4_occupied");
+   public static final djx bu = djx.a("slot_5_occupied");
+   public static final dkg bv = dkg.a("dusted", 0, 3);
+   public static final djx bw = djx.a("cracked");
+   public static final djx bx = djx.a("crafting");
+   public static final dke<dit> by = dke.a("trial_spawner_state", dit.class);
 }

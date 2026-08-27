@@ -1,37 +1,15 @@
-import com.mojang.serialization.Codec;
-import java.util.function.IntFunction;
-
-public enum cmo implements ave {
-   a(0, "none"),
-   b(1, "thirdperson_lefthand"),
-   c(2, "thirdperson_righthand"),
-   d(3, "firstperson_lefthand"),
-   e(4, "firstperson_righthand"),
-   f(5, "head"),
-   g(6, "gui"),
-   h(7, "ground"),
-   i(8, "fixed");
-
-   public static final Codec<cmo> j = ave.a(cmo::values);
-   public static final IntFunction<cmo> k = ata.a(cmo::a, values(), ata.a.a);
-   private final byte l;
-   private final String m;
-
-   private cmo(int $$0, String $$1) {
-      this.m = $$1;
-      this.l = (byte)$$0;
+public class cmo extends cms implements cnw {
+   public cmo(cms.a $$0) {
+      super($$0);
    }
 
    @Override
-   public String c() {
-      return this.m;
-   }
-
-   public byte a() {
-      return this.l;
-   }
-
-   public boolean b() {
-      return this == d || this == e;
+   public boolean a(cto $$0, did $$1, boolean $$2, cfh $$3) {
+      if ($$1.a($$0x -> $$0x.a(false), $$2)) {
+         $$0.a(null, $$1.aB_(), arr.mx, ars.e, 1.0F, 1.0F);
+         return true;
+      } else {
+         return false;
+      }
    }
 }

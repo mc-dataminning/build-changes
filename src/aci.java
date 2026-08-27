@@ -1,38 +1,71 @@
 import javax.annotation.Nullable;
 
-public record aci(String a, String b, int c, @Nullable vd d, @Nullable wt e) implements xd<yx> {
-   public aci(ug $$0) {
-      this($$0.s(), $$0.s(), $$0.n(), $$0.c(ug::m), $$0.c(wv::a));
+public class aci implements xf<za> {
+   public static final int a = 0;
+   public static final int b = 1;
+   public static final int c = 2;
+   private final String d;
+   private final vf e;
+   private final emz.a f;
+   @Nullable
+   private final wv g;
+   private final int h;
+
+   public aci(emo $$0, int $$1) {
+      this.d = $$0.b();
+      this.e = $$0.d();
+      this.f = $$0.h();
+      this.g = $$0.f();
+      this.h = $$1;
+   }
+
+   public aci(ui $$0) {
+      this.d = $$0.s();
+      this.h = $$0.readByte();
+      if (this.h != 0 && this.h != 2) {
+         this.e = ve.a;
+         this.f = emz.a.a;
+         this.g = null;
+      } else {
+         this.e = $$0.m();
+         this.f = $$0.b(emz.a.class);
+         this.g = $$0.c(wx::a);
+      }
    }
 
    @Override
-   public void a(ug $$0) {
-      $$0.a(this.a);
-      $$0.a(this.b);
-      $$0.c(this.c);
-      $$0.a(this.d, ug::a);
-      $$0.a(this.e, wv::a);
+   public void a(ui $$0) {
+      $$0.a(this.d);
+      $$0.k(this.h);
+      if (this.h == 0 || this.h == 2) {
+         $$0.a(this.e);
+         $$0.a(this.f);
+         $$0.a(this.g, wx::a);
+      }
    }
 
-   public void a(yx $$0) {
+   public void a(za $$0) {
       $$0.a(this);
    }
 
-   public String d() {
-      return this.b;
-   }
-
-   public int e() {
-      return this.c;
-   }
-
-   @Nullable
-   public vd f() {
+   public String a() {
       return this.d;
    }
 
-   @Nullable
-   public wt g() {
+   public vf d() {
       return this.e;
+   }
+
+   public int e() {
+      return this.h;
+   }
+
+   public emz.a f() {
+      return this.f;
+   }
+
+   @Nullable
+   public wv g() {
+      return this.g;
    }
 }

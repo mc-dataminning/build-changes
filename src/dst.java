@@ -1,40 +1,54 @@
 import com.mojang.serialization.Codec;
+import javax.annotation.Nullable;
 
-public class dst extends drn<dub> {
-   public dst(Codec<dub> $$0) {
+public class dst extends drt<dum> {
+   public dst(Codec<dum> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(drp<dub> $$0) {
-      boolean $$1 = false;
-      aup $$2 = $$0.d();
-      cud $$3 = $$0.b();
-      hx $$4 = $$0.e();
-      dub $$5 = $$0.f();
-      int $$6 = $$2.a(8) - $$2.a(8);
-      int $$7 = $$2.a(8) - $$2.a(8);
-      int $$8 = $$3.a(doj.a.d, $$4.u() + $$6, $$4.w() + $$7);
-      hx $$9 = new hx($$4.u() + $$6, $$8, $$4.w() + $$7);
-      if ($$3.a_($$9).a(cwl.G)) {
-         boolean $$10 = $$2.j() < (double)$$5.l;
-         dja $$11 = $$10 ? cwl.bx.o() : cwl.bw.o();
-         if ($$11.a($$3, $$9)) {
-            if ($$10) {
-               dja $$12 = $$11.a(deo.d, djw.a);
-               hx $$13 = $$9.c();
-               if ($$3.a_($$13).a(cwl.G)) {
-                  $$3.a($$9, $$11, 2);
-                  $$3.a($$13, $$12, 2);
-               }
-            } else {
-               $$3.a($$9, $$11, 2);
+   public boolean a(drv<dum> $$0) {
+      dum $$1 = $$0.f();
+      cuj $$2 = $$0.b();
+      auu $$3 = $$0.d();
+      cwp $$4 = $$1.b.b();
+      hx $$5 = a($$2, $$0.e().j().a(ic.a.b, $$2.J_() + 1, $$2.al() - 1), $$4);
+      if ($$5 == null) {
+         return false;
+      } else {
+         int $$6 = $$1.a().a($$3);
+         int $$7 = $$1.a().a($$3);
+         int $$8 = $$1.a().a($$3);
+         int $$9 = Math.max($$6, Math.max($$7, $$8));
+         boolean $$10 = false;
+
+         for (hx $$11 : hx.a($$5, $$6, $$7, $$8)) {
+            if ($$11.k($$5) > $$9) {
+               break;
             }
 
-            $$1 = true;
+            djg $$12 = $$2.a_($$11);
+            if ($$12.a($$4)) {
+               this.a($$2, $$11, $$1.c);
+               $$10 = true;
+            }
          }
+
+         return $$10;
+      }
+   }
+
+   @Nullable
+   private static hx a(ctp $$0, hx.a $$1, cwp $$2) {
+      while ($$1.v() > $$0.J_() + 1) {
+         djg $$3 = $$0.a_($$1);
+         if ($$3.a($$2)) {
+            return $$1;
+         }
+
+         $$1.c(ic.a);
       }
 
-      return $$1;
+      return null;
    }
 }

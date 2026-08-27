@@ -4,14 +4,69 @@ import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class bde extends bcy {
+public class bde extends Schema {
    public bde(int $$0, Schema $$1) {
       super($$0, $$1);
    }
 
-   public Map<String, Supplier<TypeTemplate>> registerBlockEntities(Schema $$0) {
-      Map<String, Supplier<TypeTemplate>> $$1 = super.registerBlockEntities($$0);
-      $$0.registerSimple($$1, "minecraft:bed");
+   protected static TypeTemplate a(Schema $$0) {
+      return DSL.optionalFields("ArmorItems", DSL.list(bbv.t.in($$0)), "HandItems", DSL.list(bbv.t.in($$0)));
+   }
+
+   protected static void a(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, String $$2) {
+      $$0.register($$1, $$2, () -> a($$0));
+   }
+
+   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
+      Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
+      a($$0, $$1, "ArmorStand");
+      a($$0, $$1, "Creeper");
+      a($$0, $$1, "Skeleton");
+      a($$0, $$1, "Spider");
+      a($$0, $$1, "Giant");
+      a($$0, $$1, "Zombie");
+      a($$0, $$1, "Slime");
+      a($$0, $$1, "Ghast");
+      a($$0, $$1, "PigZombie");
+      $$0.register($$1, "Enderman", $$1x -> DSL.optionalFields("carried", bbv.y.in($$0), a($$0)));
+      a($$0, $$1, "CaveSpider");
+      a($$0, $$1, "Silverfish");
+      a($$0, $$1, "Blaze");
+      a($$0, $$1, "LavaSlime");
+      a($$0, $$1, "EnderDragon");
+      a($$0, $$1, "WitherBoss");
+      a($$0, $$1, "Bat");
+      a($$0, $$1, "Witch");
+      a($$0, $$1, "Endermite");
+      a($$0, $$1, "Guardian");
+      a($$0, $$1, "Pig");
+      a($$0, $$1, "Sheep");
+      a($$0, $$1, "Cow");
+      a($$0, $$1, "Chicken");
+      a($$0, $$1, "Squid");
+      a($$0, $$1, "Wolf");
+      a($$0, $$1, "MushroomCow");
+      a($$0, $$1, "SnowMan");
+      a($$0, $$1, "Ozelot");
+      a($$0, $$1, "VillagerGolem");
+      $$0.register(
+         $$1, "EntityHorse", $$1x -> DSL.optionalFields("Items", DSL.list(bbv.t.in($$0)), "ArmorItem", bbv.t.in($$0), "SaddleItem", bbv.t.in($$0), a($$0))
+      );
+      a($$0, $$1, "Rabbit");
+      $$0.register(
+         $$1,
+         "Villager",
+         $$1x -> DSL.optionalFields(
+               "Inventory",
+               DSL.list(bbv.t.in($$0)),
+               "Offers",
+               DSL.optionalFields("Recipes", DSL.list(DSL.optionalFields("buy", bbv.t.in($$0), "buyB", bbv.t.in($$0), "sell", bbv.t.in($$0)))),
+               a($$0)
+            )
+      );
+      a($$0, $$1, "Shulker");
+      $$0.registerSimple($$1, "AreaEffectCloud");
+      $$0.registerSimple($$1, "ShulkerBullet");
       return $$1;
    }
 
@@ -19,19 +74,16 @@ public class bde extends bcy {
       super.registerTypes($$0, $$1, $$2);
       $$0.registerType(
          false,
-         bbq.p,
+         bbv.f,
          () -> DSL.optionalFields(
-               "minecraft:adventure/adventuring_time",
-               DSL.optionalFields("criteria", DSL.compoundList(bbq.G.in($$0), DSL.constType(DSL.string()))),
-               "minecraft:adventure/kill_a_mob",
-               DSL.optionalFields("criteria", DSL.compoundList(bbq.v.in($$0), DSL.constType(DSL.string()))),
-               "minecraft:adventure/kill_all_mobs",
-               DSL.optionalFields("criteria", DSL.compoundList(bbq.v.in($$0), DSL.constType(DSL.string()))),
-               "minecraft:husbandry/bred_all_animals",
-               DSL.optionalFields("criteria", DSL.compoundList(bbq.v.in($$0), DSL.constType(DSL.string())))
+               "entities",
+               DSL.list(DSL.optionalFields("nbt", bbv.w.in($$0))),
+               "blocks",
+               DSL.list(DSL.optionalFields("nbt", bbv.s.in($$0))),
+               "palette",
+               DSL.list(bbv.u.in($$0))
             )
       );
-      $$0.registerType(false, bbq.G, () -> DSL.constType(a()));
-      $$0.registerType(false, bbq.v, () -> DSL.constType(a()));
+      $$0.registerType(false, bbv.u, DSL::remainder);
    }
 }

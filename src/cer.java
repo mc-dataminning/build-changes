@@ -1,68 +1,64 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public record cer(String q, Predicate<ih<bxj>> r, Predicate<ih<bxj>> s, ImmutableSet<cmm> t, ImmutableSet<cwj> u, @Nullable arl v) {
-   public static final Predicate<ih<bxj>> a = $$0 -> $$0.a(asl.a);
-   public static final cer b = a("none", bxj.a, a, null);
-   public static final cer c = a("armorer", bxk.a, arm.zO);
-   public static final cer d = a("butcher", bxk.b, arm.zP);
-   public static final cer e = a("cartographer", bxk.c, arm.zQ);
-   public static final cer f = a("cleric", bxk.d, arm.zR);
-   public static final cer g = a("farmer", bxk.e, ImmutableSet.of(cmu.pt, cmu.ps, cmu.ve, cmu.rv), ImmutableSet.of(cwl.cC), arm.zS);
-   public static final cer h = a("fisherman", bxk.f, arm.zT);
-   public static final cer i = a("fletcher", bxk.g, arm.zU);
-   public static final cer j = a("leatherworker", bxk.h, arm.zV);
-   public static final cer k = a("librarian", bxk.i, arm.zW);
-   public static final cer l = a("mason", bxk.j, arm.zX);
-   public static final cer m = a("nitwit", bxj.a, bxj.a, null);
-   public static final cer n = a("shepherd", bxk.k, arm.zY);
-   public static final cer o = a("toolsmith", bxk.l, arm.zZ);
-   public static final cer p = a("weaponsmith", bxk.m, arm.Aa);
+public class cer implements csl {
+   private final cfh a;
+   private csn b = new csn();
+   private int c;
+
+   public cer(cfh $$0) {
+      this.a = $$0;
+   }
 
    @Override
-   public String toString() {
-      return this.q;
+   public cfh ge() {
+      return this.a;
    }
 
-   private static cer a(String $$0, ahc<bxj> $$1, @Nullable arl $$2) {
-      return a($$0, $$1x -> $$1x.a($$1), $$1x -> $$1x.a($$1), $$2);
+   @Override
+   public void f(@Nullable cfh $$0) {
    }
 
-   private static cer a(String $$0, Predicate<ih<bxj>> $$1, Predicate<ih<bxj>> $$2, @Nullable arl $$3) {
-      return a($$0, $$1, $$2, ImmutableSet.of(), ImmutableSet.of(), $$3);
+   @Override
+   public csn gg() {
+      return this.b;
    }
 
-   private static cer a(String $$0, ahc<bxj> $$1, ImmutableSet<cmm> $$2, ImmutableSet<cwj> $$3, @Nullable arl $$4) {
-      return a($$0, $$1x -> $$1x.a($$1), $$1x -> $$1x.a($$1), $$2, $$3, $$4);
+   @Override
+   public void a(csn $$0) {
+      this.b = $$0;
    }
 
-   private static cer a(String $$0, Predicate<ih<bxj>> $$1, Predicate<ih<bxj>> $$2, ImmutableSet<cmm> $$3, ImmutableSet<cwj> $$4, @Nullable arl $$5) {
-      return it.a(kd.z, new ahd($$0), new cer($$0, $$1, $$2, $$3, $$4, $$5));
+   @Override
+   public void a(csm $$0) {
+      $$0.j();
    }
 
-   public String a() {
-      return this.q;
+   @Override
+   public void l(cmx $$0) {
    }
 
-   public Predicate<ih<bxj>> b() {
-      return this.r;
+   @Override
+   public boolean gm() {
+      return this.a.dM().B;
    }
 
-   public Predicate<ih<bxj>> c() {
-      return this.s;
+   @Override
+   public int w() {
+      return this.c;
    }
 
-   public ImmutableSet<cmm> d() {
-      return this.t;
+   @Override
+   public void t(int $$0) {
+      this.c = $$0;
    }
 
-   public ImmutableSet<cwj> e() {
-      return this.u;
+   @Override
+   public boolean gh() {
+      return true;
    }
 
-   @Nullable
-   public arl f() {
-      return this.v;
+   @Override
+   public arq gi() {
+      return arr.zN;
    }
 }

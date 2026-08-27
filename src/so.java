@@ -2,37 +2,37 @@ import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
 
-public class so extends tb {
-   private static final int c = 12;
-   public static final so a = new so(0.0F);
-   public static final tk<so> b = new tk.a<so>() {
-      public so a(DataInput $$0, su $$1) throws IOException {
+public class so extends td {
+   private static final int c = 16;
+   public static final so a = new so(0.0);
+   public static final tm<so> b = new tm.a<so>() {
+      public so a(DataInput $$0, sw $$1) throws IOException {
          return so.a(d($$0, $$1));
       }
 
       @Override
-      public tf.b a(DataInput $$0, tf $$1, su $$2) throws IOException {
+      public th.b a(DataInput $$0, th $$1, sw $$2) throws IOException {
          return $$1.a(d($$0, $$2));
       }
 
-      private static float d(DataInput $$0, su $$1) throws IOException {
-         $$1.b(12L);
-         return $$0.readFloat();
+      private static double d(DataInput $$0, sw $$1) throws IOException {
+         $$1.b(16L);
+         return $$0.readDouble();
       }
 
       @Override
       public int c() {
-         return 4;
+         return 8;
       }
 
       @Override
       public String a() {
-         return "FLOAT";
+         return "DOUBLE";
       }
 
       @Override
       public String b() {
-         return "TAG_Float";
+         return "TAG_Double";
       }
 
       @Override
@@ -40,33 +40,33 @@ public class so extends tb {
          return true;
       }
    };
-   private final float w;
+   private final double w;
 
-   private so(float $$0) {
+   private so(double $$0) {
       this.w = $$0;
    }
 
-   public static so a(float $$0) {
-      return $$0 == 0.0F ? a : new so($$0);
+   public static so a(double $$0) {
+      return $$0 == 0.0 ? a : new so($$0);
    }
 
    @Override
    public void a(DataOutput $$0) throws IOException {
-      $$0.writeFloat(this.w);
+      $$0.writeDouble(this.w);
    }
 
    @Override
    public int a() {
-      return 12;
+      return 16;
    }
 
    @Override
    public byte b() {
-      return 5;
+      return 6;
    }
 
    @Override
-   public tk<so> c() {
+   public tm<so> c() {
       return b;
    }
 
@@ -81,42 +81,43 @@ public class so extends tb {
 
    @Override
    public int hashCode() {
-      return Float.floatToIntBits(this.w);
+      long $$0 = Double.doubleToLongBits(this.w);
+      return (int)($$0 ^ $$0 >>> 32);
    }
 
    @Override
-   public void a(tm $$0) {
+   public void a(to $$0) {
       $$0.a(this);
    }
 
    @Override
    public long f() {
-      return (long)this.w;
+      return (long)Math.floor(this.w);
    }
 
    @Override
    public int g() {
-      return aui.d(this.w);
+      return aun.a(this.w);
    }
 
    @Override
    public short h() {
-      return (short)(aui.d(this.w) & 65535);
+      return (short)(aun.a(this.w) & 65535);
    }
 
    @Override
    public byte i() {
-      return (byte)(aui.d(this.w) & 0xFF);
+      return (byte)(aun.a(this.w) & 0xFF);
    }
 
    @Override
    public double j() {
-      return (double)this.w;
+      return this.w;
    }
 
    @Override
    public float k() {
-      return this.w;
+      return (float)this.w;
    }
 
    @Override
@@ -125,7 +126,7 @@ public class so extends tb {
    }
 
    @Override
-   public tf.b a(tf $$0) {
+   public th.b a(th $$0) {
       return $$0.a(this.w);
    }
 }

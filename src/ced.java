@@ -1,44 +1,19 @@
-import java.util.Arrays;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
 
-public enum ced {
-   a(0, arm.Aw, arm.AE),
-   b(40, arm.Av, arm.AF),
-   c(80, arm.Ax, arm.AF);
-
-   private static final ced[] d = ac.a(values(), $$0 -> Arrays.sort($$0, ($$0x, $$1) -> Integer.compare($$1.e, $$0x.e)));
-   private final int e;
-   private final arl f;
-   private final arl g;
-
-   private ced(int $$0, arl $$1, arl $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
-   }
-
-   public int a() {
-      return this.e;
-   }
-
-   public arl b() {
-      return this.f;
-   }
-
-   public arl c() {
-      return this.g;
-   }
-
-   public static ced a(int $$0) {
-      for (ced $$1 : d) {
-         if ($$0 >= $$1.e) {
-            return $$1;
-         }
-      }
-
-      return a;
-   }
-
-   public boolean d() {
-      return this == c;
+public class ced {
+   public static boc<bmk> a(int $$0) {
+      return bro.a(
+         (Function<bro.b<bmk>, ? extends App<bro.c<bmk>, brr<bmk>>>)($$1 -> $$1.group($$1.b(bvm.K), $$1.c(bvm.ac), $$1.c(bvm.af), $$1.c(bvm.ae))
+               .apply($$1, ($$2, $$3, $$4, $$5) -> ($$4x, $$5x, $$6) -> {
+                     cbt $$7 = $$1.b($$2);
+                     if (!cdy.a($$7.q())) {
+                        return false;
+                     } else {
+                        $$3.a(true, (long)$$0);
+                        return true;
+                     }
+                  }))
+      );
    }
 }

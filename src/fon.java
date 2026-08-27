@@ -1,73 +1,102 @@
-import com.mojang.authlib.minecraft.UserApiService;
-import java.util.Objects;
-import java.util.UUID;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.ints.IntCollection;
+import it.unimi.dsi.fastutil.ints.IntRBTreeSet;
+import it.unimi.dsi.fastutil.ints.IntSortedSet;
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
 
-public final class fon {
-   private static final int a = 1024;
-   private final foe b;
-   private final fok c;
-   private final fnz d;
-   @Nullable
-   private foj e;
+public class fon {
+   final int a;
+   private final List<fon.a> b = new ArrayList<>();
 
-   public fon(foe $$0, fok $$1, fnz $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   public fon(int $$0) {
+      this.a = $$0;
    }
 
-   public static fon a(fok $$0, UserApiService $$1) {
-      fnz $$2 = new fnz(1024);
-      foe $$3 = foe.a($$0, $$1);
-      return new fon($$3, $$0, $$2);
-   }
+   public void a(fof $$0, IntCollection $$1, fon.b $$2) {
+      IntSortedSet $$3 = new IntRBTreeSet($$1);
 
-   public void a(eva $$0, fct $$1, Runnable $$2, boolean $$3) {
-      if (this.e != null) {
-         foj $$4 = this.e.b();
-         $$0.a(
-            new fbm(
-               $$4x -> {
-                  this.a(null);
-                  if ($$4x) {
-                     $$0.a($$4.a($$1, this));
-                  } else {
-                     $$2.run();
-                  }
-               },
-               vd.c($$3 ? "gui.abuseReport.draft.quittotitle.title" : "gui.abuseReport.draft.title"),
-               vd.c($$3 ? "gui.abuseReport.draft.quittotitle.content" : "gui.abuseReport.draft.content"),
-               vd.c("gui.abuseReport.draft.edit"),
-               vd.c("gui.abuseReport.draft.discard")
-            )
-         );
-      } else {
-         $$2.run();
+      for (int $$4 = $$3.lastInt(); $$4 >= $$0.a() && (this.a() || !$$3.isEmpty()); $$4--) {
+         foh $$6 = $$0.b($$4);
+         if ($$6 instanceof foi.a) {
+            foi.a $$5 = (foi.a)$$6;
+            boolean $$6x = this.b($$5.g());
+            if ($$3.remove($$4)) {
+               this.a($$5.g());
+               $$2.accept($$4, $$5);
+            } else if ($$6x) {
+               $$2.accept($$4, $$5);
+            }
+         }
       }
    }
 
-   public foe a() {
-      return this.b;
+   public void a(vv $$0) {
+      this.b.add(new fon.a($$0));
    }
 
-   public fnz b() {
-      return this.d;
+   public boolean b(vv $$0) {
+      boolean $$1 = false;
+      Iterator<fon.a> $$2 = this.b.iterator();
+
+      while ($$2.hasNext()) {
+         fon.a $$3 = $$2.next();
+         if ($$3.a($$0)) {
+            $$1 = true;
+            if ($$3.a()) {
+               $$2.remove();
+            }
+         }
+      }
+
+      return $$1;
    }
 
-   public boolean a(fok $$0) {
-      return Objects.equals(this.c, $$0);
+   public boolean a() {
+      return !this.b.isEmpty();
    }
 
-   public void a(@Nullable foj $$0) {
-      this.e = $$0;
+   class a {
+      private final Set<vr> b;
+      private vv c;
+      private boolean d = true;
+      private int e;
+
+      a(vv $$0) {
+         this.b = new ObjectOpenHashSet($$0.l().d().a());
+         this.c = $$0;
+      }
+
+      boolean a(vv $$0) {
+         if ($$0.equals(this.c)) {
+            return false;
+         } else {
+            boolean $$1 = this.b.remove($$0.k());
+            if (this.d && this.c.f().equals($$0.f())) {
+               if (this.c.j().a($$0.j())) {
+                  $$1 = true;
+                  this.c = $$0;
+               } else {
+                  this.d = false;
+               }
+            }
+
+            if ($$1) {
+               this.e++;
+            }
+
+            return $$1;
+         }
+      }
+
+      boolean a() {
+         return this.e >= fon.this.a || !this.d && this.b.isEmpty();
+      }
    }
 
-   public boolean c() {
-      return this.e != null;
-   }
-
-   public boolean a(UUID $$0) {
-      return this.c() && this.e.a($$0);
+   public interface b {
+      void accept(int var1, foi.a var2);
    }
 }

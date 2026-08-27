@@ -1,17 +1,28 @@
-public class gbl extends fyw<cdd, fmi<cdd>> {
-   private static final ahd a = new ahd("textures/entity/zombie_villager/zombie_villager.png");
+public class gbl extends fzr<cbh, fml<cbh>> {
+   private static final ahg a = new ahg("textures/entity/wither/wither_invulnerable.png");
+   private static final ahg i = new ahg("textures/entity/wither/wither.png");
 
-   public gbl(fyf.a $$0) {
-      super($$0, new fmi<>($$0.a(fmo.cg)), 0.5F);
-      this.a(new gcg<>(this, new fmi($$0.a(fmo.ch)), new fmi($$0.a(fmo.ci)), $$0.g()));
-      this.a(new gdb<>(this, $$0.e(), "zombie_villager"));
+   public gbl(fyl.a $$0) {
+      super($$0, new fml<>($$0.a(fmu.bS)), 1.0F);
+      this.a(new gdk(this, $$0.f()));
    }
 
-   public ahd a(cdd $$0) {
-      return a;
+   protected int a(cbh $$0, hx $$1) {
+      return 15;
    }
 
-   protected boolean b(cdd $$0) {
-      return super.a($$0) || $$0.go();
+   public ahg a(cbh $$0) {
+      int $$1 = $$0.A();
+      return $$1 > 0 && ($$1 > 80 || $$1 / 5 % 2 != 1) ? a : i;
+   }
+
+   protected void a(cbh $$0, epz $$1, float $$2) {
+      float $$3 = 2.0F;
+      int $$4 = $$0.A();
+      if ($$4 > 0) {
+         $$3 -= ((float)$$4 - $$2) / 220.0F * 0.5F;
+      }
+
+      $$1.b($$3, $$3, $$3);
    }
 }

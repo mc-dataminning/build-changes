@@ -1,44 +1,17 @@
-public class ghh extends ggw {
-   private static final float n = 0.0F;
-   private static final float o = 0.75F;
-   private final cfb p;
-   private final cgt q;
-   private final boolean r;
+public abstract class ghh extends ghg implements ghz {
+   private boolean n;
 
-   public ghh(cfb $$0, cgt $$1, boolean $$2) {
-      super($$2 ? arm.nU : arm.nV, arn.g, ghn.t());
-      this.p = $$0;
-      this.q = $$1;
-      this.r = $$2;
-      this.k = ghn.a.a;
-      this.i = true;
-      this.j = 0;
-      this.d = 0.0F;
+   protected ghh(arq $$0, ars $$1, auu $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   public boolean s() {
-      return !this.q.aU();
+   public boolean m() {
+      return this.n;
    }
 
-   @Override
-   public boolean r() {
-      return true;
-   }
-
-   @Override
-   public void q() {
-      if (this.q.dH() || !this.p.bO() || this.p.cZ() != this.q) {
-         this.n();
-      } else if (this.r != this.p.be()) {
-         this.d = 0.0F;
-      } else {
-         float $$0 = (float)this.q.dp().h();
-         if ($$0 >= 0.01F) {
-            this.d = aui.b(0.0F, 0.75F, $$0);
-         } else {
-            this.d = 0.0F;
-         }
-      }
+   protected final void n() {
+      this.n = true;
+      this.i = false;
    }
 }

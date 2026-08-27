@@ -1,41 +1,54 @@
-import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
-public class adc implements xd<yx> {
-   private final List<cpx<?>> a;
+public class adc implements xf<za> {
+   private final boolean a;
+   private final List<af> b;
+   private final Set<ahg> c;
+   private final Map<ahg, ah> d;
 
-   public adc(Collection<cpx<?>> $$0) {
-      this.a = Lists.newArrayList($$0);
+   public adc(boolean $$0, Collection<af> $$1, Set<ahg> $$2, Map<ahg, ah> $$3) {
+      this.a = $$0;
+      this.b = List.copyOf($$1);
+      this.c = Set.copyOf($$2);
+      this.d = Map.copyOf($$3);
    }
 
-   public adc(ug $$0) {
-      this.a = $$0.a(adc::b);
+   public adc(ui $$0) {
+      this.a = $$0.readBoolean();
+      this.b = $$0.a(af::b);
+      this.c = $$0.a(Sets::newLinkedHashSetWithExpectedSize, ui::t);
+      this.d = $$0.a(ui::t, ah::b);
    }
 
    @Override
-   public void a(ug $$0) {
-      $$0.a(this.a, adc::a);
+   public void a(ui $$0) {
+      $$0.a(this.a);
+      $$0.a(this.b, ($$0x, $$1) -> $$1.a($$0x));
+      $$0.a(this.c, ui::a);
+      $$0.a(this.d, ui::a, ($$0x, $$1) -> $$1.a($$0x));
    }
 
-   public void a(yx $$0) {
+   public void a(za $$0) {
       $$0.a(this);
    }
 
-   public List<cpx<?>> a() {
+   public List<af> a() {
+      return this.b;
+   }
+
+   public Set<ahg> d() {
+      return this.c;
+   }
+
+   public Map<ahg, ah> e() {
+      return this.d;
+   }
+
+   public boolean f() {
       return this.a;
-   }
-
-   private static cpx<?> b(ug $$0) {
-      ahd $$1 = $$0.t();
-      ahd $$2 = $$0.t();
-      cpv<?> $$3 = kd.t.b($$1).orElseThrow(() -> new IllegalArgumentException("Unknown recipe serializer " + $$1)).a($$0);
-      return new cpx<>($$2, $$3);
-   }
-
-   public static <T extends cpv<?>> void a(ug $$0, cpx<?> $$1) {
-      $$0.a(kd.t.b($$1.b().ar_()));
-      $$0.a($$1.a());
-      ((cpz<cpv<?>>)$$1.b().ar_()).a($$0, $$1.b());
    }
 }

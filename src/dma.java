@@ -1,231 +1,390 @@
-import com.google.common.collect.Maps;
-import com.mojang.datafixers.util.Either;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.longs.Long2ObjectLinkedOpenHashMap;
-import java.io.IOException;
-import java.nio.file.Path;
-import java.util.BitSet;
-import java.util.Iterator;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import it.unimi.dsi.fastutil.objects.ObjectSet;
+import java.util.EnumSet;
+import java.util.IdentityHashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import java.util.Map.Entry;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.Set;
 import java.util.function.Function;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class dma implements dlw, AutoCloseable {
-   private static final Logger a = LogUtils.getLogger();
-   private final AtomicBoolean b = new AtomicBoolean();
-   private final bio<biq.b> c;
-   private final dmd d;
-   private final Map<csp, dma.a> e = Maps.newLinkedHashMap();
-   private final Long2ObjectLinkedOpenHashMap<CompletableFuture<BitSet>> f = new Long2ObjectLinkedOpenHashMap();
-   private static final int g = 1024;
+public class dma {
+   private static final Logger b = LogUtils.getLogger();
+   public static final dma a = new dma(ctd.a);
+   private static final String c = "Indices";
+   private static final id[] d = id.values();
+   private final EnumSet<id> e = EnumSet.noneOf(id.class);
+   private final List<eni<cwp>> f = Lists.newArrayList();
+   private final List<eni<eep>> g = Lists.newArrayList();
+   private final int[][] h;
+   static final Map<cwp, dma.a> i = new IdentityHashMap<>();
+   static final Set<dma.a> j = Sets.newHashSet();
 
-   protected dma(Path $$0, boolean $$1, String $$2) {
-      this.d = new dmd($$0, $$1);
-      this.c = new bio<>(new biq.a(dma.b.values().length), ac.g(), "IOWorker-" + $$2);
+   private dma(ctq $$0) {
+      this.h = new int[$$0.am()][];
    }
 
-   public boolean a(csp $$0, int $$1) {
-      csp $$2 = new csp($$0.e - $$1, $$0.f - $$1);
-      csp $$3 = new csp($$0.e + $$1, $$0.f + $$1);
+   public dma(sn $$0, ctq $$1) {
+      this($$1);
+      if ($$0.b("Indices", 10)) {
+         sn $$2 = $$0.p("Indices");
 
-      for (int $$4 = $$2.h(); $$4 <= $$3.h(); $$4++) {
-         for (int $$5 = $$2.i(); $$5 <= $$3.i(); $$5++) {
-            BitSet $$6 = this.a($$4, $$5).join();
-            if (!$$6.isEmpty()) {
-               csp $$7 = csp.a($$4, $$5);
-               int $$8 = Math.max($$2.e - $$7.e, 0);
-               int $$9 = Math.max($$2.f - $$7.f, 0);
-               int $$10 = Math.min($$3.e - $$7.e, 31);
-               int $$11 = Math.min($$3.f - $$7.f, 31);
+         for (int $$3 = 0; $$3 < this.h.length; $$3++) {
+            String $$4 = String.valueOf($$3);
+            if ($$2.b($$4, 11)) {
+               this.h[$$3] = $$2.n($$4);
+            }
+         }
+      }
 
-               for (int $$12 = $$8; $$12 <= $$10; $$12++) {
-                  for (int $$13 = $$9; $$13 <= $$11; $$13++) {
-                     int $$14 = $$13 * 32 + $$12;
-                     if ($$6.get($$14)) {
-                        return true;
+      int $$5 = $$0.h("Sides");
+
+      for (id $$6 : id.values()) {
+         if (($$5 & 1 << $$6.ordinal()) != 0) {
+            this.e.add($$6);
+         }
+      }
+
+      a($$0, "neighbor_block_ticks", $$0x -> kd.e.b(ahg.a($$0x)).or(() -> Optional.of(cwr.a)), this.f);
+      a($$0, "neighbor_fluid_ticks", $$0x -> kd.c.b(ahg.a($$0x)).or(() -> Optional.of(eer.a)), this.g);
+   }
+
+   private static <T> void a(sn $$0, String $$1, Function<String, Optional<T>> $$2, List<eni<T>> $$3) {
+      if ($$0.b($$1, 9)) {
+         for (tk $$5 : $$0.c($$1, 10)) {
+            eni.a((sn)$$5, $$2).ifPresent($$3::add);
+         }
+      }
+   }
+
+   public void a(dln $$0) {
+      this.b($$0);
+
+      for (id $$1 : d) {
+         a($$0, $$1);
+      }
+
+      cto $$2 = $$0.F();
+      this.f.forEach($$1x -> {
+         cwp $$2x = $$1x.a() == cwr.a ? $$2.a_($$1x.b()).b() : (cwp)$$1x.a();
+         $$2.a($$1x.b(), $$2x, $$1x.c(), $$1x.d());
+      });
+      this.g.forEach($$1x -> {
+         eep $$2x = $$1x.a() == eer.a ? $$2.b_($$1x.b()).a() : (eep)$$1x.a();
+         $$2.a($$1x.b(), $$2x, $$1x.c(), $$1x.d());
+      });
+      j.forEach($$1x -> $$1x.a($$2));
+   }
+
+   private static void a(dln $$0, id $$1) {
+      cto $$2 = $$0.F();
+      if ($$0.r().e.remove($$1)) {
+         Set<ic> $$3 = $$1.a();
+         int $$4 = 0;
+         int $$5 = 15;
+         boolean $$6 = $$3.contains(ic.f);
+         boolean $$7 = $$3.contains(ic.e);
+         boolean $$8 = $$3.contains(ic.d);
+         boolean $$9 = $$3.contains(ic.c);
+         boolean $$10 = $$3.size() == 1;
+         csv $$11 = $$0.f();
+         int $$12 = $$11.d() + (!$$10 || !$$9 && !$$8 ? ($$7 ? 0 : 15) : 1);
+         int $$13 = $$11.d() + (!$$10 || !$$9 && !$$8 ? ($$7 ? 0 : 15) : 14);
+         int $$14 = $$11.e() + (!$$10 || !$$6 && !$$7 ? ($$9 ? 0 : 15) : 1);
+         int $$15 = $$11.e() + (!$$10 || !$$6 && !$$7 ? ($$9 ? 0 : 15) : 14);
+         ic[] $$16 = ic.values();
+         hx.a $$17 = new hx.a();
+
+         for (hx $$18 : hx.b($$12, $$2.J_(), $$14, $$13, $$2.al() - 1, $$15)) {
+            djg $$19 = $$2.a_($$18);
+            djg $$20 = $$19;
+
+            for (ic $$21 : $$16) {
+               $$17.a($$18, $$21);
+               $$20 = a($$20, $$21, $$2, $$18, $$17);
+            }
+
+            cwp.a($$19, $$20, $$2, $$18, 18);
+         }
+      }
+   }
+
+   private static djg a(djg $$0, ic $$1, ctp $$2, hx $$3, hx $$4) {
+      return i.getOrDefault($$0.b(), dma.b.b).a($$0, $$1, $$2.a_($$4), $$2, $$3, $$4);
+   }
+
+   private void b(dln $$0) {
+      hx.a $$1 = new hx.a();
+      hx.a $$2 = new hx.a();
+      csv $$3 = $$0.f();
+      ctp $$4 = $$0.F();
+
+      for (int $$5 = 0; $$5 < this.h.length; $$5++) {
+         dlo $$6 = $$0.b($$5);
+         int[] $$7 = this.h[$$5];
+         this.h[$$5] = null;
+         if ($$7 != null && $$7.length > 0) {
+            ic[] $$8 = ic.values();
+            dlv<djg> $$9 = $$6.h();
+            int $$10 = $$0.g($$5);
+            int $$11 = iz.c($$10);
+
+            for (int $$12 : $$7) {
+               int $$13 = $$12 & 15;
+               int $$14 = $$12 >> 8 & 15;
+               int $$15 = $$12 >> 4 & 15;
+               $$1.d($$3.d() + $$13, $$11 + $$14, $$3.e() + $$15);
+               djg $$16 = $$9.a($$12);
+               djg $$17 = $$16;
+
+               for (ic $$18 : $$8) {
+                  $$2.a($$1, $$18);
+                  if (iz.a($$1.u()) == $$3.e && iz.a($$1.w()) == $$3.f) {
+                     $$17 = a($$17, $$18, $$4, $$1, $$2);
+                  }
+               }
+
+               cwp.a($$16, $$17, $$4, $$1, 18);
+            }
+         }
+      }
+
+      for (int $$19 = 0; $$19 < this.h.length; $$19++) {
+         if (this.h[$$19] != null) {
+            b.warn("Discarding update data for section {} for chunk ({} {})", new Object[]{$$4.g($$19), $$3.e, $$3.f});
+         }
+
+         this.h[$$19] = null;
+      }
+   }
+
+   public boolean a() {
+      for (int[] $$0 : this.h) {
+         if ($$0 != null) {
+            return false;
+         }
+      }
+
+      return this.e.isEmpty();
+   }
+
+   public sn b() {
+      sn $$0 = new sn();
+      sn $$1 = new sn();
+
+      for (int $$2 = 0; $$2 < this.h.length; $$2++) {
+         String $$3 = String.valueOf($$2);
+         if (this.h[$$2] != null && this.h[$$2].length != 0) {
+            $$1.a($$3, this.h[$$2]);
+         }
+      }
+
+      if (!$$1.g()) {
+         $$0.a("Indices", $$1);
+      }
+
+      int $$4 = 0;
+
+      for (id $$5 : this.e) {
+         $$4 |= 1 << $$5.ordinal();
+      }
+
+      $$0.a("Sides", (byte)$$4);
+      if (!this.f.isEmpty()) {
+         st $$6 = new st();
+         this.f.forEach($$1x -> $$6.add($$1x.a($$0xx -> kd.e.b($$0xx).toString())));
+         $$0.a("neighbor_block_ticks", $$6);
+      }
+
+      if (!this.g.isEmpty()) {
+         st $$7 = new st();
+         this.g.forEach($$1x -> $$7.add($$1x.a($$0xx -> kd.c.b($$0xx).toString())));
+         $$0.a("neighbor_fluid_ticks", $$7);
+      }
+
+      return $$0;
+   }
+
+   public interface a {
+      djg a(djg var1, ic var2, djg var3, ctp var4, hx var5, hx var6);
+
+      default void a(ctp $$0) {
+      }
+   }
+
+   static enum b implements dma.a {
+      a(
+         cwr.kO,
+         cwr.ed,
+         cwr.lM,
+         cwr.lN,
+         cwr.lO,
+         cwr.lP,
+         cwr.lQ,
+         cwr.lR,
+         cwr.lS,
+         cwr.lT,
+         cwr.lU,
+         cwr.lV,
+         cwr.lW,
+         cwr.lX,
+         cwr.lY,
+         cwr.lZ,
+         cwr.ma,
+         cwr.mb,
+         cwr.gS,
+         cwr.gT,
+         cwr.gU,
+         cwr.fA,
+         cwr.L,
+         cwr.I,
+         cwr.K,
+         cwr.cE,
+         cwr.cF,
+         cwr.cG,
+         cwr.cH,
+         cwr.cI,
+         cwr.cJ,
+         cwr.cK,
+         cwr.cR,
+         cwr.cS,
+         cwr.cT,
+         cwr.cU,
+         cwr.cW,
+         cwr.cX,
+         cwr.da,
+         cwr.db,
+         cwr.dc,
+         cwr.dd,
+         cwr.df,
+         cwr.dg,
+         cwr.dl,
+         cwr.dm,
+         cwr.dn,
+         cwr.do,
+         cwr.dq,
+         cwr.dr
+      ) {
+         @Override
+         public djg a(djg $$0, ic $$1, djg $$2, ctp $$3, hx $$4, hx $$5) {
+            return $$0;
+         }
+      },
+      b {
+         @Override
+         public djg a(djg $$0, ic $$1, djg $$2, ctp $$3, hx $$4, hx $$5) {
+            return $$0.a($$1, $$3.a_($$5), $$3, $$4, $$5);
+         }
+      },
+      c(cwr.cv, cwr.gV) {
+         @Override
+         public djg a(djg $$0, ic $$1, djg $$2, ctp $$3, hx $$4, hx $$5) {
+            if ($$2.a($$0.b()) && $$1.o().d() && $$0.c(cxs.d) == djy.a && $$2.c(cxs.d) == djy.a) {
+               ic $$6 = $$0.c(cxs.c);
+               if ($$1.o() != $$6.o() && $$6 == $$2.c(cxs.c)) {
+                  djy $$7 = $$1 == $$6.h() ? djy.b : djy.c;
+                  $$3.a($$5, $$2.a(cxs.d, $$7.a()), 18);
+                  if ($$6 == ic.c || $$6 == ic.f) {
+                     dgu $$8 = $$3.c_($$4);
+                     dgu $$9 = $$3.c_($$5);
+                     if ($$8 instanceof dhb && $$9 instanceof dhb) {
+                        dhb.a((dhb)$$8, (dhb)$$9);
+                     }
+                  }
+
+                  return $$0.a(cxs.d, $$7);
+               }
+            }
+
+            return $$0;
+         }
+      },
+      d(true, cwr.aI, cwr.aJ, cwr.aG, cwr.aK, cwr.aH, cwr.aE, cwr.aF) {
+         private final ThreadLocal<List<ObjectSet<hx>>> g = ThreadLocal.withInitial(() -> Lists.newArrayListWithCapacity(7));
+
+         @Override
+         public djg a(djg $$0, ic $$1, djg $$2, ctp $$3, hx $$4, hx $$5) {
+            djg $$6 = $$0.a($$1, $$3.a_($$5), $$3, $$4, $$5);
+            if ($$0 != $$6) {
+               int $$7 = $$6.c(djw.aC);
+               List<ObjectSet<hx>> $$8 = this.g.get();
+               if ($$8.isEmpty()) {
+                  for (int $$9 = 0; $$9 < 7; $$9++) {
+                     $$8.add(new ObjectOpenHashSet());
+                  }
+               }
+
+               $$8.get($$7).add($$4.i());
+            }
+
+            return $$0;
+         }
+
+         @Override
+         public void a(ctp $$0) {
+            hx.a $$1 = new hx.a();
+            List<ObjectSet<hx>> $$2 = this.g.get();
+
+            for (int $$3 = 2; $$3 < $$2.size(); $$3++) {
+               int $$4 = $$3 - 1;
+               ObjectSet<hx> $$5 = $$2.get($$4);
+               ObjectSet<hx> $$6 = $$2.get($$3);
+               ObjectIterator var8 = $$5.iterator();
+
+               while (var8.hasNext()) {
+                  hx $$7 = (hx)var8.next();
+                  djg $$8 = $$0.a_($$7);
+                  if ($$8.c(djw.aC) >= $$4) {
+                     $$0.a($$7, $$8.a(djw.aC, Integer.valueOf($$4)), 18);
+                     if ($$3 != 7) {
+                        for (ic $$9 : f) {
+                           $$1.a($$7, $$9);
+                           djg $$10 = $$0.a_($$1);
+                           if ($$10.b(djw.aC) && $$8.c(djw.aC) > $$3) {
+                              $$6.add($$1.i());
+                           }
+                        }
                      }
                   }
                }
             }
+
+            $$2.clear();
          }
-      }
-
-      return false;
-   }
-
-   private CompletableFuture<BitSet> a(int $$0, int $$1) {
-      long $$2 = csp.c($$0, $$1);
-      synchronized (this.f) {
-         CompletableFuture<BitSet> $$3 = (CompletableFuture<BitSet>)this.f.getAndMoveToFirst($$2);
-         if ($$3 == null) {
-            $$3 = this.b($$0, $$1);
-            this.f.putAndMoveToFirst($$2, $$3);
-            if (this.f.size() > 1024) {
-               this.f.removeLast();
-            }
-         }
-
-         return $$3;
-      }
-   }
-
-   private CompletableFuture<BitSet> b(int $$0, int $$1) {
-      return CompletableFuture.supplyAsync(() -> {
-         csp $$2 = csp.a($$0, $$1);
-         csp $$3 = csp.b($$0, $$1);
-         BitSet $$4 = new BitSet();
-         csp.a($$2, $$3).forEach($$1xx -> {
-            tp $$2x = new tp(new tr(sq.a, "DataVersion"), new tr(sl.b, "blending_data"));
-
-            try {
-               this.a($$1xx, $$2x).join();
-            } catch (Exception var7) {
-               a.warn("Failed to scan chunk {}", $$1xx, var7);
-               return;
-            }
-
-            if ($$2x.d() instanceof sl $$5 && this.a($$5)) {
-               int $$6 = $$1xx.k() * 32 + $$1xx.j();
-               $$4.set($$6);
-            }
-         });
-         return $$4;
-      }, ac.f());
-   }
-
-   private boolean a(sl $$0) {
-      return $$0.b("DataVersion", 99) && $$0.h("DataVersion") >= 3441 ? $$0.b("blending_data", 10) : true;
-   }
-
-   public CompletableFuture<Void> a(csp $$0, @Nullable sl $$1) {
-      return this.a(() -> {
-         dma.a $$2 = this.e.computeIfAbsent($$0, $$1xx -> new dma.a($$1));
-         $$2.a = $$1;
-         return Either.left($$2.b);
-      }).thenCompose(Function.identity());
-   }
-
-   public CompletableFuture<Optional<sl>> a(csp $$0) {
-      return this.a(() -> {
-         dma.a $$1 = this.e.get($$0);
-         if ($$1 != null) {
-            return Either.left(Optional.ofNullable($$1.a));
-         } else {
-            try {
-               sl $$2 = this.d.a($$0);
-               return Either.left(Optional.ofNullable($$2));
-            } catch (Exception var4) {
-               a.warn("Failed to read chunk {}", $$0, var4);
-               return Either.right(var4);
-            }
-         }
-      });
-   }
-
-   public CompletableFuture<Void> a(boolean $$0) {
-      CompletableFuture<Void> $$1 = this.a(
-            () -> Either.left(CompletableFuture.allOf(this.e.values().stream().map($$0x -> $$0x.b).toArray(CompletableFuture[]::new)))
-         )
-         .thenCompose(Function.identity());
-      return $$0 ? $$1.thenCompose($$0x -> this.a(() -> {
-            try {
-               this.d.a();
-               return Either.left(null);
-            } catch (Exception var2x) {
-               a.warn("Failed to synchronize chunks", var2x);
-               return Either.right(var2x);
-            }
-         })) : $$1.thenCompose($$0x -> this.a(() -> Either.left(null)));
-   }
-
-   @Override
-   public CompletableFuture<Void> a(csp $$0, tf $$1) {
-      return this.a(() -> {
-         try {
-            dma.a $$2 = this.e.get($$0);
-            if ($$2 != null) {
-               if ($$2.a != null) {
-                  $$2.a.b($$1);
+      },
+      e(cwr.fe, cwr.fd) {
+         @Override
+         public djg a(djg $$0, ic $$1, djg $$2, ctp $$3, hx $$4, hx $$5) {
+            if ($$0.c(dek.c) == 7) {
+               cwp $$6 = $$0.a(cwr.fd) ? cwr.eZ : cwr.fa;
+               if ($$2.a($$6)) {
+                  return ($$0.a(cwr.fd) ? cwr.fb : cwr.fc).o().a(dak.aE, $$1);
                }
-            } else {
-               this.d.a($$0, $$1);
             }
 
-            return Either.left(null);
-         } catch (Exception var4) {
-            a.warn("Failed to bulk scan chunk {}", $$0, var4);
-            return Either.right(var4);
+            return $$0;
          }
-      });
-   }
+      };
 
-   private <T> CompletableFuture<T> a(Supplier<Either<T, Exception>> $$0) {
-      return this.c.c($$1 -> new biq.b(dma.b.a.ordinal(), () -> {
-            if (!this.b.get()) {
-               $$1.a($$0.get());
-            }
+      public static final ic[] f = ic.values();
 
-            this.b();
-         }));
-   }
-
-   private void a() {
-      if (!this.e.isEmpty()) {
-         Iterator<Entry<csp, dma.a>> $$0 = this.e.entrySet().iterator();
-         Entry<csp, dma.a> $$1 = $$0.next();
-         $$0.remove();
-         this.a($$1.getKey(), $$1.getValue());
-         this.b();
+      b(cwp... $$0) {
+         this(false, $$0);
       }
-   }
 
-   private void b() {
-      this.c.a(new biq.b(dma.b.b.ordinal(), this::a));
-   }
+      b(boolean $$0, cwp... $$1) {
+         for (cwp $$2 : $$1) {
+            dma.i.put($$2, this);
+         }
 
-   private void a(csp $$0, dma.a $$1) {
-      try {
-         this.d.a($$0, $$1.a);
-         $$1.b.complete(null);
-      } catch (Exception var4) {
-         a.error("Failed to store chunk {}", $$0, var4);
-         $$1.b.completeExceptionally(var4);
-      }
-   }
-
-   @Override
-   public void close() throws IOException {
-      if (this.b.compareAndSet(false, true)) {
-         this.c.b($$0 -> new biq.b(dma.b.c.ordinal(), () -> $$0.a(avm.a))).join();
-         this.c.close();
-
-         try {
-            this.d.close();
-         } catch (Exception var2) {
-            a.error("Failed to close storage", var2);
+         if ($$0) {
+            dma.j.add(this);
          }
       }
-   }
-
-   static class a {
-      @Nullable
-      sl a;
-      final CompletableFuture<Void> b = new CompletableFuture<>();
-
-      public a(@Nullable sl $$0) {
-         this.a = $$0;
-      }
-   }
-
-   static enum b {
-      a,
-      b,
-      c;
    }
 }

@@ -1,137 +1,61 @@
-import java.util.Optional;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class cev implements csv {
-   private static final int b = 1200;
-   public static final int a = 24000;
-   private static final int c = 25;
-   private static final int d = 75;
-   private static final int e = 25;
-   private static final int f = 10;
-   private static final int g = 10;
-   private final aup h = aup.a();
-   private final egk i;
-   private int j;
-   private int k;
-   private int l;
+public class cev {
+   public static final int a = 1;
+   public static final int b = 5;
+   private static final int[] d = new int[]{0, 10, 70, 150, 250};
+   public static final Codec<cev> c = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               kd.y.q().fieldOf("type").orElseGet(() -> cez.c).forGetter($$0x -> $$0x.e),
+               kd.z.q().fieldOf("profession").orElseGet(() -> cex.b).forGetter($$0x -> $$0x.f),
+               Codec.INT.fieldOf("level").orElse(1).forGetter($$0x -> $$0x.g)
+            )
+            .apply($$0, cev::new)
+   );
+   private final cez e;
+   private final cex f;
+   private final int g;
 
-   public cev(egk $$0) {
-      this.i = $$0;
-      this.j = 1200;
-      this.k = $$0.v();
-      this.l = $$0.w();
-      if (this.k == 0 && this.l == 0) {
-         this.k = 24000;
-         $$0.g(this.k);
-         this.l = 25;
-         $$0.h(this.l);
-      }
+   public cev(cez $$0, cex $$1, int $$2) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = Math.max(1, $$2);
    }
 
-   @Override
-   public int a(amz $$0, boolean $$1, boolean $$2) {
-      if (!$$0.Z().b(cte.L)) {
-         return 0;
-      } else if (--this.j > 0) {
-         return 0;
-      } else {
-         this.j = 1200;
-         this.k -= 1200;
-         this.i.g(this.k);
-         if (this.k > 0) {
-            return 0;
-         } else {
-            this.k = 24000;
-            if (!$$0.Z().b(cte.e)) {
-               return 0;
-            } else {
-               int $$3 = this.l;
-               this.l = aui.a(this.l + 25, 25, 75);
-               this.i.h(this.l);
-               if (this.h.a(100) > $$3) {
-                  return 0;
-               } else if (this.a($$0)) {
-                  this.l = 25;
-                  return 1;
-               } else {
-                  return 0;
-               }
-            }
-         }
-      }
+   public cez a() {
+      return this.e;
    }
 
-   private boolean a(amz $$0) {
-      cfb $$1 = $$0.j();
-      if ($$1 == null) {
-         return true;
-      } else if (this.h.a(10) != 0) {
-         return false;
-      } else {
-         hx $$2 = $$1.dm();
-         int $$3 = 48;
-         bxg $$4 = $$0.y();
-         Optional<hx> $$5 = $$4.d($$0x -> $$0x.a(bxk.o), $$0x -> true, $$2, 48, bxg.b.c);
-         hx $$6 = $$5.orElse($$2);
-         hx $$7 = this.a($$0, $$6, 48);
-         if ($$7 != null && this.a($$0, $$7)) {
-            if ($$0.t($$7).a(asa.ah)) {
-               return false;
-            }
-
-            ceu $$8 = blt.bi.a($$0, $$7, bmj.h);
-            if ($$8 != null) {
-               for (int $$9 = 0; $$9 < 2; $$9++) {
-                  this.a($$0, $$8, 4);
-               }
-
-               this.i.a($$8.cw());
-               $$8.u(48000);
-               $$8.i($$6);
-               $$8.a($$6, 16);
-               return true;
-            }
-         }
-
-         return false;
-      }
+   public cex b() {
+      return this.f;
    }
 
-   private void a(amz $$0, ceu $$1, int $$2) {
-      hx $$3 = this.a($$0, $$1.dm(), $$2);
-      if ($$3 != null) {
-         bzz $$4 = blt.bb.a($$0, $$3, bmj.h);
-         if ($$4 != null) {
-            $$4.b($$1, true);
-         }
-      }
+   public int c() {
+      return this.g;
    }
 
-   @Nullable
-   private hx a(ctl $$0, hx $$1, int $$2) {
-      hx $$3 = null;
-
-      for (int $$4 = 0; $$4 < 10; $$4++) {
-         int $$5 = $$1.u() + this.h.a($$2 * 2) - $$2;
-         int $$6 = $$1.w() + this.h.a($$2 * 2) - $$2;
-         int $$7 = $$0.a(doj.a.b, $$5, $$6);
-         hx $$8 = new hx($$5, $$7, $$6);
-         if (ctt.a(bmz.c.a, $$0, $$8, blt.bi)) {
-            $$3 = $$8;
-            break;
-         }
-      }
-
-      return $$3;
+   public cev a(cez $$0) {
+      return new cev($$0, this.f, this.g);
    }
 
-   private boolean a(cso $$0, hx $$1) {
-      for (hx $$2 : hx.a($$1, $$1.b(1, 2, 1))) {
-         if (!$$0.a_($$2).k($$0, $$2).c()) {
-            return false;
-         }
-      }
+   public cev a(cex $$0) {
+      return new cev(this.e, $$0, this.g);
+   }
 
-      return true;
+   public cev a(int $$0) {
+      return new cev(this.e, this.f, $$0);
+   }
+
+   public static int b(int $$0) {
+      return d($$0) ? d[$$0 - 1] : 0;
+   }
+
+   public static int c(int $$0) {
+      return d($$0) ? d[$$0] : 0;
+   }
+
+   public static boolean d(int $$0) {
+      return $$0 >= 1 && $$0 < 5;
    }
 }

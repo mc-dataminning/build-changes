@@ -1,17 +1,13 @@
-public class fns {
-   private final fnl a;
-   private final aur b;
+import java.util.List;
 
-   public fns(fnl $$0, aur $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
+public enum fns {
+   a,
+   b;
 
-   public void a() {
-      this.a.b(new agg(ac.b()));
-   }
+   private static final List<fns> c = List.of(values());
+   private static final iu.b d = iu.a(kd.as);
 
-   public void a(agc $$0) {
-      this.b.a(ac.b() - $$0.a());
+   public static io<fns> a() {
+      return new io<>(c).a(a, d);
    }
 }

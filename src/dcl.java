@@ -1,49 +1,43 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dcl extends cwj {
-   public static final MapCodec<dcl> a = b(dcl::new);
-   public static final djr b = dcm.d;
+public class dcl extends cwd {
+   public static final MapCodec<dcl> e = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(djv.a.fieldOf("block_set_type").forGetter($$0x -> $$0x.d), u()).apply($$0, dcl::new)
+   );
+   public static final djx f = djw.w;
 
    @Override
    public MapCodec<dcl> a() {
-      return a;
+      return e;
    }
 
-   public dcl(diz.d $$0) {
-      super($$0);
-      this.k(this.o().a(b, Boolean.valueOf(false)));
-   }
-
-   @Nullable
-   @Override
-   public dja a(cpa $$0) {
-      return this.o().a(b, Boolean.valueOf($$0.q().C($$0.a())));
+   protected dcl(djv $$0, djf.d $$1) {
+      super($$1, $$0);
+      this.k(this.E.b().a(f, Boolean.valueOf(false)));
    }
 
    @Override
-   public void a(dja $$0, cti $$1, hx $$2, cwj $$3, hx $$4, boolean $$5) {
-      if (!$$1.B) {
-         boolean $$6 = $$0.c(b);
-         if ($$6 != $$1.C($$2)) {
-            if ($$6) {
-               $$1.a($$2, this, 4);
-            } else {
-               $$1.a($$2, $$0.a(b), 2);
-            }
-         }
-      }
+   protected int g(djg $$0) {
+      return $$0.c(f) ? 15 : 0;
    }
 
    @Override
-   public void a(dja $$0, amz $$1, hx $$2, aup $$3) {
-      if ($$0.c(b) && !$$1.C($$2)) {
-         $$1.a($$2, $$0.a(b), 2);
-      }
+   protected djg a(djg $$0, int $$1) {
+      return $$0.a(f, Boolean.valueOf($$1 > 0));
    }
 
    @Override
-   protected void a(djb.a<cwj, dja> $$0) {
-      $$0.a(b);
+   protected int b(cto $$0, hx $$1) {
+      Class<? extends blu> $$2 = switch (this.d.f()) {
+         case a -> blu.class;
+         case b -> bmk.class;
+      };
+      return a($$0, c.a($$1), $$2) > 0 ? 15 : 0;
+   }
+
+   @Override
+   protected void a(djh.a<cwp, djg> $$0) {
+      $$0.a(f);
    }
 }

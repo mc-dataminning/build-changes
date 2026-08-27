@@ -1,32 +1,36 @@
-public class zj implements xd<yx> {
-   private final bjs a;
-   private final boolean b;
+public class zj implements xf<za> {
+   private final hx a;
+   private final djg b;
 
-   public zj(bjs $$0, boolean $$1) {
+   public zj(hx $$0, djg $$1) {
       this.a = $$0;
       this.b = $$1;
    }
 
-   public zj(ug $$0) {
-      this.a = bjs.a($$0.readUnsignedByte());
-      this.b = $$0.readBoolean();
+   public zj(csu $$0, hx $$1) {
+      this($$1, $$0.a_($$1));
+   }
+
+   public zj(ui $$0) {
+      this.a = $$0.e();
+      this.b = $$0.a(cwp.q);
    }
 
    @Override
-   public void a(ug $$0) {
-      $$0.k(this.a.a());
-      $$0.a(this.b);
+   public void a(ui $$0) {
+      $$0.a(this.a);
+      $$0.a(cwp.q, this.b);
    }
 
-   public void a(yx $$0) {
+   public void a(za $$0) {
       $$0.a(this);
    }
 
-   public boolean a() {
+   public djg a() {
       return this.b;
    }
 
-   public bjs d() {
+   public hx d() {
       return this.a;
    }
 }

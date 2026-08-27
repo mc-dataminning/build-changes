@@ -1,114 +1,81 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.lang.ref.WeakReference;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class cqc implements cpm {
-   final cqd a;
-   final cmr b;
-   final String c;
-   final cpl d;
-   final boolean e;
+public class cqc {
+   private final cqc.a[] a;
+   private WeakReference<cqe> b = new WeakReference<>(null);
 
-   public cqc(String $$0, cpl $$1, cqd $$2, cmr $$3, boolean $$4) {
-      this.c = $$0;
-      this.d = $$1;
-      this.a = $$2;
-      this.b = $$3;
-      this.e = $$4;
+   public cqc(int $$0) {
+      this.a = new cqc.a[$$0];
    }
 
-   public cqc(String $$0, cpl $$1, cqd $$2, cmr $$3) {
-      this($$0, $$1, $$2, $$3, true);
+   public Optional<cps> a(cto $$0, ciq $$1) {
+      if ($$1.ai_()) {
+         return Optional.empty();
+      } else {
+         this.a($$0);
+
+         for (int $$2 = 0; $$2 < this.a.length; $$2++) {
+            cqc.a $$3 = this.a[$$2];
+            if ($$3 != null && $$3.a($$1.h())) {
+               this.a($$2);
+               return Optional.ofNullable($$3.b());
+            }
+         }
+
+         return this.a($$1, $$0);
+      }
    }
 
-   @Override
-   public cpz<?> ar_() {
-      return cpz.a;
+   private void a(cto $$0) {
+      cqe $$1 = $$0.r();
+      if ($$1 != this.b.get()) {
+         this.b = new WeakReference<>($$1);
+         Arrays.fill(this.a, null);
+      }
    }
 
-   @Override
-   public String c() {
-      return this.c;
+   private Optional<cps> a(ciq $$0, cto $$1) {
+      Optional<cqd<cps>> $$2 = $$1.r().a(cqg.a, $$0, $$1);
+      this.a($$0.h(), $$2.map(cqd::b).orElse(null));
+      return $$2.map(cqd::b);
    }
 
-   @Override
-   public cpl d() {
-      return this.d;
+   private void a(int $$0) {
+      if ($$0 > 0) {
+         cqc.a $$1 = this.a[$$0];
+         System.arraycopy(this.a, 0, this.a, 1, $$0);
+         this.a[0] = $$1;
+      }
    }
 
-   @Override
-   public cmr a(iu $$0) {
-      return this.b;
-   }
+   private void a(List<cmx> $$0, @Nullable cps $$1) {
+      iq<cmx> $$2 = iq.a($$0.size(), cmx.f);
 
-   @Override
-   public iq<cps> a() {
-      return this.a.c();
-   }
-
-   @Override
-   public boolean h() {
-      return this.e;
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 >= this.a.a() && $$1 >= this.a.b();
-   }
-
-   public boolean a(cik $$0, cti $$1) {
-      return this.a.a($$0);
-   }
-
-   public cmr a(cik $$0, iu $$1) {
-      return this.a($$1).p();
-   }
-
-   public int j() {
-      return this.a.a();
-   }
-
-   public int k() {
-      return this.a.b();
-   }
-
-   @Override
-   public boolean i() {
-      iq<cps> $$0 = this.a();
-      return $$0.isEmpty() || $$0.stream().filter($$0x -> !$$0x.c()).anyMatch($$0x -> $$0x.a().length == 0);
-   }
-
-   public static class a implements cpz<cqc> {
-      public static final Codec<cqc> x = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  atq.a(Codec.STRING, "group", "").forGetter($$0x -> $$0x.c),
-                  cpl.e.fieldOf("category").orElse(cpl.d).forGetter($$0x -> $$0x.d),
-                  cqd.a.forGetter($$0x -> $$0x.a),
-                  cmr.c.fieldOf("result").forGetter($$0x -> $$0x.b),
-                  atq.a(Codec.BOOL, "show_notification", true).forGetter($$0x -> $$0x.e)
-               )
-               .apply($$0, cqc::new)
-      );
-
-      @Override
-      public Codec<cqc> a() {
-         return x;
+      for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
+         $$2.set($$3, $$0.get($$3).c(1));
       }
 
-      public cqc b(ug $$0) {
-         String $$1 = $$0.s();
-         cpl $$2 = $$0.b(cpl.class);
-         cqd $$3 = cqd.b($$0);
-         cmr $$4 = $$0.r();
-         boolean $$5 = $$0.readBoolean();
-         return new cqc($$1, $$2, $$3, $$4, $$5);
-      }
+      System.arraycopy(this.a, 0, this.a, 1, this.a.length - 1);
+      this.a[0] = new cqc.a($$2, $$1);
+   }
 
-      public void a(ug $$0, cqc $$1) {
-         $$0.a($$1.c);
-         $$0.a($$1.d);
-         $$1.a.a($$0);
-         $$0.a($$1.b);
-         $$0.a($$1.e);
+   static record a(iq<cmx> a, @Nullable cps b) {
+      public boolean a(List<cmx> $$0) {
+         if (this.a.size() != $$0.size()) {
+            return false;
+         } else {
+            for (int $$1 = 0; $$1 < this.a.size(); $$1++) {
+               if (!cmx.c(this.a.get($$1), $$0.get($$1))) {
+                  return false;
+               }
+            }
+
+            return true;
+         }
       }
    }
 }

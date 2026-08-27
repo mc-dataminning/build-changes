@@ -1,69 +1,36 @@
-import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.BiConsumer;
 
-public class dwn extends dwv {
-   public static final Codec<dwn> a = RecordCodecBuilder.create(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  atq.j.optionalFieldOf("min_height_for_leaves", 1).forGetter($$0x -> $$0x.b), bja.b(1, 64).fieldOf("bend_length").forGetter($$0x -> $$0x.h)
-               )
-            )
-            .apply($$0, dwn::new)
-   );
-   private final int b;
-   private final bja h;
+public class dwn extends dwp {
+   public static final Codec<dwn> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(dwn::new, $$0 -> $$0.b).codec();
+   private final float b;
 
-   public dwn(int $$0, int $$1, int $$2, int $$3, bja $$4) {
-      super($$0, $$1, $$2);
-      this.b = $$3;
-      this.h = $$4;
+   public dwn(float $$0) {
+      this.b = $$0;
    }
 
    @Override
-   protected dww<?> a() {
-      return dww.g;
+   protected dwq<?> a() {
+      return dwq.c;
    }
 
    @Override
-   public List<dvd.a> a(cto $$0, BiConsumer<hx, dja> $$1, aup $$2, int $$3, hx $$4, dun $$5) {
-      ic $$6 = ic.c.a.a($$2);
-      int $$7 = $$3 - 1;
-      hx.a $$8 = $$4.j();
-      hx $$9 = $$8.d();
-      a($$0, $$1, $$2, $$9, $$5);
-      List<dvd.a> $$10 = Lists.newArrayList();
-
-      for (int $$11 = 0; $$11 <= $$7; $$11++) {
-         if ($$11 + 1 >= $$7 + $$2.a(2)) {
-            $$8.c($$6);
-         }
-
-         if (dsz.c($$0, $$8)) {
-            this.b($$0, $$1, $$2, $$8, $$5);
-         }
-
-         if ($$11 >= this.b) {
-            $$10.add(new dvd.a($$8.i(), 0, false));
-         }
-
-         $$8.c(ic.b);
+   public void a(dwp.a $$0) {
+      auu $$1 = $$0.b();
+      if (!($$1.i() >= this.b)) {
+         List<hx> $$2 = $$0.c();
+         int $$3 = $$2.get(0).v();
+         $$2.stream().filter($$1x -> $$1x.v() - $$3 <= 2).forEach($$2x -> {
+            for (ic $$3x : ic.c.a) {
+               if ($$1.i() <= 0.25F) {
+                  ic $$4 = $$3x.g();
+                  hx $$5 = $$2x.b($$4.j(), 0, $$4.l());
+                  if ($$0.a($$5)) {
+                     $$0.a($$5, cwr.fC.o().a(cxw.c, Integer.valueOf($$1.a(3))).a(cxw.aE, $$3x));
+                  }
+               }
+            }
+         });
       }
-
-      int $$12 = this.h.a($$2);
-
-      for (int $$13 = 0; $$13 <= $$12; $$13++) {
-         if (dsz.c($$0, $$8)) {
-            this.b($$0, $$1, $$2, $$8, $$5);
-         }
-
-         $$10.add(new dvd.a($$8.i(), 0, false));
-         $$8.c($$6);
-      }
-
-      return $$10;
    }
 }

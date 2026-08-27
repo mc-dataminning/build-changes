@@ -1,114 +1,50 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.stream.Stream;
 
-public class cqn implements cql {
-   final cps a;
-   final cps b;
-   final cps c;
+public class cqn<T extends cpk> implements cqf<T> {
+   private final cpk.a<T> x;
+   private final Codec<T> y;
 
-   public cqn(cps $$0, cps $$1, cps $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-   }
-
-   @Override
-   public boolean a(bjo $$0, cti $$1) {
-      return this.a.a($$0.a(0)) && this.b.a($$0.a(1)) && this.c.a($$0.a(2));
-   }
-
-   @Override
-   public cmr a(bjo $$0, iu $$1) {
-      cmr $$2 = $$0.a(1);
-      if (this.b.a($$2)) {
-         Optional<ih.c<cov>> $$3 = cow.a($$1, $$0.a(2));
-         Optional<ih.c<cox>> $$4 = coy.a($$1, $$0.a(0));
-         if ($$3.isPresent() && $$4.isPresent()) {
-            Optional<cou> $$5 = cou.a($$1, $$2, false);
-            if ($$5.isPresent() && $$5.get().a($$4.get(), $$3.get())) {
-               return cmr.f;
-            }
-
-            cmr $$6 = $$2.p();
-            $$6.f(1);
-            cou $$7 = new cou($$3.get(), $$4.get());
-            if (cou.a($$1, $$6, $$7)) {
-               return $$6;
-            }
-         }
-      }
-
-      return cmr.f;
-   }
-
-   @Override
-   public cmr a(iu $$0) {
-      cmr $$1 = new cmr(cmu.pE);
-      Optional<ih.c<cox>> $$2 = $$0.d(ke.aJ).h().findFirst();
-      if ($$2.isPresent()) {
-         Optional<ih.c<cov>> $$3 = $$0.d(ke.aI).b(cow.d);
-         if ($$3.isPresent()) {
-            cou $$4 = new cou($$3.get(), $$2.get());
-            cou.a($$0, $$1, $$4);
-         }
-      }
-
-      return $$1;
-   }
-
-   @Override
-   public boolean a(cmr $$0) {
-      return this.a.a($$0);
-   }
-
-   @Override
-   public boolean b(cmr $$0) {
-      return this.b.a($$0);
-   }
-
-   @Override
-   public boolean c(cmr $$0) {
-      return this.c.a($$0);
-   }
-
-   @Override
-   public cpz<?> ar_() {
-      return cpz.v;
-   }
-
-   @Override
-   public boolean i() {
-      return Stream.of(this.a, this.b, this.c).anyMatch(cps::c);
-   }
-
-   public static class a implements cpz<cqn> {
-      private static final Codec<cqn> x = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  cps.b.fieldOf("template").forGetter($$0x -> $$0x.a),
-                  cps.b.fieldOf("base").forGetter($$0x -> $$0x.b),
-                  cps.b.fieldOf("addition").forGetter($$0x -> $$0x.c)
+   public cqn(cpk.a<T> $$0, int $$1) {
+      this.x = $$0;
+      this.y = RecordCodecBuilder.create(
+         $$2 -> $$2.group(
+                  atv.a(Codec.STRING, "group", "").forGetter($$0xx -> $$0xx.c),
+                  cpq.d.fieldOf("category").orElse(cpq.c).forGetter($$0xx -> $$0xx.b),
+                  cpy.c.fieldOf("ingredient").forGetter($$0xx -> $$0xx.d),
+                  kd.h.q().xmap(cmx::new, cmx::d).fieldOf("result").forGetter($$0xx -> $$0xx.e),
+                  Codec.FLOAT.fieldOf("experience").orElse(0.0F).forGetter($$0xx -> $$0xx.f),
+                  Codec.INT.fieldOf("cookingtime").orElse($$1).forGetter($$0xx -> $$0xx.g)
                )
-               .apply($$0, cqn::new)
+               .apply($$2, $$0::create)
       );
+   }
 
-      @Override
-      public Codec<cqn> a() {
-         return x;
-      }
+   @Override
+   public Codec<T> a() {
+      return this.y;
+   }
 
-      public cqn b(ug $$0) {
-         cps $$1 = cps.b($$0);
-         cps $$2 = cps.b($$0);
-         cps $$3 = cps.b($$0);
-         return new cqn($$1, $$2, $$3);
-      }
+   public T b(ui $$0) {
+      String $$1 = $$0.s();
+      cpq $$2 = $$0.b(cpq.class);
+      cpy $$3 = cpy.b($$0);
+      cmx $$4 = $$0.r();
+      float $$5 = $$0.readFloat();
+      int $$6 = $$0.n();
+      return this.x.create($$1, $$2, $$3, $$4, $$5, $$6);
+   }
 
-      public void a(ug $$0, cqn $$1) {
-         $$1.a.a($$0);
-         $$1.b.a($$0);
-         $$1.c.a($$0);
-      }
+   public void a(ui $$0, T $$1) {
+      $$0.a($$1.c);
+      $$0.a($$1.f());
+      $$1.d.a($$0);
+      $$0.a($$1.e);
+      $$0.a($$1.f);
+      $$0.c($$1.g);
+   }
+
+   public cpk a(String $$0, cpq $$1, cpy $$2, cmx $$3, float $$4, int $$5) {
+      return this.x.create($$0, $$1, $$2, $$3, $$4, $$5);
    }
 }

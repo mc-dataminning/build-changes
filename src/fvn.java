@@ -1,176 +1,118 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.List;
-import java.util.Map;
+import java.util.EnumSet;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-public class fvn implements fuz<dhx> {
-   private static final String a = "stick";
-   private static final int b = -988212;
-   private static final int c = aui.h(16);
-   private static final float d = 0.6666667F;
-   private static final elm e = new elm(0.0, 0.33333334F, 0.046666667F);
-   private final Map<dkn, fvn.a> f;
-   private final ewk g;
+public class fvn implements fvf<dhk> {
+   private static final String a = "neck";
+   private static final String b = "front";
+   private static final String c = "back";
+   private static final String d = "left";
+   private static final String e = "right";
+   private static final String f = "top";
+   private static final String g = "bottom";
+   private final fmv h;
+   private final fmv i;
+   private final fmv j;
+   private final fmv k;
+   private final fmv l;
+   private final fmv m;
+   private final fmv n;
+   private final ggo o = Objects.requireNonNull(ftu.c(dhl.a));
+   private static final float p = 0.125F;
 
-   public fvn(fva.a $$0) {
-      this.f = dkn.a().collect(ImmutableMap.toImmutableMap($$0x -> $$0x, $$1 -> new fvn.a($$0.a(fmo.a($$1)))));
-      this.g = $$0.f();
+   public fvn(fvg.a $$0) {
+      fmv $$1 = $$0.a(fmu.H);
+      this.h = $$1.b("neck");
+      this.m = $$1.b("top");
+      this.n = $$1.b("bottom");
+      fmv $$2 = $$0.a(fmu.I);
+      this.i = $$2.b("front");
+      this.j = $$2.b("back");
+      this.k = $$2.b("left");
+      this.l = $$2.b("right");
    }
 
-   public void a(dhx $$0, float $$1, ept $$2, fsz $$3, int $$4, int $$5) {
-      dja $$6 = $$0.r();
-      ddi $$7 = (ddi)$$6.b();
-      dkn $$8 = ddi.a($$7);
-      fvn.a $$9 = this.f.get($$8);
-      $$9.b.k = $$6.b() instanceof ded;
-      this.a($$0, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
+   public static fnb b() {
+      fnd $$0 = new fnd();
+      fne $$1 = $$0.a();
+      fmz $$2 = new fmz(0.2F);
+      fmz $$3 = new fmz(-0.1F);
+      $$1.a(
+         "neck",
+         fna.c().a(0, 0).a(4.0F, 17.0F, 4.0F, 8.0F, 3.0F, 8.0F, $$3).a(0, 5).a(5.0F, 20.0F, 5.0F, 6.0F, 1.0F, 6.0F, $$2),
+         fmx.a(0.0F, 37.0F, 16.0F, (float) Math.PI, 0.0F, 0.0F)
+      );
+      fna $$4 = fna.c().a(-14, 13).a(0.0F, 0.0F, 0.0F, 14.0F, 0.0F, 14.0F);
+      $$1.a("top", $$4, fmx.a(1.0F, 16.0F, 1.0F, 0.0F, 0.0F, 0.0F));
+      $$1.a("bottom", $$4, fmx.a(1.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F));
+      return fnb.a($$0, 32, 32);
    }
 
-   public float b() {
-      return 0.6666667F;
+   public static fnb c() {
+      fnd $$0 = new fnd();
+      fne $$1 = $$0.a();
+      fna $$2 = fna.c().a(1, 0).a(0.0F, 0.0F, 0.0F, 14.0F, 16.0F, 0.0F, EnumSet.of(ic.c));
+      $$1.a("back", $$2, fmx.a(15.0F, 16.0F, 1.0F, 0.0F, 0.0F, (float) Math.PI));
+      $$1.a("left", $$2, fmx.a(1.0F, 16.0F, 1.0F, 0.0F, (float) (-Math.PI / 2), (float) Math.PI));
+      $$1.a("right", $$2, fmx.a(15.0F, 16.0F, 15.0F, 0.0F, (float) (Math.PI / 2), (float) Math.PI));
+      $$1.a("front", $$2, fmx.a(1.0F, 16.0F, 15.0F, (float) Math.PI, 0.0F, 0.0F));
+      return fnb.a($$0, 16, 16);
    }
 
-   public float c() {
-      return 0.6666667F;
-   }
-
-   void a(dhx $$0, ept $$1, fsz $$2, int $$3, int $$4, dja $$5, ddi $$6, dkn $$7, fkl $$8) {
-      $$1.a();
-      this.a($$1, -$$6.g($$5), $$5);
-      this.a($$1, $$2, $$3, $$4, $$7, $$8);
-      this.a($$0.aB_(), $$0.k(), $$1, $$2, $$3, $$0.c(), $$0.d(), true);
-      this.a($$0.aB_(), $$0.l(), $$1, $$2, $$3, $$0.c(), $$0.d(), false);
-      $$1.b();
-   }
-
-   void a(ept $$0, float $$1, dja $$2) {
-      $$0.a(0.5F, 0.75F * this.b(), 0.5F);
-      $$0.a(a.d.rotationDegrees($$1));
-      if (!($$2.b() instanceof ded)) {
-         $$0.a(0.0F, -0.3125F, -0.4375F);
+   @Nullable
+   private static ggo a(cms $$0) {
+      ggo $$1 = ftu.c(dhl.a($$0));
+      if ($$1 == null) {
+         $$1 = ftu.c(dhl.a(cna.qI));
       }
+
+      return $$1;
    }
 
-   void a(ept $$0, fsz $$1, int $$2, int $$3, dkn $$4, fkl $$5) {
-      $$0.a();
-      float $$6 = this.b();
-      $$0.b($$6, -$$6, -$$6);
-      ggj $$7 = this.a($$4);
-      epx $$8 = $$7.a($$1, $$5::a);
-      this.a($$0, $$2, $$3, $$5, $$8);
-      $$0.b();
-   }
-
-   void a(ept $$0, int $$1, int $$2, fkl $$3, epx $$4) {
-      fvn.a $$5 = (fvn.a)$$3;
-      $$5.a.a($$0, $$4, $$1, $$2);
-   }
-
-   ggj a(dkn $$0) {
-      return fto.a($$0);
-   }
-
-   void a(hx $$0, dhy $$1, ept $$2, fsz $$3, int $$4, int $$5, int $$6, boolean $$7) {
+   public void a(dhk $$0, float $$1, epz $$2, ftf $$3, int $$4, int $$5) {
       $$2.a();
-      this.a($$2, $$7, this.d());
-      int $$8 = a($$1);
-      int $$9 = 4 * $$5 / 2;
-      atu[] $$10 = $$1.a(eva.N().aP(), $$1x -> {
-         List<atu> $$2x = this.g.c($$1x, $$6);
-         return $$2x.isEmpty() ? atu.a : $$2x.get(0);
-      });
-      int $$11;
-      boolean $$12;
-      int $$13;
-      if ($$1.a()) {
-         $$11 = $$1.b().g();
-         $$12 = a($$0, $$11);
-         $$13 = 15728880;
-      } else {
-         $$11 = $$8;
-         $$12 = false;
-         $$13 = $$4;
-      }
-
-      for (int $$17 = 0; $$17 < 4; $$17++) {
-         atu $$18 = $$10[$$17];
-         float $$19 = (float)(-this.g.a($$18) / 2);
-         if ($$12) {
-            this.g.a($$18, $$19, (float)($$17 * $$5 - $$9), $$11, $$8, $$2.c().a(), $$3, $$13);
-         } else {
-            this.g.a($$18, $$19, (float)($$17 * $$5 - $$9), $$11, false, $$2.c().a(), $$3, ewk.a.c, 0, $$13);
+      ic $$6 = $$0.l();
+      $$2.a(0.5, 0.0, 0.5);
+      $$2.a(a.d.rotationDegrees(180.0F - $$6.p()));
+      $$2.a(-0.5, 0.0, -0.5);
+      dhk.b $$7 = $$0.i;
+      if ($$7 != null && $$0.i() != null) {
+         float $$8 = ((float)($$0.i().X() - $$0.h) + $$1) / (float)$$7.c;
+         if ($$8 >= 0.0F && $$8 <= 1.0F) {
+            if ($$7 == dhk.b.a) {
+               float $$9 = 0.015625F;
+               float $$10 = $$8 * (float) (Math.PI * 2);
+               float $$11 = -1.5F * (aun.b($$10) + 0.5F) * aun.a($$10 / 2.0F);
+               $$2.a(a.b.rotation($$11 * 0.015625F), 0.5F, 0.0F, 0.5F);
+               float $$12 = aun.a($$10);
+               $$2.a(a.f.rotation($$12 * 0.015625F), 0.5F, 0.0F, 0.5F);
+            } else {
+               float $$13 = aun.a(-$$8 * 3.0F * (float) Math.PI) * 0.125F;
+               float $$14 = 1.0F - $$8;
+               $$2.a(a.d.rotation($$13 * $$14), 0.5F, 0.0F, 0.5F);
+            }
          }
       }
 
+      eqd $$15 = this.o.a($$3, ftn::c);
+      this.h.a($$2, $$15, $$4, $$5);
+      this.m.a($$2, $$15, $$4, $$5);
+      this.n.a($$2, $$15, $$4, $$5);
+      dhk.a $$16 = $$0.m();
+      this.a(this.i, $$2, $$3, $$4, $$5, a($$16.e()));
+      this.a(this.j, $$2, $$3, $$4, $$5, a($$16.b()));
+      this.a(this.k, $$2, $$3, $$4, $$5, a($$16.c()));
+      this.a(this.l, $$2, $$3, $$4, $$5, a($$16.d()));
       $$2.b();
    }
 
-   private void a(ept $$0, boolean $$1, elm $$2) {
-      if (!$$1) {
-         $$0.a(a.d.rotationDegrees(180.0F));
+   private void a(fmv $$0, epz $$1, ftf $$2, int $$3, int $$4, @Nullable ggo $$5) {
+      if ($$5 == null) {
+         $$5 = a(cna.qI);
       }
 
-      float $$3 = 0.015625F * this.c();
-      $$0.a($$2.c, $$2.d, $$2.e);
-      $$0.b($$3, -$$3, $$3);
-   }
-
-   elm d() {
-      return e;
-   }
-
-   static boolean a(hx $$0, int $$1) {
-      if ($$1 == clf.p.g()) {
-         return true;
-      } else {
-         eva $$2 = eva.N();
-         fsb $$3 = $$2.s;
-         if ($$3 != null && $$2.m.ax().a() && $$3.gq()) {
-            return true;
-         } else {
-            blp $$4 = $$2.al();
-            return $$4 != null && $$4.f(elm.b($$0)) < (double)c;
-         }
-      }
-   }
-
-   public static int a(dhy $$0) {
-      int $$1 = $$0.b().g();
-      if ($$1 == clf.p.g() && $$0.a()) {
-         return -988212;
-      } else {
-         double $$2 = 0.4;
-         int $$3 = (int)((double)ats.b.b($$1) * 0.4);
-         int $$4 = (int)((double)ats.b.c($$1) * 0.4);
-         int $$5 = (int)((double)ats.b.d($$1) * 0.4);
-         return ats.b.a(0, $$3, $$4, $$5);
-      }
-   }
-
-   public static fvn.a a(fml $$0, dkn $$1) {
-      return new fvn.a($$0.a(fmo.a($$1)));
-   }
-
-   public static fmv f() {
-      fmx $$0 = new fmx();
-      fmy $$1 = $$0.a();
-      $$1.a("sign", fmu.c().a(0, 0).a(-12.0F, -14.0F, -1.0F, 24.0F, 12.0F, 2.0F), fmr.a);
-      $$1.a("stick", fmu.c().a(0, 14).a(-1.0F, -2.0F, -1.0F, 2.0F, 14.0F, 2.0F), fmr.a);
-      return fmv.a($$0, 64, 32);
-   }
-
-   public static final class a extends fkl {
-      public final fmp a;
-      public final fmp b;
-
-      public a(fmp $$0) {
-         super(fth::e);
-         this.a = $$0;
-         this.b = $$0.b("stick");
-      }
-
-      @Override
-      public void a(ept $$0, epx $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-         this.a.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      if ($$5 != null) {
+         $$0.a($$1, $$5.a($$2, ftn::c), $$3, $$4);
       }
    }
 }

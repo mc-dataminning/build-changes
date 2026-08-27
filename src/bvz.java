@@ -1,41 +1,19 @@
 import com.google.common.collect.ImmutableSet;
-import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
-public class bvz extends bwm<bmf> {
-   private static final int a = 200;
-   private static final int c = 599;
-
-   public bvz() {
-      this(200);
-   }
-
-   public bvz(int $$0) {
-      super($$0);
-   }
-
+public class bvz extends bwr<blp> {
    @Override
-   protected void a(amz $$0, bmf $$1) {
-      a($$1);
+   public Set<bvm<?>> a() {
+      return ImmutableSet.of(bvm.J, bvm.h);
    }
 
-   @Override
-   public Set<bvh<?>> a() {
-      return ImmutableSet.of(bvh.g);
+   protected void a(and $$0, blp $$1) {
+      $$1.dO().c(bvm.h).ifPresent($$1x -> this.a($$1, $$1x));
    }
 
-   public static void a(bmf $$0) {
-      Optional<List<bmf>> $$1 = $$0.dO().c(bvh.g);
-      if (!$$1.isEmpty()) {
-         boolean $$2 = $$1.get().stream().anyMatch($$0x -> $$0x.ai().equals(blt.ad));
-         if ($$2) {
-            b($$0);
-         }
-      }
-   }
-
-   public static void b(bmf $$0) {
-      $$0.dO().a(bvh.F, true, 599L);
+   private void a(blp $$0, bvo $$1) {
+      Optional<blp> $$2 = $$1.a($$1x -> $$1x.ai() == $$0.ai() && !$$1x.o_()).map(blp.class::cast);
+      $$0.dO().a(bvm.J, $$2);
    }
 }

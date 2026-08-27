@@ -1,31 +1,16 @@
-public class ghj extends ggw {
-   private static final float n = 1.0F;
-   private static final float o = 1.0F;
-   private final cae p;
-
-   public ghj(cae $$0) {
-      super(arm.xx, arn.g, ghn.t());
-      this.p = $$0;
-      this.k = ghn.a.b;
-      this.i = false;
+public class ghj extends ghl {
+   public ghj(bxy $$0) {
+      super($$0, arr.bB, ars.g);
       this.j = 0;
    }
 
    @Override
-   public boolean s() {
-      return !this.p.aU();
+   protected ghh o() {
+      return new ghk(this.n);
    }
 
    @Override
-   public void q() {
-      if (!this.p.dH() && this.p.q() == null && this.p.gk()) {
-         this.f = (double)((float)this.p.dr());
-         this.g = (double)((float)this.p.dt());
-         this.h = (double)((float)this.p.dx());
-         this.d = 1.0F;
-         this.e = 1.0F;
-      } else {
-         this.n();
-      }
+   protected boolean p() {
+      return !this.n.aa_();
    }
 }

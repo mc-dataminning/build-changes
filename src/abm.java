@@ -1,42 +1,32 @@
-import java.util.Optional;
+public class abm implements xf<za> {
+   private final int a;
+   private final byte b;
 
-public class abm implements xd<yx> {
-   private final vd a;
-   private final Optional<byte[]> b;
-   private final boolean c;
-
-   public abm(vd $$0, Optional<byte[]> $$1, boolean $$2) {
-      this.a = $$0;
+   public abm(blu $$0, byte $$1) {
+      this.a = $$0.aj();
       this.b = $$1;
-      this.c = $$2;
    }
 
-   public abm(ug $$0) {
-      this.a = $$0.m();
-      this.b = $$0.b(ug::b);
-      this.c = $$0.readBoolean();
+   public abm(ui $$0) {
+      this.a = $$0.n();
+      this.b = $$0.readByte();
    }
 
    @Override
-   public void a(ug $$0) {
-      $$0.a(this.a);
-      $$0.a(this.b, ug::a);
-      $$0.a(this.c);
+   public void a(ui $$0) {
+      $$0.c(this.a);
+      $$0.k(this.b);
    }
 
-   public void a(yx $$0) {
+   public void a(za $$0) {
       $$0.a(this);
    }
 
-   public vd a() {
-      return this.a;
+   public blu a(cto $$0) {
+      return $$0.a(this.a);
    }
 
-   public Optional<byte[]> d() {
+   public byte a() {
       return this.b;
-   }
-
-   public boolean e() {
-      return this.c;
    }
 }

@@ -1,117 +1,143 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Dynamic;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.Arrays;
+import java.util.Optional;
 
-public class dhu extends dgo implements dnm.b<dnt.b>, dnt {
-   private static final Logger b = LogUtils.getLogger();
-   private dnt.a c;
-   private final dnt.b d;
-   private final dnt.d e = this.c();
-   private int g;
+public class dhu extends dgu {
+   public static final String a = "target";
+   public static final String b = "pool";
+   public static final String c = "joint";
+   public static final String d = "placement_priority";
+   public static final String e = "selection_priority";
+   public static final String f = "name";
+   public static final String g = "final_state";
+   private ahg h = new ahg("empty");
+   private ahg i = new ahg("empty");
+   private ahf<eao> j = ahf.a(ke.aG, new ahg("empty"));
+   private dhu.a k = dhu.a.a;
+   private String l = "minecraft:air";
+   private int m;
+   private int n;
 
-   protected dhu(dgq<?> $$0, hx $$1, dja $$2) {
-      super($$0, $$1, $$2);
-      this.c = new dnt.a();
-      this.d = new dnt.b(this);
+   public dhu(hx $$0, djg $$1) {
+      super(dgw.F, $$0, $$1);
    }
 
-   public dhu(hx $$0, dja $$1) {
-      this(dgq.I, $$0, $$1);
+   public ahg c() {
+      return this.h;
    }
 
-   public dnt.d c() {
-      return new dhu.a(this.aB_());
+   public ahg d() {
+      return this.i;
    }
 
-   @Override
-   public void a(sl $$0) {
-      super.a($$0);
-      this.g = $$0.h("last_vibration_frequency");
-      if ($$0.b("listener", 10)) {
-         dnt.a.a.parse(new Dynamic(sz.a, $$0.p("listener"))).resultOrPartial(b::error).ifPresent($$0x -> this.c = $$0x);
-      }
+   public ahf<eao> f() {
+      return this.j;
    }
 
-   @Override
-   protected void b(sl $$0) {
-      super.b($$0);
-      $$0.a("last_vibration_frequency", this.g);
-      dnt.a.a.encodeStart(sz.a, this.c).resultOrPartial(b::error).ifPresent($$1 -> $$0.a("listener", $$1));
+   public String g() {
+      return this.l;
    }
 
-   @Override
-   public dnt.a gg() {
-      return this.c;
+   public dhu.a k() {
+      return this.k;
    }
 
-   @Override
-   public dnt.d gh() {
-      return this.e;
+   public int l() {
+      return this.m;
    }
 
-   public int f() {
-      return this.g;
+   public int m() {
+      return this.n;
+   }
+
+   public void a(ahg $$0) {
+      this.h = $$0;
+   }
+
+   public void b(ahg $$0) {
+      this.i = $$0;
+   }
+
+   public void a(ahf<eao> $$0) {
+      this.j = $$0;
+   }
+
+   public void a(String $$0) {
+      this.l = $$0;
+   }
+
+   public void a(dhu.a $$0) {
+      this.k = $$0;
    }
 
    public void a(int $$0) {
-      this.g = $$0;
+      this.m = $$0;
    }
 
-   public dnt.b g() {
-      return this.d;
+   public void b(int $$0) {
+      this.n = $$0;
    }
 
-   protected class a implements dnt.d {
-      public static final int b = 8;
-      protected final hx c;
-      private final dno a;
+   @Override
+   protected void b(sn $$0) {
+      super.b($$0);
+      $$0.a("name", this.h.toString());
+      $$0.a("target", this.i.toString());
+      $$0.a("pool", this.j.a().toString());
+      $$0.a("final_state", this.l);
+      $$0.a("joint", this.k.c());
+      $$0.a("placement_priority", this.m);
+      $$0.a("selection_priority", this.n);
+   }
 
-      public a(hx $$1) {
-         this.c = $$1;
-         this.a = new dng($$1);
+   @Override
+   public void a(sn $$0) {
+      super.a($$0);
+      this.h = new ahg($$0.l("name"));
+      this.i = new ahg($$0.l("target"));
+      this.j = ahf.a(ke.aG, new ahg($$0.l("pool")));
+      this.l = $$0.l("final_state");
+      this.k = dhu.a.a($$0.l("joint")).orElseGet(() -> daq.h(this.r()).o().d() ? dhu.a.b : dhu.a.a);
+      this.m = $$0.h("placement_priority");
+      this.n = $$0.h("selection_priority");
+   }
+
+   public zh w() {
+      return zh.a(this);
+   }
+
+   @Override
+   public sn ax_() {
+      return this.q();
+   }
+
+   public void a(and $$0, int $$1, boolean $$2) {
+      hx $$3 = this.aB_().a(this.r().c(daq.b).a());
+      it<eao> $$4 = $$0.I_().d(ke.aG);
+      ih<eao> $$5 = $$4.f(this.j);
+      eai.a($$0, $$5, this.i, $$1, $$3, $$2);
+   }
+
+   public static enum a implements avj {
+      a("rollable"),
+      b("aligned");
+
+      private final String c;
+
+      private a(String $$0) {
+         this.c = $$0;
       }
 
       @Override
-      public int a() {
-         return 8;
+      public String c() {
+         return this.c;
       }
 
-      @Override
-      public dno b() {
-         return this.a;
+      public static Optional<dhu.a> a(String $$0) {
+         return Arrays.stream(values()).filter($$1 -> $$1.c().equals($$0)).findFirst();
       }
 
-      @Override
-      public boolean d() {
-         return true;
-      }
-
-      @Override
-      public boolean a(amz $$0, hx $$1, dnk $$2, @Nullable dnk.a $$3) {
-         return !$$1.equals(this.c) || $$2 != dnk.f && $$2 != dnk.i ? ddb.n(dhu.this.r()) : false;
-      }
-
-      @Override
-      public void a(amz $$0, hx $$1, dnk $$2, @Nullable blp $$3, @Nullable blp $$4, float $$5) {
-         dja $$6 = dhu.this.r();
-         if (ddb.n($$6)) {
-            dhu.this.a(dnt.a_($$2));
-            int $$7 = dnt.a_($$5, this.a());
-            if ($$6.b() instanceof ddb $$8) {
-               $$8.a($$3, $$0, this.c, $$6, $$7, dhu.this.f());
-            }
-         }
-      }
-
-      @Override
-      public void e() {
-         dhu.this.e();
-      }
-
-      @Override
-      public boolean f() {
-         return true;
+      public vf a() {
+         return vf.c("jigsaw_block.joint." + this.c);
       }
    }
 }

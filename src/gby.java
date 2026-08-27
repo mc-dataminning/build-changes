@@ -1,13 +1,16 @@
-public class gby<T extends cbx> extends gcq<T, fjl<T>> {
-   private static final ahd a = new ahd("textures/entity/zombie/drowned_outer_layer.png");
-   private final fjl<T> b;
+public class gby extends gcw<bya, fjg<bya>> {
+   private static final ahg a = new ahg("textures/entity/cat/cat_collar.png");
+   private final fjg<bya> b;
 
-   public gby(gaa<T, fjl<T>> $$0, fml $$1) {
+   public gby(gag<bya, fjg<bya>> $$0, fmr $$1) {
       super($$0);
-      this.b = new fjl<>($$1.a(fmo.R));
+      this.b = new fjg<>($$1.a(fmu.r));
    }
 
-   public void a(ept $$0, fsz $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      a(this.c(), this.b, a, $$0, $$1, $$2, $$3, $$4, $$5, $$7, $$8, $$9, $$6, 1.0F, 1.0F, 1.0F);
+   public void a(epz $$0, ftf $$1, int $$2, bya $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if ($$3.u()) {
+         float[] $$10 = $$3.go().d();
+         a(this.c(), this.b, a, $$0, $$1, $$2, $$3, $$4, $$5, $$7, $$8, $$9, $$6, $$10[0], $$10[1], $$10[2]);
+      }
    }
 }

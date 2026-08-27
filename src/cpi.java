@@ -1,91 +1,71 @@
-public class cpi extends cpn {
-   public cpi(cpl $$0) {
-      super($$0);
+import javax.annotation.Nullable;
+
+public class cpi {
+   @Nullable
+   private final cfh a;
+   private final bjz b;
+   private final elo c;
+   private final cto d;
+   private final cmx e;
+
+   public cpi(cfh $$0, bjz $$1, elo $$2) {
+      this($$0.dM(), $$0, $$1, $$0.b($$1), $$2);
    }
 
-   public boolean a(cik $$0, cti $$1) {
-      int $$2 = 0;
-      cmr $$3 = cmr.f;
-
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         cmr $$5 = $$0.a($$4);
-         if (!$$5.b()) {
-            if ($$5.a(cmu.tU)) {
-               if (!$$3.b()) {
-                  return false;
-               }
-
-               $$3 = $$5;
-            } else {
-               if (!$$5.a(cmu.tT)) {
-                  return false;
-               }
-
-               $$2++;
-            }
-         }
-      }
-
-      return !$$3.b() && $$3.u() && $$2 > 0;
+   protected cpi(cto $$0, @Nullable cfh $$1, bjz $$2, cmx $$3, elo $$4) {
+      this.a = $$1;
+      this.b = $$2;
+      this.c = $$4;
+      this.e = $$3;
+      this.d = $$0;
    }
 
-   public cmr a(cik $$0, iu $$1) {
-      int $$2 = 0;
-      cmr $$3 = cmr.f;
-
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         cmr $$5 = $$0.a($$4);
-         if (!$$5.b()) {
-            if ($$5.a(cmu.tU)) {
-               if (!$$3.b()) {
-                  return cmr.f;
-               }
-
-               $$3 = $$5;
-            } else {
-               if (!$$5.a(cmu.tT)) {
-                  return cmr.f;
-               }
-
-               $$2++;
-            }
-         }
-      }
-
-      if (!$$3.b() && $$3.u() && $$2 >= 1 && coo.d($$3) < 2) {
-         cmr $$6 = new cmr(cmu.tU, $$2);
-         sl $$7 = $$3.v().h();
-         $$7.a("generation", coo.d($$3) + 1);
-         $$6.c($$7);
-         return $$6;
-      } else {
-         return cmr.f;
-      }
+   protected final elo j() {
+      return this.c;
    }
 
-   public iq<cmr> a(cik $$0) {
-      iq<cmr> $$1 = iq.a($$0.b(), cmr.f);
-
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         cmr $$3 = $$0.a($$2);
-         if ($$3.d().t()) {
-            $$1.set($$2, new cmr($$3.d().s()));
-         } else if ($$3.d() instanceof coo) {
-            $$1.set($$2, $$3.c(1));
-            break;
-         }
-      }
-
-      return $$1;
+   public hx a() {
+      return this.c.a();
    }
 
-   @Override
-   public cpz<?> ar_() {
-      return cpz.d;
+   public ic k() {
+      return this.c.b();
    }
 
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 >= 3 && $$1 >= 3;
+   public els l() {
+      return this.c.e();
+   }
+
+   public boolean m() {
+      return this.c.d();
+   }
+
+   public cmx n() {
+      return this.e;
+   }
+
+   @Nullable
+   public cfh o() {
+      return this.a;
+   }
+
+   public bjz p() {
+      return this.b;
+   }
+
+   public cto q() {
+      return this.d;
+   }
+
+   public ic g() {
+      return this.a == null ? ic.c : this.a.cE();
+   }
+
+   public boolean h() {
+      return this.a != null && this.a.fI();
+   }
+
+   public float i() {
+      return this.a == null ? 0.0F : this.a.dC();
    }
 }

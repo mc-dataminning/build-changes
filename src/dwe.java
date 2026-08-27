@@ -1,75 +1,62 @@
-import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
-import java.util.List;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Collection;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class dwe extends dwj {
-   public static final Codec<dwe> a = dvs.a.fieldOf("provider").xmap(dwe::new, $$0 -> $$0.b).codec();
-   private final dvs b;
+public class dwe extends dvy {
+   public static final Codec<dwe> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dvy.a.fieldOf("source").forGetter($$0x -> $$0x.c),
+               Codec.STRING.fieldOf("property").forGetter($$0x -> $$0x.d),
+               bjf.c.fieldOf("values").forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, dwe::new)
+   );
+   private final dvy c;
+   private final String d;
+   @Nullable
+   private dkg e;
+   private final bjf f;
 
-   public dwe(dvs $$0) {
-      this.b = $$0;
+   public dwe(dvy $$0, dkg $$1, bjf $$2) {
+      this.c = $$0;
+      this.e = $$1;
+      this.d = $$1.f();
+      this.f = $$2;
+      Collection<Integer> $$3 = $$1.a();
+
+      for (int $$4 = $$2.a(); $$4 <= $$2.b(); $$4++) {
+         if (!$$3.contains($$4)) {
+            throw new IllegalArgumentException("Property value out of range: " + $$1.f() + ": " + $$4);
+         }
+      }
+   }
+
+   public dwe(dvy $$0, String $$1, bjf $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.f = $$2;
    }
 
    @Override
-   protected dwk<?> a() {
-      return dwk.e;
+   protected dvz<?> a() {
+      return dvz.g;
    }
 
    @Override
-   public void a(dwj.a $$0) {
-      List<hx> $$1 = Lists.newArrayList();
-      List<hx> $$2 = $$0.e();
-      List<hx> $$3 = $$0.c();
-      if ($$2.isEmpty()) {
-         $$1.addAll($$3);
-      } else if (!$$3.isEmpty() && $$2.get(0).v() == $$3.get(0).v()) {
-         $$1.addAll($$3);
-         $$1.addAll($$2);
-      } else {
-         $$1.addAll($$2);
+   public djg a(auu $$0, hx $$1) {
+      djg $$2 = this.c.a($$0, $$1);
+      if (this.e == null || !$$2.b(this.e)) {
+         this.e = a($$2, this.d);
       }
 
-      if (!$$1.isEmpty()) {
-         int $$4 = $$1.get(0).v();
-         $$1.stream().filter($$1x -> $$1x.v() == $$4).forEach($$1x -> {
-            this.a($$0, $$1x.g().e());
-            this.a($$0, $$1x.g(2).e());
-            this.a($$0, $$1x.g().e(2));
-            this.a($$0, $$1x.g(2).e(2));
-
-            for (int $$2x = 0; $$2x < 5; $$2x++) {
-               int $$3x = $$0.b().a(64);
-               int $$4x = $$3x % 8;
-               int $$5 = $$3x / 8;
-               if ($$4x == 0 || $$4x == 7 || $$5 == 0 || $$5 == 7) {
-                  this.a($$0, $$1x.b(-3 + $$4x, 0, -3 + $$5));
-               }
-            }
-         });
-      }
+      return $$2.a(this.e, Integer.valueOf(this.f.a($$0)));
    }
 
-   private void a(dwj.a $$0, hx $$1) {
-      for (int $$2 = -2; $$2 <= 2; $$2++) {
-         for (int $$3 = -2; $$3 <= 2; $$3++) {
-            if (Math.abs($$2) != 2 || Math.abs($$3) != 2) {
-               this.b($$0, $$1.b($$2, 0, $$3));
-            }
-         }
-      }
-   }
-
-   private void b(dwj.a $$0, hx $$1) {
-      for (int $$2 = 2; $$2 >= -3; $$2--) {
-         hx $$3 = $$1.b($$2);
-         if (drn.a($$0.a(), $$3)) {
-            $$0.a($$3, this.b.a($$0.b(), $$1));
-            break;
-         }
-
-         if (!$$0.a($$3) && $$2 < 0) {
-            break;
-         }
-      }
+   private static dkg a(djg $$0, String $$1) {
+      Collection<dkj<?>> $$2 = $$0.B();
+      Optional<dkg> $$3 = $$2.stream().filter($$1x -> $$1x.f().equals($$1)).filter($$0x -> $$0x instanceof dkg).map($$0x -> (dkg)$$0x).findAny();
+      return $$3.orElseThrow(() -> new IllegalArgumentException("Illegal property: " + $$1));
    }
 }

@@ -1,53 +1,92 @@
-import com.google.common.collect.Sets;
+import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Set;
+import javax.annotation.Nullable;
 
-public record ekg(ekj b, ekj c) implements ekj {
-   public static final Codec<ekg> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ekk.a.fieldOf("n").forGetter(ekg::c), ekk.a.fieldOf("p").forGetter(ekg::d)).apply($$0, ekg::new)
-   );
-
-   @Override
-   public eki b() {
-      return ekk.d;
-   }
-
-   @Override
-   public int a(egp $$0) {
-      int $$1 = this.b.a($$0);
-      float $$2 = this.c.b($$0);
-      aup $$3 = $$0.b();
-      int $$4 = 0;
-
-      for (int $$5 = 0; $$5 < $$1; $$5++) {
-         if ($$3.i() < $$2) {
-            $$4++;
-         }
+public class ekg implements eki {
+   private static final String d = "block_entity";
+   private static final ekg.a e = new ekg.a() {
+      @Override
+      public tk a(egv $$0) {
+         dgu $$1 = $$0.c(ejg.h);
+         return $$1 != null ? $$1.o() : null;
       }
 
-      return $$4;
+      @Override
+      public String a() {
+         return "block_entity";
+      }
+
+      @Override
+      public Set<ejd<?>> b() {
+         return ImmutableSet.of(ejg.h);
+      }
+   };
+   public static final ekg a = new ekg(e);
+   private static final Codec<ekg.a> f = Codec.STRING.xmap($$0 -> {
+      if ($$0.equals("block_entity")) {
+         return e;
+      } else {
+         egv.b $$1 = egv.b.a($$0);
+         return b($$1);
+      }
+   }, ekg.a::a);
+   public static final Codec<ekg> b = RecordCodecBuilder.create($$0 -> $$0.group(f.fieldOf("target").forGetter($$0x -> $$0x.g)).apply($$0, ekg::new));
+   public static final Codec<ekg> c = f.xmap(ekg::new, $$0 -> $$0.g);
+   private final ekg.a g;
+
+   private static ekg.a b(final egv.b $$0) {
+      return new ekg.a() {
+         @Nullable
+         @Override
+         public tk a(egv $$0x) {
+            blu $$1 = $$0.c($$0.a());
+            return $$1 != null ? cm.b($$1) : null;
+         }
+
+         @Override
+         public String a() {
+            return $$0.name();
+         }
+
+         @Override
+         public Set<ejd<?>> b() {
+            return ImmutableSet.of($$0.a());
+         }
+      };
+   }
+
+   private ekg(ekg.a $$0) {
+      this.g = $$0;
    }
 
    @Override
-   public float b(egp $$0) {
-      return (float)this.a($$0);
+   public ekh a() {
+      return ekj.c;
    }
 
-   public static ekg a(int $$0, float $$1) {
-      return new ekg(ekh.a((float)$$0), ekh.a($$1));
+   @Nullable
+   @Override
+   public tk a(egv $$0) {
+      return this.g.a($$0);
    }
 
    @Override
-   public Set<eix<?>> a() {
-      return Sets.union(this.b.a(), this.c.a());
+   public Set<ejd<?>> b() {
+      return this.g.b();
    }
 
-   public ekj c() {
-      return this.b;
+   public static eki a(egv.b $$0) {
+      return new ekg(b($$0));
    }
 
-   public ekj d() {
-      return this.c;
+   interface a {
+      @Nullable
+      tk a(egv var1);
+
+      String a();
+
+      Set<ejd<?>> b();
    }
 }

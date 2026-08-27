@@ -1,75 +1,37 @@
-public class cqf extends cpn {
-   public cqf(cpl $$0) {
-      super($$0);
-   }
+import com.mojang.serialization.Codec;
 
-   public boolean a(cik $$0, cti $$1) {
-      cmr $$2 = cmr.f;
-      cmr $$3 = cmr.f;
+public interface cqf<T extends cqb<?>> {
+   cqf<cqi> a = a("crafting_shaped", new cqi.a());
+   cqf<cqk> b = a("crafting_shapeless", new cqk.a());
+   cqf<cpl> c = a("crafting_special_armordye", new cqo<>(cpl::new));
+   cqf<cpo> d = a("crafting_special_bookcloning", new cqo<>(cpo::new));
+   cqf<cpz> e = a("crafting_special_mapcloning", new cqo<>(cpz::new));
+   cqf<cqa> f = a("crafting_special_mapextending", new cqo<>(cqa::new));
+   cqf<cpv> g = a("crafting_special_firework_rocket", new cqo<>(cpv::new));
+   cqf<cpx> h = a("crafting_special_firework_star", new cqo<>(cpx::new));
+   cqf<cpw> i = a("crafting_special_firework_star_fade", new cqo<>(cpw::new));
+   cqf<cqx> j = a("crafting_special_tippedarrow", new cqo<>(cqx::new));
+   cqf<cpm> k = a("crafting_special_bannerduplicate", new cqo<>(cpm::new));
+   cqf<cql> l = a("crafting_special_shielddecoration", new cqo<>(cql::new));
+   cqf<cqm> m = a("crafting_special_shulkerboxcoloring", new cqo<>(cqm::new));
+   cqf<cqw> n = a("crafting_special_suspiciousstew", new cqo<>(cqw::new));
+   cqf<cqh> o = a("crafting_special_repairitem", new cqo<>(cqh::new));
+   cqf<cqq> p = a("smelting", new cqn<>(cqq::new, 200));
+   cqf<cpn> q = a("blasting", new cqn<>(cpn::new, 100));
+   cqf<cqu> r = a("smoking", new cqn<>(cqu::new, 100));
+   cqf<cpp> s = a("campfire_cooking", new cqn<>(cpp::new, 100));
+   cqf<cqv> t = a("stonecutting", new cqp.b<>(cqv::new));
+   cqf<cqs> u = a("smithing_transform", new cqs.a());
+   cqf<cqt> v = a("smithing_trim", new cqt.a());
+   cqf<cpu> w = a("crafting_decorated_pot", new cqo<>(cpu::new));
 
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         cmr $$5 = $$0.a($$4);
-         if (!$$5.b()) {
-            if ($$5.d() instanceof ckh) {
-               if (!$$3.b()) {
-                  return false;
-               }
+   Codec<T> a();
 
-               $$3 = $$5;
-            } else {
-               if (!$$5.a(cmu.vl)) {
-                  return false;
-               }
+   T a(ui var1);
 
-               if (!$$2.b()) {
-                  return false;
-               }
+   void a(ui var1, T var2);
 
-               if (ckk.a($$5) != null) {
-                  return false;
-               }
-
-               $$2 = $$5;
-            }
-         }
-      }
-
-      return !$$2.b() && !$$3.b();
-   }
-
-   public cmr a(cik $$0, iu $$1) {
-      cmr $$2 = cmr.f;
-      cmr $$3 = cmr.f;
-
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         cmr $$5 = $$0.a($$4);
-         if (!$$5.b()) {
-            if ($$5.d() instanceof ckh) {
-               $$2 = $$5;
-            } else if ($$5.a(cmu.vl)) {
-               $$3 = $$5.p();
-            }
-         }
-      }
-
-      if ($$3.b()) {
-         return $$3;
-      } else {
-         sl $$6 = ckk.a($$2);
-         sl $$7 = $$6 == null ? new sl() : $$6.h();
-         $$7.a("Base", ((ckh)$$2.d()).b().a());
-         ckk.a($$3, dgq.t, $$7);
-         return $$3;
-      }
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 * $$1 >= 2;
-   }
-
-   @Override
-   public cpz<?> ar_() {
-      return cpz.l;
+   static <S extends cqf<T>, T extends cqb<?>> S a(String $$0, S $$1) {
+      return it.a(kd.t, $$0, $$1);
    }
 }

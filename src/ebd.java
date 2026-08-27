@@ -1,96 +1,80 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.function.IntFunction;
+import com.google.common.collect.ImmutableMap;
+import java.util.Map;
 
-public class ebd extends dyz {
-   public static final Codec<ebd> d = RecordCodecBuilder.create(
-      $$0 -> $$0.group(a($$0), ebd.a.c.fieldOf("mineshaft_type").forGetter($$0x -> $$0x.e)).apply($$0, ebd::new)
-   );
-   private final ebd.a e;
+public class ebd {
+   public static final int a = 90;
+   static final ahg b = new ahg("igloo/top");
+   private static final ahg c = new ahg("igloo/middle");
+   private static final ahg d = new ahg("igloo/bottom");
+   static final Map<ahg, hx> e = ImmutableMap.of(b, new hx(3, 5, 5), c, new hx(1, 3, 1), d, new hx(3, 6, 7));
+   static final Map<ahg, hx> f = ImmutableMap.of(b, hx.b, c, new hx(2, -3, 4), d, new hx(0, -3, -2));
 
-   public ebd(dyz.c $$0, ebd.a $$1) {
-      super($$0);
-      this.e = $$1;
+   public static void a(edg $$0, hx $$1, ddb $$2, dzk $$3, auu $$4) {
+      if ($$4.j() < 0.5) {
+         int $$5 = $$4.a(8) + 4;
+         $$3.a(new ebd.a($$0, d, $$1, $$2, $$5 * 3));
+
+         for (int $$6 = 0; $$6 < $$5 - 1; $$6++) {
+            $$3.a(new ebd.a($$0, c, $$1, $$2, $$6 * 3));
+         }
+      }
+
+      $$3.a(new ebd.a($$0, b, $$1, $$2, 0));
    }
 
-   @Override
-   public Optional<dyz.b> a(dyz.a $$0) {
-      $$0.f().j();
-      csp $$1 = $$0.h();
-      hx $$2 = new hx($$1.b(), 50, $$1.e());
-      dzr $$3 = new dzr();
-      int $$4 = this.a($$3, $$0);
-      return Optional.of(new dyz.b($$2.b(0, $$4, 0), Either.right($$3)));
-   }
-
-   private int a(dzr $$0, dyz.a $$1) {
-      csp $$2 = $$1.h();
-      dpi $$3 = $$1.f();
-      dkx $$4 = $$1.b();
-      ebc.d $$5 = new ebc.d(0, $$3, $$2.a(2), $$2.b(2), this.e);
-      $$0.a($$5);
-      $$5.a($$5, $$0, $$3);
-      int $$6 = $$4.e();
-      if (this.e == ebd.a.b) {
-         hx $$7 = $$0.d().g();
-         int $$8 = $$4.a($$7.u(), $$7.w(), doj.a.a, $$1.i(), $$1.d());
-         int $$9 = $$8 <= $$6 ? $$6 : aui.b($$3, $$6, $$8);
-         int $$10 = $$9 - $$7.v();
-         $$0.a($$10);
-         return $$10;
-      } else {
-         return $$0.a($$6, $$4.f(), $$3, 10);
-      }
-   }
-
-   @Override
-   public dzi<?> e() {
-      return dzi.h;
-   }
-
-   public static enum a implements ave {
-      a("normal", cwl.U, cwl.n, cwl.dU),
-      b("mesa", cwl.aa, cwl.t, cwl.ki);
-
-      public static final Codec<ebd.a> c = ave.a(ebd.a::values);
-      private static final IntFunction<ebd.a> d = ata.a(Enum::ordinal, values(), ata.a.a);
-      private final String e;
-      private final dja f;
-      private final dja g;
-      private final dja h;
-
-      private a(String $$0, cwj $$1, cwj $$2, cwj $$3) {
-         this.e = $$0;
-         this.f = $$1.o();
-         this.g = $$2.o();
-         this.h = $$3.o();
+   public static class a extends dzp {
+      public a(edg $$0, ahg $$1, hx $$2, ddb $$3, int $$4) {
+         super(dzw.I, 0, $$0, $$1, $$1.toString(), a($$3, $$1), a($$1, $$2, $$4));
       }
 
-      public String a() {
-         return this.e;
+      public a(edg $$0, sn $$1) {
+         super(dzw.I, $$1, $$0, $$1x -> a(ddb.valueOf($$1.l("Rot")), $$1x));
       }
 
-      public static ebd.a a(int $$0) {
-         return d.apply($$0);
+      private static edb a(ddb $$0, ahg $$1) {
+         return new edb().a($$0).a(dbl.a).a(ebd.e.get($$1)).a(ech.b);
       }
 
-      public dja b() {
-         return this.f;
-      }
-
-      public dja d() {
-         return this.g;
-      }
-
-      public dja e() {
-         return this.h;
+      private static hx a(ahg $$0, hx $$1, int $$2) {
+         return $$1.a(ebd.f.get($$0)).c($$2);
       }
 
       @Override
-      public String c() {
-         return this.e;
+      protected void a(dzv $$0, sn $$1) {
+         super.a($$0, $$1);
+         $$1.a("Rot", this.c.d().name());
+      }
+
+      @Override
+      protected void a(String $$0, hx $$1, cud $$2, auu $$3, dyx $$4) {
+         if ("chest".equals($$0)) {
+            $$2.a($$1, cwr.a.o(), 3);
+            dgu $$5 = $$2.c_($$1.d());
+            if ($$5 instanceof dhb) {
+               ((dhb)$$5).a(egt.C, $$3.g());
+            }
+         }
+      }
+
+      @Override
+      public void a(cuj $$0, cuh $$1, dld $$2, auu $$3, dyx $$4, csv $$5, hx $$6) {
+         ahg $$7 = new ahg(this.a);
+         edb $$8 = a(this.c.d(), $$7);
+         hx $$9 = ebd.f.get($$7);
+         hx $$10 = this.d.a((jb)edf.a($$8, new hx(3 - $$9.u(), 0, -$$9.w())));
+         int $$11 = $$0.a(dop.a.a, $$10.u(), $$10.w());
+         hx $$12 = this.d;
+         this.d = this.d.b(0, $$11 - 90 - 1, 0);
+         super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+         if ($$7.equals(ebd.b)) {
+            hx $$13 = this.d.a((jb)edf.a($$8, new hx(3, 0, 5)));
+            djg $$14 = $$0.a_($$13.d());
+            if (!$$14.i() && !$$14.a(cwr.cO)) {
+               $$0.a($$13, cwr.dP.o(), 3);
+            }
+         }
+
+         this.d = $$12;
       }
    }
 }

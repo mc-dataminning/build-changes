@@ -1,19 +1,19 @@
-import java.util.List;
+public record yk(hx b, String c, int d) implements ya {
+   public static final ahg a = new ahg("debug/poi_added");
 
-public record yk(List<hx> b) implements xx {
-   public static final ahd a = new ahd("debug/raids");
-
-   public yk(ug $$0) {
-      this($$0.a(ug::e));
+   public yk(ui $$0) {
+      this($$0.e(), $$0.s(), $$0.readInt());
    }
 
    @Override
-   public void a(ug $$0) {
-      $$0.a(this.b, ug::a);
+   public void a(ui $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.p(this.d);
    }
 
    @Override
-   public ahd a() {
+   public ahg a() {
       return a;
    }
 }

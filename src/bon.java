@@ -1,36 +1,15 @@
 import com.mojang.datafixers.kinds.App;
 import java.util.function.Function;
+import java.util.function.Predicate;
 
 public class bon {
-   public static bnx<ceo> a(float $$0, int $$1) {
-      return brj.a((Function<brj.b<ceo>, ? extends App<brj.c<ceo>, brm<ceo>>>)($$2 -> $$2.group($$2.c(bvh.m)).apply($$2, $$2x -> ($$3, $$4, $$5) -> {
-               if ($$3.c($$4.dm())) {
-                  return false;
-               } else {
-                  bxg $$6 = $$3.y();
-                  int $$7 = $$6.a(iz.a($$4.dm()));
-                  elm $$8 = null;
-
-                  for (int $$9 = 0; $$9 < 5; $$9++) {
-                     elm $$10 = bxa.a($$4, 15, 7, $$1xxxx -> (double)(-$$6.a(iz.a($$1xxxx))));
-                     if ($$10 != null) {
-                        int $$11 = $$6.a(iz.a(hx.a($$10)));
-                        if ($$11 < $$7) {
-                           $$8 = $$10;
-                           break;
-                        }
-
-                        if ($$11 == $$7) {
-                           $$8 = $$10;
-                        }
-                     }
-                  }
-
-                  if ($$8 != null) {
-                     $$2x.a(new bvk($$8, $$0, $$1));
-                  }
-
+   public static <E extends bmk> boc<E> a(Predicate<E> $$0, bvm<?> $$1) {
+      return bro.a((Function<bro.b<E>, ? extends App<bro.c<E>, brr<E>>>)($$2 -> $$2.group($$2.b($$1)).apply($$2, $$1xx -> ($$2x, $$3, $$4) -> {
+               if ($$0.test((E)$$3)) {
+                  $$1xx.b();
                   return true;
+               } else {
+                  return false;
                }
             })));
    }

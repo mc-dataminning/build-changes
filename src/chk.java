@@ -1,107 +1,70 @@
-import com.google.common.collect.Sets;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.function.Consumer;
-import org.slf4j.Logger;
-
-public class chk {
-   private static final Logger a = LogUtils.getLogger();
-   private final chm b;
-   private final Map<ahd, chj> c;
-   private final chl d;
-
-   chk(chm $$0, chl $$1, Map<ahd, chj> $$2) {
-      this.b = $$0;
-      this.c = $$2;
-      this.d = $$1;
-   }
-
-   public boolean a(chl $$0) {
-      return $$0.a(this.d);
-   }
-
-   public chl a() {
-      return this.d;
-   }
-
-   public chl a(Iterable<ahd> $$0) {
-      return this.a($$0, $$0x -> a.warn("Unknown feature flag: {}", $$0x));
-   }
-
-   public chl a(chj... $$0) {
-      return chl.a(this.b, Arrays.asList($$0));
-   }
-
-   public chl a(Iterable<ahd> $$0, Consumer<ahd> $$1) {
-      Set<chj> $$2 = Sets.newIdentityHashSet();
-
-      for (ahd $$3 : $$0) {
-         chj $$4 = this.c.get($$3);
-         if ($$4 == null) {
-            $$1.accept($$3);
-         } else {
-            $$2.add($$4);
-         }
+public class chk extends cgz {
+   private final csq c = new csq() {
+      @Override
+      public void a(cto $$0, hx $$1, int $$2) {
+         $$0.a(chk.this, (byte)$$2);
       }
+   };
+   private final Runnable d;
 
-      return chl.a(this.b, $$2);
+   public chk(bly<? extends chk> $$0, cto $$1) {
+      super($$0, $$1);
+      this.d = this.b($$1);
    }
 
-   public Set<ahd> b(chl $$0) {
-      Set<ahd> $$1 = new HashSet<>();
-      this.c.forEach(($$2, $$3) -> {
-         if ($$0.b($$3)) {
-            $$1.add($$2);
-         }
-      });
-      return $$1;
+   public chk(cto $$0, double $$1, double $$2, double $$3) {
+      super(bly.aR, $$0, $$1, $$2, $$3);
+      this.d = this.b($$0);
    }
 
-   public Codec<chl> b() {
-      return ahd.a.listOf().comapFlatMap($$0 -> {
-         Set<ahd> $$1 = new HashSet<>();
-         chl $$2 = this.a($$0, $$1::add);
-         return !$$1.isEmpty() ? DataResult.error(() -> "Unknown feature ids: " + $$1, $$2) : DataResult.success($$2);
-      }, $$0 -> List.copyOf(this.b($$0)));
+   @Override
+   protected cms ah_() {
+      return cna.nL;
    }
 
-   public static class a {
-      private final chm a;
-      private int b;
-      private final Map<ahd, chj> c = new LinkedHashMap<>();
+   private Runnable b(cto $$0) {
+      return $$0 instanceof and ? () -> this.c.a((and)$$0, this.dm()) : () -> this.c.a($$0, this.dm());
+   }
 
-      public a(String $$0) {
-         this.a = new chm($$0);
-      }
+   @Override
+   public cgz.a w() {
+      return cgz.a.e;
+   }
 
-      public chj a(String $$0) {
-         return this.a(new ahd("minecraft", $$0));
-      }
+   @Override
+   public djg y() {
+      return cwr.ct.o();
+   }
 
-      public chj a(ahd $$0) {
-         if (this.b >= 64) {
-            throw new IllegalStateException("Too many feature flags");
-         } else {
-            chj $$1 = new chj(this.a, this.b++);
-            chj $$2 = this.c.put($$0, $$1);
-            if ($$2 != null) {
-               throw new IllegalStateException("Duplicate feature flag " + $$0);
-            } else {
-               return $$1;
-            }
-         }
-      }
+   @Override
+   protected void a(sn $$0) {
+      super.a($$0);
+      this.c.a(this.dM(), this.dm(), $$0);
+   }
 
-      public chk a() {
-         chl $$0 = chl.a(this.a, this.c.values());
-         return new chk(this.a, $$0, Map.copyOf(this.c));
-      }
+   @Override
+   protected void b(sn $$0) {
+      super.b($$0);
+      this.c.a($$0);
+   }
+
+   @Override
+   public void b(byte $$0) {
+      this.c.a(this.dM(), $$0);
+   }
+
+   @Override
+   public void l() {
+      super.l();
+      this.d.run();
+   }
+
+   public csq C() {
+      return this.c;
+   }
+
+   @Override
+   public boolean cM() {
+      return true;
    }
 }

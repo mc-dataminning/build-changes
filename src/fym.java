@@ -1,108 +1,181 @@
-import org.joml.Matrix3f;
-import org.joml.Matrix4f;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import java.util.Map;
+import org.slf4j.Logger;
 
-public class fym extends fye<cfp> {
-   private static final ahd a = new ahd("textures/entity/fishing_hook.png");
-   private static final fth f = fth.d(a);
-   private static final double g = 960.0;
+public class fym {
+   private static final Logger a = LogUtils.getLogger();
+   private static final Map<bly<?>, fyl<?>> b = new Object2ObjectOpenHashMap();
+   private static final Map<gfk.a, fyl<fse>> c = Map.of(gfk.a.b, $$0 -> new gdo($$0, false), gfk.a.a, $$0 -> new gdo($$0, true));
 
-   public fym(fyf.a $$0) {
-      super($$0);
+   private static <T extends blu> void a(bly<? extends T> $$0, fyl<T> $$1) {
+      b.put($$0, $$1);
    }
 
-   public void a(cfp $$0, float $$1, float $$2, ept $$3, fsz $$4, int $$5) {
-      cfb $$6 = $$0.s();
-      if ($$6 != null) {
-         $$3.a();
-         $$3.a();
-         $$3.b(0.5F, 0.5F, 0.5F);
-         $$3.a(this.c.b());
-         $$3.a(a.d.rotationDegrees(180.0F));
-         ept.a $$7 = $$3.c();
-         Matrix4f $$8 = $$7.a();
-         Matrix3f $$9 = $$7.b();
-         epx $$10 = $$4.getBuffer(f);
-         a($$10, $$8, $$9, $$5, 0.0F, 0, 0, 1);
-         a($$10, $$8, $$9, $$5, 1.0F, 0, 1, 1);
-         a($$10, $$8, $$9, $$5, 1.0F, 1, 1, 0);
-         a($$10, $$8, $$9, $$5, 0.0F, 1, 0, 0);
-         $$3.b();
-         int $$11 = $$6.fm() == blz.b ? 1 : -1;
-         cmr $$12 = $$6.eT();
-         if (!$$12.a(cmu.qS)) {
-            $$11 = -$$11;
+   public static Map<bly<?>, fyk<?>> a(fyl.a $$0) {
+      Builder<bly<?>, fyk<?>> $$1 = ImmutableMap.builder();
+      b.forEach(($$2, $$3) -> {
+         try {
+            $$1.put($$2, $$3.create($$0));
+         } catch (Exception var5) {
+            throw new IllegalArgumentException("Failed to create model for " + kd.g.b((bly<?>)$$2), var5);
          }
+      });
+      return $$1.build();
+   }
 
-         float $$13 = $$6.x($$2);
-         float $$14 = aui.a(aui.c($$13) * (float) Math.PI);
-         float $$15 = aui.i($$2, $$6.aV, $$6.aU) * (float) (Math.PI / 180.0);
-         double $$16 = (double)aui.a($$15);
-         double $$17 = (double)aui.b($$15);
-         double $$18 = (double)$$11 * 0.35;
-         double $$19 = 0.8;
-         double $$26;
-         double $$27;
-         double $$28;
-         float $$29;
-         if ((this.c.d == null || this.c.d.ax().a()) && $$6 == eva.N().s) {
-            double $$24 = 960.0 / (double)this.c.d.ae().c().intValue();
-            elm $$25 = this.c.b.j().a((float)$$11 * 0.525F, -0.1F);
-            $$25 = $$25.a($$24);
-            $$25 = $$25.b($$14 * 0.5F);
-            $$25 = $$25.a(-$$14 * 0.7F);
-            $$26 = aui.d((double)$$2, $$6.K, $$6.dr()) + $$25.c;
-            $$27 = aui.d((double)$$2, $$6.L, $$6.dt()) + $$25.d;
-            $$28 = aui.d((double)$$2, $$6.M, $$6.dx()) + $$25.e;
-            $$29 = $$6.cI();
-         } else {
-            $$26 = aui.d((double)$$2, $$6.K, $$6.dr()) - $$17 * $$18 - $$16 * 0.8;
-            $$27 = $$6.L + (double)$$6.cI() + ($$6.dt() - $$6.L) * (double)$$2 - 0.45;
-            $$28 = aui.d((double)$$2, $$6.M, $$6.dx()) - $$16 * $$18 + $$17 * 0.8;
-            $$29 = $$6.bX() ? -0.1875F : 0.0F;
+   public static Map<gfk.a, fyk<? extends cfh>> b(fyl.a $$0) {
+      Builder<gfk.a, fyk<? extends cfh>> $$1 = ImmutableMap.builder();
+      c.forEach(($$2, $$3) -> {
+         try {
+            $$1.put($$2, $$3.create($$0));
+         } catch (Exception var5) {
+            throw new IllegalArgumentException("Failed to create player model for " + $$2, var5);
          }
+      });
+      return $$1.build();
+   }
 
-         double $$30 = aui.d((double)$$2, $$0.K, $$0.dr());
-         double $$31 = aui.d((double)$$2, $$0.L, $$0.dt()) + 0.25;
-         double $$32 = aui.d((double)$$2, $$0.M, $$0.dx());
-         float $$33 = (float)($$26 - $$30);
-         float $$34 = (float)($$27 - $$31) + $$29;
-         float $$35 = (float)($$28 - $$32);
-         epx $$36 = $$4.getBuffer(fth.x());
-         ept.a $$37 = $$3.c();
-         int $$38 = 16;
+   public static boolean a() {
+      boolean $$0 = true;
 
-         for (int $$39 = 0; $$39 <= 16; $$39++) {
-            a($$33, $$34, $$35, $$36, $$37, a($$39, 16), a($$39 + 1, 16));
+      for (bly<?> $$1 : kd.g) {
+         if ($$1 != bly.bv && !b.containsKey($$1)) {
+            a.warn("No renderer registered for {}", kd.g.b($$1));
+            $$0 = false;
          }
-
-         $$3.b();
-         super.a($$0, $$1, $$2, $$3, $$4, $$5);
       }
+
+      return !$$0;
    }
 
-   private static float a(int $$0, int $$1) {
-      return (float)$$0 / (float)$$1;
-   }
-
-   private static void a(epx $$0, Matrix4f $$1, Matrix3f $$2, int $$3, float $$4, int $$5, int $$6, int $$7) {
-      $$0.a($$1, $$4 - 0.5F, (float)$$5 - 0.5F, 0.0F).a(255, 255, 255, 255).a((float)$$6, (float)$$7).c(gdw.d).b($$3).a($$2, 0.0F, 1.0F, 0.0F).e();
-   }
-
-   private static void a(float $$0, float $$1, float $$2, epx $$3, ept.a $$4, float $$5, float $$6) {
-      float $$7 = $$0 * $$5;
-      float $$8 = $$1 * ($$5 * $$5 + $$5) * 0.5F + 0.25F;
-      float $$9 = $$2 * $$5;
-      float $$10 = $$0 * $$6 - $$7;
-      float $$11 = $$1 * ($$6 * $$6 + $$6) * 0.5F + 0.25F - $$8;
-      float $$12 = $$2 * $$6 - $$9;
-      float $$13 = aui.c($$10 * $$10 + $$11 * $$11 + $$12 * $$12);
-      $$10 /= $$13;
-      $$11 /= $$13;
-      $$12 /= $$13;
-      $$3.a($$4.a(), $$7, $$8, $$9).a(0, 0, 0, 255).a($$4.b(), $$10, $$11, $$12).e();
-   }
-
-   public ahd a(cfp $$0) {
-      return a;
+   static {
+      a(bly.b, fxj::new);
+      a(bly.c, fzt::new);
+      a(bly.d, fxk::new);
+      a(bly.e, gay::new);
+      a(bly.f, fxm::new);
+      a(bly.g, fxn::new);
+      a(bly.h, fxo::new);
+      a(bly.i, fxp::new);
+      a(bly.j, fya.a::new);
+      a(bly.k, $$0 -> new fxq($$0, false));
+      a(bly.l, fxr::new);
+      a(bly.n, fxt::new);
+      a(bly.m, $$0 -> new fxs($$0, fmu.s));
+      a(bly.o, fxu::new);
+      a(bly.p, $$0 -> new fxq($$0, true));
+      a(bly.q, $$0 -> new fzq<>($$0, fmu.v));
+      a(bly.r, fxw::new);
+      a(bly.s, fxx::new);
+      a(bly.t, $$0 -> new fzq<>($$0, fmu.y));
+      a(bly.u, fxy::new);
+      a(bly.v, fxz::new);
+      a(bly.w, fyb::new);
+      a(bly.x, $$0 -> new fxv<>($$0, 0.87F, fmu.K));
+      a(bly.y, fyc::new);
+      a(bly.z, fyd::new);
+      a(bly.A, gaw::new);
+      a(bly.B, fye::new);
+      a(bly.F, fyh::new);
+      a(bly.G, fyi::new);
+      a(bly.D, fyg::new);
+      a(bly.E, gaw::new);
+      a(bly.C, fyf::new);
+      a(bly.H, fyo::new);
+      a(bly.I, fyn::new);
+      a(bly.J, gaw::new);
+      a(bly.K, fyp::new);
+      a(bly.L, $$0 -> new gaw<>($$0, 1.0F, true));
+      a(bly.M, fyq::new);
+      a(bly.ah, $$0 -> new gaw<>($$0, 3.0F, true));
+      a(bly.N, fyr::new);
+      a(bly.bw, fys::new);
+      a(bly.O, fyt::new);
+      a(bly.P, fyu::new);
+      a(bly.Q, $$0 -> new fzq<>($$0, fmu.ac));
+      a(bly.R, fyv::new);
+      a(bly.S, $$0 -> new fyw($$0, 6.0F));
+      a(bly.T, fzi::new);
+      a(bly.U, $$0 -> new fyx($$0, new flx<>($$0.a(fmu.ah))));
+      a(bly.V, fyy::new);
+      a(bly.W, fyz::new);
+      a(bly.X, fza::new);
+      a(bly.Y, $$0 -> new fzq<>($$0, fmu.al));
+      a(bly.Z, fzb::new);
+      a(bly.aa, fzd::new);
+      a(bly.ab, fzf::new);
+      a(bly.ac, fzt::new);
+      a(bly.ad, fzg::new);
+      a(bly.ae, fzh::new);
+      a(bly.af, fya.b::new);
+      a(bly.ag, fzi::new);
+      a(bly.ai, fzk::new);
+      a(bly.aj, fzl::new);
+      a(bly.ak, $$0 -> new fzn($$0, fmu.au));
+      a(bly.al, fzo::new);
+      a(bly.am, fzp::new);
+      a(bly.an, fzt::new);
+      a(bly.ao, $$0 -> new fzq<>($$0, fmu.ay));
+      a(bly.ap, fzs::new);
+      a(bly.aq, $$0 -> new fxv<>($$0, 0.92F, fmu.aA));
+      a(bly.ar, fzu::new);
+      a(bly.as, fzv::new);
+      a(bly.at, fzw::new);
+      a(bly.au, fzx::new);
+      a(bly.av, fzy::new);
+      a(bly.aw, fzz::new);
+      a(bly.ax, $$0 -> new gaa($$0, fmu.aG, fmu.aL, fmu.aM, false));
+      a(bly.ay, $$0 -> new gaa($$0, fmu.aH, fmu.aI, fmu.aJ, false));
+      a(bly.az, gab::new);
+      a(bly.aA, gac::new);
+      a(bly.aB, gaw::new);
+      a(bly.aC, gad::new);
+      a(bly.aD, gae::new);
+      a(bly.aE, gaf::new);
+      a(bly.aF, gah::new);
+      a(bly.aG, gai::new);
+      a(bly.aH, gak::new);
+      a(bly.aI, gaj::new);
+      a(bly.aJ, gal::new);
+      a(bly.aK, gam::new);
+      a(bly.aL, $$0 -> new gbd($$0, fmu.bl));
+      a(bly.aM, gan::new);
+      a(bly.aN, $$0 -> new gaw<>($$0, 0.75F, true));
+      a(bly.aO, gao::new);
+      a(bly.aQ, gaw::new);
+      a(bly.aP, gap::new);
+      a(bly.aR, $$0 -> new fzq<>($$0, fmu.bt));
+      a(bly.aS, gaq::new);
+      a(bly.aT, gar::new);
+      a(bly.aU, $$0 -> new gas<>($$0, new flx<>($$0.a(fmu.bv))));
+      a(bly.aV, gat::new);
+      a(bly.aW, gau::new);
+      a(bly.aX, gav::new);
+      a(bly.aY, fya.c::new);
+      a(bly.aZ, gba::new);
+      a(bly.ba, gaz::new);
+      a(bly.bb, $$0 -> new fzn($$0, fmu.bE));
+      a(bly.bc, gax::new);
+      a(bly.bd, gbb::new);
+      a(bly.be, gbc::new);
+      a(bly.bf, gbe::new);
+      a(bly.bg, gbf::new);
+      a(bly.bh, gbg::new);
+      a(bly.bj, gbi::new);
+      a(bly.bi, gbh::new);
+      a(bly.bk, gbj::new);
+      a(bly.bl, gbk::new);
+      a(bly.bm, gbl::new);
+      a(bly.bn, gbm::new);
+      a(bly.bo, gbn::new);
+      a(bly.bp, gbo::new);
+      a(bly.bq, gbp::new);
+      a(bly.br, gbq::new);
+      a(bly.bs, $$0 -> new gbd($$0, fmu.cd));
+      a(bly.bt, gbr::new);
+      a(bly.bu, $$0 -> new gaa($$0, fmu.cj, fmu.ck, fmu.cl, true));
    }
 }

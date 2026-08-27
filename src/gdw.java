@@ -1,59 +1,72 @@
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.platform.TextureUtil;
 import com.mojang.blaze3d.systems.RenderSystem;
+import java.io.IOException;
+import java.util.concurrent.Executor;
 
-public class gdw implements AutoCloseable {
-   private static final int e = 16;
-   public static final int a = 0;
-   public static final int b = 3;
-   public static final int c = 10;
-   public static final int d = a(0, 10);
-   private final gds f = new gds(16, 16, false);
+public abstract class gdw implements AutoCloseable {
+   public static final int a = -1;
+   protected int b = -1;
+   protected boolean c;
+   protected boolean d;
 
-   public gdw() {
-      eou $$0 = this.f.e();
-
-      for (int $$1 = 0; $$1 < 16; $$1++) {
-         for (int $$2 = 0; $$2 < 16; $$2++) {
-            if ($$1 < 8) {
-               $$0.a($$2, $$1, -1308622593);
-            } else {
-               int $$3 = (int)((1.0F - (float)$$2 / 15.0F * 0.75F) * 255.0F);
-               $$0.a($$2, $$1, $$3 << 24 | 16777215);
-            }
-         }
+   public void a(boolean $$0, boolean $$1) {
+      RenderSystem.assertOnRenderThreadOrInit();
+      this.c = $$0;
+      this.d = $$1;
+      int $$2;
+      int $$3;
+      if ($$0) {
+         $$2 = $$1 ? 9987 : 9729;
+         $$3 = 9729;
+      } else {
+         $$2 = $$1 ? 9986 : 9728;
+         $$3 = 9728;
       }
 
-      RenderSystem.activeTexture(33985);
-      this.f.c();
-      $$0.a(0, 0, 0, 0, 0, $$0.a(), $$0.b(), false, true, false, false);
-      RenderSystem.activeTexture(33984);
+      this.c();
+      GlStateManager._texParameter(3553, 10241, $$2);
+      GlStateManager._texParameter(3553, 10240, $$3);
+   }
+
+   public int a() {
+      RenderSystem.assertOnRenderThreadOrInit();
+      if (this.b == -1) {
+         this.b = TextureUtil.generateTextureId();
+      }
+
+      return this.b;
+   }
+
+   public void b() {
+      if (!RenderSystem.isOnRenderThread()) {
+         RenderSystem.recordRenderCall(() -> {
+            if (this.b != -1) {
+               TextureUtil.releaseTextureId(this.b);
+               this.b = -1;
+            }
+         });
+      } else if (this.b != -1) {
+         TextureUtil.releaseTextureId(this.b);
+         this.b = -1;
+      }
+   }
+
+   public abstract void a(aqh var1) throws IOException;
+
+   public void c() {
+      if (!RenderSystem.isOnRenderThreadOrInit()) {
+         RenderSystem.recordRenderCall(() -> GlStateManager._bindTexture(this.a()));
+      } else {
+         GlStateManager._bindTexture(this.a());
+      }
+   }
+
+   public void a(gem $$0, aqh $$1, ahg $$2, Executor $$3) {
+      $$0.a($$2, this);
    }
 
    @Override
    public void close() {
-      this.f.close();
-   }
-
-   public void a() {
-      RenderSystem.setupOverlayColor(this.f::a, 16);
-   }
-
-   public static int a(float $$0) {
-      return (int)($$0 * 15.0F);
-   }
-
-   public static int a(boolean $$0) {
-      return $$0 ? 3 : 10;
-   }
-
-   public static int a(int $$0, int $$1) {
-      return $$0 | $$1 << 16;
-   }
-
-   public static int a(float $$0, boolean $$1) {
-      return a(a($$0), a($$1));
-   }
-
-   public void b() {
-      RenderSystem.teardownOverlayColor();
    }
 }

@@ -1,18 +1,13 @@
 import com.google.common.collect.ImmutableSet;
 import java.util.Set;
 
-public class bwc extends bwm<bmf> {
+public class bwc extends bwr<bmk> {
    @Override
-   public Set<bvh<?>> a() {
-      return ImmutableSet.of(bvh.W);
+   protected void a(and $$0, bmk $$1) {
    }
 
    @Override
-   protected void a(amz $$0, bmf $$1) {
-      if ($$1.aZ()) {
-         $$1.dO().a(bvh.W, avm.a);
-      } else {
-         $$1.dO().b(bvh.W);
-      }
+   public Set<bvm<?>> a() {
+      return ImmutableSet.of();
    }
 }

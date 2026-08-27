@@ -1,21 +1,14 @@
-public class fxr extends fzl<bxy, fjf<bxy>> {
-   private static final ahd a = new ahd("textures/entity/fish/cod.png");
+public class fxr extends fzr<cdk, fje<cdk>> {
+   private static final ahg a = new ahg("textures/entity/breeze/breeze.png");
+   private static final ahg i = new ahg("textures/entity/breeze/breeze_wind.png");
 
-   public fxr(fyf.a $$0) {
-      super($$0, new fjf<>($$0.a(fmo.x)), 0.3F);
+   public fxr(fyl.a $$0) {
+      super($$0, new fje<>($$0.a(fmu.n)), 0.8F);
+      this.a(new gbv(this, $$0.f(), i));
+      this.a(new gbu(this, $$0.f(), a));
    }
 
-   public ahd a(bxy $$0) {
+   public ahg a(cdk $$0) {
       return a;
-   }
-
-   protected void a(bxy $$0, ept $$1, float $$2, float $$3, float $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      float $$5 = 4.3F * aui.a(0.6F * $$2);
-      $$1.a(a.d.rotationDegrees($$5));
-      if (!$$0.aZ()) {
-         $$1.a(0.1F, 0.1F, -0.1F);
-         $$1.a(a.f.rotationDegrees(90.0F));
-      }
    }
 }

@@ -1,480 +1,236 @@
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
-import it.unimi.dsi.fastutil.objects.ObjectSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Locale;
-import javax.annotation.Nullable;
+public class fgh extends eya<fgh.a> {
+   static final ahg a = new ahg("transferable_list/select_highlighted");
+   static final ahg m = new ahg("transferable_list/select");
+   static final ahg n = new ahg("transferable_list/unselect_highlighted");
+   static final ahg o = new ahg("transferable_list/unselect");
+   static final ahg p = new ahg("transferable_list/move_up_highlighted");
+   static final ahg q = new ahg("transferable_list/move_up");
+   static final ahg r = new ahg("transferable_list/move_down_highlighted");
+   static final ahg t = new ahg("transferable_list/move_down");
+   static final vf u = vf.c("pack.incompatible");
+   static final vf v = vf.c("pack.incompatible.confirm.title");
+   private final vf w;
+   final fgg x;
 
-public class fgh implements agq<cps>, eyb, eyt, fap, fgm {
-   public static final eyl a = new eyl(new ahd("recipe_book/button"), new ahd("recipe_book/button_highlighted"));
-   private static final eyl i = new eyl(
-      new ahd("recipe_book/filter_enabled"),
-      new ahd("recipe_book/filter_disabled"),
-      new ahd("recipe_book/filter_enabled_highlighted"),
-      new ahd("recipe_book/filter_disabled_highlighted")
-   );
-   protected static final ahd b = new ahd("textures/gui/recipe_book.png");
-   private static final vd j = vd.c("gui.recipebook.search_hint").a(n.u).a(n.h);
-   public static final int c = 147;
-   public static final int d = 166;
-   private static final int k = 86;
-   private static final vd l = vd.c("gui.recipebook.toggleRecipes.craftable");
-   private static final vd m = vd.c("gui.recipebook.toggleRecipes.all");
-   private int n;
-   private int o;
-   private int p;
-   protected final fgf e = new fgf();
-   private final List<fgj> q = Lists.newArrayList();
-   @Nullable
-   private fgj r;
-   protected eye f;
-   protected cjh<?> g;
-   protected eva h;
-   @Nullable
-   private exh t;
-   private String u = "";
-   private eun v;
-   private final fgi w = new fgi();
-   private final cff x = new cff();
-   private int y;
-   private boolean z;
-   private boolean A;
-   private boolean B;
-
-   public void a(int $$0, int $$1, eva $$2, boolean $$3, cjh<?> $$4) {
-      this.h = $$2;
-      this.o = $$0;
-      this.p = $$1;
-      this.g = $$4;
-      this.B = $$3;
-      $$2.s.bS = $$4;
-      this.v = $$2.s.m();
-      this.y = $$2.s.fS().l();
-      this.A = this.k();
-      if (this.A) {
-         this.d();
-      }
-   }
-
-   public void d() {
-      this.n = this.B ? 0 : 86;
-      int $$0 = (this.o - 147) / 2 - this.n;
-      int $$1 = (this.p - 166) / 2;
-      this.x.a();
-      this.h.s.fS().a(this.x);
-      this.g.a(this.x);
-      String $$2 = this.t != null ? this.t.a() : "";
-      this.t = new exh(this.h.h, $$0 + 25, $$1 + 13, 81, 9 + 5, vd.c("itemGroup.search"));
-      this.t.e(50);
-      this.t.g(true);
-      this.t.f(16777215);
-      this.t.a($$2);
-      this.t.c(j);
-      this.w.a(this.h, $$0, $$1);
-      this.w.a(this);
-      this.f = new eye($$0 + 110, $$1 + 12, 26, 16, this.v.a(this.g));
-      this.b();
-      this.a();
-      this.q.clear();
-
-      for (evj $$3 : evj.a(this.g.t())) {
-         this.q.add(new fgj($$3));
-      }
-
-      if (this.r != null) {
-         this.r = this.q.stream().filter($$0x -> $$0x.b().equals(this.r.b())).findFirst().orElse(null);
-      }
-
-      if (this.r == null) {
-         this.r = this.q.get(0);
-      }
-
-      this.r.b(true);
-      this.c(false);
-      this.l();
-   }
-
-   private void b() {
-      this.f.a(this.f.a() ? eyj.a(this.c()) : eyj.a(m));
-   }
-
-   protected void a() {
-      this.f.a(i);
-   }
-
-   public int a(int $$0, int $$1) {
-      int $$2;
-      if (this.f() && !this.B) {
-         $$2 = 177 + ($$0 - $$1 - 200) / 2;
-      } else {
-         $$2 = ($$0 - $$1) / 2;
-      }
-
-      return $$2;
-   }
-
-   public void e() {
-      this.b(!this.f());
-   }
-
-   public boolean f() {
-      return this.A;
-   }
-
-   private boolean k() {
-      return this.v.a(this.g.t());
-   }
-
-   protected void b(boolean $$0) {
-      if ($$0) {
-         this.d();
-      }
-
-      this.A = $$0;
-      this.v.a(this.g.t(), $$0);
-      if (!$$0) {
-         this.w.c();
-      }
-
-      this.j();
-   }
-
-   public void a(@Nullable cjp $$0) {
-      if ($$0 != null && $$0.e < this.g.p()) {
-         this.e.a();
-         if (this.f()) {
-            this.m();
-         }
-      }
-   }
-
-   private void c(boolean $$0) {
-      List<fgl> $$1 = this.v.a(this.r.b());
-      $$1.forEach($$0x -> $$0x.a(this.x, this.g.n(), this.g.o(), this.v));
-      List<fgl> $$2 = Lists.newArrayList($$1);
-      $$2.removeIf($$0x -> !$$0x.b());
-      $$2.removeIf($$0x -> !$$0x.d());
-      String $$3 = this.t.a();
-      if (!$$3.isEmpty()) {
-         ObjectSet<fgl> $$4 = new ObjectLinkedOpenHashSet(this.h.a(ghz.c).search($$3.toLowerCase(Locale.ROOT)));
-         $$2.removeIf($$1x -> !$$4.contains($$1x));
-      }
-
-      if (this.v.a(this.g)) {
-         $$2.removeIf($$0x -> !$$0x.c());
-      }
-
-      this.w.a($$2, $$0);
-   }
-
-   private void l() {
-      int $$0 = (this.o - 147) / 2 - this.n - 30;
-      int $$1 = (this.p - 166) / 2 + 3;
-      int $$2 = 27;
-      int $$3 = 0;
-
-      for (fgj $$4 : this.q) {
-         evj $$5 = $$4.b();
-         if ($$5 == evj.a || $$5 == evj.f) {
-            $$4.k = true;
-            $$4.c($$0, $$1 + 27 * $$3++);
-         } else if ($$4.a(this.v)) {
-            $$4.c($$0, $$1 + 27 * $$3++);
-            $$4.a(this.h);
-         }
-      }
-   }
-
-   public void g() {
-      boolean $$0 = this.k();
-      if (this.f() != $$0) {
-         this.b($$0);
-      }
-
-      if (this.f()) {
-         if (this.y != this.h.s.fS().l()) {
-            this.m();
-            this.y = this.h.s.fS().l();
-         }
-      }
-   }
-
-   private void m() {
-      this.x.a();
-      this.h.s.fS().a(this.x);
-      this.g.a(this.x);
-      this.c(false);
+   public fgh(evg $$0, fgg $$1, int $$2, int $$3, vf $$4) {
+      super($$0, $$2, $$3 - 83, 32, 36);
+      this.x = $$1;
+      this.w = $$4;
+      this.e = false;
+      this.a(true, (int)(9.0F * 1.5F));
    }
 
    @Override
-   public void a(ewm $$0, int $$1, int $$2, float $$3) {
-      if (this.f()) {
-         $$0.c().a();
-         $$0.c().a(0.0F, 0.0F, 100.0F);
-         int $$4 = (this.o - 147) / 2 - this.n;
-         int $$5 = (this.p - 166) / 2;
-         $$0.a(b, $$4, $$5, 1, 1, 147, 166);
-         this.t.a($$0, $$1, $$2, $$3);
-
-         for (fgj $$6 : this.q) {
-            $$6.a($$0, $$1, $$2, $$3);
-         }
-
-         this.f.a($$0, $$1, $$2, $$3);
-         this.w.a($$0, $$4, $$5, $$1, $$2, $$3);
-         $$0.c().b();
-      }
-   }
-
-   public void a(ewm $$0, int $$1, int $$2, int $$3, int $$4) {
-      if (this.f()) {
-         this.w.a($$0, $$3, $$4);
-         this.b($$0, $$1, $$2, $$3, $$4);
-      }
-   }
-
-   protected vd c() {
-      return l;
-   }
-
-   private void b(ewm $$0, int $$1, int $$2, int $$3, int $$4) {
-      cmr $$5 = null;
-
-      for (int $$6 = 0; $$6 < this.e.b(); $$6++) {
-         fgf.a $$7 = this.e.a($$6);
-         int $$8 = $$7.a() + $$1;
-         int $$9 = $$7.b() + $$2;
-         if ($$3 >= $$8 && $$4 >= $$9 && $$3 < $$8 + 16 && $$4 < $$9 + 16) {
-            $$5 = $$7.c();
-         }
-      }
-
-      if ($$5 != null && this.h.y != null) {
-         $$0.a(this.h.h, fct.a(this.h, $$5), $$3, $$4);
-      }
-   }
-
-   public void a(ewm $$0, int $$1, int $$2, boolean $$3, float $$4) {
-      this.e.a($$0, this.h, $$1, $$2, $$3, $$4);
+   protected void a(ews $$0, int $$1, int $$2) {
+      vf $$3 = vf.i().b(this.w).a(n.t, n.r);
+      $$0.a(this.c.h, $$3, $$1 + this.g / 2 - this.c.h.a($$3) / 2, Math.min(this.C() + 3, $$2), 16777215, false);
    }
 
    @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      if (this.f() && !this.h.s.P_()) {
-         if (this.w.a($$0, $$1, $$2, (this.o - 147) / 2 - this.n, (this.p - 166) / 2, 147, 166)) {
-            cpx<?> $$3 = this.w.a();
-            fgl $$4 = this.w.b();
-            if ($$3 != null && $$4 != null) {
-               if (!$$4.a($$3) && this.e.c() == $$3) {
-                  return false;
-               }
-
-               this.e.a();
-               this.h.q.a(this.h.s.bS.j, $$3, fct.s());
-               if (!this.p()) {
-                  this.b(false);
-               }
-            }
-
-            return true;
-         } else if (this.t.a($$0, $$1, $$2)) {
-            this.t.a(true);
-            return true;
-         } else {
-            this.t.a(false);
-            if (this.f.a($$0, $$1, $$2)) {
-               boolean $$5 = this.n();
-               this.f.b($$5);
-               this.b();
-               this.j();
-               this.c(false);
-               return true;
-            } else {
-               for (fgj $$6 : this.q) {
-                  if ($$6.a($$0, $$1, $$2)) {
-                     if (this.r != $$6) {
-                        if (this.r != null) {
-                           this.r.b(false);
-                        }
-
-                        this.r = $$6;
-                        this.r.b(true);
-                        this.c(true);
-                     }
-
-                     return true;
-                  }
-               }
-
-               return false;
-            }
-         }
-      } else {
-         return false;
-      }
+   public int b() {
+      return this.g;
    }
 
-   private boolean n() {
-      cji $$0 = this.g.t();
-      boolean $$1 = !this.v.b($$0);
-      this.v.b($$0, $$1);
-      return $$1;
-   }
-
-   public boolean a(double $$0, double $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
-      if (!this.f()) {
-         return true;
-      } else {
-         boolean $$7 = $$0 < (double)$$2 || $$1 < (double)$$3 || $$0 >= (double)($$2 + $$4) || $$1 >= (double)($$3 + $$5);
-         boolean $$8 = (double)($$2 - 147) < $$0 && $$0 < (double)$$2 && (double)$$3 < $$1 && $$1 < (double)($$3 + $$5);
-         return $$7 && !$$8 && !this.r.z();
-      }
+   @Override
+   protected int c() {
+      return this.D() - 6;
    }
 
    @Override
    public boolean a(int $$0, int $$1, int $$2) {
-      this.z = false;
-      if (!this.f() || this.h.s.P_()) {
-         return false;
-      } else if ($$0 == 256 && !this.p()) {
-         this.b(false);
-         return true;
-      } else if (this.t.a($$0, $$1, $$2)) {
-         this.o();
-         return true;
-      } else if (this.t.aI_() && this.t.i() && $$0 != 256) {
-         return true;
-      } else if (this.h.m.K.a($$0, $$1) && !this.t.aI_()) {
-         this.z = true;
-         this.t.a(true);
-         return true;
-      } else {
-         return false;
+      if (this.i() != null) {
+         switch ($$0) {
+            case 32:
+            case 257:
+               this.i().c();
+               return true;
+            default:
+               if (fcz.s()) {
+                  switch ($$0) {
+                     case 264:
+                        this.i().f();
+                        return true;
+                     case 265:
+                        this.i().e();
+                        return true;
+                  }
+               }
+         }
       }
+
+      return super.a($$0, $$1, $$2);
    }
 
-   @Override
-   public boolean b(int $$0, int $$1, int $$2) {
-      this.z = false;
-      return eyt.super.b($$0, $$1, $$2);
-   }
+   public static class a extends eya.a<fgh.a> {
+      private static final int b = 157;
+      private static final int c = 157;
+      private static final String d = "...";
+      private final fgh e;
+      protected final evg a;
+      private final fgf.a f;
+      private final atz g;
+      private final exx h;
+      private final atz i;
+      private final exx j;
 
-   @Override
-   public boolean a(char $$0, int $$1) {
-      if (this.z) {
-         return false;
-      } else if (!this.f() || this.h.s.P_()) {
-         return false;
-      } else if (this.t.a($$0, $$1)) {
-         this.o();
-         return true;
-      } else {
-         return eyt.super.a($$0, $$1);
+      public a(evg $$0, fgh $$1, fgf.a $$2) {
+         this.a = $$0;
+         this.f = $$2;
+         this.e = $$1;
+         this.g = a($$0, $$2.d());
+         this.h = b($$0, $$2.g());
+         this.i = a($$0, fgh.u);
+         this.j = b($$0, $$2.b().b());
       }
-   }
 
-   @Override
-   public boolean c(double $$0, double $$1) {
-      return false;
-   }
-
-   @Override
-   public void a(boolean $$0) {
-   }
-
-   @Override
-   public boolean aI_() {
-      return false;
-   }
-
-   private void o() {
-      String $$0 = this.t.a().toLowerCase(Locale.ROOT);
-      this.a($$0);
-      if (!$$0.equals(this.u)) {
-         this.c(false);
-         this.u = $$0;
+      private static atz a(evg $$0, vf $$1) {
+         int $$2 = $$0.h.a($$1);
+         if ($$2 > 157) {
+            vk $$3 = vk.a($$0.h.a($$1, 157 - $$0.h.b("...")), vk.e("..."));
+            return si.a().a($$3);
+         } else {
+            return $$1.g();
+         }
       }
-   }
 
-   private void a(String $$0) {
-      if ("excitedze".equals($$0)) {
-         gfn $$1 = this.h.ad();
-         String $$2 = "en_pt";
-         gfm $$3 = $$1.b("en_pt");
-         if ($$3 == null || $$1.a().equals("en_pt")) {
-            return;
+      private static exx b(evg $$0, vf $$1) {
+         return exx.a($$0.h, $$1, 157, 2);
+      }
+
+      @Override
+      public vf a() {
+         return vf.a("narrator.select", this.f.d());
+      }
+
+      @Override
+      public void a(ews $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         apq $$10 = this.f.b();
+         if (!$$10.a()) {
+            $$0.a($$3 - 1, $$2 - 1, $$3 + $$4 - 3, $$2 + $$5 + 1, -8978432);
          }
 
-         $$1.a("en_pt");
-         this.h.m.ad = "en_pt";
-         this.h.k();
-         this.h.m.as();
-      }
-   }
+         $$0.a(this.f.a(), $$3, $$2, 0.0F, 0.0F, 32, 32, 32, 32);
+         atz $$11 = this.g;
+         exx $$12 = this.h;
+         if (this.d() && (this.a.m.W().c() || $$8 || this.e.i() == this && this.e.aI_())) {
+            $$0.a($$3, $$2, $$3 + 32, $$2 + 32, -1601138544);
+            int $$13 = $$6 - $$3;
+            int $$14 = $$7 - $$2;
+            if (!this.f.b().a()) {
+               $$11 = this.i;
+               $$12 = this.j;
+            }
 
-   private boolean p() {
-      return this.n == 86;
-   }
+            if (this.f.o()) {
+               if ($$13 < 32) {
+                  $$0.a(fgh.a, $$3, $$2, 32, 32);
+               } else {
+                  $$0.a(fgh.m, $$3, $$2, 32, 32);
+               }
+            } else {
+               if (this.f.p()) {
+                  if ($$13 < 16) {
+                     $$0.a(fgh.n, $$3, $$2, 32, 32);
+                  } else {
+                     $$0.a(fgh.o, $$3, $$2, 32, 32);
+                  }
+               }
 
-   public void i() {
-      this.l();
-      if (this.f()) {
-         this.c(false);
-      }
-   }
+               if (this.f.q()) {
+                  if ($$13 < 32 && $$13 > 16 && $$14 < 16) {
+                     $$0.a(fgh.p, $$3, $$2, 32, 32);
+                  } else {
+                     $$0.a(fgh.q, $$3, $$2, 32, 32);
+                  }
+               }
 
-   @Override
-   public void a(List<cpx<?>> $$0) {
-      for (cpx<?> $$1 : $$0) {
-         this.h.s.a($$1);
-      }
-   }
-
-   public void a(cpx<?> $$0, List<cjp> $$1) {
-      cmr $$2 = $$0.b().a(this.h.r.I_());
-      this.e.a($$0);
-      this.e.a(cps.a($$2), $$1.get(0).f, $$1.get(0).g);
-      this.a(this.g.n(), this.g.o(), this.g.m(), $$0, $$0.b().a().iterator(), 0);
-   }
-
-   @Override
-   public void a(Iterator<cps> $$0, int $$1, int $$2, int $$3, int $$4) {
-      cps $$5 = $$0.next();
-      if (!$$5.c()) {
-         cjp $$6 = this.g.i.get($$1);
-         this.e.a($$5, $$6.f, $$6.g);
-      }
-   }
-
-   protected void j() {
-      if (this.h.I() != null) {
-         cji $$0 = this.g.t();
-         boolean $$1 = this.v.a().a($$0);
-         boolean $$2 = this.v.a().b($$0);
-         this.h.I().b(new aem($$0, $$1, $$2));
-      }
-   }
-
-   @Override
-   public fap.a s() {
-      return this.A ? fap.a.b : fap.a.a;
-   }
-
-   @Override
-   public void b(far $$0) {
-      List<fap> $$1 = Lists.newArrayList();
-      this.w.a($$1x -> {
-         if ($$1x.A()) {
-            $$1.add($$1x);
+               if (this.f.r()) {
+                  if ($$13 < 32 && $$13 > 16 && $$14 > 16) {
+                     $$0.a(fgh.r, $$3, $$2, 32, 32);
+                  } else {
+                     $$0.a(fgh.t, $$3, $$2, 32, 32);
+                  }
+               }
+            }
          }
-      });
-      $$1.add(this.t);
-      $$1.add(this.f);
-      $$1.addAll(this.q);
-      fct.b $$2 = fct.a($$1, null);
-      if ($$2 != null) {
-         $$2.a.b($$0.a());
+
+         $$0.b(this.a.h, $$11, $$3 + 32 + 2, $$2 + 1, 16777215);
+         $$12.b($$0, $$3 + 32 + 2, $$2 + 12, 10, -8355712);
+      }
+
+      public String b() {
+         return this.f.c();
+      }
+
+      private boolean d() {
+         return !this.f.h() || !this.f.i();
+      }
+
+      public void c() {
+         if (this.f.o() && this.g()) {
+            this.e.x.a(this.e);
+         } else if (this.f.p()) {
+            this.f.k();
+            this.e.x.a(this.e);
+         }
+      }
+
+      void e() {
+         if (this.f.q()) {
+            this.f.l();
+         }
+      }
+
+      void f() {
+         if (this.f.r()) {
+            this.f.m();
+         }
+      }
+
+      private boolean g() {
+         if (this.f.b().a()) {
+            this.f.j();
+            return true;
+         } else {
+            vf $$0 = this.f.b().c();
+            this.a.a(new fbs($$0x -> {
+               this.a.a(this.e.x);
+               if ($$0x) {
+                  this.f.j();
+               }
+            }, fgh.v, $$0));
+            return false;
+         }
+      }
+
+      @Override
+      public boolean a(double $$0, double $$1, int $$2) {
+         double $$3 = $$0 - (double)this.e.q();
+         double $$4 = $$1 - (double)this.e.g(this.e.l().indexOf(this));
+         if (this.d() && $$3 <= 32.0) {
+            this.e.x.n();
+            if (this.f.o()) {
+               this.g();
+               return true;
+            }
+
+            if ($$3 < 16.0 && this.f.p()) {
+               this.f.k();
+               return true;
+            }
+
+            if ($$3 > 16.0 && $$4 < 16.0 && this.f.q()) {
+               this.f.l();
+               return true;
+            }
+
+            if ($$3 > 16.0 && $$4 > 16.0 && this.f.r()) {
+               this.f.m();
+               return true;
+            }
+         }
+
+         return false;
       }
    }
 }

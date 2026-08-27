@@ -2,7 +2,7 @@ import com.google.gson.JsonObject;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
 
 public class hq implements hj<IntegerArgumentType, hq.a> {
-   public void a(hq.a $$0, ug $$1) {
+   public void a(hq.a $$0, ui $$1) {
       boolean $$2 = $$0.b != Integer.MIN_VALUE;
       boolean $$3 = $$0.c != Integer.MAX_VALUE;
       $$1.k(hl.a($$2, $$3));
@@ -15,7 +15,7 @@ public class hq implements hj<IntegerArgumentType, hq.a> {
       }
    }
 
-   public hq.a a(ug $$0) {
+   public hq.a a(ui $$0) {
       byte $$1 = $$0.readByte();
       int $$2 = hl.a($$1) ? $$0.readInt() : Integer.MIN_VALUE;
       int $$3 = hl.b($$1) ? $$0.readInt() : Integer.MAX_VALUE;

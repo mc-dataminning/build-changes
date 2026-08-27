@@ -1,57 +1,61 @@
-public class bmg extends blp {
-   private static final String b = "data";
-   private sl c = new sl();
+public class bmg {
+   private static final int a = 140;
+   private static final int b = 700;
+   private final agp c;
+   private final agm<Integer> d;
+   private final agm<Boolean> e;
+   private boolean f;
+   private int g;
 
-   public bmg(blt<?> $$0, cti $$1) {
-      super($$0, $$1);
-      this.af = true;
+   public bmg(agp $$0, agm<Integer> $$1, agm<Boolean> $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
-   @Override
-   public void l() {
+   public void a() {
+      this.f = true;
+      this.g = 0;
    }
 
-   @Override
-   protected void c_() {
+   public boolean a(auu $$0) {
+      if (this.f) {
+         return false;
+      } else {
+         this.f = true;
+         this.g = 0;
+         this.c.b(this.d, $$0.a(841) + 140);
+         return true;
+      }
    }
 
-   @Override
-   protected void a(sl $$0) {
-      this.c = $$0.p("data");
+   public void b() {
+      if (this.f && this.g++ > this.e()) {
+         this.f = false;
+      }
    }
 
-   @Override
-   protected void b(sl $$0) {
-      $$0.a("data", this.c.h());
+   public float c() {
+      return this.f ? 1.0F + 1.15F * aun.a((float)this.g / (float)this.e() * (float) Math.PI) : 1.0F;
    }
 
-   @Override
-   public xd<yx> dj() {
-      throw new IllegalStateException("Markers should never be sent");
+   private int e() {
+      return this.c.b(this.d);
    }
 
-   @Override
-   protected boolean r(blp $$0) {
-      return false;
+   public void a(sn $$0) {
+      $$0.a("Saddle", this.d());
    }
 
-   @Override
-   protected boolean bD() {
-      return false;
+   public void b(sn $$0) {
+      this.a($$0.q("Saddle"));
    }
 
-   @Override
-   protected void p(blp $$0) {
-      throw new IllegalStateException("Should never addPassenger without checking couldAcceptPassenger()");
+   public void a(boolean $$0) {
+      this.c.b(this.e, $$0);
    }
 
-   @Override
-   public eep s_() {
-      return eep.d;
-   }
-
-   @Override
-   public boolean r_() {
-      return true;
+   public boolean d() {
+      return this.c.b(this.e);
    }
 }

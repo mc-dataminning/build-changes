@@ -1,46 +1,46 @@
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+public final class emk extends emb {
+   private final emb d;
+   private final int e;
+   private final int f;
+   private final int g;
+   private final int h;
+   private final int i;
+   private final int j;
 
-class emk {
-   private final Map<emi, emn> a = new HashMap<>();
-
-   @Nullable
-   public emn a(emi $$0) {
-      return this.a.get($$0);
+   protected emk(emb $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
+      super($$4 - $$1, $$5 - $$2, $$6 - $$3);
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3;
+      this.h = $$4;
+      this.i = $$5;
+      this.j = $$6;
    }
 
-   public emn a(emi $$0, Consumer<emn> $$1) {
-      return this.a.computeIfAbsent($$0, $$1x -> {
-         emn $$2 = new emn();
-         $$1.accept($$2);
-         return $$2;
-      });
+   @Override
+   public boolean b(int $$0, int $$1, int $$2) {
+      return this.d.b(this.e + $$0, this.f + $$1, this.g + $$2);
    }
 
-   public boolean b(emi $$0) {
-      return this.a.get($$0) != null;
+   @Override
+   public void c(int $$0, int $$1, int $$2) {
+      this.d.c(this.e + $$0, this.f + $$1, this.g + $$2);
    }
 
-   public boolean a() {
-      return !this.a.isEmpty();
+   @Override
+   public int a(ic.a $$0) {
+      return this.a($$0, this.d.a($$0));
    }
 
-   public Object2IntMap<emi> b() {
-      Object2IntMap<emi> $$0 = new Object2IntOpenHashMap();
-      this.a.forEach(($$1, $$2) -> $$0.put($$1, $$2.a()));
-      return $$0;
+   @Override
+   public int b(ic.a $$0) {
+      return this.a($$0, this.d.b($$0));
    }
 
-   void a(emi $$0, emn $$1) {
-      this.a.put($$0, $$1);
-   }
-
-   Map<emi, emn> c() {
-      return Collections.unmodifiableMap(this.a);
+   private int a(ic.a $$0, int $$1) {
+      int $$2 = $$0.a(this.e, this.f, this.g);
+      int $$3 = $$0.a(this.h, this.i, this.j);
+      return aun.a($$1, $$2, $$3) - $$2;
    }
 }

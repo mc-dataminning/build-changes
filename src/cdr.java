@@ -1,169 +1,150 @@
 import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Dynamic;
-import java.util.List;
-import java.util.UUID;
 import javax.annotation.Nullable;
+import org.joml.Vector3f;
 
-public class cdr extends cdq implements cbw, cem {
-   private static final agj<Boolean> bV = agm.a(cdr.class, agl.k);
-   private static final agj<Boolean> bW = agm.a(cdr.class, agl.k);
-   private static final agj<Boolean> bX = agm.a(cdr.class, agl.k);
-   private static final UUID bY = UUID.fromString("766bfa64-11f3-11ea-8d71-362b9e155667");
-   private static final bnj bZ = new bnj(bY, "Baby speed boost", 0.2F, bnj.a.b);
-   private static final int ca = 16;
-   private static final float cb = 0.35F;
-   private static final int cc = 5;
-   private static final float cd = 1.6F;
-   private static final float ce = 0.1F;
-   private static final int cf = 3;
-   private static final float cg = 0.2F;
-   private static final float ch = 0.82F;
-   private static final double ci = 0.5;
-   private final bkd cj = new bkd(8);
-   private boolean ck;
-   protected static final ImmutableList<bwn<? extends bwm<? super cdr>>> bT = ImmutableList.of(bwn.c, bwn.d, bwn.b, bwn.f, bwn.k);
-   protected static final ImmutableList<bvh<?>> bU = ImmutableList.of(
-      bvh.n,
-      bvh.v,
-      bvh.g,
-      bvh.h,
-      bvh.k,
-      bvh.l,
-      bvh.an,
-      bvh.am,
-      bvh.K,
-      bvh.aO,
-      bvh.x,
-      bvh.y,
-      new bvh[]{
-         bvh.m,
-         bvh.E,
-         bvh.o,
-         bvh.p,
-         bvh.q,
-         bvh.t,
-         bvh.aa,
-         bvh.ab,
-         bvh.z,
-         bvh.ac,
-         bvh.ad,
-         bvh.af,
-         bvh.ae,
-         bvh.ah,
-         bvh.ai,
-         bvh.ag,
-         bvh.ak,
-         bvh.L,
-         bvh.aq,
-         bvh.s,
-         bvh.ar,
-         bvh.as,
-         bvh.aj,
-         bvh.al,
-         bvh.at,
-         bvh.au,
-         bvh.av
-      }
+public class cdr extends bxx implements ccg, cdt {
+   private static final agm<Boolean> bW = agp.a(cdr.class, ago.k);
+   private static final float bX = 0.2F;
+   private static final int bY = 40;
+   private static final float bZ = 0.3F;
+   private static final int ca = 1;
+   private static final float cb = 0.6F;
+   private static final int cc = 6;
+   private static final float cd = 0.5F;
+   private static final int ce = 300;
+   private int cf;
+   private int cg;
+   private boolean ch;
+   protected static final ImmutableList<? extends bws<? extends bwr<? super cdr>>> bT = ImmutableList.of(bws.c, bws.d, bws.n, bws.m);
+   protected static final ImmutableList<? extends bvm<?>> bU = ImmutableList.of(
+      bvm.r,
+      bvm.g,
+      bvm.h,
+      bvm.k,
+      bvm.l,
+      bvm.n,
+      bvm.m,
+      bvm.E,
+      bvm.t,
+      bvm.o,
+      bvm.p,
+      bvm.ap,
+      new bvm[]{bvm.z, bvm.ar, bvm.as, bvm.ao, bvm.J, bvm.av, bvm.aw, bvm.Y}
    );
 
-   public cdr(blt<? extends cdq> $$0, cti $$1) {
+   public cdr(bly<? extends cdr> $$0, cto $$1) {
       super($$0, $$1);
       this.bJ = 5;
    }
 
    @Override
-   public void b(sl $$0) {
-      super.b($$0);
+   public boolean a(cfh $$0) {
+      return !this.fS();
+   }
+
+   public static bnp.a u() {
+      return cco.gk().a(bnq.l, 40.0).a(bnq.m, 0.3F).a(bnq.i, 0.6F).a(bnq.d, 1.0).a(bnq.c, 6.0);
+   }
+
+   @Override
+   public boolean C(blu $$0) {
+      if (!($$0 instanceof bmk)) {
+         return false;
+      } else {
+         this.cf = 10;
+         this.dM().a(this, (byte)4);
+         this.a(arr.lC, 1.0F, this.eX());
+         cds.a(this, (bmk)$$0);
+         return cdt.a(this, (bmk)$$0);
+      }
+   }
+
+   @Override
+   protected void e(bmk $$0) {
+      if (this.w()) {
+         cdt.b(this, $$0);
+      }
+   }
+
+   @Override
+   public boolean a(bks $$0, float $$1) {
+      boolean $$2 = super.a($$0, $$1);
+      if (this.dM().B) {
+         return false;
+      } else {
+         if ($$2 && $$0.d() instanceof bmk) {
+            cds.b(this, (bmk)$$0.d());
+         }
+
+         return $$2;
+      }
+   }
+
+   @Override
+   protected bnk.b<cdr> dP() {
+      return bnk.a(bU, bT);
+   }
+
+   @Override
+   protected bnk<?> a(Dynamic<?> $$0) {
+      return cds.a(this.dP().a($$0));
+   }
+
+   @Override
+   public bnk<cdr> dO() {
+      return (bnk<cdr>)super.dO();
+   }
+
+   @Override
+   protected void Z() {
+      this.dM().af().a("hoglinBrain");
+      this.dO().a((and)this.dM(), this);
+      this.dM().af().c();
+      cds.a(this);
+      if (this.A()) {
+         this.cg++;
+         if (this.cg > 300) {
+            this.b(arr.lD);
+            this.c((and)this.dM());
+         }
+      } else {
+         this.cg = 0;
+      }
+   }
+
+   @Override
+   public void d_() {
+      if (this.cf > 0) {
+         this.cf--;
+      }
+
+      super.d_();
+   }
+
+   @Override
+   protected void m() {
       if (this.o_()) {
-         $$0.a("IsBaby", true);
-      }
-
-      if (this.ck) {
-         $$0.a("CannotHunt", true);
-      }
-
-      this.a_($$0);
-   }
-
-   @Override
-   public void a(sl $$0) {
-      super.a($$0);
-      this.a($$0.q("IsBaby"));
-      this.y($$0.q("CannotHunt"));
-      this.c($$0);
-   }
-
-   @avn
-   @Override
-   public bkd A() {
-      return this.cj;
-   }
-
-   @Override
-   protected void a(bkn $$0, int $$1, boolean $$2) {
-      super.a($$0, $$1, $$2);
-      if ($$0.d() instanceof cbv $$4 && $$4.gf()) {
-         cmr $$5 = new cmr(cmu.uk);
-         $$4.gg();
-         this.b($$5);
-      }
-
-      this.cj.f().forEach(this::b);
-   }
-
-   protected cmr l(cmr $$0) {
-      return this.cj.a($$0);
-   }
-
-   protected boolean m(cmr $$0) {
-      return this.cj.b($$0);
-   }
-
-   @Override
-   protected void c_() {
-      super.c_();
-      this.an.a(bV, false);
-      this.an.a(bW, false);
-      this.an.a(bX, false);
-   }
-
-   @Override
-   public void a(agj<?> $$0) {
-      super.a($$0);
-      if (bV.equals($$0)) {
-         this.k_();
+         this.bJ = 3;
+         this.a(bnq.c).a(0.5);
+      } else {
+         this.bJ = 5;
+         this.a(bnq.c).a(6.0);
       }
    }
 
-   public static bnk.a gl() {
-      return ccj.gk().a(bnl.l, 16.0).a(bnl.m, 0.35F).a(bnl.c, 5.0);
-   }
-
-   public static boolean b(blt<cdr> $$0, ctj $$1, bmj $$2, hx $$3, aup $$4) {
-      return !$$1.a_($$3.d()).a(cwl.kK);
+   public static boolean c(bly<cdr> $$0, ctp $$1, bmo $$2, hx $$3, auu $$4) {
+      return !$$1.a_($$3.d()).a(cwr.kK);
    }
 
    @Nullable
    @Override
-   public bmy a(ctx $$0, bjt $$1, bmj $$2, @Nullable bmy $$3, @Nullable sl $$4) {
-      aup $$5 = $$0.F_();
-      if ($$2 != bmj.d) {
-         if ($$5.i() < 0.2F) {
-            this.a(true);
-         } else if (this.gf()) {
-            this.a(blu.a, this.gn());
-         }
+   public bnd a(cud $$0, bjy $$1, bmo $$2, @Nullable bnd $$3, @Nullable sn $$4) {
+      if ($$0.F_().i() < 0.2F) {
+         this.a(true);
       }
 
-      cds.a(this, $$0.F_());
-      this.a($$5, $$1);
-      this.b($$5, $$1);
       return super.a($$0, $$1, $$2, $$3, $$4);
-   }
-
-   @Override
-   protected boolean X() {
-      return false;
    }
 
    @Override
@@ -172,88 +153,47 @@ public class cdr extends cdq implements cbw, cem {
    }
 
    @Override
-   protected void a(aup $$0, bjt $$1) {
-      if (this.gf()) {
-         this.a(blu.f, new cmr(cmu.pL), $$0);
-         this.a(blu.e, new cmr(cmu.pM), $$0);
-         this.a(blu.d, new cmr(cmu.pN), $$0);
-         this.a(blu.c, new cmr(cmu.pO), $$0);
-      }
-   }
-
-   private void a(blu $$0, cmr $$1, aup $$2) {
-      if ($$2.i() < 0.1F) {
-         this.a($$0, $$1);
-      }
-   }
-
-   @Override
-   protected bnf.b<cdr> dP() {
-      return bnf.a(bU, bT);
-   }
-
-   @Override
-   protected bnf<?> a(Dynamic<?> $$0) {
-      return cds.a(this, this.dP().a($$0));
-   }
-
-   @Override
-   public bnf<cdr> dO() {
-      return (bnf<cdr>)super.dO();
-   }
-
-   @Override
-   public bjv b(cfb $$0, bju $$1) {
-      bjv $$2 = super.b($$0, $$1);
-      if ($$2.a()) {
-         return $$2;
-      } else if (!this.dM().B) {
-         return cds.a(this, $$0, $$1);
+   public float a(hx $$0, ctr $$1) {
+      if (cds.a(this, $$0)) {
+         return -1.0F;
       } else {
-         boolean $$3 = cds.b(this, $$0.b($$1)) && this.gg() != cdt.d;
-         return $$3 ? bjv.a : bjv.d;
+         return $$1.a_($$0.d()).a(cwr.ow) ? 10.0F : 0.0F;
       }
    }
 
    @Override
-   protected float b(bmr $$0, blq $$1) {
-      float $$2 = super.b($$0, $$1);
-      return this.o_() ? $$2 - 0.82F : $$2;
+   protected Vector3f a(blu $$0, blv $$1, float $$2) {
+      return new Vector3f(0.0F, $$1.b + 0.09375F * $$2, 0.0F);
    }
 
    @Override
-   public void a(boolean $$0) {
-      this.an().b(bV, $$0);
-      if (!this.dM().B) {
-         bnh $$1 = this.a(bnl.m);
-         $$1.b(bZ.a());
-         if ($$0) {
-            $$1.b(bZ);
-         }
+   public bka b(cfh $$0, bjz $$1) {
+      bka $$2 = super.b($$0, $$1);
+      if ($$2.a()) {
+         this.fJ();
+      }
+
+      return $$2;
+   }
+
+   @Override
+   public void b(byte $$0) {
+      if ($$0 == 4) {
+         this.cf = 10;
+         this.a(arr.lC, 1.0F, this.eX());
+      } else {
+         super.b($$0);
       }
    }
 
    @Override
-   public boolean o_() {
-      return this.an().b(bV);
-   }
-
-   private void y(boolean $$0) {
-      this.ck = $$0;
+   public int ge() {
+      return this.cf;
    }
 
    @Override
-   protected boolean u() {
-      return !this.ck;
-   }
-
-   @Override
-   protected void Z() {
-      this.dM().af().a("piglinBrain");
-      this.dO().a((amz)this.dM(), this);
-      this.dM().af().c();
-      cds.a(this);
-      super.Z();
+   public boolean ec() {
+      return true;
    }
 
    @Override
@@ -261,170 +201,127 @@ public class cdr extends cdq implements cbw, cem {
       return this.bJ;
    }
 
-   @Override
-   protected void c(amz $$0) {
-      cds.b(this);
-      this.cj.f().forEach(this::b);
-      super.c($$0);
-   }
-
-   private cmr gn() {
-      return (double)this.ag.i() < 0.5 ? new cmr(cmu.vM) : new cmr(cmu.oS);
-   }
-
-   private boolean go() {
-      return this.an.b(bW);
-   }
-
-   @Override
-   public void b(boolean $$0) {
-      this.an.b(bW, $$0);
-   }
-
-   @Override
-   public void a() {
-      this.bb = 0;
-   }
-
-   @Override
-   public cdt gg() {
-      if (this.gm()) {
-         return cdt.e;
-      } else if (cds.a(this.eU())) {
-         return cdt.d;
-      } else if (this.fW() && this.gh()) {
-         return cdt.a;
-      } else if (this.go()) {
-         return cdt.c;
-      } else {
-         return this.fW() && this.b(cmu.vM) ? cdt.b : cdt.f;
-      }
-   }
-
-   public boolean gm() {
-      return this.an.b(bX);
-   }
-
-   public void x(boolean $$0) {
-      this.an.b(bX, $$0);
-   }
-
-   @Override
-   public boolean a(bkn $$0, float $$1) {
-      boolean $$2 = super.a($$0, $$1);
-      if (this.dM().B) {
-         return false;
-      } else {
-         if ($$2 && $$0.d() instanceof bmf) {
-            cds.a(this, (bmf)$$0.d());
-         }
-
-         return $$2;
+   private void c(and $$0) {
+      cdg $$1 = this.a(bly.bq, true);
+      if ($$1 != null) {
+         $$1.b(new blh(blj.i, 200, 0));
       }
    }
 
    @Override
-   public void a(bmf $$0, float $$1) {
-      this.b(this, 1.6F);
+   public boolean m(cmx $$0) {
+      return $$0.a(cna.dB);
+   }
+
+   public boolean w() {
+      return !this.o_();
    }
 
    @Override
-   public void a(bmf $$0, cmr $$1, cft $$2, float $$3) {
-      this.a(this, $$0, $$2, $$3, 1.6F);
+   protected void c_() {
+      super.c_();
+      this.an.a(bW, false);
    }
 
    @Override
-   public boolean a(cnh $$0) {
-      return $$0 == cmu.vM;
-   }
+   public void b(sn $$0) {
+      super.b($$0);
+      if (this.gl()) {
+         $$0.a("IsImmuneToZombification", true);
+      }
 
-   protected void n(cmr $$0) {
-      this.b(blu.a, $$0);
-   }
-
-   protected void o(cmr $$0) {
-      if ($$0.a(cds.c)) {
-         this.a(blu.b, $$0);
-         this.e(blu.b);
-      } else {
-         this.b(blu.b, $$0);
+      $$0.a("TimeInOverworld", this.cg);
+      if (this.ch) {
+         $$0.a("CannotBeHunted", true);
       }
    }
 
    @Override
-   public boolean k(cmr $$0) {
-      return this.dM().Z().b(cte.c) && this.fK() && cds.a(this, $$0);
+   public void a(sn $$0) {
+      super.a($$0);
+      this.w($$0.q("IsImmuneToZombification"));
+      this.cg = $$0.h("TimeInOverworld");
+      this.x($$0.q("CannotBeHunted"));
    }
 
-   protected boolean p(cmr $$0) {
-      blu $$1 = bmh.h($$0);
-      cmr $$2 = this.c($$1);
-      return this.b($$0, $$2);
+   public void w(boolean $$0) {
+      this.an().b(bW, $$0);
    }
 
+   private boolean gl() {
+      return this.an().b(bW);
+   }
+
+   public boolean A() {
+      return !this.dM().E_().b() && !this.gl() && !this.fU();
+   }
+
+   private void x(boolean $$0) {
+      this.ch = $$0;
+   }
+
+   public boolean gk() {
+      return this.w() && !this.ch;
+   }
+
+   @Nullable
    @Override
-   protected boolean b(cmr $$0, cmr $$1) {
-      if (cre.d($$1)) {
-         return false;
-      } else {
-         boolean $$2 = cds.a($$0) || $$0.a(cmu.vM);
-         boolean $$3 = cds.a($$1) || $$1.a(cmu.vM);
-         if ($$2 && !$$3) {
-            return true;
-         } else if (!$$2 && $$3) {
-            return false;
-         } else {
-            return this.gf() && !$$0.a(cmu.vM) && $$1.a(cmu.vM) ? false : super.b($$0, $$1);
-         }
-      }
-   }
-
-   @Override
-   protected void b(cbo $$0) {
-      this.a($$0);
-      cds.a(this, $$0);
-   }
-
-   @Override
-   public boolean a(blp $$0, boolean $$1) {
-      if (this.o_() && $$0.ai() == blt.X) {
-         $$0 = this.b($$0, 3);
+   public blp a(and $$0, blp $$1) {
+      cdr $$2 = bly.X.a((cto)$$0);
+      if ($$2 != null) {
+         $$2.fJ();
       }
 
-      return super.a($$0, $$1);
-   }
-
-   private blp b(blp $$0, int $$1) {
-      List<blp> $$2 = $$0.cP();
-      return $$1 != 1 && !$$2.isEmpty() ? this.b($$2.get(0), $$1 - 1) : $$0;
+      return $$2;
    }
 
    @Override
-   protected arl y() {
-      return this.dM().B ? null : cds.c(this).orElse(null);
+   public boolean gf() {
+      return !cds.c(this) && super.gf();
    }
 
    @Override
-   protected arl d(bkn $$0) {
-      return arm.sO;
+   public ars db() {
+      return ars.f;
    }
 
    @Override
-   protected arl n_() {
-      return arm.sM;
+   protected arq y() {
+      return this.dM().B ? null : cds.b(this).orElse(null);
    }
 
    @Override
-   protected void b(hx $$0, dja $$1) {
-      this.a(arm.sQ, 0.15F, 1.0F);
+   protected arq d(bks $$0) {
+      return arr.lF;
    }
 
-   protected void b(arl $$0) {
+   @Override
+   protected arq n_() {
+      return arr.lE;
+   }
+
+   @Override
+   protected arq aN() {
+      return arr.mk;
+   }
+
+   @Override
+   protected arq aO() {
+      return arr.mj;
+   }
+
+   @Override
+   protected void b(hx $$0, djg $$1) {
+      this.a(arr.lH, 0.15F, 1.0F);
+   }
+
+   protected void b(arq $$0) {
       this.a($$0, this.eW(), this.eX());
    }
 
    @Override
-   protected void gi() {
-      this.b(arm.sR);
+   protected void Y() {
+      super.Y();
+      adi.a(this);
    }
 }

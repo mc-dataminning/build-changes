@@ -1,94 +1,47 @@
-import com.google.common.collect.ImmutableList;
-import java.util.List;
-import java.util.concurrent.ConcurrentLinkedQueue;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.ints.IntSet;
+import it.unimi.dsi.fastutil.ints.IntSets;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-public class eoe {
-   private final List<ConcurrentLinkedQueue<eod>> a = ImmutableList.of(
-      new ConcurrentLinkedQueue(), new ConcurrentLinkedQueue(), new ConcurrentLinkedQueue(), new ConcurrentLinkedQueue()
-   );
-   private volatile boolean b;
-   private volatile int c;
-   private volatile boolean d;
-   private volatile int e;
-   private volatile int f;
+public class eoe implements eoc {
+   private final Int2ObjectMap<eob.a> a;
 
-   public eoe() {
-      this.c = this.e = this.f + 1;
+   public eoe(Map<Integer, Float> $$0) {
+      this.a = new Int2ObjectOpenHashMap($$0.size());
+      $$0.forEach(($$0x, $$1) -> this.a.put($$0x, (eob.a)() -> $$1));
    }
 
-   public boolean a() {
-      return !this.b && this.c == this.e;
+   @Nullable
+   @Override
+   public eob a(int $$0) {
+      return (eob)this.a.get($$0);
    }
 
-   public boolean b() {
-      if (this.b) {
-         throw new RuntimeException("ALREADY RECORDING !!!");
-      } else if (this.a()) {
-         this.c = (this.e + 1) % this.a.size();
-         this.b = true;
-         return true;
-      } else {
-         return false;
+   @Override
+   public IntSet a() {
+      return IntSets.unmodifiable(this.a.keySet());
+   }
+
+   public static record a(Map<Integer, Float> c) implements fad {
+      public static final MapCodec<eoe.a> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(Codec.unboundedMap(atv.w, Codec.FLOAT).fieldOf("advances").forGetter(eoe.a::c)).apply($$0, eoe.a::new)
+      );
+
+      @Override
+      public fae a() {
+         return fae.c;
       }
-   }
 
-   public void a(eod $$0) {
-      if (!this.b) {
-         throw new RuntimeException("NOT RECORDING !!!");
-      } else {
-         ConcurrentLinkedQueue<eod> $$1 = this.i();
-         $$1.add($$0);
+      @Override
+      public Either<fad.a, fad.b> b() {
+         fad.a $$0 = $$0x -> new eoe(this.c);
+         return Either.left($$0);
       }
-   }
-
-   public void c() {
-      if (this.b) {
-         this.b = false;
-      } else {
-         throw new RuntimeException("NOT RECORDING !!!");
-      }
-   }
-
-   public boolean d() {
-      return !this.d && this.c != this.e;
-   }
-
-   public boolean e() {
-      if (this.d) {
-         throw new RuntimeException("ALREADY PROCESSING !!!");
-      } else if (this.d()) {
-         this.d = true;
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   public void f() {
-      if (!this.d) {
-         throw new RuntimeException("NOT PROCESSING !!!");
-      }
-   }
-
-   public void g() {
-      if (this.d) {
-         this.d = false;
-         this.f = this.e;
-         this.e = this.c;
-      } else {
-         throw new RuntimeException("NOT PROCESSING !!!");
-      }
-   }
-
-   public ConcurrentLinkedQueue<eod> h() {
-      return this.a.get(this.f);
-   }
-
-   public ConcurrentLinkedQueue<eod> i() {
-      return this.a.get(this.c);
-   }
-
-   public ConcurrentLinkedQueue<eod> j() {
-      return this.a.get(this.e);
    }
 }

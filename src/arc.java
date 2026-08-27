@@ -1,45 +1,28 @@
-import net.minecraft.server.MinecraftServer;
+import com.google.gson.JsonObject;
+import com.mojang.authlib.GameProfile;
+import java.io.File;
+import java.util.Objects;
 
-public class arc implements dr {
-   private static final String b = "Rcon";
-   private static final vd c = vd.b("Rcon");
-   private final StringBuffer d = new StringBuffer();
-   private final MinecraftServer e;
-
-   public arc(MinecraftServer $$0) {
-      this.e = $$0;
-   }
-
-   public void e() {
-      this.d.setLength(0);
-   }
-
-   public String f() {
-      return this.d.toString();
-   }
-
-   public ds g() {
-      amz $$0 = this.e.F();
-      return new ds(this, elm.a($$0.T()), ell.a, $$0, 4, "Rcon", c, this.e, null);
+public class arc extends aqz<GameProfile, ard> {
+   public arc(File $$0) {
+      super($$0);
    }
 
    @Override
-   public void a(vd $$0) {
-      this.d.append($$0.getString());
+   protected aqy<GameProfile> a(JsonObject $$0) {
+      return new ard($$0);
+   }
+
+   public boolean a(GameProfile $$0) {
+      return this.d($$0);
    }
 
    @Override
-   public boolean l_() {
-      return true;
+   public String[] a() {
+      return this.d().stream().map(aqy::g).filter(Objects::nonNull).map(GameProfile::getName).toArray(String[]::new);
    }
 
-   @Override
-   public boolean x_() {
-      return true;
-   }
-
-   @Override
-   public boolean W_() {
-      return this.e.k();
+   protected String b(GameProfile $$0) {
+      return $$0.getId().toString();
    }
 }

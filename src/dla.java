@@ -1,46 +1,59 @@
-import java.io.IOException;
-import java.util.function.BooleanSupplier;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
 import javax.annotation.Nullable;
 
-public abstract class dla implements dlk, AutoCloseable {
+public class dla implements AutoCloseable {
+   private final ctp a;
+   private final Long2ObjectMap<dlo> b = new Long2ObjectOpenHashMap();
    @Nullable
-   public dlh a(int $$0, int $$1, boolean $$2) {
-      return (dlh)this.a($$0, $$1, dlb.n, $$2);
+   private dlo c;
+   private long d;
+
+   public dla(ctp $$0) {
+      this.a = $$0;
    }
 
    @Nullable
-   public dlh a(int $$0, int $$1) {
-      return this.a($$0, $$1, false);
+   public dlo a(hx $$0) {
+      int $$1 = this.a.e($$0.v());
+      if ($$1 >= 0 && $$1 < this.a.am()) {
+         long $$2 = iz.c($$0);
+         if (this.c == null || this.d != $$2) {
+            this.c = (dlo)this.b.computeIfAbsent($$2, $$2x -> {
+               dlc $$3 = this.a.a(iz.a($$0.u()), iz.a($$0.w()));
+               dlo $$4 = $$3.b($$1);
+               $$4.a();
+               return $$4;
+            });
+            this.d = $$2;
+         }
+
+         return this.c;
+      } else {
+         return null;
+      }
    }
 
-   @Nullable
+   public djg b(hx $$0) {
+      dlo $$1 = this.a($$0);
+      if ($$1 == null) {
+         return cwr.a.o();
+      } else {
+         int $$2 = iz.b($$0.u());
+         int $$3 = iz.b($$0.v());
+         int $$4 = iz.b($$0.w());
+         return $$1.a($$2, $$3, $$4);
+      }
+   }
+
    @Override
-   public dlj c(int $$0, int $$1) {
-      return this.a($$0, $$1, dlb.c, false);
-   }
+   public void close() {
+      ObjectIterator var1 = this.b.values().iterator();
 
-   public boolean b(int $$0, int $$1) {
-      return this.a($$0, $$1, dlb.n, false) != null;
-   }
-
-   @Nullable
-   public abstract dkw a(int var1, int var2, dlb var3, boolean var4);
-
-   public abstract void a(BooleanSupplier var1, boolean var2);
-
-   public abstract String e();
-
-   public abstract int j();
-
-   @Override
-   public void close() throws IOException {
-   }
-
-   public abstract edz p();
-
-   public void a(boolean $$0, boolean $$1) {
-   }
-
-   public void a(csp $$0, boolean $$1) {
+      while (var1.hasNext()) {
+         dlo $$0 = (dlo)var1.next();
+         $$0.b();
+      }
    }
 }

@@ -1,32 +1,41 @@
-import com.mojang.datafixers.kinds.App;
+import com.google.common.collect.ImmutableMap;
 import java.util.Optional;
-import java.util.function.Function;
-import java.util.function.Predicate;
 
-public class bot {
-   public static <T extends bmf> bnx<bmf> a(blt<? extends T> $$0, int $$1, bvh<T> $$2, float $$3, int $$4) {
-      return a($$0, $$1, $$0x -> true, $$0x -> true, $$2, $$3, $$4);
+public class bot extends bob<ceu> {
+   private static final int d = 1200;
+   final float c;
+
+   public bot(float $$0) {
+      super(ImmutableMap.of(bvm.d, bvn.a), 1200);
+      this.c = $$0;
    }
 
-   public static <E extends bmf, T extends bmf> bnx<E> a(blt<? extends T> $$0, int $$1, Predicate<E> $$2, Predicate<T> $$3, bvh<T> $$4, float $$5, int $$6) {
-      int $$7 = $$1 * $$1;
-      Predicate<bmf> $$8 = $$2x -> $$0.equals($$2x.ai()) && $$3.test((T)$$2x);
-      return brj.a(
-         (Function<brj.b<E>, ? extends App<brj.c<E>, brm<E>>>)($$6x -> $$6x.group($$6x.a($$4), $$6x.a(bvh.n), $$6x.c(bvh.m), $$6x.b(bvh.h))
-               .apply($$6x, ($$6xx, $$7x, $$8x, $$9) -> ($$10, $$11, $$12) -> {
-                     bvj $$13 = $$6x.b($$9);
-                     if ($$2.test((E)$$11) && $$13.d($$8)) {
-                        Optional<bmf> $$14 = $$13.a($$3xxxx -> $$3xxxx.f((blp)$$11) <= (double)$$7 && $$8.test($$3xxxx));
-                        $$14.ifPresent($$5xxxx -> {
-                           $$6xx.a($$5xxxx);
-                           $$7x.a(new boh($$5xxxx, true));
-                           $$8x.a(new bvk(new boh($$5xxxx, false), $$5, $$6));
-                        });
-                        return true;
-                     } else {
-                        return false;
-                     }
-                  }))
-      );
+   protected boolean a(and $$0, ceu $$1) {
+      return $$1.dO().g().map($$0x -> $$0x == cgt.b || $$0x == cgt.c || $$0x == cgt.d).orElse(true);
+   }
+
+   protected boolean a(and $$0, ceu $$1, long $$2) {
+      return $$1.dO().a(bvm.d);
+   }
+
+   protected void b(and $$0, ceu $$1, long $$2) {
+      bod.a($$1, $$1.dO().c(bvm.d).get().b(), this.c, 1);
+   }
+
+   protected void c(and $$0, ceu $$1, long $$2) {
+      Optional<ig> $$3 = $$1.dO().c(bvm.d);
+      $$3.ifPresent($$1x -> {
+         hx $$2x = $$1x.b();
+         and $$3x = $$0.o().a($$1x.a());
+         if ($$3x != null) {
+            bxl $$4 = $$3x.y();
+            if ($$4.a($$2x, $$0xx -> true)) {
+               $$4.b($$2x);
+            }
+
+            adi.c($$0, $$2x);
+         }
+      });
+      $$1.dO().b(bvm.d);
    }
 }

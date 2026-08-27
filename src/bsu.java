@@ -1,70 +1,45 @@
-import java.util.EnumSet;
-import javax.annotation.Nullable;
+public class bsu extends btt {
+   private final bya g;
 
-public class bsu extends btb {
-   protected final bmo a;
-   private double b;
-   private double c;
-   private double d;
-   private final double e;
-   private final cti f;
-
-   public bsu(bmo $$0, double $$1) {
-      this.a = $$0;
-      this.e = $$1;
-      this.f = $$0.dM();
-      this.a(EnumSet.of(btb.a.a));
+   public bsu(bya $$0, double $$1) {
+      super($$0, $$1, 8);
+      this.g = $$0;
    }
 
    @Override
    public boolean a() {
-      if (this.a.q() != null) {
-         return false;
-      } else if (!this.f.P()) {
-         return false;
-      } else if (!this.a.bN()) {
-         return false;
-      } else if (!this.f.h(this.a.dm())) {
-         return false;
-      } else {
-         return !this.a.c(blu.f).b() ? false : this.h();
-      }
-   }
-
-   protected boolean h() {
-      elm $$0 = this.i();
-      if ($$0 == null) {
-         return false;
-      } else {
-         this.b = $$0.c;
-         this.c = $$0.d;
-         this.d = $$0.e;
-         return true;
-      }
-   }
-
-   @Override
-   public boolean b() {
-      return !this.a.N().l();
+      return this.g.u() && !this.g.ge() && super.a();
    }
 
    @Override
    public void c() {
-      this.a.N().a(this.b, this.c, this.d, this.e);
+      super.c();
+      this.g.y(false);
    }
 
-   @Nullable
-   protected elm i() {
-      aup $$0 = this.a.eg();
-      hx $$1 = this.a.dm();
+   @Override
+   public void d() {
+      super.d();
+      this.g.y(false);
+   }
 
-      for (int $$2 = 0; $$2 < 10; $$2++) {
-         hx $$3 = $$1.b($$0.a(20) - 10, $$0.a(6) - 3, $$0.a(20) - 10);
-         if (!this.f.h($$3) && this.a.h($$3) < 0.0F) {
-            return elm.c($$3);
+   @Override
+   public void e() {
+      super.e();
+      this.g.y(this.m());
+   }
+
+   @Override
+   protected boolean a(ctr $$0, hx $$1) {
+      if (!$$0.u($$1.c())) {
+         return false;
+      } else {
+         djg $$2 = $$0.a_($$1);
+         if ($$2.a(cwr.cv)) {
+            return dhb.a($$0, $$1) < 1;
+         } else {
+            return $$2.a(cwr.cD) && $$2.c(czw.b) ? true : $$2.a(asg.R, $$0x -> $$0x.d(cwi.b).map($$0xx -> $$0xx != djt.a).orElse(true));
          }
       }
-
-      return null;
    }
 }

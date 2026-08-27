@@ -1,40 +1,71 @@
-import java.util.Arrays;
-import java.util.stream.Stream;
+public class fch extends fbq {
+   private exe c;
 
-public class fch extends fcl {
-   private exv c;
-
-   private static evd<?>[] a(eve $$0) {
-      return new evd[]{$$0.d(), $$0.O(), $$0.D(), $$0.P(), $$0.W()};
-   }
-
-   public fch(fct $$0, eve $$1) {
-      super($$0, $$1, vd.c("options.mouse_settings.title"));
+   public fch() {
+      super("");
    }
 
    @Override
    protected void aN_() {
-      this.c = this.d(new exv(this.f, this.g, this.h - 64, 32, 25));
-      if (eoo.a()) {
-         this.c.a(Stream.concat(Arrays.stream(a(this.b)), Stream.of(this.b.E())).toArray(evd[]::new));
+      super.aN_();
+      this.c = exe.a(vf.c("multiplayer.stopSleeping"), $$0 -> this.C()).a(this.g / 2 - 100, this.h - 40, 200, 20).a();
+      this.d(this.c);
+   }
+
+   @Override
+   public void a(ews $$0, int $$1, int $$2, float $$3) {
+      if (!this.f.H().a(this.f.R())) {
+         this.c.a($$0, $$1, $$2, $$3);
       } else {
-         this.c.a(a(this.b));
+         super.a($$0, $$1, $$2, $$3);
+      }
+   }
+
+   @Override
+   public void b(ews $$0, int $$1, int $$2, float $$3) {
+   }
+
+   @Override
+   public void aE_() {
+      this.C();
+   }
+
+   @Override
+   public boolean a(char $$0, int $$1) {
+      return !this.f.H().a(this.f.R()) ? true : super.a($$0, $$1);
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 256) {
+         this.C();
       }
 
-      this.d(ewy.a(vc.d, $$0 -> {
-         this.b.as();
-         this.f.a(this.a);
-      }).a(this.g / 2 - 100, this.h - 27, 200, 20).a());
+      if (!this.f.H().a(this.f.R())) {
+         return true;
+      } else if ($$0 != 257 && $$0 != 335) {
+         return super.a($$0, $$1, $$2);
+      } else {
+         if (this.b(this.b.a(), true)) {
+            this.f.a(null);
+            this.b.a("");
+            this.f.l.d().d();
+         }
+
+         return true;
+      }
    }
 
-   @Override
-   public void a(ewm $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 5, 16777215);
+   private void C() {
+      fnr $$0 = this.f.s.cn;
+      $$0.b(new aen(this.f.s, aen.a.c));
    }
 
-   @Override
-   public void b(ewm $$0, int $$1, int $$2, float $$3) {
-      this.b($$0);
+   public void n() {
+      if (this.b.a().isEmpty()) {
+         this.f.a(null);
+      } else {
+         this.f.a(new fbq(this.b.a()));
+      }
    }
 }

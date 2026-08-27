@@ -1,12 +1,12 @@
 public class dv extends Exception {
-   private final vd a;
+   private final vf a;
 
-   public dv(vd $$0) {
+   public dv(vf $$0) {
       super($$0.getString());
       this.a = $$0;
    }
 
-   public vd a() {
+   public vf a() {
       return this.a;
    }
 }

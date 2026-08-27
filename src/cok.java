@@ -1,12 +1,13 @@
-public enum cok {
-   a,
-   b,
-   c,
-   d,
-   e,
-   f,
-   g,
-   h,
-   i,
-   j;
+public interface cok {
+   int a();
+
+   float b();
+
+   float c();
+
+   int d();
+
+   int e();
+
+   cpy f();
 }

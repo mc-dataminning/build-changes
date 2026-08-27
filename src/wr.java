@@ -1,30 +1,15 @@
-import com.mojang.serialization.MapCodec;
+import java.util.Locale;
 
-public class wr implements wt {
-   public static final wr a = new wr();
-   public static final wu<wr> b = new wu<wr>() {
-      private static final MapCodec<wr> a = MapCodec.unit(wr.a);
-
-      @Override
-      public MapCodec<wr> a() {
-         return a;
-      }
-
-      public void a(ug $$0, wr $$1) {
-      }
-
-      public wr a(ug $$0) {
-         return wr.a;
-      }
-   };
-
-   @Override
-   public vr a(int $$0) {
-      return vd.i();
+public class wr extends IllegalArgumentException {
+   public wr(wq $$0, String $$1) {
+      super(String.format(Locale.ROOT, "Error parsing: %s: %s", $$0, $$1));
    }
 
-   @Override
-   public wu<wr> a() {
-      return b;
+   public wr(wq $$0, int $$1) {
+      super(String.format(Locale.ROOT, "Invalid index %d requested for %s", $$1, $$0));
+   }
+
+   public wr(wq $$0, Throwable $$1) {
+      super(String.format(Locale.ROOT, "Error while parsing: %s", $$0), $$1);
    }
 }

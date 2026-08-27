@@ -1,13 +1,20 @@
-import com.google.gson.annotations.SerializedName;
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import javax.annotation.Nullable;
 
-public class eqx extends erp implements erj {
-   @SerializedName("name")
-   public String a;
-   @SerializedName("description")
-   public String b;
+public class eqx {
+   private final Gson a = new Gson();
 
-   public eqx(String $$0, String $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public String a(erp $$0) {
+      return this.a.toJson($$0);
+   }
+
+   public String a(JsonElement $$0) {
+      return this.a.toJson($$0);
+   }
+
+   @Nullable
+   public <T extends erp> T a(String $$0, Class<T> $$1) {
+      return (T)this.a.fromJson($$0, $$1);
    }
 }

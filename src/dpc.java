@@ -1,47 +1,18 @@
-import java.util.concurrent.atomic.AtomicLong;
+import com.google.common.annotations.VisibleForTesting;
 
-@Deprecated
-public class dpc implements dny {
-   private static final int d = 48;
-   private static final long e = 281474976710655L;
-   private static final long f = 25214903917L;
-   private static final long g = 11L;
-   private final AtomicLong h = new AtomicLong();
-   private final dol i = new dol(this);
-
-   public dpc(long $$0) {
-      this.b($$0);
+public interface dpc {
+   default auu a(hx $$0) {
+      return this.a($$0.u(), $$0.v(), $$0.w());
    }
 
-   @Override
-   public aup d() {
-      return new dpc(this.g());
+   default auu a(ahg $$0) {
+      return this.a($$0.toString());
    }
 
-   @Override
-   public dow e() {
-      return new dok.a(this.g());
-   }
+   auu a(String var1);
 
-   @Override
-   public void b(long $$0) {
-      this.h.set(($$0 ^ 25214903917L) & 281474976710655L);
-   }
+   auu a(int var1, int var2, int var3);
 
-   @Override
-   public int c(int $$0) {
-      long $$1;
-      long $$2;
-      do {
-         $$1 = this.h.get();
-         $$2 = $$1 * 25214903917L + 11L & 281474976710655L;
-      } while (!this.h.compareAndSet($$1, $$2));
-
-      return (int)($$2 >>> 48 - $$0);
-   }
-
-   @Override
-   public double k() {
-      return this.i.b();
-   }
+   @VisibleForTesting
+   void a(StringBuilder var1);
 }

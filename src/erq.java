@@ -1,27 +1,23 @@
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import com.google.gson.annotations.SerializedName;
+import java.util.Locale;
 
-public class erq extends erp {
-   private static final Logger d = LogUtils.getLogger();
-   public String a;
-   public String b;
-   public String c;
+public class erq extends erv implements erp {
+   @SerializedName("regionName")
+   private final String a;
+   @SerializedName("ping")
+   private final int b;
 
-   public static erq a(String $$0) {
-      JsonParser $$1 = new JsonParser();
-      JsonObject $$2 = $$1.parse($$0).getAsJsonObject();
-      erq $$3 = new erq();
+   public erq(String $$0, int $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
 
-      try {
-         $$3.a = etm.b("downloadLink", $$2, "");
-         $$3.b = etm.b("resourcePackUrl", $$2, "");
-         $$3.c = etm.b("resourcePackHash", $$2, "");
-      } catch (Exception var5) {
-         d.error("Could not parse WorldDownload: {}", var5.getMessage());
-      }
+   public int a() {
+      return this.b;
+   }
 
-      return $$3;
+   @Override
+   public String toString() {
+      return String.format(Locale.ROOT, "%s --> %.2f ms", this.a, (float)this.b);
    }
 }

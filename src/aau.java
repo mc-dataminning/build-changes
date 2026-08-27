@@ -1,32 +1,24 @@
-public class aau implements xd<yx> {
-   private final int a;
-   private final ahd b;
+public class aau implements xf<za> {
+   private final bjz a;
 
-   public aau(int $$0, cpx<?> $$1) {
+   public aau(bjz $$0) {
       this.a = $$0;
-      this.b = $$1.a();
    }
 
-   public aau(ug $$0) {
-      this.a = $$0.readByte();
-      this.b = $$0.t();
+   public aau(ui $$0) {
+      this.a = $$0.b(bjz.class);
    }
 
    @Override
-   public void a(ug $$0) {
-      $$0.k(this.a);
-      $$0.a(this.b);
+   public void a(ui $$0) {
+      $$0.a(this.a);
    }
 
-   public void a(yx $$0) {
+   public void a(za $$0) {
       $$0.a(this);
    }
 
-   public ahd a() {
-      return this.b;
-   }
-
-   public int d() {
+   public bjz a() {
       return this.a;
    }
 }

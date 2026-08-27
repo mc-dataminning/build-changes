@@ -1,21 +1,56 @@
-public class frz {
-   public float a;
-   public float b;
-   public boolean c;
-   public boolean d;
-   public boolean e;
-   public boolean f;
-   public boolean g;
-   public boolean h;
+public class frz extends frt {
+   private float a;
 
-   public void a(boolean $$0, float $$1) {
+   frz(fnq $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1, $$2, $$3);
+      this.t = (int)(Math.random() * 60.0) + 30;
+      this.n = false;
+      this.j = 0.0;
+      this.k = -0.05;
+      this.l = 0.0;
+      this.b(0.02F, 0.02F);
+      this.D = this.D * (this.r.i() * 0.6F + 0.2F);
+      this.u = 0.002F;
    }
 
-   public ell a() {
-      return new ell(this.a, this.b);
+   @Override
+   public fqx b() {
+      return fqx.b;
    }
 
-   public boolean b() {
-      return this.b > 1.0E-5F;
+   @Override
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
+         this.k();
+      } else {
+         float $$0 = 0.6F;
+         this.j = this.j + (double)(0.6F * aun.b(this.a));
+         this.l = this.l + (double)(0.6F * aun.a(this.a));
+         this.j *= 0.07;
+         this.l *= 0.07;
+         this.a(this.j, this.k, this.l);
+         if (!this.c.b_(hx.a(this.g, this.h, this.i)).a(asl.a) || this.m) {
+            this.k();
+         }
+
+         this.a += 0.08F;
+      }
+   }
+
+   public static class a implements fqw<ka> {
+      private final fro a;
+
+      public a(fro $$0) {
+         this.a = $$0;
+      }
+
+      public fqt a(ka $$0, fnq $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         frz $$8 = new frz($$1, $$2, $$3, $$4);
+         $$8.a(this.a);
+         return $$8;
+      }
    }
 }

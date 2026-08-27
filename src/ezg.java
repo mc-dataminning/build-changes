@@ -1,37 +1,48 @@
-public interface ezg {
-   Object b = new Object();
-   int c = 32;
+import java.util.Objects;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-   ezg.a a(ewm var1, ezh var2, long var3);
+public class ezg {
+   private final Consumer<exc> a;
+   private final Consumer<exc> b;
+   @Nullable
+   private ezf c;
+   @Nullable
+   private fbh d;
 
-   default Object d() {
-      return b;
+   public ezg(Consumer<exc> $$0, Consumer<exc> $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   default int a() {
-      return 160;
+   public void a(fbh $$0) {
+      this.d = $$0;
+      ezf $$1 = this.a();
+      if ($$1 != null) {
+         $$1.a($$0);
+      }
    }
 
-   default int b() {
-      return 32;
-   }
+   public void a(ezf $$0, boolean $$1) {
+      if (!Objects.equals(this.c, $$0)) {
+         if (this.c != null) {
+            this.c.a(this.b);
+         }
 
-   default int e() {
-      return aui.e(this.b(), 32);
-   }
-
-   public static enum a {
-      a(arm.zB),
-      b(arm.zC);
-
-      private final arl c;
-
-      private a(arl $$0) {
          this.c = $$0;
-      }
+         $$0.a(this.a);
+         if (this.d != null) {
+            $$0.a(this.d);
+         }
 
-      public void a(gir $$0) {
-         $$0.a(ghi.a(this.c, 1.0F, 1.0F));
+         if ($$1) {
+            evg.O().ai().a(ght.a(arr.zu, 1.0F));
+         }
       }
+   }
+
+   @Nullable
+   public ezf a() {
+      return this.c;
    }
 }

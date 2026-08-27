@@ -1,119 +1,86 @@
-import java.util.EnumSet;
 import java.util.List;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public class bti extends btb {
-   public final bzu a;
-   private double b;
-   private static final int c = 8;
-   private int d;
+public class bti extends bud {
+   private static final int i = 2;
+   private static final int j = 32;
+   private static final int k = 10;
+   private static final int l = 7;
 
-   public bti(bzu $$0, double $$1) {
-      this.a = $$0;
-      this.b = $$1;
-      this.a(EnumSet.of(btb.a.a));
+   public bti(bmt $$0, double $$1) {
+      super($$0, $$1, 240, false);
    }
 
+   @Nullable
    @Override
-   public boolean a() {
-      if (!this.a.fS() && !this.a.gS()) {
-         List<blp> $$0 = this.a.dM().a(this.a, this.a.cH().c(9.0, 4.0, 9.0), $$0x -> {
-            blt<?> $$1x = $$0x.ai();
-            return $$1x == blt.ak || $$1x == blt.bb;
-         });
-         bzu $$1 = null;
-         double $$2 = Double.MAX_VALUE;
-
-         for (blp $$3 : $$0) {
-            bzu $$4 = (bzu)$$3;
-            if ($$4.gS() && !$$4.gR()) {
-               double $$5 = this.a.f($$4);
-               if (!($$5 > $$2)) {
-                  $$2 = $$5;
-                  $$1 = $$4;
-               }
+   protected els h() {
+      float $$0 = this.b.dM().z.i();
+      if (this.b.dM().z.i() < 0.3F) {
+         return this.k();
+      } else {
+         els $$1;
+         if ($$0 < 0.7F) {
+            $$1 = this.l();
+            if ($$1 == null) {
+               $$1 = this.m();
             }
-         }
-
-         if ($$1 == null) {
-            for (blp $$6 : $$0) {
-               bzu $$7 = (bzu)$$6;
-               if ($$7.fS() && !$$7.gR()) {
-                  double $$8 = this.a.f($$7);
-                  if (!($$8 > $$2)) {
-                     $$2 = $$8;
-                     $$1 = $$7;
-                  }
-               }
-            }
-         }
-
-         if ($$1 == null) {
-            return false;
-         } else if ($$2 < 4.0) {
-            return false;
-         } else if (!$$1.fS() && !this.a($$1, 1)) {
-            return false;
          } else {
-            this.a.a($$1);
-            return true;
-         }
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public boolean b() {
-      if (this.a.gS() && this.a.gT().bx() && this.a(this.a, 0)) {
-         double $$0 = this.a.f(this.a.gT());
-         if ($$0 > 676.0) {
-            if (this.b <= 3.0) {
-               this.b *= 1.2;
-               this.d = b(40);
-               return true;
-            }
-
-            if (this.d == 0) {
-               return false;
+            $$1 = this.m();
+            if ($$1 == null) {
+               $$1 = this.l();
             }
          }
 
-         if (this.d > 0) {
-            this.d--;
-         }
+         return $$1 == null ? this.k() : $$1;
+      }
+   }
 
-         return true;
+   @Nullable
+   private els k() {
+      return bxf.a(this.b, 10, 7);
+   }
+
+   @Nullable
+   private els l() {
+      and $$0 = (and)this.b.dM();
+      List<ceu> $$1 = $$0.a(bly.bg, this.b.cH().g(32.0), this::a);
+      if ($$1.isEmpty()) {
+         return null;
       } else {
-         return false;
+         ceu $$2 = $$1.get(this.b.dM().z.a($$1.size()));
+         els $$3 = $$2.dk();
+         return bxf.a(this.b, 10, 7, $$3);
       }
    }
 
-   @Override
-   public void d() {
-      this.a.gQ();
-      this.b = 2.1;
-   }
-
-   @Override
-   public void e() {
-      if (this.a.gS()) {
-         if (!(this.a.fT() instanceof cbi)) {
-            bzu $$0 = this.a.gT();
-            double $$1 = (double)this.a.e($$0);
-            float $$2 = 2.0F;
-            elm $$3 = new elm($$0.dr() - this.a.dr(), $$0.dt() - this.a.dt(), $$0.dx() - this.a.dx()).d().a(Math.max($$1 - 2.0, 0.0));
-            this.a.N().a(this.a.dr() + $$3.c, this.a.dt() + $$3.d, this.a.dx() + $$3.e, this.b);
-         }
-      }
-   }
-
-   private boolean a(bzu $$0, int $$1) {
-      if ($$1 > 8) {
-         return false;
-      } else if ($$0.gS()) {
-         return $$0.gT().fS() ? true : this.a($$0.gT(), ++$$1);
+   @Nullable
+   private els m() {
+      iz $$0 = this.n();
+      if ($$0 == null) {
+         return null;
       } else {
-         return false;
+         hx $$1 = this.a($$0);
+         return $$1 == null ? null : bxf.a(this.b, 10, 7, els.c($$1));
       }
+   }
+
+   @Nullable
+   private iz n() {
+      and $$0 = (and)this.b.dM();
+      List<iz> $$1 = iz.a(iz.a(this.b), 2).filter($$1x -> $$0.b($$1x) == 0).collect(Collectors.toList());
+      return $$1.isEmpty() ? null : $$1.get($$0.z.a($$1.size()));
+   }
+
+   @Nullable
+   private hx a(iz $$0) {
+      and $$1 = (and)this.b.dM();
+      bxl $$2 = $$1.y();
+      List<hx> $$3 = $$2.c($$0x -> true, $$0.q(), 8, bxl.b.b).map(bxm::f).collect(Collectors.toList());
+      return $$3.isEmpty() ? null : $$3.get($$1.z.a($$3.size()));
+   }
+
+   private boolean a(ceu $$0) {
+      return $$0.a(this.b.dM().X());
    }
 }

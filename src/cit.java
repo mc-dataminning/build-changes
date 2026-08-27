@@ -1,66 +1,77 @@
-public class cit extends chu {
-   public static final int k = 5;
-   private final bjo l;
+public class cit extends cia {
+   private static final int k = 9;
+   private static final int l = 9;
+   private static final int m = 36;
+   private static final int n = 36;
+   private static final int o = 45;
+   private final bjt p;
 
-   public cit(int $$0, cfa $$1) {
-      this($$0, $$1, new bkd(5));
+   public cit(int $$0, cfg $$1) {
+      this($$0, $$1, new bki(9));
    }
 
-   public cit(int $$0, cfa $$1, bjo $$2) {
-      super(cjb.q, $$0);
-      this.l = $$2;
-      a($$2, 5);
+   public cit(int $$0, cfg $$1, bjt $$2) {
+      super(cjh.g, $$0);
+      a($$2, 9);
+      this.p = $$2;
       $$2.d_($$1.m);
-      int $$3 = 51;
 
-      for (int $$4 = 0; $$4 < 5; $$4++) {
-         this.a(new cjp($$2, $$4, 44 + $$4 * 18, 20));
+      for (int $$3 = 0; $$3 < 3; $$3++) {
+         for (int $$4 = 0; $$4 < 3; $$4++) {
+            this.a(new cjv($$2, $$4 + $$3 * 3, 62 + $$4 * 18, 17 + $$3 * 18));
+         }
       }
 
       for (int $$5 = 0; $$5 < 3; $$5++) {
          for (int $$6 = 0; $$6 < 9; $$6++) {
-            this.a(new cjp($$1, $$6 + $$5 * 9 + 9, 8 + $$6 * 18, $$5 * 18 + 51));
+            this.a(new cjv($$1, $$6 + $$5 * 9 + 9, 8 + $$6 * 18, 84 + $$5 * 18));
          }
       }
 
       for (int $$7 = 0; $$7 < 9; $$7++) {
-         this.a(new cjp($$1, $$7, 8 + $$7 * 18, 109));
+         this.a(new cjv($$1, $$7, 8 + $$7 * 18, 142));
       }
    }
 
    @Override
-   public boolean a(cfb $$0) {
-      return this.l.a($$0);
+   public boolean a(cfh $$0) {
+      return this.p.a($$0);
    }
 
    @Override
-   public cmr a(cfb $$0, int $$1) {
-      cmr $$2 = cmr.f;
-      cjp $$3 = this.i.get($$1);
+   public cmx a(cfh $$0, int $$1) {
+      cmx $$2 = cmx.f;
+      cjv $$3 = this.i.get($$1);
       if ($$3 != null && $$3.h()) {
-         cmr $$4 = $$3.g();
+         cmx $$4 = $$3.g();
          $$2 = $$4.p();
-         if ($$1 < this.l.b()) {
-            if (!this.a($$4, this.l.b(), this.i.size(), true)) {
-               return cmr.f;
+         if ($$1 < 9) {
+            if (!this.a($$4, 9, 45, true)) {
+               return cmx.f;
             }
-         } else if (!this.a($$4, 0, this.l.b(), false)) {
-            return cmr.f;
+         } else if (!this.a($$4, 0, 9, false)) {
+            return cmx.f;
          }
 
          if ($$4.b()) {
-            $$3.e(cmr.f);
+            $$3.e(cmx.f);
          } else {
             $$3.b();
          }
+
+         if ($$4.L() == $$2.L()) {
+            return cmx.f;
+         }
+
+         $$3.a($$0, $$4);
       }
 
       return $$2;
    }
 
    @Override
-   public void b(cfb $$0) {
+   public void b(cfh $$0) {
       super.b($$0);
-      this.l.c($$0);
+      this.p.c($$0);
    }
 }

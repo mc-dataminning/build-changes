@@ -1,35 +1,42 @@
-import it.unimi.dsi.fastutil.objects.Object2BooleanMap;
-import it.unimi.dsi.fastutil.objects.Object2BooleanOpenHashMap;
-import java.util.Set;
+public record amt(int a, int b) {
+   private static final long c = 32L;
+   private static final long d = 4294967295L;
 
-public final class amt {
-   private final Object2BooleanMap<ana> a = new Object2BooleanOpenHashMap();
-
-   public Set<ana> a() {
-      return this.a.keySet();
+   public csv a() {
+      return new csv(iz.a(this.a), iz.a(this.b));
    }
 
-   public void a(ana $$0, boolean $$1) {
-      this.a.put($$0, $$1);
+   public long b() {
+      return a(this.a, this.b);
    }
 
-   public void a(ana $$0) {
-      this.a.removeBoolean($$0);
+   public static long a(int $$0, int $$1) {
+      return (long)$$0 & 4294967295L | ((long)$$1 & 4294967295L) << 32;
    }
 
-   public void b(ana $$0) {
-      this.a.replace($$0, true);
+   public static int a(long $$0) {
+      return (int)($$0 & 4294967295L);
    }
 
-   public void c(ana $$0) {
-      this.a.replace($$0, false);
+   public static int b(long $$0) {
+      return (int)($$0 >>> 32 & 4294967295L);
    }
 
-   public boolean d(ana $$0) {
-      return this.a.getOrDefault($$0, true);
+   @Override
+   public String toString() {
+      return "[" + this.a + ", " + this.b + "]";
    }
 
-   public boolean e(ana $$0) {
-      return this.a.getBoolean($$0);
+   @Override
+   public int hashCode() {
+      return csv.d(this.a, this.b);
+   }
+
+   public int c() {
+      return this.a;
+   }
+
+   public int d() {
+      return this.b;
    }
 }

@@ -1,44 +1,30 @@
-import javax.annotation.Nullable;
-
-public interface cls extends col {
-   blu g();
-
-   default arl as_() {
-      return arm.af;
+public class cls extends clc {
+   public cls(cms.a $$0) {
+      super($$0);
    }
 
-   default bjw<cmr> a(cmm $$0, cti $$1, cfb $$2, bju $$3) {
-      cmr $$4 = $$2.b($$3);
-      blu $$5 = bmh.h($$4);
-      cmr $$6 = $$2.c($$5);
-      if ((!cre.d($$6) || $$2.f()) && !cmr.a($$4, $$6)) {
-         if (!$$1.y_()) {
-            $$2.b(arw.c.b($$0));
+   @Override
+   public bkb<cmx> a(cto $$0, cfh $$1, bjz $$2) {
+      cmx $$3 = $$1.b($$2);
+      if ($$0.B) {
+         return bkb.a($$3);
+      } else {
+         if (!$$1.fT().d) {
+            $$3.h(1);
          }
 
-         cmr $$7 = $$6.b() ? $$4 : $$6.c();
-         cmr $$8 = $$4.c();
-         $$2.a($$5, $$8);
-         return bjw.a($$7, $$1.y_());
-      } else {
-         return bjw.d($$4);
-      }
-   }
-
-   @Nullable
-   static cls c_(cmr $$0) {
-      cmm $$3 = $$0.d();
-      if ($$3 instanceof cls) {
-         return (cls)$$3;
-      } else {
-         if ($$0.d() instanceof ckk $$2) {
-            cwj var6 = $$2.e();
-            if (var6 instanceof cls) {
-               return (cls)var6;
+         $$1.b(asb.c.b(this));
+         $$1.dM().a(null, $$1, arr.zx, $$1.db(), 1.0F, 1.0F);
+         cmx $$4 = cne.a($$0, $$1.dq(), $$1.dw(), (byte)0, true, false);
+         if ($$3.b()) {
+            return bkb.b($$4);
+         } else {
+            if (!$$1.fS().e($$4.p())) {
+               $$1.a($$4, false);
             }
-         }
 
-         return null;
+            return bkb.b($$3);
+         }
       }
    }
 }

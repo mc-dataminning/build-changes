@@ -1,31 +1,31 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class deh extends cwj {
-   public static final MapCodec<deh> a = b(deh::new);
-   private static final double b = 5.0;
-   private static final emf c = cwj.a(5.0, 5.0, 5.0, 11.0, 11.0, 11.0);
+public class deh extends dap implements cwg {
+   public static final MapCodec<deh> j = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cll.q.fieldOf("color").forGetter(deh::b), u()).apply($$0, deh::new));
+   private final cll k;
 
    @Override
    public MapCodec<deh> a() {
-      return a;
+      return j;
    }
 
-   protected deh(diz.d $$0) {
-      super($$0);
+   public deh(cll $$0, djf.d $$1) {
+      super($$1);
+      this.k = $$0;
+      this.k(
+         this.E
+            .b()
+            .a(a, Boolean.valueOf(false))
+            .a(b, Boolean.valueOf(false))
+            .a(c, Boolean.valueOf(false))
+            .a(d, Boolean.valueOf(false))
+            .a(e, Boolean.valueOf(false))
+      );
    }
 
    @Override
-   public dco b_(dja $$0) {
-      return dco.a;
-   }
-
-   @Override
-   public emf a(dja $$0, cso $$1, hx $$2, elr $$3) {
-      return c;
-   }
-
-   @Override
-   public float d(dja $$0, cso $$1, hx $$2) {
-      return 1.0F;
+   public cll b() {
+      return this.k;
    }
 }

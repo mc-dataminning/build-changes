@@ -1,55 +1,82 @@
-import com.mojang.logging.LogUtils;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Set;
-import org.slf4j.Logger;
 
-public class eio extends eib {
-   private static final Logger b = LogUtils.getLogger();
+public class eio extends eih {
+   private static final Codec<Pair<ih<dgl>, cll>> b = Codec.mapPair(kd.am.r().fieldOf("pattern"), cll.q.fieldOf("color")).codec();
    public static final Codec<eio> a = RecordCodecBuilder.create(
       $$0 -> a($$0)
-            .and($$0.group(ekk.a.fieldOf("damage").forGetter($$0x -> $$0x.c), Codec.BOOL.fieldOf("add").orElse(false).forGetter($$0x -> $$0x.d)))
+            .and($$0.group(b.listOf().fieldOf("patterns").forGetter($$0x -> $$0x.c), Codec.BOOL.fieldOf("append").forGetter($$0x -> $$0x.d)))
             .apply($$0, eio::new)
    );
-   private final ekj c;
+   private final List<Pair<ih<dgl>, cll>> c;
    private final boolean d;
 
-   private eio(List<ejo> $$0, ekj $$1, boolean $$2) {
+   eio(List<eju> $$0, List<Pair<ih<dgl>, cll>> $$1, boolean $$2) {
       super($$0);
       this.c = $$1;
       this.d = $$2;
    }
 
    @Override
-   public eid b() {
-      return eie.j;
-   }
-
-   @Override
-   public Set<eix<?>> a() {
-      return this.c.a();
-   }
-
-   @Override
-   public cmr a(cmr $$0, egp $$1) {
-      if ($$0.i()) {
-         int $$2 = $$0.l();
-         float $$3 = this.d ? 1.0F - (float)$$0.k() / (float)$$2 : 0.0F;
-         float $$4 = 1.0F - aui.a(this.c.b($$1) + $$3, 0.0F, 1.0F);
-         $$0.b(aui.d($$4 * (float)$$2));
-      } else {
-         b.warn("Couldn't set damage of loot item {}", $$0);
+   protected cmx a(cmx $$0, egv $$1) {
+      sn $$2 = ckq.a($$0);
+      if ($$2 == null) {
+         $$2 = new sn();
       }
 
+      dgl.a $$3 = new dgl.a();
+      this.c.forEach($$3::a);
+      st $$4 = $$3.a();
+      st $$5;
+      if (this.d) {
+         $$5 = $$2.c("Patterns", 10).e();
+         $$5.addAll($$4);
+      } else {
+         $$5 = $$4;
+      }
+
+      $$2.a("Patterns", $$5);
+      ckq.a($$0, dgw.t, $$2);
       return $$0;
    }
 
-   public static eib.a<?> a(ekj $$0) {
-      return a($$1 -> new eio($$1, $$0, false));
+   @Override
+   public eij b() {
+      return eik.y;
    }
 
-   public static eib.a<?> a(ekj $$0, boolean $$1) {
-      return a($$2 -> new eio($$2, $$0, $$1));
+   public static eio.a a(boolean $$0) {
+      return new eio.a($$0);
+   }
+
+   public static class a extends eih.a<eio.a> {
+      private final Builder<Pair<ih<dgl>, cll>> a = ImmutableList.builder();
+      private final boolean b;
+
+      a(boolean $$0) {
+         this.b = $$0;
+      }
+
+      protected eio.a a() {
+         return this;
+      }
+
+      @Override
+      public eii b() {
+         return new eio(this.g(), this.a.build(), this.b);
+      }
+
+      public eio.a a(ahf<dgl> $$0, cll $$1) {
+         return this.a(kd.am.f($$0), $$1);
+      }
+
+      public eio.a a(ih<dgl> $$0, cll $$1) {
+         this.a.add(Pair.of($$0, $$1));
+         return this;
+      }
    }
 }

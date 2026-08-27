@@ -1,82 +1,110 @@
 import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Streams;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import java.lang.reflect.Type;
-import java.util.List;
-import java.util.Set;
-import java.util.Map.Entry;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
+import java.util.Objects;
 
-public class fuq {
-   private final fum a;
-   private final fuj b;
+public class fuq implements ggt {
+   private final ahg a;
+   private final j b;
+   private final boolean c;
+   private final int d;
 
-   public fuq(fum $$0, fuj $$1) {
-      if ($$0 == null) {
-         throw new IllegalArgumentException("Missing condition for selector");
-      } else if ($$1 == null) {
-         throw new IllegalArgumentException("Missing variant for selector");
-      } else {
-         this.a = $$0;
-         this.b = $$1;
-      }
+   public fuq(ahg $$0, j $$1, boolean $$2, int $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   public fuj a() {
+   public ahg a() {
+      return this.a;
+   }
+
+   @Override
+   public j b() {
       return this.b;
    }
 
-   public Predicate<dja> a(djb<cwj, dja> $$0) {
-      return this.a.getPredicate($$0);
+   @Override
+   public boolean c() {
+      return this.c;
+   }
+
+   public int d() {
+      return this.d;
+   }
+
+   @Override
+   public String toString() {
+      return "Variant{modelLocation=" + this.a + ", rotation=" + this.b + ", uvLock=" + this.c + ", weight=" + this.d + "}";
    }
 
    @Override
    public boolean equals(Object $$0) {
-      return this == $$0;
+      if (this == $$0) {
+         return true;
+      } else {
+         return !($$0 instanceof fuq $$1) ? false : this.a.equals($$1.a) && Objects.equals(this.b, $$1.b) && this.c == $$1.c && this.d == $$1.d;
+      }
    }
 
    @Override
    public int hashCode() {
-      return System.identityHashCode(this);
+      int $$0 = this.a.hashCode();
+      $$0 = 31 * $$0 + this.b.hashCode();
+      $$0 = 31 * $$0 + Boolean.valueOf(this.c).hashCode();
+      return 31 * $$0 + this.d;
    }
 
    public static class a implements JsonDeserializer<fuq> {
+      @VisibleForTesting
+      static final boolean a = false;
+      @VisibleForTesting
+      static final int b = 1;
+      @VisibleForTesting
+      static final int c = 0;
+      @VisibleForTesting
+      static final int d = 0;
+
       public fuq a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
          JsonObject $$3 = $$0.getAsJsonObject();
-         return new fuq(this.b($$3), (fuj)$$2.deserialize($$3.get("apply"), fuj.class));
+         ahg $$4 = this.b($$3);
+         ggm $$5 = this.a($$3);
+         boolean $$6 = this.d($$3);
+         int $$7 = this.c($$3);
+         return new fuq($$4, $$5.b(), $$6, $$7);
       }
 
-      private fum b(JsonObject $$0) {
-         return $$0.has("when") ? a(aty.u($$0, "when")) : fum.b;
+      private boolean d(JsonObject $$0) {
+         return aud.a($$0, "uvlock", false);
       }
 
-      @VisibleForTesting
-      static fum a(JsonObject $$0) {
-         Set<Entry<String, JsonElement>> $$1 = $$0.entrySet();
-         if ($$1.isEmpty()) {
-            throw new JsonParseException("No elements found in selector");
-         } else if ($$1.size() == 1) {
-            if ($$0.has("OR")) {
-               List<fum> $$2 = Streams.stream(aty.v($$0, "OR")).map($$0x -> a($$0x.getAsJsonObject())).collect(Collectors.toList());
-               return new fup($$2);
-            } else if ($$0.has("AND")) {
-               List<fum> $$3 = Streams.stream(aty.v($$0, "AND")).map($$0x -> a($$0x.getAsJsonObject())).collect(Collectors.toList());
-               return new ful($$3);
-            } else {
-               return a($$1.iterator().next());
-            }
+      protected ggm a(JsonObject $$0) {
+         int $$1 = aud.a($$0, "x", 0);
+         int $$2 = aud.a($$0, "y", 0);
+         ggm $$3 = ggm.a($$1, $$2);
+         if ($$3 == null) {
+            throw new JsonParseException("Invalid BlockModelRotation x: " + $$1 + ", y: " + $$2);
          } else {
-            return new ful($$1.stream().map(fuq.a::a).collect(Collectors.toList()));
+            return $$3;
          }
       }
 
-      private static fum a(Entry<String, JsonElement> $$0) {
-         return new fun($$0.getKey(), $$0.getValue().getAsString());
+      protected ahg b(JsonObject $$0) {
+         return new ahg(aud.i($$0, "model"));
+      }
+
+      protected int c(JsonObject $$0) {
+         int $$1 = aud.a($$0, "weight", 1);
+         if ($$1 < 1) {
+            throw new JsonParseException("Invalid weight " + $$1 + " found, expected integer >= 1");
+         } else {
+            return $$1;
+         }
       }
    }
 }

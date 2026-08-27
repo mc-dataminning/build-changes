@@ -1,42 +1,36 @@
-import java.util.ArrayDeque;
-import java.util.Deque;
+import java.util.HashMap;
+import java.util.Map;
 
-public class tu extends tq {
-   private final Deque<ts> a = new ArrayDeque<>();
-
-   public tu(tr... $$0) {
-      ts $$1 = ts.a();
-
-      for (tr $$2 : $$0) {
-         $$1.a($$2);
-      }
-
-      this.a.push($$1);
+public record tu(int a, Map<String, tm<?>> b, Map<String, tu> c) {
+   private tu(int $$0) {
+      this($$0, new HashMap<>(), new HashMap<>());
    }
 
-   @Override
-   public tf.a a(tk<?> $$0, String $$1) {
-      ts $$2 = this.a.element();
-      if ($$2.a($$0, $$1)) {
-         return tf.a.b;
+   public static tu a() {
+      return new tu(1);
+   }
+
+   public void a(tt $$0) {
+      if (this.a <= $$0.a().size()) {
+         this.c.computeIfAbsent($$0.a().get(this.a - 1), $$0x -> new tu(this.a + 1)).a($$0);
       } else {
-         if ($$0 == sl.b) {
-            ts $$3 = $$2.d().get($$1);
-            if ($$3 != null) {
-               this.a.push($$3);
-            }
-         }
-
-         return super.a($$0, $$1);
+         this.b.put($$0.c(), $$0.b());
       }
    }
 
-   @Override
-   public tf.b b() {
-      if (this.e() == this.a.element().b()) {
-         this.a.pop();
-      }
+   public boolean a(tm<?> $$0, String $$1) {
+      return $$0.equals(this.c().get($$1));
+   }
 
-      return super.b();
+   public int b() {
+      return this.a;
+   }
+
+   public Map<String, tm<?>> c() {
+      return this.b;
+   }
+
+   public Map<String, tu> d() {
+      return this.c;
    }
 }

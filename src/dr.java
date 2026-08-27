@@ -1,7 +1,7 @@
 public interface dr {
    dr a = new dr() {
       @Override
-      public void a(vd $$0) {
+      public void a(vf $$0) {
       }
 
       @Override
@@ -20,7 +20,7 @@ public interface dr {
       }
    };
 
-   void a(vd var1);
+   void a(vf var1);
 
    boolean l_();
 

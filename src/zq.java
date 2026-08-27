@@ -1,24 +1,24 @@
-public class zq implements xd<yx> {
-   private final int a;
+public class zq implements xf<za> {
+   private final boolean a;
 
-   public zq(int $$0) {
+   public zq(boolean $$0) {
       this.a = $$0;
    }
 
-   public zq(ug $$0) {
-      this.a = $$0.readUnsignedByte();
+   public zq(ui $$0) {
+      this.a = $$0.readBoolean();
    }
 
    @Override
-   public void a(ug $$0) {
-      $$0.k(this.a);
+   public void a(ui $$0) {
+      $$0.a(this.a);
    }
 
-   public void a(yx $$0) {
+   public void a(za $$0) {
       $$0.a(this);
    }
 
-   public int a() {
+   public boolean a() {
       return this.a;
    }
 }

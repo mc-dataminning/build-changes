@@ -1,42 +1,29 @@
 import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Set;
 
-public class bwk extends bwm<ceo> {
-   private static final int a = 40;
-
-   public bwk() {
-      super(40);
+public class bwk<T extends bmk> extends bwr<T> {
+   @Override
+   protected void a(and $$0, T $$1) {
+      eln $$2 = $$1.cH().c((double)this.b(), (double)this.c(), (double)this.b());
+      List<bmk> $$3 = $$0.a(bmk.class, $$2, $$1x -> $$1x != $$1 && $$1x.bx());
+      $$3.sort(Comparator.comparingDouble($$1::f));
+      bnk<?> $$4 = $$1.dO();
+      $$4.a(bvm.g, $$3);
+      $$4.a(bvm.h, new bvo($$1, $$3));
    }
 
-   protected void a(amz $$0, ceo $$1) {
-      ahc<cti> $$2 = $$0.ae();
-      hx $$3 = $$1.dm();
-      List<ig> $$4 = Lists.newArrayList();
-      int $$5 = 4;
+   protected int b() {
+      return 16;
+   }
 
-      for (int $$6 = -4; $$6 <= 4; $$6++) {
-         for (int $$7 = -2; $$7 <= 2; $$7++) {
-            for (int $$8 = -4; $$8 <= 4; $$8++) {
-               hx $$9 = $$3.b($$6, $$7, $$8);
-               if ($$1.gp().b().e().contains($$0.a_($$9).b())) {
-                  $$4.add(ig.a($$2, $$9));
-               }
-            }
-         }
-      }
-
-      bnf<?> $$10 = $$1.dO();
-      if (!$$4.isEmpty()) {
-         $$10.a(bvh.f, $$4);
-      } else {
-         $$10.b(bvh.f);
-      }
+   protected int c() {
+      return 16;
    }
 
    @Override
-   public Set<bvh<?>> a() {
-      return ImmutableSet.of(bvh.f);
+   public Set<bvm<?>> a() {
+      return ImmutableSet.of(bvm.g, bvm.h);
    }
 }

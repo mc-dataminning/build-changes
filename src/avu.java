@@ -1,42 +1,33 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
+import com.google.gson.JsonObject;
 import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
-import java.util.Objects;
-import java.util.stream.Stream;
+import com.mojang.serialization.DynamicOps;
 
-public abstract class avu extends DataFix {
-   private final String a;
+public class avu {
+   private static final String a = a("");
 
-   public avu(Schema $$0, String $$1) {
-      super($$0, false);
-      this.a = $$1;
+   public static <T> Dynamic<T> a(DynamicOps<T> $$0, String $$1) {
+      String $$2 = a($$1);
+      return new Dynamic($$0, $$0.createString($$2));
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<Pair<String, Dynamic<?>>> $$0 = DSL.named(bbq.q.typeName(), DSL.remainderType());
-      if (!Objects.equals($$0, this.getInputSchema().getType(bbq.q))) {
-         throw new IllegalStateException("Poi type is not what was expected.");
-      } else {
-         return this.fixTypeEverywhere(this.a, $$0, $$0x -> $$0xx -> $$0xx.mapSecond(this::a));
-      }
+   public static <T> Dynamic<T> a(DynamicOps<T> $$0) {
+      return new Dynamic($$0, $$0.createString(a));
    }
 
-   private <T> Dynamic<T> a(Dynamic<T> $$0) {
-      return $$0.update("Sections", $$0x -> $$0x.updateMapValues($$0xx -> $$0xx.mapSecond(this::b)));
+   private static String a(String $$0) {
+      JsonObject $$1 = new JsonObject();
+      $$1.addProperty("text", $$0);
+      return aud.e($$1);
    }
 
-   private Dynamic<?> b(Dynamic<?> $$0) {
-      return $$0.update("Records", this::c);
+   public static <T> Dynamic<T> b(DynamicOps<T> $$0, String $$1) {
+      JsonObject $$2 = new JsonObject();
+      $$2.addProperty("translate", $$1);
+      return new Dynamic($$0, $$0.createString(aud.e($$2)));
    }
 
-   private <T> Dynamic<T> c(Dynamic<T> $$0) {
-      return (Dynamic<T>)DataFixUtils.orElse($$0.asStreamOpt().result().map($$1 -> $$0.createList(this.a((Stream<Dynamic<T>>)$$1))), $$0);
+   public static <T> Dynamic<T> a(Dynamic<T> $$0) {
+      return (Dynamic<T>)DataFixUtils.orElse($$0.asString().map($$1 -> a($$0.getOps(), $$1)).result(), $$0);
    }
-
-   protected abstract <T> Stream<Dynamic<T>> a(Stream<Dynamic<T>> var1);
 }

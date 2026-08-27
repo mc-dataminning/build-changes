@@ -1,234 +1,90 @@
 import com.mojang.logging.LogUtils;
-import java.util.Arrays;
-import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class esu extends gkc {
-   static final ahd a = new ahd("pending_invite/accept_highlighted");
-   static final ahd b = new ahd("pending_invite/accept");
-   static final ahd c = new ahd("pending_invite/reject_highlighted");
-   static final ahd v = new ahd("pending_invite/reject");
-   private static final Logger w = LogUtils.getLogger();
-   private static final vd x = vd.c("mco.invites.nopending");
-   static final vd y = vd.c("mco.invites.button.accept");
-   static final vd z = vd.c("mco.invites.button.reject");
-   private final fct A;
-   private final CompletableFuture<List<eqt>> B = CompletableFuture.supplyAsync(() -> {
-      try {
-         return eqj.a().i().a;
-      } catch (erw var1x) {
-         w.error("Couldn't list invites", var1x);
-         return List.of();
-      }
-   }, ac.g());
+public class esu extends gkn {
+   private static final Logger a = LogUtils.getLogger();
+   private static final vf b = vf.c("mco.configure.world.invite.profile.name").b(-6250336);
+   private static final vf c = vf.c("mco.configure.world.players.inviting").b(-6250336);
+   private static final vf v = vf.c("mco.configure.world.players.error").b(-65536);
+   private exn w;
+   private exe x;
+   private final erg y;
+   private final esp z;
+   private final fcz A;
    @Nullable
-   vd C;
-   esu.b D;
-   int E = -1;
-   private ewy F;
-   private ewy G;
+   private vf B;
 
-   public esu(fct $$0, vd $$1) {
-      super($$1);
-      this.A = $$0;
+   public esu(esp $$0, fcz $$1, erg $$2) {
+      super(euy.a);
+      this.z = $$0;
+      this.A = $$1;
+      this.y = $$2;
    }
 
    @Override
    public void aN_() {
-      eqe.e();
-      this.D = new esu.b();
-      this.B.thenAcceptAsync($$0 -> {
-         List<esu.a> $$1 = $$0.stream().map($$0x -> new esu.a($$0x)).toList();
-         this.D.a($$1);
-         if ($$1.isEmpty()) {
-            this.f.aU().b(x);
-         }
-      }, this.j);
-      this.d(this.D);
-      this.F = this.d(ewy.a(y, $$0 -> {
-         this.a(this.E, true);
-         this.E = -1;
-         this.C();
-      }).a(this.g / 2 - 174, this.h - 32, 100, 20).a());
-      this.d(ewy.a(vc.d, $$0 -> this.aE_()).a(this.g / 2 - 50, this.h - 32, 100, 20).a());
-      this.G = this.d(ewy.a(z, $$0 -> {
-         this.a(this.E, false);
-         this.E = -1;
-         this.C();
-      }).a(this.g / 2 + 74, this.h - 32, 100, 20).a());
-      this.C();
+      this.w = new exn(this.f.h, this.g / 2 - 100, g(2), 200, 20, null, vf.c("mco.configure.world.invite.profile.name"));
+      this.e(this.w);
+      this.c(this.w);
+      this.x = this.d(exe.a(vf.c("mco.configure.world.buttons.invite"), $$0 -> this.C()).a(this.g / 2 - 100, g(10), 200, 20).a());
+      this.d(exe.a(ve.e, $$0 -> this.f.a(this.A)).a(this.g / 2 - 100, g(12), 200, 20).a());
    }
 
-   @Override
-   public void aE_() {
-      this.f.a(this.A);
-   }
-
-   void a(int $$0, boolean $$1) {
-      if ($$0 < this.D.n()) {
-         String $$2 = this.D.l().get($$0).c.a;
-         CompletableFuture.<Boolean>supplyAsync(() -> {
+   private void C() {
+      if (ac.b(this.w.a())) {
+         this.a(v);
+      } else {
+         long $$0 = this.y.a;
+         String $$1 = this.w.a().trim();
+         this.x.j = false;
+         this.w.e(false);
+         this.a(c);
+         CompletableFuture.<erg>supplyAsync(() -> {
             try {
-               eqj $$2x = eqj.a();
-               if ($$1) {
-                  $$2x.a($$2);
-               } else {
-                  $$2x.b($$2);
-               }
-
-               return true;
-            } catch (erw var3x) {
-               w.error("Couldn't handle invite", var3x);
-               return false;
+               return eqp.a().a($$0, $$1);
+            } catch (Exception var4) {
+               a.error("Couldn't invite user");
+               return null;
             }
-         }, ac.g()).thenAcceptAsync($$2x -> {
-            if ($$2x) {
-               this.D.b($$0);
-               erz $$3 = this.f.aX();
-               if ($$1) {
-                  $$3.c.a();
-               }
-
-               $$3.d.a();
+         }, ac.g()).thenAcceptAsync($$0x -> {
+            if ($$0x != null) {
+               this.y.h = $$0x.h;
+               this.f.a(new etb(this.z, this.y));
+            } else {
+               this.a(v);
             }
+
+            this.w.e(true);
+            this.x.j = true;
          }, this.j);
       }
    }
 
-   @Override
-   public void a(ewm $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.C = null;
-      $$0.a(this.i, this.e, this.g / 2, 12, -1);
-      if (this.C != null) {
-         $$0.a(this.i, this.C, $$1, $$2);
-      }
-
-      if (this.B.isDone() && this.D.n() == 0) {
-         $$0.a(this.i, x, this.g / 2, this.h / 2 - 20, -1);
-      }
+   private void a(vf $$0) {
+      this.B = $$0;
+      this.f.aV().c($$0);
    }
 
    @Override
-   void C() {
-      this.F.k = this.a(this.E);
-      this.G.k = this.a(this.E);
-   }
-
-   private boolean a(int $$0) {
-      return $$0 != -1;
-   }
-
-   class a extends exu.a<esu.a> {
-      private static final int b = 38;
-      final eqt c;
-      private final List<esd> d;
-
-      a(eqt $$0) {
-         this.c = $$0;
-         this.d = Arrays.asList(new esu.a.a(), new esu.a.b());
-      }
-
-      @Override
-      public void a(ewm $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         this.a($$0, this.c, $$3, $$2, $$6, $$7);
-      }
-
-      @Override
-      public boolean a(double $$0, double $$1, int $$2) {
-         esd.a(esu.this.D, this, this.d, $$2, $$0, $$1);
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 256) {
+         this.f.a(this.A);
          return true;
-      }
-
-      private void a(ewm $$0, eqt $$1, int $$2, int $$3, int $$4, int $$5) {
-         $$0.a(esu.this.i, $$1.b, $$2 + 38, $$3 + 1, -1, false);
-         $$0.a(esu.this.i, $$1.c, $$2 + 38, $$3 + 12, 7105644, false);
-         $$0.a(esu.this.i, etq.a($$1.e), $$2 + 38, $$3 + 24, 7105644, false);
-         esd.a($$0, this.d, esu.this.D, $$2, $$3, $$4, $$5);
-         etq.a($$0, $$2, $$3, 32, $$1.d);
-      }
-
-      @Override
-      public vd a() {
-         vd $$0 = vc.b(vd.b(this.c.b), vd.b(this.c.c), etq.a(this.c.e));
-         return vd.a("narrator.select", $$0);
-      }
-
-      class a extends esd {
-         a() {
-            super(15, 15, 215, 5);
-         }
-
-         @Override
-         protected void a(ewm $$0, int $$1, int $$2, boolean $$3) {
-            $$0.a($$3 ? esu.a : esu.b, $$1, $$2, 18, 18);
-            if ($$3) {
-               esu.this.C = esu.y;
-            }
-         }
-
-         @Override
-         public void a(int $$0) {
-            esu.this.a($$0, true);
-         }
-      }
-
-      class b extends esd {
-         b() {
-            super(15, 15, 235, 5);
-         }
-
-         @Override
-         protected void a(ewm $$0, int $$1, int $$2, boolean $$3) {
-            $$0.a($$3 ? esu.c : esu.v, $$1, $$2, 18, 18);
-            if ($$3) {
-               esu.this.C = esu.z;
-            }
-         }
-
-         @Override
-         public void a(int $$0) {
-            esu.this.a($$0, false);
-         }
+      } else {
+         return super.a($$0, $$1, $$2);
       }
    }
 
-   class b extends gkb<esu.a> {
-      public b() {
-         super(esu.this.g, esu.this.h - 72, 32, 36);
+   @Override
+   public void a(ews $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, b, this.g / 2 - 100, g(1), -1, false);
+      if (this.B != null) {
+         $$0.a(this.i, this.B, this.g / 2, g(5), -1);
       }
 
-      public void b(int $$0) {
-         this.i($$0);
-      }
-
-      @Override
-      public int a() {
-         return this.n() * 36;
-      }
-
-      @Override
-      public int b() {
-         return 260;
-      }
-
-      @Override
-      public void a(int $$0) {
-         super.a($$0);
-         this.c($$0);
-      }
-
-      public void c(int $$0) {
-         esu.this.E = $$0;
-         esu.this.C();
-      }
-
-      public void a(@Nullable esu.a $$0) {
-         super.a($$0);
-         esu.this.E = this.l().indexOf($$0);
-         esu.this.C();
-      }
+      this.w.a($$0, $$1, $$2, $$3);
    }
 }

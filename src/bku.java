@@ -1,24 +1,51 @@
-class bku extends bla {
-   protected bku(blb $$0, int $$1) {
-      super($$0, $$1);
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+
+public record bku(String b, bkr c, float d, bkq e, bkw f) {
+   public static final Codec<bku> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.STRING.fieldOf("message_id").forGetter(bku::a),
+               bkr.d.fieldOf("scaling").forGetter(bku::b),
+               Codec.FLOAT.fieldOf("exhaustion").forGetter(bku::c),
+               bkq.g.optionalFieldOf("effects", bkq.a).forGetter(bku::d),
+               bkw.d.optionalFieldOf("death_message_type", bkw.a).forGetter(bku::e)
+            )
+            .apply($$0, bku::new)
+   );
+
+   public bku(String $$0, bkr $$1, float $$2) {
+      this($$0, $$1, $$2, bkq.a, bkw.a);
    }
 
-   @Override
-   public void a(bmf $$0, int $$1) {
-      super.a($$0, $$1);
-      if ($$0.fk() <= 0.0F && !$$0.dM().B) {
-         $$0.d(this);
-      }
+   public bku(String $$0, bkr $$1, float $$2, bkq $$3) {
+      this($$0, $$1, $$2, $$3, bkw.a);
    }
 
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return true;
+   public bku(String $$0, float $$1, bkq $$2) {
+      this($$0, bkr.b, $$1, $$2);
    }
 
-   @Override
-   public void b(bmf $$0, int $$1) {
-      super.b($$0, $$1);
-      $$0.y(Math.max($$0.fk(), (float)(4 * (1 + $$1))));
+   public bku(String $$0, float $$1) {
+      this($$0, bkr.b, $$1);
+   }
+
+   public String a() {
+      return this.b;
+   }
+
+   public bkr b() {
+      return this.c;
+   }
+
+   public float c() {
+      return this.d;
+   }
+
+   public bkq d() {
+      return this.e;
+   }
+
+   public bkw e() {
+      return this.f;
    }
 }

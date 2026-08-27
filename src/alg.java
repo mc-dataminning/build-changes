@@ -1,155 +1,305 @@
+import com.google.common.collect.Lists;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.FloatArgumentType;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
+import com.mojang.brigadier.arguments.BoolArgumentType;
+import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import java.util.Arrays;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import java.util.Collection;
+import java.util.Collections;
 
 public class alg {
-   private static final float a = 10000.0F;
-   private static final String b = String.valueOf(20);
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vf.c("commands.team.add.duplicate"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(vf.c("commands.team.empty.unchanged"));
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(vf.c("commands.team.option.name.unchanged"));
+   private static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(vf.c("commands.team.option.color.unchanged"));
+   private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(vf.c("commands.team.option.friendlyfire.alreadyEnabled"));
+   private static final SimpleCommandExceptionType f = new SimpleCommandExceptionType(vf.c("commands.team.option.friendlyfire.alreadyDisabled"));
+   private static final SimpleCommandExceptionType g = new SimpleCommandExceptionType(vf.c("commands.team.option.seeFriendlyInvisibles.alreadyEnabled"));
+   private static final SimpleCommandExceptionType h = new SimpleCommandExceptionType(vf.c("commands.team.option.seeFriendlyInvisibles.alreadyDisabled"));
+   private static final SimpleCommandExceptionType i = new SimpleCommandExceptionType(vf.c("commands.team.option.nametagVisibility.unchanged"));
+   private static final SimpleCommandExceptionType j = new SimpleCommandExceptionType(vf.c("commands.team.option.deathMessageVisibility.unchanged"));
+   private static final SimpleCommandExceptionType k = new SimpleCommandExceptionType(vf.c("commands.team.option.collisionRule.unchanged"));
 
    public static void a(CommandDispatcher<ds> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a(
-                                 "tick"
-                              )
-                              .requires($$0x -> $$0x.c(3)))
-                           .then(dt.a("query").executes($$0x -> a((ds)$$0x.getSource()))))
-                        .then(
-                           dt.a("rate")
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a(
+                                    "team"
+                                 )
+                                 .requires($$0x -> $$0x.c(2)))
                               .then(
-                                 dt.a("rate", FloatArgumentType.floatArg(1.0F, 10000.0F))
-                                    .suggests(($$0x, $$1) -> dx.a(new String[]{b}, $$1))
-                                    .executes($$0x -> a((ds)$$0x.getSource(), FloatArgumentType.getFloat($$0x, "rate")))
-                              )
-                        ))
-                     .then(
-                        ((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("step").executes($$0x -> b((ds)$$0x.getSource(), 1)))
-                              .then(dt.a("stop").executes($$0x -> b((ds)$$0x.getSource()))))
+                                 ((LiteralArgumentBuilder)dt.a("list").executes($$0x -> a((ds)$$0x.getSource())))
+                                    .then(dt.a("team", fc.a()).executes($$0x -> c((ds)$$0x.getSource(), fc.a($$0x, "team"))))
+                              ))
                            .then(
-                              dt.a("time", ff.a(1))
-                                 .suggests(($$0x, $$1) -> dx.a(new String[]{"1t", "1s"}, $$1))
-                                 .executes($$0x -> b((ds)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "time")))
-                           )
-                     ))
+                              dt.a("add")
+                                 .then(
+                                    ((RequiredArgumentBuilder)dt.a("team", StringArgumentType.word())
+                                          .executes($$0x -> a((ds)$$0x.getSource(), StringArgumentType.getString($$0x, "team"))))
+                                       .then(
+                                          dt.a("displayName", eb.a())
+                                             .executes($$0x -> a((ds)$$0x.getSource(), StringArgumentType.getString($$0x, "team"), eb.a($$0x, "displayName")))
+                                       )
+                                 )
+                           ))
+                        .then(dt.a("remove").then(dt.a("team", fc.a()).executes($$0x -> b((ds)$$0x.getSource(), fc.a($$0x, "team"))))))
+                     .then(dt.a("empty").then(dt.a("team", fc.a()).executes($$0x -> a((ds)$$0x.getSource(), fc.a($$0x, "team"))))))
                   .then(
-                     ((LiteralArgumentBuilder)dt.a("sprint").then(dt.a("stop").executes($$0x -> c((ds)$$0x.getSource()))))
+                     dt.a("join")
                         .then(
-                           dt.a("time", ff.a(1))
-                              .suggests(($$0x, $$1) -> dx.a(new String[]{"60s", "1d", "3d"}, $$1))
-                              .executes($$0x -> a((ds)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "time")))
+                           ((RequiredArgumentBuilder)dt.a("team", fc.a())
+                                 .executes($$0x -> a((ds)$$0x.getSource(), fc.a($$0x, "team"), Collections.singleton(((ds)$$0x.getSource()).g()))))
+                              .then(dt.a("members", ew.b()).suggests(ew.a).executes($$0x -> a((ds)$$0x.getSource(), fc.a($$0x, "team"), ew.c($$0x, "members"))))
                         )
                   ))
-               .then(dt.a("unfreeze").executes($$0x -> a((ds)$$0x.getSource(), false))))
-            .then(dt.a("freeze").executes($$0x -> a((ds)$$0x.getSource(), true)))
+               .then(dt.a("leave").then(dt.a("members", ew.b()).suggests(ew.a).executes($$0x -> a((ds)$$0x.getSource(), ew.c($$0x, "members"))))))
+            .then(
+               dt.a("modify")
+                  .then(
+                     ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)dt.a(
+                                                   "team", fc.a()
+                                                )
+                                                .then(
+                                                   dt.a("displayName")
+                                                      .then(
+                                                         dt.a("displayName", eb.a())
+                                                            .executes($$0x -> a((ds)$$0x.getSource(), fc.a($$0x, "team"), eb.a($$0x, "displayName")))
+                                                      )
+                                                ))
+                                             .then(
+                                                dt.a("color")
+                                                   .then(
+                                                      dt.a("value", ea.a()).executes($$0x -> a((ds)$$0x.getSource(), fc.a($$0x, "team"), ea.a($$0x, "value")))
+                                                   )
+                                             ))
+                                          .then(
+                                             dt.a("friendlyFire")
+                                                .then(
+                                                   dt.a("allowed", BoolArgumentType.bool())
+                                                      .executes($$0x -> b((ds)$$0x.getSource(), fc.a($$0x, "team"), BoolArgumentType.getBool($$0x, "allowed")))
+                                                )
+                                          ))
+                                       .then(
+                                          dt.a("seeFriendlyInvisibles")
+                                             .then(
+                                                dt.a("allowed", BoolArgumentType.bool())
+                                                   .executes($$0x -> a((ds)$$0x.getSource(), fc.a($$0x, "team"), BoolArgumentType.getBool($$0x, "allowed")))
+                                             )
+                                       ))
+                                    .then(
+                                       ((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("nametagVisibility")
+                                                   .then(dt.a("never").executes($$0x -> a((ds)$$0x.getSource(), fc.a($$0x, "team"), emy.b.b))))
+                                                .then(dt.a("hideForOtherTeams").executes($$0x -> a((ds)$$0x.getSource(), fc.a($$0x, "team"), emy.b.c))))
+                                             .then(dt.a("hideForOwnTeam").executes($$0x -> a((ds)$$0x.getSource(), fc.a($$0x, "team"), emy.b.d))))
+                                          .then(dt.a("always").executes($$0x -> a((ds)$$0x.getSource(), fc.a($$0x, "team"), emy.b.a)))
+                                    ))
+                                 .then(
+                                    ((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("deathMessageVisibility")
+                                                .then(dt.a("never").executes($$0x -> b((ds)$$0x.getSource(), fc.a($$0x, "team"), emy.b.b))))
+                                             .then(dt.a("hideForOtherTeams").executes($$0x -> b((ds)$$0x.getSource(), fc.a($$0x, "team"), emy.b.c))))
+                                          .then(dt.a("hideForOwnTeam").executes($$0x -> b((ds)$$0x.getSource(), fc.a($$0x, "team"), emy.b.d))))
+                                       .then(dt.a("always").executes($$0x -> b((ds)$$0x.getSource(), fc.a($$0x, "team"), emy.b.a)))
+                                 ))
+                              .then(
+                                 ((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("collisionRule")
+                                             .then(dt.a("never").executes($$0x -> a((ds)$$0x.getSource(), fc.a($$0x, "team"), emy.a.b))))
+                                          .then(dt.a("pushOwnTeam").executes($$0x -> a((ds)$$0x.getSource(), fc.a($$0x, "team"), emy.a.d))))
+                                       .then(dt.a("pushOtherTeams").executes($$0x -> a((ds)$$0x.getSource(), fc.a($$0x, "team"), emy.a.c))))
+                                    .then(dt.a("always").executes($$0x -> a((ds)$$0x.getSource(), fc.a($$0x, "team"), emy.a.a)))
+                              ))
+                           .then(
+                              dt.a("prefix").then(dt.a("prefix", eb.a()).executes($$0x -> b((ds)$$0x.getSource(), fc.a($$0x, "team"), eb.a($$0x, "prefix"))))
+                           ))
+                        .then(dt.a("suffix").then(dt.a("suffix", eb.a()).executes($$0x -> c((ds)$$0x.getSource(), fc.a($$0x, "team"), eb.a($$0x, "suffix")))))
+                  )
+            )
       );
    }
 
-   private static String a(long $$0) {
-      return String.format("%.1f", (float)$$0 / (float)avj.b);
+   private static vf a(Collection<emv> $$0) {
+      return $$0.iterator().next().gU();
    }
 
-   private static int a(ds $$0, float $$1) {
-      ahv $$2 = $$0.l().aO();
-      $$2.a($$1);
-      String $$3 = String.format("%.1f", $$1);
-      $$0.a(() -> vd.a("commands.tick.rate.success", $$3), true);
-      return (int)$$1;
+   private static int a(ds $$0, Collection<emv> $$1) {
+      emw $$2 = $$0.l().aH();
+
+      for (emv $$3 : $$1) {
+         $$2.d($$3.cy());
+      }
+
+      if ($$1.size() == 1) {
+         $$0.a(() -> vf.a("commands.team.leave.success.single", a($$1)), true);
+      } else {
+         $$0.a(() -> vf.a("commands.team.leave.success.multiple", $$1.size()), true);
+      }
+
+      return $$1.size();
+   }
+
+   private static int a(ds $$0, emr $$1, Collection<emv> $$2) {
+      emw $$3 = $$0.l().aH();
+
+      for (emv $$4 : $$2) {
+         $$3.a($$4.cy(), $$1);
+      }
+
+      if ($$2.size() == 1) {
+         $$0.a(() -> vf.a("commands.team.join.success.single", a($$2), $$1.d()), true);
+      } else {
+         $$0.a(() -> vf.a("commands.team.join.success.multiple", $$2.size(), $$1.d()), true);
+      }
+
+      return $$2.size();
+   }
+
+   private static int a(ds $$0, emr $$1, emy.b $$2) throws CommandSyntaxException {
+      if ($$1.j() == $$2) {
+         throw i.create();
+      } else {
+         $$1.a($$2);
+         $$0.a(() -> vf.a("commands.team.option.nametagVisibility.success", $$1.d(), $$2.b()), true);
+         return 0;
+      }
+   }
+
+   private static int b(ds $$0, emr $$1, emy.b $$2) throws CommandSyntaxException {
+      if ($$1.k() == $$2) {
+         throw j.create();
+      } else {
+         $$1.b($$2);
+         $$0.a(() -> vf.a("commands.team.option.deathMessageVisibility.success", $$1.d(), $$2.b()), true);
+         return 0;
+      }
+   }
+
+   private static int a(ds $$0, emr $$1, emy.a $$2) throws CommandSyntaxException {
+      if ($$1.l() == $$2) {
+         throw k.create();
+      } else {
+         $$1.a($$2);
+         $$0.a(() -> vf.a("commands.team.option.collisionRule.success", $$1.d(), $$2.a()), true);
+         return 0;
+      }
+   }
+
+   private static int a(ds $$0, emr $$1, boolean $$2) throws CommandSyntaxException {
+      if ($$1.i() == $$2) {
+         if ($$2) {
+            throw g.create();
+         } else {
+            throw h.create();
+         }
+      } else {
+         $$1.b($$2);
+         $$0.a(() -> vf.a("commands.team.option.seeFriendlyInvisibles." + ($$2 ? "enabled" : "disabled"), $$1.d()), true);
+         return 0;
+      }
+   }
+
+   private static int b(ds $$0, emr $$1, boolean $$2) throws CommandSyntaxException {
+      if ($$1.h() == $$2) {
+         if ($$2) {
+            throw e.create();
+         } else {
+            throw f.create();
+         }
+      } else {
+         $$1.a($$2);
+         $$0.a(() -> vf.a("commands.team.option.friendlyfire." + ($$2 ? "enabled" : "disabled"), $$1.d()), true);
+         return 0;
+      }
+   }
+
+   private static int a(ds $$0, emr $$1, vf $$2) throws CommandSyntaxException {
+      if ($$1.c().equals($$2)) {
+         throw c.create();
+      } else {
+         $$1.a($$2);
+         $$0.a(() -> vf.a("commands.team.option.name.success", $$1.d()), true);
+         return 0;
+      }
+   }
+
+   private static int a(ds $$0, emr $$1, n $$2) throws CommandSyntaxException {
+      if ($$1.n() == $$2) {
+         throw d.create();
+      } else {
+         $$1.a($$2);
+         $$0.a(() -> vf.a("commands.team.option.color.success", $$1.d(), $$2.g()), true);
+         return 0;
+      }
+   }
+
+   private static int a(ds $$0, emr $$1) throws CommandSyntaxException {
+      emw $$2 = $$0.l().aH();
+      Collection<String> $$3 = Lists.newArrayList($$1.g());
+      if ($$3.isEmpty()) {
+         throw b.create();
+      } else {
+         for (String $$4 : $$3) {
+            $$2.b($$4, $$1);
+         }
+
+         $$0.a(() -> vf.a("commands.team.empty.success", $$3.size(), $$1.d()), true);
+         return $$3.size();
+      }
+   }
+
+   private static int b(ds $$0, emr $$1) {
+      emw $$2 = $$0.l().aH();
+      $$2.d($$1);
+      $$0.a(() -> vf.a("commands.team.remove.success", $$1.d()), true);
+      return $$2.g().size();
+   }
+
+   private static int a(ds $$0, String $$1) throws CommandSyntaxException {
+      return a($$0, $$1, vf.b($$1));
+   }
+
+   private static int a(ds $$0, String $$1, vf $$2) throws CommandSyntaxException {
+      emw $$3 = $$0.l().aH();
+      if ($$3.b($$1) != null) {
+         throw a.create();
+      } else {
+         emr $$4 = $$3.c($$1);
+         $$4.a($$2);
+         $$0.a(() -> vf.a("commands.team.add.success", $$4.d()), true);
+         return $$3.g().size();
+      }
+   }
+
+   private static int c(ds $$0, emr $$1) {
+      Collection<String> $$2 = $$1.g();
+      if ($$2.isEmpty()) {
+         $$0.a(() -> vf.a("commands.team.list.members.empty", $$1.d()), false);
+      } else {
+         $$0.a(() -> vf.a("commands.team.list.members.success", $$1.d(), $$2.size(), vi.a($$2)), false);
+      }
+
+      return $$2.size();
    }
 
    private static int a(ds $$0) {
-      ahv $$1 = $$0.l().aO();
-      String $$2 = a($$0.l().aP());
-      float $$3 = $$1.f();
-      String $$4 = String.format("%.1f", $$3);
-      if ($$1.a()) {
-         $$0.a(() -> vd.c("commands.tick.status.sprinting"), false);
-         $$0.a(() -> vd.a("commands.tick.query.rate.sprinting", $$4, $$2), false);
+      Collection<emr> $$1 = $$0.l().aH().g();
+      if ($$1.isEmpty()) {
+         $$0.a(() -> vf.c("commands.team.list.teams.empty"), false);
       } else {
-         if ($$1.l()) {
-            $$0.a(() -> vd.c("commands.tick.status.frozen"), false);
-         } else {
-            $$0.a(() -> vd.c("commands.tick.status.running"), false);
-         }
-
-         String $$5 = a($$1.h());
-         $$0.a(() -> vd.a("commands.tick.query.rate.running", $$4, $$2, $$5), false);
+         $$0.a(() -> vf.a("commands.team.list.teams.success", $$1.size(), vi.b($$1, emr::d)), false);
       }
 
-      long[] $$6 = Arrays.copyOf($$0.l().aQ(), $$0.l().aQ().length);
-      Arrays.sort($$6);
-      String $$7 = a($$6[$$6.length / 2]);
-      String $$8 = a($$6[(int)((double)$$6.length * 0.95)]);
-      String $$9 = a($$6[(int)((double)$$6.length * 0.99)]);
-      $$0.a(() -> vd.a("commands.tick.query.percentiles", $$7, $$8, $$9, $$6.length), false);
-      return (int)$$3;
+      return $$1.size();
    }
 
-   private static int a(ds $$0, int $$1) {
-      boolean $$2 = $$0.l().aO().b($$1);
-      if ($$2) {
-         $$0.a(() -> vd.c("commands.tick.sprint.stop.success"), true);
-      }
-
-      $$0.a(() -> vd.c("commands.tick.status.sprinting"), true);
+   private static int b(ds $$0, emr $$1, vf $$2) {
+      $$1.b($$2);
+      $$0.a(() -> vf.a("commands.team.option.prefix.success", $$2), false);
       return 1;
    }
 
-   private static int a(ds $$0, boolean $$1) {
-      ahv $$2 = $$0.l().aO();
-      if ($$1) {
-         if ($$2.a()) {
-            $$2.c();
-         }
-
-         if ($$2.j()) {
-            $$2.b();
-         }
-      }
-
-      $$2.a($$1);
-      if ($$1) {
-         $$0.a(() -> vd.c("commands.tick.status.frozen"), true);
-      } else {
-         $$0.a(() -> vd.c("commands.tick.status.running"), true);
-      }
-
-      return $$1 ? 1 : 0;
-   }
-
-   private static int b(ds $$0, int $$1) {
-      ahv $$2 = $$0.l().aO();
-      boolean $$3 = $$2.a($$1);
-      if ($$3) {
-         $$0.a(() -> vd.a("commands.tick.step.success", $$1), true);
-      } else {
-         $$0.b(vd.c("commands.tick.step.fail"));
-      }
-
+   private static int c(ds $$0, emr $$1, vf $$2) {
+      $$1.c($$2);
+      $$0.a(() -> vf.a("commands.team.option.suffix.success", $$2), false);
       return 1;
-   }
-
-   private static int b(ds $$0) {
-      ahv $$1 = $$0.l().aO();
-      boolean $$2 = $$1.b();
-      if ($$2) {
-         $$0.a(() -> vd.c("commands.tick.step.stop.success"), true);
-         return 1;
-      } else {
-         $$0.b(vd.c("commands.tick.step.stop.fail"));
-         return 0;
-      }
-   }
-
-   private static int c(ds $$0) {
-      ahv $$1 = $$0.l().aO();
-      boolean $$2 = $$1.c();
-      if ($$2) {
-         $$0.a(() -> vd.c("commands.tick.sprint.stop.success"), true);
-         return 1;
-      } else {
-         $$0.b(vd.c("commands.tick.sprint.stop.fail"));
-         return 0;
-      }
    }
 }

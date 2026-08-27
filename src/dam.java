@@ -1,59 +1,51 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class dam extends czy implements daz {
-   public static final MapCodec<dam> c = b(dam::new);
-   protected static final emf g = cwj.a(0.0, 0.0, 0.0, 16.0, 9.0, 16.0);
-   private static final double h = 0.14;
+public class dam extends daf {
+   public static final MapCodec<dam> e = b(dam::new);
 
    @Override
-   public MapCodec<dam> a() {
-      return c;
+   public MapCodec<? extends dam> a() {
+      return e;
    }
 
-   protected dam(diz.d $$0) {
-      super($$0, ic.b, g, true, 0.14);
+   public dam(djf.d $$0) {
+      super($$0);
    }
 
-   @Override
-   protected boolean g(dja $$0) {
-      return $$0.a(cwl.G);
+   public static djg b() {
+      return cwr.G.o();
    }
 
    @Override
-   protected cwj b() {
-      return cwl.md;
+   public void a(cto $$0, cfh $$1, hx $$2, djg $$3, @Nullable dgu $$4, cmx $$5) {
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      if (crk.a(crm.v, $$5) == 0) {
+         if ($$0.E_().i()) {
+            $$0.a($$2, false);
+            return;
+         }
+
+         djg $$6 = $$0.a_($$2.d());
+         if ($$6.d() || $$6.k()) {
+            $$0.b($$2, b());
+         }
+      }
    }
 
    @Override
-   protected boolean h(dja $$0) {
-      return !$$0.a(cwl.kJ);
+   public void b(djg $$0, and $$1, hx $$2, auu $$3) {
+      if ($$1.a(ctx.b, $$2) > 11 - $$0.b($$1, $$2)) {
+         this.d($$0, $$1, $$2);
+      }
    }
 
-   @Override
-   public boolean a(@Nullable cfb $$0, cso $$1, hx $$2, dja $$3, eej $$4) {
-      return false;
-   }
-
-   @Override
-   public boolean a(ctj $$0, hx $$1, dja $$2, eek $$3) {
-      return false;
-   }
-
-   @Override
-   protected int a(aup $$0) {
-      return 1;
-   }
-
-   @Nullable
-   @Override
-   public dja a(cpa $$0) {
-      eek $$1 = $$0.q().b_($$0.a());
-      return $$1.a(asg.a) && $$1.e() == 8 ? super.a($$0) : null;
-   }
-
-   @Override
-   public eek c_(dja $$0) {
-      return eel.c.a(false);
+   protected void d(djg $$0, cto $$1, hx $$2) {
+      if ($$1.E_().i()) {
+         $$1.a($$2, false);
+      } else {
+         $$1.b($$2, b());
+         $$1.a($$2, b().b(), $$2);
+      }
    }
 }

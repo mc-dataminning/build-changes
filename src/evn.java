@@ -1,24 +1,30 @@
-import it.unimi.dsi.fastutil.floats.FloatUnaryOperator;
+import java.util.function.IntFunction;
 
-public class evn {
-   public float a;
-   public float b;
-   private long c;
-   private final float d;
-   private final FloatUnaryOperator e;
+public enum evn implements aup {
+   a(0, "options.prioritizeChunkUpdates.none"),
+   b(1, "options.prioritizeChunkUpdates.byPlayer"),
+   c(2, "options.prioritizeChunkUpdates.nearby");
 
-   public evn(float $$0, long $$1, FloatUnaryOperator $$2) {
-      this.d = 1000.0F / $$0;
-      this.c = $$1;
-      this.e = $$2;
+   private static final IntFunction<evn> d = atf.a(evn::a, values(), atf.a.b);
+   private final int e;
+   private final String f;
+
+   private evn(int $$0, String $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
-   public int a(long $$0) {
-      this.b = (float)($$0 - this.c) / this.e.apply(this.d);
-      this.c = $$0;
-      this.a = this.a + this.b;
-      int $$1 = (int)this.a;
-      this.a -= (float)$$1;
-      return $$1;
+   @Override
+   public int a() {
+      return this.e;
+   }
+
+   @Override
+   public String b() {
+      return this.f;
+   }
+
+   public static evn a(int $$0) {
+      return d.apply($$0);
    }
 }

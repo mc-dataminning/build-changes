@@ -5,22 +5,22 @@ public interface dq {
    dq a = new dq() {
       @Nullable
       @Override
-      public vt a(String $$0) {
+      public vv a(String $$0) {
          return null;
       }
    };
 
    @Nullable
-   vt a(String var1);
+   vv a(String var1);
 
-   public static record a(Map<String, vt> b) implements dq {
+   public static record a(Map<String, vv> b) implements dq {
       @Nullable
       @Override
-      public vt a(String $$0) {
+      public vv a(String $$0) {
          return this.b.get($$0);
       }
 
-      public Map<String, vt> a() {
+      public Map<String, vv> a() {
          return this.b;
       }
    }

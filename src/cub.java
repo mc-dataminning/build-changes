@@ -1,151 +1,112 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import it.unimi.dsi.fastutil.longs.LongIterator;
-import it.unimi.dsi.fastutil.longs.LongSet;
+import com.google.common.base.Suppliers;
 import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
 
-public class cub {
-   private final ctj a;
-   private final dph b;
-   private final dza c;
+public class cub implements csu, csy {
+   protected final int a;
+   protected final int b;
+   protected final dlc[][] c;
+   protected boolean d;
+   protected final cto e;
+   private final Supplier<ih<cun>> f;
 
-   public cub(ctj $$0, dph $$1, dza $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public cub(cto $$0, hx $$1, hx $$2) {
+      this.e = $$0;
+      this.f = Suppliers.memoize(() -> $$0.I_().d(ke.at).f(cuu.b));
+      this.a = iz.a($$1.u());
+      this.b = iz.a($$1.w());
+      int $$3 = iz.a($$2.u());
+      int $$4 = iz.a($$2.w());
+      this.c = new dlc[$$3 - this.a + 1][$$4 - this.b + 1];
+      dlg $$5 = $$0.L();
+      this.d = true;
+
+      for (int $$6 = this.a; $$6 <= $$3; $$6++) {
+         for (int $$7 = this.b; $$7 <= $$4; $$7++) {
+            this.c[$$6 - this.a][$$7 - this.b] = $$5.a($$6, $$7);
+         }
+      }
+
+      for (int $$8 = iz.a($$1.u()); $$8 <= iz.a($$2.u()); $$8++) {
+         for (int $$9 = iz.a($$1.w()); $$9 <= iz.a($$2.w()); $$9++) {
+            dlc $$10 = this.c[$$8 - this.a][$$9 - this.b];
+            if ($$10 != null && !$$10.a($$1.v(), $$2.v())) {
+               this.d = false;
+               return;
+            }
+         }
+      }
    }
 
-   public cub a(ang $$0) {
-      if ($$0.E() != this.a) {
-         throw new IllegalStateException("Using invalid structure manager (source level: " + $$0.E() + ", region: " + $$0);
+   private dlc d(hx $$0) {
+      return this.a(iz.a($$0.u()), iz.a($$0.w()));
+   }
+
+   private dlc a(int $$0, int $$1) {
+      int $$2 = $$0 - this.a;
+      int $$3 = $$1 - this.b;
+      if ($$2 >= 0 && $$2 < this.c.length && $$3 >= 0 && $$3 < this.c[$$2].length) {
+         dlc $$4 = this.c[$$2][$$3];
+         return (dlc)($$4 != null ? $$4 : new dlj(this.e, new csv($$0, $$1), this.f.get()));
       } else {
-         return new cub($$0, this.b, this.c);
+         return new dlj(this.e, new csv($$0, $$1), this.f.get());
       }
    }
 
-   public List<dzh> a(csp $$0, Predicate<dyz> $$1) {
-      Map<dyz, LongSet> $$2 = this.a.a($$0.e, $$0.f, dlb.e).h();
-      Builder<dzh> $$3 = ImmutableList.builder();
-
-      for (Entry<dyz, LongSet> $$4 : $$2.entrySet()) {
-         dyz $$5 = $$4.getKey();
-         if ($$1.test($$5)) {
-            this.a($$5, $$4.getValue(), $$3::add);
-         }
-      }
-
-      return $$3.build();
+   @Override
+   public dkx D_() {
+      return this.e.D_();
    }
 
-   public List<dzh> a(iz $$0, dyz $$1) {
-      LongSet $$2 = this.a.a($$0.a(), $$0.c(), dlb.e).b($$1);
-      Builder<dzh> $$3 = ImmutableList.builder();
-      this.a($$1, $$2, $$3::add);
-      return $$3.build();
+   @Override
+   public csu c(int $$0, int $$1) {
+      return this.a($$0, $$1);
    }
 
-   public void a(dyz $$0, LongSet $$1, Consumer<dzh> $$2) {
-      LongIterator var4 = $$1.iterator();
-
-      while (var4.hasNext()) {
-         long $$3 = (Long)var4.next();
-         iz $$4 = iz.a(new csp($$3), this.a.an());
-         dzh $$5 = this.a($$4, $$0, this.a.a($$4.a(), $$4.c(), dlb.d));
-         if ($$5 != null && $$5.b()) {
-            $$2.accept($$5);
-         }
-      }
+   @Override
+   public List<eml> c(@Nullable blu $$0, eln $$1) {
+      return List.of();
    }
 
    @Nullable
-   public dzh a(iz $$0, dyz $$1, dlt $$2) {
-      return $$2.a($$1);
+   @Override
+   public dgu c_(hx $$0) {
+      dlc $$1 = this.d($$0);
+      return $$1.c_($$0);
    }
 
-   public void a(iz $$0, dyz $$1, dzh $$2, dlt $$3) {
-      $$3.a($$1, $$2);
-   }
-
-   public void a(iz $$0, dyz $$1, long $$2, dlt $$3) {
-      $$3.a($$1, $$2);
-   }
-
-   public boolean a() {
-      return this.b.c();
-   }
-
-   public dzh a(hx $$0, dyz $$1) {
-      for (dzh $$2 : this.a(iz.a($$0), $$1)) {
-         if ($$2.a().b($$0)) {
-            return $$2;
-         }
+   @Override
+   public djg a_(hx $$0) {
+      if (this.s($$0)) {
+         return cwr.a.o();
+      } else {
+         dlc $$1 = this.d($$0);
+         return $$1.a_($$0);
       }
-
-      return dzh.b;
    }
 
-   public dzh a(hx $$0, ahc<dyz> $$1) {
-      dyz $$2 = this.b().d(ke.aD).a($$1);
-      return $$2 == null ? dzh.b : this.b($$0, $$2);
-   }
-
-   public dzh a(hx $$0, asq<dyz> $$1) {
-      it<dyz> $$2 = this.b().d(ke.aD);
-
-      for (dzh $$3 : this.a(new csp($$0), $$2x -> $$2.c($$2.a($$2x)).map($$1xx -> $$1xx.a($$1)).orElse(false))) {
-         if (this.a($$0, $$3)) {
-            return $$3;
-         }
+   @Override
+   public eeq b_(hx $$0) {
+      if (this.s($$0)) {
+         return eer.a.g();
+      } else {
+         dlc $$1 = this.d($$0);
+         return $$1.b_($$0);
       }
-
-      return dzh.b;
    }
 
-   public dzh b(hx $$0, dyz $$1) {
-      for (dzh $$2 : this.a(iz.a($$0), $$1)) {
-         if (this.a($$0, $$2)) {
-            return $$2;
-         }
-      }
-
-      return dzh.b;
+   @Override
+   public int J_() {
+      return this.e.J_();
    }
 
-   public boolean a(hx $$0, dzh $$1) {
-      for (dzd $$2 : $$1.i()) {
-         if ($$2.f().b($$0)) {
-            return true;
-         }
-      }
-
-      return false;
+   @Override
+   public int K_() {
+      return this.e.K_();
    }
 
-   public boolean a(hx $$0) {
-      iz $$1 = iz.a($$0);
-      return this.a.a($$1.a(), $$1.c(), dlb.e).w();
-   }
-
-   public Map<dyz, LongSet> b(hx $$0) {
-      iz $$1 = iz.a($$0);
-      return this.a.a($$1.a(), $$1.c(), dlb.e).h();
-   }
-
-   public dzb a(csp $$0, dyz $$1, boolean $$2) {
-      return this.c.a($$0, $$1, $$2);
-   }
-
-   public void a(dzh $$0) {
-      $$0.e();
-      this.c.a($$0.c(), $$0.h());
-   }
-
-   public iu b() {
-      return this.a.I_();
+   public bgr a() {
+      return this.e.af();
    }
 }

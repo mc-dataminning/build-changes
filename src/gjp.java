@@ -1,65 +1,65 @@
-public class gjp implements gjv {
-   private static final int a = 1200;
-   private static final vd b = vd.c("tutorial.craft_planks.title");
-   private static final vd c = vd.c("tutorial.craft_planks.description");
-   private final gju d;
-   private ezi e;
-   private int f;
+import java.time.Duration;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-   public gjp(gju $$0) {
-      this.d = $$0;
+public class gjp {
+   private final UUID a = UUID.randomUUID();
+   private final gjk b;
+   private final gjt c;
+   private final gjv d = new gjv();
+   private final gjs e;
+   private final gju f;
+
+   public gjp(gjk $$0, boolean $$1, @Nullable Duration $$2, @Nullable String $$3) {
+      this.c = new gjt($$3);
+      this.e = new gjs();
+      this.f = new gju($$1, $$2);
+      this.b = $$0.decorate($$0x -> {
+         this.c.a($$0x);
+         $$0x.a(gjn.i, this.a);
+      });
    }
 
-   @Override
    public void a() {
-      this.f++;
-      if (!this.d.f()) {
-         this.d.a(gjw.f);
-      } else {
-         if (this.f == 1) {
-            fsb $$0 = this.d.e().s;
-            if ($$0 != null) {
-               if ($$0.fS().a(asj.b)) {
-                  this.d.a(gjw.f);
-                  return;
-               }
-
-               if (a($$0, asj.b)) {
-                  this.d.a(gjw.f);
-                  return;
-               }
-            }
-         }
-
-         if (this.f >= 1200 && this.e == null) {
-            this.e = new ezi(ezi.a.e, b, c, false);
-            this.d.e().ax().a(this.e);
-         }
-      }
+      this.e.a(this.b);
    }
 
-   @Override
+   public void a(ctl $$0, boolean $$1) {
+      this.c.a($$0, $$1);
+      this.d.a();
+      this.b();
+   }
+
+   public void a(String $$0) {
+      this.c.a($$0);
+      this.b();
+   }
+
+   public void a(long $$0) {
+      this.d.a($$0);
+   }
+
    public void b() {
-      if (this.e != null) {
-         this.e.c();
-         this.e = null;
+      if (this.c.a(this.b)) {
+         this.f.a(this.b);
+         this.e.a();
       }
    }
 
-   @Override
-   public void a(cmr $$0) {
-      if ($$0.a(asj.b)) {
-         this.d.a(gjw.f);
-      }
+   public void c() {
+      this.c.a(this.b);
+      this.e.d();
+      this.d.a(this.b);
    }
 
-   public static boolean a(fsb $$0, asq<cmm> $$1) {
-      for (ih<cmm> $$2 : kd.h.c($$1)) {
-         if ($$0.j().a(arw.b.b($$2.a())) > 0) {
-            return true;
-         }
+   public void a(cto $$0, af $$1) {
+      ahg $$2 = $$1.a();
+      if ($$1.b().g() && "minecraft".equals($$2.b())) {
+         long $$3 = $$0.X();
+         this.b.send(gjl.f, $$2x -> {
+            $$2x.a(gjn.D, $$2.toString());
+            $$2x.a(gjn.E, $$3);
+         });
       }
-
-      return false;
    }
 }

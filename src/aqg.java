@@ -1,46 +1,23 @@
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParseException;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.Reader;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Map.Entry;
-import org.slf4j.Logger;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public abstract class aqg extends aqh<Map<ahd, JsonElement>> {
-   private static final Logger a = LogUtils.getLogger();
-   private final Gson b;
-   private final String c;
+public class aqg {
+   private static final Codec<aqg> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.list(auv.a).fieldOf("block").forGetter($$0x -> $$0x.c)).apply($$0, aqg::new)
+   );
+   public static final api<aqg> a = api.a("filter", b);
+   private final List<auv> c;
 
-   public aqg(Gson $$0, String $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public aqg(List<auv> $$0) {
+      this.c = List.copyOf($$0);
    }
 
-   protected Map<ahd, JsonElement> a(aqc $$0, bgm $$1) {
-      Map<ahd, JsonElement> $$2 = new HashMap<>();
-      a($$0, this.c, this.b, $$2);
-      return $$2;
+   public boolean a(String $$0) {
+      return this.c.stream().anyMatch($$1 -> $$1.a().test($$0));
    }
 
-   public static void a(aqc $$0, String $$1, Gson $$2, Map<ahd, JsonElement> $$3) {
-      agw $$4 = agw.a($$1);
-
-      for (Entry<ahd, aqa> $$5 : $$4.a($$0).entrySet()) {
-         ahd $$6 = $$5.getKey();
-         ahd $$7 = $$4.b($$6);
-
-         try (Reader $$8 = $$5.getValue().e()) {
-            JsonElement $$9 = aty.a($$2, $$8, JsonElement.class);
-            JsonElement $$10 = $$3.put($$7, $$9);
-            if ($$10 != null) {
-               throw new IllegalStateException("Duplicate data file ignored with ID " + $$7);
-            }
-         } catch (IllegalArgumentException | IOException | JsonParseException var14) {
-            a.error("Couldn't parse data file {} from {}", new Object[]{$$7, $$6, var14});
-         }
-      }
+   public boolean b(String $$0) {
+      return this.c.stream().anyMatch($$1 -> $$1.b().test($$0));
    }
 }

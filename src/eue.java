@@ -1,23 +1,24 @@
 import com.mojang.logging.LogUtils;
 import org.slf4j.Logger;
 
-public abstract class eue extends eua {
+public class eue extends eug {
    private static final Logger b = LogUtils.getLogger();
-   private final long c;
-   private final vd d;
-   private final Runnable e;
+   private static final vf c = vf.c("mco.download.preparing");
+   private final long d;
+   private final int e;
+   private final fcz f;
+   private final String g;
 
-   public eue(long $$0, vd $$1, Runnable $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
+   public eue(long $$0, int $$1, String $$2, fcz $$3) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$3;
+      this.g = $$2;
    }
-
-   protected abstract void a(eqj var1, long var2) throws erw;
 
    @Override
    public void run() {
-      eqj $$0 = eqj.a();
+      eqp $$0 = eqp.a();
       int $$1 = 0;
 
       while ($$1 < 25) {
@@ -26,34 +27,44 @@ public abstract class eue extends eua {
                return;
             }
 
-            this.a($$0, this.c);
+            erw $$2 = $$0.b(this.d, this.e);
+            a(1L);
             if (this.d()) {
                return;
             }
 
-            this.e.run();
+            a(new ess(this.f, $$2, this.g, $$0x -> {
+            }));
             return;
-         } catch (erx var4) {
+         } catch (esd var4) {
             if (this.d()) {
                return;
             }
 
             a((long)var4.c);
             $$1++;
-         } catch (Exception var5) {
+         } catch (esc var5) {
             if (this.d()) {
                return;
             }
 
-            b.error("Couldn't reset world");
-            this.a(var5);
+            b.error("Couldn't download world data", var5);
+            a(new est(var5, this.f));
+            return;
+         } catch (Exception var6) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Couldn't download world data", var6);
+            this.a(var6);
             return;
          }
       }
    }
 
    @Override
-   public vd a() {
-      return this.d;
+   public vf a() {
+      return c;
    }
 }

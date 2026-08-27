@@ -1,52 +1,82 @@
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.context.ContextChain;
-import java.util.List;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import java.util.Collection;
+import java.util.Collections;
 
 public class aki {
-   public static <T extends du<T>> void a(CommandDispatcher<T> $$0) {
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vf.c("commands.recipe.give.failed"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(vf.c("commands.recipe.take.failed"));
+
+   public static void a(CommandDispatcher<ds> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)LiteralArgumentBuilder.literal("return")
-                     .requires($$0x -> $$0x.c(2)))
-                  .then(RequiredArgumentBuilder.argument("value", IntegerArgumentType.integer()).executes(new aki.c())))
-               .then(LiteralArgumentBuilder.literal("fail").executes(new aki.a())))
-            .then(LiteralArgumentBuilder.literal("run").forward($$0.getRoot(), new aki.b(), false))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("recipe").requires($$0x -> $$0x.c(2)))
+               .then(
+                  dt.a("give")
+                     .then(
+                        ((RequiredArgumentBuilder)dt.a("targets", ef.d())
+                              .then(
+                                 dt.a("recipe", et.a())
+                                    .suggests(hn.b)
+                                    .executes($$0x -> a((ds)$$0x.getSource(), ef.f($$0x, "targets"), Collections.singleton(et.b($$0x, "recipe"))))
+                              ))
+                           .then(dt.a("*").executes($$0x -> a((ds)$$0x.getSource(), ef.f($$0x, "targets"), ((ds)$$0x.getSource()).l().aG().b())))
+                     )
+               ))
+            .then(
+               dt.a("take")
+                  .then(
+                     ((RequiredArgumentBuilder)dt.a("targets", ef.d())
+                           .then(
+                              dt.a("recipe", et.a())
+                                 .suggests(hn.b)
+                                 .executes($$0x -> b((ds)$$0x.getSource(), ef.f($$0x, "targets"), Collections.singleton(et.b($$0x, "recipe"))))
+                           ))
+                        .then(dt.a("*").executes($$0x -> b((ds)$$0x.getSource(), ef.f($$0x, "targets"), ((ds)$$0x.getSource()).l().aG().b())))
+                  )
+            )
       );
    }
 
-   static class a<T extends du<T>> implements gl.a<T> {
-      public void a(T $$0, ContextChain<T> $$1, gj $$2, gp<T> $$3) {
-         $$0.p().onFailure();
-         gq $$4 = $$3.b();
-         $$4.a();
-         $$4.b();
-      }
-   }
+   private static int a(ds $$0, Collection<ane> $$1, Collection<cqd<?>> $$2) throws CommandSyntaxException {
+      int $$3 = 0;
 
-   static class b<T extends du<T>> implements gm.a<T> {
-      public void a(T $$0, List<T> $$1, ContextChain<T> $$2, gj $$3, gp<T> $$4) {
-         if ($$1.isEmpty()) {
-            if ($$3.c()) {
-               $$4.a(gy.a());
-            }
+      for (ane $$4 : $$1) {
+         $$3 += $$4.a($$2);
+      }
+
+      if ($$3 == 0) {
+         throw a.create();
+      } else {
+         if ($$1.size() == 1) {
+            $$0.a(() -> vf.a("commands.recipe.give.success.single", $$2.size(), $$1.iterator().next().Q_()), true);
          } else {
-            $$4.b().b();
-            ContextChain<T> $$5 = $$2.nextStage();
-            String $$6 = $$5.getTopContext().getInput();
-            $$4.a(new gu.a<>($$6, $$5, $$3.d(), $$0, $$1));
+            $$0.a(() -> vf.a("commands.recipe.give.success.multiple", $$2.size(), $$1.size()), true);
          }
+
+         return $$3;
       }
    }
 
-   static class c<T extends du<T>> implements gl.a<T> {
-      public void a(T $$0, ContextChain<T> $$1, gj $$2, gp<T> $$3) {
-         int $$4 = IntegerArgumentType.getInteger($$1.getTopContext(), "value");
-         $$0.p().onSuccess($$4);
-         gq $$5 = $$3.b();
-         $$5.a($$4);
-         $$5.b();
+   private static int b(ds $$0, Collection<ane> $$1, Collection<cqd<?>> $$2) throws CommandSyntaxException {
+      int $$3 = 0;
+
+      for (ane $$4 : $$1) {
+         $$3 += $$4.b($$2);
+      }
+
+      if ($$3 == 0) {
+         throw b.create();
+      } else {
+         if ($$1.size() == 1) {
+            $$0.a(() -> vf.a("commands.recipe.take.success.single", $$2.size(), $$1.iterator().next().Q_()), true);
+         } else {
+            $$0.a(() -> vf.a("commands.recipe.take.success.multiple", $$2.size(), $$1.size()), true);
+         }
+
+         return $$3;
       }
    }
 }

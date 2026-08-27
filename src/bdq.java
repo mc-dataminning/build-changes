@@ -4,26 +4,13 @@ import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class bdq extends bcy {
+public class bdq extends bdd {
    public bdq(int $$0, Schema $$1) {
       super($$0, $$1);
    }
 
-   protected static void a(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, String $$2) {
-      $$0.register($$1, $$2, () -> bcz.a($$0));
-   }
-
-   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
-      Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
-      a($$0, $$1, "minecraft:turtle");
-      a($$0, $$1, "minecraft:cod_mob");
-      a($$0, $$1, "minecraft:tropical_fish");
-      a($$0, $$1, "minecraft:salmon_mob");
-      a($$0, $$1, "minecraft:puffer_fish");
-      a($$0, $$1, "minecraft:phantom");
-      a($$0, $$1, "minecraft:dolphin");
-      a($$0, $$1, "minecraft:drowned");
-      $$0.register($$1, "minecraft:trident", $$1x -> DSL.optionalFields("inBlockState", bbq.u.in($$0), "Trident", bbq.t.in($$0)));
-      return $$1;
+   public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
+      super.registerTypes($$0, $$1, $$2);
+      $$0.registerType(false, bbv.y, () -> DSL.constType(a()));
    }
 }

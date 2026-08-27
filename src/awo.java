@@ -1,58 +1,51 @@
-import com.google.common.collect.Streams;
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
+import com.google.common.collect.Maps;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.DataFixUtils;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Stream;
+import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.types.templates.TaggedChoice.TaggedChoiceType;
+import java.util.Map;
 
-public class awo extends baq {
-   public static final String a = "_filtered_correct";
-   private static final String b = "black";
+public class awo extends DataFix {
+   private static final Map<String, String> a = (Map<String, String>)DataFixUtils.make(Maps.newHashMap(), $$0 -> {
+      $$0.put("Airportal", "minecraft:end_portal");
+      $$0.put("Banner", "minecraft:banner");
+      $$0.put("Beacon", "minecraft:beacon");
+      $$0.put("Cauldron", "minecraft:brewing_stand");
+      $$0.put("Chest", "minecraft:chest");
+      $$0.put("Comparator", "minecraft:comparator");
+      $$0.put("Control", "minecraft:command_block");
+      $$0.put("DLDetector", "minecraft:daylight_detector");
+      $$0.put("Dropper", "minecraft:dropper");
+      $$0.put("EnchantTable", "minecraft:enchanting_table");
+      $$0.put("EndGateway", "minecraft:end_gateway");
+      $$0.put("EnderChest", "minecraft:ender_chest");
+      $$0.put("FlowerPot", "minecraft:flower_pot");
+      $$0.put("Furnace", "minecraft:furnace");
+      $$0.put("Hopper", "minecraft:hopper");
+      $$0.put("MobSpawner", "minecraft:mob_spawner");
+      $$0.put("Music", "minecraft:noteblock");
+      $$0.put("Piston", "minecraft:piston");
+      $$0.put("RecordPlayer", "minecraft:jukebox");
+      $$0.put("Sign", "minecraft:sign");
+      $$0.put("Skull", "minecraft:skull");
+      $$0.put("Structure", "minecraft:structure_block");
+      $$0.put("Trap", "minecraft:dispenser");
+   });
 
-   public awo(Schema $$0, String $$1, String $$2) {
-      super($$0, false, $$1, bbq.s, $$2);
+   public awo(Schema $$0, boolean $$1) {
+      super($$0, $$1);
    }
 
-   private static <T> Dynamic<T> a(Dynamic<T> $$0) {
-      return $$0.set("front_text", b($$0)).set("back_text", c($$0)).set("is_waxed", $$0.createBoolean(false));
-   }
-
-   private static <T> Dynamic<T> b(Dynamic<T> $$0) {
-      Dynamic<T> $$1 = avp.a($$0.getOps());
-      List<Dynamic<T>> $$2 = a($$0, "Text").map($$1x -> $$1x.orElse($$1)).toList();
-      Dynamic<T> $$3 = $$0.emptyMap()
-         .set("messages", $$0.createList($$2.stream()))
-         .set("color", $$0.get("Color").result().orElse($$0.createString("black")))
-         .set("has_glowing_text", $$0.get("GlowingText").result().orElse($$0.createBoolean(false)))
-         .set("_filtered_correct", $$0.createBoolean(true));
-      List<Optional<Dynamic<T>>> $$4 = a($$0, "FilteredText").toList();
-      if ($$4.stream().anyMatch(Optional::isPresent)) {
-         $$3 = $$3.set("filtered_messages", $$0.createList(Streams.mapWithIndex($$4.stream(), ($$1x, $$2x) -> {
-            Dynamic<T> $$3x = $$2.get((int)$$2x);
-            return $$1x.orElse($$3x);
-         })));
-      }
-
-      return $$3;
-   }
-
-   private static <T> Stream<Optional<Dynamic<T>>> a(Dynamic<T> $$0, String $$1) {
-      return Stream.of($$0.get($$1 + "1").result(), $$0.get($$1 + "2").result(), $$0.get($$1 + "3").result(), $$0.get($$1 + "4").result());
-   }
-
-   private static <T> Dynamic<T> c(Dynamic<T> $$0) {
-      return $$0.emptyMap().set("messages", d($$0)).set("color", $$0.createString("black")).set("has_glowing_text", $$0.createBoolean(false));
-   }
-
-   private static <T> Dynamic<T> d(Dynamic<T> $$0) {
-      Dynamic<T> $$1 = avp.a($$0.getOps());
-      return $$0.createList(Stream.of($$1, $$1, $$1, $$1));
-   }
-
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), awo::a);
+   public TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bbv.t);
+      Type<?> $$1 = this.getOutputSchema().getType(bbv.t);
+      TaggedChoiceType<String> $$2 = this.getInputSchema().findChoiceType(bbv.s);
+      TaggedChoiceType<String> $$3 = this.getOutputSchema().findChoiceType(bbv.s);
+      return TypeRewriteRule.seq(
+         this.convertUnchecked("item stack block entity name hook converter", $$0, $$1),
+         this.fixTypeEverywhere("BlockEntityIdFix", $$2, $$3, $$0x -> $$0xx -> $$0xx.mapFirst($$0xxx -> a.getOrDefault($$0xxx, $$0xxx)))
+      );
    }
 }

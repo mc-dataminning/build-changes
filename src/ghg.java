@@ -1,49 +1,107 @@
-public class ghg extends ggw {
-   private static final float n = 0.0F;
-   private static final float o = 0.7F;
-   private static final float p = 0.0F;
-   private static final float q = 1.0F;
-   private static final float r = 0.0025F;
-   private final cgt s;
-   private float t = 0.0F;
+public abstract class ghg implements ghy {
+   protected ghv a;
+   protected final ars b;
+   protected final ahg c;
+   protected float d = 1.0F;
+   protected float e = 1.0F;
+   protected double f;
+   protected double g;
+   protected double h;
+   protected boolean i;
+   protected int j;
+   protected ghy.a k = ghy.a.b;
+   protected boolean l;
+   protected auu m;
 
-   public ghg(cgt $$0) {
-      super(arm.nW, arn.g, ghn.t());
-      this.s = $$0;
-      this.i = true;
-      this.j = 0;
-      this.d = 0.0F;
-      this.f = (double)((float)$$0.dr());
-      this.g = (double)((float)$$0.dt());
-      this.h = (double)((float)$$0.dx());
+   protected ghg(arq $$0, ars $$1, auu $$2) {
+      this($$0.a(), $$1, $$2);
+   }
+
+   protected ghg(ahg $$0, ars $$1, auu $$2) {
+      this.c = $$0;
+      this.b = $$1;
+      this.m = $$2;
    }
 
    @Override
-   public boolean s() {
-      return !this.s.aU();
+   public ahg a() {
+      return this.c;
    }
 
    @Override
-   public boolean r() {
-      return true;
-   }
-
-   @Override
-   public void q() {
-      if (this.s.dH()) {
-         this.n();
+   public gjd a(gjc $$0) {
+      if (this.c.equals(gjc.b)) {
+         this.a = gjc.d;
+         return gjc.c;
       } else {
-         this.f = (double)((float)this.s.dr());
-         this.g = (double)((float)this.s.dt());
-         this.h = (double)((float)this.s.dx());
-         float $$0 = (float)this.s.dp().h();
-         if ($$0 >= 0.01F && this.s.dM().s().i()) {
-            this.t = aui.a(this.t + 0.0025F, 0.0F, 1.0F);
-            this.d = aui.i(aui.a($$0, 0.0F, 0.5F), 0.0F, 0.7F);
+         gjd $$1 = $$0.a(this.c);
+         if ($$1 == null) {
+            this.a = gjc.a;
          } else {
-            this.t = 0.0F;
-            this.d = 0.0F;
+            this.a = $$1.a(this.m);
          }
+
+         return $$1;
       }
+   }
+
+   @Override
+   public ghv b() {
+      return this.a;
+   }
+
+   @Override
+   public ars c() {
+      return this.b;
+   }
+
+   @Override
+   public boolean d() {
+      return this.i;
+   }
+
+   @Override
+   public int e() {
+      return this.j;
+   }
+
+   @Override
+   public float f() {
+      return this.d * this.a.c().a(this.m);
+   }
+
+   @Override
+   public float g() {
+      return this.e * this.a.d().a(this.m);
+   }
+
+   @Override
+   public double h() {
+      return this.f;
+   }
+
+   @Override
+   public double i() {
+      return this.g;
+   }
+
+   @Override
+   public double j() {
+      return this.h;
+   }
+
+   @Override
+   public ghy.a k() {
+      return this.k;
+   }
+
+   @Override
+   public boolean l() {
+      return this.l;
+   }
+
+   @Override
+   public String toString() {
+      return "SoundInstance[" + this.c + "]";
    }
 }

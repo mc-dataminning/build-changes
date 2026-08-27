@@ -1,63 +1,176 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.UnmodifiableIterator;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class dcw extends cws implements cwm {
-   public static final MapCodec<dcw> e = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dip.a.fieldOf("tree").forGetter($$0x -> $$0x.i), u()).apply($$0, dcw::new)
+public class dcw extends cwp {
+   public static final MapCodec<dcw> a = b(dcw::new);
+   public static final int b = 0;
+   public static final int c = 4;
+   public static final dkg d = djw.aZ;
+   private static final ImmutableList<jb> e = ImmutableList.of(
+      new jb(0, 0, -1), new jb(-1, 0, 0), new jb(0, 0, 1), new jb(1, 0, 0), new jb(-1, 0, -1), new jb(1, 0, -1), new jb(-1, 0, 1), new jb(1, 0, 1)
    );
-   public static final dka f = djq.aU;
-   protected static final float g = 6.0F;
-   protected static final emf h = cwj.a(2.0, 0.0, 2.0, 14.0, 12.0, 14.0);
-   protected final dip i;
+   private static final ImmutableList<jb> f = new Builder()
+      .addAll(e)
+      .addAll(e.stream().map(jb::o).iterator())
+      .addAll(e.stream().map(jb::p).iterator())
+      .add(new jb(0, 1, 0))
+      .build();
 
    @Override
-   public MapCodec<? extends dcw> a() {
-      return e;
+   public MapCodec<dcw> a() {
+      return a;
    }
 
-   protected dcw(dip $$0, diz.d $$1) {
-      super($$1);
-      this.i = $$0;
-      this.k(this.E.b().a(f, Integer.valueOf(0)));
-   }
-
-   @Override
-   public emf a(dja $$0, cso $$1, hx $$2, elr $$3) {
-      return h;
+   public dcw(djf.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(d, Integer.valueOf(0)));
    }
 
    @Override
-   public void b(dja $$0, amz $$1, hx $$2, aup $$3) {
-      if ($$1.A($$2.c()) >= 9 && $$3.a(7) == 0) {
-         this.a($$1, $$2, $$0, $$3);
-      }
-   }
+   public bka a(djg $$0, cto $$1, hx $$2, cfh $$3, bjz $$4, elo $$5) {
+      cmx $$6 = $$3.b($$4);
+      if ($$4 == bjz.a && !a($$6) && a($$3.b(bjz.b))) {
+         return bka.d;
+      } else if (a($$6) && h($$0)) {
+         a($$3, $$1, $$2, $$0);
+         if (!$$3.fT().d) {
+            $$6.h(1);
+         }
 
-   public void a(amz $$0, hx $$1, dja $$2, aup $$3) {
-      if ($$2.c(f) == 0) {
-         $$0.a($$1, $$2.a(f), 4);
+         return bka.a($$1.B);
+      } else if ($$0.c(d) == 0) {
+         return bka.d;
+      } else if (!a($$1)) {
+         if (!$$1.B) {
+            this.d($$0, $$1, $$2);
+         }
+
+         return bka.a($$1.B);
       } else {
-         this.i.a($$0, $$0.l().g(), $$1, $$2, $$3);
+         if (!$$1.B) {
+            ane $$7 = (ane)$$3;
+            if ($$7.T() != $$1.ae() || !$$2.equals($$7.R())) {
+               $$7.a($$1.ae(), $$2, 0.0F, false, true);
+               $$1.a(null, (double)$$2.u() + 0.5, (double)$$2.v() + 0.5, (double)$$2.w() + 0.5, arr.uC, ars.e, 1.0F, 1.0F);
+               return bka.a;
+            }
+         }
+
+         return bka.b;
+      }
+   }
+
+   private static boolean a(cmx $$0) {
+      return $$0.a(cna.ft);
+   }
+
+   private static boolean h(djg $$0) {
+      return $$0.c(d) < 4;
+   }
+
+   private static boolean a(hx $$0, cto $$1) {
+      eeq $$2 = $$1.b_($$0);
+      if (!$$2.a(asl.a)) {
+         return false;
+      } else if ($$2.b()) {
+         return true;
+      } else {
+         float $$3 = (float)$$2.e();
+         if ($$3 < 2.0F) {
+            return false;
+         } else {
+            eeq $$4 = $$1.b_($$0.d());
+            return !$$4.a(asl.a);
+         }
+      }
+   }
+
+   private void d(djg $$0, cto $$1, final hx $$2) {
+      $$1.a($$2, false);
+      boolean $$3 = ic.c.a.a().map($$2::a).anyMatch($$1x -> a($$1x, $$1));
+      final boolean $$4 = $$3 || $$1.b_($$2.c()).a(asl.a);
+      cth $$5 = new cth() {
+         @Override
+         public Optional<Float> a(ctg $$0, csu $$1, hx $$2x, djg $$3, eeq $$4x) {
+            return $$2.equals($$2) && $$4 ? Optional.of(cwr.G.e()) : super.a($$0, $$1, $$2, $$3, $$4);
+         }
+      };
+      els $$6 = $$2.b();
+      $$1.a(null, $$1.ai().a($$6), $$5, $$6, 5.0F, true, cto.a.b);
+   }
+
+   public static boolean a(cto $$0) {
+      return $$0.E_().m();
+   }
+
+   public static void a(@Nullable blu $$0, cto $$1, hx $$2, djg $$3) {
+      djg $$4 = $$3.a(d, Integer.valueOf($$3.c(d) + 1));
+      $$1.a($$2, $$4, 3);
+      $$1.a(dnq.c, $$2, dnq.a.a($$0, $$4));
+      $$1.a(null, (double)$$2.u() + 0.5, (double)$$2.v() + 0.5, (double)$$2.w() + 0.5, arr.uA, ars.e, 1.0F, 1.0F);
+   }
+
+   @Override
+   public void a(djg $$0, cto $$1, hx $$2, auu $$3) {
+      if ($$0.c(d) != 0) {
+         if ($$3.a(100) == 0) {
+            $$1.a(null, (double)$$2.u() + 0.5, (double)$$2.v() + 0.5, (double)$$2.w() + 0.5, arr.uz, ars.e, 1.0F, 1.0F);
+         }
+
+         double $$4 = (double)$$2.u() + 0.5 + (0.5 - $$3.j());
+         double $$5 = (double)$$2.v() + 1.0;
+         double $$6 = (double)$$2.w() + 0.5 + (0.5 - $$3.j());
+         double $$7 = (double)$$3.i() * 0.04;
+         $$1.a(jx.aE, $$4, $$5, $$6, 0.0, $$7, 0.0);
       }
    }
 
    @Override
-   public boolean b(ctl $$0, hx $$1, dja $$2) {
+   protected void a(djh.a<cwp, djg> $$0) {
+      $$0.a(d);
+   }
+
+   @Override
+   public boolean d_(djg $$0) {
       return true;
    }
 
-   @Override
-   public boolean a(cti $$0, aup $$1, hx $$2, dja $$3) {
-      return (double)$$0.z.i() < 0.45;
+   public static int a(djg $$0, int $$1) {
+      return aun.d((float)($$0.c(d) - 0) / 4.0F * (float)$$1);
    }
 
    @Override
-   public void a(amz $$0, aup $$1, hx $$2, dja $$3) {
-      this.a($$0, $$2, $$3, $$1);
+   public int a(djg $$0, cto $$1, hx $$2) {
+      return a($$0, 15);
+   }
+
+   public static Optional<els> a(bly<?> $$0, csy $$1, hx $$2) {
+      Optional<els> $$3 = a($$0, $$1, $$2, true);
+      return $$3.isPresent() ? $$3 : a($$0, $$1, $$2, false);
+   }
+
+   private static Optional<els> a(bly<?> $$0, csy $$1, hx $$2, boolean $$3) {
+      hx.a $$4 = new hx.a();
+      UnmodifiableIterator var5 = f.iterator();
+
+      while (var5.hasNext()) {
+         jb $$5 = (jb)var5.next();
+         $$4.g($$2).h($$5);
+         els $$6 = che.a($$0, $$1, $$4, $$3);
+         if ($$6 != null) {
+            return Optional.of($$6);
+         }
+      }
+
+      return Optional.empty();
    }
 
    @Override
-   protected void a(djb.a<cwj, dja> $$0) {
-      $$0.a(f);
+   public boolean a(djg $$0, csu $$1, hx $$2, efg $$3) {
+      return false;
    }
 }

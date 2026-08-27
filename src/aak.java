@@ -1,31 +1,36 @@
 import java.util.BitSet;
 import javax.annotation.Nullable;
 
-public class aak implements xd<yx> {
+public class aak implements xf<za> {
    private final int a;
    private final int b;
-   private final aal c;
+   private final aaj c;
+   private final aao d;
 
-   public aak(csp $$0, edz $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
-      this.a = $$0.e;
-      this.b = $$0.f;
-      this.c = new aal($$0, $$1, $$2, $$3);
+   public aak(dln $$0, eef $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
+      csv $$4 = $$0.f();
+      this.a = $$4.e;
+      this.b = $$4.f;
+      this.c = new aaj($$0);
+      this.d = new aao($$4, $$1, $$2, $$3);
    }
 
-   public aak(ug $$0) {
-      this.a = $$0.n();
-      this.b = $$0.n();
-      this.c = new aal($$0, this.a, this.b);
+   public aak(ui $$0) {
+      this.a = $$0.readInt();
+      this.b = $$0.readInt();
+      this.c = new aaj($$0, this.a, this.b);
+      this.d = new aao($$0, this.a, this.b);
    }
 
    @Override
-   public void a(ug $$0) {
-      $$0.c(this.a);
-      $$0.c(this.b);
+   public void a(ui $$0) {
+      $$0.p(this.a);
+      $$0.p(this.b);
       this.c.a($$0);
+      this.d.a($$0);
    }
 
-   public void a(yx $$0) {
+   public void a(za $$0) {
       $$0.a(this);
    }
 
@@ -37,7 +42,11 @@ public class aak implements xd<yx> {
       return this.b;
    }
 
-   public aal e() {
+   public aaj e() {
       return this.c;
+   }
+
+   public aao f() {
+      return this.d;
    }
 }

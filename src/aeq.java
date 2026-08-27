@@ -1,24 +1,24 @@
-public class aeq implements xd<adg> {
-   private final int a;
+public class aeq implements xf<adj> {
+   private final ahg a;
 
-   public aeq(int $$0) {
-      this.a = $$0;
+   public aeq(cqd<?> $$0) {
+      this.a = $$0.a();
    }
 
-   public aeq(ug $$0) {
-      this.a = $$0.n();
+   public aeq(ui $$0) {
+      this.a = $$0.t();
    }
 
    @Override
-   public void a(ug $$0) {
-      $$0.c(this.a);
+   public void a(ui $$0) {
+      $$0.a(this.a);
    }
 
-   public void a(adg $$0) {
+   public void a(adj $$0) {
       $$0.a(this);
    }
 
-   public int a() {
+   public ahg a() {
       return this.a;
    }
 }

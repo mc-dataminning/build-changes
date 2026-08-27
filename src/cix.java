@@ -1,73 +1,45 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
+public class cix extends cjv {
+   private final cfh a;
+   private int b;
 
-public class cix {
-   private final List<cix.b> a;
-   private final cix.b b;
-
-   cix(List<cix.b> $$0, cix.b $$1) {
-      if (!$$0.isEmpty() && !$$1.equals(cix.b.e)) {
-         this.a = $$0;
-         this.b = $$1;
-      } else {
-         throw new IllegalArgumentException("Need to define both inputSlots and resultSlot");
-      }
+   public cix(cfh $$0, bjt $$1, int $$2, int $$3, int $$4) {
+      super($$1, $$2, $$3, $$4);
+      this.a = $$0;
    }
 
-   public static cix.a a() {
-      return new cix.a();
+   @Override
+   public boolean a(cmx $$0) {
+      return false;
    }
 
-   public boolean a(int $$0) {
-      return this.a.size() >= $$0;
-   }
-
-   public cix.b b(int $$0) {
-      return this.a.get($$0);
-   }
-
-   public cix.b b() {
-      return this.b;
-   }
-
-   public List<cix.b> c() {
-      return this.a;
-   }
-
-   public int d() {
-      return this.a.size();
-   }
-
-   public int e() {
-      return this.d();
-   }
-
-   public List<Integer> f() {
-      return this.a.stream().map(cix.b::a).collect(Collectors.toList());
-   }
-
-   public static class a {
-      private final List<cix.b> a = new ArrayList<>();
-      private cix.b b = cix.b.e;
-
-      public cix.a a(int $$0, int $$1, int $$2, Predicate<cmr> $$3) {
-         this.a.add(new cix.b($$0, $$1, $$2, $$3));
-         return this;
+   @Override
+   public cmx a(int $$0) {
+      if (this.h()) {
+         this.b = this.b + Math.min($$0, this.g().L());
       }
 
-      public cix.a a(int $$0, int $$1, int $$2) {
-         this.b = new cix.b($$0, $$1, $$2, $$0x -> false);
-         return this;
-      }
-
-      public cix a() {
-         return new cix(this.a, this.b);
-      }
+      return super.a($$0);
    }
 
-   public static record b(int a, int b, int c, Predicate<cmr> d) {
-      static final cix.b e = new cix.b(0, 0, 0, $$0 -> true);
+   @Override
+   public void a(cfh $$0, cmx $$1) {
+      this.b_($$1);
+      super.a($$0, $$1);
+   }
+
+   @Override
+   protected void a(cmx $$0, int $$1) {
+      this.b += $$1;
+      this.b_($$0);
+   }
+
+   @Override
+   protected void b_(cmx $$0) {
+      $$0.a(this.a.dM(), this.a, this.b);
+      if (this.a instanceof ane $$1 && this.d instanceof dgj $$2) {
+         $$2.a($$1);
+      }
+
+      this.b = 0;
    }
 }

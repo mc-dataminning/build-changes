@@ -1,11 +1,13 @@
-public class fxh extends fzl<bxn, fit> {
-   private static final ahd a = new ahd("textures/entity/bat.png");
+public abstract class fxh<T extends bzw, M extends fkg<T>> extends fzr<T, M> {
+   private final float a;
 
-   public fxh(fyf.a $$0) {
-      super($$0, new fit($$0.a(fmo.g)), 0.25F);
+   public fxh(fyl.a $$0, M $$1, float $$2) {
+      super($$0, $$1, 0.75F);
+      this.a = $$2;
    }
 
-   public ahd a(bxn $$0) {
-      return a;
+   protected void a(T $$0, epz $$1, float $$2) {
+      $$1.b(this.a, this.a, this.a);
+      super.a($$0, $$1, $$2);
    }
 }

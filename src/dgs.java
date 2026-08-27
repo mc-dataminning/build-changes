@@ -1,221 +1,147 @@
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.Objects;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.List;
+import org.apache.commons.lang3.mutable.MutableInt;
 
-public class dgs extends dgo {
-   private static final Logger a = LogUtils.getLogger();
-   private static final String b = "LootTable";
-   private static final String c = "LootTableSeed";
-   private static final String d = "hit_direction";
-   private static final String e = "item";
-   private static final int f = 10;
+public class dgs extends dgu {
+   private static final int d = 50;
+   private static final int e = 60;
+   private static final int f = 60;
    private static final int g = 40;
-   private static final int h = 10;
-   private int i;
-   private long j;
-   private long k;
-   private cmr l = cmr.f;
-   @Nullable
-   private ic m;
-   @Nullable
-   private ahd n;
-   private long r;
+   private static final int h = 5;
+   private static final int i = 48;
+   private static final int j = 32;
+   private static final int k = 48;
+   private long l;
+   public int a;
+   public boolean b;
+   public ic c;
+   private List<bmk> m;
+   private boolean n;
+   private int r;
 
-   public dgs(hx $$0, dja $$1) {
-      super(dgq.N, $$0, $$1);
+   public dgs(hx $$0, djg $$1) {
+      super(dgw.E, $$0, $$1);
    }
 
-   public boolean a(long $$0, cfb $$1, ic $$2) {
-      if (this.m == null) {
-         this.m = $$2;
+   @Override
+   public boolean a_(int $$0, int $$1) {
+      if ($$0 == 1) {
+         this.c();
+         this.r = 0;
+         this.c = ic.a($$1);
+         this.a = 0;
+         this.b = true;
+         return true;
+      } else {
+         return super.a_($$0, $$1);
+      }
+   }
+
+   private static void a(cto $$0, hx $$1, djg $$2, dgs $$3, dgs.a $$4) {
+      if ($$3.b) {
+         $$3.a++;
       }
 
-      this.j = $$0 + 40L;
-      if ($$0 >= this.k && this.o instanceof amz) {
-         this.k = $$0 + 10L;
-         this.a($$1);
-         int $$3 = this.k();
-         if (++this.i >= 10) {
-            this.b($$1);
+      if ($$3.a >= 50) {
+         $$3.b = false;
+         $$3.a = 0;
+      }
+
+      if ($$3.a >= 5 && $$3.r == 0 && a($$1, $$3.m)) {
+         $$3.n = true;
+         $$0.a(null, $$1, arr.bL, ars.e, 1.0F, 1.0F);
+      }
+
+      if ($$3.n) {
+         if ($$3.r < 40) {
+            $$3.r++;
+         } else {
+            $$4.run($$0, $$1, $$3.m);
+            $$3.n = false;
+         }
+      }
+   }
+
+   public static void a(cto $$0, hx $$1, djg $$2, dgs $$3) {
+      a($$0, $$1, $$2, $$3, dgs::b);
+   }
+
+   public static void b(cto $$0, hx $$1, djg $$2, dgs $$3) {
+      a($$0, $$1, $$2, $$3, dgs::a);
+   }
+
+   public void a(ic $$0) {
+      hx $$1 = this.aB_();
+      this.c = $$0;
+      if (this.b) {
+         this.a = 0;
+      } else {
+         this.b = true;
+      }
+
+      this.o.a($$1, this.r().b(), 1, $$0.d());
+   }
+
+   private void c() {
+      hx $$0 = this.aB_();
+      if (this.o.X() > this.l + 60L || this.m == null) {
+         this.l = this.o.X();
+         eln $$1 = new eln($$0).g(48.0);
+         this.m = this.o.a(bmk.class, $$1);
+      }
+
+      if (!this.o.B) {
+         for (bmk $$2 : this.m) {
+            if ($$2.bx() && !$$2.dH() && $$0.a($$2.dk(), 32.0)) {
+               $$2.dO().a(bvm.D, this.o.X());
+            }
+         }
+      }
+   }
+
+   private static boolean a(hx $$0, List<bmk> $$1) {
+      for (bmk $$2 : $$1) {
+         if ($$2.bx() && !$$2.dH() && $$0.a($$2.dk(), 32.0) && $$2.ai().a(asj.c)) {
             return true;
-         } else {
-            this.o.a(this.aB_(), this.r().b(), 2);
-            int $$4 = this.k();
-            if ($$3 != $$4) {
-               dja $$5 = this.r();
-               dja $$6 = $$5.a(djq.bv, Integer.valueOf($$4));
-               this.o.a(this.aB_(), $$6, 3);
-            }
-
-            return false;
-         }
-      } else {
-         return false;
-      }
-   }
-
-   public void a(cfb $$0) {
-      if (this.n != null && this.o != null && !this.o.y_() && this.o.o() != null) {
-         egx $$1 = this.o.o().aJ().getLootTable(this.n);
-         if ($$0 instanceof ana $$2) {
-            am.O.a($$2, this.n);
-         }
-
-         egv $$3 = new egv.a((amz)this.o).a(eja.f, elm.b(this.p)).a($$0.go()).a(eja.a, $$0).a(eiz.c);
-         ObjectArrayList<cmr> $$4 = $$1.a($$3, this.r);
-
-         this.l = switch ($$4.size()) {
-            case 0 -> cmr.f;
-            case 1 -> (cmr)$$4.get(0);
-            default -> {
-               a.warn("Expected max 1 loot from loot table " + this.n + " got " + $$4.size());
-               yield (cmr)$$4.get(0);
-            }
-         };
-         this.n = null;
-         this.e();
-      }
-   }
-
-   private void b(cfb $$0) {
-      if (this.o != null && this.o.o() != null) {
-         this.c($$0);
-         dja $$1 = this.r();
-         this.o.c(3008, this.aB_(), cwj.i($$1));
-         cwj $$4;
-         if (this.r().b() instanceof cwo $$3) {
-            $$4 = $$3.b();
-         } else {
-            $$4 = cwl.a;
-         }
-
-         this.o.a(this.p, $$4.o(), 3);
-      }
-   }
-
-   private void c(cfb $$0) {
-      if (this.o != null && this.o.o() != null) {
-         this.a($$0);
-         if (!this.l.b()) {
-            double $$1 = (double)blt.ae.k();
-            double $$2 = 1.0 - $$1;
-            double $$3 = $$1 / 2.0;
-            ic $$4 = Objects.requireNonNullElse(this.m, ic.b);
-            hx $$5 = this.p.a($$4, 1);
-            double $$6 = (double)$$5.u() + 0.5 * $$2 + $$3;
-            double $$7 = (double)$$5.v() + 0.5 + (double)(blt.ae.l() / 2.0F);
-            double $$8 = (double)$$5.w() + 0.5 * $$2 + $$3;
-            cbo $$9 = new cbo(this.o, $$6, $$7, $$8, this.l.a(this.o.z.a(21) + 10));
-            $$9.g(elm.b);
-            this.o.b($$9);
-            this.l = cmr.f;
          }
       }
+
+      return false;
    }
 
-   public void c() {
-      if (this.o != null) {
-         if (this.i != 0 && this.o.X() >= this.j) {
-            int $$0 = this.k();
-            this.i = Math.max(0, this.i - 2);
-            int $$1 = this.k();
-            if ($$0 != $$1) {
-               this.o.a(this.aB_(), this.r().a(djq.bv, Integer.valueOf($$1)), 3);
-            }
+   private static void a(cto $$0, hx $$1, List<bmk> $$2) {
+      $$2.stream().filter($$1x -> a($$1, $$1x)).forEach(dgs::a);
+   }
 
-            int $$2 = 4;
-            this.j = this.o.X() + 4L;
+   private static void b(cto $$0, hx $$1, List<bmk> $$2) {
+      MutableInt $$3 = new MutableInt(16700985);
+      int $$4 = (int)$$2.stream().filter($$1x -> $$1.a($$1x.dk(), 48.0)).count();
+      $$2.stream().filter($$1x -> a($$1, $$1x)).forEach($$4x -> {
+         float $$5 = 1.0F;
+         double $$6 = Math.sqrt(($$4x.dr() - (double)$$1.u()) * ($$4x.dr() - (double)$$1.u()) + ($$4x.dx() - (double)$$1.w()) * ($$4x.dx() - (double)$$1.w()));
+         double $$7 = (double)((float)$$1.u() + 0.5F) + 1.0 / $$6 * ($$4x.dr() - (double)$$1.u());
+         double $$8 = (double)((float)$$1.w() + 0.5F) + 1.0 / $$6 * ($$4x.dx() - (double)$$1.w());
+         int $$9 = aun.a(($$4 - 21) / -2, 3, 15);
+
+         for (int $$10 = 0; $$10 < $$9; $$10++) {
+            int $$11 = $$3.addAndGet(5);
+            double $$12 = (double)atx.b.b($$11) / 255.0;
+            double $$13 = (double)atx.b.c($$11) / 255.0;
+            double $$14 = (double)atx.b.d($$11) / 255.0;
+            $$0.a(jx.v, $$7, (double)((float)$$1.v() + 0.5F), $$8, $$12, $$13, $$14);
          }
-
-         if (this.i == 0) {
-            this.m = null;
-            this.j = 0L;
-            this.k = 0L;
-         } else {
-            this.o.a(this.aB_(), this.r().b(), 2);
-         }
-      }
+      });
    }
 
-   private boolean d(sl $$0) {
-      if ($$0.b("LootTable", 8)) {
-         this.n = new ahd($$0.l("LootTable"));
-         this.r = $$0.i("LootTableSeed");
-         return true;
-      } else {
-         return false;
-      }
+   private static boolean a(hx $$0, bmk $$1) {
+      return $$1.bx() && !$$1.dH() && $$0.a($$1.dk(), 48.0) && $$1.ai().a(asj.c);
    }
 
-   private boolean e(sl $$0) {
-      if (this.n == null) {
-         return false;
-      } else {
-         $$0.a("LootTable", this.n.toString());
-         if (this.r != 0L) {
-            $$0.a("LootTableSeed", this.r);
-         }
-
-         return true;
-      }
+   private static void a(bmk $$0) {
+      $$0.b(new blh(blj.x, 60));
    }
 
-   @Override
-   public sl ax_() {
-      sl $$0 = super.ax_();
-      if (this.m != null) {
-         $$0.a("hit_direction", this.m.ordinal());
-      }
-
-      $$0.a("item", this.l.b(new sl()));
-      return $$0;
-   }
-
-   public ze d() {
-      return ze.a(this);
-   }
-
-   @Override
-   public void a(sl $$0) {
-      if (!this.d($$0) && $$0.e("item")) {
-         this.l = cmr.a($$0.p("item"));
-      }
-
-      if ($$0.e("hit_direction")) {
-         this.m = ic.values()[$$0.h("hit_direction")];
-      }
-   }
-
-   @Override
-   protected void b(sl $$0) {
-      if (!this.e($$0)) {
-         $$0.a("item", this.l.b(new sl()));
-      }
-   }
-
-   public void a(ahd $$0, long $$1) {
-      this.n = $$0;
-      this.r = $$1;
-   }
-
-   private int k() {
-      if (this.i == 0) {
-         return 0;
-      } else if (this.i < 3) {
-         return 1;
-      } else {
-         return this.i < 6 ? 2 : 3;
-      }
-   }
-
-   @Nullable
-   public ic f() {
-      return this.m;
-   }
-
-   public cmr g() {
-      return this.l;
+   @FunctionalInterface
+   interface a {
+      void run(cto var1, hx var2, List<bmk> var3);
    }
 }

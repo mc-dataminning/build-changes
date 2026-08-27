@@ -1,20 +1,15 @@
-public class cqv extends crc {
-   public cqv(crc.a $$0, blu... $$1) {
-      super($$0, crd.k, $$1);
+public class cqv extends cqp {
+   public cqv(String $$0, cpy $$1, cmx $$2) {
+      super(cqg.f, cqf.t, $$0, $$1, $$2);
    }
 
    @Override
-   public int a(int $$0) {
-      return 20;
+   public boolean a(bjt $$0, cto $$1) {
+      return this.a.a($$0.a(0));
    }
 
    @Override
-   public int b(int $$0) {
-      return 50;
-   }
-
-   @Override
-   public boolean a(crc $$0) {
-      return $$0 instanceof crm ? false : super.a($$0);
+   public cmx g() {
+      return new cmx(cwr.oc);
    }
 }

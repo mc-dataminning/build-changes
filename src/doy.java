@@ -1,63 +1,71 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.base.Charsets;
-import com.google.common.hash.HashFunction;
-import com.google.common.hash.Hashing;
-import com.google.common.primitives.Longs;
-import java.util.concurrent.atomic.AtomicLong;
+public class doy {
+   public static final ahf<edt.a> a = a("temperature");
+   public static final ahf<edt.a> b = a("vegetation");
+   public static final ahf<edt.a> c = a("continentalness");
+   public static final ahf<edt.a> d = a("erosion");
+   public static final ahf<edt.a> e = a("temperature_large");
+   public static final ahf<edt.a> f = a("vegetation_large");
+   public static final ahf<edt.a> g = a("continentalness_large");
+   public static final ahf<edt.a> h = a("erosion_large");
+   public static final ahf<edt.a> i = a("ridge");
+   public static final ahf<edt.a> j = a("offset");
+   public static final ahf<edt.a> k = a("aquifer_barrier");
+   public static final ahf<edt.a> l = a("aquifer_fluid_level_floodedness");
+   public static final ahf<edt.a> m = a("aquifer_lava");
+   public static final ahf<edt.a> n = a("aquifer_fluid_level_spread");
+   public static final ahf<edt.a> o = a("pillar");
+   public static final ahf<edt.a> p = a("pillar_rareness");
+   public static final ahf<edt.a> q = a("pillar_thickness");
+   public static final ahf<edt.a> r = a("spaghetti_2d");
+   public static final ahf<edt.a> s = a("spaghetti_2d_elevation");
+   public static final ahf<edt.a> t = a("spaghetti_2d_modulator");
+   public static final ahf<edt.a> u = a("spaghetti_2d_thickness");
+   public static final ahf<edt.a> v = a("spaghetti_3d_1");
+   public static final ahf<edt.a> w = a("spaghetti_3d_2");
+   public static final ahf<edt.a> x = a("spaghetti_3d_rarity");
+   public static final ahf<edt.a> y = a("spaghetti_3d_thickness");
+   public static final ahf<edt.a> z = a("spaghetti_roughness");
+   public static final ahf<edt.a> A = a("spaghetti_roughness_modulator");
+   public static final ahf<edt.a> B = a("cave_entrance");
+   public static final ahf<edt.a> C = a("cave_layer");
+   public static final ahf<edt.a> D = a("cave_cheese");
+   public static final ahf<edt.a> E = a("ore_veininess");
+   public static final ahf<edt.a> F = a("ore_vein_a");
+   public static final ahf<edt.a> G = a("ore_vein_b");
+   public static final ahf<edt.a> H = a("ore_gap");
+   public static final ahf<edt.a> I = a("noodle");
+   public static final ahf<edt.a> J = a("noodle_thickness");
+   public static final ahf<edt.a> K = a("noodle_ridge_a");
+   public static final ahf<edt.a> L = a("noodle_ridge_b");
+   public static final ahf<edt.a> M = a("jagged");
+   public static final ahf<edt.a> N = a("surface");
+   public static final ahf<edt.a> O = a("surface_secondary");
+   public static final ahf<edt.a> P = a("clay_bands_offset");
+   public static final ahf<edt.a> Q = a("badlands_pillar");
+   public static final ahf<edt.a> R = a("badlands_pillar_roof");
+   public static final ahf<edt.a> S = a("badlands_surface");
+   public static final ahf<edt.a> T = a("iceberg_pillar");
+   public static final ahf<edt.a> U = a("iceberg_pillar_roof");
+   public static final ahf<edt.a> V = a("iceberg_surface");
+   public static final ahf<edt.a> W = a("surface_swamp");
+   public static final ahf<edt.a> X = a("calcite");
+   public static final ahf<edt.a> Y = a("gravel");
+   public static final ahf<edt.a> Z = a("powder_snow");
+   public static final ahf<edt.a> aa = a("packed_ice");
+   public static final ahf<edt.a> ab = a("ice");
+   public static final ahf<edt.a> ac = a("soul_sand_layer");
+   public static final ahf<edt.a> ad = a("gravel_layer");
+   public static final ahf<edt.a> ae = a("patch");
+   public static final ahf<edt.a> af = a("netherrack");
+   public static final ahf<edt.a> ag = a("nether_wart");
+   public static final ahf<edt.a> ah = a("nether_state_selector");
 
-public final class doy {
-   public static final long a = -7046029254386353131L;
-   public static final long b = 7640891576956012809L;
-   private static final HashFunction c = Hashing.md5();
-   private static final AtomicLong d = new AtomicLong(8682522807148012L);
-
-   @VisibleForTesting
-   public static long a(long $$0) {
-      $$0 = ($$0 ^ $$0 >>> 30) * -4658895280553007687L;
-      $$0 = ($$0 ^ $$0 >>> 27) * -7723592293110705685L;
-      return $$0 ^ $$0 >>> 31;
+   private static ahf<edt.a> a(String $$0) {
+      return ahf.a(ke.aB, new ahg($$0));
    }
 
-   public static doy.a b(long $$0) {
-      long $$1 = $$0 ^ 7640891576956012809L;
-      long $$2 = $$1 + -7046029254386353131L;
-      return new doy.a($$1, $$2);
-   }
-
-   public static doy.a c(long $$0) {
-      return b($$0).a();
-   }
-
-   public static doy.a a(String $$0) {
-      byte[] $$1 = c.hashString($$0, Charsets.UTF_8).asBytes();
-      long $$2 = Longs.fromBytes($$1[0], $$1[1], $$1[2], $$1[3], $$1[4], $$1[5], $$1[6], $$1[7]);
-      long $$3 = Longs.fromBytes($$1[8], $$1[9], $$1[10], $$1[11], $$1[12], $$1[13], $$1[14], $$1[15]);
-      return new doy.a($$2, $$3);
-   }
-
-   public static long a() {
-      return d.updateAndGet($$0 -> $$0 * 1181783497276652981L) ^ System.nanoTime();
-   }
-
-   public static record a(long a, long b) {
-      public doy.a a(long $$0, long $$1) {
-         return new doy.a(this.a ^ $$0, this.b ^ $$1);
-      }
-
-      public doy.a a(doy.a $$0) {
-         return this.a($$0.a, $$0.b);
-      }
-
-      public doy.a a() {
-         return new doy.a(doy.a(this.a), doy.a(this.b));
-      }
-
-      public long b() {
-         return this.a;
-      }
-
-      public long c() {
-         return this.b;
-      }
+   public static edt a(ii<edt.a> $$0, dpc $$1, ahf<edt.a> $$2) {
+      ih<edt.a> $$3 = $$0.b($$2);
+      return edt.b($$1.a($$3.e().orElseThrow().a()), $$3.a());
    }
 }

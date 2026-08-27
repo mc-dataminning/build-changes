@@ -1,36 +1,47 @@
-import com.google.common.collect.Sets;
+import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 import java.util.Set;
 
-public record ejx(ekj b, ego c) implements ejo {
+public record ejx(Optional<bp> b, egv.b c) implements eju {
    public static final Codec<ejx> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ekk.a.fieldOf("value").forGetter(ejx::c), ego.a.fieldOf("range").forGetter(ejx::d)).apply($$0, ejx::new)
+      $$0 -> $$0.group(atv.a(bp.a, "predicate").forGetter(ejx::c), egv.b.e.fieldOf("entity").forGetter(ejx::d)).apply($$0, ejx::new)
    );
 
    @Override
-   public ejp b() {
-      return ejq.s;
+   public ejv b() {
+      return ejw.g;
    }
 
    @Override
-   public Set<eix<?>> a() {
-      return Sets.union(this.b.a(), this.c.a());
+   public Set<ejd<?>> a() {
+      return ImmutableSet.of(ejg.f, this.c.a());
    }
 
-   public boolean a(egp $$0) {
-      return this.c.b($$0, this.b.a($$0));
+   public boolean a(egv $$0) {
+      blu $$1 = $$0.c(this.c.a());
+      els $$2 = $$0.c(ejg.f);
+      return this.b.isEmpty() || this.b.get().a($$0.d(), $$2, $$1);
    }
 
-   public static ejo.a a(ekj $$0, ego $$1) {
-      return () -> new ejx($$0, $$1);
+   public static eju.a a(egv.b $$0) {
+      return a($$0, bp.a.a());
    }
 
-   public ekj c() {
+   public static eju.a a(egv.b $$0, bp.a $$1) {
+      return () -> new ejx(Optional.of($$1.b()), $$0);
+   }
+
+   public static eju.a a(egv.b $$0, bp $$1) {
+      return () -> new ejx(Optional.of($$1), $$0);
+   }
+
+   public Optional<bp> c() {
       return this.b;
    }
 
-   public ego d() {
+   public egv.b d() {
       return this.c;
    }
 }

@@ -1,28 +1,32 @@
-public class fxt extends fzl<cbv, fjj<cbv>> {
-   private static final ahd a = new ahd("textures/entity/creeper/creeper.png");
-
-   public fxt(fyf.a $$0) {
-      super($$0, new fjj<>($$0.a(fmo.E)), 0.5F);
-      this.a(new gbt(this, $$0.f()));
+public class fxt extends fzr<bya, fjg<bya>> {
+   public fxt(fyl.a $$0) {
+      super($$0, new fjg<>($$0.a(fmu.q)), 0.4F);
+      this.a(new gby(this, $$0.f()));
    }
 
-   protected void a(cbv $$0, ept $$1, float $$2) {
-      float $$3 = $$0.E($$2);
-      float $$4 = 1.0F + aui.a($$3 * 100.0F) * $$3 * 0.01F;
-      $$3 = aui.a($$3, 0.0F, 1.0F);
-      $$3 *= $$3;
-      $$3 *= $$3;
-      float $$5 = (1.0F + $$3 * 0.4F) * $$4;
-      float $$6 = (1.0F + $$3 * 0.1F) / $$4;
-      $$1.b($$5, $$6, $$5);
+   public ahg a(bya $$0) {
+      return $$0.gk();
    }
 
-   protected float a(cbv $$0, float $$1) {
-      float $$2 = $$0.E($$1);
-      return (int)($$2 * 10.0F) % 2 == 0 ? 0.0F : aui.a($$2, 0.5F, 1.0F);
+   protected void a(bya $$0, epz $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.b(0.8F, 0.8F, 0.8F);
    }
 
-   public ahd a(cbv $$0) {
-      return a;
+   protected void a(bya $$0, epz $$1, float $$2, float $$3, float $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      float $$5 = $$0.E($$4);
+      if ($$5 > 0.0F) {
+         $$1.a(0.4F * $$5, 0.15F * $$5, 0.1F * $$5);
+         $$1.a(a.f.rotationDegrees(aun.j($$5, 0.0F, 90.0F)));
+         hx $$6 = $$0.dm();
+
+         for (cfh $$8 : $$0.dM().a(cfh.class, new eln($$6).c(2.0, 2.0, 2.0))) {
+            if ($$8.fD()) {
+               $$1.a(0.15F * $$5, 0.0F, 0.0F);
+               break;
+            }
+         }
+      }
    }
 }

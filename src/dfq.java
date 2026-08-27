@@ -1,33 +1,35 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dfq extends dfl implements dfm {
-   public static final MapCodec<dfq> e = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dfm.a.e.fieldOf("weathering_state").forGetter(dfq::g), u()).apply($$0, dfq::new)
-   );
-   private final dfm.a f;
+public class dfq extends cwy {
+   public static final MapCodec<dfq> a = b(dfq::new);
+   protected static final eml b = cwp.a(1.0, 0.0, 1.0, 15.0, 1.5, 15.0);
 
    @Override
-   protected MapCodec<dfq> a() {
-      return e;
+   public MapCodec<dfq> a() {
+      return a;
    }
 
-   protected dfq(dfm.a $$0, diz.d $$1) {
-      super($$1);
-      this.f = $$0;
+   protected dfq(djf.d $$0) {
+      super($$0);
    }
 
    @Override
-   public void b(dja $$0, amz $$1, hx $$2, aup $$3) {
-      this.a_($$0, $$1, $$2, $$3);
+   public void a(djg $$0, cto $$1, hx $$2, blu $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if ($$1 instanceof and && $$3 instanceof chb) {
+         $$1.a(new hx($$2), true, $$3);
+      }
    }
 
    @Override
-   public boolean e_(dja $$0) {
-      return dfm.c($$0.b()).isPresent();
+   public eml a(djg $$0, csu $$1, hx $$2, elx $$3) {
+      return b;
    }
 
-   public dfm.a g() {
-      return this.f;
+   @Override
+   protected boolean b(djg $$0, csu $$1, hx $$2) {
+      eeq $$3 = $$1.b_($$2);
+      eeq $$4 = $$1.b_($$2.c());
+      return ($$3.a() == eer.c || $$0.b() instanceof dam) && $$4.a() == eer.a;
    }
 }

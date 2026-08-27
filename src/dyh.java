@@ -1,25 +1,37 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public interface dyh<P extends dyg> {
-   dyh<dxs> a = a("block_predicate_filter", dxs.a);
-   dyh<dyj> b = a("rarity_filter", dyj.a);
-   dyh<dyl> c = a("surface_relative_threshold_filter", dyl.a);
-   dyh<dym> d = a("surface_water_depth_filter", dym.a);
-   dyh<dxr> e = a("biome", dxr.a);
-   dyh<dxw> f = a("count", dxw.a);
-   dyh<dyb> g = a("noise_based_count", dyb.a);
-   dyh<dyc> h = a("noise_threshold_count", dyc.a);
-   dyh<dxv> i = a("count_on_every_layer", dxv.a);
-   dyh<dxx> j = a("environment_scan", dxx.a);
-   dyh<dxz> k = a("heightmap", dxz.a);
-   dyh<dxy> l = a("height_range", dxy.a);
-   dyh<dya> m = a("in_square", dya.a);
-   dyh<dyi> n = a("random_offset", dyi.a);
-   dyh<dxt> o = a("carving_mask", dxt.a);
+public class dyh extends dyq {
+   public static final Codec<dyh> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.INT.fieldOf("noise_to_count_ratio").forGetter($$0x -> $$0x.c),
+               Codec.DOUBLE.fieldOf("noise_factor").forGetter($$0x -> $$0x.d),
+               Codec.DOUBLE.fieldOf("noise_offset").orElse(0.0).forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, dyh::new)
+   );
+   private final int c;
+   private final double d;
+   private final double e;
 
-   Codec<P> codec();
+   private dyh(int $$0, double $$1, double $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+   }
 
-   private static <P extends dyg> dyh<P> a(String $$0, Codec<P> $$1) {
-      return it.a(kd.U, $$0, () -> $$1);
+   public static dyh a(int $$0, double $$1, double $$2) {
+      return new dyh($$0, $$1, $$2);
+   }
+
+   @Override
+   protected int a(auu $$0, hx $$1) {
+      double $$2 = cun.e.a((double)$$1.u() / this.d, (double)$$1.w() / this.d, false);
+      return (int)Math.ceil(($$2 + this.e) * (double)this.c);
+   }
+
+   @Override
+   public dyn<?> b() {
+      return dyn.g;
    }
 }

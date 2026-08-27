@@ -54,7 +54,7 @@ class hc<T extends du<T>> {
       this.b.add(new he.b<>($$2, this.a($$2.b())));
    }
 
-   public hb<T> a(ahd $$0) {
+   public hb<T> a(ahg $$0) {
       return (hb<T>)(this.b != null ? new he<>($$0, this.b, this.c) : new hf<>($$0, this.a));
    }
 }

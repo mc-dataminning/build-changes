@@ -1,61 +1,46 @@
-public class bmb {
-   private static final int a = 140;
-   private static final int b = 700;
-   private final agm c;
-   private final agj<Integer> d;
-   private final agj<Boolean> e;
-   private boolean f;
-   private int g;
-
-   public bmb(agm $$0, agj<Integer> $$1, agj<Boolean> $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
+public abstract class bmb extends bmm {
+   protected bmb(bly<? extends bmb> $$0, cto $$1) {
+      super($$0, $$1);
    }
 
-   public void a() {
-      this.f = true;
-      this.g = 0;
+   @Override
+   protected void a(double $$0, boolean $$1, djg $$2, hx $$3) {
    }
 
-   public boolean a(aup $$0) {
-      if (this.f) {
-         return false;
-      } else {
-         this.f = true;
-         this.g = 0;
-         this.c.b(this.d, $$0.a(841) + 140);
-         return true;
+   @Override
+   public void a(els $$0) {
+      if (this.cX()) {
+         if (this.aZ()) {
+            this.a(0.02F, $$0);
+            this.a(bmq.a, this.dp());
+            this.g(this.dp().a(0.8F));
+         } else if (this.bn()) {
+            this.a(0.02F, $$0);
+            this.a(bmq.a, this.dp());
+            this.g(this.dp().a(0.5));
+         } else {
+            float $$1 = 0.91F;
+            if (this.aC()) {
+               $$1 = this.dM().a_(this.aI()).b().i() * 0.91F;
+            }
+
+            float $$2 = 0.16277137F / ($$1 * $$1 * $$1);
+            $$1 = 0.91F;
+            if (this.aC()) {
+               $$1 = this.dM().a_(this.aI()).b().i() * 0.91F;
+            }
+
+            this.a(this.aC() ? 0.1F * $$2 : 0.02F, $$0);
+            this.a(bmq.a, this.dp());
+            this.g(this.dp().a((double)$$1));
+         }
       }
+
+      this.q(false);
    }
 
-   public void b() {
-      if (this.f && this.g++ > this.e()) {
-         this.f = false;
-      }
-   }
-
-   public float c() {
-      return this.f ? 1.0F + 1.15F * aui.a((float)this.g / (float)this.e() * (float) Math.PI) : 1.0F;
-   }
-
-   private int e() {
-      return this.c.b(this.d);
-   }
-
-   public void a(sl $$0) {
-      $$0.a("Saddle", this.d());
-   }
-
-   public void b(sl $$0) {
-      this.a($$0.q("Saddle"));
-   }
-
-   public void a(boolean $$0) {
-      this.c.b(this.e, $$0);
-   }
-
-   public boolean d() {
-      return this.c.b(this.e);
+   @Override
+   public boolean e_() {
+      return false;
    }
 }

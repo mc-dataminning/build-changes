@@ -1,106 +1,81 @@
-import java.util.List;
-import javax.annotation.Nullable;
+public class cng extends cms {
+   private static final jj a = new ji() {
+      private final ji c = new ji();
 
-public class cng extends cmm {
-   private static final int a = 32;
-
-   public cng(cmm.a $$0) {
-      super($$0);
-   }
-
-   @Override
-   public cmr am_() {
-      return cor.a(super.am_(), cos.c);
-   }
-
-   @Override
-   public cmr a(cmr $$0, cti $$1, bmf $$2) {
-      cfb $$3 = $$2 instanceof cfb ? (cfb)$$2 : null;
-      if ($$3 instanceof ana) {
-         am.A.a((ana)$$3, $$0);
-      }
-
-      if (!$$1.B) {
-         for (blc $$5 : cor.a($$0)) {
-            if ($$5.c().a()) {
-               $$5.c().a($$3, $$3, $$2, $$5.e(), 1.0);
+      @Override
+      public cmx a(jg $$0, cmx $$1) {
+         ic $$2 = $$0.d().c(cyu.b);
+         and $$3 = $$0.b();
+         els $$4 = $$0.a();
+         double $$5 = $$4.a() + (double)$$2.j() * 1.125;
+         double $$6 = Math.floor($$4.b()) + (double)$$2.k();
+         double $$7 = $$4.c() + (double)$$2.l() * 1.125;
+         hx $$8 = $$0.c().a($$2);
+         djg $$9 = $$3.a_($$8);
+         dkk $$10 = $$9.b() instanceof cwe ? $$9.c(((cwe)$$9.b()).c()) : dkk.a;
+         double $$11;
+         if ($$9.a(asg.N)) {
+            if ($$10.b()) {
+               $$11 = 0.6;
             } else {
-               $$2.b(new blc($$5));
+               $$11 = 0.1;
+            }
+         } else {
+            if (!$$9.i() || !$$3.a_($$8.d()).a(asg.N)) {
+               return this.c.dispense($$0, $$1);
+            }
+
+            djg $$13 = $$3.a_($$8.d());
+            dkk $$14 = $$13.b() instanceof cwe ? $$13.c(((cwe)$$13.b()).c()) : dkk.a;
+            if ($$2 != ic.a && $$14.b()) {
+               $$11 = -0.4;
+            } else {
+               $$11 = -0.9;
             }
          }
+
+         cgz $$18 = cgz.a($$3, $$5, $$6 + $$11, $$7, ((cng)$$1.d()).b, $$1, null);
+         $$3.b($$18);
+         $$1.h(1);
+         return $$1;
       }
 
-      if ($$3 != null) {
-         $$3.b(arw.c.b(this));
-         if (!$$3.fT().d) {
-            $$0.h(1);
-         }
+      @Override
+      protected void a(jg $$0) {
+         $$0.b().c(1000, $$0.c(), 0);
       }
+   };
+   final cgz.a b;
 
-      if ($$3 == null || !$$3.fT().d) {
-         if ($$0.b()) {
-            return new cmr(cmu.si);
-         }
-
-         if ($$3 != null) {
-            $$3.fS().e(new cmr(cmu.si));
-         }
-      }
-
-      $$2.a(dnk.l);
-      return $$0;
+   public cng(cgz.a $$0, cms.a $$1) {
+      super($$1);
+      this.b = $$0;
+      cyu.a(this, a);
    }
 
    @Override
-   public bjv a(cpc $$0) {
-      cti $$1 = $$0.q();
+   public bka a(cpi $$0) {
+      cto $$1 = $$0.q();
       hx $$2 = $$0.a();
-      cfb $$3 = $$0.o();
-      cmr $$4 = $$0.n();
-      dja $$5 = $$1.a_($$2);
-      if ($$0.k() != ic.a && $$5.a(asb.ca) && cor.d($$4) == cos.c) {
-         $$1.a(null, $$2, arm.jE, arn.e, 1.0F, 1.0F);
-         $$3.a($$0.p(), cmt.a($$4, $$3, new cmr(cmu.si)));
-         $$3.b(arw.c.b($$4.d()));
-         if (!$$1.B) {
-            amz $$6 = (amz)$$1;
-
-            for (int $$7 = 0; $$7 < 5; $$7++) {
-               $$6.a(jx.aj, (double)$$2.u() + $$1.z.j(), (double)($$2.v() + 1), (double)$$2.w() + $$1.z.j(), 1, 0.0, 0.0, 0.0, 1.0);
+      djg $$3 = $$1.a_($$2);
+      if (!$$3.a(asg.N)) {
+         return bka.e;
+      } else {
+         cmx $$4 = $$0.n();
+         if ($$1 instanceof and $$5) {
+            dkk $$6 = $$3.b() instanceof cwe ? $$3.c(((cwe)$$3.b()).c()) : dkk.a;
+            double $$7 = 0.0;
+            if ($$6.b()) {
+               $$7 = 0.5;
             }
+
+            cgz $$8 = cgz.a($$5, (double)$$2.u() + 0.5, (double)$$2.v() + 0.0625 + $$7, (double)$$2.w() + 0.5, this.b, $$4, $$0.o());
+            $$5.b($$8);
+            $$5.a(dnq.t, $$2, dnq.a.a($$0.o(), $$5.a_($$2.d())));
          }
 
-         $$1.a(null, $$2, arm.ch, arn.e, 1.0F, 1.0F);
-         $$1.a(null, dnk.z, $$2);
-         $$1.b($$2, cwl.sI.o());
-         return bjv.a($$1.B);
-      } else {
-         return bjv.d;
+         $$4.h(1);
+         return bka.a($$1.B);
       }
-   }
-
-   @Override
-   public int b(cmr $$0) {
-      return 32;
-   }
-
-   @Override
-   public cok c(cmr $$0) {
-      return cok.c;
-   }
-
-   @Override
-   public bjw<cmr> a(cti $$0, cfb $$1, bju $$2) {
-      return cmt.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public String j(cmr $$0) {
-      return cor.d($$0).b(this.a() + ".effect.");
-   }
-
-   @Override
-   public void a(cmr $$0, @Nullable cti $$1, List<vd> $$2, coi $$3) {
-      cor.a($$0, $$2, 1.0F);
    }
 }

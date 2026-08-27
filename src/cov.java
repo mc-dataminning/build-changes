@@ -1,41 +1,52 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.UnmodifiableIterator;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public record cov(String c, ih<cmm> d, float e, Map<ckd, String> f, vd g) {
-   public static final Codec<cov> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               atq.x.fieldOf("asset_name").forGetter(cov::a),
-               aha.a(ke.F).fieldOf("ingredient").forGetter(cov::b),
-               Codec.FLOAT.fieldOf("item_model_index").forGetter(cov::c),
-               Codec.unboundedMap(ckd.h, Codec.STRING).optionalFieldOf("override_armor_materials", Map.of()).forGetter(cov::d),
-               vf.a.fieldOf("description").forGetter(cov::e)
-            )
-            .apply($$0, cov::new)
-   );
-   public static final Codec<ih<cov>> b = agz.a(ke.aI, a);
+public class cov {
+   @Nullable
+   private final String a;
+   private final ImmutableList<blh> b;
+   private final ih.c<cov> c = kd.i.f(this);
 
-   public static cov a(String $$0, cmm $$1, float $$2, vd $$3, Map<ckd, String> $$4) {
-      return new cov($$0, kd.h.d($$1), $$2, $$4, $$3);
+   public static cov a(String $$0) {
+      return kd.i.a(ahg.a($$0));
    }
 
-   public String a() {
+   public cov(blh... $$0) {
+      this(null, $$0);
+   }
+
+   public cov(@Nullable String $$0, blh... $$1) {
+      this.a = $$0;
+      this.b = ImmutableList.copyOf($$1);
+   }
+
+   public String b(String $$0) {
+      return $$0 + (this.a == null ? kd.i.b(this).a() : this.a);
+   }
+
+   public List<blh> a() {
+      return this.b;
+   }
+
+   public boolean b() {
+      if (!this.b.isEmpty()) {
+         UnmodifiableIterator var1 = this.b.iterator();
+
+         while (var1.hasNext()) {
+            blh $$0 = (blh)var1.next();
+            if ($$0.c().a()) {
+               return true;
+            }
+         }
+      }
+
+      return false;
+   }
+
+   @Deprecated
+   public ih.c<cov> c() {
       return this.c;
-   }
-
-   public ih<cmm> b() {
-      return this.d;
-   }
-
-   public float c() {
-      return this.e;
-   }
-
-   public Map<ckd, String> d() {
-      return this.f;
-   }
-
-   public vd e() {
-      return this.g;
    }
 }

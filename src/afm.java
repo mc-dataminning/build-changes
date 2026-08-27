@@ -1,42 +1,16 @@
-import java.security.PublicKey;
-
-public class afm implements xd<afj> {
-   private final String a;
-   private final byte[] b;
-   private final byte[] c;
-
-   public afm(String $$0, byte[] $$1, byte[] $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-   }
-
-   public afm(ug $$0) {
-      this.a = $$0.d(20);
-      this.b = $$0.b();
-      this.c = $$0.b();
-   }
-
+public interface afm extends ud {
    @Override
-   public void a(ug $$0) {
-      $$0.a(this.a);
-      $$0.a(this.b);
-      $$0.a(this.c);
+   default uh b() {
+      return uh.d;
    }
 
-   public void a(afj $$0) {
-      $$0.a(this);
-   }
+   void a(afp var1);
 
-   public String a() {
-      return this.a;
-   }
+   void a(afo var1);
 
-   public PublicKey d() throws ath {
-      return atg.a(this.b);
-   }
+   void a(afr var1);
 
-   public byte[] e() {
-      return this.c;
-   }
+   void a(afq var1);
+
+   void a(afn var1);
 }

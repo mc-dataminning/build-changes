@@ -1,24 +1,31 @@
-public class afo implements xd<afj> {
-   private final vd a;
+import com.mojang.authlib.GameProfile;
 
-   public afo(vd $$0) {
+public class afo implements xf<afm> {
+   private final GameProfile a;
+
+   public afo(GameProfile $$0) {
       this.a = $$0;
    }
 
-   public afo(ug $$0) {
-      this.a = vd.a.b($$0.d(262144));
+   public afo(ui $$0) {
+      this.a = $$0.A();
    }
 
    @Override
-   public void a(ug $$0) {
-      $$0.a(vd.a.a(this.a));
+   public void a(ui $$0) {
+      $$0.a(this.a);
    }
 
-   public void a(afj $$0) {
+   public void a(afm $$0) {
       $$0.a(this);
    }
 
-   public vd a() {
+   public GameProfile a() {
       return this.a;
+   }
+
+   @Override
+   public uh c() {
+      return uh.e;
    }
 }

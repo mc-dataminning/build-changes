@@ -1,52 +1,90 @@
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import java.util.List;
+import org.joml.Matrix4f;
 
-public class fwn implements fwk.a {
-   private static final int a = 160;
-   private final eva b;
-   private final Int2ObjectMap<fwn.a> c = new Int2ObjectOpenHashMap();
+public class fwn implements fwq.a {
+   private final evg a;
+   private static final int b = atx.b.a(255, 0, 155, 155);
+   private static final int c = atx.b.a(255, 255, 255, 0);
 
-   @Override
-   public void a() {
-      this.c.clear();
-   }
-
-   public void a(int $$0, hx $$1, List<yd.a> $$2) {
-      this.c.put($$0, new fwn.a($$1, $$2));
-   }
-
-   public void a(int $$0) {
-      this.c.remove($$0);
-   }
-
-   public fwn(eva $$0) {
-      this.b = $$0;
+   public fwn(evg $$0) {
+      this.a = $$0;
    }
 
    @Override
-   public void a(ept $$0, fsz $$1, double $$2, double $$3, double $$4) {
-      eul $$5 = this.b.j.m();
-      hx $$6 = hx.a($$5.b().c, 0.0, $$5.b().e);
-      ObjectIterator var11 = this.c.values().iterator();
+   public void a(epz $$0, ftf $$1, double $$2, double $$3, double $$4) {
+      blu $$5 = this.a.j.m().g();
+      float $$6 = (float)((double)this.a.r.J_() - $$3);
+      float $$7 = (float)((double)this.a.r.al() - $$3);
+      csv $$8 = $$5.do();
+      float $$9 = (float)((double)$$8.d() - $$2);
+      float $$10 = (float)((double)$$8.e() - $$4);
+      eqd $$11 = $$1.getBuffer(ftn.a(1.0));
+      Matrix4f $$12 = $$0.c().a();
 
-      while (var11.hasNext()) {
-         fwn.a $$7 = (fwn.a)var11.next();
-         hx $$8 = $$7.a;
-         if ($$6.a($$8, 160.0)) {
-            for (int $$9 = 0; $$9 < $$7.b.size(); $$9++) {
-               yd.a $$10 = $$7.b.get($$9);
-               double $$11 = (double)$$8.u() + 0.5;
-               double $$12 = (double)$$8.v() + 2.0 + (double)$$9 * 0.25;
-               double $$13 = (double)$$8.w() + 0.5;
-               int $$14 = $$10.b() ? -16711936 : -3355444;
-               fwk.a($$0, $$1, $$10.c(), $$11, $$12, $$13, $$14);
-            }
+      for (int $$13 = -16; $$13 <= 32; $$13 += 16) {
+         for (int $$14 = -16; $$14 <= 32; $$14 += 16) {
+            $$11.a($$12, $$9 + (float)$$13, $$6, $$10 + (float)$$14).a(1.0F, 0.0F, 0.0F, 0.0F).e();
+            $$11.a($$12, $$9 + (float)$$13, $$6, $$10 + (float)$$14).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+            $$11.a($$12, $$9 + (float)$$13, $$7, $$10 + (float)$$14).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+            $$11.a($$12, $$9 + (float)$$13, $$7, $$10 + (float)$$14).a(1.0F, 0.0F, 0.0F, 0.0F).e();
          }
       }
-   }
 
-   static record a(hx a, List<yd.a> b) {
+      for (int $$15 = 2; $$15 < 16; $$15 += 2) {
+         int $$16 = $$15 % 4 == 0 ? b : c;
+         $$11.a($$12, $$9 + (float)$$15, $$6, $$10).a(1.0F, 1.0F, 0.0F, 0.0F).e();
+         $$11.a($$12, $$9 + (float)$$15, $$6, $$10).a($$16).e();
+         $$11.a($$12, $$9 + (float)$$15, $$7, $$10).a($$16).e();
+         $$11.a($$12, $$9 + (float)$$15, $$7, $$10).a(1.0F, 1.0F, 0.0F, 0.0F).e();
+         $$11.a($$12, $$9 + (float)$$15, $$6, $$10 + 16.0F).a(1.0F, 1.0F, 0.0F, 0.0F).e();
+         $$11.a($$12, $$9 + (float)$$15, $$6, $$10 + 16.0F).a($$16).e();
+         $$11.a($$12, $$9 + (float)$$15, $$7, $$10 + 16.0F).a($$16).e();
+         $$11.a($$12, $$9 + (float)$$15, $$7, $$10 + 16.0F).a(1.0F, 1.0F, 0.0F, 0.0F).e();
+      }
+
+      for (int $$17 = 2; $$17 < 16; $$17 += 2) {
+         int $$18 = $$17 % 4 == 0 ? b : c;
+         $$11.a($$12, $$9, $$6, $$10 + (float)$$17).a(1.0F, 1.0F, 0.0F, 0.0F).e();
+         $$11.a($$12, $$9, $$6, $$10 + (float)$$17).a($$18).e();
+         $$11.a($$12, $$9, $$7, $$10 + (float)$$17).a($$18).e();
+         $$11.a($$12, $$9, $$7, $$10 + (float)$$17).a(1.0F, 1.0F, 0.0F, 0.0F).e();
+         $$11.a($$12, $$9 + 16.0F, $$6, $$10 + (float)$$17).a(1.0F, 1.0F, 0.0F, 0.0F).e();
+         $$11.a($$12, $$9 + 16.0F, $$6, $$10 + (float)$$17).a($$18).e();
+         $$11.a($$12, $$9 + 16.0F, $$7, $$10 + (float)$$17).a($$18).e();
+         $$11.a($$12, $$9 + 16.0F, $$7, $$10 + (float)$$17).a(1.0F, 1.0F, 0.0F, 0.0F).e();
+      }
+
+      for (int $$19 = this.a.r.J_(); $$19 <= this.a.r.al(); $$19 += 2) {
+         float $$20 = (float)((double)$$19 - $$3);
+         int $$21 = $$19 % 8 == 0 ? b : c;
+         $$11.a($$12, $$9, $$20, $$10).a(1.0F, 1.0F, 0.0F, 0.0F).e();
+         $$11.a($$12, $$9, $$20, $$10).a($$21).e();
+         $$11.a($$12, $$9, $$20, $$10 + 16.0F).a($$21).e();
+         $$11.a($$12, $$9 + 16.0F, $$20, $$10 + 16.0F).a($$21).e();
+         $$11.a($$12, $$9 + 16.0F, $$20, $$10).a($$21).e();
+         $$11.a($$12, $$9, $$20, $$10).a($$21).e();
+         $$11.a($$12, $$9, $$20, $$10).a(1.0F, 1.0F, 0.0F, 0.0F).e();
+      }
+
+      $$11 = $$1.getBuffer(ftn.a(2.0));
+
+      for (int $$22 = 0; $$22 <= 16; $$22 += 16) {
+         for (int $$23 = 0; $$23 <= 16; $$23 += 16) {
+            $$11.a($$12, $$9 + (float)$$22, $$6, $$10 + (float)$$23).a(0.25F, 0.25F, 1.0F, 0.0F).e();
+            $$11.a($$12, $$9 + (float)$$22, $$6, $$10 + (float)$$23).a(0.25F, 0.25F, 1.0F, 1.0F).e();
+            $$11.a($$12, $$9 + (float)$$22, $$7, $$10 + (float)$$23).a(0.25F, 0.25F, 1.0F, 1.0F).e();
+            $$11.a($$12, $$9 + (float)$$22, $$7, $$10 + (float)$$23).a(0.25F, 0.25F, 1.0F, 0.0F).e();
+         }
+      }
+
+      for (int $$24 = this.a.r.J_(); $$24 <= this.a.r.al(); $$24 += 16) {
+         float $$25 = (float)((double)$$24 - $$3);
+         $$11.a($$12, $$9, $$25, $$10).a(0.25F, 0.25F, 1.0F, 0.0F).e();
+         $$11.a($$12, $$9, $$25, $$10).a(0.25F, 0.25F, 1.0F, 1.0F).e();
+         $$11.a($$12, $$9, $$25, $$10 + 16.0F).a(0.25F, 0.25F, 1.0F, 1.0F).e();
+         $$11.a($$12, $$9 + 16.0F, $$25, $$10 + 16.0F).a(0.25F, 0.25F, 1.0F, 1.0F).e();
+         $$11.a($$12, $$9 + 16.0F, $$25, $$10).a(0.25F, 0.25F, 1.0F, 1.0F).e();
+         $$11.a($$12, $$9, $$25, $$10).a(0.25F, 0.25F, 1.0F, 1.0F).e();
+         $$11.a($$12, $$9, $$25, $$10).a(0.25F, 0.25F, 1.0F, 0.0F).e();
+      }
    }
 }

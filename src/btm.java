@@ -1,27 +1,48 @@
-import javax.annotation.Nullable;
+import java.util.EnumSet;
 
-public class btm extends bty {
-   private static final int i = 10;
-   private static final int j = 7;
+public class btm extends btg {
+   private final bmm a;
+   private bmk b;
+   private final float c;
 
-   public btm(bmo $$0, double $$1, boolean $$2) {
-      super($$0, $$1, 10, $$2);
+   public btm(bmm $$0, float $$1) {
+      this.a = $$0;
+      this.c = $$1;
+      this.a(EnumSet.of(btg.a.c, btg.a.a));
    }
 
    @Override
    public boolean a() {
-      amz $$0 = (amz)this.b.dM();
-      hx $$1 = this.b.dm();
-      return $$0.c($$1) ? false : super.a();
+      if (this.a.cO()) {
+         return false;
+      } else {
+         this.b = this.a.q();
+         if (this.b == null) {
+            return false;
+         } else {
+            double $$0 = this.a.f(this.b);
+            if ($$0 < 4.0 || $$0 > 16.0) {
+               return false;
+            } else {
+               return !this.a.aC() ? false : this.a.eg().a(b(5)) == 0;
+            }
+         }
+      }
    }
 
-   @Nullable
    @Override
-   protected elm h() {
-      amz $$0 = (amz)this.b.dM();
-      hx $$1 = this.b.dm();
-      iz $$2 = iz.a($$1);
-      iz $$3 = bny.a($$0, $$2, 2);
-      return $$3 != $$2 ? bwx.a(this.b, 10, 7, elm.c($$3.q()), (float) (Math.PI / 2)) : null;
+   public boolean b() {
+      return !this.a.aC();
+   }
+
+   @Override
+   public void c() {
+      els $$0 = this.a.dp();
+      els $$1 = new els(this.b.dr() - this.a.dr(), 0.0, this.b.dx() - this.a.dx());
+      if ($$1.g() > 1.0E-7) {
+         $$1 = $$1.d().a(0.4).e($$0.a(0.2));
+      }
+
+      this.a.o($$1.c, (double)this.c, $$1.e);
    }
 }

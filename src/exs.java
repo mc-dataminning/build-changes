@@ -1,69 +1,31 @@
-import java.util.OptionalInt;
+import java.util.UUID;
 
-public class exs extends ewv {
-   private OptionalInt a = OptionalInt.empty();
-   private OptionalInt b = OptionalInt.empty();
-   private final auz<exs.a, exr> c;
-   private boolean d = false;
+public class exs extends bjq {
+   private static final long j = 100L;
+   protected float h;
+   protected long i;
 
-   public exs(vd $$0, ewk $$1) {
-      this(0, 0, $$0, $$1);
-   }
-
-   public exs(int $$0, int $$1, vd $$2, ewk $$3) {
-      super($$0, $$1, 0, 0, $$2, $$3);
-      this.c = ac.a($$1x -> $$1x.c.isPresent() ? exr.a($$3, $$1x.a, $$1x.b, $$1x.c.getAsInt()) : exr.a($$3, $$1x.a, $$1x.b));
-      this.j = false;
-   }
-
-   public exs b(int $$0) {
-      super.a($$0);
-      return this;
-   }
-
-   public exs c(int $$0) {
-      this.a = OptionalInt.of($$0);
-      return this;
-   }
-
-   public exs d(int $$0) {
-      this.b = OptionalInt.of($$0);
-      return this;
-   }
-
-   public exs b(boolean $$0) {
-      this.d = $$0;
-      return this;
+   public exs(UUID $$0, vf $$1, float $$2, bjq.a $$3, bjq.b $$4, boolean $$5, boolean $$6, boolean $$7) {
+      super($$0, $$1, $$3, $$4);
+      this.h = $$2;
+      this.b = $$2;
+      this.i = ac.b();
+      this.a($$5);
+      this.b($$6);
+      this.c($$7);
    }
 
    @Override
-   public int w() {
-      return this.c.a(this.d()).b();
+   public void a(float $$0) {
+      this.b = this.k();
+      this.h = $$0;
+      this.i = ac.b();
    }
 
    @Override
-   public int u() {
-      return this.c.a(this.d()).a() * 9;
-   }
-
-   @Override
-   public void b(ewm $$0, int $$1, int $$2, float $$3) {
-      exr $$4 = this.c.a(this.d());
-      int $$5 = this.B();
-      int $$6 = this.C();
-      int $$7 = 9;
-      int $$8 = this.b();
-      if (this.d) {
-         $$4.a($$0, $$5 + this.w() / 2, $$6, $$7, $$8);
-      } else {
-         $$4.b($$0, $$5, $$6, $$7, $$8);
-      }
-   }
-
-   private exs.a d() {
-      return new exs.a(this.x(), this.a.orElse(Integer.MAX_VALUE), this.b);
-   }
-
-   static record a(vd a, int b, OptionalInt c) {
+   public float k() {
+      long $$0 = ac.b() - this.i;
+      float $$1 = aun.a((float)$$0 / 100.0F, 0.0F, 1.0F);
+      return aun.i($$1, this.b, this.h);
    }
 }

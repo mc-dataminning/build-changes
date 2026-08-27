@@ -1,74 +1,78 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import org.slf4j.Logger;
 
-public class dzu extends dzw {
-   public static final Codec<dzu> a = atq.<dzu>a(
-         RecordCodecBuilder.mapCodec(
-            $$0 -> a($$0)
-                  .and(
-                     $$0.group(
-                        Codec.intRange(0, 4096).fieldOf("spacing").forGetter(dzu::a),
-                        Codec.intRange(0, 4096).fieldOf("separation").forGetter(dzu::b),
-                        dzv.c.optionalFieldOf("spread_type", dzv.a).forGetter(dzu::c)
-                     )
-                  )
-                  .apply($$0, dzu::new)
-         ),
-         dzu::a
-      )
-      .codec();
-   private final int c;
-   private final int d;
-   private final dzv e;
+public record dzu(List<dzj> a) {
+   private static final Logger b = LogUtils.getLogger();
+   private static final ahg c = new ahg("jigsaw");
+   private static final Map<ahg, ahg> d = ImmutableMap.builder()
+      .put(new ahg("nvi"), c)
+      .put(new ahg("pcp"), c)
+      .put(new ahg("bastionremnant"), c)
+      .put(new ahg("runtime"), c)
+      .build();
 
-   private static DataResult<dzu> a(dzu $$0) {
-      return $$0.c <= $$0.d ? DataResult.error(() -> "Spacing has to be larger than separation") : DataResult.success($$0);
+   public dzu(List<dzj> a) {
+      this.a = List.copyOf(a);
    }
 
-   public dzu(jb $$0, dzw.c $$1, float $$2, int $$3, Optional<dzw.a> $$4, int $$5, int $$6, dzv $$7) {
-      super($$0, $$1, $$2, $$3, $$4);
-      this.c = $$5;
-      this.d = $$6;
-      this.e = $$7;
+   public boolean a() {
+      return this.a.isEmpty();
    }
 
-   public dzu(int $$0, int $$1, dzv $$2, int $$3) {
-      this(jb.g, dzw.c.a, 1.0F, $$3, Optional.empty(), $$0, $$1, $$2);
+   public boolean a(hx $$0) {
+      for (dzj $$1 : this.a) {
+         if ($$1.f().b($$0)) {
+            return true;
+         }
+      }
+
+      return false;
    }
 
-   public int a() {
-      return this.c;
+   public tk a(dzv $$0) {
+      st $$1 = new st();
+
+      for (dzj $$2 : this.a) {
+         $$1.add($$2.a($$0));
+      }
+
+      return $$1;
    }
 
-   public int b() {
-      return this.d;
+   public static dzu a(st $$0, dzv $$1) {
+      List<dzj> $$2 = Lists.newArrayList();
+
+      for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
+         sn $$4 = $$0.a($$3);
+         String $$5 = $$4.l("id").toLowerCase(Locale.ROOT);
+         ahg $$6 = new ahg($$5);
+         ahg $$7 = d.getOrDefault($$6, $$6);
+         dzw $$8 = kd.S.a($$7);
+         if ($$8 == null) {
+            b.error("Unknown structure piece id: {}", $$7);
+         } else {
+            try {
+               dzj $$9 = $$8.load($$1, $$4);
+               $$2.add($$9);
+            } catch (Exception var10) {
+               b.error("Exception loading structure piece with id {}", $$7, var10);
+            }
+         }
+      }
+
+      return new dzu($$2);
    }
 
-   public dzv c() {
-      return this.e;
+   public dyx b() {
+      return dzj.a(this.a.stream());
    }
 
-   public csp a(long $$0, int $$1, int $$2) {
-      int $$3 = Math.floorDiv($$1, this.c);
-      int $$4 = Math.floorDiv($$2, this.c);
-      dpi $$5 = new dpi(new dok(0L));
-      $$5.a($$0, $$3, $$4, this.i());
-      int $$6 = this.c - this.d;
-      int $$7 = this.e.a($$5, $$6);
-      int $$8 = this.e.a($$5, $$6);
-      return new csp($$3 * this.c + $$7, $$4 * this.c + $$8);
-   }
-
-   @Override
-   protected boolean a(dky $$0, int $$1, int $$2) {
-      csp $$3 = this.a($$0.d(), $$1, $$2);
-      return $$3.e == $$1 && $$3.f == $$2;
-   }
-
-   @Override
-   public dzx<?> e() {
-      return dzx.a;
+   public List<dzj> c() {
+      return this.a;
    }
 }

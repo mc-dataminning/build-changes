@@ -1,23 +1,22 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import java.util.Optional;
 
-public class bcv extends baq {
+public class bcv extends bav {
    public bcv(Schema $$0, boolean $$1) {
-      super($$0, $$1, "Zombie Villager XP rebuild", bbq.x, "minecraft:zombie_villager");
+      super($$0, $$1, "WeaponSmithChestLootTableFix", bbv.s, "minecraft:chest");
    }
 
    @Override
    protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), $$0x -> {
-         Optional<Number> $$1 = $$0x.get("Xp").asNumber().result();
-         if ($$1.isEmpty()) {
-            int $$2 = $$0x.get("VillagerData").get("level").asInt(1);
-            return $$0x.set("Xp", $$0x.createInt(bcn.a($$2)));
-         } else {
-            return $$0x;
+      return $$0.update(
+         DSL.remainderFinder(),
+         $$0x -> {
+            String $$1 = $$0x.get("LootTable").asString("");
+            return $$1.equals("minecraft:chests/village_blacksmith")
+               ? $$0x.set("LootTable", $$0x.createString("minecraft:chests/village/village_weaponsmith"))
+               : $$0x;
          }
-      });
+      );
    }
 }

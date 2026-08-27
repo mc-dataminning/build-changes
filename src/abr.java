@@ -1,24 +1,32 @@
-public class abr implements xd<yx> {
-   private final int a;
+public class abr implements xf<za> {
+   private final double a;
+   private final double b;
 
-   public abr(dkr $$0) {
-      this.a = $$0.q();
+   public abr(dkx $$0) {
+      this.a = $$0.a();
+      this.b = $$0.b();
    }
 
-   public abr(ug $$0) {
-      this.a = $$0.n();
+   public abr(ui $$0) {
+      this.a = $$0.readDouble();
+      this.b = $$0.readDouble();
    }
 
    @Override
-   public void a(ug $$0) {
-      $$0.c(this.a);
+   public void a(ui $$0) {
+      $$0.a(this.a);
+      $$0.a(this.b);
    }
 
-   public void a(yx $$0) {
+   public void a(za $$0) {
       $$0.a(this);
    }
 
-   public int a() {
+   public double a() {
+      return this.b;
+   }
+
+   public double d() {
       return this.a;
    }
 }

@@ -1,32 +1,39 @@
 import java.util.EnumSet;
 
-public class btw extends btb {
-   private final bmh a;
-   private double b;
-   private double c;
-   private int d;
+public class btw extends btg {
+   private final bmm a;
+   private bmk b;
+   private int c;
 
-   public btw(bmh $$0) {
+   public btw(bmm $$0) {
       this.a = $$0;
-      this.a(EnumSet.of(btb.a.a, btb.a.b));
+      this.a(EnumSet.of(btg.a.a, btg.a.b));
    }
 
    @Override
    public boolean a() {
-      return this.a.eg().i() < 0.02F;
+      bmk $$0 = this.a.q();
+      if ($$0 == null) {
+         return false;
+      } else {
+         this.b = $$0;
+         return true;
+      }
    }
 
    @Override
    public boolean b() {
-      return this.d >= 0;
+      if (!this.b.bx()) {
+         return false;
+      } else {
+         return this.a.f(this.b) > 225.0 ? false : !this.a.N().l() || this.a();
+      }
    }
 
    @Override
-   public void c() {
-      double $$0 = (Math.PI * 2) * this.a.eg().j();
-      this.b = Math.cos($$0);
-      this.c = Math.sin($$0);
-      this.d = 20 + this.a.eg().a(20);
+   public void d() {
+      this.b = null;
+      this.a.N().n();
    }
 
    @Override
@@ -36,7 +43,23 @@ public class btw extends btb {
 
    @Override
    public void e() {
-      this.d--;
-      this.a.I().a(this.a.dr() + this.b, this.a.dv(), this.a.dx() + this.c);
+      this.a.I().a(this.b, 30.0F, 30.0F);
+      double $$0 = (double)(this.a.dg() * 2.0F * this.a.dg() * 2.0F);
+      double $$1 = this.a.i(this.b.dr(), this.b.dt(), this.b.dx());
+      double $$2 = 0.8;
+      if ($$1 > $$0 && $$1 < 16.0) {
+         $$2 = 1.33;
+      } else if ($$1 < 225.0) {
+         $$2 = 0.6;
+      }
+
+      this.a.N().a(this.b, $$2);
+      this.c = Math.max(this.c - 1, 0);
+      if (!($$1 > $$0)) {
+         if (this.c <= 0) {
+            this.c = 20;
+            this.a.C(this.b);
+         }
+      }
    }
 }

@@ -1,47 +1,70 @@
+import com.google.common.base.Joiner;
 import com.google.common.collect.ImmutableSet;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
-import java.util.List;
+import com.google.common.collect.Sets;
 import java.util.Set;
 
-public record eje(ih<crc> b, List<Float> c) implements ejo {
-   public static final Codec<eje> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(kd.f.r().fieldOf("enchantment").forGetter(eje::c), Codec.FLOAT.listOf().fieldOf("chances").forGetter(eje::d)).apply($$0, eje::new)
-   );
+public class eje {
+   private final Set<ejd<?>> a;
+   private final Set<ejd<?>> b;
 
-   @Override
-   public ejp b() {
-      return ejq.l;
+   eje(Set<ejd<?>> $$0, Set<ejd<?>> $$1) {
+      this.a = ImmutableSet.copyOf($$0);
+      this.b = ImmutableSet.copyOf(Sets.union($$0, $$1));
    }
 
-   @Override
-   public Set<eix<?>> a() {
-      return ImmutableSet.of(eja.i);
+   public boolean a(ejd<?> $$0) {
+      return this.b.contains($$0);
    }
 
-   public boolean a(egp $$0) {
-      cmr $$1 = $$0.c(eja.i);
-      int $$2 = $$1 != null ? cre.a(this.b.a(), $$1) : 0;
-      float $$3 = this.c.get(Math.min($$2, this.c.size() - 1));
-      return $$0.b().i() < $$3;
+   public Set<ejd<?>> a() {
+      return this.a;
    }
 
-   public static ejo.a a(crc $$0, float... $$1) {
-      List<Float> $$2 = new ArrayList<>($$1.length);
-
-      for (float $$3 : $$1) {
-         $$2.add($$3);
-      }
-
-      return () -> new eje($$0.j(), $$2);
-   }
-
-   public ih<crc> c() {
+   public Set<ejd<?>> b() {
       return this.b;
    }
 
-   public List<Float> d() {
-      return this.c;
+   @Override
+   public String toString() {
+      return "[" + Joiner.on(", ").join(this.b.stream().map($$0 -> (this.a.contains($$0) ? "!" : "") + $$0.a()).iterator()) + "]";
+   }
+
+   public void a(ehe $$0, egw $$1) {
+      Set<ejd<?>> $$2 = $$1.a();
+      Set<ejd<?>> $$3 = Sets.difference($$2, this.b);
+      if (!$$3.isEmpty()) {
+         $$0.b("Parameters " + $$3 + " are not provided in this context");
+      }
+   }
+
+   public static eje.a c() {
+      return new eje.a();
+   }
+
+   public static class a {
+      private final Set<ejd<?>> a = Sets.newIdentityHashSet();
+      private final Set<ejd<?>> b = Sets.newIdentityHashSet();
+
+      public eje.a a(ejd<?> $$0) {
+         if (this.b.contains($$0)) {
+            throw new IllegalArgumentException("Parameter " + $$0.a() + " is already optional");
+         } else {
+            this.a.add($$0);
+            return this;
+         }
+      }
+
+      public eje.a b(ejd<?> $$0) {
+         if (this.a.contains($$0)) {
+            throw new IllegalArgumentException("Parameter " + $$0.a() + " is already required");
+         } else {
+            this.b.add($$0);
+            return this;
+         }
+      }
+
+      public eje a() {
+         return new eje(this.a, this.b);
+      }
    }
 }

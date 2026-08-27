@@ -1,77 +1,238 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableSet.Builder;
-import java.util.ArrayDeque;
-import java.util.Deque;
-import java.util.Set;
+import com.google.common.base.Strings;
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.bytes.ByteCollection;
+import it.unimi.dsi.fastutil.bytes.ByteOpenHashSet;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
+import java.util.regex.Pattern;
+import org.slf4j.Logger;
 
-public class tp extends tq {
-   private int a;
-   private final Set<tk<?>> b;
-   private final Deque<ts> c = new ArrayDeque<>();
+public class tp implements to {
+   private static final Logger a = LogUtils.getLogger();
+   private static final int b = 8;
+   private static final ByteCollection c = new ByteOpenHashSet(Arrays.asList((byte)1, (byte)2, (byte)3, (byte)4, (byte)5, (byte)6));
+   private static final n d = n.l;
+   private static final n e = n.k;
+   private static final n f = n.g;
+   private static final n g = n.m;
+   private static final Pattern h = Pattern.compile("[A-Za-z0-9._+-]+");
+   private static final String i = String.valueOf(':');
+   private static final String j = String.valueOf(',');
+   private static final String k = "[";
+   private static final String l = "]";
+   private static final String m = ";";
+   private static final String n = " ";
+   private static final String o = "{";
+   private static final String p = "}";
+   private static final String q = "\n";
+   private final String r;
+   private final int s;
+   private vf t = ve.a;
 
-   public tp(tr... $$0) {
-      this.a = $$0.length;
-      Builder<tk<?>> $$1 = ImmutableSet.builder();
-      ts $$2 = ts.a();
+   public tp(String $$0, int $$1) {
+      this.r = $$0;
+      this.s = $$1;
+   }
 
-      for (tr $$3 : $$0) {
-         $$2.a($$3);
-         $$1.add($$3.b());
+   public vf a(tk $$0) {
+      $$0.a(this);
+      return this.t;
+   }
+
+   @Override
+   public void a(ti $$0) {
+      String $$1 = ti.b($$0.t_());
+      String $$2 = $$1.substring(0, 1);
+      vf $$3 = vf.b($$1.substring(1, $$1.length() - 1)).a(e);
+      this.t = vf.b($$2).b($$3).f($$2);
+   }
+
+   @Override
+   public void a(sl $$0) {
+      vf $$1 = vf.b("b").a(g);
+      this.t = vf.b(String.valueOf($$0.l())).b($$1).a(f);
+   }
+
+   @Override
+   public void a(tf $$0) {
+      vf $$1 = vf.b("s").a(g);
+      this.t = vf.b(String.valueOf($$0.l())).b($$1).a(f);
+   }
+
+   @Override
+   public void a(ss $$0) {
+      this.t = vf.b(String.valueOf($$0.l())).a(f);
+   }
+
+   @Override
+   public void a(sv $$0) {
+      vf $$1 = vf.b("L").a(g);
+      this.t = vf.b(String.valueOf($$0.l())).b($$1).a(f);
+   }
+
+   @Override
+   public void a(sq $$0) {
+      vf $$1 = vf.b("f").a(g);
+      this.t = vf.b(String.valueOf($$0.k())).b($$1).a(f);
+   }
+
+   @Override
+   public void a(so $$0) {
+      vf $$1 = vf.b("d").a(g);
+      this.t = vf.b(String.valueOf($$0.j())).b($$1).a(f);
+   }
+
+   @Override
+   public void a(sk $$0) {
+      vf $$1 = vf.b("B").a(g);
+      vt $$2 = vf.b("[").b($$1).f(";");
+      byte[] $$3 = $$0.e();
+
+      for (int $$4 = 0; $$4 < $$3.length; $$4++) {
+         vt $$5 = vf.b(String.valueOf($$3[$$4])).a(f);
+         $$2.f(" ").b($$5).b($$1);
+         if ($$4 != $$3.length - 1) {
+            $$2.f(j);
+         }
       }
 
-      this.c.push($$2);
-      $$1.add(sl.b);
-      this.b = $$1.build();
+      $$2.f("]");
+      this.t = $$2;
    }
 
    @Override
-   public tf.b b(tk<?> $$0) {
-      return $$0 != sl.b ? tf.b.c : super.b($$0);
-   }
+   public void a(sr $$0) {
+      vf $$1 = vf.b("I").a(g);
+      vt $$2 = vf.b("[").b($$1).f(";");
+      int[] $$3 = $$0.g();
 
-   @Override
-   public tf.a a(tk<?> $$0) {
-      ts $$1 = this.c.element();
-      if (this.e() > $$1.b()) {
-         return super.a($$0);
-      } else if (this.a <= 0) {
-         return tf.a.d;
-      } else {
-         return !this.b.contains($$0) ? tf.a.b : super.a($$0);
+      for (int $$4 = 0; $$4 < $$3.length; $$4++) {
+         $$2.f(" ").b(vf.b(String.valueOf($$3[$$4])).a(f));
+         if ($$4 != $$3.length - 1) {
+            $$2.f(j);
+         }
       }
+
+      $$2.f("]");
+      this.t = $$2;
    }
 
    @Override
-   public tf.a a(tk<?> $$0, String $$1) {
-      ts $$2 = this.c.element();
-      if (this.e() > $$2.b()) {
-         return super.a($$0, $$1);
-      } else if ($$2.c().remove($$1, $$0)) {
-         this.a--;
-         return super.a($$0, $$1);
-      } else {
-         if ($$0 == sl.b) {
-            ts $$3 = $$2.d().get($$1);
-            if ($$3 != null) {
-               this.c.push($$3);
-               return super.a($$0, $$1);
+   public void a(su $$0) {
+      vf $$1 = vf.b("L").a(g);
+      vt $$2 = vf.b("[").b($$1).f(";");
+      long[] $$3 = $$0.g();
+
+      for (int $$4 = 0; $$4 < $$3.length; $$4++) {
+         vf $$5 = vf.b(String.valueOf($$3[$$4])).a(f);
+         $$2.f(" ").b($$5).b($$1);
+         if ($$4 != $$3.length - 1) {
+            $$2.f(j);
+         }
+      }
+
+      $$2.f("]");
+      this.t = $$2;
+   }
+
+   @Override
+   public void a(st $$0) {
+      if ($$0.isEmpty()) {
+         this.t = vf.b("[]");
+      } else if (c.contains($$0.f()) && $$0.size() <= 8) {
+         String $$1 = j + " ";
+         vt $$2 = vf.b("[");
+
+         for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
+            if ($$3 != 0) {
+               $$2.f($$1);
             }
+
+            $$2.b(new tp(this.r, this.s).a($$0.k($$3)));
          }
 
-         return tf.a.b;
+         $$2.f("]");
+         this.t = $$2;
+      } else {
+         vt $$4 = vf.b("[");
+         if (!this.r.isEmpty()) {
+            $$4.f("\n");
+         }
+
+         for (int $$5 = 0; $$5 < $$0.size(); $$5++) {
+            vt $$6 = vf.b(Strings.repeat(this.r, this.s + 1));
+            $$6.b(new tp(this.r, this.s + 1).a($$0.k($$5)));
+            if ($$5 != $$0.size() - 1) {
+               $$6.f(j).f(this.r.isEmpty() ? " " : "\n");
+            }
+
+            $$4.b($$6);
+         }
+
+         if (!this.r.isEmpty()) {
+            $$4.f("\n").f(Strings.repeat(this.r, this.s));
+         }
+
+         $$4.f("]");
+         this.t = $$4;
       }
    }
 
    @Override
-   public tf.b b() {
-      if (this.e() == this.c.element().b()) {
-         this.c.pop();
-      }
+   public void a(sn $$0) {
+      if ($$0.g()) {
+         this.t = vf.b("{}");
+      } else {
+         vt $$1 = vf.b("{");
+         Collection<String> $$2 = $$0.e();
+         if (a.isDebugEnabled()) {
+            List<String> $$3 = Lists.newArrayList($$0.e());
+            Collections.sort($$3);
+            $$2 = $$3;
+         }
 
-      return super.b();
+         if (!this.r.isEmpty()) {
+            $$1.f("\n");
+         }
+
+         Iterator<String> $$4 = $$2.iterator();
+
+         while ($$4.hasNext()) {
+            String $$5 = $$4.next();
+            vt $$6 = vf.b(Strings.repeat(this.r, this.s + 1)).b(a($$5)).f(i).f(" ").b(new tp(this.r, this.s + 1).a($$0.c($$5)));
+            if ($$4.hasNext()) {
+               $$6.f(j).f(this.r.isEmpty() ? " " : "\n");
+            }
+
+            $$1.b($$6);
+         }
+
+         if (!this.r.isEmpty()) {
+            $$1.f("\n").f(Strings.repeat(this.r, this.s));
+         }
+
+         $$1.f("}");
+         this.t = $$1;
+      }
    }
 
-   public int c() {
-      return this.a;
+   protected static vf a(String $$0) {
+      if (h.matcher($$0).matches()) {
+         return vf.b($$0).a(d);
+      } else {
+         String $$1 = ti.b($$0);
+         String $$2 = $$1.substring(0, 1);
+         vf $$3 = vf.b($$1.substring(1, $$1.length() - 1)).a(d);
+         return vf.b($$2).b($$3).f($$2);
+      }
+   }
+
+   @Override
+   public void a(sp $$0) {
+      this.t = ve.a;
    }
 }

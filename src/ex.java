@@ -9,9 +9,9 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.concurrent.CompletableFuture;
 
-public class ex implements ArgumentType<emh> {
+public class ex implements ArgumentType<emn> {
    private static final Collection<String> b = Arrays.asList("sidebar", "foo.bar");
-   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> vd.b("argument.scoreboardDisplaySlot.invalid", $$0));
+   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> vf.b("argument.scoreboardDisplaySlot.invalid", $$0));
 
    private ex() {
    }
@@ -20,13 +20,13 @@ public class ex implements ArgumentType<emh> {
       return new ex();
    }
 
-   public static emh a(CommandContext<ds> $$0, String $$1) {
-      return (emh)$$0.getArgument($$1, emh.class);
+   public static emn a(CommandContext<ds> $$0, String $$1) {
+      return (emn)$$0.getArgument($$1, emn.class);
    }
 
-   public emh a(StringReader $$0) throws CommandSyntaxException {
+   public emn a(StringReader $$0) throws CommandSyntaxException {
       String $$1 = $$0.readUnquotedString();
-      emh $$2 = emh.t.a($$1);
+      emn $$2 = emn.t.a($$1);
       if ($$2 == null) {
          throw a.create($$1);
       } else {
@@ -35,7 +35,7 @@ public class ex implements ArgumentType<emh> {
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      return dx.b(Arrays.stream(emh.values()).map(emh::c), $$1);
+      return dx.b(Arrays.stream(emn.values()).map(emn::c), $$1);
    }
 
    public Collection<String> getExamples() {

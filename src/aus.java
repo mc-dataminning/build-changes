@@ -1,59 +1,49 @@
-public class aus {
-   private final int a;
-   private final int b;
-   private final float c;
-   private final float d;
+import com.google.common.collect.HashMultimap;
+import com.google.common.collect.ImmutableMultimap;
+import com.google.common.collect.Multimap;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-   public aus(int $$0) {
-      if ($$0 < 2) {
-         throw new IllegalArgumentException("Precision cannot be less than 2 bits");
-      } else if ($$0 > 30) {
-         throw new IllegalArgumentException("Precision cannot be greater than 30 bits");
-      } else {
-         int $$1 = 1 << $$0;
-         this.a = $$1 - 1;
-         this.b = $$0;
-         this.c = (float)$$1 / 360.0F;
-         this.d = 360.0F / (float)$$1;
+public interface aus {
+   aus a(String var1);
+
+   void b(String var1);
+
+   public static class a implements aus {
+      private final Multimap<String, String> a;
+      private final Supplier<String> b;
+      @Nullable
+      private String c;
+
+      public a() {
+         this(HashMultimap.create(), () -> "");
       }
-   }
 
-   public boolean a(int $$0, int $$1) {
-      int $$2 = this.a() >> 1;
-      return ($$0 & $$2) == ($$1 & $$2);
-   }
-
-   public int a(ic $$0) {
-      if ($$0.o().b()) {
-         return 0;
-      } else {
-         int $$1 = $$0.e();
-         return $$1 << this.b - 2;
+      private a(Multimap<String, String> $$0, Supplier<String> $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
-   }
 
-   public int a(float $$0) {
-      return Math.round($$0 * this.c);
-   }
+      private String b() {
+         if (this.c == null) {
+            this.c = this.b.get();
+         }
 
-   public int b(float $$0) {
-      return this.c(this.a($$0));
-   }
+         return this.c;
+      }
 
-   public float a(int $$0) {
-      return (float)$$0 * this.d;
-   }
+      @Override
+      public aus a(String $$0) {
+         return new aus.a(this.a, () -> this.b() + $$0);
+      }
 
-   public float b(int $$0) {
-      float $$1 = this.a(this.c($$0));
-      return $$1 >= 180.0F ? $$1 - 360.0F : $$1;
-   }
+      @Override
+      public void b(String $$0) {
+         this.a.put(this.b(), $$0);
+      }
 
-   public int c(int $$0) {
-      return $$0 & this.a;
-   }
-
-   public int a() {
-      return this.a;
+      public Multimap<String, String> a() {
+         return ImmutableMultimap.copyOf(this.a);
+      }
    }
 }

@@ -1,415 +1,121 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Queues;
-import com.google.common.collect.Sets;
-import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.longs.Long2ObjectFunction;
 import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMaps;
 import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.longs.LongAVLTreeSet;
+import it.unimi.dsi.fastutil.longs.LongIterator;
 import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
 import it.unimi.dsi.fastutil.longs.LongSet;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap.Entry;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import java.io.IOException;
-import java.io.UncheckedIOException;
-import java.io.Writer;
-import java.util.List;
-import java.util.Queue;
-import java.util.Set;
-import java.util.UUID;
-import java.util.function.Consumer;
-import java.util.stream.Collectors;
+import it.unimi.dsi.fastutil.longs.LongSortedSet;
+import java.util.Objects;
+import java.util.Spliterators;
+import java.util.PrimitiveIterator.OfLong;
+import java.util.stream.LongStream;
 import java.util.stream.Stream;
-import org.slf4j.Logger;
+import java.util.stream.StreamSupport;
+import javax.annotation.Nullable;
 
-public class dnc<T extends dmr> implements AutoCloseable {
-   static final Logger a = LogUtils.getLogger();
-   final Set<UUID> b = Sets.newHashSet();
-   final dmz<T> c;
-   private final dmu<T> d;
-   private final dmt<T> e;
-   final dmw<T> f;
-   private final dna<T> g;
-   private final Long2ObjectMap<dne> h = new Long2ObjectOpenHashMap();
-   private final Long2ObjectMap<dnc.b> i = new Long2ObjectOpenHashMap();
-   private final LongSet j = new LongOpenHashSet();
-   private final Queue<dmp<T>> k = Queues.newConcurrentLinkedQueue();
+public class dnc<T extends dmx> {
+   private final Class<T> a;
+   private final Long2ObjectFunction<dnk> b;
+   private final Long2ObjectMap<dnb<T>> c = new Long2ObjectOpenHashMap();
+   private final LongSortedSet d = new LongAVLTreeSet();
 
-   public dnc(Class<T> $$0, dmz<T> $$1, dmu<T> $$2) {
-      this.e = new dmt<>();
-      this.f = new dmw<>($$0, this.h);
-      this.h.defaultReturnValue(dne.a);
-      this.i.defaultReturnValue(dnc.b.a);
-      this.c = $$1;
-      this.d = $$2;
-      this.g = new dnb<>(this.e, this.f);
+   public dnc(Class<T> $$0, Long2ObjectFunction<dnk> $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   void a(long $$0, dmv<T> $$1) {
-      if ($$1.a()) {
-         this.f.e($$0);
-      }
-   }
+   public void a(eln $$0, atb<dnb<T>> $$1) {
+      int $$2 = 2;
+      int $$3 = iz.a($$0.a - 2.0);
+      int $$4 = iz.a($$0.b - 4.0);
+      int $$5 = iz.a($$0.c - 2.0);
+      int $$6 = iz.a($$0.d + 2.0);
+      int $$7 = iz.a($$0.e + 0.0);
+      int $$8 = iz.a($$0.f + 2.0);
 
-   private boolean b(T $$0) {
-      if (!this.b.add($$0.cw())) {
-         a.warn("UUID of added entity already exists: {}", $$0);
-         return false;
-      } else {
-         return true;
-      }
-   }
+      for (int $$9 = $$3; $$9 <= $$6; $$9++) {
+         long $$10 = iz.b($$9, 0, 0);
+         long $$11 = iz.b($$9, -1, -1);
+         LongIterator $$12 = this.d.subSet($$10, $$11 + 1L).iterator();
 
-   public boolean a(T $$0) {
-      return this.a($$0, false);
-   }
-
-   private boolean a(T $$0, boolean $$1) {
-      if (!this.b($$0)) {
-         return false;
-      } else {
-         long $$2 = iz.c($$0.dm());
-         dmv<T> $$3 = this.f.c($$2);
-         $$3.a($$0);
-         $$0.a(new dnc.a($$0, $$2, $$3));
-         if (!$$1) {
-            this.c.g($$0);
-         }
-
-         dne $$4 = a($$0, $$3.c());
-         if ($$4.b()) {
-            this.e($$0);
-         }
-
-         if ($$4.a()) {
-            this.c($$0);
-         }
-
-         return true;
-      }
-   }
-
-   static <T extends dmr> dne a(T $$0, dne $$1) {
-      return $$0.dL() ? dne.c : $$1;
-   }
-
-   public void a(Stream<T> $$0) {
-      $$0.forEach($$0x -> this.a((T)$$0x, true));
-   }
-
-   public void b(Stream<T> $$0) {
-      $$0.forEach($$0x -> this.a((T)$$0x, false));
-   }
-
-   void c(T $$0) {
-      this.c.e($$0);
-   }
-
-   void d(T $$0) {
-      this.c.d($$0);
-   }
-
-   void e(T $$0) {
-      this.e.a($$0);
-      this.c.c($$0);
-   }
-
-   void f(T $$0) {
-      this.c.b($$0);
-      this.e.b($$0);
-   }
-
-   public void a(csp $$0, ams $$1) {
-      dne $$2 = dne.a($$1);
-      this.a($$0, $$2);
-   }
-
-   public void a(csp $$0, dne $$1) {
-      long $$2 = $$0.a();
-      if ($$1 == dne.a) {
-         this.h.remove($$2);
-         this.j.add($$2);
-      } else {
-         this.h.put($$2, $$1);
-         this.j.remove($$2);
-         this.b($$2);
-      }
-
-      this.f.b($$2).forEach($$1x -> {
-         dne $$2x = $$1x.a($$1);
-         boolean $$3 = $$2x.b();
-         boolean $$4 = $$1.b();
-         boolean $$5 = $$2x.a();
-         boolean $$6 = $$1.a();
-         if ($$5 && !$$6) {
-            $$1x.b().filter($$0xx -> !$$0xx.dL()).forEach(this::d);
-         }
-
-         if ($$3 && !$$4) {
-            $$1x.b().filter($$0xx -> !$$0xx.dL()).forEach(this::f);
-         } else if (!$$3 && $$4) {
-            $$1x.b().filter($$0xx -> !$$0xx.dL()).forEach(this::e);
-         }
-
-         if (!$$5 && $$6) {
-            $$1x.b().filter($$0xx -> !$$0xx.dL()).forEach(this::c);
-         }
-      });
-   }
-
-   private void b(long $$0) {
-      dnc.b $$1 = (dnc.b)this.i.get($$0);
-      if ($$1 == dnc.b.a) {
-         this.c($$0);
-      }
-   }
-
-   private boolean a(long $$0, Consumer<T> $$1) {
-      dnc.b $$2 = (dnc.b)this.i.get($$0);
-      if ($$2 == dnc.b.b) {
-         return false;
-      } else {
-         List<T> $$3 = this.f.b($$0).flatMap($$0x -> $$0x.b().filter(dmr::dK)).collect(Collectors.toList());
-         if ($$3.isEmpty()) {
-            if ($$2 == dnc.b.c) {
-               this.d.a(new dmp<>(new csp($$0), ImmutableList.of()));
+         while ($$12.hasNext()) {
+            long $$13 = $$12.nextLong();
+            int $$14 = iz.c($$13);
+            int $$15 = iz.d($$13);
+            if ($$14 >= $$4 && $$14 <= $$7 && $$15 >= $$5 && $$15 <= $$8) {
+               dnb<T> $$16 = (dnb<T>)this.c.get($$13);
+               if ($$16 != null && !$$16.a() && $$16.c().b() && $$1.accept($$16).a()) {
+                  return;
+               }
             }
-
-            return true;
-         } else if ($$2 == dnc.b.a) {
-            this.c($$0);
-            return false;
-         } else {
-            this.d.a(new dmp<>(new csp($$0), $$3));
-            $$3.forEach($$1);
-            return true;
          }
       }
    }
 
-   private void c(long $$0) {
-      this.i.put($$0, dnc.b.b);
-      csp $$1 = new csp($$0);
-      this.d.a($$1).thenAccept(this.k::add).exceptionally($$1x -> {
-         a.error("Failed to read chunk {}", $$1, $$1x);
-         return null;
-      });
-   }
-
-   private boolean d(long $$0) {
-      boolean $$1 = this.a($$0, $$0x -> $$0x.cS().forEach(this::g));
-      if (!$$1) {
-         return false;
+   public LongStream a(long $$0) {
+      int $$1 = csv.a($$0);
+      int $$2 = csv.b($$0);
+      LongSortedSet $$3 = this.a($$1, $$2);
+      if ($$3.isEmpty()) {
+         return LongStream.empty();
       } else {
-         this.i.remove($$0);
-         return true;
+         OfLong $$4 = $$3.iterator();
+         return StreamSupport.longStream(Spliterators.spliteratorUnknownSize($$4, 1301), false);
       }
    }
 
-   private void g(dmr $$0) {
-      $$0.b(blp.c.c);
-      $$0.a(dms.a);
+   private LongSortedSet a(int $$0, int $$1) {
+      long $$2 = iz.b($$0, 0, $$1);
+      long $$3 = iz.b($$0, -1, $$1);
+      return this.d.subSet($$2, $$3 + 1L);
    }
 
-   private void g() {
-      this.j.removeIf($$0 -> this.h.get($$0) != dne.a ? true : this.d($$0));
+   public Stream<dnb<T>> b(long $$0) {
+      return this.a($$0).<dnb<T>>mapToObj(this.c::get).filter(Objects::nonNull);
    }
 
-   private void h() {
-      dmp<T> $$0;
-      while (($$0 = this.k.poll()) != null) {
-         $$0.b().forEach($$0x -> this.a((T)$$0x, true));
-         this.i.put($$0.a().a(), dnc.b.c);
-      }
+   private static long f(long $$0) {
+      return csv.c(iz.b($$0), iz.d($$0));
    }
 
-   public void a() {
-      this.h();
-      this.g();
+   public dnb<T> c(long $$0) {
+      return (dnb<T>)this.c.computeIfAbsent($$0, this::g);
    }
 
-   private LongSet i() {
-      LongSet $$0 = this.f.a();
-      ObjectIterator var2 = Long2ObjectMaps.fastIterable(this.i).iterator();
+   @Nullable
+   public dnb<T> d(long $$0) {
+      return (dnb<T>)this.c.get($$0);
+   }
 
-      while (var2.hasNext()) {
-         Entry<dnc.b> $$1 = (Entry<dnc.b>)var2.next();
-         if ($$1.getValue() == dnc.b.c) {
-            $$0.add($$1.getLongKey());
-         }
-      }
+   private dnb<T> g(long $$0) {
+      long $$1 = f($$0);
+      dnk $$2 = (dnk)this.b.get($$1);
+      this.d.add($$0);
+      return new dnb<>(this.a, $$2);
+   }
 
+   public LongSet a() {
+      LongSet $$0 = new LongOpenHashSet();
+      this.c.keySet().forEach($$1 -> $$0.add(f($$1)));
       return $$0;
    }
 
-   public void b() {
-      this.i().forEach($$0 -> {
-         boolean $$1 = this.h.get($$0) == dne.a;
-         if ($$1) {
-            this.d($$0);
-         } else {
-            this.a($$0, $$0x -> {
-            });
-         }
-      });
+   public void b(eln $$0, atb<T> $$1) {
+      this.a($$0, $$2 -> $$2.a($$0, $$1));
    }
 
-   public void c() {
-      LongSet $$0 = this.i();
-
-      while (!$$0.isEmpty()) {
-         this.d.a(false);
-         this.h();
-         $$0.removeIf($$0x -> {
-            boolean $$1 = this.h.get($$0x) == dne.a;
-            return $$1 ? this.d($$0x) : this.a($$0x, $$0xx -> {
-            });
-         });
-      }
-
-      this.d.a(true);
+   public <U extends T> void a(dne<T, U> $$0, eln $$1, atb<U> $$2) {
+      this.a($$1, $$3 -> $$3.a($$0, $$1, $$2));
    }
 
-   @Override
-   public void close() throws IOException {
-      this.c();
-      this.d.close();
+   public void e(long $$0) {
+      this.c.remove($$0);
+      this.d.remove($$0);
    }
 
-   public boolean a(UUID $$0) {
-      return this.b.contains($$0);
-   }
-
-   public dna<T> d() {
-      return this.g;
-   }
-
-   public boolean a(hx $$0) {
-      return ((dne)this.h.get(csp.a($$0))).a();
-   }
-
-   public boolean a(csp $$0) {
-      return ((dne)this.h.get($$0.a())).a();
-   }
-
-   public boolean a(long $$0) {
-      return this.i.get($$0) == dnc.b.c;
-   }
-
-   public void a(Writer $$0) throws IOException {
-      ati $$1 = ati.a().a("x").a("y").a("z").a("visibility").a("load_status").a("entity_count").a($$0);
-      this.f.a().forEach($$1x -> {
-         dnc.b $$2 = (dnc.b)this.i.get($$1x);
-         this.f.a($$1x).forEach($$2x -> {
-            dmv<T> $$3 = this.f.d($$2x);
-            if ($$3 != null) {
-               try {
-                  $$1.a(iz.b($$2x), iz.c($$2x), iz.d($$2x), $$3.c(), $$2, $$3.d());
-               } catch (IOException var7) {
-                  throw new UncheckedIOException(var7);
-               }
-            }
-         });
-      });
-   }
-
-   @avn
-   public String e() {
-      return this.b.size() + "," + this.e.b() + "," + this.f.b() + "," + this.i.size() + "," + this.h.size() + "," + this.k.size() + "," + this.j.size();
-   }
-
-   @avn
-   public int f() {
-      return this.e.b();
-   }
-
-   class a implements dms {
-      private final T c;
-      private long d;
-      private dmv<T> e;
-
-      a(T $$0, long $$1, dmv<T> $$2) {
-         this.c = $$0;
-         this.d = $$1;
-         this.e = $$2;
-      }
-
-      @Override
-      public void a() {
-         hx $$0 = this.c.dm();
-         long $$1 = iz.c($$0);
-         if ($$1 != this.d) {
-            dne $$2 = this.e.c();
-            if (!this.e.b(this.c)) {
-               dnc.a.warn("Entity {} wasn't found in section {} (moving to {})", new Object[]{this.c, iz.a(this.d), $$1});
-            }
-
-            dnc.this.a(this.d, this.e);
-            dmv<T> $$3 = dnc.this.f.c($$1);
-            $$3.a(this.c);
-            this.e = $$3;
-            this.d = $$1;
-            this.a($$2, $$3.c());
-         }
-      }
-
-      private void a(dne $$0, dne $$1) {
-         dne $$2 = dnc.a(this.c, $$0);
-         dne $$3 = dnc.a(this.c, $$1);
-         if ($$2 == $$3) {
-            if ($$3.b()) {
-               dnc.this.c.a(this.c);
-            }
-         } else {
-            boolean $$4 = $$2.b();
-            boolean $$5 = $$3.b();
-            if ($$4 && !$$5) {
-               dnc.this.f(this.c);
-            } else if (!$$4 && $$5) {
-               dnc.this.e(this.c);
-            }
-
-            boolean $$6 = $$2.a();
-            boolean $$7 = $$3.a();
-            if ($$6 && !$$7) {
-               dnc.this.d(this.c);
-            } else if (!$$6 && $$7) {
-               dnc.this.c(this.c);
-            }
-
-            if ($$5) {
-               dnc.this.c.a(this.c);
-            }
-         }
-      }
-
-      @Override
-      public void a(blp.c $$0) {
-         if (!this.e.b(this.c)) {
-            dnc.a.warn("Entity {} wasn't found in section {} (destroying due to {})", new Object[]{this.c, iz.a(this.d), $$0});
-         }
-
-         dne $$1 = dnc.a(this.c, this.e.c());
-         if ($$1.a()) {
-            dnc.this.d(this.c);
-         }
-
-         if ($$1.b()) {
-            dnc.this.f(this.c);
-         }
-
-         if ($$0.a()) {
-            dnc.this.c.f(this.c);
-         }
-
-         dnc.this.b.remove(this.c.cw());
-         this.c.a(a);
-         dnc.this.a(this.d, this.e);
-      }
-   }
-
-   static enum b {
-      a,
-      b,
-      c;
+   @avs
+   public int b() {
+      return this.d.size();
    }
 }

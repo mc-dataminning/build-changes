@@ -1,46 +1,37 @@
-import com.mojang.logging.LogUtils;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionException;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.function.IntFunction;
 
-public class evi {
-   private static final Logger a = LogUtils.getLogger();
-   private final eva b;
-   @Nullable
-   private CompletableFuture<Boolean> c;
-   private boolean d;
+public enum evi {
+   a(0, "options.narrator.off"),
+   b(1, "options.narrator.all"),
+   c(2, "options.narrator.chat"),
+   d(3, "options.narrator.system");
 
-   public evi(eva $$0) {
-      this.b = $$0;
+   private static final IntFunction<evi> e = atf.a(evi::a, values(), atf.a.b);
+   private final int f;
+   private final vf g;
+
+   private evi(int $$0, String $$1) {
+      this.f = $$0;
+      this.g = vf.c($$1);
    }
 
-   public void a(fct $$0) {
-      if (!this.b.ae() && !this.b.m.w && !this.d && this.a()) {
-         this.b.a(new ffs($$0));
-         this.d = true;
-      }
+   public int a() {
+      return this.f;
    }
 
-   private Boolean a() {
-      if (this.c == null) {
-         this.c = CompletableFuture.supplyAsync(this::b, ac.f());
-      }
-
-      try {
-         return this.c.getNow(false);
-      } catch (CompletionException var2) {
-         a.warn("Failed to retrieve realms subscriptions", var2);
-         this.d = true;
-         return false;
-      }
+   public vf b() {
+      return this.g;
    }
 
-   private boolean b() {
-      try {
-         return eqj.a(this.b).b().a.stream().anyMatch($$0 -> !$$0.j && this.b.b($$0.g));
-      } catch (erw var2) {
-         return false;
-      }
+   public static evi a(int $$0) {
+      return e.apply($$0);
+   }
+
+   public boolean c() {
+      return this == b || this == c;
+   }
+
+   public boolean d() {
+      return this == b || this == d;
    }
 }

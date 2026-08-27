@@ -1,57 +1,65 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
 import java.util.stream.Stream;
-import org.apache.commons.lang3.mutable.MutableBoolean;
 
-public record dyd(ih<dra<?, ?>> e, List<dyg> f) {
+public class dyd extends dym {
+   private final ic c;
+   private final dpw d;
+   private final dpw e;
+   private final int f;
    public static final Codec<dyd> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(dra.b.fieldOf("feature").forGetter($$0x -> $$0x.e), dyg.b.listOf().fieldOf("placement").forGetter($$0x -> $$0x.f)).apply($$0, dyd::new)
+      $$0 -> $$0.group(
+               ic.h.fieldOf("direction_of_search").forGetter($$0x -> $$0x.c),
+               dpw.b.fieldOf("target_condition").forGetter($$0x -> $$0x.d),
+               dpw.b.optionalFieldOf("allowed_search_condition", dpw.e()).forGetter($$0x -> $$0x.e),
+               Codec.intRange(1, 32).fieldOf("max_steps").forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, dyd::new)
    );
-   public static final Codec<ih<dyd>> b = agz.a(ke.aC, a);
-   public static final Codec<il<dyd>> c = iv.a(ke.aC, a);
-   public static final Codec<List<il<dyd>>> d = iv.a(ke.aC, a, true).listOf();
 
-   public boolean a(cud $$0, dkx $$1, aup $$2, hx $$3) {
-      return this.a(new dye($$0, $$1, Optional.empty()), $$2, $$3);
+   private dyd(ic $$0, dpw $$1, dpw $$2, int $$3) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
    }
 
-   public boolean b(cud $$0, dkx $$1, aup $$2, hx $$3) {
-      return this.a(new dye($$0, $$1, Optional.of(this)), $$2, $$3);
+   public static dyd a(ic $$0, dpw $$1, dpw $$2, int $$3) {
+      return new dyd($$0, $$1, $$2, $$3);
    }
 
-   private boolean a(dye $$0, aup $$1, hx $$2) {
-      Stream<hx> $$3 = Stream.of($$2);
-
-      for (dyg $$4 : this.f) {
-         $$3 = $$3.flatMap($$3x -> $$4.a_($$0, $$1, $$3x));
-      }
-
-      dra<?, ?> $$5 = this.e.a();
-      MutableBoolean $$6 = new MutableBoolean();
-      $$3.forEach($$4 -> {
-         if ($$5.a($$0.d(), $$0.f(), $$1, $$4)) {
-            $$6.setTrue();
-         }
-      });
-      return $$6.isTrue();
-   }
-
-   public Stream<dra<?, ?>> a() {
-      return this.e.a().a();
+   public static dyd a(ic $$0, dpw $$1, int $$2) {
+      return a($$0, $$1, dpw.e(), $$2);
    }
 
    @Override
-   public String toString() {
-      return "Placed " + this.e;
+   public Stream<hx> a_(dyk $$0, auu $$1, hx $$2) {
+      hx.a $$3 = $$2.j();
+      cuj $$4 = $$0.d();
+      if (!this.e.test($$4, $$3)) {
+         return Stream.of();
+      } else {
+         for (int $$5 = 0; $$5 < this.f; $$5++) {
+            if (this.d.test($$4, $$3)) {
+               return Stream.of($$3);
+            }
+
+            $$3.c(this.c);
+            if ($$4.d($$3.v())) {
+               return Stream.of();
+            }
+
+            if (!this.e.test($$4, $$3)) {
+               break;
+            }
+         }
+
+         return this.d.test($$4, $$3) ? Stream.of($$3) : Stream.of();
+      }
    }
 
-   public ih<dra<?, ?>> b() {
-      return this.e;
-   }
-
-   public List<dyg> c() {
-      return this.f;
+   @Override
+   public dyn<?> b() {
+      return dyn.j;
    }
 }

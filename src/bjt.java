@@ -1,59 +1,83 @@
-import javax.annotation.concurrent.Immutable;
+import java.util.Set;
+import java.util.function.Predicate;
 
-@Immutable
-public class bjt {
-   private static final float a = -72000.0F;
-   private static final float b = 1440000.0F;
-   private static final float c = 3600000.0F;
-   private final bjs d;
-   private final float e;
+public interface bjt extends bjr {
+   int n_ = 64;
+   int o_ = 8;
 
-   public bjt(bjs $$0, long $$1, long $$2, float $$3) {
-      this.d = $$0;
-      this.e = this.a($$0, $$1, $$2, $$3);
+   int b();
+
+   boolean ai_();
+
+   cmx a(int var1);
+
+   cmx a(int var1, int var2);
+
+   cmx b(int var1);
+
+   void a(int var1, cmx var2);
+
+   default int ak_() {
+      return 64;
    }
 
-   public bjs a() {
-      return this.d;
+   void e();
+
+   boolean a(cfh var1);
+
+   default void d_(cfh $$0) {
    }
 
-   public float b() {
-      return this.e;
+   default void c(cfh $$0) {
    }
 
-   public boolean c() {
-      return this.e >= (float)bjs.d.ordinal();
+   default boolean b(int $$0, cmx $$1) {
+      return true;
    }
 
-   public boolean a(float $$0) {
-      return this.e > $$0;
+   default boolean a(bjt $$0, int $$1, cmx $$2) {
+      return true;
    }
 
-   public float d() {
-      if (this.e < 2.0F) {
-         return 0.0F;
-      } else {
-         return this.e > 4.0F ? 1.0F : (this.e - 2.0F) / 2.0F;
-      }
-   }
+   default int a_(cms $$0) {
+      int $$1 = 0;
 
-   private float a(bjs $$0, long $$1, long $$2, float $$3) {
-      if ($$0 == bjs.a) {
-         return 0.0F;
-      } else {
-         boolean $$4 = $$0 == bjs.d;
-         float $$5 = 0.75F;
-         float $$6 = aui.a(((float)$$1 + -72000.0F) / 1440000.0F, 0.0F, 1.0F) * 0.25F;
-         $$5 += $$6;
-         float $$7 = 0.0F;
-         $$7 += aui.a((float)$$2 / 3600000.0F, 0.0F, 1.0F) * ($$4 ? 1.0F : 0.75F);
-         $$7 += aui.a($$3 * 0.25F, 0.0F, $$6);
-         if ($$0 == bjs.b) {
-            $$7 *= 0.5F;
+      for (int $$2 = 0; $$2 < this.b(); $$2++) {
+         cmx $$3 = this.a($$2);
+         if ($$3.d().equals($$0)) {
+            $$1 += $$3.L();
          }
+      }
 
-         $$5 += $$7;
-         return (float)$$0.a() * $$5;
+      return $$1;
+   }
+
+   default boolean a(Set<cms> $$0) {
+      return this.a_($$1 -> !$$1.b() && $$0.contains($$1.d()));
+   }
+
+   default boolean a_(Predicate<cmx> $$0) {
+      for (int $$1 = 0; $$1 < this.b(); $$1++) {
+         cmx $$2 = this.a($$1);
+         if ($$0.test($$2)) {
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   static boolean a(dgu $$0, cfh $$1) {
+      return a($$0, $$1, 8);
+   }
+
+   static boolean a(dgu $$0, cfh $$1, int $$2) {
+      cto $$3 = $$0.i();
+      hx $$4 = $$0.aB_();
+      if ($$3 == null) {
+         return false;
+      } else {
+         return $$3.c_($$4) != $$0 ? false : $$1.i((double)$$4.u() + 0.5, (double)$$4.v() + 0.5, (double)$$4.w() + 0.5) <= (double)($$2 * $$2);
       }
    }
 }

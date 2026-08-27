@@ -1,91 +1,212 @@
-import com.google.common.collect.ImmutableList;
-import java.util.List;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.mojang.datafixers.DataFixer;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.OptionalDynamic;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.longs.LongLinkedOpenHashSet;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.util.Map;
+import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionException;
+import java.util.function.BooleanSupplier;
+import java.util.function.Function;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public enum dml {
-   a {
-      @Override
-      public void a(amz $$0, dmm $$1, List<cah> $$2, int $$3, hx $$4) {
-         hx $$5 = new hx(0, 128, 0);
+public class dml<R> implements AutoCloseable {
+   private static final Logger a = LogUtils.getLogger();
+   private static final String b = "Sections";
+   private final dmg d;
+   private final Long2ObjectMap<Optional<R>> e = new Long2ObjectOpenHashMap();
+   private final LongLinkedOpenHashSet f = new LongLinkedOpenHashSet();
+   private final Function<Runnable, Codec<R>> g;
+   private final Function<Runnable, R> h;
+   private final DataFixer i;
+   private final avv j;
+   private final iu k;
+   protected final ctq c;
 
-         for (cah $$6 : $$2) {
-            $$6.a($$5);
-         }
+   public dml(Path $$0, Function<Runnable, Codec<R>> $$1, Function<Runnable, R> $$2, DataFixer $$3, avv $$4, boolean $$5, iu $$6, ctq $$7) {
+      this.g = $$1;
+      this.h = $$2;
+      this.i = $$3;
+      this.j = $$4;
+      this.k = $$6;
+      this.c = $$7;
+      this.d = new dmg($$0, $$5, $$0.getFileName().toString());
+   }
 
-         $$1.a(b);
+   protected void a(BooleanSupplier $$0) {
+      while (this.a() && $$0.getAsBoolean()) {
+         csv $$1 = iz.a(this.f.firstLong()).r();
+         this.d($$1);
       }
-   },
-   b {
-      @Override
-      public void a(amz $$0, dmm $$1, List<cah> $$2, int $$3, hx $$4) {
-         if ($$3 < 100) {
-            if ($$3 == 0 || $$3 == 50 || $$3 == 51 || $$3 == 52 || $$3 >= 95) {
-               $$0.c(3001, new hx(0, 128, 0), 0);
-            }
+   }
+
+   public boolean a() {
+      return !this.f.isEmpty();
+   }
+
+   @Nullable
+   protected Optional<R> c(long $$0) {
+      return (Optional<R>)this.e.get($$0);
+   }
+
+   protected Optional<R> d(long $$0) {
+      if (this.e($$0)) {
+         return Optional.empty();
+      } else {
+         Optional<R> $$1 = this.c($$0);
+         if ($$1 != null) {
+            return $$1;
          } else {
-            $$1.a(c);
+            this.b(iz.a($$0).r());
+            $$1 = this.c($$0);
+            if ($$1 == null) {
+               throw (IllegalStateException)ac.b(new IllegalStateException());
+            } else {
+               return $$1;
+            }
          }
       }
-   },
-   c {
-      @Override
-      public void a(amz $$0, dmm $$1, List<cah> $$2, int $$3, hx $$4) {
-         int $$5 = 40;
-         boolean $$6 = $$3 % 40 == 0;
-         boolean $$7 = $$3 % 40 == 39;
-         if ($$6 || $$7) {
-            List<dsx.a> $$8 = dsx.a($$0);
-            int $$9 = $$3 / 40;
-            if ($$9 < $$8.size()) {
-               dsx.a $$10 = $$8.get($$9);
-               if ($$6) {
-                  for (cah $$11 : $$2) {
-                     $$11.a(new hx($$10.a(), $$10.d() + 1, $$10.b()));
-                  }
-               } else {
-                  int $$12 = 10;
+   }
 
-                  for (hx $$13 : hx.a(new hx($$10.a() - 10, $$10.d() - 10, $$10.b() - 10), new hx($$10.a() + 10, $$10.d() + 10, $$10.b() + 10))) {
-                     $$0.a($$13, false);
-                  }
+   protected boolean e(long $$0) {
+      int $$1 = iz.c(iz.c($$0));
+      return this.c.d($$1);
+   }
 
-                  $$0.a(null, (double)((float)$$10.a() + 0.5F), (double)$$10.d(), (double)((float)$$10.b() + 0.5F), 5.0F, cti.a.b);
-                  dul $$14 = new dul(true, ImmutableList.of($$10), new hx(0, 128, 0));
-                  drn.J.a($$14, $$0, $$0.l().g(), aup.a(), new hx($$10.a(), 45, $$10.b()));
+   protected R f(long $$0) {
+      if (this.e($$0)) {
+         throw (IllegalArgumentException)ac.b(new IllegalArgumentException("sectionPos out of bounds"));
+      } else {
+         Optional<R> $$1 = this.d($$0);
+         if ($$1.isPresent()) {
+            return $$1.get();
+         } else {
+            R $$2 = this.h.apply(() -> this.a($$0));
+            this.e.put($$0, Optional.of($$2));
+            return $$2;
+         }
+      }
+   }
+
+   private void b(csv $$0) {
+      Optional<sn> $$1 = this.c($$0).join();
+      ahe<tk> $$2 = ahe.a(tb.a, this.k);
+      this.a($$0, $$2, $$1.orElse(null));
+   }
+
+   private CompletableFuture<Optional<sn>> c(csv $$0) {
+      return this.d.a($$0).exceptionally($$1 -> {
+         if ($$1 instanceof IOException $$2) {
+            a.error("Error reading chunk {} data from disk", $$0, $$2);
+            return Optional.empty();
+         } else {
+            throw new CompletionException($$1);
+         }
+      });
+   }
+
+   private <T> void a(csv $$0, DynamicOps<T> $$1, @Nullable T $$2) {
+      if ($$2 == null) {
+         for (int $$3 = this.c.an(); $$3 < this.c.ao(); $$3++) {
+            this.e.put(a($$0, $$3), Optional.empty());
+         }
+      } else {
+         Dynamic<T> $$4 = new Dynamic($$1, $$2);
+         int $$5 = a($$4);
+         int $$6 = aa.b().d().c();
+         boolean $$7 = $$5 != $$6;
+         Dynamic<T> $$8 = this.j.a(this.i, $$4, $$5, $$6);
+         OptionalDynamic<T> $$9 = $$8.get("Sections");
+
+         for (int $$10 = this.c.an(); $$10 < this.c.ao(); $$10++) {
+            long $$11 = a($$0, $$10);
+            Optional<R> $$12 = $$9.get(Integer.toString($$10)).result().flatMap($$1x -> this.g.apply(() -> this.a($$11)).parse($$1x).resultOrPartial(a::error));
+            this.e.put($$11, $$12);
+            $$12.ifPresent($$2x -> {
+               this.b($$11);
+               if ($$7) {
+                  this.a($$11);
                }
-            } else if ($$6) {
-               $$1.a(d);
+            });
+         }
+      }
+   }
+
+   private void d(csv $$0) {
+      ahe<tk> $$1 = ahe.a(tb.a, this.k);
+      Dynamic<tk> $$2 = this.a($$0, $$1);
+      tk $$3 = (tk)$$2.getValue();
+      if ($$3 instanceof sn) {
+         this.d.a($$0, (sn)$$3);
+      } else {
+         a.error("Expected compound tag, got {}", $$3);
+      }
+   }
+
+   private <T> Dynamic<T> a(csv $$0, DynamicOps<T> $$1) {
+      Map<T, T> $$2 = Maps.newHashMap();
+
+      for (int $$3 = this.c.an(); $$3 < this.c.ao(); $$3++) {
+         long $$4 = a($$0, $$3);
+         this.f.remove($$4);
+         Optional<R> $$5 = (Optional<R>)this.e.get($$4);
+         if ($$5 != null && !$$5.isEmpty()) {
+            DataResult<T> $$6 = this.g.apply(() -> this.a($$4)).encodeStart($$1, $$5.get());
+            String $$7 = Integer.toString($$3);
+            $$6.resultOrPartial(a::error).ifPresent($$3x -> $$2.put((T)$$1.createString($$7), (T)$$3x));
+         }
+      }
+
+      return new Dynamic(
+         $$1, $$1.createMap(ImmutableMap.of($$1.createString("Sections"), $$1.createMap($$2), $$1.createString("DataVersion"), $$1.createInt(aa.b().d().c())))
+      );
+   }
+
+   private static long a(csv $$0, int $$1) {
+      return iz.b($$0.e, $$1, $$0.f);
+   }
+
+   protected void b(long $$0) {
+   }
+
+   protected void a(long $$0) {
+      Optional<R> $$1 = (Optional<R>)this.e.get($$0);
+      if ($$1 != null && !$$1.isEmpty()) {
+         this.f.add($$0);
+      } else {
+         a.warn("No data for position: {}", iz.a($$0));
+      }
+   }
+
+   private static int a(Dynamic<?> $$0) {
+      return $$0.get("DataVersion").asInt(1945);
+   }
+
+   public void a(csv $$0) {
+      if (this.a()) {
+         for (int $$1 = this.c.an(); $$1 < this.c.ao(); $$1++) {
+            long $$2 = a($$0, $$1);
+            if (this.f.contains($$2)) {
+               this.d($$0);
+               return;
             }
          }
       }
-   },
-   d {
-      @Override
-      public void a(amz $$0, dmm $$1, List<cah> $$2, int $$3, hx $$4) {
-         if ($$3 >= 100) {
-            $$1.a(e);
-            $$1.h();
+   }
 
-            for (cah $$5 : $$2) {
-               $$5.a(null);
-               $$0.a($$5, $$5.dr(), $$5.dt(), $$5.dx(), 6.0F, cti.a.a);
-               $$5.am();
-            }
-         } else if ($$3 >= 80) {
-            $$0.c(3001, new hx(0, 128, 0), 0);
-         } else if ($$3 == 0) {
-            for (cah $$6 : $$2) {
-               $$6.a(new hx(0, 128, 0));
-            }
-         } else if ($$3 < 5) {
-            $$0.c(3001, new hx(0, 128, 0), 0);
-         }
-      }
-   },
-   e {
-      @Override
-      public void a(amz $$0, dmm $$1, List<cah> $$2, int $$3, hx $$4) {
-      }
-   };
-
-   public abstract void a(amz var1, dmm var2, List<cah> var3, int var4, hx var5);
+   @Override
+   public void close() throws IOException {
+      this.d.close();
+   }
 }

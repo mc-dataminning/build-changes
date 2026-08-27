@@ -1,29 +1,31 @@
-import net.minecraft.server.MinecraftServer;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Set;
 
-public class ekv implements ekx<MinecraftServer> {
-   final ahd a;
+public record ekv(String b) implements ekx {
+   public static final Codec<ekv> a = RecordCodecBuilder.create($$0 -> $$0.group(Codec.STRING.fieldOf("name").forGetter(ekv::c)).apply($$0, ekv::new));
 
-   public ekv(ahd $$0) {
-      this.a = $$0;
+   public static ekx a(String $$0) {
+      return new ekv($$0);
    }
 
-   public void a(MinecraftServer $$0, ekz<MinecraftServer> $$1, long $$2) {
-      ahr $$3 = $$0.aC();
-      $$3.a(this.a).ifPresent($$1x -> $$3.a($$1x, $$3.c()));
+   @Override
+   public ekw a() {
+      return eky.b;
    }
 
-   public static class a extends ekx.a<MinecraftServer, ekv> {
-      public a() {
-         super(new ahd("function"), ekv.class);
-      }
+   @Override
+   public emv a(egv $$0) {
+      return emv.d(this.b);
+   }
 
-      public void a(sl $$0, ekv $$1) {
-         $$0.a("Name", $$1.a.toString());
-      }
+   @Override
+   public Set<ejd<?>> b() {
+      return ImmutableSet.of();
+   }
 
-      public ekv a(sl $$0) {
-         ahd $$1 = new ahd($$0.l("Name"));
-         return new ekv($$1);
-      }
+   public String c() {
+      return this.b;
    }
 }

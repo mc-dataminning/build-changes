@@ -1,64 +1,104 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
+import java.util.Map;
 import java.util.Map.Entry;
-import org.joml.Vector3f;
+import java.util.concurrent.CompletableFuture;
+import javax.annotation.Nullable;
 
-public class fwo implements fwk.a {
-   private final eva a;
-   private static final int b = 2;
-   private static final float c = 0.09375F;
+public class fwo implements fwq.a {
+   final evg a;
+   private double b = Double.MIN_VALUE;
+   private final int c = 12;
+   @Nullable
+   private fwo.a d;
 
-   public fwo(eva $$0) {
+   public fwo(evg $$0) {
       this.a = $$0;
    }
 
    @Override
-   public void a(ept $$0, fsz $$1, double $$2, double $$3, double $$4) {
-      ctj $$5 = this.a.r;
-      epx $$6 = $$1.getBuffer(fth.y());
-      hx $$7 = hx.a($$2, 0.0, $$4);
+   public void a(epz $$0, ftf $$1, double $$2, double $$3, double $$4) {
+      double $$5 = (double)ac.c();
+      if ($$5 - this.b > 3.0E9) {
+         this.b = $$5;
+         gip $$6 = this.a.T();
+         if ($$6 != null) {
+            this.d = new fwo.a($$6, $$2, $$4);
+         } else {
+            this.d = null;
+         }
+      }
 
-      for (int $$8 = -2; $$8 <= 2; $$8++) {
-         for (int $$9 = -2; $$9 <= 2; $$9++) {
-            dkw $$10 = $$5.y($$7.b($$8 * 16, 0, $$9 * 16));
+      if (this.d != null) {
+         Map<csv, String> $$7 = this.d.c.getNow(null);
+         double $$8 = this.a.j.m().b().d * 0.85;
 
-            for (Entry<doj.a, doj> $$11 : $$10.e()) {
-               doj.a $$12 = $$11.getKey();
-               csp $$13 = $$10.f();
-               Vector3f $$14 = this.a($$12);
+         for (Entry<csv, String> $$9 : this.d.b.entrySet()) {
+            csv $$10 = $$9.getKey();
+            String $$11 = $$9.getValue();
+            if ($$7 != null) {
+               $$11 = $$11 + $$7.get($$10);
+            }
 
-               for (int $$15 = 0; $$15 < 16; $$15++) {
-                  for (int $$16 = 0; $$16 < 16; $$16++) {
-                     int $$17 = iz.a($$13.e, $$15);
-                     int $$18 = iz.a($$13.f, $$16);
-                     float $$19 = (float)((double)((float)$$5.a($$12, $$17, $$18) + (float)$$12.ordinal() * 0.09375F) - $$3);
-                     fsx.b(
-                        $$0,
-                        $$6,
-                        (double)((float)$$17 + 0.25F) - $$2,
-                        (double)$$19,
-                        (double)((float)$$18 + 0.25F) - $$4,
-                        (double)((float)$$17 + 0.75F) - $$2,
-                        (double)($$19 + 0.09375F),
-                        (double)((float)$$18 + 0.75F) - $$4,
-                        $$14.x(),
-                        $$14.y(),
-                        $$14.z(),
-                        1.0F
-                     );
-                  }
-               }
+            String[] $$12 = $$11.split("\n");
+            int $$13 = 0;
+
+            for (String $$14 : $$12) {
+               fwq.a($$0, $$1, $$14, (double)iz.a($$10.e, 8), $$8 + (double)$$13, (double)iz.a($$10.f, 8), -1, 0.15F, true, 0.0F, true);
+               $$13 -= 2;
             }
          }
       }
    }
 
-   private Vector3f a(doj.a $$0) {
-      return switch ($$0) {
-         case a -> new Vector3f(1.0F, 1.0F, 0.0F);
-         case c -> new Vector3f(1.0F, 0.0F, 1.0F);
-         case b -> new Vector3f(0.0F, 0.7F, 0.0F);
-         case d -> new Vector3f(0.0F, 0.0F, 0.5F);
-         case e -> new Vector3f(0.0F, 0.3F, 0.3F);
-         case f -> new Vector3f(0.0F, 0.5F, 0.5F);
-      };
+   final class a {
+      final Map<csv, String> b;
+      final CompletableFuture<Map<csv, String>> c;
+
+      a(gip $$0, double $$1, double $$2) {
+         fnq $$3 = fwo.this.a.r;
+         ahf<cto> $$4 = $$3.ae();
+         int $$5 = iz.a($$1);
+         int $$6 = iz.a($$2);
+         Builder<csv, String> $$7 = ImmutableMap.builder();
+         fnm $$8 = $$3.i();
+
+         for (int $$9 = $$5 - 12; $$9 <= $$5 + 12; $$9++) {
+            for (int $$10 = $$6 - 12; $$10 <= $$6 + 12; $$10++) {
+               csv $$11 = new csv($$9, $$10);
+               String $$12 = "";
+               dln $$13 = $$8.a($$9, $$10, false);
+               $$12 = $$12 + "Client: ";
+               if ($$13 == null) {
+                  $$12 = $$12 + "0n/a\n";
+               } else {
+                  $$12 = $$12 + ($$13.C() ? " E" : "");
+                  $$12 = $$12 + "\n";
+               }
+
+               $$7.put($$11, $$12);
+            }
+         }
+
+         this.b = $$7.build();
+         this.c = $$0.a(() -> {
+            and $$4x = $$0.a($$4);
+            if ($$4x == null) {
+               return ImmutableMap.of();
+            } else {
+               Builder<csv, String> $$5x = ImmutableMap.builder();
+               anb $$6x = $$4x.l();
+
+               for (int $$7x = $$5 - 12; $$7x <= $$5 + 12; $$7x++) {
+                  for (int $$8x = $$6 - 12; $$8x <= $$6 + 12; $$8x++) {
+                     csv $$9x = new csv($$7x, $$8x);
+                     $$5x.put($$9x, "Server: " + $$6x.a($$9x));
+                  }
+               }
+
+               return $$5x.build();
+            }
+         });
+      }
    }
 }

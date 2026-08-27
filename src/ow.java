@@ -2,170 +2,137 @@ import com.google.common.collect.ImmutableList;
 import com.mojang.datafixers.util.Pair;
 
 public class ow {
-   public static void a(pc<eai> $$0) {
-      ii<ecx> $$1 = $$0.a(ke.aE);
-      ih<ecx> $$2 = $$1.b(pk.v);
-      ih<ecx> $$3 = $$1.b(pk.u);
-      ii<eai> $$4 = $$0.a(ke.aG);
-      ih<eai> $$5 = $$4.b(pj.a);
-      pj.a(
+   public static void a(pe<eao> $$0) {
+      ii<dyj> $$1 = $$0.a(ke.aC);
+      ih<dyj> $$2 = $$1.b(qt.s);
+      ii<edd> $$3 = $$0.a(ke.aE);
+      ih<edd> $$4 = $$3.b(pm.H);
+      ih<edd> $$5 = $$3.b(pm.I);
+      ii<eao> $$6 = $$0.a(ke.aG);
+      ih<eao> $$7 = $$6.b(pl.a);
+      pl.a(
          $$0,
-         "bastion/hoglin_stable/starting_pieces",
-         new eai(
-            $$5,
+         "ancient_city/structures",
+         new eao(
+            $$7,
             ImmutableList.of(
-               Pair.of(eag.b("bastion/hoglin_stable/starting_pieces/starting_stairs_0", $$2), 1),
-               Pair.of(eag.b("bastion/hoglin_stable/starting_pieces/starting_stairs_1", $$2), 1),
-               Pair.of(eag.b("bastion/hoglin_stable/starting_pieces/starting_stairs_2", $$2), 1),
-               Pair.of(eag.b("bastion/hoglin_stable/starting_pieces/starting_stairs_3", $$2), 1),
-               Pair.of(eag.b("bastion/hoglin_stable/starting_pieces/starting_stairs_4", $$2), 1)
-            ),
-            eai.a.b
-         )
-      );
-      pj.a(
-         $$0,
-         "bastion/hoglin_stable/mirrored_starting_pieces",
-         new eai(
-            $$5,
-            ImmutableList.of(
-               Pair.of(eag.b("bastion/hoglin_stable/starting_pieces/stairs_0_mirrored", $$2), 1),
-               Pair.of(eag.b("bastion/hoglin_stable/starting_pieces/stairs_1_mirrored", $$2), 1),
-               Pair.of(eag.b("bastion/hoglin_stable/starting_pieces/stairs_2_mirrored", $$2), 1),
-               Pair.of(eag.b("bastion/hoglin_stable/starting_pieces/stairs_3_mirrored", $$2), 1),
-               Pair.of(eag.b("bastion/hoglin_stable/starting_pieces/stairs_4_mirrored", $$2), 1)
-            ),
-            eai.a.b
-         )
-      );
-      pj.a($$0, "bastion/hoglin_stable/wall_bases", new eai($$5, ImmutableList.of(Pair.of(eag.b("bastion/hoglin_stable/walls/wall_base", $$2), 1)), eai.a.b));
-      pj.a(
-         $$0,
-         "bastion/hoglin_stable/walls",
-         new eai(
-            $$5,
-            ImmutableList.of(
-               Pair.of(eag.b("bastion/hoglin_stable/walls/side_wall_0", $$3), 1), Pair.of(eag.b("bastion/hoglin_stable/walls/side_wall_1", $$3), 1)
-            ),
-            eai.a.b
-         )
-      );
-      pj.a(
-         $$0,
-         "bastion/hoglin_stable/stairs",
-         new eai(
-            $$5,
-            ImmutableList.of(
-               Pair.of(eag.b("bastion/hoglin_stable/stairs/stairs_1_0", $$2), 1),
-               Pair.of(eag.b("bastion/hoglin_stable/stairs/stairs_1_1", $$2), 1),
-               Pair.of(eag.b("bastion/hoglin_stable/stairs/stairs_1_2", $$2), 1),
-               Pair.of(eag.b("bastion/hoglin_stable/stairs/stairs_1_3", $$2), 1),
-               Pair.of(eag.b("bastion/hoglin_stable/stairs/stairs_1_4", $$2), 1),
-               Pair.of(eag.b("bastion/hoglin_stable/stairs/stairs_2_0", $$2), 1),
-               Pair.of(eag.b("bastion/hoglin_stable/stairs/stairs_2_1", $$2), 1),
-               Pair.of(eag.b("bastion/hoglin_stable/stairs/stairs_2_2", $$2), 1),
-               Pair.of(eag.b("bastion/hoglin_stable/stairs/stairs_2_3", $$2), 1),
-               Pair.of(eag.b("bastion/hoglin_stable/stairs/stairs_2_4", $$2), 1),
-               Pair.of(eag.b("bastion/hoglin_stable/stairs/stairs_3_0", $$2), 1),
-               Pair.of(eag.b("bastion/hoglin_stable/stairs/stairs_3_1", $$2), 1),
+               Pair.of(eam.g(), 7),
+               Pair.of(eam.b("ancient_city/structures/barracks", $$4), 4),
+               Pair.of(eam.b("ancient_city/structures/chamber_1", $$4), 4),
+               Pair.of(eam.b("ancient_city/structures/chamber_2", $$4), 4),
+               Pair.of(eam.b("ancient_city/structures/chamber_3", $$4), 4),
+               Pair.of(eam.b("ancient_city/structures/sauna_1", $$4), 4),
+               Pair.of(eam.b("ancient_city/structures/small_statue", $$4), 4),
+               Pair.of(eam.b("ancient_city/structures/large_ruin_1", $$4), 1),
+               Pair.of(eam.b("ancient_city/structures/tall_ruin_1", $$4), 1),
+               Pair.of(eam.b("ancient_city/structures/tall_ruin_2", $$4), 1),
+               Pair.of(eam.b("ancient_city/structures/tall_ruin_3", $$4), 2),
+               Pair.of(eam.b("ancient_city/structures/tall_ruin_4", $$4), 2),
                new Pair[]{
-                  Pair.of(eag.b("bastion/hoglin_stable/stairs/stairs_3_2", $$2), 1),
-                  Pair.of(eag.b("bastion/hoglin_stable/stairs/stairs_3_3", $$2), 1),
-                  Pair.of(eag.b("bastion/hoglin_stable/stairs/stairs_3_4", $$2), 1)
+                  Pair.of(
+                     eam.b(
+                        ImmutableList.of(
+                           eam.b("ancient_city/structures/camp_1", $$4),
+                           eam.b("ancient_city/structures/camp_2", $$4),
+                           eam.b("ancient_city/structures/camp_3", $$4)
+                        )
+                     ),
+                     1
+                  ),
+                  Pair.of(eam.b("ancient_city/structures/medium_ruin_1", $$4), 1),
+                  Pair.of(eam.b("ancient_city/structures/medium_ruin_2", $$4), 1),
+                  Pair.of(eam.b("ancient_city/structures/small_ruin_1", $$4), 1),
+                  Pair.of(eam.b("ancient_city/structures/small_ruin_2", $$4), 1),
+                  Pair.of(eam.b("ancient_city/structures/large_pillar_1", $$4), 1),
+                  Pair.of(eam.b("ancient_city/structures/medium_pillar_1", $$4), 1),
+                  Pair.of(eam.b(ImmutableList.of(eam.b("ancient_city/structures/ice_box_1"))), 1)
                }
             ),
-            eai.a.b
+            eao.a.b
          )
       );
-      pj.a(
+      pl.a($$0, "ancient_city/sculk", new eao($$7, ImmutableList.of(Pair.of(eam.a($$2), 6), Pair.of(eam.g(), 1)), eao.a.b));
+      pl.a(
          $$0,
-         "bastion/hoglin_stable/small_stables/inner",
-         new eai(
-            $$5,
+         "ancient_city/walls",
+         new eao(
+            $$7,
             ImmutableList.of(
-               Pair.of(eag.b("bastion/hoglin_stable/small_stables/inner_0", $$2), 1),
-               Pair.of(eag.b("bastion/hoglin_stable/small_stables/inner_1", $$2), 1),
-               Pair.of(eag.b("bastion/hoglin_stable/small_stables/inner_2", $$2), 1),
-               Pair.of(eag.b("bastion/hoglin_stable/small_stables/inner_3", $$2), 1)
+               Pair.of(eam.b("ancient_city/walls/intact_corner_wall_1", $$5), 1),
+               Pair.of(eam.b("ancient_city/walls/intact_intersection_wall_1", $$5), 1),
+               Pair.of(eam.b("ancient_city/walls/intact_lshape_wall_1", $$5), 1),
+               Pair.of(eam.b("ancient_city/walls/intact_horizontal_wall_1", $$5), 1),
+               Pair.of(eam.b("ancient_city/walls/intact_horizontal_wall_2", $$5), 1),
+               Pair.of(eam.b("ancient_city/walls/intact_horizontal_wall_stairs_1", $$5), 1),
+               Pair.of(eam.b("ancient_city/walls/intact_horizontal_wall_stairs_2", $$5), 1),
+               Pair.of(eam.b("ancient_city/walls/intact_horizontal_wall_stairs_3", $$5), 1),
+               Pair.of(eam.b("ancient_city/walls/intact_horizontal_wall_stairs_4", $$5), 4),
+               Pair.of(eam.b("ancient_city/walls/intact_horizontal_wall_passage_1", $$5), 3),
+               Pair.of(eam.b("ancient_city/walls/ruined_corner_wall_1", $$5), 1),
+               Pair.of(eam.b("ancient_city/walls/ruined_corner_wall_2", $$5), 1),
+               new Pair[]{
+                  Pair.of(eam.b("ancient_city/walls/ruined_horizontal_wall_stairs_1", $$5), 2),
+                  Pair.of(eam.b("ancient_city/walls/ruined_horizontal_wall_stairs_2", $$5), 2),
+                  Pair.of(eam.b("ancient_city/walls/ruined_horizontal_wall_stairs_3", $$5), 3),
+                  Pair.of(eam.b("ancient_city/walls/ruined_horizontal_wall_stairs_4", $$5), 3)
+               }
             ),
-            eai.a.b
+            eao.a.b
          )
       );
-      pj.a(
+      pl.a(
          $$0,
-         "bastion/hoglin_stable/small_stables/outer",
-         new eai(
-            $$5,
+         "ancient_city/walls/no_corners",
+         new eao(
+            $$7,
             ImmutableList.of(
-               Pair.of(eag.b("bastion/hoglin_stable/small_stables/outer_0", $$2), 1),
-               Pair.of(eag.b("bastion/hoglin_stable/small_stables/outer_1", $$2), 1),
-               Pair.of(eag.b("bastion/hoglin_stable/small_stables/outer_2", $$2), 1),
-               Pair.of(eag.b("bastion/hoglin_stable/small_stables/outer_3", $$2), 1)
+               Pair.of(eam.b("ancient_city/walls/intact_horizontal_wall_1", $$5), 1),
+               Pair.of(eam.b("ancient_city/walls/intact_horizontal_wall_2", $$5), 1),
+               Pair.of(eam.b("ancient_city/walls/intact_horizontal_wall_stairs_1", $$5), 1),
+               Pair.of(eam.b("ancient_city/walls/intact_horizontal_wall_stairs_2", $$5), 1),
+               Pair.of(eam.b("ancient_city/walls/intact_horizontal_wall_stairs_3", $$5), 1),
+               Pair.of(eam.b("ancient_city/walls/intact_horizontal_wall_stairs_4", $$5), 1),
+               Pair.of(eam.b("ancient_city/walls/intact_horizontal_wall_stairs_5", $$5), 1),
+               Pair.of(eam.b("ancient_city/walls/intact_horizontal_wall_bridge", $$5), 1)
             ),
-            eai.a.b
+            eao.a.b
          )
       );
-      pj.a(
+      pl.a(
          $$0,
-         "bastion/hoglin_stable/large_stables/inner",
-         new eai(
-            $$5,
+         "ancient_city/city_center/walls",
+         new eao(
+            $$7,
             ImmutableList.of(
-               Pair.of(eag.b("bastion/hoglin_stable/large_stables/inner_0", $$2), 1),
-               Pair.of(eag.b("bastion/hoglin_stable/large_stables/inner_1", $$2), 1),
-               Pair.of(eag.b("bastion/hoglin_stable/large_stables/inner_2", $$2), 1),
-               Pair.of(eag.b("bastion/hoglin_stable/large_stables/inner_3", $$2), 1),
-               Pair.of(eag.b("bastion/hoglin_stable/large_stables/inner_4", $$2), 1)
+               Pair.of(eam.b("ancient_city/city_center/walls/bottom_1", $$4), 1),
+               Pair.of(eam.b("ancient_city/city_center/walls/bottom_2", $$4), 1),
+               Pair.of(eam.b("ancient_city/city_center/walls/bottom_left_corner", $$4), 1),
+               Pair.of(eam.b("ancient_city/city_center/walls/bottom_right_corner_1", $$4), 1),
+               Pair.of(eam.b("ancient_city/city_center/walls/bottom_right_corner_2", $$4), 1),
+               Pair.of(eam.b("ancient_city/city_center/walls/left", $$4), 1),
+               Pair.of(eam.b("ancient_city/city_center/walls/right", $$4), 1),
+               Pair.of(eam.b("ancient_city/city_center/walls/top", $$4), 1),
+               Pair.of(eam.b("ancient_city/city_center/walls/top_right_corner", $$4), 1),
+               Pair.of(eam.b("ancient_city/city_center/walls/top_left_corner", $$4), 1)
             ),
-            eai.a.b
+            eao.a.b
          )
       );
-      pj.a(
+      pl.a(
          $$0,
-         "bastion/hoglin_stable/large_stables/outer",
-         new eai(
-            $$5,
+         "ancient_city/city/entrance",
+         new eao(
+            $$7,
             ImmutableList.of(
-               Pair.of(eag.b("bastion/hoglin_stable/large_stables/outer_0", $$2), 1),
-               Pair.of(eag.b("bastion/hoglin_stable/large_stables/outer_1", $$2), 1),
-               Pair.of(eag.b("bastion/hoglin_stable/large_stables/outer_2", $$2), 1),
-               Pair.of(eag.b("bastion/hoglin_stable/large_stables/outer_3", $$2), 1),
-               Pair.of(eag.b("bastion/hoglin_stable/large_stables/outer_4", $$2), 1)
+               Pair.of(eam.b("ancient_city/city/entrance/entrance_connector", $$4), 1),
+               Pair.of(eam.b("ancient_city/city/entrance/entrance_path_1", $$4), 1),
+               Pair.of(eam.b("ancient_city/city/entrance/entrance_path_2", $$4), 1),
+               Pair.of(eam.b("ancient_city/city/entrance/entrance_path_3", $$4), 1),
+               Pair.of(eam.b("ancient_city/city/entrance/entrance_path_4", $$4), 1),
+               Pair.of(eam.b("ancient_city/city/entrance/entrance_path_5", $$4), 1)
             ),
-            eai.a.b
+            eao.a.b
          )
-      );
-      pj.a(
-         $$0,
-         "bastion/hoglin_stable/posts",
-         new eai(
-            $$5,
-            ImmutableList.of(Pair.of(eag.b("bastion/hoglin_stable/posts/stair_post", $$2), 1), Pair.of(eag.b("bastion/hoglin_stable/posts/end_post", $$2), 1)),
-            eai.a.b
-         )
-      );
-      pj.a(
-         $$0,
-         "bastion/hoglin_stable/ramparts",
-         new eai(
-            $$5,
-            ImmutableList.of(
-               Pair.of(eag.b("bastion/hoglin_stable/ramparts/ramparts_1", $$2), 1),
-               Pair.of(eag.b("bastion/hoglin_stable/ramparts/ramparts_2", $$2), 1),
-               Pair.of(eag.b("bastion/hoglin_stable/ramparts/ramparts_3", $$2), 1)
-            ),
-            eai.a.b
-         )
-      );
-      pj.a(
-         $$0,
-         "bastion/hoglin_stable/rampart_plates",
-         new eai($$5, ImmutableList.of(Pair.of(eag.b("bastion/hoglin_stable/rampart_plates/rampart_plate_1", $$2), 1)), eai.a.b)
-      );
-      pj.a(
-         $$0,
-         "bastion/hoglin_stable/connectors",
-         new eai($$5, ImmutableList.of(Pair.of(eag.b("bastion/hoglin_stable/connectors/end_post_connector", $$2), 1)), eai.a.b)
       );
    }
 }

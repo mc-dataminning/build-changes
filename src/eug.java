@@ -1,52 +1,56 @@
 import com.mojang.logging.LogUtils;
 import org.slf4j.Logger;
 
-public class eug extends eua {
+public abstract class eug implements Runnable {
+   protected static final int a = 25;
    private static final Logger b = LogUtils.getLogger();
-   private static final vd c = vd.c("mco.minigame.world.starting.screen.title");
-   private final long d;
-   private final err e;
-   private final esj f;
+   private boolean c = false;
 
-   public eug(long $$0, err $$1, esj $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-   }
-
-   @Override
-   public void run() {
-      eqj $$0 = eqj.a();
-
-      for (int $$1 = 0; $$1 < 25; $$1++) {
-         try {
-            if (this.d()) {
-               return;
-            }
-
-            if ($$0.c(this.d, this.e.a)) {
-               a(this.f);
-               break;
-            }
-         } catch (erx var4) {
-            if (this.d()) {
-               return;
-            }
-
-            a((long)var4.c);
-         } catch (Exception var5) {
-            if (this.d()) {
-               return;
-            }
-
-            b.error("Couldn't start mini game!");
-            this.a(var5);
-         }
+   protected static void a(long $$0) {
+      try {
+         Thread.sleep($$0 * 1000L);
+      } catch (InterruptedException var3) {
+         Thread.currentThread().interrupt();
+         b.error("", var3);
       }
    }
 
-   @Override
-   public vd a() {
-      return c;
+   public static void a(fcz $$0) {
+      evg $$1 = evg.O();
+      $$1.execute(() -> $$1.a($$0));
+   }
+
+   protected void a(vf $$0) {
+      this.b();
+      evg $$1 = evg.O();
+      $$1.execute(() -> $$1.a(new est($$0, new eqk(new fde()))));
+   }
+
+   protected void a(Exception $$0) {
+      if ($$0 instanceof esc $$1) {
+         this.a($$1.a.b());
+      } else {
+         this.a(vf.b($$0.getMessage()));
+      }
+   }
+
+   protected void a(esc $$0) {
+      this.a($$0.a.b());
+   }
+
+   public abstract vf a();
+
+   public boolean d() {
+      return this.c;
+   }
+
+   public void c() {
+   }
+
+   public void e() {
+   }
+
+   public void b() {
+      this.c = true;
    }
 }

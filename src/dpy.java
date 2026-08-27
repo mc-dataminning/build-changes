@@ -1,20 +1,16 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.function.Function;
 
-class dpy implements dpq {
-   public static final Codec<dpy> a = RecordCodecBuilder.create($$0 -> $$0.group(dpq.b.fieldOf("predicate").forGetter($$0x -> $$0x.e)).apply($$0, dpy::new));
-   private final dpq e;
+abstract class dpy implements dpw {
+   protected final List<dpw> e;
 
-   public dpy(dpq $$0) {
+   protected dpy(List<dpw> $$0) {
       this.e = $$0;
    }
 
-   public boolean a(cud $$0, hx $$1) {
-      return !this.e.test($$0, $$1);
-   }
-
-   @Override
-   public dpr<?> a() {
-      return dpr.k;
+   public static <T extends dpy> Codec<T> a(Function<List<dpw>, T> $$0) {
+      return RecordCodecBuilder.create($$1 -> $$1.group(dpw.b.listOf().fieldOf("predicates").forGetter($$0xx -> $$0xx.e)).apply($$1, $$0));
    }
 }

@@ -1,193 +1,99 @@
-import java.util.List;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
 
-public abstract class exe<E extends exe.a<E>> extends ewt<E> {
-   public exe(eva $$0, int $$1, int $$2, int $$3, int $$4) {
+public class exe extends ewv {
+   public static final int f = 120;
+   public static final int m = 150;
+   public static final int n = 20;
+   public static final int o = 8;
+   protected static final exe.b p = $$0 -> $$0.get();
+   protected final exe.c q;
+   protected final exe.b r;
+
+   public static exe.a a(vf $$0, exe.c $$1) {
+      return new exe.a($$0, $$1);
+   }
+
+   protected exe(int $$0, int $$1, int $$2, int $$3, vf $$4, exe.c $$5, exe.b $$6) {
       super($$0, $$1, $$2, $$3, $$4);
-   }
-
-   @Nullable
-   @Override
-   public ewj a(fax $$0) {
-      if (this.n() == 0) {
-         return null;
-      } else if (!($$0 instanceof fax.a $$1)) {
-         return super.a($$0);
-      } else {
-         E $$2 = this.k();
-         if ($$1.b().a() == fay.a && $$2 != null) {
-            return ewj.a(this, $$2.a($$0));
-         } else {
-            int $$3 = -1;
-            faz $$4 = $$1.b();
-            if ($$2 != null) {
-               $$3 = $$2.l().indexOf($$2.aH_());
-            }
-
-            if ($$3 == -1) {
-               switch ($$4) {
-                  case c:
-                     $$3 = Integer.MAX_VALUE;
-                     $$4 = faz.b;
-                     break;
-                  case d:
-                     $$3 = 0;
-                     $$4 = faz.b;
-                     break;
-                  default:
-                     $$3 = 0;
-               }
-            }
-
-            E $$5 = $$2;
-
-            ewj $$6;
-            do {
-               $$5 = this.a($$4, $$0x -> !$$0x.l().isEmpty(), $$5);
-               if ($$5 == null) {
-                  return null;
-               }
-
-               $$6 = $$5.a($$1, $$3);
-            } while ($$6 == null);
-
-            return ewj.a(this, $$6);
-         }
-      }
+      this.q = $$5;
+      this.r = $$6;
    }
 
    @Override
-   public void a(@Nullable eyt $$0) {
-      super.a($$0);
-      if ($$0 == null) {
-         this.a(null);
-      }
+   public void b() {
+      this.q.onPress(this);
    }
 
    @Override
-   public fap.a s() {
-      return this.aI_() ? fap.a.c : super.s();
+   protected vt aK_() {
+      return this.r.createNarrationMessage(() -> super.aK_());
    }
 
    @Override
-   protected boolean e(int $$0) {
-      return false;
+   public void a(fax $$0) {
+      this.c($$0);
    }
 
-   @Override
-   public void a(far $$0) {
-      E $$1 = this.t();
-      if ($$1 != null) {
-         $$1.a($$0.a());
-         this.a($$0, $$1);
-      } else {
-         E $$2 = this.k();
-         if ($$2 != null) {
-            $$2.a($$0.a());
-            this.a($$0, $$2);
-         }
-      }
-
-      $$0.a(faq.d, vd.c("narration.component_list.usage"));
-   }
-
-   public abstract static class a<E extends exe.a<E>> extends ewt.a<E> implements eys {
+   public static class a {
+      private final vf a;
+      private final exe.c b;
       @Nullable
-      private eyt a;
-      @Nullable
-      private fap b;
-      private boolean c;
+      private eyp c;
+      private int d;
+      private int e;
+      private int f = 150;
+      private int g = 20;
+      private exe.b h = exe.p;
 
-      @Override
-      public boolean aG_() {
-         return this.c;
-      }
-
-      @Override
-      public void b(boolean $$0) {
-         this.c = $$0;
-      }
-
-      @Override
-      public boolean a(double $$0, double $$1, int $$2) {
-         return eys.super.a($$0, $$1, $$2);
-      }
-
-      @Override
-      public void a(@Nullable eyt $$0) {
-         if (this.a != null) {
-            this.a.a(false);
-         }
-
-         if ($$0 != null) {
-            $$0.a(true);
-         }
-
+      public a(vf $$0, exe.c $$1) {
          this.a = $$0;
+         this.b = $$1;
       }
 
-      @Nullable
-      @Override
-      public eyt aH_() {
-         return this.a;
+      public exe.a a(int $$0, int $$1) {
+         this.d = $$0;
+         this.e = $$1;
+         return this;
       }
 
-      @Nullable
-      public ewj a(fax $$0, int $$1) {
-         if (this.l().isEmpty()) {
-            return null;
-         } else {
-            ewj $$2 = this.l().get(Math.min($$1, this.l().size() - 1)).a($$0);
-            return ewj.a(this, $$2);
-         }
+      public exe.a a(int $$0) {
+         this.f = $$0;
+         return this;
       }
 
-      @Nullable
-      @Override
-      public ewj a(fax $$0) {
-         if ($$0 instanceof fax.a $$1) {
-            int $$2 = switch ($$1.b()) {
-               case c -> -1;
-               case d -> 1;
-               case a, b -> 0;
-            };
-            if ($$2 == 0) {
-               return null;
-            }
-
-            int $$3 = aui.a($$2 + this.l().indexOf(this.aH_()), 0, this.l().size() - 1);
-
-            for (int $$4 = $$3; $$4 >= 0 && $$4 < this.l().size(); $$4 += $$2) {
-               eyt $$5 = this.l().get($$4);
-               ewj $$6 = $$5.a($$0);
-               if ($$6 != null) {
-                  return ewj.a(this, $$6);
-               }
-            }
-         }
-
-         return eys.super.a($$0);
+      public exe.a b(int $$0, int $$1) {
+         this.f = $$0;
+         this.g = $$1;
+         return this;
       }
 
-      public abstract List<? extends fap> a();
-
-      void a(far $$0) {
-         List<? extends fap> $$1 = this.a();
-         fct.b $$2 = fct.a($$1, this.b);
-         if ($$2 != null) {
-            if ($$2.c.a()) {
-               this.b = $$2.a;
-            }
-
-            if ($$1.size() > 1) {
-               $$0.a(faq.b, vd.a("narrator.position.object_list", $$2.b + 1, $$1.size()));
-               if ($$2.c == fap.a.c) {
-                  $$0.a(faq.d, vd.c("narration.component_list.usage"));
-               }
-            }
-
-            $$2.a.b($$0.a());
-         }
+      public exe.a a(int $$0, int $$1, int $$2, int $$3) {
+         return this.a($$0, $$1).b($$2, $$3);
       }
+
+      public exe.a a(@Nullable eyp $$0) {
+         this.c = $$0;
+         return this;
+      }
+
+      public exe.a a(exe.b $$0) {
+         this.h = $$0;
+         return this;
+      }
+
+      public exe a() {
+         exe $$0 = new exe(this.d, this.e, this.f, this.g, this.a, this.b, this.h);
+         $$0.a(this.c);
+         return $$0;
+      }
+   }
+
+   public interface b {
+      vt createNarrationMessage(Supplier<vt> var1);
+   }
+
+   public interface c {
+      void onPress(exe var1);
    }
 }

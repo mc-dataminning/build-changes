@@ -1,45 +1,58 @@
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import org.slf4j.Logger;
 
-public record ejm(Optional<ci> b, hx c) implements ejo {
-   private static final MapCodec<hx> d = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               atq.a(Codec.INT, "offsetX", Integer.valueOf(0)).forGetter(jb::u),
-               atq.a(Codec.INT, "offsetY", Integer.valueOf(0)).forGetter(jb::v),
-               atq.a(Codec.INT, "offsetZ", Integer.valueOf(0)).forGetter(jb::w)
-            )
-            .apply($$0, hx::new)
-   );
-   public static final Codec<ejm> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(atq.a(ci.a, "predicate").forGetter(ejm::c), d.forGetter(ejm::d)).apply($$0, ejm::new)
-   );
+public record ejm(ahg b) implements eju {
+   private static final Logger c = LogUtils.getLogger();
+   public static final Codec<ejm> a = RecordCodecBuilder.create($$0 -> $$0.group(ahg.a.fieldOf("name").forGetter(ejm::c)).apply($$0, ejm::new));
 
    @Override
-   public ejp b() {
-      return ejq.o;
+   public ejv b() {
+      return ejw.q;
    }
 
-   public boolean a(egp $$0) {
-      elm $$1 = $$0.c(eja.f);
-      return $$1 != null
-         && (this.b.isEmpty() || this.b.get().a($$0.d(), $$1.a() + (double)this.c.u(), $$1.b() + (double)this.c.v(), $$1.c() + (double)this.c.w()));
+   @Override
+   public void a(ehe $$0) {
+      egx<eju> $$1 = new egx<>(eha.a, this.b);
+      if ($$0.a($$1)) {
+         $$0.b("Condition " + this.b + " is recursively called");
+      } else {
+         eju.super.a($$0);
+         $$0.a()
+            .getElementOptional($$1)
+            .ifPresentOrElse($$2 -> $$2.a($$0.a(".{" + this.b + "}", $$1)), () -> $$0.b("Unknown condition table called " + this.b));
+      }
    }
 
-   public static ejo.a a(ci.a $$0) {
-      return () -> new ejm(Optional.of($$0.b()), hx.b);
+   public boolean a(egv $$0) {
+      eju $$1 = $$0.a().getElement(eha.a, this.b);
+      if ($$1 == null) {
+         c.warn("Tried using unknown condition table called {}", this.b);
+         return false;
+      } else {
+         egv.c<?> $$2 = egv.a($$1);
+         if ($$0.b($$2)) {
+            boolean var4;
+            try {
+               var4 = $$1.test($$0);
+            } finally {
+               $$0.c($$2);
+            }
+
+            return var4;
+         } else {
+            c.warn("Detected infinite loop in loot tables");
+            return false;
+         }
+      }
    }
 
-   public static ejo.a a(ci.a $$0, hx $$1) {
-      return () -> new ejm(Optional.of($$0.b()), $$1);
+   public static eju.a a(ahg $$0) {
+      return () -> new ejm($$0);
    }
 
-   public Optional<ci> c() {
+   public ahg c() {
       return this.b;
-   }
-
-   public hx d() {
-      return this.c;
    }
 }

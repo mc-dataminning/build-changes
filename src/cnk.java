@@ -1,20 +1,18 @@
-public class cnk extends cmm {
-   public cnk(cmm.a $$0) {
-      super($$0);
+public class cnk extends ckq {
+   public cnk(cwp $$0, cms.a $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public bjv a(cmr $$0, cfb $$1, bmf $$2, bju $$3) {
-      if ($$2 instanceof bmv $$4 && $$2.bx() && !$$4.i() && $$4.g()) {
-         if (!$$1.dM().B) {
-            $$4.a(arn.g);
-            $$2.dM().a($$2, dnk.v, $$2.dk());
-            $$0.h(1);
-         }
+   public bka a(cpi $$0) {
+      return bka.d;
+   }
 
-         return bjv.a($$1.dM().B);
-      }
-
-      return bjv.d;
+   @Override
+   public bkb<cmx> a(cto $$0, cfh $$1, bjz $$2) {
+      elo $$3 = a($$0, $$1, csx.b.b);
+      elo $$4 = $$3.a($$3.a().c());
+      bka $$5 = super.a(new cpi($$1, $$2, $$4));
+      return new bkb<>($$5, $$1.b($$2));
    }
 }

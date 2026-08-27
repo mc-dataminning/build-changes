@@ -1,88 +1,93 @@
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
+import it.unimi.dsi.fastutil.HashCommon;
+import java.util.Arrays;
+import java.util.Collection;
+import javax.annotation.Nullable;
 
-public class chr {
-   private final int a;
-   private final float b;
-   private final boolean c;
-   private final boolean d;
-   private final boolean e;
-   private final List<Pair<blc, Float>> f;
+public final class chr {
+   private static final chr b = new chr(null, 0L);
+   public static final int a = 64;
+   @Nullable
+   private final chs c;
+   private final long d;
 
-   chr(int $$0, float $$1, boolean $$2, boolean $$3, boolean $$4, List<Pair<blc, Float>> $$5) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
+   private chr(@Nullable chs $$0, long $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
-   public int a() {
-      return this.a;
+   static chr a(chs $$0, Collection<chp> $$1) {
+      if ($$1.isEmpty()) {
+         return b;
+      } else {
+         long $$2 = a($$0, 0L, $$1);
+         return new chr($$0, $$2);
+      }
    }
 
-   public float b() {
-      return this.b;
+   public static chr a() {
+      return b;
    }
 
-   public boolean c() {
-      return this.c;
+   public static chr a(chp $$0) {
+      return new chr($$0.a, $$0.b);
    }
 
-   public boolean d() {
-      return this.d;
+   public static chr a(chp $$0, chp... $$1) {
+      long $$2 = $$1.length == 0 ? $$0.b : a($$0.a, $$0.b, Arrays.asList($$1));
+      return new chr($$0.a, $$2);
    }
 
-   public boolean e() {
-      return this.e;
+   private static long a(chs $$0, long $$1, Iterable<chp> $$2) {
+      for (chp $$3 : $$2) {
+         if ($$0 != $$3.a) {
+            throw new IllegalStateException("Mismatched feature universe, expected '" + $$0 + "', but got '" + $$3.a + "'");
+         }
+
+         $$1 |= $$3.b;
+      }
+
+      return $$1;
    }
 
-   public List<Pair<blc, Float>> f() {
-      return this.f;
+   public boolean b(chp $$0) {
+      return this.c != $$0.a ? false : (this.d & $$0.b) != 0L;
    }
 
-   public static class a {
-      private int a;
-      private float b;
-      private boolean c;
-      private boolean d;
-      private boolean e;
-      private final List<Pair<blc, Float>> f = Lists.newArrayList();
+   public boolean a(chr $$0) {
+      if (this.c == null) {
+         return true;
+      } else {
+         return this.c != $$0.c ? false : (this.d & ~$$0.d) == 0L;
+      }
+   }
 
-      public chr.a a(int $$0) {
-         this.a = $$0;
+   public chr b(chr $$0) {
+      if (this.c == null) {
+         return $$0;
+      } else if ($$0.c == null) {
          return this;
+      } else if (this.c != $$0.c) {
+         throw new IllegalArgumentException("Mismatched set elements: '" + this.c + "' != '" + $$0.c + "'");
+      } else {
+         return new chr(this.c, this.d | $$0.d);
       }
+   }
 
-      public chr.a a(float $$0) {
-         this.b = $$0;
-         return this;
-      }
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof chr $$1 && this.c == $$1.c && this.d == $$1.d) {
+            return true;
+         }
 
-      public chr.a a() {
-         this.c = true;
-         return this;
+         return false;
       }
+   }
 
-      public chr.a b() {
-         this.d = true;
-         return this;
-      }
-
-      public chr.a c() {
-         this.e = true;
-         return this;
-      }
-
-      public chr.a a(blc $$0, float $$1) {
-         this.f.add(Pair.of($$0, $$1));
-         return this;
-      }
-
-      public chr d() {
-         return new chr(this.a, this.b, this.c, this.d, this.e, this.f);
-      }
+   @Override
+   public int hashCode() {
+      return (int)HashCommon.mix(this.d);
    }
 }

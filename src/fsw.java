@@ -1,47 +1,51 @@
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import java.util.Map.Entry;
-import javax.annotation.Nullable;
+public enum fsw {
+   a(new fsw.b(fsw.a.f, fsw.a.e, fsw.a.a), new fsw.b(fsw.a.f, fsw.a.e, fsw.a.d), new fsw.b(fsw.a.c, fsw.a.e, fsw.a.d), new fsw.b(fsw.a.c, fsw.a.e, fsw.a.a)),
+   b(new fsw.b(fsw.a.f, fsw.a.b, fsw.a.d), new fsw.b(fsw.a.f, fsw.a.b, fsw.a.a), new fsw.b(fsw.a.c, fsw.a.b, fsw.a.a), new fsw.b(fsw.a.c, fsw.a.b, fsw.a.d)),
+   c(new fsw.b(fsw.a.c, fsw.a.b, fsw.a.d), new fsw.b(fsw.a.c, fsw.a.e, fsw.a.d), new fsw.b(fsw.a.f, fsw.a.e, fsw.a.d), new fsw.b(fsw.a.f, fsw.a.b, fsw.a.d)),
+   d(new fsw.b(fsw.a.f, fsw.a.b, fsw.a.a), new fsw.b(fsw.a.f, fsw.a.e, fsw.a.a), new fsw.b(fsw.a.c, fsw.a.e, fsw.a.a), new fsw.b(fsw.a.c, fsw.a.b, fsw.a.a)),
+   e(new fsw.b(fsw.a.f, fsw.a.b, fsw.a.d), new fsw.b(fsw.a.f, fsw.a.e, fsw.a.d), new fsw.b(fsw.a.f, fsw.a.e, fsw.a.a), new fsw.b(fsw.a.f, fsw.a.b, fsw.a.a)),
+   f(new fsw.b(fsw.a.c, fsw.a.b, fsw.a.a), new fsw.b(fsw.a.c, fsw.a.e, fsw.a.a), new fsw.b(fsw.a.c, fsw.a.e, fsw.a.d), new fsw.b(fsw.a.c, fsw.a.b, fsw.a.d));
 
-public class fsw {
-   public final Int2ObjectMap<ggn> a = new Int2ObjectOpenHashMap(256);
-   private final Int2ObjectMap<ggg> b = new Int2ObjectOpenHashMap(256);
-   private final ggm c;
+   private static final fsw[] g = ac.a(new fsw[6], $$0 -> {
+      $$0[fsw.a.e] = a;
+      $$0[fsw.a.b] = b;
+      $$0[fsw.a.d] = c;
+      $$0[fsw.a.a] = d;
+      $$0[fsw.a.f] = e;
+      $$0[fsw.a.c] = f;
+   });
+   private final fsw.b[] h;
 
-   public fsw(ggm $$0) {
-      this.c = $$0;
+   public static fsw a(ic $$0) {
+      return g[$$0.d()];
    }
 
-   public ggg a(cmr $$0) {
-      ggg $$1 = this.a($$0.d());
-      return $$1 == null ? this.c.a() : $$1;
+   private fsw(fsw.b... $$0) {
+      this.h = $$0;
    }
 
-   @Nullable
-   public ggg a(cmm $$0) {
-      return (ggg)this.b.get(b($$0));
+   public fsw.b a(int $$0) {
+      return this.h[$$0];
    }
 
-   private static int b(cmm $$0) {
-      return cmm.a($$0);
+   public static final class a {
+      public static final int a = ic.d.d();
+      public static final int b = ic.b.d();
+      public static final int c = ic.f.d();
+      public static final int d = ic.c.d();
+      public static final int e = ic.a.d();
+      public static final int f = ic.e.d();
    }
 
-   public void a(cmm $$0, ggn $$1) {
-      this.a.put(b($$0), $$1);
-   }
+   public static class b {
+      public final int a;
+      public final int b;
+      public final int c;
 
-   public ggm a() {
-      return this.c;
-   }
-
-   public void b() {
-      this.b.clear();
-      ObjectIterator var1 = this.a.entrySet().iterator();
-
-      while (var1.hasNext()) {
-         Entry<Integer, ggn> $$0 = (Entry<Integer, ggn>)var1.next();
-         this.b.put($$0.getKey(), this.c.a($$0.getValue()));
+      b(int $$0, int $$1, int $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
       }
    }
 }

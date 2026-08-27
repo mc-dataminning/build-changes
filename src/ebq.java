@@ -1,1309 +1,252 @@
 import com.google.common.collect.Lists;
 import java.util.List;
-import javax.annotation.Nullable;
 
 public class ebq {
-   private static final int b = 3;
-   private static final int c = 3;
-   private static final int d = 50;
-   private static final int e = 10;
-   private static final boolean f = true;
-   public static final int a = 64;
-   private static final ebq.f[] g = new ebq.f[]{
-      new ebq.f(ebq.n.class, 40, 0),
-      new ebq.f(ebq.h.class, 5, 5),
-      new ebq.f(ebq.d.class, 20, 0),
-      new ebq.f(ebq.i.class, 20, 0),
-      new ebq.f(ebq.j.class, 10, 6),
-      new ebq.f(ebq.o.class, 5, 5),
-      new ebq.f(ebq.l.class, 5, 5),
-      new ebq.f(ebq.c.class, 5, 4),
-      new ebq.f(ebq.a.class, 5, 4),
-      new ebq.f(ebq.e.class, 10, 2) {
-         @Override
-         public boolean a(int $$0) {
-            return super.a($$0) && $$0 > 4;
-         }
-      },
-      new ebq.f(ebq.g.class, 20, 1) {
-         @Override
-         public boolean a(int $$0) {
-            return super.a($$0) && $$0 > 5;
-         }
-      }
+   static final edc a = a(cwr.I, cwr.J, egt.aS);
+   static final edc b = a(cwr.L, cwr.M, egt.aT);
+   private static final ahg[] c = new ahg[]{
+      new ahg("underwater_ruin/warm_1"),
+      new ahg("underwater_ruin/warm_2"),
+      new ahg("underwater_ruin/warm_3"),
+      new ahg("underwater_ruin/warm_4"),
+      new ahg("underwater_ruin/warm_5"),
+      new ahg("underwater_ruin/warm_6"),
+      new ahg("underwater_ruin/warm_7"),
+      new ahg("underwater_ruin/warm_8")
    };
-   private static List<ebq.f> h;
-   static Class<? extends ebq.p> i;
-   private static int j;
-   static final ebq.k k = new ebq.k();
+   private static final ahg[] d = new ahg[]{
+      new ahg("underwater_ruin/brick_1"),
+      new ahg("underwater_ruin/brick_2"),
+      new ahg("underwater_ruin/brick_3"),
+      new ahg("underwater_ruin/brick_4"),
+      new ahg("underwater_ruin/brick_5"),
+      new ahg("underwater_ruin/brick_6"),
+      new ahg("underwater_ruin/brick_7"),
+      new ahg("underwater_ruin/brick_8")
+   };
+   private static final ahg[] e = new ahg[]{
+      new ahg("underwater_ruin/cracked_1"),
+      new ahg("underwater_ruin/cracked_2"),
+      new ahg("underwater_ruin/cracked_3"),
+      new ahg("underwater_ruin/cracked_4"),
+      new ahg("underwater_ruin/cracked_5"),
+      new ahg("underwater_ruin/cracked_6"),
+      new ahg("underwater_ruin/cracked_7"),
+      new ahg("underwater_ruin/cracked_8")
+   };
+   private static final ahg[] f = new ahg[]{
+      new ahg("underwater_ruin/mossy_1"),
+      new ahg("underwater_ruin/mossy_2"),
+      new ahg("underwater_ruin/mossy_3"),
+      new ahg("underwater_ruin/mossy_4"),
+      new ahg("underwater_ruin/mossy_5"),
+      new ahg("underwater_ruin/mossy_6"),
+      new ahg("underwater_ruin/mossy_7"),
+      new ahg("underwater_ruin/mossy_8")
+   };
+   private static final ahg[] g = new ahg[]{
+      new ahg("underwater_ruin/big_brick_1"),
+      new ahg("underwater_ruin/big_brick_2"),
+      new ahg("underwater_ruin/big_brick_3"),
+      new ahg("underwater_ruin/big_brick_8")
+   };
+   private static final ahg[] h = new ahg[]{
+      new ahg("underwater_ruin/big_mossy_1"),
+      new ahg("underwater_ruin/big_mossy_2"),
+      new ahg("underwater_ruin/big_mossy_3"),
+      new ahg("underwater_ruin/big_mossy_8")
+   };
+   private static final ahg[] i = new ahg[]{
+      new ahg("underwater_ruin/big_cracked_1"),
+      new ahg("underwater_ruin/big_cracked_2"),
+      new ahg("underwater_ruin/big_cracked_3"),
+      new ahg("underwater_ruin/big_cracked_8")
+   };
+   private static final ahg[] j = new ahg[]{
+      new ahg("underwater_ruin/big_warm_4"),
+      new ahg("underwater_ruin/big_warm_5"),
+      new ahg("underwater_ruin/big_warm_6"),
+      new ahg("underwater_ruin/big_warm_7")
+   };
 
-   public static void a() {
-      h = Lists.newArrayList();
-
-      for (ebq.f $$0 : g) {
-         $$0.c = 0;
-         h.add($$0);
-      }
-
-      i = null;
+   private static edc a(cwp $$0, cwp $$1, ahg $$2) {
+      return new ecl(new ecy(List.of(new ecu(new eci($$0), ecd.b, ecr.b, $$1.o(), new edj($$2)))), bjc.a(5));
    }
 
-   private static boolean b() {
-      boolean $$0 = false;
-      j = 0;
-
-      for (ebq.f $$1 : h) {
-         if ($$1.d > 0 && $$1.c < $$1.d) {
-            $$0 = true;
-         }
-
-         j = j + $$1.b;
-      }
-
-      return $$0;
+   private static ahg a(auu $$0) {
+      return ac.a(c, $$0);
    }
 
-   private static ebq.p a(Class<? extends ebq.p> $$0, dze $$1, aup $$2, int $$3, int $$4, int $$5, @Nullable ic $$6, int $$7) {
-      ebq.p $$8 = null;
-      if ($$0 == ebq.n.class) {
-         $$8 = ebq.n.a($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      } else if ($$0 == ebq.h.class) {
-         $$8 = ebq.h.a($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      } else if ($$0 == ebq.d.class) {
-         $$8 = ebq.d.a($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      } else if ($$0 == ebq.i.class) {
-         $$8 = ebq.i.a($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      } else if ($$0 == ebq.j.class) {
-         $$8 = ebq.j.a($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      } else if ($$0 == ebq.o.class) {
-         $$8 = ebq.o.a($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      } else if ($$0 == ebq.l.class) {
-         $$8 = ebq.l.a($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      } else if ($$0 == ebq.c.class) {
-         $$8 = ebq.c.a($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      } else if ($$0 == ebq.a.class) {
-         $$8 = ebq.a.a($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      } else if ($$0 == ebq.e.class) {
-         $$8 = ebq.e.a($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      } else if ($$0 == ebq.g.class) {
-         $$8 = ebq.g.a($$1, $$3, $$4, $$5, $$6, $$7);
-      }
-
-      return $$8;
+   private static ahg b(auu $$0) {
+      return ac.a(j, $$0);
    }
 
-   private static ebq.p a(ebq.m $$0, dze $$1, aup $$2, int $$3, int $$4, int $$5, ic $$6, int $$7) {
-      if (!b()) {
-         return null;
-      } else {
-         if (i != null) {
-            ebq.p $$8 = a(i, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-            i = null;
-            if ($$8 != null) {
-               return $$8;
+   public static void a(edg $$0, hx $$1, ddb $$2, dzk $$3, auu $$4, ebr $$5) {
+      boolean $$6 = $$4.i() <= $$5.f;
+      float $$7 = $$6 ? 0.9F : 0.8F;
+      a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      if ($$6 && $$4.i() <= $$5.g) {
+         a($$0, $$4, $$2, $$1, $$5, $$3);
+      }
+   }
+
+   private static void a(edg $$0, auu $$1, ddb $$2, hx $$3, ebr $$4, dzk $$5) {
+      hx $$6 = new hx($$3.u(), 90, $$3.w());
+      hx $$7 = edf.a(new hx(15, 0, 15), dbl.a, $$2, hx.b).a((jb)$$6);
+      dyx $$8 = dyx.a($$6, $$7);
+      hx $$9 = new hx(Math.min($$6.u(), $$7.u()), $$6.v(), Math.min($$6.w(), $$7.w()));
+      List<hx> $$10 = a($$1, $$9);
+      int $$11 = aun.a($$1, 4, 8);
+
+      for (int $$12 = 0; $$12 < $$11; $$12++) {
+         if (!$$10.isEmpty()) {
+            int $$13 = $$1.a($$10.size());
+            hx $$14 = $$10.remove($$13);
+            ddb $$15 = ddb.a($$1);
+            hx $$16 = edf.a(new hx(5, 0, 6), dbl.a, $$15, hx.b).a((jb)$$14);
+            dyx $$17 = dyx.a($$14, $$16);
+            if (!$$17.a($$8)) {
+               a($$0, $$14, $$15, $$5, $$1, $$4, false, 0.8F);
             }
          }
-
-         int $$9 = 0;
-
-         while ($$9 < 5) {
-            $$9++;
-            int $$10 = $$2.a(j);
-
-            for (ebq.f $$11 : h) {
-               $$10 -= $$11.b;
-               if ($$10 < 0) {
-                  if (!$$11.a($$7) || $$11 == $$0.a) {
-                     break;
-                  }
-
-                  ebq.p $$12 = a($$11.a, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-                  if ($$12 != null) {
-                     $$11.c++;
-                     $$0.a = $$11;
-                     if (!$$11.a()) {
-                        h.remove($$11);
-                     }
-
-                     return $$12;
-                  }
-               }
-            }
-         }
-
-         dyr $$13 = ebq.b.a($$1, $$2, $$3, $$4, $$5, $$6);
-         return $$13 != null && $$13.i() > 1 ? new ebq.b($$7, $$13, $$6) : null;
       }
    }
 
-   static dzd b(ebq.m $$0, dze $$1, aup $$2, int $$3, int $$4, int $$5, @Nullable ic $$6, int $$7) {
-      if ($$7 > 50) {
-         return null;
-      } else if (Math.abs($$3 - $$0.f().h()) <= 112 && Math.abs($$5 - $$0.f().j()) <= 112) {
-         dzd $$8 = a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7 + 1);
-         if ($$8 != null) {
-            $$1.a($$8);
-            $$0.c.add($$8);
-         }
+   private static List<hx> a(auu $$0, hx $$1) {
+      List<hx> $$2 = Lists.newArrayList();
+      $$2.add($$1.b(-16 + aun.a($$0, 1, 8), 0, 16 + aun.a($$0, 1, 7)));
+      $$2.add($$1.b(-16 + aun.a($$0, 1, 8), 0, aun.a($$0, 1, 7)));
+      $$2.add($$1.b(-16 + aun.a($$0, 1, 8), 0, -16 + aun.a($$0, 4, 8)));
+      $$2.add($$1.b(aun.a($$0, 1, 7), 0, 16 + aun.a($$0, 1, 7)));
+      $$2.add($$1.b(aun.a($$0, 1, 7), 0, -16 + aun.a($$0, 4, 6)));
+      $$2.add($$1.b(16 + aun.a($$0, 1, 7), 0, 16 + aun.a($$0, 3, 8)));
+      $$2.add($$1.b(16 + aun.a($$0, 1, 7), 0, aun.a($$0, 1, 7)));
+      $$2.add($$1.b(16 + aun.a($$0, 1, 7), 0, -16 + aun.a($$0, 4, 8)));
+      return $$2;
+   }
 
-         return $$8;
-      } else {
-         return null;
+   private static void a(edg $$0, hx $$1, ddb $$2, dzk $$3, auu $$4, ebr $$5, boolean $$6, float $$7) {
+      switch ($$5.e) {
+         case a:
+         default:
+            ahg $$8 = $$6 ? b($$4) : a($$4);
+            $$3.a(new ebq.a($$0, $$8, $$1, $$2, $$7, $$5.e, $$6));
+            break;
+         case b:
+            ahg[] $$9 = $$6 ? g : d;
+            ahg[] $$10 = $$6 ? i : e;
+            ahg[] $$11 = $$6 ? h : f;
+            int $$12 = $$4.a($$9.length);
+            $$3.a(new ebq.a($$0, $$9[$$12], $$1, $$2, $$7, $$5.e, $$6));
+            $$3.a(new ebq.a($$0, $$10[$$12], $$1, $$2, 0.7F, $$5.e, $$6));
+            $$3.a(new ebq.a($$0, $$11[$$12], $$1, $$2, 0.5F, $$5.e, $$6));
       }
    }
 
-   public static class a extends ebq.p {
-      private static final int a = 5;
-      private static final int b = 5;
-      private static final int c = 7;
-      private boolean d;
-
-      public a(int $$0, aup $$1, dyr $$2, ic $$3) {
-         super(dzq.t, $$0, $$2);
-         this.a($$3);
-         this.h = this.b($$1);
-      }
-
-      public a(sl $$0) {
-         super(dzq.t, $$0);
-         this.d = $$0.q("Chest");
-      }
-
-      @Override
-      protected void a(dzp $$0, sl $$1) {
-         super.a($$0, $$1);
-         $$1.a("Chest", this.d);
-      }
-
-      @Override
-      public void a(dzd $$0, dze $$1, aup $$2) {
-         this.a((ebq.m)$$0, $$1, $$2, 1, 1);
-      }
-
-      public static ebq.a a(dze $$0, aup $$1, int $$2, int $$3, int $$4, ic $$5, int $$6) {
-         dyr $$7 = dyr.a($$2, $$3, $$4, -1, -1, 0, 5, 5, 7, $$5);
-         return a($$7) && $$0.a($$7) == null ? new ebq.a($$6, $$1, $$7, $$5) : null;
-      }
-
-      @Override
-      public void a(cud $$0, cub $$1, dkx $$2, aup $$3, dyr $$4, csp $$5, hx $$6) {
-         this.a($$0, $$4, 0, 0, 0, 4, 4, 6, true, $$3, ebq.k);
-         this.a($$0, $$3, $$4, this.h, 1, 1, 0);
-         this.a($$0, $$3, $$4, ebq.p.a.a, 1, 1, 6);
-         this.a($$0, $$4, 3, 1, 2, 3, 1, 4, cwl.eH.o(), cwl.eH.o(), false);
-         this.a($$0, cwl.jK.o(), 3, 1, 1, $$4);
-         this.a($$0, cwl.jK.o(), 3, 1, 5, $$4);
-         this.a($$0, cwl.jK.o(), 3, 2, 2, $$4);
-         this.a($$0, cwl.jK.o(), 3, 2, 4, $$4);
-
-         for (int $$7 = 2; $$7 <= 4; $$7++) {
-            this.a($$0, cwl.jK.o(), 2, 1, $$7, $$4);
-         }
-
-         if (!this.d && $$4.b(this.b(3, 2, 3))) {
-            this.d = true;
-            this.a($$0, $$4, $$3, 3, 2, 3, egn.y);
-         }
-      }
-   }
-
-   public static class b extends ebq.p {
-      private final int a;
-
-      public b(int $$0, dyr $$1, ic $$2) {
-         super(dzq.u, $$0, $$1);
-         this.a($$2);
-         this.a = $$2 != ic.c && $$2 != ic.d ? $$1.d() : $$1.f();
-      }
-
-      public b(sl $$0) {
-         super(dzq.u, $$0);
-         this.a = $$0.h("Steps");
-      }
-
-      @Override
-      protected void a(dzp $$0, sl $$1) {
-         super.a($$0, $$1);
-         $$1.a("Steps", this.a);
-      }
-
-      public static dyr a(dze $$0, aup $$1, int $$2, int $$3, int $$4, ic $$5) {
-         int $$6 = 3;
-         dyr $$7 = dyr.a($$2, $$3, $$4, -1, -1, 0, 5, 5, 4, $$5);
-         dzd $$8 = $$0.a($$7);
-         if ($$8 == null) {
-            return null;
-         } else {
-            if ($$8.f().i() == $$7.i()) {
-               for (int $$9 = 2; $$9 >= 1; $$9--) {
-                  $$7 = dyr.a($$2, $$3, $$4, -1, -1, 0, 5, 5, $$9, $$5);
-                  if (!$$8.f().a($$7)) {
-                     return dyr.a($$2, $$3, $$4, -1, -1, 0, 5, 5, $$9 + 1, $$5);
-                  }
-               }
-            }
-
-            return null;
-         }
-      }
-
-      @Override
-      public void a(cud $$0, cub $$1, dkx $$2, aup $$3, dyr $$4, csp $$5, hx $$6) {
-         for (int $$7 = 0; $$7 < this.a; $$7++) {
-            this.a($$0, cwl.eH.o(), 0, 0, $$7, $$4);
-            this.a($$0, cwl.eH.o(), 1, 0, $$7, $$4);
-            this.a($$0, cwl.eH.o(), 2, 0, $$7, $$4);
-            this.a($$0, cwl.eH.o(), 3, 0, $$7, $$4);
-            this.a($$0, cwl.eH.o(), 4, 0, $$7, $$4);
-
-            for (int $$8 = 1; $$8 <= 3; $$8++) {
-               this.a($$0, cwl.eH.o(), 0, $$8, $$7, $$4);
-               this.a($$0, cwl.nc.o(), 1, $$8, $$7, $$4);
-               this.a($$0, cwl.nc.o(), 2, $$8, $$7, $$4);
-               this.a($$0, cwl.nc.o(), 3, $$8, $$7, $$4);
-               this.a($$0, cwl.eH.o(), 4, $$8, $$7, $$4);
-            }
-
-            this.a($$0, cwl.eH.o(), 0, 4, $$7, $$4);
-            this.a($$0, cwl.eH.o(), 1, 4, $$7, $$4);
-            this.a($$0, cwl.eH.o(), 2, 4, $$7, $$4);
-            this.a($$0, cwl.eH.o(), 3, 4, $$7, $$4);
-            this.a($$0, cwl.eH.o(), 4, 4, $$7, $$4);
-         }
-      }
-   }
-
-   public static class c extends ebq.p {
-      protected static final int a = 10;
-      protected static final int b = 9;
-      protected static final int c = 11;
-      private final boolean d;
-      private final boolean i;
+   public static class a extends dzp {
+      private final ebr.a h;
+      private final float i;
       private final boolean j;
-      private final boolean k;
 
-      public c(int $$0, aup $$1, dyr $$2, ic $$3) {
-         super(dzq.v, $$0, $$2);
-         this.a($$3);
-         this.h = this.b($$1);
-         this.d = $$1.h();
-         this.i = $$1.h();
-         this.j = $$1.h();
-         this.k = $$1.a(3) > 0;
+      public a(edg $$0, ahg $$1, hx $$2, ddb $$3, float $$4, ebr.a $$5, boolean $$6) {
+         super(dzw.H, 0, $$0, $$1, $$1.toString(), a($$3, $$4, $$5), $$2);
+         this.i = $$4;
+         this.h = $$5;
+         this.j = $$6;
       }
 
-      public c(sl $$0) {
-         super(dzq.v, $$0);
-         this.d = $$0.q("leftLow");
-         this.i = $$0.q("leftHigh");
-         this.j = $$0.q("rightLow");
-         this.k = $$0.q("rightHigh");
+      private a(edg $$0, sn $$1, ddb $$2, float $$3, ebr.a $$4, boolean $$5) {
+         super(dzw.H, $$1, $$0, $$3x -> a($$2, $$3, $$4));
+         this.i = $$3;
+         this.h = $$4;
+         this.j = $$5;
+      }
+
+      private static edb a(ddb $$0, float $$1, ebr.a $$2) {
+         edc $$3 = $$2 == ebr.a.b ? ebq.b : ebq.a;
+         return new edb().a($$0).a(dbl.a).a(new ecj($$1)).a(ech.d).a($$3);
+      }
+
+      public static ebq.a a(edg $$0, sn $$1) {
+         ddb $$2 = ddb.valueOf($$1.l("Rot"));
+         float $$3 = $$1.j("Integrity");
+         ebr.a $$4 = ebr.a.valueOf($$1.l("BiomeType"));
+         boolean $$5 = $$1.q("IsLarge");
+         return new ebq.a($$0, $$1, $$2, $$3, $$4, $$5);
       }
 
       @Override
-      protected void a(dzp $$0, sl $$1) {
+      protected void a(dzv $$0, sn $$1) {
          super.a($$0, $$1);
-         $$1.a("leftLow", this.d);
-         $$1.a("leftHigh", this.i);
-         $$1.a("rightLow", this.j);
-         $$1.a("rightHigh", this.k);
+         $$1.a("Rot", this.c.d().name());
+         $$1.a("Integrity", this.i);
+         $$1.a("BiomeType", this.h.toString());
+         $$1.a("IsLarge", this.j);
       }
 
       @Override
-      public void a(dzd $$0, dze $$1, aup $$2) {
-         int $$3 = 3;
-         int $$4 = 5;
-         ic $$5 = this.i();
-         if ($$5 == ic.e || $$5 == ic.c) {
-            $$3 = 8 - $$3;
-            $$4 = 8 - $$4;
-         }
-
-         this.a((ebq.m)$$0, $$1, $$2, 5, 1);
-         if (this.d) {
-            this.b((ebq.m)$$0, $$1, $$2, $$3, 1);
-         }
-
-         if (this.i) {
-            this.b((ebq.m)$$0, $$1, $$2, $$4, 7);
-         }
-
-         if (this.j) {
-            this.c((ebq.m)$$0, $$1, $$2, $$3, 1);
-         }
-
-         if (this.k) {
-            this.c((ebq.m)$$0, $$1, $$2, $$4, 7);
-         }
-      }
-
-      public static ebq.c a(dze $$0, aup $$1, int $$2, int $$3, int $$4, ic $$5, int $$6) {
-         dyr $$7 = dyr.a($$2, $$3, $$4, -4, -3, 0, 10, 9, 11, $$5);
-         return a($$7) && $$0.a($$7) == null ? new ebq.c($$6, $$1, $$7, $$5) : null;
-      }
-
-      @Override
-      public void a(cud $$0, cub $$1, dkx $$2, aup $$3, dyr $$4, csp $$5, hx $$6) {
-         this.a($$0, $$4, 0, 0, 0, 9, 8, 10, true, $$3, ebq.k);
-         this.a($$0, $$3, $$4, this.h, 4, 3, 0);
-         if (this.d) {
-            this.a($$0, $$4, 0, 3, 1, 0, 5, 3, e, e, false);
-         }
-
-         if (this.j) {
-            this.a($$0, $$4, 9, 3, 1, 9, 5, 3, e, e, false);
-         }
-
-         if (this.i) {
-            this.a($$0, $$4, 0, 5, 7, 0, 7, 9, e, e, false);
-         }
-
-         if (this.k) {
-            this.a($$0, $$4, 9, 5, 7, 9, 7, 9, e, e, false);
-         }
-
-         this.a($$0, $$4, 5, 1, 10, 7, 3, 10, e, e, false);
-         this.a($$0, $$4, 1, 2, 1, 8, 2, 6, false, $$3, ebq.k);
-         this.a($$0, $$4, 4, 1, 5, 4, 4, 9, false, $$3, ebq.k);
-         this.a($$0, $$4, 8, 1, 5, 8, 4, 9, false, $$3, ebq.k);
-         this.a($$0, $$4, 1, 4, 7, 3, 4, 9, false, $$3, ebq.k);
-         this.a($$0, $$4, 1, 3, 5, 3, 3, 6, false, $$3, ebq.k);
-         this.a($$0, $$4, 1, 3, 4, 3, 3, 4, cwl.jE.o(), cwl.jE.o(), false);
-         this.a($$0, $$4, 1, 4, 6, 3, 4, 6, cwl.jE.o(), cwl.jE.o(), false);
-         this.a($$0, $$4, 5, 1, 7, 7, 1, 8, false, $$3, ebq.k);
-         this.a($$0, $$4, 5, 1, 9, 7, 1, 9, cwl.jE.o(), cwl.jE.o(), false);
-         this.a($$0, $$4, 5, 2, 7, 7, 2, 7, cwl.jE.o(), cwl.jE.o(), false);
-         this.a($$0, $$4, 4, 5, 7, 4, 5, 9, cwl.jE.o(), cwl.jE.o(), false);
-         this.a($$0, $$4, 8, 5, 7, 8, 5, 9, cwl.jE.o(), cwl.jE.o(), false);
-         this.a($$0, $$4, 5, 5, 7, 7, 5, 9, cwl.jE.o().a(ddl.b, dki.c), cwl.jE.o().a(ddl.b, dki.c), false);
-         this.a($$0, cwl.cq.o().a(dfj.g, ic.d), 6, 5, 6, $$4);
-      }
-   }
-
-   public static class d extends ebq.q {
-      public d(int $$0, aup $$1, dyr $$2, ic $$3) {
-         super(dzq.w, $$0, $$2);
-         this.a($$3);
-         this.h = this.b($$1);
-      }
-
-      public d(sl $$0) {
-         super(dzq.w, $$0);
-      }
-
-      @Override
-      public void a(dzd $$0, dze $$1, aup $$2) {
-         ic $$3 = this.i();
-         if ($$3 != ic.c && $$3 != ic.f) {
-            this.c((ebq.m)$$0, $$1, $$2, 1, 1);
-         } else {
-            this.b((ebq.m)$$0, $$1, $$2, 1, 1);
-         }
-      }
-
-      public static ebq.d a(dze $$0, aup $$1, int $$2, int $$3, int $$4, ic $$5, int $$6) {
-         dyr $$7 = dyr.a($$2, $$3, $$4, -1, -1, 0, 5, 5, 5, $$5);
-         return a($$7) && $$0.a($$7) == null ? new ebq.d($$6, $$1, $$7, $$5) : null;
-      }
-
-      @Override
-      public void a(cud $$0, cub $$1, dkx $$2, aup $$3, dyr $$4, csp $$5, hx $$6) {
-         this.a($$0, $$4, 0, 0, 0, 4, 4, 4, true, $$3, ebq.k);
-         this.a($$0, $$3, $$4, this.h, 1, 1, 0);
-         ic $$7 = this.i();
-         if ($$7 != ic.c && $$7 != ic.f) {
-            this.a($$0, $$4, 4, 1, 1, 4, 3, 3, e, e, false);
-         } else {
-            this.a($$0, $$4, 0, 1, 1, 0, 3, 3, e, e, false);
-         }
-      }
-   }
-
-   public static class e extends ebq.p {
-      protected static final int a = 14;
-      protected static final int b = 6;
-      protected static final int c = 11;
-      protected static final int d = 15;
-      private final boolean i;
-
-      public e(int $$0, aup $$1, dyr $$2, ic $$3) {
-         super(dzq.x, $$0, $$2);
-         this.a($$3);
-         this.h = this.b($$1);
-         this.i = $$2.e() > 6;
-      }
-
-      public e(sl $$0) {
-         super(dzq.x, $$0);
-         this.i = $$0.q("Tall");
-      }
-
-      @Override
-      protected void a(dzp $$0, sl $$1) {
-         super.a($$0, $$1);
-         $$1.a("Tall", this.i);
-      }
-
-      public static ebq.e a(dze $$0, aup $$1, int $$2, int $$3, int $$4, ic $$5, int $$6) {
-         dyr $$7 = dyr.a($$2, $$3, $$4, -4, -1, 0, 14, 11, 15, $$5);
-         if (!a($$7) || $$0.a($$7) != null) {
-            $$7 = dyr.a($$2, $$3, $$4, -4, -1, 0, 14, 6, 15, $$5);
-            if (!a($$7) || $$0.a($$7) != null) {
-               return null;
+      protected void a(String $$0, hx $$1, cud $$2, auu $$3, dyx $$4) {
+         if ("chest".equals($$0)) {
+            $$2.a($$1, cwr.cv.o().a(cxs.e, Boolean.valueOf($$2.b_($$1).a(asl.a))), 2);
+            dgu $$5 = $$2.c_($$1);
+            if ($$5 instanceof dhb) {
+               ((dhb)$$5).a(this.j ? egt.F : egt.E, $$3.g());
             }
-         }
-
-         return new ebq.e($$6, $$1, $$7, $$5);
-      }
-
-      @Override
-      public void a(cud $$0, cub $$1, dkx $$2, aup $$3, dyr $$4, csp $$5, hx $$6) {
-         int $$7 = 11;
-         if (!this.i) {
-            $$7 = 6;
-         }
-
-         this.a($$0, $$4, 0, 0, 0, 13, $$7 - 1, 14, true, $$3, ebq.k);
-         this.a($$0, $$3, $$4, this.h, 4, 1, 0);
-         this.a($$0, $$4, $$3, 0.07F, 2, 1, 1, 11, 4, 13, cwl.bs.o(), cwl.bs.o(), false, false);
-         int $$8 = 1;
-         int $$9 = 12;
-
-         for (int $$10 = 1; $$10 <= 13; $$10++) {
-            if (($$10 - 1) % 4 == 0) {
-               this.a($$0, $$4, 1, 1, $$10, 1, 4, $$10, cwl.n.o(), cwl.n.o(), false);
-               this.a($$0, $$4, 12, 1, $$10, 12, 4, $$10, cwl.n.o(), cwl.n.o(), false);
-               this.a($$0, cwl.cq.o().a(dfj.g, ic.f), 2, 3, $$10, $$4);
-               this.a($$0, cwl.cq.o().a(dfj.g, ic.e), 11, 3, $$10, $$4);
-               if (this.i) {
-                  this.a($$0, $$4, 1, 6, $$10, 1, 9, $$10, cwl.n.o(), cwl.n.o(), false);
-                  this.a($$0, $$4, 12, 6, $$10, 12, 9, $$10, cwl.n.o(), cwl.n.o(), false);
-               }
-            } else {
-               this.a($$0, $$4, 1, 1, $$10, 1, 4, $$10, cwl.cl.o(), cwl.cl.o(), false);
-               this.a($$0, $$4, 12, 1, $$10, 12, 4, $$10, cwl.cl.o(), cwl.cl.o(), false);
-               if (this.i) {
-                  this.a($$0, $$4, 1, 6, $$10, 1, 9, $$10, cwl.cl.o(), cwl.cl.o(), false);
-                  this.a($$0, $$4, 12, 6, $$10, 12, 9, $$10, cwl.cl.o(), cwl.cl.o(), false);
-               }
-            }
-         }
-
-         for (int $$11 = 3; $$11 < 12; $$11 += 2) {
-            this.a($$0, $$4, 3, 1, $$11, 4, 3, $$11, cwl.cl.o(), cwl.cl.o(), false);
-            this.a($$0, $$4, 6, 1, $$11, 7, 3, $$11, cwl.cl.o(), cwl.cl.o(), false);
-            this.a($$0, $$4, 9, 1, $$11, 10, 3, $$11, cwl.cl.o(), cwl.cl.o(), false);
-         }
-
-         if (this.i) {
-            this.a($$0, $$4, 1, 5, 1, 3, 5, 13, cwl.n.o(), cwl.n.o(), false);
-            this.a($$0, $$4, 10, 5, 1, 12, 5, 13, cwl.n.o(), cwl.n.o(), false);
-            this.a($$0, $$4, 4, 5, 1, 9, 5, 2, cwl.n.o(), cwl.n.o(), false);
-            this.a($$0, $$4, 4, 5, 12, 9, 5, 13, cwl.n.o(), cwl.n.o(), false);
-            this.a($$0, cwl.n.o(), 9, 5, 11, $$4);
-            this.a($$0, cwl.n.o(), 8, 5, 11, $$4);
-            this.a($$0, cwl.n.o(), 9, 5, 10, $$4);
-            dja $$12 = cwl.dU.o().a(czh.d, Boolean.valueOf(true)).a(czh.b, Boolean.valueOf(true));
-            dja $$13 = cwl.dU.o().a(czh.a, Boolean.valueOf(true)).a(czh.c, Boolean.valueOf(true));
-            this.a($$0, $$4, 3, 6, 3, 3, 6, 11, $$13, $$13, false);
-            this.a($$0, $$4, 10, 6, 3, 10, 6, 9, $$13, $$13, false);
-            this.a($$0, $$4, 4, 6, 2, 9, 6, 2, $$12, $$12, false);
-            this.a($$0, $$4, 4, 6, 12, 7, 6, 12, $$12, $$12, false);
-            this.a($$0, cwl.dU.o().a(czh.a, Boolean.valueOf(true)).a(czh.b, Boolean.valueOf(true)), 3, 6, 2, $$4);
-            this.a($$0, cwl.dU.o().a(czh.c, Boolean.valueOf(true)).a(czh.b, Boolean.valueOf(true)), 3, 6, 12, $$4);
-            this.a($$0, cwl.dU.o().a(czh.a, Boolean.valueOf(true)).a(czh.d, Boolean.valueOf(true)), 10, 6, 2, $$4);
-
-            for (int $$14 = 0; $$14 <= 2; $$14++) {
-               this.a($$0, cwl.dU.o().a(czh.c, Boolean.valueOf(true)).a(czh.d, Boolean.valueOf(true)), 8 + $$14, 6, 12 - $$14, $$4);
-               if ($$14 != 2) {
-                  this.a($$0, cwl.dU.o().a(czh.a, Boolean.valueOf(true)).a(czh.b, Boolean.valueOf(true)), 8 + $$14, 6, 11 - $$14, $$4);
-               }
-            }
-
-            dja $$15 = cwl.cO.o().a(dao.b, ic.d);
-            this.a($$0, $$15, 10, 1, 13, $$4);
-            this.a($$0, $$15, 10, 2, 13, $$4);
-            this.a($$0, $$15, 10, 3, 13, $$4);
-            this.a($$0, $$15, 10, 4, 13, $$4);
-            this.a($$0, $$15, 10, 5, 13, $$4);
-            this.a($$0, $$15, 10, 6, 13, $$4);
-            this.a($$0, $$15, 10, 7, 13, $$4);
-            int $$16 = 7;
-            int $$17 = 7;
-            dja $$18 = cwl.dU.o().a(czh.b, Boolean.valueOf(true));
-            this.a($$0, $$18, 6, 9, 7, $$4);
-            dja $$19 = cwl.dU.o().a(czh.d, Boolean.valueOf(true));
-            this.a($$0, $$19, 7, 9, 7, $$4);
-            this.a($$0, $$18, 6, 8, 7, $$4);
-            this.a($$0, $$19, 7, 8, 7, $$4);
-            dja $$20 = $$13.a(czh.d, Boolean.valueOf(true)).a(czh.b, Boolean.valueOf(true));
-            this.a($$0, $$20, 6, 7, 7, $$4);
-            this.a($$0, $$20, 7, 7, 7, $$4);
-            this.a($$0, $$18, 5, 7, 7, $$4);
-            this.a($$0, $$19, 8, 7, 7, $$4);
-            this.a($$0, $$18.a(czh.a, Boolean.valueOf(true)), 6, 7, 6, $$4);
-            this.a($$0, $$18.a(czh.c, Boolean.valueOf(true)), 6, 7, 8, $$4);
-            this.a($$0, $$19.a(czh.a, Boolean.valueOf(true)), 7, 7, 6, $$4);
-            this.a($$0, $$19.a(czh.c, Boolean.valueOf(true)), 7, 7, 8, $$4);
-            dja $$21 = cwl.cp.o();
-            this.a($$0, $$21, 5, 8, 7, $$4);
-            this.a($$0, $$21, 8, 8, 7, $$4);
-            this.a($$0, $$21, 6, 8, 6, $$4);
-            this.a($$0, $$21, 6, 8, 8, $$4);
-            this.a($$0, $$21, 7, 8, 6, $$4);
-            this.a($$0, $$21, 7, 8, 8, $$4);
-         }
-
-         this.a($$0, $$4, $$3, 3, 3, 5, egn.w);
-         if (this.i) {
-            this.a($$0, e, 12, 9, 1, $$4);
-            this.a($$0, $$4, $$3, 12, 8, 1, egn.w);
-         }
-      }
-   }
-
-   static class f {
-      public final Class<? extends ebq.p> a;
-      public final int b;
-      public int c;
-      public final int d;
-
-      public f(Class<? extends ebq.p> $$0, int $$1, int $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.d = $$2;
-      }
-
-      public boolean a(int $$0) {
-         return this.d == 0 || this.c < this.d;
-      }
-
-      public boolean a() {
-         return this.d == 0 || this.c < this.d;
-      }
-   }
-
-   public static class g extends ebq.p {
-      protected static final int a = 11;
-      protected static final int b = 8;
-      protected static final int c = 16;
-      private boolean d;
-
-      public g(int $$0, dyr $$1, ic $$2) {
-         super(dzq.y, $$0, $$1);
-         this.a($$2);
-      }
-
-      public g(sl $$0) {
-         super(dzq.y, $$0);
-         this.d = $$0.q("Mob");
-      }
-
-      @Override
-      protected void a(dzp $$0, sl $$1) {
-         super.a($$0, $$1);
-         $$1.a("Mob", this.d);
-      }
-
-      @Override
-      public void a(dzd $$0, dze $$1, aup $$2) {
-         if ($$0 != null) {
-            ((ebq.m)$$0).b = this;
-         }
-      }
-
-      public static ebq.g a(dze $$0, int $$1, int $$2, int $$3, ic $$4, int $$5) {
-         dyr $$6 = dyr.a($$1, $$2, $$3, -4, -1, 0, 11, 8, 16, $$4);
-         return a($$6) && $$0.a($$6) == null ? new ebq.g($$5, $$6, $$4) : null;
-      }
-
-      @Override
-      public void a(cud $$0, cub $$1, dkx $$2, aup $$3, dyr $$4, csp $$5, hx $$6) {
-         this.a($$0, $$4, 0, 0, 0, 10, 7, 15, false, $$3, ebq.k);
-         this.a($$0, $$3, $$4, ebq.p.a.c, 4, 1, 0);
-         int $$7 = 6;
-         this.a($$0, $$4, 1, 6, 1, 1, 6, 14, false, $$3, ebq.k);
-         this.a($$0, $$4, 9, 6, 1, 9, 6, 14, false, $$3, ebq.k);
-         this.a($$0, $$4, 2, 6, 1, 8, 6, 2, false, $$3, ebq.k);
-         this.a($$0, $$4, 2, 6, 14, 8, 6, 14, false, $$3, ebq.k);
-         this.a($$0, $$4, 1, 1, 1, 2, 1, 4, false, $$3, ebq.k);
-         this.a($$0, $$4, 8, 1, 1, 9, 1, 4, false, $$3, ebq.k);
-         this.a($$0, $$4, 1, 1, 1, 1, 1, 3, cwl.H.o(), cwl.H.o(), false);
-         this.a($$0, $$4, 9, 1, 1, 9, 1, 3, cwl.H.o(), cwl.H.o(), false);
-         this.a($$0, $$4, 3, 1, 8, 7, 1, 12, false, $$3, ebq.k);
-         this.a($$0, $$4, 4, 1, 9, 6, 1, 11, cwl.H.o(), cwl.H.o(), false);
-         dja $$8 = cwl.eW.o().a(daj.a, Boolean.valueOf(true)).a(daj.c, Boolean.valueOf(true));
-         dja $$9 = cwl.eW.o().a(daj.d, Boolean.valueOf(true)).a(daj.b, Boolean.valueOf(true));
-
-         for (int $$10 = 3; $$10 < 14; $$10 += 2) {
-            this.a($$0, $$4, 0, 3, $$10, 0, 4, $$10, $$8, $$8, false);
-            this.a($$0, $$4, 10, 3, $$10, 10, 4, $$10, $$8, $$8, false);
-         }
-
-         for (int $$11 = 2; $$11 < 9; $$11 += 2) {
-            this.a($$0, $$4, $$11, 3, 15, $$11, 4, 15, $$9, $$9, false);
-         }
-
-         dja $$12 = cwl.fj.o().a(dec.b, ic.c);
-         this.a($$0, $$4, 4, 1, 5, 6, 1, 7, false, $$3, ebq.k);
-         this.a($$0, $$4, 4, 2, 6, 6, 2, 7, false, $$3, ebq.k);
-         this.a($$0, $$4, 4, 3, 7, 6, 3, 7, false, $$3, ebq.k);
-
-         for (int $$13 = 4; $$13 <= 6; $$13++) {
-            this.a($$0, $$12, $$13, 1, 4, $$4);
-            this.a($$0, $$12, $$13, 2, 5, $$4);
-            this.a($$0, $$12, $$13, 3, 6, $$4);
-         }
-
-         dja $$14 = cwl.fy.o().a(cyy.b, ic.c);
-         dja $$15 = cwl.fy.o().a(cyy.b, ic.d);
-         dja $$16 = cwl.fy.o().a(cyy.b, ic.f);
-         dja $$17 = cwl.fy.o().a(cyy.b, ic.e);
-         boolean $$18 = true;
-         boolean[] $$19 = new boolean[12];
-
-         for (int $$20 = 0; $$20 < $$19.length; $$20++) {
-            $$19[$$20] = $$3.i() > 0.9F;
-            $$18 &= $$19[$$20];
-         }
-
-         this.a($$0, $$14.a(cyy.c, Boolean.valueOf($$19[0])), 4, 3, 8, $$4);
-         this.a($$0, $$14.a(cyy.c, Boolean.valueOf($$19[1])), 5, 3, 8, $$4);
-         this.a($$0, $$14.a(cyy.c, Boolean.valueOf($$19[2])), 6, 3, 8, $$4);
-         this.a($$0, $$15.a(cyy.c, Boolean.valueOf($$19[3])), 4, 3, 12, $$4);
-         this.a($$0, $$15.a(cyy.c, Boolean.valueOf($$19[4])), 5, 3, 12, $$4);
-         this.a($$0, $$15.a(cyy.c, Boolean.valueOf($$19[5])), 6, 3, 12, $$4);
-         this.a($$0, $$16.a(cyy.c, Boolean.valueOf($$19[6])), 3, 3, 9, $$4);
-         this.a($$0, $$16.a(cyy.c, Boolean.valueOf($$19[7])), 3, 3, 10, $$4);
-         this.a($$0, $$16.a(cyy.c, Boolean.valueOf($$19[8])), 3, 3, 11, $$4);
-         this.a($$0, $$17.a(cyy.c, Boolean.valueOf($$19[9])), 7, 3, 9, $$4);
-         this.a($$0, $$17.a(cyy.c, Boolean.valueOf($$19[10])), 7, 3, 10, $$4);
-         this.a($$0, $$17.a(cyy.c, Boolean.valueOf($$19[11])), 7, 3, 11, $$4);
-         if ($$18) {
-            dja $$21 = cwl.fx.o();
-            this.a($$0, $$21, 4, 3, 9, $$4);
-            this.a($$0, $$21, 5, 3, 9, $$4);
-            this.a($$0, $$21, 6, 3, 9, $$4);
-            this.a($$0, $$21, 4, 3, 10, $$4);
-            this.a($$0, $$21, 5, 3, 10, $$4);
-            this.a($$0, $$21, 6, 3, 10, $$4);
-            this.a($$0, $$21, 4, 3, 11, $$4);
-            this.a($$0, $$21, 5, 3, 11, $$4);
-            this.a($$0, $$21, 6, 3, 11, $$4);
-         }
-
-         if (!this.d) {
-            hx $$22 = this.b(5, 3, 6);
-            if ($$4.b($$22)) {
-               this.d = true;
-               $$0.a($$22, cwl.ct.o(), 2);
-               if ($$0.c_($$22) instanceof dib $$24) {
-                  $$24.a(blt.aJ, $$3);
+         } else if ("drowned".equals($$0)) {
+            ccc $$6 = bly.z.a((cto)$$2.E());
+            if ($$6 != null) {
+               $$6.fJ();
+               $$6.a($$1, 0.0F, 0.0F);
+               $$6.a($$2, $$2.d_($$1), bmo.d, null, null);
+               $$2.a_($$6);
+               if ($$1.v() > $$2.A_()) {
+                  $$2.a($$1, cwr.a.o(), 2);
+               } else {
+                  $$2.a($$1, cwr.G.o(), 2);
                }
             }
          }
       }
-   }
-
-   public static class h extends ebq.p {
-      protected static final int a = 9;
-      protected static final int b = 5;
-      protected static final int c = 11;
-
-      public h(int $$0, aup $$1, dyr $$2, ic $$3) {
-         super(dzq.z, $$0, $$2);
-         this.a($$3);
-         this.h = this.b($$1);
-      }
-
-      public h(sl $$0) {
-         super(dzq.z, $$0);
-      }
 
       @Override
-      public void a(dzd $$0, dze $$1, aup $$2) {
-         this.a((ebq.m)$$0, $$1, $$2, 1, 1);
+      public void a(cuj $$0, cuh $$1, dld $$2, auu $$3, dyx $$4, csv $$5, hx $$6) {
+         int $$7 = $$0.a(dop.a.c, this.d.u(), this.d.w());
+         this.d = new hx(this.d.u(), $$7, this.d.w());
+         hx $$8 = edf.a(new hx(this.b.a().u() - 1, 0, this.b.a().w() - 1), dbl.a, this.c.d(), hx.b).a((jb)this.d);
+         this.d = new hx(this.d.u(), this.a(this.d, $$0, $$8), this.d.w());
+         super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
       }
 
-      public static ebq.h a(dze $$0, aup $$1, int $$2, int $$3, int $$4, ic $$5, int $$6) {
-         dyr $$7 = dyr.a($$2, $$3, $$4, -1, -1, 0, 9, 5, 11, $$5);
-         return a($$7) && $$0.a($$7) == null ? new ebq.h($$6, $$1, $$7, $$5) : null;
-      }
+      private int a(hx $$0, csu $$1, hx $$2) {
+         int $$3 = $$0.v();
+         int $$4 = 512;
+         int $$5 = $$3 - 1;
+         int $$6 = 0;
 
-      @Override
-      public void a(cud $$0, cub $$1, dkx $$2, aup $$3, dyr $$4, csp $$5, hx $$6) {
-         this.a($$0, $$4, 0, 0, 0, 8, 4, 10, true, $$3, ebq.k);
-         this.a($$0, $$3, $$4, this.h, 1, 1, 0);
-         this.a($$0, $$4, 1, 1, 10, 3, 3, 10, e, e, false);
-         this.a($$0, $$4, 4, 1, 1, 4, 3, 1, false, $$3, ebq.k);
-         this.a($$0, $$4, 4, 1, 3, 4, 3, 3, false, $$3, ebq.k);
-         this.a($$0, $$4, 4, 1, 7, 4, 3, 7, false, $$3, ebq.k);
-         this.a($$0, $$4, 4, 1, 9, 4, 3, 9, false, $$3, ebq.k);
+         for (hx $$7 : hx.a($$0, $$2)) {
+            int $$8 = $$7.u();
+            int $$9 = $$7.w();
+            int $$10 = $$0.v() - 1;
+            hx.a $$11 = new hx.a($$8, $$10, $$9);
+            djg $$12 = $$1.a_($$11);
 
-         for (int $$7 = 1; $$7 <= 3; $$7++) {
-            this.a($$0, cwl.eW.o().a(daj.a, Boolean.valueOf(true)).a(daj.c, Boolean.valueOf(true)), 4, $$7, 4, $$4);
-            this.a($$0, cwl.eW.o().a(daj.a, Boolean.valueOf(true)).a(daj.c, Boolean.valueOf(true)).a(daj.b, Boolean.valueOf(true)), 4, $$7, 5, $$4);
-            this.a($$0, cwl.eW.o().a(daj.a, Boolean.valueOf(true)).a(daj.c, Boolean.valueOf(true)), 4, $$7, 6, $$4);
-            this.a($$0, cwl.eW.o().a(daj.d, Boolean.valueOf(true)).a(daj.b, Boolean.valueOf(true)), 5, $$7, 5, $$4);
-            this.a($$0, cwl.eW.o().a(daj.d, Boolean.valueOf(true)).a(daj.b, Boolean.valueOf(true)), 6, $$7, 5, $$4);
-            this.a($$0, cwl.eW.o().a(daj.d, Boolean.valueOf(true)).a(daj.b, Boolean.valueOf(true)), 7, $$7, 5, $$4);
-         }
-
-         this.a($$0, cwl.eW.o().a(daj.a, Boolean.valueOf(true)).a(daj.c, Boolean.valueOf(true)), 4, 3, 2, $$4);
-         this.a($$0, cwl.eW.o().a(daj.a, Boolean.valueOf(true)).a(daj.c, Boolean.valueOf(true)), 4, 3, 8, $$4);
-         dja $$8 = cwl.dy.o().a(cyp.b, ic.e);
-         dja $$9 = cwl.dy.o().a(cyp.b, ic.e).a(cyp.f, djw.a);
-         this.a($$0, $$8, 4, 1, 2, $$4);
-         this.a($$0, $$9, 4, 2, 2, $$4);
-         this.a($$0, $$8, 4, 1, 8, $$4);
-         this.a($$0, $$9, 4, 2, 8, $$4);
-      }
-   }
-
-   public static class i extends ebq.q {
-      public i(int $$0, aup $$1, dyr $$2, ic $$3) {
-         super(dzq.A, $$0, $$2);
-         this.a($$3);
-         this.h = this.b($$1);
-      }
-
-      public i(sl $$0) {
-         super(dzq.A, $$0);
-      }
-
-      @Override
-      public void a(dzd $$0, dze $$1, aup $$2) {
-         ic $$3 = this.i();
-         if ($$3 != ic.c && $$3 != ic.f) {
-            this.b((ebq.m)$$0, $$1, $$2, 1, 1);
-         } else {
-            this.c((ebq.m)$$0, $$1, $$2, 1, 1);
-         }
-      }
-
-      public static ebq.i a(dze $$0, aup $$1, int $$2, int $$3, int $$4, ic $$5, int $$6) {
-         dyr $$7 = dyr.a($$2, $$3, $$4, -1, -1, 0, 5, 5, 5, $$5);
-         return a($$7) && $$0.a($$7) == null ? new ebq.i($$6, $$1, $$7, $$5) : null;
-      }
-
-      @Override
-      public void a(cud $$0, cub $$1, dkx $$2, aup $$3, dyr $$4, csp $$5, hx $$6) {
-         this.a($$0, $$4, 0, 0, 0, 4, 4, 4, true, $$3, ebq.k);
-         this.a($$0, $$3, $$4, this.h, 1, 1, 0);
-         ic $$7 = this.i();
-         if ($$7 != ic.c && $$7 != ic.f) {
-            this.a($$0, $$4, 0, 1, 1, 0, 3, 3, e, e, false);
-         } else {
-            this.a($$0, $$4, 4, 1, 1, 4, 3, 3, e, e, false);
-         }
-      }
-   }
-
-   public static class j extends ebq.p {
-      protected static final int a = 11;
-      protected static final int b = 7;
-      protected static final int c = 11;
-      protected final int d;
-
-      public j(int $$0, aup $$1, dyr $$2, ic $$3) {
-         super(dzq.B, $$0, $$2);
-         this.a($$3);
-         this.h = this.b($$1);
-         this.d = $$1.a(5);
-      }
-
-      public j(sl $$0) {
-         super(dzq.B, $$0);
-         this.d = $$0.h("Type");
-      }
-
-      @Override
-      protected void a(dzp $$0, sl $$1) {
-         super.a($$0, $$1);
-         $$1.a("Type", this.d);
-      }
-
-      @Override
-      public void a(dzd $$0, dze $$1, aup $$2) {
-         this.a((ebq.m)$$0, $$1, $$2, 4, 1);
-         this.b((ebq.m)$$0, $$1, $$2, 1, 4);
-         this.c((ebq.m)$$0, $$1, $$2, 1, 4);
-      }
-
-      public static ebq.j a(dze $$0, aup $$1, int $$2, int $$3, int $$4, ic $$5, int $$6) {
-         dyr $$7 = dyr.a($$2, $$3, $$4, -4, -1, 0, 11, 7, 11, $$5);
-         return a($$7) && $$0.a($$7) == null ? new ebq.j($$6, $$1, $$7, $$5) : null;
-      }
-
-      @Override
-      public void a(cud $$0, cub $$1, dkx $$2, aup $$3, dyr $$4, csp $$5, hx $$6) {
-         this.a($$0, $$4, 0, 0, 0, 10, 6, 10, true, $$3, ebq.k);
-         this.a($$0, $$3, $$4, this.h, 4, 1, 0);
-         this.a($$0, $$4, 4, 1, 10, 6, 3, 10, e, e, false);
-         this.a($$0, $$4, 0, 1, 4, 0, 3, 6, e, e, false);
-         this.a($$0, $$4, 10, 1, 4, 10, 3, 6, e, e, false);
-         switch (this.d) {
-            case 0:
-               this.a($$0, cwl.eH.o(), 5, 1, 5, $$4);
-               this.a($$0, cwl.eH.o(), 5, 2, 5, $$4);
-               this.a($$0, cwl.eH.o(), 5, 3, 5, $$4);
-               this.a($$0, cwl.cq.o().a(dfj.g, ic.e), 4, 3, 5, $$4);
-               this.a($$0, cwl.cq.o().a(dfj.g, ic.f), 6, 3, 5, $$4);
-               this.a($$0, cwl.cq.o().a(dfj.g, ic.d), 5, 3, 4, $$4);
-               this.a($$0, cwl.cq.o().a(dfj.g, ic.c), 5, 3, 6, $$4);
-               this.a($$0, cwl.jE.o(), 4, 1, 4, $$4);
-               this.a($$0, cwl.jE.o(), 4, 1, 5, $$4);
-               this.a($$0, cwl.jE.o(), 4, 1, 6, $$4);
-               this.a($$0, cwl.jE.o(), 6, 1, 4, $$4);
-               this.a($$0, cwl.jE.o(), 6, 1, 5, $$4);
-               this.a($$0, cwl.jE.o(), 6, 1, 6, $$4);
-               this.a($$0, cwl.jE.o(), 5, 1, 4, $$4);
-               this.a($$0, cwl.jE.o(), 5, 1, 6, $$4);
-               break;
-            case 1:
-               for (int $$7 = 0; $$7 < 5; $$7++) {
-                  this.a($$0, cwl.eH.o(), 3, 1, 3 + $$7, $$4);
-                  this.a($$0, cwl.eH.o(), 7, 1, 3 + $$7, $$4);
-                  this.a($$0, cwl.eH.o(), 3 + $$7, 1, 3, $$4);
-                  this.a($$0, cwl.eH.o(), 3 + $$7, 1, 7, $$4);
-               }
-
-               this.a($$0, cwl.eH.o(), 5, 1, 5, $$4);
-               this.a($$0, cwl.eH.o(), 5, 2, 5, $$4);
-               this.a($$0, cwl.eH.o(), 5, 3, 5, $$4);
-               this.a($$0, cwl.G.o(), 5, 4, 5, $$4);
-               break;
-            case 2:
-               for (int $$8 = 1; $$8 <= 9; $$8++) {
-                  this.a($$0, cwl.m.o(), 1, 3, $$8, $$4);
-                  this.a($$0, cwl.m.o(), 9, 3, $$8, $$4);
-               }
-
-               for (int $$9 = 1; $$9 <= 9; $$9++) {
-                  this.a($$0, cwl.m.o(), $$9, 3, 1, $$4);
-                  this.a($$0, cwl.m.o(), $$9, 3, 9, $$4);
-               }
-
-               this.a($$0, cwl.m.o(), 5, 1, 4, $$4);
-               this.a($$0, cwl.m.o(), 5, 1, 6, $$4);
-               this.a($$0, cwl.m.o(), 5, 3, 4, $$4);
-               this.a($$0, cwl.m.o(), 5, 3, 6, $$4);
-               this.a($$0, cwl.m.o(), 4, 1, 5, $$4);
-               this.a($$0, cwl.m.o(), 6, 1, 5, $$4);
-               this.a($$0, cwl.m.o(), 4, 3, 5, $$4);
-               this.a($$0, cwl.m.o(), 6, 3, 5, $$4);
-
-               for (int $$10 = 1; $$10 <= 3; $$10++) {
-                  this.a($$0, cwl.m.o(), 4, $$10, 4, $$4);
-                  this.a($$0, cwl.m.o(), 6, $$10, 4, $$4);
-                  this.a($$0, cwl.m.o(), 4, $$10, 6, $$4);
-                  this.a($$0, cwl.m.o(), 6, $$10, 6, $$4);
-               }
-
-               this.a($$0, cwl.cq.o(), 5, 3, 5, $$4);
-
-               for (int $$11 = 2; $$11 <= 8; $$11++) {
-                  this.a($$0, cwl.n.o(), 2, 3, $$11, $$4);
-                  this.a($$0, cwl.n.o(), 3, 3, $$11, $$4);
-                  if ($$11 <= 3 || $$11 >= 7) {
-                     this.a($$0, cwl.n.o(), 4, 3, $$11, $$4);
-                     this.a($$0, cwl.n.o(), 5, 3, $$11, $$4);
-                     this.a($$0, cwl.n.o(), 6, 3, $$11, $$4);
-                  }
-
-                  this.a($$0, cwl.n.o(), 7, 3, $$11, $$4);
-                  this.a($$0, cwl.n.o(), 8, 3, $$11, $$4);
-               }
-
-               dja $$12 = cwl.cO.o().a(dao.b, ic.e);
-               this.a($$0, $$12, 9, 1, 3, $$4);
-               this.a($$0, $$12, 9, 2, 3, $$4);
-               this.a($$0, $$12, 9, 3, 3, $$4);
-               this.a($$0, $$4, $$3, 3, 4, 8, egn.x);
-         }
-      }
-   }
-
-   static class k extends dzd.a {
-      @Override
-      public void a(aup $$0, int $$1, int $$2, int $$3, boolean $$4) {
-         if ($$4) {
-            float $$5 = $$0.i();
-            if ($$5 < 0.2F) {
-               this.a = cwl.eJ.o();
-            } else if ($$5 < 0.5F) {
-               this.a = cwl.eI.o();
-            } else if ($$5 < 0.55F) {
-               this.a = cwl.eP.o();
-            } else {
-               this.a = cwl.eH.o();
+            for (eeq $$13 = $$1.b_($$11); ($$12.i() || $$13.a(asl.a) || $$12.a(asg.al)) && $$10 > $$1.J_() + 1; $$13 = $$1.b_($$11)) {
+               $$11.d($$8, --$$10, $$9);
+               $$12 = $$1.a_($$11);
             }
-         } else {
-            this.a = cwl.nc.o();
-         }
-      }
-   }
 
-   public static class l extends ebq.p {
-      private static final int a = 5;
-      private static final int b = 11;
-      private static final int c = 5;
-      private final boolean d;
-
-      public l(dzq $$0, int $$1, int $$2, int $$3, ic $$4) {
-         super($$0, $$1, a($$2, 64, $$3, $$4, 5, 11, 5));
-         this.d = true;
-         this.a($$4);
-         this.h = ebq.p.a.a;
-      }
-
-      public l(int $$0, aup $$1, dyr $$2, ic $$3) {
-         super(dzq.C, $$0, $$2);
-         this.d = false;
-         this.a($$3);
-         this.h = this.b($$1);
-      }
-
-      public l(dzq $$0, sl $$1) {
-         super($$0, $$1);
-         this.d = $$1.q("Source");
-      }
-
-      public l(sl $$0) {
-         this(dzq.C, $$0);
-      }
-
-      @Override
-      protected void a(dzp $$0, sl $$1) {
-         super.a($$0, $$1);
-         $$1.a("Source", this.d);
-      }
-
-      @Override
-      public void a(dzd $$0, dze $$1, aup $$2) {
-         if (this.d) {
-            ebq.i = ebq.c.class;
-         }
-
-         this.a((ebq.m)$$0, $$1, $$2, 1, 1);
-      }
-
-      public static ebq.l a(dze $$0, aup $$1, int $$2, int $$3, int $$4, ic $$5, int $$6) {
-         dyr $$7 = dyr.a($$2, $$3, $$4, -1, -7, 0, 5, 11, 5, $$5);
-         return a($$7) && $$0.a($$7) == null ? new ebq.l($$6, $$1, $$7, $$5) : null;
-      }
-
-      @Override
-      public void a(cud $$0, cub $$1, dkx $$2, aup $$3, dyr $$4, csp $$5, hx $$6) {
-         this.a($$0, $$4, 0, 0, 0, 4, 10, 4, true, $$3, ebq.k);
-         this.a($$0, $$3, $$4, this.h, 1, 7, 0);
-         this.a($$0, $$3, $$4, ebq.p.a.a, 1, 1, 4);
-         this.a($$0, cwl.eH.o(), 2, 6, 1, $$4);
-         this.a($$0, cwl.eH.o(), 1, 5, 1, $$4);
-         this.a($$0, cwl.jE.o(), 1, 6, 1, $$4);
-         this.a($$0, cwl.eH.o(), 1, 5, 2, $$4);
-         this.a($$0, cwl.eH.o(), 1, 4, 3, $$4);
-         this.a($$0, cwl.jE.o(), 1, 5, 3, $$4);
-         this.a($$0, cwl.eH.o(), 2, 4, 3, $$4);
-         this.a($$0, cwl.eH.o(), 3, 3, 3, $$4);
-         this.a($$0, cwl.jE.o(), 3, 4, 3, $$4);
-         this.a($$0, cwl.eH.o(), 3, 3, 2, $$4);
-         this.a($$0, cwl.eH.o(), 3, 2, 1, $$4);
-         this.a($$0, cwl.jE.o(), 3, 3, 1, $$4);
-         this.a($$0, cwl.eH.o(), 2, 2, 1, $$4);
-         this.a($$0, cwl.eH.o(), 1, 1, 1, $$4);
-         this.a($$0, cwl.jE.o(), 1, 2, 1, $$4);
-         this.a($$0, cwl.eH.o(), 1, 1, 2, $$4);
-         this.a($$0, cwl.jE.o(), 1, 1, 3, $$4);
-      }
-   }
-
-   public static class m extends ebq.l {
-      public ebq.f a;
-      @Nullable
-      public ebq.g b;
-      public final List<dzd> c = Lists.newArrayList();
-
-      public m(aup $$0, int $$1, int $$2) {
-         super(dzq.D, 0, $$1, $$2, a($$0));
-      }
-
-      public m(sl $$0) {
-         super(dzq.D, $$0);
-      }
-
-      @Override
-      public hx h() {
-         return this.b != null ? this.b.h() : super.h();
-      }
-   }
-
-   public static class n extends ebq.p {
-      private static final int a = 5;
-      private static final int b = 5;
-      private static final int c = 7;
-      private final boolean d;
-      private final boolean i;
-
-      public n(int $$0, aup $$1, dyr $$2, ic $$3) {
-         super(dzq.E, $$0, $$2);
-         this.a($$3);
-         this.h = this.b($$1);
-         this.d = $$1.a(2) == 0;
-         this.i = $$1.a(2) == 0;
-      }
-
-      public n(sl $$0) {
-         super(dzq.E, $$0);
-         this.d = $$0.q("Left");
-         this.i = $$0.q("Right");
-      }
-
-      @Override
-      protected void a(dzp $$0, sl $$1) {
-         super.a($$0, $$1);
-         $$1.a("Left", this.d);
-         $$1.a("Right", this.i);
-      }
-
-      @Override
-      public void a(dzd $$0, dze $$1, aup $$2) {
-         this.a((ebq.m)$$0, $$1, $$2, 1, 1);
-         if (this.d) {
-            this.b((ebq.m)$$0, $$1, $$2, 1, 2);
-         }
-
-         if (this.i) {
-            this.c((ebq.m)$$0, $$1, $$2, 1, 2);
-         }
-      }
-
-      public static ebq.n a(dze $$0, aup $$1, int $$2, int $$3, int $$4, ic $$5, int $$6) {
-         dyr $$7 = dyr.a($$2, $$3, $$4, -1, -1, 0, 5, 5, 7, $$5);
-         return a($$7) && $$0.a($$7) == null ? new ebq.n($$6, $$1, $$7, $$5) : null;
-      }
-
-      @Override
-      public void a(cud $$0, cub $$1, dkx $$2, aup $$3, dyr $$4, csp $$5, hx $$6) {
-         this.a($$0, $$4, 0, 0, 0, 4, 4, 6, true, $$3, ebq.k);
-         this.a($$0, $$3, $$4, this.h, 1, 1, 0);
-         this.a($$0, $$3, $$4, ebq.p.a.a, 1, 1, 6);
-         dja $$7 = cwl.cq.o().a(dfj.g, ic.f);
-         dja $$8 = cwl.cq.o().a(dfj.g, ic.e);
-         this.a($$0, $$4, $$3, 0.1F, 1, 2, 1, $$7);
-         this.a($$0, $$4, $$3, 0.1F, 3, 2, 1, $$8);
-         this.a($$0, $$4, $$3, 0.1F, 1, 2, 5, $$7);
-         this.a($$0, $$4, $$3, 0.1F, 3, 2, 5, $$8);
-         if (this.d) {
-            this.a($$0, $$4, 0, 1, 2, 0, 3, 4, e, e, false);
-         }
-
-         if (this.i) {
-            this.a($$0, $$4, 4, 1, 2, 4, 3, 4, e, e, false);
-         }
-      }
-   }
-
-   public static class o extends ebq.p {
-      private static final int a = 5;
-      private static final int b = 11;
-      private static final int c = 8;
-
-      public o(int $$0, aup $$1, dyr $$2, ic $$3) {
-         super(dzq.F, $$0, $$2);
-         this.a($$3);
-         this.h = this.b($$1);
-      }
-
-      public o(sl $$0) {
-         super(dzq.F, $$0);
-      }
-
-      @Override
-      public void a(dzd $$0, dze $$1, aup $$2) {
-         this.a((ebq.m)$$0, $$1, $$2, 1, 1);
-      }
-
-      public static ebq.o a(dze $$0, aup $$1, int $$2, int $$3, int $$4, ic $$5, int $$6) {
-         dyr $$7 = dyr.a($$2, $$3, $$4, -1, -7, 0, 5, 11, 8, $$5);
-         return a($$7) && $$0.a($$7) == null ? new ebq.o($$6, $$1, $$7, $$5) : null;
-      }
-
-      @Override
-      public void a(cud $$0, cub $$1, dkx $$2, aup $$3, dyr $$4, csp $$5, hx $$6) {
-         this.a($$0, $$4, 0, 0, 0, 4, 10, 7, true, $$3, ebq.k);
-         this.a($$0, $$3, $$4, this.h, 1, 7, 0);
-         this.a($$0, $$3, $$4, ebq.p.a.a, 1, 1, 7);
-         dja $$7 = cwl.cQ.o().a(dec.b, ic.d);
-
-         for (int $$8 = 0; $$8 < 6; $$8++) {
-            this.a($$0, $$7, 1, 6 - $$8, 1 + $$8, $$4);
-            this.a($$0, $$7, 2, 6 - $$8, 1 + $$8, $$4);
-            this.a($$0, $$7, 3, 6 - $$8, 1 + $$8, $$4);
-            if ($$8 < 5) {
-               this.a($$0, cwl.eH.o(), 1, 5 - $$8, 1 + $$8, $$4);
-               this.a($$0, cwl.eH.o(), 2, 5 - $$8, 1 + $$8, $$4);
-               this.a($$0, cwl.eH.o(), 3, 5 - $$8, 1 + $$8, $$4);
-            }
-         }
-      }
-   }
-
-   abstract static class p extends dzd {
-      protected ebq.p.a h = ebq.p.a.a;
-
-      protected p(dzq $$0, int $$1, dyr $$2) {
-         super($$0, $$1, $$2);
-      }
-
-      public p(dzq $$0, sl $$1) {
-         super($$0, $$1);
-         this.h = ebq.p.a.valueOf($$1.l("EntryDoor"));
-      }
-
-      @Override
-      protected void a(dzp $$0, sl $$1) {
-         $$1.a("EntryDoor", this.h.name());
-      }
-
-      protected void a(cud $$0, aup $$1, dyr $$2, ebq.p.a $$3, int $$4, int $$5, int $$6) {
-         switch ($$3) {
-            case a:
-               this.a($$0, $$2, $$4, $$5, $$6, $$4 + 3 - 1, $$5 + 3 - 1, $$6, e, e, false);
-               break;
-            case b:
-               this.a($$0, cwl.eH.o(), $$4, $$5, $$6, $$2);
-               this.a($$0, cwl.eH.o(), $$4, $$5 + 1, $$6, $$2);
-               this.a($$0, cwl.eH.o(), $$4, $$5 + 2, $$6, $$2);
-               this.a($$0, cwl.eH.o(), $$4 + 1, $$5 + 2, $$6, $$2);
-               this.a($$0, cwl.eH.o(), $$4 + 2, $$5 + 2, $$6, $$2);
-               this.a($$0, cwl.eH.o(), $$4 + 2, $$5 + 1, $$6, $$2);
-               this.a($$0, cwl.eH.o(), $$4 + 2, $$5, $$6, $$2);
-               this.a($$0, cwl.cN.o(), $$4 + 1, $$5, $$6, $$2);
-               this.a($$0, cwl.cN.o().a(cyp.f, djw.a), $$4 + 1, $$5 + 1, $$6, $$2);
-               break;
-            case c:
-               this.a($$0, cwl.nc.o(), $$4 + 1, $$5, $$6, $$2);
-               this.a($$0, cwl.nc.o(), $$4 + 1, $$5 + 1, $$6, $$2);
-               this.a($$0, cwl.eW.o().a(daj.d, Boolean.valueOf(true)), $$4, $$5, $$6, $$2);
-               this.a($$0, cwl.eW.o().a(daj.d, Boolean.valueOf(true)), $$4, $$5 + 1, $$6, $$2);
-               this.a($$0, cwl.eW.o().a(daj.b, Boolean.valueOf(true)).a(daj.d, Boolean.valueOf(true)), $$4, $$5 + 2, $$6, $$2);
-               this.a($$0, cwl.eW.o().a(daj.b, Boolean.valueOf(true)).a(daj.d, Boolean.valueOf(true)), $$4 + 1, $$5 + 2, $$6, $$2);
-               this.a($$0, cwl.eW.o().a(daj.b, Boolean.valueOf(true)).a(daj.d, Boolean.valueOf(true)), $$4 + 2, $$5 + 2, $$6, $$2);
-               this.a($$0, cwl.eW.o().a(daj.b, Boolean.valueOf(true)), $$4 + 2, $$5 + 1, $$6, $$2);
-               this.a($$0, cwl.eW.o().a(daj.b, Boolean.valueOf(true)), $$4 + 2, $$5, $$6, $$2);
-               break;
-            case d:
-               this.a($$0, cwl.eH.o(), $$4, $$5, $$6, $$2);
-               this.a($$0, cwl.eH.o(), $$4, $$5 + 1, $$6, $$2);
-               this.a($$0, cwl.eH.o(), $$4, $$5 + 2, $$6, $$2);
-               this.a($$0, cwl.eH.o(), $$4 + 1, $$5 + 2, $$6, $$2);
-               this.a($$0, cwl.eH.o(), $$4 + 2, $$5 + 2, $$6, $$2);
-               this.a($$0, cwl.eH.o(), $$4 + 2, $$5 + 1, $$6, $$2);
-               this.a($$0, cwl.eH.o(), $$4 + 2, $$5, $$6, $$2);
-               this.a($$0, cwl.dy.o(), $$4 + 1, $$5, $$6, $$2);
-               this.a($$0, cwl.dy.o().a(cyp.f, djw.a), $$4 + 1, $$5 + 1, $$6, $$2);
-               this.a($$0, cwl.dM.o().a(cwt.aE, ic.c), $$4 + 2, $$5 + 1, $$6 + 1, $$2);
-               this.a($$0, cwl.dM.o().a(cwt.aE, ic.d), $$4 + 2, $$5 + 1, $$6 - 1, $$2);
-         }
-      }
-
-      protected ebq.p.a b(aup $$0) {
-         int $$1 = $$0.a(5);
-         switch ($$1) {
-            case 0:
-            case 1:
-            default:
-               return ebq.p.a.a;
-            case 2:
-               return ebq.p.a.b;
-            case 3:
-               return ebq.p.a.c;
-            case 4:
-               return ebq.p.a.d;
-         }
-      }
-
-      @Nullable
-      protected dzd a(ebq.m $$0, dze $$1, aup $$2, int $$3, int $$4) {
-         ic $$5 = this.i();
-         if ($$5 != null) {
-            switch ($$5) {
-               case c:
-                  return ebq.b($$0, $$1, $$2, this.f.h() + $$3, this.f.i() + $$4, this.f.j() - 1, $$5, this.g());
-               case d:
-                  return ebq.b($$0, $$1, $$2, this.f.h() + $$3, this.f.i() + $$4, this.f.m() + 1, $$5, this.g());
-               case e:
-                  return ebq.b($$0, $$1, $$2, this.f.h() - 1, this.f.i() + $$4, this.f.j() + $$3, $$5, this.g());
-               case f:
-                  return ebq.b($$0, $$1, $$2, this.f.k() + 1, this.f.i() + $$4, this.f.j() + $$3, $$5, this.g());
+            $$4 = Math.min($$4, $$10);
+            if ($$10 < $$5 - 2) {
+               $$6++;
             }
          }
 
-         return null;
-      }
-
-      @Nullable
-      protected dzd b(ebq.m $$0, dze $$1, aup $$2, int $$3, int $$4) {
-         ic $$5 = this.i();
-         if ($$5 != null) {
-            switch ($$5) {
-               case c:
-                  return ebq.b($$0, $$1, $$2, this.f.h() - 1, this.f.i() + $$3, this.f.j() + $$4, ic.e, this.g());
-               case d:
-                  return ebq.b($$0, $$1, $$2, this.f.h() - 1, this.f.i() + $$3, this.f.j() + $$4, ic.e, this.g());
-               case e:
-                  return ebq.b($$0, $$1, $$2, this.f.h() + $$4, this.f.i() + $$3, this.f.j() - 1, ic.c, this.g());
-               case f:
-                  return ebq.b($$0, $$1, $$2, this.f.h() + $$4, this.f.i() + $$3, this.f.j() - 1, ic.c, this.g());
-            }
+         int $$14 = Math.abs($$0.u() - $$2.u());
+         if ($$5 - $$4 > 2 && $$6 > $$14 - 2) {
+            $$3 = $$4 + 1;
          }
 
-         return null;
-      }
-
-      @Nullable
-      protected dzd c(ebq.m $$0, dze $$1, aup $$2, int $$3, int $$4) {
-         ic $$5 = this.i();
-         if ($$5 != null) {
-            switch ($$5) {
-               case c:
-                  return ebq.b($$0, $$1, $$2, this.f.k() + 1, this.f.i() + $$3, this.f.j() + $$4, ic.f, this.g());
-               case d:
-                  return ebq.b($$0, $$1, $$2, this.f.k() + 1, this.f.i() + $$3, this.f.j() + $$4, ic.f, this.g());
-               case e:
-                  return ebq.b($$0, $$1, $$2, this.f.h() + $$4, this.f.i() + $$3, this.f.m() + 1, ic.d, this.g());
-               case f:
-                  return ebq.b($$0, $$1, $$2, this.f.h() + $$4, this.f.i() + $$3, this.f.m() + 1, ic.d, this.g());
-            }
-         }
-
-         return null;
-      }
-
-      protected static boolean a(dyr $$0) {
-         return $$0 != null && $$0.i() > 10;
-      }
-
-      protected static enum a {
-         a,
-         b,
-         c,
-         d;
-      }
-   }
-
-   public abstract static class q extends ebq.p {
-      protected static final int a = 5;
-      protected static final int b = 5;
-      protected static final int c = 5;
-
-      protected q(dzq $$0, int $$1, dyr $$2) {
-         super($$0, $$1, $$2);
-      }
-
-      public q(dzq $$0, sl $$1) {
-         super($$0, $$1);
+         return $$3;
       }
    }
 }

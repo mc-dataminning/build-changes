@@ -1,24 +1,42 @@
 import com.google.common.collect.ImmutableList;
+import com.mojang.datafixers.util.Pair;
 
 public class pj {
-   public static final ahc<eai> a = a("empty");
+   public static final ahf<eao> a = pl.a("pillager_outpost/base_plates");
 
-   public static ahc<eai> a(String $$0) {
-      return ahc.a(ke.aG, new ahd($$0));
-   }
-
-   public static void a(pc<eai> $$0, String $$1, eai $$2) {
-      $$0.a(a($$1), $$2);
-   }
-
-   public static void a(pc<eai> $$0) {
-      ii<eai> $$1 = $$0.a(ke.aG);
-      ih<eai> $$2 = $$1.b(a);
-      $$0.a(a, new eai($$2, ImmutableList.of(), eai.a.b));
-      oy.a($$0);
-      ph.a($$0);
-      py.a($$0);
-      ot.a($$0);
-      ps.a($$0);
+   public static void a(pe<eao> $$0) {
+      ii<edd> $$1 = $$0.a(ke.aE);
+      ih<edd> $$2 = $$1.b(pm.q);
+      ii<eao> $$3 = $$0.a(ke.aG);
+      ih<eao> $$4 = $$3.b(pl.a);
+      $$0.a(a, new eao($$4, ImmutableList.of(Pair.of(eam.a("pillager_outpost/base_plate"), 1)), eao.a.b));
+      pl.a(
+         $$0,
+         "pillager_outpost/towers",
+         new eao(
+            $$4,
+            ImmutableList.of(Pair.of(eam.b(ImmutableList.of(eam.a("pillager_outpost/watchtower"), eam.a("pillager_outpost/watchtower_overgrown", $$2))), 1)),
+            eao.a.b
+         )
+      );
+      pl.a($$0, "pillager_outpost/feature_plates", new eao($$4, ImmutableList.of(Pair.of(eam.a("pillager_outpost/feature_plate"), 1)), eao.a.a));
+      pl.a(
+         $$0,
+         "pillager_outpost/features",
+         new eao(
+            $$4,
+            ImmutableList.of(
+               Pair.of(eam.a("pillager_outpost/feature_cage1"), 1),
+               Pair.of(eam.a("pillager_outpost/feature_cage2"), 1),
+               Pair.of(eam.a("pillager_outpost/feature_cage_with_allays"), 1),
+               Pair.of(eam.a("pillager_outpost/feature_logs"), 1),
+               Pair.of(eam.a("pillager_outpost/feature_tent1"), 1),
+               Pair.of(eam.a("pillager_outpost/feature_tent2"), 1),
+               Pair.of(eam.a("pillager_outpost/feature_targets"), 1),
+               Pair.of(eam.g(), 6)
+            ),
+            eao.a.b
+         )
+      );
    }
 }

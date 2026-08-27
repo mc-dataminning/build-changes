@@ -1,13 +1,30 @@
-public record byd(ahd d) {
-   public static final byd a = a("temperate", "textures/entity/frog/temperate_frog.png");
-   public static final byd b = a("warm", "textures/entity/frog/warm_frog.png");
-   public static final byd c = a("cold", "textures/entity/frog/cold_frog.png");
-
-   private static byd a(String $$0, String $$1) {
-      return it.a(kd.al, $$0, new byd(new ahd($$1)));
+public class byd extends bxw {
+   public byd(bly<? extends byd> $$0, cto $$1) {
+      super($$0, $$1);
    }
 
-   public ahd a() {
-      return this.d;
+   @Override
+   public cmx b() {
+      return new cmx(cna.qE);
+   }
+
+   @Override
+   protected arq y() {
+      return arr.eK;
+   }
+
+   @Override
+   protected arq n_() {
+      return arr.eL;
+   }
+
+   @Override
+   protected arq d(bks $$0) {
+      return arr.eN;
+   }
+
+   @Override
+   protected arq gf() {
+      return arr.eM;
    }
 }

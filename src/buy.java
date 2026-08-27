@@ -1,40 +1,102 @@
 import java.util.EnumSet;
+import java.util.Iterator;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class buy extends bvb {
-   private final bna a;
-   private bmf b;
-   private int c;
+public class buy extends bvg {
+   private static final bwy a = bwy.a().d().e();
+   private static final int b = 10;
+   private boolean c;
+   private int d;
+   private final Class<?>[] i;
+   @Nullable
+   private Class<?>[] j;
 
-   public buy(bna $$0) {
-      super($$0, false);
-      this.a = $$0;
-      this.a(EnumSet.of(btb.a.d));
+   public buy(bmt $$0, Class<?>... $$1) {
+      super($$0, true);
+      this.i = $$1;
+      this.a(EnumSet.of(btg.a.d));
    }
 
    @Override
    public boolean a() {
-      if (this.a.u() && !this.a.ge()) {
-         bmf $$0 = this.a.R_();
-         if ($$0 == null) {
+      int $$0 = this.e.ei();
+      bmk $$1 = this.e.eh();
+      if ($$0 != this.d && $$1 != null) {
+         if ($$1.ai() == bly.bv && this.e.dM().Z().b(ctk.O)) {
             return false;
          } else {
-            this.b = $$0.eh();
-            int $$1 = $$0.ei();
-            return $$1 != this.c && this.a(this.b, bwt.a) && this.a.a(this.b, $$0);
+            for (Class<?> $$2 : this.i) {
+               if ($$2.isAssignableFrom($$1.getClass())) {
+                  return false;
+               }
+            }
+
+            return this.a($$1, a);
          }
       } else {
          return false;
       }
    }
 
+   public buy a(Class<?>... $$0) {
+      this.c = true;
+      this.j = $$0;
+      return this;
+   }
+
    @Override
    public void c() {
-      this.e.h(this.b);
-      bmf $$0 = this.a.R_();
-      if ($$0 != null) {
-         this.c = $$0.ei();
+      this.e.h(this.e.eh());
+      this.g = this.e.q();
+      this.d = this.e.ei();
+      this.h = 300;
+      if (this.c) {
+         this.h();
       }
 
       super.c();
+   }
+
+   protected void h() {
+      double $$0 = this.l();
+      eln $$1 = eln.a(this.e.dk()).c($$0, 10.0, $$0);
+      List<? extends bmm> $$2 = this.e.dM().a((Class<? extends bmm>)this.e.getClass(), $$1, blx.f);
+      Iterator var5 = $$2.iterator();
+
+      while (true) {
+         bmm $$3;
+         while (true) {
+            if (!var5.hasNext()) {
+               return;
+            }
+
+            $$3 = (bmm)var5.next();
+            if (this.e != $$3 && $$3.q() == null && (!(this.e instanceof bnf) || ((bnf)this.e).R_() == ((bnf)$$3).R_()) && !$$3.s(this.e.eh())) {
+               if (this.j == null) {
+                  break;
+               }
+
+               boolean $$4 = false;
+
+               for (Class<?> $$5 : this.j) {
+                  if ($$3.getClass() == $$5) {
+                     $$4 = true;
+                     break;
+                  }
+               }
+
+               if (!$$4) {
+                  break;
+               }
+            }
+         }
+
+         this.a($$3, this.e.eh());
+      }
+   }
+
+   protected void a(bmm $$0, bmk $$1) {
+      $$0.h($$1);
    }
 }

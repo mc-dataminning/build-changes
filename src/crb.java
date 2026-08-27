@@ -1,25 +1,20 @@
-public class crb extends crc {
-   protected crb(crc.a $$0, blu... $$1) {
-      super($$0, crd.g, $$1);
+public class crb extends cri {
+   public crb(cri.a $$0, blz... $$1) {
+      super($$0, crj.k, $$1);
    }
 
    @Override
    public int a(int $$0) {
-      return 1 + 10 * ($$0 - 1);
+      return 20;
    }
 
    @Override
    public int b(int $$0) {
-      return super.a($$0) + 50;
+      return 50;
    }
 
    @Override
-   public int a() {
-      return 5;
-   }
-
-   @Override
-   public boolean a(cmr $$0) {
-      return $$0.a(cmu.rS) ? true : super.a($$0);
+   public boolean a(cri $$0) {
+      return $$0 instanceof crs ? false : super.a($$0);
    }
 }

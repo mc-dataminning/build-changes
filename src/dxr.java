@@ -1,26 +1,23 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dxr extends dyf {
-   private static final dxr c = new dxr();
-   public static Codec<dxr> a = Codec.unit(() -> c);
+public class dxr extends dxm {
+   public static final Codec<dxr> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(bik.b(dxm.c).fieldOf("distribution").forGetter($$0x -> $$0x.b)).apply($$0, dxr::new)
+   );
+   private final bik<dxm> b;
 
-   private dxr() {
-   }
-
-   public static dxr a() {
-      return c;
-   }
-
-   @Override
-   protected boolean a(dye $$0, aup $$1, hx $$2) {
-      dyd $$3 = $$0.e()
-         .orElseThrow(() -> new IllegalStateException("Tried to biome check an unregistered feature, or a feature that should not restrict the biome"));
-      ih<cuh> $$4 = $$0.d().t($$2);
-      return $$0.f().a($$4).a($$3);
+   public dxr(bik<dxm> $$0) {
+      this.b = $$0;
    }
 
    @Override
-   public dyh<?> b() {
-      return dyh.e;
+   public int a(auu $$0, dpm $$1) {
+      return this.b.a($$0).orElseThrow(IllegalStateException::new).a($$0, $$1);
+   }
+
+   @Override
+   public dxn<?> a() {
+      return dxn.f;
    }
 }

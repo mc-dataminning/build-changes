@@ -1,176 +1,83 @@
-import com.google.common.base.Predicates;
-import com.google.common.collect.Iterators;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import java.util.Arrays;
-import java.util.Iterator;
-import javax.annotation.Nullable;
+import java.util.Objects;
+import java.util.function.IntFunction;
+import java.util.function.ToIntFunction;
 
-public class atf<K> implements im<K> {
-   private static final int b = -1;
-   private static final Object c = null;
-   private static final float d = 0.8F;
-   private K[] e;
-   private int[] f;
-   private K[] g;
-   private int h;
-   private int i;
+public class atf {
+   private static <T> IntFunction<T> a(ToIntFunction<T> $$0, T[] $$1) {
+      if ($$1.length == 0) {
+         throw new IllegalArgumentException("Empty value list");
+      } else {
+         Int2ObjectMap<T> $$2 = new Int2ObjectOpenHashMap();
 
-   private atf(int $$0) {
-      this.e = (K[])(new Object[$$0]);
-      this.f = new int[$$0];
-      this.g = (K[])(new Object[$$0]);
-   }
-
-   private atf(K[] $$0, int[] $$1, K[] $$2, int $$3, int $$4) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.h = $$3;
-      this.i = $$4;
-   }
-
-   public static <A> atf<A> c(int $$0) {
-      return new atf((int)((float)$$0 / 0.8F));
-   }
-
-   @Override
-   public int a(@Nullable K $$0) {
-      return this.e(this.b($$0, this.d($$0)));
-   }
-
-   @Nullable
-   @Override
-   public K a(int $$0) {
-      return $$0 >= 0 && $$0 < this.g.length ? this.g[$$0] : null;
-   }
-
-   private int e(int $$0) {
-      return $$0 == -1 ? -1 : this.f[$$0];
-   }
-
-   public boolean b(K $$0) {
-      return this.a($$0) != -1;
-   }
-
-   public boolean d(int $$0) {
-      return this.a($$0) != null;
-   }
-
-   public int c(K $$0) {
-      int $$1 = this.d();
-      this.a($$0, $$1);
-      return $$1;
-   }
-
-   private int d() {
-      while (this.h < this.g.length && this.g[this.h] != null) {
-         this.h++;
-      }
-
-      return this.h;
-   }
-
-   private void f(int $$0) {
-      K[] $$1 = this.e;
-      int[] $$2 = this.f;
-      atf<K> $$3 = new atf<>($$0);
-
-      for (int $$4 = 0; $$4 < $$1.length; $$4++) {
-         if ($$1[$$4] != null) {
-            $$3.a($$1[$$4], $$2[$$4]);
-         }
-      }
-
-      this.e = $$3.e;
-      this.f = $$3.f;
-      this.g = $$3.g;
-      this.h = $$3.h;
-      this.i = $$3.i;
-   }
-
-   public void a(K $$0, int $$1) {
-      int $$2 = Math.max($$1, this.i + 1);
-      if ((float)$$2 >= (float)this.e.length * 0.8F) {
-         int $$3 = this.e.length << 1;
-
-         while ($$3 < $$1) {
-            $$3 <<= 1;
+         for (T $$3 : $$1) {
+            int $$4 = $$0.applyAsInt($$3);
+            T $$5 = (T)$$2.put($$4, $$3);
+            if ($$5 != null) {
+               throw new IllegalArgumentException("Duplicate entry on id " + $$4 + ": current=" + $$3 + ", previous=" + $$5);
+            }
          }
 
-         this.f($$3);
-      }
-
-      int $$4 = this.g(this.d($$0));
-      this.e[$$4] = $$0;
-      this.f[$$4] = $$1;
-      this.g[$$1] = $$0;
-      this.i++;
-      if ($$1 == this.h) {
-         this.h++;
+         return $$2;
       }
    }
 
-   private int d(@Nullable K $$0) {
-      return (aui.g(System.identityHashCode($$0)) & 2147483647) % this.e.length;
+   public static <T> IntFunction<T> a(ToIntFunction<T> $$0, T[] $$1, T $$2) {
+      IntFunction<T> $$3 = a($$0, $$1);
+      return $$2x -> Objects.requireNonNullElse($$3.apply($$2x), $$2);
    }
 
-   private int b(@Nullable K $$0, int $$1) {
-      for (int $$2 = $$1; $$2 < this.e.length; $$2++) {
-         if (this.e[$$2] == $$0) {
-            return $$2;
+   private static <T> T[] b(ToIntFunction<T> $$0, T[] $$1) {
+      int $$2 = $$1.length;
+      if ($$2 == 0) {
+         throw new IllegalArgumentException("Empty value list");
+      } else {
+         T[] $$3 = (T[])$$1.clone();
+         Arrays.fill($$3, null);
+
+         for (T $$4 : $$1) {
+            int $$5 = $$0.applyAsInt($$4);
+            if ($$5 < 0 || $$5 >= $$2) {
+               throw new IllegalArgumentException("Values are not continous, found index " + $$5 + " for value " + $$4);
+            }
+
+            T $$6 = $$3[$$5];
+            if ($$6 != null) {
+               throw new IllegalArgumentException("Duplicate entry on id " + $$5 + ": current=" + $$4 + ", previous=" + $$6);
+            }
+
+            $$3[$$5] = $$4;
          }
 
-         if (this.e[$$2] == c) {
-            return -1;
+         for (int $$7 = 0; $$7 < $$2; $$7++) {
+            if ($$3[$$7] == null) {
+               throw new IllegalArgumentException("Missing value at index: " + $$7);
+            }
          }
+
+         return $$3;
       }
+   }
 
-      for (int $$3 = 0; $$3 < $$1; $$3++) {
-         if (this.e[$$3] == $$0) {
-            return $$3;
+   public static <T> IntFunction<T> a(ToIntFunction<T> $$0, T[] $$1, atf.a $$2) {
+      T[] $$3 = b($$0, $$1);
+      int $$4 = $$3.length;
+
+      return switch ($$2) {
+         case a -> {
+            T $$5 = $$3[0];
+            yield $$3x -> $$3x >= 0 && $$3x < $$4 ? $$3[$$3x] : $$5;
          }
-
-         if (this.e[$$3] == c) {
-            return -1;
-         }
-      }
-
-      return -1;
+         case b -> $$2x -> $$3[aun.b($$2x, $$4)];
+         case c -> $$2x -> $$3[aun.a($$2x, 0, $$4 - 1)];
+      };
    }
 
-   private int g(int $$0) {
-      for (int $$1 = $$0; $$1 < this.e.length; $$1++) {
-         if (this.e[$$1] == c) {
-            return $$1;
-         }
-      }
-
-      for (int $$2 = 0; $$2 < $$0; $$2++) {
-         if (this.e[$$2] == c) {
-            return $$2;
-         }
-      }
-
-      throw new RuntimeException("Overflowed :(");
-   }
-
-   @Override
-   public Iterator<K> iterator() {
-      return Iterators.filter(Iterators.forArray(this.g), Predicates.notNull());
-   }
-
-   public void a() {
-      Arrays.fill(this.e, null);
-      Arrays.fill(this.g, null);
-      this.h = 0;
-      this.i = 0;
-   }
-
-   @Override
-   public int b() {
-      return this.i;
-   }
-
-   public atf<K> c() {
-      return new atf<>((K[])((Object[])this.e.clone()), (int[])this.f.clone(), (K[])((Object[])this.g.clone()), this.h, this.i);
+   public static enum a {
+      a,
+      b,
+      c;
    }
 }

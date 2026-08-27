@@ -1,8 +1,7 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.List;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface fif {
+public interface fif {
+   List<fig> a();
+
+   vf b();
 }

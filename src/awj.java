@@ -1,51 +1,53 @@
-import com.google.common.collect.Maps;
+import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.templates.TaggedChoice.TaggedChoiceType;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.OptionalDynamic;
 import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
 
 public class awj extends DataFix {
-   private static final Map<String, String> a = (Map<String, String>)DataFixUtils.make(Maps.newHashMap(), $$0 -> {
-      $$0.put("Airportal", "minecraft:end_portal");
-      $$0.put("Banner", "minecraft:banner");
-      $$0.put("Beacon", "minecraft:beacon");
-      $$0.put("Cauldron", "minecraft:brewing_stand");
-      $$0.put("Chest", "minecraft:chest");
-      $$0.put("Comparator", "minecraft:comparator");
-      $$0.put("Control", "minecraft:command_block");
-      $$0.put("DLDetector", "minecraft:daylight_detector");
-      $$0.put("Dropper", "minecraft:dropper");
-      $$0.put("EnchantTable", "minecraft:enchanting_table");
-      $$0.put("EndGateway", "minecraft:end_gateway");
-      $$0.put("EnderChest", "minecraft:ender_chest");
-      $$0.put("FlowerPot", "minecraft:flower_pot");
-      $$0.put("Furnace", "minecraft:furnace");
-      $$0.put("Hopper", "minecraft:hopper");
-      $$0.put("MobSpawner", "minecraft:mob_spawner");
-      $$0.put("Music", "minecraft:noteblock");
-      $$0.put("Piston", "minecraft:piston");
-      $$0.put("RecordPlayer", "minecraft:jukebox");
-      $$0.put("Sign", "minecraft:sign");
-      $$0.put("Skull", "minecraft:skull");
-      $$0.put("Structure", "minecraft:structure_block");
-      $$0.put("Trap", "minecraft:dispenser");
-   });
+   private final String a;
+   private static final Set<String> b = Set.of("minecraft:empty", "minecraft:structure_starts", "minecraft:structure_references", "minecraft:biomes");
 
-   public awj(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+   public awj(Schema $$0) {
+      super($$0, false);
+      this.a = "Blending Data Fix v" + $$0.getVersionKey();
    }
 
-   public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bbq.t);
-      Type<?> $$1 = this.getOutputSchema().getType(bbq.t);
-      TaggedChoiceType<String> $$2 = this.getInputSchema().findChoiceType(bbq.s);
-      TaggedChoiceType<String> $$3 = this.getOutputSchema().findChoiceType(bbq.s);
-      return TypeRewriteRule.seq(
-         this.convertUnchecked("item stack block entity name hook converter", $$0, $$1),
-         this.fixTypeEverywhere("BlockEntityIdFix", $$2, $$3, $$0x -> $$0xx -> $$0xx.mapFirst($$0xxx -> a.getOrDefault($$0xxx, $$0xxx)))
+   protected TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getOutputSchema().getType(bbv.c);
+      return this.fixTypeEverywhereTyped(this.a, $$0, $$0x -> $$0x.update(DSL.remainderFinder(), $$0xx -> a($$0xx, $$0xx.get("__context"))));
+   }
+
+   private static Dynamic<?> a(Dynamic<?> $$0, OptionalDynamic<?> $$1) {
+      $$0 = $$0.remove("blending_data");
+      boolean $$2 = "minecraft:overworld".equals($$1.get("dimension").asString().result().orElse(""));
+      Optional<? extends Dynamic<?>> $$3 = $$0.get("Status").result();
+      if ($$2 && $$3.isPresent()) {
+         String $$4 = bdd.a($$3.get().asString("empty"));
+         Optional<? extends Dynamic<?>> $$5 = $$0.get("below_zero_retrogen").result();
+         if (!b.contains($$4)) {
+            $$0 = a($$0, 384, -64);
+         } else if ($$5.isPresent()) {
+            Dynamic<?> $$6 = (Dynamic<?>)$$5.get();
+            String $$7 = bdd.a($$6.get("target_status").asString("empty"));
+            if (!b.contains($$7)) {
+               $$0 = a($$0, 256, 0);
+            }
+         }
+      }
+
+      return $$0;
+   }
+
+   private static Dynamic<?> a(Dynamic<?> $$0, int $$1, int $$2) {
+      return $$0.set(
+         "blending_data",
+         $$0.createMap(Map.of($$0.createString("min_section"), $$0.createInt(iz.a($$2)), $$0.createString("max_section"), $$0.createInt(iz.a($$2 + $$1))))
       );
    }
 }

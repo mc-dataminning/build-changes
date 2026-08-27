@@ -1,56 +1,48 @@
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import javax.annotation.Nullable;
 
-public class dgf {
-   final String a;
+public class dgf extends czr {
+   public static final MapCodec<dgf> e = RecordCodecBuilder.mapCodec($$0 -> $$0.group(a.forGetter(czr::b), u()).apply($$0, dgf::new));
 
-   public dgf(String $$0) {
-      this.a = $$0;
+   @Override
+   public MapCodec<dgf> a() {
+      return e;
    }
 
-   public static ahd a(ahc<dgf> $$0, boolean $$1) {
-      String $$2 = $$1 ? "banner" : "shield";
-      return $$0.a().d("entity/" + $$2 + "/");
+   public dgf(blf $$0, int $$1, djf.d $$2) {
+      this(a($$0, $$1), $$2);
    }
 
-   public String a() {
-      return this.a;
+   public dgf(List<deq.a> $$0, djf.d $$1) {
+      super($$0, $$1);
    }
 
-   @Nullable
-   public static ih<dgf> a(String $$0) {
-      return kd.am.h().filter($$1 -> $$1.a().a.equals($$0)).findAny().orElse(null);
+   @Override
+   protected boolean b(djg $$0, csu $$1, hx $$2) {
+      return super.b($$0, $$1, $$2) || $$0.a(cwr.dV) || $$0.a(cwr.dW) || $$0.a(cwr.dX);
    }
 
-   public static class a {
-      private final List<Pair<ih<dgf>, clf>> a = Lists.newArrayList();
+   @Override
+   public void a(djg $$0, cto $$1, hx $$2, auu $$3) {
+      eml $$4 = this.a($$0, $$1, $$2, elx.a());
+      els $$5 = $$4.a().f();
+      double $$6 = (double)$$2.u() + $$5.c;
+      double $$7 = (double)$$2.w() + $$5.e;
 
-      public dgf.a a(ahc<dgf> $$0, clf $$1) {
-         return this.a(kd.am.f($$0), $$1);
-      }
-
-      public dgf.a a(ih<dgf> $$0, clf $$1) {
-         return this.a(Pair.of($$0, $$1));
-      }
-
-      public dgf.a a(Pair<ih<dgf>, clf> $$0) {
-         this.a.add($$0);
-         return this;
-      }
-
-      public sr a() {
-         sr $$0 = new sr();
-
-         for (Pair<ih<dgf>, clf> $$1 : this.a) {
-            sl $$2 = new sl();
-            $$2.a("Pattern", ((dgf)((ih)$$1.getFirst()).a()).a);
-            $$2.a("Color", ((clf)$$1.getSecond()).a());
-            $$0.add($$2);
+      for (int $$8 = 0; $$8 < 3; $$8++) {
+         if ($$3.h()) {
+            $$1.a(jx.ab, $$6 + $$3.j() / 5.0, (double)$$2.v() + (0.5 - $$3.j()), $$7 + $$3.j() / 5.0, 0.0, 0.0, 0.0);
          }
+      }
+   }
 
-         return $$0;
+   @Override
+   public void a(djg $$0, cto $$1, hx $$2, blu $$3) {
+      if (!$$1.B && $$1.ak() != bjx.a) {
+         if ($$3 instanceof bmk $$4 && !$$4.b($$1.ai().p())) {
+            $$4.b(new blh(blj.t, 40));
+         }
       }
    }
 }

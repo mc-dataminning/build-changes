@@ -1,41 +1,35 @@
-import com.mojang.authlib.GameProfile;
-import java.util.UUID;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import org.slf4j.Logger;
 
-public class gex {
-   private static final gff[] a = new gff[]{
-      a("textures/entity/player/slim/alex.png", gff.a.a),
-      a("textures/entity/player/slim/ari.png", gff.a.a),
-      a("textures/entity/player/slim/efe.png", gff.a.a),
-      a("textures/entity/player/slim/kai.png", gff.a.a),
-      a("textures/entity/player/slim/makena.png", gff.a.a),
-      a("textures/entity/player/slim/noor.png", gff.a.a),
-      a("textures/entity/player/slim/steve.png", gff.a.a),
-      a("textures/entity/player/slim/sunny.png", gff.a.a),
-      a("textures/entity/player/slim/zuri.png", gff.a.a),
-      a("textures/entity/player/wide/alex.png", gff.a.b),
-      a("textures/entity/player/wide/ari.png", gff.a.b),
-      a("textures/entity/player/wide/efe.png", gff.a.b),
-      a("textures/entity/player/wide/kai.png", gff.a.b),
-      a("textures/entity/player/wide/makena.png", gff.a.b),
-      a("textures/entity/player/wide/noor.png", gff.a.b),
-      a("textures/entity/player/wide/steve.png", gff.a.b),
-      a("textures/entity/player/wide/sunny.png", gff.a.b),
-      a("textures/entity/player/wide/zuri.png", gff.a.b)
-   };
+public class gex implements gep {
+   private static final Logger c = LogUtils.getLogger();
+   public static final Codec<gex> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(ahg.a.fieldOf("resource").forGetter($$0x -> $$0x.d), ahg.a.optionalFieldOf("sprite").forGetter($$0x -> $$0x.e)).apply($$0, gex::new)
+   );
+   private final ahg d;
+   private final Optional<ahg> e;
 
-   public static ahd a() {
-      return a[6].a();
+   public gex(ahg $$0, Optional<ahg> $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   public static gff a(UUID $$0) {
-      return a[Math.floorMod($$0.hashCode(), a.length)];
+   @Override
+   public void a(aqh $$0, gep.a $$1) {
+      ahg $$2 = a.a(this.d);
+      Optional<aqf> $$3 = $$0.getResource($$2);
+      if ($$3.isPresent()) {
+         $$1.a(this.e.orElse(this.d), $$3.get());
+      } else {
+         c.warn("Missing sprite: {}", $$2);
+      }
    }
 
-   public static gff a(GameProfile $$0) {
-      return a($$0.getId());
-   }
-
-   private static gff a(String $$0, gff.a $$1) {
-      return new gff(new ahd($$0), null, null, null, $$1, true);
+   @Override
+   public ger a() {
+      return ges.a;
    }
 }

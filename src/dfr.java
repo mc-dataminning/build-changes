@@ -1,33 +1,43 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public class dfr extends ddl implements dfm {
-   public static final MapCodec<dfr> f = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dfm.a.e.fieldOf("weathering_state").forGetter(cxk::c), u()).apply($$0, dfr::new)
-   );
-   private final dfm.a g;
+public class dfr extends dfa implements ddp {
+   public static final MapCodec<dfr> a = b(dfr::new);
+   public static final djx c = djw.C;
 
    @Override
-   public MapCodec<dfr> a() {
-      return f;
+   protected MapCodec<? extends dfr> a() {
+      return a;
    }
 
-   public dfr(dfm.a $$0, diz.d $$1) {
-      super($$1);
-      this.g = $$0;
+   protected dfr(djf.d $$0) {
+      super($$0);
+      this.k(this.o().a(c, Boolean.valueOf(false)));
+   }
+
+   @Nullable
+   @Override
+   public djg a(cpg $$0) {
+      eeq $$1 = $$0.q().b_($$0.a());
+      return super.a($$0).a(c, Boolean.valueOf($$1.b(eer.c)));
    }
 
    @Override
-   public void b(dja $$0, amz $$1, hx $$2, aup $$3) {
-      this.a_($$0, $$1, $$2, $$3);
+   public djg a(djg $$0, ic $$1, djg $$2, ctp $$3, hx $$4, hx $$5) {
+      if ($$0.c(c)) {
+         $$3.a($$4, eer.c, eer.c.a($$3));
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public boolean e_(dja $$0) {
-      return dfm.c($$0.b()).isPresent();
+   public eeq c_(djg $$0) {
+      return $$0.c(c) ? eer.c.a(true) : super.c_($$0);
    }
 
-   public dfm.a g() {
-      return this.g;
+   @Override
+   protected void a(djh.a<cwp, djg> $$0) {
+      $$0.a(c);
    }
 }

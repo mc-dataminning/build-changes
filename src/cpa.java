@@ -1,77 +1,100 @@
-import javax.annotation.Nullable;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.function.Function;
+import java.util.function.UnaryOperator;
+import org.slf4j.Logger;
 
-public class cpa extends cpc {
-   private final hx b;
-   protected boolean a = true;
+public class cpa {
+   public static final Codec<cpa> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(cpb.b.fieldOf("material").forGetter(cpa::b), cpd.b.fieldOf("pattern").forGetter(cpa::a)).apply($$0, cpa::new)
+   );
+   private static final Logger c = LogUtils.getLogger();
+   public static final String b = "Trim";
+   private static final vf d = vf.c(ac.a("item", new ahg("smithing_template.upgrade"))).a(n.h);
+   private final ih<cpb> e;
+   private final ih<cpd> f;
+   private final Function<cki, ahg> g;
+   private final Function<cki, ahg> h;
 
-   public cpa(cfb $$0, bju $$1, cmr $$2, eli $$3) {
-      this($$0.dM(), $$0, $$1, $$2, $$3);
+   public cpa(ih<cpb> $$0, ih<cpd> $$1) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = ac.b($$1x -> {
+         ahg $$2 = $$1.a().a();
+         String $$3 = this.c($$1x);
+         return $$2.a((UnaryOperator<String>)($$1xx -> "trims/models/armor/" + $$1xx + "_leggings_" + $$3));
+      });
+      this.h = ac.b($$1x -> {
+         ahg $$2 = $$1.a().a();
+         String $$3 = this.c($$1x);
+         return $$2.a((UnaryOperator<String>)($$1xx -> "trims/models/armor/" + $$1xx + "_" + $$3));
+      });
    }
 
-   public cpa(cpc $$0) {
-      this($$0.q(), $$0.o(), $$0.p(), $$0.n(), $$0.j());
+   private String c(cki $$0) {
+      Map<ckj, String> $$1 = this.e.a().d();
+      return $$0 instanceof ckj && $$1.containsKey($$0) ? $$1.get($$0) : this.e.a().a();
    }
 
-   protected cpa(cti $$0, @Nullable cfb $$1, bju $$2, cmr $$3, eli $$4) {
-      super($$0, $$1, $$2, $$3, $$4);
-      this.b = $$4.a().a($$4.b());
-      this.a = $$0.a_($$4.a()).a(this);
+   public boolean a(ih<cpd> $$0, ih<cpb> $$1) {
+      return $$0 == this.f && $$1 == this.e;
    }
 
-   public static cpa a(cpa $$0, hx $$1, ic $$2) {
-      return new cpa(
-         $$0.q(),
-         $$0.o(),
-         $$0.p(),
-         $$0.n(),
-         new eli(
-            new elm((double)$$1.u() + 0.5 + (double)$$2.j() * 0.5, (double)$$1.v() + 0.5 + (double)$$2.k() * 0.5, (double)$$1.w() + 0.5 + (double)$$2.l() * 0.5),
-            $$2,
-            $$1,
-            false
-         )
-      );
+   public ih<cpd> a() {
+      return this.f;
+   }
+
+   public ih<cpb> b() {
+      return this.e;
+   }
+
+   public ahg a(cki $$0) {
+      return this.g.apply($$0);
+   }
+
+   public ahg b(cki $$0) {
+      return this.h.apply($$0);
    }
 
    @Override
-   public hx a() {
-      return this.a ? super.a() : this.b;
+   public boolean equals(Object $$0) {
+      return !($$0 instanceof cpa $$1) ? false : $$1.f == this.f && $$1.e == this.e;
    }
 
-   public boolean b() {
-      return this.a || this.q().a_(this.a()).a(this);
-   }
-
-   public boolean c() {
-      return this.a;
-   }
-
-   public ic d() {
-      return ic.a(this.o())[0];
-   }
-
-   public ic e() {
-      return ic.a(this.o(), ic.a.b);
-   }
-
-   public ic[] f() {
-      ic[] $$0 = ic.a(this.o());
-      if (this.a) {
-         return $$0;
+   public static boolean a(iu $$0, cmx $$1, cpa $$2) {
+      if ($$1.a(aso.aH)) {
+         $$1.w().a("Trim", (tk)a.encodeStart(ahe.a(tb.a, $$0), $$2).result().orElseThrow());
+         return true;
       } else {
-         ic $$1 = this.k();
-         int $$2 = 0;
+         return false;
+      }
+   }
 
-         while ($$2 < $$0.length && $$0[$$2] != $$1.g()) {
-            $$2++;
-         }
+   public static Optional<cpa> a(iu $$0, cmx $$1, boolean $$2) {
+      if ($$1.a(aso.aH) && $$1.v() != null && $$1.v().e("Trim")) {
+         sn $$3 = $$1.b("Trim");
+         cpa $$4 = (cpa)a.parse(ahe.a(tb.a, $$0), $$3).resultOrPartial($$1x -> {
+            if (!$$2) {
+               c.warn($$1x);
+            }
+         }).orElse(null);
+         return Optional.ofNullable($$4);
+      } else {
+         return Optional.empty();
+      }
+   }
 
-         if ($$2 > 0) {
-            System.arraycopy($$0, 0, $$0, 1, $$2);
-            $$0[0] = $$1.g();
-         }
-
-         return $$0;
+   public static void a(cmx $$0, iu $$1, List<vf> $$2) {
+      Optional<cpa> $$3 = a($$1, $$0, true);
+      if ($$3.isPresent()) {
+         cpa $$4 = $$3.get();
+         $$2.add(d);
+         $$2.add(ve.a().b($$4.a().a().a($$4.b())));
+         $$2.add(ve.a().b($$4.b().a().e()));
       }
    }
 }

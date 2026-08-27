@@ -1,45 +1,49 @@
-import java.io.ByteArrayInputStream;
-import java.io.DataInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
+import java.util.function.Supplier;
+import org.apache.commons.lang3.ObjectUtils;
 
-public record aum(int a, int b) {
-   private static final long c = -8552249625308161526L;
-   private static final int d = 1229472850;
-   private static final int e = 13;
-
-   public static aum a(InputStream $$0) throws IOException {
-      DataInputStream $$1 = new DataInputStream($$0);
-      if ($$1.readLong() != -8552249625308161526L) {
-         throw new IOException("Bad PNG Signature");
-      } else if ($$1.readInt() != 13) {
-         throw new IOException("Bad length for IHDR chunk!");
-      } else if ($$1.readInt() != 1229472850) {
-         throw new IOException("Bad type for IHDR chunk!");
+public record aum(aum.a a, String b) {
+   public static aum a(String $$0, Supplier<String> $$1, String $$2, Class<?> $$3) {
+      String $$4 = $$1.get();
+      if (!$$0.equals($$4)) {
+         return new aum(aum.a.c, $$2 + " brand changed to '" + $$4 + "'");
       } else {
-         int $$2 = $$1.readInt();
-         int $$3 = $$1.readInt();
-         return new aum($$2, $$3);
+         return $$3.getSigners() == null
+            ? new aum(aum.a.b, $$2 + " jar signature invalidated")
+            : new aum(aum.a.a, $$2 + " jar signature and brand is untouched");
       }
    }
 
-   public static aum a(byte[] $$0) throws IOException {
-      return a(new ByteArrayInputStream($$0));
+   public boolean a() {
+      return this.a.e;
    }
 
-   public static void a(ByteBuffer $$0) throws IOException {
-      ByteOrder $$1 = $$0.order();
-      $$0.order(ByteOrder.BIG_ENDIAN);
-      if ($$0.getLong(0) != -8552249625308161526L) {
-         throw new IOException("Bad PNG Signature");
-      } else if ($$0.getInt(8) != 13) {
-         throw new IOException("Bad length for IHDR chunk!");
-      } else if ($$0.getInt(12) != 1229472850) {
-         throw new IOException("Bad type for IHDR chunk!");
-      } else {
-         $$0.order($$1);
+   public aum a(aum $$0) {
+      return new aum((aum.a)ObjectUtils.max(new aum.a[]{this.a, $$0.a}), this.b + "; " + $$0.b);
+   }
+
+   public String b() {
+      return this.a.d + " " + this.b;
+   }
+
+   public aum.a c() {
+      return this.a;
+   }
+
+   public String d() {
+      return this.b;
+   }
+
+   public static enum a {
+      a("Probably not.", false),
+      b("Very likely;", true),
+      c("Definitely;", true);
+
+      final String d;
+      final boolean e;
+
+      private a(String $$0, boolean $$1) {
+         this.d = $$0;
+         this.e = $$1;
       }
    }
 }

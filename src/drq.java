@@ -1,26 +1,39 @@
 import com.mojang.serialization.Codec;
 
-public class drq extends drn<dtv> {
-   public drq(Codec<dtv> $$0) {
+public class drq extends drt<dtw> {
+   public drq(Codec<dtw> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(drp<dtv> $$0) {
+   public boolean a(drv<dtw> $$0) {
       hx $$1 = $$0.e();
-      dtv $$2 = $$0.f();
-      cud $$3 = $$0.b();
-      hx.a $$4 = new hx.a();
+      cuj $$2 = $$0.b();
+      dtw $$3 = $$0.f();
 
-      for (int $$5 = 0; $$5 < 16; $$5++) {
-         for (int $$6 = 0; $$6 < 16; $$6++) {
-            int $$7 = $$1.u() + $$5;
-            int $$8 = $$1.w() + $$6;
-            int $$9 = $$3.J_() + $$2.b;
-            $$4.d($$7, $$9, $$8);
-            if ($$3.a_($$4).i()) {
-               $$3.a($$4, $$2.c, 2);
-            }
+      for (hx $$4 : hx.a($$1.b(-1, -2, -1), $$1.b(1, 2, 1))) {
+         boolean $$5 = $$4.u() == $$1.u();
+         boolean $$6 = $$4.v() == $$1.v();
+         boolean $$7 = $$4.w() == $$1.w();
+         boolean $$8 = Math.abs($$4.v() - $$1.v()) == 2;
+         if ($$5 && $$6 && $$7) {
+            hx $$9 = $$4.i();
+            this.a($$2, $$9, cwr.kF.o());
+            $$3.b().ifPresent($$3x -> {
+               dgu $$4x = $$2.c_($$9);
+               if ($$4x instanceof dij $$5x) {
+                  $$5x.a($$3x, $$3.c());
+                  $$4x.e();
+               }
+            });
+         } else if ($$6) {
+            this.a($$2, $$4, cwr.a.o());
+         } else if ($$8 && $$5 && $$7) {
+            this.a($$2, $$4, cwr.F.o());
+         } else if (($$5 || $$7) && !$$8) {
+            this.a($$2, $$4, cwr.F.o());
+         } else {
+            this.a($$2, $$4, cwr.a.o());
          }
       }
 

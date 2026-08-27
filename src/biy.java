@@ -1,27 +1,54 @@
-import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.function.Function;
 
-public abstract class biy implements bjd {
-   private static final Codec<Either<Float, biy>> a = Codec.either(Codec.FLOAT, kd.L.q().dispatch(biy::c, biz::codec));
-   public static final Codec<biy> c = a.xmap(
-      $$0 -> (biy)$$0.map(biw::a, $$0x -> $$0x), $$0 -> $$0.c() == biz.a ? Either.left(((biw)$$0).d()) : Either.right($$0)
-   );
+public class biy extends bjf {
+   public static final Codec<biy> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  bjf.c.fieldOf("source").forGetter($$0x -> $$0x.b),
+                  Codec.INT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.f),
+                  Codec.INT.fieldOf("max_inclusive").forGetter($$0x -> $$0x.g)
+               )
+               .apply($$0, biy::new)
+      )
+      .comapFlatMap(
+         $$0 -> $$0.g < $$0.f
+               ? DataResult.error(() -> "Max must be at least min, min_inclusive: " + $$0.f + ", max_inclusive: " + $$0.g)
+               : DataResult.success($$0),
+         Function.identity()
+      );
+   private final bjf b;
+   private final int f;
+   private final int g;
 
-   public static Codec<biy> a(float $$0, float $$1) {
-      return atq.a(c, (Function<biy, DataResult<biy>>)($$2 -> {
-         if ($$2.a() < $$0) {
-            return DataResult.error(() -> "Value provider too low: " + $$0 + " [" + $$2.a() + "-" + $$2.b() + "]");
-         } else {
-            return $$2.b() > $$1 ? DataResult.error(() -> "Value provider too high: " + $$1 + " [" + $$2.a() + "-" + $$2.b() + "]") : DataResult.success($$2);
-         }
-      }));
+   public static biy a(bjf $$0, int $$1, int $$2) {
+      return new biy($$0, $$1, $$2);
    }
 
-   public abstract float a();
+   public biy(bjf $$0, int $$1, int $$2) {
+      this.b = $$0;
+      this.f = $$1;
+      this.g = $$2;
+   }
 
-   public abstract float b();
+   @Override
+   public int a(auu $$0) {
+      return aun.a(this.b.a($$0), this.f, this.g);
+   }
 
-   public abstract biz<?> c();
+   @Override
+   public int a() {
+      return Math.max(this.f, this.b.a());
+   }
+
+   @Override
+   public int b() {
+      return Math.min(this.g, this.b.b());
+   }
+
+   @Override
+   public bjg<?> c() {
+      return bjg.d;
+   }
 }

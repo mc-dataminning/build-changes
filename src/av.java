@@ -9,20 +9,20 @@ public class av extends cv<av.a> {
       return av.a.a;
    }
 
-   public void a(ana $$0, bxs $$1, bxs $$2, @Nullable blk $$3) {
-      egp $$4 = bp.b($$0, $$1);
-      egp $$5 = bp.b($$0, $$2);
-      egp $$6 = $$3 != null ? bp.b($$0, $$3) : null;
+   public void a(ane $$0, bxx $$1, bxx $$2, @Nullable blp $$3) {
+      egv $$4 = bp.b($$0, $$1);
+      egv $$5 = bp.b($$0, $$2);
+      egv $$6 = $$3 != null ? bp.b($$0, $$3) : null;
       this.a($$0, $$3x -> $$3x.a($$4, $$5, $$6));
    }
 
    public static record a(Optional<bb> b, Optional<bb> c, Optional<bb> d, Optional<bb> e) implements cv.a {
       public static final Codec<av.a> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
-                  atq.a(bp.b, "player").forGetter(av.a::a),
-                  atq.a(bp.b, "parent").forGetter(av.a::c),
-                  atq.a(bp.b, "partner").forGetter(av.a::d),
-                  atq.a(bp.b, "child").forGetter(av.a::e)
+                  atv.a(bp.b, "player").forGetter(av.a::a),
+                  atv.a(bp.b, "parent").forGetter(av.a::c),
+                  atv.a(bp.b, "partner").forGetter(av.a::d),
+                  atv.a(bp.b, "child").forGetter(av.a::e)
                )
                .apply($$0, av.a::new)
       );
@@ -39,11 +39,11 @@ public class av extends cv<av.a> {
          return am.p.a(new av.a(Optional.empty(), bp.a($$0), bp.a($$1), bp.a($$2)));
       }
 
-      public boolean a(egp $$0, egp $$1, @Nullable egp $$2) {
+      public boolean a(egv $$0, egv $$1, @Nullable egv $$2) {
          return !this.e.isPresent() || $$2 != null && this.e.get().a($$2) ? a(this.c, $$0) && a(this.d, $$1) || a(this.c, $$1) && a(this.d, $$0) : false;
       }
 
-      private static boolean a(Optional<bb> $$0, egp $$1) {
+      private static boolean a(Optional<bb> $$0, egv $$1) {
          return $$0.isEmpty() || $$0.get().a($$1);
       }
 

@@ -1,24 +1,11 @@
-public class xq implements xd<xn> {
-   private final long a;
+public interface xq extends adk {
+   void a(xt var1);
 
-   public xq(long $$0) {
-      this.a = $$0;
-   }
+   void a(xu var1);
 
-   public void a(xn $$0) {
-      $$0.a(this);
-   }
+   void a(xs var1);
 
-   public xq(ug $$0) {
-      this.a = $$0.readLong();
-   }
+   void a(xv var1);
 
-   @Override
-   public void a(ug $$0) {
-      $$0.b(this.a);
-   }
-
-   public long a() {
-      return this.a;
-   }
+   void a(xr var1);
 }

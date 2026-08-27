@@ -1,32 +1,44 @@
-public class ace implements xd<yx> {
-   private final float a;
+public class ace implements xf<za> {
+   private final int a;
    private final int b;
-   private final float c;
+   private final int c;
+   private final int d;
 
-   public ace(float $$0, int $$1, float $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public ace(blu $$0) {
+      this($$0.aj(), $$0.dp());
    }
 
-   public ace(ug $$0) {
-      this.a = $$0.readFloat();
-      this.b = $$0.n();
-      this.c = $$0.readFloat();
+   public ace(int $$0, els $$1) {
+      this.a = $$0;
+      double $$2 = 3.9;
+      double $$3 = aun.a($$1.c, -3.9, 3.9);
+      double $$4 = aun.a($$1.d, -3.9, 3.9);
+      double $$5 = aun.a($$1.e, -3.9, 3.9);
+      this.b = (int)($$3 * 8000.0);
+      this.c = (int)($$4 * 8000.0);
+      this.d = (int)($$5 * 8000.0);
+   }
+
+   public ace(ui $$0) {
+      this.a = $$0.n();
+      this.b = $$0.readShort();
+      this.c = $$0.readShort();
+      this.d = $$0.readShort();
    }
 
    @Override
-   public void a(ug $$0) {
-      $$0.a(this.a);
-      $$0.c(this.b);
-      $$0.a(this.c);
+   public void a(ui $$0) {
+      $$0.c(this.a);
+      $$0.l(this.b);
+      $$0.l(this.c);
+      $$0.l(this.d);
    }
 
-   public void a(yx $$0) {
+   public void a(za $$0) {
       $$0.a(this);
    }
 
-   public float a() {
+   public int a() {
       return this.a;
    }
 
@@ -34,7 +46,11 @@ public class ace implements xd<yx> {
       return this.b;
    }
 
-   public float e() {
+   public int e() {
       return this.c;
+   }
+
+   public int f() {
+      return this.d;
    }
 }

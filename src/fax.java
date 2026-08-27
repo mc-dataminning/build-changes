@@ -1,32 +1,19 @@
+import com.google.common.collect.ImmutableList;
+
 public interface fax {
-   faz a();
-
-   public static record a(faz a) implements fax {
-      @Override
-      public faz a() {
-         return this.a.a() == fay.b ? this.a : faz.b;
-      }
-
-      public faz b() {
-         return this.a;
-      }
+   default void a(faw $$0, vf $$1) {
+      this.a($$0, faz.a($$1.getString()));
    }
 
-   public static class b implements fax {
-      @Override
-      public faz a() {
-         return faz.b;
-      }
+   default void a(faw $$0, String $$1) {
+      this.a($$0, faz.a($$1));
    }
 
-   public static record c(boolean a) implements fax {
-      @Override
-      public faz a() {
-         return this.a ? faz.b : faz.a;
-      }
-
-      public boolean b() {
-         return this.a;
-      }
+   default void a(faw $$0, vf... $$1) {
+      this.a($$0, faz.a(ImmutableList.copyOf($$1)));
    }
+
+   void a(faw var1, faz<?> var2);
+
+   fax a();
 }

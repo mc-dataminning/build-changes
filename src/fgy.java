@@ -1,51 +1,51 @@
+import it.unimi.dsi.fastutil.ints.IntSet;
 import java.util.UUID;
-import java.util.function.Supplier;
 
-public class fgy extends fgr<foo.a> {
+public class fgy extends fgx<fom.a> {
    private static final int r = 120;
-   private static final int t = 85;
-   private static final int u = 178;
-   private static final vd v = vd.c("gui.abuseReport.skin.title");
-   private final fam w = fam.d().a(8);
-   private exq x;
-   private ewy y;
-   private ewy z;
+   private static final vf t = vf.c("gui.chatReport.title");
+   private static final vf u = vf.c("gui.chatReport.select_chat");
+   private final fas v = fas.d().a(8);
+   private exw w;
+   private exe x;
+   private exe y;
+   private exe z;
 
-   private fgy(fct $$0, fon $$1, foo.a $$2) {
-      super(v, $$0, $$1, $$2);
+   private fgy(fcz $$0, fou $$1, fom.a $$2) {
+      super(t, $$0, $$1, $$2);
    }
 
-   public fgy(fct $$0, fon $$1, UUID $$2, Supplier<gff> $$3) {
-      this($$0, $$1, new foo.a($$2, $$3, $$1.a().b()));
+   public fgy(fcz $$0, fou $$1, UUID $$2) {
+      this($$0, $$1, new fom.a($$2, $$1.a().b()));
    }
 
-   public fgy(fct $$0, fon $$1, foo $$2) {
-      this($$0, $$1, new foo.a($$2, $$1.a().b()));
+   public fgy(fcz $$0, fou $$1, fom $$2) {
+      this($$0, $$1, new fom.a($$2, $$1.a().b()));
    }
 
    @Override
    protected void aN_() {
-      this.w.c().b();
-      this.w.a(new eyf(this.e, this.i));
-      fam $$0 = this.w.a(fam.e().a(8));
-      $$0.c().e();
-      $$0.a(new exy(85, 120, this.f.aO(), this.q.e().a()));
-      fam $$1 = $$0.a(fam.d().a(8));
-      this.z = ewy.a(c, $$0x -> this.f.a(new fgx(this, this.q.h(), $$0xx -> {
+      this.v.c().b();
+      this.v.a(new eyl(this.e, this.i));
+      this.y = this.v.a(exe.a(u, $$0x -> this.f.a(new fha(this, this.p, this.q, $$0xx -> {
+            this.q = $$0xx;
+            this.C();
+         }))).a(280).a());
+      this.z = exe.a(c, $$0x -> this.f.a(new fhd(this, this.q.h(), $$0xx -> {
             this.q.a($$0xx);
             this.C();
-         }))).a(178).a();
-      $$1.a(fae.a(this.i, this.z, b));
-      this.x = this.a(178, 9 * 8, $$0x -> {
+         }))).a(280).a();
+      this.v.a(fak.a(this.i, this.z, b));
+      this.w = this.a(280, 9 * 8, $$0x -> {
          this.q.a($$0x);
          this.C();
       });
-      $$1.a(fae.a(this.i, this.x, k, $$0x -> $$0x.e(12)));
-      fam $$2 = this.w.a(fam.e().a(8));
-      $$2.a(ewy.a(vc.k, $$0x -> this.aE_()).a(120).a());
-      this.y = $$2.a(ewy.a(a, $$0x -> this.n()).a(120).a());
-      this.w.a($$1x -> {
-         eww var10000 = this.d($$1x);
+      this.v.a(fak.a(this.i, this.w, k, $$0x -> $$0x.e(12)));
+      fas $$0 = this.v.a(fas.e().a(8));
+      $$0.a(exe.a(ve.k, $$0x -> this.aE_()).a(120).a());
+      this.x = $$0.a(exe.a(a, $$0x -> this.n()).a(120).a());
+      this.v.a($$1 -> {
+         exc var10000 = this.d($$1);
       });
       this.c();
       this.C();
@@ -53,25 +53,32 @@ public class fgy extends fgr<foo.a> {
 
    @Override
    protected void c() {
-      this.w.a();
-      fag.a(this.w, this.F());
+      this.v.a();
+      fam.a(this.v, this.F());
    }
 
    private void C() {
-      fol $$0 = this.q.h();
-      if ($$0 != null) {
-         this.z.b($$0.b());
+      IntSet $$0 = this.q.a();
+      if ($$0.isEmpty()) {
+         this.y.b(u);
+      } else {
+         this.y.b(vf.a("gui.chatReport.selected_chat", $$0.size()));
+      }
+
+      fos $$1 = this.q.h();
+      if ($$1 != null) {
+         this.z.b($$1.b());
       } else {
          this.z.b(c);
       }
 
-      foj.b $$1 = this.q.c();
-      this.y.j = $$1 == null;
-      this.y.a(x.a($$1, foj.b::a));
+      fop.b $$2 = this.q.c();
+      this.x.j = $$2 == null;
+      this.x.a(x.a($$2, fop.b::a));
    }
 
    @Override
    public boolean b(double $$0, double $$1, int $$2) {
-      return super.b($$0, $$1, $$2) ? true : this.x.b($$0, $$1, $$2);
+      return super.b($$0, $$1, $$2) ? true : this.w.b($$0, $$1, $$2);
    }
 }

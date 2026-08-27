@@ -1,69 +1,74 @@
-public class cjm extends chu {
-   private static final int k = 27;
-   private final bjo l;
+import javax.annotation.Nullable;
 
-   public cjm(int $$0, cfa $$1) {
-      this($$0, $$1, new bkd(27));
+public class cjm extends bki {
+   @Nullable
+   private dhp c;
+
+   public cjm() {
+      super(27);
    }
 
-   public cjm(int $$0, cfa $$1, bjo $$2) {
-      super(cjb.u, $$0);
-      a($$2, 27);
-      this.l = $$2;
-      $$2.d_($$1.m);
-      int $$3 = 3;
-      int $$4 = 9;
+   public void a(dhp $$0) {
+      this.c = $$0;
+   }
 
-      for (int $$5 = 0; $$5 < 3; $$5++) {
-         for (int $$6 = 0; $$6 < 9; $$6++) {
-            this.a(new cjn($$2, $$6 + $$5 * 9, 8 + $$6 * 18, 18 + $$5 * 18));
-         }
+   public boolean b(dhp $$0) {
+      return this.c == $$0;
+   }
+
+   @Override
+   public void a(st $$0) {
+      for (int $$1 = 0; $$1 < this.b(); $$1++) {
+         this.a($$1, cmx.f);
       }
 
-      for (int $$7 = 0; $$7 < 3; $$7++) {
-         for (int $$8 = 0; $$8 < 9; $$8++) {
-            this.a(new cjp($$1, $$8 + $$7 * 9 + 9, 8 + $$8 * 18, 84 + $$7 * 18));
+      for (int $$2 = 0; $$2 < $$0.size(); $$2++) {
+         sn $$3 = $$0.a($$2);
+         int $$4 = $$3.f("Slot") & 255;
+         if ($$4 >= 0 && $$4 < this.b()) {
+            this.a($$4, cmx.a($$3));
          }
-      }
-
-      for (int $$9 = 0; $$9 < 9; $$9++) {
-         this.a(new cjp($$1, $$9, 8 + $$9 * 18, 142));
       }
    }
 
    @Override
-   public boolean a(cfb $$0) {
-      return this.l.a($$0);
-   }
+   public st g() {
+      st $$0 = new st();
 
-   @Override
-   public cmr a(cfb $$0, int $$1) {
-      cmr $$2 = cmr.f;
-      cjp $$3 = this.i.get($$1);
-      if ($$3 != null && $$3.h()) {
-         cmr $$4 = $$3.g();
-         $$2 = $$4.p();
-         if ($$1 < this.l.b()) {
-            if (!this.a($$4, this.l.b(), this.i.size(), true)) {
-               return cmr.f;
-            }
-         } else if (!this.a($$4, 0, this.l.b(), false)) {
-            return cmr.f;
-         }
-
-         if ($$4.b()) {
-            $$3.e(cmr.f);
-         } else {
-            $$3.b();
+      for (int $$1 = 0; $$1 < this.b(); $$1++) {
+         cmx $$2 = this.a($$1);
+         if (!$$2.b()) {
+            sn $$3 = new sn();
+            $$3.a("Slot", (byte)$$1);
+            $$2.b($$3);
+            $$0.add($$3);
          }
       }
 
-      return $$2;
+      return $$0;
    }
 
    @Override
-   public void b(cfb $$0) {
-      super.b($$0);
-      this.l.c($$0);
+   public boolean a(cfh $$0) {
+      return this.c != null && !this.c.c($$0) ? false : super.a($$0);
+   }
+
+   @Override
+   public void d_(cfh $$0) {
+      if (this.c != null) {
+         this.c.a($$0);
+      }
+
+      super.d_($$0);
+   }
+
+   @Override
+   public void c(cfh $$0) {
+      if (this.c != null) {
+         this.c.b($$0);
+      }
+
+      super.c($$0);
+      this.c = null;
    }
 }

@@ -1,70 +1,49 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.serialization.Codec;
-import java.util.List;
+import com.google.common.collect.ImmutableSet;
+import java.util.Set;
 
-public class ehe extends ehb {
-   public static final Codec<ehe> a = a(ehe::new);
+public class ehe {
+   private final aus a;
+   private final eje b;
+   private final egz c;
+   private final Set<egx<?>> d;
 
-   ehe(List<ehi> $$0, List<ejo> $$1) {
-      super($$0, $$1);
+   public ehe(aus $$0, eje $$1, egz $$2) {
+      this($$0, $$1, $$2, Set.of());
    }
 
-   @Override
-   public ehj a() {
-      return ehg.i;
+   private ehe(aus $$0, eje $$1, egz $$2, Set<egx<?>> $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   @Override
-   protected eha a(List<? extends eha> $$0) {
-      return switch ($$0.size()) {
-         case 0 -> c;
-         case 1 -> (eha)$$0.get(0);
-         case 2 -> {
-            eha $$1 = $$0.get(0);
-            eha $$2 = $$0.get(1);
-            yield ($$2x, $$3) -> {
-               $$1.expand($$2x, $$3);
-               $$2.expand($$2x, $$3);
-               return true;
-            };
-         }
-         default -> ($$1x, $$2x) -> {
-         for (eha $$3 : $$0) {
-            $$3.expand($$1x, $$2x);
-         }
-
-         return true;
-      };
-      };
+   public ehe a(String $$0) {
+      return new ehe(this.a.a($$0), this.b, this.c, this.d);
    }
 
-   public static ehe.a a(ehi.a<?>... $$0) {
-      return new ehe.a($$0);
+   public ehe a(String $$0, egx<?> $$1) {
+      ImmutableSet<egx<?>> $$2 = ImmutableSet.builder().addAll(this.d).add($$1).build();
+      return new ehe(this.a.a($$0), this.b, this.c, $$2);
    }
 
-   public static class a extends ehi.a<ehe.a> {
-      private final Builder<ehi> a = ImmutableList.builder();
+   public boolean a(egx<?> $$0) {
+      return this.d.contains($$0);
+   }
 
-      public a(ehi.a<?>... $$0) {
-         for (ehi.a<?> $$1 : $$0) {
-            this.a.add($$1.b());
-         }
-      }
+   public void b(String $$0) {
+      this.a.b($$0);
+   }
 
-      protected ehe.a a() {
-         return this;
-      }
+   public void a(egw $$0) {
+      this.b.a(this, $$0);
+   }
 
-      @Override
-      public ehe.a b(ehi.a<?> $$0) {
-         this.a.add($$0.b());
-         return this;
-      }
+   public egz a() {
+      return this.c;
+   }
 
-      @Override
-      public ehi b() {
-         return new ehe(this.a.build(), this.f());
-      }
+   public ehe a(eje $$0) {
+      return new ehe(this.a, $$0, this.c, this.d);
    }
 }

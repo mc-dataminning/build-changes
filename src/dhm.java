@@ -1,15 +1,79 @@
-public interface dhm extends bjo {
-   emf y_ = cwj.a(2.0, 11.0, 2.0, 14.0, 16.0, 14.0);
-   emf z_ = cwj.a(0.0, 16.0, 0.0, 16.0, 32.0, 16.0);
-   emf e = emc.a(y_, z_);
+public class dhm extends dhy {
+   public static final int e = 9;
+   private iq<cmx> f = iq.a(9, cmx.f);
 
-   default emf aj_() {
-      return e;
+   protected dhm(dgw<?> $$0, hx $$1, djg $$2) {
+      super($$0, $$1, $$2);
    }
 
-   double I();
+   public dhm(hx $$0, djg $$1) {
+      this(dgw.f, $$0, $$1);
+   }
 
-   double J();
+   @Override
+   public int b() {
+      return 9;
+   }
 
-   double K();
+   public int a(auu $$0) {
+      this.e_(null);
+      int $$1 = -1;
+      int $$2 = 1;
+
+      for (int $$3 = 0; $$3 < this.f.size(); $$3++) {
+         if (!this.f.get($$3).b() && $$0.a($$2++) == 0) {
+            $$1 = $$3;
+         }
+      }
+
+      return $$1;
+   }
+
+   public int a(cmx $$0) {
+      for (int $$1 = 0; $$1 < this.f.size(); $$1++) {
+         if (this.f.get($$1).b()) {
+            this.a($$1, $$0);
+            return $$1;
+         }
+      }
+
+      return -1;
+   }
+
+   @Override
+   protected vf l() {
+      return vf.c("container.dispenser");
+   }
+
+   @Override
+   public void a(sn $$0) {
+      super.a($$0);
+      this.f = iq.a(this.b(), cmx.f);
+      if (!this.c_($$0)) {
+         bju.b($$0, this.f);
+      }
+   }
+
+   @Override
+   protected void b(sn $$0) {
+      super.b($$0);
+      if (!this.d_($$0)) {
+         bju.a($$0, this.f);
+      }
+   }
+
+   @Override
+   protected iq<cmx> k() {
+      return this.f;
+   }
+
+   @Override
+   protected void a(iq<cmx> $$0) {
+      this.f = $$0;
+   }
+
+   @Override
+   protected cia a(int $$0, cfg $$1) {
+      return new cit($$0, $$1, this);
+   }
 }

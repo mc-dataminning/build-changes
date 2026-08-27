@@ -1,71 +1,55 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.Lists;
+import com.mojang.datafixers.util.Pair;
+import java.util.List;
 
-public class acf implements xd<yx> {
-   public static final int a = 0;
-   public static final int b = 1;
-   public static final int c = 2;
-   private final String d;
-   private final vd e;
-   private final emt.a f;
-   @Nullable
-   private final wt g;
-   private final int h;
+public class acf implements xf<za> {
+   private static final byte a = -128;
+   private final int b;
+   private final List<Pair<blz, cmx>> c;
 
-   public acf(emi $$0, int $$1) {
-      this.d = $$0.b();
-      this.e = $$0.d();
-      this.f = $$0.h();
-      this.g = $$0.f();
-      this.h = $$1;
+   public acf(int $$0, List<Pair<blz, cmx>> $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public acf(ug $$0) {
-      this.d = $$0.s();
-      this.h = $$0.readByte();
-      if (this.h != 0 && this.h != 2) {
-         this.e = vc.a;
-         this.f = emt.a.a;
-         this.g = null;
-      } else {
-         this.e = $$0.m();
-         this.f = $$0.b(emt.a.class);
-         this.g = $$0.c(wv::a);
-      }
+   public acf(ui $$0) {
+      this.b = $$0.n();
+      blz[] $$1 = blz.values();
+      this.c = Lists.newArrayList();
+
+      int $$2;
+      do {
+         $$2 = $$0.readByte();
+         blz $$3 = $$1[$$2 & 127];
+         cmx $$4 = $$0.r();
+         this.c.add(Pair.of($$3, $$4));
+      } while (($$2 & -128) != 0);
    }
 
    @Override
-   public void a(ug $$0) {
-      $$0.a(this.d);
-      $$0.k(this.h);
-      if (this.h == 0 || this.h == 2) {
-         $$0.a(this.e);
-         $$0.a(this.f);
-         $$0.a(this.g, wv::a);
+   public void a(ui $$0) {
+      $$0.c(this.b);
+      int $$1 = this.c.size();
+
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         Pair<blz, cmx> $$3 = this.c.get($$2);
+         blz $$4 = (blz)$$3.getFirst();
+         boolean $$5 = $$2 != $$1 - 1;
+         int $$6 = $$4.ordinal();
+         $$0.k($$5 ? $$6 | -128 : $$6);
+         $$0.a((cmx)$$3.getSecond());
       }
    }
 
-   public void a(yx $$0) {
+   public void a(za $$0) {
       $$0.a(this);
    }
 
-   public String a() {
-      return this.d;
+   public int a() {
+      return this.b;
    }
 
-   public vd d() {
-      return this.e;
-   }
-
-   public int e() {
-      return this.h;
-   }
-
-   public emt.a f() {
-      return this.f;
-   }
-
-   @Nullable
-   public wt g() {
-      return this.g;
+   public List<Pair<blz, cmx>> d() {
+      return this.c;
    }
 }

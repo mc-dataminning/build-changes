@@ -1,32 +1,29 @@
-public class ghp implements ggx {
-   public static final float a = 0.01F;
-   public static final float b = 0.001F;
-   public static final float c = 1.0E-4F;
-   private static final int d = 0;
-   private final fsb e;
-   private final gir f;
-   private int g = 0;
+public class ghp extends ghh {
+   private final blu n;
 
-   public ghp(fsb $$0, gir $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   public ghp(arq $$0, ars $$1, float $$2, float $$3, blu $$4, long $$5) {
+      super($$0, $$1, auu.a($$5));
+      this.d = $$2;
+      this.e = $$3;
+      this.n = $$4;
+      this.f = (double)((float)this.n.dr());
+      this.g = (double)((float)this.n.dt());
+      this.h = (double)((float)this.n.dx());
    }
 
    @Override
-   public void a() {
-      this.g--;
-      if (this.g <= 0 && this.e.be()) {
-         float $$0 = this.e.dM().z.i();
-         if ($$0 < 1.0E-4F) {
-            this.g = 0;
-            this.f.a((ghn)(new ghq.a(this.e, arm.C)));
-         } else if ($$0 < 0.001F) {
-            this.g = 0;
-            this.f.a((ghn)(new ghq.a(this.e, arm.B)));
-         } else if ($$0 < 0.01F) {
-            this.g = 0;
-            this.f.a((ghn)(new ghq.a(this.e, arm.A)));
-         }
+   public boolean s() {
+      return !this.n.aU();
+   }
+
+   @Override
+   public void q() {
+      if (this.n.dH()) {
+         this.n();
+      } else {
+         this.f = (double)((float)this.n.dr());
+         this.g = (double)((float)this.n.dt());
+         this.h = (double)((float)this.n.dx());
       }
    }
 }

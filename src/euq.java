@@ -1,29 +1,30 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import javax.annotation.Nullable;
+import java.util.function.IntFunction;
 
-public class euq {
-   private final List<vi> a = Lists.newArrayList();
+public enum euq implements aup {
+   a(0, "options.off"),
+   b(1, "options.attack.crosshair"),
+   c(2, "options.attack.hotbar");
 
-   public void a(vi $$0) {
-      this.a.add($$0);
+   private static final IntFunction<euq> d = atf.a(euq::a, values(), atf.a.b);
+   private final int e;
+   private final String f;
+
+   private euq(int $$0, String $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
-   @Nullable
-   public vi a() {
-      if (this.a.isEmpty()) {
-         return null;
-      } else {
-         return this.a.size() == 1 ? this.a.get(0) : vi.a(this.a);
-      }
+   @Override
+   public int a() {
+      return this.e;
    }
 
-   public vi b() {
-      vi $$0 = this.a();
-      return $$0 != null ? $$0 : vi.b;
+   @Override
+   public String b() {
+      return this.f;
    }
 
-   public void c() {
-      this.a.clear();
+   public static euq a(int $$0) {
+      return d.apply($$0);
    }
 }

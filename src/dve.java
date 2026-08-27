@@ -1,28 +1,42 @@
+import com.mojang.datafixers.Products.P3;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 
-public class dve<P extends dvd> {
-   public static final dve<duy> a = a("blob_foliage_placer", duy.a);
-   public static final dve<dvj> b = a("spruce_foliage_placer", dvj.a);
-   public static final dve<dvh> c = a("pine_foliage_placer", dvh.a);
-   public static final dve<dux> d = a("acacia_foliage_placer", dux.a);
-   public static final dve<duz> e = a("bush_foliage_placer", duz.c);
-   public static final dve<dvc> f = a("fancy_foliage_placer", dvc.c);
-   public static final dve<dvf> g = a("jungle_foliage_placer", dvf.a);
-   public static final dve<dvg> h = a("mega_pine_foliage_placer", dvg.a);
-   public static final dve<dvb> i = a("dark_oak_foliage_placer", dvb.a);
-   public static final dve<dvi> j = a("random_spread_foliage_placer", dvi.a);
-   public static final dve<dva> k = a("cherry_foliage_placer", dva.a);
-   private final Codec<P> l;
+public class dve extends dvj {
+   public static final Codec<dve> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, dve::new));
+   protected final int b;
 
-   private static <P extends dvd> dve<P> a(String $$0, Codec<P> $$1) {
-      return it.a(kd.W, $$0, new dve<>($$1));
+   protected static <P extends dve> P3<Mu<P>, bjf, bjf, Integer> a(Instance<P> $$0) {
+      return b($$0).and(Codec.intRange(0, 16).fieldOf("height").forGetter($$0x -> $$0x.b));
    }
 
-   private dve(Codec<P> $$0) {
-      this.l = $$0;
+   public dve(bjf $$0, bjf $$1, int $$2) {
+      super($$0, $$1);
+      this.b = $$2;
    }
 
-   public Codec<P> a() {
-      return this.l;
+   @Override
+   protected dvk<?> a() {
+      return dvk.a;
+   }
+
+   @Override
+   protected void a(ctu $$0, dvj.b $$1, auu $$2, dut $$3, int $$4, dvj.a $$5, int $$6, int $$7, int $$8) {
+      for (int $$9 = $$8; $$9 >= $$8 - $$6; $$9--) {
+         int $$10 = Math.max($$7 + $$5.b() - 1 - $$9 / 2, 0);
+         this.a($$0, $$1, $$2, $$3, $$5.a(), $$10, $$9, $$5.c());
+      }
+   }
+
+   @Override
+   public int a(auu $$0, int $$1, dut $$2) {
+      return this.b;
+   }
+
+   @Override
+   protected boolean a(auu $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$1 == $$4 && $$3 == $$4 && ($$0.a(2) == 0 || $$2 == 0);
    }
 }

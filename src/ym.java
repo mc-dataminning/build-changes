@@ -1,21 +1,18 @@
-import java.util.HashSet;
-import java.util.Set;
+public record ym(hx b, int c) implements ya {
+   public static final ahg a = new ahg("debug/poi_ticket_count");
 
-public record ym(Set<iz> b, Set<iz> c) implements xx {
-   public static final ahd a = new ahd("debug/village_sections");
-
-   public ym(ug $$0) {
-      this($$0.a(HashSet::new, ug::g), $$0.a(HashSet::new, ug::g));
+   public ym(ui $$0) {
+      this($$0.e(), $$0.readInt());
    }
 
    @Override
-   public void a(ug $$0) {
-      $$0.a(this.b, ug::a);
-      $$0.a(this.c, ug::a);
+   public void a(ui $$0) {
+      $$0.a(this.b);
+      $$0.p(this.c);
    }
 
    @Override
-   public ahd a() {
+   public ahg a() {
       return a;
    }
 }

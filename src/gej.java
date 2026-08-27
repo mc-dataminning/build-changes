@@ -1,25 +1,15 @@
-import java.util.function.Function;
-import java.util.function.Predicate;
+import java.util.Collection;
+import java.util.Locale;
 
-public interface gej {
-   agw a = new agw("textures", ".png");
+public class gej extends RuntimeException {
+   private final Collection<gei.a> a;
 
-   void a(aqc var1, gej.a var2);
-
-   gel a();
-
-   public interface a {
-      default void a(ahd $$0, aqa $$1) {
-         this.a($$0, $$2 -> $$2.loadSprite($$0, $$1));
-      }
-
-      void a(ahd var1, gej.b var2);
-
-      void a(Predicate<ahd> var1);
+   public gej(gei.a $$0, Collection<gei.a> $$1) {
+      super(String.format(Locale.ROOT, "Unable to fit: %s - size: %dx%d - Maybe try a lower resolution resourcepack?", $$0.c(), $$0.a(), $$0.b()));
+      this.a = $$1;
    }
 
-   public interface b extends Function<gei, gdz> {
-      default void a() {
-      }
+   public Collection<gei.a> a() {
+      return this.a;
    }
 }

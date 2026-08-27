@@ -1,78 +1,34 @@
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
 import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Collection;
+import net.minecraft.server.MinecraftServer;
 
 public class ajc {
-   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> vd.b("commands.enchant.failed.entity", $$0));
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> vd.b("commands.enchant.failed.itemless", $$0));
-   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> vd.b("commands.enchant.failed.incompatible", $$0));
-   private static final Dynamic2CommandExceptionType d = new Dynamic2CommandExceptionType(($$0, $$1) -> vd.b("commands.enchant.failed.level", $$0, $$1));
-   private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(vd.c("commands.enchant.failed"));
+   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> vf.b("commands.difficulty.failure", $$0));
 
-   public static void a(CommandDispatcher<ds> $$0, dn $$1) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("enchant").requires($$0x -> $$0x.c(2)))
-            .then(
-               dt.a("targets", ef.b())
-                  .then(
-                     ((RequiredArgumentBuilder)dt.a("enchantment", er.a($$1, ke.t))
-                           .executes($$0x -> a((ds)$$0x.getSource(), ef.b($$0x, "targets"), er.g($$0x, "enchantment"), 1)))
-                        .then(
-                           dt.a("level", IntegerArgumentType.integer(0))
-                              .executes(
-                                 $$0x -> a(
-                                       (ds)$$0x.getSource(), ef.b($$0x, "targets"), er.g($$0x, "enchantment"), IntegerArgumentType.getInteger($$0x, "level")
-                                    )
-                              )
-                        )
-                  )
-            )
-      );
+   public static void a(CommandDispatcher<ds> $$0) {
+      LiteralArgumentBuilder<ds> $$1 = dt.a("difficulty");
+
+      for (bjx $$2 : bjx.values()) {
+         $$1.then(dt.a($$2.e()).executes($$1x -> a((ds)$$1x.getSource(), $$2)));
+      }
+
+      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)$$1.requires($$0x -> $$0x.c(2))).executes($$0x -> {
+         bjx $$1x = ((ds)$$0x.getSource()).e().ak();
+         ((ds)$$0x.getSource()).a(() -> vf.a("commands.difficulty.query", $$1x.b()), false);
+         return $$1x.a();
+      }));
    }
 
-   private static int a(ds $$0, Collection<? extends blp> $$1, ih<crc> $$2, int $$3) throws CommandSyntaxException {
-      crc $$4 = $$2.a();
-      if ($$3 > $$4.a()) {
-         throw d.create($$3, $$4.a());
+   public static int a(ds $$0, bjx $$1) throws CommandSyntaxException {
+      MinecraftServer $$2 = $$0.l();
+      if ($$2.aY().s() == $$1) {
+         throw a.create($$1.e());
       } else {
-         int $$5 = 0;
-
-         for (blp $$6 : $$1) {
-            if ($$6 instanceof bmf) {
-               bmf $$7 = (bmf)$$6;
-               cmr $$8 = $$7.eT();
-               if (!$$8.b()) {
-                  if ($$4.a($$8) && cre.a(cre.a($$8).keySet(), $$4)) {
-                     $$8.a($$4, $$3);
-                     $$5++;
-                  } else if ($$1.size() == 1) {
-                     throw c.create($$8.d().m($$8).getString());
-                  }
-               } else if ($$1.size() == 1) {
-                  throw b.create($$7.ad().getString());
-               }
-            } else if ($$1.size() == 1) {
-               throw a.create($$6.ad().getString());
-            }
-         }
-
-         if ($$5 == 0) {
-            throw e.create();
-         } else {
-            if ($$1.size() == 1) {
-               $$0.a(() -> vd.a("commands.enchant.success.single", $$4.d($$3), $$1.iterator().next().Q_()), true);
-            } else {
-               $$0.a(() -> vd.a("commands.enchant.success.multiple", $$4.d($$3), $$1.size()), true);
-            }
-
-            return $$5;
-         }
+         $$2.a($$1, true);
+         $$0.a(() -> vf.a("commands.difficulty.success", $$1.b()), true);
+         return 0;
       }
    }
 }

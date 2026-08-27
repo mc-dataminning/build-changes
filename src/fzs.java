@@ -1,24 +1,18 @@
-public class fzs extends fzl<ccl, fkq<ccl>> {
-   private static final ahd a = new ahd("textures/entity/phantom.png");
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   public fzs(fyf.a $$0) {
-      super($$0, new fkq<>($$0.a(fmo.aE)), 0.75F);
-      this.a(new gco<>(this));
+public class fzs extends fzr<byk, fjo<byk>> {
+   private static final Map<byk.a, ahg> a = ac.a(Maps.newHashMap(), $$0 -> {
+      $$0.put(byk.a.b, new ahg("textures/entity/cow/brown_mooshroom.png"));
+      $$0.put(byk.a.a, new ahg("textures/entity/cow/red_mooshroom.png"));
+   });
+
+   public fzs(fyl.a $$0) {
+      super($$0, new fjo<>($$0.a(fmu.az)), 0.7F);
+      this.a(new gcr<>(this, $$0.c()));
    }
 
-   public ahd a(ccl $$0) {
-      return a;
-   }
-
-   protected void a(ccl $$0, ept $$1, float $$2) {
-      int $$3 = $$0.u();
-      float $$4 = 1.0F + 0.15F * (float)$$3;
-      $$1.b($$4, $$4, $$4);
-      $$1.a(0.0F, 1.3125F, 0.1875F);
-   }
-
-   protected void a(ccl $$0, ept $$1, float $$2, float $$3, float $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      $$1.a(a.b.rotationDegrees($$0.dE()));
+   public ahg a(byk $$0) {
+      return a.get($$0.w());
    }
 }

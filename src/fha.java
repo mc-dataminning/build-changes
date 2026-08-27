@@ -1,229 +1,396 @@
-import com.google.common.collect.ImmutableList;
-import java.util.ArrayList;
+import com.mojang.authlib.GameProfile;
+import com.mojang.authlib.minecraft.report.AbuseReportLimits;
+import com.mojang.blaze3d.systems.RenderSystem;
 import java.util.List;
 import java.util.UUID;
+import java.util.function.Consumer;
 import java.util.function.Supplier;
 import javax.annotation.Nullable;
 
-public class fha extends exe.a<fha> {
-   private static final ahd f = new ahd("icon/draft_report");
-   private static final int g = 10;
-   private static final eyl h = new eyl(
-      new ahd("social_interactions/report_button"),
-      new ahd("social_interactions/report_button_disabled"),
-      new ahd("social_interactions/report_button_highlighted")
-   );
-   private static final eyl i = new eyl(new ahd("social_interactions/mute_button"), new ahd("social_interactions/mute_button_highlighted"));
-   private static final eyl j = new eyl(new ahd("social_interactions/unmute_button"), new ahd("social_interactions/unmute_button_highlighted"));
-   private final eva k;
-   private final List<eww> l;
-   private final UUID m;
-   private final String n;
-   private final Supplier<gff> o;
-   private boolean p;
-   private boolean q;
-   private final boolean r;
-   private final boolean t;
-   private final boolean u;
+public class fha extends fcz {
+   static final ahg a = new ahg("icon/checkmark");
+   private static final vf b = vf.c("gui.chatSelection.title");
+   private static final vf c = vf.c("gui.chatSelection.context").a(n.h);
    @Nullable
-   private ewy v;
+   private final fcz k;
+   private final fou l;
+   private exe m;
+   private exx n;
    @Nullable
-   private ewy w;
-   @Nullable
-   private ewy x;
-   private float y;
-   private static final vd z = vd.c("gui.socialInteractions.status_hidden").a(n.u);
-   private static final vd A = vd.c("gui.socialInteractions.status_blocked").a(n.u);
-   private static final vd B = vd.c("gui.socialInteractions.status_offline").a(n.u);
-   private static final vd C = vd.c("gui.socialInteractions.status_hidden_offline").a(n.u);
-   private static final vd D = vd.c("gui.socialInteractions.status_blocked_offline").a(n.u);
-   private static final vd E = vd.c("gui.socialInteractions.tooltip.report.disabled");
-   private static final vd F = vd.c("gui.socialInteractions.tooltip.hide");
-   private static final vd G = vd.c("gui.socialInteractions.tooltip.show");
-   private static final vd H = vd.c("gui.socialInteractions.tooltip.report");
-   private static final int I = 24;
-   private static final int J = 4;
-   public static final int a = ats.b.a(190, 0, 0, 0);
-   private static final int K = 20;
-   public static final int b = ats.b.a(255, 74, 74, 74);
-   public static final int c = ats.b.a(255, 48, 48, 48);
-   public static final int d = ats.b.a(255, 255, 255, 255);
-   public static final int e = ats.b.a(140, 255, 255, 255);
+   private fha.a o;
+   final fom.a p;
+   private final Consumer<fom.a> q;
+   private fgz r;
 
-   public fha(eva $$0, fhd $$1, UUID $$2, String $$3, Supplier<gff> $$4, boolean $$5) {
+   public fha(@Nullable fcz $$0, fou $$1, fom.a $$2, Consumer<fom.a> $$3) {
+      super(b);
       this.k = $$0;
-      this.m = $$2;
-      this.n = $$3;
-      this.o = $$4;
-      fon $$6 = $$0.aW();
-      this.r = $$6.a().a();
-      this.u = $$5;
-      this.t = $$6.a($$2);
-      vd $$7 = vd.a("gui.socialInteractions.narration.hide", $$3);
-      vd $$8 = vd.a("gui.socialInteractions.narration.show", $$3);
-      fhb $$9 = $$0.aJ();
-      boolean $$10 = $$0.G().a($$0.Q());
-      boolean $$11 = !$$0.s.cw().equals($$2);
-      if ($$11 && $$10 && !$$9.e($$2)) {
-         this.x = new exk(0, 0, 20, 20, h, $$3x -> $$6.a($$0, $$1, () -> $$0.a(new fgw($$1, $$6, this)), false), vd.c("gui.socialInteractions.report")) {
-            @Override
-            protected vr aK_() {
-               return fha.this.a(super.aK_());
-            }
-         };
-         this.x.j = this.r;
-         this.x.a(this.k());
-         this.x.j(10);
-         this.v = new exk(0, 0, 20, 20, i, $$3x -> {
-            $$9.a($$2);
-            this.a(true, vd.a("gui.socialInteractions.hidden_in_chat", $$3));
-         }, vd.c("gui.socialInteractions.hide")) {
-            @Override
-            protected vr aK_() {
-               return fha.this.a(super.aK_());
-            }
-         };
-         this.v.a(eyj.a(F, $$7));
-         this.v.j(10);
-         this.w = new exk(0, 0, 20, 20, j, $$3x -> {
-            $$9.b($$2);
-            this.a(false, vd.a("gui.socialInteractions.shown_in_chat", $$3));
-         }, vd.c("gui.socialInteractions.show")) {
-            @Override
-            protected vr aK_() {
-               return fha.this.a(super.aK_());
-            }
-         };
-         this.w.a(eyj.a(G, $$8));
-         this.w.j(10);
-         this.l = new ArrayList<>();
-         this.l.add(this.v);
-         this.l.add(this.x);
-         this.e($$9.d(this.m));
-      } else {
-         this.l = ImmutableList.of();
-      }
-   }
-
-   private eyj k() {
-      return !this.r ? eyj.a(E) : eyj.a(H, vd.a("gui.socialInteractions.narration.report", this.n));
+      this.l = $$1;
+      this.p = $$2.d();
+      this.q = $$3;
    }
 
    @Override
-   public void a(ewm $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-      int $$10 = $$3 + 4;
-      int $$11 = $$2 + ($$5 - 24) / 2;
-      int $$12 = $$10 + 24 + 4;
-      vd $$13 = this.m();
-      int $$14;
-      if ($$13 == vc.a) {
-         $$0.a($$3, $$2, $$3 + $$4, $$2 + $$5, b);
-         $$14 = $$2 + ($$5 - 9) / 2;
-      } else {
-         $$0.a($$3, $$2, $$3 + $$4, $$2 + $$5, c);
-         $$14 = $$2 + ($$5 - (9 + 9)) / 2;
-         $$0.a(this.k.h, $$13, $$12, $$14 + 12, e, false);
+   protected void aN_() {
+      this.r = new fgz(this.l, this::a);
+      this.n = exx.a(this.i, c, this.g - 16);
+      this.o = this.d(new fha.a(this.f, (this.n.a() + 1) * 9));
+      this.d(exe.a(ve.k, $$0 -> this.aE_()).a(this.g / 2 - 155, this.h - 32, 150, 20).a());
+      this.m = this.d(exe.a(ve.d, $$0 -> {
+         this.q.accept(this.p);
+         this.aE_();
+      }).a(this.g / 2 - 155 + 160, this.h - 32, 150, 20).a());
+      this.D();
+      this.n();
+      this.o.a((double)this.o.p());
+   }
+
+   private boolean a(foi $$0) {
+      return $$0.a(this.p.f());
+   }
+
+   private void n() {
+      int $$0 = this.o.d();
+      this.r.a($$0, this.o);
+   }
+
+   @Override
+   void C() {
+      this.n();
+   }
+
+   void D() {
+      this.m.j = !this.p.a().isEmpty();
+   }
+
+   @Override
+   public void a(ews $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, this.e, this.g / 2, 16, 16777215);
+      AbuseReportLimits $$4 = this.l.a().b();
+      int $$5 = this.p.a().size();
+      int $$6 = $$4.maxReportedMessageCount();
+      vf $$7 = vf.a("gui.chatSelection.selected", $$5, $$6);
+      $$0.a(this.i, $$7, this.g / 2, 16 + 9 * 3 / 2, 10526880);
+      this.n.a($$0, this.g / 2, this.o.e());
+   }
+
+   @Override
+   public void b(ews $$0, int $$1, int $$2, float $$3) {
+      this.b($$0);
+   }
+
+   @Override
+   public void aE_() {
+      this.f.a(this.k);
+   }
+
+   @Override
+   public vf h() {
+      return ve.a(super.h(), c);
+   }
+
+   public class a extends eya<fha.a.b> implements fgz.a {
+      @Nullable
+      private fha.a.c m;
+
+      public a(evg $$1, int $$2) {
+         super($$1, fha.this.g, fha.this.h - $$2 - 80, 40, 16);
       }
 
-      exx.a($$0, this.o.get(), $$10, $$11, 24);
-      $$0.a(this.k.h, this.n, $$12, $$14, d, false);
-      if (this.p) {
-         $$0.a($$10, $$11, $$10 + 24, $$11 + 24, a);
-      }
-
-      if (this.v != null && this.w != null && this.x != null) {
-         float $$16 = this.y;
-         this.v.n($$3 + ($$4 - this.v.w() - 4) - 20 - 4);
-         this.v.o($$2 + ($$5 - this.v.u()) / 2);
-         this.v.a($$0, $$6, $$7, $$9);
-         this.w.n($$3 + ($$4 - this.w.w() - 4) - 20 - 4);
-         this.w.o($$2 + ($$5 - this.w.u()) / 2);
-         this.w.a($$0, $$6, $$7, $$9);
-         this.x.n($$3 + ($$4 - this.w.w() - 4));
-         this.x.o($$2 + ($$5 - this.w.u()) / 2);
-         this.x.a($$0, $$6, $$7, $$9);
-         if ($$16 == this.y) {
-            this.y = 0.0F;
+      @Override
+      public void a(double $$0) {
+         double $$1 = this.o();
+         super.a($$0);
+         if ((float)this.p() > 1.0E-5F && $$0 <= 1.0E-5F && !aun.b($$0, $$1)) {
+            fha.this.C();
          }
       }
 
-      if (this.t && this.x != null) {
-         $$0.a(f, this.x.B() + 5, this.x.C() + 1, 15, 15);
+      @Override
+      public void a(int $$0, foi.a $$1) {
+         boolean $$2 = $$1.a(fha.this.p.f());
+         fog $$3 = $$1.h();
+         evb $$4 = $$3.a($$1.g());
+         fha.a.b $$5 = new fha.a.d($$0, $$1.b(), $$1.c(), $$4, $$2, true);
+         this.c($$5);
+         this.a($$1, $$2);
       }
-   }
 
-   @Override
-   public List<? extends eyt> l() {
-      return this.l;
-   }
+      private void a(foi.a $$0, boolean $$1) {
+         fha.a.b $$2 = new fha.a.e($$0.f(), $$0.d(), $$1);
+         this.c($$2);
+         fha.a.c $$3 = new fha.a.c($$0.e(), $$2);
+         if (this.m != null && this.m.a($$3)) {
+            this.d(this.m.b());
+         }
 
-   @Override
-   public List<? extends fap> a() {
-      return this.l;
-   }
+         this.m = $$3;
+      }
 
-   public String b() {
-      return this.n;
-   }
+      @Override
+      public void a(vf $$0) {
+         this.c(new fha.a.f());
+         this.c(new fha.a.a($$0));
+         this.c(new fha.a.f());
+         this.m = null;
+      }
 
-   public UUID c() {
-      return this.m;
-   }
+      @Override
+      protected int c() {
+         return (this.g + this.b()) / 2;
+      }
 
-   public Supplier<gff> d() {
-      return this.o;
-   }
+      @Override
+      public int b() {
+         return Math.min(350, this.g - 50);
+      }
 
-   public void c(boolean $$0) {
-      this.p = $$0;
-   }
+      public int d() {
+         return aun.e(this.h, this.d);
+      }
 
-   public boolean e() {
-      return this.p;
-   }
+      @Override
+      protected void a(ews $$0, int $$1, int $$2, float $$3, int $$4, int $$5, int $$6, int $$7, int $$8) {
+         fha.a.b $$9 = this.d($$4);
+         if (this.b($$9)) {
+            boolean $$10 = this.i() == $$9;
+            int $$11 = this.aI_() && $$10 ? -1 : -8355712;
+            this.a($$0, $$6, $$7, $$8, $$11, -16777216);
+         }
 
-   public void d(boolean $$0) {
-      this.q = $$0;
-   }
+         $$9.a($$0, $$4, $$6, $$5, $$7, $$8, $$1, $$2, this.t() == $$9, $$3);
+      }
 
-   public boolean i() {
-      return this.q;
-   }
+      private boolean b(fha.a.b $$0) {
+         if ($$0.c()) {
+            boolean $$1 = this.i() == $$0;
+            boolean $$2 = this.i() == null;
+            boolean $$3 = this.t() == $$0;
+            return $$1 || $$2 && $$3 && $$0.d();
+         } else {
+            return false;
+         }
+      }
 
-   public boolean j() {
-      return this.u;
-   }
+      @Nullable
+      protected fha.a.b b(fbf $$0) {
+         return this.a($$0, fha.a.b::c);
+      }
 
-   private void a(boolean $$0, vd $$1) {
-      this.e($$0);
-      this.k.l.d().a($$1);
-      this.k.aU().c($$1);
-   }
+      public void a(@Nullable fha.a.b $$0) {
+         super.a($$0);
+         fha.a.b $$1 = this.b(fbf.a);
+         if ($$1 == null) {
+            fha.this.C();
+         }
+      }
 
-   private void e(boolean $$0) {
-      this.w.k = $$0;
-      this.v.k = !$$0;
-      this.l.set(0, $$0 ? this.w : this.v);
-   }
+      @Override
+      public boolean a(int $$0, int $$1, int $$2) {
+         fha.a.b $$3 = this.i();
+         return $$3 != null && $$3.a($$0, $$1, $$2) ? true : super.a($$0, $$1, $$2);
+      }
 
-   vr a(vr $$0) {
-      vd $$1 = this.m();
-      return $$1 == vc.a ? vd.b(this.n).f(", ").b($$0) : vd.b(this.n).f(", ").b($$1).f(", ").b($$0);
-   }
+      public int e() {
+         return this.E() + 9;
+      }
 
-   private vd m() {
-      boolean $$0 = this.k.aJ().d(this.m);
-      boolean $$1 = this.k.aJ().e(this.m);
-      if ($$1 && this.p) {
-         return D;
-      } else if ($$0 && this.p) {
-         return C;
-      } else if ($$1) {
-         return A;
-      } else if ($$0) {
-         return z;
-      } else {
-         return this.p ? B : vc.a;
+      public class a extends fha.a.b {
+         private static final int c = -6250336;
+         private final vf d;
+
+         public a(vf $$1) {
+            this.d = $$1;
+         }
+
+         @Override
+         public void a(ews $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+            int $$10 = $$2 + $$5 / 2;
+            int $$11 = $$3 + $$4 - 8;
+            int $$12 = fha.this.i.a(this.d);
+            int $$13 = ($$3 + $$11 - $$12) / 2;
+            int $$14 = $$10 - 9 / 2;
+            $$0.b(fha.this.i, this.d, $$13, $$14, -6250336);
+         }
+
+         @Override
+         public vf a() {
+            return this.d;
+         }
+      }
+
+      public abstract class b extends eya.a<fha.a.b> {
+         @Override
+         public vf a() {
+            return ve.a;
+         }
+
+         public boolean b() {
+            return false;
+         }
+
+         public boolean c() {
+            return false;
+         }
+
+         public boolean d() {
+            return this.c();
+         }
+      }
+
+      static record c(UUID a, fha.a.b b) {
+         public boolean a(fha.a.c $$0) {
+            return $$0.a.equals(this.a);
+         }
+      }
+
+      public class d extends fha.a.b {
+         private static final int c = 9;
+         private static final int d = 8;
+         private static final int e = 11;
+         private static final int f = 4;
+         private final int g;
+         private final vk h;
+         private final vf i;
+         @Nullable
+         private final List<atz> j;
+         @Nullable
+         private final evb.a k;
+         @Nullable
+         private final List<atz> l;
+         private final boolean m;
+         private final boolean n;
+
+         public d(int $$1, vf $$2, vf $$3, @Nullable evb $$4, boolean $$5, boolean $$6) {
+            this.g = $$1;
+            this.k = x.a($$4, evb::f);
+            this.l = $$4 != null && $$4.g() != null ? fha.this.i.c($$4.g(), a.this.b()) : null;
+            this.m = $$5;
+            this.n = $$6;
+            vk $$7 = fha.this.i.a($$2, this.e() - fha.this.i.a(ve.t));
+            if ($$2 != $$7) {
+               this.h = vk.a($$7, ve.t);
+               this.j = fha.this.i.c($$2, a.this.b());
+            } else {
+               this.h = $$2;
+               this.j = null;
+            }
+
+            this.i = $$3;
+         }
+
+         @Override
+         public void a(ews $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+            if (this.b() && this.m) {
+               this.a($$0, $$2, $$3, $$5);
+            }
+
+            int $$10 = $$3 + this.f();
+            int $$11 = $$2 + 1 + ($$5 - 9) / 2;
+            $$0.b(fha.this.i, si.a().a(this.h), $$10, $$11, this.m ? -1 : -1593835521);
+            if (this.j != null && $$8) {
+               fha.this.b(this.j);
+            }
+
+            int $$12 = fha.this.i.a(this.h);
+            this.a($$0, $$10 + $$12 + 4, $$2, $$5, $$6, $$7);
+         }
+
+         private void a(ews $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+            if (this.k != null) {
+               int $$6 = $$2 + ($$3 - this.k.d) / 2;
+               this.k.a($$0, $$1, $$6);
+               if (this.l != null && $$4 >= $$1 && $$4 <= $$1 + this.k.c && $$5 >= $$6 && $$5 <= $$6 + this.k.d) {
+                  fha.this.b(this.l);
+               }
+            }
+         }
+
+         private void a(ews $$0, int $$1, int $$2, int $$3) {
+            int $$5 = $$1 + ($$3 - 8) / 2;
+            RenderSystem.enableBlend();
+            $$0.a(fha.a, $$2, $$5, 9, 8);
+            RenderSystem.disableBlend();
+         }
+
+         private int e() {
+            int $$0 = this.k != null ? this.k.c + 4 : 0;
+            return a.this.b() - this.f() - 4 - $$0;
+         }
+
+         private int f() {
+            return this.n ? 11 : 0;
+         }
+
+         @Override
+         public vf a() {
+            return (vf)(this.b() ? vf.a("narrator.select", this.i) : this.i);
+         }
+
+         @Override
+         public boolean a(double $$0, double $$1, int $$2) {
+            a.this.a(null);
+            return this.g();
+         }
+
+         @Override
+         public boolean a(int $$0, int $$1, int $$2) {
+            return fbc.a($$0) ? this.g() : false;
+         }
+
+         @Override
+         public boolean b() {
+            return fha.this.p.b(this.g);
+         }
+
+         @Override
+         public boolean c() {
+            return true;
+         }
+
+         @Override
+         public boolean d() {
+            return this.m;
+         }
+
+         private boolean g() {
+            if (this.m) {
+               fha.this.p.a(this.g);
+               fha.this.D();
+               return true;
+            } else {
+               return false;
+            }
+         }
+      }
+
+      public class e extends fha.a.b {
+         private static final int c = 12;
+         private final vf d;
+         private final Supplier<gfk> e;
+         private final boolean f;
+
+         public e(GameProfile $$1, vf $$2, boolean $$3) {
+            this.d = $$2;
+            this.f = $$3;
+            this.e = a.this.c.al().a($$1);
+         }
+
+         @Override
+         public void a(ews $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+            int $$10 = $$3 - 12 - 4;
+            int $$11 = $$2 + ($$5 - 12) / 2;
+            eyd.a($$0, this.e.get(), $$10, $$11, 12);
+            int $$12 = $$2 + 1 + ($$5 - 9) / 2;
+            $$0.b(fha.this.i, this.d, $$3, $$12, this.f ? -1 : -1593835521);
+         }
+      }
+
+      public class f extends fha.a.b {
+         @Override
+         public void a(ews $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         }
       }
    }
 }

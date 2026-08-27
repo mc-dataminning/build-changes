@@ -1,443 +1,84 @@
-import com.google.common.collect.ImmutableSet;
-import com.mojang.logging.LogUtils;
-import java.util.List;
-import java.util.Set;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public abstract class dzd extends dzj {
+   protected final int a;
+   protected final int b;
+   protected final int c;
+   protected int d = -1;
 
-public abstract class dzd {
-   private static final Logger a = LogUtils.getLogger();
-   protected static final dja e = cwl.nc.o();
-   protected dyr f;
-   @Nullable
-   private ic b;
-   private dbf c;
-   private dcv d;
-   protected int g;
-   private final dzq h;
-   private static final Set<cwj> i = ImmutableSet.builder()
-      .add(cwl.fo)
-      .add(cwl.cp)
-      .add(cwl.cq)
-      .add(cwl.dU)
-      .add(cwl.kd)
-      .add(cwl.ki)
-      .add(cwl.kg)
-      .add(cwl.ke)
-      .add(cwl.kf)
-      .add(cwl.cO)
-      .add(cwl.eW)
-      .build();
-
-   protected dzd(dzq $$0, int $$1, dyr $$2) {
-      this.h = $$0;
-      this.g = $$1;
-      this.f = $$2;
+   protected dzd(dzw $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, ic $$7) {
+      super($$0, 0, dzj.a($$1, $$2, $$3, $$7, $$4, $$5, $$6));
+      this.a = $$4;
+      this.b = $$5;
+      this.c = $$6;
+      this.a($$7);
    }
 
-   public dzd(dzq $$0, sl $$1) {
-      this(
-         $$0, $$1.h("GD"), (dyr)dyr.a.parse(sz.a, $$1.c("BB")).resultOrPartial(a::error).orElseThrow(() -> new IllegalArgumentException("Invalid boundingbox"))
-      );
-      int $$2 = $$1.h("O");
-      this.a($$2 == -1 ? null : ic.b($$2));
+   protected dzd(dzw $$0, sn $$1) {
+      super($$0, $$1);
+      this.a = $$1.h("Width");
+      this.b = $$1.h("Height");
+      this.c = $$1.h("Depth");
+      this.d = $$1.h("HPos");
    }
 
-   protected static dyr a(int $$0, int $$1, int $$2, ic $$3, int $$4, int $$5, int $$6) {
-      return $$3.o() == ic.a.c
-         ? new dyr($$0, $$1, $$2, $$0 + $$4 - 1, $$1 + $$5 - 1, $$2 + $$6 - 1)
-         : new dyr($$0, $$1, $$2, $$0 + $$6 - 1, $$1 + $$5 - 1, $$2 + $$4 - 1);
+   @Override
+   protected void a(dzv $$0, sn $$1) {
+      $$1.a("Width", this.a);
+      $$1.a("Height", this.b);
+      $$1.a("Depth", this.c);
+      $$1.a("HPos", this.d);
    }
 
-   protected static ic a(aup $$0) {
-      return ic.c.a.a($$0);
-   }
-
-   public final sl a(dzp $$0) {
-      sl $$1 = new sl();
-      $$1.a("id", kd.S.b(this.k()).toString());
-      dyr.a.encodeStart(sz.a, this.f).resultOrPartial(a::error).ifPresent($$1x -> $$1.a("BB", $$1x));
-      ic $$2 = this.i();
-      $$1.a("O", $$2 == null ? -1 : $$2.e());
-      $$1.a("GD", this.g);
-      this.a($$0, $$1);
-      return $$1;
-   }
-
-   protected abstract void a(dzp var1, sl var2);
-
-   public void a(dzd $$0, dze $$1, aup $$2) {
-   }
-
-   public abstract void a(cud var1, cub var2, dkx var3, aup var4, dyr var5, csp var6, hx var7);
-
-   public dyr f() {
-      return this.f;
-   }
-
-   public int g() {
-      return this.g;
-   }
-
-   public void a(int $$0) {
-      this.g = $$0;
-   }
-
-   public boolean a(csp $$0, int $$1) {
-      int $$2 = $$0.d();
-      int $$3 = $$0.e();
-      return this.f.a($$2 - $$1, $$3 - $$1, $$2 + 15 + $$1, $$3 + 15 + $$1);
-   }
-
-   public hx h() {
-      return new hx(this.f.g());
-   }
-
-   protected hx.a b(int $$0, int $$1, int $$2) {
-      return new hx.a(this.a($$0, $$2), this.b($$1), this.b($$0, $$2));
-   }
-
-   protected int a(int $$0, int $$1) {
-      ic $$2 = this.i();
-      if ($$2 == null) {
-         return $$0;
-      } else {
-         switch ($$2) {
-            case c:
-            case d:
-               return this.f.h() + $$0;
-            case e:
-               return this.f.k() - $$1;
-            case f:
-               return this.f.h() + $$1;
-            default:
-               return $$0;
-         }
-      }
-   }
-
-   protected int b(int $$0) {
-      return this.i() == null ? $$0 : $$0 + this.f.i();
-   }
-
-   protected int b(int $$0, int $$1) {
-      ic $$2 = this.i();
-      if ($$2 == null) {
-         return $$1;
-      } else {
-         switch ($$2) {
-            case c:
-               return this.f.m() - $$1;
-            case d:
-               return this.f.j() + $$1;
-            case e:
-            case f:
-               return this.f.j() + $$0;
-            default:
-               return $$1;
-         }
-      }
-   }
-
-   protected void a(cud $$0, dja $$1, int $$2, int $$3, int $$4, dyr $$5) {
-      hx $$6 = this.b($$2, $$3, $$4);
-      if ($$5.b($$6)) {
-         if (this.a((ctl)$$0, $$2, $$3, $$4, $$5)) {
-            if (this.c != dbf.a) {
-               $$1 = $$1.a(this.c);
-            }
-
-            if (this.d != dcv.a) {
-               $$1 = $$1.a(this.d);
-            }
-
-            $$0.a($$6, $$1, 2);
-            eek $$7 = $$0.b_($$6);
-            if (!$$7.c()) {
-               $$0.a($$6, $$7.a(), 0);
-            }
-
-            if (i.contains($$1.b())) {
-               $$0.y($$6).e($$6);
-            }
-         }
-      }
-   }
-
-   protected boolean a(ctl $$0, int $$1, int $$2, int $$3, dyr $$4) {
-      return true;
-   }
-
-   protected dja a(cso $$0, int $$1, int $$2, int $$3, dyr $$4) {
-      hx $$5 = this.b($$1, $$2, $$3);
-      return !$$4.b($$5) ? cwl.a.o() : $$0.a_($$5);
-   }
-
-   protected boolean b(ctl $$0, int $$1, int $$2, int $$3, dyr $$4) {
-      hx $$5 = this.b($$1, $$2 + 1, $$3);
-      return !$$4.b($$5) ? false : $$5.v() < $$0.a(doj.a.c, $$5.u(), $$5.w());
-   }
-
-   protected void a(cud $$0, dyr $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7) {
-      for (int $$8 = $$3; $$8 <= $$6; $$8++) {
-         for (int $$9 = $$2; $$9 <= $$5; $$9++) {
-            for (int $$10 = $$4; $$10 <= $$7; $$10++) {
-               this.a($$0, cwl.a.o(), $$9, $$8, $$10, $$1);
-            }
-         }
-      }
-   }
-
-   protected void a(cud $$0, dyr $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, dja $$8, dja $$9, boolean $$10) {
-      for (int $$11 = $$3; $$11 <= $$6; $$11++) {
-         for (int $$12 = $$2; $$12 <= $$5; $$12++) {
-            for (int $$13 = $$4; $$13 <= $$7; $$13++) {
-               if (!$$10 || !this.a((cso)$$0, $$12, $$11, $$13, $$1).i()) {
-                  if ($$11 != $$3 && $$11 != $$6 && $$12 != $$2 && $$12 != $$5 && $$13 != $$4 && $$13 != $$7) {
-                     this.a($$0, $$9, $$12, $$11, $$13, $$1);
-                  } else {
-                     this.a($$0, $$8, $$12, $$11, $$13, $$1);
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   protected void a(cud $$0, dyr $$1, dyr $$2, dja $$3, dja $$4, boolean $$5) {
-      this.a($$0, $$1, $$2.h(), $$2.i(), $$2.j(), $$2.k(), $$2.l(), $$2.m(), $$3, $$4, $$5);
-   }
-
-   protected void a(cud $$0, dyr $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, aup $$9, dzd.a $$10) {
-      for (int $$11 = $$3; $$11 <= $$6; $$11++) {
-         for (int $$12 = $$2; $$12 <= $$5; $$12++) {
-            for (int $$13 = $$4; $$13 <= $$7; $$13++) {
-               if (!$$8 || !this.a((cso)$$0, $$12, $$11, $$13, $$1).i()) {
-                  $$10.a($$9, $$12, $$11, $$13, $$11 == $$3 || $$11 == $$6 || $$12 == $$2 || $$12 == $$5 || $$13 == $$4 || $$13 == $$7);
-                  this.a($$0, $$10.a(), $$12, $$11, $$13, $$1);
-               }
-            }
-         }
-      }
-   }
-
-   protected void a(cud $$0, dyr $$1, dyr $$2, boolean $$3, aup $$4, dzd.a $$5) {
-      this.a($$0, $$1, $$2.h(), $$2.i(), $$2.j(), $$2.k(), $$2.l(), $$2.m(), $$3, $$4, $$5);
-   }
-
-   protected void a(cud $$0, dyr $$1, aup $$2, float $$3, int $$4, int $$5, int $$6, int $$7, int $$8, int $$9, dja $$10, dja $$11, boolean $$12, boolean $$13) {
-      for (int $$14 = $$5; $$14 <= $$8; $$14++) {
-         for (int $$15 = $$4; $$15 <= $$7; $$15++) {
-            for (int $$16 = $$6; $$16 <= $$9; $$16++) {
-               if (!($$2.i() > $$3) && (!$$12 || !this.a((cso)$$0, $$15, $$14, $$16, $$1).i()) && (!$$13 || this.b($$0, $$15, $$14, $$16, $$1))) {
-                  if ($$14 != $$5 && $$14 != $$8 && $$15 != $$4 && $$15 != $$7 && $$16 != $$6 && $$16 != $$9) {
-                     this.a($$0, $$11, $$15, $$14, $$16, $$1);
-                  } else {
-                     this.a($$0, $$10, $$15, $$14, $$16, $$1);
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   protected void a(cud $$0, dyr $$1, aup $$2, float $$3, int $$4, int $$5, int $$6, dja $$7) {
-      if ($$2.i() < $$3) {
-         this.a($$0, $$7, $$4, $$5, $$6, $$1);
-      }
-   }
-
-   protected void a(cud $$0, dyr $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, dja $$8, boolean $$9) {
-      float $$10 = (float)($$5 - $$2 + 1);
-      float $$11 = (float)($$6 - $$3 + 1);
-      float $$12 = (float)($$7 - $$4 + 1);
-      float $$13 = (float)$$2 + $$10 / 2.0F;
-      float $$14 = (float)$$4 + $$12 / 2.0F;
-
-      for (int $$15 = $$3; $$15 <= $$6; $$15++) {
-         float $$16 = (float)($$15 - $$3) / $$11;
-
-         for (int $$17 = $$2; $$17 <= $$5; $$17++) {
-            float $$18 = ((float)$$17 - $$13) / ($$10 * 0.5F);
-
-            for (int $$19 = $$4; $$19 <= $$7; $$19++) {
-               float $$20 = ((float)$$19 - $$14) / ($$12 * 0.5F);
-               if (!$$9 || !this.a((cso)$$0, $$17, $$15, $$19, $$1).i()) {
-                  float $$21 = $$18 * $$18 + $$16 * $$16 + $$20 * $$20;
-                  if ($$21 <= 1.05F) {
-                     this.a($$0, $$8, $$17, $$15, $$19, $$1);
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   protected void b(cud $$0, dja $$1, int $$2, int $$3, int $$4, dyr $$5) {
-      hx.a $$6 = this.b($$2, $$3, $$4);
-      if ($$5.b($$6)) {
-         while (this.a($$0.a_($$6)) && $$6.v() > $$0.J_() + 1) {
-            $$0.a($$6, $$1, 2);
-            $$6.c(ic.a);
-         }
-      }
-   }
-
-   protected boolean a(dja $$0) {
-      return $$0.i() || $$0.k() || $$0.a(cwl.fg) || $$0.a(cwl.bw) || $$0.a(cwl.bx);
-   }
-
-   protected boolean a(cud $$0, dyr $$1, aup $$2, int $$3, int $$4, int $$5, ahd $$6) {
-      return this.a($$0, $$1, $$2, this.b($$3, $$4, $$5), $$6, null);
-   }
-
-   public static dja a(cso $$0, hx $$1, dja $$2) {
-      ic $$3 = null;
-
-      for (ic $$4 : ic.c.a) {
-         hx $$5 = $$1.a($$4);
-         dja $$6 = $$0.a_($$5);
-         if ($$6.a(cwl.cv)) {
-            return $$2;
-         }
-
-         if ($$6.i($$0, $$5)) {
-            if ($$3 != null) {
-               $$3 = null;
-               break;
-            }
-
-            $$3 = $$4;
-         }
-      }
-
-      if ($$3 != null) {
-         return $$2.a(dae.aE, $$3.g());
-      } else {
-         ic $$7 = $$2.c(dae.aE);
-         hx $$8 = $$1.a($$7);
-         if ($$0.a_($$8).i($$0, $$8)) {
-            $$7 = $$7.g();
-            $$8 = $$1.a($$7);
-         }
-
-         if ($$0.a_($$8).i($$0, $$8)) {
-            $$7 = $$7.h();
-            $$8 = $$1.a($$7);
-         }
-
-         if ($$0.a_($$8).i($$0, $$8)) {
-            $$7 = $$7.g();
-            $$8 = $$1.a($$7);
-         }
-
-         return $$2.a(dae.aE, $$7);
-      }
-   }
-
-   protected boolean a(ctx $$0, dyr $$1, aup $$2, hx $$3, ahd $$4, @Nullable dja $$5) {
-      if ($$1.b($$3) && !$$0.a_($$3).a(cwl.cv)) {
-         if ($$5 == null) {
-            $$5 = a($$0, $$3, cwl.cv.o());
-         }
-
-         $$0.a($$3, $$5, 2);
-         dgo $$6 = $$0.c_($$3);
-         if ($$6 instanceof dgv) {
-            ((dgv)$$6).a($$4, $$2.g());
-         }
-
+   protected boolean a(ctp $$0, dyx $$1, int $$2) {
+      if (this.d >= 0) {
          return true;
       } else {
-         return false;
+         int $$3 = 0;
+         int $$4 = 0;
+         hx.a $$5 = new hx.a();
+
+         for (int $$6 = this.f.j(); $$6 <= this.f.m(); $$6++) {
+            for (int $$7 = this.f.h(); $$7 <= this.f.k(); $$7++) {
+               $$5.d($$7, 64, $$6);
+               if ($$1.b($$5)) {
+                  $$3 += $$0.a(dop.a.f, $$5).v();
+                  $$4++;
+               }
+            }
+         }
+
+         if ($$4 == 0) {
+            return false;
+         } else {
+            this.d = $$3 / $$4;
+            this.f.a(0, this.d - this.f.i() + $$2, 0);
+            return true;
+         }
       }
    }
 
-   protected boolean a(cud $$0, dyr $$1, aup $$2, int $$3, int $$4, int $$5, ic $$6, ahd $$7) {
-      hx $$8 = this.b($$3, $$4, $$5);
-      if ($$1.b($$8) && !$$0.a_($$8).a(cwl.aU)) {
-         this.a($$0, cwl.aU.o().a(cyo.b, $$6), $$3, $$4, $$5, $$1);
-         dgo $$9 = $$0.c_($$8);
-         if ($$9 instanceof dhg) {
-            ((dhg)$$9).a($$7, $$2.g());
-         }
-
+   protected boolean a(ctp $$0, int $$1) {
+      if (this.d >= 0) {
          return true;
       } else {
-         return false;
-      }
-   }
+         int $$2 = $$0.al();
+         boolean $$3 = false;
+         hx.a $$4 = new hx.a();
 
-   public void a(int $$0, int $$1, int $$2) {
-      this.f.a($$0, $$1, $$2);
-   }
-
-   public static dyr a(Stream<dzd> $$0) {
-      return dyr.b($$0.map(dzd::f)::iterator).orElseThrow(() -> new IllegalStateException("Unable to calculate boundingbox without pieces"));
-   }
-
-   @Nullable
-   public static dzd a(List<dzd> $$0, dyr $$1) {
-      for (dzd $$2 : $$0) {
-         if ($$2.f().a($$1)) {
-            return $$2;
+         for (int $$5 = this.f.j(); $$5 <= this.f.m(); $$5++) {
+            for (int $$6 = this.f.h(); $$6 <= this.f.k(); $$6++) {
+               $$4.d($$6, 0, $$5);
+               $$2 = Math.min($$2, $$0.a(dop.a.f, $$4).v());
+               $$3 = true;
+            }
          }
-      }
 
-      return null;
-   }
-
-   @Nullable
-   public ic i() {
-      return this.b;
-   }
-
-   public void a(@Nullable ic $$0) {
-      this.b = $$0;
-      if ($$0 == null) {
-         this.d = dcv.a;
-         this.c = dbf.a;
-      } else {
-         switch ($$0) {
-            case d:
-               this.c = dbf.b;
-               this.d = dcv.a;
-               break;
-            case e:
-               this.c = dbf.b;
-               this.d = dcv.b;
-               break;
-            case f:
-               this.c = dbf.a;
-               this.d = dcv.b;
-               break;
-            default:
-               this.c = dbf.a;
-               this.d = dcv.a;
+         if (!$$3) {
+            return false;
+         } else {
+            this.d = $$2;
+            this.f.a(0, this.d - this.f.i() + $$1, 0);
+            return true;
          }
-      }
-   }
-
-   public dcv a() {
-      return this.d;
-   }
-
-   public dbf j() {
-      return this.c;
-   }
-
-   public dzq k() {
-      return this.h;
-   }
-
-   public abstract static class a {
-      protected dja a = cwl.a.o();
-
-      public abstract void a(aup var1, int var2, int var3, int var4, boolean var5);
-
-      public dja a() {
-         return this.a;
       }
    }
 }

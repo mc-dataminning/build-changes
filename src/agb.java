@@ -1,8 +1,8 @@
-public interface agb extends ua, ub {
-   @Override
-   default uf b() {
-      return uf.c;
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   void a(agd var1);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface agb {
 }

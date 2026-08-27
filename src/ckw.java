@@ -1,17 +1,11 @@
-import javax.annotation.Nullable;
-
-public class ckw extends cmm {
-   public ckw(cmm.a $$0) {
+public class ckw extends cms {
+   public ckw(cms.a $$0) {
       super($$0);
    }
 
    @Override
-   public boolean al_() {
-      return true;
-   }
-
-   @Nullable
-   public xd<?> a(cmr $$0, cti $$1, cfb $$2) {
-      return null;
+   public cmx a(cmx $$0, cto $$1, bmk $$2) {
+      cmx $$3 = super.a($$0, $$1, $$2);
+      return $$2 instanceof cfh && ((cfh)$$2).fT().d ? $$3 : new cmx(cna.pn);
    }
 }

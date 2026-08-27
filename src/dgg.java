@@ -1,91 +1,75 @@
-public class dgg {
-   public static final ahc<dgf> a = a("base");
-   public static final ahc<dgf> b = a("square_bottom_left");
-   public static final ahc<dgf> c = a("square_bottom_right");
-   public static final ahc<dgf> d = a("square_top_left");
-   public static final ahc<dgf> e = a("square_top_right");
-   public static final ahc<dgf> f = a("stripe_bottom");
-   public static final ahc<dgf> g = a("stripe_top");
-   public static final ahc<dgf> h = a("stripe_left");
-   public static final ahc<dgf> i = a("stripe_right");
-   public static final ahc<dgf> j = a("stripe_center");
-   public static final ahc<dgf> k = a("stripe_middle");
-   public static final ahc<dgf> l = a("stripe_downright");
-   public static final ahc<dgf> m = a("stripe_downleft");
-   public static final ahc<dgf> n = a("small_stripes");
-   public static final ahc<dgf> o = a("cross");
-   public static final ahc<dgf> p = a("straight_cross");
-   public static final ahc<dgf> q = a("triangle_bottom");
-   public static final ahc<dgf> r = a("triangle_top");
-   public static final ahc<dgf> s = a("triangles_bottom");
-   public static final ahc<dgf> t = a("triangles_top");
-   public static final ahc<dgf> u = a("diagonal_left");
-   public static final ahc<dgf> v = a("diagonal_up_right");
-   public static final ahc<dgf> w = a("diagonal_up_left");
-   public static final ahc<dgf> x = a("diagonal_right");
-   public static final ahc<dgf> y = a("circle");
-   public static final ahc<dgf> z = a("rhombus");
-   public static final ahc<dgf> A = a("half_vertical");
-   public static final ahc<dgf> B = a("half_horizontal");
-   public static final ahc<dgf> C = a("half_vertical_right");
-   public static final ahc<dgf> D = a("half_horizontal_bottom");
-   public static final ahc<dgf> E = a("border");
-   public static final ahc<dgf> F = a("curly_border");
-   public static final ahc<dgf> G = a("gradient");
-   public static final ahc<dgf> H = a("gradient_up");
-   public static final ahc<dgf> I = a("bricks");
-   public static final ahc<dgf> J = a("globe");
-   public static final ahc<dgf> K = a("creeper");
-   public static final ahc<dgf> L = a("skull");
-   public static final ahc<dgf> M = a("flower");
-   public static final ahc<dgf> N = a("mojang");
-   public static final ahc<dgf> O = a("piglin");
+import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-   private static ahc<dgf> a(String $$0) {
-      return ahc.a(ke.d, new ahd($$0));
+public class dgg extends ddq {
+   public static final MapCodec<dgg> b = b(dgg::new);
+   @Nullable
+   private static djl h;
+   @Nullable
+   private static djl i;
+
+   @Override
+   public MapCodec<dgg> a() {
+      return b;
    }
 
-   public static dgf a(it<dgf> $$0) {
-      it.a($$0, a, new dgf("b"));
-      it.a($$0, b, new dgf("bl"));
-      it.a($$0, c, new dgf("br"));
-      it.a($$0, d, new dgf("tl"));
-      it.a($$0, e, new dgf("tr"));
-      it.a($$0, f, new dgf("bs"));
-      it.a($$0, g, new dgf("ts"));
-      it.a($$0, h, new dgf("ls"));
-      it.a($$0, i, new dgf("rs"));
-      it.a($$0, j, new dgf("cs"));
-      it.a($$0, k, new dgf("ms"));
-      it.a($$0, l, new dgf("drs"));
-      it.a($$0, m, new dgf("dls"));
-      it.a($$0, n, new dgf("ss"));
-      it.a($$0, o, new dgf("cr"));
-      it.a($$0, p, new dgf("sc"));
-      it.a($$0, q, new dgf("bt"));
-      it.a($$0, r, new dgf("tt"));
-      it.a($$0, s, new dgf("bts"));
-      it.a($$0, t, new dgf("tts"));
-      it.a($$0, u, new dgf("ld"));
-      it.a($$0, v, new dgf("rd"));
-      it.a($$0, w, new dgf("lud"));
-      it.a($$0, x, new dgf("rud"));
-      it.a($$0, y, new dgf("mc"));
-      it.a($$0, z, new dgf("mr"));
-      it.a($$0, A, new dgf("vh"));
-      it.a($$0, B, new dgf("hh"));
-      it.a($$0, C, new dgf("vhr"));
-      it.a($$0, D, new dgf("hhb"));
-      it.a($$0, E, new dgf("bo"));
-      it.a($$0, F, new dgf("cbo"));
-      it.a($$0, G, new dgf("gra"));
-      it.a($$0, H, new dgf("gru"));
-      it.a($$0, I, new dgf("bri"));
-      it.a($$0, J, new dgf("glb"));
-      it.a($$0, K, new dgf("cre"));
-      it.a($$0, L, new dgf("sku"));
-      it.a($$0, M, new dgf("flo"));
-      it.a($$0, N, new dgf("moj"));
-      return it.a($$0, O, new dgf("pig"));
+   protected dgg(djf.d $$0) {
+      super(ddq.b.d, $$0);
+   }
+
+   @Override
+   public void a(cto $$0, hx $$1, djg $$2, @Nullable bmk $$3, cmx $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      dgu $$5 = $$0.c_($$1);
+      if ($$5 instanceof dif) {
+         a($$0, $$1, (dif)$$5);
+      }
+   }
+
+   public static void a(cto $$0, hx $$1, dif $$2) {
+      if (!$$0.B) {
+         djg $$3 = $$2.r();
+         boolean $$4 = $$3.a(cwr.gG) || $$3.a(cwr.gH);
+         if ($$4 && $$1.v() >= $$0.J_() && $$0.ak() != bjx.a) {
+            djl.b $$5 = s().a($$0, $$1);
+            if ($$5 != null) {
+               cbh $$6 = bly.bm.a($$0);
+               if ($$6 != null) {
+                  cxj.a($$0, $$5);
+                  hx $$7 = $$5.a(1, 2, 0).d();
+                  $$6.b((double)$$7.u() + 0.5, (double)$$7.v() + 0.55, (double)$$7.w() + 0.5, $$5.b().o() == ic.a.a ? 0.0F : 90.0F, 0.0F);
+                  $$6.aU = $$5.b().o() == ic.a.a ? 0.0F : 90.0F;
+                  $$6.u();
+
+                  for (ane $$8 : $$0.a(ane.class, $$6.cH().g(50.0))) {
+                     am.o.a($$8, $$6);
+                  }
+
+                  $$0.b($$6);
+                  cxj.b($$0, $$5);
+               }
+            }
+         }
+      }
+   }
+
+   public static boolean b(cto $$0, hx $$1, cmx $$2) {
+      return $$2.a(cna.uf) && $$1.v() >= $$0.J_() + 2 && $$0.ak() != bjx.a && !$$0.B ? y().a($$0, $$1) != null : false;
+   }
+
+   private static djl s() {
+      if (h == null) {
+         h = djm.a().a("^^^", "###", "~#~").a('#', $$0 -> $$0.a().a(asg.aE)).a('^', djk.a(djp.a(cwr.gG).or(djp.a(cwr.gH)))).a('~', $$0 -> $$0.a().i()).b();
+      }
+
+      return h;
+   }
+
+   private static djl y() {
+      if (i == null) {
+         i = djm.a().a("   ", "###", "~#~").a('#', $$0 -> $$0.a().a(asg.aE)).a('~', $$0 -> $$0.a().i()).b();
+      }
+
+      return i;
    }
 }

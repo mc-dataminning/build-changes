@@ -1,74 +1,54 @@
-import javax.annotation.Nullable;
+import com.google.common.base.Charsets;
+import com.mojang.logging.LogUtils;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.Collection;
+import org.slf4j.Logger;
 
-public record euv(int a, @Nullable euv.a b, @Nullable vd c, @Nullable String d) {
-   private static final vd e = vd.c("chat.tag.system");
-   private static final vd f = vd.c("chat.tag.system_single_player");
-   private static final vd g = vd.c("chat.tag.not_secure");
-   private static final vd h = vd.c("chat.tag.modified");
-   private static final vd i = vd.c("chat.tag.error");
-   private static final int j = 13684944;
-   private static final int k = 6316128;
-   private static final euv l = new euv(13684944, null, e, "System");
-   private static final euv m = new euv(13684944, null, f, "System");
-   private static final euv n = new euv(13684944, null, g, "Not Secure");
-   private static final euv o = new euv(16733525, null, i, "Chat Error");
+public class euv {
+   private static final Logger a = LogUtils.getLogger();
+   private static final int b = 50;
+   private static final String c = "command_history.txt";
+   private final Path d;
+   private final atc<String> e = new atc<>(50);
 
-   public static euv a() {
-      return l;
-   }
-
-   public static euv b() {
-      return m;
-   }
-
-   public static euv c() {
-      return n;
-   }
-
-   public static euv a(String $$0) {
-      vd $$1 = vd.b($$0).a(n.h);
-      vd $$2 = vd.i().b(h).b(vc.r).b($$1);
-      return new euv(6316128, euv.a.a, $$2, "Modified");
-   }
-
-   public static euv d() {
-      return o;
-   }
-
-   public int e() {
-      return this.a;
-   }
-
-   @Nullable
-   public euv.a f() {
-      return this.b;
-   }
-
-   @Nullable
-   public vd g() {
-      return this.c;
-   }
-
-   @Nullable
-   public String h() {
-      return this.d;
-   }
-
-   public static enum a {
-      a(new ahd("icon/chat_modified"), 9, 9);
-
-      public final ahd b;
-      public final int c;
-      public final int d;
-
-      private a(ahd $$0, int $$1, int $$2) {
-         this.b = $$0;
-         this.c = $$1;
-         this.d = $$2;
+   public euv(Path $$0) {
+      this.d = $$0.resolve("command_history.txt");
+      if (Files.exists(this.d)) {
+         try (BufferedReader $$1 = Files.newBufferedReader(this.d, Charsets.UTF_8)) {
+            this.e.addAll($$1.lines().toList());
+         } catch (Exception var7) {
+            a.error("Failed to read {}, command history will be missing", "command_history.txt", var7);
+         }
       }
+   }
 
-      public void a(ewm $$0, int $$1, int $$2) {
-         $$0.a(this.b, $$1, $$2, this.c, this.d);
+   public void a(String $$0) {
+      if (!$$0.equals(this.e.peekLast())) {
+         if (this.e.size() >= 50) {
+            this.e.removeFirst();
+         }
+
+         this.e.addLast($$0);
+         this.b();
       }
+   }
+
+   private void b() {
+      try (BufferedWriter $$0 = Files.newBufferedWriter(this.d, Charsets.UTF_8)) {
+         for (String $$1 : this.e) {
+            $$0.write($$1);
+            $$0.newLine();
+         }
+      } catch (IOException var6) {
+         a.error("Failed to write {}, command history will be missing", "command_history.txt", var6);
+      }
+   }
+
+   public Collection<String> a() {
+      return this.e;
    }
 }

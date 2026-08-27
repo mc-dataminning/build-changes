@@ -1,26 +1,54 @@
-import com.mojang.serialization.Codec;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
 
-public interface dzi<S extends dyz> {
-   dzi<eas> a = a("buried_treasure", eas.d);
-   dzi<eau> b = a("desert_pyramid", eau.d);
-   dzi<eaw> c = a("end_city", eaw.d);
-   dzi<ebf> d = a("fortress", ebf.e);
-   dzi<eay> e = a("igloo", eay.d);
-   dzi<eaz> f = a("jigsaw", eaz.f);
-   dzi<ebb> g = a("jungle_temple", ebb.d);
-   dzi<ebd> h = a("mineshaft", ebd.d);
-   dzi<ebh> i = a("nether_fossil", ebh.d);
-   dzi<ebj> j = a("ocean_monument", ebj.d);
-   dzi<ebl> k = a("ocean_ruin", ebl.d);
-   dzi<ebn> l = a("ruined_portal", ebn.d);
-   dzi<ebp> m = a("shipwreck", ebp.d);
-   dzi<ebr> n = a("stronghold", ebr.d);
-   dzi<ebt> o = a("swamp_hut", ebt.d);
-   dzi<ebv> p = a("woodland_mansion", ebv.d);
+public class dzi extends efv {
+   private static final String a = "Remaining";
+   private static final String b = "All";
+   private final LongSet c;
+   private final LongSet d;
 
-   Codec<S> codec();
+   public static efv.a<dzi> a() {
+      return new efv.a<>(dzi::new, dzi::b, avv.o);
+   }
 
-   private static <S extends dyz> dzi<S> a(String $$0, Codec<S> $$1) {
-      return it.a(kd.T, $$0, () -> $$1);
+   private dzi(LongSet $$0, LongSet $$1) {
+      this.c = $$0;
+      this.d = $$1;
+   }
+
+   public dzi() {
+      this(new LongOpenHashSet(), new LongOpenHashSet());
+   }
+
+   public static dzi b(sn $$0) {
+      return new dzi(new LongOpenHashSet($$0.o("All")), new LongOpenHashSet($$0.o("Remaining")));
+   }
+
+   @Override
+   public sn a(sn $$0) {
+      $$0.a("All", this.c.toLongArray());
+      $$0.a("Remaining", this.d.toLongArray());
+      return $$0;
+   }
+
+   public void a(long $$0) {
+      this.c.add($$0);
+      this.d.add($$0);
+   }
+
+   public boolean b(long $$0) {
+      return this.c.contains($$0);
+   }
+
+   public boolean c(long $$0) {
+      return this.d.contains($$0);
+   }
+
+   public void d(long $$0) {
+      this.d.remove($$0);
+   }
+
+   public LongSet b() {
+      return this.c;
    }
 }

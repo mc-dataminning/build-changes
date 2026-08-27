@@ -1,17 +1,31 @@
-public record xv(String b) implements xx {
-   public static final ahd a = new ahd("brand");
+import java.util.UUID;
 
-   public xv(ug $$0) {
-      this($$0.s());
+public record xv(UUID a, xv.a b) implements xf<xq> {
+   public xv(ui $$0) {
+      this($$0.p(), $$0.b(xv.a.class));
    }
 
    @Override
-   public void a(ug $$0) {
+   public void a(ui $$0) {
+      $$0.a(this.a);
       $$0.a(this.b);
    }
 
-   @Override
-   public ahd a() {
-      return a;
+   public void a(xq $$0) {
+      $$0.a(this);
+   }
+
+   public xv.a d() {
+      return this.b;
+   }
+
+   public static enum a {
+      a,
+      b,
+      c,
+      d,
+      e,
+      f,
+      g;
    }
 }

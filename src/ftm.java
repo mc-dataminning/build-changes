@@ -1,411 +1,539 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Queues;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.longs.LongIterator;
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Queue;
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.Future;
-import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.concurrent.atomic.AtomicReference;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.UnmodifiableIterator;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.OptionalDouble;
+import java.util.function.Supplier;
+import org.apache.commons.lang3.tuple.Triple;
+import org.joml.Matrix4f;
 
-public class ftm {
-   private static final Logger a = LogUtils.getLogger();
-   private static final ic[] b = ic.values();
-   private static final int c = 60;
-   private static final double d = Math.ceil(Math.sqrt(3.0) * 16.0);
-   private boolean e = true;
-   @Nullable
-   private Future<?> f;
-   @Nullable
-   private ftq g;
-   private final AtomicReference<ftm.b> h = new AtomicReference<>();
-   private final AtomicReference<ftm.a> i = new AtomicReference<>();
-   private final AtomicBoolean j = new AtomicBoolean(false);
-
-   public void a(@Nullable ftq $$0) {
-      if (this.f != null) {
-         try {
-            this.f.get();
-            this.f = null;
-         } catch (Exception var3) {
-            a.warn("Full update failed", var3);
-         }
+public abstract class ftm {
+   private static final float aS = 0.99975586F;
+   public static final double a = 8.0;
+   protected final String b;
+   private final Runnable aT;
+   private final Runnable aU;
+   protected static final ftm.p c = new ftm.p("no_transparency", () -> RenderSystem.disableBlend(), () -> {
+   });
+   protected static final ftm.p d = new ftm.p("additive_transparency", () -> {
+      RenderSystem.enableBlend();
+      RenderSystem.blendFunc(GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ONE);
+   }, () -> {
+      RenderSystem.disableBlend();
+      RenderSystem.defaultBlendFunc();
+   });
+   protected static final ftm.p e = new ftm.p("lightning_transparency", () -> {
+      RenderSystem.enableBlend();
+      RenderSystem.blendFunc(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE);
+   }, () -> {
+      RenderSystem.disableBlend();
+      RenderSystem.defaultBlendFunc();
+   });
+   protected static final ftm.p f = new ftm.p(
+      "glint_transparency",
+      () -> {
+         RenderSystem.enableBlend();
+         RenderSystem.blendFuncSeparate(
+            GlStateManager.SourceFactor.SRC_COLOR, GlStateManager.DestFactor.ONE, GlStateManager.SourceFactor.ZERO, GlStateManager.DestFactor.ONE
+         );
+      },
+      () -> {
+         RenderSystem.disableBlend();
+         RenderSystem.defaultBlendFunc();
       }
-
-      this.g = $$0;
-      if ($$0 != null) {
-         this.h.set(new ftm.b($$0.f.length));
-         this.a();
-      } else {
-         this.h.set(null);
+   );
+   protected static final ftm.p g = new ftm.p(
+      "crumbling_transparency",
+      () -> {
+         RenderSystem.enableBlend();
+         RenderSystem.blendFuncSeparate(
+            GlStateManager.SourceFactor.DST_COLOR, GlStateManager.DestFactor.SRC_COLOR, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO
+         );
+      },
+      () -> {
+         RenderSystem.disableBlend();
+         RenderSystem.defaultBlendFunc();
       }
+   );
+   protected static final ftm.p h = new ftm.p(
+      "translucent_transparency",
+      () -> {
+         RenderSystem.enableBlend();
+         RenderSystem.blendFuncSeparate(
+            GlStateManager.SourceFactor.SRC_ALPHA,
+            GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA,
+            GlStateManager.SourceFactor.ONE,
+            GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA
+         );
+      },
+      () -> {
+         RenderSystem.disableBlend();
+         RenderSystem.defaultBlendFunc();
+      }
+   );
+   protected static final ftm.m i = new ftm.m();
+   protected static final ftm.m j = new ftm.m(fsy::v);
+   protected static final ftm.m k = new ftm.m(fsy::p);
+   protected static final ftm.m l = new ftm.m(fsy::r);
+   protected static final ftm.m m = new ftm.m(fsy::s);
+   protected static final ftm.m n = new ftm.m(fsy::w);
+   protected static final ftm.m o = new ftm.m(fsy::q);
+   protected static final ftm.m p = new ftm.m(fsy::z);
+   protected static final ftm.m q = new ftm.m(fsy::A);
+   protected static final ftm.m r = new ftm.m(fsy::B);
+   protected static final ftm.m s = new ftm.m(fsy::C);
+   protected static final ftm.m t = new ftm.m(fsy::D);
+   protected static final ftm.m u = new ftm.m(fsy::E);
+   protected static final ftm.m v = new ftm.m(fsy::F);
+   protected static final ftm.m w = new ftm.m(fsy::G);
+   protected static final ftm.m x = new ftm.m(fsy::H);
+   protected static final ftm.m y = new ftm.m(fsy::I);
+   protected static final ftm.m z = new ftm.m(fsy::J);
+   protected static final ftm.m A = new ftm.m(fsy::K);
+   protected static final ftm.m B = new ftm.m(fsy::L);
+   protected static final ftm.m C = new ftm.m(fsy::M);
+   protected static final ftm.m D = new ftm.m(fsy::N);
+   protected static final ftm.m E = new ftm.m(fsy::O);
+   protected static final ftm.m F = new ftm.m(fsy::P);
+   protected static final ftm.m G = new ftm.m(fsy::Q);
+   protected static final ftm.m H = new ftm.m(fsy::R);
+   protected static final ftm.m I = new ftm.m(fsy::S);
+   protected static final ftm.m J = new ftm.m(fsy::T);
+   protected static final ftm.m K = new ftm.m(fsy::U);
+   protected static final ftm.m L = new ftm.m(fsy::W);
+   protected static final ftm.m M = new ftm.m(fsy::X);
+   protected static final ftm.m N = new ftm.m(fsy::Y);
+   protected static final ftm.m O = new ftm.m(fsy::Z);
+   protected static final ftm.m P = new ftm.m(fsy::aa);
+   protected static final ftm.m Q = new ftm.m(fsy::ab);
+   protected static final ftm.m R = new ftm.m(fsy::ac);
+   protected static final ftm.m S = new ftm.m(fsy::ad);
+   protected static final ftm.m T = new ftm.m(fsy::ae);
+   protected static final ftm.m U = new ftm.m(fsy::af);
+   protected static final ftm.m V = new ftm.m(fsy::ar);
+   protected static final ftm.m W = new ftm.m(fsy::ag);
+   protected static final ftm.m X = new ftm.m(fsy::ah);
+   protected static final ftm.m Y = new ftm.m(fsy::ai);
+   protected static final ftm.m Z = new ftm.m(fsy::aj);
+   protected static final ftm.m aa = new ftm.m(fsy::ak);
+   protected static final ftm.m ab = new ftm.m(fsy::al);
+   protected static final ftm.m ac = new ftm.m(fsy::am);
+   protected static final ftm.m ad = new ftm.m(fsy::an);
+   protected static final ftm.m ae = new ftm.m(fsy::ao);
+   protected static final ftm.m af = new ftm.m(fsy::ap);
+   protected static final ftm.m ag = new ftm.m(fsy::aq);
+   protected static final ftm.m ah = new ftm.m(fsy::as);
+   protected static final ftm.m ai = new ftm.m(fsy::at);
+   protected static final ftm.m aj = new ftm.m(fsy::au);
+   protected static final ftm.m ak = new ftm.m(fsy::av);
+   protected static final ftm.m al = new ftm.m(fsy::V);
+   protected static final ftm.n am = new ftm.n(gek.e, false, true);
+   protected static final ftm.n an = new ftm.n(gek.e, false, false);
+   protected static final ftm.e ao = new ftm.e();
+   protected static final ftm.o ap = new ftm.o("default_texturing", () -> {
+   }, () -> {
+   });
+   protected static final ftm.o aq = new ftm.o("glint_texturing", () -> a(8.0F), () -> RenderSystem.resetTextureMatrix());
+   protected static final ftm.o ar = new ftm.o("entity_glint_texturing", () -> a(0.16F), () -> RenderSystem.resetTextureMatrix());
+   protected static final ftm.g as = new ftm.g(true);
+   protected static final ftm.g at = new ftm.g(false);
+   protected static final ftm.l au = new ftm.l(true);
+   protected static final ftm.l av = new ftm.l(false);
+   protected static final ftm.c aw = new ftm.c(true);
+   protected static final ftm.c ax = new ftm.c(false);
+   protected static final ftm.d ay = new ftm.d("always", 519);
+   protected static final ftm.d az = new ftm.d("==", 514);
+   protected static final ftm.d aA = new ftm.d("<=", 515);
+   protected static final ftm.d aB = new ftm.d(">", 516);
+   protected static final ftm.q aC = new ftm.q(true, true);
+   protected static final ftm.q aD = new ftm.q(true, false);
+   protected static final ftm.q aE = new ftm.q(false, true);
+   protected static final ftm.f aF = new ftm.f("no_layering", () -> {
+   }, () -> {
+   });
+   protected static final ftm.f aG = new ftm.f("polygon_offset_layering", () -> {
+      RenderSystem.polygonOffset(-1.0F, -10.0F);
+      RenderSystem.enablePolygonOffset();
+   }, () -> {
+      RenderSystem.polygonOffset(0.0F, 0.0F);
+      RenderSystem.disablePolygonOffset();
+   });
+   protected static final ftm.f aH = new ftm.f("view_offset_z_layering", () -> {
+      epz $$0 = RenderSystem.getModelViewStack();
+      $$0.a();
+      $$0.b(0.99975586F, 0.99975586F, 0.99975586F);
+      RenderSystem.applyModelViewMatrix();
+   }, () -> {
+      epz $$0 = RenderSystem.getModelViewStack();
+      $$0.b();
+      RenderSystem.applyModelViewMatrix();
+   });
+   protected static final ftm.k aI = new ftm.k("main_target", () -> {
+   }, () -> {
+   });
+   protected static final ftm.k aJ = new ftm.k("outline_target", () -> evg.O().f.s().a(false), () -> evg.O().g().a(false));
+   protected static final ftm.k aK = new ftm.k("translucent_target", () -> {
+      if (evg.M()) {
+         evg.O().f.t().a(false);
+      }
+   }, () -> {
+      if (evg.M()) {
+         evg.O().g().a(false);
+      }
+   });
+   protected static final ftm.k aL = new ftm.k("particles_target", () -> {
+      if (evg.M()) {
+         evg.O().f.v().a(false);
+      }
+   }, () -> {
+      if (evg.M()) {
+         evg.O().g().a(false);
+      }
+   });
+   protected static final ftm.k aM = new ftm.k("weather_target", () -> {
+      if (evg.M()) {
+         evg.O().f.w().a(false);
+      }
+   }, () -> {
+      if (evg.M()) {
+         evg.O().g().a(false);
+      }
+   });
+   protected static final ftm.k aN = new ftm.k("clouds_target", () -> {
+      if (evg.M()) {
+         evg.O().f.x().a(false);
+      }
+   }, () -> {
+      if (evg.M()) {
+         evg.O().g().a(false);
+      }
+   });
+   protected static final ftm.k aO = new ftm.k("item_entity_target", () -> {
+      if (evg.M()) {
+         evg.O().f.u().a(false);
+      }
+   }, () -> {
+      if (evg.M()) {
+         evg.O().g().a(false);
+      }
+   });
+   protected static final ftm.h aP = new ftm.h(OptionalDouble.of(1.0));
+   protected static final ftm.b aQ = new ftm.b("no_color_logic", () -> RenderSystem.disableColorLogicOp(), () -> {
+   });
+   protected static final ftm.b aR = new ftm.b("or_reverse", () -> {
+      RenderSystem.enableColorLogicOp();
+      RenderSystem.logicOp(GlStateManager.g.n);
+   }, () -> RenderSystem.disableColorLogicOp());
+
+   public ftm(String $$0, Runnable $$1, Runnable $$2) {
+      this.b = $$0;
+      this.aT = $$1;
+      this.aU = $$2;
    }
 
    public void a() {
-      this.e = true;
+      this.aT.run();
    }
 
-   public void a(fwc $$0, List<fvy.b> $$1) {
-      for (ftm.d $$2 : this.h.get().a().b) {
-         if ($$0.a($$2.a.b())) {
-            $$1.add($$2.a);
-         }
+   public void b() {
+      this.aU.run();
+   }
+
+   @Override
+   public String toString() {
+      return this.b;
+   }
+
+   private static void a(float $$0) {
+      long $$1 = (long)((double)ac.b() * evg.O().m.aj().c() * 8.0);
+      float $$2 = (float)($$1 % 110000L) / 110000.0F;
+      float $$3 = (float)($$1 % 30000L) / 30000.0F;
+      Matrix4f $$4 = new Matrix4f().translation(-$$2, $$3, 0.0F);
+      $$4.rotateZ((float) (Math.PI / 18)).scale($$0);
+      RenderSystem.setTextureMatrix($$4);
+   }
+
+   static class a extends ftm {
+      private final boolean aS;
+
+      public a(String $$0, Runnable $$1, Runnable $$2, boolean $$3) {
+         super($$0, $$1, $$2);
+         this.aS = $$3;
+      }
+
+      @Override
+      public String toString() {
+         return this.b + "[" + this.aS + "]";
       }
    }
 
-   public boolean b() {
-      return this.j.compareAndSet(true, false);
-   }
-
-   public void a(csp $$0) {
-      ftm.a $$1 = this.i.get();
-      if ($$1 != null) {
-         this.a($$1, $$0);
-      }
-
-      ftm.a $$2 = this.h.get().b;
-      if ($$2 != $$1) {
-         this.a($$2, $$0);
+   protected static class b extends ftm {
+      public b(String $$0, Runnable $$1, Runnable $$2) {
+         super($$0, $$1, $$2);
       }
    }
 
-   public void a(fvy.b $$0) {
-      ftm.a $$1 = this.i.get();
-      if ($$1 != null) {
-         $$1.b.add($$0);
-      }
-
-      ftm.a $$2 = this.h.get().b;
-      if ($$2 != $$1) {
-         $$2.b.add($$0);
+   protected static class c extends ftm.a {
+      public c(boolean $$0) {
+         super("cull", () -> {
+            if (!$$0) {
+               RenderSystem.disableCull();
+            }
+         }, () -> {
+            if (!$$0) {
+               RenderSystem.enableCull();
+            }
+         }, $$0);
       }
    }
 
-   public void a(boolean $$0, eul $$1, fwc $$2, List<fvy.b> $$3) {
-      elm $$4 = $$1.b();
-      if (this.e && (this.f == null || this.f.isDone())) {
-         this.a($$0, $$1, $$4);
-      }
+   protected static class d extends ftm {
+      private final String aS;
 
-      this.a($$0, $$2, $$3, $$4);
-   }
-
-   private void a(boolean $$0, eul $$1, elm $$2) {
-      this.e = false;
-      this.f = ac.f().submit(() -> {
-         ftm.b $$3 = new ftm.b(this.g.f.length);
-         this.i.set($$3.b);
-         Queue<ftm.d> $$4 = Queues.newArrayDeque();
-         this.a($$1, $$4);
-         $$4.forEach($$1xx -> $$3.a.a.a($$1xx.a, $$1xx));
-         this.a($$3.a, $$2, $$4, $$0, $$0xx -> {
+      public d(String $$0, int $$1) {
+         super("depth_test", () -> {
+            if ($$1 != 519) {
+               RenderSystem.enableDepthTest();
+               RenderSystem.depthFunc($$1);
+            }
+         }, () -> {
+            if ($$1 != 519) {
+               RenderSystem.disableDepthTest();
+               RenderSystem.depthFunc(515);
+            }
          });
-         this.h.set($$3);
-         this.i.set(null);
-         this.j.set(true);
-      });
-   }
+         this.aS = $$0;
+      }
 
-   private void a(boolean $$0, fwc $$1, List<fvy.b> $$2, elm $$3) {
-      ftm.b $$4 = this.h.get();
-      this.a($$4);
-      if (!$$4.b.b.isEmpty()) {
-         Queue<ftm.d> $$5 = Queues.newArrayDeque();
-
-         while (!$$4.b.b.isEmpty()) {
-            fvy.b $$6 = $$4.b.b.poll();
-            ftm.d $$7 = $$4.a.a.a($$6);
-            if ($$7 != null && $$7.a == $$6) {
-               $$5.add($$7);
-            }
-         }
-
-         fwc $$8 = fsx.a($$1);
-         Consumer<fvy.b> $$9 = $$2x -> {
-            if ($$8.a($$2x.b())) {
-               $$2.add($$2x);
-            }
-         };
-         this.a($$4.a, $$3, $$5, $$0, $$9);
+      @Override
+      public String toString() {
+         return this.b + "[" + this.aS + "]";
       }
    }
 
-   private void a(ftm.b $$0) {
-      LongIterator $$1 = $$0.b.a.iterator();
-
-      while ($$1.hasNext()) {
-         long $$2 = $$1.nextLong();
-         List<fvy.b> $$3 = (List<fvy.b>)$$0.a.c.get($$2);
-         if ($$3 != null && $$3.get(0).a()) {
-            $$0.b.b.addAll($$3);
-            $$0.a.c.remove($$2);
-         }
+   protected static class e extends ftm {
+      public e(Runnable $$0, Runnable $$1) {
+         super("texture", $$0, $$1);
       }
 
-      $$0.b.a.clear();
+      e() {
+         super("texture", () -> {
+         }, () -> {
+         });
+      }
+
+      protected Optional<ahg> c() {
+         return Optional.empty();
+      }
    }
 
-   private void a(ftm.a $$0, csp $$1) {
-      $$0.a.add(csp.c($$1.e - 1, $$1.f));
-      $$0.a.add(csp.c($$1.e, $$1.f - 1));
-      $$0.a.add(csp.c($$1.e + 1, $$1.f));
-      $$0.a.add(csp.c($$1.e, $$1.f + 1));
+   protected static class f extends ftm {
+      public f(String $$0, Runnable $$1, Runnable $$2) {
+         super($$0, $$1, $$2);
+      }
    }
 
-   private void a(eul $$0, Queue<ftm.d> $$1) {
-      int $$2 = 16;
-      elm $$3 = $$0.b();
-      hx $$4 = $$0.c();
-      fvy.b $$5 = this.g.a($$4);
-      if ($$5 == null) {
-         ctk $$6 = this.g.c();
-         boolean $$7 = $$4.v() > $$6.J_();
-         int $$8 = $$7 ? $$6.al() - 8 : $$6.J_() + 8;
-         int $$9 = aui.a($$3.c / 16.0) * 16;
-         int $$10 = aui.a($$3.e / 16.0) * 16;
-         int $$11 = this.g.b();
-         List<ftm.d> $$12 = Lists.newArrayList();
-
-         for (int $$13 = -$$11; $$13 <= $$11; $$13++) {
-            for (int $$14 = -$$11; $$14 <= $$11; $$14++) {
-               fvy.b $$15 = this.g.a(new hx($$9 + iz.a($$13, 8), $$8, $$10 + iz.a($$14, 8)));
-               if ($$15 != null && this.a($$4, $$15.f())) {
-                  ic $$16 = $$7 ? ic.a : ic.b;
-                  ftm.d $$17 = new ftm.d($$15, $$16, 0);
-                  $$17.a($$17.d, $$16);
-                  if ($$13 > 0) {
-                     $$17.a($$17.d, ic.f);
-                  } else if ($$13 < 0) {
-                     $$17.a($$17.d, ic.e);
-                  }
-
-                  if ($$14 > 0) {
-                     $$17.a($$17.d, ic.d);
-                  } else if ($$14 < 0) {
-                     $$17.a($$17.d, ic.c);
-                  }
-
-                  $$12.add($$17);
-               }
+   protected static class g extends ftm.a {
+      public g(boolean $$0) {
+         super("lightmap", () -> {
+            if ($$0) {
+               evg.O().j.n().c();
             }
-         }
-
-         $$12.sort(Comparator.comparingDouble($$1x -> $$4.j($$1x.a.f().b(8, 8, 8))));
-         $$1.addAll($$12);
-      } else {
-         $$1.add(new ftm.d($$5, null, 0));
+         }, () -> {
+            if ($$0) {
+               evg.O().j.n().b();
+            }
+         }, $$0);
       }
    }
 
-   private void a(ftm.c $$0, elm $$1, Queue<ftm.d> $$2, boolean $$3, Consumer<fvy.b> $$4) {
-      int $$5 = 16;
-      hx $$6 = new hx(aui.a($$1.c / 16.0) * 16, aui.a($$1.d / 16.0) * 16, aui.a($$1.e / 16.0) * 16);
-      hx $$7 = $$6.b(8, 8, 8);
+   protected static class h extends ftm {
+      private final OptionalDouble aS;
 
-      while (!$$2.isEmpty()) {
-         ftm.d $$8 = $$2.poll();
-         fvy.b $$9 = $$8.a;
-         if ($$0.b.add($$8)) {
-            $$4.accept($$8.a);
-         }
-
-         boolean $$10 = Math.abs($$9.f().u() - $$6.u()) > 60 || Math.abs($$9.f().v() - $$6.v()) > 60 || Math.abs($$9.f().w() - $$6.w()) > 60;
-
-         for (ic $$11 : b) {
-            fvy.b $$12 = this.a($$6, $$9, $$11);
-            if ($$12 != null && (!$$3 || !$$8.a($$11.g()))) {
-               if ($$3 && $$8.a()) {
-                  fvy.a $$13 = $$9.d();
-                  boolean $$14 = false;
-
-                  for (int $$15 = 0; $$15 < b.length; $$15++) {
-                     if ($$8.a($$15) && $$13.a(b[$$15].g(), $$11)) {
-                        $$14 = true;
-                        break;
-                     }
-                  }
-
-                  if (!$$14) {
-                     continue;
-                  }
-               }
-
-               if ($$3 && $$10) {
-                  hx $$16 = $$12.f();
-                  hx $$17 = $$16.b(
-                     ($$11.o() == ic.a.a ? $$7.u() <= $$16.u() : $$7.u() >= $$16.u()) ? 0 : 16,
-                     ($$11.o() == ic.a.b ? $$7.v() <= $$16.v() : $$7.v() >= $$16.v()) ? 0 : 16,
-                     ($$11.o() == ic.a.c ? $$7.w() <= $$16.w() : $$7.w() >= $$16.w()) ? 0 : 16
-                  );
-                  elm $$18 = new elm((double)$$17.u(), (double)$$17.v(), (double)$$17.w());
-                  elm $$19 = $$1.d($$18).d().a(d);
-                  boolean $$20 = true;
-
-                  while ($$1.d($$18).g() > 3600.0) {
-                     $$18 = $$18.e($$19);
-                     ctk $$21 = this.g.c();
-                     if ($$18.d > (double)$$21.al() || $$18.d < (double)$$21.J_()) {
-                        break;
-                     }
-
-                     fvy.b $$22 = this.g.a(hx.a($$18.c, $$18.d, $$18.e));
-                     if ($$22 == null || $$0.a.a($$22) == null) {
-                        $$20 = false;
-                        break;
-                     }
-                  }
-
-                  if (!$$20) {
-                     continue;
-                  }
-               }
-
-               ftm.d $$23 = $$0.a.a($$12);
-               if ($$23 != null) {
-                  $$23.b($$11);
+      public h(OptionalDouble $$0) {
+         super("line_width", () -> {
+            if (!Objects.equals($$0, OptionalDouble.of(1.0))) {
+               if ($$0.isPresent()) {
+                  RenderSystem.lineWidth((float)$$0.getAsDouble());
                } else {
-                  ftm.d $$24 = new ftm.d($$12, $$11, $$8.b + 1);
-                  $$24.a($$8.d, $$11);
-                  if ($$12.a()) {
-                     $$2.add($$24);
-                     $$0.a.a($$12, $$24);
-                  } else if (this.a($$6, $$12.f())) {
-                     $$0.a.a($$12, $$24);
-                     ((List)$$0.c.computeIfAbsent(csp.a($$12.f()), $$0x -> new ArrayList())).add($$12);
-                  }
+                  RenderSystem.lineWidth(Math.max(2.5F, (float)evg.O().aM().k() / 1920.0F * 2.5F));
                }
             }
+         }, () -> {
+            if (!Objects.equals($$0, OptionalDouble.of(1.0))) {
+               RenderSystem.lineWidth(1.0F);
+            }
+         });
+         this.aS = $$0;
+      }
+
+      @Override
+      public String toString() {
+         return this.b + "[" + (this.aS.isPresent() ? this.aS.getAsDouble() : "window_scale") + "]";
+      }
+   }
+
+   protected static class i extends ftm.e {
+      private final Optional<ahg> aS;
+
+      i(ImmutableList<Triple<ahg, Boolean, Boolean>> $$0) {
+         super(() -> {
+            int $$1 = 0;
+            UnmodifiableIterator var2 = $$0.iterator();
+
+            while (var2.hasNext()) {
+               Triple<ahg, Boolean, Boolean> $$2 = (Triple<ahg, Boolean, Boolean>)var2.next();
+               gem $$3 = evg.O().Y();
+               $$3.b((ahg)$$2.getLeft()).a((Boolean)$$2.getMiddle(), (Boolean)$$2.getRight());
+               RenderSystem.setShaderTexture($$1++, (ahg)$$2.getLeft());
+            }
+         }, () -> {
+         });
+         this.aS = $$0.stream().findFirst().map(Triple::getLeft);
+      }
+
+      @Override
+      protected Optional<ahg> c() {
+         return this.aS;
+      }
+
+      public static ftm.i.a d() {
+         return new ftm.i.a();
+      }
+
+      public static final class a {
+         private final Builder<Triple<ahg, Boolean, Boolean>> a = new Builder();
+
+         public ftm.i.a a(ahg $$0, boolean $$1, boolean $$2) {
+            this.a.add(Triple.of($$0, $$1, $$2));
+            return this;
+         }
+
+         public ftm.i a() {
+            return new ftm.i(this.a.build());
          }
       }
    }
 
-   private boolean a(hx $$0, hx $$1) {
-      int $$2 = iz.a($$0.u());
-      int $$3 = iz.a($$0.w());
-      int $$4 = iz.a($$1.u());
-      int $$5 = iz.a($$1.w());
-      return amn.a($$2, $$3, this.g.b(), $$4, $$5);
-   }
-
-   @Nullable
-   private fvy.b a(hx $$0, fvy.b $$1, ic $$2) {
-      hx $$3 = $$1.a($$2);
-      if (!this.a($$0, $$3)) {
-         return null;
-      } else {
-         return aui.a($$0.v() - $$3.v()) > this.g.b() * 16 ? null : this.g.a($$3);
+   protected static final class j extends ftm.o {
+      public j(float $$0, float $$1) {
+         super("offset_texturing", () -> RenderSystem.setTextureMatrix(new Matrix4f().translation($$0, $$1, 0.0F)), () -> RenderSystem.resetTextureMatrix());
       }
    }
 
-   @Nullable
-   @avn
-   protected ftm.d b(fvy.b $$0) {
-      return this.h.get().a.a.a($$0);
-   }
-
-   static record a(LongSet a, BlockingQueue<fvy.b> b) {
-
-      public a() {
-         this(new LongOpenHashSet(), new LinkedBlockingQueue<>());
+   protected static class k extends ftm {
+      public k(String $$0, Runnable $$1, Runnable $$2) {
+         super($$0, $$1, $$2);
       }
    }
 
-   static record b(ftm.c a, ftm.a b) {
-
-      public b(int $$0) {
-         this(new ftm.c($$0), new ftm.a());
+   protected static class l extends ftm.a {
+      public l(boolean $$0) {
+         super("overlay", () -> {
+            if ($$0) {
+               evg.O().j.o().a();
+            }
+         }, () -> {
+            if ($$0) {
+               evg.O().j.o().b();
+            }
+         }, $$0);
       }
    }
 
-   static class c {
-      public final ftm.e a;
-      public final LinkedHashSet<ftm.d> b;
-      public final Long2ObjectMap<List<fvy.b>> c;
+   protected static class m extends ftm {
+      private final Optional<Supplier<ftt>> aS;
 
-      public c(int $$0) {
-         this.a = new ftm.e($$0);
-         this.b = new LinkedHashSet<>($$0);
-         this.c = new Long2ObjectOpenHashMap();
-      }
-   }
-
-   @avn
-   protected static class d {
-      @avn
-      protected final fvy.b a;
-      private byte c;
-      byte d;
-      @avn
-      protected final int b;
-
-      d(fvy.b $$0, @Nullable ic $$1, int $$2) {
-         this.a = $$0;
-         if ($$1 != null) {
-            this.b($$1);
-         }
-
-         this.b = $$2;
+      public m(Supplier<ftt> $$0) {
+         super("shader", () -> RenderSystem.setShader($$0), () -> {
+         });
+         this.aS = Optional.of($$0);
       }
 
-      void a(byte $$0, ic $$1) {
-         this.d = (byte)(this.d | $$0 | 1 << $$1.ordinal());
-      }
-
-      boolean a(ic $$0) {
-         return (this.d & 1 << $$0.ordinal()) > 0;
-      }
-
-      void b(ic $$0) {
-         this.c = (byte)(this.c | this.c | 1 << $$0.ordinal());
-      }
-
-      @avn
-      protected boolean a(int $$0) {
-         return (this.c & 1 << $$0) > 0;
-      }
-
-      boolean a() {
-         return this.c != 0;
+      public m() {
+         super("shader", () -> RenderSystem.setShader(() -> null), () -> {
+         });
+         this.aS = Optional.empty();
       }
 
       @Override
-      public int hashCode() {
-         return this.a.f().hashCode();
-      }
-
-      @Override
-      public boolean equals(Object $$0) {
-         return !($$0 instanceof ftm.d $$1) ? false : this.a.f().equals($$1.a.f());
+      public String toString() {
+         return this.b + "[" + this.aS + "]";
       }
    }
 
-   static class e {
-      private final ftm.d[] a;
+   protected static class n extends ftm.e {
+      private final Optional<ahg> aS;
+      private final boolean aT;
+      private final boolean aU;
 
-      e(int $$0) {
-         this.a = new ftm.d[$$0];
+      public n(ahg $$0, boolean $$1, boolean $$2) {
+         super(() -> {
+            gem $$3 = evg.O().Y();
+            $$3.b($$0).a($$1, $$2);
+            RenderSystem.setShaderTexture(0, $$0);
+         }, () -> {
+         });
+         this.aS = Optional.of($$0);
+         this.aT = $$1;
+         this.aU = $$2;
       }
 
-      public void a(fvy.b $$0, ftm.d $$1) {
-         this.a[$$0.b] = $$1;
+      @Override
+      public String toString() {
+         return this.b + "[" + this.aS + "(blur=" + this.aT + ", mipmap=" + this.aU + ")]";
       }
 
-      @Nullable
-      public ftm.d a(fvy.b $$0) {
-         int $$1 = $$0.b;
-         return $$1 >= 0 && $$1 < this.a.length ? this.a[$$1] : null;
+      @Override
+      protected Optional<ahg> c() {
+         return this.aS;
+      }
+   }
+
+   protected static class o extends ftm {
+      public o(String $$0, Runnable $$1, Runnable $$2) {
+         super($$0, $$1, $$2);
+      }
+   }
+
+   protected static class p extends ftm {
+      public p(String $$0, Runnable $$1, Runnable $$2) {
+         super($$0, $$1, $$2);
+      }
+   }
+
+   protected static class q extends ftm {
+      private final boolean aS;
+      private final boolean aT;
+
+      public q(boolean $$0, boolean $$1) {
+         super("write_mask_state", () -> {
+            if (!$$1) {
+               RenderSystem.depthMask($$1);
+            }
+
+            if (!$$0) {
+               RenderSystem.colorMask($$0, $$0, $$0, $$0);
+            }
+         }, () -> {
+            if (!$$1) {
+               RenderSystem.depthMask(true);
+            }
+
+            if (!$$0) {
+               RenderSystem.colorMask(true, true, true, true);
+            }
+         });
+         this.aS = $$0;
+         this.aT = $$1;
+      }
+
+      @Override
+      public String toString() {
+         return this.b + "[writeColor=" + this.aS + ", writeDepth=" + this.aT + "]";
       }
    }
 }

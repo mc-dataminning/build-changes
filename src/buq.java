@@ -1,32 +1,30 @@
-public class buq extends btl {
-   private final cdc b;
-   private int c;
+public class buq extends btg {
+   private final bmt a;
 
-   public buq(cdc $$0, double $$1, boolean $$2) {
-      super($$0, $$1, $$2);
-      this.b = $$0;
+   public buq(bmt $$0) {
+      this.a = $$0;
+   }
+
+   @Override
+   public boolean a() {
+      return this.a.aC() && !this.a.dM().b_(this.a.dm()).a(asl.a);
    }
 
    @Override
    public void c() {
-      super.c();
-      this.c = 0;
-   }
+      hx $$0 = null;
 
-   @Override
-   public void d() {
-      super.d();
-      this.b.v(false);
-   }
+      for (hx $$2 : hx.b(
+         aun.a(this.a.dr() - 2.0), aun.a(this.a.dt() - 2.0), aun.a(this.a.dx() - 2.0), aun.a(this.a.dr() + 2.0), this.a.ds(), aun.a(this.a.dx() + 2.0)
+      )) {
+         if (this.a.dM().b_($$2).a(asl.a)) {
+            $$0 = $$2;
+            break;
+         }
+      }
 
-   @Override
-   public void e() {
-      super.e();
-      this.c++;
-      if (this.c >= 5 && this.k() < this.l() / 2) {
-         this.b.v(true);
-      } else {
-         this.b.v(false);
+      if ($$0 != null) {
+         this.a.K().a((double)$$0.u(), (double)$$0.v(), (double)$$0.w(), 1.0);
       }
    }
 }

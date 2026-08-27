@@ -1,51 +1,58 @@
-import java.util.BitSet;
-import java.util.stream.Stream;
+public interface dkv {
+   void a(dkx var1, double var2);
 
-public class dkv {
-   private final int a;
-   private final BitSet b;
-   private dkv.a c = ($$0x, $$1x, $$2) -> false;
+   void a(dkx var1, double var2, double var4, long var6);
 
-   public dkv(int $$0, int $$1) {
-      this.a = $$1;
-      this.b = new BitSet(256 * $$0);
-   }
+   void a(dkx var1, double var2, double var4);
 
-   public void a(dkv.a $$0) {
-      this.c = $$0;
-   }
+   void a(dkx var1, int var2);
 
-   public dkv(long[] $$0, int $$1) {
-      this.a = $$1;
-      this.b = BitSet.valueOf($$0);
-   }
+   void b(dkx var1, int var2);
 
-   private int c(int $$0, int $$1, int $$2) {
-      return $$0 & 15 | ($$2 & 15) << 4 | $$1 - this.a << 8;
-   }
+   void b(dkx var1, double var2);
 
-   public void a(int $$0, int $$1, int $$2) {
-      this.b.set(this.c($$0, $$1, $$2));
-   }
+   void c(dkx var1, double var2);
 
-   public boolean b(int $$0, int $$1, int $$2) {
-      return this.c.test($$0, $$1, $$2) || this.b.get(this.c($$0, $$1, $$2));
-   }
+   public static class a implements dkv {
+      private final dkx a;
 
-   public Stream<hx> a(csp $$0) {
-      return this.b.stream().mapToObj($$1 -> {
-         int $$2 = $$1 & 15;
-         int $$3 = $$1 >> 4 & 15;
-         int $$4 = $$1 >> 8;
-         return $$0.a($$2, $$4 + this.a, $$3);
-      });
-   }
+      public a(dkx $$0) {
+         this.a = $$0;
+      }
 
-   public long[] a() {
-      return this.b.toLongArray();
-   }
+      @Override
+      public void a(dkx $$0, double $$1) {
+         this.a.a($$1);
+      }
 
-   public interface a {
-      boolean test(int var1, int var2, int var3);
+      @Override
+      public void a(dkx $$0, double $$1, double $$2, long $$3) {
+         this.a.a($$1, $$2, $$3);
+      }
+
+      @Override
+      public void a(dkx $$0, double $$1, double $$2) {
+         this.a.c($$1, $$2);
+      }
+
+      @Override
+      public void a(dkx $$0, int $$1) {
+         this.a.b($$1);
+      }
+
+      @Override
+      public void b(dkx $$0, int $$1) {
+         this.a.c($$1);
+      }
+
+      @Override
+      public void b(dkx $$0, double $$1) {
+         this.a.c($$1);
+      }
+
+      @Override
+      public void c(dkx $$0, double $$1) {
+         this.a.b($$1);
+      }
    }
 }

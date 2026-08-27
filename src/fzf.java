@@ -1,103 +1,43 @@
-import org.joml.Matrix4f;
+public class fzf extends fze<ccm> {
+   private static final ahg a = new ahg("textures/entity/illager/illusioner.png");
 
-public class fzf extends fye<bme> {
-   public fzf(fyf.a $$0) {
-      super($$0);
-   }
-
-   public void a(bme $$0, float $$1, float $$2, ept $$3, fsz $$4, int $$5) {
-      float[] $$6 = new float[8];
-      float[] $$7 = new float[8];
-      float $$8 = 0.0F;
-      float $$9 = 0.0F;
-      aup $$10 = aup.a($$0.b);
-
-      for (int $$11 = 7; $$11 >= 0; $$11--) {
-         $$6[$$11] = $$8;
-         $$7[$$11] = $$9;
-         $$8 += (float)($$10.a(11) - 5);
-         $$9 += (float)($$10.a(11) - 5);
-      }
-
-      epx $$12 = $$4.getBuffer(fth.s());
-      Matrix4f $$13 = $$3.c().a();
-
-      for (int $$14 = 0; $$14 < 4; $$14++) {
-         aup $$15 = aup.a($$0.b);
-
-         for (int $$16 = 0; $$16 < 3; $$16++) {
-            int $$17 = 7;
-            int $$18 = 0;
-            if ($$16 > 0) {
-               $$17 = 7 - $$16;
-            }
-
-            if ($$16 > 0) {
-               $$18 = $$17 - 2;
-            }
-
-            float $$19 = $$6[$$17] - $$8;
-            float $$20 = $$7[$$17] - $$9;
-
-            for (int $$21 = $$17; $$21 >= $$18; $$21--) {
-               float $$22 = $$19;
-               float $$23 = $$20;
-               if ($$16 == 0) {
-                  $$19 += (float)($$15.a(11) - 5);
-                  $$20 += (float)($$15.a(11) - 5);
-               } else {
-                  $$19 += (float)($$15.a(31) - 15);
-                  $$20 += (float)($$15.a(31) - 15);
-               }
-
-               float $$24 = 0.5F;
-               float $$25 = 0.45F;
-               float $$26 = 0.45F;
-               float $$27 = 0.5F;
-               float $$28 = 0.1F + (float)$$14 * 0.2F;
-               if ($$16 == 0) {
-                  $$28 *= (float)$$21 * 0.1F + 1.0F;
-               }
-
-               float $$29 = 0.1F + (float)$$14 * 0.2F;
-               if ($$16 == 0) {
-                  $$29 *= ((float)$$21 - 1.0F) * 0.1F + 1.0F;
-               }
-
-               a($$13, $$12, $$19, $$20, $$21, $$22, $$23, 0.45F, 0.45F, 0.5F, $$28, $$29, false, false, true, false);
-               a($$13, $$12, $$19, $$20, $$21, $$22, $$23, 0.45F, 0.45F, 0.5F, $$28, $$29, true, false, true, true);
-               a($$13, $$12, $$19, $$20, $$21, $$22, $$23, 0.45F, 0.45F, 0.5F, $$28, $$29, true, true, false, true);
-               a($$13, $$12, $$19, $$20, $$21, $$22, $$23, 0.45F, 0.45F, 0.5F, $$28, $$29, false, true, false, false);
+   public fzf(fyl.a $$0) {
+      super($$0, new fkj<>($$0.a(fmu.ar)), 0.5F);
+      this.a(new gcp<ccm, fkj<ccm>>(this, $$0.d()) {
+         public void a(epz $$0, ftf $$1, int $$2, ccm $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+            if ($$3.go() || $$3.fW()) {
+               super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
             }
          }
+      });
+      this.f.c().k = true;
+   }
+
+   public ahg a(ccm $$0) {
+      return a;
+   }
+
+   public void a(ccm $$0, float $$1, float $$2, epz $$3, ftf $$4, int $$5) {
+      if ($$0.ce()) {
+         els[] $$6 = $$0.E($$2);
+         float $$7 = this.a($$0, $$2);
+
+         for (int $$8 = 0; $$8 < $$6.length; $$8++) {
+            $$3.a();
+            $$3.a(
+               $$6[$$8].c + (double)aun.b((float)$$8 + $$7 * 0.5F) * 0.025,
+               $$6[$$8].d + (double)aun.b((float)$$8 + $$7 * 0.75F) * 0.0125,
+               $$6[$$8].e + (double)aun.b((float)$$8 + $$7 * 0.7F) * 0.025
+            );
+            super.a($$0, $$1, $$2, $$3, $$4, $$5);
+            $$3.b();
+         }
+      } else {
+         super.a($$0, $$1, $$2, $$3, $$4, $$5);
       }
    }
 
-   private static void a(
-      Matrix4f $$0,
-      epx $$1,
-      float $$2,
-      float $$3,
-      int $$4,
-      float $$5,
-      float $$6,
-      float $$7,
-      float $$8,
-      float $$9,
-      float $$10,
-      float $$11,
-      boolean $$12,
-      boolean $$13,
-      boolean $$14,
-      boolean $$15
-   ) {
-      $$1.a($$0, $$2 + ($$12 ? $$11 : -$$11), (float)($$4 * 16), $$3 + ($$13 ? $$11 : -$$11)).a($$7, $$8, $$9, 0.3F).e();
-      $$1.a($$0, $$5 + ($$12 ? $$10 : -$$10), (float)(($$4 + 1) * 16), $$6 + ($$13 ? $$10 : -$$10)).a($$7, $$8, $$9, 0.3F).e();
-      $$1.a($$0, $$5 + ($$14 ? $$10 : -$$10), (float)(($$4 + 1) * 16), $$6 + ($$15 ? $$10 : -$$10)).a($$7, $$8, $$9, 0.3F).e();
-      $$1.a($$0, $$2 + ($$14 ? $$11 : -$$11), (float)($$4 * 16), $$3 + ($$15 ? $$11 : -$$11)).a($$7, $$8, $$9, 0.3F).e();
-   }
-
-   public ahd a(bme $$0) {
-      return gee.e;
+   protected boolean b(ccm $$0) {
+      return true;
    }
 }

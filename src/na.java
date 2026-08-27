@@ -1,101 +1,98 @@
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import javax.annotation.Nullable;
 
-public class na implements mu {
-   private final mv b;
-   private final cpk c;
-   private final cmm d;
-   private final cps e;
-   private final float f;
-   private final int g;
-   private final Map<String, an<?>> h = new LinkedHashMap<>();
+public class na implements mw {
+   private final mx b;
+   private final cms c;
+   private final int d;
+   private final List<String> e = Lists.newArrayList();
+   private final Map<Character, cpy> f = Maps.newLinkedHashMap();
+   private final Map<String, an<?>> g = new LinkedHashMap<>();
    @Nullable
-   private String i;
-   private final cpe.a<?> j;
+   private String h;
+   private boolean i = true;
 
-   private na(mv $$0, cpk $$1, cth $$2, cps $$3, float $$4, int $$5, cpe.a<?> $$6) {
+   public na(mx $$0, ctn $$1, int $$2) {
       this.b = $$0;
-      this.c = $$1;
-      this.d = $$2.k();
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.j = $$6;
+      this.c = $$1.k();
+      this.d = $$2;
    }
 
-   public static <T extends cpe> na a(cps $$0, mv $$1, cth $$2, float $$3, int $$4, cpz<T> $$5, cpe.a<T> $$6) {
-      return new na($$1, a($$5, $$2), $$2, $$0, $$3, $$4, $$6);
+   public static na a(mx $$0, ctn $$1) {
+      return a($$0, $$1, 1);
    }
 
-   public static na a(cps $$0, mv $$1, cth $$2, float $$3, int $$4) {
-      return new na($$1, cpk.a, $$2, $$0, $$3, $$4, cpj::new);
+   public static na a(mx $$0, ctn $$1, int $$2) {
+      return new na($$0, $$1, $$2);
    }
 
-   public static na b(cps $$0, mv $$1, cth $$2, float $$3, int $$4) {
-      return new na($$1, c($$2), $$2, $$0, $$3, $$4, cph::new);
+   public na a(Character $$0, asv<cms> $$1) {
+      return this.a($$0, cpy.a($$1));
    }
 
-   public static na c(cps $$0, mv $$1, cth $$2, float $$3, int $$4) {
-      return new na($$1, b($$2), $$2, $$0, $$3, $$4, cqk::new);
+   public na a(Character $$0, ctn $$1) {
+      return this.a($$0, cpy.a($$1));
    }
 
-   public static na d(cps $$0, mv $$1, cth $$2, float $$3, int $$4) {
-      return new na($$1, cpk.a, $$2, $$0, $$3, $$4, cqo::new);
+   public na a(Character $$0, cpy $$1) {
+      if (this.f.containsKey($$0)) {
+         throw new IllegalArgumentException("Symbol '" + $$0 + "' is already defined!");
+      } else if ($$0 == ' ') {
+         throw new IllegalArgumentException("Symbol ' ' (whitespace) is reserved and cannot be defined");
+      } else {
+         this.f.put($$0, $$1);
+         return this;
+      }
+   }
+
+   public na b(String $$0) {
+      if (!this.e.isEmpty() && $$0.length() != this.e.get(0).length()) {
+         throw new IllegalArgumentException("Pattern must be the same width on every line!");
+      } else {
+         this.e.add($$0);
+         return this;
+      }
    }
 
    public na b(String $$0, an<?> $$1) {
-      this.h.put($$0, $$1);
+      this.g.put($$0, $$1);
       return this;
    }
 
-   public na b(@Nullable String $$0) {
+   public na c(@Nullable String $$0) {
+      this.h = $$0;
+      return this;
+   }
+
+   public na a(boolean $$0) {
       this.i = $$0;
       return this;
    }
 
    @Override
-   public cmm a() {
-      return this.d;
+   public cms a() {
+      return this.c;
    }
 
    @Override
-   public void a(mw $$0, ahd $$1) {
-      this.a($$1);
-      ae.a $$2 = $$0.a().a("has_the_recipe", ct.a($$1)).a(aj.a.c($$1)).a(ai.a.b);
-      this.h.forEach($$2::a);
-      cpe $$3 = this.j.create(Objects.requireNonNullElse(this.i, ""), this.c, this.e, new cmr(this.d), this.f, this.g);
-      $$0.a($$1, $$3, $$2.b($$1.d("recipes/" + this.b.a() + "/")));
+   public void a(my $$0, ahg $$1) {
+      cqj $$2 = this.a($$1);
+      ae.a $$3 = $$0.a().a("has_the_recipe", ct.a($$1)).a(aj.a.c($$1)).a(ai.a.b);
+      this.g.forEach($$3::a);
+      cqi $$4 = new cqi(Objects.requireNonNullElse(this.h, ""), mw.a(this.b), $$2, new cmx(this.c, this.d), this.i);
+      $$0.a($$1, $$4, $$3.b($$1.d("recipes/" + this.b.a() + "/")));
    }
 
-   private static cpk b(cth $$0) {
-      if ($$0.k().u()) {
-         return cpk.a;
-      } else {
-         return $$0.k() instanceof ckk ? cpk.b : cpk.c;
-      }
-   }
-
-   private static cpk c(cth $$0) {
-      return $$0.k() instanceof ckk ? cpk.b : cpk.c;
-   }
-
-   private static cpk a(cpz<? extends cpe> $$0, cth $$1) {
-      if ($$0 == cpz.p) {
-         return b($$1);
-      } else if ($$0 == cpz.q) {
-         return c($$1);
-      } else if ($$0 != cpz.r && $$0 != cpz.s) {
-         throw new IllegalStateException("Unknown cooking recipe type");
-      } else {
-         return cpk.a;
-      }
-   }
-
-   private void a(ahd $$0) {
-      if (this.h.isEmpty()) {
+   private cqj a(ahg $$0) {
+      if (this.g.isEmpty()) {
          throw new IllegalStateException("No way of obtaining recipe " + $$0);
+      } else {
+         return cqj.a(this.f, this.e);
       }
    }
 }

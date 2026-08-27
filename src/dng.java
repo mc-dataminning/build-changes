@@ -1,37 +1,19 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.util.UUID;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public class dng implements dno {
-   public static final Codec<dng> a = RecordCodecBuilder.create($$0 -> $$0.group(hx.a.fieldOf("pos").forGetter($$0x -> $$0x.c)).apply($$0, dng::new));
-   final hx c;
+public interface dng<T extends dmx> {
+   @Nullable
+   T a(int var1);
 
-   public dng(hx $$0) {
-      this.c = $$0;
-   }
+   @Nullable
+   T a(UUID var1);
 
-   @Override
-   public Optional<elm> a(cti $$0) {
-      return Optional.of(elm.b(this.c));
-   }
+   Iterable<T> a();
 
-   @Override
-   public dnp<?> a() {
-      return dnp.a;
-   }
+   <U extends T> void a(dne<T, U> var1, atb<U> var2);
 
-   public static class a implements dnp<dng> {
-      public dng a(ug $$0) {
-         return new dng($$0.e());
-      }
+   void a(eln var1, Consumer<T> var2);
 
-      public void a(ug $$0, dng $$1) {
-         $$0.a($$1.c);
-      }
-
-      @Override
-      public Codec<dng> a() {
-         return dng.a;
-      }
-   }
+   <U extends T> void a(dne<T, U> var1, eln var2, atb<U> var3);
 }

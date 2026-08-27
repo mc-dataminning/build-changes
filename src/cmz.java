@@ -1,40 +1,44 @@
-public class cmz extends cmm {
-   private static final int a = 32;
+import java.util.stream.Stream;
 
-   public cmz(cmm.a $$0) {
-      super($$0);
+public class cmz {
+   public static bkb<cmx> a(cto $$0, cfh $$1, bjz $$2) {
+      $$1.c($$2);
+      return bkb.b($$1.b($$2));
    }
 
-   @Override
-   public cmr a(cmr $$0, cti $$1, bmf $$2) {
-      if ($$2 instanceof ana $$3) {
-         am.A.a($$3, $$0);
-         $$3.b(arw.c.b(this));
+   public static cmx a(cmx $$0, cfh $$1, cmx $$2, boolean $$3) {
+      boolean $$4 = $$1.fT().d;
+      if ($$3 && $$4) {
+         if (!$$1.fS().h($$2)) {
+            $$1.fS().e($$2);
+         }
+
+         return $$0;
+      } else {
+         if (!$$4) {
+            $$0.h(1);
+         }
+
+         if ($$0.b()) {
+            return $$2;
+         } else {
+            if (!$$1.fS().e($$2)) {
+               $$1.a($$2, false);
+            }
+
+            return $$0;
+         }
       }
+   }
 
-      if ($$2 instanceof cfb && !((cfb)$$2).fT().d) {
-         $$0.h(1);
+   public static cmx a(cmx $$0, cfh $$1, cmx $$2) {
+      return a($$0, $$1, $$2, true);
+   }
+
+   public static void a(cbt $$0, Stream<cmx> $$1) {
+      cto $$2 = $$0.dM();
+      if (!$$2.B) {
+         $$1.forEach($$2x -> $$2.b(new cbt($$2, $$0.dr(), $$0.dt(), $$0.dx(), $$2x)));
       }
-
-      if (!$$1.B) {
-         $$2.er();
-      }
-
-      return $$0.b() ? new cmr(cmu.qv) : $$0;
-   }
-
-   @Override
-   public int b(cmr $$0) {
-      return 32;
-   }
-
-   @Override
-   public cok c(cmr $$0) {
-      return cok.c;
-   }
-
-   @Override
-   public bjw<cmr> a(cti $$0, cfb $$1, bju $$2) {
-      return cmt.a($$0, $$1, $$2);
    }
 }

@@ -1,76 +1,160 @@
-public class cfs extends cft {
-   public cfs(blt<? extends cfs> $$0, cti $$1) {
+public class cfs extends blu implements cfw {
+   private static final agm<cmx> b = agp.a(cfs.class, ago.h);
+   private double c;
+   private double d;
+   private double e;
+   private int f;
+   private boolean g;
+
+   public cfs(bly<? extends cfs> $$0, cto $$1) {
       super($$0, $$1);
    }
 
-   public cfs(cti $$0, bzu $$1) {
-      this(blt.al, $$0);
-      this.b($$1);
-      this.a_(
-         $$1.dr() - (double)($$1.dg() + 1.0F) * 0.5 * (double)aui.a($$1.aU * (float) (Math.PI / 180.0)),
-         $$1.dv() - 0.1F,
-         $$1.dx() + (double)($$1.dg() + 1.0F) * 0.5 * (double)aui.b($$1.aU * (float) (Math.PI / 180.0))
-      );
+   public cfs(cto $$0, double $$1, double $$2, double $$3) {
+      this(bly.L, $$0);
+      this.a_($$1, $$2, $$3);
+   }
+
+   public void a(cmx $$0) {
+      if (!$$0.a(cna.sp) || $$0.u()) {
+         this.an().b(b, $$0.c(1));
+      }
+   }
+
+   private cmx s() {
+      return this.an().b(b);
+   }
+
+   @Override
+   public cmx q() {
+      cmx $$0 = this.s();
+      return $$0.b() ? new cmx(cna.sp) : $$0;
+   }
+
+   @Override
+   protected void c_() {
+      this.an().a(b, cmx.f);
+   }
+
+   @Override
+   public boolean a(double $$0) {
+      double $$1 = this.cH().a() * 4.0;
+      if (Double.isNaN($$1)) {
+         $$1 = 4.0;
+      }
+
+      $$1 *= 64.0;
+      return $$0 < $$1 * $$1;
+   }
+
+   public void a(hx $$0) {
+      double $$1 = (double)$$0.u();
+      int $$2 = $$0.v();
+      double $$3 = (double)$$0.w();
+      double $$4 = $$1 - this.dr();
+      double $$5 = $$3 - this.dx();
+      double $$6 = Math.sqrt($$4 * $$4 + $$5 * $$5);
+      if ($$6 > 12.0) {
+         this.c = this.dr() + $$4 / $$6 * 12.0;
+         this.e = this.dx() + $$5 / $$6 * 12.0;
+         this.d = this.dt() + 8.0;
+      } else {
+         this.c = $$1;
+         this.d = (double)$$2;
+         this.e = $$3;
+      }
+
+      this.f = 0;
+      this.g = this.ag.a(5) > 0;
+   }
+
+   @Override
+   public void l(double $$0, double $$1, double $$2) {
+      this.o($$0, $$1, $$2);
+      if (this.O == 0.0F && this.N == 0.0F) {
+         double $$3 = Math.sqrt($$0 * $$0 + $$2 * $$2);
+         this.r((float)(aun.d($$0, $$2) * 180.0F / (float)Math.PI));
+         this.s((float)(aun.d($$1, $$3) * 180.0F / (float)Math.PI));
+         this.N = this.dC();
+         this.O = this.dE();
+      }
    }
 
    @Override
    public void l() {
       super.l();
-      elm $$0 = this.dp();
-      elk $$1 = cfu.a(this, this::a);
-      this.a($$1);
-      double $$2 = this.dr() + $$0.c;
-      double $$3 = this.dt() + $$0.d;
-      double $$4 = this.dx() + $$0.e;
-      this.K();
-      float $$5 = 0.99F;
-      float $$6 = 0.06F;
-      if (this.dM().a(this.cH()).noneMatch(diz.a::i)) {
-         this.am();
-      } else if (this.bc()) {
-         this.am();
-      } else {
-         this.g($$0.a(0.99F));
-         if (!this.aV()) {
-            this.g(this.dp().b(0.0, -0.06F, 0.0));
+      els $$0 = this.dp();
+      double $$1 = this.dr() + $$0.c;
+      double $$2 = this.dt() + $$0.d;
+      double $$3 = this.dx() + $$0.e;
+      double $$4 = $$0.h();
+      this.s(cfz.d(this.O, (float)(aun.d($$0.d, $$4) * 180.0F / (float)Math.PI)));
+      this.r(cfz.d(this.N, (float)(aun.d($$0.c, $$0.e) * 180.0F / (float)Math.PI)));
+      if (!this.dM().B) {
+         double $$5 = this.c - $$1;
+         double $$6 = this.e - $$3;
+         float $$7 = (float)Math.sqrt($$5 * $$5 + $$6 * $$6);
+         float $$8 = (float)aun.d($$6, $$5);
+         double $$9 = aun.d(0.0025, $$4, (double)$$7);
+         double $$10 = $$0.d;
+         if ($$7 < 1.0F) {
+            $$9 *= 0.8;
+            $$10 *= 0.8;
          }
 
-         this.a_($$2, $$3, $$4);
+         int $$11 = this.dt() < this.d ? 1 : -1;
+         $$0 = new els(Math.cos((double)$$8) * $$9, $$10 + ((double)$$11 - $$10) * 0.015F, Math.sin((double)$$8) * $$9);
+         this.g($$0);
       }
-   }
 
-   @Override
-   protected void a(elj $$0) {
-      super.a($$0);
-      if (this.w() instanceof bmf $$1) {
-         $$0.a().a(this.dN().a(this, $$1), 1.0F);
+      float $$12 = 0.25F;
+      if (this.aZ()) {
+         for (int $$13 = 0; $$13 < 4; $$13++) {
+            this.dM().a(jx.e, $$1 - $$0.c * 0.25, $$2 - $$0.d * 0.25, $$3 - $$0.e * 0.25, $$0.c, $$0.d, $$0.e);
+         }
+      } else {
+         this.dM()
+            .a(jx.Z, $$1 - $$0.c * 0.25 + this.ag.j() * 0.6 - 0.3, $$2 - $$0.d * 0.25 - 0.5, $$3 - $$0.e * 0.25 + this.ag.j() * 0.6 - 0.3, $$0.c, $$0.d, $$0.e);
       }
-   }
 
-   @Override
-   protected void a(eli $$0) {
-      super.a($$0);
       if (!this.dM().B) {
-         this.am();
+         this.a_($$1, $$2, $$3);
+         this.f++;
+         if (this.f > 80 && !this.dM().B) {
+            this.a(arr.hD, 1.0F, 1.0F);
+            this.am();
+            if (this.g) {
+               this.dM().b(new cbt(this.dM(), this.dr(), this.dt(), this.dx(), this.q()));
+            } else {
+               this.dM().c(2003, this.dm(), 0);
+            }
+         }
+      } else {
+         this.p($$1, $$2, $$3);
       }
    }
 
    @Override
-   protected void c_() {
+   public void b(sn $$0) {
+      cmx $$1 = this.s();
+      if (!$$1.b()) {
+         $$0.a("Item", $$1.b(new sn()));
+      }
    }
 
    @Override
-   public void a(yy $$0) {
-      super.a($$0);
-      double $$1 = $$0.i();
-      double $$2 = $$0.j();
-      double $$3 = $$0.k();
+   public void a(sn $$0) {
+      cmx $$1 = cmx.a($$0.p("Item"));
+      this.a($$1);
+   }
 
-      for (int $$4 = 0; $$4 < 7; $$4++) {
-         double $$5 = 0.4 + 0.1 * (double)$$4;
-         this.dM().a(jx.ae, this.dr(), this.dt(), this.dx(), $$1 * $$5, $$2, $$3 * $$5);
-      }
+   @Override
+   public float bo() {
+      return 1.0F;
+   }
 
-      this.o($$1, $$2, $$3);
+   @Override
+   public boolean cq() {
+      return false;
    }
 }

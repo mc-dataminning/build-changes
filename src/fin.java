@@ -1,98 +1,96 @@
-public class fin extends fjy<byw> implements fip {
-   private final fmp a;
-   private final fmp b;
-   private final fmp f;
-   private final fmp g;
-   private final fmp h;
-   private final fmp i;
-   private final fmp j;
-   private static final float k = (float) (Math.PI / 4);
-   private static final float l = -1.134464F;
-   private static final float m = (float) (-Math.PI / 3);
+import com.mojang.authlib.properties.PropertyMap;
+import java.io.File;
+import java.net.Proxy;
+import java.nio.file.Path;
+import javax.annotation.Nullable;
 
-   public fin(fmp $$0) {
-      super(fth::i);
-      this.a = $$0.b("root");
-      this.b = this.a.b("head");
-      this.f = this.a.b("body");
-      this.g = this.f.b("right_arm");
-      this.h = this.f.b("left_arm");
-      this.i = this.f.b("right_wing");
-      this.j = this.f.b("left_wing");
+public class fin {
+   public final fin.d a;
+   public final eoq b;
+   public final fin.a c;
+   public final fin.b d;
+   public final fin.c e;
+
+   public fin(fin.d $$0, eoq $$1, fin.a $$2, fin.b $$3, fin.c $$4) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
    }
 
-   @Override
-   public fmp a() {
-      return this.a;
-   }
+   public static class a {
+      public final File a;
+      public final File b;
+      public final File c;
+      @Nullable
+      public final String d;
 
-   public static fmv b() {
-      fmx $$0 = new fmx();
-      fmy $$1 = $$0.a();
-      fmy $$2 = $$1.a("root", fmu.c(), fmr.a(0.0F, 23.5F, 0.0F));
-      $$2.a("head", fmu.c().a(0, 0).a(-2.5F, -5.0F, -2.5F, 5.0F, 5.0F, 5.0F, new fmt(0.0F)), fmr.a(0.0F, -3.99F, 0.0F));
-      fmy $$3 = $$2.a(
-         "body",
-         fmu.c().a(0, 10).a(-1.5F, 0.0F, -1.0F, 3.0F, 4.0F, 2.0F, new fmt(0.0F)).a(0, 16).a(-1.5F, 0.0F, -1.0F, 3.0F, 5.0F, 2.0F, new fmt(-0.2F)),
-         fmr.a(0.0F, -4.0F, 0.0F)
-      );
-      $$3.a("right_arm", fmu.c().a(23, 0).a(-0.75F, -0.5F, -1.0F, 1.0F, 4.0F, 2.0F, new fmt(-0.01F)), fmr.a(-1.75F, 0.5F, 0.0F));
-      $$3.a("left_arm", fmu.c().a(23, 6).a(-0.25F, -0.5F, -1.0F, 1.0F, 4.0F, 2.0F, new fmt(-0.01F)), fmr.a(1.75F, 0.5F, 0.0F));
-      $$3.a("right_wing", fmu.c().a(16, 14).a(0.0F, 1.0F, 0.0F, 0.0F, 5.0F, 8.0F, new fmt(0.0F)), fmr.a(-0.5F, 0.0F, 0.6F));
-      $$3.a("left_wing", fmu.c().a(16, 14).a(0.0F, 1.0F, 0.0F, 0.0F, 5.0F, 8.0F, new fmt(0.0F)), fmr.a(0.5F, 0.0F, 0.6F));
-      return fmv.a($$0, 32, 32);
-   }
-
-   public void a(byw $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.a().e().forEach(fmp::c);
-      float $$6 = $$3 * 20.0F * (float) (Math.PI / 180.0) + $$1;
-      float $$7 = aui.b($$6) * (float) Math.PI * 0.15F + $$2;
-      float $$8 = $$3 - (float)$$0.ah;
-      float $$9 = $$3 * 9.0F * (float) (Math.PI / 180.0);
-      float $$10 = Math.min($$2 / 0.3F, 1.0F);
-      float $$11 = 1.0F - $$10;
-      float $$12 = $$0.E($$8);
-      if ($$0.ge()) {
-         float $$13 = $$3 * 8.0F * (float) (Math.PI / 180.0) + $$2;
-         float $$14 = aui.b($$13) * 16.0F * (float) (Math.PI / 180.0);
-         float $$15 = $$0.F($$8);
-         float $$16 = aui.b($$13) * 14.0F * (float) (Math.PI / 180.0);
-         float $$17 = aui.b($$13) * 30.0F * (float) (Math.PI / 180.0);
-         this.a.f = $$0.gf() ? (float) (Math.PI * 4) * $$15 : this.a.f;
-         this.a.g = $$14 * (1.0F - $$15);
-         this.b.f = $$17 * (1.0F - $$15);
-         this.b.g = $$16 * (1.0F - $$15);
-      } else {
-         this.b.e = $$5 * (float) (Math.PI / 180.0);
-         this.b.f = $$4 * (float) (Math.PI / 180.0);
+      public a(File $$0, File $$1, File $$2, @Nullable String $$3) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
       }
 
-      this.i.e = 0.43633232F * (1.0F - $$10);
-      this.i.f = (float) (-Math.PI / 4) + $$7;
-      this.j.e = 0.43633232F * (1.0F - $$10);
-      this.j.f = (float) (Math.PI / 4) - $$7;
-      this.f.e = $$10 * (float) (Math.PI / 4);
-      float $$18 = $$12 * aui.i($$10, (float) (-Math.PI / 3), -1.134464F);
-      this.a.c = this.a.c + (float)Math.cos((double)$$9) * 0.25F * $$11;
-      this.g.e = $$18;
-      this.h.e = $$18;
-      float $$19 = $$11 * (1.0F - $$12);
-      float $$20 = 0.43633232F - aui.b($$9 + (float) (Math.PI * 3.0 / 2.0)) * (float) Math.PI * 0.075F * $$19;
-      this.h.g = -$$20;
-      this.g.g = $$20;
-      this.g.f = 0.27925268F * $$12;
-      this.h.f = -0.27925268F * $$12;
+      public Path a() {
+         return this.d == null ? this.c.toPath() : gfg.a(this.c.toPath(), this.d);
+      }
    }
 
-   @Override
-   public void a(blz $$0, ept $$1) {
-      float $$2 = 1.0F;
-      float $$3 = 3.0F;
-      this.a.a($$1);
-      this.f.a($$1);
-      $$1.a(0.0F, 0.0625F, 0.1875F);
-      $$1.a(a.b.rotation(this.g.e));
-      $$1.b(0.7F, 0.7F, 0.7F);
-      $$1.a(0.0625F, 0.0F, 0.0F);
+   public static class b {
+      public final boolean a;
+      public final String b;
+      public final String c;
+      public final boolean d;
+      public final boolean e;
+
+      public b(boolean $$0, String $$1, String $$2, boolean $$3, boolean $$4) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+      }
+   }
+
+   public static record c(@Nullable String a, @Nullable String b, @Nullable String c, @Nullable String d) {
+      public boolean a() {
+         return !ac.b(this.b) || !ac.b(this.c) || !ac.b(this.d);
+      }
+
+      @Nullable
+      public String b() {
+         return this.a;
+      }
+
+      @Nullable
+      public String c() {
+         return this.b;
+      }
+
+      @Nullable
+      public String d() {
+         return this.c;
+      }
+
+      @Nullable
+      public String e() {
+         return this.d;
+      }
+   }
+
+   public static class d {
+      public final evv a;
+      public final PropertyMap b;
+      public final PropertyMap c;
+      public final Proxy d;
+
+      public d(evv $$0, PropertyMap $$1, PropertyMap $$2, Proxy $$3) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+      }
    }
 }

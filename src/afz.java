@@ -1,8 +1,7 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public record afz() implements afx {
+   public static final afz a = new afz();
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface afz {
+   @Override
+   public void a(ui $$0) {
+   }
 }

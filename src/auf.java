@@ -1,52 +1,66 @@
-import com.google.common.collect.Maps;
-import com.google.gson.Gson;
-import com.google.gson.TypeAdapter;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonToken;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.util.Locale;
-import java.util.Map;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import java.util.function.Function;
 
-public class auf implements TypeAdapterFactory {
-   @Nullable
-   public <T> TypeAdapter<T> create(Gson $$0, TypeToken<T> $$1) {
-      Class<T> $$2 = $$1.getRawType();
-      if (!$$2.isEnum()) {
-         return null;
+public record auf<T extends Comparable<T>>(T b, T c) {
+   public static final Codec<auf<Integer>> a = a(Codec.INT);
+
+   public auf(T b, T c) {
+      if (b.compareTo(c) > 0) {
+         throw new IllegalArgumentException("min_inclusive must be less than or equal to max_inclusive");
       } else {
-         final Map<String, T> $$3 = Maps.newHashMap();
-
-         for (T $$4 : $$2.getEnumConstants()) {
-            $$3.put(this.a($$4), $$4);
-         }
-
-         return new TypeAdapter<T>() {
-            public void write(JsonWriter $$0, T $$1) throws IOException {
-               if ($$1 == null) {
-                  $$0.nullValue();
-               } else {
-                  $$0.value(auf.this.a($$1));
-               }
-            }
-
-            @Nullable
-            public T read(JsonReader $$0) throws IOException {
-               if ($$0.peek() == JsonToken.NULL) {
-                  $$0.nextNull();
-                  return null;
-               } else {
-                  return $$3.get($$0.nextString());
-               }
-            }
-         };
+         this.b = b;
+         this.c = c;
       }
    }
 
-   String a(Object $$0) {
-      return $$0 instanceof Enum ? ((Enum)$$0).name().toLowerCase(Locale.ROOT) : $$0.toString().toLowerCase(Locale.ROOT);
+   public auf(T $$0) {
+      this($$0, $$0);
+   }
+
+   public static <T extends Comparable<T>> Codec<auf<T>> a(Codec<T> $$0) {
+      return atv.a($$0, "min_inclusive", "max_inclusive", auf::a, auf::a, auf::b);
+   }
+
+   public static <T extends Comparable<T>> Codec<auf<T>> a(Codec<T> $$0, T $$1, T $$2) {
+      return atv.a(
+         a($$0),
+         (Function<auf<T>, DataResult<auf<T>>>)($$2x -> {
+            if ($$2x.a().compareTo($$1) < 0) {
+               return DataResult.error(() -> "Range limit too low, expected at least " + $$1 + " [" + $$2x.a() + "-" + $$2x.b() + "]");
+            } else {
+               return $$2x.b().compareTo($$2) > 0
+                  ? DataResult.error(() -> "Range limit too high, expected at most " + $$2 + " [" + $$2x.a() + "-" + $$2x.b() + "]")
+                  : DataResult.success($$2x);
+            }
+         })
+      );
+   }
+
+   public static <T extends Comparable<T>> DataResult<auf<T>> a(T $$0, T $$1) {
+      return $$0.compareTo($$1) <= 0
+         ? DataResult.success(new auf($$0, $$1))
+         : DataResult.error(() -> "min_inclusive must be less than or equal to max_inclusive");
+   }
+
+   public boolean a(T $$0) {
+      return $$0.compareTo(this.b) >= 0 && $$0.compareTo(this.c) <= 0;
+   }
+
+   public boolean a(auf<T> $$0) {
+      return $$0.a().compareTo(this.b) >= 0 && $$0.c.compareTo(this.c) <= 0;
+   }
+
+   @Override
+   public String toString() {
+      return "[" + this.b + ", " + this.c + "]";
+   }
+
+   public T a() {
+      return this.b;
+   }
+
+   public T b() {
+      return this.c;
    }
 }

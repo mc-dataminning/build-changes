@@ -1,37 +1,17 @@
-import javax.annotation.Nullable;
+import java.io.IOException;
 
-public record gff(ahd a, @Nullable String b, @Nullable ahd c, @Nullable ahd d, gff.a e, boolean f) {
-   public static enum a {
-      a("slim"),
-      b("default");
+public class gff extends aqm<int[]> {
+   private static final ahg a = new ahg("textures/colormap/grass.png");
 
-      private final String c;
-
-      private a(String $$0) {
-         this.c = $$0;
+   protected int[] a(aqh $$0, bgr $$1) {
+      try {
+         return gfh.a($$0, a);
+      } catch (IOException var4) {
+         throw new IllegalStateException("Failed to load grass color texture", var4);
       }
+   }
 
-      public static gff.a a(@Nullable String $$0) {
-         if ($$0 == null) {
-            return b;
-         } else {
-            byte var2 = -1;
-            switch ($$0.hashCode()) {
-               case 3533117:
-                  if ($$0.equals("slim")) {
-                     var2 = 0;
-                  }
-               default:
-                  return switch (var2) {
-                     case 0 -> a;
-                     default -> b;
-                  };
-            }
-         }
-      }
-
-      public String a() {
-         return this.c;
-      }
+   protected void a(int[] $$0, aqh $$1, bgr $$2) {
+      ctm.a($$0);
    }
 }

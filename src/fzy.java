@@ -1,31 +1,24 @@
-public class fzy extends fzl<bym, fla<bym>> {
-   private static final ahd a = new ahd("textures/entity/rabbit/brown.png");
-   private static final ahd i = new ahd("textures/entity/rabbit/white.png");
-   private static final ahd j = new ahd("textures/entity/rabbit/black.png");
-   private static final ahd k = new ahd("textures/entity/rabbit/gold.png");
-   private static final ahd l = new ahd("textures/entity/rabbit/salt.png");
-   private static final ahd m = new ahd("textures/entity/rabbit/white_splotched.png");
-   private static final ahd n = new ahd("textures/entity/rabbit/toast.png");
-   private static final ahd o = new ahd("textures/entity/rabbit/caerbannog.png");
+public class fzy extends fzr<ccq, fkw<ccq>> {
+   private static final ahg a = new ahg("textures/entity/phantom.png");
 
-   public fzy(fyf.a $$0) {
-      super($$0, new fla<>($$0.a(fmo.bb)), 0.3F);
+   public fzy(fyl.a $$0) {
+      super($$0, new fkw<>($$0.a(fmu.aE)), 0.75F);
+      this.a(new gcu<>(this));
    }
 
-   public ahd a(bym $$0) {
-      String $$1 = n.a($$0.ad().getString());
-      if ("Toast".equals($$1)) {
-         return n;
-      } else {
-         return switch ($$0.ge()) {
-            case a -> a;
-            case b -> i;
-            case c -> j;
-            case e -> k;
-            case f -> l;
-            case d -> m;
-            case g -> o;
-         };
-      }
+   public ahg a(ccq $$0) {
+      return a;
+   }
+
+   protected void a(ccq $$0, epz $$1, float $$2) {
+      int $$3 = $$0.u();
+      float $$4 = 1.0F + 0.15F * (float)$$3;
+      $$1.b($$4, $$4, $$4);
+      $$1.a(0.0F, 1.3125F, 0.1875F);
+   }
+
+   protected void a(ccq $$0, epz $$1, float $$2, float $$3, float $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      $$1.a(a.b.rotationDegrees($$0.dE()));
    }
 }

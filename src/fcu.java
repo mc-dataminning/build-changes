@@ -1,91 +1,121 @@
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
 
-public class fcu extends fct {
-   private static final int a = 1024;
-   private static final int b = 65535;
-   private static final vd c = vd.c("selectWorld.allowCommands");
-   private static final vd k = vd.c("selectWorld.gameMode");
-   private static final vd l = vd.c("lanServer.otherPlayers");
-   private static final vd m = vd.c("lanServer.port");
-   private static final vd n = vd.a("lanServer.port.unavailable.new", 1024, 65535);
-   private static final vd o = vd.a("lanServer.port.invalid.new", 1024, 65535);
-   private static final int p = 16733525;
-   private final fct q;
-   private ctf r = ctf.a;
-   private boolean t;
-   private int u = atz.a();
+public class fcu extends fcz {
+   private static final ahg a = new ahg("icon/draft_report");
+   private static final int b = 2;
+   private static final int c = 50;
+   private static final int k = 4;
+   private static final int l = 204;
+   private static final int m = 98;
+   private static final vf n = vf.c("menu.returnToGame");
+   private static final vf o = vf.c("gui.advancements");
+   private static final vf p = vf.c("gui.stats");
+   private static final vf q = vf.c("menu.sendFeedback");
+   private static final vf r = vf.c("menu.reportBugs");
+   private static final vf t = vf.c("menu.options");
+   private static final vf u = vf.c("menu.shareToLan");
+   private static final vf v = vf.c("menu.playerReporting");
+   private static final vf w = vf.c("menu.returnToMenu");
+   private static final vf x = vf.c("menu.savingLevel");
+   private static final vf y = vf.c("menu.game");
+   private static final vf z = vf.c("menu.paused");
+   private final boolean A;
    @Nullable
-   private exh v;
+   private exe B;
 
-   public fcu(fct $$0) {
-      super(vd.c("lanServer.title"));
-      this.q = $$0;
+   public fcu(boolean $$0) {
+      super($$0 ? y : z);
+      this.A = $$0;
+   }
+
+   public boolean n() {
+      return this.A;
    }
 
    @Override
    protected void aN_() {
-      gie $$0 = this.f.S();
-      this.r = $$0.v_();
-      this.t = $$0.aY().o();
-      this.d(exf.a(ctf::e).a(ctf.a, ctf.d, ctf.b, ctf.c).a(this.r).a(this.g / 2 - 155, 100, 150, 20, k, ($$0x, $$1x) -> this.r = $$1x));
-      this.d(exf.b(this.t).a(this.g / 2 + 5, 100, 150, 20, c, ($$0x, $$1x) -> this.t = $$1x));
-      ewy $$1 = ewy.a(vd.c("lanServer.start"), $$1x -> {
-         this.f.a(null);
-         vd $$2;
-         if ($$0.a(this.r, this.t, this.u)) {
-            $$2 = akc.a(this.u);
-         } else {
-            $$2 = vd.c("commands.publish.failed");
-         }
+      if (this.A) {
+         this.C();
+      }
 
-         this.f.l.d().a($$2);
-         this.f.d();
-      }).a(this.g / 2 - 155, this.h - 28, 150, 20).a();
-      this.v = new exh(this.i, this.g / 2 - 75, 160, 150, 20, vd.c("lanServer.port"));
-      this.v.b($$1x -> {
-         vd $$2 = this.a($$1x);
-         this.v.c(vd.b(this.u + "").a(n.i));
-         if ($$2 == null) {
-            this.v.f(14737632);
-            this.v.a(null);
-            $$1.j = true;
-         } else {
-            this.v.f(16733525);
-            this.v.a(eyj.a($$2));
-            $$1.j = false;
-         }
-      });
-      this.v.c(vd.b(this.u + "").a(n.i));
-      this.d(this.v);
-      this.d($$1);
-      this.d(ewy.a(vc.e, $$0x -> this.f.a(this.q)).a(this.g / 2 + 5, this.h - 28, 150, 20).a());
+      this.d(new eyl(0, this.A ? 40 : 10, this.g, 9, this.e, this.i));
    }
 
-   @Nullable
-   private vd a(String $$0) {
-      if ($$0.isBlank()) {
-         this.u = atz.a();
-         return null;
+   private void C() {
+      fan $$0 = new fan();
+      $$0.c().a(4, 4, 4, 0);
+      fan.b $$1 = $$0.d(2);
+      $$1.a(exe.a(n, $$0x -> {
+         this.f.a(null);
+         this.f.n.i();
+      }).a(204).a(), 2, $$0.b().c(50));
+      $$1.a(this.a(o, () -> new fdp(this.f.s.cn.r())));
+      $$1.a(this.a(p, () -> new fdi(this, this.f.s.j())));
+      $$1.a(this.a(q, aa.b().g() ? "https://aka.ms/javafeedback?ref=game" : "https://aka.ms/snapshotfeedback?ref=game"));
+      $$1.a(this.a(r, "https://aka.ms/snapshotbugs?ref=game")).j = !aa.b().d().a();
+      $$1.a(this.a(t, () -> new fcq(this, this.f.m)));
+      if (this.f.S() && !this.f.T().p()) {
+         $$1.a(this.a(u, () -> new fda(this)));
       } else {
-         try {
-            this.u = Integer.parseInt($$0);
-            if (this.u < 1024 || this.u > 65535) {
-               return o;
-            } else {
-               return !atz.a(this.u) ? n : null;
-            }
-         } catch (NumberFormatException var3) {
-            this.u = atz.a();
-            return o;
-         }
+         $$1.a(this.a(v, fhj::new));
+      }
+
+      vf $$2 = this.f.R() ? w : ve.p;
+      this.B = $$1.a(exe.a($$2, $$0x -> {
+         $$0x.j = false;
+         this.f.aX().a(this.f, this, this::D, true);
+      }).a(204).a(), 2);
+      $$0.a();
+      fam.a($$0, 0, 0, this.g, this.h, 0.5F, 0.25F);
+      $$0.a(this::d);
+   }
+
+   private void D() {
+      boolean $$0 = this.f.R();
+      fob $$1 = this.f.Q();
+      this.f.r.W();
+      if ($$0) {
+         this.f.b(new fcf(x));
+      } else {
+         this.f.y();
+      }
+
+      fde $$2 = new fde();
+      if ($$0) {
+         this.f.a($$2);
+      } else if ($$1 != null && $$1.e()) {
+         this.f.a(new eqk($$2));
+      } else {
+         this.f.a(new ffx($$2));
       }
    }
 
    @Override
-   public void a(ewm $$0, int $$1, int $$2, float $$3) {
+   public void d() {
+      super.d();
+   }
+
+   @Override
+   public void a(ews $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 50, 16777215);
-      $$0.a(this.i, l, this.g / 2, 82, 16777215);
-      $$0.a(this.i, m, this.g / 2, 142, 16777215);
+      if (this.A && this.f != null && this.f.aX().c() && this.B != null) {
+         $$0.a(a, this.B.B() + this.B.w() - 17, this.B.C() + 3, 15, 15);
+      }
+   }
+
+   @Override
+   public void b(ews $$0, int $$1, int $$2, float $$3) {
+      if (this.A) {
+         super.b($$0, $$1, $$2, $$3);
+      }
+   }
+
+   private exe a(vf $$0, Supplier<fcz> $$1) {
+      return exe.a($$0, $$1x -> this.f.a($$1.get())).a(98).a();
+   }
+
+   private exe a(vf $$0, String $$1) {
+      return exe.a($$0, fbr.b(this, $$1)).a(98).a();
    }
 }

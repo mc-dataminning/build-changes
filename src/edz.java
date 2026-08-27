@@ -1,154 +1,24 @@
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
 
-public class edz implements eec {
-   public static final int b = 1;
-   protected final ctk c;
-   @Nullable
-   private final eeb<?, ?> a;
-   @Nullable
-   private final eeb<?, ?> d;
-
-   public edz(dlk $$0, boolean $$1, boolean $$2) {
-      this.c = $$0.q();
-      this.a = $$1 ? new eds($$0) : null;
-      this.d = $$2 ? new eed($$0) : null;
+public class edz extends eee<edz.a> {
+   protected edz(dlq $$0) {
+      super(ctx.b, $$0, new edz.a(new Long2ObjectOpenHashMap()));
    }
 
    @Override
-   public void a(hx $$0) {
-      if (this.a != null) {
-         this.a.a($$0);
-      }
-
-      if (this.d != null) {
-         this.d.a($$0);
-      }
+   protected int a(long $$0) {
+      long $$1 = iz.e($$0);
+      dli $$2 = this.a($$1, false);
+      return $$2 == null ? 0 : $$2.a(iz.b(hx.a($$0)), iz.b(hx.b($$0)), iz.b(hx.c($$0)));
    }
 
-   @Override
-   public boolean L_() {
-      return this.d != null && this.d.L_() ? true : this.a != null && this.a.L_();
-   }
-
-   @Override
-   public int a() {
-      int $$0 = 0;
-      if (this.a != null) {
-         $$0 += this.a.a();
+   protected static final class a extends eeb<edz.a> {
+      public a(Long2ObjectOpenHashMap<dli> $$0) {
+         super($$0);
       }
 
-      if (this.d != null) {
-         $$0 += this.d.a();
+      public edz.a a() {
+         return new edz.a(this.a.clone());
       }
-
-      return $$0;
-   }
-
-   @Override
-   public void a(iz $$0, boolean $$1) {
-      if (this.a != null) {
-         this.a.a($$0, $$1);
-      }
-
-      if (this.d != null) {
-         this.d.a($$0, $$1);
-      }
-   }
-
-   @Override
-   public void a(csp $$0, boolean $$1) {
-      if (this.a != null) {
-         this.a.a($$0, $$1);
-      }
-
-      if (this.d != null) {
-         this.d.a($$0, $$1);
-      }
-   }
-
-   @Override
-   public void b(csp $$0) {
-      if (this.a != null) {
-         this.a.b($$0);
-      }
-
-      if (this.d != null) {
-         this.d.b($$0);
-      }
-   }
-
-   public edx a(ctr $$0) {
-      if ($$0 == ctr.b) {
-         return (edx)(this.a == null ? edx.a.a : this.a);
-      } else {
-         return (edx)(this.d == null ? edx.a.a : this.d);
-      }
-   }
-
-   public String a(ctr $$0, iz $$1) {
-      if ($$0 == ctr.b) {
-         if (this.a != null) {
-            return this.a.b($$1.s());
-         }
-      } else if (this.d != null) {
-         return this.d.b($$1.s());
-      }
-
-      return "n/a";
-   }
-
-   public edy.b b(ctr $$0, iz $$1) {
-      if ($$0 == ctr.b) {
-         if (this.a != null) {
-            return this.a.c($$1.s());
-         }
-      } else if (this.d != null) {
-         return this.d.c($$1.s());
-      }
-
-      return edy.b.a;
-   }
-
-   public void a(ctr $$0, iz $$1, @Nullable dlc $$2) {
-      if ($$0 == ctr.b) {
-         if (this.a != null) {
-            this.a.a($$1.s(), $$2);
-         }
-      } else if (this.d != null) {
-         this.d.a($$1.s(), $$2);
-      }
-   }
-
-   public void b(csp $$0, boolean $$1) {
-      if (this.a != null) {
-         this.a.b($$0, $$1);
-      }
-
-      if (this.d != null) {
-         this.d.b($$0, $$1);
-      }
-   }
-
-   public int a(hx $$0, int $$1) {
-      int $$2 = this.d == null ? 0 : this.d.b($$0) - $$1;
-      int $$3 = this.a == null ? 0 : this.a.b($$0);
-      return Math.max($$3, $$2);
-   }
-
-   public boolean a(iz $$0) {
-      long $$1 = $$0.s();
-      return this.a == null || this.a.f.j($$1) && (this.d == null || this.d.f.j($$1));
-   }
-
-   public int c() {
-      return this.c.am() + 2;
-   }
-
-   public int d() {
-      return this.c.an() - 1;
-   }
-
-   public int e() {
-      return this.d() + this.c();
    }
 }

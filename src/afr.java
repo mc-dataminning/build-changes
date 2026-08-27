@@ -1,21 +1,24 @@
-import java.util.UUID;
+public class afr implements xf<afm> {
+   private final vf a;
 
-public record afr(String a, UUID b) implements xd<afp> {
-   public afr(ug $$0) {
-      this($$0.d(16), $$0.p());
+   public afr(vf $$0) {
+      this.a = $$0;
+   }
+
+   public afr(ui $$0) {
+      this.a = vf.a.b($$0.d(262144));
    }
 
    @Override
-   public void a(ug $$0) {
-      $$0.a(this.a, 16);
-      $$0.a(this.b);
+   public void a(ui $$0) {
+      $$0.a(vf.a.a(this.a));
    }
 
-   public void a(afp $$0) {
+   public void a(afm $$0) {
       $$0.a(this);
    }
 
-   public UUID d() {
-      return this.b;
+   public vf a() {
+      return this.a;
    }
 }

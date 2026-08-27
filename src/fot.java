@@ -1,4 +1,17 @@
-@FunctionalInterface
-public interface fot {
-   xd<adg> predict(int var1);
+import java.util.Locale;
+
+public enum fot {
+   a("chat"),
+   b("skin"),
+   c("username");
+
+   private final String d;
+
+   private fot(String $$0) {
+      this.d = $$0.toUpperCase(Locale.ROOT);
+   }
+
+   public String a() {
+      return this.d;
+   }
 }

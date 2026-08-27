@@ -1,63 +1,73 @@
-import java.util.Collection;
+public class gkb implements gkg {
+   private static final int a = 6000;
+   private static final vf b = vf.c("tutorial.find_tree.title");
+   private static final vf c = vf.c("tutorial.find_tree.description");
+   private final gkf d;
+   private ezo e;
+   private int f;
 
-public abstract class gkb<E extends exu.a<E>> extends exu<E> {
-   protected gkb(int $$0, int $$1, int $$2, int $$3) {
-      super(eva.N(), $$0, $$1, $$2, $$3);
+   public gkb(gkf $$0) {
+      this.d = $$0;
    }
 
-   public void q(int $$0) {
-      if ($$0 == -1) {
-         this.a(null);
-      } else if (super.n() != 0) {
-         this.a(this.d($$0));
+   @Override
+   public void a() {
+      this.f++;
+      if (!this.d.f()) {
+         this.d.a(gkh.f);
+      } else {
+         if (this.f == 1) {
+            fsh $$0 = this.d.e().s;
+            if ($$0 != null && (b($$0) || a($$0))) {
+               this.d.a(gkh.e);
+               return;
+            }
+         }
+
+         if (this.f >= 6000 && this.e == null) {
+            this.e = new ezo(ezo.a.c, b, c, false);
+            this.d.e().ay().a(this.e);
+         }
       }
    }
 
    @Override
-   public void a(int $$0) {
-      this.q($$0);
+   public void b() {
+      if (this.e != null) {
+         this.e.c();
+         this.e = null;
+      }
    }
 
    @Override
-   public int a() {
-      return 0;
+   public void a(fnq $$0, elq $$1) {
+      if ($$1.c() == elq.a.b) {
+         djg $$2 = $$0.a_(((elo)$$1).a());
+         if ($$2.a(asg.ai)) {
+            this.d.a(gkh.c);
+         }
+      }
    }
 
    @Override
-   public int c() {
-      return this.q() + this.b();
+   public void a(cmx $$0) {
+      if ($$0.a(aso.al)) {
+         this.d.a(gkh.e);
+      }
    }
 
-   @Override
-   public int b() {
-      return (int)((double)this.g * 0.6);
+   private static boolean b(fsh $$0) {
+      return $$0.fS().a_($$0x -> $$0x.a(aso.al));
    }
 
-   @Override
-   public void a(Collection<E> $$0) {
-      super.a($$0);
-   }
+   public static boolean a(fsh $$0) {
+      for (ih<cwp> $$1 : kd.e.c(asg.ai)) {
+         cwp $$2 = $$1.a();
+         if ($$0.j().a(asb.a.b($$2)) > 0) {
+            return true;
+         }
+      }
 
-   @Override
-   public int n() {
-      return super.n();
-   }
-
-   @Override
-   public int g(int $$0) {
-      return super.g($$0);
-   }
-
-   @Override
-   public int q() {
-      return super.q();
-   }
-
-   public int a(E $$0) {
-      return super.b($$0);
-   }
-
-   public void H() {
-      this.m();
+      return false;
    }
 }

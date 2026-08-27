@@ -1,158 +1,118 @@
-import com.google.common.collect.Lists;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.BoolArgumentType;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
+import com.mojang.brigadier.arguments.FloatArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import javax.annotation.Nullable;
+import java.util.Collection;
 
 public class ake {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vd.c("commands.random.error.range_too_large"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(vd.c("commands.random.error.range_too_small"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(vf.c("commands.playsound.failed"));
 
    public static void a(CommandDispatcher<ds> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("random").then(a("value", false))).then(a("roll", true)))
-            .then(
-               ((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("reset").requires($$0x -> $$0x.c(2)))
+      RequiredArgumentBuilder<ds, ahg> $$1 = dt.a("sound", et.a()).suggests(hn.c);
+
+      for (ars $$2 : ars.values()) {
+         $$1.then(a($$2));
+      }
+
+      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("playsound").requires($$0x -> $$0x.c(2))).then($$1));
+   }
+
+   private static LiteralArgumentBuilder<ds> a(ars $$0) {
+      return (LiteralArgumentBuilder<ds>)dt.a($$0.a())
+         .then(
+            ((RequiredArgumentBuilder)dt.a("targets", ef.d())
+                  .executes($$1 -> a((ds)$$1.getSource(), ef.f($$1, "targets"), et.e($$1, "sound"), $$0, ((ds)$$1.getSource()).d(), 1.0F, 1.0F, 0.0F)))
+               .then(
+                  ((RequiredArgumentBuilder)dt.a("pos", ft.a())
+                        .executes($$1 -> a((ds)$$1.getSource(), ef.f($$1, "targets"), et.e($$1, "sound"), $$0, ft.a($$1, "pos"), 1.0F, 1.0F, 0.0F)))
                      .then(
-                        ((LiteralArgumentBuilder)dt.a("*").executes($$0x -> a((ds)$$0x.getSource())))
+                        ((RequiredArgumentBuilder)dt.a("volume", FloatArgumentType.floatArg(0.0F))
+                              .executes(
+                                 $$1 -> a(
+                                       (ds)$$1.getSource(),
+                                       ef.f($$1, "targets"),
+                                       et.e($$1, "sound"),
+                                       $$0,
+                                       ft.a($$1, "pos"),
+                                       (Float)$$1.getArgument("volume", Float.class),
+                                       1.0F,
+                                       0.0F
+                                    )
+                              ))
                            .then(
-                              ((RequiredArgumentBuilder)dt.a("seed", IntegerArgumentType.integer())
-                                    .executes($$0x -> a((ds)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "seed"), true, true)))
+                              ((RequiredArgumentBuilder)dt.a("pitch", FloatArgumentType.floatArg(0.0F, 2.0F))
+                                    .executes(
+                                       $$1 -> a(
+                                             (ds)$$1.getSource(),
+                                             ef.f($$1, "targets"),
+                                             et.e($$1, "sound"),
+                                             $$0,
+                                             ft.a($$1, "pos"),
+                                             (Float)$$1.getArgument("volume", Float.class),
+                                             (Float)$$1.getArgument("pitch", Float.class),
+                                             0.0F
+                                          )
+                                    ))
                                  .then(
-                                    ((RequiredArgumentBuilder)dt.a("includeWorldSeed", BoolArgumentType.bool())
-                                          .executes(
-                                             $$0x -> a(
-                                                   (ds)$$0x.getSource(),
-                                                   IntegerArgumentType.getInteger($$0x, "seed"),
-                                                   BoolArgumentType.getBool($$0x, "includeWorldSeed"),
-                                                   true
-                                                )
-                                          ))
-                                       .then(
-                                          dt.a("includeSequenceId", BoolArgumentType.bool())
-                                             .executes(
-                                                $$0x -> a(
-                                                      (ds)$$0x.getSource(),
-                                                      IntegerArgumentType.getInteger($$0x, "seed"),
-                                                      BoolArgumentType.getBool($$0x, "includeWorldSeed"),
-                                                      BoolArgumentType.getBool($$0x, "includeSequenceId")
-                                                   )
+                                    dt.a("minVolume", FloatArgumentType.floatArg(0.0F, 1.0F))
+                                       .executes(
+                                          $$1 -> a(
+                                                (ds)$$1.getSource(),
+                                                ef.f($$1, "targets"),
+                                                et.e($$1, "sound"),
+                                                $$0,
+                                                ft.a($$1, "pos"),
+                                                (Float)$$1.getArgument("volume", Float.class),
+                                                (Float)$$1.getArgument("pitch", Float.class),
+                                                (Float)$$1.getArgument("minVolume", Float.class)
                                              )
                                        )
                                  )
                            )
-                     ))
-                  .then(
-                     ((RequiredArgumentBuilder)dt.a("sequence", et.a()).suggests(ake::a).executes($$0x -> a((ds)$$0x.getSource(), et.e($$0x, "sequence"))))
-                        .then(
-                           ((RequiredArgumentBuilder)dt.a("seed", IntegerArgumentType.integer())
-                                 .executes($$0x -> a((ds)$$0x.getSource(), et.e($$0x, "sequence"), IntegerArgumentType.getInteger($$0x, "seed"), true, true)))
-                              .then(
-                                 ((RequiredArgumentBuilder)dt.a("includeWorldSeed", BoolArgumentType.bool())
-                                       .executes(
-                                          $$0x -> a(
-                                                (ds)$$0x.getSource(),
-                                                et.e($$0x, "sequence"),
-                                                IntegerArgumentType.getInteger($$0x, "seed"),
-                                                BoolArgumentType.getBool($$0x, "includeWorldSeed"),
-                                                true
-                                             )
-                                       ))
-                                    .then(
-                                       dt.a("includeSequenceId", BoolArgumentType.bool())
-                                          .executes(
-                                             $$0x -> a(
-                                                   (ds)$$0x.getSource(),
-                                                   et.e($$0x, "sequence"),
-                                                   IntegerArgumentType.getInteger($$0x, "seed"),
-                                                   BoolArgumentType.getBool($$0x, "includeWorldSeed"),
-                                                   BoolArgumentType.getBool($$0x, "includeSequenceId")
-                                                )
-                                          )
-                                    )
-                              )
-                        )
-                  )
-            )
-      );
-   }
-
-   private static LiteralArgumentBuilder<ds> a(String $$0, boolean $$1) {
-      return (LiteralArgumentBuilder<ds>)dt.a($$0)
-         .then(
-            ((RequiredArgumentBuilder)dt.a("range", eq.a()).executes($$1x -> a((ds)$$1x.getSource(), eq.b.a($$1x, "range"), null, $$1)))
-               .then(
-                  ((RequiredArgumentBuilder)dt.a("sequence", et.a()).suggests(ake::a).requires($$0x -> $$0x.c(2)))
-                     .executes($$1x -> a((ds)$$1x.getSource(), eq.b.a($$1x, "range"), et.e($$1x, "sequence"), $$1))
+                     )
                )
          );
    }
 
-   private static CompletableFuture<Suggestions> a(CommandContext<ds> $$0, SuggestionsBuilder $$1) {
-      List<String> $$2 = Lists.newArrayList();
-      ((ds)$$0.getSource()).e().J().a(($$1x, $$2x) -> $$2.add($$1x.toString()));
-      return dx.b($$2, $$1);
-   }
+   private static int a(ds $$0, Collection<ane> $$1, ahg $$2, ars $$3, els $$4, float $$5, float $$6, float $$7) throws CommandSyntaxException {
+      ih<arq> $$8 = ih.a(arq.a($$2));
+      double $$9 = (double)aun.k($$8.a().a($$5));
+      int $$10 = 0;
+      long $$11 = $$0.e().F_().g();
 
-   private static int a(ds $$0, ck.d $$1, @Nullable ahd $$2, boolean $$3) throws CommandSyntaxException {
-      aup $$4;
-      if ($$2 != null) {
-         $$4 = $$0.e().a($$2);
-      } else {
-         $$4 = $$0.e().F_();
-      }
+      for (ane $$12 : $$1) {
+         double $$13 = $$4.c - $$12.dr();
+         double $$14 = $$4.d - $$12.dt();
+         double $$15 = $$4.e - $$12.dx();
+         double $$16 = $$13 * $$13 + $$14 * $$14 + $$15 * $$15;
+         els $$17 = $$4;
+         float $$18 = $$5;
+         if ($$16 > $$9) {
+            if ($$7 <= 0.0F) {
+               continue;
+            }
 
-      int $$6 = $$1.a().orElse(Integer.MIN_VALUE);
-      int $$7 = $$1.b().orElse(Integer.MAX_VALUE);
-      long $$8 = (long)$$7 - (long)$$6;
-      if ($$8 == 0L) {
-         throw b.create();
-      } else if ($$8 >= 2147483647L) {
-         throw a.create();
-      } else {
-         int $$9 = aui.b($$4, $$6, $$7);
-         if ($$3) {
-            $$0.l().ae().a(vd.a("commands.random.roll", $$0.b(), $$9, $$6, $$7), false);
-         } else {
-            $$0.a(() -> vd.a("commands.random.sample.success", $$9), false);
+            double $$19 = Math.sqrt($$16);
+            $$17 = new els($$12.dr() + $$13 / $$19 * 2.0, $$12.dt() + $$14 / $$19 * 2.0, $$12.dx() + $$15 / $$19 * 2.0);
+            $$18 = $$7;
          }
 
-         return $$9;
+         $$12.c.b(new acs($$8, $$3, $$17.a(), $$17.b(), $$17.c(), $$18, $$6, $$11));
+         $$10++;
       }
-   }
 
-   private static int a(ds $$0, ahd $$1) throws CommandSyntaxException {
-      $$0.e().J().b($$1);
-      $$0.a(() -> vd.a("commands.random.reset.success", vd.a($$1)), false);
-      return 1;
-   }
+      if ($$10 == 0) {
+         throw a.create();
+      } else {
+         if ($$1.size() == 1) {
+            $$0.a(() -> vf.a("commands.playsound.success.single", vf.a($$2), $$1.iterator().next().Q_()), true);
+         } else {
+            $$0.a(() -> vf.a("commands.playsound.success.multiple", vf.a($$2), $$1.size()), true);
+         }
 
-   private static int a(ds $$0, ahd $$1, int $$2, boolean $$3, boolean $$4) throws CommandSyntaxException {
-      $$0.e().J().a($$1, $$2, $$3, $$4);
-      $$0.a(() -> vd.a("commands.random.reset.success", vd.a($$1)), false);
-      return 1;
-   }
-
-   private static int a(ds $$0) {
-      int $$1 = $$0.e().J().a();
-      $$0.a(() -> vd.a("commands.random.reset.all.success", $$1), false);
-      return $$1;
-   }
-
-   private static int a(ds $$0, int $$1, boolean $$2, boolean $$3) {
-      bkb $$4 = $$0.e().J();
-      $$4.a($$1, $$2, $$3);
-      int $$5 = $$4.a();
-      $$0.a(() -> vd.a("commands.random.reset.all.success", $$5), false);
-      return $$5;
+         return $$10;
+      }
    }
 }

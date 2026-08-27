@@ -1,19 +1,33 @@
-public record yg(int b, eez c, float d) implements xx {
-   public static final ahd a = new ahd("debug/path");
+import java.util.List;
 
-   public yg(ug $$0) {
-      this($$0.readInt(), eez.b($$0), $$0.readFloat());
+public record yg(int b, hx c, List<yg.a> d) implements ya {
+   public static final ahg a = new ahg("debug/goal_selector");
+
+   public yg(ui $$0) {
+      this($$0.readInt(), $$0.e(), $$0.a(yg.a::new));
    }
 
    @Override
-   public void a(ug $$0) {
+   public void a(ui $$0) {
       $$0.p(this.b);
-      this.c.a($$0);
-      $$0.a(this.d);
+      $$0.a(this.c);
+      $$0.a(this.d, ($$0x, $$1) -> $$1.a($$0x));
    }
 
    @Override
-   public ahd a() {
+   public ahg a() {
       return a;
+   }
+
+   public static record a(int a, boolean b, String c) {
+      public a(ui $$0) {
+         this($$0.readInt(), $$0.readBoolean(), $$0.d(255));
+      }
+
+      public void a(ui $$0) {
+         $$0.p(this.a);
+         $$0.a(this.b);
+         $$0.a(this.c);
+      }
    }
 }

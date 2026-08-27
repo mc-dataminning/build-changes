@@ -1,44 +1,18 @@
 import com.mojang.serialization.Codec;
 
-public class dsq extends drn<dtz> {
-   private static final int a = 7;
-
-   dsq(Codec<dtz> $$0) {
+public class dsq extends drt<dui> {
+   public dsq(Codec<dui> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(drp<dtz> $$0) {
-      cud $$1 = $$0.b();
-      aup $$2 = $$0.d();
-      dtz $$3 = $$0.f();
-      hx $$4 = $$0.e();
-      int $$5 = $$2.a($$3.c + 1);
-      hx.a $$6 = new hx.a();
-
-      for (int $$7 = 0; $$7 < $$5; $$7++) {
-         this.a($$6, $$2, $$4, Math.min($$7, 7));
-         dja $$8 = $$1.a_($$6);
-
-         for (dtz.a $$9 : $$3.b) {
-            if (dsi.a($$8, $$1::a_, $$2, $$3, $$9, $$6)) {
-               $$1.a($$6, $$9.c, 2);
-               break;
-            }
-         }
-      }
-
-      return true;
-   }
-
-   private void a(hx.a $$0, aup $$1, hx $$2, int $$3) {
-      int $$4 = this.a($$1, $$3);
-      int $$5 = this.a($$1, $$3);
-      int $$6 = this.a($$1, $$3);
-      $$0.a($$2, $$4, $$5, $$6);
-   }
-
-   private int a(aup $$0, int $$1) {
-      return Math.round(($$0.i() - $$0.i()) * (float)$$1);
+   public boolean a(drv<dui> $$0) {
+      auu $$1 = $$0.d();
+      dui $$2 = $$0.f();
+      cuj $$3 = $$0.b();
+      dld $$4 = $$0.c();
+      hx $$5 = $$0.e();
+      boolean $$6 = $$1.h();
+      return ($$6 ? $$2.b : $$2.c).a().a($$3, $$4, $$1, $$5);
    }
 }

@@ -1,100 +1,103 @@
 import org.joml.Matrix4f;
 
-public abstract class fzl<T extends bmh, M extends fjp<T>> extends fzg<T, M> {
-   public static final int h = 24;
-
-   public fzl(fyf.a $$0, M $$1, float $$2) {
-      super($$0, $$1, $$2);
+public class fzl extends fyk<bmj> {
+   public fzl(fyl.a $$0) {
+      super($$0);
    }
 
-   protected boolean a(T $$0) {
-      return super.b($$0) && ($$0.cC() || $$0.ae() && $$0 == this.c.c);
-   }
+   public void a(bmj $$0, float $$1, float $$2, epz $$3, ftf $$4, int $$5) {
+      float[] $$6 = new float[8];
+      float[] $$7 = new float[8];
+      float $$8 = 0.0F;
+      float $$9 = 0.0F;
+      auu $$10 = auu.a($$0.b);
 
-   public boolean a(T $$0, fwc $$1, double $$2, double $$3, double $$4) {
-      if (super.a($$0, $$1, $$2, $$3, $$4)) {
-         return true;
-      } else {
-         blp $$5 = $$0.fT();
-         return $$5 != null ? $$1.a($$5.i_()) : false;
-      }
-   }
-
-   public void a(T $$0, float $$1, float $$2, ept $$3, fsz $$4, int $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      blp $$6 = $$0.fT();
-      if ($$6 != null) {
-         this.a($$0, $$2, $$3, $$4, $$6);
-      }
-   }
-
-   private <E extends blp> void a(T $$0, float $$1, ept $$2, fsz $$3, E $$4) {
-      $$2.a();
-      elm $$5 = $$4.q($$1);
-      double $$6 = (double)(aui.i($$1, $$0.aV, $$0.aU) * (float) (Math.PI / 180.0)) + (Math.PI / 2);
-      elm $$7 = $$0.p($$1);
-      double $$8 = Math.cos($$6) * $$7.e + Math.sin($$6) * $$7.c;
-      double $$9 = Math.sin($$6) * $$7.e - Math.cos($$6) * $$7.c;
-      double $$10 = aui.d((double)$$1, $$0.K, $$0.dr()) + $$8;
-      double $$11 = aui.d((double)$$1, $$0.L, $$0.dt()) + $$7.d;
-      double $$12 = aui.d((double)$$1, $$0.M, $$0.dx()) + $$9;
-      $$2.a($$8, $$7.d, $$9);
-      float $$13 = (float)($$5.c - $$10);
-      float $$14 = (float)($$5.d - $$11);
-      float $$15 = (float)($$5.e - $$12);
-      float $$16 = 0.025F;
-      epx $$17 = $$3.getBuffer(fth.h());
-      Matrix4f $$18 = $$2.c().a();
-      float $$19 = aui.i($$13 * $$13 + $$15 * $$15) * 0.025F / 2.0F;
-      float $$20 = $$15 * $$19;
-      float $$21 = $$13 * $$19;
-      hx $$22 = hx.a($$0.j($$1));
-      hx $$23 = hx.a($$4.j($$1));
-      int $$24 = this.a($$0, $$22);
-      int $$25 = this.c.a($$4).a($$4, $$23);
-      int $$26 = $$0.dM().a(ctr.a, $$22);
-      int $$27 = $$0.dM().a(ctr.a, $$23);
-
-      for (int $$28 = 0; $$28 <= 24; $$28++) {
-         a($$17, $$18, $$13, $$14, $$15, $$24, $$25, $$26, $$27, 0.025F, 0.025F, $$20, $$21, $$28, false);
+      for (int $$11 = 7; $$11 >= 0; $$11--) {
+         $$6[$$11] = $$8;
+         $$7[$$11] = $$9;
+         $$8 += (float)($$10.a(11) - 5);
+         $$9 += (float)($$10.a(11) - 5);
       }
 
-      for (int $$29 = 24; $$29 >= 0; $$29--) {
-         a($$17, $$18, $$13, $$14, $$15, $$24, $$25, $$26, $$27, 0.025F, 0.0F, $$20, $$21, $$29, true);
-      }
+      eqd $$12 = $$4.getBuffer(ftn.s());
+      Matrix4f $$13 = $$3.c().a();
 
-      $$2.b();
+      for (int $$14 = 0; $$14 < 4; $$14++) {
+         auu $$15 = auu.a($$0.b);
+
+         for (int $$16 = 0; $$16 < 3; $$16++) {
+            int $$17 = 7;
+            int $$18 = 0;
+            if ($$16 > 0) {
+               $$17 = 7 - $$16;
+            }
+
+            if ($$16 > 0) {
+               $$18 = $$17 - 2;
+            }
+
+            float $$19 = $$6[$$17] - $$8;
+            float $$20 = $$7[$$17] - $$9;
+
+            for (int $$21 = $$17; $$21 >= $$18; $$21--) {
+               float $$22 = $$19;
+               float $$23 = $$20;
+               if ($$16 == 0) {
+                  $$19 += (float)($$15.a(11) - 5);
+                  $$20 += (float)($$15.a(11) - 5);
+               } else {
+                  $$19 += (float)($$15.a(31) - 15);
+                  $$20 += (float)($$15.a(31) - 15);
+               }
+
+               float $$24 = 0.5F;
+               float $$25 = 0.45F;
+               float $$26 = 0.45F;
+               float $$27 = 0.5F;
+               float $$28 = 0.1F + (float)$$14 * 0.2F;
+               if ($$16 == 0) {
+                  $$28 *= (float)$$21 * 0.1F + 1.0F;
+               }
+
+               float $$29 = 0.1F + (float)$$14 * 0.2F;
+               if ($$16 == 0) {
+                  $$29 *= ((float)$$21 - 1.0F) * 0.1F + 1.0F;
+               }
+
+               a($$13, $$12, $$19, $$20, $$21, $$22, $$23, 0.45F, 0.45F, 0.5F, $$28, $$29, false, false, true, false);
+               a($$13, $$12, $$19, $$20, $$21, $$22, $$23, 0.45F, 0.45F, 0.5F, $$28, $$29, true, false, true, true);
+               a($$13, $$12, $$19, $$20, $$21, $$22, $$23, 0.45F, 0.45F, 0.5F, $$28, $$29, true, true, false, true);
+               a($$13, $$12, $$19, $$20, $$21, $$22, $$23, 0.45F, 0.45F, 0.5F, $$28, $$29, false, true, false, false);
+            }
+         }
+      }
    }
 
    private static void a(
-      epx $$0,
-      Matrix4f $$1,
+      Matrix4f $$0,
+      eqd $$1,
       float $$2,
       float $$3,
-      float $$4,
-      int $$5,
-      int $$6,
-      int $$7,
-      int $$8,
+      int $$4,
+      float $$5,
+      float $$6,
+      float $$7,
+      float $$8,
       float $$9,
       float $$10,
       float $$11,
-      float $$12,
-      int $$13,
-      boolean $$14
+      boolean $$12,
+      boolean $$13,
+      boolean $$14,
+      boolean $$15
    ) {
-      float $$15 = (float)$$13 / 24.0F;
-      int $$16 = (int)aui.i($$15, (float)$$5, (float)$$6);
-      int $$17 = (int)aui.i($$15, (float)$$7, (float)$$8);
-      int $$18 = fsy.a($$16, $$17);
-      float $$19 = $$13 % 2 == ($$14 ? 1 : 0) ? 0.7F : 1.0F;
-      float $$20 = 0.5F * $$19;
-      float $$21 = 0.4F * $$19;
-      float $$22 = 0.3F * $$19;
-      float $$23 = $$2 * $$15;
-      float $$24 = $$3 > 0.0F ? $$3 * $$15 * $$15 : $$3 - $$3 * (1.0F - $$15) * (1.0F - $$15);
-      float $$25 = $$4 * $$15;
-      $$0.a($$1, $$23 - $$11, $$24 + $$10, $$25 + $$12).a($$20, $$21, $$22, 1.0F).b($$18).e();
-      $$0.a($$1, $$23 + $$11, $$24 + $$9 - $$10, $$25 - $$12).a($$20, $$21, $$22, 1.0F).b($$18).e();
+      $$1.a($$0, $$2 + ($$12 ? $$11 : -$$11), (float)($$4 * 16), $$3 + ($$13 ? $$11 : -$$11)).a($$7, $$8, $$9, 0.3F).e();
+      $$1.a($$0, $$5 + ($$12 ? $$10 : -$$10), (float)(($$4 + 1) * 16), $$6 + ($$13 ? $$10 : -$$10)).a($$7, $$8, $$9, 0.3F).e();
+      $$1.a($$0, $$5 + ($$14 ? $$10 : -$$10), (float)(($$4 + 1) * 16), $$6 + ($$15 ? $$10 : -$$10)).a($$7, $$8, $$9, 0.3F).e();
+      $$1.a($$0, $$2 + ($$14 ? $$11 : -$$11), (float)($$4 * 16), $$3 + ($$15 ? $$11 : -$$11)).a($$7, $$8, $$9, 0.3F).e();
+   }
+
+   public ahg a(bmj $$0) {
+      return gek.e;
    }
 }

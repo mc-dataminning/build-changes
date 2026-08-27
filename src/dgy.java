@@ -1,146 +1,221 @@
-public class dgy extends dgo {
-   private boolean a;
-   private boolean b;
-   private boolean c;
-   private final csj d = new csj() {
-      @Override
-      public void a(String $$0) {
-         super.a($$0);
-         dgy.this.e();
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import java.util.Objects;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
+
+public class dgy extends dgu {
+   private static final Logger a = LogUtils.getLogger();
+   private static final String b = "LootTable";
+   private static final String c = "LootTableSeed";
+   private static final String d = "hit_direction";
+   private static final String e = "item";
+   private static final int f = 10;
+   private static final int g = 40;
+   private static final int h = 10;
+   private int i;
+   private long j;
+   private long k;
+   private cmx l = cmx.f;
+   @Nullable
+   private ic m;
+   @Nullable
+   private ahg n;
+   private long r;
+
+   public dgy(hx $$0, djg $$1) {
+      super(dgw.N, $$0, $$1);
+   }
+
+   public boolean a(long $$0, cfh $$1, ic $$2) {
+      if (this.m == null) {
+         this.m = $$2;
       }
 
-      @Override
-      public amz e() {
-         return (amz)dgy.this.o;
-      }
-
-      @Override
-      public void f() {
-         dja $$0 = dgy.this.o.a_(dgy.this.p);
-         this.e().a(dgy.this.p, $$0, $$0, 3);
-      }
-
-      @Override
-      public elm g() {
-         return elm.b(dgy.this.p);
-      }
-
-      @Override
-      public ds i() {
-         ic $$0 = dgy.this.r().c(cxs.b);
-         return new ds(this, elm.b(dgy.this.p), new ell(0.0F, $$0.p()), this.e(), 2, this.n().getString(), this.n(), this.e().o(), null);
-      }
-
-      @Override
-      public boolean j() {
-         return !dgy.this.s();
-      }
-   };
-
-   public dgy(hx $$0, dja $$1) {
-      super(dgq.w, $$0, $$1);
-   }
-
-   @Override
-   protected void b(sl $$0) {
-      super.b($$0);
-      this.d.a($$0);
-      $$0.a("powered", this.d());
-      $$0.a("conditionMet", this.k());
-      $$0.a("auto", this.f());
-   }
-
-   @Override
-   public void a(sl $$0) {
-      super.a($$0);
-      this.d.b($$0);
-      this.a = $$0.q("powered");
-      this.c = $$0.q("conditionMet");
-      this.b($$0.q("auto"));
-   }
-
-   @Override
-   public boolean u() {
-      return true;
-   }
-
-   public csj c() {
-      return this.d;
-   }
-
-   public void a(boolean $$0) {
-      this.a = $$0;
-   }
-
-   public boolean d() {
-      return this.a;
-   }
-
-   public boolean f() {
-      return this.b;
-   }
-
-   public void b(boolean $$0) {
-      boolean $$1 = this.b;
-      this.b = $$0;
-      if (!$$1 && $$0 && !this.a && this.o != null && this.m() != dgy.a.a) {
-         this.x();
-      }
-   }
-
-   public void g() {
-      dgy.a $$0 = this.m();
-      if ($$0 == dgy.a.b && (this.a || this.b) && this.o != null) {
-         this.x();
-      }
-   }
-
-   private void x() {
-      cwj $$0 = this.r().b();
-      if ($$0 instanceof cxs) {
-         this.l();
-         this.o.a(this.p, $$0, 1);
-      }
-   }
-
-   public boolean k() {
-      return this.c;
-   }
-
-   public boolean l() {
-      this.c = true;
-      if (this.w()) {
-         hx $$0 = this.p.a(this.o.a_(this.p).c(cxs.b).g());
-         if (this.o.a_($$0).b() instanceof cxs) {
-            dgo $$1 = this.o.c_($$0);
-            this.c = $$1 instanceof dgy && ((dgy)$$1).c().k() > 0;
+      this.j = $$0 + 40L;
+      if ($$0 >= this.k && this.o instanceof and) {
+         this.k = $$0 + 10L;
+         this.a($$1);
+         int $$3 = this.k();
+         if (++this.i >= 10) {
+            this.b($$1);
+            return true;
          } else {
-            this.c = false;
+            this.o.a(this.aB_(), this.r().b(), 2);
+            int $$4 = this.k();
+            if ($$3 != $$4) {
+               djg $$5 = this.r();
+               djg $$6 = $$5.a(djw.bv, Integer.valueOf($$4));
+               this.o.a(this.aB_(), $$6, 3);
+            }
+
+            return false;
+         }
+      } else {
+         return false;
+      }
+   }
+
+   public void a(cfh $$0) {
+      if (this.n != null && this.o != null && !this.o.y_() && this.o.o() != null) {
+         ehd $$1 = this.o.o().aJ().getLootTable(this.n);
+         if ($$0 instanceof ane $$2) {
+            am.O.a($$2, this.n);
+         }
+
+         ehb $$3 = new ehb.a((and)this.o).a(ejg.f, els.b(this.p)).a($$0.go()).a(ejg.a, $$0).a(ejf.c);
+         ObjectArrayList<cmx> $$4 = $$1.a($$3, this.r);
+
+         this.l = switch ($$4.size()) {
+            case 0 -> cmx.f;
+            case 1 -> (cmx)$$4.get(0);
+            default -> {
+               a.warn("Expected max 1 loot from loot table " + this.n + " got " + $$4.size());
+               yield (cmx)$$4.get(0);
+            }
+         };
+         this.n = null;
+         this.e();
+      }
+   }
+
+   private void b(cfh $$0) {
+      if (this.o != null && this.o.o() != null) {
+         this.c($$0);
+         djg $$1 = this.r();
+         this.o.c(3008, this.aB_(), cwp.i($$1));
+         cwp $$4;
+         if (this.r().b() instanceof cwu $$3) {
+            $$4 = $$3.b();
+         } else {
+            $$4 = cwr.a;
+         }
+
+         this.o.a(this.p, $$4.o(), 3);
+      }
+   }
+
+   private void c(cfh $$0) {
+      if (this.o != null && this.o.o() != null) {
+         this.a($$0);
+         if (!this.l.b()) {
+            double $$1 = (double)bly.ae.k();
+            double $$2 = 1.0 - $$1;
+            double $$3 = $$1 / 2.0;
+            ic $$4 = Objects.requireNonNullElse(this.m, ic.b);
+            hx $$5 = this.p.a($$4, 1);
+            double $$6 = (double)$$5.u() + 0.5 * $$2 + $$3;
+            double $$7 = (double)$$5.v() + 0.5 + (double)(bly.ae.l() / 2.0F);
+            double $$8 = (double)$$5.w() + 0.5 * $$2 + $$3;
+            cbt $$9 = new cbt(this.o, $$6, $$7, $$8, this.l.a(this.o.z.a(21) + 10));
+            $$9.g(els.b);
+            this.o.b($$9);
+            this.l = cmx.f;
          }
       }
-
-      return this.c;
    }
 
-   public dgy.a m() {
-      dja $$0 = this.r();
-      if ($$0.a(cwl.fN)) {
-         return dgy.a.c;
-      } else if ($$0.a(cwl.kG)) {
-         return dgy.a.b;
-      } else {
-         return $$0.a(cwl.kH) ? dgy.a.a : dgy.a.c;
+   public void c() {
+      if (this.o != null) {
+         if (this.i != 0 && this.o.X() >= this.j) {
+            int $$0 = this.k();
+            this.i = Math.max(0, this.i - 2);
+            int $$1 = this.k();
+            if ($$0 != $$1) {
+               this.o.a(this.aB_(), this.r().a(djw.bv, Integer.valueOf($$1)), 3);
+            }
+
+            int $$2 = 4;
+            this.j = this.o.X() + 4L;
+         }
+
+         if (this.i == 0) {
+            this.m = null;
+            this.j = 0L;
+            this.k = 0L;
+         } else {
+            this.o.a(this.aB_(), this.r().b(), 2);
+         }
       }
    }
 
-   public boolean w() {
-      dja $$0 = this.o.a_(this.aB_());
-      return $$0.b() instanceof cxs ? $$0.c(cxs.c) : false;
+   private boolean d(sn $$0) {
+      if ($$0.b("LootTable", 8)) {
+         this.n = new ahg($$0.l("LootTable"));
+         this.r = $$0.i("LootTableSeed");
+         return true;
+      } else {
+         return false;
+      }
    }
 
-   public static enum a {
-      a,
-      b,
-      c;
+   private boolean e(sn $$0) {
+      if (this.n == null) {
+         return false;
+      } else {
+         $$0.a("LootTable", this.n.toString());
+         if (this.r != 0L) {
+            $$0.a("LootTableSeed", this.r);
+         }
+
+         return true;
+      }
+   }
+
+   @Override
+   public sn ax_() {
+      sn $$0 = super.ax_();
+      if (this.m != null) {
+         $$0.a("hit_direction", this.m.ordinal());
+      }
+
+      $$0.a("item", this.l.b(new sn()));
+      return $$0;
+   }
+
+   public zh d() {
+      return zh.a(this);
+   }
+
+   @Override
+   public void a(sn $$0) {
+      if (!this.d($$0) && $$0.e("item")) {
+         this.l = cmx.a($$0.p("item"));
+      }
+
+      if ($$0.e("hit_direction")) {
+         this.m = ic.values()[$$0.h("hit_direction")];
+      }
+   }
+
+   @Override
+   protected void b(sn $$0) {
+      if (!this.e($$0)) {
+         $$0.a("item", this.l.b(new sn()));
+      }
+   }
+
+   public void a(ahg $$0, long $$1) {
+      this.n = $$0;
+      this.r = $$1;
+   }
+
+   private int k() {
+      if (this.i == 0) {
+         return 0;
+      } else if (this.i < 3) {
+         return 1;
+      } else {
+         return this.i < 6 ? 2 : 3;
+      }
+   }
+
+   @Nullable
+   public ic f() {
+      return this.m;
+   }
+
+   public cmx g() {
+      return this.l;
    }
 }

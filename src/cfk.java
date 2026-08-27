@@ -1,67 +1,83 @@
-import java.util.List;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
+import java.security.PublicKey;
+import java.time.Duration;
+import java.time.Instant;
+import java.util.Arrays;
+import java.util.UUID;
 
-public class cfk extends cfi {
-   public static final float e = 4.0F;
+public record cfk(cfk.a d) {
+   public static final vf a = vf.c("multiplayer.disconnect.expired_public_key");
+   private static final vf e = vf.c("multiplayer.disconnect.invalid_public_key_signature.new");
+   public static final Duration b = Duration.ofHours(8L);
+   public static final Codec<cfk> c = cfk.a.a.xmap(cfk::new, cfk::b);
 
-   public cfk(blt<? extends cfk> $$0, cti $$1) {
-      super($$0, $$1);
-   }
-
-   public cfk(cti $$0, bmf $$1, double $$2, double $$3, double $$4) {
-      super(blt.y, $$1, $$2, $$3, $$4, $$0);
-   }
-
-   @Override
-   protected void a(elk $$0) {
-      super.a($$0);
-      if ($$0.c() != elk.a.c || !this.d(((elj)$$0).a())) {
-         if (!this.dM().B) {
-            List<bmf> $$1 = this.dM().a(bmf.class, this.cH().c(4.0, 2.0, 4.0));
-            blm $$2 = new blm(this.dM(), this.dr(), this.dt(), this.dx());
-            blp $$3 = this.w();
-            if ($$3 instanceof bmf) {
-               $$2.a((bmf)$$3);
-            }
-
-            $$2.a(jx.i);
-            $$2.a(3.0F);
-            $$2.b(600);
-            $$2.c((7.0F - $$2.h()) / (float)$$2.m());
-            $$2.a(new blc(ble.g, 1, 1));
-            if (!$$1.isEmpty()) {
-               for (bmf $$4 : $$1) {
-                  double $$5 = this.f($$4);
-                  if ($$5 < 16.0) {
-                     $$2.a_($$4.dr(), $$4.dt(), $$4.dx());
-                     break;
-                  }
-               }
-            }
-
-            this.dM().c(2006, this.dm(), this.aU() ? -1 : 1);
-            this.dM().b($$2);
-            this.am();
-         }
+   public static cfk a(avb $$0, UUID $$1, cfk.a $$2) throws cfk.b {
+      if (!$$2.a($$0, $$1)) {
+         throw new cfk.b(e);
+      } else {
+         return new cfk($$2);
       }
    }
 
-   @Override
-   public boolean bt() {
-      return false;
+   public avb a() {
+      return avb.a(this.d.c, "SHA256withRSA");
    }
 
-   @Override
-   public boolean a(bkn $$0, float $$1) {
-      return false;
+   public cfk.a b() {
+      return this.d;
    }
 
-   @Override
-   protected jv u() {
-      return jx.i;
+   public static record a(Instant b, PublicKey c, byte[] d) {
+      private static final int e = 4096;
+      public static final Codec<cfk.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  atv.m.fieldOf("expires_at").forGetter(cfk.a::b), atl.f.fieldOf("key").forGetter(cfk.a::c), atv.n.fieldOf("signature_v2").forGetter(cfk.a::d)
+               )
+               .apply($$0, cfk.a::new)
+      );
+
+      public a(ui $$0) {
+         this($$0.w(), $$0.x(), $$0.a(4096));
+      }
+
+      public void a(ui $$0) {
+         $$0.a(this.b);
+         $$0.a(this.c);
+         $$0.a(this.d);
+      }
+
+      boolean a(avb $$0, UUID $$1) {
+         return $$0.a(this.a($$1), this.d);
+      }
+
+      private byte[] a(UUID $$0) {
+         byte[] $$1 = this.c.getEncoded();
+         byte[] $$2 = new byte[24 + $$1.length];
+         ByteBuffer $$3 = ByteBuffer.wrap($$2).order(ByteOrder.BIG_ENDIAN);
+         $$3.putLong($$0.getMostSignificantBits()).putLong($$0.getLeastSignificantBits()).putLong(this.b.toEpochMilli()).put($$1);
+         return $$2;
+      }
+
+      public boolean a() {
+         return this.b.isBefore(Instant.now());
+      }
+
+      public boolean a(Duration $$0) {
+         return this.b.plus($$0).isBefore(Instant.now());
+      }
+
+      @Override
+      public boolean equals(Object $$0) {
+         return !($$0 instanceof cfk.a $$1) ? false : this.b.equals($$1.b) && this.c.equals($$1.c) && Arrays.equals(this.d, $$1.d);
+      }
    }
 
-   @Override
-   protected boolean s() {
-      return false;
+   public static class b extends wf {
+      public b(vf $$0) {
+         super($$0);
+      }
    }
 }

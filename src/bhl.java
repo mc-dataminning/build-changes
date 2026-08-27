@@ -1,9 +1,7 @@
-import java.time.Duration;
-import java.time.Instant;
 import jdk.jfr.consumer.RecordedEvent;
 
-public record bhl(Instant a, Duration b) {
+public record bhl(double a, double b, double c) {
    public static bhl a(RecordedEvent $$0) {
-      return new bhl($$0.getStartTime(), $$0.getDuration("averageTickDuration"));
+      return new bhl((double)$$0.getFloat("jvmSystem"), (double)$$0.getFloat("jvmUser"), (double)$$0.getFloat("machineTotal"));
    }
 }

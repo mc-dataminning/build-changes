@@ -1,53 +1,29 @@
-import it.unimi.dsi.fastutil.longs.LongArrayList;
-import it.unimi.dsi.fastutil.longs.LongList;
+import com.mojang.authlib.minecraft.TelemetryEvent;
+import com.mojang.authlib.minecraft.TelemetrySession;
+import com.mojang.serialization.Codec;
 
-public final class gjh extends gjf {
-   private static final long a = a(Runtime.getRuntime().maxMemory());
-   private final LongList b = new LongArrayList();
-   private final LongList c = new LongArrayList();
-   private final LongList d = new LongArrayList();
+public record gjh(gjl b, gjo c) {
+   public static final Codec<gjh> a = gjl.a.dispatchStable(gjh::a, gjl::c);
 
-   @Override
-   public void a(giz $$0) {
-      if (eva.N().z()) {
-         super.a($$0);
-      }
-   }
-
-   private void g() {
-      this.b.clear();
-      this.c.clear();
-      this.d.clear();
-   }
-
-   @Override
-   public void f() {
-      this.b.add((long)eva.N().n());
-      this.h();
-      this.c.add(eva.N().o());
-   }
-
-   private void h() {
-      long $$0 = Runtime.getRuntime().totalMemory();
-      long $$1 = Runtime.getRuntime().freeMemory();
-      long $$2 = $$0 - $$1;
-      this.d.add(a($$2));
-   }
-
-   @Override
-   public void b(giz $$0) {
-      $$0.send(gja.c, $$0x -> {
-         $$0x.a(gjc.r, new LongArrayList(this.b));
-         $$0x.a(gjc.s, new LongArrayList(this.c));
-         $$0x.a(gjc.t, new LongArrayList(this.d));
-         $$0x.a(gjc.u, this.e());
-         $$0x.a(gjc.v, eva.N().m.aA());
-         $$0x.a(gjc.w, (int)a);
+   public gjh(gjl b, gjo c) {
+      c.b().forEach($$1x -> {
+         if (!$$0.a($$1x)) {
+            throw new IllegalArgumentException("Property '" + $$1x.b() + "' not expected for event: '" + $$0.a() + "'");
+         }
       });
-      this.g();
+      this.b = b;
+      this.c = c;
    }
 
-   private static long a(long $$0) {
-      return $$0 / 1000L;
+   public TelemetryEvent a(TelemetrySession $$0) {
+      return this.b.a($$0, this.c);
+   }
+
+   public gjl a() {
+      return this.b;
+   }
+
+   public gjo b() {
+      return this.c;
    }
 }

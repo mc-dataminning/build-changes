@@ -1,16 +1,27 @@
-public class fyr extends gam<blx> {
-   private static final ahd a = new ahd("textures/entity/squid/glow_squid.png");
+public class fyr extends fyk<cfu> {
+   private final fzj a;
 
-   public fyr(fyf.a $$0, flr<blx> $$1) {
-      super($$0, $$1);
+   public fyr(fyl.a $$0) {
+      super($$0);
+      this.a = $$0.b();
    }
 
-   public ahd a(blx $$0) {
-      return a;
+   public void a(cfu $$0, float $$1, float $$2, epz $$3, ftf $$4, int $$5) {
+      $$3.a();
+      $$3.a(this.c.b());
+      $$3.a(a.d.rotationDegrees(180.0F));
+      if ($$0.s()) {
+         $$3.a(a.f.rotationDegrees(180.0F));
+         $$3.a(a.d.rotationDegrees(180.0F));
+         $$3.a(a.b.rotationDegrees(90.0F));
+      }
+
+      this.a.a($$0.q(), cmu.h, $$5, gec.d, $$3, $$4, $$0.dM(), $$0.aj());
+      $$3.b();
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   protected int a(blx $$0, hx $$1) {
-      int $$2 = (int)aui.b(0.0F, 15.0F, 1.0F - (float)$$0.A() / 10.0F);
-      return $$2 == 15 ? 15 : Math.max($$2, super.a($$0, $$1));
+   public ahg a(cfu $$0) {
+      return gek.e;
    }
 }

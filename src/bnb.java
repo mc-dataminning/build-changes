@@ -1,6 +1,5 @@
-import javax.annotation.Nullable;
-
 public interface bnb {
-   @Nullable
-   bmf q();
+   void a(ars var1);
+
+   boolean a();
 }

@@ -1,32 +1,56 @@
-public class aat implements xd<yx> {
-   private final hx a;
-   private final boolean b;
+public class aat implements xf<za> {
+   private final double a;
+   private final double b;
+   private final double c;
+   private final float d;
+   private final float e;
 
-   public aat(hx $$0, boolean $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public aat(blu $$0) {
+      this.a = $$0.dr();
+      this.b = $$0.dt();
+      this.c = $$0.dx();
+      this.d = $$0.dC();
+      this.e = $$0.dE();
    }
 
-   public aat(ug $$0) {
-      this.a = $$0.e();
-      this.b = $$0.readBoolean();
+   public aat(ui $$0) {
+      this.a = $$0.readDouble();
+      this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
+      this.d = $$0.readFloat();
+      this.e = $$0.readFloat();
    }
 
    @Override
-   public void a(ug $$0) {
+   public void a(ui $$0) {
       $$0.a(this.a);
       $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
    }
 
-   public void a(yx $$0) {
+   public void a(za $$0) {
       $$0.a(this);
    }
 
-   public hx a() {
+   public double a() {
       return this.a;
    }
 
-   public boolean d() {
+   public double d() {
       return this.b;
+   }
+
+   public double e() {
+      return this.c;
+   }
+
+   public float f() {
+      return this.d;
+   }
+
+   public float g() {
+      return this.e;
    }
 }

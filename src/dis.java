@@ -1,113 +1,169 @@
+import com.google.common.collect.Sets;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
+import java.util.Set;
+import java.util.UUID;
+import java.util.function.Function;
 import javax.annotation.Nullable;
 
-public class dis extends cvv {
-   public static final MapCodec<dis> a = b(dis::new);
-   public static final dju b = diu.a;
-   public static final djy<dkc> c = diu.c;
-
-   @Override
-   public MapCodec<dis> a() {
-      return a;
-   }
-
-   public dis(diz.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(b, ic.c).a(c, dkc.a));
-   }
-
+public class dis {
+   public static final String a = "spawn_data";
+   private static final String n = "next_mob_spawns_at";
+   public static MapCodec<dis> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               ja.b.optionalFieldOf("registered_players", Sets.newHashSet()).forGetter($$0x -> $$0x.c),
+               ja.b.optionalFieldOf("current_mobs", Sets.newHashSet()).forGetter($$0x -> $$0x.d),
+               Codec.LONG.optionalFieldOf("cooldown_ends_at", 0L).forGetter($$0x -> $$0x.e),
+               Codec.LONG.optionalFieldOf("next_mob_spawns_at", 0L).forGetter($$0x -> $$0x.f),
+               Codec.intRange(0, Integer.MAX_VALUE).optionalFieldOf("total_mobs_spawned", 0).forGetter($$0x -> $$0x.g),
+               cuf.b.optionalFieldOf("spawn_data").forGetter($$0x -> $$0x.h),
+               ahg.a.optionalFieldOf("ejecting_loot_table").forGetter($$0x -> $$0x.i)
+            )
+            .apply($$0, dis::new)
+   );
+   protected final Set<UUID> c = new HashSet<>();
+   protected final Set<UUID> d = new HashSet<>();
+   protected long e;
+   protected long f;
+   protected int g;
+   protected Optional<cuf> h;
+   protected Optional<ahg> i;
+   protected bik<cuf> j;
    @Nullable
-   @Override
-   public dgo a(hx $$0, dja $$1) {
-      return null;
+   protected blu k;
+   protected double l;
+   protected double m;
+
+   public dis() {
+      this(Collections.emptySet(), Collections.emptySet(), 0L, 0L, 0, Optional.empty(), Optional.empty());
    }
 
-   public static dgo a(hx $$0, dja $$1, dja $$2, ic $$3, boolean $$4, boolean $$5) {
-      return new diw($$0, $$1, $$2, $$3, $$4, $$5);
+   public dis(Set<UUID> $$0, Set<UUID> $$1, long $$2, long $$3, int $$4, Optional<cuf> $$5, Optional<ahg> $$6) {
+      this.c.addAll($$0);
+      this.d.addAll($$1);
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
+      this.h = $$5;
+      this.i = $$6;
    }
 
-   @Nullable
-   @Override
-   public <T extends dgo> dgp<T> a(cti $$0, dja $$1, dgq<T> $$2) {
-      return a($$2, dgq.k, diw::a);
-   }
-
-   @Override
-   public void a(dja $$0, cti $$1, hx $$2, dja $$3, boolean $$4) {
-      if (!$$0.a($$3.b())) {
-         dgo $$5 = $$1.c_($$2);
-         if ($$5 instanceof diw) {
-            ((diw)$$5).l();
-         }
-      }
-   }
-
-   @Override
-   public void a(ctj $$0, hx $$1, dja $$2) {
-      hx $$3 = $$1.a($$2.c(b).g());
-      dja $$4 = $$0.a_($$3);
-      if ($$4.b() instanceof dit && $$4.c(dit.c)) {
-         $$0.a($$3, false);
-      }
-   }
-
-   @Override
-   public bjv a(dja $$0, cti $$1, hx $$2, cfb $$3, bju $$4, eli $$5) {
-      if (!$$1.B && $$1.c_($$2) == null) {
-         $$1.a($$2, false);
-         return bjv.b;
+   public void a(dir $$0) {
+      bik<cuf> $$1 = $$0.i();
+      if ($$1.d()) {
+         this.j = bik.a(this.h.orElseGet(cuf::new));
       } else {
-         return bjv.d;
+         this.j = $$1;
       }
    }
 
-   @Override
-   public List<cmr> a(dja $$0, egv.a $$1) {
-      diw $$2 = this.a($$1.a(), hx.a($$1.a(eja.f)));
-      return $$2 == null ? Collections.emptyList() : $$2.k().a($$1);
+   public void a() {
+      this.c.clear();
+      this.g = 0;
+      this.f = 0L;
+      this.e = 0L;
+      this.d.clear();
    }
 
-   @Override
-   public emf a(dja $$0, cso $$1, hx $$2, elr $$3) {
-      return emc.a();
+   public boolean b() {
+      boolean $$0 = this.h.isPresent() && this.h.get().a().b("id", 8);
+      return $$0 || !this.j.d();
    }
 
-   @Override
-   public emf b(dja $$0, cso $$1, hx $$2, elr $$3) {
-      diw $$4 = this.a($$1, $$2);
-      return $$4 != null ? $$4.a($$1, $$2) : emc.a();
+   public boolean a(dir $$0, int $$1) {
+      return this.g >= $$0.a($$1);
+   }
+
+   public boolean c() {
+      return this.d.isEmpty();
+   }
+
+   public boolean a(and $$0, dir $$1, int $$2) {
+      return $$0.X() >= this.f && this.d.size() < $$1.b($$2);
+   }
+
+   public int a(hx $$0) {
+      if (this.c.isEmpty()) {
+         ac.a("Trial Spawner at " + $$0 + " has no detected players");
+      }
+
+      return Math.max(0, this.c.size() - 1);
+   }
+
+   public void a(and $$0, hx $$1, dip $$2, int $$3) {
+      List<UUID> $$4 = $$2.detect($$0, $$1, $$3);
+      boolean $$5 = this.c.addAll($$4);
+      if ($$5) {
+         this.f = Math.max($$0.X() + 40L, this.f);
+         $$0.c(3013, $$1, this.c.size());
+      }
+   }
+
+   public boolean a(and $$0, dir $$1, float $$2) {
+      long $$3 = this.e - (long)$$1.h();
+      return (float)$$0.X() >= (float)$$3 + $$2;
+   }
+
+   public boolean b(and $$0, dir $$1, float $$2) {
+      long $$3 = this.e - (long)$$1.h();
+      return (float)($$0.X() - $$3) % $$2 == 0.0F;
+   }
+
+   public boolean a(and $$0) {
+      return $$0.X() >= this.e;
+   }
+
+   public void a(diq $$0, auu $$1, bly<?> $$2) {
+      this.a($$0, $$1).a().a("id", kd.g.b($$2).toString());
+   }
+
+   protected cuf a(diq $$0, auu $$1) {
+      if (this.h.isPresent()) {
+         return this.h.get();
+      } else {
+         this.h = Optional.of(this.j.b($$1).map(bim.b::b).orElseGet(cuf::new));
+         $$0.e();
+         return this.h.get();
+      }
    }
 
    @Nullable
-   private diw a(cso $$0, hx $$1) {
-      dgo $$2 = $$0.c_($$1);
-      return $$2 instanceof diw ? (diw)$$2 : null;
+   public blu a(diq $$0, cto $$1, dit $$2) {
+      if ($$0.a($$1) && $$2.d()) {
+         if (this.k == null) {
+            sn $$3 = this.a($$0, $$1.F_()).a();
+            if ($$3.b("id", 8)) {
+               this.k = bly.a($$3, $$1, Function.identity());
+            }
+         }
+
+         return this.k;
+      } else {
+         return null;
+      }
    }
 
-   @Override
-   public cmr a(ctl $$0, hx $$1, dja $$2) {
-      return cmr.f;
+   public sn a(dit $$0) {
+      sn $$1 = new sn();
+      if ($$0 == dit.c) {
+         $$1.a("next_mob_spawns_at", this.f);
+      }
+
+      this.h
+         .ifPresent($$1x -> $$1.a("spawn_data", (tk)cuf.b.encodeStart(tb.a, $$1x).result().orElseThrow(() -> new IllegalStateException("Invalid SpawnData"))));
+      return $$1;
    }
 
-   @Override
-   public dja a(dja $$0, dcv $$1) {
-      return $$0.a(b, $$1.a($$0.c(b)));
+   public double d() {
+      return this.l;
    }
 
-   @Override
-   public dja a(dja $$0, dbf $$1) {
-      return $$0.a($$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected void a(djb.a<cwj, dja> $$0) {
-      $$0.a(b, c);
-   }
-
-   @Override
-   public boolean a(dja $$0, cso $$1, hx $$2, efa $$3) {
-      return false;
+   public double e() {
+      return this.m;
    }
 }

@@ -1,32 +1,36 @@
-public class abj implements xd<yx> {
-   private final int a;
-   private final byte b;
+import javax.annotation.Nullable;
 
-   public abj(blp $$0, byte $$1) {
-      this.a = $$0.aj();
+public class abj implements xf<za> {
+   private final int a;
+   private final blf b;
+
+   public abj(int $$0, blf $$1) {
+      this.a = $$0;
       this.b = $$1;
    }
 
-   public abj(ug $$0) {
+   public abj(ui $$0) {
       this.a = $$0.n();
-      this.b = $$0.readByte();
+      this.b = $$0.a(kd.d);
    }
 
    @Override
-   public void a(ug $$0) {
+   public void a(ui $$0) {
       $$0.c(this.a);
-      $$0.k(this.b);
+      $$0.a(kd.d, this.b);
    }
 
-   public void a(yx $$0) {
+   public void a(za $$0) {
       $$0.a(this);
    }
 
-   public blp a(cti $$0) {
+   @Nullable
+   public blu a(cto $$0) {
       return $$0.a(this.a);
    }
 
-   public byte a() {
+   @Nullable
+   public blf a() {
       return this.b;
    }
 }

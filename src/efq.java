@@ -1,116 +1,141 @@
-import java.util.Objects;
+import com.mojang.logging.LogUtils;
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.List;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class efq {
-   private final hx a;
-   private final clf b;
-   @Nullable
-   private final vd c;
+public class efq implements efs {
+   private static final Logger b = LogUtils.getLogger();
+   private final cto c;
+   private final int d;
+   private final ArrayDeque<efq.c> e = new ArrayDeque<>();
+   private final List<efq.c> f = new ArrayList<>();
+   private int g = 0;
 
-   public efq(hx $$0, clf $$1, @Nullable vd $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-   }
-
-   public static efq a(sl $$0) {
-      hx $$1 = ta.b($$0.p("Pos"));
-      clf $$2 = clf.a($$0.l("Color"), clf.a);
-      vd $$3 = $$0.e("Name") ? vd.a.a($$0.l("Name")) : null;
-      return new efq($$1, $$2, $$3);
-   }
-
-   @Nullable
-   public static efq a(cso $$0, hx $$1) {
-      if ($$0.c_($$1) instanceof dge $$3) {
-         clf $$4 = $$3.g();
-         vd $$5 = $$3.ae() ? $$3.af() : null;
-         return new efq($$1, $$4, $$5);
-      } else {
-         return null;
-      }
-   }
-
-   public hx a() {
-      return this.a;
-   }
-
-   public clf b() {
-      return this.b;
-   }
-
-   public efr.a c() {
-      switch (this.b) {
-         case a:
-            return efr.a.k;
-         case b:
-            return efr.a.l;
-         case c:
-            return efr.a.m;
-         case d:
-            return efr.a.n;
-         case e:
-            return efr.a.o;
-         case f:
-            return efr.a.p;
-         case g:
-            return efr.a.q;
-         case h:
-            return efr.a.r;
-         case i:
-            return efr.a.s;
-         case j:
-            return efr.a.t;
-         case k:
-            return efr.a.u;
-         case l:
-            return efr.a.v;
-         case m:
-            return efr.a.w;
-         case n:
-            return efr.a.x;
-         case o:
-            return efr.a.y;
-         case p:
-         default:
-            return efr.a.z;
-      }
-   }
-
-   @Nullable
-   public vd d() {
-      return this.c;
+   public efq(cto $$0, int $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         efq $$1 = (efq)$$0;
-         return Objects.equals(this.a, $$1.a) && this.b == $$1.b && Objects.equals(this.c, $$1.c);
-      } else {
+   public void a(ic $$0, djg $$1, hx $$2, hx $$3, int $$4, int $$5) {
+      this.a($$2, new efq.d($$0, $$1, $$2.i(), $$3.i(), $$4, $$5));
+   }
+
+   @Override
+   public void a(hx $$0, cwp $$1, hx $$2) {
+      this.a($$0, new efq.e($$0, $$1, $$2.i()));
+   }
+
+   @Override
+   public void a(djg $$0, hx $$1, cwp $$2, hx $$3, boolean $$4) {
+      this.a($$1, new efq.a($$0, $$1.i(), $$2, $$3.i(), $$4));
+   }
+
+   @Override
+   public void a(hx $$0, cwp $$1, @Nullable ic $$2) {
+      this.a($$0, new efq.b($$0.i(), $$1, $$2));
+   }
+
+   private void a(hx $$0, efq.c $$1) {
+      boolean $$2 = this.g > 0;
+      boolean $$3 = this.d >= 0 && this.g >= this.d;
+      this.g++;
+      if (!$$3) {
+         if ($$2) {
+            this.f.add($$1);
+         } else {
+            this.e.push($$1);
+         }
+      } else if (this.g - 1 == this.d) {
+         b.error("Too many chained neighbor updates. Skipping the rest. First skipped position: " + $$0.x());
+      }
+
+      if (!$$2) {
+         this.a();
+      }
+   }
+
+   private void a() {
+      try {
+         while (!this.e.isEmpty() || !this.f.isEmpty()) {
+            for (int $$0 = this.f.size() - 1; $$0 >= 0; $$0--) {
+               this.e.push(this.f.get($$0));
+            }
+
+            this.f.clear();
+            efq.c $$1 = this.e.peek();
+
+            while (this.f.isEmpty()) {
+               if (!$$1.a(this.c)) {
+                  this.e.pop();
+                  break;
+               }
+            }
+         }
+      } finally {
+         this.e.clear();
+         this.f.clear();
+         this.g = 0;
+      }
+   }
+
+   static record a(djg a, hx b, cwp c, hx d, boolean e) implements efq.c {
+      @Override
+      public boolean a(cto $$0) {
+         efs.a($$0, this.a, this.b, this.c, this.d, this.e);
          return false;
       }
    }
 
-   @Override
-   public int hashCode() {
-      return Objects.hash(this.a, this.b, this.c);
-   }
+   static final class b implements efq.c {
+      private final hx a;
+      private final cwp b;
+      @Nullable
+      private final ic c;
+      private int d = 0;
 
-   public sl e() {
-      sl $$0 = new sl();
-      $$0.a("Pos", ta.a(this.a));
-      $$0.a("Color", this.b.b());
-      if (this.c != null) {
-         $$0.a("Name", vd.a.a(this.c));
+      b(hx $$0, cwp $$1, @Nullable ic $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         if (efs.a[this.d] == $$2) {
+            this.d++;
+         }
       }
 
-      return $$0;
+      @Override
+      public boolean a(cto $$0) {
+         hx $$1 = this.a.a(efs.a[this.d++]);
+         djg $$2 = $$0.a_($$1);
+         efs.a($$0, $$2, $$1, this.b, this.a, false);
+         if (this.d < efs.a.length && efs.a[this.d] == this.c) {
+            this.d++;
+         }
+
+         return this.d < efs.a.length;
+      }
    }
 
-   public String f() {
-      return "banner-" + this.a.u() + "," + this.a.v() + "," + this.a.w();
+   interface c {
+      boolean a(cto var1);
+   }
+
+   static record d(ic a, djg b, hx c, hx d, int e, int f) implements efq.c {
+      @Override
+      public boolean a(cto $$0) {
+         efs.a($$0, this.a, this.b, this.c, this.d, this.e, this.f);
+         return false;
+      }
+   }
+
+   static record e(hx a, cwp b, hx c) implements efq.c {
+      @Override
+      public boolean a(cto $$0) {
+         djg $$1 = $$0.a_(this.a);
+         efs.a($$0, $$1, this.a, this.b, this.c, false);
+         return false;
+      }
    }
 }

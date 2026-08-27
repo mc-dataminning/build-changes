@@ -1,89 +1,15 @@
-public interface tt extends tf {
-   tt a = new tt() {
-   };
+import java.util.List;
 
-   @Override
-   default tf.b a() {
-      return tf.b.a;
+public record tt(List<String> a, tm<?> b, String c) {
+   public tt(tm<?> $$0, String $$1) {
+      this(List.of(), $$0, $$1);
    }
 
-   @Override
-   default tf.b a(String $$0) {
-      return tf.b.a;
+   public tt(String $$0, tm<?> $$1, String $$2) {
+      this(List.of($$0), $$1, $$2);
    }
 
-   @Override
-   default tf.b a(byte $$0) {
-      return tf.b.a;
-   }
-
-   @Override
-   default tf.b a(short $$0) {
-      return tf.b.a;
-   }
-
-   @Override
-   default tf.b a(int $$0) {
-      return tf.b.a;
-   }
-
-   @Override
-   default tf.b a(long $$0) {
-      return tf.b.a;
-   }
-
-   @Override
-   default tf.b a(float $$0) {
-      return tf.b.a;
-   }
-
-   @Override
-   default tf.b a(double $$0) {
-      return tf.b.a;
-   }
-
-   @Override
-   default tf.b a(byte[] $$0) {
-      return tf.b.a;
-   }
-
-   @Override
-   default tf.b a(int[] $$0) {
-      return tf.b.a;
-   }
-
-   @Override
-   default tf.b a(long[] $$0) {
-      return tf.b.a;
-   }
-
-   @Override
-   default tf.b a(tk<?> $$0, int $$1) {
-      return tf.b.a;
-   }
-
-   @Override
-   default tf.a b(tk<?> $$0, int $$1) {
-      return tf.a.b;
-   }
-
-   @Override
-   default tf.a a(tk<?> $$0) {
-      return tf.a.b;
-   }
-
-   @Override
-   default tf.a a(tk<?> $$0, String $$1) {
-      return tf.a.b;
-   }
-
-   @Override
-   default tf.b b() {
-      return tf.b.a;
-   }
-
-   @Override
-   default tf.b b(tk<?> $$0) {
-      return tf.b.a;
+   public tt(String $$0, String $$1, tm<?> $$2, String $$3) {
+      this(List.of($$0, $$1), $$2, $$3);
    }
 }

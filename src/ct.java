@@ -8,20 +8,20 @@ public class ct extends cv<ct.a> {
       return ct.a.a;
    }
 
-   public void a(ana $$0, cpx<?> $$1) {
+   public void a(ane $$0, cqd<?> $$1) {
       this.a($$0, $$1x -> $$1x.a($$1));
    }
 
-   public static an<ct.a> a(ahd $$0) {
+   public static an<ct.a> a(ahg $$0) {
       return am.g.a(new ct.a(Optional.empty(), $$0));
    }
 
-   public static record a(Optional<bb> b, ahd c) implements cv.a {
+   public static record a(Optional<bb> b, ahg c) implements cv.a {
       public static final Codec<ct.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(atq.a(bp.b, "player").forGetter(ct.a::a), ahd.a.fieldOf("recipe").forGetter(ct.a::b)).apply($$0, ct.a::new)
+         $$0 -> $$0.group(atv.a(bp.b, "player").forGetter(ct.a::a), ahg.a.fieldOf("recipe").forGetter(ct.a::b)).apply($$0, ct.a::new)
       );
 
-      public boolean a(cpx<?> $$0) {
+      public boolean a(cqd<?> $$0) {
          return this.c.equals($$0.a());
       }
 
@@ -30,7 +30,7 @@ public class ct extends cv<ct.a> {
          return this.b;
       }
 
-      public ahd b() {
+      public ahg b() {
          return this.c;
       }
    }

@@ -1,68 +1,45 @@
-public class fke<T extends bye> extends fjy<T> {
-   private final fmp a;
-   private final fmp b;
-   private final fmp f;
-   private final fmp g;
-   private final fmp h;
-   private final fmp i;
+import java.util.Optional;
+import java.util.function.Function;
+import org.joml.Vector3f;
 
-   public fke(fmp $$0) {
-      this.a = $$0;
-      this.b = $$0.b("head");
-      this.f = $$0.b("right_arm");
-      this.g = $$0.b("left_arm");
-      this.h = $$0.b("right_leg");
-      this.i = $$0.b("left_leg");
+public abstract class fke<E extends blu> extends fjv<E> {
+   private static final Vector3f a = new Vector3f();
+
+   public fke() {
+      this(ftn::e);
    }
 
-   public static fmv b() {
-      fmx $$0 = new fmx();
-      fmy $$1 = $$0.a();
-      $$1.a("head", fmu.c().a(0, 0).a(-4.0F, -12.0F, -5.5F, 8.0F, 10.0F, 8.0F).a(24, 0).a(-1.0F, -5.0F, -7.5F, 2.0F, 4.0F, 2.0F), fmr.a(0.0F, -7.0F, -2.0F));
-      $$1.a(
-         "body",
-         fmu.c().a(0, 40).a(-9.0F, -2.0F, -6.0F, 18.0F, 12.0F, 11.0F).a(0, 70).a(-4.5F, 10.0F, -3.0F, 9.0F, 5.0F, 6.0F, new fmt(0.5F)),
-         fmr.a(0.0F, -7.0F, 0.0F)
-      );
-      $$1.a("right_arm", fmu.c().a(60, 21).a(-13.0F, -2.5F, -3.0F, 4.0F, 30.0F, 6.0F), fmr.a(0.0F, -7.0F, 0.0F));
-      $$1.a("left_arm", fmu.c().a(60, 58).a(9.0F, -2.5F, -3.0F, 4.0F, 30.0F, 6.0F), fmr.a(0.0F, -7.0F, 0.0F));
-      $$1.a("right_leg", fmu.c().a(37, 0).a(-3.5F, -3.0F, -3.0F, 6.0F, 16.0F, 5.0F), fmr.a(-4.0F, 11.0F, 0.0F));
-      $$1.a("left_leg", fmu.c().a(60, 0).a().a(-3.5F, -3.0F, -3.0F, 6.0F, 16.0F, 5.0F), fmr.a(5.0F, 11.0F, 0.0F));
-      return fmv.a($$0, 128, 128);
+   public fke(Function<ahg, ftn> $$0) {
+      super($$0);
    }
 
    @Override
-   public fmp a() {
-      return this.a;
+   public void a(epz $$0, eqd $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
+      this.a().a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.b.f = $$4 * (float) (Math.PI / 180.0);
-      this.b.e = $$5 * (float) (Math.PI / 180.0);
-      this.h.e = -1.5F * aui.e($$1, 13.0F) * $$2;
-      this.i.e = 1.5F * aui.e($$1, 13.0F) * $$2;
-      this.h.f = 0.0F;
-      this.i.f = 0.0F;
+   public abstract fmv a();
+
+   public Optional<fmv> a(String $$0) {
+      return $$0.equals("root") ? Optional.of(this.a()) : this.a().e().filter($$1 -> $$1.a($$0)).findFirst().map($$1 -> $$1.b($$0));
    }
 
-   public void a(T $$0, float $$1, float $$2, float $$3) {
-      int $$4 = $$0.A();
-      if ($$4 > 0) {
-         this.f.e = -2.0F + 1.5F * aui.e((float)$$4 - $$3, 10.0F);
-         this.g.e = -2.0F + 1.5F * aui.e((float)$$4 - $$3, 10.0F);
-      } else {
-         int $$5 = $$0.ge();
-         if ($$5 > 0) {
-            this.f.e = -0.8F + 0.025F * aui.e((float)$$5, 70.0F);
-            this.g.e = 0.0F;
-         } else {
-            this.f.e = (-0.2F + 1.5F * aui.e($$1, 13.0F)) * $$2;
-            this.g.e = (-0.2F - 1.5F * aui.e($$1, 13.0F)) * $$2;
-         }
-      }
+   protected void a(blq $$0, evx $$1, float $$2) {
+      this.a($$0, $$1, $$2, 1.0F);
    }
 
-   public fmp c() {
-      return this.f;
+   protected void a(evx $$0, float $$1, float $$2, float $$3, float $$4) {
+      long $$5 = (long)($$1 * 50.0F * $$3);
+      float $$6 = Math.min($$2 * $$4, 1.0F);
+      evz.a(this, $$0, $$5, $$6, a);
+   }
+
+   protected void a(blq $$0, evx $$1, float $$2, float $$3) {
+      $$0.a($$2, $$3);
+      $$0.a($$1x -> evz.a(this, $$1, $$1x.b(), 1.0F, a));
+   }
+
+   protected void a(evx $$0) {
+      evz.a(this, $$0, 0L, 1.0F, a);
    }
 }

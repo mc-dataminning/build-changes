@@ -1,123 +1,80 @@
-import com.google.common.collect.Iterables;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.StreamSupport;
+import com.google.common.collect.AbstractIterator;
+import java.util.function.BiFunction;
 import javax.annotation.Nullable;
 
-public interface css extends cso {
-   dkr D_();
-
+public class css<T> extends AbstractIterator<T> {
+   private final eln a;
+   private final elx b;
+   private final hz c;
+   private final hx.a d;
+   private final eml e;
+   private final csy f;
+   private final boolean g;
    @Nullable
-   cso c(int var1, int var2);
+   private csu h;
+   private long i;
+   private final BiFunction<hx.a, eml, T> j;
 
-   default boolean a(@Nullable blp $$0, emf $$1) {
-      return true;
-   }
-
-   default boolean a(dja $$0, hx $$1, elr $$2) {
-      emf $$3 = $$0.b(this, $$1, $$2);
-      return $$3.c() || this.a(null, $$3.a((double)$$1.u(), (double)$$1.v(), (double)$$1.w()));
-   }
-
-   default boolean f(blp $$0) {
-      return this.a($$0, emc.a($$0.cH()));
-   }
-
-   default boolean b(elh $$0) {
-      return this.a(null, $$0);
-   }
-
-   default boolean g(blp $$0) {
-      return this.a($$0, $$0.cH());
-   }
-
-   default boolean a(@Nullable blp $$0, elh $$1) {
-      for (emf $$2 : this.e($$0, $$1)) {
-         if (!$$2.c()) {
-            return false;
-         }
-      }
-
-      if (!this.c($$0, $$1).isEmpty()) {
-         return false;
-      } else if ($$0 == null) {
-         return true;
-      } else {
-         emf $$3 = this.h($$0, $$1);
-         return $$3 == null || !emc.c($$3, emc.a($$1), elq.i);
-      }
-   }
-
-   default boolean b(@Nullable blp $$0, elh $$1) {
-      for (emf $$2 : this.e($$0, $$1)) {
-         if (!$$2.c()) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   List<emf> c(@Nullable blp var1, elh var2);
-
-   default Iterable<emf> d(@Nullable blp $$0, elh $$1) {
-      List<emf> $$2 = this.c($$0, $$1);
-      Iterable<emf> $$3 = this.e($$0, $$1);
-      return $$2.isEmpty() ? $$3 : Iterables.concat($$2, $$3);
-   }
-
-   default Iterable<emf> e(@Nullable blp $$0, elh $$1) {
-      return () -> new csm<emf>(this, $$0, $$1, false, ($$0xx, $$1xx) -> $$1xx);
+   public css(csy $$0, @Nullable blu $$1, eln $$2, boolean $$3, BiFunction<hx.a, eml, T> $$4) {
+      this.b = $$1 == null ? elx.a() : elx.a($$1);
+      this.d = new hx.a();
+      this.e = emi.a($$2);
+      this.f = $$0;
+      this.a = $$2;
+      this.g = $$3;
+      this.j = $$4;
+      int $$5 = aun.a($$2.a - 1.0E-7) - 1;
+      int $$6 = aun.a($$2.d + 1.0E-7) + 1;
+      int $$7 = aun.a($$2.b - 1.0E-7) - 1;
+      int $$8 = aun.a($$2.e + 1.0E-7) + 1;
+      int $$9 = aun.a($$2.c - 1.0E-7) - 1;
+      int $$10 = aun.a($$2.f + 1.0E-7) + 1;
+      this.c = new hz($$5, $$7, $$9, $$6, $$8, $$10);
    }
 
    @Nullable
-   private emf h(blp $$0, elh $$1) {
-      dkr $$2 = this.D_();
-      return $$2.a($$0, $$1) ? $$2.c() : null;
-   }
-
-   default boolean f(@Nullable blp $$0, elh $$1) {
-      csm<emf> $$2 = new csm<>(this, $$0, $$1, true, ($$0x, $$1x) -> $$1x);
-
-      while ($$2.hasNext()) {
-         if (!((emf)$$2.next()).c()) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   default Optional<hx> g(blp $$0, elh $$1) {
-      hx $$2 = null;
-      double $$3 = Double.MAX_VALUE;
-      csm<hx> $$4 = new csm<>(this, $$0, $$1, false, ($$0x, $$1x) -> $$0x);
-
-      while ($$4.hasNext()) {
-         hx $$5 = (hx)$$4.next();
-         double $$6 = $$5.b($$0.dk());
-         if ($$6 < $$3 || $$6 == $$3 && ($$2 == null || $$2.i($$5) < 0)) {
-            $$2 = $$5.i();
-            $$3 = $$6;
-         }
-      }
-
-      return Optional.ofNullable($$2);
-   }
-
-   default Optional<elm> a(@Nullable blp $$0, emf $$1, elm $$2, double $$3, double $$4, double $$5) {
-      if ($$1.c()) {
-         return Optional.empty();
+   private csu a(int $$0, int $$1) {
+      int $$2 = iz.a($$0);
+      int $$3 = iz.a($$1);
+      long $$4 = csv.c($$2, $$3);
+      if (this.h != null && this.i == $$4) {
+         return this.h;
       } else {
-         elh $$6 = $$1.a().c($$3, $$4, $$5);
-         emf $$7 = StreamSupport.stream(this.e($$0, $$6).spliterator(), false)
-            .filter($$0x -> this.D_() == null || this.D_().a($$0x.a()))
-            .flatMap($$0x -> $$0x.e().stream())
-            .map($$3x -> $$3x.c($$3 / 2.0, $$4 / 2.0, $$5 / 2.0))
-            .map(emc::a)
-            .reduce(emc.a(), emc::a);
-         emf $$8 = emc.a($$1, $$7, elq.e);
-         return $$8.a($$2);
+         csu $$5 = this.f.c($$2, $$3);
+         this.h = $$5;
+         this.i = $$4;
+         return $$5;
       }
+   }
+
+   protected T computeNext() {
+      while (this.c.a()) {
+         int $$0 = this.c.b();
+         int $$1 = this.c.c();
+         int $$2 = this.c.d();
+         int $$3 = this.c.e();
+         if ($$3 != 3) {
+            csu $$4 = this.a($$0, $$2);
+            if ($$4 != null) {
+               this.d.d($$0, $$1, $$2);
+               djg $$5 = $$4.a_(this.d);
+               if ((!this.g || $$5.o($$4, this.d)) && ($$3 != 1 || $$5.f()) && ($$3 != 2 || $$5.a(cwr.bQ))) {
+                  eml $$6 = $$5.b(this.f, this.d, this.b);
+                  if ($$6 == emi.b()) {
+                     if (this.a.a((double)$$0, (double)$$1, (double)$$2, (double)$$0 + 1.0, (double)$$1 + 1.0, (double)$$2 + 1.0)) {
+                        return this.j.apply(this.d, $$6.a((double)$$0, (double)$$1, (double)$$2));
+                     }
+                  } else {
+                     eml $$7 = $$6.a((double)$$0, (double)$$1, (double)$$2);
+                     if (!$$7.c() && emi.c($$7, this.e, elw.i)) {
+                        return this.j.apply(this.d, $$7);
+                     }
+                  }
+               }
+            }
+         }
+      }
+
+      return (T)this.endOfData();
    }
 }

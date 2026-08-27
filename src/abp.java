@@ -1,40 +1,42 @@
-public class abp implements xd<yx> {
-   private final double a;
-   private final double b;
-   private final long c;
+import java.util.Optional;
 
-   public abp(dkr $$0) {
-      this.a = $$0.i();
-      this.b = $$0.k();
-      this.c = $$0.j();
+public class abp implements xf<za> {
+   private final vf a;
+   private final Optional<byte[]> b;
+   private final boolean c;
+
+   public abp(vf $$0, Optional<byte[]> $$1, boolean $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public abp(ug $$0) {
-      this.a = $$0.readDouble();
-      this.b = $$0.readDouble();
-      this.c = $$0.o();
+   public abp(ui $$0) {
+      this.a = $$0.m();
+      this.b = $$0.b(ui::b);
+      this.c = $$0.readBoolean();
    }
 
    @Override
-   public void a(ug $$0) {
+   public void a(ui $$0) {
       $$0.a(this.a);
-      $$0.a(this.b);
+      $$0.a(this.b, ui::a);
       $$0.a(this.c);
    }
 
-   public void a(yx $$0) {
+   public void a(za $$0) {
       $$0.a(this);
    }
 
-   public double a() {
+   public vf a() {
       return this.a;
    }
 
-   public double d() {
+   public Optional<byte[]> d() {
       return this.b;
    }
 
-   public long e() {
+   public boolean e() {
       return this.c;
    }
 }

@@ -1,18 +1,24 @@
-import it.unimi.dsi.fastutil.longs.LongSet;
-import java.util.Map;
-import javax.annotation.Nullable;
+import java.util.List;
+import java.util.function.Predicate;
 
-public interface dlt {
-   @Nullable
-   dzh a(dyz var1);
+public interface dlt<T> {
+   int a(T var1);
 
-   void a(dyz var1, dzh var2);
+   boolean a(Predicate<T> var1);
 
-   LongSet b(dyz var1);
+   T a(int var1);
 
-   void a(dyz var1, long var2);
+   void a(ui var1);
 
-   Map<dyz, LongSet> h();
+   void b(ui var1);
 
-   void b(Map<dyz, LongSet> var1);
+   int a();
+
+   int b();
+
+   dlt<T> c();
+
+   public interface a {
+      <A> dlt<A> create(int var1, im<A> var2, dlu<A> var3, List<A> var4);
+   }
 }

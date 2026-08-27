@@ -1,24 +1,27 @@
-public record zy(vd a, uz.b b) implements xd<yx> {
-   public zy(ug $$0) {
-      this($$0.m(), new uz.b($$0));
+import java.util.List;
+
+public record zy(zy.a a, List<String> b) implements xf<za> {
+   public zy(ui $$0) {
+      this($$0.b(zy.a.class), $$0.a(ui::s));
    }
 
    @Override
-   public void a(ug $$0) {
+   public void a(ui $$0) {
       $$0.a(this.a);
-      this.b.a($$0);
+      $$0.a(this.b, ui::a);
    }
 
-   public void a(yx $$0) {
+   public void a(za $$0) {
       $$0.a(this);
    }
 
-   @Override
-   public boolean b() {
-      return true;
+   public List<String> d() {
+      return this.b;
    }
 
-   public uz.b d() {
-      return this.b;
+   public static enum a {
+      a,
+      b,
+      c;
    }
 }

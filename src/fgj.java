@@ -1,89 +1,60 @@
-import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
+import javax.annotation.Nullable;
 
-public class fgj extends eye {
-   private static final eyl c = new eyl(new ahd("recipe_book/tab"), new ahd("recipe_book/tab_selected"));
-   private final evj d;
-   private static final float e = 15.0F;
-   private float f;
+public abstract class fgj extends fgn {
+   private static final eyr i = new eyr(
+      new ahg("recipe_book/furnace_filter_enabled"),
+      new ahg("recipe_book/furnace_filter_disabled"),
+      new ahg("recipe_book/furnace_filter_enabled_highlighted"),
+      new ahg("recipe_book/furnace_filter_disabled_highlighted")
+   );
+   @Nullable
+   private cpy j;
 
-   public fgj(evj $$0) {
-      super(0, 0, 35, 27, false);
-      this.d = $$0;
-      this.a(c);
+   @Override
+   protected void a() {
+      this.f.a(i);
    }
 
-   public void a(eva $$0) {
-      eun $$1 = $$0.s.m();
-      List<fgl> $$2 = $$1.a(this.d);
-      if ($$0.s.bS instanceof cjh) {
-         for (fgl $$3 : $$2) {
-            for (cpx<?> $$4 : $$3.a($$1.a((cjh<?>)$$0.s.bS))) {
-               if ($$1.d($$4)) {
-                  this.f = 15.0F;
-                  return;
-               }
-            }
-         }
+   @Override
+   public void a(@Nullable cjv $$0) {
+      super.a($$0);
+      if ($$0 != null && $$0.e < this.g.p()) {
+         this.e.a();
       }
    }
 
    @Override
-   public void b(ewm $$0, int $$1, int $$2, float $$3) {
-      if (this.a != null) {
-         if (this.f > 0.0F) {
-            float $$4 = 1.0F + 0.1F * (float)Math.sin((double)(this.f / 15.0F * (float) Math.PI));
-            $$0.c().a();
-            $$0.c().a((float)(this.B() + 8), (float)(this.C() + 12), 0.0F);
-            $$0.c().b(1.0F, $$4, 1.0F);
-            $$0.c().a((float)(-(this.B() + 8)), (float)(-(this.C() + 12)), 0.0F);
+   public void a(cqd<?> $$0, List<cjv> $$1) {
+      cmx $$2 = $$0.b().a(this.h.r.I_());
+      this.e.a($$0);
+      this.e.a(cpy.a($$2), $$1.get(2).f, $$1.get(2).g);
+      iq<cpy> $$3 = $$0.b().a();
+      cjv $$4 = $$1.get(1);
+      if ($$4.g().b()) {
+         if (this.j == null) {
+            this.j = cpy.a(this.b().stream().filter($$0x -> $$0x.a(this.h.r.I())).map(cmx::new));
          }
 
-         eva $$5 = eva.N();
-         RenderSystem.disableDepthTest();
-         ahd $$6 = this.a.a(true, this.b);
-         int $$7 = this.B();
-         if (this.b) {
-            $$7 -= 2;
+         this.e.a(this.j, $$4.f, $$4.g);
+      }
+
+      Iterator<cpy> $$5 = $$3.iterator();
+
+      for (int $$6 = 0; $$6 < 2; $$6++) {
+         if (!$$5.hasNext()) {
+            return;
          }
 
-         $$0.a($$6, $$7, this.C(), this.g, this.h);
-         RenderSystem.enableDepthTest();
-         this.a($$0, $$5.ap());
-         if (this.f > 0.0F) {
-            $$0.c().b();
-            this.f -= $$3;
+         cpy $$7 = $$5.next();
+         if (!$$7.c()) {
+            cjv $$8 = $$1.get($$6);
+            this.e.a($$7, $$8.f, $$8.g);
          }
       }
    }
 
-   private void a(ewm $$0, fzd $$1) {
-      List<cmr> $$2 = this.d.a();
-      int $$3 = this.b ? -2 : 0;
-      if ($$2.size() == 1) {
-         $$0.b($$2.get(0), this.B() + 9 + $$3, this.C() + 5);
-      } else if ($$2.size() == 2) {
-         $$0.b($$2.get(0), this.B() + 3 + $$3, this.C() + 5);
-         $$0.b($$2.get(1), this.B() + 14 + $$3, this.C() + 5);
-      }
-   }
-
-   public evj b() {
-      return this.d;
-   }
-
-   public boolean a(eun $$0) {
-      List<fgl> $$1 = $$0.a(this.d);
-      this.k = false;
-      if ($$1 != null) {
-         for (fgl $$2 : $$1) {
-            if ($$2.b() && $$2.d()) {
-               this.k = true;
-               break;
-            }
-         }
-      }
-
-      return this.k;
-   }
+   protected abstract Set<cms> b();
 }

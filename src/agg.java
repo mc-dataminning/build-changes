@@ -1,24 +1,14 @@
-public class agg implements xd<adi> {
-   private final long a;
-
-   public agg(long $$0) {
-      this.a = $$0;
-   }
-
-   public agg(ug $$0) {
-      this.a = $$0.readLong();
+public record agg(agh a) implements xf<age> {
+   public agg(ui $$0) {
+      this($$0.a(agh.a));
    }
 
    @Override
-   public void a(ug $$0) {
-      $$0.b(this.a);
+   public void a(ui $$0) {
+      $$0.a(agh.a, this.a);
    }
 
-   public void a(adi $$0) {
+   public void a(age $$0) {
       $$0.a(this);
-   }
-
-   public long a() {
-      return this.a;
    }
 }

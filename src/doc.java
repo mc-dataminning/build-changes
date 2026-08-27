@@ -1,105 +1,148 @@
-import com.mojang.serialization.Codec;
-import javax.annotation.Nullable;
+import com.google.common.annotations.VisibleForTesting;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectList;
+import it.unimi.dsi.fastutil.objects.ObjectListIterator;
 
-public interface doc {
-   Codec<doc> b = dod.b;
-   Codec<ih<doc>> c = agz.a(ke.ax, b);
-   Codec<doc> d = c.xmap(dod.j::new, $$0 -> (ih)($$0 instanceof dod.j $$1 ? $$1.j() : new ih.a<>($$0)));
+public class doc implements doj.c {
+   public static final int a = 12;
+   private static final int f = 24;
+   private static final float[] g = ac.a(new float[13824], $$0 -> {
+      for (int $$1 = 0; $$1 < 24; $$1++) {
+         for (int $$2 = 0; $$2 < 24; $$2++) {
+            for (int $$3 = 0; $$3 < 24; $$3++) {
+               $$0[$$1 * 24 * 24 + $$2 * 24 + $$3] = (float)b($$2 - 12, $$3 - 12, $$1 - 12);
+            }
+         }
+      }
+   });
+   private final ObjectListIterator<doc.a> h;
+   private final ObjectListIterator<eah> i;
 
-   double a(doc.b var1);
+   public static doc a(cuh $$0, csv $$1) {
+      int $$2 = $$1.d();
+      int $$3 = $$1.e();
+      ObjectList<doc.a> $$4 = new ObjectArrayList(10);
+      ObjectList<eah> $$5 = new ObjectArrayList(32);
+      $$0.a($$1, $$0x -> $$0x.d() != dzq.a).forEach($$5x -> {
+         dzq $$6 = $$5x.h().d();
 
-   void a(double[] var1, doc.a var2);
+         for (dzj $$7 : $$5x.i()) {
+            if ($$7.a($$1, 12)) {
+               if ($$7 instanceof dzb) {
+                  dzb $$8 = (dzb)$$7;
+                  eao.a $$9 = $$8.b().e();
+                  if ($$9 == eao.a.b) {
+                     $$4.add(new doc.a($$8.f(), $$6, $$8.d()));
+                  }
 
-   doc a(doc.f var1);
-
-   double a();
-
-   double b();
-
-   auc<? extends doc> c();
-
-   default doc a(double $$0, double $$1) {
-      return new dod.g(this, $$0, $$1);
+                  for (eah $$10 : $$8.e()) {
+                     int $$11 = $$10.a();
+                     int $$12 = $$10.c();
+                     if ($$11 > $$2 - 12 && $$12 > $$3 - 12 && $$11 < $$2 + 15 + 12 && $$12 < $$3 + 15 + 12) {
+                        $$5.add($$10);
+                     }
+                  }
+               } else {
+                  $$4.add(new doc.a($$7.f(), $$6, 0));
+               }
+            }
+         }
+      });
+      return new doc($$4.iterator(), $$5.iterator());
    }
 
-   default doc d() {
-      return dod.a(this, dod.k.a.a);
+   @VisibleForTesting
+   public doc(ObjectListIterator<doc.a> $$0, ObjectListIterator<eah> $$1) {
+      this.h = $$0;
+      this.i = $$1;
    }
 
-   default doc e() {
-      return dod.a(this, dod.k.a.b);
+   @Override
+   public double a(doi.b $$0) {
+      int $$1 = $$0.a();
+      int $$2 = $$0.b();
+      int $$3 = $$0.c();
+      double $$4 = 0.0;
+
+      while (this.h.hasNext()) {
+         doc.a $$5 = (doc.a)this.h.next();
+         dyx $$6 = $$5.a();
+         int $$7 = $$5.c();
+         int $$8 = Math.max(0, Math.max($$6.h() - $$1, $$1 - $$6.k()));
+         int $$9 = Math.max(0, Math.max($$6.j() - $$3, $$3 - $$6.m()));
+         int $$10 = $$6.i() + $$7;
+         int $$11 = $$2 - $$10;
+
+         int $$12 = switch ($$5.b()) {
+            case a -> 0;
+            case b, c -> $$11;
+            case d -> Math.max(0, Math.max($$10 - $$2, $$2 - $$6.l()));
+         };
+
+         $$4 += switch ($$5.b()) {
+            case a -> 0.0;
+            case b -> a($$8, $$12, $$9);
+            case c, d -> a($$8, $$12, $$9, $$11) * 0.8;
+         };
+      }
+
+      this.h.back(Integer.MAX_VALUE);
+
+      while (this.i.hasNext()) {
+         eah $$13 = (eah)this.i.next();
+         int $$14 = $$1 - $$13.a();
+         int $$15 = $$2 - $$13.b();
+         int $$16 = $$3 - $$13.c();
+         $$4 += a($$14, $$15, $$16, $$15) * 0.4;
+      }
+
+      this.i.back(Integer.MAX_VALUE);
+      return $$4;
    }
 
-   default doc f() {
-      return dod.a(this, dod.k.a.c);
+   @Override
+   public double a() {
+      return Double.NEGATIVE_INFINITY;
    }
 
-   default doc g() {
-      return dod.a(this, dod.k.a.d);
+   @Override
+   public double b() {
+      return Double.POSITIVE_INFINITY;
    }
 
-   default doc h() {
-      return dod.a(this, dod.k.a.e);
+   private static double a(int $$0, int $$1, int $$2) {
+      double $$3 = aun.g((double)$$0, (double)$$1 / 2.0, (double)$$2);
+      return aun.a($$3, 0.0, 6.0, 1.0, 0.0);
    }
 
-   default doc i() {
-      return dod.a(this, dod.k.a.f);
-   }
-
-   public interface a {
-      doc.b a(int var1);
-
-      void a(double[] var1, doc var2);
-   }
-
-   public interface b {
-      int a();
-
-      int b();
-
-      int c();
-
-      default dpl d() {
-         return dpl.a();
+   private static double a(int $$0, int $$1, int $$2, int $$3) {
+      int $$4 = $$0 + 12;
+      int $$5 = $$1 + 12;
+      int $$6 = $$2 + 12;
+      if (a($$4) && a($$5) && a($$6)) {
+         double $$7 = (double)$$3 + 0.5;
+         double $$8 = aun.f((double)$$0, $$7, (double)$$2);
+         double $$9 = -$$7 * aun.g($$8 / 2.0) / 2.0;
+         return $$9 * (double)g[$$6 * 24 * 24 + $$4 * 24 + $$5];
+      } else {
+         return 0.0;
       }
    }
 
-   public static record c(ih<edn.a> b, @Nullable edn c) {
-      public static final Codec<doc.c> a = edn.a.b.xmap($$0 -> new doc.c($$0, null), doc.c::b);
-
-      public c(ih<edn.a> $$0) {
-         this($$0, null);
-      }
-
-      public double a(double $$0, double $$1, double $$2) {
-         return this.c == null ? 0.0 : this.c.a($$0, $$1, $$2);
-      }
-
-      public double a() {
-         return this.c == null ? 2.0 : this.c.a();
-      }
+   private static boolean a(int $$0) {
+      return $$0 >= 0 && $$0 < 24;
    }
 
-   public interface d extends doc {
-      @Override
-      default void a(double[] $$0, doc.a $$1) {
-         $$1.a($$0, this);
-      }
-
-      @Override
-      default doc a(doc.f $$0) {
-         return $$0.apply(this);
-      }
+   private static double b(int $$0, int $$1, int $$2) {
+      return a($$0, (double)$$1 + 0.5, $$2);
    }
 
-   public static record e(int a, int b, int c) implements doc.b {
+   private static double a(int $$0, double $$1, int $$2) {
+      double $$3 = aun.f((double)$$0, $$1, (double)$$2);
+      return Math.pow(Math.E, -$$3 / 16.0);
    }
 
-   public interface f {
-      doc apply(doc var1);
-
-      default doc.c a(doc.c $$0) {
-         return $$0;
-      }
+   @VisibleForTesting
+   public static record a(dyx a, dzq b, int c) {
    }
 }

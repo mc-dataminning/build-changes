@@ -1,210 +1,48 @@
-import java.util.UUID;
-import net.minecraft.server.MinecraftServer;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
 
-public class efz implements egk {
-   private final egl a;
-   private final egk b;
+public class efz extends efv {
+   public static final String a = "idcounts";
+   private final Object2IntMap<String> b = new Object2IntOpenHashMap();
 
-   public efz(egl $$0, egk $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public static efv.a<efz> a() {
+      return new efv.a<>(efz::new, efz::b, avv.k);
+   }
+
+   public efz() {
+      this.b.defaultReturnValue(-1);
+   }
+
+   public static efz b(sn $$0) {
+      efz $$1 = new efz();
+
+      for (String $$2 : $$0.e()) {
+         if ($$0.b($$2, 99)) {
+            $$1.b.put($$2, $$0.h($$2));
+         }
+      }
+
+      return $$1;
    }
 
    @Override
-   public int a() {
-      return this.b.a();
+   public sn a(sn $$0) {
+      ObjectIterator var2 = this.b.object2IntEntrySet().iterator();
+
+      while (var2.hasNext()) {
+         Entry<String> $$1 = (Entry<String>)var2.next();
+         $$0.a((String)$$1.getKey(), $$1.getIntValue());
+      }
+
+      return $$0;
    }
 
-   @Override
    public int b() {
-      return this.b.b();
-   }
-
-   @Override
-   public int c() {
-      return this.b.c();
-   }
-
-   @Override
-   public float d() {
-      return this.b.d();
-   }
-
-   @Override
-   public long e() {
-      return this.b.e();
-   }
-
-   @Override
-   public long f() {
-      return this.b.f();
-   }
-
-   @Override
-   public String g() {
-      return this.a.g();
-   }
-
-   @Override
-   public int h() {
-      return this.b.h();
-   }
-
-   @Override
-   public void a(int $$0) {
-   }
-
-   @Override
-   public boolean i() {
-      return this.b.i();
-   }
-
-   @Override
-   public int j() {
-      return this.b.j();
-   }
-
-   @Override
-   public boolean k() {
-      return this.b.k();
-   }
-
-   @Override
-   public int l() {
-      return this.b.l();
-   }
-
-   @Override
-   public ctf m() {
-      return this.a.m();
-   }
-
-   @Override
-   public void b(int $$0) {
-   }
-
-   @Override
-   public void c(int $$0) {
-   }
-
-   @Override
-   public void d(int $$0) {
-   }
-
-   @Override
-   public void a(float $$0) {
-   }
-
-   @Override
-   public void a(long $$0) {
-   }
-
-   @Override
-   public void b(long $$0) {
-   }
-
-   @Override
-   public void a(hx $$0, float $$1) {
-   }
-
-   @Override
-   public void a(boolean $$0) {
-   }
-
-   @Override
-   public void e(int $$0) {
-   }
-
-   @Override
-   public void b(boolean $$0) {
-   }
-
-   @Override
-   public void f(int $$0) {
-   }
-
-   @Override
-   public void a(ctf $$0) {
-   }
-
-   @Override
-   public boolean n() {
-      return this.a.n();
-   }
-
-   @Override
-   public boolean o() {
-      return this.a.o();
-   }
-
-   @Override
-   public boolean p() {
-      return this.b.p();
-   }
-
-   @Override
-   public void c(boolean $$0) {
-   }
-
-   @Override
-   public cte q() {
-      return this.a.q();
-   }
-
-   @Override
-   public dkr.c r() {
-      return this.b.r();
-   }
-
-   @Override
-   public void a(dkr.c $$0) {
-   }
-
-   @Override
-   public bjs s() {
-      return this.a.s();
-   }
-
-   @Override
-   public boolean t() {
-      return this.a.t();
-   }
-
-   @Override
-   public ekz<MinecraftServer> u() {
-      return this.b.u();
-   }
-
-   @Override
-   public int v() {
-      return 0;
-   }
-
-   @Override
-   public void g(int $$0) {
-   }
-
-   @Override
-   public int w() {
-      return 0;
-   }
-
-   @Override
-   public void h(int $$0) {
-   }
-
-   @Override
-   public UUID x() {
-      return null;
-   }
-
-   @Override
-   public void a(UUID $$0) {
-   }
-
-   @Override
-   public void a(p $$0, ctk $$1) {
-      $$0.a("Derived", true);
-      this.b.a($$0, $$1);
+      int $$0 = this.b.getInt("map") + 1;
+      this.b.put("map", $$0);
+      this.c();
+      return $$0;
    }
 }

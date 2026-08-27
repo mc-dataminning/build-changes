@@ -1,33 +1,110 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-public class dfp extends cwj implements dfm {
-   public static final MapCodec<dfp> d = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dfm.a.e.fieldOf("weathering_state").forGetter(cxk::c), u()).apply($$0, dfp::new)
+public class dfp extends dey {
+   public static final MapCodec<dfp> f = RecordCodecBuilder.mapCodec($$0 -> $$0.group(c.forGetter($$0x -> $$0x.e), u()).apply($$0, dfp::new));
+   public static final dka g = dak.aE;
+   protected static final float h = 2.5F;
+   private static final Map<ic, eml> i = Maps.newEnumMap(
+      ImmutableMap.of(
+         ic.c,
+         cwp.a(5.5, 3.0, 11.0, 10.5, 13.0, 16.0),
+         ic.d,
+         cwp.a(5.5, 3.0, 0.0, 10.5, 13.0, 5.0),
+         ic.e,
+         cwp.a(11.0, 3.0, 5.5, 16.0, 13.0, 10.5),
+         ic.f,
+         cwp.a(0.0, 3.0, 5.5, 5.0, 13.0, 10.5)
+      )
    );
-   private final dfm.a e;
 
    @Override
    public MapCodec<dfp> a() {
-      return d;
+      return f;
    }
 
-   public dfp(dfm.a $$0, diz.d $$1) {
-      super($$1);
-      this.e = $$0;
-   }
-
-   @Override
-   public void b(dja $$0, amz $$1, hx $$2, aup $$3) {
-      this.a_($$0, $$1, $$2, $$3);
+   protected dfp(ka $$0, djf.d $$1) {
+      super($$0, $$1);
+      this.k(this.E.b().a(g, ic.c));
    }
 
    @Override
-   public boolean e_(dja $$0) {
-      return dfm.c($$0.b()).isPresent();
+   public String h() {
+      return this.k().a();
    }
 
-   public dfm.a g() {
-      return this.e;
+   @Override
+   public eml a(djg $$0, csu $$1, hx $$2, elx $$3) {
+      return h($$0);
+   }
+
+   public static eml h(djg $$0) {
+      return i.get($$0.c(g));
+   }
+
+   @Override
+   public boolean a(djg $$0, ctr $$1, hx $$2) {
+      ic $$3 = $$0.c(g);
+      hx $$4 = $$2.a($$3.g());
+      djg $$5 = $$1.a_($$4);
+      return $$5.d($$1, $$4, $$3);
+   }
+
+   @Nullable
+   @Override
+   public djg a(cpg $$0) {
+      djg $$1 = this.o();
+      ctr $$2 = $$0.q();
+      hx $$3 = $$0.a();
+      ic[] $$4 = $$0.f();
+
+      for (ic $$5 : $$4) {
+         if ($$5.o().d()) {
+            ic $$6 = $$5.g();
+            $$1 = $$1.a(g, $$6);
+            if ($$1.a($$2, $$3)) {
+               return $$1;
+            }
+         }
+      }
+
+      return null;
+   }
+
+   @Override
+   public djg a(djg $$0, ic $$1, djg $$2, ctp $$3, hx $$4, hx $$5) {
+      return $$1.g() == $$0.c(g) && !$$0.a($$3, $$4) ? cwr.a.o() : $$0;
+   }
+
+   @Override
+   public void a(djg $$0, cto $$1, hx $$2, auu $$3) {
+      ic $$4 = $$0.c(g);
+      double $$5 = (double)$$2.u() + 0.5;
+      double $$6 = (double)$$2.v() + 0.7;
+      double $$7 = (double)$$2.w() + 0.5;
+      double $$8 = 0.22;
+      double $$9 = 0.27;
+      ic $$10 = $$4.g();
+      $$1.a(jx.ab, $$5 + 0.27 * (double)$$10.j(), $$6 + 0.22, $$7 + 0.27 * (double)$$10.l(), 0.0, 0.0, 0.0);
+      $$1.a(this.e, $$5 + 0.27 * (double)$$10.j(), $$6 + 0.22, $$7 + 0.27 * (double)$$10.l(), 0.0, 0.0, 0.0);
+   }
+
+   @Override
+   public djg a(djg $$0, ddb $$1) {
+      return $$0.a(g, $$1.a($$0.c(g)));
+   }
+
+   @Override
+   public djg a(djg $$0, dbl $$1) {
+      return $$0.a($$1.a($$0.c(g)));
+   }
+
+   @Override
+   protected void a(djh.a<cwp, djg> $$0) {
+      $$0.a(g);
    }
 }

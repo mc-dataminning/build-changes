@@ -1,19 +1,15 @@
-public class cmh extends cmm {
-   private static final String a = "textures/entity/horse/";
-   private final int b;
-   private final String c;
-
-   public cmh(int $$0, String $$1, cmm.a $$2) {
-      super($$2);
-      this.b = $$0;
-      this.c = "textures/entity/horse/armor/horse_armor_" + $$1 + ".png";
+public class cmh extends cms implements cnw {
+   public cmh(cms.a $$0) {
+      super($$0);
    }
 
-   public ahd h() {
-      return new ahd(this.c);
-   }
-
-   public int i() {
-      return this.b;
+   @Override
+   public boolean a(cto $$0, did $$1, boolean $$2, cfh $$3) {
+      if ($$1.a($$0x -> $$0x.a(true), $$2)) {
+         $$0.a(null, $$1.aB_(), arr.jW, ars.e, 1.0F, 1.0F);
+         return true;
+      } else {
+         return false;
+      }
    }
 }

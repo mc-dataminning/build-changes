@@ -1,51 +1,62 @@
-import java.util.Optional;
+import com.mojang.serialization.MapCodec;
 
-public interface cxk<T extends Enum<T>> {
-   int x_ = 4;
+public class cxk extends cvi {
+   public static final MapCodec<cxk> d = b(cxk::new);
+   private static final float e = 0.05F;
+   private static final float f = 0.1F;
 
-   Optional<dja> i_(dja var1);
+   @Override
+   public MapCodec<cxk> a() {
+      return d;
+   }
 
-   float aw_();
+   public cxk(djf.d $$0) {
+      super($$0, jd.c);
+   }
 
-   default void a_(dja $$0, amz $$1, hx $$2, aup $$3) {
-      float $$4 = 0.05688889F;
-      if ($$3.i() < 0.05688889F) {
-         this.c($$0, $$1, $$2, $$3).ifPresent($$2x -> $$1.b($$2, $$2x));
+   @Override
+   public boolean d(djg $$0) {
+      return false;
+   }
+
+   protected static boolean a(cto $$0, cun.c $$1) {
+      if ($$1 == cun.c.b) {
+         return $$0.F_().i() < 0.05F;
+      } else {
+         return $$1 == cun.c.c ? $$0.F_().i() < 0.1F : false;
       }
    }
 
-   T c();
-
-   default Optional<dja> c(dja $$0, amz $$1, hx $$2, aup $$3) {
-      int $$4 = this.c().ordinal();
-      int $$5 = 0;
-      int $$6 = 0;
-
-      for (hx $$7 : hx.a($$2, 4, 4, 4)) {
-         int $$8 = $$7.k($$2);
-         if ($$8 > 4) {
-            break;
-         }
-
-         if (!$$7.equals($$2) && $$1.a_($$7).b() instanceof cxk<?> $$9) {
-            Enum<?> $$10 = $$9.c();
-            if (this.c().getClass() == $$10.getClass()) {
-               int $$11 = $$10.ordinal();
-               if ($$11 < $$4) {
-                  return Optional.empty();
-               }
-
-               if ($$11 > $$4) {
-                  $$6++;
-               } else {
-                  $$5++;
-               }
-            }
+   @Override
+   public void a(djg $$0, cto $$1, hx $$2, cun.c $$3) {
+      if (a($$1, $$3)) {
+         if ($$3 == cun.c.b) {
+            $$1.b($$2, cwr.fu.o());
+            $$1.a(null, dnq.c, $$2);
+         } else if ($$3 == cun.c.c) {
+            $$1.b($$2, cwr.fw.o());
+            $$1.a(null, dnq.c, $$2);
          }
       }
+   }
 
-      float $$12 = (float)($$6 + 1) / (float)($$6 + $$5 + 1);
-      float $$13 = $$12 * $$12 * this.aw_();
-      return $$3.i() < $$13 ? this.i_($$0) : Optional.empty();
+   @Override
+   protected boolean a(eep $$0) {
+      return true;
+   }
+
+   @Override
+   protected void a(djg $$0, cto $$1, hx $$2, eep $$3) {
+      if ($$3 == eer.c) {
+         djg $$4 = cwr.fu.o();
+         $$1.b($$2, $$4);
+         $$1.a(dnq.c, $$2, dnq.a.a($$4));
+         $$1.c(1047, $$2, 0);
+      } else if ($$3 == eer.e) {
+         djg $$5 = cwr.fv.o();
+         $$1.b($$2, $$5);
+         $$1.a(dnq.c, $$2, dnq.a.a($$5));
+         $$1.c(1046, $$2, 0);
+      }
    }
 }

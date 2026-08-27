@@ -1,62 +1,41 @@
-public class cpb extends cpa {
-   private final ic b;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
 
-   public cpb(cti $$0, hx $$1, ic $$2, cmr $$3, ic $$4) {
-      super($$0, null, bju.a, $$3, new eli(elm.c($$1), $$4, $$1, false));
-      this.b = $$2;
+public record cpb(String c, ih<cms> d, float e, Map<ckj, String> f, vf g) {
+   public static final Codec<cpb> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               atv.x.fieldOf("asset_name").forGetter(cpb::a),
+               ahd.a(ke.F).fieldOf("ingredient").forGetter(cpb::b),
+               Codec.FLOAT.fieldOf("item_model_index").forGetter(cpb::c),
+               Codec.unboundedMap(ckj.h, Codec.STRING).optionalFieldOf("override_armor_materials", Map.of()).forGetter(cpb::d),
+               vh.a.fieldOf("description").forGetter(cpb::e)
+            )
+            .apply($$0, cpb::new)
+   );
+   public static final Codec<ih<cpb>> b = ahc.a(ke.aI, a);
+
+   public static cpb a(String $$0, cms $$1, float $$2, vf $$3, Map<ckj, String> $$4) {
+      return new cpb($$0, kd.h.d($$1), $$2, $$4, $$3);
    }
 
-   @Override
-   public hx a() {
-      return this.j().a();
+   public String a() {
+      return this.c;
    }
 
-   @Override
-   public boolean b() {
-      return this.q().a_(this.j().a()).a(this);
+   public ih<cms> b() {
+      return this.d;
    }
 
-   @Override
-   public boolean c() {
-      return this.b();
+   public float c() {
+      return this.e;
    }
 
-   @Override
-   public ic d() {
-      return ic.a;
+   public Map<ckj, String> d() {
+      return this.f;
    }
 
-   @Override
-   public ic[] f() {
-      switch (this.b) {
-         case a:
-         default:
-            return new ic[]{ic.a, ic.c, ic.f, ic.d, ic.e, ic.b};
-         case b:
-            return new ic[]{ic.a, ic.b, ic.c, ic.f, ic.d, ic.e};
-         case c:
-            return new ic[]{ic.a, ic.c, ic.f, ic.e, ic.b, ic.d};
-         case d:
-            return new ic[]{ic.a, ic.d, ic.f, ic.e, ic.b, ic.c};
-         case e:
-            return new ic[]{ic.a, ic.e, ic.d, ic.b, ic.c, ic.f};
-         case f:
-            return new ic[]{ic.a, ic.f, ic.d, ic.b, ic.c, ic.e};
-      }
-   }
-
-   @Override
-   public ic g() {
-      return this.b.o() == ic.a.b ? ic.c : this.b;
-   }
-
-   @Override
-   public boolean h() {
-      return false;
-   }
-
-   @Override
-   public float i() {
-      return (float)(this.b.e() * 90);
+   public vf e() {
+      return this.g;
    }
 }

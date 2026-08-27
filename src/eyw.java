@@ -1,130 +1,40 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import javax.annotation.Nullable;
+import java.util.Locale;
+import java.util.function.Supplier;
 
-public class eyw implements fib {
-   private static final ahd a = new ahd("hud/hotbar");
-   private static final ahd b = new ahd("hud/hotbar_selection");
-   private static final long c = 5000L;
-   private static final long d = 2000L;
-   private final eva e;
-   private long f;
-   @Nullable
-   private fhy g;
+public class eyw extends eys {
+   private static final int f = -65536;
+   private static final int g = -256;
+   private static final int h = -16711936;
+   private final Supplier<Float> i;
 
-   public eyw(eva $$0) {
-      this.e = $$0;
-   }
-
-   public void a(int $$0) {
-      this.f = ac.b();
-      if (this.g != null) {
-         this.g.b($$0);
-      } else {
-         this.g = new fhy(this);
-      }
-   }
-
-   private float c() {
-      long $$0 = this.f - ac.b() + 5000L;
-      return aui.a((float)$$0 / 2000.0F, 0.0F, 1.0F);
-   }
-
-   public void a(ewm $$0) {
-      if (this.g != null) {
-         float $$1 = this.c();
-         if ($$1 <= 0.0F) {
-            this.g.d();
-         } else {
-            int $$2 = $$0.a() / 2;
-            $$0.c().a();
-            $$0.c().a(0.0F, 0.0F, -90.0F);
-            int $$3 = aui.d((float)$$0.b() - 22.0F * $$1);
-            fic $$4 = this.g.f();
-            this.a($$0, $$1, $$2, $$3, $$4);
-            $$0.c().b();
-         }
-      }
-   }
-
-   protected void a(ewm $$0, float $$1, int $$2, int $$3, fic $$4) {
-      RenderSystem.enableBlend();
-      $$0.a(1.0F, 1.0F, 1.0F, $$1);
-      $$0.a(a, $$2 - 91, $$3, 182, 22);
-      if ($$4.a() >= 0) {
-         $$0.a(b, $$2 - 91 - 1 + $$4.a() * 20, $$3 - 1, 24, 23);
-      }
-
-      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
-
-      for (int $$5 = 0; $$5 < 9; $$5++) {
-         this.a($$0, $$5, $$0.a() / 2 - 90 + $$5 * 20 + 2, (float)($$3 + 3), $$1, $$4.a($$5));
-      }
-
-      RenderSystem.disableBlend();
-   }
-
-   private void a(ewm $$0, int $$1, int $$2, float $$3, float $$4, fia $$5) {
-      if ($$5 != fhy.a) {
-         int $$6 = (int)($$4 * 255.0F);
-         $$0.c().a();
-         $$0.c().a((float)$$2, $$3, 0.0F);
-         float $$7 = $$5.aP_() ? 1.0F : 0.25F;
-         $$0.a($$7, $$7, $$7, $$4);
-         $$5.a($$0, $$7, $$6);
-         $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
-         $$0.c().b();
-         if ($$6 > 3 && $$5.aP_()) {
-            vd $$8 = this.e.m.U[$$1].k();
-            $$0.b(this.e.h, $$8, $$2 + 19 - 2 - this.e.h.a($$8), (int)$$3 + 6 + 3, 16777215 + ($$6 << 24));
-         }
-      }
-   }
-
-   public void b(ewm $$0) {
-      int $$1 = (int)(this.c() * 255.0F);
-      if ($$1 > 3 && this.g != null) {
-         fia $$2 = this.g.b();
-         vd $$3 = $$2 == fhy.a ? this.g.c().b() : $$2.aO_();
-         if ($$3 != null) {
-            int $$4 = ($$0.a() - this.e.h.a($$3)) / 2;
-            int $$5 = $$0.b() - 35;
-            $$0.b(this.e.h, $$3, $$4, $$5, 16777215 + ($$1 << 24));
-         }
-      }
+   public eyw(ewq $$0, auw $$1, Supplier<Float> $$2) {
+      super($$0, $$1);
+      this.i = $$2;
    }
 
    @Override
-   public void a(fhy $$0) {
-      this.g = null;
-      this.f = 0L;
+   protected void a(ews $$0, int $$1, int $$2, int $$3) {
+      float $$4 = (float)avo.c / this.i.get();
+      this.a($$0, String.format("%.1f TPS", $$4), $$1 + 1, $$3 - 60 + 1);
    }
 
-   public boolean a() {
-      return this.g != null;
+   @Override
+   protected String a(double $$0) {
+      return String.format(Locale.ROOT, "%d ms", (int)Math.round(c($$0)));
    }
 
-   public void b(int $$0) {
-      int $$1 = this.g.e() + $$0;
-
-      while ($$1 >= 0 && $$1 <= 8 && (this.g.a($$1) == fhy.a || !this.g.a($$1).aP_())) {
-         $$1 += $$0;
-      }
-
-      if ($$1 >= 0 && $$1 <= 8) {
-         this.g.b($$1);
-         this.f = ac.b();
-      }
+   @Override
+   protected int b(double $$0) {
+      return (int)Math.round(c($$0) * 60.0 / (double)this.i.get().floatValue());
    }
 
-   public void b() {
-      this.f = ac.b();
-      if (this.a()) {
-         int $$0 = this.g.e();
-         if ($$0 != -1) {
-            this.g.b($$0);
-         }
-      } else {
-         this.g = new fhy(this);
-      }
+   @Override
+   protected int a(long $$0) {
+      float $$1 = this.i.get();
+      return this.a(c((double)$$0), 0.0, -16711936, (double)$$1 / 2.0, -256, (double)$$1, -65536);
+   }
+
+   private static double c(double $$0) {
+      return $$0 / 1000000.0;
    }
 }

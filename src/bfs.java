@@ -4,19 +4,27 @@ import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class bfs extends Schema {
+public class bfs extends bdd {
    public bfs(int $$0, Schema $$1) {
       super($$0, $$1);
    }
 
    public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
       Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
-      $$1.remove("EntityHorse");
-      $$0.register($$1, "Horse", () -> DSL.optionalFields("ArmorItem", bbq.t.in($$0), "SaddleItem", bbq.t.in($$0), bcz.a($$0)));
-      $$0.register($$1, "Donkey", () -> DSL.optionalFields("Items", DSL.list(bbq.t.in($$0)), "SaddleItem", bbq.t.in($$0), bcz.a($$0)));
-      $$0.register($$1, "Mule", () -> DSL.optionalFields("Items", DSL.list(bbq.t.in($$0)), "SaddleItem", bbq.t.in($$0), bcz.a($$0)));
-      $$0.register($$1, "ZombieHorse", () -> DSL.optionalFields("SaddleItem", bbq.t.in($$0), bcz.a($$0)));
-      $$0.register($$1, "SkeletonHorse", () -> DSL.optionalFields("SaddleItem", bbq.t.in($$0), bcz.a($$0)));
+      $$0.register($$1, "minecraft:breeze", () -> bde.a($$0));
+      $$0.registerSimple($$1, "minecraft:wind_charge");
+      return $$1;
+   }
+
+   public Map<String, Supplier<TypeTemplate>> registerBlockEntities(Schema $$0) {
+      Map<String, Supplier<TypeTemplate>> $$1 = super.registerBlockEntities($$0);
+      $$0.register(
+         $$1,
+         "minecraft:trial_spawner",
+         () -> DSL.optionalFields(
+               "spawn_potentials", DSL.list(DSL.fields("data", DSL.fields("entity", bbv.w.in($$0)))), "spawn_data", DSL.fields("entity", bbv.w.in($$0))
+            )
+      );
       return $$1;
    }
 }

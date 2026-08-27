@@ -1,38 +1,60 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import javax.annotation.Nullable;
 
-public class dih extends dgo implements cua, dik.a {
-   private static final Logger a = LogUtils.getLogger();
-   private dik b;
-
-   public dih(hx $$0, dja $$1) {
-      super(dgq.Q, $$0, $$1);
-      dij $$2 = dij.a;
-      this.b = new dik(this, $$2);
-   }
-
-   @Override
-   public void a(sl $$0) {
-      super.a($$0);
-      this.b.a().parse(sz.a, $$0).resultOrPartial(a::error).ifPresent($$0x -> this.b = $$0x);
-      if (this.o != null) {
-         this.g();
+public class dih extends dgu implements cug {
+   private final csq a = new csq() {
+      @Override
+      public void a(cto $$0, hx $$1, int $$2) {
+         $$0.a($$1, cwr.ct, $$2, 0);
       }
+
+      @Override
+      public void a(@Nullable cto $$0, hx $$1, cuf $$2) {
+         super.a($$0, $$1, $$2);
+         if ($$0 != null) {
+            djg $$3 = $$0.a_($$1);
+            $$0.a($$1, $$3, $$3, 4);
+         }
+      }
+   };
+
+   public dih(hx $$0, djg $$1) {
+      super(dgw.j, $$0, $$1);
    }
 
    @Override
-   protected void b(sl $$0) {
+   public void a(sn $$0) {
+      super.a($$0);
+      this.a.a(this.o, this.p, $$0);
+   }
+
+   @Override
+   protected void b(sn $$0) {
       super.b($$0);
-      this.b.a().encodeStart(sz.a, this.b).get().ifLeft($$1 -> $$0.a((sl)$$1)).ifRight($$0x -> a.warn("Failed to encode TrialSpawner {}", $$0x.message()));
+      this.a.a($$0);
    }
 
-   public ze c() {
-      return ze.a(this);
+   public static void a(cto $$0, hx $$1, djg $$2, dih $$3) {
+      $$3.a.a($$0, $$1);
+   }
+
+   public static void b(cto $$0, hx $$1, djg $$2, dih $$3) {
+      $$3.a.a((and)$$0, $$1);
+   }
+
+   public zh c() {
+      return zh.a(this);
    }
 
    @Override
-   public sl ax_() {
-      return this.b.c().a(this.r().c(dex.b));
+   public sn ax_() {
+      sn $$0 = this.q();
+      $$0.r("SpawnPotentials");
+      return $$0;
+   }
+
+   @Override
+   public boolean a_(int $$0, int $$1) {
+      return this.a.a(this.o, $$0) ? true : super.a_($$0, $$1);
    }
 
    @Override
@@ -41,31 +63,12 @@ public class dih extends dgo implements cua, dik.a {
    }
 
    @Override
-   public void a(blt<?> $$0, aup $$1) {
-      this.b.c().a(this.b, $$1, $$0);
+   public void a(bly<?> $$0, auu $$1) {
+      this.a.a($$0, this.o, $$1, this.p);
       this.e();
    }
 
-   public dik d() {
-      return this.b;
-   }
-
-   @Override
-   public din f() {
-      return !this.r().b(djq.by) ? din.a : this.r().c(djq.by);
-   }
-
-   @Override
-   public void a(cti $$0, din $$1) {
-      this.e();
-      $$0.b(this.p, this.r().a(djq.by, $$1));
-   }
-
-   @Override
-   public void g() {
-      this.e();
-      if (this.o != null) {
-         this.o.a(this.p, this.r(), this.r(), 3);
-      }
+   public csq d() {
+      return this.a;
    }
 }

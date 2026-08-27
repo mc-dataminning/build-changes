@@ -1,78 +1,15 @@
-public class cpp extends cpn {
-   private static final cps a = cps.a(cmu.qL);
-   private static final cps b = cps.a(cmu.pr);
-   private static final cps c = cps.a(cmu.uo);
-
-   public cpp(cpl $$0) {
-      super($$0);
-   }
-
-   public boolean a(cik $$0, cti $$1) {
-      boolean $$2 = false;
-      int $$3 = 0;
-
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         cmr $$5 = $$0.a($$4);
-         if (!$$5.b()) {
-            if (a.a($$5)) {
-               if ($$2) {
-                  return false;
-               }
-
-               $$2 = true;
-            } else if (b.a($$5)) {
-               if (++$$3 > 3) {
-                  return false;
-               }
-            } else if (!c.a($$5)) {
-               return false;
-            }
-         }
-      }
-
-      return $$2 && $$3 >= 1;
-   }
-
-   public cmr a(cik $$0, iu $$1) {
-      cmr $$2 = new cmr(cmu.un, 3);
-      sl $$3 = $$2.a("Fireworks");
-      sr $$4 = new sr();
-      int $$5 = 0;
-
-      for (int $$6 = 0; $$6 < $$0.b(); $$6++) {
-         cmr $$7 = $$0.a($$6);
-         if (!$$7.b()) {
-            if (b.a($$7)) {
-               $$5++;
-            } else if (c.a($$7)) {
-               sl $$8 = $$7.b("Explosion");
-               if ($$8 != null) {
-                  $$4.add($$8);
-               }
-            }
-         }
-      }
-
-      $$3.a("Flight", (byte)$$5);
-      if (!$$4.isEmpty()) {
-         $$3.a("Explosions", $$4);
-      }
-
-      return $$2;
+public class cpp extends cpk {
+   public cpp(String $$0, cpq $$1, cpy $$2, cmx $$3, float $$4, int $$5) {
+      super(cqg.e, $$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 * $$1 >= 2;
+   public cmx g() {
+      return new cmx(cwr.og);
    }
 
    @Override
-   public cmr a(iu $$0) {
-      return new cmr(cmu.un);
-   }
-
-   @Override
-   public cpz<?> ar_() {
-      return cpz.g;
+   public cqf<?> ar_() {
+      return cqf.s;
    }
 }

@@ -1,41 +1,25 @@
-public class exj extends exs {
-   private static final int a = 1426063360;
-   private static final int b = 4;
-   private final boolean c;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.Optional;
 
-   public exj(int $$0, vd $$1, ewk $$2) {
-      this($$0, $$1, $$2, true);
+public class exj {
+   private static final atz a = atz.codepoint(32, wc.a);
+
+   private static String a(String $$0) {
+      return evg.O().m.I().c() ? $$0 : n.a($$0);
    }
 
-   public exj(int $$0, vd $$1, ewk $$2, boolean $$3) {
-      super($$1, $$2);
-      this.c($$0);
-      this.b(true);
-      this.j = true;
-      this.c = $$3;
-   }
-
-   @Override
-   protected void a(far $$0) {
-      $$0.a(faq.a, this.x());
-   }
-
-   @Override
-   public void b(ewm $$0, int $$1, int $$2, float $$3) {
-      if (this.aI_() || this.c) {
-         int $$4 = this.B() - 4;
-         int $$5 = this.C() - 4;
-         int $$6 = this.w() + 8;
-         int $$7 = this.u() + 8;
-         int $$8 = this.c ? (this.aI_() ? -1 : -6250336) : -1;
-         $$0.a($$4 + 1, $$5, $$4 + $$6, $$5 + $$7, 1426063360);
-         $$0.b($$4, $$5, $$6, $$7, $$8);
-      }
-
-      super.b($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   public void a(gir $$0) {
+   public static List<atz> a(vk $$0, int $$1, ewq $$2) {
+      euw $$3 = new euw();
+      $$0.a(($$1x, $$2x) -> {
+         $$3.a(vk.a(a($$2x), $$1x));
+         return Optional.empty();
+      }, wc.a);
+      List<atz> $$4 = Lists.newArrayList();
+      $$2.b().a($$3.b(), $$1, wc.a, ($$1x, $$2x) -> {
+         atz $$3x = si.a().a($$1x);
+         $$4.add($$2x ? atz.composite(a, $$3x) : $$3x);
+      });
+      return (List<atz>)($$4.isEmpty() ? Lists.newArrayList(new atz[]{atz.a}) : $$4);
    }
 }

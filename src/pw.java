@@ -1,6 +1,15 @@
-public interface pw {
-   static void a(pc<dzf> $$0) {
-      ii<dyz> $$1 = $$0.a(ke.aD);
-      $$0.a(dys.t, new dzf($$1.b(dyt.H), new dzu(32, 8, dzv.a, 94251327)));
+public class pw {
+   public static final ahf<eao> a = a("empty");
+
+   public static ahf<eao> a(String $$0) {
+      return ahf.a(ke.aG, new ahg($$0));
+   }
+
+   public static void a(pe<eao> $$0, String $$1, eao $$2) {
+      pl.a($$0, $$1, $$2);
+   }
+
+   public static void a(pe<eao> $$0) {
+      pv.a($$0);
    }
 }

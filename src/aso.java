@@ -1,109 +1,108 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Collection;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+public final class aso {
+   public static final asv<cms> a = a("wool");
+   public static final asv<cms> b = a("planks");
+   public static final asv<cms> c = a("stone_bricks");
+   public static final asv<cms> d = a("wooden_buttons");
+   public static final asv<cms> e = a("stone_buttons");
+   public static final asv<cms> f = a("buttons");
+   public static final asv<cms> g = a("wool_carpets");
+   public static final asv<cms> h = a("wooden_doors");
+   public static final asv<cms> i = a("wooden_stairs");
+   public static final asv<cms> j = a("wooden_slabs");
+   public static final asv<cms> k = a("wooden_fences");
+   public static final asv<cms> l = a("fence_gates");
+   public static final asv<cms> m = a("wooden_pressure_plates");
+   public static final asv<cms> n = a("wooden_trapdoors");
+   public static final asv<cms> o = a("doors");
+   public static final asv<cms> p = a("saplings");
+   public static final asv<cms> q = a("logs_that_burn");
+   public static final asv<cms> r = a("logs");
+   public static final asv<cms> s = a("dark_oak_logs");
+   public static final asv<cms> t = a("oak_logs");
+   public static final asv<cms> u = a("birch_logs");
+   public static final asv<cms> v = a("acacia_logs");
+   public static final asv<cms> w = a("cherry_logs");
+   public static final asv<cms> x = a("jungle_logs");
+   public static final asv<cms> y = a("spruce_logs");
+   public static final asv<cms> z = a("mangrove_logs");
+   public static final asv<cms> A = a("crimson_stems");
+   public static final asv<cms> B = a("warped_stems");
+   public static final asv<cms> C = a("bamboo_blocks");
+   public static final asv<cms> D = a("wart_blocks");
+   public static final asv<cms> E = a("banners");
+   public static final asv<cms> F = a("sand");
+   public static final asv<cms> G = a("smelts_to_glass");
+   public static final asv<cms> H = a("stairs");
+   public static final asv<cms> I = a("slabs");
+   public static final asv<cms> J = a("walls");
+   public static final asv<cms> K = a("anvil");
+   public static final asv<cms> L = a("rails");
+   public static final asv<cms> M = a("leaves");
+   public static final asv<cms> N = a("trapdoors");
+   public static final asv<cms> O = a("small_flowers");
+   public static final asv<cms> P = a("beds");
+   public static final asv<cms> Q = a("fences");
+   public static final asv<cms> R = a("tall_flowers");
+   public static final asv<cms> S = a("flowers");
+   public static final asv<cms> T = a("piglin_repellents");
+   public static final asv<cms> U = a("piglin_loved");
+   public static final asv<cms> V = a("ignored_by_piglin_babies");
+   public static final asv<cms> W = a("piglin_food");
+   public static final asv<cms> X = a("fox_food");
+   public static final asv<cms> Y = a("gold_ores");
+   public static final asv<cms> Z = a("iron_ores");
+   public static final asv<cms> aa = a("diamond_ores");
+   public static final asv<cms> ab = a("redstone_ores");
+   public static final asv<cms> ac = a("lapis_ores");
+   public static final asv<cms> ad = a("coal_ores");
+   public static final asv<cms> ae = a("emerald_ores");
+   public static final asv<cms> af = a("copper_ores");
+   public static final asv<cms> ag = a("non_flammable_wood");
+   public static final asv<cms> ah = a("soul_fire_base_blocks");
+   public static final asv<cms> ai = a("candles");
+   public static final asv<cms> aj = a("dirt");
+   public static final asv<cms> ak = a("terracotta");
+   public static final asv<cms> al = a("completes_find_tree_tutorial");
+   public static final asv<cms> am = a("boats");
+   public static final asv<cms> an = a("chest_boats");
+   public static final asv<cms> ao = a("fishes");
+   public static final asv<cms> ap = a("signs");
+   public static final asv<cms> aq = a("music_discs");
+   public static final asv<cms> ar = a("creeper_drop_music_discs");
+   public static final asv<cms> as = a("coals");
+   public static final asv<cms> at = a("arrows");
+   public static final asv<cms> au = a("lectern_books");
+   public static final asv<cms> av = a("bookshelf_books");
+   public static final asv<cms> aw = a("beacon_payment_items");
+   public static final asv<cms> ax = a("stone_tool_materials");
+   public static final asv<cms> ay = a("stone_crafting_materials");
+   public static final asv<cms> az = a("freeze_immune_wearables");
+   public static final asv<cms> aA = a("axolotl_tempt_items");
+   public static final asv<cms> aB = a("dampens_vibrations");
+   public static final asv<cms> aC = a("cluster_max_harvestables");
+   public static final asv<cms> aD = a("compasses");
+   public static final asv<cms> aE = a("hanging_signs");
+   public static final asv<cms> aF = a("creeper_igniters");
+   public static final asv<cms> aG = a("noteblock_top_instruments");
+   public static final asv<cms> aH = a("trimmable_armor");
+   public static final asv<cms> aI = a("trim_materials");
+   public static final asv<cms> aJ = a("trim_templates");
+   public static final asv<cms> aK = a("sniffer_food");
+   public static final asv<cms> aL = a("decorated_pot_sherds");
+   public static final asv<cms> aM = a("decorated_pot_ingredients");
+   public static final asv<cms> aN = a("swords");
+   public static final asv<cms> aO = a("axes");
+   public static final asv<cms> aP = a("hoes");
+   public static final asv<cms> aQ = a("pickaxes");
+   public static final asv<cms> aR = a("shovels");
+   public static final asv<cms> aS = a("tools");
+   public static final asv<cms> aT = a("breaks_decorated_pots");
+   public static final asv<cms> aU = a("villager_plantable_seeds");
 
-public class aso {
-   private static final Codec<aso> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(atq.p.fieldOf("id").forGetter(aso::a), Codec.BOOL.optionalFieldOf("required", true).forGetter($$0x -> $$0x.e)).apply($$0, aso::new)
-   );
-   public static final Codec<aso> a = Codec.either(atq.p, b)
-      .xmap($$0 -> (aso)$$0.map($$0x -> new aso($$0x, true), $$0x -> $$0x), $$0 -> $$0.e ? Either.left($$0.a()) : Either.right($$0));
-   private final ahd c;
-   private final boolean d;
-   private final boolean e;
-
-   private aso(ahd $$0, boolean $$1, boolean $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
+   private aso() {
    }
 
-   private aso(atq.f $$0, boolean $$1) {
-      this.c = $$0.a();
-      this.d = $$0.b();
-      this.e = $$1;
-   }
-
-   private atq.f a() {
-      return new atq.f(this.c, this.d);
-   }
-
-   public static aso a(ahd $$0) {
-      return new aso($$0, false, true);
-   }
-
-   public static aso b(ahd $$0) {
-      return new aso($$0, false, false);
-   }
-
-   public static aso c(ahd $$0) {
-      return new aso($$0, true, true);
-   }
-
-   public static aso d(ahd $$0) {
-      return new aso($$0, true, false);
-   }
-
-   public <T> boolean a(aso.a<T> $$0, Consumer<T> $$1) {
-      if (this.d) {
-         Collection<T> $$2 = $$0.b(this.c);
-         if ($$2 == null) {
-            return !this.e;
-         }
-
-         $$2.forEach($$1);
-      } else {
-         T $$3 = $$0.a(this.c);
-         if ($$3 == null) {
-            return !this.e;
-         }
-
-         $$1.accept($$3);
-      }
-
-      return true;
-   }
-
-   public void a(Consumer<ahd> $$0) {
-      if (this.d && this.e) {
-         $$0.accept(this.c);
-      }
-   }
-
-   public void b(Consumer<ahd> $$0) {
-      if (this.d && !this.e) {
-         $$0.accept(this.c);
-      }
-   }
-
-   public boolean a(Predicate<ahd> $$0, Predicate<ahd> $$1) {
-      return !this.e || (this.d ? $$1 : $$0).test(this.c);
-   }
-
-   @Override
-   public String toString() {
-      StringBuilder $$0 = new StringBuilder();
-      if (this.d) {
-         $$0.append('#');
-      }
-
-      $$0.append(this.c);
-      if (!this.e) {
-         $$0.append('?');
-      }
-
-      return $$0.toString();
-   }
-
-   public interface a<T> {
-      @Nullable
-      T a(ahd var1);
-
-      @Nullable
-      Collection<T> b(ahd var1);
+   private static asv<cms> a(String $$0) {
+      return asv.a(ke.F, new ahg($$0));
    }
 }

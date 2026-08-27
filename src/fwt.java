@@ -1,45 +1,52 @@
-import com.google.common.collect.Lists;
-import java.util.Collection;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import java.util.List;
 
-public class fwt implements fwk.a {
+public class fwt implements fwq.a {
    private static final int a = 160;
-   private static final float b = 0.04F;
-   private final eva c;
-   private Collection<hx> d = Lists.newArrayList();
+   private final evg b;
+   private final Int2ObjectMap<fwt.a> c = new Int2ObjectOpenHashMap();
 
-   public fwt(eva $$0) {
-      this.c = $$0;
+   @Override
+   public void a() {
+      this.c.clear();
    }
 
-   public void a(Collection<hx> $$0) {
-      this.d = $$0;
+   public void a(int $$0, hx $$1, List<yg.a> $$2) {
+      this.c.put($$0, new fwt.a($$1, $$2));
+   }
+
+   public void a(int $$0) {
+      this.c.remove($$0);
+   }
+
+   public fwt(evg $$0) {
+      this.b = $$0;
    }
 
    @Override
-   public void a(ept $$0, fsz $$1, double $$2, double $$3, double $$4) {
-      hx $$5 = this.b().c();
+   public void a(epz $$0, ftf $$1, double $$2, double $$3, double $$4) {
+      eur $$5 = this.b.j.m();
+      hx $$6 = hx.a($$5.b().c, 0.0, $$5.b().e);
+      ObjectIterator var11 = this.c.values().iterator();
 
-      for (hx $$6 : this.d) {
-         if ($$5.a($$6, 160.0)) {
-            a($$0, $$1, $$6);
+      while (var11.hasNext()) {
+         fwt.a $$7 = (fwt.a)var11.next();
+         hx $$8 = $$7.a;
+         if ($$6.a($$8, 160.0)) {
+            for (int $$9 = 0; $$9 < $$7.b.size(); $$9++) {
+               yg.a $$10 = $$7.b.get($$9);
+               double $$11 = (double)$$8.u() + 0.5;
+               double $$12 = (double)$$8.v() + 2.0 + (double)$$9 * 0.25;
+               double $$13 = (double)$$8.w() + 0.5;
+               int $$14 = $$10.b() ? -16711936 : -3355444;
+               fwq.a($$0, $$1, $$10.c(), $$11, $$12, $$13, $$14);
+            }
          }
       }
    }
 
-   private static void a(ept $$0, fsz $$1, hx $$2) {
-      fwk.a($$0, $$1, $$2, 1.0F, 0.0F, 0.0F, 0.15F);
-      int $$3 = -65536;
-      a($$0, $$1, "Raid center", $$2, -65536);
-   }
-
-   private static void a(ept $$0, fsz $$1, String $$2, hx $$3, int $$4) {
-      double $$5 = (double)$$3.u() + 0.5;
-      double $$6 = (double)$$3.v() + 1.3;
-      double $$7 = (double)$$3.w() + 0.5;
-      fwk.a($$0, $$1, $$2, $$5, $$6, $$7, $$4, 0.04F, true, 0.0F, true);
-   }
-
-   private eul b() {
-      return this.c.j.m();
+   static record a(hx a, List<yg.a> b) {
    }
 }

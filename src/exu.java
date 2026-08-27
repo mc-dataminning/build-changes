@@ -1,57 +1,49 @@
-import javax.annotation.Nullable;
+public class exu extends exe {
+   private boolean a;
 
-public abstract class exu<E extends exu.a<E>> extends ewt<E> {
-   private static final vd a = vd.c("narration.selection.usage");
-
-   public exu(eva $$0, int $$1, int $$2, int $$3, int $$4) {
-      super($$0, $$1, $$2, $$3, $$4);
-   }
-
-   @Nullable
-   @Override
-   public ewj a(fax $$0) {
-      if (this.n() == 0) {
-         return null;
-      } else if (this.aI_() && $$0 instanceof fax.a $$1) {
-         E $$2 = this.a($$1.b());
-         return $$2 != null ? ewj.a(this, ewj.a($$2)) : null;
-      } else if (!this.aI_()) {
-         E $$3 = this.i();
-         if ($$3 == null) {
-            $$3 = this.a($$0.a());
-         }
-
-         return $$3 == null ? null : ewj.a(this, ewj.a($$3));
-      } else {
-         return null;
-      }
+   public exu(int $$0, int $$1, exe.c $$2) {
+      super($$0, $$1, 20, 20, vf.c("narrator.button.difficulty_lock"), $$2, p);
    }
 
    @Override
-   public void a(far $$0) {
-      E $$1 = this.t();
-      if ($$1 != null) {
-         this.a($$0.a(), $$1);
-         $$1.b($$0);
-      } else {
-         E $$2 = this.i();
-         if ($$2 != null) {
-            this.a($$0.a(), $$2);
-            $$2.b($$0);
-         }
-      }
-
-      if (this.aI_()) {
-         $$0.a(faq.d, a);
-      }
+   protected vt aK_() {
+      return ve.a(super.aK_(), this.a() ? vf.c("narrator.button.difficulty_lock.locked") : vf.c("narrator.button.difficulty_lock.unlocked"));
    }
 
-   public abstract static class a<E extends exu.a<E>> extends ewt.a<E> implements fas {
-      public abstract vd a();
+   public boolean a() {
+      return this.a;
+   }
 
-      @Override
-      public void b(far $$0) {
-         $$0.a(faq.a, this.a());
+   public void b(boolean $$0) {
+      this.a = $$0;
+   }
+
+   @Override
+   public void b(ews $$0, int $$1, int $$2, float $$3) {
+      exu.a $$4;
+      if (!this.j) {
+         $$4 = this.a ? exu.a.c : exu.a.f;
+      } else if (this.z()) {
+         $$4 = this.a ? exu.a.b : exu.a.e;
+      } else {
+         $$4 = this.a ? exu.a.a : exu.a.d;
+      }
+
+      $$0.a($$4.g, this.B(), this.C(), this.g, this.h);
+   }
+
+   static enum a {
+      a(new ahg("widget/locked_button")),
+      b(new ahg("widget/locked_button_highlighted")),
+      c(new ahg("widget/locked_button_disabled")),
+      d(new ahg("widget/unlocked_button")),
+      e(new ahg("widget/unlocked_button_highlighted")),
+      f(new ahg("widget/unlocked_button_disabled"));
+
+      final ahg g;
+
+      private a(ahg $$0) {
+         this.g = $$0;
       }
    }
 }

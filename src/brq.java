@@ -1,22 +1,53 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.Const;
+import com.mojang.datafixers.kinds.IdF;
+import com.mojang.datafixers.kinds.K1;
+import com.mojang.datafixers.kinds.OptionalBox;
+import com.mojang.datafixers.kinds.Const.Mu;
+import com.mojang.datafixers.util.Unit;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class brq<E extends cef> extends bnw<E> {
-   public brq(int $$0) {
-      super(ImmutableMap.of(bvh.aB, bvi.a, bvh.m, bvi.b, bvh.n, bvi.c), $$0);
+public interface brq<F extends K1, Value> {
+   bvm<Value> a();
+
+   bvn b();
+
+   @Nullable
+   brp<F, Value> a(bnk<?> var1, Optional<Value> var2);
+
+   public static record a<Value>(bvm<Value> a) implements brq<Mu<Unit>, Value> {
+      @Override
+      public bvn b() {
+         return bvn.b;
+      }
+
+      @Override
+      public brp<Mu<Unit>, Value> a(bnk<?> $$0, Optional<Value> $$1) {
+         return $$1.isPresent() ? null : new brp<>($$0, this.a, Const.create(Unit.INSTANCE));
+      }
    }
 
-   protected boolean a(amz $$0, E $$1, long $$2) {
-      return true;
+   public static record b<Value>(bvm<Value> a) implements brq<com.mojang.datafixers.kinds.IdF.Mu, Value> {
+      @Override
+      public bvn b() {
+         return bvn.a;
+      }
+
+      @Override
+      public brp<com.mojang.datafixers.kinds.IdF.Mu, Value> a(bnk<?> $$0, Optional<Value> $$1) {
+         return $$1.isEmpty() ? null : new brp<>($$0, this.a, IdF.create($$1.get()));
+      }
    }
 
-   protected void b(amz $$0, E $$1, long $$2) {
-      $$1.b(bmr.n);
-      $$1.a(arm.AB, 5.0F, 1.0F);
-   }
+   public static record c<Value>(bvm<Value> a) implements brq<com.mojang.datafixers.kinds.OptionalBox.Mu, Value> {
+      @Override
+      public bvn b() {
+         return bvn.c;
+      }
 
-   protected void c(amz $$0, E $$1, long $$2) {
-      if ($$1.c(bmr.n)) {
-         $$1.b(bmr.a);
+      @Override
+      public brp<com.mojang.datafixers.kinds.OptionalBox.Mu, Value> a(bnk<?> $$0, Optional<Value> $$1) {
+         return new brp<>($$0, this.a, OptionalBox.create($$1));
       }
    }
 }

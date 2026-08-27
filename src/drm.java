@@ -1,56 +1,99 @@
-public class drm extends drn<dty> {
-   public static final int a = 4;
-   public static final int b = 4;
-   public static final int c = 1;
-   public static final float d = 0.5F;
-   private static final hx an = hx.b;
-   private final boolean ao;
+import com.mojang.serialization.Codec;
+import java.util.List;
 
-   public static hx a(hx $$0) {
-      return an.a((jb)$$0);
-   }
+public class drm extends drt<due> {
+   private static final djp a = djp.a(cwr.I);
+   private final djg b = cwr.I.o();
+   private final djg c = cwr.jF.o();
+   private final djg d = cwr.aV.o();
+   private final djg an = cwr.G.o();
 
-   public drm(boolean $$0) {
-      super(dty.a);
-      this.ao = $$0;
+   public drm(Codec<due> $$0) {
+      super($$0);
    }
 
    @Override
-   public boolean a(drp<dty> $$0) {
-      hx $$1 = $$0.e();
-      cud $$2 = $$0.b();
+   public boolean a(drv<due> $$0) {
+      cuj $$1 = $$0.b();
+      hx $$2 = $$0.e();
+      $$2 = $$2.c();
 
-      for (hx $$3 : hx.a(new hx($$1.u() - 4, $$1.v() - 1, $$1.w() - 4), new hx($$1.u() + 4, $$1.v() + 32, $$1.w() + 4))) {
-         boolean $$4 = $$3.a($$1, 2.5);
-         if ($$4 || $$3.a($$1, 3.5)) {
-            if ($$3.v() < $$1.v()) {
-               if ($$4) {
-                  this.a($$2, $$3, cwl.F.o());
-               } else if ($$3.v() < $$1.v()) {
-                  this.a($$2, $$3, cwl.fz.o());
+      while ($$1.u($$2) && $$2.v() > $$1.J_() + 2) {
+         $$2 = $$2.d();
+      }
+
+      if (!a.a($$1.a_($$2))) {
+         return false;
+      } else {
+         for (int $$3 = -2; $$3 <= 2; $$3++) {
+            for (int $$4 = -2; $$4 <= 2; $$4++) {
+               if ($$1.u($$2.b($$3, -1, $$4)) && $$1.u($$2.b($$3, -2, $$4))) {
+                  return false;
                }
-            } else if ($$3.v() > $$1.v()) {
-               this.a($$2, $$3, cwl.a.o());
-            } else if (!$$4) {
-               this.a($$2, $$3, cwl.F.o());
-            } else if (this.ao) {
-               this.a($$2, new hx($$3), cwl.fx.o());
-            } else {
-               this.a($$2, new hx($$3), cwl.a.o());
             }
          }
+
+         for (int $$5 = -2; $$5 <= 0; $$5++) {
+            for (int $$6 = -2; $$6 <= 2; $$6++) {
+               for (int $$7 = -2; $$7 <= 2; $$7++) {
+                  $$1.a($$2.b($$6, $$5, $$7), this.d, 2);
+               }
+            }
+         }
+
+         $$1.a($$2, this.an, 2);
+
+         for (ic $$8 : ic.c.a) {
+            $$1.a($$2.a($$8), this.an, 2);
+         }
+
+         hx $$9 = $$2.d();
+         $$1.a($$9, this.b, 2);
+
+         for (ic $$10 : ic.c.a) {
+            $$1.a($$9.a($$10), this.b, 2);
+         }
+
+         for (int $$11 = -2; $$11 <= 2; $$11++) {
+            for (int $$12 = -2; $$12 <= 2; $$12++) {
+               if ($$11 == -2 || $$11 == 2 || $$12 == -2 || $$12 == 2) {
+                  $$1.a($$2.b($$11, 1, $$12), this.d, 2);
+               }
+            }
+         }
+
+         $$1.a($$2.b(2, 1, 0), this.c, 2);
+         $$1.a($$2.b(-2, 1, 0), this.c, 2);
+         $$1.a($$2.b(0, 1, 2), this.c, 2);
+         $$1.a($$2.b(0, 1, -2), this.c, 2);
+
+         for (int $$13 = -1; $$13 <= 1; $$13++) {
+            for (int $$14 = -1; $$14 <= 1; $$14++) {
+               if ($$13 == 0 && $$14 == 0) {
+                  $$1.a($$2.b($$13, 4, $$14), this.d, 2);
+               } else {
+                  $$1.a($$2.b($$13, 4, $$14), this.c, 2);
+               }
+            }
+         }
+
+         for (int $$15 = 1; $$15 <= 3; $$15++) {
+            $$1.a($$2.b(-1, $$15, -1), this.d, 2);
+            $$1.a($$2.b(-1, $$15, 1), this.d, 2);
+            $$1.a($$2.b(1, $$15, -1), this.d, 2);
+            $$1.a($$2.b(1, $$15, 1), this.d, 2);
+         }
+
+         List<hx> $$17 = List.of($$2, $$2.h(), $$2.f(), $$2.g(), $$2.e());
+         auu $$18 = $$0.d();
+         b($$1, ac.a($$17, $$18).c(1));
+         b($$1, ac.a($$17, $$18).c(2));
+         return true;
       }
+   }
 
-      for (int $$5 = 0; $$5 < 4; $$5++) {
-         this.a($$2, $$1.b($$5), cwl.F.o());
-      }
-
-      hx $$6 = $$1.b(2);
-
-      for (ic $$7 : ic.c.a) {
-         this.a($$2, $$6.a($$7), cwl.cq.o().a(dfj.g, $$7));
-      }
-
-      return true;
+   private static void b(cuj $$0, hx $$1) {
+      $$0.a($$1, cwr.J.o(), 3);
+      $$0.a($$1, dgw.N).ifPresent($$1x -> $$1x.a(egt.aO, $$1.a()));
    }
 }

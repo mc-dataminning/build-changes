@@ -1,26 +1,40 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+public class dpf implements doe {
+   private static final int d = 48;
+   private static final long e = 281474976710655L;
+   private static final long f = 25214903917L;
+   private static final long g = 11L;
+   private long h;
+   private final dor i = new dor(this);
 
-public record dpf(dph b, dpe c) {
-   public static final Codec<dpf> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(dph.a.forGetter(dpf::a), dpe.a.forGetter(dpf::b)).apply($$0, $$0.stable(dpf::new))
-   );
-
-   public static <T> DataResult<T> a(DynamicOps<T> $$0, dph $$1, dpe $$2) {
-      return a.encodeStart($$0, new dpf($$1, $$2));
+   public dpf(long $$0) {
+      this.b($$0);
    }
 
-   public static <T> DataResult<T> a(DynamicOps<T> $$0, dph $$1, iu $$2) {
-      return a($$0, $$1, new dpe($$2.d(ke.aN)));
+   @Override
+   public auu d() {
+      return new dpf(this.g());
    }
 
-   public dph a() {
-      return this.b;
+   @Override
+   public dpc e() {
+      return new doq.a(this.g());
    }
 
-   public dpe b() {
-      return this.c;
+   @Override
+   public void b(long $$0) {
+      this.h = ($$0 ^ 25214903917L) & 281474976710655L;
+      this.i.a();
+   }
+
+   @Override
+   public int c(int $$0) {
+      long $$1 = this.h * 25214903917L + 11L & 281474976710655L;
+      this.h = $$1;
+      return (int)($$1 >> 48 - $$0);
+   }
+
+   @Override
+   public double k() {
+      return this.i.b();
    }
 }

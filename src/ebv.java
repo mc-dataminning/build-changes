@@ -1,55 +1,32 @@
-import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
-import java.util.List;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
-import java.util.function.Consumer;
 
-public class ebv extends dyz {
-   public static final Codec<ebv> d = a(ebv::new);
+public class ebv extends dzf {
+   public static final Codec<ebv> d = RecordCodecBuilder.create(
+      $$0 -> $$0.group(a($$0), Codec.BOOL.fieldOf("is_beached").forGetter($$0x -> $$0x.e)).apply($$0, ebv::new)
+   );
+   public final boolean e;
 
-   public ebv(dyz.c $$0) {
+   public ebv(dzf.c $$0, boolean $$1) {
       super($$0);
+      this.e = $$1;
    }
 
    @Override
-   public Optional<dyz.b> a(dyz.a $$0) {
-      dcv $$1 = dcv.a($$0.f());
-      hx $$2 = this.a($$0, $$1);
-      return $$2.v() < 60 ? Optional.empty() : Optional.of(new dyz.b($$2, (Consumer<dzr>)($$3 -> this.a($$3, $$0, $$2, $$1))));
+   public Optional<dzf.b> a(dzf.a $$0) {
+      dop.a $$1 = this.e ? dop.a.a : dop.a.c;
+      return a($$0, $$1, $$1x -> this.a($$1x, $$0));
    }
 
-   private void a(dzr $$0, dyz.a $$1, hx $$2, dcv $$3) {
-      List<ebu.i> $$4 = Lists.newLinkedList();
-      ebu.a($$1.e(), $$2, $$3, $$4, $$1.f());
-      $$4.forEach($$0::a);
-   }
-
-   @Override
-   public void a(cud $$0, cub $$1, dkx $$2, aup $$3, dyr $$4, csp $$5, dzo $$6) {
-      hx.a $$7 = new hx.a();
-      int $$8 = $$0.J_();
-      dyr $$9 = $$6.b();
-      int $$10 = $$9.i();
-
-      for (int $$11 = $$4.h(); $$11 <= $$4.k(); $$11++) {
-         for (int $$12 = $$4.j(); $$12 <= $$4.m(); $$12++) {
-            $$7.d($$11, $$10, $$12);
-            if (!$$0.u($$7) && $$9.b($$7) && $$6.a($$7)) {
-               for (int $$13 = $$10 - 1; $$13 > $$8; $$13--) {
-                  $$7.q($$13);
-                  if (!$$0.u($$7) && !$$0.a_($$7).k()) {
-                     break;
-                  }
-
-                  $$0.a($$7, cwl.m.o(), 2);
-               }
-            }
-         }
-      }
+   private void a(dzx $$0, dzf.a $$1) {
+      ddb $$2 = ddb.a($$1.f());
+      hx $$3 = new hx($$1.h().d(), 90, $$1.h().e());
+      ebu.a($$1.e(), $$3, $$2, $$0, $$1.f(), this.e);
    }
 
    @Override
-   public dzi<?> e() {
-      return dzi.p;
+   public dzo<?> e() {
+      return dzo.m;
    }
 }

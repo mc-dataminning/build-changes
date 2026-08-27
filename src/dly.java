@@ -1,94 +1,89 @@
-import com.mojang.datafixers.DataFixer;
-import com.mojang.serialization.Codec;
-import java.io.IOException;
-import java.nio.file.Path;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Supplier;
+import java.util.List;
+import java.util.function.Predicate;
 import javax.annotation.Nullable;
+import org.apache.commons.lang3.Validate;
 
-public class dly implements AutoCloseable {
-   public static final int d = 1493;
-   private final dma a;
-   protected final DataFixer e;
+public class dly<T> implements dlt<T> {
+   private final im<T> a;
    @Nullable
-   private volatile dyu b;
+   private T b;
+   private final dlu<T> c;
 
-   public dly(Path $$0, DataFixer $$1, boolean $$2) {
-      this.e = $$1;
-      this.a = new dma($$0, $$2, "chunk");
-   }
-
-   public boolean b(csp $$0, int $$1) {
-      return this.a.a($$0, $$1);
-   }
-
-   public sl a(ahc<cti> $$0, Supplier<ega> $$1, sl $$2, Optional<ahc<Codec<? extends dkx>>> $$3) {
-      int $$4 = a($$2);
-      if ($$4 < 1493) {
-         $$2 = avq.c.a(this.e, $$2, $$4, 1493);
-         if ($$2.p("Level").q("hasLegacyStructureData")) {
-            dyu $$5 = this.a($$0, $$1);
-            $$2 = $$5.a($$2);
-         }
-      }
-
-      a($$2, $$0, $$3);
-      $$2 = avq.c.a(this.e, $$2, Math.max(1493, $$4));
-      if ($$4 < aa.b().d().c()) {
-         ta.g($$2);
-      }
-
-      $$2.r("__context");
-      return $$2;
-   }
-
-   private dyu a(ahc<cti> $$0, Supplier<ega> $$1) {
-      dyu $$2 = this.b;
-      if ($$2 == null) {
-         synchronized (this) {
-            $$2 = this.b;
-            if ($$2 == null) {
-               this.b = $$2 = dyu.a($$0, $$1.get());
-            }
-         }
-      }
-
-      return $$2;
-   }
-
-   public static void a(sl $$0, ahc<cti> $$1, Optional<ahc<Codec<? extends dkx>>> $$2) {
-      sl $$3 = new sl();
-      $$3.a("dimension", $$1.a().toString());
-      $$2.ifPresent($$1x -> $$3.a("generator", $$1x.a().toString()));
-      $$0.a("__context", $$3);
-   }
-
-   public static int a(sl $$0) {
-      return ta.b($$0, -1);
-   }
-
-   public CompletableFuture<Optional<sl>> e(csp $$0) {
-      return this.a.a($$0);
-   }
-
-   public void a(csp $$0, sl $$1) {
-      this.a.a($$0, $$1);
-      if (this.b != null) {
-         this.b.a($$0.a());
+   public dly(im<T> $$0, dlu<T> $$1, List<T> $$2) {
+      this.a = $$0;
+      this.c = $$1;
+      if ($$2.size() > 0) {
+         Validate.isTrue($$2.size() <= 1, "Can't initialize SingleValuePalette with %d values.", (long)$$2.size());
+         this.b = $$2.get(0);
       }
    }
 
-   public void o() {
-      this.a.a(true).join();
+   public static <A> dlt<A> a(int $$0, im<A> $$1, dlu<A> $$2, List<A> $$3) {
+      return new dly<>($$1, $$2, $$3);
    }
 
    @Override
-   public void close() throws IOException {
-      this.a.close();
+   public int a(T $$0) {
+      if (this.b != null && this.b != $$0) {
+         return this.c.onResize(1, $$0);
+      } else {
+         this.b = $$0;
+         return 0;
+      }
    }
 
-   public dlw p() {
-      return this.a;
+   @Override
+   public boolean a(Predicate<T> $$0) {
+      if (this.b == null) {
+         throw new IllegalStateException("Use of an uninitialized palette");
+      } else {
+         return $$0.test(this.b);
+      }
+   }
+
+   @Override
+   public T a(int $$0) {
+      if (this.b != null && $$0 == 0) {
+         return this.b;
+      } else {
+         throw new IllegalStateException("Missing Palette entry for id " + $$0 + ".");
+      }
+   }
+
+   @Override
+   public void a(ui $$0) {
+      this.b = this.a.b($$0.n());
+   }
+
+   @Override
+   public void b(ui $$0) {
+      if (this.b == null) {
+         throw new IllegalStateException("Use of an uninitialized palette");
+      } else {
+         $$0.c(this.a.a(this.b));
+      }
+   }
+
+   @Override
+   public int a() {
+      if (this.b == null) {
+         throw new IllegalStateException("Use of an uninitialized palette");
+      } else {
+         return uw.a(this.a.a(this.b));
+      }
+   }
+
+   @Override
+   public int b() {
+      return 1;
+   }
+
+   @Override
+   public dlt<T> c() {
+      if (this.b == null) {
+         throw new IllegalStateException("Use of an uninitialized palette");
+      } else {
+         return this;
+      }
    }
 }

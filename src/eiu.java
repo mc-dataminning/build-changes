@@ -2,41 +2,54 @@ import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Optional;
+import java.util.Set;
 import org.slf4j.Logger;
 
-public class eiu extends eib {
+public class eiu extends eih {
    private static final Logger b = LogUtils.getLogger();
-   public static final Codec<eiu> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, eiu::new));
+   public static final Codec<eiu> a = RecordCodecBuilder.create(
+      $$0 -> a($$0)
+            .and($$0.group(ekq.a.fieldOf("damage").forGetter($$0x -> $$0x.c), Codec.BOOL.fieldOf("add").orElse(false).forGetter($$0x -> $$0x.d)))
+            .apply($$0, eiu::new)
+   );
+   private final ekp c;
+   private final boolean d;
 
-   private eiu(List<ejo> $$0) {
+   private eiu(List<eju> $$0, ekp $$1, boolean $$2) {
       super($$0);
+      this.c = $$1;
+      this.d = $$2;
    }
 
    @Override
-   public eid b() {
-      return eie.h;
+   public eij b() {
+      return eik.j;
    }
 
    @Override
-   public cmr a(cmr $$0, egp $$1) {
-      if ($$0.b()) {
-         return $$0;
+   public Set<ejd<?>> a() {
+      return this.c.a();
+   }
+
+   @Override
+   public cmx a(cmx $$0, egv $$1) {
+      if ($$0.i()) {
+         int $$2 = $$0.l();
+         float $$3 = this.d ? 1.0F - (float)$$0.k() / (float)$$2 : 0.0F;
+         float $$4 = 1.0F - aun.a(this.c.b($$1) + $$3, 0.0F, 1.0F);
+         $$0.b(aun.d($$4 * (float)$$2));
       } else {
-         Optional<cpx<cqk>> $$2 = $$1.d().r().a(cqa.b, new bkd($$0), $$1.d());
-         if ($$2.isPresent()) {
-            cmr $$3 = $$2.get().b().a($$1.d().I_());
-            if (!$$3.b()) {
-               return $$3.c($$0.L());
-            }
-         }
-
-         b.warn("Couldn't smelt {} because there is no smelting recipe", $$0);
-         return $$0;
+         b.warn("Couldn't set damage of loot item {}", $$0);
       }
+
+      return $$0;
    }
 
-   public static eib.a<?> c() {
-      return a(eiu::new);
+   public static eih.a<?> a(ekp $$0) {
+      return a($$1 -> new eiu($$1, $$0, false));
+   }
+
+   public static eih.a<?> a(ekp $$0, boolean $$1) {
+      return a($$2 -> new eiu($$2, $$0, $$1));
    }
 }

@@ -2,32 +2,32 @@ import java.util.Set;
 import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class fh implements Predicate<dje> {
-   private final dja a;
-   private final Set<dkd<?>> b;
+public class fh implements Predicate<djk> {
+   private final djg a;
+   private final Set<dkj<?>> b;
    @Nullable
-   private final sl c;
+   private final sn c;
 
-   public fh(dja $$0, Set<dkd<?>> $$1, @Nullable sl $$2) {
+   public fh(djg $$0, Set<dkj<?>> $$1, @Nullable sn $$2) {
       this.a = $$0;
       this.b = $$1;
       this.c = $$2;
    }
 
-   public dja a() {
+   public djg a() {
       return this.a;
    }
 
-   public Set<dkd<?>> b() {
+   public Set<dkj<?>> b() {
       return this.b;
    }
 
-   public boolean a(dje $$0) {
-      dja $$1 = $$0.a();
+   public boolean a(djk $$0) {
+      djg $$1 = $$0.a();
       if (!$$1.a(this.a.b())) {
          return false;
       } else {
-         for (dkd<?> $$2 : this.b) {
+         for (dkj<?> $$2 : this.b) {
             if ($$1.c($$2) != this.a.c($$2)) {
                return false;
             }
@@ -36,18 +36,18 @@ public class fh implements Predicate<dje> {
          if (this.c == null) {
             return true;
          } else {
-            dgo $$3 = $$0.b();
-            return $$3 != null && ta.a(this.c, $$3.o(), true);
+            dgu $$3 = $$0.b();
+            return $$3 != null && tc.a(this.c, $$3.o(), true);
          }
       }
    }
 
-   public boolean a(amz $$0, hx $$1) {
-      return this.a(new dje($$0, $$1, false));
+   public boolean a(and $$0, hx $$1) {
+      return this.a(new djk($$0, $$1, false));
    }
 
-   public boolean a(amz $$0, hx $$1, int $$2) {
-      dja $$3 = cwj.b(this.a, $$0, $$1);
+   public boolean a(and $$0, hx $$1, int $$2) {
+      djg $$3 = cwp.b(this.a, $$0, $$1);
       if ($$3.i()) {
          $$3 = this.a;
       }
@@ -56,7 +56,7 @@ public class fh implements Predicate<dje> {
          return false;
       } else {
          if (this.c != null) {
-            dgo $$4 = $$0.c_($$1);
+            dgu $$4 = $$0.c_($$1);
             if ($$4 != null) {
                $$4.a(this.c);
             }

@@ -1,8 +1,9 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface fig {
+   void a(fie var1);
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface fig {
+   vf aO_();
+
+   void a(ews var1, float var2, int var3);
+
+   boolean aP_();
 }

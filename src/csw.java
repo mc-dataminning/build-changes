@@ -1,27 +1,25 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import java.util.function.Predicate;
 
 public class csw {
-   public static final csw a = new csw(ImmutableList.of("vanilla"), ImmutableList.of());
-   public static final Codec<csw> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.STRING.listOf().fieldOf("Enabled").forGetter($$0x -> $$0x.c), Codec.STRING.listOf().fieldOf("Disabled").forGetter($$0x -> $$0x.d))
-            .apply($$0, csw::new)
-   );
-   private final List<String> c;
-   private final List<String> d;
+   private final els a;
+   private final els b;
+   private final Predicate<djg> c;
 
-   public csw(List<String> $$0, List<String> $$1) {
-      this.c = ImmutableList.copyOf($$0);
-      this.d = ImmutableList.copyOf($$1);
+   public csw(els $$0, els $$1, Predicate<djg> $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public List<String> a() {
+   public els a() {
+      return this.b;
+   }
+
+   public els b() {
+      return this.a;
+   }
+
+   public Predicate<djg> c() {
       return this.c;
-   }
-
-   public List<String> b() {
-      return this.d;
    }
 }

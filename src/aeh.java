@@ -1,40 +1,56 @@
-public class aeh implements xd<adg> {
-   private final int a;
-   private final ahd b;
-   private final boolean c;
+public class aeh implements xf<adj> {
+   private final double a;
+   private final double b;
+   private final double c;
+   private final float d;
+   private final float e;
 
-   public aeh(int $$0, cpx<?> $$1, boolean $$2) {
-      this.a = $$0;
-      this.b = $$1.a();
-      this.c = $$2;
+   public aeh(blu $$0) {
+      this.a = $$0.dr();
+      this.b = $$0.dt();
+      this.c = $$0.dx();
+      this.d = $$0.dC();
+      this.e = $$0.dE();
    }
 
-   public aeh(ug $$0) {
-      this.a = $$0.readByte();
-      this.b = $$0.t();
-      this.c = $$0.readBoolean();
+   public aeh(ui $$0) {
+      this.a = $$0.readDouble();
+      this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
+      this.d = $$0.readFloat();
+      this.e = $$0.readFloat();
    }
 
    @Override
-   public void a(ug $$0) {
-      $$0.k(this.a);
+   public void a(ui $$0) {
+      $$0.a(this.a);
       $$0.a(this.b);
       $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
    }
 
-   public void a(adg $$0) {
+   public void a(adj $$0) {
       $$0.a(this);
    }
 
-   public int a() {
+   public double a() {
       return this.a;
    }
 
-   public ahd d() {
+   public double d() {
       return this.b;
    }
 
-   public boolean e() {
+   public double e() {
       return this.c;
+   }
+
+   public float f() {
+      return this.d;
+   }
+
+   public float g() {
+      return this.e;
    }
 }

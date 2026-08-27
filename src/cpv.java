@@ -1,55 +1,78 @@
-import com.mojang.serialization.Codec;
+public class cpv extends cpt {
+   private static final cpy a = cpy.a(cna.qL);
+   private static final cpy b = cpy.a(cna.pr);
+   private static final cpy c = cpy.a(cna.uo);
 
-public interface cpv<C extends bjo> {
-   Codec<cpv<?>> h = kd.t.q().dispatch(cpv::ar_, cpz::a);
+   public cpv(cpr $$0) {
+      super($$0);
+   }
 
-   boolean a(C var1, cti var2);
+   public boolean a(ciq $$0, cto $$1) {
+      boolean $$2 = false;
+      int $$3 = 0;
 
-   cmr a(C var1, iu var2);
+      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
+         cmx $$5 = $$0.a($$4);
+         if (!$$5.b()) {
+            if (a.a($$5)) {
+               if ($$2) {
+                  return false;
+               }
 
-   boolean a(int var1, int var2);
-
-   cmr a(iu var1);
-
-   default iq<cmr> a(C $$0) {
-      iq<cmr> $$1 = iq.a($$0.b(), cmr.f);
-
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         cmm $$3 = $$0.a($$2).d();
-         if ($$3.t()) {
-            $$1.set($$2, new cmr($$3.s()));
+               $$2 = true;
+            } else if (b.a($$5)) {
+               if (++$$3 > 3) {
+                  return false;
+               }
+            } else if (!c.a($$5)) {
+               return false;
+            }
          }
       }
 
-      return $$1;
+      return $$2 && $$3 >= 1;
    }
 
-   default iq<cps> a() {
-      return iq.a();
+   public cmx a(ciq $$0, iu $$1) {
+      cmx $$2 = new cmx(cna.un, 3);
+      sn $$3 = $$2.a("Fireworks");
+      st $$4 = new st();
+      int $$5 = 0;
+
+      for (int $$6 = 0; $$6 < $$0.b(); $$6++) {
+         cmx $$7 = $$0.a($$6);
+         if (!$$7.b()) {
+            if (b.a($$7)) {
+               $$5++;
+            } else if (c.a($$7)) {
+               sn $$8 = $$7.b("Explosion");
+               if ($$8 != null) {
+                  $$4.add($$8);
+               }
+            }
+         }
+      }
+
+      $$3.a("Flight", (byte)$$5);
+      if (!$$4.isEmpty()) {
+         $$3.a("Explosions", $$4);
+      }
+
+      return $$2;
    }
 
-   default boolean aq_() {
-      return false;
+   @Override
+   public boolean a(int $$0, int $$1) {
+      return $$0 * $$1 >= 2;
    }
 
-   default boolean h() {
-      return true;
+   @Override
+   public cmx a(iu $$0) {
+      return new cmx(cna.un);
    }
 
-   default String c() {
-      return "";
-   }
-
-   default cmr g() {
-      return new cmr(cwl.cA);
-   }
-
-   cpz<?> ar_();
-
-   cqa<?> e();
-
-   default boolean i() {
-      iq<cps> $$0 = this.a();
-      return $$0.isEmpty() || $$0.stream().anyMatch($$0x -> $$0x.a().length == 0);
+   @Override
+   public cqf<?> ar_() {
+      return cqf.g;
    }
 }

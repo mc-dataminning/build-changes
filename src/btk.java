@@ -1,18 +1,7 @@
-public class btk extends btj {
-   private final cej h;
+import java.util.EnumSet;
 
-   public btk(cej $$0) {
-      super($$0, cfb.class, 8.0F);
-      this.h = $$0;
-   }
-
-   @Override
-   public boolean a() {
-      if (this.h.gf()) {
-         this.c = this.h.ge();
-         return true;
-      } else {
-         return false;
-      }
+public abstract class btk extends btg {
+   public btk() {
+      this.a(EnumSet.of(btg.a.a, btg.a.c));
    }
 }

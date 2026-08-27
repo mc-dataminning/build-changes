@@ -1,15 +1,25 @@
-import java.util.List;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class ecw {
-   @Nullable
-   public ecz.c a(ctl $$0, hx $$1, hx $$2, ecz.c $$3, ecz.c $$4, ecv $$5) {
-      return $$4;
+public class ecw extends ecz {
+   public static final Codec<ecw> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(kd.e.q().fieldOf("block").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("probability").forGetter($$0x -> $$0x.d)).apply($$0, ecw::new)
+   );
+   private final cwp b;
+   private final float d;
+
+   public ecw(cwp $$0, float $$1) {
+      this.b = $$0;
+      this.d = $$1;
    }
 
-   protected abstract ecy<?> a();
+   @Override
+   public boolean a(djg $$0, auu $$1) {
+      return $$0.a(this.b) && $$1.i() < this.d;
+   }
 
-   public List<ecz.c> a(ctx $$0, hx $$1, hx $$2, List<ecz.c> $$3, List<ecz.c> $$4, ecv $$5) {
-      return $$4;
+   @Override
+   protected eda<?> a() {
+      return eda.e;
    }
 }

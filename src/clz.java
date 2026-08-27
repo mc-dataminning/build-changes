@@ -1,33 +1,29 @@
-public class clz<T extends blp & bmc> extends cmm {
-   private final blt<T> a;
-   private final int b;
-
-   public clz(cmm.a $$0, blt<T> $$1, int $$2) {
+public class clz extends cms {
+   public clz(cms.a $$0) {
       super($$0);
-      this.a = $$1;
-      this.b = $$2;
    }
 
    @Override
-   public bjw<cmr> a(cti $$0, cfb $$1, bju $$2) {
-      cmr $$3 = $$1.b($$2);
-      if ($$0.B) {
-         return bjw.c($$3);
-      } else {
-         blp $$4 = $$1.da();
-         if ($$1.bO() && $$4 instanceof bmc $$5 && $$4.ai() == this.a && $$5.a()) {
-            $$3.a(this.b, $$1, $$1x -> $$1x.d($$2));
-            if ($$3.b()) {
-               cmr $$6 = new cmr(cmu.qS);
-               $$6.c($$3.v());
-               return bjw.a($$6);
-            }
+   public boolean i(cmx $$0) {
+      return true;
+   }
 
-            return bjw.a($$3);
-         }
-
-         $$1.b(arw.c.b(this));
-         return bjw.c($$3);
+   @Override
+   public bkb<cmx> a(cto $$0, cfh $$1, bjz $$2) {
+      cmx $$3 = $$1.b($$2);
+      $$0.a(null, $$1.dr(), $$1.dt(), $$1.dx(), arr.ic, ars.g, 0.5F, 0.4F / ($$0.F_().i() * 0.4F + 0.8F));
+      if (!$$0.B) {
+         cgj $$4 = new cgj($$0, $$1);
+         $$4.a($$3);
+         $$4.a($$1, $$1.dE(), $$1.dC(), -20.0F, 0.7F, 1.0F);
+         $$0.b($$4);
       }
+
+      $$1.b(asb.c.b(this));
+      if (!$$1.fT().d) {
+         $$3.h(1);
+      }
+
+      return bkb.a($$3, $$0.y_());
    }
 }

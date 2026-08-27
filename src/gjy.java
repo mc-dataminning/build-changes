@@ -1,37 +1,50 @@
-public class gjy extends gkc {
-   private final vd a;
-   private exr b = exr.a;
-   private final fct c;
-   private int v;
+import javax.annotation.Nullable;
 
-   public gjy(fct $$0, vd $$1, vd $$2) {
-      super($$1);
-      this.c = $$0;
-      this.a = $$2;
+public class gjy {
+   private final gkf a;
+   private final evk b;
+   @Nullable
+   private ezo c;
+
+   public gjy(gkf $$0, evk $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   @Override
-   public void aN_() {
-      this.f.ab().a();
-      this.b = exr.a(this.i, this.a, this.g - 50);
-      this.v = this.b.a() * 9;
-      this.d(ewy.a(vc.k, $$0 -> this.f.a(this.c)).a(this.g / 2 - 100, this.h / 2 + this.v / 2 + 9, 200, 20).a());
+   private void a() {
+      if (this.c != null) {
+         this.a.a(this.c);
+      }
+
+      vf $$0 = vf.c("tutorial.bundleInsert.title");
+      vf $$1 = vf.c("tutorial.bundleInsert.description");
+      this.c = new ezo(ezo.a.g, $$0, $$1, true);
+      this.a.a(this.c, 160);
    }
 
-   @Override
-   public vd h() {
-      return vd.i().b(this.e).f(": ").b(this.a);
+   private void b() {
+      if (this.c != null) {
+         this.a.a(this.c);
+         this.c = null;
+      }
+
+      if (!this.b.t) {
+         this.b.t = true;
+         this.b.as();
+      }
    }
 
-   @Override
-   public void aE_() {
-      eva.N().a(this.c);
-   }
-
-   @Override
-   public void a(ewm $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, this.h / 2 - this.v / 2 - 9 * 2, 11184810);
-      this.b.a($$0, this.g / 2, this.h / 2 - this.v / 2);
+   public void a(cmx $$0, cmx $$1, cii $$2) {
+      if (!this.b.t) {
+         if (!$$0.b() && $$1.a(cna.qR)) {
+            if ($$2 == cii.a) {
+               this.a();
+            } else if ($$2 == cii.b) {
+               this.b();
+            }
+         } else if ($$0.a(cna.qR) && !$$1.b() && $$2 == cii.b) {
+            this.b();
+         }
+      }
    }
 }

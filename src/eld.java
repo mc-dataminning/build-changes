@@ -1,4 +1,26 @@
-import java.nio.file.Path;
+@FunctionalInterface
+public interface eld<T> {
+   void handle(T var1, elf<T> var2, long var3);
 
-public record eld(Path a, Path b) {
+   public abstract static class a<T, C extends eld<T>> {
+      private final ahg a;
+      private final Class<?> b;
+
+      public a(ahg $$0, Class<?> $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public ahg a() {
+         return this.a;
+      }
+
+      public Class<?> b() {
+         return this.b;
+      }
+
+      public abstract void a(sn var1, C var2);
+
+      public abstract C b(sn var1);
+   }
 }

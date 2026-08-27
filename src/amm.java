@@ -1,69 +1,45 @@
-public abstract class amm extends edw {
-   protected amm(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
+public class amm {
+   private static final int b = 33;
+   private static final int c = 32;
+   private static final int d = 31;
+   public static final int a = 33 + dlh.b();
+
+   public static dlh a(int $$0) {
+      return $$0 < 33 ? dlh.n : dlh.a($$0 - 33);
    }
 
-   @Override
-   protected boolean a(long $$0) {
-      return $$0 == csp.a;
+   public static int a(dlh $$0) {
+      return 33 + dlh.a($$0);
    }
 
-   @Override
-   protected void a(long $$0, int $$1, boolean $$2) {
-      if (!$$2 || $$1 < this.f - 2) {
-         csp $$3 = new csp($$0);
-         int $$4 = $$3.e;
-         int $$5 = $$3.f;
-
-         for (int $$6 = -1; $$6 <= 1; $$6++) {
-            for (int $$7 = -1; $$7 <= 1; $$7++) {
-               long $$8 = csp.c($$4 + $$6, $$5 + $$7);
-               if ($$8 != $$0) {
-                  this.b($$0, $$8, $$1, $$2);
-               }
-            }
-         }
+   public static amw b(int $$0) {
+      if ($$0 <= 31) {
+         return amw.d;
+      } else if ($$0 <= 32) {
+         return amw.c;
+      } else {
+         return $$0 <= 33 ? amw.b : amw.a;
       }
    }
 
-   @Override
-   protected int a(long $$0, long $$1, int $$2) {
-      int $$3 = $$2;
-      csp $$4 = new csp($$0);
-      int $$5 = $$4.e;
-      int $$6 = $$4.f;
-
-      for (int $$7 = -1; $$7 <= 1; $$7++) {
-         for (int $$8 = -1; $$8 <= 1; $$8++) {
-            long $$9 = csp.c($$5 + $$7, $$6 + $$8);
-            if ($$9 == $$0) {
-               $$9 = csp.a;
-            }
-
-            if ($$9 != $$1) {
-               int $$10 = this.b($$9, $$0, this.c($$9));
-               if ($$3 > $$10) {
-                  $$3 = $$10;
-               }
-
-               if ($$3 == 0) {
-                  return $$3;
-               }
-            }
-         }
-      }
-
-      return $$3;
+   public static int a(amw $$0) {
+      return switch ($$0) {
+         case a -> a;
+         case b -> 33;
+         case c -> 32;
+         case d -> 31;
+      };
    }
 
-   @Override
-   protected int b(long $$0, long $$1, int $$2) {
-      return $$0 == csp.a ? this.b($$1) : $$2 + 1;
+   public static boolean c(int $$0) {
+      return $$0 <= 31;
    }
 
-   protected abstract int b(long var1);
+   public static boolean d(int $$0) {
+      return $$0 <= 32;
+   }
 
-   public void b(long $$0, int $$1, boolean $$2) {
-      this.a(csp.a, $$0, $$1, $$2);
+   public static boolean e(int $$0) {
+      return $$0 <= a;
    }
 }

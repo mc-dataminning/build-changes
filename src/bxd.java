@@ -1,16 +1,33 @@
-public interface bxd {
-   bxd a = a("zombie_villager_cured");
-   bxd b = a("golem_killed");
-   bxd c = a("villager_hurt");
-   bxd d = a("villager_killed");
-   bxd e = a("trade");
+public class bxd {
+   public static boolean a(bmm $$0) {
+      return $$0.N() instanceof bvt;
+   }
 
-   static bxd a(final String $$0) {
-      return new bxd() {
-         @Override
-         public String toString() {
-            return $$0;
-         }
-      };
+   public static boolean a(bmt $$0, int $$1) {
+      return $$0.fQ() && $$0.fN().a($$0.dk(), (double)($$0.fO() + (float)$$1) + 1.0);
+   }
+
+   public static boolean a(hx $$0, bmt $$1) {
+      return $$0.v() < $$1.dM().J_() || $$0.v() > $$1.dM().al();
+   }
+
+   public static boolean a(boolean $$0, bmt $$1, hx $$2) {
+      return $$0 && !$$1.a($$2);
+   }
+
+   public static boolean a(bvu $$0, hx $$1) {
+      return !$$0.a($$1);
+   }
+
+   public static boolean a(bmt $$0, hx $$1) {
+      return $$0.dM().b_($$1).a(asl.a);
+   }
+
+   public static boolean b(bmt $$0, hx $$1) {
+      return $$0.a(efk.a($$0.dM(), $$1.j())) != 0.0F;
+   }
+
+   public static boolean c(bmt $$0, hx $$1) {
+      return $$0.dM().a_($$1).e();
    }
 }

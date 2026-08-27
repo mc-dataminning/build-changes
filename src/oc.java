@@ -1,14 +1,13 @@
 import java.util.concurrent.CompletableFuture;
 
-public class oc extends oi<cmj> {
+public class oc extends of<eep> {
    public oc(km $$0, CompletableFuture<ij.b> $$1) {
-      super($$0, ke.D, $$1);
+      super($$0, ke.y, $$1, $$0x -> $$0x.k().g());
    }
 
    @Override
    protected void a(ij.b $$0) {
-      this.b(asi.a).a(cml.c).a(cml.d).a(cml.e).a(cml.f);
-      this.b(asi.b).a(cml.g).a(cml.h).a(cml.i).a(cml.j);
-      this.b(asi.c).b(asi.a).b(asi.b);
+      this.a(asl.a).a(eer.c, eer.b);
+      this.a(asl.b).a(eer.e, eer.d);
    }
 }

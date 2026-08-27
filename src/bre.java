@@ -1,40 +1,33 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public class bre extends bnw<ceo> {
-   public bre() {
-      super(ImmutableMap.of());
+public class bre {
+   private static final int a = 16;
+
+   public static boc<bmk> a(Predicate<ih<bxo>> $$0, bvm<ig> $$1) {
+      return bro.a((Function<bro.b<bmk>, ? extends App<bro.c<bmk>, brr<bmk>>>)($$2 -> $$2.group($$2.b($$1)).apply($$2, $$2x -> ($$3, $$4, $$5) -> {
+               ig $$6 = $$2.b($$2x);
+               hx $$7 = $$6.b();
+               if ($$3.ae() == $$6.a() && $$7.a($$4.dk(), 16.0)) {
+                  and $$8 = $$3.o().a($$6.a());
+                  if ($$8 == null || !$$8.y().a($$7, $$0)) {
+                     $$2x.b();
+                  } else if (a($$8, $$7, $$4)) {
+                     $$2x.b();
+                     $$3.y().b($$7);
+                     adi.c($$3, $$7);
+                  }
+
+                  return true;
+               } else {
+                  return false;
+               }
+            })));
    }
 
-   protected boolean a(amz $$0, ceo $$1, long $$2) {
-      return c($$1) || b($$1);
-   }
-
-   protected void b(amz $$0, ceo $$1, long $$2) {
-      if (c($$1) || b($$1)) {
-         bnf<?> $$3 = $$1.dO();
-         if (!$$3.c(cgn.g)) {
-            $$3.b(bvh.t);
-            $$3.b(bvh.m);
-            $$3.b(bvh.n);
-            $$3.b(bvh.r);
-            $$3.b(bvh.q);
-         }
-
-         $$3.a(cgn.g);
-      }
-   }
-
-   protected void c(amz $$0, ceo $$1, long $$2) {
-      if ($$2 % 100L == 0L) {
-         $$1.a($$0, $$2, 3);
-      }
-   }
-
-   public static boolean b(bmf $$0) {
-      return $$0.dO().a(bvh.A);
-   }
-
-   public static boolean c(bmf $$0) {
-      return $$0.dO().a(bvh.x);
+   private static boolean a(and $$0, hx $$1, bmk $$2) {
+      djg $$3 = $$0.a_($$1);
+      return $$3.a(asg.R) && $$3.c(cwi.c) && !$$2.fD();
    }
 }

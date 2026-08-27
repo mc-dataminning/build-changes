@@ -1,40 +1,68 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class cvl extends cws implements cwm {
-   public static final MapCodec<cvl> a = b(cvl::new);
-   private static final emf b = emc.a(cwj.a(0.0, 8.0, 0.0, 16.0, 16.0, 16.0), cwj.a(6.0, 0.0, 6.0, 10.0, 8.0, 10.0));
+public abstract class cvl extends cwb implements cly {
+   public static final djx a = djw.w;
+   private final ddq.a b;
 
-   @Override
-   public MapCodec<cvl> a() {
-      return a;
-   }
-
-   protected cvl(diz.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   public emf a(dja $$0, cso $$1, hx $$2, elr $$3) {
-      return b;
+   public cvl(ddq.a $$0, djf.d $$1) {
+      super($$1);
+      this.b = $$0;
+      this.k(this.E.b().a(a, Boolean.valueOf(false)));
    }
 
    @Override
-   protected boolean b(dja $$0, cso $$1, hx $$2) {
-      return $$0.a(cwl.dR) || super.b($$0, $$1, $$2);
+   protected abstract MapCodec<? extends cvl> a();
+
+   @Override
+   public dgu a(hx $$0, djg $$1) {
+      return new dif($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dgu> dgv<T> a(cto $$0, djg $$1, dgw<T> $$2) {
+      if ($$0.B) {
+         boolean $$3 = $$1.a(cwr.gO) || $$1.a(cwr.gP) || $$1.a(cwr.gQ) || $$1.a(cwr.gR);
+         if ($$3) {
+            return a($$2, dgw.p, dif::a);
+         }
+      }
+
+      return null;
+   }
+
+   public ddq.a b() {
+      return this.b;
    }
 
    @Override
-   public boolean b(ctl $$0, hx $$1, dja $$2) {
-      return $$0.b_($$1.c()).c();
+   public boolean a(djg $$0, csu $$1, hx $$2, efg $$3) {
+      return false;
    }
 
    @Override
-   public boolean a(cti $$0, aup $$1, hx $$2, dja $$3) {
-      return (double)$$0.z.i() < 0.45;
+   public blz g() {
+      return blz.f;
    }
 
    @Override
-   public void a(amz $$0, aup $$1, hx $$2, dja $$3) {
-      dip.e.a($$0, $$0.l().g(), $$2, $$3, $$1);
+   protected void a(djh.a<cwp, djg> $$0) {
+      $$0.a(a);
+   }
+
+   @Override
+   public djg a(cpg $$0) {
+      return this.o().a(a, Boolean.valueOf($$0.q().C($$0.a())));
+   }
+
+   @Override
+   public void a(djg $$0, cto $$1, hx $$2, cwp $$3, hx $$4, boolean $$5) {
+      if (!$$1.B) {
+         boolean $$6 = $$1.C($$2);
+         if ($$6 != $$0.c(a)) {
+            $$1.a($$2, $$0.a(a, Boolean.valueOf($$6)), 2);
+         }
+      }
    }
 }

@@ -1,15 +1,17 @@
-public class gfe extends gfi {
-   private static final ahd a = new ahd("back");
+import java.io.IOException;
 
-   public gfe(geg $$0) {
-      super($$0, new ahd("textures/atlas/paintings.png"), new ahd("paintings"));
+public class gfe extends aqm<int[]> {
+   private static final ahg a = new ahg("textures/colormap/foliage.png");
+
+   protected int[] a(aqh $$0, bgr $$1) {
+      try {
+         return gfh.a($$0, a);
+      } catch (IOException var4) {
+         throw new IllegalStateException("Failed to load foliage color texture", var4);
+      }
    }
 
-   public gef a(cbk $$0) {
-      return this.a(kd.l.b($$0));
-   }
-
-   public gef a() {
-      return this.a(a);
+   protected void a(int[] $$0, aqh $$1, bgr $$2) {
+      cti.a($$0);
    }
 }

@@ -1,70 +1,58 @@
-public class flo<T extends cae> extends fil<T> {
-   private static final float a = 9.0F;
-   private static final float b = 100.0F;
-   private final fmp f;
-   private final fmp g;
+import com.google.common.collect.ImmutableList;
 
-   public flo(fmp $$0) {
-      super(0.5F, 24.0F);
-      this.f = $$0.b("root");
-      this.g = this.f.b("bone").b("body").b("head");
+public class flo<T extends ccu> extends fkn<T> {
+   private static final String a = "lid";
+   private static final String b = "base";
+   private final fmv f;
+   private final fmv g;
+   private final fmv h;
+
+   public flo(fmv $$0) {
+      super(ftn::f);
+      this.g = $$0.b("lid");
+      this.f = $$0.b("base");
+      this.h = $$0.b("head");
    }
 
-   public static fmv b() {
-      fmx $$0 = new fmx();
-      fmy $$1 = $$0.a().a("root", fmu.c(), fmr.a(0.0F, 5.0F, 0.0F));
-      fmy $$2 = $$1.a("bone", fmu.c(), fmr.a(0.0F, 0.0F, 0.0F));
-      fmy $$3 = $$2.a(
-         "body",
-         fmu.c()
-            .a(62, 68)
-            .a(-12.5F, -14.0F, -20.0F, 25.0F, 29.0F, 40.0F, new fmt(0.0F))
-            .a(62, 0)
-            .a(-12.5F, -14.0F, -20.0F, 25.0F, 24.0F, 40.0F, new fmt(0.5F))
-            .a(87, 68)
-            .a(-12.5F, 12.0F, -20.0F, 25.0F, 0.0F, 40.0F, new fmt(0.0F)),
-         fmr.a(0.0F, 0.0F, 0.0F)
-      );
-      $$2.a("right_front_leg", fmu.c().a(32, 87).a(-3.5F, -1.0F, -4.0F, 7.0F, 10.0F, 8.0F, new fmt(0.0F)), fmr.a(-7.5F, 10.0F, -15.0F));
-      $$2.a("right_mid_leg", fmu.c().a(32, 105).a(-3.5F, -1.0F, -4.0F, 7.0F, 10.0F, 8.0F, new fmt(0.0F)), fmr.a(-7.5F, 10.0F, 0.0F));
-      $$2.a("right_hind_leg", fmu.c().a(32, 123).a(-3.5F, -1.0F, -4.0F, 7.0F, 10.0F, 8.0F, new fmt(0.0F)), fmr.a(-7.5F, 10.0F, 15.0F));
-      $$2.a("left_front_leg", fmu.c().a(0, 87).a(-3.5F, -1.0F, -4.0F, 7.0F, 10.0F, 8.0F, new fmt(0.0F)), fmr.a(7.5F, 10.0F, -15.0F));
-      $$2.a("left_mid_leg", fmu.c().a(0, 105).a(-3.5F, -1.0F, -4.0F, 7.0F, 10.0F, 8.0F, new fmt(0.0F)), fmr.a(7.5F, 10.0F, 0.0F));
-      $$2.a("left_hind_leg", fmu.c().a(0, 123).a(-3.5F, -1.0F, -4.0F, 7.0F, 10.0F, 8.0F, new fmt(0.0F)), fmr.a(7.5F, 10.0F, 15.0F));
-      fmy $$4 = $$3.a(
-         "head",
-         fmu.c().a(8, 15).a(-6.5F, -7.5F, -11.5F, 13.0F, 18.0F, 11.0F, new fmt(0.0F)).a(8, 4).a(-6.5F, 7.5F, -11.5F, 13.0F, 0.0F, 11.0F, new fmt(0.0F)),
-         fmr.a(0.0F, 6.5F, -19.48F)
-      );
-      $$4.a("left_ear", fmu.c().a(2, 0).a(0.0F, 0.0F, -3.0F, 1.0F, 19.0F, 7.0F, new fmt(0.0F)), fmr.a(6.51F, -7.5F, -4.51F));
-      $$4.a("right_ear", fmu.c().a(48, 0).a(-1.0F, 0.0F, -3.0F, 1.0F, 19.0F, 7.0F, new fmt(0.0F)), fmr.a(-6.51F, -7.5F, -4.51F));
-      $$4.a("nose", fmu.c().a(10, 45).a(-6.5F, -2.0F, -9.0F, 13.0F, 2.0F, 9.0F, new fmt(0.0F)), fmr.a(0.0F, -4.5F, -11.5F));
-      $$4.a("lower_beak", fmu.c().a(10, 57).a(-6.5F, -7.0F, -8.0F, 13.0F, 12.0F, 9.0F, new fmt(0.0F)), fmr.a(0.0F, 2.5F, -12.5F));
-      return fmv.a($$0, 192, 192);
+   public static fnb a() {
+      fnd $$0 = new fnd();
+      fne $$1 = $$0.a();
+      $$1.a("lid", fna.c().a(0, 0).a(-8.0F, -16.0F, -8.0F, 16.0F, 12.0F, 16.0F), fmx.a(0.0F, 24.0F, 0.0F));
+      $$1.a("base", fna.c().a(0, 28).a(-8.0F, -8.0F, -8.0F, 16.0F, 8.0F, 16.0F), fmx.a(0.0F, 24.0F, 0.0F));
+      $$1.a("head", fna.c().a(0, 52).a(-3.0F, 0.0F, -3.0F, 6.0F, 6.0F, 6.0F), fmx.a(0.0F, 12.0F, 0.0F));
+      return fnb.a($$0, 64, 64);
    }
 
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.a().e().forEach(fmp::c);
-      this.g.e = $$5 * (float) (Math.PI / 180.0);
-      this.g.f = $$4 * (float) (Math.PI / 180.0);
-      if ($$0.w()) {
-         this.a(evy.e, $$1, $$2, 9.0F, 100.0F);
-      } else {
-         this.a(evy.d, $$1, $$2, 9.0F, 100.0F);
+      float $$6 = $$3 - (float)$$0.ah;
+      float $$7 = (0.5F + $$0.E($$6)) * (float) Math.PI;
+      float $$8 = -1.0F + aun.a($$7);
+      float $$9 = 0.0F;
+      if ($$7 > (float) Math.PI) {
+         $$9 = aun.a($$3 * 0.1F) * 0.7F;
       }
 
-      this.a($$0.bX, evy.f, $$3);
-      this.a($$0.bW, evy.c, $$3);
-      this.a($$0.bY, evy.g, $$3);
-      this.a($$0.bT, evy.i, $$3);
-      this.a($$0.bU, evy.b, $$3);
-      if (this.e) {
-         this.a(evy.a);
+      this.g.a(0.0F, 16.0F + aun.a($$7) * 8.0F + $$9, 0.0F);
+      if ($$0.E($$6) > 0.3F) {
+         this.g.f = $$8 * $$8 * $$8 * $$8 * (float) Math.PI * 0.125F;
+      } else {
+         this.g.f = 0.0F;
       }
+
+      this.h.e = $$5 * (float) (Math.PI / 180.0);
+      this.h.f = ($$0.aW - 180.0F - $$0.aU) * (float) (Math.PI / 180.0);
    }
 
    @Override
-   public fmp a() {
-      return this.f;
+   public Iterable<fmv> d() {
+      return ImmutableList.of(this.f, this.g);
+   }
+
+   public fmv b() {
+      return this.g;
+   }
+
+   public fmv c() {
+      return this.h;
    }
 }

@@ -1,48 +1,44 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.brigadier.tree.LiteralCommandNode;
-import java.util.List;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import java.util.Collection;
+import javax.annotation.Nullable;
 
 public class ald {
-   private static final wa a = wa.a.a(new vj(vj.a.a, vd.c("chat.type.team.hover"))).a(new vb(vb.a.d, "/teammsg "));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(vd.c("commands.teammsg.failed.noteam"));
-
    public static void a(CommandDispatcher<ds> $$0) {
-      LiteralCommandNode<ds> $$1 = $$0.register((LiteralArgumentBuilder)dt.a("teammsg").then(dt.a("message", ej.a()).executes($$0x -> {
-         ds $$1x = (ds)$$0x.getSource();
-         blp $$2 = $$1x.g();
-         eml $$3 = $$2.cg();
-         if ($$3 == null) {
-            throw b.create();
-         } else {
-            List<ana> $$4 = $$1x.l().ae().t().stream().filter($$2x -> $$2x == $$2 || $$2x.cg() == $$3).toList();
-            if (!$$4.isEmpty()) {
-               ej.a($$0x, "message", $$4x -> a($$1x, $$2, $$3, $$4, $$4x));
-            }
+      RequiredArgumentBuilder<ds, ge> $$1 = (RequiredArgumentBuilder<ds, ge>)((RequiredArgumentBuilder)dt.a("targets", ef.d())
+            .executes($$0x -> a((ds)$$0x.getSource(), ef.f($$0x, "targets"), null, null)))
+         .then(dt.a("*").then(dt.a("sound", et.a()).suggests(hn.c).executes($$0x -> a((ds)$$0x.getSource(), ef.f($$0x, "targets"), null, et.e($$0x, "sound")))));
 
-            return $$4.size();
-         }
-      })));
-      $$0.register((LiteralArgumentBuilder)dt.a("tm").redirect($$1));
+      for (ars $$2 : ars.values()) {
+         $$1.then(
+            ((LiteralArgumentBuilder)dt.a($$2.a()).executes($$1x -> a((ds)$$1x.getSource(), ef.f($$1x, "targets"), $$2, null)))
+               .then(dt.a("sound", et.a()).suggests(hn.c).executes($$1x -> a((ds)$$1x.getSource(), ef.f($$1x, "targets"), $$2, et.e($$1x, "sound"))))
+         );
+      }
+
+      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)dt.a("stopsound").requires($$0x -> $$0x.c(2))).then($$1));
    }
 
-   private static void a(ds $$0, blp $$1, eml $$2, List<ana> $$3, vt $$4) {
-      vd $$5 = $$2.d().c(a);
-      uz.a $$6 = uz.a(uz.g, $$0).c($$5);
-      uz.a $$7 = uz.a(uz.h, $$0).c($$5);
-      vs $$8 = vs.a($$4);
-      boolean $$9 = false;
+   private static int a(ds $$0, Collection<ane> $$1, @Nullable ars $$2, @Nullable ahg $$3) {
+      acu $$4 = new acu($$3, $$2);
 
-      for (ana $$10 : $$3) {
-         uz.a $$11 = $$10 == $$1 ? $$7 : $$6;
-         boolean $$12 = $$0.a($$10);
-         $$10.a($$8, $$12, $$11);
-         $$9 |= $$12 && $$4.i();
+      for (ane $$5 : $$1) {
+         $$5.c.b($$4);
       }
 
-      if ($$9) {
-         $$0.a(aqp.f);
+      if ($$2 != null) {
+         if ($$3 != null) {
+            $$0.a(() -> vf.a("commands.stopsound.success.source.sound", vf.a($$3), $$2.a()), true);
+         } else {
+            $$0.a(() -> vf.a("commands.stopsound.success.source.any", $$2.a()), true);
+         }
+      } else if ($$3 != null) {
+         $$0.a(() -> vf.a("commands.stopsound.success.sourceless.sound", vf.a($$3)), true);
+      } else {
+         $$0.a(() -> vf.c("commands.stopsound.success.sourceless.any"), true);
       }
+
+      return $$1.size();
    }
 }

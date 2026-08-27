@@ -1,75 +1,29 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Iterables;
+import java.util.function.Function;
 
-public class fir extends fiq {
-   private static final String a = "right_body_stick";
-   private static final String b = "left_body_stick";
-   private static final String w = "shoulder_stick";
-   private static final String x = "base_plate";
-   private final fmp y;
-   private final fmp z;
-   private final fmp A;
-   private final fmp B;
+public abstract class fir<E extends blu> extends fke<E> {
+   private final float a;
+   private final float b;
 
-   public fir(fmp $$0) {
-      super($$0);
-      this.y = $$0.b("right_body_stick");
-      this.z = $$0.b("left_body_stick");
-      this.A = $$0.b("shoulder_stick");
-      this.B = $$0.b("base_plate");
-      this.l.k = false;
+   public fir(float $$0, float $$1) {
+      this($$0, $$1, ftn::e);
    }
 
-   public static fmv c() {
-      fmx $$0 = fkc.a(fmt.a, 0.0F);
-      fmy $$1 = $$0.a();
-      $$1.a("head", fmu.c().a(0, 0).a(-1.0F, -7.0F, -1.0F, 2.0F, 7.0F, 2.0F), fmr.a(0.0F, 1.0F, 0.0F));
-      $$1.a("body", fmu.c().a(0, 26).a(-6.0F, 0.0F, -1.5F, 12.0F, 3.0F, 3.0F), fmr.a);
-      $$1.a("right_arm", fmu.c().a(24, 0).a(-2.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F), fmr.a(-5.0F, 2.0F, 0.0F));
-      $$1.a("left_arm", fmu.c().a(32, 16).a().a(0.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F), fmr.a(5.0F, 2.0F, 0.0F));
-      $$1.a("right_leg", fmu.c().a(8, 0).a(-1.0F, 0.0F, -1.0F, 2.0F, 11.0F, 2.0F), fmr.a(-1.9F, 12.0F, 0.0F));
-      $$1.a("left_leg", fmu.c().a(40, 16).a().a(-1.0F, 0.0F, -1.0F, 2.0F, 11.0F, 2.0F), fmr.a(1.9F, 12.0F, 0.0F));
-      $$1.a("right_body_stick", fmu.c().a(16, 0).a(-3.0F, 3.0F, -1.0F, 2.0F, 7.0F, 2.0F), fmr.a);
-      $$1.a("left_body_stick", fmu.c().a(48, 16).a(1.0F, 3.0F, -1.0F, 2.0F, 7.0F, 2.0F), fmr.a);
-      $$1.a("shoulder_stick", fmu.c().a(0, 48).a(-4.0F, 10.0F, -1.0F, 8.0F, 2.0F, 2.0F), fmr.a);
-      $$1.a("base_plate", fmu.c().a(0, 32).a(-6.0F, 11.0F, -6.0F, 12.0F, 1.0F, 12.0F), fmr.a(0.0F, 12.0F, 0.0F));
-      return fmv.a($$0, 64, 64);
-   }
-
-   public void a(cbe $$0, float $$1, float $$2, float $$3) {
-      this.B.e = 0.0F;
-      this.B.f = (float) (Math.PI / 180.0) * -aui.j($$3, $$0.N, $$0.dC());
-      this.B.g = 0.0F;
+   public fir(float $$0, float $$1, Function<ahg, ftn> $$2) {
+      super($$2);
+      this.b = $$1;
+      this.a = $$0;
    }
 
    @Override
-   public void a(cbe $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      this.o.k = $$0.w();
-      this.n.k = $$0.w();
-      this.B.k = !$$0.y();
-      this.y.e = (float) (Math.PI / 180.0) * $$0.C().b();
-      this.y.f = (float) (Math.PI / 180.0) * $$0.C().c();
-      this.y.g = (float) (Math.PI / 180.0) * $$0.C().d();
-      this.z.e = (float) (Math.PI / 180.0) * $$0.C().b();
-      this.z.f = (float) (Math.PI / 180.0) * $$0.C().c();
-      this.z.g = (float) (Math.PI / 180.0) * $$0.C().d();
-      this.A.e = (float) (Math.PI / 180.0) * $$0.C().b();
-      this.A.f = (float) (Math.PI / 180.0) * $$0.C().c();
-      this.A.g = (float) (Math.PI / 180.0) * $$0.C().d();
-   }
-
-   @Override
-   protected Iterable<fmp> b() {
-      return Iterables.concat(super.b(), ImmutableList.of(this.y, this.z, this.A, this.B));
-   }
-
-   @Override
-   public void a(blz $$0, ept $$1) {
-      fmp $$2 = this.a($$0);
-      boolean $$3 = $$2.k;
-      $$2.k = true;
-      super.a($$0, $$1);
-      $$2.k = $$3;
+   public void a(epz $$0, eqd $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
+      if (this.e) {
+         $$0.a();
+         $$0.b(this.a, this.a, this.a);
+         $$0.a(0.0F, this.b / 16.0F, 0.0F);
+         this.a().a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$0.b();
+      } else {
+         this.a().a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      }
    }
 }

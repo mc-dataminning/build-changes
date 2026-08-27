@@ -9,25 +9,25 @@ public class jp implements jv {
          return new jp($$0, fk.a(kd.e.p(), $$1, false).a());
       }
 
-      public jp a(jw<jp> $$0, ug $$1) {
-         return new jp($$0, $$1.a(cwj.q));
+      public jp a(jw<jp> $$0, ui $$1) {
+         return new jp($$0, $$1.a(cwp.q));
       }
    };
    private final jw<jp> b;
-   private final dja c;
+   private final djg c;
 
    public static Codec<jp> a(jw<jp> $$0) {
-      return dja.b.xmap($$1 -> new jp($$0, $$1), $$0x -> $$0x.c);
+      return djg.b.xmap($$1 -> new jp($$0, $$1), $$0x -> $$0x.c);
    }
 
-   public jp(jw<jp> $$0, dja $$1) {
+   public jp(jw<jp> $$0, djg $$1) {
       this.b = $$0;
       this.c = $$1;
    }
 
    @Override
-   public void a(ug $$0) {
-      $$0.a(cwj.q, this.c);
+   public void a(ui $$0) {
+      $$0.a(cwp.q, this.c);
    }
 
    @Override
@@ -40,7 +40,7 @@ public class jp implements jv {
       return this.b;
    }
 
-   public dja c() {
+   public djg c() {
       return this.c;
    }
 }

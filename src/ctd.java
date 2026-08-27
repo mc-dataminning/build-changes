@@ -1,34 +1,31 @@
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
+import javax.annotation.Nullable;
 
-public class ctd extends efp {
-   public static final String a = "chunks";
-   private static final String b = "Forced";
-   private final LongSet c;
+public enum ctd implements csu {
+   a;
 
-   public static efp.a<ctd> a() {
-      return new efp.a<>(ctd::new, ctd::b, avq.i);
-   }
-
-   private ctd(LongSet $$0) {
-      this.c = $$0;
-   }
-
-   public ctd() {
-      this(new LongOpenHashSet());
-   }
-
-   public static ctd b(sl $$0) {
-      return new ctd(new LongOpenHashSet($$0.o("Forced")));
+   @Nullable
+   @Override
+   public dgu c_(hx $$0) {
+      return null;
    }
 
    @Override
-   public sl a(sl $$0) {
-      $$0.a("Forced", this.c.toLongArray());
-      return $$0;
+   public djg a_(hx $$0) {
+      return cwr.a.o();
    }
 
-   public LongSet b() {
-      return this.c;
+   @Override
+   public eeq b_(hx $$0) {
+      return eer.a.g();
+   }
+
+   @Override
+   public int J_() {
+      return 0;
+   }
+
+   @Override
+   public int K_() {
+      return 0;
    }
 }

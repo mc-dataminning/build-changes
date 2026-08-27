@@ -1,12 +1,38 @@
-public class gaj extends fzl<byq, flp<byq>> {
-   private static final ahd a = new ahd("textures/entity/snow_golem.png");
+public class gaj extends fyk<cgb> {
+   private static final ahg a = new ahg("textures/entity/shulker/spark.png");
+   private static final ftn f = ftn.i(a);
+   private final fln<cgb> g;
 
-   public gaj(fyf.a $$0) {
-      super($$0, new flp<>($$0.a(fmo.bs)), 0.5F);
-      this.a(new gcv(this, $$0.c(), $$0.b()));
+   public gaj(fyl.a $$0) {
+      super($$0);
+      this.g = new fln<>($$0.a(fmu.bi));
    }
 
-   public ahd a(byq $$0) {
+   protected int a(cgb $$0, hx $$1) {
+      return 15;
+   }
+
+   public void a(cgb $$0, float $$1, float $$2, epz $$3, ftf $$4, int $$5) {
+      $$3.a();
+      float $$6 = aun.j($$2, $$0.N, $$0.dC());
+      float $$7 = aun.i($$2, $$0.O, $$0.dE());
+      float $$8 = (float)$$0.ah + $$2;
+      $$3.a(0.0F, 0.15F, 0.0F);
+      $$3.a(a.d.rotationDegrees(aun.a($$8 * 0.1F) * 180.0F));
+      $$3.a(a.b.rotationDegrees(aun.b($$8 * 0.1F) * 180.0F));
+      $$3.a(a.f.rotationDegrees(aun.a($$8 * 0.15F) * 360.0F));
+      $$3.b(-0.5F, -0.5F, 0.5F);
+      this.g.a($$0, 0.0F, 0.0F, 0.0F, $$6, $$7);
+      eqd $$9 = $$4.getBuffer(this.g.a(a));
+      this.g.a($$3, $$9, $$5, gec.d, 1.0F, 1.0F, 1.0F, 1.0F);
+      $$3.b(1.5F, 1.5F, 1.5F);
+      eqd $$10 = $$4.getBuffer(f);
+      this.g.a($$3, $$10, $$5, gec.d, 1.0F, 1.0F, 1.0F, 0.15F);
+      $$3.b();
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   public ahg a(cgb $$0) {
       return a;
    }
 }

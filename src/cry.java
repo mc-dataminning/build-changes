@@ -1,16 +1,16 @@
-public class cry extends crc {
-   public cry(crc.a $$0, blu... $$1) {
-      super($$0, crd.i, $$1);
+public class cry extends cri {
+   public cry(cri.a $$0, blz... $$1) {
+      super($$0, crj.f, $$1);
    }
 
    @Override
    public int a(int $$0) {
-      return 10 + $$0 * 7;
+      return 5 + ($$0 - 1) * 9;
    }
 
    @Override
    public int b(int $$0) {
-      return 50;
+      return this.a($$0) + 15;
    }
 
    @Override
@@ -18,8 +18,7 @@ public class cry extends crc {
       return 3;
    }
 
-   @Override
-   public boolean a(crc $$0) {
-      return super.a($$0) && $$0 != crg.E && $$0 != crg.H;
+   public static float e(int $$0) {
+      return 1.0F - 1.0F / (float)($$0 + 1);
    }
 }

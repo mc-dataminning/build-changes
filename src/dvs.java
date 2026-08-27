@@ -1,17 +1,20 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class dvs {
-   public static final Codec<dvs> a = kd.V.q().dispatch(dvs::a, dvt::a);
+public record dvs(dvy b, float c) {
+   public static final Codec<dvs> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dvy.a.fieldOf("above_root_provider").forGetter($$0x -> $$0x.b),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("above_root_placement_chance").forGetter($$0x -> $$0x.c)
+            )
+            .apply($$0, dvs::new)
+   );
 
-   public static dwb a(dja $$0) {
-      return new dwb($$0);
+   public dvy a() {
+      return this.b;
    }
 
-   public static dwb a(cwj $$0) {
-      return new dwb($$0.o());
+   public float b() {
+      return this.c;
    }
-
-   protected abstract dvt<?> a();
-
-   public abstract dja a(aup var1, hx var2);
 }

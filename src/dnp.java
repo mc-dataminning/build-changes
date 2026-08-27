@@ -1,30 +1,104 @@
-import com.mojang.serialization.Codec;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 
-public interface dnp<T extends dno> {
-   dnp<dng> a = a("block", new dng.a());
-   dnp<dni> b = a("entity", new dni.a());
+public class dnp implements dnt {
+   private final List<dns> b = Lists.newArrayList();
+   private final Set<dns> c = Sets.newHashSet();
+   private final List<dns> d = Lists.newArrayList();
+   private boolean e;
+   private final and f;
+   private final int g;
+   private final dnp.a h;
 
-   T b(ug var1);
-
-   void a(ug var1, T var2);
-
-   Codec<T> a();
-
-   static <S extends dnp<T>, T extends dno> S a(String $$0, S $$1) {
-      return it.a(kd.v, $$0, $$1);
+   public dnp(and $$0, int $$1, dnp.a $$2) {
+      this.f = $$0;
+      this.g = $$1;
+      this.h = $$2;
    }
 
-   static dno c(ug $$0) {
-      dnp<?> $$1 = $$0.a(kd.v);
-      if ($$1 == null) {
-         throw new IllegalArgumentException("Unknown position source type");
+   @Override
+   public boolean a() {
+      return this.b.isEmpty();
+   }
+
+   @Override
+   public void a(dns $$0) {
+      if (this.e) {
+         this.d.add($$0);
       } else {
-         return $$1.b($$0);
+         this.b.add($$0);
+      }
+
+      adi.a(this.f, $$0);
+   }
+
+   @Override
+   public void b(dns $$0) {
+      if (this.e) {
+         this.c.add($$0);
+      } else {
+         this.b.remove($$0);
+      }
+
+      if (this.b.isEmpty()) {
+         this.h.apply(this.g);
       }
    }
 
-   static <T extends dno> void a(T $$0, ug $$1) {
-      $$1.a(kd.v, $$0.a());
-      ((dnp<T>)$$0.a()).a($$1, $$0);
+   @Override
+   public boolean a(dnq $$0, els $$1, dnq.a $$2, dnt.a $$3) {
+      this.e = true;
+      boolean $$4 = false;
+
+      try {
+         Iterator<dns> $$5 = this.b.iterator();
+
+         while ($$5.hasNext()) {
+            dns $$6 = $$5.next();
+            if (this.c.remove($$6)) {
+               $$5.remove();
+            } else {
+               Optional<els> $$7 = a(this.f, $$1, $$6);
+               if ($$7.isPresent()) {
+                  $$3.visit($$6, $$7.get());
+                  $$4 = true;
+               }
+            }
+         }
+      } finally {
+         this.e = false;
+      }
+
+      if (!this.d.isEmpty()) {
+         this.b.addAll(this.d);
+         this.d.clear();
+      }
+
+      if (!this.c.isEmpty()) {
+         this.b.removeAll(this.c);
+         this.c.clear();
+      }
+
+      return $$4;
+   }
+
+   private static Optional<els> a(and $$0, els $$1, dns $$2) {
+      Optional<els> $$3 = $$2.a().a($$0);
+      if ($$3.isEmpty()) {
+         return Optional.empty();
+      } else {
+         double $$4 = hx.a($$3.get()).j(hx.a($$1));
+         int $$5 = $$2.b() * $$2.b();
+         return $$4 > (double)$$5 ? Optional.empty() : $$3;
+      }
+   }
+
+   @FunctionalInterface
+   public interface a {
+      void apply(int var1);
    }
 }

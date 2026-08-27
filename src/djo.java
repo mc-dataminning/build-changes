@@ -1,17 +1,18 @@
-public enum djo implements ave {
-   a("floor"),
-   b("ceiling"),
-   c("single_wall"),
-   d("double_wall");
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-   private final String e;
+public class djo implements Predicate<djg> {
+   private final cwp a;
 
-   private djo(String $$0) {
-      this.e = $$0;
+   public djo(cwp $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   public String c() {
-      return this.e;
+   public static djo a(cwp $$0) {
+      return new djo($$0);
+   }
+
+   public boolean a(@Nullable djg $$0) {
+      return $$0 != null && $$0.a(this.a);
    }
 }

@@ -1,86 +1,82 @@
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import java.util.Map;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class fcg {
-   private static final Logger a = LogUtils.getLogger();
-   private static final Map<cjb<?>, fcg.a<?, ?>> b = Maps.newHashMap();
-
-   public static <T extends chu> void a(@Nullable cjb<T> $$0, eva $$1, int $$2, vd $$3) {
-      if ($$0 == null) {
-         a.warn("Trying to open invalid screen with name: {}", $$3.getString());
-      } else {
-         fcg.a<T, ?> $$4 = a($$0);
-         if ($$4 == null) {
-            a.warn("Failed to create screen for menu type: {}", kd.r.b($$0));
-         } else {
-            $$4.a($$3, $$0, $$1, $$2);
-         }
-      }
-   }
-
+public class fcg extends fcz {
+   private static final int a = 80;
+   private static final int b = 120;
+   private static final int c = 360;
    @Nullable
-   private static <T extends chu> fcg.a<T, ?> a(cjb<T> $$0) {
-      return (fcg.a<T, ?>)b.get($$0);
+   private final vf k;
+   private final vf l;
+   private final Runnable m;
+   @Nullable
+   private exx n;
+   private exe o;
+   private int p;
+
+   public static fcg a(vf $$0, vf $$1, Runnable $$2) {
+      return new fcg($$0, null, $$1, $$2, 0);
    }
 
-   private static <M extends chu, U extends fct & fex<M>> void a(cjb<? extends M> $$0, fcg.a<M, U> $$1) {
-      fcg.a<?, ?> $$2 = b.put($$0, $$1);
-      if ($$2 != null) {
-         throw new IllegalStateException("Duplicate registration for " + kd.r.b($$0));
+   public static fcg a(vf $$0, vf $$1, vf $$2, Runnable $$3) {
+      return new fcg($$0, $$1, $$2, $$3, 20);
+   }
+
+   protected fcg(vf $$0, @Nullable vf $$1, vf $$2, Runnable $$3, int $$4) {
+      super($$0);
+      this.k = $$1;
+      this.l = $$2;
+      this.m = $$3;
+      this.p = $$4;
+   }
+
+   @Override
+   protected void aN_() {
+      super.aN_();
+      if (this.k != null) {
+         this.n = exx.a(this.i, this.k, 360);
+      }
+
+      int $$0 = 150;
+      int $$1 = 20;
+      int $$2 = this.n != null ? this.n.a() : 1;
+      int $$3 = Math.max($$2, 5) * 9;
+      int $$4 = Math.min(120 + $$3, this.h - 40);
+      this.o = this.d(exe.a(this.l, $$0x -> this.aE_()).a((this.g - 150) / 2, $$4, 150, 20).a());
+   }
+
+   @Override
+   public void d() {
+      if (this.p > 0) {
+         this.p--;
+      }
+
+      this.o.j = this.p == 0;
+   }
+
+   @Override
+   public void a(ews $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, this.e, this.g / 2, 80, 16777215);
+      if (this.n == null) {
+         String $$4 = fck.a(ac.b());
+         $$0.a(this.i, $$4, this.g / 2, 120, 10526880);
+      } else {
+         this.n.a($$0, this.g / 2, 120);
       }
    }
 
-   public static boolean a() {
-      boolean $$0 = false;
-
-      for (cjb<?> $$1 : kd.r) {
-         if (!b.containsKey($$1)) {
-            a.debug("Menu {} has no matching screen", kd.r.b($$1));
-            $$0 = true;
-         }
-      }
-
-      return $$0;
+   @Override
+   public boolean aL_() {
+      return this.n != null && this.o.j;
    }
 
-   static {
-      a(cjb.a, fed::new);
-      a(cjb.b, fed::new);
-      a(cjb.c, fed::new);
-      a(cjb.d, fed::new);
-      a(cjb.e, fed::new);
-      a(cjb.f, fed::new);
-      a(cjb.g, fej::new);
-      a(cjb.h, fee::new);
-      a(cjb.i, fdv::new);
-      a(cjb.j, fdw::new);
-      a(cjb.k, fdx::new);
-      a(cjb.l, fea::new);
-      a(cjb.m, fef::new);
-      a(cjb.n, fem::new);
-      a(cjb.o, fen::new);
-      a(cjb.p, feo::new);
-      a(cjb.q, feq::new);
-      a(cjb.r, fev::new);
-      a(cjb.s, few::new);
-      a(cjb.t, fey::new);
-      a(cjb.u, ffb::new);
-      a(cjb.v, ffd::new);
-      a(cjb.w, ffe::new);
-      a(cjb.x, feb::new);
-      a(cjb.y, fff::new);
+   @Override
+   public void aE_() {
+      this.m.run();
    }
 
-   interface a<T extends chu, U extends fct & fex<T>> {
-      default void a(vd $$0, cjb<T> $$1, eva $$2, int $$3) {
-         U $$4 = this.create($$1.a($$3, $$2.s.fS()), $$2.s.fS(), $$0);
-         $$2.s.bS = $$4.D();
-         $$2.a($$4);
-      }
-
-      U create(T var1, cfa var2, vd var3);
+   @Override
+   public vf h() {
+      return ve.a(this.e, this.k != null ? this.k : ve.a);
    }
 }

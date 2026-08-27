@@ -1,72 +1,52 @@
-public abstract class cpe implements cpv<bjo> {
-   protected final cqa<?> a;
-   protected final cpk b;
-   protected final String c;
-   protected final cps d;
-   protected final cmr e;
-   protected final float f;
-   protected final int g;
+import java.util.Optional;
 
-   public cpe(cqa<?> $$0, String $$1, cpk $$2, cps $$3, cmr $$4, float $$5, int $$6) {
-      this.a = $$0;
-      this.b = $$2;
-      this.c = $$1;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
-      this.g = $$6;
+public class cpe {
+   public static final ahf<cpd> a = a("sentry");
+   public static final ahf<cpd> b = a("dune");
+   public static final ahf<cpd> c = a("coast");
+   public static final ahf<cpd> d = a("wild");
+   public static final ahf<cpd> e = a("ward");
+   public static final ahf<cpd> f = a("eye");
+   public static final ahf<cpd> g = a("vex");
+   public static final ahf<cpd> h = a("tide");
+   public static final ahf<cpd> i = a("snout");
+   public static final ahf<cpd> j = a("rib");
+   public static final ahf<cpd> k = a("spire");
+   public static final ahf<cpd> l = a("wayfinder");
+   public static final ahf<cpd> m = a("shaper");
+   public static final ahf<cpd> n = a("silence");
+   public static final ahf<cpd> o = a("raiser");
+   public static final ahf<cpd> p = a("host");
+
+   public static void a(pe<cpd> $$0) {
+      a($$0, cna.xk, a);
+      a($$0, cna.xl, b);
+      a($$0, cna.xm, c);
+      a($$0, cna.xn, d);
+      a($$0, cna.xo, e);
+      a($$0, cna.xp, f);
+      a($$0, cna.xq, g);
+      a($$0, cna.xr, h);
+      a($$0, cna.xs, i);
+      a($$0, cna.xt, j);
+      a($$0, cna.xu, k);
+      a($$0, cna.xv, l);
+      a($$0, cna.xw, m);
+      a($$0, cna.xx, n);
+      a($$0, cna.xy, o);
+      a($$0, cna.xz, p);
    }
 
-   @Override
-   public boolean a(bjo $$0, cti $$1) {
-      return this.d.a($$0.a(0));
+   public static Optional<ih.c<cpd>> a(iu $$0, cmx $$1) {
+      return $$0.d(ke.aJ).h().filter($$1x -> $$1.a(((cpd)$$1x.a()).b())).findFirst();
    }
 
-   @Override
-   public cmr a(bjo $$0, iu $$1) {
-      return this.e.p();
+   private static void a(pe<cpd> $$0, cms $$1, ahf<cpd> $$2) {
+      cpd $$3 = new cpd($$2.a(), kd.h.d($$1), vf.c(ac.a("trim_pattern", $$2.a())), false);
+      $$0.a($$2, $$3);
    }
 
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return true;
-   }
-
-   @Override
-   public iq<cps> a() {
-      iq<cps> $$0 = iq.a();
-      $$0.add(this.d);
-      return $$0;
-   }
-
-   public float b() {
-      return this.f;
-   }
-
-   @Override
-   public cmr a(iu $$0) {
-      return this.e;
-   }
-
-   @Override
-   public String c() {
-      return this.c;
-   }
-
-   public int d() {
-      return this.g;
-   }
-
-   @Override
-   public cqa<?> e() {
-      return this.a;
-   }
-
-   public cpk f() {
-      return this.b;
-   }
-
-   public interface a<T extends cpe> {
-      T create(String var1, cpk var2, cps var3, cmr var4, float var5, int var6);
+   private static ahf<cpd> a(String $$0) {
+      return ahf.a(ke.aJ, new ahg($$0));
    }
 }

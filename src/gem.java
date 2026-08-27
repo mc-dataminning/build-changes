@@ -1,34 +1,208 @@
-import com.google.common.collect.BiMap;
-import com.google.common.collect.HashBiMap;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.List;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.Iterator;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Set;
+import java.util.Map.Entry;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import org.slf4j.Logger;
 
-public class gem {
-   private static final BiMap<ahd, gel> i = HashBiMap.create();
-   public static final gel a = a("single", ger.b);
-   public static final gel b = a("directory", geo.b);
-   public static final gel c = a("filter", ges.b);
-   public static final gel d = a("unstitch", get.b);
-   public static final gel e = a("paletted_permutations", geq.b);
-   public static Codec<gel> f = ahd.a.flatXmap($$0 -> {
-      gel $$1 = (gel)i.get($$0);
-      return $$1 != null ? DataResult.success($$1) : DataResult.error(() -> "Unknown type " + $$0);
-   }, $$0 -> {
-      ahd $$1 = (ahd)i.inverse().get($$0);
-      return $$0 != null ? DataResult.success($$1) : DataResult.error(() -> "Unknown type " + $$1);
-   });
-   public static Codec<gej> g = f.dispatch(gej::a, gel::a);
-   public static Codec<List<gej>> h = g.listOf().fieldOf("sources").codec();
+public class gem implements aqb, gen, AutoCloseable {
+   private static final Logger b = LogUtils.getLogger();
+   public static final ahg a = new ahg("");
+   private final Map<ahg, gdw> c = Maps.newHashMap();
+   private final Set<gen> d = Sets.newHashSet();
+   private final Map<String, Integer> e = Maps.newHashMap();
+   private final aqh f;
 
-   private static gel a(String $$0, Codec<? extends gej> $$1) {
-      gel $$2 = new gel($$1);
-      ahd $$3 = new ahd($$0);
-      gel $$4 = (gel)i.putIfAbsent($$3, $$2);
-      if ($$4 != null) {
-         throw new IllegalStateException("Duplicate registration " + $$3);
+   public gem(aqh $$0) {
+      this.f = $$0;
+   }
+
+   public void a(ahg $$0) {
+      if (!RenderSystem.isOnRenderThread()) {
+         RenderSystem.recordRenderCall(() -> this.d($$0));
       } else {
-         return $$2;
+         this.d($$0);
       }
+   }
+
+   private void d(ahg $$0) {
+      gdw $$1 = this.c.get($$0);
+      if ($$1 == null) {
+         $$1 = new gee($$0);
+         this.a($$0, $$1);
+      }
+
+      $$1.c();
+   }
+
+   public void a(ahg $$0, gdw $$1) {
+      $$1 = this.d($$0, $$1);
+      gdw $$2 = this.c.put($$0, $$1);
+      if ($$2 != $$1) {
+         if ($$2 != null && $$2 != geb.c()) {
+            this.c($$0, $$2);
+         }
+
+         if ($$1 instanceof gen) {
+            this.d.add((gen)$$1);
+         }
+      }
+   }
+
+   private void c(ahg $$0, gdw $$1) {
+      if ($$1 != geb.c()) {
+         this.d.remove($$1);
+
+         try {
+            $$1.close();
+         } catch (Exception var4) {
+            b.warn("Failed to close texture {}", $$0, var4);
+         }
+      }
+
+      $$1.b();
+   }
+
+   private gdw d(ahg $$0, gdw $$1) {
+      try {
+         $$1.a(this.f);
+         return $$1;
+      } catch (IOException var6) {
+         if ($$0 != a) {
+            b.warn("Failed to load texture: {}", $$0, var6);
+         }
+
+         return geb.c();
+      } catch (Throwable var7) {
+         o $$4 = o.a(var7, "Registering texture");
+         p $$5 = $$4.a("Resource location being registered");
+         $$5.a("Resource location", $$0);
+         $$5.a("Texture object class", () -> $$1.getClass().getName());
+         throw new y($$4);
+      }
+   }
+
+   public gdw b(ahg $$0) {
+      gdw $$1 = this.c.get($$0);
+      if ($$1 == null) {
+         $$1 = new gee($$0);
+         this.a($$0, $$1);
+      }
+
+      return $$1;
+   }
+
+   public gdw b(ahg $$0, gdw $$1) {
+      return this.c.getOrDefault($$0, $$1);
+   }
+
+   public ahg a(String $$0, gdy $$1) {
+      Integer $$2 = this.e.get($$0);
+      if ($$2 == null) {
+         $$2 = 1;
+      } else {
+         $$2 = $$2 + 1;
+      }
+
+      this.e.put($$0, $$2);
+      ahg $$3 = new ahg(String.format(Locale.ROOT, "dynamic/%s_%d", $$0, $$2));
+      this.a($$3, $$1);
+      return $$3;
+   }
+
+   public CompletableFuture<Void> a(ahg $$0, Executor $$1) {
+      if (!this.c.containsKey($$0)) {
+         ged $$2 = new ged(this.f, $$0, $$1);
+         this.c.put($$0, $$2);
+         return $$2.d().thenRunAsync(() -> this.a($$0, (gdw)$$2), gem::a);
+      } else {
+         return CompletableFuture.completedFuture(null);
+      }
+   }
+
+   private static void a(Runnable $$0) {
+      evg.O().execute(() -> RenderSystem.recordRenderCall($$0::run));
+   }
+
+   @Override
+   public void e() {
+      for (gen $$0 : this.d) {
+         $$0.e();
+      }
+   }
+
+   public void c(ahg $$0) {
+      gdw $$1 = this.c.remove($$0);
+      if ($$1 != null) {
+         this.c($$0, $$1);
+      }
+   }
+
+   @Override
+   public void close() {
+      this.c.forEach(this::c);
+      this.c.clear();
+      this.d.clear();
+      this.e.clear();
+   }
+
+   @Override
+   public CompletableFuture<Void> a(aqb.a $$0, aqh $$1, bgr $$2, bgr $$3, Executor $$4, Executor $$5) {
+      CompletableFuture<Void> $$6 = new CompletableFuture<>();
+      fde.a(this, $$4).thenCompose($$0::a).thenAcceptAsync($$3x -> {
+         geb.c();
+         etc.a(this.f);
+         Iterator<Entry<ahg, gdw>> $$4x = this.c.entrySet().iterator();
+
+         while ($$4x.hasNext()) {
+            Entry<ahg, gdw> $$5x = $$4x.next();
+            ahg $$6x = $$5x.getKey();
+            gdw $$7 = $$5x.getValue();
+            if ($$7 == geb.c() && !$$6x.equals(geb.b())) {
+               $$4x.remove();
+            } else {
+               $$7.a(this, $$1, $$6x, $$5);
+            }
+         }
+
+         evg.O().i(() -> $$6.complete(null));
+      }, $$0x -> RenderSystem.recordRenderCall($$0x::run));
+      return $$6;
+   }
+
+   public void a(Path $$0) {
+      if (!RenderSystem.isOnRenderThread()) {
+         RenderSystem.recordRenderCall(() -> this.b($$0));
+      } else {
+         this.b($$0);
+      }
+   }
+
+   private void b(Path $$0) {
+      try {
+         Files.createDirectories($$0);
+      } catch (IOException var3) {
+         b.error("Failed to create directory {}", $$0, var3);
+         return;
+      }
+
+      this.c.forEach(($$1, $$2) -> {
+         if ($$2 instanceof gdx $$3) {
+            try {
+               $$3.a($$1, $$0);
+            } catch (IOException var5) {
+               b.error("Failed to dump texture {}", $$1, var5);
+            }
+         }
+      });
    }
 }

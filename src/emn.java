@@ -1,81 +1,66 @@
+import java.util.function.IntFunction;
 import javax.annotation.Nullable;
 
-public class emn implements emm {
-   private static final String a = "Score";
-   private static final String b = "Locked";
-   private static final String c = "display";
-   private static final String d = "format";
-   private int e;
-   private boolean f = true;
-   @Nullable
-   private vd g;
-   @Nullable
-   private wt h;
+public enum emn implements avj {
+   a(0, "list"),
+   b(1, "sidebar"),
+   c(2, "below_name"),
+   d(3, "sidebar.team.black"),
+   e(4, "sidebar.team.dark_blue"),
+   f(5, "sidebar.team.dark_green"),
+   g(6, "sidebar.team.dark_aqua"),
+   h(7, "sidebar.team.dark_red"),
+   i(8, "sidebar.team.dark_purple"),
+   j(9, "sidebar.team.gold"),
+   k(10, "sidebar.team.gray"),
+   l(11, "sidebar.team.dark_gray"),
+   m(12, "sidebar.team.blue"),
+   n(13, "sidebar.team.green"),
+   o(14, "sidebar.team.aqua"),
+   p(15, "sidebar.team.red"),
+   q(16, "sidebar.team.light_purple"),
+   r(17, "sidebar.team.yellow"),
+   s(18, "sidebar.team.white");
 
-   @Override
+   public static final avj.a<emn> t = avj.a(emn::values);
+   public static final IntFunction<emn> u = atf.a(emn::a, values(), atf.a.a);
+   private final int v;
+   private final String w;
+
+   private emn(int $$0, String $$1) {
+      this.v = $$0;
+      this.w = $$1;
+   }
+
    public int a() {
-      return this.e;
-   }
-
-   public void a(int $$0) {
-      this.e = $$0;
+      return this.v;
    }
 
    @Override
-   public boolean b() {
-      return this.f;
-   }
-
-   public void a(boolean $$0) {
-      this.f = $$0;
+   public String c() {
+      return this.w;
    }
 
    @Nullable
-   public vd d() {
-      return this.g;
-   }
-
-   public void a(@Nullable vd $$0) {
-      this.g = $$0;
-   }
-
-   @Nullable
-   @Override
-   public wt c() {
-      return this.h;
-   }
-
-   public void b(@Nullable wt $$0) {
-      this.h = $$0;
-   }
-
-   public sl e() {
-      sl $$0 = new sl();
-      $$0.a("Score", this.e);
-      $$0.a("Locked", this.f);
-      if (this.g != null) {
-         $$0.a("display", vd.a.a(this.g));
-      }
-
-      if (this.h != null) {
-         wv.b.encodeStart(sz.a, this.h).result().ifPresent($$1 -> $$0.a("format", $$1));
-      }
-
-      return $$0;
-   }
-
-   public static emn a(sl $$0) {
-      emn $$1 = new emn();
-      $$1.e = $$0.h("Score");
-      $$1.f = $$0.q("Locked");
-      if ($$0.b("display", 8)) {
-         $$1.g = vd.a.a($$0.l("display"));
-      }
-
-      if ($$0.b("format", 10)) {
-         wv.b.parse(sz.a, $$0.c("format")).result().ifPresent($$1x -> $$1.h = $$1x);
-      }
-
-      return $$1;
+   public static emn a(n $$0) {
+      return switch ($$0) {
+         case a -> d;
+         case b -> e;
+         case c -> f;
+         case d -> g;
+         case e -> h;
+         case f -> i;
+         case g -> j;
+         case h -> k;
+         case i -> l;
+         case j -> m;
+         case k -> n;
+         case l -> o;
+         case m -> p;
+         case n -> q;
+         case o -> r;
+         case p -> s;
+         case r, u, t, v, q, s -> null;
+      };
    }
 }

@@ -1,172 +1,37 @@
-public class fkp extends fjy<byi> {
-   private static final String a = "feather";
-   private final fmp b;
-   private final fmp f;
-   private final fmp g;
-   private final fmp h;
-   private final fmp i;
-   private final fmp j;
-   private final fmp k;
-   private final fmp l;
-   private final fmp m;
+public class fkp<T extends blu> extends fke<T> {
+   private static final String a = "main";
+   private final fmv b;
 
-   public fkp(fmp $$0) {
+   public fkp(fmv $$0) {
       this.b = $$0;
-      this.f = $$0.b("body");
-      this.g = $$0.b("tail");
-      this.h = $$0.b("left_wing");
-      this.i = $$0.b("right_wing");
-      this.j = $$0.b("head");
-      this.k = this.j.b("feather");
-      this.l = $$0.b("left_leg");
-      this.m = $$0.b("right_leg");
    }
 
-   public static fmv b() {
-      fmx $$0 = new fmx();
-      fmy $$1 = $$0.a();
-      $$1.a("body", fmu.c().a(2, 8).a(-1.5F, 0.0F, -1.5F, 3.0F, 6.0F, 3.0F), fmr.a(0.0F, 16.5F, -3.0F));
-      $$1.a("tail", fmu.c().a(22, 1).a(-1.5F, -1.0F, -1.0F, 3.0F, 4.0F, 1.0F), fmr.a(0.0F, 21.07F, 1.16F));
-      $$1.a("left_wing", fmu.c().a(19, 8).a(-0.5F, 0.0F, -1.5F, 1.0F, 5.0F, 3.0F), fmr.a(1.5F, 16.94F, -2.76F));
-      $$1.a("right_wing", fmu.c().a(19, 8).a(-0.5F, 0.0F, -1.5F, 1.0F, 5.0F, 3.0F), fmr.a(-1.5F, 16.94F, -2.76F));
-      fmy $$2 = $$1.a("head", fmu.c().a(2, 2).a(-1.0F, -1.5F, -1.0F, 2.0F, 3.0F, 2.0F), fmr.a(0.0F, 15.69F, -2.76F));
-      $$2.a("head2", fmu.c().a(10, 0).a(-1.0F, -0.5F, -2.0F, 2.0F, 1.0F, 4.0F), fmr.a(0.0F, -2.0F, -1.0F));
-      $$2.a("beak1", fmu.c().a(11, 7).a(-0.5F, -1.0F, -0.5F, 1.0F, 2.0F, 1.0F), fmr.a(0.0F, -0.5F, -1.5F));
-      $$2.a("beak2", fmu.c().a(16, 7).a(-0.5F, 0.0F, -0.5F, 1.0F, 2.0F, 1.0F), fmr.a(0.0F, -1.75F, -2.45F));
-      $$2.a("feather", fmu.c().a(2, 18).a(0.0F, -4.0F, -2.0F, 0.0F, 5.0F, 4.0F), fmr.a(0.0F, -2.15F, 0.15F));
-      fmu $$3 = fmu.c().a(14, 18).a(-0.5F, 0.0F, -0.5F, 1.0F, 2.0F, 1.0F);
-      $$1.a("left_leg", $$3, fmr.a(1.0F, 22.0F, -1.05F));
-      $$1.a("right_leg", $$3, fmr.a(-1.0F, 22.0F, -1.05F));
-      return fmv.a($$0, 32, 32);
+   public static fnb b() {
+      fnd $$0 = new fnd();
+      fne $$1 = $$0.a();
+      int $$2 = 2;
+      $$1.a(
+         "main",
+         fna.c()
+            .a(0, 0)
+            .a(-4.0F, 0.0F, 0.0F, 2.0F, 2.0F, 2.0F)
+            .a(0.0F, -4.0F, 0.0F, 2.0F, 2.0F, 2.0F)
+            .a(0.0F, 0.0F, -4.0F, 2.0F, 2.0F, 2.0F)
+            .a(0.0F, 0.0F, 0.0F, 2.0F, 2.0F, 2.0F)
+            .a(2.0F, 0.0F, 0.0F, 2.0F, 2.0F, 2.0F)
+            .a(0.0F, 2.0F, 0.0F, 2.0F, 2.0F, 2.0F)
+            .a(0.0F, 0.0F, 2.0F, 2.0F, 2.0F, 2.0F),
+         fmx.a
+      );
+      return fnb.a($$0, 64, 32);
    }
 
    @Override
-   public fmp a() {
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+   }
+
+   @Override
+   public fmv a() {
       return this.b;
-   }
-
-   public void a(byi $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.a(a($$0), $$0.ah, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   public void a(byi $$0, float $$1, float $$2, float $$3) {
-      this.a(a($$0));
-   }
-
-   public void a(ept $$0, epx $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7, int $$8) {
-      this.a(fkp.a.e);
-      this.a(fkp.a.e, $$8, $$4, $$5, 0.0F, $$6, $$7);
-      this.b.a($$0, $$1, $$2, $$3);
-   }
-
-   private void a(fkp.a $$0, int $$1, float $$2, float $$3, float $$4, float $$5, float $$6) {
-      this.j.e = $$6 * (float) (Math.PI / 180.0);
-      this.j.f = $$5 * (float) (Math.PI / 180.0);
-      this.j.g = 0.0F;
-      this.j.b = 0.0F;
-      this.f.b = 0.0F;
-      this.g.b = 0.0F;
-      this.i.b = -1.5F;
-      this.h.b = 1.5F;
-      switch ($$0) {
-         case c:
-            break;
-         case d:
-            float $$7 = aui.b((float)$$1);
-            float $$8 = aui.a((float)$$1);
-            this.j.b = $$7;
-            this.j.c = 15.69F + $$8;
-            this.j.e = 0.0F;
-            this.j.f = 0.0F;
-            this.j.g = aui.a((float)$$1) * 0.4F;
-            this.f.b = $$7;
-            this.f.c = 16.5F + $$8;
-            this.h.g = -0.0873F - $$4;
-            this.h.b = 1.5F + $$7;
-            this.h.c = 16.94F + $$8;
-            this.i.g = 0.0873F + $$4;
-            this.i.b = -1.5F + $$7;
-            this.i.c = 16.94F + $$8;
-            this.g.b = $$7;
-            this.g.c = 21.07F + $$8;
-            break;
-         case b:
-            this.l.e = this.l.e + aui.b($$2 * 0.6662F) * 1.4F * $$3;
-            this.m.e = this.m.e + aui.b($$2 * 0.6662F + (float) Math.PI) * 1.4F * $$3;
-         case a:
-         case e:
-         default:
-            float $$9 = $$4 * 0.3F;
-            this.j.c = 15.69F + $$9;
-            this.g.e = 1.015F + aui.b($$2 * 0.6662F) * 0.3F * $$3;
-            this.g.c = 21.07F + $$9;
-            this.f.c = 16.5F + $$9;
-            this.h.g = -0.0873F - $$4;
-            this.h.c = 16.94F + $$9;
-            this.i.g = 0.0873F + $$4;
-            this.i.c = 16.94F + $$9;
-            this.l.c = 22.0F + $$9;
-            this.m.c = 22.0F + $$9;
-      }
-   }
-
-   private void a(fkp.a $$0) {
-      this.k.e = -0.2214F;
-      this.f.e = 0.4937F;
-      this.h.e = -0.6981F;
-      this.h.f = (float) -Math.PI;
-      this.i.e = -0.6981F;
-      this.i.f = (float) -Math.PI;
-      this.l.e = -0.0299F;
-      this.m.e = -0.0299F;
-      this.l.c = 22.0F;
-      this.m.c = 22.0F;
-      this.l.g = 0.0F;
-      this.m.g = 0.0F;
-      switch ($$0) {
-         case c:
-            float $$1 = 1.9F;
-            this.j.c = 17.59F;
-            this.g.e = 1.5388988F;
-            this.g.c = 22.97F;
-            this.f.c = 18.4F;
-            this.h.g = -0.0873F;
-            this.h.c = 18.84F;
-            this.i.g = 0.0873F;
-            this.i.c = 18.84F;
-            this.l.c++;
-            this.m.c++;
-            this.l.e++;
-            this.m.e++;
-            break;
-         case d:
-            this.l.g = (float) (-Math.PI / 9);
-            this.m.g = (float) (Math.PI / 9);
-         case b:
-         case e:
-         default:
-            break;
-         case a:
-            this.l.e += (float) (Math.PI * 2.0 / 9.0);
-            this.m.e += (float) (Math.PI * 2.0 / 9.0);
-      }
-   }
-
-   private static fkp.a a(byi $$0) {
-      if ($$0.gl()) {
-         return fkp.a.d;
-      } else if ($$0.A()) {
-         return fkp.a.c;
-      } else {
-         return $$0.gr() ? fkp.a.a : fkp.a.b;
-      }
-   }
-
-   public static enum a {
-      a,
-      b,
-      c,
-      d,
-      e;
    }
 }

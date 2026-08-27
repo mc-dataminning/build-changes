@@ -1,106 +1,70 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableSet.Builder;
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.OptionalInt;
-import java.util.Set;
-import java.util.function.Function;
+import com.mojang.datafixers.DataFixer;
+import com.mojang.logging.LogUtils;
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
 public class ego {
-   private static final Codec<ego> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(atq.a(ekk.a, "min").forGetter($$0x -> Optional.ofNullable($$0x.c)), atq.a(ekk.a, "max").forGetter($$0x -> Optional.ofNullable($$0x.d)))
-            .apply($$0, ego::new)
-   );
-   public static final Codec<ego> a = Codec.either(Codec.INT, b).xmap($$0 -> (ego)$$0.map(ego::a, Function.identity()), $$0 -> {
-      OptionalInt $$1 = $$0.b();
-      return $$1.isPresent() ? Either.left($$1.getAsInt()) : Either.right($$0);
-   });
-   @Nullable
-   private final ekj c;
-   @Nullable
-   private final ekj d;
-   private final ego.b e;
-   private final ego.a f;
+   private static final Logger b = LogUtils.getLogger();
+   private final File c;
+   protected final DataFixer a;
 
-   public Set<eix<?>> a() {
-      Builder<eix<?>> $$0 = ImmutableSet.builder();
-      if (this.c != null) {
-         $$0.addAll(this.c.a());
-      }
-
-      if (this.d != null) {
-         $$0.addAll(this.d.a());
-      }
-
-      return $$0.build();
+   public ego(egl.c $$0, DataFixer $$1) {
+      this.a = $$1;
+      this.c = $$0.a(egj.c).toFile();
+      this.c.mkdirs();
    }
 
-   private ego(Optional<ekj> $$0, Optional<ekj> $$1) {
-      this($$0.orElse(null), $$1.orElse(null));
+   public void a(cfh $$0) {
+      try {
+         sn $$1 = $$0.f(new sn());
+         Path $$2 = this.c.toPath();
+         Path $$3 = Files.createTempFile($$2, $$0.cx() + "-", ".dat");
+         ta.a($$1, $$3);
+         Path $$4 = $$2.resolve($$0.cx() + ".dat");
+         Path $$5 = $$2.resolve($$0.cx() + ".dat_old");
+         ac.a($$4, $$3, $$5);
+      } catch (Exception var7) {
+         b.warn("Failed to save player data for {}", $$0.ad().getString());
+      }
    }
 
-   private ego(@Nullable ekj $$0, @Nullable ekj $$1) {
-      this.c = $$0;
-      this.d = $$1;
-      if ($$0 == null) {
-         if ($$1 == null) {
-            this.e = ($$0x, $$1x) -> $$1x;
-            this.f = ($$0x, $$1x) -> true;
-         } else {
-            this.e = ($$1x, $$2) -> Math.min($$1.a($$1x), $$2);
-            this.f = ($$1x, $$2) -> $$2 <= $$1.a($$1x);
+   @Nullable
+   public sn b(cfh $$0) {
+      sn $$1 = null;
+
+      try {
+         File $$2 = new File(this.c, $$0.cx() + ".dat");
+         if ($$2.exists() && $$2.isFile()) {
+            $$1 = ta.a($$2.toPath(), sw.a());
          }
-      } else if ($$1 == null) {
-         this.e = ($$1x, $$2) -> Math.max($$0.a($$1x), $$2);
-         this.f = ($$1x, $$2) -> $$2 >= $$0.a($$1x);
-      } else {
-         this.e = ($$2, $$3) -> aui.a($$3, $$0.a($$2), $$1.a($$2));
-         this.f = ($$2, $$3) -> $$3 >= $$0.a($$2) && $$3 <= $$1.a($$2);
+      } catch (Exception var4) {
+         b.warn("Failed to load player data for {}", $$0.ad().getString());
       }
+
+      if ($$1 != null) {
+         int $$4 = tc.b($$1, -1);
+         $$1 = avv.b.a(this.a, $$1, $$4);
+         $$0.g($$1);
+      }
+
+      return $$1;
    }
 
-   public static ego a(int $$0) {
-      ekh $$1 = ekh.a((float)$$0);
-      return new ego(Optional.of($$1), Optional.of($$1));
-   }
+   public String[] a() {
+      String[] $$0 = this.c.list();
+      if ($$0 == null) {
+         $$0 = new String[0];
+      }
 
-   public static ego a(int $$0, int $$1) {
-      return new ego(Optional.of(ekh.a((float)$$0)), Optional.of(ekh.a((float)$$1)));
-   }
+      for (int $$1 = 0; $$1 < $$0.length; $$1++) {
+         if ($$0[$$1].endsWith(".dat")) {
+            $$0[$$1] = $$0[$$1].substring(0, $$0[$$1].length() - 4);
+         }
+      }
 
-   public static ego b(int $$0) {
-      return new ego(Optional.of(ekh.a((float)$$0)), Optional.empty());
-   }
-
-   public static ego c(int $$0) {
-      return new ego(Optional.empty(), Optional.of(ekh.a((float)$$0)));
-   }
-
-   public int a(egp $$0, int $$1) {
-      return this.e.apply($$0, $$1);
-   }
-
-   public boolean b(egp $$0, int $$1) {
-      return this.f.test($$0, $$1);
-   }
-
-   private OptionalInt b() {
-      return Objects.equals(this.c, this.d) && this.c instanceof ekh $$0 && Math.floor((double)$$0.c()) == (double)$$0.c()
-         ? OptionalInt.of((int)$$0.c())
-         : OptionalInt.empty();
-   }
-
-   @FunctionalInterface
-   interface a {
-      boolean test(egp var1, int var2);
-   }
-
-   @FunctionalInterface
-   interface b {
-      int apply(egp var1, int var2);
+      return $$0;
    }
 }

@@ -1,24 +1,14 @@
-public class clk extends cmm {
-   public clk(cmm.a $$0) {
-      super($$0);
+public class clk extends ckq {
+   public clk(cwp $$0, cms.a $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public bjw<cmr> a(cti $$0, cfb $$1, bju $$2) {
-      cmr $$3 = $$1.b($$2);
-      $$0.a(null, $$1.dr(), $$1.dt(), $$1.dx(), arm.hj, arn.h, 0.5F, 0.4F / ($$0.F_().i() * 0.4F + 0.8F));
-      if (!$$0.B) {
-         cgb $$4 = new cgb($$0, $$1);
-         $$4.a($$3);
-         $$4.a($$1, $$1.dE(), $$1.dC(), 0.0F, 1.5F, 1.0F);
-         $$0.b($$4);
-      }
-
-      $$1.b(arw.c.b(this));
-      if (!$$1.fT().d) {
-         $$3.h(1);
-      }
-
-      return bjw.a($$3, $$0.y_());
+   protected boolean a(cpg $$0, djg $$1) {
+      cto $$2 = $$0.q();
+      hx $$3 = $$0.a().c();
+      djg $$4 = $$2.z($$3) ? cwr.G.o() : cwr.a.o();
+      $$2.a($$3, $$4, 27);
+      return super.a($$0, $$1);
    }
 }

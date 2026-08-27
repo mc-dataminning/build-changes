@@ -1,199 +1,130 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.function.Predicate;
+import com.google.common.collect.ImmutableMultimap;
+import com.google.common.collect.Multimap;
+import com.google.common.collect.ImmutableMultimap.Builder;
 
-public class coq {
-   public static final int a = 20;
-   private static final List<coq.a<cop>> b = Lists.newArrayList();
-   private static final List<coq.a<cmm>> c = Lists.newArrayList();
-   private static final List<cps> d = Lists.newArrayList();
-   private static final Predicate<cmr> e = $$0 -> {
-      for (cps $$1 : d) {
-         if ($$1.a($$0)) {
-            return true;
-         }
-      }
+public class coq extends cms implements cos {
+   public static final int a = 10;
+   public static final float b = 8.0F;
+   public static final float c = 2.5F;
+   private final Multimap<bnl, bno> d;
 
-      return false;
-   };
-
-   public static boolean a(cmr $$0) {
-      return b($$0) || c($$0);
+   public coq(cms.a $$0) {
+      super($$0);
+      Builder<bnl, bno> $$1 = ImmutableMultimap.builder();
+      $$1.put(bnq.c, new bno(m, "Tool modifier", 8.0, bno.a.a));
+      $$1.put(bnq.e, new bno(n, "Tool modifier", -2.9F, bno.a.a));
+      this.d = $$1.build();
    }
 
-   protected static boolean b(cmr $$0) {
-      for (coq.a<cmm> $$1 : c) {
-         if ($$1.b.a($$0)) {
-            return true;
-         }
-      }
-
-      return false;
+   @Override
+   public boolean a(djg $$0, cto $$1, hx $$2, cfh $$3) {
+      return !$$3.f();
    }
 
-   protected static boolean c(cmr $$0) {
-      for (coq.a<cop> $$1 : b) {
-         if ($$1.b.a($$0)) {
-            return true;
-         }
-      }
-
-      return false;
+   @Override
+   public cor c(cmx $$0) {
+      return cor.f;
    }
 
-   public static boolean a(cop $$0) {
-      for (coq.a<cop> $$1 : b) {
-         if ($$1.c == $$0) {
-            return true;
-         }
-      }
-
-      return false;
+   @Override
+   public int b(cmx $$0) {
+      return 72000;
    }
 
-   public static boolean a(cmr $$0, cmr $$1) {
-      return !e.test($$0) ? false : b($$0, $$1) || c($$0, $$1);
-   }
+   @Override
+   public void a(cmx $$0, cto $$1, bmk $$2, int $$3) {
+      if ($$2 instanceof cfh $$4) {
+         int $$5 = this.b($$0) - $$3;
+         if ($$5 >= 10) {
+            int $$6 = crk.h($$0);
+            if ($$6 <= 0 || $$4.ba()) {
+               if (!$$1.B) {
+                  $$0.a(1, $$4, $$1x -> $$1x.d($$2.fo()));
+                  if ($$6 == 0) {
+                     cgl $$7 = new cgl($$1, $$4, $$0);
+                     $$7.a($$4, $$4.dE(), $$4.dC(), 0.0F, 2.5F + (float)$$6 * 0.5F, 1.0F);
+                     if ($$4.fT().d) {
+                        $$7.d = cfn.a.c;
+                     }
 
-   protected static boolean b(cmr $$0, cmr $$1) {
-      cmm $$2 = $$0.d();
+                     $$1.b($$7);
+                     $$1.a(null, $$7, arr.yJ, ars.h, 1.0F, 1.0F);
+                     if (!$$4.fT().d) {
+                        $$4.fS().g($$0);
+                     }
+                  }
+               }
 
-      for (coq.a<cmm> $$3 : c) {
-         if ($$3.a == $$2 && $$3.b.a($$1)) {
-            return true;
-         }
-      }
+               $$4.b(asb.c.b(this));
+               if ($$6 > 0) {
+                  float $$8 = $$4.dC();
+                  float $$9 = $$4.dE();
+                  float $$10 = -aun.a($$8 * (float) (Math.PI / 180.0)) * aun.b($$9 * (float) (Math.PI / 180.0));
+                  float $$11 = -aun.a($$9 * (float) (Math.PI / 180.0));
+                  float $$12 = aun.b($$8 * (float) (Math.PI / 180.0)) * aun.b($$9 * (float) (Math.PI / 180.0));
+                  float $$13 = aun.c($$10 * $$10 + $$11 * $$11 + $$12 * $$12);
+                  float $$14 = 3.0F * ((1.0F + (float)$$6) / 4.0F);
+                  $$10 *= $$14 / $$13;
+                  $$11 *= $$14 / $$13;
+                  $$12 *= $$14 / $$13;
+                  $$4.j((double)$$10, (double)$$11, (double)$$12);
+                  $$4.t(20);
+                  if ($$4.aC()) {
+                     float $$15 = 1.1999999F;
+                     $$4.a(bmq.a, new els(0.0, 1.1999999F, 0.0));
+                  }
 
-      return false;
-   }
+                  arq $$16;
+                  if ($$6 >= 3) {
+                     $$16 = arr.yI;
+                  } else if ($$6 == 2) {
+                     $$16 = arr.yH;
+                  } else {
+                     $$16 = arr.yG;
+                  }
 
-   protected static boolean c(cmr $$0, cmr $$1) {
-      cop $$2 = cor.d($$0);
-
-      for (coq.a<cop> $$3 : b) {
-         if ($$3.a == $$2 && $$3.b.a($$1)) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   public static cmr d(cmr $$0, cmr $$1) {
-      if (!$$1.b()) {
-         cop $$2 = cor.d($$1);
-         cmm $$3 = $$1.d();
-
-         for (coq.a<cmm> $$4 : c) {
-            if ($$4.a == $$3 && $$4.b.a($$0)) {
-               return cor.a(new cmr($$4.c), $$2);
-            }
-         }
-
-         for (coq.a<cop> $$5 : b) {
-            if ($$5.a == $$2 && $$5.b.a($$0)) {
-               return cor.a(new cmr($$3), $$5.c);
+                  $$1.a(null, $$4, $$16, ars.h, 1.0F, 1.0F);
+               }
             }
          }
       }
-
-      return $$1;
    }
 
-   public static void a() {
-      a(cmu.sh);
-      a(cmu.vh);
-      a(cmu.vk);
-      a(cmu.sh, cmu.pr, cmu.vh);
-      a(cmu.vh, cmu.vg, cmu.vk);
-      a(cos.c, cmu.sq, cos.d);
-      a(cos.c, cmu.se, cos.d);
-      a(cos.c, cmu.uw, cos.d);
-      a(cos.c, cmu.sl, cos.d);
-      a(cos.c, cmu.sj, cos.d);
-      a(cos.c, cmu.rx, cos.d);
-      a(cos.c, cmu.sm, cos.d);
-      a(cos.c, cmu.qV, cos.e);
-      a(cos.c, cmu.lG, cos.d);
-      a(cos.c, cmu.sg, cos.f);
-      a(cos.f, cmu.ud, cos.g);
-      a(cos.g, cmu.lG, cos.h);
-      a(cos.g, cmu.sk, cos.i);
-      a(cos.h, cmu.sk, cos.j);
-      a(cos.i, cmu.lG, cos.j);
-      a(cos.f, cmu.sm, cos.n);
-      a(cos.n, cmu.lG, cos.o);
-      a(cos.f, cmu.uw, cos.k);
-      a(cos.k, cmu.lG, cos.l);
-      a(cos.k, cmu.qV, cos.m);
-      a(cos.k, cmu.sk, cos.s);
-      a(cos.l, cmu.sk, cos.t);
-      a(cos.s, cmu.lG, cos.t);
-      a(cos.s, cmu.qV, cos.u);
-      a(cos.f, cmu.on, cos.v);
-      a(cos.v, cmu.lG, cos.w);
-      a(cos.v, cmu.qV, cos.x);
-      a(cos.p, cmu.sk, cos.s);
-      a(cos.q, cmu.sk, cos.t);
-      a(cos.f, cmu.rx, cos.p);
-      a(cos.p, cmu.lG, cos.q);
-      a(cos.p, cmu.qV, cos.r);
-      a(cos.f, cmu.qZ, cos.y);
-      a(cos.y, cmu.lG, cos.z);
-      a(cos.f, cmu.sq, cos.A);
-      a(cos.A, cmu.qV, cos.B);
-      a(cos.A, cmu.sk, cos.C);
-      a(cos.B, cmu.sk, cos.D);
-      a(cos.C, cmu.qV, cos.D);
-      a(cos.E, cmu.sk, cos.C);
-      a(cos.F, cmu.sk, cos.C);
-      a(cos.G, cmu.sk, cos.D);
-      a(cos.f, cmu.sj, cos.E);
-      a(cos.E, cmu.lG, cos.F);
-      a(cos.E, cmu.qV, cos.G);
-      a(cos.f, cmu.se, cos.H);
-      a(cos.H, cmu.lG, cos.I);
-      a(cos.H, cmu.qV, cos.J);
-      a(cos.f, cmu.sl, cos.K);
-      a(cos.K, cmu.lG, cos.L);
-      a(cos.K, cmu.qV, cos.M);
-      a(cos.c, cmu.sk, cos.N);
-      a(cos.N, cmu.lG, cos.O);
-      a(cos.f, cmu.vJ, cos.Q);
-      a(cos.Q, cmu.lG, cos.R);
-   }
-
-   private static void a(cmm $$0, cmm $$1, cmm $$2) {
-      if (!($$0 instanceof cng)) {
-         throw new IllegalArgumentException("Expected a potion, got: " + kd.h.b($$0));
-      } else if (!($$2 instanceof cng)) {
-         throw new IllegalArgumentException("Expected a potion, got: " + kd.h.b($$2));
+   @Override
+   public bkb<cmx> a(cto $$0, cfh $$1, bjz $$2) {
+      cmx $$3 = $$1.b($$2);
+      if ($$3.k() >= $$3.l() - 1) {
+         return bkb.d($$3);
+      } else if (crk.h($$3) > 0 && !$$1.ba()) {
+         return bkb.d($$3);
       } else {
-         c.add(new coq.a<>($$0, cps.a($$1), $$2));
+         $$1.c($$2);
+         return bkb.b($$3);
       }
    }
 
-   private static void a(cmm $$0) {
-      if (!($$0 instanceof cng)) {
-         throw new IllegalArgumentException("Expected a potion, got: " + kd.h.b($$0));
-      } else {
-         d.add(cps.a($$0));
-      }
+   @Override
+   public boolean a(cmx $$0, bmk $$1, bmk $$2) {
+      $$0.a(1, $$2, $$0x -> $$0x.d(blz.a));
+      return true;
    }
 
-   private static void a(cop $$0, cmm $$1, cop $$2) {
-      b.add(new coq.a<>($$0, cps.a($$1), $$2));
+   @Override
+   public boolean a(cmx $$0, cto $$1, djg $$2, hx $$3, bmk $$4) {
+      if ((double)$$2.h($$1, $$3) != 0.0) {
+         $$0.a(2, $$4, $$0x -> $$0x.d(blz.a));
+      }
+
+      return true;
    }
 
-   static class a<T> {
-      final T a;
-      final cps b;
-      final T c;
+   @Override
+   public Multimap<bnl, bno> a(blz $$0) {
+      return $$0 == blz.a ? this.d : super.a($$0);
+   }
 
-      public a(T $$0, cps $$1, T $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-      }
+   @Override
+   public int c() {
+      return 1;
    }
 }

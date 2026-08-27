@@ -8,13 +8,13 @@ public class az extends cv<az.a> {
       return az.a.a;
    }
 
-   public void a(ana $$0, int $$1) {
+   public void a(ane $$0, int $$1) {
       this.a($$0, $$1x -> $$1x.a($$1));
    }
 
    public static record a(Optional<bb> b, ck.d c) implements cv.a {
       public static final Codec<az.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(atq.a(bp.b, "player").forGetter(az.a::a), atq.a(ck.d.d, "level", ck.d.c).forGetter(az.a::c)).apply($$0, az.a::new)
+         $$0 -> $$0.group(atv.a(bp.b, "player").forGetter(az.a::a), atv.a(ck.d.d, "level", ck.d.c).forGetter(az.a::c)).apply($$0, az.a::new)
       );
 
       public static an<az.a> b() {

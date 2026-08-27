@@ -1,7 +1,9 @@
-public interface cie {
-   int a(int var1);
+public class cie extends cib {
+   public cie(int $$0, cfg $$1) {
+      super(cjh.k, cqg.c, cjo.c, $$0, $$1);
+   }
 
-   void a(int var1, int var2);
-
-   int a();
+   public cie(int $$0, cfg $$1, bjt $$2, cik $$3) {
+      super(cjh.k, cqg.c, cjo.c, $$0, $$1, $$2, $$3);
+   }
 }

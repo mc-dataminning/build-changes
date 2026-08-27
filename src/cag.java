@@ -1,63 +1,60 @@
 import javax.annotation.Nullable;
 
-public class cag extends blp {
-   public final cai b;
-   public final String c;
-   private final blq d;
+public class cag extends bzw {
+   public cag(bly<? extends cag> $$0, cto $$1) {
+      super($$0, $$1);
+   }
 
-   public cag(cai $$0, String $$1, float $$2, float $$3) {
-      super($$0.ai(), $$0.dM());
-      this.d = blq.b($$2, $$3);
-      this.k_();
-      this.b = $$0;
-      this.c = $$1;
+   public static bnp.a u() {
+      return gE().a(bnq.l, 15.0).a(bnq.m, 0.2F);
+   }
+
+   public static boolean c(bly<? extends bxx> $$0, ctp $$1, bmo $$2, hx $$3, auu $$4) {
+      return !bmo.a($$2) ? bxx.b($$0, $$1, $$2, $$3, $$4) : bmo.b($$2) || a($$1, $$3);
    }
 
    @Override
-   protected void c_() {
+   protected void a(auu $$0) {
+      this.a(bnq.h).a(a($$0::j));
    }
 
    @Override
-   protected void a(sl $$0) {
+   public bmp eS() {
+      return bmp.b;
    }
 
    @Override
-   protected void b(sl $$0) {
+   protected arq y() {
+      return arr.Cj;
    }
 
    @Override
-   public boolean bt() {
-      return true;
+   protected arq n_() {
+      return arr.Ck;
+   }
+
+   @Override
+   protected arq d(bks $$0) {
+      return arr.Cl;
    }
 
    @Nullable
    @Override
-   public cmr dz() {
-      return this.b.dz();
+   public blp a(and $$0, blp $$1) {
+      return bly.bs.a((cto)$$0);
    }
 
    @Override
-   public boolean a(bkn $$0, float $$1) {
-      return this.b($$0) ? false : this.b.a(this, $$0, $$1);
+   public bka b(cfh $$0, bjz $$1) {
+      return !this.gt() ? bka.d : super.b($$0, $$1);
    }
 
    @Override
-   public boolean t(blp $$0) {
-      return this == $$0 || this.b == $$0;
+   protected void gu() {
    }
 
    @Override
-   public xd<yx> dj() {
-      throw new UnsupportedOperationException();
-   }
-
-   @Override
-   public blq a(bmr $$0) {
-      return this.d;
-   }
-
-   @Override
-   public boolean dK() {
-      return false;
+   protected float a(blv $$0, float $$1) {
+      return $$0.b - (this.o_() ? 0.03125F : 0.28125F) * $$1;
    }
 }

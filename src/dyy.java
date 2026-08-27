@@ -1,29 +1,26 @@
-import java.util.Optional;
+public interface dyy {
+   ahf<dzl> a = a("villages");
+   ahf<dzl> b = a("desert_pyramids");
+   ahf<dzl> c = a("igloos");
+   ahf<dzl> d = a("jungle_temples");
+   ahf<dzl> e = a("swamp_huts");
+   ahf<dzl> f = a("pillager_outposts");
+   ahf<dzl> g = a("ocean_monuments");
+   ahf<dzl> h = a("woodland_mansions");
+   ahf<dzl> i = a("buried_treasures");
+   ahf<dzl> j = a("mineshafts");
+   ahf<dzl> k = a("ruined_portals");
+   ahf<dzl> l = a("shipwrecks");
+   ahf<dzl> m = a("ocean_ruins");
+   ahf<dzl> n = a("nether_complexes");
+   ahf<dzl> o = a("nether_fossils");
+   ahf<dzl> p = a("end_cities");
+   ahf<dzl> q = a("ancient_cities");
+   ahf<dzl> r = a("strongholds");
+   ahf<dzl> s = a("trail_ruins");
+   ahf<dzl> t = a("trial_chambers");
 
-public abstract class dyy extends dyz {
-   private final dyy.a d;
-   private final int e;
-   private final int f;
-
-   protected dyy(dyy.a $$0, int $$1, int $$2, dyz.c $$3) {
-      super($$3);
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-   }
-
-   @Override
-   public Optional<dyz.b> a(dyz.a $$0) {
-      return a($$0, this.e, this.f) < $$0.b().e() ? Optional.empty() : a($$0, doj.a.a, $$1 -> this.a($$1, $$0));
-   }
-
-   private void a(dzr $$0, dyz.a $$1) {
-      csp $$2 = $$1.h();
-      $$0.a(this.d.construct($$1.f(), $$2.d(), $$2.e()));
-   }
-
-   @FunctionalInterface
-   protected interface a {
-      dzd construct(dpi var1, int var2, int var3);
+   private static ahf<dzl> a(String $$0) {
+      return ahf.a(ke.aF, new ahg($$0));
    }
 }

@@ -1,50 +1,57 @@
-import javax.annotation.Nullable;
+public class est extends gkn {
+   private final fcz a;
+   private final est.a b;
+   private exx c = exx.a;
 
-public class est extends gkc {
-   private static final vd a = vd.c("mco.account.privacy.information");
-   private static final int b = 15;
-   private final fam c = fam.d();
-   private final fct v;
-   @Nullable
-   private exs w;
+   public est(esc $$0, fcz $$1) {
+      super(euy.a);
+      this.a = $$1;
+      this.b = a($$0);
+   }
 
-   public est(fct $$0) {
-      super(eus.a);
-      this.v = $$0;
+   public est(vf $$0, fcz $$1) {
+      super(euy.a);
+      this.a = $$1;
+      this.b = a($$0);
+   }
+
+   public est(vf $$0, vf $$1, fcz $$2) {
+      super(euy.a);
+      this.a = $$2;
+      this.b = a($$0, $$1);
+   }
+
+   private static est.a a(esc $$0) {
+      eqr $$1 = $$0.a;
+      return a(vf.a("mco.errorMessage.realmsService.realmsError", $$1.a()), $$1.b());
+   }
+
+   private static est.a a(vf $$0) {
+      return a(vf.c("mco.errorMessage.generic"), $$0);
+   }
+
+   private static est.a a(vf $$0, vf $$1) {
+      return new est.a($$0, $$1);
    }
 
    @Override
    public void aN_() {
-      this.c.a(15).c().b();
-      this.w = new exs(a, this.i).b(true);
-      this.c.a(this.w);
-      fam $$0 = this.c.a(fam.e().a(8));
-      vd $$1 = vd.c("mco.account.privacy.info.button");
-      $$0.a(ewy.a($$1, fbl.b(this, "https://aka.ms/MinecraftGDPR")).a());
-      $$0.a(ewy.a(vc.k, $$0x -> this.aE_()).a());
-      this.c.a($$1x -> {
-         eww var10000 = this.d($$1x);
-      });
-      this.c();
+      this.d(exe.a(ve.h, $$0 -> this.f.a(this.a)).a(this.g / 2 - 100, this.h - 52, 200, 20).a());
+      this.c = exx.a(this.i, this.b.b, this.g * 3 / 4);
    }
 
    @Override
-   public void aE_() {
-      this.f.a(this.v);
+   public vf h() {
+      return vf.i().b(this.b.a).f(": ").b(this.b.b);
    }
 
    @Override
-   protected void c() {
-      if (this.w != null) {
-         this.w.c(this.g - 15);
-      }
-
-      this.c.a();
-      fag.a(this.c, this.F());
+   public void a(ews $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, this.b.a, this.g / 2, 80, -1);
+      this.c.a($$0, this.g / 2, 100, 9, -2142128);
    }
 
-   @Override
-   public vd h() {
-      return a;
+   static record a(vf a, vf b) {
    }
 }

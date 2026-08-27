@@ -1,17 +1,18 @@
-public record yi(hx b) implements xx {
-   public static final ahd a = new ahd("debug/poi_removed");
+public record yi(long b, hx c) implements ya {
+   public static final ahg a = new ahg("debug/neighbors_update");
 
-   public yi(ug $$0) {
-      this($$0.e());
+   public yi(ui $$0) {
+      this($$0.o(), $$0.e());
    }
 
    @Override
-   public void a(ug $$0) {
+   public void a(ui $$0) {
       $$0.a(this.b);
+      $$0.a(this.c);
    }
 
    @Override
-   public ahd a() {
+   public ahg a() {
       return a;
    }
 }

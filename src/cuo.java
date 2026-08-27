@@ -1,70 +1,111 @@
-public abstract class cuo {
-   public static final ahc<cuh> a = a("the_void");
-   public static final ahc<cuh> b = a("plains");
-   public static final ahc<cuh> c = a("sunflower_plains");
-   public static final ahc<cuh> d = a("snowy_plains");
-   public static final ahc<cuh> e = a("ice_spikes");
-   public static final ahc<cuh> f = a("desert");
-   public static final ahc<cuh> g = a("swamp");
-   public static final ahc<cuh> h = a("mangrove_swamp");
-   public static final ahc<cuh> i = a("forest");
-   public static final ahc<cuh> j = a("flower_forest");
-   public static final ahc<cuh> k = a("birch_forest");
-   public static final ahc<cuh> l = a("dark_forest");
-   public static final ahc<cuh> m = a("old_growth_birch_forest");
-   public static final ahc<cuh> n = a("old_growth_pine_taiga");
-   public static final ahc<cuh> o = a("old_growth_spruce_taiga");
-   public static final ahc<cuh> p = a("taiga");
-   public static final ahc<cuh> q = a("snowy_taiga");
-   public static final ahc<cuh> r = a("savanna");
-   public static final ahc<cuh> s = a("savanna_plateau");
-   public static final ahc<cuh> t = a("windswept_hills");
-   public static final ahc<cuh> u = a("windswept_gravelly_hills");
-   public static final ahc<cuh> v = a("windswept_forest");
-   public static final ahc<cuh> w = a("windswept_savanna");
-   public static final ahc<cuh> x = a("jungle");
-   public static final ahc<cuh> y = a("sparse_jungle");
-   public static final ahc<cuh> z = a("bamboo_jungle");
-   public static final ahc<cuh> A = a("badlands");
-   public static final ahc<cuh> B = a("eroded_badlands");
-   public static final ahc<cuh> C = a("wooded_badlands");
-   public static final ahc<cuh> D = a("meadow");
-   public static final ahc<cuh> E = a("cherry_grove");
-   public static final ahc<cuh> F = a("grove");
-   public static final ahc<cuh> G = a("snowy_slopes");
-   public static final ahc<cuh> H = a("frozen_peaks");
-   public static final ahc<cuh> I = a("jagged_peaks");
-   public static final ahc<cuh> J = a("stony_peaks");
-   public static final ahc<cuh> K = a("river");
-   public static final ahc<cuh> L = a("frozen_river");
-   public static final ahc<cuh> M = a("beach");
-   public static final ahc<cuh> N = a("snowy_beach");
-   public static final ahc<cuh> O = a("stony_shore");
-   public static final ahc<cuh> P = a("warm_ocean");
-   public static final ahc<cuh> Q = a("lukewarm_ocean");
-   public static final ahc<cuh> R = a("deep_lukewarm_ocean");
-   public static final ahc<cuh> S = a("ocean");
-   public static final ahc<cuh> T = a("deep_ocean");
-   public static final ahc<cuh> U = a("cold_ocean");
-   public static final ahc<cuh> V = a("deep_cold_ocean");
-   public static final ahc<cuh> W = a("frozen_ocean");
-   public static final ahc<cuh> X = a("deep_frozen_ocean");
-   public static final ahc<cuh> Y = a("mushroom_fields");
-   public static final ahc<cuh> Z = a("dripstone_caves");
-   public static final ahc<cuh> aa = a("lush_caves");
-   public static final ahc<cuh> ab = a("deep_dark");
-   public static final ahc<cuh> ac = a("nether_wastes");
-   public static final ahc<cuh> ad = a("warped_forest");
-   public static final ahc<cuh> ae = a("crimson_forest");
-   public static final ahc<cuh> af = a("soul_sand_valley");
-   public static final ahc<cuh> ag = a("basalt_deltas");
-   public static final ahc<cuh> ah = a("the_end");
-   public static final ahc<cuh> ai = a("end_highlands");
-   public static final ahc<cuh> aj = a("end_midlands");
-   public static final ahc<cuh> ak = a("small_end_islands");
-   public static final ahc<cuh> al = a("end_barrens");
+import com.google.common.base.Suppliers;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Set;
+import java.util.Map.Entry;
+import java.util.function.Supplier;
+import java.util.stream.Collectors;
+import org.slf4j.Logger;
 
-   private static ahc<cuh> a(String $$0) {
-      return ahc.a(ke.at, new ahd($$0));
+public class cuo {
+   private static final Logger c = LogUtils.getLogger();
+   public static final cuo a = new cuo(ImmutableMap.of(), ImmutableList.of());
+   public static final MapCodec<cuo> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.simpleMap(dol.a.c, dqs.c.promotePartial(ac.a("Carver: ", c::error)), avj.a(dol.a.values())).fieldOf("carvers").forGetter($$0x -> $$0x.d),
+               dyj.d.promotePartial(ac.a("Features: ", c::error)).fieldOf("features").forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, cuo::new)
+   );
+   private final Map<dol.a, il<dqs<?>>> d;
+   private final List<il<dyj>> e;
+   private final Supplier<List<drg<?, ?>>> f;
+   private final Supplier<Set<dyj>> g;
+
+   cuo(Map<dol.a, il<dqs<?>>> $$0, List<il<dyj>> $$1) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = Suppliers.memoize(
+         () -> $$1.stream().flatMap(il::a).map(ih::a).flatMap(dyj::a).filter($$0xx -> $$0xx.b() == drt.g).collect(ImmutableList.toImmutableList())
+      );
+      this.g = Suppliers.memoize(() -> $$1.stream().flatMap(il::a).map(ih::a).collect(Collectors.toSet()));
+   }
+
+   public Iterable<ih<dqs<?>>> a(dol.a $$0) {
+      return Objects.requireNonNullElseGet(this.d.get($$0), List::of);
+   }
+
+   public List<drg<?, ?>> a() {
+      return this.f.get();
+   }
+
+   public List<il<dyj>> b() {
+      return this.e;
+   }
+
+   public boolean a(dyj $$0) {
+      return this.g.get().contains($$0);
+   }
+
+   public static class a extends cuo.b {
+      private final ii<dyj> a;
+      private final ii<dqs<?>> b;
+
+      public a(ii<dyj> $$0, ii<dqs<?>> $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public cuo.a a(dol.b $$0, ahf<dyj> $$1) {
+         this.a($$0.ordinal(), this.a.b($$1));
+         return this;
+      }
+
+      public cuo.a a(dol.a $$0, ahf<dqs<?>> $$1) {
+         this.a($$0, this.b.b($$1));
+         return this;
+      }
+   }
+
+   public static class b {
+      private final Map<dol.a, List<ih<dqs<?>>>> a = Maps.newLinkedHashMap();
+      private final List<List<ih<dyj>>> b = Lists.newArrayList();
+
+      public cuo.b a(dol.b $$0, ih<dyj> $$1) {
+         return this.a($$0.ordinal(), $$1);
+      }
+
+      public cuo.b a(int $$0, ih<dyj> $$1) {
+         this.a($$0);
+         this.b.get($$0).add($$1);
+         return this;
+      }
+
+      public cuo.b a(dol.a $$0, ih<dqs<?>> $$1) {
+         this.a.computeIfAbsent($$0, $$0x -> Lists.newArrayList()).add($$1);
+         return this;
+      }
+
+      private void a(int $$0) {
+         while (this.b.size() <= $$0) {
+            this.b.add(Lists.newArrayList());
+         }
+      }
+
+      public cuo a() {
+         return new cuo(
+            this.a.entrySet().stream().collect(ImmutableMap.toImmutableMap(Entry::getKey, $$0 -> il.a((List)$$0.getValue()))),
+            this.b.stream().map(il::a).collect(ImmutableList.toImmutableList())
+         );
+      }
    }
 }

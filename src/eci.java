@@ -1,20 +1,20 @@
 import com.mojang.serialization.Codec;
-import javax.annotation.Nullable;
 
-public class eci extends ecw {
-   public static final Codec<eci> a = Codec.unit(() -> eci.b);
-   public static final eci b = new eci();
+public class eci extends ecz {
+   public static final Codec<eci> a = kd.e.q().fieldOf("block").xmap(eci::new, $$0 -> $$0.b).codec();
+   private final cwp b;
 
-   @Nullable
-   @Override
-   public ecz.c a(ctl $$0, hx $$1, hx $$2, ecz.c $$3, ecz.c $$4, ecv $$5) {
-      hx $$6 = $$4.a();
-      boolean $$7 = $$0.a_($$6).a(cwl.H);
-      return $$7 && !cwj.a($$4.b().j($$0, $$6)) ? new ecz.c($$6, cwl.H.o(), $$4.c()) : $$4;
+   public eci(cwp $$0) {
+      this.b = $$0;
    }
 
    @Override
-   protected ecy<?> a() {
-      return ecy.m;
+   public boolean a(djg $$0, auu $$1) {
+      return $$0.a(this.b);
+   }
+
+   @Override
+   protected eda<?> a() {
+      return eda.b;
    }
 }

@@ -1,149 +1,143 @@
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
-import java.util.List;
+import java.util.Optional;
+import java.util.function.Function;
 import java.util.function.Predicate;
 
-public class drt extends drn<dts> {
-   private static final ic[] a = ic.values();
+public abstract class drt<FC extends dtx> {
+   public static final drt<due> e = a("no_op", new dsn(due.a));
+   public static final drt<dut> f = a("tree", new dtf(dut.a));
+   public static final drt<duk> g = a("flower", new dsr(duk.a));
+   public static final drt<duk> h = a("no_bonemeal_flower", new dsr(duk.a));
+   public static final drt<duk> i = a("random_patch", new dsr(duk.a));
+   public static final drt<dtp> j = a("block_pile", new drc(dtp.a));
+   public static final drt<dus> k = a("spring_feature", new dte(dus.a));
+   public static final drt<due> l = a("chorus_plant", new drf(due.a));
+   public static final drt<dul> m = a("replace_single_block", new dsu(dul.a));
+   public static final drt<due> n = a("void_start_platform", new dtk(due.a));
+   public static final drt<due> o = a("desert_well", new drm(due.a));
+   public static final drt<dry> p = a("fossil", new drx(dry.a));
+   public static final drt<dtz> q = a("huge_red_mushroom", new dse(dtz.a));
+   public static final drt<dtz> r = a("huge_brown_mushroom", new dsb(dtz.a));
+   public static final drt<due> s = a("ice_spike", new dsf(due.a));
+   public static final drt<due> t = a("glowstone_blob", new dsa(due.a));
+   public static final drt<due> u = a("freeze_top_layer", new dtc(due.a));
+   public static final drt<due> v = a("vines", new dtj(due.a));
+   public static final drt<dto> w = a("block_column", new drb(dto.a));
+   public static final drt<duw> x = a("vegetation_patch", new dti(duw.a));
+   public static final drt<duw> y = a("waterlogged_vegetation_patch", new dtl(duw.a));
+   public static final drt<dun> z = a("root_system", new dsv(dun.a));
+   public static final drt<duc> A = a("multiface_growth", new dsl(duc.a));
+   public static final drt<duv> B = a("underwater_magma", new dth(duv.a));
+   public static final drt<due> C = a("monster_room", new dsk(due.a));
+   public static final drt<due> D = a("blue_ice", new drd(due.a));
+   public static final drt<dtq> E = a("iceberg", new dsg(dtq.a));
+   public static final drt<dtq> F = a("forest_rock", new dra(dtq.a));
+   public static final drt<dtu> G = a("disk", new drn(dtu.a));
+   public static final drt<dsi.a> H = a("lake", new dsi(dsi.a.a));
+   public static final drt<duf> I = a("ore", new dso(duf.a));
+   public static final drt<dur> J = a("end_spike", new dtd(dur.a));
+   public static final drt<due> K = a("end_island", new drr(due.a));
+   public static final drt<dtw> L = a("end_gateway", new drq(dtw.a));
+   public static final dsz M = a("seagrass", new dsz(duh.k));
+   public static final drt<due> N = a("kelp", new dsh(due.a));
+   public static final drt<due> O = a("coral_tree", new drk(due.a));
+   public static final drt<due> P = a("coral_mushroom", new drj(due.a));
+   public static final drt<due> Q = a("coral_claw", new drh(due.a));
+   public static final drt<dts> R = a("sea_pickle", new dsy(dts.a));
+   public static final drt<dup> S = a("simple_block", new dta(dup.a));
+   public static final drt<duh> T = a("bamboo", new dqx(duh.k));
+   public static final drt<dsc> U = a("huge_fungus", new dsd(dsc.a));
+   public static final drt<dud> V = a("nether_forest_vegetation", new dsm(dud.c));
+   public static final drt<due> W = a("weeping_vines", new dtm(due.a));
+   public static final drt<duu> X = a("twisting_vines", new dtg(duu.a));
+   public static final drt<dtr> Y = a("basalt_columns", new dqy(dtr.a));
+   public static final drt<dtt> Z = a("delta_feature", new drl(dtt.a));
+   public static final drt<dum> aa = a("netherrack_replace_blobs", new dst(dum.a));
+   public static final drt<dub> ab = a("fill_layer", new drw(dub.a));
+   public static final dre ac = a("bonus_chest", new dre(due.a));
+   public static final drt<due> ad = a("basalt_pillar", new dqz(due.a));
+   public static final drt<duf> ae = a("scattered_ore", new dsw(duf.a));
+   public static final drt<duj> af = a("random_selector", new dss(duj.a));
+   public static final drt<duq> ag = a("simple_random_selector", new dtb(duq.a));
+   public static final drt<dui> ah = a("random_boolean_selector", new dsq(dui.a));
+   public static final drt<dty> ai = a("geode", new drz(dty.b));
+   public static final drt<dtv> aj = a("dripstone_cluster", new dro(dtv.a));
+   public static final drt<dua> ak = a("large_dripstone", new dsj(dua.a));
+   public static final drt<dug> al = a("pointed_dripstone", new dsp(dug.a));
+   public static final drt<duo> am = a("sculk_patch", new dsx(duo.a));
+   private final Codec<drg<FC, drt<FC>>> a;
 
-   public drt(Codec<dts> $$0) {
-      super($$0);
+   private static <C extends dtx, F extends drt<C>> F a(String $$0, F $$1) {
+      return it.a(kd.Q, $$0, $$1);
    }
 
-   @Override
-   public boolean a(drp<dts> $$0) {
-      dts $$1 = $$0.f();
-      aup $$2 = $$0.d();
-      hx $$3 = $$0.e();
-      cud $$4 = $$0.b();
-      int $$5 = $$1.l;
-      int $$6 = $$1.n;
-      List<Pair<hx, Integer>> $$7 = Lists.newLinkedList();
-      int $$8 = $$1.j.a($$2);
-      dpi $$9 = new dpi(new dok($$4.C()));
-      edn $$10 = edn.a($$9, -4, 1.0);
-      List<hx> $$11 = Lists.newLinkedList();
-      double $$12 = (double)$$8 / (double)$$1.i.b();
-      doi $$13 = $$1.d;
-      dog $$14 = $$1.c;
-      doh $$15 = $$1.e;
-      double $$16 = 1.0 / Math.sqrt($$13.b);
-      double $$17 = 1.0 / Math.sqrt($$13.c + $$12);
-      double $$18 = 1.0 / Math.sqrt($$13.d + $$12);
-      double $$19 = 1.0 / Math.sqrt($$13.e + $$12);
-      double $$20 = 1.0 / Math.sqrt($$15.c + $$2.j() / 2.0 + ($$8 > 3 ? $$12 : 0.0));
-      boolean $$21 = (double)$$2.i() < $$15.b;
-      int $$22 = 0;
+   public drt(Codec<FC> $$0) {
+      this.a = $$0.fieldOf("config").xmap($$0x -> new drg<>(this, $$0x), drg::c).codec();
+   }
 
-      for (int $$23 = 0; $$23 < $$8; $$23++) {
-         int $$24 = $$1.i.a($$2);
-         int $$25 = $$1.i.a($$2);
-         int $$26 = $$1.i.a($$2);
-         hx $$27 = $$3.b($$24, $$25, $$26);
-         dja $$28 = $$4.a_($$27);
-         if ($$28.i() || $$28.a(asb.bJ)) {
-            if (++$$22 > $$1.p) {
-               return false;
-            }
-         }
+   public Codec<drg<FC, drt<FC>>> a() {
+      return this.a;
+   }
 
-         $$7.add(Pair.of($$27, $$1.k.a($$2)));
+   protected void a(ctw $$0, hx $$1, djg $$2) {
+      $$0.a($$1, $$2, 3);
+   }
+
+   public static Predicate<djg> a(asv<cwp> $$0) {
+      return $$1 -> !$$1.a($$0);
+   }
+
+   protected void a(cuj $$0, hx $$1, djg $$2, Predicate<djg> $$3) {
+      if ($$3.test($$0.a_($$1))) {
+         $$0.a($$1, $$2, 2);
       }
+   }
 
-      if ($$21) {
-         int $$29 = $$2.a(4);
-         int $$30 = $$8 * 2 + 1;
-         if ($$29 == 0) {
-            $$11.add($$3.b($$30, 7, 0));
-            $$11.add($$3.b($$30, 5, 0));
-            $$11.add($$3.b($$30, 1, 0));
-         } else if ($$29 == 1) {
-            $$11.add($$3.b(0, 7, $$30));
-            $$11.add($$3.b(0, 5, $$30));
-            $$11.add($$3.b(0, 1, $$30));
-         } else if ($$29 == 2) {
-            $$11.add($$3.b($$30, 7, $$30));
-            $$11.add($$3.b($$30, 5, $$30));
-            $$11.add($$3.b($$30, 1, $$30));
-         } else {
-            $$11.add($$3.b(0, 7, 0));
-            $$11.add($$3.b(0, 5, 0));
-            $$11.add($$3.b(0, 1, 0));
+   public abstract boolean a(drv<FC> var1);
+
+   public boolean a(FC $$0, cuj $$1, dld $$2, auu $$3, hx $$4) {
+      return $$1.f_($$4) ? this.a(new drv<>(Optional.empty(), $$1, $$2, $$3, $$4, $$0)) : false;
+   }
+
+   protected static boolean a(djg $$0) {
+      return $$0.a(asg.bd);
+   }
+
+   public static boolean b(djg $$0) {
+      return $$0.a(asg.af);
+   }
+
+   public static boolean a(ctu $$0, hx $$1) {
+      return $$0.a($$1, drt::b);
+   }
+
+   public static boolean a(Function<hx, djg> $$0, hx $$1, Predicate<djg> $$2) {
+      hx.a $$3 = new hx.a();
+
+      for (ic $$4 : ic.values()) {
+         $$3.a($$1, $$4);
+         if ($$2.test($$0.apply($$3))) {
+            return true;
          }
       }
 
-      List<hx> $$31 = Lists.newArrayList();
-      Predicate<dja> $$32 = a($$1.c.g);
+      return false;
+   }
 
-      for (hx $$33 : hx.a($$3.b($$5, $$5, $$5), $$3.b($$6, $$6, $$6))) {
-         double $$34 = $$10.a((double)$$33.u(), (double)$$33.v(), (double)$$33.w()) * $$1.o;
-         double $$35 = 0.0;
-         double $$36 = 0.0;
+   public static boolean a(Function<hx, djg> $$0, hx $$1) {
+      return a($$0, $$1, djf.a::i);
+   }
 
-         for (Pair<hx, Integer> $$37 : $$7) {
-            $$35 += aui.f($$33.j((jb)$$37.getFirst()) + (double)((Integer)$$37.getSecond()).intValue()) + $$34;
+   protected void a(cuj $$0, hx $$1) {
+      hx.a $$2 = $$1.j();
+
+      for (int $$3 = 0; $$3 < 2; $$3++) {
+         $$2.c(ic.b);
+         if ($$0.a_($$2).i()) {
+            return;
          }
 
-         for (hx $$38 : $$11) {
-            $$36 += aui.f($$33.j($$38) + (double)$$15.d) + $$34;
-         }
-
-         if (!($$35 < $$19)) {
-            if ($$21 && $$36 >= $$20 && $$35 < $$16) {
-               this.a($$4, $$33, cwl.a.o(), $$32);
-
-               for (ic $$39 : a) {
-                  hx $$40 = $$33.a($$39);
-                  eek $$41 = $$4.b_($$40);
-                  if (!$$41.c()) {
-                     $$4.a($$40, $$41.a(), 0);
-                  }
-               }
-            } else if ($$35 >= $$16) {
-               this.a($$4, $$33, $$14.a.a($$2, $$33), $$32);
-            } else if ($$35 >= $$17) {
-               boolean $$42 = (double)$$2.i() < $$1.g;
-               if ($$42) {
-                  this.a($$4, $$33, $$14.c.a($$2, $$33), $$32);
-               } else {
-                  this.a($$4, $$33, $$14.b.a($$2, $$33), $$32);
-               }
-
-               if ((!$$1.h || $$42) && (double)$$2.i() < $$1.f) {
-                  $$31.add($$33.i());
-               }
-            } else if ($$35 >= $$18) {
-               this.a($$4, $$33, $$14.d.a($$2, $$33), $$32);
-            } else if ($$35 >= $$19) {
-               this.a($$4, $$33, $$14.e.a($$2, $$33), $$32);
-            }
-         }
+         $$0.y($$2).e($$2);
       }
-
-      List<dja> $$43 = $$14.f;
-
-      for (hx $$44 : $$31) {
-         dja $$45 = ac.a($$43, $$2);
-
-         for (ic $$46 : a) {
-            if ($$45.b(djq.P)) {
-               $$45 = $$45.a(djq.P, $$46);
-            }
-
-            hx $$47 = $$44.a($$46);
-            dja $$48 = $$4.a_($$47);
-            if ($$45.b(djq.C)) {
-               $$45 = $$45.a(djq.C, Boolean.valueOf($$48.u().b()));
-            }
-
-            if (cwr.g($$48)) {
-               this.a($$4, $$47, $$45, $$32);
-               break;
-            }
-         }
-      }
-
-      return true;
    }
 }

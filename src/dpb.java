@@ -1,280 +1,60 @@
-import java.util.Arrays;
-import java.util.Optional;
-import java.util.function.Function;
+public class dpb implements ctb {
+   private int a;
 
-public class dpb {
-   private static final dja a = cwl.hj.o();
-   private static final dja b = cwl.hk.o();
-   private static final dja c = cwl.iA.o();
-   private static final dja d = cwl.hn.o();
-   private static final dja e = cwl.hv.o();
-   private static final dja f = cwl.hx.o();
-   private static final dja g = cwl.hr.o();
-   private static final dja h = cwl.iC.o();
-   private static final dja i = cwl.dP.o();
-   private final dja j;
-   private final int k;
-   private final dja[] l;
-   private final edn m;
-   private final edn n;
-   private final edn o;
-   private final edn p;
-   private final edn q;
-   private final edn r;
-   private final edn s;
-   private final dow t;
-   private final edn u;
-   private final edn v;
+   @Override
+   public int a(and $$0, boolean $$1, boolean $$2) {
+      if (!$$1) {
+         return 0;
+      } else if (!$$0.Z().b(ctk.C)) {
+         return 0;
+      } else {
+         auu $$3 = $$0.z;
+         this.a--;
+         if (this.a > 0) {
+            return 0;
+         } else {
+            this.a = this.a + (60 + $$3.a(60)) * 20;
+            if ($$0.C_() < 5 && $$0.E_().g()) {
+               return 0;
+            } else {
+               int $$4 = 0;
 
-   public dpb(dox $$0, dja $$1, int $$2, dow $$3) {
-      this.j = $$1;
-      this.k = $$2;
-      this.t = $$3;
-      this.m = $$0.a(dos.P);
-      this.l = a($$3.a(new ahd("clay_bands")));
-      this.u = $$0.a(dos.N);
-      this.v = $$0.a(dos.O);
-      this.n = $$0.a(dos.Q);
-      this.o = $$0.a(dos.R);
-      this.p = $$0.a(dos.S);
-      this.q = $$0.a(dos.T);
-      this.r = $$0.a(dos.U);
-      this.s = $$0.a(dos.V);
-   }
+               for (ane $$5 : $$0.x()) {
+                  if (!$$5.P_()) {
+                     hx $$6 = $$5.dm();
+                     if (!$$0.E_().g() || $$6.v() >= $$0.A_() && $$0.h($$6)) {
+                        bjy $$7 = $$0.d_($$6);
+                        if ($$7.a($$3.i() * 3.0F)) {
+                           arx $$8 = $$5.H();
+                           int $$9 = aun.a($$8.a(asb.i.b(asb.n)), 1, Integer.MAX_VALUE);
+                           int $$10 = 24000;
+                           if ($$3.a($$9) >= 72000) {
+                              hx $$11 = $$6.b(20 + $$3.a(15)).g(-10 + $$3.a(21)).e(-10 + $$3.a(21));
+                              djg $$12 = $$0.a_($$11);
+                              eeq $$13 = $$0.b_($$11);
+                              if (ctz.a($$0, $$11, $$12, $$13, bly.av)) {
+                                 bnd $$14 = null;
+                                 int $$15 = 1 + $$3.a($$7.a().a() + 1);
 
-   public void a(dox $$0, cuj $$1, it<cuh> $$2, boolean $$3, dpg $$4, final dkw $$5, don $$6, dpa.o $$7) {
-      final hx.a $$8 = new hx.a();
-      final csp $$9 = $$5.f();
-      int $$10 = $$9.d();
-      int $$11 = $$9.e();
-      dkt $$12 = new dkt() {
-         @Override
-         public dja a(int $$0) {
-            return $$5.a_($$8.q($$0));
-         }
-
-         @Override
-         public void a(int $$0, dja $$1) {
-            ctk $$2 = $$5.z();
-            if ($$0 >= $$2.J_() && $$0 < $$2.al()) {
-               $$5.a($$8.q($$0), $$1, false);
-               if (!$$1.u().c()) {
-                  $$5.e($$8);
-               }
-            }
-         }
-
-         @Override
-         public String toString() {
-            return "ChunkBlockColumn " + $$9;
-         }
-      };
-      dpa.g $$13 = new dpa.g(this, $$0, $$5, $$6, $$1::a, $$2, $$4);
-      dpa.u $$14 = $$7.apply($$13);
-      hx.a $$15 = new hx.a();
-
-      for (int $$16 = 0; $$16 < 16; $$16++) {
-         for (int $$17 = 0; $$17 < 16; $$17++) {
-            int $$18 = $$10 + $$16;
-            int $$19 = $$11 + $$17;
-            int $$20 = $$5.a(doj.a.a, $$16, $$17) + 1;
-            $$8.p($$18).r($$19);
-            ih<cuh> $$21 = $$1.a($$15.d($$18, $$3 ? 0 : $$20, $$19));
-            if ($$21.a(cuo.B)) {
-               this.a($$12, $$18, $$19, $$20, $$5);
-            }
-
-            int $$22 = $$5.a(doj.a.a, $$16, $$17) + 1;
-            $$13.a($$18, $$19);
-            int $$23 = 0;
-            int $$24 = Integer.MIN_VALUE;
-            int $$25 = Integer.MAX_VALUE;
-            int $$26 = $$5.J_();
-
-            for (int $$27 = $$22; $$27 >= $$26; $$27--) {
-               dja $$28 = $$12.a($$27);
-               if ($$28.i()) {
-                  $$23 = 0;
-                  $$24 = Integer.MIN_VALUE;
-               } else if (!$$28.u().c()) {
-                  if ($$24 == Integer.MIN_VALUE) {
-                     $$24 = $$27 + 1;
-                  }
-               } else {
-                  if ($$25 >= $$27) {
-                     $$25 = dmj.g;
-
-                     for (int $$29 = $$27 - 1; $$29 >= $$26 - 1; $$29--) {
-                        dja $$30 = $$12.a($$29);
-                        if (!this.a($$30)) {
-                           $$25 = $$29 + 1;
-                           break;
+                                 for (int $$16 = 0; $$16 < $$15; $$16++) {
+                                    ccq $$17 = bly.av.a((cto)$$0);
+                                    if ($$17 != null) {
+                                       $$17.a($$11, 0.0F, 0.0F);
+                                       $$14 = $$17.a($$0, $$7, bmo.a, $$14, null);
+                                       $$0.a_($$17);
+                                       $$4++;
+                                    }
+                                 }
+                              }
+                           }
                         }
                      }
                   }
-
-                  $$23++;
-                  int $$31 = $$27 - $$25 + 1;
-                  $$13.a($$23, $$31, $$24, $$18, $$27, $$19);
-                  if ($$28 == this.j) {
-                     dja $$32 = $$14.tryApply($$18, $$27, $$19);
-                     if ($$32 != null) {
-                        $$12.a($$27, $$32);
-                     }
-                  }
-               }
-            }
-
-            if ($$21.a(cuo.W) || $$21.a(cuo.X)) {
-               this.a($$13.b(), $$21.a(), $$12, $$15, $$18, $$19, $$20);
-            }
-         }
-      }
-   }
-
-   protected int a(int $$0, int $$1) {
-      double $$2 = this.u.a((double)$$0, 0.0, (double)$$1);
-      return (int)($$2 * 2.75 + 3.0 + this.t.a($$0, 0, $$1).j() * 0.25);
-   }
-
-   protected double b(int $$0, int $$1) {
-      return this.v.a((double)$$0, 0.0, (double)$$1);
-   }
-
-   private boolean a(dja $$0) {
-      return !$$0.i() && $$0.u().c();
-   }
-
-   @Deprecated
-   public Optional<dja> a(dpa.o $$0, dqj $$1, Function<hx, ih<cuh>> $$2, dkw $$3, don $$4, hx $$5, boolean $$6) {
-      dpa.g $$7 = new dpa.g(this, $$1.d(), $$3, $$4, $$2, $$1.c().d(ke.at), $$1);
-      dpa.u $$8 = $$0.apply($$7);
-      int $$9 = $$5.u();
-      int $$10 = $$5.v();
-      int $$11 = $$5.w();
-      $$7.a($$9, $$11);
-      $$7.a(1, 1, $$6 ? $$10 + 1 : Integer.MIN_VALUE, $$9, $$10, $$11);
-      dja $$12 = $$8.tryApply($$9, $$10, $$11);
-      return Optional.ofNullable($$12);
-   }
-
-   private void a(dkt $$0, int $$1, int $$2, int $$3, ctk $$4) {
-      double $$5 = 0.2;
-      double $$6 = Math.min(Math.abs(this.p.a((double)$$1, 0.0, (double)$$2) * 8.25), this.n.a((double)$$1 * 0.2, 0.0, (double)$$2 * 0.2) * 15.0);
-      if (!($$6 <= 0.0)) {
-         double $$7 = 0.75;
-         double $$8 = 1.5;
-         double $$9 = Math.abs(this.o.a((double)$$1 * 0.75, 0.0, (double)$$2 * 0.75) * 1.5);
-         double $$10 = 64.0 + Math.min($$6 * $$6 * 2.5, Math.ceil($$9 * 50.0) + 24.0);
-         int $$11 = aui.a($$10);
-         if ($$3 <= $$11) {
-            for (int $$12 = $$11; $$12 >= $$4.J_(); $$12--) {
-               dja $$13 = $$0.a($$12);
-               if ($$13.a(this.j.b())) {
-                  break;
                }
 
-               if ($$13.a(cwl.G)) {
-                  return;
-               }
-            }
-
-            for (int $$14 = $$11; $$14 >= $$4.J_() && $$0.a($$14).i(); $$14--) {
-               $$0.a($$14, this.j);
+               return $$4;
             }
          }
       }
-   }
-
-   private void a(int $$0, cuh $$1, dkt $$2, hx.a $$3, int $$4, int $$5, int $$6) {
-      double $$7 = 1.28;
-      double $$8 = Math.min(Math.abs(this.s.a((double)$$4, 0.0, (double)$$5) * 8.25), this.q.a((double)$$4 * 1.28, 0.0, (double)$$5 * 1.28) * 15.0);
-      if (!($$8 <= 1.8)) {
-         double $$9 = 1.17;
-         double $$10 = 1.5;
-         double $$11 = Math.abs(this.r.a((double)$$4 * 1.17, 0.0, (double)$$5 * 1.17) * 1.5);
-         double $$12 = Math.min($$8 * $$8 * 1.2, Math.ceil($$11 * 40.0) + 14.0);
-         if ($$1.d($$3.d($$4, 63, $$5))) {
-            $$12 -= 2.0;
-         }
-
-         double $$13;
-         if ($$12 > 2.0) {
-            $$13 = (double)this.k - $$12 - 7.0;
-            $$12 += (double)this.k;
-         } else {
-            $$12 = 0.0;
-            $$13 = 0.0;
-         }
-
-         double $$15 = $$12;
-         aup $$16 = this.t.a($$4, 0, $$5);
-         int $$17 = 2 + $$16.a(4);
-         int $$18 = this.k + 18 + $$16.a(10);
-         int $$19 = 0;
-
-         for (int $$20 = Math.max($$6, (int)$$12 + 1); $$20 >= $$0; $$20--) {
-            if ($$2.a($$20).i() && $$20 < (int)$$15 && $$16.j() > 0.01
-               || $$2.a($$20).a(cwl.G) && $$20 > (int)$$13 && $$20 < this.k && $$13 != 0.0 && $$16.j() > 0.15) {
-               if ($$19 <= $$17 && $$20 > $$18) {
-                  $$2.a($$20, i);
-                  $$19++;
-               } else {
-                  $$2.a($$20, h);
-               }
-            }
-         }
-      }
-   }
-
-   private static dja[] a(aup $$0) {
-      dja[] $$1 = new dja[192];
-      Arrays.fill($$1, c);
-
-      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
-         $$2 += $$0.a(5) + 1;
-         if ($$2 < $$1.length) {
-            $$1[$$2] = b;
-         }
-      }
-
-      a($$0, $$1, 1, d);
-      a($$0, $$1, 2, e);
-      a($$0, $$1, 1, f);
-      int $$3 = $$0.a(9, 15);
-      int $$4 = 0;
-
-      for (int $$5 = 0; $$4 < $$3 && $$5 < $$1.length; $$5 += $$0.a(16) + 4) {
-         $$1[$$5] = a;
-         if ($$5 - 1 > 0 && $$0.h()) {
-            $$1[$$5 - 1] = g;
-         }
-
-         if ($$5 + 1 < $$1.length && $$0.h()) {
-            $$1[$$5 + 1] = g;
-         }
-
-         $$4++;
-      }
-
-      return $$1;
-   }
-
-   private static void a(aup $$0, dja[] $$1, int $$2, dja $$3) {
-      int $$4 = $$0.a(6, 15);
-
-      for (int $$5 = 0; $$5 < $$4; $$5++) {
-         int $$6 = $$2 + $$0.a(3);
-         int $$7 = $$0.a($$1.length);
-
-         for (int $$8 = 0; $$7 + $$8 < $$1.length && $$8 < $$6; $$8++) {
-            $$1[$$7 + $$8] = $$3;
-         }
-      }
-   }
-
-   protected dja a(int $$0, int $$1, int $$2) {
-      int $$3 = (int)Math.round(this.m.a((double)$$0, 0.0, (double)$$2) * 4.0);
-      return this.l[($$1 + $$3 + this.l.length) % this.l.length];
    }
 }

@@ -78,13 +78,13 @@ public class ac {
    private static final int g = 255;
    private static final int h = 10;
    private static final String i = "max.bg.threads";
-   private static final AtomicInteger j = new AtomicInteger(1);
-   private static final ExecutorService k = c("Main");
-   private static final ExecutorService l = m();
+   private static final ExecutorService j = c("Main");
+   private static final ExecutorService k = a("IO-Worker-", false);
+   private static final ExecutorService l = a("Download-", true);
    private static final DateTimeFormatter m = DateTimeFormatter.ofPattern("yyyy-MM-dd_HH.mm.ss", Locale.ROOT);
    private static final int n = 8;
    public static final long a = 1000000L;
-   public static avi.a b = System::nanoTime;
+   public static avn.a b = System::nanoTime;
    public static final Ticker c = new Ticker() {
       public long read() {
          return ac.b.getAsLong();
@@ -103,11 +103,11 @@ public class ac {
       return Collectors.toMap(Entry::getKey, Entry::getValue);
    }
 
-   public static <T extends Comparable<T>> String a(dkd<T> $$0, Object $$1) {
+   public static <T extends Comparable<T>> String a(dkj<T> $$0, Object $$1) {
       return $$0.a((T)$$1);
    }
 
-   public static String a(String $$0, @Nullable ahd $$1) {
+   public static String a(String $$0, @Nullable ahg $$1) {
       return $$1 == null ? $$0 + ".unregistered_sadface" : $$0 + "." + $$1.b() + "." + $$1.a().replace('/', '.');
    }
 
@@ -128,13 +128,14 @@ public class ac {
    }
 
    private static ExecutorService c(String $$0) {
-      int $$1 = aui.a(Runtime.getRuntime().availableProcessors() - 1, 1, l());
+      int $$1 = aun.a(Runtime.getRuntime().availableProcessors() - 1, 1, m());
       ExecutorService $$2;
       if ($$1 <= 0) {
          $$2 = MoreExecutors.newDirectExecutorService();
       } else {
-         $$2 = new ForkJoinPool($$1, $$1x -> {
-            ForkJoinWorkerThread $$2x = new ForkJoinWorkerThread($$1x) {
+         AtomicInteger $$3 = new AtomicInteger(1);
+         $$2 = new ForkJoinPool($$1, $$2x -> {
+            ForkJoinWorkerThread $$3x = new ForkJoinWorkerThread($$2x) {
                @Override
                protected void onTermination(Throwable $$0) {
                   if ($$0 != null) {
@@ -146,15 +147,15 @@ public class ac {
                   super.onTermination($$0);
                }
             };
-            $$2x.setName("Worker-" + $$0 + "-" + j.getAndIncrement());
-            return $$2x;
+            $$3x.setName("Worker-" + $$0 + "-" + $$3.getAndIncrement());
+            return $$3x;
          }, ac::a, true);
       }
 
       return $$2;
    }
 
-   private static int l() {
+   private static int m() {
       String $$0 = System.getProperty("max.bg.threads");
       if ($$0 != null) {
          try {
@@ -173,16 +174,20 @@ public class ac {
    }
 
    public static ExecutorService f() {
-      return k;
+      return j;
    }
 
    public static ExecutorService g() {
+      return k;
+   }
+
+   public static ExecutorService h() {
       return l;
    }
 
-   public static void h() {
+   public static void i() {
+      a(j);
       a(k);
-      a(l);
    }
 
    private static void a(ExecutorService $$0) {
@@ -200,12 +205,14 @@ public class ac {
       }
    }
 
-   private static ExecutorService m() {
-      return Executors.newCachedThreadPool($$0 -> {
-         Thread $$1 = new Thread($$0);
-         $$1.setName("IO-Worker-" + j.getAndIncrement());
-         $$1.setUncaughtExceptionHandler(ac::a);
-         return $$1;
+   private static ExecutorService a(String $$0, boolean $$1) {
+      AtomicInteger $$2 = new AtomicInteger(1);
+      return Executors.newCachedThreadPool($$3 -> {
+         Thread $$4 = new Thread($$3);
+         $$4.setName($$0 + $$2.getAndIncrement());
+         $$4.setDaemon($$1);
+         $$4.setUncaughtExceptionHandler(ac::a);
+         return $$4;
       });
    }
 
@@ -220,7 +227,7 @@ public class ac {
       }
 
       if ($$1 instanceof y $$2) {
-         ahf.a($$2.a().e());
+         ahi.a($$2.a().e());
          System.exit(-1);
       }
 
@@ -237,7 +244,7 @@ public class ac {
       Type<?> $$2 = null;
 
       try {
-         $$2 = avr.a().getSchema(DataFixUtils.makeKey(aa.b().d().c())).getChoiceType($$0, $$1);
+         $$2 = avw.a().getSchema(DataFixUtils.makeKey(aa.b().d().c())).getChoiceType($$0, $$1);
       } catch (IllegalArgumentException var4) {
          f.error("No data fixer registered for {}", $$1);
          if (aa.aW) {
@@ -279,7 +286,7 @@ public class ac {
       } : $$1;
    }
 
-   public static ac.a i() {
+   public static ac.a j() {
       String $$0 = System.getProperty("os.name").toLowerCase(Locale.ROOT);
       if ($$0.contains("win")) {
          return ac.a.c;
@@ -296,7 +303,7 @@ public class ac {
       }
    }
 
-   public static Stream<String> j() {
+   public static Stream<String> k() {
       RuntimeMXBean $$0 = ManagementFactory.getRuntimeMXBean();
       return $$0.getInputArguments().stream().filter($$0x -> $$0x.startsWith("-X"));
    }
@@ -459,19 +466,19 @@ public class ac {
       }
    }
 
-   public static <T> T a(T[] $$0, aup $$1) {
+   public static <T> T a(T[] $$0, auu $$1) {
       return $$0[$$1.a($$0.length)];
    }
 
-   public static int a(int[] $$0, aup $$1) {
+   public static int a(int[] $$0, auu $$1) {
       return $$0[$$1.a($$0.length)];
    }
 
-   public static <T> T a(List<T> $$0, aup $$1) {
+   public static <T> T a(List<T> $$0, auu $$1) {
       return $$0.get($$1.a($$0.size()));
    }
 
-   public static <T> Optional<T> b(List<T> $$0, aup $$1) {
+   public static <T> Optional<T> b(List<T> $$0, auu $$1) {
       return $$0.isEmpty() ? Optional.empty() : Optional.of(a($$0, $$1));
    }
 
@@ -637,7 +644,7 @@ public class ac {
       }
    }
 
-   public static void k() {
+   public static void l() {
       Thread $$0 = new Thread("Timer hack thread") {
          @Override
          public void run() {
@@ -666,8 +673,8 @@ public class ac {
       return $$0.toLowerCase(Locale.ROOT).chars().mapToObj($$1x -> $$1.test((char)$$1x) ? Character.toString((char)$$1x) : "_").collect(Collectors.joining());
    }
 
-   public static <K, V> auz<K, V> a(Function<K, V> $$0) {
-      return new auz<>($$0);
+   public static <K, V> ave<K, V> a(Function<K, V> $$0) {
+      return new ave<>($$0);
    }
 
    public static <T, R> Function<T, R> b(final Function<T, R> $$0) {
@@ -702,13 +709,13 @@ public class ac {
       };
    }
 
-   public static <T> List<T> a(Stream<T> $$0, aup $$1) {
+   public static <T> List<T> a(Stream<T> $$0, auu $$1) {
       ObjectArrayList<T> $$2 = $$0.collect(ObjectArrayList.toList());
       c($$2, $$1);
       return $$2;
    }
 
-   public static IntArrayList a(IntStream $$0, aup $$1) {
+   public static IntArrayList a(IntStream $$0, auu $$1) {
       IntArrayList $$2 = IntArrayList.wrap($$0.toArray());
       int $$3 = $$2.size();
 
@@ -720,19 +727,19 @@ public class ac {
       return $$2;
    }
 
-   public static <T> List<T> b(T[] $$0, aup $$1) {
+   public static <T> List<T> b(T[] $$0, auu $$1) {
       ObjectArrayList<T> $$2 = new ObjectArrayList($$0);
       c($$2, $$1);
       return $$2;
    }
 
-   public static <T> List<T> a(ObjectArrayList<T> $$0, aup $$1) {
+   public static <T> List<T> a(ObjectArrayList<T> $$0, auu $$1) {
       ObjectArrayList<T> $$2 = new ObjectArrayList($$0);
       c($$2, $$1);
       return $$2;
    }
 
-   public static <T> void c(List<T> $$0, aup $$1) {
+   public static <T> void c(List<T> $$0, auu $$1) {
       int $$2 = $$0.size();
 
       for (int $$3 = $$2; $$3 > 1; $$3--) {

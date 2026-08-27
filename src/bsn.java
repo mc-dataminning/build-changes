@@ -1,77 +1,84 @@
 import java.util.EnumSet;
-import java.util.List;
+import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class bsn extends btb {
-   private static final bwt d = bwt.b().a(8.0).d();
-   protected final bxs a;
-   private final Class<? extends bxs> e;
-   protected final cti b;
+public class bsn<T extends bmk> extends btg {
+   protected final bmt a;
+   private final double i;
+   private final double j;
    @Nullable
-   protected bxs c;
-   private int f;
-   private final double g;
+   protected T b;
+   protected final float c;
+   @Nullable
+   protected eff d;
+   protected final bvu e;
+   protected final Class<T> f;
+   protected final Predicate<bmk> g;
+   protected final Predicate<bmk> h;
+   private final bwy k;
 
-   public bsn(bxs $$0, double $$1) {
-      this($$0, $$1, (Class<? extends bxs>)$$0.getClass());
+   public bsn(bmt $$0, Class<T> $$1, float $$2, double $$3, double $$4) {
+      this($$0, $$1, $$0x -> true, $$2, $$3, $$4, blx.e::test);
    }
 
-   public bsn(bxs $$0, double $$1, Class<? extends bxs> $$2) {
+   public bsn(bmt $$0, Class<T> $$1, Predicate<bmk> $$2, float $$3, double $$4, double $$5, Predicate<bmk> $$6) {
       this.a = $$0;
-      this.b = $$0.dM();
-      this.e = $$2;
-      this.g = $$1;
-      this.a(EnumSet.of(btb.a.a, btb.a.b));
+      this.f = $$1;
+      this.g = $$2;
+      this.c = $$3;
+      this.i = $$4;
+      this.j = $$5;
+      this.h = $$6;
+      this.e = $$0.N();
+      this.a(EnumSet.of(btg.a.a));
+      this.k = bwy.a().a((double)$$3).a($$6.and($$2));
+   }
+
+   public bsn(bmt $$0, Class<T> $$1, float $$2, double $$3, double $$4, Predicate<bmk> $$5) {
+      this($$0, $$1, $$0x -> true, $$2, $$3, $$4, $$5);
    }
 
    @Override
    public boolean a() {
-      if (!this.a.gi()) {
+      this.b = this.a
+         .dM()
+         .a(this.a.dM().a(this.f, this.a.cH().c((double)this.c, 3.0, (double)this.c), $$0x -> true), this.k, this.a, this.a.dr(), this.a.dt(), this.a.dx());
+      if (this.b == null) {
          return false;
       } else {
-         this.c = this.h();
-         return this.c != null;
+         els $$0 = bxc.a(this.a, 16, 7, this.b.dk());
+         if ($$0 == null) {
+            return false;
+         } else if (this.b.i($$0.c, $$0.d, $$0.e) < this.b.f(this.a)) {
+            return false;
+         } else {
+            this.d = this.e.a($$0.c, $$0.d, $$0.e, 0);
+            return this.d != null;
+         }
       }
    }
 
    @Override
    public boolean b() {
-      return this.c.bx() && this.c.gi() && this.f < 60 && !this.c.gb();
+      return !this.e.l();
+   }
+
+   @Override
+   public void c() {
+      this.e.a(this.d, this.i);
    }
 
    @Override
    public void d() {
-      this.c = null;
-      this.f = 0;
+      this.b = null;
    }
 
    @Override
    public void e() {
-      this.a.I().a(this.c, 10.0F, (float)this.a.aa());
-      this.a.N().a(this.c, this.g);
-      this.f++;
-      if (this.f >= this.a(60) && this.a.f(this.c) < 9.0) {
-         this.g();
+      if (this.a.f((blu)this.b) < 49.0) {
+         this.a.N().a(this.j);
+      } else {
+         this.a.N().a(this.i);
       }
-   }
-
-   @Nullable
-   private bxs h() {
-      List<? extends bxs> $$0 = this.b.a(this.e, d, this.a, this.a.cH().g(8.0));
-      double $$1 = Double.MAX_VALUE;
-      bxs $$2 = null;
-
-      for (bxs $$3 : $$0) {
-         if (this.a.a($$3) && !$$3.gb() && this.a.f($$3) < $$1) {
-            $$2 = $$3;
-            $$1 = this.a.f($$3);
-         }
-      }
-
-      return $$2;
-   }
-
-   protected void g() {
-      this.a.a((amz)this.b, this.c);
    }
 }

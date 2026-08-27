@@ -1,82 +1,16 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMultimap;
-import com.google.common.collect.Multimap;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonElement;
-import com.mojang.logging.LogUtils;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public interface egs extends egh {
+   void b(int var1);
 
-public class egs implements apw, egt {
-   private static final Logger b = LogUtils.getLogger();
-   private static final Gson c = new GsonBuilder().create();
-   public static final egr<egx> a = new egr<>(egu.c, egn.a);
-   private Map<egr<?>, ?> d = Map.of();
-   private Multimap<egu<?>, ahd> e = ImmutableMultimap.of();
+   void c(int var1);
 
-   @Override
-   public final CompletableFuture<Void> a(apw.a $$0, aqc $$1, bgm $$2, bgm $$3, Executor $$4, Executor $$5) {
-      Map<egu<?>, Map<ahd, ?>> $$6 = new HashMap<>();
-      CompletableFuture<?>[] $$7 = egu.b().map($$3x -> a($$3x, $$1, $$4, $$6)).toArray(CompletableFuture[]::new);
-      return CompletableFuture.allOf($$7).thenCompose($$0::a).thenAcceptAsync($$1x -> this.a($$6), $$5);
-   }
+   void d(int var1);
 
-   private static <T> CompletableFuture<?> a(egu<T> $$0, aqc $$1, Executor $$2, Map<egu<?>, Map<ahd, ?>> $$3) {
-      Map<ahd, T> $$4 = new HashMap<>();
-      $$3.put($$0, $$4);
-      return CompletableFuture.runAsync(() -> {
-         Map<ahd, JsonElement> $$3x = new HashMap<>();
-         aqg.a($$1, $$0.a(), c, $$3x);
-         $$3x.forEach(($$2xx, $$3xx) -> $$0.a($$2xx, $$3xx).ifPresent($$2xxx -> $$4.put($$2xx, (T)$$2xxx)));
-      }, $$2);
-   }
+   void a(float var1);
 
-   private void a(Map<egu<?>, Map<ahd, ?>> $$0) {
-      Object $$1 = $$0.get(egu.c).remove(egn.a);
-      if ($$1 != null) {
-         b.warn("Datapack tried to redefine {} loot table, ignoring", egn.a);
-      }
-
-      Builder<egr<?>, Object> $$2 = ImmutableMap.builder();
-      com.google.common.collect.ImmutableMultimap.Builder<egu<?>, ahd> $$3 = ImmutableMultimap.builder();
-      $$0.forEach(($$2x, $$3x) -> $$3x.forEach(($$3xx, $$4x) -> {
-            $$2.put(new egr($$2x, $$3xx), $$4x);
-            $$3.put($$2x, $$3xx);
-         }));
-      $$2.put(a, egx.a);
-      aun.a $$4 = new aun.a();
-      final Map<egr<?>, ?> $$5 = $$2.build();
-      egy $$6 = new egy($$4, eiz.n, new egt() {
-         @Nullable
-         @Override
-         public <T> T getElement(egr<T> $$0) {
-            return (T)$$5.get($$0);
-         }
-      });
-      $$5.forEach(($$1x, $$2x) -> a($$6, $$1x, $$2x));
-      $$4.a().forEach(($$0x, $$1x) -> b.warn("Found loot table element validation problem in {}: {}", $$0x, $$1x));
-      this.d = $$5;
-      this.e = $$3.build();
-   }
-
-   private static <T> void a(egy $$0, egr<T> $$1, Object $$2) {
-      $$1.a().a($$0, $$1, (T)$$2);
-   }
-
-   @Nullable
-   @Override
-   public <T> T getElement(egr<T> $$0) {
-      return (T)this.d.get($$0);
-   }
-
-   public Collection<ahd> a(egu<?> $$0) {
-      return this.e.get($$0);
+   default void a(hx $$0, float $$1) {
+      this.b($$0.u());
+      this.c($$0.v());
+      this.d($$0.w());
+      this.a($$1);
    }
 }

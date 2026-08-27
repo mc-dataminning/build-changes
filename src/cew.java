@@ -1,8 +1,13 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface cew extends bni<cez> {
+   cev gp();
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface cew {
+   void a(cev var1);
+
+   default cez a() {
+      return this.gp().a();
+   }
+
+   default void a(cez $$0) {
+      this.a(this.gp().a($$0));
+   }
 }

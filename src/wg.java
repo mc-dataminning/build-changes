@@ -3,46 +3,50 @@ import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public record wg(String d, @Nullable ge e) implements wf {
-   public static final MapCodec<wg> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.STRING.fieldOf("entity").forGetter(wg::b)).apply($$0, wg::new));
-   public static final wf.a<wg> b = new wf.a<>(a, "entity");
+public record wg(String d, @Nullable fo e) implements wh {
+   public static final MapCodec<wg> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.STRING.fieldOf("block").forGetter(wg::b)).apply($$0, wg::new));
+   public static final wh.a<wg> b = new wh.a<>(a, "block");
 
    public wg(String $$0) {
       this($$0, a($$0));
    }
 
    @Nullable
-   private static ge a(String $$0) {
+   private static fo a(String $$0) {
       try {
-         gf $$1 = new gf(new StringReader($$0));
-         return $$1.t();
+         return fm.a().a(new StringReader($$0));
       } catch (CommandSyntaxException var2) {
          return null;
       }
    }
 
    @Override
-   public Stream<sl> a(ds $$0) throws CommandSyntaxException {
+   public Stream<sn> a(ds $$0) {
       if (this.e != null) {
-         List<? extends blp> $$1 = this.e.b($$0);
-         return $$1.stream().map(cm::b);
-      } else {
-         return Stream.empty();
+         and $$1 = $$0.e();
+         hx $$2 = this.e.c($$0);
+         if ($$1.p($$2)) {
+            dgu $$3 = $$1.c_($$2);
+            if ($$3 != null) {
+               return Stream.of($$3.o());
+            }
+         }
       }
+
+      return Stream.empty();
    }
 
    @Override
-   public wf.a<?> a() {
+   public wh.a<?> a() {
       return b;
    }
 
    @Override
    public String toString() {
-      return "entity=" + this.d;
+      return "block=" + this.d;
    }
 
    @Override
@@ -68,7 +72,7 @@ public record wg(String d, @Nullable ge e) implements wf {
    }
 
    @Nullable
-   public ge c() {
+   public fo c() {
       return this.e;
    }
 }

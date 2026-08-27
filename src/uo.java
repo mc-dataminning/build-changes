@@ -1,15 +1,17 @@
-import io.netty.util.Attribute;
-
 public interface uo {
-   static void a(Attribute<uf.a<?>> $$0, xd<?> $$1) {
-      uf $$2 = $$1.c();
-      if ($$2 != null) {
-         uf.a<?> $$3 = (uf.a<?>)$$0.get();
-         uf $$4 = $$3.a();
-         if ($$2 != $$4) {
-            uf.a<?> $$5 = $$2.b($$3.b());
-            $$0.set($$5);
-         }
-      }
+   xg a();
+
+   uh b();
+
+   void a(vf var1);
+
+   boolean c();
+
+   default boolean a(xf<?> $$0) {
+      return this.c();
+   }
+
+   default boolean d() {
+      return true;
    }
 }

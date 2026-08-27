@@ -1,49 +1,22 @@
-public class fpe extends frn {
-   private final fri a;
+import com.mojang.logging.LogUtils;
+import java.net.InetAddress;
+import java.net.InetSocketAddress;
+import java.net.UnknownHostException;
+import java.util.Optional;
+import org.slf4j.Logger;
 
-   fpe(fnk $$0, double $$1, double $$2, double $$3, double $$4, fri $$5) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.a = $$5;
-      this.t = 4;
-      float $$6 = this.r.i() * 0.6F + 0.4F;
-      this.v = $$6;
-      this.w = $$6;
-      this.x = $$6;
-      this.D = 1.0F - (float)$$4 * 0.5F;
-      this.b($$5);
-   }
-
-   @Override
-   public int a(float $$0) {
-      return 15728880;
-   }
-
-   @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
-      } else {
-         this.b(this.a);
+@FunctionalInterface
+public interface fpe {
+   Logger a = LogUtils.getLogger();
+   fpe b = $$0 -> {
+      try {
+         InetAddress $$1 = InetAddress.getByName($$0.a());
+         return Optional.of(fpc.a(new InetSocketAddress($$1, $$0.b())));
+      } catch (UnknownHostException var2) {
+         a.debug("Couldn't resolve server {} address", $$0.a(), var2);
+         return Optional.empty();
       }
-   }
+   };
 
-   @Override
-   public fqr b() {
-      return fqr.d;
-   }
-
-   public static class a implements fqq<ka> {
-      private final fri a;
-
-      public a(fri $$0) {
-         this.a = $$0;
-      }
-
-      public fqn a(ka $$0, fnk $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fpe($$1, $$2, $$3, $$4, $$5, this.a);
-      }
-   }
+   Optional<fpc> resolve(fpd var1);
 }

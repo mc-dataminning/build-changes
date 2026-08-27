@@ -1,81 +1,99 @@
 import com.mojang.serialization.MapCodec;
 
-public class dcp extends cyl {
+public class dcp extends cwp {
    public static final MapCodec<dcp> a = b(dcp::new);
-   public static final djr b = djq.s;
-   public static final dka e = djq.aA;
+   public static final djx b = dcs.d;
 
    @Override
    public MapCodec<dcp> a() {
       return a;
    }
 
-   protected dcp(diz.d $$0) {
+   public dcp(djf.d $$0) {
       super($$0);
-      this.k(this.E.b().a(aE, ic.c).a(e, Integer.valueOf(1)).a(b, Boolean.valueOf(false)).a(d, Boolean.valueOf(false)));
+      this.k(this.o().a(b, Boolean.valueOf(false)));
    }
 
    @Override
-   public bjv a(dja $$0, cti $$1, hx $$2, cfb $$3, bju $$4, eli $$5) {
-      if (!$$3.fT().e) {
-         return bjv.d;
+   public void a(djg $$0, cto $$1, hx $$2, cfh $$3) {
+      d($$0, $$1, $$2);
+      super.a($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   public void a(cto $$0, hx $$1, djg $$2, blu $$3) {
+      if (!$$3.bT()) {
+         d($$2, $$0, $$1);
+      }
+
+      super.a($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   public bka a(djg $$0, cto $$1, hx $$2, cfh $$3, bjz $$4, elo $$5) {
+      if ($$1.B) {
+         a($$1, $$2);
       } else {
-         $$1.a($$2, $$0.a(e), 3);
-         return bjv.a($$1.B);
+         d($$0, $$1, $$2);
+      }
+
+      cmx $$6 = $$3.b($$4);
+      return $$6.d() instanceof ckq && new cpg($$3, $$4, $$6, $$5).b() ? bka.d : bka.a;
+   }
+
+   private static void d(djg $$0, cto $$1, hx $$2) {
+      a($$1, $$2);
+      if (!$$0.c(b)) {
+         $$1.a($$2, $$0.a(b, Boolean.valueOf(true)), 3);
       }
    }
 
    @Override
-   protected int g(dja $$0) {
-      return $$0.c(e) * 2;
+   public boolean e_(djg $$0) {
+      return $$0.c(b);
    }
 
    @Override
-   public dja a(cpa $$0) {
-      dja $$1 = super.a($$0);
-      return $$1.a(b, Boolean.valueOf(this.c($$0.q(), $$0.a(), $$1)));
-   }
-
-   @Override
-   public dja a(dja $$0, ic $$1, dja $$2, ctj $$3, hx $$4, hx $$5) {
-      if ($$1 == ic.a && !this.b($$3, $$5, $$2)) {
-         return cwl.a.o();
-      } else {
-         return !$$3.y_() && $$1.o() != $$0.c(aE).o() ? $$0.a(b, Boolean.valueOf(this.c($$3, $$4, $$0))) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   public void b(djg $$0, and $$1, hx $$2, auu $$3) {
+      if ($$0.c(b)) {
+         $$1.a($$2, $$0.a(b, Boolean.valueOf(false)), 3);
       }
    }
 
    @Override
-   public boolean c(ctl $$0, hx $$1, dja $$2) {
-      return this.a((cty)$$0, $$1, $$2) > 0;
+   public void a(djg $$0, and $$1, hx $$2, cmx $$3, boolean $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      if ($$4 && crk.a(crm.v, $$3) == 0) {
+         int $$5 = 1 + $$1.z.a(5);
+         this.a($$1, $$2, $$5);
+      }
    }
 
    @Override
-   protected boolean b() {
-      return true;
+   public void a(djg $$0, cto $$1, hx $$2, auu $$3) {
+      if ($$0.c(b)) {
+         a($$1, $$2);
+      }
    }
 
-   @Override
-   public void a(dja $$0, cti $$1, hx $$2, aup $$3) {
-      if ($$0.c(d)) {
-         ic $$4 = $$0.c(aE);
-         double $$5 = (double)$$2.u() + 0.5 + ($$3.j() - 0.5) * 0.2;
-         double $$6 = (double)$$2.v() + 0.4 + ($$3.j() - 0.5) * 0.2;
-         double $$7 = (double)$$2.w() + 0.5 + ($$3.j() - 0.5) * 0.2;
-         float $$8 = -5.0F;
-         if ($$3.h()) {
-            $$8 = (float)($$0.c(e) * 2 - 1);
+   private static void a(cto $$0, hx $$1) {
+      double $$2 = 0.5625;
+      auu $$3 = $$0.z;
+
+      for (ic $$4 : ic.values()) {
+         hx $$5 = $$1.a($$4);
+         if (!$$0.a_($$5).i($$0, $$5)) {
+            ic.a $$6 = $$4.o();
+            double $$7 = $$6 == ic.a.a ? 0.5 + 0.5625 * (double)$$4.j() : (double)$$3.i();
+            double $$8 = $$6 == ic.a.b ? 0.5 + 0.5625 * (double)$$4.k() : (double)$$3.i();
+            double $$9 = $$6 == ic.a.c ? 0.5 + 0.5625 * (double)$$4.l() : (double)$$3.i();
+            $$0.a(jr.b, (double)$$1.u() + $$7, (double)$$1.v() + $$8, (double)$$1.w() + $$9, 0.0, 0.0, 0.0);
          }
-
-         $$8 /= 16.0F;
-         double $$9 = (double)($$8 * (float)$$4.j());
-         double $$10 = (double)($$8 * (float)$$4.l());
-         $$1.a(jr.b, $$5 + $$9, $$6, $$7 + $$10, 0.0, 0.0, 0.0);
       }
    }
 
    @Override
-   protected void a(djb.a<cwj, dja> $$0) {
-      $$0.a(aE, e, b, d);
+   protected void a(djh.a<cwp, djg> $$0) {
+      $$0.a(b);
    }
 }

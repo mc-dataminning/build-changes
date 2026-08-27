@@ -1,47 +1,91 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.ints.IntSet;
-import it.unimi.dsi.fastutil.ints.IntSets;
-import java.util.Map;
-import javax.annotation.Nullable;
+import com.mojang.logging.LogUtils;
+import javax.sound.sampled.AudioFormat;
+import javax.sound.sampled.AudioFormat.Encoding;
+import org.lwjgl.openal.AL10;
+import org.lwjgl.openal.ALC10;
+import org.slf4j.Logger;
 
-public class eny implements enw {
-   private final Int2ObjectMap<env.a> a;
+public class eny {
+   private static final Logger a = LogUtils.getLogger();
 
-   public eny(Map<Integer, Float> $$0) {
-      this.a = new Int2ObjectOpenHashMap($$0.size());
-      $$0.forEach(($$0x, $$1) -> this.a.put($$0x, (env.a)() -> $$1));
+   private static String a(int $$0) {
+      switch ($$0) {
+         case 40961:
+            return "Invalid name parameter.";
+         case 40962:
+            return "Invalid enumerated parameter value.";
+         case 40963:
+            return "Invalid parameter parameter value.";
+         case 40964:
+            return "Invalid operation.";
+         case 40965:
+            return "Unable to allocate memory.";
+         default:
+            return "An unrecognized error occurred.";
+      }
    }
 
-   @Nullable
-   @Override
-   public env a(int $$0) {
-      return (env)this.a.get($$0);
+   static boolean a(String $$0) {
+      int $$1 = AL10.alGetError();
+      if ($$1 != 0) {
+         a.error("{}: {}", $$0, a($$1));
+         return true;
+      } else {
+         return false;
+      }
    }
 
-   @Override
-   public IntSet a() {
-      return IntSets.unmodifiable(this.a.keySet());
+   private static String b(int $$0) {
+      switch ($$0) {
+         case 40961:
+            return "Invalid device.";
+         case 40962:
+            return "Invalid context.";
+         case 40963:
+            return "Illegal enum.";
+         case 40964:
+            return "Invalid value.";
+         case 40965:
+            return "Unable to allocate memory.";
+         default:
+            return "An unrecognized error occurred.";
+      }
    }
 
-   public static record a(Map<Integer, Float> c) implements ezx {
-      public static final MapCodec<eny.a> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(Codec.unboundedMap(atq.w, Codec.FLOAT).fieldOf("advances").forGetter(eny.a::c)).apply($$0, eny.a::new)
-      );
+   static boolean a(long $$0, String $$1) {
+      int $$2 = ALC10.alcGetError($$0);
+      if ($$2 != 0) {
+         a.error("{} ({}): {}", new Object[]{$$1, $$0, b($$2)});
+         return true;
+      } else {
+         return false;
+      }
+   }
 
-      @Override
-      public ezy a() {
-         return ezy.c;
+   static int a(AudioFormat $$0) {
+      Encoding $$1 = $$0.getEncoding();
+      int $$2 = $$0.getChannels();
+      int $$3 = $$0.getSampleSizeInBits();
+      if ($$1.equals(Encoding.PCM_UNSIGNED) || $$1.equals(Encoding.PCM_SIGNED)) {
+         if ($$2 == 1) {
+            if ($$3 == 8) {
+               return 4352;
+            }
+
+            if ($$3 == 16) {
+               return 4353;
+            }
+         } else if ($$2 == 2) {
+            if ($$3 == 8) {
+               return 4354;
+            }
+
+            if ($$3 == 16) {
+               return 4355;
+            }
+         }
       }
 
-      @Override
-      public Either<ezx.a, ezx.b> b() {
-         ezx.a $$0 = $$0x -> new eny(this.c);
-         return Either.left($$0);
-      }
+      throw new IllegalArgumentException("Invalid audio format: " + $$0);
    }
 }

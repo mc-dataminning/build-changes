@@ -1,4 +1,4 @@
-public class sx extends sw {
+public class sx extends sy {
    public sx(String $$0) {
       super($$0);
    }

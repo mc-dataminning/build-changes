@@ -1,70 +1,24 @@
-public abstract class pz {
-   public static void a(pc<cuh> $$0) {
-      ii<dyd> $$1 = $$0.a(ke.aC);
-      ii<dqm<?>> $$2 = $$0.a(ke.av);
-      $$0.a(cuo.a, qc.j($$1, $$2));
-      $$0.a(cuo.b, qc.a($$1, $$2, false, false, false));
-      $$0.a(cuo.c, qc.a($$1, $$2, true, false, false));
-      $$0.a(cuo.d, qc.a($$1, $$2, false, true, false));
-      $$0.a(cuo.e, qc.a($$1, $$2, false, true, true));
-      $$0.a(cuo.f, qc.d($$1, $$2));
-      $$0.a(cuo.g, qc.h($$1, $$2));
-      $$0.a(cuo.h, qc.i($$1, $$2));
-      $$0.a(cuo.i, qc.b($$1, $$2, false, false, false));
-      $$0.a(cuo.j, qc.b($$1, $$2, false, false, true));
-      $$0.a(cuo.k, qc.b($$1, $$2, true, false, false));
-      $$0.a(cuo.l, qc.g($$1, $$2));
-      $$0.a(cuo.m, qc.b($$1, $$2, true, true, false));
-      $$0.a(cuo.n, qc.a($$1, $$2, false));
-      $$0.a(cuo.o, qc.a($$1, $$2, true));
-      $$0.a(cuo.p, qc.h($$1, $$2, false));
-      $$0.a(cuo.q, qc.h($$1, $$2, true));
-      $$0.a(cuo.r, qc.a($$1, $$2, false, false));
-      $$0.a(cuo.s, qc.a($$1, $$2, false, true));
-      $$0.a(cuo.t, qc.b($$1, $$2, false));
-      $$0.a(cuo.u, qc.b($$1, $$2, false));
-      $$0.a(cuo.v, qc.b($$1, $$2, true));
-      $$0.a(cuo.w, qc.a($$1, $$2, true, false));
-      $$0.a(cuo.x, qc.b($$1, $$2));
-      $$0.a(cuo.y, qc.a($$1, $$2));
-      $$0.a(cuo.z, qc.c($$1, $$2));
-      $$0.a(cuo.A, qc.c($$1, $$2, false));
-      $$0.a(cuo.B, qc.c($$1, $$2, false));
-      $$0.a(cuo.C, qc.c($$1, $$2, true));
-      $$0.a(cuo.D, qc.j($$1, $$2, false));
-      $$0.a(cuo.E, qc.j($$1, $$2, true));
-      $$0.a(cuo.F, qc.o($$1, $$2));
-      $$0.a(cuo.G, qc.n($$1, $$2));
-      $$0.a(cuo.H, qc.k($$1, $$2));
-      $$0.a(cuo.I, qc.l($$1, $$2));
-      $$0.a(cuo.J, qc.m($$1, $$2));
-      $$0.a(cuo.K, qc.i($$1, $$2, false));
-      $$0.a(cuo.L, qc.i($$1, $$2, true));
-      $$0.a(cuo.M, qc.b($$1, $$2, false, false));
-      $$0.a(cuo.N, qc.b($$1, $$2, true, false));
-      $$0.a(cuo.O, qc.b($$1, $$2, false, true));
-      $$0.a(cuo.P, qc.f($$1, $$2));
-      $$0.a(cuo.Q, qc.f($$1, $$2, false));
-      $$0.a(cuo.R, qc.f($$1, $$2, true));
-      $$0.a(cuo.S, qc.e($$1, $$2, false));
-      $$0.a(cuo.T, qc.e($$1, $$2, true));
-      $$0.a(cuo.U, qc.d($$1, $$2, false));
-      $$0.a(cuo.V, qc.d($$1, $$2, true));
-      $$0.a(cuo.W, qc.g($$1, $$2, false));
-      $$0.a(cuo.X, qc.g($$1, $$2, true));
-      $$0.a(cuo.Y, qc.e($$1, $$2));
-      $$0.a(cuo.Z, qc.q($$1, $$2));
-      $$0.a(cuo.aa, qc.p($$1, $$2));
-      $$0.a(cuo.ab, qc.r($$1, $$2));
-      $$0.a(cuo.ac, qb.a($$1, $$2));
-      $$0.a(cuo.ad, qb.e($$1, $$2));
-      $$0.a(cuo.ae, qb.d($$1, $$2));
-      $$0.a(cuo.af, qb.b($$1, $$2));
-      $$0.a(cuo.ag, qb.c($$1, $$2));
-      $$0.a(cuo.ah, qa.b($$1, $$2));
-      $$0.a(cuo.ai, qa.d($$1, $$2));
-      $$0.a(cuo.aj, qa.c($$1, $$2));
-      $$0.a(cuo.ak, qa.e($$1, $$2));
-      $$0.a(cuo.al, qa.a($$1, $$2));
+import java.util.Arrays;
+import java.util.Optional;
+import java.util.stream.Collectors;
+
+public class pz {
+   public static void a(pe<dzf> $$0) {
+      ii<cun> $$1 = $$0.a(ke.at);
+      ii<eao> $$2 = $$0.a(ke.aG);
+      $$0.a(
+         dyz.H,
+         new ebf(
+            pq.a($$1.b(asf.I), Arrays.stream(bmn.values()).collect(Collectors.toMap($$0x -> $$0x, $$0x -> new dzm(dzm.a.a, bio.c()))), dol.b.d, dzq.b),
+            $$2.b(pv.a),
+            Optional.empty(),
+            20,
+            dxp.a(dpj.a(-40), dpj.a(-20)),
+            false,
+            Optional.empty(),
+            116,
+            pv.d
+         )
+      );
    }
 }

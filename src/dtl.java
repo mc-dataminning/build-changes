@@ -1,23 +1,52 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.function.Predicate;
 
-public class dtl implements dtr {
-   public static final Codec<dtl> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(bja.b(0, 3).fieldOf("reach").forGetter($$0x -> $$0x.b), bja.b(1, 10).fieldOf("height").forGetter($$0x -> $$0x.c)).apply($$0, dtl::new)
-   );
-   private final bja b;
-   private final bja c;
-
-   public dtl(bja $$0, bja $$1) {
-      this.b = $$0;
-      this.c = $$1;
+public class dtl extends dti {
+   public dtl(Codec<duw> $$0) {
+      super($$0);
    }
 
-   public bja a() {
-      return this.b;
+   @Override
+   protected Set<hx> a(cuj $$0, duw $$1, auu $$2, hx $$3, Predicate<djg> $$4, int $$5, int $$6) {
+      Set<hx> $$7 = super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      Set<hx> $$8 = new HashSet<>();
+      hx.a $$9 = new hx.a();
+
+      for (hx $$10 : $$7) {
+         if (!a($$0, $$7, $$10, $$9)) {
+            $$8.add($$10);
+         }
+      }
+
+      for (hx $$11 : $$8) {
+         $$0.a($$11, cwr.G.o(), 2);
+      }
+
+      return $$8;
    }
 
-   public bja b() {
-      return this.c;
+   private static boolean a(cuj $$0, Set<hx> $$1, hx $$2, hx.a $$3) {
+      return a($$0, $$2, $$3, ic.c) || a($$0, $$2, $$3, ic.f) || a($$0, $$2, $$3, ic.d) || a($$0, $$2, $$3, ic.e) || a($$0, $$2, $$3, ic.a);
+   }
+
+   private static boolean a(cuj $$0, hx $$1, hx.a $$2, ic $$3) {
+      $$2.a($$1, $$3);
+      return !$$0.a_($$2).d($$0, $$2, $$3.g());
+   }
+
+   @Override
+   protected boolean a(cuj $$0, duw $$1, dld $$2, auu $$3, hx $$4) {
+      if (super.a($$0, $$1, $$2, $$3, $$4.d())) {
+         djg $$5 = $$0.a_($$4);
+         if ($$5.b(djw.C) && !$$5.c(djw.C)) {
+            $$0.a($$4, $$5.a(djw.C, Boolean.valueOf(true)), 2);
+         }
+
+         return true;
+      } else {
+         return false;
+      }
    }
 }

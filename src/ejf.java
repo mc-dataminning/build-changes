@@ -1,59 +1,45 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
+import com.google.common.collect.BiMap;
+import com.google.common.collect.HashBiMap;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.Function;
-import java.util.function.Predicate;
+import com.mojang.serialization.DataResult;
+import java.util.Optional;
+import java.util.function.Consumer;
 
-public abstract class ejf implements ejo {
-   protected final List<ejo> c;
-   private final Predicate<egp> a;
+public class ejf {
+   private static final BiMap<ahg, eje> p = HashBiMap.create();
+   public static final Codec<eje> a = ahg.a
+      .comapFlatMap(
+         $$0 -> Optional.ofNullable((eje)p.get($$0))
+               .<DataResult>map(DataResult::success)
+               .orElseGet(() -> DataResult.error(() -> "No parameter set exists with id: '" + $$0 + "'")),
+         p.inverse()::get
+      );
+   public static final eje b = a("empty", $$0 -> {
+   });
+   public static final eje c = a("chest", $$0 -> $$0.a(ejg.f).b(ejg.a));
+   public static final eje d = a("command", $$0 -> $$0.a(ejg.f).b(ejg.a));
+   public static final eje e = a("selector", $$0 -> $$0.a(ejg.f).a(ejg.a));
+   public static final eje f = a("fishing", $$0 -> $$0.a(ejg.f).a(ejg.i).b(ejg.a));
+   public static final eje g = a("entity", $$0 -> $$0.a(ejg.a).a(ejg.f).a(ejg.c).b(ejg.d).b(ejg.e).b(ejg.b));
+   public static final eje h = a("archaeology", $$0 -> $$0.a(ejg.f).b(ejg.a));
+   public static final eje i = a("gift", $$0 -> $$0.a(ejg.f).a(ejg.a));
+   public static final eje j = a("barter", $$0 -> $$0.a(ejg.a));
+   public static final eje k = a("advancement_reward", $$0 -> $$0.a(ejg.a).a(ejg.f));
+   public static final eje l = a("advancement_entity", $$0 -> $$0.a(ejg.a).a(ejg.f));
+   public static final eje m = a("advancement_location", $$0 -> $$0.a(ejg.a).a(ejg.f).a(ejg.i).a(ejg.g));
+   public static final eje n = a("generic", $$0 -> $$0.a(ejg.a).a(ejg.b).a(ejg.c).a(ejg.d).a(ejg.e).a(ejg.f).a(ejg.g).a(ejg.h).a(ejg.i).a(ejg.j));
+   public static final eje o = a("block", $$0 -> $$0.a(ejg.g).a(ejg.f).a(ejg.i).b(ejg.a).b(ejg.h).b(ejg.j));
 
-   protected ejf(List<ejo> $$0, Predicate<egp> $$1) {
-      this.c = $$0;
-      this.a = $$1;
-   }
-
-   protected static <T extends ejf> Codec<T> a(Function<List<ejo>, T> $$0) {
-      return RecordCodecBuilder.create($$1 -> $$1.group(ejq.a.listOf().fieldOf("terms").forGetter($$0xx -> $$0xx.c)).apply($$1, $$0));
-   }
-
-   protected static <T extends ejf> Codec<T> b(Function<List<ejo>, T> $$0) {
-      return ejq.a.listOf().xmap($$0, $$0x -> $$0x.c);
-   }
-
-   public final boolean a(egp $$0) {
-      return this.a.test($$0);
-   }
-
-   @Override
-   public void a(egy $$0) {
-      ejo.super.a($$0);
-
-      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
-         this.c.get($$1).a($$0.a(".term[" + $$1 + "]"));
+   private static eje a(String $$0, Consumer<eje.a> $$1) {
+      eje.a $$2 = new eje.a();
+      $$1.accept($$2);
+      eje $$3 = $$2.a();
+      ahg $$4 = new ahg($$0);
+      eje $$5 = (eje)p.put($$4, $$3);
+      if ($$5 != null) {
+         throw new IllegalStateException("Loot table parameter set " + $$4 + " is already registered");
+      } else {
+         return $$3;
       }
-   }
-
-   public abstract static class a implements ejo.a {
-      private final Builder<ejo> a = ImmutableList.builder();
-
-      protected a(ejo.a... $$0) {
-         for (ejo.a $$1 : $$0) {
-            this.a.add($$1.build());
-         }
-      }
-
-      public void a(ejo.a $$0) {
-         this.a.add($$0.build());
-      }
-
-      @Override
-      public ejo build() {
-         return this.a(this.a.build());
-      }
-
-      protected abstract ejo a(List<ejo> var1);
    }
 }

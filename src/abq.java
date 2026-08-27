@@ -1,24 +1,24 @@
-public class abq implements xd<yx> {
-   private final double a;
+public class abq implements xf<za> {
+   private final vf a;
 
-   public abq(dkr $$0) {
-      this.a = $$0.k();
+   public abq(vf $$0) {
+      this.a = $$0;
    }
 
-   public abq(ug $$0) {
-      this.a = $$0.readDouble();
+   public abq(ui $$0) {
+      this.a = $$0.m();
    }
 
    @Override
-   public void a(ug $$0) {
+   public void a(ui $$0) {
       $$0.a(this.a);
    }
 
-   public void a(yx $$0) {
+   public void a(za $$0) {
       $$0.a(this);
    }
 
-   public double a() {
+   public vf a() {
       return this.a;
    }
 }

@@ -18,13 +18,13 @@ public class hm<A extends ArgumentType<?>> implements hj<A, hm<A>.a> {
       return new hm<>($$0);
    }
 
-   public void a(hm<A>.a $$0, ug $$1) {
+   public void a(hm<A>.a $$0, ui $$1) {
    }
 
    public void a(hm<A>.a $$0, JsonObject $$1) {
    }
 
-   public hm<A>.a a(ug $$0) {
+   public hm<A>.a a(ui $$0) {
       return this.a;
    }
 

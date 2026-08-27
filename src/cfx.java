@@ -1,51 +1,49 @@
-public class cfx extends cfz {
-   public cfx(blt<? extends cfx> $$0, cti $$1) {
+public class cfx extends cft {
+   private int e = 1;
+
+   public cfx(bly<? extends cfx> $$0, cto $$1) {
       super($$0, $$1);
    }
 
-   public cfx(cti $$0, bmf $$1) {
-      super(blt.aQ, $$1, $$0);
-   }
-
-   public cfx(cti $$0, double $$1, double $$2, double $$3) {
-      super(blt.aQ, $$1, $$2, $$3, $$0);
+   public cfx(cto $$0, bmk $$1, double $$2, double $$3, double $$4, int $$5) {
+      super(bly.ah, $$1, $$2, $$3, $$4, $$0);
+      this.e = $$5;
    }
 
    @Override
-   protected cmm s() {
-      return cmu.qz;
-   }
-
-   private jv y() {
-      cmr $$0 = this.u();
-      return (jv)($$0.b() ? jx.T : new jt(jx.Q, $$0));
+   protected void a(elq $$0) {
+      super.a($$0);
+      if (!this.dM().B) {
+         boolean $$1 = this.dM().Z().b(ctk.c);
+         this.dM().a(this, this.dr(), this.dt(), this.dx(), (float)this.e, $$1, cto.a.c);
+         this.am();
+      }
    }
 
    @Override
-   public void b(byte $$0) {
-      if ($$0 == 3) {
-         jv $$1 = this.y();
-
-         for (int $$2 = 0; $$2 < 8; $$2++) {
-            this.dM().a($$1, this.dr(), this.dt(), this.dx(), 0.0, 0.0, 0.0);
+   protected void a(elp $$0) {
+      super.a($$0);
+      if (!this.dM().B) {
+         blu $$1 = $$0.a();
+         blu $$2 = this.w();
+         $$1.a(this.dN().a((cft)this, $$2), 6.0F);
+         if ($$2 instanceof bmk) {
+            this.a((bmk)$$2, $$1);
          }
       }
    }
 
    @Override
-   protected void a(elj $$0) {
-      super.a($$0);
-      blp $$1 = $$0.a();
-      int $$2 = $$1 instanceof cbt ? 3 : 0;
-      $$1.a(this.dN().b(this, this.w()), (float)$$2);
+   public void b(sn $$0) {
+      super.b($$0);
+      $$0.a("ExplosionPower", (byte)this.e);
    }
 
    @Override
-   protected void a(elk $$0) {
+   public void a(sn $$0) {
       super.a($$0);
-      if (!this.dM().B) {
-         this.dM().a(this, (byte)3);
-         this.am();
+      if ($$0.b("ExplosionPower", 99)) {
+         this.e = $$0.f("ExplosionPower");
       }
    }
 }

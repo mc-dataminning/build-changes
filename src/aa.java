@@ -10,22 +10,22 @@ public class aa {
    @Deprecated
    public static final boolean a = true;
    @Deprecated
-   public static final int b = 3691;
+   public static final int b = 3693;
    @Deprecated
    public static final String c = "main";
    @Deprecated
-   public static final String d = "23w46a";
+   public static final String d = "1.20.3-pre1";
    @Deprecated
    public static final int e = 765;
    @Deprecated
-   public static final int f = 163;
+   public static final int f = 164;
    public static final int g = 3678;
    private static final int bm = 30;
    public static final boolean h = true;
    @Deprecated
-   public static final int i = 21;
+   public static final int i = 22;
    @Deprecated
-   public static final int j = 25;
+   public static final int j = 26;
    @Deprecated
    public static final int k = 1;
    public static final int l = 1;
@@ -181,17 +181,17 @@ public class aa {
    }
 
    public static int c() {
-      return 1073741987;
+      return 1073741988;
    }
 
-   public static boolean a(csp $$0) {
+   public static boolean a(csv $$0) {
       int $$1 = $$0.d();
       int $$2 = $$0.e();
       return !at ? false : $$1 > 8192 || $$1 < 0 || $$2 > 1024 || $$2 < 0;
    }
 
    public static void d() {
-      aX = avq.t;
+      aX = avv.t;
    }
 
    static {

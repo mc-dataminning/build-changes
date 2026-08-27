@@ -1,44 +1,34 @@
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public class aeu implements xd<adg> {
-   private final int a;
-   private final String b;
-   private final boolean c;
+public class aeu implements xf<adj> {
+   private final Optional<blf> a;
+   private final Optional<blf> b;
 
-   public aeu(int $$0, String $$1, boolean $$2) {
+   public aeu(Optional<blf> $$0, Optional<blf> $$1) {
       this.a = $$0;
       this.b = $$1;
-      this.c = $$2;
    }
 
-   public aeu(ug $$0) {
-      this.a = $$0.n();
-      this.b = $$0.s();
-      this.c = $$0.readBoolean();
+   public aeu(ui $$0) {
+      this.a = $$0.b((ui.a<blf>)($$0x -> $$0x.a(kd.d)));
+      this.b = $$0.b((ui.a<blf>)($$0x -> $$0x.a(kd.d)));
    }
 
    @Override
-   public void a(ug $$0) {
-      $$0.c(this.a);
-      $$0.a(this.b);
-      $$0.a(this.c);
+   public void a(ui $$0) {
+      $$0.a(this.a, ($$0x, $$1) -> $$0x.a(kd.d, $$1));
+      $$0.a(this.b, ($$0x, $$1) -> $$0x.a(kd.d, $$1));
    }
 
-   public void a(adg $$0) {
+   public void a(adj $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public csj a(cti $$0) {
-      blp $$1 = $$0.a(this.a);
-      return $$1 instanceof chb ? ((chb)$$1).C() : null;
+   public Optional<blf> a() {
+      return this.a;
    }
 
-   public String a() {
+   public Optional<blf> d() {
       return this.b;
-   }
-
-   public boolean d() {
-      return this.c;
    }
 }

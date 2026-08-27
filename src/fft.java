@@ -1,25 +1,27 @@
-public class fft extends ffw {
-   private static final vd b = vd.c("multiplayerWarning.header").a(n.r);
-   private static final vd c = vd.c("multiplayerWarning.message");
-   private static final vd k = vd.c("multiplayerWarning.check");
-   private static final vd l = b.f().f("\n").b(c);
-   private final fct m;
+import org.joml.Vector2i;
+import org.joml.Vector2ic;
 
-   public fft(fct $$0) {
-      super(b, c, k, l);
-      this.m = $$0;
+public class fft implements ffs {
+   public static final ffs a = new fft();
+
+   private fft() {
    }
 
    @Override
-   protected void a(int $$0) {
-      this.d(ewy.a(vc.i, $$0x -> {
-         if (this.a.a()) {
-            this.f.m.v = true;
-            this.f.m.as();
-         }
+   public Vector2ic a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      Vector2i $$6 = new Vector2i($$2, $$3).add(12, -12);
+      this.a($$0, $$1, $$6, $$4, $$5);
+      return $$6;
+   }
 
-         this.f.a(new ffr(this.m));
-      }).a(this.g / 2 - 155, 100 + $$0, 150, 20).a());
-      this.d(ewy.a(vc.k, $$0x -> this.f.a(this.m)).a(this.g / 2 - 155 + 160, 100 + $$0, 150, 20).a());
+   private void a(int $$0, int $$1, Vector2i $$2, int $$3, int $$4) {
+      if ($$2.x + $$3 > $$0) {
+         $$2.x = Math.max($$2.x - 24 - $$3, 4);
+      }
+
+      int $$5 = $$4 + 3;
+      if ($$2.y + $$5 > $$1) {
+         $$2.y = $$1 - $$5;
+      }
    }
 }

@@ -1,49 +1,49 @@
 import com.mojang.serialization.Codec;
-import java.util.Collections;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
-public class dwg extends dwj {
-   public static final Codec<dwg> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(dwg::new, $$0 -> $$0.d).codec();
-   private static final ic b = ic.d;
-   private static final ic[] c = ic.c.a.a().filter($$0 -> $$0 != b.g()).toArray(ic[]::new);
-   private final float d;
+public record dwg(dvy b, List<dwg.a> c) {
+   public static final Codec<dwg> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(dvy.a.fieldOf("fallback").forGetter(dwg::a), dwg.a.a.listOf().fieldOf("rules").forGetter(dwg::b)).apply($$0, dwg::new)
+   );
 
-   public dwg(float $$0) {
-      this.d = $$0;
+   public static dwg a(dvy $$0) {
+      return new dwg($$0, List.of());
    }
 
-   @Override
-   protected dwk<?> a() {
-      return dwk.d;
+   public static dwg a(cwp $$0) {
+      return a(dvy.a($$0));
    }
 
-   @Override
-   public void a(dwj.a $$0) {
-      aup $$1 = $$0.b();
-      if (!($$1.i() >= this.d)) {
-         List<hx> $$2 = $$0.d();
-         List<hx> $$3 = $$0.c();
-         int $$4 = !$$2.isEmpty() ? Math.max($$2.get(0).v() - 1, $$3.get(0).v() + 1) : Math.min($$3.get(0).v() + 1 + $$1.a(3), $$3.get($$3.size() - 1).v());
-         List<hx> $$5 = $$3.stream().filter($$1x -> $$1x.v() == $$4).flatMap($$0x -> Stream.of(c).map($$0x::a)).collect(Collectors.toList());
-         if (!$$5.isEmpty()) {
-            Collections.shuffle($$5);
-            Optional<hx> $$6 = $$5.stream().filter($$1x -> $$0.a($$1x) && $$0.a($$1x.a(b))).findFirst();
-            if (!$$6.isEmpty()) {
-               $$0.a($$6.get(), cwl.pe.o().a(cwd.b, b));
-               $$0.a().a($$6.get(), dgq.H).ifPresent($$1x -> {
-                  int $$2x = 2 + $$1.a(2);
-
-                  for (int $$3x = 0; $$3x < $$2x; $$3x++) {
-                     sl $$4x = new sl();
-                     $$4x.a("id", kd.g.b(blt.h).toString());
-                     $$1x.a($$4x, $$1.a(599), false);
-                  }
-               });
-            }
+   public djg a(cuj $$0, auu $$1, hx $$2) {
+      for (dwg.a $$3 : this.c) {
+         if ($$3.a().test($$0, $$2)) {
+            return $$3.b().a($$1, $$2);
          }
+      }
+
+      return this.b.a($$1, $$2);
+   }
+
+   public dvy a() {
+      return this.b;
+   }
+
+   public List<dwg.a> b() {
+      return this.c;
+   }
+
+   public static record a(dpw b, dvy c) {
+      public static final Codec<dwg.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(dpw.b.fieldOf("if_true").forGetter(dwg.a::a), dvy.a.fieldOf("then").forGetter(dwg.a::b)).apply($$0, dwg.a::new)
+      );
+
+      public dpw a() {
+         return this.b;
+      }
+
+      public dvy b() {
+         return this.c;
       }
    }
 }

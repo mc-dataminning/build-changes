@@ -1,59 +1,136 @@
-import java.util.function.BiFunction;
-import java.util.function.UnaryOperator;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import org.apache.commons.io.FileUtils;
+import org.slf4j.Logger;
 
-public record fhr(dph a, it<dmk> b, dpe c, io<ahm> d, ahn e, cuc f) {
-   public fhr(dpf $$0, io<ahm> $$1, ahn $$2, cuc $$3) {
-      this($$0.a(), $$0.b(), $$1, $$2, $$3);
+public class fhr extends fcz {
+   private static final Logger a = LogUtils.getLogger();
+   private static final vf b = vf.c("selectWorld.enterName").a(n.h);
+   private static final vf c = vf.c("selectWorld.edit.resetIcon");
+   private static final vf k = vf.c("selectWorld.edit.openFolder");
+   private static final vf l = vf.c("selectWorld.edit.backup");
+   private static final vf m = vf.c("selectWorld.edit.backupFolder");
+   private static final vf n = vf.c("selectWorld.edit.optimize");
+   private static final vf o = vf.c("optimizeWorld.confirm.title");
+   private static final vf p = vf.c("optimizeWorld.confirm.description");
+   private static final vf q = vf.c("selectWorld.edit.save");
+   private static final int r = 200;
+   private static final int t = 4;
+   private static final int u = 98;
+   private final fas v = fas.d().a(5);
+   private final BooleanConsumer w;
+   private final egl.c x;
+
+   public static fhr a(evg $$0, egl.c $$1, BooleanConsumer $$2) throws IOException {
+      egm $$3 = $$1.a($$1.f());
+      return new fhr($$0, $$1, $$3.b(), $$2);
    }
 
-   public fhr(dph $$0, dpe $$1, io<ahm> $$2, ahn $$3, cuc $$4) {
-      this($$0, $$2.a(ahm.c).d(ke.aN), $$1, $$2.a(ahm.c), $$3, $$4);
+   private fhr(evg $$0, egl.c $$1, String $$2, BooleanConsumer $$3) {
+      super(vf.c("selectWorld.edit.title"));
+      this.w = $$3;
+      this.x = $$1;
+      ewq $$4 = $$0.h;
+      this.v.a(new fat(200, 20));
+      this.v.a(new eyl(b, $$4));
+      exn $$5 = this.v.a(new exn($$4, 200, 20, b));
+      $$5.a($$2);
+      fas $$6 = fas.e().a(4);
+      exe $$7 = $$6.a(exe.a(q, $$1x -> this.a($$5.a())).a(98).a());
+      $$6.a(exe.a(ve.e, $$0x -> this.aE_()).a(98).a());
+      $$5.b($$1x -> $$7.j = !ac.b($$1x));
+      this.v.a(exe.a(c, $$1x -> {
+         $$1.h().ifPresent($$0xx -> FileUtils.deleteQuietly($$0xx.toFile()));
+         $$1x.j = false;
+      }).a(200).a()).j = $$1.h().filter($$0x -> Files.isRegularFile($$0x)).isPresent();
+      this.v.a(exe.a(k, $$1x -> ac.j().a($$1.a(egj.l).toFile())).a(200).a());
+      this.v.a(exe.a(l, $$1x -> {
+         boolean $$2x = a($$1);
+         this.w.accept(!$$2x);
+      }).a(200).a());
+      this.v.a(exe.a(m, $$1x -> {
+         egl $$2x = $$0.l();
+         Path $$3x = $$2x.d();
+
+         try {
+            v.c($$3x);
+         } catch (IOException var5x) {
+            throw new RuntimeException(var5x);
+         }
+
+         ac.j().a($$3x.toFile());
+      }).a(200).a());
+      this.v.a(exe.a(n, $$2x -> $$0.a(new fbn(() -> $$0.a(this), ($$2xx, $$3x) -> {
+            if ($$2xx) {
+               a($$1);
+            }
+
+            $$0.a(fht.a($$0, this.w, $$0.ar(), $$1, $$3x));
+         }, o, p, true))).a(200).a());
+      this.v.a(new fat(200, 20));
+      this.v.a($$6);
+      this.c($$5);
+      this.v.a($$1x -> {
+         exc var10000 = this.d($$1x);
+      });
    }
 
-   public fhr a(dph $$0, dpe $$1) {
-      return new fhr($$0, this.b, $$1, this.d, this.e, this.f);
+   @Override
+   protected void aN_() {
+      this.c();
    }
 
-   public fhr a(fhr.b $$0) {
-      return new fhr($$0.apply(this.a), this.b, this.c, this.d, this.e, this.f);
+   @Override
+   protected void c() {
+      this.v.a();
+      fam.a(this.v, this.F());
    }
 
-   public fhr a(fhr.a $$0) {
-      return new fhr(this.a, this.b, $$0.apply(this.a(), this.c), this.d, this.e, this.f);
+   @Override
+   public void aE_() {
+      this.w.accept(false);
    }
 
-   public iu.b a() {
-      return this.d.a();
+   private void a(String $$0) {
+      try {
+         this.x.a($$0);
+      } catch (sy | te | IOException var3) {
+         a.error("Failed to access world '{}'", this.x.d(), var3);
+         ezl.a(this.f, this.x.d());
+      }
+
+      this.w.accept(true);
    }
 
-   public dph b() {
-      return this.a;
+   public static boolean a(egl.c $$0) {
+      long $$1 = 0L;
+      IOException $$2 = null;
+
+      try {
+         $$1 = $$0.j();
+      } catch (IOException var6) {
+         $$2 = var6;
+      }
+
+      if ($$2 != null) {
+         vf $$4 = vf.c("selectWorld.edit.backupFailed");
+         vf $$5 = vf.b($$2.getMessage());
+         evg.O().ay().a(new ezl(ezl.a.b, $$4, $$5));
+         return false;
+      } else {
+         vf $$6 = vf.a("selectWorld.edit.backupCreated", $$0.d());
+         vf $$7 = vf.a("selectWorld.edit.backupSize", aun.c((double)$$1 / 1048576.0));
+         evg.O().ay().a(new ezl(ezl.a.b, $$6, $$7));
+         return true;
+      }
    }
 
-   public it<dmk> c() {
-      return this.b;
-   }
-
-   public dpe d() {
-      return this.c;
-   }
-
-   public io<ahm> e() {
-      return this.d;
-   }
-
-   public ahn f() {
-      return this.e;
-   }
-
-   public cuc g() {
-      return this.f;
-   }
-
-   @FunctionalInterface
-   public interface a extends BiFunction<iu.b, dpe, dpe> {
-   }
-
-   public interface b extends UnaryOperator<dph> {
+   @Override
+   public void a(ews $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, this.e, this.g / 2, 15, 16777215);
    }
 }

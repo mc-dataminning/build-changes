@@ -1,21 +1,24 @@
 import com.mojang.serialization.Codec;
 
-public class dvz extends dvs {
-   public static final Codec<dvz> b = dja.b.fieldOf("state").xmap(diz.a::b, cwj::o).xmap(dvz::new, $$0 -> $$0.c).codec();
-   private final cwj c;
+public class dvz<P extends dvy> {
+   public static final dvz<dwh> a = a("simple_state_provider", dwh.b);
+   public static final dvz<dwi> b = a("weighted_state_provider", dwi.b);
+   public static final dvz<dwd> c = a("noise_threshold_provider", dwd.b);
+   public static final dvz<dwc> d = a("noise_provider", dwc.g);
+   public static final dvz<dwa> e = a("dual_noise_provider", dwa.b);
+   public static final dvz<dwf> f = a("rotated_block_provider", dwf.b);
+   public static final dvz<dwe> g = a("randomized_int_state_provider", dwe.b);
+   private final Codec<P> h;
 
-   public dvz(cwj $$0) {
-      this.c = $$0;
+   private static <P extends dvy> dvz<P> a(String $$0, Codec<P> $$1) {
+      return it.a(kd.V, $$0, new dvz<>($$1));
    }
 
-   @Override
-   protected dvt<?> a() {
-      return dvt.f;
+   private dvz(Codec<P> $$0) {
+      this.h = $$0;
    }
 
-   @Override
-   public dja a(aup $$0, hx $$1) {
-      ic.a $$2 = ic.a.a($$0);
-      return this.c.o().a(dcu.i, $$2);
+   public Codec<P> a() {
+      return this.h;
    }
 }
