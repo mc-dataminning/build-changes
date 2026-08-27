@@ -1,220 +1,368 @@
-import it.unimi.dsi.fastutil.objects.ObjectArrays;
-import java.util.AbstractSet;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.Iterator;
-import java.util.NoSuchElementException;
+import java.util.function.IntConsumer;
 import javax.annotation.Nullable;
+import org.apache.commons.lang3.Validate;
 
-public class ase<T> extends AbstractSet<T> {
-   private static final int a = 10;
-   private final Comparator<T> b;
-   T[] c;
-   int d;
+public class ase implements aql {
+   private static final int[] a = new int[]{
+      -1,
+      -1,
+      0,
+      Integer.MIN_VALUE,
+      0,
+      0,
+      1431655765,
+      1431655765,
+      0,
+      Integer.MIN_VALUE,
+      0,
+      1,
+      858993459,
+      858993459,
+      0,
+      715827882,
+      715827882,
+      0,
+      613566756,
+      613566756,
+      0,
+      Integer.MIN_VALUE,
+      0,
+      2,
+      477218588,
+      477218588,
+      0,
+      429496729,
+      429496729,
+      0,
+      390451572,
+      390451572,
+      0,
+      357913941,
+      357913941,
+      0,
+      330382099,
+      330382099,
+      0,
+      306783378,
+      306783378,
+      0,
+      286331153,
+      286331153,
+      0,
+      Integer.MIN_VALUE,
+      0,
+      3,
+      252645135,
+      252645135,
+      0,
+      238609294,
+      238609294,
+      0,
+      226050910,
+      226050910,
+      0,
+      214748364,
+      214748364,
+      0,
+      204522252,
+      204522252,
+      0,
+      195225786,
+      195225786,
+      0,
+      186737708,
+      186737708,
+      0,
+      178956970,
+      178956970,
+      0,
+      171798691,
+      171798691,
+      0,
+      165191049,
+      165191049,
+      0,
+      159072862,
+      159072862,
+      0,
+      153391689,
+      153391689,
+      0,
+      148102320,
+      148102320,
+      0,
+      143165576,
+      143165576,
+      0,
+      138547332,
+      138547332,
+      0,
+      Integer.MIN_VALUE,
+      0,
+      4,
+      130150524,
+      130150524,
+      0,
+      126322567,
+      126322567,
+      0,
+      122713351,
+      122713351,
+      0,
+      119304647,
+      119304647,
+      0,
+      116080197,
+      116080197,
+      0,
+      113025455,
+      113025455,
+      0,
+      110127366,
+      110127366,
+      0,
+      107374182,
+      107374182,
+      0,
+      104755299,
+      104755299,
+      0,
+      102261126,
+      102261126,
+      0,
+      99882960,
+      99882960,
+      0,
+      97612893,
+      97612893,
+      0,
+      95443717,
+      95443717,
+      0,
+      93368854,
+      93368854,
+      0,
+      91382282,
+      91382282,
+      0,
+      89478485,
+      89478485,
+      0,
+      87652393,
+      87652393,
+      0,
+      85899345,
+      85899345,
+      0,
+      84215045,
+      84215045,
+      0,
+      82595524,
+      82595524,
+      0,
+      81037118,
+      81037118,
+      0,
+      79536431,
+      79536431,
+      0,
+      78090314,
+      78090314,
+      0,
+      76695844,
+      76695844,
+      0,
+      75350303,
+      75350303,
+      0,
+      74051160,
+      74051160,
+      0,
+      72796055,
+      72796055,
+      0,
+      71582788,
+      71582788,
+      0,
+      70409299,
+      70409299,
+      0,
+      69273666,
+      69273666,
+      0,
+      68174084,
+      68174084,
+      0,
+      Integer.MIN_VALUE,
+      0,
+      5
+   };
+   private final long[] b;
+   private final int c;
+   private final long d;
+   private final int e;
+   private final int f;
+   private final int g;
+   private final int h;
+   private final int i;
 
-   private ase(int $$0, Comparator<T> $$1) {
-      this.b = $$1;
-      if ($$0 < 0) {
-         throw new IllegalArgumentException("Initial capacity (" + $$0 + ") is negative");
-      } else {
-         this.c = (T[])a(new Object[$$0]);
-      }
-   }
+   public ase(int $$0, int $$1, int[] $$2) {
+      this($$0, $$1);
+      int $$3 = 0;
 
-   public static <T extends Comparable<T>> ase<T> a() {
-      return a(10);
-   }
+      int $$4;
+      for ($$4 = 0; $$4 <= $$1 - this.f; $$4 += this.f) {
+         long $$5 = 0L;
 
-   public static <T extends Comparable<T>> ase<T> a(int $$0) {
-      return new ase<>($$0, Comparator.naturalOrder());
-   }
-
-   public static <T> ase<T> a(Comparator<T> $$0) {
-      return a($$0, 10);
-   }
-
-   public static <T> ase<T> a(Comparator<T> $$0, int $$1) {
-      return new ase<>($$1, $$0);
-   }
-
-   private static <T> T[] a(Object[] $$0) {
-      return (T[])$$0;
-   }
-
-   private int c(T $$0) {
-      return Arrays.binarySearch(this.c, 0, this.d, $$0, this.b);
-   }
-
-   private static int b(int $$0) {
-      return -$$0 - 1;
-   }
-
-   @Override
-   public boolean add(T $$0) {
-      int $$1 = this.c($$0);
-      if ($$1 >= 0) {
-         return false;
-      } else {
-         int $$2 = b($$1);
-         this.a($$0, $$2);
-         return true;
-      }
-   }
-
-   private void c(int $$0) {
-      if ($$0 > this.c.length) {
-         if (this.c != ObjectArrays.DEFAULT_EMPTY_ARRAY) {
-            $$0 = (int)Math.max(Math.min((long)this.c.length + (long)(this.c.length >> 1), 2147483639L), (long)$$0);
-         } else if ($$0 < 10) {
-            $$0 = 10;
+         for (int $$6 = this.f - 1; $$6 >= 0; $$6--) {
+            $$5 <<= $$0;
+            $$5 |= (long)$$2[$$4 + $$6] & this.d;
          }
 
-         Object[] $$1 = new Object[$$0];
-         System.arraycopy(this.c, 0, $$1, 0, this.d);
-         this.c = (T[])a($$1);
-      }
-   }
-
-   private void a(T $$0, int $$1) {
-      this.c(this.d + 1);
-      if ($$1 != this.d) {
-         System.arraycopy(this.c, $$1, this.c, $$1 + 1, this.d - $$1);
+         this.b[$$3++] = $$5;
       }
 
-      this.c[$$1] = $$0;
-      this.d++;
-   }
+      int $$7 = $$1 - $$4;
+      if ($$7 > 0) {
+         long $$8 = 0L;
 
-   void d(int $$0) {
-      this.d--;
-      if ($$0 != this.d) {
-         System.arraycopy(this.c, $$0 + 1, this.c, $$0, this.d - $$0);
-      }
-
-      this.c[this.d] = null;
-   }
-
-   private T e(int $$0) {
-      return this.c[$$0];
-   }
-
-   public T a(T $$0) {
-      int $$1 = this.c($$0);
-      if ($$1 >= 0) {
-         return this.e($$1);
-      } else {
-         this.a($$0, b($$1));
-         return $$0;
-      }
-   }
-
-   @Override
-   public boolean remove(Object $$0) {
-      int $$1 = this.c((T)$$0);
-      if ($$1 >= 0) {
-         this.d($$1);
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   @Nullable
-   public T b(T $$0) {
-      int $$1 = this.c($$0);
-      return $$1 >= 0 ? this.e($$1) : null;
-   }
-
-   public T b() {
-      return this.e(0);
-   }
-
-   public T c() {
-      return this.e(this.d - 1);
-   }
-
-   @Override
-   public boolean contains(Object $$0) {
-      int $$1 = this.c((T)$$0);
-      return $$1 >= 0;
-   }
-
-   @Override
-   public Iterator<T> iterator() {
-      return new ase.a();
-   }
-
-   @Override
-   public int size() {
-      return this.d;
-   }
-
-   @Override
-   public Object[] toArray() {
-      return Arrays.copyOf(this.c, this.d, Object[].class);
-   }
-
-   @Override
-   public <U> U[] toArray(U[] $$0) {
-      if ($$0.length < this.d) {
-         return (U[])Arrays.copyOf(this.c, this.d, (Class<? extends T[]>)$$0.getClass());
-      } else {
-         System.arraycopy(this.c, 0, $$0, 0, this.d);
-         if ($$0.length > this.d) {
-            $$0[this.d] = null;
+         for (int $$9 = $$7 - 1; $$9 >= 0; $$9--) {
+            $$8 <<= $$0;
+            $$8 |= (long)$$2[$$4 + $$9] & this.d;
          }
 
-         return $$0;
+         this.b[$$3] = $$8;
       }
    }
 
-   @Override
-   public void clear() {
-      Arrays.fill(this.c, 0, this.d, null);
-      this.d = 0;
+   public ase(int $$0, int $$1) {
+      this($$0, $$1, (long[])null);
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
+   public ase(int $$0, int $$1, @Nullable long[] $$2) {
+      Validate.inclusiveBetween(1L, 32L, (long)$$0);
+      this.e = $$1;
+      this.c = $$0;
+      this.d = (1L << $$0) - 1L;
+      this.f = (char)(64 / $$0);
+      int $$3 = 3 * (this.f - 1);
+      this.g = a[$$3 + 0];
+      this.h = a[$$3 + 1];
+      this.i = a[$$3 + 2];
+      int $$4 = ($$1 + this.f - 1) / this.f;
+      if ($$2 != null) {
+         if ($$2.length != $$4) {
+            throw new ase.a("Invalid length given for storage, got: " + $$2.length + " but expected: " + $$4);
+         }
+
+         this.b = $$2;
       } else {
-         if ($$0 instanceof ase<?> $$1 && this.b.equals($$1.b)) {
-            return this.d == $$1.d && Arrays.equals(this.c, $$1.c);
-         }
-
-         return super.equals($$0);
+         this.b = new long[$$4];
       }
    }
 
-   class a implements Iterator<T> {
-      private int b;
-      private int c = -1;
+   private int b(int $$0) {
+      long $$1 = Integer.toUnsignedLong(this.g);
+      long $$2 = Integer.toUnsignedLong(this.h);
+      return (int)((long)$$0 * $$1 + $$2 >> 32 >> this.i);
+   }
 
-      @Override
-      public boolean hasNext() {
-         return this.b < ase.this.d;
-      }
+   @Override
+   public int a(int $$0, int $$1) {
+      Validate.inclusiveBetween(0L, (long)(this.e - 1), (long)$$0);
+      Validate.inclusiveBetween(0L, this.d, (long)$$1);
+      int $$2 = this.b($$0);
+      long $$3 = this.b[$$2];
+      int $$4 = ($$0 - $$2 * this.f) * this.c;
+      int $$5 = (int)($$3 >> $$4 & this.d);
+      this.b[$$2] = $$3 & ~(this.d << $$4) | ((long)$$1 & this.d) << $$4;
+      return $$5;
+   }
 
-      @Override
-      public T next() {
-         if (this.b >= ase.this.d) {
-            throw new NoSuchElementException();
-         } else {
-            this.c = this.b++;
-            return ase.this.c[this.c];
+   @Override
+   public void b(int $$0, int $$1) {
+      Validate.inclusiveBetween(0L, (long)(this.e - 1), (long)$$0);
+      Validate.inclusiveBetween(0L, this.d, (long)$$1);
+      int $$2 = this.b($$0);
+      long $$3 = this.b[$$2];
+      int $$4 = ($$0 - $$2 * this.f) * this.c;
+      this.b[$$2] = $$3 & ~(this.d << $$4) | ((long)$$1 & this.d) << $$4;
+   }
+
+   @Override
+   public int a(int $$0) {
+      Validate.inclusiveBetween(0L, (long)(this.e - 1), (long)$$0);
+      int $$1 = this.b($$0);
+      long $$2 = this.b[$$1];
+      int $$3 = ($$0 - $$1 * this.f) * this.c;
+      return (int)($$2 >> $$3 & this.d);
+   }
+
+   @Override
+   public long[] a() {
+      return this.b;
+   }
+
+   @Override
+   public int b() {
+      return this.e;
+   }
+
+   @Override
+   public int c() {
+      return this.c;
+   }
+
+   @Override
+   public void a(IntConsumer $$0) {
+      int $$1 = 0;
+
+      for (long $$2 : this.b) {
+         for (int $$3 = 0; $$3 < this.f; $$3++) {
+            $$0.accept((int)($$2 & this.d));
+            $$2 >>= this.c;
+            if (++$$1 >= this.e) {
+               return;
+            }
          }
       }
+   }
 
-      @Override
-      public void remove() {
-         if (this.c == -1) {
-            throw new IllegalStateException();
-         } else {
-            ase.this.d(this.c);
-            this.b--;
-            this.c = -1;
+   @Override
+   public void a(int[] $$0) {
+      int $$1 = this.b.length;
+      int $$2 = 0;
+
+      for (int $$3 = 0; $$3 < $$1 - 1; $$3++) {
+         long $$4 = this.b[$$3];
+
+         for (int $$5 = 0; $$5 < this.f; $$5++) {
+            $$0[$$2 + $$5] = (int)($$4 & this.d);
+            $$4 >>= this.c;
          }
+
+         $$2 += this.f;
+      }
+
+      int $$6 = this.e - $$2;
+      if ($$6 > 0) {
+         long $$7 = this.b[$$1 - 1];
+
+         for (int $$8 = 0; $$8 < $$6; $$8++) {
+            $$0[$$2 + $$8] = (int)($$7 & this.d);
+            $$7 >>= this.c;
+         }
+      }
+   }
+
+   @Override
+   public aql d() {
+      return new ase(this.c, this.e, (long[])this.b.clone());
+   }
+
+   public static class a extends RuntimeException {
+      a(String $$0) {
+         super($$0);
       }
    }
 }

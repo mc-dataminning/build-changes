@@ -1,21 +1,5 @@
-public enum bek {
-   a("pathfinding"),
-   b("event-loops"),
-   c("mailboxes"),
-   d("ticking"),
-   e("jvm"),
-   f("chunk rendering"),
-   g("chunk rendering dispatching"),
-   h("cpu"),
-   i("gpu");
+import java.time.Duration;
 
-   private final String j;
-
-   private bek(String $$0) {
-      this.j = $$0;
-   }
-
-   public String a() {
-      return this.j;
-   }
+public interface bek {
+   Duration a();
 }

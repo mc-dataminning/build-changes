@@ -1,9 +1,59 @@
-import com.mojang.serialization.Codec;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import javax.annotation.Nullable;
 
-public class dgy {
-   public static Codec<? extends dgw> a(hr<Codec<? extends dgw>> $$0) {
-      hr.a($$0, "noise", dkl.c);
-      hr.a($$0, "flat", dkd.c);
-      return hr.a($$0, "debug", djz.c);
+public class dgy implements AutoCloseable {
+   private final cpr a;
+   private final Long2ObjectMap<dhm> b = new Long2ObjectOpenHashMap();
+   @Nullable
+   private dhm c;
+   private long d;
+
+   public dgy(cpr $$0) {
+      this.a = $$0;
+   }
+
+   @Nullable
+   public dhm a(gw $$0) {
+      int $$1 = this.a.e($$0.v());
+      if ($$1 >= 0 && $$1 < this.a.ak()) {
+         long $$2 = hz.c($$0);
+         if (this.c == null || this.d != $$2) {
+            this.c = (dhm)this.b.computeIfAbsent($$2, $$2x -> {
+               dha $$3 = this.a.a(hz.a($$0.u()), hz.a($$0.w()));
+               dhm $$4 = $$3.b($$1);
+               $$4.a();
+               return $$4;
+            });
+            this.d = $$2;
+         }
+
+         return this.c;
+      } else {
+         return null;
+      }
+   }
+
+   public dfe b(gw $$0) {
+      dhm $$1 = this.a($$0);
+      if ($$1 == null) {
+         return csr.a.n();
+      } else {
+         int $$2 = hz.b($$0.u());
+         int $$3 = hz.b($$0.v());
+         int $$4 = hz.b($$0.w());
+         return $$1.a($$2, $$3, $$4);
+      }
+   }
+
+   @Override
+   public void close() {
+      ObjectIterator var1 = this.b.values().iterator();
+
+      while (var1.hasNext()) {
+         dhm $$0 = (dhm)var1.next();
+         $$0.b();
+      }
    }
 }

@@ -1,27 +1,56 @@
 import com.google.common.collect.ImmutableSet;
+import com.mojang.datafixers.util.Pair;
+import it.unimi.dsi.fastutil.longs.Long2LongMap;
+import it.unimi.dsi.fastutil.longs.Long2LongOpenHashMap;
 import java.util.Optional;
 import java.util.Set;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
-public abstract class bsx extends btd<biy> {
-   protected abstract boolean a(biy var1, biy var2);
+public class bsx extends btg<bjd> {
+   private static final int a = 40;
+   private static final int c = 5;
+   private static final int d = 20;
+   private final Long2LongMap e = new Long2LongOpenHashMap();
+   private int f;
+   private long g;
 
-   protected abstract brz<biy> b();
-
-   @Override
-   public Set<brz<?>> a() {
-      return ImmutableSet.of(this.b());
+   public bsx() {
+      super(20);
    }
 
    @Override
-   protected void a(akk $$0, biy $$1) {
-      $$1.dM().a(this.b(), this.b($$1));
+   public Set<bsc<?>> a() {
+      return ImmutableSet.of(bsc.w);
    }
 
-   private Optional<biy> b(biy $$0) {
-      return this.a($$0).flatMap($$1 -> $$1.a($$1x -> this.a($$0, $$1x)));
-   }
-
-   protected Optional<bsb> a(biy $$0) {
-      return $$0.dM().c(brz.h);
+   protected void a(akn $$0, bjd $$1) {
+      if ($$1.i_()) {
+         this.f = 0;
+         this.g = $$0.V() + (long)$$0.y_().a(20);
+         bua $$2 = $$0.w();
+         Predicate<gw> $$3 = $$0x -> {
+            long $$1x = $$0x.a();
+            if (this.e.containsKey($$1x)) {
+               return false;
+            } else if (++this.f >= 5) {
+               return false;
+            } else {
+               this.e.put($$1x, this.g + 40L);
+               return true;
+            }
+         };
+         Set<Pair<hg<bud>, gw>> $$4 = $$2.b($$0x -> $$0x.a(bue.n), $$3, $$1.dk(), 48, bua.b.c).collect(Collectors.toSet());
+         eaw $$5 = bkl.a($$1, $$4);
+         if ($$5 != null && $$5.j()) {
+            gw $$6 = $$5.l();
+            Optional<hg<bud>> $$7 = $$2.c($$6);
+            if ($$7.isPresent()) {
+               $$1.dM().a(bsc.w, $$6);
+            }
+         } else if (this.f < 5) {
+            this.e.long2LongEntrySet().removeIf($$0x -> $$0x.getLongValue() < this.g);
+         }
+      }
    }
 }

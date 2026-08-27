@@ -1,50 +1,61 @@
-import com.google.gson.JsonElement;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.Encoder;
-import com.mojang.serialization.JsonOps;
-import com.mojang.serialization.MapCodec;
-import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import org.slf4j.Logger;
+import java.util.function.Consumer;
 
-public class jv implements ji {
-   private static final Logger d = LogUtils.getLogger();
-   private final Path e;
-   private final CompletableFuture<hg.b> f;
-   private static final MapCodec<aeq<cqj>> g = aeq.a(jc.ap).fieldOf("biome");
-   private static final Codec<cqs.c<aeq<cqj>>> h = cqs.c.a(g).fieldOf("biomes").codec();
-
-   public jv(jk $$0, CompletableFuture<hg.b> $$1) {
-      this.e = $$0.a(jk.b.c).resolve("biome_parameters");
-      this.f = $$1;
-   }
-
+public class jv implements jo {
    @Override
-   public CompletableFuture<?> a(jg $$0) {
-      return this.f.thenCompose($$1 -> {
-         DynamicOps<JsonElement> $$2 = aep.a(JsonOps.INSTANCE, $$1);
-         List<CompletableFuture<?>> $$3 = new ArrayList<>();
-         cqx.b().forEach(($$3x, $$4) -> $$3.add(a(this.a($$3x.b()), $$0, $$2, h, $$4)));
-         return CompletableFuture.allOf($$3.toArray(CompletableFuture[]::new));
-      });
-   }
-
-   private static <E> CompletableFuture<?> a(Path $$0, jg $$1, DynamicOps<JsonElement> $$2, Encoder<E> $$3, E $$4) {
-      Optional<JsonElement> $$5 = $$3.encodeStart($$2, $$4).resultOrPartial($$1x -> d.error("Couldn't serialize element {}: {}", $$0, $$1x));
-      return $$5.isPresent() ? ji.a($$1, $$5.get(), $$0) : CompletableFuture.completedFuture(null);
-   }
-
-   private Path a(aer $$0) {
-      return this.e.resolve($$0.b()).resolve($$0.a() + ".json");
-   }
-
-   @Override
-   public final String a() {
-      return "Biome Parameters";
+   public void a(hi.b $$0, Consumer<af> $$1) {
+      af $$2 = ae.a.a()
+         .a(
+            csr.fz,
+            ti.c("advancements.end.root.title"),
+            ti.c("advancements.end.root.description"),
+            new aeu("textures/gui/advancements/backgrounds/end.png"),
+            ar.a,
+            false,
+            false,
+            false
+         )
+         .a("entered_end", ay.a.a(cpq.j))
+         .a($$1, "end/root");
+      af $$3 = ae.a.a()
+         .a($$2)
+         .a(csr.gO, ti.c("advancements.end.kill_dragon.title"), ti.c("advancements.end.kill_dragon.description"), null, ar.a, true, true, false)
+         .a("killed_dragon", ce.a.a(bq.a.a().a(bip.C)))
+         .a($$1, "end/kill_dragon");
+      af $$4 = ae.a.a()
+         .a($$3)
+         .a(cjd.rq, ti.c("advancements.end.enter_end_gateway.title"), ti.c("advancements.end.enter_end_gateway.description"), null, ar.a, true, true, false)
+         .a("entered_end_gateway", bm.a.a(csr.kF))
+         .a($$1, "end/enter_end_gateway");
+      ae.a.a()
+         .a($$3)
+         .a(cjd.ul, ti.c("advancements.end.respawn_dragon.title"), ti.c("advancements.end.respawn_dragon.description"), null, ar.c, true, true, false)
+         .a("summoned_dragon", db.a.a(bq.a.a().a(bip.C)))
+         .a($$1, "end/respawn_dragon");
+      af $$5 = ae.a.a()
+         .a($$4)
+         .a(csr.kw, ti.c("advancements.end.find_end_city.title"), ti.c("advancements.end.find_end_city.description"), null, ar.a, true, true, false)
+         .a("in_city", cs.a.a(cj.a.c(dux.q)))
+         .a($$1, "end/find_end_city");
+      ae.a.a()
+         .a($$3)
+         .a(cjd.ut, ti.c("advancements.end.dragon_breath.title"), ti.c("advancements.end.dragon_breath.description"), null, ar.c, true, true, false)
+         .a("dragon_breath", bz.a.a(cjd.ut))
+         .a($$1, "end/dragon_breath");
+      ae.a.a()
+         .a($$5)
+         .a(cjd.uA, ti.c("advancements.end.levitate.title"), ti.c("advancements.end.levitate.description"), null, ar.b, true, true, false)
+         .a(aj.a.a(50))
+         .a("levitated", cf.a.a(bh.b(cl.c.b(50.0))))
+         .a($$1, "end/levitate");
+      ae.a.a()
+         .a($$5)
+         .a(cjd.nh, ti.c("advancements.end.elytra.title"), ti.c("advancements.end.elytra.description"), null, ar.c, true, true, false)
+         .a("elytra", bz.a.a(cjd.nh))
+         .a($$1, "end/elytra");
+      ae.a.a()
+         .a($$3)
+         .a(csr.fA, ti.c("advancements.end.dragon_egg.title"), ti.c("advancements.end.dragon_egg.description"), null, ar.c, true, true, false)
+         .a("dragon_egg", bz.a.a(csr.fA))
+         .a($$1, "end/dragon_egg");
    }
 }

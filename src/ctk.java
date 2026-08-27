@@ -1,60 +1,54 @@
-import javax.annotation.Nullable;
+public class ctk extends crj {
+   private static final float c = 0.05F;
+   private static final float d = 0.1F;
 
-public class ctk extends cyw implements czm {
-   public static final dfq a = dfp.C;
-   protected static final float b = 6.5F;
-   protected static final float c = 9.5F;
-   protected static final ehw d = csl.a(6.5, 0.0, 6.5, 9.5, 16.0, 9.5);
-   protected static final ehw e = csl.a(6.5, 6.5, 0.0, 9.5, 9.5, 16.0);
-   protected static final ehw f = csl.a(0.0, 6.5, 6.5, 16.0, 9.5, 9.5);
-
-   public ctk(dey.d $$0) {
-      super($$0);
-      this.k(this.C.b().a(a, Boolean.valueOf(false)).a(g, ha.a.b));
+   public ctk(dfd.d $$0) {
+      super($$0, id.a);
    }
 
    @Override
-   public ehw a(dez $$0, cor $$1, gu $$2, ehi $$3) {
-      switch ((ha.a)$$0.c(g)) {
-         case a:
-         default:
-            return f;
-         case c:
-            return e;
-         case b:
-            return d;
-      }
-   }
-
-   @Nullable
-   @Override
-   public dez a(clf $$0) {
-      eac $$1 = $$0.q().b_($$0.a());
-      boolean $$2 = $$1.a() == ead.c;
-      return super.a($$0).a(a, Boolean.valueOf($$2));
-   }
-
-   @Override
-   public dez a(dez $$0, ha $$1, dez $$2, cpm $$3, gu $$4, gu $$5) {
-      if ($$0.c(a)) {
-         $$3.a($$4, ead.c, ead.c.a($$3));
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   protected void a(dfa.a<csl, dez> $$0) {
-      $$0.a(a).a(g);
-   }
-
-   @Override
-   public eac c_(dez $$0) {
-      return $$0.c(a) ? ead.c.a(false) : super.c_($$0);
-   }
-
-   @Override
-   public boolean a(dez $$0, cor $$1, gu $$2, eas $$3) {
+   public boolean d(dfe $$0) {
       return false;
+   }
+
+   protected static boolean a(cpq $$0, cqo.c $$1) {
+      if ($$1 == cqo.c.b) {
+         return $$0.y_().i() < 0.05F;
+      } else {
+         return $$1 == cqo.c.c ? $$0.y_().i() < 0.1F : false;
+      }
+   }
+
+   @Override
+   public void a(dfe $$0, cpq $$1, gw $$2, cqo.c $$3) {
+      if (a($$1, $$3)) {
+         if ($$3 == cqo.c.b) {
+            $$1.b($$2, csr.fu.n());
+            $$1.a(null, djo.c, $$2);
+         } else if ($$3 == cqo.c.c) {
+            $$1.b($$2, csr.fw.n());
+            $$1.a(null, djo.c, $$2);
+         }
+      }
+   }
+
+   @Override
+   protected boolean a(eag $$0) {
+      return true;
+   }
+
+   @Override
+   protected void a(dfe $$0, cpq $$1, gw $$2, eag $$3) {
+      if ($$3 == eai.c) {
+         dfe $$4 = csr.fu.n();
+         $$1.b($$2, $$4);
+         $$1.a(djo.c, $$2, djo.a.a($$4));
+         $$1.c(1047, $$2, 0);
+      } else if ($$3 == eai.e) {
+         dfe $$5 = csr.fv.n();
+         $$1.b($$2, $$5);
+         $$1.a(djo.c, $$2, djo.a.a($$5));
+         $$1.c(1046, $$2, 0);
+      }
    }
 }

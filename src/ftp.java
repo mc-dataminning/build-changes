@@ -1,18 +1,11 @@
-public class ftp extends fwb {
-   private static final aer a = new aer("textures/entity/zombie/husk.png");
+public class ftp extends fui<bwh, ffe<bwh>> {
+   private static final aeu a = new aeu("textures/entity/goat/goat.png");
 
-   public ftp(fsx.a $$0) {
-      super($$0, fhr.al, fhr.am, fhr.an);
+   public ftp(ftc.a $$0) {
+      super($$0, new ffe<>($$0.a(fhw.af)), 0.7F);
    }
 
-   protected void a(bzt $$0, elf $$1, float $$2) {
-      float $$3 = 1.0625F;
-      $$1.b(1.0625F, 1.0625F, 1.0625F);
-      super.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public aer a(bzt $$0) {
+   public aeu a(bwh $$0) {
       return a;
    }
 }

@@ -1,48 +1,60 @@
-public class cuv extends cry {
-   protected static final ehw a = csl.a(0.0, 6.0, 0.0, 16.0, 12.0, 16.0);
+public class cuv extends cvi {
+   protected static final eib a = csq.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
 
-   protected cuv(dey.d $$0) {
+   public cuv(dfd.d $$0) {
       super($$0);
    }
 
    @Override
-   public dcl a(gu $$0, dez $$1) {
-      return new dea($$0, $$1);
-   }
-
-   @Override
-   public ehw a(dez $$0, cor $$1, gu $$2, ehi $$3) {
+   public eib a(dfe $$0, cow $$1, gw $$2, ehn $$3) {
       return a;
    }
 
    @Override
-   public void a(dez $$0, cpl $$1, gu $$2, bii $$3) {
-      if ($$1 instanceof akk && $$3.cs() && eht.c(eht.a($$3.cG().d((double)(-$$2.u()), (double)(-$$2.v()), (double)(-$$2.w()))), $$0.j($$1, $$2), ehh.i)) {
-         aeq<cpl> $$4 = $$1.ac() == cpl.j ? cpl.h : cpl.j;
-         akk $$5 = ((akk)$$1).n().a($$4);
-         if ($$5 == null) {
+   public bgt a(dfe $$0, cpq $$1, gw $$2, cbp $$3, bgs $$4, ehe $$5) {
+      this.d($$0, $$1, $$2);
+      return bgt.a($$1.B);
+   }
+
+   @Override
+   public void a(dfe $$0, cpq $$1, gw $$2, cbp $$3) {
+      this.d($$0, $$1, $$2);
+   }
+
+   private void d(dfe $$0, cpq $$1, gw $$2) {
+      dgv $$3 = $$1.w_();
+
+      for (int $$4 = 0; $$4 < 1000; $$4++) {
+         gw $$5 = $$2.b($$1.z.a(16) - $$1.z.a(16), $$1.z.a(8) - $$1.z.a(8), $$1.z.a(16) - $$1.z.a(16));
+         if ($$1.a_($$5).i() && $$3.a($$5)) {
+            if ($$1.B) {
+               for (int $$6 = 0; $$6 < 128; $$6++) {
+                  double $$7 = $$1.z.j();
+                  float $$8 = ($$1.z.i() - 0.5F) * 0.2F;
+                  float $$9 = ($$1.z.i() - 0.5F) * 0.2F;
+                  float $$10 = ($$1.z.i() - 0.5F) * 0.2F;
+                  double $$11 = ars.d($$7, (double)$$5.u(), (double)$$2.u()) + ($$1.z.j() - 0.5) + 0.5;
+                  double $$12 = ars.d($$7, (double)$$5.v(), (double)$$2.v()) + $$1.z.j() - 0.5;
+                  double $$13 = ars.d($$7, (double)$$5.w(), (double)$$2.w()) + ($$1.z.j() - 0.5) + 0.5;
+                  $$1.a(ix.X, $$11, $$12, $$13, (double)$$8, (double)$$9, (double)$$10);
+               }
+            } else {
+               $$1.a($$5, $$0, 2);
+               $$1.a($$2, false);
+            }
+
             return;
          }
-
-         $$3.b($$5);
       }
    }
 
    @Override
-   public void a(dez $$0, cpl $$1, gu $$2, aru $$3) {
-      double $$4 = (double)$$2.u() + $$3.j();
-      double $$5 = (double)$$2.v() + 0.8;
-      double $$6 = (double)$$2.w() + $$3.j();
-      $$1.a(iv.Z, $$4, $$5, $$6, 0.0, 0.0, 0.0);
+   protected int a() {
+      return 5;
    }
 
    @Override
-   public cix a(cor $$0, gu $$1, dez $$2) {
-      return cix.b;
-   }
-
-   @Override
-   public boolean a(dez $$0, eab $$1) {
+   public boolean a(dfe $$0, cow $$1, gw $$2, eax $$3) {
       return false;
    }
 }

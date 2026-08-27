@@ -1,3 +1,7 @@
-public interface gdn {
-   void log(gdl var1);
+public interface gdn<T> {
+   int e();
+
+   T b(arx var1);
+
+   void a(gdi var1);
 }

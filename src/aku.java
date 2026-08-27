@@ -1,3 +1,430 @@
-public interface aku {
-   akt create(int var1);
+import com.mojang.logging.LogUtils;
+import java.util.Collections;
+import java.util.List;
+import java.util.Locale;
+import java.util.concurrent.atomic.AtomicLong;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
+import org.slf4j.Logger;
+
+public class aku implements cqk {
+   private static final Logger a = LogUtils.getLogger();
+   private final List<dha> b;
+   private final dha c;
+   private final int d;
+   private final akn e;
+   private final long f;
+   private final eby g;
+   private final arx h;
+   private final din i;
+   private final eiz<csq> j = new eiz<>($$0x -> this.x($$0x).o());
+   private final eiz<eag> k = new eiz<>($$0x -> this.x($$0x).p());
+   private final cqq l;
+   private final cox m;
+   private final cox n;
+   private final cqi o;
+   private final dhf p;
+   private final int q;
+   @Nullable
+   private Supplier<String> r;
+   private final AtomicLong s = new AtomicLong();
+   private static final aeu t = new aeu("worldgen_region_random");
+
+   public aku(akn $$0, List<dha> $$1, dhf $$2, int $$3) {
+      this.p = $$2;
+      this.q = $$3;
+      int $$4 = ars.a(Math.sqrt((double)$$1.size()));
+      if ($$4 * $$4 != $$1.size()) {
+         throw (IllegalStateException)ac.b(new IllegalStateException("Cache size is not a square."));
+      } else {
+         this.b = $$1;
+         this.c = $$1.get($$1.size() / 2);
+         this.d = $$4;
+         this.e = $$0;
+         this.f = $$0.A();
+         this.g = $$0.u_();
+         this.h = $$0.k().i().a(t).a(this.c.f().l());
+         this.i = $$0.x_();
+         this.l = new cqq(this, cqq.a(this.f));
+         this.m = $$1.get(0).f();
+         this.n = $$1.get($$1.size() - 1).f();
+         this.o = $$0.a().a(this);
+      }
+   }
+
+   public boolean a(cox $$0, int $$1) {
+      return this.e.k().a.b($$0, $$1);
+   }
+
+   public cox a() {
+      return this.c.f();
+   }
+
+   @Override
+   public void a(@Nullable Supplier<String> $$0) {
+      this.r = $$0;
+   }
+
+   @Override
+   public dha a(int $$0, int $$1) {
+      return this.a($$0, $$1, dhf.c);
+   }
+
+   @Nullable
+   @Override
+   public dha a(int $$0, int $$1, dhf $$2, boolean $$3) {
+      dha $$6;
+      if (this.b($$0, $$1)) {
+         int $$4 = $$0 - this.m.e;
+         int $$5 = $$1 - this.m.f;
+         $$6 = this.b.get($$4 + $$5 * this.d);
+         if ($$6.j().b($$2)) {
+            return $$6;
+         }
+      } else {
+         $$6 = null;
+      }
+
+      if (!$$3) {
+         return null;
+      } else {
+         a.error("Requested chunk : {} {}", $$0, $$1);
+         a.error("Region bounds : {} {} | {} {}", new Object[]{this.m.e, this.m.f, this.n.e, this.n.f});
+         if ($$6 != null) {
+            throw (RuntimeException)ac.b(
+               new RuntimeException(String.format(Locale.ROOT, "Chunk is not of correct status. Expecting %s, got %s | %s %s", $$2, $$6.j(), $$0, $$1))
+            );
+         } else {
+            throw (RuntimeException)ac.b(new RuntimeException(String.format(Locale.ROOT, "We are asking a region for a chunk out of bound | %s %s", $$0, $$1)));
+         }
+      }
+   }
+
+   @Override
+   public boolean b(int $$0, int $$1) {
+      return $$0 >= this.m.e && $$0 <= this.n.e && $$1 >= this.m.f && $$1 <= this.n.f;
+   }
+
+   @Override
+   public dfe a_(gw $$0) {
+      return this.a(hz.a($$0.u()), hz.a($$0.w())).a_($$0);
+   }
+
+   @Override
+   public eah b_(gw $$0) {
+      return this.x($$0).b_($$0);
+   }
+
+   @Nullable
+   @Override
+   public cbp a(double $$0, double $$1, double $$2, double $$3, Predicate<bil> $$4) {
+      return null;
+   }
+
+   @Override
+   public int v_() {
+      return 0;
+   }
+
+   @Override
+   public cqq z_() {
+      return this.l;
+   }
+
+   @Override
+   public hg<cqo> a(int $$0, int $$1, int $$2) {
+      return this.e.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public float a(hc $$0, boolean $$1) {
+      return 1.0F;
+   }
+
+   @Override
+   public dzw s_() {
+      return this.e.s_();
+   }
+
+   @Override
+   public boolean a(gw $$0, boolean $$1, @Nullable bil $$2, int $$3) {
+      dfe $$4 = this.a_($$0);
+      if ($$4.i()) {
+         return false;
+      } else {
+         if ($$1) {
+            dcq $$5 = $$4.t() ? this.c_($$0) : null;
+            csq.a($$4, (cpq)this.e, $$0, $$5, $$2, cja.b);
+         }
+
+         return this.a($$0, csr.a.n(), 3, $$3);
+      }
+   }
+
+   @Nullable
+   @Override
+   public dcq c_(gw $$0) {
+      dha $$1 = this.x($$0);
+      dcq $$2 = $$1.c_($$0);
+      if ($$2 != null) {
+         return $$2;
+      } else {
+         qu $$3 = $$1.f($$0);
+         dfe $$4 = $$1.a_($$0);
+         if ($$3 != null) {
+            if ("DUMMY".equals($$3.l("id"))) {
+               if (!$$4.t()) {
+                  return null;
+               }
+
+               $$2 = ((cve)$$4.b()).a($$0, $$4);
+            } else {
+               $$2 = dcq.a($$0, $$4, $$3);
+            }
+
+            if ($$2 != null) {
+               $$1.a($$2);
+               return $$2;
+            }
+         }
+
+         if ($$4.t()) {
+            a.warn("Tried to access a block entity before it was created. {}", $$0);
+         }
+
+         return null;
+      }
+   }
+
+   @Override
+   public boolean f_(gw $$0) {
+      int $$1 = hz.a($$0.u());
+      int $$2 = hz.a($$0.w());
+      cox $$3 = this.a();
+      int $$4 = Math.abs($$3.e - $$1);
+      int $$5 = Math.abs($$3.f - $$2);
+      if ($$4 <= this.q && $$5 <= this.q) {
+         if (this.c.y()) {
+            cps $$6 = this.c.z();
+            if ($$0.v() < $$6.C_() || $$0.v() >= $$6.aj()) {
+               return false;
+            }
+         }
+
+         return true;
+      } else {
+         ac.a(
+            "Detected setBlock in a far chunk ["
+               + $$1
+               + ", "
+               + $$2
+               + "], pos: "
+               + $$0
+               + ", status: "
+               + this.p
+               + (this.r == null ? "" : ", currently generating: " + this.r.get())
+         );
+         return false;
+      }
+   }
+
+   @Override
+   public boolean a(gw $$0, dfe $$1, int $$2, int $$3) {
+      if (!this.f_($$0)) {
+         return false;
+      } else {
+         dha $$4 = this.x($$0);
+         dfe $$5 = $$4.a($$0, $$1, false);
+         if ($$5 != null) {
+            this.e.a($$0, $$5, $$1);
+         }
+
+         if ($$1.t()) {
+            if ($$4.j().g() == dhf.a.b) {
+               dcq $$6 = ((cve)$$1.b()).a($$0, $$1);
+               if ($$6 != null) {
+                  $$4.a($$6);
+               } else {
+                  $$4.d($$0);
+               }
+            } else {
+               qu $$7 = new qu();
+               $$7.a("x", $$0.u());
+               $$7.a("y", $$0.v());
+               $$7.a("z", $$0.w());
+               $$7.a("id", "DUMMY");
+               $$4.a($$7);
+            }
+         } else if ($$5 != null && $$5.t()) {
+            $$4.d($$0);
+         }
+
+         if ($$1.q(this, $$0)) {
+            this.f($$0);
+         }
+
+         return true;
+      }
+   }
+
+   private void f(gw $$0) {
+      this.x($$0).e($$0);
+   }
+
+   @Override
+   public boolean b(bil $$0) {
+      int $$1 = hz.a($$0.do());
+      int $$2 = hz.a($$0.du());
+      this.a($$1, $$2).a($$0);
+      return true;
+   }
+
+   @Override
+   public boolean a(gw $$0, boolean $$1) {
+      return this.a($$0, csr.a.n(), 3);
+   }
+
+   @Override
+   public dgv w_() {
+      return this.e.w_();
+   }
+
+   @Override
+   public boolean r_() {
+      return false;
+   }
+
+   @Deprecated
+   @Override
+   public akn C() {
+      return this.e;
+   }
+
+   @Override
+   public hu B_() {
+      return this.e.B_();
+   }
+
+   @Override
+   public cdx G() {
+      return this.e.G();
+   }
+
+   @Override
+   public eby u_() {
+      return this.g;
+   }
+
+   @Override
+   public bgr d_(gw $$0) {
+      if (!this.b(hz.a($$0.u()), hz.a($$0.w()))) {
+         throw new RuntimeException("We are asking a region for a chunk out of bound");
+      } else {
+         return new bgr(this.e.ai(), this.e.W(), 0L, this.e.an());
+      }
+   }
+
+   @Nullable
+   @Override
+   public MinecraftServer n() {
+      return this.e.n();
+   }
+
+   @Override
+   public dhe J() {
+      return this.e.k();
+   }
+
+   @Override
+   public long A() {
+      return this.f;
+   }
+
+   @Override
+   public eiq<csq> L() {
+      return this.j;
+   }
+
+   @Override
+   public eiq<eag> K() {
+      return this.k;
+   }
+
+   @Override
+   public int t_() {
+      return this.e.t_();
+   }
+
+   @Override
+   public arx y_() {
+      return this.h;
+   }
+
+   @Override
+   public int a(dkn.a $$0, int $$1, int $$2) {
+      return this.a(hz.a($$1), hz.a($$2)).a($$0, $$1 & 15, $$2 & 15) + 1;
+   }
+
+   @Override
+   public void a(@Nullable cbp $$0, gw $$1, aoy $$2, apa $$3, float $$4, float $$5) {
+   }
+
+   @Override
+   public void a(iv $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+   }
+
+   @Override
+   public void a(@Nullable cbp $$0, int $$1, gw $$2, int $$3) {
+   }
+
+   @Override
+   public void a(djo $$0, ehi $$1, djo.a $$2) {
+   }
+
+   @Override
+   public din x_() {
+      return this.i;
+   }
+
+   @Override
+   public boolean a(gw $$0, Predicate<dfe> $$1) {
+      return $$1.test(this.a_($$0));
+   }
+
+   @Override
+   public boolean b(gw $$0, Predicate<eah> $$1) {
+      return $$1.test(this.b_($$0));
+   }
+
+   @Override
+   public <T extends bil> List<T> a(djc<bil, T> $$0, ehd $$1, Predicate<? super T> $$2) {
+      return Collections.emptyList();
+   }
+
+   @Override
+   public List<bil> a(@Nullable bil $$0, ehd $$1, @Nullable Predicate<? super bil> $$2) {
+      return Collections.emptyList();
+   }
+
+   @Override
+   public List<cbp> v() {
+      return Collections.emptyList();
+   }
+
+   @Override
+   public int C_() {
+      return this.e.C_();
+   }
+
+   @Override
+   public int D_() {
+      return this.e.D_();
+   }
+
+   @Override
+   public long A_() {
+      return this.s.getAndIncrement();
+   }
 }

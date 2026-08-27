@@ -1,56 +1,85 @@
 import javax.annotation.Nullable;
 
-public class bws extends bwi {
-   public bws(bim<? extends bws> $$0, cpl $$1) {
-      super($$0, $$1);
-   }
+public class bws extends bpw {
+   private final bwr a;
 
-   public static bkd.a p() {
-      return gA().a(bke.a, 15.0).a(bke.d, 0.2F);
-   }
-
-   @Override
-   protected void a(aru $$0) {
-      this.a(bke.n).a(a($$0::j));
+   public bws(bwr $$0) {
+      this.a = $$0;
    }
 
    @Override
-   public bjd eQ() {
-      return bjd.b;
+   public boolean a() {
+      return this.a.dK().a(this.a.dp(), this.a.dr(), this.a.dv(), 10.0);
    }
 
    @Override
-   protected aov r() {
-      return aow.Bh;
-   }
+   public void e() {
+      akn $$0 = (akn)this.a.dK();
+      bgr $$1 = $$0.d_(this.a.dk());
+      this.a.w(false);
+      this.a.x(true);
+      this.a.c_(0);
+      bja $$2 = bip.ai.a((cpq)$$0);
+      if ($$2 != null) {
+         $$2.d(this.a.dp(), this.a.dr(), this.a.dv());
+         $$2.a(true);
+         $$0.b($$2);
+         bzl $$3 = this.a($$1, this.a);
+         if ($$3 != null) {
+            $$3.n(this.a);
+            $$0.a_($$3);
 
-   @Override
-   protected aov h_() {
-      return aow.Bi;
-   }
-
-   @Override
-   protected aov d(bhg $$0) {
-      return aow.Bj;
+            for (int $$4 = 0; $$4 < 3; $$4++) {
+               bwl $$5 = this.a($$1);
+               if ($$5 != null) {
+                  bzl $$6 = this.a($$1, $$5);
+                  if ($$6 != null) {
+                     $$6.n($$5);
+                     $$5.j(this.a.ee().a(0.0, 1.1485), 0.0, this.a.ee().a(0.0, 1.1485));
+                     $$0.a_($$5);
+                  }
+               }
+            }
+         }
+      }
    }
 
    @Nullable
-   @Override
-   public bid a(akk $$0, bid $$1) {
-      return bim.bq.a((cpl)$$0);
+   private bwl a(bgr $$0) {
+      bwr $$1 = bip.aK.a(this.a.dK());
+      if ($$1 != null) {
+         $$1.a((akn)this.a.dK(), $$0, bjf.k, null, null);
+         $$1.e(this.a.dp(), this.a.dr(), this.a.dv());
+         $$1.al = 60;
+         $$1.fF();
+         $$1.x(true);
+         $$1.c_(0);
+      }
+
+      return $$1;
    }
 
-   @Override
-   public bgq b(cbm $$0, bgp $$1) {
-      return !this.gp() ? bgq.d : super.b($$0, $$1);
+   @Nullable
+   private bzl a(bgr $$0, bwl $$1) {
+      bzl $$2 = bip.aJ.a($$1.dK());
+      if ($$2 != null) {
+         $$2.a((akn)$$1.dK(), $$0, bjf.k, null, null);
+         $$2.e($$1.dp(), $$1.dr(), $$1.dv());
+         $$2.al = 60;
+         $$2.fF();
+         if ($$2.c(biq.f).b()) {
+            $$2.a(biq.f, new cja(cjd.oS));
+         }
+
+         $$2.a(biq.a, cnl.a($$2.ee(), this.a($$2.eR()), (int)(5.0F + $$0.d() * (float)$$2.ee().a(18)), false));
+         $$2.a(biq.f, cnl.a($$2.ee(), this.a($$2.c(biq.f)), (int)(5.0F + $$0.d() * (float)$$2.ee().a(18)), false));
+      }
+
+      return $$2;
    }
 
-   @Override
-   protected void gq() {
-   }
-
-   @Override
-   protected float a(bij $$0, float $$1) {
-      return $$0.b - (this.i_() ? 0.03125F : 0.28125F) * $$1;
+   private cja a(cja $$0) {
+      $$0.c("Enchantments");
+      return $$0;
    }
 }

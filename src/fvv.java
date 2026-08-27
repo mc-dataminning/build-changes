@@ -1,22 +1,17 @@
-public class fvv extends fud<bzq, fhh<bzq>> {
-   private static final aer a = new aer("textures/entity/witch.png");
+public class fvv extends fui<bzr, fhh> {
+   private static final aeu a = new aeu("textures/entity/illager/vex.png");
+   private static final aeu i = new aeu("textures/entity/illager/vex_charging.png");
 
-   public fvv(fsx.a $$0) {
-      super($$0, new fhh<>($$0.a(fhr.bN)), 0.5F);
-      this.a(new fxs<>(this, $$0.d()));
+   public fvv(ftc.a $$0) {
+      super($$0, new fhh($$0.a(fhw.bI)), 0.3F);
+      this.a(new fxd<>(this, $$0.d()));
    }
 
-   public void a(bzq $$0, float $$1, float $$2, elf $$3, fnu $$4, int $$5) {
-      this.f.b(!$$0.eR().b());
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   protected int a(bzr $$0, gw $$1) {
+      return 15;
    }
 
-   public aer a(bzq $$0) {
-      return a;
-   }
-
-   protected void a(bzq $$0, elf $$1, float $$2) {
-      float $$3 = 0.9375F;
-      $$1.b(0.9375F, 0.9375F, 0.9375F);
+   public aeu a(bzr $$0) {
+      return $$0.ga() ? i : a;
    }
 }

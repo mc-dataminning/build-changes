@@ -1,30 +1,23 @@
-public class fqk implements fpu<ddx> {
-   private final fsv a;
+public class fqk implements fpz<ddr> {
+   private final feh a;
 
-   public fqk(fpv.a $$0) {
-      this.a = $$0.c();
+   public fqk(fqa.a $$0) {
+      this.a = new feh($$0.a(fhw.m));
    }
 
-   public void a(ddx $$0, float $$1, elf $$2, fnu $$3, int $$4, int $$5) {
-      $$2.a();
-      $$2.a(0.5F, 0.0F, 0.5F);
-      com $$6 = $$0.d();
-      bii $$7 = $$6.a($$0.k(), $$0.k().y_(), $$0.p());
-      if ($$7 != null) {
-         float $$8 = 0.53125F;
-         float $$9 = Math.max($$7.df(), $$7.dg());
-         if ((double)$$9 > 1.0) {
-            $$8 /= $$9;
-         }
-
-         $$2.a(0.0F, 0.4F, 0.0F);
-         $$2.a(a.d.rotationDegrees((float)arp.d((double)$$1, $$6.b(), $$6.a()) * 10.0F));
-         $$2.a(0.0F, -0.2F, 0.0F);
-         $$2.a(a.b.rotationDegrees(-30.0F));
-         $$2.b($$8, $$8, $$8);
-         this.a.a($$7, 0.0, 0.0, 0.0, 0.0F, $$1, $$2, $$3, $$4);
+   public void a(ddr $$0, float $$1, elk $$2, fnz $$3, int $$4, int $$5) {
+      dfe $$6 = $$0.q();
+      if ($$6.c(cwy.c)) {
+         $$2.a();
+         $$2.a(0.5F, 1.0625F, 0.5F);
+         float $$7 = $$6.c(cwy.a).h().p();
+         $$2.a(a.d.rotationDegrees(-$$7));
+         $$2.a(a.f.rotationDegrees(67.5F));
+         $$2.a(0.0F, -0.125F, 0.0F);
+         this.a.a(0.0F, 0.1F, 0.9F, 1.2F);
+         elo $$8 = fqi.a.a($$3, foh::c);
+         this.a.b($$2, $$8, $$4, $$5, 1.0F, 1.0F, 1.0F, 1.0F);
+         $$2.b();
       }
-
-      $$2.b();
    }
 }

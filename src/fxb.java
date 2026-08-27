@@ -1,25 +1,27 @@
-public class fxb extends fxf<buy, ffs<buy>> {
-   private final fnq a;
+import com.google.common.collect.ImmutableMap;
+import java.util.Map;
 
-   public fxb(fus<buy, ffs<buy>> $$0, fnq $$1) {
+public class fxb extends fxk<buy, ffn<buy>> {
+   private static final Map<buy.a, aeu> a = ImmutableMap.of(
+      buy.a.b,
+      new aeu("textures/entity/iron_golem/iron_golem_crackiness_low.png"),
+      buy.a.c,
+      new aeu("textures/entity/iron_golem/iron_golem_crackiness_medium.png"),
+      buy.a.d,
+      new aeu("textures/entity/iron_golem/iron_golem_crackiness_high.png")
+   );
+
+   public fxb(fux<buy, ffn<buy>> $$0) {
       super($$0);
-      this.a = $$1;
    }
 
-   public void a(elf $$0, fnu $$1, int $$2, buy $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      cix $$10 = $$3.c(bin.a);
-      if ($$3.t() && !$$3.gs()) {
-         float $$11 = -0.6F;
-         float $$12 = 1.4F;
-         if ($$3.gg()) {
-            $$11 -= 0.2F * arp.a($$7 * 0.6F) + 0.2F;
-            $$12 -= 0.09F * arp.a($$7 * 0.6F);
+   public void a(elk $$0, fnz $$1, int $$2, buy $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if (!$$3.cd()) {
+         buy.a $$10 = $$3.q();
+         if ($$10 != buy.a.a) {
+            aeu $$11 = a.get($$10);
+            a(this.c(), $$11, $$0, $$1, $$2, $$3, 1.0F, 1.0F, 1.0F);
          }
-
-         $$0.a();
-         $$0.a(0.1F, $$12, $$11);
-         this.a.a($$3, $$10, ciu.h, false, $$0, $$1, $$2);
-         $$0.b();
       }
    }
 }

@@ -1,31 +1,18 @@
-public class fuj extends fud<buz, fft> {
-   private static final aer a = new aer("textures/entity/parrot/parrot_red_blue.png");
-   private static final aer i = new aer("textures/entity/parrot/parrot_blue.png");
-   private static final aer j = new aer("textures/entity/parrot/parrot_green.png");
-   private static final aer k = new aer("textures/entity/parrot/parrot_yellow_blue.png");
-   private static final aer l = new aer("textures/entity/parrot/parrot_grey.png");
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   public fuj(fsx.a $$0) {
-      super($$0, new fft($$0.a(fhr.aA)), 0.3F);
+public class fuj extends fui<buz, fer<buz>> {
+   private static final Map<buz.a, aeu> a = ac.a(Maps.newHashMap(), $$0 -> {
+      $$0.put(buz.a.b, new aeu("textures/entity/cow/brown_mooshroom.png"));
+      $$0.put(buz.a.a, new aeu("textures/entity/cow/red_mooshroom.png"));
+   });
+
+   public fuj(ftc.a $$0) {
+      super($$0, new fer<>($$0.a(fhw.aw)), 0.7F);
+      this.a(new fxf<>(this, $$0.c()));
    }
 
-   public aer a(buz $$0) {
-      return a($$0.gi());
-   }
-
-   public static aer a(buz.b $$0) {
-      return switch ($$0) {
-         case a -> a;
-         case b -> i;
-         case c -> j;
-         case d -> k;
-         case e -> l;
-      };
-   }
-
-   public float a(buz $$0, float $$1) {
-      float $$2 = arp.i($$1, $$0.bZ, $$0.bW);
-      float $$3 = arp.i($$1, $$0.bY, $$0.bX);
-      return (arp.a($$2) + 1.0F) * $$3;
+   public aeu a(buz $$0) {
+      return a.get($$0.q());
    }
 }

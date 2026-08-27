@@ -1,11 +1,17 @@
-public class cgl extends cis {
-   public cgl(cis.a $$0) {
-      super($$0);
-   }
+public interface cgl {
+   int a(cgk.a var1);
 
-   public cbs a(cpl $$0, cix $$1, biy $$2) {
-      cbu $$3 = new cbu($$0, $$2);
-      $$3.a($$1);
-      return $$3;
-   }
+   int b(cgk.a var1);
+
+   int a();
+
+   aoy b();
+
+   cmb d();
+
+   String e();
+
+   float f();
+
+   float g();
 }

@@ -1,91 +1,77 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.UnmodifiableIterator;
+import java.util.List;
 
-public class eyb extends eya {
-   private static final int a = 1024;
-   private static final int b = 65535;
-   private static final tf c = tf.c("selectWorld.allowCommands");
-   private static final tf k = tf.c("selectWorld.gameMode");
-   private static final tf l = tf.c("lanServer.otherPlayers");
-   private static final tf m = tf.c("lanServer.port");
-   private static final tf n = tf.a("lanServer.port.unavailable.new", 1024, 65535);
-   private static final tf o = tf.a("lanServer.port.invalid.new", 1024, 65535);
-   private static final int p = 16733525;
-   private final eya q;
-   private cpi s = cpi.a;
-   private boolean t;
-   private int u = arh.a();
-   @Nullable
-   private esp v;
+public class eyb extends eyf {
+   private static final int a = 20;
+   private static final int b = 5;
+   private static final int c = 20;
+   private final ti k;
+   private final tm l;
+   private final ImmutableList<eyb.a> m;
+   private ete n = ete.a;
+   private int o;
+   private int p;
 
-   public eyb(eya $$0) {
-      super(tf.c("lanServer.title"));
-      this.q = $$0;
+   protected eyb(ti $$0, List<ti> $$1, ImmutableList<eyb.a> $$2) {
+      super($$0);
+      this.l = tm.a($$1);
+      this.k = th.a($$0, tk.a($$1, th.a));
+      this.m = $$2;
    }
 
    @Override
-   protected void aC_() {
-      gct $$0 = this.f.T();
-      this.s = $$0.o_();
-      this.t = $$0.aT().o();
-      this.d(esn.a(cpi::e).a(cpi.a, cpi.d, cpi.b, cpi.c).a(this.s).a(this.g / 2 - 155, 100, 150, 20, k, ($$0x, $$1x) -> this.s = $$1x));
-      this.d(esn.b(this.t).a(this.g / 2 + 5, 100, 150, 20, c, ($$0x, $$1x) -> this.t = $$1x));
-      esg $$1 = esg.a(tf.c("lanServer.start"), $$1x -> {
-         this.f.a(null);
-         tf $$2;
-         if ($$0.a(this.s, this.t, this.u)) {
-            $$2 = ahp.a(this.u);
-         } else {
-            $$2 = tf.c("commands.publish.failed");
-         }
-
-         this.f.l.d().a($$2);
-         this.f.d();
-      }).a(this.g / 2 - 155, this.h - 28, 150, 20).a();
-      this.v = new esp(this.i, this.g / 2 - 75, 160, 150, 20, tf.c("lanServer.port"));
-      this.v.b($$1x -> {
-         tf $$2 = this.a($$1x);
-         this.v.c(tf.b(this.u + "").a(n.i));
-         if ($$2 == null) {
-            this.v.m(14737632);
-            this.v.a(null);
-            $$1.i = true;
-         } else {
-            this.v.m(16733525);
-            this.v.a(etq.a($$2));
-            $$1.i = false;
-         }
-      });
-      this.v.c(tf.b(this.u + "").a(n.i));
-      this.d(this.v);
-      this.d($$1);
-      this.d(esg.a(te.e, $$0x -> this.f.a(this.q)).a(this.g / 2 + 5, this.h - 28, 150, 20).a());
+   public ti g() {
+      return this.k;
    }
 
-   @Nullable
-   private tf a(String $$0) {
-      if ($$0.isBlank()) {
-         this.u = arh.a();
-         return null;
-      } else {
-         try {
-            this.u = Integer.parseInt($$0);
-            if (this.u < 1024 || this.u > 65535) {
-               return o;
-            } else {
-               return !arh.a(this.u) ? n : null;
-            }
-         } catch (NumberFormatException var3) {
-            this.u = arh.a();
-            return o;
-         }
+   @Override
+   public void aD_() {
+      UnmodifiableIterator $$1 = this.m.iterator();
+
+      while ($$1.hasNext()) {
+         eyb.a $$0 = (eyb.a)$$1.next();
+         this.p = Math.max(this.p, 20 + this.i.a($$0.a) + 20);
+      }
+
+      int $$1x = 5 + this.p + 5;
+      int $$2 = $$1x * this.m.size();
+      this.n = ete.a(this.i, this.l, $$2);
+      int $$3 = this.n.a() * 9;
+      this.o = (int)((double)this.h / 2.0 - (double)$$3 / 2.0);
+      int $$4 = this.o + $$3 + 9 * 2;
+      int $$5 = (int)((double)this.g / 2.0 - (double)$$2 / 2.0);
+
+      for (UnmodifiableIterator var6 = this.m.iterator(); var6.hasNext(); $$5 += $$1x) {
+         eyb.a $$6 = (eyb.a)var6.next();
+         this.d(esl.a($$6.a, $$6.b).a($$5, $$4, this.p, 20).a());
       }
    }
 
    @Override
-   public void a(erv $$0, int $$1, int $$2, float $$3) {
+   public void a(esa $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 50, 16777215);
-      $$0.a(this.i, l, this.g / 2, 82, 16777215);
-      $$0.a(this.i, m, this.g / 2, 142, 16777215);
+      $$0.a(this.i, this.e, this.g / 2, this.o - 9 * 2, -1);
+      this.n.a($$0, this.g / 2, this.o);
+   }
+
+   @Override
+   public void b(esa $$0, int $$1, int $$2, float $$3) {
+      this.b($$0);
+   }
+
+   @Override
+   public boolean at_() {
+      return false;
+   }
+
+   public static final class a {
+      final ti a;
+      final esl.c b;
+
+      public a(ti $$0, esl.c $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
    }
 }

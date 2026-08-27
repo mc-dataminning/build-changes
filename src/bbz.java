@@ -4,29 +4,27 @@ import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class bbz extends azx {
+public class bbz extends baa {
    public bbz(int $$0, Schema $$1) {
       super($$0, $$1);
    }
 
    protected static void a(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, String $$2) {
-      $$0.register(
-         $$1,
-         $$2,
-         () -> DSL.optionalFields(
-               "ArmorItems",
-               DSL.list(ayp.t.in($$0)),
-               "HandItems",
-               DSL.list(ayp.t.in($$0)),
-               "listener",
-               DSL.optionalFields("event", DSL.optionalFields("game_event", ayp.A.in($$0)))
-            )
-      );
+      $$0.register($$1, $$2, () -> bab.a($$0));
    }
 
    public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
       Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
-      a($$0, $$1, "minecraft:allay");
+      a($$0, $$1, "minecraft:frog");
+      a($$0, $$1, "minecraft:tadpole");
+      return $$1;
+   }
+
+   public Map<String, Supplier<TypeTemplate>> registerBlockEntities(Schema $$0) {
+      Map<String, Supplier<TypeTemplate>> $$1 = super.registerBlockEntities($$0);
+      $$0.register(
+         $$1, "minecraft:sculk_shrieker", () -> DSL.optionalFields("listener", DSL.optionalFields("event", DSL.optionalFields("game_event", ays.A.in($$0))))
+      );
       return $$1;
    }
 }

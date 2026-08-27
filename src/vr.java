@@ -1,18 +1,17 @@
-public record vr(aeq<djj> b, ehd c) implements vp {
-   public static final aer a = new aer("debug/game_event");
+public record vr(String b) implements vs {
+   public static final aeu a = new aeu("brand");
 
-   public vr(si $$0) {
-      this($$0.a(jc.z), $$0.k());
+   public vr(sl $$0) {
+      this($$0.r());
    }
 
    @Override
-   public void a(si $$0) {
-      $$0.b(this.b);
-      $$0.a(this.c);
+   public void a(sl $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public aer a() {
+   public aeu a() {
       return a;
    }
 }

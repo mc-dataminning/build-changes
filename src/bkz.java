@@ -1,41 +1,34 @@
-public class bkz implements bkq<biy> {
-   private final int a;
-   private final int b;
-   private bkp.a c = bkp.a.a;
-   private long d;
+import com.google.common.collect.ImmutableMap;
 
-   public bkz(int $$0, int $$1) {
-      this.a = $$0;
-      this.b = $$1;
+public class bkz extends bks<bwb> {
+   private static final int c = 60;
+   private static final int d = 100;
+   private int e;
+
+   public bkz() {
+      super(ImmutableMap.of(bsc.m, bsd.b), 100);
    }
 
-   @Override
-   public bkp.a a() {
-      return this.c;
+   protected boolean a(akn $$0, bwb $$1) {
+      return $$1.an() == bjn.a;
    }
 
-   @Override
-   public final boolean e(akk $$0, biy $$1, long $$2) {
-      this.c = bkp.a.b;
-      int $$3 = this.a + $$0.y_().a(this.b + 1 - this.a);
-      this.d = $$2 + (long)$$3;
-      return true;
+   protected boolean a(akn $$0, bwb $$1, long $$2) {
+      return this.e < 60;
    }
 
-   @Override
-   public final void f(akk $$0, biy $$1, long $$2) {
-      if ($$2 > this.d) {
-         this.g($$0, $$1, $$2);
+   protected void b(akn $$0, bwb $$1, long $$2) {
+      if (!$$1.bb()) {
+         $$1.b(bjn.i);
+         this.e = 0;
       }
    }
 
-   @Override
-   public final void g(akk $$0, biy $$1, long $$2) {
-      this.c = bkp.a.a;
+   protected void c(akn $$0, bwb $$1, long $$2) {
+      $$1.b(bjn.a);
    }
 
-   @Override
-   public String b() {
-      return this.getClass().getSimpleName();
+   protected void d(akn $$0, bwb $$1, long $$2) {
+      this.e++;
    }
 }

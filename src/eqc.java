@@ -1,38 +1,26 @@
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+public enum eqc {
+   a(true, false),
+   b(false, false),
+   c(false, true);
 
-public class eqc {
-   private final fio a;
-   private int b = -1;
-   @Nullable
-   private Consumer<qr> c;
+   private static final eqc[] d = values();
+   private final boolean e;
+   private final boolean f;
 
-   public eqc(fio $$0) {
-      this.a = $$0;
+   private eqc(boolean $$0, boolean $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
-   public boolean a(int $$0, @Nullable qr $$1) {
-      if (this.b == $$0 && this.c != null) {
-         this.c.accept($$1);
-         this.c = null;
-         return true;
-      } else {
-         return false;
-      }
+   public boolean a() {
+      return this.e;
    }
 
-   private int a(Consumer<qr> $$0) {
-      this.c = $$0;
-      return ++this.b;
+   public boolean b() {
+      return this.f;
    }
 
-   public void a(int $$0, Consumer<qr> $$1) {
-      int $$2 = this.a($$1);
-      this.a.b(new abp($$2, $$0));
-   }
-
-   public void a(gu $$0, Consumer<qr> $$1) {
-      int $$2 = this.a($$1);
-      this.a.b(new aba($$2, $$0));
+   public eqc c() {
+      return d[(this.ordinal() + 1) % d.length];
    }
 }

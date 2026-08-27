@@ -1,20 +1,15 @@
-public class cmv extends cne {
-   public cmv(cne.a $$0, bin... $$1) {
-      super($$0, cnf.k, $$1);
+public class cmv extends clm {
+   public cmv(String $$0, cls $$1, cmb $$2, cja $$3, float $$4, int $$5) {
+      super(cmi.d, $$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public int a(int $$0) {
-      return 1 + ($$0 - 1) * 10;
+   public cja g() {
+      return new cja(csr.nV);
    }
 
    @Override
-   public int b(int $$0) {
-      return this.a($$0) + 15;
-   }
-
-   @Override
-   public int a() {
-      return 5;
+   public cmh<?> ai_() {
+      return cmh.r;
    }
 }

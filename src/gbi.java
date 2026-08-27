@@ -1,8 +1,9 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface gbi {
+   default j b() {
+      return j.a();
+   }
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface gbi {
+   default boolean c() {
+      return false;
+   }
 }

@@ -1,32 +1,55 @@
-public class bql extends bpk {
-   private final boolean a;
-   private int b;
+import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-   public bql(bja $$0, boolean $$1) {
-      super($$0);
-      this.d = $$0;
-      this.a = $$1;
+public class bql extends bpw {
+   private final bjk a;
+   @Nullable
+   private bjb b;
+   private double c;
+   private double d;
+   private double e;
+   private final double f;
+   private final float g;
+
+   public bql(bjk $$0, double $$1, float $$2) {
+      this.a = $$0;
+      this.f = $$1;
+      this.g = $$2;
+      this.a(EnumSet.of(bpw.a.a));
+   }
+
+   @Override
+   public boolean a() {
+      this.b = this.a.j();
+      if (this.b == null) {
+         return false;
+      } else if (this.b.f(this.a) > (double)(this.g * this.g)) {
+         return false;
+      } else {
+         ehi $$0 = btr.a(this.a, 16, 7, this.b.di(), (float) (Math.PI / 2));
+         if ($$0 == null) {
+            return false;
+         } else {
+            this.c = $$0.c;
+            this.d = $$0.d;
+            this.e = $$0.e;
+            return true;
+         }
+      }
    }
 
    @Override
    public boolean b() {
-      return this.a && this.b > 0 && super.b();
-   }
-
-   @Override
-   public void c() {
-      this.b = 20;
-      this.a(true);
+      return !this.a.H().l() && this.b.bv() && this.b.f(this.a) < (double)(this.g * this.g);
    }
 
    @Override
    public void d() {
-      this.a(false);
+      this.b = null;
    }
 
    @Override
-   public void e() {
-      this.b--;
-      super.e();
+   public void c() {
+      this.a.H().a(this.c, this.d, this.e, this.f);
    }
 }

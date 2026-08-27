@@ -1,185 +1,102 @@
 import com.google.common.collect.Lists;
+import com.mojang.authlib.GameProfile;
 import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.suggestion.Suggestions;
+import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
 
-public class eg implements ev<eg.a> {
-   private static final Collection<String> a = Arrays.asList("Hello world!", "foo", "@e", "Hello @p :)");
+public class eg implements ArgumentType<eg.a> {
+   private static final Collection<String> b = Arrays.asList("Player", "0123", "dd12be42-52a9-4a91-a8a1-11c01849e498", "@e");
+   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(ti.c("argument.player.unknown"));
+
+   public static Collection<GameProfile> a(CommandContext<dt> $$0, String $$1) throws CommandSyntaxException {
+      return ((eg.a)$$0.getArgument($$1, eg.a.class)).getNames((dt)$$0.getSource());
+   }
 
    public static eg a() {
       return new eg();
    }
 
-   public static tf a(CommandContext<dr> $$0, String $$1) throws CommandSyntaxException {
-      eg.a $$2 = (eg.a)$$0.getArgument($$1, eg.a.class);
-      return $$2.a((dr)$$0.getSource());
-   }
-
-   public static void a(CommandContext<dr> $$0, String $$1, Consumer<tu> $$2) throws CommandSyntaxException {
-      eg.a $$3 = (eg.a)$$0.getArgument($$1, eg.a.class);
-      dr $$4 = (dr)$$0.getSource();
-      tf $$5 = $$3.a($$4);
-      dp $$6 = $$4.n();
-      tu $$7 = $$6.a($$1);
-      if ($$7 != null) {
-         a($$2, $$4, $$7.a($$5));
+   public eg.a a(StringReader $$0) throws CommandSyntaxException {
+      if ($$0.canRead() && $$0.peek() == '@') {
+         gd $$1 = new gd($$0);
+         gc $$2 = $$1.t();
+         if ($$2.b()) {
+            throw ee.c.create();
+         } else {
+            return new eg.b($$2);
+         }
       } else {
-         b($$2, $$4, tu.a($$3.a).a($$5));
+         int $$3 = $$0.getCursor();
+
+         while ($$0.canRead() && $$0.peek() != ' ') {
+            $$0.skip();
+         }
+
+         String $$4 = $$0.getString().substring($$3, $$0.getCursor());
+         return $$1 -> {
+            Optional<GameProfile> $$2 = $$1.l().ap().a($$4);
+            return Collections.singleton($$2.orElseThrow(a::create));
+         };
       }
    }
 
-   private static void a(Consumer<tu> $$0, dr $$1, tu $$2) {
-      MinecraftServer $$3 = $$1.l();
-      CompletableFuture<ala> $$4 = a($$1, $$2);
-      CompletableFuture<tf> $$5 = $$3.bd().decorate($$1.i(), $$2.c());
-      $$1.o().append($$4x -> CompletableFuture.allOf($$4, $$5).thenAcceptAsync($$4xx -> {
-            tu $$5x = $$2.a($$5.join()).a($$4.join().e());
-            $$0.accept($$5x);
-         }, $$4x));
-   }
+   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
+      if ($$0.getSource() instanceof dw) {
+         StringReader $$2 = new StringReader($$1.getInput());
+         $$2.setCursor($$1.getStart());
+         gd $$3 = new gd($$2);
 
-   private static void b(Consumer<tu> $$0, dr $$1, tu $$2) {
-      MinecraftServer $$3 = $$1.l();
-      $$3.bd().decorate($$1.i(), $$2.c()).thenAcceptAsync($$2x -> $$0.accept($$2.a($$2x)), $$3);
-   }
+         try {
+            $$3.t();
+         } catch (CommandSyntaxException var6) {
+         }
 
-   private static CompletableFuture<ala> a(dr $$0, tu $$1) {
-      akl $$2 = $$0.i();
-      return $$2 != null && $$1.a($$2.cv()) ? $$2.V().a($$1.b()) : CompletableFuture.completedFuture(ala.a($$1.b()));
-   }
-
-   public eg.a a(StringReader $$0) throws CommandSyntaxException {
-      return eg.a.a($$0, true);
+         return $$3.a($$1, $$1x -> dw.b(((dw)$$0.getSource()).q(), $$1x));
+      } else {
+         return Suggestions.empty();
+      }
    }
 
    public Collection<String> getExamples() {
-      return a;
+      return b;
    }
 
-   public static class a {
-      final String a;
-      private final eg.b[] b;
+   @FunctionalInterface
+   public interface a {
+      Collection<GameProfile> getNames(dt var1) throws CommandSyntaxException;
+   }
 
-      public a(String $$0, eg.b[] $$1) {
+   public static class b implements eg.a {
+      private final gc a;
+
+      public b(gc $$0) {
          this.a = $$0;
-         this.b = $$1;
       }
 
-      public String a() {
-         return this.a;
-      }
+      @Override
+      public Collection<GameProfile> getNames(dt $$0) throws CommandSyntaxException {
+         List<ako> $$1 = this.a.d($$0);
+         if ($$1.isEmpty()) {
+            throw ee.e.create();
+         } else {
+            List<GameProfile> $$2 = Lists.newArrayList();
 
-      public eg.b[] b() {
-         return this.b;
-      }
-
-      tf a(dr $$0) throws CommandSyntaxException {
-         return this.a($$0, $$0.c(2));
-      }
-
-      public tf a(dr $$0, boolean $$1) throws CommandSyntaxException {
-         if (this.b.length != 0 && $$1) {
-            ts $$2 = tf.b(this.a.substring(0, this.b[0].a()));
-            int $$3 = this.b[0].a();
-
-            for (eg.b $$4 : this.b) {
-               tf $$5 = $$4.a($$0);
-               if ($$3 < $$4.a()) {
-                  $$2.f(this.a.substring($$3, $$4.a()));
-               }
-
-               if ($$5 != null) {
-                  $$2.b($$5);
-               }
-
-               $$3 = $$4.b();
-            }
-
-            if ($$3 < this.a.length()) {
-               $$2.f(this.a.substring($$3));
+            for (ako $$3 : $$1) {
+               $$2.add($$3.fP());
             }
 
             return $$2;
-         } else {
-            return tf.b(this.a);
          }
-      }
-
-      public static eg.a a(StringReader $$0, boolean $$1) throws CommandSyntaxException {
-         String $$2 = $$0.getString().substring($$0.getCursor(), $$0.getTotalLength());
-         if (!$$1) {
-            $$0.setCursor($$0.getTotalLength());
-            return new eg.a($$2, new eg.b[0]);
-         } else {
-            List<eg.b> $$3 = Lists.newArrayList();
-            int $$4 = $$0.getCursor();
-
-            while (true) {
-               int $$5;
-               ga $$7;
-               while (true) {
-                  if (!$$0.canRead()) {
-                     return new eg.a($$2, $$3.toArray(new eg.b[0]));
-                  }
-
-                  if ($$0.peek() == '@') {
-                     $$5 = $$0.getCursor();
-
-                     try {
-                        gb $$6 = new gb($$0);
-                        $$7 = $$6.t();
-                        break;
-                     } catch (CommandSyntaxException var8) {
-                        if (var8.getType() != gb.h && var8.getType() != gb.f) {
-                           throw var8;
-                        }
-
-                        $$0.setCursor($$5 + 1);
-                     }
-                  } else {
-                     $$0.skip();
-                  }
-               }
-
-               $$3.add(new eg.b($$5 - $$4, $$0.getCursor() - $$4, $$7));
-            }
-         }
-      }
-   }
-
-   public static class b {
-      private final int a;
-      private final int b;
-      private final ga c;
-
-      public b(int $$0, int $$1, ga $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-      }
-
-      public int a() {
-         return this.a;
-      }
-
-      public int b() {
-         return this.b;
-      }
-
-      public ga c() {
-         return this.c;
-      }
-
-      @Nullable
-      public tf a(dr $$0) throws CommandSyntaxException {
-         return ga.a(this.c.b($$0));
       }
    }
 }

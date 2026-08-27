@@ -1,56 +1,68 @@
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
 import javax.annotation.Nullable;
 
-public class dcc {
-   final String a;
-
-   public dcc(String $$0) {
-      this.a = $$0;
-   }
-
-   public static aer a(aeq<dcc> $$0, boolean $$1) {
-      String $$2 = $$1 ? "banner" : "shield";
-      return $$0.a().d("entity/" + $$2 + "/");
-   }
-
-   public String a() {
-      return this.a;
-   }
-
+public class dcc extends czs {
    @Nullable
-   public static he<dcc> a(String $$0) {
-      return jb.al.h().filter($$1 -> $$1.a().a.equals($$0)).findAny().orElse(null);
+   private static dfj f;
+   @Nullable
+   private static dfj g;
+
+   protected dcc(dfd.d $$0) {
+      super(czs.b.b, $$0);
    }
 
-   public static class a {
-      private final List<Pair<he<dcc>, chl>> a = Lists.newArrayList();
-
-      public dcc.a a(aeq<dcc> $$0, chl $$1) {
-         return this.a(jb.al.f($$0), $$1);
+   @Override
+   public void a(cpq $$0, gw $$1, dfe $$2, @Nullable bjb $$3, cja $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      dcq $$5 = $$0.c_($$1);
+      if ($$5 instanceof dea) {
+         a($$0, $$1, (dea)$$5);
       }
+   }
 
-      public dcc.a a(he<dcc> $$0, chl $$1) {
-         return this.a(Pair.of($$0, $$1));
-      }
+   public static void a(cpq $$0, gw $$1, dea $$2) {
+      if (!$$0.B) {
+         dfe $$3 = $$2.q();
+         boolean $$4 = $$3.a(csr.gG) || $$3.a(csr.gH);
+         if ($$4 && $$1.v() >= $$0.C_() && $$0.ai() != bgq.a) {
+            dfj.b $$5 = u().a($$0, $$1);
+            if ($$5 != null) {
+               bxw $$6 = bip.bk.a($$0);
+               if ($$6 != null) {
+                  ctj.a($$0, $$5);
+                  gw $$7 = $$5.a(1, 2, 0).d();
+                  $$6.b((double)$$7.u() + 0.5, (double)$$7.v() + 0.55, (double)$$7.w() + 0.5, $$5.b().o() == hc.a.a ? 0.0F : 90.0F, 0.0F);
+                  $$6.aU = $$5.b().o() == hc.a.a ? 0.0F : 90.0F;
+                  $$6.p();
 
-      public dcc.a a(Pair<he<dcc>, chl> $$0) {
-         this.a.add($$0);
-         return this;
-      }
+                  for (ako $$8 : $$0.a(ako.class, $$6.cG().g(50.0))) {
+                     al.n.a($$8, $$6);
+                  }
 
-      public qx a() {
-         qx $$0 = new qx();
-
-         for (Pair<he<dcc>, chl> $$1 : this.a) {
-            qr $$2 = new qr();
-            $$2.a("Pattern", ((dcc)((he)$$1.getFirst()).a()).a);
-            $$2.a("Color", ((chl)$$1.getSecond()).a());
-            $$0.add($$2);
+                  $$0.b($$6);
+                  ctj.b($$0, $$5);
+               }
+            }
          }
-
-         return $$0;
       }
+   }
+
+   public static boolean b(cpq $$0, gw $$1, cja $$2) {
+      return $$2.a(cjd.ts) && $$1.v() >= $$0.C_() + 2 && $$0.ai() != bgq.a && !$$0.B ? v().a($$0, $$1) != null : false;
+   }
+
+   private static dfj u() {
+      if (f == null) {
+         f = dfk.a().a("^^^", "###", "~#~").a('#', $$0 -> $$0.a().a(apo.aE)).a('^', dfi.a(dfn.a(csr.gG).or(dfn.a(csr.gH)))).a('~', $$0 -> $$0.a().i()).b();
+      }
+
+      return f;
+   }
+
+   private static dfj v() {
+      if (g == null) {
+         g = dfk.a().a("   ", "###", "~#~").a('#', $$0 -> $$0.a().a(apo.aE)).a('~', $$0 -> $$0.a().i()).b();
+      }
+
+      return g;
    }
 }

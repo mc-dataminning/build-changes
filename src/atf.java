@@ -1,3 +1,4 @@
+import com.google.common.collect.ImmutableMap;
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.DataFixUtils;
@@ -6,116 +7,72 @@ import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.templates.List.ListType;
-import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
-import java.util.List;
-import java.util.stream.LongStream;
+import java.util.Map;
 
 public class atf extends DataFix {
-   private static final int a = 6;
-   private static final int b = 16;
-   private static final int c = 16;
-   private static final int d = 4096;
-   private static final int e = 9;
-   private static final int f = 256;
+   private static final Map<String, String> a = ImmutableMap.builder()
+      .put("generic.maxHealth", "generic.max_health")
+      .put("Max Health", "generic.max_health")
+      .put("zombie.spawnReinforcements", "zombie.spawn_reinforcements")
+      .put("Spawn Reinforcements Chance", "zombie.spawn_reinforcements")
+      .put("horse.jumpStrength", "horse.jump_strength")
+      .put("Jump Strength", "horse.jump_strength")
+      .put("generic.followRange", "generic.follow_range")
+      .put("Follow Range", "generic.follow_range")
+      .put("generic.knockbackResistance", "generic.knockback_resistance")
+      .put("Knockback Resistance", "generic.knockback_resistance")
+      .put("generic.movementSpeed", "generic.movement_speed")
+      .put("Movement Speed", "generic.movement_speed")
+      .put("generic.flyingSpeed", "generic.flying_speed")
+      .put("Flying Speed", "generic.flying_speed")
+      .put("generic.attackDamage", "generic.attack_damage")
+      .put("generic.attackKnockback", "generic.attack_knockback")
+      .put("generic.attackSpeed", "generic.attack_speed")
+      .put("generic.armorToughness", "generic.armor_toughness")
+      .build();
 
    public atf(Schema $$0) {
       super($$0, false);
    }
 
    protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(ayp.c);
-      Type<?> $$1 = $$0.findFieldType("Level");
-      OpticFinder<?> $$2 = DSL.fieldFinder("Level", $$1);
-      OpticFinder<?> $$3 = $$2.type().findField("Sections");
-      Type<?> $$4 = ((ListType)$$3.type()).getElement();
-      OpticFinder<?> $$5 = DSL.typeFinder($$4);
-      Type<Pair<String, Dynamic<?>>> $$6 = DSL.named(ayp.u.typeName(), DSL.remainderType());
-      OpticFinder<List<Pair<String, Dynamic<?>>>> $$7 = DSL.fieldFinder("Palette", DSL.list($$6));
-      return this.fixTypeEverywhereTyped(
-         "BitStorageAlignFix", $$0, this.getOutputSchema().getType(ayp.c), $$4x -> $$4x.updateTyped($$2, $$3xx -> this.a(a($$3, $$5, $$7, $$3xx)))
+      Type<?> $$0 = this.getInputSchema().getType(ays.t);
+      OpticFinder<?> $$1 = $$0.findField("tag");
+      return TypeRewriteRule.seq(
+         this.fixTypeEverywhereTyped("Rename ItemStack Attributes", $$0, $$1x -> $$1x.updateTyped($$1, atf::a)),
+         new TypeRewriteRule[]{
+            this.fixTypeEverywhereTyped("Rename Entity Attributes", this.getInputSchema().getType(ays.x), atf::b),
+            this.fixTypeEverywhereTyped("Rename Player Attributes", this.getInputSchema().getType(ays.b), atf::b)
+         }
       );
    }
 
-   private Typed<?> a(Typed<?> $$0) {
+   private static Dynamic<?> a(Dynamic<?> $$0) {
+      return (Dynamic<?>)DataFixUtils.orElse($$0.asString().result().map($$0x -> a.getOrDefault($$0x, $$0x)).map($$0::createString), $$0);
+   }
+
+   private static Typed<?> a(Typed<?> $$0) {
       return $$0.update(
-         DSL.remainderFinder(), $$0x -> $$0x.update("Heightmaps", $$1 -> $$1.updateMapValues($$1x -> $$1x.mapSecond($$1xx -> a($$0x, $$1xx, 256, 9))))
-      );
-   }
-
-   private static Typed<?> a(OpticFinder<?> $$0, OpticFinder<?> $$1, OpticFinder<List<Pair<String, Dynamic<?>>>> $$2, Typed<?> $$3) {
-      return $$3.updateTyped(
-         $$0,
-         $$2x -> $$2x.updateTyped(
-               $$1,
-               $$1xx -> {
-                  int $$2xx = $$1xx.getOptional($$2).map($$0xxx -> Math.max(4, DataFixUtils.ceillog2($$0xxx.size()))).orElse(0);
-                  return $$2xx != 0 && !arp.d($$2xx)
-                     ? $$1xx.update(DSL.remainderFinder(), $$1xxx -> $$1xxx.update("BlockStates", $$2xxx -> a($$1xxx, $$2xxx, 4096, $$2xx)))
-                     : $$1xx;
-               }
+         DSL.remainderFinder(),
+         $$0x -> $$0x.update(
+               "AttributeModifiers",
+               $$0xx -> (Dynamic)DataFixUtils.orElse(
+                     $$0xx.asStreamOpt().result().map($$0xxx -> $$0xxx.map($$0xxxx -> $$0xxxx.update("AttributeName", atf::a))).map($$0xx::createList), $$0xx
+                  )
             )
       );
    }
 
-   private static Dynamic<?> a(Dynamic<?> $$0, Dynamic<?> $$1, int $$2, int $$3) {
-      long[] $$4 = $$1.asLongStream().toArray();
-      long[] $$5 = a($$2, $$3, $$4);
-      return $$0.createLongList(LongStream.of($$5));
-   }
-
-   public static long[] a(int $$0, int $$1, long[] $$2) {
-      int $$3 = $$2.length;
-      if ($$3 == 0) {
-         return $$2;
-      } else {
-         long $$4 = (1L << $$1) - 1L;
-         int $$5 = 64 / $$1;
-         int $$6 = ($$0 + $$5 - 1) / $$5;
-         long[] $$7 = new long[$$6];
-         int $$8 = 0;
-         int $$9 = 0;
-         long $$10 = 0L;
-         int $$11 = 0;
-         long $$12 = $$2[0];
-         long $$13 = $$3 > 1 ? $$2[1] : 0L;
-
-         for (int $$14 = 0; $$14 < $$0; $$14++) {
-            int $$15 = $$14 * $$1;
-            int $$16 = $$15 >> 6;
-            int $$17 = ($$14 + 1) * $$1 - 1 >> 6;
-            int $$18 = $$15 ^ $$16 << 6;
-            if ($$16 != $$11) {
-               $$12 = $$13;
-               $$13 = $$16 + 1 < $$3 ? $$2[$$16 + 1] : 0L;
-               $$11 = $$16;
-            }
-
-            long $$19;
-            if ($$16 == $$17) {
-               $$19 = $$12 >>> $$18 & $$4;
-            } else {
-               int $$20 = 64 - $$18;
-               $$19 = ($$12 >>> $$18 | $$13 << $$20) & $$4;
-            }
-
-            int $$22 = $$9 + $$1;
-            if ($$22 >= 64) {
-               $$7[$$8++] = $$10;
-               $$10 = $$19;
-               $$9 = $$1;
-            } else {
-               $$10 |= $$19 << $$9;
-               $$9 = $$22;
-            }
-         }
-
-         if ($$10 != 0L) {
-            $$7[$$8] = $$10;
-         }
-
-         return $$7;
-      }
+   private static Typed<?> b(Typed<?> $$0) {
+      return $$0.update(
+         DSL.remainderFinder(),
+         $$0x -> $$0x.update(
+               "Attributes",
+               $$0xx -> (Dynamic)DataFixUtils.orElse(
+                     $$0xx.asStreamOpt().result().map($$0xxx -> $$0xxx.map($$0xxxx -> $$0xxxx.update("Name", atf::a))).map($$0xx::createList), $$0xx
+                  )
+            )
+      );
    }
 }

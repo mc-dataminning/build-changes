@@ -1,34 +1,14 @@
-public interface dq {
-   dq a = new dq() {
-      @Override
-      public void a(tf $$0) {
-      }
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
 
-      @Override
-      public boolean f_() {
-         return false;
-      }
+public class dq extends RuntimeException {
+   private final ti a;
 
-      @Override
-      public boolean q_() {
-         return false;
-      }
+   public dq(ti $$0) {
+      super($$0.getString(), null, CommandSyntaxException.ENABLE_COMMAND_STACK_TRACES, CommandSyntaxException.ENABLE_COMMAND_STACK_TRACES);
+      this.a = $$0;
+   }
 
-      @Override
-      public boolean N_() {
-         return false;
-      }
-   };
-
-   void a(tf var1);
-
-   boolean f_();
-
-   boolean q_();
-
-   boolean N_();
-
-   default boolean g_() {
-      return false;
+   public ti a() {
+      return this.a;
    }
 }

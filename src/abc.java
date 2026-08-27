@@ -1,14 +1,24 @@
-public record abc(int a) implements ux<aaw> {
-   public abc(si $$0) {
-      this($$0.m());
+public class abc implements va<aaz> {
+   private final int a;
+
+   public abc(int $$0) {
+      this.a = $$0;
+   }
+
+   public abc(sl $$0) {
+      this.a = $$0.m();
    }
 
    @Override
-   public void a(si $$0) {
+   public void a(sl $$0) {
       $$0.c(this.a);
    }
 
-   public void a(aaw $$0) {
+   public void a(aaz $$0) {
       $$0.a(this);
+   }
+
+   public int a() {
+      return this.a;
    }
 }

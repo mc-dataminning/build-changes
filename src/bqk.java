@@ -1,49 +1,42 @@
 import java.util.EnumSet;
 
-public class bqk extends bpt {
-   private static final btk b = btk.b().a(6.0);
-   public static final int a = 400;
-   private final buv c;
-   private caz d;
-   private int e;
+public class bqk extends bpw {
+   private final bjk a;
+   private double b;
+   private double c;
+   private double d;
+   private final double e;
 
-   public bqk(buv $$0) {
-      this.c = $$0;
-      this.a(EnumSet.of(bpt.a.a, bpt.a.b));
+   public bqk(bjk $$0, double $$1) {
+      this.a = $$0;
+      this.e = $$1;
+      this.a(EnumSet.of(bpw.a.a));
    }
 
    @Override
    public boolean a() {
-      if (!this.c.dK().N()) {
-         return false;
-      } else if (this.c.ee().a(8000) != 0) {
+      if (this.a.fI()) {
          return false;
       } else {
-         this.d = this.c.dK().a(caz.class, b, this.c, this.c.dp(), this.c.dr(), this.c.dv(), this.c.cG().c(6.0, 2.0, 6.0));
-         return this.d != null;
+         ehi $$0 = btr.a(this.a, 16, 7, ehi.c(this.a.fJ()), (float) (Math.PI / 2));
+         if ($$0 == null) {
+            return false;
+         } else {
+            this.b = $$0.c;
+            this.c = $$0.d;
+            this.d = $$0.e;
+            return true;
+         }
       }
    }
 
    @Override
    public boolean b() {
-      return this.e > 0;
+      return !this.a.H().l();
    }
 
    @Override
    public void c() {
-      this.e = this.a(400);
-      this.c.w(true);
-   }
-
-   @Override
-   public void d() {
-      this.c.w(false);
-      this.d = null;
-   }
-
-   @Override
-   public void e() {
-      this.c.D().a(this.d, 30.0F, 30.0F);
-      this.e--;
+      this.a.H().a(this.b, this.c, this.d, this.e);
    }
 }

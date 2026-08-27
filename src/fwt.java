@@ -1,34 +1,36 @@
-public class fwt extends fxf<bwk, ffe<bwk>> {
-   private final ffe<bwk> a;
+public class fwt<T extends bjb, M extends fey<T>> extends fxk<T, M> {
+   private static final aeu a = new aeu("textures/entity/elytra.png");
+   private final fev<T> b;
 
-   public fwt(fus<bwk, ffe<bwk>> $$0, fho $$1) {
+   public fwt(fux<T, M> $$0, fht $$1) {
       super($$0);
-      this.a = new ffe<>($$1.a(fhr.ak));
+      this.b = new fev<>($$1.a(fhw.Q));
    }
 
-   public void a(elf $$0, fnu $$1, int $$2, bwk $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      cix $$10 = $$3.p();
-      if ($$10.d() instanceof cin) {
-         cin $$11 = (cin)$$10.d();
-         this.c().a(this.a);
-         this.a.a($$3, $$4, $$5, $$6);
-         this.a.a($$3, $$4, $$5, $$7, $$8, $$9);
-         float $$13;
-         float $$14;
-         float $$15;
-         if ($$11 instanceof cho) {
-            int $$12 = ((cho)$$11).e_($$10);
-            $$13 = (float)($$12 >> 16 & 0xFF) / 255.0F;
-            $$14 = (float)($$12 >> 8 & 0xFF) / 255.0F;
-            $$15 = (float)($$12 & 0xFF) / 255.0F;
+   public void a(elk $$0, fnz $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      cja $$10 = $$3.c(biq.e);
+      if ($$10.a(cjd.nh)) {
+         aeu $$13;
+         if ($$3 instanceof fmy $$11) {
+            fzz $$12 = $$11.b();
+            if ($$12.d() != null) {
+               $$13 = $$12.d();
+            } else if ($$12.c() != null && $$11.a(cbq.a)) {
+               $$13 = $$12.c();
+            } else {
+               $$13 = a;
+            }
          } else {
-            $$13 = 1.0F;
-            $$14 = 1.0F;
-            $$15 = 1.0F;
+            $$13 = a;
          }
 
-         elj $$19 = $$1.getBuffer(foc.e($$11.h()));
-         this.a.a($$0, $$19, $$2, fyl.d, $$13, $$14, $$15, 1.0F);
+         $$0.a();
+         $$0.a(0.0F, 0.0F, 0.125F);
+         this.c().a(this.b);
+         this.b.a($$3, $$4, $$5, $$7, $$8, $$9);
+         elo $$17 = fua.a($$1, foh.a($$13), false, $$10.B());
+         this.b.a($$0, $$17, $$2, fyq.d, 1.0F, 1.0F, 1.0F, 1.0F);
+         $$0.b();
       }
    }
 }

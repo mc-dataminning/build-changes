@@ -1,48 +1,90 @@
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import java.util.List;
+import java.util.Map;
 
-public class cmj<T extends clj> implements cmc<T> {
-   private final int x;
-   private final cmj.a<T> y;
-
-   public cmj(cmj.a<T> $$0, int $$1) {
-      this.x = $$1;
-      this.y = $$0;
+public class cmj extends clw {
+   public cmj(clt $$0) {
+      super($$0);
    }
 
-   public T b(aer $$0, JsonObject $$1) {
-      String $$2 = arg.a($$1, "group", "");
-      clp $$3 = clp.d.a(arg.a($$1, "category", null), clp.c);
-      JsonElement $$4 = (JsonElement)(arg.d($$1, "ingredient") ? arg.v($$1, "ingredient") : arg.u($$1, "ingredient"));
-      clx $$5 = clx.a($$4, false);
-      String $$6 = arg.i($$1, "result");
-      aer $$7 = new aer($$6);
-      cix $$8 = new cix(jb.i.b($$7).orElseThrow(() -> new IllegalStateException("Item: " + $$6 + " does not exist")));
-      float $$9 = arg.a($$1, "experience", 0.0F);
-      int $$10 = arg.a($$1, "cookingtime", this.x);
-      return this.y.create($$0, $$2, $$3, $$5, $$8, $$9, $$10);
+   public boolean a(ceu $$0, cpq $$1) {
+      List<cja> $$2 = Lists.newArrayList();
+
+      for (int $$3 = 0; $$3 < $$0.b(); $$3++) {
+         cja $$4 = $$0.a($$3);
+         if (!$$4.b()) {
+            $$2.add($$4);
+            if ($$2.size() > 1) {
+               cja $$5 = $$2.get(0);
+               if (!$$4.a($$5.d()) || $$5.L() != 1 || $$4.L() != 1 || !$$5.d().o()) {
+                  return false;
+               }
+            }
+         }
+      }
+
+      return $$2.size() == 2;
    }
 
-   public T b(aer $$0, si $$1) {
-      String $$2 = $$1.r();
-      clp $$3 = $$1.b(clp.class);
-      clx $$4 = clx.b($$1);
-      cix $$5 = $$1.q();
-      float $$6 = $$1.readFloat();
-      int $$7 = $$1.m();
-      return this.y.create($$0, $$2, $$3, $$4, $$5, $$6, $$7);
+   public cja a(ceu $$0, hu $$1) {
+      List<cja> $$2 = Lists.newArrayList();
+
+      for (int $$3 = 0; $$3 < $$0.b(); $$3++) {
+         cja $$4 = $$0.a($$3);
+         if (!$$4.b()) {
+            $$2.add($$4);
+            if ($$2.size() > 1) {
+               cja $$5 = $$2.get(0);
+               if (!$$4.a($$5.d()) || $$5.L() != 1 || $$4.L() != 1 || !$$5.d().o()) {
+                  return cja.b;
+               }
+            }
+         }
+      }
+
+      if ($$2.size() == 2) {
+         cja $$6 = $$2.get(0);
+         cja $$7 = $$2.get(1);
+         if ($$6.a($$7.d()) && $$6.L() == 1 && $$7.L() == 1 && $$6.d().o()) {
+            civ $$8 = $$6.d();
+            int $$9 = $$8.n() - $$6.k();
+            int $$10 = $$8.n() - $$7.k();
+            int $$11 = $$9 + $$10 + $$8.n() * 5 / 100;
+            int $$12 = $$8.n() - $$11;
+            if ($$12 < 0) {
+               $$12 = 0;
+            }
+
+            cja $$13 = new cja($$6.d());
+            $$13.b($$12);
+            Map<cnj, Integer> $$14 = Maps.newHashMap();
+            Map<cnj, Integer> $$15 = cnl.a($$6);
+            Map<cnj, Integer> $$16 = cnl.a($$7);
+            jd.g.s().filter(cnj::c).forEach($$3x -> {
+               int $$4 = Math.max($$15.getOrDefault($$3x, 0), $$16.getOrDefault($$3x, 0));
+               if ($$4 > 0) {
+                  $$14.put($$3x, $$4);
+               }
+            });
+            if (!$$14.isEmpty()) {
+               cnl.a($$14, $$13);
+            }
+
+            return $$13;
+         }
+      }
+
+      return cja.b;
    }
 
-   public void a(si $$0, T $$1) {
-      $$0.a($$1.c);
-      $$0.a($$1.g());
-      $$1.d.a($$0);
-      $$0.a($$1.e);
-      $$0.a($$1.f);
-      $$0.c($$1.g);
+   @Override
+   public boolean a(int $$0, int $$1) {
+      return $$0 * $$1 >= 2;
    }
 
-   interface a<T extends clj> {
-      T create(aer var1, String var2, clp var3, clx var4, cix var5, float var6, int var7);
+   @Override
+   public cmh<?> ai_() {
+      return cmh.o;
    }
 }

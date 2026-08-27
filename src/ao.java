@@ -1,37 +1,21 @@
-public enum ao {
-   a("task", n.k),
-   b("challenge", n.f),
-   c("goal", n.k);
+import com.google.gson.JsonObject;
 
-   private final String d;
-   private final n e;
-   private final tf f;
+public interface ao<T extends ap> {
+   void a(afc var1, ao.a<T> var2);
 
-   private ao(String $$0, n $$1) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = tf.c("advancements.toast." + $$0);
+   void b(afc var1, ao.a<T> var2);
+
+   void a(afc var1);
+
+   T a(JsonObject var1, bg var2);
+
+   default am<T> a(T $$0) {
+      return new am<>(this, $$0);
    }
 
-   public String a() {
-      return this.d;
-   }
-
-   public static ao a(String $$0) {
-      for (ao $$1 : values()) {
-         if ($$1.d.equals($$0)) {
-            return $$1;
-         }
+   public static record a<T extends ap>(T a, af b, String c) {
+      public void a(afc $$0) {
+         $$0.a(this.b, this.c);
       }
-
-      throw new IllegalArgumentException("Unknown frame type '" + $$0 + "'");
-   }
-
-   public n b() {
-      return this.e;
-   }
-
-   public tf c() {
-      return this.f;
    }
 }

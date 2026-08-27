@@ -1,65 +1,44 @@
-import java.util.function.ToIntFunction;
+import java.util.Optional;
 
-public class cvs extends cxj implements csn, czm {
-   private static final dfq b = dfp.C;
-   private final cxk c = new cxk(this);
+public class cvs extends csy implements css {
+   protected static final eib a = csq.a(4.0, 0.0, 4.0, 12.0, 9.0, 12.0);
+   private static final double b = 0.4;
+   private final csq c;
+   private final aet<dne<?, ?>> d;
 
-   public cvs(dey.d $$0) {
+   protected cvs(dfd.d $$0, aet<dne<?, ?>> $$1, csq $$2) {
       super($$0);
-      this.k(this.n().a(b, Boolean.valueOf(false)));
-   }
-
-   public static ToIntFunction<dez> b(int $$0) {
-      return $$1 -> cxj.n($$1) ? $$0 : 0;
+      this.d = $$1;
+      this.c = $$2;
    }
 
    @Override
-   protected void a(dfa.a<csl, dez> $$0) {
-      super.a($$0);
-      $$0.a(b);
+   public eib a(dfe $$0, cow $$1, gw $$2, ehn $$3) {
+      return a;
    }
 
    @Override
-   public dez a(dez $$0, ha $$1, dez $$2, cpm $$3, gu $$4, gu $$5) {
-      if ($$0.c(b)) {
-         $$3.a($$4, ead.c, ead.c.a($$3));
-      }
+   protected boolean d(dfe $$0, cow $$1, gw $$2) {
+      return $$0.a(apo.aK) || $$0.a(csr.fl) || $$0.a(csr.dY) || super.d($$0, $$1, $$2);
+   }
 
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   private Optional<? extends hg<dne<?, ?>>> a(cpt $$0) {
+      return $$0.B_().d(je.as).b(this.d);
    }
 
    @Override
-   public boolean a(dez $$0, clf $$1) {
-      return !$$1.n().a(cja.fA) || super.a($$0, $$1);
+   public boolean a(cpt $$0, gw $$1, dfe $$2) {
+      dfe $$3 = $$0.a_($$1.d());
+      return $$3.a(this.c);
    }
 
    @Override
-   public boolean a(cpo $$0, gu $$1, dez $$2) {
-      return ha.a().anyMatch($$3 -> this.c.a($$2, $$0, $$1, $$3.g()));
+   public boolean a(cpq $$0, arx $$1, gw $$2, dfe $$3) {
+      return (double)$$1.i() < 0.4;
    }
 
    @Override
-   public boolean a(cpl $$0, aru $$1, gu $$2, dez $$3) {
-      return true;
-   }
-
-   @Override
-   public void a(akk $$0, aru $$1, gu $$2, dez $$3) {
-      this.c.a($$3, $$0, $$2, $$1);
-   }
-
-   @Override
-   public eac c_(dez $$0) {
-      return $$0.c(b) ? ead.c.a(false) : super.c_($$0);
-   }
-
-   @Override
-   public boolean c(dez $$0, cor $$1, gu $$2) {
-      return $$0.u().c();
-   }
-
-   @Override
-   public cxk b() {
-      return this.c;
+   public void a(akn $$0, arx $$1, gw $$2, dfe $$3) {
+      this.a($$0).ifPresent($$3x -> ((dne)$$3x.a()).a($$0, $$0.k().g(), $$1, $$2));
    }
 }

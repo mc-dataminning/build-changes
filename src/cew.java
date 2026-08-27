@@ -1,22 +1,58 @@
-public class cew extends cfv {
-   private final cee a;
+public abstract class cew {
+   private int a;
 
-   public cew(cee $$0, bgj $$1, int $$2, int $$3, int $$4) {
-      super($$1, $$2, $$3, $$4);
+   public static cew a(final ceq $$0, final int $$1) {
+      return new cew() {
+         @Override
+         public int b() {
+            return $$0.a($$1);
+         }
+
+         @Override
+         public void a(int $$0x) {
+            $$0.a($$1, $$0);
+         }
+      };
+   }
+
+   public static cew a(final int[] $$0, final int $$1) {
+      return new cew() {
+         @Override
+         public int b() {
+            return $$0[$$1];
+         }
+
+         @Override
+         public void a(int $$0x) {
+            $$0[$$1] = $$0;
+         }
+      };
+   }
+
+   public static cew a() {
+      return new cew() {
+         private int a;
+
+         @Override
+         public int b() {
+            return this.a;
+         }
+
+         @Override
+         public void a(int $$0) {
+            this.a = $$0;
+         }
+      };
+   }
+
+   public abstract int b();
+
+   public abstract void a(int var1);
+
+   public boolean c() {
+      int $$0 = this.b();
+      boolean $$1 = $$0 != this.a;
       this.a = $$0;
-   }
-
-   @Override
-   public boolean a(cix $$0) {
-      return this.a.d($$0) || c($$0);
-   }
-
-   @Override
-   public int a_(cix $$0) {
-      return c($$0) ? 1 : super.a_($$0);
-   }
-
-   public static boolean c(cix $$0) {
-      return $$0.a(cja.pK);
+      return $$1;
    }
 }

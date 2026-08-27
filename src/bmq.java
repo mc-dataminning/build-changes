@@ -1,20 +1,31 @@
 import com.mojang.datafixers.kinds.App;
 import java.util.Optional;
 import java.util.function.Function;
+import java.util.function.Predicate;
 
 public class bmq {
-   public static bkq<biy> a(bim<?> $$0, int $$1) {
-      int $$2 = $$1 * $$1;
-      return bob.a(
-         (Function<bob.b<biy>, ? extends App<bob.c<biy>, boe<biy>>>)($$2x -> $$2x.group($$2x.a(brz.n), $$2x.c(brz.q), $$2x.b(brz.h))
-               .apply($$2x, ($$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
-                     Optional<biy> $$9 = $$2x.<bsb>b($$5).a($$3xx -> $$3xx.f((bii)$$7) <= (double)$$2 && $$0.equals($$3xx.ag()));
-                     if ($$9.isEmpty()) {
+   public static bkt<bjb> a(bje $$0, float $$1) {
+      return a($$1x -> $$0.equals($$1x.ag().f()), $$1);
+   }
+
+   public static bmc<bjb> a(bip<?> $$0, float $$1) {
+      return a($$1x -> $$0.equals($$1x.ag()), $$1);
+   }
+
+   public static bmc<bjb> a(float $$0) {
+      return a($$0x -> true, $$0);
+   }
+
+   public static bmc<bjb> a(Predicate<bjb> $$0, float $$1) {
+      float $$2 = $$1 * $$1;
+      return boe.a(
+         (Function<boe.b<bjb>, ? extends App<boe.c<bjb>, boh<bjb>>>)($$2x -> $$2x.group($$2x.c(bsc.n), $$2x.b(bsc.h))
+               .apply($$2x, ($$3, $$4) -> ($$5, $$6, $$7) -> {
+                     Optional<bjb> $$8 = $$2x.<bse>b($$4).a($$0.and($$2xxxx -> $$2xxxx.f((bil)$$6) <= (double)$$2 && !$$6.x($$2xxxx)));
+                     if ($$8.isEmpty()) {
                         return false;
                      } else {
-                        biy $$10 = $$9.get();
-                        $$4.a($$10);
-                        $$3.a(new bla($$10, true));
+                        $$3.a(new bld($$8.get(), true));
                         return true;
                      }
                   }))

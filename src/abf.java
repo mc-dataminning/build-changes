@@ -1,14 +1,14 @@
-public record abf(tv.a a) implements ux<aaw> {
-   public abf(si $$0) {
-      this(tv.a.a($$0));
+public record abf(int a) implements va<aaz> {
+   public abf(sl $$0) {
+      this($$0.m());
    }
 
    @Override
-   public void a(si $$0) {
-      tv.a.a($$0, this.a);
+   public void a(sl $$0) {
+      $$0.c(this.a);
    }
 
-   public void a(aaw $$0) {
+   public void a(aaz $$0) {
       $$0.a(this);
    }
 }

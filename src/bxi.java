@@ -1,69 +1,124 @@
 import javax.annotation.Nullable;
 
-public class bxi extends bxb {
+public class bxi extends bxe {
+   private static final btn b = btn.a().d();
    @Nullable
-   private ehd b;
+   private eaw c;
+   @Nullable
+   private ehi d;
+   private boolean e;
 
-   public bxi(bwz $$0) {
+   public bxi(bxc $$0) {
       super($$0);
    }
 
    @Override
-   public void b() {
-      ehd $$0 = this.a.D(1.0F).d();
-      $$0.b((float) (-Math.PI / 4));
-      double $$1 = this.a.e.dp();
-      double $$2 = this.a.e.e(0.5);
-      double $$3 = this.a.e.dv();
-
-      for (int $$4 = 0; $$4 < 8; $$4++) {
-         aru $$5 = this.a.ee();
-         double $$6 = $$1 + $$5.k() / 2.0;
-         double $$7 = $$2 + $$5.k() / 2.0;
-         double $$8 = $$3 + $$5.k() / 2.0;
-         ehd $$9 = this.a.dn();
-         this.a.dK().a(iv.i, $$6, $$7, $$8, -$$0.c * 0.08F + $$9.c, -$$0.d * 0.3F + $$9.d, -$$0.e * 0.08F + $$9.e);
-         $$0.b((float) (Math.PI / 16));
-      }
+   public bxs<bxi> i() {
+      return bxs.a;
    }
 
    @Override
    public void c() {
-      if (this.b == null) {
-         this.b = ehd.c(this.a.dK().a(dki.a.f, dnl.a(this.a.p())));
+      double $$0 = this.d == null ? 0.0 : this.d.c(this.a.dp(), this.a.dr(), this.a.dv());
+      if ($$0 < 100.0 || $$0 > 22500.0 || this.a.P || this.a.Q) {
+         this.j();
       }
-
-      if (this.b.c(this.a.dp(), this.a.dr(), this.a.dv()) < 1.0) {
-         this.a.fX().b(bxp.f).j();
-         this.a.fX().a(bxp.g);
-      }
-   }
-
-   @Override
-   public float f() {
-      return 1.5F;
-   }
-
-   @Override
-   public float h() {
-      float $$0 = (float)this.a.dn().h() + 1.0F;
-      float $$1 = Math.min($$0, 40.0F);
-      return $$1 / $$0;
    }
 
    @Override
    public void d() {
-      this.b = null;
+      this.c = null;
+      this.d = null;
    }
 
    @Nullable
    @Override
-   public ehd g() {
-      return this.b;
+   public ehi g() {
+      return this.d;
+   }
+
+   private void j() {
+      if (this.c != null && this.c.c()) {
+         gw $$0 = this.a.dK().a(dkn.a.f, new gw(dnq.a(this.a.p())));
+         int $$1 = this.a.fY() == null ? 0 : this.a.fY().e();
+         if (this.a.ee().a($$1 + 3) == 0) {
+            this.a.fX().a(bxs.c);
+            return;
+         }
+
+         cbp $$2 = this.a.dK().a(b, this.a, (double)$$0.u(), (double)$$0.v(), (double)$$0.w());
+         double $$3;
+         if ($$2 != null) {
+            $$3 = $$0.b($$2.di()) / 512.0;
+         } else {
+            $$3 = 64.0;
+         }
+
+         if ($$2 != null && (this.a.ee().a((int)($$3 + 2.0)) == 0 || this.a.ee().a($$1 + 2) == 0)) {
+            this.a($$2);
+            return;
+         }
+      }
+
+      if (this.c == null || this.c.c()) {
+         int $$5 = this.a.t();
+         int $$6 = $$5;
+         if (this.a.ee().a(8) == 0) {
+            this.e = !this.e;
+            $$6 = $$5 + 6;
+         }
+
+         if (this.e) {
+            $$6++;
+         } else {
+            $$6--;
+         }
+
+         if (this.a.fY() != null && this.a.fY().e() >= 0) {
+            $$6 %= 12;
+            if ($$6 < 0) {
+               $$6 += 12;
+            }
+         } else {
+            $$6 -= 12;
+            $$6 &= 7;
+            $$6 += 12;
+         }
+
+         this.c = this.a.a($$5, $$6, null);
+         if (this.c != null) {
+            this.c.a();
+         }
+      }
+
+      this.k();
+   }
+
+   private void a(cbp $$0) {
+      this.a.fX().a(bxs.b);
+      this.a.fX().b(bxs.b).a($$0);
+   }
+
+   private void k() {
+      if (this.c != null && !this.c.c()) {
+         ib $$0 = this.c.g();
+         this.c.a();
+         double $$1 = (double)$$0.u();
+         double $$2 = (double)$$0.w();
+
+         double $$3;
+         do {
+            $$3 = (double)((float)$$0.v() + this.a.ee().i() * 20.0F);
+         } while ($$3 < (double)$$0.v());
+
+         this.d = new ehi($$1, $$3, $$2);
+      }
    }
 
    @Override
-   public bxp<bxi> i() {
-      return bxp.d;
+   public void a(bxb $$0, gw $$1, bhj $$2, @Nullable cbp $$3) {
+      if ($$3 != null && this.a.c($$3)) {
+         this.a($$3);
+      }
    }
 }

@@ -1,37 +1,33 @@
 import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
-import java.io.UTFDataFormatException;
-import java.util.Objects;
 
-public class ri implements rk {
-   private static final int b = 36;
-   public static final rm<ri> a = new rm.b<ri>() {
-      public ri a(DataInput $$0, int $$1, ra $$2) throws IOException {
-         $$2.a(36L);
-         String $$3 = $$0.readUTF();
-         $$2.a((long)(2 * $$3.length()));
-         return ri.a($$3);
+public class ri extends rh {
+   private static final int b = 10;
+   public static final rp<ri> a = new rp.a<ri>() {
+      public ri a(DataInput $$0, int $$1, rd $$2) throws IOException {
+         $$2.a(10L);
+         return ri.a($$0.readShort());
       }
 
       @Override
-      public rh.b a(DataInput $$0, rh $$1) throws IOException {
-         return $$1.a($$0.readUTF());
+      public rk.b a(DataInput $$0, rk $$1) throws IOException {
+         return $$1.a($$0.readShort());
       }
 
       @Override
-      public void a(DataInput $$0) throws IOException {
-         ri.a($$0);
+      public int c() {
+         return 2;
       }
 
       @Override
       public String a() {
-         return "STRING";
+         return "SHORT";
       }
 
       @Override
       public String b() {
-         return "TAG_String";
+         return "TAG_Short";
       }
 
       @Override
@@ -39,54 +35,34 @@ public class ri implements rk {
          return true;
       }
    };
-   private static final ri c = new ri("");
-   private static final char w = '"';
-   private static final char x = '\'';
-   private static final char y = '\\';
-   private static final char z = '\u0000';
-   private final String A;
+   private final short c;
 
-   public static void a(DataInput $$0) throws IOException {
-      $$0.skipBytes($$0.readUnsignedShort());
+   ri(short $$0) {
+      this.c = $$0;
    }
 
-   private ri(String $$0) {
-      Objects.requireNonNull($$0, "Null string not allowed");
-      this.A = $$0;
-   }
-
-   public static ri a(String $$0) {
-      return $$0.isEmpty() ? c : new ri($$0);
+   public static ri a(short $$0) {
+      return $$0 >= -128 && $$0 <= 1024 ? ri.a.a[$$0 - -128] : new ri($$0);
    }
 
    @Override
    public void a(DataOutput $$0) throws IOException {
-      try {
-         $$0.writeUTF(this.A);
-      } catch (UTFDataFormatException var3) {
-         ac.a("Failed to write NBT String", var3);
-         $$0.writeUTF("");
-      }
+      $$0.writeShort(this.c);
    }
 
    @Override
    public int a() {
-      return 36 + 2 * this.A.length();
+      return 10;
    }
 
    @Override
    public byte b() {
-      return 8;
+      return 2;
    }
 
    @Override
-   public rm<ri> c() {
+   public rp<ri> c() {
       return a;
-   }
-
-   @Override
-   public String toString() {
-      return rk.super.m_();
    }
 
    public ri e() {
@@ -95,56 +71,71 @@ public class ri implements rk {
 
    @Override
    public boolean equals(Object $$0) {
-      return this == $$0 ? true : $$0 instanceof ri && Objects.equals(this.A, ((ri)$$0).A);
+      return this == $$0 ? true : $$0 instanceof ri && this.c == ((ri)$$0).c;
    }
 
    @Override
    public int hashCode() {
-      return this.A.hashCode();
+      return this.c;
    }
 
    @Override
-   public String m_() {
-      return this.A;
-   }
-
-   @Override
-   public void a(ro $$0) {
+   public void a(rr $$0) {
       $$0.a(this);
    }
 
-   public static String b(String $$0) {
-      StringBuilder $$1 = new StringBuilder(" ");
-      char $$2 = 0;
-
-      for (int $$3 = 0; $$3 < $$0.length(); $$3++) {
-         char $$4 = $$0.charAt($$3);
-         if ($$4 == '\\') {
-            $$1.append('\\');
-         } else if ($$4 == '"' || $$4 == '\'') {
-            if ($$2 == 0) {
-               $$2 = (char)($$4 == '"' ? 39 : 34);
-            }
-
-            if ($$2 == $$4) {
-               $$1.append('\\');
-            }
-         }
-
-         $$1.append($$4);
-      }
-
-      if ($$2 == 0) {
-         $$2 = '"';
-      }
-
-      $$1.setCharAt(0, $$2);
-      $$1.append($$2);
-      return $$1.toString();
+   @Override
+   public long f() {
+      return (long)this.c;
    }
 
    @Override
-   public rh.b a(rh $$0) {
-      return $$0.a(this.A);
+   public int g() {
+      return this.c;
+   }
+
+   @Override
+   public short h() {
+      return this.c;
+   }
+
+   @Override
+   public byte i() {
+      return (byte)(this.c & 255);
+   }
+
+   @Override
+   public double j() {
+      return (double)this.c;
+   }
+
+   @Override
+   public float k() {
+      return (float)this.c;
+   }
+
+   @Override
+   public Number l() {
+      return this.c;
+   }
+
+   @Override
+   public rk.b a(rk $$0) {
+      return $$0.a(this.c);
+   }
+
+   static class a {
+      private static final int b = 1024;
+      private static final int c = -128;
+      static final ri[] a = new ri[1153];
+
+      private a() {
+      }
+
+      static {
+         for (int $$0 = 0; $$0 < a.length; $$0++) {
+            a[$$0] = new ri((short)(-128 + $$0));
+         }
+      }
    }
 }

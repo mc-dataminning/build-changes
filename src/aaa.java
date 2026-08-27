@@ -1,64 +1,58 @@
-import java.util.Objects;
-import javax.annotation.Nullable;
+public class aaa implements va<ws> {
+   public static final int a = 0;
+   public static final int b = 1;
+   public static final int c = 2;
+   private final String d;
+   private final ti e;
+   private final eik.a f;
+   private final int g;
 
-public class aaa implements ux<wp> {
-   private final String a;
-   @Nullable
-   private final String b;
-   private final int c;
-   private final afi.a d;
-
-   public aaa(afi.a $$0, @Nullable String $$1, String $$2, int $$3) {
-      if ($$0 != afi.a.b && $$1 == null) {
-         throw new IllegalArgumentException("Need an objective name");
-      } else {
-         this.a = $$2;
-         this.b = $$1;
-         this.c = $$3;
-         this.d = $$0;
-      }
+   public aaa(eie $$0, int $$1) {
+      this.d = $$0.b();
+      this.e = $$0.d();
+      this.f = $$0.f();
+      this.g = $$1;
    }
 
-   public aaa(si $$0) {
-      this.a = $$0.r();
-      this.d = $$0.b(afi.a.class);
-      String $$1 = $$0.r();
-      this.b = Objects.equals($$1, "") ? null : $$1;
-      if (this.d != afi.a.b) {
-         this.c = $$0.m();
+   public aaa(sl $$0) {
+      this.d = $$0.r();
+      this.g = $$0.readByte();
+      if (this.g != 0 && this.g != 2) {
+         this.e = th.a;
+         this.f = eik.a.a;
       } else {
-         this.c = 0;
+         this.e = $$0.l();
+         this.f = $$0.b(eik.a.class);
       }
    }
 
    @Override
-   public void a(si $$0) {
-      $$0.a(this.a);
+   public void a(sl $$0) {
       $$0.a(this.d);
-      $$0.a(this.b == null ? "" : this.b);
-      if (this.d != afi.a.b) {
-         $$0.c(this.c);
+      $$0.k(this.g);
+      if (this.g == 0 || this.g == 2) {
+         $$0.a(this.e);
+         $$0.a(this.f);
       }
    }
 
-   public void a(wp $$0) {
+   public void a(ws $$0) {
       $$0.a(this);
    }
 
    public String a() {
-      return this.a;
+      return this.d;
    }
 
-   @Nullable
-   public String d() {
-      return this.b;
+   public ti d() {
+      return this.e;
    }
 
    public int e() {
-      return this.c;
+      return this.g;
    }
 
-   public afi.a f() {
-      return this.d;
+   public eik.a f() {
+      return this.f;
    }
 }

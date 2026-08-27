@@ -1,180 +1,167 @@
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonNull;
-import com.google.gson.JsonObject;
-import com.google.gson.LongSerializationPolicy;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 import com.mojang.datafixers.util.Pair;
+import java.io.IOException;
+import java.io.UncheckedIOException;
+import java.nio.file.Path;
 import java.time.Duration;
-import java.util.DoubleSummaryStatistics;
+import java.time.Instant;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.function.BiFunction;
-import java.util.function.Function;
-import java.util.function.ToDoubleFunction;
-import java.util.stream.DoubleStream;
+import java.util.NoSuchElementException;
+import java.util.Spliterators;
+import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
+import javax.annotation.Nullable;
+import jdk.jfr.consumer.RecordedEvent;
+import jdk.jfr.consumer.RecordingFile;
 
 public class bdy {
-   private static final String b = "bytesPerSecond";
-   private static final String c = "count";
-   private static final String d = "durationNanosTotal";
-   private static final String e = "totalBytes";
-   private static final String f = "countPerSecond";
-   final Gson a = new GsonBuilder().setPrettyPrinting().setLongSerializationPolicy(LongSerializationPolicy.DEFAULT).create();
+   private Instant a = Instant.EPOCH;
+   private Instant b = Instant.EPOCH;
+   private final List<bed> c = Lists.newArrayList();
+   private final List<bee> d = Lists.newArrayList();
+   private final Map<beh.b, bdy.a> e = Maps.newHashMap();
+   private final Map<beh.b, bdy.a> f = Maps.newHashMap();
+   private final List<bef> g = Lists.newArrayList();
+   private final List<bef> h = Lists.newArrayList();
+   private int i;
+   private Duration j = Duration.ZERO;
+   private final List<beg> k = Lists.newArrayList();
+   private final List<bei> l = Lists.newArrayList();
+   private final List<bej> m = Lists.newArrayList();
+   @Nullable
+   private Duration n = null;
 
-   public String a(bdw $$0) {
-      JsonObject $$1 = new JsonObject();
-      $$1.addProperty("startedEpoch", $$0.c().toEpochMilli());
-      $$1.addProperty("endedEpoch", $$0.d().toEpochMilli());
-      $$1.addProperty("durationMs", $$0.e().toMillis());
-      Duration $$2 = $$0.f();
-      if ($$2 != null) {
-         $$1.addProperty("worldGenDurationMs", $$2.toMillis());
-      }
-
-      $$1.add("heap", this.a($$0.i()));
-      $$1.add("cpuPercent", this.c($$0.h()));
-      $$1.add("network", this.c($$0));
-      $$1.add("fileIO", this.b($$0));
-      $$1.add("serverTick", this.b($$0.g()));
-      $$1.add("threadAllocation", this.a($$0.j()));
-      $$1.add("chunkGen", this.a($$0.a()));
-      return this.a.toJson($$1);
+   private bdy(Stream<RecordedEvent> $$0) {
+      this.a($$0);
    }
 
-   private JsonElement a(bed.a $$0) {
-      JsonObject $$1 = new JsonObject();
-      $$1.addProperty("allocationRateBytesPerSecond", $$0.e());
-      $$1.addProperty("gcCount", $$0.d());
-      $$1.addProperty("gcOverHeadPercent", $$0.a());
-      $$1.addProperty("gcTotalDurationMs", $$0.c().toMillis());
-      return $$1;
-   }
+   public static bdz a(Path $$0) {
+      try {
+         bdz var4;
+         try (final RecordingFile $$1 = new RecordingFile($$0)) {
+            Iterator<RecordedEvent> $$2 = new Iterator<RecordedEvent>() {
+               @Override
+               public boolean hasNext() {
+                  return $$1.hasMoreEvents();
+               }
 
-   private JsonElement a(List<Pair<dha, bei<bea>>> $$0) {
-      JsonObject $$1 = new JsonObject();
-      $$1.addProperty("durationNanosTotal", $$0.stream().mapToDouble($$0x -> (double)((bei)$$0x.getSecond()).f().toNanos()).sum());
-      JsonArray $$2 = ac.a(new JsonArray(), $$1x -> $$1.add("status", $$1x));
+               public RecordedEvent a() {
+                  if (!this.hasNext()) {
+                     throw new NoSuchElementException();
+                  } else {
+                     try {
+                        return $$1.readEvent();
+                     } catch (IOException var2) {
+                        throw new UncheckedIOException(var2);
+                     }
+                  }
+               }
+            };
+            Stream<RecordedEvent> $$3 = StreamSupport.stream(Spliterators.spliteratorUnknownSize($$2, 1297), false);
+            var4 = new bdy($$3).a();
+         }
 
-      for (Pair<dha, bei<bea>> $$3 : $$0) {
-         bei<bea> $$4 = (bei<bea>)$$3.getSecond();
-         JsonObject $$5 = ac.a(new JsonObject(), $$2::add);
-         $$5.addProperty("state", ((dha)$$3.getFirst()).toString());
-         $$5.addProperty("count", $$4.d());
-         $$5.addProperty("durationNanosTotal", $$4.f().toNanos());
-         $$5.addProperty("durationNanosAvg", $$4.f().toNanos() / (long)$$4.d());
-         JsonObject $$6 = ac.a(new JsonObject(), $$1x -> $$5.add("durationNanosPercentiles", $$1x));
-         $$4.e().forEach(($$1x, $$2x) -> $$6.addProperty("p" + $$1x, $$2x));
-         Function<bea, JsonElement> $$7 = $$0x -> {
-            JsonObject $$1x = new JsonObject();
-            $$1x.addProperty("durationNanos", $$0x.a().toNanos());
-            $$1x.addProperty("level", $$0x.e());
-            $$1x.addProperty("chunkPosX", $$0x.b().e);
-            $$1x.addProperty("chunkPosZ", $$0x.b().f);
-            $$1x.addProperty("worldPosX", $$0x.c().c());
-            $$1x.addProperty("worldPosZ", $$0x.c().d());
-            return $$1x;
-         };
-         $$5.add("fastest", $$7.apply($$4.a()));
-         $$5.add("slowest", $$7.apply($$4.b()));
-         $$5.add("secondSlowest", (JsonElement)($$4.c() != null ? $$7.apply($$4.c()) : JsonNull.INSTANCE));
-      }
-
-      return $$1;
-   }
-
-   private JsonElement a(bef.a $$0) {
-      JsonArray $$1 = new JsonArray();
-      $$0.a().forEach(($$1x, $$2) -> $$1.add(ac.a(new JsonObject(), $$2x -> {
-            $$2x.addProperty("thread", $$1x);
-            $$2x.addProperty("bytesPerSecond", $$2);
-         })));
-      return $$1;
-   }
-
-   private JsonElement b(List<beg> $$0) {
-      if ($$0.isEmpty()) {
-         return JsonNull.INSTANCE;
-      } else {
-         JsonObject $$1 = new JsonObject();
-         double[] $$2 = $$0.stream().mapToDouble($$0x -> (double)$$0x.b().toNanos() / 1000000.0).toArray();
-         DoubleSummaryStatistics $$3 = DoubleStream.of($$2).summaryStatistics();
-         $$1.addProperty("minMs", $$3.getMin());
-         $$1.addProperty("averageMs", $$3.getAverage());
-         $$1.addProperty("maxMs", $$3.getMax());
-         Map<Integer, Double> $$4 = bdo.a($$2);
-         $$4.forEach(($$1x, $$2x) -> $$1.addProperty("p" + $$1x, $$2x));
-         return $$1;
+         return var4;
+      } catch (IOException var7) {
+         throw new UncheckedIOException(var7);
       }
    }
 
-   private JsonElement b(bdw $$0) {
-      JsonObject $$1 = new JsonObject();
-      $$1.add("write", this.a($$0.m()));
-      $$1.add("read", this.a($$0.n()));
-      return $$1;
+   private bdz a() {
+      Duration $$0 = Duration.between(this.a, this.b);
+      return new bdz(
+         this.a,
+         this.b,
+         $$0,
+         this.n,
+         this.m,
+         this.d,
+         beg.a($$0, this.k, this.j, this.i),
+         bei.a(this.l),
+         a($$0, this.e),
+         a($$0, this.f),
+         bef.a($$0, this.g),
+         bef.a($$0, this.h),
+         this.c
+      );
    }
 
-   private JsonElement a(bec.a $$0) {
-      JsonObject $$1 = new JsonObject();
-      $$1.addProperty("totalBytes", $$0.a());
-      $$1.addProperty("count", $$0.c());
-      $$1.addProperty("bytesPerSecond", $$0.b());
-      $$1.addProperty("countPerSecond", $$0.d());
-      JsonArray $$2 = new JsonArray();
-      $$1.add("topContributors", $$2);
-      $$0.f().forEach($$1x -> {
-         JsonObject $$2x = new JsonObject();
-         $$2.add($$2x);
-         $$2x.addProperty("path", (String)$$1x.getFirst());
-         $$2x.addProperty("totalBytes", (Number)$$1x.getSecond());
+   private void a(Stream<RecordedEvent> $$0) {
+      $$0.forEach($$0x -> {
+         if ($$0x.getEndTime().isAfter(this.b) || this.b.equals(Instant.EPOCH)) {
+            this.b = $$0x.getEndTime();
+         }
+
+         if ($$0x.getStartTime().isBefore(this.a) || this.a.equals(Instant.EPOCH)) {
+            this.a = $$0x.getStartTime();
+         }
+
+         String var2 = $$0x.getEventType().getName();
+         switch (var2) {
+            case "minecraft.ChunkGeneration":
+               this.c.add(bed.a($$0x));
+               break;
+            case "minecraft.LoadWorld":
+               this.n = $$0x.getDuration();
+               break;
+            case "minecraft.ServerTickTime":
+               this.m.add(bej.a($$0x));
+               break;
+            case "minecraft.PacketReceived":
+               this.a($$0x, $$0x.getInt("bytes"), this.e);
+               break;
+            case "minecraft.PacketSent":
+               this.a($$0x, $$0x.getInt("bytes"), this.f);
+               break;
+            case "jdk.ThreadAllocationStatistics":
+               this.l.add(bei.a($$0x));
+               break;
+            case "jdk.GCHeapSummary":
+               this.k.add(beg.a($$0x));
+               break;
+            case "jdk.CPULoad":
+               this.d.add(bee.a($$0x));
+               break;
+            case "jdk.FileWrite":
+               this.a($$0x, this.g, "bytesWritten");
+               break;
+            case "jdk.FileRead":
+               this.a($$0x, this.h, "bytesRead");
+               break;
+            case "jdk.GarbageCollection":
+               this.i++;
+               this.j = this.j.plus($$0x.getDuration());
+         }
       });
-      return $$1;
    }
 
-   private JsonElement c(bdw $$0) {
-      JsonObject $$1 = new JsonObject();
-      $$1.add("sent", this.a($$0.l()));
-      $$1.add("received", this.a($$0.k()));
-      return $$1;
+   private void a(RecordedEvent $$0, int $$1, Map<beh.b, bdy.a> $$2) {
+      $$2.computeIfAbsent(beh.b.a($$0), $$0x -> new bdy.a()).a($$1);
    }
 
-   private JsonElement a(bee $$0) {
-      JsonObject $$1 = new JsonObject();
-      $$1.addProperty("totalBytes", $$0.d());
-      $$1.addProperty("count", $$0.c());
-      $$1.addProperty("bytesPerSecond", $$0.b());
-      $$1.addProperty("countPerSecond", $$0.a());
-      JsonArray $$2 = new JsonArray();
-      $$1.add("topContributors", $$2);
-      $$0.e().forEach($$1x -> {
-         JsonObject $$2x = new JsonObject();
-         $$2.add($$2x);
-         bee.b $$3 = (bee.b)$$1x.getFirst();
-         bee.a $$4 = (bee.a)$$1x.getSecond();
-         $$2x.addProperty("protocolId", $$3.c());
-         $$2x.addProperty("packetId", $$3.d());
-         $$2x.addProperty("packetName", $$3.a());
-         $$2x.addProperty("totalBytes", $$4.b());
-         $$2x.addProperty("count", $$4.a());
-      });
-      return $$1;
+   private void a(RecordedEvent $$0, List<bef> $$1, String $$2) {
+      $$1.add(new bef($$0.getDuration(), $$0.getString("path"), $$0.getLong($$2)));
    }
 
-   private JsonElement c(List<beb> $$0) {
-      JsonObject $$1 = new JsonObject();
-      BiFunction<List<beb>, ToDoubleFunction<beb>, JsonObject> $$2 = ($$0x, $$1x) -> {
-         JsonObject $$2x = new JsonObject();
-         DoubleSummaryStatistics $$3 = $$0x.stream().mapToDouble($$1x).summaryStatistics();
-         $$2x.addProperty("min", $$3.getMin());
-         $$2x.addProperty("average", $$3.getAverage());
-         $$2x.addProperty("max", $$3.getMax());
-         return $$2x;
-      };
-      $$1.add("jvm", (JsonElement)$$2.apply($$0, beb::a));
-      $$1.add("userJvm", (JsonElement)$$2.apply($$0, beb::b));
-      $$1.add("system", (JsonElement)$$2.apply($$0, beb::c));
-      return $$1;
+   private static beh a(Duration $$0, Map<beh.b, bdy.a> $$1) {
+      List<Pair<beh.b, beh.a>> $$2 = $$1.entrySet().stream().map($$0x -> Pair.of((beh.b)$$0x.getKey(), ((bdy.a)$$0x.getValue()).a())).toList();
+      return new beh($$0, $$2);
+   }
+
+   public static final class a {
+      private long a;
+      private long b;
+
+      public void a(int $$0) {
+         this.b += (long)$$0;
+         this.a++;
+      }
+
+      public beh.a a() {
+         return new beh.a(this.a, this.b);
+      }
    }
 }

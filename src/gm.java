@@ -1,57 +1,55 @@
-import com.google.gson.JsonObject;
-import com.mojang.brigadier.arguments.FloatArgumentType;
+import com.google.common.collect.Maps;
+import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.suggestion.SuggestionProvider;
+import com.mojang.brigadier.suggestion.Suggestions;
+import com.mojang.brigadier.suggestion.SuggestionsBuilder;
+import java.util.Map;
+import java.util.concurrent.CompletableFuture;
 
-public class gm implements gg<FloatArgumentType, gm.a> {
-   public void a(gm.a $$0, si $$1) {
-      boolean $$2 = $$0.b != -Float.MAX_VALUE;
-      boolean $$3 = $$0.c != Float.MAX_VALUE;
-      $$1.k(gi.a($$2, $$3));
-      if ($$2) {
-         $$1.a($$0.b);
-      }
+public class gm {
+   private static final Map<aeu, SuggestionProvider<dw>> e = Maps.newHashMap();
+   private static final aeu f = new aeu("ask_server");
+   public static final SuggestionProvider<dw> a = a(f, ($$0, $$1) -> ((dw)$$0.getSource()).a($$0));
+   public static final SuggestionProvider<dt> b = a(new aeu("all_recipes"), ($$0, $$1) -> dw.a(((dw)$$0.getSource()).t(), $$1));
+   public static final SuggestionProvider<dt> c = a(new aeu("available_sounds"), ($$0, $$1) -> dw.a(((dw)$$0.getSource()).s(), $$1));
+   public static final SuggestionProvider<dt> d = a(
+      new aeu("summonable_entities"),
+      ($$0, $$1) -> dw.a(jd.h.s().filter($$1x -> $$1x.a(((dw)$$0.getSource()).w()) && $$1x.c()), $$1, bip::a, $$0x -> ti.c(ac.a("entity", bip.a($$0x))))
+   );
 
-      if ($$3) {
-         $$1.a($$0.c);
-      }
-   }
-
-   public gm.a a(si $$0) {
-      byte $$1 = $$0.readByte();
-      float $$2 = gi.a($$1) ? $$0.readFloat() : -Float.MAX_VALUE;
-      float $$3 = gi.b($$1) ? $$0.readFloat() : Float.MAX_VALUE;
-      return new gm.a($$2, $$3);
-   }
-
-   public void a(gm.a $$0, JsonObject $$1) {
-      if ($$0.b != -Float.MAX_VALUE) {
-         $$1.addProperty("min", $$0.b);
-      }
-
-      if ($$0.c != Float.MAX_VALUE) {
-         $$1.addProperty("max", $$0.c);
+   public static <S extends dw> SuggestionProvider<S> a(aeu $$0, SuggestionProvider<dw> $$1) {
+      if (e.containsKey($$0)) {
+         throw new IllegalArgumentException("A command suggestion provider is already registered with the name " + $$0);
+      } else {
+         e.put($$0, $$1);
+         return new gm.a($$0, $$1);
       }
    }
 
-   public gm.a a(FloatArgumentType $$0) {
-      return new gm.a($$0.getMinimum(), $$0.getMaximum());
+   public static SuggestionProvider<dw> a(aeu $$0) {
+      return e.getOrDefault($$0, a);
    }
 
-   public final class a implements gg.a<FloatArgumentType> {
-      final float b;
-      final float c;
+   public static aeu a(SuggestionProvider<dw> $$0) {
+      return $$0 instanceof gm.a ? ((gm.a)$$0).b : f;
+   }
 
-      a(float $$1, float $$2) {
-         this.b = $$1;
-         this.c = $$2;
+   public static SuggestionProvider<dw> b(SuggestionProvider<dw> $$0) {
+      return $$0 instanceof gm.a ? $$0 : a;
+   }
+
+   protected static class a implements SuggestionProvider<dw> {
+      private final SuggestionProvider<dw> a;
+      final aeu b;
+
+      public a(aeu $$0, SuggestionProvider<dw> $$1) {
+         this.a = $$1;
+         this.b = $$0;
       }
 
-      public FloatArgumentType a(dl $$0) {
-         return FloatArgumentType.floatArg(this.b, this.c);
-      }
-
-      @Override
-      public gg<FloatArgumentType, ?> a() {
-         return gm.this;
+      public CompletableFuture<Suggestions> getSuggestions(CommandContext<dw> $$0, SuggestionsBuilder $$1) throws CommandSyntaxException {
+         return this.a.getSuggestions($$0, $$1);
       }
    }
 }

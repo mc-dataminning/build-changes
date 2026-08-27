@@ -1,51 +1,44 @@
-public class cjc extends cis {
-   public cjc(cis.a $$0) {
-      super($$0);
+import java.util.stream.Stream;
+
+public class cjc {
+   public static bgu<cja> a(cpq $$0, cbp $$1, bgs $$2) {
+      $$1.c($$2);
+      return bgu.b($$1.b($$2));
    }
 
-   @Override
-   public bgq a(clh $$0) {
-      cpl $$1 = $$0.q();
-      gu $$2 = $$0.a();
-      dez $$3 = $$1.a_($$2);
-      if ($$3.a(apl.S)) {
-         cbm $$4 = $$0.o();
-         if (!$$1.B && $$4 != null) {
-            a($$4, $$1, $$2);
+   public static cja a(cja $$0, cbp $$1, cja $$2, boolean $$3) {
+      boolean $$4 = $$1.fR().d;
+      if ($$3 && $$4) {
+         if (!$$1.fQ().h($$2)) {
+            $$1.fQ().e($$2);
          }
 
-         return bgq.a($$1.B);
+         return $$0;
       } else {
-         return bgq.d;
-      }
-   }
+         if (!$$4) {
+            $$0.h(1);
+         }
 
-   public static bgq a(cbm $$0, cpl $$1, gu $$2) {
-      bxz $$3 = null;
-      boolean $$4 = false;
-      double $$5 = 7.0;
-      int $$6 = $$2.u();
-      int $$7 = $$2.v();
-      int $$8 = $$2.w();
-
-      for (bja $$10 : $$1.a(
-         bja.class, new egy((double)$$6 - 7.0, (double)$$7 - 7.0, (double)$$8 - 7.0, (double)$$6 + 7.0, (double)$$7 + 7.0, (double)$$8 + 7.0)
-      )) {
-         if ($$10.fP() == $$0) {
-            if ($$3 == null) {
-               $$3 = bxz.b($$1, $$2);
-               $$3.x();
+         if ($$0.b()) {
+            return $$2;
+         } else {
+            if (!$$1.fQ().e($$2)) {
+               $$1.a($$2, false);
             }
 
-            $$10.b($$3, true);
-            $$4 = true;
+            return $$0;
          }
       }
+   }
 
-      if ($$4) {
-         $$1.a(djj.b, $$2, djj.a.a($$0));
+   public static cja a(cja $$0, cbp $$1, cja $$2) {
+      return a($$0, $$1, $$2, true);
+   }
+
+   public static void a(byi $$0, Stream<cja> $$1) {
+      cpq $$2 = $$0.dK();
+      if (!$$2.B) {
+         $$1.forEach($$2x -> $$2.b(new byi($$2, $$0.dp(), $$0.dr(), $$0.dv(), $$2x)));
       }
-
-      return $$4 ? bgq.a : bgq.d;
    }
 }

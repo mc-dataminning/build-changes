@@ -1,47 +1,36 @@
 import com.google.gson.JsonObject;
 import java.util.Optional;
 
-public class db extends cu<db.a> {
-   static final aer a = new aer("tame_animal");
-
-   @Override
-   public aer a() {
-      return a;
-   }
-
-   public db.a a(JsonObject $$0, Optional<ba> $$1, be $$2) {
-      Optional<ba> $$3 = bo.a($$0, "entity", $$2);
+public class db extends cw<db.a> {
+   public db.a a(JsonObject $$0, Optional<bc> $$1, bg $$2) {
+      Optional<bc> $$3 = bq.a($$0, "entity", $$2);
       return new db.a($$1, $$3);
    }
 
-   public void a(akl $$0, buj $$1) {
-      ecg $$2 = bo.b($$0, $$1);
+   public void a(ako $$0, bil $$1) {
+      ecl $$2 = bq.b($$0, $$1);
       this.a($$0, $$1x -> $$1x.a($$2));
    }
 
-   public static class a extends ar {
-      private final Optional<ba> a;
+   public static class a extends at {
+      private final Optional<bc> a;
 
-      public a(Optional<ba> $$0, Optional<ba> $$1) {
-         super(db.a, $$0);
+      public a(Optional<bc> $$0, Optional<bc> $$1) {
+         super($$0);
          this.a = $$1;
       }
 
-      public static db.a d() {
-         return new db.a(Optional.empty(), Optional.empty());
+      public static am<db.a> a(bq.a $$0) {
+         return al.n.a(new db.a(Optional.empty(), Optional.of(bq.a($$0))));
       }
 
-      public static db.a a(Optional<bo> $$0) {
-         return new db.a(Optional.empty(), bo.a($$0));
-      }
-
-      public boolean a(ecg $$0) {
+      public boolean a(ecl $$0) {
          return this.a.isEmpty() || this.a.get().a($$0);
       }
 
       @Override
-      public JsonObject b() {
-         JsonObject $$0 = super.b();
+      public JsonObject a() {
+         JsonObject $$0 = super.a();
          this.a.ifPresent($$1 -> $$0.add("entity", $$1.a()));
          return $$0;
       }

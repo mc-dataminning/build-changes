@@ -1,73 +1,120 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
+public class cfe extends ceg {
+   private final bgm k;
+   private final bwl l;
 
-public class cfe {
-   private final List<cfe.b> a;
-   private final cfe.b b;
+   public cfe(int $$0, cbo $$1, bgm $$2, final bwl $$3) {
+      super(null, $$0);
+      this.k = $$2;
+      this.l = $$3;
+      int $$4 = 3;
+      $$2.d_($$1.m);
+      int $$5 = -18;
+      this.a(new cfy($$2, 0, 8, 18) {
+         @Override
+         public boolean a(cja $$0) {
+            return $$0.a(cjd.mZ) && !this.f() && $$3.g();
+         }
 
-   cfe(List<cfe.b> $$0, cfe.b $$1) {
-      if (!$$0.isEmpty() && !$$1.equals(cfe.b.e)) {
-         this.a = $$0;
-         this.b = $$1;
-      } else {
-         throw new IllegalArgumentException("Need to define both inputSlots and resultSlot");
+         @Override
+         public boolean c() {
+            return $$3.g();
+         }
+      });
+      this.a(new cfy($$2, 1, 8, 36) {
+         @Override
+         public boolean a(cja $$0) {
+            return $$3.l($$0);
+         }
+
+         @Override
+         public boolean c() {
+            return $$3.gJ();
+         }
+
+         @Override
+         public int a() {
+            return 1;
+         }
+      });
+      if (this.a($$3)) {
+         for (int $$6 = 0; $$6 < 3; $$6++) {
+            for (int $$7 = 0; $$7 < ((bwk)$$3).gi(); $$7++) {
+               this.a(new cfy($$2, 2 + $$7 + $$6 * ((bwk)$$3).gi(), 80 + $$7 * 18, 18 + $$6 * 18));
+            }
+         }
+      }
+
+      for (int $$8 = 0; $$8 < 3; $$8++) {
+         for (int $$9 = 0; $$9 < 9; $$9++) {
+            this.a(new cfy($$1, $$9 + $$8 * 9 + 9, 8 + $$9 * 18, 102 + $$8 * 18 + -18));
+         }
+      }
+
+      for (int $$10 = 0; $$10 < 9; $$10++) {
+         this.a(new cfy($$1, $$10, 8 + $$10 * 18, 142));
       }
    }
 
-   public static cfe.a a() {
-      return new cfe.a();
+   @Override
+   public boolean a(cbp $$0) {
+      return !this.l.b(this.k) && this.k.a($$0) && this.l.bv() && this.l.e($$0) < 8.0F;
    }
 
-   public boolean a(int $$0) {
-      return this.a.size() >= $$0;
+   private boolean a(bwl $$0) {
+      return $$0 instanceof bwk && ((bwk)$$0).q();
    }
 
-   public cfe.b b(int $$0) {
-      return this.a.get($$0);
-   }
+   @Override
+   public cja a(cbp $$0, int $$1) {
+      cja $$2 = cja.b;
+      cfy $$3 = this.i.get($$1);
+      if ($$3 != null && $$3.f()) {
+         cja $$4 = $$3.e();
+         $$2 = $$4.p();
+         int $$5 = this.k.b();
+         if ($$1 < $$5) {
+            if (!this.a($$4, $$5, this.i.size(), true)) {
+               return cja.b;
+            }
+         } else if (this.b(1).a($$4) && !this.b(1).f()) {
+            if (!this.a($$4, 1, 2, false)) {
+               return cja.b;
+            }
+         } else if (this.b(0).a($$4)) {
+            if (!this.a($$4, 0, 1, false)) {
+               return cja.b;
+            }
+         } else if ($$5 <= 2 || !this.a($$4, 2, $$5, false)) {
+            int $$7 = $$5 + 27;
+            int $$9 = $$7 + 9;
+            if ($$1 >= $$7 && $$1 < $$9) {
+               if (!this.a($$4, $$5, $$7, false)) {
+                  return cja.b;
+               }
+            } else if ($$1 >= $$5 && $$1 < $$7) {
+               if (!this.a($$4, $$7, $$9, false)) {
+                  return cja.b;
+               }
+            } else if (!this.a($$4, $$7, $$7, false)) {
+               return cja.b;
+            }
 
-   public cfe.b b() {
-      return this.b;
-   }
+            return cja.b;
+         }
 
-   public List<cfe.b> c() {
-      return this.a;
-   }
-
-   public int d() {
-      return this.a.size();
-   }
-
-   public int e() {
-      return this.d();
-   }
-
-   public List<Integer> f() {
-      return this.a.stream().map(cfe.b::a).collect(Collectors.toList());
-   }
-
-   public static class a {
-      private final List<cfe.b> a = new ArrayList<>();
-      private cfe.b b = cfe.b.e;
-
-      public cfe.a a(int $$0, int $$1, int $$2, Predicate<cix> $$3) {
-         this.a.add(new cfe.b($$0, $$1, $$2, $$3));
-         return this;
+         if ($$4.b()) {
+            $$3.d(cja.b);
+         } else {
+            $$3.d();
+         }
       }
 
-      public cfe.a a(int $$0, int $$1, int $$2) {
-         this.b = new cfe.b($$0, $$1, $$2, $$0x -> false);
-         return this;
-      }
-
-      public cfe a() {
-         return new cfe(this.a, this.b);
-      }
+      return $$2;
    }
 
-   public static record b(int a, int b, int c, Predicate<cix> d) {
-      static final cfe.b e = new cfe.b(0, 0, 0, $$0 -> true);
+   @Override
+   public void b(cbp $$0) {
+      super.b($$0);
+      this.k.c($$0);
    }
 }

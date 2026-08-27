@@ -1,20 +1,35 @@
 import javax.annotation.Nullable;
 
-class po {
+public class po extends pn {
+   private final gw a;
+   private final gw b;
+   private final long c;
+
+   public po(String $$0, gw $$1, gw $$2, long $$3) {
+      super($$0);
+      this.a = $$1;
+      this.b = $$2;
+      this.c = $$3;
+   }
+
+   @Override
+   public String getMessage() {
+      String $$0 = this.a.u() + "," + this.a.v() + "," + this.a.w() + " (relative: " + this.b.u() + "," + this.b.v() + "," + this.b.w() + ")";
+      return super.getMessage() + " at " + $$0 + " (t=" + this.c + ")";
+   }
+
    @Nullable
-   public final Long a;
-   public final Runnable b;
-
-   private po(@Nullable Long $$0, Runnable $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public String a() {
+      return super.getMessage();
    }
 
-   static po a(Runnable $$0) {
-      return new po(null, $$0);
+   @Nullable
+   public gw b() {
+      return this.b;
    }
 
-   static po a(long $$0, Runnable $$1) {
-      return new po($$0, $$1);
+   @Nullable
+   public gw c() {
+      return this.a;
    }
 }

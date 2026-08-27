@@ -1,8 +1,13 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface bev {
+   void a();
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface bev {
+   void b();
+
+   void c();
+
+   boolean e();
+
+   bdk f();
+
+   void d();
 }

@@ -1,52 +1,48 @@
-import java.io.DataOutput;
-import java.io.IOException;
-
 public interface rk {
-   int d = 8;
-   int e = 12;
-   int f = 4;
-   int g = 28;
-   byte h = 0;
-   byte i = 1;
-   byte j = 2;
-   byte k = 3;
-   byte l = 4;
-   byte m = 5;
-   byte n = 6;
-   byte o = 7;
-   byte p = 8;
-   byte q = 9;
-   byte r = 10;
-   byte s = 11;
-   byte t = 12;
-   byte u = 99;
-   int v = 512;
+   rk.b a();
 
-   void a(DataOutput var1) throws IOException;
+   rk.b a(String var1);
 
-   @Override
-   String toString();
+   rk.b a(byte var1);
 
-   byte b();
+   rk.b a(short var1);
 
-   rm<?> c();
+   rk.b a(int var1);
 
-   rk d();
+   rk.b a(long var1);
 
-   int a();
+   rk.b a(float var1);
 
-   default String m_() {
-      return new rj().a(this);
+   rk.b a(double var1);
+
+   rk.b a(byte[] var1);
+
+   rk.b a(int[] var1);
+
+   rk.b a(long[] var1);
+
+   rk.b a(rp<?> var1, int var2);
+
+   rk.a a(rp<?> var1);
+
+   rk.a a(rp<?> var1, String var2);
+
+   rk.a b(rp<?> var1, int var2);
+
+   rk.b b();
+
+   rk.b b(rp<?> var1);
+
+   public static enum a {
+      a,
+      b,
+      c,
+      d;
    }
 
-   void a(ro var1);
-
-   rh.b a(rh var1);
-
-   default void b(rh $$0) {
-      rh.b $$1 = $$0.b(this.c());
-      if ($$1 == rh.b.a) {
-         this.a($$0);
-      }
+   public static enum b {
+      a,
+      b,
+      c;
    }
 }

@@ -1,33 +1,131 @@
-public class cxa extends cwe {
-   private static final tf a = tf.c("container.loom");
+public class cxa extends cvg {
+   public static final dfv a = dfu.w;
+   protected static final int b = 6;
+   protected static final int c = 6;
+   protected static final int d = 8;
+   protected static final eib e = csq.a(5.0, 4.0, 10.0, 11.0, 12.0, 16.0);
+   protected static final eib f = csq.a(5.0, 4.0, 0.0, 11.0, 12.0, 6.0);
+   protected static final eib g = csq.a(10.0, 4.0, 5.0, 16.0, 12.0, 11.0);
+   protected static final eib h = csq.a(0.0, 4.0, 5.0, 6.0, 12.0, 11.0);
+   protected static final eib i = csq.a(5.0, 0.0, 4.0, 11.0, 6.0, 12.0);
+   protected static final eib j = csq.a(4.0, 0.0, 5.0, 12.0, 6.0, 11.0);
+   protected static final eib k = csq.a(5.0, 10.0, 4.0, 11.0, 16.0, 12.0);
+   protected static final eib l = csq.a(4.0, 10.0, 5.0, 12.0, 16.0, 11.0);
 
-   protected cxa(dey.d $$0) {
+   protected cxa(dfd.d $$0) {
       super($$0);
+      this.k(this.C.b().a(aC, hc.c).a(a, Boolean.valueOf(false)).a(I, dfp.b));
    }
 
    @Override
-   public bgq a(dez $$0, cpl $$1, gu $$2, cbm $$3, bgp $$4, egz $$5) {
-      if ($$1.B) {
-         return bgq.a;
-      } else {
-         $$3.a($$0.b($$1, $$2));
-         $$3.a(apg.ax);
-         return bgq.b;
+   public eib a(dfe $$0, cow $$1, gw $$2, ehn $$3) {
+      switch ((dfp)$$0.c(I)) {
+         case a:
+            switch ($$0.c(aC).o()) {
+               case a:
+                  return j;
+               case c:
+               default:
+                  return i;
+            }
+         case b:
+            switch ((hc)$$0.c(aC)) {
+               case f:
+                  return h;
+               case e:
+                  return g;
+               case d:
+                  return f;
+               case c:
+               default:
+                  return e;
+            }
+         case c:
+         default:
+            switch ($$0.c(aC).o()) {
+               case a:
+                  return l;
+               case c:
+               default:
+                  return k;
+            }
       }
    }
 
    @Override
-   public bgt b(dez $$0, cpl $$1, gu $$2) {
-      return new bgy(($$2x, $$3, $$4) -> new cfg($$2x, $$3, ceo.a($$1, $$2)), a);
+   public bgt a(dfe $$0, cpq $$1, gw $$2, cbp $$3, bgs $$4, ehe $$5) {
+      if ($$1.B) {
+         dfe $$6 = $$0.a(a);
+         if ($$6.c(a)) {
+            a($$6, $$1, $$2, 1.0F);
+         }
+
+         return bgt.a;
+      } else {
+         dfe $$7 = this.d($$0, $$1, $$2);
+         float $$8 = $$7.c(a) ? 0.6F : 0.5F;
+         $$1.a(null, $$2, aoz.ms, apa.e, 0.3F, $$8);
+         $$1.a($$3, $$7.c(a) ? djo.a : djo.e, $$2);
+         return bgt.b;
+      }
+   }
+
+   public dfe d(dfe $$0, cpq $$1, gw $$2) {
+      $$0 = $$0.a(a);
+      $$1.a($$2, $$0, 3);
+      this.e($$0, $$1, $$2);
+      return $$0;
+   }
+
+   private static void a(dfe $$0, cpr $$1, gw $$2, float $$3) {
+      hc $$4 = $$0.c(aC).g();
+      hc $$5 = h($$0).g();
+      double $$6 = (double)$$2.u() + 0.5 + 0.1 * (double)$$4.j() + 0.2 * (double)$$5.j();
+      double $$7 = (double)$$2.v() + 0.5 + 0.1 * (double)$$4.k() + 0.2 * (double)$$5.k();
+      double $$8 = (double)$$2.w() + 0.5 + 0.1 * (double)$$4.l() + 0.2 * (double)$$5.l();
+      $$1.a(new ir(ir.a, $$3), $$6, $$7, $$8, 0.0, 0.0, 0.0);
    }
 
    @Override
-   public dez a(clf $$0) {
-      return this.n().a(aC, $$0.g().g());
+   public void a(dfe $$0, cpq $$1, gw $$2, arx $$3) {
+      if ($$0.c(a) && $$3.i() < 0.25F) {
+         a($$0, $$1, $$2, 0.5F);
+      }
    }
 
    @Override
-   protected void a(dfa.a<csl, dez> $$0) {
-      $$0.a(aC);
+   public void a(dfe $$0, cpq $$1, gw $$2, dfe $$3, boolean $$4) {
+      if (!$$4 && !$$0.a($$3.b())) {
+         if ($$0.c(a)) {
+            this.e($$0, $$1, $$2);
+         }
+
+         super.a($$0, $$1, $$2, $$3, $$4);
+      }
+   }
+
+   @Override
+   public int a(dfe $$0, cow $$1, gw $$2, hc $$3) {
+      return $$0.c(a) ? 15 : 0;
+   }
+
+   @Override
+   public int b(dfe $$0, cow $$1, gw $$2, hc $$3) {
+      return $$0.c(a) && h($$0) == $$3 ? 15 : 0;
+   }
+
+   @Override
+   public boolean f_(dfe $$0) {
+      return true;
+   }
+
+   private void e(dfe $$0, cpq $$1, gw $$2) {
+      $$1.a($$2, this);
+      $$1.a($$2.a(h($$0).g()), this);
+   }
+
+   @Override
+   protected void a(dff.a<csq, dfe> $$0) {
+      $$0.a(I, aC, a);
    }
 }

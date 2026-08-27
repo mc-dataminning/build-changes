@@ -1,120 +1,59 @@
 import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import java.util.List;
-import java.util.Optional;
-import java.util.function.Function;
 
-public class dwe extends dwf {
-   private static final Codec<Either<aer, dyr>> a = Codec.of(dwe::a, aer.a.map(Either::left));
-   public static final Codec<dwe> b = RecordCodecBuilder.create($$0 -> $$0.group(c(), b(), d()).apply($$0, dwe::new));
-   protected final Either<aer, dyr> c;
-   protected final he<dyp> d;
+public class dwe extends dwk {
+   public static final Codec<dwe> a = RecordCodecBuilder.create($$0 -> $$0.group(duh.b.fieldOf("feature").forGetter($$0x -> $$0x.b), d()).apply($$0, dwe::new));
+   private final hg<duh> b;
+   private final qu c;
 
-   private static <T> DataResult<T> a(Either<aer, dyr> $$0, DynamicOps<T> $$1, T $$2) {
-      Optional<aer> $$3 = $$0.left();
-      return $$3.isEmpty() ? DataResult.error(() -> "Can not serialize a runtime pool element") : aer.a.encode($$3.get(), $$1, $$2);
+   protected dwe(hg<duh> $$0, dwm.a $$1) {
+      super($$1);
+      this.b = $$0;
+      this.c = this.b();
    }
 
-   protected static <E extends dwe> RecordCodecBuilder<E, he<dyp>> b() {
-      return dyq.d.fieldOf("processors").forGetter($$0 -> $$0.d);
-   }
-
-   protected static <E extends dwe> RecordCodecBuilder<E, Either<aer, dyr>> c() {
-      return a.fieldOf("location").forGetter($$0 -> $$0.c);
-   }
-
-   protected dwe(Either<aer, dyr> $$0, he<dyp> $$1, dwh.a $$2) {
-      super($$2);
-      this.c = $$0;
-      this.d = $$1;
+   private qu b() {
+      qu $$0 = new qu();
+      $$0.a("name", "minecraft:bottom");
+      $$0.a("final_state", "minecraft:air");
+      $$0.a("pool", "minecraft:empty");
+      $$0.a("target", "minecraft:empty");
+      $$0.a("joint", ddp.a.a.c());
+      return $$0;
    }
 
    @Override
-   public hz a(dys $$0, cyx $$1) {
-      dyr $$2 = this.a($$0);
-      return $$2.a($$1);
-   }
-
-   private dyr a(dys $$0) {
-      return (dyr)this.c.map($$0::a, Function.identity());
-   }
-
-   public List<dyr.c> a(dys $$0, gu $$1, cyx $$2, boolean $$3) {
-      dyr $$4 = this.a($$0);
-      List<dyr.c> $$5 = $$4.a($$1, new dyn().a($$2), csm.pa, $$3);
-      List<dyr.c> $$6 = Lists.newArrayList();
-
-      for (dyr.c $$7 : $$5) {
-         qr $$8 = $$7.c();
-         if ($$8 != null) {
-            dgj $$9 = dgj.valueOf($$8.l("mode"));
-            if ($$9 == dgj.d) {
-               $$6.add($$7);
-            }
-         }
-      }
-
-      return $$6;
+   public ib a(dyx $$0, czc $$1) {
+      return ib.g;
    }
 
    @Override
-   public List<dyr.c> a(dys $$0, gu $$1, cyx $$2, aru $$3) {
-      dyr $$4 = this.a($$0);
-      ObjectArrayList<dyr.c> $$5 = $$4.a($$1, new dyn().a($$2), csm.pb, true);
-      ac.b($$5, $$3);
-      return $$5;
+   public List<dyw.c> a(dyx $$0, gw $$1, czc $$2, arx $$3) {
+      List<dyw.c> $$4 = Lists.newArrayList();
+      $$4.add(new dyw.c($$1, csr.pb.n().a(cwp.a, he.a(hc.a, hc.d)), this.c));
+      return $$4;
    }
 
    @Override
-   public duq a(dys $$0, gu $$1, cyx $$2) {
-      dyr $$3 = this.a($$0);
-      return $$3.b(new dyn().a($$2), $$1);
+   public duv a(dyx $$0, gw $$1, czc $$2) {
+      ib $$3 = this.a($$0, $$2);
+      return new duv($$1.u(), $$1.v(), $$1.w(), $$1.u() + $$3.u(), $$1.v() + $$3.v(), $$1.w() + $$3.w());
    }
 
    @Override
-   public boolean a(dys $$0, cqf $$1, cqd $$2, dgw $$3, gu $$4, gu $$5, cyx $$6, duq $$7, aru $$8, boolean $$9) {
-      dyr $$10 = this.a($$0);
-      dyn $$11 = this.a($$6, $$7, $$9);
-      if (!$$10.a($$1, $$4, $$5, $$11, $$8, 18)) {
-         return false;
-      } else {
-         for (dyr.c $$13 : dyr.a($$1, $$4, $$5, $$11, this.a($$0, $$4, $$6, false))) {
-            this.a($$1, $$13, $$4, $$6, $$8, $$7);
-         }
-
-         return true;
-      }
-   }
-
-   protected dyn a(cyx $$0, duq $$1, boolean $$2) {
-      dyn $$3 = new dyn();
-      $$3.a($$1);
-      $$3.a($$0);
-      $$3.c(true);
-      $$3.a(false);
-      $$3.a(dxt.b);
-      $$3.d(true);
-      if (!$$2) {
-         $$3.a(dxz.b);
-      }
-
-      this.d.a().a().forEach($$3::a);
-      this.e().b().forEach($$3::a);
-      return $$3;
+   public boolean a(dyx $$0, cqk $$1, cqi $$2, dhb $$3, gw $$4, gw $$5, czc $$6, duv $$7, arx $$8, boolean $$9) {
+      return this.b.a().a($$1, $$3, $$8, $$4);
    }
 
    @Override
-   public dwg<?> a() {
-      return dwg.a;
+   public dwl<?> a() {
+      return dwl.c;
    }
 
    @Override
    public String toString() {
-      return "Single[" + this.c + "]";
+      return "Feature[" + this.b + "]";
    }
 }

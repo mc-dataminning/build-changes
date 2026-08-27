@@ -1,44 +1,34 @@
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public class ack implements ux<aaw> {
-   private final int a;
-   private final String b;
-   private final boolean c;
+public class ack implements va<aaz> {
+   private final Optional<bhw> a;
+   private final Optional<bhw> b;
 
-   public ack(int $$0, String $$1, boolean $$2) {
+   public ack(Optional<bhw> $$0, Optional<bhw> $$1) {
       this.a = $$0;
       this.b = $$1;
-      this.c = $$2;
    }
 
-   public ack(si $$0) {
-      this.a = $$0.m();
-      this.b = $$0.r();
-      this.c = $$0.readBoolean();
+   public ack(sl $$0) {
+      this.a = $$0.b((sl.a<bhw>)($$0x -> $$0x.a(jd.e)));
+      this.b = $$0.b((sl.a<bhw>)($$0x -> $$0x.a(jd.e)));
    }
 
    @Override
-   public void a(si $$0) {
-      $$0.c(this.a);
-      $$0.a(this.b);
-      $$0.a(this.c);
+   public void a(sl $$0) {
+      $$0.a(this.a, ($$0x, $$1) -> $$0x.a(jd.e, $$1));
+      $$0.a(this.b, ($$0x, $$1) -> $$0x.a(jd.e, $$1));
    }
 
-   public void a(aaw $$0) {
+   public void a(aaz $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public col a(cpl $$0) {
-      bii $$1 = $$0.a(this.a);
-      return $$1 instanceof cdl ? ((cdl)$$1).A() : null;
+   public Optional<bhw> a() {
+      return this.a;
    }
 
-   public String a() {
+   public Optional<bhw> d() {
       return this.b;
-   }
-
-   public boolean d() {
-      return this.c;
    }
 }

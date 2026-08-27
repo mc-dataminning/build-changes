@@ -1,15 +1,18 @@
-public enum bhu {
-   a(n.j),
-   b(n.m),
-   c(n.j);
-
-   private final n d;
-
-   private bhu(n $$0) {
-      this.d = $$0;
+class bhu extends bhw {
+   protected bhu(bhx $$0, int $$1) {
+      super($$0, $$1);
    }
 
-   public n a() {
-      return this.d;
+   @Override
+   public void a(bjb $$0, int $$1) {
+      super.a($$0, $$1);
+      if ($$0 instanceof cbp $$2) {
+         $$2.A(0.005F * (float)($$1 + 1));
+      }
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1) {
+      return true;
    }
 }

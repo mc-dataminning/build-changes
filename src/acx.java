@@ -1,8 +1,8 @@
-public interface acx extends aax {
-   @Override
-   default sh b() {
-      return sh.a;
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   void a(acw var1);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface acx {
 }

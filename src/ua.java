@@ -1,73 +1,71 @@
-import com.mojang.logging.LogUtils;
-import java.util.function.BooleanSupplier;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.google.common.primitives.Ints;
+import com.google.common.primitives.Longs;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.nio.charset.StandardCharsets;
+import java.security.SignatureException;
+import java.time.Instant;
+import java.util.Optional;
 
-@FunctionalInterface
-public interface ua {
-   Logger a = LogUtils.getLogger();
-   ua b = $$0 -> {
-      if ($$0.h()) {
-         a.error("Received chat message with signature from {}, but they have no chat session initialized", $$0.f());
-         return false;
-      } else {
-         return true;
-      }
-   };
-   ua c = $$0 -> {
-      a.error("Received chat message from {}, but they have no chat session initialized and secure chat is enforced", $$0.f());
-      return false;
-   };
+public record ua(String b, Instant c, long d, to e) {
+   public static final MapCodec<ua> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.STRING.fieldOf("content").forGetter(ua::a),
+               arb.m.fieldOf("time_stamp").forGetter(ua::b),
+               Codec.LONG.fieldOf("salt").forGetter(ua::c),
+               to.a.optionalFieldOf("last_seen", to.b).forGetter(ua::d)
+            )
+            .apply($$0, ua::new)
+   );
 
-   boolean updateAndValidate(tu var1);
+   public static ua a(String $$0) {
+      return new ua($$0, Instant.now(), 0L, to.b);
+   }
 
-   public static class a implements ua {
-      private final arz d;
-      private final BooleanSupplier e;
-      @Nullable
-      private tu f;
-      private boolean g = true;
+   public void a(asb.a $$0) throws SignatureException {
+      $$0.update(Longs.toByteArray(this.d));
+      $$0.update(Longs.toByteArray(this.c.getEpochSecond()));
+      byte[] $$1 = this.b.getBytes(StandardCharsets.UTF_8);
+      $$0.update(Ints.toByteArray($$1.length));
+      $$0.update($$1);
+      this.e.a($$0);
+   }
 
-      public a(arz $$0, BooleanSupplier $$1) {
-         this.d = $$0;
-         this.e = $$1;
-      }
+   public ua.a a(tu $$0) {
+      return new ua.a(this.b, this.c, this.d, this.e.a($$0));
+   }
 
-      private boolean a(tu $$0) {
-         if ($$0.equals(this.f)) {
-            return true;
-         } else if (this.f != null && !$$0.j().a(this.f.j())) {
-            a.error(
-               "Received out-of-order chat message from {}: expected index > {} for session {}, but was {} for session {}",
-               new Object[]{$$0.f(), this.f.j().b(), this.f.j().d(), $$0.j().b(), $$0.j().d()}
-            );
-            return false;
-         } else {
-            return true;
-         }
-      }
+   public String a() {
+      return this.b;
+   }
 
-      private boolean b(tu $$0) {
-         if (this.e.getAsBoolean()) {
-            a.error("Received message from player with expired profile public key: {}", $$0);
-            return false;
-         } else if (!$$0.a(this.d)) {
-            a.error("Received message with invalid signature from {}", $$0.f());
-            return false;
-         } else {
-            return this.a($$0);
-         }
+   public Instant b() {
+      return this.c;
+   }
+
+   public long c() {
+      return this.d;
+   }
+
+   public to d() {
+      return this.e;
+   }
+
+   public static record a(String a, Instant b, long c, to.a d) {
+      public a(sl $$0) {
+         this($$0.d(256), $$0.v(), $$0.readLong(), new to.a($$0));
       }
 
-      @Override
-      public boolean updateAndValidate(tu $$0) {
-         this.g = this.g && this.b($$0);
-         if (!this.g) {
-            return false;
-         } else {
-            this.f = $$0;
-            return true;
-         }
+      public void a(sl $$0) {
+         $$0.a(this.a, 256);
+         $$0.a(this.b);
+         $$0.b(this.c);
+         this.d.a($$0);
+      }
+
+      public Optional<ua> a(tu $$0) {
+         return this.d.a($$0).map($$0x -> new ua(this.a, this.b, this.c, $$0x));
       }
    }
 }

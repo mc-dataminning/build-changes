@@ -1,63 +1,61 @@
-import java.lang.reflect.Constructor;
-import java.util.Arrays;
+public class bxp extends bxf {
+   private static final int b = 100;
+   private static final int c = 10;
+   private static final int d = 20;
+   private static final int e = 150;
+   private static final btn f = btn.a().a(150.0);
+   private final btn g;
+   private int h;
 
-public class bxp<T extends bxj> {
-   private static bxp<?>[] l = new bxp[0];
-   public static final bxp<bxf> a = a(bxf.class, "HoldingPattern");
-   public static final bxp<bxn> b = a(bxn.class, "StrafePlayer");
-   public static final bxp<bxh> c = a(bxh.class, "LandingApproach");
-   public static final bxp<bxi> d = a(bxi.class, "Landing");
-   public static final bxp<bxo> e = a(bxo.class, "Takeoff");
-   public static final bxp<bxl> f = a(bxl.class, "SittingFlaming");
-   public static final bxp<bxm> g = a(bxm.class, "SittingScanning");
-   public static final bxp<bxk> h = a(bxk.class, "SittingAttacking");
-   public static final bxp<bxd> i = a(bxd.class, "ChargingPlayer");
-   public static final bxp<bxe> j = a(bxe.class, "Dying");
-   public static final bxp<bxg> k = a(bxg.class, "Hover");
-   private final Class<? extends bxj> m;
-   private final int n;
-   private final String o;
-
-   private bxp(int $$0, Class<? extends bxj> $$1, String $$2) {
-      this.n = $$0;
-      this.m = $$1;
-      this.o = $$2;
-   }
-
-   public bxj a(bwz $$0) {
-      try {
-         Constructor<? extends bxj> $$1 = this.a();
-         return $$1.newInstance($$0);
-      } catch (Exception var3) {
-         throw new Error(var3);
-      }
-   }
-
-   protected Constructor<? extends bxj> a() throws NoSuchMethodException {
-      return this.m.getConstructor(bwz.class);
-   }
-
-   public int b() {
-      return this.n;
+   public bxp(bxc $$0) {
+      super($$0);
+      this.g = btn.a().a(20.0).a($$1 -> Math.abs($$1.dr() - $$0.dr()) <= 10.0);
    }
 
    @Override
-   public String toString() {
-      return this.o + " (#" + this.n + ")";
+   public void c() {
+      this.h++;
+      bjb $$0 = this.a.dK().a(this.g, this.a, this.a.dp(), this.a.dr(), this.a.dv());
+      if ($$0 != null) {
+         if (this.h > 25) {
+            this.a.fX().a(bxs.h);
+         } else {
+            ehi $$1 = new ehi($$0.dp() - this.a.dp(), 0.0, $$0.dv() - this.a.dv()).d();
+            ehi $$2 = new ehi((double)ars.a(this.a.dA() * (float) (Math.PI / 180.0)), 0.0, (double)(-ars.b(this.a.dA() * (float) (Math.PI / 180.0)))).d();
+            float $$3 = (float)$$2.b($$1);
+            float $$4 = (float)(Math.acos((double)$$3) * 180.0F / (float)Math.PI) + 0.5F;
+            if ($$4 < 0.0F || $$4 > 10.0F) {
+               double $$5 = $$0.dp() - this.a.e.dp();
+               double $$6 = $$0.dv() - this.a.e.dv();
+               double $$7 = ars.a(ars.d(180.0 - ars.d($$5, $$6) * 180.0F / (float)Math.PI - (double)this.a.dA()), -100.0, 100.0);
+               this.a.bW *= 0.8F;
+               float $$8 = (float)Math.sqrt($$5 * $$5 + $$6 * $$6) + 1.0F;
+               float $$9 = $$8;
+               if ($$8 > 40.0F) {
+                  $$8 = 40.0F;
+               }
+
+               this.a.bW += (float)$$7 * (0.7F / $$8 / $$9);
+               this.a.r(this.a.dA() + this.a.bW);
+            }
+         }
+      } else if (this.h >= 100) {
+         $$0 = this.a.dK().a(f, this.a, this.a.dp(), this.a.dr(), this.a.dv());
+         this.a.fX().a(bxs.e);
+         if ($$0 != null) {
+            this.a.fX().a(bxs.i);
+            this.a.fX().b(bxs.i).a(new ehi($$0.dp(), $$0.dr(), $$0.dv()));
+         }
+      }
    }
 
-   public static bxp<?> a(int $$0) {
-      return $$0 >= 0 && $$0 < l.length ? l[$$0] : a;
+   @Override
+   public void d() {
+      this.h = 0;
    }
 
-   public static int c() {
-      return l.length;
-   }
-
-   private static <T extends bxj> bxp<T> a(Class<T> $$0, String $$1) {
-      bxp<T> $$2 = new bxp<>(l.length, $$0, $$1);
-      l = Arrays.copyOf(l, l.length + 1);
-      l[$$2.b()] = $$2;
-      return $$2;
+   @Override
+   public bxs<bxp> i() {
+      return bxs.g;
    }
 }

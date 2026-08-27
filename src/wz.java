@@ -1,36 +1,40 @@
-public class wz implements ux<wp> {
-   private final gu a;
-   private final dez b;
+public class wz implements va<ws> {
+   private final int a;
+   private final gw b;
+   private final int c;
 
-   public wz(gu $$0, dez $$1) {
+   public wz(int $$0, gw $$1, int $$2) {
       this.a = $$0;
       this.b = $$1;
+      this.c = $$2;
    }
 
-   public wz(cor $$0, gu $$1) {
-      this($$1, $$0.a_($$1));
-   }
-
-   public wz(si $$0) {
-      this.a = $$0.e();
-      this.b = $$0.a(csl.o);
+   public wz(sl $$0) {
+      this.a = $$0.m();
+      this.b = $$0.e();
+      this.c = $$0.readUnsignedByte();
    }
 
    @Override
-   public void a(si $$0) {
-      $$0.a(this.a);
-      $$0.a(csl.o, this.b);
+   public void a(sl $$0) {
+      $$0.c(this.a);
+      $$0.a(this.b);
+      $$0.k(this.c);
    }
 
-   public void a(wp $$0) {
+   public void a(ws $$0) {
       $$0.a(this);
    }
 
-   public dez a() {
+   public int a() {
+      return this.a;
+   }
+
+   public gw d() {
       return this.b;
    }
 
-   public gu d() {
-      return this.a;
+   public int e() {
+      return this.c;
    }
 }

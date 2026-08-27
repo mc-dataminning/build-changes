@@ -1,60 +1,117 @@
-import java.util.List;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class czz extends cry {
-   protected czz(dey.d $$0) {
+public class czz extends csq {
+   public static final int a = 8;
+   public static final dge b = dfu.aF;
+   protected static final eib[] c = new eib[]{
+      ehy.a(),
+      csq.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0),
+      csq.a(0.0, 0.0, 0.0, 16.0, 4.0, 16.0),
+      csq.a(0.0, 0.0, 0.0, 16.0, 6.0, 16.0),
+      csq.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0),
+      csq.a(0.0, 0.0, 0.0, 16.0, 10.0, 16.0),
+      csq.a(0.0, 0.0, 0.0, 16.0, 12.0, 16.0),
+      csq.a(0.0, 0.0, 0.0, 16.0, 14.0, 16.0),
+      csq.a(0.0, 0.0, 0.0, 16.0, 16.0, 16.0)
+   };
+   public static final int d = 5;
+
+   protected czz(dfd.d $$0) {
       super($$0);
+      this.k(this.C.b().a(b, Integer.valueOf(1)));
    }
 
    @Override
-   public dcl a(gu $$0, dez $$1) {
-      return new ddx($$0, $$1);
+   public boolean a(dfe $$0, cow $$1, gw $$2, eax $$3) {
+      switch ($$3) {
+         case a:
+            return $$0.c(b) < 5;
+         case b:
+            return false;
+         case c:
+            return false;
+         default:
+            return false;
+      }
+   }
+
+   @Override
+   public eib a(dfe $$0, cow $$1, gw $$2, ehn $$3) {
+      return c[$$0.c(b)];
+   }
+
+   @Override
+   public eib c(dfe $$0, cow $$1, gw $$2, ehn $$3) {
+      return c[$$0.c(b) - 1];
+   }
+
+   @Override
+   public eib b_(dfe $$0, cow $$1, gw $$2) {
+      return c[$$0.c(b)];
+   }
+
+   @Override
+   public eib b(dfe $$0, cow $$1, gw $$2, ehn $$3) {
+      return c[$$0.c(b)];
+   }
+
+   @Override
+   public boolean g_(dfe $$0) {
+      return true;
+   }
+
+   @Override
+   public float b(dfe $$0, cow $$1, gw $$2) {
+      return $$0.c(b) == 8 ? 0.2F : 1.0F;
+   }
+
+   @Override
+   public boolean a(dfe $$0, cpt $$1, gw $$2) {
+      dfe $$3 = $$1.a_($$2.d());
+      if ($$3.a(apo.cg)) {
+         return false;
+      } else {
+         return $$3.a(apo.ch) ? true : csq.a($$3.k($$1, $$2.d()), hc.b) || $$3.a(this) && $$3.c(b) == 8;
+      }
+   }
+
+   @Override
+   public dfe a(dfe $$0, hc $$1, dfe $$2, cpr $$3, gw $$4, gw $$5) {
+      return !$$0.a($$3, $$4) ? csr.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   public void b(dfe $$0, akn $$1, gw $$2, arx $$3) {
+      if ($$1.a(cpz.b, $$2) > 11) {
+         c($$0, $$1, $$2);
+         $$1.a($$2, false);
+      }
+   }
+
+   @Override
+   public boolean a(dfe $$0, cli $$1) {
+      int $$2 = $$0.c(b);
+      if (!$$1.n().a(this.k()) || $$2 >= 8) {
+         return $$2 == 1;
+      } else {
+         return $$1.c() ? $$1.k() == hc.b : true;
+      }
    }
 
    @Nullable
    @Override
-   public <T extends dcl> dcm<T> a(cpl $$0, dez $$1, dcn<T> $$2) {
-      return a($$2, dcn.j, $$0.B ? ddx::a : ddx::b);
-   }
-
-   @Override
-   public void a(dez $$0, akk $$1, gu $$2, cix $$3, boolean $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      if ($$4) {
-         int $$5 = 15 + $$1.z.a(15) + $$1.z.a(15);
-         this.a($$1, $$2, $$5);
-      }
-   }
-
-   @Override
-   public cyq b_(dez $$0) {
-      return cyq.c;
-   }
-
-   @Override
-   public void a(cix $$0, @Nullable cor $$1, List<tf> $$2, cko $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      Optional<tf> $$4 = this.a($$0);
-      if ($$4.isPresent()) {
-         $$2.add($$4.get());
+   public dfe a(cli $$0) {
+      dfe $$1 = $$0.q().a_($$0.a());
+      if ($$1.a(this)) {
+         int $$2 = $$1.c(b);
+         return $$1.a(b, Integer.valueOf(Math.min(8, $$2 + 1)));
       } else {
-         $$2.add(te.a);
-         $$2.add(tf.c("block.minecraft.spawner.desc1").a(n.h));
-         $$2.add(te.a().b(tf.c("block.minecraft.spawner.desc2").a(n.j)));
+         return super.a($$0);
       }
    }
 
-   private Optional<tf> a(cix $$0) {
-      qr $$1 = cgq.a($$0);
-      if ($$1 != null && $$1.b("SpawnData", 10)) {
-         String $$2 = $$1.p("SpawnData").p("entity").l("id");
-         aer $$3 = aer.a($$2);
-         if ($$3 != null) {
-            return jb.h.b($$3).map($$0x -> tf.c($$0x.g()).a(n.h));
-         }
-      }
-
-      return Optional.empty();
+   @Override
+   protected void a(dff.a<csq, dfe> $$0) {
+      $$0.a(b);
    }
 }

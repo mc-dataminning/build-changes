@@ -1,53 +1,40 @@
-import java.util.function.Function;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import java.util.Map;
 
-public class wx implements ux<wp> {
-   private final gu a;
-   private final dcn<?> b;
-   @Nullable
-   private final qr c;
+public class wx implements va<ws> {
+   private final Object2IntMap<apg<?>> a;
 
-   public static wx a(dcl $$0, Function<dcl, qr> $$1) {
-      return new wx($$0.p(), $$0.u(), $$1.apply($$0));
-   }
-
-   public static wx a(dcl $$0) {
-      return a($$0, dcl::an_);
-   }
-
-   private wx(gu $$0, dcn<?> $$1, qr $$2) {
+   public wx(Object2IntMap<apg<?>> $$0) {
       this.a = $$0;
-      this.b = $$1;
-      this.c = $$2.g() ? null : $$2;
    }
 
-   public wx(si $$0) {
-      this.a = $$0.e();
-      this.b = $$0.a(jb.l);
-      this.c = $$0.p();
+   public wx(sl $$0) {
+      this.a = $$0.a(Object2IntOpenHashMap::new, $$1 -> {
+         api<?> $$2 = $$1.a(jd.y);
+         return a($$0, $$2);
+      }, sl::m);
    }
 
-   @Override
-   public void a(si $$0) {
-      $$0.a(this.a);
-      $$0.a(jb.l, this.b);
-      $$0.a((rk)this.c);
+   private static <T> apg<T> a(sl $$0, api<T> $$1) {
+      return $$1.b($$0.a($$1.a()));
    }
 
-   public void a(wp $$0) {
+   public void a(ws $$0) {
       $$0.a(this);
    }
 
-   public gu a() {
+   @Override
+   public void a(sl $$0) {
+      $$0.a(this.a, wx::a, sl::c);
+   }
+
+   private static <T> void a(sl $$0, apg<T> $$1) {
+      $$0.a(jd.y, $$1.a());
+      $$0.a($$1.a().a(), $$1.b());
+   }
+
+   public Map<apg<?>, Integer> a() {
       return this.a;
-   }
-
-   public dcn<?> d() {
-      return this.b;
-   }
-
-   @Nullable
-   public qr e() {
-      return this.c;
    }
 }

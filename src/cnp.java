@@ -1,20 +1,20 @@
-public class cnp extends cne {
-   public cnp(cne.a $$0, bin... $$1) {
-      super($$0, cnf.m, $$1);
+public class cnp extends cnj {
+   protected cnp(cnj.a $$0, cnk $$1, biq... $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
    public int a(int $$0) {
-      return 20;
+      return 15 + ($$0 - 1) * 9;
    }
 
    @Override
    public int b(int $$0) {
-      return 50;
+      return super.a($$0) + 50;
    }
 
    @Override
-   public boolean a(cne $$0) {
-      return super.a($$0) && $$0 != cni.K;
+   public int a() {
+      return 3;
    }
 }

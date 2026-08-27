@@ -1,166 +1,74 @@
+import it.unimi.dsi.fastutil.ints.IntRBTreeSet;
+import it.unimi.dsi.fastutil.ints.IntSortedSet;
+import java.util.List;
+
 public class dzm {
-   private static final int b = 16;
-   public static final int a = Integer.MIN_VALUE;
-   private final int c;
-   private final aqi d;
-   private final gu.a e = new gu.a();
-   private final gu.a f = new gu.a();
+   private final dzn[] a;
+   private final double b;
+   private final double c;
 
-   public dzm(cpn $$0) {
-      this.c = $$0.C_() - 1;
-      int $$1 = $$0.aj();
-      int $$2 = arp.e($$1 - this.c + 1);
-      this.d = new asb($$2, 256);
+   public dzm(arx $$0, List<Integer> $$1) {
+      this($$0, new IntRBTreeSet($$1));
    }
 
-   public void a(dgv $$0) {
-      int $$1 = $$0.a();
-      if ($$1 == -1) {
-         this.a(this.c);
+   private dzm(arx $$0, IntSortedSet $$1) {
+      if ($$1.isEmpty()) {
+         throw new IllegalArgumentException("Need some octaves!");
       } else {
-         for (int $$2 = 0; $$2 < 16; $$2++) {
-            for (int $$3 = 0; $$3 < 16; $$3++) {
-               int $$4 = Math.max(this.a($$0, $$1, $$3, $$2), this.c);
-               this.b(c($$3, $$2), $$4);
-            }
-         }
-      }
-   }
-
-   private int a(dgv $$0, int $$1, int $$2, int $$3) {
-      int $$4 = hx.c($$0.g($$1) + 1);
-      gu.a $$5 = this.e.d($$2, $$4, $$3);
-      gu.a $$6 = this.f.a($$5, ha.a);
-      dez $$7 = csm.a.n();
-
-      for (int $$8 = $$1; $$8 >= 0; $$8--) {
-         dhh $$9 = $$0.b($$8);
-         if ($$9.c()) {
-            $$7 = csm.a.n();
-            int $$10 = $$0.g($$8);
-            $$5.q(hx.c($$10));
-            $$6.q($$5.v() - 1);
+         int $$2 = -$$1.firstInt();
+         int $$3 = $$1.lastInt();
+         int $$4 = $$2 + $$3 + 1;
+         if ($$4 < 1) {
+            throw new IllegalArgumentException("Total number of octaves needs to be >= 1");
          } else {
-            for (int $$11 = 15; $$11 >= 0; $$11--) {
-               dez $$12 = $$9.a($$2, $$11, $$3);
-               if (a($$0, $$5, $$7, $$6, $$12)) {
-                  return $$5.v();
+            dzn $$5 = new dzn($$0);
+            int $$6 = $$3;
+            this.a = new dzn[$$4];
+            if ($$3 >= 0 && $$3 < $$4 && $$1.contains(0)) {
+               this.a[$$3] = $$5;
+            }
+
+            for (int $$7 = $$3 + 1; $$7 < $$4; $$7++) {
+               if ($$7 >= 0 && $$1.contains($$6 - $$7)) {
+                  this.a[$$7] = new dzn($$0);
+               } else {
+                  $$0.b(262);
                }
-
-               $$7 = $$12;
-               $$5.g($$6);
-               $$6.c(ha.a);
             }
-         }
-      }
 
-      return this.c;
-   }
+            if ($$3 > 0) {
+               long $$8 = (long)($$5.a($$5.b, $$5.c, $$5.d) * 9.223372E18F);
+               arx $$9 = new dlm(new dko($$8));
 
-   public boolean a(cor $$0, int $$1, int $$2, int $$3) {
-      int $$4 = $$2 + 1;
-      int $$5 = c($$1, $$3);
-      int $$6 = this.b($$5);
-      if ($$4 < $$6) {
-         return false;
-      } else {
-         gu $$7 = this.e.d($$1, $$2 + 1, $$3);
-         dez $$8 = $$0.a_($$7);
-         gu $$9 = this.f.d($$1, $$2, $$3);
-         dez $$10 = $$0.a_($$9);
-         if (this.a($$0, $$5, $$6, $$7, $$8, $$9, $$10)) {
-            return true;
-         } else {
-            gu $$11 = this.e.d($$1, $$2 - 1, $$3);
-            dez $$12 = $$0.a_($$11);
-            return this.a($$0, $$5, $$6, $$9, $$10, $$11, $$12);
+               for (int $$10 = $$6 - 1; $$10 >= 0; $$10--) {
+                  if ($$10 < $$4 && $$1.contains($$6 - $$10)) {
+                     this.a[$$10] = new dzn($$9);
+                  } else {
+                     $$9.b(262);
+                  }
+               }
+            }
+
+            this.c = Math.pow(2.0, (double)$$3);
+            this.b = 1.0 / (Math.pow(2.0, (double)$$4) - 1.0);
          }
       }
    }
 
-   private boolean a(cor $$0, int $$1, int $$2, gu $$3, dez $$4, gu $$5, dez $$6) {
-      int $$7 = $$3.v();
-      if (a($$0, $$3, $$4, $$5, $$6)) {
-         if ($$7 > $$2) {
-            this.b($$1, $$7);
-            return true;
-         }
-      } else if ($$7 == $$2) {
-         this.b($$1, this.a($$0, $$5, $$6));
-         return true;
-      }
+   public double a(double $$0, double $$1, boolean $$2) {
+      double $$3 = 0.0;
+      double $$4 = this.c;
+      double $$5 = this.b;
 
-      return false;
-   }
-
-   private int a(cor $$0, gu $$1, dez $$2) {
-      gu.a $$3 = this.e.g($$1);
-      gu.a $$4 = this.f.a($$1, ha.a);
-      dez $$5 = $$2;
-
-      while ($$4.v() >= this.c) {
-         dez $$6 = $$0.a_($$4);
-         if (a($$0, $$3, $$5, $$4, $$6)) {
-            return $$3.v();
+      for (dzn $$6 : this.a) {
+         if ($$6 != null) {
+            $$3 += $$6.a($$0 * $$4 + ($$2 ? $$6.b : 0.0), $$1 * $$4 + ($$2 ? $$6.c : 0.0)) * $$5;
          }
 
-         $$5 = $$6;
-         $$3.g($$4);
-         $$4.c(ha.a);
+         $$4 /= 2.0;
+         $$5 *= 2.0;
       }
 
-      return this.c;
-   }
-
-   private static boolean a(cor $$0, gu $$1, dez $$2, gu $$3, dez $$4) {
-      if ($$4.b($$0, $$3) != 0) {
-         return true;
-      } else {
-         ehw $$5 = dzt.a($$0, $$1, $$2, ha.a);
-         ehw $$6 = dzt.a($$0, $$3, $$4, ha.b);
-         return eht.b($$5, $$6);
-      }
-   }
-
-   public int a(int $$0, int $$1) {
-      int $$2 = this.b(c($$0, $$1));
-      return this.c($$2);
-   }
-
-   public int a() {
-      int $$0 = Integer.MIN_VALUE;
-
-      for (int $$1 = 0; $$1 < this.d.b(); $$1++) {
-         int $$2 = this.d.a($$1);
-         if ($$2 > $$0) {
-            $$0 = $$2;
-         }
-      }
-
-      return this.c($$0 + this.c);
-   }
-
-   private void a(int $$0) {
-      int $$1 = $$0 - this.c;
-
-      for (int $$2 = 0; $$2 < this.d.b(); $$2++) {
-         this.d.b($$2, $$1);
-      }
-   }
-
-   private void b(int $$0, int $$1) {
-      this.d.b($$0, $$1 - this.c);
-   }
-
-   private int b(int $$0) {
-      return this.d.a($$0) + this.c;
-   }
-
-   private int c(int $$0) {
-      return $$0 == this.c ? Integer.MIN_VALUE : $$0;
-   }
-
-   private static int c(int $$0, int $$1) {
-      return $$0 + $$1 * 16;
+      return $$3;
    }
 }

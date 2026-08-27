@@ -1,47 +1,125 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import java.util.Collection;
+import java.util.function.Function;
 
 public class aix {
-   private static final int a = -1;
-
-   public static void a(CommandDispatcher<dr> $$0) {
+   public static void a(CommandDispatcher<dt> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ds.a("weather").requires($$0x -> $$0x.c(2)))
-                  .then(
-                     ((LiteralArgumentBuilder)ds.a("clear").executes($$0x -> a((dr)$$0x.getSource(), -1)))
-                        .then(ds.a("duration", fb.a(1)).executes($$0x -> a((dr)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "duration"))))
-                  ))
-               .then(
-                  ((LiteralArgumentBuilder)ds.a("rain").executes($$0x -> b((dr)$$0x.getSource(), -1)))
-                     .then(ds.a("duration", fb.a(1)).executes($$0x -> b((dr)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "duration"))))
-               ))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)du.a("title").requires($$0x -> $$0x.c(2)))
             .then(
-               ((LiteralArgumentBuilder)ds.a("thunder").executes($$0x -> c((dr)$$0x.getSource(), -1)))
-                  .then(ds.a("duration", fb.a(1)).executes($$0x -> c((dr)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "duration"))))
+               ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)du.a(
+                                    "targets", ee.d()
+                                 )
+                                 .then(du.a("clear").executes($$0x -> a((dt)$$0x.getSource(), ee.f($$0x, "targets")))))
+                              .then(du.a("reset").executes($$0x -> b((dt)$$0x.getSource(), ee.f($$0x, "targets")))))
+                           .then(
+                              du.a("title")
+                                 .then(
+                                    du.a("title", ea.a())
+                                       .executes($$0x -> a((dt)$$0x.getSource(), ee.f($$0x, "targets"), ea.a($$0x, "title"), "title", aah::new))
+                                 )
+                           ))
+                        .then(
+                           du.a("subtitle")
+                              .then(
+                                 du.a("title", ea.a())
+                                    .executes($$0x -> a((dt)$$0x.getSource(), ee.f($$0x, "targets"), ea.a($$0x, "title"), "subtitle", aaf::new))
+                              )
+                        ))
+                     .then(
+                        du.a("actionbar")
+                           .then(
+                              du.a("title", ea.a()).executes($$0x -> a((dt)$$0x.getSource(), ee.f($$0x, "targets"), ea.a($$0x, "title"), "actionbar", zi::new))
+                           )
+                     ))
+                  .then(
+                     du.a("times")
+                        .then(
+                           du.a("fadeIn", fd.a())
+                              .then(
+                                 du.a("stay", fd.a())
+                                    .then(
+                                       du.a("fadeOut", fd.a())
+                                          .executes(
+                                             $$0x -> a(
+                                                   (dt)$$0x.getSource(),
+                                                   ee.f($$0x, "targets"),
+                                                   IntegerArgumentType.getInteger($$0x, "fadeIn"),
+                                                   IntegerArgumentType.getInteger($$0x, "stay"),
+                                                   IntegerArgumentType.getInteger($$0x, "fadeOut")
+                                                )
+                                          )
+                                    )
+                              )
+                        )
+                  )
             )
       );
    }
 
-   private static int a(dr $$0, int $$1, bfv $$2) {
-      return $$1 == -1 ? $$2.a($$0.e().y_()) : $$1;
+   private static int a(dt $$0, Collection<ako> $$1) {
+      xj $$2 = new xj(false);
+
+      for (ako $$3 : $$1) {
+         $$3.c.b($$2);
+      }
+
+      if ($$1.size() == 1) {
+         $$0.a(() -> ti.a("commands.title.cleared.single", $$1.iterator().next().H_()), true);
+      } else {
+         $$0.a(() -> ti.a("commands.title.cleared.multiple", $$1.size()), true);
+      }
+
+      return $$1.size();
    }
 
-   private static int a(dr $$0, int $$1) {
-      $$0.e().a(a($$0, $$1, akk.b), 0, false, false);
-      $$0.a(() -> tf.c("commands.weather.set.clear"), true);
-      return $$1;
+   private static int b(dt $$0, Collection<ako> $$1) {
+      xj $$2 = new xj(true);
+
+      for (ako $$3 : $$1) {
+         $$3.c.b($$2);
+      }
+
+      if ($$1.size() == 1) {
+         $$0.a(() -> ti.a("commands.title.reset.single", $$1.iterator().next().H_()), true);
+      } else {
+         $$0.a(() -> ti.a("commands.title.reset.multiple", $$1.size()), true);
+      }
+
+      return $$1.size();
    }
 
-   private static int b(dr $$0, int $$1) {
-      $$0.e().a(0, a($$0, $$1, akk.c), true, false);
-      $$0.a(() -> tf.c("commands.weather.set.rain"), true);
-      return $$1;
+   private static int a(dt $$0, Collection<ako> $$1, ti $$2, String $$3, Function<ti, va<?>> $$4) throws CommandSyntaxException {
+      for (ako $$5 : $$1) {
+         $$5.c.b($$4.apply(tk.a($$0, $$2, $$5, 0)));
+      }
+
+      if ($$1.size() == 1) {
+         $$0.a(() -> ti.a("commands.title.show." + $$3 + ".single", $$1.iterator().next().H_()), true);
+      } else {
+         $$0.a(() -> ti.a("commands.title.show." + $$3 + ".multiple", $$1.size()), true);
+      }
+
+      return $$1.size();
    }
 
-   private static int c(dr $$0, int $$1) {
-      $$0.e().a(0, a($$0, $$1, akk.d), true, true);
-      $$0.a(() -> tf.c("commands.weather.set.thunder"), true);
-      return $$1;
+   private static int a(dt $$0, Collection<ako> $$1, int $$2, int $$3, int $$4) {
+      aai $$5 = new aai($$2, $$3, $$4);
+
+      for (ako $$6 : $$1) {
+         $$6.c.b($$5);
+      }
+
+      if ($$1.size() == 1) {
+         $$0.a(() -> ti.a("commands.title.times.single", $$1.iterator().next().H_()), true);
+      } else {
+         $$0.a(() -> ti.a("commands.title.times.multiple", $$1.size()), true);
+      }
+
+      return $$1.size();
    }
 }

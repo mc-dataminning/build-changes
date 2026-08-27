@@ -1,52 +1,21 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
 
-public class dqg implements dpq {
+public class dqg implements dpv {
    public static final Codec<dqg> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               duc.b.fieldOf("feature").forGetter($$0x -> $$0x.b),
-               Codec.intRange(1, 64).fieldOf("required_vertical_space_for_tree").forGetter($$0x -> $$0x.c),
-               Codec.intRange(1, 64).fieldOf("root_radius").forGetter($$0x -> $$0x.d),
-               aqa.b(jc.e).fieldOf("root_replaceable").forGetter($$0x -> $$0x.e),
-               drr.a.fieldOf("root_state_provider").forGetter($$0x -> $$0x.f),
-               Codec.intRange(1, 256).fieldOf("root_placement_attempts").forGetter($$0x -> $$0x.g),
-               Codec.intRange(1, 4096).fieldOf("root_column_max_height").forGetter($$0x -> $$0x.h),
-               Codec.intRange(1, 64).fieldOf("hanging_root_radius").forGetter($$0x -> $$0x.i),
-               Codec.intRange(0, 16).fieldOf("hanging_roots_vertical_span").forGetter($$0x -> $$0x.j),
-               drr.a.fieldOf("hanging_root_state_provider").forGetter($$0x -> $$0x.k),
-               Codec.intRange(1, 256).fieldOf("hanging_root_placement_attempts").forGetter($$0x -> $$0x.l),
-               Codec.intRange(1, 64).fieldOf("allowed_vertical_water_for_tree").forGetter($$0x -> $$0x.n),
-               dlp.b.fieldOf("allowed_tree_position").forGetter($$0x -> $$0x.o)
-            )
-            .apply($$0, dqg::new)
+      $$0 -> $$0.group(duh.b.fieldOf("feature_true").forGetter($$0x -> $$0x.b), duh.b.fieldOf("feature_false").forGetter($$0x -> $$0x.c)).apply($$0, dqg::new)
    );
-   public final he<duc> b;
-   public final int c;
-   public final int d;
-   public final aqa<csl> e;
-   public final drr f;
-   public final int g;
-   public final int h;
-   public final int i;
-   public final int j;
-   public final drr k;
-   public final int l;
-   public final int n;
-   public final dlp o;
+   public final hg<duh> b;
+   public final hg<duh> c;
 
-   public dqg(he<duc> $$0, int $$1, int $$2, aqa<csl> $$3, drr $$4, int $$5, int $$6, int $$7, int $$8, drr $$9, int $$10, int $$11, dlp $$12) {
+   public dqg(hg<duh> $$0, hg<duh> $$1) {
       this.b = $$0;
       this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = $$7;
-      this.j = $$8;
-      this.k = $$9;
-      this.l = $$10;
-      this.n = $$11;
-      this.o = $$12;
+   }
+
+   @Override
+   public Stream<dne<?, ?>> e() {
+      return Stream.concat(this.b.a().a(), this.c.a().a());
    }
 }

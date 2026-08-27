@@ -1,17 +1,24 @@
-import java.util.function.IntFunction;
+import com.mojang.serialization.Codec;
 
-public enum eqe implements arr {
-   a(0, "options.graphics.fast"),
-   b(1, "options.graphics.fancy"),
-   c(2, "options.graphics.fabulous");
+public enum eqe implements aru, ask {
+   a(0, "false", "options.off"),
+   b(1, "fast", "options.clouds.fast"),
+   c(2, "true", "options.clouds.fancy");
 
-   private static final IntFunction<eqe> d = aqk.a(eqe::a, values(), aqk.a.b);
+   public static final Codec<eqe> d = ask.a(eqe::values);
    private final int e;
    private final String f;
+   private final String g;
 
-   private eqe(int $$0, String $$1) {
+   private eqe(int $$0, String $$1, String $$2) {
       this.e = $$0;
       this.f = $$1;
+      this.g = $$2;
+   }
+
+   @Override
+   public String c() {
+      return this.f;
    }
 
    @Override
@@ -21,19 +28,6 @@ public enum eqe implements arr {
 
    @Override
    public String b() {
-      return this.f;
-   }
-
-   @Override
-   public String toString() {
-      return switch (this) {
-         case a -> "fast";
-         case b -> "fancy";
-         case c -> "fabulous";
-      };
-   }
-
-   public static eqe a(int $$0) {
-      return d.apply($$0);
+      return this.g;
    }
 }

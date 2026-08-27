@@ -1,22 +1,25 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class dlt implements dlp {
-   public static final Codec<dlt> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(hz.v(16).optionalFieldOf("offset", gu.b).forGetter($$0x -> $$0x.e)).apply($$0, dlt::new)
-   );
-   private final hz e;
+class dlt extends dlw {
+   public static final Codec<dlt> a = a(dlt::new);
 
-   public dlt(hz $$0) {
-      this.e = $$0;
+   public dlt(List<dlu> $$0) {
+      super($$0);
    }
 
-   public boolean a(cqf $$0, gu $$1) {
-      return !$$0.r($$1.a(this.e));
+   public boolean a(cqk $$0, gw $$1) {
+      for (dlu $$2 : this.e) {
+         if ($$2.test($$0, $$1)) {
+            return true;
+         }
+      }
+
+      return false;
    }
 
    @Override
-   public dlq<?> a() {
-      return dlq.h;
+   public dlv<?> a() {
+      return dlv.i;
    }
 }

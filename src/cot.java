@@ -1,25 +1,19 @@
-import java.util.function.Predicate;
+public interface cot extends cow {
+   float a(hc var1, boolean var2);
 
-public class cot {
-   private final ehd a;
-   private final ehd b;
-   private final Predicate<dez> c;
+   dzw s_();
 
-   public cot(ehd $$0, ehd $$1, Predicate<dez> $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   int a(gw var1, cpb var2);
+
+   default int a(cpz $$0, gw $$1) {
+      return this.s_().a($$0).b($$1);
    }
 
-   public ehd a() {
-      return this.b;
+   default int b(gw $$0, int $$1) {
+      return this.s_().a($$0, $$1);
    }
 
-   public ehd b() {
-      return this.a;
-   }
-
-   public Predicate<dez> c() {
-      return this.c;
+   default boolean g(gw $$0) {
+      return this.a(cpz.a, $$0) >= this.M();
    }
 }

@@ -1,48 +1,80 @@
-public class yb implements ux<wp> {
-   private final int a;
-   private final gu b;
-   private final int c;
-   private final boolean d;
+public class yb implements va<ws> {
+   private final double a;
+   private final double b;
+   private final double c;
+   private final double d;
+   private final long e;
+   private final int f;
+   private final int g;
+   private final int h;
 
-   public yb(int $$0, gu $$1, int $$2, boolean $$3) {
-      this.a = $$0;
-      this.b = $$1.i();
-      this.c = $$2;
-      this.d = $$3;
+   public yb(sl $$0) {
+      this.a = $$0.readDouble();
+      this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
+      this.d = $$0.readDouble();
+      this.e = $$0.n();
+      this.f = $$0.m();
+      this.g = $$0.m();
+      this.h = $$0.m();
    }
 
-   public yb(si $$0) {
-      this.a = $$0.readInt();
-      this.b = $$0.e();
-      this.c = $$0.readInt();
-      this.d = $$0.readBoolean();
+   public yb(dgv $$0) {
+      this.a = $$0.a();
+      this.b = $$0.b();
+      this.c = $$0.i();
+      this.d = $$0.k();
+      this.e = $$0.j();
+      this.f = $$0.m();
+      this.g = $$0.r();
+      this.h = $$0.q();
    }
 
    @Override
-   public void a(si $$0) {
-      $$0.p(this.a);
+   public void a(sl $$0) {
+      $$0.a(this.a);
       $$0.a(this.b);
-      $$0.p(this.c);
+      $$0.a(this.c);
       $$0.a(this.d);
+      $$0.a(this.e);
+      $$0.c(this.f);
+      $$0.c(this.g);
+      $$0.c(this.h);
    }
 
-   public void a(wp $$0) {
+   public void a(ws $$0) {
       $$0.a(this);
    }
 
-   public boolean a() {
-      return this.d;
-   }
-
-   public int d() {
+   public double a() {
       return this.a;
    }
 
-   public int e() {
+   public double d() {
+      return this.b;
+   }
+
+   public double e() {
+      return this.d;
+   }
+
+   public double f() {
       return this.c;
    }
 
-   public gu f() {
-      return this.b;
+   public long g() {
+      return this.e;
+   }
+
+   public int h() {
+      return this.f;
+   }
+
+   public int i() {
+      return this.h;
+   }
+
+   public int j() {
+      return this.g;
    }
 }

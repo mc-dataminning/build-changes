@@ -1,47 +1,80 @@
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 import com.google.gson.JsonObject;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
-public class cd extends cu<cd.a> {
-   static final aer a = new aer("levitation");
-
-   @Override
-   public aer a() {
-      return a;
-   }
-
-   public cd.a a(JsonObject $$0, Optional<ba> $$1, be $$2) {
-      Optional<bf> $$3 = bf.a($$0.get("distance"));
-      cj.d $$4 = cj.d.a($$0.get("duration"));
+public class cd extends cw<cd.a> {
+   public cd.a a(JsonObject $$0, Optional<bc> $$1, bg $$2) {
+      List<bc> $$3 = bq.b($$0, "victims", $$2);
+      cl.d $$4 = cl.d.a($$0.get("unique_entity_types"));
       return new cd.a($$1, $$3, $$4);
    }
 
-   public void a(akl $$0, ehd $$1, int $$2) {
-      this.a($$0, $$3 -> $$3.a($$0, $$1, $$2));
+   public void a(ako $$0, Collection<bil> $$1) {
+      List<ecl> $$2 = Lists.newArrayList();
+      Set<bip<?>> $$3 = Sets.newHashSet();
+
+      for (bil $$4 : $$1) {
+         $$3.add($$4.ag());
+         $$2.add(bq.b($$0, $$4));
+      }
+
+      this.a($$0, $$2x -> $$2x.a($$2, $$3.size()));
    }
 
-   public static class a extends ar {
-      private final Optional<bf> a;
-      private final cj.d b;
+   public static class a extends at {
+      private final List<bc> a;
+      private final cl.d b;
 
-      public a(Optional<ba> $$0, Optional<bf> $$1, cj.d $$2) {
-         super(cd.a, $$0);
+      public a(Optional<bc> $$0, List<bc> $$1, cl.d $$2) {
+         super($$0);
          this.a = $$1;
          this.b = $$2;
       }
 
-      public static cd.a a(bf $$0) {
-         return new cd.a(Optional.empty(), Optional.of($$0), cj.d.c);
+      public static am<cd.a> a(bq.a... $$0) {
+         return al.G.a(new cd.a(Optional.empty(), bq.a($$0), cl.d.c));
       }
 
-      public boolean a(akl $$0, ehd $$1, int $$2) {
-         return this.a.isPresent() && !this.a.get().a($$1.c, $$1.d, $$1.e, $$0.dp(), $$0.dr(), $$0.dv()) ? false : this.b.d($$2);
+      public static am<cd.a> a(cl.d $$0) {
+         return al.G.a(new cd.a(Optional.empty(), List.of(), $$0));
+      }
+
+      public boolean a(Collection<ecl> $$0, int $$1) {
+         if (!this.a.isEmpty()) {
+            List<ecl> $$2 = Lists.newArrayList($$0);
+
+            for (bc $$3 : this.a) {
+               boolean $$4 = false;
+               Iterator<ecl> $$5 = $$2.iterator();
+
+               while ($$5.hasNext()) {
+                  ecl $$6 = $$5.next();
+                  if ($$3.a($$6)) {
+                     $$5.remove();
+                     $$4 = true;
+                     break;
+                  }
+               }
+
+               if (!$$4) {
+                  return false;
+               }
+            }
+         }
+
+         return this.b.d($$1);
       }
 
       @Override
-      public JsonObject b() {
-         JsonObject $$0 = super.b();
-         this.a.ifPresent($$1 -> $$0.add("distance", $$1.a()));
-         $$0.add("duration", this.b.e());
+      public JsonObject a() {
+         JsonObject $$0 = super.a();
+         $$0.add("victims", bc.a(this.a));
+         $$0.add("unique_entity_types", this.b.e());
          return $$0;
       }
    }

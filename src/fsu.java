@@ -1,15 +1,23 @@
-public class fsu extends fud<byr, fes<byr>> {
-   private static final aer a = new aer("textures/entity/endermite.png");
+public class fsu extends fsa<byr, feu<byr>> {
+   private static final aeu a = new aeu("textures/entity/zombie/drowned.png");
 
-   public fsu(fsx.a $$0) {
-      super($$0, new fes<>($$0.a(fhr.S)), 0.3F);
+   public fsu(ftc.a $$0) {
+      super($$0, new feu<>($$0.a(fhw.L)), new feu<>($$0.a(fhw.M)), new feu<>($$0.a(fhw.N)));
+      this.a(new fws<>(this, $$0.f()));
    }
 
-   protected float a(byr $$0) {
-      return 180.0F;
-   }
-
-   public aer b(byr $$0) {
+   @Override
+   public aeu a(bzw $$0) {
       return a;
+   }
+
+   protected void a(byr $$0, elk $$1, float $$2, float $$3, float $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      float $$5 = $$0.a($$4);
+      if ($$5 > 0.0F) {
+         float $$6 = -10.0F - $$0.dC();
+         float $$7 = ars.i($$5, 0.0F, $$6);
+         $$1.a(a.b.rotationDegrees($$7), 0.0F, $$0.dg() / 2.0F, 0.0F);
+      }
    }
 }

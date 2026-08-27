@@ -1,52 +1,41 @@
-import java.util.Optional;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
 
-public class cld {
-   public static final aeq<clc> a = a("sentry");
-   public static final aeq<clc> b = a("dune");
-   public static final aeq<clc> c = a("coast");
-   public static final aeq<clc> d = a("wild");
-   public static final aeq<clc> e = a("ward");
-   public static final aeq<clc> f = a("eye");
-   public static final aeq<clc> g = a("vex");
-   public static final aeq<clc> h = a("tide");
-   public static final aeq<clc> i = a("snout");
-   public static final aeq<clc> j = a("rib");
-   public static final aeq<clc> k = a("spire");
-   public static final aeq<clc> l = a("wayfinder");
-   public static final aeq<clc> m = a("shaper");
-   public static final aeq<clc> n = a("silence");
-   public static final aeq<clc> o = a("raiser");
-   public static final aeq<clc> p = a("host");
+public record cld(String c, hg<civ> d, float e, Map<cgm, String> f, ti g) {
+   public static final Codec<cld> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               arb.w.fieldOf("asset_name").forGetter(cld::a),
+               aer.a(je.D).fieldOf("ingredient").forGetter(cld::b),
+               Codec.FLOAT.fieldOf("item_model_index").forGetter(cld::c),
+               Codec.unboundedMap(cgm.h, Codec.STRING).optionalFieldOf("override_armor_materials", Map.of()).forGetter(cld::d),
+               arb.b.fieldOf("description").forGetter(cld::e)
+            )
+            .apply($$0, cld::new)
+   );
+   public static final Codec<hg<cld>> b = aeq.a(je.aD, a);
 
-   public static void a(nm<clc> $$0) {
-      a($$0, cja.wx, a);
-      a($$0, cja.wy, b);
-      a($$0, cja.wz, c);
-      a($$0, cja.wA, d);
-      a($$0, cja.wB, e);
-      a($$0, cja.wC, f);
-      a($$0, cja.wD, g);
-      a($$0, cja.wE, h);
-      a($$0, cja.wF, i);
-      a($$0, cja.wG, j);
-      a($$0, cja.wH, k);
-      a($$0, cja.wI, l);
-      a($$0, cja.wJ, m);
-      a($$0, cja.wK, n);
-      a($$0, cja.wL, o);
-      a($$0, cja.wM, p);
+   public static cld a(String $$0, civ $$1, float $$2, ti $$3, Map<cgm, String> $$4) {
+      return new cld($$0, jd.i.d($$1), $$2, $$4, $$3);
    }
 
-   public static Optional<he.c<clc>> a(hs $$0, cix $$1) {
-      return $$0.d(jc.aE).h().filter($$1x -> $$1.a(((clc)$$1x.a()).b())).findFirst();
+   public String a() {
+      return this.c;
    }
 
-   private static void a(nm<clc> $$0, cis $$1, aeq<clc> $$2) {
-      clc $$3 = new clc($$2.a(), jb.i.d($$1), tf.c(ac.a("trim_pattern", $$2.a())), false);
-      $$0.a($$2, $$3);
+   public hg<civ> b() {
+      return this.d;
    }
 
-   private static aeq<clc> a(String $$0) {
-      return aeq.a(jc.aE, new aer($$0));
+   public float c() {
+      return this.e;
+   }
+
+   public Map<cgm, String> d() {
+      return this.f;
+   }
+
+   public ti e() {
+      return this.g;
    }
 }

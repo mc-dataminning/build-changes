@@ -1,9 +1,24 @@
-public interface vh extends aax {
-   void a(vj var1);
+public class vh implements va<vd> {
+   private final int a;
 
-   void a(vk var1);
+   public vh(int $$0) {
+      this.a = $$0;
+   }
 
-   void a(vi var1);
+   public vh(sl $$0) {
+      this.a = $$0.readInt();
+   }
 
-   void a(vl var1);
+   @Override
+   public void a(sl $$0) {
+      $$0.p(this.a);
+   }
+
+   public void a(vd $$0) {
+      $$0.a(this);
+   }
+
+   public int a() {
+      return this.a;
+   }
 }

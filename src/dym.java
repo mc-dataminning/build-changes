@@ -1,16 +1,22 @@
 import com.mojang.serialization.Codec;
+import javax.annotation.Nullable;
 
-public interface dym<P extends dyl> {
-   dym<dxp> a = a("always_true", dxp.a);
-   dym<dxu> b = a("block_match", dxu.a);
-   dym<dxw> c = a("blockstate_match", dxw.a);
-   dym<dyt> d = a("tag_match", dyt.a);
-   dym<dyi> e = a("random_block_match", dyi.a);
-   dym<dyj> f = a("random_blockstate_match", dyj.a);
+public class dym extends dyt {
+   public final aqd<csq> a;
+   public static final Codec<dym> b = aqd.b(je.e).xmap(dym::new, $$0 -> $$0.a);
 
-   Codec<P> codec();
+   public dym(aqd<csq> $$0) {
+      this.a = $$0;
+   }
 
-   static <P extends dyl> dym<P> a(String $$0, Codec<P> $$1) {
-      return hr.a(jb.p, $$0, () -> $$1);
+   @Nullable
+   @Override
+   public dyw.c a(cpt $$0, gw $$1, gw $$2, dyw.c $$3, dyw.c $$4, dys $$5) {
+      return dnr.a(this.a).test($$0.a_($$4.a())) ? $$4 : null;
+   }
+
+   @Override
+   protected dyv<?> a() {
+      return dyv.n;
    }
 }

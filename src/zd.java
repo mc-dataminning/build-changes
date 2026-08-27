@@ -1,28 +1,31 @@
-import javax.annotation.Nullable;
+public record zd(aaw d, byte e) implements va<ws> {
+   public static final byte a = 1;
+   public static final byte b = 2;
+   public static final byte c = 3;
 
-public class zd implements ux<wp> {
-   @Nullable
-   private final aer a;
-
-   public zd(@Nullable aer $$0) {
-      this.a = $$0;
-   }
-
-   public void a(wp $$0) {
-      $$0.a(this);
-   }
-
-   public zd(si $$0) {
-      this.a = $$0.c(si::s);
+   public zd(sl $$0) {
+      this(new aaw($$0), $$0.readByte());
    }
 
    @Override
-   public void a(si $$0) {
-      $$0.a(this.a, si::a);
+   public void a(sl $$0) {
+      this.d.a($$0);
+      $$0.k(this.e);
    }
 
-   @Nullable
-   public aer a() {
-      return this.a;
+   public void a(ws $$0) {
+      $$0.a(this);
+   }
+
+   public boolean a(byte $$0) {
+      return (this.e & $$0) != 0;
+   }
+
+   public aaw a() {
+      return this.d;
+   }
+
+   public byte d() {
+      return this.e;
    }
 }

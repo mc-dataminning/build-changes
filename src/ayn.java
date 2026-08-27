@@ -1,13 +1,19 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Map;
+import com.mojang.datafixers.DataFixUtils;
+import com.mojang.datafixers.schemas.Schema;
+import com.mojang.serialization.Dynamic;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
-public class ayn {
-   public static final Map<String, String> a = ImmutableMap.builder()
-      .put("minecraft:acacia_bark", "minecraft:acacia_wood")
-      .put("minecraft:birch_bark", "minecraft:birch_wood")
-      .put("minecraft:dark_oak_bark", "minecraft:dark_oak_wood")
-      .put("minecraft:jungle_bark", "minecraft:jungle_wood")
-      .put("minecraft:oak_bark", "minecraft:oak_wood")
-      .put("minecraft:spruce_bark", "minecraft:spruce_wood")
-      .build();
+public class ayn extends asz {
+   private final Function<String, String> a;
+
+   public ayn(Schema $$0, String $$1, Function<String, String> $$2) {
+      super($$0, $$1);
+      this.a = $$2;
+   }
+
+   @Override
+   protected <T> Stream<Dynamic<T>> a(Stream<Dynamic<T>> $$0) {
+      return $$0.map($$0x -> $$0x.update("type", $$0xx -> (Dynamic)DataFixUtils.orElse($$0xx.asString().map(this.a).map($$0xx::createString).result(), $$0xx)));
+   }
 }

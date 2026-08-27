@@ -1,83 +1,74 @@
-public class biq extends bvi {
-   private static final adz<Integer> bX = aec.a(biq.class, aeb.b);
+public enum biq implements ask {
+   a(biq.a.a, 0, 0, "mainhand"),
+   b(biq.a.a, 1, 5, "offhand"),
+   c(biq.a.b, 0, 1, "feet"),
+   d(biq.a.b, 1, 2, "legs"),
+   e(biq.a.b, 2, 3, "chest"),
+   f(biq.a.b, 3, 4, "head");
 
-   public biq(bim<? extends biq> $$0, cpl $$1) {
-      super($$0, $$1);
+   public static final ask.a<biq> g = ask.a(biq::values);
+   private final biq.a h;
+   private final int i;
+   private final int j;
+   private final String k;
+
+   private biq(biq.a $$0, int $$1, int $$2, String $$3) {
+      this.h = $$0;
+      this.i = $$1;
+      this.j = $$2;
+      this.k = $$3;
+   }
+
+   public biq.a a() {
+      return this.h;
+   }
+
+   public int b() {
+      return this.i;
+   }
+
+   public int a(int $$0) {
+      return $$0 + this.i;
+   }
+
+   public int d() {
+      return this.j;
+   }
+
+   public String e() {
+      return this.k;
+   }
+
+   public boolean f() {
+      return this.h == biq.a.b;
    }
 
    @Override
-   protected it p() {
-      return iv.aJ;
+   public String c() {
+      return this.k;
    }
 
-   @Override
-   protected void a_() {
-      super.a_();
-      this.an.a(bX, 0);
+   public static biq a(String $$0) {
+      biq $$1 = g.a($$0);
+      if ($$1 != null) {
+         return $$1;
+      } else {
+         throw new IllegalArgumentException("Invalid slot '" + $$0 + "'");
+      }
    }
 
-   @Override
-   protected aov q() {
-      return aow.jC;
-   }
-
-   @Override
-   protected aov r() {
-      return aow.jz;
-   }
-
-   @Override
-   protected aov d(bhg $$0) {
-      return aow.jB;
-   }
-
-   @Override
-   protected aov h_() {
-      return aow.jA;
-   }
-
-   @Override
-   public void b(qr $$0) {
-      super.b($$0);
-      $$0.a("DarkTicksRemaining", this.t());
-   }
-
-   @Override
-   public void a(qr $$0) {
-      super.a($$0);
-      this.c($$0.h("DarkTicksRemaining"));
-   }
-
-   @Override
-   public void b_() {
-      super.b_();
-      int $$0 = this.t();
-      if ($$0 > 0) {
-         this.c($$0 - 1);
+   public static biq a(biq.a $$0, int $$1) {
+      for (biq $$2 : values()) {
+         if ($$2.a() == $$0 && $$2.b() == $$1) {
+            return $$2;
+         }
       }
 
-      this.dK().a(iv.aK, this.d(0.6), this.ds(), this.g(0.6), 0.0, 0.0, 0.0);
+      throw new IllegalArgumentException("Invalid slot '" + $$0 + "': " + $$1);
    }
 
-   @Override
-   public boolean a(bhg $$0, float $$1) {
-      boolean $$2 = super.a($$0, $$1);
-      if ($$2) {
-         this.c(100);
-      }
-
-      return $$2;
-   }
-
-   private void c(int $$0) {
-      this.an.b(bX, $$0);
-   }
-
-   public int t() {
-      return this.an.b(bX);
-   }
-
-   public static boolean a(bim<? extends biy> $$0, cqa $$1, bjc $$2, gu $$3, aru $$4) {
-      return $$3.v() <= $$1.t_() - 33 && $$1.b($$3, 0) == 0 && $$1.a_($$3).a(csm.G);
+   public static enum a {
+      a,
+      b;
    }
 }

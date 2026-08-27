@@ -1,30 +1,54 @@
 import com.mojang.serialization.Codec;
+import javax.annotation.Nullable;
 
-public class dor extends dnm<dpl> {
-   public dor(Codec<dpl> $$0) {
+public class dor extends dnr<dqk> {
+   public dor(Codec<dqk> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dno<dpl> $$0) {
-      int $$1 = 0;
-      aru $$2 = $$0.d();
-      cqf $$3 = $$0.b();
-      gu $$4 = $$0.e();
-      int $$5 = $$0.f().a().a($$2);
+   public boolean a(dnt<dqk> $$0) {
+      dqk $$1 = $$0.f();
+      cqk $$2 = $$0.b();
+      arx $$3 = $$0.d();
+      csq $$4 = $$1.b.b();
+      gw $$5 = a($$2, $$0.e().j().a(hc.a.b, $$2.C_() + 1, $$2.aj() - 1), $$4);
+      if ($$5 == null) {
+         return false;
+      } else {
+         int $$6 = $$1.a().a($$3);
+         int $$7 = $$1.a().a($$3);
+         int $$8 = $$1.a().a($$3);
+         int $$9 = Math.max($$6, Math.max($$7, $$8));
+         boolean $$10 = false;
 
-      for (int $$6 = 0; $$6 < $$5; $$6++) {
-         int $$7 = $$2.a(8) - $$2.a(8);
-         int $$8 = $$2.a(8) - $$2.a(8);
-         int $$9 = $$3.a(dki.a.d, $$4.u() + $$7, $$4.w() + $$8);
-         gu $$10 = new gu($$4.u() + $$7, $$9, $$4.w() + $$8);
-         dez $$11 = csm.mV.n().a(czi.b, Integer.valueOf($$2.a(4) + 1));
-         if ($$3.a_($$10).a(csm.G) && $$11.a($$3, $$10)) {
-            $$3.a($$10, $$11, 2);
-            $$1++;
+         for (gw $$11 : gw.a($$5, $$6, $$7, $$8)) {
+            if ($$11.k($$5) > $$9) {
+               break;
+            }
+
+            dfe $$12 = $$2.a_($$11);
+            if ($$12.a($$4)) {
+               this.a($$2, $$11, $$1.c);
+               $$10 = true;
+            }
          }
+
+         return $$10;
+      }
+   }
+
+   @Nullable
+   private static gw a(cpr $$0, gw.a $$1, csq $$2) {
+      while ($$1.v() > $$0.C_() + 1) {
+         dfe $$3 = $$0.a_($$1);
+         if ($$3.a($$2)) {
+            return $$1;
+         }
+
+         $$1.c(hc.a);
       }
 
-      return $$1 > 0;
+      return null;
    }
 }

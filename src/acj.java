@@ -1,79 +1,24 @@
-public class acj implements ux<aaw> {
-   private static final int a = 1;
-   private static final int b = 2;
-   private static final int c = 4;
-   private final gu d;
-   private final String e;
-   private final boolean f;
-   private final boolean g;
-   private final boolean h;
-   private final dcv.a i;
+public class acj implements va<aaz> {
+   private final int a;
 
-   public acj(gu $$0, String $$1, dcv.a $$2, boolean $$3, boolean $$4, boolean $$5) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$3;
-      this.g = $$4;
-      this.h = $$5;
-      this.i = $$2;
+   public acj(int $$0) {
+      this.a = $$0;
    }
 
-   public acj(si $$0) {
-      this.d = $$0.e();
-      this.e = $$0.r();
-      this.i = $$0.b(dcv.a.class);
-      int $$1 = $$0.readByte();
-      this.f = ($$1 & 1) != 0;
-      this.g = ($$1 & 2) != 0;
-      this.h = ($$1 & 4) != 0;
+   public acj(sl $$0) {
+      this.a = $$0.m();
    }
 
    @Override
-   public void a(si $$0) {
-      $$0.a(this.d);
-      $$0.a(this.e);
-      $$0.a(this.i);
-      int $$1 = 0;
-      if (this.f) {
-         $$1 |= 1;
-      }
-
-      if (this.g) {
-         $$1 |= 2;
-      }
-
-      if (this.h) {
-         $$1 |= 4;
-      }
-
-      $$0.k($$1);
+   public void a(sl $$0) {
+      $$0.c(this.a);
    }
 
-   public void a(aaw $$0) {
+   public void a(aaz $$0) {
       $$0.a(this);
    }
 
-   public gu a() {
-      return this.d;
-   }
-
-   public String d() {
-      return this.e;
-   }
-
-   public boolean e() {
-      return this.f;
-   }
-
-   public boolean f() {
-      return this.g;
-   }
-
-   public boolean g() {
-      return this.h;
-   }
-
-   public dcv.a h() {
-      return this.i;
+   public int a() {
+      return this.a;
    }
 }

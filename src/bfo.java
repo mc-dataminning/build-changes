@@ -1,54 +1,111 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.Function;
+import com.google.common.collect.Queues;
+import java.util.Locale;
+import java.util.Queue;
+import java.util.concurrent.atomic.AtomicInteger;
+import javax.annotation.Nullable;
 
-public class bfo extends bfv {
-   public static final Codec<bfo> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  bfv.c.fieldOf("source").forGetter($$0x -> $$0x.b),
-                  Codec.INT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.f),
-                  Codec.INT.fieldOf("max_inclusive").forGetter($$0x -> $$0x.g)
-               )
-               .apply($$0, bfo::new)
-      )
-      .comapFlatMap(
-         $$0 -> $$0.g < $$0.f
-               ? DataResult.error(() -> "Max must be at least min, min_inclusive: " + $$0.f + ", max_inclusive: " + $$0.g)
-               : DataResult.success($$0),
-         Function.identity()
-      );
-   private final bfv b;
-   private final int f;
-   private final int g;
+public interface bfo<T, F> {
+   @Nullable
+   F a();
 
-   public static bfo a(bfv $$0, int $$1, int $$2) {
-      return new bfo($$0, $$1, $$2);
+   boolean a(T var1);
+
+   boolean b();
+
+   int c();
+
+   public static final class a implements bfo<bfo.b, Runnable> {
+      private final Queue<Runnable>[] a;
+      private final AtomicInteger b = new AtomicInteger();
+
+      public a(int $$0) {
+         this.a = new Queue[$$0];
+
+         for (int $$1 = 0; $$1 < $$0; $$1++) {
+            this.a[$$1] = Queues.newConcurrentLinkedQueue();
+         }
+      }
+
+      @Nullable
+      public Runnable d() {
+         for (Queue<Runnable> $$0 : this.a) {
+            Runnable $$1 = $$0.poll();
+            if ($$1 != null) {
+               this.b.decrementAndGet();
+               return $$1;
+            }
+         }
+
+         return null;
+      }
+
+      public boolean a(bfo.b $$0) {
+         int $$1 = $$0.a;
+         if ($$1 < this.a.length && $$1 >= 0) {
+            this.a[$$1].add($$0);
+            this.b.incrementAndGet();
+            return true;
+         } else {
+            throw new IndexOutOfBoundsException(String.format(Locale.ROOT, "Priority %d not supported. Expected range [0-%d]", $$1, this.a.length - 1));
+         }
+      }
+
+      @Override
+      public boolean b() {
+         return this.b.get() == 0;
+      }
+
+      @Override
+      public int c() {
+         return this.b.get();
+      }
    }
 
-   public bfo(bfv $$0, int $$1, int $$2) {
-      this.b = $$0;
-      this.f = $$1;
-      this.g = $$2;
+   public static final class b implements Runnable {
+      final int a;
+      private final Runnable b;
+
+      public b(int $$0, Runnable $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      @Override
+      public void run() {
+         this.b.run();
+      }
+
+      public int a() {
+         return this.a;
+      }
    }
 
-   @Override
-   public int a(aru $$0) {
-      return arp.a(this.b.a($$0), this.f, this.g);
-   }
+   public static final class c<T> implements bfo<T, T> {
+      private final Queue<T> a;
 
-   @Override
-   public int a() {
-      return Math.max(this.f, this.b.a());
-   }
+      public c(Queue<T> $$0) {
+         this.a = $$0;
+      }
 
-   @Override
-   public int b() {
-      return Math.min(this.g, this.b.b());
-   }
+      @Nullable
+      @Override
+      public T a() {
+         return this.a.poll();
+      }
 
-   @Override
-   public bfw<?> c() {
-      return bfw.d;
+      @Override
+      public boolean a(T $$0) {
+         return this.a.add($$0);
+      }
+
+      @Override
+      public boolean b() {
+         return this.a.isEmpty();
+      }
+
+      @Override
+      public int c() {
+         return this.a.size();
+      }
    }
 }

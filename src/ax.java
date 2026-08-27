@@ -1,62 +1,47 @@
 import com.google.gson.JsonObject;
-import java.util.Collection;
-import java.util.List;
+import com.google.gson.JsonSyntaxException;
 import java.util.Optional;
-import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public class ax extends cu<ax.a> {
-   static final aer a = new aer("channeled_lightning");
+public class ax extends cw<ax.a> {
+   public ax.a a(JsonObject $$0, Optional<bc> $$1, bg $$2) {
+      ckx $$3 = null;
+      if ($$0.has("potion")) {
+         aeu $$4 = new aeu(arj.i($$0, "potion"));
+         $$3 = jd.j.b($$4).orElseThrow(() -> new JsonSyntaxException("Unknown potion '" + $$4 + "'"));
+      }
 
-   @Override
-   public aer a() {
-      return a;
-   }
-
-   public ax.a a(JsonObject $$0, Optional<ba> $$1, be $$2) {
-      List<ba> $$3 = bo.b($$0, "victims", $$2);
       return new ax.a($$1, $$3);
    }
 
-   public void a(akl $$0, Collection<? extends bii> $$1) {
-      List<ecg> $$2 = $$1.stream().map($$1x -> bo.b($$0, $$1x)).collect(Collectors.toList());
-      this.a($$0, $$1x -> $$1x.a($$2));
+   public void a(ako $$0, ckx $$1) {
+      this.a($$0, $$1x -> $$1x.a($$1));
    }
 
-   public static class a extends ar {
-      private final List<ba> a;
+   public static class a extends at {
+      @Nullable
+      private final ckx a;
 
-      public a(Optional<ba> $$0, List<ba> $$1) {
-         super(ax.a, $$0);
+      public a(Optional<bc> $$0, @Nullable ckx $$1) {
+         super($$0);
          this.a = $$1;
       }
 
-      public static ax.a a(bo.a... $$0) {
-         return new ax.a(Optional.empty(), bo.a($$0));
+      public static am<ax.a> c() {
+         return al.k.a(new ax.a(Optional.empty(), null));
       }
 
-      public boolean a(Collection<? extends ecg> $$0) {
-         for (ba $$1 : this.a) {
-            boolean $$2 = false;
-
-            for (ecg $$3 : $$0) {
-               if ($$1.a($$3)) {
-                  $$2 = true;
-                  break;
-               }
-            }
-
-            if (!$$2) {
-               return false;
-            }
-         }
-
-         return true;
+      public boolean a(ckx $$0) {
+         return this.a == null || this.a == $$0;
       }
 
       @Override
-      public JsonObject b() {
-         JsonObject $$0 = super.b();
-         $$0.add("victims", ba.a(this.a));
+      public JsonObject a() {
+         JsonObject $$0 = super.a();
+         if (this.a != null) {
+            $$0.addProperty("potion", jd.j.b(this.a).toString());
+         }
+
          return $$0;
       }
    }

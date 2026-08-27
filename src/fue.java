@@ -1,18 +1,20 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
+public class fue extends fui<bwo, ffr<bwo>> {
+   private static final aeu a = new aeu("textures/entity/llama/creamy.png");
+   private static final aeu i = new aeu("textures/entity/llama/white.png");
+   private static final aeu j = new aeu("textures/entity/llama/brown.png");
+   private static final aeu k = new aeu("textures/entity/llama/gray.png");
 
-public class fue extends fud<buw, fem<buw>> {
-   private static final Map<buw.a, aer> a = ac.a(Maps.newHashMap(), $$0 -> {
-      $$0.put(buw.a.b, new aer("textures/entity/cow/brown_mooshroom.png"));
-      $$0.put(buw.a.a, new aer("textures/entity/cow/red_mooshroom.png"));
-   });
-
-   public fue(fsx.a $$0) {
-      super($$0, new fem<>($$0.a(fhr.aw)), 0.7F);
-      this.a(new fxa<>(this, $$0.c()));
+   public fue(ftc.a $$0, fhv $$1) {
+      super($$0, new ffr<>($$0.a($$1)), 0.7F);
+      this.a(new fxe(this, $$0.f()));
    }
 
-   public aer a(buw $$0) {
-      return a.get($$0.q());
+   public aeu a(bwo $$0) {
+      return switch ($$0.gm()) {
+         case a -> a;
+         case b -> i;
+         case c -> j;
+         case d -> k;
+      };
    }
 }

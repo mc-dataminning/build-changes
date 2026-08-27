@@ -1,41 +1,53 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class dpm implements dpq {
+public record dpm(List<dpm.a> b, hc c, dlu d, boolean e) implements dpv {
    public static final Codec<dpm> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               dez.b.fieldOf("contents").forGetter($$0x -> $$0x.b),
-               dez.b.fieldOf("rim").forGetter($$0x -> $$0x.c),
-               bfv.b(0, 16).fieldOf("size").forGetter($$0x -> $$0x.d),
-               bfv.b(0, 16).fieldOf("rim_size").forGetter($$0x -> $$0x.e)
+               dpm.a.a.listOf().fieldOf("layers").forGetter(dpm::a),
+               hc.g.fieldOf("direction").forGetter(dpm::b),
+               dlu.b.fieldOf("allowed_placement").forGetter(dpm::c),
+               Codec.BOOL.fieldOf("prioritize_tip").forGetter(dpm::d)
             )
             .apply($$0, dpm::new)
    );
-   private final dez b;
-   private final dez c;
-   private final bfv d;
-   private final bfv e;
 
-   public dpm(dez $$0, dez $$1, bfv $$2, bfv $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
+   public static dpm.a a(bfy $$0, drw $$1) {
+      return new dpm.a($$0, $$1);
    }
 
-   public dez a() {
+   public static dpm b(bfy $$0, drw $$1) {
+      return new dpm(List.of(a($$0, $$1)), hc.b, dlu.c, false);
+   }
+
+   public List<dpm.a> a() {
       return this.b;
    }
 
-   public dez b() {
+   public hc b() {
       return this.c;
    }
 
-   public bfv c() {
+   public dlu c() {
       return this.d;
    }
 
-   public bfv d() {
+   public boolean d() {
       return this.e;
+   }
+
+   public static record a(bfy b, drw c) {
+      public static final Codec<dpm.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(bfy.d.fieldOf("height").forGetter(dpm.a::a), drw.a.fieldOf("provider").forGetter(dpm.a::b)).apply($$0, dpm.a::new)
+      );
+
+      public bfy a() {
+         return this.b;
+      }
+
+      public drw b() {
+         return this.c;
+      }
    }
 }

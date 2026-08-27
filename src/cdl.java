@@ -1,118 +1,89 @@
-public class cdl extends cdd {
-   static final adz<String> c = aec.a(cdl.class, aeb.e);
-   static final adz<tf> d = aec.a(cdl.class, aeb.f);
-   private final col e = new cdl.a();
-   private static final int f = 4;
-   private int g;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-   public cdl(bim<? extends cdl> $$0, cpl $$1) {
-      super($$0, $$1);
+public class cdl {
+   public static int[][] a(hc $$0) {
+      hc $$1 = $$0.h();
+      hc $$2 = $$1.g();
+      hc $$3 = $$0.g();
+      return new int[][]{
+         {$$1.j(), $$1.l()},
+         {$$2.j(), $$2.l()},
+         {$$3.j() + $$1.j(), $$3.l() + $$1.l()},
+         {$$3.j() + $$2.j(), $$3.l() + $$2.l()},
+         {$$0.j() + $$1.j(), $$0.l() + $$1.l()},
+         {$$0.j() + $$2.j(), $$0.l() + $$2.l()},
+         {$$3.j(), $$3.l()},
+         {$$0.j(), $$0.l()}
+      };
    }
 
-   public cdl(cpl $$0, double $$1, double $$2, double $$3) {
-      super(bim.s, $$0, $$1, $$2, $$3);
+   public static boolean a(double $$0) {
+      return !Double.isInfinite($$0) && $$0 < 1.0;
    }
 
-   @Override
-   protected cis j() {
-      return cja.na;
-   }
-
-   @Override
-   protected void a_() {
-      super.a_();
-      this.al().a(c, "");
-      this.al().a(d, te.a);
-   }
-
-   @Override
-   protected void a(qr $$0) {
-      super.a($$0);
-      this.e.b($$0);
-      this.al().b(c, this.A().m());
-      this.al().b(d, this.A().l());
-   }
-
-   @Override
-   protected void b(qr $$0) {
-      super.b($$0);
-      this.e.a($$0);
-   }
-
-   @Override
-   public cdd.a t() {
-      return cdd.a.g;
-   }
-
-   @Override
-   public dez w() {
-      return csm.fN.n();
-   }
-
-   public col A() {
-      return this.e;
-   }
-
-   @Override
-   public void a(int $$0, int $$1, int $$2, boolean $$3) {
-      if ($$3 && this.ah - this.g >= 4) {
-         this.A().a(this.dK());
-         this.g = this.ah;
-      }
-   }
-
-   @Override
-   public bgq a(cbm $$0, bgp $$1) {
-      return this.e.a($$0);
-   }
-
-   @Override
-   public void a(adz<?> $$0) {
-      super.a($$0);
-      if (d.equals($$0)) {
-         try {
-            this.e.c(this.al().b(d));
-         } catch (Throwable var3) {
+   public static boolean a(cpa $$0, bjb $$1, ehd $$2) {
+      for (eib $$4 : $$0.e($$1, $$2)) {
+         if (!$$4.c()) {
+            return false;
          }
-      } else if (c.equals($$0)) {
-         this.e.a(this.al().b(c));
       }
+
+      return $$0.w_().a($$2);
    }
 
-   @Override
-   public boolean cM() {
-      return true;
+   public static boolean a(cpa $$0, ehi $$1, bjb $$2, bjn $$3) {
+      return a($$0, $$2, $$2.e($$3).c($$1));
    }
 
-   public class a extends col {
-      @Override
-      public akk e() {
-         return (akk)cdl.this.dK();
+   public static eib a(cow $$0, gw $$1) {
+      dfe $$2 = $$0.a_($$1);
+      return !$$2.a(apo.aO) && (!($$2.b() instanceof dbd) || !$$2.c(dbd.a)) ? $$2.k($$0, $$1) : ehy.a();
+   }
+
+   public static double a(gw $$0, int $$1, Function<gw, eib> $$2) {
+      gw.a $$3 = $$0.j();
+      int $$4 = 0;
+
+      while ($$4 < $$1) {
+         eib $$5 = $$2.apply($$3);
+         if (!$$5.c()) {
+            return (double)($$0.v() + $$4) + $$5.b(hc.a.b);
+         }
+
+         $$4++;
+         $$3.c(hc.b);
       }
 
-      @Override
-      public void f() {
-         cdl.this.al().b(cdl.c, this.m());
-         cdl.this.al().b(cdl.d, this.l());
-      }
+      return Double.POSITIVE_INFINITY;
+   }
 
-      @Override
-      public ehd g() {
-         return cdl.this.di();
-      }
+   @Nullable
+   public static ehi a(bip<?> $$0, cpa $$1, gw $$2, boolean $$3) {
+      if ($$3 && $$0.a($$1.a_($$2))) {
+         return null;
+      } else {
+         double $$4 = $$1.a(a((cow)$$1, $$2), () -> a((cow)$$1, $$2.d()));
+         if (!a($$4)) {
+            return null;
+         } else if ($$3 && $$4 <= 0.0 && $$0.a($$1.a_($$2.d()))) {
+            return null;
+         } else {
+            ehi $$5 = ehi.a($$2, $$4);
+            ehd $$6 = $$0.n().a($$5);
 
-      public cdl h() {
-         return cdl.this;
-      }
+            for (eib $$8 : $$1.e(null, $$6)) {
+               if (!$$8.c()) {
+                  return null;
+               }
+            }
 
-      @Override
-      public dr i() {
-         return new dr(this, cdl.this.di(), cdl.this.bF(), this.e(), 2, this.n().getString(), cdl.this.H_(), this.e().n(), cdl.this);
-      }
-
-      @Override
-      public boolean j() {
-         return !cdl.this.dF();
+            if ($$0 != bip.bt || !$$1.a_($$2).a(apo.ci) && !$$1.a_($$2.c()).a(apo.ci)) {
+               return !$$1.w_().a($$6) ? null : $$5;
+            } else {
+               return null;
+            }
+         }
       }
    }
 }

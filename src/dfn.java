@@ -1,17 +1,51 @@
-public enum dfn implements ash {
-   a("floor"),
-   b("ceiling"),
-   c("single_wall"),
-   d("double_wall");
+import com.google.common.collect.Maps;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-   private final String e;
+public class dfn implements Predicate<dfe> {
+   public static final Predicate<dfe> a = $$0 -> true;
+   private final dff<csq, dfe> b;
+   private final Map<dgh<?>, Predicate<Object>> c = Maps.newHashMap();
 
-   private dfn(String $$0) {
-      this.e = $$0;
+   private dfn(dff<csq, dfe> $$0) {
+      this.b = $$0;
    }
 
-   @Override
-   public String c() {
-      return this.e;
+   public static dfn a(csq $$0) {
+      return new dfn($$0.l());
+   }
+
+   public boolean a(@Nullable dfe $$0) {
+      if ($$0 != null && $$0.b().equals(this.b.c())) {
+         if (this.c.isEmpty()) {
+            return true;
+         } else {
+            for (Entry<dgh<?>, Predicate<Object>> $$1 : this.c.entrySet()) {
+               if (!this.a($$0, $$1.getKey(), $$1.getValue())) {
+                  return false;
+               }
+            }
+
+            return true;
+         }
+      } else {
+         return false;
+      }
+   }
+
+   protected <T extends Comparable<T>> boolean a(dfe $$0, dgh<T> $$1, Predicate<Object> $$2) {
+      T $$3 = $$0.c($$1);
+      return $$2.test($$3);
+   }
+
+   public <V extends Comparable<V>> dfn a(dgh<V> $$0, Predicate<Object> $$1) {
+      if (!this.b.d().contains($$0)) {
+         throw new IllegalArgumentException(this.b + " cannot support property " + $$0);
+      } else {
+         this.c.put($$0, $$1);
+         return this;
+      }
    }
 }

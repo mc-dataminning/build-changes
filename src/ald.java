@@ -1,30 +1,35 @@
-import net.minecraft.server.MinecraftServer;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-public class ald implements acx {
-   private final MinecraftServer a;
-   private final sg b;
+public record ald(String b, tl c) {
+   public static final ald a = a("");
 
-   public ald(MinecraftServer $$0, sg $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public static ald a(String $$0) {
+      return new ald($$0, tl.c);
    }
 
-   @Override
-   public void a(acw $$0) {
-      if ($$0.f() != acv.b) {
-         throw new UnsupportedOperationException("Invalid intention " + $$0.f());
-      } else {
-         this.b.a(acv.b);
-         this.b.a(new alk(this.a, this.b));
-      }
+   public static ald b(String $$0) {
+      return new ald($$0, tl.b);
    }
 
-   @Override
-   public void a(tf $$0) {
+   @Nullable
+   public String a() {
+      return this.c.a(this.b);
    }
 
-   @Override
+   public String b() {
+      return Objects.requireNonNullElse(this.a(), "");
+   }
+
    public boolean c() {
-      return this.b.k();
+      return !this.c.a();
+   }
+
+   public String d() {
+      return this.b;
+   }
+
+   public tl e() {
+      return this.c;
    }
 }

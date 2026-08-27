@@ -1,8 +1,18 @@
-public interface wm extends vh {
-   @Override
-   default sh b() {
-      return sh.e;
+public record wm() implements va<wl> {
+   public wm(sl $$0) {
+      this();
    }
 
-   void a(wn var1);
+   @Override
+   public void a(sl $$0) {
+   }
+
+   public void a(wl $$0) {
+      $$0.a(this);
+   }
+
+   @Override
+   public sk c() {
+      return sk.b;
+   }
 }

@@ -1,6 +1,9 @@
-public class deg extends def {
-   @Override
-   protected aeq<dmz<?, ?>> a(aru $$0, boolean $$1) {
-      return or.j;
-   }
+public interface deg {
+   void a();
+
+   boolean b();
+
+   gw c();
+
+   String d();
 }

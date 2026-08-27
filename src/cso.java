@@ -1,97 +1,107 @@
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public class cso extends cry {
-   public static final dfq[] a = new dfq[]{dfp.k, dfp.l, dfp.m};
-   protected static final ehw b = eht.a(csl.a(1.0, 0.0, 1.0, 15.0, 2.0, 15.0), csl.a(7.0, 0.0, 7.0, 9.0, 14.0, 9.0));
+public class cso extends cwj implements css, czr {
+   private static final dfv e = dfu.C;
+   private static final int f = 6;
+   protected static final eib a = csq.a(5.0, 0.0, 9.0, 11.0, 16.0, 15.0);
+   protected static final eib b = csq.a(5.0, 0.0, 1.0, 11.0, 16.0, 7.0);
+   protected static final eib c = csq.a(1.0, 0.0, 5.0, 7.0, 16.0, 11.0);
+   protected static final eib d = csq.a(9.0, 0.0, 5.0, 15.0, 16.0, 11.0);
 
-   public cso(dey.d $$0) {
+   protected cso(dfd.d $$0) {
       super($$0);
-      this.k(this.C.b().a(a[0], Boolean.valueOf(false)).a(a[1], Boolean.valueOf(false)).a(a[2], Boolean.valueOf(false)));
+      this.k(this.C.b().a(e, Boolean.valueOf(false)).a(aC, hc.c));
    }
 
    @Override
-   public cyq b_(dez $$0) {
-      return cyq.c;
+   public eib a(dfe $$0, cow $$1, gw $$2, ehn $$3) {
+      switch ((hc)$$0.c(aC)) {
+         case d:
+            return b;
+         case c:
+         default:
+            return a;
+         case e:
+            return d;
+         case f:
+            return c;
+      }
    }
 
    @Override
-   public dcl a(gu $$0, dez $$1) {
-      return new dco($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dcl> dcm<T> a(cpl $$0, dez $$1, dcn<T> $$2) {
-      return $$0.B ? null : a($$2, dcn.l, dco::a);
+   protected void a(dff.a<csq, dfe> $$0) {
+      $$0.a(e, aC);
    }
 
    @Override
-   public ehw a(dez $$0, cor $$1, gu $$2, ehi $$3) {
-      return b;
+   public eah c_(dfe $$0) {
+      return $$0.c(e) ? eai.c.a(false) : super.c_($$0);
    }
 
    @Override
-   public bgq a(dez $$0, cpl $$1, gu $$2, cbm $$3, bgp $$4, egz $$5) {
-      if ($$1.B) {
-         return bgq.a;
+   public boolean a(dfe $$0, cpt $$1, gw $$2) {
+      gw $$3 = $$2.d();
+      dfe $$4 = $$1.a_($$3);
+      dfe $$5 = $$1.a_($$2.c());
+      return ($$4.a(this) || $$4.a(apo.bx)) && ($$5.a(this) || $$5.a(csr.rC));
+   }
+
+   protected static boolean a(cpr $$0, gw $$1, eah $$2, hc $$3) {
+      dfe $$4 = csr.rD.n().a(e, Boolean.valueOf($$2.a(eai.c))).a(aC, $$3);
+      return $$0.a($$1, $$4, 3);
+   }
+
+   @Override
+   public dfe a(dfe $$0, hc $$1, dfe $$2, cpr $$3, gw $$4, gw $$5) {
+      if (($$1 == hc.a || $$1 == hc.b) && !$$0.a($$3, $$4)) {
+         $$3.a($$4, this, 1);
+      }
+
+      if ($$0.c(e)) {
+         $$3.a($$4, eai.c, eai.c.a($$3));
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   public void a(dfe $$0, akn $$1, gw $$2, arx $$3) {
+      if (!$$0.a($$1, $$2)) {
+         $$1.b($$2, true);
+      }
+   }
+
+   @Override
+   public boolean a(cpt $$0, gw $$1, dfe $$2) {
+      Optional<gw> $$3 = l.a($$0, $$1, $$2.b(), hc.b, csr.rC);
+      if ($$3.isEmpty()) {
+         return false;
       } else {
-         dcl $$6 = $$1.c_($$2);
-         if ($$6 instanceof dco) {
-            $$3.a((dco)$$6);
-            $$3.a(apg.aa);
-         }
-
-         return bgq.b;
+         gw $$4 = $$3.get().c();
+         dfe $$5 = $$0.a_($$4);
+         return csn.a((cps)$$0, $$4, $$5);
       }
    }
 
    @Override
-   public void a(cpl $$0, gu $$1, dez $$2, biy $$3, cix $$4) {
-      if ($$4.A()) {
-         dcl $$5 = $$0.c_($$1);
-         if ($$5 instanceof dco) {
-            ((dco)$$5).a($$4.y());
-         }
-      }
-   }
-
-   @Override
-   public void a(dez $$0, cpl $$1, gu $$2, aru $$3) {
-      double $$4 = (double)$$2.u() + 0.4 + (double)$$3.i() * 0.2;
-      double $$5 = (double)$$2.v() + 0.7 + (double)$$3.i() * 0.3;
-      double $$6 = (double)$$2.w() + 0.4 + (double)$$3.i() * 0.2;
-      $$1.a(iv.Z, $$4, $$5, $$6, 0.0, 0.0, 0.0);
-   }
-
-   @Override
-   public void a(dez $$0, cpl $$1, gu $$2, dez $$3, boolean $$4) {
-      if (!$$0.a($$3.b())) {
-         dcl $$5 = $$1.c_($$2);
-         if ($$5 instanceof dco) {
-            bgm.a($$1, $$2, (dco)$$5);
-         }
-
-         super.a($$0, $$1, $$2, $$3, $$4);
-      }
-   }
-
-   @Override
-   public boolean d_(dez $$0) {
+   public boolean a(cpq $$0, arx $$1, gw $$2, dfe $$3) {
       return true;
    }
 
    @Override
-   public int a(dez $$0, cpl $$1, gu $$2) {
-      return ced.a($$1.c_($$2));
+   public void a(akn $$0, arx $$1, gw $$2, dfe $$3) {
+      Optional<gw> $$4 = l.a($$0, $$2, $$3.b(), hc.b, csr.rC);
+      if (!$$4.isEmpty()) {
+         gw $$5 = $$4.get();
+         gw $$6 = $$5.c();
+         hc $$7 = $$3.c(aC);
+         a($$0, $$5, $$0.b_($$5), $$7);
+         csn.a($$0, $$6, $$0.b_($$6), $$7);
+      }
    }
 
    @Override
-   protected void a(dfa.a<csl, dez> $$0) {
-      $$0.a(a[0], a[1], a[2]);
-   }
-
-   @Override
-   public boolean a(dez $$0, cor $$1, gu $$2, eas $$3) {
-      return false;
+   public cja a(cow $$0, gw $$1, dfe $$2) {
+      return new cja(csr.rC);
    }
 }

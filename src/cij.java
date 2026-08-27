@@ -1,14 +1,14 @@
-public class cij extends cjx {
-   public cij(csl $$0, csl $$1, cis.a $$2) {
-      super($$2, $$0, $$1, ha.b);
+import javax.annotation.Nullable;
+
+public class cij extends cgt {
+   public cij(csq $$0, civ.a $$1) {
+      super($$0, $$1);
    }
 
+   @Nullable
    @Override
-   protected boolean a(cpo $$0, dez $$1, gu $$2) {
-      if ($$1.b() instanceof dbi $$3 && !$$3.b($$1, $$0, $$2)) {
-         return false;
-      }
-
-      return super.a($$0, $$1, $$2);
+   protected dfe c(cli $$0) {
+      cbp $$1 = $$0.o();
+      return $$1 != null && !$$1.gn() ? null : super.c($$0);
    }
 }

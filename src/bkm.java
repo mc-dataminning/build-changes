@@ -1,29 +1,77 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
+import java.util.Optional;
 
-public class bkm {
-   public static blz<bid> a(bgb $$0, float $$1) {
-      return a($$0, $$1x -> $$1);
+public class bkm extends bks<bum> {
+   private static final int c = 3;
+   private static final int d = 60;
+   private static final int e = 110;
+   private final bip<? extends bum> f;
+   private final float g;
+   private long h;
+
+   public bkm(bip<? extends bum> $$0, float $$1) {
+      super(ImmutableMap.of(bsc.h, bsd.a, bsc.r, bsd.b, bsc.m, bsd.c, bsc.n, bsd.c, bsc.Y, bsd.b), 110);
+      this.f = $$0;
+      this.g = $$1;
    }
 
-   public static blz<bid> a(bgb $$0, Function<biy, Float> $$1) {
-      return bob.a(
-         (Function<bob.b<bid>, ? extends App<bob.c<bid>, boe<bid>>>)($$2 -> $$2.group($$2.b(brz.J), $$2.a(brz.n), $$2.c(brz.m))
-               .apply($$2, ($$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
-                     if (!$$7.i_()) {
-                        return false;
-                     } else {
-                        bid $$9 = $$2.b($$3);
-                        if ($$7.a($$9, (double)($$0.b() + 1)) && !$$7.a($$9, (double)$$0.a())) {
-                           bsc $$10 = new bsc(new bla($$9, false), $$1.apply($$7), $$0.a() - 1);
-                           $$4.a(new bla($$9, true));
-                           $$5.a($$10);
-                           return true;
-                        } else {
-                           return false;
-                        }
-                     }
-                  }))
-      );
+   protected boolean a(akn $$0, bum $$1) {
+      return $$1.ge() && this.c($$1).isPresent();
+   }
+
+   protected void a(akn $$0, bum $$1, long $$2) {
+      bum $$3 = this.c($$1).get();
+      $$1.dM().a(bsc.r, $$3);
+      $$3.dM().a(bsc.r, $$1);
+      bku.a($$1, $$3, this.g);
+      int $$4 = 60 + $$1.ee().a(50);
+      this.h = $$2 + (long)$$4;
+   }
+
+   protected boolean b(akn $$0, bum $$1, long $$2) {
+      if (!this.b($$1)) {
+         return false;
+      } else {
+         bum $$3 = this.a($$1);
+         return $$3.bv() && $$1.a($$3) && bku.a($$1.dM(), $$3) && $$2 <= this.h && !$$1.fX() && !$$3.fX();
+      }
+   }
+
+   protected void c(akn $$0, bum $$1, long $$2) {
+      bum $$3 = this.a($$1);
+      bku.a($$1, $$3, this.g);
+      if ($$1.a($$3, 3.0)) {
+         if ($$2 >= this.h) {
+            $$1.a($$0, $$3);
+            $$1.dM().b(bsc.r);
+            $$3.dM().b(bsc.r);
+         }
+      }
+   }
+
+   protected void d(akn $$0, bum $$1, long $$2) {
+      $$1.dM().b(bsc.r);
+      $$1.dM().b(bsc.m);
+      $$1.dM().b(bsc.n);
+      this.h = 0L;
+   }
+
+   private bum a(bum $$0) {
+      return (bum)$$0.dM().c(bsc.r).get();
+   }
+
+   private boolean b(bum $$0) {
+      bkb<?> $$1 = $$0.dM();
+      return $$1.a(bsc.r) && $$1.c(bsc.r).get().ag() == this.f;
+   }
+
+   private Optional<? extends bum> c(bum $$0) {
+      return $$0.dM().c(bsc.h).get().a($$1 -> {
+         if ($$1.ag() == this.f && $$1 instanceof bum $$2 && $$0.a($$2) && !$$2.fX()) {
+            return true;
+         }
+
+         return false;
+      }).map(bum.class::cast);
    }
 }

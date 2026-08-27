@@ -1,42 +1,29 @@
-import java.util.Optional;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
 
-public class dud extends dlf {
-   private final cqf a;
-   private final dgw b;
-   private final Optional<duc> c;
+public class dud extends duk {
+   public static final Codec<dud> a = RecordCodecBuilder.create($$0 -> $$0.group(dkn.a.g.fieldOf("heightmap").forGetter($$0x -> $$0x.c)).apply($$0, dud::new));
+   private final dkn.a c;
 
-   public dud(cqf $$0, dgw $$1, Optional<duc> $$2) {
-      super($$1, $$0);
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   private dud(dkn.a $$0) {
+      this.c = $$0;
    }
 
-   public int a(dki.a $$0, int $$1, int $$2) {
-      return this.a.a($$0, $$1, $$2);
+   public static dud a(dkn.a $$0) {
+      return new dud($$0);
    }
 
-   public dgu a(cos $$0, dke.a $$1) {
-      return ((dhq)this.a.a($$0.e, $$0.f)).b($$1);
+   @Override
+   public Stream<gw> a_(dui $$0, arx $$1, gw $$2) {
+      int $$3 = $$2.u();
+      int $$4 = $$2.w();
+      int $$5 = $$0.a(this.c, $$3, $$4);
+      return $$5 > $$0.c() ? Stream.of(new gw($$3, $$5, $$4)) : Stream.of();
    }
 
-   public dez a(gu $$0) {
-      return this.a.a_($$0);
-   }
-
-   public int c() {
-      return this.a.C_();
-   }
-
-   public cqf d() {
-      return this.a;
-   }
-
-   public Optional<duc> e() {
-      return this.c;
-   }
-
-   public dgw f() {
-      return this.b;
+   @Override
+   public dul<?> b() {
+      return dul.k;
    }
 }

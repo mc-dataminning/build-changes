@@ -1,79 +1,38 @@
-import javax.annotation.Nullable;
+public enum eyt {
+   a(
+      new aeu("advancements/box_obtained"),
+      new aeu("advancements/task_frame_obtained"),
+      new aeu("advancements/challenge_frame_obtained"),
+      new aeu("advancements/goal_frame_obtained")
+   ),
+   b(
+      new aeu("advancements/box_unobtained"),
+      new aeu("advancements/task_frame_unobtained"),
+      new aeu("advancements/challenge_frame_unobtained"),
+      new aeu("advancements/goal_frame_unobtained")
+   );
 
-public class eyt extends exs {
-   @Nullable
-   public eqj c;
-   public long k;
-   private eys l;
-   private esg m;
+   private final aeu c;
+   private final aeu d;
+   private final aeu e;
+   private final aeu f;
 
-   public eyt(eya $$0, eqp $$1) {
-      super($$0, $$1, tf.c("controls.keybinds.title"));
+   private eyt(aeu $$0, aeu $$1, aeu $$2, aeu $$3) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
    }
 
-   @Override
-   protected void aC_() {
-      this.l = new eys(this, this.f);
-      this.e(this.l);
-      this.m = this.d(esg.a(tf.c("controls.resetAll"), $$0 -> {
-         for (eqj $$1 : this.b.X) {
-            $$1.b($$1.i());
-         }
-
-         this.l.d();
-      }).a(this.g / 2 - 155, this.h - 29, 150, 20).a());
-      this.d(esg.a(te.d, $$0 -> this.f.a(this.a)).a(this.g / 2 - 155 + 160, this.h - 29, 150, 20).a());
+   public aeu a() {
+      return this.c;
    }
 
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      if (this.c != null) {
-         this.b.a(this.c, eka.b.c.a($$2));
-         this.c = null;
-         this.l.d();
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
-      }
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (this.c != null) {
-         if ($$0 == 256) {
-            this.b.a(this.c, eka.bv);
-         } else {
-            this.b.a(this.c, eka.a($$0, $$1));
-         }
-
-         this.c = null;
-         this.k = ac.b();
-         this.l.d();
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
-      }
-   }
-
-   @Override
-   public void a(erv $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.l.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 8, 16777215);
-      boolean $$4 = false;
-
-      for (eqj $$5 : this.b.X) {
-         if (!$$5.l()) {
-            $$4 = true;
-            break;
-         }
-      }
-
-      this.m.i = $$4;
-   }
-
-   @Override
-   public void b(erv $$0, int $$1, int $$2, float $$3) {
-      this.b($$0);
+   public aeu a(ar $$0) {
+      return switch ($$0) {
+         case a -> this.d;
+         case b -> this.e;
+         case c -> this.f;
+      };
    }
 }

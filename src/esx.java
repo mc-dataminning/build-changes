@@ -1,35 +1,22 @@
-public class esx {
-   public static final aer a = new aer("textures/gui/title/minecraft.png");
-   public static final aer b = new aer("textures/gui/title/minceraft.png");
-   public static final aer c = new aer("textures/gui/title/edition.png");
-   public static final int d = 256;
-   public static final int e = 44;
-   private static final int g = 256;
-   private static final int h = 64;
-   private static final int i = 128;
-   private static final int j = 14;
-   private static final int k = 128;
-   private static final int l = 16;
-   public static final int f = 30;
-   private static final int m = 7;
-   private final boolean n = (double)aru.a().i() < 1.0E-4;
-   private final boolean o;
+public class esx extends esl {
+   protected final etx a;
 
-   public esx(boolean $$0) {
-      this.o = $$0;
+   public esx(int $$0, int $$1, int $$2, int $$3, etx $$4, esl.c $$5) {
+      this($$0, $$1, $$2, $$3, $$4, $$5, th.a);
    }
 
-   public void a(erv $$0, int $$1, float $$2) {
-      this.a($$0, $$1, $$2, 30);
+   public esx(int $$0, int $$1, int $$2, int $$3, etx $$4, esl.c $$5, ti $$6) {
+      super($$0, $$1, $$2, $$3, $$6, $$5, o);
+      this.a = $$4;
    }
 
-   public void a(erv $$0, int $$1, float $$2, int $$3) {
-      $$0.a(1.0F, 1.0F, 1.0F, this.o ? 1.0F : $$2);
-      int $$4 = $$1 / 2 - 128;
-      $$0.a(this.n ? b : a, $$4, $$3, 0.0F, 0.0F, 256, 44, 256, 64);
-      int $$5 = $$1 / 2 - 64;
-      int $$6 = $$3 + 44 - 7;
-      $$0.a(c, $$5, $$6, 0.0F, 0.0F, 128, 14, 128, 16);
-      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+   public esx(int $$0, int $$1, etx $$2, esl.c $$3, ti $$4) {
+      this(0, 0, $$0, $$1, $$2, $$3, $$4);
+   }
+
+   @Override
+   public void b(esa $$0, int $$1, int $$2, float $$3) {
+      aeu $$4 = this.a.a(this.az_(), this.o());
+      $$0.a($$4, this.r(), this.t(), this.f, this.g);
    }
 }

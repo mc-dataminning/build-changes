@@ -1,35 +1,83 @@
-public class bgm {
-   public static void a(cpl $$0, gu $$1, bgj $$2) {
-      a($$0, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), $$2);
+import java.util.Set;
+import java.util.function.Predicate;
+
+public interface bgm extends bgk {
+   int m_ = 64;
+   int n_ = 8;
+
+   int b();
+
+   boolean aa_();
+
+   cja a(int var1);
+
+   cja a(int var1, int var2);
+
+   cja b(int var1);
+
+   void a(int var1, cja var2);
+
+   default int ab_() {
+      return 64;
    }
 
-   public static void a(cpl $$0, bii $$1, bgj $$2) {
-      a($$0, $$1.dp(), $$1.dr(), $$1.dv(), $$2);
+   void e();
+
+   boolean a(cbp var1);
+
+   default void d_(cbp $$0) {
    }
 
-   private static void a(cpl $$0, double $$1, double $$2, double $$3, bgj $$4) {
-      for (int $$5 = 0; $$5 < $$4.b(); $$5++) {
-         a($$0, $$1, $$2, $$3, $$4.a($$5));
+   default void c(cbp $$0) {
+   }
+
+   default boolean b(int $$0, cja $$1) {
+      return true;
+   }
+
+   default boolean a(bgm $$0, int $$1, cja $$2) {
+      return true;
+   }
+
+   default int a_(civ $$0) {
+      int $$1 = 0;
+
+      for (int $$2 = 0; $$2 < this.b(); $$2++) {
+         cja $$3 = this.a($$2);
+         if ($$3.d().equals($$0)) {
+            $$1 += $$3.L();
+         }
       }
+
+      return $$1;
    }
 
-   public static void a(cpl $$0, gu $$1, hn<cix> $$2) {
-      $$2.forEach($$2x -> a($$0, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), $$2x));
+   default boolean a(Set<civ> $$0) {
+      return this.a_($$1 -> !$$1.b() && $$0.contains($$1.d()));
    }
 
-   public static void a(cpl $$0, double $$1, double $$2, double $$3, cix $$4) {
-      double $$5 = (double)bim.ad.k();
-      double $$6 = 1.0 - $$5;
-      double $$7 = $$5 / 2.0;
-      double $$8 = Math.floor($$1) + $$0.z.j() * $$6 + $$7;
-      double $$9 = Math.floor($$2) + $$0.z.j() * $$6;
-      double $$10 = Math.floor($$3) + $$0.z.j() * $$6 + $$7;
+   default boolean a_(Predicate<cja> $$0) {
+      for (int $$1 = 0; $$1 < this.b(); $$1++) {
+         cja $$2 = this.a($$1);
+         if ($$0.test($$2)) {
+            return true;
+         }
+      }
 
-      while (!$$4.b()) {
-         byf $$11 = new byf($$0, $$8, $$9, $$10, $$4.a($$0.z.a(21) + 10));
-         float $$12 = 0.05F;
-         $$11.o($$0.z.a(0.0, 0.11485000171139836), $$0.z.a(0.2, 0.11485000171139836), $$0.z.a(0.0, 0.11485000171139836));
-         $$0.b($$11);
+      return false;
+   }
+
+   static boolean a(dcq $$0, cbp $$1) {
+      return a($$0, $$1, 8);
+   }
+
+   static boolean a(dcq $$0, cbp $$1, int $$2) {
+      cpq $$3 = $$0.k();
+      gw $$4 = $$0.p();
+      if ($$3 == null) {
+         return false;
+      } else {
+         return $$3.c_($$4) != $$0 ? false : $$1.i((double)$$4.u() + 0.5, (double)$$4.v() + 0.5, (double)$$4.w() + 0.5) <= (double)($$2 * $$2);
       }
    }
 }

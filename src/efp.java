@@ -1,50 +1,23 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
 
-public record efp(Optional<Boolean> b, Optional<Boolean> c) implements eff {
-   public static final Codec<efp> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(aqy.a(Codec.BOOL, "raining").forGetter(efp::d), aqy.a(Codec.BOOL, "thundering").forGetter(efp::e)).apply($$0, efp::new)
-   );
+public record efp(float b) implements efk {
+   public static final Codec<efp> a = RecordCodecBuilder.create($$0 -> $$0.group(Codec.FLOAT.fieldOf("chance").forGetter(efp::c)).apply($$0, efp::new));
 
    @Override
-   public efg b() {
-      return efh.p;
+   public efl b() {
+      return efm.e;
    }
 
-   public boolean a(ecg $$0) {
-      akk $$1 = $$0.d();
-      return this.b.isPresent() && this.b.get() != $$1.Z() ? false : !this.c.isPresent() || this.c.get() == $$1.Y();
+   public boolean a(ecl $$0) {
+      return $$0.b().i() < this.b;
    }
 
-   public static efp.a c() {
-      return new efp.a();
+   public static efk.a a(float $$0) {
+      return () -> new efp($$0);
    }
 
-   public Optional<Boolean> d() {
+   public float c() {
       return this.b;
-   }
-
-   public Optional<Boolean> e() {
-      return this.c;
-   }
-
-   public static class a implements eff.a {
-      private Optional<Boolean> a = Optional.empty();
-      private Optional<Boolean> b = Optional.empty();
-
-      public efp.a a(boolean $$0) {
-         this.a = Optional.of($$0);
-         return this;
-      }
-
-      public efp.a b(boolean $$0) {
-         this.b = Optional.of($$0);
-         return this;
-      }
-
-      public efp a() {
-         return new efp(this.a, this.b);
-      }
    }
 }

@@ -1,86 +1,88 @@
-import org.joml.Matrix4f;
+import org.joml.Quaternionf;
 
-public abstract class fsw<T extends bii> {
-   protected static final float b = 0.025F;
-   protected final fsv c;
-   private final ert a;
-   protected float d;
-   protected float e = 1.0F;
+public class fsw extends ftb<bxb> {
+   private static final aeu a = new aeu("textures/entity/end_crystal/end_crystal.png");
+   private static final foh f = foh.e(a);
+   private static final float g = (float)Math.sin(Math.PI / 4);
+   private static final String h = "glass";
+   private static final String i = "base";
+   private final fhx j;
+   private final fhx k;
+   private final fhx l;
 
-   protected fsw(fsx.a $$0) {
-      this.c = $$0.a();
-      this.a = $$0.h();
+   public fsw(ftc.a $$0) {
+      super($$0);
+      this.d = 0.5F;
+      fhx $$1 = $$0.a(fhw.U);
+      this.k = $$1.b("glass");
+      this.j = $$1.b("cube");
+      this.l = $$1.b("base");
    }
 
-   public final int b(T $$0, float $$1) {
-      gu $$2 = gu.a($$0.k($$1));
-      return fnt.a(this.a($$0, $$2), this.b($$0, $$2));
+   public static fid a() {
+      fif $$0 = new fif();
+      fig $$1 = $$0.a();
+      $$1.a("glass", fic.c().a(0, 0).a(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F), fhz.a);
+      $$1.a("cube", fic.c().a(32, 0).a(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F), fhz.a);
+      $$1.a("base", fic.c().a(0, 16).a(-6.0F, 0.0F, -6.0F, 12.0F, 4.0F, 12.0F), fhz.a);
+      return fid.a($$0, 64, 32);
    }
 
-   protected int b(T $$0, gu $$1) {
-      return $$0.dK().a(cpu.a, $$1);
-   }
-
-   protected int a(T $$0, gu $$1) {
-      return $$0.bM() ? 15 : $$0.dK().a(cpu.b, $$1);
-   }
-
-   public boolean a(T $$0, fqw $$1, double $$2, double $$3, double $$4) {
-      if (!$$0.k($$2, $$3, $$4)) {
-         return false;
-      } else if ($$0.at) {
-         return true;
-      } else {
-         egy $$5 = $$0.k_().g(0.5);
-         if ($$5.e() || $$5.a() == 0.0) {
-            $$5 = new egy($$0.dp() - 2.0, $$0.dr() - 2.0, $$0.dv() - 2.0, $$0.dp() + 2.0, $$0.dr() + 2.0, $$0.dv() + 2.0);
-         }
-
-         return $$1.a($$5);
+   public void a(bxb $$0, float $$1, float $$2, elk $$3, fnz $$4, int $$5) {
+      $$3.a();
+      float $$6 = a($$0, $$2);
+      float $$7 = ((float)$$0.b + $$2) * 3.0F;
+      elo $$8 = $$4.getBuffer(f);
+      $$3.a();
+      $$3.b(2.0F, 2.0F, 2.0F);
+      $$3.a(0.0F, -0.5F, 0.0F);
+      int $$9 = fyq.d;
+      if ($$0.m()) {
+         this.l.a($$3, $$8, $$5, $$9);
       }
-   }
 
-   public ehd a(T $$0, float $$1) {
-      return ehd.b;
-   }
-
-   public void a(T $$0, float $$1, float $$2, elf $$3, fnu $$4, int $$5) {
-      if (this.b($$0)) {
-         this.a($$0, $$0.H_(), $$3, $$4, $$5);
+      $$3.a(a.d.rotationDegrees($$7));
+      $$3.a(0.0F, 1.5F + $$6 / 2.0F, 0.0F);
+      $$3.a(new Quaternionf().setAngleAxis((float) (Math.PI / 3), g, 0.0F, g));
+      this.k.a($$3, $$8, $$5, $$9);
+      float $$10 = 0.875F;
+      $$3.b(0.875F, 0.875F, 0.875F);
+      $$3.a(new Quaternionf().setAngleAxis((float) (Math.PI / 3), g, 0.0F, g));
+      $$3.a(a.d.rotationDegrees($$7));
+      this.k.a($$3, $$8, $$5, $$9);
+      $$3.b(0.875F, 0.875F, 0.875F);
+      $$3.a(new Quaternionf().setAngleAxis((float) (Math.PI / 3), g, 0.0F, g));
+      $$3.a(a.d.rotationDegrees($$7));
+      this.j.a($$3, $$8, $$5, $$9);
+      $$3.b();
+      $$3.b();
+      gw $$11 = $$0.j();
+      if ($$11 != null) {
+         float $$12 = (float)$$11.u() + 0.5F;
+         float $$13 = (float)$$11.v() + 0.5F;
+         float $$14 = (float)$$11.w() + 0.5F;
+         float $$15 = (float)((double)$$12 - $$0.dp());
+         float $$16 = (float)((double)$$13 - $$0.dr());
+         float $$17 = (float)((double)$$14 - $$0.dv());
+         $$3.a($$15, $$16, $$17);
+         fsx.a(-$$15, -$$16 + $$6, -$$17, $$2, $$0.b, $$3, $$4, $$5);
       }
+
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   protected boolean b(T $$0) {
-      return $$0.cB() && $$0.ac();
+   public static float a(bxb $$0, float $$1) {
+      float $$2 = (float)$$0.b + $$1;
+      float $$3 = ars.a($$2 * 0.2F) / 2.0F + 0.5F;
+      $$3 = ($$3 * $$3 + $$3) * 0.4F;
+      return $$3 - 1.4F;
    }
 
-   public abstract aer a(T var1);
-
-   public ert b() {
-      return this.a;
+   public aeu a(bxb $$0) {
+      return a;
    }
 
-   protected void a(T $$0, tf $$1, elf $$2, fnu $$3, int $$4) {
-      double $$5 = this.c.b($$0);
-      if (!($$5 > 4096.0)) {
-         boolean $$6 = !$$0.bU();
-         float $$7 = $$0.dh();
-         int $$8 = "deadmau5".equals($$1.getString()) ? -10 : 0;
-         $$2.a();
-         $$2.a(0.0F, $$7, 0.0F);
-         $$2.a(this.c.b());
-         $$2.b(-0.025F, -0.025F, 0.025F);
-         Matrix4f $$9 = $$2.c().a();
-         float $$10 = eql.O().m.a(0.25F);
-         int $$11 = (int)($$10 * 255.0F) << 24;
-         ert $$12 = this.b();
-         float $$13 = (float)(-$$12.a($$1) / 2);
-         $$12.a($$1, $$13, (float)$$8, 553648127, false, $$9, $$3, $$6 ? ert.a.b : ert.a.a, $$11, $$4);
-         if ($$6) {
-            $$12.a($$1, $$13, (float)$$8, -1, false, $$9, $$3, ert.a.a, 0, $$4);
-         }
-
-         $$2.b();
-      }
+   public boolean a(bxb $$0, frb $$1, double $$2, double $$3, double $$4) {
+      return super.a($$0, $$1, $$2, $$3, $$4) || $$0.j() != null;
    }
 }

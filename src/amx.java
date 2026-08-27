@@ -1,117 +1,186 @@
-import com.google.common.base.Functions;
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import java.util.Collection;
+import com.mojang.brigadier.arguments.StringArgumentType;
+import com.mojang.logging.LogUtils;
 import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import java.util.function.Function;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
 public class amx {
-   private final Set<amz> a;
-   private Map<String, amu> b = ImmutableMap.of();
-   private List<amu> c = ImmutableList.of();
+   private static final Logger a = LogUtils.getLogger();
+   private final String b;
+   private final amx.c c;
+   private final ti d;
+   private final amx.a e;
+   private final amx.b f;
+   private final boolean g;
+   private final boolean h;
+   private final anb i;
 
-   public amx(amz... $$0) {
-      this.a = ImmutableSet.copyOf($$0);
+   @Nullable
+   public static amx a(String $$0, ti $$1, boolean $$2, amx.c $$3, ame $$4, amx.b $$5, anb $$6) {
+      int $$7 = aa.b().a($$4);
+      amx.a $$8 = a($$0, $$3, $$7);
+      return $$8 != null ? a($$0, $$1, $$2, $$3, $$8, $$5, false, $$6) : null;
    }
 
-   public void a() {
-      List<String> $$0 = this.c.stream().map(amu::f).collect(ImmutableList.toImmutableList());
-      this.b = this.h();
-      this.c = this.b($$0);
+   public static amx a(String $$0, ti $$1, boolean $$2, amx.c $$3, amx.a $$4, amx.b $$5, boolean $$6, anb $$7) {
+      return new amx($$0, $$2, $$3, $$1, $$4, $$5, $$6, $$7);
    }
 
-   private Map<String, amu> h() {
-      Map<String, amu> $$0 = Maps.newTreeMap();
-
-      for (amz $$1 : this.a) {
-         $$1.a($$1x -> $$0.put($$1x.f(), $$1x));
-      }
-
-      return ImmutableMap.copyOf($$0);
-   }
-
-   public void a(Collection<String> $$0) {
-      this.c = this.b($$0);
-   }
-
-   public boolean a(String $$0) {
-      amu $$1 = this.b.get($$0);
-      if ($$1 != null && !this.c.contains($$1)) {
-         List<amu> $$2 = Lists.newArrayList(this.c);
-         $$2.add($$1);
-         this.c = $$2;
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   public boolean b(String $$0) {
-      amu $$1 = this.b.get($$0);
-      if ($$1 != null && this.c.contains($$1)) {
-         List<amu> $$2 = Lists.newArrayList(this.c);
-         $$2.remove($$1);
-         this.c = $$2;
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   private List<amu> b(Collection<String> $$0) {
-      List<amu> $$1 = this.c($$0).collect(Collectors.toList());
-
-      for (amu $$2 : this.b.values()) {
-         if ($$2.g() && !$$1.contains($$2)) {
-            $$2.i().a($$1, $$2, Functions.identity(), false);
-         }
-      }
-
-      return ImmutableList.copyOf($$1);
-   }
-
-   private Stream<amu> c(Collection<String> $$0) {
-      return $$0.stream().map(this.b::get).filter(Objects::nonNull);
-   }
-
-   public Collection<String> b() {
-      return this.b.keySet();
-   }
-
-   public Collection<amu> c() {
-      return this.b.values();
-   }
-
-   public Collection<String> d() {
-      return this.c.stream().map(amu::f).collect(ImmutableSet.toImmutableSet());
-   }
-
-   public cdu e() {
-      return this.f().stream().map(amu::d).reduce(cdu::b).orElse(cdu.a());
-   }
-
-   public Collection<amu> f() {
-      return this.c;
+   private amx(String $$0, boolean $$1, amx.c $$2, ti $$3, amx.a $$4, amx.b $$5, boolean $$6, anb $$7) {
+      this.b = $$0;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.g = $$1;
+      this.f = $$5;
+      this.h = $$6;
+      this.i = $$7;
    }
 
    @Nullable
-   public amu c(String $$0) {
-      return this.b.get($$0);
+   public static amx.a a(String $$0, amx.c $$1, int $$2) {
+      try {
+         amx.a var11;
+         try (amd $$3 = $$1.a($$0)) {
+            amr $$4 = $$3.a(amr.b);
+            if ($$4 == null) {
+               a.warn("Missing metadata in pack {}", $$0);
+               return null;
+            }
+
+            ama $$5 = $$3.a(ama.a);
+            cdx $$6 = $$5 != null ? $$5.a() : cdx.a();
+            arl<Integer> $$7 = a($$0, $$4);
+            amy $$8 = amy.a($$7, $$2);
+            amc $$9 = $$3.a(amc.a);
+            List<String> $$10 = $$9 != null ? $$9.a($$2) : List.of();
+            var11 = new amx.a($$4.a(), $$8, $$6, $$10);
+         }
+
+         return var11;
+      } catch (Exception var14) {
+         a.warn("Failed to read pack {} metadata", $$0, var14);
+         return null;
+      }
    }
 
-   public boolean d(String $$0) {
-      return this.b.containsKey($$0);
+   private static arl<Integer> a(String $$0, amr $$1) {
+      int $$2 = $$1.b();
+      if ($$1.c().isEmpty()) {
+         return new arl<>($$2);
+      } else {
+         arl<Integer> $$3 = $$1.c().get();
+         if (!$$3.a($$2)) {
+            a.warn("Pack {} declared support for versions {} but declared main format is {}, defaulting to {}", new Object[]{$$0, $$3, $$2, $$2});
+            return new arl<>($$2);
+         } else {
+            return $$3;
+         }
+      }
    }
 
-   public List<ama> g() {
-      return this.c.stream().map(amu::e).collect(ImmutableList.toImmutableList());
+   public ti a() {
+      return this.d;
+   }
+
+   public ti b() {
+      return this.e.a();
+   }
+
+   public ti a(boolean $$0) {
+      return tk.a(this.i.a(ti.b(this.b)))
+         .a($$1 -> $$1.a($$0 ? n.k : n.m).a(StringArgumentType.escapeIfRequired(this.b)).a(new tn(tn.a.a, ti.h().b(this.d).f("\n").b(this.e.a))));
+   }
+
+   public amy c() {
+      return this.e.b();
+   }
+
+   public cdx d() {
+      return this.e.c();
+   }
+
+   public amd e() {
+      return this.c.a(this.b, this.e);
+   }
+
+   public String f() {
+      return this.b;
+   }
+
+   public boolean g() {
+      return this.g;
+   }
+
+   public boolean h() {
+      return this.h;
+   }
+
+   public amx.b i() {
+      return this.f;
+   }
+
+   public anb j() {
+      return this.i;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return !($$0 instanceof amx $$1) ? false : this.b.equals($$1.b);
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return this.b.hashCode();
+   }
+
+   public static record a(ti a, amy b, cdx c, List<String> d) {
+   }
+
+   public static enum b {
+      a,
+      b;
+
+      public <T> int a(List<T> $$0, T $$1, Function<T, amx> $$2, boolean $$3) {
+         amx.b $$4 = $$3 ? this.a() : this;
+         if ($$4 == b) {
+            int $$5;
+            for ($$5 = 0; $$5 < $$0.size(); $$5++) {
+               amx $$6 = $$2.apply($$0.get($$5));
+               if (!$$6.h() || $$6.i() != this) {
+                  break;
+               }
+            }
+
+            $$0.add($$5, $$1);
+            return $$5;
+         } else {
+            int $$7;
+            for ($$7 = $$0.size() - 1; $$7 >= 0; $$7--) {
+               amx $$8 = $$2.apply($$0.get($$7));
+               if (!$$8.h() || $$8.i() != this) {
+                  break;
+               }
+            }
+
+            $$0.add($$7 + 1, $$1);
+            return $$7 + 1;
+         }
+      }
+
+      public amx.b a() {
+         return this == a ? b : a;
+      }
+   }
+
+   public interface c {
+      amd a(String var1);
+
+      amd a(String var1, amx.a var2);
    }
 }

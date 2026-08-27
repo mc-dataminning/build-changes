@@ -1,29 +1,17 @@
-public abstract class cls implements clr {
-   private final aer a;
-   private final clq b;
+public enum cls implements ask {
+   a("food"),
+   b("blocks"),
+   c("misc");
 
-   public cls(aer $$0, clq $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public static final ask.a<cls> d = ask.a(cls::values);
+   private final String e;
+
+   private cls(String $$0) {
+      this.e = $$0;
    }
 
    @Override
-   public aer e() {
-      return this.a;
-   }
-
-   @Override
-   public boolean ah_() {
-      return true;
-   }
-
-   @Override
-   public cix a(hs $$0) {
-      return cix.b;
-   }
-
-   @Override
-   public clq d() {
-      return this.b;
+   public String c() {
+      return this.e;
    }
 }

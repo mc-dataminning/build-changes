@@ -1,54 +1,36 @@
-import javax.annotation.Nullable;
+public class csx extends crp {
+   public static final int a = 5;
+   private static final hc[] b = hc.values();
 
-public class csx extends cze {
-   public static final dft a = dfp.R;
-
-   public csx(dey.d $$0) {
+   public csx(dfd.d $$0) {
       super($$0);
-      this.k(this.n().a(a, ha.c));
-   }
-
-   @Nullable
-   @Override
-   public dcl a(gu $$0, dez $$1) {
-      return new dcq($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dcl> dcm<T> a(cpl $$0, dez $$1, dcn<T> $$2) {
-      return !$$0.B ? a($$2, dcn.J, ($$0x, $$1x, $$2x, $$3) -> djs.c.a($$0x, $$3.gc(), $$3.gd())) : null;
-   }
-
-   @Nullable
-   @Override
-   public dez a(clf $$0) {
-      return super.a($$0).a(a, $$0.g());
    }
 
    @Override
-   public int a(dez $$0, cor $$1, gu $$2, ha $$3) {
-      return $$3 != $$0.c(a) ? super.a($$0, $$1, $$2, $$3) : 0;
+   public void b(dfe $$0, akn $$1, gw $$2, arx $$3) {
+      if ($$3.a(5) == 0) {
+         hc $$4 = b[$$3.a(b.length)];
+         gw $$5 = $$2.a($$4);
+         dfe $$6 = $$1.a_($$5);
+         csq $$7 = null;
+         if (g($$6)) {
+            $$7 = csr.qy;
+         } else if ($$6.a(csr.qy) && $$6.c(crq.b) == $$4) {
+            $$7 = csr.qx;
+         } else if ($$6.a(csr.qx) && $$6.c(crq.b) == $$4) {
+            $$7 = csr.qw;
+         } else if ($$6.a(csr.qw) && $$6.c(crq.b) == $$4) {
+            $$7 = csr.qv;
+         }
+
+         if ($$7 != null) {
+            dfe $$8 = $$7.n().a(crq.b, $$4).a(crq.a, Boolean.valueOf($$6.u().a() == eai.c));
+            $$1.b($$5, $$8);
+         }
+      }
    }
 
-   @Override
-   protected void a(dfa.a<csl, dez> $$0) {
-      super.a($$0);
-      $$0.a(a);
-   }
-
-   @Override
-   public dez a(dez $$0, cyx $$1) {
-      return $$0.a(a, $$1.a($$0.c(a)));
-   }
-
-   @Override
-   public dez a(dez $$0, cxg $$1) {
-      return $$0.a($$1.a($$0.c(a)));
-   }
-
-   @Override
-   public int b() {
-      return 10;
+   public static boolean g(dfe $$0) {
+      return $$0.i() || $$0.a(csr.G) && $$0.u().e() == 8;
    }
 }

@@ -1,32 +1,24 @@
-public class acl implements ux<aaw> {
+public class acl implements va<aaz> {
    private final int a;
-   private final cix b;
 
-   public acl(int $$0, cix $$1) {
+   public acl(int $$0) {
       this.a = $$0;
-      this.b = $$1.p();
    }
 
-   public void a(aaw $$0) {
-      $$0.a(this);
-   }
-
-   public acl(si $$0) {
+   public acl(sl $$0) {
       this.a = $$0.readShort();
-      this.b = $$0.q();
    }
 
    @Override
-   public void a(si $$0) {
+   public void a(sl $$0) {
       $$0.l(this.a);
-      $$0.a(this.b);
+   }
+
+   public void a(aaz $$0) {
+      $$0.a(this);
    }
 
    public int a() {
       return this.a;
-   }
-
-   public cix d() {
-      return this.b;
    }
 }

@@ -1,117 +1,171 @@
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectList;
+import it.unimi.dsi.fastutil.objects.ObjectListIterator;
+import java.util.EnumSet;
+import java.util.Set;
+import java.util.function.Predicate;
+import org.slf4j.Logger;
 
-public record dkn(dkq j, dez k, dez l, dko m, dkz.o n, List<cqs.d> o, int p, boolean q, boolean r, boolean s, boolean t) {
-   public static final Codec<dkn> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dkq.a.fieldOf("noise").forGetter(dkn::f),
-               dez.b.fieldOf("default_block").forGetter(dkn::g),
-               dez.b.fieldOf("default_fluid").forGetter(dkn::h),
-               dko.a.fieldOf("noise_router").forGetter(dkn::i),
-               dkz.o.b.fieldOf("surface_rule").forGetter(dkn::j),
-               cqs.d.a.listOf().fieldOf("spawn_target").forGetter(dkn::k),
-               Codec.INT.fieldOf("sea_level").forGetter(dkn::l),
-               Codec.BOOL.fieldOf("disable_mob_generation").forGetter(dkn::a),
-               Codec.BOOL.fieldOf("aquifers_enabled").forGetter(dkn::b),
-               Codec.BOOL.fieldOf("ore_veins_enabled").forGetter(dkn::c),
-               Codec.BOOL.fieldOf("legacy_random_source").forGetter(dkn::n)
-            )
-            .apply($$0, dkn::new)
-   );
-   public static final Codec<he<dkn>> b = aen.a(jc.aw, a);
-   public static final aeq<dkn> c = aeq.a(jc.aw, new aer("overworld"));
-   public static final aeq<dkn> d = aeq.a(jc.aw, new aer("large_biomes"));
-   public static final aeq<dkn> e = aeq.a(jc.aw, new aer("amplified"));
-   public static final aeq<dkn> f = aeq.a(jc.aw, new aer("nether"));
-   public static final aeq<dkn> g = aeq.a(jc.aw, new aer("end"));
-   public static final aeq<dkn> h = aeq.a(jc.aw, new aer("caves"));
-   public static final aeq<dkn> i = aeq.a(jc.aw, new aer("floating_islands"));
+public class dkn {
+   private static final Logger a = LogUtils.getLogger();
+   static final Predicate<dfe> b = $$0 -> !$$0.i();
+   static final Predicate<dfe> c = dfd.a::d;
+   private final aql d;
+   private final Predicate<dfe> e;
+   private final dha f;
 
-   @Deprecated
-   public boolean a() {
-      return this.q;
+   public dkn(dha $$0, dkn.a $$1) {
+      this.e = $$1.e();
+      this.f = $$0;
+      int $$2 = ars.e($$0.D_() + 1);
+      this.d = new ase($$2, 256);
    }
 
-   public boolean b() {
-      return this.r;
+   public static void a(dha $$0, Set<dkn.a> $$1) {
+      int $$2 = $$1.size();
+      ObjectList<dkn> $$3 = new ObjectArrayList($$2);
+      ObjectListIterator<dkn> $$4 = $$3.iterator();
+      int $$5 = $$0.b() + 16;
+      gw.a $$6 = new gw.a();
+
+      for (int $$7 = 0; $$7 < 16; $$7++) {
+         for (int $$8 = 0; $$8 < 16; $$8++) {
+            for (dkn.a $$9 : $$1) {
+               $$3.add($$0.a($$9));
+            }
+
+            for (int $$10 = $$5 - 1; $$10 >= $$0.C_(); $$10--) {
+               $$6.d($$7, $$10, $$8);
+               dfe $$11 = $$0.a_($$6);
+               if (!$$11.a(csr.a)) {
+                  while ($$4.hasNext()) {
+                     dkn $$12 = (dkn)$$4.next();
+                     if ($$12.e.test($$11)) {
+                        $$12.a($$7, $$8, $$10 + 1);
+                        $$4.remove();
+                     }
+                  }
+
+                  if ($$3.isEmpty()) {
+                     break;
+                  }
+
+                  $$4.back($$2);
+               }
+            }
+         }
+      }
    }
 
-   public boolean c() {
-      return this.s;
+   public boolean a(int $$0, int $$1, int $$2, dfe $$3) {
+      int $$4 = this.a($$0, $$2);
+      if ($$1 <= $$4 - 2) {
+         return false;
+      } else {
+         if (this.e.test($$3)) {
+            if ($$1 >= $$4) {
+               this.a($$0, $$2, $$1 + 1);
+               return true;
+            }
+         } else if ($$4 - 1 == $$1) {
+            gw.a $$5 = new gw.a();
+
+            for (int $$6 = $$1 - 1; $$6 >= this.f.C_(); $$6--) {
+               $$5.d($$0, $$6, $$2);
+               if (this.e.test(this.f.a_($$5))) {
+                  this.a($$0, $$2, $$6 + 1);
+                  return true;
+               }
+            }
+
+            this.a($$0, $$2, this.f.C_());
+            return true;
+         }
+
+         return false;
+      }
    }
 
-   public dlh.a d() {
-      return this.t ? dlh.a.a : dlh.a.b;
+   public int a(int $$0, int $$1) {
+      return this.a(c($$0, $$1));
    }
 
-   public static void a(nm<dkn> $$0) {
-      $$0.a(c, a($$0, false, false));
-      $$0.a(d, a($$0, false, true));
-      $$0.a(e, a($$0, true, false));
-      $$0.a(f, c($$0));
-      $$0.a(g, b($$0));
-      $$0.a(h, d($$0));
-      $$0.a(i, e($$0));
+   public int b(int $$0, int $$1) {
+      return this.a(c($$0, $$1)) - 1;
    }
 
-   private static dkn b(nm<?> $$0) {
-      return new dkn(dkq.d, csm.fz.n(), csm.a.n(), dkp.a($$0.a(jc.at)), nz.c(), List.of(), 0, true, false, false, true);
+   private int a(int $$0) {
+      return this.d.a($$0) + this.f.C_();
    }
 
-   private static dkn c(nm<?> $$0) {
-      return new dkn(dkq.c, csm.dW.n(), csm.H.n(), dkp.a($$0.a(jc.at), $$0.a(jc.ax)), nz.b(), List.of(), 32, false, false, false, true);
+   private void a(int $$0, int $$1, int $$2) {
+      this.d.b(c($$0, $$1), $$2 - this.f.C_());
    }
 
-   private static dkn a(nm<?> $$0, boolean $$1, boolean $$2) {
-      return new dkn(dkq.b, csm.b.n(), csm.G.n(), dkp.a($$0.a(jc.at), $$0.a(jc.ax), $$2, $$1), nz.a(), new cqz().a(), 63, false, true, true, false);
+   public void a(dha $$0, dkn.a $$1, long[] $$2) {
+      long[] $$3 = this.d.a();
+      if ($$3.length == $$2.length) {
+         System.arraycopy($$2, 0, $$3, 0, $$2.length);
+      } else {
+         a.warn("Ignoring heightmap data for chunk " + $$0.f() + ", size does not match; expected: " + $$3.length + ", got: " + $$2.length);
+         a($$0, EnumSet.of($$1));
+      }
    }
 
-   private static dkn d(nm<?> $$0) {
-      return new dkn(dkq.e, csm.b.n(), csm.G.n(), dkp.b($$0.a(jc.at), $$0.a(jc.ax)), nz.a(false, true, true), List.of(), 32, false, false, false, true);
+   public long[] a() {
+      return this.d.a();
    }
 
-   private static dkn e(nm<?> $$0) {
-      return new dkn(dkq.f, csm.b.n(), csm.G.n(), dkp.c($$0.a(jc.at), $$0.a(jc.ax)), nz.a(false, false, false), List.of(), -64, false, false, false, true);
+   private static int c(int $$0, int $$1) {
+      return $$0 + $$1 * 16;
    }
 
-   public static dkn e() {
-      return new dkn(dkq.b, csm.b.n(), csm.a.n(), dkp.a(), nz.d(), List.of(), 63, true, false, false, false);
+   public static enum a implements ask {
+      a("WORLD_SURFACE_WG", dkn.b.a, dkn.b),
+      b("WORLD_SURFACE", dkn.b.c, dkn.b),
+      c("OCEAN_FLOOR_WG", dkn.b.a, dkn.c),
+      d("OCEAN_FLOOR", dkn.b.b, dkn.c),
+      e("MOTION_BLOCKING", dkn.b.c, $$0 -> $$0.d() || !$$0.u().c()),
+      f("MOTION_BLOCKING_NO_LEAVES", dkn.b.b, $$0 -> ($$0.d() || !$$0.u().c()) && !($$0.b() instanceof cwx));
+
+      public static final Codec<dkn.a> g = ask.a(dkn.a::values);
+      private final String h;
+      private final dkn.b i;
+      private final Predicate<dfe> j;
+
+      private a(String $$0, dkn.b $$1, Predicate<dfe> $$2) {
+         this.h = $$0;
+         this.i = $$1;
+         this.j = $$2;
+      }
+
+      public String a() {
+         return this.h;
+      }
+
+      public boolean b() {
+         return this.i == dkn.b.c;
+      }
+
+      public boolean d() {
+         return this.i != dkn.b.a;
+      }
+
+      public Predicate<dfe> e() {
+         return this.j;
+      }
+
+      @Override
+      public String c() {
+         return this.h;
+      }
    }
 
-   public dkq f() {
-      return this.j;
-   }
-
-   public dez g() {
-      return this.k;
-   }
-
-   public dez h() {
-      return this.l;
-   }
-
-   public dko i() {
-      return this.m;
-   }
-
-   public dkz.o j() {
-      return this.n;
-   }
-
-   public List<cqs.d> k() {
-      return this.o;
-   }
-
-   public int l() {
-      return this.p;
-   }
-
-   public boolean m() {
-      return this.r;
-   }
-
-   public boolean n() {
-      return this.t;
+   public static enum b {
+      a,
+      b,
+      c;
    }
 }

@@ -1,183 +1,95 @@
 import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Optional;
-import java.util.function.Function;
-import org.slf4j.Logger;
+import java.util.function.BiConsumer;
 
-public class dtb {
-   private static final Logger b = LogUtils.getLogger();
+public class dtb extends dsz {
    public static final Codec<dtb> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  ht.a(jc.aB).optionalFieldOf("structure_overrides").forGetter($$0x -> $$0x.c),
-                  dsy.a.listOf().fieldOf("layers").forGetter(dtb::e),
-                  Codec.BOOL.fieldOf("lakes").orElse(false).forGetter($$0x -> $$0x.i),
-                  Codec.BOOL.fieldOf("features").orElse(false).forGetter($$0x -> $$0x.h),
-                  cqj.c.optionalFieldOf("biome").orElseGet(Optional::empty).forGetter($$0x -> Optional.of($$0x.e)),
-                  aep.d(cqq.b),
-                  aep.d(oy.g),
-                  aep.d(oy.h)
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  bfy.e.fieldOf("extra_branch_steps").forGetter($$0x -> $$0x.b),
+                  Codec.floatRange(0.0F, 1.0F).fieldOf("place_branch_per_log_probability").forGetter($$0x -> $$0x.h),
+                  bfy.d.fieldOf("extra_branch_length").forGetter($$0x -> $$0x.i),
+                  hv.a(je.e).fieldOf("can_grow_through").forGetter($$0x -> $$0x.j)
                )
-               .apply($$0, dtb::new)
-      )
-      .comapFlatMap(dtb::a, Function.identity())
-      .stable();
-   private final Optional<hi<dve>> c;
-   private final List<dsy> d = Lists.newArrayList();
-   private final he<cqj> e;
-   private final List<dez> f;
-   private boolean g;
-   private boolean h;
-   private boolean i;
-   private final List<he<duc>> j;
+            )
+            .apply($$0, dtb::new)
+   );
+   private final bfy b;
+   private final float h;
+   private final bfy i;
+   private final hk<csq> j;
 
-   private static DataResult<dtb> a(dtb $$0) {
-      int $$1 = $$0.d.stream().mapToInt(dsy::a).sum();
-      return $$1 > dii.c ? DataResult.error(() -> "Sum of layer heights is > " + dii.c, $$0) : DataResult.success($$0);
+   public dtb(int $$0, int $$1, int $$2, bfy $$3, float $$4, bfy $$5, hk<csq> $$6) {
+      super($$0, $$1, $$2);
+      this.b = $$3;
+      this.h = $$4;
+      this.i = $$5;
+      this.j = $$6;
    }
 
-   private dtb(Optional<hi<dve>> $$0, List<dsy> $$1, boolean $$2, boolean $$3, Optional<he<cqj>> $$4, he.c<cqj> $$5, he<duc> $$6, he<duc> $$7) {
-      this($$0, a($$4, $$5), List.of($$6, $$7));
-      if ($$2) {
-         this.b();
+   @Override
+   protected dta<?> a() {
+      return dta.h;
+   }
+
+   @Override
+   public List<drh.a> a(cpw $$0, BiConsumer<gw, dfe> $$1, arx $$2, int $$3, gw $$4, dqr $$5) {
+      List<drh.a> $$6 = Lists.newArrayList();
+      gw.a $$7 = new gw.a();
+
+      for (int $$8 = 0; $$8 < $$3; $$8++) {
+         int $$9 = $$4.v() + $$8;
+         if (this.b($$0, $$1, $$2, $$7.d($$4.u(), $$9, $$4.w()), $$5) && $$8 < $$3 - 1 && $$2.i() < this.h) {
+            hc $$10 = hc.c.a.a($$2);
+            int $$11 = this.i.a($$2);
+            int $$12 = Math.max(0, $$11 - this.i.a($$2) - 1);
+            int $$13 = this.b.a($$2);
+            this.a($$0, $$1, $$2, $$3, $$5, $$6, $$7, $$9, $$10, $$12, $$13);
+         }
+
+         if ($$8 == $$3 - 1) {
+            $$6.add(new drh.a($$7.d($$4.u(), $$9 + 1, $$4.w()), 0, false));
+         }
       }
 
-      if ($$3) {
-         this.a();
-      }
-
-      this.d.addAll($$1);
-      this.g();
+      return $$6;
    }
 
-   private static he<cqj> a(Optional<? extends he<cqj>> $$0, he<cqj> $$1) {
-      if ($$0.isEmpty()) {
-         b.error("Unknown biome, defaulting to plains");
-         return $$1;
-      } else {
-         return (he<cqj>)$$0.get();
-      }
-   }
+   private void a(cpw $$0, BiConsumer<gw, dfe> $$1, arx $$2, int $$3, dqr $$4, List<drh.a> $$5, gw.a $$6, int $$7, hc $$8, int $$9, int $$10) {
+      int $$11 = $$7 + $$9;
+      int $$12 = $$6.u();
+      int $$13 = $$6.w();
+      int $$14 = $$9;
 
-   public dtb(Optional<hi<dve>> $$0, he<cqj> $$1, List<he<duc>> $$2) {
-      this.c = $$0;
-      this.e = $$1;
-      this.f = Lists.newArrayList();
-      this.j = $$2;
-   }
-
-   public dtb a(List<dsy> $$0, Optional<hi<dve>> $$1, he<cqj> $$2) {
-      dtb $$3 = new dtb($$1, $$2, this.j);
-
-      for (dsy $$4 : $$0) {
-         $$3.d.add(new dsy($$4.a(), $$4.b().b()));
-         $$3.g();
-      }
-
-      if (this.h) {
-         $$3.a();
-      }
-
-      if (this.i) {
-         $$3.b();
-      }
-
-      return $$3;
-   }
-
-   public void a() {
-      this.h = true;
-   }
-
-   public void b() {
-      this.i = true;
-   }
-
-   public cqk a(he<cqj> $$0) {
-      if (!$$0.equals(this.e)) {
-         return $$0.a().d();
-      } else {
-         cqk $$1 = this.d().a().d();
-         cqk.b $$2 = new cqk.b();
-         if (this.i) {
-            for (he<duc> $$3 : this.j) {
-               $$2.a(dke.b.b, $$3);
+      while ($$14 < $$3 && $$10 > 0) {
+         if ($$14 >= 1) {
+            int $$15 = $$7 + $$14;
+            $$12 += $$8.j();
+            $$13 += $$8.l();
+            $$11 = $$15;
+            if (this.b($$0, $$1, $$2, $$6.d($$12, $$15, $$13), $$4)) {
+               $$11 = $$15 + 1;
             }
+
+            $$5.add(new drh.a($$6.i(), 0, false));
          }
 
-         boolean $$4 = (!this.g || $$0.a(cqq.a)) && this.h;
-         if ($$4) {
-            List<hi<duc>> $$5 = $$1.b();
+         $$14++;
+         $$10--;
+      }
 
-            for (int $$6 = 0; $$6 < $$5.size(); $$6++) {
-               if ($$6 != dke.b.d.ordinal() && $$6 != dke.b.e.ordinal() && (!this.i || $$6 != dke.b.b.ordinal())) {
-                  for (he<duc> $$8 : $$5.get($$6)) {
-                     $$2.a($$6, $$8);
-                  }
-               }
-            }
-         }
-
-         List<dez> $$9 = this.f();
-
-         for (int $$10 = 0; $$10 < $$9.size(); $$10++) {
-            dez $$11 = $$9.get($$10);
-            if (!dki.a.e.e().test($$11)) {
-               $$9.set($$10, null);
-               $$2.a(dke.b.k, pb.a(dnm.ab, new dpu($$10, $$11)));
-            }
-         }
-
-         return $$2.a();
+      if ($$11 - $$7 > 1) {
+         gw $$16 = new gw($$12, $$11, $$13);
+         $$5.add(new drh.a($$16, 0, false));
+         $$5.add(new drh.a($$16.c(2), 0, false));
       }
    }
 
-   public Optional<hi<dve>> c() {
-      return this.c;
-   }
-
-   public he<cqj> d() {
-      return this.e;
-   }
-
-   public List<dsy> e() {
-      return this.d;
-   }
-
-   public List<dez> f() {
-      return this.f;
-   }
-
-   public void g() {
-      this.f.clear();
-
-      for (dsy $$0 : this.d) {
-         for (int $$1 = 0; $$1 < $$0.a(); $$1++) {
-            this.f.add($$0.b());
-         }
-      }
-
-      this.g = this.f.stream().allMatch($$0x -> $$0x.a(csm.a));
-   }
-
-   public static dtb a(hf<cqj> $$0, hf<dve> $$1, hf<duc> $$2) {
-      hi<dve> $$3 = hi.a($$1.b(dur.r), $$1.b(dur.a));
-      dtb $$4 = new dtb(Optional.of($$3), a($$0), b($$2));
-      $$4.e().add(new dsy(1, csm.F));
-      $$4.e().add(new dsy(2, csm.j));
-      $$4.e().add(new dsy(1, csm.i));
-      $$4.g();
-      return $$4;
-   }
-
-   public static he<cqj> a(hf<cqj> $$0) {
-      return $$0.b(cqq.b);
-   }
-
-   public static List<he<duc>> b(hf<duc> $$0) {
-      return List.of($$0.b(oy.g), $$0.b(oy.h));
+   @Override
+   protected boolean a(cpw $$0, gw $$1) {
+      return super.a($$0, $$1) || $$0.a($$1, $$0x -> $$0x.a(this.j));
    }
 }

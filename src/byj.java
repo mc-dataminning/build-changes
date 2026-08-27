@@ -1,185 +1,100 @@
-import java.time.LocalDate;
-import java.time.temporal.ChronoField;
 import javax.annotation.Nullable;
 
-public abstract class byj extends bza implements bze {
-   private final bqt<byj> b = new bqt<>(this, 1.0, 20, 15.0F);
-   private final bqd c = new bqd(this, 1.2, false) {
-      @Override
-      public void d() {
-         super.d();
-         byj.this.v(false);
-      }
+public class byj extends bil implements bjy {
+   private static final aec<Integer> b = aef.a(byj.class, aee.b);
+   private static final int c = 80;
+   @Nullable
+   private bjb d;
 
-      @Override
-      public void c() {
-         super.c();
-         byj.this.v(true);
-      }
-   };
-
-   protected byj(bim<? extends byj> $$0, cpl $$1) {
+   public byj(bip<? extends byj> $$0, cpq $$1) {
       super($$0, $$1);
-      this.t();
+      this.I = true;
+   }
+
+   public byj(cpq $$0, double $$1, double $$2, double $$3, @Nullable bjb $$4) {
+      this(bip.aY, $$0);
+      this.e($$1, $$2, $$3);
+      double $$5 = $$0.z.j() * (float) (Math.PI * 2);
+      this.o(-Math.sin($$5) * 0.02, 0.2F, -Math.cos($$5) * 0.02);
+      this.b(80);
+      this.K = $$1;
+      this.L = $$2;
+      this.M = $$3;
+      this.d = $$4;
    }
 
    @Override
-   protected void w() {
-      this.bO.a(2, new bqw(this));
-      this.bO.a(3, new bpm(this, 1.0));
-      this.bO.a(3, new bpa<>(this, bvm.class, 6.0F, 1.0, 1.2));
-      this.bO.a(5, new brg(this, 1.0));
-      this.bO.a(6, new bqb(this, cbm.class, 8.0F));
-      this.bO.a(6, new bqo(this));
-      this.bP.a(1, new brl(this));
-      this.bP.a(2, new brm<>(this, cbm.class, true));
-      this.bP.a(3, new brm<>(this, buv.class, true));
-      this.bP.a(3, new brm<>(this, bvk.class, 10, true, false, bvk.bU));
-   }
-
-   public static bkd.a p() {
-      return bza.gg().a(bke.d, 0.25);
+   protected void a_() {
+      this.an.a(b, 80);
    }
 
    @Override
-   protected void b(gu $$0, dez $$1) {
-      this.a(this.q(), 0.15F, 1.0F);
-   }
-
-   abstract aov q();
-
-   @Override
-   public bjd eQ() {
-      return bjd.b;
+   protected bil.b aU() {
+      return bil.b.a;
    }
 
    @Override
-   public void b_() {
-      boolean $$0 = this.fU();
-      if ($$0) {
-         cix $$1 = this.c(bin.f);
-         if (!$$1.b()) {
-            if ($$1.i()) {
-               $$1.b($$1.k() + this.ag.a(2));
-               if ($$1.k() >= $$1.l()) {
-                  this.d(bin.f);
-                  this.a(bin.f, cix.b);
-               }
-            }
+   public boolean br() {
+      return !this.dF();
+   }
 
-            $$0 = false;
-         }
-
-         if ($$0) {
-            this.g(8);
-         }
+   @Override
+   public void l() {
+      if (!this.aT()) {
+         this.f(this.dn().b(0.0, -0.04, 0.0));
       }
 
-      super.b_();
-   }
+      this.a(bjh.a, this.dn());
+      this.f(this.dn().a(0.98));
+      if (this.aA()) {
+         this.f(this.dn().d(0.7, -0.5, 0.7));
+      }
 
-   @Override
-   public void by() {
-      super.by();
-      if (this.cZ() instanceof bjh $$0) {
-         this.aU = $$0.aU;
+      int $$0 = this.m() - 1;
+      this.b($$0);
+      if ($$0 <= 0) {
+         this.ak();
+         if (!this.dK().B) {
+            this.o();
+         }
+      } else {
+         this.be();
+         if (this.dK().B) {
+            this.dK().a(ix.Z, this.dp(), this.dr() + 0.5, this.dv(), 0.0, 0.0, 0.0);
+         }
       }
    }
 
+   private void o() {
+      float $$0 = 4.0F;
+      this.dK().a(this, this.dp(), this.e(0.0625), this.dv(), 4.0F, cpq.a.d);
+   }
+
    @Override
-   protected void a(aru $$0, bgo $$1) {
-      super.a($$0, $$1);
-      this.a(bin.a, new cix(cja.nG));
+   protected void b(qu $$0) {
+      $$0.a("Fuse", (short)this.m());
+   }
+
+   @Override
+   protected void a(qu $$0) {
+      this.b($$0.g("Fuse"));
    }
 
    @Nullable
-   @Override
-   public bjr a(cqa $$0, bgo $$1, bjc $$2, @Nullable bjr $$3, @Nullable qr $$4) {
-      $$3 = super.a($$0, $$1, $$2, $$3, $$4);
-      aru $$5 = $$0.y_();
-      this.a($$5, $$1);
-      this.b($$5, $$1);
-      this.t();
-      this.s($$5.i() < 0.55F * $$1.d());
-      if (this.c(bin.f).b()) {
-         LocalDate $$6 = LocalDate.now();
-         int $$7 = $$6.get(ChronoField.DAY_OF_MONTH);
-         int $$8 = $$6.get(ChronoField.MONTH_OF_YEAR);
-         if ($$8 == 10 && $$7 == 31 && $$5.i() < 0.25F) {
-            this.a(bin.f, new cix($$5.i() < 0.1F ? csm.eg : csm.ef));
-            this.bR[bin.f.b()] = 0.0F;
-         }
-      }
-
-      return $$3;
-   }
-
-   public void t() {
-      if (this.dK() != null && !this.dK().B) {
-         this.bO.a(this.c);
-         this.bO.a(this.b);
-         cix $$0 = this.b(ccf.a(this, cja.nG));
-         if ($$0.a(cja.nG)) {
-            int $$1 = 20;
-            if (this.dK().ai() != bgn.d) {
-               $$1 = 40;
-            }
-
-            this.b.c($$1);
-            this.bO.a(4, this.b);
-         } else {
-            this.bO.a(4, this.c);
-         }
-      }
+   public bjb j() {
+      return this.d;
    }
 
    @Override
-   public void a(biy $$0, float $$1) {
-      cix $$2 = this.g(this.b(ccf.a(this, cja.nG)));
-      cbs $$3 = this.b($$2, $$1);
-      double $$4 = $$0.dp() - this.dp();
-      double $$5 = $$0.e(0.3333333333333333) - $$3.dr();
-      double $$6 = $$0.dv() - this.dv();
-      double $$7 = Math.sqrt($$4 * $$4 + $$6 * $$6);
-      $$3.c($$4, $$5 + $$7 * 0.2F, $$6, 1.6F, (float)(14 - this.dK().ai().a() * 4));
-      this.a(aow.vA, 1.0F, 1.0F / (this.ee().i() * 0.4F + 0.8F));
-      this.dK().b($$3);
+   protected float a(bjn $$0, bim $$1) {
+      return 0.15F;
    }
 
-   protected cbs b(cix $$0, float $$1) {
-      return ccf.a(this, $$0, $$1);
+   public void b(int $$0) {
+      this.an.b(b, $$0);
    }
 
-   @Override
-   public boolean a(cjn $$0) {
-      return $$0 == cja.nG;
-   }
-
-   @Override
-   public void a(qr $$0) {
-      super.a($$0);
-      this.t();
-   }
-
-   @Override
-   public void a(bin $$0, cix $$1) {
-      super.a($$0, $$1);
-      if (!this.dK().B) {
-         this.t();
-      }
-   }
-
-   @Override
-   protected float b(bjk $$0, bij $$1) {
-      return 1.74F;
-   }
-
-   @Override
-   protected float l(bii $$0) {
-      return -0.7F;
-   }
-
-   public boolean ga() {
-      return this.ck();
+   public int m() {
+      return this.an.b(b);
    }
 }

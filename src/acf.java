@@ -1,55 +1,40 @@
-import javax.annotation.Nullable;
+public class acf implements va<aaz> {
+   private final cfr a;
+   private final boolean b;
+   private final boolean c;
 
-public class acf implements ux<aaw> {
-   private final acf.a a;
-   @Nullable
-   private final aer b;
-
-   public acf(acf.a $$0, @Nullable aer $$1) {
+   public acf(cfr $$0, boolean $$1, boolean $$2) {
       this.a = $$0;
       this.b = $$1;
+      this.c = $$2;
    }
 
-   public static acf a(ae $$0) {
-      return new acf(acf.a.a, $$0.j());
-   }
-
-   public static acf a() {
-      return new acf(acf.a.b, null);
-   }
-
-   public acf(si $$0) {
-      this.a = $$0.b(acf.a.class);
-      if (this.a == acf.a.a) {
-         this.b = $$0.s();
-      } else {
-         this.b = null;
-      }
+   public acf(sl $$0) {
+      this.a = $$0.b(cfr.class);
+      this.b = $$0.readBoolean();
+      this.c = $$0.readBoolean();
    }
 
    @Override
-   public void a(si $$0) {
+   public void a(sl $$0) {
       $$0.a(this.a);
-      if (this.a == acf.a.a) {
-         $$0.a(this.b);
-      }
+      $$0.a(this.b);
+      $$0.a(this.c);
    }
 
-   public void a(aaw $$0) {
+   public void a(aaz $$0) {
       $$0.a(this);
    }
 
-   public acf.a d() {
+   public cfr a() {
       return this.a;
    }
 
-   @Nullable
-   public aer e() {
+   public boolean d() {
       return this.b;
    }
 
-   public static enum a {
-      a,
-      b;
+   public boolean e() {
+      return this.c;
    }
 }

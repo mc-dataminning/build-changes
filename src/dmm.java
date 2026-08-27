@@ -1,42 +1,61 @@
-import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
-import java.util.function.Function;
-import org.apache.commons.lang3.mutable.MutableBoolean;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dmm extends dmk {
-   public dmm(Codec<dmj> $$0) {
-      super($$0);
-      this.h = ImmutableSet.of(ead.e, ead.c);
+public class dmm {
+   public static final dmm a = new dmm(false, csr.gz.n(), csr.pL.n(), csr.ek.n(), csr.aQ.n());
+   public static final Codec<dmm> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.BOOL.optionalFieldOf("debug_mode", false).forGetter(dmm::a),
+               dfe.b.optionalFieldOf("air_state", a.b()).forGetter(dmm::b),
+               dfe.b.optionalFieldOf("water_state", a.b()).forGetter(dmm::c),
+               dfe.b.optionalFieldOf("lava_state", a.b()).forGetter(dmm::d),
+               dfe.b.optionalFieldOf("barrier_state", a.b()).forGetter(dmm::e)
+            )
+            .apply($$0, dmm::new)
+   );
+   private final boolean c;
+   private final dfe d;
+   private final dfe e;
+   private final dfe f;
+   private final dfe g;
+
+   public static dmm a(boolean $$0, dfe $$1, dfe $$2, dfe $$3, dfe $$4) {
+      return new dmm($$0, $$1, $$2, $$3, $$4);
    }
 
-   @Override
-   protected int a() {
-      return 10;
+   public static dmm a(dfe $$0, dfe $$1, dfe $$2, dfe $$3) {
+      return new dmm(false, $$0, $$1, $$2, $$3);
    }
 
-   @Override
-   protected float a(aru $$0) {
-      return ($$0.i() * 2.0F + $$0.i()) * 2.0F;
+   public static dmm a(boolean $$0, dfe $$1) {
+      return new dmm($$0, $$1, a.c(), a.d(), a.e());
    }
 
-   @Override
-   protected double b() {
-      return 5.0;
+   private dmm(boolean $$0, dfe $$1, dfe $$2, dfe $$3, dfe $$4) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
    }
 
-   protected boolean a(dmi $$0, dmj $$1, dgv $$2, Function<gu, he<cqj>> $$3, dgu $$4, gu.a $$5, gu.a $$6, dju $$7, MutableBoolean $$8) {
-      if (this.a($$1, $$2.a_($$5))) {
-         dez $$9;
-         if ($$5.v() <= $$0.a() + 31) {
-            $$9 = g.g();
-         } else {
-            $$9 = e;
-         }
+   public boolean a() {
+      return this.c;
+   }
 
-         $$2.a($$5, $$9, false);
-         return true;
-      } else {
-         return false;
-      }
+   public dfe b() {
+      return this.d;
+   }
+
+   public dfe c() {
+      return this.e;
+   }
+
+   public dfe d() {
+      return this.f;
+   }
+
+   public dfe e() {
+      return this.g;
    }
 }

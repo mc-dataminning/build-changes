@@ -1,41 +1,63 @@
 import javax.annotation.Nullable;
 
-public class aam implements ux<wp> {
-   private final int a;
+public class aam implements va<ws> {
+   private static final int a = 1;
+   private static final int b = 2;
    @Nullable
-   private final qr b;
+   private final aeu c;
+   @Nullable
+   private final apa d;
 
-   public aam(int $$0, @Nullable qr $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public aam(@Nullable aeu $$0, @Nullable apa $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
-   public aam(si $$0) {
-      this.a = $$0.m();
-      this.b = $$0.p();
+   public aam(sl $$0) {
+      int $$1 = $$0.readByte();
+      if (($$1 & 1) > 0) {
+         this.d = $$0.b(apa.class);
+      } else {
+         this.d = null;
+      }
+
+      if (($$1 & 2) > 0) {
+         this.c = $$0.s();
+      } else {
+         this.c = null;
+      }
    }
 
    @Override
-   public void a(si $$0) {
-      $$0.c(this.a);
-      $$0.a((rk)this.b);
+   public void a(sl $$0) {
+      if (this.d != null) {
+         if (this.c != null) {
+            $$0.k(3);
+            $$0.a(this.d);
+            $$0.a(this.c);
+         } else {
+            $$0.k(1);
+            $$0.a(this.d);
+         }
+      } else if (this.c != null) {
+         $$0.k(2);
+         $$0.a(this.c);
+      } else {
+         $$0.k(0);
+      }
    }
 
-   public void a(wp $$0) {
+   @Nullable
+   public aeu a() {
+      return this.c;
+   }
+
+   @Nullable
+   public apa d() {
+      return this.d;
+   }
+
+   public void a(ws $$0) {
       $$0.a(this);
-   }
-
-   public int a() {
-      return this.a;
-   }
-
-   @Nullable
-   public qr d() {
-      return this.b;
-   }
-
-   @Override
-   public boolean b() {
-      return true;
    }
 }

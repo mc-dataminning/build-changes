@@ -1,69 +1,92 @@
-public class ddf extends dcl implements ddn {
-   private final dct a = new dct();
-   private final dcy b = new dcy() {
-      @Override
-      protected void a(cpl $$0, gu $$1, dez $$2) {
-         $$0.a(null, (double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, aow.gS, aox.e, 0.5F, $$0.z.i() * 0.1F + 0.9F);
-      }
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-      @Override
-      protected void b(cpl $$0, gu $$1, dez $$2) {
-         $$0.a(null, (double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, aow.gR, aox.e, 0.5F, $$0.z.i() * 0.1F + 0.9F);
-      }
+public class ddf extends dcq {
+   public static final String a = "sherds";
+   private ddf.a b = ddf.a.a;
 
-      @Override
-      protected void a(cpl $$0, gu $$1, dez $$2, int $$3, int $$4) {
-         $$0.a(ddf.this.p, csm.fG, 1, $$4);
-      }
-
-      @Override
-      protected boolean a(cbm $$0) {
-         return $$0.gd().b(ddf.this);
-      }
-   };
-
-   public ddf(gu $$0, dez $$1) {
-      super(dcn.d, $$0, $$1);
-   }
-
-   public static void a(cpl $$0, gu $$1, dez $$2, ddf $$3) {
-      $$3.a.a();
+   public ddf(gw $$0, dfe $$1) {
+      super(dcs.O, $$0, $$1);
    }
 
    @Override
-   public boolean a_(int $$0, int $$1) {
-      if ($$0 == 1) {
-         this.a.a($$1 > 0);
-         return true;
-      } else {
-         return super.a_($$0, $$1);
-      }
-   }
-
-   public void a(cbm $$0) {
-      if (!this.q && !$$0.G_()) {
-         this.b.a($$0, this.k(), this.p(), this.q());
-      }
-   }
-
-   public void b(cbm $$0) {
-      if (!this.q && !$$0.G_()) {
-         this.b.b($$0, this.k(), this.p(), this.q());
-      }
-   }
-
-   public boolean c(cbm $$0) {
-      return bgj.a(this, $$0);
-   }
-
-   public void c() {
-      if (!this.q) {
-         this.b.c(this.k(), this.p(), this.q());
-      }
+   protected void b(qu $$0) {
+      super.b($$0);
+      this.b.a($$0);
    }
 
    @Override
-   public float a(float $$0) {
-      return this.a.a($$0);
+   public void a(qu $$0) {
+      super.a($$0);
+      this.b = ddf.a.b($$0);
+   }
+
+   public xa c() {
+      return xa.a(this);
+   }
+
+   @Override
+   public qu an_() {
+      return this.o();
+   }
+
+   public hc d() {
+      return this.q().c(dfu.R);
+   }
+
+   public ddf.a f() {
+      return this.b;
+   }
+
+   public void a(cja $$0) {
+      this.b = ddf.a.b(cgt.a($$0));
+   }
+
+   public cja g() {
+      return a(this.b);
+   }
+
+   public static cja a(ddf.a $$0) {
+      cja $$1 = cjd.eg.ad_();
+      qu $$2 = $$0.a(new qu());
+      cgt.a($$1, dcs.O, $$2);
+      return $$1;
+   }
+
+   public static record a(civ b, civ c, civ d, civ e) {
+      public static final ddf.a a = new ddf.a(cjd.pX, cjd.pX, cjd.pX, cjd.pX);
+
+      public qu a(qu $$0) {
+         if (this.equals(a)) {
+            return $$0;
+         } else {
+            ra $$1 = new ra();
+            this.a().forEach($$1x -> $$1.add(rl.a(jd.i.b($$1x).toString())));
+            $$0.a("sherds", $$1);
+            return $$0;
+         }
+      }
+
+      public Stream<civ> a() {
+         return Stream.of(this.b, this.c, this.d, this.e);
+      }
+
+      public static ddf.a b(@Nullable qu $$0) {
+         if ($$0 != null && $$0.b("sherds", 9)) {
+            ra $$1 = $$0.c("sherds", 8);
+            return new ddf.a(a($$1, 0), a($$1, 1), a($$1, 2), a($$1, 3));
+         } else {
+            return a;
+         }
+      }
+
+      private static civ a(ra $$0, int $$1) {
+         if ($$1 >= $$0.size()) {
+            return cjd.pX;
+         } else {
+            rn $$2 = $$0.k($$1);
+            return jd.i.a(aeu.a($$2.m_()));
+         }
+      }
    }
 }

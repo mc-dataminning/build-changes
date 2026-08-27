@@ -1,68 +1,33 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Set;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.tuple.Pair;
+import java.util.function.IntSupplier;
+import java.util.function.LongSupplier;
 
-public class bde implements bdf {
-   public static final bde a = new bde();
+public class bde {
+   private final LongSupplier a;
+   private final IntSupplier b;
+   private bdi c = bdh.a;
 
-   private bde() {
+   public bde(LongSupplier $$0, IntSupplier $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   @Override
-   public void a() {
+   public boolean a() {
+      return this.c != bdh.a;
    }
 
-   @Override
    public void b() {
+      this.c = bdh.a;
    }
 
-   @Override
-   public void a(String $$0) {
-   }
-
-   @Override
-   public void a(Supplier<String> $$0) {
-   }
-
-   @Override
-   public void a(bek $$0) {
-   }
-
-   @Override
    public void c() {
+      this.c = new bdd(this.a, this.b, true);
    }
 
-   @Override
-   public void b(String $$0) {
+   public bdk d() {
+      return this.c;
    }
 
-   @Override
-   public void b(Supplier<String> $$0) {
-   }
-
-   @Override
-   public void a(String $$0, int $$1) {
-   }
-
-   @Override
-   public void a(Supplier<String> $$0, int $$1) {
-   }
-
-   @Override
-   public bdg d() {
-      return bdc.a;
-   }
-
-   @Nullable
-   @Override
-   public bda.a c(String $$0) {
-      return null;
-   }
-
-   @Override
-   public Set<Pair<String, bek>> e() {
-      return ImmutableSet.of();
+   public bdj e() {
+      return this.c.d();
    }
 }

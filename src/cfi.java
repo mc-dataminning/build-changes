@@ -1,54 +1,88 @@
-public class cfi<T extends ced> implements cdr {
-   public static final cfi<cek> a = a("generic_9x1", cek::a);
-   public static final cfi<cek> b = a("generic_9x2", cek::b);
-   public static final cfi<cek> c = a("generic_9x3", cek::c);
-   public static final cfi<cek> d = a("generic_9x4", cek::d);
-   public static final cfi<cek> e = a("generic_9x5", cek::e);
-   public static final cfi<cek> f = a("generic_9x6", cek::f);
-   public static final cfi<ceu> g = a("generic_3x3", ceu::new);
-   public static final cfi<cef> h = a("anvil", cef::new);
-   public static final cfi<ceg> i = a("beacon", ceg::new);
-   public static final cfi<ceh> j = a("blast_furnace", ceh::new);
-   public static final cfi<cei> k = a("brewing_stand", cei::new);
-   public static final cfi<ces> l = a("crafting", ces::new);
-   public static final cfi<cev> m = a("enchantment", cev::new);
-   public static final cfi<cex> n = a("furnace", cex::new);
-   public static final cfi<cez> o = a("grindstone", cez::new);
-   public static final cfi<cfa> p = a("hopper", cfa::new);
-   public static final cfi<cff> q = a("lectern", ($$0, $$1) -> new cff($$0));
-   public static final cfi<cfg> r = a("loom", cfg::new);
-   public static final cfi<cfk> s = a("merchant", cfk::new);
-   public static final cfi<cfs> t = a("shulker_box", cfs::new);
-   public static final cfi<cfw> u = a("smithing", cfw::new);
-   public static final cfi<cfx> v = a("smoker", cfx::new);
-   public static final cfi<cej> w = a("cartography_table", cej::new);
-   public static final cfi<cfz> x = a("stonecutter", cfz::new);
-   private final cdu y;
-   private final cfi.a<T> z;
+public class cfi extends ceg {
+   private static final int o = 1;
+   private static final int p = 1;
+   public static final int k = 1;
+   public static final int l = 2;
+   public static final int m = 3;
+   public static final int n = 100;
+   private final bgm q;
+   private final ceq r;
 
-   private static <T extends ced> cfi<T> a(String $$0, cfi.a<T> $$1) {
-      return hr.a(jb.s, $$0, new cfi<>($$1, cdw.f));
+   public cfi(int $$0) {
+      this($$0, new bha(1), new cfx(1));
    }
 
-   private static <T extends ced> cfi<T> a(String $$0, cfi.a<T> $$1, cds... $$2) {
-      return hr.a(jb.s, $$0, new cfi<>($$1, cdw.d.a($$2)));
-   }
-
-   private cfi(cfi.a<T> $$0, cdu $$1) {
-      this.z = $$0;
-      this.y = $$1;
-   }
-
-   public T a(int $$0, cbl $$1) {
-      return this.z.create($$0, $$1);
+   public cfi(int $$0, bgm $$1, ceq $$2) {
+      super(cfl.q, $$0);
+      a($$1, 1);
+      a($$2, 1);
+      this.q = $$1;
+      this.r = $$2;
+      this.a(new cfy($$1, 0, 0, 0) {
+         @Override
+         public void d() {
+            super.d();
+            cfi.this.a(this.d);
+         }
+      });
+      this.a($$2);
    }
 
    @Override
-   public cdu m() {
-      return this.y;
+   public boolean b(cbp $$0, int $$1) {
+      if ($$1 >= 100) {
+         int $$2 = $$1 - 100;
+         this.a(0, $$2);
+         return true;
+      } else {
+         switch ($$1) {
+            case 1:
+               int $$4 = this.r.a(0);
+               this.a(0, $$4 - 1);
+               return true;
+            case 2:
+               int $$3 = this.r.a(0);
+               this.a(0, $$3 + 1);
+               return true;
+            case 3:
+               if (!$$0.gc()) {
+                  return false;
+               }
+
+               cja $$5 = this.q.b(0);
+               this.q.e();
+               if (!$$0.fQ().e($$5)) {
+                  $$0.a($$5, false);
+               }
+
+               return true;
+            default:
+               return false;
+         }
+      }
    }
 
-   interface a<T extends ced> {
-      T create(int var1, cbl var2);
+   @Override
+   public cja a(cbp $$0, int $$1) {
+      return cja.b;
+   }
+
+   @Override
+   public void a(int $$0, int $$1) {
+      super.a($$0, $$1);
+      this.d();
+   }
+
+   @Override
+   public boolean a(cbp $$0) {
+      return this.q.a($$0);
+   }
+
+   public cja l() {
+      return this.q.a(0);
+   }
+
+   public int m() {
+      return this.r.a(0);
    }
 }

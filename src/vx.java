@@ -1,18 +1,16 @@
-public record vx(long b, gu c) implements vp {
-   public static final aer a = new aer("debug/neighbors_update");
+public record vx() implements vs {
+   public static final aeu a = new aeu("debug/game_test_clear");
 
-   public vx(si $$0) {
-      this($$0.n(), $$0.e());
+   public vx(sl $$0) {
+      this();
    }
 
    @Override
-   public void a(si $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
+   public void a(sl $$0) {
    }
 
    @Override
-   public aer a() {
+   public aeu a() {
       return a;
    }
 }

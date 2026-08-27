@@ -1,17 +1,18 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+public interface apz {
+   aqd<dvd> a = a("eye_of_ender_located");
+   aqd<dvd> b = a("dolphin_located");
+   aqd<dvd> c = a("on_woodland_explorer_maps");
+   aqd<dvd> d = a("on_ocean_explorer_maps");
+   aqd<dvd> e = a("on_treasure_maps");
+   aqd<dvd> f = a("cats_spawn_in");
+   aqd<dvd> g = a("cats_spawn_as_black");
+   aqd<dvd> h = a("village");
+   aqd<dvd> i = a("mineshaft");
+   aqd<dvd> j = a("shipwreck");
+   aqd<dvd> k = a("ruined_portal");
+   aqd<dvd> l = a("ocean_ruin");
 
-public record apz(List<apy> b, boolean c) {
-   public static final Codec<apz> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(apy.a.listOf().fieldOf("values").forGetter(apz::a), Codec.BOOL.optionalFieldOf("replace", false).forGetter(apz::b)).apply($$0, apz::new)
-   );
-
-   public List<apy> a() {
-      return this.b;
-   }
-
-   public boolean b() {
-      return this.c;
+   private static aqd<dvd> a(String $$0) {
+      return aqd.a(je.az, new aeu($$0));
    }
 }

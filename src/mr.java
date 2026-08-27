@@ -1,60 +1,25 @@
-import com.google.common.annotations.VisibleForTesting;
 import java.util.concurrent.CompletableFuture;
 
-public class mr extends mt<djj> {
-   @VisibleForTesting
-   static final djj[] d = new djj[]{
-      djj.b,
-      djj.c,
-      djj.d,
-      djj.f,
-      djj.g,
-      djj.h,
-      djj.i,
-      djj.a,
-      djj.e,
-      djj.j,
-      djj.k,
-      djj.l,
-      djj.m,
-      djj.n,
-      djj.o,
-      djj.p,
-      djj.q,
-      djj.r,
-      djj.s,
-      djj.t,
-      djj.u,
-      djj.v,
-      djj.w,
-      djj.y,
-      djj.z,
-      djj.A,
-      djj.B,
-      djj.C,
-      djj.G,
-      djj.H,
-      djj.I,
-      djj.J,
-      djj.K,
-      djj.M,
-      djj.O,
-      djj.P,
-      djj.Q,
-      djj.R,
-      djj.S
-   };
-
-   public mr(jk $$0, CompletableFuture<hg.b> $$1) {
-      super($$0, jc.z, $$1, $$0x -> $$0x.b().g());
+public class mr extends mw<bip<?>> {
+   public mr(jm $$0, CompletableFuture<hi.b> $$1) {
+      super($$0, je.s, $$1, $$0x -> $$0x.r().g());
    }
 
    @Override
-   protected void a(hg.b $$0) {
-      this.a(apr.a).a(d).a(djs.d_).a(djj.x);
-      this.a(apr.c).a(djj.L);
-      this.a(apr.b).a(d).a(djs.d_).a(djj.N).a(apr.c);
-      this.a(apr.d).a(djj.A, djj.K, djj.P, djj.Q, djj.D, djj.C);
-      this.a(apr.e).a(djj.H);
+   protected void a(hi.b $$0) {
+      this.a(apr.a).a(bip.aJ, bip.aU, bip.bl);
+      this.a(apr.b).a(bip.G, bip.ay, bip.aD, bip.bg, bip.aa, bip.bj);
+      this.a(apr.c).a(bip.h);
+      this.a(apr.d).a(bip.e, bip.aR);
+      this.a(apr.e).a(apr.d).a(bip.aP, bip.ag, bip.aM, bip.z, bip.bb, bip.x, bip.bm);
+      this.a(apr.f).a(bip.aC, bip.F, bip.aI, bip.N);
+      this.a(apr.h).a(bip.bc, bip.aB, bip.aE, bip.r, bip.aT, bip.T, bip.aW);
+      this.a(apr.g).a(bip.y, bip.V, bip.A);
+      this.a(apr.i).a(bip.aU, bip.az, bip.aO, bip.bk);
+      this.a(apr.j).a(bip.aV, bip.i, bip.al);
+      this.a(apr.k).a(bip.aL, bip.al);
+      this.a(apr.l).a(bip.ac, bip.aO, bip.aG, bip.b, bip.g, bip.h, bip.i, bip.m, bip.q, bip.Q, bip.au, bip.al, bip.aq, bip.at, bip.bk);
+      this.a(apr.m).a(bip.l, bip.q, bip.w, bip.Y, bip.aj, bip.ap, bip.av, bip.aD, bip.aS, bip.aV, bip.ba, bip.bq);
+      this.a(apr.n).a(bip.aL, bip.al);
    }
 }

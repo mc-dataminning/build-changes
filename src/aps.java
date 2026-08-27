@@ -1,9 +1,10 @@
-public interface aps {
-   aqa<cip> a = a("regular_goat_horns");
-   aqa<cip> b = a("screaming_goat_horns");
-   aqa<cip> c = a("goat_horns");
+public class aps {
+   public static final aqd<dte> a = a("visible");
 
-   private static aqa<cip> a(String $$0) {
-      return aqa.a(jc.B, new aer($$0));
+   private aps() {
+   }
+
+   private static aqd<dte> a(String $$0) {
+      return aqd.a(je.av, new aeu($$0));
    }
 }

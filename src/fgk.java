@@ -1,37 +1,70 @@
-public class fgk extends ffp {
-   private static final String a = "plate";
-   private static final String b = "handle";
-   private static final int c = 10;
-   private static final int d = 20;
-   private final fhs e;
-   private final fhs f;
-   private final fhs g;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 
-   public fgk(fhs $$0) {
-      super(foc::c);
-      this.e = $$0;
-      this.f = $$0.b("plate");
-      this.g = $$0.b("handle");
+public class fgk extends ffq<cdi> {
+   private static final String a = "left_paddle";
+   private static final String b = "right_paddle";
+   private static final String f = "bottom";
+   private final fhx g;
+   private final fhx h;
+   private final ImmutableList<fhx> i;
+
+   public fgk(fhx $$0) {
+      this.g = $$0.b("left_paddle");
+      this.h = $$0.b("right_paddle");
+      this.i = this.a($$0).build();
    }
 
-   public static fhy a() {
-      fia $$0 = new fia();
-      fib $$1 = $$0.a();
-      $$1.a("plate", fhx.c().a(0, 0).a(-6.0F, -11.0F, -2.0F, 12.0F, 22.0F, 1.0F), fhu.a);
-      $$1.a("handle", fhx.c().a(26, 0).a(-1.0F, -3.0F, -1.0F, 2.0F, 6.0F, 6.0F), fhu.a);
-      return fhy.a($$0, 64, 64);
+   protected Builder<fhx> a(fhx $$0) {
+      Builder<fhx> $$1 = new Builder();
+      $$1.add(new fhx[]{$$0.b("bottom"), this.g, this.h});
+      return $$1;
    }
 
-   public fhs b() {
-      return this.f;
+   public static void a(fig $$0) {
+      $$0.a(
+         "bottom",
+         fic.c().a(0, 0).a(-14.0F, -11.0F, -4.0F, 28.0F, 20.0F, 4.0F).a(0, 0).a(-14.0F, -9.0F, -8.0F, 28.0F, 16.0F, 4.0F),
+         fhz.a(0.0F, -2.1F, 1.0F, 1.5708F, 0.0F, 0.0F)
+      );
+      int $$1 = 20;
+      int $$2 = 7;
+      int $$3 = 6;
+      float $$4 = -5.0F;
+      $$0.a(
+         "left_paddle",
+         fic.c().a(0, 24).a(-1.0F, 0.0F, -5.0F, 2.0F, 2.0F, 18.0F).a(-1.001F, -3.0F, 8.0F, 1.0F, 6.0F, 7.0F),
+         fhz.a(3.0F, -4.0F, 9.0F, 0.0F, 0.0F, (float) (Math.PI / 16))
+      );
+      $$0.a(
+         "right_paddle",
+         fic.c().a(40, 24).a(-1.0F, 0.0F, -5.0F, 2.0F, 2.0F, 18.0F).a(0.001F, -3.0F, 8.0F, 1.0F, 6.0F, 7.0F),
+         fhz.a(3.0F, -4.0F, -9.0F, 0.0F, (float) Math.PI, (float) (Math.PI / 16))
+      );
    }
 
-   public fhs c() {
-      return this.g;
+   public static fid b() {
+      fif $$0 = new fif();
+      fig $$1 = $$0.a();
+      a($$1);
+      return fid.a($$0, 128, 64);
    }
 
-   @Override
-   public void a(elf $$0, elj $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-      this.e.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   public void a(cdi $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      a($$0, 0, this.g, $$1);
+      a($$0, 1, this.h, $$1);
+   }
+
+   public ImmutableList<fhx> c() {
+      return this.i;
+   }
+
+   private static void a(cdi $$0, int $$1, fhx $$2, float $$3) {
+      float $$4 = $$0.a($$1, $$3);
+      $$2.e = ars.b((float) (-Math.PI / 3), (float) (-Math.PI / 12), (ars.a(-$$4) + 1.0F) / 2.0F);
+      $$2.f = ars.b((float) (-Math.PI / 4), (float) (Math.PI / 4), (ars.a(-$$4 + 1.0F) + 1.0F) / 2.0F);
+      if ($$1 == 1) {
+         $$2.f = (float) Math.PI - $$2.f;
+      }
    }
 }

@@ -1,38 +1,72 @@
 import com.google.gson.JsonObject;
+import java.util.Collection;
+import java.util.Optional;
 
-public class bw implements al<bw.a> {
-   static final aer a = new aer("impossible");
-
-   @Override
-   public aer a() {
-      return a;
+public class bw extends cw<bw.a> {
+   public bw.a a(JsonObject $$0, Optional<bc> $$1, bg $$2) {
+      Optional<cb> $$3 = cb.a($$0.get("rod"));
+      Optional<bc> $$4 = bq.a($$0, "entity", $$2);
+      Optional<cb> $$5 = cb.a($$0.get("item"));
+      return new bw.a($$1, $$3, $$4, $$5);
    }
 
-   @Override
-   public void a(aez $$0, al.a<bw.a> $$1) {
+   public void a(ako $$0, cja $$1, ccd $$2, Collection<cja> $$3) {
+      ecl $$4 = bq.b($$0, (bil)($$2.o() != null ? $$2.o() : $$2));
+      this.a($$0, $$3x -> $$3x.a($$1, $$4, $$3));
    }
 
-   @Override
-   public void b(aez $$0, al.a<bw.a> $$1) {
-   }
+   public static class a extends at {
+      private final Optional<cb> a;
+      private final Optional<bc> b;
+      private final Optional<cb> c;
 
-   @Override
-   public void a(aez $$0) {
-   }
+      public a(Optional<bc> $$0, Optional<cb> $$1, Optional<bc> $$2, Optional<cb> $$3) {
+         super($$0);
+         this.a = $$1;
+         this.b = $$2;
+         this.c = $$3;
+      }
 
-   public bw.a b(JsonObject $$0, be $$1) {
-      return new bw.a();
-   }
+      public static am<bw.a> a(Optional<cb> $$0, Optional<bq> $$1, Optional<cb> $$2) {
+         return al.D.a(new bw.a(Optional.empty(), $$0, bq.a($$1), $$2));
+      }
 
-   public static class a implements am {
-      @Override
-      public aer a() {
-         return bw.a;
+      public boolean a(cja $$0, ecl $$1, Collection<cja> $$2) {
+         if (this.a.isPresent() && !this.a.get().a($$0)) {
+            return false;
+         } else if (this.b.isPresent() && !this.b.get().a($$1)) {
+            return false;
+         } else {
+            if (this.c.isPresent()) {
+               boolean $$3 = false;
+               bil $$4 = $$1.c(eew.a);
+               if ($$4 instanceof byi $$5 && this.c.get().a($$5.j())) {
+                  $$3 = true;
+               }
+
+               for (cja $$6 : $$2) {
+                  if (this.c.get().a($$6)) {
+                     $$3 = true;
+                     break;
+                  }
+               }
+
+               if (!$$3) {
+                  return false;
+               }
+            }
+
+            return true;
+         }
       }
 
       @Override
-      public JsonObject b() {
-         return new JsonObject();
+      public JsonObject a() {
+         JsonObject $$0 = super.a();
+         this.a.ifPresent($$1 -> $$0.add("rod", $$1.a()));
+         this.b.ifPresent($$1 -> $$0.add("entity", $$1.a()));
+         this.c.ifPresent($$1 -> $$0.add("item", $$1.a()));
+         return $$0;
       }
    }
 }

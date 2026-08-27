@@ -1,91 +1,245 @@
-public class cyl extends csl {
-   public static final dfq a = cyo.a;
+public class cyl extends csg {
+   public static final dgc<dgi> d = dfu.ah;
+   public static final dfv e = dfu.w;
 
-   public cyl(dey.d $$0) {
-      super($$0);
-      this.k(this.n().a(a, Boolean.valueOf(false)));
+   protected cyl(dfd.d $$0) {
+      super(true, $$0);
+      this.k(this.C.b().a(d, dgi.a).a(e, Boolean.valueOf(false)).a(c, Boolean.valueOf(false)));
    }
 
-   @Override
-   public void a(dez $$0, cpl $$1, gu $$2, cbm $$3) {
-      d($$0, $$1, $$2);
-      super.a($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   public void a(cpl $$0, gu $$1, dez $$2, bii $$3) {
-      if (!$$3.bS()) {
-         d($$2, $$0, $$1);
-      }
-
-      super.a($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   public bgq a(dez $$0, cpl $$1, gu $$2, cbm $$3, bgp $$4, egz $$5) {
-      if ($$1.B) {
-         a($$1, $$2);
+   protected boolean a(cpq $$0, gw $$1, dfe $$2, boolean $$3, int $$4) {
+      if ($$4 >= 8) {
+         return false;
       } else {
-         d($$0, $$1, $$2);
+         int $$5 = $$1.u();
+         int $$6 = $$1.v();
+         int $$7 = $$1.w();
+         boolean $$8 = true;
+         dgi $$9 = $$2.c(d);
+         switch ($$9) {
+            case a:
+               if ($$3) {
+                  $$7++;
+               } else {
+                  $$7--;
+               }
+               break;
+            case b:
+               if ($$3) {
+                  $$5--;
+               } else {
+                  $$5++;
+               }
+               break;
+            case c:
+               if ($$3) {
+                  $$5--;
+               } else {
+                  $$5++;
+                  $$6++;
+                  $$8 = false;
+               }
+
+               $$9 = dgi.b;
+               break;
+            case d:
+               if ($$3) {
+                  $$5--;
+                  $$6++;
+                  $$8 = false;
+               } else {
+                  $$5++;
+               }
+
+               $$9 = dgi.b;
+               break;
+            case e:
+               if ($$3) {
+                  $$7++;
+               } else {
+                  $$7--;
+                  $$6++;
+                  $$8 = false;
+               }
+
+               $$9 = dgi.a;
+               break;
+            case f:
+               if ($$3) {
+                  $$7++;
+                  $$6++;
+                  $$8 = false;
+               } else {
+                  $$7--;
+               }
+
+               $$9 = dgi.a;
+         }
+
+         return this.a($$0, new gw($$5, $$6, $$7), $$3, $$4, $$9) ? true : $$8 && this.a($$0, new gw($$5, $$6 - 1, $$7), $$3, $$4, $$9);
       }
-
-      cix $$6 = $$3.b($$4);
-      return $$6.d() instanceof cgq && new clf($$3, $$4, $$6, $$5).b() ? bgq.d : bgq.a;
    }
 
-   private static void d(dez $$0, cpl $$1, gu $$2) {
-      a($$1, $$2);
-      if (!$$0.c(a)) {
-         $$1.a($$2, $$0.a(a, Boolean.valueOf(true)), 3);
-      }
-   }
-
-   @Override
-   public boolean e_(dez $$0) {
-      return $$0.c(a);
-   }
-
-   @Override
-   public void b(dez $$0, akk $$1, gu $$2, aru $$3) {
-      if ($$0.c(a)) {
-         $$1.a($$2, $$0.a(a, Boolean.valueOf(false)), 3);
-      }
-   }
-
-   @Override
-   public void a(dez $$0, akk $$1, gu $$2, cix $$3, boolean $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      if ($$4 && cng.a(cni.v, $$3) == 0) {
-         int $$5 = 1 + $$1.z.a(5);
-         this.a($$1, $$2, $$5);
-      }
-   }
-
-   @Override
-   public void a(dez $$0, cpl $$1, gu $$2, aru $$3) {
-      if ($$0.c(a)) {
-         a($$1, $$2);
-      }
-   }
-
-   private static void a(cpl $$0, gu $$1) {
-      double $$2 = 0.5625;
-      aru $$3 = $$0.z;
-
-      for (ha $$4 : ha.values()) {
-         gu $$5 = $$1.a($$4);
-         if (!$$0.a_($$5).i($$0, $$5)) {
-            ha.a $$6 = $$4.o();
-            double $$7 = $$6 == ha.a.a ? 0.5 + 0.5625 * (double)$$4.j() : (double)$$3.i();
-            double $$8 = $$6 == ha.a.b ? 0.5 + 0.5625 * (double)$$4.k() : (double)$$3.i();
-            double $$9 = $$6 == ha.a.c ? 0.5 + 0.5625 * (double)$$4.l() : (double)$$3.i();
-            $$0.a(ip.b, (double)$$1.u() + $$7, (double)$$1.v() + $$8, (double)$$1.w() + $$9, 0.0, 0.0, 0.0);
+   protected boolean a(cpq $$0, gw $$1, boolean $$2, int $$3, dgi $$4) {
+      dfe $$5 = $$0.a_($$1);
+      if (!$$5.a(this)) {
+         return false;
+      } else {
+         dgi $$6 = $$5.c(d);
+         if ($$4 != dgi.b || $$6 != dgi.a && $$6 != dgi.e && $$6 != dgi.f) {
+            if ($$4 != dgi.a || $$6 != dgi.b && $$6 != dgi.c && $$6 != dgi.d) {
+               if (!$$5.c(e)) {
+                  return false;
+               } else {
+                  return $$0.B($$1) ? true : this.a($$0, $$1, $$5, $$2, $$3 + 1);
+               }
+            } else {
+               return false;
+            }
+         } else {
+            return false;
          }
       }
    }
 
    @Override
-   protected void a(dfa.a<csl, dez> $$0) {
-      $$0.a(a);
+   protected void a(dfe $$0, cpq $$1, gw $$2, csq $$3) {
+      boolean $$4 = $$0.c(e);
+      boolean $$5 = $$1.B($$2) || this.a($$1, $$2, $$0, true, 0) || this.a($$1, $$2, $$0, false, 0);
+      if ($$5 != $$4) {
+         $$1.a($$2, $$0.a(e, Boolean.valueOf($$5)), 3);
+         $$1.a($$2.d(), this);
+         if ($$0.c(d).b()) {
+            $$1.a($$2.c(), this);
+         }
+      }
+   }
+
+   @Override
+   public dgh<dgi> b() {
+      return d;
+   }
+
+   @Override
+   public dfe a(dfe $$0, czc $$1) {
+      switch ($$1) {
+         case c:
+            switch ((dgi)$$0.c(d)) {
+               case c:
+                  return $$0.a(d, dgi.d);
+               case d:
+                  return $$0.a(d, dgi.c);
+               case e:
+                  return $$0.a(d, dgi.f);
+               case f:
+                  return $$0.a(d, dgi.e);
+               case g:
+                  return $$0.a(d, dgi.i);
+               case h:
+                  return $$0.a(d, dgi.j);
+               case i:
+                  return $$0.a(d, dgi.g);
+               case j:
+                  return $$0.a(d, dgi.h);
+            }
+         case d:
+            switch ((dgi)$$0.c(d)) {
+               case a:
+                  return $$0.a(d, dgi.b);
+               case b:
+                  return $$0.a(d, dgi.a);
+               case c:
+                  return $$0.a(d, dgi.e);
+               case d:
+                  return $$0.a(d, dgi.f);
+               case e:
+                  return $$0.a(d, dgi.d);
+               case f:
+                  return $$0.a(d, dgi.c);
+               case g:
+                  return $$0.a(d, dgi.j);
+               case h:
+                  return $$0.a(d, dgi.g);
+               case i:
+                  return $$0.a(d, dgi.h);
+               case j:
+                  return $$0.a(d, dgi.i);
+            }
+         case b:
+            switch ((dgi)$$0.c(d)) {
+               case a:
+                  return $$0.a(d, dgi.b);
+               case b:
+                  return $$0.a(d, dgi.a);
+               case c:
+                  return $$0.a(d, dgi.f);
+               case d:
+                  return $$0.a(d, dgi.e);
+               case e:
+                  return $$0.a(d, dgi.c);
+               case f:
+                  return $$0.a(d, dgi.d);
+               case g:
+                  return $$0.a(d, dgi.h);
+               case h:
+                  return $$0.a(d, dgi.i);
+               case i:
+                  return $$0.a(d, dgi.j);
+               case j:
+                  return $$0.a(d, dgi.g);
+            }
+         default:
+            return $$0;
+      }
+   }
+
+   @Override
+   public dfe a(dfe $$0, cxl $$1) {
+      dgi $$2 = $$0.c(d);
+      switch ($$1) {
+         case b:
+            switch ($$2) {
+               case e:
+                  return $$0.a(d, dgi.f);
+               case f:
+                  return $$0.a(d, dgi.e);
+               case g:
+                  return $$0.a(d, dgi.j);
+               case h:
+                  return $$0.a(d, dgi.i);
+               case i:
+                  return $$0.a(d, dgi.h);
+               case j:
+                  return $$0.a(d, dgi.g);
+               default:
+                  return super.a($$0, $$1);
+            }
+         case c:
+            switch ($$2) {
+               case c:
+                  return $$0.a(d, dgi.d);
+               case d:
+                  return $$0.a(d, dgi.c);
+               case e:
+               case f:
+               default:
+                  break;
+               case g:
+                  return $$0.a(d, dgi.h);
+               case h:
+                  return $$0.a(d, dgi.g);
+               case i:
+                  return $$0.a(d, dgi.j);
+               case j:
+                  return $$0.a(d, dgi.i);
+            }
+      }
+
+      return super.a($$0, $$1);
+   }
+
+   @Override
+   protected void a(dff.a<csq, dfe> $$0) {
+      $$0.a(d, e, c);
    }
 }

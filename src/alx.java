@@ -1,11 +1,68 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.gson.JsonObject;
+import com.mojang.logging.LogUtils;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public record alx(cdu b) {
-   private static final Codec<alx> c = RecordCodecBuilder.create($$0 -> $$0.group(cdw.e.fieldOf("enabled").forGetter(alx::a)).apply($$0, alx::new));
-   public static final amn<alx> a = amn.a("features", c);
+public abstract class alx implements amd {
+   private static final Logger c = LogUtils.getLogger();
+   private final String d;
+   private final boolean e;
 
-   public cdu a() {
-      return this.b;
+   protected alx(String $$0, boolean $$1) {
+      this.d = $$0;
+      this.e = $$1;
+   }
+
+   @Nullable
+   @Override
+   public <T> T a(amp<T> $$0) throws IOException {
+      anh<InputStream> $$1 = this.a(new String[]{"pack.mcmeta"});
+      if ($$1 == null) {
+         return null;
+      } else {
+         Object var4;
+         try (InputStream $$2 = $$1.get()) {
+            var4 = a($$0, $$2);
+         }
+
+         return (T)var4;
+      }
+   }
+
+   @Nullable
+   public static <T> T a(amp<T> $$0, InputStream $$1) {
+      JsonObject $$3;
+      try (BufferedReader $$2 = new BufferedReader(new InputStreamReader($$1, StandardCharsets.UTF_8))) {
+         $$3 = arj.a($$2);
+      } catch (Exception var9) {
+         c.error("Couldn't load {} metadata", $$0.a(), var9);
+         return null;
+      }
+
+      if (!$$3.has($$0.a())) {
+         return null;
+      } else {
+         try {
+            return $$0.a(arj.u($$3, $$0.a()));
+         } catch (Exception var7) {
+            c.error("Couldn't load {} metadata", $$0.a(), var7);
+            return null;
+         }
+      }
+   }
+
+   @Override
+   public String a() {
+      return this.d;
+   }
+
+   @Override
+   public boolean b() {
+      return this.e;
    }
 }

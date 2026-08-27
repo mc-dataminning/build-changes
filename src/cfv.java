@@ -1,152 +1,69 @@
-import com.mojang.datafixers.util.Pair;
-import java.util.Optional;
-import javax.annotation.Nullable;
+public class cfv extends ceg {
+   private static final int k = 27;
+   private final bgm l;
 
-public class cfv {
-   private final int a;
-   public final bgj d;
-   public int e;
-   public final int f;
-   public final int g;
-
-   public cfv(bgj $$0, int $$1, int $$2, int $$3) {
-      this.d = $$0;
-      this.a = $$1;
-      this.f = $$2;
-      this.g = $$3;
+   public cfv(int $$0, cbo $$1) {
+      this($$0, $$1, new bha(27));
    }
 
-   public void b(cix $$0, cix $$1) {
-      int $$2 = $$1.L() - $$0.L();
-      if ($$2 > 0) {
-         this.a($$1, $$2);
+   public cfv(int $$0, cbo $$1, bgm $$2) {
+      super(cfl.t, $$0);
+      a($$2, 27);
+      this.l = $$2;
+      $$2.d_($$1.m);
+      int $$3 = 3;
+      int $$4 = 9;
+
+      for (int $$5 = 0; $$5 < 3; $$5++) {
+         for (int $$6 = 0; $$6 < 9; $$6++) {
+            this.a(new cfw($$2, $$6 + $$5 * 9, 8 + $$6 * 18, 18 + $$5 * 18));
+         }
+      }
+
+      for (int $$7 = 0; $$7 < 3; $$7++) {
+         for (int $$8 = 0; $$8 < 9; $$8++) {
+            this.a(new cfy($$1, $$8 + $$7 * 9 + 9, 8 + $$8 * 18, 84 + $$7 * 18));
+         }
+      }
+
+      for (int $$9 = 0; $$9 < 9; $$9++) {
+         this.a(new cfy($$1, $$9, 8 + $$9 * 18, 142));
       }
    }
 
-   protected void a(cix $$0, int $$1) {
+   @Override
+   public boolean a(cbp $$0) {
+      return this.l.a($$0);
    }
 
-   protected void b(int $$0) {
-   }
-
-   protected void b_(cix $$0) {
-   }
-
-   public void a(cbm $$0, cix $$1) {
-      this.d();
-   }
-
-   public boolean a(cix $$0) {
-      return true;
-   }
-
-   public cix e() {
-      return this.d.a(this.a);
-   }
-
-   public boolean f() {
-      return !this.e().b();
-   }
-
-   public void d(cix $$0) {
-      this.a($$0, this.e());
-   }
-
-   public void a(cix $$0, cix $$1) {
-      this.e($$0);
-   }
-
-   public void e(cix $$0) {
-      this.d.a(this.a, $$0);
-      this.d();
-   }
-
-   public void d() {
-      this.d.e();
-   }
-
-   public int a() {
-      return this.d.ab_();
-   }
-
-   public int a_(cix $$0) {
-      return Math.min(this.a(), $$0.g());
-   }
-
-   @Nullable
-   public Pair<aer, aer> b() {
-      return null;
-   }
-
-   public cix a(int $$0) {
-      return this.d.a(this.a, $$0);
-   }
-
-   public boolean a(cbm $$0) {
-      return true;
-   }
-
-   public boolean c() {
-      return true;
-   }
-
-   public Optional<cix> a(int $$0, int $$1, cbm $$2) {
-      if (!this.a($$2)) {
-         return Optional.empty();
-      } else if (!this.b($$2) && $$1 < this.e().L()) {
-         return Optional.empty();
-      } else {
-         $$0 = Math.min($$0, $$1);
-         cix $$3 = this.a($$0);
-         if ($$3.b()) {
-            return Optional.empty();
-         } else {
-            if (this.e().b()) {
-               this.a(cix.b, $$3);
+   @Override
+   public cja a(cbp $$0, int $$1) {
+      cja $$2 = cja.b;
+      cfy $$3 = this.i.get($$1);
+      if ($$3 != null && $$3.f()) {
+         cja $$4 = $$3.e();
+         $$2 = $$4.p();
+         if ($$1 < this.l.b()) {
+            if (!this.a($$4, this.l.b(), this.i.size(), true)) {
+               return cja.b;
             }
-
-            return Optional.of($$3);
-         }
-      }
-   }
-
-   public cix b(int $$0, int $$1, cbm $$2) {
-      Optional<cix> $$3 = this.a($$0, $$1, $$2);
-      $$3.ifPresent($$1x -> this.a($$2, $$1x));
-      return $$3.orElse(cix.b);
-   }
-
-   public cix f(cix $$0) {
-      return this.b($$0, $$0.L());
-   }
-
-   public cix b(cix $$0, int $$1) {
-      if (!$$0.b() && this.a($$0)) {
-         cix $$2 = this.e();
-         int $$3 = Math.min(Math.min($$1, $$0.L()), this.a_($$0) - $$2.L());
-         if ($$2.b()) {
-            this.d($$0.a($$3));
-         } else if (cix.c($$2, $$0)) {
-            $$0.h($$3);
-            $$2.g($$3);
-            this.d($$2);
+         } else if (!this.a($$4, 0, this.l.b(), false)) {
+            return cja.b;
          }
 
-         return $$0;
-      } else {
-         return $$0;
+         if ($$4.b()) {
+            $$3.d(cja.b);
+         } else {
+            $$3.d();
+         }
       }
+
+      return $$2;
    }
 
-   public boolean b(cbm $$0) {
-      return this.a($$0) && this.a(this.e());
-   }
-
-   public int g() {
-      return this.a;
-   }
-
-   public boolean h() {
-      return true;
+   @Override
+   public void b(cbp $$0) {
+      super.b($$0);
+      this.l.c($$0);
    }
 }

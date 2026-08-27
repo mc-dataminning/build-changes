@@ -1,64 +1,79 @@
-public class acm implements ux<aaw> {
-   private final gu a;
-   private final aer b;
-   private final aer c;
-   private final aer d;
+public class acm implements va<aaz> {
+   private static final int a = 1;
+   private static final int b = 2;
+   private static final int c = 4;
+   private final gw d;
    private final String e;
-   private final ddk.a f;
+   private final boolean f;
+   private final boolean g;
+   private final boolean h;
+   private final dda.a i;
 
-   public acm(gu $$0, aer $$1, aer $$2, aer $$3, String $$4, ddk.a $$5) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
+   public acm(gw $$0, String $$1, dda.a $$2, boolean $$3, boolean $$4, boolean $$5) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$3;
+      this.g = $$4;
+      this.h = $$5;
+      this.i = $$2;
    }
 
-   public acm(si $$0) {
-      this.a = $$0.e();
-      this.b = $$0.s();
-      this.c = $$0.s();
-      this.d = $$0.s();
+   public acm(sl $$0) {
+      this.d = $$0.e();
       this.e = $$0.r();
-      this.f = ddk.a.a($$0.r()).orElse(ddk.a.b);
+      this.i = $$0.b(dda.a.class);
+      int $$1 = $$0.readByte();
+      this.f = ($$1 & 1) != 0;
+      this.g = ($$1 & 2) != 0;
+      this.h = ($$1 & 4) != 0;
    }
 
    @Override
-   public void a(si $$0) {
-      $$0.a(this.a);
-      $$0.a(this.b);
-      $$0.a(this.c);
+   public void a(sl $$0) {
       $$0.a(this.d);
       $$0.a(this.e);
-      $$0.a(this.f.c());
+      $$0.a(this.i);
+      int $$1 = 0;
+      if (this.f) {
+         $$1 |= 1;
+      }
+
+      if (this.g) {
+         $$1 |= 2;
+      }
+
+      if (this.h) {
+         $$1 |= 4;
+      }
+
+      $$0.k($$1);
    }
 
-   public void a(aaw $$0) {
+   public void a(aaz $$0) {
       $$0.a(this);
    }
 
-   public gu a() {
-      return this.a;
-   }
-
-   public aer d() {
-      return this.b;
-   }
-
-   public aer e() {
-      return this.c;
-   }
-
-   public aer f() {
+   public gw a() {
       return this.d;
    }
 
-   public String g() {
+   public String d() {
       return this.e;
    }
 
-   public ddk.a h() {
+   public boolean e() {
       return this.f;
+   }
+
+   public boolean f() {
+      return this.g;
+   }
+
+   public boolean g() {
+      return this.h;
+   }
+
+   public dda.a h() {
+      return this.i;
    }
 }

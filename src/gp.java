@@ -1,48 +1,56 @@
 import com.google.gson.JsonObject;
-import com.mojang.brigadier.arguments.StringArgumentType;
-import com.mojang.brigadier.arguments.StringArgumentType.StringType;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
 
-public class gp implements gg<StringArgumentType, gp.a> {
-   public void a(gp.a $$0, si $$1) {
-      $$1.a((Enum<?>)$$0.b);
+public class gp implements gi<IntegerArgumentType, gp.a> {
+   public void a(gp.a $$0, sl $$1) {
+      boolean $$2 = $$0.b != Integer.MIN_VALUE;
+      boolean $$3 = $$0.c != Integer.MAX_VALUE;
+      $$1.k(gk.a($$2, $$3));
+      if ($$2) {
+         $$1.p($$0.b);
+      }
+
+      if ($$3) {
+         $$1.p($$0.c);
+      }
    }
 
-   public gp.a a(si $$0) {
-      StringType $$1 = $$0.b(StringType.class);
-      return new gp.a($$1);
+   public gp.a a(sl $$0) {
+      byte $$1 = $$0.readByte();
+      int $$2 = gk.a($$1) ? $$0.readInt() : Integer.MIN_VALUE;
+      int $$3 = gk.b($$1) ? $$0.readInt() : Integer.MAX_VALUE;
+      return new gp.a($$2, $$3);
    }
 
    public void a(gp.a $$0, JsonObject $$1) {
-      $$1.addProperty("type", switch ($$0.b) {
-         case SINGLE_WORD -> "word";
-         case QUOTABLE_PHRASE -> "phrase";
-         case GREEDY_PHRASE -> "greedy";
-         default -> throw new IncompatibleClassChangeError();
-      });
-   }
-
-   public gp.a a(StringArgumentType $$0) {
-      return new gp.a($$0.getType());
-   }
-
-   public final class a implements gg.a<StringArgumentType> {
-      final StringType b;
-
-      public a(StringType $$1) {
-         this.b = $$1;
+      if ($$0.b != Integer.MIN_VALUE) {
+         $$1.addProperty("min", $$0.b);
       }
 
-      public StringArgumentType a(dl $$0) {
-         return switch (this.b) {
-            case SINGLE_WORD -> StringArgumentType.word();
-            case QUOTABLE_PHRASE -> StringArgumentType.string();
-            case GREEDY_PHRASE -> StringArgumentType.greedyString();
-            default -> throw new IncompatibleClassChangeError();
-         };
+      if ($$0.c != Integer.MAX_VALUE) {
+         $$1.addProperty("max", $$0.c);
+      }
+   }
+
+   public gp.a a(IntegerArgumentType $$0) {
+      return new gp.a($$0.getMinimum(), $$0.getMaximum());
+   }
+
+   public final class a implements gi.a<IntegerArgumentType> {
+      final int b;
+      final int c;
+
+      a(int $$1, int $$2) {
+         this.b = $$1;
+         this.c = $$2;
+      }
+
+      public IntegerArgumentType a(dn $$0) {
+         return IntegerArgumentType.integer(this.b, this.c);
       }
 
       @Override
-      public gg<StringArgumentType, ?> a() {
+      public gi<IntegerArgumentType, ?> a() {
          return gp.this;
       }
    }

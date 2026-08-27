@@ -1,63 +1,64 @@
-import javax.annotation.Nullable;
+public class aaj implements va<ws> {
+   private final hg<aoy> a;
+   private final apa b;
+   private final int c;
+   private final float d;
+   private final float e;
+   private final long f;
 
-public class aaj implements ux<wp> {
-   private static final int a = 1;
-   private static final int b = 2;
-   @Nullable
-   private final aer c;
-   @Nullable
-   private final aox d;
-
-   public aaj(@Nullable aer $$0, @Nullable aox $$1) {
-      this.c = $$0;
-      this.d = $$1;
+   public aaj(hg<aoy> $$0, apa $$1, bil $$2, float $$3, float $$4, long $$5) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2.ah();
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
    }
 
-   public aaj(si $$0) {
-      int $$1 = $$0.readByte();
-      if (($$1 & 1) > 0) {
-         this.d = $$0.b(aox.class);
-      } else {
-         this.d = null;
-      }
-
-      if (($$1 & 2) > 0) {
-         this.c = $$0.s();
-      } else {
-         this.c = null;
-      }
+   public aaj(sl $$0) {
+      this.a = $$0.a(jd.c.t(), aoy::b);
+      this.b = $$0.b(apa.class);
+      this.c = $$0.m();
+      this.d = $$0.readFloat();
+      this.e = $$0.readFloat();
+      this.f = $$0.readLong();
    }
 
    @Override
-   public void a(si $$0) {
-      if (this.d != null) {
-         if (this.c != null) {
-            $$0.k(3);
-            $$0.a(this.d);
-            $$0.a(this.c);
-         } else {
-            $$0.k(1);
-            $$0.a(this.d);
-         }
-      } else if (this.c != null) {
-         $$0.k(2);
-         $$0.a(this.c);
-      } else {
-         $$0.k(0);
-      }
+   public void a(sl $$0) {
+      $$0.a(jd.c.t(), this.a, ($$0x, $$1) -> $$1.a($$0x));
+      $$0.a(this.b);
+      $$0.c(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
+      $$0.b(this.f);
    }
 
-   @Nullable
-   public aer a() {
+   public hg<aoy> a() {
+      return this.a;
+   }
+
+   public apa d() {
+      return this.b;
+   }
+
+   public int e() {
       return this.c;
    }
 
-   @Nullable
-   public aox d() {
+   public float f() {
       return this.d;
    }
 
-   public void a(wp $$0) {
+   public float g() {
+      return this.e;
+   }
+
+   public long h() {
+      return this.f;
+   }
+
+   public void a(ws $$0) {
       $$0.a(this);
    }
 }

@@ -1,143 +1,173 @@
 import com.mojang.serialization.Codec;
 import java.util.Optional;
-import java.util.function.Function;
-import java.util.function.Predicate;
+import java.util.OptionalInt;
 
-public abstract class dnm<FC extends dpq> {
-   public static final dnm<dpx> e = a("no_op", new dog(dpx.a));
-   public static final dnm<dqm> f = a("tree", new doy(dqm.a));
-   public static final dnm<dqd> g = a("flower", new dok(dqd.a));
-   public static final dnm<dqd> h = a("no_bonemeal_flower", new dok(dqd.a));
-   public static final dnm<dqd> i = a("random_patch", new dok(dqd.a));
-   public static final dnm<dpi> j = a("block_pile", new dmv(dpi.a));
-   public static final dnm<dql> k = a("spring_feature", new dox(dql.a));
-   public static final dnm<dpx> l = a("chorus_plant", new dmy(dpx.a));
-   public static final dnm<dqe> m = a("replace_single_block", new don(dqe.a));
-   public static final dnm<dpx> n = a("void_start_platform", new dpd(dpx.a));
-   public static final dnm<dpx> o = a("desert_well", new dnf(dpx.a));
-   public static final dnm<dnr> p = a("fossil", new dnq(dnr.a));
-   public static final dnm<dps> q = a("huge_red_mushroom", new dnx(dps.a));
-   public static final dnm<dps> r = a("huge_brown_mushroom", new dnu(dps.a));
-   public static final dnm<dpx> s = a("ice_spike", new dny(dpx.a));
-   public static final dnm<dpx> t = a("glowstone_blob", new dnt(dpx.a));
-   public static final dnm<dpx> u = a("freeze_top_layer", new dov(dpx.a));
-   public static final dnm<dpx> v = a("vines", new dpc(dpx.a));
-   public static final dnm<dph> w = a("block_column", new dmu(dph.a));
-   public static final dnm<dqp> x = a("vegetation_patch", new dpb(dqp.a));
-   public static final dnm<dqp> y = a("waterlogged_vegetation_patch", new dpe(dqp.a));
-   public static final dnm<dqg> z = a("root_system", new doo(dqg.a));
-   public static final dnm<dpv> A = a("multiface_growth", new doe(dpv.a));
-   public static final dnm<dqo> B = a("underwater_magma", new dpa(dqo.a));
-   public static final dnm<dpx> C = a("monster_room", new dod(dpx.a));
-   public static final dnm<dpx> D = a("blue_ice", new dmw(dpx.a));
-   public static final dnm<dpj> E = a("iceberg", new dnz(dpj.a));
-   public static final dnm<dpj> F = a("forest_rock", new dmt(dpj.a));
-   public static final dnm<dpn> G = a("disk", new dng(dpn.a));
-   public static final dnm<dob.a> H = a("lake", new dob(dob.a.a));
-   public static final dnm<dpy> I = a("ore", new doh(dpy.a));
-   public static final dnm<dqk> J = a("end_spike", new dow(dqk.a));
-   public static final dnm<dpx> K = a("end_island", new dnk(dpx.a));
-   public static final dnm<dpp> L = a("end_gateway", new dnj(dpp.a));
-   public static final dos M = a("seagrass", new dos(dqa.k));
-   public static final dnm<dpx> N = a("kelp", new doa(dpx.a));
-   public static final dnm<dpx> O = a("coral_tree", new dnd(dpx.a));
-   public static final dnm<dpx> P = a("coral_mushroom", new dnc(dpx.a));
-   public static final dnm<dpx> Q = a("coral_claw", new dna(dpx.a));
-   public static final dnm<dpl> R = a("sea_pickle", new dor(dpl.a));
-   public static final dnm<dqi> S = a("simple_block", new dot(dqi.a));
-   public static final dnm<dqa> T = a("bamboo", new dmq(dqa.k));
-   public static final dnm<dnv> U = a("huge_fungus", new dnw(dnv.a));
-   public static final dnm<dpw> V = a("nether_forest_vegetation", new dof(dpw.c));
-   public static final dnm<dpx> W = a("weeping_vines", new dpf(dpx.a));
-   public static final dnm<dqn> X = a("twisting_vines", new doz(dqn.a));
-   public static final dnm<dpk> Y = a("basalt_columns", new dmr(dpk.a));
-   public static final dnm<dpm> Z = a("delta_feature", new dne(dpm.a));
-   public static final dnm<dqf> aa = a("netherrack_replace_blobs", new dom(dqf.a));
-   public static final dnm<dpu> ab = a("fill_layer", new dnp(dpu.a));
-   public static final dmx ac = a("bonus_chest", new dmx(dpx.a));
-   public static final dnm<dpx> ad = a("basalt_pillar", new dms(dpx.a));
-   public static final dnm<dpy> ae = a("scattered_ore", new dop(dpy.a));
-   public static final dnm<dqc> af = a("random_selector", new dol(dqc.a));
-   public static final dnm<dqj> ag = a("simple_random_selector", new dou(dqj.a));
-   public static final dnm<dqb> ah = a("random_boolean_selector", new doj(dqb.a));
-   public static final dnm<dpr> ai = a("geode", new dns(dpr.b));
-   public static final dnm<dpo> aj = a("dripstone_cluster", new dnh(dpo.a));
-   public static final dnm<dpt> ak = a("large_dripstone", new doc(dpt.a));
-   public static final dnm<dpz> al = a("pointed_dripstone", new doi(dpz.a));
-   public static final dnm<dqh> am = a("sculk_patch", new doq(dqh.a));
-   private final Codec<dmz<FC, dnm<FC>>> a;
-
-   private static <C extends dpq, F extends dnm<C>> F a(String $$0, F $$1) {
-      return hr.a(jb.R, $$0, $$1);
+public class dnm extends dnr<dpt> {
+   public dnm(Codec<dpt> $$0) {
+      super($$0);
    }
 
-   public dnm(Codec<FC> $$0) {
-      this.a = $$0.fieldOf("config").xmap($$0x -> new dmz<>(this, $$0x), dmz::c).codec();
-   }
+   @Override
+   public boolean a(dnt<dpt> $$0) {
+      cqk $$1 = $$0.b();
+      gw $$2 = $$0.e();
+      dpt $$3 = $$0.f();
+      arx $$4 = $$0.d();
+      if (!dnn.a($$1, $$2)) {
+         return false;
+      } else {
+         int $$5 = $$3.c.a($$4);
+         float $$6 = $$3.i.a($$4);
+         float $$7 = $$3.h.a($$4);
+         int $$8 = $$3.d.a($$4);
+         int $$9 = $$3.d.a($$4);
 
-   public Codec<dmz<FC, dnm<FC>>> a() {
-      return this.a;
-   }
+         for (int $$10 = -$$8; $$10 <= $$8; $$10++) {
+            for (int $$11 = -$$9; $$11 <= $$9; $$11++) {
+               double $$12 = this.a($$8, $$9, $$10, $$11, $$3);
+               gw $$13 = $$2.b($$10, 0, $$11);
+               this.a($$1, $$4, $$13, $$10, $$11, $$6, $$12, $$5, $$7, $$3);
+            }
+         }
 
-   protected void a(cpt $$0, gu $$1, dez $$2) {
-      $$0.a($$1, $$2, 3);
-   }
-
-   public static Predicate<dez> a(aqa<csl> $$0) {
-      return $$1 -> !$$1.a($$0);
-   }
-
-   protected void a(cqf $$0, gu $$1, dez $$2, Predicate<dez> $$3) {
-      if ($$3.test($$0.a_($$1))) {
-         $$0.a($$1, $$2, 2);
+         return true;
       }
    }
 
-   public abstract boolean a(dno<FC> var1);
+   private void a(cqk $$0, arx $$1, gw $$2, int $$3, int $$4, float $$5, double $$6, int $$7, float $$8, dpt $$9) {
+      Optional<dkd> $$10 = dkd.a($$0, $$2, $$9.b, dnn::c, dnn::d);
+      if (!$$10.isEmpty()) {
+         OptionalInt $$11 = $$10.get().b();
+         OptionalInt $$12 = $$10.get().c();
+         if (!$$11.isEmpty() || !$$12.isEmpty()) {
+            boolean $$13 = $$1.i() < $$5;
+            dkd $$15;
+            if ($$13 && $$12.isPresent() && this.b($$0, $$2.h($$12.getAsInt()))) {
+               int $$14 = $$12.getAsInt();
+               $$15 = $$10.get().a(OptionalInt.of($$14 - 1));
+               $$0.a($$2.h($$14), csr.G.n(), 2);
+            } else {
+               $$15 = $$10.get();
+            }
 
-   public boolean a(FC $$0, cqf $$1, dgw $$2, aru $$3, gu $$4) {
-      return $$1.f_($$4) ? this.a(new dno<>(Optional.empty(), $$1, $$2, $$3, $$4, $$0)) : false;
-   }
+            OptionalInt $$17 = $$15.c();
+            boolean $$18 = $$1.j() < $$6;
+            int $$22;
+            if ($$11.isPresent() && $$18 && !this.a((cpt)$$0, $$2.h($$11.getAsInt()))) {
+               int $$19 = $$9.g.a($$1);
+               this.a($$0, $$2.h($$11.getAsInt()), $$19, hc.b);
+               int $$20;
+               if ($$17.isPresent()) {
+                  $$20 = Math.min($$7, $$11.getAsInt() - $$17.getAsInt());
+               } else {
+                  $$20 = $$7;
+               }
 
-   protected static boolean a(dez $$0) {
-      return $$0.a(apl.bd);
-   }
+               $$22 = this.a($$1, $$3, $$4, $$8, $$20, $$9);
+            } else {
+               $$22 = 0;
+            }
 
-   public static boolean b(dez $$0) {
-      return $$0.a(apl.af);
-   }
+            boolean $$24 = $$1.j() < $$6;
+            int $$26;
+            if ($$17.isPresent() && $$24 && !this.a((cpt)$$0, $$2.h($$17.getAsInt()))) {
+               int $$25 = $$9.g.a($$1);
+               this.a($$0, $$2.h($$17.getAsInt()), $$25, hc.a);
+               if ($$11.isPresent()) {
+                  $$26 = Math.max(0, $$22 + ars.b($$1, -$$9.e, $$9.e));
+               } else {
+                  $$26 = this.a($$1, $$3, $$4, $$8, $$7, $$9);
+               }
+            } else {
+               $$26 = 0;
+            }
 
-   public static boolean a(cpr $$0, gu $$1) {
-      return $$0.a($$1, dnm::b);
-   }
+            int $$36;
+            int $$35;
+            if ($$11.isPresent() && $$17.isPresent() && $$11.getAsInt() - $$22 <= $$17.getAsInt() + $$26) {
+               int $$29 = $$17.getAsInt();
+               int $$30 = $$11.getAsInt();
+               int $$31 = Math.max($$30 - $$22, $$29 + 1);
+               int $$32 = Math.min($$29 + $$26, $$30 - 1);
+               int $$33 = ars.b($$1, $$31, $$32 + 1);
+               int $$34 = $$33 - 1;
+               $$35 = $$30 - $$33;
+               $$36 = $$34 - $$29;
+            } else {
+               $$35 = $$22;
+               $$36 = $$26;
+            }
 
-   public static boolean a(Function<gu, dez> $$0, gu $$1, Predicate<dez> $$2) {
-      gu.a $$3 = new gu.a();
+            boolean $$39 = $$1.h() && $$35 > 0 && $$36 > 0 && $$15.d().isPresent() && $$35 + $$36 == $$15.d().getAsInt();
+            if ($$11.isPresent()) {
+               dnn.a($$0, $$2.h($$11.getAsInt() - 1), hc.a, $$35, $$39);
+            }
 
-      for (ha $$4 : ha.values()) {
-         $$3.a($$1, $$4);
-         if ($$2.test($$0.apply($$3))) {
-            return true;
+            if ($$17.isPresent()) {
+               dnn.a($$0, $$2.h($$17.getAsInt() + 1), hc.b, $$36, $$39);
+            }
          }
       }
-
-      return false;
    }
 
-   public static boolean a(Function<gu, dez> $$0, gu $$1) {
-      return a($$0, $$1, dey.a::i);
+   private boolean a(cpt $$0, gw $$1) {
+      return $$0.a_($$1).a(csr.H);
    }
 
-   protected void a(cqf $$0, gu $$1) {
-      gu.a $$2 = $$1.j();
+   private int a(arx $$0, int $$1, int $$2, float $$3, int $$4, dpt $$5) {
+      if ($$0.i() > $$3) {
+         return 0;
+      } else {
+         int $$6 = Math.abs($$1) + Math.abs($$2);
+         float $$7 = (float)ars.a((double)$$6, 0.0, (double)$$5.l, (double)$$4 / 2.0, 0.0);
+         return (int)a($$0, 0.0F, (float)$$4, $$7, (float)$$5.f);
+      }
+   }
 
-      for (int $$3 = 0; $$3 < 2; $$3++) {
-         $$2.c(ha.b);
-         if ($$0.a_($$2).i()) {
+   private boolean b(cqk $$0, gw $$1) {
+      dfe $$2 = $$0.a_($$1);
+      if (!$$2.a(csr.G) && !$$2.a(csr.rt) && !$$2.a(csr.rs)) {
+         if ($$0.a_($$1.c()).u().a(apt.a)) {
+            return false;
+         } else {
+            for (hc $$3 : hc.c.a) {
+               if (!this.a((cpr)$$0, $$1.a($$3))) {
+                  return false;
+               }
+            }
+
+            return this.a((cpr)$$0, $$1.d());
+         }
+      } else {
+         return false;
+      }
+   }
+
+   private boolean a(cpr $$0, gw $$1) {
+      dfe $$2 = $$0.a_($$1);
+      return $$2.a(apo.bd) || $$2.u().a(apt.a);
+   }
+
+   private void a(cqk $$0, gw $$1, int $$2, hc $$3) {
+      gw.a $$4 = $$1.j();
+
+      for (int $$5 = 0; $$5 < $$2; $$5++) {
+         if (!dnn.c($$0, $$4)) {
             return;
          }
 
-         $$0.x($$2).e($$2);
+         $$4.c($$3);
       }
+   }
+
+   private double a(int $$0, int $$1, int $$2, int $$3, dpt $$4) {
+      int $$5 = $$0 - Math.abs($$2);
+      int $$6 = $$1 - Math.abs($$3);
+      int $$7 = Math.min($$5, $$6);
+      return (double)ars.b((float)$$7, 0.0F, (float)$$4.k, $$4.j, 1.0F);
+   }
+
+   private static float a(arx $$0, float $$1, float $$2, float $$3, float $$4) {
+      return bfs.a($$0, $$3, $$4, $$1, $$2);
    }
 }

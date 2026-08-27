@@ -1,183 +1,59 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Dynamic;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import java.util.OptionalInt;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class ddr extends dcl implements djl.b<djs.b>, djs {
-   private static final Logger b = LogUtils.getLogger();
-   private static final int c = 10;
-   private static final int d = 20;
-   private static final int e = 5;
-   private static final int g = 6;
-   private static final int h = 40;
-   private static final int i = 90;
-   private static final Int2ObjectMap<aov> j = ac.a(new Int2ObjectOpenHashMap(), $$0 -> {
-      $$0.put(1, aow.zG);
-      $$0.put(2, aow.zH);
-      $$0.put(3, aow.zI);
-      $$0.put(4, aow.zF);
-   });
-   private int k;
-   private final djs.d l = new ddr.a();
-   private djs.a m = new djs.a();
-   private final djs.b n = new djs.b(this);
-
-   public ddr(gu $$0, dez $$1) {
-      super(dcn.L, $$0, $$1);
-   }
-
-   @Override
-   public djs.a gc() {
-      return this.m;
-   }
-
-   @Override
-   public djs.d gd() {
-      return this.l;
-   }
-
-   @Override
-   public void a(qr $$0) {
-      super.a($$0);
-      if ($$0.b("warning_level", 99)) {
-         this.k = $$0.h("warning_level");
+public class ddr extends dcq implements bgk, bgw {
+   public static final int a = 0;
+   public static final int b = 1;
+   public static final int c = 0;
+   public static final int d = 1;
+   private final bgm e = new bgm() {
+      @Override
+      public int b() {
+         return 1;
       }
 
-      if ($$0.b("listener", 10)) {
-         djs.a.a.parse(new Dynamic(rc.a, $$0.p("listener"))).resultOrPartial(b::error).ifPresent($$0x -> this.m = $$0x);
+      @Override
+      public boolean aa_() {
+         return ddr.this.g.b();
       }
-   }
 
-   @Override
-   protected void b(qr $$0) {
-      super.b($$0);
-      $$0.a("warning_level", this.k);
-      djs.a.a.encodeStart(rc.a, this.m).resultOrPartial(b::error).ifPresent($$1 -> $$0.a("listener", $$1));
-   }
+      @Override
+      public cja a(int $$0) {
+         return $$0 == 0 ? ddr.this.g : cja.b;
+      }
 
-   @Nullable
-   public static akl a(@Nullable bii $$0) {
-      if ($$0 instanceof akl) {
-         return (akl)$$0;
-      } else {
-         if ($$0 != null) {
-            biy $$6 = $$0.cN();
-            if ($$6 instanceof akl) {
-               return (akl)$$6;
+      @Override
+      public cja a(int $$0, int $$1) {
+         if ($$0 == 0) {
+            cja $$2 = ddr.this.g.a($$1);
+            if (ddr.this.g.b()) {
+               ddr.this.j();
             }
+
+            return $$2;
+         } else {
+            return cja.b;
          }
-
-         if ($$0 instanceof cce $$3) {
-            bii var3 = $$3.v();
-            if (var3 instanceof akl) {
-               return (akl)var3;
-            }
-         }
-
-         if ($$0 instanceof byf $$5) {
-            bii var9 = $$5.v();
-            if (var9 instanceof akl) {
-               return (akl)var9;
-            }
-         }
-
-         return null;
-      }
-   }
-
-   public void a(akk $$0, @Nullable akl $$1) {
-      if ($$1 != null) {
-         dez $$2 = this.q();
-         if (!$$2.c(czf.a)) {
-            this.k = 0;
-            if (!this.b($$0) || this.b($$0, $$1)) {
-               this.a($$0, (bii)$$1);
-            }
-         }
-      }
-   }
-
-   private boolean b(akk $$0, akl $$1) {
-      OptionalInt $$2 = cas.a($$0, this.p(), $$1);
-      $$2.ifPresent($$0x -> this.k = $$0x);
-      return $$2.isPresent();
-   }
-
-   private void a(akk $$0, @Nullable bii $$1) {
-      gu $$2 = this.p();
-      dez $$3 = this.q();
-      $$0.a($$2, $$3.a(czf.a, Boolean.valueOf(true)), 2);
-      $$0.a($$2, $$3.b(), 90);
-      $$0.c(3007, $$2, 0);
-      $$0.a(djj.N, $$2, djj.a.a($$1));
-   }
-
-   private boolean b(akk $$0) {
-      return this.q().c(czf.c) && $$0.ai() != bgn.a && $$0.X().b(cph.I);
-   }
-
-   public void a(akk $$0) {
-      if (this.b($$0) && this.k > 0) {
-         if (!this.c($$0)) {
-            this.b((cpl)$$0);
-         }
-
-         caq.a($$0, ehd.b(this.p()), null, 40);
-      }
-   }
-
-   private void b(cpl $$0) {
-      aov $$1 = (aov)j.get(this.k);
-      if ($$1 != null) {
-         gu $$2 = this.p();
-         int $$3 = $$2.u() + arp.b($$0.z, -10, 10);
-         int $$4 = $$2.v() + arp.b($$0.z, -10, 10);
-         int $$5 = $$2.w() + arp.b($$0.z, -10, 10);
-         $$0.a(null, (double)$$3, (double)$$4, (double)$$5, $$1, aox.f, 5.0F, 1.0F);
-      }
-   }
-
-   private boolean c(akk $$0) {
-      return this.k < 4 ? false : asf.a(bim.bi, bjc.k, $$0, this.p(), 20, 5, 6, asf.a.b).isPresent();
-   }
-
-   public djs.b c() {
-      return this.n;
-   }
-
-   class a implements djs.d {
-      private static final int b = 8;
-      private final djn c = new djf(ddr.this.p);
-
-      public a() {
       }
 
       @Override
-      public int a() {
-         return 8;
+      public cja b(int $$0) {
+         if ($$0 == 0) {
+            cja $$1 = ddr.this.g;
+            ddr.this.g = cja.b;
+            ddr.this.j();
+            return $$1;
+         } else {
+            return cja.b;
+         }
       }
 
       @Override
-      public djn b() {
-         return this.c;
+      public void a(int $$0, cja $$1) {
       }
 
       @Override
-      public aqa<djj> c() {
-         return apr.c;
-      }
-
-      @Override
-      public boolean a(akk $$0, gu $$1, djj $$2, djj.a $$3) {
-         return !ddr.this.q().c(czf.a) && ddr.a($$3.a()) != null;
-      }
-
-      @Override
-      public void a(akk $$0, gu $$1, djj $$2, @Nullable bii $$3, @Nullable bii $$4, float $$5) {
-         ddr.this.a($$0, ddr.a($$4 != null ? $$4 : $$3));
+      public int ab_() {
+         return 1;
       }
 
       @Override
@@ -186,8 +62,150 @@ public class ddr extends dcl implements djl.b<djs.b>, djs {
       }
 
       @Override
-      public boolean f() {
-         return true;
+      public boolean a(cbp $$0) {
+         return bgm.a(ddr.this, $$0) && ddr.this.f();
       }
+
+      @Override
+      public boolean b(int $$0, cja $$1) {
+         return false;
+      }
+
+      @Override
+      public void a() {
+      }
+   };
+   private final ceq f = new ceq() {
+      @Override
+      public int a(int $$0) {
+         return $$0 == 0 ? ddr.this.h : 0;
+      }
+
+      @Override
+      public void a(int $$0, int $$1) {
+         if ($$0 == 0) {
+            ddr.this.a($$1);
+         }
+      }
+
+      @Override
+      public int a() {
+         return 1;
+      }
+   };
+   cja g = cja.b;
+   int h;
+   private int i;
+
+   public ddr(gw $$0, dfe $$1) {
+      super(dcs.D, $$0, $$1);
+   }
+
+   public cja c() {
+      return this.g;
+   }
+
+   public boolean f() {
+      return this.g.a(cjd.tg) || this.g.a(cjd.th);
+   }
+
+   public void a(cja $$0) {
+      this.a($$0, null);
+   }
+
+   void j() {
+      this.h = 0;
+      this.i = 0;
+      cwy.a(null, this.k(), this.p(), this.q(), false);
+   }
+
+   public void a(cja $$0, @Nullable cbp $$1) {
+      this.g = this.b($$0, $$1);
+      this.h = 0;
+      this.i = ckw.k(this.g);
+      this.e();
+   }
+
+   void a(int $$0) {
+      int $$1 = ars.a($$0, 0, this.i - 1);
+      if ($$1 != this.h) {
+         this.h = $$1;
+         this.e();
+         cwy.a(this.k(), this.p(), this.q());
+      }
+   }
+
+   public int g() {
+      return this.h;
+   }
+
+   public int i() {
+      float $$0 = this.i > 1 ? (float)this.g() / ((float)this.i - 1.0F) : 1.0F;
+      return ars.d($$0 * 14.0F) + (this.f() ? 1 : 0);
+   }
+
+   private cja b(cja $$0, @Nullable cbp $$1) {
+      if (this.o instanceof akn && $$0.a(cjd.th)) {
+         ckw.a($$0, this.a($$1), $$1);
+      }
+
+      return $$0;
+   }
+
+   private dt a(@Nullable cbp $$0) {
+      String $$1;
+      ti $$2;
+      if ($$0 == null) {
+         $$1 = "Lectern";
+         $$2 = ti.b("Lectern");
+      } else {
+         $$1 = $$0.ab().getString();
+         $$2 = $$0.H_();
+      }
+
+      ehi $$5 = ehi.b(this.p);
+      return new dt(ds.a, $$5, ehh.a, (akn)this.o, 2, $$1, $$2, this.o.n(), $$0);
+   }
+
+   @Override
+   public boolean t() {
+      return true;
+   }
+
+   @Override
+   public void a(qu $$0) {
+      super.a($$0);
+      if ($$0.b("Book", 10)) {
+         this.g = this.b(cja.a($$0.p("Book")), null);
+      } else {
+         this.g = cja.b;
+      }
+
+      this.i = ckw.k(this.g);
+      this.h = ars.a($$0.h("Page"), 0, this.i - 1);
+   }
+
+   @Override
+   protected void b(qu $$0) {
+      super.b($$0);
+      if (!this.c().b()) {
+         $$0.a("Book", this.c().b(new qu()));
+         $$0.a("Page", this.h);
+      }
+   }
+
+   @Override
+   public void a() {
+      this.a(cja.b);
+   }
+
+   @Override
+   public ceg createMenu(int $$0, cbo $$1, cbp $$2) {
+      return new cfi($$0, this.e, this.f);
+   }
+
+   @Override
+   public ti H_() {
+      return ti.c("container.lectern");
    }
 }

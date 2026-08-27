@@ -1,80 +1,99 @@
-import com.google.common.collect.ImmutableList;
-import java.util.List;
+import com.google.common.collect.ImmutableMap;
 import java.util.Optional;
 
-public class bny extends bnz {
-   private static final List<cis> c = ImmutableList.of(cja.oH, cja.ur);
+public class bny extends bks<cbc> {
+   private static final int c = 5;
+   private static final float d = 0.5F;
+   private long e;
 
-   @Override
-   protected void a(akk $$0, caz $$1) {
-      Optional<hd> $$2 = $$1.dM().c(brz.c);
-      if (!$$2.isEmpty()) {
-         hd $$3 = $$2.get();
-         dez $$4 = $$0.a_($$3.b());
-         if ($$4.a(csm.pc)) {
-            this.a($$1);
-            this.a($$0, $$1, $$3, $$4);
+   public bny() {
+      super(ImmutableMap.of(bsc.r, bsd.a, bsc.h, bsd.a), 350, 350);
+   }
+
+   protected boolean a(akn $$0, cbc $$1) {
+      return this.a($$1);
+   }
+
+   protected boolean a(akn $$0, cbc $$1, long $$2) {
+      return $$2 <= this.e && this.a($$1);
+   }
+
+   protected void b(akn $$0, cbc $$1, long $$2) {
+      big $$3 = $$1.dM().c(bsc.r).get();
+      bku.a($$1, $$3, 0.5F);
+      $$0.a($$3, (byte)18);
+      $$0.a($$1, (byte)18);
+      int $$4 = 275 + $$1.ee().a(50);
+      this.e = $$2 + (long)$$4;
+   }
+
+   protected void c(akn $$0, cbc $$1, long $$2) {
+      cbc $$3 = (cbc)$$1.dM().c(bsc.r).get();
+      if (!($$1.f($$3) > 5.0)) {
+         bku.a($$1, $$3, 0.5F);
+         if ($$2 >= this.e) {
+            $$1.gr();
+            $$3.gr();
+            this.a($$0, $$1, $$3);
+         } else if ($$1.ee().a(35) == 0) {
+            $$0.a($$3, (byte)12);
+            $$0.a($$1, (byte)12);
          }
       }
    }
 
-   private void a(akk $$0, caz $$1, hd $$2, dez $$3) {
-      gu $$4 = $$2.b();
-      if ($$3.c(ctu.d) == 8) {
-         $$3 = ctu.a($$1, $$3, (cpl)$$0, $$4);
-      }
-
-      int $$5 = 20;
-      int $$6 = 10;
-      int[] $$7 = new int[c.size()];
-      bgx $$8 = $$1.t();
-      int $$9 = $$8.b();
-      dez $$10 = $$3;
-
-      for (int $$11 = $$9 - 1; $$11 >= 0 && $$5 > 0; $$11--) {
-         cix $$12 = $$8.a($$11);
-         int $$13 = c.indexOf($$12.d());
-         if ($$13 != -1) {
-            int $$14 = $$12.L();
-            int $$15 = $$7[$$13] + $$14;
-            $$7[$$13] = $$15;
-            int $$16 = Math.min(Math.min($$15 - 10, $$5), $$14);
-            if ($$16 > 0) {
-               $$5 -= $$16;
-
-               for (int $$17 = 0; $$17 < $$16; $$17++) {
-                  $$10 = ctu.a($$1, $$10, $$0, $$12, $$4);
-                  if ($$10.c(ctu.d) == 7) {
-                     this.a($$0, $$3, $$4, $$10);
-                     return;
-                  }
-               }
-            }
+   private void a(akn $$0, cbc $$1, cbc $$2) {
+      Optional<gw> $$3 = this.b($$0, $$1);
+      if ($$3.isEmpty()) {
+         $$0.a($$2, (byte)13);
+         $$0.a($$1, (byte)13);
+      } else {
+         Optional<cbc> $$4 = this.b($$0, $$1, $$2);
+         if ($$4.isPresent()) {
+            this.a($$0, $$4.get(), $$3.get());
+         } else {
+            $$0.w().b($$3.get());
+            aay.c($$0, $$3.get());
          }
       }
-
-      this.a($$0, $$3, $$4, $$10);
    }
 
-   private void a(akk $$0, dez $$1, gu $$2, dez $$3) {
-      $$0.c(1500, $$2, $$3 != $$1 ? 1 : 0);
+   protected void d(akn $$0, cbc $$1, long $$2) {
+      $$1.dM().b(bsc.r);
    }
 
-   private void a(caz $$0) {
-      bgx $$1 = $$0.t();
-      if ($$1.a_(cja.oJ) <= 36) {
-         int $$2 = $$1.a_(cja.oI);
-         int $$3 = 3;
-         int $$4 = 3;
-         int $$5 = Math.min(3, $$2 / 3);
-         if ($$5 != 0) {
-            int $$6 = $$5 * 3;
-            $$1.a(cja.oI, $$6);
-            cix $$7 = $$1.a(new cix(cja.oJ, $$5));
-            if (!$$7.b()) {
-               $$0.a($$7, 0.5F);
-            }
-         }
+   private boolean a(cbc $$0) {
+      bkb<cbc> $$1 = $$0.dM();
+      Optional<big> $$2 = $$1.c(bsc.r).filter($$0x -> $$0x.ag() == bip.bf);
+      return $$2.isEmpty() ? false : bku.a($$1, bsc.r, bip.bf) && $$0.P_() && $$2.get().P_();
+   }
+
+   private Optional<gw> b(akn $$0, cbc $$1) {
+      return $$0.w().a($$0x -> $$0x.a(bue.n), ($$1x, $$2) -> this.a($$1, $$2, $$1x), $$1.dk(), 48);
+   }
+
+   private boolean a(cbc $$0, gw $$1, hg<bud> $$2) {
+      eaw $$3 = $$0.H().a($$1, $$2.a().c());
+      return $$3 != null && $$3.j();
+   }
+
+   private Optional<cbc> b(akn $$0, cbc $$1, cbc $$2) {
+      cbc $$3 = $$1.b($$0, $$2);
+      if ($$3 == null) {
+         return Optional.empty();
+      } else {
+         $$1.c_(6000);
+         $$2.c_(6000);
+         $$3.c_(-24000);
+         $$3.b($$1.dp(), $$1.dr(), $$1.dv(), 0.0F, 0.0F);
+         $$0.a_($$3);
+         $$0.a($$3, (byte)12);
+         return Optional.of($$3);
       }
+   }
+
+   private void a(akn $$0, cbc $$1, gw $$2) {
+      hf $$3 = hf.a($$0.ac(), $$2);
+      $$1.dM().a(bsc.b, $$3);
    }
 }

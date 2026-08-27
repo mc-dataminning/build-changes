@@ -1,22 +1,54 @@
-import java.util.Optional;
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import java.util.List;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public record uk(String b) implements tg {
-   @Override
-   public <T> Optional<T> a(tj.a<T> $$0) {
-      return $$0.accept(this.b);
+public record uk(String a, @Nullable gc b) implements uj {
+   public uk(String $$0) {
+      this($$0, a($$0));
+   }
+
+   @Nullable
+   private static gc a(String $$0) {
+      try {
+         gd $$1 = new gd(new StringReader($$0));
+         return $$1.t();
+      } catch (CommandSyntaxException var2) {
+         return null;
+      }
    }
 
    @Override
-   public <T> Optional<T> a(tj.b<T> $$0, ub $$1) {
-      return $$0.accept($$1, this.b);
+   public Stream<qu> getData(dt $$0) throws CommandSyntaxException {
+      if (this.b != null) {
+         List<? extends bil> $$1 = this.b.b($$0);
+         return $$1.stream().map(cn::b);
+      } else {
+         return Stream.empty();
+      }
    }
 
    @Override
    public String toString() {
-      return "literal{" + this.b + "}";
+      return "entity=" + this.a;
    }
 
-   public String a() {
-      return this.b;
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof uk $$1 && this.a.equals($$1.a)) {
+            return true;
+         }
+
+         return false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return this.a.hashCode();
    }
 }

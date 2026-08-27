@@ -1,40 +1,54 @@
-import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
-public class aas implements ux<wp> {
-   private final List<cma<?>> a;
+public class aas implements va<ws> {
+   private final boolean a;
+   private final List<af> b;
+   private final Set<aeu> c;
+   private final Map<aeu, ah> d;
 
-   public aas(Collection<cma<?>> $$0) {
-      this.a = Lists.newArrayList($$0);
+   public aas(boolean $$0, Collection<af> $$1, Set<aeu> $$2, Map<aeu, ah> $$3) {
+      this.a = $$0;
+      this.b = List.copyOf($$1);
+      this.c = Set.copyOf($$2);
+      this.d = Map.copyOf($$3);
    }
 
-   public aas(si $$0) {
-      this.a = $$0.a(aas::b);
+   public aas(sl $$0) {
+      this.a = $$0.readBoolean();
+      this.b = $$0.a(af::b);
+      this.c = $$0.a(Sets::newLinkedHashSetWithExpectedSize, sl::s);
+      this.d = $$0.a(sl::s, ah::b);
    }
 
    @Override
-   public void a(si $$0) {
-      $$0.a(this.a, aas::a);
+   public void a(sl $$0) {
+      $$0.a(this.a);
+      $$0.a(this.b, ($$0x, $$1) -> $$1.a($$0x));
+      $$0.a(this.c, sl::a);
+      $$0.a(this.d, sl::a, ($$0x, $$1) -> $$1.a($$0x));
    }
 
-   public void a(wp $$0) {
+   public void a(ws $$0) {
       $$0.a(this);
    }
 
-   public List<cma<?>> a() {
+   public List<af> a() {
+      return this.b;
+   }
+
+   public Set<aeu> d() {
+      return this.c;
+   }
+
+   public Map<aeu, ah> e() {
+      return this.d;
+   }
+
+   public boolean f() {
       return this.a;
-   }
-
-   public static cma<?> b(si $$0) {
-      aer $$1 = $$0.s();
-      aer $$2 = $$0.s();
-      return jb.u.b($$1).orElseThrow(() -> new IllegalArgumentException("Unknown recipe serializer " + $$1)).a($$2, $$0);
-   }
-
-   public static <T extends cma<?>> void a(si $$0, T $$1) {
-      $$0.a(jb.u.b($$1.ai_()));
-      $$0.a($$1.e());
-      ((cmc<T>)$$1.ai_()).a($$0, $$1);
    }
 }

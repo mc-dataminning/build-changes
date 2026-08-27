@@ -1,55 +1,71 @@
-import com.google.common.collect.MapMaker;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.Lifecycle;
 import java.util.Optional;
-import java.util.concurrent.ConcurrentMap;
 
-public class aeq<T> {
-   private static final ConcurrentMap<aeq.a, aeq<?>> a = new MapMaker().weakValues().makeMap();
-   private final aer b;
-   private final aer c;
+public final class aeq<E> implements Codec<hg<E>> {
+   private final aet<? extends ht<E>> a;
+   private final Codec<E> b;
+   private final boolean c;
 
-   public static <T> Codec<aeq<T>> a(aeq<? extends hr<T>> $$0) {
-      return aer.a.xmap($$1 -> a($$0, $$1), aeq::a);
+   public static <E> aeq<E> a(aet<? extends ht<E>> $$0, Codec<E> $$1) {
+      return a($$0, $$1, true);
    }
 
-   public static <T> aeq<T> a(aeq<? extends hr<T>> $$0, aer $$1) {
-      return a($$0.c, $$1);
+   public static <E> aeq<E> a(aet<? extends ht<E>> $$0, Codec<E> $$1, boolean $$2) {
+      return new aeq<>($$0, $$1, $$2);
    }
 
-   public static <T> aeq<hr<T>> a(aer $$0) {
-      return a(jb.a, $$0);
+   private aeq(aet<? extends ht<E>> $$0, Codec<E> $$1, boolean $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   private static <T> aeq<T> a(aer $$0, aer $$1) {
-      return (aeq<T>)a.computeIfAbsent(new aeq.a($$0, $$1), $$0x -> new aeq($$0x.a, $$0x.b));
+   public <T> DataResult<T> a(hg<E> $$0, DynamicOps<T> $$1, T $$2) {
+      if ($$1 instanceof aes<?> $$3) {
+         Optional<hj<E>> $$4 = $$3.a(this.a);
+         if ($$4.isPresent()) {
+            if (!$$0.a($$4.get())) {
+               return DataResult.error(() -> "Element " + $$0 + " is not valid in current registry set");
+            }
+
+            return (DataResult<T>)$$0.d().map($$2x -> aeu.a.encode($$2x.a(), $$1, $$2), $$2x -> this.b.encode($$2x, $$1, $$2));
+         }
+      }
+
+      return this.b.encode($$0.a(), $$1, $$2);
    }
 
-   private aeq(aer $$0, aer $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public <T> DataResult<Pair<hg<E>, T>> decode(DynamicOps<T> $$0, T $$1) {
+      if ($$0 instanceof aes<?> $$2) {
+         Optional<hh<E>> $$3 = $$2.b(this.a);
+         if ($$3.isEmpty()) {
+            return DataResult.error(() -> "Registry does not exist: " + this.a);
+         } else {
+            hh<E> $$4 = $$3.get();
+            DataResult<Pair<aeu, T>> $$5 = aeu.a.decode($$0, $$1);
+            if ($$5.result().isEmpty()) {
+               return !this.c ? DataResult.error(() -> "Inline definitions not allowed here") : this.b.decode($$0, $$1).map($$0x -> $$0x.mapFirst(hg::a));
+            } else {
+               Pair<aeu, T> $$6 = (Pair<aeu, T>)$$5.result().get();
+               aet<E> $$7 = aet.a(this.a, (aeu)$$6.getFirst());
+               return $$4.a($$7)
+                  .<DataResult>map(DataResult::success)
+                  .orElseGet(() -> DataResult.error(() -> "Failed to get element " + $$7))
+                  .map($$1x -> Pair.of($$1x, $$6.getSecond()))
+                  .setLifecycle(Lifecycle.stable());
+            }
+         }
+      } else {
+         return this.b.decode($$0, $$1).map($$0x -> $$0x.mapFirst(hg::a));
+      }
    }
 
    @Override
    public String toString() {
-      return "ResourceKey[" + this.b + " / " + this.c + "]";
-   }
-
-   public boolean b(aeq<? extends hr<?>> $$0) {
-      return this.b.equals($$0.a());
-   }
-
-   public <E> Optional<aeq<E>> c(aeq<? extends hr<E>> $$0) {
-      return this.b($$0) ? Optional.of((aeq<E>)this) : Optional.empty();
-   }
-
-   public aer a() {
-      return this.c;
-   }
-
-   public aer b() {
-      return this.b;
-   }
-
-   static record a(aer a, aer b) {
+      return "RegistryFileCodec[" + this.a + " " + this.b + "]";
    }
 }

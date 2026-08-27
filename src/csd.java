@@ -1,53 +1,31 @@
 import javax.annotation.Nullable;
 
-public class csd extends cry implements csc {
-   public csd(dey.d $$0) {
+public abstract class csd extends csq implements cve {
+   protected csd(dfd.d $$0) {
       super($$0);
    }
 
    @Override
-   public chl a() {
-      return chl.a;
+   public cyv b_(dfe $$0) {
+      return cyv.a;
    }
 
    @Override
-   public dcl a(gu $$0, dez $$1) {
-      return new dcg($$0, $$1);
+   public boolean a(dfe $$0, cpq $$1, gw $$2, int $$3, int $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      dcq $$5 = $$1.c_($$2);
+      return $$5 == null ? false : $$5.a_($$3, $$4);
    }
 
    @Nullable
    @Override
-   public <T extends dcl> dcm<T> a(cpl $$0, dez $$1, dcn<T> $$2) {
-      return a($$2, dcn.o, dcg::a);
+   public bgw b(dfe $$0, cpq $$1, gw $$2) {
+      dcq $$3 = $$1.c_($$2);
+      return $$3 instanceof bgw ? (bgw)$$3 : null;
    }
 
-   @Override
-   public bgq a(dez $$0, cpl $$1, gu $$2, cbm $$3, bgp $$4, egz $$5) {
-      if ($$1.B) {
-         return bgq.a;
-      } else {
-         dcl $$6 = $$1.c_($$2);
-         if ($$6 instanceof dcg) {
-            $$3.a((dcg)$$6);
-            $$3.a(apg.ab);
-         }
-
-         return bgq.b;
-      }
-   }
-
-   @Override
-   public cyq b_(dez $$0) {
-      return cyq.c;
-   }
-
-   @Override
-   public void a(cpl $$0, gu $$1, dez $$2, biy $$3, cix $$4) {
-      if ($$4.A()) {
-         dcl $$5 = $$0.c_($$1);
-         if ($$5 instanceof dcg) {
-            ((dcg)$$5).a($$4.y());
-         }
-      }
+   @Nullable
+   protected static <E extends dcq, A extends dcq> dcr<A> a(dcs<A> $$0, dcs<E> $$1, dcr<? super E> $$2) {
+      return $$1 == $$0 ? $$2 : null;
    }
 }

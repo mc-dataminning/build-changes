@@ -1,37 +1,74 @@
-public class gen extends ger {
-   private final tf a;
-   private esz b = esz.a;
-   private final eya c;
-   private int y;
+public class gen implements gep {
+   private static final int a = 600;
+   private static final ti b = ti.c("tutorial.punch_tree.title");
+   private static final ti c = ti.a("tutorial.punch_tree.description", geo.a("attack"));
+   private final geo d;
+   private euu e;
+   private int f;
+   private int g;
 
-   public gen(eya $$0, tf $$1, tf $$2) {
-      super($$1);
-      this.c = $$0;
-      this.a = $$2;
+   public gen(geo $$0) {
+      this.d = $$0;
    }
 
    @Override
-   public void aC_() {
-      this.f.ac().a();
-      this.b = esz.a(this.i, this.a, this.g - 50);
-      this.y = this.b.a() * 9;
-      this.d(esg.a(te.k, $$0 -> this.f.a(this.c)).a(this.g / 2 - 100, this.h / 2 + this.y / 2 + 9, 200, 20).a());
+   public void a() {
+      this.f++;
+      if (!this.d.f()) {
+         this.d.a(geq.f);
+      } else {
+         if (this.f == 1) {
+            fnb $$0 = this.d.e().s;
+            if ($$0 != null) {
+               if ($$0.fQ().a(apw.r)) {
+                  this.d.a(geq.e);
+                  return;
+               }
+
+               if (gek.a($$0)) {
+                  this.d.a(geq.e);
+                  return;
+               }
+            }
+         }
+
+         if ((this.f >= 600 || this.g > 3) && this.e == null) {
+            this.e = new euu(euu.a.c, b, c, true);
+            this.d.e().ay().a(this.e);
+         }
+      }
    }
 
    @Override
-   public tf e() {
-      return tf.h().b(this.e).f(": ").b(this.a);
+   public void b() {
+      if (this.e != null) {
+         this.e.c();
+         this.e = null;
+      }
    }
 
    @Override
-   public void at_() {
-      eql.O().a(this.c);
+   public void a(fis $$0, gw $$1, dfe $$2, float $$3) {
+      boolean $$4 = $$2.a(apo.t);
+      if ($$4 && $$3 > 0.0F) {
+         if (this.e != null) {
+            this.e.a($$3);
+         }
+
+         if ($$3 >= 1.0F) {
+            this.d.a(geq.d);
+         }
+      } else if (this.e != null) {
+         this.e.a(0.0F);
+      } else if ($$4) {
+         this.g++;
+      }
    }
 
    @Override
-   public void a(erv $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, this.h / 2 - this.y / 2 - 9 * 2, 11184810);
-      this.b.a($$0, this.g / 2, this.h / 2 - this.y / 2);
+   public void a(cja $$0) {
+      if ($$0.a(apw.r)) {
+         this.d.a(geq.e);
+      }
    }
 }

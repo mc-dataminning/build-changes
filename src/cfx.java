@@ -1,9 +1,22 @@
-public class cfx extends cee {
-   public cfx(int $$0, cbl $$1) {
-      super(cfi.v, cmd.d, cfo.d, $$0, $$1);
+public class cfx implements ceq {
+   private final int[] a;
+
+   public cfx(int $$0) {
+      this.a = new int[$$0];
    }
 
-   public cfx(int $$0, cbl $$1, bgj $$2, cen $$3) {
-      super(cfi.v, cmd.d, cfo.d, $$0, $$1, $$2, $$3);
+   @Override
+   public int a(int $$0) {
+      return this.a[$$0];
+   }
+
+   @Override
+   public void a(int $$0, int $$1) {
+      this.a[$$0] = $$1;
+   }
+
+   @Override
+   public int a() {
+      return this.a.length;
    }
 }

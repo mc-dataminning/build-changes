@@ -1,106 +1,128 @@
+import java.util.Arrays;
+import java.util.UUID;
 import javax.annotation.Nullable;
 
-public class czq extends cup implements csn, czm {
-   private static final dfq e = dfp.C;
-   public static final dft b = dfp.R;
-   protected static final float c = 6.0F;
-   protected static final ehw d = csl.a(2.0, 0.0, 2.0, 14.0, 13.0, 14.0);
+public abstract class czq extends csd implements czr {
+   public static final dfv e = dfu.C;
+   protected static final float f = 4.0F;
+   protected static final eib g = csq.a(4.0, 0.0, 4.0, 12.0, 16.0, 12.0);
+   private final dgr a;
 
-   public czq(dey.d $$0) {
+   protected czq(dfd.d $$0, dgr $$1) {
       super($$0);
-      this.k(this.C.b().a(a, dfv.b).a(e, Boolean.valueOf(false)).a(b, ha.c));
+      this.a = $$1;
    }
 
    @Override
-   public ehw a(dez $$0, cor $$1, gu $$2, ehi $$3) {
-      return d;
-   }
-
-   @Override
-   protected boolean d(dez $$0, cor $$1, gu $$2) {
-      return $$0.a(apl.bw) || $$1.b_($$2.c()).a(ead.c) && super.d($$0, $$1, $$2);
-   }
-
-   @Nullable
-   @Override
-   public dez a(clf $$0) {
-      dez $$1 = super.a($$0);
-      return $$1 != null ? b($$0.q(), $$0.a(), $$1.a(b, $$0.g().g())) : null;
-   }
-
-   @Override
-   public void a(cpl $$0, gu $$1, dez $$2, biy $$3, cix $$4) {
-      if (!$$0.r_()) {
-         gu $$5 = $$1.c();
-         dez $$6 = cup.b($$0, $$5, this.n().a(a, dfv.a).a(b, $$2.c(b)));
-         $$0.a($$5, $$6, 3);
-      }
-   }
-
-   @Override
-   public eac c_(dez $$0) {
-      return $$0.c(e) ? ead.c.a(false) : super.c_($$0);
-   }
-
-   @Override
-   public boolean a(dez $$0, cpo $$1, gu $$2) {
-      if ($$0.c(a) == dfv.a) {
-         return super.a($$0, $$1, $$2);
-      } else {
-         gu $$3 = $$2.d();
-         dez $$4 = $$1.a_($$3);
-         return this.d($$4, $$1, $$3);
-      }
-   }
-
-   @Override
-   public dez a(dez $$0, ha $$1, dez $$2, cpm $$3, gu $$4, gu $$5) {
+   public dfe a(dfe $$0, hc $$1, dfe $$2, cpr $$3, gw $$4, gw $$5) {
       if ($$0.c(e)) {
-         $$3.a($$4, ead.c, ead.c.a($$3));
+         $$3.a($$4, eai.c, eai.c.a($$3));
       }
 
       return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected void a(dfa.a<csl, dez> $$0) {
-      $$0.a(a, e, b);
+   public eib a(dfe $$0, cow $$1, gw $$2, ehn $$3) {
+      return g;
    }
 
    @Override
-   public boolean a(cpo $$0, gu $$1, dez $$2) {
+   public boolean a(dfe $$0) {
       return true;
    }
 
    @Override
-   public boolean a(cpl $$0, aru $$1, gu $$2, dez $$3) {
-      return true;
+   public dcq a(gw $$0, dfe $$1) {
+      return new ddy($$0, $$1);
    }
 
    @Override
-   public void a(akk $$0, aru $$1, gu $$2, dez $$3) {
-      if ($$3.c(cup.a) == dfv.b) {
-         gu $$4 = $$2.c();
-         $$0.a($$4, $$0.b_($$4).g(), 18);
-         csi.a($$0, $$1, $$2, $$3.c(b));
+   public bgt a(dfe $$0, cpq $$1, gw $$2, cbp $$3, bgs $$4, ehe $$5) {
+      cja $$6 = $$3.b($$4);
+      civ $$7 = $$6.d();
+      cjz $$9 = $$6.d() instanceof cjz $$8 ? $$8 : null;
+      boolean $$10 = $$9 != null && $$3.gc();
+      if ($$1.c_($$2) instanceof ddy $$11) {
+         if (!$$1.B) {
+            boolean $$12 = $$11.a($$3);
+            ddz $$13 = $$11.a($$12);
+            boolean $$14 = $$11.a($$3, $$1, $$2, $$12);
+            if ($$11.w()) {
+               $$1.a(null, $$11.p(), aoz.zP, apa.e);
+               return this.a($$10);
+            } else if ($$10 && !this.a($$3, $$11) && $$9.a($$13, $$3) && $$9.a($$1, $$11, $$12, $$3)) {
+               if (!$$3.f()) {
+                  $$6.h(1);
+               }
+
+               $$1.a(djo.c, $$11.p(), djo.a.a($$3, $$11.q()));
+               $$3.b(apj.c.b($$7));
+               return bgt.a;
+            } else if ($$14) {
+               return bgt.a;
+            } else if (!this.a($$3, $$11) && $$3.gc() && this.b($$3, $$11, $$12)) {
+               this.a($$3, $$11, $$12);
+               return this.a($$10);
+            } else {
+               return bgt.d;
+            }
+         } else {
+            return !$$10 && !$$11.w() ? bgt.b : bgt.a;
+         }
       } else {
-         gu $$5 = $$2.d();
-         this.a($$0, $$1, $$5, $$0.a_($$5));
+         return bgt.d;
       }
    }
 
-   @Override
-   public dez a(dez $$0, cyx $$1) {
-      return $$0.a(b, $$1.a($$0.c(b)));
+   private bgt a(boolean $$0) {
+      return $$0 ? bgt.d : bgt.a;
+   }
+
+   private boolean b(cbp $$0, ddy $$1, boolean $$2) {
+      ddz $$3 = $$1.a($$2);
+      return Arrays.stream($$3.b($$0.W())).allMatch($$0x -> $$0x.equals(th.a) || $$0x.b() instanceof un);
+   }
+
+   public abstract float g(dfe var1);
+
+   public ehi h(dfe $$0) {
+      return new ehi(0.5, 0.5, 0.5);
    }
 
    @Override
-   public dez a(dez $$0, cxg $$1) {
-      return $$0.a($$1.a($$0.c(b)));
+   public eah c_(dfe $$0) {
+      return $$0.c(e) ? eai.c.a(false) : super.c_($$0);
    }
 
+   public dgr c() {
+      return this.a;
+   }
+
+   public static dgr a(csq $$0) {
+      dgr $$1;
+      if ($$0 instanceof czq) {
+         $$1 = ((czq)$$0).c();
+      } else {
+         $$1 = dgr.a;
+      }
+
+      return $$1;
+   }
+
+   public void a(cbp $$0, ddy $$1, boolean $$2) {
+      $$1.a($$0.cv());
+      $$0.a($$1, $$2);
+   }
+
+   private boolean a(cbp $$0, ddy $$1) {
+      UUID $$2 = $$1.v();
+      return $$2 != null && !$$2.equals($$0.cv());
+   }
+
+   @Nullable
    @Override
-   public float am_() {
-      return 0.1F;
+   public <T extends dcq> dcr<T> a(cpq $$0, dfe $$1, dcs<T> $$2) {
+      return a($$2, dcs.h, ddy::a);
    }
 }

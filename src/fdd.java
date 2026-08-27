@@ -1,161 +1,227 @@
-import com.google.common.base.MoreObjects;
-import com.google.common.collect.Lists;
-import java.util.List;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.Lifecycle;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import java.io.IOException;
+import java.util.concurrent.CompletableFuture;
+import java.util.function.Function;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
 public class fdd {
-   static final aer b = new aer("spectator/close");
-   static final aer c = new aer("spectator/scroll_left");
-   static final aer d = new aer("spectator/scroll_right");
-   private static final fdf e = new fdd.a();
-   private static final fdf f = new fdd.b(-1, true);
-   private static final fdf g = new fdd.b(1, true);
-   private static final fdf h = new fdd.b(1, false);
-   private static final int i = 8;
-   static final tf j = tf.c("spectatorMenu.close");
-   static final tf k = tf.c("spectatorMenu.previous_page");
-   static final tf l = tf.c("spectatorMenu.next_page");
-   public static final fdf a = new fdf() {
-      @Override
-      public void a(fdd $$0) {
-      }
+   private static final Logger a = LogUtils.getLogger();
+   private final eqq b;
+   private final ecb c;
 
-      @Override
-      public tf aD_() {
-         return te.a;
-      }
-
-      @Override
-      public void a(erv $$0, float $$1, int $$2) {
-      }
-
-      @Override
-      public boolean aE_() {
-         return false;
-      }
-   };
-   private final fdg m;
-   private fde n;
-   private int o = -1;
-   int p;
-
-   public fdd(fdg $$0) {
-      this.n = new fdc();
-      this.m = $$0;
+   public fdd(eqq $$0, ecb $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public fdf a(int $$0) {
-      int $$1 = $$0 + this.p * 6;
-      if (this.p > 0 && $$0 == 0) {
-         return f;
-      } else if ($$0 == 7) {
-         return $$1 < this.n.a().size() ? g : h;
-      } else if ($$0 == 8) {
-         return e;
+   public void a(eyf $$0, String $$1) {
+      this.a($$0, $$1, false, true);
+   }
+
+   public void a(String $$0, cpu $$1, dll $$2, Function<hu, dli> $$3) {
+      ecb.c $$4 = this.a($$0);
+      if ($$4 != null) {
+         ana $$5 = and.a($$4);
+         cqj $$6 = $$1.g();
+
+         try {
+            afo.d $$7 = new afo.d($$5, $$6, false, false);
+            afp $$8 = this.a($$7, $$3x -> {
+               dli.b $$4x = $$3.apply($$3x.c()).a($$3x.d().d(je.aI));
+               return new afo.b<>(new ecf($$1, $$2, $$4x.d(), $$4x.a()), $$4x.b());
+            }, afp::new);
+            this.b.a($$0, $$4, $$5, $$8, true);
+         } catch (Exception var10) {
+            a.warn("Failed to load datapacks, can't proceed with server load", var10);
+            a($$4, $$0);
+         }
+      }
+   }
+
+   @Nullable
+   private ecb.c a(String $$0) {
+      try {
+         return this.c.c($$0);
+      } catch (IOException var3) {
+         a.warn("Failed to read level {} data", $$0, var3);
+         eur.a(this.b, $$0);
+         this.b.a(null);
+         return null;
+      } catch (egx var4) {
+         a.warn("{}", var4.getMessage());
+         this.b.a(exu.a(null));
+         return null;
+      }
+   }
+
+   public void a(ecb.c $$0, afe $$1, hn<afd> $$2, ech $$3) {
+      ana $$4 = and.a($$0);
+      anf $$5 = (anf)new afo.d($$4, $$3.F(), false, false).a().getSecond();
+      this.b.a($$0.b(), $$0, $$4, new afp($$5, $$1, $$2, $$3), true);
+   }
+
+   private afp a(ecb.c $$0, boolean $$1, ana $$2) throws Exception {
+      afo.d $$3 = this.b($$0, $$1, $$2);
+      return this.a($$3, $$1x -> {
+         DynamicOps<rn> $$2x = aes.a(rf.a, $$1x.c());
+         ht<dio> $$3x = $$1x.d().d(je.aI);
+         Pair<ech, dli.b> $$4 = $$0.a($$2x, $$1x.b(), $$3x, $$1x.c().d());
+         if ($$4 == null) {
+            throw new IllegalStateException("Failed to load world");
+         } else {
+            return new afo.b<>((ech)$$4.getFirst(), ((dli.b)$$4.getSecond()).b());
+         }
+      }, afp::new);
+   }
+
+   public Pair<cpu, fdb> a(ecb.c $$0) throws Exception {
+      ana $$1 = and.a($$0);
+      afo.d $$2 = this.b($$0, false, $$1);
+
+      record a(cpu a, dll b, ht<dio> c) {
+      }
+
+      return this.a($$2, $$1x -> {
+         DynamicOps<rn> $$2x = aes.a(rf.a, $$1x.c());
+         ht<dio> $$3 = new ho<>(je.aI, Lifecycle.stable()).l();
+         Pair<ech, dli.b> $$4 = $$0.a($$2x, $$1x.b(), $$3, $$1x.c().d());
+         if ($$4 == null) {
+            throw new IllegalStateException("Failed to load world");
+         } else {
+            return new afo.b<>(new a(((ech)$$4.getFirst()).L(), ((ech)$$4.getFirst()).A(), ((dli.b)$$4.getSecond()).c()), $$1x.d());
+         }
+      }, ($$0x, $$1x, $$2x, $$3) -> {
+         $$0x.close();
+         return Pair.of($$3.a, new fdb($$3.b, new dli($$3.c), $$2x, $$1x, $$3.a.g()));
+      });
+   }
+
+   private afo.d b(ecb.c $$0, boolean $$1, ana $$2) {
+      cqj $$3 = $$0.e();
+      if ($$3 == null) {
+         throw new IllegalStateException("Failed to load data pack config");
       } else {
-         return $$1 >= 0 && $$1 < this.n.a().size() ? (fdf)MoreObjects.firstNonNull(this.n.a().get($$1), a) : a;
+         return new afo.d($$2, $$3, $$1, false);
       }
    }
 
-   public List<fdf> a() {
-      List<fdf> $$0 = Lists.newArrayList();
+   public afp a(ecb.c $$0, boolean $$1) throws Exception {
+      ana $$2 = and.a($$0);
+      return this.a($$0, $$1, $$2);
+   }
 
-      for (int $$1 = 0; $$1 <= 8; $$1++) {
-         $$0.add(this.a($$1));
+   private <D, R> R a(afo.d $$0, afo.f<D> $$1, afo.e<D, R> $$2) throws Exception {
+      afo.c $$3 = new afo.c($$0, du.a.c, 2);
+      CompletableFuture<R> $$4 = afo.a($$3, $$1, $$2, ac.f(), this.b);
+      this.b.c($$4::isDone);
+      return $$4.get();
+   }
+
+   private void a(eyf $$0, String $$1, boolean $$2, boolean $$3) {
+      ecb.c $$4 = this.a($$1);
+      if ($$4 != null) {
+         ana $$5 = and.a($$4);
+
+         afp $$6;
+         try {
+            $$6 = this.a($$4, $$2, $$5);
+         } catch (Exception var11) {
+            a.warn("Failed to load level data or datapacks, can't proceed with server load", var11);
+            if (!$$2) {
+               this.b.a(new exd(() -> this.a($$0, $$1, true, $$3)));
+            } else {
+               this.b
+                  .a(
+                     new ews(
+                        () -> this.b.a(null), ti.c("datapackFailure.safeMode.failed.title"), ti.c("datapackFailure.safeMode.failed.description"), th.l, true
+                     )
+                  );
+            }
+
+            a($$4, $$1);
+            return;
+         }
+
+         ech $$9 = $$6.d();
+         boolean $$10 = $$9.A().e();
+         boolean $$11 = $$9.D() != Lifecycle.stable();
+         if (!$$3 || !$$10 && !$$11) {
+            this.b.ac().a($$4).thenApply($$0x -> true).exceptionallyComposeAsync($$0x -> {
+               a.warn("Failed to load pack: ", $$0x);
+               return this.a();
+            }, this.b).thenAcceptAsync($$5x -> {
+               if ($$5x) {
+                  this.b.a($$1, $$4, $$5, $$6, false);
+               } else {
+                  $$6.close();
+                  a($$4, $$1);
+                  this.b.ac().a().thenRunAsync(() -> this.b.a($$0), this.b);
+               }
+            }, this.b).exceptionally($$0x -> {
+               this.b.a(o.a($$0x, "Load world"));
+               return null;
+            });
+         } else {
+            this.a($$0, $$1, $$10, () -> this.a($$0, $$1, $$2, false));
+            $$6.close();
+            a($$4, $$1);
+         }
       }
+   }
 
+   private CompletableFuture<Boolean> a() {
+      CompletableFuture<Boolean> $$0 = new CompletableFuture<>();
+      this.b.a(new ewy($$0::complete, ti.c("multiplayer.texturePrompt.failure.line1"), ti.c("multiplayer.texturePrompt.failure.line2"), th.i, th.e));
       return $$0;
    }
 
-   public fdf b() {
-      return this.a(this.o);
+   private static void a(ecb.c $$0, String $$1) {
+      try {
+         $$0.close();
+      } catch (IOException var3) {
+         a.warn("Failed to unlock access to level {}", $$1, var3);
+      }
    }
 
-   public fde c() {
-      return this.n;
-   }
+   private void a(eyf $$0, String $$1, boolean $$2, Runnable $$3) {
+      ti $$4;
+      ti $$5;
+      if ($$2) {
+         $$4 = ti.c("selectWorld.backupQuestion.customized");
+         $$5 = ti.c("selectWorld.backupWarning.customized");
+      } else {
+         $$4 = ti.c("selectWorld.backupQuestion.experimental");
+         $$5 = ti.c("selectWorld.backupWarning.experimental");
+      }
 
-   public void b(int $$0) {
-      fdf $$1 = this.a($$0);
-      if ($$1 != a) {
-         if (this.o == $$0 && $$1.aE_()) {
-            $$1.a(this);
-         } else {
-            this.o = $$0;
+      this.b.a(new ewt($$0, ($$2x, $$3x) -> {
+         if ($$2x) {
+            fcv.a(this.c, $$1);
          }
-      }
+
+         $$3.run();
+      }, $$4, $$5, false));
    }
 
-   public void d() {
-      this.m.a(this);
-   }
-
-   public int e() {
-      return this.o;
-   }
-
-   public void a(fde $$0) {
-      this.n = $$0;
-      this.o = -1;
-      this.p = 0;
-   }
-
-   public fdh f() {
-      return new fdh(this.a(), this.o);
-   }
-
-   static class a implements fdf {
-      @Override
-      public void a(fdd $$0) {
-         $$0.d();
-      }
-
-      @Override
-      public tf aD_() {
-         return fdd.j;
-      }
-
-      @Override
-      public void a(erv $$0, float $$1, int $$2) {
-         $$0.a(fdd.b, 0, 0, 16, 16);
-      }
-
-      @Override
-      public boolean aE_() {
-         return true;
-      }
-   }
-
-   static class b implements fdf {
-      private final int a;
-      private final boolean b;
-
-      public b(int $$0, boolean $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      @Override
-      public void a(fdd $$0) {
-         $$0.p = $$0.p + this.a;
-      }
-
-      @Override
-      public tf aD_() {
-         return this.a < 0 ? fdd.k : fdd.l;
-      }
-
-      @Override
-      public void a(erv $$0, float $$1, int $$2) {
-         if (this.a < 0) {
-            $$0.a(fdd.c, 0, 0, 16, 16);
+   public static void a(eqq $$0, fct $$1, Lifecycle $$2, Runnable $$3, boolean $$4) {
+      BooleanConsumer $$5 = $$3x -> {
+         if ($$3x) {
+            $$3.run();
          } else {
-            $$0.a(fdd.d, 0, 0, 16, 16);
+            $$0.a($$1);
          }
-      }
-
-      @Override
-      public boolean aE_() {
-         return this.b;
+      };
+      if ($$4 || $$2 == Lifecycle.stable()) {
+         $$3.run();
+      } else if ($$2 == Lifecycle.experimental()) {
+         $$0.a(new ewy($$5, ti.c("selectWorld.warning.experimental.title"), ti.c("selectWorld.warning.experimental.question")));
+      } else {
+         $$0.a(new ewy($$5, ti.c("selectWorld.warning.deprecated.title"), ti.c("selectWorld.warning.deprecated.question")));
       }
    }
 }

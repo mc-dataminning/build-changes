@@ -1,8 +1,7 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public record adp() implements adn {
+   public static final adp a = new adp();
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface adp {
+   @Override
+   public void a(sl $$0) {
+   }
 }

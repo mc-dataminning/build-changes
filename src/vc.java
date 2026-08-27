@@ -1,24 +1,31 @@
-public class vc implements ux<va> {
-   private final tf a;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-   public vc(tf $$0) {
-      this.a = $$0;
+public class vc {
+   private static final Logger a = LogUtils.getLogger();
+
+   public static <T extends sr> void a(va<T> $$0, T $$1, akn $$2) throws aff {
+      a($$0, $$1, $$2.n());
    }
 
-   public vc(si $$0) {
-      this.a = $$0.l();
-   }
+   public static <T extends sr> void a(va<T> $$0, T $$1, bfj<?> $$2) throws aff {
+      if (!$$2.bl()) {
+         $$2.c(() -> {
+            if ($$1.a($$0)) {
+               try {
+                  $$0.a($$1);
+               } catch (Exception var4) {
+                  if (var4 instanceof y $$3 && $$3.getCause() instanceof OutOfMemoryError || $$1.d()) {
+                     throw var4;
+                  }
 
-   @Override
-   public void a(si $$0) {
-      $$0.a(this.a);
-   }
-
-   public void a(va $$0) {
-      $$0.a(this);
-   }
-
-   public tf a() {
-      return this.a;
+                  a.error("Failed to handle packet {}, suppressing error", $$0, var4);
+               }
+            } else {
+               a.debug("Ignoring packet due to disconnection: {}", $$0);
+            }
+         });
+         throw aff.a;
+      }
    }
 }

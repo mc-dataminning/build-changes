@@ -1,41 +1,25 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+public class bsq extends bta {
+   public static final float a = 8.0F;
 
-public class bsq extends btd<biy> {
-   private static final int a = 200;
-   private static final int c = 599;
-
-   public bsq() {
-      this(200);
+   @Override
+   protected boolean a(bjb $$0, bjb $$1) {
+      return this.f($$0, $$1) && $$1.ba() && (this.b($$1) || this.e($$0, $$1)) && btg.c($$0, $$1);
    }
 
-   public bsq(int $$0) {
-      super($$0);
+   private boolean e(bjb $$0, bjb $$1) {
+      return !$$0.dM().a(bsc.T) && $$1.ag().a(apr.h);
+   }
+
+   private boolean b(bjb $$0) {
+      return $$0.ag().a(apr.g);
+   }
+
+   private boolean f(bjb $$0, bjb $$1) {
+      return $$1.f((bil)$$0) <= 64.0;
    }
 
    @Override
-   protected void a(akk $$0, biy $$1) {
-      a($$1);
-   }
-
-   @Override
-   public Set<brz<?>> a() {
-      return ImmutableSet.of(brz.g);
-   }
-
-   public static void a(biy $$0) {
-      Optional<List<biy>> $$1 = $$0.dM().c(brz.g);
-      if (!$$1.isEmpty()) {
-         boolean $$2 = $$1.get().stream().anyMatch($$0x -> $$0x.ag().equals(bim.ac));
-         if ($$2) {
-            b($$0);
-         }
-      }
-   }
-
-   public static void b(biy $$0) {
-      $$0.dM().a(brz.F, true, 599L);
+   protected bsc<bjb> b() {
+      return bsc.B;
    }
 }

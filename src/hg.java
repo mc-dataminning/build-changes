@@ -1,133 +1,220 @@
-import com.mojang.serialization.Lifecycle;
-import java.util.Map;
+import com.mojang.datafixers.util.Either;
+import java.util.Collection;
 import java.util.Optional;
+import java.util.Set;
 import java.util.function.Predicate;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public interface hg<T> extends hf<T> {
-   Stream<he.c<T>> b();
+public interface hg<T> {
+   T a();
 
-   default Stream<aeq<T>> c() {
-      return this.b().map(he.c::g);
+   boolean b();
+
+   boolean a(aeu var1);
+
+   boolean a(aet<T> var1);
+
+   boolean a(Predicate<aet<T>> var1);
+
+   boolean a(aqd<T> var1);
+
+   Stream<aqd<T>> c();
+
+   Either<aet<T>, T> d();
+
+   Optional<aet<T>> e();
+
+   hg.b f();
+
+   boolean a(hj<T> var1);
+
+   static <T> hg<T> a(T $$0) {
+      return new hg.a<>($$0);
    }
 
-   Stream<hi.c<T>> d();
+   public static record a<T>(T a) implements hg<T> {
+      @Override
+      public boolean b() {
+         return true;
+      }
 
-   default Stream<aqa<T>> e() {
-      return this.d().map(hi.c::f);
+      @Override
+      public boolean a(aeu $$0) {
+         return false;
+      }
+
+      @Override
+      public boolean a(aet<T> $$0) {
+         return false;
+      }
+
+      @Override
+      public boolean a(aqd<T> $$0) {
+         return false;
+      }
+
+      @Override
+      public boolean a(Predicate<aet<T>> $$0) {
+         return false;
+      }
+
+      @Override
+      public Either<aet<T>, T> d() {
+         return Either.right(this.a);
+      }
+
+      @Override
+      public Optional<aet<T>> e() {
+         return Optional.empty();
+      }
+
+      @Override
+      public hg.b f() {
+         return hg.b.b;
+      }
+
+      @Override
+      public String toString() {
+         return "Direct{" + this.a + "}";
+      }
+
+      @Override
+      public boolean a(hj<T> $$0) {
+         return true;
+      }
+
+      @Override
+      public Stream<aqd<T>> c() {
+         return Stream.of();
+      }
    }
 
-   default hg<T> a(final Predicate<T> $$0) {
-      return new hg.a<T>(this) {
-         @Override
-         public Optional<he.c<T>> a(aeq<T> $$0x) {
-            return this.c.a($$0).filter($$1 -> $$0.test($$1.a()));
-         }
-
-         @Override
-         public Stream<he.c<T>> b() {
-            return this.c.b().filter($$1 -> $$0.test($$1.a()));
-         }
-      };
+   public static enum b {
+      a,
+      b;
    }
 
-   public static class a<T> implements hg<T> {
-      protected final hg<T> c;
+   public static class c<T> implements hg<T> {
+      private final hj<T> a;
+      private Set<aqd<T>> b = Set.of();
+      private final hg.c.a c;
+      @Nullable
+      private aet<T> d;
+      @Nullable
+      private T e;
 
-      public a(hg<T> $$0) {
+      private c(hg.c.a $$0, hj<T> $$1, @Nullable aet<T> $$2, @Nullable T $$3) {
+         this.a = $$1;
          this.c = $$0;
+         this.d = $$2;
+         this.e = $$3;
+      }
+
+      public static <T> hg.c<T> a(hj<T> $$0, aet<T> $$1) {
+         return new hg.c<>(hg.c.a.a, $$0, $$1, null);
+      }
+
+      @Deprecated
+      public static <T> hg.c<T> a(hj<T> $$0, @Nullable T $$1) {
+         return new hg.c<>(hg.c.a.b, $$0, null, $$1);
+      }
+
+      public aet<T> g() {
+         if (this.d == null) {
+            throw new IllegalStateException("Trying to access unbound value '" + this.e + "' from registry " + this.a);
+         } else {
+            return this.d;
+         }
       }
 
       @Override
-      public Optional<he.c<T>> a(aeq<T> $$0) {
-         return this.c.a($$0);
+      public T a() {
+         if (this.e == null) {
+            throw new IllegalStateException("Trying to access unbound value '" + this.d + "' from registry " + this.a);
+         } else {
+            return this.e;
+         }
       }
 
       @Override
-      public Stream<he.c<T>> b() {
-         return this.c.b();
+      public boolean a(aeu $$0) {
+         return this.g().a().equals($$0);
       }
 
       @Override
-      public Optional<hi.c<T>> a(aqa<T> $$0) {
-         return this.c.a($$0);
+      public boolean a(aet<T> $$0) {
+         return this.g() == $$0;
       }
 
       @Override
-      public Stream<hi.c<T>> d() {
-         return this.c.d();
-      }
-   }
-
-   public interface b {
-      <T> Optional<hg.c<T>> a(aeq<? extends hr<? extends T>> var1);
-
-      default <T> hg.c<T> b(aeq<? extends hr<? extends T>> $$0) {
-         return this.a($$0).orElseThrow(() -> new IllegalStateException("Registry " + $$0.a() + " not found"));
+      public boolean a(aqd<T> $$0) {
+         return this.b.contains($$0);
       }
 
-      default hf.a a() {
-         return new hf.a() {
-            @Override
-            public <T> Optional<hf<T>> a(aeq<? extends hr<? extends T>> $$0) {
-               return b.this.a($$0).map($$0x -> $$0x);
-            }
-         };
+      @Override
+      public boolean a(Predicate<aet<T>> $$0) {
+         return $$0.test(this.g());
       }
 
-      static hg.b a(Stream<hg.c<?>> $$0) {
-         final Map<aeq<? extends hr<?>>, hg.c<?>> $$1 = $$0.collect(Collectors.toUnmodifiableMap(hg.c::f, $$0x -> $$0x));
-         return new hg.b() {
-            @Override
-            public <T> Optional<hg.c<T>> a(aeq<? extends hr<? extends T>> $$0) {
-               return Optional.ofNullable((hg.c<T>)$$1.get($$0));
-            }
-         };
-      }
-   }
-
-   public interface c<T> extends hg<T>, hh<T> {
-      aeq<? extends hr<? extends T>> f();
-
-      Lifecycle g();
-
-      default hg<T> a(cdu $$0) {
-         return (hg<T>)(cdr.bv.contains(this.f()) ? this.a($$1 -> ((cdr)$$1).a($$0)) : this);
+      @Override
+      public boolean a(hj<T> $$0) {
+         return this.a.a($$0);
       }
 
-      public abstract static class a<T> implements hg.c<T> {
-         protected abstract hg.c<T> a();
+      @Override
+      public Either<aet<T>, T> d() {
+         return Either.left(this.g());
+      }
 
-         @Override
-         public aeq<? extends hr<? extends T>> f() {
-            return this.a().f();
-         }
+      @Override
+      public Optional<aet<T>> e() {
+         return Optional.of(this.g());
+      }
 
-         @Override
-         public Lifecycle g() {
-            return this.a().g();
-         }
+      @Override
+      public hg.b f() {
+         return hg.b.a;
+      }
 
-         @Override
-         public Optional<he.c<T>> a(aeq<T> $$0) {
-            return this.a().a($$0);
-         }
+      @Override
+      public boolean b() {
+         return this.d != null && this.e != null;
+      }
 
-         @Override
-         public Stream<he.c<T>> b() {
-            return this.a().b();
+      void b(aet<T> $$0) {
+         if (this.d != null && $$0 != this.d) {
+            throw new IllegalStateException("Can't change holder key: existing=" + this.d + ", new=" + $$0);
+         } else {
+            this.d = $$0;
          }
+      }
 
-         @Override
-         public Optional<hi.c<T>> a(aqa<T> $$0) {
-            return this.a().a($$0);
+      void b(T $$0) {
+         if (this.c == hg.c.a.b && this.e != $$0) {
+            throw new IllegalStateException("Can't change holder " + this.d + " value: existing=" + this.e + ", new=" + $$0);
+         } else {
+            this.e = $$0;
          }
+      }
 
-         @Override
-         public Stream<hi.c<T>> d() {
-            return this.a().d();
-         }
+      void a(Collection<aqd<T>> $$0) {
+         this.b = Set.copyOf($$0);
+      }
+
+      @Override
+      public Stream<aqd<T>> c() {
+         return this.b.stream();
+      }
+
+      @Override
+      public String toString() {
+         return "Reference{" + this.d + "=" + this.e + "}";
+      }
+
+      static enum a {
+         a,
+         b;
       }
    }
 }

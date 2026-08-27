@@ -1,48 +1,40 @@
 import com.google.common.collect.ImmutableMap;
-import java.util.Optional;
 
-public class bnz extends bkp<caz> {
-   private static final int c = 300;
-   private static final double d = 1.73;
-   private long e;
-
+public class bnz extends bks<cbc> {
    public bnz() {
-      super(ImmutableMap.of(brz.c, bsa.a, brz.n, bsa.c));
+      super(ImmutableMap.of());
    }
 
-   protected boolean b(akk $$0, caz $$1) {
-      if ($$0.V() - this.e < 300L) {
-         return false;
-      } else if ($$0.z.a(2) != 0) {
-         return false;
-      } else {
-         this.e = $$0.V();
-         hd $$2 = $$1.dM().c(brz.c).get();
-         return $$2.a() == $$0.ac() && $$2.b().a($$1.di(), 1.73);
+   protected boolean a(akn $$0, cbc $$1, long $$2) {
+      return c($$1) || b($$1);
+   }
+
+   protected void b(akn $$0, cbc $$1, long $$2) {
+      if (c($$1) || b($$1)) {
+         bkb<?> $$3 = $$1.dM();
+         if (!$$3.c(cda.g)) {
+            $$3.b(bsc.t);
+            $$3.b(bsc.m);
+            $$3.b(bsc.n);
+            $$3.b(bsc.r);
+            $$3.b(bsc.q);
+         }
+
+         $$3.a(cda.g);
       }
    }
 
-   protected void a(akk $$0, caz $$1, long $$2) {
-      bjy<caz> $$3 = $$1.dM();
-      $$3.a(brz.I, $$2);
-      $$3.c(brz.c).ifPresent($$1x -> $$3.a(brz.n, new bks($$1x.b())));
-      $$1.gp();
-      this.a($$0, $$1);
-      if ($$1.go()) {
-         $$1.gn();
+   protected void c(akn $$0, cbc $$1, long $$2) {
+      if ($$2 % 100L == 0L) {
+         $$1.a($$0, $$2, 3);
       }
    }
 
-   protected void a(akk $$0, caz $$1) {
+   public static boolean b(bjb $$0) {
+      return $$0.dM().a(bsc.A);
    }
 
-   protected boolean b(akk $$0, caz $$1, long $$2) {
-      Optional<hd> $$3 = $$1.dM().c(brz.c);
-      if ($$3.isEmpty()) {
-         return false;
-      } else {
-         hd $$4 = $$3.get();
-         return $$4.a() == $$0.ac() && $$4.b().a($$1.di(), 1.73);
-      }
+   public static boolean c(bjb $$0) {
+      return $$0.dM().a(bsc.x);
    }
 }

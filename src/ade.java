@@ -1,24 +1,31 @@
-public class ade implements ux<acz> {
-   private final tf a;
+import com.mojang.authlib.GameProfile;
 
-   public ade(tf $$0) {
+public class ade implements va<adc> {
+   private final GameProfile a;
+
+   public ade(GameProfile $$0) {
       this.a = $$0;
    }
 
-   public ade(si $$0) {
-      this.a = tf.a.b($$0.d(262144));
+   public ade(sl $$0) {
+      this.a = $$0.z();
    }
 
    @Override
-   public void a(si $$0) {
+   public void a(sl $$0) {
       $$0.a(this.a);
    }
 
-   public void a(acz $$0) {
+   public void a(adc $$0) {
       $$0.a(this);
    }
 
-   public tf a() {
+   public GameProfile a() {
       return this.a;
+   }
+
+   @Override
+   public sk c() {
+      return sk.e;
    }
 }

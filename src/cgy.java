@@ -1,135 +1,110 @@
-import javax.annotation.Nullable;
+import java.util.function.Predicate;
 
-public class cgy extends cis implements chj {
-   private final eab a;
+public class cgy extends cjq implements cku {
+   public static final int a = 20;
+   public static final int b = 15;
 
-   public cgy(eab $$0, cis.a $$1) {
-      super($$1);
-      this.a = $$0;
+   public cgy(civ.a $$0) {
+      super($$0);
    }
 
    @Override
-   public bgr<cix> a(cpl $$0, cbm $$1, bgp $$2) {
-      cix $$3 = $$1.b($$2);
-      egz $$4 = a($$0, $$1, this.a == ead.a ? cou.b.b : cou.b.a);
-      if ($$4.c() == ehb.a.a) {
-         return bgr.c($$3);
-      } else if ($$4.c() != ehb.a.b) {
-         return bgr.c($$3);
-      } else {
-         gu $$5 = $$4.a();
-         ha $$6 = $$4.b();
-         gu $$7 = $$5.a($$6);
-         if (!$$0.a($$1, $$5) || !$$1.a($$7, $$6, $$3)) {
-            return bgr.d($$3);
-         } else if (this.a == ead.a) {
-            dez $$8 = $$0.a_($$5);
-            if ($$8.b() instanceof csr $$9) {
-               cix $$10 = $$9.a($$1, $$0, $$5, $$8);
-               if (!$$10.b()) {
-                  $$1.b(apg.c.b(this));
-                  $$9.al_().ifPresent($$1x -> $$1.a($$1x, 1.0F, 1.0F));
-                  $$0.a($$1, djj.y, $$5);
-                  cix $$11 = ciz.a($$3, $$1, $$10);
-                  if (!$$0.B) {
-                     ai.j.a((akl)$$1, $$10);
+   public void a(cja $$0, cpq $$1, bjb $$2, int $$3) {
+      if ($$2 instanceof cbp $$4) {
+         boolean $$5 = $$4.fR().d || cnl.a(cnn.B, $$0) > 0;
+         cja $$6 = $$4.g($$0);
+         if (!$$6.b() || $$5) {
+            if ($$6.b()) {
+               $$6 = new cja(cjd.nH);
+            }
+
+            int $$7 = this.b($$0) - $$3;
+            float $$8 = a($$7);
+            if (!((double)$$8 < 0.1)) {
+               boolean $$9 = $$5 && $$6.a(cjd.nH);
+               if (!$$1.B) {
+                  cgo $$10 = (cgo)($$6.d() instanceof cgo ? $$6.d() : cjd.nH);
+                  cbv $$11 = $$10.a($$1, $$6, $$4);
+                  $$11.a($$4, $$4.dC(), $$4.dA(), 0.0F, $$8 * 3.0F, 1.0F);
+                  if ($$8 == 1.0F) {
+                     $$11.a(true);
                   }
 
-                  return bgr.a($$11, $$0.r_());
-               }
-            }
+                  int $$12 = cnl.a(cnn.y, $$0);
+                  if ($$12 > 0) {
+                     $$11.h($$11.q() + (double)$$12 * 0.5 + 0.5);
+                  }
 
-            return bgr.d($$3);
-         } else {
-            dez $$12 = $$0.a_($$5);
-            gu $$13 = $$12.b() instanceof cwz && this.a == ead.c ? $$5 : $$7;
-            if (this.a($$1, $$0, $$13, $$4)) {
-               this.a($$1, $$0, $$3, $$13);
-               if ($$1 instanceof akl) {
-                  ai.y.a((akl)$$1, $$13, $$3);
+                  int $$13 = cnl.a(cnn.z, $$0);
+                  if ($$13 > 0) {
+                     $$11.b($$13);
+                  }
+
+                  if (cnl.a(cnn.A, $$0) > 0) {
+                     $$11.g(100);
+                  }
+
+                  $$0.a(1, $$4, $$1x -> $$1x.d($$4.fm()));
+                  if ($$9 || $$4.fR().d && ($$6.a(cjd.uv) || $$6.a(cjd.uw))) {
+                     $$11.d = cbv.a.c;
+                  }
+
+                  $$1.b($$11);
                }
 
-               $$1.b(apg.c.b(this));
-               return bgr.a(a($$3, $$1), $$0.r_());
-            } else {
-               return bgr.d($$3);
+               $$1.a(null, $$4.dp(), $$4.dr(), $$4.dv(), aoz.ar, apa.h, 1.0F, 1.0F / ($$1.y_().i() * 0.4F + 1.2F) + $$8 * 0.5F);
+               if (!$$9 && !$$4.fR().d) {
+                  $$6.h(1);
+                  if ($$6.b()) {
+                     $$4.fQ().g($$6);
+                  }
+               }
+
+               $$4.b(apj.c.b(this));
             }
          }
       }
    }
 
-   public static cix a(cix $$0, cbm $$1) {
-      return !$$1.fR().d ? new cix(cja.pK) : $$0;
+   public static float a(int $$0) {
+      float $$1 = (float)$$0 / 20.0F;
+      $$1 = ($$1 * $$1 + $$1 * 2.0F) / 3.0F;
+      if ($$1 > 1.0F) {
+         $$1 = 1.0F;
+      }
+
+      return $$1;
    }
 
    @Override
-   public void a(@Nullable cbm $$0, cpl $$1, cix $$2, gu $$3) {
+   public int b(cja $$0) {
+      return 72000;
    }
 
    @Override
-   public boolean a(@Nullable cbm $$0, cpl $$1, gu $$2, @Nullable egz $$3) {
-      if (!(this.a instanceof eaa $$4)) {
-         return false;
+   public ckt c(cja $$0) {
+      return ckt.e;
+   }
+
+   @Override
+   public bgu<cja> a(cpq $$0, cbp $$1, bgs $$2) {
+      cja $$3 = $$1.b($$2);
+      boolean $$4 = !$$1.g($$3).b();
+      if (!$$1.fR().d && !$$4) {
+         return bgu.d($$3);
       } else {
-         csl $$7;
-         boolean $$8;
-         dez $$6;
-         boolean var10000;
-         label82: {
-            $$6 = $$1.a_($$2);
-            $$7 = $$6.b();
-            $$8 = $$6.a(this.a);
-            label70:
-            if (!$$6.i() && !$$8) {
-               if ($$7 instanceof cwz $$9 && $$9.a($$0, $$1, $$2, $$6, this.a)) {
-                  break label70;
-               }
-
-               var10000 = false;
-               break label82;
-            }
-
-            var10000 = true;
-         }
-
-         boolean $$10 = var10000;
-         if (!$$10) {
-            return $$3 != null && this.a($$0, $$1, $$3.a().a($$3.b()), null);
-         } else if ($$1.x_().i() && this.a.a(apq.a)) {
-            int $$11 = $$2.u();
-            int $$12 = $$2.v();
-            int $$13 = $$2.w();
-            $$1.a($$0, $$2, aow.hN, aox.e, 0.5F, 2.6F + ($$1.z.i() - $$1.z.i()) * 0.8F);
-
-            for (int $$14 = 0; $$14 < 8; $$14++) {
-               $$1.a(iv.S, (double)$$11 + Math.random(), (double)$$12 + Math.random(), (double)$$13 + Math.random(), 0.0, 0.0, 0.0);
-            }
-
-            return true;
-         } else {
-            if ($$7 instanceof cwz $$15 && this.a == ead.c) {
-               $$15.a($$1, $$2, $$6, $$4.a(false));
-               this.a($$0, $$1, $$2);
-               return true;
-            }
-
-            if (!$$1.B && $$8 && !$$6.k()) {
-               $$1.b($$2, true);
-            }
-
-            if (!$$1.a($$2, this.a.g().g(), 11) && !$$6.u().b()) {
-               return false;
-            } else {
-               this.a($$0, $$1, $$2);
-               return true;
-            }
-         }
+         $$1.c($$2);
+         return bgu.b($$3);
       }
    }
 
-   protected void a(@Nullable cbm $$0, cpm $$1, gu $$2) {
-      aov $$3 = this.a.a(apq.b) ? aow.cy : aow.cv;
-      $$1.a($$0, $$2, $$3, aox.e, 1.0F, 1.0F);
-      $$1.a($$0, djj.z, $$2);
+   @Override
+   public Predicate<cja> b() {
+      return c;
+   }
+
+   @Override
+   public int d() {
+      return 15;
    }
 }

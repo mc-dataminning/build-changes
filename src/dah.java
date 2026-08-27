@@ -1,92 +1,41 @@
-import java.util.function.Supplier;
+public abstract class dah extends daa {
+   protected dah(dfd.d $$0) {
+      super($$0);
+   }
 
-public class dah extends cst implements csn {
-   public static final int a = 7;
-   public static final dfz b = dfp.av;
-   protected static final float c = 1.0F;
-   protected static final ehw[] d = new ehw[]{
-      csl.a(7.0, 0.0, 7.0, 9.0, 2.0, 9.0),
-      csl.a(7.0, 0.0, 7.0, 9.0, 4.0, 9.0),
-      csl.a(7.0, 0.0, 7.0, 9.0, 6.0, 9.0),
-      csl.a(7.0, 0.0, 7.0, 9.0, 8.0, 9.0),
-      csl.a(7.0, 0.0, 7.0, 9.0, 10.0, 9.0),
-      csl.a(7.0, 0.0, 7.0, 9.0, 12.0, 9.0),
-      csl.a(7.0, 0.0, 7.0, 9.0, 14.0, 9.0),
-      csl.a(7.0, 0.0, 7.0, 9.0, 16.0, 9.0)
-   };
-   private final dai e;
-   private final Supplier<cis> f;
+   private static boolean b(dfe $$0, cpt $$1, gw $$2) {
+      gw $$3 = $$2.c();
+      dfe $$4 = $$1.a_($$3);
+      if ($$4.a(csr.dN) && $$4.c(czz.b) == 1) {
+         return true;
+      } else if ($$4.u().e() == 8) {
+         return false;
+      } else {
+         int $$5 = dzy.a($$1, $$0, $$2, $$4, $$3, hc.b, $$4.b($$1, $$3));
+         return $$5 < $$1.M();
+      }
+   }
 
-   protected dah(dai $$0, Supplier<cis> $$1, dey.d $$2) {
-      super($$2);
-      this.e = $$0;
-      this.f = $$1;
-      this.k(this.C.b().a(b, Integer.valueOf(0)));
+   private static boolean c(dfe $$0, cpt $$1, gw $$2) {
+      gw $$3 = $$2.c();
+      return b($$0, $$1, $$2) && !$$1.b_($$3).a(apt.a);
    }
 
    @Override
-   public ehw a(dez $$0, cor $$1, gu $$2, ehi $$3) {
-      return d[$$0.c(b)];
-   }
+   public void b(dfe $$0, akn $$1, gw $$2, arx $$3) {
+      if (!b($$0, $$1, $$2)) {
+         $$1.b($$2, csr.j.n());
+      } else {
+         if ($$1.z($$2.c()) >= 9) {
+            dfe $$4 = this.n();
 
-   @Override
-   protected boolean d(dez $$0, cor $$1, gu $$2) {
-      return $$0.a(csm.cC);
-   }
-
-   @Override
-   public void b(dez $$0, akk $$1, gu $$2, aru $$3) {
-      if ($$1.b($$2, 0) >= 9) {
-         float $$4 = cuc.a(this, $$1, $$2);
-         if ($$3.a((int)(25.0F / $$4) + 1) == 0) {
-            int $$5 = $$0.c(b);
-            if ($$5 < 7) {
-               $$0 = $$0.a(b, Integer.valueOf($$5 + 1));
-               $$1.a($$2, $$0, 2);
-            } else {
-               ha $$6 = ha.c.a.a($$3);
-               gu $$7 = $$2.a($$6);
-               dez $$8 = $$1.a_($$7.d());
-               if ($$1.a_($$7).i() && ($$8.a(csm.cC) || $$8.a(apl.af))) {
-                  $$1.b($$7, this.e.n());
-                  $$1.b($$2, this.e.b().n().a(cwe.aC, $$6));
+            for (int $$5 = 0; $$5 < 4; $$5++) {
+               gw $$6 = $$2.b($$3.a(3) - 1, $$3.a(5) - 3, $$3.a(3) - 1);
+               if ($$1.a_($$6).a(csr.j) && c($$4, $$1, $$6)) {
+                  $$1.b($$6, $$4.a(a, Boolean.valueOf($$1.a_($$6.c()).a(csr.dN))));
                }
             }
          }
       }
-   }
-
-   @Override
-   public cix a(cor $$0, gu $$1, dez $$2) {
-      return new cix(this.f.get());
-   }
-
-   @Override
-   public boolean a(cpo $$0, gu $$1, dez $$2) {
-      return $$2.c(b) != 7;
-   }
-
-   @Override
-   public boolean a(cpl $$0, aru $$1, gu $$2, dez $$3) {
-      return true;
-   }
-
-   @Override
-   public void a(akk $$0, aru $$1, gu $$2, dez $$3) {
-      int $$4 = Math.min(7, $$3.c(b) + arp.a($$0.z, 2, 5));
-      dez $$5 = $$3.a(b, Integer.valueOf($$4));
-      $$0.a($$2, $$5, 2);
-      if ($$4 == 7) {
-         $$5.b($$0, $$2, $$0.z);
-      }
-   }
-
-   @Override
-   protected void a(dfa.a<csl, dez> $$0) {
-      $$0.a(b);
-   }
-
-   public dai a() {
-      return this.e;
    }
 }

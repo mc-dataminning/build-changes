@@ -1,57 +1,25 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.Function;
+import java.util.Arrays;
 
-public class bga extends bft {
-   public static final Codec<bga> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(Codec.FLOAT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("max_exclusive").forGetter($$0x -> $$0x.d))
-               .apply($$0, bga::new)
-      )
-      .comapFlatMap(
-         $$0 -> $$0.d <= $$0.b
-               ? DataResult.error(() -> "Max must be larger than min, min_inclusive: " + $$0.b + ", max_exclusive: " + $$0.d)
-               : DataResult.success($$0),
-         Function.identity()
-      );
-   private final float b;
-   private final float d;
+public class bga implements bgb {
+   private final bgb[] a;
 
-   private bga(float $$0, float $$1) {
-      this.b = $$0;
-      this.d = $$1;
+   public bga(bgb... $$0) {
+      this.a = $$0;
    }
 
-   public static bga b(float $$0, float $$1) {
-      if ($$1 <= $$0) {
-         throw new IllegalArgumentException("Max must exceed min");
-      } else {
-         return new bga($$0, $$1);
+   @Override
+   public float a(arx $$0) {
+      float $$1 = 1.0F;
+
+      for (bgb $$2 : this.a) {
+         $$1 *= $$2.a($$0);
       }
-   }
 
-   @Override
-   public float a(aru $$0) {
-      return arp.b($$0, this.b, this.d);
-   }
-
-   @Override
-   public float a() {
-      return this.b;
-   }
-
-   @Override
-   public float b() {
-      return this.d;
-   }
-
-   @Override
-   public bfu<?> c() {
-      return bfu.b;
+      return $$1;
    }
 
    @Override
    public String toString() {
-      return "[" + this.b + "-" + this.d + "]";
+      return "MultipliedFloats" + Arrays.toString((Object[])this.a);
    }
 }

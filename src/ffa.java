@@ -1,138 +1,148 @@
-public class ffa extends ffc<byw> {
-   private static final float[] a = new float[]{1.75F, 0.25F, 0.0F, 0.0F, 0.5F, 0.5F, 0.5F, 0.5F, 1.25F, 0.75F, 0.0F, 0.0F};
-   private static final float[] b = new float[]{0.0F, 0.0F, 0.0F, 0.0F, 0.25F, 1.75F, 1.25F, 0.75F, 0.0F, 0.0F, 0.0F, 0.0F};
-   private static final float[] f = new float[]{0.0F, 0.0F, 0.25F, 1.75F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.75F, 1.25F};
-   private static final float[] g = new float[]{0.0F, 0.0F, 8.0F, -8.0F, -8.0F, 8.0F, 8.0F, -8.0F, 0.0F, 0.0F, 8.0F, -8.0F};
-   private static final float[] h = new float[]{-8.0F, -8.0F, -8.0F, -8.0F, 0.0F, 0.0F, 0.0F, 0.0F, 8.0F, 8.0F, 8.0F, 8.0F};
-   private static final float[] i = new float[]{8.0F, -8.0F, 0.0F, 0.0F, -8.0F, -8.0F, 8.0F, 8.0F, 8.0F, -8.0F, 0.0F, 0.0F};
-   private static final String j = "eye";
-   private static final String k = "tail0";
-   private static final String l = "tail1";
-   private static final String m = "tail2";
-   private final fhs n;
-   private final fhs o;
-   private final fhs p;
-   private final fhs[] q;
-   private final fhs[] r;
+import com.google.common.collect.ImmutableList;
 
-   public ffa(fhs $$0) {
-      this.n = $$0;
-      this.q = new fhs[12];
-      this.o = $$0.b("head");
+public class ffa<T extends buw> extends fdw<T> {
+   public final fhx a;
+   private final fhx b;
+   private final fhx f;
+   private final fhx g;
+   private final fhx h;
+   private final fhx i;
+   private final fhx j;
+   private static final int k = 6;
+   private static final float l = 16.5F;
+   private static final float m = 17.5F;
+   private float n;
 
-      for (int $$1 = 0; $$1 < this.q.length; $$1++) {
-         this.q[$$1] = this.o.b(a($$1));
-      }
-
-      this.p = this.o.b("eye");
-      this.r = new fhs[3];
-      this.r[0] = this.o.b("tail0");
-      this.r[1] = this.r[0].b("tail1");
-      this.r[2] = this.r[1].b("tail2");
+   public ffa(fhx $$0) {
+      super(true, 8.0F, 3.35F);
+      this.a = $$0.b("head");
+      this.b = $$0.b("body");
+      this.f = $$0.b("right_hind_leg");
+      this.g = $$0.b("left_hind_leg");
+      this.h = $$0.b("right_front_leg");
+      this.i = $$0.b("left_front_leg");
+      this.j = this.b.b("tail");
    }
 
-   private static String a(int $$0) {
-      return "spike" + $$0;
+   public static fid c() {
+      fif $$0 = new fif();
+      fig $$1 = $$0.a();
+      fig $$2 = $$1.a("head", fic.c().a(1, 5).a(-3.0F, -2.0F, -5.0F, 8.0F, 6.0F, 6.0F), fhz.a(-1.0F, 16.5F, -3.0F));
+      $$2.a("right_ear", fic.c().a(8, 1).a(-3.0F, -4.0F, -4.0F, 2.0F, 2.0F, 1.0F), fhz.a);
+      $$2.a("left_ear", fic.c().a(15, 1).a(3.0F, -4.0F, -4.0F, 2.0F, 2.0F, 1.0F), fhz.a);
+      $$2.a("nose", fic.c().a(6, 18).a(-1.0F, 2.01F, -8.0F, 4.0F, 2.0F, 3.0F), fhz.a);
+      fig $$3 = $$1.a("body", fic.c().a(24, 15).a(-3.0F, 3.999F, -3.5F, 6.0F, 11.0F, 6.0F), fhz.a(0.0F, 16.0F, -6.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
+      fib $$4 = new fib(0.001F);
+      fic $$5 = fic.c().a(4, 24).a(2.0F, 0.5F, -1.0F, 2.0F, 6.0F, 2.0F, $$4);
+      fic $$6 = fic.c().a(13, 24).a(2.0F, 0.5F, -1.0F, 2.0F, 6.0F, 2.0F, $$4);
+      $$1.a("right_hind_leg", $$6, fhz.a(-5.0F, 17.5F, 7.0F));
+      $$1.a("left_hind_leg", $$5, fhz.a(-1.0F, 17.5F, 7.0F));
+      $$1.a("right_front_leg", $$6, fhz.a(-5.0F, 17.5F, 0.0F));
+      $$1.a("left_front_leg", $$5, fhz.a(-1.0F, 17.5F, 0.0F));
+      $$3.a("tail", fic.c().a(30, 0).a(2.0F, 0.0F, -1.0F, 4.0F, 9.0F, 5.0F), fhz.a(-4.0F, 15.0F, -1.0F, -0.05235988F, 0.0F, 0.0F));
+      return fid.a($$0, 48, 32);
    }
 
-   public static fhy b() {
-      fia $$0 = new fia();
-      fib $$1 = $$0.a();
-      fib $$2 = $$1.a(
-         "head",
-         fhx.c()
-            .a(0, 0)
-            .a(-6.0F, 10.0F, -8.0F, 12.0F, 12.0F, 16.0F)
-            .a(0, 28)
-            .a(-8.0F, 10.0F, -6.0F, 2.0F, 12.0F, 12.0F)
-            .a(0, 28)
-            .a(6.0F, 10.0F, -6.0F, 2.0F, 12.0F, 12.0F, true)
-            .a(16, 40)
-            .a(-6.0F, 8.0F, -6.0F, 12.0F, 2.0F, 12.0F)
-            .a(16, 40)
-            .a(-6.0F, 22.0F, -6.0F, 12.0F, 2.0F, 12.0F),
-         fhu.a
-      );
-      fhx $$3 = fhx.c().a(0, 0).a(-1.0F, -4.5F, -1.0F, 2.0F, 9.0F, 2.0F);
+   public void a(T $$0, float $$1, float $$2, float $$3) {
+      this.b.e = (float) (Math.PI / 2);
+      this.j.e = -0.05235988F;
+      this.f.e = ars.b($$1 * 0.6662F) * 1.4F * $$2;
+      this.g.e = ars.b($$1 * 0.6662F + (float) Math.PI) * 1.4F * $$2;
+      this.h.e = ars.b($$1 * 0.6662F + (float) Math.PI) * 1.4F * $$2;
+      this.i.e = ars.b($$1 * 0.6662F) * 1.4F * $$2;
+      this.a.a(-1.0F, 16.5F, -3.0F);
+      this.a.f = 0.0F;
+      this.a.g = $$0.E($$3);
+      this.f.k = true;
+      this.g.k = true;
+      this.h.k = true;
+      this.i.k = true;
+      this.b.a(0.0F, 16.0F, -6.0F);
+      this.b.g = 0.0F;
+      this.f.a(-5.0F, 17.5F, 7.0F);
+      this.g.a(-1.0F, 17.5F, 7.0F);
+      if ($$0.bW()) {
+         this.b.e = 1.6755161F;
+         float $$4 = $$0.F($$3);
+         this.b.a(0.0F, 16.0F + $$0.F($$3), -6.0F);
+         this.a.a(-1.0F, 16.5F + $$4, -3.0F);
+         this.a.f = 0.0F;
+      } else if ($$0.fB()) {
+         this.b.g = (float) (-Math.PI / 2);
+         this.b.a(0.0F, 21.0F, -6.0F);
+         this.j.e = (float) (-Math.PI * 5.0 / 6.0);
+         if (this.e) {
+            this.j.e = -2.1816616F;
+            this.b.a(0.0F, 21.0F, -2.0F);
+         }
 
-      for (int $$4 = 0; $$4 < 12; $$4++) {
-         float $$5 = b($$4, 0.0F, 0.0F);
-         float $$6 = c($$4, 0.0F, 0.0F);
-         float $$7 = d($$4, 0.0F, 0.0F);
-         float $$8 = (float) Math.PI * a[$$4];
-         float $$9 = (float) Math.PI * b[$$4];
-         float $$10 = (float) Math.PI * f[$$4];
-         $$2.a(a($$4), $$3, fhu.a($$5, $$6, $$7, $$8, $$9, $$10));
+         this.a.a(1.0F, 19.49F, -3.0F);
+         this.a.e = 0.0F;
+         this.a.f = (float) (-Math.PI * 2.0 / 3.0);
+         this.a.g = 0.0F;
+         this.f.k = false;
+         this.g.k = false;
+         this.h.k = false;
+         this.i.k = false;
+      } else if ($$0.t()) {
+         this.b.e = (float) (Math.PI / 6);
+         this.b.a(0.0F, 9.0F, -3.0F);
+         this.j.e = (float) (Math.PI / 4);
+         this.j.a(-4.0F, 15.0F, -2.0F);
+         this.a.a(-1.0F, 10.0F, -0.25F);
+         this.a.e = 0.0F;
+         this.a.f = 0.0F;
+         if (this.e) {
+            this.a.a(-1.0F, 13.0F, -3.75F);
+         }
+
+         this.f.e = (float) (-Math.PI * 5.0 / 12.0);
+         this.f.a(-5.0F, 21.5F, 6.75F);
+         this.g.e = (float) (-Math.PI * 5.0 / 12.0);
+         this.g.a(-1.0F, 21.5F, 6.75F);
+         this.h.e = (float) (-Math.PI / 12);
+         this.i.e = (float) (-Math.PI / 12);
       }
-
-      $$2.a("eye", fhx.c().a(8, 0).a(-1.0F, 15.0F, 0.0F, 2.0F, 2.0F, 1.0F), fhu.a(0.0F, 0.0F, -8.25F));
-      fib $$11 = $$2.a("tail0", fhx.c().a(40, 0).a(-2.0F, 14.0F, 7.0F, 4.0F, 4.0F, 8.0F), fhu.a);
-      fib $$12 = $$11.a("tail1", fhx.c().a(0, 54).a(0.0F, 14.0F, 0.0F, 3.0F, 3.0F, 7.0F), fhu.a(-1.5F, 0.5F, 14.0F));
-      $$12.a("tail2", fhx.c().a(41, 32).a(0.0F, 14.0F, 0.0F, 2.0F, 2.0F, 6.0F).a(25, 19).a(1.0F, 10.5F, 3.0F, 1.0F, 9.0F, 9.0F), fhu.a(0.5F, 0.5F, 6.0F));
-      return fhy.a($$0, 64, 64);
    }
 
    @Override
-   public fhs a() {
-      return this.n;
+   protected Iterable<fhx> a() {
+      return ImmutableList.of(this.a);
    }
 
-   public void a(byw $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      float $$6 = $$3 - (float)$$0.ah;
-      this.o.f = $$4 * (float) (Math.PI / 180.0);
-      this.o.e = $$5 * (float) (Math.PI / 180.0);
-      float $$7 = (1.0F - $$0.F($$6)) * 0.55F;
-      this.a($$3, $$7);
-      bii $$8 = eql.O().am();
-      if ($$0.gc()) {
-         $$8 = $$0.gd();
+   @Override
+   protected Iterable<fhx> b() {
+      return ImmutableList.of(this.b, this.f, this.g, this.h, this.i);
+   }
+
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      if (!$$0.fB() && !$$0.ga() && !$$0.bW()) {
+         this.a.e = $$5 * (float) (Math.PI / 180.0);
+         this.a.f = $$4 * (float) (Math.PI / 180.0);
       }
 
-      if ($$8 != null) {
-         ehd $$9 = $$8.j(0.0F);
-         ehd $$10 = $$0.j(0.0F);
-         double $$11 = $$9.d - $$10.d;
-         if ($$11 > 0.0) {
-            this.p.c = 0.0F;
-         } else {
-            this.p.c = 1.0F;
-         }
-
-         ehd $$12 = $$0.f(0.0F);
-         $$12 = new ehd($$12.c, 0.0, $$12.e);
-         ehd $$13 = new ehd($$10.c - $$9.c, 0.0, $$10.e - $$9.e).d().b((float) (Math.PI / 2));
-         double $$14 = $$12.b($$13);
-         this.p.b = arp.c((float)Math.abs($$14)) * 2.0F * (float)Math.signum($$14);
+      if ($$0.fB()) {
+         this.a.e = 0.0F;
+         this.a.f = (float) (-Math.PI * 2.0 / 3.0);
+         this.a.g = ars.b($$3 * 0.027F) / 22.0F;
       }
 
-      this.p.k = true;
-      float $$15 = $$0.E($$6);
-      this.r[0].f = arp.a($$15) * (float) Math.PI * 0.05F;
-      this.r[1].f = arp.a($$15) * (float) Math.PI * 0.1F;
-      this.r[2].f = arp.a($$15) * (float) Math.PI * 0.15F;
-   }
-
-   private void a(float $$0, float $$1) {
-      for (int $$2 = 0; $$2 < 12; $$2++) {
-         this.q[$$2].b = b($$2, $$0, $$1);
-         this.q[$$2].c = c($$2, $$0, $$1);
-         this.q[$$2].d = d($$2, $$0, $$1);
+      if ($$0.bW()) {
+         float $$6 = ars.b($$3) * 0.01F;
+         this.b.f = $$6;
+         this.f.g = $$6;
+         this.g.g = $$6;
+         this.h.g = $$6 / 2.0F;
+         this.i.g = $$6 / 2.0F;
       }
-   }
 
-   private static float a(int $$0, float $$1, float $$2) {
-      return 1.0F + arp.b($$1 * 1.5F + (float)$$0) * 0.01F - $$2;
-   }
-
-   private static float b(int $$0, float $$1, float $$2) {
-      return g[$$0] * a($$0, $$1, $$2);
-   }
-
-   private static float c(int $$0, float $$1, float $$2) {
-      return 16.0F + h[$$0] * a($$0, $$1, $$2);
-   }
-
-   private static float d(int $$0, float $$1, float $$2) {
-      return i[$$0] * a($$0, $$1, $$2);
+      if ($$0.ga()) {
+         float $$7 = 0.1F;
+         this.n += 0.67F;
+         this.f.e = ars.b(this.n * 0.4662F) * 0.1F;
+         this.g.e = ars.b(this.n * 0.4662F + (float) Math.PI) * 0.1F;
+         this.h.e = ars.b(this.n * 0.4662F + (float) Math.PI) * 0.1F;
+         this.i.e = ars.b(this.n * 0.4662F) * 0.1F;
+      }
    }
 }

@@ -1,22 +1,16 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
 
-public class dqo implements dpq {
-   public static final Codec<dqo> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.intRange(0, 512).fieldOf("floor_search_range").forGetter($$0x -> $$0x.b),
-               Codec.intRange(0, 64).fieldOf("placement_radius_around_floor").forGetter($$0x -> $$0x.c),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("placement_probability_per_valid_position").forGetter($$0x -> $$0x.d)
-            )
-            .apply($$0, dqo::new)
-   );
-   public final int b;
-   public final int c;
-   public final float d;
+public class dqo implements dpv {
+   public static final Codec<dqo> a = arb.b(duh.c).fieldOf("features").xmap(dqo::new, $$0 -> $$0.b).codec();
+   public final hk<duh> b;
 
-   public dqo(int $$0, int $$1, float $$2) {
+   public dqo(hk<duh> $$0) {
       this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   }
+
+   @Override
+   public Stream<dne<?, ?>> e() {
+      return this.b.a().flatMap($$0 -> $$0.a().a());
    }
 }

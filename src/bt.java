@@ -2,31 +2,52 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
+import java.util.function.Function;
 import javax.annotation.Nullable;
 
-public record bt(Optional<Boolean> d) implements bp {
-   public static final bt b = new bt(Optional.empty());
-   public static final MapCodec<bt> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(aqy.a(Codec.BOOL, "in_open_water").forGetter(bt::b)).apply($$0, bt::new));
+public class bt<V> {
+   private final Function<bil, Optional<V>> a;
+   private final br.a b;
 
-   public static bt a(boolean $$0) {
-      return new bt(Optional.of($$0));
+   public static <V> bt<V> a(ht<V> $$0, Function<bil, Optional<V>> $$1) {
+      return new bt<>($$0.q(), $$1);
    }
 
-   @Override
-   public bp.a a() {
-      return bp.b.c;
+   public static <V> bt<V> a(Codec<V> $$0, Function<bil, Optional<V>> $$1) {
+      return new bt<>($$0, $$1);
    }
 
-   @Override
-   public boolean a(bii $$0, akk $$1, @Nullable ehd $$2) {
-      if (this.d.isEmpty()) {
-         return true;
-      } else {
-         return $$0 instanceof cca $$3 ? this.d.get() == $$3.j() : false;
+   private bt(Codec<V> $$0, Function<bil, Optional<V>> $$1) {
+      this.a = $$1;
+      MapCodec<bt.a<V>> $$2 = RecordCodecBuilder.mapCodec($$1x -> $$1x.group($$0.fieldOf("variant").forGetter(bt.a::c)).apply($$1x, this::a));
+      this.b = new br.a($$2);
+   }
+
+   public br.a a() {
+      return this.b;
+   }
+
+   public bt.a<V> a(V $$0) {
+      return new bt.a<>(this.b, this.a, $$0);
+   }
+
+   public static record a<V>(br.a b, Function<bil, Optional<V>> c, V d) implements br {
+      @Override
+      public boolean a(bil $$0, akn $$1, @Nullable ehi $$2) {
+         return this.c.apply($$0).filter($$0x -> $$0x.equals(this.d)).isPresent();
       }
-   }
 
-   public Optional<Boolean> b() {
-      return this.d;
+      @Override
+      public br.a a() {
+         return this.b;
+      }
+
+      public Function<bil, Optional<V>> b() {
+         return this.c;
+      }
+
+      public V c() {
+         return this.d;
+      }
    }
 }

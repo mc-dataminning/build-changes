@@ -1,1295 +1,898 @@
-public class cja {
-   public static final cis a = a(csm.a, new cgg(csm.a, new cis.a()));
-   public static final cis b = a(csm.b);
-   public static final cis c = a(csm.c);
-   public static final cis d = a(csm.d);
-   public static final cis e = a(csm.e);
-   public static final cis f = a(csm.f);
-   public static final cis g = a(csm.g);
-   public static final cis h = a(csm.h);
-   public static final cis i = a(csm.rI);
-   public static final cis j = a(csm.rJ);
-   public static final cis k = a(csm.rN);
-   public static final cis l = a(csm.qA);
-   public static final cis m = a(csm.qz);
-   public static final cis n = a(csm.rt);
-   public static final cis o = a(csm.i);
-   public static final cis p = a(csm.j);
-   public static final cis q = a(csm.k);
-   public static final cis r = a(csm.l);
-   public static final cis s = a(csm.rG);
-   public static final cis t = a(csm.rH);
-   public static final cis u = a(csm.ow);
-   public static final cis v = a(csm.on);
-   public static final cis w = a(csm.m);
-   public static final cis x = a(csm.n);
-   public static final cis y = a(csm.o);
-   public static final cis z = a(csm.p);
-   public static final cis A = a(csm.q);
-   public static final cis B = a(csm.r);
-   public static final cis C = a(csm.s);
-   public static final cis D = a(csm.t);
-   public static final cis E = a(csm.u);
-   public static final cis F = a(csm.v);
-   public static final cis G = a(csm.oE);
-   public static final cis H = a(csm.oF);
-   public static final cis I = a(csm.w);
-   public static final cis J = a(csm.x);
-   public static final cis K = a(csm.y);
-   public static final cis L = a(csm.z);
-   public static final cis M = a(csm.A);
-   public static final cis N = a(csm.B);
-   public static final cis O = a(csm.C);
-   public static final cis P = a(csm.D);
-   public static final cis Q = a(csm.E);
-   public static final cis R = a(csm.F);
-   public static final cis S = a(csm.I);
-   public static final cis T = a(new cgq(csm.J, new cis.a()));
-   public static final cis U = a(new cgq(csm.M, new cis.a()));
-   public static final cis V = a(csm.K);
-   public static final cis W = a(csm.L);
-   public static final cis X = a(csm.R);
-   public static final cis Y = a(csm.S);
-   public static final cis Z = a(csm.P);
-   public static final cis aa = a(csm.Q);
-   public static final cis ab = a(csm.qN);
-   public static final cis ac = a(csm.qO);
-   public static final cis ad = a(csm.N);
-   public static final cis ae = a(csm.O);
-   public static final cis af = a(csm.dI);
-   public static final cis ag = a(csm.dJ);
-   public static final cis ah = a(csm.fE);
-   public static final cis ai = a(csm.fF);
-   public static final cis aj = a(csm.aR);
-   public static final cis ak = a(csm.aS);
-   public static final cis al = a(csm.cx);
-   public static final cis am = a(csm.cy);
-   public static final cis an = a(csm.T);
-   public static final cis ao = a(csm.hb);
-   public static final cis ap = a(new cgq(csm.pj, new cis.a().a()));
-   public static final cis aq = a(csm.iB);
-   public static final cis ar = a(csm.se);
-   public static final cis as = a(csm.sf);
-   public static final cis at = a(csm.sg);
-   public static final cis au = a(csm.qt);
-   public static final cis av = a(csm.qu);
-   public static final cis aw = a(csm.ci);
-   public static final cis ax = a(csm.qM);
-   public static final cis ay = a(csm.ch);
-   public static final cis az = a(csm.cz);
-   public static final cis aA = a(new cgq(csm.pi, new cis.a().a()));
-   public static final cis aB = a(csm.qL);
-   public static final cis aC = a(csm.qK);
-   public static final cis aD = a(csm.qJ);
-   public static final cis aE = a(csm.qS);
-   public static final cis aF = a(csm.qR);
-   public static final cis aG = a(csm.qQ);
-   public static final cis aH = a(csm.qP);
-   public static final cis aI = a(csm.qW);
-   public static final cis aJ = a(csm.qV);
-   public static final cis aK = a(csm.qU);
-   public static final cis aL = a(csm.qT);
-   public static final cis aM = a(csm.ra);
-   public static final cis aN = a(csm.qZ);
-   public static final cis aO = a(csm.qY);
-   public static final cis aP = a(csm.qX);
-   public static final cis aQ = a(csm.rb);
-   public static final cis aR = a(csm.rd);
-   public static final cis aS = a(csm.rc);
-   public static final cis aT = a(csm.re);
-   public static final cis aU = a(csm.ri);
-   public static final cis aV = a(csm.rh);
-   public static final cis aW = a(csm.rg);
-   public static final cis aX = a(csm.rf);
-   public static final cis aY = a(csm.rm);
-   public static final cis aZ = a(csm.rl);
-   public static final cis ba = a(csm.rk);
-   public static final cis bb = a(csm.rj);
-   public static final cis bc = a(csm.rq);
-   public static final cis bd = a(csm.rp);
-   public static final cis be = a(csm.ro);
-   public static final cis bf = a(csm.rn);
-   public static final cis bg = a(csm.U);
-   public static final cis bh = a(csm.V);
-   public static final cis bi = a(csm.W);
-   public static final cis bj = a(csm.X);
-   public static final cis bk = a(csm.Y);
-   public static final cis bl = a(csm.Z);
-   public static final cis bm = a(csm.aa);
-   public static final cis bn = a(csm.ab);
-   public static final cis bo = a(csm.ac);
-   public static final cis bp = a(csm.ad);
-   public static final cis bq = a(csm.os);
-   public static final cis br = a(csm.oj);
-   public static final cis bs = a(csm.ae);
-   public static final cis bt = a(csm.al);
-   public static final cis bu = a(csm.af);
-   public static final cis bv = a(csm.ag);
-   public static final cis bw = a(csm.ah);
-   public static final cis bx = a(csm.ai);
-   public static final cis by = a(csm.aj);
-   public static final cis bz = a(csm.ak);
-   public static final cis bA = a(csm.am);
-   public static final cis bB = a(csm.ot);
-   public static final cis bC = a(csm.ok);
-   public static final cis bD = a(csm.aw);
-   public static final cis bE = a(csm.ax);
-   public static final cis bF = a(csm.ay);
-   public static final cis bG = a(csm.az);
-   public static final cis bH = a(csm.aA);
-   public static final cis bI = a(csm.aB);
-   public static final cis bJ = a(csm.aC);
-   public static final cis bK = a(csm.aD);
-   public static final cis bL = a(csm.ov);
-   public static final cis bM = a(csm.om);
-   public static final cis bN = a(csm.an);
-   public static final cis bO = a(csm.ao);
-   public static final cis bP = a(csm.ap);
-   public static final cis bQ = a(csm.aq);
-   public static final cis bR = a(csm.ar);
-   public static final cis bS = a(csm.as);
-   public static final cis bT = a(csm.at);
-   public static final cis bU = a(csm.au);
-   public static final cis bV = a(csm.av);
-   public static final cis bW = a(csm.ou);
-   public static final cis bX = a(csm.ol);
-   public static final cis bY = a(csm.aE);
-   public static final cis bZ = a(csm.aF);
-   public static final cis ca = a(csm.aG);
-   public static final cis cb = a(csm.aH);
-   public static final cis cc = a(csm.aI);
-   public static final cis cd = a(csm.aJ);
-   public static final cis ce = a(csm.aK);
-   public static final cis cf = a(csm.aL);
-   public static final cis cg = a(csm.aM);
-   public static final cis ch = a(csm.aN);
-   public static final cis ci = a(csm.aO);
-   public static final cis cj = a(csm.aP);
-   public static final cis ck = a(csm.aQ);
-   public static final cis cl = a(csm.qB);
-   public static final cis cm = a(csm.aT);
-   public static final cis cn = a(csm.aV);
-   public static final cis co = a(csm.aW);
-   public static final cis cp = a(csm.aX);
-   public static final cis cq = a(csm.bs);
-   public static final cis cr = a(csm.bt);
-   public static final cis cs = a(csm.bu);
-   public static final cis ct = a(csm.rx);
-   public static final cis cu = a(csm.ry);
-   public static final cis cv = a(csm.bv);
-   public static final cis cw = a(csm.bw);
-   public static final cis cx = a(csm.mV);
-   public static final cis cy = a(csm.bA);
-   public static final cis cz = a(csm.bB);
-   public static final cis cA = a(csm.bC);
-   public static final cis cB = a(csm.bD);
-   public static final cis cC = a(csm.bE);
-   public static final cis cD = a(csm.bF);
-   public static final cis cE = a(csm.bG);
-   public static final cis cF = a(csm.bH);
-   public static final cis cG = a(csm.bI);
-   public static final cis cH = a(csm.bJ);
-   public static final cis cI = a(csm.bK);
-   public static final cis cJ = a(csm.bL);
-   public static final cis cK = a(csm.bM);
-   public static final cis cL = a(csm.bN);
-   public static final cis cM = a(csm.bO);
-   public static final cis cN = a(csm.bP);
-   public static final cis cO = a(csm.bR);
-   public static final cis cP = a(csm.bT);
-   public static final cis cQ = a(csm.bU);
-   public static final cis cR = a(csm.bV);
-   public static final cis cS = a(csm.bW);
-   public static final cis cT = a(csm.bX);
-   public static final cis cU = a(csm.bY);
-   public static final cis cV = a(csm.bZ);
-   public static final cis cW = a(csm.ca);
-   public static final cis cX = a(csm.cb);
-   public static final cis cY = a(csm.cc);
-   public static final cis cZ = a(csm.ce);
-   public static final cis da = a(csm.cd);
-   public static final cis db = a(csm.bS);
-   public static final cis dc = a(csm.kC);
-   public static final cis dd = a(csm.rw);
-   public static final cis de = a(csm.cf);
-   public static final cis df = a(csm.cg);
-   public static final cis dg = a(csm.ox);
-   public static final cis dh = a(csm.oo);
-   public static final cis di = a(csm.oD);
-   public static final cis dj = a(csm.oq);
-   public static final cis dk = a(csm.or);
-   public static final cis dl = a(csm.oz);
-   public static final cis dm = a(csm.oB);
-   public static final cis dn = a(csm.dS);
-   public static final cis do = a(csm.mc);
-   public static final cis dp = a(csm.rz);
-   public static final cis dq = a(csm.rA);
-   public static final cis dr = a(csm.rB);
-   public static final cis ds = a(csm.rF);
-   public static final cis dt = a(csm.rC, csm.rD);
-   public static final cis du = a(new chk(csm.rE, new cis.a()));
-   public static final cis dv = a(csm.mZ);
-   public static final cis dw = a(csm.jt);
-   public static final cis dx = a(csm.ju);
-   public static final cis dy = a(csm.jv);
-   public static final cis dz = a(csm.jw);
-   public static final cis dA = a(csm.jx);
-   public static final cis dB = a(csm.jy);
-   public static final cis dC = a(csm.jz);
-   public static final cis dD = a(csm.jA);
-   public static final cis dE = a(csm.jB);
-   public static final cis dF = a(csm.jC);
-   public static final cis dG = a(csm.oG);
-   public static final cis dH = a(csm.oH);
-   public static final cis dI = a(csm.jD);
-   public static final cis dJ = a(csm.jE);
-   public static final cis dK = a(csm.jF);
-   public static final cis dL = a(csm.jG);
-   public static final cis dM = a(csm.jH);
-   public static final cis dN = a(csm.jI);
-   public static final cis dO = a(csm.jJ);
-   public static final cis dP = a(csm.jK);
-   public static final cis dQ = a(csm.jL);
-   public static final cis dR = a(csm.jM);
-   public static final cis dS = a(csm.jN);
-   public static final cis dT = a(csm.jO);
-   public static final cis dU = a(csm.jP);
-   public static final cis dV = a(csm.jQ);
-   public static final cis dW = a(csm.if);
-   public static final cis dX = a(csm.ig);
-   public static final cis dY = a(csm.ih);
-   public static final cis dZ = a(csm.jT);
-   public static final cis ea = a(csm.jU);
-   public static final cis eb = a(csm.jS);
-   public static final cis ec = a(csm.jR);
-   public static final cis ed = a(csm.cj);
-   public static final cis ee = a(csm.cl);
-   public static final cis ef = a(csm.cm);
-   public static final cis eg = a(new cgq(csm.so, new cis.a().a(1)));
-   public static final cis eh = a(csm.cn);
-   public static final cis ei = a(csm.co);
-   public static final cis ej = a(new ckg(csm.cp, csm.cq, new cis.a(), ha.a));
-   public static final cis ek = a(csm.kt);
-   public static final cis el = a(csm.ku);
-   public static final cis em = a(csm.kv);
-   public static final cis en = a(csm.kw);
-   public static final cis eo = a(csm.kx);
-   public static final cis ep = a(csm.ky);
-   public static final cis eq = a(csm.ct);
-   public static final cis er = a(csm.cv);
-   public static final cis es = a(csm.cA);
-   public static final cis et = a(csm.cC);
-   public static final cis eu = a(csm.cD);
-   public static final cis ev = a(csm.cO);
-   public static final cis ew = a(csm.cQ);
-   public static final cis ex = a(csm.dN);
-   public static final cis ey = a(csm.dO);
-   public static final cis ez = a(csm.dP);
-   public static final cis eA = a(csm.dQ);
-   public static final cis eB = a(csm.dR);
-   public static final cis eC = a(csm.dT);
-   public static final cis eD = a(csm.dU);
-   public static final cis eE = a(csm.kd);
-   public static final cis eF = a(csm.ke);
-   public static final cis eG = a(csm.kf);
-   public static final cis eH = a(csm.kg);
-   public static final cis eI = a(csm.kh);
-   public static final cis eJ = a(csm.ki);
-   public static final cis eK = a(csm.kj);
-   public static final cis eL = a(csm.kk);
-   public static final cis eM = a(csm.oK);
-   public static final cis eN = a(csm.oL);
-   public static final cis eO = a(csm.dV);
-   public static final cis eP = a(csm.ef);
-   public static final cis eQ = a(csm.eg);
-   public static final cis eR = a(csm.dW);
-   public static final cis eS = a(csm.dX);
-   public static final cis eT = a(csm.dY);
-   public static final cis eU = a(csm.dZ);
-   public static final cis eV = a(csm.ea);
-   public static final cis eW = a(csm.sd);
-   public static final cis eX = a(new ckg(csm.eb, csm.ec, new cis.a(), ha.a));
-   public static final cis eY = a(csm.ed);
-   public static final cis eZ = a(csm.eO);
-   public static final cis fa = a(csm.eP);
-   public static final cis fb = a(csm.eQ);
-   public static final cis fc = a(csm.eR);
-   public static final cis fd = a(csm.eS);
-   public static final cis fe = a(csm.eT);
-   public static final cis ff = a(csm.sc);
-   public static final cis fg = a(csm.eI);
-   public static final cis fh = a(csm.eJ);
-   public static final cis fi = a(csm.eK);
-   public static final cis fj = a(csm.eL);
-   public static final cis fk = a(csm.eM);
-   public static final cis fl = a(csm.eN);
-   public static final cis fm = a(csm.rV);
-   public static final cis fn = a(csm.sa);
-   public static final cis fo = a(csm.rR);
-   public static final cis fp = a(csm.sb);
-   public static final cis fq = a(csm.rZ);
-   public static final cis fr = a(csm.sn);
-   public static final cis fs = a(csm.eU);
-   public static final cis ft = a(csm.eV);
-   public static final cis fu = a(csm.eW);
-   public static final cis fv = a(csm.eX);
-   public static final cis fw = a(csm.eY);
-   public static final cis fx = a(csm.eZ);
-   public static final cis fy = a(csm.fa);
-   public static final cis fz = a(csm.ff);
-   public static final cis fA = a(csm.fg);
-   public static final cis fB = a(csm.fi);
-   public static final cis fC = a(csm.fj);
-   public static final cis fD = a(csm.fk);
-   public static final cis fE = a(csm.fl);
-   public static final cis fF = a(new cjk(csm.fm, new cis.a()));
-   public static final cis fG = a(csm.fn);
-   public static final cis fH = a(csm.pJ);
-   public static final cis fI = a(csm.pI);
-   public static final cis fJ = a(csm.fo);
-   public static final cis fK = a(csm.fp);
-   public static final cis fL = a(csm.qF);
-   public static final cis fM = a(csm.qG);
-   public static final cis fN = a(csm.qH);
-   public static final cis fO = a(csm.qI);
-   public static final cis fP = a(csm.fr);
-   public static final cis fQ = a(csm.fy);
-   public static final cis fR = a(csm.fz);
-   public static final cis fS = a(csm.kz);
-   public static final cis fT = a(new cgq(csm.fA, new cis.a().a(cjo.d)));
-   public static final cis fU = a(csm.fD);
-   public static final cis fV = a(csm.fG);
-   public static final cis fW = a(csm.fJ);
-   public static final cis fX = a(csm.cu);
-   public static final cis fY = a(csm.fK);
-   public static final cis fZ = a(csm.fL);
-   public static final cis ga = a(csm.fM);
-   public static final cis gb = a(csm.hP);
-   public static final cis gc = a(csm.hQ);
-   public static final cis gd = a(csm.hR);
-   public static final cis ge = a(csm.hS);
-   public static final cis gf = a(csm.hT);
-   public static final cis gg = a(csm.hU);
-   public static final cis gh = a(csm.oQ);
-   public static final cis gi = a(csm.oR);
-   public static final cis gj = a(new cig(csm.fN, new cis.a().a(cjo.d)));
-   public static final cis gk = a(new cgq(csm.fO, new cis.a().a(cjo.c)));
-   public static final cis gl = a(csm.fP);
-   public static final cis gm = a(csm.fQ);
-   public static final cis gn = a(csm.nF);
-   public static final cis go = a(csm.nG);
-   public static final cis gp = a(csm.nH);
-   public static final cis gq = a(csm.nI);
-   public static final cis gr = a(csm.nJ);
-   public static final cis gs = a(csm.nK);
-   public static final cis gt = a(csm.nL);
-   public static final cis gu = a(csm.nM);
-   public static final cis gv = a(csm.nN);
-   public static final cis gw = a(csm.nO);
-   public static final cis gx = a(csm.nP);
-   public static final cis gy = a(csm.nQ);
-   public static final cis gz = a(csm.nR);
-   public static final cis gA = a(csm.pt);
-   public static final cis gB = a(csm.pH);
-   public static final cis gC = a(csm.pB);
-   public static final cis gD = a(csm.rM);
-   public static final cis gE = a(csm.rQ);
-   public static final cis gF = a(csm.rY);
-   public static final cis gG = a(csm.rU);
-   public static final cis gH = a(csm.gS);
-   public static final cis gI = a(csm.gT);
-   public static final cis gJ = a(csm.gU);
-   public static final cis gK = a(csm.he);
-   public static final cis gL = a(csm.hd);
-   public static final cis gM = a(csm.pK);
-   public static final cis gN = a(csm.hf);
-   public static final cis gO = a(csm.hg);
-   public static final cis gP = a(csm.hj);
-   public static final cis gQ = a(csm.hk);
-   public static final cis gR = a(csm.hl);
-   public static final cis gS = a(csm.hm);
-   public static final cis gT = a(csm.hn);
-   public static final cis gU = a(csm.ho);
-   public static final cis gV = a(csm.hp);
-   public static final cis gW = a(csm.hq);
-   public static final cis gX = a(csm.hr);
-   public static final cis gY = a(csm.hs);
-   public static final cis gZ = a(csm.ht);
-   public static final cis ha = a(csm.hu);
-   public static final cis hb = a(csm.hv);
-   public static final cis hc = a(csm.hw);
-   public static final cis hd = a(csm.hx);
-   public static final cis he = a(csm.hy);
-   public static final cis hf = a(new cgq(csm.hW, new cis.a().a(cjo.d)));
-   public static final cis hg = a(new cgq(csm.hX, new cis.a().a(cjo.d)));
-   public static final cis hh = a(csm.ij);
-   public static final cis hi = a(csm.ik);
-   public static final cis hj = a(csm.il);
-   public static final cis hk = a(csm.im);
-   public static final cis hl = a(csm.in);
-   public static final cis hm = a(csm.io);
-   public static final cis hn = a(csm.ip);
-   public static final cis ho = a(csm.iq);
-   public static final cis hp = a(csm.ir);
-   public static final cis hq = a(csm.is);
-   public static final cis hr = a(csm.it);
-   public static final cis hs = a(csm.iu);
-   public static final cis ht = a(csm.iv);
-   public static final cis hu = a(csm.iw);
-   public static final cis hv = a(csm.ix);
-   public static final cis hw = a(csm.iy);
-   public static final cis hx = a(csm.iz);
-   public static final cis hy = a(csm.iA);
-   public static final cis hz = a(csm.iC);
-   public static final cis hA = a(csm.kE);
-   public static final cis hB = a(new chk(csm.iD, new cis.a()));
-   public static final cis hC = a(new chk(csm.iE, new cis.a()));
-   public static final cis hD = a(new chk(csm.iF, new cis.a()));
-   public static final cis hE = a(new chk(csm.iG, new cis.a()));
-   public static final cis hF = a(new chk(csm.iH, new cis.a()));
-   public static final cis hG = a(new chk(csm.iI, new cis.a()));
-   public static final cis hH = a(csm.ej);
-   public static final cis hI = a(csm.ek);
-   public static final cis hJ = a(csm.el);
-   public static final cis hK = a(csm.em);
-   public static final cis hL = a(csm.en);
-   public static final cis hM = a(csm.eo);
-   public static final cis hN = a(csm.ep);
-   public static final cis hO = a(csm.eq);
-   public static final cis hP = a(csm.er);
-   public static final cis hQ = a(csm.es);
-   public static final cis hR = a(csm.et);
-   public static final cis hS = a(csm.eu);
-   public static final cis hT = a(csm.ev);
-   public static final cis hU = a(csm.ew);
-   public static final cis hV = a(csm.ex);
-   public static final cis hW = a(csm.ey);
-   public static final cis hX = a(csm.hz);
-   public static final cis hY = a(csm.hA);
-   public static final cis hZ = a(csm.hB);
-   public static final cis ia = a(csm.hC);
-   public static final cis ib = a(csm.hD);
-   public static final cis ic = a(csm.hE);
-   public static final cis id = a(csm.hF);
-   public static final cis ie = a(csm.hG);
-   public static final cis if = a(csm.hH);
-   public static final cis ig = a(csm.hI);
-   public static final cis ih = a(csm.hJ);
-   public static final cis ii = a(csm.hK);
-   public static final cis ij = a(csm.hL);
-   public static final cis ik = a(csm.hM);
-   public static final cis il = a(csm.hN);
-   public static final cis im = a(csm.hO);
-   public static final cis in = a(csm.hZ);
-   public static final cis io = a(csm.ia);
-   public static final cis ip = a(csm.ib);
-   public static final cis iq = a(csm.ic);
-   public static final cis ir = a(csm.id);
-   public static final cis is = a(csm.ie);
-   public static final cis it = a(csm.ii);
-   public static final cis iu = a(csm.jp);
-   public static final cis iv = a(csm.jq);
-   public static final cis iw = a(csm.jr);
-   public static final cis ix = a(csm.js);
-   public static final cis iy = a(new cig(csm.kG, new cis.a().a(cjo.d)));
-   public static final cis iz = a(new cig(csm.kH, new cis.a().a(cjo.d)));
-   public static final cis iA = a(csm.kJ);
-   public static final cis iB = a(csm.kK);
-   public static final cis iC = a(csm.op);
-   public static final cis iD = a(csm.kL);
-   public static final cis iE = a(csm.kM);
-   public static final cis iF = a(new cgq(csm.kN, new cis.a().a(cjo.d)));
-   public static final cis iG = a(new cgq(csm.kP, new cis.a().a(1)));
-   public static final cis iH = a(new cgq(csm.kQ, new cis.a().a(1)));
-   public static final cis iI = a(new cgq(csm.kR, new cis.a().a(1)));
-   public static final cis iJ = a(new cgq(csm.kS, new cis.a().a(1)));
-   public static final cis iK = a(new cgq(csm.kT, new cis.a().a(1)));
-   public static final cis iL = a(new cgq(csm.kU, new cis.a().a(1)));
-   public static final cis iM = a(new cgq(csm.kV, new cis.a().a(1)));
-   public static final cis iN = a(new cgq(csm.kW, new cis.a().a(1)));
-   public static final cis iO = a(new cgq(csm.kX, new cis.a().a(1)));
-   public static final cis iP = a(new cgq(csm.kY, new cis.a().a(1)));
-   public static final cis iQ = a(new cgq(csm.kZ, new cis.a().a(1)));
-   public static final cis iR = a(new cgq(csm.la, new cis.a().a(1)));
-   public static final cis iS = a(new cgq(csm.lb, new cis.a().a(1)));
-   public static final cis iT = a(new cgq(csm.lc, new cis.a().a(1)));
-   public static final cis iU = a(new cgq(csm.ld, new cis.a().a(1)));
-   public static final cis iV = a(new cgq(csm.le, new cis.a().a(1)));
-   public static final cis iW = a(new cgq(csm.lf, new cis.a().a(1)));
-   public static final cis iX = a(csm.lg);
-   public static final cis iY = a(csm.lh);
-   public static final cis iZ = a(csm.li);
-   public static final cis ja = a(csm.lj);
-   public static final cis jb = a(csm.lk);
-   public static final cis jc = a(csm.ll);
-   public static final cis jd = a(csm.lm);
-   public static final cis je = a(csm.ln);
-   public static final cis jf = a(csm.lo);
-   public static final cis jg = a(csm.lp);
-   public static final cis jh = a(csm.lq);
-   public static final cis ji = a(csm.lr);
-   public static final cis jj = a(csm.ls);
-   public static final cis jk = a(csm.lt);
-   public static final cis jl = a(csm.lu);
-   public static final cis jm = a(csm.lv);
-   public static final cis jn = a(csm.lw);
-   public static final cis jo = a(csm.lx);
-   public static final cis jp = a(csm.ly);
-   public static final cis jq = a(csm.lz);
-   public static final cis jr = a(csm.lA);
-   public static final cis js = a(csm.lB);
-   public static final cis jt = a(csm.lC);
-   public static final cis ju = a(csm.lD);
-   public static final cis jv = a(csm.lE);
-   public static final cis jw = a(csm.lF);
-   public static final cis jx = a(csm.lG);
-   public static final cis jy = a(csm.lH);
-   public static final cis jz = a(csm.lI);
-   public static final cis jA = a(csm.lJ);
-   public static final cis jB = a(csm.lK);
-   public static final cis jC = a(csm.lL);
-   public static final cis jD = a(csm.lM);
-   public static final cis jE = a(csm.lN);
-   public static final cis jF = a(csm.lO);
-   public static final cis jG = a(csm.lP);
-   public static final cis jH = a(csm.lQ);
-   public static final cis jI = a(csm.lR);
-   public static final cis jJ = a(csm.lS);
-   public static final cis jK = a(csm.lT);
-   public static final cis jL = a(csm.lU);
-   public static final cis jM = a(csm.lV);
-   public static final cis jN = a(csm.lW);
-   public static final cis jO = a(csm.lX);
-   public static final cis jP = a(csm.lY);
-   public static final cis jQ = a(csm.lZ);
-   public static final cis jR = a(csm.ma);
-   public static final cis jS = a(csm.mb);
-   public static final cis jT = a(csm.mf);
-   public static final cis jU = a(csm.mg);
-   public static final cis jV = a(csm.mh);
-   public static final cis jW = a(csm.mi);
-   public static final cis jX = a(csm.mj);
-   public static final cis jY = a(csm.mk);
-   public static final cis jZ = a(csm.ml);
-   public static final cis ka = a(csm.mm);
-   public static final cis kb = a(csm.mn);
-   public static final cis kc = a(csm.mo);
-   public static final cis kd = a(csm.mp);
-   public static final cis ke = a(csm.mq);
-   public static final cis kf = a(csm.mw);
-   public static final cis kg = a(csm.mx);
-   public static final cis kh = a(csm.my);
-   public static final cis ki = a(csm.mz);
-   public static final cis kj = a(csm.mA);
-   public static final cis kk = a(csm.ms);
-   public static final cis kl = a(csm.mt);
-   public static final cis km = a(csm.mu);
-   public static final cis kn = a(csm.mv);
-   public static final cis ko = a(csm.mr);
-   public static final cis kp = a(new ckg(csm.mG, csm.mQ, new cis.a(), ha.a));
-   public static final cis kq = a(new ckg(csm.mH, csm.mR, new cis.a(), ha.a));
-   public static final cis kr = a(new ckg(csm.mI, csm.mS, new cis.a(), ha.a));
-   public static final cis ks = a(new ckg(csm.mJ, csm.mT, new cis.a(), ha.a));
-   public static final cis kt = a(new ckg(csm.mK, csm.mU, new cis.a(), ha.a));
-   public static final cis ku = a(new ckg(csm.mB, csm.mL, new cis.a(), ha.a));
-   public static final cis kv = a(new ckg(csm.mC, csm.mM, new cis.a(), ha.a));
-   public static final cis kw = a(new ckg(csm.mD, csm.mN, new cis.a(), ha.a));
-   public static final cis kx = a(new ckg(csm.mE, csm.mO, new cis.a(), ha.a));
-   public static final cis ky = a(new ckg(csm.mF, csm.mP, new cis.a(), ha.a));
-   public static final cis kz = a(csm.mW);
-   public static final cis kA = a(new cgq(csm.mX, new cis.a().a(cjo.c)));
-   public static final cis kB = a(csm.ne);
-   public static final cis kC = a(csm.nf);
-   public static final cis kD = a(csm.ng);
-   public static final cis kE = a(csm.nh);
-   public static final cis kF = a(csm.ni);
-   public static final cis kG = a(csm.nj);
-   public static final cis kH = a(csm.nk);
-   public static final cis kI = a(csm.nl);
-   public static final cis kJ = a(csm.nm);
-   public static final cis kK = a(csm.nn);
-   public static final cis kL = a(csm.no);
-   public static final cis kM = a(csm.np);
-   public static final cis kN = a(csm.nq);
-   public static final cis kO = a(csm.nr);
-   public static final cis kP = a(csm.rK);
-   public static final cis kQ = a(csm.rO);
-   public static final cis kR = a(csm.rW);
-   public static final cis kS = a(csm.rS);
-   public static final cis kT = a(csm.ns);
-   public static final cis kU = a(csm.nt);
-   public static final cis kV = a(csm.nu);
-   public static final cis kW = a(csm.nv);
-   public static final cis kX = a(csm.nw);
-   public static final cis kY = a(csm.nx);
-   public static final cis kZ = a(csm.ny);
-   public static final cis la = a(csm.nz);
-   public static final cis lb = a(csm.nA);
-   public static final cis lc = a(csm.nB);
-   public static final cis ld = a(csm.nC);
-   public static final cis le = a(csm.nD);
-   public static final cis lf = a(csm.nE);
-   public static final cis lg = a(csm.rL);
-   public static final cis lh = a(csm.rP);
-   public static final cis li = a(csm.rX);
-   public static final cis lj = a(csm.rT);
-   public static final cis lk = a(new cjr(csm.nS, new cis.a()));
-   public static final cis ll = a("redstone", new ciw(csm.cw, new cis.a()));
-   public static final cis lm = a(new ckg(csm.dK, csm.dL, new cis.a(), ha.a));
-   public static final cis ln = a(csm.ha);
-   public static final cis lo = a(csm.ei);
-   public static final cis lp = a(csm.gY);
-   public static final cis lq = a(csm.by);
-   public static final cis lr = a(csm.br);
-   public static final cis ls = a(csm.hV);
-   public static final cis lt = a(csm.pg);
-   public static final cis lu = a(csm.kO);
-   public static final cis lv = a(csm.hc);
-   public static final cis lw = a(csm.aU);
-   public static final cis lx = a(csm.hi);
-   public static final cis ly = a(csm.oa);
-   public static final cis lz = a(csm.pd);
-   public static final cis lA = a(csm.dw);
-   public static final cis lB = a(csm.rr);
-   public static final cis lC = a(csm.gZ);
-   public static final cis lD = a(csm.qD);
-   public static final cis lE = a(csm.qE);
-   public static final cis lF = a(csm.fH);
-   public static final cis lG = a(csm.gV);
-   public static final cis lH = a(csm.ck);
-   public static final cis lI = a(csm.fB);
-   public static final cis lJ = a(csm.aY);
-   public static final cis lK = a(csm.dM);
-   public static final cis lL = a(csm.pG);
-   public static final cis lM = a(csm.gv);
-   public static final cis lN = a(csm.gw);
-   public static final cis lO = a(csm.gx);
-   public static final cis lP = a(csm.gy);
-   public static final cis lQ = a(csm.gz);
-   public static final cis lR = a(csm.gA);
-   public static final cis lS = a(csm.gB);
-   public static final cis lT = a(csm.gC);
-   public static final cis lU = a(csm.gD);
-   public static final cis lV = a(csm.oS);
-   public static final cis lW = a(csm.oT);
-   public static final cis lX = a(csm.dx);
-   public static final cis lY = a(csm.pF);
-   public static final cis lZ = a(csm.gW);
-   public static final cis ma = a(csm.gX);
-   public static final cis mb = a(csm.dz);
-   public static final cis mc = a(csm.dA);
-   public static final cis md = a(csm.dB);
-   public static final cis me = a(csm.dC);
-   public static final cis mf = a(csm.dD);
-   public static final cis mg = a(csm.dE);
-   public static final cis mh = a(csm.dF);
-   public static final cis mi = a(csm.dG);
-   public static final cis mj = a(csm.dH);
-   public static final cis mk = a(csm.oI);
-   public static final cis ml = a(csm.oJ);
-   public static final cis mm = a(new chk(csm.dy, new cis.a()));
-   public static final cis mn = a(new chk(csm.cN, new cis.a()));
-   public static final cis mo = a(new chk(csm.kl, new cis.a()));
-   public static final cis mp = a(new chk(csm.km, new cis.a()));
-   public static final cis mq = a(new chk(csm.kn, new cis.a()));
-   public static final cis mr = a(new chk(csm.ko, new cis.a()));
-   public static final cis ms = a(new chk(csm.kp, new cis.a()));
-   public static final cis mt = a(new chk(csm.kq, new cis.a()));
-   public static final cis mu = a(new chk(csm.kr, new cis.a()));
-   public static final cis mv = a(new chk(csm.ks, new cis.a()));
-   public static final cis mw = a(new chk(csm.oU, new cis.a()));
-   public static final cis mx = a(new chk(csm.oV, new cis.a()));
-   public static final cis my = a(csm.hY);
-   public static final cis mz = a(csm.ez);
-   public static final cis mA = a(csm.eA);
-   public static final cis mB = a(csm.eB);
-   public static final cis mC = a(csm.eC);
-   public static final cis mD = a(csm.eD);
-   public static final cis mE = a(csm.eE);
-   public static final cis mF = a(csm.eF);
-   public static final cis mG = a(csm.eG);
-   public static final cis mH = a(csm.eH);
-   public static final cis mI = a(csm.oM);
-   public static final cis mJ = a(csm.oN);
-   public static final cis mK = a(csm.fh);
-   public static final cis mL = a(csm.jV);
-   public static final cis mM = a(csm.jW);
-   public static final cis mN = a(csm.jX);
-   public static final cis mO = a(csm.jY);
-   public static final cis mP = a(csm.jZ);
-   public static final cis mQ = a(csm.ka);
-   public static final cis mR = a(csm.kb);
-   public static final cis mS = a(csm.kc);
-   public static final cis mT = a(csm.oO);
-   public static final cis mU = a(csm.oP);
-   public static final cis mV = a(csm.bp);
-   public static final cis mW = a(csm.bq);
-   public static final cis mX = a(csm.cP);
-   public static final cis mY = a(csm.hh);
-   public static final cis mZ = a("saddle", new cjq(new cis.a().a(1)));
-   public static final cis na = a("minecart", new cjg(cdd.a.a, new cis.a().a(1)));
-   public static final cis nb = a("chest_minecart", new cjg(cdd.a.b, new cis.a().a(1)));
-   public static final cis nc = a("furnace_minecart", new cjg(cdd.a.c, new cis.a().a(1)));
-   public static final cis nd = a("tnt_minecart", new cjg(cdd.a.d, new cis.a().a(1)));
-   public static final cis ne = a("hopper_minecart", new cjg(cdd.a.f, new cis.a().a(1)));
-   public static final cis nf = a("carrot_on_a_stick", new cif<>(new cis.a().c(25), bim.av, 7));
-   public static final cis ng = a("warped_fungus_on_a_stick", new cif<>(new cis.a().c(100), bim.aV, 1));
-   public static final cis nh = a("elytra", new chr(new cis.a().c(432).a(cjo.b)));
-   public static final cis ni = a("oak_boat", new cgr(false, cdf.b.a, new cis.a().a(1)));
-   public static final cis nj = a("oak_chest_boat", new cgr(true, cdf.b.a, new cis.a().a(1)));
-   public static final cis nk = a("spruce_boat", new cgr(false, cdf.b.b, new cis.a().a(1)));
-   public static final cis nl = a("spruce_chest_boat", new cgr(true, cdf.b.b, new cis.a().a(1)));
-   public static final cis nm = a("birch_boat", new cgr(false, cdf.b.c, new cis.a().a(1)));
-   public static final cis nn = a("birch_chest_boat", new cgr(true, cdf.b.c, new cis.a().a(1)));
-   public static final cis no = a("jungle_boat", new cgr(false, cdf.b.d, new cis.a().a(1)));
-   public static final cis np = a("jungle_chest_boat", new cgr(true, cdf.b.d, new cis.a().a(1)));
-   public static final cis nq = a("acacia_boat", new cgr(false, cdf.b.e, new cis.a().a(1)));
-   public static final cis nr = a("acacia_chest_boat", new cgr(true, cdf.b.e, new cis.a().a(1)));
-   public static final cis ns = a("cherry_boat", new cgr(false, cdf.b.f, new cis.a().a(1)));
-   public static final cis nt = a("cherry_chest_boat", new cgr(true, cdf.b.f, new cis.a().a(1)));
-   public static final cis nu = a("dark_oak_boat", new cgr(false, cdf.b.g, new cis.a().a(1)));
-   public static final cis nv = a("dark_oak_chest_boat", new cgr(true, cdf.b.g, new cis.a().a(1)));
-   public static final cis nw = a("mangrove_boat", new cgr(false, cdf.b.h, new cis.a().a(1)));
-   public static final cis nx = a("mangrove_chest_boat", new cgr(true, cdf.b.h, new cis.a().a(1)));
-   public static final cis ny = a("bamboo_raft", new cgr(false, cdf.b.i, new cis.a().a(1)));
-   public static final cis nz = a("bamboo_chest_raft", new cgr(true, cdf.b.i, new cis.a().a(1)));
-   public static final cis nA = a(new cig(csm.pa, new cis.a().a(cjo.d)));
-   public static final cis nB = a(new cig(csm.pb, new cis.a().a(cjo.d)));
-   public static final cis nC = a("turtle_helmet", new cgh(cgj.f, cgh.a.a, new cis.a()));
-   public static final cis nD = a("scute", new cis(new cis.a()));
-   public static final cis nE = a("flint_and_steel", new cie(new cis.a().c(64)));
-   public static final cis nF = a("apple", new cis(new cis.a().a(ceb.a)));
-   public static final cis nG = a("bow", new cgv(new cis.a().c(384)));
-   public static final cis nH = a("arrow", new cgl(new cis.a()));
-   public static final cis nI = a("coal", new cis(new cis.a()));
-   public static final cis nJ = a("charcoal", new cis(new cis.a()));
-   public static final cis nK = a("diamond", new cis(new cis.a()));
-   public static final cis nL = a("emerald", new cis(new cis.a()));
-   public static final cis nM = a("lapis_lazuli", new cis(new cis.a()));
-   public static final cis nN = a("quartz", new cis(new cis.a()));
-   public static final cis nO = a("amethyst_shard", new cis(new cis.a()));
-   public static final cis nP = a("raw_iron", new cis(new cis.a()));
-   public static final cis nQ = a("iron_ingot", new cis(new cis.a()));
-   public static final cis nR = a("raw_copper", new cis(new cis.a()));
-   public static final cis nS = a("copper_ingot", new cis(new cis.a()));
-   public static final cis nT = a("raw_gold", new cis(new cis.a()));
-   public static final cis nU = a("gold_ingot", new cis(new cis.a()));
-   public static final cis nV = a("netherite_ingot", new cis(new cis.a().a()));
-   public static final cis nW = a("netherite_scrap", new cis(new cis.a().a()));
-   public static final cis nX = a("wooden_sword", new cki(ckm.a, 3, -2.4F, new cis.a()));
-   public static final cis nY = a("wooden_shovel", new cjv(ckm.a, 1.5F, -3.0F, new cis.a()));
-   public static final cis nZ = a("wooden_pickaxe", new cjj(ckm.a, 1, -2.8F, new cis.a()));
-   public static final cis oa = a("wooden_axe", new cgm(ckm.a, 6.0F, -3.2F, new cis.a()));
-   public static final cis ob = a("wooden_hoe", new cik(ckm.a, 0, -3.0F, new cis.a()));
-   public static final cis oc = a("stone_sword", new cki(ckm.b, 3, -2.4F, new cis.a()));
-   public static final cis od = a("stone_shovel", new cjv(ckm.b, 1.5F, -3.0F, new cis.a()));
-   public static final cis oe = a("stone_pickaxe", new cjj(ckm.b, 1, -2.8F, new cis.a()));
-   public static final cis of = a("stone_axe", new cgm(ckm.b, 7.0F, -3.2F, new cis.a()));
-   public static final cis og = a("stone_hoe", new cik(ckm.b, -1, -2.0F, new cis.a()));
-   public static final cis oh = a("golden_sword", new cki(ckm.e, 3, -2.4F, new cis.a()));
-   public static final cis oi = a("golden_shovel", new cjv(ckm.e, 1.5F, -3.0F, new cis.a()));
-   public static final cis oj = a("golden_pickaxe", new cjj(ckm.e, 1, -2.8F, new cis.a()));
-   public static final cis ok = a("golden_axe", new cgm(ckm.e, 6.0F, -3.0F, new cis.a()));
-   public static final cis ol = a("golden_hoe", new cik(ckm.e, 0, -3.0F, new cis.a()));
-   public static final cis om = a("iron_sword", new cki(ckm.c, 3, -2.4F, new cis.a()));
-   public static final cis on = a("iron_shovel", new cjv(ckm.c, 1.5F, -3.0F, new cis.a()));
-   public static final cis oo = a("iron_pickaxe", new cjj(ckm.c, 1, -2.8F, new cis.a()));
-   public static final cis op = a("iron_axe", new cgm(ckm.c, 6.0F, -3.1F, new cis.a()));
-   public static final cis oq = a("iron_hoe", new cik(ckm.c, -2, -1.0F, new cis.a()));
-   public static final cis or = a("diamond_sword", new cki(ckm.d, 3, -2.4F, new cis.a()));
-   public static final cis os = a("diamond_shovel", new cjv(ckm.d, 1.5F, -3.0F, new cis.a()));
-   public static final cis ot = a("diamond_pickaxe", new cjj(ckm.d, 1, -2.8F, new cis.a()));
-   public static final cis ou = a("diamond_axe", new cgm(ckm.d, 5.0F, -3.0F, new cis.a()));
-   public static final cis ov = a("diamond_hoe", new cik(ckm.d, -3, 0.0F, new cis.a()));
-   public static final cis ow = a("netherite_sword", new cki(ckm.f, 3, -2.4F, new cis.a().a()));
-   public static final cis ox = a("netherite_shovel", new cjv(ckm.f, 1.5F, -3.0F, new cis.a().a()));
-   public static final cis oy = a("netherite_pickaxe", new cjj(ckm.f, 1, -2.8F, new cis.a().a()));
-   public static final cis oz = a("netherite_axe", new cgm(ckm.f, 5.0F, -3.0F, new cis.a().a()));
-   public static final cis oA = a("netherite_hoe", new cik(ckm.f, -4, 0.0F, new cis.a().a()));
-   public static final cis oB = a("stick", new cis(new cis.a()));
-   public static final cis oC = a("bowl", new cis(new cis.a()));
-   public static final cis oD = a("mushroom_stew", new cgw(new cis.a().a(1).a(ceb.y)));
-   public static final cis oE = a("string", new ciw(csm.fI, new cis.a()));
-   public static final cis oF = a("feather", new cis(new cis.a()));
-   public static final cis oG = a("gunpowder", new cis(new cis.a()));
-   public static final cis oH = a("wheat_seeds", new ciw(csm.cB, new cis.a()));
-   public static final cis oI = a("wheat", new cis(new cis.a()));
-   public static final cis oJ = a("bread", new cis(new cis.a().a(ceb.f)));
-   public static final cis oK = a("leather_helmet", new chn(cgj.a, cgh.a.a, new cis.a()));
-   public static final cis oL = a("leather_chestplate", new chn(cgj.a, cgh.a.b, new cis.a()));
-   public static final cis oM = a("leather_leggings", new chn(cgj.a, cgh.a.c, new cis.a()));
-   public static final cis oN = a("leather_boots", new chn(cgj.a, cgh.a.d, new cis.a()));
-   public static final cis oO = a("chainmail_helmet", new cgh(cgj.b, cgh.a.a, new cis.a()));
-   public static final cis oP = a("chainmail_chestplate", new cgh(cgj.b, cgh.a.b, new cis.a()));
-   public static final cis oQ = a("chainmail_leggings", new cgh(cgj.b, cgh.a.c, new cis.a()));
-   public static final cis oR = a("chainmail_boots", new cgh(cgj.b, cgh.a.d, new cis.a()));
-   public static final cis oS = a("iron_helmet", new cgh(cgj.c, cgh.a.a, new cis.a()));
-   public static final cis oT = a("iron_chestplate", new cgh(cgj.c, cgh.a.b, new cis.a()));
-   public static final cis oU = a("iron_leggings", new cgh(cgj.c, cgh.a.c, new cis.a()));
-   public static final cis oV = a("iron_boots", new cgh(cgj.c, cgh.a.d, new cis.a()));
-   public static final cis oW = a("diamond_helmet", new cgh(cgj.e, cgh.a.a, new cis.a()));
-   public static final cis oX = a("diamond_chestplate", new cgh(cgj.e, cgh.a.b, new cis.a()));
-   public static final cis oY = a("diamond_leggings", new cgh(cgj.e, cgh.a.c, new cis.a()));
-   public static final cis oZ = a("diamond_boots", new cgh(cgj.e, cgh.a.d, new cis.a()));
-   public static final cis pa = a("golden_helmet", new cgh(cgj.d, cgh.a.a, new cis.a()));
-   public static final cis pb = a("golden_chestplate", new cgh(cgj.d, cgh.a.b, new cis.a()));
-   public static final cis pc = a("golden_leggings", new cgh(cgj.d, cgh.a.c, new cis.a()));
-   public static final cis pd = a("golden_boots", new cgh(cgj.d, cgh.a.d, new cis.a()));
-   public static final cis pe = a("netherite_helmet", new cgh(cgj.g, cgh.a.a, new cis.a().a()));
-   public static final cis pf = a("netherite_chestplate", new cgh(cgj.g, cgh.a.b, new cis.a().a()));
-   public static final cis pg = a("netherite_leggings", new cgh(cgj.g, cgh.a.c, new cis.a().a()));
-   public static final cis ph = a("netherite_boots", new cgh(cgj.g, cgh.a.d, new cis.a().a()));
-   public static final cis pi = a("flint", new cis(new cis.a()));
-   public static final cis pj = a("porkchop", new cis(new cis.a().a(ceb.B)));
-   public static final cis pk = a("cooked_porkchop", new cis(new cis.a().a(ceb.o)));
-   public static final cis pl = a("painting", new cii(bim.ar, new cis.a()));
-   public static final cis pm = a("golden_apple", new cis(new cis.a().a(cjo.c).a(ceb.u)));
-   public static final cis pn = a("enchanted_golden_apple", new chu(new cis.a().a(cjo.d).a(ceb.t)));
-   public static final cis po = a("oak_sign", new cjx(new cis.a().a(16), csm.cE, csm.cR));
-   public static final cis pp = a("spruce_sign", new cjx(new cis.a().a(16), csm.cF, csm.cS));
-   public static final cis pq = a("birch_sign", new cjx(new cis.a().a(16), csm.cG, csm.cT));
-   public static final cis pr = a("jungle_sign", new cjx(new cis.a().a(16), csm.cJ, csm.cW));
-   public static final cis ps = a("acacia_sign", new cjx(new cis.a().a(16), csm.cH, csm.cU));
-   public static final cis pt = a("cherry_sign", new cjx(new cis.a().a(16), csm.cI, csm.cV));
-   public static final cis pu = a("dark_oak_sign", new cjx(new cis.a().a(16), csm.cK, csm.cX));
-   public static final cis pv = a("mangrove_sign", new cjx(new cis.a().a(16), csm.cL, csm.cY));
-   public static final cis pw = a("bamboo_sign", new cjx(new cis.a().a(16), csm.cM, csm.cZ));
-   public static final cis px = a("crimson_sign", new cjx(new cis.a().a(16), csm.oW, csm.oY));
-   public static final cis py = a("warped_sign", new cjx(new cis.a().a(16), csm.oX, csm.oZ));
-   public static final cis pz = a("oak_hanging_sign", new cij(csm.da, csm.dl, new cis.a().a(16)));
-   public static final cis pA = a("spruce_hanging_sign", new cij(csm.db, csm.dm, new cis.a().a(16)));
-   public static final cis pB = a("birch_hanging_sign", new cij(csm.dc, csm.dn, new cis.a().a(16)));
-   public static final cis pC = a("jungle_hanging_sign", new cij(csm.df, csm.dq, new cis.a().a(16)));
-   public static final cis pD = a("acacia_hanging_sign", new cij(csm.dd, csm.do, new cis.a().a(16)));
-   public static final cis pE = a("cherry_hanging_sign", new cij(csm.de, csm.dp, new cis.a().a(16)));
-   public static final cis pF = a("dark_oak_hanging_sign", new cij(csm.dg, csm.dr, new cis.a().a(16)));
-   public static final cis pG = a("mangrove_hanging_sign", new cij(csm.dj, csm.ds, new cis.a().a(16)));
-   public static final cis pH = a("bamboo_hanging_sign", new cij(csm.dk, csm.dv, new cis.a().a(16)));
-   public static final cis pI = a("crimson_hanging_sign", new cij(csm.dh, csm.dt, new cis.a().a(16)));
-   public static final cis pJ = a("warped_hanging_sign", new cij(csm.di, csm.du, new cis.a().a(16)));
-   public static final cis pK = a("bucket", new cgy(ead.a, new cis.a().a(16)));
-   public static final cis pL = a("water_bucket", new cgy(ead.c, new cis.a().a(pK).a(1)));
-   public static final cis pM = a("lava_bucket", new cgy(ead.e, new cis.a().a(pK).a(1)));
-   public static final cis pN = a("powder_snow_bucket", new ckb(csm.qC, aow.cz, new cis.a().a(1)));
-   public static final cis pO = a("snowball", new cka(new cis.a().a(16)));
-   public static final cis pP = a("leather", new cis(new cis.a()));
-   public static final cis pQ = a("milk_bucket", new cjf(new cis.a().a(pK).a(1)));
-   public static final cis pR = a("pufferfish_bucket", new cjh(bim.aB, ead.c, aow.cx, new cis.a().a(1)));
-   public static final cis pS = a("salmon_bucket", new cjh(bim.aE, ead.c, aow.cx, new cis.a().a(1)));
-   public static final cis pT = a("cod_bucket", new cjh(bim.r, ead.c, aow.cx, new cis.a().a(1)));
-   public static final cis pU = a("tropical_fish_bucket", new cjh(bim.bc, ead.c, aow.cx, new cis.a().a(1)));
-   public static final cis pV = a("axolotl_bucket", new cjh(bim.f, ead.c, aow.cw, new cis.a().a(1)));
-   public static final cis pW = a("tadpole_bucket", new cjh(bim.aW, ead.c, aow.cA, new cis.a().a(1)));
-   public static final cis pX = a("brick", new cis(new cis.a()));
-   public static final cis pY = a("clay_ball", new cis(new cis.a()));
-   public static final cis pZ = a(csm.me);
-   public static final cis qa = a("paper", new cis(new cis.a()));
-   public static final cis qb = a("book", new cgt(new cis.a()));
-   public static final cis qc = a("slime_ball", new cis(new cis.a()));
-   public static final cis qd = a("egg", new chq(new cis.a().a(16)));
-   public static final cis qe = a("compass", new chb(new cis.a()));
-   public static final cis qf = a("recovery_compass", new cis(new cis.a()));
-   public static final cis qg = a("bundle", new cgz(new cis.a().a(1)));
-   public static final cis qh = a("fishing_rod", new cid(new cis.a().c(64)));
-   public static final cis qi = a("clock", new cis(new cis.a()));
-   public static final cis qj = a("spyglass", new ckf(new cis.a().a(1)));
-   public static final cis qk = a("glowstone_dust", new cis(new cis.a()));
-   public static final cis ql = a("cod", new cis(new cis.a().a(ceb.j)));
-   public static final cis qm = a("salmon", new cis(new cis.a().a(ceb.I)));
-   public static final cis qn = a("tropical_fish", new cis(new cis.a().a(ceb.N)));
-   public static final cis qo = a("pufferfish", new cis(new cis.a().a(ceb.D)));
-   public static final cis qp = a("cooked_cod", new cis(new cis.a().a(ceb.m)));
-   public static final cis qq = a("cooked_salmon", new cis(new cis.a().a(ceb.q)));
-   public static final cis qr = a("ink_sac", new cio(new cis.a()));
-   public static final cis qs = a("glow_ink_sac", new cih(new cis.a()));
-   public static final cis qt = a("cocoa_beans", new ciw(csm.fC, new cis.a()));
-   public static final cis qu = a("white_dye", new chm(chl.a, new cis.a()));
-   public static final cis qv = a("orange_dye", new chm(chl.b, new cis.a()));
-   public static final cis qw = a("magenta_dye", new chm(chl.c, new cis.a()));
-   public static final cis qx = a("light_blue_dye", new chm(chl.d, new cis.a()));
-   public static final cis qy = a("yellow_dye", new chm(chl.e, new cis.a()));
-   public static final cis qz = a("lime_dye", new chm(chl.f, new cis.a()));
-   public static final cis qA = a("pink_dye", new chm(chl.g, new cis.a()));
-   public static final cis qB = a("gray_dye", new chm(chl.h, new cis.a()));
-   public static final cis qC = a("light_gray_dye", new chm(chl.i, new cis.a()));
-   public static final cis qD = a("cyan_dye", new chm(chl.j, new cis.a()));
-   public static final cis qE = a("purple_dye", new chm(chl.k, new cis.a()));
-   public static final cis qF = a("blue_dye", new chm(chl.l, new cis.a()));
-   public static final cis qG = a("brown_dye", new chm(chl.m, new cis.a()));
-   public static final cis qH = a("green_dye", new chm(chl.n, new cis.a()));
-   public static final cis qI = a("red_dye", new chm(chl.o, new cis.a()));
-   public static final cis qJ = a("black_dye", new chm(chl.p, new cis.a()));
-   public static final cis qK = a("bone_meal", new cgs(new cis.a()));
-   public static final cis qL = a("bone", new cis(new cis.a()));
-   public static final cis qM = a("sugar", new cis(new cis.a()));
-   public static final cis qN = a(new cgq(csm.eh, new cis.a().a(1)));
-   public static final cis qO = a(new cgp(csm.aZ, new cis.a().a(1)));
-   public static final cis qP = a(new cgp(csm.ba, new cis.a().a(1)));
-   public static final cis qQ = a(new cgp(csm.bb, new cis.a().a(1)));
-   public static final cis qR = a(new cgp(csm.bc, new cis.a().a(1)));
-   public static final cis qS = a(new cgp(csm.bd, new cis.a().a(1)));
-   public static final cis qT = a(new cgp(csm.be, new cis.a().a(1)));
-   public static final cis qU = a(new cgp(csm.bf, new cis.a().a(1)));
-   public static final cis qV = a(new cgp(csm.bg, new cis.a().a(1)));
-   public static final cis qW = a(new cgp(csm.bh, new cis.a().a(1)));
-   public static final cis qX = a(new cgp(csm.bi, new cis.a().a(1)));
-   public static final cis qY = a(new cgp(csm.bj, new cis.a().a(1)));
-   public static final cis qZ = a(new cgp(csm.bk, new cis.a().a(1)));
-   public static final cis ra = a(new cgp(csm.bl, new cis.a().a(1)));
-   public static final cis rb = a(new cgp(csm.bm, new cis.a().a(1)));
-   public static final cis rc = a(new cgp(csm.bn, new cis.a().a(1)));
-   public static final cis rd = a(new cgp(csm.bo, new cis.a().a(1)));
-   public static final cis re = a("cookie", new cis(new cis.a().a(ceb.r)));
-   public static final cis rf = a("filled_map", new cje(new cis.a()));
-   public static final cis rg = a("shears", new cjt(new cis.a().c(238)));
-   public static final cis rh = a("melon_slice", new cis(new cis.a().a(ceb.x)));
-   public static final cis ri = a("dried_kelp", new cis(new cis.a().a(ceb.s)));
-   public static final cis rj = a("pumpkin_seeds", new ciw(csm.fd, new cis.a()));
-   public static final cis rk = a("melon_seeds", new ciw(csm.fe, new cis.a()));
-   public static final cis rl = a("beef", new cis(new cis.a().a(ceb.c)));
-   public static final cis rm = a("cooked_beef", new cis(new cis.a().a(ceb.k)));
-   public static final cis rn = a("chicken", new cis(new cis.a().a(ceb.h)));
-   public static final cis ro = a("cooked_chicken", new cis(new cis.a().a(ceb.l)));
-   public static final cis rp = a("rotten_flesh", new cis(new cis.a().a(ceb.H)));
-   public static final cis rq = a("ender_pearl", new chx(new cis.a().a(16)));
-   public static final cis rr = a("blaze_rod", new cis(new cis.a()));
-   public static final cis rs = a("ghast_tear", new cis(new cis.a()));
-   public static final cis rt = a("gold_nugget", new cis(new cis.a()));
-   public static final cis ru = a("nether_wart", new ciw(csm.fq, new cis.a()));
-   public static final cis rv = a("potion", new cjm(new cis.a().a(1)));
-   public static final cis rw = a("glass_bottle", new cgu(new cis.a()));
-   public static final cis rx = a("spider_eye", new cis(new cis.a().a(ceb.J)));
-   public static final cis ry = a("fermented_spider_eye", new cis(new cis.a()));
-   public static final cis rz = a("blaze_powder", new cis(new cis.a()));
-   public static final cis rA = a("magma_cream", new cis(new cis.a()));
-   public static final cis rB = a(csm.fs);
-   public static final cis rC = a(csm.ft, csm.fu, csm.fv, csm.fw);
-   public static final cis rD = a("ender_eye", new chw(new cis.a()));
-   public static final cis rE = a("glistering_melon_slice", new cis(new cis.a()));
-   public static final cis rF = a("allay_spawn_egg", new ckc(bim.b, 56063, 44543, new cis.a()));
-   public static final cis rG = a("axolotl_spawn_egg", new ckc(bim.f, 16499171, 10890612, new cis.a()));
-   public static final cis rH = a("bat_spawn_egg", new ckc(bim.g, 4996656, 986895, new cis.a()));
-   public static final cis rI = a("bee_spawn_egg", new ckc(bim.h, 15582019, 4400155, new cis.a()));
-   public static final cis rJ = a("blaze_spawn_egg", new ckc(bim.i, 16167425, 16775294, new cis.a()));
-   public static final cis rK = a("cat_spawn_egg", new ckc(bim.m, 15714446, 9794134, new cis.a()));
-   public static final cis rL = a("camel_spawn_egg", new ckc(bim.l, 16565097, 13341495, new cis.a()));
-   public static final cis rM = a("cave_spider_spawn_egg", new ckc(bim.n, 803406, 11013646, new cis.a()));
-   public static final cis rN = a("chicken_spawn_egg", new ckc(bim.q, 10592673, 16711680, new cis.a()));
-   public static final cis rO = a("cod_spawn_egg", new ckc(bim.r, 12691306, 15058059, new cis.a()));
-   public static final cis rP = a("cow_spawn_egg", new ckc(bim.t, 4470310, 10592673, new cis.a()));
-   public static final cis rQ = a("creeper_spawn_egg", new ckc(bim.u, 894731, 0, new cis.a()));
-   public static final cis rR = a("dolphin_spawn_egg", new ckc(bim.v, 2243405, 16382457, new cis.a()));
-   public static final cis rS = a("donkey_spawn_egg", new ckc(bim.w, 5457209, 8811878, new cis.a()));
-   public static final cis rT = a("drowned_spawn_egg", new ckc(bim.y, 9433559, 7969893, new cis.a()));
-   public static final cis rU = a("elder_guardian_spawn_egg", new ckc(bim.A, 13552826, 7632531, new cis.a()));
-   public static final cis rV = a("ender_dragon_spawn_egg", new ckc(bim.C, 1842204, 14711290, new cis.a()));
-   public static final cis rW = a("enderman_spawn_egg", new ckc(bim.E, 1447446, 0, new cis.a()));
-   public static final cis rX = a("endermite_spawn_egg", new ckc(bim.F, 1447446, 7237230, new cis.a()));
-   public static final cis rY = a("evoker_spawn_egg", new ckc(bim.G, 9804699, 1973274, new cis.a()));
-   public static final cis rZ = a("fox_spawn_egg", new ckc(bim.N, 14005919, 13396256, new cis.a()));
-   public static final cis sa = a("frog_spawn_egg", new ckc(bim.O, 13661252, 16762748, new cis.a()));
-   public static final cis sb = a("ghast_spawn_egg", new ckc(bim.Q, 16382457, 12369084, new cis.a()));
-   public static final cis sc = a("glow_squid_spawn_egg", new ckc(bim.T, 611926, 8778172, new cis.a()));
-   public static final cis sd = a("goat_spawn_egg", new ckc(bim.U, 10851452, 5589310, new cis.a()));
-   public static final cis se = a("guardian_spawn_egg", new ckc(bim.V, 5931634, 15826224, new cis.a()));
-   public static final cis sf = a("hoglin_spawn_egg", new ckc(bim.W, 13004373, 6251620, new cis.a()));
-   public static final cis sg = a("horse_spawn_egg", new ckc(bim.Y, 12623485, 15656192, new cis.a()));
-   public static final cis sh = a("husk_spawn_egg", new ckc(bim.Z, 7958625, 15125652, new cis.a()));
-   public static final cis si = a("iron_golem_spawn_egg", new ckc(bim.ac, 14405058, 7643954, new cis.a()));
-   public static final cis sj = a("llama_spawn_egg", new ckc(bim.aj, 12623485, 10051392, new cis.a()));
-   public static final cis sk = a("magma_cube_spawn_egg", new ckc(bim.al, 3407872, 16579584, new cis.a()));
-   public static final cis sl = a("mooshroom_spawn_egg", new ckc(bim.ao, 10489616, 12040119, new cis.a()));
-   public static final cis sm = a("mule_spawn_egg", new ckc(bim.ap, 1769984, 5321501, new cis.a()));
-   public static final cis sn = a("ocelot_spawn_egg", new ckc(bim.aq, 15720061, 5653556, new cis.a()));
-   public static final cis so = a("panda_spawn_egg", new ckc(bim.as, 15198183, 1776418, new cis.a()));
-   public static final cis sp = a("parrot_spawn_egg", new ckc(bim.at, 894731, 16711680, new cis.a()));
-   public static final cis sq = a("phantom_spawn_egg", new ckc(bim.au, 4411786, 8978176, new cis.a()));
-   public static final cis sr = a("pig_spawn_egg", new ckc(bim.av, 15771042, 14377823, new cis.a()));
-   public static final cis ss = a("piglin_spawn_egg", new ckc(bim.aw, 10051392, 16380836, new cis.a()));
-   public static final cis st = a("piglin_brute_spawn_egg", new ckc(bim.ax, 5843472, 16380836, new cis.a()));
-   public static final cis su = a("pillager_spawn_egg", new ckc(bim.ay, 5451574, 9804699, new cis.a()));
-   public static final cis sv = a("polar_bear_spawn_egg", new ckc(bim.az, 15658718, 14014157, new cis.a()));
-   public static final cis sw = a("pufferfish_spawn_egg", new ckc(bim.aB, 16167425, 3654642, new cis.a()));
-   public static final cis sx = a("rabbit_spawn_egg", new ckc(bim.aC, 10051392, 7555121, new cis.a()));
-   public static final cis sy = a("ravager_spawn_egg", new ckc(bim.aD, 7697520, 5984329, new cis.a()));
-   public static final cis sz = a("salmon_spawn_egg", new ckc(bim.aE, 10489616, 951412, new cis.a()));
-   public static final cis sA = a("sheep_spawn_egg", new ckc(bim.aF, 15198183, 16758197, new cis.a()));
-   public static final cis sB = a("shulker_spawn_egg", new ckc(bim.aG, 9725844, 5060690, new cis.a()));
-   public static final cis sC = a("silverfish_spawn_egg", new ckc(bim.aI, 7237230, 3158064, new cis.a()));
-   public static final cis sD = a("skeleton_spawn_egg", new ckc(bim.aJ, 12698049, 4802889, new cis.a()));
-   public static final cis sE = a("skeleton_horse_spawn_egg", new ckc(bim.aK, 6842447, 15066584, new cis.a()));
-   public static final cis sF = a("slime_spawn_egg", new ckc(bim.aL, 5349438, 8306542, new cis.a()));
-   public static final cis sG = a("sniffer_spawn_egg", new ckc(bim.aN, 8855049, 2468720, new cis.a()));
-   public static final cis sH = a("snow_golem_spawn_egg", new ckc(bim.aO, 14283506, 8496292, new cis.a()));
-   public static final cis sI = a("spider_spawn_egg", new ckc(bim.aS, 3419431, 11013646, new cis.a()));
-   public static final cis sJ = a("squid_spawn_egg", new ckc(bim.aT, 2243405, 7375001, new cis.a()));
-   public static final cis sK = a("stray_spawn_egg", new ckc(bim.aU, 6387319, 14543594, new cis.a()));
-   public static final cis sL = a("strider_spawn_egg", new ckc(bim.aV, 10236982, 5065037, new cis.a()));
-   public static final cis sM = a("tadpole_spawn_egg", new ckc(bim.aW, 7164733, 1444352, new cis.a()));
-   public static final cis sN = a("trader_llama_spawn_egg", new ckc(bim.ba, 15377456, 4547222, new cis.a()));
-   public static final cis sO = a("tropical_fish_spawn_egg", new ckc(bim.bc, 15690005, 16775663, new cis.a()));
-   public static final cis sP = a("turtle_spawn_egg", new ckc(bim.bd, 15198183, 44975, new cis.a()));
-   public static final cis sQ = a("vex_spawn_egg", new ckc(bim.be, 8032420, 15265265, new cis.a()));
-   public static final cis sR = a("villager_spawn_egg", new ckc(bim.bf, 5651507, 12422002, new cis.a()));
-   public static final cis sS = a("vindicator_spawn_egg", new ckc(bim.bg, 9804699, 2580065, new cis.a()));
-   public static final cis sT = a("wandering_trader_spawn_egg", new ckc(bim.bh, 4547222, 15377456, new cis.a()));
-   public static final cis sU = a("warden_spawn_egg", new ckc(bim.bi, 1001033, 3790560, new cis.a()));
-   public static final cis sV = a("witch_spawn_egg", new ckc(bim.bj, 3407872, 5349438, new cis.a()));
-   public static final cis sW = a("wither_spawn_egg", new ckc(bim.bk, 1315860, 5075616, new cis.a()));
-   public static final cis sX = a("wither_skeleton_spawn_egg", new ckc(bim.bl, 1315860, 4672845, new cis.a()));
-   public static final cis sY = a("wolf_spawn_egg", new ckc(bim.bn, 14144467, 13545366, new cis.a()));
-   public static final cis sZ = a("zoglin_spawn_egg", new ckc(bim.bo, 13004373, 15132390, new cis.a()));
-   public static final cis ta = a("zombie_spawn_egg", new ckc(bim.bp, 44975, 7969893, new cis.a()));
-   public static final cis tb = a("zombie_horse_spawn_egg", new ckc(bim.bq, 3232308, 9945732, new cis.a()));
-   public static final cis tc = a("zombie_villager_spawn_egg", new ckc(bim.br, 5651507, 7969893, new cis.a()));
-   public static final cis td = a("zombified_piglin_spawn_egg", new ckc(bim.bs, 15373203, 5009705, new cis.a()));
-   public static final cis te = a("experience_bottle", new chz(new cis.a().a(cjo.b)));
-   public static final cis tf = a("fire_charge", new cia(new cis.a()));
-   public static final cis tg = a("writable_book", new cks(new cis.a().a(1)));
-   public static final cis th = a("written_book", new ckt(new cis.a().a(16)));
-   public static final cis ti = a("item_frame", new civ(bim.af, new cis.a()));
-   public static final cis tj = a("glow_item_frame", new civ(bim.S, new cis.a()));
-   public static final cis tk = a(csm.fR);
-   public static final cis tl = a("carrot", new ciw(csm.gt, new cis.a().a(ceb.g)));
-   public static final cis tm = a("potato", new ciw(csm.gu, new cis.a().a(ceb.C)));
-   public static final cis tn = a("baked_potato", new cis(new cis.a().a(ceb.b)));
-   public static final cis to = a("poisonous_potato", new cis(new cis.a().a(ceb.A)));
-   public static final cis tp = a("map", new chs(new cis.a()));
-   public static final cis tq = a("golden_carrot", new cis(new cis.a().a(ceb.v)));
-   public static final cis tr = a(new ckg(csm.gE, csm.gF, new cis.a().a(cjo.b), ha.a));
-   public static final cis ts = a(new ckg(csm.gG, csm.gH, new cis.a().a(cjo.b), ha.a));
-   public static final cis tt = a(new cjl(csm.gK, csm.gL, new cis.a().a(cjo.b)));
-   public static final cis tu = a(new ckg(csm.gI, csm.gJ, new cis.a().a(cjo.b), ha.a));
-   public static final cis tv = a(new ckg(csm.gM, csm.gN, new cis.a().a(cjo.b), ha.a));
-   public static final cis tw = a(new ckg(csm.gO, csm.gP, new cis.a().a(cjo.b), ha.a));
-   public static final cis tx = a(new ckg(csm.gQ, csm.gR, new cis.a().a(cjo.b), ha.a));
-   public static final cis ty = a("nether_star", new cjy(new cis.a().a(cjo.b)));
-   public static final cis tz = a("pumpkin_pie", new cis(new cis.a().a(ceb.E)));
-   public static final cis tA = a("firework_rocket", new cib(new cis.a()));
-   public static final cis tB = a("firework_star", new cic(new cis.a()));
-   public static final cis tC = a("enchanted_book", new cht(new cis.a().a(1).a(cjo.b)));
-   public static final cis tD = a("nether_brick", new cis(new cis.a()));
-   public static final cis tE = a("prismarine_shard", new cis(new cis.a()));
-   public static final cis tF = a("prismarine_crystals", new cis(new cis.a()));
-   public static final cis tG = a("rabbit", new cis(new cis.a().a(ceb.F)));
-   public static final cis tH = a("cooked_rabbit", new cis(new cis.a().a(ceb.p)));
-   public static final cis tI = a("rabbit_stew", new cgw(new cis.a().a(1).a(ceb.G)));
-   public static final cis tJ = a("rabbit_foot", new cis(new cis.a()));
-   public static final cis tK = a("rabbit_hide", new cis(new cis.a()));
-   public static final cis tL = a("armor_stand", new cgk(new cis.a().a(16)));
-   public static final cis tM = a("iron_horse_armor", new cin(5, "iron", new cis.a().a(1)));
-   public static final cis tN = a("golden_horse_armor", new cin(7, "gold", new cis.a().a(1)));
-   public static final cis tO = a("diamond_horse_armor", new cin(11, "diamond", new cis.a().a(1)));
-   public static final cis tP = a("leather_horse_armor", new cho(3, "leather", new cis.a().a(1)));
-   public static final cis tQ = a("lead", new cjc(new cis.a()));
-   public static final cis tR = a("name_tag", new cji(new cis.a()));
-   public static final cis tS = a("command_block_minecart", new cjg(cdd.a.g, new cis.a().a(1).a(cjo.d)));
-   public static final cis tT = a("mutton", new cis(new cis.a().a(ceb.z)));
-   public static final cis tU = a("cooked_mutton", new cis(new cis.a().a(ceb.n)));
-   public static final cis tV = a("white_banner", new cgn(csm.iJ, csm.iZ, new cis.a().a(16)));
-   public static final cis tW = a("orange_banner", new cgn(csm.iK, csm.ja, new cis.a().a(16)));
-   public static final cis tX = a("magenta_banner", new cgn(csm.iL, csm.jb, new cis.a().a(16)));
-   public static final cis tY = a("light_blue_banner", new cgn(csm.iM, csm.jc, new cis.a().a(16)));
-   public static final cis tZ = a("yellow_banner", new cgn(csm.iN, csm.jd, new cis.a().a(16)));
-   public static final cis ua = a("lime_banner", new cgn(csm.iO, csm.je, new cis.a().a(16)));
-   public static final cis ub = a("pink_banner", new cgn(csm.iP, csm.jf, new cis.a().a(16)));
-   public static final cis uc = a("gray_banner", new cgn(csm.iQ, csm.jg, new cis.a().a(16)));
-   public static final cis ud = a("light_gray_banner", new cgn(csm.iR, csm.jh, new cis.a().a(16)));
-   public static final cis ue = a("cyan_banner", new cgn(csm.iS, csm.ji, new cis.a().a(16)));
-   public static final cis uf = a("purple_banner", new cgn(csm.iT, csm.jj, new cis.a().a(16)));
-   public static final cis ug = a("blue_banner", new cgn(csm.iU, csm.jk, new cis.a().a(16)));
-   public static final cis uh = a("brown_banner", new cgn(csm.iV, csm.jl, new cis.a().a(16)));
-   public static final cis ui = a("green_banner", new cgn(csm.iW, csm.jm, new cis.a().a(16)));
-   public static final cis uj = a("red_banner", new cgn(csm.iX, csm.jn, new cis.a().a(16)));
-   public static final cis uk = a("black_banner", new cgn(csm.iY, csm.jo, new cis.a().a(16)));
-   public static final cis ul = a("end_crystal", new chv(new cis.a().a(cjo.c)));
-   public static final cis um = a("chorus_fruit", new cha(new cis.a().a(ceb.i)));
-   public static final cis un = a("popped_chorus_fruit", new cis(new cis.a()));
-   public static final cis uo = a("torchflower_seeds", new ciw(csm.kA, new cis.a()));
-   public static final cis up = a("pitcher_pod", new ciw(csm.kB, new cis.a()));
-   public static final cis uq = a("beetroot", new cis(new cis.a().a(ceb.d)));
-   public static final cis ur = a("beetroot_seeds", new ciw(csm.kD, new cis.a()));
-   public static final cis us = a("beetroot_soup", new cgw(new cis.a().a(1).a(ceb.e)));
-   public static final cis ut = a("dragon_breath", new cis(new cis.a().a(rw).a(cjo.b)));
-   public static final cis uu = a("splash_potion", new cke(new cis.a().a(1)));
-   public static final cis uv = a("spectral_arrow", new ckd(new cis.a()));
-   public static final cis uw = a("tipped_arrow", new ckn(new cis.a()));
-   public static final cis ux = a("lingering_potion", new cjd(new cis.a().a(1)));
-   public static final cis uy = a("shield", new cju(new cis.a().c(336)));
-   public static final cis uz = a("totem_of_undying", new cis(new cis.a().a(1).a(cjo.b)));
-   public static final cis uA = a("shulker_shell", new cis(new cis.a()));
-   public static final cis uB = a("iron_nugget", new cis(new cis.a()));
-   public static final cis uC = a("knowledge_book", new cjb(new cis.a().a(1).a(cjo.d)));
-   public static final cis uD = a("debug_stick", new chg(new cis.a().a(1).a(cjo.d)));
-   public static final cis uE = a("music_disc_13", new cjp(1, aow.oc, new cis.a().a(1).a(cjo.c), 178));
-   public static final cis uF = a("music_disc_cat", new cjp(2, aow.oe, new cis.a().a(1).a(cjo.c), 185));
-   public static final cis uG = a("music_disc_blocks", new cjp(3, aow.od, new cis.a().a(1).a(cjo.c), 345));
-   public static final cis uH = a("music_disc_chirp", new cjp(4, aow.of, new cis.a().a(1).a(cjo.c), 185));
-   public static final cis uI = a("music_disc_far", new cjp(5, aow.og, new cis.a().a(1).a(cjo.c), 174));
-   public static final cis uJ = a("music_disc_mall", new cjp(6, aow.oh, new cis.a().a(1).a(cjo.c), 197));
-   public static final cis uK = a("music_disc_mellohi", new cjp(7, aow.oi, new cis.a().a(1).a(cjo.c), 96));
-   public static final cis uL = a("music_disc_stal", new cjp(8, aow.ok, new cis.a().a(1).a(cjo.c), 150));
-   public static final cis uM = a("music_disc_strad", new cjp(9, aow.ol, new cis.a().a(1).a(cjo.c), 188));
-   public static final cis uN = a("music_disc_ward", new cjp(10, aow.on, new cis.a().a(1).a(cjo.c), 251));
-   public static final cis uO = a("music_disc_11", new cjp(11, aow.ob, new cis.a().a(1).a(cjo.c), 71));
-   public static final cis uP = a("music_disc_wait", new cjp(12, aow.om, new cis.a().a(1).a(cjo.c), 238));
-   public static final cis uQ = a("music_disc_otherside", new cjp(14, aow.oo, new cis.a().a(1).a(cjo.c), 195));
-   public static final cis uR = a("music_disc_relic", new cjp(14, aow.op, new cis.a().a(1).a(cjo.c), 218));
-   public static final cis uS = a("music_disc_5", new cjp(15, aow.oa, new cis.a().a(1).a(cjo.c), 178));
-   public static final cis uT = a("music_disc_pigstep", new cjp(13, aow.oj, new cis.a().a(1).a(cjo.c), 149));
-   public static final cis uU = a("disc_fragment_5", new chi(new cis.a()));
-   public static final cis uV = a("trident", new ckp(new cis.a().c(250)));
-   public static final cis uW = a("phantom_membrane", new cis(new cis.a()));
-   public static final cis uX = a("nautilus_shell", new cis(new cis.a()));
-   public static final cis uY = a("heart_of_the_sea", new cis(new cis.a().a(cjo.b)));
-   public static final cis uZ = a("crossbow", new chf(new cis.a().a(1).c(465)));
-   public static final cis va = a("suspicious_stew", new ckh(new cis.a().a(1).a(ceb.K)));
-   public static final cis vb = a(csm.nT);
-   public static final cis vc = a("flower_banner_pattern", new cgo(apj.b, new cis.a().a(1)));
-   public static final cis vd = a("creeper_banner_pattern", new cgo(apj.c, new cis.a().a(1).a(cjo.b)));
-   public static final cis ve = a("skull_banner_pattern", new cgo(apj.d, new cis.a().a(1).a(cjo.b)));
-   public static final cis vf = a("mojang_banner_pattern", new cgo(apj.e, new cis.a().a(1).a(cjo.d)));
-   public static final cis vg = a("globe_banner_pattern", new cgo(apj.f, new cis.a().a(1)));
-   public static final cis vh = a("piglin_banner_pattern", new cgo(apj.g, new cis.a().a(1)));
-   public static final cis vi = a("goat_horn", new ciq(new cis.a().a(1), aps.c));
-   public static final cis vj = a(csm.pc);
-   public static final cis vk = a(csm.nU);
-   public static final cis vl = a(csm.nV);
-   public static final cis vm = a(csm.nW);
-   public static final cis vn = a(csm.nX);
-   public static final cis vo = a(csm.nY);
-   public static final cis vp = a(csm.nZ);
-   public static final cis vq = a(csm.ob);
-   public static final cis vr = a(csm.oc);
-   public static final cis vs = a(csm.od);
-   public static final cis vt = a(csm.oe);
-   public static final cis vu = a(csm.of);
-   public static final cis vv = a("sweet_berries", new ciw(csm.oi, new cis.a().a(ceb.L)));
-   public static final cis vw = a("glow_berries", new ciw(csm.ru, new cis.a().a(ceb.M)));
-   public static final cis vx = a(csm.og);
-   public static final cis vy = a(csm.oh);
-   public static final cis vz = a(csm.oy);
-   public static final cis vA = a("honeycomb", new cim(new cis.a()));
-   public static final cis vB = a(csm.pe);
-   public static final cis vC = a(csm.pf);
-   public static final cis vD = a("honey_bottle", new cil(new cis.a().a(rw).a(ceb.w).a(16)));
-   public static final cis vE = a(csm.ph);
-   public static final cis vF = a(csm.pq);
-   public static final cis vG = a(csm.pk);
-   public static final cis vH = a(csm.pr);
-   public static final cis vI = a(csm.pu);
-   public static final cis vJ = a(csm.ps);
-   public static final cis vK = a(csm.pC);
-   public static final cis vL = a(csm.pv);
-   public static final cis vM = a(csm.pE);
-   public static final cis vN = a(csm.pD);
-   public static final cis vO = a(csm.py);
-   public static final cis vP = a(csm.pw);
-   public static final cis vQ = a(csm.pz);
-   public static final cis vR = a(csm.pA);
-   public static final cis vS = a(csm.px);
-   public static final cis vT = a(csm.pl);
-   public static final cis vU = a(csm.pL);
-   public static final cis vV = a(csm.pM);
-   public static final cis vW = a(csm.pN);
-   public static final cis vX = a(csm.pO);
-   public static final cis vY = a(csm.pP);
-   public static final cis vZ = a(csm.pQ);
-   public static final cis wa = a(csm.pR);
-   public static final cis wb = a(csm.pS);
-   public static final cis wc = a(csm.pT);
-   public static final cis wd = a(csm.pU);
-   public static final cis we = a(csm.pV);
-   public static final cis wf = a(csm.pW);
-   public static final cis wg = a(csm.pX);
-   public static final cis wh = a(csm.pY);
-   public static final cis wi = a(csm.pZ);
-   public static final cis wj = a(csm.qa);
-   public static final cis wk = a(csm.qb);
-   public static final cis wl = a(csm.qy);
-   public static final cis wm = a(csm.qx);
-   public static final cis wn = a(csm.qw);
-   public static final cis wo = a(csm.qv);
-   public static final cis wp = a(csm.rs);
-   public static final cis wq = a(csm.sj);
-   public static final cis wr = a(csm.sk);
-   public static final cis ws = a(csm.sl);
-   public static final cis wt = a(new cjk(csm.sm, new cis.a()));
-   public static final cis wu = a("echo_shard", new cis(new cis.a()));
-   public static final cis wv = a("brush", new cgx(new cis.a().c(64)));
-   public static final cis ww = a("netherite_upgrade_smithing_template", cjz.h());
-   public static final cis wx = a("sentry_armor_trim_smithing_template", cjz.a(cld.a));
-   public static final cis wy = a("dune_armor_trim_smithing_template", cjz.a(cld.b));
-   public static final cis wz = a("coast_armor_trim_smithing_template", cjz.a(cld.c));
-   public static final cis wA = a("wild_armor_trim_smithing_template", cjz.a(cld.d));
-   public static final cis wB = a("ward_armor_trim_smithing_template", cjz.a(cld.e));
-   public static final cis wC = a("eye_armor_trim_smithing_template", cjz.a(cld.f));
-   public static final cis wD = a("vex_armor_trim_smithing_template", cjz.a(cld.g));
-   public static final cis wE = a("tide_armor_trim_smithing_template", cjz.a(cld.h));
-   public static final cis wF = a("snout_armor_trim_smithing_template", cjz.a(cld.i));
-   public static final cis wG = a("rib_armor_trim_smithing_template", cjz.a(cld.j));
-   public static final cis wH = a("spire_armor_trim_smithing_template", cjz.a(cld.k));
-   public static final cis wI = a("wayfinder_armor_trim_smithing_template", cjz.a(cld.l));
-   public static final cis wJ = a("shaper_armor_trim_smithing_template", cjz.a(cld.m));
-   public static final cis wK = a("silence_armor_trim_smithing_template", cjz.a(cld.n));
-   public static final cis wL = a("raiser_armor_trim_smithing_template", cjz.a(cld.o));
-   public static final cis wM = a("host_armor_trim_smithing_template", cjz.a(cld.p));
-   public static final cis wN = a("angler_pottery_sherd", new cis(new cis.a()));
-   public static final cis wO = a("archer_pottery_sherd", new cis(new cis.a()));
-   public static final cis wP = a("arms_up_pottery_sherd", new cis(new cis.a()));
-   public static final cis wQ = a("blade_pottery_sherd", new cis(new cis.a()));
-   public static final cis wR = a("brewer_pottery_sherd", new cis(new cis.a()));
-   public static final cis wS = a("burn_pottery_sherd", new cis(new cis.a()));
-   public static final cis wT = a("danger_pottery_sherd", new cis(new cis.a()));
-   public static final cis wU = a("explorer_pottery_sherd", new cis(new cis.a()));
-   public static final cis wV = a("friend_pottery_sherd", new cis(new cis.a()));
-   public static final cis wW = a("heart_pottery_sherd", new cis(new cis.a()));
-   public static final cis wX = a("heartbreak_pottery_sherd", new cis(new cis.a()));
-   public static final cis wY = a("howl_pottery_sherd", new cis(new cis.a()));
-   public static final cis wZ = a("miner_pottery_sherd", new cis(new cis.a()));
-   public static final cis xa = a("mourner_pottery_sherd", new cis(new cis.a()));
-   public static final cis xb = a("plenty_pottery_sherd", new cis(new cis.a()));
-   public static final cis xc = a("prize_pottery_sherd", new cis(new cis.a()));
-   public static final cis xd = a("sheaf_pottery_sherd", new cis(new cis.a()));
-   public static final cis xe = a("shelter_pottery_sherd", new cis(new cis.a()));
-   public static final cis xf = a("skull_pottery_sherd", new cis(new cis.a()));
-   public static final cis xg = a("snort_pottery_sherd", new cis(new cis.a()));
+import com.google.common.collect.HashMultimap;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Multimap;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.util.Collection;
+import java.util.List;
+import java.util.Locale;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.Map.Entry;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-   public static cis a(csl $$0) {
-      return a(new cgq($$0, new cis.a()));
+public final class cja {
+   public static final Codec<cja> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               jd.i.q().fieldOf("id").forGetter(cja::d),
+               Codec.INT.fieldOf("Count").forGetter(cja::L),
+               qu.a.optionalFieldOf("tag").forGetter($$0x -> Optional.ofNullable($$0x.v()))
+            )
+            .apply($$0, cja::new)
+   );
+   private static final Logger j = LogUtils.getLogger();
+   public static final cja b = new cja((Void)null);
+   public static final DecimalFormat c = ac.a(new DecimalFormat("#.##"), $$0 -> $$0.setDecimalFormatSymbols(DecimalFormatSymbols.getInstance(Locale.ROOT)));
+   public static final String d = "Enchantments";
+   public static final String e = "display";
+   public static final String f = "Name";
+   public static final String g = "Lore";
+   public static final String h = "Damage";
+   public static final String i = "color";
+   private static final String k = "Unbreakable";
+   private static final String l = "RepairCost";
+   private static final String m = "CanDestroy";
+   private static final String n = "CanPlaceOn";
+   private static final String o = "HideFlags";
+   private static final ti p = ti.c("item.disabled").a(n.m);
+   private static final int q = 0;
+   private static final ue r = ue.a.a(n.f).b(true);
+   private int s;
+   private int t;
+   @Deprecated
+   @Nullable
+   private final civ u;
+   @Nullable
+   private qu v;
+   @Nullable
+   private bil w;
+   @Nullable
+   private cgi x;
+   @Nullable
+   private cgi y;
+
+   public Optional<cgg> a() {
+      return this.d().h(this);
    }
 
-   public static cis a(csl $$0, csl... $$1) {
-      cgq $$2 = new cgq($$0, new cis.a());
+   public cja(cpp $$0) {
+      this($$0, 1);
+   }
 
-      for (csl $$3 : $$1) {
-         cis.l.put($$3, $$2);
+   public cja(hg<civ> $$0) {
+      this($$0.a(), 1);
+   }
+
+   private cja(cpp $$0, int $$1, Optional<qu> $$2) {
+      this($$0, $$1);
+      $$2.ifPresent(this::c);
+   }
+
+   public cja(hg<civ> $$0, int $$1) {
+      this($$0.a(), $$1);
+   }
+
+   public cja(cpp $$0, int $$1) {
+      this.u = $$0.k();
+      this.s = $$1;
+      if (this.u.o()) {
+         this.b(this.k());
+      }
+   }
+
+   private cja(@Nullable Void $$0) {
+      this.u = null;
+   }
+
+   private cja(qu $$0) {
+      this.u = jd.i.a(new aeu($$0.l("id")));
+      this.s = $$0.f("Count");
+      if ($$0.b("tag", 10)) {
+         this.v = $$0.p("tag");
+         this.d().b(this.v);
       }
 
-      return a($$2);
+      if (this.d().o()) {
+         this.b(this.k());
+      }
    }
 
-   public static cis a(cgq $$0) {
-      return a($$0.e(), $$0);
+   public static cja a(qu $$0) {
+      try {
+         return new cja($$0);
+      } catch (RuntimeException var2) {
+         j.debug("Tried to load invalid item: {}", $$0, var2);
+         return b;
+      }
    }
 
-   public static cis a(csl $$0, cis $$1) {
-      return a(jb.f.b($$0), $$1);
+   public boolean b() {
+      return this == b || this.u == cjd.a || this.s <= 0;
    }
 
-   public static cis a(String $$0, cis $$1) {
-      return a(new aer($$0), $$1);
+   public boolean a(cdx $$0) {
+      return this.b() || this.d().a($$0);
    }
 
-   public static cis a(aer $$0, cis $$1) {
-      return a(aeq.a(jb.i.c(), $$0), $$1);
+   public cja a(int $$0) {
+      int $$1 = Math.min($$0, this.L());
+      cja $$2 = this.c($$1);
+      this.h($$1);
+      return $$2;
    }
 
-   public static cis a(aeq<cis> $$0, cis $$1) {
-      if ($$1 instanceof cgq) {
-         ((cgq)$$1).a(cis.l, $$1);
+   public cja c() {
+      if (this.b()) {
+         return b;
+      } else {
+         cja $$0 = this.p();
+         this.f(0);
+         return $$0;
+      }
+   }
+
+   public civ d() {
+      return this.b() ? cjd.a : this.u;
+   }
+
+   public hg<civ> e() {
+      return this.d().j();
+   }
+
+   public boolean a(aqd<civ> $$0) {
+      return this.d().j().a($$0);
+   }
+
+   public boolean a(civ $$0) {
+      return this.d() == $$0;
+   }
+
+   public boolean a(Predicate<hg<civ>> $$0) {
+      return $$0.test(this.d().j());
+   }
+
+   public boolean a(hg<civ> $$0) {
+      return this.d().j() == $$0;
+   }
+
+   public boolean a(hk<civ> $$0) {
+      return $$0.a(this.e());
+   }
+
+   public Stream<aqd<civ>> f() {
+      return this.d().j().c();
+   }
+
+   public bgt a(clk $$0) {
+      cbp $$1 = $$0.o();
+      gw $$2 = $$0.a();
+      dfi $$3 = new dfi($$0.q(), $$2, false);
+      if ($$1 != null && !$$1.fR().e && !this.a($$0.q().B_().d(je.e), $$3)) {
+         return bgt.d;
+      } else {
+         civ $$4 = this.d();
+         bgt $$5 = $$4.a($$0);
+         if ($$1 != null && $$5.c()) {
+            $$1.b(apj.c.b($$4));
+         }
+
+         return $$5;
+      }
+   }
+
+   public float a(dfe $$0) {
+      return this.d().a(this, $$0);
+   }
+
+   public bgu<cja> a(cpq $$0, cbp $$1, bgs $$2) {
+      return this.d().a($$0, $$1, $$2);
+   }
+
+   public cja a(cpq $$0, bjb $$1) {
+      return this.d().a(this, $$0, $$1);
+   }
+
+   public qu b(qu $$0) {
+      aeu $$1 = jd.i.b(this.d());
+      $$0.a("id", $$1 == null ? "minecraft:air" : $$1.toString());
+      $$0.a("Count", (byte)this.s);
+      if (this.v != null) {
+         $$0.a("tag", this.v.h());
       }
 
-      return hr.a(jb.i, $$0, $$1);
+      return $$0;
+   }
+
+   public int g() {
+      return this.d().l();
+   }
+
+   public boolean h() {
+      return this.g() > 1 && (!this.i() || !this.j());
+   }
+
+   public boolean i() {
+      if (!this.b() && this.d().n() > 0) {
+         qu $$0 = this.v();
+         return $$0 == null || !$$0.q("Unbreakable");
+      } else {
+         return false;
+      }
+   }
+
+   public boolean j() {
+      return this.i() && this.k() > 0;
+   }
+
+   public int k() {
+      return this.v == null ? 0 : this.v.h("Damage");
+   }
+
+   public void b(int $$0) {
+      this.w().a("Damage", Math.max(0, $$0));
+   }
+
+   public int l() {
+      return this.d().n();
+   }
+
+   public boolean a(int $$0, arx $$1, @Nullable ako $$2) {
+      if (!this.i()) {
+         return false;
+      } else {
+         if ($$0 > 0) {
+            int $$3 = cnl.a(cnn.w, this);
+            int $$4 = 0;
+
+            for (int $$5 = 0; $$3 > 0 && $$5 < $$0; $$5++) {
+               if (cnh.a(this, $$3, $$1)) {
+                  $$4++;
+               }
+            }
+
+            $$0 -= $$4;
+            if ($$0 <= 0) {
+               return false;
+            }
+         }
+
+         if ($$2 != null && $$0 != 0) {
+            al.t.a($$2, this, this.k() + $$0);
+         }
+
+         int $$6 = this.k() + $$0;
+         this.b($$6);
+         return $$6 >= this.l();
+      }
+   }
+
+   public <T extends bjb> void a(int $$0, T $$1, Consumer<T> $$2) {
+      if (!$$1.dK().B && (!($$1 instanceof cbp) || !((cbp)$$1).fR().d)) {
+         if (this.i()) {
+            if (this.a($$0, $$1.ee(), $$1 instanceof ako ? (ako)$$1 : null)) {
+               $$2.accept($$1);
+               civ $$3 = this.d();
+               this.h(1);
+               if ($$1 instanceof cbp) {
+                  ((cbp)$$1).b(apj.d.b($$3));
+               }
+
+               this.b(0);
+            }
+         }
+      }
+   }
+
+   public boolean m() {
+      return this.d().e(this);
+   }
+
+   public int n() {
+      return this.d().f(this);
+   }
+
+   public int o() {
+      return this.d().g(this);
+   }
+
+   public boolean a(cfy $$0, ceo $$1, cbp $$2) {
+      return this.d().a(this, $$0, $$1, $$2);
+   }
+
+   public boolean a(cja $$0, cfy $$1, ceo $$2, cbp $$3, bjt $$4) {
+      return this.d().a(this, $$0, $$1, $$2, $$3, $$4);
+   }
+
+   public void a(bjb $$0, cbp $$1) {
+      civ $$2 = this.d();
+      if ($$2.a(this, $$0, $$1)) {
+         $$1.b(apj.c.b($$2));
+      }
+   }
+
+   public void a(cpq $$0, dfe $$1, gw $$2, cbp $$3) {
+      civ $$4 = this.d();
+      if ($$4.a(this, $$0, $$1, $$2, $$3)) {
+         $$3.b(apj.c.b($$4));
+      }
+   }
+
+   public boolean b(dfe $$0) {
+      return this.d().a_($$0);
+   }
+
+   public bgt a(cbp $$0, bjb $$1, bgs $$2) {
+      return this.d().a(this, $$0, $$1, $$2);
+   }
+
+   public cja p() {
+      if (this.b()) {
+         return b;
+      } else {
+         cja $$0 = new cja(this.d(), this.s);
+         $$0.e(this.K());
+         if (this.v != null) {
+            $$0.v = this.v.h();
+         }
+
+         return $$0;
+      }
+   }
+
+   public cja c(int $$0) {
+      if (this.b()) {
+         return b;
+      } else {
+         cja $$1 = this.p();
+         $$1.f($$0);
+         return $$1;
+      }
+   }
+
+   public static boolean a(cja $$0, cja $$1) {
+      if ($$0 == $$1) {
+         return true;
+      } else {
+         return $$0.L() != $$1.L() ? false : c($$0, $$1);
+      }
+   }
+
+   public static boolean b(cja $$0, cja $$1) {
+      return $$0.a($$1.d());
+   }
+
+   public static boolean c(cja $$0, cja $$1) {
+      if (!$$0.a($$1.d())) {
+         return false;
+      } else {
+         return $$0.b() && $$1.b() ? true : Objects.equals($$0.v, $$1.v);
+      }
+   }
+
+   public String q() {
+      return this.d().j(this);
+   }
+
+   @Override
+   public String toString() {
+      return this.L() + " " + this.d();
+   }
+
+   public void a(cpq $$0, bil $$1, int $$2, boolean $$3) {
+      if (this.t > 0) {
+         this.t--;
+      }
+
+      if (this.d() != null) {
+         this.d().a(this, $$0, $$1, $$2, $$3);
+      }
+   }
+
+   public void a(cpq $$0, cbp $$1, int $$2) {
+      $$1.a(apj.b.b(this.d()), $$2);
+      this.d().b(this, $$0, $$1);
+   }
+
+   public int r() {
+      return this.d().b(this);
+   }
+
+   public ckt s() {
+      return this.d().c(this);
+   }
+
+   public void a(cpq $$0, bjb $$1, int $$2) {
+      this.d().a(this, $$0, $$1, $$2);
+   }
+
+   public boolean t() {
+      return this.d().l(this);
+   }
+
+   public boolean u() {
+      return !this.b() && this.v != null && !this.v.g();
+   }
+
+   @Nullable
+   public qu v() {
+      return this.v;
+   }
+
+   public qu w() {
+      if (this.v == null) {
+         this.c(new qu());
+      }
+
+      return this.v;
+   }
+
+   public qu a(String $$0) {
+      if (this.v != null && this.v.b($$0, 10)) {
+         return this.v.p($$0);
+      } else {
+         qu $$1 = new qu();
+         this.a($$0, $$1);
+         return $$1;
+      }
+   }
+
+   @Nullable
+   public qu b(String $$0) {
+      return this.v != null && this.v.b($$0, 10) ? this.v.p($$0) : null;
+   }
+
+   public void c(String $$0) {
+      if (this.v != null && this.v.e($$0)) {
+         this.v.r($$0);
+         if (this.v.g()) {
+            this.v = null;
+         }
+      }
+   }
+
+   public ra x() {
+      return this.v != null ? this.v.c("Enchantments", 10) : new ra();
+   }
+
+   public void c(@Nullable qu $$0) {
+      this.v = $$0;
+      if (this.d().o()) {
+         this.b(this.k());
+      }
+
+      if ($$0 != null) {
+         this.d().b($$0);
+      }
+   }
+
+   public ti y() {
+      qu $$0 = this.b("display");
+      if ($$0 != null && $$0.b("Name", 8)) {
+         try {
+            ti $$1 = ti.a.a($$0.l("Name"));
+            if ($$1 != null) {
+               return $$1;
+            }
+
+            $$0.r("Name");
+         } catch (Exception var3) {
+            $$0.r("Name");
+         }
+      }
+
+      return this.d().m(this);
+   }
+
+   public cja a(@Nullable ti $$0) {
+      qu $$1 = this.a("display");
+      if ($$0 != null) {
+         $$1.a("Name", ti.a.a($$0));
+      } else {
+         $$1.r("Name");
+      }
+
+      return this;
+   }
+
+   public void z() {
+      qu $$0 = this.b("display");
+      if ($$0 != null) {
+         $$0.r("Name");
+         if ($$0.g()) {
+            this.c("display");
+         }
+      }
+
+      if (this.v != null && this.v.g()) {
+         this.v = null;
+      }
+   }
+
+   public boolean A() {
+      qu $$0 = this.b("display");
+      return $$0 != null && $$0.b("Name", 8);
+   }
+
+   public List<ti> a(@Nullable cbp $$0, ckr $$1) {
+      List<ti> $$2 = Lists.newArrayList();
+      tv $$3 = ti.h().b(this.y()).a(this.C().e);
+      if (this.A()) {
+         $$3.a(n.u);
+      }
+
+      $$2.add($$3);
+      if (!$$1.a() && !this.A() && this.a(cjd.rf)) {
+         Integer $$4 = cjh.d(this);
+         if ($$4 != null) {
+            $$2.add(ti.b("#" + $$4).a(n.h));
+         }
+      }
+
+      int $$5 = this.P();
+      if (a($$5, cja.a.f)) {
+         this.d().a(this, $$0 == null ? null : $$0.dK(), $$2, $$1);
+      }
+
+      if (this.u()) {
+         if (a($$5, cja.a.h) && $$0 != null) {
+            clc.a(this, $$0.dK().B_(), $$2);
+         }
+
+         if (a($$5, cja.a.a)) {
+            a($$2, this.x());
+         }
+
+         if (this.v.b("display", 10)) {
+            qu $$6 = this.v.p("display");
+            if (a($$5, cja.a.g) && $$6.b("color", 99)) {
+               if ($$1.a()) {
+                  $$2.add(ti.a("item.color", String.format(Locale.ROOT, "#%06X", $$6.h("color"))).a(n.h));
+               } else {
+                  $$2.add(ti.c("item.dyed").a(n.h, n.u));
+               }
+            }
+
+            if ($$6.d("Lore") == 9) {
+               ra $$7 = $$6.c("Lore", 8);
+
+               for (int $$8 = 0; $$8 < $$7.size(); $$8++) {
+                  String $$9 = $$7.j($$8);
+
+                  try {
+                     tv $$10 = ti.a.a($$9);
+                     if ($$10 != null) {
+                        $$2.add(tk.a($$10, r));
+                     }
+                  } catch (Exception var19) {
+                     $$6.r("Lore");
+                  }
+               }
+            }
+         }
+      }
+
+      if (a($$5, cja.a.b)) {
+         for (biq $$12 : biq.values()) {
+            Multimap<bkc, bkf> $$13 = this.a($$12);
+            if (!$$13.isEmpty()) {
+               $$2.add(th.a);
+               $$2.add(ti.c("item.modifiers." + $$12.e()).a(n.h));
+
+               for (Entry<bkc, bkf> $$14 : $$13.entries()) {
+                  bkf $$15 = $$14.getValue();
+                  double $$16 = $$15.d();
+                  boolean $$17 = false;
+                  if ($$0 != null) {
+                     if ($$15.a() == civ.m) {
+                        $$16 += $$0.c(bkh.f);
+                        $$16 += (double)cnl.a(this, bjg.a);
+                        $$17 = true;
+                     } else if ($$15.a() == civ.n) {
+                        $$16 += $$0.c(bkh.h);
+                        $$17 = true;
+                     }
+                  }
+
+                  double $$18;
+                  if ($$15.c() == bkf.a.b || $$15.c() == bkf.a.c) {
+                     $$18 = $$16 * 100.0;
+                  } else if ($$14.getKey().equals(bkh.c)) {
+                     $$18 = $$16 * 10.0;
+                  } else {
+                     $$18 = $$16;
+                  }
+
+                  if ($$17) {
+                     $$2.add(th.a().b(ti.a("attribute.modifier.equals." + $$15.c().a(), c.format($$18), ti.c($$14.getKey().c()))).a(n.c));
+                  } else if ($$16 > 0.0) {
+                     $$2.add(ti.a("attribute.modifier.plus." + $$15.c().a(), c.format($$18), ti.c($$14.getKey().c())).a(n.j));
+                  } else if ($$16 < 0.0) {
+                     $$18 *= -1.0;
+                     $$2.add(ti.a("attribute.modifier.take." + $$15.c().a(), c.format($$18), ti.c($$14.getKey().c())).a(n.m));
+                  }
+               }
+            }
+         }
+      }
+
+      if (this.u()) {
+         if (a($$5, cja.a.c) && this.v.q("Unbreakable")) {
+            $$2.add(ti.c("item.unbreakable").a(n.j));
+         }
+
+         if (a($$5, cja.a.d) && this.v.b("CanDestroy", 9)) {
+            ra $$21 = this.v.c("CanDestroy", 8);
+            if (!$$21.isEmpty()) {
+               $$2.add(th.a);
+               $$2.add(ti.c("item.canBreak").a(n.h));
+
+               for (int $$22 = 0; $$22 < $$21.size(); $$22++) {
+                  $$2.addAll(d($$21.j($$22)));
+               }
+            }
+         }
+
+         if (a($$5, cja.a.e) && this.v.b("CanPlaceOn", 9)) {
+            ra $$23 = this.v.c("CanPlaceOn", 8);
+            if (!$$23.isEmpty()) {
+               $$2.add(th.a);
+               $$2.add(ti.c("item.canPlace").a(n.h));
+
+               for (int $$24 = 0; $$24 < $$23.size(); $$24++) {
+                  $$2.addAll(d($$23.j($$24)));
+               }
+            }
+         }
+      }
+
+      if ($$1.a()) {
+         if (this.j()) {
+            $$2.add(ti.a("item.durability", this.l() - this.k(), this.l()));
+         }
+
+         $$2.add(ti.b(jd.i.b(this.d()).toString()).a(n.i));
+         if (this.u()) {
+            $$2.add(ti.a("item.nbt_tags", this.v.e().size()).a(n.i));
+         }
+      }
+
+      if ($$0 != null && !this.d().a($$0.dK().G())) {
+         $$2.add(p);
+      }
+
+      return $$2;
+   }
+
+   private static boolean a(int $$0, cja.a $$1) {
+      return ($$0 & $$1.a()) == 0;
+   }
+
+   private int P() {
+      return this.u() && this.v.b("HideFlags", 99) ? this.v.h("HideFlags") : 0;
+   }
+
+   public void a(cja.a $$0) {
+      qu $$1 = this.w();
+      $$1.a("HideFlags", $$1.h("HideFlags") | $$0.a());
+   }
+
+   public static void a(List<ti> $$0, ra $$1) {
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         qu $$3 = $$1.a($$2);
+         jd.g.b(cnl.b($$3)).ifPresent($$2x -> $$0.add($$2x.d(cnl.a($$3))));
+      }
+   }
+
+   private static Collection<ti> d(String $$0) {
+      try {
+         return (Collection<ti>)fi.b(jd.f.p(), $$0, true)
+            .map(
+               $$0x -> Lists.newArrayList(new ti[]{$$0x.a().b().e().a(n.i)}),
+               $$0x -> $$0x.a().a().map($$0xx -> ((csq)$$0xx.a()).e().a(n.i)).collect(Collectors.toList())
+            );
+      } catch (CommandSyntaxException var2) {
+         return Lists.newArrayList(new ti[]{ti.b("missingno").a(n.i)});
+      }
+   }
+
+   public boolean B() {
+      return this.d().i(this);
+   }
+
+   public cjr C() {
+      return this.d().n(this);
+   }
+
+   public boolean D() {
+      return !this.d().d_(this) ? false : !this.E();
+   }
+
+   public void a(cnj $$0, int $$1) {
+      this.w();
+      if (!this.v.b("Enchantments", 9)) {
+         this.v.a("Enchantments", new ra());
+      }
+
+      ra $$2 = this.v.c("Enchantments", 10);
+      $$2.add(cnl.a(cnl.a($$0), (byte)$$1));
+   }
+
+   public boolean E() {
+      return this.v != null && this.v.b("Enchantments", 9) ? !this.v.c("Enchantments", 10).isEmpty() : false;
+   }
+
+   public void a(String $$0, rn $$1) {
+      this.w().a($$0, $$1);
+   }
+
+   public boolean F() {
+      return this.w instanceof byb;
+   }
+
+   public void a(@Nullable bil $$0) {
+      this.w = $$0;
+   }
+
+   @Nullable
+   public byb G() {
+      return this.w instanceof byb ? (byb)this.H() : null;
+   }
+
+   @Nullable
+   public bil H() {
+      return !this.b() ? this.w : null;
+   }
+
+   public int I() {
+      return this.u() && this.v.b("RepairCost", 3) ? this.v.h("RepairCost") : 0;
+   }
+
+   public void d(int $$0) {
+      if ($$0 > 0) {
+         this.w().a("RepairCost", $$0);
+      } else {
+         this.c("RepairCost");
+      }
+   }
+
+   public Multimap<bkc, bkf> a(biq $$0) {
+      Multimap<bkc, bkf> $$1;
+      if (this.u() && this.v.b("AttributeModifiers", 9)) {
+         $$1 = HashMultimap.create();
+         ra $$2 = this.v.c("AttributeModifiers", 10);
+
+         for (int $$3 = 0; $$3 < $$2.size(); $$3++) {
+            qu $$4 = $$2.a($$3);
+            if (!$$4.b("Slot", 8) || $$4.l("Slot").equals($$0.e())) {
+               Optional<bkc> $$5 = jd.v.b(aeu.a($$4.l("AttributeName")));
+               if (!$$5.isEmpty()) {
+                  bkf $$6 = bkf.a($$4);
+                  if ($$6 != null && $$6.a().getLeastSignificantBits() != 0L && $$6.a().getMostSignificantBits() != 0L) {
+                     $$1.put($$5.get(), $$6);
+                  }
+               }
+            }
+         }
+      } else {
+         $$1 = this.d().a($$0);
+      }
+
+      return $$1;
+   }
+
+   public void a(bkc $$0, bkf $$1, @Nullable biq $$2) {
+      this.w();
+      if (!this.v.b("AttributeModifiers", 9)) {
+         this.v.a("AttributeModifiers", new ra());
+      }
+
+      ra $$3 = this.v.c("AttributeModifiers", 10);
+      qu $$4 = $$1.e();
+      $$4.a("AttributeName", jd.v.b($$0).toString());
+      if ($$2 != null) {
+         $$4.a("Slot", $$2.e());
+      }
+
+      $$3.add($$4);
+   }
+
+   public ti J() {
+      tv $$0 = ti.h().b(this.y());
+      if (this.A()) {
+         $$0.a(n.u);
+      }
+
+      tv $$1 = tk.a((ti)$$0);
+      if (!this.b()) {
+         $$1.a(this.C().e).a($$0x -> $$0x.a(new tn(tn.a.b, new tn.c(this))));
+      }
+
+      return $$1;
+   }
+
+   public boolean a(ht<csq> $$0, dfi $$1) {
+      if (this.y == null) {
+         this.y = new cgi("CanPlaceOn");
+      }
+
+      return this.y.a(this, $$0, $$1);
+   }
+
+   public boolean b(ht<csq> $$0, dfi $$1) {
+      if (this.x == null) {
+         this.x = new cgi("CanDestroy");
+      }
+
+      return this.x.a(this, $$0, $$1);
+   }
+
+   public int K() {
+      return this.t;
+   }
+
+   public void e(int $$0) {
+      this.t = $$0;
+   }
+
+   public int L() {
+      return this.b() ? 0 : this.s;
+   }
+
+   public void f(int $$0) {
+      this.s = $$0;
+   }
+
+   public void g(int $$0) {
+      this.f(this.L() + $$0);
+   }
+
+   public void h(int $$0) {
+      this.g(-$$0);
+   }
+
+   public void b(cpq $$0, bjb $$1, int $$2) {
+      this.d().a($$0, $$1, this, $$2);
+   }
+
+   public void a(byi $$0) {
+      this.d().a($$0);
+   }
+
+   public boolean M() {
+      return this.d().u();
+   }
+
+   public aoy N() {
+      return this.d().ae_();
+   }
+
+   public aoy O() {
+      return this.d().af_();
+   }
+
+   public static enum a {
+      a,
+      b,
+      c,
+      d,
+      e,
+      f,
+      g,
+      h;
+
+      private final int i = 1 << this.ordinal();
+
+      public int a() {
+         return this.i;
+      }
    }
 }

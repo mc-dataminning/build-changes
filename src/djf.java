@@ -1,37 +1,45 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.util.UUID;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public class djf implements djn {
-   public static final Codec<djf> a = RecordCodecBuilder.create($$0 -> $$0.group(gu.a.fieldOf("pos").forGetter($$0x -> $$0x.c)).apply($$0, djf::new));
-   final gu c;
+public class djf<T extends div> implements dje<T> {
+   private final dix<T> a;
+   private final dja<T> b;
 
-   public djf(gu $$0) {
-      this.c = $$0;
+   public djf(dix<T> $$0, dja<T> $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
+
+   @Nullable
+   @Override
+   public T a(int $$0) {
+      return this.a.a($$0);
+   }
+
+   @Nullable
+   @Override
+   public T a(UUID $$0) {
+      return this.a.a($$0);
    }
 
    @Override
-   public Optional<ehd> a(cpl $$0) {
-      return Optional.of(ehd.b(this.c));
+   public Iterable<T> a() {
+      return this.a.a();
    }
 
    @Override
-   public djo<?> a() {
-      return djo.a;
+   public <U extends T> void a(djc<T, U> $$0, aqj<U> $$1) {
+      this.a.a($$0, $$1);
    }
 
-   public static class a implements djo<djf> {
-      public djf a(si $$0) {
-         return new djf($$0.e());
-      }
+   @Override
+   public void a(ehd $$0, Consumer<T> $$1) {
+      this.b.b($$0, aqj.forConsumer($$1));
+   }
 
-      public void a(si $$0, djf $$1) {
-         $$0.a($$1.c);
-      }
-
-      @Override
-      public Codec<djf> a() {
-         return djf.a;
-      }
+   @Override
+   public <U extends T> void a(djc<T, U> $$0, ehd $$1, aqj<U> $$2) {
+      this.b.a($$0, $$1, $$2);
    }
 }

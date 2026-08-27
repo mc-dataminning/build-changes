@@ -1,74 +1,29 @@
+import com.google.common.collect.Lists;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public record eqg(int a, @Nullable eqg.a b, @Nullable tf c, @Nullable String d) {
-   private static final tf e = tf.c("chat.tag.system");
-   private static final tf f = tf.c("chat.tag.system_single_player");
-   private static final tf g = tf.c("chat.tag.not_secure");
-   private static final tf h = tf.c("chat.tag.modified");
-   private static final tf i = tf.c("chat.tag.error");
-   private static final int j = 13684944;
-   private static final int k = 6316128;
-   private static final eqg l = new eqg(13684944, null, e, "System");
-   private static final eqg m = new eqg(13684944, null, f, "System");
-   private static final eqg n = new eqg(13684944, null, g, "Not Secure");
-   private static final eqg o = new eqg(16733525, null, i, "Chat Error");
+public class eqg {
+   private final List<tm> a = Lists.newArrayList();
 
-   public static eqg a() {
-      return l;
-   }
-
-   public static eqg b() {
-      return m;
-   }
-
-   public static eqg c() {
-      return n;
-   }
-
-   public static eqg a(String $$0) {
-      tf $$1 = tf.b($$0).a(n.h);
-      tf $$2 = tf.h().b(h).b(te.r).b($$1);
-      return new eqg(6316128, eqg.a.a, $$2, "Modified");
-   }
-
-   public static eqg d() {
-      return o;
-   }
-
-   public int e() {
-      return this.a;
+   public void a(tm $$0) {
+      this.a.add($$0);
    }
 
    @Nullable
-   public eqg.a f() {
-      return this.b;
-   }
-
-   @Nullable
-   public tf g() {
-      return this.c;
-   }
-
-   @Nullable
-   public String h() {
-      return this.d;
-   }
-
-   public static enum a {
-      a(new aer("icon/chat_modified"), 9, 9);
-
-      public final aer b;
-      public final int c;
-      public final int d;
-
-      private a(aer $$0, int $$1, int $$2) {
-         this.b = $$0;
-         this.c = $$1;
-         this.d = $$2;
+   public tm a() {
+      if (this.a.isEmpty()) {
+         return null;
+      } else {
+         return this.a.size() == 1 ? this.a.get(0) : tm.a(this.a);
       }
+   }
 
-      public void a(erv $$0, int $$1, int $$2) {
-         $$0.a(this.b, $$1, $$2, this.c, this.d);
-      }
+   public tm b() {
+      tm $$0 = this.a();
+      return $$0 != null ? $$0 : tm.b;
+   }
+
+   public void c() {
+      this.a.clear();
    }
 }

@@ -1,12 +1,22 @@
-public class dbt extends cvx {
-   public static final ehw d = csl.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
+public class dbt extends csq implements dbs {
+   private final dbs.a d;
 
-   public dbt(dey.d $$0) {
-      super($$0, ha.a, d, false);
+   public dbt(dbs.a $$0, dfd.d $$1) {
+      super($$1);
+      this.d = $$0;
    }
 
    @Override
-   protected cvy b() {
-      return (cvy)csm.oz;
+   public void b(dfe $$0, akn $$1, gw $$2, arx $$3) {
+      this.a_($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   public boolean e_(dfe $$0) {
+      return dbs.c($$0.b()).isPresent();
+   }
+
+   public dbs.a g() {
+      return this.d;
    }
 }

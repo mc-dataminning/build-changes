@@ -1,49 +1,50 @@
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.arguments.ArgumentType;
-import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import com.mojang.datafixers.util.Either;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.concurrent.CompletableFuture;
+import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
 import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class fx implements ArgumentType<fx.a> {
-   private static final Collection<String> a = Arrays.asList("stick", "minecraft:stick", "#stick", "#stick{foo=bar}");
-   private final hg<cis> b;
+public class fx implements Predicate<cja> {
+   private static final Dynamic2CommandExceptionType a = new Dynamic2CommandExceptionType(($$0, $$1) -> ti.a("arguments.item.overstacked", $$0, $$1));
+   private final hg<civ> b;
+   @Nullable
+   private final qu c;
 
-   public fx(dl $$0) {
-      this.b = $$0.a(jc.D);
+   public fx(hg<civ> $$0, @Nullable qu $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public static fx a(dl $$0) {
-      return new fx($$0);
+   public civ a() {
+      return this.b.a();
    }
 
-   public fx.a a(StringReader $$0) throws CommandSyntaxException {
-      Either<fw.a, fw.b> $$1 = fw.b(this.b, $$0);
-      return (fx.a)$$1.map($$0x -> a($$1x -> $$1x == $$0x.a(), $$0x.b()), $$0x -> a($$0x.a()::a, $$0x.b()));
+   public boolean a(cja $$0) {
+      return $$0.a(this.b) && rg.a(this.c, $$0.v(), true);
    }
 
-   public static Predicate<cix> a(CommandContext<dr> $$0, String $$1) {
-      return (Predicate<cix>)$$0.getArgument($$1, fx.a.class);
+   public cja a(int $$0, boolean $$1) throws CommandSyntaxException {
+      cja $$2 = new cja(this.b, $$0);
+      if (this.c != null) {
+         $$2.c(this.c);
+      }
+
+      if ($$1 && $$0 > $$2.g()) {
+         throw a.create(this.c(), $$2.g());
+      } else {
+         return $$2;
+      }
    }
 
-   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      return fw.a(this.b, $$1, true);
+   public String b() {
+      StringBuilder $$0 = new StringBuilder(this.c());
+      if (this.c != null) {
+         $$0.append(this.c);
+      }
+
+      return $$0.toString();
    }
 
-   public Collection<String> getExamples() {
-      return a;
-   }
-
-   private static fx.a a(Predicate<he<cis>> $$0, @Nullable qr $$1) {
-      return $$1 != null ? $$2 -> $$2.a($$0) && rd.a($$1, $$2.v(), true) : $$1x -> $$1x.a($$0);
-   }
-
-   public interface a extends Predicate<cix> {
+   private String c() {
+      return this.b.e().map(aet::a).orElseGet(() -> "unknown[" + this.b + "]").toString();
    }
 }

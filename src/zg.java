@@ -1,32 +1,28 @@
-public class zg implements ux<wp> {
-   private final double a;
-   private final double b;
+import javax.annotation.Nullable;
 
-   public zg(dgq $$0) {
-      this.a = $$0.a();
-      this.b = $$0.b();
+public class zg implements va<ws> {
+   @Nullable
+   private final aeu a;
+
+   public zg(@Nullable aeu $$0) {
+      this.a = $$0;
    }
 
-   public zg(si $$0) {
-      this.a = $$0.readDouble();
-      this.b = $$0.readDouble();
-   }
-
-   @Override
-   public void a(si $$0) {
-      $$0.a(this.a);
-      $$0.a(this.b);
-   }
-
-   public void a(wp $$0) {
+   public void a(ws $$0) {
       $$0.a(this);
    }
 
-   public double a() {
-      return this.b;
+   public zg(sl $$0) {
+      this.a = $$0.c(sl::s);
    }
 
-   public double d() {
+   @Override
+   public void a(sl $$0) {
+      $$0.a(this.a, sl::a);
+   }
+
+   @Nullable
+   public aeu a() {
       return this.a;
    }
 }

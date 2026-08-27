@@ -1,18 +1,20 @@
 import com.mojang.serialization.Codec;
-import javax.annotation.Nullable;
 
-public class dyy implements dyz {
-   public static final dyy a = new dyy();
-   public static final Codec<dyy> b = Codec.unit(a);
+public class dyy extends dyq {
+   public static final Codec<dyy> a = aqd.a(je.e).fieldOf("tag").xmap(dyy::new, $$0 -> $$0.b).codec();
+   private final aqd<csq> b;
 
-   @Nullable
-   @Override
-   public qr a(aru $$0, @Nullable qr $$1) {
-      return $$1;
+   public dyy(aqd<csq> $$0) {
+      this.b = $$0;
    }
 
    @Override
-   public dza<?> a() {
-      return dza.b;
+   public boolean a(dfe $$0, arx $$1) {
+      return $$0.a(this.b);
+   }
+
+   @Override
+   protected dyr<?> a() {
+      return dyr.d;
    }
 }

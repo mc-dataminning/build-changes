@@ -1,3 +1,17 @@
-public interface bjn {
-   void a(btu var1, bii var2);
+public enum bjn {
+   a,
+   b,
+   c,
+   d,
+   e,
+   f,
+   g,
+   h,
+   i,
+   j,
+   k,
+   l,
+   m,
+   n,
+   o;
 }

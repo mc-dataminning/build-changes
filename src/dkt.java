@@ -1,95 +1,110 @@
-public class dkt implements coy {
-   private int a;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Function;
 
-   @Override
-   public int a(akk $$0, boolean $$1, boolean $$2) {
-      if (!$$1) {
-         return 0;
-      } else if (!$$0.X().b(cph.G)) {
-         return 0;
-      } else {
-         aru $$3 = $$0.z;
-         this.a--;
-         if (this.a > 0) {
-            return 0;
-         } else {
-            this.a = this.a + 12000 + $$3.a(1200);
-            long $$4 = $$0.W() / 24000L;
-            if ($$4 < 5L || !$$0.N()) {
-               return 0;
-            } else if ($$3.a(5) != 0) {
-               return 0;
-            } else {
-               int $$5 = $$0.v().size();
-               if ($$5 < 1) {
-                  return 0;
-               } else {
-                  cbm $$6 = $$0.v().get($$3.a($$5));
-                  if ($$6.G_()) {
-                     return 0;
-                  } else if ($$0.a($$6.dk(), 2)) {
-                     return 0;
-                  } else {
-                     int $$7 = (24 + $$3.a(24)) * ($$3.h() ? -1 : 1);
-                     int $$8 = (24 + $$3.a(24)) * ($$3.h() ? -1 : 1);
-                     gu.a $$9 = $$6.dk().j().e($$7, 0, $$8);
-                     int $$10 = 10;
-                     if (!$$0.b($$9.u() - 10, $$9.w() - 10, $$9.u() + 10, $$9.w() + 10)) {
-                        return 0;
-                     } else {
-                        he<cqj> $$11 = $$0.s($$9);
-                        if ($$11.a(apk.af)) {
-                           return 0;
-                        } else {
-                           int $$12 = 0;
-                           int $$13 = (int)Math.ceil((double)$$0.d_($$9).b()) + 1;
+public record dkt(dkg b, dkg c, dkg d, dkg e, dkg f, dkg g, dkg h, dkg i, dkg j, dkg k, dkg l, dkg m, dkg n, dkg o, dkg p) {
+   public static final Codec<dkt> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               a("barrier", dkt::a),
+               a("fluid_level_floodedness", dkt::b),
+               a("fluid_level_spread", dkt::c),
+               a("lava", dkt::d),
+               a("temperature", dkt::e),
+               a("vegetation", dkt::f),
+               a("continents", dkt::g),
+               a("erosion", dkt::h),
+               a("depth", dkt::i),
+               a("ridges", dkt::j),
+               a("initial_density_without_jaggedness", dkt::k),
+               a("final_density", dkt::l),
+               a("vein_toggle", dkt::m),
+               a("vein_ridged", dkt::n),
+               a("vein_gap", dkt::o)
+            )
+            .apply($$0, dkt::new)
+   );
 
-                           for (int $$14 = 0; $$14 < $$13; $$14++) {
-                              $$12++;
-                              $$9.q($$0.a(dki.a.f, $$9).v());
-                              if ($$14 == 0) {
-                                 if (!this.a($$0, $$9, $$3, true)) {
-                                    break;
-                                 }
-                              } else {
-                                 this.a($$0, $$9, $$3, false);
-                              }
-
-                              $$9.p($$9.u() + $$3.a(5) - $$3.a(5));
-                              $$9.r($$9.w() + $$3.a(5) - $$3.a(5));
-                           }
-
-                           return $$12;
-                        }
-                     }
-                  }
-               }
-            }
-         }
-      }
+   private static RecordCodecBuilder<dkt, dkg> a(String $$0, Function<dkt, dkg> $$1) {
+      return dkg.d.fieldOf($$0).forGetter($$1);
    }
 
-   private boolean a(akk $$0, gu $$1, aru $$2, boolean $$3) {
-      dez $$4 = $$0.a_($$1);
-      if (!cpw.a($$0, $$1, $$4, $$4.u(), bim.ay)) {
-         return false;
-      } else if (!bzb.b(bim.ay, $$0, bjc.p, $$1, $$2)) {
-         return false;
-      } else {
-         bzb $$5 = bim.ay.a((cpl)$$0);
-         if ($$5 != null) {
-            if ($$3) {
-               $$5.w(true);
-               $$5.gi();
-            }
+   public dkt a(dkg.f $$0) {
+      return new dkt(
+         this.b.a($$0),
+         this.c.a($$0),
+         this.d.a($$0),
+         this.e.a($$0),
+         this.f.a($$0),
+         this.g.a($$0),
+         this.h.a($$0),
+         this.i.a($$0),
+         this.j.a($$0),
+         this.k.a($$0),
+         this.l.a($$0),
+         this.m.a($$0),
+         this.n.a($$0),
+         this.o.a($$0),
+         this.p.a($$0)
+      );
+   }
 
-            $$5.e((double)$$1.u(), (double)$$1.v(), (double)$$1.w());
-            $$5.a($$0, $$0.d_($$1), bjc.p, null, null);
-            $$0.a_($$5);
-            return true;
-         } else {
-            return false;
-         }
-      }
+   public dkg a() {
+      return this.b;
+   }
+
+   public dkg b() {
+      return this.c;
+   }
+
+   public dkg c() {
+      return this.d;
+   }
+
+   public dkg d() {
+      return this.e;
+   }
+
+   public dkg e() {
+      return this.f;
+   }
+
+   public dkg f() {
+      return this.g;
+   }
+
+   public dkg g() {
+      return this.h;
+   }
+
+   public dkg h() {
+      return this.i;
+   }
+
+   public dkg i() {
+      return this.j;
+   }
+
+   public dkg j() {
+      return this.k;
+   }
+
+   public dkg k() {
+      return this.l;
+   }
+
+   public dkg l() {
+      return this.m;
+   }
+
+   public dkg m() {
+      return this.n;
+   }
+
+   public dkg n() {
+      return this.o;
+   }
+
+   public dkg o() {
+      return this.p;
    }
 }

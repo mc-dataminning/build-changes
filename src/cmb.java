@@ -1,170 +1,193 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import com.google.common.collect.Lists;
 import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.google.gson.JsonSyntaxException;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.logging.LogUtils;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.JsonOps;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntComparators;
+import it.unimi.dsi.fastutil.ints.IntList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Map.Entry;
-import java.util.stream.Collectors;
+import java.util.function.Predicate;
 import java.util.stream.Stream;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class cmb extends anq {
-   private static final Gson a = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
-   private static final Logger b = LogUtils.getLogger();
-   private Map<cmd<?>, Map<aer, cma<?>>> c = ImmutableMap.of();
-   private Map<aer, cma<?>> d = ImmutableMap.of();
-   private boolean e;
+public final class cmb implements Predicate<cja> {
+   public static final cmb a = new cmb(Stream.empty());
+   private final cmb.c[] d;
+   @Nullable
+   private cja[] e;
+   @Nullable
+   private IntList f;
+   public static final Codec<cmb> b = b(true);
+   public static final Codec<cmb> c = b(false);
 
-   public cmb() {
-      super(a, "recipes");
+   private cmb(Stream<? extends cmb.c> $$0) {
+      this.d = $$0.toArray(cmb.c[]::new);
    }
 
-   protected void a(Map<aer, JsonElement> $$0, anm $$1, bdh $$2) {
-      this.e = false;
-      Map<cmd<?>, Builder<aer, cma<?>>> $$3 = Maps.newHashMap();
-      Builder<aer, cma<?>> $$4 = ImmutableMap.builder();
+   private cmb(cmb.c[] $$0) {
+      this.d = $$0;
+   }
 
-      for (Entry<aer, JsonElement> $$5 : $$0.entrySet()) {
-         aer $$6 = $$5.getKey();
-
-         try {
-            cma<?> $$7 = a($$6, arg.m($$5.getValue(), "top element"));
-            $$3.computeIfAbsent($$7.f(), $$0x -> ImmutableMap.builder()).put($$6, $$7);
-            $$4.put($$6, $$7);
-         } catch (IllegalArgumentException | JsonParseException var10) {
-            b.error("Parsing error loading recipe {}", $$6, var10);
-         }
+   public cja[] a() {
+      if (this.e == null) {
+         this.e = Arrays.stream(this.d).flatMap($$0 -> $$0.a().stream()).distinct().toArray(cja[]::new);
       }
 
-      this.c = $$3.entrySet().stream().collect(ImmutableMap.toImmutableMap(Entry::getKey, $$0x -> ((Builder)$$0x.getValue()).build()));
-      this.d = $$4.build();
-      b.info("Loaded {} recipes", $$3.size());
-   }
-
-   public boolean a() {
       return this.e;
    }
 
-   public <C extends bgj, T extends cma<C>> Optional<T> a(cmd<T> $$0, C $$1, cpl $$2) {
-      return this.c($$0).values().stream().filter($$2x -> $$2x.a($$1, $$2)).findFirst();
-   }
-
-   public <C extends bgj, T extends cma<C>> Optional<Pair<aer, T>> a(cmd<T> $$0, C $$1, cpl $$2, @Nullable aer $$3) {
-      Map<aer, T> $$4 = this.c($$0);
-      if ($$3 != null) {
-         T $$5 = (T)$$4.get($$3);
-         if ($$5 != null && $$5.a($$1, $$2)) {
-            return Optional.of(Pair.of($$3, $$5));
-         }
-      }
-
-      return $$4.entrySet()
-         .stream()
-         .filter($$2x -> ((cma)$$2x.getValue()).a($$1, $$2))
-         .findFirst()
-         .map($$0x -> Pair.of((aer)$$0x.getKey(), (cma)$$0x.getValue()));
-   }
-
-   public <C extends bgj, T extends cma<C>> List<T> a(cmd<T> $$0) {
-      return List.copyOf(this.c($$0).values());
-   }
-
-   public <C extends bgj, T extends cma<C>> List<T> b(cmd<T> $$0, C $$1, cpl $$2) {
-      return this.c($$0)
-         .values()
-         .stream()
-         .filter($$2x -> $$2x.a($$1, $$2))
-         .sorted(Comparator.comparing($$1x -> $$1x.a($$2.B_()).q()))
-         .collect(Collectors.toList());
-   }
-
-   private <C extends bgj, T extends cma<C>> Map<aer, T> c(cmd<T> $$0) {
-      return this.c.getOrDefault($$0, Collections.emptyMap());
-   }
-
-   public <C extends bgj, T extends cma<C>> hn<cix> c(cmd<T> $$0, C $$1, cpl $$2) {
-      Optional<T> $$3 = this.a($$0, $$1, $$2);
-      if ($$3.isPresent()) {
-         return $$3.get().a($$1);
+   public boolean a(@Nullable cja $$0) {
+      if ($$0 == null) {
+         return false;
+      } else if (this.c()) {
+         return $$0.b();
       } else {
-         hn<cix> $$4 = hn.a($$1.b(), cix.b);
-
-         for (int $$5 = 0; $$5 < $$4.size(); $$5++) {
-            $$4.set($$5, $$1.a($$5));
-         }
-
-         return $$4;
-      }
-   }
-
-   public Optional<? extends cma<?>> a(aer $$0) {
-      return Optional.ofNullable(this.d.get($$0));
-   }
-
-   public Collection<cma<?>> b() {
-      return this.c.values().stream().flatMap($$0 -> $$0.values().stream()).collect(Collectors.toSet());
-   }
-
-   public Stream<aer> d() {
-      return this.c.values().stream().flatMap($$0 -> $$0.keySet().stream());
-   }
-
-   public static cma<?> a(aer $$0, JsonObject $$1) {
-      String $$2 = arg.i($$1, "type");
-      return jb.u.b(new aer($$2)).orElseThrow(() -> new JsonSyntaxException("Invalid or unsupported recipe type '" + $$2 + "'")).a($$0, $$1);
-   }
-
-   public void a(Iterable<cma<?>> $$0) {
-      this.e = false;
-      Map<cmd<?>, Map<aer, cma<?>>> $$1 = Maps.newHashMap();
-      Builder<aer, cma<?>> $$2 = ImmutableMap.builder();
-      $$0.forEach($$2x -> {
-         Map<aer, cma<?>> $$3 = $$1.computeIfAbsent($$2x.f(), $$0xx -> Maps.newHashMap());
-         aer $$4 = $$2x.e();
-         cma<?> $$5 = $$3.put($$4, $$2x);
-         $$2.put($$4, $$2x);
-         if ($$5 != null) {
-            throw new IllegalStateException("Duplicate recipe ignored with ID " + $$4);
-         }
-      });
-      this.c = ImmutableMap.copyOf($$1);
-      this.d = $$2.build();
-   }
-
-   public static <C extends bgj, T extends cma<C>> cmb.a<C, T> b(final cmd<T> $$0) {
-      return new cmb.a<C, T>() {
-         @Nullable
-         private aer b;
-
-         @Override
-         public Optional<T> a(C $$0x, cpl $$1) {
-            cmb $$2 = $$1.q();
-            Optional<Pair<aer, T>> $$3 = $$2.a($$0, $$0, $$1, this.b);
-            if ($$3.isPresent()) {
-               Pair<aer, T> $$4 = $$3.get();
-               this.b = (aer)$$4.getFirst();
-               return Optional.of((T)$$4.getSecond());
-            } else {
-               return Optional.empty();
+         for (cja $$1 : this.a()) {
+            if ($$1.a($$0.d())) {
+               return true;
             }
          }
-      };
+
+         return false;
+      }
    }
 
-   public interface a<C extends bgj, T extends cma<C>> {
-      Optional<T> a(C var1, cpl var2);
+   public IntList b() {
+      if (this.f == null) {
+         cja[] $$0 = this.a();
+         this.f = new IntArrayList($$0.length);
+
+         for (cja $$1 : $$0) {
+            this.f.add(cbt.c($$1));
+         }
+
+         this.f.sort(IntComparators.NATURAL_COMPARATOR);
+      }
+
+      return this.f;
+   }
+
+   public void a(sl $$0) {
+      $$0.a(Arrays.asList(this.a()), sl::a);
+   }
+
+   public JsonElement a(boolean $$0) {
+      Codec<cmb> $$1 = $$0 ? b : c;
+      return ac.a($$1.encodeStart(JsonOps.INSTANCE, this), IllegalStateException::new);
+   }
+
+   public boolean c() {
+      return this.d.length == 0;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      return $$0 instanceof cmb $$1 ? Arrays.equals((Object[])this.d, (Object[])$$1.d) : false;
+   }
+
+   private static cmb b(Stream<? extends cmb.c> $$0) {
+      cmb $$1 = new cmb($$0);
+      return $$1.c() ? a : $$1;
+   }
+
+   public static cmb d() {
+      return a;
+   }
+
+   public static cmb a(cpp... $$0) {
+      return a(Arrays.stream($$0).map(cja::new));
+   }
+
+   public static cmb a(cja... $$0) {
+      return a(Arrays.stream($$0));
+   }
+
+   public static cmb a(Stream<cja> $$0) {
+      return b($$0.filter($$0x -> !$$0x.b()).map(cmb.a::new));
+   }
+
+   public static cmb a(aqd<civ> $$0) {
+      return b(Stream.of(new cmb.b($$0)));
+   }
+
+   public static cmb b(sl $$0) {
+      return b($$0.<cja>a(sl::q).stream().map(cmb.a::new));
+   }
+
+   private static Codec<cmb> b(boolean $$0) {
+      Codec<cmb.c[]> $$1 = Codec.list(cmb.c.a)
+         .comapFlatMap(
+            $$1x -> !$$0 && $$1x.size() < 1
+                  ? DataResult.error(() -> "Item array cannot be empty, at least one item must be defined")
+                  : DataResult.success($$1x.toArray(new cmb.c[0])),
+            List::of
+         );
+      return arb.c($$1, cmb.c.a)
+         .flatComapMap(
+            $$0x -> (cmb)$$0x.map(cmb::new, $$0xx -> new cmb(new cmb.c[]{$$0xx})),
+            $$1x -> {
+               if ($$1x.d.length == 1) {
+                  return DataResult.success(Either.right($$1x.d[0]));
+               } else {
+                  return $$1x.d.length == 0 && !$$0
+                     ? DataResult.error(() -> "Item array cannot be empty, at least one item must be defined")
+                     : DataResult.success(Either.left($$1x.d));
+               }
+            }
+         );
+   }
+
+   static record a(cja b) implements cmb.c {
+      static final Codec<cmb.a> c = RecordCodecBuilder.create($$0 -> $$0.group(clv.b.fieldOf("item").forGetter($$0x -> $$0x.b)).apply($$0, cmb.a::new));
+
+      @Override
+      public boolean equals(Object $$0) {
+         return !($$0 instanceof cmb.a $$1) ? false : $$1.b.d().equals(this.b.d()) && $$1.b.L() == this.b.L();
+      }
+
+      @Override
+      public Collection<cja> a() {
+         return Collections.singleton(this.b);
+      }
+   }
+
+   static record b(aqd<civ> b) implements cmb.c {
+      static final Codec<cmb.b> c = RecordCodecBuilder.create($$0 -> $$0.group(aqd.a(je.D).fieldOf("tag").forGetter($$0x -> $$0x.b)).apply($$0, cmb.b::new));
+
+      @Override
+      public boolean equals(Object $$0) {
+         return $$0 instanceof cmb.b $$1 ? $$1.b.b().equals(this.b.b()) : false;
+      }
+
+      @Override
+      public Collection<cja> a() {
+         List<cja> $$0 = Lists.newArrayList();
+
+         for (hg<civ> $$1 : jd.i.c(this.b)) {
+            $$0.add(new cja($$1));
+         }
+
+         return $$0;
+      }
+   }
+
+   interface c {
+      Codec<cmb.c> a = arb.a(cmb.a.c, cmb.b.c).xmap($$0 -> (cmb.c)$$0.map($$0x -> $$0x, $$0x -> $$0x), $$0 -> {
+         if ($$0 instanceof cmb.b $$1) {
+            return Either.right($$1);
+         } else if ($$0 instanceof cmb.a $$2) {
+            return Either.left($$2);
+         } else {
+            throw new UnsupportedOperationException("This is neither an item value nor a tag value.");
+         }
+      });
+
+      Collection<cja> a();
    }
 }

@@ -1,24 +1,24 @@
-public class acg implements ux<aaw> {
-   private final int a;
+public class acg implements va<aaz> {
+   private final aeu a;
 
-   public acg(int $$0) {
-      this.a = $$0;
+   public acg(cmf<?> $$0) {
+      this.a = $$0.a();
    }
 
-   public acg(si $$0) {
-      this.a = $$0.m();
+   public acg(sl $$0) {
+      this.a = $$0.s();
    }
 
    @Override
-   public void a(si $$0) {
-      $$0.c(this.a);
+   public void a(sl $$0) {
+      $$0.a(this.a);
    }
 
-   public void a(aaw $$0) {
+   public void a(aaz $$0) {
       $$0.a(this);
    }
 
-   public int a() {
+   public aeu a() {
       return this.a;
    }
 }

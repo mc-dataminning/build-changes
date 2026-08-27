@@ -4,18 +4,32 @@ import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class bbx extends azx {
+public class bbx extends baa {
    public bbx(int $$0, Schema $$1) {
       super($$0, $$1);
    }
 
-   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
-      Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
-      $$0.register(
-         $$1,
-         "minecraft:warden",
-         () -> DSL.optionalFields("listener", DSL.optionalFields("event", DSL.optionalFields("game_event", ayp.A.in($$0))), azy.a($$0))
+   public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
+      super.registerTypes($$0, $$1, $$2);
+      $$0.registerType(
+         false,
+         ays.c,
+         () -> DSL.optionalFields(
+               "entities",
+               DSL.list(ays.w.in($$0)),
+               "block_entities",
+               DSL.list(DSL.or(ays.s.in($$0), DSL.remainder())),
+               "block_ticks",
+               DSL.list(DSL.fields("i", ays.y.in($$0))),
+               "sections",
+               DSL.list(
+                  DSL.optionalFields(
+                     "biomes", DSL.optionalFields("palette", DSL.list(ays.G.in($$0))), "block_states", DSL.optionalFields("palette", DSL.list(ays.u.in($$0)))
+                  )
+               ),
+               "structures",
+               DSL.optionalFields("starts", DSL.compoundList(ays.C.in($$0)))
+            )
       );
-      return $$1;
    }
 }

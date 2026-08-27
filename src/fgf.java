@@ -1,70 +1,42 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
+public class fgf<T extends bil> extends ffh<T> {
+   private final fhx a;
+   private final fhx b;
+   private final fhx f;
 
-public class fgf extends ffl<cdf> {
-   private static final String a = "left_paddle";
-   private static final String b = "right_paddle";
-   private static final String f = "bottom";
-   private final fhs g;
-   private final fhs h;
-   private final ImmutableList<fhs> i;
-
-   public fgf(fhs $$0) {
-      this.g = $$0.b("left_paddle");
-      this.h = $$0.b("right_paddle");
-      this.i = this.a($$0).build();
+   public fgf(fhx $$0) {
+      this.a = $$0;
+      this.b = $$0.b("left_blue_fin");
+      this.f = $$0.b("right_blue_fin");
    }
 
-   protected Builder<fhs> a(fhs $$0) {
-      Builder<fhs> $$1 = new Builder();
-      $$1.add(new fhs[]{$$0.b("bottom"), this.g, this.h});
-      return $$1;
+   public static fid b() {
+      fif $$0 = new fif();
+      fig $$1 = $$0.a();
+      int $$2 = 22;
+      $$1.a("body", fic.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F), fhz.a(0.0F, 22.0F, 0.0F));
+      $$1.a("right_blue_fin", fic.c().a(24, 0).a(-2.0F, 0.0F, -1.0F, 2.0F, 1.0F, 2.0F), fhz.a(-4.0F, 15.0F, -2.0F));
+      $$1.a("left_blue_fin", fic.c().a(24, 3).a(0.0F, 0.0F, -1.0F, 2.0F, 1.0F, 2.0F), fhz.a(4.0F, 15.0F, -2.0F));
+      $$1.a("top_front_fin", fic.c().a(15, 17).a(-4.0F, -1.0F, 0.0F, 8.0F, 1.0F, 0.0F), fhz.a(0.0F, 14.0F, -4.0F, (float) (Math.PI / 4), 0.0F, 0.0F));
+      $$1.a("top_middle_fin", fic.c().a(14, 16).a(-4.0F, -1.0F, 0.0F, 8.0F, 1.0F, 1.0F), fhz.a(0.0F, 14.0F, 0.0F));
+      $$1.a("top_back_fin", fic.c().a(23, 18).a(-4.0F, -1.0F, 0.0F, 8.0F, 1.0F, 0.0F), fhz.a(0.0F, 14.0F, 4.0F, (float) (-Math.PI / 4), 0.0F, 0.0F));
+      $$1.a("right_front_fin", fic.c().a(5, 17).a(-1.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F), fhz.a(-4.0F, 22.0F, -4.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
+      $$1.a("left_front_fin", fic.c().a(1, 17).a(0.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F), fhz.a(4.0F, 22.0F, -4.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
+      $$1.a("bottom_front_fin", fic.c().a(15, 20).a(-4.0F, 0.0F, 0.0F, 8.0F, 1.0F, 0.0F), fhz.a(0.0F, 22.0F, -4.0F, (float) (-Math.PI / 4), 0.0F, 0.0F));
+      $$1.a("bottom_middle_fin", fic.c().a(15, 20).a(-4.0F, 0.0F, 0.0F, 8.0F, 1.0F, 0.0F), fhz.a(0.0F, 22.0F, 0.0F));
+      $$1.a("bottom_back_fin", fic.c().a(15, 20).a(-4.0F, 0.0F, 0.0F, 8.0F, 1.0F, 0.0F), fhz.a(0.0F, 22.0F, 4.0F, (float) (Math.PI / 4), 0.0F, 0.0F));
+      $$1.a("right_back_fin", fic.c().a(9, 17).a(-1.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F), fhz.a(-4.0F, 22.0F, 4.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
+      $$1.a("left_back_fin", fic.c().a(9, 17).a(0.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F), fhz.a(4.0F, 22.0F, 4.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
+      return fid.a($$0, 32, 32);
    }
 
-   public static void a(fib $$0) {
-      $$0.a(
-         "bottom",
-         fhx.c().a(0, 0).a(-14.0F, -11.0F, -4.0F, 28.0F, 20.0F, 4.0F).a(0, 0).a(-14.0F, -9.0F, -8.0F, 28.0F, 16.0F, 4.0F),
-         fhu.a(0.0F, -2.1F, 1.0F, 1.5708F, 0.0F, 0.0F)
-      );
-      int $$1 = 20;
-      int $$2 = 7;
-      int $$3 = 6;
-      float $$4 = -5.0F;
-      $$0.a(
-         "left_paddle",
-         fhx.c().a(0, 24).a(-1.0F, 0.0F, -5.0F, 2.0F, 2.0F, 18.0F).a(-1.001F, -3.0F, 8.0F, 1.0F, 6.0F, 7.0F),
-         fhu.a(3.0F, -4.0F, 9.0F, 0.0F, 0.0F, (float) (Math.PI / 16))
-      );
-      $$0.a(
-         "right_paddle",
-         fhx.c().a(40, 24).a(-1.0F, 0.0F, -5.0F, 2.0F, 2.0F, 18.0F).a(0.001F, -3.0F, 8.0F, 1.0F, 6.0F, 7.0F),
-         fhu.a(3.0F, -4.0F, -9.0F, 0.0F, (float) Math.PI, (float) (Math.PI / 16))
-      );
+   @Override
+   public fhx a() {
+      return this.a;
    }
 
-   public static fhy b() {
-      fia $$0 = new fia();
-      fib $$1 = $$0.a();
-      a($$1);
-      return fhy.a($$0, 128, 64);
-   }
-
-   public void a(cdf $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      a($$0, 0, this.g, $$1);
-      a($$0, 1, this.h, $$1);
-   }
-
-   public ImmutableList<fhs> c() {
-      return this.i;
-   }
-
-   private static void a(cdf $$0, int $$1, fhs $$2, float $$3) {
-      float $$4 = $$0.a($$1, $$3);
-      $$2.e = arp.b((float) (-Math.PI / 3), (float) (-Math.PI / 12), (arp.a(-$$4) + 1.0F) / 2.0F);
-      $$2.f = arp.b((float) (-Math.PI / 4), (float) (Math.PI / 4), (arp.a(-$$4 + 1.0F) + 1.0F) / 2.0F);
-      if ($$1 == 1) {
-         $$2.f = (float) Math.PI - $$2.f;
-      }
+   @Override
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.f.g = -0.2F + 0.4F * ars.a($$3 * 0.2F);
+      this.b.g = 0.2F - 0.4F * ars.a($$3 * 0.2F);
    }
 }

@@ -1,24 +1,23 @@
-public class ys implements ux<wp> {
-   private final int a;
-   private final tf b;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-   public ys(int $$0, tf $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
-
-   public ys(si $$0) {
-      this.a = $$0.m();
-      this.b = $$0.l();
+public record ys(UUID a, int b, @Nullable tt c, ua.a d, @Nullable ti e, tl f, te.b g) implements va<ws> {
+   public ys(sl $$0) {
+      this($$0.o(), $$0.m(), $$0.c(tt::a), new ua.a($$0), $$0.c(sl::l), tl.a($$0), new te.b($$0));
    }
 
    @Override
-   public void a(si $$0) {
-      $$0.c(this.a);
-      $$0.a(this.b);
+   public void a(sl $$0) {
+      $$0.a(this.a);
+      $$0.c(this.b);
+      $$0.a(this.c, tt::a);
+      this.d.a($$0);
+      $$0.a(this.e, sl::a);
+      tl.a($$0, this.f);
+      this.g.a($$0);
    }
 
-   public void a(wp $$0) {
+   public void a(ws $$0) {
       $$0.a(this);
    }
 
@@ -27,11 +26,29 @@ public class ys implements ux<wp> {
       return true;
    }
 
-   public int a() {
-      return this.a;
+   public int d() {
+      return this.b;
    }
 
-   public tf d() {
-      return this.b;
+   @Nullable
+   public tt e() {
+      return this.c;
+   }
+
+   public ua.a f() {
+      return this.d;
+   }
+
+   @Nullable
+   public ti g() {
+      return this.e;
+   }
+
+   public tl h() {
+      return this.f;
+   }
+
+   public te.b i() {
+      return this.g;
    }
 }

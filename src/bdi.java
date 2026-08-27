@@ -1,11 +1,12 @@
-import it.unimi.dsi.fastutil.objects.Object2LongMap;
+import java.util.Set;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.tuple.Pair;
 
-public interface bdi {
-   long a();
+public interface bdi extends bdk {
+   bdj d();
 
-   long b();
+   @Nullable
+   bdd.a c(String var1);
 
-   long c();
-
-   Object2LongMap<String> d();
+   Set<Pair<String, ben>> e();
 }

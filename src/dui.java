@@ -1,24 +1,42 @@
-import com.mojang.serialization.Codec;
+import java.util.Optional;
 
-public class dui extends due {
-   public static final Codec<dui> a = aqy.j.fieldOf("chance").xmap(dui::new, $$0 -> $$0.c).codec();
-   private final int c;
+public class dui extends dlk {
+   private final cqk a;
+   private final dhb b;
+   private final Optional<duh> c;
 
-   private dui(int $$0) {
-      this.c = $$0;
+   public dui(cqk $$0, dhb $$1, Optional<duh> $$2) {
+      super($$1, $$0);
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public static dui a(int $$0) {
-      return new dui($$0);
+   public int a(dkn.a $$0, int $$1, int $$2) {
+      return this.a.a($$0, $$1, $$2);
    }
 
-   @Override
-   protected boolean a(dud $$0, aru $$1, gu $$2) {
-      return $$1.i() < 1.0F / (float)this.c;
+   public dgz a(cox $$0, dkj.a $$1) {
+      return ((dhv)this.a.a($$0.e, $$0.f)).b($$1);
    }
 
-   @Override
-   public dug<?> b() {
-      return dug.b;
+   public dfe a(gw $$0) {
+      return this.a.a_($$0);
+   }
+
+   public int c() {
+      return this.a.C_();
+   }
+
+   public cqk d() {
+      return this.a;
+   }
+
+   public Optional<duh> e() {
+      return this.c;
+   }
+
+   public dhb f() {
+      return this.b;
    }
 }

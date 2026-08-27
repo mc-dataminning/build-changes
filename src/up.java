@@ -1,154 +1,82 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.function.Consumer;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 
-public class up implements tg {
-   public static final Object[] b = new Object[0];
-   private static final tj c = tj.e("%");
-   private static final tj d = tj.e("null");
+public class up implements tj {
+   private static final String b = "*";
+   private final String c;
+   @Nullable
+   private final gc d;
    private final String e;
+
    @Nullable
-   private final String f;
-   private final Object[] g;
-   @Nullable
-   private qm h;
-   private List<tj> i = ImmutableList.of();
-   private static final Pattern j = Pattern.compile("%(?:(\\d+)\\$)?([A-Za-z%]|$)");
-
-   public up(String $$0, @Nullable String $$1, Object[] $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
-   }
-
-   private void d() {
-      qm $$0 = qm.a();
-      if ($$0 != this.h) {
-         this.h = $$0;
-         String $$1 = this.f != null ? $$0.a(this.e, this.f) : $$0.a(this.e);
-
-         try {
-            Builder<tj> $$2 = ImmutableList.builder();
-            this.a($$1, $$2::add);
-            this.i = $$2.build();
-         } catch (uq var4) {
-            this.i = ImmutableList.of(tj.e($$1));
-         }
-      }
-   }
-
-   private void a(String $$0, Consumer<tj> $$1) {
-      Matcher $$2 = j.matcher($$0);
-
+   private static gc a(String $$0) {
       try {
-         int $$3 = 0;
-         int $$4 = 0;
-
-         while ($$2.find($$4)) {
-            int $$5 = $$2.start();
-            int $$6 = $$2.end();
-            if ($$5 > $$4) {
-               String $$7 = $$0.substring($$4, $$5);
-               if ($$7.indexOf(37) != -1) {
-                  throw new IllegalArgumentException();
-               }
-
-               $$1.accept(tj.e($$7));
-            }
-
-            String $$8 = $$2.group(2);
-            String $$9 = $$0.substring($$5, $$6);
-            if ("%".equals($$8) && "%%".equals($$9)) {
-               $$1.accept(c);
-            } else {
-               if (!"s".equals($$8)) {
-                  throw new uq(this, "Unsupported format: '" + $$9 + "'");
-               }
-
-               String $$10 = $$2.group(1);
-               int $$11 = $$10 != null ? Integer.parseInt($$10) - 1 : $$3++;
-               $$1.accept(this.a($$11));
-            }
-
-            $$4 = $$6;
-         }
-
-         if ($$4 < $$0.length()) {
-            String $$12 = $$0.substring($$4);
-            if ($$12.indexOf(37) != -1) {
-               throw new IllegalArgumentException();
-            }
-
-            $$1.accept(tj.e($$12));
-         }
-      } catch (IllegalArgumentException var12) {
-         throw new uq(this, var12);
+         return new gd(new StringReader($$0)).t();
+      } catch (CommandSyntaxException var2) {
+         return null;
       }
    }
 
-   private tj a(int $$0) {
-      if ($$0 >= 0 && $$0 < this.g.length) {
-         Object $$1 = this.g[$$0];
-         if ($$1 instanceof tf) {
-            return (tf)$$1;
-         } else {
-            return $$1 == null ? d : tj.e($$1.toString());
+   public up(String $$0, String $$1) {
+      this.c = $$0;
+      this.d = a($$0);
+      this.e = $$1;
+   }
+
+   public String a() {
+      return this.c;
+   }
+
+   @Nullable
+   public gc b() {
+      return this.d;
+   }
+
+   public String c() {
+      return this.e;
+   }
+
+   private String a(dt $$0) throws CommandSyntaxException {
+      if (this.d != null) {
+         List<? extends bil> $$1 = this.d.b($$0);
+         if (!$$1.isEmpty()) {
+            if ($$1.size() != 1) {
+               throw ee.a.create();
+            }
+
+            return $$1.get(0).cx();
          }
+      }
+
+      return this.c;
+   }
+
+   private String a(String $$0, dt $$1) {
+      MinecraftServer $$2 = $$1.l();
+      if ($$2 != null) {
+         eih $$3 = $$2.aF();
+         eie $$4 = $$3.b(this.e);
+         if ($$4 != null && $$3.b($$0, $$4)) {
+            eig $$5 = $$3.c($$0, $$4);
+            return Integer.toString($$5.b());
+         }
+      }
+
+      return "";
+   }
+
+   @Override
+   public tv a(@Nullable dt $$0, @Nullable bil $$1, int $$2) throws CommandSyntaxException {
+      if ($$0 == null) {
+         return ti.h();
       } else {
-         throw new uq(this, $$0);
+         String $$3 = this.a($$0);
+         String $$4 = $$1 != null && $$3.equals("*") ? $$1.cx() : $$3;
+         return ti.b(this.a($$4, $$0));
       }
-   }
-
-   @Override
-   public <T> Optional<T> a(tj.b<T> $$0, ub $$1) {
-      this.d();
-
-      for (tj $$2 : this.i) {
-         Optional<T> $$3 = $$2.a($$0, $$1);
-         if ($$3.isPresent()) {
-            return $$3;
-         }
-      }
-
-      return Optional.empty();
-   }
-
-   @Override
-   public <T> Optional<T> a(tj.a<T> $$0) {
-      this.d();
-
-      for (tj $$1 : this.i) {
-         Optional<T> $$2 = $$1.a($$0);
-         if ($$2.isPresent()) {
-            return $$2;
-         }
-      }
-
-      return Optional.empty();
-   }
-
-   @Override
-   public ts a(@Nullable dr $$0, @Nullable bii $$1, int $$2) throws CommandSyntaxException {
-      Object[] $$3 = new Object[this.g.length];
-
-      for (int $$4 = 0; $$4 < $$3.length; $$4++) {
-         Object $$5 = this.g[$$4];
-         if ($$5 instanceof tf) {
-            $$3[$$4] = th.a($$0, (tf)$$5, $$1, $$2);
-         } else {
-            $$3[$$4] = $$5;
-         }
-      }
-
-      return ts.a(new up(this.e, this.f, $$3));
    }
 
    @Override
@@ -156,7 +84,7 @@ public class up implements tg {
       if (this == $$0) {
          return true;
       } else {
-         if ($$0 instanceof up $$1 && Objects.equals(this.e, $$1.e) && Objects.equals(this.f, $$1.f) && Arrays.equals(this.g, $$1.g)) {
+         if ($$0 instanceof up $$1 && this.c.equals($$1.c) && this.e.equals($$1.e)) {
             return true;
          }
 
@@ -166,26 +94,12 @@ public class up implements tg {
 
    @Override
    public int hashCode() {
-      int $$0 = Objects.hashCode(this.e);
-      $$0 = 31 * $$0 + Objects.hashCode(this.f);
-      return 31 * $$0 + Arrays.hashCode(this.g);
+      int $$0 = this.c.hashCode();
+      return 31 * $$0 + this.e.hashCode();
    }
 
    @Override
    public String toString() {
-      return "translation{key='" + this.e + "'" + (this.f != null ? ", fallback='" + this.f + "'" : "") + ", args=" + Arrays.toString(this.g) + "}";
-   }
-
-   public String a() {
-      return this.e;
-   }
-
-   @Nullable
-   public String b() {
-      return this.f;
-   }
-
-   public Object[] c() {
-      return this.g;
+      return "score{name='" + this.c + "', objective='" + this.e + "'}";
    }
 }

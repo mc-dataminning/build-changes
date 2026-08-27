@@ -1,13 +1,8 @@
-public interface bes {
-   void a();
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   void b();
-
-   void c();
-
-   boolean e();
-
-   bdh f();
-
-   void d();
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface bes {
 }

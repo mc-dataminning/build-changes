@@ -1,101 +1,62 @@
 import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.arguments.ArgumentType;
+import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import java.util.Objects;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.suggestion.Suggestions;
+import com.mojang.brigadier.suggestion.SuggestionsBuilder;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.concurrent.CompletableFuture;
 
-public class fl implements fk {
-   public static final char a = '^';
-   private final double b;
-   private final double c;
-   private final double d;
+public class fl implements ArgumentType<fm> {
+   private static final Collection<String> b = Arrays.asList("0 0", "~ ~", "~1 ~-2", "^ ^", "^-1 ^0");
+   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(ti.c("argument.pos2d.incomplete"));
 
-   public fl(double $$0, double $$1, double $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   public static fl a() {
+      return new fl();
    }
 
-   @Override
-   public ehd a(dr $$0) {
-      ehc $$1 = $$0.k();
-      ehd $$2 = $$0.m().a($$0);
-      float $$3 = arp.b(($$1.j + 90.0F) * (float) (Math.PI / 180.0));
-      float $$4 = arp.a(($$1.j + 90.0F) * (float) (Math.PI / 180.0));
-      float $$5 = arp.b(-$$1.i * (float) (Math.PI / 180.0));
-      float $$6 = arp.a(-$$1.i * (float) (Math.PI / 180.0));
-      float $$7 = arp.b((-$$1.i + 90.0F) * (float) (Math.PI / 180.0));
-      float $$8 = arp.a((-$$1.i + 90.0F) * (float) (Math.PI / 180.0));
-      ehd $$9 = new ehd((double)($$3 * $$5), (double)$$6, (double)($$4 * $$5));
-      ehd $$10 = new ehd((double)($$3 * $$7), (double)$$8, (double)($$4 * $$7));
-      ehd $$11 = $$9.c($$10).a(-1.0);
-      double $$12 = $$9.c * this.d + $$10.c * this.c + $$11.c * this.b;
-      double $$13 = $$9.d * this.d + $$10.d * this.c + $$11.d * this.b;
-      double $$14 = $$9.e * this.d + $$10.e * this.c + $$11.e * this.b;
-      return new ehd($$2.c + $$12, $$2.d + $$13, $$2.e + $$14);
+   public static akd a(CommandContext<dt> $$0, String $$1) {
+      gw $$2 = ((fm)$$0.getArgument($$1, fm.class)).c((dt)$$0.getSource());
+      return new akd($$2.u(), $$2.w());
    }
 
-   @Override
-   public ehc b(dr $$0) {
-      return ehc.a;
-   }
-
-   @Override
-   public boolean a() {
-      return true;
-   }
-
-   @Override
-   public boolean b() {
-      return true;
-   }
-
-   @Override
-   public boolean c() {
-      return true;
-   }
-
-   public static fl a(StringReader $$0) throws CommandSyntaxException {
+   public fm a(StringReader $$0) throws CommandSyntaxException {
       int $$1 = $$0.getCursor();
-      double $$2 = a($$0, $$1);
-      if ($$0.canRead() && $$0.peek() == ' ') {
-         $$0.skip();
-         double $$3 = a($$0, $$1);
+      if (!$$0.canRead()) {
+         throw a.createWithContext($$0);
+      } else {
+         fs $$2 = fs.a($$0);
          if ($$0.canRead() && $$0.peek() == ' ') {
             $$0.skip();
-            double $$4 = a($$0, $$1);
-            return new fl($$2, $$3, $$4);
+            fs $$3 = fs.a($$0);
+            return new ft($$2, new fs(true, 0.0), $$3);
          } else {
             $$0.setCursor($$1);
-            throw fp.a.createWithContext($$0);
+            throw a.createWithContext($$0);
          }
-      } else {
-         $$0.setCursor($$1);
-         throw fp.a.createWithContext($$0);
       }
    }
 
-   private static double a(StringReader $$0, int $$1) throws CommandSyntaxException {
-      if (!$$0.canRead()) {
-         throw fq.a.createWithContext($$0);
-      } else if ($$0.peek() != '^') {
-         $$0.setCursor($$1);
-         throw fp.b.createWithContext($$0);
+   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
+      if (!($$0.getSource() instanceof dw)) {
+         return Suggestions.empty();
       } else {
-         $$0.skip();
-         return $$0.canRead() && $$0.peek() != ' ' ? $$0.readDouble() : 0.0;
+         String $$2 = $$1.getRemaining();
+         Collection<dw.b> $$3;
+         if (!$$2.isEmpty() && $$2.charAt(0) == '^') {
+            $$3 = Collections.singleton(dw.b.a);
+         } else {
+            $$3 = ((dw)$$0.getSource()).z();
+         }
+
+         return dw.b($$2, $$3, $$1, du.a(this::a));
       }
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return !($$0 instanceof fl $$1) ? false : this.b == $$1.b && this.c == $$1.c && this.d == $$1.d;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return Objects.hash(this.b, this.c, this.d);
+   public Collection<String> getExamples() {
+      return b;
    }
 }

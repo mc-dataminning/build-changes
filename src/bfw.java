@@ -1,16 +1,27 @@
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import java.util.function.Function;
 
-public interface bfw<P extends bfv> {
-   bfw<bfs> a = a("constant", bfs.b);
-   bfw<bgb> b = a("uniform", bgb.a);
-   bfw<bfn> c = a("biased_to_bottom", bfn.a);
-   bfw<bfo> d = a("clamped", bfo.a);
-   bfw<bgc> e = a("weighted_list", bgc.a);
-   bfw<bfq> f = a("clamped_normal", bfq.a);
+public abstract class bfw implements bgb {
+   private static final Codec<Either<Float, bfw>> a = Codec.either(Codec.FLOAT, jd.M.q().dispatch(bfw::c, bfx::codec));
+   public static final Codec<bfw> c = a.xmap(
+      $$0 -> (bfw)$$0.map(bfu::a, $$0x -> $$0x), $$0 -> $$0.c() == bfx.a ? Either.left(((bfu)$$0).d()) : Either.right($$0)
+   );
 
-   Codec<P> codec();
-
-   static <P extends bfv> bfw<P> a(String $$0, Codec<P> $$1) {
-      return hr.a(jb.N, $$0, () -> $$1);
+   public static Codec<bfw> a(float $$0, float $$1) {
+      return arb.a(c, (Function<bfw, DataResult<bfw>>)($$2 -> {
+         if ($$2.a() < $$0) {
+            return DataResult.error(() -> "Value provider too low: " + $$0 + " [" + $$2.a() + "-" + $$2.b() + "]");
+         } else {
+            return $$2.b() > $$1 ? DataResult.error(() -> "Value provider too high: " + $$1 + " [" + $$2.a() + "-" + $$2.b() + "]") : DataResult.success($$2);
+         }
+      }));
    }
+
+   public abstract float a();
+
+   public abstract float b();
+
+   public abstract bfx<?> c();
 }

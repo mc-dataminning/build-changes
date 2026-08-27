@@ -1,44 +1,38 @@
-import com.google.gson.JsonObject;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import java.util.Optional;
 
-public class bs extends cu<bs.a> {
-   static final aer a = new aer("filled_bucket");
+public record bs(hk<bip<?>> b) {
+   public static final Codec<bs> a = Codec.either(aqd.b(je.s), jd.h.r())
+      .flatComapMap(
+         $$0 -> (bs)$$0.map($$0x -> new bs(jd.h.a($$0x)), $$0x -> new bs(hk.a($$0x))),
+         $$0 -> {
+            hk<bip<?>> $$1 = $$0.a();
+            Optional<aqd<bip<?>>> $$2 = $$1.d();
+            if ($$2.isPresent()) {
+               return DataResult.success(Either.left($$2.get()));
+            } else {
+               return $$1.b() == 1
+                  ? DataResult.success(Either.right($$1.a(0)))
+                  : DataResult.error(() -> "Entity type set must have a single element, but got " + $$1.b());
+            }
+         }
+      );
 
-   @Override
-   public aer a() {
-      return a;
+   public static bs a(bip<?> $$0) {
+      return new bs(hk.a($$0.r()));
    }
 
-   public bs.a a(JsonObject $$0, Optional<ba> $$1, be $$2) {
-      Optional<bz> $$3 = bz.a($$0.get("item"));
-      return new bs.a($$1, $$3);
+   public static bs a(aqd<bip<?>> $$0) {
+      return new bs(jd.h.a($$0));
    }
 
-   public void a(akl $$0, cix $$1) {
-      this.a($$0, $$1x -> $$1x.a($$1));
+   public boolean b(bip<?> $$0) {
+      return $$0.a(this.b);
    }
 
-   public static class a extends ar {
-      private final Optional<bz> a;
-
-      public a(Optional<ba> $$0, Optional<bz> $$1) {
-         super(bs.a, $$0);
-         this.a = $$1;
-      }
-
-      public static bs.a a(Optional<bz> $$0) {
-         return new bs.a(Optional.empty(), $$0);
-      }
-
-      public boolean a(cix $$0) {
-         return !this.a.isPresent() || this.a.get().a($$0);
-      }
-
-      @Override
-      public JsonObject b() {
-         JsonObject $$0 = super.b();
-         this.a.ifPresent($$1 -> $$0.add("item", $$1.a()));
-         return $$0;
-      }
+   public hk<bip<?>> a() {
+      return this.b;
    }
 }

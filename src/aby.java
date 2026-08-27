@@ -1,31 +1,32 @@
-public class aby implements ux<aaw> {
-   private static final int a = 2;
+public class aby implements va<aaz> {
+   private final boolean a;
    private final boolean b;
 
-   public aby(cbj $$0) {
-      this.b = $$0.b;
+   public aby(boolean $$0, boolean $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public aby(si $$0) {
-      byte $$1 = $$0.readByte();
-      this.b = ($$1 & 2) != 0;
+   public aby(sl $$0) {
+      this.a = $$0.readBoolean();
+      this.b = $$0.readBoolean();
    }
 
    @Override
-   public void a(si $$0) {
-      byte $$1 = 0;
-      if (this.b) {
-         $$1 = (byte)($$1 | 2);
-      }
-
-      $$0.k($$1);
+   public void a(sl $$0) {
+      $$0.a(this.a);
+      $$0.a(this.b);
    }
 
-   public void a(aaw $$0) {
+   public void a(aaz $$0) {
       $$0.a(this);
    }
 
    public boolean a() {
+      return this.a;
+   }
+
+   public boolean d() {
       return this.b;
    }
 }

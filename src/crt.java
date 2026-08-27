@@ -1,60 +1,33 @@
-import javax.annotation.Nullable;
+public class crt extends csy implements css {
+   private static final dem a = new dem();
+   private static final eib b = ehy.a(csq.a(0.0, 8.0, 0.0, 16.0, 16.0, 16.0), csq.a(6.0, 0.0, 6.0, 10.0, 8.0, 10.0));
 
-public class crt extends csl implements czm {
-   public static final dfq a = dfp.C;
-
-   protected crt(dey.d $$0) {
+   protected crt(dfd.d $$0) {
       super($$0);
-      this.k(this.n().a(a, Boolean.valueOf(false)));
    }
 
    @Override
-   public boolean c(dez $$0, cor $$1, gu $$2) {
-      return true;
+   public eib a(dfe $$0, cow $$1, gw $$2, ehn $$3) {
+      return b;
    }
 
    @Override
-   public cyq b_(dez $$0) {
-      return cyq.a;
+   protected boolean d(dfe $$0, cow $$1, gw $$2) {
+      return $$0.a(csr.dR) || super.d($$0, $$1, $$2);
    }
 
    @Override
-   public float b(dez $$0, cor $$1, gu $$2) {
-      return 1.0F;
+   public boolean a(cpt $$0, gw $$1, dfe $$2) {
+      return $$0.b_($$1.c()).c();
    }
 
    @Override
-   public dez a(dez $$0, ha $$1, dez $$2, cpm $$3, gu $$4, gu $$5) {
-      if ($$0.c(a)) {
-         $$3.a($$4, ead.c, ead.c.a($$3));
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   public boolean a(cpq $$0, arx $$1, gw $$2, dfe $$3) {
+      return (double)$$0.z.i() < 0.45;
    }
 
    @Override
-   public eac c_(dez $$0) {
-      return $$0.c(a) ? ead.c.a(false) : super.c_($$0);
-   }
-
-   @Nullable
-   @Override
-   public dez a(clf $$0) {
-      return this.n().a(a, Boolean.valueOf($$0.q().b_($$0.a()).a() == ead.c));
-   }
-
-   @Override
-   protected void a(dfa.a<csl, dez> $$0) {
-      $$0.a(a);
-   }
-
-   @Override
-   public cix a(@Nullable cbm $$0, cpm $$1, gu $$2, dez $$3) {
-      return $$0 != null && $$0.f() ? czm.super.a($$0, $$1, $$2, $$3) : cix.b;
-   }
-
-   @Override
-   public boolean a(@Nullable cbm $$0, cor $$1, gu $$2, dez $$3, eab $$4) {
-      return $$0 != null && $$0.f() ? czm.super.a($$0, $$1, $$2, $$3, $$4) : false;
+   public void a(akn $$0, arx $$1, gw $$2, dfe $$3) {
+      a.a($$0, $$0.k().g(), $$2, $$3, $$1);
    }
 }

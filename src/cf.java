@@ -1,32 +1,41 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.gson.JsonObject;
 import java.util.Optional;
-import javax.annotation.Nullable;
 
-public record cf(cj.d c, Optional<bo> d) implements bp {
-   public static final MapCodec<cf> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(aqy.a(cj.d.d, "blocks_set_on_fire", cj.d.c).forGetter(cf::b), aqy.a(bo.a, "entity_struck").forGetter(cf::c)).apply($$0, cf::new)
-   );
-
-   public static cf a(cj.d $$0) {
-      return new cf($$0, Optional.empty());
+public class cf extends cw<cf.a> {
+   public cf.a a(JsonObject $$0, Optional<bc> $$1, bg $$2) {
+      Optional<bh> $$3 = bh.a($$0.get("distance"));
+      cl.d $$4 = cl.d.a($$0.get("duration"));
+      return new cf.a($$1, $$3, $$4);
    }
 
-   @Override
-   public bp.a a() {
-      return bp.b.b;
+   public void a(ako $$0, ehi $$1, int $$2) {
+      this.a($$0, $$3 -> $$3.a($$0, $$1, $$2));
    }
 
-   @Override
-   public boolean a(bii $$0, akk $$1, @Nullable ehd $$2) {
-      return !($$0 instanceof bix $$3) ? false : this.c.d($$3.m()) && (this.d.isEmpty() || $$3.o().anyMatch($$2x -> this.d.get().a($$1, $$2, $$2x)));
-   }
+   public static class a extends at {
+      private final Optional<bh> a;
+      private final cl.d b;
 
-   public cj.d b() {
-      return this.c;
-   }
+      public a(Optional<bc> $$0, Optional<bh> $$1, cl.d $$2) {
+         super($$0);
+         this.a = $$1;
+         this.b = $$2;
+      }
 
-   public Optional<bo> c() {
-      return this.d;
+      public static am<cf.a> a(bh $$0) {
+         return al.u.a(new cf.a(Optional.empty(), Optional.of($$0), cl.d.c));
+      }
+
+      public boolean a(ako $$0, ehi $$1, int $$2) {
+         return this.a.isPresent() && !this.a.get().a($$1.c, $$1.d, $$1.e, $$0.dp(), $$0.dr(), $$0.dv()) ? false : this.b.d($$2);
+      }
+
+      @Override
+      public JsonObject a() {
+         JsonObject $$0 = super.a();
+         this.a.ifPresent($$1 -> $$0.add("distance", $$1.a()));
+         $$0.add("duration", this.b.e());
+         return $$0;
+      }
    }
 }

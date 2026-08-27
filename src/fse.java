@@ -1,11 +1,19 @@
-public class fse extends fud<bvv, fed<bvv>> {
-   private static final aer a = new aer("textures/entity/camel/camel.png");
+import com.google.common.collect.Maps;
+import java.util.Locale;
+import java.util.Map;
 
-   public fse(fsx.a $$0, fhq $$1) {
-      super($$0, new fed<>($$0.a($$1)), 0.7F);
+public class fse extends fui<bvt, fec<bvt>> {
+   private static final Map<bvt.d, aeu> a = ac.a(Maps.newHashMap(), $$0 -> {
+      for (bvt.d $$1 : bvt.d.values()) {
+         $$0.put($$1, new aeu(String.format(Locale.ROOT, "textures/entity/axolotl/axolotl_%s.png", $$1.b())));
+      }
+   });
+
+   public fse(ftc.a $$0) {
+      super($$0, new fec<>($$0.a(fhw.e)), 0.5F);
    }
 
-   public aer a(bvv $$0) {
-      return a;
+   public aeu a(bvt $$0) {
+      return a.get($$0.ga());
    }
 }

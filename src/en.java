@@ -2,47 +2,103 @@ import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.suggestion.Suggestions;
+import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.concurrent.CompletableFuture;
 
-public interface en<T extends cj<?>> extends ArgumentType<T> {
-   static en.b a() {
-      return new en.b();
+public class en implements ArgumentType<en.a> {
+   private static final Collection<String> a = Arrays.asList("=", ">", "<");
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(ti.c("arguments.operation.invalid"));
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(ti.c("arguments.operation.div0"));
+
+   public static en a() {
+      return new en();
    }
 
-   static en.a b() {
-      return new en.a();
+   public static en.a a(CommandContext<dt> $$0, String $$1) {
+      return (en.a)$$0.getArgument($$1, en.a.class);
    }
 
-   public static class a implements en<cj.c> {
-      private static final Collection<String> a = Arrays.asList("0..5.2", "0", "-5.4", "-100.76..", "..100");
+   public en.a a(StringReader $$0) throws CommandSyntaxException {
+      if (!$$0.canRead()) {
+         throw b.create();
+      } else {
+         int $$1 = $$0.getCursor();
 
-      public static cj.c a(CommandContext<dr> $$0, String $$1) {
-         return (cj.c)$$0.getArgument($$1, cj.c.class);
-      }
+         while ($$0.canRead() && $$0.peek() != ' ') {
+            $$0.skip();
+         }
 
-      public cj.c a(StringReader $$0) throws CommandSyntaxException {
-         return cj.c.a($$0);
-      }
-
-      public Collection<String> getExamples() {
-         return a;
+         return a($$0.getString().substring($$1, $$0.getCursor()));
       }
    }
 
-   public static class b implements en<cj.d> {
-      private static final Collection<String> a = Arrays.asList("0..5", "0", "-5", "-100..", "..100");
+   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
+      return dw.a(new String[]{"=", "+=", "-=", "*=", "/=", "%=", "<", ">", "><"}, $$1);
+   }
 
-      public static cj.d a(CommandContext<dr> $$0, String $$1) {
-         return (cj.d)$$0.getArgument($$1, cj.d.class);
+   public Collection<String> getExamples() {
+      return a;
+   }
+
+   private static en.a a(String $$0) throws CommandSyntaxException {
+      return (en.a)($$0.equals("><") ? ($$0x, $$1) -> {
+         int $$2 = $$0x.b();
+         $$0x.b($$1.b());
+         $$1.b($$2);
+      } : b($$0));
+   }
+
+   private static en.b b(String $$0) throws CommandSyntaxException {
+      switch ($$0) {
+         case "=":
+            return ($$0x, $$1) -> $$1;
+         case "+=":
+            return ($$0x, $$1) -> $$0x + $$1;
+         case "-=":
+            return ($$0x, $$1) -> $$0x - $$1;
+         case "*=":
+            return ($$0x, $$1) -> $$0x * $$1;
+         case "/=":
+            return ($$0x, $$1) -> {
+               if ($$1 == 0) {
+                  throw c.create();
+               } else {
+                  return ars.a($$0x, $$1);
+               }
+            };
+         case "%=":
+            return ($$0x, $$1) -> {
+               if ($$1 == 0) {
+                  throw c.create();
+               } else {
+                  return ars.b($$0x, $$1);
+               }
+            };
+         case "<":
+            return Math::min;
+         case ">":
+            return Math::max;
+         default:
+            throw b.create();
       }
+   }
 
-      public cj.d a(StringReader $$0) throws CommandSyntaxException {
-         return cj.d.a($$0);
-      }
+   @FunctionalInterface
+   public interface a {
+      void apply(eig var1, eig var2) throws CommandSyntaxException;
+   }
 
-      public Collection<String> getExamples() {
-         return a;
+   @FunctionalInterface
+   interface b extends en.a {
+      int apply(int var1, int var2) throws CommandSyntaxException;
+
+      @Override
+      default void apply(eig $$0, eig $$1) throws CommandSyntaxException {
+         $$0.b(this.apply($$0.b(), $$1.b()));
       }
    }
 }

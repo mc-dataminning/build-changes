@@ -1,32 +1,25 @@
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import com.google.gson.JsonObject;
 
-public interface lp {
-   aer a = new aer("recipes/root");
-
-   lp a(String var1, am var2);
-
-   lp a(@Nullable String var1);
-
-   cis a();
-
-   void a(Consumer<lo> var1, aer var2);
-
-   default void a(Consumer<lo> $$0) {
-      this.a($$0, a(this.a()));
+public abstract class lp {
+   protected static clt a(ls $$0) {
+      return switch ($$0) {
+         case a -> clt.a;
+         case e, f -> clt.c;
+         case c -> clt.b;
+         default -> clt.d;
+      };
    }
 
-   default void a(Consumer<lo> $$0, String $$1) {
-      aer $$2 = a(this.a());
-      aer $$3 = new aer($$1);
-      if ($$3.equals($$2)) {
-         throw new IllegalStateException("Recipe " + $$1 + " should remove its 'save' argument as it is equal to default one");
-      } else {
-         this.a($$0, $$3);
+   protected abstract static class a implements lq {
+      private final clt a;
+
+      protected a(clt $$0) {
+         this.a = $$0;
       }
-   }
 
-   static aer a(cpk $$0) {
-      return jb.i.b($$0.k());
+      @Override
+      public void a(JsonObject $$0) {
+         $$0.addProperty("category", this.a.c());
+      }
    }
 }

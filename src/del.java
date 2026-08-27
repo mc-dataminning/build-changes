@@ -1,11 +1,6 @@
-public class del extends dee {
+public class del extends dek {
    @Override
-   protected aeq<dmz<?, ?>> a(aru $$0, boolean $$1) {
-      return or.o;
-   }
-
-   @Override
-   protected aeq<dmz<?, ?>> a(aru $$0) {
-      return or.p;
+   protected aet<dne<?, ?>> a(arx $$0, boolean $$1) {
+      return ou.j;
    }
 }

@@ -1,60 +1,140 @@
-import com.mojang.serialization.Codec;
-import java.time.Instant;
-import java.util.Optional;
+import com.mojang.logging.LogUtils;
+import java.util.Base64;
+import java.util.Collections;
+import java.util.List;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public enum fjc implements ash {
-   a("secure"),
-   b("modified"),
-   c("not_secure");
+public class fjc {
+   private static final Logger k = LogUtils.getLogger();
+   public String a;
+   public String b;
+   public ti c;
+   public ti d;
+   @Nullable
+   public adx.b e;
+   public long f;
+   public int g = aa.b().e();
+   public ti h = ti.b(aa.b().c());
+   public boolean i;
+   public List<ti> j = Collections.emptyList();
+   private fjc.a l = fjc.a.c;
+   @Nullable
+   private byte[] m;
+   private fjc.b n;
+   private boolean o;
 
-   public static final Codec<fjc> d = ash.a(fjc::values);
-   private final String e;
-
-   private fjc(String $$0) {
-      this.e = $$0;
+   public fjc(String $$0, String $$1, fjc.b $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.n = $$2;
    }
 
-   public static fjc a(tu $$0, tf $$1, Instant $$2) {
-      if (!$$0.h() || $$0.b($$2)) {
-         return c;
-      } else {
-         return a($$0, $$1) ? b : a;
+   public qu a() {
+      qu $$0 = new qu();
+      $$0.a("name", this.a);
+      $$0.a("ip", this.b);
+      if (this.m != null) {
+         $$0.a("icon", Base64.getEncoder().encodeToString(this.m));
       }
-   }
 
-   private static boolean a(tu $$0, tf $$1) {
-      if (!$$1.getString().contains($$0.b())) {
-         return true;
-      } else {
-         tf $$2 = $$0.m();
-         return $$2 == null ? false : a($$2);
+      if (this.l == fjc.a.a) {
+         $$0.a("acceptTextures", true);
+      } else if (this.l == fjc.a.b) {
+         $$0.a("acceptTextures", false);
       }
+
+      return $$0;
    }
 
-   private static boolean a(tf $$0) {
-      return $$0.<Boolean>a(($$0x, $$1) -> a($$0x) ? Optional.of(true) : Optional.empty(), ub.a).orElse(false);
+   public fjc.a b() {
+      return this.l;
    }
 
-   private static boolean a(ub $$0) {
-      return !$$0.k().equals(ub.c);
+   public void a(fjc.a $$0) {
+      this.l = $$0;
    }
 
-   public boolean a() {
-      return this == c;
+   public static fjc a(qu $$0) {
+      fjc $$1 = new fjc($$0.l("name"), $$0.l("ip"), fjc.b.c);
+      if ($$0.b("icon", 8)) {
+         try {
+            $$1.a(Base64.getDecoder().decode($$0.l("icon")));
+         } catch (IllegalArgumentException var3) {
+            k.warn("Malformed base64 server icon", var3);
+         }
+      }
+
+      if ($$0.b("acceptTextures", 1)) {
+         if ($$0.q("acceptTextures")) {
+            $$1.a(fjc.a.a);
+         } else {
+            $$1.a(fjc.a.b);
+         }
+      } else {
+         $$1.a(fjc.a.c);
+      }
+
+      return $$1;
    }
 
    @Nullable
-   public eqg a(tu $$0) {
-      return switch (this) {
-         case b -> eqg.a($$0.b());
-         case c -> eqg.c();
-         default -> null;
-      };
+   public byte[] c() {
+      return this.m;
    }
 
-   @Override
-   public String c() {
-      return this.e;
+   public void a(@Nullable byte[] $$0) {
+      this.m = $$0;
+   }
+
+   public boolean d() {
+      return this.n == fjc.b.a;
+   }
+
+   public boolean e() {
+      return this.n == fjc.b.b;
+   }
+
+   public void a(boolean $$0) {
+      this.o = $$0;
+   }
+
+   public boolean f() {
+      return this.o;
+   }
+
+   public void a(fjc $$0) {
+      this.b = $$0.b;
+      this.a = $$0.a;
+      this.m = $$0.m;
+   }
+
+   public void b(fjc $$0) {
+      this.a($$0);
+      this.a($$0.b());
+      this.n = $$0.n;
+      this.o = $$0.o;
+   }
+
+   public static enum a {
+      a("enabled"),
+      b("disabled"),
+      c("prompt");
+
+      private final ti d;
+
+      private a(String $$0) {
+         this.d = ti.c("addServer.resourcePack." + $$0);
+      }
+
+      public ti a() {
+         return this.d;
+      }
+   }
+
+   public static enum b {
+      a,
+      b,
+      c;
    }
 }

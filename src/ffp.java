@@ -1,15 +1,28 @@
-import java.util.function.Function;
+public class ffp<T extends bil> extends ffh<T> {
+   private static final String a = "knot";
+   private final fhx b;
+   private final fhx f;
 
-public abstract class ffp {
-   protected final Function<aer, foc> v;
-
-   public ffp(Function<aer, foc> $$0) {
-      this.v = $$0;
+   public ffp(fhx $$0) {
+      this.b = $$0;
+      this.f = $$0.b("knot");
    }
 
-   public final foc a(aer $$0) {
-      return this.v.apply($$0);
+   public static fid b() {
+      fif $$0 = new fif();
+      fig $$1 = $$0.a();
+      $$1.a("knot", fic.c().a(0, 0).a(-3.0F, -8.0F, -3.0F, 6.0F, 8.0F, 6.0F), fhz.a);
+      return fid.a($$0, 32, 32);
    }
 
-   public abstract void a(elf var1, elj var2, int var3, int var4, float var5, float var6, float var7, float var8);
+   @Override
+   public fhx a() {
+      return this.b;
+   }
+
+   @Override
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.f.f = $$4 * (float) (Math.PI / 180.0);
+      this.f.e = $$5 * (float) (Math.PI / 180.0);
+   }
 }

@@ -1,28 +1,73 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
+import java.util.function.Function;
+import java.util.function.Supplier;
 
-public enum evf implements ash {
-   a("bitmap", evd.a.a),
-   b("ttf", evh.a),
-   c("space", ejk.a.a),
-   d("unihex", evi.b.a),
-   e("reference", evg.a);
+public enum evf implements ejm {
+   a(() -> a(5, 8, ($$0, $$1) -> -1)),
+   b(() -> {
+      int $$0 = 5;
+      int $$1 = 8;
+      return a(5, 8, ($$0x, $$1x) -> {
+         boolean $$2 = $$0x == 0 || $$0x + 1 == 5 || $$1x == 0 || $$1x + 1 == 8;
+         return $$2 ? -1 : 0;
+      });
+   });
 
-   public static final Codec<evf> f = ash.a(evf::values);
-   private final String g;
-   private final MapCodec<? extends eve> h;
+   final ekl c;
 
-   private evf(String $$0, MapCodec<? extends eve> $$1) {
-      this.g = $$0;
-      this.h = $$1;
+   private static ekl a(int $$0, int $$1, evf.a $$2) {
+      ekl $$3 = new ekl(ekl.a.a, $$0, $$1, false);
+
+      for (int $$4 = 0; $$4 < $$1; $$4++) {
+         for (int $$5 = 0; $$5 < $$0; $$5++) {
+            $$3.a($$5, $$4, $$2.getColor($$5, $$4));
+         }
+      }
+
+      $$3.i();
+      return $$3;
+   }
+
+   private evf(Supplier<ekl> $$0) {
+      this.c = $$0.get();
    }
 
    @Override
-   public String c() {
-      return this.g;
+   public float getAdvance() {
+      return (float)(this.c.a() + 1);
    }
 
-   public MapCodec<? extends eve> a() {
-      return this.h;
+   @Override
+   public evd bake(Function<ejo, evd> $$0) {
+      return $$0.apply(new ejo() {
+         @Override
+         public int a() {
+            return evf.this.c.a();
+         }
+
+         @Override
+         public int b() {
+            return evf.this.c.b();
+         }
+
+         @Override
+         public float d() {
+            return 1.0F;
+         }
+
+         @Override
+         public void a(int $$0, int $$1) {
+            evf.this.c.a(0, $$0, $$1, false);
+         }
+
+         @Override
+         public boolean c() {
+            return true;
+         }
+      });
+   }
+
+   @FunctionalInterface
+   interface a {
+      int getColor(int var1, int var2);
    }
 }

@@ -258,7 +258,7 @@ public class o {
    }
 
    public static void h() {
-      arn.a();
+      arq.a();
       new o("Don't panic!", new Throwable()).e();
    }
 }

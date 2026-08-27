@@ -1,56 +1,24 @@
-public class ehz {
-   private final eic a;
-   private final String b;
-   private final eif c;
-   private tf d;
-   private tf e;
-   private eif.a f;
+import it.unimi.dsi.fastutil.doubles.DoubleList;
 
-   public ehz(eic $$0, String $$1, eif $$2, tf $$3, eif.a $$4) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = this.g();
-      this.f = $$4;
+public class ehz extends eib {
+   private final eib b;
+   private final hc.a c;
+   private static final DoubleList d = new eho(1);
+
+   public ehz(eib $$0, hc.a $$1, int $$2) {
+      super(a($$0.a, $$1, $$2));
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public eic a() {
-      return this.a;
+   private static ehr a(ehr $$0, hc.a $$1, int $$2) {
+      return new eia(
+         $$0, $$1.a($$2, 0, 0), $$1.a(0, $$2, 0), $$1.a(0, 0, $$2), $$1.a($$2 + 1, $$0.a, $$0.a), $$1.a($$0.b, $$2 + 1, $$0.b), $$1.a($$0.c, $$0.c, $$2 + 1)
+      );
    }
 
-   public String b() {
-      return this.b;
-   }
-
-   public eif c() {
-      return this.c;
-   }
-
-   public tf d() {
-      return this.d;
-   }
-
-   private tf g() {
-      return th.a((tf)this.d.e().a($$0 -> $$0.a(new tk(tk.a.a, tf.b(this.b)))));
-   }
-
-   public tf e() {
-      return this.e;
-   }
-
-   public void a(tf $$0) {
-      this.d = $$0;
-      this.e = this.g();
-      this.a.b(this);
-   }
-
-   public eif.a f() {
-      return this.f;
-   }
-
-   public void a(eif.a $$0) {
-      this.f = $$0;
-      this.a.b(this);
+   @Override
+   protected DoubleList a(hc.a $$0) {
+      return $$0 == this.c ? d : this.b.a($$0);
    }
 }

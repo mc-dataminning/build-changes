@@ -1,8 +1,8 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface ady extends aba, abb {
+   @Override
+   default sk b() {
+      return sk.c;
+   }
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface ady {
+   void a(aea var1);
 }

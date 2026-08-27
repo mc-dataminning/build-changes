@@ -1,10 +1,22 @@
-import java.util.concurrent.TimeUnit;
+import com.mojang.logging.LogUtils;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import org.slf4j.Logger;
 
-public class asm {
-   public static final long a = TimeUnit.SECONDS.toNanos(1L);
-   public static final long b = TimeUnit.MILLISECONDS.toNanos(1L);
+@FunctionalInterface
+public interface asm {
+   Logger a = LogUtils.getLogger();
 
-   public static bgb a(int $$0, int $$1) {
-      return bgb.a($$0 * 20, $$1 * 20);
+   static asm immediate(Executor $$0) {
+      return $$1 -> $$1.submit($$0).exceptionally($$0xx -> {
+            a.error("Task failed", $$0xx);
+            return null;
+         });
+   }
+
+   void append(asm.a var1);
+
+   public interface a {
+      CompletableFuture<?> submit(Executor var1);
    }
 }

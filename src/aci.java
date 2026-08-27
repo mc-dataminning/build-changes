@@ -1,24 +1,55 @@
-public class aci implements ux<aaw> {
-   private final int a;
+import javax.annotation.Nullable;
 
-   public aci(int $$0) {
+public class aci implements va<aaz> {
+   private final aci.a a;
+   @Nullable
+   private final aeu b;
+
+   public aci(aci.a $$0, @Nullable aeu $$1) {
       this.a = $$0;
+      this.b = $$1;
    }
 
-   public aci(si $$0) {
-      this.a = $$0.readShort();
+   public static aci a(af $$0) {
+      return new aci(aci.a.a, $$0.a());
+   }
+
+   public static aci a() {
+      return new aci(aci.a.b, null);
+   }
+
+   public aci(sl $$0) {
+      this.a = $$0.b(aci.a.class);
+      if (this.a == aci.a.a) {
+         this.b = $$0.s();
+      } else {
+         this.b = null;
+      }
    }
 
    @Override
-   public void a(si $$0) {
-      $$0.l(this.a);
+   public void a(sl $$0) {
+      $$0.a(this.a);
+      if (this.a == aci.a.a) {
+         $$0.a(this.b);
+      }
    }
 
-   public void a(aaw $$0) {
+   public void a(aaz $$0) {
       $$0.a(this);
    }
 
-   public int a() {
+   public aci.a d() {
       return this.a;
+   }
+
+   @Nullable
+   public aeu e() {
+      return this.b;
+   }
+
+   public static enum a {
+      a,
+      b;
    }
 }

@@ -1,50 +1,81 @@
-import it.unimi.dsi.fastutil.floats.Float2FloatFunction;
-import java.util.function.Function;
+import com.mojang.logging.LogUtils;
+import java.util.Arrays;
+import java.util.Objects;
+import java.util.concurrent.Semaphore;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public interface asn<C> {
-   asn<Float> a = a($$0 -> $$0);
+public class asn {
+   private static final Logger a = LogUtils.getLogger();
+   private final String b;
+   private final Semaphore c = new Semaphore(1);
+   private final Lock d = new ReentrantLock();
+   @Nullable
+   private volatile Thread e;
+   @Nullable
+   private volatile y f;
 
-   float a(C var1);
-
-   float b();
-
-   float c();
-
-   static asn<Float> a(final Float2FloatFunction $$0) {
-      return new asn<Float>() {
-         public float a(Float $$0x) {
-            return (Float)$$0.apply($$0);
-         }
-
-         @Override
-         public float b() {
-            return Float.NEGATIVE_INFINITY;
-         }
-
-         @Override
-         public float c() {
-            return Float.POSITIVE_INFINITY;
-         }
-      };
+   public asn(String $$0) {
+      this.b = $$0;
    }
 
-   default <C2> asn<C2> a(final Function<C2, C> $$0) {
-      final asn<C> $$1 = this;
-      return new asn<C2>() {
-         @Override
-         public float a(C2 $$0x) {
-            return $$1.a($$0.apply($$0));
+   public void a() {
+      boolean $$0 = false;
+
+      try {
+         this.d.lock();
+         if (!this.c.tryAcquire()) {
+            this.e = Thread.currentThread();
+            $$0 = true;
+            this.d.unlock();
+
+            try {
+               this.c.acquire();
+            } catch (InterruptedException var6) {
+               Thread.currentThread().interrupt();
+            }
+
+            throw this.f;
+         }
+      } finally {
+         if (!$$0) {
+            this.d.unlock();
+         }
+      }
+   }
+
+   public void b() {
+      try {
+         this.d.lock();
+         Thread $$0 = this.e;
+         if ($$0 != null) {
+            y $$1 = a(this.b, $$0);
+            this.f = $$1;
+            this.c.release();
+            throw $$1;
          }
 
-         @Override
-         public float b() {
-            return $$1.b();
-         }
+         this.c.release();
+      } finally {
+         this.d.unlock();
+      }
+   }
 
-         @Override
-         public float c() {
-            return $$1.c();
-         }
-      };
+   public static y a(String $$0, @Nullable Thread $$1) {
+      String $$2 = Stream.of(Thread.currentThread(), $$1).filter(Objects::nonNull).map(asn::a).collect(Collectors.joining("\n"));
+      String $$3 = "Accessing " + $$0 + " from multiple threads";
+      o $$4 = new o($$3, new IllegalStateException($$3));
+      p $$5 = $$4.a("Thread dumps");
+      $$5.a("Thread dumps", $$2);
+      a.error("Thread dumps: \n" + $$2);
+      return new y($$4);
+   }
+
+   private static String a(Thread $$0) {
+      return $$0.getName() + ": \n\tat " + Arrays.stream($$0.getStackTrace()).map(Object::toString).collect(Collectors.joining("\n\tat "));
    }
 }

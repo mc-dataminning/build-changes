@@ -1,83 +1,147 @@
-import java.util.Set;
-import java.util.function.Predicate;
+import java.util.UUID;
 
-public interface bgj extends bgh {
-   int m_ = 64;
-   int n_ = 8;
+public abstract class bgj {
+   private final UUID h;
+   protected ti a;
+   protected float b;
+   protected bgj.a c;
+   protected bgj.b d;
+   protected boolean e;
+   protected boolean f;
+   protected boolean g;
 
-   int b();
-
-   boolean aa_();
-
-   cix a(int var1);
-
-   cix a(int var1, int var2);
-
-   cix b(int var1);
-
-   void a(int var1, cix var2);
-
-   default int ab_() {
-      return 64;
+   public bgj(UUID $$0, ti $$1, bgj.a $$2, bgj.b $$3) {
+      this.h = $$0;
+      this.a = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.b = 1.0F;
    }
 
-   void e();
-
-   boolean a(cbm var1);
-
-   default void d_(cbm $$0) {
+   public UUID i() {
+      return this.h;
    }
 
-   default void c(cbm $$0) {
+   public ti j() {
+      return this.a;
    }
 
-   default boolean b(int $$0, cix $$1) {
-      return true;
+   public void a(ti $$0) {
+      this.a = $$0;
    }
 
-   default boolean a(bgj $$0, int $$1, cix $$2) {
-      return true;
+   public float k() {
+      return this.b;
    }
 
-   default int a_(cis $$0) {
-      int $$1 = 0;
+   public void a(float $$0) {
+      this.b = $$0;
+   }
 
-      for (int $$2 = 0; $$2 < this.b(); $$2++) {
-         cix $$3 = this.a($$2);
-         if ($$3.d().equals($$0)) {
-            $$1 += $$3.L();
-         }
+   public bgj.a l() {
+      return this.c;
+   }
+
+   public void a(bgj.a $$0) {
+      this.c = $$0;
+   }
+
+   public bgj.b m() {
+      return this.d;
+   }
+
+   public void a(bgj.b $$0) {
+      this.d = $$0;
+   }
+
+   public boolean n() {
+      return this.e;
+   }
+
+   public bgj a(boolean $$0) {
+      this.e = $$0;
+      return this;
+   }
+
+   public boolean o() {
+      return this.f;
+   }
+
+   public bgj b(boolean $$0) {
+      this.f = $$0;
+      return this;
+   }
+
+   public bgj c(boolean $$0) {
+      this.g = $$0;
+      return this;
+   }
+
+   public boolean p() {
+      return this.g;
+   }
+
+   public static enum a {
+      a("pink", n.m),
+      b("blue", n.j),
+      c("red", n.e),
+      d("green", n.k),
+      e("yellow", n.o),
+      f("purple", n.b),
+      g("white", n.p);
+
+      private final String h;
+      private final n i;
+
+      private a(String $$0, n $$1) {
+         this.h = $$0;
+         this.i = $$1;
       }
 
-      return $$1;
-   }
-
-   default boolean a(Set<cis> $$0) {
-      return this.a_($$1 -> !$$1.b() && $$0.contains($$1.d()));
-   }
-
-   default boolean a_(Predicate<cix> $$0) {
-      for (int $$1 = 0; $$1 < this.b(); $$1++) {
-         cix $$2 = this.a($$1);
-         if ($$0.test($$2)) {
-            return true;
-         }
+      public n a() {
+         return this.i;
       }
 
-      return false;
+      public String b() {
+         return this.h;
+      }
+
+      public static bgj.a a(String $$0) {
+         for (bgj.a $$1 : values()) {
+            if ($$1.h.equals($$0)) {
+               return $$1;
+            }
+         }
+
+         return g;
+      }
    }
 
-   static boolean a(dcl $$0, cbm $$1) {
-      return a($$0, $$1, 8);
-   }
+   public static enum b {
+      a("progress"),
+      b("notched_6"),
+      c("notched_10"),
+      d("notched_12"),
+      e("notched_20");
 
-   static boolean a(dcl $$0, cbm $$1, int $$2) {
-      cpl $$3 = $$0.k();
-      gu $$4 = $$0.p();
-      if ($$3 == null) {
-         return false;
-      } else {
-         return $$3.c_($$4) != $$0 ? false : $$1.i((double)$$4.u() + 0.5, (double)$$4.v() + 0.5, (double)$$4.w() + 0.5) <= (double)($$2 * $$2);
+      private final String f;
+
+      private b(String $$0) {
+         this.f = $$0;
+      }
+
+      public String a() {
+         return this.f;
+      }
+
+      public static bgj.b a(String $$0) {
+         for (bgj.b $$1 : values()) {
+            if ($$1.f.equals($$0)) {
+               return $$1;
+            }
+         }
+
+         return a;
       }
    }
 }

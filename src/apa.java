@@ -1,153 +1,22 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.mojang.datafixers.util.Pair;
-import java.util.Map;
+public enum apa {
+   a("master"),
+   b("music"),
+   c("record"),
+   d("weather"),
+   e("block"),
+   f("hostile"),
+   g("neutral"),
+   h("player"),
+   i("ambient"),
+   j("voice");
 
-public final class apa {
-   private static final Map<cfo, Pair<String, String>> a = ImmutableMap.of(
-      cfo.a,
-      Pair.of("isGuiOpen", "isFilteringCraftable"),
-      cfo.b,
-      Pair.of("isFurnaceGuiOpen", "isFurnaceFilteringCraftable"),
-      cfo.c,
-      Pair.of("isBlastingFurnaceGuiOpen", "isBlastingFurnaceFilteringCraftable"),
-      cfo.d,
-      Pair.of("isSmokerGuiOpen", "isSmokerFilteringCraftable")
-   );
-   private final Map<cfo, apa.a> b;
+   private final String k;
 
-   private apa(Map<cfo, apa.a> $$0) {
-      this.b = $$0;
+   private apa(String $$0) {
+      this.k = $$0;
    }
 
-   public apa() {
-      this(ac.a(Maps.newEnumMap(cfo.class), $$0 -> {
-         for (cfo $$1 : cfo.values()) {
-            $$0.put($$1, new apa.a(false, false));
-         }
-      }));
-   }
-
-   public boolean a(cfo $$0) {
-      return this.b.get($$0).a;
-   }
-
-   public void a(cfo $$0, boolean $$1) {
-      this.b.get($$0).a = $$1;
-   }
-
-   public boolean b(cfo $$0) {
-      return this.b.get($$0).b;
-   }
-
-   public void b(cfo $$0, boolean $$1) {
-      this.b.get($$0).b = $$1;
-   }
-
-   public static apa a(si $$0) {
-      Map<cfo, apa.a> $$1 = Maps.newEnumMap(cfo.class);
-
-      for (cfo $$2 : cfo.values()) {
-         boolean $$3 = $$0.readBoolean();
-         boolean $$4 = $$0.readBoolean();
-         $$1.put($$2, new apa.a($$3, $$4));
-      }
-
-      return new apa($$1);
-   }
-
-   public void b(si $$0) {
-      for (cfo $$1 : cfo.values()) {
-         apa.a $$2 = this.b.get($$1);
-         if ($$2 == null) {
-            $$0.a(false);
-            $$0.a(false);
-         } else {
-            $$0.a($$2.a);
-            $$0.a($$2.b);
-         }
-      }
-   }
-
-   public static apa a(qr $$0) {
-      Map<cfo, apa.a> $$1 = Maps.newEnumMap(cfo.class);
-      a.forEach(($$2, $$3) -> {
-         boolean $$4 = $$0.q((String)$$3.getFirst());
-         boolean $$5 = $$0.q((String)$$3.getSecond());
-         $$1.put($$2, new apa.a($$4, $$5));
-      });
-      return new apa($$1);
-   }
-
-   public void b(qr $$0) {
-      a.forEach(($$1, $$2) -> {
-         apa.a $$3 = this.b.get($$1);
-         $$0.a((String)$$2.getFirst(), $$3.a);
-         $$0.a((String)$$2.getSecond(), $$3.b);
-      });
-   }
-
-   public apa a() {
-      Map<cfo, apa.a> $$0 = Maps.newEnumMap(cfo.class);
-
-      for (cfo $$1 : cfo.values()) {
-         apa.a $$2 = this.b.get($$1);
-         $$0.put($$1, $$2.a());
-      }
-
-      return new apa($$0);
-   }
-
-   public void a(apa $$0) {
-      this.b.clear();
-
-      for (cfo $$1 : cfo.values()) {
-         apa.a $$2 = $$0.b.get($$1);
-         this.b.put($$1, $$2.a());
-      }
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      return this == $$0 || $$0 instanceof apa && this.b.equals(((apa)$$0).b);
-   }
-
-   @Override
-   public int hashCode() {
-      return this.b.hashCode();
-   }
-
-   static final class a {
-      boolean a;
-      boolean b;
-
-      public a(boolean $$0, boolean $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public apa.a a() {
-         return new apa.a(this.a, this.b);
-      }
-
-      @Override
-      public boolean equals(Object $$0) {
-         if (this == $$0) {
-            return true;
-         } else {
-            return !($$0 instanceof apa.a $$1) ? false : this.a == $$1.a && this.b == $$1.b;
-         }
-      }
-
-      @Override
-      public int hashCode() {
-         int $$0 = this.a ? 1 : 0;
-         return 31 * $$0 + (this.b ? 1 : 0);
-      }
-
-      @Override
-      public String toString() {
-         return "[open=" + this.a + ", filtering=" + this.b + "]";
-      }
+   public String a() {
+      return this.k;
    }
 }

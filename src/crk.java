@@ -1,14 +1,12 @@
-public class crk extends csl {
-   public crk(dey.d $$0) {
+import java.util.function.Supplier;
+
+public abstract class crk<E extends dcq> extends csd {
+   protected final Supplier<dcs<? extends E>> a;
+
+   protected crk(dfd.d $$0, Supplier<dcs<? extends E>> $$1) {
       super($$0);
+      this.a = $$1;
    }
 
-   @Override
-   public void a(cpl $$0, dez $$1, egz $$2, cce $$3) {
-      if (!$$0.B) {
-         gu $$4 = $$2.a();
-         $$0.a(null, $$4, aow.G, aox.e, 1.0F, 0.5F + $$0.z.i() * 1.2F);
-         $$0.a(null, $$4, aow.E, aox.e, 1.0F, 0.5F + $$0.z.i() * 1.2F);
-      }
-   }
+   public abstract cut.c<? extends dcx> a(dfe var1, cpq var2, gw var3, boolean var4);
 }

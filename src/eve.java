@@ -1,18 +1,13 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import java.io.IOException;
+import org.joml.Matrix4f;
 
-public interface eve {
-   Codec<eve> b = evf.f.dispatch(eve::a, $$0 -> $$0.a().codec());
+public class eve extends evd {
+   public static final eve a = new eve();
 
-   evf a();
-
-   Either<eve.a, eve.b> b();
-
-   public interface a {
-      eji load(anm var1) throws IOException;
+   public eve() {
+      super(evb.b(new aeu("")), 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F);
    }
 
-   public static record b(aer a) {
+   @Override
+   public void a(boolean $$0, float $$1, float $$2, Matrix4f $$3, elo $$4, float $$5, float $$6, float $$7, float $$8, int $$9) {
    }
 }

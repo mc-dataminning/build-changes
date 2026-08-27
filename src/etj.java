@@ -1,23 +1,18 @@
-public class etj {
-   public static final etj a = new etj("Merry X-mas!");
-   public static final etj b = new etj("Happy new year!");
-   public static final etj c = new etj("OOoooOOOoooo! Spooky!");
-   private static final int d = 123;
-   private static final int e = 69;
-   private final String f;
+public class etj extends esl {
+   private final ery a;
+   private final ti b;
+   private final ti c;
 
-   public etj(String $$0) {
-      this.f = $$0;
+   public etj(int $$0, int $$1, int $$2, int $$3, ti $$4, esl.c $$5, ery $$6) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, o);
+      this.a = $$6;
+      this.b = $$4;
+      this.c = tk.a($$4.e(), ue.a.c(true));
    }
 
-   public void a(erv $$0, int $$1, ert $$2, int $$3) {
-      $$0.c().a();
-      $$0.c().a((float)$$1 / 2.0F + 123.0F, 69.0F, 0.0F);
-      $$0.c().a(a.f.rotationDegrees(-20.0F));
-      float $$4 = 1.8F - arp.e(arp.a((float)(ac.b() % 1000L) / 1000.0F * (float) (Math.PI * 2)) * 0.1F);
-      $$4 = $$4 * 100.0F / (float)($$2.b(this.f) + 32);
-      $$0.c().b($$4, $$4, $$4);
-      $$0.a($$2, this.f, 0, -8, 16776960 | $$3);
-      $$0.c().b();
+   @Override
+   public void b(esa $$0, int $$1, int $$2, float $$3) {
+      ti $$4 = this.o() ? this.c : this.b;
+      $$0.b(this.a, $$4, this.r(), this.t(), 16777215 | ars.f(this.k * 255.0F) << 24);
    }
 }

@@ -1,85 +1,71 @@
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import java.util.Map;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public class exn extends eww {
+   private esl c;
 
-public class exn {
-   private static final Logger a = LogUtils.getLogger();
-   private static final Map<cfi<?>, exn.a<?, ?>> b = Maps.newHashMap();
+   public exn() {
+      super("");
+   }
 
-   public static <T extends ced> void a(@Nullable cfi<T> $$0, eql $$1, int $$2, tf $$3) {
-      if ($$0 == null) {
-         a.warn("Trying to open invalid screen with name: {}", $$3.getString());
+   @Override
+   protected void aD_() {
+      super.aD_();
+      this.c = esl.a(ti.c("multiplayer.stopSleeping"), $$0 -> this.l()).a(this.g / 2 - 100, this.h - 40, 200, 20).a();
+      this.d(this.c);
+   }
+
+   @Override
+   public void a(esa $$0, int $$1, int $$2, float $$3) {
+      if (!this.f.H().a(this.f.R())) {
+         this.c.a($$0, $$1, $$2, $$3);
       } else {
-         exn.a<T, ?> $$4 = a($$0);
-         if ($$4 == null) {
-            a.warn("Failed to create screen for menu type: {}", jb.s.b($$0));
-         } else {
-            $$4.a($$3, $$0, $$1, $$2);
+         super.a($$0, $$1, $$2, $$3);
+      }
+   }
+
+   @Override
+   public void b(esa $$0, int $$1, int $$2, float $$3) {
+   }
+
+   @Override
+   public void au_() {
+      this.l();
+   }
+
+   @Override
+   public boolean a(char $$0, int $$1) {
+      return !this.f.H().a(this.f.R()) ? true : super.a($$0, $$1);
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 256) {
+         this.l();
+      }
+
+      if (!this.f.H().a(this.f.R())) {
+         return true;
+      } else if ($$0 != 257 && $$0 != 335) {
+         return super.a($$0, $$1, $$2);
+      } else {
+         if (this.b(this.b.a(), true)) {
+            this.f.a(null);
+            this.b.a("");
+            this.f.l.d().d();
          }
+
+         return true;
       }
    }
 
-   @Nullable
-   private static <T extends ced> exn.a<T, ?> a(cfi<T> $$0) {
-      return (exn.a<T, ?>)b.get($$0);
+   private void l() {
+      fit $$0 = this.f.s.cl;
+      $$0.b(new acd(this.f.s, acd.a.c));
    }
 
-   private static <M extends ced, U extends eya & fac<M>> void a(cfi<? extends M> $$0, exn.a<M, U> $$1) {
-      exn.a<?, ?> $$2 = b.put($$0, $$1);
-      if ($$2 != null) {
-         throw new IllegalStateException("Duplicate registration for " + jb.s.b($$0));
+   public void k() {
+      if (this.b.a().isEmpty()) {
+         this.f.a(null);
+      } else {
+         this.f.a(new eww(this.b.a()));
       }
-   }
-
-   public static boolean a() {
-      boolean $$0 = false;
-
-      for (cfi<?> $$1 : jb.s) {
-         if (!b.containsKey($$1)) {
-            a.debug("Menu {} has no matching screen", jb.s.b($$1));
-            $$0 = true;
-         }
-      }
-
-      return $$0;
-   }
-
-   static {
-      a(cfi.a, ezj::new);
-      a(cfi.b, ezj::new);
-      a(cfi.c, ezj::new);
-      a(cfi.d, ezj::new);
-      a(cfi.e, ezj::new);
-      a(cfi.f, ezj::new);
-      a(cfi.g, ezo::new);
-      a(cfi.h, ezb::new);
-      a(cfi.i, ezc::new);
-      a(cfi.j, ezd::new);
-      a(cfi.k, ezg::new);
-      a(cfi.l, ezk::new);
-      a(cfi.m, ezr::new);
-      a(cfi.n, ezs::new);
-      a(cfi.o, ezt::new);
-      a(cfi.p, ezv::new);
-      a(cfi.q, faa::new);
-      a(cfi.r, fab::new);
-      a(cfi.s, fad::new);
-      a(cfi.t, fag::new);
-      a(cfi.u, fai::new);
-      a(cfi.v, faj::new);
-      a(cfi.w, ezh::new);
-      a(cfi.x, fak::new);
-   }
-
-   interface a<T extends ced, U extends eya & fac<T>> {
-      default void a(tf $$0, cfi<T> $$1, eql $$2, int $$3) {
-         U $$4 = this.create($$1.a($$3, $$2.s.fQ()), $$2.s.fQ(), $$0);
-         $$2.s.bQ = $$4.D();
-         $$2.a($$4);
-      }
-
-      U create(T var1, cbl var2, tf var3);
    }
 }

@@ -1,79 +1,65 @@
 import java.util.EnumSet;
-import javax.annotation.Nullable;
 
-public class bqm extends bpt {
-   public static final int a = 1;
-   protected final bjh b;
-   protected final double c;
-   protected double d;
-   protected double e;
-   protected double f;
-   protected boolean g;
+public class bqm extends bpw {
+   private final bjd a;
+   private bjb b;
+   private int c;
 
-   public bqm(bjh $$0, double $$1) {
-      this.b = $$0;
-      this.c = $$1;
-      this.a(EnumSet.of(bpt.a.a));
+   public bqm(bjd $$0) {
+      this.a = $$0;
+      this.a(EnumSet.of(bpw.a.a, bpw.a.b));
    }
 
    @Override
    public boolean a() {
-      if (!this.h()) {
-         return false;
-      } else {
-         if (this.b.bM()) {
-            gu $$0 = this.a(this.b.dK(), this.b, 5);
-            if ($$0 != null) {
-               this.d = (double)$$0.u();
-               this.e = (double)$$0.v();
-               this.f = (double)$$0.w();
-               return true;
-            }
-         }
-
-         return this.i();
-      }
-   }
-
-   protected boolean h() {
-      return this.b.ef() != null || this.b.dz() || this.b.bM();
-   }
-
-   protected boolean i() {
-      ehd $$0 = bto.a(this.b, 5, 4);
+      bjb $$0 = this.a.j();
       if ($$0 == null) {
          return false;
       } else {
-         this.d = $$0.c;
-         this.e = $$0.d;
-         this.f = $$0.e;
+         this.b = $$0;
          return true;
       }
    }
 
-   public boolean k() {
-      return this.g;
-   }
-
    @Override
-   public void c() {
-      this.b.H().a(this.d, this.e, this.f, this.c);
-      this.g = true;
+   public boolean b() {
+      if (!this.b.bv()) {
+         return false;
+      } else {
+         return this.a.f(this.b) > 225.0 ? false : !this.a.H().l() || this.a();
+      }
    }
 
    @Override
    public void d() {
-      this.g = false;
+      this.b = null;
+      this.a.H().n();
    }
 
    @Override
-   public boolean b() {
-      return !this.b.H().l();
+   public boolean K_() {
+      return true;
    }
 
-   @Nullable
-   protected gu a(cor $$0, bii $$1, int $$2) {
-      gu $$3 = $$1.dk();
-      return !$$0.a_($$3).k($$0, $$3).c() ? null : gu.a($$1.dk(), $$2, 1, $$1x -> $$0.b_($$1x).a(apq.a)).orElse(null);
+   @Override
+   public void e() {
+      this.a.D().a(this.b, 30.0F, 30.0F);
+      double $$0 = (double)(this.a.df() * 2.0F * this.a.df() * 2.0F);
+      double $$1 = this.a.i(this.b.dp(), this.b.dr(), this.b.dv());
+      double $$2 = 0.8;
+      if ($$1 > $$0 && $$1 < 16.0) {
+         $$2 = 1.33;
+      } else if ($$1 < 225.0) {
+         $$2 = 0.6;
+      }
+
+      this.a.H().a(this.b, $$2);
+      this.c = Math.max(this.c - 1, 0);
+      if (!($$1 > $$0)) {
+         if (this.c <= 0) {
+            this.c = 20;
+            this.a.C(this.b);
+         }
+      }
    }
 }

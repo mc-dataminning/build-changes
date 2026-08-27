@@ -11,13 +11,6 @@ public class bae extends Schema {
 
    public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
       super.registerTypes($$0, $$1, $$2);
-      $$0.registerType(
-         false,
-         ayp.b,
-         () -> DSL.optionalFields(
-               "RootVehicle", DSL.optionalFields("Entity", ayp.w.in($$0)), "Inventory", DSL.list(ayp.t.in($$0)), "EnderItems", DSL.list(ayp.t.in($$0))
-            )
-      );
-      $$0.registerType(true, ayp.w, () -> DSL.optionalFields("Passengers", DSL.list(ayp.w.in($$0)), ayp.x.in($$0)));
+      $$0.registerType(true, ays.B, () -> DSL.optionalFields("SpawnPotentials", DSL.list(DSL.fields("Entity", ays.w.in($$0))), "SpawnData", ays.w.in($$0)));
    }
 }

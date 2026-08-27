@@ -1,28 +1,25 @@
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class dyv implements dyz {
-   private static final Logger b = LogUtils.getLogger();
-   public static final Codec<dyv> a = RecordCodecBuilder.create($$0 -> $$0.group(aer.a.fieldOf("loot_table").forGetter($$0x -> $$0x.d)).apply($$0, dyv::new));
-   private final aer d;
+public interface dyv<P extends dyt> {
+   Codec<dyt> a = jd.ah.q().dispatch("processor_type", dyt::a, dyv::codec);
+   Codec<dyu> b = a.listOf().xmap(dyu::new, dyu::a);
+   Codec<dyu> c = arb.e(b.fieldOf("processors").codec(), b);
+   Codec<hg<dyu>> d = aeq.a(je.aA, c);
+   dyv<dxy> e = a("block_ignore", dxy.a);
+   dyv<dya> f = a("block_rot", dya.a);
+   dyv<dyd> g = a("gravity", dyd.a);
+   dyv<dye> h = a("jigsaw_replacement", dye.a);
+   dyv<dyp> i = a("rule", dyp.a);
+   dyv<dyh> j = a("nop", dyh.a);
+   dyv<dxx> k = a("block_age", dxx.a);
+   dyv<dxw> l = a("blackstone_replace", dxw.a);
+   dyv<dyf> m = a("lava_submerged_block", dyf.a);
+   dyv<dym> n = a("protected_blocks", dym.b);
+   dyv<dyc> o = a("capped", dyc.a);
 
-   public dyv(aer $$0) {
-      this.d = $$0;
-   }
+   Codec<P> codec();
 
-   @Override
-   public qr a(aru $$0, @Nullable qr $$1) {
-      qr $$2 = $$1 == null ? new qr() : $$1.h();
-      aer.a.encodeStart(rc.a, this.d).resultOrPartial(b::error).ifPresent($$1x -> $$2.a("LootTable", $$1x));
-      $$2.a("LootTableSeed", $$0.g());
-      return $$2;
-   }
-
-   @Override
-   public dza<?> a() {
-      return dza.d;
+   static <P extends dyt> dyv<P> a(String $$0, Codec<P> $$1) {
+      return ht.a(jd.ah, $$0, () -> $$1);
    }
 }

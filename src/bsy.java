@@ -1,30 +1,24 @@
-import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
-public class bsy extends btd<biy> {
+public class bsy extends btg<bjd> {
+   private static final long c = 32L;
+   private static final long d = 16L;
+   public static final int a = 32;
+
    @Override
-   public Set<brz<?>> a() {
-      return ImmutableSet.of(brz.h, brz.L, brz.am);
+   public Set<bsc<?>> a() {
+      return ImmutableSet.of(bsc.K);
    }
 
-   @Override
-   protected void a(akk $$0, biy $$1) {
-      bjy<?> $$2 = $$1.dM();
-      List<cab> $$3 = Lists.newArrayList();
-      bsb $$4 = $$2.c(brz.h).orElse(bsb.a());
-      Optional<bja> $$5 = $$4.a($$0x -> $$0x instanceof bzr || $$0x instanceof bxt).map(bja.class::cast);
-
-      for (biy $$7 : $$2.c(brz.g).orElse(ImmutableList.of())) {
-         if ($$7 instanceof cab && ((cab)$$7).gb()) {
-            $$3.add((cab)$$7);
-         }
-      }
-
-      $$2.a(brz.L, $$5);
-      $$2.a(brz.am, $$3);
+   protected void a(akn $$0, bjd $$1) {
+      bkb<?> $$2 = $$1.dM();
+      List<byi> $$3 = $$0.a(byi.class, $$1.cG().c(32.0, 16.0, 32.0), $$0x -> true);
+      $$3.sort(Comparator.comparingDouble($$1::f));
+      Optional<byi> $$4 = $$3.stream().filter($$1x -> $$1.k($$1x.j())).filter($$1x -> $$1x.a($$1, 32.0)).filter($$1::E).findFirst();
+      $$2.a(bsc.K, $$4);
    }
 }

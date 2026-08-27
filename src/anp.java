@@ -1,27 +1,52 @@
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
 
-@FunctionalInterface
-public interface anp {
-   Optional<ank> getResource(aer var1);
+public interface anp extends ans {
+   Set<String> a();
 
-   default ank getResourceOrThrow(aer $$0) throws FileNotFoundException {
-      return this.getResource($$0).orElseThrow(() -> new FileNotFoundException($$0.toString()));
-   }
+   List<ann> a(aeu var1);
 
-   default InputStream open(aer $$0) throws IOException {
-      return this.getResourceOrThrow($$0).d();
-   }
+   Map<aeu, ann> b(String var1, Predicate<aeu> var2);
 
-   default BufferedReader openAsReader(aer $$0) throws IOException {
-      return this.getResourceOrThrow($$0).e();
-   }
+   Map<aeu, List<ann>> c(String var1, Predicate<aeu> var2);
 
-   static anp fromMap(Map<aer, ank> $$0) {
-      return $$1 -> Optional.ofNullable($$0.get($$1));
+   Stream<amd> b();
+
+   public static enum a implements anp {
+      a;
+
+      @Override
+      public Set<String> a() {
+         return Set.of();
+      }
+
+      @Override
+      public Optional<ann> getResource(aeu $$0) {
+         return Optional.empty();
+      }
+
+      @Override
+      public List<ann> a(aeu $$0) {
+         return List.of();
+      }
+
+      @Override
+      public Map<aeu, ann> b(String $$0, Predicate<aeu> $$1) {
+         return Map.of();
+      }
+
+      @Override
+      public Map<aeu, List<ann>> c(String $$0, Predicate<aeu> $$1) {
+         return Map.of();
+      }
+
+      @Override
+      public Stream<amd> b() {
+         return Stream.of();
+      }
    }
 }

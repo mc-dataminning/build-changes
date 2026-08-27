@@ -1,181 +1,119 @@
-import com.google.common.collect.ImmutableSet;
-import com.mojang.datafixers.util.Pair;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.datafixers.Products.P4;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.MapLike;
-import com.mojang.serialization.RecordBuilder;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import java.util.function.BiFunction;
+import java.util.function.Consumer;
 
-public class edg extends eds {
-   private static final Map<aer, edg.c> b = Stream.of(edg.a.a, edg.d.b, edg.e.b).collect(Collectors.toMap(edg.c::a, Function.identity()));
-   static final Codec<edg.c> c = aer.a.comapFlatMap($$0 -> {
-      edg.c $$1 = b.get($$0);
-      return $$1 != null ? DataResult.success($$1) : DataResult.error(() -> "No formula type with id: '" + $$0 + "'");
-   }, edg.c::a);
-   private static final MapCodec<edg.b> d = new MapCodec<edg.b>() {
-      private static final String a = "formula";
-      private static final String b = "parameters";
-
-      public <T> Stream<T> keys(DynamicOps<T> $$0) {
-         return Stream.of((T[])(new Object[]{$$0.createString("formula"), $$0.createString("parameters")}));
-      }
-
-      public <T> DataResult<edg.b> decode(DynamicOps<T> $$0, MapLike<T> $$1) {
-         T $$2 = (T)$$1.get("formula");
-         return $$2 == null ? DataResult.error(() -> "Missing type for formula in: " + $$1) : edg.c.decode($$0, $$2).flatMap($$2x -> {
-            T $$3 = Objects.requireNonNullElseGet((T)$$1.get("parameters"), $$0::emptyMap);
-            return ((edg.c)$$2x.getFirst()).b().decode($$0, $$3).map(Pair::getFirst);
-         });
-      }
-
-      public <T> RecordBuilder<T> a(edg.b $$0, DynamicOps<T> $$1, RecordBuilder<T> $$2) {
-         edg.c $$3 = $$0.a();
-         $$2.add("formula", edg.c.encodeStart($$1, $$3));
-         DataResult<T> $$4 = this.a($$3.b(), $$0, $$1);
-         if ($$4.result().isEmpty() || !Objects.equals($$4.result().get(), $$1.emptyMap())) {
-            $$2.add("parameters", $$4);
-         }
-
-         return $$2;
-      }
-
-      private <T, F extends edg.b> DataResult<T> a(Codec<F> $$0, edg.b $$1, DynamicOps<T> $$2) {
-         return $$0.encodeStart($$2, $$1);
+public abstract class edg extends ede {
+   public static final int d = 1;
+   public static final int f = 0;
+   protected final int g;
+   protected final int h;
+   protected final List<edy> i;
+   final BiFunction<cja, ecl, cja> a;
+   private final edd j = new edg.c() {
+      @Override
+      public void a(Consumer<cja> $$0, ecl $$1) {
+         edg.this.a(edy.a(edg.this.a, $$0, $$1), $$1);
       }
    };
-   public static final Codec<edg> a = RecordCodecBuilder.create(
-      $$0 -> a($$0).and($$0.group(jb.g.r().fieldOf("enchantment").forGetter($$0x -> $$0x.e), d.forGetter($$0x -> $$0x.f))).apply($$0, edg::new)
-   );
-   private final he<cne> e;
-   private final edg.b f;
 
-   private edg(List<eff> $$0, he<cne> $$1, edg.b $$2) {
-      super($$0);
-      this.e = $$1;
-      this.f = $$2;
+   protected edg(int $$0, int $$1, List<efk> $$2, List<edy> $$3) {
+      super($$2);
+      this.g = $$0;
+      this.h = $$1;
+      this.i = $$3;
+      this.a = eea.a($$3);
+   }
+
+   protected static <T extends edg> P4<Mu<T>, Integer, Integer, List<efk>, List<edy>> b(Instance<T> $$0) {
+      return $$0.group(
+            arb.a(Codec.INT, "weight", Integer.valueOf(1)).forGetter($$0x -> $$0x.g), arb.a(Codec.INT, "quality", Integer.valueOf(0)).forGetter($$0x -> $$0x.h)
+         )
+         .and(a($$0).t1())
+         .and(arb.a(eea.b.listOf(), "functions", List.of()).forGetter($$0x -> $$0x.i));
    }
 
    @Override
-   public edu b() {
-      return edv.r;
+   public void a(ecu $$0) {
+      super.a($$0);
+
+      for (int $$1 = 0; $$1 < this.i.size(); $$1++) {
+         this.i.get($$1).a($$0.b(".functions[" + $$1 + "]"));
+      }
    }
+
+   protected abstract void a(Consumer<cja> var1, ecl var2);
 
    @Override
-   public Set<eeo<?>> a() {
-      return ImmutableSet.of(eer.i);
-   }
-
-   @Override
-   public cix a(cix $$0, ecg $$1) {
-      cix $$2 = $$1.c(eer.i);
-      if ($$2 != null) {
-         int $$3 = cng.a(this.e.a(), $$2);
-         int $$4 = this.f.a($$1.b(), $$0.L(), $$3);
-         $$0.f($$4);
-      }
-
-      return $$0;
-   }
-
-   public static eds.a<?> a(cne $$0, float $$1, int $$2) {
-      return a($$3 -> new edg($$3, $$0.j(), new edg.a($$2, $$1)));
-   }
-
-   public static eds.a<?> a(cne $$0) {
-      return a($$1 -> new edg($$1, $$0.j(), new edg.d()));
-   }
-
-   public static eds.a<?> b(cne $$0) {
-      return a($$1 -> new edg($$1, $$0.j(), new edg.e(1)));
-   }
-
-   public static eds.a<?> a(cne $$0, int $$1) {
-      return a($$2 -> new edg($$2, $$0.j(), new edg.e($$1)));
-   }
-
-   static record a(int b, float c) implements edg.b {
-      private static final Codec<edg.a> d = RecordCodecBuilder.create(
-         $$0 -> $$0.group(Codec.INT.fieldOf("extra").forGetter(edg.a::b), Codec.FLOAT.fieldOf("probability").forGetter(edg.a::c)).apply($$0, edg.a::new)
-      );
-      public static final edg.c a = new edg.c(new aer("binomial_with_bonus_count"), d);
-
-      @Override
-      public int a(aru $$0, int $$1, int $$2) {
-         for (int $$3 = 0; $$3 < $$2 + this.b; $$3++) {
-            if ($$0.i() < this.c) {
-               $$1++;
-            }
-         }
-
-         return $$1;
-      }
-
-      @Override
-      public edg.c a() {
-         return a;
+   public boolean expand(ecl $$0, Consumer<edd> $$1) {
+      if (this.a($$0)) {
+         $$1.accept(this.j);
+         return true;
+      } else {
+         return false;
       }
    }
 
-   interface b {
-      int a(aru var1, int var2, int var3);
-
-      edg.c a();
+   public static edg.a<?> a(edg.d $$0) {
+      return new edg.b($$0);
    }
 
-   static record c(aer a, Codec<? extends edg.b> b) {
+   public abstract static class a<T extends edg.a<T>> extends ede.a<T> implements edv<T> {
+      protected int a = 1;
+      protected int b = 0;
+      private final Builder<edy> c = ImmutableList.builder();
+
+      public T a(edy.a $$0) {
+         this.c.add($$0.b());
+         return this.as_();
+      }
+
+      protected List<edy> a() {
+         return this.c.build();
+      }
+
+      public T a(int $$0) {
+         this.a = $$0;
+         return this.as_();
+      }
+
+      public T b(int $$0) {
+         this.b = $$0;
+         return this.as_();
+      }
    }
 
-   static record d() implements edg.b {
-      public static final Codec<edg.d> a = Codec.unit(edg.d::new);
-      public static final edg.c b = new edg.c(new aer("ore_drops"), a);
+   static class b extends edg.a<edg.b> {
+      private final edg.d c;
 
-      @Override
-      public int a(aru $$0, int $$1, int $$2) {
-         if ($$2 > 0) {
-            int $$3 = $$0.a($$2 + 2) - 1;
-            if ($$3 < 0) {
-               $$3 = 0;
-            }
+      public b(edg.d $$0) {
+         this.c = $$0;
+      }
 
-            return $$1 * ($$3 + 1);
-         } else {
-            return $$1;
-         }
+      protected edg.b g() {
+         return this;
       }
 
       @Override
-      public edg.c a() {
-         return b;
+      public ede b() {
+         return this.c.build(this.a, this.b, this.f(), this.a());
       }
    }
 
-   static record e(int c) implements edg.b {
-      public static final Codec<edg.e> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(Codec.INT.fieldOf("bonusMultiplier").forGetter(edg.e::b)).apply($$0, edg.e::new)
-      );
-      public static final edg.c b = new edg.c(new aer("uniform_bonus_count"), a);
-
+   protected abstract class c implements edd {
       @Override
-      public int a(aru $$0, int $$1, int $$2) {
-         return $$1 + $$0.a(this.c * $$2 + 1);
+      public int a(float $$0) {
+         return Math.max(ars.d((float)edg.this.g + (float)edg.this.h * $$0), 0);
       }
+   }
 
-      @Override
-      public edg.c a() {
-         return b;
-      }
-
-      public int b() {
-         return this.c;
-      }
+   @FunctionalInterface
+   protected interface d {
+      edg build(int var1, int var2, List<efk> var3, List<edy> var4);
    }
 }

@@ -1,71 +1,71 @@
-import com.google.common.collect.Lists;
-import java.util.List;
+import javax.annotation.Nullable;
 
-public class clk extends cls {
-   public clk(aer $$0, clq $$1) {
-      super($$0, $$1);
+public class clk {
+   @Nullable
+   private final cbp a;
+   private final bgs b;
+   private final ehe c;
+   private final cpq d;
+   private final cja e;
+
+   public clk(cbp $$0, bgs $$1, ehe $$2) {
+      this($$0.dK(), $$0, $$1, $$0.b($$1), $$2);
    }
 
-   public boolean a(cer $$0, cpl $$1) {
-      cix $$2 = cix.b;
-      List<cix> $$3 = Lists.newArrayList();
-
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         cix $$5 = $$0.a($$4);
-         if (!$$5.b()) {
-            if ($$5.d() instanceof chp) {
-               if (!$$2.b()) {
-                  return false;
-               }
-
-               $$2 = $$5;
-            } else {
-               if (!($$5.d() instanceof chm)) {
-                  return false;
-               }
-
-               $$3.add($$5);
-            }
-         }
-      }
-
-      return !$$2.b() && !$$3.isEmpty();
+   protected clk(cpq $$0, @Nullable cbp $$1, bgs $$2, cja $$3, ehe $$4) {
+      this.a = $$1;
+      this.b = $$2;
+      this.c = $$4;
+      this.e = $$3;
+      this.d = $$0;
    }
 
-   public cix a(cer $$0, hs $$1) {
-      List<chm> $$2 = Lists.newArrayList();
-      cix $$3 = cix.b;
-
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         cix $$5 = $$0.a($$4);
-         if (!$$5.b()) {
-            cis $$6 = $$5.d();
-            if ($$6 instanceof chp) {
-               if (!$$3.b()) {
-                  return cix.b;
-               }
-
-               $$3 = $$5.p();
-            } else {
-               if (!($$6 instanceof chm)) {
-                  return cix.b;
-               }
-
-               $$2.add((chm)$$6);
-            }
-         }
-      }
-
-      return !$$3.b() && !$$2.isEmpty() ? chp.a($$3, $$2) : cix.b;
+   protected final ehe j() {
+      return this.c;
    }
 
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 * $$1 >= 2;
+   public gw a() {
+      return this.c.a();
    }
 
-   @Override
-   public cmc<?> ai_() {
-      return cmc.c;
+   public hc k() {
+      return this.c.b();
+   }
+
+   public ehi l() {
+      return this.c.e();
+   }
+
+   public boolean m() {
+      return this.c.d();
+   }
+
+   public cja n() {
+      return this.e;
+   }
+
+   @Nullable
+   public cbp o() {
+      return this.a;
+   }
+
+   public bgs p() {
+      return this.b;
+   }
+
+   public cpq q() {
+      return this.d;
+   }
+
+   public hc g() {
+      return this.a == null ? hc.c : this.a.cD();
+   }
+
+   public boolean h() {
+      return this.a != null && this.a.fG();
+   }
+
+   public float i() {
+      return this.a == null ? 0.0F : this.a.dA();
    }
 }

@@ -1,45 +1,88 @@
-import it.unimi.dsi.fastutil.ints.IntComparator;
+import com.google.common.collect.Maps;
+import java.util.Comparator;
+import java.util.Map;
+import java.util.function.Consumer;
 
-public enum ewg {
-   a,
-   b,
-   c,
-   d;
+public class ewg {
+   int a;
+   final Map<ewg.a, ewg.b> b = Maps.newTreeMap(Comparator.<ewg.a, ewc>comparing($$0 -> $$0.a).thenComparing($$0 -> $$0.b));
 
-   private final IntComparator e = ($$0, $$1) -> $$0 == $$1 ? 0 : (this.b($$0, $$1) ? -1 : 1);
+   public void a(Consumer<ewd> $$0) {
+      this.a++;
+      $$0.accept(new ewg.c(0));
+   }
 
-   public ewf a() {
-      return switch (this) {
-         case a, b -> ewf.b;
-         case c, d -> ewf.a;
+   public String a(boolean $$0) {
+      final StringBuilder $$1 = new StringBuilder();
+      Consumer<String> $$2 = new Consumer<String>() {
+         private boolean c = true;
+
+         public void a(String $$0) {
+            if (!this.c) {
+               $$1.append(". ");
+            }
+
+            this.c = false;
+            $$1.append($$0);
+         }
       };
+      this.b.forEach(($$2x, $$3) -> {
+         if ($$3.b == this.a && ($$0 || !$$3.c)) {
+            $$3.a.a($$2);
+            $$3.c = true;
+         }
+      });
+      return $$1.toString();
    }
 
-   public ewg b() {
-      return switch (this) {
-         case a -> b;
-         case b -> a;
-         case c -> d;
-         case d -> c;
-      };
+   static class a {
+      final ewc a;
+      final int b;
+
+      a(ewc $$0, int $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
    }
 
-   public boolean c() {
-      return switch (this) {
-         case a, c -> false;
-         case b, d -> true;
-      };
+   static class b {
+      ewf<?> a;
+      int b;
+      boolean c;
+
+      b() {
+         this.a = ewf.a;
+         this.b = -1;
+      }
+
+      public ewg.b a(int $$0, ewf<?> $$1) {
+         if (!this.a.equals($$1)) {
+            this.a = $$1;
+            this.c = false;
+         } else if (this.b + 1 != $$0) {
+            this.c = false;
+         }
+
+         this.b = $$0;
+         return this;
+      }
    }
 
-   public boolean a(int $$0, int $$1) {
-      return this.c() ? $$0 > $$1 : $$1 > $$0;
-   }
+   class c implements ewd {
+      private final int b;
 
-   public boolean b(int $$0, int $$1) {
-      return this.c() ? $$0 < $$1 : $$1 < $$0;
-   }
+      c(int $$0) {
+         this.b = $$0;
+      }
 
-   public IntComparator d() {
-      return this.e;
+      @Override
+      public void a(ewc $$0, ewf<?> $$1) {
+         ewg.this.b.computeIfAbsent(new ewg.a($$0, this.b), $$0x -> new ewg.b()).a(ewg.this.a, $$1);
+      }
+
+      @Override
+      public ewd a() {
+         return ewg.this.new c(this.b + 1);
+      }
    }
 }

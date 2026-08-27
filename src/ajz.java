@@ -1,126 +1,111 @@
 import com.google.common.annotations.VisibleForTesting;
-import java.util.function.Consumer;
+import com.google.common.collect.Lists;
+import com.mojang.datafixers.util.Either;
+import it.unimi.dsi.fastutil.longs.Long2ObjectLinkedOpenHashMap;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public interface ajz {
-   ajz a = new ajz() {
-      @Override
-      public boolean a(int $$0, int $$1, boolean $$2) {
-         return false;
-      }
+public class ajz<T> {
+   public static final int a = ajx.a + 2;
+   private final List<Long2ObjectLinkedOpenHashMap<List<Optional<T>>>> b = IntStream.range(0, a)
+      .mapToObj($$0x -> new Long2ObjectLinkedOpenHashMap())
+      .collect(Collectors.toList());
+   private volatile int c = a;
+   private final String d;
+   private final LongSet e = new LongOpenHashSet();
+   private final int f;
 
-      @Override
-      public void a(Consumer<cos> $$0) {
-      }
-   };
-
-   static ajz a(cos $$0, int $$1) {
-      return new ajz.a($$0, $$1);
+   public ajz(String $$0, int $$1) {
+      this.d = $$0;
+      this.f = $$1;
    }
 
-   static void a(ajz $$0, ajz $$1, Consumer<cos> $$2, Consumer<cos> $$3) {
-      if (!$$0.equals($$1)) {
-         if ($$0 instanceof ajz.a $$4 && $$1 instanceof ajz.a $$5 && $$4.a($$5)) {
-            int $$6 = Math.min($$4.c(), $$5.c());
-            int $$7 = Math.min($$4.d(), $$5.d());
-            int $$8 = Math.max($$4.e(), $$5.e());
-            int $$9 = Math.max($$4.f(), $$5.f());
-
-            for (int $$10 = $$6; $$10 <= $$8; $$10++) {
-               for (int $$11 = $$7; $$11 <= $$9; $$11++) {
-                  boolean $$12 = $$4.a($$10, $$11);
-                  boolean $$13 = $$5.a($$10, $$11);
-                  if ($$12 != $$13) {
-                     if ($$13) {
-                        $$2.accept(new cos($$10, $$11));
-                     } else {
-                        $$3.accept(new cos($$10, $$11));
-                     }
-                  }
-               }
+   protected void a(int $$0, cox $$1, int $$2) {
+      if ($$0 < a) {
+         Long2ObjectLinkedOpenHashMap<List<Optional<T>>> $$3 = this.b.get($$0);
+         List<Optional<T>> $$4 = (List<Optional<T>>)$$3.remove($$1.a());
+         if ($$0 == this.c) {
+            while (this.b() && this.b.get(this.c).isEmpty()) {
+               this.c++;
             }
-
-            return;
          }
 
-         $$0.a($$3);
-         $$1.a($$2);
+         if ($$4 != null && !$$4.isEmpty()) {
+            ((List)this.b.get($$2).computeIfAbsent($$1.a(), $$0x -> Lists.newArrayList())).addAll($$4);
+            this.c = Math.min(this.c, $$2);
+         }
       }
    }
 
-   default boolean a(cos $$0) {
-      return this.a($$0.e, $$0.f);
+   protected void a(Optional<T> $$0, long $$1, int $$2) {
+      ((List)this.b.get($$2).computeIfAbsent($$1, $$0x -> Lists.newArrayList())).add($$0);
+      this.c = Math.min(this.c, $$2);
    }
 
-   default boolean a(int $$0, int $$1) {
-      return this.a($$0, $$1, true);
-   }
+   protected void a(long $$0, boolean $$1) {
+      for (Long2ObjectLinkedOpenHashMap<List<Optional<T>>> $$2 : this.b) {
+         List<Optional<T>> $$3 = (List<Optional<T>>)$$2.get($$0);
+         if ($$3 != null) {
+            if ($$1) {
+               $$3.clear();
+            } else {
+               $$3.removeIf($$0x -> $$0x.isEmpty());
+            }
 
-   boolean a(int var1, int var2, boolean var3);
-
-   void a(Consumer<cos> var1);
-
-   default boolean b(int $$0, int $$1) {
-      return this.a($$0, $$1, false);
-   }
-
-   static boolean a(int $$0, int $$1, int $$2, int $$3, int $$4) {
-      return a($$0, $$1, $$2, $$3, $$4, false);
-   }
-
-   static boolean a(int $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      int $$6 = Math.max(0, Math.abs($$3 - $$0) - 1);
-      int $$7 = Math.max(0, Math.abs($$4 - $$1) - 1);
-      long $$8 = (long)Math.max(0, Math.max($$6, $$7) - ($$5 ? 1 : 0));
-      long $$9 = (long)Math.min($$6, $$7);
-      long $$10 = $$9 * $$9 + $$8 * $$8;
-      int $$11 = $$2 * $$2;
-      return $$10 < (long)$$11;
-   }
-
-   public static record a(cos b, int c) implements ajz {
-      int c() {
-         return this.b.e - this.c - 1;
-      }
-
-      int d() {
-         return this.b.f - this.c - 1;
-      }
-
-      int e() {
-         return this.b.e + this.c + 1;
-      }
-
-      int f() {
-         return this.b.f + this.c + 1;
-      }
-
-      @VisibleForTesting
-      protected boolean a(ajz.a $$0) {
-         return this.c() <= $$0.e() && this.e() >= $$0.c() && this.d() <= $$0.f() && this.f() >= $$0.d();
-      }
-
-      @Override
-      public boolean a(int $$0, int $$1, boolean $$2) {
-         return ajz.a(this.b.e, this.b.f, this.c, $$0, $$1, $$2);
-      }
-
-      @Override
-      public void a(Consumer<cos> $$0) {
-         for (int $$1 = this.c(); $$1 <= this.e(); $$1++) {
-            for (int $$2 = this.d(); $$2 <= this.f(); $$2++) {
-               if (this.a($$1, $$2)) {
-                  $$0.accept(new cos($$1, $$2));
-               }
+            if ($$3.isEmpty()) {
+               $$2.remove($$0);
             }
          }
       }
 
-      public cos a() {
-         return this.b;
+      while (this.b() && this.b.get(this.c).isEmpty()) {
+         this.c++;
       }
 
-      public int b() {
-         return this.c;
+      this.e.remove($$0);
+   }
+
+   private Runnable a(long $$0) {
+      return () -> this.e.add($$0);
+   }
+
+   @Nullable
+   public Stream<Either<T, Runnable>> a() {
+      if (this.e.size() >= this.f) {
+         return null;
+      } else if (!this.b()) {
+         return null;
+      } else {
+         int $$0 = this.c;
+         Long2ObjectLinkedOpenHashMap<List<Optional<T>>> $$1 = this.b.get($$0);
+         long $$2 = $$1.firstLongKey();
+         List<Optional<T>> $$3 = (List<Optional<T>>)$$1.removeFirst();
+
+         while (this.b() && this.b.get(this.c).isEmpty()) {
+            this.c++;
+         }
+
+         return $$3.stream().map($$1x -> $$1x.map(Either::left).orElseGet(() -> Either.right(this.a($$2))));
       }
+   }
+
+   public boolean b() {
+      return this.c < a;
+   }
+
+   @Override
+   public String toString() {
+      return this.d + " " + this.c + "...";
+   }
+
+   @VisibleForTesting
+   LongSet c() {
+      return new LongOpenHashSet(this.e);
    }
 }

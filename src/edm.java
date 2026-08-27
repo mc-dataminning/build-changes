@@ -1,63 +1,41 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Set;
 
-public class edm extends eds {
-   public static final Codec<edm> a = RecordCodecBuilder.create(
-      $$0 -> a($$0)
-            .and($$0.group(egb.a.fieldOf("levels").forGetter($$0x -> $$0x.b), Codec.BOOL.fieldOf("treasure").orElse(false).forGetter($$0x -> $$0x.c)))
-            .apply($$0, edm::new)
-   );
-   private final ega b;
-   private final boolean c;
+public class edm extends edx {
+   public static final Codec<edm> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, edm::new));
 
-   edm(List<eff> $$0, ega $$1, boolean $$2) {
+   private edm(List<efk> $$0) {
       super($$0);
-      this.b = $$1;
-      this.c = $$2;
    }
 
    @Override
-   public edu b() {
-      return edv.d;
+   public edz b() {
+      return eea.t;
    }
 
    @Override
-   public Set<eeo<?>> a() {
-      return this.b.a();
+   public cja a(cja $$0, ecl $$1) {
+      Float $$2 = $$1.c(eew.j);
+      if ($$2 != null) {
+         arx $$3 = $$1.b();
+         float $$4 = 1.0F / $$2;
+         int $$5 = $$0.L();
+         int $$6 = 0;
+
+         for (int $$7 = 0; $$7 < $$5; $$7++) {
+            if ($$3.i() <= $$4) {
+               $$6++;
+            }
+         }
+
+         $$0.f($$6);
+      }
+
+      return $$0;
    }
 
-   @Override
-   public cix a(cix $$0, ecg $$1) {
-      aru $$2 = $$1.b();
-      return cng.a($$2, $$0, this.b.a($$1), this.c);
-   }
-
-   public static edm.a a(ega $$0) {
-      return new edm.a($$0);
-   }
-
-   public static class a extends eds.a<edm.a> {
-      private final ega a;
-      private boolean b;
-
-      public a(ega $$0) {
-         this.a = $$0;
-      }
-
-      protected edm.a a() {
-         return this;
-      }
-
-      public edm.a e() {
-         this.b = true;
-         return this;
-      }
-
-      @Override
-      public edt b() {
-         return new edm(this.g(), this.a, this.b);
-      }
+   public static edx.a<?> c() {
+      return a(edm::new);
    }
 }

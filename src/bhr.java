@@ -1,18 +1,7 @@
-class bhr extends bht {
-   protected bhr(bhu $$0, int $$1) {
-      super($$0, $$1);
-   }
+import java.util.UUID;
 
-   @Override
-   public void a(biy $$0, int $$1) {
-      super.a($$0, $$1);
-      if ($$0 instanceof cbm $$2) {
-         $$2.A(0.005F * (float)($$1 + 1));
-      }
-   }
+public interface bhr {
+   UUID a();
 
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return true;
-   }
+   bkf a(int var1);
 }

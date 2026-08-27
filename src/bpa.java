@@ -1,84 +1,32 @@
-import java.util.EnumSet;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+public class bpa extends boy {
+   private final int h;
+   private static final int i = 10;
+   private static final int j = 20;
 
-public class bpa<T extends biy> extends bpt {
-   protected final bjh a;
-   private final double i;
-   private final double j;
-   @Nullable
-   protected T b;
-   protected final float c;
-   @Nullable
-   protected ear d;
-   protected final bsh e;
-   protected final Class<T> f;
-   protected final Predicate<biy> g;
-   protected final Predicate<biy> h;
-   private final btk k;
-
-   public bpa(bjh $$0, Class<T> $$1, float $$2, double $$3, double $$4) {
-      this($$0, $$1, $$0x -> true, $$2, $$3, $$4, bil.e::test);
-   }
-
-   public bpa(bjh $$0, Class<T> $$1, Predicate<biy> $$2, float $$3, double $$4, double $$5, Predicate<biy> $$6) {
-      this.a = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.c = $$3;
-      this.i = $$4;
-      this.j = $$5;
-      this.h = $$6;
-      this.e = $$0.H();
-      this.a(EnumSet.of(bpt.a.a));
-      this.k = btk.a().a((double)$$3).a($$6.and($$2));
-   }
-
-   public bpa(bjh $$0, Class<T> $$1, float $$2, double $$3, double $$4, Predicate<biy> $$5) {
-      this($$0, $$1, $$0x -> true, $$2, $$3, $$4, $$5);
+   public bpa(bjd $$0, int $$1) {
+      super($$0);
+      this.h = $$1;
    }
 
    @Override
-   public boolean a() {
-      this.b = this.a
-         .dK()
-         .a(this.a.dK().a(this.f, this.a.cG().c((double)this.c, 3.0, (double)this.c), $$0x -> true), this.k, this.a, this.a.dp(), this.a.dr(), this.a.dv());
-      if (this.b == null) {
-         return false;
+   public void a() {
+      if (this.d > 0) {
+         this.d--;
+         this.i().ifPresent($$0x -> this.a.aW = this.a(this.a.aW, $$0x + 20.0F, this.b));
+         this.h().ifPresent($$0x -> this.a.s(this.a(this.a.dC(), $$0x + 10.0F, this.c)));
       } else {
-         ehd $$0 = bto.a(this.a, 16, 7, this.b.di());
-         if ($$0 == null) {
-            return false;
-         } else if (this.b.i($$0.c, $$0.d, $$0.e) < this.b.f(this.a)) {
-            return false;
-         } else {
-            this.d = this.e.a($$0.c, $$0.d, $$0.e, 0);
-            return this.d != null;
+         if (this.a.H().l()) {
+            this.a.s(this.a(this.a.dC(), 0.0F, 5.0F));
          }
+
+         this.a.aW = this.a(this.a.aW, this.a.aU, this.b);
       }
-   }
 
-   @Override
-   public boolean b() {
-      return !this.e.l();
-   }
-
-   @Override
-   public void c() {
-      this.e.a(this.d, this.i);
-   }
-
-   @Override
-   public void d() {
-      this.b = null;
-   }
-
-   @Override
-   public void e() {
-      if (this.a.f((bii)this.b) < 49.0) {
-         this.a.H().a(this.j);
-      } else {
-         this.a.H().a(this.i);
+      float $$0 = ars.g(this.a.aW - this.a.aU);
+      if ($$0 < (float)(-this.h)) {
+         this.a.aU -= 4.0F;
+      } else if ($$0 > (float)this.h) {
+         this.a.aU += 4.0F;
       }
    }
 }

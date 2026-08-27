@@ -1,32 +1,22 @@
-public interface cko {
-   cko.a a = new cko.a(false, false);
-   cko.a b = new cko.a(true, false);
+public class cko extends civ {
+   private final ckn a;
 
-   boolean a();
+   public cko(ckn $$0, civ.a $$1) {
+      super($$1.b($$0.a()));
+      this.a = $$0;
+   }
 
-   boolean b();
+   public ckn i() {
+      return this.a;
+   }
 
-   public static record a(boolean c, boolean d) implements cko {
-      @Override
-      public boolean a() {
-         return this.c;
-      }
+   @Override
+   public int c() {
+      return this.a.e();
+   }
 
-      @Override
-      public boolean b() {
-         return this.d;
-      }
-
-      public cko.a c() {
-         return new cko.a(this.c, true);
-      }
-
-      public boolean d() {
-         return this.c;
-      }
-
-      public boolean e() {
-         return this.d;
-      }
+   @Override
+   public boolean a(cja $$0, cja $$1) {
+      return this.a.f().a($$1) || super.a($$0, $$1);
    }
 }

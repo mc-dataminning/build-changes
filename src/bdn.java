@@ -1,79 +1,47 @@
 import com.mojang.logging.LogUtils;
-import java.net.SocketAddress;
-import java.nio.file.Path;
+import java.io.File;
+import java.util.function.LongSupplier;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public interface bdn {
-   bdn e = (bdn)(Runtime.class.getModule().getLayer().findModule("jdk.jfr").isPresent() ? bdm.a() : new bdn.a());
+public class bdn {
+   private static final Logger a = LogUtils.getLogger();
+   private final LongSupplier b;
+   private final long c;
+   private int d;
+   private final File e;
+   private bdi f = bdh.a;
 
-   boolean a(bdl var1);
+   public bdn(LongSupplier $$0, String $$1, long $$2) {
+      this.b = $$0;
+      this.e = new File("debug", $$1);
+      this.c = $$2;
+   }
 
-   Path b();
+   public bdk a() {
+      this.f = new bdd(this.b, () -> this.d, false);
+      this.d++;
+      return this.f;
+   }
 
-   boolean c();
-
-   boolean d();
-
-   void a(float var1);
-
-   void a(sh var1, int var2, SocketAddress var3, int var4);
-
-   void b(sh var1, int var2, SocketAddress var3, int var4);
+   public void b() {
+      if (this.f != bdh.a) {
+         bdj $$0 = this.f.d();
+         this.f = bdh.a;
+         if ($$0.g() >= this.c) {
+            File $$1 = new File(this.e, "tick-results-" + ac.e() + ".txt");
+            $$0.a($$1.toPath());
+            a.info("Recorded long tick -- wrote info to: {}", $$1.getAbsolutePath());
+         }
+      }
+   }
 
    @Nullable
-   bdq e();
+   public static bdn a(String $$0) {
+      return null;
+   }
 
-   @Nullable
-   bdq a(cos var1, aeq<cpl> var2, String var3);
-
-   public static class a implements bdn {
-      private static final Logger b = LogUtils.getLogger();
-      static final bdq a = () -> {
-      };
-
-      @Override
-      public boolean a(bdl $$0) {
-         b.warn("Attempted to start Flight Recorder, but it's not supported on this JVM");
-         return false;
-      }
-
-      @Override
-      public Path b() {
-         throw new IllegalStateException("Attempted to stop Flight Recorder, but it's not supported on this JVM");
-      }
-
-      @Override
-      public boolean c() {
-         return false;
-      }
-
-      @Override
-      public boolean d() {
-         return false;
-      }
-
-      @Override
-      public void a(sh $$0, int $$1, SocketAddress $$2, int $$3) {
-      }
-
-      @Override
-      public void b(sh $$0, int $$1, SocketAddress $$2, int $$3) {
-      }
-
-      @Override
-      public void a(float $$0) {
-      }
-
-      @Override
-      public bdq e() {
-         return a;
-      }
-
-      @Nullable
-      @Override
-      public bdq a(cos $$0, aeq<cpl> $$1, String $$2) {
-         return null;
-      }
+   public static bdk a(bdk $$0, @Nullable bdn $$1) {
+      return $$1 != null ? bdk.a($$1.a(), $$0) : $$0;
    }
 }

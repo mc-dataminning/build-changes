@@ -1,32 +1,21 @@
-import javax.annotation.Nullable;
-
-public class cwn extends cvx implements cwz {
-   protected cwn(dey.d $$0) {
-      super($$0, ha.b, eht.b(), true);
+public class cwn extends cwm {
+   public cwn(csq $$0, dfd.d $$1) {
+      super($$0, $$1);
+      this.k(this.n().a(czb.g, hc.a.b));
    }
 
    @Override
-   protected cvy b() {
-      return (cvy)csm.mc;
+   public dfe a(dfe $$0, czc $$1) {
+      return czb.b($$0, $$1);
    }
 
    @Override
-   public eac c_(dez $$0) {
-      return ead.c.a(false);
+   protected void a(dff.a<csq, dfe> $$0) {
+      $$0.a(czb.g);
    }
 
    @Override
-   protected boolean h(dez $$0) {
-      return this.b().h($$0);
-   }
-
-   @Override
-   public boolean a(@Nullable cbm $$0, cor $$1, gu $$2, dez $$3, eab $$4) {
-      return false;
-   }
-
-   @Override
-   public boolean a(cpm $$0, gu $$1, dez $$2, eac $$3) {
-      return false;
+   public dfe a(cli $$0) {
+      return this.n().a(czb.g, $$0.k().o());
    }
 }

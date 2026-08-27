@@ -1,24 +1,28 @@
-public abstract class fwq<T extends bii & bjl, M extends fet<T>> extends fxf<T, M> {
-   public fwq(fus<T, M> $$0) {
+public class fwq extends fxk<fmy, fgd<fmy>> {
+   public fwq(fux<fmy, fgd<fmy>> $$0) {
       super($$0);
    }
 
-   @Override
-   public void a(elf $$0, fnu $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ($$3.a()) {
-         float $$10 = (float)$$3.ah + $$6;
-         fet<T> $$11 = this.b();
-         $$11.a($$3, $$4, $$5, $$6);
-         this.c().a($$11);
-         elj $$12 = $$1.getBuffer(foc.a(this.a(), this.a($$10) % 1.0F, $$10 * 0.01F % 1.0F));
-         $$11.a($$3, $$4, $$5, $$7, $$8, $$9);
-         $$11.a($$0, $$12, $$2, fyl.d, 0.5F, 0.5F, 0.5F, 1.0F);
+   public void a(elk $$0, fnz $$1, int $$2, fmy $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if ("deadmau5".equals($$3.ab().getString()) && !$$3.cd()) {
+         elo $$10 = $$1.getBuffer(foh.c($$3.b().a()));
+         int $$11 = fud.c($$3, 0.0F);
+
+         for (int $$12 = 0; $$12 < 2; $$12++) {
+            float $$13 = ars.i($$6, $$3.N, $$3.dA()) - ars.i($$6, $$3.aV, $$3.aU);
+            float $$14 = ars.i($$6, $$3.O, $$3.dC());
+            $$0.a();
+            $$0.a(a.d.rotationDegrees($$13));
+            $$0.a(a.b.rotationDegrees($$14));
+            $$0.a(0.375F * (float)($$12 * 2 - 1), 0.0F, 0.0F);
+            $$0.a(0.0F, -0.375F, 0.0F);
+            $$0.a(a.b.rotationDegrees(-$$14));
+            $$0.a(a.d.rotationDegrees(-$$13));
+            float $$15 = 1.3333334F;
+            $$0.b(1.3333334F, 1.3333334F, 1.3333334F);
+            this.c().a($$0, $$10, $$2, $$11);
+            $$0.b();
+         }
       }
    }
-
-   protected abstract float a(float var1);
-
-   protected abstract aer a();
-
-   protected abstract fet<T> b();
 }

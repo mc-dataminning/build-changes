@@ -1,82 +1,9 @@
-public class ezi extends eyx {
-   private final dcv m;
-   private esn<dcv.a> n;
-   private esn<Boolean> o;
-   private esn<Boolean> p;
-   private dcv.a q = dcv.a.c;
-   private boolean s;
-   private boolean t;
+public class ezi extends eze<cek> {
+   private static final aeu y = new aeu("container/blast_furnace/lit_progress");
+   private static final aeu z = new aeu("container/blast_furnace/burn_progress");
+   private static final aeu A = new aeu("textures/gui/container/blast_furnace.png");
 
-   public ezi(dcv $$0) {
-      this.m = $$0;
-   }
-
-   @Override
-   col l() {
-      return this.m.c();
-   }
-
-   @Override
-   int C() {
-      return 135;
-   }
-
-   @Override
-   protected void aC_() {
-      super.aC_();
-      this.n = this.d(esn.<dcv.a>a($$0 -> {
-         return switch ($$0) {
-            case a -> tf.c("advMode.mode.sequence");
-            case b -> tf.c("advMode.mode.auto");
-            case c -> tf.c("advMode.mode.redstone");
-         };
-      }).a(dcv.a.values()).a().a(this.q).a(this.g / 2 - 50 - 100 - 4, 165, 100, 20, tf.c("advMode.mode"), ($$0, $$1) -> this.q = $$1));
-      this.o = this.d(
-         esn.a(tf.c("advMode.mode.conditional"), tf.c("advMode.mode.unconditional"))
-            .a()
-            .a(this.s)
-            .a(this.g / 2 - 50, 165, 100, 20, tf.c("advMode.type"), ($$0, $$1) -> this.s = $$1)
-      );
-      this.p = this.d(
-         esn.a(tf.c("advMode.mode.autoexec.bat"), tf.c("advMode.mode.redstoneTriggered"))
-            .a()
-            .a(this.t)
-            .a(this.g / 2 + 50 + 4, 165, 100, 20, tf.c("advMode.triggering"), ($$0, $$1) -> this.t = $$1)
-      );
-      this.e(false);
-   }
-
-   private void e(boolean $$0) {
-      this.c.i = $$0;
-      this.l.i = $$0;
-      this.n.i = $$0;
-      this.o.i = $$0;
-      this.p.i = $$0;
-   }
-
-   public void E() {
-      col $$0 = this.m.c();
-      this.a.a($$0.m());
-      boolean $$1 = $$0.o();
-      this.q = this.m.v();
-      this.s = this.m.w();
-      this.t = this.m.f();
-      this.l.a($$1);
-      this.n.a(this.q);
-      this.o.a(this.s);
-      this.p.a(this.t);
-      this.c($$1);
-      this.e(true);
-   }
-
-   @Override
-   public void a(eql $$0, int $$1, int $$2) {
-      super.a($$0, $$1, $$2);
-      this.e(true);
-   }
-
-   @Override
-   protected void a(col $$0) {
-      this.f.J().b(new acj(gu.a($$0.g()), this.a.a(), this.q, $$0.o(), this.s, this.t));
+   public ezi(cek $$0, cbo $$1, ti $$2) {
+      super($$0, new fbo(), $$1, $$2, A, y, z);
    }
 }

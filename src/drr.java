@@ -1,17 +1,40 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class drr {
-   public static final Codec<drr> a = jb.W.q().dispatch(drr::a, drs::a);
+public record drr(hk<csq> b, hk<csq> c, drw d, int e, int f, float g) {
+   public static final Codec<drr> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               hv.a(je.e).fieldOf("can_grow_through").forGetter($$0x -> $$0x.b),
+               hv.a(je.e).fieldOf("muddy_roots_in").forGetter($$0x -> $$0x.c),
+               drw.a.fieldOf("muddy_roots_provider").forGetter($$0x -> $$0x.d),
+               Codec.intRange(1, 12).fieldOf("max_root_width").forGetter($$0x -> $$0x.e),
+               Codec.intRange(1, 64).fieldOf("max_root_length").forGetter($$0x -> $$0x.f),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("random_skew_chance").forGetter($$0x -> $$0x.g)
+            )
+            .apply($$0, drr::new)
+   );
 
-   public static dsa a(dez $$0) {
-      return new dsa($$0);
+   public hk<csq> a() {
+      return this.b;
    }
 
-   public static dsa a(csl $$0) {
-      return new dsa($$0.n());
+   public hk<csq> b() {
+      return this.c;
    }
 
-   protected abstract drs<?> a();
+   public drw c() {
+      return this.d;
+   }
 
-   public abstract dez a(aru var1, gu var2);
+   public int d() {
+      return this.e;
+   }
+
+   public int e() {
+      return this.f;
+   }
+
+   public float f() {
+      return this.g;
+   }
 }

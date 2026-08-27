@@ -1,20 +1,43 @@
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import javax.annotation.Nullable;
 
-public class emx extends enb {
-   public String a;
-   public long b;
-   public long c;
+public class emx {
+   private static final String a = "translationKey";
+   private static final String b = "args";
+   private final String c;
+   @Nullable
+   private final Object[] d;
+
+   private emx(String $$0, @Nullable Object[] $$1) {
+      this.c = $$0;
+      this.d = $$1;
+   }
+
+   public ti a(ti $$0) {
+      if (!gaf.a(this.c)) {
+         return $$0;
+      } else {
+         return this.d == null ? ti.c(this.c) : ti.a(this.c, this.d);
+      }
+   }
 
    public static emx a(JsonObject $$0) {
-      emx $$1 = new emx();
+      String $$1 = epd.a("translationKey", $$0);
+      JsonElement $$2 = $$0.get("args");
+      String[] $$5;
+      if ($$2 != null && !$$2.isJsonNull()) {
+         JsonArray $$4 = $$2.getAsJsonArray();
+         $$5 = new String[$$4.size()];
 
-      try {
-         $$1.a = eoy.a("profileUuid", $$0, null);
-         $$1.b = eoy.a("joinTime", $$0, Long.MIN_VALUE);
-         $$1.c = eoy.a("leaveTime", $$0, Long.MIN_VALUE);
-      } catch (Exception var3) {
+         for (int $$6 = 0; $$6 < $$4.size(); $$6++) {
+            $$5[$$6] = $$4.get($$6).getAsString();
+         }
+      } else {
+         $$5 = null;
       }
 
-      return $$1;
+      return new emx($$1, $$5);
    }
 }

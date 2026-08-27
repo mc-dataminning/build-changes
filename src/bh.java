@@ -1,54 +1,51 @@
-import com.google.gson.JsonObject;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParseException;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.JsonOps;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class bh extends cu<bh.a> {
-   static final aer a = new aer("effects_changed");
+public record bh(cl.c b, cl.c c, cl.c d, cl.c e, cl.c f) {
+   public static final Codec<bh> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               arb.a(cl.c.d, "x", cl.c.c).forGetter(bh::b),
+               arb.a(cl.c.d, "y", cl.c.c).forGetter(bh::c),
+               arb.a(cl.c.d, "z", cl.c.c).forGetter(bh::d),
+               arb.a(cl.c.d, "horizontal", cl.c.c).forGetter(bh::e),
+               arb.a(cl.c.d, "absolute", cl.c.c).forGetter(bh::f)
+            )
+            .apply($$0, bh::new)
+   );
 
-   @Override
-   public aer a() {
-      return a;
+   public static bh a(cl.c $$0) {
+      return new bh(cl.c.c, cl.c.c, cl.c.c, $$0, cl.c.c);
    }
 
-   public bh.a a(JsonObject $$0, Optional<ba> $$1, be $$2) {
-      Optional<ck> $$3 = ck.a($$0.get("effects"));
-      Optional<ba> $$4 = bo.a($$0, "source", $$2);
-      return new bh.a($$1, $$3, $$4);
+   public static bh b(cl.c $$0) {
+      return new bh(cl.c.c, $$0, cl.c.c, cl.c.c, cl.c.c);
    }
 
-   public void a(akl $$0, @Nullable bii $$1) {
-      ecg $$2 = $$1 != null ? bo.b($$0, $$1) : null;
-      this.a($$0, $$2x -> $$2x.a($$0, $$2));
+   public static bh c(cl.c $$0) {
+      return new bh(cl.c.c, cl.c.c, cl.c.c, cl.c.c, $$0);
    }
 
-   public static class a extends ar {
-      private final Optional<ck> a;
-      private final Optional<ba> b;
-
-      public a(Optional<ba> $$0, Optional<ck> $$1, Optional<ba> $$2) {
-         super(bh.a, $$0);
-         this.a = $$1;
-         this.b = $$2;
+   public boolean a(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5) {
+      float $$6 = (float)($$0 - $$3);
+      float $$7 = (float)($$1 - $$4);
+      float $$8 = (float)($$2 - $$5);
+      if (!this.b.d((double)ars.e($$6)) || !this.c.d((double)ars.e($$7)) || !this.d.d((double)ars.e($$8))) {
+         return false;
+      } else {
+         return !this.e.e((double)($$6 * $$6 + $$8 * $$8)) ? false : this.f.e((double)($$6 * $$6 + $$7 * $$7 + $$8 * $$8));
       }
+   }
 
-      public static bh.a a(ck.a $$0) {
-         return new bh.a(Optional.empty(), $$0.b(), Optional.empty());
-      }
+   public static Optional<bh> a(@Nullable JsonElement $$0) {
+      return $$0 != null && !$$0.isJsonNull() ? Optional.of(ac.a(a.parse(JsonOps.INSTANCE, $$0), JsonParseException::new)) : Optional.empty();
+   }
 
-      public static bh.a a(Optional<bo> $$0) {
-         return new bh.a(Optional.empty(), Optional.empty(), bo.a($$0));
-      }
-
-      public boolean a(akl $$0, @Nullable ecg $$1) {
-         return this.a.isPresent() && !this.a.get().a((biy)$$0) ? false : !this.b.isPresent() || $$1 != null && this.b.get().a($$1);
-      }
-
-      @Override
-      public JsonObject b() {
-         JsonObject $$0 = super.b();
-         this.a.ifPresent($$1 -> $$0.add("effects", $$1.a()));
-         this.b.ifPresent($$1 -> $$0.add("source", $$1.a()));
-         return $$0;
-      }
+   public JsonElement a() {
+      return ac.a(a.encodeStart(JsonOps.INSTANCE, this), IllegalStateException::new);
    }
 }

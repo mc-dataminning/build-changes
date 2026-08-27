@@ -1,24 +1,32 @@
-public class abs implements ux<aaw> {
-   private final boolean a;
+public class abs implements va<aaz> {
+   private final int a;
+   private final int b;
 
-   public abs(boolean $$0) {
+   public abs(int $$0, int $$1) {
       this.a = $$0;
+      this.b = $$1;
    }
 
-   public void a(aaw $$0) {
-      $$0.a(this);
-   }
-
-   public abs(si $$0) {
-      this.a = $$0.readBoolean();
+   public abs(sl $$0) {
+      this.a = $$0.m();
+      this.b = $$0.m();
    }
 
    @Override
-   public void a(si $$0) {
-      $$0.a(this.a);
+   public void a(sl $$0) {
+      $$0.c(this.a);
+      $$0.c(this.b);
    }
 
-   public boolean a() {
+   public void a(aaz $$0) {
+      $$0.a(this);
+   }
+
+   public int a() {
       return this.a;
+   }
+
+   public int d() {
+      return this.b;
    }
 }

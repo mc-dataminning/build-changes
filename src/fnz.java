@@ -1,70 +1,94 @@
-public class fnz {
-   private int a;
-   private int b;
-   private int c;
-   private int d;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Sets;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.Set;
 
-   public fnz(int $$0, int $$1, int $$2, int $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+public interface fnz {
+   static fnz.a a(elf $$0) {
+      return a(ImmutableMap.of(), $$0);
    }
 
-   public fnz a(fnz $$0) {
-      int $$1 = this.a;
-      int $$2 = this.b;
-      int $$3 = this.a + this.c;
-      int $$4 = this.b + this.d;
-      int $$5 = $$0.a();
-      int $$6 = $$0.b();
-      int $$7 = $$5 + $$0.c();
-      int $$8 = $$6 + $$0.d();
-      this.a = Math.max($$1, $$5);
-      this.b = Math.max($$2, $$6);
-      this.c = Math.max(0, Math.min($$3, $$7) - this.a);
-      this.d = Math.max(0, Math.min($$4, $$8) - this.b);
-      return this;
+   static fnz.a a(Map<foh, elf> $$0, elf $$1) {
+      return new fnz.a($$1, $$0);
    }
 
-   public int a() {
-      return this.a;
-   }
+   elo getBuffer(foh var1);
 
-   public int b() {
-      return this.b;
-   }
+   public static class a implements fnz {
+      protected final elf a;
+      protected final Map<foh, elf> b;
+      protected Optional<foh> c = Optional.empty();
+      protected final Set<elf> d = Sets.newHashSet();
 
-   public void a(int $$0) {
-      this.a = $$0;
-   }
+      protected a(elf $$0, Map<foh, elf> $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
 
-   public void b(int $$0) {
-      this.b = $$0;
-   }
+      @Override
+      public elo getBuffer(foh $$0) {
+         Optional<foh> $$1 = $$0.O();
+         elf $$2 = this.b($$0);
+         if (!Objects.equals(this.c, $$1) || !$$0.N()) {
+            if (this.c.isPresent()) {
+               foh $$3 = this.c.get();
+               if (!this.b.containsKey($$3)) {
+                  this.a($$3);
+               }
+            }
 
-   public int c() {
-      return this.c;
-   }
+            if (this.d.add($$2)) {
+               $$2.a($$0.J(), $$0.I());
+            }
 
-   public int d() {
-      return this.d;
-   }
+            this.c = $$1;
+         }
 
-   public void c(int $$0) {
-      this.c = $$0;
-   }
+         return $$2;
+      }
 
-   public void d(int $$0) {
-      this.d = $$0;
-   }
+      private elf b(foh $$0) {
+         return this.b.getOrDefault($$0, this.a);
+      }
 
-   public void a(int $$0, int $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
+      public void a() {
+         if (this.c.isPresent()) {
+            foh $$0 = this.c.get();
+            if (!this.b.containsKey($$0)) {
+               this.a($$0);
+            }
 
-   public boolean b(int $$0, int $$1) {
-      return $$0 >= this.a && $$0 <= this.a + this.c && $$1 >= this.b && $$1 <= this.b + this.d;
+            this.c = Optional.empty();
+         }
+      }
+
+      public void b() {
+         this.c.ifPresent($$0x -> {
+            elo $$1 = this.getBuffer($$0x);
+            if ($$1 == this.a) {
+               this.a($$0x);
+            }
+         });
+
+         for (foh $$0 : this.b.keySet()) {
+            this.a($$0);
+         }
+      }
+
+      public void a(foh $$0) {
+         elf $$1 = this.b($$0);
+         boolean $$2 = Objects.equals(this.c, $$0.O());
+         if ($$2 || $$1 != this.a) {
+            if (this.d.remove($$1)) {
+               $$0.a($$1, RenderSystem.getVertexSorting());
+               if ($$2) {
+                  this.c = Optional.empty();
+               }
+            }
+         }
+      }
    }
 }

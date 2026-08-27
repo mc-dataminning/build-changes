@@ -1,4 +1,5 @@
-public interface anc extends anm, AutoCloseable {
-   @Override
-   void close();
+import java.util.function.Consumer;
+
+public interface anc {
+   void a(Consumer<amx> var1);
 }

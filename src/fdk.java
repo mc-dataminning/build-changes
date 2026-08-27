@@ -1,8 +1,9 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface fdk {
+   void a(fdi var1);
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface fdk {
+   ti aE_();
+
+   void a(esa var1, float var2, int var3);
+
+   boolean aF_();
 }

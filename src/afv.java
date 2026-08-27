@@ -1,306 +1,141 @@
-import com.google.common.collect.Lists;
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.StringArgumentType;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.suggestion.SuggestionProvider;
-import java.util.Collection;
+import com.google.common.base.Charsets;
+import com.mojang.logging.LogUtils;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.StringReader;
+import java.net.Socket;
 import java.util.List;
+import java.util.Locale;
+import java.util.NoSuchElementException;
+import java.util.Optional;
+import java.util.Scanner;
+import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
+import org.apache.commons.io.IOUtils;
+import org.slf4j.Logger;
 
 public class afv {
-   private static final SuggestionProvider<dr> a = ($$0, $$1) -> {
-      Collection<ae> $$2 = ((dr)$$0.getSource()).l().az().a();
-      return du.a($$2.stream().map(ae::j), $$1);
-   };
+   private static final Logger a = LogUtils.getLogger();
+   private static final int b = 5;
+   private final String c;
+   private final int d;
+   private final MinecraftServer e;
+   private volatile boolean f;
+   @Nullable
+   private Socket g;
+   @Nullable
+   private Thread h;
 
-   public static void a(CommandDispatcher<dr> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ds.a("advancement").requires($$0x -> $$0x.c(2)))
-               .then(
-                  ds.a("grant")
-                     .then(
-                        ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)ds.a("targets", ec.d())
-                                       .then(
-                                          ds.a("only")
-                                             .then(
-                                                ((RequiredArgumentBuilder)ds.a("advancement", eq.a())
-                                                      .suggests(a)
-                                                      .executes(
-                                                         $$0x -> a((dr)$$0x.getSource(), ec.f($$0x, "targets"), afv.a.a, a(eq.a($$0x, "advancement"), afv.b.a))
-                                                      ))
-                                                   .then(
-                                                      ds.a("criterion", StringArgumentType.greedyString())
-                                                         .suggests(($$0x, $$1) -> du.b(eq.a($$0x, "advancement").h().keySet(), $$1))
-                                                         .executes(
-                                                            $$0x -> a(
-                                                                  (dr)$$0x.getSource(),
-                                                                  ec.f($$0x, "targets"),
-                                                                  afv.a.a,
-                                                                  eq.a($$0x, "advancement"),
-                                                                  StringArgumentType.getString($$0x, "criterion")
-                                                               )
-                                                         )
-                                                   )
-                                             )
-                                       ))
-                                    .then(
-                                       ds.a("from")
-                                          .then(
-                                             ds.a("advancement", eq.a())
-                                                .suggests(a)
-                                                .executes(
-                                                   $$0x -> a((dr)$$0x.getSource(), ec.f($$0x, "targets"), afv.a.a, a(eq.a($$0x, "advancement"), afv.b.c))
-                                                )
-                                          )
-                                    ))
-                                 .then(
-                                    ds.a("until")
-                                       .then(
-                                          ds.a("advancement", eq.a())
-                                             .suggests(a)
-                                             .executes($$0x -> a((dr)$$0x.getSource(), ec.f($$0x, "targets"), afv.a.a, a(eq.a($$0x, "advancement"), afv.b.d)))
-                                       )
-                                 ))
-                              .then(
-                                 ds.a("through")
-                                    .then(
-                                       ds.a("advancement", eq.a())
-                                          .suggests(a)
-                                          .executes($$0x -> a((dr)$$0x.getSource(), ec.f($$0x, "targets"), afv.a.a, a(eq.a($$0x, "advancement"), afv.b.b)))
-                                    )
-                              ))
-                           .then(
-                              ds.a("everything").executes($$0x -> a((dr)$$0x.getSource(), ec.f($$0x, "targets"), afv.a.a, ((dr)$$0x.getSource()).l().az().a()))
-                           )
-                     )
-               ))
-            .then(
-               ds.a("revoke")
-                  .then(
-                     ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)ds.a("targets", ec.d())
-                                    .then(
-                                       ds.a("only")
-                                          .then(
-                                             ((RequiredArgumentBuilder)ds.a("advancement", eq.a())
-                                                   .suggests(a)
-                                                   .executes(
-                                                      $$0x -> a((dr)$$0x.getSource(), ec.f($$0x, "targets"), afv.a.b, a(eq.a($$0x, "advancement"), afv.b.a))
-                                                   ))
-                                                .then(
-                                                   ds.a("criterion", StringArgumentType.greedyString())
-                                                      .suggests(($$0x, $$1) -> du.b(eq.a($$0x, "advancement").h().keySet(), $$1))
-                                                      .executes(
-                                                         $$0x -> a(
-                                                               (dr)$$0x.getSource(),
-                                                               ec.f($$0x, "targets"),
-                                                               afv.a.b,
-                                                               eq.a($$0x, "advancement"),
-                                                               StringArgumentType.getString($$0x, "criterion")
-                                                            )
-                                                      )
-                                                )
-                                          )
-                                    ))
-                                 .then(
-                                    ds.a("from")
-                                       .then(
-                                          ds.a("advancement", eq.a())
-                                             .suggests(a)
-                                             .executes($$0x -> a((dr)$$0x.getSource(), ec.f($$0x, "targets"), afv.a.b, a(eq.a($$0x, "advancement"), afv.b.c)))
-                                       )
-                                 ))
-                              .then(
-                                 ds.a("until")
-                                    .then(
-                                       ds.a("advancement", eq.a())
-                                          .suggests(a)
-                                          .executes($$0x -> a((dr)$$0x.getSource(), ec.f($$0x, "targets"), afv.a.b, a(eq.a($$0x, "advancement"), afv.b.d)))
-                                    )
-                              ))
-                           .then(
-                              ds.a("through")
-                                 .then(
-                                    ds.a("advancement", eq.a())
-                                       .suggests(a)
-                                       .executes($$0x -> a((dr)$$0x.getSource(), ec.f($$0x, "targets"), afv.a.b, a(eq.a($$0x, "advancement"), afv.b.b)))
-                                 )
-                           ))
-                        .then(ds.a("everything").executes($$0x -> a((dr)$$0x.getSource(), ec.f($$0x, "targets"), afv.a.b, ((dr)$$0x.getSource()).l().az().a())))
-                  )
-            )
-      );
+   public afv(String $$0, int $$1, MinecraftServer $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
-   private static int a(dr $$0, Collection<akl> $$1, afv.a $$2, Collection<ae> $$3) {
-      int $$4 = 0;
-
-      for (akl $$5 : $$1) {
-         $$4 += $$2.a($$5, $$3);
+   public void a() {
+      if (this.h != null && this.h.isAlive()) {
+         a.warn("Remote control client was asked to start, but it is already running. Will ignore.");
       }
 
-      if ($$4 == 0) {
-         if ($$3.size() == 1) {
-            if ($$1.size() == 1) {
-               throw new dn(tf.a($$2.a() + ".one.to.one.failure", $$3.iterator().next().l(), $$1.iterator().next().H_()));
-            } else {
-               throw new dn(tf.a($$2.a() + ".one.to.many.failure", $$3.iterator().next().l(), $$1.size()));
-            }
-         } else if ($$1.size() == 1) {
-            throw new dn(tf.a($$2.a() + ".many.to.one.failure", $$3.size(), $$1.iterator().next().H_()));
-         } else {
-            throw new dn(tf.a($$2.a() + ".many.to.many.failure", $$3.size(), $$1.size()));
-         }
-      } else {
-         if ($$3.size() == 1) {
-            if ($$1.size() == 1) {
-               $$0.a(() -> tf.a($$2.a() + ".one.to.one.success", $$3.iterator().next().l(), $$1.iterator().next().H_()), true);
-            } else {
-               $$0.a(() -> tf.a($$2.a() + ".one.to.many.success", $$3.iterator().next().l(), $$1.size()), true);
-            }
-         } else if ($$1.size() == 1) {
-            $$0.a(() -> tf.a($$2.a() + ".many.to.one.success", $$3.size(), $$1.iterator().next().H_()), true);
-         } else {
-            $$0.a(() -> tf.a($$2.a() + ".many.to.many.success", $$3.size(), $$1.size()), true);
-         }
-
-         return $$4;
-      }
+      this.f = true;
+      this.h = new Thread(this::c, "chase-client");
+      this.h.setDaemon(true);
+      this.h.start();
    }
 
-   private static int a(dr $$0, Collection<akl> $$1, afv.a $$2, ae $$3, String $$4) {
-      int $$5 = 0;
-      if (!$$3.h().containsKey($$4)) {
-         throw new dn(tf.a("commands.advancement.criterionNotFound", $$3.l(), $$4));
-      } else {
-         for (akl $$6 : $$1) {
-            if ($$2.a($$6, $$3, $$4)) {
-               $$5++;
-            }
-         }
-
-         if ($$5 == 0) {
-            if ($$1.size() == 1) {
-               throw new dn(tf.a($$2.a() + ".criterion.to.one.failure", $$4, $$3.l(), $$1.iterator().next().H_()));
-            } else {
-               throw new dn(tf.a($$2.a() + ".criterion.to.many.failure", $$4, $$3.l(), $$1.size()));
-            }
-         } else {
-            if ($$1.size() == 1) {
-               $$0.a(() -> tf.a($$2.a() + ".criterion.to.one.success", $$4, $$3.l(), $$1.iterator().next().H_()), true);
-            } else {
-               $$0.a(() -> tf.a($$2.a() + ".criterion.to.many.success", $$4, $$3.l(), $$1.size()), true);
-            }
-
-            return $$5;
-         }
-      }
+   public void b() {
+      this.f = false;
+      IOUtils.closeQuietly(this.g);
+      this.g = null;
+      this.h = null;
    }
 
-   private static List<ae> a(ae $$0, afv.b $$1) {
-      List<ae> $$2 = Lists.newArrayList();
-      if ($$1.f) {
-         for (ae $$3 = $$0.b(); $$3 != null; $$3 = $$3.b()) {
-            $$2.add($$3);
-         }
-      }
+   public void c() {
+      String $$0 = this.c + ":" + this.d;
 
-      $$2.add($$0);
-      if ($$1.g) {
-         a($$0, $$2);
-      }
+      while (this.f) {
+         try {
+            a.info("Connecting to remote control server {}", $$0);
+            this.g = new Socket(this.c, this.d);
+            a.info("Connected to remote control server! Will continuously execute the command broadcasted by that server.");
 
-      return $$2;
-   }
+            try (BufferedReader $$1 = new BufferedReader(new InputStreamReader(this.g.getInputStream(), Charsets.US_ASCII))) {
+               while (this.f) {
+                  String $$2 = $$1.readLine();
+                  if ($$2 == null) {
+                     a.warn("Lost connection to remote control server {}. Will retry in {}s.", $$0, 5);
+                     break;
+                  }
 
-   private static void a(ae $$0, List<ae> $$1) {
-      for (ae $$2 : $$0.g()) {
-         $$1.add($$2);
-         a($$2, $$1);
-      }
-   }
-
-   static enum a {
-      a("grant") {
-         @Override
-         protected boolean a(akl $$0, ae $$1) {
-            ag $$2 = $$0.N().b($$1);
-            if ($$2.a()) {
-               return false;
-            } else {
-               for (String $$3 : $$2.e()) {
-                  $$0.N().a($$1, $$3);
+                  this.a($$2);
                }
+            } catch (IOException var8) {
+               a.warn("Lost connection to remote control server {}. Will retry in {}s.", $$0, 5);
+            }
+         } catch (IOException var9) {
+            a.warn("Failed to connect to remote control server {}. Will retry in {}s.", $$0, 5);
+         }
 
-               return true;
+         if (this.f) {
+            try {
+               Thread.sleep(5000L);
+            } catch (InterruptedException var5) {
             }
          }
-
-         @Override
-         protected boolean a(akl $$0, ae $$1, String $$2) {
-            return $$0.N().a($$1, $$2);
-         }
-      },
-      b("revoke") {
-         @Override
-         protected boolean a(akl $$0, ae $$1) {
-            ag $$2 = $$0.N().b($$1);
-            if (!$$2.b()) {
-               return false;
-            } else {
-               for (String $$3 : $$2.f()) {
-                  $$0.N().b($$1, $$3);
-               }
-
-               return true;
-            }
-         }
-
-         @Override
-         protected boolean a(akl $$0, ae $$1, String $$2) {
-            return $$0.N().b($$1, $$2);
-         }
-      };
-
-      private final String c;
-
-      a(String $$0) {
-         this.c = "commands.advancement." + $$0;
-      }
-
-      public int a(akl $$0, Iterable<ae> $$1) {
-         int $$2 = 0;
-
-         for (ae $$3 : $$1) {
-            if (this.a($$0, $$3)) {
-               $$2++;
-            }
-         }
-
-         return $$2;
-      }
-
-      protected abstract boolean a(akl var1, ae var2);
-
-      protected abstract boolean a(akl var1, ae var2, String var3);
-
-      protected String a() {
-         return this.c;
       }
    }
 
-   static enum b {
-      a(false, false),
-      b(true, true),
-      c(false, true),
-      d(true, false),
-      e(true, true);
-
-      final boolean f;
-      final boolean g;
-
-      private b(boolean $$0, boolean $$1) {
-         this.f = $$0;
-         this.g = $$1;
+   private void a(String $$0) {
+      try (Scanner $$1 = new Scanner(new StringReader($$0))) {
+         $$1.useLocale(Locale.ROOT);
+         String $$2 = $$1.next();
+         if ("t".equals($$2)) {
+            this.a($$1);
+         } else {
+            a.warn("Unknown message type '{}'", $$2);
+         }
+      } catch (NoSuchElementException var7) {
+         a.warn("Could not parse message '{}', ignoring", $$0);
       }
+   }
+
+   private void a(Scanner $$0) {
+      this.b($$0)
+         .ifPresent(
+            $$0x -> this.b(
+                  String.format(Locale.ROOT, "execute in %s run tp @s %.3f %.3f %.3f %.3f %.3f", $$0x.a.a(), $$0x.b.c, $$0x.b.d, $$0x.b.e, $$0x.c.j, $$0x.c.i)
+               )
+         );
+   }
+
+   private Optional<afv.a> b(Scanner $$0) {
+      aet<cpq> $$1 = (aet<cpq>)age.a.get($$0.next());
+      if ($$1 == null) {
+         return Optional.empty();
+      } else {
+         float $$2 = $$0.nextFloat();
+         float $$3 = $$0.nextFloat();
+         float $$4 = $$0.nextFloat();
+         float $$5 = $$0.nextFloat();
+         float $$6 = $$0.nextFloat();
+         return Optional.of(new afv.a($$1, new ehi((double)$$2, (double)$$3, (double)$$4), new ehh($$6, $$5)));
+      }
+   }
+
+   private void b(String $$0) {
+      this.e.execute(() -> {
+         List<ako> $$1 = this.e.ac().t();
+         if (!$$1.isEmpty()) {
+            ako $$2 = $$1.get(0);
+            akn $$3 = this.e.D();
+            dt $$4 = new dt($$2, ehi.a($$3.R()), ehh.a, $$3, 4, "", th.a, this.e, $$2);
+            du $$5 = this.e.aC();
+            $$5.a($$4, $$0);
+         }
+      });
+   }
+
+   static record a(aet<cpq> a, ehi b, ehh c) {
    }
 }

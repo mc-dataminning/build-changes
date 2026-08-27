@@ -1,44 +1,234 @@
-public class aqs {
-   private static final int a = 2;
-   private static final int b = 6;
-   private static final double[] c = new double[]{0.0, 1.0, 4.0, 6.0, 4.0, 1.0, 0.0};
+import com.google.common.primitives.Longs;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import it.unimi.dsi.fastutil.bytes.ByteArrays;
+import java.nio.charset.StandardCharsets;
+import java.security.Key;
+import java.security.KeyFactory;
+import java.security.KeyPair;
+import java.security.KeyPairGenerator;
+import java.security.MessageDigest;
+import java.security.PrivateKey;
+import java.security.PublicKey;
+import java.security.SecureRandom;
+import java.security.spec.EncodedKeySpec;
+import java.security.spec.PKCS8EncodedKeySpec;
+import java.security.spec.X509EncodedKeySpec;
+import java.util.Base64;
+import java.util.Base64.Encoder;
+import javax.crypto.Cipher;
+import javax.crypto.KeyGenerator;
+import javax.crypto.SecretKey;
+import javax.crypto.spec.IvParameterSpec;
+import javax.crypto.spec.SecretKeySpec;
 
-   private aqs() {
+public class aqs {
+   private static final String h = "AES";
+   private static final int i = 128;
+   private static final String j = "RSA";
+   private static final int k = 1024;
+   private static final String l = "ISO_8859_1";
+   private static final String m = "SHA-1";
+   public static final String a = "SHA256withRSA";
+   public static final int b = 256;
+   private static final String n = "-----BEGIN RSA PRIVATE KEY-----";
+   private static final String o = "-----END RSA PRIVATE KEY-----";
+   public static final String c = "-----BEGIN RSA PUBLIC KEY-----";
+   private static final String p = "-----END RSA PUBLIC KEY-----";
+   public static final String d = "\n";
+   public static final Encoder e = Base64.getMimeEncoder(76, "\n".getBytes(StandardCharsets.UTF_8));
+   public static final Codec<PublicKey> f = Codec.STRING.comapFlatMap($$0 -> {
+      try {
+         return DataResult.success(b($$0));
+      } catch (aqt var2) {
+         return DataResult.error(var2::getMessage);
+      }
+   }, aqs::a);
+   public static final Codec<PrivateKey> g = Codec.STRING.comapFlatMap($$0 -> {
+      try {
+         return DataResult.success(a($$0));
+      } catch (aqt var2) {
+         return DataResult.error(var2::getMessage);
+      }
+   }, aqs::a);
+
+   public static SecretKey a() throws aqt {
+      try {
+         KeyGenerator $$0 = KeyGenerator.getInstance("AES");
+         $$0.init(128);
+         return $$0.generateKey();
+      } catch (Exception var1) {
+         throw new aqt(var1);
+      }
    }
 
-   public static ehd a(ehd $$0, aqs.a $$1) {
-      int $$2 = arp.a($$0.a());
-      int $$3 = arp.a($$0.b());
-      int $$4 = arp.a($$0.c());
-      double $$5 = $$0.a() - (double)$$2;
-      double $$6 = $$0.b() - (double)$$3;
-      double $$7 = $$0.c() - (double)$$4;
-      double $$8 = 0.0;
-      ehd $$9 = ehd.b;
+   public static KeyPair b() throws aqt {
+      try {
+         KeyPairGenerator $$0 = KeyPairGenerator.getInstance("RSA");
+         $$0.initialize(1024);
+         return $$0.generateKeyPair();
+      } catch (Exception var1) {
+         throw new aqt(var1);
+      }
+   }
 
-      for (int $$10 = 0; $$10 < 6; $$10++) {
-         double $$11 = arp.d($$5, c[$$10 + 1], c[$$10]);
-         int $$12 = $$2 - 2 + $$10;
+   public static byte[] a(String $$0, PublicKey $$1, SecretKey $$2) throws aqt {
+      try {
+         return a($$0.getBytes("ISO_8859_1"), $$2.getEncoded(), $$1.getEncoded());
+      } catch (Exception var4) {
+         throw new aqt(var4);
+      }
+   }
 
-         for (int $$13 = 0; $$13 < 6; $$13++) {
-            double $$14 = arp.d($$6, c[$$13 + 1], c[$$13]);
-            int $$15 = $$3 - 2 + $$13;
+   private static byte[] a(byte[]... $$0) throws Exception {
+      MessageDigest $$1 = MessageDigest.getInstance("SHA-1");
 
-            for (int $$16 = 0; $$16 < 6; $$16++) {
-               double $$17 = arp.d($$7, c[$$16 + 1], c[$$16]);
-               int $$18 = $$4 - 2 + $$16;
-               double $$19 = $$11 * $$14 * $$17;
-               $$8 += $$19;
-               $$9 = $$9.e($$1.fetch($$12, $$15, $$18).a($$19));
-            }
-         }
+      for (byte[] $$2 : $$0) {
+         $$1.update($$2);
       }
 
-      return $$9.a(1.0 / $$8);
+      return $$1.digest();
    }
 
-   @FunctionalInterface
-   public interface a {
-      ehd fetch(int var1, int var2, int var3);
+   private static <T extends Key> T a(String $$0, String $$1, String $$2, aqs.a<T> $$3) throws aqt {
+      int $$4 = $$0.indexOf($$1);
+      if ($$4 != -1) {
+         $$4 += $$1.length();
+         int $$5 = $$0.indexOf($$2, $$4);
+         $$0 = $$0.substring($$4, $$5 + 1);
+      }
+
+      try {
+         return $$3.apply(Base64.getMimeDecoder().decode($$0));
+      } catch (IllegalArgumentException var6) {
+         throw new aqt(var6);
+      }
+   }
+
+   public static PrivateKey a(String $$0) throws aqt {
+      return a($$0, "-----BEGIN RSA PRIVATE KEY-----", "-----END RSA PRIVATE KEY-----", aqs::b);
+   }
+
+   public static PublicKey b(String $$0) throws aqt {
+      return a($$0, "-----BEGIN RSA PUBLIC KEY-----", "-----END RSA PUBLIC KEY-----", aqs::a);
+   }
+
+   public static String a(PublicKey $$0) {
+      if (!"RSA".equals($$0.getAlgorithm())) {
+         throw new IllegalArgumentException("Public key must be RSA");
+      } else {
+         return "-----BEGIN RSA PUBLIC KEY-----\n" + e.encodeToString($$0.getEncoded()) + "\n-----END RSA PUBLIC KEY-----\n";
+      }
+   }
+
+   public static String a(PrivateKey $$0) {
+      if (!"RSA".equals($$0.getAlgorithm())) {
+         throw new IllegalArgumentException("Private key must be RSA");
+      } else {
+         return "-----BEGIN RSA PRIVATE KEY-----\n" + e.encodeToString($$0.getEncoded()) + "\n-----END RSA PRIVATE KEY-----\n";
+      }
+   }
+
+   private static PrivateKey b(byte[] $$0) throws aqt {
+      try {
+         EncodedKeySpec $$1 = new PKCS8EncodedKeySpec($$0);
+         KeyFactory $$2 = KeyFactory.getInstance("RSA");
+         return $$2.generatePrivate($$1);
+      } catch (Exception var3) {
+         throw new aqt(var3);
+      }
+   }
+
+   public static PublicKey a(byte[] $$0) throws aqt {
+      try {
+         EncodedKeySpec $$1 = new X509EncodedKeySpec($$0);
+         KeyFactory $$2 = KeyFactory.getInstance("RSA");
+         return $$2.generatePublic($$1);
+      } catch (Exception var3) {
+         throw new aqt(var3);
+      }
+   }
+
+   public static SecretKey a(PrivateKey $$0, byte[] $$1) throws aqt {
+      byte[] $$2 = b($$0, $$1);
+
+      try {
+         return new SecretKeySpec($$2, "AES");
+      } catch (Exception var4) {
+         throw new aqt(var4);
+      }
+   }
+
+   public static byte[] a(Key $$0, byte[] $$1) throws aqt {
+      return a(1, $$0, $$1);
+   }
+
+   public static byte[] b(Key $$0, byte[] $$1) throws aqt {
+      return a(2, $$0, $$1);
+   }
+
+   private static byte[] a(int $$0, Key $$1, byte[] $$2) throws aqt {
+      try {
+         return a($$0, $$1.getAlgorithm(), $$1).doFinal($$2);
+      } catch (Exception var4) {
+         throw new aqt(var4);
+      }
+   }
+
+   private static Cipher a(int $$0, String $$1, Key $$2) throws Exception {
+      Cipher $$3 = Cipher.getInstance($$1);
+      $$3.init($$0, $$2);
+      return $$3;
+   }
+
+   public static Cipher a(int $$0, Key $$1) throws aqt {
+      try {
+         Cipher $$2 = Cipher.getInstance("AES/CFB8/NoPadding");
+         $$2.init($$0, $$1, new IvParameterSpec($$1.getEncoded()));
+         return $$2;
+      } catch (Exception var3) {
+         throw new aqt(var3);
+      }
+   }
+
+   interface a<T extends Key> {
+      T apply(byte[] var1) throws aqt;
+   }
+
+   public static record b(long b, byte[] c) {
+      public static final aqs.b a = new aqs.b(0L, ByteArrays.EMPTY_ARRAY);
+
+      public b(sl $$0) {
+         this($$0.readLong(), $$0.b());
+      }
+
+      public boolean a() {
+         return this.c.length > 0;
+      }
+
+      public static void a(sl $$0, aqs.b $$1) {
+         $$0.b($$1.b);
+         $$0.a($$1.c);
+      }
+
+      public byte[] b() {
+         return Longs.toByteArray(this.b);
+      }
+
+      public long c() {
+         return this.b;
+      }
+
+      public byte[] d() {
+         return this.c;
+      }
+   }
+
+   public static class c {
+      private static final SecureRandom a = new SecureRandom();
+
+      public static long a() {
+         return a.nextLong();
+      }
    }
 }

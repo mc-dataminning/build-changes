@@ -1,42 +1,74 @@
 import com.mojang.serialization.Codec;
-import java.util.Collections;
-import java.util.List;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class dvy extends dwf {
-   public static final Codec<dvy> a = Codec.unit(() -> dvy.b);
-   public static final dvy b = new dvy();
+public class dvy extends dwa {
+   public static final Codec<dvy> a = arb.<dvy>a(
+         RecordCodecBuilder.mapCodec(
+            $$0 -> a($$0)
+                  .and(
+                     $$0.group(
+                        Codec.intRange(0, 4096).fieldOf("spacing").forGetter(dvy::a),
+                        Codec.intRange(0, 4096).fieldOf("separation").forGetter(dvy::b),
+                        dvz.c.optionalFieldOf("spread_type", dvz.a).forGetter(dvy::c)
+                     )
+                  )
+                  .apply($$0, dvy::new)
+         ),
+         dvy::a
+      )
+      .codec();
+   private final int c;
+   private final int d;
+   private final dvz e;
 
-   private dvy() {
-      super(dwh.a.a);
+   private static DataResult<dvy> a(dvy $$0) {
+      return $$0.c <= $$0.d ? DataResult.error(() -> "Spacing has to be larger than separation") : DataResult.success($$0);
+   }
+
+   public dvy(ib $$0, dwa.c $$1, float $$2, int $$3, Optional<dwa.a> $$4, int $$5, int $$6, dvz $$7) {
+      super($$0, $$1, $$2, $$3, $$4);
+      this.c = $$5;
+      this.d = $$6;
+      this.e = $$7;
+   }
+
+   public dvy(int $$0, int $$1, dvz $$2, int $$3) {
+      this(ib.g, dwa.c.a, 1.0F, $$3, Optional.empty(), $$0, $$1, $$2);
+   }
+
+   public int a() {
+      return this.c;
+   }
+
+   public int b() {
+      return this.d;
+   }
+
+   public dvz c() {
+      return this.e;
+   }
+
+   public cox a(long $$0, int $$1, int $$2) {
+      int $$3 = Math.floorDiv($$1, this.c);
+      int $$4 = Math.floorDiv($$2, this.c);
+      dlm $$5 = new dlm(new dko(0L));
+      $$5.a($$0, $$3, $$4, this.i());
+      int $$6 = this.c - this.d;
+      int $$7 = this.e.a($$5, $$6);
+      int $$8 = this.e.a($$5, $$6);
+      return new cox($$3 * this.c + $$7, $$4 * this.c + $$8);
    }
 
    @Override
-   public hz a(dys $$0, cyx $$1) {
-      return hz.g;
+   protected boolean a(dhc $$0, int $$1, int $$2) {
+      cox $$3 = this.a($$0.d(), $$1, $$2);
+      return $$3.e == $$1 && $$3.f == $$2;
    }
 
    @Override
-   public List<dyr.c> a(dys $$0, gu $$1, cyx $$2, aru $$3) {
-      return Collections.emptyList();
-   }
-
-   @Override
-   public duq a(dys $$0, gu $$1, cyx $$2) {
-      throw new IllegalStateException("Invalid call to EmtyPoolElement.getBoundingBox, filter me!");
-   }
-
-   @Override
-   public boolean a(dys $$0, cqf $$1, cqd $$2, dgw $$3, gu $$4, gu $$5, cyx $$6, duq $$7, aru $$8, boolean $$9) {
-      return true;
-   }
-
-   @Override
-   public dwg<?> a() {
-      return dwg.d;
-   }
-
-   @Override
-   public String toString() {
-      return "Empty";
+   public dwb<?> e() {
+      return dwb.a;
    }
 }

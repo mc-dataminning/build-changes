@@ -1,218 +1,97 @@
-import java.time.LocalDate;
-import java.time.temporal.ChronoField;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Maps;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
 
-public class bue extends bud {
-   public static final float b = 74.48451F;
-   public static final int c = arp.f(2.4166098F);
-   private static final adz<Byte> d = aec.a(bue.class, aeb.a);
-   private static final int e = 1;
-   private static final btk bS = btk.b().a(4.0);
-   @Nullable
-   private gu bT;
+public class bue {
+   public static final aet<bud> a = a("armorer");
+   public static final aet<bud> b = a("butcher");
+   public static final aet<bud> c = a("cartographer");
+   public static final aet<bud> d = a("cleric");
+   public static final aet<bud> e = a("farmer");
+   public static final aet<bud> f = a("fisherman");
+   public static final aet<bud> g = a("fletcher");
+   public static final aet<bud> h = a("leatherworker");
+   public static final aet<bud> i = a("librarian");
+   public static final aet<bud> j = a("mason");
+   public static final aet<bud> k = a("shepherd");
+   public static final aet<bud> l = a("toolsmith");
+   public static final aet<bud> m = a("weaponsmith");
+   public static final aet<bud> n = a("home");
+   public static final aet<bud> o = a("meeting");
+   public static final aet<bud> p = a("beehive");
+   public static final aet<bud> q = a("bee_nest");
+   public static final aet<bud> r = a("nether_portal");
+   public static final aet<bud> s = a("lodestone");
+   public static final aet<bud> t = a("lightning_rod");
+   private static final Set<dfe> u = ImmutableList.of(
+         csr.bn, csr.bo, csr.bk, csr.bl, csr.bi, csr.bg, csr.bm, csr.bc, csr.bh, csr.be, csr.bb, csr.ba, new csq[]{csr.bf, csr.bj, csr.aZ, csr.bd}
+      )
+      .stream()
+      .flatMap($$0 -> $$0.l().a().stream())
+      .filter($$0 -> $$0.c(csj.a) == dfr.a)
+      .collect(ImmutableSet.toImmutableSet());
+   private static final Set<dfe> v = ImmutableList.of(csr.ft, csr.fv, csr.fu, csr.fw)
+      .stream()
+      .flatMap($$0 -> $$0.l().a().stream())
+      .collect(ImmutableSet.toImmutableSet());
+   private static final Map<dfe, hg<bud>> w = Maps.newHashMap();
 
-   public bue(bim<? extends bue> $$0, cpl $$1) {
-      super($$0, $$1);
-      if (!$$1.B) {
-         this.w(true);
-      }
+   private static Set<dfe> a(csq $$0) {
+      return ImmutableSet.copyOf($$0.l().a());
    }
 
-   @Override
-   public boolean aR() {
-      return !this.q() && this.ah % c == 0;
+   private static aet<bud> a(String $$0) {
+      return aet.a(je.S, new aeu($$0));
    }
 
-   @Override
-   protected void a_() {
-      super.a_();
-      this.an.a(d, (byte)0);
+   private static bud a(ht<bud> $$0, aet<bud> $$1, Set<dfe> $$2, int $$3, int $$4) {
+      bud $$5 = new bud($$2, $$3, $$4);
+      ht.a($$0, $$1, $$5);
+      a($$0.f($$1), $$2);
+      return $$5;
    }
 
-   @Override
-   protected float eU() {
-      return 0.1F;
-   }
-
-   @Override
-   public float eV() {
-      return super.eV() * 0.95F;
-   }
-
-   @Nullable
-   @Override
-   public aov r() {
-      return this.q() && this.ag.a(4) != 0 ? null : aow.bq;
-   }
-
-   @Override
-   protected aov d(bhg $$0) {
-      return aow.bs;
-   }
-
-   @Override
-   protected aov h_() {
-      return aow.br;
-   }
-
-   @Override
-   public boolean bs() {
-      return false;
-   }
-
-   @Override
-   protected void D(bii $$0) {
-   }
-
-   @Override
-   protected void fg() {
-   }
-
-   public static bkd.a p() {
-      return bja.x().a(bke.a, 6.0);
-   }
-
-   public boolean q() {
-      return (this.an.b(d) & 1) != 0;
-   }
-
-   public void w(boolean $$0) {
-      byte $$1 = this.an.b(d);
-      if ($$0) {
-         this.an.b(d, (byte)($$1 | 1));
-      } else {
-         this.an.b(d, (byte)($$1 & -2));
-      }
-   }
-
-   @Override
-   public void l() {
-      super.l();
-      if (this.q()) {
-         this.f(ehd.b);
-         this.p(this.dp(), (double)arp.a(this.dr()) + 1.0 - (double)this.dg(), this.dv());
-      } else {
-         this.f(this.dn().d(1.0, 0.6, 1.0));
-      }
-   }
-
-   @Override
-   protected void V() {
-      super.V();
-      gu $$0 = this.dk();
-      gu $$1 = $$0.c();
-      if (this.q()) {
-         boolean $$2 = this.aS();
-         if (this.dK().a_($$1).g(this.dK(), $$0)) {
-            if (this.ag.a(200) == 0) {
-               this.aW = (float)this.ag.a(360);
-            }
-
-            if (this.dK().a(bS, this) != null) {
-               this.w(false);
-               if (!$$2) {
-                  this.dK().a(null, 1025, $$0, 0);
-               }
-            }
-         } else {
-            this.w(false);
-            if (!$$2) {
-               this.dK().a(null, 1025, $$0, 0);
-            }
+   private static void a(hg<bud> $$0, Set<dfe> $$1) {
+      $$1.forEach($$1x -> {
+         hg<bud> $$2 = w.put($$1x, $$0);
+         if ($$2 != null) {
+            throw (IllegalStateException)ac.b(new IllegalStateException(String.format(Locale.ROOT, "%s is defined in more than one PoI type", $$1x)));
          }
-      } else {
-         if (this.bT != null && (!this.dK().t(this.bT) || this.bT.v() <= this.dK().C_())) {
-            this.bT = null;
-         }
-
-         if (this.bT == null || this.ag.a(30) == 0 || this.bT.a(this.di(), 2.0)) {
-            this.bT = gu.a(
-               this.dp() + (double)this.ag.a(7) - (double)this.ag.a(7),
-               this.dr() + (double)this.ag.a(6) - 2.0,
-               this.dv() + (double)this.ag.a(7) - (double)this.ag.a(7)
-            );
-         }
-
-         double $$3 = (double)this.bT.u() + 0.5 - this.dp();
-         double $$4 = (double)this.bT.v() + 0.1 - this.dr();
-         double $$5 = (double)this.bT.w() + 0.5 - this.dv();
-         ehd $$6 = this.dn();
-         ehd $$7 = $$6.b((Math.signum($$3) * 0.5 - $$6.c) * 0.1F, (Math.signum($$4) * 0.7F - $$6.d) * 0.1F, (Math.signum($$5) * 0.5 - $$6.e) * 0.1F);
-         this.f($$7);
-         float $$8 = (float)(arp.d($$7.e, $$7.c) * 180.0F / (float)Math.PI) - 90.0F;
-         float $$9 = arp.g($$8 - this.dA());
-         this.bm = 0.5F;
-         this.r(this.dA() + $$9);
-         if (this.ag.a(100) == 0 && this.dK().a_($$1).g(this.dK(), $$1)) {
-            this.w(true);
-         }
-      }
+      });
    }
 
-   @Override
-   protected bii.b aU() {
-      return bii.b.c;
+   public static Optional<hg<bud>> a(dfe $$0) {
+      return Optional.ofNullable(w.get($$0));
    }
 
-   @Override
-   protected void a(double $$0, boolean $$1, dez $$2, gu $$3) {
+   public static boolean b(dfe $$0) {
+      return w.containsKey($$0);
    }
 
-   @Override
-   public boolean d_() {
-      return true;
-   }
-
-   @Override
-   public boolean a(bhg $$0, float $$1) {
-      if (this.b($$0)) {
-         return false;
-      } else {
-         if (!this.dK().B && this.q()) {
-            this.w(false);
-         }
-
-         return super.a($$0, $$1);
-      }
-   }
-
-   @Override
-   public void a(qr $$0) {
-      super.a($$0);
-      this.an.b(d, $$0.f("BatFlags"));
-   }
-
-   @Override
-   public void b(qr $$0) {
-      super.b($$0);
-      $$0.a("BatFlags", this.an.b(d));
-   }
-
-   public static boolean b(bim<bue> $$0, cpm $$1, bjc $$2, gu $$3, aru $$4) {
-      if ($$3.v() >= $$1.t_()) {
-         return false;
-      } else {
-         int $$5 = $$1.z($$3);
-         int $$6 = 4;
-         if (t()) {
-            $$6 = 7;
-         } else if ($$4.h()) {
-            return false;
-         }
-
-         return $$5 > $$4.a($$6) ? false : a($$0, $$1, $$2, $$3, $$4);
-      }
-   }
-
-   private static boolean t() {
-      LocalDate $$0 = LocalDate.now();
-      int $$1 = $$0.get(ChronoField.DAY_OF_MONTH);
-      int $$2 = $$0.get(ChronoField.MONTH_OF_YEAR);
-      return $$2 == 10 && $$1 >= 20 || $$2 == 11 && $$1 <= 3;
-   }
-
-   @Override
-   protected float b(bjk $$0, bij $$1) {
-      return $$1.b / 2.0F;
+   public static bud a(ht<bud> $$0) {
+      a($$0, a, a(csr.nW), 1, 1);
+      a($$0, b, a(csr.nV), 1, 1);
+      a($$0, c, a(csr.nX), 1, 1);
+      a($$0, d, a(csr.fs), 1, 1);
+      a($$0, e, a(csr.pc), 1, 1);
+      a($$0, f, a(csr.nU), 1, 1);
+      a($$0, g, a(csr.nY), 1, 1);
+      a($$0, h, v, 1, 1);
+      a($$0, i, a(csr.oa), 1, 1);
+      a($$0, j, a(csr.oc), 1, 1);
+      a($$0, k, a(csr.nT), 1, 1);
+      a($$0, l, a(csr.ob), 1, 1);
+      a($$0, m, a(csr.nZ), 1, 1);
+      a($$0, n, u, 1, 1);
+      a($$0, o, a(csr.od), 32, 6);
+      a($$0, p, a(csr.pf), 0, 1);
+      a($$0, q, a(csr.pe), 0, 1);
+      a($$0, r, a(csr.ee), 0, 1);
+      a($$0, s, a(csr.pq), 0, 1);
+      return a($$0, t, a(csr.rr), 0, 1);
    }
 }

@@ -1,322 +1,472 @@
-import com.google.common.collect.Maps;
-import com.google.common.hash.Hashing;
+import com.google.common.collect.Lists;
+import com.google.common.util.concurrent.ThreadFactoryBuilder;
+import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.DirectoryStream;
-import java.nio.file.Files;
-import java.nio.file.LinkOption;
-import java.nio.file.Path;
-import java.nio.file.StandardWatchEventKinds;
-import java.nio.file.WatchEvent;
-import java.nio.file.WatchKey;
-import java.nio.file.WatchService;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashSet;
+import java.net.UnknownHostException;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.function.Consumer;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import java.util.concurrent.ScheduledThreadPoolExecutor;
+import java.util.concurrent.ThreadPoolExecutor;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.mutable.MutableBoolean;
 import org.slf4j.Logger;
 
-public class fbf extends eya {
-   static final Logger a = LogUtils.getLogger();
-   private static final int b = 200;
-   private static final tf c = tf.c("pack.dropInfo").a(n.h);
-   private static final tf k = tf.c("pack.folderInfo");
-   private static final int l = 20;
-   private static final aer m = new aer("textures/misc/unknown_pack.png");
-   private final fbe n;
-   @Nullable
-   private fbf.a o;
-   private long p;
-   private fbg q;
-   private fbg s;
-   private final Path t;
-   private esg u;
-   private final Map<String, aer> v = Maps.newHashMap();
+public class fbf extends eth<fbf.a> {
+   static final aeu a = new aeu("server_list/incompatible");
+   static final aeu m = new aeu("server_list/unreachable");
+   static final aeu n = new aeu("server_list/ping_1");
+   static final aeu o = new aeu("server_list/ping_2");
+   static final aeu p = new aeu("server_list/ping_3");
+   static final aeu q = new aeu("server_list/ping_4");
+   static final aeu s = new aeu("server_list/ping_5");
+   static final aeu t = new aeu("server_list/pinging_1");
+   static final aeu u = new aeu("server_list/pinging_2");
+   static final aeu v = new aeu("server_list/pinging_3");
+   static final aeu w = new aeu("server_list/pinging_4");
+   static final aeu x = new aeu("server_list/pinging_5");
+   static final aeu y = new aeu("server_list/join_highlighted");
+   static final aeu z = new aeu("server_list/join");
+   static final aeu A = new aeu("server_list/move_up_highlighted");
+   static final aeu B = new aeu("server_list/move_up");
+   static final aeu C = new aeu("server_list/move_down_highlighted");
+   static final aeu D = new aeu("server_list/move_down");
+   static final Logger E = LogUtils.getLogger();
+   static final ThreadPoolExecutor F = new ScheduledThreadPoolExecutor(
+      5, new ThreadFactoryBuilder().setNameFormat("Server Pinger #%d").setDaemon(true).setUncaughtExceptionHandler(new r(E)).build()
+   );
+   private static final aeu G = new aeu("textures/misc/unknown_server.png");
+   static final ti H = ti.c("lanServer.scanning");
+   static final ti I = ti.c("multiplayer.status.cannot_resolve").a($$0 -> $$0.a(-65536));
+   static final ti J = ti.c("multiplayer.status.cannot_connect").a($$0 -> $$0.a(-65536));
+   static final ti K = ti.c("multiplayer.status.incompatible");
+   static final ti L = ti.c("multiplayer.status.no_connection");
+   static final ti M = ti.c("multiplayer.status.pinging");
+   static final ti N = ti.c("multiplayer.status.online");
+   private final fbb O;
+   private final List<fbf.d> P = Lists.newArrayList();
+   private final fbf.a Q = new fbf.b();
+   private final List<fbf.c> R = Lists.newArrayList();
 
-   public fbf(amx $$0, Consumer<amx> $$1, Path $$2, tf $$3) {
-      super($$3);
-      this.n = new fbe(this::D, this::a, $$0, $$1);
-      this.t = $$2;
-      this.o = fbf.a.a($$2);
+   public fbf(fbb $$0, eqq $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
+      super($$1, $$2, $$3, $$4, $$5, $$6);
+      this.O = $$0;
+   }
+
+   private void e() {
+      this.j();
+      this.P.forEach($$1 -> this.b($$1));
+      this.b(this.Q);
+      this.R.forEach($$1 -> this.b($$1));
+   }
+
+   public void a(@Nullable fbf.a $$0) {
+      super.a($$0);
+      this.O.C();
    }
 
    @Override
-   public void at_() {
-      this.n.c();
-      this.C();
+   public boolean a(int $$0, int $$1, int $$2) {
+      fbf.a $$3 = this.f();
+      return $$3 != null && $$3.a($$0, $$1, $$2) || super.a($$0, $$1, $$2);
    }
 
-   private void C() {
-      if (this.o != null) {
-         try {
-            this.o.close();
-            this.o = null;
-         } catch (Exception var2) {
+   public void a(fjd $$0) {
+      this.P.clear();
+
+      for (int $$1 = 0; $$1 < $$0.c(); $$1++) {
+         this.P.add(new fbf.d(this.O, $$0.a($$1)));
+      }
+
+      this.e();
+   }
+
+   public void a(List<gcz> $$0) {
+      int $$1 = $$0.size() - this.R.size();
+      this.R.clear();
+
+      for (gcz $$2 : $$0) {
+         this.R.add(new fbf.c(this.O, $$2));
+      }
+
+      this.e();
+
+      for (int $$3 = this.R.size() - $$1; $$3 < this.R.size(); $$3++) {
+         fbf.c $$4 = this.R.get($$3);
+         int $$5 = $$3 - this.R.size() + this.i().size();
+         int $$6 = this.h($$5);
+         int $$7 = this.i($$5);
+         if ($$7 >= this.g && $$6 <= this.h) {
+            this.c.aV().b(ti.a("multiplayer.lan.server_found", $$4.d()));
          }
       }
    }
 
    @Override
-   protected void aC_() {
-      this.q = new fbg(this.f, this, 200, this.h, tf.c("pack.available.title"));
-      this.q.f(this.g / 2 - 4 - 200);
-      this.e(this.q);
-      this.s = new fbg(this.f, this, 200, this.h, tf.c("pack.selected.title"));
-      this.s.f(this.g / 2 + 4);
-      this.e(this.s);
-      this.d(esg.a(tf.c("pack.openFolder"), $$0 -> ac.i().a(this.t.toUri())).a(this.g / 2 - 154, this.h - 48, 150, 20).a(etq.a(k)).a());
-      this.u = this.d(esg.a(te.d, $$0 -> this.at_()).a(this.g / 2 + 4, this.h - 48, 150, 20).a());
-      this.E();
+   protected int c() {
+      return super.c() + 30;
    }
 
    @Override
-   public void c() {
-      if (this.o != null) {
-         try {
-            if (this.o.a()) {
-               this.p = 20L;
-            }
-         } catch (IOException var2) {
-            a.warn("Failed to poll for directory {} changes, stopping", this.t);
-            this.C();
-         }
-      }
+   public int b() {
+      return super.b() + 85;
+   }
 
-      if (this.p > 0L && --this.p == 0L) {
-         this.E();
+   public void d() {
+   }
+
+   public abstract static class a extends eth.a<fbf.a> implements AutoCloseable {
+      @Override
+      public void close() {
       }
    }
 
-   private void D() {
-      this.a(this.s, this.n.b());
-      this.a(this.q, this.n.a());
-      this.u.i = !this.s.i().isEmpty();
+   public static class b extends fbf.a {
+      private final eqq a = eqq.O();
+
+      @Override
+      public void a(esa $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         int $$10 = $$2 + $$5 / 2 - 9 / 2;
+         $$0.a(this.a.h, fbf.H, this.a.y.g / 2 - this.a.h.a(fbf.H) / 2, $$10, 16777215, false);
+         String $$11 = exq.a(ac.b());
+         $$0.a(this.a.h, $$11, this.a.y.g / 2 - this.a.h.b($$11) / 2, $$10 + 9, -8355712, false);
+      }
+
+      @Override
+      public ti a() {
+         return fbf.H;
+      }
    }
 
-   private void a(fbg $$0, Stream<fbe.a> $$1) {
-      $$0.i().clear();
-      fbg.a $$2 = $$0.f();
-      String $$3 = $$2 == null ? "" : $$2.b();
-      $$0.a(null);
-      $$1.forEach($$2x -> {
-         fbg.a $$3x = new fbg.a(this.f, $$0, $$2x);
-         $$0.i().add($$3x);
-         if ($$2x.c().equals($$3)) {
-            $$0.a($$3x);
+   public static class c extends fbf.a {
+      private static final int c = 32;
+      private static final ti d = ti.c("lanServer.title");
+      private static final ti e = ti.c("selectServer.hiddenAddress");
+      private final fbb f;
+      protected final eqq a;
+      protected final gcz b;
+      private long g;
+
+      protected c(fbb $$0, gcz $$1) {
+         this.f = $$0;
+         this.b = $$1;
+         this.a = eqq.O();
+      }
+
+      @Override
+      public void a(esa $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         $$0.a(this.a.h, d, $$3 + 32 + 3, $$2 + 1, 16777215, false);
+         $$0.a(this.a.h, this.b.a(), $$3 + 32 + 3, $$2 + 12, -8355712, false);
+         if (this.a.m.l) {
+            $$0.a(this.a.h, e, $$3 + 32 + 3, $$2 + 12 + 11, 3158064, false);
+         } else {
+            $$0.a(this.a.h, this.b.b(), $$3 + 32 + 3, $$2 + 12 + 11, 3158064, false);
          }
-      });
+      }
+
+      @Override
+      public boolean a(double $$0, double $$1, int $$2) {
+         this.f.a(this);
+         if (ac.b() - this.g < 250L) {
+            this.f.l();
+         }
+
+         this.g = ac.b();
+         return false;
+      }
+
+      public gcz b() {
+         return this.b;
+      }
+
+      @Override
+      public ti a() {
+         return ti.a("narrator.select", this.d());
+      }
+
+      public ti d() {
+         return ti.h().b(d).b(th.u).f(this.b.a());
+      }
    }
 
-   public void a(fbg $$0) {
-      fbg $$1 = this.s == $$0 ? this.q : this.s;
-      this.a(ers.a($$1.g(), $$1, this));
-   }
+   public class d extends fbf.a {
+      private static final int b = 32;
+      private static final int c = 32;
+      private static final int d = 32;
+      private final fbb e;
+      private final eqq f;
+      private final fjc g;
+      private final exk h;
+      @Nullable
+      private byte[] i;
+      private long j;
 
-   public void l() {
-      this.s.a(null);
-      this.q.a(null);
-   }
+      protected d(fbb $$1, fjc $$2) {
+         this.e = $$1;
+         this.g = $$2;
+         this.f = eqq.O();
+         this.h = exk.b(this.f.Y(), $$2.b);
+      }
 
-   private void E() {
-      this.n.d();
-      this.D();
-      this.p = 0L;
-      this.v.clear();
-   }
-
-   @Override
-   public void a(erv $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.q.a($$0, $$1, $$2, $$3);
-      this.s.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 8, 16777215);
-      $$0.a(this.i, c, this.g / 2, 20, 16777215);
-   }
-
-   @Override
-   public void b(erv $$0, int $$1, int $$2, float $$3) {
-      this.b($$0);
-   }
-
-   protected static void a(eql $$0, List<Path> $$1, Path $$2) {
-      MutableBoolean $$3 = new MutableBoolean();
-      $$1.forEach($$2x -> {
-         try (Stream<Path> $$3x = Files.walk($$2x)) {
-            $$3x.forEach($$3xx -> {
+      @Override
+      public void a(esa $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         if (!this.g.i) {
+            this.g.i = true;
+            this.g.f = -2L;
+            this.g.d = th.a;
+            this.g.c = th.a;
+            fbf.F.submit(() -> {
                try {
-                  ac.b($$2x.getParent(), $$2, $$3xx);
-               } catch (IOException var5) {
-                  a.warn("Failed to copy datapack file  from {} to {}", new Object[]{$$3xx, $$2, var5});
-                  $$3.setTrue();
+                  this.e.D().a(this.g, () -> this.f.execute(this::b));
+               } catch (UnknownHostException var2x) {
+                  this.g.f = -1L;
+                  this.g.d = fbf.I;
+               } catch (Exception var3x) {
+                  this.g.f = -1L;
+                  this.g.d = fbf.J;
                }
             });
-         } catch (IOException var8) {
-            a.warn("Failed to copy datapack file from {} to {}", $$2x, $$2);
-            $$3.setTrue();
          }
-      });
-      if ($$3.isTrue()) {
-         eum.c($$0, $$2.toString());
-      }
-   }
 
-   @Override
-   public void a(List<Path> $$0) {
-      String $$1 = a($$0).collect(Collectors.joining(", "));
-      this.f.a(new ewt($$1x -> {
-         if ($$1x) {
-            List<Path> $$2 = new ArrayList<>($$0.size());
-            Set<Path> $$3 = new HashSet<>($$0);
-            amw<Path> $$4 = new amw<Path>(this.f.bb()) {
-               protected Path a(Path $$0) {
-                  return $$0;
-               }
+         boolean $$10 = !this.f();
+         $$0.a(this.f.h, this.g.a, $$3 + 32 + 3, $$2 + 1, 16777215, false);
+         List<arf> $$11 = this.f.h.c(this.g.d, $$4 - 32 - 2);
 
-               protected Path b(Path $$0) {
-                  return $$0;
-               }
+         for (int $$12 = 0; $$12 < Math.min($$11.size(), 2); $$12++) {
+            $$0.a(this.f.h, $$11.get($$12), $$3 + 32 + 3, $$2 + 12 + 9 * $$12, -8355712, false);
+         }
+
+         ti $$13 = (ti)($$10 ? this.g.h.e().a(n.m) : this.g.c);
+         int $$14 = this.f.h.a($$13);
+         $$0.a(this.f.h, $$13, $$3 + $$4 - $$14 - 15 - 2, $$2 + 1, -8355712, false);
+         aeu $$15;
+         List<ti> $$17;
+         ti $$16;
+         if ($$10) {
+            $$15 = fbf.a;
+            $$16 = fbf.K;
+            $$17 = this.g.j;
+         } else if (this.e()) {
+            if (this.g.f < 0L) {
+               $$15 = fbf.m;
+            } else if (this.g.f < 150L) {
+               $$15 = fbf.s;
+            } else if (this.g.f < 300L) {
+               $$15 = fbf.q;
+            } else if (this.g.f < 600L) {
+               $$15 = fbf.p;
+            } else if (this.g.f < 1000L) {
+               $$15 = fbf.o;
+            } else {
+               $$15 = fbf.n;
+            }
+
+            if (this.g.f < 0L) {
+               $$16 = fbf.L;
+               $$17 = Collections.emptyList();
+            } else {
+               $$16 = ti.a("multiplayer.status.ping", this.g.f);
+               $$17 = this.g.j;
+            }
+         } else {
+            int $$28 = (int)(ac.b() / 100L + (long)($$1 * 2) & 7L);
+            if ($$28 > 4) {
+               $$28 = 8 - $$28;
+            }
+            $$15 = switch ($$28) {
+               case 1 -> fbf.u;
+               case 2 -> fbf.v;
+               case 3 -> fbf.w;
+               case 4 -> fbf.x;
+               default -> fbf.t;
             };
-            List<egu> $$5 = new ArrayList<>();
+            $$16 = fbf.M;
+            $$17 = Collections.emptyList();
+         }
 
-            for (Path $$6 : $$0) {
-               try {
-                  Path $$7 = $$4.a($$6, $$5);
-                  if ($$7 == null) {
-                     a.warn("Path {} does not seem like pack", $$6);
-                  } else {
-                     $$2.add($$7);
-                     $$3.remove($$7);
-                  }
-               } catch (IOException var10) {
-                  a.warn("Failed to check {} for packs", $$6, var10);
+         $$0.a($$15, $$3 + $$4 - 15, $$2, 10, 8);
+         byte[] $$32 = this.g.c();
+         if (!Arrays.equals($$32, this.i)) {
+            if (this.a($$32)) {
+               this.i = $$32;
+            } else {
+               this.g.a(null);
+               this.b();
+            }
+         }
+
+         this.a($$0, $$3, $$2, this.h.b());
+         int $$33 = $$6 - $$3;
+         int $$34 = $$7 - $$2;
+         if ($$33 >= $$4 - 15 && $$33 <= $$4 - 5 && $$34 >= 0 && $$34 <= 8) {
+            this.e.c(Collections.singletonList($$16));
+         } else if ($$33 >= $$4 - $$14 - 15 - 2 && $$33 <= $$4 - 15 - 2 && $$34 >= 0 && $$34 <= 8) {
+            this.e.c($$17);
+         }
+
+         if (this.f.m.V().c() || $$8) {
+            $$0.a($$3, $$2, $$3 + 32, $$2 + 32, -1601138544);
+            int $$35 = $$6 - $$3;
+            int $$36 = $$7 - $$2;
+            if (this.g()) {
+               if ($$35 < 32 && $$35 > 16) {
+                  $$0.a(fbf.y, $$3, $$2, 32, 32);
+               } else {
+                  $$0.a(fbf.z, $$3, $$2, 32, 32);
                }
             }
 
-            if (!$$5.isEmpty()) {
-               this.f.a(exp.b(this));
-               return;
-            }
-
-            if (!$$2.isEmpty()) {
-               a(this.f, $$2, this.t);
-               this.E();
-            }
-
-            if (!$$3.isEmpty()) {
-               String $$9 = a($$3).collect(Collectors.joining(", "));
-               this.f.a(new ewn(() -> this.f.a(this), tf.c("pack.dropRejected.title"), tf.a("pack.dropRejected.message", $$9)));
-               return;
-            }
-         }
-
-         this.f.a(this);
-      }, tf.c("pack.dropConfirm"), tf.b($$1)));
-   }
-
-   private static Stream<String> a(Collection<Path> $$0) {
-      return $$0.stream().map(Path::getFileName).map(Path::toString);
-   }
-
-   private aer a(fyv $$0, amu $$1) {
-      try {
-         aer var9;
-         try (ama $$2 = $$1.e()) {
-            ane<InputStream> $$3 = $$2.a("pack.png");
-            if ($$3 == null) {
-               return m;
-            }
-
-            String $$4 = $$1.f();
-            aer $$5 = new aer("minecraft", "pack/" + ac.a($$4, aer::b) + "/" + Hashing.sha1().hashUnencodedChars($$4) + "/icon");
-
-            try (InputStream $$6 = $$3.get()) {
-               ekg $$7 = ekg.a($$6);
-               $$0.a($$5, new fyh($$7));
-               var9 = $$5;
-            }
-         }
-
-         return var9;
-      } catch (Exception var14) {
-         a.warn("Failed to load icon from pack {}", $$1.f(), var14);
-         return m;
-      }
-   }
-
-   private aer a(amu $$0) {
-      return this.v.computeIfAbsent($$0.f(), $$1 -> this.a(this.f.Y(), $$0));
-   }
-
-   static class a implements AutoCloseable {
-      private final WatchService a;
-      private final Path b;
-
-      public a(Path $$0) throws IOException {
-         this.b = $$0;
-         this.a = $$0.getFileSystem().newWatchService();
-
-         try {
-            this.b($$0);
-
-            try (DirectoryStream<Path> $$1 = Files.newDirectoryStream($$0)) {
-               for (Path $$2 : $$1) {
-                  if (Files.isDirectory($$2, LinkOption.NOFOLLOW_LINKS)) {
-                     this.b($$2);
-                  }
-               }
-            }
-         } catch (Exception var7) {
-            this.a.close();
-            throw var7;
-         }
-      }
-
-      @Nullable
-      public static fbf.a a(Path $$0) {
-         try {
-            return new fbf.a($$0);
-         } catch (IOException var2) {
-            fbf.a.warn("Failed to initialize pack directory {} monitoring", $$0, var2);
-            return null;
-         }
-      }
-
-      private void b(Path $$0) throws IOException {
-         $$0.register(this.a, StandardWatchEventKinds.ENTRY_CREATE, StandardWatchEventKinds.ENTRY_DELETE, StandardWatchEventKinds.ENTRY_MODIFY);
-      }
-
-      public boolean a() throws IOException {
-         boolean $$0 = false;
-
-         WatchKey $$1;
-         while (($$1 = this.a.poll()) != null) {
-            for (WatchEvent<?> $$3 : $$1.pollEvents()) {
-               $$0 = true;
-               if ($$1.watchable() == this.b && $$3.kind() == StandardWatchEventKinds.ENTRY_CREATE) {
-                  Path $$4 = this.b.resolve((Path)$$3.context());
-                  if (Files.isDirectory($$4, LinkOption.NOFOLLOW_LINKS)) {
-                     this.b($$4);
-                  }
+            if ($$1 > 0) {
+               if ($$35 < 16 && $$36 < 16) {
+                  $$0.a(fbf.A, $$3, $$2, 32, 32);
+               } else {
+                  $$0.a(fbf.B, $$3, $$2, 32, 32);
                }
             }
 
-            $$1.reset();
+            if ($$1 < this.e.E().c() - 1) {
+               if ($$35 < 16 && $$36 > 16) {
+                  $$0.a(fbf.C, $$3, $$2, 32, 32);
+               } else {
+                  $$0.a(fbf.D, $$3, $$2, 32, 32);
+               }
+            }
+         }
+      }
+
+      private boolean e() {
+         return this.g.i && this.g.f != -2L;
+      }
+
+      private boolean f() {
+         return this.g.g == aa.b().e();
+      }
+
+      public void b() {
+         this.e.E().b();
+      }
+
+      protected void a(esa $$0, int $$1, int $$2, aeu $$3) {
+         RenderSystem.enableBlend();
+         $$0.a($$3, $$1, $$2, 0.0F, 0.0F, 32, 32, 32, 32);
+         RenderSystem.disableBlend();
+      }
+
+      private boolean g() {
+         return true;
+      }
+
+      private boolean a(@Nullable byte[] $$0) {
+         if ($$0 == null) {
+            this.h.a();
+         } else {
+            try {
+               this.h.a(ekl.a($$0));
+            } catch (Throwable var3) {
+               fbf.E.error("Invalid icon for server {} ({})", new Object[]{this.g.a, this.g.b, var3});
+               return false;
+            }
+         }
+
+         return true;
+      }
+
+      @Override
+      public boolean a(int $$0, int $$1, int $$2) {
+         if (eyf.q()) {
+            fbf $$3 = this.e.l;
+            int $$4 = $$3.i().indexOf(this);
+            if ($$4 == -1) {
+               return true;
+            }
+
+            if ($$0 == 264 && $$4 < this.e.E().c() - 1 || $$0 == 265 && $$4 > 0) {
+               this.a($$4, $$0 == 264 ? $$4 + 1 : $$4 - 1);
+               return true;
+            }
+         }
+
+         return super.a($$0, $$1, $$2);
+      }
+
+      private void a(int $$0, int $$1) {
+         this.e.E().a($$0, $$1);
+         this.e.l.a(this.e.E());
+         fbf.a $$2 = this.e.l.i().get($$1);
+         this.e.l.a($$2);
+         fbf.this.f($$2);
+      }
+
+      @Override
+      public boolean a(double $$0, double $$1, int $$2) {
+         double $$3 = $$0 - (double)fbf.this.o();
+         double $$4 = $$1 - (double)fbf.this.h(fbf.this.i().indexOf(this));
+         if ($$3 <= 32.0) {
+            if ($$3 < 32.0 && $$3 > 16.0 && this.g()) {
+               this.e.a(this);
+               this.e.l();
+               return true;
+            }
+
+            int $$5 = this.e.l.i().indexOf(this);
+            if ($$3 < 16.0 && $$4 < 16.0 && $$5 > 0) {
+               this.a($$5, $$5 - 1);
+               return true;
+            }
+
+            if ($$3 < 16.0 && $$4 > 16.0 && $$5 < this.e.E().c() - 1) {
+               this.a($$5, $$5 + 1);
+               return true;
+            }
+         }
+
+         this.e.a(this);
+         if (ac.b() - this.j < 250L) {
+            this.e.l();
+         }
+
+         this.j = ac.b();
+         return true;
+      }
+
+      public fjc d() {
+         return this.g;
+      }
+
+      @Override
+      public ti a() {
+         tv $$0 = ti.h();
+         $$0.b(ti.a("narrator.select", this.g.a));
+         $$0.b(th.s);
+         if (!this.f()) {
+            $$0.b(fbf.K);
+            $$0.b(th.s);
+            $$0.b(ti.a("multiplayer.status.version.narration", this.g.h));
+            $$0.b(th.s);
+            $$0.b(ti.a("multiplayer.status.motd.narration", this.g.d));
+         } else if (this.g.f < 0L) {
+            $$0.b(fbf.L);
+         } else if (!this.e()) {
+            $$0.b(fbf.M);
+         } else {
+            $$0.b(fbf.N);
+            $$0.b(th.s);
+            $$0.b(ti.a("multiplayer.status.ping.narration", this.g.f));
+            $$0.b(th.s);
+            $$0.b(ti.a("multiplayer.status.motd.narration", this.g.d));
+            if (this.g.e != null) {
+               $$0.b(th.s);
+               $$0.b(ti.a("multiplayer.status.player_count.narration", this.g.e.b(), this.g.e.a()));
+               $$0.b(th.s);
+               $$0.b(tk.a(this.g.j, ti.b(", ")));
+            }
          }
 
          return $$0;
       }
 
       @Override
-      public void close() throws IOException {
-         this.a.close();
+      public void close() {
+         this.h.close();
       }
    }
 }

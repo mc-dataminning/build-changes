@@ -1,98 +1,42 @@
-import com.google.common.collect.Iterators;
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import java.util.Comparator;
-import java.util.Iterator;
-import java.util.List;
-import java.util.stream.Stream;
+import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
+import java.util.function.Function;
 
-public class bmx<U> implements Iterable<U> {
-   protected final List<bmx.a<U>> a;
-   private final aru b = aru.a();
+public class bmx {
+   public static bmc<cbc> a(bsc<hf> $$0, float $$1, int $$2, int $$3, int $$4) {
+      return boe.a(
+         (Function<boe.b<cbc>, ? extends App<boe.c<cbc>, boh<cbc>>>)($$5 -> $$5.group($$5.a(bsc.E), $$5.c(bsc.m), $$5.b($$0))
+               .apply($$5, ($$6, $$7, $$8) -> ($$9, $$10, $$11) -> {
+                     hf $$12 = $$5.b($$8);
+                     Optional<Long> $$13 = $$5.a($$6);
+                     if ($$12.a() == $$9.ac() && (!$$13.isPresent() || $$9.V() - $$13.get() <= (long)$$4)) {
+                        if ($$12.b().k($$10.dk()) > $$3) {
+                           ehi $$14 = null;
+                           int $$15 = 0;
+                           int $$16 = 1000;
 
-   public bmx() {
-      this.a = Lists.newArrayList();
-   }
+                           while ($$14 == null || gw.a($$14).k($$10.dk()) > $$3) {
+                              $$14 = btr.a($$10, 15, 7, ehi.c($$12.b()), (float) (Math.PI / 2));
+                              if (++$$15 == 1000) {
+                                 $$10.a($$0);
+                                 $$8.b();
+                                 $$6.a($$11);
+                                 return true;
+                              }
+                           }
 
-   private bmx(List<bmx.a<U>> $$0) {
-      this.a = Lists.newArrayList($$0);
-   }
+                           $$7.a(new bsf($$14, $$1, $$2));
+                        } else if ($$12.b().k($$10.dk()) > $$2) {
+                           $$7.a(new bsf($$12.b(), $$1, $$2));
+                        }
+                     } else {
+                        $$10.a($$0);
+                        $$8.b();
+                        $$6.a($$11);
+                     }
 
-   public static <U> Codec<bmx<U>> a(Codec<U> $$0) {
-      return bmx.a.a($$0).listOf().xmap(bmx::new, $$0x -> $$0x.a);
-   }
-
-   public bmx<U> a(U $$0, int $$1) {
-      this.a.add(new bmx.a<>($$0, $$1));
-      return this;
-   }
-
-   public bmx<U> a() {
-      this.a.forEach($$0 -> $$0.a(this.b.i()));
-      this.a.sort(Comparator.comparingDouble(bmx.a::c));
-      return this;
-   }
-
-   public Stream<U> b() {
-      return this.a.stream().map(bmx.a::a);
-   }
-
-   @Override
-   public Iterator<U> iterator() {
-      return Iterators.transform(this.a.iterator(), bmx.a::a);
-   }
-
-   @Override
-   public String toString() {
-      return "ShufflingList[" + this.a + "]";
-   }
-
-   public static class a<T> {
-      final T a;
-      final int b;
-      private double c;
-
-      a(T $$0, int $$1) {
-         this.b = $$1;
-         this.a = $$0;
-      }
-
-      private double c() {
-         return this.c;
-      }
-
-      void a(float $$0) {
-         this.c = -Math.pow((double)$$0, (double)(1.0F / (float)this.b));
-      }
-
-      public T a() {
-         return this.a;
-      }
-
-      public int b() {
-         return this.b;
-      }
-
-      @Override
-      public String toString() {
-         return this.b + ":" + this.a;
-      }
-
-      public static <E> Codec<bmx.a<E>> a(final Codec<E> $$0) {
-         return new Codec<bmx.a<E>>() {
-            public <T> DataResult<Pair<bmx.a<E>, T>> decode(DynamicOps<T> $$0x, T $$1) {
-               Dynamic<T> $$2 = new Dynamic($$0, $$1);
-               return $$2.get("data").flatMap($$0::parse).map($$1x -> new bmx.a<>($$1x, $$2.get("weight").asInt(1))).map($$1x -> Pair.of($$1x, $$0.empty()));
-            }
-
-            public <T> DataResult<T> a(bmx.a<E> $$0x, DynamicOps<T> $$1, T $$2) {
-               return $$1.mapBuilder().add("weight", $$1.createInt($$0.b)).add("data", $$0.encodeStart($$1, $$0.a)).build($$2);
-            }
-         };
-      }
+                     return true;
+                  }))
+      );
    }
 }

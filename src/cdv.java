@@ -1,12 +1,9 @@
 public class cdv {
-   private final String a;
+   final cdy a;
+   final long b;
 
-   public cdv(String $$0) {
+   cdv(cdy $$0, int $$1) {
       this.a = $$0;
-   }
-
-   @Override
-   public String toString() {
-      return this.a;
+      this.b = 1L << $$1;
    }
 }

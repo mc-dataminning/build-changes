@@ -1,69 +1,138 @@
-public class byc {
-   public static final aeq<byb> a = a("kebab");
-   public static final aeq<byb> b = a("aztec");
-   public static final aeq<byb> c = a("alban");
-   public static final aeq<byb> d = a("aztec2");
-   public static final aeq<byb> e = a("bomb");
-   public static final aeq<byb> f = a("plant");
-   public static final aeq<byb> g = a("wasteland");
-   public static final aeq<byb> h = a("pool");
-   public static final aeq<byb> i = a("courbet");
-   public static final aeq<byb> j = a("sea");
-   public static final aeq<byb> k = a("sunset");
-   public static final aeq<byb> l = a("creebet");
-   public static final aeq<byb> m = a("wanderer");
-   public static final aeq<byb> n = a("graham");
-   public static final aeq<byb> o = a("match");
-   public static final aeq<byb> p = a("bust");
-   public static final aeq<byb> q = a("stage");
-   public static final aeq<byb> r = a("void");
-   public static final aeq<byb> s = a("skull_and_roses");
-   public static final aeq<byb> t = a("wither");
-   public static final aeq<byb> u = a("fighters");
-   public static final aeq<byb> v = a("pointer");
-   public static final aeq<byb> w = a("pigscene");
-   public static final aeq<byb> x = a("burning_skull");
-   public static final aeq<byb> y = a("skeleton");
-   public static final aeq<byb> z = a("donkey_kong");
-   public static final aeq<byb> A = a("earth");
-   public static final aeq<byb> B = a("wind");
-   public static final aeq<byb> C = a("water");
-   public static final aeq<byb> D = a("fire");
+import java.util.List;
+import javax.annotation.Nullable;
 
-   public static byb a(hr<byb> $$0) {
-      hr.a($$0, a, new byb(16, 16));
-      hr.a($$0, b, new byb(16, 16));
-      hr.a($$0, c, new byb(16, 16));
-      hr.a($$0, d, new byb(16, 16));
-      hr.a($$0, e, new byb(16, 16));
-      hr.a($$0, f, new byb(16, 16));
-      hr.a($$0, g, new byb(16, 16));
-      hr.a($$0, h, new byb(32, 16));
-      hr.a($$0, i, new byb(32, 16));
-      hr.a($$0, j, new byb(32, 16));
-      hr.a($$0, k, new byb(32, 16));
-      hr.a($$0, l, new byb(32, 16));
-      hr.a($$0, m, new byb(16, 32));
-      hr.a($$0, n, new byb(16, 32));
-      hr.a($$0, o, new byb(32, 32));
-      hr.a($$0, p, new byb(32, 32));
-      hr.a($$0, q, new byb(32, 32));
-      hr.a($$0, r, new byb(32, 32));
-      hr.a($$0, s, new byb(32, 32));
-      hr.a($$0, t, new byb(32, 32));
-      hr.a($$0, u, new byb(64, 32));
-      hr.a($$0, v, new byb(64, 64));
-      hr.a($$0, w, new byb(64, 64));
-      hr.a($$0, x, new byb(64, 64));
-      hr.a($$0, y, new byb(64, 48));
-      hr.a($$0, A, new byb(32, 32));
-      hr.a($$0, B, new byb(32, 32));
-      hr.a($$0, C, new byb(32, 32));
-      hr.a($$0, D, new byb(32, 32));
-      return hr.a($$0, z, new byb(64, 48));
+public class byc extends bya {
+   public static final double e = 0.375;
+
+   public byc(bip<? extends byc> $$0, cpq $$1) {
+      super($$0, $$1);
    }
 
-   private static aeq<byb> a(String $$0) {
-      return aeq.a(jc.P, new aer($$0));
+   public byc(cpq $$0, gw $$1) {
+      super(bip.ah, $$0, $$1);
+      this.e((double)$$1.u(), (double)$$1.v(), (double)$$1.w());
+   }
+
+   @Override
+   protected void s() {
+      this.p((double)this.c.u() + 0.5, (double)this.c.v() + 0.375, (double)this.c.w() + 0.5);
+      double $$0 = (double)this.ag().k() / 2.0;
+      double $$1 = (double)this.ag().l();
+      this.a(new ehd(this.dp() - $$0, this.dr(), this.dv() - $$0, this.dp() + $$0, this.dr() + $$1, this.dv() + $$0));
+   }
+
+   @Override
+   public void a(hc $$0) {
+   }
+
+   @Override
+   public int v() {
+      return 9;
+   }
+
+   @Override
+   public int w() {
+      return 9;
+   }
+
+   @Override
+   protected float a(bjn $$0, bim $$1) {
+      return 0.0625F;
+   }
+
+   @Override
+   public boolean a(double $$0) {
+      return $$0 < 1024.0;
+   }
+
+   @Override
+   public void a(@Nullable bil $$0) {
+      this.a(aoz.mq, 1.0F, 1.0F);
+   }
+
+   @Override
+   public void b(qu $$0) {
+   }
+
+   @Override
+   public void a(qu $$0) {
+   }
+
+   @Override
+   public bgt a(cbp $$0, bgs $$1) {
+      if (this.dK().B) {
+         return bgt.a;
+      } else {
+         boolean $$2 = false;
+         double $$3 = 7.0;
+         List<bjd> $$4 = this.dK().a(bjd.class, new ehd(this.dp() - 7.0, this.dr() - 7.0, this.dv() - 7.0, this.dp() + 7.0, this.dr() + 7.0, this.dv() + 7.0));
+
+         for (bjd $$5 : $$4) {
+            if ($$5.fP() == $$0) {
+               $$5.b(this, true);
+               $$2 = true;
+            }
+         }
+
+         boolean $$6 = false;
+         if (!$$2) {
+            this.ak();
+            if ($$0.fR().d) {
+               for (bjd $$7 : $$4) {
+                  if ($$7.fO() && $$7.fP() == this) {
+                     $$7.a(true, false);
+                     $$6 = true;
+                  }
+               }
+            }
+         }
+
+         if ($$2 || $$6) {
+            this.a(djo.b, $$0);
+         }
+
+         return bgt.b;
+      }
+   }
+
+   @Override
+   public boolean t() {
+      return this.dK().a_(this.c).a(apo.S);
+   }
+
+   public static byc b(cpq $$0, gw $$1) {
+      int $$2 = $$1.u();
+      int $$3 = $$1.v();
+      int $$4 = $$1.w();
+
+      for (byc $$6 : $$0.a(byc.class, new ehd((double)$$2 - 1.0, (double)$$3 - 1.0, (double)$$4 - 1.0, (double)$$2 + 1.0, (double)$$3 + 1.0, (double)$$4 + 1.0))) {
+         if ($$6.y().equals($$1)) {
+            return $$6;
+         }
+      }
+
+      byc $$7 = new byc($$0, $$1);
+      $$0.b($$7);
+      return $$7;
+   }
+
+   @Override
+   public void x() {
+      this.a(aoz.mr, 1.0F, 1.0F);
+   }
+
+   @Override
+   public va<ws> U() {
+      return new wt(this, 0, this.y());
+   }
+
+   @Override
+   public ehi q(float $$0) {
+      return this.l($$0).b(0.0, 0.2, 0.0);
+   }
+
+   @Override
+   public cja dx() {
+      return new cja(cjd.tQ);
    }
 }

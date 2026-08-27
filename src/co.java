@@ -1,50 +1,44 @@
 import com.google.gson.JsonObject;
 import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class co extends cu<co.a> {
-   static final aer a = new aer("player_interacted_with_entity");
-
-   @Override
-   public aer a() {
-      return a;
-   }
-
-   protected co.a a(JsonObject $$0, Optional<ba> $$1, be $$2) {
-      Optional<bz> $$3 = bz.a($$0.get("item"));
-      Optional<ba> $$4 = bo.a($$0, "entity", $$2);
+public class co extends cw<co.a> {
+   protected co.a a(JsonObject $$0, Optional<bc> $$1, bg $$2) {
+      Optional<cb> $$3 = cb.a($$0.get("item"));
+      Optional<bc> $$4 = bq.a($$0, "entity", $$2);
       return new co.a($$1, $$3, $$4);
    }
 
-   public void a(akl $$0, cix $$1, bii $$2) {
-      ecg $$3 = bo.b($$0, $$2);
-      this.a($$0, $$2x -> $$2x.a($$1, $$3));
+   public void a(ako $$0, cja $$1, @Nullable bil $$2) {
+      ecl $$3 = bq.b($$0, $$2);
+      this.a($$0, $$3x -> $$3x.a($$0, $$1, $$3));
    }
 
-   public static class a extends ar {
-      private final Optional<bz> a;
-      private final Optional<ba> b;
+   public static class a extends at {
+      private final Optional<cb> a;
+      private final Optional<bc> b;
 
-      public a(Optional<ba> $$0, Optional<bz> $$1, Optional<ba> $$2) {
-         super(co.a, $$0);
+      public a(Optional<bc> $$0, Optional<cb> $$1, Optional<bc> $$2) {
+         super($$0);
          this.a = $$1;
          this.b = $$2;
       }
 
-      public static co.a a(Optional<ba> $$0, bz.a $$1, Optional<ba> $$2) {
-         return new co.a($$0, $$1.b(), $$2);
+      public static am<co.a> a(bc $$0, Optional<cb> $$1, Optional<bc> $$2) {
+         return al.O.a(new co.a(Optional.of($$0), $$1, $$2));
       }
 
-      public static co.a a(bz.a $$0, Optional<ba> $$1) {
-         return a(Optional.empty(), $$0, $$1);
+      public static am<co.a> a(Optional<bc> $$0, Optional<cb> $$1, Optional<bc> $$2) {
+         return al.P.a(new co.a($$0, $$1, $$2));
       }
 
-      public boolean a(cix $$0, ecg $$1) {
-         return this.a.isPresent() && !this.a.get().a($$0) ? false : this.b.isEmpty() || this.b.get().a($$1);
+      public boolean a(ako $$0, cja $$1, ecl $$2) {
+         return this.a.isPresent() && !this.a.get().a($$1) ? false : !this.b.isPresent() || this.b.get().a($$2);
       }
 
       @Override
-      public JsonObject b() {
-         JsonObject $$0 = super.b();
+      public JsonObject a() {
+         JsonObject $$0 = super.a();
          this.a.ifPresent($$1 -> $$0.add("item", $$1.a()));
          this.b.ifPresent($$1 -> $$0.add("entity", $$1.a()));
          return $$0;

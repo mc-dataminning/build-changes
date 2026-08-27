@@ -1,201 +1,87 @@
 import javax.annotation.Nullable;
 
-public class crq extends csl implements csn {
-   protected static final float a = 3.0F;
-   protected static final float b = 5.0F;
-   protected static final float c = 1.5F;
-   protected static final ehw d = csl.a(5.0, 0.0, 5.0, 11.0, 16.0, 11.0);
-   protected static final ehw e = csl.a(3.0, 0.0, 3.0, 13.0, 16.0, 13.0);
-   protected static final ehw f = csl.a(6.5, 0.0, 6.5, 9.5, 16.0, 9.5);
-   public static final dfz g = dfp.aq;
-   public static final dfx<dfl> h = dfp.bk;
-   public static final dfz i = dfp.aU;
-   public static final int j = 16;
-   public static final int k = 0;
-   public static final int l = 1;
-   public static final int m = 0;
-   public static final int n = 1;
+public class crq extends crp implements czr {
+   public static final dfv a = dfu.C;
+   public static final dfy b = dfu.P;
+   protected final eib c;
+   protected final eib d;
+   protected final eib e;
+   protected final eib f;
+   protected final eib g;
+   protected final eib h;
 
-   public crq(dey.d $$0) {
-      super($$0);
-      this.k(this.C.b().a(g, Integer.valueOf(0)).a(h, dfl.a).a(i, Integer.valueOf(0)));
+   public crq(int $$0, int $$1, dfd.d $$2) {
+      super($$2);
+      this.k(this.n().a(a, Boolean.valueOf(false)).a(b, hc.b));
+      this.g = csq.a((double)$$1, 0.0, (double)$$1, (double)(16 - $$1), (double)$$0, (double)(16 - $$1));
+      this.h = csq.a((double)$$1, (double)(16 - $$0), (double)$$1, (double)(16 - $$1), 16.0, (double)(16 - $$1));
+      this.c = csq.a((double)$$1, (double)$$1, (double)(16 - $$0), (double)(16 - $$1), (double)(16 - $$1), 16.0);
+      this.d = csq.a((double)$$1, (double)$$1, 0.0, (double)(16 - $$1), (double)(16 - $$1), (double)$$0);
+      this.e = csq.a(0.0, (double)$$1, (double)$$1, (double)$$0, (double)(16 - $$1), (double)(16 - $$1));
+      this.f = csq.a((double)(16 - $$0), (double)$$1, (double)$$1, 16.0, (double)(16 - $$1), (double)(16 - $$1));
    }
 
    @Override
-   protected void a(dfa.a<csl, dez> $$0) {
-      $$0.a(g, h, i);
+   public eib a(dfe $$0, cow $$1, gw $$2, ehn $$3) {
+      hc $$4 = $$0.c(b);
+      switch ($$4) {
+         case c:
+            return this.c;
+         case d:
+            return this.d;
+         case f:
+            return this.e;
+         case e:
+            return this.f;
+         case a:
+            return this.h;
+         case b:
+         default:
+            return this.g;
+      }
    }
 
    @Override
-   public boolean c(dez $$0, cor $$1, gu $$2) {
-      return true;
+   public boolean a(dfe $$0, cpt $$1, gw $$2) {
+      hc $$3 = $$0.c(b);
+      gw $$4 = $$2.a($$3.g());
+      return $$1.a_($$4).d($$1, $$4, $$3);
    }
 
    @Override
-   public ehw a(dez $$0, cor $$1, gu $$2, ehi $$3) {
-      ehw $$4 = $$0.c(h) == dfl.c ? e : d;
-      ehd $$5 = $$0.n($$1, $$2);
-      return $$4.a($$5.c, $$5.d, $$5.e);
-   }
+   public dfe a(dfe $$0, hc $$1, dfe $$2, cpr $$3, gw $$4, gw $$5) {
+      if ($$0.c(a)) {
+         $$3.a($$4, eai.c, eai.c.a($$3));
+      }
 
-   @Override
-   public boolean a(dez $$0, cor $$1, gu $$2, eas $$3) {
-      return false;
-   }
-
-   @Override
-   public ehw c(dez $$0, cor $$1, gu $$2, ehi $$3) {
-      ehd $$4 = $$0.n($$1, $$2);
-      return f.a($$4.c, $$4.d, $$4.e);
-   }
-
-   @Override
-   public boolean a_(dez $$0, cor $$1, gu $$2) {
-      return false;
+      return $$1 == $$0.c(b).g() && !$$0.a($$3, $$4) ? csr.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Nullable
    @Override
-   public dez a(clf $$0) {
-      eac $$1 = $$0.q().b_($$0.a());
-      if (!$$1.c()) {
-         return null;
-      } else {
-         dez $$2 = $$0.q().a_($$0.a().d());
-         if ($$2.a(apl.at)) {
-            if ($$2.a(csm.mY)) {
-               return this.n().a(g, Integer.valueOf(0));
-            } else if ($$2.a(csm.mZ)) {
-               int $$3 = $$2.c(g) > 0 ? 1 : 0;
-               return this.n().a(g, Integer.valueOf($$3));
-            } else {
-               dez $$4 = $$0.q().a_($$0.a().c());
-               return $$4.a(csm.mZ) ? this.n().a(g, $$4.c(g)) : csm.mY.n();
-            }
-         } else {
-            return null;
-         }
-      }
+   public dfe a(cli $$0) {
+      cpr $$1 = $$0.q();
+      gw $$2 = $$0.a();
+      return this.n().a(a, Boolean.valueOf($$1.b_($$2).a() == eai.c)).a(b, $$0.k());
    }
 
    @Override
-   public void a(dez $$0, akk $$1, gu $$2, aru $$3) {
-      if (!$$0.a($$1, $$2)) {
-         $$1.b($$2, true);
-      }
+   public dfe a(dfe $$0, czc $$1) {
+      return $$0.a(b, $$1.a($$0.c(b)));
    }
 
    @Override
-   public boolean e_(dez $$0) {
-      return $$0.c(i) == 0;
+   public dfe a(dfe $$0, cxl $$1) {
+      return $$0.a($$1.a($$0.c(b)));
    }
 
    @Override
-   public void b(dez $$0, akk $$1, gu $$2, aru $$3) {
-      if ($$0.c(i) == 0) {
-         if ($$3.a(3) == 0 && $$1.t($$2.c()) && $$1.b($$2.c(), 0) >= 9) {
-            int $$4 = this.b($$1, $$2) + 1;
-            if ($$4 < 16) {
-               this.a($$0, $$1, $$2, $$3, $$4);
-            }
-         }
-      }
+   public eah c_(dfe $$0) {
+      return $$0.c(a) ? eai.c.a(false) : super.c_($$0);
    }
 
    @Override
-   public boolean a(dez $$0, cpo $$1, gu $$2) {
-      return $$1.a_($$2.d()).a(apl.at);
-   }
-
-   @Override
-   public dez a(dez $$0, ha $$1, dez $$2, cpm $$3, gu $$4, gu $$5) {
-      if (!$$0.a($$3, $$4)) {
-         $$3.a($$4, this, 1);
-      }
-
-      if ($$1 == ha.b && $$2.a(csm.mZ) && $$2.c(g) > $$0.c(g)) {
-         $$3.a($$4, $$0.a(g), 2);
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   public boolean a(cpo $$0, gu $$1, dez $$2) {
-      int $$3 = this.a($$0, $$1);
-      int $$4 = this.b($$0, $$1);
-      return $$3 + $$4 + 1 < 16 && $$0.a_($$1.b($$3)).c(i) != 1;
-   }
-
-   @Override
-   public boolean a(cpl $$0, aru $$1, gu $$2, dez $$3) {
-      return true;
-   }
-
-   @Override
-   public void a(akk $$0, aru $$1, gu $$2, dez $$3) {
-      int $$4 = this.a($$0, $$2);
-      int $$5 = this.b($$0, $$2);
-      int $$6 = $$4 + $$5 + 1;
-      int $$7 = 1 + $$1.a(2);
-
-      for (int $$8 = 0; $$8 < $$7; $$8++) {
-         gu $$9 = $$2.b($$4);
-         dez $$10 = $$0.a_($$9);
-         if ($$6 >= 16 || $$10.c(i) == 1 || !$$0.t($$9.c())) {
-            return;
-         }
-
-         this.a($$10, $$0, $$9, $$1, $$6);
-         $$4++;
-         $$6++;
-      }
-   }
-
-   @Override
-   public float a(dez $$0, cbm $$1, cor $$2, gu $$3) {
-      return $$1.eR().d() instanceof cki ? 1.0F : super.a($$0, $$1, $$2, $$3);
-   }
-
-   protected void a(dez $$0, cpl $$1, gu $$2, aru $$3, int $$4) {
-      dez $$5 = $$1.a_($$2.d());
-      gu $$6 = $$2.c(2);
-      dez $$7 = $$1.a_($$6);
-      dfl $$8 = dfl.a;
-      if ($$4 >= 1) {
-         if (!$$5.a(csm.mZ) || $$5.c(h) == dfl.a) {
-            $$8 = dfl.b;
-         } else if ($$5.a(csm.mZ) && $$5.c(h) != dfl.a) {
-            $$8 = dfl.c;
-            if ($$7.a(csm.mZ)) {
-               $$1.a($$2.d(), $$5.a(h, dfl.b), 3);
-               $$1.a($$6, $$7.a(h, dfl.a), 3);
-            }
-         }
-      }
-
-      int $$9 = $$0.c(g) != 1 && !$$7.a(csm.mZ) ? 0 : 1;
-      int $$10 = ($$4 < 11 || !($$3.i() < 0.25F)) && $$4 != 15 ? 0 : 1;
-      $$1.a($$2.c(), this.n().a(g, Integer.valueOf($$9)).a(h, $$8).a(i, Integer.valueOf($$10)), 3);
-   }
-
-   protected int a(cor $$0, gu $$1) {
-      int $$2 = 0;
-
-      while ($$2 < 16 && $$0.a_($$1.b($$2 + 1)).a(csm.mZ)) {
-         $$2++;
-      }
-
-      return $$2;
-   }
-
-   protected int b(cor $$0, gu $$1) {
-      int $$2 = 0;
-
-      while ($$2 < 16 && $$0.a_($$1.c($$2 + 1)).a(csm.mZ)) {
-         $$2++;
-      }
-
-      return $$2;
+   protected void a(dff.a<csq, dfe> $$0) {
+      $$0.a(a, b);
    }
 }

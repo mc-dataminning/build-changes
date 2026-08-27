@@ -1,28 +1,45 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.OptionalInt;
 
-public class dqy extends dqx {
-   public static final Codec<dqy> c = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, dqy::new));
+public class dqy extends dqw {
+   public static final Codec<dqy> d = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.intRange(0, 80).fieldOf("limit").orElse(1).forGetter($$0x -> $$0x.e),
+               Codec.intRange(0, 80).fieldOf("upper_limit").orElse(1).forGetter($$0x -> $$0x.f),
+               Codec.intRange(0, 16).fieldOf("lower_size").orElse(0).forGetter($$0x -> $$0x.g),
+               Codec.intRange(0, 16).fieldOf("middle_size").orElse(1).forGetter($$0x -> $$0x.h),
+               Codec.intRange(0, 16).fieldOf("upper_size").orElse(1).forGetter($$0x -> $$0x.i),
+               a()
+            )
+            .apply($$0, dqy::new)
+   );
+   private final int e;
+   private final int f;
+   private final int g;
+   private final int h;
+   private final int i;
 
-   public dqy(bfv $$0, bfv $$1, int $$2) {
-      super($$0, $$1, $$2);
+   public dqy(int $$0, int $$1, int $$2, int $$3, int $$4, OptionalInt $$5) {
+      super($$5);
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
+      this.h = $$3;
+      this.i = $$4;
    }
 
    @Override
-   protected drd<?> a() {
-      return drd.e;
+   protected dqx<?> b() {
+      return dqx.b;
    }
 
    @Override
-   protected void a(cpr $$0, drc.b $$1, aru $$2, dqm $$3, int $$4, drc.a $$5, int $$6, int $$7, int $$8) {
-      for (int $$9 = $$8; $$9 >= $$8 - $$6; $$9--) {
-         int $$10 = $$7 + $$5.b() - 1 - $$9;
-         this.a($$0, $$1, $$2, $$3, $$5.a(), $$10, $$9, $$5.c());
+   public int a(int $$0, int $$1) {
+      if ($$1 < this.e) {
+         return this.g;
+      } else {
+         return $$1 >= $$0 - this.f ? this.i : this.h;
       }
-   }
-
-   @Override
-   protected boolean a(aru $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$1 == $$4 && $$3 == $$4 && $$0.a(2) == 0;
    }
 }

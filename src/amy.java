@@ -1,33 +1,33 @@
-import java.util.function.UnaryOperator;
+public enum amy {
+   a("old"),
+   b("new"),
+   c("compatible");
 
-public interface amy {
-   UnaryOperator<tf> a = UnaryOperator.identity();
-   amy b = a(a, true);
-   amy c = a(a("pack.source.builtin"), true);
-   amy d = a(a("pack.source.feature"), false);
-   amy e = a(a("pack.source.world"), true);
-   amy f = a(a("pack.source.server"), true);
+   private final ti d;
+   private final ti e;
 
-   tf a(tf var1);
-
-   boolean a();
-
-   static amy a(final UnaryOperator<tf> $$0, final boolean $$1) {
-      return new amy() {
-         @Override
-         public tf a(tf $$0x) {
-            return $$0.apply($$0);
-         }
-
-         @Override
-         public boolean a() {
-            return $$1;
-         }
-      };
+   private amy(String $$0) {
+      this.d = ti.c("pack.incompatible." + $$0).a(n.h);
+      this.e = ti.c("pack.incompatible.confirm." + $$0);
    }
 
-   private static UnaryOperator<tf> a(String $$0) {
-      tf $$1 = tf.c($$0);
-      return $$1x -> tf.a("pack.nameAndSource", $$1x, $$1).a(n.h);
+   public boolean a() {
+      return this == c;
+   }
+
+   public static amy a(arl<Integer> $$0, int $$1) {
+      if ($$0.b() < $$1) {
+         return a;
+      } else {
+         return $$1 < $$0.a() ? b : c;
+      }
+   }
+
+   public ti b() {
+      return this.d;
+   }
+
+   public ti c() {
+      return this.e;
    }
 }

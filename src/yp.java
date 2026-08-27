@@ -1,54 +1,32 @@
-import java.util.UUID;
-import javax.annotation.Nullable;
+public class yp implements va<ws> {
+   private final gw a;
+   private final boolean b;
 
-public record yp(UUID a, int b, @Nullable tq c, tx.a d, @Nullable tf e, ti f, tb.b g) implements ux<wp> {
-   public yp(si $$0) {
-      this($$0.o(), $$0.m(), $$0.c(tq::a), new tx.a($$0), $$0.c(si::l), ti.a($$0), new tb.b($$0));
+   public yp(gw $$0, boolean $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
+
+   public yp(sl $$0) {
+      this.a = $$0.e();
+      this.b = $$0.readBoolean();
    }
 
    @Override
-   public void a(si $$0) {
+   public void a(sl $$0) {
       $$0.a(this.a);
-      $$0.c(this.b);
-      $$0.a(this.c, tq::a);
-      this.d.a($$0);
-      $$0.a(this.e, si::a);
-      ti.a($$0, this.f);
-      this.g.a($$0);
+      $$0.a(this.b);
    }
 
-   public void a(wp $$0) {
+   public void a(ws $$0) {
       $$0.a(this);
    }
 
-   @Override
-   public boolean b() {
-      return true;
+   public gw a() {
+      return this.a;
    }
 
-   public int d() {
+   public boolean d() {
       return this.b;
-   }
-
-   @Nullable
-   public tq e() {
-      return this.c;
-   }
-
-   public tx.a f() {
-      return this.d;
-   }
-
-   @Nullable
-   public tf g() {
-      return this.e;
-   }
-
-   public ti h() {
-      return this.f;
-   }
-
-   public tb.b i() {
-      return this.g;
    }
 }

@@ -1,24 +1,21 @@
-public class cka extends cis {
-   public cka(cis.a $$0) {
-      super($$0);
+import javax.annotation.Nullable;
+
+public class cka extends ckj {
+   public cka(civ.a $$0, csq $$1, csq $$2) {
+      super($$1, $$2, $$0, hc.a);
+   }
+
+   public cka(civ.a $$0, csq $$1, csq $$2, hc $$3) {
+      super($$1, $$2, $$0, $$3);
    }
 
    @Override
-   public bgr<cix> a(cpl $$0, cbm $$1, bgp $$2) {
-      cix $$3 = $$1.b($$2);
-      $$0.a(null, $$1.dp(), $$1.dr(), $$1.dv(), aow.wN, aox.g, 0.5F, 0.4F / ($$0.y_().i() * 0.4F + 0.8F));
-      if (!$$0.B) {
-         cci $$4 = new cci($$0, $$1);
-         $$4.a($$3);
-         $$4.a($$1, $$1.dC(), $$1.dA(), 0.0F, 1.5F, 1.0F);
-         $$0.b($$4);
+   protected boolean a(gw $$0, cpq $$1, @Nullable cbp $$2, cja $$3, dfe $$4) {
+      boolean $$5 = super.a($$0, $$1, $$2, $$3, $$4);
+      if (!$$1.B && !$$5 && $$2 != null && $$1.c_($$0) instanceof ddy $$6 && $$1.a_($$0).b() instanceof czq $$7) {
+         $$7.a($$2, $$6, true);
       }
 
-      $$1.b(apg.c.b(this));
-      if (!$$1.fR().d) {
-         $$3.h(1);
-      }
-
-      return bgr.a($$3, $$0.r_());
+      return $$5;
    }
 }

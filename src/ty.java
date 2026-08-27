@@ -1,89 +1,44 @@
-import com.mojang.logging.LogUtils;
-import java.time.Instant;
+import com.mojang.authlib.GameProfile;
+import java.time.Duration;
 import java.util.UUID;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class ty {
-   private static final Logger a = LogUtils.getLogger();
-   @Nullable
-   private tz b;
-
-   public ty(UUID $$0, UUID $$1) {
-      this.b = tz.a($$0, $$1);
+public record ty(UUID a, cbs b) {
+   public ud a(Duration $$0) {
+      return new ud.a(this.b.a(), () -> this.b.b().a($$0));
    }
 
-   public ty.c a(asa $$0) {
-      return $$1 -> {
-         tz $$2 = this.a();
-         return $$2 == null ? null : new tq($$0.sign($$2x -> tu.a($$2x, $$2, $$1)));
-      };
+   public ub.b a(UUID $$0) {
+      return new ub($$0, this.a).a(this.b);
    }
 
-   public ty.b a(cbp $$0) {
-      arz $$1 = $$0.a();
-      return ($$2, $$3) -> {
-         tz $$4 = this.a();
-         if ($$4 == null) {
-            throw new ty.a(tf.c("chat.disabled.chain_broken"), false);
-         } else if ($$0.b().a()) {
-            throw new ty.a(tf.c("chat.disabled.expiredProfileKey"), false);
-         } else {
-            tu $$5 = new tu($$4, $$2, $$3, null, ti.c);
-            if (!$$5.a($$1)) {
-               throw new ty.a(tf.c("multiplayer.disconnect.unsigned_chat"), true);
-            } else {
-               if ($$5.a(Instant.now())) {
-                  a.warn("Received expired chat: '{}'. Is the client/server system time unsynchronized?", $$3.a());
-               }
-
-               return $$5;
-            }
-         }
-      };
+   public ty.a a() {
+      return new ty.a(this.a, this.b.b());
    }
 
-   @Nullable
-   private tz a() {
-      tz $$0 = this.b;
-      if ($$0 != null) {
-         this.b = $$0.a();
+   public boolean b() {
+      return this.b.b().a();
+   }
+
+   public UUID c() {
+      return this.a;
+   }
+
+   public cbs d() {
+      return this.b;
+   }
+
+   public static record a(UUID a, cbs.a b) {
+      public static ty.a a(sl $$0) {
+         return new ty.a($$0.o(), new cbs.a($$0));
       }
 
-      return $$0;
-   }
-
-   public static class a extends ue {
-      private final boolean a;
-
-      public a(tf $$0, boolean $$1) {
-         super($$0);
-         this.a = $$1;
+      public static void a(sl $$0, ty.a $$1) {
+         $$0.a($$1.a);
+         $$1.b.a($$0);
       }
 
-      public boolean a() {
-         return this.a;
+      public ty a(GameProfile $$0, asc $$1) throws cbs.b {
+         return new ty(this.a, cbs.a($$1, $$0.getId(), this.b));
       }
-   }
-
-   @FunctionalInterface
-   public interface b {
-      ty.b a = ($$0, $$1) -> {
-         throw new ty.a(tf.c("chat.disabled.missingProfileKey"), false);
-      };
-
-      static ty.b unsigned(UUID $$0) {
-         return ($$1, $$2) -> tu.a($$0, $$2.a());
-      }
-
-      tu unpack(@Nullable tq var1, tx var2) throws ty.a;
-   }
-
-   @FunctionalInterface
-   public interface c {
-      ty.c a = $$0 -> null;
-
-      @Nullable
-      tq pack(tx var1);
    }
 }

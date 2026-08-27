@@ -1,17 +1,12 @@
-import java.util.HashSet;
-import java.util.Set;
-
-public record wl(Set<aer> a) implements ux<wi> {
-   public wl(si $$0) {
-      this($$0.a(HashSet::new, si::s));
-   }
-
+public interface wl extends vd {
    @Override
-   public void a(si $$0) {
-      $$0.a(this.a, si::a);
+   default sk b() {
+      return sk.e;
    }
 
-   public void a(wi $$0) {
-      $$0.a(this);
-   }
+   void a(wm var1);
+
+   void a(wn var1);
+
+   void a(wo var1);
 }

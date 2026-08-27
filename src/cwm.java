@@ -1,52 +1,61 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.Maps;
+import java.util.Map;
+import java.util.function.Supplier;
 
-public class cwm extends cvy implements cwz {
-   protected static final ehw f = csl.a(0.0, 0.0, 0.0, 16.0, 9.0, 16.0);
-   private static final double g = 0.14;
+public class cwm extends csq {
+   private final csq a;
+   private static final Map<csq, csq> b = Maps.newIdentityHashMap();
+   private static final Map<dfe, dfe> c = Maps.newIdentityHashMap();
+   private static final Map<dfe, dfe> d = Maps.newIdentityHashMap();
 
-   protected cwm(dey.d $$0) {
-      super($$0, ha.b, f, true, 0.14);
+   public cwm(csq $$0, dfd.d $$1) {
+      super($$1.e($$0.t() / 2.0F).f(0.75F));
+      this.a = $$0;
+      b.put($$0, this);
+   }
+
+   public csq a() {
+      return this.a;
+   }
+
+   public static boolean h(dfe $$0) {
+      return b.containsKey($$0.b());
+   }
+
+   private void a(akn $$0, gw $$1) {
+      bzk $$2 = bip.aI.a((cpq)$$0);
+      if ($$2 != null) {
+         $$2.b((double)$$1.u() + 0.5, (double)$$1.v(), (double)$$1.w() + 0.5, 0.0F, 0.0F);
+         $$0.b($$2);
+         $$2.N();
+      }
    }
 
    @Override
-   protected boolean g(dez $$0) {
-      return $$0.a(csm.G);
+   public void a(dfe $$0, akn $$1, gw $$2, cja $$3, boolean $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      if ($$1.X().b(cpm.g) && cnl.a(cnn.v, $$3) == 0) {
+         this.a($$1, $$2);
+      }
    }
 
-   @Override
-   protected csl a() {
-      return csm.md;
+   public static dfe n(dfe $$0) {
+      return a(c, $$0, () -> b.get($$0.b()).n());
    }
 
-   @Override
-   protected boolean h(dez $$0) {
-      return !$$0.a(csm.kJ);
+   public dfe o(dfe $$0) {
+      return a(d, $$0, () -> this.a().n());
    }
 
-   @Override
-   public boolean a(@Nullable cbm $$0, cor $$1, gu $$2, dez $$3, eab $$4) {
-      return false;
-   }
+   private static dfe a(Map<dfe, dfe> $$0, dfe $$1, Supplier<dfe> $$2) {
+      return $$0.computeIfAbsent($$1, $$1x -> {
+         dfe $$2x = $$2.get();
 
-   @Override
-   public boolean a(cpm $$0, gu $$1, dez $$2, eac $$3) {
-      return false;
-   }
+         for (dgh $$3 : $$1x.B()) {
+            $$2x = $$2x.b($$3) ? $$2x.a($$3, $$1x.c($$3)) : $$2x;
+         }
 
-   @Override
-   protected int a(aru $$0) {
-      return 1;
-   }
-
-   @Nullable
-   @Override
-   public dez a(clf $$0) {
-      eac $$1 = $$0.q().b_($$0.a());
-      return $$1.a(apq.a) && $$1.e() == 8 ? super.a($$0) : null;
-   }
-
-   @Override
-   public eac c_(dez $$0) {
-      return ead.c.a(false);
+         return $$2x;
+      });
    }
 }

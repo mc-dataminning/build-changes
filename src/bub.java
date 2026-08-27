@@ -1,97 +1,89 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Maps;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Objects;
 
 public class bub {
-   public static final aeq<bua> a = a("armorer");
-   public static final aeq<bua> b = a("butcher");
-   public static final aeq<bua> c = a("cartographer");
-   public static final aeq<bua> d = a("cleric");
-   public static final aeq<bua> e = a("farmer");
-   public static final aeq<bua> f = a("fisherman");
-   public static final aeq<bua> g = a("fletcher");
-   public static final aeq<bua> h = a("leatherworker");
-   public static final aeq<bua> i = a("librarian");
-   public static final aeq<bua> j = a("mason");
-   public static final aeq<bua> k = a("shepherd");
-   public static final aeq<bua> l = a("toolsmith");
-   public static final aeq<bua> m = a("weaponsmith");
-   public static final aeq<bua> n = a("home");
-   public static final aeq<bua> o = a("meeting");
-   public static final aeq<bua> p = a("beehive");
-   public static final aeq<bua> q = a("bee_nest");
-   public static final aeq<bua> r = a("nether_portal");
-   public static final aeq<bua> s = a("lodestone");
-   public static final aeq<bua> t = a("lightning_rod");
-   private static final Set<dez> u = ImmutableList.of(
-         csm.bn, csm.bo, csm.bk, csm.bl, csm.bi, csm.bg, csm.bm, csm.bc, csm.bh, csm.be, csm.bb, csm.ba, new csl[]{csm.bf, csm.bj, csm.aZ, csm.bd}
-      )
-      .stream()
-      .flatMap($$0 -> $$0.l().a().stream())
-      .filter($$0 -> $$0.c(cse.a) == dfm.a)
-      .collect(ImmutableSet.toImmutableSet());
-   private static final Set<dez> v = ImmutableList.of(csm.ft, csm.fv, csm.fu, csm.fw)
-      .stream()
-      .flatMap($$0 -> $$0.l().a().stream())
-      .collect(ImmutableSet.toImmutableSet());
-   private static final Map<dez, he<bua>> w = Maps.newHashMap();
+   private final gw a;
+   private final hg<bud> b;
+   private int c;
+   private final Runnable d;
 
-   private static Set<dez> a(csl $$0) {
-      return ImmutableSet.copyOf($$0.l().a());
+   public static Codec<bub> a(Runnable $$0) {
+      return RecordCodecBuilder.create(
+         $$1 -> $$1.group(
+                  gw.a.fieldOf("pos").forGetter($$0xx -> $$0xx.a),
+                  aer.a(je.S).fieldOf("type").forGetter($$0xx -> $$0xx.b),
+                  Codec.INT.fieldOf("free_tickets").orElse(0).forGetter($$0xx -> $$0xx.c),
+                  RecordCodecBuilder.point($$0)
+               )
+               .apply($$1, bub::new)
+      );
    }
 
-   private static aeq<bua> a(String $$0) {
-      return aeq.a(jc.S, new aer($$0));
+   private bub(gw $$0, hg<bud> $$1, int $$2, Runnable $$3) {
+      this.a = $$0.i();
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   private static bua a(hr<bua> $$0, aeq<bua> $$1, Set<dez> $$2, int $$3, int $$4) {
-      bua $$5 = new bua($$2, $$3, $$4);
-      hr.a($$0, $$1, $$5);
-      a($$0.f($$1), $$2);
-      return $$5;
+   public bub(gw $$0, hg<bud> $$1, Runnable $$2) {
+      this($$0, $$1, $$1.a().b(), $$2);
    }
 
-   private static void a(he<bua> $$0, Set<dez> $$1) {
-      $$1.forEach($$1x -> {
-         he<bua> $$2 = w.put($$1x, $$0);
-         if ($$2 != null) {
-            throw (IllegalStateException)ac.b(new IllegalStateException(String.format(Locale.ROOT, "%s is defined in more than one PoI type", $$1x)));
-         }
-      });
+   @Deprecated
+   @ast
+   public int a() {
+      return this.c;
    }
 
-   public static Optional<he<bua>> a(dez $$0) {
-      return Optional.ofNullable(w.get($$0));
+   protected boolean b() {
+      if (this.c <= 0) {
+         return false;
+      } else {
+         this.c--;
+         this.d.run();
+         return true;
+      }
    }
 
-   public static boolean b(dez $$0) {
-      return w.containsKey($$0);
+   protected boolean c() {
+      if (this.c >= this.b.a().b()) {
+         return false;
+      } else {
+         this.c++;
+         this.d.run();
+         return true;
+      }
    }
 
-   public static bua a(hr<bua> $$0) {
-      a($$0, a, a(csm.nW), 1, 1);
-      a($$0, b, a(csm.nV), 1, 1);
-      a($$0, c, a(csm.nX), 1, 1);
-      a($$0, d, a(csm.fs), 1, 1);
-      a($$0, e, a(csm.pc), 1, 1);
-      a($$0, f, a(csm.nU), 1, 1);
-      a($$0, g, a(csm.nY), 1, 1);
-      a($$0, h, v, 1, 1);
-      a($$0, i, a(csm.oa), 1, 1);
-      a($$0, j, a(csm.oc), 1, 1);
-      a($$0, k, a(csm.nT), 1, 1);
-      a($$0, l, a(csm.ob), 1, 1);
-      a($$0, m, a(csm.nZ), 1, 1);
-      a($$0, n, u, 1, 1);
-      a($$0, o, a(csm.od), 32, 6);
-      a($$0, p, a(csm.pf), 0, 1);
-      a($$0, q, a(csm.pe), 0, 1);
-      a($$0, r, a(csm.ee), 0, 1);
-      a($$0, s, a(csm.pq), 0, 1);
-      return a($$0, t, a(csm.rr), 0, 1);
+   public boolean d() {
+      return this.c > 0;
+   }
+
+   public boolean e() {
+      return this.c != this.b.a().b();
+   }
+
+   public gw f() {
+      return this.a;
+   }
+
+   public hg<bud> g() {
+      return this.b;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return $$0 != null && this.getClass() == $$0.getClass() ? Objects.equals(this.a, ((bub)$$0).a) : false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return this.a.hashCode();
    }
 }

@@ -8,21 +8,18 @@ import com.mojang.brigadier.suggestion.Suggestions;
 import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
-import java.util.stream.Stream;
 
-public class qj implements ArgumentType<qi> {
-   private static final Collection<String> a = Arrays.asList("techtests.piston", "techtests");
+public class qj implements ArgumentType<String> {
+   private static final Collection<String> a = Arrays.asList("techtests", "mobtests");
 
-   public qi a(StringReader $$0) throws CommandSyntaxException {
+   public String a(StringReader $$0) throws CommandSyntaxException {
       String $$1 = $$0.readUnquotedString();
-      Optional<qi> $$2 = pt.e($$1);
-      if ($$2.isPresent()) {
-         return $$2.get();
+      if (pw.b($$1)) {
+         return $$1;
       } else {
-         Message $$3 = tf.b("No such test: " + $$1);
-         throw new CommandSyntaxException(new SimpleCommandExceptionType($$3), $$3);
+         Message $$2 = ti.b("No such test class: " + $$1);
+         throw new CommandSyntaxException(new SimpleCommandExceptionType($$2), $$2);
       }
    }
 
@@ -30,13 +27,12 @@ public class qj implements ArgumentType<qi> {
       return new qj();
    }
 
-   public static qi a(CommandContext<dr> $$0, String $$1) {
-      return (qi)$$0.getArgument($$1, qi.class);
+   public static String a(CommandContext<dt> $$0, String $$1) {
+      return (String)$$0.getArgument($$1, String.class);
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      Stream<String> $$2 = pt.a().stream().map(qi::a);
-      return du.b($$2, $$1);
+      return dw.b(pw.b().stream(), $$1);
    }
 
    public Collection<String> getExamples() {

@@ -1,29 +1,44 @@
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.context.CommandContext;
-import com.mojang.serialization.Codec;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
+import com.mojang.brigadier.suggestion.Suggestions;
+import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import java.util.Arrays;
-import java.util.Locale;
+import java.util.Collection;
+import java.util.concurrent.CompletableFuture;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public class ef extends ex<dki.a> {
-   private static final Codec<dki.a> a = ash.a(ef::b, $$0 -> $$0.toLowerCase(Locale.ROOT));
+public class ef implements ArgumentType<cpn> {
+   private static final Collection<String> a = Stream.of(cpn.a, cpn.b).map(cpn::b).collect(Collectors.toList());
+   private static final cpn[] b = cpn.values();
+   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> ti.a("argument.gamemode.invalid", $$0));
 
-   private static dki.a[] b() {
-      return Arrays.stream(dki.a.values()).filter(dki.a::d).toArray(dki.a[]::new);
+   public cpn a(StringReader $$0) throws CommandSyntaxException {
+      String $$1 = $$0.readUnquotedString();
+      cpn $$2 = cpn.a($$1, null);
+      if ($$2 == null) {
+         throw c.createWithContext($$0, $$1);
+      } else {
+         return $$2;
+      }
    }
 
-   private ef() {
-      super(a, ef::b);
+   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
+      return $$0.getSource() instanceof dw ? dw.b(Arrays.stream(b).map(cpn::b), $$1) : Suggestions.empty();
+   }
+
+   public Collection<String> getExamples() {
+      return a;
    }
 
    public static ef a() {
       return new ef();
    }
 
-   public static dki.a a(CommandContext<dr> $$0, String $$1) {
-      return (dki.a)$$0.getArgument($$1, dki.a.class);
-   }
-
-   @Override
-   protected String a(String $$0) {
-      return $$0.toLowerCase(Locale.ROOT);
+   public static cpn a(CommandContext<dt> $$0, String $$1) throws CommandSyntaxException {
+      return (cpn)$$0.getArgument($$1, cpn.class);
    }
 }

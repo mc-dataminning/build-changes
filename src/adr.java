@@ -1,8 +1,8 @@
-public interface adr extends sc, sd {
-   @Override
-   default sh b() {
-      return sh.c;
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   void a(adt var1);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface adr {
 }

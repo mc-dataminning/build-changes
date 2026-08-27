@@ -1,24 +1,14 @@
-public class xg implements ux<wp> {
-   private final boolean a;
-
-   public xg(boolean $$0) {
-      this.a = $$0;
-   }
-
-   public xg(si $$0) {
-      this.a = $$0.readBoolean();
+public record xg(int a) implements va<ws> {
+   public xg(sl $$0) {
+      this($$0.m());
    }
 
    @Override
-   public void a(si $$0) {
-      $$0.a(this.a);
+   public void a(sl $$0) {
+      $$0.c(this.a);
    }
 
-   public void a(wp $$0) {
+   public void a(ws $$0) {
       $$0.a(this);
-   }
-
-   public boolean a() {
-      return this.a;
    }
 }

@@ -1,101 +1,63 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonSyntaxException;
 import java.util.Optional;
+import javax.annotation.Nullable;
 
-public record bm(Optional<Boolean> b, Optional<Boolean> c, Optional<Boolean> d, Optional<Boolean> e, Optional<Boolean> f) {
-   public static final Codec<bm> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               aqy.a(Codec.BOOL, "is_on_fire").forGetter(bm::a),
-               aqy.a(Codec.BOOL, "is_sneaking").forGetter(bm::b),
-               aqy.a(Codec.BOOL, "is_sprinting").forGetter(bm::c),
-               aqy.a(Codec.BOOL, "is_swimming").forGetter(bm::d),
-               aqy.a(Codec.BOOL, "is_baby").forGetter(bm::e)
-            )
-            .apply($$0, bm::new)
-   );
+public class bm extends cw<bm.a> {
+   public bm.a a(JsonObject $$0, Optional<bc> $$1, bg $$2) {
+      csq $$3 = a($$0);
+      Optional<da> $$4 = da.a($$0.get("state"));
+      if ($$3 != null) {
+         $$4.ifPresent($$1x -> $$1x.a($$3.l(), $$1xx -> {
+               throw new JsonSyntaxException("Block " + $$3 + " has no property " + $$1xx);
+            }));
+      }
 
-   static Optional<bm> a(Optional<Boolean> $$0, Optional<Boolean> $$1, Optional<Boolean> $$2, Optional<Boolean> $$3, Optional<Boolean> $$4) {
-      return $$0.isEmpty() && $$1.isEmpty() && $$2.isEmpty() && $$3.isEmpty() && $$4.isEmpty()
-         ? Optional.empty()
-         : Optional.of(new bm($$0, $$1, $$2, $$3, $$4));
+      return new bm.a($$1, $$3, $$4);
    }
 
-   public boolean a(bii $$0) {
-      if (this.b.isPresent() && $$0.bM() != this.b.get()) {
-         return false;
-      } else if (this.c.isPresent() && $$0.bW() != this.c.get()) {
-         return false;
-      } else if (this.d.isPresent() && $$0.bX() != this.d.get()) {
-         return false;
-      } else if (this.e.isPresent() && $$0.bY() != this.e.get()) {
-         return false;
+   @Nullable
+   private static csq a(JsonObject $$0) {
+      if ($$0.has("block")) {
+         aeu $$1 = new aeu(arj.i($$0, "block"));
+         return jd.f.b($$1).orElseThrow(() -> new JsonSyntaxException("Unknown block type '" + $$1 + "'"));
       } else {
-         if (this.f.isPresent() && $$0 instanceof biy $$1 && $$1.i_() != this.f.get()) {
-            return false;
+         return null;
+      }
+   }
+
+   public void a(ako $$0, dfe $$1) {
+      this.a($$0, $$1x -> $$1x.a($$1));
+   }
+
+   public static class a extends at {
+      @Nullable
+      private final csq a;
+      private final Optional<da> b;
+
+      public a(Optional<bc> $$0, @Nullable csq $$1, Optional<da> $$2) {
+         super($$0);
+         this.a = $$1;
+         this.b = $$2;
+      }
+
+      public static am<bm.a> a(csq $$0) {
+         return al.d.a(new bm.a(Optional.empty(), $$0, Optional.empty()));
+      }
+
+      @Override
+      public JsonObject a() {
+         JsonObject $$0 = super.a();
+         if (this.a != null) {
+            $$0.addProperty("block", jd.f.b(this.a).toString());
          }
 
-         return true;
-      }
-   }
-
-   public Optional<Boolean> a() {
-      return this.b;
-   }
-
-   public Optional<Boolean> b() {
-      return this.c;
-   }
-
-   public Optional<Boolean> c() {
-      return this.d;
-   }
-
-   public Optional<Boolean> d() {
-      return this.e;
-   }
-
-   public Optional<Boolean> e() {
-      return this.f;
-   }
-
-   public static class a {
-      private Optional<Boolean> a = Optional.empty();
-      private Optional<Boolean> b = Optional.empty();
-      private Optional<Boolean> c = Optional.empty();
-      private Optional<Boolean> d = Optional.empty();
-      private Optional<Boolean> e = Optional.empty();
-
-      public static bm.a a() {
-         return new bm.a();
+         this.b.ifPresent($$1 -> $$0.add("state", $$1.a()));
+         return $$0;
       }
 
-      public bm.a a(Boolean $$0) {
-         this.a = Optional.of($$0);
-         return this;
-      }
-
-      public bm.a b(Boolean $$0) {
-         this.b = Optional.of($$0);
-         return this;
-      }
-
-      public bm.a c(Boolean $$0) {
-         this.c = Optional.of($$0);
-         return this;
-      }
-
-      public bm.a d(Boolean $$0) {
-         this.d = Optional.of($$0);
-         return this;
-      }
-
-      public bm.a e(Boolean $$0) {
-         this.e = Optional.of($$0);
-         return this;
-      }
-
-      public Optional<bm> b() {
-         return bm.a(this.a, this.b, this.c, this.d, this.e);
+      public boolean a(dfe $$0) {
+         return this.a != null && !$$0.a(this.a) ? false : !this.b.isPresent() || this.b.get().a($$0);
       }
    }
 }

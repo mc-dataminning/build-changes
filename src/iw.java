@@ -1,35 +1,21 @@
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Locale;
 
-public record iw(float c) implements it {
-   public static final Codec<iw> a = RecordCodecBuilder.create($$0 -> $$0.group(Codec.FLOAT.fieldOf("roll").forGetter($$0x -> $$0x.c)).apply($$0, iw::new));
-   public static final it.a<iw> b = new it.a<iw>() {
-      public iw a(iu<iw> $$0, StringReader $$1) throws CommandSyntaxException {
-         $$1.expect(' ');
-         float $$2 = $$1.readFloat();
-         return new iw($$2);
-      }
+public abstract class iw<T extends iv> {
+   private final boolean a;
+   private final iv.a<T> b;
 
-      public iw a(iu<iw> $$0, si $$1) {
-         return new iw($$1.readFloat());
-      }
-   };
-
-   @Override
-   public iu<iw> b() {
-      return iv.F;
+   protected iw(boolean $$0, iv.a<T> $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   @Override
-   public void a(si $$0) {
-      $$0.a(this.c);
+   public boolean c() {
+      return this.a;
    }
 
-   @Override
-   public String a() {
-      return String.format(Locale.ROOT, "%s %.2f", jb.k.b(this.b()), this.c);
+   public iv.a<T> d() {
+      return this.b;
    }
+
+   public abstract Codec<T> e();
 }

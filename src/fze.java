@@ -1,46 +1,75 @@
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.atomic.AtomicReference;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.JsonOps;
+import java.io.BufferedReader;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import org.slf4j.Logger;
 
 public class fze {
-   private final aer a;
-   private final ank b;
-   private final AtomicReference<ekg> c = new AtomicReference<>();
-   private final AtomicInteger d;
+   private static final Logger a = LogUtils.getLogger();
+   private static final aen b = new aen("atlases", ".json");
+   private final List<fzd> c;
 
-   public fze(aer $$0, ank $$1, int $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.d = new AtomicInteger($$2);
+   private fze(List<fzd> $$0) {
+      this.c = $$0;
    }
 
-   public ekg a() throws IOException {
-      ekg $$0 = this.c.get();
-      if ($$0 == null) {
-         synchronized (this) {
-            $$0 = this.c.get();
-            if ($$0 == null) {
-               try (InputStream $$1 = this.b.d()) {
-                  $$0 = ekg.a($$1);
-                  this.c.set($$0);
-               } catch (IOException var9) {
-                  throw new IOException("Failed to load image " + this.a, var9);
+   public List<Function<fzc, fyt>> a(anp $$0) {
+      final Map<aeu, fzd.b> $$1 = new HashMap<>();
+      fzd.a $$2 = new fzd.a() {
+         @Override
+         public void a(aeu $$0, fzd.b $$1x) {
+            fzd.b $$2 = $$1.put($$0, $$1);
+            if ($$2 != null) {
+               $$2.a();
+            }
+         }
+
+         @Override
+         public void a(Predicate<aeu> $$0) {
+            Iterator<Entry<aeu, fzd.b>> $$1 = $$1.entrySet().iterator();
+
+            while ($$1.hasNext()) {
+               Entry<aeu, fzd.b> $$2 = $$1.next();
+               if ($$0.test($$2.getKey())) {
+                  $$2.getValue().a();
+                  $$1.remove();
                }
             }
          }
-      }
-
-      return $$0;
+      };
+      this.c.forEach($$2x -> $$2x.a($$0, $$2));
+      Builder<Function<fzc, fyt>> $$3 = ImmutableList.builder();
+      $$3.add((Function<fzc, fyt>)$$0x -> fyp.a());
+      $$3.addAll($$1.values());
+      return $$3.build();
    }
 
-   public void b() {
-      int $$0 = this.d.decrementAndGet();
-      if ($$0 <= 0) {
-         ekg $$1 = this.c.getAndSet(null);
-         if ($$1 != null) {
-            $$1.close();
+   public static fze a(anp $$0, aeu $$1) {
+      aeu $$2 = b.a($$1);
+      List<fzd> $$3 = new ArrayList<>();
+
+      for (ann $$4 : $$0.a($$2)) {
+         try (BufferedReader $$5 = $$4.e()) {
+            Dynamic<JsonElement> $$6 = new Dynamic(JsonOps.INSTANCE, JsonParser.parseReader($$5));
+            $$3.addAll((Collection<? extends fzd>)fzg.h.parse($$6).getOrThrow(false, a::error));
+         } catch (Exception var11) {
+            a.warn("Failed to parse atlas definition {} in pack {}", new Object[]{$$2, $$4.b(), var11});
          }
       }
+
+      return new fze($$3);
    }
 }

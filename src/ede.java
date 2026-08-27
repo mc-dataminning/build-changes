@@ -1,60 +1,66 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.datafixers.Products.P1;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 import java.util.List;
-import java.util.function.Consumer;
+import java.util.function.Predicate;
 
-public class ede extends edb {
-   public static final Codec<ede> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(aqa.a(jc.D).fieldOf("name").forGetter($$0x -> $$0x.j), Codec.BOOL.fieldOf("expand").forGetter($$0x -> $$0x.k))
-            .and(b($$0))
-            .apply($$0, ede::new)
-   );
-   private final aqa<cis> j;
-   private final boolean k;
+public abstract class ede implements ecw {
+   protected final List<efk> e;
+   private final Predicate<ecl> a;
 
-   private ede(aqa<cis> $$0, boolean $$1, int $$2, int $$3, List<eff> $$4, List<edt> $$5) {
-      super($$2, $$3, $$4, $$5);
-      this.j = $$0;
-      this.k = $$1;
+   protected ede(List<efk> $$0) {
+      this.e = $$0;
+      this.a = efm.a($$0);
    }
 
-   @Override
-   public eda a() {
-      return ecx.f;
+   protected static <T extends ede> P1<Mu<T>, List<efk>> a(Instance<T> $$0) {
+      return $$0.group(arb.a(efm.a.listOf(), "conditions", List.of()).forGetter($$0x -> $$0x.e));
    }
 
-   @Override
-   public void a(Consumer<cix> $$0, ecg $$1) {
-      jb.i.c(this.j).forEach($$1x -> $$0.accept(new cix($$1x)));
-   }
-
-   private boolean a(ecg $$0, Consumer<ecy> $$1) {
-      if (!this.a($$0)) {
-         return false;
-      } else {
-         for (final he<cis> $$2 : jb.i.c(this.j)) {
-            $$1.accept(new edb.c() {
-               @Override
-               public void a(Consumer<cix> $$0, ecg $$1) {
-                  $$0.accept(new cix($$2));
-               }
-            });
-         }
-
-         return true;
+   public void a(ecu $$0) {
+      for (int $$1 = 0; $$1 < this.e.size(); $$1++) {
+         this.e.get($$1).a($$0.b(".condition[" + $$1 + "]"));
       }
    }
 
-   @Override
-   public boolean expand(ecg $$0, Consumer<ecy> $$1) {
-      return this.k ? this.a($$0, $$1) : super.expand($$0, $$1);
+   protected final boolean a(ecl $$0) {
+      return this.a.test($$0);
    }
 
-   public static edb.a<?> a(aqa<cis> $$0) {
-      return a(($$1, $$2, $$3, $$4) -> new ede($$0, false, $$1, $$2, $$3, $$4));
-   }
+   public abstract edf a();
 
-   public static edb.a<?> b(aqa<cis> $$0) {
-      return a(($$1, $$2, $$3, $$4) -> new ede($$0, true, $$1, $$2, $$3, $$4));
+   public abstract static class a<T extends ede.a<T>> implements efd<T> {
+      private final Builder<efk> a = ImmutableList.builder();
+
+      protected abstract T as_();
+
+      public T a(efk.a $$0) {
+         this.a.add($$0.build());
+         return this.as_();
+      }
+
+      public final T e() {
+         return this.as_();
+      }
+
+      protected List<efk> f() {
+         return this.a.build();
+      }
+
+      public ecv.a a(ede.a<?> $$0) {
+         return new ecv.a(this, $$0);
+      }
+
+      public eda.a b(ede.a<?> $$0) {
+         return new eda.a(this, $$0);
+      }
+
+      public edi.a c(ede.a<?> $$0) {
+         return new edi.a(this, $$0);
+      }
+
+      public abstract ede b();
    }
 }

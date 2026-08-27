@@ -1,23 +1,35 @@
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
-public class mx extends my<duy> {
-   public mx(jk $$0, CompletableFuture<hg.b> $$1) {
-      super($$0, jc.az, $$1);
+public abstract class mx extends mw<civ> {
+   private final CompletableFuture<nb.c<csq>> d;
+   private final Map<aqd<csq>, aqd<civ>> g = new HashMap<>();
+
+   public mx(jm $$0, CompletableFuture<hi.b> $$1, CompletableFuture<nb.c<csq>> $$2) {
+      super($$0, je.D, $$1, $$0x -> $$0x.j().g());
+      this.d = $$2;
+   }
+
+   public mx(jm $$0, CompletableFuture<hi.b> $$1, CompletableFuture<nb.c<civ>> $$2, CompletableFuture<nb.c<csq>> $$3) {
+      super($$0, je.D, $$1, $$2, $$0x -> $$0x.j().g());
+      this.d = $$3;
+   }
+
+   protected void a(aqd<csq> $$0, aqd<civ> $$1) {
+      this.g.put($$0, $$1);
    }
 
    @Override
-   protected void a(hg.b $$0) {
-      this.b(apw.h).a(dus.t).a(dus.u).a(dus.v).a(dus.w).a(dus.x);
-      this.b(apw.i).a(dus.b).a(dus.c);
-      this.b(apw.l).a(dus.m).a(dus.n);
-      this.b(apw.j).a(dus.h).a(dus.i);
-      this.b(apw.k).a(dus.z).a(dus.A).a(dus.C).a(dus.E).a(dus.D).a(dus.y).a(dus.B);
-      this.b(apw.f).a(dus.j);
-      this.b(apw.g).a(dus.j);
-      this.b(apw.a).a(dus.k);
-      this.b(apw.b).b(apw.l).b(apw.j);
-      this.b(apw.c).a(dus.d);
-      this.b(apw.d).a(dus.l);
-      this.b(apw.e).a(dus.r);
+   protected CompletableFuture<hi.b> b() {
+      return super.b().thenCombineAsync(this.d, ($$0, $$1) -> {
+         this.g.forEach(($$1x, $$2) -> {
+            aqa $$3 = this.c((aqd<civ>)$$2);
+            Optional<aqa> $$4 = $$1.apply($$1x);
+            $$4.orElseThrow(() -> new IllegalStateException("Missing block tag " + $$2.b())).b().forEach($$3::a);
+         });
+         return (hi.b)$$0;
+      });
    }
 }

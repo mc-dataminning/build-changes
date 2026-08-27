@@ -1,40 +1,37 @@
-import java.util.EnumSet;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public class brr extends brt {
-   private final bjt a;
-   private biy b;
-   private int c;
+public class brr<T extends bjb> extends brp<T> {
+   private static final int i = 200;
+   private int j = 0;
 
-   public brr(bjt $$0) {
-      super($$0, false);
-      this.a = $$0;
-      this.a(EnumSet.of(bpt.a.d));
+   public brr(ccx $$0, Class<T> $$1, boolean $$2, @Nullable Predicate<bjb> $$3) {
+      super($$0, $$1, 500, $$2, false, $$3);
+   }
+
+   public int i() {
+      return this.j;
+   }
+
+   public void k() {
+      this.j--;
    }
 
    @Override
    public boolean a() {
-      if (this.a.p() && !this.a.ga()) {
-         biy $$0 = this.a.I_();
-         if ($$0 == null) {
-            return false;
-         } else {
-            this.b = $$0.eh();
-            int $$1 = $$0.ei();
-            return $$1 != this.c && this.a(this.b, btk.a) && this.a.a(this.b, $$0);
-         }
-      } else {
+      if (this.j > 0 || !this.e.ee().h()) {
          return false;
+      } else if (!((ccx)this.e).gp()) {
+         return false;
+      } else {
+         this.h();
+         return this.c != null;
       }
    }
 
    @Override
    public void c() {
-      this.e.h(this.b);
-      biy $$0 = this.a.I_();
-      if ($$0 != null) {
-         this.c = $$0.ei();
-      }
-
+      this.j = b(200);
       super.c();
    }
 }

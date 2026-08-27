@@ -1,23 +1,8 @@
-import com.google.gson.JsonObject;
-import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public interface lo {
-   void a(JsonObject var1);
-
-   default JsonObject a() {
-      JsonObject $$0 = new JsonObject();
-      $$0.addProperty("type", jb.u.b(this.c()).toString());
-      this.a($$0);
-      return $$0;
-   }
-
-   aer b();
-
-   cmc<?> c();
-
-   @Nullable
-   JsonObject d();
-
-   @Nullable
-   aer e();
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface lo {
 }

@@ -1,21 +1,7 @@
-import java.util.concurrent.ConcurrentLinkedQueue;
-import org.lwjgl.glfw.GLFW;
-import org.lwjgl.system.MemoryUtil;
+public interface eiw<T> {
+   void a(eiu<T> var1);
 
-public class eiw {
-   public static void a(ejq $$0, float $$1) {
-      ConcurrentLinkedQueue<ejp> $$2 = $$0.i();
-   }
+   boolean a(gw var1, T var2);
 
-   public static void b(ejq $$0, float $$1) {
-      ConcurrentLinkedQueue<ejp> $$2 = $$0.j();
-   }
-
-   public static void a() {
-      MemoryUtil.memSet(0L, 0, 1L);
-   }
-
-   public static double b() {
-      return GLFW.glfwGetTime();
-   }
+   int a();
 }

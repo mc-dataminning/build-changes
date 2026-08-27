@@ -1,36 +1,13 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.UnmodifiableIterator;
 import com.mojang.serialization.Codec;
-import java.util.List;
-import javax.annotation.Nullable;
 
-public class dyk extends dyo {
-   public static final Codec<dyk> a = dyg.b.listOf().fieldOf("rules").xmap(dyk::new, $$0 -> $$0.b).codec();
-   private final ImmutableList<dyg> b;
+public interface dyk<P extends dyj> {
+   dyk<dyi> a = a("always_true", dyi.a);
+   dyk<dyg> b = a("linear_pos", dyg.a);
+   dyk<dxv> c = a("axis_aligned_linear_pos", dxv.a);
 
-   public dyk(List<? extends dyg> $$0) {
-      this.b = ImmutableList.copyOf($$0);
-   }
+   Codec<P> codec();
 
-   @Nullable
-   @Override
-   public dyr.c a(cpo $$0, gu $$1, gu $$2, dyr.c $$3, dyr.c $$4, dyn $$5) {
-      aru $$6 = aru.a(arp.a($$4.a()));
-      dez $$7 = $$0.a_($$4.a());
-      UnmodifiableIterator var9 = this.b.iterator();
-
-      while (var9.hasNext()) {
-         dyg $$8 = (dyg)var9.next();
-         if ($$8.a($$4.b(), $$7, $$3.a(), $$4.a(), $$2, $$6)) {
-            return new dyr.c($$4.a(), $$8.a(), $$8.a($$6, $$4.c()));
-         }
-      }
-
-      return $$4;
-   }
-
-   @Override
-   protected dyq<?> a() {
-      return dyq.i;
+   static <P extends dyj> dyk<P> a(String $$0, Codec<P> $$1) {
+      return ht.a(jd.r, $$0, () -> $$1);
    }
 }

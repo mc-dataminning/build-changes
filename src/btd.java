@@ -1,47 +1,24 @@
+import com.google.common.collect.ImmutableSet;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Optional;
 import java.util.Set;
+import java.util.stream.Collectors;
 
-public abstract class btd<E extends biy> {
-   private static final aru a = aru.b();
-   private static final int c = 20;
-   protected static final int b = 16;
-   private static final btk d = btk.b().a(16.0);
-   private static final btk e = btk.b().a(16.0).e();
-   private static final btk f = btk.a().a(16.0);
-   private static final btk g = btk.a().a(16.0).e();
-   private static final btk h = btk.a().a(16.0).d();
-   private static final btk i = btk.a().a(16.0).d().e();
-   private final int j;
-   private long k;
-
-   public btd(int $$0) {
-      this.j = $$0;
-      this.k = (long)a.a($$0);
+public class btd extends btg<bjb> {
+   @Override
+   public Set<bsc<?>> a() {
+      return ImmutableSet.of(bsc.j, bsc.k, bsc.l);
    }
 
-   public btd() {
-      this(20);
-   }
-
-   public final void b(akk $$0, E $$1) {
-      if (--this.k <= 0L) {
-         this.k = (long)this.j;
-         this.a($$0, $$1);
-      }
-   }
-
-   protected abstract void a(akk var1, E var2);
-
-   public abstract Set<brz<?>> a();
-
-   public static boolean b(biy $$0, biy $$1) {
-      return $$0.dM().b(brz.o, $$1) ? e.a($$0, $$1) : d.a($$0, $$1);
-   }
-
-   public static boolean c(biy $$0, biy $$1) {
-      return $$0.dM().b(brz.o, $$1) ? g.a($$0, $$1) : f.a($$0, $$1);
-   }
-
-   public static boolean d(biy $$0, biy $$1) {
-      return $$0.dM().b(brz.o, $$1) ? i.a($$0, $$1) : h.a($$0, $$1);
+   @Override
+   protected void a(akn $$0, bjb $$1) {
+      List<cbp> $$2 = $$0.v().stream().filter(bio.f).filter($$1x -> $$1.a($$1x, 16.0)).sorted(Comparator.comparingDouble($$1::f)).collect(Collectors.toList());
+      bkb<?> $$3 = $$1.dM();
+      $$3.a(bsc.j, $$2);
+      List<cbp> $$4 = $$2.stream().filter($$1x -> b($$1, $$1x)).collect(Collectors.toList());
+      $$3.a(bsc.k, $$4.isEmpty() ? null : $$4.get(0));
+      Optional<cbp> $$5 = $$4.stream().filter($$1x -> c($$1, $$1x)).findFirst();
+      $$3.a(bsc.l, $$5);
    }
 }

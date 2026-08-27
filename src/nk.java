@@ -2,228 +2,110 @@ import com.google.common.collect.ImmutableList;
 import com.mojang.datafixers.util.Pair;
 
 public class nk {
-   public static void a(nm<dwh> $$0) {
-      hf<dyp> $$1 = $$0.a(jc.aA);
-      he<dyp> $$2 = $$1.b(nu.s);
-      he<dyp> $$3 = $$1.b(nu.B);
-      he<dyp> $$4 = $$1.b(nu.r);
-      he<dyp> $$5 = $$1.b(nu.C);
-      he<dyp> $$6 = $$1.b(nu.A);
-      hf<dwh> $$7 = $$0.a(jc.aC);
-      he<dwh> $$8 = $$7.b(nt.a);
-      nt.a($$0, "bastion/treasure/bases", new dwh($$8, ImmutableList.of(Pair.of(dwf.b("bastion/treasure/bases/lava_basin", $$2), 1)), dwh.a.b));
-      nt.a($$0, "bastion/treasure/stairs", new dwh($$8, ImmutableList.of(Pair.of(dwf.b("bastion/treasure/stairs/lower_stairs", $$2), 1)), dwh.a.b));
-      nt.a(
+   public static void a(np<dwm> $$0) {
+      hh<dyu> $$1 = $$0.a(je.aA);
+      hg<dyu> $$2 = $$1.b(nx.t);
+      hh<dwm> $$3 = $$0.a(je.aC);
+      hg<dwm> $$4 = $$3.b(nw.a);
+      nw.a(
          $$0,
-         "bastion/treasure/bases/centers",
-         new dwh(
-            $$8,
+         "bastion/units/center_pieces",
+         new dwm(
+            $$4,
             ImmutableList.of(
-               Pair.of(dwf.b("bastion/treasure/bases/centers/center_0", $$2), 1),
-               Pair.of(dwf.b("bastion/treasure/bases/centers/center_1", $$2), 1),
-               Pair.of(dwf.b("bastion/treasure/bases/centers/center_2", $$2), 1),
-               Pair.of(dwf.b("bastion/treasure/bases/centers/center_3", $$2), 1)
+               Pair.of(dwk.b("bastion/units/center_pieces/center_0", $$2), 1),
+               Pair.of(dwk.b("bastion/units/center_pieces/center_1", $$2), 1),
+               Pair.of(dwk.b("bastion/units/center_pieces/center_2", $$2), 1)
             ),
-            dwh.a.b
+            dwm.a.b
          )
       );
-      nt.a($$0, "bastion/treasure/brains", new dwh($$8, ImmutableList.of(Pair.of(dwf.b("bastion/treasure/brains/center_brain", $$2), 1)), dwh.a.b));
-      nt.a(
+      nw.a(
          $$0,
-         "bastion/treasure/walls",
-         new dwh(
-            $$8,
-            ImmutableList.of(Pair.of(dwf.b("bastion/treasure/walls/lava_wall", $$2), 1), Pair.of(dwf.b("bastion/treasure/walls/entrance_wall", $$3), 1)),
-            dwh.a.b
+         "bastion/units/pathways",
+         new dwm(
+            $$4,
+            ImmutableList.of(Pair.of(dwk.b("bastion/units/pathways/pathway_0", $$2), 1), Pair.of(dwk.b("bastion/units/pathways/pathway_wall_0", $$2), 1)),
+            dwm.a.b
          )
       );
-      nt.a(
+      nw.a(
          $$0,
-         "bastion/treasure/walls/outer",
-         new dwh(
-            $$8,
+         "bastion/units/walls/wall_bases",
+         new dwm(
+            $$4,
+            ImmutableList.of(Pair.of(dwk.b("bastion/units/walls/wall_base", $$2), 1), Pair.of(dwk.b("bastion/units/walls/connected_wall", $$2), 1)),
+            dwm.a.b
+         )
+      );
+      nw.a(
+         $$0,
+         "bastion/units/stages/stage_0",
+         new dwm(
+            $$4,
             ImmutableList.of(
-               Pair.of(dwf.b("bastion/treasure/walls/outer/top_corner", $$3), 1),
-               Pair.of(dwf.b("bastion/treasure/walls/outer/mid_corner", $$3), 1),
-               Pair.of(dwf.b("bastion/treasure/walls/outer/bottom_corner", $$3), 1),
-               Pair.of(dwf.b("bastion/treasure/walls/outer/outer_wall", $$3), 1),
-               Pair.of(dwf.b("bastion/treasure/walls/outer/medium_outer_wall", $$3), 1),
-               Pair.of(dwf.b("bastion/treasure/walls/outer/tall_outer_wall", $$3), 1)
+               Pair.of(dwk.b("bastion/units/stages/stage_0_0", $$2), 1),
+               Pair.of(dwk.b("bastion/units/stages/stage_0_1", $$2), 1),
+               Pair.of(dwk.b("bastion/units/stages/stage_0_2", $$2), 1),
+               Pair.of(dwk.b("bastion/units/stages/stage_0_3", $$2), 1)
             ),
-            dwh.a.b
+            dwm.a.b
          )
       );
-      nt.a(
+      nw.a(
          $$0,
-         "bastion/treasure/walls/bottom",
-         new dwh(
-            $$8,
+         "bastion/units/stages/stage_1",
+         new dwm(
+            $$4,
             ImmutableList.of(
-               Pair.of(dwf.b("bastion/treasure/walls/bottom/wall_0", $$2), 1),
-               Pair.of(dwf.b("bastion/treasure/walls/bottom/wall_1", $$2), 1),
-               Pair.of(dwf.b("bastion/treasure/walls/bottom/wall_2", $$2), 1),
-               Pair.of(dwf.b("bastion/treasure/walls/bottom/wall_3", $$2), 1)
+               Pair.of(dwk.b("bastion/units/stages/stage_1_0", $$2), 1),
+               Pair.of(dwk.b("bastion/units/stages/stage_1_1", $$2), 1),
+               Pair.of(dwk.b("bastion/units/stages/stage_1_2", $$2), 1),
+               Pair.of(dwk.b("bastion/units/stages/stage_1_3", $$2), 1)
             ),
-            dwh.a.b
+            dwm.a.b
          )
       );
-      nt.a(
+      nw.a($$0, "bastion/units/stages/rot/stage_1", new dwm($$4, ImmutableList.of(Pair.of(dwk.b("bastion/units/stages/rot/stage_1_0", $$2), 1)), dwm.a.b));
+      nw.a(
          $$0,
-         "bastion/treasure/walls/mid",
-         new dwh(
-            $$8,
+         "bastion/units/stages/stage_2",
+         new dwm(
+            $$4, ImmutableList.of(Pair.of(dwk.b("bastion/units/stages/stage_2_0", $$2), 1), Pair.of(dwk.b("bastion/units/stages/stage_2_1", $$2), 1)), dwm.a.b
+         )
+      );
+      nw.a(
+         $$0,
+         "bastion/units/stages/stage_3",
+         new dwm(
+            $$4,
             ImmutableList.of(
-               Pair.of(dwf.b("bastion/treasure/walls/mid/wall_0", $$2), 1),
-               Pair.of(dwf.b("bastion/treasure/walls/mid/wall_1", $$2), 1),
-               Pair.of(dwf.b("bastion/treasure/walls/mid/wall_2", $$2), 1)
+               Pair.of(dwk.b("bastion/units/stages/stage_3_0", $$2), 1),
+               Pair.of(dwk.b("bastion/units/stages/stage_3_1", $$2), 1),
+               Pair.of(dwk.b("bastion/units/stages/stage_3_2", $$2), 1),
+               Pair.of(dwk.b("bastion/units/stages/stage_3_3", $$2), 1)
             ),
-            dwh.a.b
+            dwm.a.b
          )
       );
-      nt.a(
+      nw.a($$0, "bastion/units/fillers/stage_0", new dwm($$4, ImmutableList.of(Pair.of(dwk.b("bastion/units/fillers/stage_0", $$2), 1)), dwm.a.b));
+      nw.a($$0, "bastion/units/edges", new dwm($$4, ImmutableList.of(Pair.of(dwk.b("bastion/units/edges/edge_0", $$2), 1)), dwm.a.b));
+      nw.a($$0, "bastion/units/wall_units", new dwm($$4, ImmutableList.of(Pair.of(dwk.b("bastion/units/wall_units/unit_0", $$2), 1)), dwm.a.b));
+      nw.a($$0, "bastion/units/edge_wall_units", new dwm($$4, ImmutableList.of(Pair.of(dwk.b("bastion/units/wall_units/edge_0_large", $$2), 1)), dwm.a.b));
+      nw.a(
          $$0,
-         "bastion/treasure/walls/top",
-         new dwh(
-            $$8,
+         "bastion/units/ramparts",
+         new dwm(
+            $$4,
             ImmutableList.of(
-               Pair.of(dwf.b("bastion/treasure/walls/top/main_entrance", $$2), 1),
-               Pair.of(dwf.b("bastion/treasure/walls/top/wall_0", $$2), 1),
-               Pair.of(dwf.b("bastion/treasure/walls/top/wall_1", $$2), 1)
+               Pair.of(dwk.b("bastion/units/ramparts/ramparts_0", $$2), 1),
+               Pair.of(dwk.b("bastion/units/ramparts/ramparts_1", $$2), 1),
+               Pair.of(dwk.b("bastion/units/ramparts/ramparts_2", $$2), 1)
             ),
-            dwh.a.b
+            dwm.a.b
          )
       );
-      nt.a(
-         $$0,
-         "bastion/treasure/connectors",
-         new dwh(
-            $$8,
-            ImmutableList.of(
-               Pair.of(dwf.b("bastion/treasure/connectors/center_to_wall_middle", $$2), 1),
-               Pair.of(dwf.b("bastion/treasure/connectors/center_to_wall_top", $$2), 1),
-               Pair.of(dwf.b("bastion/treasure/connectors/center_to_wall_top_entrance", $$2), 1)
-            ),
-            dwh.a.b
-         )
-      );
-      nt.a($$0, "bastion/treasure/entrances", new dwh($$8, ImmutableList.of(Pair.of(dwf.b("bastion/treasure/entrances/entrance_0", $$2), 1)), dwh.a.b));
-      nt.a(
-         $$0,
-         "bastion/treasure/ramparts",
-         new dwh(
-            $$8,
-            ImmutableList.of(
-               Pair.of(dwf.b("bastion/treasure/ramparts/mid_wall_main", $$2), 1),
-               Pair.of(dwf.b("bastion/treasure/ramparts/mid_wall_side", $$2), 1),
-               Pair.of(dwf.b("bastion/treasure/ramparts/bottom_wall_0", $$4), 1),
-               Pair.of(dwf.b("bastion/treasure/ramparts/top_wall", $$5), 1),
-               Pair.of(dwf.b("bastion/treasure/ramparts/lava_basin_side", $$2), 1),
-               Pair.of(dwf.b("bastion/treasure/ramparts/lava_basin_main", $$2), 1)
-            ),
-            dwh.a.b
-         )
-      );
-      nt.a(
-         $$0,
-         "bastion/treasure/corners/bottom",
-         new dwh(
-            $$8,
-            ImmutableList.of(
-               Pair.of(dwf.b("bastion/treasure/corners/bottom/corner_0", $$2), 1), Pair.of(dwf.b("bastion/treasure/corners/bottom/corner_1", $$2), 1)
-            ),
-            dwh.a.b
-         )
-      );
-      nt.a(
-         $$0,
-         "bastion/treasure/corners/edges",
-         new dwh(
-            $$8,
-            ImmutableList.of(
-               Pair.of(dwf.b("bastion/treasure/corners/edges/bottom", $$3), 1),
-               Pair.of(dwf.b("bastion/treasure/corners/edges/middle", $$3), 1),
-               Pair.of(dwf.b("bastion/treasure/corners/edges/top", $$3), 1)
-            ),
-            dwh.a.b
-         )
-      );
-      nt.a(
-         $$0,
-         "bastion/treasure/corners/middle",
-         new dwh(
-            $$8,
-            ImmutableList.of(
-               Pair.of(dwf.b("bastion/treasure/corners/middle/corner_0", $$2), 1), Pair.of(dwf.b("bastion/treasure/corners/middle/corner_1", $$2), 1)
-            ),
-            dwh.a.b
-         )
-      );
-      nt.a(
-         $$0,
-         "bastion/treasure/corners/top",
-         new dwh(
-            $$8,
-            ImmutableList.of(Pair.of(dwf.b("bastion/treasure/corners/top/corner_0", $$2), 1), Pair.of(dwf.b("bastion/treasure/corners/top/corner_1", $$2), 1)),
-            dwh.a.b
-         )
-      );
-      nt.a(
-         $$0,
-         "bastion/treasure/extensions/large_pool",
-         new dwh(
-            $$8,
-            ImmutableList.of(
-               Pair.of(dwf.b("bastion/treasure/extensions/empty", $$2), 1),
-               Pair.of(dwf.b("bastion/treasure/extensions/empty", $$2), 1),
-               Pair.of(dwf.b("bastion/treasure/extensions/fire_room", $$2), 1),
-               Pair.of(dwf.b("bastion/treasure/extensions/large_bridge_0", $$2), 1),
-               Pair.of(dwf.b("bastion/treasure/extensions/large_bridge_1", $$2), 1),
-               Pair.of(dwf.b("bastion/treasure/extensions/large_bridge_2", $$2), 1),
-               Pair.of(dwf.b("bastion/treasure/extensions/large_bridge_3", $$2), 1),
-               Pair.of(dwf.b("bastion/treasure/extensions/roofed_bridge", $$2), 1),
-               Pair.of(dwf.b("bastion/treasure/extensions/empty", $$2), 1)
-            ),
-            dwh.a.b
-         )
-      );
-      nt.a(
-         $$0,
-         "bastion/treasure/extensions/small_pool",
-         new dwh(
-            $$8,
-            ImmutableList.of(
-               Pair.of(dwf.b("bastion/treasure/extensions/empty", $$2), 1),
-               Pair.of(dwf.b("bastion/treasure/extensions/fire_room", $$2), 1),
-               Pair.of(dwf.b("bastion/treasure/extensions/empty", $$2), 1),
-               Pair.of(dwf.b("bastion/treasure/extensions/small_bridge_0", $$2), 1),
-               Pair.of(dwf.b("bastion/treasure/extensions/small_bridge_1", $$2), 1),
-               Pair.of(dwf.b("bastion/treasure/extensions/small_bridge_2", $$2), 1),
-               Pair.of(dwf.b("bastion/treasure/extensions/small_bridge_3", $$2), 1)
-            ),
-            dwh.a.b
-         )
-      );
-      nt.a(
-         $$0,
-         "bastion/treasure/extensions/houses",
-         new dwh(
-            $$8,
-            ImmutableList.of(Pair.of(dwf.b("bastion/treasure/extensions/house_0", $$2), 1), Pair.of(dwf.b("bastion/treasure/extensions/house_1", $$2), 1)),
-            dwh.a.b
-         )
-      );
-      nt.a(
-         $$0,
-         "bastion/treasure/roofs",
-         new dwh(
-            $$8,
-            ImmutableList.of(
-               Pair.of(dwf.b("bastion/treasure/roofs/wall_roof", $$6), 1),
-               Pair.of(dwf.b("bastion/treasure/roofs/corner_roof", $$6), 1),
-               Pair.of(dwf.b("bastion/treasure/roofs/center_roof", $$6), 1)
-            ),
-            dwh.a.b
-         )
-      );
+      nw.a($$0, "bastion/units/large_ramparts", new dwm($$4, ImmutableList.of(Pair.of(dwk.b("bastion/units/ramparts/ramparts_0", $$2), 1)), dwm.a.b));
+      nw.a($$0, "bastion/units/rampart_plates", new dwm($$4, ImmutableList.of(Pair.of(dwk.b("bastion/units/rampart_plates/plate_0", $$2), 1)), dwm.a.b));
    }
 }

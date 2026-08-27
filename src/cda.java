@@ -1,45 +1,65 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.stream.Collectors;
-
 public class cda {
-   private final ccz a;
-   private final List<cda.a> b = Lists.newArrayList();
+   public static final cda a = a("core");
+   public static final cda b = a("idle");
+   public static final cda c = a("work");
+   public static final cda d = a("play");
+   public static final cda e = a("rest");
+   public static final cda f = a("meet");
+   public static final cda g = a("panic");
+   public static final cda h = a("raid");
+   public static final cda i = a("pre_raid");
+   public static final cda j = a("hide");
+   public static final cda k = a("fight");
+   public static final cda l = a("celebrate");
+   public static final cda m = a("admire_item");
+   public static final cda n = a("avoid");
+   public static final cda o = a("ride");
+   public static final cda p = a("play_dead");
+   public static final cda q = a("long_jump");
+   public static final cda r = a("ram");
+   public static final cda s = a("tongue");
+   public static final cda t = a("swim");
+   public static final cda u = a("lay_spawn");
+   public static final cda v = a("sniff");
+   public static final cda w = a("investigate");
+   public static final cda x = a("roar");
+   public static final cda y = a("emerge");
+   public static final cda z = a("dig");
+   private final String A;
+   private final int B;
 
-   public cda(ccz $$0) {
-      this.a = $$0;
+   private cda(String $$0) {
+      this.A = $$0;
+      this.B = $$0.hashCode();
    }
 
-   public cda a(int $$0, ccx $$1) {
-      this.b.add(new cda.a($$0, $$1));
-      return this;
+   public String a() {
+      return this.A;
    }
 
-   public ccz a() {
-      this.b.stream().map(cda.a::b).collect(Collectors.toSet()).forEach(this.a::a);
-      this.b.forEach($$0 -> {
-         ccx $$1 = $$0.b();
-         this.a.c($$1).forEach($$1x -> $$1x.a($$0.a(), 0.0F));
-         this.a.b($$1).a($$0.a(), 1.0F);
-      });
-      return this.a;
+   private static cda a(String $$0) {
+      return ht.a(jd.F, $$0, new cda($$0));
    }
 
-   static class a {
-      private final int a;
-      private final ccx b;
-
-      public a(int $$0, ccx $$1) {
-         this.a = $$0;
-         this.b = $$1;
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         cda $$1 = (cda)$$0;
+         return this.A.equals($$1.A);
+      } else {
+         return false;
       }
+   }
 
-      public int a() {
-         return this.a;
-      }
+   @Override
+   public int hashCode() {
+      return this.B;
+   }
 
-      public ccx b() {
-         return this.b;
-      }
+   @Override
+   public String toString() {
+      return this.a();
    }
 }

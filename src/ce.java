@@ -1,36 +1,96 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.gson.JsonObject;
 import java.util.Optional;
 
-public record ce(cj.d b) {
-   public static final Codec<ce> a = RecordCodecBuilder.create($$0 -> $$0.group(aqy.a(cj.d.d, "light", cj.d.c).forGetter(ce::a)).apply($$0, ce::new));
-
-   static Optional<ce> a(cj.d $$0) {
-      return $$0.c() ? Optional.empty() : Optional.of(new ce($$0));
+public class ce extends cw<ce.a> {
+   public ce.a a(JsonObject $$0, Optional<bc> $$1, bg $$2) {
+      return new ce.a($$1, bq.a($$0, "entity", $$2), bf.a($$0.get("killing_blow")));
    }
 
-   public boolean a(akk $$0, gu $$1) {
-      return !$$0.o($$1) ? false : this.b.d($$0.z($$1));
+   public void a(ako $$0, bil $$1, bhj $$2) {
+      ecl $$3 = bq.b($$0, $$1);
+      this.a($$0, $$3x -> $$3x.a($$0, $$3, $$2));
    }
 
-   public cj.d a() {
-      return this.b;
-   }
+   public static class a extends at {
+      private final Optional<bc> a;
+      private final Optional<bf> b;
 
-   public static class a {
-      private cj.d a = cj.d.c;
-
-      public static ce.a a() {
-         return new ce.a();
+      public a(Optional<bc> $$0, Optional<bc> $$1, Optional<bf> $$2) {
+         super($$0);
+         this.a = $$1;
+         this.b = $$2;
       }
 
-      public ce.a a(cj.d $$0) {
-         this.a = $$0;
-         return this;
+      public static am<ce.a> a(Optional<bq> $$0) {
+         return al.b.a(new ce.a(Optional.empty(), bq.a($$0), Optional.empty()));
       }
 
-      public Optional<ce> b() {
-         return ce.a(this.a);
+      public static am<ce.a> a(bq.a $$0) {
+         return al.b.a(new ce.a(Optional.empty(), Optional.of(bq.a($$0)), Optional.empty()));
+      }
+
+      public static am<ce.a> c() {
+         return al.b.a(new ce.a(Optional.empty(), Optional.empty(), Optional.empty()));
+      }
+
+      public static am<ce.a> a(Optional<bq> $$0, Optional<bf> $$1) {
+         return al.b.a(new ce.a(Optional.empty(), bq.a($$0), $$1));
+      }
+
+      public static am<ce.a> a(bq.a $$0, Optional<bf> $$1) {
+         return al.b.a(new ce.a(Optional.empty(), Optional.of(bq.a($$0)), $$1));
+      }
+
+      public static am<ce.a> a(Optional<bq> $$0, bf.a $$1) {
+         return al.b.a(new ce.a(Optional.empty(), bq.a($$0), Optional.of($$1.b())));
+      }
+
+      public static am<ce.a> a(bq.a $$0, bf.a $$1) {
+         return al.b.a(new ce.a(Optional.empty(), Optional.of(bq.a($$0)), Optional.of($$1.b())));
+      }
+
+      public static am<ce.a> d() {
+         return al.W.a(new ce.a(Optional.empty(), Optional.empty(), Optional.empty()));
+      }
+
+      public static am<ce.a> b(Optional<bq> $$0) {
+         return al.c.a(new ce.a(Optional.empty(), bq.a($$0), Optional.empty()));
+      }
+
+      public static am<ce.a> b(bq.a $$0) {
+         return al.c.a(new ce.a(Optional.empty(), Optional.of(bq.a($$0)), Optional.empty()));
+      }
+
+      public static am<ce.a> e() {
+         return al.c.a(new ce.a(Optional.empty(), Optional.empty(), Optional.empty()));
+      }
+
+      public static am<ce.a> b(Optional<bq> $$0, Optional<bf> $$1) {
+         return al.c.a(new ce.a(Optional.empty(), bq.a($$0), $$1));
+      }
+
+      public static am<ce.a> b(bq.a $$0, Optional<bf> $$1) {
+         return al.c.a(new ce.a(Optional.empty(), Optional.of(bq.a($$0)), $$1));
+      }
+
+      public static am<ce.a> b(Optional<bq> $$0, bf.a $$1) {
+         return al.c.a(new ce.a(Optional.empty(), bq.a($$0), Optional.of($$1.b())));
+      }
+
+      public static am<ce.a> b(bq.a $$0, bf.a $$1) {
+         return al.c.a(new ce.a(Optional.empty(), Optional.of(bq.a($$0)), Optional.of($$1.b())));
+      }
+
+      public boolean a(ako $$0, ecl $$1, bhj $$2) {
+         return this.b.isPresent() && !this.b.get().a($$0, $$2) ? false : this.a.isEmpty() || this.a.get().a($$1);
+      }
+
+      @Override
+      public JsonObject a() {
+         JsonObject $$0 = super.a();
+         this.a.ifPresent($$1 -> $$0.add("entity", $$1.a()));
+         this.b.ifPresent($$1 -> $$0.add("killing_blow", $$1.a()));
+         return $$0;
       }
    }
 }

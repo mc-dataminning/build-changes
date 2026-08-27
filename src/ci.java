@@ -1,43 +1,44 @@
 import com.google.gson.JsonObject;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
-public class ci extends cu<ci.a> {
-   static final aer a = new aer("player_generates_container_loot");
-
-   @Override
-   public aer a() {
-      return a;
+public class ci extends cw<ci.a> {
+   public ci.a a(JsonObject $$0, Optional<bc> $$1, bg $$2) {
+      Optional<bc> $$3 = bq.a($$0, "lightning", $$2);
+      Optional<bc> $$4 = bq.a($$0, "bystander", $$2);
+      return new ci.a($$1, $$3, $$4);
    }
 
-   protected ci.a a(JsonObject $$0, Optional<ba> $$1, be $$2) {
-      aer $$3 = new aer(arg.i($$0, "loot_table"));
-      return new ci.a($$1, $$3);
+   public void a(ako $$0, bja $$1, List<bil> $$2) {
+      List<ecl> $$3 = $$2.stream().map($$1x -> bq.b($$0, $$1x)).collect(Collectors.toList());
+      ecl $$4 = bq.b($$0, $$1);
+      this.a($$0, $$2x -> $$2x.a($$4, $$3));
    }
 
-   public void a(akl $$0, aer $$1) {
-      this.a($$0, $$1x -> $$1x.b($$1));
-   }
+   public static class a extends at {
+      private final Optional<bc> a;
+      private final Optional<bc> b;
 
-   public static class a extends ar {
-      private final aer a;
-
-      public a(Optional<ba> $$0, aer $$1) {
-         super(ci.a, $$0);
+      public a(Optional<bc> $$0, Optional<bc> $$1, Optional<bc> $$2) {
+         super($$0);
          this.a = $$1;
+         this.b = $$2;
       }
 
-      public static ci.a a(aer $$0) {
-         return new ci.a(Optional.empty(), $$0);
+      public static am<ci.a> a(Optional<bq> $$0, Optional<bq> $$1) {
+         return al.S.a(new ci.a(Optional.empty(), bq.a($$0), bq.a($$1)));
       }
 
-      public boolean b(aer $$0) {
-         return this.a.equals($$0);
+      public boolean a(ecl $$0, List<ecl> $$1) {
+         return this.a.isPresent() && !this.a.get().a($$0) ? false : !this.b.isPresent() || !$$1.stream().noneMatch(this.b.get()::a);
       }
 
       @Override
-      public JsonObject b() {
-         JsonObject $$0 = super.b();
-         $$0.addProperty("loot_table", this.a.toString());
+      public JsonObject a() {
+         JsonObject $$0 = super.a();
+         this.a.ifPresent($$1 -> $$0.add("lightning", $$1.a()));
+         this.b.ifPresent($$1 -> $$0.add("bystander", $$1.a()));
          return $$0;
       }
    }

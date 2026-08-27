@@ -1,90 +1,101 @@
+import com.google.common.collect.Maps;
+import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.Optional;
-import javax.annotation.Nullable;
-import org.lwjgl.opengl.ARBTimerQuery;
-import org.lwjgl.opengl.GL;
-import org.lwjgl.opengl.GL32C;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
+import java.util.Map;
+import org.apache.commons.io.IOUtils;
+import org.apache.commons.lang3.StringUtils;
 
 public class eky {
-   private int a;
+   private static final int a = 32768;
+   private final eky.a b;
+   private final String c;
+   private int d;
 
-   public static Optional<eky> a() {
-      return eky.b.a;
+   protected eky(eky.a $$0, int $$1, String $$2) {
+      this.b = $$0;
+      this.d = $$1;
+      this.c = $$2;
    }
 
-   public void b() {
+   public void a(ela $$0) {
       RenderSystem.assertOnRenderThread();
-      if (this.a != 0) {
-         throw new IllegalStateException("Current profile not ended");
-      } else {
-         this.a = GL32C.glGenQueries();
-         GL32C.glBeginQuery(35007, this.a);
+      GlStateManager.glAttachShader($$0.a(), this.c());
+   }
+
+   public void a() {
+      if (this.d != -1) {
+         RenderSystem.assertOnRenderThread();
+         GlStateManager.glDeleteShader(this.d);
+         this.d = -1;
+         this.b.c().remove(this.c);
       }
    }
 
-   public eky.a c() {
+   public String b() {
+      return this.c;
+   }
+
+   public static eky a(eky.a $$0, String $$1, InputStream $$2, String $$3, ekr $$4) throws IOException {
       RenderSystem.assertOnRenderThread();
-      if (this.a == 0) {
-         throw new IllegalStateException("endProfile called before beginProfile");
-      } else {
-         GL32C.glEndQuery(35007);
-         eky.a $$0 = new eky.a(this.a);
-         this.a = 0;
-         return $$0;
-      }
+      int $$5 = b($$0, $$1, $$2, $$3, $$4);
+      eky $$6 = new eky($$0, $$5, $$1);
+      $$0.c().put($$1, $$6);
+      return $$6;
    }
 
-   public static class a {
-      private static final long a = 0L;
-      private static final long b = -1L;
-      private final int c;
-      private long d;
-
-      a(int $$0) {
-         this.c = $$0;
-      }
-
-      public void a() {
-         RenderSystem.assertOnRenderThread();
-         if (this.d == 0L) {
-            this.d = -1L;
-            GL32C.glDeleteQueries(this.c);
-         }
-      }
-
-      public boolean b() {
-         RenderSystem.assertOnRenderThread();
-         if (this.d != 0L) {
-            return true;
-         } else if (1 == GL32C.glGetQueryObjecti(this.c, 34919)) {
-            this.d = ARBTimerQuery.glGetQueryObjecti64(this.c, 34918);
-            GL32C.glDeleteQueries(this.c);
-            return true;
+   protected static int b(eky.a $$0, String $$1, InputStream $$2, String $$3, ekr $$4) throws IOException {
+      String $$5 = IOUtils.toString($$2, StandardCharsets.UTF_8);
+      if ($$5 == null) {
+         throw new IOException("Could not load program " + $$0.a());
+      } else {
+         int $$6 = GlStateManager.glCreateShader($$0.d());
+         GlStateManager.glShaderSource($$6, $$4.a($$5));
+         GlStateManager.glCompileShader($$6);
+         if (GlStateManager.glGetShaderi($$6, 35713) == 0) {
+            String $$7 = StringUtils.trim(GlStateManager.glGetShaderInfoLog($$6, 32768));
+            throw new IOException("Couldn't compile " + $$0.a() + " program (" + $$3 + ", " + $$1 + ") : " + $$7);
          } else {
-            return false;
+            return $$6;
          }
       }
+   }
 
-      public long c() {
-         RenderSystem.assertOnRenderThread();
-         if (this.d == 0L) {
-            this.d = ARBTimerQuery.glGetQueryObjecti64(this.c, 34918);
-            GL32C.glDeleteQueries(this.c);
-         }
+   protected int c() {
+      return this.d;
+   }
 
+   public static enum a {
+      a("vertex", ".vsh", 35633),
+      b("fragment", ".fsh", 35632);
+
+      private final String c;
+      private final String d;
+      private final int e;
+      private final Map<String, eky> f = Maps.newHashMap();
+
+      private a(String $$0, String $$1, int $$2) {
+         this.c = $$0;
+         this.d = $$1;
+         this.e = $$2;
+      }
+
+      public String a() {
+         return this.c;
+      }
+
+      public String b() {
          return this.d;
       }
-   }
 
-   static class b {
-      static final Optional<eky> a = Optional.ofNullable(a());
-
-      private b() {
+      int d() {
+         return this.e;
       }
 
-      @Nullable
-      private static eky a() {
-         return !GL.getCapabilities().GL_ARB_timer_query ? null : new eky();
+      public Map<String, eky> c() {
+         return this.f;
       }
    }
 }

@@ -1,44 +1,28 @@
 import com.mojang.serialization.Codec;
 
-public class dop extends dnm<dpy> {
-   private static final int a = 7;
-
-   dop(Codec<dpy> $$0) {
+public class dop extends dnr<dqi> {
+   public dop(Codec<dqi> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dno<dpy> $$0) {
-      cqf $$1 = $$0.b();
-      aru $$2 = $$0.d();
-      dpy $$3 = $$0.f();
-      gu $$4 = $$0.e();
-      int $$5 = $$2.a($$3.c + 1);
-      gu.a $$6 = new gu.a();
+   public boolean a(dnt<dqi> $$0) {
+      dqi $$1 = $$0.f();
+      arx $$2 = $$0.d();
+      gw $$3 = $$0.e();
+      cqk $$4 = $$0.b();
+      int $$5 = 0;
+      gw.a $$6 = new gw.a();
+      int $$7 = $$1.b() + 1;
+      int $$8 = $$1.c() + 1;
 
-      for (int $$7 = 0; $$7 < $$5; $$7++) {
-         this.a($$6, $$2, $$4, Math.min($$7, 7));
-         dez $$8 = $$1.a_($$6);
-
-         for (dpy.a $$9 : $$3.b) {
-            if (doh.a($$8, $$1::a_, $$2, $$3, $$9, $$6)) {
-               $$1.a($$6, $$9.c, 2);
-               break;
-            }
+      for (int $$9 = 0; $$9 < $$1.a(); $$9++) {
+         $$6.a($$3, $$2.a($$7) - $$2.a($$7), $$2.a($$8) - $$2.a($$8), $$2.a($$7) - $$2.a($$7));
+         if ($$1.d().a().a($$4, $$0.c(), $$2, $$6)) {
+            $$5++;
          }
       }
 
-      return true;
-   }
-
-   private void a(gu.a $$0, aru $$1, gu $$2, int $$3) {
-      int $$4 = this.a($$1, $$3);
-      int $$5 = this.a($$1, $$3);
-      int $$6 = this.a($$1, $$3);
-      $$0.a($$2, $$4, $$5, $$6);
-   }
-
-   private int a(aru $$0, int $$1) {
-      return Math.round(($$0.i() - $$0.i()) * (float)$$1);
+      return $$5 > 0;
    }
 }

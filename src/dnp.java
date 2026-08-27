@@ -1,27 +1,27 @@
 import com.mojang.serialization.Codec;
 
-public class dnp extends dnm<dpu> {
-   public dnp(Codec<dpu> $$0) {
+public class dnp extends dnr<dqc> {
+   public dnp(Codec<dqc> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dno<dpu> $$0) {
-      gu $$1 = $$0.e();
-      dpu $$2 = $$0.f();
-      cqf $$3 = $$0.b();
-      gu.a $$4 = new gu.a();
+   public boolean a(dnt<dqc> $$0) {
+      cqk $$1 = $$0.b();
+      arx $$2 = $$0.d();
+      gw $$3 = $$0.e();
+      float $$4 = (float)$$2.a(3) + 4.0F;
 
-      for (int $$5 = 0; $$5 < 16; $$5++) {
-         for (int $$6 = 0; $$6 < 16; $$6++) {
-            int $$7 = $$1.u() + $$5;
-            int $$8 = $$1.w() + $$6;
-            int $$9 = $$3.C_() + $$2.b;
-            $$4.d($$7, $$9, $$8);
-            if ($$3.a_($$4).i()) {
-               $$3.a($$4, $$2.c, 2);
+      for (int $$5 = 0; $$4 > 0.5F; $$5--) {
+         for (int $$6 = ars.d(-$$4); $$6 <= ars.f($$4); $$6++) {
+            for (int $$7 = ars.d(-$$4); $$7 <= ars.f($$4); $$7++) {
+               if ((float)($$6 * $$6 + $$7 * $$7) <= ($$4 + 1.0F) * ($$4 + 1.0F)) {
+                  this.a($$1, $$3.b($$6, $$5, $$7), csr.fz.n());
+               }
             }
          }
+
+         $$4 -= (float)$$2.a(2) + 0.5F;
       }
 
       return true;

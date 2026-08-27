@@ -1,31 +1,20 @@
-public record vw(vw.a b) implements vp {
-   public static final aer a = new aer("debug/hive");
+public record vw(gw b, int c, String d, int e) implements vs {
+   public static final aeu a = new aeu("debug/game_test_add_marker");
 
-   public vw(si $$0) {
-      this(new vw.a($$0));
+   public vw(sl $$0) {
+      this($$0.e(), $$0.readInt(), $$0.r(), $$0.readInt());
    }
 
    @Override
-   public void a(si $$0) {
-      this.b.a($$0);
+   public void a(sl $$0) {
+      $$0.a(this.b);
+      $$0.p(this.c);
+      $$0.a(this.d);
+      $$0.p(this.e);
    }
 
    @Override
-   public aer a() {
+   public aeu a() {
       return a;
-   }
-
-   public static record a(gu a, String b, int c, int d, boolean e) {
-      public a(si $$0) {
-         this($$0.e(), $$0.r(), $$0.readInt(), $$0.readInt(), $$0.readBoolean());
-      }
-
-      public void a(si $$0) {
-         $$0.a(this.a);
-         $$0.a(this.b);
-         $$0.p(this.c);
-         $$0.p(this.d);
-         $$0.a(this.e);
-      }
    }
 }

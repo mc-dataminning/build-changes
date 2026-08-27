@@ -1,223 +1,183 @@
-import com.google.common.collect.Lists;
-import java.util.List;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.JsonSyntaxException;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import javax.annotation.Nullable;
 
 public class aq {
-   private final ae a;
+   private final ti a;
+   private final ti b;
+   private final cja c;
    @Nullable
-   private final aq b;
-   @Nullable
-   private final aq c;
-   private final int d;
-   private final List<aq> e = Lists.newArrayList();
-   private aq f;
-   @Nullable
-   private aq g;
-   private int h;
+   private final aeu d;
+   private final ar e;
+   private final boolean f;
+   private final boolean g;
+   private final boolean h;
    private float i;
    private float j;
-   private float k;
-   private float l;
 
-   public aq(ae $$0, @Nullable aq $$1, @Nullable aq $$2, int $$3, int $$4) {
-      if ($$0.d() == null) {
-         throw new IllegalArgumentException("Can't position an invisible advancement!");
-      } else {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.f = this;
-         this.h = $$4;
-         this.i = -1.0F;
-         aq $$5 = null;
+   public aq(cja $$0, ti $$1, ti $$2, @Nullable aeu $$3, ar $$4, boolean $$5, boolean $$6, boolean $$7) {
+      this.a = $$1;
+      this.b = $$2;
+      this.c = $$0;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
+      this.g = $$6;
+      this.h = $$7;
+   }
 
-         for (ae $$6 : $$0.g()) {
-            $$5 = this.a($$6, $$5);
-         }
-      }
+   public void a(float $$0, float $$1) {
+      this.i = $$0;
+      this.j = $$1;
+   }
+
+   public ti a() {
+      return this.a;
+   }
+
+   public ti b() {
+      return this.b;
+   }
+
+   public cja c() {
+      return this.c;
    }
 
    @Nullable
-   private aq a(ae $$0, @Nullable aq $$1) {
-      if ($$0.d() != null) {
-         $$1 = new aq($$0, this, $$1, this.e.size() + 1, this.h + 1);
-         this.e.add($$1);
-      } else {
-         for (ae $$2 : $$0.g()) {
-            $$1 = this.a($$2, $$1);
-         }
-      }
-
-      return $$1;
+   public aeu d() {
+      return this.d;
    }
 
-   private void a() {
-      if (this.e.isEmpty()) {
-         if (this.c != null) {
-            this.i = this.c.i + 1.0F;
+   public ar e() {
+      return this.e;
+   }
+
+   public float f() {
+      return this.i;
+   }
+
+   public float g() {
+      return this.j;
+   }
+
+   public boolean h() {
+      return this.f;
+   }
+
+   public boolean i() {
+      return this.g;
+   }
+
+   public boolean j() {
+      return this.h;
+   }
+
+   public static aq a(JsonObject $$0) {
+      ti $$1 = ti.a.a($$0.get("title"));
+      ti $$2 = ti.a.a($$0.get("description"));
+      if ($$1 != null && $$2 != null) {
+         cja $$3 = b(arj.u($$0, "icon"));
+         aeu $$4 = $$0.has("background") ? new aeu(arj.i($$0, "background")) : null;
+         ar $$5 = $$0.has("frame") ? ar.a(arj.i($$0, "frame")) : ar.a;
+         boolean $$6 = arj.a($$0, "show_toast", true);
+         boolean $$7 = arj.a($$0, "announce_to_chat", true);
+         boolean $$8 = arj.a($$0, "hidden", false);
+         return new aq($$3, $$1, $$2, $$4, $$5, $$6, $$7, $$8);
+      } else {
+         throw new JsonSyntaxException("Both title and description must be set");
+      }
+   }
+
+   private static cja b(JsonObject $$0) {
+      if (!$$0.has("item")) {
+         throw new JsonSyntaxException("Unsupported icon type, currently only items are supported (add 'item' key)");
+      } else {
+         hg<civ> $$1 = arj.j($$0, "item");
+         if ($$0.has("data")) {
+            throw new JsonParseException("Disallowed data tag found");
          } else {
-            this.i = 0.0F;
-         }
-      } else {
-         aq $$0 = null;
-
-         for (aq $$1 : this.e) {
-            $$1.a();
-            $$0 = $$1.a($$0 == null ? $$1 : $$0);
-         }
-
-         this.b();
-         float $$2 = (this.e.get(0).i + this.e.get(this.e.size() - 1).i) / 2.0F;
-         if (this.c != null) {
-            this.i = this.c.i + 1.0F;
-            this.j = this.i - $$2;
-         } else {
-            this.i = $$2;
-         }
-      }
-   }
-
-   private float a(float $$0, int $$1, float $$2) {
-      this.i += $$0;
-      this.h = $$1;
-      if (this.i < $$2) {
-         $$2 = this.i;
-      }
-
-      for (aq $$3 : this.e) {
-         $$2 = $$3.a($$0 + this.j, $$1 + 1, $$2);
-      }
-
-      return $$2;
-   }
-
-   private void a(float $$0) {
-      this.i += $$0;
-
-      for (aq $$1 : this.e) {
-         $$1.a($$0);
-      }
-   }
-
-   private void b() {
-      float $$0 = 0.0F;
-      float $$1 = 0.0F;
-
-      for (int $$2 = this.e.size() - 1; $$2 >= 0; $$2--) {
-         aq $$3 = this.e.get($$2);
-         $$3.i += $$0;
-         $$3.j += $$0;
-         $$1 += $$3.k;
-         $$0 += $$3.l + $$1;
-      }
-   }
-
-   @Nullable
-   private aq c() {
-      if (this.g != null) {
-         return this.g;
-      } else {
-         return !this.e.isEmpty() ? this.e.get(0) : null;
-      }
-   }
-
-   @Nullable
-   private aq d() {
-      if (this.g != null) {
-         return this.g;
-      } else {
-         return !this.e.isEmpty() ? this.e.get(this.e.size() - 1) : null;
-      }
-   }
-
-   private aq a(aq $$0) {
-      if (this.c == null) {
-         return $$0;
-      } else {
-         aq $$1 = this;
-         aq $$2 = this;
-         aq $$3 = this.c;
-         aq $$4 = this.b.e.get(0);
-         float $$5 = this.j;
-         float $$6 = this.j;
-         float $$7 = $$3.j;
-
-         float $$8;
-         for ($$8 = $$4.j; $$3.d() != null && $$1.c() != null; $$6 += $$2.j) {
-            $$3 = $$3.d();
-            $$1 = $$1.c();
-            $$4 = $$4.c();
-            $$2 = $$2.d();
-            $$2.f = this;
-            float $$9 = $$3.i + $$7 - ($$1.i + $$5) + 1.0F;
-            if ($$9 > 0.0F) {
-               $$3.a(this, $$0).a(this, $$9);
-               $$5 += $$9;
-               $$6 += $$9;
+            cja $$2 = new cja($$1);
+            if ($$0.has("nbt")) {
+               try {
+                  qu $$3 = ro.a(arj.a($$0.get("nbt"), "nbt"));
+                  $$2.c($$3);
+               } catch (CommandSyntaxException var4) {
+                  throw new JsonSyntaxException("Invalid nbt tag: " + var4.getMessage());
+               }
             }
 
-            $$7 += $$3.j;
-            $$5 += $$1.j;
-            $$8 += $$4.j;
-         }
-
-         if ($$3.d() != null && $$2.d() == null) {
-            $$2.g = $$3.d();
-            $$2.j += $$7 - $$6;
-         } else {
-            if ($$1.c() != null && $$4.c() == null) {
-               $$4.g = $$1.c();
-               $$4.j += $$5 - $$8;
-            }
-
-            $$0 = this;
-         }
-
-         return $$0;
-      }
-   }
-
-   private void a(aq $$0, float $$1) {
-      float $$2 = (float)($$0.d - this.d);
-      if ($$2 != 0.0F) {
-         $$0.k -= $$1 / $$2;
-         this.k += $$1 / $$2;
-      }
-
-      $$0.l += $$1;
-      $$0.i += $$1;
-      $$0.j += $$1;
-   }
-
-   private aq a(aq $$0, aq $$1) {
-      return this.f != null && $$0.b.e.contains(this.f) ? this.f : $$1;
-   }
-
-   private void e() {
-      if (this.a.d() != null) {
-         this.a.d().a((float)this.h, this.i);
-      }
-
-      if (!this.e.isEmpty()) {
-         for (aq $$0 : this.e) {
-            $$0.e();
+            return $$2;
          }
       }
    }
 
-   public static void a(ae $$0) {
-      if ($$0.d() == null) {
-         throw new IllegalArgumentException("Can't position children of an invisible root!");
-      } else {
-         aq $$1 = new aq($$0, null, null, 1, 0);
-         $$1.a();
-         float $$2 = $$1.a(0.0F, 0, $$1.i);
-         if ($$2 < 0.0F) {
-            $$1.a(-$$2);
-         }
-
-         $$1.e();
+   public void a(sl $$0) {
+      $$0.a(this.a);
+      $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.a(this.e);
+      int $$1 = 0;
+      if (this.d != null) {
+         $$1 |= 1;
       }
+
+      if (this.f) {
+         $$1 |= 2;
+      }
+
+      if (this.h) {
+         $$1 |= 4;
+      }
+
+      $$0.p($$1);
+      if (this.d != null) {
+         $$0.a(this.d);
+      }
+
+      $$0.a(this.i);
+      $$0.a(this.j);
+   }
+
+   public static aq b(sl $$0) {
+      ti $$1 = $$0.l();
+      ti $$2 = $$0.l();
+      cja $$3 = $$0.q();
+      ar $$4 = $$0.b(ar.class);
+      int $$5 = $$0.readInt();
+      aeu $$6 = ($$5 & 1) != 0 ? $$0.s() : null;
+      boolean $$7 = ($$5 & 2) != 0;
+      boolean $$8 = ($$5 & 4) != 0;
+      aq $$9 = new aq($$3, $$1, $$2, $$6, $$4, $$7, false, $$8);
+      $$9.a($$0.readFloat(), $$0.readFloat());
+      return $$9;
+   }
+
+   public JsonElement k() {
+      JsonObject $$0 = new JsonObject();
+      $$0.add("icon", this.l());
+      $$0.add("title", ti.a.c(this.a));
+      $$0.add("description", ti.a.c(this.b));
+      $$0.addProperty("frame", this.e.a());
+      $$0.addProperty("show_toast", this.f);
+      $$0.addProperty("announce_to_chat", this.g);
+      $$0.addProperty("hidden", this.h);
+      if (this.d != null) {
+         $$0.addProperty("background", this.d.toString());
+      }
+
+      return $$0;
+   }
+
+   private JsonObject l() {
+      JsonObject $$0 = new JsonObject();
+      $$0.addProperty("item", jd.i.b(this.c.d()).toString());
+      if (this.c.u()) {
+         $$0.addProperty("nbt", this.c.v().toString());
+      }
+
+      return $$0;
    }
 }

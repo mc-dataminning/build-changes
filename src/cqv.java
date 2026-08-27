@@ -1,134 +1,70 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.function.Function;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public abstract class cqv {
+   public static final aet<cqo> a = a("the_void");
+   public static final aet<cqo> b = a("plains");
+   public static final aet<cqo> c = a("sunflower_plains");
+   public static final aet<cqo> d = a("snowy_plains");
+   public static final aet<cqo> e = a("ice_spikes");
+   public static final aet<cqo> f = a("desert");
+   public static final aet<cqo> g = a("swamp");
+   public static final aet<cqo> h = a("mangrove_swamp");
+   public static final aet<cqo> i = a("forest");
+   public static final aet<cqo> j = a("flower_forest");
+   public static final aet<cqo> k = a("birch_forest");
+   public static final aet<cqo> l = a("dark_forest");
+   public static final aet<cqo> m = a("old_growth_birch_forest");
+   public static final aet<cqo> n = a("old_growth_pine_taiga");
+   public static final aet<cqo> o = a("old_growth_spruce_taiga");
+   public static final aet<cqo> p = a("taiga");
+   public static final aet<cqo> q = a("snowy_taiga");
+   public static final aet<cqo> r = a("savanna");
+   public static final aet<cqo> s = a("savanna_plateau");
+   public static final aet<cqo> t = a("windswept_hills");
+   public static final aet<cqo> u = a("windswept_gravelly_hills");
+   public static final aet<cqo> v = a("windswept_forest");
+   public static final aet<cqo> w = a("windswept_savanna");
+   public static final aet<cqo> x = a("jungle");
+   public static final aet<cqo> y = a("sparse_jungle");
+   public static final aet<cqo> z = a("bamboo_jungle");
+   public static final aet<cqo> A = a("badlands");
+   public static final aet<cqo> B = a("eroded_badlands");
+   public static final aet<cqo> C = a("wooded_badlands");
+   public static final aet<cqo> D = a("meadow");
+   public static final aet<cqo> E = a("cherry_grove");
+   public static final aet<cqo> F = a("grove");
+   public static final aet<cqo> G = a("snowy_slopes");
+   public static final aet<cqo> H = a("frozen_peaks");
+   public static final aet<cqo> I = a("jagged_peaks");
+   public static final aet<cqo> J = a("stony_peaks");
+   public static final aet<cqo> K = a("river");
+   public static final aet<cqo> L = a("frozen_river");
+   public static final aet<cqo> M = a("beach");
+   public static final aet<cqo> N = a("snowy_beach");
+   public static final aet<cqo> O = a("stony_shore");
+   public static final aet<cqo> P = a("warm_ocean");
+   public static final aet<cqo> Q = a("lukewarm_ocean");
+   public static final aet<cqo> R = a("deep_lukewarm_ocean");
+   public static final aet<cqo> S = a("ocean");
+   public static final aet<cqo> T = a("deep_ocean");
+   public static final aet<cqo> U = a("cold_ocean");
+   public static final aet<cqo> V = a("deep_cold_ocean");
+   public static final aet<cqo> W = a("frozen_ocean");
+   public static final aet<cqo> X = a("deep_frozen_ocean");
+   public static final aet<cqo> Y = a("mushroom_fields");
+   public static final aet<cqo> Z = a("dripstone_caves");
+   public static final aet<cqo> aa = a("lush_caves");
+   public static final aet<cqo> ab = a("deep_dark");
+   public static final aet<cqo> ac = a("nether_wastes");
+   public static final aet<cqo> ad = a("warped_forest");
+   public static final aet<cqo> ae = a("crimson_forest");
+   public static final aet<cqo> af = a("soul_sand_valley");
+   public static final aet<cqo> ag = a("basalt_deltas");
+   public static final aet<cqo> ah = a("the_end");
+   public static final aet<cqo> ai = a("end_highlands");
+   public static final aet<cqo> aj = a("end_midlands");
+   public static final aet<cqo> ak = a("small_end_islands");
+   public static final aet<cqo> al = a("end_barrens");
 
-public class cqv {
-   private static final Logger d = LogUtils.getLogger();
-   private static final float e = 0.1F;
-   public static final bfe<cqv.c> a = bfe.c();
-   public static final cqv b = new cqv.a().a();
-   public static final MapCodec<cqv> c = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.floatRange(0.0F, 0.9999999F).optionalFieldOf("creature_spawn_probability", 0.1F).forGetter($$0x -> $$0x.f),
-               Codec.simpleMap(bjb.i, bfe.c(cqv.c.a).promotePartial(ac.a("Spawn data: ", d::error)), ash.a(bjb.values()))
-                  .fieldOf("spawners")
-                  .forGetter($$0x -> $$0x.g),
-               Codec.simpleMap(jb.h.q(), cqv.b.a, jb.h).fieldOf("spawn_costs").forGetter($$0x -> $$0x.h)
-            )
-            .apply($$0, cqv::new)
-   );
-   private final float f;
-   private final Map<bjb, bfe<cqv.c>> g;
-   private final Map<bim<?>, cqv.b> h;
-
-   cqv(float $$0, Map<bjb, bfe<cqv.c>> $$1, Map<bim<?>, cqv.b> $$2) {
-      this.f = $$0;
-      this.g = ImmutableMap.copyOf($$1);
-      this.h = ImmutableMap.copyOf($$2);
-   }
-
-   public bfe<cqv.c> a(bjb $$0) {
-      return this.g.getOrDefault($$0, a);
-   }
-
-   @Nullable
-   public cqv.b a(bim<?> $$0) {
-      return this.h.get($$0);
-   }
-
-   public float a() {
-      return this.f;
-   }
-
-   public static class a {
-      private final Map<bjb, List<cqv.c>> a = Stream.of(bjb.values()).collect(ImmutableMap.toImmutableMap($$0 -> $$0, $$0 -> Lists.newArrayList()));
-      private final Map<bim<?>, cqv.b> b = Maps.newLinkedHashMap();
-      private float c = 0.1F;
-
-      public cqv.a a(bjb $$0, cqv.c $$1) {
-         this.a.get($$0).add($$1);
-         return this;
-      }
-
-      public cqv.a a(bim<?> $$0, double $$1, double $$2) {
-         this.b.put($$0, new cqv.b($$2, $$1));
-         return this;
-      }
-
-      public cqv.a a(float $$0) {
-         this.c = $$0;
-         return this;
-      }
-
-      public cqv a() {
-         return new cqv(
-            this.c,
-            this.a.entrySet().stream().collect(ImmutableMap.toImmutableMap(Entry::getKey, $$0 -> bfe.a((List)$$0.getValue()))),
-            ImmutableMap.copyOf(this.b)
-         );
-      }
-   }
-
-   public static record b(double b, double c) {
-      public static final Codec<cqv.b> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(Codec.DOUBLE.fieldOf("energy_budget").forGetter($$0x -> $$0x.b), Codec.DOUBLE.fieldOf("charge").forGetter($$0x -> $$0x.c))
-               .apply($$0, cqv.b::new)
-      );
-
-      public double a() {
-         return this.b;
-      }
-
-      public double b() {
-         return this.c;
-      }
-   }
-
-   public static class c extends bfc.a {
-      public static final Codec<cqv.c> a = aqy.a(
-         RecordCodecBuilder.create(
-            $$0 -> $$0.group(
-                     jb.h.q().fieldOf("type").forGetter($$0x -> $$0x.b),
-                     bfb.a.fieldOf("weight").forGetter(bfc.a::a),
-                     aqy.j.fieldOf("minCount").forGetter($$0x -> $$0x.c),
-                     aqy.j.fieldOf("maxCount").forGetter($$0x -> $$0x.d)
-                  )
-                  .apply($$0, cqv.c::new)
-         ),
-         (Function<cqv.c, DataResult<cqv.c>>)($$0 -> $$0.c > $$0.d
-               ? DataResult.error(() -> "minCount needs to be smaller or equal to maxCount")
-               : DataResult.success($$0))
-      );
-      public final bim<?> b;
-      public final int c;
-      public final int d;
-
-      public c(bim<?> $$0, int $$1, int $$2, int $$3) {
-         this($$0, bfb.a($$1), $$2, $$3);
-      }
-
-      public c(bim<?> $$0, bfb $$1, int $$2, int $$3) {
-         super($$1);
-         this.b = $$0.f() == bjb.h ? bim.av : $$0;
-         this.c = $$2;
-         this.d = $$3;
-      }
-
-      @Override
-      public String toString() {
-         return bim.a(this.b) + "*(" + this.c + "-" + this.d + "):" + this.a();
-      }
+   private static aet<cqo> a(String $$0) {
+      return aet.a(je.ap, new aeu($$0));
    }
 }

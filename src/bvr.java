@@ -1,108 +1,110 @@
 import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
 import com.mojang.datafixers.util.Pair;
 import java.util.Optional;
+import java.util.UUID;
+import java.util.function.Predicate;
 
 public class bvr {
-   private static final bgb a = bgb.a(5, 16);
-   private static final float b = 0.2F;
-   private static final float c = 0.15F;
-   private static final float d = 0.5F;
-   private static final float e = 0.6F;
-   private static final float f = 0.6F;
+   private static final float a = 1.0F;
+   private static final float b = 2.25F;
+   private static final float c = 1.75F;
+   private static final float d = 2.5F;
+   private static final int e = 4;
+   private static final int f = 16;
+   private static final int g = 6;
+   private static final int h = 30;
+   private static final int i = 60;
+   private static final int j = 600;
+   private static final int k = 32;
+   private static final int l = 20;
 
-   protected static bjy<?> a(bjy<bvq> $$0) {
-      d($$0);
-      e($$0);
-      c($$0);
+   protected static bkb<?> a(bkb<bvq> $$0) {
       b($$0);
-      $$0.a(ImmutableSet.of(ccx.a));
-      $$0.b(ccx.b);
+      c($$0);
+      $$0.a(ImmutableSet.of(cda.a));
+      $$0.b(cda.b);
       $$0.f();
       return $$0;
    }
 
-   private static void b(bjy<bvq> $$0) {
-      $$0.a(ccx.p, ImmutableList.of(Pair.of(0, new bvs()), Pair.of(1, blb.a(bkr::a, brz.M))), ImmutableSet.of(Pair.of(brz.M, bsa.a)), ImmutableSet.of(brz.M));
+   private static void b(bkb<bvq> $$0) {
+      $$0.a(cda.a, 0, ImmutableList.of(new bnl(0.8F), new bkn(2.5F), new blx(45, 90), new bmb(), new bky(bsc.aN), new bky(bsc.aO)));
    }
 
-   private static void c(bjy<bvq> $$0) {
-      $$0.a(ccx.k, 0, ImmutableList.of(bnd.a(bvq::a), bmt.a(bvr::b), blv.a(20), blb.a(bkr::a, brz.o)), brz.o);
-   }
-
-   private static void d(bjy<bvq> $$0) {
-      $$0.a(ccx.a, 0, ImmutableList.of(new blu(45, 90), new bly(), bvt.a(), new bkv(brz.O)));
-   }
-
-   private static void e(bjy<bvq> $$0) {
+   private static void c(bkb<bvq> $$0) {
       $$0.a(
-         ccx.b,
+         cda.b,
          ImmutableList.of(
-            Pair.of(0, bmo.a(bim.bt, 6.0F, bgb.a(30, 60))),
-            Pair.of(1, new bkj(bim.f, 0.2F)),
-            Pair.of(2, new bml(ImmutableList.of(Pair.of(new blc(bvr::d), 1), Pair.of(bkm.a(a, bvr::c), 1)))),
-            Pair.of(3, bna.a(bvr::b)),
-            Pair.of(3, bnn.a(6, 0.15F)),
-            Pair.of(
-               4,
-               new bld(
-                  ImmutableMap.of(brz.m, bsa.b),
-                  ImmutableSet.of(),
-                  bld.a.a,
-                  bld.b.b,
-                  ImmutableList.of(
-                     Pair.of(bmg.c(0.5F), 2),
-                     Pair.of(bmg.a(0.15F, false), 2),
-                     Pair.of(bmv.a(bvr::a, bvr::d, 3), 3),
-                     Pair.of(bob.a(bii::ba), 5),
-                     Pair.of(bob.a(bii::aA), 5)
-                  )
-               )
-            )
-         )
+            Pair.of(0, blm.a($$0x -> true, 1.75F, true, 32)),
+            Pair.of(1, new bli(bvr::b, 2.25F, 20)),
+            Pair.of(2, bnf.a(bvr::b, Predicate.not(bvr::c), 4, 16, 2.25F)),
+            Pair.of(3, bmr.a(6.0F, bge.a(30, 60))),
+            Pair.of(4, new bmo(ImmutableList.of(Pair.of(bmj.b(1.0F), 2), Pair.of(bmy.a(1.0F, 3), 2), Pair.of(new blc(30, 60), 1))))
+         ),
+         ImmutableSet.of()
       );
    }
 
-   private static boolean a(biy $$0) {
-      cpl $$1 = $$0.dK();
-      Optional<bmc> $$2 = $$0.dM().c(brz.n);
-      if ($$2.isPresent()) {
-         gu $$3 = $$2.get().b();
-         return $$1.y($$3) == $$0.ba();
-      } else {
-         return false;
+   public static void a(bvq $$0) {
+      $$0.dM().a(ImmutableList.of(cda.b));
+   }
+
+   public static void a(bjb $$0, gw $$1) {
+      bkb<?> $$2 = $$0.dM();
+      hf $$3 = hf.a($$0.dK().ac(), $$1);
+      Optional<hf> $$4 = $$2.c(bsc.aM);
+      if ($$4.isEmpty()) {
+         $$2.a(bsc.aM, $$3);
+         $$2.a(bsc.aN, 600);
+      } else if ($$4.get().equals($$3)) {
+         $$2.a(bsc.aN, 600);
       }
    }
 
-   public static void a(bvq $$0) {
-      bjy<bvq> $$1 = $$0.dM();
-      ccx $$2 = $$1.g().orElse(null);
-      if ($$2 != ccx.p) {
-         $$1.a(ImmutableList.of(ccx.p, ccx.k, ccx.b));
-         if ($$2 == ccx.k && $$1.g().orElse(null) != ccx.k) {
-            $$1.a(brz.T, true, 2400L);
+   private static Optional<bmf> b(bjb $$0) {
+      bkb<?> $$1 = $$0.dM();
+      Optional<hf> $$2 = $$1.c(bsc.aM);
+      if ($$2.isPresent()) {
+         hf $$3 = $$2.get();
+         if (a($$0, $$1, $$3)) {
+            return Optional.of(new bkv($$3.b().c()));
+         }
+
+         $$1.b(bsc.aM);
+      }
+
+      return d($$0);
+   }
+
+   private static boolean c(bjb $$0) {
+      bkb<?> $$1 = $$0.dM();
+      return $$1.a(bsc.K);
+   }
+
+   private static boolean a(bjb $$0, bkb<?> $$1, hf $$2) {
+      Optional<Integer> $$3 = $$1.c(bsc.aN);
+      cpq $$4 = $$0.dK();
+      return $$4.ac() == $$2.a() && $$4.a_($$2.b()).a(csr.aY) && $$3.isPresent();
+   }
+
+   private static Optional<bmf> d(bjb $$0) {
+      return a($$0).map($$0x -> new bld($$0x, true));
+   }
+
+   public static Optional<ako> a(bjb $$0) {
+      cpq $$1 = $$0.dK();
+      if (!$$1.r_() && $$1 instanceof akn $$2) {
+         Optional<UUID> $$3 = $$0.dM().c(bsc.aL);
+         if ($$3.isPresent()) {
+            if ($$2.a($$3.get()) instanceof ako $$5 && ($$5.e.d() || $$5.e.e()) && $$5.a($$0, 64.0)) {
+               return Optional.of($$5);
+            }
+
+            return Optional.empty();
          }
       }
-   }
 
-   private static float b(biy $$0) {
-      return $$0.ba() ? 0.6F : 0.15F;
-   }
-
-   private static float c(biy $$0) {
-      return $$0.ba() ? 0.6F : 0.15F;
-   }
-
-   private static float d(biy $$0) {
-      return $$0.ba() ? 0.5F : 0.15F;
-   }
-
-   private static Optional<? extends biy> b(bvq $$0) {
-      return bkr.a($$0) ? Optional.empty() : $$0.dM().c(brz.B);
-   }
-
-   public static clx a() {
-      return clx.a(apt.aA);
+      return Optional.empty();
    }
 }

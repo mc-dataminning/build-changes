@@ -1,36 +1,57 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Map;
+import javax.annotation.Nullable;
 
-public record vi(vp a) implements ux<vh> {
-   private static final int b = 32767;
-   private static final Map<aer, si.a<? extends vp>> c = ImmutableMap.builder().put(vo.a, vo::new).build();
+public class vi implements va<vd> {
+   public static final int a = 40;
+   private final String b;
+   private final String c;
+   private final boolean d;
+   @Nullable
+   private final ti e;
 
-   public vi(si $$0) {
-      this(a($$0.s(), $$0));
-   }
-
-   private static vp a(aer $$0, si $$1) {
-      si.a<? extends vp> $$2 = c.get($$0);
-      return (vp)($$2 != null ? $$2.apply($$1) : b($$0, $$1));
-   }
-
-   private static vq b(aer $$0, si $$1) {
-      int $$2 = $$1.readableBytes();
-      if ($$2 >= 0 && $$2 <= 32767) {
-         $$1.j($$2);
-         return new vq($$0);
+   public vi(String $$0, String $$1, boolean $$2, @Nullable ti $$3) {
+      if ($$1.length() > 40) {
+         throw new IllegalArgumentException("Hash is too long (max 40, was " + $$1.length() + ")");
       } else {
-         throw new IllegalArgumentException("Payload may not be larger than 32767 bytes");
+         this.b = $$0;
+         this.c = $$1;
+         this.d = $$2;
+         this.e = $$3;
       }
    }
 
-   @Override
-   public void a(si $$0) {
-      $$0.a(this.a.a());
-      this.a.a($$0);
+   public vi(sl $$0) {
+      this.b = $$0.r();
+      this.c = $$0.d(40);
+      this.d = $$0.readBoolean();
+      this.e = $$0.c(sl::l);
    }
 
-   public void a(vh $$0) {
+   @Override
+   public void a(sl $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e, sl::a);
+   }
+
+   public void a(vd $$0) {
       $$0.a(this);
+   }
+
+   public String a() {
+      return this.b;
+   }
+
+   public String d() {
+      return this.c;
+   }
+
+   public boolean e() {
+      return this.d;
+   }
+
+   @Nullable
+   public ti f() {
+      return this.e;
    }
 }

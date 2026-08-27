@@ -1,51 +1,21 @@
-public enum fnl {
-   a(new fnl.b(fnl.a.f, fnl.a.e, fnl.a.a), new fnl.b(fnl.a.f, fnl.a.e, fnl.a.d), new fnl.b(fnl.a.c, fnl.a.e, fnl.a.d), new fnl.b(fnl.a.c, fnl.a.e, fnl.a.a)),
-   b(new fnl.b(fnl.a.f, fnl.a.b, fnl.a.d), new fnl.b(fnl.a.f, fnl.a.b, fnl.a.a), new fnl.b(fnl.a.c, fnl.a.b, fnl.a.a), new fnl.b(fnl.a.c, fnl.a.b, fnl.a.d)),
-   c(new fnl.b(fnl.a.c, fnl.a.b, fnl.a.d), new fnl.b(fnl.a.c, fnl.a.e, fnl.a.d), new fnl.b(fnl.a.f, fnl.a.e, fnl.a.d), new fnl.b(fnl.a.f, fnl.a.b, fnl.a.d)),
-   d(new fnl.b(fnl.a.f, fnl.a.b, fnl.a.a), new fnl.b(fnl.a.f, fnl.a.e, fnl.a.a), new fnl.b(fnl.a.c, fnl.a.e, fnl.a.a), new fnl.b(fnl.a.c, fnl.a.b, fnl.a.a)),
-   e(new fnl.b(fnl.a.f, fnl.a.b, fnl.a.d), new fnl.b(fnl.a.f, fnl.a.e, fnl.a.d), new fnl.b(fnl.a.f, fnl.a.e, fnl.a.a), new fnl.b(fnl.a.f, fnl.a.b, fnl.a.a)),
-   f(new fnl.b(fnl.a.c, fnl.a.b, fnl.a.a), new fnl.b(fnl.a.c, fnl.a.e, fnl.a.a), new fnl.b(fnl.a.c, fnl.a.e, fnl.a.d), new fnl.b(fnl.a.c, fnl.a.b, fnl.a.d));
+public class fnl {
+   public static final cpb a = cqo::a;
+   public static final cpb b = ($$0, $$1, $$2) -> $$0.f();
+   public static final cpb c = ($$0, $$1, $$2) -> $$0.i();
 
-   private static final fnl[] g = ac.a(new fnl[6], $$0 -> {
-      $$0[fnl.a.e] = a;
-      $$0[fnl.a.b] = b;
-      $$0[fnl.a.d] = c;
-      $$0[fnl.a.a] = d;
-      $$0[fnl.a.f] = e;
-      $$0[fnl.a.c] = f;
-   });
-   private final fnl.b[] h;
-
-   public static fnl a(ha $$0) {
-      return g[$$0.d()];
+   private static int a(cot $$0, gw $$1, cpb $$2) {
+      return $$0.a($$1, $$2);
    }
 
-   private fnl(fnl.b... $$0) {
-      this.h = $$0;
+   public static int a(cot $$0, gw $$1) {
+      return a($$0, $$1, a);
    }
 
-   public fnl.b a(int $$0) {
-      return this.h[$$0];
+   public static int b(cot $$0, gw $$1) {
+      return a($$0, $$1, b);
    }
 
-   public static final class a {
-      public static final int a = ha.d.d();
-      public static final int b = ha.b.d();
-      public static final int c = ha.f.d();
-      public static final int d = ha.c.d();
-      public static final int e = ha.a.d();
-      public static final int f = ha.e.d();
-   }
-
-   public static class b {
-      public final int a;
-      public final int b;
-      public final int c;
-
-      b(int $$0, int $$1, int $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-      }
+   public static int c(cot $$0, gw $$1) {
+      return a($$0, $$1, c);
    }
 }

@@ -1,15 +1,15 @@
-public class cmr extends cml {
-   public cmr(aer $$0, String $$1, clx $$2, cix $$3) {
-      super(cmd.f, cmc.t, $$0, $$1, $$2, $$3);
+public class cmr extends clm {
+   public cmr(String $$0, cls $$1, cmb $$2, cja $$3, float $$4, int $$5) {
+      super(cmi.b, $$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public boolean a(bgj $$0, cpl $$1) {
-      return this.a.a($$0.a(0));
+   public cja g() {
+      return new cja(csr.cD);
    }
 
    @Override
-   public cix h() {
-      return new cix(csm.oc);
+   public cmh<?> ai_() {
+      return cmh.p;
    }
 }

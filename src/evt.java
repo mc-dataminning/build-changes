@@ -1,111 +1,218 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.function.Consumer;
 
-public class evt implements evq {
-   private final evo a;
-   private final evt.a b;
-   private int c = 0;
+public class evt extends evp {
+   private final List<evw> c = new ArrayList<>();
+   private final List<evt.a> d = new ArrayList<>();
+   private final evx e = evx.i();
+   private int f = 0;
+   private int g = 0;
 
-   private evt(evt.a $$0) {
-      this(0, 0, $$0);
+   public evt() {
+      this(0, 0);
    }
 
-   public evt(int $$0, int $$1, evt.a $$2) {
-      this.a = new evo($$0, $$1);
-      this.b = $$2;
-   }
-
-   public evt a(int $$0) {
-      this.b.a(this.a, $$0);
-      return this;
-   }
-
-   public evs b() {
-      return this.a.b();
-   }
-
-   public evs c() {
-      return this.a.c();
-   }
-
-   public <T extends evr> T a(T $$0, evs $$1) {
-      return this.b.a(this.a, $$0, this.c++, $$1);
-   }
-
-   public <T extends evr> T a(T $$0) {
-      return this.a($$0, this.b());
-   }
-
-   public <T extends evr> T a(T $$0, Consumer<evs> $$1) {
-      return this.b.a(this.a, $$0, this.c++, ac.a(this.b(), $$1));
-   }
-
-   @Override
-   public void b(Consumer<evr> $$0) {
-      this.a.b($$0);
+   public evt(int $$0, int $$1) {
+      super($$0, $$1, 0, 0);
    }
 
    @Override
    public void a() {
-      this.a.a();
-   }
+      super.a();
+      int $$0 = 0;
+      int $$1 = 0;
 
-   @Override
-   public int l() {
-      return this.a.l();
-   }
+      for (evt.a $$2 : this.d) {
+         $$0 = Math.max($$2.c(), $$0);
+         $$1 = Math.max($$2.d(), $$1);
+      }
 
-   @Override
-   public int i() {
-      return this.a.i();
-   }
+      int[] $$3 = new int[$$1 + 1];
+      int[] $$4 = new int[$$0 + 1];
 
-   @Override
-   public void f(int $$0) {
-      this.a.f($$0);
-   }
+      for (evt.a $$5 : this.d) {
+         int $$6 = $$5.a() - ($$5.e - 1) * this.f;
+         c $$7 = new c($$6, $$5.e);
 
-   @Override
-   public void g(int $$0) {
-      this.a.g($$0);
-   }
+         for (int $$8 = $$5.c; $$8 <= $$5.c(); $$8++) {
+            $$4[$$8] = Math.max($$4[$$8], $$7.nextInt());
+         }
 
-   @Override
-   public int r() {
-      return this.a.r();
-   }
+         int $$9 = $$5.b() - ($$5.f - 1) * this.g;
+         c $$10 = new c($$9, $$5.f);
 
-   @Override
-   public int t() {
-      return this.a.t();
-   }
-
-   public static evt d() {
-      return new evt(evt.a.b);
-   }
-
-   public static evt e() {
-      return new evt(evt.a.a);
-   }
-
-   public static enum a {
-      a,
-      b;
-
-      void a(evo $$0, int $$1) {
-         switch (this) {
-            case a:
-               $$0.a($$1);
-               break;
-            case b:
-               $$0.b($$1);
+         for (int $$11 = $$5.d; $$11 <= $$5.d(); $$11++) {
+            $$3[$$11] = Math.max($$3[$$11], $$10.nextInt());
          }
       }
 
-      public <T extends evr> T a(evo $$0, T $$1, int $$2, evs $$3) {
-         return (T)(switch (this) {
-            case a -> $$0.a($$1, 0, $$2, $$3);
-            case b -> $$0.a($$1, $$2, 0, $$3);
-         });
+      int[] $$12 = new int[$$1 + 1];
+      int[] $$13 = new int[$$0 + 1];
+      $$12[0] = 0;
+
+      for (int $$14 = 1; $$14 <= $$1; $$14++) {
+         $$12[$$14] = $$12[$$14 - 1] + $$3[$$14 - 1] + this.g;
+      }
+
+      $$13[0] = 0;
+
+      for (int $$15 = 1; $$15 <= $$0; $$15++) {
+         $$13[$$15] = $$13[$$15 - 1] + $$4[$$15 - 1] + this.f;
+      }
+
+      for (evt.a $$16 : this.d) {
+         int $$17 = 0;
+
+         for (int $$18 = $$16.d; $$18 <= $$16.d(); $$18++) {
+            $$17 += $$3[$$18];
+         }
+
+         $$17 += this.g * ($$16.f - 1);
+         $$16.a(this.r() + $$12[$$16.d], $$17);
+         int $$19 = 0;
+
+         for (int $$20 = $$16.c; $$20 <= $$16.c(); $$20++) {
+            $$19 += $$4[$$20];
+         }
+
+         $$19 += this.f * ($$16.e - 1);
+         $$16.b(this.t() + $$13[$$16.c], $$19);
+      }
+
+      this.a = $$12[$$1] + $$3[$$1];
+      this.b = $$13[$$0] + $$4[$$0];
+   }
+
+   public <T extends evw> T a(T $$0, int $$1, int $$2) {
+      return this.a($$0, $$1, $$2, this.b());
+   }
+
+   public <T extends evw> T a(T $$0, int $$1, int $$2, evx $$3) {
+      return this.a($$0, $$1, $$2, 1, 1, $$3);
+   }
+
+   public <T extends evw> T a(T $$0, int $$1, int $$2, Consumer<evx> $$3) {
+      return this.a($$0, $$1, $$2, 1, 1, ac.a(this.b(), $$3));
+   }
+
+   public <T extends evw> T a(T $$0, int $$1, int $$2, int $$3, int $$4) {
+      return this.a($$0, $$1, $$2, $$3, $$4, this.b());
+   }
+
+   public <T extends evw> T a(T $$0, int $$1, int $$2, int $$3, int $$4, evx $$5) {
+      if ($$3 < 1) {
+         throw new IllegalArgumentException("Occupied rows must be at least 1");
+      } else if ($$4 < 1) {
+         throw new IllegalArgumentException("Occupied columns must be at least 1");
+      } else {
+         this.d.add(new evt.a($$0, $$1, $$2, $$3, $$4, $$5));
+         this.c.add($$0);
+         return $$0;
+      }
+   }
+
+   public <T extends evw> T a(T $$0, int $$1, int $$2, int $$3, int $$4, Consumer<evx> $$5) {
+      return this.a($$0, $$1, $$2, $$3, $$4, ac.a(this.b(), $$5));
+   }
+
+   public evt a(int $$0) {
+      this.g = $$0;
+      return this;
+   }
+
+   public evt b(int $$0) {
+      this.f = $$0;
+      return this;
+   }
+
+   public evt c(int $$0) {
+      return this.a($$0).b($$0);
+   }
+
+   @Override
+   public void b(Consumer<evw> $$0) {
+      this.c.forEach($$0);
+   }
+
+   public evx b() {
+      return this.e.g();
+   }
+
+   public evx c() {
+      return this.e;
+   }
+
+   public evt.b d(int $$0) {
+      return new evt.b($$0);
+   }
+
+   static class a extends evp.a {
+      final int c;
+      final int d;
+      final int e;
+      final int f;
+
+      a(evw $$0, int $$1, int $$2, int $$3, int $$4, evx $$5) {
+         super($$0, $$5.h());
+         this.c = $$1;
+         this.d = $$2;
+         this.e = $$3;
+         this.f = $$4;
+      }
+
+      public int c() {
+         return this.c + this.e - 1;
+      }
+
+      public int d() {
+         return this.d + this.f - 1;
+      }
+   }
+
+   public final class b {
+      private final int b;
+      private int c;
+
+      b(int $$1) {
+         this.b = $$1;
+      }
+
+      public <T extends evw> T a(T $$0) {
+         return this.a($$0, 1);
+      }
+
+      public <T extends evw> T a(T $$0, int $$1) {
+         return this.a($$0, $$1, this.c());
+      }
+
+      public <T extends evw> T a(T $$0, evx $$1) {
+         return this.a($$0, 1, $$1);
+      }
+
+      public <T extends evw> T a(T $$0, int $$1, evx $$2) {
+         int $$3 = this.c / this.b;
+         int $$4 = this.c % this.b;
+         if ($$4 + $$1 > this.b) {
+            $$3++;
+            $$4 = 0;
+            this.c = ars.d(this.c, this.b);
+         }
+
+         this.c += $$1;
+         return evt.this.a($$0, $$3, $$4, 1, $$1, $$2);
+      }
+
+      public evt a() {
+         return evt.this;
+      }
+
+      public evx b() {
+         return evt.this.b();
+      }
+
+      public evx c() {
+         return evt.this.c();
       }
    }
 }

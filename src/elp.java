@@ -1,70 +1,162 @@
-import com.mojang.logging.LogUtils;
-import java.util.Objects;
-import java.util.concurrent.CompletableFuture;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.UnmodifiableIterator;
+import com.mojang.blaze3d.systems.RenderSystem;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
+import java.util.List;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
 public class elp {
-   private static final Logger a = LogUtils.getLogger();
+   private final ImmutableList<elq> a;
+   private final ImmutableMap<String, elq> b;
+   private final IntList c = new IntArrayList();
+   private final int d;
    @Nullable
-   private static CompletableFuture<elp.a> b;
+   private eln e;
 
-   public static CompletableFuture<elp.a> a() {
-      if (b == null || a(b)) {
-         b = b();
+   public elp(ImmutableMap<String, elq> $$0) {
+      this.b = $$0;
+      this.a = $$0.values().asList();
+      int $$1 = 0;
+      UnmodifiableIterator var3 = $$0.values().iterator();
+
+      while (var3.hasNext()) {
+         elq $$2 = (elq)var3.next();
+         this.c.add($$1);
+         $$1 += $$2.e();
       }
 
-      return b;
+      this.d = $$1;
    }
 
-   private static boolean a(CompletableFuture<elp.a> $$0) {
-      elp.a $$1 = $$0.getNow(null);
-      return $$1 != null && $$1.b() != null;
+   @Override
+   public String toString() {
+      return "format: " + this.b.size() + " elements: " + this.b.entrySet().stream().map(Object::toString).collect(Collectors.joining(" "));
    }
 
-   private static CompletableFuture<elp.a> b() {
-      return CompletableFuture.supplyAsync(() -> {
-         elv $$0 = elv.a();
-
-         try {
-            if ($$0.f() != elv.a.a) {
-               return new elp.a(elp.b.b);
-            } else {
-               return !$$0.e() ? new elp.a(elp.b.c) : new elp.a(elp.b.a);
-            }
-         } catch (eni var2) {
-            a.error("Couldn't connect to realms", var2);
-            return var2.a.a() == 401 ? new elp.a(elp.b.d) : new elp.a(var2);
-         }
-      }, ac.g());
+   public int a() {
+      return this.b() / 4;
    }
 
-   public static record a(elp.b a, @Nullable eni b) {
-      public a(elp.b $$0) {
-         this($$0, null);
+   public int b() {
+      return this.d;
+   }
+
+   public ImmutableList<elq> c() {
+      return this.a;
+   }
+
+   public ImmutableList<String> d() {
+      return this.b.keySet().asList();
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         elp $$1 = (elp)$$0;
+         return this.d != $$1.d ? false : this.b.equals($$1.b);
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return this.b.hashCode();
+   }
+
+   public void e() {
+      if (!RenderSystem.isOnRenderThread()) {
+         RenderSystem.recordRenderCall(this::h);
+      } else {
+         this.h();
+      }
+   }
+
+   private void h() {
+      int $$0 = this.b();
+      List<elq> $$1 = this.c();
+
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         $$1.get($$2).a($$2, (long)this.c.getInt($$2), $$0);
+      }
+   }
+
+   public void f() {
+      if (!RenderSystem.isOnRenderThread()) {
+         RenderSystem.recordRenderCall(this::i);
+      } else {
+         this.i();
+      }
+   }
+
+   private void i() {
+      ImmutableList<elq> $$0 = this.c();
+
+      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
+         elq $$2 = (elq)$$0.get($$1);
+         $$2.a($$1);
+      }
+   }
+
+   public eln g() {
+      eln $$0 = this.e;
+      if ($$0 == null) {
+         this.e = $$0 = new eln(eln.a.b);
       }
 
-      public a(eni $$0) {
-         this(elp.b.e, $$0);
+      return $$0;
+   }
+
+   public static enum a {
+      a(5123, 2),
+      b(5125, 4);
+
+      public final int c;
+      public final int d;
+
+      private a(int $$0, int $$1) {
+         this.c = $$0;
+         this.d = $$1;
       }
 
-      @Nullable
-      public eya a(eya $$0) {
-         return (eya)(switch (this.a) {
-            case a -> null;
-            case b -> new env($$0);
-            case c -> new eof($$0);
-            case d -> new eoa(tf.c("mco.error.invalid.session.title"), tf.c("mco.error.invalid.session.message"), $$0);
-            case e -> new eoa(Objects.requireNonNull(this.b), $$0);
-         });
+      public static elp.a a(int $$0) {
+         return ($$0 & -65536) != 0 ? b : a;
       }
    }
 
    public static enum b {
-      a,
-      b,
-      c,
-      d,
-      e;
+      a(4, 2, 2, false),
+      b(5, 2, 1, true),
+      c(1, 2, 2, false),
+      d(3, 2, 1, true),
+      e(4, 3, 3, false),
+      f(5, 3, 1, true),
+      g(6, 3, 1, true),
+      h(4, 4, 4, false);
+
+      public final int i;
+      public final int j;
+      public final int k;
+      public final boolean l;
+
+      private b(int $$0, int $$1, int $$2, boolean $$3) {
+         this.i = $$0;
+         this.j = $$1;
+         this.k = $$2;
+         this.l = $$3;
+      }
+
+      public int a(int $$0) {
+         return switch (this) {
+            case b, c, d, e, f, g -> $$0;
+            case a, h -> $$0 / 4 * 6;
+            default -> 0;
+         };
+      }
    }
 }

@@ -1,35 +1,40 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
 import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.DSL.TypeReference;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
 import com.mojang.serialization.Dynamic;
+import java.util.function.Function;
 
 public class asy extends DataFix {
-   private final String a;
-   private final boolean b;
-   private final String c;
-   private final TypeReference d;
-
-   public asy(Schema $$0, TypeReference $$1, String $$2, boolean $$3) {
-      super($$0, true);
-      this.b = $$3;
-      this.c = $$2;
-      this.a = "AddFlagIfNotPresentFix_" + this.c + "=" + this.b + " for " + $$0.getVersionKey();
-      this.d = $$1;
+   public asy(Schema $$0) {
+      super($$0, false);
    }
 
    protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(this.d);
-      return this.fixTypeEverywhereTyped(
-         this.a,
-         $$0,
-         $$0x -> $$0x.update(
-               DSL.remainderFinder(),
-               $$0xx -> $$0xx.set(this.c, (Dynamic)DataFixUtils.orElseGet($$0xx.get(this.c).result(), () -> $$0xx.createBoolean(this.b)))
-            )
-      );
+      Schema $$0 = this.getInputSchema();
+      return this.fixTypeEverywhereTyped("AbstractArrowPickupFix", $$0.getType(ays.x), this::a);
+   }
+
+   private Typed<?> a(Typed<?> $$0) {
+      $$0 = this.a($$0, "minecraft:arrow", asy::a);
+      $$0 = this.a($$0, "minecraft:spectral_arrow", asy::a);
+      return this.a($$0, "minecraft:trident", asy::a);
+   }
+
+   private static Dynamic<?> a(Dynamic<?> $$0) {
+      if ($$0.get("pickup").result().isPresent()) {
+         return $$0;
+      } else {
+         boolean $$1 = $$0.get("player").asBoolean(true);
+         return $$0.set("pickup", $$0.createByte((byte)($$1 ? 1 : 0))).remove("player");
+      }
+   }
+
+   private Typed<?> a(Typed<?> $$0, String $$1, Function<Dynamic<?>, Dynamic<?>> $$2) {
+      Type<?> $$3 = this.getInputSchema().getChoiceType(ays.x, $$1);
+      Type<?> $$4 = this.getOutputSchema().getChoiceType(ays.x, $$1);
+      return $$0.updateTyped(DSL.namedChoice($$1, $$3), $$4, $$1x -> $$1x.update(DSL.remainderFinder(), $$2));
    }
 }

@@ -1,93 +1,140 @@
-import java.util.Optional;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.longs.Long2IntOpenHashMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
 
-public abstract class eab {
-   public static final hk<eac> c = new hk<>();
-   protected final dfa<eab, eac> d;
-   private eac a;
-   private final he.c<eab> b = jb.d.f(this);
-
-   protected eab() {
-      dfa.a<eab, eac> $$0 = new dfa.a<>(this);
-      this.a($$0);
-      this.d = $$0.a(eab::g, eac::new);
-      this.f(this.d.b());
+public class eab extends dzv<eab.a> {
+   protected eab(dho $$0) {
+      super(cpz.a, $$0, new eab.a(new Long2ObjectOpenHashMap(), new Long2IntOpenHashMap(), Integer.MAX_VALUE));
    }
 
-   protected void a(dfa.a<eab, eac> $$0) {
+   @Override
+   protected int a(long $$0) {
+      return this.e($$0, false);
    }
 
-   public dfa<eab, eac> f() {
-      return this.d;
+   protected int e(long $$0, boolean $$1) {
+      long $$2 = hz.e($$0);
+      int $$3 = hz.c($$2);
+      eab.a $$4 = $$1 ? this.d : this.c;
+      int $$5 = $$4.c.get(hz.f($$2));
+      if ($$5 != $$4.b && $$3 < $$5) {
+         dhg $$6 = this.a($$4, $$2);
+         if ($$6 == null) {
+            for ($$0 = gw.e($$0); $$6 == null; $$6 = this.a($$4, $$2)) {
+               if (++$$3 >= $$5) {
+                  return 15;
+               }
+
+               $$2 = hz.a($$2, hc.b);
+            }
+         }
+
+         return $$6.a(hz.b(gw.a($$0)), hz.b(gw.b($$0)), hz.b(gw.c($$0)));
+      } else {
+         return $$1 && !this.j($$2) ? 0 : 15;
+      }
    }
 
-   protected final void f(eac $$0) {
-      this.a = $$0;
+   @Override
+   protected void h(long $$0) {
+      int $$1 = hz.c($$0);
+      if (this.d.b > $$1) {
+         this.d.b = $$1;
+         this.d.c.defaultReturnValue(this.d.b);
+      }
+
+      long $$2 = hz.f($$0);
+      int $$3 = this.d.c.get($$2);
+      if ($$3 < $$1 + 1) {
+         this.d.c.put($$2, $$1 + 1);
+      }
    }
 
-   public final eac g() {
-      return this.a;
+   @Override
+   protected void i(long $$0) {
+      long $$1 = hz.f($$0);
+      int $$2 = hz.c($$0);
+      if (this.d.c.get($$1) == $$2 + 1) {
+         long $$3;
+         for ($$3 = $$0; !this.b($$3) && this.a($$2); $$3 = hz.a($$3, hc.a)) {
+            $$2--;
+         }
+
+         if (this.b($$3)) {
+            this.d.c.put($$1, $$2 + 1);
+         } else {
+            this.d.c.remove($$1);
+         }
+      }
    }
 
-   public abstract cis a();
+   @Override
+   protected dhg g(long $$0) {
+      dhg $$1 = (dhg)this.g.get($$0);
+      if ($$1 != null) {
+         return $$1;
+      } else {
+         int $$2 = this.d.c.get(hz.f($$0));
+         if ($$2 != this.d.b && hz.c($$0) < $$2) {
+            long $$3 = hz.a($$0, hc.b);
 
-   protected void a(cpl $$0, gu $$1, eac $$2, aru $$3) {
+            dhg $$4;
+            while (($$4 = this.a($$3, true)) == null) {
+               $$3 = hz.a($$3, hc.b);
+            }
+
+            return a($$4);
+         } else {
+            return this.j($$0) ? new dhg(15) : new dhg();
+         }
+      }
    }
 
-   protected void b(cpl $$0, gu $$1, eac $$2) {
+   private static dhg a(dhg $$0) {
+      if ($$0.c()) {
+         return $$0.b();
+      } else {
+         byte[] $$1 = $$0.a();
+         byte[] $$2 = new byte[2048];
+
+         for (int $$3 = 0; $$3 < 16; $$3++) {
+            System.arraycopy($$1, 0, $$2, $$3 * 128, 128);
+         }
+
+         return new dhg($$2);
+      }
    }
 
-   protected void b(cpl $$0, gu $$1, eac $$2, aru $$3) {
+   protected boolean a(int $$0) {
+      return $$0 >= this.d.b;
    }
 
-   @Nullable
-   protected it h() {
-      return null;
+   protected boolean l(long $$0) {
+      long $$1 = hz.f($$0);
+      int $$2 = this.d.c.get($$1);
+      return $$2 == this.d.b || hz.c($$0) >= $$2;
    }
 
-   protected abstract boolean a(eac var1, cor var2, gu var3, eab var4, ha var5);
-
-   protected abstract ehd a(cor var1, gu var2, eac var3);
-
-   public abstract int a(cpo var1);
-
-   protected boolean i() {
-      return false;
+   protected int m(long $$0) {
+      return this.d.c.get($$0);
    }
 
-   protected boolean b() {
-      return false;
+   protected int c() {
+      return this.d.b;
    }
 
-   protected abstract float c();
+   protected static final class a extends dzs<eab.a> {
+      int b;
+      final Long2IntOpenHashMap c;
 
-   public abstract float a(eac var1, cor var2, gu var3);
+      public a(Long2ObjectOpenHashMap<dhg> $$0, Long2IntOpenHashMap $$1, int $$2) {
+         super($$0);
+         this.c = $$1;
+         $$1.defaultReturnValue($$2);
+         this.b = $$2;
+      }
 
-   public abstract float a(eac var1);
-
-   protected abstract dez b(eac var1);
-
-   public abstract boolean c(eac var1);
-
-   public abstract int d(eac var1);
-
-   public boolean a(eab $$0) {
-      return $$0 == this;
-   }
-
-   @Deprecated
-   public boolean a(aqa<eab> $$0) {
-      return this.b.a($$0);
-   }
-
-   public abstract ehw b(eac var1, cor var2, gu var3);
-
-   public Optional<aov> j() {
-      return Optional.empty();
-   }
-
-   @Deprecated
-   public he.c<eab> k() {
-      return this.b;
+      public eab.a a() {
+         return new eab.a(this.a.clone(), this.c.clone(), this.b);
+      }
    }
 }

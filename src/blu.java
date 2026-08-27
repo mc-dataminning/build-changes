@@ -1,19 +1,48 @@
-import com.google.common.collect.ImmutableMap;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.BiPredicate;
+import java.util.function.Function;
 
-public class blu extends bkp<bja> {
-   public blu(int $$0, int $$1) {
-      super(ImmutableMap.of(brz.n, bsa.a), $$0, $$1);
+public class blu<E extends bjd> extends blv<E> {
+   private final aqd<csq> m;
+   private final float n;
+   private final List<blv.a> o = new ArrayList<>();
+   private boolean p;
+
+   public blu(bge $$0, int $$1, int $$2, float $$3, Function<E, aoy> $$4, aqd<csq> $$5, float $$6, BiPredicate<E, gw> $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$7);
+      this.m = $$5;
+      this.n = $$6;
    }
 
-   protected boolean a(akk $$0, bja $$1, long $$2) {
-      return $$1.dM().c(brz.n).filter($$1x -> $$1x.a($$1)).isPresent();
+   @Override
+   protected void a(akn $$0, E $$1, long $$2) {
+      super.a($$0, $$1, $$2);
+      this.o.clear();
+      this.p = $$1.ee().i() < this.n;
    }
 
-   protected void b(akk $$0, bja $$1, long $$2) {
-      $$1.dM().b(brz.n);
-   }
+   @Override
+   protected Optional<blv.a> a(akn $$0) {
+      if (!this.p) {
+         return super.a($$0);
+      } else {
+         gw.a $$1 = new gw.a();
 
-   protected void c(akk $$0, bja $$1, long $$2) {
-      $$1.dM().c(brz.n).ifPresent($$1x -> $$1.D().a($$1x.a()));
+         while (!this.h.isEmpty()) {
+            Optional<blv.a> $$2 = super.a($$0);
+            if ($$2.isPresent()) {
+               blv.a $$3 = $$2.get();
+               if ($$0.a_($$1.a($$3.b(), hc.a)).a(this.m)) {
+                  return $$2;
+               }
+
+               this.o.add($$3);
+            }
+         }
+
+         return !this.o.isEmpty() ? Optional.of(this.o.remove(0)) : Optional.empty();
+      }
    }
 }

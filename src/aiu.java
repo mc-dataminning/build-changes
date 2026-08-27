@@ -1,125 +1,226 @@
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.tree.LiteralCommandNode;
 import java.util.Collection;
-import java.util.function.Function;
+import java.util.Collections;
+import java.util.EnumSet;
+import java.util.Locale;
+import java.util.Set;
+import javax.annotation.Nullable;
 
 public class aiu {
-   public static void a(CommandDispatcher<dr> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ds.a("title").requires($$0x -> $$0x.c(2)))
-            .then(
-               ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)ds.a(
-                                    "targets", ec.d()
-                                 )
-                                 .then(ds.a("clear").executes($$0x -> a((dr)$$0x.getSource(), ec.f($$0x, "targets")))))
-                              .then(ds.a("reset").executes($$0x -> b((dr)$$0x.getSource(), ec.f($$0x, "targets")))))
-                           .then(
-                              ds.a("title")
-                                 .then(
-                                    ds.a("title", dy.a())
-                                       .executes($$0x -> a((dr)$$0x.getSource(), ec.f($$0x, "targets"), dy.a($$0x, "title"), "title", aae::new))
-                                 )
-                           ))
-                        .then(
-                           ds.a("subtitle")
-                              .then(
-                                 ds.a("title", dy.a())
-                                    .executes($$0x -> a((dr)$$0x.getSource(), ec.f($$0x, "targets"), dy.a($$0x, "title"), "subtitle", aac::new))
-                              )
-                        ))
-                     .then(
-                        ds.a("actionbar")
-                           .then(
-                              ds.a("title", dy.a()).executes($$0x -> a((dr)$$0x.getSource(), ec.f($$0x, "targets"), dy.a($$0x, "title"), "actionbar", zf::new))
-                           )
-                     ))
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(ti.c("commands.teleport.invalidPosition"));
+
+   public static void a(CommandDispatcher<dt> $$0) {
+      LiteralCommandNode<dt> $$1 = $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)du.a("teleport").requires($$0x -> $$0x.c(2)))
                   .then(
-                     ds.a("times")
-                        .then(
-                           ds.a("fadeIn", fb.a())
-                              .then(
-                                 ds.a("stay", fb.a())
-                                    .then(
-                                       ds.a("fadeOut", fb.a())
-                                          .executes(
-                                             $$0x -> a(
-                                                   (dr)$$0x.getSource(),
-                                                   ec.f($$0x, "targets"),
-                                                   IntegerArgumentType.getInteger($$0x, "fadeIn"),
-                                                   IntegerArgumentType.getInteger($$0x, "stay"),
-                                                   IntegerArgumentType.getInteger($$0x, "fadeOut")
-                                                )
-                                          )
-                                    )
+                     du.a("location", fr.a())
+                        .executes(
+                           $$0x -> a(
+                                 (dt)$$0x.getSource(),
+                                 Collections.singleton(((dt)$$0x.getSource()).g()),
+                                 ((dt)$$0x.getSource()).e(),
+                                 fr.b($$0x, "location"),
+                                 ft.d(),
+                                 null
                               )
                         )
-                  )
+                  ))
+               .then(
+                  du.a("destination", ee.a())
+                     .executes($$0x -> a((dt)$$0x.getSource(), Collections.singleton(((dt)$$0x.getSource()).g()), ee.a($$0x, "destination")))
+               ))
+            .then(
+               ((RequiredArgumentBuilder)du.a("targets", ee.b())
+                     .then(
+                        ((RequiredArgumentBuilder)((RequiredArgumentBuilder)du.a("location", fr.a())
+                                 .executes(
+                                    $$0x -> a((dt)$$0x.getSource(), ee.b($$0x, "targets"), ((dt)$$0x.getSource()).e(), fr.b($$0x, "location"), null, null)
+                                 ))
+                              .then(
+                                 du.a("rotation", fo.a())
+                                    .executes(
+                                       $$0x -> a(
+                                             (dt)$$0x.getSource(),
+                                             ee.b($$0x, "targets"),
+                                             ((dt)$$0x.getSource()).e(),
+                                             fr.b($$0x, "location"),
+                                             fo.a($$0x, "rotation"),
+                                             null
+                                          )
+                                    )
+                              ))
+                           .then(
+                              ((LiteralArgumentBuilder)du.a("facing")
+                                    .then(
+                                       du.a("entity")
+                                          .then(
+                                             ((RequiredArgumentBuilder)du.a("facingEntity", ee.a())
+                                                   .executes(
+                                                      $$0x -> a(
+                                                            (dt)$$0x.getSource(),
+                                                            ee.b($$0x, "targets"),
+                                                            ((dt)$$0x.getSource()).e(),
+                                                            fr.b($$0x, "location"),
+                                                            null,
+                                                            new aiu.a(ee.a($$0x, "facingEntity"), ed.a.a)
+                                                         )
+                                                   ))
+                                                .then(
+                                                   du.a("facingAnchor", ed.a())
+                                                      .executes(
+                                                         $$0x -> a(
+                                                               (dt)$$0x.getSource(),
+                                                               ee.b($$0x, "targets"),
+                                                               ((dt)$$0x.getSource()).e(),
+                                                               fr.b($$0x, "location"),
+                                                               null,
+                                                               new aiu.a(ee.a($$0x, "facingEntity"), ed.a($$0x, "facingAnchor"))
+                                                            )
+                                                      )
+                                                )
+                                          )
+                                    ))
+                                 .then(
+                                    du.a("facingLocation", fr.a())
+                                       .executes(
+                                          $$0x -> a(
+                                                (dt)$$0x.getSource(),
+                                                ee.b($$0x, "targets"),
+                                                ((dt)$$0x.getSource()).e(),
+                                                fr.b($$0x, "location"),
+                                                null,
+                                                new aiu.a(fr.a($$0x, "facingLocation"))
+                                             )
+                                       )
+                                 )
+                           )
+                     ))
+                  .then(du.a("destination", ee.a()).executes($$0x -> a((dt)$$0x.getSource(), ee.b($$0x, "targets"), ee.a($$0x, "destination"))))
             )
       );
+      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)du.a("tp").requires($$0x -> $$0x.c(2))).redirect($$1));
    }
 
-   private static int a(dr $$0, Collection<akl> $$1) {
-      xg $$2 = new xg(false);
-
-      for (akl $$3 : $$1) {
-         $$3.c.b($$2);
+   private static int a(dt $$0, Collection<? extends bil> $$1, bil $$2) throws CommandSyntaxException {
+      for (bil $$3 : $$1) {
+         a($$0, $$3, (akn)$$2.dK(), $$2.dp(), $$2.dr(), $$2.dv(), EnumSet.noneOf(bjp.class), $$2.dA(), $$2.dC(), null);
       }
 
       if ($$1.size() == 1) {
-         $$0.a(() -> tf.a("commands.title.cleared.single", $$1.iterator().next().H_()), true);
+         $$0.a(() -> ti.a("commands.teleport.success.entity.single", $$1.iterator().next().H_(), $$2.H_()), true);
       } else {
-         $$0.a(() -> tf.a("commands.title.cleared.multiple", $$1.size()), true);
+         $$0.a(() -> ti.a("commands.teleport.success.entity.multiple", $$1.size(), $$2.H_()), true);
       }
 
       return $$1.size();
    }
 
-   private static int b(dr $$0, Collection<akl> $$1) {
-      xg $$2 = new xg(true);
+   private static int a(dt $$0, Collection<? extends bil> $$1, akn $$2, fm $$3, @Nullable fm $$4, @Nullable aiu.a $$5) throws CommandSyntaxException {
+      ehi $$6 = $$3.a($$0);
+      ehh $$7 = $$4 == null ? null : $$4.b($$0);
+      Set<bjp> $$8 = EnumSet.noneOf(bjp.class);
+      if ($$3.a()) {
+         $$8.add(bjp.a);
+      }
 
-      for (akl $$3 : $$1) {
-         $$3.c.b($$2);
+      if ($$3.b()) {
+         $$8.add(bjp.b);
+      }
+
+      if ($$3.c()) {
+         $$8.add(bjp.c);
+      }
+
+      if ($$4 == null) {
+         $$8.add(bjp.e);
+         $$8.add(bjp.d);
+      } else {
+         if ($$4.a()) {
+            $$8.add(bjp.e);
+         }
+
+         if ($$4.b()) {
+            $$8.add(bjp.d);
+         }
+      }
+
+      for (bil $$9 : $$1) {
+         if ($$4 == null) {
+            a($$0, $$9, $$2, $$6.c, $$6.d, $$6.e, $$8, $$9.dA(), $$9.dC(), $$5);
+         } else {
+            a($$0, $$9, $$2, $$6.c, $$6.d, $$6.e, $$8, $$7.j, $$7.i, $$5);
+         }
       }
 
       if ($$1.size() == 1) {
-         $$0.a(() -> tf.a("commands.title.reset.single", $$1.iterator().next().H_()), true);
+         $$0.a(() -> ti.a("commands.teleport.success.location.single", $$1.iterator().next().H_(), a($$6.c), a($$6.d), a($$6.e)), true);
       } else {
-         $$0.a(() -> tf.a("commands.title.reset.multiple", $$1.size()), true);
+         $$0.a(() -> ti.a("commands.teleport.success.location.multiple", $$1.size(), a($$6.c), a($$6.d), a($$6.e)), true);
       }
 
       return $$1.size();
    }
 
-   private static int a(dr $$0, Collection<akl> $$1, tf $$2, String $$3, Function<tf, ux<?>> $$4) throws CommandSyntaxException {
-      for (akl $$5 : $$1) {
-         $$5.c.b($$4.apply(th.a($$0, $$2, $$5, 0)));
-      }
-
-      if ($$1.size() == 1) {
-         $$0.a(() -> tf.a("commands.title.show." + $$3 + ".single", $$1.iterator().next().H_()), true);
-      } else {
-         $$0.a(() -> tf.a("commands.title.show." + $$3 + ".multiple", $$1.size()), true);
-      }
-
-      return $$1.size();
+   private static String a(double $$0) {
+      return String.format(Locale.ROOT, "%f", $$0);
    }
 
-   private static int a(dr $$0, Collection<akl> $$1, int $$2, int $$3, int $$4) {
-      aaf $$5 = new aaf($$2, $$3, $$4);
-
-      for (akl $$6 : $$1) {
-         $$6.c.b($$5);
-      }
-
-      if ($$1.size() == 1) {
-         $$0.a(() -> tf.a("commands.title.times.single", $$1.iterator().next().H_()), true);
+   private static void a(dt $$0, bil $$1, akn $$2, double $$3, double $$4, double $$5, Set<bjp> $$6, float $$7, float $$8, @Nullable aiu.a $$9) throws CommandSyntaxException {
+      gw $$10 = gw.a($$3, $$4, $$5);
+      if (!cpq.k($$10)) {
+         throw a.create();
       } else {
-         $$0.a(() -> tf.a("commands.title.times.multiple", $$1.size()), true);
+         float $$11 = ars.g($$7);
+         float $$12 = ars.g($$8);
+         if ($$1.a($$2, $$3, $$4, $$5, $$6, $$11, $$12)) {
+            if ($$9 != null) {
+               $$9.a($$0, $$1);
+            }
+
+            if (!($$1 instanceof bjb $$13) || !$$13.fu()) {
+               $$1.f($$1.dn().d(1.0, 0.0, 1.0));
+               $$1.c(true);
+            }
+
+            if ($$1 instanceof bjk $$14) {
+               $$14.H().n();
+            }
+         }
+      }
+   }
+
+   static class a {
+      private final ehi a;
+      private final bil b;
+      private final ed.a c;
+
+      public a(bil $$0, ed.a $$1) {
+         this.b = $$0;
+         this.c = $$1;
+         this.a = $$1.a($$0);
       }
 
-      return $$1.size();
+      public a(ehi $$0) {
+         this.b = null;
+         this.a = $$0;
+         this.c = null;
+      }
+
+      public void a(dt $$0, bil $$1) {
+         if (this.b != null) {
+            if ($$1 instanceof ako) {
+               ((ako)$$1).a($$0.m(), this.b, this.c);
+            } else {
+               $$1.a($$0.m(), this.a);
+            }
+         } else {
+            $$1.a($$0.m(), this.a);
+         }
+      }
    }
 }

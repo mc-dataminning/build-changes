@@ -1,8 +1,5 @@
-import javax.annotation.ParametersAreNonnullByDefault;
-
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface adq {
+public record adq(aeu a) implements ado {
+   @Override
+   public void a(sl $$0) {
+   }
 }

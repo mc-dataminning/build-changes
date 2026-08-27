@@ -1,13 +1,15 @@
-public interface bjj extends bji {
-   void b(int var1);
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-   boolean a();
+public interface bjj {
+   @Nullable
+   UUID d();
 
-   void c(int var1);
+   cph e();
 
-   void b();
-
-   default int V_() {
-      return 0;
+   @Nullable
+   default bjb I_() {
+      UUID $$0 = this.d();
+      return $$0 == null ? null : this.e().b($$0);
    }
 }

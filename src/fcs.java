@@ -1,97 +1,123 @@
-import com.mojang.datafixers.DataFixer;
-import com.mojang.logging.LogUtils;
 import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenCustomHashMap;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.Collection;
 
-public class fcs extends eya {
-   private static final Logger a = LogUtils.getLogger();
-   private static final Object2IntMap<aeq<cpl>> b = ac.a(new Object2IntOpenCustomHashMap(ac.k()), $$0 -> {
-      $$0.put(cpl.h, -13408734);
-      $$0.put(cpl.i, -10075085);
-      $$0.put(cpl.j, -8943531);
-      $$0.defaultReturnValue(-2236963);
-   });
-   private final BooleanConsumer c;
-   private final bge k;
+public class fcs extends eyf {
+   private static final ti a = ti.c("selectWorld.experimental.title");
+   private static final ti b = ti.c("selectWorld.experimental.message");
+   private static final ti c = ti.c("selectWorld.experimental.details");
+   private static final int k = 10;
+   private static final int l = 100;
+   private final BooleanConsumer m;
+   final Collection<amx> n;
+   private final evt o = new evt().a(10).b(20);
 
-   @Nullable
-   public static fcs a(eql $$0, BooleanConsumer $$1, DataFixer $$2, ebw.c $$3, boolean $$4) {
-      try {
-         fcs var8;
-         try (afm $$5 = $$0.y().a($$3, false)) {
-            ecc $$6 = $$5.d();
-            hs.b $$7 = $$5.c().a();
-            $$3.a($$7, $$6);
-            var8 = new fcs($$1, $$2, $$3, $$6.L(), $$4, $$7.d(jc.aI));
+   public fcs(Collection<amx> $$0, BooleanConsumer $$1) {
+      super(a);
+      this.n = $$0;
+      this.m = $$1;
+   }
+
+   @Override
+   public ti g() {
+      return th.a(super.g(), b);
+   }
+
+   @Override
+   protected void aD_() {
+      super.aD_();
+      evt.b $$0 = this.o.d(2);
+      evx $$1 = $$0.b().b();
+      $$0.a(new etr(this.e, this.i), 2, $$1);
+      etf $$2 = $$0.a(new etf(b, this.i).b(true), 2, $$1);
+      $$2.j(310);
+      $$0.a(esl.a(c, $$0x -> this.f.a(new fcs.a())).a(100).a(), 2, $$1);
+      $$0.a(esl.a(th.i, $$0x -> this.m.accept(true)).a());
+      $$0.a(esl.a(th.k, $$0x -> this.m.accept(false)).a());
+      this.o.a($$1x -> {
+         esj var10000 = this.d($$1x);
+      });
+      this.o.a();
+      this.b();
+   }
+
+   @Override
+   protected void b() {
+      evs.a(this.o, 0, 0, this.g, this.h, 0.5F, 0.5F);
+   }
+
+   @Override
+   public void au_() {
+      this.m.accept(false);
+   }
+
+   class a extends eyf {
+      private fcs.a.a b;
+
+      a() {
+         super(ti.c("selectWorld.experimental.details.title"));
+      }
+
+      @Override
+      public void au_() {
+         this.f.a(fcs.this);
+      }
+
+      @Override
+      protected void aD_() {
+         super.aD_();
+         this.d(esl.a(th.k, $$0 -> this.au_()).a(this.g / 2 - 100, this.h / 4 + 120 + 24, 200, 20).a());
+         this.b = new fcs.a.a(this.f, fcs.this.n);
+         this.e(this.b);
+      }
+
+      @Override
+      public void a(esa $$0, int $$1, int $$2, float $$3) {
+         super.a($$0, $$1, $$2, $$3);
+         this.b.a($$0, $$1, $$2, $$3);
+         $$0.a(this.i, this.e, this.g / 2, 10, 16777215);
+      }
+
+      class a extends eth<fcs.a.b> {
+         public a(eqq $$0, Collection<amx> $$1) {
+            super($$0, a.this.g, a.this.h, 32, a.this.h - 64, (9 + 2) * 3);
+
+            for (amx $$2 : $$1) {
+               String $$3 = cdz.a(cdz.f, $$2.d());
+               if (!$$3.isEmpty()) {
+                  ti $$4 = tk.a($$2.a().e(), ue.a.a(true));
+                  ti $$5 = ti.a("selectWorld.experimental.details.entry", $$3);
+                  this.b(a.this.new b($$4, $$5, ete.a(a.this.i, $$5, this.b())));
+               }
+            }
          }
 
-         return var8;
-      } catch (Exception var11) {
-         a.warn("Failed to load datapacks, can't optimize world", var11);
-         return null;
+         @Override
+         public int b() {
+            return this.e * 3 / 4;
+         }
       }
-   }
 
-   private fcs(BooleanConsumer $$0, DataFixer $$1, ebw.c $$2, cpp $$3, boolean $$4, hr<dij> $$5) {
-      super(tf.a("optimizeWorld.title", $$3.a()));
-      this.c = $$0;
-      this.k = new bge($$2, $$1, $$5, $$4);
-   }
+      class b extends eth.a<fcs.a.b> {
+         private final ti b;
+         private final ti c;
+         private final ete d;
 
-   @Override
-   protected void aC_() {
-      super.aC_();
-      this.d(esg.a(te.e, $$0 -> {
-         this.k.a();
-         this.c.accept(false);
-      }).a(this.g / 2 - 100, this.h / 4 + 150, 200, 20).a());
-   }
-
-   @Override
-   public void c() {
-      if (this.k.b()) {
-         this.c.accept(true);
-      }
-   }
-
-   @Override
-   public void at_() {
-      this.c.accept(false);
-   }
-
-   @Override
-   public void h() {
-      this.k.a();
-   }
-
-   @Override
-   public void a(erv $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 20, 16777215);
-      int $$4 = this.g / 2 - 150;
-      int $$5 = this.g / 2 + 150;
-      int $$6 = this.h / 4 + 100;
-      int $$7 = $$6 + 10;
-      $$0.a(this.i, this.k.h(), this.g / 2, $$6 - 9 - 2, 10526880);
-      if (this.k.e() > 0) {
-         $$0.a($$4 - 1, $$6 - 1, $$5 + 1, $$7 + 1, -16777216);
-         $$0.b(this.i, tf.a("optimizeWorld.info.converted", this.k.f()), $$4, 40, 10526880);
-         $$0.b(this.i, tf.a("optimizeWorld.info.skipped", this.k.g()), $$4, 40 + 9 + 3, 10526880);
-         $$0.b(this.i, tf.a("optimizeWorld.info.total", this.k.e()), $$4, 40 + (9 + 3) * 2, 10526880);
-         int $$8 = 0;
-
-         for (aeq<cpl> $$9 : this.k.c()) {
-            int $$10 = arp.d(this.k.a($$9) * (float)($$5 - $$4));
-            $$0.a($$4 + $$8, $$6, $$4 + $$8 + $$10, $$7, b.getInt($$9));
-            $$8 += $$10;
+         b(ti $$0, ti $$1, ete $$2) {
+            this.b = $$0;
+            this.c = $$1;
+            this.d = $$2;
          }
 
-         int $$11 = this.k.f() + this.k.g();
-         $$0.a(this.i, $$11 + " / " + this.k.e(), this.g / 2, $$6 + 2 * 9 + 2, 10526880);
-         $$0.a(this.i, arp.d(this.k.d() * 100.0F) + "%", this.g / 2, $$6 + ($$7 - $$6) / 2 - 9 / 2, 10526880);
+         @Override
+         public void a(esa $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+            $$0.b(a.this.f.h, this.b, $$3, $$2, 16777215);
+            this.d.b($$0, $$3, $$2 + 12, 9, 16777215);
+         }
+
+         @Override
+         public ti a() {
+            return ti.a("narrator.select", th.a(this.b, this.c));
+         }
       }
    }
 }

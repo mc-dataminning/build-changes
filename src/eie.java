@@ -1,83 +1,56 @@
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Map;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+public class eie {
+   private final eih a;
+   private final String b;
+   private final eik c;
+   private ti d;
+   private ti e;
+   private eik.a f;
 
-public abstract class eie {
-   public boolean a(@Nullable eie $$0) {
-      return $$0 == null ? false : this == $$0;
+   public eie(eih $$0, String $$1, eik $$2, ti $$3, eik.a $$4) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = this.g();
+      this.f = $$4;
    }
 
-   public abstract String b();
-
-   public abstract ts d(tf var1);
-
-   public abstract boolean i();
-
-   public abstract boolean h();
-
-   public abstract eie.b j();
-
-   public abstract n n();
-
-   public abstract Collection<String> g();
-
-   public abstract eie.b k();
-
-   public abstract eie.a l();
-
-   public static enum a {
-      a("always", 0),
-      b("never", 1),
-      c("pushOtherTeams", 2),
-      d("pushOwnTeam", 3);
-
-      private static final Map<String, eie.a> g = Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.e, $$0 -> (eie.a)$$0));
-      public final String e;
-      public final int f;
-
-      @Nullable
-      public static eie.a a(String $$0) {
-         return g.get($$0);
-      }
-
-      private a(String $$0, int $$1) {
-         this.e = $$0;
-         this.f = $$1;
-      }
-
-      public tf a() {
-         return tf.c("team.collision." + this.e);
-      }
+   public eih a() {
+      return this.a;
    }
 
-   public static enum b {
-      a("always", 0),
-      b("never", 1),
-      c("hideForOtherTeams", 2),
-      d("hideForOwnTeam", 3);
+   public String b() {
+      return this.b;
+   }
 
-      private static final Map<String, eie.b> g = Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.e, $$0 -> (eie.b)$$0));
-      public final String e;
-      public final int f;
+   public eik c() {
+      return this.c;
+   }
 
-      public static String[] a() {
-         return g.keySet().toArray(new String[0]);
-      }
+   public ti d() {
+      return this.d;
+   }
 
-      @Nullable
-      public static eie.b a(String $$0) {
-         return g.get($$0);
-      }
+   private ti g() {
+      return tk.a((ti)this.d.e().a($$0 -> $$0.a(new tn(tn.a.a, ti.b(this.b)))));
+   }
 
-      private b(String $$0, int $$1) {
-         this.e = $$0;
-         this.f = $$1;
-      }
+   public ti e() {
+      return this.e;
+   }
 
-      public tf b() {
-         return tf.c("team.visibility." + this.e);
-      }
+   public void a(ti $$0) {
+      this.d = $$0;
+      this.e = this.g();
+      this.a.b(this);
+   }
+
+   public eik.a f() {
+      return this.f;
+   }
+
+   public void a(eik.a $$0) {
+      this.f = $$0;
+      this.a.b(this);
    }
 }

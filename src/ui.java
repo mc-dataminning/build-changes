@@ -1,32 +1,41 @@
-import java.util.Optional;
-import java.util.function.Supplier;
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public class ui implements tg {
-   private final String b;
-   @Nullable
-   private Supplier<tf> c;
-
+public record ui(String a, @Nullable fm b) implements uj {
    public ui(String $$0) {
-      this.b = $$0;
+      this($$0, a($$0));
    }
 
-   private tf b() {
-      if (this.c == null) {
-         this.c = uj.a.apply(this.b);
+   @Nullable
+   private static fm a(String $$0) {
+      try {
+         return fk.a().a(new StringReader($$0));
+      } catch (CommandSyntaxException var2) {
+         return null;
+      }
+   }
+
+   @Override
+   public Stream<qu> getData(dt $$0) {
+      if (this.b != null) {
+         akn $$1 = $$0.e();
+         gw $$2 = this.b.c($$0);
+         if ($$1.o($$2)) {
+            dcq $$3 = $$1.c_($$2);
+            if ($$3 != null) {
+               return Stream.of($$3.m());
+            }
+         }
       }
 
-      return this.c.get();
+      return Stream.empty();
    }
 
    @Override
-   public <T> Optional<T> a(tj.a<T> $$0) {
-      return this.b().a($$0);
-   }
-
-   @Override
-   public <T> Optional<T> a(tj.b<T> $$0, ub $$1) {
-      return this.b().a($$0, $$1);
+   public String toString() {
+      return "block=" + this.a;
    }
 
    @Override
@@ -34,7 +43,7 @@ public class ui implements tg {
       if (this == $$0) {
          return true;
       } else {
-         if ($$0 instanceof ui $$1 && this.b.equals($$1.b)) {
+         if ($$0 instanceof ui $$1 && this.a.equals($$1.a)) {
             return true;
          }
 
@@ -44,15 +53,6 @@ public class ui implements tg {
 
    @Override
    public int hashCode() {
-      return this.b.hashCode();
-   }
-
-   @Override
-   public String toString() {
-      return "keybind{" + this.b + "}";
-   }
-
-   public String a() {
-      return this.b;
+      return this.a.hashCode();
    }
 }

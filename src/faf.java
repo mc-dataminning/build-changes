@@ -1,33 +1,95 @@
-public class faf extends esg {
-   private static final aer a = new aer("widget/page_forward_highlighted");
-   private static final aer b = new aer("widget/page_forward");
-   private static final aer c = new aer("widget/page_backward_highlighted");
-   private static final aer d = new aer("widget/page_backward");
-   private final boolean s;
-   private final boolean t;
+public class faf extends ezk implements fah<cfi> {
+   private final cfi q;
+   private final ces s = new ces() {
+      @Override
+      public void a(ceg $$0, int $$1, cja $$2) {
+         faf.this.I();
+      }
 
-   public faf(int $$0, int $$1, boolean $$2, esg.c $$3, boolean $$4) {
-      super($$0, $$1, 23, 13, te.a, $$3, o);
-      this.s = $$2;
-      this.t = $$4;
+      @Override
+      public void a(ceg $$0, int $$1, int $$2) {
+         if ($$1 == 0) {
+            faf.this.J();
+         }
+      }
+   };
+
+   public faf(cfi $$0, cbo $$1, ti $$2) {
+      this.q = $$0;
+   }
+
+   public cfi H() {
+      return this.q;
    }
 
    @Override
-   public void b(erv $$0, int $$1, int $$2, float $$3) {
-      aer $$4;
-      if (this.s) {
-         $$4 = this.o() ? a : b;
+   protected void aD_() {
+      super.aD_();
+      this.q.a(this.s);
+   }
+
+   @Override
+   public void au_() {
+      this.f.s.q();
+      super.au_();
+   }
+
+   @Override
+   public void av_() {
+      super.av_();
+      this.q.b(this.s);
+   }
+
+   @Override
+   protected void l() {
+      if (this.f.s.gc()) {
+         this.d(esl.a(th.d, $$0 -> this.au_()).a(this.g / 2 - 100, 196, 98, 20).a());
+         this.d(esl.a(ti.c("lectern.take_book"), $$0 -> this.c(3)).a(this.g / 2 + 2, 196, 98, 20).a());
       } else {
-         $$4 = this.o() ? c : d;
+         super.l();
       }
-
-      $$0.a($$4, this.r(), this.t(), 23, 13);
    }
 
    @Override
-   public void a(gdg $$0) {
-      if (this.t) {
-         $$0.a(gbx.a(aow.ce, 1.0F));
+   protected void E() {
+      this.c(1);
+   }
+
+   @Override
+   protected void F() {
+      this.c(2);
+   }
+
+   @Override
+   protected boolean b(int $$0) {
+      if ($$0 != this.q.m()) {
+         this.c(100 + $$0);
+         return true;
+      } else {
+         return false;
       }
+   }
+
+   private void c(int $$0) {
+      this.f.q.a(this.q.j, $$0);
+   }
+
+   @Override
+   public boolean j() {
+      return false;
+   }
+
+   void I() {
+      cja $$0 = this.q.l();
+      this.a(ezk.a.a($$0));
+   }
+
+   void J() {
+      this.a(this.q.m());
+   }
+
+   @Override
+   protected void G() {
+      this.f.s.q();
    }
 }

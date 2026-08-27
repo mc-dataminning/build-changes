@@ -1,33 +1,37 @@
-import com.google.gson.JsonObject;
-import java.util.Optional;
+public enum ar {
+   a("task", n.k),
+   b("challenge", n.f),
+   c("goal", n.k);
 
-public abstract class ar implements am {
-   private final aer a;
-   private final Optional<ba> b;
+   private final String d;
+   private final n e;
+   private final ti f;
 
-   public ar(aer $$0, Optional<ba> $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   private ar(String $$0, n $$1) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = ti.c("advancements.toast." + $$0);
    }
 
-   @Override
-   public aer a() {
-      return this.a;
+   public String a() {
+      return this.d;
    }
 
-   protected Optional<ba> c() {
-      return this.b;
+   public static ar a(String $$0) {
+      for (ar $$1 : values()) {
+         if ($$1.d.equals($$0)) {
+            return $$1;
+         }
+      }
+
+      throw new IllegalArgumentException("Unknown frame type '" + $$0 + "'");
    }
 
-   @Override
-   public JsonObject b() {
-      JsonObject $$0 = new JsonObject();
-      this.b.ifPresent($$1 -> $$0.add("player", $$1.a()));
-      return $$0;
+   public n b() {
+      return this.e;
    }
 
-   @Override
-   public String toString() {
-      return "AbstractCriterionInstance{criterion=" + this.a + "}";
+   public ti c() {
+      return this.f;
    }
 }

@@ -1,75 +1,62 @@
-public abstract class clj implements cma<bgj> {
-   protected final cmd<?> a;
-   protected final aer b;
-   private final clp h;
-   protected final String c;
-   protected final clx d;
-   protected final cix e;
-   protected final float f;
-   protected final int g;
+public class clj extends cli {
+   private final hc b;
 
-   public clj(cmd<?> $$0, aer $$1, String $$2, clp $$3, clx $$4, cix $$5, float $$6, int $$7) {
-      this.a = $$0;
-      this.h = $$3;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$4;
-      this.e = $$5;
-      this.f = $$6;
-      this.g = $$7;
+   public clj(cpq $$0, gw $$1, hc $$2, cja $$3, hc $$4) {
+      super($$0, null, bgs.a, $$3, new ehe(ehi.c($$1), $$4, $$1, false));
+      this.b = $$2;
    }
 
    @Override
-   public boolean a(bgj $$0, cpl $$1) {
-      return this.d.a($$0.a(0));
+   public gw a() {
+      return this.j().a();
    }
 
    @Override
-   public cix a(bgj $$0, hs $$1) {
-      return this.e.p();
+   public boolean b() {
+      return this.q().a_(this.j().a()).a(this);
    }
 
    @Override
-   public boolean a(int $$0, int $$1) {
-      return true;
+   public boolean c() {
+      return this.b();
    }
 
    @Override
-   public hn<clx> a() {
-      hn<clx> $$0 = hn.a();
-      $$0.add(this.d);
-      return $$0;
-   }
-
-   public float b() {
-      return this.f;
+   public hc d() {
+      return hc.a;
    }
 
    @Override
-   public cix a(hs $$0) {
-      return this.e;
+   public hc[] f() {
+      switch (this.b) {
+         case a:
+         default:
+            return new hc[]{hc.a, hc.c, hc.f, hc.d, hc.e, hc.b};
+         case b:
+            return new hc[]{hc.a, hc.b, hc.c, hc.f, hc.d, hc.e};
+         case c:
+            return new hc[]{hc.a, hc.c, hc.f, hc.e, hc.b, hc.d};
+         case d:
+            return new hc[]{hc.a, hc.d, hc.f, hc.e, hc.b, hc.c};
+         case e:
+            return new hc[]{hc.a, hc.e, hc.d, hc.b, hc.c, hc.f};
+         case f:
+            return new hc[]{hc.a, hc.f, hc.d, hc.b, hc.c, hc.e};
+      }
    }
 
    @Override
-   public String c() {
-      return this.c;
-   }
-
-   public int d() {
-      return this.g;
+   public hc g() {
+      return this.b.o() == hc.a.b ? hc.c : this.b;
    }
 
    @Override
-   public aer e() {
-      return this.b;
+   public boolean h() {
+      return false;
    }
 
    @Override
-   public cmd<?> f() {
-      return this.a;
-   }
-
-   public clp g() {
-      return this.h;
+   public float i() {
+      return (float)(this.b.e() * 90);
    }
 }

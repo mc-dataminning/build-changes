@@ -1,36 +1,39 @@
-public class cid extends cis implements ckr {
-   public cid(cis.a $$0) {
+public class cid extends civ {
+   public cid(civ.a $$0) {
       super($$0);
    }
 
    @Override
-   public bgr<cix> a(cpl $$0, cbm $$1, bgp $$2) {
-      cix $$3 = $$1.b($$2);
-      if ($$1.ci != null) {
-         if (!$$0.B) {
-            int $$4 = $$1.ci.a($$3);
-            $$3.a($$4, $$1, $$1x -> $$1x.d($$2));
+   public bgt a(clk $$0) {
+      cpq $$1 = $$0.q();
+      gw $$2 = $$0.a();
+      dfe $$3 = $$1.a_($$2);
+      boolean $$4 = false;
+      if (!ctd.h($$3) && !cte.g($$3) && !ctf.g($$3)) {
+         $$2 = $$2.a($$0.k());
+         if (cse.a($$1, $$2, $$0.g())) {
+            this.a($$1, $$2);
+            $$1.b($$2, cse.a($$1, $$2));
+            $$1.a($$0.o(), djo.i, $$2);
+            $$4 = true;
          }
-
-         $$0.a(null, $$1.dp(), $$1.dr(), $$1.dv(), aow.hP, aox.g, 1.0F, 0.4F / ($$0.y_().i() * 0.4F + 0.8F));
-         $$1.a(djj.C);
       } else {
-         $$0.a(null, $$1.dp(), $$1.dr(), $$1.dv(), aow.hR, aox.g, 0.5F, 0.4F / ($$0.y_().i() * 0.4F + 0.8F));
-         if (!$$0.B) {
-            int $$5 = cng.c($$3);
-            int $$6 = cng.b($$3);
-            $$0.b(new cca($$1, $$0, $$6, $$5));
-         }
-
-         $$1.b(apg.c.b(this));
-         $$1.a(djj.D);
+         this.a($$1, $$2);
+         $$1.b($$2, $$3.a(dfu.r, Boolean.valueOf(true)));
+         $$1.a($$0.o(), djo.c, $$2);
+         $$4 = true;
       }
 
-      return bgr.a($$3, $$0.r_());
+      if ($$4) {
+         $$0.n().h(1);
+         return bgt.a($$1.B);
+      } else {
+         return bgt.e;
+      }
    }
 
-   @Override
-   public int c() {
-      return 1;
+   private void a(cpq $$0, gw $$1) {
+      arx $$2 = $$0.y_();
+      $$0.a(null, $$1, aoz.hD, apa.e, 1.0F, ($$2.i() - $$2.i()) * 0.2F + 1.0F);
    }
 }

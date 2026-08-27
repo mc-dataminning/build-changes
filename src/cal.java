@@ -1,29 +1,16 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
 import java.util.function.Function;
 
 public class cal {
-   public static bkq<biy> a(int $$0, int $$1) {
-      return bob.a(
-         (Function<bob.b<biy>, ? extends App<bob.c<biy>, boe<biy>>>)($$2 -> $$2.group($$2.b(brz.ac), $$2.b(brz.K), $$2.a(brz.ad), $$2.a(brz.ae))
-               .apply($$2, ($$3, $$4, $$5, $$6) -> ($$6x, $$7, $$8) -> {
-                     if (!$$7.eS().b()) {
+   public static bkt<bjb> a(int $$0) {
+      return boe.a(
+         (Function<boe.b<bjb>, ? extends App<boe.c<bjb>, boh<bjb>>>)($$1 -> $$1.group($$1.b(bsc.K), $$1.c(bsc.ac), $$1.c(bsc.af), $$1.c(bsc.ae))
+               .apply($$1, ($$2, $$3, $$4, $$5) -> ($$4x, $$5x, $$6) -> {
+                     byi $$7 = $$1.b($$2);
+                     if (!cag.a($$7.j())) {
                         return false;
                      } else {
-                        Optional<Integer> $$9 = $$2.a($$5);
-                        if ($$9.isEmpty()) {
-                           $$5.a(0);
-                        } else {
-                           int $$10 = $$9.get();
-                           if ($$10 > $$0) {
-                              $$3.b();
-                              $$5.b();
-                              $$6.a(true, (long)$$1);
-                           } else {
-                              $$5.a($$10 + 1);
-                           }
-                        }
-
+                        $$3.a(true, (long)$$0);
                         return true;
                      }
                   }))

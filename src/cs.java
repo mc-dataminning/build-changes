@@ -1,44 +1,50 @@
 import com.google.gson.JsonObject;
 import java.util.Optional;
 
-public class cs extends cu<cs.a> {
-   static final aer a = new aer("recipe_unlocked");
-
-   @Override
-   public aer a() {
-      return a;
+public class cs extends cw<cs.a> {
+   public cs.a a(JsonObject $$0, Optional<bc> $$1, bg $$2) {
+      return new cs.a($$1);
    }
 
-   public cs.a a(JsonObject $$0, Optional<ba> $$1, be $$2) {
-      aer $$3 = new aer(arg.i($$0, "recipe"));
-      return new cs.a($$1, $$3);
+   public void a(ako $$0) {
+      this.a($$0, $$0x -> true);
    }
 
-   public void a(akl $$0, cma<?> $$1) {
-      this.a($$0, $$1x -> $$1x.a($$1));
-   }
-
-   public static cs.a a(aer $$0) {
-      return new cs.a(Optional.empty(), $$0);
-   }
-
-   public static class a extends ar {
-      private final aer a;
-
-      public a(Optional<ba> $$0, aer $$1) {
-         super(cs.a, $$0);
-         this.a = $$1;
+   public static class a extends at {
+      public a(Optional<bc> $$0) {
+         super($$0);
       }
 
-      @Override
-      public JsonObject b() {
-         JsonObject $$0 = super.b();
-         $$0.addProperty("recipe", this.a.toString());
-         return $$0;
+      public static am<cs.a> a(cj.a $$0) {
+         return al.p.a(new cs.a(Optional.of(bq.a(bq.a.a().a($$0)))));
       }
 
-      public boolean a(cma<?> $$0) {
-         return this.a.equals($$0.e());
+      public static am<cs.a> a(bq.a $$0) {
+         return al.p.a(new cs.a(Optional.of(bq.a($$0.b()))));
+      }
+
+      public static am<cs.a> a(Optional<bq> $$0) {
+         return al.p.a(new cs.a(bq.a($$0)));
+      }
+
+      public static am<cs.a> c() {
+         return al.q.a(new cs.a(Optional.empty()));
+      }
+
+      public static am<cs.a> d() {
+         return al.H.a(new cs.a(Optional.empty()));
+      }
+
+      public static am<cs.a> e() {
+         return al.Y.a(new cs.a(Optional.empty()));
+      }
+
+      public static am<cs.a> f() {
+         return al.w.a(new cs.a(Optional.empty()));
+      }
+
+      public static am<cs.a> a(csq $$0, civ $$1) {
+         return a(bq.a.a().a(bn.a.a().d(cb.a.a().a($$1))).b(cj.a.a().a(av.a.a().a($$0))));
       }
    }
 }

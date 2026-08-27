@@ -1,16 +1,18 @@
-public record vu() implements vp {
-   public static final aer a = new aer("debug/game_test_clear");
+public record vu(aet<djo> b, ehi c) implements vs {
+   public static final aeu a = new aeu("debug/game_event");
 
-   public vu(si $$0) {
-      this();
+   public vu(sl $$0) {
+      this($$0.a(je.z), $$0.k());
    }
 
    @Override
-   public void a(si $$0) {
+   public void a(sl $$0) {
+      $$0.b(this.b);
+      $$0.a(this.c);
    }
 
    @Override
-   public aer a() {
+   public aeu a() {
       return a;
    }
 }

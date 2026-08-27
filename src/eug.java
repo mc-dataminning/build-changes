@@ -1,9 +1,8 @@
-import java.util.function.Consumer;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public interface eug {
-   tf a();
-
-   void a(Consumer<ese> var1);
-
-   void a(ewi var1);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface eug {
 }

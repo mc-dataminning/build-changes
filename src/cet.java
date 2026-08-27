@@ -1,58 +1,9 @@
-public abstract class cet {
-   private int a;
+public interface cet {
+   void a(ceg var1, hp<cja> var2, cja var3, int[] var4);
 
-   public static cet a(final cen $$0, final int $$1) {
-      return new cet() {
-         @Override
-         public int b() {
-            return $$0.a($$1);
-         }
+   void a(ceg var1, int var2, cja var3);
 
-         @Override
-         public void a(int $$0x) {
-            $$0.a($$1, $$0);
-         }
-      };
-   }
+   void a(ceg var1, cja var2);
 
-   public static cet a(final int[] $$0, final int $$1) {
-      return new cet() {
-         @Override
-         public int b() {
-            return $$0[$$1];
-         }
-
-         @Override
-         public void a(int $$0x) {
-            $$0[$$1] = $$0;
-         }
-      };
-   }
-
-   public static cet a() {
-      return new cet() {
-         private int a;
-
-         @Override
-         public int b() {
-            return this.a;
-         }
-
-         @Override
-         public void a(int $$0) {
-            this.a = $$0;
-         }
-      };
-   }
-
-   public abstract int b();
-
-   public abstract void a(int var1);
-
-   public boolean c() {
-      int $$0 = this.b();
-      boolean $$1 = $$0 != this.a;
-      this.a = $$0;
-      return $$1;
-   }
+   void a(ceg var1, int var2, int var3);
 }

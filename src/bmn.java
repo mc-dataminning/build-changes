@@ -1,34 +1,26 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
 import java.util.function.Function;
-import java.util.function.Predicate;
 
 public class bmn {
-   public static bkq<biy> a(bjb $$0, float $$1) {
-      return a($$1x -> $$0.equals($$1x.ag().f()), $$1);
-   }
+   private static final float b = 0.95F;
+   public static final int a = 3;
 
-   public static blz<biy> a(bim<?> $$0, float $$1) {
-      return a($$1x -> $$0.equals($$1x.ag()), $$1);
-   }
-
-   public static blz<biy> a(float $$0) {
-      return a($$0x -> true, $$0);
-   }
-
-   public static blz<biy> a(Predicate<biy> $$0, float $$1) {
-      float $$2 = $$1 * $$1;
-      return bob.a(
-         (Function<bob.b<biy>, ? extends App<bob.c<biy>, boe<biy>>>)($$2x -> $$2x.group($$2x.c(brz.n), $$2x.b(brz.h))
-               .apply($$2x, ($$3, $$4) -> ($$5, $$6, $$7) -> {
-                     Optional<biy> $$8 = $$2x.<bsb>b($$4).a($$0.and($$2xxxx -> $$2xxxx.f((bii)$$6) <= (double)$$2 && !$$6.x($$2xxxx)));
-                     if ($$8.isEmpty()) {
-                        return false;
-                     } else {
-                        $$3.a(new bla($$8.get(), true));
-                        return true;
+   public static bkt<bjb> a() {
+      return boe.a((Function<boe.b<bjb>, ? extends App<boe.c<bjb>, boh<bjb>>>)($$0 -> $$0.group($$0.b(bsc.e)).apply($$0, $$1 -> ($$2, $$3, $$4) -> {
+               if ($$2.z.i() <= 0.95F) {
+                  return false;
+               } else {
+                  gw $$5 = $$0.<hf>b($$1).b();
+                  if ($$5.a($$3.dk(), 3.0)) {
+                     dfe $$6 = $$2.a_($$5);
+                     if ($$6.a(csr.od)) {
+                        csm $$7 = (csm)$$6.b();
+                        $$7.a($$3, $$2, $$5, null);
                      }
-                  }))
-      );
+                  }
+
+                  return true;
+               }
+            })));
    }
 }

@@ -1,17 +1,48 @@
 import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.serialization.Codec;
 
-public interface it {
-   iu<?> b();
+public class it implements iv {
+   public static final iv.a<it> a = new iv.a<it>() {
+      public it a(iw<it> $$0, StringReader $$1) throws CommandSyntaxException {
+         $$1.expect(' ');
+         fy.a $$2 = fy.a(jd.i.p(), $$1);
+         cja $$3 = new fx($$2.a(), $$2.b()).a(1, false);
+         return new it($$0, $$3);
+      }
 
-   void a(si var1);
+      public it a(iw<it> $$0, sl $$1) {
+         return new it($$0, $$1.q());
+      }
+   };
+   private final iw<it> b;
+   private final cja c;
 
-   String a();
+   public static Codec<it> a(iw<it> $$0) {
+      return cja.a.xmap($$1 -> new it($$0, $$1), $$0x -> $$0x.c);
+   }
 
-   @Deprecated
-   public interface a<T extends it> {
-      T b(iu<T> var1, StringReader var2) throws CommandSyntaxException;
+   public it(iw<it> $$0, cja $$1) {
+      this.b = $$0;
+      this.c = $$1;
+   }
 
-      T b(iu<T> var1, si var2);
+   @Override
+   public void a(sl $$0) {
+      $$0.a(this.c);
+   }
+
+   @Override
+   public String a() {
+      return jd.k.b(this.b()) + " " + new fx(this.c.e(), this.c.v()).b();
+   }
+
+   @Override
+   public iw<it> b() {
+      return this.b;
+   }
+
+   public cja c() {
+      return this.c;
    }
 }

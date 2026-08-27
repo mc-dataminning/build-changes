@@ -1,22 +1,19 @@
-public record wf(gu b, float c, float d, float e, float f, float g) implements vp {
-   public static final aer a = new aer("debug/worldgen_attempt");
+import java.util.List;
 
-   public wf(si $$0) {
-      this($$0.e(), $$0.readFloat(), $$0.readFloat(), $$0.readFloat(), $$0.readFloat(), $$0.readFloat());
+public record wf(List<gw> b) implements vs {
+   public static final aeu a = new aeu("debug/raids");
+
+   public wf(sl $$0) {
+      this($$0.a(sl::e));
    }
 
    @Override
-   public void a(si $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
-      $$0.a(this.f);
-      $$0.a(this.g);
+   public void a(sl $$0) {
+      $$0.a(this.b, sl::a);
    }
 
    @Override
-   public aer a() {
+   public aeu a() {
       return a;
    }
 }

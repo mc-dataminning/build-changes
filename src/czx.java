@@ -1,52 +1,41 @@
-public class czx extends csl {
-   protected static final ehw a = csl.a(0.0, 0.0, 0.0, 16.0, 14.0, 16.0);
-   private static final int b = 20;
+import javax.annotation.Nullable;
 
-   public czx(dey.d $$0) {
+public class czx extends crl {
+   protected czx(dfd.d $$0) {
       super($$0);
    }
 
    @Override
-   public ehw c(dez $$0, cor $$1, gu $$2, ehi $$3) {
-      return a;
+   public dcq a(gw $$0, dfe $$1) {
+      return new deb($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dcq> dcr<T> a(cpq $$0, dfe $$1, dcs<T> $$2) {
+      return a($$0, $$2, dcs.B);
    }
 
    @Override
-   public ehw b_(dez $$0, cor $$1, gu $$2) {
-      return eht.b();
-   }
-
-   @Override
-   public ehw b(dez $$0, cor $$1, gu $$2, ehi $$3) {
-      return eht.b();
-   }
-
-   @Override
-   public void a(dez $$0, akk $$1, gu $$2, aru $$3) {
-      csq.b($$1, $$2.c(), $$0);
-   }
-
-   @Override
-   public dez a(dez $$0, ha $$1, dez $$2, cpm $$3, gu $$4, gu $$5) {
-      if ($$1 == ha.b && $$2.a(csm.G)) {
-         $$3.a($$4, this, 20);
+   protected void a(cpq $$0, gw $$1, cbp $$2) {
+      dcq $$3 = $$0.c_($$1);
+      if ($$3 instanceof deb) {
+         $$2.a((bgw)$$3);
+         $$2.a(apj.at);
       }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public void b(dez $$0, cpl $$1, gu $$2, dez $$3, boolean $$4) {
-      $$1.a($$2, this, 20);
-   }
+   public void a(dfe $$0, cpq $$1, gw $$2, arx $$3) {
+      if ($$0.c(b)) {
+         double $$4 = (double)$$2.u() + 0.5;
+         double $$5 = (double)$$2.v();
+         double $$6 = (double)$$2.w() + 0.5;
+         if ($$3.j() < 0.1) {
+            $$1.a($$4, $$5, $$6, aoz.wx, apa.e, 1.0F, 1.0F, false);
+         }
 
-   @Override
-   public boolean a(dez $$0, cor $$1, gu $$2, eas $$3) {
-      return false;
-   }
-
-   @Override
-   public float b(dez $$0, cor $$1, gu $$2) {
-      return 0.2F;
+         $$1.a(ix.Z, $$4, $$5 + 1.1, $$6, 0.0, 0.0, 0.0);
+      }
    }
 }

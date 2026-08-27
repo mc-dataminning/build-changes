@@ -1,32 +1,28 @@
-public class aca implements ux<aaw> {
+public class aca implements va<aaz> {
    private final int a;
-   private final aca.a b;
-   private final int c;
+   private final aeu b;
+   private final boolean c;
 
-   public aca(bii $$0, aca.a $$1) {
-      this($$0, $$1, 0);
-   }
-
-   public aca(bii $$0, aca.a $$1, int $$2) {
-      this.a = $$0.ah();
-      this.b = $$1;
+   public aca(int $$0, cmf<?> $$1, boolean $$2) {
+      this.a = $$0;
+      this.b = $$1.a();
       this.c = $$2;
    }
 
-   public aca(si $$0) {
-      this.a = $$0.m();
-      this.b = $$0.b(aca.a.class);
-      this.c = $$0.m();
+   public aca(sl $$0) {
+      this.a = $$0.readByte();
+      this.b = $$0.s();
+      this.c = $$0.readBoolean();
    }
 
    @Override
-   public void a(si $$0) {
-      $$0.c(this.a);
+   public void a(sl $$0) {
+      $$0.k(this.a);
       $$0.a(this.b);
-      $$0.c(this.c);
+      $$0.a(this.c);
    }
 
-   public void a(aaw $$0) {
+   public void a(aaz $$0) {
       $$0.a(this);
    }
 
@@ -34,23 +30,11 @@ public class aca implements ux<aaw> {
       return this.a;
    }
 
-   public aca.a d() {
+   public aeu d() {
       return this.b;
    }
 
-   public int e() {
+   public boolean e() {
       return this.c;
-   }
-
-   public static enum a {
-      a,
-      b,
-      c,
-      d,
-      e,
-      f,
-      g,
-      h,
-      i;
    }
 }

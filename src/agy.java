@@ -1,73 +1,95 @@
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
+import com.mojang.brigadier.suggestion.SuggestionProvider;
 import java.util.Collection;
+import java.util.function.IntConsumer;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.mutable.MutableObject;
 
 public class agy {
-   public static final int a = 100;
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> ti.a("commands.function.error.argument_not_compound", $$0));
+   public static final SuggestionProvider<dt> a = ($$0, $$1) -> {
+      afi $$2 = ((dt)$$0.getSource()).l().aA();
+      dw.a($$2.f(), $$1, "#");
+      return dw.a($$2.e(), $$1);
+   };
 
-   public static void a(CommandDispatcher<dr> $$0, dl $$1) {
+   public static void a(CommandDispatcher<dt> $$0) {
+      LiteralArgumentBuilder<dt> $$1 = du.a("with");
+
+      for (ajf.c $$2 : ajf.c) {
+         $$2.a(
+            $$1,
+            $$1x -> $$1x.executes($$1xx -> a((dt)$$1xx.getSource(), fv.a($$1xx, "name"), $$2.a($$1xx).a()))
+                  .then(du.a("path", ej.a()).executes($$1xx -> a((dt)$$1xx.getSource(), fv.a($$1xx, "name"), a(ej.a($$1xx, "path"), $$2.a($$1xx)))))
+         );
+      }
+
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ds.a("give").requires($$0x -> $$0x.c(2)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)du.a("function").requires($$0x -> $$0x.c(2)))
             .then(
-               ds.a("targets", ec.d())
-                  .then(
-                     ((RequiredArgumentBuilder)ds.a("item", fu.a($$1)).executes($$0x -> a((dr)$$0x.getSource(), fu.a($$0x, "item"), ec.f($$0x, "targets"), 1)))
-                        .then(
-                           ds.a("count", IntegerArgumentType.integer(1))
-                              .executes(
-                                 $$0x -> a((dr)$$0x.getSource(), fu.a($$0x, "item"), ec.f($$0x, "targets"), IntegerArgumentType.getInteger($$0x, "count"))
-                              )
-                        )
-                  )
+               ((RequiredArgumentBuilder)((RequiredArgumentBuilder)du.a("name", fv.a())
+                        .suggests(a)
+                        .executes($$0x -> a((dt)$$0x.getSource(), fv.a($$0x, "name"), null)))
+                     .then(du.a("arguments", eb.a()).executes($$0x -> a((dt)$$0x.getSource(), fv.a($$0x, "name"), eb.a($$0x, "arguments")))))
+                  .then($$1)
             )
       );
    }
 
-   private static int a(dr $$0, fv $$1, Collection<akl> $$2, int $$3) throws CommandSyntaxException {
-      int $$4 = $$1.a().l();
-      int $$5 = $$4 * 100;
-      cix $$6 = $$1.a($$3, false);
-      if ($$3 > $$5) {
-         $$0.b(tf.a("commands.give.failed.toomanyitems", $$5, $$6.J()));
-         return 0;
+   private static qu a(ej.g $$0, aje $$1) throws CommandSyntaxException {
+      rn $$2 = ajf.a($$0, $$1);
+      if ($$2 instanceof qu) {
+         return (qu)$$2;
       } else {
-         for (akl $$7 : $$2) {
-            int $$8 = $$3;
-
-            while ($$8 > 0) {
-               int $$9 = Math.min($$4, $$8);
-               $$8 -= $$9;
-               cix $$10 = $$1.a($$9, false);
-               boolean $$11 = $$7.fQ().e($$10);
-               if ($$11 && $$10.b()) {
-                  $$10.f(1);
-                  byf $$13 = $$7.a($$10, false);
-                  if ($$13 != null) {
-                     $$13.w();
-                  }
-
-                  $$7.dK().a(null, $$7.dp(), $$7.dr(), $$7.dv(), aow.ma, aox.h, 0.2F, (($$7.ee().i() - $$7.ee().i()) * 0.7F + 1.0F) * 2.0F);
-                  $$7.bQ.d();
-               } else {
-                  byf $$12 = $$7.a($$10, false);
-                  if ($$12 != null) {
-                     $$12.p();
-                     $$12.b($$7.cv());
-                  }
-               }
-            }
-         }
-
-         if ($$2.size() == 1) {
-            $$0.a(() -> tf.a("commands.give.success.single", $$3, $$6.J(), $$2.iterator().next().H_()), true);
-         } else {
-            $$0.a(() -> tf.a("commands.give.success.single", $$3, $$6.J(), $$2.size()), true);
-         }
-
-         return $$2.size();
+         throw b.create($$2.c().a());
       }
+   }
+
+   private static int a(dt $$0, Collection<dp> $$1, @Nullable qu $$2) {
+      int $$3 = 0;
+      boolean $$4 = false;
+      boolean $$5 = false;
+
+      for (dp $$6 : $$1) {
+         try {
+            agy.a $$7 = a($$0, $$6, $$2);
+            $$3 += $$7.a();
+            $$4 |= $$7.b();
+            $$5 = true;
+         } catch (dv var9) {
+            $$0.b(var9.a());
+         }
+      }
+
+      if ($$5) {
+         int $$9 = $$3;
+         if ($$1.size() == 1) {
+            if ($$4) {
+               $$0.a(() -> ti.a("commands.function.success.single.result", $$9, $$1.iterator().next().a()), true);
+            } else {
+               $$0.a(() -> ti.a("commands.function.success.single", $$9, $$1.iterator().next().a()), true);
+            }
+         } else if ($$4) {
+            $$0.a(() -> ti.a("commands.function.success.multiple.result", $$1.size()), true);
+         } else {
+            $$0.a(() -> ti.a("commands.function.success.multiple", $$9, $$1.size()), true);
+         }
+      }
+
+      return $$3;
+   }
+
+   public static agy.a a(dt $$0, dp $$1, @Nullable qu $$2) throws dv {
+      MutableObject<agy.a> $$3 = new MutableObject();
+      int $$4 = $$0.l().aA().a($$1, $$0.a().b(2).a((IntConsumer)($$1x -> $$3.setValue(new agy.a($$1x, true)))), null, $$2);
+      agy.a $$5 = (agy.a)$$3.getValue();
+      return $$5 != null ? $$5 : new agy.a($$4, false);
+   }
+
+   public static record a(int a, boolean b) {
    }
 }

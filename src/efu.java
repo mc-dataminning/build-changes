@@ -1,18 +1,50 @@
-import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
-import java.util.function.Function;
-import java.util.function.Supplier;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class efu {
-   private static final Codec<eft> d = jb.K.q().dispatch(eft::a, efs::a);
-   public static final Codec<eft> a = aqy.a(
-      (Supplier<Codec<eft>>)(() -> Codec.either(efr.c, d)
-            .xmap($$0 -> (eft)$$0.map(Function.identity(), Function.identity()), $$0 -> $$0 instanceof efr $$1 ? Either.left($$1) : Either.right($$0)))
+public record efu(Optional<Boolean> b, Optional<Boolean> c) implements efk {
+   public static final Codec<efu> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(arb.a(Codec.BOOL, "raining").forGetter(efu::d), arb.a(Codec.BOOL, "thundering").forGetter(efu::e)).apply($$0, efu::new)
    );
-   public static final efs b = a("storage", efv.a);
-   public static final efs c = a("context", efr.b);
 
-   private static efs a(String $$0, Codec<? extends eft> $$1) {
-      return hr.a(jb.K, new aer($$0), new efs($$1));
+   @Override
+   public efl b() {
+      return efm.p;
+   }
+
+   public boolean a(ecl $$0) {
+      akn $$1 = $$0.d();
+      return this.b.isPresent() && this.b.get() != $$1.Z() ? false : !this.c.isPresent() || this.c.get() == $$1.Y();
+   }
+
+   public static efu.a c() {
+      return new efu.a();
+   }
+
+   public Optional<Boolean> d() {
+      return this.b;
+   }
+
+   public Optional<Boolean> e() {
+      return this.c;
+   }
+
+   public static class a implements efk.a {
+      private Optional<Boolean> a = Optional.empty();
+      private Optional<Boolean> b = Optional.empty();
+
+      public efu.a a(boolean $$0) {
+         this.a = Optional.of($$0);
+         return this;
+      }
+
+      public efu.a b(boolean $$0) {
+         this.b = Optional.of($$0);
+         return this;
+      }
+
+      public efu a() {
+         return new efu(this.a, this.b);
+      }
    }
 }

@@ -1,28 +1,22 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Consumer;
 
-public record aqj(int d, int e) {
-   public static final Codec<Integer> a = aqy.a(0, 15);
-   public static final Codec<aqj> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(a.fieldOf("block").forGetter(aqj::b), a.fieldOf("sky").forGetter(aqj::c)).apply($$0, aqj::new)
-   );
-   public static aqj c = new aqj(15, 15);
+@FunctionalInterface
+public interface aqj<T> {
+   aqj.a accept(T var1);
 
-   public int a() {
-      return this.d << 4 | this.e << 20;
+   static <T> aqj<T> forConsumer(Consumer<T> $$0) {
+      return $$1 -> {
+         $$0.accept($$1);
+         return aqj.a.a;
+      };
    }
 
-   public static aqj a(int $$0) {
-      int $$1 = $$0 >> 4 & 65535;
-      int $$2 = $$0 >> 20 & 65535;
-      return new aqj($$1, $$2);
-   }
+   public static enum a {
+      a,
+      b;
 
-   public int b() {
-      return this.d;
-   }
-
-   public int c() {
-      return this.e;
+      public boolean a() {
+         return this == b;
+      }
    }
 }

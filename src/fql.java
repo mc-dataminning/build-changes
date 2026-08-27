@@ -1,118 +1,50 @@
-public class fql implements fpu<ddy> {
-   public fql(fpv.a $$0) {
+public class fql implements fpz<dfa> {
+   private final fot a;
+
+   public fql(fqa.a $$0) {
+      this.a = $$0.b();
    }
 
-   public void a(ddy $$0, float $$1, elf $$2, fnu $$3, int $$4, int $$5) {
-      if (eql.O().s.gn() || eql.O().s.G_()) {
-         gu $$6 = $$0.i();
-         hz $$7 = $$0.j();
-         if ($$7.u() >= 1 && $$7.v() >= 1 && $$7.w() >= 1) {
-            if ($$0.y() == dgj.a || $$0.y() == dgj.b) {
-               double $$8 = (double)$$6.u();
-               double $$9 = (double)$$6.w();
-               double $$10 = (double)$$6.v();
-               double $$11 = $$10 + (double)$$7.v();
-               double $$12;
-               double $$13;
-               switch ($$0.v()) {
-                  case b:
-                     $$12 = (double)$$7.u();
-                     $$13 = (double)(-$$7.w());
-                     break;
-                  case c:
-                     $$12 = (double)(-$$7.u());
-                     $$13 = (double)$$7.w();
-                     break;
-                  default:
-                     $$12 = (double)$$7.u();
-                     $$13 = (double)$$7.w();
-               }
-
-               double $$30;
-               double $$31;
-               double $$32;
-               double $$33;
-               switch ($$0.w()) {
-                  case b:
-                     $$30 = $$13 < 0.0 ? $$8 : $$8 + 1.0;
-                     $$31 = $$12 < 0.0 ? $$9 + 1.0 : $$9;
-                     $$32 = $$30 - $$13;
-                     $$33 = $$31 + $$12;
-                     break;
-                  case c:
-                     $$30 = $$12 < 0.0 ? $$8 : $$8 + 1.0;
-                     $$31 = $$13 < 0.0 ? $$9 : $$9 + 1.0;
-                     $$32 = $$30 - $$12;
-                     $$33 = $$31 - $$13;
-                     break;
-                  case d:
-                     $$30 = $$13 < 0.0 ? $$8 + 1.0 : $$8;
-                     $$31 = $$12 < 0.0 ? $$9 : $$9 + 1.0;
-                     $$32 = $$30 + $$13;
-                     $$33 = $$31 - $$12;
-                     break;
-                  default:
-                     $$30 = $$12 < 0.0 ? $$8 + 1.0 : $$8;
-                     $$31 = $$13 < 0.0 ? $$9 + 1.0 : $$9;
-                     $$32 = $$30 + $$12;
-                     $$33 = $$31 + $$13;
-               }
-
-               float $$34 = 1.0F;
-               float $$35 = 0.9F;
-               float $$36 = 0.5F;
-               elj $$37 = $$3.getBuffer(foc.x());
-               if ($$0.y() == dgj.a || $$0.I()) {
-                  fns.a($$2, $$37, $$30, $$10, $$31, $$32, $$11, $$33, 0.9F, 0.9F, 0.9F, 1.0F, 0.5F, 0.5F, 0.5F);
-               }
-
-               if ($$0.y() == dgj.a && $$0.H()) {
-                  this.a($$0, $$37, $$6, $$2);
-               }
+   public void a(dfa $$0, float $$1, elk $$2, fnz $$3, int $$4, int $$5) {
+      cpq $$6 = $$0.k();
+      if ($$6 != null) {
+         gw $$7 = $$0.p().a($$0.g().g());
+         dfe $$8 = $$0.i();
+         if (!$$8.i()) {
+            fov.a();
+            $$2.a();
+            $$2.a($$0.b($$1), $$0.c($$1), $$0.d($$1));
+            if ($$8.a(csr.bz) && $$0.a($$1) <= 4.0F) {
+               $$8 = $$8.a(dey.c, Boolean.valueOf($$0.a($$1) <= 0.5F));
+               this.a($$7, $$8, $$2, $$3, $$6, false, $$5);
+            } else if ($$0.f() && !$$0.c()) {
+               dgg $$9 = $$8.a(csr.br) ? dgg.b : dgg.a;
+               dfe $$10 = csr.bz.n().a(dey.b, $$9).a(dey.a, $$8.c(dex.a));
+               $$10 = $$10.a(dey.c, Boolean.valueOf($$0.a($$1) >= 0.5F));
+               this.a($$7, $$10, $$2, $$3, $$6, false, $$5);
+               gw $$11 = $$7.a($$0.g());
+               $$2.b();
+               $$2.a();
+               $$8 = $$8.a(dex.b, Boolean.valueOf(true));
+               this.a($$11, $$8, $$2, $$3, $$6, true, $$5);
+            } else {
+               this.a($$7, $$8, $$2, $$3, $$6, false, $$5);
             }
+
+            $$2.b();
+            fov.b();
          }
       }
    }
 
-   private void a(ddy $$0, elj $$1, gu $$2, elf $$3) {
-      cor $$4 = $$0.k();
-      gu $$5 = $$0.p();
-      gu $$6 = $$5.a((hz)$$2);
-
-      for (gu $$7 : gu.a($$6, $$6.a($$0.j()).b(-1, -1, -1))) {
-         dez $$8 = $$4.a_($$7);
-         boolean $$9 = $$8.i();
-         boolean $$10 = $$8.a(csm.kN);
-         boolean $$11 = $$8.a(csm.hW);
-         boolean $$12 = $$8.a(csm.hX);
-         boolean $$13 = $$10 || $$11 || $$12;
-         if ($$9 || $$13) {
-            float $$14 = $$9 ? 0.05F : 0.0F;
-            double $$15 = (double)((float)($$7.u() - $$5.u()) + 0.45F - $$14);
-            double $$16 = (double)((float)($$7.v() - $$5.v()) + 0.45F - $$14);
-            double $$17 = (double)((float)($$7.w() - $$5.w()) + 0.45F - $$14);
-            double $$18 = (double)((float)($$7.u() - $$5.u()) + 0.55F + $$14);
-            double $$19 = (double)((float)($$7.v() - $$5.v()) + 0.55F + $$14);
-            double $$20 = (double)((float)($$7.w() - $$5.w()) + 0.55F + $$14);
-            if ($$9) {
-               fns.a($$3, $$1, $$15, $$16, $$17, $$18, $$19, $$20, 0.5F, 0.5F, 1.0F, 1.0F, 0.5F, 0.5F, 1.0F);
-            } else if ($$10) {
-               fns.a($$3, $$1, $$15, $$16, $$17, $$18, $$19, $$20, 1.0F, 0.75F, 0.75F, 1.0F, 1.0F, 0.75F, 0.75F);
-            } else if ($$11) {
-               fns.a($$3, $$1, $$15, $$16, $$17, $$18, $$19, $$20, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 0.0F, 0.0F);
-            } else if ($$12) {
-               fns.a($$3, $$1, $$15, $$16, $$17, $$18, $$19, $$20, 1.0F, 1.0F, 0.0F, 1.0F, 1.0F, 1.0F, 0.0F);
-            }
-         }
-      }
-   }
-
-   public boolean a(ddy $$0) {
-      return true;
+   private void a(gw $$0, dfe $$1, elk $$2, fnz $$3, cpq $$4, boolean $$5, int $$6) {
+      foh $$7 = fnu.b($$1);
+      elo $$8 = $$3.getBuffer($$7);
+      this.a.b().a($$4, this.a.a($$1), $$1, $$0, $$2, $$8, $$5, arx.a(), $$1.a($$0), $$6);
    }
 
    @Override
-   public int aF_() {
-      return 96;
+   public int aG_() {
+      return 68;
    }
 }

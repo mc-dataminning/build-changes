@@ -1,227 +1,197 @@
-import com.google.common.primitives.Ints;
-import com.mojang.authlib.GameProfile;
-import com.mojang.authlib.exceptions.AuthenticationUnavailableException;
-import com.mojang.authlib.yggdrasil.ProfileResult;
+import com.google.common.base.Suppliers;
+import com.google.common.collect.Lists;
+import com.google.common.util.concurrent.ThreadFactoryBuilder;
 import com.mojang.logging.LogUtils;
-import java.math.BigInteger;
+import io.netty.bootstrap.ServerBootstrap;
+import io.netty.channel.Channel;
+import io.netty.channel.ChannelException;
+import io.netty.channel.ChannelFuture;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.ChannelInboundHandlerAdapter;
+import io.netty.channel.ChannelInitializer;
+import io.netty.channel.ChannelOption;
+import io.netty.channel.ChannelPipeline;
+import io.netty.channel.EventLoopGroup;
+import io.netty.channel.epoll.Epoll;
+import io.netty.channel.epoll.EpollEventLoopGroup;
+import io.netty.channel.epoll.EpollServerSocketChannel;
+import io.netty.channel.local.LocalAddress;
+import io.netty.channel.local.LocalServerChannel;
+import io.netty.channel.nio.NioEventLoopGroup;
+import io.netty.channel.socket.ServerSocketChannel;
+import io.netty.channel.socket.nio.NioServerSocketChannel;
+import io.netty.handler.timeout.ReadTimeoutHandler;
+import io.netty.util.HashedWheelTimer;
+import io.netty.util.Timeout;
+import io.netty.util.Timer;
+import java.io.IOException;
 import java.net.InetAddress;
-import java.net.InetSocketAddress;
 import java.net.SocketAddress;
-import java.security.PrivateKey;
-import java.util.Objects;
-import java.util.UUID;
-import java.util.concurrent.atomic.AtomicInteger;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
-import javax.crypto.Cipher;
-import javax.crypto.SecretKey;
 import net.minecraft.server.MinecraftServer;
-import org.apache.commons.lang3.Validate;
 import org.slf4j.Logger;
 
-public class alk implements adf, su {
-   private static final AtomicInteger a = new AtomicInteger(0);
-   static final Logger b = LogUtils.getLogger();
-   private static final int c = 600;
-   private static final tf d = tf.c("multiplayer.disconnect.unexpected_query_response");
-   private final byte[] e;
-   final MinecraftServer f;
-   final sg g;
-   private volatile alk.a h = alk.a.a;
-   private int i;
-   @Nullable
-   String j;
-   @Nullable
-   private GameProfile k;
-   private final String l = "";
+public class alk {
+   private static final Logger d = LogUtils.getLogger();
+   public static final Supplier<NioEventLoopGroup> a = Suppliers.memoize(
+      () -> new NioEventLoopGroup(0, new ThreadFactoryBuilder().setNameFormat("Netty Server IO #%d").setDaemon(true).build())
+   );
+   public static final Supplier<EpollEventLoopGroup> b = Suppliers.memoize(
+      () -> new EpollEventLoopGroup(0, new ThreadFactoryBuilder().setNameFormat("Netty Epoll Server IO #%d").setDaemon(true).build())
+   );
+   final MinecraftServer e;
+   public volatile boolean c;
+   private final List<ChannelFuture> f = Collections.synchronizedList(Lists.newArrayList());
+   final List<sj> g = Collections.synchronizedList(Lists.newArrayList());
 
-   public alk(MinecraftServer $$0, sg $$1) {
-      this.f = $$0;
-      this.g = $$1;
-      this.e = Ints.toByteArray(aru.a().f());
+   public alk(MinecraftServer $$0) {
+      this.e = $$0;
+      this.c = true;
    }
 
-   @Override
-   public void e() {
-      if (this.h == alk.a.e) {
-         this.c(Objects.requireNonNull(this.k));
-      }
-
-      if (this.h == alk.a.f && !this.a(Objects.requireNonNull(this.k))) {
-         this.d(this.k);
-      }
-
-      if (this.i++ == 600) {
-         this.b(tf.c("multiplayer.disconnect.slow_login"));
-      }
-   }
-
-   @Override
-   public boolean c() {
-      return this.g.k();
-   }
-
-   public void b(tf $$0) {
-      try {
-         b.info("Disconnecting {}: {}", this.f(), $$0.getString());
-         this.g.a(new ade($$0));
-         this.g.a($$0);
-      } catch (Exception var3) {
-         b.error("Error whilst disconnecting player", var3);
-      }
-   }
-
-   private boolean a(GameProfile $$0) {
-      return this.f.ac().a($$0.getId()) != null;
-   }
-
-   @Override
-   public void a(tf $$0) {
-      b.info("{} lost connection: {}", this.f(), $$0.getString());
-   }
-
-   public String f() {
-      String $$0 = this.g.a(this.f.be());
-      return this.j != null ? this.j + " (" + $$0 + ")" : $$0;
-   }
-
-   @Override
-   public void a(adh $$0) {
-      Validate.validState(this.h == alk.a.a, "Unexpected hello packet", new Object[0]);
-      Validate.validState(a($$0.a()), "Invalid characters in username", new Object[0]);
-      this.j = $$0.a();
-      GameProfile $$1 = this.f.N();
-      if ($$1 != null && this.j.equalsIgnoreCase($$1.getName())) {
-         this.b($$1);
-      } else {
-         if (this.f.U() && !this.g.g()) {
-            this.h = alk.a.b;
-            this.g.a(new adc("", this.f.L().getPublic().getEncoded(), this.e));
+   public void a(@Nullable InetAddress $$0, int $$1) throws IOException {
+      synchronized (this.f) {
+         Class<? extends ServerSocketChannel> $$2;
+         EventLoopGroup $$3;
+         if (Epoll.isAvailable() && this.e.n()) {
+            $$2 = EpollServerSocketChannel.class;
+            $$3 = (EventLoopGroup)b.get();
+            d.info("Using epoll channel type");
          } else {
-            this.b(b(this.j));
-         }
-      }
-   }
-
-   void b(GameProfile $$0) {
-      this.k = $$0;
-      this.h = alk.a.e;
-   }
-
-   private void c(GameProfile $$0) {
-      anz $$1 = this.f.ac();
-      tf $$2 = $$1.a(this.g.f(), $$0);
-      if ($$2 != null) {
-         this.b($$2);
-      } else {
-         if (this.f.av() >= 0 && !this.g.g()) {
-            this.g.a(new add(this.f.av()), sp.a(() -> this.g.a(this.f.av(), true)));
+            $$2 = NioServerSocketChannel.class;
+            $$3 = (EventLoopGroup)a.get();
+            d.info("Using default channel type");
          }
 
-         boolean $$3 = $$1.f($$0);
-         if ($$3) {
-            this.h = alk.a.f;
-         } else {
-            this.d($$0);
-         }
-      }
-   }
+         this.f.add(((ServerBootstrap)((ServerBootstrap)new ServerBootstrap().channel($$2)).childHandler(new ChannelInitializer<Channel>() {
+            protected void initChannel(Channel $$0) {
+               sj.a($$0);
 
-   private void d(GameProfile $$0) {
-      this.h = alk.a.g;
-      this.g.a(new adb($$0));
-   }
-
-   public static boolean a(String $$0) {
-      return $$0.chars().filter($$0x -> $$0x <= 32 || $$0x >= 127).findAny().isEmpty();
-   }
-
-   @Override
-   public void a(adi $$0) {
-      Validate.validState(this.h == alk.a.b, "Unexpected key packet", new Object[0]);
-
-      final String $$5;
-      try {
-         PrivateKey $$1 = this.f.L().getPrivate();
-         if (!$$0.a(this.e, $$1)) {
-            throw new IllegalStateException("Protocol error");
-         }
-
-         SecretKey $$2 = $$0.a($$1);
-         Cipher $$3 = aqp.a(2, $$2);
-         Cipher $$4 = aqp.a(1, $$2);
-         $$5 = new BigInteger(aqp.a("", this.f.L().getPublic(), $$2)).toString(16);
-         this.h = alk.a.c;
-         this.g.a($$3, $$4);
-      } catch (aqq var7) {
-         throw new IllegalStateException("Protocol error", var7);
-      }
-
-      Thread $$8 = new Thread("User Authenticator #" + a.incrementAndGet()) {
-         @Override
-         public void run() {
-            String $$0 = Objects.requireNonNull(alk.this.j, "Player name not initialized");
-
-            try {
-               ProfileResult $$1 = alk.this.f.am().hasJoinedServer($$0, $$5, this.a());
-               if ($$1 != null) {
-                  GameProfile $$2 = $$1.profile();
-                  alk.b.info("UUID of player {} is {}", $$2.getName(), $$2.getId());
-                  alk.this.b($$2);
-               } else if (alk.this.f.O()) {
-                  alk.b.warn("Failed to verify username but will let them in anyway!");
-                  alk.this.b(alk.b($$0));
-               } else {
-                  alk.this.b(tf.c("multiplayer.disconnect.unverified_username"));
-                  alk.b.error("Username '{}' tried to join with an invalid session", $$0);
+               try {
+                  $$0.config().setOption(ChannelOption.TCP_NODELAY, true);
+               } catch (ChannelException var5) {
                }
-            } catch (AuthenticationUnavailableException var4) {
-               if (alk.this.f.O()) {
-                  alk.b.warn("Authentication servers are down but will let them in anyway!");
-                  alk.this.b(alk.b($$0));
+
+               ChannelPipeline $$1 = $$0.pipeline().addLast("timeout", new ReadTimeoutHandler(30)).addLast("legacy_query", new alf(alk.this.d()));
+               sj.a($$1, vb.a, null);
+               int $$2 = alk.this.e.m();
+               sj $$3 = (sj)($$2 > 0 ? new su($$2) : new sj(vb.a));
+               alk.this.g.add($$3);
+               $$1.addLast("packet_handler", $$3);
+               $$3.b(new alm(alk.this.e, $$3));
+            }
+         }).group($$3).localAddress($$0, $$1)).bind().syncUninterruptibly());
+      }
+   }
+
+   public SocketAddress a() {
+      ChannelFuture $$0;
+      synchronized (this.f) {
+         $$0 = ((ServerBootstrap)((ServerBootstrap)new ServerBootstrap().channel(LocalServerChannel.class)).childHandler(new ChannelInitializer<Channel>() {
+            protected void initChannel(Channel $$0) {
+               sj.a($$0);
+               sj $$1 = new sj(vb.a);
+               $$1.b(new alg(alk.this.e, $$1));
+               alk.this.g.add($$1);
+               ChannelPipeline $$2 = $$0.pipeline();
+               sj.a($$2, vb.a);
+               $$2.addLast("packet_handler", $$1);
+            }
+         }).group((EventLoopGroup)a.get()).localAddress(LocalAddress.ANY)).bind().syncUninterruptibly();
+         this.f.add($$0);
+      }
+
+      return $$0.channel().localAddress();
+   }
+
+   public void b() {
+      this.c = false;
+
+      for (ChannelFuture $$0 : this.f) {
+         try {
+            $$0.channel().close().sync();
+         } catch (InterruptedException var4) {
+            d.error("Interrupted whilst closing channel");
+         }
+      }
+   }
+
+   public void c() {
+      synchronized (this.g) {
+         Iterator<sj> $$0 = this.g.iterator();
+
+         while ($$0.hasNext()) {
+            sj $$1 = $$0.next();
+            if (!$$1.l()) {
+               if ($$1.k()) {
+                  try {
+                     $$1.d();
+                  } catch (Exception var7) {
+                     if ($$1.g()) {
+                        throw new y(o.a(var7, "Ticking memory connection"));
+                     }
+
+                     d.warn("Failed to handle packet for {}", $$1.a(this.e.be()), var7);
+                     ti $$3 = ti.b("Internal server error");
+                     $$1.a(new vf($$3), ss.a(() -> $$1.a($$3)));
+                     $$1.o();
+                  }
                } else {
-                  alk.this.b(tf.c("multiplayer.disconnect.authservers_down"));
-                  alk.b.error("Couldn't verify username because servers are unavailable");
+                  $$0.remove();
+                  $$1.p();
                }
             }
          }
+      }
+   }
 
-         @Nullable
-         private InetAddress a() {
-            SocketAddress $$0 = alk.this.g.f();
-            return alk.this.f.V() && $$0 instanceof InetSocketAddress ? ((InetSocketAddress)$$0).getAddress() : null;
+   public MinecraftServer d() {
+      return this.e;
+   }
+
+   public List<sj> e() {
+      return this.g;
+   }
+
+   static class a extends ChannelInboundHandlerAdapter {
+      private static final Timer a = new HashedWheelTimer();
+      private final int b;
+      private final int c;
+      private final List<alk.a.a> d = Lists.newArrayList();
+
+      public a(int $$0, int $$1) {
+         this.b = $$0;
+         this.c = $$1;
+      }
+
+      public void channelRead(ChannelHandlerContext $$0, Object $$1) {
+         this.a($$0, $$1);
+      }
+
+      private void a(ChannelHandlerContext $$0, Object $$1) {
+         int $$2 = this.b + (int)(Math.random() * (double)this.c);
+         this.d.add(new alk.a.a($$0, $$1));
+         a.newTimeout(this::a, (long)$$2, TimeUnit.MILLISECONDS);
+      }
+
+      private void a(Timeout $$0) {
+         alk.a.a $$1 = this.d.remove(0);
+         $$1.a.fireChannelRead($$1.b);
+      }
+
+      static class a {
+         public final ChannelHandlerContext a;
+         public final Object b;
+
+         public a(ChannelHandlerContext $$0, Object $$1) {
+            this.a = $$0;
+            this.b = $$1;
          }
-      };
-      $$8.setUncaughtExceptionHandler(new r(b));
-      $$8.start();
-   }
-
-   @Override
-   public void a(adg $$0) {
-      this.b(d);
-   }
-
-   @Override
-   public void a(adj $$0) {
-      Validate.validState(this.h == alk.a.g, "Unexpected login acknowledgement packet", new Object[0]);
-      alg $$1 = new alg(this.f, this.g, Objects.requireNonNull(this.k));
-      this.g.a($$1);
-      $$1.m();
-      this.h = alk.a.h;
-   }
-
-   protected static GameProfile b(String $$0) {
-      UUID $$1 = hy.a($$0);
-      return new GameProfile($$1, $$0);
-   }
-
-   static enum a {
-      a,
-      b,
-      c,
-      d,
-      e,
-      f,
-      g,
-      h;
+      }
    }
 }

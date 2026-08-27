@@ -1,19 +1,18 @@
-import com.mojang.serialization.Codec;
+public class bhf {
+   public static final float a = 20.0F;
+   public static final float b = 25.0F;
+   public static final float c = 2.0F;
+   public static final float d = 0.2F;
+   private static final int e = 4;
 
-public enum bhf implements ash {
-   a("never"),
-   b("when_caused_by_living_non_player"),
-   c("always");
-
-   public static final Codec<bhf> d = ash.a(bhf::values);
-   private final String e;
-
-   private bhf(String $$0) {
-      this.e = $$0;
+   public static float a(float $$0, float $$1, float $$2) {
+      float $$3 = 2.0F + $$2 / 4.0F;
+      float $$4 = ars.a($$1 - $$0 / $$3, $$1 * 0.2F, 20.0F);
+      return $$0 * (1.0F - $$4 / 25.0F);
    }
 
-   @Override
-   public String c() {
-      return this.e;
+   public static float a(float $$0, float $$1) {
+      float $$2 = ars.a($$1, 0.0F, 20.0F);
+      return $$0 * (1.0F - $$2 / 25.0F);
    }
 }

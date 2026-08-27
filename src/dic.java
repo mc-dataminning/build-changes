@@ -1,104 +1,94 @@
-import it.unimi.dsi.fastutil.longs.Long2ObjectLinkedOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import java.io.DataInput;
-import java.io.DataInputStream;
-import java.io.DataOutput;
-import java.io.DataOutputStream;
+import com.mojang.datafixers.DataFixer;
+import com.mojang.serialization.Codec;
 import java.io.IOException;
 import java.nio.file.Path;
+import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
 
-public final class dic implements AutoCloseable {
-   public static final String a = ".mca";
-   private static final int b = 256;
-   private final Long2ObjectLinkedOpenHashMap<dib> c = new Long2ObjectLinkedOpenHashMap();
-   private final Path d;
-   private final boolean e;
-
-   dic(Path $$0, boolean $$1) {
-      this.d = $$0;
-      this.e = $$1;
-   }
-
-   private dib b(cos $$0) throws IOException {
-      long $$1 = cos.c($$0.h(), $$0.i());
-      dib $$2 = (dib)this.c.getAndMoveToFirst($$1);
-      if ($$2 != null) {
-         return $$2;
-      } else {
-         if (this.c.size() >= 256) {
-            ((dib)this.c.removeLast()).close();
-         }
-
-         v.c(this.d);
-         Path $$3 = this.d.resolve("r." + $$0.h() + "." + $$0.i() + ".mca");
-         dib $$4 = new dib($$3, this.d, this.e);
-         this.c.putAndMoveToFirst($$1, $$4);
-         return $$4;
-      }
-   }
-
+public class dic implements AutoCloseable {
+   public static final int c = 1493;
+   private final die a;
+   protected final DataFixer d;
    @Nullable
-   public qr a(cos $$0) throws IOException {
-      dib $$1 = this.b($$0);
+   private volatile duy b;
 
-      qr var4;
-      try (DataInputStream $$2 = $$1.a($$0)) {
-         if ($$2 == null) {
-            return null;
-         }
-
-         var4 = rb.a((DataInput)$$2);
-      }
-
-      return var4;
+   public dic(Path $$0, DataFixer $$1, boolean $$2) {
+      this.d = $$1;
+      this.a = new die($$0, $$2, "chunk");
    }
 
-   public void a(cos $$0, rh $$1) throws IOException {
-      dib $$2 = this.b($$0);
+   public boolean b(cox $$0, int $$1) {
+      return this.a.a($$0, $$1);
+   }
 
-      try (DataInputStream $$3 = $$2.a($$0)) {
-         if ($$3 != null) {
-            rb.a((DataInput)$$3, $$1);
+   public qu a(aet<cpq> $$0, Supplier<ebx> $$1, qu $$2, Optional<aet<Codec<? extends dhb>>> $$3) {
+      int $$4 = a($$2);
+      if ($$4 < 1493) {
+         $$2 = asv.c.a(this.d, $$2, $$4, 1493);
+         if ($$2.p("Level").q("hasLegacyStructureData")) {
+            duy $$5 = this.a($$0, $$1);
+            $$2 = $$5.a($$2);
          }
+      }
+
+      a($$2, $$0, $$3);
+      $$2 = asv.c.a(this.d, $$2, Math.max(1493, $$4));
+      if ($$4 < aa.b().d().c()) {
+         rg.g($$2);
+      }
+
+      $$2.r("__context");
+      return $$2;
+   }
+
+   private duy a(aet<cpq> $$0, Supplier<ebx> $$1) {
+      duy $$2 = this.b;
+      if ($$2 == null) {
+         synchronized (this) {
+            $$2 = this.b;
+            if ($$2 == null) {
+               this.b = $$2 = duy.a($$0, $$1.get());
+            }
+         }
+      }
+
+      return $$2;
+   }
+
+   public static void a(qu $$0, aet<cpq> $$1, Optional<aet<Codec<? extends dhb>>> $$2) {
+      qu $$3 = new qu();
+      $$3.a("dimension", $$1.a().toString());
+      $$2.ifPresent($$1x -> $$3.a("generator", $$1x.a().toString()));
+      $$0.a("__context", $$3);
+   }
+
+   public static int a(qu $$0) {
+      return rg.b($$0, -1);
+   }
+
+   public CompletableFuture<Optional<qu>> e(cox $$0) {
+      return this.a.a($$0);
+   }
+
+   public void a(cox $$0, qu $$1) {
+      this.a.a($$0, $$1);
+      if (this.b != null) {
+         this.b.a($$0.a());
       }
    }
 
-   protected void a(cos $$0, @Nullable qr $$1) throws IOException {
-      dib $$2 = this.b($$0);
-      if ($$1 == null) {
-         $$2.d($$0);
-      } else {
-         try (DataOutputStream $$3 = $$2.c($$0)) {
-            rb.a($$1, (DataOutput)$$3);
-         }
-      }
+   public void o() {
+      this.a.a(true).join();
    }
 
    @Override
    public void close() throws IOException {
-      aqx<IOException> $$0 = new aqx<>();
-      ObjectIterator var2 = this.c.values().iterator();
-
-      while (var2.hasNext()) {
-         dib $$1 = (dib)var2.next();
-
-         try {
-            $$1.close();
-         } catch (IOException var5) {
-            $$0.a(var5);
-         }
-      }
-
-      $$0.a();
+      this.a.close();
    }
 
-   public void a() throws IOException {
-      ObjectIterator var1 = this.c.values().iterator();
-
-      while (var1.hasNext()) {
-         dib $$0 = (dib)var1.next();
-         $$0.a();
-      }
+   public dia p() {
+      return this.a;
    }
 }

@@ -1,60 +1,53 @@
+import com.google.common.collect.Sets;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Set;
 
-public record egc(egi b, String c, float d) implements ega {
+public record egc(egf b, egf c) implements egf {
    public static final Codec<egc> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               egj.a.fieldOf("target").forGetter(egc::c),
-               Codec.STRING.fieldOf("score").forGetter(egc::d),
-               Codec.FLOAT.fieldOf("scale").orElse(1.0F).forGetter(egc::e)
-            )
-            .apply($$0, egc::new)
+      $$0 -> $$0.group(egg.a.fieldOf("n").forGetter(egc::c), egg.a.fieldOf("p").forGetter(egc::d)).apply($$0, egc::new)
    );
 
    @Override
-   public efz b() {
-      return egb.e;
+   public ege b() {
+      return egg.d;
    }
 
    @Override
-   public Set<eeo<?>> a() {
-      return this.b.b();
-   }
+   public int a(ecl $$0) {
+      int $$1 = this.b.a($$0);
+      float $$2 = this.c.b($$0);
+      arx $$3 = $$0.b();
+      int $$4 = 0;
 
-   public static egc a(ecg.b $$0, String $$1) {
-      return a($$0, $$1, 1.0F);
-   }
-
-   public static egc a(ecg.b $$0, String $$1, float $$2) {
-      return new egc(egf.a($$0), $$1, $$2);
-   }
-
-   @Override
-   public float b(ecg $$0) {
-      String $$1 = this.b.a($$0);
-      if ($$1 == null) {
-         return 0.0F;
-      } else {
-         eic $$2 = $$0.d().f();
-         ehz $$3 = $$2.b(this.c);
-         if ($$3 == null) {
-            return 0.0F;
-         } else {
-            return !$$2.b($$1, $$3) ? 0.0F : (float)$$2.c($$1, $$3).b() * this.d;
+      for (int $$5 = 0; $$5 < $$1; $$5++) {
+         if ($$3.i() < $$2) {
+            $$4++;
          }
       }
+
+      return $$4;
    }
 
-   public egi c() {
+   @Override
+   public float b(ecl $$0) {
+      return (float)this.a($$0);
+   }
+
+   public static egc a(int $$0, float $$1) {
+      return new egc(egd.a((float)$$0), egd.a($$1));
+   }
+
+   @Override
+   public Set<eet<?>> a() {
+      return Sets.union(this.b.a(), this.c.a());
+   }
+
+   public egf c() {
       return this.b;
    }
 
-   public String d() {
+   public egf d() {
       return this.c;
-   }
-
-   public float e() {
-      return this.d;
    }
 }

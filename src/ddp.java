@@ -1,96 +1,119 @@
-import com.google.common.annotations.VisibleForTesting;
+import java.util.Arrays;
+import java.util.Optional;
 
-public class ddp extends dcl implements djl.b<ddp.a> {
-   private final ddp.a a;
+public class ddp extends dcq {
+   public static final String a = "target";
+   public static final String b = "pool";
+   public static final String c = "joint";
+   public static final String d = "name";
+   public static final String e = "final_state";
+   private aeu f = new aeu("empty");
+   private aeu g = new aeu("empty");
+   private aet<dwm> h = aet.a(je.aC, new aeu("empty"));
+   private ddp.a i = ddp.a.a;
+   private String j = "minecraft:air";
 
-   public ddp(gu $$0, dez $$1) {
-      super(dcn.K, $$0, $$1);
-      this.a = new ddp.a($$1, new djf($$0));
+   public ddp(gw $$0, dfe $$1) {
+      super(dcs.F, $$0, $$1);
    }
 
-   public static void a(cpl $$0, gu $$1, dez $$2, ddp $$3) {
-      $$3.a.d().a($$0, $$1, $$0.y_(), true);
+   public aeu c() {
+      return this.f;
+   }
+
+   public aeu d() {
+      return this.g;
+   }
+
+   public aet<dwm> f() {
+      return this.h;
+   }
+
+   public String g() {
+      return this.j;
+   }
+
+   public ddp.a i() {
+      return this.i;
+   }
+
+   public void a(aeu $$0) {
+      this.f = $$0;
+   }
+
+   public void b(aeu $$0) {
+      this.g = $$0;
+   }
+
+   public void a(aet<dwm> $$0) {
+      this.h = $$0;
+   }
+
+   public void a(String $$0) {
+      this.j = $$0;
+   }
+
+   public void a(ddp.a $$0) {
+      this.i = $$0;
    }
 
    @Override
-   public void a(qr $$0) {
-      this.a.b.a($$0);
-   }
-
-   @Override
-   protected void b(qr $$0) {
-      this.a.b.b($$0);
+   protected void b(qu $$0) {
       super.b($$0);
+      $$0.a("name", this.f.toString());
+      $$0.a("target", this.g.toString());
+      $$0.a("pool", this.h.a().toString());
+      $$0.a("final_state", this.j);
+      $$0.a("joint", this.i.c());
    }
 
-   public ddp.a c() {
-      return this.a;
+   @Override
+   public void a(qu $$0) {
+      super.a($$0);
+      this.f = new aeu($$0.l("name"));
+      this.g = new aeu($$0.l("target"));
+      this.h = aet.a(je.aC, new aeu($$0.l("pool")));
+      this.j = $$0.l("final_state");
+      this.i = ddp.a.a($$0.l("joint")).orElseGet(() -> cwp.h(this.q()).o().d() ? ddp.a.b : ddp.a.a);
    }
 
-   public static class a implements djl {
-      public static final int a = 8;
-      final czg b;
-      private final dez c;
-      private final djn d;
+   public xa j() {
+      return xa.a(this);
+   }
 
-      public a(dez $$0, djn $$1) {
+   @Override
+   public qu an_() {
+      return this.o();
+   }
+
+   public void a(akn $$0, int $$1, boolean $$2) {
+      gw $$3 = this.p().a(this.q().c(cwp.a).a());
+      ht<dwm> $$4 = $$0.B_().d(je.aC);
+      hg<dwm> $$5 = $$4.f(this.h);
+      dwg.a($$0, $$5, this.g, $$1, $$3, $$2);
+   }
+
+   public static enum a implements ask {
+      a("rollable"),
+      b("aligned");
+
+      private final String c;
+
+      private a(String $$0) {
          this.c = $$0;
-         this.d = $$1;
-         this.b = czg.a();
       }
 
       @Override
-      public djn a() {
-         return this.d;
+      public String c() {
+         return this.c;
       }
 
-      @Override
-      public int b() {
-         return 8;
+      public static Optional<ddp.a> a(String $$0) {
+         return Arrays.stream(values()).filter($$1 -> $$1.c().equals($$0)).findFirst();
       }
 
-      @Override
-      public djl.a c() {
-         return djl.a.b;
-      }
-
-      @Override
-      public boolean a(akk $$0, djj $$1, djj.a $$2, ehd $$3) {
-         if ($$1 == djj.p && $$2.a() instanceof biy $$4) {
-            if (!$$4.eB()) {
-               int $$5 = $$4.ec();
-               if ($$4.ea() && $$5 > 0) {
-                  this.b.a(gu.a($$3.a(ha.b, 0.5)), $$5);
-                  this.a($$0, $$4);
-               }
-
-               $$4.eA();
-               this.d.a($$0).ifPresent($$1x -> this.a($$0, gu.a($$1x), this.c, $$0.y_()));
-            }
-
-            return true;
-         } else {
-            return false;
-         }
-      }
-
-      @VisibleForTesting
-      public czg d() {
-         return this.b;
-      }
-
-      private void a(akk $$0, gu $$1, dez $$2, aru $$3) {
-         $$0.a($$1, $$2.a(czd.a, Boolean.valueOf(true)), 3);
-         $$0.a($$1, $$2.b(), 8);
-         $$0.a(iv.E, (double)$$1.u() + 0.5, (double)$$1.v() + 1.15, (double)$$1.w() + 0.5, 2, 0.2, 0.0, 0.2, 0.0);
-         $$0.a(null, $$1, aow.un, aox.e, 2.0F, 0.6F + $$3.i() * 0.4F);
-      }
-
-      private void a(cpl $$0, biy $$1) {
-         if ($$1.ef() instanceof akl $$3) {
-            bhg $$4 = $$1.ev() == null ? $$0.ag().a((cbm)$$3) : $$1.ev();
-            ai.W.a($$3, $$1, $$4);
-         }
+      public ti a() {
+         return ti.c("jigsaw_block.joint." + this.c);
       }
    }
 }

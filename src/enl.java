@@ -1,15 +1,15 @@
-public interface enl {
-   void a(tf var1);
+import java.lang.Thread.UncaughtExceptionHandler;
+import org.slf4j.Logger;
 
-   default void a(Exception $$0) {
-      if ($$0 instanceof eni $$1) {
-         this.a($$1.a.b());
-      } else {
-         this.a(tf.b($$0.getMessage()));
-      }
+public class enl implements UncaughtExceptionHandler {
+   private final Logger a;
+
+   public enl(Logger $$0) {
+      this.a = $$0;
    }
 
-   default void a(eni $$0) {
-      this.a($$0.a.b());
+   @Override
+   public void uncaughtException(Thread $$0, Throwable $$1) {
+      this.a.error("Caught previously unhandled exception", $$1);
    }
 }

@@ -1,46 +1,47 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
+import com.google.gson.JsonObject;
 import java.util.Optional;
+import javax.annotation.Nullable;
 
-public record bj(Optional<he<cne>> b, cj.d c) {
-   public static final Codec<bj> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(aqy.a(jb.g.r(), "enchantment").forGetter(bj::a), aqy.a(cj.d.d, "levels", cj.d.c).forGetter(bj::b)).apply($$0, bj::new)
-   );
-
-   public bj(cne $$0, cj.d $$1) {
-      this(Optional.of($$0.j()), $$1);
+public class bj extends cw<bj.a> {
+   public bj.a a(JsonObject $$0, Optional<bc> $$1, bg $$2) {
+      Optional<cm> $$3 = cm.a($$0.get("effects"));
+      Optional<bc> $$4 = bq.a($$0, "source", $$2);
+      return new bj.a($$1, $$3, $$4);
    }
 
-   public boolean a(Map<cne, Integer> $$0) {
-      if (this.b.isPresent()) {
-         cne $$1 = this.b.get().a();
-         if (!$$0.containsKey($$1)) {
-            return false;
-         }
+   public void a(ako $$0, @Nullable bil $$1) {
+      ecl $$2 = $$1 != null ? bq.b($$0, $$1) : null;
+      this.a($$0, $$2x -> $$2x.a($$0, $$2));
+   }
 
-         int $$2 = $$0.get($$1);
-         if (this.c != cj.d.c && !this.c.d($$2)) {
-            return false;
-         }
-      } else if (this.c != cj.d.c) {
-         for (Integer $$3 : $$0.values()) {
-            if (this.c.d($$3)) {
-               return true;
-            }
-         }
+   public static class a extends at {
+      private final Optional<cm> a;
+      private final Optional<bc> b;
 
-         return false;
+      public a(Optional<bc> $$0, Optional<cm> $$1, Optional<bc> $$2) {
+         super($$0);
+         this.a = $$1;
+         this.b = $$2;
       }
 
-      return true;
-   }
+      public static am<bj.a> a(cm.a $$0) {
+         return al.A.a(new bj.a(Optional.empty(), $$0.b(), Optional.empty()));
+      }
 
-   public Optional<he<cne>> a() {
-      return this.b;
-   }
+      public static am<bj.a> a(bq.a $$0) {
+         return al.A.a(new bj.a(Optional.empty(), Optional.empty(), Optional.of(bq.a($$0.b()))));
+      }
 
-   public cj.d b() {
-      return this.c;
+      public boolean a(ako $$0, @Nullable ecl $$1) {
+         return this.a.isPresent() && !this.a.get().a((bjb)$$0) ? false : !this.b.isPresent() || $$1 != null && this.b.get().a($$1);
+      }
+
+      @Override
+      public JsonObject a() {
+         JsonObject $$0 = super.a();
+         this.a.ifPresent($$1 -> $$0.add("effects", $$1.a()));
+         this.b.ifPresent($$1 -> $$0.add("source", $$1.a()));
+         return $$0;
+      }
    }
 }

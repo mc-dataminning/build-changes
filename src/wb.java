@@ -1,18 +1,19 @@
-public record wb(gu b, int c) implements vp {
-   public static final aer a = new aer("debug/poi_ticket_count");
+public record wb(int b, eaw c, float d) implements vs {
+   public static final aeu a = new aeu("debug/path");
 
-   public wb(si $$0) {
-      this($$0.e(), $$0.readInt());
+   public wb(sl $$0) {
+      this($$0.readInt(), eaw.b($$0), $$0.readFloat());
    }
 
    @Override
-   public void a(si $$0) {
-      $$0.a(this.b);
-      $$0.p(this.c);
+   public void a(sl $$0) {
+      $$0.p(this.b);
+      this.c.a($$0);
+      $$0.a(this.d);
    }
 
    @Override
-   public aer a() {
+   public aeu a() {
       return a;
    }
 }

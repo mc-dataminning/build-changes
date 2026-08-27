@@ -1,57 +1,86 @@
-import org.joml.Matrix3f;
 import org.joml.Matrix4f;
 
-public class ftb extends fsw<bio> {
-   private static final aer a = new aer("textures/entity/experience_orb.png");
-   private static final foc f = foc.g(a);
+public abstract class ftb<T extends bil> {
+   protected static final float b = 0.025F;
+   protected final fta c;
+   private final ery a;
+   protected float d;
+   protected float e = 1.0F;
 
-   public ftb(fsx.a $$0) {
-      super($$0);
-      this.d = 0.15F;
-      this.e = 0.75F;
+   protected ftb(ftc.a $$0) {
+      this.c = $$0.a();
+      this.a = $$0.h();
    }
 
-   protected int a(bio $$0, gu $$1) {
-      return arp.a(super.a($$0, $$1) + 7, 0, 15);
+   public final int b(T $$0, float $$1) {
+      gw $$2 = gw.a($$0.k($$1));
+      return fny.a(this.a($$0, $$2), this.b($$0, $$2));
    }
 
-   public void a(bio $$0, float $$1, float $$2, elf $$3, fnu $$4, int $$5) {
-      $$3.a();
-      int $$6 = $$0.m();
-      float $$7 = (float)($$6 % 4 * 16 + 0) / 64.0F;
-      float $$8 = (float)($$6 % 4 * 16 + 16) / 64.0F;
-      float $$9 = (float)($$6 / 4 * 16 + 0) / 64.0F;
-      float $$10 = (float)($$6 / 4 * 16 + 16) / 64.0F;
-      float $$11 = 1.0F;
-      float $$12 = 0.5F;
-      float $$13 = 0.25F;
-      float $$14 = 255.0F;
-      float $$15 = ((float)$$0.ah + $$2) / 2.0F;
-      int $$16 = (int)((arp.a($$15 + 0.0F) + 1.0F) * 0.5F * 255.0F);
-      int $$17 = 255;
-      int $$18 = (int)((arp.a($$15 + (float) (Math.PI * 4.0 / 3.0)) + 1.0F) * 0.1F * 255.0F);
-      $$3.a(0.0F, 0.1F, 0.0F);
-      $$3.a(this.c.b());
-      $$3.a(a.d.rotationDegrees(180.0F));
-      float $$19 = 0.3F;
-      $$3.b(0.3F, 0.3F, 0.3F);
-      elj $$20 = $$4.getBuffer(f);
-      elf.a $$21 = $$3.c();
-      Matrix4f $$22 = $$21.a();
-      Matrix3f $$23 = $$21.b();
-      a($$20, $$22, $$23, -0.5F, -0.25F, $$16, 255, $$18, $$7, $$10, $$5);
-      a($$20, $$22, $$23, 0.5F, -0.25F, $$16, 255, $$18, $$8, $$10, $$5);
-      a($$20, $$22, $$23, 0.5F, 0.75F, $$16, 255, $$18, $$8, $$9, $$5);
-      a($$20, $$22, $$23, -0.5F, 0.75F, $$16, 255, $$18, $$7, $$9, $$5);
-      $$3.b();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   protected int b(T $$0, gw $$1) {
+      return $$0.dK().a(cpz.a, $$1);
    }
 
-   private static void a(elj $$0, Matrix4f $$1, Matrix3f $$2, float $$3, float $$4, int $$5, int $$6, int $$7, float $$8, float $$9, int $$10) {
-      $$0.a($$1, $$3, $$4, 0.0F).a($$5, $$6, $$7, 128).a($$8, $$9).c(fyl.d).b($$10).a($$2, 0.0F, 1.0F, 0.0F).e();
+   protected int a(T $$0, gw $$1) {
+      return $$0.bM() ? 15 : $$0.dK().a(cpz.b, $$1);
    }
 
-   public aer a(bio $$0) {
-      return a;
+   public boolean a(T $$0, frb $$1, double $$2, double $$3, double $$4) {
+      if (!$$0.k($$2, $$3, $$4)) {
+         return false;
+      } else if ($$0.at) {
+         return true;
+      } else {
+         ehd $$5 = $$0.k_().g(0.5);
+         if ($$5.e() || $$5.a() == 0.0) {
+            $$5 = new ehd($$0.dp() - 2.0, $$0.dr() - 2.0, $$0.dv() - 2.0, $$0.dp() + 2.0, $$0.dr() + 2.0, $$0.dv() + 2.0);
+         }
+
+         return $$1.a($$5);
+      }
+   }
+
+   public ehi a(T $$0, float $$1) {
+      return ehi.b;
+   }
+
+   public void a(T $$0, float $$1, float $$2, elk $$3, fnz $$4, int $$5) {
+      if (this.b($$0)) {
+         this.a($$0, $$0.H_(), $$3, $$4, $$5);
+      }
+   }
+
+   protected boolean b(T $$0) {
+      return $$0.cB() && $$0.ac();
+   }
+
+   public abstract aeu a(T var1);
+
+   public ery b() {
+      return this.a;
+   }
+
+   protected void a(T $$0, ti $$1, elk $$2, fnz $$3, int $$4) {
+      double $$5 = this.c.b($$0);
+      if (!($$5 > 4096.0)) {
+         boolean $$6 = !$$0.bU();
+         float $$7 = $$0.dh();
+         int $$8 = "deadmau5".equals($$1.getString()) ? -10 : 0;
+         $$2.a();
+         $$2.a(0.0F, $$7, 0.0F);
+         $$2.a(this.c.b());
+         $$2.b(-0.025F, -0.025F, 0.025F);
+         Matrix4f $$9 = $$2.c().a();
+         float $$10 = eqq.O().m.a(0.25F);
+         int $$11 = (int)($$10 * 255.0F) << 24;
+         ery $$12 = this.b();
+         float $$13 = (float)(-$$12.a($$1) / 2);
+         $$12.a($$1, $$13, (float)$$8, 553648127, false, $$9, $$3, $$6 ? ery.a.b : ery.a.a, $$11, $$4);
+         if ($$6) {
+            $$12.a($$1, $$13, (float)$$8, -1, false, $$9, $$3, ery.a.a, 0, $$4);
+         }
+
+         $$2.b();
+      }
    }
 }

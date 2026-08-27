@@ -1,18 +1,70 @@
-import com.google.common.annotations.VisibleForTesting;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Function;
 
-public interface dkv {
-   default aru a(gu $$0) {
-      return this.a($$0.u(), $$0.v(), $$0.w());
+public record dkv(int g, int h, int i, int j) {
+   public static final Codec<dkv> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  Codec.intRange(din.e, din.d).fieldOf("min_y").forGetter(dkv::c),
+                  Codec.intRange(0, din.c).fieldOf("height").forGetter(dkv::d),
+                  Codec.intRange(1, 4).fieldOf("size_horizontal").forGetter(dkv::e),
+                  Codec.intRange(1, 4).fieldOf("size_vertical").forGetter(dkv::f)
+               )
+               .apply($$0, dkv::new)
+      )
+      .comapFlatMap(dkv::a, Function.identity());
+   protected static final dkv b = a(-64, 384, 1, 2);
+   protected static final dkv c = a(0, 128, 1, 2);
+   protected static final dkv d = a(0, 128, 2, 1);
+   protected static final dkv e = a(-64, 192, 1, 2);
+   protected static final dkv f = a(0, 256, 2, 1);
+
+   private static DataResult<dkv> a(dkv $$0) {
+      if ($$0.c() + $$0.d() > din.d + 1) {
+         return DataResult.error(() -> "min_y + height cannot be higher than: " + (din.d + 1));
+      } else if ($$0.d() % 16 != 0) {
+         return DataResult.error(() -> "height has to be a multiple of 16");
+      } else {
+         return $$0.c() % 16 != 0 ? DataResult.error(() -> "min_y has to be a multiple of 16") : DataResult.success($$0);
+      }
    }
 
-   default aru a(aer $$0) {
-      return this.a($$0.toString());
+   public static dkv a(int $$0, int $$1, int $$2, int $$3) {
+      dkv $$4 = new dkv($$0, $$1, $$2, $$3);
+      a($$4).error().ifPresent($$0x -> {
+         throw new IllegalStateException($$0x.message());
+      });
+      return $$4;
    }
 
-   aru a(String var1);
+   public int a() {
+      return hs.c(this.f());
+   }
 
-   aru a(int var1, int var2, int var3);
+   public int b() {
+      return hs.c(this.e());
+   }
 
-   @VisibleForTesting
-   void a(StringBuilder var1);
+   public dkv a(cps $$0) {
+      int $$1 = Math.max(this.g, $$0.C_());
+      int $$2 = Math.min(this.g + this.h, $$0.aj()) - $$1;
+      return new dkv($$1, $$2, this.i, this.j);
+   }
+
+   public int c() {
+      return this.g;
+   }
+
+   public int d() {
+      return this.h;
+   }
+
+   public int e() {
+      return this.i;
+   }
+
+   public int f() {
+      return this.j;
+   }
 }

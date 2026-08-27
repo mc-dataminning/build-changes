@@ -1,38 +1,42 @@
-import java.util.List;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.Validate;
+import java.util.function.Consumer;
 
-public class cgn extends ckg {
-   private static final String c = "block.minecraft.banner.";
-
-   public cgn(csl $$0, csl $$1, cis.a $$2) {
-      super($$0, $$1, $$2, ha.a);
-      Validate.isInstanceOf(crc.class, $$0);
-      Validate.isInstanceOf(crc.class, $$1);
-   }
-
-   public static void a(cix $$0, List<tf> $$1) {
-      qr $$2 = cgq.a($$0);
-      if ($$2 != null && $$2.e("Patterns")) {
-         qx $$3 = $$2.c("Patterns", 10);
-
-         for (int $$4 = 0; $$4 < $$3.size() && $$4 < 6; $$4++) {
-            qr $$5 = $$3.a($$4);
-            chl $$6 = chl.a($$5.h("Color"));
-            he<dcc> $$7 = dcc.a($$5.l("Pattern"));
-            if ($$7 != null) {
-               $$7.e().map($$0x -> $$0x.a().e()).ifPresent($$2x -> $$1.add(tf.c("block.minecraft.banner." + $$2x + "." + $$6.b()).a(n.h)));
-            }
-         }
-      }
-   }
-
-   public chl b() {
-      return ((crc)this.e()).a();
+public class cgn extends civ {
+   public cgn(civ.a $$0) {
+      super($$0);
    }
 
    @Override
-   public void a(cix $$0, @Nullable cpl $$1, List<tf> $$2, cko $$3) {
-      a($$0, $$2);
+   public bgt a(clk $$0) {
+      hc $$1 = $$0.k();
+      if ($$1 == hc.a) {
+         return bgt.e;
+      } else {
+         cpq $$2 = $$0.q();
+         cli $$3 = new cli($$0);
+         gw $$4 = $$3.a();
+         cja $$5 = $$0.n();
+         ehi $$6 = ehi.c($$4);
+         ehd $$7 = bip.d.n().a($$6.a(), $$6.b(), $$6.c());
+         if ($$2.a(null, $$7) && $$2.a_(null, $$7).isEmpty()) {
+            if ($$2 instanceof akn $$8) {
+               Consumer<bxy> $$9 = bip.a($$8, $$5, $$0.o());
+               bxy $$10 = bip.d.b($$8, $$5.v(), $$9, $$4, bjf.m, true, true);
+               if ($$10 == null) {
+                  return bgt.e;
+               }
+
+               float $$11 = (float)ars.d((ars.g($$0.i() - 180.0F) + 22.5F) / 45.0F) * 45.0F;
+               $$10.b($$10.dp(), $$10.dr(), $$10.dv(), $$11, 0.0F);
+               $$8.a_($$10);
+               $$2.a(null, $$10.dp(), $$10.dr(), $$10.dv(), aoz.ao, apa.e, 0.75F, 0.8F);
+               $$10.a(djo.t, $$0.o());
+            }
+
+            $$5.h(1);
+            return bgt.a($$2.B);
+         } else {
+            return bgt.e;
+         }
+      }
    }
 }

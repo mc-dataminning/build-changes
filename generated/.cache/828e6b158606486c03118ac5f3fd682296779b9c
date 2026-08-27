@@ -1,4 +1,4 @@
-// 23w33a	2026-08-28T00:22:56.6352066	vanilla/Loot Tables
+// 23w35a	2026-08-28T00:25:30.2072089	vanilla/Loot Tables
 16627d78901fd7f72f23ebcc81e717877a2d5c67 data\minecraft\loot_tables\blocks\spruce_hanging_sign.json
 1fc86ccb339e075dc1ef8949f3f32cf0b63e6610 data\minecraft\loot_tables\blocks\deepslate.json
 747b419c8834a94b61e4bdd0a39e0f199bb60578 data\minecraft\loot_tables\archaeology\trail_ruins_common.json
@@ -350,7 +350,7 @@ d58ffd08c8a9c03b4dbb838401bf6a73a0936144 data\minecraft\loot_tables\entities\wan
 1d41bf4bacd242683117997dd8bac1e8761ff8e6 data\minecraft\loot_tables\blocks\spruce_sign.json
 37864a05c49621cb59b72e1cebd506f8f08553cf data\minecraft\loot_tables\gameplay\hero_of_the_village\cartographer_gift.json
 88da0d4429d083546d8e2a8099c3f780fb692bca data\minecraft\loot_tables\blocks\potted_warped_fungus.json
-6c37c625dc413b1e9308a4d90a100d6d0959aad1 data\minecraft\loot_tables\blocks\snow.json
+9ac303dd63a20dab54662f7c1dcc56d0993395b1 data\minecraft\loot_tables\blocks\snow.json
 616c273ae200d421040a8f89aa829e1112b8bdf5 data\minecraft\loot_tables\blocks\deepslate_tile_wall.json
 5b7ebbd19ae70062aedf0f90e1a02e7f7cd6eec2 data\minecraft\loot_tables\blocks\bamboo_stairs.json
 766fa4fec4233fa79a0e8efc208202edb58f64d9 data\minecraft\loot_tables\blocks\red_candle.json
@@ -884,7 +884,7 @@ cddeabbe1267bd4fba0d2e895bc63d1fc7f9f610 data\minecraft\loot_tables\blocks\flowe
 f465359119bf277543f4e2da1f27f86e3c29b2f9 data\minecraft\loot_tables\blocks\amethyst_block.json
 d930f69122beb9288ef03bbbd4982e28b5c26064 data\minecraft\loot_tables\entities\sheep\black.json
 d078f86b2b259414390c3f73d0ec47cf5aa82e2f data\minecraft\loot_tables\entities\armor_stand.json
-733ba271d48706a72923adabf3215004a99bf40e data\minecraft\loot_tables\blocks\chorus_flower.json
+56b1aea51dff4492abcdbdee5202c9b3afb7958a data\minecraft\loot_tables\blocks\chorus_flower.json
 f05d655cbc478539fe3ca391eaa28bbf68467262 data\minecraft\loot_tables\blocks\torchflower.json
 08a4641f62a0427a320a9b006d50fe8f000988dc data\minecraft\loot_tables\blocks\deepslate_brick_stairs.json
 450b99b7aa628c4bed21ebea3412e62bb87ea030 data\minecraft\loot_tables\entities\player.json

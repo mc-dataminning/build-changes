@@ -1,136 +1,65 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import javax.annotation.Nullable;
+public class gej implements gep {
+   private static final int a = 1200;
+   private static final ti b = ti.c("tutorial.craft_planks.title");
+   private static final ti c = ti.c("tutorial.craft_planks.description");
+   private final geo d;
+   private euu e;
+   private int f;
 
-public class gej {
-   private final eql a;
-   @Nullable
-   private gek b;
-   private final List<gej.a> c = Lists.newArrayList();
-   private final gec d;
-
-   public gej(eql $$0, eqp $$1) {
-      this.a = $$0;
-      this.d = new gec(this, $$1);
+   public gej(geo $$0) {
+      this.d = $$0;
    }
 
-   public void a(fmu $$0) {
-      if (this.b != null) {
-         this.b.a($$0);
-      }
-   }
-
-   public void a(double $$0, double $$1) {
-      if (this.b != null) {
-         this.b.a($$0, $$1);
-      }
-   }
-
-   public void a(@Nullable fin $$0, @Nullable ehb $$1) {
-      if (this.b != null && $$1 != null && $$0 != null) {
-         this.b.a($$0, $$1);
-      }
-   }
-
-   public void a(fin $$0, gu $$1, dez $$2, float $$3) {
-      if (this.b != null) {
-         this.b.a($$0, $$1, $$2, $$3);
-      }
-   }
-
+   @Override
    public void a() {
-      if (this.b != null) {
-         this.b.c();
+      this.f++;
+      if (!this.d.f()) {
+         this.d.a(geq.f);
+      } else {
+         if (this.f == 1) {
+            fnb $$0 = this.d.e().s;
+            if ($$0 != null) {
+               if ($$0.fQ().a(apw.b)) {
+                  this.d.a(geq.f);
+                  return;
+               }
+
+               if (a($$0, apw.b)) {
+                  this.d.a(geq.f);
+                  return;
+               }
+            }
+         }
+
+         if (this.f >= 1200 && this.e == null) {
+            this.e = new euu(euu.a.e, b, c, false);
+            this.d.e().ay().a(this.e);
+         }
       }
    }
 
-   public void a(cix $$0) {
-      if (this.b != null) {
-         this.b.a($$0);
-      }
-   }
-
+   @Override
    public void b() {
-      if (this.b != null) {
-         this.b.b();
-         this.b = null;
+      if (this.e != null) {
+         this.e.c();
+         this.e = null;
       }
    }
 
-   public void c() {
-      if (this.b != null) {
-         this.b();
-      }
-
-      this.b = this.a.m.r.a(this);
-   }
-
-   public void a(eup $$0, int $$1) {
-      this.c.add(new gej.a($$0, $$1));
-      this.a.ay().a($$0);
-   }
-
-   public void a(eup $$0) {
-      this.c.removeIf($$1 -> $$1.a == $$0);
-      $$0.c();
-   }
-
-   public void d() {
-      this.c.removeIf(gej.a::a);
-      if (this.b != null) {
-         if (this.a.r != null) {
-            this.b.a();
-         } else {
-            this.b();
-         }
-      } else if (this.a.r != null) {
-         this.c();
+   @Override
+   public void a(cja $$0) {
+      if ($$0.a(apw.b)) {
+         this.d.a(geq.f);
       }
    }
 
-   public void a(gel $$0) {
-      this.a.m.r = $$0;
-      this.a.m.ar();
-      if (this.b != null) {
-         this.b.b();
-         this.b = $$0.a(this);
-      }
-   }
-
-   public eql e() {
-      return this.a;
-   }
-
-   public boolean f() {
-      return this.a.q == null ? false : this.a.q.l() == cpi.a;
-   }
-
-   public static tf a(String $$0) {
-      return tf.d("key." + $$0).a(n.r);
-   }
-
-   public void a(cix $$0, cix $$1, cel $$2) {
-      this.d.a($$0, $$1, $$2);
-   }
-
-   static final class a {
-      final eup a;
-      private final int b;
-      private int c;
-
-      a(eup $$0, int $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      private boolean a() {
-         this.a.a(Math.min((float)(++this.c) / (float)this.b, 1.0F));
-         if (this.c > this.b) {
-            this.a.c();
+   public static boolean a(fnb $$0, aqd<civ> $$1) {
+      for (hg<civ> $$2 : jd.i.c($$1)) {
+         if ($$0.j().a(apj.b.b($$2.a())) > 0) {
             return true;
-         } else {
-            return false;
          }
       }
+
+      return false;
    }
 }

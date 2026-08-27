@@ -1,19 +1,41 @@
+import com.mojang.authlib.GameProfile;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import java.util.Collection;
 
 public class agj {
-   public static void a(CommandDispatcher<dr> $$0) {
-      LiteralArgumentBuilder<dr> $$1 = (LiteralArgumentBuilder<dr>)ds.a("debugmobspawning").requires($$0x -> $$0x.c(2));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(ti.c("commands.deop.failed"));
 
-      for (bjb $$2 : bjb.values()) {
-         $$1.then(ds.a($$2.a()).then(ds.a("at", fi.a()).executes($$1x -> a((dr)$$1x.getSource(), $$2, fi.a($$1x, "at")))));
-      }
-
-      $$0.register($$1);
+   public static void a(CommandDispatcher<dt> $$0) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)du.a("deop").requires($$0x -> $$0x.c(3)))
+            .then(
+               du.a("targets", eg.a())
+                  .suggests(($$0x, $$1) -> dw.a(((dt)$$0x.getSource()).l().ac().l(), $$1))
+                  .executes($$0x -> a((dt)$$0x.getSource(), eg.a($$0x, "targets")))
+            )
+      );
    }
 
-   private static int a(dr $$0, bjb $$1, gu $$2) {
-      cpw.a($$1, $$0.e(), $$2);
-      return 1;
+   private static int a(dt $$0, Collection<GameProfile> $$1) throws CommandSyntaxException {
+      aoc $$2 = $$0.l().ac();
+      int $$3 = 0;
+
+      for (GameProfile $$4 : $$1) {
+         if ($$2.g($$4)) {
+            $$2.b($$4);
+            $$3++;
+            $$0.a(() -> ti.a("commands.deop.success", $$1.iterator().next().getName()), true);
+         }
+      }
+
+      if ($$3 == 0) {
+         throw a.create();
+      } else {
+         $$0.l().a($$0);
+         return $$3;
+      }
    }
 }

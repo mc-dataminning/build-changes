@@ -1,39 +1,26 @@
-public class cyh extends csa {
-   public static final dfq d = dfp.w;
-   private final cyh.a e;
+public class cyh extends cuh {
+   private static final eib[] a = new eib[]{
+      csq.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0),
+      csq.a(0.0, 0.0, 0.0, 16.0, 3.0, 16.0),
+      csq.a(0.0, 0.0, 0.0, 16.0, 4.0, 16.0),
+      csq.a(0.0, 0.0, 0.0, 16.0, 5.0, 16.0),
+      csq.a(0.0, 0.0, 0.0, 16.0, 6.0, 16.0),
+      csq.a(0.0, 0.0, 0.0, 16.0, 7.0, 16.0),
+      csq.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0),
+      csq.a(0.0, 0.0, 0.0, 16.0, 9.0, 16.0)
+   };
 
-   protected cyh(cyh.a $$0, dey.d $$1, dfo $$2) {
-      super($$1, $$2);
-      this.k(this.C.b().a(d, Boolean.valueOf(false)));
-      this.e = $$0;
+   public cyh(dfd.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected int g(dez $$0) {
-      return $$0.c(d) ? 15 : 0;
+   protected cpp c() {
+      return cjd.tm;
    }
 
    @Override
-   protected dez a(dez $$0, int $$1) {
-      return $$0.a(d, Boolean.valueOf($$1 > 0));
-   }
-
-   @Override
-   protected int b(cpl $$0, gu $$1) {
-      Class $$2 = switch (this.e) {
-         case a -> bii.class;
-         case b -> biy.class;
-      };
-      return a($$0, c.a($$1), $$2) > 0 ? 15 : 0;
-   }
-
-   @Override
-   protected void a(dfa.a<csl, dez> $$0) {
-      $$0.a(d);
-   }
-
-   public static enum a {
-      a,
-      b;
+   public eib a(dfe $$0, cow $$1, gw $$2, ehn $$3) {
+      return a[this.g($$0)];
    }
 }

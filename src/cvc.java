@@ -1,11 +1,30 @@
-public interface cvc {
-   default void a(cpl $$0, gu $$1, dez $$2, dez $$3, bye $$4) {
+public class cvc extends cyy {
+   protected cvc(dfd.d $$0) {
+      super($$0);
+      this.k(this.C.b().a(a, hc.b));
    }
 
-   default void a(cpl $$0, gu $$1, bye $$2) {
+   @Override
+   public dfe a(cli $$0) {
+      hc $$1 = $$0.k();
+      dfe $$2 = $$0.q().a_($$0.a().a($$1.g()));
+      return $$2.a(this) && $$2.c(a) == $$1 ? this.n().a(a, $$1.g()) : this.n().a(a, $$1);
    }
 
-   default bhg a(bii $$0) {
-      return $$0.dL().a($$0);
+   @Override
+   public void a(dfe $$0, cpq $$1, gw $$2, arx $$3) {
+      hc $$4 = $$0.c(a);
+      double $$5 = (double)$$2.u() + 0.55 - (double)($$3.i() * 0.1F);
+      double $$6 = (double)$$2.v() + 0.55 - (double)($$3.i() * 0.1F);
+      double $$7 = (double)$$2.w() + 0.55 - (double)($$3.i() * 0.1F);
+      double $$8 = (double)(0.4F - ($$3.i() + $$3.i()) * 0.4F);
+      if ($$3.a(5) == 0) {
+         $$1.a(ix.u, $$5 + (double)$$4.j() * $$8, $$6 + (double)$$4.k() * $$8, $$7 + (double)$$4.l() * $$8, $$3.k() * 0.005, $$3.k() * 0.005, $$3.k() * 0.005);
+      }
+   }
+
+   @Override
+   protected void a(dff.a<csq, dfe> $$0) {
+      $$0.a(a);
    }
 }

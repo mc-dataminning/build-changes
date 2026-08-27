@@ -1,115 +1,66 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
-import java.util.List;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import java.util.Comparator;
+import java.util.Set;
 import java.util.function.BiConsumer;
-import java.util.function.Function;
 
-public class dsn extends dsu {
-   private static final Codec<bgb> b = aqy.a(
-      bgb.a,
-      (Function<bgb, DataResult<bgb>>)($$0 -> $$0.b() - $$0.a() < 1
-            ? DataResult.error(() -> "Need at least 2 blocks variation for the branch starts to fit both branches")
-            : DataResult.success($$0))
-   );
-   public static final Codec<dsn> a = RecordCodecBuilder.create(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  bfv.b(1, 3).fieldOf("branch_count").forGetter($$0x -> $$0x.h),
-                  bfv.b(2, 16).fieldOf("branch_horizontal_length").forGetter($$0x -> $$0x.i),
-                  bfv.a(-16, 0, b).fieldOf("branch_start_offset_from_top").forGetter($$0x -> $$0x.j),
-                  bfv.b(-16, 16).fieldOf("branch_end_offset_from_top").forGetter($$0x -> $$0x.l)
-               )
-            )
-            .apply($$0, dsn::new)
-   );
-   private final bfv h;
-   private final bfv i;
-   private final bgb j;
-   private final bgb k;
-   private final bfv l;
+public abstract class dsn {
+   public static final Codec<dsn> h = jd.aa.q().dispatch(dsn::a, dso::a);
 
-   public dsn(int $$0, int $$1, int $$2, bfv $$3, bfv $$4, bgb $$5, bfv $$6) {
-      super($$0, $$1, $$2);
-      this.h = $$3;
-      this.i = $$4;
-      this.j = $$5;
-      this.k = bgb.a($$5.a(), $$5.b() - 1);
-      this.l = $$6;
-   }
+   protected abstract dso<?> a();
 
-   @Override
-   protected dsv<?> a() {
-      return dsv.i;
-   }
+   public abstract void a(dsn.a var1);
 
-   @Override
-   public List<drc.a> a(cpr $$0, BiConsumer<gu, dez> $$1, aru $$2, int $$3, gu $$4, dqm $$5) {
-      a($$0, $$1, $$2, $$4.d(), $$5);
-      int $$6 = Math.max(0, $$3 - 1 + this.j.a($$2));
-      int $$7 = Math.max(0, $$3 - 1 + this.k.a($$2));
-      if ($$7 >= $$6) {
-         $$7++;
+   public static final class a {
+      private final cpw a;
+      private final BiConsumer<gw, dfe> b;
+      private final arx c;
+      private final ObjectArrayList<gw> d;
+      private final ObjectArrayList<gw> e;
+      private final ObjectArrayList<gw> f;
+
+      public a(cpw $$0, BiConsumer<gw, dfe> $$1, arx $$2, Set<gw> $$3, Set<gw> $$4, Set<gw> $$5) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.f = new ObjectArrayList($$5);
+         this.d = new ObjectArrayList($$3);
+         this.e = new ObjectArrayList($$4);
+         this.d.sort(Comparator.comparingInt(ib::v));
+         this.e.sort(Comparator.comparingInt(ib::v));
+         this.f.sort(Comparator.comparingInt(ib::v));
       }
 
-      int $$8 = this.h.a($$2);
-      boolean $$9 = $$8 == 3;
-      boolean $$10 = $$8 >= 2;
-      int $$11;
-      if ($$9) {
-         $$11 = $$3;
-      } else if ($$10) {
-         $$11 = Math.max($$6, $$7) + 1;
-      } else {
-         $$11 = $$6 + 1;
+      public void a(gw $$0, dfv $$1) {
+         this.a($$0, csr.ff.n().a($$1, Boolean.valueOf(true)));
       }
 
-      for (int $$14 = 0; $$14 < $$11; $$14++) {
-         this.b($$0, $$1, $$2, $$4.b($$14), $$5);
+      public void a(gw $$0, dfe $$1) {
+         this.b.accept($$0, $$1);
       }
 
-      List<drc.a> $$15 = new ArrayList<>();
-      if ($$9) {
-         $$15.add(new drc.a($$4.b($$11), 0, false));
+      public boolean a(gw $$0) {
+         return this.a.a($$0, dfd.a::i);
       }
 
-      gu.a $$16 = new gu.a();
-      ha $$17 = ha.c.a.a($$2);
-      Function<dez, dez> $$18 = $$1x -> $$1x.b(cyw.g, $$17.o());
-      $$15.add(this.a($$0, $$1, $$2, $$3, $$4, $$5, $$18, $$17, $$6, $$6 < $$11 - 1, $$16));
-      if ($$10) {
-         $$15.add(this.a($$0, $$1, $$2, $$3, $$4, $$5, $$18, $$17.g(), $$7, $$7 < $$11 - 1, $$16));
+      public cpw a() {
+         return this.a;
       }
 
-      return $$15;
-   }
-
-   private drc.a a(cpr $$0, BiConsumer<gu, dez> $$1, aru $$2, int $$3, gu $$4, dqm $$5, Function<dez, dez> $$6, ha $$7, int $$8, boolean $$9, gu.a $$10) {
-      $$10.g($$4).c(ha.b, $$8);
-      int $$11 = $$3 - 1 + this.l.a($$2);
-      boolean $$12 = $$9 || $$11 < $$8;
-      int $$13 = this.i.a($$2) + ($$12 ? 1 : 0);
-      gu $$14 = $$4.a($$7, $$13).b($$11);
-      int $$15 = $$12 ? 2 : 1;
-
-      for (int $$16 = 0; $$16 < $$15; $$16++) {
-         this.a($$0, $$1, $$2, $$10.c($$7), $$5, $$6);
+      public arx b() {
+         return this.c;
       }
 
-      ha $$17 = $$14.v() > $$10.v() ? ha.b : ha.a;
+      public ObjectArrayList<gw> c() {
+         return this.d;
+      }
 
-      while (true) {
-         int $$18 = $$10.k($$14);
-         if ($$18 == 0) {
-            return new drc.a($$14.c(), 0, false);
-         }
+      public ObjectArrayList<gw> d() {
+         return this.e;
+      }
 
-         float $$19 = (float)Math.abs($$14.v() - $$10.v()) / (float)$$18;
-         boolean $$20 = $$2.i() < $$19;
-         $$10.c($$20 ? $$17 : $$7);
-         this.a($$0, $$1, $$2, $$10, $$5, $$20 ? Function.identity() : $$6);
+      public ObjectArrayList<gw> e() {
+         return this.f;
       }
    }
 }

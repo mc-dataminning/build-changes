@@ -1,66 +1,44 @@
-import com.google.common.collect.Lists;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
-import java.util.List;
-import org.apache.commons.lang3.Validate;
+public class gcb extends gbq {
+   private static final float n = 0.0F;
+   private static final float o = 0.75F;
+   private final cbp p;
+   private final cdg q;
+   private final boolean r;
 
-public class gcb implements JsonDeserializer<gca> {
-   private static final bft a = bfr.a(1.0F);
-
-   public gca a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-      JsonObject $$3 = arg.m($$0, "entry");
-      boolean $$4 = arg.a($$3, "replace", false);
-      String $$5 = arg.a($$3, "subtitle", null);
-      List<gbz> $$6 = this.a($$3);
-      return new gca($$6, $$4, $$5);
+   public gcb(cbp $$0, cdg $$1, boolean $$2) {
+      super($$2 ? aoz.ng : aoz.nh, apa.g, gch.t());
+      this.p = $$0;
+      this.q = $$1;
+      this.r = $$2;
+      this.k = gch.a.a;
+      this.i = true;
+      this.j = 0;
+      this.d = 0.0F;
    }
 
-   private List<gbz> a(JsonObject $$0) {
-      List<gbz> $$1 = Lists.newArrayList();
-      if ($$0.has("sounds")) {
-         JsonArray $$2 = arg.v($$0, "sounds");
+   @Override
+   public boolean s() {
+      return !this.q.aS();
+   }
 
-         for (int $$3 = 0; $$3 < $$2.size(); $$3++) {
-            JsonElement $$4 = $$2.get($$3);
-            if (arg.a($$4)) {
-               String $$5 = arg.a($$4, "sound");
-               $$1.add(new gbz($$5, a, a, 1, gbz.a.a, false, false, 16));
-            } else {
-               $$1.add(this.b(arg.m($$4, "sound")));
-            }
+   @Override
+   public boolean r() {
+      return true;
+   }
+
+   @Override
+   public void q() {
+      if (this.q.dF() || !this.p.bN() || this.p.cY() != this.q) {
+         this.n();
+      } else if (this.r != this.p.bc()) {
+         this.d = 0.0F;
+      } else {
+         float $$0 = (float)this.q.dn().h();
+         if ($$0 >= 0.01F) {
+            this.d = ars.b(0.0F, 0.75F, $$0);
+         } else {
+            this.d = 0.0F;
          }
       }
-
-      return $$1;
-   }
-
-   private gbz b(JsonObject $$0) {
-      String $$1 = arg.i($$0, "name");
-      gbz.a $$2 = this.a($$0, gbz.a.a);
-      float $$3 = arg.a($$0, "volume", 1.0F);
-      Validate.isTrue($$3 > 0.0F, "Invalid volume", new Object[0]);
-      float $$4 = arg.a($$0, "pitch", 1.0F);
-      Validate.isTrue($$4 > 0.0F, "Invalid pitch", new Object[0]);
-      int $$5 = arg.a($$0, "weight", 1);
-      Validate.isTrue($$5 > 0, "Invalid weight", new Object[0]);
-      boolean $$6 = arg.a($$0, "preload", false);
-      boolean $$7 = arg.a($$0, "stream", false);
-      int $$8 = arg.a($$0, "attenuation_distance", 16);
-      return new gbz($$1, bfr.a($$3), bfr.a($$4), $$5, $$2, $$7, $$6, $$8);
-   }
-
-   private gbz.a a(JsonObject $$0, gbz.a $$1) {
-      gbz.a $$2 = $$1;
-      if ($$0.has("type")) {
-         $$2 = gbz.a.a(arg.i($$0, "type"));
-         Validate.notNull($$2, "Invalid type", new Object[0]);
-      }
-
-      return $$2;
    }
 }

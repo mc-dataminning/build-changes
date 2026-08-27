@@ -1,25 +1,74 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import javax.annotation.Nullable;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import com.google.gson.JsonObject;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.Predicate;
 
-public record cw(cj.d c) implements bp {
-   public static final MapCodec<cw> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(aqy.a(cj.d.d, "size", cj.d.c).forGetter(cw::b)).apply($$0, cw::new));
+public abstract class cw<T extends cw.a> implements ao<T> {
+   private final Map<afc, Set<ao.a<T>>> a = Maps.newIdentityHashMap();
 
-   public static cw a(cj.d $$0) {
-      return new cw($$0);
+   @Override
+   public final void a(afc $$0, ao.a<T> $$1) {
+      this.a.computeIfAbsent($$0, $$0x -> Sets.newHashSet()).add($$1);
    }
 
    @Override
-   public boolean a(bii $$0, akk $$1, @Nullable ehd $$2) {
-      return $$0 instanceof bzj $$3 ? this.c.d($$3.gb()) : false;
+   public final void b(afc $$0, ao.a<T> $$1) {
+      Set<ao.a<T>> $$2 = this.a.get($$0);
+      if ($$2 != null) {
+         $$2.remove($$1);
+         if ($$2.isEmpty()) {
+            this.a.remove($$0);
+         }
+      }
    }
 
    @Override
-   public bp.a a() {
-      return bp.b.e;
+   public final void a(afc $$0) {
+      this.a.remove($$0);
    }
 
-   public cj.d b() {
-      return this.c;
+   protected abstract T b(JsonObject var1, Optional<bc> var2, bg var3);
+
+   public final T b(JsonObject $$0, bg $$1) {
+      Optional<bc> $$2 = bq.a($$0, "player", $$1);
+      return this.b($$0, $$2, $$1);
+   }
+
+   protected void a(ako $$0, Predicate<T> $$1) {
+      afc $$2 = $$0.N();
+      Set<ao.a<T>> $$3 = this.a.get($$2);
+      if ($$3 != null && !$$3.isEmpty()) {
+         ecl $$4 = bq.b($$0, $$0);
+         List<ao.a<T>> $$5 = null;
+
+         for (ao.a<T> $$6 : $$3) {
+            T $$7 = $$6.a();
+            if ($$1.test($$7)) {
+               Optional<bc> $$8 = $$7.b();
+               if ($$8.isEmpty() || $$8.get().a($$4)) {
+                  if ($$5 == null) {
+                     $$5 = Lists.newArrayList();
+                  }
+
+                  $$5.add($$6);
+               }
+            }
+         }
+
+         if ($$5 != null) {
+            for (ao.a<T> $$9 : $$5) {
+               $$9.a($$2);
+            }
+         }
+      }
+   }
+
+   public interface a extends ap {
+      Optional<bc> b();
    }
 }

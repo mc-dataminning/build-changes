@@ -1,24 +1,9 @@
-public class vk implements ux<vh> {
-   private final int a;
+public interface vk extends aba {
+   void a(vm var1);
 
-   public vk(int $$0) {
-      this.a = $$0;
-   }
+   void a(vn var1);
 
-   public vk(si $$0) {
-      this.a = $$0.readInt();
-   }
+   void a(vl var1);
 
-   @Override
-   public void a(si $$0) {
-      $$0.p(this.a);
-   }
-
-   public void a(vh $$0) {
-      $$0.a(this);
-   }
-
-   public int a() {
-      return this.a;
-   }
+   void a(vo var1);
 }

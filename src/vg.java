@@ -1,26 +1,24 @@
-import java.util.Map;
+public class vg implements va<vd> {
+   private final long a;
 
-public class vg implements ux<va> {
-   private final Map<aeq<? extends hr<?>>, aqd.a> a;
-
-   public vg(Map<aeq<? extends hr<?>>, aqd.a> $$0) {
+   public vg(long $$0) {
       this.a = $$0;
    }
 
-   public vg(si $$0) {
-      this.a = $$0.a(si::t, aqd.a::b);
+   public vg(sl $$0) {
+      this.a = $$0.readLong();
    }
 
    @Override
-   public void a(si $$0) {
-      $$0.a(this.a, si::b, ($$0x, $$1) -> $$1.a($$0x));
+   public void a(sl $$0) {
+      $$0.b(this.a);
    }
 
-   public void a(va $$0) {
+   public void a(vd $$0) {
       $$0.a(this);
    }
 
-   public Map<aeq<? extends hr<?>>, aqd.a> a() {
+   public long a() {
       return this.a;
    }
 }

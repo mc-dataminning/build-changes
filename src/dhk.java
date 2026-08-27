@@ -1,114 +1,262 @@
-import java.util.List;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import java.util.Map;
+import java.util.function.BiConsumer;
 import java.util.function.Predicate;
-import org.apache.commons.lang3.Validate;
+import javax.annotation.Nullable;
 
-public class dhk<T> implements dhm<T> {
-   private final hj<T> a;
-   private final T[] b;
-   private final dhn<T> c;
-   private final int d;
-   private int e;
+public class dhk extends dhv {
+   private final dhl n;
+   private final boolean o;
 
-   private dhk(hj<T> $$0, int $$1, dhn<T> $$2, List<T> $$3) {
-      this.a = $$0;
-      this.b = (T[])(new Object[1 << $$1]);
-      this.d = $$1;
-      this.c = $$2;
-      Validate.isTrue($$3.size() <= this.b.length, "Can't initialize LinearPalette of size %d with %d entries", new Object[]{this.b.length, $$3.size()});
-
-      for (int $$4 = 0; $$4 < $$3.size(); $$4++) {
-         this.b[$$4] = $$3.get($$4);
-      }
-
-      this.e = $$3.size();
+   public dhk(dhl $$0, boolean $$1) {
+      super($$0.f(), dhy.a, $$0.l, $$0.F().B_().d(je.ap), $$0.t());
+      this.n = $$0;
+      this.o = $$1;
    }
 
-   private dhk(hj<T> $$0, T[] $$1, dhn<T> $$2, int $$3, int $$4) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-   }
-
-   public static <A> dhm<A> a(int $$0, hj<A> $$1, dhn<A> $$2, List<A> $$3) {
-      return new dhk<>($$1, $$0, $$2, $$3);
+   @Nullable
+   @Override
+   public dcq c_(gw $$0) {
+      return this.n.c_($$0);
    }
 
    @Override
-   public int a(T $$0) {
-      for (int $$1 = 0; $$1 < this.e; $$1++) {
-         if (this.b[$$1] == $$0) {
-            return $$1;
-         }
-      }
+   public dfe a_(gw $$0) {
+      return this.n.a_($$0);
+   }
 
-      int $$2 = this.e;
-      if ($$2 < this.b.length) {
-         this.b[$$2] = $$0;
-         this.e++;
-         return $$2;
+   @Override
+   public eah b_(gw $$0) {
+      return this.n.b_($$0);
+   }
+
+   @Override
+   public int M() {
+      return this.n.M();
+   }
+
+   @Override
+   public dhm b(int $$0) {
+      return this.o ? this.n.b($$0) : super.b($$0);
+   }
+
+   @Nullable
+   @Override
+   public dfe a(gw $$0, dfe $$1, boolean $$2) {
+      return this.o ? this.n.a($$0, $$1, $$2) : null;
+   }
+
+   @Override
+   public void a(dcq $$0) {
+      if (this.o) {
+         this.n.a($$0);
+      }
+   }
+
+   @Override
+   public void a(bil $$0) {
+      if (this.o) {
+         this.n.a($$0);
+      }
+   }
+
+   @Override
+   public void a(dhf $$0) {
+      if (this.o) {
+         super.a($$0);
+      }
+   }
+
+   @Override
+   public dhm[] d() {
+      return this.n.d();
+   }
+
+   @Override
+   public void a(dkn.a $$0, long[] $$1) {
+   }
+
+   private dkn.a c(dkn.a $$0) {
+      if ($$0 == dkn.a.a) {
+         return dkn.a.b;
       } else {
-         return this.c.onResize(this.d + 1, $$0);
+         return $$0 == dkn.a.c ? dkn.a.d : $$0;
       }
    }
 
    @Override
-   public boolean a(Predicate<T> $$0) {
-      for (int $$1 = 0; $$1 < this.e; $$1++) {
-         if ($$0.test(this.b[$$1])) {
-            return true;
-         }
-      }
+   public dkn a(dkn.a $$0) {
+      return this.n.a($$0);
+   }
 
+   @Override
+   public int a(dkn.a $$0, int $$1, int $$2) {
+      return this.n.a(this.c($$0), $$1, $$2);
+   }
+
+   @Override
+   public hg<cqo> getNoiseBiome(int $$0, int $$1, int $$2) {
+      return this.n.getNoiseBiome($$0, $$1, $$2);
+   }
+
+   @Override
+   public cox f() {
+      return this.n.f();
+   }
+
+   @Nullable
+   @Override
+   public dvl a(dvd $$0) {
+      return this.n.a($$0);
+   }
+
+   @Override
+   public void a(dvd $$0, dvl $$1) {
+   }
+
+   @Override
+   public Map<dvd, dvl> g() {
+      return this.n.g();
+   }
+
+   @Override
+   public void a(Map<dvd, dvl> $$0) {
+   }
+
+   @Override
+   public LongSet b(dvd $$0) {
+      return this.n.b($$0);
+   }
+
+   @Override
+   public void a(dvd $$0, long $$1) {
+   }
+
+   @Override
+   public Map<dvd, LongSet> h() {
+      return this.n.h();
+   }
+
+   @Override
+   public void b(Map<dvd, LongSet> $$0) {
+   }
+
+   @Override
+   public void a(boolean $$0) {
+      this.n.a($$0);
+   }
+
+   @Override
+   public boolean i() {
       return false;
    }
 
    @Override
-   public T a(int $$0) {
-      if ($$0 >= 0 && $$0 < this.e) {
-         return this.b[$$0];
+   public dhf j() {
+      return this.n.j();
+   }
+
+   @Override
+   public void d(gw $$0) {
+   }
+
+   @Override
+   public void e(gw $$0) {
+   }
+
+   @Override
+   public void a(qu $$0) {
+   }
+
+   @Nullable
+   @Override
+   public qu f(gw $$0) {
+      return this.n.f($$0);
+   }
+
+   @Nullable
+   @Override
+   public qu g(gw $$0) {
+      return this.n.g($$0);
+   }
+
+   @Override
+   public void a(Predicate<dfe> $$0, BiConsumer<gw, dfe> $$1) {
+      this.n.a($$0, $$1);
+   }
+
+   @Override
+   public eix<csq> o() {
+      return this.o ? this.n.o() : ein.a();
+   }
+
+   @Override
+   public eix<eag> p() {
+      return this.o ? this.n.p() : ein.a();
+   }
+
+   @Override
+   public dha.a q() {
+      return this.n.q();
+   }
+
+   @Nullable
+   @Override
+   public dlq t() {
+      return this.n.t();
+   }
+
+   @Override
+   public void a(dlq $$0) {
+      this.n.a($$0);
+   }
+
+   @Override
+   public dgz a(dkj.a $$0) {
+      if (this.o) {
+         return super.a($$0);
       } else {
-         throw new dhl($$0);
+         throw (UnsupportedOperationException)ac.b(new UnsupportedOperationException("Meaningless in this context"));
       }
    }
 
    @Override
-   public void a(si $$0) {
-      this.e = $$0.m();
+   public dgz b(dkj.a $$0) {
+      if (this.o) {
+         return super.b($$0);
+      } else {
+         throw (UnsupportedOperationException)ac.b(new UnsupportedOperationException("Meaningless in this context"));
+      }
+   }
 
-      for (int $$1 = 0; $$1 < this.e; $$1++) {
-         this.b[$$1] = this.a.b($$0.m());
+   public dhl C() {
+      return this.n;
+   }
+
+   @Override
+   public boolean v() {
+      return this.n.v();
+   }
+
+   @Override
+   public void b(boolean $$0) {
+      this.n.b($$0);
+   }
+
+   @Override
+   public void a(cqr $$0, cqx.f $$1) {
+      if (this.o) {
+         this.n.a($$0, $$1);
       }
    }
 
    @Override
-   public void b(si $$0) {
-      $$0.c(this.e);
-
-      for (int $$1 = 0; $$1 < this.e; $$1++) {
-         $$0.c(this.a.a(this.b[$$1]));
-      }
+   public void A() {
+      this.n.A();
    }
 
    @Override
-   public int a() {
-      int $$0 = sw.a(this.b());
-
-      for (int $$1 = 0; $$1 < this.b(); $$1++) {
-         $$0 += sw.a(this.a.a(this.b[$$1]));
-      }
-
-      return $$0;
-   }
-
-   @Override
-   public int b() {
-      return this.e;
-   }
-
-   @Override
-   public dhm<T> c() {
-      return new dhk<>(this.a, (T[])((Object[])this.b.clone()), this.c, this.d, this.e);
+   public dzr B() {
+      return this.n.B();
    }
 }

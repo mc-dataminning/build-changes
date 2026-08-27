@@ -1,56 +1,51 @@
 import com.google.gson.JsonObject;
-import com.mojang.brigadier.arguments.DoubleArgumentType;
+import com.mojang.brigadier.arguments.ArgumentType;
+import java.util.function.Function;
+import java.util.function.Supplier;
 
-public class gl implements gg<DoubleArgumentType, gl.a> {
-   public void a(gl.a $$0, si $$1) {
-      boolean $$2 = $$0.b != -Double.MAX_VALUE;
-      boolean $$3 = $$0.c != Double.MAX_VALUE;
-      $$1.k(gi.a($$2, $$3));
-      if ($$2) {
-         $$1.a($$0.b);
-      }
+public class gl<A extends ArgumentType<?>> implements gi<A, gl<A>.a> {
+   private final gl<A>.a a;
 
-      if ($$3) {
-         $$1.a($$0.c);
-      }
+   private gl(Function<dn, A> $$0) {
+      this.a = new gl.a($$0);
    }
 
-   public gl.a a(si $$0) {
-      byte $$1 = $$0.readByte();
-      double $$2 = gi.a($$1) ? $$0.readDouble() : -Double.MAX_VALUE;
-      double $$3 = gi.b($$1) ? $$0.readDouble() : Double.MAX_VALUE;
-      return new gl.a($$2, $$3);
+   public static <T extends ArgumentType<?>> gl<T> a(Supplier<T> $$0) {
+      return new gl<>($$1 -> $$0.get());
    }
 
-   public void a(gl.a $$0, JsonObject $$1) {
-      if ($$0.b != -Double.MAX_VALUE) {
-         $$1.addProperty("min", $$0.b);
-      }
-
-      if ($$0.c != Double.MAX_VALUE) {
-         $$1.addProperty("max", $$0.c);
-      }
+   public static <T extends ArgumentType<?>> gl<T> a(Function<dn, T> $$0) {
+      return new gl<>($$0);
    }
 
-   public gl.a a(DoubleArgumentType $$0) {
-      return new gl.a($$0.getMinimum(), $$0.getMaximum());
+   public void a(gl<A>.a $$0, sl $$1) {
    }
 
-   public final class a implements gg.a<DoubleArgumentType> {
-      final double b;
-      final double c;
+   public void a(gl<A>.a $$0, JsonObject $$1) {
+   }
 
-      a(double $$1, double $$2) {
+   public gl<A>.a a(sl $$0) {
+      return this.a;
+   }
+
+   public gl<A>.a b(A $$0) {
+      return this.a;
+   }
+
+   public final class a implements gi.a<A> {
+      private final Function<dn, A> b;
+
+      public a(Function<dn, A> $$1) {
          this.b = $$1;
-         this.c = $$2;
-      }
-
-      public DoubleArgumentType a(dl $$0) {
-         return DoubleArgumentType.doubleArg(this.b, this.c);
       }
 
       @Override
-      public gg<DoubleArgumentType, ?> a() {
+      public A b(dn $$0) {
+         return this.b.apply($$0);
+      }
+
+      @Override
+      public gi<A, ?> a() {
          return gl.this;
       }
    }

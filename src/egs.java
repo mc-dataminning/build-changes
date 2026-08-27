@@ -1,25 +1,32 @@
-import java.nio.file.Path;
-import java.util.List;
-import java.util.stream.Collectors;
+import net.minecraft.server.MinecraftServer;
 
-public class egs extends Exception {
-   private final Path a;
-   private final List<egu> b;
+public class egs implements egt<MinecraftServer> {
+   final aeu a;
 
-   public egs(Path $$0, List<egu> $$1) {
+   public egs(aeu $$0) {
       this.a = $$0;
-      this.b = $$1;
    }
 
-   @Override
-   public String getMessage() {
-      return a(this.a, this.b);
+   public void a(MinecraftServer $$0, egv<MinecraftServer> $$1, long $$2) {
+      afi $$3 = $$0.aA();
+
+      for (dp $$5 : $$3.b(this.a)) {
+         $$3.a($$5, $$3.d());
+      }
    }
 
-   public static String a(Path $$0, List<egu> $$1) {
-      return "Failed to validate '"
-         + $$0
-         + "'. Found forbidden symlinks: "
-         + $$1.stream().map($$0x -> $$0x.a() + "->" + $$0x.b()).collect(Collectors.joining(", "));
+   public static class a extends egt.a<MinecraftServer, egs> {
+      public a() {
+         super(new aeu("function_tag"), egs.class);
+      }
+
+      public void a(qu $$0, egs $$1) {
+         $$0.a("Name", $$1.a.toString());
+      }
+
+      public egs a(qu $$0) {
+         aeu $$1 = new aeu($$0.l("Name"));
+         return new egs($$1);
+      }
    }
 }

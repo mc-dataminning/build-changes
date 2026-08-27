@@ -1,36 +1,11 @@
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Set;
-import java.util.function.BiConsumer;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public interface ama extends AutoCloseable {
-   String a = ".mcmeta";
-   String b = "pack.mcmeta";
+public record ama(cdx b) {
+   private static final Codec<ama> c = RecordCodecBuilder.create($$0 -> $$0.group(cdz.e.fieldOf("enabled").forGetter(ama::a)).apply($$0, ama::new));
+   public static final amq<ama> a = amq.a("features", c);
 
-   @Nullable
-   ane<InputStream> a(String... var1);
-
-   @Nullable
-   ane<InputStream> a(amb var1, aer var2);
-
-   void a(amb var1, String var2, String var3, ama.a var4);
-
-   Set<String> a(amb var1);
-
-   @Nullable
-   <T> T a(amm<T> var1) throws IOException;
-
-   String a();
-
-   default boolean b() {
-      return false;
-   }
-
-   @Override
-   void close();
-
-   @FunctionalInterface
-   public interface a extends BiConsumer<aer, ane<InputStream>> {
+   public cdx a() {
+      return this.b;
    }
 }

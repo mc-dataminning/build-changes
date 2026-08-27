@@ -1,96 +1,170 @@
+import com.google.common.cache.CacheBuilder;
+import com.google.common.cache.CacheLoader;
+import com.google.common.cache.LoadingCache;
+import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.function.Predicate;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+import java.util.stream.IntStream;
 
-public class dpb extends dnm<dqp> {
+public class dpb extends dnr<dqp> {
+   public static final int a = 10;
+   private static final int b = 42;
+   private static final LoadingCache<Long, List<dpb.a>> c = CacheBuilder.newBuilder().expireAfterWrite(5L, TimeUnit.MINUTES).build(new dpb.b());
+
    public dpb(Codec<dqp> $$0) {
       super($$0);
    }
 
-   @Override
-   public boolean a(dno<dqp> $$0) {
-      cqf $$1 = $$0.b();
-      dqp $$2 = $$0.f();
-      aru $$3 = $$0.d();
-      gu $$4 = $$0.e();
-      Predicate<dez> $$5 = $$1x -> $$1x.a($$2.b);
-      int $$6 = $$2.j.a($$3) + 1;
-      int $$7 = $$2.j.a($$3) + 1;
-      Set<gu> $$8 = this.a($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      this.a($$0, $$1, $$2, $$3, $$8, $$6, $$7);
-      return !$$8.isEmpty();
+   public static List<dpb.a> a(cqk $$0) {
+      arx $$1 = arx.a($$0.A());
+      long $$2 = $$1.g() & 65535L;
+      return (List<dpb.a>)c.getUnchecked($$2);
    }
 
-   protected Set<gu> a(cqf $$0, dqp $$1, aru $$2, gu $$3, Predicate<dez> $$4, int $$5, int $$6) {
-      gu.a $$7 = $$3.j();
-      gu.a $$8 = $$7.j();
-      ha $$9 = $$1.e.a();
-      ha $$10 = $$9.g();
-      Set<gu> $$11 = new HashSet<>();
+   @Override
+   public boolean a(dnt<dqp> $$0) {
+      dqp $$1 = $$0.f();
+      cqk $$2 = $$0.b();
+      arx $$3 = $$0.d();
+      gw $$4 = $$0.e();
+      List<dpb.a> $$5 = $$1.b();
+      if ($$5.isEmpty()) {
+         $$5 = a($$2);
+      }
 
-      for (int $$12 = -$$5; $$12 <= $$5; $$12++) {
-         boolean $$13 = $$12 == -$$5 || $$12 == $$5;
+      for (dpb.a $$6 : $$5) {
+         if ($$6.a($$4)) {
+            this.a($$2, $$3, $$1, $$6);
+         }
+      }
 
-         for (int $$14 = -$$6; $$14 <= $$6; $$14++) {
-            boolean $$15 = $$14 == -$$6 || $$14 == $$6;
-            boolean $$16 = $$13 || $$15;
-            boolean $$17 = $$13 && $$15;
-            boolean $$18 = $$16 && !$$17;
-            if (!$$17 && (!$$18 || $$1.k != 0.0F && !($$2.i() > $$1.k))) {
-               $$7.a($$3, $$12, 0, $$14);
+      return true;
+   }
 
-               for (int $$19 = 0; $$0.a($$7, dey.a::i) && $$19 < $$1.h; $$19++) {
-                  $$7.c($$9);
-               }
+   private void a(cqf $$0, arx $$1, dqp $$2, dpb.a $$3) {
+      int $$4 = $$3.c();
 
-               for (int var25 = 0; $$0.a($$7, $$0x -> !$$0x.i()) && var25 < $$1.h; var25++) {
-                  $$7.c($$10);
-               }
+      for (gw $$5 : gw.a(new gw($$3.a() - $$4, $$0.C_(), $$3.b() - $$4), new gw($$3.a() + $$4, $$3.d() + 10, $$3.b() + $$4))) {
+         if ($$5.d((double)$$3.a(), (double)$$5.v(), (double)$$3.b()) <= (double)($$4 * $$4 + 1) && $$5.v() < $$3.d()) {
+            this.a($$0, $$5, csr.co.n());
+         } else if ($$5.v() > 65) {
+            this.a($$0, $$5, csr.a.n());
+         }
+      }
 
-               $$8.a($$7, $$1.e.a());
-               dez $$20 = $$0.a_($$8);
-               if ($$0.t($$7) && $$20.d($$0, $$8, $$1.e.a().g())) {
-                  int $$21 = $$1.f.a($$2) + ($$1.g > 0.0F && $$2.i() < $$1.g ? 1 : 0);
-                  gu $$22 = $$8.i();
-                  boolean $$23 = this.a($$0, $$1, $$4, $$2, $$8, $$21);
-                  if ($$23) {
-                     $$11.add($$22);
+      if ($$3.e()) {
+         int $$6 = -2;
+         int $$7 = 2;
+         int $$8 = 3;
+         gw.a $$9 = new gw.a();
+
+         for (int $$10 = -2; $$10 <= 2; $$10++) {
+            for (int $$11 = -2; $$11 <= 2; $$11++) {
+               for (int $$12 = 0; $$12 <= 3; $$12++) {
+                  boolean $$13 = ars.a($$10) == 2;
+                  boolean $$14 = ars.a($$11) == 2;
+                  boolean $$15 = $$12 == 3;
+                  if ($$13 || $$14 || $$15) {
+                     boolean $$16 = $$10 == -2 || $$10 == 2 || $$15;
+                     boolean $$17 = $$11 == -2 || $$11 == 2 || $$15;
+                     dfe $$18 = csr.eX
+                        .n()
+                        .a(cwo.a, Boolean.valueOf($$16 && $$11 != -2))
+                        .a(cwo.c, Boolean.valueOf($$16 && $$11 != 2))
+                        .a(cwo.d, Boolean.valueOf($$17 && $$10 != -2))
+                        .a(cwo.b, Boolean.valueOf($$17 && $$10 != 2));
+                     this.a($$0, $$9.d($$3.a() + $$10, $$3.d() + $$12, $$3.b() + $$11), $$18);
                   }
                }
             }
          }
       }
 
-      return $$11;
-   }
-
-   protected void a(dno<dqp> $$0, cqf $$1, dqp $$2, aru $$3, Set<gu> $$4, int $$5, int $$6) {
-      for (gu $$7 : $$4) {
-         if ($$2.i > 0.0F && $$3.i() < $$2.i) {
-            this.a($$1, $$2, $$0.c(), $$3, $$7);
-         }
+      bxb $$19 = bip.B.a((cpq)$$0.C());
+      if ($$19 != null) {
+         $$19.a($$2.c());
+         $$19.m($$2.a());
+         $$19.b((double)$$3.a() + 0.5, (double)($$3.d() + 1), (double)$$3.b() + 0.5, $$1.i() * 360.0F, 0.0F);
+         $$0.b($$19);
+         this.a($$0, new gw($$3.a(), $$3.d(), $$3.b()), csr.F.n());
       }
    }
 
-   protected boolean a(cqf $$0, dqp $$1, dgw $$2, aru $$3, gu $$4) {
-      return $$1.d.a().a($$0, $$2, $$3, $$4.a($$1.e.a().g()));
-   }
+   public static class a {
+      public static final Codec<dpb.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  Codec.INT.fieldOf("centerX").orElse(0).forGetter($$0x -> $$0x.b),
+                  Codec.INT.fieldOf("centerZ").orElse(0).forGetter($$0x -> $$0x.c),
+                  Codec.INT.fieldOf("radius").orElse(0).forGetter($$0x -> $$0x.d),
+                  Codec.INT.fieldOf("height").orElse(0).forGetter($$0x -> $$0x.e),
+                  Codec.BOOL.fieldOf("guarded").orElse(false).forGetter($$0x -> $$0x.f)
+               )
+               .apply($$0, dpb.a::new)
+      );
+      private final int b;
+      private final int c;
+      private final int d;
+      private final int e;
+      private final boolean f;
+      private final ehd g;
 
-   protected boolean a(cqf $$0, dqp $$1, Predicate<dez> $$2, aru $$3, gu.a $$4, int $$5) {
-      for (int $$6 = 0; $$6 < $$5; $$6++) {
-         dez $$7 = $$1.c.a($$3, $$4);
-         dez $$8 = $$0.a_($$4);
-         if (!$$7.a($$8.b())) {
-            if (!$$2.test($$8)) {
-               return $$6 != 0;
-            }
-
-            $$0.a($$4, $$7, 2);
-            $$4.c($$1.e.a());
-         }
+      public a(int $$0, int $$1, int $$2, int $$3, boolean $$4) {
+         this.b = $$0;
+         this.c = $$1;
+         this.d = $$2;
+         this.e = $$3;
+         this.f = $$4;
+         this.g = new ehd((double)($$0 - $$2), (double)din.e, (double)($$1 - $$2), (double)($$0 + $$2), (double)din.d, (double)($$1 + $$2));
       }
 
-      return true;
+      public boolean a(gw $$0) {
+         return hz.a($$0.u()) == hz.a(this.b) && hz.a($$0.w()) == hz.a(this.c);
+      }
+
+      public int a() {
+         return this.b;
+      }
+
+      public int b() {
+         return this.c;
+      }
+
+      public int c() {
+         return this.d;
+      }
+
+      public int d() {
+         return this.e;
+      }
+
+      public boolean e() {
+         return this.f;
+      }
+
+      public ehd f() {
+         return this.g;
+      }
+   }
+
+   static class b extends CacheLoader<Long, List<dpb.a>> {
+      public List<dpb.a> a(Long $$0) {
+         IntArrayList $$1 = ac.a(IntStream.range(0, 10), arx.a($$0));
+         List<dpb.a> $$2 = Lists.newArrayList();
+
+         for (int $$3 = 0; $$3 < 10; $$3++) {
+            int $$4 = ars.a(42.0 * Math.cos(2.0 * (-Math.PI + (Math.PI / 10) * (double)$$3)));
+            int $$5 = ars.a(42.0 * Math.sin(2.0 * (-Math.PI + (Math.PI / 10) * (double)$$3)));
+            int $$6 = $$1.get($$3);
+            int $$7 = 2 + $$6 / 3;
+            int $$8 = 76 + $$6 * 3;
+            boolean $$9 = $$6 == 1 || $$6 == 2;
+            $$2.add(new dpb.a($$4, $$5, $$7, $$8, $$9));
+         }
+
+         return $$2;
+      }
    }
 }

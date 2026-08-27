@@ -1,22 +1,22 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-class dlv extends dma {
-   private final hi<csl> e;
-   public static final Codec<dlv> a = RecordCodecBuilder.create($$0 -> a($$0).and(ht.a(jc.e).fieldOf("blocks").forGetter($$0x -> $$0x.e)).apply($$0, dlv::new));
+public interface dlv<P extends dlu> {
+   dlv<dma> a = a("matching_blocks", dma.a);
+   dlv<dlz> b = a("matching_block_tag", dlz.e);
+   dlv<dmb> c = a("matching_fluids", dmb.a);
+   dlv<dlx> d = a("has_sturdy_face", dlx.a);
+   dlv<dme> e = a("solid", dme.a);
+   dlv<dmd> f = a("replaceable", dmd.a);
+   dlv<dmh> g = a("would_survive", dmh.a);
+   dlv<dly> h = a("inside_world_bounds", dly.a);
+   dlv<dlt> i = a("any_of", dlt.a);
+   dlv<dls> j = a("all_of", dls.a);
+   dlv<dmc> k = a("not", dmc.a);
+   dlv<dmg> l = a("true", dmg.e);
 
-   public dlv(hz $$0, hi<csl> $$1) {
-      super($$0);
-      this.e = $$1;
-   }
+   Codec<P> codec();
 
-   @Override
-   protected boolean a(dez $$0) {
-      return $$0.a(this.e);
-   }
-
-   @Override
-   public dlq<?> a() {
-      return dlq.a;
+   private static <P extends dlu> dlv<P> a(String $$0, Codec<P> $$1) {
+      return ht.a(jd.P, $$0, () -> $$1);
    }
 }

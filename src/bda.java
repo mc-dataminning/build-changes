@@ -1,195 +1,112 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
 import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.longs.LongArrayList;
-import it.unimi.dsi.fastutil.longs.LongList;
-import it.unimi.dsi.fastutil.objects.Object2LongMap;
-import it.unimi.dsi.fastutil.objects.Object2LongMaps;
-import it.unimi.dsi.fastutil.objects.Object2LongOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectArraySet;
-import java.time.Duration;
+import java.lang.management.ManagementFactory;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
-import java.util.function.IntSupplier;
-import java.util.function.LongSupplier;
+import java.util.Objects;
+import java.util.function.Function;
 import java.util.function.Supplier;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.tuple.Pair;
+import javax.management.Attribute;
+import javax.management.AttributeList;
+import javax.management.DynamicMBean;
+import javax.management.InstanceAlreadyExistsException;
+import javax.management.MBeanAttributeInfo;
+import javax.management.MBeanInfo;
+import javax.management.MBeanNotificationInfo;
+import javax.management.MBeanRegistrationException;
+import javax.management.MalformedObjectNameException;
+import javax.management.NotCompliantMBeanException;
+import javax.management.ObjectName;
+import net.minecraft.server.MinecraftServer;
 import org.slf4j.Logger;
 
-public class bda implements bdf {
-   private static final long a = Duration.ofMillis(100L).toNanos();
-   private static final Logger c = LogUtils.getLogger();
-   private final List<String> d = Lists.newArrayList();
-   private final LongList e = new LongArrayList();
-   private final Map<String, bda.a> f = Maps.newHashMap();
-   private final IntSupplier g;
-   private final LongSupplier h;
-   private final long i;
-   private final int j;
-   private String k = "";
-   private boolean l;
-   @Nullable
-   private bda.a m;
-   private final boolean n;
-   private final Set<Pair<String, bek>> o = new ObjectArraySet();
+public final class bda implements DynamicMBean {
+   private static final Logger a = LogUtils.getLogger();
+   private final MinecraftServer b;
+   private final MBeanInfo c;
+   private final Map<String, bda.a> d = Stream.of(
+         new bda.a("tickTimes", this::b, "Historical tick times (ms)", long[].class),
+         new bda.a("averageTickTime", this::a, "Current average tick time (ms)", long.class)
+      )
+      .collect(Collectors.toMap($$0x -> $$0x.a, Function.identity()));
 
-   public bda(LongSupplier $$0, IntSupplier $$1, boolean $$2) {
-      this.i = $$0.getAsLong();
-      this.h = $$0;
-      this.j = $$1.getAsInt();
-      this.g = $$1;
-      this.n = $$2;
+   private bda(MinecraftServer $$0) {
+      this.b = $$0;
+      MBeanAttributeInfo[] $$1 = this.d.values().stream().map(bda.a::a).toArray(MBeanAttributeInfo[]::new);
+      this.c = new MBeanInfo(bda.class.getSimpleName(), "metrics for dedicated server", $$1, null, null, new MBeanNotificationInfo[0]);
    }
 
-   @Override
-   public void a() {
-      if (this.l) {
-         c.error("Profiler tick already started - missing endTick()?");
-      } else {
-         this.l = true;
-         this.k = "";
-         this.d.clear();
-         this.a("root");
+   public static void a(MinecraftServer $$0) {
+      try {
+         ManagementFactory.getPlatformMBeanServer().registerMBean(new bda($$0), new ObjectName("net.minecraft.server:type=Server"));
+      } catch (InstanceAlreadyExistsException | MBeanRegistrationException | NotCompliantMBeanException | MalformedObjectNameException var2) {
+         a.warn("Failed to initialise server as JMX bean", var2);
       }
    }
 
-   @Override
-   public void b() {
-      if (!this.l) {
-         c.error("Profiler tick already ended - missing startTick()?");
-      } else {
-         this.c();
-         this.l = false;
-         if (!this.k.isEmpty()) {
-            c.error("Profiler tick ended before path was fully popped (remainder: '{}'). Mismatched push/pop?", LogUtils.defer(() -> bdg.b(this.k)));
-         }
-      }
+   private float a() {
+      return this.b.aL();
    }
 
-   @Override
-   public void a(String $$0) {
-      if (!this.l) {
-         c.error("Cannot push '{}' to profiler if profiler tick hasn't started - missing startTick()?", $$0);
-      } else {
-         if (!this.k.isEmpty()) {
-            this.k = this.k + "\u001e";
-         }
-
-         this.k = this.k + $$0;
-         this.d.add(this.k);
-         this.e.add(ac.c());
-         this.m = null;
-      }
-   }
-
-   @Override
-   public void a(Supplier<String> $$0) {
-      this.a($$0.get());
-   }
-
-   @Override
-   public void a(bek $$0) {
-      this.o.add(Pair.of(this.k, $$0));
-   }
-
-   @Override
-   public void c() {
-      if (!this.l) {
-         c.error("Cannot pop from profiler if profiler tick hasn't started - missing startTick()?");
-      } else if (this.e.isEmpty()) {
-         c.error("Tried to pop one too many times! Mismatched push() and pop()?");
-      } else {
-         long $$0 = ac.c();
-         long $$1 = this.e.removeLong(this.e.size() - 1);
-         this.d.remove(this.d.size() - 1);
-         long $$2 = $$0 - $$1;
-         bda.a $$3 = this.f();
-         $$3.c += $$2;
-         $$3.d++;
-         $$3.a = Math.max($$3.a, $$2);
-         $$3.b = Math.min($$3.b, $$2);
-         if (this.n && $$2 > a) {
-            c.warn("Something's taking too long! '{}' took aprox {} ms", LogUtils.defer(() -> bdg.b(this.k)), LogUtils.defer(() -> (double)$$2 / 1000000.0));
-         }
-
-         this.k = this.d.isEmpty() ? "" : this.d.get(this.d.size() - 1);
-         this.m = null;
-      }
-   }
-
-   @Override
-   public void b(String $$0) {
-      this.c();
-      this.a($$0);
-   }
-
-   @Override
-   public void b(Supplier<String> $$0) {
-      this.c();
-      this.a($$0);
-   }
-
-   private bda.a f() {
-      if (this.m == null) {
-         this.m = this.f.computeIfAbsent(this.k, $$0 -> new bda.a());
-      }
-
-      return this.m;
-   }
-
-   @Override
-   public void a(String $$0, int $$1) {
-      this.f().e.addTo($$0, (long)$$1);
-   }
-
-   @Override
-   public void a(Supplier<String> $$0, int $$1) {
-      this.f().e.addTo($$0.get(), (long)$$1);
-   }
-
-   @Override
-   public bdg d() {
-      return new bdd(this.f, this.i, this.j, this.h.getAsLong(), this.g.getAsInt());
+   private long[] b() {
+      return this.b.k;
    }
 
    @Nullable
    @Override
-   public bda.a c(String $$0) {
-      return this.f.get($$0);
+   public Object getAttribute(String $$0) {
+      bda.a $$1 = this.d.get($$0);
+      return $$1 == null ? null : $$1.b.get();
    }
 
    @Override
-   public Set<Pair<String, bek>> e() {
-      return this.o;
+   public void setAttribute(Attribute $$0) {
    }
 
-   public static class a implements bdi {
-      long a = Long.MIN_VALUE;
-      long b = Long.MAX_VALUE;
-      long c;
-      long d;
-      final Object2LongOpenHashMap<String> e = new Object2LongOpenHashMap();
+   @Override
+   public AttributeList getAttributes(String[] $$0) {
+      List<Attribute> $$1 = Arrays.stream($$0)
+         .map(this.d::get)
+         .filter(Objects::nonNull)
+         .map($$0x -> new Attribute($$0x.a, $$0x.b.get()))
+         .collect(Collectors.toList());
+      return new AttributeList($$1);
+   }
 
-      @Override
-      public long a() {
-         return this.c;
+   @Override
+   public AttributeList setAttributes(AttributeList $$0) {
+      return new AttributeList();
+   }
+
+   @Nullable
+   @Override
+   public Object invoke(String $$0, Object[] $$1, String[] $$2) {
+      return null;
+   }
+
+   @Override
+   public MBeanInfo getMBeanInfo() {
+      return this.c;
+   }
+
+   static final class a {
+      final String a;
+      final Supplier<Object> b;
+      private final String c;
+      private final Class<?> d;
+
+      a(String $$0, Supplier<Object> $$1, String $$2, Class<?> $$3) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
       }
 
-      @Override
-      public long b() {
-         return this.a;
-      }
-
-      @Override
-      public long c() {
-         return this.d;
-      }
-
-      @Override
-      public Object2LongMap<String> d() {
-         return Object2LongMaps.unmodifiable(this.e);
+      private MBeanAttributeInfo a() {
+         return new MBeanAttributeInfo(this.a, this.d.getSimpleName(), this.c, true, false, false);
       }
    }
 }

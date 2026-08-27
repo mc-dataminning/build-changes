@@ -1,16 +1,98 @@
 public class apj {
-   public static final aqa<dcc> a = a("no_item_required");
-   public static final aqa<dcc> b = a("pattern_item/flower");
-   public static final aqa<dcc> c = a("pattern_item/creeper");
-   public static final aqa<dcc> d = a("pattern_item/skull");
-   public static final aqa<dcc> e = a("pattern_item/mojang");
-   public static final aqa<dcc> f = a("pattern_item/globe");
-   public static final aqa<dcc> g = a("pattern_item/piglin");
+   public static final api<csq> a = a("mined", jd.f);
+   public static final api<civ> b = a("crafted", jd.i);
+   public static final api<civ> c = a("used", jd.i);
+   public static final api<civ> d = a("broken", jd.i);
+   public static final api<civ> e = a("picked_up", jd.i);
+   public static final api<civ> f = a("dropped", jd.i);
+   public static final api<bip<?>> g = a("killed", jd.h);
+   public static final api<bip<?>> h = a("killed_by", jd.h);
+   public static final api<aeu> i = a("custom", jd.n);
+   public static final aeu j = a("leave_game", aph.b);
+   public static final aeu k = a("play_time", aph.e);
+   public static final aeu l = a("total_world_time", aph.e);
+   public static final aeu m = a("time_since_death", aph.e);
+   public static final aeu n = a("time_since_rest", aph.e);
+   public static final aeu o = a("sneak_time", aph.e);
+   public static final aeu p = a("walk_one_cm", aph.d);
+   public static final aeu q = a("crouch_one_cm", aph.d);
+   public static final aeu r = a("sprint_one_cm", aph.d);
+   public static final aeu s = a("walk_on_water_one_cm", aph.d);
+   public static final aeu t = a("fall_one_cm", aph.d);
+   public static final aeu u = a("climb_one_cm", aph.d);
+   public static final aeu v = a("fly_one_cm", aph.d);
+   public static final aeu w = a("walk_under_water_one_cm", aph.d);
+   public static final aeu x = a("minecart_one_cm", aph.d);
+   public static final aeu y = a("boat_one_cm", aph.d);
+   public static final aeu z = a("pig_one_cm", aph.d);
+   public static final aeu A = a("horse_one_cm", aph.d);
+   public static final aeu B = a("aviate_one_cm", aph.d);
+   public static final aeu C = a("swim_one_cm", aph.d);
+   public static final aeu D = a("strider_one_cm", aph.d);
+   public static final aeu E = a("jump", aph.b);
+   public static final aeu F = a("drop", aph.b);
+   public static final aeu G = a("damage_dealt", aph.c);
+   public static final aeu H = a("damage_dealt_absorbed", aph.c);
+   public static final aeu I = a("damage_dealt_resisted", aph.c);
+   public static final aeu J = a("damage_taken", aph.c);
+   public static final aeu K = a("damage_blocked_by_shield", aph.c);
+   public static final aeu L = a("damage_absorbed", aph.c);
+   public static final aeu M = a("damage_resisted", aph.c);
+   public static final aeu N = a("deaths", aph.b);
+   public static final aeu O = a("mob_kills", aph.b);
+   public static final aeu P = a("animals_bred", aph.b);
+   public static final aeu Q = a("player_kills", aph.b);
+   public static final aeu R = a("fish_caught", aph.b);
+   public static final aeu S = a("talked_to_villager", aph.b);
+   public static final aeu T = a("traded_with_villager", aph.b);
+   public static final aeu U = a("eat_cake_slice", aph.b);
+   public static final aeu V = a("fill_cauldron", aph.b);
+   public static final aeu W = a("use_cauldron", aph.b);
+   public static final aeu X = a("clean_armor", aph.b);
+   public static final aeu Y = a("clean_banner", aph.b);
+   public static final aeu Z = a("clean_shulker_box", aph.b);
+   public static final aeu aa = a("interact_with_brewingstand", aph.b);
+   public static final aeu ab = a("interact_with_beacon", aph.b);
+   public static final aeu ac = a("inspect_dropper", aph.b);
+   public static final aeu ad = a("inspect_hopper", aph.b);
+   public static final aeu ae = a("inspect_dispenser", aph.b);
+   public static final aeu af = a("play_noteblock", aph.b);
+   public static final aeu ag = a("tune_noteblock", aph.b);
+   public static final aeu ah = a("pot_flower", aph.b);
+   public static final aeu ai = a("trigger_trapped_chest", aph.b);
+   public static final aeu aj = a("open_enderchest", aph.b);
+   public static final aeu ak = a("enchant_item", aph.b);
+   public static final aeu al = a("play_record", aph.b);
+   public static final aeu am = a("interact_with_furnace", aph.b);
+   public static final aeu an = a("interact_with_crafting_table", aph.b);
+   public static final aeu ao = a("open_chest", aph.b);
+   public static final aeu ap = a("sleep_in_bed", aph.b);
+   public static final aeu aq = a("open_shulker_box", aph.b);
+   public static final aeu ar = a("open_barrel", aph.b);
+   public static final aeu as = a("interact_with_blast_furnace", aph.b);
+   public static final aeu at = a("interact_with_smoker", aph.b);
+   public static final aeu au = a("interact_with_lectern", aph.b);
+   public static final aeu av = a("interact_with_campfire", aph.b);
+   public static final aeu aw = a("interact_with_cartography_table", aph.b);
+   public static final aeu ax = a("interact_with_loom", aph.b);
+   public static final aeu ay = a("interact_with_stonecutter", aph.b);
+   public static final aeu az = a("bell_ring", aph.b);
+   public static final aeu aA = a("raid_trigger", aph.b);
+   public static final aeu aB = a("raid_win", aph.b);
+   public static final aeu aC = a("interact_with_anvil", aph.b);
+   public static final aeu aD = a("interact_with_grindstone", aph.b);
+   public static final aeu aE = a("target_hit", aph.b);
+   public static final aeu aF = a("interact_with_smithing_table", aph.b);
 
-   private apj() {
+   private static aeu a(String $$0, aph $$1) {
+      aeu $$2 = new aeu($$0);
+      ht.a(jd.n, $$0, $$2);
+      i.a($$2, $$1);
+      return $$2;
    }
 
-   private static aqa<dcc> a(String $$0) {
-      return aqa.a(jc.c, new aer($$0));
+   private static <T> api<T> a(String $$0, ht<T> $$1) {
+      ti $$2 = ti.c("stat_type.minecraft." + $$0);
+      return ht.a(jd.y, $$0, new api<>($$1, $$2));
    }
 }

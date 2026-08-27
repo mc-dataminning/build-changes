@@ -1,131 +1,20 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.Collection;
-import java.util.List;
-import javax.annotation.Nullable;
+public class eoi extends eoh {
+   private final epq a;
 
-public class eoi extends ger {
-   private static final tf a = tf.c("mco.selectServer.popup");
-   private static final tf b = tf.c("mco.selectServer.close");
-   private static final aer c = new aer("popup/background");
-   private static final aer y = new aer("icon/trial_available");
-   private static final ets z = new ets(new aer("widget/cross_button"), new aer("widget/cross_button_highlighted"));
-   private static final int A = 236;
-   private static final int B = 34;
-   private static final int C = 6;
-   private static final int D = 195;
-   private static final int E = 152;
-   private static final int F = 4;
-   private static final int G = 10;
-   private static final int H = 320;
-   private static final int I = 172;
-   private static final int J = 100;
-   private static final int K = 99;
-   private static final int L = 100;
-   private static List<aer> M = List.of();
-   private final eya N;
-   private final boolean O;
-   @Nullable
-   private esg P;
-   private int Q;
-   private int R;
-
-   public eoi(eya $$0, boolean $$1) {
-      super(a);
-      this.N = $$0;
-      this.O = $$1;
-   }
-
-   public static void a(anm $$0) {
-      Collection<aer> $$1 = $$0.b("textures/gui/images", $$0x -> $$0x.a().endsWith(".png")).keySet();
-      M = $$1.stream().filter($$0x -> $$0x.b().equals("realms")).toList();
-   }
-
-   @Override
-   protected void aC_() {
-      this.N.a(this.f, this.g, this.h);
-      if (this.O) {
-         this.P = this.d(esg.a(tf.c("mco.selectServer.trial"), $$0x -> this.f.a(new ews($$0xx -> {
-               if ($$0xx) {
-                  ac.i().a("https://aka.ms/startjavarealmstrial");
-               }
-
-               this.f.a(this);
-            }, "https://aka.ms/startjavarealmstrial", true))).a(this.E() - 10 - 99, this.F() - 10 - 4 - 40, 99, 20).a());
-      }
-
-      this.a(this.d(esg.a(tf.c("mco.selectServer.buy"), $$0x -> this.f.a(new ews($$0xx -> {
-            if ($$0xx) {
-               ac.i().a("https://aka.ms/BuyJavaRealms");
-            }
-
-            this.f.a(this);
-         }, "https://aka.ms/BuyJavaRealms", true))).a(this.E() - 10 - 99, this.F() - 10 - 20, 99, 20).a()));
-      ess $$0 = this.d(new ess(this.C() + 4, this.D() + 4, 14, 14, z, $$0x -> this.at_(), b));
-      $$0.a(etq.a(b));
-      int $$1 = 142 - (this.O ? 40 : 20);
-      esq $$2 = new esq(this.E() - 10 - 100, this.D() + 10, 100, $$1, a, this.i);
-      if ($$2.v()) {
-         $$2.d(100 - $$2.f());
-      }
-
-      this.d($$2);
+   public eoi(eyf $$0, epq $$1) {
+      super($$0, $$1);
+      this.a = $$1;
    }
 
    @Override
    public void c() {
       super.c();
-      if (++this.R > 100) {
-         this.R = 0;
-         this.Q = (this.Q + 1) % M.size();
-      }
+      this.a.c();
    }
 
    @Override
-   public void a(erv $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      if (this.P != null) {
-         a($$0, this.P);
-      }
-   }
-
-   public static void a(erv $$0, esg $$1) {
-      int $$2 = 8;
-      $$0.c().a();
-      $$0.c().a(0.0F, 0.0F, 110.0F);
-      $$0.a(y, $$1.r() + $$1.l() - 8 - 4, $$1.t() + $$1.i() / 2 - 4, 8, 8);
-      $$0.c().b();
-   }
-
-   @Override
-   public void b(erv $$0, int $$1, int $$2, float $$3) {
-      this.N.a($$0, -1, -1, $$3);
-      $$0.e();
-      RenderSystem.clear(256, eql.a);
-      this.a($$0);
-      $$0.a(c, this.C(), this.D(), 320, 172);
-      if (!M.isEmpty()) {
-         $$0.a(M.get(this.Q), this.C() + 10, this.D() + 10, 0, 0.0F, 0.0F, 195, 152, 195, 152);
-      }
-   }
-
-   private int C() {
-      return (this.g - 320) / 2;
-   }
-
-   private int D() {
-      return (this.h - 172) / 2;
-   }
-
-   private int E() {
-      return this.C() + 320;
-   }
-
-   private int F() {
-      return this.D() + 172;
-   }
-
-   @Override
-   public void at_() {
-      this.f.a(this.N);
+   protected void e() {
+      this.a.b();
+      super.e();
    }
 }

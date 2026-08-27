@@ -1,24 +1,34 @@
-public class fxt extends fwq<bxt, fhi<bxt>> {
-   private static final aer a = new aer("textures/entity/wither/wither_armor.png");
-   private final fhi<bxt> b;
-
-   public fxt(fus<bxt, fhi<bxt>> $$0, fho $$1) {
+public abstract class fxt<T extends bjb, M extends fgd<T>> extends fxk<T, M> {
+   public fxt(fud<T, M> $$0) {
       super($$0);
-      this.b = new fhi<>($$1.a(fhr.bP));
    }
 
-   @Override
-   protected float a(float $$0) {
-      return arp.b($$0 * 0.02F) * 3.0F;
-   }
+   protected abstract int a(T var1);
 
-   @Override
-   protected aer a() {
-      return a;
-   }
+   protected abstract void a(elk var1, fnz var2, int var3, bil var4, float var5, float var6, float var7, float var8);
 
-   @Override
-   protected fet<bxt> b() {
-      return this.b;
+   public void a(elk $$0, fnz $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      int $$10 = this.a($$3);
+      arx $$11 = arx.a((long)$$3.ah());
+      if ($$10 > 0) {
+         for (int $$12 = 0; $$12 < $$10; $$12++) {
+            $$0.a();
+            fhx $$13 = this.c().a($$11);
+            fhx.a $$14 = $$13.a($$11);
+            $$13.a($$0);
+            float $$15 = $$11.i();
+            float $$16 = $$11.i();
+            float $$17 = $$11.i();
+            float $$18 = ars.i($$15, $$14.a, $$14.d) / 16.0F;
+            float $$19 = ars.i($$16, $$14.b, $$14.e) / 16.0F;
+            float $$20 = ars.i($$17, $$14.c, $$14.f) / 16.0F;
+            $$0.a($$18, $$19, $$20);
+            $$15 = -1.0F * ($$15 * 2.0F - 1.0F);
+            $$16 = -1.0F * ($$16 * 2.0F - 1.0F);
+            $$17 = -1.0F * ($$17 * 2.0F - 1.0F);
+            this.a($$0, $$1, $$2, $$3, $$15, $$16, $$17, $$6);
+            $$0.b();
+         }
+      }
    }
 }

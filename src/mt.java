@@ -1,47 +1,13 @@
 import java.util.concurrent.CompletableFuture;
-import java.util.function.Function;
-import java.util.stream.Stream;
 
-public abstract class mt<T> extends my<T> {
-   private final Function<T, aeq<T>> d;
-
-   public mt(jk $$0, aeq<? extends hr<T>> $$1, CompletableFuture<hg.b> $$2, Function<T, aeq<T>> $$3) {
-      super($$0, $$1, $$2);
-      this.d = $$3;
+public class mt extends mw<eag> {
+   public mt(jm $$0, CompletableFuture<hi.b> $$1) {
+      super($$0, je.w, $$1, $$0x -> $$0x.k().g());
    }
 
-   public mt(jk $$0, aeq<? extends hr<T>> $$1, CompletableFuture<hg.b> $$2, CompletableFuture<my.c<T>> $$3, Function<T, aeq<T>> $$4) {
-      super($$0, $$1, $$2, $$3);
-      this.d = $$4;
-   }
-
-   protected mt.a<T> a(aqa<T> $$0) {
-      apx $$1 = this.c($$0);
-      return new mt.a<>($$1, this.d);
-   }
-
-   protected static class a<T> extends my.b<T> {
-      private final Function<T, aeq<T>> a;
-
-      a(apx $$0, Function<T, aeq<T>> $$1) {
-         super($$0);
-         this.a = $$1;
-      }
-
-      public mt.a<T> a(aqa<T> $$0) {
-         super.b($$0);
-         return this;
-      }
-
-      public final mt.a<T> a(T $$0) {
-         this.a(this.a.apply($$0));
-         return this;
-      }
-
-      @SafeVarargs
-      public final mt.a<T> a(T... $$0) {
-         Stream.<T>of($$0).map(this.a).forEach(this::a);
-         return this;
-      }
+   @Override
+   protected void a(hi.b $$0) {
+      this.a(apt.a).a(eai.c, eai.b);
+      this.a(apt.b).a(eai.e, eai.d);
    }
 }

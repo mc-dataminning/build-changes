@@ -1,67 +1,129 @@
 import java.util.EnumSet;
 
-public class bqx extends bpt {
-   private final bwi a;
-   private final double b;
-   private double c;
-   private double d;
-   private double e;
+public class bqx<T extends bzd & bzh & byq> extends bpw {
+   public static final bge a = asp.a(1, 2);
+   private final T b;
+   private bqx.a c = bqx.a.a;
+   private final double d;
+   private final float e;
+   private int f;
+   private int g;
+   private int h;
 
-   public bqx(bwi $$0, double $$1) {
-      this.a = $$0;
-      this.b = $$1;
-      this.a(EnumSet.of(bpt.a.a));
+   public bqx(T $$0, double $$1, float $$2) {
+      this.b = $$0;
+      this.d = $$1;
+      this.e = $$2 * $$2;
+      this.a(EnumSet.of(bpw.a.a, bpw.a.b));
    }
 
    @Override
    public boolean a() {
-      if (!this.a.gp() && this.a.bO()) {
-         ehd $$0 = bto.a(this.a, 5, 4);
-         if ($$0 == null) {
-            return false;
-         } else {
-            this.c = $$0.c;
-            this.d = $$0.d;
-            this.e = $$0.e;
-            return true;
-         }
-      } else {
-         return false;
-      }
+      return this.i() && this.h();
    }
 
-   @Override
-   public void c() {
-      this.a.H().a(this.c, this.d, this.e, this.b);
+   private boolean h() {
+      return this.b.b(cjd.uZ);
    }
 
    @Override
    public boolean b() {
-      return !this.a.gp() && !this.a.H().l() && this.a.bO();
+      return this.i() && (this.a() || !this.b.H().l()) && this.h();
+   }
+
+   private boolean i() {
+      return this.b.j() != null && this.b.j().bv();
+   }
+
+   @Override
+   public void d() {
+      super.d();
+      this.b.v(false);
+      this.b.h(null);
+      this.f = 0;
+      if (this.b.fl()) {
+         this.b.fr();
+         this.b.b(false);
+         chi.a(this.b.fn(), false);
+      }
+   }
+
+   @Override
+   public boolean K_() {
+      return true;
    }
 
    @Override
    public void e() {
-      if (!this.a.gp() && this.a.ee().a(this.a(50)) == 0) {
-         bii $$0 = this.a.cQ();
-         if ($$0 == null) {
-            return;
+      bjb $$0 = this.b.j();
+      if ($$0 != null) {
+         boolean $$1 = this.b.J().a($$0);
+         boolean $$2 = this.f > 0;
+         if ($$1 != $$2) {
+            this.f = 0;
          }
 
-         if ($$0 instanceof cbm $$1) {
-            int $$2 = this.a.gv();
-            int $$3 = this.a.gB();
-            if ($$3 > 0 && this.a.ee().a($$3) < $$2) {
-               this.a.h($$1);
-               return;
+         if ($$1) {
+            this.f++;
+         } else {
+            this.f--;
+         }
+
+         double $$3 = this.b.f($$0);
+         boolean $$4 = ($$3 > (double)this.e || this.f < 5) && this.g == 0;
+         if ($$4) {
+            this.h--;
+            if (this.h <= 0) {
+               this.b.H().a($$0, this.k() ? this.d : this.d * 0.5);
+               this.h = a.a(this.b.ee());
+            }
+         } else {
+            this.h = 0;
+            this.b.H().n();
+         }
+
+         this.b.D().a($$0, 30.0F, 30.0F);
+         if (this.c == bqx.a.a) {
+            if (!$$4) {
+               this.b.c(cci.a(this.b, cjd.uZ));
+               this.c = bqx.a.b;
+               this.b.b(true);
+            }
+         } else if (this.c == bqx.a.b) {
+            if (!this.b.fl()) {
+               this.c = bqx.a.a;
             }
 
-            this.a.v(5);
+            int $$5 = this.b.fp();
+            cja $$6 = this.b.fn();
+            if ($$5 >= chi.k($$6)) {
+               this.b.fq();
+               this.c = bqx.a.c;
+               this.g = 20 + this.b.ee().a(20);
+               this.b.b(false);
+            }
+         } else if (this.c == bqx.a.c) {
+            this.g--;
+            if (this.g == 0) {
+               this.c = bqx.a.d;
+            }
+         } else if (this.c == bqx.a.d && $$1) {
+            this.b.a($$0, 1.0F);
+            cja $$7 = this.b.b(cci.a(this.b, cjd.uZ));
+            chi.a($$7, false);
+            this.c = bqx.a.a;
          }
-
-         this.a.bA();
-         this.a.gG();
-         this.a.dK().a(this.a, (byte)6);
       }
+   }
+
+   private boolean k() {
+      return this.c == bqx.a.a;
+   }
+
+   static enum a {
+      a,
+      b,
+      c,
+      d;
    }
 }

@@ -1,17 +1,24 @@
-import java.util.List;
-import java.util.UUID;
+public class yt implements va<ws> {
+   private final int a;
 
-public record yt(List<UUID> a) implements ux<wp> {
-   public yt(si $$0) {
-      this($$0.a(si::o));
+   public yt(bhg $$0) {
+      this($$0.b());
+   }
+
+   public yt(int $$0) {
+      this.a = $$0;
+   }
+
+   public yt(sl $$0) {
+      this.a = $$0.m();
    }
 
    @Override
-   public void a(si $$0) {
-      $$0.a(this.a, si::a);
+   public void a(sl $$0) {
+      $$0.c(this.a);
    }
 
-   public void a(wp $$0) {
+   public void a(ws $$0) {
       $$0.a(this);
    }
 }

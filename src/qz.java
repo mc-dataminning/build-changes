@@ -2,32 +2,32 @@ import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
 
-public class qz extends re {
-   private static final int b = 16;
-   public static final rm<qz> a = new rm.a<qz>() {
-      public qz a(DataInput $$0, int $$1, ra $$2) throws IOException {
-         $$2.a(16L);
-         return qz.a($$0.readLong());
+public class qz extends rh {
+   private static final int b = 12;
+   public static final rp<qz> a = new rp.a<qz>() {
+      public qz a(DataInput $$0, int $$1, rd $$2) throws IOException {
+         $$2.a(12L);
+         return qz.a($$0.readInt());
       }
 
       @Override
-      public rh.b a(DataInput $$0, rh $$1) throws IOException {
-         return $$1.a($$0.readLong());
+      public rk.b a(DataInput $$0, rk $$1) throws IOException {
+         return $$1.a($$0.readInt());
       }
 
       @Override
       public int c() {
-         return 8;
+         return 4;
       }
 
       @Override
       public String a() {
-         return "LONG";
+         return "INT";
       }
 
       @Override
       public String b() {
-         return "TAG_Long";
+         return "TAG_Int";
       }
 
       @Override
@@ -35,33 +35,33 @@ public class qz extends re {
          return true;
       }
    };
-   private final long c;
+   private final int c;
 
-   qz(long $$0) {
+   qz(int $$0) {
       this.c = $$0;
    }
 
-   public static qz a(long $$0) {
-      return $$0 >= -128L && $$0 <= 1024L ? qz.a.a[(int)$$0 - -128] : new qz($$0);
+   public static qz a(int $$0) {
+      return $$0 >= -128 && $$0 <= 1024 ? qz.a.a[$$0 - -128] : new qz($$0);
    }
 
    @Override
    public void a(DataOutput $$0) throws IOException {
-      $$0.writeLong(this.c);
+      $$0.writeInt(this.c);
    }
 
    @Override
    public int a() {
-      return 16;
+      return 12;
    }
 
    @Override
    public byte b() {
-      return 4;
+      return 3;
    }
 
    @Override
-   public rm<qz> c() {
+   public rp<qz> c() {
       return a;
    }
 
@@ -76,32 +76,32 @@ public class qz extends re {
 
    @Override
    public int hashCode() {
-      return (int)(this.c ^ this.c >>> 32);
+      return this.c;
    }
 
    @Override
-   public void a(ro $$0) {
+   public void a(rr $$0) {
       $$0.a(this);
    }
 
    @Override
    public long f() {
-      return this.c;
+      return (long)this.c;
    }
 
    @Override
    public int g() {
-      return (int)(this.c & -1L);
+      return this.c;
    }
 
    @Override
    public short h() {
-      return (short)((int)(this.c & 65535L));
+      return (short)(this.c & 65535);
    }
 
    @Override
    public byte i() {
-      return (byte)((int)(this.c & 255L));
+      return (byte)(this.c & 0xFF);
    }
 
    @Override
@@ -120,7 +120,7 @@ public class qz extends re {
    }
 
    @Override
-   public rh.b a(rh $$0) {
+   public rk.b a(rk $$0) {
       return $$0.a(this.c);
    }
 
@@ -134,7 +134,7 @@ public class qz extends re {
 
       static {
          for (int $$0 = 0; $$0 < a.length; $$0++) {
-            a[$$0] = new qz((long)(-128 + $$0));
+            a[$$0] = new qz(-128 + $$0);
          }
       }
    }

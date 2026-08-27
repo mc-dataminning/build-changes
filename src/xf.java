@@ -1,74 +1,32 @@
-import io.netty.buffer.ByteBuf;
-import io.netty.buffer.Unpooled;
-import java.util.List;
+public class xf implements va<ws> {
+   private final bgq a;
+   private final boolean b;
 
-public record xf(List<xf.a> a) implements ux<wp> {
-   private static final int b = 2097152;
-
-   public xf(si $$0) {
-      this($$0.a(xf.a::new));
+   public xf(bgq $$0, boolean $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public static xf a(List<dhg> $$0) {
-      return new xf($$0.stream().map(xf.a::new).toList());
+   public xf(sl $$0) {
+      this.a = bgq.a($$0.readUnsignedByte());
+      this.b = $$0.readBoolean();
    }
 
    @Override
-   public void a(si $$0) {
-      $$0.a(this.a, ($$0x, $$1) -> $$1.a($$0x));
+   public void a(sl $$0) {
+      $$0.k(this.a.a());
+      $$0.a(this.b);
    }
 
-   public void a(wp $$0) {
+   public void a(ws $$0) {
       $$0.a(this);
    }
 
-   public static record a(cos a, byte[] b) {
-      public a(dhg $$0) {
-         this($$0.f(), new byte[a($$0)]);
-         a(new si(this.d()), $$0);
-      }
+   public boolean a() {
+      return this.b;
+   }
 
-      public a(si $$0) {
-         this($$0.f(), $$0.a(2097152));
-      }
-
-      private static int a(dhg $$0) {
-         int $$1 = 0;
-
-         for (dhh $$2 : $$0.d()) {
-            $$1 += $$2.i().c();
-         }
-
-         return $$1;
-      }
-
-      public si a() {
-         return new si(Unpooled.wrappedBuffer(this.b));
-      }
-
-      private ByteBuf d() {
-         ByteBuf $$0 = Unpooled.wrappedBuffer(this.b);
-         $$0.writerIndex(0);
-         return $$0;
-      }
-
-      public static void a(si $$0, dhg $$1) {
-         for (dhh $$2 : $$1.d()) {
-            $$2.i().b($$0);
-         }
-      }
-
-      public void a(si $$0) {
-         $$0.a(this.a);
-         $$0.a(this.b);
-      }
-
-      public cos b() {
-         return this.a;
-      }
-
-      public byte[] c() {
-         return this.b;
-      }
+   public bgq d() {
+      return this.a;
    }
 }

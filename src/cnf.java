@@ -1,104 +1,30 @@
-public enum cnf {
-   a {
-      @Override
-      public boolean a(cis $$0) {
-         return $$0 instanceof cgh;
-      }
-   },
-   b {
-      @Override
-      public boolean a(cis $$0) {
-         if ($$0 instanceof cgh $$1 && $$1.g() == bin.c) {
-            return true;
-         }
+public class cnf extends cnj {
+   public cnf(cnj.a $$0, biq... $$1) {
+      super($$0, cnk.l, $$1);
+   }
 
-         return false;
-      }
-   },
-   c {
-      @Override
-      public boolean a(cis $$0) {
-         if ($$0 instanceof cgh $$1 && $$1.g() == bin.d) {
-            return true;
-         }
+   @Override
+   public int a(int $$0) {
+      return 25;
+   }
 
-         return false;
-      }
-   },
-   d {
-      @Override
-      public boolean a(cis $$0) {
-         if ($$0 instanceof cgh $$1 && $$1.g() == bin.e) {
-            return true;
-         }
+   @Override
+   public int b(int $$0) {
+      return 50;
+   }
 
-         return false;
-      }
-   },
-   e {
-      @Override
-      public boolean a(cis $$0) {
-         if ($$0 instanceof cgh $$1 && $$1.g() == bin.f) {
-            return true;
-         }
+   @Override
+   public boolean b() {
+      return true;
+   }
 
-         return false;
-      }
-   },
-   f {
-      @Override
-      public boolean a(cis $$0) {
-         return $$0 instanceof cki;
-      }
-   },
-   g {
-      @Override
-      public boolean a(cis $$0) {
-         return $$0 instanceof chh;
-      }
-   },
-   h {
-      @Override
-      public boolean a(cis $$0) {
-         return $$0 instanceof cid;
-      }
-   },
-   i {
-      @Override
-      public boolean a(cis $$0) {
-         return $$0 instanceof ckp;
-      }
-   },
-   j {
-      @Override
-      public boolean a(cis $$0) {
-         return $$0.o();
-      }
-   },
-   k {
-      @Override
-      public boolean a(cis $$0) {
-         return $$0 instanceof cgv;
-      }
-   },
-   l {
-      @Override
-      public boolean a(cis $$0) {
-         return $$0 instanceof chy || csl.a($$0) instanceof chy;
-      }
-   },
-   m {
-      @Override
-      public boolean a(cis $$0) {
-         return $$0 instanceof chf;
-      }
-   },
-   n {
-      @Override
-      public boolean a(cis $$0) {
-         return $$0 instanceof ckr || csl.a($$0) instanceof ckr || j.a($$0);
-      }
-   };
+   @Override
+   public boolean c() {
+      return true;
+   }
 
-   public abstract boolean a(cis var1);
+   @Override
+   public boolean a(cja $$0) {
+      return !$$0.a(cjd.uy) && super.a($$0);
+   }
 }

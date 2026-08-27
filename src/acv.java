@@ -1,29 +1,32 @@
-public enum acv {
-   a,
-   b;
+public class acv implements va<aaz> {
+   private final bgs a;
+   private final int b;
 
-   private static final int c = 1;
-   private static final int d = 2;
-
-   public static acv a(int $$0) {
-      return switch ($$0) {
-         case 1 -> a;
-         case 2 -> b;
-         default -> throw new IllegalArgumentException("Unknown connection intent: " + $$0);
-      };
+   public acv(bgs $$0, int $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public int a() {
-      return switch (this) {
-         case a -> 1;
-         case b -> 2;
-      };
+   public acv(sl $$0) {
+      this.a = $$0.b(bgs.class);
+      this.b = $$0.m();
    }
 
-   public sh b() {
-      return switch (this) {
-         case a -> sh.c;
-         case b -> sh.d;
-      };
+   @Override
+   public void a(sl $$0) {
+      $$0.a(this.a);
+      $$0.c(this.b);
+   }
+
+   public void a(aaz $$0) {
+      $$0.a(this);
+   }
+
+   public bgs a() {
+      return this.a;
+   }
+
+   public int d() {
+      return this.b;
    }
 }

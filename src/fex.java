@@ -1,44 +1,52 @@
-public class fex<T extends bii> extends ffc<T> {
-   private final fhs a;
-   private final fhs[] b = new fhs[9];
+public class fex<T extends bil> extends ffh<T> {
+   private static final int a = 4;
+   private static final int[][] b = new int[][]{{4, 3, 2}, {6, 4, 5}, {3, 3, 1}, {1, 2, 1}};
+   private static final int[][] f = new int[][]{{0, 0}, {0, 5}, {0, 14}, {0, 18}};
+   private final fhx g;
+   private final fhx[] h;
 
-   public fex(fhs $$0) {
-      this.a = $$0;
+   public fex(fhx $$0) {
+      this.g = $$0;
+      this.h = new fhx[4];
 
-      for (int $$1 = 0; $$1 < this.b.length; $$1++) {
-         this.b[$$1] = $$0.b(a($$1));
+      for (int $$1 = 0; $$1 < 4; $$1++) {
+         this.h[$$1] = $$0.b(a($$1));
       }
    }
 
    private static String a(int $$0) {
-      return "tentacle" + $$0;
+      return "segment" + $$0;
    }
 
-   public static fhy b() {
-      fia $$0 = new fia();
-      fib $$1 = $$0.a();
-      $$1.a("body", fhx.c().a(0, 0).a(-8.0F, -8.0F, -8.0F, 16.0F, 16.0F, 16.0F), fhu.a(0.0F, 17.6F, 0.0F));
-      aru $$2 = aru.a(1660L);
+   public static fid b() {
+      fif $$0 = new fif();
+      fig $$1 = $$0.a();
+      float $$2 = -3.5F;
 
-      for (int $$3 = 0; $$3 < 9; $$3++) {
-         float $$4 = (((float)($$3 % 3) - (float)($$3 / 3 % 2) * 0.5F + 0.25F) / 2.0F * 2.0F - 1.0F) * 5.0F;
-         float $$5 = ((float)($$3 / 3) / 2.0F * 2.0F - 1.0F) * 5.0F;
-         int $$6 = $$2.a(7) + 8;
-         $$1.a(a($$3), fhx.c().a(0, 0).a(-1.0F, 0.0F, -1.0F, 2.0F, (float)$$6, 2.0F), fhu.a($$4, 24.6F, $$5));
+      for (int $$3 = 0; $$3 < 4; $$3++) {
+         $$1.a(
+            a($$3),
+            fic.c().a(f[$$3][0], f[$$3][1]).a((float)b[$$3][0] * -0.5F, 0.0F, (float)b[$$3][2] * -0.5F, (float)b[$$3][0], (float)b[$$3][1], (float)b[$$3][2]),
+            fhz.a(0.0F, (float)(24 - b[$$3][1]), $$2)
+         );
+         if ($$3 < 3) {
+            $$2 += (float)(b[$$3][2] + b[$$3 + 1][2]) * 0.5F;
+         }
       }
 
-      return fhy.a($$0, 64, 32);
+      return fid.a($$0, 64, 32);
+   }
+
+   @Override
+   public fhx a() {
+      return this.g;
    }
 
    @Override
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      for (int $$6 = 0; $$6 < this.b.length; $$6++) {
-         this.b[$$6].e = 0.2F * arp.a($$3 * 0.3F + (float)$$6) + 0.4F;
+      for (int $$6 = 0; $$6 < this.h.length; $$6++) {
+         this.h[$$6].f = ars.b($$3 * 0.9F + (float)$$6 * 0.15F * (float) Math.PI) * (float) Math.PI * 0.01F * (float)(1 + Math.abs($$6 - 2));
+         this.h[$$6].b = ars.a($$3 * 0.9F + (float)$$6 * 0.15F * (float) Math.PI) * (float) Math.PI * 0.1F * (float)Math.abs($$6 - 2);
       }
-   }
-
-   @Override
-   public fhs a() {
-      return this.a;
    }
 }

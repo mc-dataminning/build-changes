@@ -1,8 +1,20 @@
-import net.minecraft.server.MinecraftServer;
+import com.mojang.serialization.Codec;
 
-public record dvo(anm a, hs b, dys c) {
-   public static dvo a(akk $$0) {
-      MinecraftServer $$1 = $$0.n();
-      return new dvo($$1.aX(), $$1.aU(), $$1.aS());
+public enum dvo implements ask {
+   a("none"),
+   b("bury"),
+   c("beard_thin"),
+   d("beard_box");
+
+   public static final Codec<dvo> e = ask.a(dvo::values);
+   private final String f;
+
+   private dvo(String $$0) {
+      this.f = $$0;
+   }
+
+   @Override
+   public String c() {
+      return this.f;
    }
 }

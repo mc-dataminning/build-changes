@@ -4,64 +4,41 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Locale;
 
-public class iz implements it {
-   public static final Codec<iz> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(djn.b.fieldOf("destination").forGetter($$0x -> $$0x.c), Codec.INT.fieldOf("arrival_in_ticks").forGetter($$0x -> $$0x.d))
-            .apply($$0, iz::new)
-   );
-   public static final it.a<iz> b = new it.a<iz>() {
-      public iz a(iu<iz> $$0, StringReader $$1) throws CommandSyntaxException {
+public class iz implements iv {
+   public static final Codec<iz> a = RecordCodecBuilder.create($$0 -> $$0.group(Codec.INT.fieldOf("delay").forGetter($$0x -> $$0x.c)).apply($$0, iz::new));
+   public static final iv.a<iz> b = new iv.a<iz>() {
+      public iz a(iw<iz> $$0, StringReader $$1) throws CommandSyntaxException {
          $$1.expect(' ');
-         float $$2 = (float)$$1.readDouble();
-         $$1.expect(' ');
-         float $$3 = (float)$$1.readDouble();
-         $$1.expect(' ');
-         float $$4 = (float)$$1.readDouble();
-         $$1.expect(' ');
-         int $$5 = $$1.readInt();
-         gu $$6 = gu.a((double)$$2, (double)$$3, (double)$$4);
-         return new iz(new djf($$6), $$5);
+         int $$2 = $$1.readInt();
+         return new iz($$2);
       }
 
-      public iz a(iu<iz> $$0, si $$1) {
-         djn $$2 = djo.c($$1);
-         int $$3 = $$1.m();
-         return new iz($$2, $$3);
+      public iz a(iw<iz> $$0, sl $$1) {
+         return new iz($$1.m());
       }
    };
-   private final djn c;
-   private final int d;
+   private final int c;
 
-   public iz(djn $$0, int $$1) {
+   public iz(int $$0) {
       this.c = $$0;
-      this.d = $$1;
    }
 
    @Override
-   public void a(si $$0) {
-      djo.a(this.c, $$0);
-      $$0.c(this.d);
+   public void a(sl $$0) {
+      $$0.c(this.c);
    }
 
    @Override
    public String a() {
-      ehd $$0 = this.c.a(null).get();
-      double $$1 = $$0.a();
-      double $$2 = $$0.b();
-      double $$3 = $$0.c();
-      return String.format(Locale.ROOT, "%s %.2f %.2f %.2f %d", jb.k.b(this.b()), $$1, $$2, $$3, this.d);
+      return String.format(Locale.ROOT, "%s %d", jd.k.b(this.b()), this.c);
    }
 
    @Override
-   public iu<iz> b() {
-      return iv.P;
+   public iw<iz> b() {
+      return ix.aP;
    }
 
-   public djn c() {
+   public int c() {
       return this.c;
-   }
-
-   public int d() {
-      return this.d;
    }
 }

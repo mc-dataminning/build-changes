@@ -1,62 +1,41 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Sets;
-import com.google.common.collect.ImmutableMap.Builder;
-import java.util.Collection;
-import java.util.Map;
-import java.util.Set;
+import javax.annotation.Nullable;
 
-public class aap implements ux<wp> {
-   private final boolean a;
-   private final Map<aer, ae.a> b;
-   private final Set<aer> c;
-   private final Map<aer, ag> d;
+public class aap implements va<ws> {
+   private final int a;
+   @Nullable
+   private final qu b;
 
-   public aap(boolean $$0, Collection<ae> $$1, Set<aer> $$2, Map<aer, ag> $$3) {
+   public aap(int $$0, @Nullable qu $$1) {
       this.a = $$0;
-      Builder<aer, ae.a> $$4 = ImmutableMap.builder();
-
-      for (ae $$5 : $$1) {
-         $$4.put($$5.j(), $$5.a());
-      }
-
-      this.b = $$4.build();
-      this.c = ImmutableSet.copyOf($$2);
-      this.d = ImmutableMap.copyOf($$3);
+      this.b = $$1;
    }
 
-   public aap(si $$0) {
-      this.a = $$0.readBoolean();
-      this.b = $$0.a(si::s, ae.a::b);
-      this.c = $$0.a(Sets::newLinkedHashSetWithExpectedSize, si::s);
-      this.d = $$0.a(si::s, ag::b);
+   public aap(sl $$0) {
+      this.a = $$0.m();
+      this.b = $$0.p();
    }
 
    @Override
-   public void a(si $$0) {
-      $$0.a(this.a);
-      $$0.a(this.b, si::a, ($$0x, $$1) -> $$1.a($$0x));
-      $$0.a(this.c, si::a);
-      $$0.a(this.d, si::a, ($$0x, $$1) -> $$1.a($$0x));
+   public void a(sl $$0) {
+      $$0.c(this.a);
+      $$0.a((rn)this.b);
    }
 
-   public void a(wp $$0) {
+   public void a(ws $$0) {
       $$0.a(this);
    }
 
-   public Map<aer, ae.a> a() {
+   public int a() {
+      return this.a;
+   }
+
+   @Nullable
+   public qu d() {
       return this.b;
    }
 
-   public Set<aer> d() {
-      return this.c;
-   }
-
-   public Map<aer, ag> e() {
-      return this.d;
-   }
-
-   public boolean f() {
-      return this.a;
+   @Override
+   public boolean b() {
+      return true;
    }
 }

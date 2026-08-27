@@ -1,104 +1,72 @@
-import com.google.common.base.Preconditions;
-import com.mojang.serialization.Codec;
-import java.nio.ByteBuffer;
-import java.util.Arrays;
-import java.util.Base64;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectList;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
-public record tq(byte[] c) {
-   public static final Codec<tq> a = aqy.n.xmap(tq::new, tq::b);
-   public static final int b = 256;
+public class tq {
+   private final int a;
+   private final ObjectList<tr> b = new ObjectArrayList();
+   @Nullable
+   private tt c;
 
-   public tq(byte[] c) {
-      Preconditions.checkState(c.length == 256, "Invalid message signature size");
-      this.c = c;
+   public tq(int $$0) {
+      this.a = $$0;
+
+      for (int $$1 = 0; $$1 < $$0; $$1++) {
+         this.b.add(null);
+      }
    }
 
-   public static tq a(si $$0) {
-      byte[] $$1 = new byte[256];
-      $$0.b($$1);
-      return new tq($$1);
+   public void a(tt $$0) {
+      if (!$$0.equals(this.c)) {
+         this.b.add(new tr($$0, true));
+         this.c = $$0;
+      }
    }
 
-   public static void a(si $$0, tq $$1) {
-      $$0.c($$1.c);
+   public int a() {
+      return this.b.size();
    }
 
-   public boolean a(arz $$0, ary $$1) {
-      return $$0.validate($$1, this.c);
-   }
-
-   public ByteBuffer a() {
-      return ByteBuffer.wrap(this.c);
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
+   public boolean a(int $$0) {
+      int $$1 = this.b.size() - this.a;
+      if ($$0 >= 0 && $$0 <= $$1) {
+         this.b.removeElements(0, $$0);
          return true;
       } else {
-         if ($$0 instanceof tq $$1 && Arrays.equals(this.c, $$1.c)) {
-            return true;
-         }
-
          return false;
       }
    }
 
-   @Override
-   public int hashCode() {
-      return Arrays.hashCode(this.c);
-   }
+   public Optional<to> a(to.b $$0) {
+      if (!this.a($$0.a())) {
+         return Optional.empty();
+      } else {
+         ObjectList<tt> $$1 = new ObjectArrayList($$0.b().cardinality());
+         if ($$0.b().length() > this.a) {
+            return Optional.empty();
+         } else {
+            for (int $$2 = 0; $$2 < this.a; $$2++) {
+               boolean $$3 = $$0.b().get($$2);
+               tr $$4 = (tr)this.b.get($$2);
+               if ($$3) {
+                  if ($$4 == null) {
+                     return Optional.empty();
+                  }
 
-   @Override
-   public String toString() {
-      return Base64.getEncoder().encodeToString(this.c);
-   }
+                  this.b.set($$2, $$4.a());
+                  $$1.add($$4.b());
+               } else {
+                  if ($$4 != null && !$$4.c()) {
+                     return Optional.empty();
+                  }
 
-   public tq.a a(tr $$0) {
-      int $$1 = $$0.a(this);
-      return $$1 != -1 ? new tq.a($$1) : new tq.a(this);
-   }
+                  this.b.set($$2, null);
+               }
+            }
 
-   public byte[] b() {
-      return this.c;
-   }
-
-   public static record a(int b, @Nullable tq c) {
-      public static final int a = -1;
-
-      public a(tq $$0) {
-         this(-1, $$0);
-      }
-
-      public a(int $$0) {
-         this($$0, null);
-      }
-
-      public static tq.a a(si $$0) {
-         int $$1 = $$0.m() - 1;
-         return $$1 == -1 ? new tq.a(tq.a($$0)) : new tq.a($$1);
-      }
-
-      public static void a(si $$0, tq.a $$1) {
-         $$0.c($$1.a() + 1);
-         if ($$1.b() != null) {
-            tq.a($$0, $$1.b());
+            return Optional.of(new to($$1));
          }
-      }
-
-      public Optional<tq> a(tr $$0) {
-         return this.c != null ? Optional.of(this.c) : Optional.ofNullable($$0.a(this.b));
-      }
-
-      public int a() {
-         return this.b;
-      }
-
-      @Nullable
-      public tq b() {
-         return this.c;
       }
    }
 }

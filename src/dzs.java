@@ -1,65 +1,77 @@
-import it.unimi.dsi.fastutil.longs.LongLinkedOpenHashSet;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import javax.annotation.Nullable;
 
-public class dzs {
-   private final int a;
-   private final LongLinkedOpenHashSet[] b;
-   private int c;
+public abstract class dzs<M extends dzs<M>> {
+   private static final int b = 2;
+   private final long[] c = new long[2];
+   private final dhg[] d = new dhg[2];
+   private boolean e;
+   protected final Long2ObjectOpenHashMap<dhg> a;
 
-   public dzs(int $$0, final int $$1) {
+   protected dzs(Long2ObjectOpenHashMap<dhg> $$0) {
       this.a = $$0;
-      this.b = new LongLinkedOpenHashSet[$$0];
-
-      for (int $$2 = 0; $$2 < $$0; $$2++) {
-         this.b[$$2] = new LongLinkedOpenHashSet($$1, 0.5F) {
-            protected void rehash(int $$0) {
-               if ($$0 > $$1) {
-                  super.rehash($$0);
-               }
-            }
-         };
-      }
-
-      this.c = $$0;
+      this.c();
+      this.e = true;
    }
 
-   public long a() {
-      LongLinkedOpenHashSet $$0 = this.b[this.c];
-      long $$1 = $$0.removeFirstLong();
-      if ($$0.isEmpty()) {
-         this.a(this.a);
-      }
+   public abstract M b();
 
+   public dhg a(long $$0) {
+      dhg $$1 = ((dhg)this.a.get($$0)).b();
+      this.a.put($$0, $$1);
+      this.c();
       return $$1;
    }
 
-   public boolean b() {
-      return this.c >= this.a;
+   public boolean b(long $$0) {
+      return this.a.containsKey($$0);
    }
 
-   public void a(long $$0, int $$1, int $$2) {
-      LongLinkedOpenHashSet $$3 = this.b[$$1];
-      $$3.remove($$0);
-      if ($$3.isEmpty() && this.c == $$1) {
-         this.a($$2);
-      }
-   }
-
-   public void a(long $$0, int $$1) {
-      this.b[$$1].add($$0);
-      if (this.c > $$1) {
-         this.c = $$1;
-      }
-   }
-
-   private void a(int $$0) {
-      int $$1 = this.c;
-      this.c = $$0;
-
-      for (int $$2 = $$1 + 1; $$2 < $$0; $$2++) {
-         if (!this.b[$$2].isEmpty()) {
-            this.c = $$2;
-            break;
+   @Nullable
+   public dhg c(long $$0) {
+      if (this.e) {
+         for (int $$1 = 0; $$1 < 2; $$1++) {
+            if ($$0 == this.c[$$1]) {
+               return this.d[$$1];
+            }
          }
       }
+
+      dhg $$2 = (dhg)this.a.get($$0);
+      if ($$2 == null) {
+         return null;
+      } else {
+         if (this.e) {
+            for (int $$3 = 1; $$3 > 0; $$3--) {
+               this.c[$$3] = this.c[$$3 - 1];
+               this.d[$$3] = this.d[$$3 - 1];
+            }
+
+            this.c[0] = $$0;
+            this.d[0] = $$2;
+         }
+
+         return $$2;
+      }
+   }
+
+   @Nullable
+   public dhg d(long $$0) {
+      return (dhg)this.a.remove($$0);
+   }
+
+   public void a(long $$0, dhg $$1) {
+      this.a.put($$0, $$1);
+   }
+
+   public void c() {
+      for (int $$0 = 0; $$0 < 2; $$0++) {
+         this.c[$$0] = Long.MAX_VALUE;
+         this.d[$$0] = null;
+      }
+   }
+
+   public void d() {
+      this.e = false;
    }
 }

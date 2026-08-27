@@ -1,39 +1,37 @@
-public class fgp extends fgq {
-   private final fhs b;
-   protected final fhs a;
+public class fgp extends ffu {
+   private static final String a = "plate";
+   private static final String b = "handle";
+   private static final int c = 10;
+   private static final int d = 20;
+   private final fhx e;
+   private final fhx f;
+   private final fhx g;
 
-   public fgp(fhs $$0) {
-      this.b = $$0;
-      this.a = $$0.b("head");
+   public fgp(fhx $$0) {
+      super(foh::c);
+      this.e = $$0;
+      this.f = $$0.b("plate");
+      this.g = $$0.b("handle");
    }
 
-   public static fia a() {
-      fia $$0 = new fia();
-      fib $$1 = $$0.a();
-      $$1.a("head", fhx.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F), fhu.a);
-      return $$0;
+   public static fid a() {
+      fif $$0 = new fif();
+      fig $$1 = $$0.a();
+      $$1.a("plate", fic.c().a(0, 0).a(-6.0F, -11.0F, -2.0F, 12.0F, 22.0F, 1.0F), fhz.a);
+      $$1.a("handle", fic.c().a(26, 0).a(-1.0F, -3.0F, -1.0F, 2.0F, 6.0F, 6.0F), fhz.a);
+      return fid.a($$0, 64, 64);
    }
 
-   public static fhy b() {
-      fia $$0 = a();
-      fib $$1 = $$0.a();
-      $$1.a("head").a("hat", fhx.c().a(32, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new fhw(0.25F)), fhu.a);
-      return fhy.a($$0, 64, 64);
+   public fhx b() {
+      return this.f;
    }
 
-   public static fhy c() {
-      fia $$0 = a();
-      return fhy.a($$0, 64, 32);
+   public fhx c() {
+      return this.g;
    }
 
    @Override
-   public void a(float $$0, float $$1, float $$2) {
-      this.a.f = $$1 * (float) (Math.PI / 180.0);
-      this.a.e = $$2 * (float) (Math.PI / 180.0);
-   }
-
-   @Override
-   public void a(elf $$0, elj $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-      this.b.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   public void a(elk $$0, elo $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
+      this.e.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 }

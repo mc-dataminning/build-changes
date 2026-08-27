@@ -1,96 +1,45 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
-import java.util.List;
-import java.util.Map;
+import com.mojang.brigadier.Message;
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.arguments.ArgumentType;
+import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.suggestion.Suggestions;
+import com.mojang.brigadier.suggestion.SuggestionsBuilder;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.Optional;
-import java.util.Map.Entry;
-import java.util.function.BiConsumer;
-import java.util.regex.Pattern;
-import org.slf4j.Logger;
+import java.util.concurrent.CompletableFuture;
+import java.util.stream.Stream;
 
-public abstract class qm {
-   private static final Logger b = LogUtils.getLogger();
-   private static final Gson c = new Gson();
-   private static final Pattern d = Pattern.compile("%(\\d+\\$)?[\\d.]*[df]");
-   public static final String a = "en_us";
-   private static volatile qm e = c();
+public class qm implements ArgumentType<ql> {
+   private static final Collection<String> a = Arrays.asList("techtests.piston", "techtests");
 
-   private static qm c() {
-      Builder<String, String> $$0 = ImmutableMap.builder();
-      BiConsumer<String, String> $$1 = $$0::put;
-      a($$1, "/assets/minecraft/lang/en_us.json");
-      final Map<String, String> $$2 = $$0.build();
-      return new qm() {
-         @Override
-         public String a(String $$0, String $$1) {
-            return $$2.getOrDefault($$0, $$1);
-         }
-
-         @Override
-         public boolean b(String $$0) {
-            return $$2.containsKey($$0);
-         }
-
-         @Override
-         public boolean b() {
-            return false;
-         }
-
-         @Override
-         public arc a(tj $$0) {
-            return $$1 -> $$0.a(($$1x, $$2xxx) -> asg.c($$2xxx, $$1x, $$1) ? Optional.empty() : tj.a, ub.a).isPresent();
-         }
-      };
-   }
-
-   private static void a(BiConsumer<String, String> $$0, String $$1) {
-      try (InputStream $$2 = qm.class.getResourceAsStream($$1)) {
-         a($$2, $$0);
-      } catch (JsonParseException | IOException var7) {
-         b.error("Couldn't read strings from {}", $$1, var7);
-      }
-   }
-
-   public static void a(InputStream $$0, BiConsumer<String, String> $$1) {
-      JsonObject $$2 = (JsonObject)c.fromJson(new InputStreamReader($$0, StandardCharsets.UTF_8), JsonObject.class);
-
-      for (Entry<String, JsonElement> $$3 : $$2.entrySet()) {
-         String $$4 = d.matcher(arg.a($$3.getValue(), $$3.getKey())).replaceAll("%$1s");
-         $$1.accept($$3.getKey(), $$4);
+   public ql a(StringReader $$0) throws CommandSyntaxException {
+      String $$1 = $$0.readUnquotedString();
+      Optional<ql> $$2 = pw.e($$1);
+      if ($$2.isPresent()) {
+         return $$2.get();
+      } else {
+         Message $$3 = ti.b("No such test: " + $$1);
+         throw new CommandSyntaxException(new SimpleCommandExceptionType($$3), $$3);
       }
    }
 
    public static qm a() {
-      return e;
+      return new qm();
    }
 
-   public static void a(qm $$0) {
-      e = $$0;
+   public static ql a(CommandContext<dt> $$0, String $$1) {
+      return (ql)$$0.getArgument($$1, ql.class);
    }
 
-   public String a(String $$0) {
-      return this.a($$0, $$0);
+   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
+      Stream<String> $$2 = pw.a().stream().map(ql::a);
+      return dw.b($$2, $$1);
    }
 
-   public abstract String a(String var1, String var2);
-
-   public abstract boolean b(String var1);
-
-   public abstract boolean b();
-
-   public abstract arc a(tj var1);
-
-   public List<arc> a(List<tj> $$0) {
-      return $$0.stream().map(this::a).collect(ImmutableList.toImmutableList());
+   public Collection<String> getExamples() {
+      return a;
    }
 }

@@ -1,37 +1,27 @@
-public abstract class blz<E extends biy> implements bkq<E>, boe<E> {
-   private bkp.a a;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
 
-   public blz() {
-      this.a = bkp.a.a;
-   }
+public class blz {
+   private static final int a = 1;
 
-   @Override
-   public final bkp.a a() {
-      return this.a;
-   }
+   public static bkt<bjb> a(float $$0) {
+      return boe.a(
+         (Function<boe.b<bjb>, ? extends App<boe.c<bjb>, boh<bjb>>>)($$1 -> $$1.group($$1.a(bsc.n), $$1.c(bsc.m), $$1.b(bsc.s))
+               .apply($$1, ($$2, $$3, $$4) -> ($$5, $$6, $$7) -> {
+                     if ($$6.bN()) {
+                        return false;
+                     } else {
+                        bil $$8 = $$1.b($$4);
+                        if ($$8.a($$6, 1.0)) {
+                           $$6.n($$8);
+                        } else {
+                           $$2.a(new bld($$8, true));
+                           $$3.a(new bsf(new bld($$8, false), $$0, 1));
+                        }
 
-   @Override
-   public final boolean e(akk $$0, E $$1, long $$2) {
-      if (this.trigger($$0, $$1, $$2)) {
-         this.a = bkp.a.b;
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public final void f(akk $$0, E $$1, long $$2) {
-      this.g($$0, $$1, $$2);
-   }
-
-   @Override
-   public final void g(akk $$0, E $$1, long $$2) {
-      this.a = bkp.a.a;
-   }
-
-   @Override
-   public String b() {
-      return this.getClass().getSimpleName();
+                        return true;
+                     }
+                  }))
+      );
    }
 }

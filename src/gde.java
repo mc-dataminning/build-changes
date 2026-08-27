@@ -1,59 +1,87 @@
-import java.util.concurrent.locks.LockSupport;
+import com.google.common.collect.Sets;
+import java.util.Iterator;
+import java.util.Objects;
+import java.util.Set;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.function.Consumer;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public class gde extends bfg<Runnable> {
-   private Thread a = this.b();
-   private volatile boolean b;
+public class gde {
+   private final Set<gde.a> a = Sets.newIdentityHashSet();
+   final ejg b;
+   final Executor c;
 
-   public gde() {
-      super("Sound executor");
+   public gde(ejg $$0, Executor $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   private Thread b() {
-      Thread $$0 = new Thread(this::c);
-      $$0.setDaemon(true);
-      $$0.setName("Sound engine");
-      $$0.start();
-      return $$0;
+   public CompletableFuture<gde.a> a(ejg.c $$0) {
+      CompletableFuture<gde.a> $$1 = new CompletableFuture<>();
+      this.c.execute(() -> {
+         ejf $$2 = this.b.a($$0);
+         if ($$2 != null) {
+            gde.a $$3 = new gde.a($$2);
+            this.a.add($$3);
+            $$1.complete($$3);
+         } else {
+            $$1.complete(null);
+         }
+      });
+      return $$1;
    }
 
-   @Override
-   protected Runnable f(Runnable $$0) {
-      return $$0;
-   }
-
-   @Override
-   protected boolean e(Runnable $$0) {
-      return !this.b;
-   }
-
-   @Override
-   protected Thread au() {
-      return this.a;
-   }
-
-   private void c() {
-      while (!this.b) {
-         this.c(() -> this.b);
-      }
-   }
-
-   @Override
-   protected void bq() {
-      LockSupport.park("waiting for tasks");
+   public void a(Consumer<Stream<ejf>> $$0) {
+      this.c.execute(() -> $$0.accept(this.a.stream().map($$0xx -> $$0xx.b).filter(Objects::nonNull)));
    }
 
    public void a() {
-      this.b = true;
-      this.a.interrupt();
+      this.c.execute(() -> {
+         Iterator<gde.a> $$0 = this.a.iterator();
 
-      try {
-         this.a.join();
-      } catch (InterruptedException var2) {
-         Thread.currentThread().interrupt();
+         while ($$0.hasNext()) {
+            gde.a $$1 = $$0.next();
+            $$1.b.j();
+            if ($$1.b.h()) {
+               $$1.b();
+               $$0.remove();
+            }
+         }
+      });
+   }
+
+   public void b() {
+      this.a.forEach(gde.a::b);
+      this.a.clear();
+   }
+
+   public class a {
+      @Nullable
+      ejf b;
+      private boolean c;
+
+      public boolean a() {
+         return this.c;
       }
 
-      this.bo();
-      this.b = false;
-      this.a = this.b();
+      public a(ejf $$1) {
+         this.b = $$1;
+      }
+
+      public void a(Consumer<ejf> $$0) {
+         gde.this.c.execute(() -> {
+            if (this.b != null) {
+               $$0.accept(this.b);
+            }
+         });
+      }
+
+      public void b() {
+         this.c = true;
+         gde.this.b.a(this.b);
+         this.b = null;
+      }
    }
 }

@@ -1,20 +1,20 @@
-public class zm implements ux<wp> {
+public class zm implements va<ws> {
    private final int a;
 
-   public zm(int $$0) {
-      this.a = $$0;
+   public zm(dgv $$0) {
+      this.a = $$0.q();
    }
 
-   public zm(si $$0) {
-      this.a = $$0.readByte();
+   public zm(sl $$0) {
+      this.a = $$0.m();
    }
 
    @Override
-   public void a(si $$0) {
-      $$0.k(this.a);
+   public void a(sl $$0) {
+      $$0.c(this.a);
    }
 
-   public void a(wp $$0) {
+   public void a(ws $$0) {
       $$0.a(this);
    }
 

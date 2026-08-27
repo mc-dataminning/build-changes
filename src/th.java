@@ -1,131 +1,75 @@
-import com.google.common.collect.Lists;
-import com.mojang.brigadier.Message;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.datafixers.DataFixUtils;
+import java.util.Arrays;
 import java.util.Collection;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Function;
-import javax.annotation.Nullable;
 
 public class th {
-   public static final String a = ", ";
-   public static final tf b = tf.b(", ").a(n.h);
-   public static final tf c = tf.b(", ");
+   public static final ti a = ti.h();
+   public static final ti b = ti.c("options.on");
+   public static final ti c = ti.c("options.off");
+   public static final ti d = ti.c("gui.done");
+   public static final ti e = ti.c("gui.cancel");
+   public static final ti f = ti.c("gui.yes");
+   public static final ti g = ti.c("gui.no");
+   public static final ti h = ti.c("gui.ok");
+   public static final ti i = ti.c("gui.proceed");
+   public static final ti j = ti.c("gui.continue");
+   public static final ti k = ti.c("gui.back");
+   public static final ti l = ti.c("gui.toTitle");
+   public static final ti m = ti.c("gui.acknowledge");
+   public static final ti n = ti.c("chat.link.open");
+   public static final ti o = ti.c("gui.copy_link_to_clipboard");
+   public static final ti p = ti.c("menu.disconnect");
+   public static final ti q = ti.c("connect.failed");
+   public static final ti r = ti.b("\n");
+   public static final ti s = ti.b(". ");
+   public static final ti t = ti.b("...");
+   public static final ti u = a();
 
-   public static ts a(ts $$0, ub $$1) {
-      if ($$1.g()) {
-         return $$0;
-      } else {
-         ub $$2 = $$0.a();
-         if ($$2.g()) {
-            return $$0.b($$1);
-         } else {
-            return $$2.equals($$1) ? $$0 : $$0.b($$2.a($$1));
-         }
-      }
+   public static tv a() {
+      return ti.b(" ");
    }
 
-   public static Optional<ts> a(@Nullable dr $$0, Optional<tf> $$1, @Nullable bii $$2, int $$3) throws CommandSyntaxException {
-      return $$1.isPresent() ? Optional.of(a($$0, $$1.get(), $$2, $$3)) : Optional.empty();
+   public static tv a(long $$0) {
+      return ti.a("gui.days", $$0);
    }
 
-   public static ts a(@Nullable dr $$0, tf $$1, @Nullable bii $$2, int $$3) throws CommandSyntaxException {
-      if ($$3 > 100) {
-         return $$1.e();
-      } else {
-         ts $$4 = $$1.b().a($$0, $$2, $$3 + 1);
-
-         for (tf $$5 : $$1.c()) {
-            $$4.b(a($$0, $$5, $$2, $$3 + 1));
-         }
-
-         return $$4.c(a($$0, $$1.a(), $$2, $$3));
-      }
+   public static tv b(long $$0) {
+      return ti.a("gui.hours", $$0);
    }
 
-   private static ub a(@Nullable dr $$0, ub $$1, @Nullable bii $$2, int $$3) throws CommandSyntaxException {
-      tk $$4 = $$1.i();
-      if ($$4 != null) {
-         tf $$5 = $$4.a(tk.a.a);
-         if ($$5 != null) {
-            tk $$6 = new tk(tk.a.a, a($$0, $$5, $$2, $$3 + 1));
-            return $$1.a($$6);
+   public static tv c(long $$0) {
+      return ti.a("gui.minutes", $$0);
+   }
+
+   public static ti a(boolean $$0) {
+      return $$0 ? b : c;
+   }
+
+   public static tv a(ti $$0, boolean $$1) {
+      return ti.a($$1 ? "options.on.composed" : "options.off.composed", $$0);
+   }
+
+   public static tv a(ti $$0, ti $$1) {
+      return ti.a("options.generic_value", $$0, $$1);
+   }
+
+   public static tv a(ti... $$0) {
+      tv $$1 = ti.h();
+
+      for (int $$2 = 0; $$2 < $$0.length; $$2++) {
+         $$1.b($$0[$$2]);
+         if ($$2 != $$0.length - 1) {
+            $$1.b(s);
          }
       }
 
       return $$1;
    }
 
-   public static tf a(Collection<String> $$0) {
-      return a($$0, $$0x -> tf.b($$0x).a(n.k));
+   public static ti b(ti... $$0) {
+      return a(Arrays.asList($$0));
    }
 
-   public static <T extends Comparable<T>> tf a(Collection<T> $$0, Function<T, tf> $$1) {
-      if ($$0.isEmpty()) {
-         return te.a;
-      } else if ($$0.size() == 1) {
-         return $$1.apply($$0.iterator().next());
-      } else {
-         List<T> $$2 = Lists.newArrayList($$0);
-         $$2.sort(Comparable::compareTo);
-         return b($$2, $$1);
-      }
-   }
-
-   public static <T> tf b(Collection<? extends T> $$0, Function<T, tf> $$1) {
-      return a($$0, b, $$1);
-   }
-
-   public static <T> ts a(Collection<? extends T> $$0, Optional<? extends tf> $$1, Function<T, tf> $$2) {
-      return a($$0, (tf)DataFixUtils.orElse($$1, b), $$2);
-   }
-
-   public static tf a(Collection<? extends tf> $$0, tf $$1) {
-      return a($$0, $$1, Function.identity());
-   }
-
-   public static <T> ts a(Collection<? extends T> $$0, tf $$1, Function<T, tf> $$2) {
-      if ($$0.isEmpty()) {
-         return tf.h();
-      } else if ($$0.size() == 1) {
-         return $$2.apply((T)$$0.iterator().next()).e();
-      } else {
-         ts $$3 = tf.h();
-         boolean $$4 = true;
-
-         for (T $$5 : $$0) {
-            if (!$$4) {
-               $$3.b($$1);
-            }
-
-            $$3.b($$2.apply($$5));
-            $$4 = false;
-         }
-
-         return $$3;
-      }
-   }
-
-   public static ts a(tf $$0) {
-      return tf.a("chat.square_brackets", $$0);
-   }
-
-   public static tf a(Message $$0) {
-      return (tf)($$0 instanceof tf ? (tf)$$0 : tf.b($$0.getString()));
-   }
-
-   public static boolean b(@Nullable tf $$0) {
-      if ($$0 != null && $$0.b() instanceof up $$1) {
-         String $$2 = $$1.a();
-         String $$3 = $$1.b();
-         return $$3 != null || qm.a().b($$2);
-      } else {
-         return true;
-      }
-   }
-
-   public static ts a(String $$0) {
-      return a((tf)tf.b($$0).a($$1 -> $$1.a(n.k).a(new td(td.a.f, $$0)).a(new tk(tk.a.a, tf.c("chat.copy.click"))).a($$0)));
+   public static ti a(Collection<? extends ti> $$0) {
+      return tk.a($$0, r);
    }
 }

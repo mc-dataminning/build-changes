@@ -1,151 +1,59 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.ints.Int2ObjectAVLTreeMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectSortedMap;
+import java.util.Collection;
+import java.util.List;
 
-public abstract class cde extends cdd implements cdh {
-   private hn<cix> c = hn.a(36, cix.b);
-   @Nullable
-   private aer d;
-   private long e;
+public class cde {
+   private final List<cdb> a = Lists.newArrayList();
+   private int b;
 
-   protected cde(bim<?> $$0, cpl $$1) {
-      super($$0, $$1);
+   public ImmutableList<cdb> a() {
+      return ImmutableList.copyOf(this.a);
    }
 
-   protected cde(bim<?> $$0, double $$1, double $$2, double $$3, cpl $$4) {
-      super($$0, $$4, $$1, $$2, $$3);
+   public cde a(int $$0, float $$1) {
+      this.a.add(new cdb($$0, $$1));
+      this.b();
+      return this;
    }
 
-   @Override
-   public void a(bhg $$0) {
-      super.a($$0);
-      this.a($$0, this.dK(), this);
+   public cde a(Collection<cdb> $$0) {
+      this.a.addAll($$0);
+      this.b();
+      return this;
    }
 
-   @Override
-   public cix a(int $$0) {
-      return this.f_($$0);
+   private void b() {
+      Int2ObjectSortedMap<cdb> $$0 = new Int2ObjectAVLTreeMap();
+      this.a.forEach($$1 -> $$0.put($$1.a(), $$1));
+      this.a.clear();
+      this.a.addAll($$0.values());
+      this.b = 0;
    }
 
-   @Override
-   public cix a(int $$0, int $$1) {
-      return this.b($$0, $$1);
-   }
-
-   @Override
-   public cix b(int $$0) {
-      return this.e_($$0);
-   }
-
-   @Override
-   public void a(int $$0, cix $$1) {
-      this.c($$0, $$1);
-   }
-
-   @Override
-   public bjq a_(int $$0) {
-      return this.g_($$0);
-   }
-
-   @Override
-   public void e() {
-   }
-
-   @Override
-   public boolean a(cbm $$0) {
-      return this.g($$0);
-   }
-
-   @Override
-   public void a(bii.c $$0) {
-      if (!this.dK().B && $$0.a()) {
-         bgm.a(this.dK(), this, this);
-      }
-
-      super.a($$0);
-   }
-
-   @Override
-   protected void b(qr $$0) {
-      super.b($$0);
-      this.c($$0);
-   }
-
-   @Override
-   protected void a(qr $$0) {
-      super.a($$0);
-      this.b_($$0);
-   }
-
-   @Override
-   public bgq a(cbm $$0, bgp $$1) {
-      return this.c_($$0);
-   }
-
-   @Override
-   protected void p() {
-      float $$0 = 0.98F;
-      if (this.d == null) {
-         int $$1 = 15 - ced.b(this);
-         $$0 += (float)$$1 * 0.001F;
-      }
-
-      if (this.aX()) {
-         $$0 *= 0.95F;
-      }
-
-      this.f(this.dn().d((double)$$0, 0.0, (double)$$0));
-   }
-
-   @Override
-   public void a() {
-      this.f();
-   }
-
-   public void a(aer $$0, long $$1) {
-      this.d = $$0;
-      this.e = $$1;
-   }
-
-   @Nullable
-   @Override
-   public ced createMenu(int $$0, cbl $$1, cbm $$2) {
-      if (this.d != null && $$2.G_()) {
-         return null;
+   public float a(int $$0) {
+      if (this.a.size() <= 0) {
+         return 0.0F;
       } else {
-         this.f($$1.m);
-         return this.a($$0, $$1);
+         cdb $$1 = this.a.get(this.b);
+         cdb $$2 = this.a.get(this.a.size() - 1);
+         boolean $$3 = $$0 < $$1.a();
+         int $$4 = $$3 ? 0 : this.b;
+         float $$5 = $$3 ? $$2.b() : $$1.b();
+
+         for (int $$6 = $$4; $$6 < this.a.size(); $$6++) {
+            cdb $$7 = this.a.get($$6);
+            if ($$7.a() > $$0) {
+               break;
+            }
+
+            this.b = $$6;
+            $$5 = $$7.b();
+         }
+
+         return $$5;
       }
-   }
-
-   protected abstract ced a(int var1, cbl var2);
-
-   @Nullable
-   @Override
-   public aer A() {
-      return this.d;
-   }
-
-   @Override
-   public void a(@Nullable aer $$0) {
-      this.d = $$0;
-   }
-
-   @Override
-   public long B() {
-      return this.e;
-   }
-
-   @Override
-   public void a(long $$0) {
-      this.e = $$0;
-   }
-
-   @Override
-   public hn<cix> D() {
-      return this.c;
-   }
-
-   @Override
-   public void E() {
-      this.c = hn.a(this.b(), cix.b);
    }
 }

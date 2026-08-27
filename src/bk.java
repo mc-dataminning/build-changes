@@ -1,70 +1,41 @@
 import com.google.gson.JsonObject;
-import com.google.gson.JsonSyntaxException;
 import java.util.Optional;
-import javax.annotation.Nullable;
 
-public class bk extends cu<bk.a> {
-   static final aer a = new aer("enter_block");
-
-   @Override
-   public aer a() {
-      return a;
-   }
-
-   public bk.a a(JsonObject $$0, Optional<ba> $$1, be $$2) {
-      csl $$3 = a($$0);
-      Optional<cy> $$4 = cy.a($$0.get("state"));
-      if ($$3 != null) {
-         $$4.ifPresent($$1x -> $$1x.a($$3.l(), $$1xx -> {
-               throw new JsonSyntaxException("Block " + $$3 + " has no property " + $$1xx);
-            }));
-      }
-
+public class bk extends cw<bk.a> {
+   public bk.a a(JsonObject $$0, Optional<bc> $$1, bg $$2) {
+      Optional<cb> $$3 = cb.a($$0.get("item"));
+      cl.d $$4 = cl.d.a($$0.get("levels"));
       return new bk.a($$1, $$3, $$4);
    }
 
-   @Nullable
-   private static csl a(JsonObject $$0) {
-      if ($$0.has("block")) {
-         aer $$1 = new aer(arg.i($$0, "block"));
-         return jb.f.b($$1).orElseThrow(() -> new JsonSyntaxException("Unknown block type '" + $$1 + "'"));
-      } else {
-         return null;
-      }
+   public void a(ako $$0, cja $$1, int $$2) {
+      this.a($$0, $$2x -> $$2x.a($$1, $$2));
    }
 
-   public void a(akl $$0, dez $$1) {
-      this.a($$0, $$1x -> $$1x.a($$1));
-   }
+   public static class a extends at {
+      private final Optional<cb> a;
+      private final cl.d b;
 
-   public static class a extends ar {
-      @Nullable
-      private final csl a;
-      private final Optional<cy> b;
-
-      public a(Optional<ba> $$0, @Nullable csl $$1, Optional<cy> $$2) {
-         super(bk.a, $$0);
+      public a(Optional<bc> $$0, Optional<cb> $$1, cl.d $$2) {
+         super($$0);
          this.a = $$1;
          this.b = $$2;
       }
 
-      public static bk.a a(csl $$0) {
-         return new bk.a(Optional.empty(), $$0, Optional.empty());
+      public static am<bk.a> c() {
+         return al.i.a(new bk.a(Optional.empty(), Optional.empty(), cl.d.c));
+      }
+
+      public boolean a(cja $$0, int $$1) {
+         return this.a.isPresent() && !this.a.get().a($$0) ? false : this.b.d($$1);
       }
 
       @Override
-      public JsonObject b() {
-         JsonObject $$0 = super.b();
-         if (this.a != null) {
-            $$0.addProperty("block", jb.f.b(this.a).toString());
-         }
-
-         this.b.ifPresent($$1 -> $$0.add("state", $$1.a()));
+      public JsonObject a() {
+         JsonObject $$0 = super.a();
+         this.a.ifPresent($$1 -> $$0.add("item", $$1.a()));
+         $$0.add("levels", this.b.e());
          return $$0;
-      }
-
-      public boolean a(dez $$0) {
-         return this.a != null && !$$0.a(this.a) ? false : !this.b.isPresent() || this.b.get().a($$0);
       }
    }
 }

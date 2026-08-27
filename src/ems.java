@@ -1,43 +1,27 @@
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import javax.annotation.Nullable;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public class ems {
-   private static final String a = "translationKey";
-   private static final String b = "args";
-   private final String c;
-   @Nullable
-   private final Object[] d;
+public class ems extends eng {
+   private static final Logger d = LogUtils.getLogger();
+   public String a;
+   public String b;
+   public String c;
 
-   private ems(String $$0, @Nullable Object[] $$1) {
-      this.c = $$0;
-      this.d = $$1;
-   }
+   public static ems a(String $$0) {
+      JsonParser $$1 = new JsonParser();
+      ems $$2 = new ems();
 
-   public tf a(tf $$0) {
-      if (!gaa.a(this.c)) {
-         return $$0;
-      } else {
-         return this.d == null ? tf.c(this.c) : tf.a(this.c, this.d);
-      }
-   }
-
-   public static ems a(JsonObject $$0) {
-      String $$1 = eoy.a("translationKey", $$0);
-      JsonElement $$2 = $$0.get("args");
-      String[] $$5;
-      if ($$2 != null && !$$2.isJsonNull()) {
-         JsonArray $$4 = $$2.getAsJsonArray();
-         $$5 = new String[$$4.size()];
-
-         for (int $$6 = 0; $$6 < $$4.size(); $$6++) {
-            $$5[$$6] = $$4.get($$6).getAsString();
-         }
-      } else {
-         $$5 = null;
+      try {
+         JsonObject $$3 = $$1.parse($$0).getAsJsonObject();
+         $$2.a = epd.a("address", $$3, null);
+         $$2.b = epd.a("resourcePackUrl", $$3, null);
+         $$2.c = epd.a("resourcePackHash", $$3, null);
+      } catch (Exception var4) {
+         d.error("Could not parse RealmsServerAddress: {}", var4.getMessage());
       }
 
-      return new ems($$1, $$5);
+      return $$2;
    }
 }

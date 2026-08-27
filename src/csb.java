@@ -1,135 +1,68 @@
-public abstract class csb extends csl implements czm {
-   protected static final ehw a = csl.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0);
-   protected static final ehw b = csl.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0);
-   public static final dfq c = dfp.C;
-   private final boolean d;
+import javax.annotation.Nullable;
 
-   public static boolean a(cpl $$0, gu $$1) {
-      return g($$0.a_($$1));
+public class csb extends csq implements czr {
+   public static final dfv c = dfu.C;
+   private static final eib a = csq.a(2.0, 0.0, 2.0, 14.0, 4.0, 14.0);
+
+   protected csb(dfd.d $$0) {
+      super($$0);
+      this.k(this.C.b().a(c, Boolean.valueOf(true)));
    }
 
-   public static boolean g(dez $$0) {
-      return $$0.a(apl.N) && $$0.b() instanceof csb;
-   }
-
-   protected csb(boolean $$0, dey.d $$1) {
-      super($$1);
-      this.d = $$0;
-   }
-
-   public boolean a() {
-      return this.d;
-   }
-
-   @Override
-   public ehw a(dez $$0, cor $$1, gu $$2, ehi $$3) {
-      dgd $$4 = $$0.a(this) ? $$0.c(this.b()) : null;
-      return $$4 != null && $$4.b() ? b : a;
-   }
-
-   @Override
-   public boolean a(dez $$0, cpo $$1, gu $$2) {
-      return c($$1, $$2.d());
-   }
-
-   @Override
-   public void b(dez $$0, cpl $$1, gu $$2, dez $$3, boolean $$4) {
-      if (!$$3.a($$0.b())) {
-         this.a($$0, $$1, $$2, $$4);
+   protected void a(dfe $$0, cpr $$1, gw $$2) {
+      if (!e($$0, $$1, $$2)) {
+         $$1.a($$2, this, 60 + $$1.y_().a(40));
       }
    }
 
-   protected dez a(dez $$0, cpl $$1, gu $$2, boolean $$3) {
-      $$0 = this.a($$1, $$2, $$0, true);
-      if (this.d) {
-         $$1.a($$0, $$2, this, $$2, $$3);
-      }
-
-      return $$0;
-   }
-
-   @Override
-   public void a(dez $$0, cpl $$1, gu $$2, csl $$3, gu $$4, boolean $$5) {
-      if (!$$1.B && $$1.a_($$2).a(this)) {
-         dgd $$6 = $$0.c(this.b());
-         if (a($$2, $$1, $$6)) {
-            c($$0, $$1, $$2);
-            $$1.a($$2, $$5);
-         } else {
-            this.a($$0, $$1, $$2, $$3);
-         }
-      }
-   }
-
-   private static boolean a(gu $$0, cpl $$1, dgd $$2) {
-      if (!c($$1, $$0.d())) {
+   protected static boolean e(dfe $$0, cow $$1, gw $$2) {
+      if ($$0.c(c)) {
          return true;
       } else {
-         switch ($$2) {
-            case c:
-               return !c($$1, $$0.h());
-            case d:
-               return !c($$1, $$0.g());
-            case e:
-               return !c($$1, $$0.e());
-            case f:
-               return !c($$1, $$0.f());
-            default:
-               return false;
+         for (hc $$3 : hc.values()) {
+            if ($$1.b_($$2.a($$3)).a(apt.a)) {
+               return true;
+            }
          }
+
+         return false;
       }
    }
 
-   protected void a(dez $$0, cpl $$1, gu $$2, csl $$3) {
-   }
-
-   protected dez a(cpl $$0, gu $$1, dez $$2, boolean $$3) {
-      if ($$0.B) {
-         return $$2;
-      } else {
-         dgd $$4 = $$2.c(this.b());
-         return new cyk($$0, $$1, $$2).a($$0.B($$1), $$3, $$4).c();
-      }
+   @Nullable
+   @Override
+   public dfe a(cli $$0) {
+      eah $$1 = $$0.q().b_($$0.a());
+      return this.n().a(c, Boolean.valueOf($$1.a(apt.a) && $$1.e() == 8));
    }
 
    @Override
-   public void a(dez $$0, cpl $$1, gu $$2, dez $$3, boolean $$4) {
-      if (!$$4) {
-         super.a($$0, $$1, $$2, $$3, $$4);
-         if ($$0.c(this.b()).b()) {
-            $$1.a($$2.c(), this);
-         }
-
-         if (this.d) {
-            $$1.a($$2, this);
-            $$1.a($$2.d(), this);
-         }
-      }
+   public eib a(dfe $$0, cow $$1, gw $$2, ehn $$3) {
+      return a;
    }
 
    @Override
-   public dez a(clf $$0) {
-      eac $$1 = $$0.q().b_($$0.a());
-      boolean $$2 = $$1.a() == ead.c;
-      dez $$3 = super.n();
-      ha $$4 = $$0.g();
-      boolean $$5 = $$4 == ha.f || $$4 == ha.e;
-      return $$3.a(this.b(), $$5 ? dgd.b : dgd.a).a(c, Boolean.valueOf($$2));
-   }
-
-   public abstract dgc<dgd> b();
-
-   @Override
-   public dez a(dez $$0, ha $$1, dez $$2, cpm $$3, gu $$4, gu $$5) {
+   public dfe a(dfe $$0, hc $$1, dfe $$2, cpr $$3, gw $$4, gw $$5) {
       if ($$0.c(c)) {
-         $$3.a($$4, ead.c, ead.c.a($$3));
+         $$3.a($$4, eai.c, eai.c.a($$3));
       }
 
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      return $$1 == hc.a && !this.a($$0, (cpt)$$3, $$4) ? csr.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public eac c_(dez $$0) {
-      return $$0.c(c) ? ead.c.a(false) : super.c_($$0);
+   public boolean a(dfe $$0, cpt $$1, gw $$2) {
+      gw $$3 = $$2.d();
+      return $$1.a_($$3).d($$1, $$3, hc.b);
+   }
+
+   @Override
+   protected void a(dff.a<csq, dfe> $$0) {
+      $$0.a(c);
+   }
+
+   @Override
+   public eah c_(dfe $$0) {
+      return $$0.c(c) ? eai.c.a(false) : super.c_($$0);
    }
 }

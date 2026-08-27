@@ -1,23 +1,13 @@
-public class fxs<T extends biy> extends fwj<T, fhh<T>> {
-   public fxs(fus<T, fhh<T>> $$0, fnq $$1) {
-      super($$0, $$1);
+public class fxs<T extends bjd & bzh, M extends fey<T>> extends fxk<T, M> {
+   private static final aeu a = new aeu("textures/entity/skeleton/stray_overlay.png");
+   private final fgt<T> b;
+
+   public fxs(fux<T, M> $$0, fht $$1) {
+      super($$0);
+      this.b = new fgt<>($$1.a(fhw.bw));
    }
 
-   @Override
-   public void a(elf $$0, fnu $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      cix $$10 = $$3.eR();
-      $$0.a();
-      if ($$10.a(cja.rv)) {
-         this.c().d().a($$0);
-         this.c().e().a($$0);
-         $$0.a(0.0625F, 0.25F, 0.0F);
-         $$0.a(a.f.rotationDegrees(180.0F));
-         $$0.a(a.b.rotationDegrees(140.0F));
-         $$0.a(a.f.rotationDegrees(10.0F));
-         $$0.a(0.0F, -0.4F, 0.4F);
-      }
-
-      super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
-      $$0.b();
+   public void a(elk $$0, fnz $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      a(this.c(), this.b, a, $$0, $$1, $$2, $$3, $$4, $$5, $$7, $$8, $$9, $$6, 1.0F, 1.0F, 1.0F);
    }
 }

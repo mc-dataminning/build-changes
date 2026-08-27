@@ -1,104 +1,22 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Collection;
+import com.google.gson.JsonObject;
 import java.util.Optional;
 
-public record at(Optional<aqa<csl>> b, Optional<hi<csl>> c, Optional<cy> d, Optional<cl> e) {
-   private static final Codec<hi<csl>> f = jb.f.r().listOf().xmap(hi::a, $$0 -> $$0.a().toList());
-   public static final Codec<at> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               aqy.a(aqa.a(jc.e), "tag").forGetter(at::a),
-               aqy.a(f, "blocks").forGetter(at::b),
-               aqy.a(cy.a, "state").forGetter(at::c),
-               aqy.a(cl.a, "nbt").forGetter(at::d)
-            )
-            .apply($$0, at::new)
-   );
+public abstract class at implements cw.a {
+   private final Optional<bc> a;
 
-   static Optional<at> a(Optional<aqa<csl>> $$0, Optional<hi<csl>> $$1, Optional<cy> $$2, Optional<cl> $$3) {
-      return $$0.isEmpty() && $$1.isEmpty() && $$2.isEmpty() && $$3.isEmpty() ? Optional.empty() : Optional.of(new at($$0, $$1, $$2, $$3));
+   public at(Optional<bc> $$0) {
+      this.a = $$0;
    }
 
-   public boolean a(akk $$0, gu $$1) {
-      if (!$$0.o($$1)) {
-         return false;
-      } else {
-         dez $$2 = $$0.a_($$1);
-         if (this.b.isPresent() && !$$2.a(this.b.get())) {
-            return false;
-         } else if (this.c.isPresent() && !$$2.a(this.c.get())) {
-            return false;
-         } else if (this.d.isPresent() && !this.d.get().a($$2)) {
-            return false;
-         } else {
-            if (this.e.isPresent()) {
-               dcl $$3 = $$0.c_($$1);
-               if ($$3 == null || !this.e.get().a($$3.m())) {
-                  return false;
-               }
-            }
-
-            return true;
-         }
-      }
+   @Override
+   public Optional<bc> b() {
+      return this.a;
    }
 
-   public Optional<aqa<csl>> a() {
-      return this.b;
-   }
-
-   public Optional<hi<csl>> b() {
-      return this.c;
-   }
-
-   public Optional<cy> c() {
-      return this.d;
-   }
-
-   public Optional<cl> d() {
-      return this.e;
-   }
-
-   public static class a {
-      private Optional<hi<csl>> a = Optional.empty();
-      private Optional<aqa<csl>> b = Optional.empty();
-      private Optional<cy> c = Optional.empty();
-      private Optional<cl> d = Optional.empty();
-
-      private a() {
-      }
-
-      public static at.a a() {
-         return new at.a();
-      }
-
-      public at.a a(csl... $$0) {
-         this.a = Optional.of(hi.a(csl::q, $$0));
-         return this;
-      }
-
-      public at.a a(Collection<csl> $$0) {
-         this.a = Optional.of(hi.a(csl::q, $$0));
-         return this;
-      }
-
-      public at.a a(aqa<csl> $$0) {
-         this.b = Optional.of($$0);
-         return this;
-      }
-
-      public at.a a(qr $$0) {
-         this.d = Optional.of(new cl($$0));
-         return this;
-      }
-
-      public at.a a(cy.a $$0) {
-         this.c = $$0.b();
-         return this;
-      }
-
-      public Optional<at> b() {
-         return at.a(this.b, this.a, this.c, this.d);
-      }
+   @Override
+   public JsonObject a() {
+      JsonObject $$0 = new JsonObject();
+      this.a.ifPresent($$1 -> $$0.add("player", $$1.a()));
+      return $$0;
    }
 }

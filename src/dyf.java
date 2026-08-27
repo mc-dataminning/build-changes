@@ -1,13 +1,20 @@
 import com.mojang.serialization.Codec;
+import javax.annotation.Nullable;
 
-public interface dyf<P extends dye> {
-   dyf<dyd> a = a("always_true", dyd.a);
-   dyf<dyb> b = a("linear_pos", dyb.a);
-   dyf<dxq> c = a("axis_aligned_linear_pos", dxq.a);
+public class dyf extends dyt {
+   public static final Codec<dyf> a = Codec.unit(() -> dyf.b);
+   public static final dyf b = new dyf();
 
-   Codec<P> codec();
+   @Nullable
+   @Override
+   public dyw.c a(cpt $$0, gw $$1, gw $$2, dyw.c $$3, dyw.c $$4, dys $$5) {
+      gw $$6 = $$4.a();
+      boolean $$7 = $$0.a_($$6).a(csr.H);
+      return $$7 && !csq.a($$4.b().j($$0, $$6)) ? new dyw.c($$6, csr.H.n(), $$4.c()) : $$4;
+   }
 
-   static <P extends dye> dyf<P> a(String $$0, Codec<P> $$1) {
-      return hr.a(jb.r, $$0, () -> $$1);
+   @Override
+   protected dyv<?> a() {
+      return dyv.m;
    }
 }

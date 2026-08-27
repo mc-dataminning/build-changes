@@ -1,88 +1,146 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-import com.google.gson.JsonObject;
-import java.util.Collection;
-import java.util.Iterator;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParseException;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.JsonOps;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
-import java.util.Set;
+import javax.annotation.Nullable;
 
-public class cb extends cu<cb.a> {
-   static final aer a = new aer("killed_by_crossbow");
+public record cb(Optional<aqd<civ>> b, Optional<hk<civ>> c, cl.d d, cl.d e, List<bl> f, List<bl> g, Optional<hg<ckx>> h, Optional<cn> i) {
+   private static final Codec<hk<civ>> j = jd.i.r().listOf().xmap(hk::a, $$0 -> $$0.a().toList());
+   public static final Codec<cb> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               arb.a(aqd.a(je.D), "tag").forGetter(cb::b),
+               arb.a(j, "items").forGetter(cb::c),
+               arb.a(cl.d.d, "count", cl.d.c).forGetter(cb::d),
+               arb.a(cl.d.d, "durability", cl.d.c).forGetter(cb::e),
+               arb.a(bl.a.listOf(), "enchantments", List.of()).forGetter(cb::f),
+               arb.a(bl.a.listOf(), "stored_enchantments", List.of()).forGetter(cb::g),
+               arb.a(jd.j.r(), "potion").forGetter(cb::h),
+               arb.a(cn.a, "nbt").forGetter(cb::i)
+            )
+            .apply($$0, cb::new)
+   );
 
-   @Override
-   public aer a() {
-      return a;
-   }
+   public boolean a(cja $$0) {
+      if (this.b.isPresent() && !$$0.a(this.b.get())) {
+         return false;
+      } else if (this.c.isPresent() && !$$0.a(this.c.get())) {
+         return false;
+      } else if (!this.d.d($$0.L())) {
+         return false;
+      } else if (!this.e.c() && !$$0.i()) {
+         return false;
+      } else if (!this.e.d($$0.l() - $$0.k())) {
+         return false;
+      } else if (this.i.isPresent() && !this.i.get().a($$0)) {
+         return false;
+      } else {
+         if (!this.f.isEmpty()) {
+            Map<cnj, Integer> $$1 = cnl.a($$0.x());
 
-   public cb.a a(JsonObject $$0, Optional<ba> $$1, be $$2) {
-      List<ba> $$3 = bo.b($$0, "victims", $$2);
-      cj.d $$4 = cj.d.a($$0.get("unique_entity_types"));
-      return new cb.a($$1, $$3, $$4);
-   }
-
-   public void a(akl $$0, Collection<bii> $$1) {
-      List<ecg> $$2 = Lists.newArrayList();
-      Set<bim<?>> $$3 = Sets.newHashSet();
-
-      for (bii $$4 : $$1) {
-         $$3.add($$4.ag());
-         $$2.add(bo.b($$0, $$4));
-      }
-
-      this.a($$0, $$2x -> $$2x.a($$2, $$3.size()));
-   }
-
-   public static class a extends ar {
-      private final List<ba> a;
-      private final cj.d b;
-
-      public a(Optional<ba> $$0, List<ba> $$1, cj.d $$2) {
-         super(cb.a, $$0);
-         this.a = $$1;
-         this.b = $$2;
-      }
-
-      public static cb.a a(bo.a... $$0) {
-         return new cb.a(Optional.empty(), bo.a($$0), cj.d.c);
-      }
-
-      public static cb.a a(cj.d $$0) {
-         return new cb.a(Optional.empty(), List.of(), $$0);
-      }
-
-      public boolean a(Collection<ecg> $$0, int $$1) {
-         if (!this.a.isEmpty()) {
-            List<ecg> $$2 = Lists.newArrayList($$0);
-
-            for (ba $$3 : this.a) {
-               boolean $$4 = false;
-               Iterator<ecg> $$5 = $$2.iterator();
-
-               while ($$5.hasNext()) {
-                  ecg $$6 = $$5.next();
-                  if ($$3.a($$6)) {
-                     $$5.remove();
-                     $$4 = true;
-                     break;
-                  }
-               }
-
-               if (!$$4) {
+            for (bl $$2 : this.f) {
+               if (!$$2.a($$1)) {
                   return false;
                }
             }
          }
 
-         return this.b.d($$1);
+         if (!this.g.isEmpty()) {
+            Map<cnj, Integer> $$3 = cnl.a(chw.d($$0));
+
+            for (bl $$4 : this.g) {
+               if (!$$4.a($$3)) {
+                  return false;
+               }
+            }
+         }
+
+         return !this.h.isPresent() || this.h.get().a() == ckz.d($$0);
+      }
+   }
+
+   public static Optional<cb> a(@Nullable JsonElement $$0) {
+      return $$0 != null && !$$0.isJsonNull() ? Optional.of(ac.a(a.parse(JsonOps.INSTANCE, $$0), JsonParseException::new)) : Optional.empty();
+   }
+
+   public JsonElement a() {
+      return ac.a(a.encodeStart(JsonOps.INSTANCE, this), IllegalStateException::new);
+   }
+
+   public static JsonElement a(List<cb> $$0) {
+      return ac.a(a.listOf().encodeStart(JsonOps.INSTANCE, $$0), IllegalStateException::new);
+   }
+
+   public static List<cb> b(@Nullable JsonElement $$0) {
+      return $$0 != null && !$$0.isJsonNull() ? ac.a(a.listOf().parse(JsonOps.INSTANCE, $$0), JsonParseException::new) : List.of();
+   }
+
+   public static class a {
+      private final Builder<bl> a = ImmutableList.builder();
+      private final Builder<bl> b = ImmutableList.builder();
+      private Optional<hk<civ>> c = Optional.empty();
+      private Optional<aqd<civ>> d = Optional.empty();
+      private cl.d e = cl.d.c;
+      private cl.d f = cl.d.c;
+      private Optional<hg<ckx>> g = Optional.empty();
+      private Optional<cn> h = Optional.empty();
+
+      private a() {
       }
 
-      @Override
-      public JsonObject b() {
-         JsonObject $$0 = super.b();
-         $$0.add("victims", ba.a(this.a));
-         $$0.add("unique_entity_types", this.b.e());
-         return $$0;
+      public static cb.a a() {
+         return new cb.a();
+      }
+
+      public cb.a a(cpp... $$0) {
+         this.c = Optional.of(hk.a($$0x -> $$0x.k().j(), $$0));
+         return this;
+      }
+
+      public cb.a a(aqd<civ> $$0) {
+         this.d = Optional.of($$0);
+         return this;
+      }
+
+      public cb.a a(cl.d $$0) {
+         this.e = $$0;
+         return this;
+      }
+
+      public cb.a b(cl.d $$0) {
+         this.f = $$0;
+         return this;
+      }
+
+      public cb.a a(ckx $$0) {
+         this.g = Optional.of($$0.c());
+         return this;
+      }
+
+      public cb.a a(qu $$0) {
+         this.h = Optional.of(new cn($$0));
+         return this;
+      }
+
+      public cb.a a(bl $$0) {
+         this.a.add($$0);
+         return this;
+      }
+
+      public cb.a b(bl $$0) {
+         this.b.add($$0);
+         return this;
+      }
+
+      public cb b() {
+         List<bl> $$0 = this.a.build();
+         List<bl> $$1 = this.b.build();
+         return new cb(this.d, this.c, this.e, this.f, $$0, $$1, this.g, this.h);
       }
    }
 }

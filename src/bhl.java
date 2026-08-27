@@ -1,46 +1,51 @@
-import java.util.Optional;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record bhl(String i) {
-   public static final bhl a = new bhl("generic");
-   public static final bhl b = new bhl("ladder");
-   public static final bhl c = new bhl("vines");
-   public static final bhl d = new bhl("weeping_vines");
-   public static final bhl e = new bhl("twisting_vines");
-   public static final bhl f = new bhl("scaffolding");
-   public static final bhl g = new bhl("other_climbable");
-   public static final bhl h = new bhl("water");
+public record bhl(String b, bhi c, float d, bhh e, bhn f) {
+   public static final Codec<bhl> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.STRING.fieldOf("message_id").forGetter(bhl::a),
+               bhi.d.fieldOf("scaling").forGetter(bhl::b),
+               Codec.FLOAT.fieldOf("exhaustion").forGetter(bhl::c),
+               bhh.g.optionalFieldOf("effects", bhh.a).forGetter(bhl::d),
+               bhn.d.optionalFieldOf("death_message_type", bhn.a).forGetter(bhl::e)
+            )
+            .apply($$0, bhl::new)
+   );
 
-   public static bhl a(dez $$0) {
-      if ($$0.a(csm.cO) || $$0.a(apl.P)) {
-         return b;
-      } else if ($$0.a(csm.ff)) {
-         return c;
-      } else if ($$0.a(csm.oz) || $$0.a(csm.oA)) {
-         return d;
-      } else if ($$0.a(csm.oB) || $$0.a(csm.oC)) {
-         return e;
-      } else {
-         return $$0.a(csm.nS) ? f : g;
-      }
+   public bhl(String $$0, bhi $$1, float $$2) {
+      this($$0, $$1, $$2, bhh.a, bhn.a);
    }
 
-   @Nullable
-   public static bhl a(biy $$0) {
-      Optional<gu> $$1 = $$0.eF();
-      if ($$1.isPresent()) {
-         dez $$2 = $$0.dK().a_($$1.get());
-         return a($$2);
-      } else {
-         return $$0.aX() ? h : null;
-      }
+   public bhl(String $$0, bhi $$1, float $$2, bhh $$3) {
+      this($$0, $$1, $$2, $$3, bhn.a);
+   }
+
+   public bhl(String $$0, float $$1, bhh $$2) {
+      this($$0, bhi.b, $$1, $$2);
+   }
+
+   public bhl(String $$0, float $$1) {
+      this($$0, bhi.b, $$1);
    }
 
    public String a() {
-      return "death.fell.accident." + this.i;
+      return this.b;
    }
 
-   public String b() {
-      return this.i;
+   public bhi b() {
+      return this.c;
+   }
+
+   public float c() {
+      return this.d;
+   }
+
+   public bhh d() {
+      return this.e;
+   }
+
+   public bhn e() {
+      return this.f;
    }
 }

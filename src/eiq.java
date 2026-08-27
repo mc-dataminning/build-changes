@@ -1,5 +1,3 @@
-import java.util.function.Function;
-
-public interface eiq<T> {
-   rk b(long var1, Function<T, String> var3);
+public interface eiq<T> extends eiw<T> {
+   boolean b(gw var1, T var2);
 }

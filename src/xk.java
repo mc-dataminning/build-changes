@@ -1,39 +1,42 @@
+import com.mojang.brigadier.context.StringRange;
+import com.mojang.brigadier.suggestion.Suggestion;
+import com.mojang.brigadier.suggestion.Suggestions;
 import java.util.List;
 
-public class xk implements ux<wp> {
+public class xk implements va<ws> {
    private final int a;
-   private final int b;
-   private final List<cix> c;
-   private final cix d;
+   private final Suggestions b;
 
-   public xk(int $$0, int $$1, hn<cix> $$2, cix $$3) {
+   public xk(int $$0, Suggestions $$1) {
       this.a = $$0;
       this.b = $$1;
-      this.c = hn.a($$2.size(), cix.b);
-
-      for (int $$4 = 0; $$4 < $$2.size(); $$4++) {
-         this.c.set($$4, $$2.get($$4).p());
-      }
-
-      this.d = $$3.p();
    }
 
-   public xk(si $$0) {
-      this.a = $$0.readUnsignedByte();
-      this.b = $$0.m();
-      this.c = $$0.a(hn::a, si::q);
-      this.d = $$0.q();
+   public xk(sl $$0) {
+      this.a = $$0.m();
+      int $$1 = $$0.m();
+      int $$2 = $$0.m();
+      StringRange $$3 = StringRange.between($$1, $$1 + $$2);
+      List<Suggestion> $$4 = $$0.a((sl.a<Suggestion>)($$1x -> {
+         String $$2x = $$1x.r();
+         ti $$3x = $$1x.c(sl::l);
+         return new Suggestion($$3, $$2x, $$3x);
+      }));
+      this.b = new Suggestions($$3, $$4);
    }
 
    @Override
-   public void a(si $$0) {
-      $$0.k(this.a);
-      $$0.c(this.b);
-      $$0.a(this.c, si::a);
-      $$0.a(this.d);
+   public void a(sl $$0) {
+      $$0.c(this.a);
+      $$0.c(this.b.getRange().getStart());
+      $$0.c(this.b.getRange().getLength());
+      $$0.a(this.b.getList(), ($$0x, $$1) -> {
+         $$0x.a($$1.getText());
+         $$0x.a($$1.getTooltip(), ($$0xx, $$1x) -> $$0xx.a(tk.a($$1x)));
+      });
    }
 
-   public void a(wp $$0) {
+   public void a(ws $$0) {
       $$0.a(this);
    }
 
@@ -41,15 +44,7 @@ public class xk implements ux<wp> {
       return this.a;
    }
 
-   public List<cix> d() {
-      return this.c;
-   }
-
-   public cix e() {
-      return this.d;
-   }
-
-   public int f() {
+   public Suggestions d() {
       return this.b;
    }
 }

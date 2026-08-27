@@ -1,68 +1,28 @@
-import javax.annotation.Nullable;
-
-public class cfq implements bgj, cfp {
-   private final hn<cix> c = hn.a(1, cix.b);
-   @Nullable
-   private cma<?> d;
-
-   @Override
-   public int b() {
-      return 1;
+public abstract class cfq<C extends bgm> extends ceg {
+   public cfq(cfl<?> $$0, int $$1) {
+      super($$0, $$1);
    }
 
-   @Override
-   public boolean aa_() {
-      for (cix $$0 : this.c) {
-         if (!$$0.b()) {
-            return false;
-         }
-      }
-
-      return true;
+   public void a(boolean $$0, cmf<?> $$1, ako $$2) {
+      new aek<>(this).a($$2, (cmf<? extends cme<C>>)$$1, $$0);
    }
 
-   @Override
-   public cix a(int $$0) {
-      return this.c.get(0);
-   }
+   public abstract void a(cbt var1);
 
    @Override
-   public cix a(int $$0, int $$1) {
-      return bgk.a(this.c, 0);
-   }
+   public abstract void l();
 
-   @Override
-   public cix b(int $$0) {
-      return bgk.a(this.c, 0);
-   }
+   public abstract boolean a(cmf<? extends cme<C>> var1);
 
-   @Override
-   public void a(int $$0, cix $$1) {
-      this.c.set(0, $$1);
-   }
+   public abstract int m();
 
-   @Override
-   public void e() {
-   }
+   public abstract int n();
 
-   @Override
-   public boolean a(cbm $$0) {
-      return true;
-   }
+   public abstract int o();
 
-   @Override
-   public void a() {
-      this.c.clear();
-   }
+   public abstract int p();
 
-   @Override
-   public void a(@Nullable cma<?> $$0) {
-      this.d = $$0;
-   }
+   public abstract cfr t();
 
-   @Nullable
-   @Override
-   public cma<?> d() {
-      return this.d;
-   }
+   public abstract boolean e(int var1);
 }

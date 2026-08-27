@@ -1,22 +1,37 @@
+import com.google.common.base.MoreObjects;
 import java.time.Duration;
-import java.util.Comparator;
+import java.time.Instant;
 import java.util.List;
 import java.util.Map;
-import javax.annotation.Nullable;
+import java.util.TreeMap;
+import java.util.stream.Collectors;
+import jdk.jfr.consumer.RecordedEvent;
+import jdk.jfr.consumer.RecordedThread;
 
-public record bei<T extends beh>(T a, T b, @Nullable T c, int d, Map<Integer, Double> e, Duration f) {
-   public static <T extends beh> bei<T> a(List<T> $$0) {
-      if ($$0.isEmpty()) {
-         throw new IllegalArgumentException("No values");
-      } else {
-         List<T> $$1 = $$0.stream().sorted(Comparator.comparing(beh::a)).toList();
-         Duration $$2 = $$1.stream().map(beh::a).reduce(Duration::plus).orElse(Duration.ZERO);
-         T $$3 = (T)$$1.get(0);
-         T $$4 = (T)$$1.get($$1.size() - 1);
-         T $$5 = $$1.size() > 1 ? $$1.get($$1.size() - 2) : null;
-         int $$6 = $$1.size();
-         Map<Integer, Double> $$7 = bdo.a($$1.stream().mapToLong($$0x -> $$0x.a().toNanos()).toArray());
-         return new bei<>($$3, $$4, $$5, $$6, $$7, $$2);
-      }
+public record bei(Instant a, String b, long c) {
+   private static final String d = "unknown";
+
+   public static bei a(RecordedEvent $$0) {
+      RecordedThread $$1 = $$0.getThread("thread");
+      String $$2 = $$1 == null ? "unknown" : (String)MoreObjects.firstNonNull($$1.getJavaName(), "unknown");
+      return new bei($$0.getStartTime(), $$2, $$0.getLong("allocated"));
+   }
+
+   public static bei.a a(List<bei> $$0) {
+      Map<String, Double> $$1 = new TreeMap<>();
+      Map<String, List<bei>> $$2 = $$0.stream().collect(Collectors.groupingBy($$0x -> $$0x.b));
+      $$2.forEach(($$1x, $$2x) -> {
+         if ($$2x.size() >= 2) {
+            bei $$3 = (bei)$$2x.get(0);
+            bei $$4 = (bei)$$2x.get($$2x.size() - 1);
+            long $$5 = Duration.between($$3.a, $$4.a).getSeconds();
+            long $$6 = $$4.c - $$3.c;
+            $$1.put($$1x, (double)$$6 / (double)$$5);
+         }
+      });
+      return new bei.a($$1);
+   }
+
+   public static record a(Map<String, Double> a) {
    }
 }

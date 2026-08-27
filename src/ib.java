@@ -1,210 +1,225 @@
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.util.Map;
-import java.util.function.Predicate;
+import com.google.common.base.MoreObjects;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import java.util.function.Function;
+import java.util.stream.IntStream;
+import javax.annotation.concurrent.Immutable;
 
-public interface ib {
-   Map<cis, ib> a = a();
-   Map<cis, ib> b = a();
-   Map<cis, ib> c = a();
-   Map<cis, ib> d = a();
-   ib e = ($$0, $$1, $$2, $$3, $$4, $$5) -> a($$1, $$2, $$3, $$4, $$5, csm.fu.n().a(cwr.e, Integer.valueOf(3)), aow.cv);
-   ib f = ($$0, $$1, $$2, $$3, $$4, $$5) -> a($$1, $$2, $$3, $$4, $$5, csm.fv.n(), aow.cy);
-   ib g = ($$0, $$1, $$2, $$3, $$4, $$5) -> a($$1, $$2, $$3, $$4, $$5, csm.fw.n().a(cwr.e, Integer.valueOf(3)), aow.cz);
-   ib h = ($$0, $$1, $$2, $$3, $$4, $$5) -> {
-      csl $$6 = csl.a($$5.d());
-      if (!($$6 instanceof czk)) {
-         return bgq.d;
-      } else {
-         if (!$$1.B) {
-            cix $$7 = new cix(csm.kP);
-            if ($$5.u()) {
-               $$7.c($$5.v().h());
-            }
+@Immutable
+public class ib implements Comparable<ib> {
+   public static final Codec<ib> f = Codec.INT_STREAM
+      .comapFlatMap($$0 -> ac.a($$0, 3).map($$0x -> new ib($$0x[0], $$0x[1], $$0x[2])), $$0 -> IntStream.of($$0.u(), $$0.v(), $$0.w()));
+   public static final ib g = new ib(0, 0, 0);
+   private int a;
+   private int b;
+   private int c;
 
-            $$3.a($$4, $$7);
-            $$3.a(apg.Z);
-            cwr.e($$0, $$1, $$2);
-         }
-
-         return bgq.a($$1.B);
-      }
-   };
-   ib i = ($$0, $$1, $$2, $$3, $$4, $$5) -> {
-      if (dcb.c($$5) <= 0) {
-         return bgq.d;
-      } else {
-         if (!$$1.B) {
-            cix $$6 = $$5.c(1);
-            dcb.d($$6);
-            if (!$$3.fR().d) {
-               $$5.h(1);
-            }
-
-            if ($$5.b()) {
-               $$3.a($$4, $$6);
-            } else if ($$3.fQ().e($$6)) {
-               $$3.bP.b();
-            } else {
-               $$3.a($$6, false);
-            }
-
-            $$3.a(apg.Y);
-            cwr.e($$0, $$1, $$2);
-         }
-
-         return bgq.a($$1.B);
-      }
-   };
-   ib j = ($$0, $$1, $$2, $$3, $$4, $$5) -> {
-      if (!($$5.d() instanceof chp $$7)) {
-         return bgq.d;
-      } else if (!$$7.a($$5)) {
-         return bgq.d;
-      } else {
-         if (!$$1.B) {
-            $$7.f_($$5);
-            $$3.a(apg.X);
-            cwr.e($$0, $$1, $$2);
-         }
-
-         return bgq.a($$1.B);
-      }
-   };
-
-   static Object2ObjectOpenHashMap<cis, ib> a() {
-      return ac.a(new Object2ObjectOpenHashMap(), $$0 -> $$0.defaultReturnValue((ib)($$0x, $$1, $$2, $$3, $$4, $$5) -> bgq.d));
+   public static Codec<ib> v(int $$0) {
+      return arb.a(
+         f,
+         (Function<ib, DataResult<ib>>)($$1 -> Math.abs($$1.u()) < $$0 && Math.abs($$1.v()) < $$0 && Math.abs($$1.w()) < $$0
+               ? DataResult.success($$1)
+               : DataResult.error(() -> "Position out of range, expected at most " + $$0 + ": " + $$1))
+      );
    }
 
-   bgq interact(dez var1, cpl var2, gu var3, cbm var4, bgp var5, cix var6);
-
-   static void b() {
-      a(a);
-      a.put(cja.rv, ($$0, $$1, $$2, $$3, $$4, $$5) -> {
-         if (ckw.d($$5) != ckx.c) {
-            return bgq.d;
-         } else {
-            if (!$$1.B) {
-               cis $$6 = $$5.d();
-               $$3.a($$4, ciz.a($$5, $$3, new cix(cja.rw)));
-               $$3.a(apg.W);
-               $$3.b(apg.c.b($$6));
-               $$1.b($$2, csm.fu.n());
-               $$1.a(null, $$2, aow.ch, aox.e, 1.0F, 1.0F);
-               $$1.a(null, djj.z, $$2);
-            }
-
-            return bgq.a($$1.B);
-         }
-      });
-      a(b);
-      b.put(cja.pK, ($$0, $$1, $$2, $$3, $$4, $$5) -> a($$0, $$1, $$2, $$3, $$4, $$5, new cix(cja.pL), $$0x -> $$0x.c(cwr.e) == 3, aow.cB));
-      b.put(cja.rw, ($$0, $$1, $$2, $$3, $$4, $$5) -> {
-         if (!$$1.B) {
-            cis $$6 = $$5.d();
-            $$3.a($$4, ciz.a($$5, $$3, ckw.a(new cix(cja.rv), ckx.c)));
-            $$3.a(apg.W);
-            $$3.b(apg.c.b($$6));
-            cwr.e($$0, $$1, $$2);
-            $$1.a(null, $$2, aow.ci, aox.e, 1.0F, 1.0F);
-            $$1.a(null, djj.y, $$2);
-         }
-
-         return bgq.a($$1.B);
-      });
-      b.put(cja.rv, ($$0, $$1, $$2, $$3, $$4, $$5) -> {
-         if ($$0.c(cwr.e) != 3 && ckw.d($$5) == ckx.c) {
-            if (!$$1.B) {
-               $$3.a($$4, ciz.a($$5, $$3, new cix(cja.rw)));
-               $$3.a(apg.W);
-               $$3.b(apg.c.b($$5.d()));
-               $$1.b($$2, $$0.a(cwr.e));
-               $$1.a(null, $$2, aow.ch, aox.e, 1.0F, 1.0F);
-               $$1.a(null, djj.z, $$2);
-            }
-
-            return bgq.a($$1.B);
-         } else {
-            return bgq.d;
-         }
-      });
-      b.put(cja.oN, j);
-      b.put(cja.oM, j);
-      b.put(cja.oL, j);
-      b.put(cja.oK, j);
-      b.put(cja.tP, j);
-      b.put(cja.tV, i);
-      b.put(cja.uc, i);
-      b.put(cja.uk, i);
-      b.put(cja.ug, i);
-      b.put(cja.uh, i);
-      b.put(cja.ue, i);
-      b.put(cja.ui, i);
-      b.put(cja.tY, i);
-      b.put(cja.ud, i);
-      b.put(cja.ua, i);
-      b.put(cja.tX, i);
-      b.put(cja.tW, i);
-      b.put(cja.ub, i);
-      b.put(cja.uf, i);
-      b.put(cja.uj, i);
-      b.put(cja.tZ, i);
-      b.put(cja.iH, h);
-      b.put(cja.iO, h);
-      b.put(cja.iW, h);
-      b.put(cja.iS, h);
-      b.put(cja.iT, h);
-      b.put(cja.iQ, h);
-      b.put(cja.iU, h);
-      b.put(cja.iK, h);
-      b.put(cja.iP, h);
-      b.put(cja.iM, h);
-      b.put(cja.iJ, h);
-      b.put(cja.iI, h);
-      b.put(cja.iN, h);
-      b.put(cja.iR, h);
-      b.put(cja.iV, h);
-      b.put(cja.iL, h);
-      c.put(cja.pK, ($$0, $$1, $$2, $$3, $$4, $$5) -> a($$0, $$1, $$2, $$3, $$4, $$5, new cix(cja.pM), $$0x -> true, aow.cE));
-      a(c);
-      d.put(cja.pK, ($$0, $$1, $$2, $$3, $$4, $$5) -> a($$0, $$1, $$2, $$3, $$4, $$5, new cix(cja.pN), $$0x -> $$0x.c(cwr.e) == 3, aow.cF));
-      a(d);
+   public ib(int $$0, int $$1, int $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   static void a(Map<cis, ib> $$0) {
-      $$0.put(cja.pM, f);
-      $$0.put(cja.pL, e);
-      $$0.put(cja.pN, g);
-   }
-
-   static bgq a(dez $$0, cpl $$1, gu $$2, cbm $$3, bgp $$4, cix $$5, cix $$6, Predicate<dez> $$7, aov $$8) {
-      if (!$$7.test($$0)) {
-         return bgq.d;
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if (!($$0 instanceof ib $$1)) {
+         return false;
+      } else if (this.u() != $$1.u()) {
+         return false;
       } else {
-         if (!$$1.B) {
-            cis $$9 = $$5.d();
-            $$3.a($$4, ciz.a($$5, $$3, $$6));
-            $$3.a(apg.W);
-            $$3.b(apg.c.b($$9));
-            $$1.b($$2, csm.ft.n());
-            $$1.a(null, $$2, $$8, aox.e, 1.0F, 1.0F);
-            $$1.a(null, djj.y, $$2);
-         }
-
-         return bgq.a($$1.B);
+         return this.v() != $$1.v() ? false : this.w() == $$1.w();
       }
    }
 
-   static bgq a(cpl $$0, gu $$1, cbm $$2, bgp $$3, cix $$4, dez $$5, aov $$6) {
-      if (!$$0.B) {
-         cis $$7 = $$4.d();
-         $$2.a($$3, ciz.a($$4, $$2, new cix(cja.pK)));
-         $$2.a(apg.V);
-         $$2.b(apg.c.b($$7));
-         $$0.b($$1, $$5);
-         $$0.a(null, $$1, $$6, aox.e, 1.0F, 1.0F);
-         $$0.a(null, djj.z, $$1);
-      }
+   @Override
+   public int hashCode() {
+      return (this.v() + this.w() * 31) * 31 + this.u();
+   }
 
-      return bgq.a($$0.B);
+   public int i(ib $$0) {
+      if (this.v() == $$0.v()) {
+         return this.w() == $$0.w() ? this.u() - $$0.u() : this.w() - $$0.w();
+      } else {
+         return this.v() - $$0.v();
+      }
+   }
+
+   public int u() {
+      return this.a;
+   }
+
+   public int v() {
+      return this.b;
+   }
+
+   public int w() {
+      return this.c;
+   }
+
+   protected ib u(int $$0) {
+      this.a = $$0;
+      return this;
+   }
+
+   protected ib t(int $$0) {
+      this.b = $$0;
+      return this;
+   }
+
+   protected ib s(int $$0) {
+      this.c = $$0;
+      return this;
+   }
+
+   public ib c(int $$0, int $$1, int $$2) {
+      return $$0 == 0 && $$1 == 0 && $$2 == 0 ? this : new ib(this.u() + $$0, this.v() + $$1, this.w() + $$2);
+   }
+
+   public ib f(ib $$0) {
+      return this.c($$0.u(), $$0.v(), $$0.w());
+   }
+
+   public ib e(ib $$0) {
+      return this.c(-$$0.u(), -$$0.v(), -$$0.w());
+   }
+
+   public ib o(int $$0) {
+      if ($$0 == 1) {
+         return this;
+      } else {
+         return $$0 == 0 ? g : new ib(this.u() * $$0, this.v() * $$0, this.w() * $$0);
+      }
+   }
+
+   public ib p() {
+      return this.n(1);
+   }
+
+   public ib n(int $$0) {
+      return this.b(hc.b, $$0);
+   }
+
+   public ib o() {
+      return this.m(1);
+   }
+
+   public ib m(int $$0) {
+      return this.b(hc.a, $$0);
+   }
+
+   public ib n() {
+      return this.l(1);
+   }
+
+   public ib l(int $$0) {
+      return this.b(hc.c, $$0);
+   }
+
+   public ib m() {
+      return this.k(1);
+   }
+
+   public ib k(int $$0) {
+      return this.b(hc.d, $$0);
+   }
+
+   public ib l() {
+      return this.j(1);
+   }
+
+   public ib j(int $$0) {
+      return this.b(hc.e, $$0);
+   }
+
+   public ib k() {
+      return this.i(1);
+   }
+
+   public ib i(int $$0) {
+      return this.b(hc.f, $$0);
+   }
+
+   public ib b(hc $$0) {
+      return this.b($$0, 1);
+   }
+
+   public ib b(hc $$0, int $$1) {
+      return $$1 == 0 ? this : new ib(this.u() + $$0.j() * $$1, this.v() + $$0.k() * $$1, this.w() + $$0.l() * $$1);
+   }
+
+   public ib b(hc.a $$0, int $$1) {
+      if ($$1 == 0) {
+         return this;
+      } else {
+         int $$2 = $$0 == hc.a.a ? $$1 : 0;
+         int $$3 = $$0 == hc.a.b ? $$1 : 0;
+         int $$4 = $$0 == hc.a.c ? $$1 : 0;
+         return new ib(this.u() + $$2, this.v() + $$3, this.w() + $$4);
+      }
+   }
+
+   public ib d(ib $$0) {
+      return new ib(this.v() * $$0.w() - this.w() * $$0.v(), this.w() * $$0.u() - this.u() * $$0.w(), this.u() * $$0.v() - this.v() * $$0.u());
+   }
+
+   public boolean a(ib $$0, double $$1) {
+      return this.j($$0) < ars.k($$1);
+   }
+
+   public boolean a(hq $$0, double $$1) {
+      return this.b($$0) < ars.k($$1);
+   }
+
+   public double j(ib $$0) {
+      return this.d((double)$$0.u(), (double)$$0.v(), (double)$$0.w());
+   }
+
+   public double b(hq $$0) {
+      return this.c($$0.a(), $$0.b(), $$0.c());
+   }
+
+   public double c(double $$0, double $$1, double $$2) {
+      double $$3 = (double)this.u() + 0.5 - $$0;
+      double $$4 = (double)this.v() + 0.5 - $$1;
+      double $$5 = (double)this.w() + 0.5 - $$2;
+      return $$3 * $$3 + $$4 * $$4 + $$5 * $$5;
+   }
+
+   public double d(double $$0, double $$1, double $$2) {
+      double $$3 = (double)this.u() - $$0;
+      double $$4 = (double)this.v() - $$1;
+      double $$5 = (double)this.w() - $$2;
+      return $$3 * $$3 + $$4 * $$4 + $$5 * $$5;
+   }
+
+   public int k(ib $$0) {
+      float $$1 = (float)Math.abs($$0.u() - this.u());
+      float $$2 = (float)Math.abs($$0.v() - this.v());
+      float $$3 = (float)Math.abs($$0.w() - this.w());
+      return (int)($$1 + $$2 + $$3);
+   }
+
+   public int a(hc.a $$0) {
+      return $$0.a(this.a, this.b, this.c);
+   }
+
+   @Override
+   public String toString() {
+      return MoreObjects.toStringHelper(this).add("x", this.u()).add("y", this.v()).add("z", this.w()).toString();
+   }
+
+   public String x() {
+      return this.u() + ", " + this.v() + ", " + this.w();
    }
 }

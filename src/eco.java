@@ -1,229 +1,81 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.google.common.collect.ImmutableList.Builder;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMultimap;
+import com.google.common.collect.Multimap;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
 import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectListIterator;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.BiFunction;
-import java.util.function.Consumer;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class eco {
-   private static final Logger d = LogUtils.getLogger();
-   public static final eco a = new eco(eeq.b, Optional.empty(), List.of(), List.of());
-   public static final eep b = eeq.n;
-   public static final Codec<eco> c = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               eeq.a.optionalFieldOf("type", b).forGetter($$0x -> $$0x.e),
-               aqy.a(aer.a, "random_sequence").forGetter($$0x -> $$0x.f),
-               aqy.a(ecn.a.listOf(), "pools", List.of()).forGetter($$0x -> $$0x.g),
-               aqy.a(edv.b.listOf(), "functions", List.of()).forGetter($$0x -> $$0x.h)
-            )
-            .apply($$0, eco::new)
-   );
-   private final eep e;
-   private final Optional<aer> f;
-   private final List<ecn> g;
-   private final List<edt> h;
-   private final BiFunction<cix, ecg, cix> i;
+public class eco implements anj, ecp {
+   private static final Logger b = LogUtils.getLogger();
+   private static final Gson c = new GsonBuilder().create();
+   public static final ecn<ect> a = new ecn<>(ecq.c, ecj.a);
+   private Map<ecn<?>, ?> d = Map.of();
+   private Multimap<ecq<?>, aeu> e = ImmutableMultimap.of();
 
-   eco(eep $$0, Optional<aer> $$1, List<ecn> $$2, List<edt> $$3) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.h = $$3;
-      this.i = edv.a($$3);
+   @Override
+   public final CompletableFuture<Void> a(anj.a $$0, anp $$1, bdk $$2, bdk $$3, Executor $$4, Executor $$5) {
+      Map<ecq<?>, Map<aeu, ?>> $$6 = new HashMap<>();
+      CompletableFuture<?>[] $$7 = ecq.b().map($$3x -> a($$3x, $$1, $$4, $$6)).toArray(CompletableFuture[]::new);
+      return CompletableFuture.allOf($$7).thenCompose($$0::a).thenAcceptAsync($$1x -> this.a($$6), $$5);
    }
 
-   public static Consumer<cix> a(akk $$0, Consumer<cix> $$1) {
-      return $$2 -> {
-         if ($$2.a($$0.G())) {
-            if ($$2.L() < $$2.g()) {
-               $$1.accept($$2);
-            } else {
-               int $$3 = $$2.L();
+   private static <T> CompletableFuture<?> a(ecq<T> $$0, anp $$1, Executor $$2, Map<ecq<?>, Map<aeu, ?>> $$3) {
+      Map<aeu, T> $$4 = new HashMap<>();
+      $$3.put($$0, $$4);
+      return CompletableFuture.runAsync(() -> {
+         Map<aeu, JsonElement> $$3x = new HashMap<>();
+         ant.a($$1, $$0.a(), c, $$3x);
+         $$3x.forEach(($$2xx, $$3xx) -> $$0.a($$2xx, $$3xx).ifPresent($$2xxx -> $$4.put($$2xx, (T)$$2xxx)));
+      }, $$2);
+   }
 
-               while ($$3 > 0) {
-                  cix $$4 = $$2.c(Math.min($$2.g(), $$3));
-                  $$3 -= $$4.L();
-                  $$1.accept($$4);
-               }
-            }
+   private void a(Map<ecq<?>, Map<aeu, ?>> $$0) {
+      Object $$1 = $$0.get(ecq.c).remove(ecj.a);
+      if ($$1 != null) {
+         b.warn("Datapack tried to redefine {} loot table, ignoring", ecj.a);
+      }
+
+      Builder<ecn<?>, Object> $$2 = ImmutableMap.builder();
+      com.google.common.collect.ImmutableMultimap.Builder<ecq<?>, aeu> $$3 = ImmutableMultimap.builder();
+      $$0.forEach(($$2x, $$3x) -> $$3x.forEach(($$3xx, $$4x) -> {
+            $$2.put(new ecn($$2x, $$3xx), $$4x);
+            $$3.put($$2x, $$3xx);
+         }));
+      $$2.put(a, ect.a);
+      final Map<ecn<?>, ?> $$4 = $$2.build();
+      ecu $$5 = new ecu(eev.n, new ecp() {
+         @Nullable
+         @Override
+         public <T> T getElement(ecn<T> $$0) {
+            return (T)$$4.get($$0);
          }
-      };
+      });
+      $$4.forEach(($$1x, $$2x) -> a($$5, $$1x, $$2x));
+      $$5.a().forEach(($$0x, $$1x) -> b.warn("Found loot table element validation problem in {}: {}", $$0x, $$1x));
+      this.d = $$4;
+      this.e = $$3.build();
    }
 
-   public void a(ecm $$0, Consumer<cix> $$1) {
-      this.a(new ecg.a($$0).a(this.f), $$1);
+   private static <T> void a(ecu $$0, ecn<T> $$1, Object $$2) {
+      $$1.a().a($$0, $$1, (T)$$2);
    }
 
-   public void a(ecg $$0, Consumer<cix> $$1) {
-      ecg.c<?> $$2 = ecg.a(this);
-      if ($$0.b($$2)) {
-         Consumer<cix> $$3 = edt.a(this.i, $$1, $$0);
-
-         for (ecn $$4 : this.g) {
-            $$4.a($$3, $$0);
-         }
-
-         $$0.c($$2);
-      } else {
-         d.warn("Detected infinite loop in loot tables");
-      }
+   @Nullable
+   @Override
+   public <T> T getElement(ecn<T> $$0) {
+      return (T)this.d.get($$0);
    }
 
-   public void a(ecm $$0, long $$1, Consumer<cix> $$2) {
-      this.a(new ecg.a($$0).a($$1).a(this.f), a($$0.a(), $$2));
-   }
-
-   public void b(ecm $$0, Consumer<cix> $$1) {
-      this.a($$0, a($$0.a(), $$1));
-   }
-
-   public void b(ecg $$0, Consumer<cix> $$1) {
-      this.a($$0, a($$0.d(), $$1));
-   }
-
-   public ObjectArrayList<cix> a(ecm $$0, long $$1) {
-      return this.a(new ecg.a($$0).a($$1).a(this.f));
-   }
-
-   public ObjectArrayList<cix> a(ecm $$0) {
-      return this.a(new ecg.a($$0).a(this.f));
-   }
-
-   private ObjectArrayList<cix> a(ecg $$0) {
-      ObjectArrayList<cix> $$1 = new ObjectArrayList();
-      this.b($$0, $$1::add);
-      return $$1;
-   }
-
-   public eep a() {
-      return this.e;
-   }
-
-   public void a(ecp $$0) {
-      for (int $$1 = 0; $$1 < this.g.size(); $$1++) {
-         this.g.get($$1).a($$0.b(".pools[" + $$1 + "]"));
-      }
-
-      for (int $$2 = 0; $$2 < this.h.size(); $$2++) {
-         this.h.get($$2).a($$0.b(".functions[" + $$2 + "]"));
-      }
-   }
-
-   public void a(bgj $$0, ecm $$1, long $$2) {
-      ecg $$3 = new ecg.a($$1).a($$2).a(this.f);
-      ObjectArrayList<cix> $$4 = this.a($$3);
-      aru $$5 = $$3.b();
-      List<Integer> $$6 = this.a($$0, $$5);
-      this.a($$4, $$6.size(), $$5);
-      ObjectListIterator var9 = $$4.iterator();
-
-      while (var9.hasNext()) {
-         cix $$7 = (cix)var9.next();
-         if ($$6.isEmpty()) {
-            d.warn("Tried to over-fill a container");
-            return;
-         }
-
-         if ($$7.b()) {
-            $$0.a($$6.remove($$6.size() - 1), cix.b);
-         } else {
-            $$0.a($$6.remove($$6.size() - 1), $$7);
-         }
-      }
-   }
-
-   private void a(ObjectArrayList<cix> $$0, int $$1, aru $$2) {
-      List<cix> $$3 = Lists.newArrayList();
-      Iterator<cix> $$4 = $$0.iterator();
-
-      while ($$4.hasNext()) {
-         cix $$5 = $$4.next();
-         if ($$5.b()) {
-            $$4.remove();
-         } else if ($$5.L() > 1) {
-            $$3.add($$5);
-            $$4.remove();
-         }
-      }
-
-      while ($$1 - $$0.size() - $$3.size() > 0 && !$$3.isEmpty()) {
-         cix $$6 = $$3.remove(arp.a($$2, 0, $$3.size() - 1));
-         int $$7 = arp.a($$2, 1, $$6.L() / 2);
-         cix $$8 = $$6.a($$7);
-         if ($$6.L() > 1 && $$2.h()) {
-            $$3.add($$6);
-         } else {
-            $$0.add($$6);
-         }
-
-         if ($$8.L() > 1 && $$2.h()) {
-            $$3.add($$8);
-         } else {
-            $$0.add($$8);
-         }
-      }
-
-      $$0.addAll($$3);
-      ac.b($$0, $$2);
-   }
-
-   private List<Integer> a(bgj $$0, aru $$1) {
-      ObjectArrayList<Integer> $$2 = new ObjectArrayList();
-
-      for (int $$3 = 0; $$3 < $$0.b(); $$3++) {
-         if ($$0.a($$3).b()) {
-            $$2.add($$3);
-         }
-      }
-
-      ac.b($$2, $$1);
-      return $$2;
-   }
-
-   public static eco.a b() {
-      return new eco.a();
-   }
-
-   public static class a implements edq<eco.a> {
-      private final Builder<ecn> a = ImmutableList.builder();
-      private final Builder<edt> b = ImmutableList.builder();
-      private eep c = eco.b;
-      private Optional<aer> d = Optional.empty();
-
-      public eco.a a(ecn.a $$0) {
-         this.a.add($$0.b());
-         return this;
-      }
-
-      public eco.a a(eep $$0) {
-         this.c = $$0;
-         return this;
-      }
-
-      public eco.a a(aer $$0) {
-         this.d = Optional.of($$0);
-         return this;
-      }
-
-      public eco.a a(edt.a $$0) {
-         this.b.add($$0.b());
-         return this;
-      }
-
-      public eco.a a() {
-         return this;
-      }
-
-      public eco b() {
-         return new eco(this.c, this.d, this.a.build(), this.b.build());
-      }
+   public Collection<aeu> a(ecq<?> $$0) {
+      return this.e.get($$0);
    }
 }

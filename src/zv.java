@@ -1,40 +1,34 @@
-public class zv implements ux<wp> {
-   private final float a;
-   private final int b;
-   private final int c;
+import javax.annotation.Nullable;
 
-   public zv(float $$0, int $$1, int $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+public class zv implements va<ws> {
+   private final int a;
+   private final int b;
+
+   public zv(bil $$0, @Nullable bil $$1) {
+      this.a = $$0.ah();
+      this.b = $$1 != null ? $$1.ah() : 0;
    }
 
-   public zv(si $$0) {
-      this.a = $$0.readFloat();
-      this.c = $$0.m();
-      this.b = $$0.m();
+   public zv(sl $$0) {
+      this.a = $$0.readInt();
+      this.b = $$0.readInt();
    }
 
    @Override
-   public void a(si $$0) {
-      $$0.a(this.a);
-      $$0.c(this.c);
-      $$0.c(this.b);
+   public void a(sl $$0) {
+      $$0.p(this.a);
+      $$0.p(this.b);
    }
 
-   public void a(wp $$0) {
+   public void a(ws $$0) {
       $$0.a(this);
    }
 
-   public float a() {
+   public int a() {
       return this.a;
    }
 
    public int d() {
       return this.b;
-   }
-
-   public int e() {
-      return this.c;
    }
 }

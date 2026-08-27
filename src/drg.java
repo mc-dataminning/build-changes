@@ -2,47 +2,27 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
 public class drg extends drc {
-   public static final Codec<drg> a = RecordCodecBuilder.create(
-      $$0 -> b($$0).and(bfv.b(0, 24).fieldOf("height").forGetter($$0x -> $$0x.b)).apply($$0, drg::new)
-   );
-   private final bfv b;
+   public static final Codec<drg> c = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, drg::new));
 
-   public drg(bfv $$0, bfv $$1, bfv $$2) {
-      super($$0, $$1);
-      this.b = $$2;
+   public drg(bfy $$0, bfy $$1, int $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   protected drd<?> a() {
-      return drd.c;
+   protected dri<?> a() {
+      return dri.f;
    }
 
    @Override
-   protected void a(cpr $$0, drc.b $$1, aru $$2, dqm $$3, int $$4, drc.a $$5, int $$6, int $$7, int $$8) {
-      int $$9 = 0;
-
-      for (int $$10 = $$8; $$10 >= $$8 - $$6; $$10--) {
-         this.a($$0, $$1, $$2, $$3, $$5.a(), $$9, $$10, $$5.c());
-         if ($$9 >= 1 && $$10 == $$8 - $$6 + 1) {
-            $$9--;
-         } else if ($$9 < $$7 + $$5.b()) {
-            $$9++;
-         }
+   protected void a(cpw $$0, drh.b $$1, arx $$2, dqr $$3, int $$4, drh.a $$5, int $$6, int $$7, int $$8) {
+      for (int $$9 = $$8; $$9 >= $$8 - $$6; $$9--) {
+         int $$10 = $$7 + ($$9 != $$8 && $$9 != $$8 - $$6 ? 1 : 0);
+         this.a($$0, $$1, $$2, $$3, $$5.a(), $$10, $$9, $$5.c());
       }
    }
 
    @Override
-   public int a(aru $$0, int $$1) {
-      return super.a($$0, $$1) + $$0.a(Math.max($$1 + 1, 1));
-   }
-
-   @Override
-   public int a(aru $$0, int $$1, dqm $$2) {
-      return this.b.a($$0);
-   }
-
-   @Override
-   protected boolean a(aru $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$1 == $$4 && $$3 == $$4 && $$4 > 0;
+   protected boolean a(arx $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return ars.k((float)$$1 + 0.5F) + ars.k((float)$$3 + 0.5F) > (float)($$4 * $$4);
    }
 }

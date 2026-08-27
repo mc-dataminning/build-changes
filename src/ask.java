@@ -1,81 +1,79 @@
-import com.mojang.logging.LogUtils;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.Keyable;
 import java.util.Arrays;
+import java.util.Map;
 import java.util.Objects;
-import java.util.concurrent.Semaphore;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
+import java.util.function.Function;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class ask {
-   private static final Logger a = LogUtils.getLogger();
-   private final String b;
-   private final Semaphore c = new Semaphore(1);
-   private final Lock d = new ReentrantLock();
-   @Nullable
-   private volatile Thread e;
-   @Nullable
-   private volatile y f;
+public interface ask {
+   int W = 16;
 
-   public ask(String $$0) {
-      this.b = $$0;
+   String c();
+
+   static <E extends Enum<E> & ask> ask.a<E> a(Supplier<E[]> $$0) {
+      return a($$0, $$0x -> $$0x);
    }
 
-   public void a() {
-      boolean $$0 = false;
-
-      try {
-         this.d.lock();
-         if (!this.c.tryAcquire()) {
-            this.e = Thread.currentThread();
-            $$0 = true;
-            this.d.unlock();
-
-            try {
-               this.c.acquire();
-            } catch (InterruptedException var6) {
-               Thread.currentThread().interrupt();
+   static <E extends Enum<E> & ask> ask.a<E> a(Supplier<E[]> $$0, Function<String, String> $$1) {
+      E[] $$2 = (E[])$$0.get();
+      if ($$2.length > 16) {
+         Map<String, E> $$3 = Arrays.stream($$2).collect(Collectors.toMap($$1x -> $$1.apply(((ask)$$1x).c()), $$0x -> (E)$$0x));
+         return new ask.a<>($$2, $$1x -> $$1x == null ? null : $$3.get($$1x));
+      } else {
+         return new ask.a<>($$2, $$2x -> {
+            for (E $$3x : $$2) {
+               if ($$1.apply($$3x.c()).equals($$2x)) {
+                  return $$3x;
+               }
             }
 
-            throw this.f;
-         }
-      } finally {
-         if (!$$0) {
-            this.d.unlock();
-         }
+            return null;
+         });
       }
    }
 
-   public void b() {
-      try {
-         this.d.lock();
-         Thread $$0 = this.e;
-         if ($$0 != null) {
-            y $$1 = a(this.b, $$0);
-            this.f = $$1;
-            this.c.release();
-            throw $$1;
+   static Keyable a(final ask[] $$0) {
+      return new Keyable() {
+         public <T> Stream<T> keys(DynamicOps<T> $$0x) {
+            return Arrays.stream($$0).map(ask::c).map($$0::createString);
          }
+      };
+   }
 
-         this.c.release();
-      } finally {
-         this.d.unlock();
+   @Deprecated
+   public static class a<E extends Enum<E> & ask> implements Codec<E> {
+      private final Codec<E> a;
+      private final Function<String, E> b;
+
+      public a(E[] $$0, Function<String, E> $$1) {
+         this.a = arb.b(
+            arb.b($$0x -> ((ask)$$0x).c(), $$1), arb.a($$0x -> ((Enum)$$0x).ordinal(), $$1x -> $$1x >= 0 && $$1x < $$0.length ? $$0[$$1x] : null, -1)
+         );
+         this.b = $$1;
       }
-   }
 
-   public static y a(String $$0, @Nullable Thread $$1) {
-      String $$2 = Stream.of(Thread.currentThread(), $$1).filter(Objects::nonNull).map(ask::a).collect(Collectors.joining("\n"));
-      String $$3 = "Accessing " + $$0 + " from multiple threads";
-      o $$4 = new o($$3, new IllegalStateException($$3));
-      p $$5 = $$4.a("Thread dumps");
-      $$5.a("Thread dumps", $$2);
-      a.error("Thread dumps: \n" + $$2);
-      return new y($$4);
-   }
+      public <T> DataResult<Pair<E, T>> decode(DynamicOps<T> $$0, T $$1) {
+         return this.a.decode($$0, $$1);
+      }
 
-   private static String a(Thread $$0) {
-      return $$0.getName() + ": \n\tat " + Arrays.stream($$0.getStackTrace()).map(Object::toString).collect(Collectors.joining("\n\tat "));
+      public <T> DataResult<T> a(E $$0, DynamicOps<T> $$1, T $$2) {
+         return this.a.encode($$0, $$1, $$2);
+      }
+
+      @Nullable
+      public E a(@Nullable String $$0) {
+         return this.b.apply($$0);
+      }
+
+      public E a(@Nullable String $$0, E $$1) {
+         return Objects.requireNonNullElse(this.a($$0), $$1);
+      }
    }
 }

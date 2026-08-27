@@ -1,147 +1,108 @@
-import java.util.List;
-import org.apache.commons.lang3.mutable.MutableInt;
+public class dcj extends ddt {
+   private hp<cja> c = hp.a(27, cja.b);
+   private final ddd f = new ddd() {
+      @Override
+      protected void a(cpq $$0, gw $$1, dfe $$2) {
+         dcj.this.a($$2, aoz.bk);
+         dcj.this.a($$2, true);
+      }
 
-public class dcj extends dcl {
-   private static final int d = 50;
-   private static final int e = 60;
-   private static final int f = 60;
-   private static final int g = 40;
-   private static final int h = 5;
-   private static final int i = 48;
-   private static final int j = 32;
-   private static final int k = 48;
-   private long l;
-   public int a;
-   public boolean b;
-   public ha c;
-   private List<biy> m;
-   private boolean n;
-   private int r;
+      @Override
+      protected void b(cpq $$0, gw $$1, dfe $$2) {
+         dcj.this.a($$2, aoz.bj);
+         dcj.this.a($$2, false);
+      }
 
-   public dcj(gu $$0, dez $$1) {
-      super(dcn.E, $$0, $$1);
+      @Override
+      protected void a(cpq $$0, gw $$1, dfe $$2, int $$3, int $$4) {
+      }
+
+      @Override
+      protected boolean a(cbp $$0) {
+         if ($$0.bQ instanceof cen) {
+            bgm $$1 = ((cen)$$0.bQ).l();
+            return $$1 == dcj.this;
+         } else {
+            return false;
+         }
+      }
+   };
+
+   public dcj(gw $$0, dfe $$1) {
+      super(dcs.A, $$0, $$1);
    }
 
    @Override
-   public boolean a_(int $$0, int $$1) {
-      if ($$0 == 1) {
-         this.c();
-         this.r = 0;
-         this.c = ha.a($$1);
-         this.a = 0;
-         this.b = true;
-         return true;
-      } else {
-         return super.a_($$0, $$1);
+   protected void b(qu $$0) {
+      super.b($$0);
+      if (!this.e($$0)) {
+         bgn.a($$0, this.c);
       }
    }
 
-   private static void a(cpl $$0, gu $$1, dez $$2, dcj $$3, dcj.a $$4) {
-      if ($$3.b) {
-         $$3.a++;
-      }
-
-      if ($$3.a >= 50) {
-         $$3.b = false;
-         $$3.a = 0;
-      }
-
-      if ($$3.a >= 5 && $$3.r == 0 && a($$1, $$3.m)) {
-         $$3.n = true;
-         $$0.a(null, $$1, aow.bL, aox.e, 1.0F, 1.0F);
-      }
-
-      if ($$3.n) {
-         if ($$3.r < 40) {
-            $$3.r++;
-         } else {
-            $$4.run($$0, $$1, $$3.m);
-            $$3.n = false;
-         }
+   @Override
+   public void a(qu $$0) {
+      super.a($$0);
+      this.c = hp.a(this.b(), cja.b);
+      if (!this.d($$0)) {
+         bgn.b($$0, this.c);
       }
    }
 
-   public static void a(cpl $$0, gu $$1, dez $$2, dcj $$3) {
-      a($$0, $$1, $$2, $$3, dcj::b);
+   @Override
+   public int b() {
+      return 27;
    }
 
-   public static void b(cpl $$0, gu $$1, dez $$2, dcj $$3) {
-      a($$0, $$1, $$2, $$3, dcj::a);
+   @Override
+   protected hp<cja> f() {
+      return this.c;
    }
 
-   public void a(ha $$0) {
-      gu $$1 = this.p();
+   @Override
+   protected void a(hp<cja> $$0) {
       this.c = $$0;
-      if (this.b) {
-         this.a = 0;
-      } else {
-         this.b = true;
-      }
-
-      this.o.a($$1, this.q().b(), 1, $$0.d());
    }
 
-   private void c() {
-      gu $$0 = this.p();
-      if (this.o.V() > this.l + 60L || this.m == null) {
-         this.l = this.o.V();
-         egy $$1 = new egy($$0).g(48.0);
-         this.m = this.o.a(biy.class, $$1);
-      }
+   @Override
+   protected ti g() {
+      return ti.c("container.barrel");
+   }
 
-      if (!this.o.B) {
-         for (biy $$2 : this.m) {
-            if ($$2.bv() && !$$2.dF() && $$0.a($$2.di(), 32.0)) {
-               $$2.dM().a(brz.D, this.o.V());
-            }
-         }
+   @Override
+   protected ceg a(int $$0, cbo $$1) {
+      return cen.a($$0, $$1, this);
+   }
+
+   @Override
+   public void d_(cbp $$0) {
+      if (!this.q && !$$0.G_()) {
+         this.f.a($$0, this.k(), this.p(), this.q());
       }
    }
 
-   private static boolean a(gu $$0, List<biy> $$1) {
-      for (biy $$2 : $$1) {
-         if ($$2.bv() && !$$2.dF() && $$0.a($$2.di(), 32.0) && $$2.ag().a(apo.b)) {
-            return true;
-         }
+   @Override
+   public void c(cbp $$0) {
+      if (!this.q && !$$0.G_()) {
+         this.f.b($$0, this.k(), this.p(), this.q());
       }
-
-      return false;
    }
 
-   private static void a(cpl $$0, gu $$1, List<biy> $$2) {
-      $$2.stream().filter($$1x -> a($$1, $$1x)).forEach(dcj::a);
+   public void i() {
+      if (!this.q) {
+         this.f.c(this.k(), this.p(), this.q());
+      }
    }
 
-   private static void b(cpl $$0, gu $$1, List<biy> $$2) {
-      MutableInt $$3 = new MutableInt(16700985);
-      int $$4 = (int)$$2.stream().filter($$1x -> $$1.a($$1x.di(), 48.0)).count();
-      $$2.stream().filter($$1x -> a($$1, $$1x)).forEach($$4x -> {
-         float $$5 = 1.0F;
-         double $$6 = Math.sqrt(($$4x.dp() - (double)$$1.u()) * ($$4x.dp() - (double)$$1.u()) + ($$4x.dv() - (double)$$1.w()) * ($$4x.dv() - (double)$$1.w()));
-         double $$7 = (double)((float)$$1.u() + 0.5F) + 1.0 / $$6 * ($$4x.dp() - (double)$$1.u());
-         double $$8 = (double)((float)$$1.w() + 0.5F) + 1.0 / $$6 * ($$4x.dv() - (double)$$1.w());
-         int $$9 = arp.a(($$4 - 21) / -2, 3, 15);
-
-         for (int $$10 = 0; $$10 < $$9; $$10++) {
-            int $$11 = $$3.addAndGet(5);
-            double $$12 = (double)ara.b.b($$11) / 255.0;
-            double $$13 = (double)ara.b.c($$11) / 255.0;
-            double $$14 = (double)ara.b.d($$11) / 255.0;
-            $$0.a(iv.v, $$7, (double)((float)$$1.v() + 0.5F), $$8, $$12, $$13, $$14);
-         }
-      });
+   void a(dfe $$0, boolean $$1) {
+      this.o.a(this.p(), $$0.a(crx.b, Boolean.valueOf($$1)), 3);
    }
 
-   private static boolean a(gu $$0, biy $$1) {
-      return $$1.bv() && !$$1.dF() && $$0.a($$1.di(), 48.0) && $$1.ag().a(apo.b);
-   }
-
-   private static void a(biy $$0) {
-      $$0.b(new bhv(bhx.x, 60));
-   }
-
-   @FunctionalInterface
-   interface a {
-      void run(cpl var1, gu var2, List<biy> var3);
+   void a(dfe $$0, aoy $$1) {
+      ib $$2 = $$0.c(crx.a).q();
+      double $$3 = (double)this.p.u() + 0.5 + (double)$$2.u() / 2.0;
+      double $$4 = (double)this.p.v() + 0.5 + (double)$$2.v() / 2.0;
+      double $$5 = (double)this.p.w() + 0.5 + (double)$$2.w() / 2.0;
+      this.o.a(null, $$3, $$4, $$5, $$1, apa.e, 0.5F, this.o.z.i() * 0.1F + 0.9F);
    }
 }

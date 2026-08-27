@@ -1,57 +1,54 @@
-public class cfl extends cfv {
-   private final cfj a;
-   private final cbm b;
-   private int c;
-   private final coh h;
+public class cfl<T extends ceg> implements cdu {
+   public static final cfl<cen> a = a("generic_9x1", cen::a);
+   public static final cfl<cen> b = a("generic_9x2", cen::b);
+   public static final cfl<cen> c = a("generic_9x3", cen::c);
+   public static final cfl<cen> d = a("generic_9x4", cen::d);
+   public static final cfl<cen> e = a("generic_9x5", cen::e);
+   public static final cfl<cen> f = a("generic_9x6", cen::f);
+   public static final cfl<cex> g = a("generic_3x3", cex::new);
+   public static final cfl<cei> h = a("anvil", cei::new);
+   public static final cfl<cej> i = a("beacon", cej::new);
+   public static final cfl<cek> j = a("blast_furnace", cek::new);
+   public static final cfl<cel> k = a("brewing_stand", cel::new);
+   public static final cfl<cev> l = a("crafting", cev::new);
+   public static final cfl<cey> m = a("enchantment", cey::new);
+   public static final cfl<cfa> n = a("furnace", cfa::new);
+   public static final cfl<cfc> o = a("grindstone", cfc::new);
+   public static final cfl<cfd> p = a("hopper", cfd::new);
+   public static final cfl<cfi> q = a("lectern", ($$0, $$1) -> new cfi($$0));
+   public static final cfl<cfj> r = a("loom", cfj::new);
+   public static final cfl<cfn> s = a("merchant", cfn::new);
+   public static final cfl<cfv> t = a("shulker_box", cfv::new);
+   public static final cfl<cfz> u = a("smithing", cfz::new);
+   public static final cfl<cga> v = a("smoker", cga::new);
+   public static final cfl<cem> w = a("cartography_table", cem::new);
+   public static final cfl<cgc> x = a("stonecutter", cgc::new);
+   private final cdx y;
+   private final cfl.a<T> z;
 
-   public cfl(cbm $$0, coh $$1, cfj $$2, int $$3, int $$4, int $$5) {
-      super($$2, $$3, $$4, $$5);
-      this.b = $$0;
-      this.h = $$1;
-      this.a = $$2;
+   private static <T extends ceg> cfl<T> a(String $$0, cfl.a<T> $$1) {
+      return ht.a(jd.s, $$0, new cfl<>($$1, cdz.f));
+   }
+
+   private static <T extends ceg> cfl<T> a(String $$0, cfl.a<T> $$1, cdv... $$2) {
+      return ht.a(jd.s, $$0, new cfl<>($$1, cdz.d.a($$2)));
+   }
+
+   private cfl(cfl.a<T> $$0, cdx $$1) {
+      this.z = $$0;
+      this.y = $$1;
+   }
+
+   public T a(int $$0, cbo $$1) {
+      return this.z.create($$0, $$1);
    }
 
    @Override
-   public boolean a(cix $$0) {
-      return false;
+   public cdx m() {
+      return this.y;
    }
 
-   @Override
-   public cix a(int $$0) {
-      if (this.f()) {
-         this.c = this.c + Math.min($$0, this.e().L());
-      }
-
-      return super.a($$0);
-   }
-
-   @Override
-   protected void a(cix $$0, int $$1) {
-      this.c += $$1;
-      this.b_($$0);
-   }
-
-   @Override
-   protected void b_(cix $$0) {
-      $$0.a(this.b.dK(), this.b, this.c);
-      this.c = 0;
-   }
-
-   @Override
-   public void a(cbm $$0, cix $$1) {
-      this.b_($$1);
-      coi $$2 = this.a.g();
-      if ($$2 != null) {
-         cix $$3 = this.a.a(0);
-         cix $$4 = this.a.a(1);
-         if ($$2.b($$3, $$4) || $$2.b($$4, $$3)) {
-            this.h.a($$2);
-            $$0.a(apg.T);
-            this.a.a(0, $$3);
-            this.a.a(1, $$4);
-         }
-
-         this.h.t(this.h.q() + $$2.o());
-      }
+   interface a<T extends ceg> {
+      T create(int var1, cbo var2);
    }
 }

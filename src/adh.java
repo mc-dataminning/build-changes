@@ -1,21 +1,24 @@
-import java.util.UUID;
+public class adh implements va<adc> {
+   private final ti a;
 
-public record adh(String a, UUID b) implements ux<adf> {
-   public adh(si $$0) {
-      this($$0.d(16), $$0.o());
+   public adh(ti $$0) {
+      this.a = $$0;
+   }
+
+   public adh(sl $$0) {
+      this.a = ti.a.b($$0.d(262144));
    }
 
    @Override
-   public void a(si $$0) {
-      $$0.a(this.a, 16);
-      $$0.a(this.b);
+   public void a(sl $$0) {
+      $$0.a(this.a);
    }
 
-   public void a(adf $$0) {
+   public void a(adc $$0) {
       $$0.a(this);
    }
 
-   public UUID d() {
-      return this.b;
+   public ti a() {
+      return this.a;
    }
 }

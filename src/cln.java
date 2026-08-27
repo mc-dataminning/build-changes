@@ -1,91 +1,71 @@
-public class cln extends cls {
-   public cln(aer $$0, clq $$1) {
-      super($$0, $$1);
+import com.google.common.collect.Lists;
+import java.util.List;
+
+public class cln extends clw {
+   public cln(clt $$0) {
+      super($$0);
    }
 
-   public boolean a(cer $$0, cpl $$1) {
-      int $$2 = 0;
-      cix $$3 = cix.b;
+   public boolean a(ceu $$0, cpq $$1) {
+      cja $$2 = cja.b;
+      List<cja> $$3 = Lists.newArrayList();
 
       for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         cix $$5 = $$0.a($$4);
+         cja $$5 = $$0.a($$4);
          if (!$$5.b()) {
-            if ($$5.a(cja.th)) {
-               if (!$$3.b()) {
+            if ($$5.d() instanceof chs) {
+               if (!$$2.b()) {
                   return false;
                }
 
-               $$3 = $$5;
+               $$2 = $$5;
             } else {
-               if (!$$5.a(cja.tg)) {
+               if (!($$5.d() instanceof chp)) {
                   return false;
                }
 
-               $$2++;
+               $$3.add($$5);
             }
          }
       }
 
-      return !$$3.b() && $$3.u() && $$2 > 0;
+      return !$$2.b() && !$$3.isEmpty();
    }
 
-   public cix a(cer $$0, hs $$1) {
-      int $$2 = 0;
-      cix $$3 = cix.b;
+   public cja a(ceu $$0, hu $$1) {
+      List<chp> $$2 = Lists.newArrayList();
+      cja $$3 = cja.b;
 
       for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         cix $$5 = $$0.a($$4);
+         cja $$5 = $$0.a($$4);
          if (!$$5.b()) {
-            if ($$5.a(cja.th)) {
+            civ $$6 = $$5.d();
+            if ($$6 instanceof chs) {
                if (!$$3.b()) {
-                  return cix.b;
+                  return cja.b;
                }
 
-               $$3 = $$5;
+               $$3 = $$5.p();
             } else {
-               if (!$$5.a(cja.tg)) {
-                  return cix.b;
+               if (!($$6 instanceof chp)) {
+                  return cja.b;
                }
 
-               $$2++;
+               $$2.add((chp)$$6);
             }
          }
       }
 
-      if (!$$3.b() && $$3.u() && $$2 >= 1 && ckt.d($$3) < 2) {
-         cix $$6 = new cix(cja.th, $$2);
-         qr $$7 = $$3.v().h();
-         $$7.a("generation", ckt.d($$3) + 1);
-         $$6.c($$7);
-         return $$6;
-      } else {
-         return cix.b;
-      }
-   }
-
-   public hn<cix> a(cer $$0) {
-      hn<cix> $$1 = hn.a($$0.b(), cix.b);
-
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         cix $$3 = $$0.a($$2);
-         if ($$3.d().t()) {
-            $$1.set($$2, new cix($$3.d().s()));
-         } else if ($$3.d() instanceof ckt) {
-            $$1.set($$2, $$3.c(1));
-            break;
-         }
-      }
-
-      return $$1;
-   }
-
-   @Override
-   public cmc<?> ai_() {
-      return cmc.d;
+      return !$$3.b() && !$$2.isEmpty() ? chs.a($$3, $$2) : cja.b;
    }
 
    @Override
    public boolean a(int $$0, int $$1) {
-      return $$0 >= 3 && $$1 >= 3;
+      return $$0 * $$1 >= 2;
+   }
+
+   @Override
+   public cmh<?> ai_() {
+      return cmh.c;
    }
 }

@@ -1,60 +1,96 @@
-import java.util.function.Function;
+import com.mojang.authlib.properties.PropertyMap;
+import java.io.File;
+import java.net.Proxy;
+import java.nio.file.Path;
+import javax.annotation.Nullable;
 
-public abstract class fdr<E extends bii> extends fet<E> {
-   private final boolean a;
-   private final float b;
-   private final float f;
-   private final float g;
-   private final float h;
-   private final float i;
+public class fdr {
+   public final fdr.d a;
+   public final ekb b;
+   public final fdr.a c;
+   public final fdr.b d;
+   public final fdr.c e;
 
-   protected fdr(boolean $$0, float $$1, float $$2) {
-      this($$0, $$1, $$2, 2.0F, 2.0F, 24.0F);
+   public fdr(fdr.d $$0, ekb $$1, fdr.a $$2, fdr.b $$3, fdr.c $$4) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
    }
 
-   protected fdr(boolean $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this(foc::e, $$0, $$1, $$2, $$3, $$4, $$5);
-   }
+   public static class a {
+      public final File a;
+      public final File b;
+      public final File c;
+      @Nullable
+      public final String d;
 
-   protected fdr(Function<aer, foc> $$0, boolean $$1, float $$2, float $$3, float $$4, float $$5, float $$6) {
-      super($$0);
-      this.a = $$1;
-      this.b = $$2;
-      this.f = $$3;
-      this.g = $$4;
-      this.h = $$5;
-      this.i = $$6;
-   }
+      public a(File $$0, File $$1, File $$2, @Nullable String $$3) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+      }
 
-   protected fdr() {
-      this(false, 5.0F, 2.0F);
-   }
-
-   @Override
-   public void a(elf $$0, elj $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-      if (this.e) {
-         $$0.a();
-         if (this.a) {
-            float $$8 = 1.5F / this.g;
-            $$0.b($$8, $$8, $$8);
-         }
-
-         $$0.a(0.0F, this.b / 16.0F, this.f / 16.0F);
-         this.a().forEach($$8 -> $$8.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
-         $$0.b();
-         $$0.a();
-         float $$9 = 1.0F / this.h;
-         $$0.b($$9, $$9, $$9);
-         $$0.a(0.0F, this.i / 16.0F, 0.0F);
-         this.b().forEach($$8 -> $$8.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
-         $$0.b();
-      } else {
-         this.a().forEach($$8 -> $$8.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
-         this.b().forEach($$8 -> $$8.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
+      public Path a() {
+         return this.d == null ? this.c.toPath() : fzv.a(this.c.toPath(), this.d);
       }
    }
 
-   protected abstract Iterable<fhs> a();
+   public static class b {
+      public final boolean a;
+      public final String b;
+      public final String c;
+      public final boolean d;
+      public final boolean e;
 
-   protected abstract Iterable<fhs> b();
+      public b(boolean $$0, String $$1, String $$2, boolean $$3, boolean $$4) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+      }
+   }
+
+   public static record c(@Nullable String a, @Nullable String b, @Nullable String c, @Nullable String d) {
+      public boolean a() {
+         return !ac.b(this.b) || !ac.b(this.c) || !ac.b(this.d);
+      }
+
+      @Nullable
+      public String b() {
+         return this.a;
+      }
+
+      @Nullable
+      public String c() {
+         return this.b;
+      }
+
+      @Nullable
+      public String d() {
+         return this.c;
+      }
+
+      @Nullable
+      public String e() {
+         return this.d;
+      }
+   }
+
+   public static class d {
+      public final erf a;
+      public final PropertyMap b;
+      public final PropertyMap c;
+      public final Proxy d;
+
+      public d(erf $$0, PropertyMap $$1, PropertyMap $$2, Proxy $$3) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+      }
+   }
 }

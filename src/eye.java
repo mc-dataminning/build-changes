@@ -1,41 +1,68 @@
-import java.util.Arrays;
+public class eye extends eyf {
+   private static final ti a = ti.c("multiplayer.downloadingTerrain");
+   private static final long b = 30000L;
+   private boolean c = false;
+   private boolean k = false;
+   private final long l = System.currentTimeMillis();
 
-public class eye extends exs {
-   private etd c;
-
-   private static eqo<?>[] a(eqp $$0) {
-      return new eqo[]{$$0.S(), $$0.T()};
-   }
-
-   public eye(eya $$0, eqp $$1) {
-      super($$0, $$1, tf.c("options.sounds.title"));
-   }
-
-   @Override
-   protected void aC_() {
-      this.c = new etd(this.f, this.g, this.h, 32, this.h - 32, 25);
-      this.c.a(this.b.b(aox.a));
-      this.c.a(this.l());
-      this.c.a(this.b.ap());
-      this.c.a(a(this.b));
-      this.e(this.c);
-      this.d(esg.a(te.d, $$0 -> {
-         this.f.m.ar();
-         this.f.a(this.a);
-      }).a(this.g / 2 - 100, this.h - 27, 200, 20).a());
-   }
-
-   private eqo<?>[] l() {
-      return Arrays.stream(aox.values()).filter($$0 -> $$0 != aox.a).map($$0 -> this.b.b($$0)).toArray(eqo[]::new);
+   public eye() {
+      super(eqi.a);
    }
 
    @Override
-   public void a(erv $$0, int $$1, int $$2, float $$3) {
-      this.a($$0, this.c, $$1, $$2, $$3);
+   public boolean at_() {
+      return false;
    }
 
    @Override
-   public void b(erv $$0, int $$1, int $$2, float $$3) {
+   protected boolean aC_() {
+      return false;
+   }
+
+   @Override
+   public void a(esa $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, a, this.g / 2, this.h / 2 - 50, 16777215);
+   }
+
+   @Override
+   public void b(esa $$0, int $$1, int $$2, float $$3) {
       this.b($$0);
+   }
+
+   @Override
+   public void c() {
+      if (System.currentTimeMillis() > this.l + 30000L) {
+         this.au_();
+      } else {
+         if (this.k) {
+            if (this.f.s == null) {
+               return;
+            }
+
+            gw $$0 = this.f.s.dk();
+            boolean $$1 = this.f.r != null && this.f.r.d($$0.v());
+            if ($$1 || this.f.f.a($$0) || this.f.s.G_() || !this.f.s.bv()) {
+               this.au_();
+            }
+         } else {
+            this.k = this.c;
+         }
+      }
+   }
+
+   @Override
+   public void au_() {
+      this.f.aV().c(ti.c("narrator.ready_to_play"));
+      super.au_();
+   }
+
+   public void l() {
+      this.c = true;
+   }
+
+   @Override
+   public boolean j() {
+      return false;
    }
 }

@@ -1,11 +1,11 @@
-public class fvh extends fud<bwb, fgx<bwb>> {
-   private static final aer a = new aer("textures/entity/tadpole/tadpole.png");
+public class fvh extends fsd<ccm> {
+   public static final aeu a = new aeu("textures/entity/projectiles/spectral_arrow.png");
 
-   public fvh(fsx.a $$0) {
-      super($$0, new fgx<>($$0.a(fhr.bz)), 0.14F);
+   public fvh(ftc.a $$0) {
+      super($$0);
    }
 
-   public aer a(bwb $$0) {
+   public aeu a(ccm $$0) {
       return a;
    }
 }

@@ -1,78 +1,119 @@
-import com.google.common.collect.ImmutableMap.Builder;
-import java.util.Map;
-import java.util.Optional;
+import java.util.EnumMap;
+import java.util.function.Supplier;
 
-public class cgm extends chh {
-   protected static final Map<csl, csl> a = new Builder()
-      .put(csm.ao, csm.aw)
-      .put(csm.U, csm.al)
-      .put(csm.au, csm.aC)
-      .put(csm.aa, csm.ak)
-      .put(csm.as, csm.aA)
-      .put(csm.Y, csm.ai)
-      .put(csm.at, csm.aB)
-      .put(csm.Z, csm.aj)
-      .put(csm.aq, csm.ay)
-      .put(csm.W, csm.ag)
-      .put(csm.ar, csm.az)
-      .put(csm.X, csm.ah)
-      .put(csm.ap, csm.ax)
-      .put(csm.V, csm.af)
-      .put(csm.oj, csm.ok)
-      .put(csm.ol, csm.om)
-      .put(csm.os, csm.ot)
-      .put(csm.ou, csm.ov)
-      .put(csm.av, csm.aD)
-      .put(csm.ab, csm.am)
-      .put(csm.ae, csm.an)
-      .build();
+public enum cgm implements ask, cgl {
+   a("leather", 5, ac.a(new EnumMap<>(cgk.a.class), $$0 -> {
+      $$0.put(cgk.a.d, 1);
+      $$0.put(cgk.a.c, 2);
+      $$0.put(cgk.a.b, 3);
+      $$0.put(cgk.a.a, 1);
+   }), 15, aoz.ai, 0.0F, 0.0F, () -> cmb.a(cjd.pP)),
+   b("chainmail", 15, ac.a(new EnumMap<>(cgk.a.class), $$0 -> {
+      $$0.put(cgk.a.d, 1);
+      $$0.put(cgk.a.c, 4);
+      $$0.put(cgk.a.b, 5);
+      $$0.put(cgk.a.a, 2);
+   }), 12, aoz.ac, 0.0F, 0.0F, () -> cmb.a(cjd.nQ)),
+   c("iron", 15, ac.a(new EnumMap<>(cgk.a.class), $$0 -> {
+      $$0.put(cgk.a.d, 2);
+      $$0.put(cgk.a.c, 5);
+      $$0.put(cgk.a.b, 6);
+      $$0.put(cgk.a.a, 2);
+   }), 9, aoz.ah, 0.0F, 0.0F, () -> cmb.a(cjd.nQ)),
+   d("gold", 7, ac.a(new EnumMap<>(cgk.a.class), $$0 -> {
+      $$0.put(cgk.a.d, 1);
+      $$0.put(cgk.a.c, 3);
+      $$0.put(cgk.a.b, 5);
+      $$0.put(cgk.a.a, 2);
+   }), 25, aoz.ag, 0.0F, 0.0F, () -> cmb.a(cjd.nU)),
+   e("diamond", 33, ac.a(new EnumMap<>(cgk.a.class), $$0 -> {
+      $$0.put(cgk.a.d, 3);
+      $$0.put(cgk.a.c, 6);
+      $$0.put(cgk.a.b, 8);
+      $$0.put(cgk.a.a, 3);
+   }), 10, aoz.ad, 2.0F, 0.0F, () -> cmb.a(cjd.nK)),
+   f("turtle", 25, ac.a(new EnumMap<>(cgk.a.class), $$0 -> {
+      $$0.put(cgk.a.d, 2);
+      $$0.put(cgk.a.c, 5);
+      $$0.put(cgk.a.b, 6);
+      $$0.put(cgk.a.a, 2);
+   }), 9, aoz.ak, 0.0F, 0.0F, () -> cmb.a(cjd.nD)),
+   g("netherite", 37, ac.a(new EnumMap<>(cgk.a.class), $$0 -> {
+      $$0.put(cgk.a.d, 3);
+      $$0.put(cgk.a.c, 6);
+      $$0.put(cgk.a.b, 8);
+      $$0.put(cgk.a.a, 3);
+   }), 15, aoz.aj, 3.0F, 0.1F, () -> cmb.a(cjd.nV));
 
-   protected cgm(ckk $$0, float $$1, float $$2, cis.a $$3) {
-      super($$1, $$2, $$0, apl.bz, $$3);
+   public static final ask.a<cgm> h = ask.a(cgm::values);
+   private static final EnumMap<cgk.a, Integer> i = ac.a(new EnumMap<>(cgk.a.class), $$0 -> {
+      $$0.put(cgk.a.d, 13);
+      $$0.put(cgk.a.c, 15);
+      $$0.put(cgk.a.b, 16);
+      $$0.put(cgk.a.a, 11);
+   });
+   private final String j;
+   private final int k;
+   private final EnumMap<cgk.a, Integer> l;
+   private final int m;
+   private final aoy n;
+   private final float o;
+   private final float p;
+   private final arn<cmb> q;
+
+   private cgm(String $$0, int $$1, EnumMap<cgk.a, Integer> $$2, int $$3, aoy $$4, float $$5, float $$6, Supplier<cmb> $$7) {
+      this.j = $$0;
+      this.k = $$1;
+      this.l = $$2;
+      this.m = $$3;
+      this.n = $$4;
+      this.o = $$5;
+      this.p = $$6;
+      this.q = new arn<>($$7);
    }
 
    @Override
-   public bgq a(clh $$0) {
-      cpl $$1 = $$0.q();
-      gu $$2 = $$0.a();
-      cbm $$3 = $$0.o();
-      dez $$4 = $$1.a_($$2);
-      Optional<dez> $$5 = this.b($$4);
-      Optional<dez> $$6 = dbn.b($$4);
-      Optional<dez> $$7 = Optional.ofNullable((csl)cim.b.get().get($$4.b())).map($$1x -> $$1x.l($$4));
-      cix $$8 = $$0.n();
-      Optional<dez> $$9 = Optional.empty();
-      if ($$5.isPresent()) {
-         $$1.a($$3, $$2, aow.as, aox.e, 1.0F, 1.0F);
-         $$9 = $$5;
-      } else if ($$6.isPresent()) {
-         $$1.a($$3, $$2, aow.at, aox.e, 1.0F, 1.0F);
-         $$1.a($$3, 3005, $$2, 0);
-         $$9 = $$6;
-      } else if ($$7.isPresent()) {
-         $$1.a($$3, $$2, aow.au, aox.e, 1.0F, 1.0F);
-         $$1.a($$3, 3004, $$2, 0);
-         $$9 = $$7;
-      }
-
-      if ($$9.isPresent()) {
-         if ($$3 instanceof akl) {
-            ai.M.a((akl)$$3, $$2, $$8);
-         }
-
-         $$1.a($$2, $$9.get(), 11);
-         $$1.a(djj.c, $$2, djj.a.a($$3, $$9.get()));
-         if ($$3 != null) {
-            $$8.a(1, $$3, $$1x -> $$1x.d($$0.p()));
-         }
-
-         return bgq.a($$1.B);
-      } else {
-         return bgq.d;
-      }
+   public int a(cgk.a $$0) {
+      return i.get($$0) * this.k;
    }
 
-   private Optional<dez> b(dez $$0) {
-      return Optional.ofNullable(a.get($$0.b())).map($$1 -> $$1.n().a(cyw.g, $$0.c(cyw.g)));
+   @Override
+   public int b(cgk.a $$0) {
+      return this.l.get($$0);
+   }
+
+   @Override
+   public int a() {
+      return this.m;
+   }
+
+   @Override
+   public aoy b() {
+      return this.n;
+   }
+
+   @Override
+   public cmb d() {
+      return this.q.a();
+   }
+
+   @Override
+   public String e() {
+      return this.j;
+   }
+
+   @Override
+   public float f() {
+      return this.o;
+   }
+
+   @Override
+   public float g() {
+      return this.p;
+   }
+
+   @Override
+   public String c() {
+      return this.j;
    }
 }

@@ -1,16 +1,54 @@
-public interface ecd extends ebt {
-   void b(int var1);
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.OptionalDynamic;
 
-   void c(int var1);
+public class ecd {
+   private final int a;
+   private final long b;
+   private final String c;
+   private final ebv d;
+   private final boolean e;
 
-   void d(int var1);
+   private ecd(int $$0, long $$1, String $$2, int $$3, String $$4, boolean $$5) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = new ebv($$3, $$4);
+      this.e = $$5;
+   }
 
-   void a(float var1);
+   public static ecd a(Dynamic<?> $$0) {
+      int $$1 = $$0.get("version").asInt(0);
+      long $$2 = $$0.get("LastPlayed").asLong(0L);
+      OptionalDynamic<?> $$3 = $$0.get("Version");
+      return $$3.result().isPresent()
+         ? new ecd(
+            $$1,
+            $$2,
+            $$3.get("Name").asString(aa.b().c()),
+            $$3.get("Id").asInt(aa.b().d().c()),
+            $$3.get("Series").asString(ebv.a),
+            $$3.get("Snapshot").asBoolean(!aa.b().g())
+         )
+         : new ecd($$1, $$2, "", 0, ebv.a, false);
+   }
 
-   default void a(gu $$0, float $$1) {
-      this.b($$0.u());
-      this.c($$0.v());
-      this.d($$0.w());
-      this.a($$1);
+   public int a() {
+      return this.a;
+   }
+
+   public long b() {
+      return this.b;
+   }
+
+   public String c() {
+      return this.c;
+   }
+
+   public ebv d() {
+      return this.d;
+   }
+
+   public boolean e() {
+      return this.e;
    }
 }

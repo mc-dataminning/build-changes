@@ -1,8 +1,23 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public enum dgn implements ask {
+   a("straight"),
+   b("inner_left"),
+   c("inner_right"),
+   d("outer_left"),
+   e("outer_right");
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface dgn {
+   private final String f;
+
+   private dgn(String $$0) {
+      this.f = $$0;
+   }
+
+   @Override
+   public String toString() {
+      return this.f;
+   }
+
+   @Override
+   public String c() {
+      return this.f;
+   }
 }

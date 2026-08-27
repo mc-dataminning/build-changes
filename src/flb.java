@@ -1,53 +1,43 @@
-public class flb extends fmk {
-   flb(fin $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.C = true;
-      this.B = 0.86F;
-      this.j *= 0.01F;
-      this.k *= 0.01F;
-      this.l *= 0.01F;
-      this.k += 0.1;
-      this.D *= 1.5F;
-      this.t = 16;
-      this.n = false;
+public class flb extends fmp {
+   private final fmk a;
+
+   protected flb(fis $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fmk $$7) {
+      super($$0, $$1, $$2, $$3);
+      this.u = -0.1F;
+      this.B = 0.9F;
+      this.a = $$7;
+      this.j = $$4 + (Math.random() * 2.0 - 1.0) * 0.05F;
+      this.k = $$5 + (Math.random() * 2.0 - 1.0) * 0.05F;
+      this.l = $$6 + (Math.random() * 2.0 - 1.0) * 0.05F;
+      float $$8 = this.r.i() * 0.3F + 0.7F;
+      this.v = $$8;
+      this.w = $$8;
+      this.x = $$8;
+      this.D = 0.1F * (this.r.i() * this.r.i() * 6.0F + 1.0F);
+      this.t = (int)(16.0 / ((double)this.r.i() * 0.8 + 0.2)) + 2;
+      this.b($$7);
    }
 
    @Override
-   public flo b() {
-      return flo.b;
+   public flt b() {
+      return flt.b;
    }
 
    @Override
-   public float b(float $$0) {
-      return this.D * arp.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
+   public void a() {
+      super.a();
+      this.b(this.a);
    }
 
-   public static class a implements fln<iy> {
-      private final fmf a;
+   public static class a implements fls<ja> {
+      private final fmk a;
 
-      public a(fmf $$0) {
+      public a(fmk $$0) {
          this.a = $$0;
       }
 
-      public flk a(iy $$0, fin $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         flb $$8 = new flb($$1, $$2, $$3 + 0.5, $$4);
-         $$8.a(this.a);
-         $$8.a(1.0F, 1.0F, 1.0F);
-         return $$8;
-      }
-   }
-
-   public static class b implements fln<iy> {
-      private final fmf a;
-
-      public b(fmf $$0) {
-         this.a = $$0;
-      }
-
-      public flk a(iy $$0, fin $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         flb $$8 = new flb($$1, $$2, $$3, $$4);
-         $$8.a(this.a);
-         return $$8;
+      public flp a(ja $$0, fis $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new flb($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
       }
    }
 }

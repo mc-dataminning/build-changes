@@ -1,49 +1,30 @@
-import javax.annotation.Nullable;
+import java.util.List;
 
-public class cvo extends crg {
-   protected cvo(dey.d $$0) {
-      super($$0);
-   }
+public class cvo extends csy implements dat {
+   protected static final float a = 3.0F;
+   protected static final eib b = csq.a(5.0, 0.0, 5.0, 11.0, 10.0, 11.0);
+   private final List<dat.a> c;
 
-   @Override
-   public dcl a(gu $$0, dez $$1) {
-      return new ddg($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dcl> dcm<T> a(cpl $$0, dez $$1, dcn<T> $$2) {
-      return a($$0, $$2, dcn.a);
-   }
-
-   @Override
-   protected void a(cpl $$0, gu $$1, cbm $$2) {
-      dcl $$3 = $$0.c_($$1);
-      if ($$3 instanceof ddg) {
-         $$2.a((bgt)$$3);
-         $$2.a(apg.am);
+   public cvo(bhw $$0, int $$1, dfd.d $$2) {
+      super($$2);
+      int $$3;
+      if ($$0.a()) {
+         $$3 = $$1;
+      } else {
+         $$3 = $$1 * 20;
       }
+
+      this.c = List.of(new dat.a($$0, $$3));
    }
 
    @Override
-   public void a(dez $$0, cpl $$1, gu $$2, aru $$3) {
-      if ($$0.c(b)) {
-         double $$4 = (double)$$2.u() + 0.5;
-         double $$5 = (double)$$2.v();
-         double $$6 = (double)$$2.w() + 0.5;
-         if ($$3.j() < 0.1) {
-            $$1.a($$4, $$5, $$6, aow.iR, aox.e, 1.0F, 1.0F, false);
-         }
+   public eib a(dfe $$0, cow $$1, gw $$2, ehn $$3) {
+      ehi $$4 = $$0.n($$1, $$2);
+      return b.a($$4.c, $$4.d, $$4.e);
+   }
 
-         ha $$7 = $$0.c(a);
-         ha.a $$8 = $$7.o();
-         double $$9 = 0.52;
-         double $$10 = $$3.j() * 0.6 - 0.3;
-         double $$11 = $$8 == ha.a.a ? (double)$$7.j() * 0.52 : $$10;
-         double $$12 = $$3.j() * 6.0 / 16.0;
-         double $$13 = $$8 == ha.a.c ? (double)$$7.l() * 0.52 : $$10;
-         $$1.a(iv.Z, $$4 + $$11, $$5 + $$12, $$6 + $$13, 0.0, 0.0, 0.0);
-         $$1.a(iv.C, $$4 + $$11, $$5 + $$12, $$6 + $$13, 0.0, 0.0, 0.0);
-      }
+   @Override
+   public List<dat.a> a() {
+      return this.c;
    }
 }

@@ -1,172 +1,77 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Lists;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.mojang.util.UndashedUuid;
+import java.util.Date;
+import java.util.UUID;
+import java.util.function.Function;
 import javax.annotation.Nullable;
 
 public class epd {
-   private epd() {
-   }
-
-   @VisibleForTesting
-   protected static List<String> a(String $$0) {
-      return Arrays.asList($$0.split("\\n"));
-   }
-
-   public static List<epd.a> a(String $$0, epd.b... $$1) {
-      return a($$0, Arrays.asList($$1));
-   }
-
-   private static List<epd.a> a(String $$0, List<epd.b> $$1) {
-      List<String> $$2 = a($$0);
-      return a($$2, $$1);
-   }
-
-   private static List<epd.a> a(List<String> $$0, List<epd.b> $$1) {
-      int $$2 = 0;
-      List<epd.a> $$3 = Lists.newArrayList();
-
-      for (String $$4 : $$0) {
-         List<epd.b> $$5 = Lists.newArrayList();
-
-         for (String $$7 : a($$4, "%link")) {
-            if ("%link".equals($$7)) {
-               $$5.add($$1.get($$2++));
-            } else {
-               $$5.add(epd.b.a($$7));
-            }
-         }
-
-         $$3.add(new epd.a($$5));
-      }
-
-      return $$3;
-   }
-
-   public static List<String> a(String $$0, String $$1) {
-      if ($$1.isEmpty()) {
-         throw new IllegalArgumentException("Delimiter cannot be the empty string");
+   public static <T> T a(String $$0, JsonObject $$1, Function<JsonObject, T> $$2) {
+      JsonElement $$3 = $$1.get($$0);
+      if ($$3 == null || $$3.isJsonNull()) {
+         throw new IllegalStateException("Missing required property: " + $$0);
+      } else if (!$$3.isJsonObject()) {
+         throw new IllegalStateException("Required property " + $$0 + " was not a JsonObject as espected");
       } else {
-         List<String> $$2 = Lists.newArrayList();
-         int $$3 = 0;
+         return $$2.apply($$3.getAsJsonObject());
+      }
+   }
 
-         int $$4;
-         while (($$4 = $$0.indexOf($$1, $$3)) != -1) {
-            if ($$4 > $$3) {
-               $$2.add($$0.substring($$3, $$4));
-            }
-
-            $$2.add($$1);
-            $$3 = $$4 + $$1.length();
-         }
-
-         if ($$3 < $$0.length()) {
-            $$2.add($$0.substring($$3));
-         }
-
+   public static String a(String $$0, JsonObject $$1) {
+      String $$2 = a($$0, $$1, null);
+      if ($$2 == null) {
+         throw new IllegalStateException("Missing required property: " + $$0);
+      } else {
          return $$2;
       }
    }
 
-   public static class a {
-      public final List<epd.b> a;
-
-      a(epd.b... $$0) {
-         this(Arrays.asList($$0));
-      }
-
-      a(List<epd.b> $$0) {
-         this.a = $$0;
-      }
-
-      @Override
-      public String toString() {
-         return "Line{segments=" + this.a + "}";
-      }
-
-      @Override
-      public boolean equals(Object $$0) {
-         if (this == $$0) {
-            return true;
-         } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-            epd.a $$1 = (epd.a)$$0;
-            return Objects.equals(this.a, $$1.a);
-         } else {
-            return false;
-         }
-      }
-
-      @Override
-      public int hashCode() {
-         return Objects.hash(this.a);
+   @Nullable
+   public static String a(String $$0, JsonObject $$1, @Nullable String $$2) {
+      JsonElement $$3 = $$1.get($$0);
+      if ($$3 != null) {
+         return $$3.isJsonNull() ? $$2 : $$3.getAsString();
+      } else {
+         return $$2;
       }
    }
 
-   public static class b {
-      private final String a;
-      @Nullable
-      private final String b;
-      @Nullable
-      private final String c;
+   @Nullable
+   public static UUID a(String $$0, JsonObject $$1, @Nullable UUID $$2) {
+      String $$3 = a($$0, $$1, null);
+      return $$3 == null ? $$2 : UndashedUuid.fromStringLenient($$3);
+   }
 
-      private b(String $$0) {
-         this.a = $$0;
-         this.b = null;
-         this.c = null;
+   public static int a(String $$0, JsonObject $$1, int $$2) {
+      JsonElement $$3 = $$1.get($$0);
+      if ($$3 != null) {
+         return $$3.isJsonNull() ? $$2 : $$3.getAsInt();
+      } else {
+         return $$2;
       }
+   }
 
-      private b(String $$0, @Nullable String $$1, @Nullable String $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
+   public static long a(String $$0, JsonObject $$1, long $$2) {
+      JsonElement $$3 = $$1.get($$0);
+      if ($$3 != null) {
+         return $$3.isJsonNull() ? $$2 : $$3.getAsLong();
+      } else {
+         return $$2;
       }
+   }
 
-      @Override
-      public boolean equals(Object $$0) {
-         if (this == $$0) {
-            return true;
-         } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-            epd.b $$1 = (epd.b)$$0;
-            return Objects.equals(this.a, $$1.a) && Objects.equals(this.b, $$1.b) && Objects.equals(this.c, $$1.c);
-         } else {
-            return false;
-         }
+   public static boolean a(String $$0, JsonObject $$1, boolean $$2) {
+      JsonElement $$3 = $$1.get($$0);
+      if ($$3 != null) {
+         return $$3.isJsonNull() ? $$2 : $$3.getAsBoolean();
+      } else {
+         return $$2;
       }
+   }
 
-      @Override
-      public int hashCode() {
-         return Objects.hash(this.a, this.b, this.c);
-      }
-
-      @Override
-      public String toString() {
-         return "Segment{fullText='" + this.a + "', linkTitle='" + this.b + "', linkUrl='" + this.c + "'}";
-      }
-
-      public String a() {
-         return this.b() ? this.b : this.a;
-      }
-
-      public boolean b() {
-         return this.b != null;
-      }
-
-      public String c() {
-         if (!this.b()) {
-            throw new IllegalStateException("Not a link: " + this);
-         } else {
-            return this.c;
-         }
-      }
-
-      public static epd.b a(String $$0, String $$1) {
-         return new epd.b(null, $$0, $$1);
-      }
-
-      @VisibleForTesting
-      protected static epd.b a(String $$0) {
-         return new epd.b($$0);
-      }
+   public static Date b(String $$0, JsonObject $$1) {
+      JsonElement $$2 = $$1.get($$0);
+      return $$2 != null ? new Date(Long.parseLong($$2.getAsString())) : new Date();
    }
 }

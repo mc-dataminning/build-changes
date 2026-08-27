@@ -1,136 +1,125 @@
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.JsonOps;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.time.Instant;
+import java.util.List;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public abstract class fnj {
-   private static final Object2ObjectMap<aer, fnj> a = ac.a(new Object2ObjectArrayMap(), $$0 -> {
-      fnj.c $$1 = new fnj.c();
-      $$0.defaultReturnValue($$1);
-      $$0.put(dig.e, $$1);
-      $$0.put(dig.f, new fnj.b());
-      $$0.put(dig.g, new fnj.a());
-   });
-   private final float[] b = new float[4];
-   private final float c;
-   private final boolean d;
-   private final fnj.d e;
-   private final boolean f;
-   private final boolean g;
+public class fnj {
+   private static final fnj a = new fnj("") {
+      @Override
+      public void a(eqq $$0) {
+      }
 
-   public fnj(float $$0, boolean $$1, fnj.d $$2, boolean $$3, boolean $$4) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-      this.g = $$4;
-   }
-
-   public static fnj a(dii $$0) {
-      return (fnj)a.get($$0.r());
-   }
-
+      @Override
+      public void a(fnj.c $$0, String $$1, String $$2) {
+      }
+   };
+   private static final Logger b = LogUtils.getLogger();
+   private static final Gson c = new GsonBuilder().create();
+   private final Path d;
    @Nullable
-   public float[] a(float $$0, float $$1) {
-      float $$2 = 0.4F;
-      float $$3 = arp.b($$0 * (float) (Math.PI * 2)) - 0.0F;
-      float $$4 = -0.0F;
-      if ($$3 >= -0.4F && $$3 <= 0.4F) {
-         float $$5 = ($$3 - -0.0F) / 0.4F * 0.5F + 0.5F;
-         float $$6 = 1.0F - (1.0F - arp.a($$5 * (float) Math.PI)) * 0.99F;
-         $$6 *= $$6;
-         this.b[0] = $$5 * 0.3F + 0.7F;
-         this.b[1] = $$5 * $$5 * 0.7F + 0.2F;
-         this.b[2] = $$5 * $$5 * 0.0F + 0.2F;
-         this.b[3] = $$6;
-         return this.b;
+   private fnj.b e;
+
+   fnj(String $$0) {
+      this.d = eqq.O().p.toPath().resolve($$0);
+   }
+
+   public static fnj a(@Nullable String $$0) {
+      return $$0 == null ? a : new fnj($$0);
+   }
+
+   public void a(fnj.c $$0, String $$1, String $$2) {
+      this.e = new fnj.b($$0, $$1, $$2);
+   }
+
+   public void a(eqq $$0) {
+      if ($$0.q != null && this.e != null) {
+         ac.g().execute(() -> {
+            try {
+               Files.deleteIfExists(this.d);
+            } catch (IOException var3) {
+               b.error("Failed to delete quickplay log file {}", this.d, var3);
+            }
+
+            fnj.a $$2 = new fnj.a(this.e, Instant.now(), $$0.q.l());
+            Codec.list(fnj.a.a).encodeStart(JsonOps.INSTANCE, List.of($$2)).resultOrPartial(ac.a("Quick Play: ", b::error)).ifPresent($$0xx -> {
+               try {
+                  Files.createDirectories(this.d.getParent());
+                  Files.writeString(this.d, c.toJson($$0xx));
+               } catch (IOException var3x) {
+                  b.error("Failed to write to quickplay log file {}", this.d, var3x);
+               }
+            });
+         });
       } else {
-         return null;
+         b.error("Failed to log session for quickplay. Missing world data or gamemode");
       }
    }
 
-   public float a() {
-      return this.c;
+   static record a(fnj.b b, Instant c, cpn d) {
+      public static final Codec<fnj.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(fnj.b.a.forGetter(fnj.a::a), arb.m.fieldOf("lastPlayedTime").forGetter(fnj.a::b), cpn.f.fieldOf("gamemode").forGetter(fnj.a::c))
+               .apply($$0, fnj.a::new)
+      );
+
+      public fnj.b a() {
+         return this.b;
+      }
+
+      public Instant b() {
+         return this.c;
+      }
+
+      public cpn c() {
+         return this.d;
+      }
    }
 
-   public boolean b() {
-      return this.d;
+   static record b(fnj.c b, String c, String d) {
+      public static final MapCodec<fnj.b> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(
+                  fnj.c.d.fieldOf("type").forGetter(fnj.b::a), Codec.STRING.fieldOf("id").forGetter(fnj.b::b), Codec.STRING.fieldOf("name").forGetter(fnj.b::c)
+               )
+               .apply($$0, fnj.b::new)
+      );
+
+      public fnj.c a() {
+         return this.b;
+      }
+
+      public String b() {
+         return this.c;
+      }
+
+      public String c() {
+         return this.d;
+      }
    }
 
-   public abstract ehd a(ehd var1, float var2);
+   public static enum c implements ask {
+      a("singleplayer"),
+      b("multiplayer"),
+      c("realms");
 
-   public abstract boolean a(int var1, int var2);
+      static final Codec<fnj.c> d = ask.a(fnj.c::values);
+      private final String e;
 
-   public fnj.d c() {
-      return this.e;
-   }
-
-   public boolean d() {
-      return this.f;
-   }
-
-   public boolean e() {
-      return this.g;
-   }
-
-   public static class a extends fnj {
-      public a() {
-         super(Float.NaN, false, fnj.d.c, true, false);
+      private c(String $$0) {
+         this.e = $$0;
       }
 
       @Override
-      public ehd a(ehd $$0, float $$1) {
-         return $$0.a(0.15F);
+      public String c() {
+         return this.e;
       }
-
-      @Override
-      public boolean a(int $$0, int $$1) {
-         return false;
-      }
-
-      @Nullable
-      @Override
-      public float[] a(float $$0, float $$1) {
-         return null;
-      }
-   }
-
-   public static class b extends fnj {
-      public b() {
-         super(Float.NaN, true, fnj.d.a, false, true);
-      }
-
-      @Override
-      public ehd a(ehd $$0, float $$1) {
-         return $$0;
-      }
-
-      @Override
-      public boolean a(int $$0, int $$1) {
-         return true;
-      }
-   }
-
-   public static class c extends fnj {
-      public static final int a = 192;
-
-      public c() {
-         super(192.0F, true, fnj.d.b, false, false);
-      }
-
-      @Override
-      public ehd a(ehd $$0, float $$1) {
-         return $$0.d((double)($$1 * 0.94F + 0.06F), (double)($$1 * 0.94F + 0.06F), (double)($$1 * 0.91F + 0.09F));
-      }
-
-      @Override
-      public boolean a(int $$0, int $$1) {
-         return false;
-      }
-   }
-
-   public static enum d {
-      a,
-      b,
-      c;
    }
 }

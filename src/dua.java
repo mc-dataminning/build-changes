@@ -1,37 +1,28 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dua extends duj {
-   public static final Codec<dua> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.INT.fieldOf("noise_to_count_ratio").forGetter($$0x -> $$0x.c),
-               Codec.DOUBLE.fieldOf("noise_factor").forGetter($$0x -> $$0x.d),
-               Codec.DOUBLE.fieldOf("noise_offset").orElse(0.0).forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, dua::new)
-   );
-   private final int c;
-   private final double d;
-   private final double e;
+public class dua extends duo {
+   public static final Codec<dua> a = bfy.b(0, 256).fieldOf("count").xmap(dua::new, $$0 -> $$0.c).codec();
+   private final bfy c;
 
-   private dua(int $$0, double $$1, double $$2) {
+   private dua(bfy $$0) {
       this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
    }
 
-   public static dua a(int $$0, double $$1, double $$2) {
-      return new dua($$0, $$1, $$2);
+   public static dua a(bfy $$0) {
+      return new dua($$0);
    }
 
-   @Override
-   protected int a(aru $$0, gu $$1) {
-      double $$2 = cqj.e.a((double)$$1.u() / this.d, (double)$$1.w() / this.d, false);
-      return (int)Math.ceil(($$2 + this.e) * (double)this.c);
+   public static dua a(int $$0) {
+      return a(bfv.a($$0));
    }
 
    @Override
-   public dug<?> b() {
-      return dug.g;
+   protected int a(arx $$0, gw $$1) {
+      return this.c.a($$0);
+   }
+
+   @Override
+   public dul<?> b() {
+      return dul.f;
    }
 }

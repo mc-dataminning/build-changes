@@ -1,72 +1,52 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectListIterator;
+import java.util.Set;
 
-public final class dwr extends duy {
-   public static final int d = 128;
-   public static final Codec<dwr> e = aqy.<dwr>a(
-         RecordCodecBuilder.mapCodec(
-            $$0 -> $$0.group(
-                     a($$0),
-                     dwh.b.fieldOf("start_pool").forGetter($$0x -> $$0x.f),
-                     aer.a.optionalFieldOf("start_jigsaw_name").forGetter($$0x -> $$0x.g),
-                     Codec.intRange(0, 7).fieldOf("size").forGetter($$0x -> $$0x.h),
-                     dtf.c.fieldOf("start_height").forGetter($$0x -> $$0x.i),
-                     Codec.BOOL.fieldOf("use_expansion_hack").forGetter($$0x -> $$0x.j),
-                     dki.a.g.optionalFieldOf("project_start_to_heightmap").forGetter($$0x -> $$0x.k),
-                     Codec.intRange(1, 128).fieldOf("max_distance_from_center").forGetter($$0x -> $$0x.l)
-                  )
-                  .apply($$0, dwr::new)
-         ),
-         dwr::a
-      )
-      .codec();
-   private final he<dwh> f;
-   private final Optional<aer> g;
-   private final int h;
-   private final dtf i;
-   private final boolean j;
-   private final Optional<dki.a> k;
-   private final int l;
+public class dwr extends dvc {
+   public static final Codec<dwr> d = a(dwr::new);
 
-   private static DataResult<dwr> a(dwr $$0) {
-      int $$1 = switch ($$0.d()) {
-         case a -> 0;
-         case b, c, d -> 12;
-      };
-      return $$0.l + $$1 > 128 ? DataResult.error(() -> "Structure size including terrain adaptation must not exceed 128") : DataResult.success($$0);
-   }
-
-   public dwr(duy.c $$0, he<dwh> $$1, Optional<aer> $$2, int $$3, dtf $$4, boolean $$5, Optional<dki.a> $$6, int $$7) {
-      super($$0);
-      this.f = $$1;
-      this.g = $$2;
-      this.h = $$3;
-      this.i = $$4;
-      this.j = $$5;
-      this.k = $$6;
-      this.l = $$7;
-   }
-
-   public dwr(duy.c $$0, he<dwh> $$1, int $$2, dtf $$3, boolean $$4, dki.a $$5) {
-      this($$0, $$1, Optional.empty(), $$2, $$3, $$4, Optional.of($$5), 80);
-   }
-
-   public dwr(duy.c $$0, he<dwh> $$1, int $$2, dtf $$3, boolean $$4) {
-      this($$0, $$1, Optional.empty(), $$2, $$3, $$4, Optional.empty(), 80);
+   public dwr(dvd.c $$0) {
+      super(dwq::new, 21, 21, $$0);
    }
 
    @Override
-   public Optional<duy.b> a(duy.a $$0) {
-      cos $$1 = $$0.h();
-      int $$2 = this.i.a($$0.f(), new dlf($$0.b(), $$0.i()));
-      gu $$3 = new gu($$1.d(), $$2, $$1.e());
-      return dwb.a($$0, this.f, this.g, this.h, $$3, this.j, this.k, this.l);
+   public void a(cqk $$0, cqi $$1, dhb $$2, arx $$3, duv $$4, cox $$5, dvs $$6) {
+      Set<gw> $$7 = ash.a(ib::i);
+
+      for (dvh $$8 : $$6.c()) {
+         if ($$8 instanceof dwq $$9) {
+            $$7.addAll($$9.b());
+            a($$4, $$0, $$9.c());
+         }
+      }
+
+      ObjectArrayList<gw> $$10 = new ObjectArrayList($$7.stream().toList());
+      arx $$11 = arx.a($$0.A()).e().a($$6.b().f());
+      ac.b($$10, $$11);
+      int $$12 = Math.min($$7.size(), $$11.b(5, 8));
+      ObjectListIterator var12 = $$10.iterator();
+
+      while (var12.hasNext()) {
+         gw $$13 = (gw)var12.next();
+         if ($$12 > 0) {
+            $$12--;
+            a($$4, $$0, $$13);
+         } else if ($$4.b($$13)) {
+            $$0.a($$13, csr.I.n(), 2);
+         }
+      }
+   }
+
+   private static void a(duv $$0, cqk $$1, gw $$2) {
+      if ($$0.b($$2)) {
+         $$1.a($$2, csr.J.n(), 2);
+         $$1.a($$2, dcs.N).ifPresent($$1x -> $$1x.a(ecj.aD, $$2.a()));
+      }
    }
 
    @Override
-   public dvh<?> e() {
-      return dvh.f;
+   public dvm<?> e() {
+      return dvm.b;
    }
 }

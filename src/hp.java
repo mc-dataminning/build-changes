@@ -1,26 +1,77 @@
-public class hp implements ho {
-   protected final double a;
-   protected final double b;
-   protected final double c;
+import com.google.common.collect.Lists;
+import java.util.AbstractList;
+import java.util.Arrays;
+import java.util.List;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.Validate;
 
-   public hp(double $$0, double $$1, double $$2) {
+public class hp<E> extends AbstractList<E> {
+   private final List<E> a;
+   @Nullable
+   private final E b;
+
+   public static <E> hp<E> a() {
+      return new hp<>(Lists.newArrayList(), null);
+   }
+
+   public static <E> hp<E> a(int $$0) {
+      return new hp<>(Lists.newArrayListWithCapacity($$0), null);
+   }
+
+   public static <E> hp<E> a(int $$0, E $$1) {
+      Validate.notNull($$1);
+      Object[] $$2 = new Object[$$0];
+      Arrays.fill($$2, $$1);
+      return new hp<>(Arrays.asList((E[])$$2), $$1);
+   }
+
+   @SafeVarargs
+   public static <E> hp<E> a(E $$0, E... $$1) {
+      return new hp<>(Arrays.asList($$1), $$0);
+   }
+
+   protected hp(List<E> $$0, @Nullable E $$1) {
       this.a = $$0;
       this.b = $$1;
-      this.c = $$2;
+   }
+
+   @Nonnull
+   @Override
+   public E get(int $$0) {
+      return this.a.get($$0);
    }
 
    @Override
-   public double a() {
-      return this.a;
+   public E set(int $$0, E $$1) {
+      Validate.notNull($$1);
+      return this.a.set($$0, $$1);
    }
 
    @Override
-   public double b() {
-      return this.b;
+   public void add(int $$0, E $$1) {
+      Validate.notNull($$1);
+      this.a.add($$0, $$1);
    }
 
    @Override
-   public double c() {
-      return this.c;
+   public E remove(int $$0) {
+      return this.a.remove($$0);
+   }
+
+   @Override
+   public int size() {
+      return this.a.size();
+   }
+
+   @Override
+   public void clear() {
+      if (this.b == null) {
+         super.clear();
+      } else {
+         for (int $$0 = 0; $$0 < this.size(); $$0++) {
+            this.set($$0, this.b);
+         }
+      }
    }
 }

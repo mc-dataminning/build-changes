@@ -1,18 +1,19 @@
-public class fvt extends fud<cbf, fhe<cbf>> {
-   private static final aer a = new aer("textures/entity/wandering_trader.png");
+public class fvt extends fui<bvn, fhg<bvn>> {
+   private static final aeu a = new aeu("textures/entity/turtle/big_sea_turtle.png");
 
-   public fvt(fsx.a $$0) {
-      super($$0, new fhe<>($$0.a(fhr.bM)), 0.5F);
-      this.a(new fwk<>(this, $$0.f(), $$0.d()));
-      this.a(new fwj<>(this, $$0.d()));
+   public fvt(ftc.a $$0) {
+      super($$0, new fhg<>($$0.a(fhw.bH)), 0.7F);
    }
 
-   public aer a(cbf $$0) {
+   public void a(bvn $$0, float $$1, float $$2, elk $$3, fnz $$4, int $$5) {
+      if ($$0.i_()) {
+         this.d *= 0.5F;
+      }
+
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   public aeu a(bvn $$0) {
       return a;
-   }
-
-   protected void a(cbf $$0, elf $$1, float $$2) {
-      float $$3 = 0.9375F;
-      $$1.b(0.9375F, 0.9375F, 0.9375F);
    }
 }

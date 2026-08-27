@@ -1,102 +1,73 @@
-import javax.annotation.Nullable;
-
-public class cwo extends csl implements czm {
-   public static final dft a = cwe.aC;
-   public static final dfq b = dfp.C;
-   protected static final float c = 3.0F;
-   protected static final ehw d = csl.a(0.0, 0.0, 0.0, 3.0, 16.0, 16.0);
-   protected static final ehw e = csl.a(13.0, 0.0, 0.0, 16.0, 16.0, 16.0);
-   protected static final ehw f = csl.a(0.0, 0.0, 0.0, 16.0, 16.0, 3.0);
-   protected static final ehw g = csl.a(0.0, 0.0, 13.0, 16.0, 16.0, 16.0);
-
-   protected cwo(dey.d $$0) {
-      super($$0);
-      this.k(this.C.b().a(a, ha.c).a(b, Boolean.valueOf(false)));
+public class cwo extends cui {
+   protected cwo(dfd.d $$0) {
+      super(1.0F, 1.0F, 16.0F, 16.0F, 16.0F, $$0);
+      this.k(
+         this.C
+            .b()
+            .a(a, Boolean.valueOf(false))
+            .a(b, Boolean.valueOf(false))
+            .a(c, Boolean.valueOf(false))
+            .a(d, Boolean.valueOf(false))
+            .a(e, Boolean.valueOf(false))
+      );
    }
 
    @Override
-   public ehw a(dez $$0, cor $$1, gu $$2, ehi $$3) {
-      switch ((ha)$$0.c(a)) {
-         case c:
-            return g;
-         case d:
-            return f;
-         case e:
-            return e;
-         case f:
-         default:
-            return d;
+   public dfe a(cli $$0) {
+      cow $$1 = $$0.q();
+      gw $$2 = $$0.a();
+      eah $$3 = $$0.q().b_($$0.a());
+      gw $$4 = $$2.e();
+      gw $$5 = $$2.f();
+      gw $$6 = $$2.g();
+      gw $$7 = $$2.h();
+      dfe $$8 = $$1.a_($$4);
+      dfe $$9 = $$1.a_($$5);
+      dfe $$10 = $$1.a_($$6);
+      dfe $$11 = $$1.a_($$7);
+      return this.n()
+         .a(a, Boolean.valueOf(this.a($$8, $$8.d($$1, $$4, hc.d))))
+         .a(c, Boolean.valueOf(this.a($$9, $$9.d($$1, $$5, hc.c))))
+         .a(d, Boolean.valueOf(this.a($$10, $$10.d($$1, $$6, hc.f))))
+         .a(b, Boolean.valueOf(this.a($$11, $$11.d($$1, $$7, hc.e))))
+         .a(e, Boolean.valueOf($$3.a() == eai.c));
+   }
+
+   @Override
+   public dfe a(dfe $$0, hc $$1, dfe $$2, cpr $$3, gw $$4, gw $$5) {
+      if ($$0.c(e)) {
+         $$3.a($$4, eai.c, eai.c.a($$3));
       }
-   }
 
-   private boolean a(cor $$0, gu $$1, ha $$2) {
-      dez $$3 = $$0.a_($$1);
-      return $$3.d($$0, $$1, $$2);
+      return $$1.o().d() ? $$0.a(f.get($$1), Boolean.valueOf(this.a($$2, $$2.d($$3, $$5, $$1.g())))) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public boolean a(dez $$0, cpo $$1, gu $$2) {
-      ha $$3 = $$0.c(a);
-      return this.a($$1, $$2.a($$3.g()), $$3);
+   public eib b(dfe $$0, cow $$1, gw $$2, ehn $$3) {
+      return ehy.a();
    }
 
    @Override
-   public dez a(dez $$0, ha $$1, dez $$2, cpm $$3, gu $$4, gu $$5) {
-      if ($$1.g() == $$0.c(a) && !$$0.a($$3, $$4)) {
-         return csm.a.n();
-      } else {
-         if ($$0.c(b)) {
-            $$3.a($$4, ead.c, ead.c.a($$3));
+   public boolean a(dfe $$0, dfe $$1, hc $$2) {
+      if ($$1.a(this)) {
+         if (!$$2.o().d()) {
+            return true;
          }
 
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      }
-   }
-
-   @Nullable
-   @Override
-   public dez a(clf $$0) {
-      if (!$$0.c()) {
-         dez $$1 = $$0.q().a_($$0.a().a($$0.k().g()));
-         if ($$1.a(this) && $$1.c(a) == $$0.k()) {
-            return null;
+         if ($$0.c(f.get($$2)) && $$1.c(f.get($$2.g()))) {
+            return true;
          }
       }
 
-      dez $$2 = this.n();
-      cpo $$3 = $$0.q();
-      gu $$4 = $$0.a();
-      eac $$5 = $$0.q().b_($$0.a());
+      return super.a($$0, $$1, $$2);
+   }
 
-      for (ha $$6 : $$0.f()) {
-         if ($$6.o().d()) {
-            $$2 = $$2.a(a, $$6.g());
-            if ($$2.a($$3, $$4)) {
-               return $$2.a(b, Boolean.valueOf($$5.a() == ead.c));
-            }
-         }
-      }
-
-      return null;
+   public final boolean a(dfe $$0, boolean $$1) {
+      return !j($$0) && $$1 || $$0.b() instanceof cwo || $$0.a(apo.L);
    }
 
    @Override
-   public dez a(dez $$0, cyx $$1) {
-      return $$0.a(a, $$1.a($$0.c(a)));
-   }
-
-   @Override
-   public dez a(dez $$0, cxg $$1) {
-      return $$0.a($$1.a($$0.c(a)));
-   }
-
-   @Override
-   protected void a(dfa.a<csl, dez> $$0) {
-      $$0.a(a, b);
-   }
-
-   @Override
-   public eac c_(dez $$0) {
-      return $$0.c(b) ? ead.c.a(false) : super.c_($$0);
+   protected void a(dff.a<csq, dfe> $$0) {
+      $$0.a(a, b, d, c, e);
    }
 }

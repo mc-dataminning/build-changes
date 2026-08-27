@@ -1,36 +1,32 @@
-import java.time.Instant;
+public class abd implements va<aaz> {
+   private final int a;
+   private final gw b;
 
-public record abd(String a, Instant b, long c, dw d, tl.b e) implements ux<aaw> {
-   public abd(si $$0) {
-      this($$0.d(256), $$0.v(), $$0.readLong(), new dw($$0), new tl.b($$0));
+   public abd(int $$0, gw $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
+
+   public abd(sl $$0) {
+      this.a = $$0.m();
+      this.b = $$0.e();
    }
 
    @Override
-   public void a(si $$0) {
-      $$0.a(this.a, 256);
+   public void a(sl $$0) {
+      $$0.c(this.a);
       $$0.a(this.b);
-      $$0.b(this.c);
-      this.d.a($$0);
-      this.e.a($$0);
    }
 
-   public void a(aaw $$0) {
+   public void a(aaz $$0) {
       $$0.a(this);
    }
 
-   public Instant d() {
+   public int a() {
+      return this.a;
+   }
+
+   public gw d() {
       return this.b;
-   }
-
-   public long e() {
-      return this.c;
-   }
-
-   public dw f() {
-      return this.d;
-   }
-
-   public tl.b g() {
-      return this.e;
    }
 }

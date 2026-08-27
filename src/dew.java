@@ -1,185 +1,106 @@
-import com.google.common.collect.Lists;
+import java.util.Collections;
 import java.util.List;
+import javax.annotation.Nullable;
 
-public class dew {
-   public static final int a = 12;
-   private final cpl b;
-   private final gu c;
-   private final boolean d;
-   private final gu e;
-   private final ha f;
-   private final List<gu> g = Lists.newArrayList();
-   private final List<gu> h = Lists.newArrayList();
-   private final ha i;
+public class dew extends csd {
+   public static final dfy a = dey.a;
+   public static final dgc<dgg> b = dey.b;
 
-   public dew(cpl $$0, gu $$1, ha $$2, boolean $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.i = $$2;
-      this.d = $$3;
-      if ($$3) {
-         this.f = $$2;
-         this.e = $$1.a($$2);
-      } else {
-         this.f = $$2.g();
-         this.e = $$1.a($$2, 2);
-      }
+   public dew(dfd.d $$0) {
+      super($$0);
+      this.k(this.C.b().a(a, hc.c).a(b, dgg.a));
    }
 
-   public boolean a() {
-      this.g.clear();
-      this.h.clear();
-      dez $$0 = this.b.a_(this.e);
-      if (!des.a($$0, this.b, this.e, this.f, false, this.i)) {
-         if (this.d && $$0.o() == eah.b) {
-            this.h.add(this.e);
-            return true;
-         } else {
-            return false;
-         }
-      } else if (!this.a(this.e, this.f)) {
-         return false;
-      } else {
-         for (int $$1 = 0; $$1 < this.g.size(); $$1++) {
-            gu $$2 = this.g.get($$1);
-            if (a(this.b.a_($$2)) && !this.a($$2)) {
-               return false;
-            }
-         }
-
-         return true;
-      }
+   @Nullable
+   @Override
+   public dcq a(gw $$0, dfe $$1) {
+      return null;
    }
 
-   private static boolean a(dez $$0) {
-      return $$0.a(csm.hV) || $$0.a(csm.pg);
+   public static dcq a(gw $$0, dfe $$1, dfe $$2, hc $$3, boolean $$4, boolean $$5) {
+      return new dfa($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   private static boolean a(dez $$0, dez $$1) {
-      if ($$0.a(csm.pg) && $$1.a(csm.hV)) {
-         return false;
-      } else {
-         return $$0.a(csm.hV) && $$1.a(csm.pg) ? false : a($$0) || a($$1);
-      }
+   @Nullable
+   @Override
+   public <T extends dcq> dcr<T> a(cpq $$0, dfe $$1, dcs<T> $$2) {
+      return a($$2, dcs.k, dfa::a);
    }
 
-   private boolean a(gu $$0, ha $$1) {
-      dez $$2 = this.b.a_($$0);
-      if ($$2.i()) {
-         return true;
-      } else if (!des.a($$2, this.b, $$0, this.f, false, $$1)) {
-         return true;
-      } else if ($$0.equals(this.c)) {
-         return true;
-      } else if (this.g.contains($$0)) {
-         return true;
-      } else {
-         int $$3 = 1;
-         if ($$3 + this.g.size() > 12) {
-            return false;
-         } else {
-            while (a($$2)) {
-               gu $$4 = $$0.a(this.f.g(), $$3);
-               dez $$5 = $$2;
-               $$2 = this.b.a_($$4);
-               if ($$2.i() || !a($$5, $$2) || !des.a($$2, this.b, $$4, this.f, false, this.f.g()) || $$4.equals(this.c)) {
-                  break;
-               }
-
-               if (++$$3 + this.g.size() > 12) {
-                  return false;
-               }
-            }
-
-            int $$6 = 0;
-
-            for (int $$7 = $$3 - 1; $$7 >= 0; $$7--) {
-               this.g.add($$0.a(this.f.g(), $$7));
-               $$6++;
-            }
-
-            int $$8 = 1;
-
-            while (true) {
-               gu $$9 = $$0.a(this.f, $$8);
-               int $$10 = this.g.indexOf($$9);
-               if ($$10 > -1) {
-                  this.a($$6, $$10);
-
-                  for (int $$11 = 0; $$11 <= $$10 + $$6; $$11++) {
-                     gu $$12 = this.g.get($$11);
-                     if (a(this.b.a_($$12)) && !this.a($$12)) {
-                        return false;
-                     }
-                  }
-
-                  return true;
-               }
-
-               $$2 = this.b.a_($$9);
-               if ($$2.i()) {
-                  return true;
-               }
-
-               if (!des.a($$2, this.b, $$9, this.f, true, this.f) || $$9.equals(this.c)) {
-                  return false;
-               }
-
-               if ($$2.o() == eah.b) {
-                  this.h.add($$9);
-                  return true;
-               }
-
-               if (this.g.size() >= 12) {
-                  return false;
-               }
-
-               this.g.add($$9);
-               $$6++;
-               $$8++;
-            }
+   @Override
+   public void a(dfe $$0, cpq $$1, gw $$2, dfe $$3, boolean $$4) {
+      if (!$$0.a($$3.b())) {
+         dcq $$5 = $$1.c_($$2);
+         if ($$5 instanceof dfa) {
+            ((dfa)$$5).j();
          }
       }
    }
 
-   private void a(int $$0, int $$1) {
-      List<gu> $$2 = Lists.newArrayList();
-      List<gu> $$3 = Lists.newArrayList();
-      List<gu> $$4 = Lists.newArrayList();
-      $$2.addAll(this.g.subList(0, $$1));
-      $$3.addAll(this.g.subList(this.g.size() - $$0, this.g.size()));
-      $$4.addAll(this.g.subList($$1, this.g.size() - $$0));
-      this.g.clear();
-      this.g.addAll($$2);
-      this.g.addAll($$3);
-      this.g.addAll($$4);
-   }
-
-   private boolean a(gu $$0) {
-      dez $$1 = this.b.a_($$0);
-
-      for (ha $$2 : ha.values()) {
-         if ($$2.o() != this.f.o()) {
-            gu $$3 = $$0.a($$2);
-            dez $$4 = this.b.a_($$3);
-            if (a($$4, $$1) && !this.a($$3, $$2)) {
-               return false;
-            }
-         }
+   @Override
+   public void a(cpr $$0, gw $$1, dfe $$2) {
+      gw $$3 = $$1.a($$2.c(a).g());
+      dfe $$4 = $$0.a_($$3);
+      if ($$4.b() instanceof dex && $$4.c(dex.b)) {
+         $$0.a($$3, false);
       }
-
-      return true;
    }
 
-   public ha b() {
-      return this.f;
+   @Override
+   public bgt a(dfe $$0, cpq $$1, gw $$2, cbp $$3, bgs $$4, ehe $$5) {
+      if (!$$1.B && $$1.c_($$2) == null) {
+         $$1.a($$2, false);
+         return bgt.b;
+      } else {
+         return bgt.d;
+      }
    }
 
-   public List<gu> c() {
-      return this.g;
+   @Override
+   public List<cja> a(dfe $$0, ecr.a $$1) {
+      dfa $$2 = this.a($$1.a(), gw.a($$1.a(eew.f)));
+      return $$2 == null ? Collections.emptyList() : $$2.i().a($$1);
    }
 
-   public List<gu> d() {
-      return this.h;
+   @Override
+   public eib a(dfe $$0, cow $$1, gw $$2, ehn $$3) {
+      return ehy.a();
+   }
+
+   @Override
+   public eib c(dfe $$0, cow $$1, gw $$2, ehn $$3) {
+      dfa $$4 = this.a($$1, $$2);
+      return $$4 != null ? $$4.a($$1, $$2) : ehy.a();
+   }
+
+   @Nullable
+   private dfa a(cow $$0, gw $$1) {
+      dcq $$2 = $$0.c_($$1);
+      return $$2 instanceof dfa ? (dfa)$$2 : null;
+   }
+
+   @Override
+   public cja a(cow $$0, gw $$1, dfe $$2) {
+      return cja.b;
+   }
+
+   @Override
+   public dfe a(dfe $$0, czc $$1) {
+      return $$0.a(a, $$1.a($$0.c(a)));
+   }
+
+   @Override
+   public dfe a(dfe $$0, cxl $$1) {
+      return $$0.a($$1.a($$0.c(a)));
+   }
+
+   @Override
+   protected void a(dff.a<csq, dfe> $$0) {
+      $$0.a(a, b);
+   }
+
+   @Override
+   public boolean a(dfe $$0, cow $$1, gw $$2, eax $$3) {
+      return false;
    }
 }

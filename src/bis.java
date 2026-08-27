@@ -1,36 +1,46 @@
-import com.mojang.serialization.Codec;
-
-public enum bis implements arr, ash {
-   a(0, "left", "options.mainHand.left"),
-   b(1, "right", "options.mainHand.right");
-
-   public static final Codec<bis> c = ash.a(bis::values);
-   private final int d;
-   private final String e;
-   private final String f;
-
-   private bis(int $$0, String $$1, String $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-   }
-
-   public bis e() {
-      return this == a ? b : a;
+public abstract class bis extends bjd {
+   protected bis(bip<? extends bis> $$0, cpq $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public int a() {
-      return this.d;
+   protected void a(double $$0, boolean $$1, dfe $$2, gw $$3) {
    }
 
    @Override
-   public String b() {
-      return this.f;
+   public void h(ehi $$0) {
+      if (this.cW()) {
+         if (this.aX()) {
+            this.a(0.02F, $$0);
+            this.a(bjh.a, this.dn());
+            this.f(this.dn().a(0.8F));
+         } else if (this.bl()) {
+            this.a(0.02F, $$0);
+            this.a(bjh.a, this.dn());
+            this.f(this.dn().a(0.5));
+         } else {
+            float $$1 = 0.91F;
+            if (this.aA()) {
+               $$1 = this.dK().a_(this.aG()).b().h() * 0.91F;
+            }
+
+            float $$2 = 0.16277137F / ($$1 * $$1 * $$1);
+            $$1 = 0.91F;
+            if (this.aA()) {
+               $$1 = this.dK().a_(this.aG()).b().h() * 0.91F;
+            }
+
+            this.a(this.aA() ? 0.1F * $$2 : 0.02F, $$0);
+            this.a(bjh.a, this.dn());
+            this.f(this.dn().a((double)$$1));
+         }
+      }
+
+      this.q(false);
    }
 
    @Override
-   public String c() {
-      return this.e;
+   public boolean j_() {
+      return false;
    }
 }

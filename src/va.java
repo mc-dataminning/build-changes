@@ -1,13 +1,16 @@
-public interface va extends sd {
-   void a(vd var1);
+import javax.annotation.Nullable;
 
-   void a(ve var1);
+public interface va<T extends sr> {
+   void a(sl var1);
 
-   void a(vb var1);
+   void a(T var1);
 
-   void a(vc var1);
+   default boolean b() {
+      return false;
+   }
 
-   void a(vf var1);
-
-   void a(vg var1);
+   @Nullable
+   default sk c() {
+      return null;
+   }
 }

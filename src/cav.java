@@ -1,75 +1,117 @@
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
+import java.util.OptionalInt;
+import java.util.function.Predicate;
 
-public class cav implements coy {
-   private static final int a = 1200;
-   private int b;
+public class cav {
+   public static final Codec<cav> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               arb.i.fieldOf("ticks_since_last_warning").orElse(0).forGetter($$0x -> $$0x.g),
+               arb.i.fieldOf("warning_level").orElse(0).forGetter($$0x -> $$0x.h),
+               arb.i.fieldOf("cooldown_ticks").orElse(0).forGetter($$0x -> $$0x.i)
+            )
+            .apply($$0, cav::new)
+   );
+   public static final int b = 4;
+   private static final double c = 16.0;
+   private static final int d = 48;
+   private static final int e = 12000;
+   private static final int f = 200;
+   private int g;
+   private int h;
+   private int i;
 
-   @Override
-   public int a(akk $$0, boolean $$1, boolean $$2) {
-      if ($$2 && $$0.X().b(cph.e)) {
-         this.b--;
-         if (this.b > 0) {
-            return 0;
+   public cav(int $$0, int $$1, int $$2) {
+      this.g = $$0;
+      this.h = $$1;
+      this.i = $$2;
+   }
+
+   public void a() {
+      if (this.g >= 12000) {
+         this.f();
+         this.g = 0;
+      } else {
+         this.g++;
+      }
+
+      if (this.i > 0) {
+         this.i--;
+      }
+   }
+
+   public void b() {
+      this.g = 0;
+      this.h = 0;
+      this.i = 0;
+   }
+
+   public static OptionalInt a(akn $$0, gw $$1, ako $$2) {
+      if (a($$0, $$1)) {
+         return OptionalInt.empty();
+      } else {
+         List<ako> $$3 = b($$0, $$1);
+         if (!$$3.contains($$2)) {
+            $$3.add($$2);
+         }
+
+         if ($$3.stream().anyMatch($$0x -> $$0x.Y().map(cav::d).orElse(false))) {
+            return OptionalInt.empty();
          } else {
-            this.b = 1200;
-            cbm $$3 = $$0.i();
-            if ($$3 == null) {
-               return 0;
+            Optional<cav> $$4 = $$3.stream().flatMap($$0x -> $$0x.Y().stream()).max(Comparator.comparingInt(cav::c));
+            if ($$4.isPresent()) {
+               cav $$5 = $$4.get();
+               $$5.e();
+               $$3.forEach($$1x -> $$1x.Y().ifPresent($$1xx -> $$1xx.a($$5)));
+               return OptionalInt.of($$5.h);
             } else {
-               aru $$4 = $$0.z;
-               int $$5 = (8 + $$4.a(24)) * ($$4.h() ? -1 : 1);
-               int $$6 = (8 + $$4.a(24)) * ($$4.h() ? -1 : 1);
-               gu $$7 = $$3.dk().b($$5, 0, $$6);
-               int $$8 = 10;
-               if (!$$0.b($$7.u() - 10, $$7.w() - 10, $$7.u() + 10, $$7.w() + 10)) {
-                  return 0;
-               } else {
-                  if (cpw.a(bjs.c.a, $$0, $$7, bim.m)) {
-                     if ($$0.a($$7, 2)) {
-                        return this.a($$0, $$7);
-                     }
-
-                     if ($$0.a().a($$7, apw.f).b()) {
-                        return this.b($$0, $$7);
-                     }
-                  }
-
-                  return 0;
-               }
+               return OptionalInt.empty();
             }
          }
-      } else {
-         return 0;
       }
    }
 
-   private int a(akk $$0, gu $$1) {
-      int $$2 = 48;
-      if ($$0.w().a($$0x -> $$0x.a(bub.n), $$1, 48, btx.b.b) > 4L) {
-         List<bum> $$3 = $$0.a(bum.class, new egy($$1).c(48.0, 8.0, 48.0));
-         if ($$3.size() < 5) {
-            return this.a($$1, $$0);
-         }
-      }
-
-      return 0;
+   private boolean d() {
+      return this.i > 0;
    }
 
-   private int b(akk $$0, gu $$1) {
-      int $$2 = 16;
-      List<bum> $$3 = $$0.a(bum.class, new egy($$1).c(16.0, 8.0, 16.0));
-      return $$3.size() < 1 ? this.a($$1, $$0) : 0;
+   private static boolean a(akn $$0, gw $$1) {
+      ehd $$2 = ehd.a(ehi.b($$1), 48.0, 48.0, 48.0);
+      return !$$0.a(cat.class, $$2).isEmpty();
    }
 
-   private int a(gu $$0, akk $$1) {
-      bum $$2 = bim.m.a((cpl)$$1);
-      if ($$2 == null) {
-         return 0;
-      } else {
-         $$2.a($$1, $$1.d_($$0), bjc.a, null, null);
-         $$2.a($$0, 0.0F, 0.0F);
-         $$1.a_($$2);
-         return 1;
+   private static List<ako> b(akn $$0, gw $$1) {
+      ehi $$2 = ehi.b($$1);
+      Predicate<ako> $$3 = $$1x -> $$1x.di().a((hq)$$2, 16.0);
+      return $$0.a($$3.and(bjb::bv).and(bio.f));
+   }
+
+   private void e() {
+      if (!this.d()) {
+         this.g = 0;
+         this.i = 200;
+         this.a(this.c() + 1);
       }
+   }
+
+   private void f() {
+      this.a(this.c() - 1);
+   }
+
+   public void a(int $$0) {
+      this.h = ars.a($$0, 0, 4);
+   }
+
+   public int c() {
+      return this.h;
+   }
+
+   private void a(cav $$0) {
+      this.h = $$0.h;
+      this.i = $$0.i;
+      this.g = $$0.g;
    }
 }

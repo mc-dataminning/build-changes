@@ -1,46 +1,51 @@
-import java.io.IOException;
-import java.util.function.BooleanSupplier;
-import javax.annotation.Nullable;
+import java.util.BitSet;
+import java.util.stream.Stream;
 
-public abstract class dgz implements dhj, AutoCloseable {
-   @Nullable
-   public dhg a(int $$0, int $$1, boolean $$2) {
-      return (dhg)this.a($$0, $$1, dha.n, $$2);
+public class dgz {
+   private final int a;
+   private final BitSet b;
+   private dgz.a c = ($$0x, $$1x, $$2) -> false;
+
+   public dgz(int $$0, int $$1) {
+      this.a = $$1;
+      this.b = new BitSet(256 * $$0);
    }
 
-   @Nullable
-   public dhg a(int $$0, int $$1) {
-      return this.a($$0, $$1, false);
+   public void a(dgz.a $$0) {
+      this.c = $$0;
    }
 
-   @Nullable
-   @Override
-   public dhi c(int $$0, int $$1) {
-      return this.a($$0, $$1, dha.c, false);
+   public dgz(long[] $$0, int $$1) {
+      this.a = $$1;
+      this.b = BitSet.valueOf($$0);
    }
 
-   public boolean b(int $$0, int $$1) {
-      return this.a($$0, $$1, dha.n, false) != null;
+   private int c(int $$0, int $$1, int $$2) {
+      return $$0 & 15 | ($$2 & 15) << 4 | $$1 - this.a << 8;
    }
 
-   @Nullable
-   public abstract dgv a(int var1, int var2, dha var3, boolean var4);
-
-   public abstract void a(BooleanSupplier var1, boolean var2);
-
-   public abstract String e();
-
-   public abstract int j();
-
-   @Override
-   public void close() throws IOException {
+   public void a(int $$0, int $$1, int $$2) {
+      this.b.set(this.c($$0, $$1, $$2));
    }
 
-   public abstract dzr p();
-
-   public void a(boolean $$0, boolean $$1) {
+   public boolean b(int $$0, int $$1, int $$2) {
+      return this.c.test($$0, $$1, $$2) || this.b.get(this.c($$0, $$1, $$2));
    }
 
-   public void a(cos $$0, boolean $$1) {
+   public Stream<gw> a(cox $$0) {
+      return this.b.stream().mapToObj($$1 -> {
+         int $$2 = $$1 & 15;
+         int $$3 = $$1 >> 4 & 15;
+         int $$4 = $$1 >> 8;
+         return $$0.a($$2, $$4 + this.a, $$3);
+      });
+   }
+
+   public long[] a() {
+      return this.b.toLongArray();
+   }
+
+   public interface a {
+      boolean test(int var1, int var2, int var3);
    }
 }

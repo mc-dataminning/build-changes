@@ -1,30 +1,48 @@
-public class brd extends bpt {
-   private final bjh a;
+import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-   public brd(bjh $$0) {
+public class brd extends bpw {
+   private final byp a;
+   @Nullable
+   private bjb b;
+
+   public brd(byp $$0) {
       this.a = $$0;
+      this.a(EnumSet.of(bpw.a.a));
    }
 
    @Override
    public boolean a() {
-      return this.a.aA() && !this.a.dK().b_(this.a.dk()).a(apq.a);
+      bjb $$0 = this.a.j();
+      return this.a.q() > 0 || $$0 != null && this.a.f((bil)$$0) < 9.0;
    }
 
    @Override
    public void c() {
-      gu $$0 = null;
+      this.a.H().n();
+      this.b = this.a.j();
+   }
 
-      for (gu $$2 : gu.b(
-         arp.a(this.a.dp() - 2.0), arp.a(this.a.dr() - 2.0), arp.a(this.a.dv() - 2.0), arp.a(this.a.dp() + 2.0), this.a.dq(), arp.a(this.a.dv() + 2.0)
-      )) {
-         if (this.a.dK().b_($$2).a(apq.a)) {
-            $$0 = $$2;
-            break;
-         }
-      }
+   @Override
+   public void d() {
+      this.b = null;
+   }
 
-      if ($$0 != null) {
-         this.a.E().a((double)$$0.u(), (double)$$0.v(), (double)$$0.w(), 1.0);
+   @Override
+   public boolean K_() {
+      return true;
+   }
+
+   @Override
+   public void e() {
+      if (this.b == null) {
+         this.a.b(-1);
+      } else if (this.a.f((bil)this.b) > 49.0) {
+         this.a.b(-1);
+      } else if (!this.a.J().a(this.b)) {
+         this.a.b(-1);
+      } else {
+         this.a.b(1);
       }
    }
 }

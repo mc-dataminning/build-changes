@@ -1,32 +1,31 @@
-public class zb implements ux<wp> {
-   private final int a;
-   private final byte b;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
 
-   public zb(bii $$0, byte $$1) {
-      this.a = $$0.ah();
-      this.b = $$1;
+public class zb implements va<ws> {
+   private final IntList a;
+
+   public zb(IntList $$0) {
+      this.a = new IntArrayList($$0);
    }
 
-   public zb(si $$0) {
-      this.a = $$0.m();
-      this.b = $$0.readByte();
+   public zb(int... $$0) {
+      this.a = new IntArrayList($$0);
+   }
+
+   public zb(sl $$0) {
+      this.a = $$0.a();
    }
 
    @Override
-   public void a(si $$0) {
-      $$0.c(this.a);
-      $$0.k(this.b);
+   public void a(sl $$0) {
+      $$0.a(this.a);
    }
 
-   public void a(wp $$0) {
+   public void a(ws $$0) {
       $$0.a(this);
    }
 
-   public bii a(cpl $$0) {
-      return $$0.a(this.a);
-   }
-
-   public byte a() {
-      return this.b;
+   public IntList a() {
+      return this.a;
    }
 }

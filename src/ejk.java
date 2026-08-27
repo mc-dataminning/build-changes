@@ -1,47 +1,61 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.ints.IntSet;
-import it.unimi.dsi.fastutil.ints.IntSets;
-import java.util.Map;
+import java.nio.ByteBuffer;
+import java.util.OptionalInt;
 import javax.annotation.Nullable;
+import javax.sound.sampled.AudioFormat;
+import org.lwjgl.openal.AL10;
 
-public class ejk implements eji {
-   private final Int2ObjectMap<ejh.a> a;
-
-   public ejk(Map<Integer, Float> $$0) {
-      this.a = new Int2ObjectOpenHashMap($$0.size());
-      $$0.forEach(($$0x, $$1) -> this.a.put($$0x, (ejh.a)() -> $$1));
-   }
-
+public class ejk {
    @Nullable
-   @Override
-   public ejh a(int $$0) {
-      return (ejh)this.a.get($$0);
+   private ByteBuffer a;
+   private final AudioFormat b;
+   private boolean c;
+   private int d;
+
+   public ejk(ByteBuffer $$0, AudioFormat $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   @Override
-   public IntSet a() {
-      return IntSets.unmodifiable(this.a.keySet());
+   OptionalInt a() {
+      if (!this.c) {
+         if (this.a == null) {
+            return OptionalInt.empty();
+         }
+
+         int $$0 = ejj.a(this.b);
+         int[] $$1 = new int[1];
+         AL10.alGenBuffers($$1);
+         if (ejj.a("Creating buffer")) {
+            return OptionalInt.empty();
+         }
+
+         AL10.alBufferData($$1[0], $$0, this.a, (int)this.b.getSampleRate());
+         if (ejj.a("Assigning buffer data")) {
+            return OptionalInt.empty();
+         }
+
+         this.d = $$1[0];
+         this.c = true;
+         this.a = null;
+      }
+
+      return OptionalInt.of(this.d);
    }
 
-   public static record a(Map<Integer, Float> c) implements eve {
-      public static final MapCodec<ejk.a> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(Codec.unboundedMap(aqy.v, Codec.FLOAT).fieldOf("advances").forGetter(ejk.a::c)).apply($$0, ejk.a::new)
-      );
-
-      @Override
-      public evf a() {
-         return evf.c;
+   public void b() {
+      if (this.c) {
+         AL10.alDeleteBuffers(new int[]{this.d});
+         if (ejj.a("Deleting stream buffers")) {
+            return;
+         }
       }
 
-      @Override
-      public Either<eve.a, eve.b> b() {
-         eve.a $$0 = $$0x -> new ejk(this.c);
-         return Either.left($$0);
-      }
+      this.c = false;
+   }
+
+   public OptionalInt c() {
+      OptionalInt $$0 = this.a();
+      this.c = false;
+      return $$0;
    }
 }

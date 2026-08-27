@@ -1,23 +1,41 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.Lists;
+import java.util.List;
 
-public record cqe(coz d, cdu e) {
-   public static final String a = "enabled_features";
-   public static final Codec<cqe> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(coz.b.optionalFieldOf("DataPacks", coz.a).forGetter(cqe::a), cdw.e.optionalFieldOf("enabled_features", cdw.g).forGetter(cqe::b))
-            .apply($$0, cqe::new)
-   );
-   public static final cqe c = new cqe(coz.a, cdw.g);
+public class cqe {
+   private final List<cqe.a> a = Lists.newArrayList();
 
-   public cqe a(cdu $$0) {
-      return new cqe(this.d, this.e.b($$0));
+   public void a(gw $$0, double $$1) {
+      if ($$1 != 0.0) {
+         this.a.add(new cqe.a($$0, $$1));
+      }
    }
 
-   public coz a() {
-      return this.d;
+   public double b(gw $$0, double $$1) {
+      if ($$1 == 0.0) {
+         return 0.0;
+      } else {
+         double $$2 = 0.0;
+
+         for (cqe.a $$3 : this.a) {
+            $$2 += $$3.a($$0);
+         }
+
+         return $$2 * $$1;
+      }
    }
 
-   public cdu b() {
-      return this.e;
+   static class a {
+      private final gw a;
+      private final double b;
+
+      public a(gw $$0, double $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public double a(gw $$0) {
+         double $$1 = this.a.j($$0);
+         return $$1 == 0.0 ? Double.POSITIVE_INFINITY : this.b / Math.sqrt($$1);
+      }
    }
 }

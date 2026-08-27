@@ -1,40 +1,62 @@
-public class acc implements ux<aaw> {
-   private final cfo a;
-   private final boolean b;
-   private final boolean c;
+public class acc implements va<aaz> {
+   private final gw a;
+   private final hc b;
+   private final acc.a c;
+   private final int d;
 
-   public acc(cfo $$0, boolean $$1, boolean $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public acc(acc.a $$0, gw $$1, hc $$2, int $$3) {
+      this.c = $$0;
+      this.a = $$1.i();
+      this.b = $$2;
+      this.d = $$3;
    }
 
-   public acc(si $$0) {
-      this.a = $$0.b(cfo.class);
-      this.b = $$0.readBoolean();
-      this.c = $$0.readBoolean();
+   public acc(acc.a $$0, gw $$1, hc $$2) {
+      this($$0, $$1, $$2, 0);
+   }
+
+   public acc(sl $$0) {
+      this.c = $$0.b(acc.a.class);
+      this.a = $$0.e();
+      this.b = hc.a($$0.readUnsignedByte());
+      this.d = $$0.m();
    }
 
    @Override
-   public void a(si $$0) {
-      $$0.a(this.a);
-      $$0.a(this.b);
+   public void a(sl $$0) {
       $$0.a(this.c);
+      $$0.a(this.a);
+      $$0.k(this.b.d());
+      $$0.c(this.d);
    }
 
-   public void a(aaw $$0) {
+   public void a(aaz $$0) {
       $$0.a(this);
    }
 
-   public cfo a() {
+   public gw a() {
       return this.a;
    }
 
-   public boolean d() {
+   public hc d() {
       return this.b;
    }
 
-   public boolean e() {
+   public acc.a e() {
       return this.c;
+   }
+
+   public int f() {
+      return this.d;
+   }
+
+   public static enum a {
+      a,
+      b,
+      c,
+      d,
+      e,
+      f,
+      g;
    }
 }

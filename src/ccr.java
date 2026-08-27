@@ -1,98 +1,34 @@
-public class ccr extends cbt {
-   private static final adz<Boolean> e = aec.a(ccr.class, aeb.k);
-
-   public ccr(bim<? extends ccr> $$0, cpl $$1) {
+public class ccr extends ccn {
+   public ccr(bip<? extends ccr> $$0, cpq $$1) {
       super($$0, $$1);
    }
 
-   public ccr(cpl $$0, biy $$1, double $$2, double $$3, double $$4) {
-      super(bim.bm, $$1, $$2, $$3, $$4, $$0);
+   public ccr(cpq $$0, bjb $$1) {
+      super(bip.I, $$1, $$0);
+   }
+
+   public ccr(cpq $$0, double $$1, double $$2, double $$3) {
+      super(bip.I, $$1, $$2, $$3, $$0);
    }
 
    @Override
-   protected float o() {
-      return this.p() ? 0.73F : super.o();
+   protected civ m() {
+      return cjd.te;
    }
 
    @Override
-   public boolean bM() {
-      return false;
+   protected float p() {
+      return 0.07F;
    }
 
    @Override
-   public float a(cpd $$0, cor $$1, gu $$2, dez $$3, eac $$4, float $$5) {
-      return this.p() && bxt.d($$3) ? Math.min(0.8F, $$5) : $$5;
-   }
-
-   @Override
-   protected void a(eha $$0) {
+   protected void a(ehg $$0) {
       super.a($$0);
-      if (!this.dK().B) {
-         bii $$1 = $$0.a();
-         boolean $$4;
-         if (this.v() instanceof biy $$3) {
-            $$4 = $$1.a(this.dL().a(this, $$3), 8.0F);
-            if ($$4) {
-               if ($$1.bv()) {
-                  this.a($$3, $$1);
-               } else {
-                  $$3.b(5.0F);
-               }
-            }
-         } else {
-            $$4 = $$1.a(this.dL().o(), 5.0F);
-         }
-
-         if ($$4 && $$1 instanceof biy $$6) {
-            int $$7 = 0;
-            if (this.dK().ai() == bgn.c) {
-               $$7 = 10;
-            } else if (this.dK().ai() == bgn.d) {
-               $$7 = 40;
-            }
-
-            if ($$7 > 0) {
-               $$6.b(new bhv(bhx.t, 20 * $$7, 1), this.A());
-            }
-         }
-      }
-   }
-
-   @Override
-   protected void a(ehb $$0) {
-      super.a($$0);
-      if (!this.dK().B) {
-         this.dK().a(this, this.dp(), this.dr(), this.dv(), 1.0F, false, cpl.a.c);
+      if (this.dK() instanceof akn) {
+         this.dK().c(2002, this.dk(), ckz.a(cla.c));
+         int $$1 = 3 + this.dK().z.a(5) + this.dK().z.a(5);
+         bir.a((akn)this.dK(), this.di(), $$1);
          this.ak();
       }
-   }
-
-   @Override
-   public boolean br() {
-      return false;
-   }
-
-   @Override
-   public boolean a(bhg $$0, float $$1) {
-      return false;
-   }
-
-   @Override
-   protected void a_() {
-      this.an.a(e, false);
-   }
-
-   @Override
-   public boolean p() {
-      return this.an.b(e);
-   }
-
-   public void a(boolean $$0) {
-      this.an.b(e, $$0);
-   }
-
-   @Override
-   protected boolean Z_() {
-      return false;
    }
 }

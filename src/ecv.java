@@ -1,53 +1,64 @@
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
+import java.util.Collection;
 import java.util.List;
+import java.util.function.Function;
 
-public class ecv extends ecs {
+public class ecv extends ecx {
    public static final Codec<ecv> a = a(ecv::new);
 
-   ecv(List<ecz> $$0, List<eff> $$1) {
+   ecv(List<ede> $$0, List<efk> $$1) {
       super($$0, $$1);
    }
 
    @Override
-   public eda a() {
-      return ecx.i;
+   public edf a() {
+      return edc.g;
    }
 
    @Override
-   protected ecr a(List<? extends ecr> $$0) {
+   protected ecw a(List<? extends ecw> $$0) {
       return switch ($$0.size()) {
-         case 0 -> c;
-         case 1 -> (ecr)$$0.get(0);
-         case 2 -> {
-            ecr $$1 = $$0.get(0);
-            ecr $$2 = $$0.get(1);
-            yield ($$2x, $$3) -> {
-               $$1.expand($$2x, $$3);
-               $$2.expand($$2x, $$3);
+         case 0 -> b;
+         case 1 -> (ecw)$$0.get(0);
+         case 2 -> $$0.get(0).or($$0.get(1));
+         default -> ($$1, $$2) -> {
+         for (ecw $$3 : $$0) {
+            if ($$3.expand($$1, $$2)) {
                return true;
-            };
-         }
-         default -> ($$1x, $$2x) -> {
-         for (ecr $$3 : $$0) {
-            $$3.expand($$1x, $$2x);
+            }
          }
 
-         return true;
+         return false;
       };
       };
    }
 
-   public static ecv.a a(ecz.a<?>... $$0) {
+   @Override
+   public void a(ecu $$0) {
+      super.a($$0);
+
+      for (int $$1 = 0; $$1 < this.d.size() - 1; $$1++) {
+         if (this.d.get($$1).e.isEmpty()) {
+            $$0.a("Unreachable entry!");
+         }
+      }
+   }
+
+   public static ecv.a a(ede.a<?>... $$0) {
       return new ecv.a($$0);
    }
 
-   public static class a extends ecz.a<ecv.a> {
-      private final Builder<ecz> a = ImmutableList.builder();
+   public static <E> ecv.a a(Collection<E> $$0, Function<E, ede.a<?>> $$1) {
+      return new ecv.a($$0.stream().map($$1::apply).toArray(ede.a[]::new));
+   }
 
-      public a(ecz.a<?>... $$0) {
-         for (ecz.a<?> $$1 : $$0) {
+   public static class a extends ede.a<ecv.a> {
+      private final Builder<ede> a = ImmutableList.builder();
+
+      public a(ede.a<?>... $$0) {
+         for (ede.a<?> $$1 : $$0) {
             this.a.add($$1.b());
          }
       }
@@ -57,13 +68,13 @@ public class ecv extends ecs {
       }
 
       @Override
-      public ecv.a b(ecz.a<?> $$0) {
+      public ecv.a a(ede.a<?> $$0) {
          this.a.add($$0.b());
          return this;
       }
 
       @Override
-      public ecz b() {
+      public ede b() {
          return new ecv(this.a.build(), this.f());
       }
    }

@@ -1,20 +1,10 @@
-public class cnm extends cne {
-   protected cnm(cne.a $$0, bin... $$1) {
-      super($$0, cnf.f, $$1);
-   }
+public class cnm extends bff.a {
+   public final cnj a;
+   public final int b;
 
-   @Override
-   public int a(int $$0) {
-      return 5 + 20 * ($$0 - 1);
-   }
-
-   @Override
-   public int b(int $$0) {
-      return super.a($$0) + 50;
-   }
-
-   @Override
-   public int a() {
-      return 2;
+   public cnm(cnj $$0, int $$1) {
+      super($$0.d().a());
+      this.a = $$0;
+      this.b = $$1;
    }
 }

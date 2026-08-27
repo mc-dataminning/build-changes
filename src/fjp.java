@@ -1,73 +1,65 @@
-import com.mojang.authlib.minecraft.UserApiService;
-import java.util.Objects;
+import com.mojang.authlib.minecraft.report.AbuseReport;
+import com.mojang.authlib.minecraft.report.AbuseReportLimits;
+import com.mojang.authlib.minecraft.report.ReportedEntity;
+import com.mojang.datafixers.util.Either;
+import java.time.Instant;
 import java.util.UUID;
 import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringUtils;
 
-public final class fjp {
-   private static final int a = 1024;
-   private final fjg b;
-   private final fjm c;
-   private final fjb d;
-   @Nullable
-   private fjl e;
+public class fjp extends fjq {
+   private final String f;
 
-   public fjp(fjg $$0, fjm $$1, fjb $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   fjp(UUID $$0, Instant $$1, UUID $$2, String $$3) {
+      super($$0, $$1, $$2);
+      this.f = $$3;
    }
 
-   public static fjp a(fjm $$0, UserApiService $$1) {
-      fjb $$2 = new fjb(1024);
-      fjg $$3 = fjg.a($$0, $$1);
-      return new fjp($$3, $$0, $$2);
+   public String a() {
+      return this.f;
    }
 
-   public void a(eql $$0, eya $$1, Runnable $$2, boolean $$3) {
-      if (this.e != null) {
-         fjl $$4 = this.e.b();
-         $$0.a(
-            new ewt(
-               $$4x -> {
-                  this.a(null);
-                  if ($$4x) {
-                     $$0.a($$4.a($$1, this));
-                  } else {
-                     $$2.run();
-                  }
-               },
-               tf.c($$3 ? "gui.abuseReport.draft.quittotitle.title" : "gui.abuseReport.draft.title"),
-               tf.c($$3 ? "gui.abuseReport.draft.quittotitle.content" : "gui.abuseReport.draft.content"),
-               tf.c("gui.abuseReport.draft.edit"),
-               tf.c("gui.abuseReport.draft.discard")
-            )
-         );
-      } else {
-         $$2.run();
+   public fjp c() {
+      fjp $$0 = new fjp(this.a, this.b, this.c, this.f);
+      $$0.d = this.d;
+      return $$0;
+   }
+
+   @Override
+   public eyf a(eyf $$0, fju $$1) {
+      return new fcf($$0, $$1, this);
+   }
+
+   public static class a extends fjq.a<fjp> {
+      public a(fjp $$0, AbuseReportLimits $$1) {
+         super($$0, $$1);
       }
-   }
 
-   public fjg a() {
-      return this.b;
-   }
+      public a(UUID $$0, String $$1, AbuseReportLimits $$2) {
+         super(new fjp(UUID.randomUUID(), Instant.now(), $$0, $$1), $$2);
+      }
 
-   public fjb b() {
-      return this.d;
-   }
+      @Override
+      public boolean b() {
+         return StringUtils.isNotEmpty(this.g());
+      }
 
-   public boolean a(fjm $$0) {
-      return Objects.equals(this.c, $$0);
-   }
+      @Nullable
+      @Override
+      public fjq.b c() {
+         return this.a.d.length() > this.b.maxOpinionCommentsLength() ? fjq.b.d : null;
+      }
 
-   public void a(@Nullable fjl $$0) {
-      this.e = $$0;
-   }
-
-   public boolean c() {
-      return this.e != null;
-   }
-
-   public boolean a(UUID $$0) {
-      return this.c() && this.e.a($$0);
+      @Override
+      public Either<fjq.c, fjq.b> a(fju $$0) {
+         fjq.b $$1 = this.c();
+         if ($$1 != null) {
+            return Either.right($$1);
+         } else {
+            ReportedEntity $$2 = new ReportedEntity(this.a.c);
+            AbuseReport $$3 = AbuseReport.name(this.a.d, $$2, this.a.b);
+            return Either.left(new fjq.c(this.a.a, fjt.c, $$3));
+         }
+      }
    }
 }

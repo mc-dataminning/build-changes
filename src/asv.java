@@ -1,40 +1,76 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.DataFixer;
+import com.mojang.datafixers.DSL.TypeReference;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.Dynamic;
-import java.util.function.Function;
+import com.mojang.serialization.DynamicOps;
+import java.util.Set;
 
-public class asv extends DataFix {
-   public asv(Schema $$0) {
-      super($$0, false);
+public enum asv {
+   a(ays.a),
+   b(ays.b),
+   c(ays.c),
+   d(ays.d),
+   e(ays.e),
+   f(ays.f),
+   g(ays.g),
+   h(ays.h),
+   i(ays.i),
+   j(ays.j),
+   k(ays.k),
+   l(ays.l),
+   m(ays.m),
+   n(ays.o),
+   o(ays.n),
+   p(ays.p),
+   q(ays.q),
+   r(ays.I),
+   s(ays.r);
+
+   public static final Set<TypeReference> t;
+   private final TypeReference u;
+
+   private asv(TypeReference $$0) {
+      this.u = $$0;
    }
 
-   protected TypeRewriteRule makeRule() {
-      Schema $$0 = this.getInputSchema();
-      return this.fixTypeEverywhereTyped("AbstractArrowPickupFix", $$0.getType(ayp.x), this::a);
+   static int a() {
+      return aa.b().d().c();
    }
 
-   private Typed<?> a(Typed<?> $$0) {
-      $$0 = this.a($$0, "minecraft:arrow", asv::a);
-      $$0 = this.a($$0, "minecraft:spectral_arrow", asv::a);
-      return this.a($$0, "minecraft:trident", asv::a);
+   public <A> Codec<A> a(final Codec<A> $$0, final DataFixer $$1, final int $$2) {
+      return new Codec<A>() {
+         public <T> DataResult<T> encode(A $$0x, DynamicOps<T> $$1x, T $$2x) {
+            return $$0.encode($$0, $$1, $$2).flatMap($$1xxx -> $$1.mergeToMap($$1xxx, $$1.createString("DataVersion"), $$1.createInt(asv.a())));
+         }
+
+         public <T> DataResult<Pair<A, T>> decode(DynamicOps<T> $$0x, T $$1x) {
+            int $$2 = $$0.get($$1, "DataVersion").flatMap($$0::getNumberValue).map(Number::intValue).result().orElse($$2);
+            Dynamic<T> $$3 = new Dynamic($$0, $$0.remove($$1, "DataVersion"));
+            Dynamic<T> $$4 = asv.this.a($$1, $$3, $$2);
+            return $$0.decode($$4);
+         }
+      };
    }
 
-   private static Dynamic<?> a(Dynamic<?> $$0) {
-      if ($$0.get("pickup").result().isPresent()) {
-         return $$0;
-      } else {
-         boolean $$1 = $$0.get("player").asBoolean(true);
-         return $$0.set("pickup", $$0.createByte((byte)($$1 ? 1 : 0))).remove("player");
-      }
+   public <T> Dynamic<T> a(DataFixer $$0, Dynamic<T> $$1, int $$2, int $$3) {
+      return $$0.update(this.u, $$1, $$2, $$3);
    }
 
-   private Typed<?> a(Typed<?> $$0, String $$1, Function<Dynamic<?>, Dynamic<?>> $$2) {
-      Type<?> $$3 = this.getInputSchema().getChoiceType(ayp.x, $$1);
-      Type<?> $$4 = this.getOutputSchema().getChoiceType(ayp.x, $$1);
-      return $$0.updateTyped(DSL.namedChoice($$1, $$3), $$4, $$1x -> $$1x.update(DSL.remainderFinder(), $$2));
+   public <T> Dynamic<T> a(DataFixer $$0, Dynamic<T> $$1, int $$2) {
+      return this.a($$0, $$1, $$2, a());
+   }
+
+   public qu a(DataFixer $$0, qu $$1, int $$2, int $$3) {
+      return (qu)this.a($$0, new Dynamic(rf.a, $$1), $$2, $$3).getValue();
+   }
+
+   public qu a(DataFixer $$0, qu $$1, int $$2) {
+      return this.a($$0, $$1, $$2, a());
+   }
+
+   static {
+      t = Set.of(a.u);
    }
 }

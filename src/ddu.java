@@ -1,127 +1,96 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Function;
-import javax.annotation.Nullable;
+import com.google.common.annotations.VisibleForTesting;
 
-public class ddu {
-   private static final Codec<tf[]> c = aqy.c
-      .listOf()
-      .comapFlatMap(
-         $$0 -> ac.a($$0, 4).map($$0x -> new tf[]{(tf)$$0x.get(0), (tf)$$0x.get(1), (tf)$$0x.get(2), (tf)$$0x.get(3)}),
-         $$0 -> List.of($$0[0], $$0[1], $$0[2], $$0[3])
-      );
-   public static final Codec<ddu> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               c.fieldOf("messages").forGetter($$0x -> $$0x.d),
-               c.optionalFieldOf("filtered_messages").forGetter(ddu::d),
-               chl.q.fieldOf("color").orElse(chl.p).forGetter($$0x -> $$0x.f),
-               Codec.BOOL.fieldOf("has_glowing_text").orElse(false).forGetter($$0x -> $$0x.g)
-            )
-            .apply($$0, ddu::a)
-   );
-   public static final int b = 4;
-   private final tf[] d;
-   private final tf[] e;
-   private final chl f;
-   private final boolean g;
-   @Nullable
-   private arc[] h;
-   private boolean i;
+public class ddu extends dcq implements djq.b<ddu.a> {
+   private final ddu.a a;
 
-   public ddu() {
-      this(c(), c(), chl.p, false);
+   public ddu(gw $$0, dfe $$1) {
+      super(dcs.K, $$0, $$1);
+      this.a = new ddu.a($$1, new djk($$0));
    }
 
-   public ddu(tf[] $$0, tf[] $$1, chl $$2, boolean $$3) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
+   public static void a(cpq $$0, gw $$1, dfe $$2, ddu $$3) {
+      $$3.a.d().a($$0, $$1, $$0.y_(), true);
    }
 
-   private static tf[] c() {
-      return new tf[]{te.a, te.a, te.a, te.a};
+   @Override
+   public void a(qu $$0) {
+      this.a.b.a($$0);
    }
 
-   private static ddu a(tf[] $$0, Optional<tf[]> $$1, chl $$2, boolean $$3) {
-      return new ddu($$0, $$1.orElse(Arrays.copyOf($$0, $$0.length)), $$2, $$3);
+   @Override
+   protected void b(qu $$0) {
+      this.a.b.b($$0);
+      super.b($$0);
    }
 
-   public boolean a() {
-      return this.g;
+   public ddu.a c() {
+      return this.a;
    }
 
-   public ddu a(boolean $$0) {
-      return $$0 == this.g ? this : new ddu(this.d, this.e, this.f, $$0);
-   }
+   public static class a implements djq {
+      public static final int a = 8;
+      final czl b;
+      private final dfe c;
+      private final djs d;
 
-   public chl b() {
-      return this.f;
-   }
-
-   public ddu a(chl $$0) {
-      return $$0 == this.b() ? this : new ddu(this.d, this.e, $$0, this.g);
-   }
-
-   public tf a(int $$0, boolean $$1) {
-      return this.b($$1)[$$0];
-   }
-
-   public ddu a(int $$0, tf $$1) {
-      return this.a($$0, $$1, $$1);
-   }
-
-   public ddu a(int $$0, tf $$1, tf $$2) {
-      tf[] $$3 = Arrays.copyOf(this.d, this.d.length);
-      tf[] $$4 = Arrays.copyOf(this.e, this.e.length);
-      $$3[$$0] = $$1;
-      $$4[$$0] = $$2;
-      return new ddu($$3, $$4, this.f, this.g);
-   }
-
-   public boolean a(cbm $$0) {
-      return Arrays.stream(this.b($$0.W())).anyMatch($$0x -> !$$0x.getString().isEmpty());
-   }
-
-   public tf[] b(boolean $$0) {
-      return $$0 ? this.e : this.d;
-   }
-
-   public arc[] a(boolean $$0, Function<tf, arc> $$1) {
-      if (this.h == null || this.i != $$0) {
-         this.i = $$0;
-         this.h = new arc[4];
-
-         for (int $$2 = 0; $$2 < 4; $$2++) {
-            this.h[$$2] = $$1.apply(this.a($$2, $$0));
-         }
+      public a(dfe $$0, djs $$1) {
+         this.c = $$0;
+         this.d = $$1;
+         this.b = czl.a();
       }
 
-      return this.h;
-   }
-
-   private Optional<tf[]> d() {
-      for (int $$0 = 0; $$0 < 4; $$0++) {
-         if (!this.e[$$0].equals(this.d[$$0])) {
-            return Optional.of(this.e);
-         }
+      @Override
+      public djs a() {
+         return this.d;
       }
 
-      return Optional.empty();
-   }
+      @Override
+      public int b() {
+         return 8;
+      }
 
-   public boolean b(cbm $$0) {
-      for (tf $$1 : this.b($$0.W())) {
-         ub $$2 = $$1.a();
-         td $$3 = $$2.h();
-         if ($$3 != null && $$3.a() == td.a.c) {
+      @Override
+      public djq.a c() {
+         return djq.a.b;
+      }
+
+      @Override
+      public boolean a(akn $$0, djo $$1, djo.a $$2, ehi $$3) {
+         if ($$1 == djo.p && $$2.a() instanceof bjb $$4) {
+            if (!$$4.eB()) {
+               int $$5 = $$4.ec();
+               if ($$4.ea() && $$5 > 0) {
+                  this.b.a(gw.a($$3.a(hc.b, 0.5)), $$5);
+                  this.a($$0, $$4);
+               }
+
+               $$4.eA();
+               this.d.a($$0).ifPresent($$1x -> this.a($$0, gw.a($$1x), this.c, $$0.y_()));
+            }
+
             return true;
+         } else {
+            return false;
          }
       }
 
-      return false;
+      @VisibleForTesting
+      public czl d() {
+         return this.b;
+      }
+
+      private void a(akn $$0, gw $$1, dfe $$2, arx $$3) {
+         $$0.a($$1, $$2.a(czi.a, Boolean.valueOf(true)), 3);
+         $$0.a($$1, $$2.b(), 8);
+         $$0.a(ix.E, (double)$$1.u() + 0.5, (double)$$1.v() + 1.15, (double)$$1.w() + 0.5, 2, 0.2, 0.0, 0.2, 0.0);
+         $$0.a(null, $$1, aoz.un, apa.e, 2.0F, 0.6F + $$3.i() * 0.4F);
+      }
+
+      private void a(cpq $$0, bjb $$1) {
+         if ($$1.ef() instanceof ako $$3) {
+            bhj $$4 = $$1.ev() == null ? $$0.ag().a((cbp)$$3) : $$1.ev();
+            al.W.a($$3, $$1, $$4);
+         }
+      }
    }
 }

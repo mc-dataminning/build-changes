@@ -1,14 +1,32 @@
-public record xq(tq.a a) implements ux<wp> {
-   public xq(si $$0) {
-      this(tq.a.a($$0));
+public class xq implements va<ws> {
+   private final civ a;
+   private final int b;
+
+   public xq(civ $$0, int $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
+
+   public xq(sl $$0) {
+      this.a = $$0.a(jd.i);
+      this.b = $$0.m();
    }
 
    @Override
-   public void a(si $$0) {
-      tq.a.a($$0, this.a);
+   public void a(sl $$0) {
+      $$0.a(jd.i, this.a);
+      $$0.c(this.b);
    }
 
-   public void a(wp $$0) {
+   public void a(ws $$0) {
       $$0.a(this);
+   }
+
+   public civ a() {
+      return this.a;
+   }
+
+   public int d() {
+      return this.b;
    }
 }

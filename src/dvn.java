@@ -1,78 +1,101 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.logging.LogUtils;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
+import java.util.function.Function;
 import org.slf4j.Logger;
 
-public record dvn(List<dvc> a) {
-   private static final Logger b = LogUtils.getLogger();
-   private static final aer c = new aer("jigsaw");
-   private static final Map<aer, aer> d = ImmutableMap.builder()
-      .put(new aer("nvi"), c)
-      .put(new aer("pcp"), c)
-      .put(new aer("bastionremnant"), c)
-      .put(new aer("runtime"), c)
-      .build();
+public abstract class dvn extends dvh {
+   private static final Logger h = LogUtils.getLogger();
+   protected final String a;
+   protected dyw b;
+   protected dys c;
+   protected gw d;
 
-   public dvn(List<dvc> a) {
-      this.a = List.copyOf(a);
+   public dvn(dvu $$0, int $$1, dyx $$2, aeu $$3, String $$4, dys $$5, gw $$6) {
+      super($$0, $$1, $$2.a($$3).b($$5, $$6));
+      this.a(hc.c);
+      this.a = $$4;
+      this.d = $$6;
+      this.b = $$2.a($$3);
+      this.c = $$5;
    }
 
-   public boolean a() {
-      return this.a.isEmpty();
+   public dvn(dvu $$0, qu $$1, dyx $$2, Function<aeu, dys> $$3) {
+      super($$0, $$1);
+      this.a(hc.c);
+      this.a = $$1.l("Template");
+      this.d = new gw($$1.h("TPX"), $$1.h("TPY"), $$1.h("TPZ"));
+      aeu $$4 = this.b();
+      this.b = $$2.a($$4);
+      this.c = $$3.apply($$4);
+      this.f = this.b.b(this.c, this.d);
    }
 
-   public boolean a(gu $$0) {
-      for (dvc $$1 : this.a) {
-         if ($$1.f().b($$0)) {
-            return true;
+   protected aeu b() {
+      return new aeu(this.a);
+   }
+
+   @Override
+   protected void a(dvt $$0, qu $$1) {
+      $$1.a("TPX", this.d.u());
+      $$1.a("TPY", this.d.v());
+      $$1.a("TPZ", this.d.w());
+      $$1.a("Template", this.a);
+   }
+
+   @Override
+   public void a(cqk $$0, cqi $$1, dhb $$2, arx $$3, duv $$4, cox $$5, gw $$6) {
+      this.c.a($$4);
+      this.f = this.b.b(this.c, this.d);
+      if (this.b.a($$0, this.d, $$6, this.c, $$3, 2)) {
+         for (dyw.c $$8 : this.b.a(this.d, this.c, csr.pa)) {
+            if ($$8.c() != null) {
+               dgo $$9 = dgo.valueOf($$8.c().l("mode"));
+               if ($$9 == dgo.d) {
+                  this.a($$8.c().l("metadata"), $$8.a(), $$0, $$3, $$4);
+               }
+            }
          }
-      }
 
-      return false;
-   }
+         for (dyw.c $$11 : this.b.a(this.d, this.c, csr.pb)) {
+            if ($$11.c() != null) {
+               String $$12 = $$11.c().l("final_state");
+               dfe $$13 = csr.a.n();
 
-   public rk a(dvo $$0) {
-      qx $$1 = new qx();
+               try {
+                  $$13 = fi.a($$0.a(je.e), $$12, true).a();
+               } catch (CommandSyntaxException var15) {
+                  h.error("Error while parsing blockstate {} in jigsaw block @ {}", $$12, $$11.a());
+               }
 
-      for (dvc $$2 : this.a) {
-         $$1.add($$2.a($$0));
-      }
-
-      return $$1;
-   }
-
-   public static dvn a(qx $$0, dvo $$1) {
-      List<dvc> $$2 = Lists.newArrayList();
-
-      for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
-         qr $$4 = $$0.a($$3);
-         String $$5 = $$4.l("id").toLowerCase(Locale.ROOT);
-         aer $$6 = new aer($$5);
-         aer $$7 = d.getOrDefault($$6, $$6);
-         dvp $$8 = jb.T.a($$7);
-         if ($$8 == null) {
-            b.error("Unknown structure piece id: {}", $$7);
-         } else {
-            try {
-               dvc $$9 = $$8.load($$1, $$4);
-               $$2.add($$9);
-            } catch (Exception var10) {
-               b.error("Exception loading structure piece with id {}", $$7, var10);
+               $$0.a($$11.a(), $$13, 3);
             }
          }
       }
-
-      return new dvn($$2);
    }
 
-   public duq b() {
-      return dvc.a(this.a.stream());
+   protected abstract void a(String var1, gw var2, cqf var3, arx var4, duv var5);
+
+   @Deprecated
+   @Override
+   public void a(int $$0, int $$1, int $$2) {
+      super.a($$0, $$1, $$2);
+      this.d = this.d.b($$0, $$1, $$2);
    }
 
-   public List<dvc> c() {
-      return this.a;
+   @Override
+   public czc a() {
+      return this.c.d();
+   }
+
+   public dyw c() {
+      return this.b;
+   }
+
+   public gw d() {
+      return this.d;
+   }
+
+   public dys e() {
+      return this.c;
    }
 }

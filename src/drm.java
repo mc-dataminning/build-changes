@@ -1,40 +1,49 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record drm(hi<csl> b, hi<csl> c, drr d, int e, int f, float g) {
+public class drm extends drh {
    public static final Codec<drm> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ht.a(jc.e).fieldOf("can_grow_through").forGetter($$0x -> $$0x.b),
-               ht.a(jc.e).fieldOf("muddy_roots_in").forGetter($$0x -> $$0x.c),
-               drr.a.fieldOf("muddy_roots_provider").forGetter($$0x -> $$0x.d),
-               Codec.intRange(1, 12).fieldOf("max_root_width").forGetter($$0x -> $$0x.e),
-               Codec.intRange(1, 64).fieldOf("max_root_length").forGetter($$0x -> $$0x.f),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("random_skew_chance").forGetter($$0x -> $$0x.g)
+      $$0 -> b($$0)
+            .and(
+               $$0.group(
+                  bfy.b(1, 512).fieldOf("foliage_height").forGetter($$0x -> $$0x.b),
+                  Codec.intRange(0, 256).fieldOf("leaf_placement_attempts").forGetter($$0x -> $$0x.c)
+               )
             )
             .apply($$0, drm::new)
    );
+   private final bfy b;
+   private final int c;
 
-   public hi<csl> a() {
-      return this.b;
+   public drm(bfy $$0, bfy $$1, bfy $$2, int $$3) {
+      super($$0, $$1);
+      this.b = $$2;
+      this.c = $$3;
    }
 
-   public hi<csl> b() {
-      return this.c;
+   @Override
+   protected dri<?> a() {
+      return dri.j;
    }
 
-   public drr c() {
-      return this.d;
+   @Override
+   protected void a(cpw $$0, drh.b $$1, arx $$2, dqr $$3, int $$4, drh.a $$5, int $$6, int $$7, int $$8) {
+      gw $$9 = $$5.a();
+      gw.a $$10 = $$9.j();
+
+      for (int $$11 = 0; $$11 < this.c; $$11++) {
+         $$10.a($$9, $$2.a($$7) - $$2.a($$7), $$2.a($$6) - $$2.a($$6), $$2.a($$7) - $$2.a($$7));
+         a($$0, $$1, $$2, $$3, $$10);
+      }
    }
 
-   public int d() {
-      return this.e;
+   @Override
+   public int a(arx $$0, int $$1, dqr $$2) {
+      return this.b.a($$0);
    }
 
-   public int e() {
-      return this.f;
-   }
-
-   public float f() {
-      return this.g;
+   @Override
+   protected boolean a(arx $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return false;
    }
 }

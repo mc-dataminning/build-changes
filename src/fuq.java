@@ -1,31 +1,12 @@
-public class fuq extends fud<bvd, fge<bvd>> {
-   private static final aer a = new aer("textures/entity/rabbit/brown.png");
-   private static final aer i = new aer("textures/entity/rabbit/white.png");
-   private static final aer j = new aer("textures/entity/rabbit/black.png");
-   private static final aer k = new aer("textures/entity/rabbit/gold.png");
-   private static final aer l = new aer("textures/entity/rabbit/salt.png");
-   private static final aer m = new aer("textures/entity/rabbit/white_splotched.png");
-   private static final aer n = new aer("textures/entity/rabbit/toast.png");
-   private static final aer o = new aer("textures/entity/rabbit/caerbannog.png");
+public class fuq extends fui<bvd, fga<bvd>> {
+   private static final aeu a = new aeu("textures/entity/pig/pig.png");
 
-   public fuq(fsx.a $$0) {
-      super($$0, new fge<>($$0.a(fhr.aY)), 0.3F);
+   public fuq(ftc.a $$0) {
+      super($$0, new fga<>($$0.a(fhw.aC)), 0.7F);
+      this.a(new fxl<>(this, new fga<>($$0.a(fhw.aK)), new aeu("textures/entity/pig/pig_saddle.png")));
    }
 
-   public aer a(bvd $$0) {
-      String $$1 = n.a($$0.ab().getString());
-      if ("Toast".equals($$1)) {
-         return n;
-      } else {
-         return switch ($$0.ga()) {
-            case a -> a;
-            case b -> i;
-            case c -> j;
-            case e -> k;
-            case f -> l;
-            case d -> m;
-            case g -> o;
-         };
-      }
+   public aeu a(bvd $$0) {
+      return a;
    }
 }

@@ -1,159 +1,162 @@
-import com.google.common.base.Strings;
-import com.google.common.collect.Lists;
-import com.mojang.authlib.GameProfile;
-import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
-import java.util.Collection;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Set;
-import java.util.UUID;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
-public class fch extends esm<fcf> {
-   private final fci a;
-   private final List<fcf> m = Lists.newArrayList();
+public class fch extends eyf {
+   private static final ti a = ti.c("gui.abuseReport.reason.title");
+   private static final ti b = ti.c("gui.abuseReport.reason.description");
+   private static final ti c = ti.c("gui.abuseReport.read_info");
+   private static final int k = 95;
+   private static final int l = 150;
+   private static final int m = 20;
+   private static final int n = 320;
+   private static final int o = 4;
    @Nullable
-   private String n;
+   private final eyf p;
+   @Nullable
+   private fch.a q;
+   @Nullable
+   fjs s;
+   private final Consumer<fjs> t;
 
-   public fch(fci $$0, eql $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
-      super($$1, $$2, $$3, $$4, $$5, $$6);
-      this.a = $$0;
-      this.a(false);
+   public fch(@Nullable eyf $$0, @Nullable fjs $$1, Consumer<fjs> $$2) {
+      super(a);
+      this.p = $$0;
+      this.s = $$1;
+      this.t = $$2;
    }
 
    @Override
-   protected void a(erv $$0) {
-      $$0.c(this.j, this.g + 4, this.i, this.h);
-   }
-
-   public void a(Collection<UUID> $$0, double $$1, boolean $$2) {
-      Map<UUID, fcf> $$3 = new HashMap<>();
-      this.a($$0, $$3);
-      this.a($$3, $$2);
-      this.a($$3.values(), $$1);
-   }
-
-   private void a(Collection<UUID> $$0, Map<UUID, fcf> $$1) {
-      fio $$2 = this.c.s.cl;
-
-      for (UUID $$3 : $$0) {
-         fiv $$4 = $$2.a($$3);
-         if ($$4 != null) {
-            boolean $$5 = $$4.d();
-            $$1.put($$3, new fcf(this.c, this.a, $$3, $$4.a().getName(), $$4::g, $$5));
-         }
-      }
-   }
-
-   private void a(Map<UUID, fcf> $$0, boolean $$1) {
-      for (GameProfile $$3 : a(this.c.aX().b())) {
-         fcf $$4;
-         if ($$1) {
-            $$4 = $$0.computeIfAbsent($$3.getId(), $$1x -> {
-               fcf $$2 = new fcf(this.c, this.a, $$3.getId(), $$3.getName(), this.c.al().a($$3), true);
-               $$2.c(true);
-               return $$2;
-            });
-         } else {
-            $$4 = $$0.get($$3.getId());
-            if ($$4 == null) {
-               continue;
+   protected void aD_() {
+      this.q = new fch.a(this.f);
+      this.e(this.q);
+      fch.a.a $$0 = x.a(this.s, this.q::a);
+      this.q.a($$0);
+      int $$1 = this.g / 2 - 150 - 5;
+      this.d(esl.a(c, $$0x -> this.f.a(new ewx($$0xx -> {
+            if ($$0xx) {
+               ac.i().a("https://aka.ms/aboutjavareporting");
             }
+
+            this.f.a(this);
+         }, "https://aka.ms/aboutjavareporting", true))).a($$1, this.l(), 150, 20).a());
+      int $$2 = this.g / 2 + 5;
+      this.d(esl.a(th.d, $$0x -> {
+         fch.a.a $$1x = this.q.f();
+         if ($$1x != null) {
+            this.t.accept($$1x.b());
          }
 
-         $$4.d(true);
+         this.f.a(this.p);
+      }).a($$2, this.l(), 150, 20).a());
+      super.aD_();
+   }
+
+   @Override
+   public void a(esa $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.q.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, this.e, this.g / 2, 16, 16777215);
+      $$0.a(this.C(), this.E(), this.D(), this.F(), 2130706432);
+      $$0.b(this.i, b, this.C() + 4, this.E() + 4, -8421505);
+      fch.a.a $$4 = this.q.f();
+      if ($$4 != null) {
+         int $$5 = this.C() + 4 + 16;
+         int $$6 = this.D() - 4;
+         int $$7 = this.E() + 4 + 9 + 2;
+         int $$8 = this.F() - 4;
+         int $$9 = $$6 - $$5;
+         int $$10 = $$8 - $$7;
+         int $$11 = this.i.b($$4.b.c(), $$9);
+         $$0.a(this.i, $$4.b.c(), $$5, $$7 + ($$10 - $$11) / 2, $$9, -1);
       }
    }
 
-   private static Collection<GameProfile> a(fjb $$0) {
-      Set<GameProfile> $$1 = new ObjectLinkedOpenHashSet();
+   @Override
+   public void b(esa $$0, int $$1, int $$2, float $$3) {
+      this.b($$0);
+   }
 
-      for (int $$2 = $$0.b(); $$2 >= $$0.a(); $$2--) {
-         fjd $$3 = $$0.b($$2);
-         if ($$3 instanceof fje.a) {
-            fje.a $$4 = (fje.a)$$3;
-            if ($$4.g().h()) {
-               $$1.add($$4.f());
-            }
+   private int l() {
+      return this.h - 20 - 4;
+   }
+
+   private int C() {
+      return (this.g - 320) / 2;
+   }
+
+   private int D() {
+      return (this.g + 320) / 2;
+   }
+
+   private int E() {
+      return this.h - 95 + 4;
+   }
+
+   private int F() {
+      return this.l() - 4;
+   }
+
+   @Override
+   public void au_() {
+      this.f.a(this.p);
+   }
+
+   public class a extends eth<fch.a.a> {
+      public a(eqq $$1) {
+         super($$1, fch.this.g, fch.this.h, 40, fch.this.h - 95, 18);
+
+         for (fjs $$2 : fjs.values()) {
+            this.b(new fch.a.a($$2));
          }
       }
 
-      return $$1;
-   }
-
-   private void e() {
-      this.m.sort(Comparator.<fcf, Integer>comparing($$0 -> {
-         if (this.c.b($$0.e())) {
-            return 0;
-         } else if (this.c.aX().a($$0.e())) {
-            return 1;
-         } else if ($$0.e().version() == 2) {
-            return 4;
-         } else {
-            return $$0.h() ? 2 : 3;
-         }
-      }).thenComparing($$0 -> {
-         if (!$$0.d().isBlank()) {
-            int $$1 = $$0.d().codePointAt(0);
-            if ($$1 == 95 || $$1 >= 97 && $$1 <= 122 || $$1 >= 65 && $$1 <= 90 || $$1 >= 48 && $$1 <= 57) {
-               return 0;
-            }
-         }
-
-         return 1;
-      }).thenComparing(fcf::d, String::compareToIgnoreCase));
-   }
-
-   private void a(Collection<fcf> $$0, double $$1) {
-      this.m.clear();
-      this.m.addAll($$0);
-      this.e();
-      this.w();
-      this.a(this.m);
-      this.a($$1);
-   }
-
-   private void w() {
-      if (this.n != null) {
-         this.m.removeIf($$0 -> !$$0.d().toLowerCase(Locale.ROOT).contains(this.n));
-         this.a(this.m);
-      }
-   }
-
-   public void a(String $$0) {
-      this.n = $$0;
-   }
-
-   public boolean d() {
-      return this.m.isEmpty();
-   }
-
-   public void a(fiv $$0, fci.a $$1) {
-      UUID $$2 = $$0.a().getId();
-
-      for (fcf $$3 : this.m) {
-         if ($$3.e().equals($$2)) {
-            $$3.c(false);
-            return;
-         }
+      @Nullable
+      public fch.a.a a(fjs $$0) {
+         return this.i().stream().filter($$1 -> $$1.b == $$0).findFirst().orElse(null);
       }
 
-      if (($$1 == fci.a.a || this.c.aK().c($$2)) && (Strings.isNullOrEmpty(this.n) || $$0.a().getName().toLowerCase(Locale.ROOT).contains(this.n))) {
-         boolean $$4 = $$0.d();
-         fcf $$5 = new fcf(this.c, this.a, $$0.a().getId(), $$0.a().getName(), $$0::g, $$4);
-         this.b($$5);
-         this.m.add($$5);
+      @Override
+      public int b() {
+         return 320;
       }
-   }
 
-   public void a(UUID $$0) {
-      for (fcf $$1 : this.m) {
-         if ($$1.e().equals($$0)) {
-            $$1.c(true);
-            return;
+      @Override
+      protected int c() {
+         return this.p() - 2;
+      }
+
+      public void a(@Nullable fch.a.a $$0) {
+         super.a($$0);
+         fch.this.s = $$0 != null ? $$0.b() : null;
+      }
+
+      public class a extends eth.a<fch.a.a> {
+         final fjs b;
+
+         public a(fjs $$1) {
+            this.b = $$1;
+         }
+
+         @Override
+         public void a(esa $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+            int $$10 = $$3 + 1;
+            int $$11 = $$2 + ($$5 - 9) / 2 + 1;
+            $$0.b(fch.this.i, this.b.b(), $$10, $$11, -1);
+         }
+
+         @Override
+         public ti a() {
+            return ti.a("gui.abuseReport.reason.narration", this.b.b(), this.b.c());
+         }
+
+         @Override
+         public boolean a(double $$0, double $$1, int $$2) {
+            a.this.a(this);
+            return true;
+         }
+
+         public fjs b() {
+            return this.b;
          }
       }
    }

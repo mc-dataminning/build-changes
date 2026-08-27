@@ -1,32 +1,21 @@
-import it.unimi.dsi.fastutil.doubles.DoubleList;
+import it.unimi.dsi.fastutil.doubles.AbstractDoubleList;
 
-public class eho implements ehp {
-   private final DoubleList a;
+public class eho extends AbstractDoubleList {
+   private final int a;
 
-   public eho(DoubleList $$0) {
-      this.a = $$0;
-   }
-
-   @Override
-   public boolean a(ehp.a $$0) {
-      int $$1 = this.a.size() - 1;
-
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         if (!$$0.merge($$2, $$2, $$2)) {
-            return false;
-         }
+   eho(int $$0) {
+      if ($$0 <= 0) {
+         throw new IllegalArgumentException("Need at least 1 part");
+      } else {
+         this.a = $$0;
       }
-
-      return true;
    }
 
-   @Override
+   public double getDouble(int $$0) {
+      return (double)$$0 / (double)this.a;
+   }
+
    public int size() {
-      return this.a.size();
-   }
-
-   @Override
-   public DoubleList a() {
-      return this.a;
+      return this.a + 1;
    }
 }

@@ -1,123 +1,130 @@
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMaps;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import java.util.List;
+import java.util.function.ToIntFunction;
 
-public class cte extends cwe {
-   public static final dft a = cwe.aC;
-   @Nullable
-   private dfe b;
-   @Nullable
-   private dfe c;
-   @Nullable
-   private dfe d;
-   @Nullable
-   private dfe e;
-   private static final Predicate<dez> f = $$0 -> $$0 != null && ($$0.a(csm.ef) || $$0.a(csm.eg));
+public class cte extends cri implements czr {
+   public static final int c = 1;
+   public static final int d = 4;
+   public static final dge e = dfu.az;
+   public static final dfv f = cri.b;
+   public static final dfv g = dfu.C;
+   public static final ToIntFunction<dfe> h = $$0 -> $$0.c(f) ? 3 * $$0.c(e) : 0;
+   private static final Int2ObjectMap<List<ehi>> i = ac.a(() -> {
+      Int2ObjectMap<List<ehi>> $$0 = new Int2ObjectOpenHashMap();
+      $$0.defaultReturnValue(ImmutableList.of());
+      $$0.put(1, ImmutableList.of(new ehi(0.5, 0.5, 0.5)));
+      $$0.put(2, ImmutableList.of(new ehi(0.375, 0.44, 0.5), new ehi(0.625, 0.5, 0.44)));
+      $$0.put(3, ImmutableList.of(new ehi(0.5, 0.313, 0.625), new ehi(0.375, 0.44, 0.5), new ehi(0.56, 0.5, 0.44)));
+      $$0.put(4, ImmutableList.of(new ehi(0.44, 0.313, 0.56), new ehi(0.625, 0.44, 0.56), new ehi(0.375, 0.44, 0.375), new ehi(0.56, 0.5, 0.375)));
+      return Int2ObjectMaps.unmodifiable($$0);
+   });
+   private static final eib j = csq.a(7.0, 0.0, 7.0, 9.0, 6.0, 9.0);
+   private static final eib k = csq.a(5.0, 0.0, 6.0, 11.0, 6.0, 9.0);
+   private static final eib l = csq.a(5.0, 0.0, 6.0, 10.0, 6.0, 11.0);
+   private static final eib m = csq.a(5.0, 0.0, 5.0, 11.0, 6.0, 10.0);
 
-   protected cte(dey.d $$0) {
+   public cte(dfd.d $$0) {
       super($$0);
-      this.k(this.C.b().a(a, ha.c));
+      this.k(this.C.b().a(e, Integer.valueOf(1)).a(f, Boolean.valueOf(false)).a(g, Boolean.valueOf(false)));
    }
 
    @Override
-   public void b(dez $$0, cpl $$1, gu $$2, dez $$3, boolean $$4) {
-      if (!$$3.a($$0.b())) {
-         this.a($$1, $$2);
-      }
-   }
-
-   public boolean a(cpo $$0, gu $$1) {
-      return this.a().a($$0, $$1) != null || this.u().a($$0, $$1) != null;
-   }
-
-   private void a(cpl $$0, gu $$1) {
-      dfe.b $$2 = this.g().a($$0, $$1);
-      if ($$2 != null) {
-         bvh $$3 = bim.aO.a($$0);
-         if ($$3 != null) {
-            a($$0, $$2, $$3, $$2.a(0, 2, 0).d());
-         }
+   public bgt a(dfe $$0, cpq $$1, gw $$2, cbp $$3, bgs $$4, ehe $$5) {
+      if ($$3.fR().e && $$3.b($$4).b() && $$0.c(f)) {
+         a($$3, $$0, $$1, $$2);
+         return bgt.a($$1.B);
       } else {
-         dfe.b $$4 = this.v().a($$0, $$1);
-         if ($$4 != null) {
-            buv $$5 = bim.ac.a($$0);
-            if ($$5 != null) {
-               $$5.x(true);
-               a($$0, $$4, $$5, $$4.a(1, 2, 0).d());
-            }
-         }
-      }
-   }
-
-   private static void a(cpl $$0, dfe.b $$1, bii $$2, gu $$3) {
-      a($$0, $$1);
-      $$2.b((double)$$3.u() + 0.5, (double)$$3.v() + 0.05, (double)$$3.w() + 0.5, 0.0F, 0.0F);
-      $$0.b($$2);
-
-      for (akl $$4 : $$0.a(akl.class, $$2.cG().g(5.0))) {
-         ai.n.a($$4, $$2);
-      }
-
-      b($$0, $$1);
-   }
-
-   public static void a(cpl $$0, dfe.b $$1) {
-      for (int $$2 = 0; $$2 < $$1.d(); $$2++) {
-         for (int $$3 = 0; $$3 < $$1.e(); $$3++) {
-            dfd $$4 = $$1.a($$2, $$3, 0);
-            $$0.a($$4.d(), csm.a.n(), 2);
-            $$0.c(2001, $$4.d(), csl.i($$4.a()));
-         }
-      }
-   }
-
-   public static void b(cpl $$0, dfe.b $$1) {
-      for (int $$2 = 0; $$2 < $$1.d(); $$2++) {
-         for (int $$3 = 0; $$3 < $$1.e(); $$3++) {
-            dfd $$4 = $$1.a($$2, $$3, 0);
-            $$0.b($$4.d(), csm.a);
-         }
+         return bgt.d;
       }
    }
 
    @Override
-   public dez a(clf $$0) {
-      return this.n().a(a, $$0.g().g());
+   public boolean a(dfe $$0, cli $$1) {
+      return !$$1.h() && $$1.n().d() == this.k() && $$0.c(e) < 4 ? true : super.a($$0, $$1);
    }
 
    @Override
-   protected void a(dfa.a<csl, dez> $$0) {
-      $$0.a(a);
+   public dfe a(cli $$0) {
+      dfe $$1 = $$0.q().a_($$0.a());
+      if ($$1.a(this)) {
+         return $$1.a(e);
+      } else {
+         eah $$2 = $$0.q().b_($$0.a());
+         boolean $$3 = $$2.a() == eai.c;
+         return super.a($$0).a(g, Boolean.valueOf($$3));
+      }
    }
 
-   private dfe a() {
-      if (this.b == null) {
-         this.b = dff.a().a(" ", "#", "#").a('#', dfd.a(dfi.a(csm.dP))).b();
+   @Override
+   public dfe a(dfe $$0, hc $$1, dfe $$2, cpr $$3, gw $$4, gw $$5) {
+      if ($$0.c(g)) {
+         $$3.a($$4, eai.c, eai.c.a($$3));
       }
 
-      return this.b;
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   private dfe g() {
-      if (this.c == null) {
-         this.c = dff.a().a("^", "#", "#").a('^', dfd.a(f)).a('#', dfd.a(dfi.a(csm.dP))).b();
-      }
-
-      return this.c;
+   @Override
+   public eah c_(dfe $$0) {
+      return $$0.c(g) ? eai.c.a(false) : super.c_($$0);
    }
 
-   private dfe u() {
-      if (this.d == null) {
-         this.d = dff.a().a("~ ~", "###", "~#~").a('#', dfd.a(dfi.a(csm.ci))).a('~', $$0 -> $$0.a().i()).b();
+   @Override
+   public eib a(dfe $$0, cow $$1, gw $$2, ehn $$3) {
+      switch ($$0.c(e)) {
+         case 1:
+         default:
+            return j;
+         case 2:
+            return k;
+         case 3:
+            return l;
+         case 4:
+            return m;
       }
-
-      return this.d;
    }
 
-   private dfe v() {
-      if (this.e == null) {
-         this.e = dff.a().a("~^~", "###", "~#~").a('^', dfd.a(f)).a('#', dfd.a(dfi.a(csm.ci))).a('~', $$0 -> $$0.a().i()).b();
-      }
+   @Override
+   protected void a(dff.a<csq, dfe> $$0) {
+      $$0.a(e, f, g);
+   }
 
-      return this.e;
+   @Override
+   public boolean a(cpr $$0, gw $$1, dfe $$2, eah $$3) {
+      if (!$$2.c(g) && $$3.a() == eai.c) {
+         dfe $$4 = $$2.a(g, Boolean.valueOf(true));
+         if ($$2.c(f)) {
+            a(null, $$4, $$0, $$1);
+         } else {
+            $$0.a($$1, $$4, 3);
+         }
+
+         $$0.a($$1, $$3.a(), $$3.a().a($$0));
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   public static boolean g(dfe $$0) {
+      return $$0.a(apo.ae, $$0x -> $$0x.b(f) && $$0x.b(g)) && !$$0.c(f) && !$$0.c(g);
+   }
+
+   @Override
+   protected Iterable<ehi> b(dfe $$0) {
+      return (Iterable<ehi>)i.get($$0.c(e));
+   }
+
+   @Override
+   protected boolean d(dfe $$0) {
+      return !$$0.c(g) && super.d($$0);
+   }
+
+   @Override
+   public boolean a(dfe $$0, cpt $$1, gw $$2) {
+      return csq.a($$1, $$2.d(), hc.b);
    }
 }

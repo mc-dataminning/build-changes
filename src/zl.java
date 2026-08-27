@@ -1,27 +1,24 @@
-import javax.annotation.Nullable;
+public class zl implements va<ws> {
+   private final double a;
 
-public class zl implements ux<wp> {
-   private final int a;
-
-   public zl(bii $$0) {
-      this.a = $$0.ah();
+   public zl(dgv $$0) {
+      this.a = $$0.k();
    }
 
-   public zl(si $$0) {
-      this.a = $$0.m();
+   public zl(sl $$0) {
+      this.a = $$0.readDouble();
    }
 
    @Override
-   public void a(si $$0) {
-      $$0.c(this.a);
+   public void a(sl $$0) {
+      $$0.a(this.a);
    }
 
-   public void a(wp $$0) {
+   public void a(ws $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public bii a(cpl $$0) {
-      return $$0.a(this.a);
+   public double a() {
+      return this.a;
    }
 }

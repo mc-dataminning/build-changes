@@ -1,103 +1,119 @@
+import com.google.common.collect.HashBasedTable;
+import com.google.common.collect.Table;
+import com.google.common.primitives.UnsignedLong;
 import com.mojang.logging.LogUtils;
-import java.io.BufferedReader;
-import java.nio.file.FileSystem;
-import java.nio.file.Path;
-import java.nio.file.PathMatcher;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.concurrent.ConcurrentHashMap;
+import com.mojang.serialization.Dynamic;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.PriorityQueue;
+import java.util.Queue;
+import java.util.Set;
+import java.util.stream.Stream;
 import org.slf4j.Logger;
 
-public class egv implements PathMatcher {
+public class egv<T> {
    private static final Logger a = LogUtils.getLogger();
-   private static final String b = "#";
-   private final List<egv.a> c;
-   private final Map<String, PathMatcher> d = new ConcurrentHashMap<>();
+   private static final String b = "Callback";
+   private static final String c = "Name";
+   private static final String d = "TriggerTime";
+   private final egu<T> e;
+   private final Queue<egv.a<T>> f = new PriorityQueue<>(c());
+   private UnsignedLong g = UnsignedLong.ZERO;
+   private final Table<String, Long, egv.a<T>> h = HashBasedTable.create();
 
-   public egv(List<egv.a> $$0) {
-      this.c = $$0;
+   private static <T> Comparator<egv.a<T>> c() {
+      return Comparator.<egv.a<T>>comparingLong($$0 -> $$0.a).thenComparing($$0 -> $$0.b);
    }
 
-   public PathMatcher a(FileSystem $$0) {
-      return this.d.computeIfAbsent($$0.provider().getScheme(), $$1 -> {
-         List<PathMatcher> $$2;
-         try {
-            $$2 = this.c.stream().map($$1x -> $$1x.a($$0)).toList();
-         } catch (Exception var5) {
-            a.error("Failed to compile file pattern list", var5);
-            return $$0xx -> false;
+   public egv(egu<T> $$0, Stream<? extends Dynamic<?>> $$1) {
+      this($$0);
+      this.f.clear();
+      this.h.clear();
+      this.g = UnsignedLong.ZERO;
+      $$1.forEach($$0x -> {
+         rn $$1x = (rn)$$0x.convert(rf.a).getValue();
+         if ($$1x instanceof qu $$2) {
+            this.a($$2);
+         } else {
+            a.warn("Invalid format of events: {}", $$1x);
          }
-         return switch ($$2.size()) {
-            case 0 -> $$0xx -> false;
-            case 1 -> (PathMatcher)$$2.get(0);
-            default -> $$1x -> {
-            for (PathMatcher $$2 : $$2) {
-               if ($$2.matches($$1x)) {
-                  return true;
-               }
-            }
-
-            return false;
-         };
-         };
       });
    }
 
-   @Override
-   public boolean matches(Path $$0) {
-      return this.a($$0.getFileSystem()).matches($$0);
+   public egv(egu<T> $$0) {
+      this.e = $$0;
    }
 
-   public static egv a(BufferedReader $$0) {
-      return new egv($$0.lines().flatMap($$0x -> egv.a.a($$0x).stream()).toList());
-   }
-
-   public static record a(egv.b a, String b) {
-      public PathMatcher a(FileSystem $$0) {
-         return this.a().compile($$0, this.b);
-      }
-
-      static Optional<egv.a> a(String $$0) {
-         if ($$0.isBlank() || $$0.startsWith("#")) {
-            return Optional.empty();
-         } else if (!$$0.startsWith("[")) {
-            return Optional.of(new egv.a(egv.b.b, $$0));
-         } else {
-            int $$1 = $$0.indexOf(93, 1);
-            if ($$1 == -1) {
-               throw new IllegalArgumentException("Unterminated type in line '" + $$0 + "'");
-            } else {
-               String $$2 = $$0.substring(1, $$1);
-               String $$3 = $$0.substring($$1 + 1);
-
-               return switch ($$2) {
-                  case "glob", "regex" -> Optional.of(new egv.a(egv.b.a, $$2 + ":" + $$3));
-                  case "prefix" -> Optional.of(new egv.a(egv.b.b, $$3));
-                  default -> throw new IllegalArgumentException("Unsupported definition type in line '" + $$0 + "'");
-               };
-            }
+   public void a(T $$0, long $$1) {
+      while (true) {
+         egv.a<T> $$2 = this.f.peek();
+         if ($$2 == null || $$2.a > $$1) {
+            return;
          }
-      }
 
-      static egv.a b(String $$0) {
-         return new egv.a(egv.b.a, "glob:" + $$0);
-      }
-
-      static egv.a c(String $$0) {
-         return new egv.a(egv.b.a, "regex:" + $$0);
-      }
-
-      static egv.a d(String $$0) {
-         return new egv.a(egv.b.b, $$0);
+         this.f.remove();
+         this.h.remove($$2.c, $$1);
+         $$2.d.handle($$0, this, $$1);
       }
    }
 
-   @FunctionalInterface
-   public interface b {
-      egv.b a = FileSystem::getPathMatcher;
-      egv.b b = ($$0, $$1) -> $$1x -> $$1x.toString().startsWith($$1);
+   public void a(String $$0, long $$1, egt<T> $$2) {
+      if (!this.h.contains($$0, $$1)) {
+         this.g = this.g.plus(UnsignedLong.ONE);
+         egv.a<T> $$3 = new egv.a<>($$1, this.g, $$0, $$2);
+         this.h.put($$0, $$1, $$3);
+         this.f.add($$3);
+      }
+   }
 
-      PathMatcher compile(FileSystem var1, String var2);
+   public int a(String $$0) {
+      Collection<egv.a<T>> $$1 = this.h.row($$0).values();
+      $$1.forEach(this.f::remove);
+      int $$2 = $$1.size();
+      $$1.clear();
+      return $$2;
+   }
+
+   public Set<String> a() {
+      return Collections.unmodifiableSet(this.h.rowKeySet());
+   }
+
+   private void a(qu $$0) {
+      qu $$1 = $$0.p("Callback");
+      egt<T> $$2 = this.e.a($$1);
+      if ($$2 != null) {
+         String $$3 = $$0.l("Name");
+         long $$4 = $$0.i("TriggerTime");
+         this.a($$3, $$4, $$2);
+      }
+   }
+
+   private qu a(egv.a<T> $$0) {
+      qu $$1 = new qu();
+      $$1.a("Name", $$0.c);
+      $$1.a("TriggerTime", $$0.a);
+      $$1.a("Callback", this.e.a($$0.d));
+      return $$1;
+   }
+
+   public ra b() {
+      ra $$0 = new ra();
+      this.f.stream().sorted(c()).map(this::a).forEach($$0::add);
+      return $$0;
+   }
+
+   public static class a<T> {
+      public final long a;
+      public final UnsignedLong b;
+      public final String c;
+      public final egt<T> d;
+
+      a(long $$0, UnsignedLong $$1, String $$2, egt<T> $$3) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+      }
    }
 }

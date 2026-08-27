@@ -1,48 +1,52 @@
-public abstract class fxf<T extends bii, M extends fet<T>> {
-   private final fus<T, M> a;
+public class fxf<T extends buz> extends fxk<T, fer<T>> {
+   private final fot a;
 
-   public fxf(fus<T, M> $$0) {
-      this.a = $$0;
+   public fxf(fux<T, fer<T>> $$0, fot $$1) {
+      super($$0);
+      this.a = $$1;
    }
 
-   protected static <T extends biy> void a(
-      fet<T> $$0,
-      fet<T> $$1,
-      aer $$2,
-      elf $$3,
-      fnu $$4,
-      int $$5,
-      T $$6,
-      float $$7,
-      float $$8,
-      float $$9,
-      float $$10,
-      float $$11,
-      float $$12,
-      float $$13,
-      float $$14,
-      float $$15
-   ) {
-      if (!$$6.cd()) {
-         $$0.a($$1);
-         $$1.a($$6, $$7, $$8, $$12);
-         $$1.a($$6, $$7, $$8, $$9, $$10, $$11);
-         a($$1, $$2, $$3, $$4, $$5, $$6, $$13, $$14, $$15);
+   public void a(elk $$0, fnz $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if (!$$3.i_()) {
+         eqq $$10 = eqq.O();
+         boolean $$11 = $$10.b($$3) && $$3.cd();
+         if (!$$3.cd() || $$11) {
+            dfe $$12 = $$3.q().a();
+            int $$13 = fud.c($$3, 0.0F);
+            gba $$14 = this.a.a($$12);
+            $$0.a();
+            $$0.a(0.2F, -0.35F, 0.5F);
+            $$0.a(a.d.rotationDegrees(-48.0F));
+            $$0.b(-1.0F, -1.0F, 1.0F);
+            $$0.a(-0.5F, -0.5F, -0.5F);
+            this.a($$0, $$1, $$2, $$11, $$12, $$13, $$14);
+            $$0.b();
+            $$0.a();
+            $$0.a(0.2F, -0.35F, 0.5F);
+            $$0.a(a.d.rotationDegrees(42.0F));
+            $$0.a(0.1F, 0.0F, -0.6F);
+            $$0.a(a.d.rotationDegrees(-48.0F));
+            $$0.b(-1.0F, -1.0F, 1.0F);
+            $$0.a(-0.5F, -0.5F, -0.5F);
+            this.a($$0, $$1, $$2, $$11, $$12, $$13, $$14);
+            $$0.b();
+            $$0.a();
+            this.c().d().a($$0);
+            $$0.a(0.0F, -0.7F, -0.2F);
+            $$0.a(a.d.rotationDegrees(-78.0F));
+            $$0.b(-1.0F, -1.0F, 1.0F);
+            $$0.a(-0.5F, -0.5F, -0.5F);
+            this.a($$0, $$1, $$2, $$11, $$12, $$13, $$14);
+            $$0.b();
+         }
       }
    }
 
-   protected static <T extends biy> void a(fet<T> $$0, aer $$1, elf $$2, fnu $$3, int $$4, T $$5, float $$6, float $$7, float $$8) {
-      elj $$9 = $$3.getBuffer(foc.e($$1));
-      $$0.a($$2, $$9, $$4, fty.c($$5, 0.0F), $$6, $$7, $$8, 1.0F);
+   private void a(elk $$0, fnz $$1, int $$2, boolean $$3, dfe $$4, int $$5, gba $$6) {
+      if ($$3) {
+         this.a.b().a($$0.c(), $$1.getBuffer(foh.q(fyy.e)), $$4, $$6, 0.0F, 0.0F, 0.0F, $$2, $$5);
+      } else {
+         this.a.a($$4, $$0, $$1, $$2, $$5);
+      }
    }
-
-   public M c() {
-      return this.a.a();
-   }
-
-   protected aer a(T $$0) {
-      return this.a.a($$0);
-   }
-
-   public abstract void a(elf var1, fnu var2, int var3, T var4, float var5, float var6, float var7, float var8, float var9, float var10);
 }

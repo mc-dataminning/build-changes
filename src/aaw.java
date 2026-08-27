@@ -1,98 +1,22 @@
-public interface aaw extends aay, vh {
-   @Override
-   default sh b() {
-      return sh.b;
+import java.util.Optional;
+import javax.annotation.Nullable;
+
+public record aaw(aet<din> a, aet<cpq> b, long c, cpn d, @Nullable cpn e, boolean f, boolean g, Optional<hf> h, int i) {
+   public aaw(sl $$0) {
+      this(
+         $$0.a(je.au), $$0.a(je.aH), $$0.readLong(), cpn.a($$0.readByte()), cpn.b($$0.readByte()), $$0.readBoolean(), $$0.readBoolean(), $$0.b(sl::h), $$0.m()
+      );
    }
 
-   void a(acp var1);
-
-   void a(abe var1);
-
-   void a(abd var1);
-
-   void a(abc var1);
-
-   void a(abh var1);
-
-   void a(abi var1);
-
-   void a(abl var1);
-
-   void a(abm var1);
-
-   void a(abx var1);
-
-   void a(abn var1);
-
-   void a(abq var1);
-
-   void a(abt var1);
-
-   void a(aby var1);
-
-   void a(abz var1);
-
-   void a(aca var1);
-
-   void a(acb var1);
-
-   void a(aci var1);
-
-   void a(acl var1);
-
-   void a(aco var1);
-
-   void a(acr var1);
-
-   void a(acs var1);
-
-   void a(acq var1);
-
-   void a(abv var1);
-
-   void a(abu var1);
-
-   void a(aaz var1);
-
-   void a(acd var1);
-
-   void a(acc var1);
-
-   void a(acf var1);
-
-   void a(abj var1);
-
-   void a(acj var1);
-
-   void a(ack var1);
-
-   void a(abw var1);
-
-   void a(ace var1);
-
-   void a(ach var1);
-
-   void a(acn var1);
-
-   void a(acg var1);
-
-   void a(abo var1);
-
-   void a(abp var1);
-
-   void a(aba var1);
-
-   void a(acm var1);
-
-   void a(abr var1);
-
-   void a(abb var1);
-
-   void a(abs var1);
-
-   void a(abf var1);
-
-   void a(abk var1);
-
-   void a(abg var1);
+   public void a(sl $$0) {
+      $$0.b(this.a);
+      $$0.b(this.b);
+      $$0.b(this.c);
+      $$0.k(this.d.a());
+      $$0.k(cpn.a(this.e));
+      $$0.a(this.f);
+      $$0.a(this.g);
+      $$0.a(this.h, sl::a);
+      $$0.c(this.i);
+   }
 }

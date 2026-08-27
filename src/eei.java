@@ -2,28 +2,29 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 
-public class eei extends eds {
-   public static final Codec<eei> a = RecordCodecBuilder.create($$0 -> a($$0).and(rl.i.fieldOf("tag").forGetter($$0x -> $$0x.b)).apply($$0, eei::new));
-   private final qr b;
+public class eei extends edx {
+   public static final Codec<eei> a = RecordCodecBuilder.create(
+      $$0 -> a($$0).and(aqd.b(je.B).fieldOf("options").forGetter($$0x -> $$0x.b)).apply($$0, eei::new)
+   );
+   private final aqd<cis> b;
 
-   private eei(List<eff> $$0, qr $$1) {
+   private eei(List<efk> $$0, aqd<cis> $$1) {
       super($$0);
       this.b = $$1;
    }
 
    @Override
-   public edu b() {
-      return edv.g;
+   public edz b() {
+      return eea.A;
    }
 
    @Override
-   public cix a(cix $$0, ecg $$1) {
-      $$0.w().a(this.b);
+   public cja a(cja $$0, ecl $$1) {
+      cit.a($$0, this.b, $$1.b());
       return $$0;
    }
 
-   @Deprecated
-   public static eds.a<?> a(qr $$0) {
+   public static edx.a<?> a(aqd<cis> $$0) {
       return a($$1 -> new eei($$1, $$0));
    }
 }

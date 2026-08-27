@@ -1,40 +1,56 @@
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.util.Map;
+public class wu implements va<ws> {
+   private final int a;
+   private final double b;
+   private final double c;
+   private final double d;
+   private final int e;
 
-public class wu implements ux<wp> {
-   private final Object2IntMap<apd<?>> a;
-
-   public wu(Object2IntMap<apd<?>> $$0) {
-      this.a = $$0;
+   public wu(bir $$0) {
+      this.a = $$0.ah();
+      this.b = $$0.dp();
+      this.c = $$0.dr();
+      this.d = $$0.dv();
+      this.e = $$0.j();
    }
 
-   public wu(si $$0) {
-      this.a = $$0.a(Object2IntOpenHashMap::new, $$1 -> {
-         apf<?> $$2 = $$1.a(jb.y);
-         return a($$0, $$2);
-      }, si::m);
-   }
-
-   private static <T> apd<T> a(si $$0, apf<T> $$1) {
-      return $$1.b($$0.a($$1.a()));
-   }
-
-   public void a(wp $$0) {
-      $$0.a(this);
+   public wu(sl $$0) {
+      this.a = $$0.m();
+      this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
+      this.d = $$0.readDouble();
+      this.e = $$0.readShort();
    }
 
    @Override
-   public void a(si $$0) {
-      $$0.a(this.a, wu::a, si::c);
+   public void a(sl $$0) {
+      $$0.c(this.a);
+      $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.l(this.e);
    }
 
-   private static <T> void a(si $$0, apd<T> $$1) {
-      $$0.a(jb.y, $$1.a());
-      $$0.a($$1.a().a(), $$1.b());
+   public void a(ws $$0) {
+      $$0.a(this);
    }
 
-   public Map<apd<?>, Integer> a() {
+   public int a() {
       return this.a;
+   }
+
+   public double d() {
+      return this.b;
+   }
+
+   public double e() {
+      return this.c;
+   }
+
+   public double f() {
+      return this.d;
+   }
+
+   public int g() {
+      return this.e;
    }
 }

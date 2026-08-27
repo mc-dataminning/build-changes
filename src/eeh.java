@@ -1,68 +1,97 @@
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.logging.LogUtils;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableMap.Builder;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import java.util.List;
-import java.util.Optional;
+import java.util.Map;
 import java.util.Set;
-import java.util.function.UnaryOperator;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class eeh extends eds {
-   private static final Logger b = LogUtils.getLogger();
+public class eeh extends edx {
    public static final Codec<eeh> a = RecordCodecBuilder.create(
-      $$0 -> a($$0).and($$0.group(aqy.a(aqy.b, "name").forGetter($$0x -> $$0x.c), aqy.a(ecg.b.e, "entity").forGetter($$0x -> $$0x.d))).apply($$0, eeh::new)
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  arb.a(Codec.unboundedMap(jd.g.r(), egg.a), "enchantments", Map.of()).forGetter($$0x -> $$0x.b),
+                  Codec.BOOL.fieldOf("add").orElse(false).forGetter($$0x -> $$0x.c)
+               )
+            )
+            .apply($$0, eeh::new)
    );
-   private final Optional<tf> c;
-   private final Optional<ecg.b> d;
+   private final Map<hg<cnj>, egf> b;
+   private final boolean c;
 
-   private eeh(List<eff> $$0, Optional<tf> $$1, Optional<ecg.b> $$2) {
+   eeh(List<efk> $$0, Map<hg<cnj>, egf> $$1, boolean $$2) {
       super($$0);
-      this.c = $$1;
-      this.d = $$2;
+      this.b = Map.copyOf($$1);
+      this.c = $$2;
    }
 
    @Override
-   public edu b() {
-      return edv.l;
+   public edz b() {
+      return eea.f;
    }
 
    @Override
-   public Set<eeo<?>> a() {
-      return this.d.<Set<eeo<?>>>map($$0 -> Set.of($$0.a())).orElse(Set.of());
+   public Set<eet<?>> a() {
+      return this.b.values().stream().flatMap($$0 -> $$0.a().stream()).collect(ImmutableSet.toImmutableSet());
    }
 
-   public static UnaryOperator<tf> a(ecg $$0, @Nullable ecg.b $$1) {
-      if ($$1 != null) {
-         bii $$2 = $$0.c($$1.a());
-         if ($$2 != null) {
-            dr $$3 = $$2.dc().a(2);
-            return $$2x -> {
-               try {
-                  return th.a($$3, $$2x, $$2, 0);
-               } catch (CommandSyntaxException var4) {
-                  b.warn("Failed to resolve text component", var4);
-                  return $$2x;
-               }
-            };
+   @Override
+   public cja a(cja $$0, ecl $$1) {
+      Object2IntMap<cnj> $$2 = new Object2IntOpenHashMap();
+      this.b.forEach(($$2x, $$3) -> $$2.put((cnj)$$2x.a(), $$3.a($$1)));
+      if ($$0.d() == cjd.qb) {
+         cja $$3 = new cja(cjd.tC);
+         $$2.forEach(($$1x, $$2x) -> chw.a($$3, new cnm($$1x, $$2x)));
+         return $$3;
+      } else {
+         Map<cnj, Integer> $$4 = cnl.a($$0);
+         if (this.c) {
+            $$2.forEach(($$1x, $$2x) -> a($$4, $$1x, Math.max($$4.getOrDefault($$1x, 0) + $$2x, 0)));
+         } else {
+            $$2.forEach(($$1x, $$2x) -> a($$4, $$1x, Math.max($$2x, 0)));
          }
+
+         cnl.a($$4, $$0);
+         return $$0;
+      }
+   }
+
+   private static void a(Map<cnj, Integer> $$0, cnj $$1, int $$2) {
+      if ($$2 == 0) {
+         $$0.remove($$1);
+      } else {
+         $$0.put($$1, $$2);
+      }
+   }
+
+   public static class a extends edx.a<eeh.a> {
+      private final Builder<hg<cnj>, egf> a = ImmutableMap.builder();
+      private final boolean b;
+
+      public a() {
+         this(false);
       }
 
-      return $$0x -> $$0x;
-   }
+      public a(boolean $$0) {
+         this.b = $$0;
+      }
 
-   @Override
-   public cix a(cix $$0, ecg $$1) {
-      this.c.ifPresent($$2 -> $$0.a(a($$1, this.d.orElse(null)).apply($$2)));
-      return $$0;
-   }
+      protected eeh.a a() {
+         return this;
+      }
 
-   public static eds.a<?> a(tf $$0) {
-      return a($$1 -> new eeh($$1, Optional.of($$0), Optional.empty()));
-   }
+      public eeh.a a(cnj $$0, egf $$1) {
+         this.a.put($$0.j(), $$1);
+         return this;
+      }
 
-   public static eds.a<?> a(tf $$0, ecg.b $$1) {
-      return a($$2 -> new eeh($$2, Optional.of($$0), Optional.of($$1)));
+      @Override
+      public edy b() {
+         return new eeh(this.g(), this.a.build(), this.b);
+      }
    }
 }

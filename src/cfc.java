@@ -1,239 +1,259 @@
-import com.mojang.datafixers.util.Pair;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.stream.Collectors;
 
-public class cfc extends cfn<cer> {
-   public static final int k = 0;
+public class cfc extends ceg {
+   public static final int k = 35;
    public static final int l = 0;
    public static final int m = 1;
-   public static final int n = 5;
-   public static final int o = 5;
-   public static final int p = 9;
-   public static final int q = 9;
-   public static final int r = 36;
-   public static final int s = 36;
-   public static final int t = 45;
-   public static final int u = 45;
-   public static final aer v = new aer("textures/atlas/blocks.png");
-   public static final aer w = new aer("item/empty_armor_slot_helmet");
-   public static final aer x = new aer("item/empty_armor_slot_chestplate");
-   public static final aer y = new aer("item/empty_armor_slot_leggings");
-   public static final aer z = new aer("item/empty_armor_slot_boots");
-   public static final aer A = new aer("item/empty_armor_slot_shield");
-   static final aer[] C = new aer[]{z, y, x, w};
-   private static final bin[] D = new bin[]{bin.f, bin.e, bin.d, bin.c};
-   private final cer E = new cga(this, 2, 2);
-   private final cfq F = new cfq();
-   public final boolean B;
-   private final cbm G;
-
-   public cfc(cbl $$0, boolean $$1, final cbm $$2) {
-      super(null, 0);
-      this.B = $$1;
-      this.G = $$2;
-      this.a(new cfr($$0.m, this.E, this.F, 0, 154, 28));
-
-      for (int $$3 = 0; $$3 < 2; $$3++) {
-         for (int $$4 = 0; $$4 < 2; $$4++) {
-            this.a(new cfv(this.E, $$4 + $$3 * 2, 98 + $$4 * 18, 18 + $$3 * 18));
-         }
+   public static final int n = 2;
+   private static final int o = 3;
+   private static final int p = 30;
+   private static final int q = 30;
+   private static final int r = 39;
+   private final bgm s = new cft();
+   final bgm t = new bha(2) {
+      @Override
+      public void e() {
+         super.e();
+         cfc.this.a(this);
       }
+   };
+   private final cer u;
 
-      for (int $$5 = 0; $$5 < 4; $$5++) {
-         final bin $$6 = D[$$5];
-         this.a(new cfv($$0, 39 - $$5, 8, 8 + $$5 * 18) {
-            @Override
-            public void a(cix $$0, cix $$1) {
-               cfc.a($$2, $$6, $$0, $$1);
-               super.a($$0, $$1);
-            }
+   public cfc(int $$0, cbo $$1) {
+      this($$0, $$1, cer.a);
+   }
 
-            @Override
-            public int a() {
-               return 1;
-            }
-
-            @Override
-            public boolean a(cix $$0) {
-               return $$6 == bja.h($$0);
-            }
-
-            @Override
-            public boolean a(cbm $$0) {
-               cix $$1 = this.e();
-               return !$$1.b() && !$$0.f() && cng.d($$1) ? false : super.a($$0);
-            }
-
-            @Override
-            public Pair<aer, aer> b() {
-               return Pair.of(cfc.v, cfc.C[$$6.b()]);
-            }
-         });
-      }
-
-      for (int $$7 = 0; $$7 < 3; $$7++) {
-         for (int $$8 = 0; $$8 < 9; $$8++) {
-            this.a(new cfv($$0, $$8 + ($$7 + 1) * 9, 8 + $$8 * 18, 84 + $$7 * 18));
-         }
-      }
-
-      for (int $$9 = 0; $$9 < 9; $$9++) {
-         this.a(new cfv($$0, $$9, 8 + $$9 * 18, 142));
-      }
-
-      this.a(new cfv($$0, 40, 77, 62) {
+   public cfc(int $$0, cbo $$1, final cer $$2) {
+      super(cfl.o, $$0);
+      this.u = $$2;
+      this.a(new cfy(this.t, 0, 49, 19) {
          @Override
-         public void a(cix $$0, cix $$1) {
-            cfc.a($$2, bin.b, $$0, $$1);
-            super.a($$0, $$1);
-         }
-
-         @Override
-         public Pair<aer, aer> b() {
-            return Pair.of(cfc.v, cfc.A);
+         public boolean a(cja $$0) {
+            return $$0.i() || $$0.a(cjd.tC) || $$0.E();
          }
       });
-   }
+      this.a(new cfy(this.t, 1, 49, 40) {
+         @Override
+         public boolean a(cja $$0) {
+            return $$0.i() || $$0.a(cjd.tC) || $$0.E();
+         }
+      });
+      this.a(new cfy(this.s, 2, 129, 34) {
+         @Override
+         public boolean a(cja $$0) {
+            return false;
+         }
 
-   static void a(cbm $$0, bin $$1, cix $$2, cix $$3) {
-      $$0.a($$1, $$3, $$2);
-   }
+         @Override
+         public void a(cbp $$0, cja $$1) {
+            $$2.a(($$0x, $$1x) -> {
+               if ($$0x instanceof akn) {
+                  bir.a((akn)$$0x, ehi.b($$1x), this.a($$0x));
+               }
 
-   public static boolean f(int $$0) {
-      return $$0 >= 36 && $$0 < 45 || $$0 == 45;
-   }
+               $$0x.c(1042, $$1x, 0);
+            });
+            cfc.this.t.a(0, cja.b);
+            cfc.this.t.a(1, cja.b);
+         }
 
-   @Override
-   public void a(cbq $$0) {
-      this.E.a($$0);
-   }
+         private int a(cpq $$0) {
+            int $$1 = 0;
+            $$1 += this.g(cfc.this.t.a(0));
+            $$1 += this.g(cfc.this.t.a(1));
+            if ($$1 > 0) {
+               int $$2 = (int)Math.ceil((double)$$1 / 2.0);
+               return $$2 + $$0.z.a($$2);
+            } else {
+               return 0;
+            }
+         }
 
-   @Override
-   public void l() {
-      this.F.a();
-      this.E.a();
-   }
+         private int g(cja $$0) {
+            int $$1 = 0;
+            Map<cnj, Integer> $$2 = cnl.a($$0);
 
-   @Override
-   public boolean a(cma<? super cer> $$0) {
-      return $$0.a(this.E, this.G.dK());
-   }
+            for (Entry<cnj, Integer> $$3 : $$2.entrySet()) {
+               cnj $$4 = $$3.getKey();
+               Integer $$5 = $$3.getValue();
+               if (!$$4.c()) {
+                  $$1 += $$4.a($$5);
+               }
+            }
 
-   @Override
-   public void a(bgj $$0) {
-      ces.a(this, this.G.dK(), this.G, this.E, this.F);
-   }
+            return $$1;
+         }
+      });
 
-   @Override
-   public void b(cbm $$0) {
-      super.b($$0);
-      this.F.a();
-      if (!$$0.dK().B) {
-         this.a($$0, this.E);
+      for (int $$3 = 0; $$3 < 3; $$3++) {
+         for (int $$4 = 0; $$4 < 9; $$4++) {
+            this.a(new cfy($$1, $$4 + $$3 * 9 + 9, 8 + $$4 * 18, 84 + $$3 * 18));
+         }
+      }
+
+      for (int $$5 = 0; $$5 < 9; $$5++) {
+         this.a(new cfy($$1, $$5, 8 + $$5 * 18, 142));
       }
    }
 
    @Override
-   public boolean a(cbm $$0) {
-      return true;
+   public void a(bgm $$0) {
+      super.a($$0);
+      if ($$0 == this.t) {
+         this.l();
+      }
    }
 
-   @Override
-   public cix a(cbm $$0, int $$1) {
-      cix $$2 = cix.b;
-      cfv $$3 = this.i.get($$1);
-      if ($$3.f()) {
-         cix $$4 = $$3.e();
-         $$2 = $$4.p();
-         bin $$5 = bja.h($$2);
-         if ($$1 == 0) {
-            if (!this.a($$4, 9, 45, true)) {
-               return cix.b;
-            }
-
-            $$3.b($$4, $$2);
-         } else if ($$1 >= 1 && $$1 < 5) {
-            if (!this.a($$4, 9, 45, false)) {
-               return cix.b;
-            }
-         } else if ($$1 >= 5 && $$1 < 9) {
-            if (!this.a($$4, 9, 45, false)) {
-               return cix.b;
-            }
-         } else if ($$5.a() == bin.a.b && !this.i.get(8 - $$5.b()).f()) {
-            int $$6 = 8 - $$5.b();
-            if (!this.a($$4, $$6, $$6 + 1, false)) {
-               return cix.b;
-            }
-         } else if ($$5 == bin.b && !this.i.get(45).f()) {
-            if (!this.a($$4, 45, 46, false)) {
-               return cix.b;
-            }
-         } else if ($$1 >= 9 && $$1 < 36) {
-            if (!this.a($$4, 36, 45, false)) {
-               return cix.b;
-            }
-         } else if ($$1 >= 36 && $$1 < 45) {
-            if (!this.a($$4, 9, 36, false)) {
-               return cix.b;
-            }
-         } else if (!this.a($$4, 9, 45, false)) {
-            return cix.b;
+   private void l() {
+      cja $$0 = this.t.a(0);
+      cja $$1 = this.t.a(1);
+      boolean $$2 = !$$0.b() || !$$1.b();
+      boolean $$3 = !$$0.b() && !$$1.b();
+      if (!$$2) {
+         this.s.a(0, cja.b);
+      } else {
+         boolean $$4 = !$$0.b() && !$$0.a(cjd.tC) && !$$0.E() || !$$1.b() && !$$1.a(cjd.tC) && !$$1.E();
+         if ($$0.L() > 1 || $$1.L() > 1 || !$$3 && $$4) {
+            this.s.a(0, cja.b);
+            this.d();
+            return;
          }
 
-         if ($$4.b()) {
-            $$3.d(cix.b);
+         int $$5 = 1;
+         int $$10;
+         cja $$11;
+         if ($$3) {
+            if (!$$0.a($$1.d())) {
+               this.s.a(0, cja.b);
+               this.d();
+               return;
+            }
+
+            civ $$6 = $$0.d();
+            int $$7 = $$6.n() - $$0.k();
+            int $$8 = $$6.n() - $$1.k();
+            int $$9 = $$7 + $$8 + $$6.n() * 5 / 100;
+            $$10 = Math.max($$6.n() - $$9, 0);
+            $$11 = this.a($$0, $$1);
+            if (!$$11.i()) {
+               if (!cja.a($$0, $$1)) {
+                  this.s.a(0, cja.b);
+                  this.d();
+                  return;
+               }
+
+               $$5 = 2;
+            }
          } else {
-            $$3.d();
+            boolean $$12 = !$$0.b();
+            $$10 = $$12 ? $$0.k() : $$1.k();
+            $$11 = $$12 ? $$0 : $$1;
          }
 
-         if ($$4.L() == $$2.L()) {
-            return cix.b;
-         }
+         this.s.a(0, this.a($$11, $$10, $$5));
+      }
 
-         $$3.a($$0, $$4);
-         if ($$1 == 0) {
-            $$0.a($$4, false);
+      this.d();
+   }
+
+   private cja a(cja $$0, cja $$1) {
+      cja $$2 = $$0.p();
+      Map<cnj, Integer> $$3 = cnl.a($$1);
+
+      for (Entry<cnj, Integer> $$4 : $$3.entrySet()) {
+         cnj $$5 = $$4.getKey();
+         if (!$$5.c() || cnl.a($$5, $$2) == 0) {
+            $$2.a($$5, $$4.getValue());
          }
       }
 
       return $$2;
    }
 
-   @Override
-   public boolean a(cix $$0, cfv $$1) {
-      return $$1.d != this.F && super.a($$0, $$1);
+   private cja a(cja $$0, int $$1, int $$2) {
+      cja $$3 = $$0.c($$2);
+      $$3.c("Enchantments");
+      $$3.c("StoredEnchantments");
+      if ($$1 > 0) {
+         $$3.b($$1);
+      } else {
+         $$3.c("Damage");
+      }
+
+      Map<cnj, Integer> $$4 = cnl.a($$0).entrySet().stream().filter($$0x -> ((cnj)$$0x.getKey()).c()).collect(Collectors.toMap(Entry::getKey, Entry::getValue));
+      cnl.a($$4, $$3);
+      $$3.d(0);
+      if ($$3.a(cjd.tC) && $$4.size() == 0) {
+         $$3 = new cja(cjd.qb);
+         if ($$0.A()) {
+            $$3.a($$0.y());
+         }
+      }
+
+      for (int $$5 = 0; $$5 < $$4.size(); $$5++) {
+         $$3.d(cei.e($$3.I()));
+      }
+
+      return $$3;
    }
 
    @Override
-   public int m() {
-      return 0;
+   public void b(cbp $$0) {
+      super.b($$0);
+      this.u.a(($$1, $$2) -> this.a($$0, this.t));
    }
 
    @Override
-   public int n() {
-      return this.E.f();
+   public boolean a(cbp $$0) {
+      return a(this.u, $$0, csr.nZ);
    }
 
    @Override
-   public int o() {
-      return this.E.g();
-   }
+   public cja a(cbp $$0, int $$1) {
+      cja $$2 = cja.b;
+      cfy $$3 = this.i.get($$1);
+      if ($$3 != null && $$3.f()) {
+         cja $$4 = $$3.e();
+         $$2 = $$4.p();
+         cja $$5 = this.t.a(0);
+         cja $$6 = this.t.a(1);
+         if ($$1 == 2) {
+            if (!this.a($$4, 3, 39, true)) {
+               return cja.b;
+            }
 
-   @Override
-   public int p() {
-      return 5;
-   }
+            $$3.b($$4, $$2);
+         } else if ($$1 != 0 && $$1 != 1) {
+            if (!$$5.b() && !$$6.b()) {
+               if ($$1 >= 3 && $$1 < 30) {
+                  if (!this.a($$4, 30, 39, false)) {
+                     return cja.b;
+                  }
+               } else if ($$1 >= 30 && $$1 < 39 && !this.a($$4, 3, 30, false)) {
+                  return cja.b;
+               }
+            } else if (!this.a($$4, 0, 2, false)) {
+               return cja.b;
+            }
+         } else if (!this.a($$4, 3, 39, false)) {
+            return cja.b;
+         }
 
-   public cer q() {
-      return this.E;
-   }
+         if ($$4.b()) {
+            $$3.d(cja.b);
+         } else {
+            $$3.d();
+         }
 
-   @Override
-   public cfo t() {
-      return cfo.a;
-   }
+         if ($$4.L() == $$2.L()) {
+            return cja.b;
+         }
 
-   @Override
-   public boolean e(int $$0) {
-      return $$0 != this.m();
+         $$3.a($$0, $$4);
+      }
+
+      return $$2;
    }
 }

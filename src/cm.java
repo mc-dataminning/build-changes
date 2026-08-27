@@ -1,58 +1,112 @@
-import com.google.gson.JsonObject;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParseException;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.JsonOps;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
 import java.util.Optional;
+import java.util.Map.Entry;
 import javax.annotation.Nullable;
 
-public class cm extends cu<cm.a> {
-   private final aer a;
+public record cm(Map<hg<bhw>, cm.b> b) {
+   public static final Codec<cm> a = Codec.unboundedMap(jd.e.r(), cm.b.a).xmap(cm::new, cm::b);
 
-   public cm(aer $$0) {
-      this.a = $$0;
-   }
-
-   @Override
-   public aer a() {
-      return this.a;
-   }
-
-   protected cm.a a(JsonObject $$0, Optional<ba> $$1, be $$2) {
-      Optional<bz> $$3 = bz.a($$0.get("item"));
-      Optional<ba> $$4 = bo.a($$0, "entity", $$2);
-      return new cm.a(this.a, $$1, $$3, $$4);
-   }
-
-   public void a(akl $$0, cix $$1, @Nullable bii $$2) {
-      ecg $$3 = bo.b($$0, $$2);
-      this.a($$0, $$3x -> $$3x.a($$0, $$1, $$3));
-   }
-
-   public static class a extends ar {
-      private final Optional<bz> a;
-      private final Optional<ba> b;
-
-      public a(aer $$0, Optional<ba> $$1, Optional<bz> $$2, Optional<ba> $$3) {
-         super($$0, $$1);
-         this.a = $$2;
-         this.b = $$3;
+   public boolean a(bil $$0) {
+      if ($$0 instanceof bjb $$1 && this.a($$1.er())) {
+         return true;
       }
 
-      public static cm.a a(ba $$0, Optional<bz> $$1, Optional<ba> $$2) {
-         return new cm.a(ai.O.a(), Optional.of($$0), $$1, $$2);
+      return false;
+   }
+
+   public boolean a(bjb $$0) {
+      return this.a($$0.er());
+   }
+
+   public boolean a(Map<bhw, bhy> $$0) {
+      for (Entry<hg<bhw>, cm.b> $$1 : this.b.entrySet()) {
+         bhy $$2 = $$0.get($$1.getKey().a());
+         if (!$$1.getValue().a($$2)) {
+            return false;
+         }
       }
 
-      public static cm.a a(Optional<ba> $$0, Optional<bz> $$1, Optional<ba> $$2) {
-         return new cm.a(ai.P.a(), $$0, $$1, $$2);
+      return true;
+   }
+
+   public static Optional<cm> a(@Nullable JsonElement $$0) {
+      return $$0 != null && !$$0.isJsonNull() ? Optional.of(ac.a(a.parse(JsonOps.INSTANCE, $$0), JsonParseException::new)) : Optional.empty();
+   }
+
+   public JsonElement a() {
+      return ac.a(a.encodeStart(JsonOps.INSTANCE, this), IllegalStateException::new);
+   }
+
+   public static class a {
+      private final Builder<hg<bhw>, cm.b> a = ImmutableMap.builder();
+
+      public static cm.a a() {
+         return new cm.a();
       }
 
-      public boolean a(akl $$0, cix $$1, ecg $$2) {
-         return this.a.isPresent() && !this.a.get().a($$1) ? false : !this.b.isPresent() || this.b.get().a($$2);
+      public cm.a a(bhw $$0) {
+         this.a.put($$0.j(), new cm.b());
+         return this;
       }
 
-      @Override
-      public JsonObject b() {
-         JsonObject $$0 = super.b();
-         this.a.ifPresent($$1 -> $$0.add("item", $$1.a()));
-         this.b.ifPresent($$1 -> $$0.add("entity", $$1.a()));
-         return $$0;
+      public cm.a a(bhw $$0, cm.b $$1) {
+         this.a.put($$0.j(), $$1);
+         return this;
+      }
+
+      public Optional<cm> b() {
+         return Optional.of(new cm(this.a.build()));
+      }
+   }
+
+   public static record b(cl.d b, cl.d c, Optional<Boolean> d, Optional<Boolean> e) {
+      public static final Codec<cm.b> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  arb.a(cl.d.d, "amplifier", cl.d.c).forGetter(cm.b::a),
+                  arb.a(cl.d.d, "duration", cl.d.c).forGetter(cm.b::b),
+                  arb.a(Codec.BOOL, "ambient").forGetter(cm.b::c),
+                  arb.a(Codec.BOOL, "visible").forGetter(cm.b::d)
+               )
+               .apply($$0, cm.b::new)
+      );
+
+      public b() {
+         this(cl.d.c, cl.d.c, Optional.empty(), Optional.empty());
+      }
+
+      public boolean a(@Nullable bhy $$0) {
+         if ($$0 == null) {
+            return false;
+         } else if (!this.b.d($$0.e())) {
+            return false;
+         } else if (!this.c.d($$0.d())) {
+            return false;
+         } else {
+            return this.d.isPresent() && this.d.get() != $$0.f() ? false : !this.e.isPresent() || this.e.get() == $$0.g();
+         }
+      }
+
+      public cl.d a() {
+         return this.b;
+      }
+
+      public cl.d b() {
+         return this.c;
+      }
+
+      public Optional<Boolean> c() {
+         return this.d;
+      }
+
+      public Optional<Boolean> d() {
+         return this.e;
       }
    }
 }

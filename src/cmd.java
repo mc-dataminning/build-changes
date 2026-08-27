@@ -1,18 +1,59 @@
-public interface cmd<T extends cma<?>> {
-   cmd<clr> a = a("crafting");
-   cmd<cmm> b = a("smelting");
-   cmd<clm> c = a("blasting");
-   cmd<cmq> d = a("smoking");
-   cmd<clo> e = a("campfire_cooking");
-   cmd<cmr> f = a("stonecutting");
-   cmd<cmn> g = a("smithing");
+public class cmd extends cmk {
+   public cmd(clt $$0) {
+      super(
+         "",
+         $$0,
+         3,
+         3,
+         hp.a(cmb.a, cmb.a(cjd.qa), cmb.a(cjd.qa), cmb.a(cjd.qa), cmb.a(cjd.qa), cmb.a(cjd.rf), cmb.a(cjd.qa), cmb.a(cjd.qa), cmb.a(cjd.qa), cmb.a(cjd.qa)),
+         new cja(cjd.tp)
+      );
+   }
 
-   static <T extends cma<?>> cmd<T> a(final String $$0) {
-      return hr.a(jb.t, new aer($$0), new cmd<T>() {
-         @Override
-         public String toString() {
-            return $$0;
+   @Override
+   public boolean a(ceu $$0, cpq $$1) {
+      if (!super.a($$0, $$1)) {
+         return false;
+      } else {
+         cja $$2 = a($$0);
+         if ($$2.b()) {
+            return false;
+         } else {
+            ebr $$3 = cjh.a($$2, $$1);
+            if ($$3 == null) {
+               return false;
+            } else {
+               return $$3.f() ? false : $$3.f < 4;
+            }
          }
-      });
+      }
+   }
+
+   @Override
+   public cja a(ceu $$0, hu $$1) {
+      cja $$2 = a($$0).c(1);
+      $$2.w().a("map_scale_direction", 1);
+      return $$2;
+   }
+
+   private static cja a(ceu $$0) {
+      for (int $$1 = 0; $$1 < $$0.b(); $$1++) {
+         cja $$2 = $$0.a($$1);
+         if ($$2.a(cjd.rf)) {
+            return $$2;
+         }
+      }
+
+      return cja.b;
+   }
+
+   @Override
+   public boolean ah_() {
+      return true;
+   }
+
+   @Override
+   public cmh<?> ai_() {
+      return cmh.f;
    }
 }

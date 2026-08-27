@@ -1,66 +1,56 @@
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+public class eoc extends gew {
+   private static final ti a = ti.c("mco.configure.world.name");
+   private static final ti b = ti.c("mco.configure.world.description");
+   private static final int c = 10;
+   private static final int y = 210;
+   private final emr z;
+   private final elv A;
+   private final evu B = new evu(this);
+   private esu C;
+   private esu D;
 
-public class eoc extends ger {
-   static final tf b = tf.c("mco.warning");
-   static final tf c = tf.c("mco.info");
-   private final eoc.a y;
-   private final tf z;
-   private final tf A;
-   protected final BooleanConsumer a;
-   private final boolean B;
-
-   public eoc(BooleanConsumer $$0, eoc.a $$1, tf $$2, tf $$3, boolean $$4) {
-      super(eqd.a);
-      this.a = $$0;
-      this.y = $$1;
-      this.z = $$2;
-      this.A = $$3;
-      this.B = $$4;
+   public eoc(emr $$0, elv $$1) {
+      super(ti.c("mco.selectServer.create"));
+      this.z = $$0;
+      this.A = $$1;
    }
 
    @Override
-   public void aC_() {
-      if (this.B) {
-         this.d(esg.a(te.f, $$0 -> this.a.accept(true)).a(this.g / 2 - 105, h(8), 100, 20).a());
-         this.d(esg.a(te.g, $$0 -> this.a.accept(false)).a(this.g / 2 + 5, h(8), 100, 20).a());
-      } else {
-         this.d(esg.a(te.h, $$0 -> this.a.accept(true)).a(this.g / 2 - 50, h(8), 100, 20).a());
-      }
+   public void aD_() {
+      this.B.a(new etr(this.e, this.i));
+      evy $$0 = this.B.c(evy.d()).a(10);
+      esl $$1 = esl.a(ti.c("mco.create.world"), $$0x -> this.C()).a();
+      $$1.i = false;
+      this.C = new esu(this.i, 210, 20, ti.c("mco.configure.world.name"));
+      this.C.b($$1x -> $$1.i = !ac.b($$1x));
+      this.D = new esu(this.i, 210, 20, ti.c("mco.configure.world.description"));
+      $$0.a(evq.a(this.i, this.C, a));
+      $$0.a(evq.a(this.i, this.D, b));
+      evy $$2 = this.B.b(evy.e().a(10));
+      $$2.a($$1);
+      $$2.a(esl.a(th.e, $$0x -> this.au_()).a());
+      this.B.a($$1x -> {
+         esj var10000 = this.d($$1x);
+      });
+      this.b();
+      this.c(this.C);
    }
 
    @Override
-   public tf e() {
-      return te.b(this.y.d, this.z, this.A);
+   protected void b() {
+      this.B.a();
+   }
+
+   private void C() {
+      eop $$0 = eop.a(this.A, this.z, () -> this.f.execute(() -> {
+            this.A.e();
+            this.f.a(this.A.h());
+         }));
+      this.f.a(new eoh(this.A, new epy(this.z.a, this.C.a(), this.D.a(), $$0)));
    }
 
    @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.a.accept(false);
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
-      }
-   }
-
-   @Override
-   public void a(erv $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.y.d, this.g / 2, h(2), this.y.c);
-      $$0.a(this.i, this.z, this.g / 2, h(4), -1);
-      $$0.a(this.i, this.A, this.g / 2, h(6), -1);
-   }
-
-   public static enum a {
-      a(eoc.b, -65536),
-      b(eoc.c, 8226750);
-
-      public final int c;
-      public final tf d;
-
-      private a(tf $$0, int $$1) {
-         this.d = $$0;
-         this.c = $$1;
-      }
+   public void au_() {
+      this.f.a(this.A);
    }
 }

@@ -1,190 +1,172 @@
-public class cej extends ced {
-   public static final int k = 0;
-   public static final int l = 1;
-   public static final int m = 2;
-   private static final int o = 3;
-   private static final int p = 30;
-   private static final int q = 30;
-   private static final int r = 39;
-   private final ceo s;
-   long t;
-   public final bgj n = new bgx(2) {
+import java.util.Optional;
+import javax.annotation.Nullable;
+
+public class cej extends ceg {
+   private static final int k = 0;
+   private static final int l = 1;
+   private static final int m = 3;
+   private static final int n = 1;
+   private static final int o = 28;
+   private static final int p = 28;
+   private static final int q = 37;
+   private static final int r = 0;
+   private final bgm s = new bha(1) {
       @Override
-      public void e() {
-         cej.this.a(this);
-         super.e();
+      public boolean b(int $$0, cja $$1) {
+         return $$1.a(apw.aw);
+      }
+
+      @Override
+      public int ab_() {
+         return 1;
       }
    };
-   private final cfq u = new cfq() {
-      @Override
-      public void e() {
-         cej.this.a(this);
-         super.e();
-      }
-   };
+   private final cej.a t;
+   private final cer u;
+   private final ceq v;
 
-   public cej(int $$0, cbl $$1) {
-      this($$0, $$1, ceo.a);
+   public cej(int $$0, bgm $$1) {
+      this($$0, $$1, new cfx(3), cer.a);
    }
 
-   public cej(int $$0, cbl $$1, final ceo $$2) {
-      super(cfi.w, $$0);
-      this.s = $$2;
-      this.a(new cfv(this.n, 0, 15, 15) {
-         @Override
-         public boolean a(cix $$0) {
-            return $$0.a(cja.rf);
-         }
-      });
-      this.a(new cfv(this.n, 1, 15, 52) {
-         @Override
-         public boolean a(cix $$0) {
-            return $$0.a(cja.qa) || $$0.a(cja.tp) || $$0.a(cja.fx);
-         }
-      });
-      this.a(new cfv(this.u, 2, 145, 39) {
-         @Override
-         public boolean a(cix $$0) {
-            return false;
-         }
+   public cej(int $$0, bgm $$1, ceq $$2, cer $$3) {
+      super(cfl.i, $$0);
+      a($$2, 3);
+      this.v = $$2;
+      this.u = $$3;
+      this.t = new cej.a(this.s, 0, 136, 110);
+      this.a(this.t);
+      this.a($$2);
+      int $$4 = 36;
+      int $$5 = 137;
 
-         @Override
-         public void a(cbm $$0, cix $$1) {
-            cej.this.i.get(0).a(1);
-            cej.this.i.get(1).a(1);
-            $$1.d().b($$1, $$0.dK(), $$0);
-            $$2.a(($$0x, $$1x) -> {
-               long $$2xx = $$0x.V();
-               if (cej.this.t != $$2xx) {
-                  $$0x.a(null, $$1x, aow.yx, aox.e, 1.0F, 1.0F);
-                  cej.this.t = $$2xx;
-               }
-            });
-            super.a($$0, $$1);
-         }
-      });
-
-      for (int $$3 = 0; $$3 < 3; $$3++) {
-         for (int $$4 = 0; $$4 < 9; $$4++) {
-            this.a(new cfv($$1, $$4 + $$3 * 9 + 9, 8 + $$4 * 18, 84 + $$3 * 18));
+      for (int $$6 = 0; $$6 < 3; $$6++) {
+         for (int $$7 = 0; $$7 < 9; $$7++) {
+            this.a(new cfy($$1, $$7 + $$6 * 9 + 9, 36 + $$7 * 18, 137 + $$6 * 18));
          }
       }
 
-      for (int $$5 = 0; $$5 < 9; $$5++) {
-         this.a(new cfv($$1, $$5, 8 + $$5 * 18, 142));
+      for (int $$8 = 0; $$8 < 9; $$8++) {
+         this.a(new cfy($$1, $$8, 36 + $$8 * 18, 195));
       }
    }
 
    @Override
-   public boolean a(cbm $$0) {
-      return a(this.s, $$0, csm.nX);
-   }
-
-   @Override
-   public void a(bgj $$0) {
-      cix $$1 = this.n.a(0);
-      cix $$2 = this.n.a(1);
-      cix $$3 = this.u.a(2);
-      if ($$3.b() || !$$1.b() && !$$2.b()) {
-         if (!$$1.b() && !$$2.b()) {
-            this.a($$1, $$2, $$3);
+   public void b(cbp $$0) {
+      super.b($$0);
+      if (!$$0.dK().B) {
+         cja $$1 = this.t.a(this.t.a());
+         if (!$$1.b()) {
+            $$0.a($$1, false);
          }
-      } else {
-         this.u.b(2);
       }
    }
 
-   private void a(cix $$0, cix $$1, cix $$2) {
-      this.s.a(($$3, $$4) -> {
-         ebm $$5 = cje.a($$0, $$3);
-         if ($$5 != null) {
-            cix $$6;
-            if ($$1.a(cja.qa) && !$$5.h && $$5.f < 4) {
-               $$6 = $$0.c(1);
-               $$6.w().a("map_scale_direction", 1);
-               this.d();
-            } else if ($$1.a(cja.fx) && !$$5.h) {
-               $$6 = $$0.c(1);
-               $$6.w().a("map_to_lock", true);
-               this.d();
-            } else {
-               if (!$$1.a(cja.tp)) {
-                  this.u.b(2);
-                  this.d();
-                  return;
-               }
-
-               $$6 = $$0.c(2);
-               this.d();
-            }
-
-            if (!cix.a($$6, $$2)) {
-               this.u.a(2, $$6);
-               this.d();
-            }
-         }
-      });
+   @Override
+   public boolean a(cbp $$0) {
+      return a(this.u, $$0, csr.fO);
    }
 
    @Override
-   public boolean a(cix $$0, cfv $$1) {
-      return $$1.d != this.u && super.a($$0, $$1);
+   public void a(int $$0, int $$1) {
+      super.a($$0, $$1);
+      this.d();
    }
 
    @Override
-   public cix a(cbm $$0, int $$1) {
-      cix $$2 = cix.b;
-      cfv $$3 = this.i.get($$1);
+   public cja a(cbp $$0, int $$1) {
+      cja $$2 = cja.b;
+      cfy $$3 = this.i.get($$1);
       if ($$3 != null && $$3.f()) {
-         cix $$4 = $$3.e();
+         cja $$4 = $$3.e();
          $$2 = $$4.p();
-         if ($$1 == 2) {
-            $$4.d().b($$4, $$0.dK(), $$0);
-            if (!this.a($$4, 3, 39, true)) {
-               return cix.b;
+         if ($$1 == 0) {
+            if (!this.a($$4, 1, 37, true)) {
+               return cja.b;
             }
 
             $$3.b($$4, $$2);
-         } else if ($$1 != 1 && $$1 != 0) {
-            if ($$4.a(cja.rf)) {
-               if (!this.a($$4, 0, 1, false)) {
-                  return cix.b;
-               }
-            } else if (!$$4.a(cja.qa) && !$$4.a(cja.tp) && !$$4.a(cja.fx)) {
-               if ($$1 >= 3 && $$1 < 30) {
-                  if (!this.a($$4, 30, 39, false)) {
-                     return cix.b;
-                  }
-               } else if ($$1 >= 30 && $$1 < 39 && !this.a($$4, 3, 30, false)) {
-                  return cix.b;
-               }
-            } else if (!this.a($$4, 1, 2, false)) {
-               return cix.b;
+         } else if (!this.t.f() && this.t.a($$4) && $$4.L() == 1) {
+            if (!this.a($$4, 0, 1, false)) {
+               return cja.b;
             }
-         } else if (!this.a($$4, 3, 39, false)) {
-            return cix.b;
+         } else if ($$1 >= 1 && $$1 < 28) {
+            if (!this.a($$4, 28, 37, false)) {
+               return cja.b;
+            }
+         } else if ($$1 >= 28 && $$1 < 37) {
+            if (!this.a($$4, 1, 28, false)) {
+               return cja.b;
+            }
+         } else if (!this.a($$4, 1, 37, false)) {
+            return cja.b;
          }
 
          if ($$4.b()) {
-            $$3.d(cix.b);
+            $$3.d(cja.b);
+         } else {
+            $$3.d();
          }
 
-         $$3.d();
          if ($$4.L() == $$2.L()) {
-            return cix.b;
+            return cja.b;
          }
 
          $$3.a($$0, $$4);
-         this.d();
       }
 
       return $$2;
    }
 
-   @Override
-   public void b(cbm $$0) {
-      super.b($$0);
-      this.u.b(2);
-      this.s.a(($$1, $$2) -> this.a($$0, this.n));
+   public int l() {
+      return this.v.a(0);
+   }
+
+   public static int a(@Nullable bhw $$0) {
+      return $$0 == null ? 0 : jd.e.a($$0) + 1;
+   }
+
+   @Nullable
+   public static bhw e(int $$0) {
+      return $$0 == 0 ? null : jd.e.a($$0 - 1);
+   }
+
+   @Nullable
+   public bhw m() {
+      return e(this.v.a(1));
+   }
+
+   @Nullable
+   public bhw n() {
+      return e(this.v.a(2));
+   }
+
+   public void a(Optional<bhw> $$0, Optional<bhw> $$1) {
+      if (this.t.f()) {
+         this.v.a(1, a($$0.orElse(null)));
+         this.v.a(2, a($$1.orElse(null)));
+         this.t.a(1);
+         this.u.a(cpq::p);
+      }
+   }
+
+   public boolean o() {
+      return !this.s.a(0).b();
+   }
+
+   class a extends cfy {
+      public a(bgm $$0, int $$1, int $$2, int $$3) {
+         super($$0, $$1, $$2, $$3);
+      }
+
+      @Override
+      public boolean a(cja $$0) {
+         return $$0.a(apw.aw);
+      }
+
+      @Override
+      public int a() {
+         return 1;
+      }
    }
 }

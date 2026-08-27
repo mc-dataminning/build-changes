@@ -1,47 +1,45 @@
-import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
-import java.util.Set;
 
-public record efi(Optional<bo> b, ecg.b c) implements eff {
+public record efi(Optional<cj> b, gw c) implements efk {
+   private static final MapCodec<gw> d = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               arb.a(Codec.INT, "offsetX", Integer.valueOf(0)).forGetter(ib::u),
+               arb.a(Codec.INT, "offsetY", Integer.valueOf(0)).forGetter(ib::v),
+               arb.a(Codec.INT, "offsetZ", Integer.valueOf(0)).forGetter(ib::w)
+            )
+            .apply($$0, gw::new)
+   );
    public static final Codec<efi> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(aqy.a(bo.a, "predicate").forGetter(efi::c), ecg.b.e.fieldOf("entity").forGetter(efi::d)).apply($$0, efi::new)
+      $$0 -> $$0.group(arb.a(cj.a, "predicate").forGetter(efi::c), d.forGetter(efi::d)).apply($$0, efi::new)
    );
 
    @Override
-   public efg b() {
-      return efh.g;
+   public efl b() {
+      return efm.o;
    }
 
-   @Override
-   public Set<eeo<?>> a() {
-      return ImmutableSet.of(eer.f, this.c.a());
+   public boolean a(ecl $$0) {
+      ehi $$1 = $$0.c(eew.f);
+      return $$1 != null
+         && (this.b.isEmpty() || this.b.get().a($$0.d(), $$1.a() + (double)this.c.u(), $$1.b() + (double)this.c.v(), $$1.c() + (double)this.c.w()));
    }
 
-   public boolean a(ecg $$0) {
-      bii $$1 = $$0.c(this.c.a());
-      ehd $$2 = $$0.c(eer.f);
-      return this.b.isEmpty() || this.b.get().a($$0.d(), $$2, $$1);
+   public static efk.a a(cj.a $$0) {
+      return () -> new efi(Optional.of($$0.b()), gw.b);
    }
 
-   public static eff.a a(ecg.b $$0) {
-      return a($$0, bo.a.a());
+   public static efk.a a(cj.a $$0, gw $$1) {
+      return () -> new efi(Optional.of($$0.b()), $$1);
    }
 
-   public static eff.a a(ecg.b $$0, bo.a $$1) {
-      return () -> new efi($$1.b(), $$0);
-   }
-
-   public static eff.a a(ecg.b $$0, bo $$1) {
-      return () -> new efi(Optional.of($$1), $$0);
-   }
-
-   public Optional<bo> c() {
+   public Optional<cj> c() {
       return this.b;
    }
 
-   public ecg.b d() {
+   public gw d() {
       return this.c;
    }
 }

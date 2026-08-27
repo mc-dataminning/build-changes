@@ -1,69 +1,62 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.DSL.TypeReference;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.serialization.Dynamic;
-import java.util.Arrays;
-import java.util.Optional;
-import java.util.UUID;
-import java.util.function.Function;
+import org.apache.commons.lang3.Validate;
 
-public abstract class asx extends DataFix {
-   protected TypeReference a;
+public class asx {
+   private static final int a = 6;
+   private final long[] b;
+   private final int c;
+   private final long d;
+   private final int e;
 
-   public asx(Schema $$0, TypeReference $$1) {
-      super($$0, false);
-      this.a = $$1;
+   public asx(int $$0, int $$1) {
+      this($$0, $$1, new long[ars.d($$1 * $$0, 64) / 64]);
    }
 
-   protected Typed<?> a(Typed<?> $$0, String $$1, Function<Dynamic<?>, Dynamic<?>> $$2) {
-      Type<?> $$3 = this.getInputSchema().getChoiceType(this.a, $$1);
-      Type<?> $$4 = this.getOutputSchema().getChoiceType(this.a, $$1);
-      return $$0.updateTyped(DSL.namedChoice($$1, $$3), $$4, $$1x -> $$1x.update(DSL.remainderFinder(), $$2));
+   public asx(int $$0, int $$1, long[] $$2) {
+      Validate.inclusiveBetween(1L, 32L, (long)$$0);
+      this.e = $$1;
+      this.c = $$0;
+      this.b = $$2;
+      this.d = (1L << $$0) - 1L;
+      int $$3 = ars.d($$1 * $$0, 64) / 64;
+      if ($$2.length != $$3) {
+         throw new IllegalArgumentException("Invalid length given for storage, got: " + $$2.length + " but expected: " + $$3);
+      }
    }
 
-   protected static Optional<Dynamic<?>> a(Dynamic<?> $$0, String $$1, String $$2) {
-      return a($$0, $$1).map($$3 -> $$0.remove($$1).set($$2, $$3));
+   public void a(int $$0, int $$1) {
+      Validate.inclusiveBetween(0L, (long)(this.e - 1), (long)$$0);
+      Validate.inclusiveBetween(0L, this.d, (long)$$1);
+      int $$2 = $$0 * this.c;
+      int $$3 = $$2 >> 6;
+      int $$4 = ($$0 + 1) * this.c - 1 >> 6;
+      int $$5 = $$2 ^ $$3 << 6;
+      this.b[$$3] = this.b[$$3] & ~(this.d << $$5) | ((long)$$1 & this.d) << $$5;
+      if ($$3 != $$4) {
+         int $$6 = 64 - $$5;
+         int $$7 = this.c - $$6;
+         this.b[$$4] = this.b[$$4] >>> $$7 << $$7 | ((long)$$1 & this.d) >> $$6;
+      }
    }
 
-   protected static Optional<Dynamic<?>> b(Dynamic<?> $$0, String $$1, String $$2) {
-      return $$0.get($$1).result().flatMap(asx::a).map($$3 -> $$0.remove($$1).set($$2, $$3));
+   public int a(int $$0) {
+      Validate.inclusiveBetween(0L, (long)(this.e - 1), (long)$$0);
+      int $$1 = $$0 * this.c;
+      int $$2 = $$1 >> 6;
+      int $$3 = ($$0 + 1) * this.c - 1 >> 6;
+      int $$4 = $$1 ^ $$2 << 6;
+      if ($$2 == $$3) {
+         return (int)(this.b[$$2] >>> $$4 & this.d);
+      } else {
+         int $$5 = 64 - $$4;
+         return (int)((this.b[$$2] >>> $$4 | this.b[$$3] << $$5) & this.d);
+      }
    }
 
-   protected static Optional<Dynamic<?>> c(Dynamic<?> $$0, String $$1, String $$2) {
-      String $$3 = $$1 + "Most";
-      String $$4 = $$1 + "Least";
-      return d($$0, $$3, $$4).map($$4x -> $$0.remove($$3).remove($$4).set($$2, $$4x));
+   public long[] a() {
+      return this.b;
    }
 
-   protected static Optional<Dynamic<?>> a(Dynamic<?> $$0, String $$1) {
-      return $$0.get($$1).result().flatMap($$1x -> {
-         String $$2 = $$1x.asString(null);
-         if ($$2 != null) {
-            try {
-               UUID $$3 = UUID.fromString($$2);
-               return a($$0, $$3.getMostSignificantBits(), $$3.getLeastSignificantBits());
-            } catch (IllegalArgumentException var4) {
-            }
-         }
-
-         return Optional.empty();
-      });
-   }
-
-   protected static Optional<Dynamic<?>> a(Dynamic<?> $$0) {
-      return d($$0, "M", "L");
-   }
-
-   protected static Optional<Dynamic<?>> d(Dynamic<?> $$0, String $$1, String $$2) {
-      long $$3 = $$0.get($$1).asLong(0L);
-      long $$4 = $$0.get($$2).asLong(0L);
-      return $$3 != 0L && $$4 != 0L ? a($$0, $$3, $$4) : Optional.empty();
-   }
-
-   protected static Optional<Dynamic<?>> a(Dynamic<?> $$0, long $$1, long $$2) {
-      return Optional.of($$0.createIntList(Arrays.stream(new int[]{(int)($$1 >> 32), (int)$$1, (int)($$2 >> 32), (int)$$2})));
+   public int b() {
+      return this.c;
    }
 }

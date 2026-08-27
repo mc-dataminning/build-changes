@@ -1,23 +1,22 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Predicate;
 
-public record efk(float b) implements eff {
-   public static final Codec<efk> a = RecordCodecBuilder.create($$0 -> $$0.group(Codec.FLOAT.fieldOf("chance").forGetter(efk::c)).apply($$0, efk::new));
+public interface efk extends ecm, Predicate<ecl> {
+   efl b();
 
-   @Override
-   public efg b() {
-      return efh.e;
-   }
+   @FunctionalInterface
+   public interface a {
+      efk build();
 
-   public boolean a(ecg $$0) {
-      return $$0.b().i() < this.b;
-   }
+      default efk.a invert() {
+         return efh.a(this);
+      }
 
-   public static eff.a a(float $$0) {
-      return () -> new efk($$0);
-   }
+      default eez.a or(efk.a $$0) {
+         return eez.a(this, $$0);
+      }
 
-   public float c() {
-      return this.b;
+      default eey.a and(efk.a $$0) {
+         return eey.a(this, $$0);
+      }
    }
 }

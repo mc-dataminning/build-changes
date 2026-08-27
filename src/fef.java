@@ -1,30 +1,94 @@
-import com.google.common.collect.ImmutableList.Builder;
+import java.util.Arrays;
 
-public class fef extends feb {
-   private static final String a = "chest_bottom";
-   private static final String b = "chest_lid";
-   private static final String f = "chest_lock";
+public class fef<T extends bil> extends ffh<T> {
+   private final fhx a;
+   private final fhx[] b;
+   private final fhx f;
 
-   public fef(fhs $$0) {
-      super($$0);
+   public fef(fhx $$0) {
+      this.a = $$0;
+      this.f = $$0.b("head");
+      this.b = new fhx[12];
+      Arrays.setAll(this.b, $$1 -> $$0.b(a($$1)));
+   }
+
+   private static String a(int $$0) {
+      return "part" + $$0;
+   }
+
+   public static fid b() {
+      fif $$0 = new fif();
+      fig $$1 = $$0.a();
+      $$1.a("head", fic.c().a(0, 0).a(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F), fhz.a);
+      float $$2 = 0.0F;
+      fic $$3 = fic.c().a(0, 16).a(0.0F, 0.0F, 0.0F, 2.0F, 8.0F, 2.0F);
+
+      for (int $$4 = 0; $$4 < 4; $$4++) {
+         float $$5 = ars.b($$2) * 9.0F;
+         float $$6 = -2.0F + ars.b((float)($$4 * 2) * 0.25F);
+         float $$7 = ars.a($$2) * 9.0F;
+         $$1.a(a($$4), $$3, fhz.a($$5, $$6, $$7));
+         $$2++;
+      }
+
+      $$2 = (float) (Math.PI / 4);
+
+      for (int $$8 = 4; $$8 < 8; $$8++) {
+         float $$9 = ars.b($$2) * 7.0F;
+         float $$10 = 2.0F + ars.b((float)($$8 * 2) * 0.25F);
+         float $$11 = ars.a($$2) * 7.0F;
+         $$1.a(a($$8), $$3, fhz.a($$9, $$10, $$11));
+         $$2++;
+      }
+
+      $$2 = 0.47123894F;
+
+      for (int $$12 = 8; $$12 < 12; $$12++) {
+         float $$13 = ars.b($$2) * 5.0F;
+         float $$14 = 11.0F + ars.b((float)$$12 * 1.5F * 0.5F);
+         float $$15 = ars.a($$2) * 5.0F;
+         $$1.a(a($$12), $$3, fhz.a($$13, $$14, $$15));
+         $$2++;
+      }
+
+      return fid.a($$0, 64, 32);
    }
 
    @Override
-   protected Builder<fhs> a(fhs $$0) {
-      Builder<fhs> $$1 = super.a($$0);
-      $$1.add($$0.b("chest_bottom"));
-      $$1.add($$0.b("chest_lid"));
-      $$1.add($$0.b("chest_lock"));
-      return $$1;
+   public fhx a() {
+      return this.a;
    }
 
-   public static fhy e() {
-      fia $$0 = new fia();
-      fib $$1 = $$0.a();
-      feb.a($$1);
-      $$1.a("chest_bottom", fhx.c().a(0, 76).a(0.0F, 0.0F, 0.0F, 12.0F, 8.0F, 12.0F), fhu.a(-2.0F, -5.0F, -6.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
-      $$1.a("chest_lid", fhx.c().a(0, 59).a(0.0F, 0.0F, 0.0F, 12.0F, 4.0F, 12.0F), fhu.a(-2.0F, -9.0F, -6.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
-      $$1.a("chest_lock", fhx.c().a(0, 59).a(0.0F, 0.0F, 0.0F, 2.0F, 4.0F, 1.0F), fhu.a(-1.0F, -6.0F, -1.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
-      return fhy.a($$0, 128, 128);
+   @Override
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      float $$6 = $$3 * (float) Math.PI * -0.1F;
+
+      for (int $$7 = 0; $$7 < 4; $$7++) {
+         this.b[$$7].c = -2.0F + ars.b(((float)($$7 * 2) + $$3) * 0.25F);
+         this.b[$$7].b = ars.b($$6) * 9.0F;
+         this.b[$$7].d = ars.a($$6) * 9.0F;
+         $$6++;
+      }
+
+      $$6 = (float) (Math.PI / 4) + $$3 * (float) Math.PI * 0.03F;
+
+      for (int $$8 = 4; $$8 < 8; $$8++) {
+         this.b[$$8].c = 2.0F + ars.b(((float)($$8 * 2) + $$3) * 0.25F);
+         this.b[$$8].b = ars.b($$6) * 7.0F;
+         this.b[$$8].d = ars.a($$6) * 7.0F;
+         $$6++;
+      }
+
+      $$6 = 0.47123894F + $$3 * (float) Math.PI * -0.05F;
+
+      for (int $$9 = 8; $$9 < 12; $$9++) {
+         this.b[$$9].c = 11.0F + ars.b(((float)$$9 * 1.5F + $$3) * 0.5F);
+         this.b[$$9].b = ars.b($$6) * 5.0F;
+         this.b[$$9].d = ars.a($$6) * 5.0F;
+         $$6++;
+      }
+
+      this.f.f = $$4 * (float) (Math.PI / 180.0);
+      this.f.e = $$5 * (float) (Math.PI / 180.0);
    }
 }

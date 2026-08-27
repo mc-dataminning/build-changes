@@ -1,28 +1,60 @@
-public class ftc extends fsw<bye> {
-   private final fon a;
+@FunctionalInterface
+public interface ftc<T extends bil> {
+   ftb<T> create(ftc.a var1);
 
-   public ftc(fsx.a $$0) {
-      super($$0);
-      this.d = 0.5F;
-      this.a = $$0.c();
-   }
+   public static class a {
+      private final fta a;
+      private final fua b;
+      private final fot c;
+      private final fnv d;
+      private final anp e;
+      private final fht f;
+      private final ery g;
 
-   public void a(bye $$0, float $$1, float $$2, elf $$3, fnu $$4, int $$5) {
-      dez $$6 = $$0.o();
-      if ($$6.l() == cyq.c) {
-         cpl $$7 = $$0.dK();
-         if ($$6 != $$7.a_($$0.dk()) && $$6.l() != cyq.a) {
-            $$3.a();
-            gu $$8 = gu.a($$0.dp(), $$0.cG().e, $$0.dv());
-            $$3.a(-0.5, 0.0, -0.5);
-            this.a.b().a($$7, this.a.a($$6), $$6, $$8, $$3, $$4.getBuffer(fnp.b($$6)), false, aru.a(), $$6.a($$0.j()), fyl.d);
-            $$3.b();
-            super.a($$0, $$1, $$2, $$3, $$4, $$5);
-         }
+      public a(fta $$0, fua $$1, fot $$2, fnv $$3, anp $$4, fht $$5, ery $$6) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+         this.f = $$5;
+         this.g = $$6;
       }
-   }
 
-   public aer a(bye $$0) {
-      return fyt.e;
+      public fta a() {
+         return this.a;
+      }
+
+      public fua b() {
+         return this.b;
+      }
+
+      public fot c() {
+         return this.c;
+      }
+
+      public fnv d() {
+         return this.d;
+      }
+
+      public anp e() {
+         return this.e;
+      }
+
+      public fht f() {
+         return this.f;
+      }
+
+      public gbg g() {
+         return this.c.a().a();
+      }
+
+      public fhx a(fhv $$0) {
+         return this.f.a($$0);
+      }
+
+      public ery h() {
+         return this.g;
+      }
    }
 }

@@ -1,151 +1,112 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import it.unimi.dsi.fastutil.longs.LongIterator;
-import it.unimi.dsi.fastutil.longs.LongSet;
+import com.google.common.base.Suppliers;
 import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
 
-public class cqd {
-   private final cpm a;
-   private final dlg b;
-   private final duz c;
+public class cqd implements cow, cpa {
+   protected final int a;
+   protected final int b;
+   protected final dha[][] c;
+   protected boolean d;
+   protected final cpq e;
+   private final Supplier<hg<cqo>> f;
 
-   public cqd(cpm $$0, dlg $$1, duz $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public cqd(cpq $$0, gw $$1, gw $$2) {
+      this.e = $$0;
+      this.f = Suppliers.memoize(() -> $$0.B_().d(je.ap).f(cqv.b));
+      this.a = hz.a($$1.u());
+      this.b = hz.a($$1.w());
+      int $$3 = hz.a($$2.u());
+      int $$4 = hz.a($$2.w());
+      this.c = new dha[$$3 - this.a + 1][$$4 - this.b + 1];
+      dhe $$5 = $$0.J();
+      this.d = true;
+
+      for (int $$6 = this.a; $$6 <= $$3; $$6++) {
+         for (int $$7 = this.b; $$7 <= $$4; $$7++) {
+            this.c[$$6 - this.a][$$7 - this.b] = $$5.a($$6, $$7);
+         }
+      }
+
+      for (int $$8 = hz.a($$1.u()); $$8 <= hz.a($$2.u()); $$8++) {
+         for (int $$9 = hz.a($$1.w()); $$9 <= hz.a($$2.w()); $$9++) {
+            dha $$10 = this.c[$$8 - this.a][$$9 - this.b];
+            if ($$10 != null && !$$10.a($$1.v(), $$2.v())) {
+               this.d = false;
+               return;
+            }
+         }
+      }
    }
 
-   public cqd a(akr $$0) {
-      if ($$0.C() != this.a) {
-         throw new IllegalStateException("Using invalid structure manager (source level: " + $$0.C() + ", region: " + $$0);
+   private dha d(gw $$0) {
+      return this.a(hz.a($$0.u()), hz.a($$0.w()));
+   }
+
+   private dha a(int $$0, int $$1) {
+      int $$2 = $$0 - this.a;
+      int $$3 = $$1 - this.b;
+      if ($$2 >= 0 && $$2 < this.c.length && $$3 >= 0 && $$3 < this.c[$$2].length) {
+         dha $$4 = this.c[$$2][$$3];
+         return (dha)($$4 != null ? $$4 : new dhh(this.e, new cox($$0, $$1), this.f.get()));
       } else {
-         return new cqd($$0, this.b, this.c);
+         return new dhh(this.e, new cox($$0, $$1), this.f.get());
       }
    }
 
-   public List<dvg> a(cos $$0, Predicate<duy> $$1) {
-      Map<duy, LongSet> $$2 = this.a.a($$0.e, $$0.f, dha.e).h();
-      Builder<dvg> $$3 = ImmutableList.builder();
-
-      for (Entry<duy, LongSet> $$4 : $$2.entrySet()) {
-         duy $$5 = $$4.getKey();
-         if ($$1.test($$5)) {
-            this.a($$5, $$4.getValue(), $$3::add);
-         }
-      }
-
-      return $$3.build();
+   @Override
+   public dgv w_() {
+      return this.e.w_();
    }
 
-   public List<dvg> a(hx $$0, duy $$1) {
-      LongSet $$2 = this.a.a($$0.a(), $$0.c(), dha.e).b($$1);
-      Builder<dvg> $$3 = ImmutableList.builder();
-      this.a($$1, $$2, $$3::add);
-      return $$3.build();
+   @Override
+   public cow c(int $$0, int $$1) {
+      return this.a($$0, $$1);
    }
 
-   public void a(duy $$0, LongSet $$1, Consumer<dvg> $$2) {
-      LongIterator var4 = $$1.iterator();
-
-      while (var4.hasNext()) {
-         long $$3 = (Long)var4.next();
-         hx $$4 = hx.a(new cos($$3), this.a.al());
-         dvg $$5 = this.a($$4, $$0, this.a.a($$4.a(), $$4.c(), dha.d));
-         if ($$5 != null && $$5.b()) {
-            $$2.accept($$5);
-         }
-      }
+   @Override
+   public List<eib> c(@Nullable bil $$0, ehd $$1) {
+      return List.of();
    }
 
    @Nullable
-   public dvg a(hx $$0, duy $$1, dhs $$2) {
-      return $$2.a($$1);
+   @Override
+   public dcq c_(gw $$0) {
+      dha $$1 = this.d($$0);
+      return $$1.c_($$0);
    }
 
-   public void a(hx $$0, duy $$1, dvg $$2, dhs $$3) {
-      $$3.a($$1, $$2);
-   }
-
-   public void a(hx $$0, duy $$1, long $$2, dhs $$3) {
-      $$3.a($$1, $$2);
-   }
-
-   public boolean a() {
-      return this.b.c();
-   }
-
-   public dvg a(gu $$0, duy $$1) {
-      for (dvg $$2 : this.a(hx.a($$0), $$1)) {
-         if ($$2.a().b($$0)) {
-            return $$2;
-         }
+   @Override
+   public dfe a_(gw $$0) {
+      if (this.r($$0)) {
+         return csr.a.n();
+      } else {
+         dha $$1 = this.d($$0);
+         return $$1.a_($$0);
       }
-
-      return dvg.b;
    }
 
-   public dvg a(gu $$0, aeq<duy> $$1) {
-      duy $$2 = this.b().d(jc.az).a($$1);
-      return $$2 == null ? dvg.b : this.b($$0, $$2);
-   }
-
-   public dvg a(gu $$0, aqa<duy> $$1) {
-      hr<duy> $$2 = this.b().d(jc.az);
-
-      for (dvg $$3 : this.a(new cos($$0), $$2x -> $$2.c($$2.a($$2x)).map($$1xx -> $$1xx.a($$1)).orElse(false))) {
-         if (this.a($$0, $$3)) {
-            return $$3;
-         }
+   @Override
+   public eah b_(gw $$0) {
+      if (this.r($$0)) {
+         return eai.a.g();
+      } else {
+         dha $$1 = this.d($$0);
+         return $$1.b_($$0);
       }
-
-      return dvg.b;
    }
 
-   public dvg b(gu $$0, duy $$1) {
-      for (dvg $$2 : this.a(hx.a($$0), $$1)) {
-         if (this.a($$0, $$2)) {
-            return $$2;
-         }
-      }
-
-      return dvg.b;
+   @Override
+   public int C_() {
+      return this.e.C_();
    }
 
-   public boolean a(gu $$0, dvg $$1) {
-      for (dvc $$2 : $$1.i()) {
-         if ($$2.f().b($$0)) {
-            return true;
-         }
-      }
-
-      return false;
+   @Override
+   public int D_() {
+      return this.e.D_();
    }
 
-   public boolean a(gu $$0) {
-      hx $$1 = hx.a($$0);
-      return this.a.a($$1.a(), $$1.c(), dha.e).w();
-   }
-
-   public Map<duy, LongSet> b(gu $$0) {
-      hx $$1 = hx.a($$0);
-      return this.a.a($$1.a(), $$1.c(), dha.e).h();
-   }
-
-   public dva a(cos $$0, duy $$1, boolean $$2) {
-      return this.c.a($$0, $$1, $$2);
-   }
-
-   public void a(dvg $$0) {
-      $$0.e();
-      this.c.a($$0.c(), $$0.h());
-   }
-
-   public hs b() {
-      return this.a.B_();
+   public bdk a() {
+      return this.e.ad();
    }
 }

@@ -1,5 +1,146 @@
 import com.mojang.authlib.GameProfile;
+import com.mojang.authlib.exceptions.AuthenticationException;
+import com.mojang.authlib.exceptions.AuthenticationUnavailableException;
+import com.mojang.authlib.exceptions.ForcedUsernameChangeException;
+import com.mojang.authlib.exceptions.InsufficientPrivilegesException;
+import com.mojang.authlib.exceptions.InvalidCredentialsException;
+import com.mojang.authlib.exceptions.UserBannedException;
+import com.mojang.authlib.minecraft.MinecraftSessionService;
+import com.mojang.logging.LogUtils;
+import java.math.BigInteger;
+import java.security.PublicKey;
+import java.time.Duration;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
+import javax.crypto.Cipher;
+import javax.crypto.SecretKey;
+import net.minecraft.client.ClientBrandRetriever;
+import org.slf4j.Logger;
 
-public record fir(GameProfile a, gdt b, hs.b c, cdu d, @Nullable String e, @Nullable fix f, @Nullable eya g) {
+public class fir implements adc {
+   private static final Logger a = LogUtils.getLogger();
+   private final eqq b;
+   @Nullable
+   private final fjc c;
+   @Nullable
+   private final eyf d;
+   private final Consumer<ti> e;
+   private final sj f;
+   private final boolean g;
+   @Nullable
+   private final Duration h;
+   @Nullable
+   private String i;
+
+   public fir(sj $$0, eqq $$1, @Nullable fjc $$2, @Nullable eyf $$3, boolean $$4, @Nullable Duration $$5, Consumer<ti> $$6) {
+      this.f = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$6;
+      this.g = $$4;
+      this.h = $$5;
+   }
+
+   @Override
+   public void a(adf $$0) {
+      Cipher $$4;
+      Cipher $$5;
+      String $$3;
+      adl $$7;
+      try {
+         SecretKey $$1 = aqs.a();
+         PublicKey $$2 = $$0.d();
+         $$3 = new BigInteger(aqs.a($$0.a(), $$2, $$1)).toString(16);
+         $$4 = aqs.a(2, $$1);
+         $$5 = aqs.a(1, $$1);
+         byte[] $$6 = $$0.e();
+         $$7 = new adl($$1, $$2, $$6);
+      } catch (Exception var9) {
+         throw new IllegalStateException("Protocol error", var9);
+      }
+
+      this.e.accept(ti.c("connect.authorizing"));
+      ark.a.submit(() -> {
+         ti $$4x = this.b($$3);
+         if ($$4x != null) {
+            if (this.c == null || !this.c.d()) {
+               this.f.a($$4x);
+               return;
+            }
+
+            a.warn($$4x.getString());
+         }
+
+         this.e.accept(ti.c("connect.encrypting"));
+         this.f.a($$7, ss.a(() -> this.f.a($$4, $$5)));
+      });
+   }
+
+   @Nullable
+   private ti b(String $$0) {
+      try {
+         this.e().joinServer(this.b.V().b(), this.b.V().d(), $$0);
+         return null;
+      } catch (AuthenticationUnavailableException var3) {
+         return ti.a("disconnect.loginFailedInfo", ti.c("disconnect.loginFailedInfo.serversUnavailable"));
+      } catch (InvalidCredentialsException var4) {
+         return ti.a("disconnect.loginFailedInfo", ti.c("disconnect.loginFailedInfo.invalidSession"));
+      } catch (InsufficientPrivilegesException var5) {
+         return ti.a("disconnect.loginFailedInfo", ti.c("disconnect.loginFailedInfo.insufficientPrivileges"));
+      } catch (ForcedUsernameChangeException | UserBannedException var6) {
+         return ti.a("disconnect.loginFailedInfo", ti.c("disconnect.loginFailedInfo.userBanned"));
+      } catch (AuthenticationException var7) {
+         return ti.a("disconnect.loginFailedInfo", var7.getMessage());
+      }
+   }
+
+   private MinecraftSessionService e() {
+      return this.b.ak();
+   }
+
+   @Override
+   public void a(ade $$0) {
+      this.e.accept(ti.c("connect.joining"));
+      GameProfile $$1 = $$0.a();
+      this.f.a(new adm());
+      this.f.a(new fiq(this.b, this.f, new fiw($$1, this.b.u().a(this.g, this.h, this.i), fiu.a().a(), cdz.g, null, this.c, this.d)));
+      this.f.a(new vl(new vr(ClientBrandRetriever.getClientModName())));
+   }
+
+   @Override
+   public void a(ti $$0) {
+      if (this.c != null && this.c.e()) {
+         this.b.a(new ges(this.d, th.q, $$0));
+      } else {
+         this.b.a(new exh(this.d, th.q, $$0));
+      }
+   }
+
+   @Override
+   public boolean c() {
+      return this.f.k();
+   }
+
+   @Override
+   public void a(adh $$0) {
+      this.f.a($$0.a());
+   }
+
+   @Override
+   public void a(adg $$0) {
+      if (!this.f.g()) {
+         this.f.a($$0.a(), false);
+      }
+   }
+
+   @Override
+   public void a(add $$0) {
+      this.e.accept(ti.c("connect.negotiating"));
+      this.f.a(new adj($$0.a(), null));
+   }
+
+   public void a(String $$0) {
+      this.i = $$0;
+   }
 }

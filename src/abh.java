@@ -1,29 +1,38 @@
-public class abh implements ux<aaw> {
-   private final abh.a a;
+import java.time.Instant;
+import javax.annotation.Nullable;
 
-   public abh(abh.a $$0) {
-      this.a = $$0;
-   }
-
-   public abh(si $$0) {
-      this.a = $$0.b(abh.a.class);
+public record abh(String a, Instant b, long c, @Nullable tt d, to.b e) implements va<aaz> {
+   public abh(sl $$0) {
+      this($$0.d(256), $$0.v(), $$0.readLong(), $$0.c(tt::a), new to.b($$0));
    }
 
    @Override
-   public void a(si $$0) {
-      $$0.a(this.a);
+   public void a(sl $$0) {
+      $$0.a(this.a, 256);
+      $$0.a(this.b);
+      $$0.b(this.c);
+      $$0.a(this.d, tt::a);
+      this.e.a($$0);
    }
 
-   public void a(aaw $$0) {
+   public void a(aaz $$0) {
       $$0.a(this);
    }
 
-   public abh.a a() {
-      return this.a;
+   public Instant d() {
+      return this.b;
    }
 
-   public static enum a {
-      a,
-      b;
+   public long e() {
+      return this.c;
+   }
+
+   @Nullable
+   public tt f() {
+      return this.d;
+   }
+
+   public to.b g() {
+      return this.e;
    }
 }

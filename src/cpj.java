@@ -1,19 +1,11 @@
+import java.util.Optional;
+
 public class cpj {
-   private static int[] a = new int[65536];
-
-   public static void a(int[] $$0) {
-      a = $$0;
+   public Optional<Float> a(cpi $$0, cow $$1, gw $$2, dfe $$3, eah $$4) {
+      return $$3.i() && $$4.c() ? Optional.empty() : Optional.of(Math.max($$3.b().d(), $$4.i()));
    }
 
-   public static int a(double $$0, double $$1) {
-      $$1 *= $$0;
-      int $$2 = (int)((1.0 - $$0) * 255.0);
-      int $$3 = (int)((1.0 - $$1) * 255.0);
-      int $$4 = $$3 << 8 | $$2;
-      return $$4 >= a.length ? -65281 : a[$$4];
-   }
-
-   public static int a() {
-      return a(0.5, 1.0);
+   public boolean a(cpi $$0, cow $$1, gw $$2, dfe $$3, float $$4) {
+      return true;
    }
 }

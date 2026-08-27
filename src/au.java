@@ -1,67 +1,64 @@
 import com.google.gson.JsonObject;
+import com.google.gson.JsonSyntaxException;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class au extends cu<au.a> {
-   static final aer a = new aer("bred_animals");
-
-   @Override
-   public aer a() {
-      return a;
-   }
-
-   public au.a a(JsonObject $$0, Optional<ba> $$1, be $$2) {
-      Optional<ba> $$3 = bo.a($$0, "parent", $$2);
-      Optional<ba> $$4 = bo.a($$0, "partner", $$2);
-      Optional<ba> $$5 = bo.a($$0, "child", $$2);
+public class au extends cw<au.a> {
+   public au.a a(JsonObject $$0, Optional<bc> $$1, bg $$2) {
+      csq $$3 = a($$0);
+      Optional<cb> $$4 = cb.a($$0.get("item"));
+      cl.d $$5 = cl.d.a($$0.get("num_bees_inside"));
       return new au.a($$1, $$3, $$4, $$5);
    }
 
-   public void a(akl $$0, buj $$1, buj $$2, @Nullable bid $$3) {
-      ecg $$4 = bo.b($$0, $$1);
-      ecg $$5 = bo.b($$0, $$2);
-      ecg $$6 = $$3 != null ? bo.b($$0, $$3) : null;
-      this.a($$0, $$3x -> $$3x.a($$4, $$5, $$6));
+   @Nullable
+   private static csq a(JsonObject $$0) {
+      if ($$0.has("block")) {
+         aeu $$1 = new aeu(arj.i($$0, "block"));
+         return jd.f.b($$1).orElseThrow(() -> new JsonSyntaxException("Unknown block type '" + $$1 + "'"));
+      } else {
+         return null;
+      }
    }
 
-   public static class a extends ar {
-      private final Optional<ba> a;
-      private final Optional<ba> b;
-      private final Optional<ba> c;
+   public void a(ako $$0, dfe $$1, cja $$2, int $$3) {
+      this.a($$0, $$3x -> $$3x.a($$1, $$2, $$3));
+   }
 
-      public a(Optional<ba> $$0, Optional<ba> $$1, Optional<ba> $$2, Optional<ba> $$3) {
-         super(au.a, $$0);
+   public static class a extends at {
+      @Nullable
+      private final csq a;
+      private final Optional<cb> b;
+      private final cl.d c;
+
+      public a(Optional<bc> $$0, @Nullable csq $$1, Optional<cb> $$2, cl.d $$3) {
+         super($$0);
          this.a = $$1;
          this.b = $$2;
          this.c = $$3;
       }
 
-      public static au.a d() {
-         return new au.a(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty());
+      public static am<au.a> a(csq $$0, cb.a $$1, cl.d $$2) {
+         return al.K.a(new au.a(Optional.empty(), $$0, Optional.of($$1.b()), $$2));
       }
 
-      public static au.a a(bo.a $$0) {
-         return new au.a(Optional.empty(), Optional.empty(), Optional.empty(), bo.a($$0));
-      }
-
-      public static au.a a(Optional<bo> $$0, Optional<bo> $$1, Optional<bo> $$2) {
-         return new au.a(Optional.empty(), bo.a($$0), bo.a($$1), bo.a($$2));
-      }
-
-      public boolean a(ecg $$0, ecg $$1, @Nullable ecg $$2) {
-         return !this.c.isPresent() || $$2 != null && this.c.get().a($$2) ? a(this.a, $$0) && a(this.b, $$1) || a(this.a, $$1) && a(this.b, $$0) : false;
-      }
-
-      private static boolean a(Optional<ba> $$0, ecg $$1) {
-         return $$0.isEmpty() || $$0.get().a($$1);
+      public boolean a(dfe $$0, cja $$1, int $$2) {
+         if (this.a != null && !$$0.a(this.a)) {
+            return false;
+         } else {
+            return this.b.isPresent() && !this.b.get().a($$1) ? false : this.c.d($$2);
+         }
       }
 
       @Override
-      public JsonObject b() {
-         JsonObject $$0 = super.b();
-         this.a.ifPresent($$1 -> $$0.add("parent", $$1.a()));
-         this.b.ifPresent($$1 -> $$0.add("partner", $$1.a()));
-         this.c.ifPresent($$1 -> $$0.add("child", $$1.a()));
+      public JsonObject a() {
+         JsonObject $$0 = super.a();
+         if (this.a != null) {
+            $$0.addProperty("block", jd.f.b(this.a).toString());
+         }
+
+         this.b.ifPresent($$1 -> $$0.add("item", $$1.a()));
+         $$0.add("num_bees_inside", this.c.e());
          return $$0;
       }
    }

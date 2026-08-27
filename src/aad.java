@@ -1,40 +1,64 @@
-public class aad implements ux<wp> {
-   private final long a;
-   private final long b;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-   public aad(long $$0, long $$1, boolean $$2) {
-      this.a = $$0;
-      long $$3 = $$1;
-      if (!$$2) {
-         $$3 = -$$1;
-         if ($$3 == 0L) {
-            $$3 = -1L;
-         }
+public class aad implements va<ws> {
+   private final String a;
+   @Nullable
+   private final String b;
+   private final int c;
+   private final afl.a d;
+
+   public aad(afl.a $$0, @Nullable String $$1, String $$2, int $$3) {
+      if ($$0 != afl.a.b && $$1 == null) {
+         throw new IllegalArgumentException("Need an objective name");
+      } else {
+         this.a = $$2;
+         this.b = $$1;
+         this.c = $$3;
+         this.d = $$0;
       }
-
-      this.b = $$3;
    }
 
-   public aad(si $$0) {
-      this.a = $$0.readLong();
-      this.b = $$0.readLong();
+   public aad(sl $$0) {
+      this.a = $$0.r();
+      this.d = $$0.b(afl.a.class);
+      String $$1 = $$0.r();
+      this.b = Objects.equals($$1, "") ? null : $$1;
+      if (this.d != afl.a.b) {
+         this.c = $$0.m();
+      } else {
+         this.c = 0;
+      }
    }
 
    @Override
-   public void a(si $$0) {
-      $$0.b(this.a);
-      $$0.b(this.b);
+   public void a(sl $$0) {
+      $$0.a(this.a);
+      $$0.a(this.d);
+      $$0.a(this.b == null ? "" : this.b);
+      if (this.d != afl.a.b) {
+         $$0.c(this.c);
+      }
    }
 
-   public void a(wp $$0) {
+   public void a(ws $$0) {
       $$0.a(this);
    }
 
-   public long a() {
+   public String a() {
       return this.a;
    }
 
-   public long d() {
+   @Nullable
+   public String d() {
       return this.b;
+   }
+
+   public int e() {
+      return this.c;
+   }
+
+   public afl.a f() {
+      return this.d;
    }
 }

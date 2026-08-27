@@ -1,89 +1,122 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Objects;
+import com.mojang.logging.LogUtils;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class bty {
-   private final gu a;
-   private final he<bua> b;
-   private int c;
-   private final Runnable d;
+public class bty implements cpd {
+   private static final Logger a = LogUtils.getLogger();
+   private boolean b;
+   private bty.a c;
+   private int d;
+   private int e;
+   private int f;
+   private int g;
+   private int h;
 
-   public static Codec<bty> a(Runnable $$0) {
-      return RecordCodecBuilder.create(
-         $$1 -> $$1.group(
-                  gu.a.fieldOf("pos").forGetter($$0xx -> $$0xx.a),
-                  aeo.a(jc.S).fieldOf("type").forGetter($$0xx -> $$0xx.b),
-                  Codec.INT.fieldOf("free_tickets").orElse(0).forGetter($$0xx -> $$0xx.c),
-                  RecordCodecBuilder.point($$0)
-               )
-               .apply($$1, bty::new)
-      );
-   }
-
-   private bty(gu $$0, he<bua> $$1, int $$2, Runnable $$3) {
-      this.a = $$0.i();
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-   }
-
-   public bty(gu $$0, he<bua> $$1, Runnable $$2) {
-      this($$0, $$1, $$1.a().b(), $$2);
-   }
-
-   @Deprecated
-   @asq
-   public int a() {
-      return this.c;
-   }
-
-   protected boolean b() {
-      if (this.c <= 0) {
-         return false;
-      } else {
-         this.c--;
-         this.d.run();
-         return true;
-      }
-   }
-
-   protected boolean c() {
-      if (this.c >= this.b.a().b()) {
-         return false;
-      } else {
-         this.c++;
-         this.d.run();
-         return true;
-      }
-   }
-
-   public boolean d() {
-      return this.c > 0;
-   }
-
-   public boolean e() {
-      return this.c != this.b.a().b();
-   }
-
-   public gu f() {
-      return this.a;
-   }
-
-   public he<bua> g() {
-      return this.b;
+   public bty() {
+      this.c = bty.a.c;
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
+   public int a(akn $$0, boolean $$1, boolean $$2) {
+      if (!$$0.N() && $$1) {
+         float $$3 = $$0.f(0.0F);
+         if ((double)$$3 == 0.5) {
+            this.c = $$0.z.a(10) == 0 ? bty.a.b : bty.a.c;
+         }
+
+         if (this.c == bty.a.c) {
+            return 0;
+         } else {
+            if (!this.b) {
+               if (!this.a($$0)) {
+                  return 0;
+               }
+
+               this.b = true;
+            }
+
+            if (this.e > 0) {
+               this.e--;
+               return 0;
+            } else {
+               this.e = 2;
+               if (this.d > 0) {
+                  this.b($$0);
+                  this.d--;
+               } else {
+                  this.c = bty.a.c;
+               }
+
+               return 1;
+            }
+         }
       } else {
-         return $$0 != null && this.getClass() == $$0.getClass() ? Objects.equals(this.a, ((bty)$$0).a) : false;
+         this.c = bty.a.c;
+         this.b = false;
+         return 0;
       }
    }
 
-   @Override
-   public int hashCode() {
-      return this.a.hashCode();
+   private boolean a(akn $$0) {
+      for (cbp $$1 : $$0.v()) {
+         if (!$$1.G_()) {
+            gw $$2 = $$1.dk();
+            if ($$0.b($$2) && !$$0.s($$2).a(apn.ae)) {
+               for (int $$3 = 0; $$3 < 10; $$3++) {
+                  float $$4 = $$0.z.i() * (float) (Math.PI * 2);
+                  this.f = $$2.u() + ars.d(ars.b($$4) * 32.0F);
+                  this.g = $$2.v();
+                  this.h = $$2.w() + ars.d(ars.a($$4) * 32.0F);
+                  if (this.a($$0, new gw(this.f, this.g, this.h)) != null) {
+                     this.e = 0;
+                     this.d = 20;
+                     break;
+                  }
+               }
+
+               return true;
+            }
+         }
+      }
+
+      return false;
+   }
+
+   private void b(akn $$0) {
+      ehi $$1 = this.a($$0, new gw(this.f, this.g, this.h));
+      if ($$1 != null) {
+         bzw $$2;
+         try {
+            $$2 = new bzw($$0);
+            $$2.a($$0, $$0.d_($$2.dk()), bjf.h, null, null);
+         } catch (Exception var5) {
+            a.warn("Failed to create zombie for village siege at {}", $$1, var5);
+            return;
+         }
+
+         $$2.b($$1.c, $$1.d, $$1.e, $$0.z.i() * 360.0F, 0.0F);
+         $$0.a_($$2);
+      }
+   }
+
+   @Nullable
+   private ehi a(akn $$0, gw $$1) {
+      for (int $$2 = 0; $$2 < 10; $$2++) {
+         int $$3 = $$1.u() + $$0.z.a(16) - 8;
+         int $$4 = $$1.w() + $$0.z.a(16) - 8;
+         int $$5 = $$0.a(dkn.a.b, $$3, $$4);
+         gw $$6 = new gw($$3, $$5, $$4);
+         if ($$0.b($$6) && bzd.b(bip.bp, $$0, bjf.h, $$6, $$0.z)) {
+            return ehi.c($$6);
+         }
+      }
+
+      return null;
+   }
+
+   static enum a {
+      a,
+      b,
+      c;
    }
 }

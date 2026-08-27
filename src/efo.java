@@ -1,36 +1,29 @@
-import com.google.common.collect.Sets;
+import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Set;
 
-public record efo(ega b, ecf c) implements eff {
-   public static final Codec<efo> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(egb.a.fieldOf("value").forGetter(efo::c), ecf.a.fieldOf("range").forGetter(efo::d)).apply($$0, efo::new)
-   );
+public class efo implements efk {
+   private static final efo b = new efo();
+   public static final Codec<efo> a = Codec.unit(b);
 
-   @Override
-   public efg b() {
-      return efh.s;
+   private efo() {
    }
 
    @Override
-   public Set<eeo<?>> a() {
-      return Sets.union(this.b.a(), this.c.a());
+   public efl b() {
+      return efm.h;
    }
 
-   public boolean a(ecg $$0) {
-      return this.c.b($$0, this.b.a($$0));
+   @Override
+   public Set<eet<?>> a() {
+      return ImmutableSet.of(eew.b);
    }
 
-   public static eff.a a(ega $$0, ecf $$1) {
-      return () -> new efo($$0, $$1);
+   public boolean a(ecl $$0) {
+      return $$0.a(eew.b);
    }
 
-   public ega c() {
-      return this.b;
-   }
-
-   public ecf d() {
-      return this.c;
+   public static efk.a c() {
+      return () -> b;
    }
 }

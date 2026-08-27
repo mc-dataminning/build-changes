@@ -1,26 +1,30 @@
-import javax.annotation.Nullable;
+public class brg extends bpw {
+   private final bjk a;
 
-public class brg extends bqq {
-   public static final float i = 0.001F;
-   protected final float j;
-
-   public brg(bjh $$0, double $$1) {
-      this($$0, $$1, 0.001F);
+   public brg(bjk $$0) {
+      this.a = $$0;
    }
 
-   public brg(bjh $$0, double $$1, float $$2) {
-      super($$0, $$1);
-      this.j = $$2;
-   }
-
-   @Nullable
    @Override
-   protected ehd h() {
-      if (this.b.ba()) {
-         ehd $$0 = btr.a(this.b, 15, 7);
-         return $$0 == null ? super.h() : $$0;
-      } else {
-         return this.b.ee().i() >= this.j ? btr.a(this.b, 10, 7) : super.h();
+   public boolean a() {
+      return this.a.aA() && !this.a.dK().b_(this.a.dk()).a(apt.a);
+   }
+
+   @Override
+   public void c() {
+      gw $$0 = null;
+
+      for (gw $$2 : gw.b(
+         ars.a(this.a.dp() - 2.0), ars.a(this.a.dr() - 2.0), ars.a(this.a.dv() - 2.0), ars.a(this.a.dp() + 2.0), this.a.dq(), ars.a(this.a.dv() + 2.0)
+      )) {
+         if (this.a.dK().b_($$2).a(apt.a)) {
+            $$0 = $$2;
+            break;
+         }
+      }
+
+      if ($$0 != null) {
+         this.a.E().a((double)$$0.u(), (double)$$0.v(), (double)$$0.w(), 1.0);
       }
    }
 }

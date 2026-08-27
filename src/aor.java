@@ -1,113 +1,58 @@
-import com.google.common.collect.Lists;
 import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.net.InetAddress;
-import java.net.ServerSocket;
-import java.net.Socket;
-import java.net.SocketTimeoutException;
-import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class aor extends aoo {
+public abstract class aor implements Runnable {
    private static final Logger d = LogUtils.getLogger();
-   private final ServerSocket e;
-   private final String f;
-   private final List<aoq> g = Lists.newArrayList();
-   private final afh h;
-
-   private aor(afh $$0, ServerSocket $$1, String $$2) {
-      super("RCON Listener");
-      this.h = $$0;
-      this.e = $$1;
-      this.f = $$2;
-   }
-
-   private void d() {
-      this.g.removeIf($$0 -> !$$0.c());
-   }
-
-   @Override
-   public void run() {
-      try {
-         while (this.a) {
-            try {
-               Socket $$0 = this.e.accept();
-               aoq $$1 = new aoq(this.h, this.f, $$0);
-               $$1.a();
-               this.g.add($$1);
-               this.d();
-            } catch (SocketTimeoutException var7) {
-               this.d();
-            } catch (IOException var8) {
-               if (this.a) {
-                  d.info("IO exception: ", var8);
-               }
-            }
-         }
-      } finally {
-         this.a(this.e);
-      }
-   }
-
+   private static final AtomicInteger e = new AtomicInteger(0);
+   private static final int f = 5;
+   protected volatile boolean a;
+   protected final String b;
    @Nullable
-   public static aor a(afh $$0) {
-      ajj $$1 = $$0.a();
-      String $$2 = $$0.b();
-      if ($$2.isEmpty()) {
-         $$2 = "0.0.0.0";
-      }
+   protected Thread c;
 
-      int $$3 = $$1.s;
-      if (0 < $$3 && 65535 >= $$3) {
-         String $$4 = $$1.t;
-         if ($$4.isEmpty()) {
-            d.warn("No rcon password set in server.properties, rcon disabled!");
-            return null;
-         } else {
+   protected aor(String $$0) {
+      this.b = $$0;
+   }
+
+   public synchronized boolean a() {
+      if (this.a) {
+         return true;
+      } else {
+         this.a = true;
+         this.c = new Thread(this, this.b + " #" + e.incrementAndGet());
+         this.c.setUncaughtExceptionHandler(new s(d));
+         this.c.start();
+         d.info("Thread {} started", this.b);
+         return true;
+      }
+   }
+
+   public synchronized void b() {
+      this.a = false;
+      if (null != this.c) {
+         int $$0 = 0;
+
+         while (this.c.isAlive()) {
             try {
-               ServerSocket $$5 = new ServerSocket($$3, 0, InetAddress.getByName($$2));
-               $$5.setSoTimeout(500);
-               aor $$6 = new aor($$0, $$5, $$4);
-               if (!$$6.a()) {
-                  return null;
-               } else {
-                  d.info("RCON running on {}:{}", $$2, $$3);
-                  return $$6;
+               this.c.join(1000L);
+               if (++$$0 >= 5) {
+                  d.warn("Waited {} seconds attempting force stop!", $$0);
+               } else if (this.c.isAlive()) {
+                  d.warn("Thread {} ({}) failed to exit after {} second(s)", new Object[]{this, this.c.getState(), $$0, new Exception("Stack:")});
+                  this.c.interrupt();
                }
-            } catch (IOException var7) {
-               d.warn("Unable to initialise RCON on {}:{}", new Object[]{$$2, $$3, var7});
-               return null;
+            } catch (InterruptedException var3) {
             }
          }
-      } else {
-         d.warn("Invalid rcon port {} found in server.properties, rcon disabled!", $$3);
-         return null;
+
+         d.info("Thread {} stopped", this.b);
+         this.c = null;
       }
    }
 
-   @Override
-   public void b() {
-      this.a = false;
-      this.a(this.e);
-      super.b();
-
-      for (aoq $$0 : this.g) {
-         if ($$0.c()) {
-            $$0.b();
-         }
-      }
-
-      this.g.clear();
-   }
-
-   private void a(ServerSocket $$0) {
-      d.debug("closeSocket: {}", $$0);
-
-      try {
-         $$0.close();
-      } catch (IOException var3) {
-         d.warn("Failed to close socket", var3);
-      }
+   public boolean c() {
+      return this.a;
    }
 }

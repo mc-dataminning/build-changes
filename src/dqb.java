@@ -1,21 +1,21 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.stream.Stream;
 
-public class dqb implements dpq {
-   public static final Codec<dqb> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(duc.b.fieldOf("feature_true").forGetter($$0x -> $$0x.b), duc.b.fieldOf("feature_false").forGetter($$0x -> $$0x.c)).apply($$0, dqb::new)
+public class dqb extends dpn {
+   public static final Codec<dqb> c = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               drw.a.fieldOf("state_provider").forGetter($$0x -> $$0x.b),
+               arb.j.fieldOf("spread_width").forGetter($$0x -> $$0x.d),
+               arb.j.fieldOf("spread_height").forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, dqb::new)
    );
-   public final he<duc> b;
-   public final he<duc> c;
+   public final int d;
+   public final int e;
 
-   public dqb(he<duc> $$0, he<duc> $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
-
-   @Override
-   public Stream<dmz<?, ?>> e() {
-      return Stream.concat(this.b.a().a(), this.c.a().a());
+   public dqb(drw $$0, int $$1, int $$2) {
+      super($$0);
+      this.d = $$1;
+      this.e = $$2;
    }
 }

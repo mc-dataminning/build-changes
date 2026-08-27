@@ -1,136 +1,122 @@
-import com.google.common.collect.Sets;
-import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.kinds.OptionalBox.Mu;
-import java.util.Iterator;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Lists;
 import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Function;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.mutable.MutableInt;
-import org.apache.commons.lang3.mutable.MutableObject;
 
-public class bln {
-   private static final int a = 20;
-   private static final double b = 3.0;
-   private static final double c = 2.0;
+public class bln extends bks<cbc> {
+   private static final int d = 200;
+   public static final float c = 0.5F;
+   @Nullable
+   private gw e;
+   private long f;
+   private int g;
+   private final List<gw> h = Lists.newArrayList();
 
-   public static bkq<biy> a() {
-      MutableObject<eap> $$0 = new MutableObject(null);
-      MutableInt $$1 = new MutableInt(0);
-      return bob.a(
-         (Function<bob.b<biy>, ? extends App<bob.c<biy>, boe<biy>>>)($$2 -> $$2.group($$2.b(brz.t), $$2.a(brz.v), $$2.a(brz.g))
-               .apply($$2, ($$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
-                     ear $$9 = $$2.b($$3);
-                     Optional<Set<hd>> $$10 = $$2.a($$4);
-                     if (!$$9.b() && !$$9.c()) {
-                        if (Objects.equals($$0.getValue(), $$9.h())) {
-                           $$1.setValue(20);
-                        } else if ($$1.decrementAndGet() > 0) {
-                           return false;
-                        }
-
-                        $$0.setValue($$9.h());
-                        eap $$11 = $$9.i();
-                        eap $$12 = $$9.h();
-                        gu $$13 = $$11.a();
-                        dez $$14 = $$6.a_($$13);
-                        if ($$14.a(apl.h, $$0xxxx -> $$0xxxx.b() instanceof cun)) {
-                           cun $$15 = (cun)$$14.b();
-                           if (!$$15.h($$14)) {
-                              $$15.a($$7, $$6, $$14, $$13, true);
-                           }
-
-                           $$10 = a($$4, $$10, $$6, $$13);
-                        }
-
-                        gu $$16 = $$12.a();
-                        dez $$17 = $$6.a_($$16);
-                        if ($$17.a(apl.h, $$0xxxx -> $$0xxxx.b() instanceof cun)) {
-                           cun $$18 = (cun)$$17.b();
-                           if (!$$18.h($$17)) {
-                              $$18.a($$7, $$6, $$17, $$16, true);
-                              $$10 = a($$4, $$10, $$6, $$16);
-                           }
-                        }
-
-                        $$10.ifPresent($$6x -> a($$6, $$7, $$11, $$12, $$6x, $$2.a($$5)));
-                        return true;
-                     } else {
-                        return false;
-                     }
-                  }))
-      );
+   public bln() {
+      super(ImmutableMap.of(bsc.n, bsd.b, bsc.m, bsd.b, bsc.f, bsd.a));
    }
 
-   public static void a(akk $$0, biy $$1, @Nullable eap $$2, @Nullable eap $$3, Set<hd> $$4, Optional<List<biy>> $$5) {
-      Iterator<hd> $$6 = $$4.iterator();
+   protected boolean a(akn $$0, cbc $$1) {
+      if (!$$0.X().b(cpm.c)) {
+         return false;
+      } else if ($$1.gl().b() != cbf.g) {
+         return false;
+      } else {
+         gw.a $$2 = $$1.dk().j();
+         this.h.clear();
 
-      while ($$6.hasNext()) {
-         hd $$7 = $$6.next();
-         gu $$8 = $$7.b();
-         if (($$2 == null || !$$2.a().equals($$8)) && ($$3 == null || !$$3.a().equals($$8))) {
-            if (a($$0, $$1, $$7)) {
-               $$6.remove();
-            } else {
-               dez $$9 = $$0.a_($$8);
-               if (!$$9.a(apl.h, $$0x -> $$0x.b() instanceof cun)) {
-                  $$6.remove();
-               } else {
-                  cun $$10 = (cun)$$9.b();
-                  if (!$$10.h($$9)) {
-                     $$6.remove();
-                  } else if (a($$1, $$8, $$5)) {
-                     $$6.remove();
-                  } else {
-                     $$10.a($$1, $$0, $$9, $$8, false);
-                     $$6.remove();
+         for (int $$3 = -1; $$3 <= 1; $$3++) {
+            for (int $$4 = -1; $$4 <= 1; $$4++) {
+               for (int $$5 = -1; $$5 <= 1; $$5++) {
+                  $$2.b($$1.dp() + (double)$$3, $$1.dr() + (double)$$4, $$1.dv() + (double)$$5);
+                  if (this.a($$2, $$0)) {
+                     this.h.add(new gw($$2));
                   }
                }
             }
          }
+
+         this.e = this.a($$0);
+         return this.e != null;
       }
    }
 
-   private static boolean a(biy $$0, gu $$1, Optional<List<biy>> $$2) {
-      return $$2.isEmpty()
-         ? false
-         : $$2.get().stream().filter($$1x -> $$1x.ag() == $$0.ag()).filter($$1x -> $$1.a($$1x.di(), 2.0)).anyMatch($$1x -> a($$1x.dM(), $$1));
+   @Nullable
+   private gw a(akn $$0) {
+      return this.h.isEmpty() ? null : this.h.get($$0.y_().a(this.h.size()));
    }
 
-   private static boolean a(bjy<?> $$0, gu $$1) {
-      if (!$$0.a(brz.t)) {
-         return false;
-      } else {
-         ear $$2 = $$0.c(brz.t).get();
-         if ($$2.c()) {
-            return false;
-         } else {
-            eap $$3 = $$2.i();
-            if ($$3 == null) {
-               return false;
-            } else {
-               eap $$4 = $$2.h();
-               return $$1.equals($$3.a()) || $$1.equals($$4.a());
+   private boolean a(gw $$0, akn $$1) {
+      dfe $$2 = $$1.a_($$0);
+      csq $$3 = $$2.b();
+      csq $$4 = $$1.a_($$0.d()).b();
+      return $$3 instanceof cuh && ((cuh)$$3).h($$2) || $$2.i() && $$4 instanceof cvj;
+   }
+
+   protected void a(akn $$0, cbc $$1, long $$2) {
+      if ($$2 > this.f && this.e != null) {
+         $$1.dM().a(bsc.n, new bkv(this.e));
+         $$1.dM().a(bsc.m, new bsf(new bkv(this.e), 0.5F, 1));
+      }
+   }
+
+   protected void b(akn $$0, cbc $$1, long $$2) {
+      $$1.dM().b(bsc.n);
+      $$1.dM().b(bsc.m);
+      this.g = 0;
+      this.f = $$2 + 40L;
+   }
+
+   protected void c(akn $$0, cbc $$1, long $$2) {
+      if (this.e == null || this.e.a($$1.di(), 1.0)) {
+         if (this.e != null && $$2 > this.f) {
+            dfe $$3 = $$0.a_(this.e);
+            csq $$4 = $$3.b();
+            csq $$5 = $$0.a_(this.e.d()).b();
+            if ($$4 instanceof cuh && ((cuh)$$4).h($$3)) {
+               $$0.a(this.e, true, $$1);
+            }
+
+            if ($$3.i() && $$5 instanceof cvj && $$1.gu()) {
+               bha $$6 = $$1.t();
+
+               for (int $$7 = 0; $$7 < $$6.b(); $$7++) {
+                  cja $$8 = $$6.a($$7);
+                  boolean $$9 = false;
+                  if (!$$8.b() && $$8.a(apw.aU) && $$8.d() instanceof cgt $$10) {
+                     dfe $$11 = $$10.e().n();
+                     $$0.b(this.e, $$11);
+                     $$0.a(djo.i, this.e, djo.a.a($$1, $$11));
+                     $$9 = true;
+                  }
+
+                  if ($$9) {
+                     $$0.a(null, (double)this.e.u(), (double)this.e.v(), (double)this.e.w(), aoz.fi, apa.e, 1.0F, 1.0F);
+                     $$8.h(1);
+                     if ($$8.b()) {
+                        $$6.a($$7, cja.b);
+                     }
+                     break;
+                  }
+               }
+            }
+
+            if ($$4 instanceof cuh && !((cuh)$$4).h($$3)) {
+               this.h.remove(this.e);
+               this.e = this.a($$0);
+               if (this.e != null) {
+                  this.f = $$2 + 20L;
+                  $$1.dM().a(bsc.m, new bsf(new bkv(this.e), 0.5F, 1));
+                  $$1.dM().a(bsc.n, new bkv(this.e));
+               }
             }
          }
+
+         this.g++;
       }
    }
 
-   private static boolean a(akk $$0, biy $$1, hd $$2) {
-      return $$2.a() != $$0.ac() || !$$2.b().a($$1.di(), 3.0);
-   }
-
-   private static Optional<Set<hd>> a(boc<Mu, Set<hd>> $$0, Optional<Set<hd>> $$1, akk $$2, gu $$3) {
-      hd $$4 = hd.a($$2.ac(), $$3);
-      return Optional.of($$1.<Set<hd>>map($$1x -> {
-         $$1x.add($$4);
-         return $$1x;
-      }).orElseGet(() -> {
-         Set<hd> $$2x = Sets.newHashSet(new hd[]{$$4});
-         $$0.a($$2x);
-         return $$2x;
-      }));
+   protected boolean d(akn $$0, cbc $$1, long $$2) {
+      return this.g < 200;
    }
 }

@@ -1,25 +1,14 @@
-import java.util.Arrays;
+import com.mojang.serialization.Codec;
 
-public class bfx implements bfy {
-   private final bfy[] a;
+public interface bfx<P extends bfw> {
+   bfx<bfu> a = a("constant", bfu.b);
+   bfx<bgd> b = a("uniform", bgd.a);
+   bfx<bfs> c = a("clamped_normal", bfs.a);
+   bfx<bgc> d = a("trapezoid", bgc.a);
 
-   public bfx(bfy... $$0) {
-      this.a = $$0;
-   }
+   Codec<P> codec();
 
-   @Override
-   public float a(aru $$0) {
-      float $$1 = 1.0F;
-
-      for (bfy $$2 : this.a) {
-         $$1 *= $$2.a($$0);
-      }
-
-      return $$1;
-   }
-
-   @Override
-   public String toString() {
-      return "MultipliedFloats" + Arrays.toString((Object[])this.a);
+   static <P extends bfw> bfx<P> a(String $$0, Codec<P> $$1) {
+      return ht.a(jd.M, $$0, () -> $$1);
    }
 }

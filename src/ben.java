@@ -1,6 +1,21 @@
-import java.util.Set;
-import java.util.function.Supplier;
+public enum ben {
+   a("pathfinding"),
+   b("event-loops"),
+   c("mailboxes"),
+   d("ticking"),
+   e("jvm"),
+   f("chunk rendering"),
+   g("chunk rendering dispatching"),
+   h("cpu"),
+   i("gpu");
 
-public interface ben {
-   Set<bel> a(Supplier<bdf> var1);
+   private final String j;
+
+   private ben(String $$0) {
+      this.j = $$0;
+   }
+
+   public String a() {
+      return this.j;
+   }
 }

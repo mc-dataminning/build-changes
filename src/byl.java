@@ -1,55 +1,58 @@
-import javax.annotation.Nullable;
 import org.joml.Vector3f;
 
-public class byl extends bzl {
-   public byl(bim<? extends byl> $$0, cpl $$1) {
+public abstract class byl extends ccx {
+   protected byl(bip<? extends byl> $$0, cpq $$1) {
       super($$0, $$1);
    }
 
-   public static bkd.a p() {
-      return bzl.q().a(bke.a, 12.0);
+   @Override
+   protected void w() {
+      super.w();
    }
 
    @Override
-   public boolean C(bii $$0) {
-      if (super.C($$0)) {
-         if ($$0 instanceof biy) {
-            int $$1 = 0;
-            if (this.dK().ai() == bgn.c) {
-               $$1 = 7;
-            } else if (this.dK().ai() == bgn.d) {
-               $$1 = 15;
-            }
+   public bjg eQ() {
+      return bjg.d;
+   }
 
-            if ($$1 > 0) {
-               ((biy)$$0).b(new bhv(bhx.s, $$1 * 20, 0), this);
-            }
-         }
+   public byl.a p() {
+      return byl.a.a;
+   }
 
-         return true;
-      } else {
-         return false;
+   @Override
+   public boolean c(bjb $$0) {
+      return $$0 instanceof cax && $$0.i_() ? false : super.c($$0);
+   }
+
+   @Override
+   protected float l(bil $$0) {
+      return -0.6F;
+   }
+
+   @Override
+   protected Vector3f a(bil $$0, bim $$1, float $$2) {
+      return new Vector3f(0.0F, $$1.b + 0.05F * $$2, 0.0F);
+   }
+
+   public static enum a {
+      a,
+      b,
+      c,
+      d,
+      e,
+      f,
+      g,
+      h;
+   }
+
+   protected class b extends bqo {
+      public b(ccx $$1) {
+         super($$1, false);
       }
-   }
 
-   @Nullable
-   @Override
-   public bjr a(cqa $$0, bgo $$1, bjc $$2, @Nullable bjr $$3, @Nullable qr $$4) {
-      return $$3;
-   }
-
-   @Override
-   protected float b(bjk $$0, bij $$1) {
-      return 0.45F;
-   }
-
-   @Override
-   protected Vector3f a(bii $$0, bij $$1, float $$2) {
-      return new Vector3f(0.0F, $$1.b, 0.0F);
-   }
-
-   @Override
-   protected float l(bii $$0) {
-      return $$0.df() <= this.df() ? -0.21875F : 0.0F;
+      @Override
+      public boolean a() {
+         return super.a() && byl.this.gp();
+      }
    }
 }

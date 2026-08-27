@@ -1,24 +1,32 @@
-public class zj implements ux<wp> {
-   private final int a;
+public class zj implements va<ws> {
+   private final double a;
+   private final double b;
 
-   public zj(dgq $$0) {
-      this.a = $$0.q();
+   public zj(dgv $$0) {
+      this.a = $$0.a();
+      this.b = $$0.b();
    }
 
-   public zj(si $$0) {
-      this.a = $$0.m();
+   public zj(sl $$0) {
+      this.a = $$0.readDouble();
+      this.b = $$0.readDouble();
    }
 
    @Override
-   public void a(si $$0) {
-      $$0.c(this.a);
+   public void a(sl $$0) {
+      $$0.a(this.a);
+      $$0.a(this.b);
    }
 
-   public void a(wp $$0) {
+   public void a(ws $$0) {
       $$0.a(this);
    }
 
-   public int a() {
+   public double a() {
+      return this.b;
+   }
+
+   public double d() {
       return this.a;
    }
 }

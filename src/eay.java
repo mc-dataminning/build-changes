@@ -1,162 +1,133 @@
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 import java.util.Comparator;
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
 public class eay {
-   private static final int a = 3;
-   private static final int b = 128;
-   private static final int c = 16;
-   private static final int d = 5;
-   private static final int e = 4;
-   private static final int f = 3;
-   private static final int g = -1;
-   private static final int h = 4;
-   private static final int i = -1;
-   private static final int j = 3;
-   private static final int k = -1;
-   private static final int l = 2;
-   private static final int m = -1;
-   private final akk n;
+   private static final float a = 1.5F;
+   private final eau[] b = new eau[32];
+   private final int c;
+   private final eav d;
+   private static final boolean e = false;
+   private final ear f = new ear();
 
-   public eay(akk $$0) {
-      this.n = $$0;
+   public eay(eav $$0, int $$1) {
+      this.d = $$0;
+      this.c = $$1;
    }
 
-   public Optional<l.a> a(gu $$0, boolean $$1, dgq $$2) {
-      btx $$3 = this.n.w();
-      int $$4 = $$1 ? 16 : 128;
-      $$3.a(this.n, $$0, $$4);
-      Optional<bty> $$5 = $$3.b($$0x -> $$0x.a(bub.r), $$0, $$4, btx.b.c)
-         .filter($$1x -> $$2.a($$1x.f()))
-         .sorted(Comparator.<bty>comparingDouble($$1x -> $$1x.f().j($$0)).thenComparingInt($$0x -> $$0x.f().v()))
-         .filter($$0x -> this.n.a_($$0x.f()).b(dfp.H))
-         .findFirst();
-      return $$5.map($$0x -> {
-         gu $$1x = $$0x.f();
-         this.n.k().a(akp.f, new cos($$1x), 3, $$1x);
-         dez $$2x = this.n.a_($$1x);
-         return l.a($$1x, $$2x.c(dfp.H), 21, ha.a.b, 21, $$1xx -> this.n.a_($$1xx) == $$2x);
-      });
+   @Nullable
+   public eaw a(cqd $$0, bjd $$1, Set<gw> $$2, float $$3, int $$4, float $$5) {
+      this.f.a();
+      this.d.a($$0, $$1);
+      eau $$6 = this.d.a();
+      if ($$6 == null) {
+         return null;
+      } else {
+         Map<eba, gw> $$7 = $$2.stream().collect(Collectors.toMap($$0x -> this.d.a((double)$$0x.u(), (double)$$0x.v(), (double)$$0x.w()), Function.identity()));
+         eaw $$8 = this.a($$0.a(), $$6, $$7, $$3, $$4, $$5);
+         this.d.b();
+         return $$8;
+      }
    }
 
-   public Optional<l.a> a(gu $$0, ha.a $$1) {
-      ha $$2 = ha.a(ha.b.a, $$1);
-      double $$3 = -1.0;
-      gu $$4 = null;
-      double $$5 = -1.0;
-      gu $$6 = null;
-      dgq $$7 = this.n.w_();
-      int $$8 = Math.min(this.n.aj(), this.n.C_() + this.n.j()) - 1;
-      gu.a $$9 = $$0.j();
+   @Nullable
+   private eaw a(bdk $$0, eau $$1, Map<eba, gw> $$2, float $$3, int $$4, float $$5) {
+      $$0.a("find_path");
+      $$0.a(ben.a);
+      Set<eba> $$6 = $$2.keySet();
+      $$1.e = 0.0F;
+      $$1.f = this.a($$1, $$6);
+      $$1.g = $$1.f;
+      this.f.a();
+      this.f.a($$1);
+      Set<eau> $$7 = ImmutableSet.of();
+      int $$8 = 0;
+      Set<eba> $$9 = Sets.newHashSetWithExpectedSize($$6.size());
+      int $$10 = (int)((float)this.c * $$5);
 
-      for (gu.a $$10 : gu.a($$0, 16, ha.f, ha.d)) {
-         int $$11 = Math.min($$8, this.n.a(dki.a.e, $$10.u(), $$10.w()));
-         int $$12 = 1;
-         if ($$7.a($$10) && $$7.a($$10.c($$2, 1))) {
-            $$10.c($$2.g(), 1);
+      while (!this.f.e()) {
+         if (++$$8 >= $$10) {
+            break;
+         }
 
-            for (int $$13 = $$11; $$13 >= this.n.C_(); $$13--) {
-               $$10.q($$13);
-               if (this.a($$10)) {
-                  int $$14 = $$13;
+         eau $$11 = this.f.c();
+         $$11.i = true;
 
-                  while ($$13 > this.n.C_() && this.a($$10.c(ha.a))) {
-                     $$13--;
-                  }
+         for (eba $$12 : $$6) {
+            if ($$11.d($$12) <= (float)$$4) {
+               $$12.e();
+               $$9.add($$12);
+            }
+         }
 
-                  if ($$13 + 4 <= $$8) {
-                     int $$15 = $$14 - $$13;
-                     if ($$15 <= 0 || $$15 >= 3) {
-                        $$10.q($$13);
-                        if (this.a($$10, $$9, $$2, 0)) {
-                           double $$16 = $$0.j($$10);
-                           if (this.a($$10, $$9, $$2, -1) && this.a($$10, $$9, $$2, 1) && ($$3 == -1.0 || $$3 > $$16)) {
-                              $$3 = $$16;
-                              $$4 = $$10.i();
-                           }
+         if (!$$9.isEmpty()) {
+            break;
+         }
 
-                           if ($$3 == -1.0 && ($$5 == -1.0 || $$5 > $$16)) {
-                              $$5 = $$16;
-                              $$6 = $$10.i();
-                           }
-                        }
-                     }
+         if (!($$11.a($$1) >= $$3)) {
+            int $$13 = this.d.a(this.b, $$11);
+
+            for (int $$14 = 0; $$14 < $$13; $$14++) {
+               eau $$15 = this.b[$$14];
+               float $$16 = this.a($$11, $$15);
+               $$15.j = $$11.j + $$16;
+               float $$17 = $$11.e + $$16 + $$15.k;
+               if ($$15.j < $$3 && (!$$15.c() || $$17 < $$15.e)) {
+                  $$15.h = $$11;
+                  $$15.e = $$17;
+                  $$15.f = this.a($$15, $$6) * 1.5F;
+                  if ($$15.c()) {
+                     this.f.a($$15, $$15.e + $$15.f);
+                  } else {
+                     $$15.g = $$15.e + $$15.f;
+                     this.f.a($$15);
                   }
                }
             }
          }
       }
 
-      if ($$3 == -1.0 && $$5 != -1.0) {
-         $$4 = $$6;
-         $$3 = $$5;
-      }
-
-      if ($$3 == -1.0) {
-         int $$17 = Math.max(this.n.C_() - -1, 70);
-         int $$18 = $$8 - 9;
-         if ($$18 < $$17) {
-            return Optional.empty();
-         }
-
-         $$4 = new gu($$0.u(), arp.a($$0.v(), $$17, $$18), $$0.w()).i();
-         ha $$19 = $$2.h();
-         if (!$$7.a($$4)) {
-            return Optional.empty();
-         }
-
-         for (int $$20 = -1; $$20 < 2; $$20++) {
-            for (int $$21 = 0; $$21 < 2; $$21++) {
-               for (int $$22 = -1; $$22 < 3; $$22++) {
-                  dez $$23 = $$22 < 0 ? csm.co.n() : csm.a.n();
-                  $$9.a($$4, $$21 * $$2.j() + $$20 * $$19.j(), $$22, $$21 * $$2.l() + $$20 * $$19.l());
-                  this.n.b($$9, $$23);
-               }
-            }
-         }
-      }
-
-      for (int $$24 = -1; $$24 < 3; $$24++) {
-         for (int $$25 = -1; $$25 < 4; $$25++) {
-            if ($$24 == -1 || $$24 == 2 || $$25 == -1 || $$25 == 3) {
-               $$9.a($$4, $$24 * $$2.j(), $$25, $$24 * $$2.l());
-               this.n.a($$9, csm.co.n(), 3);
-            }
-         }
-      }
-
-      dez $$26 = csm.ee.n().a(cxn.a, $$1);
-
-      for (int $$27 = 0; $$27 < 2; $$27++) {
-         for (int $$28 = 0; $$28 < 3; $$28++) {
-            $$9.a($$4, $$27 * $$2.j(), $$28, $$27 * $$2.l());
-            this.n.a($$9, $$26, 18);
-         }
-      }
-
-      return Optional.of(new l.a($$4.i(), 2, 3));
+      Optional<eaw> $$18 = !$$9.isEmpty()
+         ? $$9.stream().map($$1x -> this.a($$1x.d(), $$2.get($$1x), true)).min(Comparator.comparingInt(eaw::e))
+         : $$6.stream().map($$1x -> this.a($$1x.d(), $$2.get($$1x), false)).min(Comparator.comparingDouble(eaw::m).thenComparingInt(eaw::e));
+      $$0.c();
+      return $$18.isEmpty() ? null : $$18.get();
    }
 
-   private boolean a(gu.a $$0) {
-      dez $$1 = this.n.a_($$0);
-      return $$1.r() && $$1.u().c();
+   protected float a(eau $$0, eau $$1) {
+      return $$0.a($$1);
    }
 
-   private boolean a(gu $$0, gu.a $$1, ha $$2, int $$3) {
-      ha $$4 = $$2.h();
+   private float a(eau $$0, Set<eba> $$1) {
+      float $$2 = Float.MAX_VALUE;
 
-      for (int $$5 = -1; $$5 < 3; $$5++) {
-         for (int $$6 = -1; $$6 < 4; $$6++) {
-            $$1.a($$0, $$2.j() * $$5 + $$4.j() * $$3, $$6, $$2.l() * $$5 + $$4.l() * $$3);
-            if ($$6 < 0 && !this.n.a_($$1).e()) {
-               return false;
-            }
-
-            if ($$6 >= 0 && !this.a($$1)) {
-               return false;
-            }
-         }
+      for (eba $$3 : $$1) {
+         float $$4 = $$0.a($$3);
+         $$3.a($$4, $$0);
+         $$2 = Math.min($$4, $$2);
       }
 
-      return true;
+      return $$2;
+   }
+
+   private eaw a(eau $$0, gw $$1, boolean $$2) {
+      List<eau> $$3 = Lists.newArrayList();
+      eau $$4 = $$0;
+      $$3.add(0, $$0);
+
+      while ($$4.h != null) {
+         $$4 = $$4.h;
+         $$3.add(0, $$4);
+      }
+
+      return new eaw($$3, $$1, $$2);
    }
 }

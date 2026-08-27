@@ -1,39 +1,24 @@
-import javax.annotation.Nullable;
+public class adg implements va<adc> {
+   private final int a;
 
-public record adg(int a, @Nullable adk b) implements ux<adf> {
-   private static final int c = 1048576;
-
-   public static adg b(si $$0) {
-      int $$1 = $$0.m();
-      return new adg($$1, a($$1, $$0));
+   public adg(int $$0) {
+      this.a = $$0;
    }
 
-   private static adk a(int $$0, si $$1) {
-      return c($$1);
-   }
-
-   private static adk c(si $$0) {
-      int $$1 = $$0.readableBytes();
-      if ($$1 >= 0 && $$1 <= 1048576) {
-         $$0.j($$1);
-         return adm.a;
-      } else {
-         throw new IllegalArgumentException("Payload may not be larger than 1048576 bytes");
-      }
+   public adg(sl $$0) {
+      this.a = $$0.m();
    }
 
    @Override
-   public void a(si $$0) {
+   public void a(sl $$0) {
       $$0.c(this.a);
-      $$0.a(this.b, ($$0x, $$1) -> $$1.a($$0x));
    }
 
-   public void a(adf $$0) {
+   public void a(adc $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public adk d() {
-      return this.b;
+   public int a() {
+      return this.a;
    }
 }

@@ -1,128 +1,177 @@
-import com.google.gson.JsonArray;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
+import com.google.gson.JsonSyntaxException;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.JsonOps;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Map.Entry;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class cmg implements clr {
-   private final aer a;
-   final String b;
-   final clq c;
-   final cix d;
-   final hn<clx> e;
+public class cmg extends ant {
+   private static final Gson a = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
+   private static final Logger b = LogUtils.getLogger();
+   private Map<cmi<?>, Map<aeu, cmf<?>>> c = ImmutableMap.of();
+   private Map<aeu, cmf<?>> d = ImmutableMap.of();
+   private boolean e;
 
-   public cmg(aer $$0, String $$1, clq $$2, cix $$3, hn<clx> $$4) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
+   public cmg() {
+      super(a, "recipes");
    }
 
-   @Override
-   public aer e() {
-      return this.a;
+   protected void a(Map<aeu, JsonElement> $$0, anp $$1, bdk $$2) {
+      this.e = false;
+      Map<cmi<?>, Builder<aeu, cmf<?>>> $$3 = Maps.newHashMap();
+      Builder<aeu, cmf<?>> $$4 = ImmutableMap.builder();
+
+      for (Entry<aeu, JsonElement> $$5 : $$0.entrySet()) {
+         aeu $$6 = $$5.getKey();
+
+         try {
+            cmf<?> $$7 = a($$6, arj.m($$5.getValue(), "top element"));
+            $$3.computeIfAbsent($$7.b().e(), $$0x -> ImmutableMap.builder()).put($$6, $$7);
+            $$4.put($$6, $$7);
+         } catch (IllegalArgumentException | JsonParseException var10) {
+            b.error("Parsing error loading recipe {}", $$6, var10);
+         }
+      }
+
+      this.c = $$3.entrySet().stream().collect(ImmutableMap.toImmutableMap(Entry::getKey, $$0x -> ((Builder)$$0x.getValue()).build()));
+      this.d = $$4.build();
+      b.info("Loaded {} recipes", $$3.size());
    }
 
-   @Override
-   public cmc<?> ai_() {
-      return cmc.b;
-   }
-
-   @Override
-   public String c() {
-      return this.b;
-   }
-
-   @Override
-   public clq d() {
-      return this.c;
-   }
-
-   @Override
-   public cix a(hs $$0) {
-      return this.d;
-   }
-
-   @Override
-   public hn<clx> a() {
+   public boolean a() {
       return this.e;
    }
 
-   public boolean a(cer $$0, cpl $$1) {
-      cbq $$2 = new cbq();
-      int $$3 = 0;
+   public <C extends bgm, T extends cme<C>> Optional<cmf<T>> a(cmi<T> $$0, C $$1, cpq $$2) {
+      return this.c($$0).values().stream().filter($$2x -> $$2x.b().a($$1, $$2)).findFirst();
+   }
 
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         cix $$5 = $$0.a($$4);
-         if (!$$5.b()) {
-            $$3++;
-            $$2.a($$5, 1);
+   public <C extends bgm, T extends cme<C>> Optional<Pair<aeu, cmf<T>>> a(cmi<T> $$0, C $$1, cpq $$2, @Nullable aeu $$3) {
+      Map<aeu, cmf<T>> $$4 = this.c($$0);
+      if ($$3 != null) {
+         cmf<T> $$5 = $$4.get($$3);
+         if ($$5 != null && $$5.b().a($$1, $$2)) {
+            return Optional.of(Pair.of($$3, $$5));
          }
       }
 
-      return $$3 == this.e.size() && $$2.a(this, null);
+      return $$4.entrySet()
+         .stream()
+         .filter($$2x -> ((cmf)$$2x.getValue()).b().a($$1, $$2))
+         .findFirst()
+         .map($$0x -> Pair.of((aeu)$$0x.getKey(), (cmf)$$0x.getValue()));
    }
 
-   public cix a(cer $$0, hs $$1) {
-      return this.d.p();
+   public <C extends bgm, T extends cme<C>> List<cmf<T>> a(cmi<T> $$0) {
+      return List.copyOf(this.c($$0).values());
    }
 
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 * $$1 >= this.e.size();
+   public <C extends bgm, T extends cme<C>> List<cmf<T>> b(cmi<T> $$0, C $$1, cpq $$2) {
+      return this.c($$0)
+         .values()
+         .stream()
+         .filter($$2x -> $$2x.b().a($$1, $$2))
+         .sorted(Comparator.comparing($$1x -> $$1x.b().a($$2.B_()).q()))
+         .collect(Collectors.toList());
    }
 
-   public static class a implements cmc<cmg> {
-      public cmg b(aer $$0, JsonObject $$1) {
-         String $$2 = arg.a($$1, "group", "");
-         clq $$3 = clq.e.a(arg.a($$1, "category", null), clq.d);
-         hn<clx> $$4 = a(arg.v($$1, "ingredients"));
-         if ($$4.isEmpty()) {
-            throw new JsonParseException("No ingredients for shapeless recipe");
-         } else if ($$4.size() > 9) {
-            throw new JsonParseException("Too many ingredients for shapeless recipe");
-         } else {
-            cix $$5 = cmf.a(arg.u($$1, "result"));
-            return new cmg($$0, $$2, $$3, $$5, $$4);
+   private <C extends bgm, T extends cme<C>> Map<aeu, cmf<T>> c(cmi<T> $$0) {
+      return (Map<aeu, cmf<T>>)this.c.getOrDefault($$0, Collections.emptyMap());
+   }
+
+   public <C extends bgm, T extends cme<C>> hp<cja> c(cmi<T> $$0, C $$1, cpq $$2) {
+      Optional<cmf<T>> $$3 = this.a($$0, $$1, $$2);
+      if ($$3.isPresent()) {
+         return $$3.get().b().a($$1);
+      } else {
+         hp<cja> $$4 = hp.a($$1.b(), cja.b);
+
+         for (int $$5 = 0; $$5 < $$4.size(); $$5++) {
+            $$4.set($$5, $$1.a($$5));
          }
+
+         return $$4;
       }
+   }
 
-      private static hn<clx> a(JsonArray $$0) {
-         hn<clx> $$1 = hn.a();
+   public Optional<cmf<?>> a(aeu $$0) {
+      return Optional.ofNullable(this.d.get($$0));
+   }
 
-         for (int $$2 = 0; $$2 < $$0.size(); $$2++) {
-            clx $$3 = clx.a($$0.get($$2), false);
-            if (!$$3.d()) {
-               $$1.add($$3);
+   public Collection<cmf<?>> b() {
+      return this.c.values().stream().flatMap($$0 -> $$0.values().stream()).collect(Collectors.toSet());
+   }
+
+   public Stream<aeu> d() {
+      return this.c.values().stream().flatMap($$0 -> $$0.keySet().stream());
+   }
+
+   protected static cmf<?> a(aeu $$0, JsonObject $$1) {
+      String $$2 = arj.i($$1, "type");
+      Codec<? extends cme<?>> $$3 = (Codec<? extends cme<?>>)jd.u
+         .b(new aeu($$2))
+         .orElseThrow(() -> new JsonSyntaxException("Invalid or unsupported recipe type '" + $$2 + "'"))
+         .a();
+      cme<?> $$4 = ac.a($$3.parse(JsonOps.INSTANCE, $$1), JsonParseException::new);
+      return new cmf<>($$0, $$4);
+   }
+
+   public void a(Iterable<cmf<?>> $$0) {
+      this.e = false;
+      Map<cmi<?>, Map<aeu, cmf<?>>> $$1 = Maps.newHashMap();
+      Builder<aeu, cmf<?>> $$2 = ImmutableMap.builder();
+      $$0.forEach($$2x -> {
+         Map<aeu, cmf<?>> $$3 = $$1.computeIfAbsent($$2x.b().e(), $$0xx -> Maps.newHashMap());
+         aeu $$4 = $$2x.a();
+         cmf<?> $$5 = $$3.put($$4, $$2x);
+         $$2.put($$4, $$2x);
+         if ($$5 != null) {
+            throw new IllegalStateException("Duplicate recipe ignored with ID " + $$4);
+         }
+      });
+      this.c = ImmutableMap.copyOf($$1);
+      this.d = $$2.build();
+   }
+
+   public static <C extends bgm, T extends cme<C>> cmg.a<C, T> b(final cmi<T> $$0) {
+      return new cmg.a<C, T>() {
+         @Nullable
+         private aeu b;
+
+         @Override
+         public Optional<cmf<T>> a(C $$0x, cpq $$1) {
+            cmg $$2 = $$1.q();
+            Optional<Pair<aeu, cmf<T>>> $$3 = $$2.a($$0, $$0, $$1, this.b);
+            if ($$3.isPresent()) {
+               Pair<aeu, cmf<T>> $$4 = $$3.get();
+               this.b = (aeu)$$4.getFirst();
+               return Optional.of((cmf<T>)$$4.getSecond());
+            } else {
+               return Optional.empty();
             }
          }
+      };
+   }
 
-         return $$1;
-      }
-
-      public cmg b(aer $$0, si $$1) {
-         String $$2 = $$1.r();
-         clq $$3 = $$1.b(clq.class);
-         int $$4 = $$1.m();
-         hn<clx> $$5 = hn.a($$4, clx.a);
-
-         for (int $$6 = 0; $$6 < $$5.size(); $$6++) {
-            $$5.set($$6, clx.b($$1));
-         }
-
-         cix $$7 = $$1.q();
-         return new cmg($$0, $$2, $$3, $$7, $$5);
-      }
-
-      public void a(si $$0, cmg $$1) {
-         $$0.a($$1.b);
-         $$0.a($$1.c);
-         $$0.c($$1.e.size());
-
-         for (clx $$2 : $$1.e) {
-            $$2.a($$0);
-         }
-
-         $$0.a($$1.d);
-      }
+   public interface a<C extends bgm, T extends cme<C>> {
+      Optional<cmf<T>> a(C var1, cpq var2);
    }
 }

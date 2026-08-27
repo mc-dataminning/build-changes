@@ -1,22 +1,19 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import com.google.common.collect.ImmutableSet;
+import java.util.Optional;
+import java.util.Set;
 
-public class bsp extends bsx {
-   public static final float a = 10.0F;
-
+public class bsp extends btg<big> {
    @Override
-   protected boolean a(biy $$0, biy $$1) {
-      return !$$0.dM().a(brz.T) && btd.c($$0, $$1) && bvy.j($$1) && !this.e($$0, $$1) ? $$1.a($$0, 10.0) : false;
+   public Set<bsc<?>> a() {
+      return ImmutableSet.of(bsc.J, bsc.h);
    }
 
-   private boolean e(biy $$0, biy $$1) {
-      List<UUID> $$2 = $$0.dM().c(brz.Z).orElseGet(ArrayList::new);
-      return $$2.contains($$1.cv());
+   protected void a(akn $$0, big $$1) {
+      $$1.dM().c(bsc.h).ifPresent($$1x -> this.a($$1, $$1x));
    }
 
-   @Override
-   protected brz<biy> b() {
-      return brz.B;
+   private void a(big $$0, bse $$1) {
+      Optional<big> $$2 = $$1.a($$1x -> $$1x.ag() == $$0.ag() && !$$1x.i_()).map(big.class::cast);
+      $$0.dM().a(bsc.J, $$2);
    }
 }

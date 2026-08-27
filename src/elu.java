@@ -1,73 +1,70 @@
-import com.google.common.collect.Lists;
-import java.net.InetSocketAddress;
-import java.net.Socket;
-import java.net.SocketAddress;
-import java.util.Comparator;
-import java.util.List;
-import org.apache.commons.io.IOUtils;
+import com.mojang.logging.LogUtils;
+import java.util.Objects;
+import java.util.concurrent.CompletableFuture;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
 public class elu {
-   public static List<emw> a(elu.a... $$0) {
-      for (elu.a $$1 : $$0) {
-         a($$1.j);
+   private static final Logger a = LogUtils.getLogger();
+   @Nullable
+   private static CompletableFuture<elu.a> b;
+
+   public static CompletableFuture<elu.a> a() {
+      if (b == null || a(b)) {
+         b = b();
       }
 
-      List<emw> $$2 = Lists.newArrayList();
-
-      for (elu.a $$3 : $$0) {
-         $$2.add(new emw($$3.i, a($$3.j)));
-      }
-
-      $$2.sort(Comparator.comparingInt(emw::a));
-      return $$2;
+      return b;
    }
 
-   private static int a(String $$0) {
-      int $$1 = 700;
-      long $$2 = 0L;
-      Socket $$3 = null;
+   private static boolean a(CompletableFuture<elu.a> $$0) {
+      elu.a $$1 = $$0.getNow(null);
+      return $$1 != null && $$1.b() != null;
+   }
 
-      for (int $$4 = 0; $$4 < 5; $$4++) {
+   private static CompletableFuture<elu.a> b() {
+      return CompletableFuture.supplyAsync(() -> {
+         ema $$0 = ema.a();
+
          try {
-            SocketAddress $$5 = new InetSocketAddress($$0, 80);
-            $$3 = new Socket();
-            long $$6 = b();
-            $$3.connect($$5, 700);
-            $$2 += b() - $$6;
-         } catch (Exception var12) {
-            $$2 += 700L;
-         } finally {
-            IOUtils.closeQuietly($$3);
+            if ($$0.f() != ema.a.a) {
+               return new elu.a(elu.b.b);
+            } else {
+               return !$$0.e() ? new elu.a(elu.b.c) : new elu.a(elu.b.a);
+            }
+         } catch (enn var2) {
+            a.error("Couldn't connect to realms", var2);
+            return var2.a.a() == 401 ? new elu.a(elu.b.d) : new elu.a(var2);
          }
+      }, ac.g());
+   }
+
+   public static record a(elu.b a, @Nullable enn b) {
+      public a(elu.b $$0) {
+         this($$0, null);
       }
 
-      return (int)((double)$$2 / 5.0);
-   }
-
-   private static long b() {
-      return ac.b();
-   }
-
-   public static List<emw> a() {
-      return a(elu.a.values());
-   }
-
-   static enum a {
-      a("us-east-1", "ec2.us-east-1.amazonaws.com"),
-      b("us-west-2", "ec2.us-west-2.amazonaws.com"),
-      c("us-west-1", "ec2.us-west-1.amazonaws.com"),
-      d("eu-west-1", "ec2.eu-west-1.amazonaws.com"),
-      e("ap-southeast-1", "ec2.ap-southeast-1.amazonaws.com"),
-      f("ap-southeast-2", "ec2.ap-southeast-2.amazonaws.com"),
-      g("ap-northeast-1", "ec2.ap-northeast-1.amazonaws.com"),
-      h("sa-east-1", "ec2.sa-east-1.amazonaws.com");
-
-      final String i;
-      final String j;
-
-      private a(String $$0, String $$1) {
-         this.i = $$0;
-         this.j = $$1;
+      public a(enn $$0) {
+         this(elu.b.e, $$0);
       }
+
+      @Nullable
+      public eyf a(eyf $$0) {
+         return (eyf)(switch (this.a) {
+            case a -> null;
+            case b -> new enz($$0);
+            case c -> new eok($$0);
+            case d -> new eoe(ti.c("mco.error.invalid.session.title"), ti.c("mco.error.invalid.session.message"), $$0);
+            case e -> new eoe(Objects.requireNonNull(this.b), $$0);
+         });
+      }
+   }
+
+   public static enum b {
+      a,
+      b,
+      c,
+      d,
+      e;
    }
 }

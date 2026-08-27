@@ -1,84 +1,40 @@
+import com.mojang.authlib.GameProfile;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.Locale;
-import java.util.function.Consumer;
-import net.minecraft.server.MinecraftServer;
-import org.apache.commons.io.FileUtils;
-import org.slf4j.Logger;
+import java.util.Collection;
 
 public class ahm {
-   private static final Logger a = LogUtils.getLogger();
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(tf.c("commands.perf.notRunning"));
-   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(tf.c("commands.perf.alreadyRunning"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(ti.c("commands.pardon.failed"));
 
-   public static void a(CommandDispatcher<dr> $$0) {
+   public static void a(CommandDispatcher<dt> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ds.a("perf").requires($$0x -> $$0x.c(4)))
-               .then(ds.a("start").executes($$0x -> a((dr)$$0x.getSource()))))
-            .then(ds.a("stop").executes($$0x -> b((dr)$$0x.getSource())))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)du.a("pardon").requires($$0x -> $$0x.c(3)))
+            .then(
+               du.a("targets", eg.a())
+                  .suggests(($$0x, $$1) -> dw.a(((dt)$$0x.getSource()).l().ac().f().a(), $$1))
+                  .executes($$0x -> a((dt)$$0x.getSource(), eg.a($$0x, "targets")))
+            )
       );
    }
 
-   private static int a(dr $$0) throws CommandSyntaxException {
-      MinecraftServer $$1 = $$0.l();
-      if ($$1.aN()) {
-         throw c.create();
+   private static int a(dt $$0, Collection<GameProfile> $$1) throws CommandSyntaxException {
+      aoi $$2 = $$0.l().ac().f();
+      int $$3 = 0;
+
+      for (GameProfile $$4 : $$1) {
+         if ($$2.a($$4)) {
+            $$2.c($$4);
+            $$3++;
+            $$0.a(() -> ti.a("commands.pardon.success", ti.b($$4.getName())), true);
+         }
+      }
+
+      if ($$3 == 0) {
+         throw a.create();
       } else {
-         Consumer<bdg> $$2 = $$1x -> a($$0, $$1x);
-         Consumer<Path> $$3 = $$2x -> a($$0, $$2x, $$1);
-         $$1.a($$2, $$3);
-         $$0.a(() -> tf.c("commands.perf.started"), false);
-         return 0;
-      }
-   }
-
-   private static int b(dr $$0) throws CommandSyntaxException {
-      MinecraftServer $$1 = $$0.l();
-      if (!$$1.aN()) {
-         throw b.create();
-      } else {
-         $$1.aP();
-         return 0;
-      }
-   }
-
-   private static void a(dr $$0, Path $$1, MinecraftServer $$2) {
-      String $$3 = String.format(Locale.ROOT, "%s-%s-%s", ac.e(), $$2.aT().g(), aa.b().b());
-
-      String $$4;
-      try {
-         $$4 = v.a(bew.a, $$3, ".zip");
-      } catch (IOException var11) {
-         $$0.b(tf.c("commands.perf.reportFailed"));
-         a.error("Failed to create report name", var11);
-         return;
-      }
-
-      try (arb $$7 = new arb(bew.a.resolve($$4))) {
-         $$7.a(Paths.get("system.txt"), $$2.b(new ab()).a());
-         $$7.a($$1);
-      }
-
-      try {
-         FileUtils.forceDelete($$1.toFile());
-      } catch (IOException var9) {
-         a.warn("Failed to delete temporary profiling file {}", $$1, var9);
-      }
-
-      $$0.a(() -> tf.a("commands.perf.reportSaved", $$4), false);
-   }
-
-   private static void a(dr $$0, bdg $$1) {
-      if ($$1 != bdc.a) {
-         int $$2 = $$1.f();
-         double $$3 = (double)$$1.g() / (double)asm.a;
-         $$0.a(() -> tf.a("commands.perf.stopped", String.format(Locale.ROOT, "%.2f", $$3), $$2, String.format(Locale.ROOT, "%.2f", (double)$$2 / $$3)), false);
+         return $$3;
       }
    }
 }

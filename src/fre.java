@@ -1,151 +1,324 @@
+import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.mojang.logging.LogUtils;
+import java.util.Collection;
 import java.util.List;
-import java.util.Optional;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Set;
+import java.util.UUID;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class fre implements frd.a {
-   private final eql a;
-   private static final int b = 32;
-   private static final float c = 1.0F;
-   private final List<fre.a> d = Lists.newArrayList();
-   private final List<fre.b> e = Lists.newArrayList();
+public class fre implements fri.a {
+   private static final Logger a = LogUtils.getLogger();
+   private static final boolean b = true;
+   private static final boolean c = false;
+   private static final boolean d = false;
+   private static final boolean e = false;
+   private static final boolean f = false;
+   private static final boolean g = false;
+   private static final boolean h = false;
+   private static final boolean i = false;
+   private static final boolean j = true;
+   private static final boolean k = false;
+   private static final boolean l = true;
+   private static final boolean m = true;
+   private static final boolean n = true;
+   private static final boolean o = true;
+   private static final boolean p = true;
+   private static final boolean q = true;
+   private static final boolean r = true;
+   private static final boolean s = true;
+   private static final boolean t = true;
+   private static final boolean u = true;
+   private static final boolean v = true;
+   private static final boolean w = true;
+   private static final int x = 30;
+   private static final int y = 30;
+   private static final int z = 8;
+   private static final float A = 0.02F;
+   private static final int B = -1;
+   private static final int C = -256;
+   private static final int D = -16711681;
+   private static final int E = -16711936;
+   private static final int F = -3355444;
+   private static final int G = -98404;
+   private static final int H = -65536;
+   private static final int I = -23296;
+   private final eqq J;
+   private final Map<gw, fre.a> K = Maps.newHashMap();
+   private final Map<UUID, vq.a> L = Maps.newHashMap();
+   @Nullable
+   private UUID M;
 
-   public fre(eql $$0) {
-      this.a = $$0;
+   public fre(eqq $$0) {
+      this.J = $$0;
    }
 
    @Override
-   public void a(elf $$0, fnu $$1, double $$2, double $$3, double $$4) {
-      cpl $$5 = this.a.r;
-      if ($$5 == null) {
-         this.d.clear();
-         this.e.clear();
+   public void a() {
+      this.K.clear();
+      this.L.clear();
+      this.M = null;
+   }
+
+   public void a(fre.a $$0) {
+      this.K.put($$0.a, $$0);
+   }
+
+   public void a(gw $$0) {
+      this.K.remove($$0);
+   }
+
+   public void a(gw $$0, int $$1) {
+      fre.a $$2 = this.K.get($$0);
+      if ($$2 == null) {
+         a.warn("Strange, setFreeTicketCount was called for an unknown POI: {}", $$0);
       } else {
-         ehd $$6 = new ehd($$2, 0.0, $$4);
-         this.d.removeIf(fre.a::a);
-         this.e.removeIf($$2x -> $$2x.a($$5, $$6));
-         elj $$7 = $$1.getBuffer(foc.x());
+         $$2.c = $$1;
+      }
+   }
 
-         for (fre.b $$8 : this.e) {
-            $$8.a($$5).ifPresent($$6x -> {
-               double $$7x = $$6x.a() - (double)$$8.b();
-               double $$8x = $$6x.b() - (double)$$8.b();
-               double $$9 = $$6x.c() - (double)$$8.b();
-               double $$10 = $$6x.a() + (double)$$8.b();
-               double $$11 = $$6x.b() + (double)$$8.b();
-               double $$12x = $$6x.c() + (double)$$8.b();
-               fns.a($$0, $$7, eht.a(new egy($$7x, $$8x, $$9, $$10, $$11, $$12x)), -$$2, -$$3, -$$4, 1.0F, 1.0F, 0.0F, 0.35F, true);
-            });
+   public void a(vq.a $$0) {
+      this.L.put($$0.a(), $$0);
+   }
+
+   public void a(int $$0) {
+      this.L.values().removeIf($$1 -> $$1.b() == $$0);
+   }
+
+   @Override
+   public void a(elk $$0, fnz $$1, double $$2, double $$3, double $$4) {
+      this.b();
+      this.b($$0, $$1, $$2, $$3, $$4);
+      if (!this.J.s.G_()) {
+         this.d();
+      }
+   }
+
+   private void b() {
+      this.L.entrySet().removeIf($$0 -> {
+         bil $$1 = this.J.r.a($$0.getValue().b());
+         return $$1 == null || $$1.dF();
+      });
+   }
+
+   private void b(elk $$0, fnz $$1, double $$2, double $$3, double $$4) {
+      gw $$5 = gw.a($$2, $$3, $$4);
+      this.L.values().forEach($$5x -> {
+         if (this.c($$5x)) {
+            this.b($$0, $$1, $$5x, $$2, $$3, $$4);
          }
+      });
 
-         elj $$9 = $$1.getBuffer(foc.z());
-
-         for (fre.b $$10 : this.e) {
-            $$10.a($$5)
-               .ifPresent(
-                  $$5x -> fns.b(
-                        $$0,
-                        $$9,
-                        $$5x.a() - 0.25 - $$2,
-                        $$5x.b() - $$3,
-                        $$5x.c() - 0.25 - $$4,
-                        $$5x.a() + 0.25 - $$2,
-                        $$5x.b() - $$3 + 1.0,
-                        $$5x.c() + 0.25 - $$4,
-                        1.0F,
-                        1.0F,
-                        0.0F,
-                        0.35F
-                     )
-               );
-         }
-
-         for (fre.b $$11 : this.e) {
-            $$11.a($$5).ifPresent($$2x -> {
-               frd.a($$0, $$1, "Listener Origin", $$2x.a(), $$2x.b() + 1.8F, $$2x.c(), -1, 0.025F);
-               frd.a($$0, $$1, gu.a($$2x).toString(), $$2x.a(), $$2x.b() + 1.5, $$2x.c(), -6959665, 0.025F);
-            });
-         }
-
-         for (fre.a $$12 : this.d) {
-            ehd $$13 = $$12.c;
-            double $$14 = 0.2F;
-            double $$15 = $$13.c - 0.2F;
-            double $$16 = $$13.d - 0.2F;
-            double $$17 = $$13.e - 0.2F;
-            double $$18 = $$13.c + 0.2F;
-            double $$19 = $$13.d + 0.2F + 0.5;
-            double $$20 = $$13.e + 0.2F;
-            a($$0, $$1, new egy($$15, $$16, $$17, $$18, $$19, $$20), 1.0F, 1.0F, 1.0F, 0.2F);
-            frd.a($$0, $$1, $$12.b.a().toString(), $$13.c, $$13.d + 0.85F, $$13.e, -7564911, 0.0075F);
+      for (gw $$6 : this.K.keySet()) {
+         if ($$5.a($$6, 30.0)) {
+            a($$0, $$1, $$6);
          }
       }
+
+      this.K.values().forEach($$3x -> {
+         if ($$5.a($$3x.a, 30.0)) {
+            this.a($$0, $$1, $$3x);
+         }
+      });
+      this.c().forEach(($$3x, $$4x) -> {
+         if ($$5.a($$3x, 30.0)) {
+            this.a($$0, $$1, $$3x, $$4x);
+         }
+      });
    }
 
-   private static void a(elf $$0, fnu $$1, egy $$2, float $$3, float $$4, float $$5, float $$6) {
-      epw $$7 = eql.O().j.m();
-      if ($$7.h()) {
-         ehd $$8 = $$7.b().e();
-         frd.a($$0, $$1, $$2.c($$8), $$3, $$4, $$5, $$6);
+   private static void a(elk $$0, fnz $$1, gw $$2) {
+      float $$3 = 0.05F;
+      fri.a($$0, $$1, $$2, 0.05F, 0.2F, 0.2F, 1.0F, 0.3F);
+   }
+
+   private void a(elk $$0, fnz $$1, gw $$2, List<String> $$3) {
+      float $$4 = 0.05F;
+      fri.a($$0, $$1, $$2, 0.05F, 0.2F, 0.2F, 1.0F, 0.3F);
+      a($$0, $$1, $$3 + "", $$2, 0, -256);
+      a($$0, $$1, "Ghost POI", $$2, 1, -65536);
+   }
+
+   private void a(elk $$0, fnz $$1, fre.a $$2) {
+      int $$3 = 0;
+      Set<String> $$4 = this.b($$2);
+      if ($$4.size() < 4) {
+         a($$0, $$1, "Owners: " + $$4, $$2, $$3, -256);
+      } else {
+         a($$0, $$1, $$4.size() + " ticket holders", $$2, $$3, -256);
+      }
+
+      $$3++;
+      Set<String> $$5 = this.c($$2);
+      if ($$5.size() < 4) {
+         a($$0, $$1, "Candidates: " + $$5, $$2, $$3, -23296);
+      } else {
+         a($$0, $$1, $$5.size() + " potential owners", $$2, $$3, -23296);
+      }
+
+      a($$0, $$1, "Free tickets: " + $$2.c, $$2, ++$$3, -256);
+      a($$0, $$1, $$2.b, $$2, ++$$3, -1);
+   }
+
+   private void a(elk $$0, fnz $$1, vq.a $$2, double $$3, double $$4, double $$5) {
+      if ($$2.j() != null) {
+         frq.a($$0, $$1, $$2.j(), 0.5F, false, false, $$3, $$4, $$5);
       }
    }
 
-   public void a(aeq<djj> $$0, ehd $$1) {
-      this.d.add(new fre.a(ac.b(), $$0, $$1));
+   private void b(elk $$0, fnz $$1, vq.a $$2, double $$3, double $$4, double $$5) {
+      boolean $$6 = this.b($$2);
+      int $$7 = 0;
+      a($$0, $$1, $$2.h(), $$7, $$2.c(), -1, 0.03F);
+      $$7++;
+      if ($$6) {
+         a($$0, $$1, $$2.h(), $$7, $$2.d() + " " + $$2.e() + " xp", -1, 0.02F);
+         $$7++;
+      }
+
+      if ($$6) {
+         int $$8 = $$2.f() < $$2.g() ? -23296 : -1;
+         a($$0, $$1, $$2.h(), $$7, "health: " + String.format(Locale.ROOT, "%.1f", $$2.f()) + " / " + String.format(Locale.ROOT, "%.1f", $$2.g()), $$8, 0.02F);
+         $$7++;
+      }
+
+      if ($$6 && !$$2.i().equals("")) {
+         a($$0, $$1, $$2.h(), $$7, $$2.i(), -98404, 0.02F);
+         $$7++;
+      }
+
+      if ($$6) {
+         for (String $$9 : $$2.n()) {
+            a($$0, $$1, $$2.h(), $$7, $$9, -16711681, 0.02F);
+            $$7++;
+         }
+      }
+
+      if ($$6) {
+         for (String $$10 : $$2.m()) {
+            a($$0, $$1, $$2.h(), $$7, $$10, -16711936, 0.02F);
+            $$7++;
+         }
+      }
+
+      if ($$2.k()) {
+         a($$0, $$1, $$2.h(), $$7, "Wants Golem", -23296, 0.02F);
+         $$7++;
+      }
+
+      if ($$6 && $$2.l() != -1) {
+         a($$0, $$1, $$2.h(), $$7, "Anger Level: " + $$2.l(), -98404, 0.02F);
+         $$7++;
+      }
+
+      if ($$6) {
+         for (String $$11 : $$2.p()) {
+            if ($$11.startsWith($$2.c())) {
+               a($$0, $$1, $$2.h(), $$7, $$11, -1, 0.02F);
+            } else {
+               a($$0, $$1, $$2.h(), $$7, $$11, -23296, 0.02F);
+            }
+
+            $$7++;
+         }
+      }
+
+      if ($$6) {
+         for (String $$12 : Lists.reverse($$2.o())) {
+            a($$0, $$1, $$2.h(), $$7, $$12, -3355444, 0.02F);
+            $$7++;
+         }
+      }
+
+      if ($$6) {
+         this.a($$0, $$1, $$2, $$3, $$4, $$5);
+      }
    }
 
-   public void a(djn $$0, int $$1) {
-      this.e.add(new fre.b($$0, $$1));
+   private static void a(elk $$0, fnz $$1, String $$2, fre.a $$3, int $$4, int $$5) {
+      a($$0, $$1, $$2, $$3.a, $$4, $$5);
    }
 
-   static record a(long a, aeq<djj> b, ehd c) {
-
-      public boolean a() {
-         return ac.b() - this.a > 3000L;
-      }
-
-      public long b() {
-         return this.a;
-      }
-
-      public aeq<djj> c() {
-         return this.b;
-      }
-
-      public ehd d() {
-         return this.c;
-      }
+   private static void a(elk $$0, fnz $$1, String $$2, gw $$3, int $$4, int $$5) {
+      double $$6 = 1.3;
+      double $$7 = 0.2;
+      double $$8 = (double)$$3.u() + 0.5;
+      double $$9 = (double)$$3.v() + 1.3 + (double)$$4 * 0.2;
+      double $$10 = (double)$$3.w() + 0.5;
+      fri.a($$0, $$1, $$2, $$8, $$9, $$10, $$5, 0.02F, true, 0.0F, true);
    }
 
-   static class b implements djl {
-      public final djn a;
-      public final int b;
+   private static void a(elk $$0, fnz $$1, hq $$2, int $$3, String $$4, int $$5, float $$6) {
+      double $$7 = 2.4;
+      double $$8 = 0.25;
+      gw $$9 = gw.a($$2);
+      double $$10 = (double)$$9.u() + 0.5;
+      double $$11 = $$2.b() + 2.4 + (double)$$3 * 0.25;
+      double $$12 = (double)$$9.w() + 0.5;
+      float $$13 = 0.5F;
+      fri.a($$0, $$1, $$4, $$10, $$11, $$12, $$5, $$6, false, 0.5F, true);
+   }
 
-      public b(djn $$0, int $$1) {
+   private Set<String> b(fre.a $$0) {
+      return this.b($$0.a).stream().map(aax::a).collect(Collectors.toSet());
+   }
+
+   private Set<String> c(fre.a $$0) {
+      return this.c($$0.a).stream().map(aax::a).collect(Collectors.toSet());
+   }
+
+   private boolean b(vq.a $$0) {
+      return Objects.equals(this.M, $$0.a());
+   }
+
+   private boolean c(vq.a $$0) {
+      cbp $$1 = this.J.s;
+      gw $$2 = gw.a($$1.dp(), $$0.h().b(), $$1.dv());
+      gw $$3 = gw.a($$0.h());
+      return $$2.a($$3, 30.0);
+   }
+
+   private Collection<UUID> b(gw $$0) {
+      return this.L.values().stream().filter($$1 -> $$1.a($$0)).map(vq.a::a).collect(Collectors.toSet());
+   }
+
+   private Collection<UUID> c(gw $$0) {
+      return this.L.values().stream().filter($$1 -> $$1.b($$0)).map(vq.a::a).collect(Collectors.toSet());
+   }
+
+   private Map<gw, List<String>> c() {
+      Map<gw, List<String>> $$0 = Maps.newHashMap();
+
+      for (vq.a $$1 : this.L.values()) {
+         for (gw $$2 : Iterables.concat($$1.q(), $$1.r())) {
+            if (!this.K.containsKey($$2)) {
+               $$0.computeIfAbsent($$2, $$0x -> Lists.newArrayList()).add($$1.c());
+            }
+         }
+      }
+
+      return $$0;
+   }
+
+   private void d() {
+      fri.a(this.J.am(), 8).ifPresent($$0 -> this.M = $$0.cv());
+   }
+
+   public static class a {
+      public final gw a;
+      public final String b;
+      public int c;
+
+      public a(gw $$0, String $$1, int $$2) {
          this.a = $$0;
          this.b = $$1;
-      }
-
-      public boolean a(cpl $$0, ehd $$1) {
-         return this.a.a($$0).filter($$1x -> $$1x.g($$1) <= 1024.0).isPresent();
-      }
-
-      public Optional<ehd> a(cpl $$0) {
-         return this.a.a($$0);
-      }
-
-      @Override
-      public djn a() {
-         return this.a;
-      }
-
-      @Override
-      public int b() {
-         return this.b;
-      }
-
-      @Override
-      public boolean a(akk $$0, djj $$1, djj.a $$2, ehd $$3) {
-         return false;
+         this.c = $$2;
       }
    }
 }

@@ -1,17 +1,18 @@
-public record wa(gu b) implements vp {
-   public static final aer a = new aer("debug/poi_removed");
+public record wa(long b, gw c) implements vs {
+   public static final aeu a = new aeu("debug/neighbors_update");
 
-   public wa(si $$0) {
-      this($$0.e());
+   public wa(sl $$0) {
+      this($$0.n(), $$0.e());
    }
 
    @Override
-   public void a(si $$0) {
+   public void a(sl $$0) {
       $$0.a(this.b);
+      $$0.a(this.c);
    }
 
    @Override
-   public aer a() {
+   public aeu a() {
       return a;
    }
 }

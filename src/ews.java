@@ -1,73 +1,47 @@
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+public class ews extends eyf {
+   private static final int a = 90;
+   private final ti b;
+   private ete c = ete.a;
+   private final Runnable k;
+   private final ti l;
+   private final boolean m;
 
-public class ews extends ewt {
-   private static final tf k = tf.c("chat.copy");
-   private static final tf l = tf.c("chat.link.warning");
-   private final String m;
-   private final boolean n;
-
-   public ews(BooleanConsumer $$0, String $$1, boolean $$2) {
-      this($$0, c($$2), tf.b($$1), $$1, $$2 ? te.e : te.g, $$2);
+   public ews(Runnable $$0, ti $$1, ti $$2) {
+      this($$0, $$1, $$2, th.k, true);
    }
 
-   public ews(BooleanConsumer $$0, tf $$1, String $$2, boolean $$3) {
-      this($$0, $$1, $$2, $$3 ? te.e : te.g, $$3);
-   }
-
-   public ews(BooleanConsumer $$0, tf $$1, String $$2, tf $$3, boolean $$4) {
-      this($$0, $$1, a($$4, $$2), $$2, $$3, $$4);
-   }
-
-   public ews(BooleanConsumer $$0, tf $$1, tf $$2, String $$3, tf $$4, boolean $$5) {
-      super($$0, $$1, $$2);
-      this.a = (tf)($$5 ? tf.c("chat.link.open") : te.f);
-      this.b = $$4;
-      this.n = !$$5;
-      this.m = $$3;
-   }
-
-   protected static ts a(boolean $$0, String $$1) {
-      return c($$0).b(te.u).b(tf.b($$1));
-   }
-
-   protected static ts c(boolean $$0) {
-      return tf.c($$0 ? "chat.link.confirmTrusted" : "chat.link.confirm");
+   public ews(Runnable $$0, ti $$1, ti $$2, ti $$3, boolean $$4) {
+      super($$1);
+      this.k = $$0;
+      this.b = $$2;
+      this.l = $$3;
+      this.m = $$4;
    }
 
    @Override
-   protected void a(int $$0) {
-      this.d(esg.a(this.a, $$0x -> this.c.accept(true)).a(this.g / 2 - 50 - 105, $$0, 100, 20).a());
-      this.d(esg.a(k, $$0x -> {
-         this.k();
-         this.c.accept(false);
-      }).a(this.g / 2 - 50, $$0, 100, 20).a());
-      this.d(esg.a(this.b, $$0x -> this.c.accept(false)).a(this.g / 2 - 50 + 105, $$0, 100, 20).a());
-   }
-
-   public void k() {
-      this.f.o.a(this.m);
+   public ti g() {
+      return th.a(super.g(), this.b);
    }
 
    @Override
-   public void a(erv $$0, int $$1, int $$2, float $$3) {
+   protected void aD_() {
+      super.aD_();
+      this.c = ete.a(this.i, this.b, this.g - 50);
+      int $$0 = this.c.a() * 9;
+      int $$1 = ars.a(90 + $$0 + 12, this.h / 6 + 96, this.h - 24);
+      int $$2 = 150;
+      this.d(esl.a(this.l, $$0x -> this.k.run()).a((this.g - 150) / 2, $$1, 150, 20).a());
+   }
+
+   @Override
+   public void a(esa $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      if (this.n) {
-         $$0.a(this.i, l, this.g / 2, 110, 16764108);
-      }
+      $$0.a(this.i, this.e, this.g / 2, 70, 16777215);
+      this.c.a($$0, this.g / 2, 90);
    }
 
-   public static void a(String $$0, eya $$1, boolean $$2) {
-      eql $$3 = eql.O();
-      $$3.a(new ews($$3x -> {
-         if ($$3x) {
-            ac.i().a($$0);
-         }
-
-         $$3.a($$1);
-      }, $$0, $$2));
-   }
-
-   public static esg.c b(String $$0, eya $$1, boolean $$2) {
-      return $$3 -> a($$0, $$1, $$2);
+   @Override
+   public boolean at_() {
+      return this.m;
    }
 }

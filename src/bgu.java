@@ -1,18 +1,37 @@
-import javax.annotation.Nullable;
+public class bgu<T> {
+   private final bgt a;
+   private final T b;
 
-public interface bgu {
-   tf ab();
-
-   default boolean ac() {
-      return this.ad() != null;
+   public bgu(bgt $$0, T $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   default tf H_() {
-      return this.ab();
+   public bgt a() {
+      return this.a;
    }
 
-   @Nullable
-   default tf ad() {
-      return null;
+   public T b() {
+      return this.b;
+   }
+
+   public static <T> bgu<T> a(T $$0) {
+      return new bgu<>(bgt.a, $$0);
+   }
+
+   public static <T> bgu<T> b(T $$0) {
+      return new bgu<>(bgt.b, $$0);
+   }
+
+   public static <T> bgu<T> c(T $$0) {
+      return new bgu<>(bgt.d, $$0);
+   }
+
+   public static <T> bgu<T> d(T $$0) {
+      return new bgu<>(bgt.e, $$0);
+   }
+
+   public static <T> bgu<T> a(T $$0, boolean $$1) {
+      return $$1 ? a($$0) : b($$0);
    }
 }

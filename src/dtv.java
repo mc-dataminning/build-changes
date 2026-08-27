@@ -1,28 +1,26 @@
 import com.mojang.serialization.Codec;
 
 public class dtv extends duj {
-   public static final Codec<dtv> a = bfv.b(0, 256).fieldOf("count").xmap(dtv::new, $$0 -> $$0.c).codec();
-   private final bfv c;
+   private static final dtv c = new dtv();
+   public static Codec<dtv> a = Codec.unit(() -> c);
 
-   private dtv(bfv $$0) {
-      this.c = $$0;
+   private dtv() {
    }
 
-   public static dtv a(bfv $$0) {
-      return new dtv($$0);
-   }
-
-   public static dtv a(int $$0) {
-      return a(bfs.a($$0));
+   public static dtv a() {
+      return c;
    }
 
    @Override
-   protected int a(aru $$0, gu $$1) {
-      return this.c.a($$0);
+   protected boolean a(dui $$0, arx $$1, gw $$2) {
+      duh $$3 = $$0.e()
+         .orElseThrow(() -> new IllegalStateException("Tried to biome check an unregistered feature, or a feature that should not restrict the biome"));
+      hg<cqo> $$4 = $$0.d().s($$2);
+      return $$0.f().a($$4).a($$3);
    }
 
    @Override
-   public dug<?> b() {
-      return dug.f;
+   public dul<?> b() {
+      return dul.e;
    }
 }

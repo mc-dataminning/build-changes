@@ -1,80 +1,86 @@
-import com.google.common.collect.AbstractIterator;
-import java.util.function.BiFunction;
+import java.util.ArrayList;
 import javax.annotation.Nullable;
 
-public class cop<T> extends AbstractIterator<T> {
-   private final egy a;
-   private final ehi b;
-   private final gx c;
-   private final gu.a d;
-   private final ehw e;
-   private final cov f;
-   private final boolean g;
-   @Nullable
-   private cor h;
-   private long i;
-   private final BiFunction<gu.a, ehw, T> j;
-
-   public cop(cov $$0, @Nullable bii $$1, egy $$2, boolean $$3, BiFunction<gu.a, ehw, T> $$4) {
-      this.b = $$1 == null ? ehi.a() : ehi.a($$1);
-      this.d = new gu.a();
-      this.e = eht.a($$2);
-      this.f = $$0;
-      this.a = $$2;
-      this.g = $$3;
-      this.j = $$4;
-      int $$5 = arp.a($$2.a - 1.0E-7) - 1;
-      int $$6 = arp.a($$2.d + 1.0E-7) + 1;
-      int $$7 = arp.a($$2.b - 1.0E-7) - 1;
-      int $$8 = arp.a($$2.e + 1.0E-7) + 1;
-      int $$9 = arp.a($$2.c - 1.0E-7) - 1;
-      int $$10 = arp.a($$2.f + 1.0E-7) + 1;
-      this.c = new gx($$5, $$7, $$9, $$6, $$8, $$10);
+public class cop extends ArrayList<coo> {
+   public cop() {
    }
 
-   @Nullable
-   private cor a(int $$0, int $$1) {
-      int $$2 = hx.a($$0);
-      int $$3 = hx.a($$1);
-      long $$4 = cos.c($$2, $$3);
-      if (this.h != null && this.i == $$4) {
-         return this.h;
-      } else {
-         cor $$5 = this.f.c($$2, $$3);
-         this.h = $$5;
-         this.i = $$4;
-         return $$5;
+   private cop(int $$0) {
+      super($$0);
+   }
+
+   public cop(qu $$0) {
+      ra $$1 = $$0.c("Recipes", 10);
+
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         this.add(new coo($$1.a($$2)));
       }
    }
 
-   protected T computeNext() {
-      while (this.c.a()) {
-         int $$0 = this.c.b();
-         int $$1 = this.c.c();
-         int $$2 = this.c.d();
-         int $$3 = this.c.e();
-         if ($$3 != 3) {
-            cor $$4 = this.a($$0, $$2);
-            if ($$4 != null) {
-               this.d.d($$0, $$1, $$2);
-               dez $$5 = $$4.a_(this.d);
-               if ((!this.g || $$5.o($$4, this.d)) && ($$3 != 1 || $$5.f()) && ($$3 != 2 || $$5.a(csm.bQ))) {
-                  ehw $$6 = $$5.b(this.f, this.d, this.b);
-                  if ($$6 == eht.b()) {
-                     if (this.a.a((double)$$0, (double)$$1, (double)$$2, (double)$$0 + 1.0, (double)$$1 + 1.0, (double)$$2 + 1.0)) {
-                        return this.j.apply(this.d, $$6.a((double)$$0, (double)$$1, (double)$$2));
-                     }
-                  } else {
-                     ehw $$7 = $$6.a((double)$$0, (double)$$1, (double)$$2);
-                     if (!$$7.c() && eht.c($$7, this.e, ehh.i)) {
-                        return this.j.apply(this.d, $$7);
-                     }
-                  }
-               }
+   @Nullable
+   public coo a(cja $$0, cja $$1, int $$2) {
+      if ($$2 > 0 && $$2 < this.size()) {
+         coo $$3 = this.get($$2);
+         return $$3.a($$0, $$1) ? $$3 : null;
+      } else {
+         for (int $$4 = 0; $$4 < this.size(); $$4++) {
+            coo $$5 = this.get($$4);
+            if ($$5.a($$0, $$1)) {
+               return $$5;
             }
          }
+
+         return null;
+      }
+   }
+
+   public void a(sl $$0) {
+      $$0.a(this, ($$0x, $$1) -> {
+         $$0x.a($$1.a());
+         $$0x.a($$1.d());
+         $$0x.a($$1.c());
+         $$0x.a($$1.p());
+         $$0x.p($$1.g());
+         $$0x.p($$1.i());
+         $$0x.p($$1.o());
+         $$0x.p($$1.m());
+         $$0x.a($$1.n());
+         $$0x.p($$1.k());
+      });
+   }
+
+   public static cop b(sl $$0) {
+      return $$0.a(cop::new, $$0x -> {
+         cja $$1 = $$0x.q();
+         cja $$2 = $$0x.q();
+         cja $$3 = $$0x.q();
+         boolean $$4 = $$0x.readBoolean();
+         int $$5 = $$0x.readInt();
+         int $$6 = $$0x.readInt();
+         int $$7 = $$0x.readInt();
+         int $$8 = $$0x.readInt();
+         float $$9 = $$0x.readFloat();
+         int $$10 = $$0x.readInt();
+         coo $$11 = new coo($$1, $$3, $$2, $$5, $$6, $$7, $$9, $$10);
+         if ($$4) {
+            $$11.q();
+         }
+
+         $$11.b($$8);
+         return $$11;
+      });
+   }
+
+   public qu a() {
+      qu $$0 = new qu();
+      ra $$1 = new ra();
+
+      for (int $$2 = 0; $$2 < this.size(); $$2++) {
+         coo $$3 = this.get($$2);
+         $$1.add($$3.t());
       }
 
-      return (T)this.endOfData();
+      $$0.a("Recipes", $$1);
+      return $$0;
    }
 }

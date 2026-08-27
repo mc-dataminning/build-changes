@@ -1,33 +1,23 @@
-import com.google.common.collect.ImmutableSet;
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
-import javax.annotation.Nullable;
+import java.util.function.Function;
+import java.util.function.Supplier;
 
-public record egg(String b) implements egi {
-   public static final Codec<egg> a = RecordCodecBuilder.create($$0 -> $$0.group(Codec.STRING.fieldOf("name").forGetter(egg::c)).apply($$0, egg::new));
+public class egg {
+   private static final Codec<egf> f = jd.J.q().dispatch(egf::b, ege::a);
+   public static final Codec<egf> a = arb.a(
+      (Supplier<Codec<egf>>)(() -> {
+         Codec<egf> $$0 = arb.e(f, egi.a);
+         return Codec.either(egd.b, $$0)
+            .xmap($$0x -> (egf)$$0x.map(Function.identity(), Function.identity()), $$0x -> $$0x instanceof egd $$1 ? Either.left($$1) : Either.right($$0x));
+      })
+   );
+   public static final ege b = a("constant", egd.a);
+   public static final ege c = a("uniform", egi.a);
+   public static final ege d = a("binomial", egc.a);
+   public static final ege e = a("score", egh.a);
 
-   public static egi a(String $$0) {
-      return new egg($$0);
-   }
-
-   @Override
-   public egh a() {
-      return egj.b;
-   }
-
-   @Nullable
-   @Override
-   public String a(ecg $$0) {
-      return this.b;
-   }
-
-   @Override
-   public Set<eeo<?>> b() {
-      return ImmutableSet.of();
-   }
-
-   public String c() {
-      return this.b;
+   private static ege a(String $$0, Codec<? extends egf> $$1) {
+      return ht.a(jd.J, new aeu($$0), new ege($$1));
    }
 }

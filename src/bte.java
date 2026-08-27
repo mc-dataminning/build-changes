@@ -1,40 +1,42 @@
-import java.util.function.Supplier;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.Set;
 
-public class bte<U extends btd<?>> {
-   public static final bte<bso> a = a("dummy", bso::new);
-   public static final bte<bsv> b = a("nearest_items", bsv::new);
-   public static final bte<bsw<biy>> c = a("nearest_living_entities", bsw::new);
-   public static final bte<bta> d = a("nearest_players", bta::new);
-   public static final bte<bsu> e = a("nearest_bed", bsu::new);
-   public static final bte<bss> f = a("hurt_by", bss::new);
-   public static final bte<bth> g = a("villager_hostiles", bth::new);
-   public static final bte<btg> h = a("villager_babies", btg::new);
-   public static final bte<btb> i = a("secondary_pois", btb::new);
-   public static final bte<bsq> j = a("golem_detected", bsq::new);
-   public static final bte<bsz> k = a("piglin_specific_sensor", bsz::new);
-   public static final bte<bsy> l = a("piglin_brute_specific_sensor", bsy::new);
-   public static final bte<bsr> m = a("hoglin_specific_sensor", bsr::new);
-   public static final bte<bsm> n = a("nearest_adult", bsm::new);
-   public static final bte<bsn> o = a("axolotl_attackables", bsn::new);
-   public static final bte<btf> p = a("axolotl_temptations", () -> new btf(bvr.a()));
-   public static final bte<btf> q = a("goat_temptations", () -> new btf(bwf.a()));
-   public static final bte<btf> r = a("frog_temptations", () -> new btf(bvz.a()));
-   public static final bte<btf> s = a("camel_temptations", () -> new btf(bvw.b()));
-   public static final bte<bsp> t = a("frog_attackables", bsp::new);
-   public static final bte<bst> u = a("is_in_water", bst::new);
-   public static final bte<bti> v = a("warden_entity_sensor", bti::new);
-   public static final bte<btf> w = a("sniffer_temptations", () -> new btf(bww.a()));
-   private final Supplier<U> x;
+public class bte extends btg<cbc> {
+   private static final int a = 40;
 
-   private bte(Supplier<U> $$0) {
-      this.x = $$0;
+   public bte() {
+      super(40);
    }
 
-   public U a() {
-      return this.x.get();
+   protected void a(akn $$0, cbc $$1) {
+      aet<cpq> $$2 = $$0.ac();
+      gw $$3 = $$1.dk();
+      List<hf> $$4 = Lists.newArrayList();
+      int $$5 = 4;
+
+      for (int $$6 = -4; $$6 <= 4; $$6++) {
+         for (int $$7 = -2; $$7 <= 2; $$7++) {
+            for (int $$8 = -4; $$8 <= 4; $$8++) {
+               gw $$9 = $$3.b($$6, $$7, $$8);
+               if ($$1.gl().b().e().contains($$0.a_($$9).b())) {
+                  $$4.add(hf.a($$2, $$9));
+               }
+            }
+         }
+      }
+
+      bkb<?> $$10 = $$1.dM();
+      if (!$$4.isEmpty()) {
+         $$10.a(bsc.f, $$4);
+      } else {
+         $$10.b(bsc.f);
+      }
    }
 
-   private static <U extends btd<?>> bte<U> a(String $$0, Supplier<U> $$1) {
-      return hr.a(jb.D, new aer($$0), new bte<>($$1));
+   @Override
+   public Set<bsc<?>> a() {
+      return ImmutableSet.of(bsc.f);
    }
 }

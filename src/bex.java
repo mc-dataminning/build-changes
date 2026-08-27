@@ -1,13 +1,88 @@
-import java.time.Instant;
+import com.google.common.base.Stopwatch;
+import com.google.common.base.Ticker;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableSet.Builder;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import java.util.Set;
+import java.util.concurrent.TimeUnit;
+import java.util.function.LongSupplier;
+import java.util.function.Supplier;
+import java.util.function.ToDoubleFunction;
+import java.util.stream.IntStream;
+import org.slf4j.Logger;
+import oshi.SystemInfo;
+import oshi.hardware.CentralProcessor;
 
-public final class bex {
-   public final Instant a;
-   public final int b;
-   public final bdg c;
+public class bex implements beq {
+   private static final Logger a = LogUtils.getLogger();
+   private final Set<beo> b = new ObjectOpenHashSet();
+   private final bew c = new bew();
 
-   public bex(Instant $$0, int $$1, bdg $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public bex(LongSupplier $$0, boolean $$1) {
+      this.b.add(a($$0));
+      if ($$1) {
+         this.b.addAll(a());
+      }
+   }
+
+   public static Set<beo> a() {
+      Builder<beo> $$0 = ImmutableSet.builder();
+
+      try {
+         bex.a $$1 = new bex.a();
+         IntStream.range(0, $$1.a).mapToObj($$1x -> beo.a("cpu#" + $$1x, ben.h, () -> $$1.a($$1))).forEach($$0::add);
+      } catch (Throwable var2) {
+         a.warn("Failed to query cpu, no cpu stats will be recorded", var2);
+      }
+
+      $$0.add(beo.a("heap MiB", ben.e, () -> (double)((float)(Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory()) / 1048576.0F)));
+      $$0.addAll(bep.a.a());
+      return $$0.build();
+   }
+
+   @Override
+   public Set<beo> a(Supplier<bdi> $$0) {
+      this.b.addAll(this.c.a($$0));
+      return this.b;
+   }
+
+   public static beo a(final LongSupplier $$0) {
+      Stopwatch $$1 = Stopwatch.createUnstarted(new Ticker() {
+         public long read() {
+            return $$0.getAsLong();
+         }
+      });
+      ToDoubleFunction<Stopwatch> $$2 = $$0x -> {
+         if ($$0x.isRunning()) {
+            $$0x.stop();
+         }
+
+         long $$1x = $$0x.elapsed(TimeUnit.NANOSECONDS);
+         $$0x.reset();
+         return (double)$$1x;
+      };
+      beo.d $$3 = new beo.d(2.0F);
+      return beo.a("ticktime", ben.d, $$2, $$1).a(Stopwatch::start).a($$3).a();
+   }
+
+   static class a {
+      private final SystemInfo b = new SystemInfo();
+      private final CentralProcessor c = this.b.getHardware().getProcessor();
+      public final int a = this.c.getLogicalProcessorCount();
+      private long[][] d = this.c.getProcessorCpuLoadTicks();
+      private double[] e = this.c.getProcessorCpuLoadBetweenTicks(this.d);
+      private long f;
+
+      public double a(int $$0) {
+         long $$1 = System.currentTimeMillis();
+         if (this.f == 0L || this.f + 501L < $$1) {
+            this.e = this.c.getProcessorCpuLoadBetweenTicks(this.d);
+            this.d = this.c.getProcessorCpuLoadTicks();
+            this.f = $$1;
+         }
+
+         return this.e[$$0] * 100.0;
+      }
    }
 }

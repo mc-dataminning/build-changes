@@ -1,24 +1,43 @@
-public class fme extends fmq {
-   fme(fin $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+public class fme extends fmp {
+   private final fmk a;
+
+   protected fme(fis $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fmk $$7) {
       super($$0, $$1, $$2, $$3);
-      this.u = 0.04F;
-      if ($$5 == 0.0 && ($$4 != 0.0 || $$6 != 0.0)) {
-         this.j = $$4;
-         this.k = 0.1;
-         this.l = $$6;
-      }
+      this.u = 0.225F;
+      this.B = 1.0F;
+      this.a = $$7;
+      this.j = $$4 + (Math.random() * 2.0 - 1.0) * 0.05F;
+      this.k = $$5 + (Math.random() * 2.0 - 1.0) * 0.05F;
+      this.l = $$6 + (Math.random() * 2.0 - 1.0) * 0.05F;
+      this.D = 0.1F * (this.r.i() * this.r.i() * 1.0F + 1.0F);
+      this.t = (int)(16.0 / ((double)this.r.i() * 0.8 + 0.2)) + 2;
+      this.b($$7);
    }
 
-   public static class a implements fln<iy> {
-      private final fmf a;
+   @Override
+   public flt b() {
+      return flt.b;
+   }
 
-      public a(fmf $$0) {
+   @Override
+   public void a() {
+      super.a();
+      this.b(this.a);
+      this.j *= 0.95F;
+      this.k *= 0.9F;
+      this.l *= 0.95F;
+   }
+
+   public static class a implements fls<ja> {
+      private final fmk a;
+
+      public a(fmk $$0) {
          this.a = $$0;
       }
 
-      public flk a(iy $$0, fin $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fme $$8 = new fme($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
+      public flp a(ja $$0, fis $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fme $$8 = new fme($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+         $$8.a(0.923F, 0.964F, 0.999F);
          return $$8;
       }
    }

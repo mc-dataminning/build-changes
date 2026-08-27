@@ -1,32 +1,56 @@
-public class ym implements ux<wp> {
-   private final gu a;
-   private final boolean b;
+public class ym implements va<ws> {
+   private final double a;
+   private final double b;
+   private final double c;
+   private final float d;
+   private final float e;
 
-   public ym(gu $$0, boolean $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public ym(bil $$0) {
+      this.a = $$0.dp();
+      this.b = $$0.dr();
+      this.c = $$0.dv();
+      this.d = $$0.dA();
+      this.e = $$0.dC();
    }
 
-   public ym(si $$0) {
-      this.a = $$0.e();
-      this.b = $$0.readBoolean();
+   public ym(sl $$0) {
+      this.a = $$0.readDouble();
+      this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
+      this.d = $$0.readFloat();
+      this.e = $$0.readFloat();
    }
 
    @Override
-   public void a(si $$0) {
+   public void a(sl $$0) {
       $$0.a(this.a);
       $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
    }
 
-   public void a(wp $$0) {
+   public void a(ws $$0) {
       $$0.a(this);
    }
 
-   public gu a() {
+   public double a() {
       return this.a;
    }
 
-   public boolean d() {
+   public double d() {
       return this.b;
+   }
+
+   public double e() {
+      return this.c;
+   }
+
+   public float f() {
+      return this.d;
+   }
+
+   public float g() {
+      return this.e;
    }
 }

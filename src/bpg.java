@@ -1,50 +1,77 @@
-import java.util.EnumSet;
+import java.util.function.Predicate;
 
-public class bpg extends bqg {
-   private final bum g;
+public class bpg extends bpn {
+   private static final int g = 240;
+   private final Predicate<bgq> h;
+   protected int a;
+   protected int b = -1;
+   protected int c = -1;
 
-   public bpg(bum $$0, double $$1, int $$2) {
-      super($$0, $$1, $$2, 6);
-      this.g = $$0;
-      this.f = -2;
-      this.a(EnumSet.of(bpt.a.c, bpt.a.a));
+   public bpg(bjd $$0, Predicate<bgq> $$1) {
+      super($$0);
+      this.h = $$1;
+   }
+
+   public bpg(bjd $$0, int $$1, Predicate<bgq> $$2) {
+      this($$0, $$2);
+      this.c = $$1;
+   }
+
+   protected int f() {
+      return Math.max(240, this.c);
    }
 
    @Override
    public boolean a() {
-      return this.g.p() && !this.g.ga() && !this.g.gi() && super.a();
+      if (!super.a()) {
+         return false;
+      } else {
+         return !this.d.dK().X().b(cpm.c) ? false : this.a(this.d.dK().ai()) && !this.h();
+      }
    }
 
    @Override
    public void c() {
       super.c();
-      this.g.y(false);
+      this.a = 0;
    }
 
    @Override
-   protected int a(bjh $$0) {
-      return 40;
+   public boolean b() {
+      return this.a <= this.f() && !this.h() && this.e.a(this.d.di(), 2.0) && this.a(this.d.dK().ai());
    }
 
    @Override
    public void d() {
       super.d();
-      this.g.A(false);
+      this.d.dK().a(this.d.ah(), this.e, -1);
    }
 
    @Override
    public void e() {
       super.e();
-      this.g.y(false);
-      if (!this.m()) {
-         this.g.A(false);
-      } else if (!this.g.gi()) {
-         this.g.A(true);
+      if (this.d.ee().a(20) == 0) {
+         this.d.dK().c(1019, this.e, 0);
+         if (!this.d.aF) {
+            this.d.a(this.d.fm());
+         }
+      }
+
+      this.a++;
+      int $$0 = (int)((float)this.a / (float)this.f() * 10.0F);
+      if ($$0 != this.b) {
+         this.d.dK().a(this.d.ah(), this.e, $$0);
+         this.b = $$0;
+      }
+
+      if (this.a == this.f() && this.a(this.d.dK().ai())) {
+         this.d.dK().a(this.e, false);
+         this.d.dK().c(1021, this.e, 0);
+         this.d.dK().c(2001, this.e, csq.i(this.d.dK().a_(this.e)));
       }
    }
 
-   @Override
-   protected boolean a(cpo $$0, gu $$1) {
-      return $$0.t($$1.c()) && $$0.a_($$1).a(apl.R);
+   private boolean a(bgq $$0) {
+      return this.h.test($$0);
    }
 }

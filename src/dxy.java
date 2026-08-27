@@ -1,44 +1,27 @@
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public class dxy extends dyo {
-   public static final Codec<dxy> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(dki.a.g.fieldOf("heightmap").orElse(dki.a.a).forGetter($$0x -> $$0x.b), Codec.INT.fieldOf("offset").orElse(0).forGetter($$0x -> $$0x.c))
-            .apply($$0, dxy::new)
-   );
-   private final dki.a b;
-   private final int c;
+public class dxy extends dyt {
+   public static final Codec<dxy> a = dfe.b.xmap(dfd.a::b, csq::n).listOf().fieldOf("blocks").xmap(dxy::new, $$0 -> $$0.e).codec();
+   public static final dxy b = new dxy(ImmutableList.of(csr.pa));
+   public static final dxy c = new dxy(ImmutableList.of(csr.a));
+   public static final dxy d = new dxy(ImmutableList.of(csr.a, csr.pa));
+   private final ImmutableList<csq> e;
 
-   public dxy(dki.a $$0, int $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public dxy(List<csq> $$0) {
+      this.e = ImmutableList.copyOf($$0);
    }
 
    @Nullable
    @Override
-   public dyr.c a(cpo $$0, gu $$1, gu $$2, dyr.c $$3, dyr.c $$4, dyn $$5) {
-      dki.a $$6;
-      if ($$0 instanceof akk) {
-         if (this.b == dki.a.a) {
-            $$6 = dki.a.b;
-         } else if (this.b == dki.a.c) {
-            $$6 = dki.a.d;
-         } else {
-            $$6 = this.b;
-         }
-      } else {
-         $$6 = this.b;
-      }
-
-      gu $$10 = $$4.a();
-      int $$11 = $$0.a($$6, $$10.u(), $$10.w()) + this.c;
-      int $$12 = $$3.a().v();
-      return new dyr.c(new gu($$10.u(), $$11 + $$12, $$10.w()), $$4.b(), $$4.c());
+   public dyw.c a(cpt $$0, gw $$1, gw $$2, dyw.c $$3, dyw.c $$4, dys $$5) {
+      return this.e.contains($$4.b().b()) ? null : $$4;
    }
 
    @Override
-   protected dyq<?> a() {
-      return dyq.g;
+   protected dyv<?> a() {
+      return dyv.e;
    }
 }

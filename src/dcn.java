@@ -1,216 +1,337 @@
-import com.google.common.collect.ImmutableSet;
-import com.mojang.datafixers.types.Type;
-import com.mojang.logging.LogUtils;
-import java.util.Set;
+import com.google.common.collect.Lists;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class dcn<T extends dcl> {
-   private static final Logger P = LogUtils.getLogger();
-   public static final dcn<ddg> a = a("furnace", dcn.b.a(ddg::new, csm.cD));
-   public static final dcn<dcs> b = a("chest", dcn.b.a(dcs::new, csm.cv));
-   public static final dcn<dec> c = a("trapped_chest", dcn.b.a(dec::new, csm.gV));
-   public static final dcn<ddf> d = a("ender_chest", dcn.b.a(ddf::new, csm.fG));
-   public static final dcn<ddl> e = a("jukebox", dcn.b.a(ddl::new, csm.dT));
-   public static final dcn<ddc> f = a("dispenser", dcn.b.a(ddc::new, csm.aU));
-   public static final dcn<ddd> g = a("dropper", dcn.b.a(ddd::new, csm.hi));
-   public static final dcn<ddt> h = a(
-      "sign",
-      dcn.b.a(
-         ddt::new,
-         csm.cE,
-         csm.cF,
-         csm.cG,
-         csm.cH,
-         csm.cI,
-         csm.cJ,
-         csm.cK,
-         csm.cR,
-         csm.cS,
-         csm.cT,
-         csm.cU,
-         csm.cV,
-         csm.cW,
-         csm.cX,
-         csm.oW,
-         csm.oY,
-         csm.oX,
-         csm.oZ,
-         csm.cL,
-         csm.cY,
-         csm.cM,
-         csm.cZ
-      )
+public class dcn extends dcq {
+   public static final String a = "FlowerPos";
+   public static final String b = "MinOccupationTicks";
+   public static final String c = "EntityData";
+   public static final String d = "TicksInHive";
+   public static final String e = "HasNectar";
+   public static final String f = "Bees";
+   private static final List<String> i = Arrays.asList(
+      "Air",
+      "ArmorDropChances",
+      "ArmorItems",
+      "Brain",
+      "CanPickUpLoot",
+      "DeathTime",
+      "FallDistance",
+      "FallFlying",
+      "Fire",
+      "HandDropChances",
+      "HandItems",
+      "HurtByTimestamp",
+      "HurtTime",
+      "LeftHanded",
+      "Motion",
+      "NoGravity",
+      "OnGround",
+      "PortalCooldown",
+      "Pos",
+      "Rotation",
+      "CannotEnterHiveTicks",
+      "TicksSincePollination",
+      "CropsGrownSincePollination",
+      "HivePos",
+      "Passengers",
+      "Leash",
+      "UUID"
    );
-   public static final dcn<ddh> i = a(
-      "hanging_sign",
-      dcn.b.a(
-         ddh::new,
-         csm.da,
-         csm.db,
-         csm.dc,
-         csm.dd,
-         csm.de,
-         csm.df,
-         csm.dg,
-         csm.dh,
-         csm.di,
-         csm.dj,
-         csm.dk,
-         csm.dl,
-         csm.dm,
-         csm.dn,
-         csm.do,
-         csm.dp,
-         csm.dq,
-         csm.dr,
-         csm.dt,
-         csm.du,
-         csm.ds,
-         csm.dv
-      )
-   );
-   public static final dcn<ddx> j = a("mob_spawner", dcn.b.a(ddx::new, csm.ct));
-   public static final dcn<dev> k = a("piston", dcn.b.a(dev::new, csm.bQ));
-   public static final dcn<dco> l = a("brewing_stand", dcn.b.a(dco::new, csm.fs));
-   public static final dcn<dde> m = a("enchanting_table", dcn.b.a(dde::new, csm.fr));
-   public static final dcn<dea> n = a("end_portal", dcn.b.a(dea::new, csm.fx));
-   public static final dcn<dcg> o = a("beacon", dcn.b.a(dcg::new, csm.fO));
-   public static final dcn<ddv> p = a(
-      "skull", dcn.b.a(ddv::new, csm.gE, csm.gF, csm.gM, csm.gN, csm.gO, csm.gP, csm.gI, csm.gJ, csm.gG, csm.gH, csm.gK, csm.gL, csm.gQ, csm.gR)
-   );
-   public static final dcn<dcz> q = a("daylight_detector", dcn.b.a(dcz::new, csm.gZ));
-   public static final dcn<ddj> r = a("hopper", dcn.b.a(ddj::new, csm.hc));
-   public static final dcn<dcw> s = a("comparator", dcn.b.a(dcw::new, csm.gY));
-   public static final dcn<dcb> t = a(
-      "banner",
-      dcn.b.a(
-         dcb::new,
-         csm.iJ,
-         csm.iK,
-         csm.iL,
-         csm.iM,
-         csm.iN,
-         csm.iO,
-         csm.iP,
-         csm.iQ,
-         csm.iR,
-         csm.iS,
-         csm.iT,
-         csm.iU,
-         csm.iV,
-         csm.iW,
-         csm.iX,
-         csm.iY,
-         csm.iZ,
-         csm.ja,
-         csm.jb,
-         csm.jc,
-         csm.jd,
-         csm.je,
-         csm.jf,
-         csm.jg,
-         csm.jh,
-         csm.ji,
-         csm.jj,
-         csm.jk,
-         csm.jl,
-         csm.jm,
-         csm.jn,
-         csm.jo
-      )
-   );
-   public static final dcn<ddy> u = a("structure_block", dcn.b.a(ddy::new, csm.pa));
-   public static final dcn<ddz> v = a("end_gateway", dcn.b.a(ddz::new, csm.kF));
-   public static final dcn<dcv> w = a("command_block", dcn.b.a(dcv::new, csm.fN, csm.kH, csm.kG));
-   public static final dcn<dds> x = a(
-      "shulker_box",
-      dcn.b.a(dds::new, csm.kP, csm.lf, csm.lb, csm.lc, csm.kZ, csm.kX, csm.ld, csm.kT, csm.kY, csm.kV, csm.kS, csm.kR, csm.kW, csm.la, csm.le, csm.kQ, csm.kU)
-   );
-   public static final dcn<dch> y = a(
-      "bed", dcn.b.a(dch::new, csm.bn, csm.bo, csm.bk, csm.bl, csm.bi, csm.bg, csm.bm, csm.bc, csm.bh, csm.be, csm.bb, csm.ba, csm.bf, csm.bj, csm.aZ, csm.bd)
-   );
-   public static final dcn<dcx> z = a("conduit", dcn.b.a(dcx::new, csm.mX));
-   public static final dcn<dce> A = a("barrel", dcn.b.a(dce::new, csm.nU));
-   public static final dcn<ddw> B = a("smoker", dcn.b.a(ddw::new, csm.nV));
-   public static final dcn<dck> C = a("blast_furnace", dcn.b.a(dck::new, csm.nW));
-   public static final dcn<ddm> D = a("lectern", dcn.b.a(ddm::new, csm.oa));
-   public static final dcn<dcj> E = a("bell", dcn.b.a(dcj::new, csm.od));
-   public static final dcn<ddk> F = a("jigsaw", dcn.b.a(ddk::new, csm.pb));
-   public static final dcn<dcr> G = a("campfire", dcn.b.a(dcr::new, csm.og, csm.oh));
-   public static final dcn<dci> H = a("beehive", dcn.b.a(dci::new, csm.pe, csm.pf));
-   public static final dcn<ddq> I = a("sculk_sensor", dcn.b.a(ddq::new, csm.qD));
-   public static final dcn<dcq> J = a("calibrated_sculk_sensor", dcn.b.a(dcq::new, csm.qE));
-   public static final dcn<ddp> K = a("sculk_catalyst", dcn.b.a(ddp::new, csm.qH));
-   public static final dcn<ddr> L = a("sculk_shrieker", dcn.b.a(ddr::new, csm.qI));
-   public static final dcn<dcu> M = a("chiseled_bookshelf", dcn.b.a(dcu::new, csm.cm));
-   public static final dcn<dcp> N = a("brushable_block", dcn.b.a(dcp::new, csm.J, csm.M));
-   public static final dcn<dda> O = a("decorated_pot", dcn.b.a(dda::new, csm.so));
-   private final dcn.a<? extends T> Q;
-   private final Set<csl> R;
-   private final Type<?> S;
-   private final he.c<dcn<?>> T = jb.l.f(this);
-
+   public static final int g = 3;
+   private static final int j = 400;
+   private static final int k = 2400;
+   public static final int h = 600;
+   private final List<dcn.a> l = Lists.newArrayList();
    @Nullable
-   public static aer a(dcn<?> $$0) {
-      return jb.l.b($$0);
+   private gw m;
+
+   public dcn(gw $$0, dfe $$1) {
+      super(dcs.H, $$0, $$1);
    }
 
-   private static <T extends dcl> dcn<T> a(String $$0, dcn.b<T> $$1) {
-      if ($$1.b.isEmpty()) {
-         P.warn("Block entity type {} requires at least one valid block to be defined!", $$0);
+   @Override
+   public void e() {
+      if (this.c()) {
+         this.a(null, this.o.a_(this.p()), dcn.b.c);
       }
 
-      Type<?> $$2 = ac.a(ayp.s, $$0);
-      return hr.a(jb.l, $$0, $$1.a($$2));
+      super.e();
    }
 
-   public dcn(dcn.a<? extends T> $$0, Set<csl> $$1, Type<?> $$2) {
-      this.Q = $$0;
-      this.R = $$1;
-      this.S = $$2;
+   public boolean c() {
+      if (this.o == null) {
+         return false;
+      } else {
+         for (gw $$0 : gw.a(this.p.b(-1, -1, -1), this.p.b(1, 1, 1))) {
+            if (this.o.a_($$0).b() instanceof cvm) {
+               return true;
+            }
+         }
+
+         return false;
+      }
    }
 
-   @Nullable
-   public T a(gu $$0, dez $$1) {
-      return (T)this.Q.create($$0, $$1);
+   public boolean d() {
+      return this.l.isEmpty();
    }
 
-   public boolean a(dez $$0) {
-      return this.R.contains($$0.b());
+   public boolean f() {
+      return this.l.size() == 3;
    }
 
-   @Nullable
-   public he.c<dcn<?>> a() {
-      return this.T;
+   public void a(@Nullable cbp $$0, dfe $$1, dcn.b $$2) {
+      List<bil> $$3 = this.a($$1, $$2);
+      if ($$0 != null) {
+         for (bil $$4 : $$3) {
+            if ($$4 instanceof bun) {
+               bun $$5 = (bun)$$4;
+               if ($$0.di().g($$4.di()) <= 16.0) {
+                  if (!this.i()) {
+                     $$5.h($$0);
+                  } else {
+                     $$5.t(400);
+                  }
+               }
+            }
+         }
+      }
    }
 
-   @Nullable
-   public T a(cor $$0, gu $$1) {
-      dcl $$2 = $$0.c_($$1);
-      return (T)($$2 != null && $$2.u() == this ? $$2 : null);
+   private List<bil> a(dfe $$0, dcn.b $$1) {
+      List<bil> $$2 = Lists.newArrayList();
+      this.l.removeIf($$3 -> a(this.o, this.p, $$0, $$3, $$2, $$1, this.m));
+      if (!$$2.isEmpty()) {
+         super.e();
+      }
+
+      return $$2;
    }
 
-   @FunctionalInterface
-   interface a<T extends dcl> {
-      T create(gu var1, dez var2);
+   public void a(bil $$0, boolean $$1) {
+      this.a($$0, $$1, 0);
    }
 
-   public static final class b<T extends dcl> {
-      private final dcn.a<? extends T> a;
-      final Set<csl> b;
+   @ast
+   public int g() {
+      return this.l.size();
+   }
 
-      private b(dcn.a<? extends T> $$0, Set<csl> $$1) {
+   public static int a(dfe $$0) {
+      return $$0.c(csk.b);
+   }
+
+   @ast
+   public boolean i() {
+      return ctd.a(this.o, this.p());
+   }
+
+   public void a(bil $$0, boolean $$1, int $$2) {
+      if (this.l.size() < 3) {
+         $$0.aa();
+         $$0.bA();
+         qu $$3 = new qu();
+         $$0.e($$3);
+         this.a($$3, $$2, $$1);
+         if (this.o != null) {
+            if ($$0 instanceof bun $$4 && $$4.q() && (!this.v() || this.o.z.h())) {
+               this.m = $$4.p();
+            }
+
+            gw $$5 = this.p();
+            this.o.a(null, (double)$$5.u(), (double)$$5.v(), (double)$$5.w(), aoz.bG, apa.e, 1.0F, 1.0F);
+            this.o.a(djo.c, $$5, djo.a.a($$0, this.q()));
+         }
+
+         $$0.ak();
+         super.e();
+      }
+   }
+
+   public void a(qu $$0, int $$1, boolean $$2) {
+      this.l.add(new dcn.a($$0, $$1, $$2 ? 2400 : 600));
+   }
+
+   private static boolean a(cpq $$0, gw $$1, dfe $$2, dcn.a $$3, @Nullable List<bil> $$4, dcn.b $$5, @Nullable gw $$6) {
+      if (($$0.O() || $$0.Z()) && $$5 != dcn.b.c) {
+         return false;
+      } else {
+         qu $$7 = $$3.a.h();
+         d($$7);
+         $$7.a("HivePos", rg.a($$1));
+         $$7.a("NoGravity", true);
+         hc $$8 = $$2.c(csk.a);
+         gw $$9 = $$1.a($$8);
+         boolean $$10 = !$$0.a_($$9).k($$0, $$9).c();
+         if ($$10 && $$5 != dcn.b.c) {
+            return false;
+         } else {
+            bil $$11 = bip.a($$7, $$0, $$0x -> $$0x);
+            if ($$11 != null) {
+               if (!$$11.ag().a(apr.c)) {
+                  return false;
+               } else {
+                  if ($$11 instanceof bun $$12) {
+                     if ($$6 != null && !$$12.q() && $$0.z.i() < 0.9F) {
+                        $$12.i($$6);
+                     }
+
+                     if ($$5 == dcn.b.a) {
+                        $$12.go();
+                        if ($$2.a(apo.aF, $$0x -> $$0x.b(csk.b))) {
+                           int $$13 = a($$2);
+                           if ($$13 < 5) {
+                              int $$14 = $$0.z.a(100) == 0 ? 2 : 1;
+                              if ($$13 + $$14 > 5) {
+                                 $$14--;
+                              }
+
+                              $$0.b($$1, $$2.a(csk.b, Integer.valueOf($$13 + $$14)));
+                           }
+                        }
+                     }
+
+                     a($$3.b, $$12);
+                     if ($$4 != null) {
+                        $$4.add($$12);
+                     }
+
+                     float $$15 = $$11.df();
+                     double $$16 = $$10 ? 0.0 : 0.55 + (double)($$15 / 2.0F);
+                     double $$17 = (double)$$1.u() + 0.5 + $$16 * (double)$$8.j();
+                     double $$18 = (double)$$1.v() + 0.5 - (double)($$11.dg() / 2.0F);
+                     double $$19 = (double)$$1.w() + 0.5 + $$16 * (double)$$8.l();
+                     $$11.b($$17, $$18, $$19, $$11.dA(), $$11.dC());
+                  }
+
+                  $$0.a(null, $$1, aoz.bH, apa.e, 1.0F, 1.0F);
+                  $$0.a(djo.c, $$1, djo.a.a($$11, $$0.a_($$1)));
+                  return $$0.b($$11);
+               }
+            } else {
+               return false;
+            }
+         }
+      }
+   }
+
+   static void d(qu $$0) {
+      for (String $$1 : i) {
+         $$0.r($$1);
+      }
+   }
+
+   private static void a(int $$0, bun $$1) {
+      int $$2 = $$1.h();
+      if ($$2 < 0) {
+         $$1.c_(Math.min(0, $$2 + $$0));
+      } else if ($$2 > 0) {
+         $$1.c_(Math.max(0, $$2 - $$0));
+      }
+
+      $$1.s(Math.max(0, $$1.gc() - $$0));
+   }
+
+   private boolean v() {
+      return this.m != null;
+   }
+
+   private static void a(cpq $$0, gw $$1, dfe $$2, List<dcn.a> $$3, @Nullable gw $$4) {
+      boolean $$5 = false;
+      Iterator<dcn.a> $$6 = $$3.iterator();
+
+      while ($$6.hasNext()) {
+         dcn.a $$7 = $$6.next();
+         if ($$7.b > $$7.c) {
+            dcn.b $$8 = $$7.a.q("HasNectar") ? dcn.b.a : dcn.b.b;
+            if (a($$0, $$1, $$2, $$7, null, $$8, $$4)) {
+               $$5 = true;
+               $$6.remove();
+            }
+         }
+
+         $$7.b++;
+      }
+
+      if ($$5) {
+         a($$0, $$1, $$2);
+      }
+   }
+
+   public static void a(cpq $$0, gw $$1, dfe $$2, dcn $$3) {
+      a($$0, $$1, $$2, $$3.l, $$3.m);
+      if (!$$3.l.isEmpty() && $$0.y_().j() < 0.005) {
+         double $$4 = (double)$$1.u() + 0.5;
+         double $$5 = (double)$$1.v();
+         double $$6 = (double)$$1.w() + 0.5;
+         $$0.a(null, $$4, $$5, $$6, aoz.bJ, apa.e, 1.0F, 1.0F);
+      }
+
+      aay.a($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   public void a(qu $$0) {
+      super.a($$0);
+      this.l.clear();
+      ra $$1 = $$0.c("Bees", 10);
+
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         qu $$3 = $$1.a($$2);
+         dcn.a $$4 = new dcn.a($$3.p("EntityData"), $$3.h("TicksInHive"), $$3.h("MinOccupationTicks"));
+         this.l.add($$4);
+      }
+
+      this.m = null;
+      if ($$0.e("FlowerPos")) {
+         this.m = rg.b($$0.p("FlowerPos"));
+      }
+   }
+
+   @Override
+   protected void b(qu $$0) {
+      super.b($$0);
+      $$0.a("Bees", this.j());
+      if (this.v()) {
+         $$0.a("FlowerPos", rg.a(this.m));
+      }
+   }
+
+   public ra j() {
+      ra $$0 = new ra();
+
+      for (dcn.a $$1 : this.l) {
+         qu $$2 = $$1.a.h();
+         $$2.r("UUID");
+         qu $$3 = new qu();
+         $$3.a("EntityData", $$2);
+         $$3.a("TicksInHive", $$1.b);
+         $$3.a("MinOccupationTicks", $$1.c);
+         $$0.add($$3);
+      }
+
+      return $$0;
+   }
+
+   static class a {
+      final qu a;
+      int b;
+      final int c;
+
+      a(qu $$0, int $$1, int $$2) {
+         dcn.d($$0);
          this.a = $$0;
          this.b = $$1;
+         this.c = $$2;
       }
+   }
 
-      public static <T extends dcl> dcn.b<T> a(dcn.a<? extends T> $$0, csl... $$1) {
-         return new dcn.b<>($$0, ImmutableSet.copyOf($$1));
-      }
-
-      public dcn<T> a(Type<?> $$0) {
-         return new dcn<>(this.a, this.b, $$0);
-      }
+   public static enum b {
+      a,
+      b,
+      c;
    }
 }

@@ -1,39 +1,20 @@
-public class foq {
-   protected final int[] a;
-   protected final int b;
-   protected final ha c;
-   protected final fyu d;
-   private final boolean e;
+import javax.annotation.Nullable;
 
-   public foq(int[] $$0, int $$1, ha $$2, fyu $$3, boolean $$4) {
+public final class foq implements AutoCloseable {
+   private final eqq a;
+   private final ekm b;
+
+   public foq(eqq $$0) {
       this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
+      this.b = new ekm(ekj::new);
    }
 
-   public fyu a() {
-      return this.d;
+   public eko a(ekb $$0, @Nullable String $$1, String $$2) {
+      return new eko(this.a, this.b, $$0, $$1, $$2);
    }
 
-   public int[] b() {
-      return this.a;
-   }
-
-   public boolean c() {
-      return this.b != -1;
-   }
-
-   public int d() {
-      return this.b;
-   }
-
-   public ha e() {
-      return this.c;
-   }
-
-   public boolean f() {
-      return this.e;
+   @Override
+   public void close() {
+      this.b.a();
    }
 }

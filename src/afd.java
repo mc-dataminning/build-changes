@@ -1,54 +1,15 @@
-import com.google.common.collect.Maps;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.mojang.logging.LogUtils;
-import java.util.Collection;
-import java.util.Map;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.List;
 
-public class afd extends anq {
-   private static final Logger a = LogUtils.getLogger();
-   private static final Gson b = new GsonBuilder().create();
-   private af c = new af();
-   private final ecj d;
+public enum afd {
+   a,
+   b,
+   c,
+   d;
 
-   public afd(ecj $$0) {
-      super(b, "advancements");
-      this.d = $$0;
-   }
+   private static final List<afd> e = List.of(values());
+   private static final hu.b f = hu.a(jd.ap);
 
-   protected void a(Map<aer, JsonElement> $$0, anm $$1, bdh $$2) {
-      Map<aer, ae.a> $$3 = Maps.newHashMap();
-      $$0.forEach(($$1x, $$2x) -> {
-         try {
-            JsonObject $$3x = arg.m($$2x, "advancement");
-            ae.a $$4x = ae.a.a($$3x, new be($$1x, this.d));
-            $$3.put($$1x, $$4x);
-         } catch (Exception var6) {
-            a.error("Parsing error loading custom advancement {}: {}", $$1x, var6.getMessage());
-         }
-      });
-      af $$4 = new af();
-      $$4.a($$3);
-
-      for (ae $$5 : $$4.b()) {
-         if ($$5.d() != null) {
-            aq.a($$5);
-         }
-      }
-
-      this.c = $$4;
-   }
-
-   @Nullable
-   public ae a(aer $$0) {
-      return this.c.a($$0);
-   }
-
-   public Collection<ae> a() {
-      return this.c.c();
+   public static hn<afd> a() {
+      return new hn<>(e).a(a, f);
    }
 }

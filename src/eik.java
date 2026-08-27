@@ -1,126 +1,136 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import it.unimi.dsi.fastutil.objects.ObjectOpenCustomHashSet;
-import java.util.Iterator;
-import java.util.List;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Maps;
+import java.util.Map;
 import java.util.Optional;
-import java.util.PriorityQueue;
-import java.util.Queue;
 import java.util.Set;
-import java.util.function.BiConsumer;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
 
-public class eik<T> implements eiq<T>, eis<T> {
-   private final Queue<eip<T>> a = new PriorityQueue<>(eip.a);
-   @Nullable
-   private List<eio<T>> b;
-   private final Set<eip<?>> c = new ObjectOpenCustomHashSet(eip.c);
-   @Nullable
-   private BiConsumer<eik<T>, eip<T>> d;
+public class eik {
+   private static final Map<String, eik> n = Maps.newHashMap();
+   private static final Map<String, eik> o = Maps.newHashMap();
+   public static final eik a = b("dummy");
+   public static final eik b = b("trigger");
+   public static final eik c = b("deathCount");
+   public static final eik d = b("playerKillCount");
+   public static final eik e = b("totalKillCount");
+   public static final eik f = a("health", true, eik.a.b);
+   public static final eik g = a("food", true, eik.a.a);
+   public static final eik h = a("air", true, eik.a.a);
+   public static final eik i = a("armor", true, eik.a.a);
+   public static final eik j = a("xp", true, eik.a.a);
+   public static final eik k = a("level", true, eik.a.a);
+   public static final eik[] l = new eik[]{
+      b("teamkill." + n.a.g()),
+      b("teamkill." + n.b.g()),
+      b("teamkill." + n.c.g()),
+      b("teamkill." + n.d.g()),
+      b("teamkill." + n.e.g()),
+      b("teamkill." + n.f.g()),
+      b("teamkill." + n.g.g()),
+      b("teamkill." + n.h.g()),
+      b("teamkill." + n.i.g()),
+      b("teamkill." + n.j.g()),
+      b("teamkill." + n.k.g()),
+      b("teamkill." + n.l.g()),
+      b("teamkill." + n.m.g()),
+      b("teamkill." + n.n.g()),
+      b("teamkill." + n.o.g()),
+      b("teamkill." + n.p.g())
+   };
+   public static final eik[] m = new eik[]{
+      b("killedByTeam." + n.a.g()),
+      b("killedByTeam." + n.b.g()),
+      b("killedByTeam." + n.c.g()),
+      b("killedByTeam." + n.d.g()),
+      b("killedByTeam." + n.e.g()),
+      b("killedByTeam." + n.f.g()),
+      b("killedByTeam." + n.g.g()),
+      b("killedByTeam." + n.h.g()),
+      b("killedByTeam." + n.i.g()),
+      b("killedByTeam." + n.j.g()),
+      b("killedByTeam." + n.k.g()),
+      b("killedByTeam." + n.l.g()),
+      b("killedByTeam." + n.m.g()),
+      b("killedByTeam." + n.n.g()),
+      b("killedByTeam." + n.o.g()),
+      b("killedByTeam." + n.p.g())
+   };
+   private final String p;
+   private final boolean q;
+   private final eik.a r;
 
-   public eik() {
+   private static eik a(String $$0, boolean $$1, eik.a $$2) {
+      eik $$3 = new eik($$0, $$1, $$2);
+      n.put($$0, $$3);
+      return $$3;
    }
 
-   public eik(List<eio<T>> $$0) {
-      this.b = $$0;
+   private static eik b(String $$0) {
+      return a($$0, false, eik.a.a);
+   }
 
-      for (eio<T> $$1 : $$0) {
-         this.c.add(eip.a($$1.a(), $$1.b()));
+   protected eik(String $$0) {
+      this($$0, false, eik.a.a);
+   }
+
+   protected eik(String $$0, boolean $$1, eik.a $$2) {
+      this.p = $$0;
+      this.q = $$1;
+      this.r = $$2;
+      o.put($$0, this);
+   }
+
+   public static Set<String> c() {
+      return ImmutableSet.copyOf(n.keySet());
+   }
+
+   public static Optional<eik> a(String $$0) {
+      eik $$1 = o.get($$0);
+      if ($$1 != null) {
+         return Optional.of($$1);
+      } else {
+         int $$2 = $$0.indexOf(58);
+         return $$2 < 0 ? Optional.empty() : jd.y.b(aeu.a($$0.substring(0, $$2), '.')).flatMap($$2x -> a($$2x, aeu.a($$0.substring($$2 + 1), '.')));
       }
    }
 
-   public void a(@Nullable BiConsumer<eik<T>, eip<T>> $$0) {
-      this.d = $$0;
+   private static <T> Optional<eik> a(api<T> $$0, aeu $$1) {
+      return $$0.a().b($$1).map($$0::b);
    }
 
-   @Nullable
-   public eip<T> b() {
-      return this.a.peek();
+   public String d() {
+      return this.p;
    }
 
-   @Nullable
-   public eip<T> c() {
-      eip<T> $$0 = this.a.poll();
-      if ($$0 != null) {
-         this.c.remove($$0);
+   public boolean e() {
+      return this.q;
+   }
+
+   public eik.a f() {
+      return this.r;
+   }
+
+   public static enum a implements ask {
+      a("integer"),
+      b("hearts");
+
+      private final String d;
+      public static final ask.a<eik.a> c = ask.a(eik.a::values);
+
+      private a(String $$0) {
+         this.d = $$0;
       }
 
-      return $$0;
-   }
-
-   @Override
-   public void a(eip<T> $$0) {
-      if (this.c.add($$0)) {
-         this.b($$0);
-      }
-   }
-
-   private void b(eip<T> $$0) {
-      this.a.add($$0);
-      if (this.d != null) {
-         this.d.accept(this, $$0);
-      }
-   }
-
-   @Override
-   public boolean a(gu $$0, T $$1) {
-      return this.c.contains(eip.a($$1, $$0));
-   }
-
-   public void a(Predicate<eip<T>> $$0) {
-      Iterator<eip<T>> $$1 = this.a.iterator();
-
-      while ($$1.hasNext()) {
-         eip<T> $$2 = $$1.next();
-         if ($$0.test($$2)) {
-            $$1.remove();
-            this.c.remove($$2);
-         }
-      }
-   }
-
-   public Stream<eip<T>> d() {
-      return this.a.stream();
-   }
-
-   @Override
-   public int a() {
-      return this.a.size() + (this.b != null ? this.b.size() : 0);
-   }
-
-   public qx a(long $$0, Function<T, String> $$1) {
-      qx $$2 = new qx();
-      if (this.b != null) {
-         for (eio<T> $$3 : this.b) {
-            $$2.add($$3.a($$1));
-         }
+      public String a() {
+         return this.d;
       }
 
-      for (eip<T> $$4 : this.a) {
-         $$2.add(eio.a($$4, $$1, $$0));
+      @Override
+      public String c() {
+         return this.d;
       }
 
-      return $$2;
-   }
-
-   public void a(long $$0) {
-      if (this.b != null) {
-         int $$1 = -this.b.size();
-
-         for (eio<T> $$2 : this.b) {
-            this.b($$2.a($$0, (long)($$1++)));
-         }
+      public static eik.a a(String $$0) {
+         return c.a($$0, a);
       }
-
-      this.b = null;
-   }
-
-   public static <T> eik<T> a(qx $$0, Function<String, Optional<T>> $$1, cos $$2) {
-      Builder<eio<T>> $$3 = ImmutableList.builder();
-      eio.a($$0, $$1, $$2, $$3::add);
-      return new eik<>($$3.build());
    }
 }

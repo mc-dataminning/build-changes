@@ -1,47 +1,39 @@
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Pair;
+import java.util.ArrayList;
 import java.util.List;
 
-public class zu implements ux<wp> {
-   private static final byte a = -128;
-   private final int b;
-   private final List<Pair<bin, cix>> c;
+public record zu(int b, List<aef.b<?>> c) implements va<ws> {
+   public static final int a = 255;
 
-   public zu(int $$0, List<Pair<bin, cix>> $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public zu(sl $$0) {
+      this($$0.m(), b($$0));
    }
 
-   public zu(si $$0) {
-      this.b = $$0.m();
-      bin[] $$1 = bin.values();
-      this.c = Lists.newArrayList();
+   private static void a(List<aef.b<?>> $$0, sl $$1) {
+      for (aef.b<?> $$2 : $$0) {
+         $$2.a($$1);
+      }
+
+      $$1.k(255);
+   }
+
+   private static List<aef.b<?>> b(sl $$0) {
+      List<aef.b<?>> $$1 = new ArrayList<>();
 
       int $$2;
-      do {
-         $$2 = $$0.readByte();
-         bin $$3 = $$1[$$2 & 127];
-         cix $$4 = $$0.q();
-         this.c.add(Pair.of($$3, $$4));
-      } while (($$2 & -128) != 0);
+      while (($$2 = $$0.readUnsignedByte()) != 255) {
+         $$1.add(aef.b.a($$0, $$2));
+      }
+
+      return $$1;
    }
 
    @Override
-   public void a(si $$0) {
+   public void a(sl $$0) {
       $$0.c(this.b);
-      int $$1 = this.c.size();
-
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         Pair<bin, cix> $$3 = this.c.get($$2);
-         bin $$4 = (bin)$$3.getFirst();
-         boolean $$5 = $$2 != $$1 - 1;
-         int $$6 = $$4.ordinal();
-         $$0.k($$5 ? $$6 | -128 : $$6);
-         $$0.a((cix)$$3.getSecond());
-      }
+      a(this.c, $$0);
    }
 
-   public void a(wp $$0) {
+   public void a(ws $$0) {
       $$0.a(this);
    }
 
@@ -49,7 +41,7 @@ public class zu implements ux<wp> {
       return this.b;
    }
 
-   public List<Pair<bin, cix>> d() {
+   public List<aef.b<?>> d() {
       return this.c;
    }
 }

@@ -1,25 +1,17 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class dtr extends due {
-   public static final Codec<dtr> a = RecordCodecBuilder.create($$0 -> $$0.group(dlp.b.fieldOf("predicate").forGetter($$0x -> $$0x.c)).apply($$0, dtr::new));
-   private final dlp c;
-
-   private dtr(dlp $$0) {
-      this.c = $$0;
-   }
-
-   public static dtr a(dlp $$0) {
-      return new dtr($$0);
-   }
-
+public record dtr(List<dkr.c> a) implements dkr.c {
+   @Nullable
    @Override
-   protected boolean a(dud $$0, aru $$1, gu $$2) {
-      return this.c.test($$0.d(), $$2);
-   }
+   public dfe calculate(dkg.b $$0) {
+      for (dkr.c $$1 : this.a) {
+         dfe $$2 = $$1.calculate($$0);
+         if ($$2 != null) {
+            return $$2;
+         }
+      }
 
-   @Override
-   public dug<?> b() {
-      return dug.a;
+      return null;
    }
 }

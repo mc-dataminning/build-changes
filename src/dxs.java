@@ -1,92 +1,55 @@
+import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
-import javax.annotation.Nullable;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Consumer;
 
-public class dxs extends dyo {
-   public static final Codec<dxs> a = Codec.FLOAT.fieldOf("mossiness").xmap(dxs::new, $$0 -> $$0.f).codec();
-   private static final float b = 0.5F;
-   private static final float c = 0.5F;
-   private static final float d = 0.15F;
-   private static final dez[] e = new dez[]{csm.jD.n(), csm.jK.n()};
-   private final float f;
+public class dxs extends dvd {
+   public static final Codec<dxs> d = a(dxs::new);
 
-   public dxs(float $$0) {
-      this.f = $$0;
-   }
-
-   @Nullable
-   @Override
-   public dyr.c a(cpo $$0, gu $$1, gu $$2, dyr.c $$3, dyr.c $$4, dyn $$5) {
-      aru $$6 = $$5.b($$4.a());
-      dez $$7 = $$4.b();
-      gu $$8 = $$4.a();
-      dez $$9 = null;
-      if ($$7.a(csm.eI) || $$7.a(csm.b) || $$7.a(csm.eL)) {
-         $$9 = this.a($$6);
-      } else if ($$7.a(apl.J)) {
-         $$9 = this.a($$6, $$4.b());
-      } else if ($$7.a(apl.K)) {
-         $$9 = this.b($$6);
-      } else if ($$7.a(apl.L)) {
-         $$9 = this.c($$6);
-      } else if ($$7.a(csm.co)) {
-         $$9 = this.d($$6);
-      }
-
-      return $$9 != null ? new dyr.c($$8, $$9, $$4.c()) : $$4;
-   }
-
-   @Nullable
-   private dez a(aru $$0) {
-      if ($$0.i() >= 0.5F) {
-         return null;
-      } else {
-         dez[] $$1 = new dez[]{csm.eK.n(), a($$0, csm.fj)};
-         dez[] $$2 = new dez[]{csm.eJ.n(), a($$0, csm.ng)};
-         return this.a($$0, $$1, $$2);
-      }
-   }
-
-   @Nullable
-   private dez a(aru $$0, dez $$1) {
-      ha $$2 = $$1.c(daf.a);
-      dfy $$3 = $$1.c(daf.b);
-      if ($$0.i() >= 0.5F) {
-         return null;
-      } else {
-         dez[] $$4 = new dez[]{csm.ng.n().a(daf.a, $$2).a(daf.b, $$3), csm.nu.n()};
-         return this.a($$0, e, $$4);
-      }
-   }
-
-   @Nullable
-   private dez b(aru $$0) {
-      return $$0.i() < this.f ? csm.nu.n() : null;
-   }
-
-   @Nullable
-   private dez c(aru $$0) {
-      return $$0.i() < this.f ? csm.nI.n() : null;
-   }
-
-   @Nullable
-   private dez d(aru $$0) {
-      return $$0.i() < 0.15F ? csm.pk.n() : null;
-   }
-
-   private static dez a(aru $$0, csl $$1) {
-      return $$1.n().a(daf.a, ha.c.a.a($$0)).a(daf.b, ac.a(dfy.values(), $$0));
-   }
-
-   private dez a(aru $$0, dez[] $$1, dez[] $$2) {
-      return $$0.i() < this.f ? a($$0, $$2) : a($$0, $$1);
-   }
-
-   private static dez a(aru $$0, dez[] $$1) {
-      return $$1[$$0.a($$1.length)];
+   public dxs(dvd.c $$0) {
+      super($$0);
    }
 
    @Override
-   protected dyq<?> a() {
-      return dyq.k;
+   public Optional<dvd.b> a(dvd.a $$0) {
+      czc $$1 = czc.a($$0.f());
+      gw $$2 = this.a($$0, $$1);
+      return $$2.v() < 60 ? Optional.empty() : Optional.of(new dvd.b($$2, (Consumer<dvv>)($$3 -> this.a($$3, $$0, $$2, $$1))));
+   }
+
+   private void a(dvv $$0, dvd.a $$1, gw $$2, czc $$3) {
+      List<dxr.i> $$4 = Lists.newLinkedList();
+      dxr.a($$1.e(), $$2, $$3, $$4, $$1.f());
+      $$4.forEach($$0::a);
+   }
+
+   @Override
+   public void a(cqk $$0, cqi $$1, dhb $$2, arx $$3, duv $$4, cox $$5, dvs $$6) {
+      gw.a $$7 = new gw.a();
+      int $$8 = $$0.C_();
+      duv $$9 = $$6.b();
+      int $$10 = $$9.h();
+
+      for (int $$11 = $$4.g(); $$11 <= $$4.j(); $$11++) {
+         for (int $$12 = $$4.i(); $$12 <= $$4.l(); $$12++) {
+            $$7.d($$11, $$10, $$12);
+            if (!$$0.t($$7) && $$9.b($$7) && $$6.a($$7)) {
+               for (int $$13 = $$10 - 1; $$13 > $$8; $$13--) {
+                  $$7.q($$13);
+                  if (!$$0.t($$7) && !$$0.a_($$7).k()) {
+                     break;
+                  }
+
+                  $$0.a($$7, csr.m.n(), 2);
+               }
+            }
+         }
+      }
+   }
+
+   @Override
+   public dvm<?> e() {
+      return dvm.p;
    }
 }

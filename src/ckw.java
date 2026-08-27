@@ -1,192 +1,148 @@
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Pair;
-import java.util.Collection;
 import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
 import javax.annotation.Nullable;
 
-public class ckw {
-   public static final String a = "custom_potion_effects";
-   public static final String b = "CustomPotionColor";
-   public static final String c = "Potion";
-   private static final int d = 16253176;
-   private static final tf e = tf.c("effect.none").a(n.h);
+public class ckw extends civ {
+   public static final int a = 16;
+   public static final int b = 32;
+   public static final int c = 1024;
+   public static final int d = 32767;
+   public static final int e = 100;
+   public static final int f = 2;
+   public static final String g = "title";
+   public static final String h = "filtered_title";
+   public static final String i = "author";
+   public static final String j = "pages";
+   public static final String k = "filtered_pages";
+   public static final String r = "generation";
+   public static final String s = "resolved";
 
-   public static List<bhv> a(cix $$0) {
-      return a($$0.v());
+   public ckw(civ.a $$0) {
+      super($$0);
    }
 
-   public static List<bhv> a(cku $$0, Collection<bhv> $$1) {
-      List<bhv> $$2 = Lists.newArrayList();
-      $$2.addAll($$0.a());
-      $$2.addAll($$1);
-      return $$2;
-   }
-
-   public static List<bhv> a(@Nullable qr $$0) {
-      List<bhv> $$1 = Lists.newArrayList();
-      $$1.addAll(c($$0).a());
-      a($$0, $$1);
-      return $$1;
-   }
-
-   public static List<bhv> b(cix $$0) {
-      return b($$0.v());
-   }
-
-   public static List<bhv> b(@Nullable qr $$0) {
-      List<bhv> $$1 = Lists.newArrayList();
-      a($$0, $$1);
-      return $$1;
-   }
-
-   public static void a(@Nullable qr $$0, List<bhv> $$1) {
-      if ($$0 != null && $$0.b("custom_potion_effects", 9)) {
-         qx $$2 = $$0.c("custom_potion_effects", 10);
-
-         for (int $$3 = 0; $$3 < $$2.size(); $$3++) {
-            qr $$4 = $$2.a($$3);
-            bhv $$5 = bhv.b($$4);
-            if ($$5 != null) {
-               $$1.add($$5);
-            }
-         }
+   public static boolean a(@Nullable qu $$0) {
+      if (!ckv.a($$0)) {
+         return false;
+      } else if (!$$0.b("title", 8)) {
+         return false;
+      } else {
+         String $$1 = $$0.l("title");
+         return $$1.length() > 32 ? false : $$0.b("author", 8);
       }
    }
 
-   public static int c(cix $$0) {
-      qr $$1 = $$0.v();
-      if ($$1 != null && $$1.b("CustomPotionColor", 99)) {
-         return $$1.h("CustomPotionColor");
-      } else {
-         return d($$0) == ckx.b ? 16253176 : a(a($$0));
+   public static int d(cja $$0) {
+      return $$0.v().h("generation");
+   }
+
+   public static int k(cja $$0) {
+      qu $$1 = $$0.v();
+      return $$1 != null ? $$1.c("pages", 8).size() : 0;
+   }
+
+   @Override
+   public ti m(cja $$0) {
+      qu $$1 = $$0.v();
+      if ($$1 != null) {
+         String $$2 = $$1.l("title");
+         if (!asl.b($$2)) {
+            return ti.b($$2);
+         }
+      }
+
+      return super.m($$0);
+   }
+
+   @Override
+   public void a(cja $$0, @Nullable cpq $$1, List<ti> $$2, ckr $$3) {
+      if ($$0.u()) {
+         qu $$4 = $$0.v();
+         String $$5 = $$4.l("author");
+         if (!asl.b($$5)) {
+            $$2.add(ti.a("book.byAuthor", $$5).a(n.h));
+         }
+
+         $$2.add(ti.c("book.generation." + $$4.h("generation")).a(n.h));
       }
    }
 
-   public static int a(cku $$0) {
-      return $$0 == ckx.b ? 16253176 : a($$0.a());
+   @Override
+   public bgt a(clk $$0) {
+      cpq $$1 = $$0.q();
+      gw $$2 = $$0.a();
+      dfe $$3 = $$1.a_($$2);
+      if ($$3.a(csr.oa)) {
+         return cwy.a($$0.o(), $$1, $$2, $$3, $$0.n()) ? bgt.a($$1.B) : bgt.d;
+      } else {
+         return bgt.d;
+      }
    }
 
-   public static int a(Collection<bhv> $$0) {
-      int $$1 = 3694022;
-      if ($$0.isEmpty()) {
-         return 3694022;
-      } else {
-         float $$2 = 0.0F;
-         float $$3 = 0.0F;
-         float $$4 = 0.0F;
-         int $$5 = 0;
+   @Override
+   public bgu<cja> a(cpq $$0, cbp $$1, bgs $$2) {
+      cja $$3 = $$1.b($$2);
+      $$1.a($$3, $$2);
+      $$1.b(apj.c.b(this));
+      return bgu.a($$3, $$0.r_());
+   }
 
-         for (bhv $$6 : $$0) {
-            if ($$6.g()) {
-               int $$7 = $$6.c().g();
-               int $$8 = $$6.e() + 1;
-               $$2 += (float)($$8 * ($$7 >> 16 & 0xFF)) / 255.0F;
-               $$3 += (float)($$8 * ($$7 >> 8 & 0xFF)) / 255.0F;
-               $$4 += (float)($$8 * ($$7 >> 0 & 0xFF)) / 255.0F;
-               $$5 += $$8;
-            }
-         }
-
-         if ($$5 == 0) {
-            return 0;
+   public static boolean a(cja $$0, @Nullable dt $$1, @Nullable cbp $$2) {
+      qu $$3 = $$0.v();
+      if ($$3 != null && !$$3.q("resolved")) {
+         $$3.a("resolved", true);
+         if (!a($$3)) {
+            return false;
          } else {
-            $$2 = $$2 / (float)$$5 * 255.0F;
-            $$3 = $$3 / (float)$$5 * 255.0F;
-            $$4 = $$4 / (float)$$5 * 255.0F;
-            return (int)$$2 << 16 | (int)$$3 << 8 | (int)$$4;
-         }
-      }
-   }
+            ra $$4 = $$3.c("pages", 8);
+            ra $$5 = new ra();
 
-   public static cku d(cix $$0) {
-      return c($$0.v());
-   }
-
-   public static cku c(@Nullable qr $$0) {
-      return $$0 == null ? ckx.b : cku.a($$0.l("Potion"));
-   }
-
-   public static cix a(cix $$0, cku $$1) {
-      aer $$2 = jb.j.b($$1);
-      if ($$1 == ckx.b) {
-         $$0.c("Potion");
-      } else {
-         $$0.w().a("Potion", $$2.toString());
-      }
-
-      return $$0;
-   }
-
-   public static cix a(cix $$0, Collection<bhv> $$1) {
-      if ($$1.isEmpty()) {
-         return $$0;
-      } else {
-         qr $$2 = $$0.w();
-         qx $$3 = $$2.c("custom_potion_effects", 9);
-
-         for (bhv $$4 : $$1) {
-            $$3.add($$4.a(new qr()));
-         }
-
-         $$2.a("custom_potion_effects", $$3);
-         return $$0;
-      }
-   }
-
-   public static void a(cix $$0, List<tf> $$1, float $$2) {
-      a(a($$0), $$1, $$2);
-   }
-
-   public static void a(List<bhv> $$0, List<tf> $$1, float $$2) {
-      List<Pair<bjz, bkc>> $$3 = Lists.newArrayList();
-      if ($$0.isEmpty()) {
-         $$1.add(e);
-      } else {
-         for (bhv $$4 : $$0) {
-            ts $$5 = tf.c($$4.i());
-            bht $$6 = $$4.c();
-            Map<bjz, bho> $$7 = $$6.h();
-            if (!$$7.isEmpty()) {
-               for (Entry<bjz, bho> $$8 : $$7.entrySet()) {
-                  $$3.add(new Pair($$8.getKey(), $$8.getValue().a($$4.e())));
+            for (int $$6 = 0; $$6 < $$4.size(); $$6++) {
+               String $$7 = a($$1, $$2, $$4.j($$6));
+               if ($$7.length() > 32767) {
+                  return false;
                }
+
+               $$5.c($$6, rl.a($$7));
             }
 
-            if ($$4.e() > 0) {
-               $$5 = tf.a("potion.withAmplifier", $$5, tf.c("potion.potency." + $$4.e()));
+            if ($$3.b("filtered_pages", 10)) {
+               qu $$8 = $$3.p("filtered_pages");
+               qu $$9 = new qu();
+
+               for (String $$10 : $$8.e()) {
+                  String $$11 = a($$1, $$2, $$8.l($$10));
+                  if ($$11.length() > 32767) {
+                     return false;
+                  }
+
+                  $$9.a($$10, $$11);
+               }
+
+               $$3.a("filtered_pages", $$9);
             }
 
-            if (!$$4.a(20)) {
-               $$5 = tf.a("potion.withDuration", $$5, bhw.a($$4, $$2));
-            }
-
-            $$1.add($$5.a($$6.f().a()));
+            $$3.a("pages", $$5);
+            return true;
          }
+      } else {
+         return false;
+      }
+   }
+
+   private static String a(@Nullable dt $$0, @Nullable cbp $$1, String $$2) {
+      ti $$5;
+      try {
+         $$5 = ti.a.b($$2);
+         $$5 = tk.a($$0, $$5, $$1, 0);
+      } catch (Exception var5) {
+         $$5 = ti.b($$2);
       }
 
-      if (!$$3.isEmpty()) {
-         $$1.add(te.a);
-         $$1.add(tf.c("potion.whenDrank").a(n.f));
+      return ti.a.a($$5);
+   }
 
-         for (Pair<bjz, bkc> $$9 : $$3) {
-            bkc $$10 = (bkc)$$9.getSecond();
-            double $$11 = $$10.d();
-            double $$13;
-            if ($$10.c() != bkc.a.b && $$10.c() != bkc.a.c) {
-               $$13 = $$10.d();
-            } else {
-               $$13 = $$10.d() * 100.0;
-            }
-
-            if ($$11 > 0.0) {
-               $$1.add(tf.a("attribute.modifier.plus." + $$10.c().a(), cix.c.format($$13), tf.c(((bjz)$$9.getFirst()).c())).a(n.j));
-            } else if ($$11 < 0.0) {
-               $$13 *= -1.0;
-               $$1.add(tf.a("attribute.modifier.take." + $$10.c().a(), cix.c.format($$13), tf.c(((bjz)$$9.getFirst()).c())).a(n.m));
-            }
-         }
-      }
+   @Override
+   public boolean i(cja $$0) {
+      return true;
    }
 }

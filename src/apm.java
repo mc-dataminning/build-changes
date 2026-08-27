@@ -1,11 +1,16 @@
 public class apm {
-   public static final aqa<bun> a = a("default_spawns");
-   public static final aqa<bun> b = a("full_moon_spawns");
+   public static final aqd<dch> a = a("no_item_required");
+   public static final aqd<dch> b = a("pattern_item/flower");
+   public static final aqd<dch> c = a("pattern_item/creeper");
+   public static final aqd<dch> d = a("pattern_item/skull");
+   public static final aqd<dch> e = a("pattern_item/mojang");
+   public static final aqd<dch> f = a("pattern_item/globe");
+   public static final aqd<dch> g = a("pattern_item/piglin");
 
    private apm() {
    }
 
-   private static aqa<bun> a(String $$0) {
-      return aqa.a(jc.j, new aer($$0));
+   private static aqd<dch> a(String $$0) {
+      return aqd.a(je.c, new aeu($$0));
    }
 }

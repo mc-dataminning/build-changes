@@ -1,26 +1,38 @@
-import java.util.function.Function;
+import org.joml.Vector3f;
+import org.lwjgl.openal.AL10;
 
-public interface ejh {
-   float getAdvance();
+public class ejh {
+   private float a = 1.0F;
+   private ehi b;
 
-   default float a(boolean $$0) {
-      return this.getAdvance() + ($$0 ? this.a() : 0.0F);
+   public ejh() {
+      this.b = ehi.b;
    }
 
-   default float a() {
-      return 1.0F;
+   public void a(ehi $$0) {
+      this.b = $$0;
+      AL10.alListener3f(4100, (float)$$0.c, (float)$$0.d, (float)$$0.e);
    }
 
-   default float b() {
-      return 1.0F;
+   public ehi a() {
+      return this.b;
    }
 
-   euy bake(Function<ejj, euy> var1);
+   public void a(Vector3f $$0, Vector3f $$1) {
+      AL10.alListenerfv(4111, new float[]{$$0.x(), $$0.y(), $$0.z(), $$1.x(), $$1.y(), $$1.z()});
+   }
 
-   public interface a extends ejh {
-      @Override
-      default euy bake(Function<ejj, euy> $$0) {
-         return euz.a;
-      }
+   public void a(float $$0) {
+      AL10.alListenerf(4106, $$0);
+      this.a = $$0;
+   }
+
+   public float b() {
+      return this.a;
+   }
+
+   public void c() {
+      this.a(ehi.b);
+      this.a(new Vector3f(0.0F, 0.0F, -1.0F), new Vector3f(0.0F, 1.0F, 0.0F));
    }
 }

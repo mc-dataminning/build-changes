@@ -1,92 +1,146 @@
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+public class dda extends dcq {
+   private boolean a;
+   private boolean b;
+   private boolean c;
+   private final cor d = new cor() {
+      @Override
+      public void a(String $$0) {
+         super.a($$0);
+         dda.this.e();
+      }
 
-public class dda extends dcl {
-   public static final String a = "sherds";
-   private dda.a b = dda.a.a;
+      @Override
+      public akn e() {
+         return (akn)dda.this.o;
+      }
 
-   public dda(gu $$0, dez $$1) {
-      super(dcn.O, $$0, $$1);
+      @Override
+      public void f() {
+         dfe $$0 = dda.this.o.a_(dda.this.p);
+         this.e().a(dda.this.p, $$0, $$0, 3);
+      }
+
+      @Override
+      public ehi g() {
+         return ehi.b(dda.this.p);
+      }
+
+      @Override
+      public dt i() {
+         hc $$0 = dda.this.q().c(ctx.a);
+         return new dt(this, ehi.b(dda.this.p), new ehh(0.0F, $$0.p()), this.e(), 2, this.n().getString(), this.n(), this.e().n(), null);
+      }
+
+      @Override
+      public boolean j() {
+         return !dda.this.r();
+      }
+   };
+
+   public dda(gw $$0, dfe $$1) {
+      super(dcs.w, $$0, $$1);
    }
 
    @Override
-   protected void b(qr $$0) {
+   protected void b(qu $$0) {
       super.b($$0);
-      this.b.a($$0);
+      this.d.a($$0);
+      $$0.a("powered", this.d());
+      $$0.a("conditionMet", this.i());
+      $$0.a("auto", this.f());
    }
 
    @Override
-   public void a(qr $$0) {
+   public void a(qu $$0) {
       super.a($$0);
-      this.b = dda.a.b($$0);
-   }
-
-   public wx c() {
-      return wx.a(this);
+      this.d.b($$0);
+      this.a = $$0.q("powered");
+      this.c = $$0.q("conditionMet");
+      this.b($$0.q("auto"));
    }
 
    @Override
-   public qr an_() {
-      return this.o();
+   public boolean t() {
+      return true;
    }
 
-   public ha d() {
-      return this.q().c(dfp.R);
+   public cor c() {
+      return this.d;
    }
 
-   public dda.a f() {
+   public void a(boolean $$0) {
+      this.a = $$0;
+   }
+
+   public boolean d() {
+      return this.a;
+   }
+
+   public boolean f() {
       return this.b;
    }
 
-   public void a(cix $$0) {
-      this.b = dda.a.b(cgq.a($$0));
+   public void b(boolean $$0) {
+      boolean $$1 = this.b;
+      this.b = $$0;
+      if (!$$1 && $$0 && !this.a && this.o != null && this.v() != dda.a.a) {
+         this.x();
+      }
    }
 
-   public cix g() {
-      return a(this.b);
+   public void g() {
+      dda.a $$0 = this.v();
+      if ($$0 == dda.a.b && (this.a || this.b) && this.o != null) {
+         this.x();
+      }
    }
 
-   public static cix a(dda.a $$0) {
-      cix $$1 = cja.eg.ad_();
-      qr $$2 = $$0.a(new qr());
-      cgq.a($$1, dcn.O, $$2);
-      return $$1;
+   private void x() {
+      csq $$0 = this.q().b();
+      if ($$0 instanceof ctx) {
+         this.j();
+         this.o.a(this.p, $$0, 1);
+      }
    }
 
-   public static record a(cis b, cis c, cis d, cis e) {
-      public static final dda.a a = new dda.a(cja.pX, cja.pX, cja.pX, cja.pX);
+   public boolean i() {
+      return this.c;
+   }
 
-      public qr a(qr $$0) {
-         if (this.equals(a)) {
-            return $$0;
+   public boolean j() {
+      this.c = true;
+      if (this.w()) {
+         gw $$0 = this.p.a(this.o.a_(this.p).c(ctx.a).g());
+         if (this.o.a_($$0).b() instanceof ctx) {
+            dcq $$1 = this.o.c_($$0);
+            this.c = $$1 instanceof dda && ((dda)$$1).c().k() > 0;
          } else {
-            qx $$1 = new qx();
-            this.a().forEach($$1x -> $$1.add(ri.a(jb.i.b($$1x).toString())));
-            $$0.a("sherds", $$1);
-            return $$0;
+            this.c = false;
          }
       }
 
-      public Stream<cis> a() {
-         return Stream.of(this.b, this.c, this.d, this.e);
-      }
+      return this.c;
+   }
 
-      public static dda.a b(@Nullable qr $$0) {
-         if ($$0 != null && $$0.b("sherds", 9)) {
-            qx $$1 = $$0.c("sherds", 8);
-            return new dda.a(a($$1, 0), a($$1, 1), a($$1, 2), a($$1, 3));
-         } else {
-            return a;
-         }
+   public dda.a v() {
+      dfe $$0 = this.q();
+      if ($$0.a(csr.fN)) {
+         return dda.a.c;
+      } else if ($$0.a(csr.kG)) {
+         return dda.a.b;
+      } else {
+         return $$0.a(csr.kH) ? dda.a.a : dda.a.c;
       }
+   }
 
-      private static cis a(qx $$0, int $$1) {
-         if ($$1 >= $$0.size()) {
-            return cja.pX;
-         } else {
-            rk $$2 = $$0.k($$1);
-            return jb.i.a(aer.a($$2.m_()));
-         }
-      }
+   public boolean w() {
+      dfe $$0 = this.o.a_(this.p());
+      return $$0.b() instanceof ctx ? $$0.c(ctx.b) : false;
+   }
+
+   public static enum a {
+      a,
+      b,
+      c;
    }
 }

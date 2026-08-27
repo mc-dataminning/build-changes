@@ -1,48 +1,28 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dri extends drc {
-   public static final Codec<dri> a = RecordCodecBuilder.create(
-      $$0 -> b($$0).and(bfv.b(0, 24).fieldOf("trunk_height").forGetter($$0x -> $$0x.b)).apply($$0, dri::new)
-   );
-   private final bfv b;
+public class dri<P extends drh> {
+   public static final dri<drc> a = a("blob_foliage_placer", drc.a);
+   public static final dri<drn> b = a("spruce_foliage_placer", drn.a);
+   public static final dri<drl> c = a("pine_foliage_placer", drl.a);
+   public static final dri<drb> d = a("acacia_foliage_placer", drb.a);
+   public static final dri<drd> e = a("bush_foliage_placer", drd.c);
+   public static final dri<drg> f = a("fancy_foliage_placer", drg.c);
+   public static final dri<drj> g = a("jungle_foliage_placer", drj.a);
+   public static final dri<drk> h = a("mega_pine_foliage_placer", drk.a);
+   public static final dri<drf> i = a("dark_oak_foliage_placer", drf.a);
+   public static final dri<drm> j = a("random_spread_foliage_placer", drm.a);
+   public static final dri<dre> k = a("cherry_foliage_placer", dre.a);
+   private final Codec<P> l;
 
-   public dri(bfv $$0, bfv $$1, bfv $$2) {
-      super($$0, $$1);
-      this.b = $$2;
+   private static <P extends drh> dri<P> a(String $$0, Codec<P> $$1) {
+      return ht.a(jd.X, $$0, new dri<>($$1));
    }
 
-   @Override
-   protected drd<?> a() {
-      return drd.b;
+   private dri(Codec<P> $$0) {
+      this.l = $$0;
    }
 
-   @Override
-   protected void a(cpr $$0, drc.b $$1, aru $$2, dqm $$3, int $$4, drc.a $$5, int $$6, int $$7, int $$8) {
-      gu $$9 = $$5.a();
-      int $$10 = $$2.a(2);
-      int $$11 = 1;
-      int $$12 = 0;
-
-      for (int $$13 = $$8; $$13 >= -$$6; $$13--) {
-         this.a($$0, $$1, $$2, $$3, $$9, $$10, $$13, $$5.c());
-         if ($$10 >= $$11) {
-            $$10 = $$12;
-            $$12 = 1;
-            $$11 = Math.min($$11 + 1, $$7 + $$5.b());
-         } else {
-            $$10++;
-         }
-      }
-   }
-
-   @Override
-   public int a(aru $$0, int $$1, dqm $$2) {
-      return Math.max(4, $$1 - this.b.a($$0));
-   }
-
-   @Override
-   protected boolean a(aru $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$1 == $$4 && $$3 == $$4 && $$4 > 0;
+   public Codec<P> a() {
+      return this.l;
    }
 }

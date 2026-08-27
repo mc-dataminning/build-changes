@@ -1,24 +1,18 @@
-public class abn implements ux<aaw> {
-   private final int a;
-
-   public abn(int $$0) {
-      this.a = $$0;
-   }
-
-   public void a(aaw $$0) {
-      $$0.a(this);
-   }
-
-   public abn(si $$0) {
-      this.a = $$0.readByte();
+public record abn() implements va<aaz> {
+   public abn(sl $$0) {
+      this();
    }
 
    @Override
-   public void a(si $$0) {
-      $$0.k(this.a);
+   public void a(sl $$0) {
    }
 
-   public int a() {
-      return this.a;
+   public void a(aaz $$0) {
+      $$0.a(this);
+   }
+
+   @Override
+   public sk c() {
+      return sk.e;
    }
 }

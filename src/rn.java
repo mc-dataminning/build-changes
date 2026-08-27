@@ -1,7 +1,52 @@
-public class rn {
-   private static final rm<?>[] a = new rm[]{qt.a, qp.a, rf.a, qw.a, qz.a, qu.b, qs.b, qo.a, ri.a, qx.a, qr.b, qv.a, qy.a};
+import java.io.DataOutput;
+import java.io.IOException;
 
-   public static rm<?> a(int $$0) {
-      return $$0 >= 0 && $$0 < a.length ? a[$$0] : rm.a($$0);
+public interface rn {
+   int d = 8;
+   int e = 12;
+   int f = 4;
+   int g = 28;
+   byte h = 0;
+   byte i = 1;
+   byte j = 2;
+   byte k = 3;
+   byte l = 4;
+   byte m = 5;
+   byte n = 6;
+   byte o = 7;
+   byte p = 8;
+   byte q = 9;
+   byte r = 10;
+   byte s = 11;
+   byte t = 12;
+   byte u = 99;
+   int v = 512;
+
+   void a(DataOutput var1) throws IOException;
+
+   @Override
+   String toString();
+
+   byte b();
+
+   rp<?> c();
+
+   rn d();
+
+   int a();
+
+   default String m_() {
+      return new rm().a(this);
+   }
+
+   void a(rr var1);
+
+   rk.b a(rk var1);
+
+   default void b(rk $$0) {
+      rk.b $$1 = $$0.b(this.c());
+      if ($$1 == rk.b.a) {
+         this.a($$0);
+      }
    }
 }

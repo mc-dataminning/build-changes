@@ -1,65 +1,33 @@
+import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 import java.util.Set;
 
-public record efe(he<csl> b, Optional<cy> c) implements eff {
-   public static final Codec<efe> a = aqy.a(
-      RecordCodecBuilder.create($$0 -> $$0.group(jb.f.r().fieldOf("block").forGetter(efe::c), aqy.a(cy.a, "properties").forGetter(efe::d)).apply($$0, efe::new)),
-      efe::a
-   );
+public record efe(Optional<bf> b) implements efk {
+   public static final Codec<efe> a = RecordCodecBuilder.create($$0 -> $$0.group(arb.a(bf.a, "predicate").forGetter(efe::c)).apply($$0, efe::new));
 
-   private static DataResult<efe> a(efe $$0) {
-      return $$0.d()
-         .flatMap($$1 -> $$1.a($$0.c().a().l()))
-         .map($$1 -> DataResult.error(() -> "Block " + $$0.c() + " has no property" + $$1))
-         .orElse(DataResult.success($$0));
+   @Override
+   public efl b() {
+      return efm.n;
    }
 
    @Override
-   public efg b() {
-      return efh.j;
+   public Set<eet<?>> a() {
+      return ImmutableSet.of(eew.f, eew.c);
    }
 
-   @Override
-   public Set<eeo<?>> a() {
-      return Set.of(eer.g);
+   public boolean a(ecl $$0) {
+      bhj $$1 = $$0.c(eew.c);
+      ehi $$2 = $$0.c(eew.f);
+      return $$2 != null && $$1 != null ? this.b.isEmpty() || this.b.get().a($$0.d(), $$2, $$1) : false;
    }
 
-   public boolean a(ecg $$0) {
-      dez $$1 = $$0.c(eer.g);
-      return $$1 != null && $$1.a(this.b) && (this.c.isEmpty() || this.c.get().a($$1));
+   public static efk.a a(bf.a $$0) {
+      return () -> new efe(Optional.of($$0.b()));
    }
 
-   public static efe.a a(csl $$0) {
-      return new efe.a($$0);
-   }
-
-   public he<csl> c() {
+   public Optional<bf> c() {
       return this.b;
-   }
-
-   public Optional<cy> d() {
-      return this.c;
-   }
-
-   public static class a implements eff.a {
-      private final he<csl> a;
-      private Optional<cy> b = Optional.empty();
-
-      public a(csl $$0) {
-         this.a = $$0.q();
-      }
-
-      public efe.a a(cy.a $$0) {
-         this.b = $$0.b();
-         return this;
-      }
-
-      @Override
-      public eff build() {
-         return new efe(this.a, this.b);
-      }
    }
 }

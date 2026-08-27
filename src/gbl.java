@@ -1,17 +1,12 @@
-public abstract class gbl extends gbk implements gcd {
-   private boolean n;
+import java.util.Collection;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-   protected gbl(aov $$0, aox $$1, aru $$2) {
-      super($$0, $$1, $$2);
-   }
+public interface gbl {
+   Collection<aeu> f();
 
-   @Override
-   public boolean m() {
-      return this.n;
-   }
+   void a(Function<aeu, gbl> var1);
 
-   protected final void n() {
-      this.n = true;
-      this.i = false;
-   }
+   @Nullable
+   gba a(gbe var1, Function<gbd, fyz> var2, gbi var3, aeu var4);
 }

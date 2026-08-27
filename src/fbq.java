@@ -1,116 +1,244 @@
-import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
+import javax.annotation.Nullable;
 
-public class fbq {
-   private final hs a;
-   private final List<cma<?>> b;
-   private final boolean c;
-   private final Set<cma<?>> d = Sets.newHashSet();
-   private final Set<cma<?>> e = Sets.newHashSet();
-   private final Set<cma<?>> f = Sets.newHashSet();
+public class fbq implements etn, euf {
+   private static final aeu b = new aeu("recipe_book/overlay_recipe");
+   static final aeu c = new aeu("recipe_book/furnace_overlay_highlighted");
+   static final aeu d = new aeu("recipe_book/furnace_overlay");
+   static final aeu e = new aeu("recipe_book/crafting_overlay_highlighted");
+   static final aeu f = new aeu("recipe_book/crafting_overlay");
+   static final aeu g = new aeu("recipe_book/furnace_overlay_disabled_highlighted");
+   static final aeu h = new aeu("recipe_book/furnace_overlay_disabled");
+   static final aeu i = new aeu("recipe_book/crafting_overlay_disabled_highlighted");
+   static final aeu j = new aeu("recipe_book/crafting_overlay_disabled");
+   private static final int k = 4;
+   private static final int l = 5;
+   private static final float m = 0.375F;
+   public static final int a = 25;
+   private final List<fbq.a> n = Lists.newArrayList();
+   private boolean o;
+   private int p;
+   private int q;
+   private eqq s;
+   private fbv t;
+   @Nullable
+   private cmf<?> u;
+   float v;
+   boolean w;
 
-   public fbq(hs $$0, List<cma<?>> $$1) {
-      this.a = $$0;
-      this.b = ImmutableList.copyOf($$1);
-      if ($$1.size() <= 1) {
-         this.c = true;
+   public void a(eqq $$0, fbv $$1, int $$2, int $$3, int $$4, int $$5, float $$6) {
+      this.s = $$0;
+      this.t = $$1;
+      if ($$0.s.bQ instanceof ceh) {
+         this.w = true;
+      }
+
+      boolean $$7 = $$0.s.m().a((cfq<?>)$$0.s.bQ);
+      List<cmf<?>> $$8 = $$1.b(true);
+      List<cmf<?>> $$9 = $$7 ? Collections.emptyList() : $$1.b(false);
+      int $$10 = $$8.size();
+      int $$11 = $$10 + $$9.size();
+      int $$12 = $$11 <= 16 ? 4 : 5;
+      int $$13 = (int)Math.ceil((double)((float)$$11 / (float)$$12));
+      this.p = $$2;
+      this.q = $$3;
+      float $$14 = (float)(this.p + Math.min($$11, $$12) * 25);
+      float $$15 = (float)($$4 + 50);
+      if ($$14 > $$15) {
+         this.p = (int)((float)this.p - $$6 * (float)((int)(($$14 - $$15) / $$6)));
+      }
+
+      float $$16 = (float)(this.q + $$13 * 25);
+      float $$17 = (float)($$5 + 50);
+      if ($$16 > $$17) {
+         this.q = (int)((float)this.q - $$6 * (float)ars.f(($$16 - $$17) / $$6));
+      }
+
+      float $$18 = (float)this.q;
+      float $$19 = (float)($$5 - 100);
+      if ($$18 < $$19) {
+         this.q = (int)((float)this.q - $$6 * (float)ars.f(($$18 - $$19) / $$6));
+      }
+
+      this.o = true;
+      this.n.clear();
+
+      for (int $$20 = 0; $$20 < $$11; $$20++) {
+         boolean $$21 = $$20 < $$10;
+         cmf<?> $$22 = $$21 ? $$8.get($$20) : $$9.get($$20 - $$10);
+         int $$23 = this.p + 4 + 25 * ($$20 % $$12);
+         int $$24 = this.q + 5 + 25 * ($$20 / $$12);
+         if (this.w) {
+            this.n.add(new fbq.b($$23, $$24, $$22, $$21));
+         } else {
+            this.n.add(new fbq.a($$23, $$24, $$22, $$21));
+         }
+      }
+
+      this.u = null;
+   }
+
+   public fbv a() {
+      return this.t;
+   }
+
+   @Nullable
+   public cmf<?> b() {
+      return this.u;
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      if ($$2 != 0) {
+         return false;
       } else {
-         this.c = a($$0, $$1);
+         for (fbq.a $$3 : this.n) {
+            if ($$3.a($$0, $$1, $$2)) {
+               this.u = $$3.c;
+               return true;
+            }
+         }
+
+         return false;
       }
    }
 
-   private static boolean a(hs $$0, List<cma<?>> $$1) {
-      int $$2 = $$1.size();
-      cix $$3 = $$1.get(0).a($$0);
+   @Override
+   public boolean a_(double $$0, double $$1) {
+      return false;
+   }
 
-      for (int $$4 = 1; $$4 < $$2; $$4++) {
-         cix $$5 = $$1.get($$4).a($$0);
-         if (!cix.c($$3, $$5)) {
-            return false;
+   @Override
+   public void a(esa $$0, int $$1, int $$2, float $$3) {
+      if (this.o) {
+         this.v += $$3;
+         RenderSystem.enableBlend();
+         $$0.c().a();
+         $$0.c().a(0.0F, 0.0F, 1000.0F);
+         int $$4 = this.n.size() <= 16 ? 4 : 5;
+         int $$5 = Math.min(this.n.size(), $$4);
+         int $$6 = ars.f((float)this.n.size() / (float)$$4);
+         int $$7 = 4;
+         $$0.a(b, this.p, this.q, $$5 * 25 + 8, $$6 * 25 + 8);
+         RenderSystem.disableBlend();
+
+         for (fbq.a $$8 : this.n) {
+            $$8.a($$0, $$1, $$2, $$3);
          }
-      }
 
-      return true;
-   }
-
-   public hs a() {
-      return this.a;
-   }
-
-   public boolean b() {
-      return !this.f.isEmpty();
-   }
-
-   public void a(aoz $$0) {
-      for (cma<?> $$1 : this.b) {
-         if ($$0.b($$1)) {
-            this.f.add($$1);
-         }
+         $$0.c().b();
       }
    }
 
-   public void a(cbq $$0, int $$1, int $$2, aoz $$3) {
-      for (cma<?> $$4 : this.b) {
-         boolean $$5 = $$4.a($$1, $$2) && $$3.b($$4);
-         if ($$5) {
-            this.e.add($$4);
-         } else {
-            this.e.remove($$4);
-         }
-
-         if ($$5 && $$0.a($$4, null)) {
-            this.d.add($$4);
-         } else {
-            this.d.remove($$4);
-         }
-      }
-   }
-
-   public boolean a(cma<?> $$0) {
-      return this.d.contains($$0);
-   }
-
-   public boolean c() {
-      return !this.d.isEmpty();
+   public void b(boolean $$0) {
+      this.o = $$0;
    }
 
    public boolean d() {
-      return !this.e.isEmpty();
+      return this.o;
    }
 
-   public List<cma<?>> e() {
-      return this.b;
+   @Override
+   public void b_(boolean $$0) {
    }
 
-   public List<cma<?>> a(boolean $$0) {
-      List<cma<?>> $$1 = Lists.newArrayList();
-      Set<cma<?>> $$2 = $$0 ? this.d : this.e;
+   @Override
+   public boolean ay_() {
+      return false;
+   }
 
-      for (cma<?> $$3 : this.b) {
-         if ($$2.contains($$3)) {
-            $$1.add($$3);
+   class a extends esj implements aej<cmb> {
+      final cmf<?> c;
+      private final boolean d;
+      protected final List<fbq.a.a> a = Lists.newArrayList();
+
+      public a(int $$0, int $$1, cmf<?> $$2, boolean $$3) {
+         super($$0, $$1, 200, 20, th.a);
+         this.f = 24;
+         this.g = 24;
+         this.c = $$2;
+         this.d = $$3;
+         this.a($$2);
+      }
+
+      protected void a(cmf<?> $$0) {
+         this.a(3, 3, -1, $$0, $$0.b().a().iterator(), 0);
+      }
+
+      @Override
+      public void a(ewd $$0) {
+         this.c($$0);
+      }
+
+      @Override
+      public void a(Iterator<cmb> $$0, int $$1, int $$2, int $$3, int $$4) {
+         cja[] $$5 = $$0.next().a();
+         if ($$5.length != 0) {
+            this.a.add(new fbq.a.a(3 + $$4 * 7, 3 + $$3 * 7, $$5));
          }
       }
 
-      return $$1;
-   }
-
-   public List<cma<?>> b(boolean $$0) {
-      List<cma<?>> $$1 = Lists.newArrayList();
-
-      for (cma<?> $$2 : this.b) {
-         if (this.e.contains($$2) && this.d.contains($$2) == $$0) {
-            $$1.add($$2);
+      @Override
+      public void b(esa $$0, int $$1, int $$2, float $$3) {
+         aeu $$4;
+         if (this.d) {
+            if (fbq.this.w) {
+               $$4 = this.o() ? fbq.c : fbq.d;
+            } else {
+               $$4 = this.o() ? fbq.e : fbq.f;
+            }
+         } else if (fbq.this.w) {
+            $$4 = this.o() ? fbq.g : fbq.h;
+         } else {
+            $$4 = this.o() ? fbq.i : fbq.j;
          }
+
+         $$0.a($$4, this.r(), this.t(), this.f, this.g);
+         $$0.c().a();
+         $$0.c().a((double)(this.r() + 2), (double)(this.t() + 2), 150.0);
+
+         for (fbq.a.a $$8 : this.a) {
+            $$0.c().a();
+            $$0.c().a((double)$$8.b, (double)$$8.c, 0.0);
+            $$0.c().b(0.375F, 0.375F, 1.0F);
+            $$0.c().a(-8.0, -8.0, 0.0);
+            if ($$8.a.length > 0) {
+               $$0.a($$8.a[ars.d(fbq.this.v / 30.0F) % $$8.a.length], 0, 0);
+            }
+
+            $$0.c().b();
+         }
+
+         $$0.c().b();
       }
 
-      return $$1;
+      protected class a {
+         public final cja[] a;
+         public final int b;
+         public final int c;
+
+         public a(int $$1, int $$2, cja[] $$3) {
+            this.b = $$1;
+            this.c = $$2;
+            this.a = $$3;
+         }
+      }
    }
 
-   public boolean f() {
-      return this.c;
+   class b extends fbq.a {
+      public b(int $$0, int $$1, cmf<?> $$2, boolean $$3) {
+         super($$0, $$1, $$2, $$3);
+      }
+
+      @Override
+      protected void a(cmf<?> $$0) {
+         cmb $$1 = $$0.b().a().get(0);
+         cja[] $$2 = $$1.a();
+         this.a.add(new fbq.a.a(10, 10, $$2));
+      }
    }
 }

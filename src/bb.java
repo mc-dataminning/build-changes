@@ -1,49 +1,43 @@
 import com.google.gson.JsonObject;
 import java.util.Optional;
 
-public class bb extends cu<bb.a> {
-   static final aer a = new aer("cured_zombie_villager");
-
-   @Override
-   public aer a() {
-      return a;
+public class bb extends cw<bb.a> {
+   public bb.a a(JsonObject $$0, Optional<bc> $$1, bg $$2) {
+      return new bb.a($$1, cb.a($$0.get("item")));
    }
 
-   public bb.a a(JsonObject $$0, Optional<ba> $$1, be $$2) {
-      Optional<ba> $$3 = bo.a($$0, "zombie", $$2);
-      Optional<ba> $$4 = bo.a($$0, "villager", $$2);
-      return new bb.a($$1, $$3, $$4);
+   public void a(ako $$0, cja $$1) {
+      this.a($$0, $$1x -> $$1x.a($$1));
    }
 
-   public void a(akl $$0, bzt $$1, caz $$2) {
-      ecg $$3 = bo.b($$0, $$1);
-      ecg $$4 = bo.b($$0, $$2);
-      this.a($$0, $$2x -> $$2x.a($$3, $$4));
-   }
+   public static class a extends at {
+      private final Optional<cb> a;
 
-   public static class a extends ar {
-      private final Optional<ba> a;
-      private final Optional<ba> b;
-
-      public a(Optional<ba> $$0, Optional<ba> $$1, Optional<ba> $$2) {
-         super(bb.a, $$0);
+      public a(Optional<bc> $$0, Optional<cb> $$1) {
+         super($$0);
          this.a = $$1;
-         this.b = $$2;
       }
 
-      public static bb.a d() {
-         return new bb.a(Optional.empty(), Optional.empty(), Optional.empty());
+      public static am<bb.a> c() {
+         return al.z.a(new bb.a(Optional.empty(), Optional.empty()));
       }
 
-      public boolean a(ecg $$0, ecg $$1) {
-         return this.a.isPresent() && !this.a.get().a($$0) ? false : !this.b.isPresent() || this.b.get().a($$1);
+      public static am<bb.a> a(cpp $$0) {
+         return a(cb.a.a().a($$0.k()));
+      }
+
+      public static am<bb.a> a(cb.a $$0) {
+         return al.z.a(new bb.a(Optional.empty(), Optional.of($$0.b())));
+      }
+
+      public boolean a(cja $$0) {
+         return this.a.isEmpty() || this.a.get().a($$0);
       }
 
       @Override
-      public JsonObject b() {
-         JsonObject $$0 = super.b();
-         this.a.ifPresent($$1 -> $$0.add("zombie", $$1.a()));
-         this.b.ifPresent($$1 -> $$0.add("villager", $$1.a()));
+      public JsonObject a() {
+         JsonObject $$0 = super.a();
+         this.a.ifPresent($$1 -> $$0.add("item", $$1.a()));
          return $$0;
       }
    }

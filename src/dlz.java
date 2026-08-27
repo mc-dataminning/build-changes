@@ -1,21 +1,22 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-@Deprecated
-public class dlz extends dma {
-   public static final Codec<dlz> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, dlz::new));
+public class dlz extends dmf {
+   final aqd<csq> a;
+   public static final Codec<dlz> e = RecordCodecBuilder.create($$0 -> a($$0).and(aqd.a(je.e).fieldOf("tag").forGetter($$0x -> $$0x.a)).apply($$0, dlz::new));
 
-   public dlz(hz $$0) {
+   protected dlz(ib $$0, aqd<csq> $$1) {
       super($$0);
+      this.a = $$1;
    }
 
    @Override
-   protected boolean a(dez $$0) {
-      return $$0.e();
+   protected boolean a(dfe $$0) {
+      return $$0.a(this.a);
    }
 
    @Override
-   public dlq<?> a() {
-      return dlq.e;
+   public dlv<?> a() {
+      return dlv.b;
    }
 }

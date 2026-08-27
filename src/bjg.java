@@ -1,15 +1,7 @@
-import java.util.UUID;
-import javax.annotation.Nullable;
-
-public interface bjg {
-   @Nullable
-   UUID d();
-
-   cpc e();
-
-   @Nullable
-   default biy I_() {
-      UUID $$0 = this.d();
-      return $$0 == null ? null : this.e().b($$0);
-   }
+public class bjg {
+   public static final bjg a = new bjg();
+   public static final bjg b = new bjg();
+   public static final bjg c = new bjg();
+   public static final bjg d = new bjg();
+   public static final bjg e = new bjg();
 }

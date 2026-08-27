@@ -1,34 +1,26 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.stream.Stream;
 
-public class dtx extends duf {
-   public static final Codec<dtx> a = RecordCodecBuilder.create($$0 -> $$0.group(dtf.c.fieldOf("height").forGetter($$0x -> $$0x.c)).apply($$0, dtx::new));
-   private final dtf c;
+public class dtx extends duk {
+   public static final Codec<dtx> a = dkj.a.c.fieldOf("step").xmap(dtx::new, $$0 -> $$0.c).codec();
+   private final dkj.a c;
 
-   private dtx(dtf $$0) {
+   private dtx(dkj.a $$0) {
       this.c = $$0;
    }
 
-   public static dtx a(dtf $$0) {
+   public static dtx a(dkj.a $$0) {
       return new dtx($$0);
    }
 
-   public static dtx a(dlc $$0, dlc $$1) {
-      return a(dti.a($$0, $$1));
-   }
-
-   public static dtx b(dlc $$0, dlc $$1) {
-      return a(dth.a($$0, $$1));
+   @Override
+   public Stream<gw> a_(dui $$0, arx $$1, gw $$2) {
+      cox $$3 = new cox($$2);
+      return $$0.a($$3, this.c).a($$3);
    }
 
    @Override
-   public Stream<gu> a_(dud $$0, aru $$1, gu $$2) {
-      return Stream.of($$2.h(this.c.a($$1, $$0)));
-   }
-
-   @Override
-   public dug<?> b() {
-      return dug.l;
+   public dul<?> b() {
+      return dul.o;
    }
 }

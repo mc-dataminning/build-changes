@@ -1,22 +1,49 @@
-import com.google.gson.JsonPrimitive;
+import com.google.common.collect.ImmutableList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
 
-public class la {
-   public static final lb<la.a> a = new lb<>("x", $$0 -> new JsonPrimitive($$0.e));
-   public static final lb<la.a> b = new lb<>("y", $$0 -> new JsonPrimitive($$0.e));
-   public static final lb<aer> c = new lb<>("model", $$0 -> new JsonPrimitive($$0.toString()));
-   public static final lb<Boolean> d = new lb<>("uvlock", JsonPrimitive::new);
-   public static final lb<Integer> e = new lb<>("weight", JsonPrimitive::new);
+public final class la {
+   private static final la a = new la(ImmutableList.of());
+   private static final Comparator<dgh.a<?>> b = Comparator.comparing($$0 -> $$0.a().f());
+   private final List<dgh.a<?>> c;
 
-   public static enum a {
-      a(0),
-      b(90),
-      c(180),
-      d(270);
+   public la a(dgh.a<?> $$0) {
+      return new la(ImmutableList.builder().addAll(this.c).add($$0).build());
+   }
 
-      final int e;
+   public la a(la $$0) {
+      return new la(ImmutableList.builder().addAll(this.c).addAll($$0.c).build());
+   }
 
-      private a(int $$0) {
-         this.e = $$0;
-      }
+   private la(List<dgh.a<?>> $$0) {
+      this.c = $$0;
+   }
+
+   public static la a() {
+      return a;
+   }
+
+   public static la a(dgh.a<?>... $$0) {
+      return new la(ImmutableList.copyOf($$0));
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      return this == $$0 || $$0 instanceof la && this.c.equals(((la)$$0).c);
+   }
+
+   @Override
+   public int hashCode() {
+      return this.c.hashCode();
+   }
+
+   public String b() {
+      return this.c.stream().sorted(b).map(dgh.a::toString).collect(Collectors.joining(","));
+   }
+
+   @Override
+   public String toString() {
+      return this.b();
    }
 }

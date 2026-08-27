@@ -1,70 +1,41 @@
 import com.google.gson.JsonObject;
-import com.google.gson.JsonSyntaxException;
 import java.util.Optional;
-import javax.annotation.Nullable;
 
-public class cv extends cu<cv.a> {
-   static final aer a = new aer("slide_down_block");
-
-   @Override
-   public aer a() {
-      return a;
+public class cv extends cw<cv.a> {
+   public cv.a a(JsonObject $$0, Optional<bc> $$1, bg $$2) {
+      Optional<cb> $$3 = cb.a($$0.get("item"));
+      return new cv.a($$1, $$3);
    }
 
-   public cv.a a(JsonObject $$0, Optional<ba> $$1, be $$2) {
-      csl $$3 = a($$0);
-      Optional<cy> $$4 = cy.a($$0.get("state"));
-      if ($$3 != null) {
-         $$4.ifPresent($$1x -> $$1x.a($$3.l(), $$1xx -> {
-               throw new JsonSyntaxException("Block " + $$3 + " has no property " + $$1xx);
-            }));
-      }
-
-      return new cv.a($$1, $$3, $$4);
-   }
-
-   @Nullable
-   private static csl a(JsonObject $$0) {
-      if ($$0.has("block")) {
-         aer $$1 = new aer(arg.i($$0, "block"));
-         return jb.f.b($$1).orElseThrow(() -> new JsonSyntaxException("Unknown block type '" + $$1 + "'"));
-      } else {
-         return null;
-      }
-   }
-
-   public void a(akl $$0, dez $$1) {
+   public void a(ako $$0, cja $$1) {
       this.a($$0, $$1x -> $$1x.a($$1));
    }
 
-   public static class a extends ar {
-      @Nullable
-      private final csl a;
-      private final Optional<cy> b;
+   public static class a extends at {
+      private final Optional<cb> a;
 
-      public a(Optional<ba> $$0, @Nullable csl $$1, Optional<cy> $$2) {
-         super(cv.a, $$0);
+      public a(Optional<bc> $$0, Optional<cb> $$1) {
+         super($$0);
          this.a = $$1;
-         this.b = $$2;
       }
 
-      public static cv.a a(csl $$0) {
-         return new cv.a(Optional.empty(), $$0, Optional.empty());
+      public static am<cv.a> a(Optional<cb> $$0) {
+         return al.F.a(new cv.a(Optional.empty(), $$0));
+      }
+
+      public static am<cv.a> a(cpp $$0) {
+         return al.F.a(new cv.a(Optional.empty(), Optional.of(cb.a.a().a($$0).b())));
+      }
+
+      public boolean a(cja $$0) {
+         return this.a.isEmpty() || this.a.get().a($$0);
       }
 
       @Override
-      public JsonObject b() {
-         JsonObject $$0 = super.b();
-         if (this.a != null) {
-            $$0.addProperty("block", jb.f.b(this.a).toString());
-         }
-
-         this.b.ifPresent($$1 -> $$0.add("state", $$1.a()));
+      public JsonObject a() {
+         JsonObject $$0 = super.a();
+         this.a.ifPresent($$1 -> $$0.add("item", $$1.a()));
          return $$0;
-      }
-
-      public boolean a(dez $$0) {
-         return this.a != null && !$$0.a(this.a) ? false : !this.b.isPresent() || this.b.get().a($$0);
       }
    }
 }

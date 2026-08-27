@@ -1,57 +1,46 @@
 import com.google.gson.JsonObject;
 import java.util.Optional;
 
-public class cq extends cu<cq.a> {
-   final aer a;
-
-   public cq(aer $$0) {
-      this.a = $$0;
+public class cq extends cw<cq.a> {
+   protected cq.a a(JsonObject $$0, Optional<bc> $$1, bg $$2) {
+      Optional<cb> $$3 = cb.a($$0.get("item"));
+      Optional<bc> $$4 = bq.a($$0, "entity", $$2);
+      return new cq.a($$1, $$3, $$4);
    }
 
-   @Override
-   public aer a() {
-      return this.a;
+   public void a(ako $$0, cja $$1, bil $$2) {
+      ecl $$3 = bq.b($$0, $$2);
+      this.a($$0, $$2x -> $$2x.a($$1, $$3));
    }
 
-   public cq.a a(JsonObject $$0, Optional<ba> $$1, be $$2) {
-      return new cq.a(this.a, $$1);
-   }
+   public static class a extends at {
+      private final Optional<cb> a;
+      private final Optional<bc> b;
 
-   public void a(akl $$0) {
-      this.a($$0, $$0x -> true);
-   }
-
-   public static class a extends ar {
-      public a(aer $$0, Optional<ba> $$1) {
-         super($$0, $$1);
+      public a(Optional<bc> $$0, Optional<cb> $$1, Optional<bc> $$2) {
+         super($$0);
+         this.a = $$1;
+         this.b = $$2;
       }
 
-      public static cq.a a(ch.a $$0) {
-         return new cq.a(ai.p.a, bo.a(bo.a.a().a($$0)));
+      public static am<cq.a> a(Optional<bc> $$0, cb.a $$1, Optional<bc> $$2) {
+         return al.Q.a(new cq.a($$0, Optional.of($$1.b()), $$2));
       }
 
-      public static cq.a a(Optional<bo> $$0) {
-         return new cq.a(ai.p.a, bo.a($$0));
+      public static am<cq.a> a(cb.a $$0, Optional<bc> $$1) {
+         return a(Optional.empty(), $$0, $$1);
       }
 
-      public static cq.a d() {
-         return new cq.a(ai.q.a, Optional.empty());
+      public boolean a(cja $$0, ecl $$1) {
+         return this.a.isPresent() && !this.a.get().a($$0) ? false : this.b.isEmpty() || this.b.get().a($$1);
       }
 
-      public static cq.a e() {
-         return new cq.a(ai.H.a, Optional.empty());
-      }
-
-      public static cq.a f() {
-         return new cq.a(ai.Y.a, Optional.empty());
-      }
-
-      public static cq.a g() {
-         return new cq.a(ai.w.a, Optional.empty());
-      }
-
-      public static cq.a a(csl $$0, cis $$1) {
-         return a(bo.a.a().a(bl.a.a().d(bz.a.a().a($$1))).b(ch.a.a().a(at.a.a().a($$0))).b());
+      @Override
+      public JsonObject a() {
+         JsonObject $$0 = super.a();
+         this.a.ifPresent($$1 -> $$0.add("item", $$1.a()));
+         this.b.ifPresent($$1 -> $$0.add("entity", $$1.a()));
+         return $$0;
       }
    }
 }

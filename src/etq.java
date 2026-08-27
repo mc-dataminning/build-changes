@@ -1,43 +1,39 @@
-import java.util.List;
+import com.mojang.blaze3d.systems.RenderSystem;
 import javax.annotation.Nullable;
 
-public class etq implements evz {
-   private static final int a = 170;
-   private final tf b;
+public class etq extends esj {
    @Nullable
-   private List<arc> c;
-   @Nullable
-   private final tf d;
+   protected etx a;
+   protected boolean b;
 
-   private etq(tf $$0, @Nullable tf $$1) {
+   public etq(int $$0, int $$1, int $$2, int $$3, boolean $$4) {
+      super($$0, $$1, $$2, $$3, th.a);
+      this.b = $$4;
+   }
+
+   public void a(etx $$0) {
+      this.a = $$0;
+   }
+
+   public void b(boolean $$0) {
       this.b = $$0;
-      this.d = $$1;
    }
 
-   public static etq a(tf $$0, @Nullable tf $$1) {
-      return new etq($$0, $$1);
-   }
-
-   public static etq a(tf $$0) {
-      return new etq($$0, $$0);
+   public boolean a() {
+      return this.b;
    }
 
    @Override
-   public void b(evy $$0) {
-      if (this.d != null) {
-         $$0.a(evx.c, this.d);
-      }
+   public void a(ewd $$0) {
+      this.c($$0);
    }
 
-   public List<arc> a(eql $$0) {
-      if (this.c == null) {
-         this.c = a($$0, this.b);
+   @Override
+   public void b(esa $$0, int $$1, int $$2, float $$3) {
+      if (this.a != null) {
+         RenderSystem.disableDepthTest();
+         $$0.a(this.a.a(this.b, this.o()), this.r(), this.t(), this.f, this.g);
+         RenderSystem.enableDepthTest();
       }
-
-      return this.c;
-   }
-
-   public static List<arc> a(eql $$0, tf $$1) {
-      return $$0.h.c($$1, 170);
    }
 }

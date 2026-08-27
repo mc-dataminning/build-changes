@@ -1,6 +1,6 @@
-public class coc extends cne {
-   public coc(cne.a $$0, bin... $$1) {
-      super($$0, cnf.n, $$1);
+public class coc extends cnj {
+   public coc(cnj.a $$0, biq... $$1) {
+      super($$0, cnk.i, $$1);
    }
 
    @Override
@@ -11,15 +11,5 @@ public class coc extends cne {
    @Override
    public int b(int $$0) {
       return 50;
-   }
-
-   @Override
-   public boolean b() {
-      return true;
-   }
-
-   @Override
-   public boolean c() {
-      return true;
    }
 }

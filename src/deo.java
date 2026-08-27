@@ -1,11 +1,6 @@
-public class deo extends dee {
+public class deo extends dek {
    @Override
-   protected aeq<dmz<?, ?>> a(aru $$0, boolean $$1) {
-      return or.k;
-   }
-
-   @Override
-   protected aeq<dmz<?, ?>> a(aru $$0) {
-      return $$0.h() ? or.q : or.r;
+   protected aet<dne<?, ?>> a(arx $$0, boolean $$1) {
+      return $$1 ? ou.K : ou.z;
    }
 }

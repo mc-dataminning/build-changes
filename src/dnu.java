@@ -1,46 +1,29 @@
 import com.mojang.serialization.Codec;
 
-public class dnu extends dmp {
-   public dnu(Codec<dps> $$0) {
+public class dnu extends dnr<dpz> {
+   public dnu(Codec<dpz> $$0) {
       super($$0);
    }
 
    @Override
-   protected void a(cpm $$0, aru $$1, gu $$2, int $$3, gu.a $$4, dps $$5) {
-      int $$6 = $$5.d;
+   public boolean a(dnt<dpz> $$0) {
+      gw $$1 = $$0.e();
+      dpz $$2 = $$0.f();
+      cqk $$3 = $$0.b();
+      gw.a $$4 = new gw.a();
 
-      for (int $$7 = -$$6; $$7 <= $$6; $$7++) {
-         for (int $$8 = -$$6; $$8 <= $$6; $$8++) {
-            boolean $$9 = $$7 == -$$6;
-            boolean $$10 = $$7 == $$6;
-            boolean $$11 = $$8 == -$$6;
-            boolean $$12 = $$8 == $$6;
-            boolean $$13 = $$9 || $$10;
-            boolean $$14 = $$11 || $$12;
-            if (!$$13 || !$$14) {
-               $$4.a($$2, $$7, $$3, $$8);
-               if (!$$0.a_($$4).i($$0, $$4)) {
-                  boolean $$15 = $$9 || $$14 && $$7 == 1 - $$6;
-                  boolean $$16 = $$10 || $$14 && $$7 == $$6 - 1;
-                  boolean $$17 = $$11 || $$13 && $$8 == 1 - $$6;
-                  boolean $$18 = $$12 || $$13 && $$8 == $$6 - 1;
-                  dez $$19 = $$5.b.a($$1, $$2);
-                  if ($$19.b(cwf.d) && $$19.b(cwf.b) && $$19.b(cwf.a) && $$19.b(cwf.c)) {
-                     $$19 = $$19.a(cwf.d, Boolean.valueOf($$15))
-                        .a(cwf.b, Boolean.valueOf($$16))
-                        .a(cwf.a, Boolean.valueOf($$17))
-                        .a(cwf.c, Boolean.valueOf($$18));
-                  }
-
-                  this.a($$0, $$4, $$19);
-               }
+      for (int $$5 = 0; $$5 < 16; $$5++) {
+         for (int $$6 = 0; $$6 < 16; $$6++) {
+            int $$7 = $$1.u() + $$5;
+            int $$8 = $$1.w() + $$6;
+            int $$9 = $$3.C_() + $$2.b;
+            $$4.d($$7, $$9, $$8);
+            if ($$3.a_($$4).i()) {
+               $$3.a($$4, $$2.c, 2);
             }
          }
       }
-   }
 
-   @Override
-   protected int a(int $$0, int $$1, int $$2, int $$3) {
-      return $$3 <= 3 ? 0 : $$2;
+      return true;
    }
 }

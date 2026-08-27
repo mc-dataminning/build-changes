@@ -1,8 +1,74 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.Comparator;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface eig {
+public class eig {
+   public static final Comparator<eig> a = ($$0, $$1) -> {
+      if ($$0.b() > $$1.b()) {
+         return 1;
+      } else {
+         return $$0.b() < $$1.b() ? -1 : $$1.e().compareToIgnoreCase($$0.e());
+      }
+   };
+   private final eih b;
+   private final eie c;
+   private final String d;
+   private int e;
+   private boolean f;
+   private boolean g;
+
+   public eig(eih $$0, eie $$1, String $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.f = true;
+      this.g = true;
+   }
+
+   public void a(int $$0) {
+      if (this.c.c().e()) {
+         throw new IllegalStateException("Cannot modify read-only score");
+      } else {
+         this.b(this.b() + $$0);
+      }
+   }
+
+   public void a() {
+      this.a(1);
+   }
+
+   public int b() {
+      return this.e;
+   }
+
+   public void c() {
+      this.b(0);
+   }
+
+   public void b(int $$0) {
+      int $$1 = this.e;
+      this.e = $$0;
+      if ($$1 != $$0 || this.g) {
+         this.g = false;
+         this.f().a(this);
+      }
+   }
+
+   public eie d() {
+      return this.c;
+   }
+
+   public String e() {
+      return this.d;
+   }
+
+   public eih f() {
+      return this.b;
+   }
+
+   public boolean g() {
+      return this.f;
+   }
+
+   public void a(boolean $$0) {
+      this.f = $$0;
+   }
 }

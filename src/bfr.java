@@ -1,44 +1,54 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Function;
 
-public class bfr extends bft {
-   public static final bfr a = new bfr(0.0F);
-   public static final Codec<bfr> b = aqy.c(Codec.FLOAT, Codec.FLOAT.fieldOf("value").codec()).xmap(bfr::new, bfr::d);
-   private final float d;
+public class bfr extends bfy {
+   public static final Codec<bfr> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  bfy.c.fieldOf("source").forGetter($$0x -> $$0x.b),
+                  Codec.INT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.f),
+                  Codec.INT.fieldOf("max_inclusive").forGetter($$0x -> $$0x.g)
+               )
+               .apply($$0, bfr::new)
+      )
+      .comapFlatMap(
+         $$0 -> $$0.g < $$0.f
+               ? DataResult.error(() -> "Max must be at least min, min_inclusive: " + $$0.f + ", max_inclusive: " + $$0.g)
+               : DataResult.success($$0),
+         Function.identity()
+      );
+   private final bfy b;
+   private final int f;
+   private final int g;
 
-   public static bfr a(float $$0) {
-      return $$0 == 0.0F ? a : new bfr($$0);
+   public static bfr a(bfy $$0, int $$1, int $$2) {
+      return new bfr($$0, $$1, $$2);
    }
 
-   private bfr(float $$0) {
-      this.d = $$0;
-   }
-
-   public float d() {
-      return this.d;
-   }
-
-   @Override
-   public float a(aru $$0) {
-      return this.d;
-   }
-
-   @Override
-   public float a() {
-      return this.d;
-   }
-
-   @Override
-   public float b() {
-      return this.d + 1.0F;
-   }
-
-   @Override
-   public bfu<?> c() {
-      return bfu.a;
+   public bfr(bfy $$0, int $$1, int $$2) {
+      this.b = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
    @Override
-   public String toString() {
-      return Float.toString(this.d);
+   public int a(arx $$0) {
+      return ars.a(this.b.a($$0), this.f, this.g);
+   }
+
+   @Override
+   public int a() {
+      return Math.max(this.f, this.b.a());
+   }
+
+   @Override
+   public int b() {
+      return Math.min(this.g, this.b.b());
+   }
+
+   @Override
+   public bfz<?> c() {
+      return bfz.d;
    }
 }

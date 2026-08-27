@@ -1,45 +1,22 @@
 import com.google.gson.JsonObject;
 import java.util.Optional;
 
-public class cz extends cu<cz.a> {
-   static final aer a = new aer("summoned_entity");
-
-   @Override
-   public aer a() {
-      return a;
+public class cz extends cw<cz.a> {
+   public cz.a a(JsonObject $$0, Optional<bc> $$1, bg $$2) {
+      return new cz.a($$1);
    }
 
-   public cz.a a(JsonObject $$0, Optional<ba> $$1, be $$2) {
-      Optional<ba> $$3 = bo.a($$0, "entity", $$2);
-      return new cz.a($$1, $$3);
+   public void a(ako $$0) {
+      this.a($$0, $$0x -> true);
    }
 
-   public void a(akl $$0, bii $$1) {
-      ecg $$2 = bo.b($$0, $$1);
-      this.a($$0, $$1x -> $$1x.a($$2));
-   }
-
-   public static class a extends ar {
-      private final Optional<ba> a;
-
-      public a(Optional<ba> $$0, Optional<ba> $$1) {
-         super(cz.a, $$0);
-         this.a = $$1;
+   public static class a extends at {
+      public a(Optional<bc> $$0) {
+         super($$0);
       }
 
-      public static cz.a a(bo.a $$0) {
-         return new cz.a(Optional.empty(), bo.a($$0));
-      }
-
-      public boolean a(ecg $$0) {
-         return this.a.isEmpty() || this.a.get().a($$0);
-      }
-
-      @Override
-      public JsonObject b() {
-         JsonObject $$0 = super.b();
-         this.a.ifPresent($$1 -> $$0.add("entity", $$1.a()));
-         return $$0;
+      public static am<cz.a> a(bq.a $$0) {
+         return al.R.a(new cz.a(Optional.of(bq.a($$0))));
       }
    }
 }

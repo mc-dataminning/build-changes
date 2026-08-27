@@ -2,34 +2,194 @@ import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.UncheckedIOException;
+import java.io.Writer;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.Collection;
+import java.util.Locale;
+import net.minecraft.server.MinecraftServer;
+import org.slf4j.Logger;
 
 public class agk {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tf.b("Source is not a mob"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(tf.b("Path not found"));
-   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(tf.b("Target not reached"));
+   private static final Logger a = LogUtils.getLogger();
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(ti.c("commands.debug.notRunning"));
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(ti.c("commands.debug.alreadyRunning"));
 
-   public static void a(CommandDispatcher<dr> $$0) {
+   public static void a(CommandDispatcher<dt> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ds.a("debugpath").requires($$0x -> $$0x.c(2)))
-            .then(ds.a("to", fi.a()).executes($$0x -> a((dr)$$0x.getSource(), fi.a($$0x, "to"))))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)du.a("debug").requires($$0x -> $$0x.c(3)))
+                  .then(du.a("start").executes($$0x -> a((dt)$$0x.getSource()))))
+               .then(du.a("stop").executes($$0x -> b((dt)$$0x.getSource()))))
+            .then(
+               ((LiteralArgumentBuilder)du.a("function").requires($$0x -> $$0x.c(3)))
+                  .then(du.a("name", fv.a()).suggests(agy.a).executes($$0x -> a((dt)$$0x.getSource(), fv.a($$0x, "name"))))
+            )
       );
    }
 
-   private static int a(dr $$0, gu $$1) throws CommandSyntaxException {
-      if (!($$0.f() instanceof bja $$3)) {
-         throw a.create();
+   private static int a(dt $$0) throws CommandSyntaxException {
+      MinecraftServer $$1 = $$0.l();
+      if ($$1.aZ()) {
+         throw c.create();
       } else {
-         bsh $$4 = new bsg($$3, $$0.e());
-         ear $$5 = $$4.a($$1, 0);
-         aav.a($$0.e(), $$3, $$5, $$4.q());
-         if ($$5 == null) {
-            throw b.create();
-         } else if (!$$5.j()) {
-            throw c.create();
-         } else {
-            $$0.a(() -> tf.b("Made path"), true);
-            return 1;
+         $$1.ba();
+         $$0.a(() -> ti.c("commands.debug.started"), true);
+         return 0;
+      }
+   }
+
+   private static int b(dt $$0) throws CommandSyntaxException {
+      MinecraftServer $$1 = $$0.l();
+      if (!$$1.aZ()) {
+         throw b.create();
+      } else {
+         bdj $$2 = $$1.bb();
+         double $$3 = (double)$$2.g() / (double)asp.a;
+         double $$4 = (double)$$2.f() / $$3;
+         $$0.a(() -> ti.a("commands.debug.stopped", String.format(Locale.ROOT, "%.2f", $$3), $$2.f(), String.format(Locale.ROOT, "%.2f", $$4)), true);
+         return (int)$$4;
+      }
+   }
+
+   private static int a(dt $$0, Collection<dp> $$1) {
+      int $$2 = 0;
+      MinecraftServer $$3 = $$0.l();
+      String $$4 = "debug-trace-" + ac.e() + ".txt";
+
+      try {
+         Path $$5 = $$3.c("debug").toPath();
+         Files.createDirectories($$5);
+
+         try (Writer $$6 = Files.newBufferedWriter($$5.resolve($$4), StandardCharsets.UTF_8)) {
+            PrintWriter $$7 = new PrintWriter($$6);
+
+            for (dp $$8 : $$1) {
+               $$7.println($$8.a());
+               agk.a $$9 = new agk.a($$7);
+
+               try {
+                  $$2 += $$0.l().aA().a($$8, $$0.a($$9).b(2), $$9, null);
+               } catch (dv var13) {
+                  $$0.b(var13.a());
+               }
+            }
          }
+      } catch (IOException | UncheckedIOException var15) {
+         a.warn("Tracing failed", var15);
+         $$0.b(ti.c("commands.debug.function.traceFailed"));
+      }
+
+      int $$12 = $$2;
+      if ($$1.size() == 1) {
+         $$0.a(() -> ti.a("commands.debug.function.success.single", $$12, $$1.iterator().next().a(), $$4), true);
+      } else {
+         $$0.a(() -> ti.a("commands.debug.function.success.multiple", $$12, $$1.size(), $$4), true);
+      }
+
+      return $$2;
+   }
+
+   static class a implements afi.c, ds {
+      public static final int b = 1;
+      private final PrintWriter c;
+      private int d;
+      private boolean e;
+
+      a(PrintWriter $$0) {
+         this.c = $$0;
+      }
+
+      private void a(int $$0) {
+         this.b($$0);
+         this.d = $$0;
+      }
+
+      private void b(int $$0) {
+         for (int $$1 = 0; $$1 < $$0 + 1; $$1++) {
+            this.c.write("    ");
+         }
+      }
+
+      private void e() {
+         if (this.e) {
+            this.c.println();
+            this.e = false;
+         }
+      }
+
+      @Override
+      public void a(int $$0, String $$1) {
+         this.e();
+         this.a($$0);
+         this.c.print("[C] ");
+         this.c.print($$1);
+         this.e = true;
+      }
+
+      @Override
+      public void a(int $$0, String $$1, int $$2) {
+         if (this.e) {
+            this.c.print(" -> ");
+            this.c.println($$2);
+            this.e = false;
+         } else {
+            this.a($$0);
+            this.c.print("[R = ");
+            this.c.print($$2);
+            this.c.print("] ");
+            this.c.println($$1);
+         }
+      }
+
+      @Override
+      public void a(int $$0, aeu $$1, int $$2) {
+         this.e();
+         this.a($$0);
+         this.c.print("[F] ");
+         this.c.print($$1);
+         this.c.print(" size=");
+         this.c.println($$2);
+      }
+
+      @Override
+      public void b(int $$0, String $$1) {
+         this.e();
+         this.a($$0 + 1);
+         this.c.print("[E] ");
+         this.c.print($$1);
+      }
+
+      @Override
+      public void a(ti $$0) {
+         this.e();
+         this.b(this.d + 1);
+         this.c.print("[M] ");
+         this.c.println($$0.getString());
+      }
+
+      @Override
+      public boolean f_() {
+         return true;
+      }
+
+      @Override
+      public boolean q_() {
+         return true;
+      }
+
+      @Override
+      public boolean N_() {
+         return false;
+      }
+
+      @Override
+      public boolean g_() {
+         return true;
       }
    }
 }

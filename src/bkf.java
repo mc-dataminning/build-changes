@@ -1,103 +1,122 @@
-import com.google.common.collect.ImmutableMap;
 import com.mojang.logging.LogUtils;
-import java.util.Map;
+import com.mojang.serialization.Codec;
+import java.util.Objects;
+import java.util.UUID;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
 public class bkf {
    private static final Logger a = LogUtils.getLogger();
-   private static final Map<bim<? extends biy>, bkd> b = ImmutableMap.builder()
-      .put(bim.b, bvn.p().a())
-      .put(bim.d, biy.dO().a())
-      .put(bim.f, bvq.gh().a())
-      .put(bim.g, bue.p().a())
-      .put(bim.h, buk.gm().a())
-      .put(bim.i, byk.p().a())
-      .put(bim.m, bum.gm().a())
-      .put(bim.l, bvv.p().a())
-      .put(bim.n, byl.p().a())
-      .put(bim.q, buo.p().a())
-      .put(bim.r, bug.p().a())
-      .put(bim.t, buq.p().a())
-      .put(bim.u, bym.p().a())
-      .put(bim.v, bur.ga().a())
-      .put(bim.w, bwh.p().a())
-      .put(bim.y, bzt.ge().a())
-      .put(bim.A, byp.p().a())
-      .put(bim.E, byq.p().a())
-      .put(bim.F, byr.p().a())
-      .put(bim.C, bwz.q().a())
-      .put(bim.G, byt.q().a())
-      .put(bim.N, but.p().a())
-      .put(bim.O, bvy.ga().a())
-      .put(bim.Q, byu.t().a())
-      .put(bim.R, byv.p().a())
-      .put(bim.T, biq.ga().a())
-      .put(bim.U, bwe.q().a())
-      .put(bim.V, byw.ga().a())
-      .put(bim.W, bzw.p().a())
-      .put(bim.Y, bwi.gA().a())
-      .put(bim.Z, bzt.ge().a())
-      .put(bim.aa, byy.q().a())
-      .put(bim.ac, buv.p().a())
-      .put(bim.aj, bwl.gl().a())
-      .put(bim.al, byz.p().a())
-      .put(bim.ao, buq.p().a())
-      .put(bim.ap, bwh.p().a())
-      .put(bim.aq, bux.p().a())
-      .put(bim.as, buy.gl().a())
-      .put(bim.at, buz.gg().a())
-      .put(bim.au, bza.gg().a())
-      .put(bim.av, bva.p().a())
-      .put(bim.aw, cac.gh().a())
-      .put(bim.ax, caf.t().a())
-      .put(bim.ay, bzd.q().a())
-      .put(bim.bt, cbm.fF().a())
-      .put(bim.az, bvb.p().a())
-      .put(bim.aB, bug.p().a())
-      .put(bim.aC, bvd.q().a())
-      .put(bim.aD, bzf.p().a())
-      .put(bim.aE, bug.p().a())
-      .put(bim.aF, bvf.p().a())
-      .put(bim.aG, bzg.p().a())
-      .put(bim.aI, bzh.p().a())
-      .put(bim.aJ, byj.p().a())
-      .put(bim.aK, bwo.p().a())
-      .put(bim.aL, bza.gg().a())
-      .put(bim.aN, bwv.p().a())
-      .put(bim.aO, bvh.p().a())
-      .put(bim.aS, bzl.q().a())
-      .put(bim.aT, bvi.ga().a())
-      .put(bim.aU, byj.p().a())
-      .put(bim.aV, bzn.q().a())
-      .put(bim.aW, bwb.gc().a())
-      .put(bim.ba, bwl.gl().a())
-      .put(bim.bc, bug.p().a())
-      .put(bim.bd, bvk.t().a())
-      .put(bim.be, bzo.p().a())
-      .put(bim.bf, caz.gj().a())
-      .put(bim.bg, bzp.q().a())
-      .put(bim.bi, caq.p().a())
-      .put(bim.bh, bja.x().a())
-      .put(bim.bj, bzq.q().a())
-      .put(bim.bk, bxt.q().a())
-      .put(bim.bl, byj.p().a())
-      .put(bim.bn, bvm.gg().a())
-      .put(bim.bo, bzs.p().a())
-      .put(bim.bp, bzt.ge().a())
-      .put(bim.bq, bws.p().a())
-      .put(bim.br, bzt.ge().a())
-      .put(bim.bs, bzv.gk().a())
-      .build();
+   private final double b;
+   private final bkf.a c;
+   private final Supplier<String> d;
+   private final UUID e;
 
-   public static bkd a(bim<? extends biy> $$0) {
-      return b.get($$0);
+   public bkf(String $$0, double $$1, bkf.a $$2) {
+      this(ars.a(arx.c()), () -> $$0, $$1, $$2);
    }
 
-   public static boolean b(bim<?> $$0) {
-      return b.containsKey($$0);
+   public bkf(UUID $$0, String $$1, double $$2, bkf.a $$3) {
+      this($$0, () -> $$1, $$2, $$3);
    }
 
-   public static void a() {
-      jb.h.s().filter($$0 -> $$0.f() != bjb.h).filter($$0 -> !b((bim<?>)$$0)).map(jb.h::b).forEach($$0 -> ac.a("Entity " + $$0 + " has no attributes"));
+   public bkf(UUID $$0, Supplier<String> $$1, double $$2, bkf.a $$3) {
+      this.e = $$0;
+      this.d = $$1;
+      this.b = $$2;
+      this.c = $$3;
+   }
+
+   public UUID a() {
+      return this.e;
+   }
+
+   public String b() {
+      return this.d.get();
+   }
+
+   public bkf.a c() {
+      return this.c;
+   }
+
+   public double d() {
+      return this.b;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         bkf $$1 = (bkf)$$0;
+         return Objects.equals(this.e, $$1.e);
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return this.e.hashCode();
+   }
+
+   @Override
+   public String toString() {
+      return "AttributeModifier{amount=" + this.b + ", operation=" + this.c + ", name='" + this.d.get() + "', id=" + this.e + "}";
+   }
+
+   public qu e() {
+      qu $$0 = new qu();
+      $$0.a("Name", this.b());
+      $$0.a("Amount", this.b);
+      $$0.a("Operation", this.c.a());
+      $$0.a("UUID", this.e);
+      return $$0;
+   }
+
+   @Nullable
+   public static bkf a(qu $$0) {
+      try {
+         UUID $$1 = $$0.a("UUID");
+         bkf.a $$2 = bkf.a.a($$0.h("Operation"));
+         return new bkf($$1, $$0.l("Name"), $$0.k("Amount"), $$2);
+      } catch (Exception var3) {
+         a.warn("Unable to create attribute: {}", var3.getMessage());
+         return null;
+      }
+   }
+
+   public static enum a implements ask {
+      a("addition", 0),
+      b("multiply_base", 1),
+      c("multiply_total", 2);
+
+      private static final bkf.a[] e = new bkf.a[]{a, b, c};
+      public static final Codec<bkf.a> d = ask.a(bkf.a::values);
+      private final String f;
+      private final int g;
+
+      private a(String $$0, int $$1) {
+         this.f = $$0;
+         this.g = $$1;
+      }
+
+      public int a() {
+         return this.g;
+      }
+
+      public static bkf.a a(int $$0) {
+         if ($$0 >= 0 && $$0 < e.length) {
+            return e[$$0];
+         } else {
+            throw new IllegalArgumentException("No operation with value " + $$0);
+         }
+      }
+
+      @Override
+      public String c() {
+         return this.f;
+      }
    }
 }

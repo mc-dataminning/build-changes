@@ -1,70 +1,101 @@
-public abstract class cqq {
-   public static final aeq<cqj> a = a("the_void");
-   public static final aeq<cqj> b = a("plains");
-   public static final aeq<cqj> c = a("sunflower_plains");
-   public static final aeq<cqj> d = a("snowy_plains");
-   public static final aeq<cqj> e = a("ice_spikes");
-   public static final aeq<cqj> f = a("desert");
-   public static final aeq<cqj> g = a("swamp");
-   public static final aeq<cqj> h = a("mangrove_swamp");
-   public static final aeq<cqj> i = a("forest");
-   public static final aeq<cqj> j = a("flower_forest");
-   public static final aeq<cqj> k = a("birch_forest");
-   public static final aeq<cqj> l = a("dark_forest");
-   public static final aeq<cqj> m = a("old_growth_birch_forest");
-   public static final aeq<cqj> n = a("old_growth_pine_taiga");
-   public static final aeq<cqj> o = a("old_growth_spruce_taiga");
-   public static final aeq<cqj> p = a("taiga");
-   public static final aeq<cqj> q = a("snowy_taiga");
-   public static final aeq<cqj> r = a("savanna");
-   public static final aeq<cqj> s = a("savanna_plateau");
-   public static final aeq<cqj> t = a("windswept_hills");
-   public static final aeq<cqj> u = a("windswept_gravelly_hills");
-   public static final aeq<cqj> v = a("windswept_forest");
-   public static final aeq<cqj> w = a("windswept_savanna");
-   public static final aeq<cqj> x = a("jungle");
-   public static final aeq<cqj> y = a("sparse_jungle");
-   public static final aeq<cqj> z = a("bamboo_jungle");
-   public static final aeq<cqj> A = a("badlands");
-   public static final aeq<cqj> B = a("eroded_badlands");
-   public static final aeq<cqj> C = a("wooded_badlands");
-   public static final aeq<cqj> D = a("meadow");
-   public static final aeq<cqj> E = a("cherry_grove");
-   public static final aeq<cqj> F = a("grove");
-   public static final aeq<cqj> G = a("snowy_slopes");
-   public static final aeq<cqj> H = a("frozen_peaks");
-   public static final aeq<cqj> I = a("jagged_peaks");
-   public static final aeq<cqj> J = a("stony_peaks");
-   public static final aeq<cqj> K = a("river");
-   public static final aeq<cqj> L = a("frozen_river");
-   public static final aeq<cqj> M = a("beach");
-   public static final aeq<cqj> N = a("snowy_beach");
-   public static final aeq<cqj> O = a("stony_shore");
-   public static final aeq<cqj> P = a("warm_ocean");
-   public static final aeq<cqj> Q = a("lukewarm_ocean");
-   public static final aeq<cqj> R = a("deep_lukewarm_ocean");
-   public static final aeq<cqj> S = a("ocean");
-   public static final aeq<cqj> T = a("deep_ocean");
-   public static final aeq<cqj> U = a("cold_ocean");
-   public static final aeq<cqj> V = a("deep_cold_ocean");
-   public static final aeq<cqj> W = a("frozen_ocean");
-   public static final aeq<cqj> X = a("deep_frozen_ocean");
-   public static final aeq<cqj> Y = a("mushroom_fields");
-   public static final aeq<cqj> Z = a("dripstone_caves");
-   public static final aeq<cqj> aa = a("lush_caves");
-   public static final aeq<cqj> ab = a("deep_dark");
-   public static final aeq<cqj> ac = a("nether_wastes");
-   public static final aeq<cqj> ad = a("warped_forest");
-   public static final aeq<cqj> ae = a("crimson_forest");
-   public static final aeq<cqj> af = a("soul_sand_valley");
-   public static final aeq<cqj> ag = a("basalt_deltas");
-   public static final aeq<cqj> ah = a("the_end");
-   public static final aeq<cqj> ai = a("end_highlands");
-   public static final aeq<cqj> aj = a("end_midlands");
-   public static final aeq<cqj> ak = a("small_end_islands");
-   public static final aeq<cqj> al = a("end_barrens");
+import com.google.common.hash.Hashing;
 
-   private static aeq<cqj> a(String $$0) {
-      return aeq.a(jc.ap, new aer($$0));
+public class cqq {
+   public static final int a = hs.a(8);
+   private static final int b = 2;
+   private static final int c = 4;
+   private static final int d = 3;
+   private final cqq.a e;
+   private final long f;
+
+   public cqq(cqq.a $$0, long $$1) {
+      this.e = $$0;
+      this.f = $$1;
+   }
+
+   public static long a(long $$0) {
+      return Hashing.sha256().hashLong($$0).asLong();
+   }
+
+   public cqq a(cqq.a $$0) {
+      return new cqq($$0, this.f);
+   }
+
+   public hg<cqo> a(gw $$0) {
+      int $$1 = $$0.u() - 2;
+      int $$2 = $$0.v() - 2;
+      int $$3 = $$0.w() - 2;
+      int $$4 = $$1 >> 2;
+      int $$5 = $$2 >> 2;
+      int $$6 = $$3 >> 2;
+      double $$7 = (double)($$1 & 3) / 4.0;
+      double $$8 = (double)($$2 & 3) / 4.0;
+      double $$9 = (double)($$3 & 3) / 4.0;
+      int $$10 = 0;
+      double $$11 = Double.POSITIVE_INFINITY;
+
+      for (int $$12 = 0; $$12 < 8; $$12++) {
+         boolean $$13 = ($$12 & 4) == 0;
+         boolean $$14 = ($$12 & 2) == 0;
+         boolean $$15 = ($$12 & 1) == 0;
+         int $$16 = $$13 ? $$4 : $$4 + 1;
+         int $$17 = $$14 ? $$5 : $$5 + 1;
+         int $$18 = $$15 ? $$6 : $$6 + 1;
+         double $$19 = $$13 ? $$7 : $$7 - 1.0;
+         double $$20 = $$14 ? $$8 : $$8 - 1.0;
+         double $$21 = $$15 ? $$9 : $$9 - 1.0;
+         double $$22 = a(this.f, $$16, $$17, $$18, $$19, $$20, $$21);
+         if ($$11 > $$22) {
+            $$10 = $$12;
+            $$11 = $$22;
+         }
+      }
+
+      int $$23 = ($$10 & 4) == 0 ? $$4 : $$4 + 1;
+      int $$24 = ($$10 & 2) == 0 ? $$5 : $$5 + 1;
+      int $$25 = ($$10 & 1) == 0 ? $$6 : $$6 + 1;
+      return this.e.getNoiseBiome($$23, $$24, $$25);
+   }
+
+   public hg<cqo> a(double $$0, double $$1, double $$2) {
+      int $$3 = hs.a(ars.a($$0));
+      int $$4 = hs.a(ars.a($$1));
+      int $$5 = hs.a(ars.a($$2));
+      return this.a($$3, $$4, $$5);
+   }
+
+   public hg<cqo> b(gw $$0) {
+      int $$1 = hs.a($$0.u());
+      int $$2 = hs.a($$0.v());
+      int $$3 = hs.a($$0.w());
+      return this.a($$1, $$2, $$3);
+   }
+
+   public hg<cqo> a(int $$0, int $$1, int $$2) {
+      return this.e.getNoiseBiome($$0, $$1, $$2);
+   }
+
+   private static double a(long $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6) {
+      long $$7 = aro.a($$0, (long)$$1);
+      $$7 = aro.a($$7, (long)$$2);
+      $$7 = aro.a($$7, (long)$$3);
+      $$7 = aro.a($$7, (long)$$1);
+      $$7 = aro.a($$7, (long)$$2);
+      $$7 = aro.a($$7, (long)$$3);
+      double $$8 = b($$7);
+      $$7 = aro.a($$7, $$0);
+      double $$9 = b($$7);
+      $$7 = aro.a($$7, $$0);
+      double $$10 = b($$7);
+      return ars.k($$6 + $$10) + ars.k($$5 + $$9) + ars.k($$4 + $$8);
+   }
+
+   private static double b(long $$0) {
+      double $$1 = (double)Math.floorMod($$0 >> 24, 1024) / 1024.0;
+      return ($$1 - 0.5) * 0.9;
+   }
+
+   public interface a {
+      hg<cqo> getNoiseBiome(int var1, int var2, int var3);
    }
 }

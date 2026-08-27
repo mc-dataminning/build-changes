@@ -1,41 +1,35 @@
-import java.util.List;
+public class fxr<T extends bjb> extends fxk<T, fgd<T>> {
+   public static final aeu a = new aeu("textures/entity/trident_riptide.png");
+   public static final String b = "box";
+   private final fhx c;
 
-public class fxr<T extends caq, M extends fhf<T>> extends fxf<T, M> {
-   private final aer a;
-   private final fxr.a<T> b;
-   private final fxr.b<T, M> c;
-
-   public fxr(fus<T, M> $$0, aer $$1, fxr.a<T> $$2, fxr.b<T, M> $$3) {
+   public fxr(fux<T, fgd<T>> $$0, fht $$1) {
       super($$0);
-      this.a = $$1;
-      this.b = $$2;
-      this.c = $$3;
+      fhx $$2 = $$1.a(fhw.aT);
+      this.c = $$2.b("box");
    }
 
-   public void a(elf $$0, fnu $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if (!$$3.cd()) {
-         this.a();
-         elj $$10 = $$1.getBuffer(foc.j(this.a));
-         this.c().a($$0, $$10, $$2, fty.c($$3, 0.0F), 1.0F, 1.0F, 1.0F, this.b.apply($$3, $$6, $$7));
-         this.b();
+   public static fid a() {
+      fif $$0 = new fif();
+      fig $$1 = $$0.a();
+      $$1.a("box", fic.c().a(0, 0).a(-8.0F, -16.0F, -8.0F, 16.0F, 32.0F, 16.0F), fhz.a);
+      return fid.a($$0, 64, 64);
+   }
+
+   public void a(elk $$0, fnz $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if ($$3.fh()) {
+         elo $$10 = $$1.getBuffer(foh.e(a));
+
+         for (int $$11 = 0; $$11 < 3; $$11++) {
+            $$0.a();
+            float $$12 = $$7 * (float)(-(45 + $$11 * 5));
+            $$0.a(a.d.rotationDegrees($$12));
+            float $$13 = 0.75F * (float)$$11;
+            $$0.b($$13, $$13, $$13);
+            $$0.a(0.0F, -0.2F + 0.6F * (float)$$11, 0.0F);
+            this.c.a($$0, $$10, $$2, fyq.d);
+            $$0.b();
+         }
       }
-   }
-
-   private void a() {
-      List<fhs> $$0 = this.c.getPartsToDraw(this.c());
-      this.c().a().e().forEach($$0x -> $$0x.l = true);
-      $$0.forEach($$0x -> $$0x.l = false);
-   }
-
-   private void b() {
-      this.c().a().e().forEach($$0 -> $$0.l = false);
-   }
-
-   public interface a<T extends caq> {
-      float apply(T var1, float var2, float var3);
-   }
-
-   public interface b<T extends caq, M extends fet<T>> {
-      List<fhs> getPartsToDraw(M var1);
    }
 }

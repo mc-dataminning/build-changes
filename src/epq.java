@@ -1,62 +1,56 @@
 import com.mojang.logging.LogUtils;
 import org.slf4j.Logger;
 
-public class epq extends epl {
-   private static final Logger c = LogUtils.getLogger();
-   private final emb d;
-   private final long e;
-   private final enw f;
+public abstract class epq implements Runnable {
+   protected static final int a = 25;
+   private static final Logger b = LogUtils.getLogger();
+   private boolean c = false;
 
-   public epq(emb $$0, long $$1, enw $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
+   protected static void a(long $$0) {
+      try {
+         Thread.sleep($$0 * 1000L);
+      } catch (InterruptedException var3) {
+         Thread.currentThread().interrupt();
+         b.error("", var3);
+      }
    }
 
-   @Override
-   public void run() {
-      this.b(tf.c("mco.backup.restoring"));
-      elv $$0 = elv.a();
-      int $$1 = 0;
+   public static void a(eyf $$0) {
+      eqq $$1 = eqq.O();
+      $$1.execute(() -> $$1.a($$0));
+   }
 
-      while ($$1 < 25) {
-         try {
-            if (this.c()) {
-               return;
-            }
+   protected void a(ti $$0) {
+      this.b();
+      eqq $$1 = eqq.O();
+      $$1.execute(() -> $$1.a(new eoe($$0, new elv(new eyk()))));
+   }
 
-            $$0.b(this.e, this.d.a);
-            a(1L);
-            if (this.c()) {
-               return;
-            }
-
-            a(this.f.g());
-            return;
-         } catch (enj var4) {
-            if (this.c()) {
-               return;
-            }
-
-            a((long)var4.c);
-            $$1++;
-         } catch (eni var5) {
-            if (this.c()) {
-               return;
-            }
-
-            c.error("Couldn't restore backup", var5);
-            a(new eoa(var5, this.f));
-            return;
-         } catch (Exception var6) {
-            if (this.c()) {
-               return;
-            }
-
-            c.error("Couldn't restore backup", var6);
-            this.a(var6);
-            return;
-         }
+   protected void a(Exception $$0) {
+      if ($$0 instanceof enn $$1) {
+         this.a($$1.a.b());
+      } else {
+         this.a(ti.b($$0.getMessage()));
       }
+   }
+
+   protected void a(enn $$0) {
+      this.a($$0.a.b());
+   }
+
+   public abstract ti a();
+
+   public boolean d() {
+      return this.c;
+   }
+
+   public void c() {
+   }
+
+   public void e() {
+   }
+
+   public void b() {
+      this.c = true;
    }
 }

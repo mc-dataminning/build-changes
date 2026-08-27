@@ -1,40 +1,37 @@
-public class ww implements ux<wp> {
-   private final int a;
-   private final gu b;
-   private final int c;
+public class ww implements va<ws> {
+   public static final int a = 0;
+   public static final int b = 2;
+   public static final int c = 3;
+   public static final int d = 4;
+   public static final int e = 5;
+   private final int f;
+   private final int g;
 
-   public ww(int $$0, gu $$1, int $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public ww(bil $$0, int $$1) {
+      this.f = $$0.ah();
+      this.g = $$1;
    }
 
-   public ww(si $$0) {
-      this.a = $$0.m();
-      this.b = $$0.e();
-      this.c = $$0.readUnsignedByte();
+   public ww(sl $$0) {
+      this.f = $$0.m();
+      this.g = $$0.readUnsignedByte();
    }
 
    @Override
-   public void a(si $$0) {
-      $$0.c(this.a);
-      $$0.a(this.b);
-      $$0.k(this.c);
+   public void a(sl $$0) {
+      $$0.c(this.f);
+      $$0.k(this.g);
    }
 
-   public void a(wp $$0) {
+   public void a(ws $$0) {
       $$0.a(this);
    }
 
    public int a() {
-      return this.a;
+      return this.f;
    }
 
-   public gu d() {
-      return this.b;
-   }
-
-   public int e() {
-      return this.c;
+   public int d() {
+      return this.g;
    }
 }

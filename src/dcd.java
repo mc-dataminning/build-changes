@@ -1,91 +1,12 @@
-public class dcd {
-   public static final aeq<dcc> a = a("base");
-   public static final aeq<dcc> b = a("square_bottom_left");
-   public static final aeq<dcc> c = a("square_bottom_right");
-   public static final aeq<dcc> d = a("square_top_left");
-   public static final aeq<dcc> e = a("square_top_right");
-   public static final aeq<dcc> f = a("stripe_bottom");
-   public static final aeq<dcc> g = a("stripe_top");
-   public static final aeq<dcc> h = a("stripe_left");
-   public static final aeq<dcc> i = a("stripe_right");
-   public static final aeq<dcc> j = a("stripe_center");
-   public static final aeq<dcc> k = a("stripe_middle");
-   public static final aeq<dcc> l = a("stripe_downright");
-   public static final aeq<dcc> m = a("stripe_downleft");
-   public static final aeq<dcc> n = a("small_stripes");
-   public static final aeq<dcc> o = a("cross");
-   public static final aeq<dcc> p = a("straight_cross");
-   public static final aeq<dcc> q = a("triangle_bottom");
-   public static final aeq<dcc> r = a("triangle_top");
-   public static final aeq<dcc> s = a("triangles_bottom");
-   public static final aeq<dcc> t = a("triangles_top");
-   public static final aeq<dcc> u = a("diagonal_left");
-   public static final aeq<dcc> v = a("diagonal_up_right");
-   public static final aeq<dcc> w = a("diagonal_up_left");
-   public static final aeq<dcc> x = a("diagonal_right");
-   public static final aeq<dcc> y = a("circle");
-   public static final aeq<dcc> z = a("rhombus");
-   public static final aeq<dcc> A = a("half_vertical");
-   public static final aeq<dcc> B = a("half_horizontal");
-   public static final aeq<dcc> C = a("half_vertical_right");
-   public static final aeq<dcc> D = a("half_horizontal_bottom");
-   public static final aeq<dcc> E = a("border");
-   public static final aeq<dcc> F = a("curly_border");
-   public static final aeq<dcc> G = a("gradient");
-   public static final aeq<dcc> H = a("gradient_up");
-   public static final aeq<dcc> I = a("bricks");
-   public static final aeq<dcc> J = a("globe");
-   public static final aeq<dcc> K = a("creeper");
-   public static final aeq<dcc> L = a("skull");
-   public static final aeq<dcc> M = a("flower");
-   public static final aeq<dcc> N = a("mojang");
-   public static final aeq<dcc> O = a("piglin");
+import javax.annotation.Nullable;
 
-   private static aeq<dcc> a(String $$0) {
-      return aeq.a(jc.c, new aer($$0));
+public class dcd extends dbp {
+   protected dcd(dfd.d $$0) {
+      super(czs.b.b, $$0);
    }
 
-   public static dcc a(hr<dcc> $$0) {
-      hr.a($$0, a, new dcc("b"));
-      hr.a($$0, b, new dcc("bl"));
-      hr.a($$0, c, new dcc("br"));
-      hr.a($$0, d, new dcc("tl"));
-      hr.a($$0, e, new dcc("tr"));
-      hr.a($$0, f, new dcc("bs"));
-      hr.a($$0, g, new dcc("ts"));
-      hr.a($$0, h, new dcc("ls"));
-      hr.a($$0, i, new dcc("rs"));
-      hr.a($$0, j, new dcc("cs"));
-      hr.a($$0, k, new dcc("ms"));
-      hr.a($$0, l, new dcc("drs"));
-      hr.a($$0, m, new dcc("dls"));
-      hr.a($$0, n, new dcc("ss"));
-      hr.a($$0, o, new dcc("cr"));
-      hr.a($$0, p, new dcc("sc"));
-      hr.a($$0, q, new dcc("bt"));
-      hr.a($$0, r, new dcc("tt"));
-      hr.a($$0, s, new dcc("bts"));
-      hr.a($$0, t, new dcc("tts"));
-      hr.a($$0, u, new dcc("ld"));
-      hr.a($$0, v, new dcc("rd"));
-      hr.a($$0, w, new dcc("lud"));
-      hr.a($$0, x, new dcc("rud"));
-      hr.a($$0, y, new dcc("mc"));
-      hr.a($$0, z, new dcc("mr"));
-      hr.a($$0, A, new dcc("vh"));
-      hr.a($$0, B, new dcc("hh"));
-      hr.a($$0, C, new dcc("vhr"));
-      hr.a($$0, D, new dcc("hhb"));
-      hr.a($$0, E, new dcc("bo"));
-      hr.a($$0, F, new dcc("cbo"));
-      hr.a($$0, G, new dcc("gra"));
-      hr.a($$0, H, new dcc("gru"));
-      hr.a($$0, I, new dcc("bri"));
-      hr.a($$0, J, new dcc("glb"));
-      hr.a($$0, K, new dcc("cre"));
-      hr.a($$0, L, new dcc("sku"));
-      hr.a($$0, M, new dcc("flo"));
-      hr.a($$0, N, new dcc("moj"));
-      return hr.a($$0, O, new dcc("pig"));
+   @Override
+   public void a(cpq $$0, gw $$1, dfe $$2, @Nullable bjb $$3, cja $$4) {
+      csr.gG.a($$0, $$1, $$2, $$3, $$4);
    }
 }

@@ -1,22 +1,70 @@
-public class dbp extends czo implements dbn {
-   private final dbn.a e;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   public dbp(dbn.a $$0, dey.d $$1) {
-      super($$1);
-      this.e = $$0;
+public class dbp extends crn {
+   public static final dfy b = cwj.aC;
+   private static final Map<hc, eib> c = Maps.newEnumMap(
+      ImmutableMap.of(
+         hc.c,
+         csq.a(4.0, 4.0, 8.0, 12.0, 12.0, 16.0),
+         hc.d,
+         csq.a(4.0, 4.0, 0.0, 12.0, 12.0, 8.0),
+         hc.f,
+         csq.a(0.0, 4.0, 4.0, 8.0, 12.0, 12.0),
+         hc.e,
+         csq.a(8.0, 4.0, 4.0, 16.0, 12.0, 12.0)
+      )
+   );
+
+   protected dbp(czs.a $$0, dfd.d $$1) {
+      super($$0, $$1);
+      this.k(this.n().a(b, hc.c));
    }
 
    @Override
-   public void b(dez $$0, akk $$1, gu $$2, aru $$3) {
-      this.a_($$0, $$1, $$2, $$3);
+   public String f() {
+      return this.k().a();
    }
 
    @Override
-   public boolean e_(dez $$0) {
-      return dbn.c($$0.b()).isPresent();
+   public eib a(dfe $$0, cow $$1, gw $$2, ehn $$3) {
+      return c.get($$0.c(b));
    }
 
-   public dbn.a g() {
-      return this.e;
+   @Override
+   public dfe a(cli $$0) {
+      dfe $$1 = super.a($$0);
+      cow $$2 = $$0.q();
+      gw $$3 = $$0.a();
+      hc[] $$4 = $$0.f();
+
+      for (hc $$5 : $$4) {
+         if ($$5.o().d()) {
+            hc $$6 = $$5.g();
+            $$1 = $$1.a(b, $$6);
+            if (!$$2.a_($$3.a($$5)).a($$0)) {
+               return $$1;
+            }
+         }
+      }
+
+      return null;
+   }
+
+   @Override
+   public dfe a(dfe $$0, czc $$1) {
+      return $$0.a(b, $$1.a($$0.c(b)));
+   }
+
+   @Override
+   public dfe a(dfe $$0, cxl $$1) {
+      return $$0.a($$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected void a(dff.a<csq, dfe> $$0) {
+      super.a($$0);
+      $$0.a(b);
    }
 }

@@ -1,62 +1,49 @@
-import java.util.List;
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class cvt extends dac implements csn {
-   public cvt(dey.d $$0) {
+public class cvt extends crl {
+   protected cvt(dfd.d $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(cpo $$0, gu $$1, dez $$2) {
-      return $$0.a_($$1.c()).i();
+   public dcq a(gw $$0, dfe $$1) {
+      return new ddl($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dcq> dcr<T> a(cpq $$0, dfe $$1, dcs<T> $$2) {
+      return a($$0, $$2, dcs.a);
    }
 
    @Override
-   public boolean a(cpl $$0, aru $$1, gu $$2, dez $$3) {
-      return true;
+   protected void a(cpq $$0, gw $$1, cbp $$2) {
+      dcq $$3 = $$0.c_($$1);
+      if ($$3 instanceof ddl) {
+         $$2.a((bgw)$$3);
+         $$2.a(apj.am);
+      }
    }
 
    @Override
-   public void a(akk $$0, aru $$1, gu $$2, dez $$3) {
-      gu $$4 = $$2.c();
-      dez $$5 = csm.bt.n();
-      Optional<he.c<duc>> $$6 = $$0.B_().d(jc.ay).b(pd.n);
-
-      label49:
-      for (int $$7 = 0; $$7 < 128; $$7++) {
-         gu $$8 = $$4;
-
-         for (int $$9 = 0; $$9 < $$7 / 16; $$9++) {
-            $$8 = $$8.b($$1.a(3) - 1, ($$1.a(3) - 1) * $$1.a(3) / 2, $$1.a(3) - 1);
-            if (!$$0.a_($$8.d()).a(this) || $$0.a_($$8).r($$0, $$8)) {
-               continue label49;
-            }
+   public void a(dfe $$0, cpq $$1, gw $$2, arx $$3) {
+      if ($$0.c(b)) {
+         double $$4 = (double)$$2.u() + 0.5;
+         double $$5 = (double)$$2.v();
+         double $$6 = (double)$$2.w() + 0.5;
+         if ($$3.j() < 0.1) {
+            $$1.a($$4, $$5, $$6, aoz.iR, apa.e, 1.0F, 1.0F, false);
          }
 
-         dez $$10 = $$0.a_($$8);
-         if ($$10.a($$5.b()) && $$1.a(10) == 0) {
-            ((csn)$$5.b()).a($$0, $$1, $$8, $$10);
-         }
-
-         if ($$10.i()) {
-            he<duc> $$12;
-            if ($$1.a(8) == 0) {
-               List<dmz<?, ?>> $$11 = $$0.s($$8).a().d().a();
-               if ($$11.isEmpty()) {
-                  continue;
-               }
-
-               $$12 = ((dqd)$$11.get(0).c()).d();
-            } else {
-               if (!$$6.isPresent()) {
-                  continue;
-               }
-
-               $$12 = $$6.get();
-            }
-
-            $$12.a().a($$0, $$0.k().g(), $$1, $$8);
-         }
+         hc $$7 = $$0.c(a);
+         hc.a $$8 = $$7.o();
+         double $$9 = 0.52;
+         double $$10 = $$3.j() * 0.6 - 0.3;
+         double $$11 = $$8 == hc.a.a ? (double)$$7.j() * 0.52 : $$10;
+         double $$12 = $$3.j() * 6.0 / 16.0;
+         double $$13 = $$8 == hc.a.c ? (double)$$7.l() * 0.52 : $$10;
+         $$1.a(ix.Z, $$4 + $$11, $$5 + $$12, $$6 + $$13, 0.0, 0.0, 0.0);
+         $$1.a(ix.C, $$4 + $$11, $$5 + $$12, $$6 + $$13, 0.0, 0.0, 0.0);
       }
    }
 }

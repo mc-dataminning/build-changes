@@ -1,46 +1,69 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Objects;
-import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 
-public interface dao {
-   List<dao.a> a();
+public class dao extends csq {
+   private static final ti c = ti.c("container.stonecutter");
+   public static final dfy a = cwj.aC;
+   protected static final eib b = csq.a(0.0, 0.0, 0.0, 16.0, 9.0, 16.0);
 
-   static List<dao> b() {
-      return jb.i.s().map(dao::a).filter(Objects::nonNull).collect(Collectors.toList());
+   public dao(dfd.d $$0) {
+      super($$0);
+      this.k(this.C.b().a(a, hc.c));
+   }
+
+   @Override
+   public dfe a(cli $$0) {
+      return this.n().a(a, $$0.g().g());
+   }
+
+   @Override
+   public bgt a(dfe $$0, cpq $$1, gw $$2, cbp $$3, bgs $$4, ehe $$5) {
+      if ($$1.B) {
+         return bgt.a;
+      } else {
+         $$3.a($$0.b($$1, $$2));
+         $$3.a(apj.ay);
+         return bgt.b;
+      }
    }
 
    @Nullable
-   static dao a(cpk $$0) {
-      if ($$0.k() instanceof cgq $$1) {
-         csl var6 = $$1.e();
-         if (var6 instanceof dao) {
-            return (dao)var6;
-         }
-      }
-
-      cis $$2 = $$0.k();
-      return $$2 instanceof dao ? (dao)$$2 : null;
+   @Override
+   public bgw b(dfe $$0, cpq $$1, gw $$2) {
+      return new bhb(($$2x, $$3, $$4) -> new cgc($$2x, $$3, cer.a($$1, $$2)), c);
    }
 
-   public static record a(bht c, int d) {
-      public static final Codec<dao.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(jb.e.q().fieldOf("id").forGetter(dao.a::b), Codec.INT.optionalFieldOf("duration", 160).forGetter(dao.a::c)).apply($$0, dao.a::new)
-      );
-      public static final Codec<List<dao.a>> b = a.listOf();
+   @Override
+   public eib a(dfe $$0, cow $$1, gw $$2, ehn $$3) {
+      return b;
+   }
 
-      public bhv a() {
-         return new bhv(this.c, this.d);
-      }
+   @Override
+   public boolean g_(dfe $$0) {
+      return true;
+   }
 
-      public bht b() {
-         return this.c;
-      }
+   @Override
+   public cyv b_(dfe $$0) {
+      return cyv.c;
+   }
 
-      public int c() {
-         return this.d;
-      }
+   @Override
+   public dfe a(dfe $$0, czc $$1) {
+      return $$0.a(a, $$1.a($$0.c(a)));
+   }
+
+   @Override
+   public dfe a(dfe $$0, cxl $$1) {
+      return $$0.a($$1.a($$0.c(a)));
+   }
+
+   @Override
+   protected void a(dff.a<csq, dfe> $$0) {
+      $$0.a(a);
+   }
+
+   @Override
+   public boolean a(dfe $$0, cow $$1, gw $$2, eax $$3) {
+      return false;
    }
 }

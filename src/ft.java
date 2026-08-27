@@ -1,82 +1,113 @@
 import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.arguments.ArgumentType;
-import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.datafixers.util.Either;
-import com.mojang.datafixers.util.Pair;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
 
-public class ft implements ArgumentType<ft.a> {
-   private static final Collection<String> a = Arrays.asList("foo", "foo:bar", "#foo");
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> tf.a("arguments.function.tag.unknown", $$0));
-   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> tf.a("arguments.function.unknown", $$0));
+public class ft implements fm {
+   private final fs a;
+   private final fs b;
+   private final fs c;
 
-   public static ft a() {
-      return new ft();
+   public ft(fs $$0, fs $$1, fs $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public ft.a a(StringReader $$0) throws CommandSyntaxException {
-      if ($$0.canRead() && $$0.peek() == '#') {
+   @Override
+   public ehi a(dt $$0) {
+      ehi $$1 = $$0.d();
+      return new ehi(this.a.a($$1.c), this.b.a($$1.d), this.c.a($$1.e));
+   }
+
+   @Override
+   public ehh b(dt $$0) {
+      ehh $$1 = $$0.k();
+      return new ehh((float)this.a.a((double)$$1.i), (float)this.b.a((double)$$1.j));
+   }
+
+   @Override
+   public boolean a() {
+      return this.a.a();
+   }
+
+   @Override
+   public boolean b() {
+      return this.b.a();
+   }
+
+   @Override
+   public boolean c() {
+      return this.c.a();
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if (!($$0 instanceof ft $$1)) {
+         return false;
+      } else if (!this.a.equals($$1.a)) {
+         return false;
+      } else {
+         return !this.b.equals($$1.b) ? false : this.c.equals($$1.c);
+      }
+   }
+
+   public static ft a(StringReader $$0) throws CommandSyntaxException {
+      int $$1 = $$0.getCursor();
+      fs $$2 = fs.a($$0);
+      if ($$0.canRead() && $$0.peek() == ' ') {
          $$0.skip();
-         final aer $$1 = aer.a($$0);
-         return new ft.a() {
-            @Override
-            public Collection<dm> a(CommandContext<dr> $$0) throws CommandSyntaxException {
-               return ft.b($$0, $$1);
-            }
-
-            @Override
-            public Pair<aer, Either<dm, Collection<dm>>> b(CommandContext<dr> $$0) throws CommandSyntaxException {
-               return Pair.of($$1, Either.right(ft.b($$0, $$1)));
-            }
-         };
+         fs $$3 = fs.a($$0);
+         if ($$0.canRead() && $$0.peek() == ' ') {
+            $$0.skip();
+            fs $$4 = fs.a($$0);
+            return new ft($$2, $$3, $$4);
+         } else {
+            $$0.setCursor($$1);
+            throw fr.a.createWithContext($$0);
+         }
       } else {
-         final aer $$2 = aer.a($$0);
-         return new ft.a() {
-            @Override
-            public Collection<dm> a(CommandContext<dr> $$0) throws CommandSyntaxException {
-               return Collections.singleton(ft.a($$0, $$2));
-            }
-
-            @Override
-            public Pair<aer, Either<dm, Collection<dm>>> b(CommandContext<dr> $$0) throws CommandSyntaxException {
-               return Pair.of($$2, Either.left(ft.a($$0, $$2)));
-            }
-         };
+         $$0.setCursor($$1);
+         throw fr.a.createWithContext($$0);
       }
    }
 
-   static dm a(CommandContext<dr> $$0, aer $$1) throws CommandSyntaxException {
-      return ((dr)$$0.getSource()).l().aA().a($$1).orElseThrow(() -> c.create($$1.toString()));
-   }
-
-   static Collection<dm> b(CommandContext<dr> $$0, aer $$1) throws CommandSyntaxException {
-      Collection<dm> $$2 = ((dr)$$0.getSource()).l().aA().b($$1);
-      if ($$2 == null) {
-         throw b.create($$1.toString());
+   public static ft a(StringReader $$0, boolean $$1) throws CommandSyntaxException {
+      int $$2 = $$0.getCursor();
+      fs $$3 = fs.a($$0, $$1);
+      if ($$0.canRead() && $$0.peek() == ' ') {
+         $$0.skip();
+         fs $$4 = fs.a($$0, false);
+         if ($$0.canRead() && $$0.peek() == ' ') {
+            $$0.skip();
+            fs $$5 = fs.a($$0, $$1);
+            return new ft($$3, $$4, $$5);
+         } else {
+            $$0.setCursor($$2);
+            throw fr.a.createWithContext($$0);
+         }
       } else {
-         return $$2;
+         $$0.setCursor($$2);
+         throw fr.a.createWithContext($$0);
       }
    }
 
-   public static Collection<dm> a(CommandContext<dr> $$0, String $$1) throws CommandSyntaxException {
-      return ((ft.a)$$0.getArgument($$1, ft.a.class)).a($$0);
+   public static ft a(double $$0, double $$1, double $$2) {
+      return new ft(new fs(false, $$0), new fs(false, $$1), new fs(false, $$2));
    }
 
-   public static Pair<aer, Either<dm, Collection<dm>>> b(CommandContext<dr> $$0, String $$1) throws CommandSyntaxException {
-      return ((ft.a)$$0.getArgument($$1, ft.a.class)).b($$0);
+   public static ft a(ehh $$0) {
+      return new ft(new fs(false, (double)$$0.i), new fs(false, (double)$$0.j), new fs(true, 0.0));
    }
 
-   public Collection<String> getExamples() {
-      return a;
+   public static ft d() {
+      return new ft(new fs(true, 0.0), new fs(true, 0.0), new fs(true, 0.0));
    }
 
-   public interface a {
-      Collection<dm> a(CommandContext<dr> var1) throws CommandSyntaxException;
-
-      Pair<aer, Either<dm, Collection<dm>>> b(CommandContext<dr> var1) throws CommandSyntaxException;
+   @Override
+   public int hashCode() {
+      int $$0 = this.a.hashCode();
+      $$0 = 31 * $$0 + this.b.hashCode();
+      return 31 * $$0 + this.c.hashCode();
    }
 }

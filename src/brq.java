@@ -1,40 +1,19 @@
-import java.util.EnumSet;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public class brq extends brt {
-   private final bjt a;
-   private biy b;
-   private int c;
+public class brq<T extends bjb> extends brp<T> {
+   private boolean i = true;
 
-   public brq(bjt $$0) {
-      super($$0, false);
-      this.a = $$0;
-      this.a(EnumSet.of(bpt.a.d));
+   public brq(ccx $$0, Class<T> $$1, int $$2, boolean $$3, boolean $$4, @Nullable Predicate<bjb> $$5) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   public void a(boolean $$0) {
+      this.i = $$0;
    }
 
    @Override
    public boolean a() {
-      if (this.a.p() && !this.a.ga()) {
-         biy $$0 = this.a.I_();
-         if ($$0 == null) {
-            return false;
-         } else {
-            this.b = $$0.ef();
-            int $$1 = $$0.eg();
-            return $$1 != this.c && this.a(this.b, btk.a) && this.a.a(this.b, $$0);
-         }
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public void c() {
-      this.e.h(this.b);
-      biy $$0 = this.a.I_();
-      if ($$0 != null) {
-         this.c = $$0.eg();
-      }
-
-      super.c();
+      return this.i && super.a();
    }
 }

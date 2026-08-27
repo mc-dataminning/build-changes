@@ -1,12 +1,13 @@
-public class fvk extends fry<cbu> {
-   public static final aer a = new aer("textures/entity/projectiles/arrow.png");
-   public static final aer f = new aer("textures/entity/projectiles/tipped_arrow.png");
+public class fvk extends fvd {
+   private static final aeu a = new aeu("textures/entity/skeleton/stray.png");
 
-   public fvk(fsx.a $$0) {
-      super($$0);
+   public fvk(ftc.a $$0) {
+      super($$0, fhw.bt, fhw.bu, fhw.bv);
+      this.a(new fxs<>(this, $$0.f()));
    }
 
-   public aer a(cbu $$0) {
-      return $$0.z() > 0 ? f : a;
+   @Override
+   public aeu a(bym $$0) {
+      return a;
    }
 }

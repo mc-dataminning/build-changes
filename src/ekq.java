@@ -1,2 +1,8 @@
-public interface ekq extends ekv {
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@eje
+@ejd
+interface ekq {
 }

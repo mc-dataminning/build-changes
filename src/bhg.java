@@ -1,120 +1,142 @@
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.Objects;
 import javax.annotation.Nullable;
 
 public class bhg {
-   private final he<bhi> a;
-   @Nullable
-   private final bii b;
-   @Nullable
-   private final bii c;
-   @Nullable
-   private final ehd d;
+   public static final int a = 100;
+   public static final int b = 300;
+   private static final ue c = ue.a.a(new tg(tg.a.a, "https://bugs.mojang.com/browse/MCPE-28723")).a(new tn(tn.a.a, ti.b("MCPE-28723")));
+   private final List<bhe> d = Lists.newArrayList();
+   private final bjb e;
+   private int f;
+   private int g;
+   private int h;
+   private boolean i;
+   private boolean j;
 
-   @Override
-   public String toString() {
-      return "DamageSource (" + this.j().a() + ")";
+   public bhg(bjb $$0) {
+      this.e = $$0;
    }
 
-   public float a() {
-      return this.j().c();
+   public void a(bhj $$0, float $$1) {
+      this.c();
+      bho $$2 = bho.a(this.e);
+      bhe $$3 = new bhe($$0, $$1, $$2, this.e.ab);
+      this.d.add($$3);
+      this.f = this.e.ah;
+      this.j = true;
+      if (!this.i && this.e.bv() && a($$0)) {
+         this.i = true;
+         this.g = this.e.ah;
+         this.h = this.g;
+         this.e.Q_();
+      }
    }
 
-   public boolean b() {
-      return this.b != this.c;
+   private static boolean a(bhj $$0) {
+      return $$0.d() instanceof bjb;
    }
 
-   private bhg(he<bhi> $$0, @Nullable bii $$1, @Nullable bii $$2, @Nullable ehd $$3) {
-      this.a = $$0;
-      this.b = $$2;
-      this.c = $$1;
-      this.d = $$3;
+   private ti a(bil $$0, ti $$1, String $$2, String $$3) {
+      cja $$5 = $$0 instanceof bjb $$4 ? $$4.eR() : cja.b;
+      return !$$5.b() && $$5.A() ? ti.a($$2, this.e.H_(), $$1, $$5.J()) : ti.a($$3, this.e.H_(), $$1);
    }
 
-   public bhg(he<bhi> $$0, @Nullable bii $$1, @Nullable bii $$2) {
-      this($$0, $$1, $$2, null);
-   }
-
-   public bhg(he<bhi> $$0, ehd $$1) {
-      this($$0, null, null, $$1);
-   }
-
-   public bhg(he<bhi> $$0, @Nullable bii $$1) {
-      this($$0, $$1, $$1);
-   }
-
-   public bhg(he<bhi> $$0) {
-      this($$0, null, null, null);
-   }
-
-   @Nullable
-   public bii c() {
-      return this.c;
-   }
-
-   @Nullable
-   public bii d() {
-      return this.b;
-   }
-
-   public tf a(biy $$0) {
-      String $$1 = "death.attack." + this.j().a();
-      if (this.b == null && this.c == null) {
-         biy $$5 = $$0.eJ();
-         String $$6 = $$1 + ".player";
-         return $$5 != null ? tf.a($$6, $$0.H_(), $$5.H_()) : tf.a($$1, $$0.H_());
+   private ti a(bhe $$0, @Nullable bil $$1) {
+      bhj $$2 = $$0.a();
+      if (!$$2.a(apq.m) && !$$2.a(apq.s)) {
+         ti $$4 = a($$1);
+         bil $$5 = $$2.d();
+         ti $$6 = a($$5);
+         if ($$6 != null && !$$6.equals($$4)) {
+            return this.a($$5, $$6, "death.fell.assist.item", "death.fell.assist");
+         } else {
+            return (ti)($$4 != null ? this.a($$1, $$4, "death.fell.finish.item", "death.fell.finish") : ti.a("death.fell.killer", this.e.H_()));
+         }
       } else {
-         tf $$2 = this.b == null ? this.c.H_() : this.b.H_();
-         cix $$4 = this.b instanceof biy $$3 ? $$3.eR() : cix.b;
-         return !$$4.b() && $$4.A() ? tf.a($$1 + ".item", $$0.H_(), $$2, $$4.J()) : tf.a($$1, $$0.H_(), $$2);
+         bho $$3 = Objects.requireNonNullElse($$0.c(), bho.a);
+         return ti.a($$3.a(), this.e.H_());
       }
-   }
-
-   public String e() {
-      return this.j().a();
-   }
-
-   public boolean f() {
-      return switch (this.j().b()) {
-         case a -> false;
-         case b -> this.b instanceof biy && !(this.b instanceof cbm);
-         case c -> true;
-      };
-   }
-
-   public boolean g() {
-      if (this.d() instanceof cbm $$0 && $$0.fR().d) {
-         return true;
-      }
-
-      return false;
    }
 
    @Nullable
-   public ehd h() {
-      if (this.d != null) {
-         return this.d;
+   private static ti a(@Nullable bil $$0) {
+      return $$0 == null ? null : $$0.H_();
+   }
+
+   public ti a() {
+      if (this.d.isEmpty()) {
+         return ti.a("death.attack.generic", this.e.H_());
       } else {
-         return this.c != null ? this.c.di() : null;
+         bhe $$0 = this.d.get(this.d.size() - 1);
+         bhj $$1 = $$0.a();
+         bhe $$2 = this.d();
+         bhn $$3 = $$1.j().e();
+         if ($$3 == bhn.b && $$2 != null) {
+            return this.a($$2, $$1.d());
+         } else if ($$3 == bhn.c) {
+            String $$4 = "death.attack." + $$1.e();
+            ti $$5 = tk.a((ti)ti.c($$4 + ".link")).c(c);
+            return ti.a($$4 + ".message", this.e.H_(), $$5);
+         } else {
+            return $$1.a(this.e);
+         }
       }
    }
 
    @Nullable
-   public ehd i() {
-      return this.d;
+   private bhe d() {
+      bhe $$0 = null;
+      bhe $$1 = null;
+      float $$2 = 0.0F;
+      float $$3 = 0.0F;
+
+      for (int $$4 = 0; $$4 < this.d.size(); $$4++) {
+         bhe $$5 = this.d.get($$4);
+         bhe $$6 = $$4 > 0 ? this.d.get($$4 - 1) : null;
+         bhj $$7 = $$5.a();
+         boolean $$8 = $$7.a(apq.s);
+         float $$9 = $$8 ? Float.MAX_VALUE : $$5.d();
+         if (($$7.a(apq.m) || $$8) && $$9 > 0.0F && ($$0 == null || $$9 > $$3)) {
+            if ($$4 > 0) {
+               $$0 = $$6;
+            } else {
+               $$0 = $$5;
+            }
+
+            $$3 = $$9;
+         }
+
+         if ($$5.c() != null && ($$1 == null || $$5.b() > $$2)) {
+            $$1 = $$5;
+            $$2 = $$5.b();
+         }
+      }
+
+      if ($$3 > 5.0F && $$0 != null) {
+         return $$0;
+      } else {
+         return $$2 > 5.0F && $$1 != null ? $$1 : null;
+      }
    }
 
-   public boolean a(aqa<bhi> $$0) {
-      return this.a.a($$0);
+   public int b() {
+      return this.i ? this.e.ah - this.g : this.h - this.g;
    }
 
-   public boolean a(aeq<bhi> $$0) {
-      return this.a.a($$0);
-   }
+   public void c() {
+      int $$0 = this.i ? 300 : 100;
+      if (this.j && (!this.e.bv() || this.e.ah - this.f > $$0)) {
+         boolean $$1 = this.i;
+         this.j = false;
+         this.i = false;
+         this.h = this.e.ah;
+         if ($$1) {
+            this.e.F_();
+         }
 
-   public bhi j() {
-      return this.a.a();
-   }
-
-   public he<bhi> k() {
-      return this.a;
+         this.d.clear();
+      }
    }
 }

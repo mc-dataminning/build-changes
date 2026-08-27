@@ -1,73 +1,31 @@
-import com.google.common.collect.Lists;
-import java.util.Collection;
-import java.util.List;
+import java.util.BitSet;
 import javax.annotation.Nullable;
 
-public class yg implements ux<wp> {
+public class yg implements va<ws> {
    private final int a;
-   private final byte b;
-   private final boolean c;
-   @Nullable
-   private final List<ebj> d;
-   @Nullable
-   private final ebm.b e;
+   private final int b;
+   private final yh c;
 
-   public yg(int $$0, byte $$1, boolean $$2, @Nullable Collection<ebj> $$3, @Nullable ebm.b $$4) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3 != null ? Lists.newArrayList($$3) : null;
-      this.e = $$4;
+   public yg(cox $$0, dzw $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
+      this.a = $$0.e;
+      this.b = $$0.f;
+      this.c = new yh($$0, $$1, $$2, $$3);
    }
 
-   public yg(si $$0) {
+   public yg(sl $$0) {
       this.a = $$0.m();
-      this.b = $$0.readByte();
-      this.c = $$0.readBoolean();
-      this.d = $$0.c($$0x -> $$0x.a((si.a)($$0xx -> {
-            ebj.a $$1x = $$0xx.b(ebj.a.class);
-            byte $$2x = $$0xx.readByte();
-            byte $$3x = $$0xx.readByte();
-            byte $$4x = (byte)($$0xx.readByte() & 15);
-            tf $$5x = $$0xx.c(si::l);
-            return new ebj($$1x, $$2x, $$3x, $$4x, $$5x);
-         })));
-      int $$1 = $$0.readUnsignedByte();
-      if ($$1 > 0) {
-         int $$2 = $$0.readUnsignedByte();
-         int $$3 = $$0.readUnsignedByte();
-         int $$4 = $$0.readUnsignedByte();
-         byte[] $$5 = $$0.b();
-         this.e = new ebm.b($$3, $$4, $$1, $$2, $$5);
-      } else {
-         this.e = null;
-      }
+      this.b = $$0.m();
+      this.c = new yh($$0, this.a, this.b);
    }
 
    @Override
-   public void a(si $$0) {
+   public void a(sl $$0) {
       $$0.c(this.a);
-      $$0.k(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d, ($$0x, $$1) -> $$0x.a($$1, ($$0xx, $$1x) -> {
-            $$0xx.a($$1x.c());
-            $$0xx.k($$1x.d());
-            $$0xx.k($$1x.e());
-            $$0xx.k($$1x.f() & 15);
-            $$0xx.a($$1x.g(), si::a);
-         }));
-      if (this.e != null) {
-         $$0.k(this.e.c);
-         $$0.k(this.e.d);
-         $$0.k(this.e.a);
-         $$0.k(this.e.b);
-         $$0.a(this.e.e);
-      } else {
-         $$0.k(0);
-      }
+      $$0.c(this.b);
+      this.c.a($$0);
    }
 
-   public void a(wp $$0) {
+   public void a(ws $$0) {
       $$0.a(this);
    }
 
@@ -75,21 +33,11 @@ public class yg implements ux<wp> {
       return this.a;
    }
 
-   public void a(ebm $$0) {
-      if (this.d != null) {
-         $$0.a(this.d);
-      }
-
-      if (this.e != null) {
-         this.e.a($$0);
-      }
-   }
-
-   public byte d() {
+   public int d() {
       return this.b;
    }
 
-   public boolean e() {
+   public yh e() {
       return this.c;
    }
 }

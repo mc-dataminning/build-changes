@@ -1,33 +1,26 @@
-public class fvl extends fuc<cdp> {
-   private final fon f;
+public class fvl extends fui<bzq, fhb<bzq>> {
+   private static final aeu a = new aeu("textures/entity/strider/strider.png");
+   private static final aeu i = new aeu("textures/entity/strider/strider_cold.png");
 
-   public fvl(fsx.a $$0) {
-      super($$0, fhr.bA);
-      this.f = $$0.c();
+   public fvl(ftc.a $$0) {
+      super($$0, new fhb<>($$0.a(fhw.bx)), 0.5F);
+      this.a(new fxl<>(this, new fhb<>($$0.a(fhw.by)), new aeu("textures/entity/strider/strider_saddle.png")));
    }
 
-   protected void a(cdp $$0, float $$1, dez $$2, elf $$3, fnu $$4, int $$5) {
-      int $$6 = $$0.B();
-      if ($$6 > -1 && (float)$$6 - $$1 + 1.0F < 10.0F) {
-         float $$7 = 1.0F - ((float)$$6 - $$1 + 1.0F) / 10.0F;
-         $$7 = arp.a($$7, 0.0F, 1.0F);
-         $$7 *= $$7;
-         $$7 *= $$7;
-         float $$8 = 1.0F + $$7 * 0.3F;
-         $$3.b($$8, $$8, $$8);
-      }
-
-      a(this.f, $$2, $$3, $$4, $$5, $$6 > -1 && $$6 / 5 % 2 == 0);
+   public aeu a(bzq $$0) {
+      return $$0.p() ? i : a;
    }
 
-   public static void a(fon $$0, dez $$1, elf $$2, fnu $$3, int $$4, boolean $$5) {
-      int $$6;
-      if ($$5) {
-         $$6 = fyl.a(fyl.a(1.0F), 10);
+   protected void a(bzq $$0, elk $$1, float $$2) {
+      if ($$0.i_()) {
+         $$1.b(0.5F, 0.5F, 0.5F);
+         this.d = 0.25F;
       } else {
-         $$6 = fyl.d;
+         this.d = 0.5F;
       }
+   }
 
-      $$0.a($$1, $$2, $$3, $$4, $$6);
+   protected boolean b(bzq $$0) {
+      return super.a($$0) || $$0.p();
    }
 }

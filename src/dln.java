@@ -1,25 +1,32 @@
 import com.mojang.serialization.Codec;
-import java.util.List;
+import java.util.stream.LongStream;
 
-class dln extends dlr {
-   public static final Codec<dln> a = a(dln::new);
+public class dln {
+   private long b;
+   private long c;
+   public static final Codec<dln> a = Codec.LONG_STREAM
+      .comapFlatMap($$0 -> ac.a($$0, 2).map($$0x -> new dln($$0x[0], $$0x[1])), $$0 -> LongStream.of($$0.b, $$0.c));
 
-   public dln(List<dlp> $$0) {
-      super($$0);
+   public dln(dlc.a $$0) {
+      this($$0.b(), $$0.c());
    }
 
-   public boolean a(cqf $$0, gu $$1) {
-      for (dlp $$2 : this.e) {
-         if (!$$2.test($$0, $$1)) {
-            return false;
-         }
+   public dln(long $$0, long $$1) {
+      this.b = $$0;
+      this.c = $$1;
+      if ((this.b | this.c) == 0L) {
+         this.b = -7046029254386353131L;
+         this.c = 7640891576956012809L;
       }
-
-      return true;
    }
 
-   @Override
-   public dlq<?> a() {
-      return dlq.j;
+   public long a() {
+      long $$0 = this.b;
+      long $$1 = this.c;
+      long $$2 = Long.rotateLeft($$0 + $$1, 17) + $$0;
+      $$1 ^= $$0;
+      this.b = Long.rotateLeft($$0, 49) ^ $$1 ^ $$1 << 21;
+      this.c = Long.rotateLeft($$1, 28);
+      return $$2;
    }
 }

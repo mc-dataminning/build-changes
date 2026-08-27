@@ -1,67 +1,78 @@
-public class cly extends cls {
-   public cly(aer $$0, clq $$1) {
-      super($$0, $$1);
+public class cly extends clw {
+   private static final cmb a = cmb.a(cjd.qa);
+   private static final cmb b = cmb.a(cjd.oG);
+   private static final cmb c = cmb.a(cjd.tB);
+
+   public cly(clt $$0) {
+      super($$0);
    }
 
-   public boolean a(cer $$0, cpl $$1) {
-      int $$2 = 0;
-      cix $$3 = cix.b;
+   public boolean a(ceu $$0, cpq $$1) {
+      boolean $$2 = false;
+      int $$3 = 0;
 
       for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         cix $$5 = $$0.a($$4);
+         cja $$5 = $$0.a($$4);
          if (!$$5.b()) {
-            if ($$5.a(cja.rf)) {
-               if (!$$3.b()) {
+            if (a.a($$5)) {
+               if ($$2) {
                   return false;
                }
 
-               $$3 = $$5;
-            } else {
-               if (!$$5.a(cja.tp)) {
+               $$2 = true;
+            } else if (b.a($$5)) {
+               if (++$$3 > 3) {
                   return false;
                }
-
-               $$2++;
+            } else if (!c.a($$5)) {
+               return false;
             }
          }
       }
 
-      return !$$3.b() && $$2 > 0;
+      return $$2 && $$3 >= 1;
    }
 
-   public cix a(cer $$0, hs $$1) {
-      int $$2 = 0;
-      cix $$3 = cix.b;
+   public cja a(ceu $$0, hu $$1) {
+      cja $$2 = new cja(cjd.tA, 3);
+      qu $$3 = $$2.a("Fireworks");
+      ra $$4 = new ra();
+      int $$5 = 0;
 
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         cix $$5 = $$0.a($$4);
-         if (!$$5.b()) {
-            if ($$5.a(cja.rf)) {
-               if (!$$3.b()) {
-                  return cix.b;
+      for (int $$6 = 0; $$6 < $$0.b(); $$6++) {
+         cja $$7 = $$0.a($$6);
+         if (!$$7.b()) {
+            if (b.a($$7)) {
+               $$5++;
+            } else if (c.a($$7)) {
+               qu $$8 = $$7.b("Explosion");
+               if ($$8 != null) {
+                  $$4.add($$8);
                }
-
-               $$3 = $$5;
-            } else {
-               if (!$$5.a(cja.tp)) {
-                  return cix.b;
-               }
-
-               $$2++;
             }
          }
       }
 
-      return !$$3.b() && $$2 >= 1 ? $$3.c($$2 + 1) : cix.b;
+      $$3.a("Flight", (byte)$$5);
+      if (!$$4.isEmpty()) {
+         $$3.a("Explosions", $$4);
+      }
+
+      return $$2;
    }
 
    @Override
    public boolean a(int $$0, int $$1) {
-      return $$0 >= 3 && $$1 >= 3;
+      return $$0 * $$1 >= 2;
    }
 
    @Override
-   public cmc<?> ai_() {
-      return cmc.e;
+   public cja a(hu $$0) {
+      return new cja(cjd.tA);
+   }
+
+   @Override
+   public cmh<?> ai_() {
+      return cmh.g;
    }
 }

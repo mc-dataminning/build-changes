@@ -1,45 +1,82 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Set;
 
-public class eee extends eds {
+public class eee extends edx {
+   private static final Codec<Pair<hg<dch>, cho>> b = Codec.mapPair(jd.al.r().fieldOf("pattern"), cho.q.fieldOf("color")).codec();
    public static final Codec<eee> a = RecordCodecBuilder.create(
       $$0 -> a($$0)
-            .and($$0.group(egb.a.fieldOf("count").forGetter($$0x -> $$0x.b), Codec.BOOL.fieldOf("add").orElse(false).forGetter($$0x -> $$0x.c)))
+            .and($$0.group(b.listOf().fieldOf("patterns").forGetter($$0x -> $$0x.c), Codec.BOOL.fieldOf("append").forGetter($$0x -> $$0x.d)))
             .apply($$0, eee::new)
    );
-   private final ega b;
-   private final boolean c;
+   private final List<Pair<hg<dch>, cho>> c;
+   private final boolean d;
 
-   private eee(List<eff> $$0, ega $$1, boolean $$2) {
+   eee(List<efk> $$0, List<Pair<hg<dch>, cho>> $$1, boolean $$2) {
       super($$0);
-      this.b = $$1;
-      this.c = $$2;
+      this.c = $$1;
+      this.d = $$2;
    }
 
    @Override
-   public edu b() {
-      return edv.c;
-   }
+   protected cja a(cja $$0, ecl $$1) {
+      qu $$2 = cgt.a($$0);
+      if ($$2 == null) {
+         $$2 = new qu();
+      }
 
-   @Override
-   public Set<eeo<?>> a() {
-      return this.b.a();
-   }
+      dch.a $$3 = new dch.a();
+      this.c.forEach($$3::a);
+      ra $$4 = $$3.a();
+      ra $$5;
+      if (this.d) {
+         $$5 = $$2.c("Patterns", 10).e();
+         $$5.addAll($$4);
+      } else {
+         $$5 = $$4;
+      }
 
-   @Override
-   public cix a(cix $$0, ecg $$1) {
-      int $$2 = this.c ? $$0.L() : 0;
-      $$0.f(arp.a($$2 + this.b.a($$1), 0, $$0.g()));
+      $$2.a("Patterns", $$5);
+      cgt.a($$0, dcs.t, $$2);
       return $$0;
    }
 
-   public static eds.a<?> a(ega $$0) {
-      return a($$1 -> new eee($$1, $$0, false));
+   @Override
+   public edz b() {
+      return eea.y;
    }
 
-   public static eds.a<?> a(ega $$0, boolean $$1) {
-      return a($$2 -> new eee($$2, $$0, $$1));
+   public static eee.a a(boolean $$0) {
+      return new eee.a($$0);
+   }
+
+   public static class a extends edx.a<eee.a> {
+      private final Builder<Pair<hg<dch>, cho>> a = ImmutableList.builder();
+      private final boolean b;
+
+      a(boolean $$0) {
+         this.b = $$0;
+      }
+
+      protected eee.a a() {
+         return this;
+      }
+
+      @Override
+      public edy b() {
+         return new eee(this.g(), this.a.build(), this.b);
+      }
+
+      public eee.a a(aet<dch> $$0, cho $$1) {
+         return this.a(jd.al.f($$0), $$1);
+      }
+
+      public eee.a a(hg<dch> $$0, cho $$1) {
+         this.a.add(Pair.of($$0, $$1));
+         return this;
+      }
    }
 }

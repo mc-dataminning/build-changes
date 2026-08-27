@@ -1,45 +1,189 @@
-public class eii {
-   private static final eis<Object> a = new eis<Object>() {
-      @Override
-      public void a(eip<Object> $$0) {
-      }
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-      @Override
-      public boolean a(gu $$0, Object $$1) {
-         return false;
-      }
+public class eii extends ebm {
+   private static final Logger b = LogUtils.getLogger();
+   public static final String a = "scoreboard";
+   private final eih c;
 
-      @Override
-      public int a() {
-         return 0;
-      }
-   };
-   private static final eil<Object> b = new eil<Object>() {
-      @Override
-      public void a(eip<Object> $$0) {
-      }
-
-      @Override
-      public boolean a(gu $$0, Object $$1) {
-         return false;
-      }
-
-      @Override
-      public boolean b(gu $$0, Object $$1) {
-         return false;
-      }
-
-      @Override
-      public int a() {
-         return 0;
-      }
-   };
-
-   public static <T> eis<T> a() {
-      return (eis<T>)a;
+   public eii(eih $$0) {
+      this.c = $$0;
    }
 
-   public static <T> eil<T> b() {
-      return (eil<T>)b;
+   public eii b(qu $$0) {
+      this.b($$0.c("Objectives", 10));
+      this.c.a($$0.c("PlayerScores", 10));
+      if ($$0.b("DisplaySlots", 10)) {
+         this.c($$0.p("DisplaySlots"));
+      }
+
+      if ($$0.b("Teams", 9)) {
+         this.a($$0.c("Teams", 10));
+      }
+
+      return this;
+   }
+
+   private void a(ra $$0) {
+      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
+         qu $$2 = $$0.a($$1);
+         String $$3 = $$2.l("Name");
+         eif $$4 = this.c.e($$3);
+         ti $$5 = ti.a.a($$2.l("DisplayName"));
+         if ($$5 != null) {
+            $$4.a($$5);
+         }
+
+         if ($$2.b("TeamColor", 8)) {
+            $$4.a(n.b($$2.l("TeamColor")));
+         }
+
+         if ($$2.b("AllowFriendlyFire", 99)) {
+            $$4.a($$2.q("AllowFriendlyFire"));
+         }
+
+         if ($$2.b("SeeFriendlyInvisibles", 99)) {
+            $$4.b($$2.q("SeeFriendlyInvisibles"));
+         }
+
+         if ($$2.b("MemberNamePrefix", 8)) {
+            ti $$6 = ti.a.a($$2.l("MemberNamePrefix"));
+            if ($$6 != null) {
+               $$4.b($$6);
+            }
+         }
+
+         if ($$2.b("MemberNameSuffix", 8)) {
+            ti $$7 = ti.a.a($$2.l("MemberNameSuffix"));
+            if ($$7 != null) {
+               $$4.c($$7);
+            }
+         }
+
+         if ($$2.b("NameTagVisibility", 8)) {
+            eij.b $$8 = eij.b.a($$2.l("NameTagVisibility"));
+            if ($$8 != null) {
+               $$4.a($$8);
+            }
+         }
+
+         if ($$2.b("DeathMessageVisibility", 8)) {
+            eij.b $$9 = eij.b.a($$2.l("DeathMessageVisibility"));
+            if ($$9 != null) {
+               $$4.b($$9);
+            }
+         }
+
+         if ($$2.b("CollisionRule", 8)) {
+            eij.a $$10 = eij.a.a($$2.l("CollisionRule"));
+            if ($$10 != null) {
+               $$4.a($$10);
+            }
+         }
+
+         this.a($$4, $$2.c("Players", 8));
+      }
+   }
+
+   private void a(eif $$0, ra $$1) {
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         this.c.a($$1.j($$2), $$0);
+      }
+   }
+
+   private void c(qu $$0) {
+      for (String $$1 : $$0.e()) {
+         eid $$2 = eid.t.a($$1);
+         if ($$2 != null) {
+            String $$3 = $$0.l($$1);
+            eie $$4 = this.c.b($$3);
+            this.c.a($$2, $$4);
+         }
+      }
+   }
+
+   private void b(ra $$0) {
+      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
+         qu $$2 = $$0.a($$1);
+         String $$3 = $$2.l("CriteriaName");
+         eik $$4 = eik.a($$3).orElseGet(() -> {
+            b.warn("Unknown scoreboard criteria {}, replacing with {}", $$3, eik.a.d());
+            return eik.a;
+         });
+         String $$5 = $$2.l("Name");
+         ti $$6 = ti.a.a($$2.l("DisplayName"));
+         eik.a $$7 = eik.a.a($$2.l("RenderType"));
+         this.c.a($$5, $$4, $$6, $$7);
+      }
+   }
+
+   @Override
+   public qu a(qu $$0) {
+      $$0.a("Objectives", this.b());
+      $$0.a("PlayerScores", this.c.h());
+      $$0.a("Teams", this.a());
+      this.d($$0);
+      return $$0;
+   }
+
+   private ra a() {
+      ra $$0 = new ra();
+
+      for (eif $$2 : this.c.g()) {
+         qu $$3 = new qu();
+         $$3.a("Name", $$2.b());
+         $$3.a("DisplayName", ti.a.a($$2.c()));
+         if ($$2.n().b() >= 0) {
+            $$3.a("TeamColor", $$2.n().g());
+         }
+
+         $$3.a("AllowFriendlyFire", $$2.h());
+         $$3.a("SeeFriendlyInvisibles", $$2.i());
+         $$3.a("MemberNamePrefix", ti.a.a($$2.e()));
+         $$3.a("MemberNameSuffix", ti.a.a($$2.f()));
+         $$3.a("NameTagVisibility", $$2.j().e);
+         $$3.a("DeathMessageVisibility", $$2.k().e);
+         $$3.a("CollisionRule", $$2.l().e);
+         ra $$4 = new ra();
+
+         for (String $$5 : $$2.g()) {
+            $$4.add(rl.a($$5));
+         }
+
+         $$3.a("Players", $$4);
+         $$0.add($$3);
+      }
+
+      return $$0;
+   }
+
+   private void d(qu $$0) {
+      qu $$1 = new qu();
+
+      for (eid $$2 : eid.values()) {
+         eie $$3 = this.c.a($$2);
+         if ($$3 != null) {
+            $$1.a($$2.c(), $$3.b());
+         }
+      }
+
+      if (!$$1.g()) {
+         $$0.a("DisplaySlots", $$1);
+      }
+   }
+
+   private ra b() {
+      ra $$0 = new ra();
+
+      for (eie $$2 : this.c.c()) {
+         qu $$3 = new qu();
+         $$3.a("Name", $$2.b());
+         $$3.a("CriteriaName", $$2.c().d());
+         $$3.a("DisplayName", ti.a.a($$2.d()));
+         $$3.a("RenderType", $$2.f().a());
+         $$0.add($$3);
+      }
+
+      return $$0;
    }
 }

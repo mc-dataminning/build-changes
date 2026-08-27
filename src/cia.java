@@ -1,39 +1,25 @@
-public class cia extends cis {
-   public cia(cis.a $$0) {
+public class cia extends civ {
+   public cia(civ.a $$0) {
       super($$0);
    }
 
    @Override
-   public bgq a(clh $$0) {
-      cpl $$1 = $$0.q();
-      gu $$2 = $$0.a();
-      dez $$3 = $$1.a_($$2);
-      boolean $$4 = false;
-      if (!csy.h($$3) && !csz.g($$3) && !cta.g($$3)) {
-         $$2 = $$2.a($$0.k());
-         if (crz.a($$1, $$2, $$0.g())) {
-            this.a($$1, $$2);
-            $$1.b($$2, crz.a($$1, $$2));
-            $$1.a($$0.o(), djj.i, $$2);
-            $$4 = true;
-         }
-      } else {
-         this.a($$1, $$2);
-         $$1.b($$2, $$3.a(dfp.r, Boolean.valueOf(true)));
-         $$1.a($$0.o(), djj.c, $$2);
-         $$4 = true;
+   public bgu<cja> a(cpq $$0, cbp $$1, bgs $$2) {
+      cja $$3 = $$1.b($$2);
+      $$0.a(null, $$1.dp(), $$1.dr(), $$1.dv(), aoz.hm, apa.g, 0.5F, 0.4F / ($$0.y_().i() * 0.4F + 0.8F));
+      $$1.gl().a(this, 20);
+      if (!$$0.B) {
+         ccq $$4 = new ccq($$0, $$1);
+         $$4.a($$3);
+         $$4.a($$1, $$1.dC(), $$1.dA(), 0.0F, 1.5F, 1.0F);
+         $$0.b($$4);
       }
 
-      if ($$4) {
-         $$0.n().h(1);
-         return bgq.a($$1.B);
-      } else {
-         return bgq.e;
+      $$1.b(apj.c.b(this));
+      if (!$$1.fR().d) {
+         $$3.h(1);
       }
-   }
 
-   private void a(cpl $$0, gu $$1) {
-      aru $$2 = $$0.y_();
-      $$0.a(null, $$1, aow.hD, aox.e, 1.0F, ($$2.i() - $$2.i()) * 0.2F + 1.0F);
+      return bgu.a($$3, $$0.r_());
    }
 }

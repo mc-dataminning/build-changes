@@ -1,17 +1,26 @@
-public interface evw extends etp, evz {
-   evw.a q();
+import java.util.function.Consumer;
 
-   default boolean ax_() {
-      return true;
+public interface evw {
+   void f(int var1);
+
+   void g(int var1);
+
+   int r();
+
+   int t();
+
+   int l();
+
+   int i();
+
+   default ewn s() {
+      return new ewn(this.r(), this.t(), this.l(), this.i());
    }
 
-   public static enum a {
-      a,
-      b,
-      c;
-
-      public boolean a() {
-         return this == c;
-      }
+   default void b(int $$0, int $$1) {
+      this.f($$0);
+      this.g($$1);
    }
+
+   void a(Consumer<esj> var1);
 }

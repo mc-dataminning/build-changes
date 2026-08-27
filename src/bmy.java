@@ -1,81 +1,22 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public class bmy extends bkp<biy> {
-   public static final int c = 100;
-   private long d;
-
-   public bmy() {
-      super(ImmutableMap.of(brz.b, bsa.a, brz.H, bsa.c));
+public class bmy {
+   public static bmc<bjb> a(float $$0, int $$1) {
+      return a($$0x -> true, $$1x -> $$0, $$1);
    }
 
-   @Override
-   protected boolean a(akk $$0, biy $$1) {
-      if ($$1.bN()) {
-         return false;
-      } else {
-         bjy<?> $$2 = $$1.dM();
-         hd $$3 = $$2.c(brz.b).get();
-         if ($$0.ac() != $$3.a()) {
-            return false;
-         } else {
-            Optional<Long> $$4 = $$2.c(brz.H);
-            if ($$4.isPresent()) {
-               long $$5 = $$0.V() - $$4.get();
-               if ($$5 > 0L && $$5 < 100L) {
-                  return false;
-               }
-            }
-
-            dez $$6 = $$0.a_($$3.b());
-            return $$3.b().a($$1.di(), 2.0) && $$6.a(apl.R) && !$$6.c(cse.b);
-         }
-      }
-   }
-
-   @Override
-   protected boolean a(akk $$0, biy $$1, long $$2) {
-      Optional<hd> $$3 = $$1.dM().c(brz.b);
-      if ($$3.isEmpty()) {
-         return false;
-      } else {
-         gu $$4 = $$3.get().b();
-         return $$1.dM().c(ccx.e) && $$1.dr() > (double)$$4.v() + 0.4 && $$4.a($$1.di(), 1.14);
-      }
-   }
-
-   @Override
-   protected void d(akk $$0, biy $$1, long $$2) {
-      if ($$2 > this.d) {
-         bjy<?> $$3 = $$1.dM();
-         if ($$3.a(brz.v)) {
-            Set<hd> $$4 = $$3.c(brz.v).get();
-            Optional<List<biy>> $$5;
-            if ($$3.a(brz.g)) {
-               $$5 = $$3.c(brz.g);
-            } else {
-               $$5 = Optional.empty();
-            }
-
-            bln.a($$0, $$1, null, null, $$4, $$5);
-         }
-
-         $$1.b($$1.dM().c(brz.b).get().b());
-      }
-   }
-
-   @Override
-   protected boolean a(long $$0) {
-      return false;
-   }
-
-   @Override
-   protected void b(akk $$0, biy $$1, long $$2) {
-      if ($$1.fB()) {
-         $$1.fC();
-         this.d = $$2 + 40L;
-      }
+   public static bmc<bjb> a(Predicate<bjb> $$0, Function<bjb, Float> $$1, int $$2) {
+      return boe.a(
+         (Function<boe.b<bjb>, ? extends App<boe.c<bjb>, boh<bjb>>>)($$3 -> $$3.group($$3.c(bsc.m), $$3.b(bsc.n)).apply($$3, ($$4, $$5) -> ($$6, $$7, $$8) -> {
+                  if (!$$0.test($$7)) {
+                     return false;
+                  } else {
+                     $$4.a(new bsf($$3.b($$5), $$1.apply($$7), $$2));
+                     return true;
+                  }
+               }))
+      );
    }
 }

@@ -1,31 +1,16 @@
-public class cnv extends cne {
-   public cnv(cne.a $$0, bin... $$1) {
-      super($$0, cnf.c, $$1);
+public class cnv extends cnj {
+   public cnv(cnj.a $$0, biq... $$1) {
+      super($$0, cnk.e, $$1);
    }
 
    @Override
    public int a(int $$0) {
-      return $$0 * 25;
+      return 10 * $$0;
    }
 
    @Override
    public int b(int $$0) {
-      return this.a($$0) + 50;
-   }
-
-   @Override
-   public boolean b() {
-      return true;
-   }
-
-   @Override
-   public boolean h() {
-      return false;
-   }
-
-   @Override
-   public boolean i() {
-      return false;
+      return this.a($$0) + 30;
    }
 
    @Override

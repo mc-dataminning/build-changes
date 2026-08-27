@@ -1,26 +1,9 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dyj extends dyl {
-   public static final Codec<dyj> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(dez.b.fieldOf("block_state").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("probability").forGetter($$0x -> $$0x.d))
-            .apply($$0, dyj::new)
-   );
-   private final dez b;
-   private final float d;
+public abstract class dyj {
+   public static final Codec<dyj> c = jd.r.q().dispatch("predicate_type", dyj::a, dyk::codec);
 
-   public dyj(dez $$0, float $$1) {
-      this.b = $$0;
-      this.d = $$1;
-   }
+   public abstract boolean a(gw var1, gw var2, gw var3, arx var4);
 
-   @Override
-   public boolean a(dez $$0, aru $$1) {
-      return $$0 == this.b && $$1.i() < this.d;
-   }
-
-   @Override
-   protected dym<?> a() {
-      return dym.f;
-   }
+   protected abstract dyk<?> a();
 }

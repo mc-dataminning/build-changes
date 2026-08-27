@@ -1,13 +1,24 @@
-public class fwn<T extends byo> extends fxf<T, fep<T>> {
-   private static final aer a = new aer("textures/entity/zombie/drowned_outer_layer.png");
-   private final fep<T> b;
+public class fwn extends fwv<byp, fes<byp>> {
+   private static final aeu a = new aeu("textures/entity/creeper/creeper_armor.png");
+   private final fes<byp> b;
 
-   public fwn(fus<T, fep<T>> $$0, fho $$1) {
+   public fwn(fux<byp, fes<byp>> $$0, fht $$1) {
       super($$0);
-      this.b = new fep<>($$1.a(fhr.O));
+      this.b = new fes<>($$1.a(fhw.C));
    }
 
-   public void a(elf $$0, fnu $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      a(this.c(), this.b, a, $$0, $$1, $$2, $$3, $$4, $$5, $$7, $$8, $$9, $$6, 1.0F, 1.0F, 1.0F);
+   @Override
+   protected float a(float $$0) {
+      return $$0 * 0.01F;
+   }
+
+   @Override
+   protected aeu a() {
+      return a;
+   }
+
+   @Override
+   protected fey<byp> b() {
+      return this.b;
    }
 }

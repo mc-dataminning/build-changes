@@ -1,27 +1,23 @@
-public class fub extends fud<byz, ffj<byz>> {
-   private static final aer a = new aer("textures/entity/slime/magmacube.png");
+public class fub extends ftb<byc> {
+   private static final aeu a = new aeu("textures/entity/lead_knot.png");
+   private final ffp<byc> f;
 
-   public fub(fsx.a $$0) {
-      super($$0, new ffj<>($$0.a(fhr.au)), 0.25F);
+   public fub(ftc.a $$0) {
+      super($$0);
+      this.f = new ffp<>($$0.a(fhw.aq));
    }
 
-   protected int a(byz $$0, gu $$1) {
-      return 15;
-   }
-
-   public aer a(byz $$0) {
-      return a;
-   }
-
-   public void a(byz $$0, float $$1, float $$2, elf $$3, fnu $$4, int $$5) {
-      this.d = 0.25F * (float)$$0.gb();
+   public void a(byc $$0, float $$1, float $$2, elk $$3, fnz $$4, int $$5) {
+      $$3.a();
+      $$3.b(-1.0F, -1.0F, 1.0F);
+      this.f.a($$0, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F);
+      elo $$6 = $$4.getBuffer(this.f.a(a));
+      this.f.a($$3, $$6, $$5, fyq.d, 1.0F, 1.0F, 1.0F, 1.0F);
+      $$3.b();
       super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   protected void a(byz $$0, elf $$1, float $$2) {
-      int $$3 = $$0.gb();
-      float $$4 = arp.i($$2, $$0.bS, $$0.e) / ((float)$$3 * 0.5F + 1.0F);
-      float $$5 = 1.0F / ($$4 + 1.0F);
-      $$1.b($$5 * (float)$$3, 1.0F / $$5 * (float)$$3, $$5 * (float)$$3);
+   public aeu a(byc $$0) {
+      return a;
    }
 }

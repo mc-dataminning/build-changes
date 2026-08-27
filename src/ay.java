@@ -1,47 +1,61 @@
 import com.google.gson.JsonObject;
 import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class ay extends cu<ay.a> {
-   static final aer a = new aer("construct_beacon");
-
-   @Override
-   public aer a() {
-      return a;
+public class ay extends cw<ay.a> {
+   public ay.a a(JsonObject $$0, Optional<bc> $$1, bg $$2) {
+      aet<cpq> $$3 = $$0.has("from") ? aet.a(je.aH, new aeu(arj.i($$0, "from"))) : null;
+      aet<cpq> $$4 = $$0.has("to") ? aet.a(je.aH, new aeu(arj.i($$0, "to"))) : null;
+      return new ay.a($$1, $$3, $$4);
    }
 
-   public ay.a a(JsonObject $$0, Optional<ba> $$1, be $$2) {
-      cj.d $$3 = cj.d.a($$0.get("level"));
-      return new ay.a($$1, $$3);
+   public void a(ako $$0, aet<cpq> $$1, aet<cpq> $$2) {
+      this.a($$0, $$2x -> $$2x.b($$1, $$2));
    }
 
-   public void a(akl $$0, int $$1) {
-      this.a($$0, $$1x -> $$1x.a($$1));
-   }
+   public static class a extends at {
+      @Nullable
+      private final aet<cpq> a;
+      @Nullable
+      private final aet<cpq> b;
 
-   public static class a extends ar {
-      private final cj.d a;
-
-      public a(Optional<ba> $$0, cj.d $$1) {
-         super(ay.a, $$0);
+      public a(Optional<bc> $$0, @Nullable aet<cpq> $$1, @Nullable aet<cpq> $$2) {
+         super($$0);
          this.a = $$1;
+         this.b = $$2;
       }
 
-      public static ay.a d() {
-         return new ay.a(Optional.empty(), cj.d.c);
+      public static am<ay.a> c() {
+         return al.v.a(new ay.a(Optional.empty(), null, null));
       }
 
-      public static ay.a a(cj.d $$0) {
-         return new ay.a(Optional.empty(), $$0);
+      public static am<ay.a> a(aet<cpq> $$0, aet<cpq> $$1) {
+         return al.v.a(new ay.a(Optional.empty(), $$0, $$1));
       }
 
-      public boolean a(int $$0) {
-         return this.a.d($$0);
+      public static am<ay.a> a(aet<cpq> $$0) {
+         return al.v.a(new ay.a(Optional.empty(), null, $$0));
+      }
+
+      public static am<ay.a> b(aet<cpq> $$0) {
+         return al.v.a(new ay.a(Optional.empty(), $$0, null));
+      }
+
+      public boolean b(aet<cpq> $$0, aet<cpq> $$1) {
+         return this.a != null && this.a != $$0 ? false : this.b == null || this.b == $$1;
       }
 
       @Override
-      public JsonObject b() {
-         JsonObject $$0 = super.b();
-         $$0.add("level", this.a.e());
+      public JsonObject a() {
+         JsonObject $$0 = super.a();
+         if (this.a != null) {
+            $$0.addProperty("from", this.a.a().toString());
+         }
+
+         if (this.b != null) {
+            $$0.addProperty("to", this.b.a().toString());
+         }
+
          return $$0;
       }
    }

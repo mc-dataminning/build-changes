@@ -1,29 +1,22 @@
-import java.util.function.ToIntFunction;
-import javax.annotation.Nullable;
+public class ctg extends csq {
+   protected static final eib a = csq.a(0.0, 0.0, 0.0, 16.0, 1.0, 16.0);
 
-public interface ctg {
-   ehw r_ = csl.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
-   dfq s_ = dfp.D;
-
-   static bgq a(@Nullable bii $$0, dez $$1, cpl $$2, gu $$3) {
-      if ($$1.c(s_)) {
-         csl.a($$2, $$3, new cix(cja.vw, 1));
-         float $$4 = arp.b($$2.z, 0.8F, 1.2F);
-         $$2.a(null, $$3, aow.dx, aox.e, 1.0F, $$4);
-         dez $$5 = $$1.a(s_, Boolean.valueOf(false));
-         $$2.a($$3, $$5, 2);
-         $$2.a(djj.c, $$3, djj.a.a($$0, $$5));
-         return bgq.a($$2.B);
-      } else {
-         return bgq.d;
-      }
+   public ctg(dfd.d $$0) {
+      super($$0);
    }
 
-   static boolean h_(dez $$0) {
-      return $$0.b(s_) && $$0.c(s_);
+   @Override
+   public eib a(dfe $$0, cow $$1, gw $$2, ehn $$3) {
+      return a;
    }
 
-   static ToIntFunction<dez> h_(int $$0) {
-      return $$1 -> $$1.c(dfp.D) ? $$0 : 0;
+   @Override
+   public dfe a(dfe $$0, hc $$1, dfe $$2, cpr $$3, gw $$4, gw $$5) {
+      return !$$0.a($$3, $$4) ? csr.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   public boolean a(dfe $$0, cpt $$1, gw $$2) {
+      return !$$1.t($$2.d());
    }
 }

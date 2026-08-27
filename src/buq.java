@@ -1,77 +1,39 @@
-import javax.annotation.Nullable;
-import org.joml.Vector3f;
+public record buq(aeu l) {
+   public static final aet<buq> a = a("tabby");
+   public static final aet<buq> b = a("black");
+   public static final aet<buq> c = a("red");
+   public static final aet<buq> d = a("siamese");
+   public static final aet<buq> e = a("british_shorthair");
+   public static final aet<buq> f = a("calico");
+   public static final aet<buq> g = a("persian");
+   public static final aet<buq> h = a("ragdoll");
+   public static final aet<buq> i = a("white");
+   public static final aet<buq> j = a("jellie");
+   public static final aet<buq> k = a("all_black");
 
-public class buq extends buj {
-   public buq(bim<? extends buq> $$0, cpl $$1) {
-      super($$0, $$1);
+   private static aet<buq> a(String $$0) {
+      return aet.a(je.j, new aeu($$0));
    }
 
-   @Override
-   protected void w() {
-      this.bO.a(0, new bpn(this));
-      this.bO.a(1, new bqm(this, 2.0));
-      this.bO.a(2, new bpf(this, 1.0));
-      this.bO.a(3, new brb(this, 1.25, clx.a(cja.oI), false));
-      this.bO.a(4, new bps(this, 1.25));
-      this.bO.a(5, new brg(this, 1.0));
-      this.bO.a(6, new bqb(this, cbm.class, 6.0F));
-      this.bO.a(7, new bqo(this));
+   public static buq a(ht<buq> $$0) {
+      a($$0, a, "textures/entity/cat/tabby.png");
+      a($$0, b, "textures/entity/cat/black.png");
+      a($$0, c, "textures/entity/cat/red.png");
+      a($$0, d, "textures/entity/cat/siamese.png");
+      a($$0, e, "textures/entity/cat/british_shorthair.png");
+      a($$0, f, "textures/entity/cat/calico.png");
+      a($$0, g, "textures/entity/cat/persian.png");
+      a($$0, h, "textures/entity/cat/ragdoll.png");
+      a($$0, i, "textures/entity/cat/white.png");
+      a($$0, j, "textures/entity/cat/jellie.png");
+      return a($$0, k, "textures/entity/cat/all_black.png");
    }
 
-   public static bkd.a p() {
-      return bja.x().a(bke.a, 10.0).a(bke.d, 0.2F);
+   private static buq a(ht<buq> $$0, aet<buq> $$1, String $$2) {
+      return ht.a($$0, $$1, new buq(new aeu($$2)));
    }
 
-   @Override
-   protected aov r() {
-      return aow.eZ;
-   }
-
-   @Override
-   protected aov d(bhg $$0) {
-      return aow.fb;
-   }
-
-   @Override
-   protected aov h_() {
-      return aow.fa;
-   }
-
-   @Override
-   protected void b(gu $$0, dez $$1) {
-      this.a(aow.fd, 0.15F, 1.0F);
-   }
-
-   @Override
-   protected float eU() {
-      return 0.4F;
-   }
-
-   @Override
-   public bgq b(cbm $$0, bgp $$1) {
-      cix $$2 = $$0.b($$1);
-      if ($$2.a(cja.pK) && !this.i_()) {
-         $$0.a(aow.fc, 1.0F, 1.0F);
-         cix $$3 = ciz.a($$2, $$0, cja.pQ.ad_());
-         $$0.a($$1, $$3);
-         return bgq.a(this.dK().B);
-      } else {
-         return super.b($$0, $$1);
-      }
-   }
-
-   @Nullable
-   public buq b(akk $$0, bid $$1) {
-      return bim.t.a((cpl)$$0);
-   }
-
-   @Override
-   protected float b(bjk $$0, bij $$1) {
-      return this.i_() ? $$1.b * 0.95F : 1.3F;
-   }
-
-   @Override
-   protected Vector3f a(bii $$0, bij $$1, float $$2) {
-      return new Vector3f(0.0F, $$1.b - 0.03125F * $$2, 0.0F);
+   public aeu a() {
+      return this.l;
    }
 }

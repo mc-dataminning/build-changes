@@ -1,24 +1,32 @@
-public class yq implements ux<wp> {
+public class yq implements va<ws> {
    private final int a;
+   private final aeu b;
 
-   public yq(bhd $$0) {
-      this($$0.b());
-   }
-
-   public yq(int $$0) {
+   public yq(int $$0, cmf<?> $$1) {
       this.a = $$0;
+      this.b = $$1.a();
    }
 
-   public yq(si $$0) {
-      this.a = $$0.m();
+   public yq(sl $$0) {
+      this.a = $$0.readByte();
+      this.b = $$0.s();
    }
 
    @Override
-   public void a(si $$0) {
-      $$0.c(this.a);
+   public void a(sl $$0) {
+      $$0.k(this.a);
+      $$0.a(this.b);
    }
 
-   public void a(wp $$0) {
+   public void a(ws $$0) {
       $$0.a(this);
+   }
+
+   public aeu a() {
+      return this.b;
+   }
+
+   public int d() {
+      return this.a;
    }
 }

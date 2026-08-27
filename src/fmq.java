@@ -1,62 +1,29 @@
-public class fmq extends fmk {
-   protected fmq(fin $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.j *= 0.3F;
-      this.k = Math.random() * 0.2F + 0.1F;
-      this.l *= 0.3F;
-      this.b(0.01F, 0.01F);
-      this.u = 0.06F;
-      this.t = (int)(8.0 / (Math.random() * 0.8 + 0.2));
-   }
-
-   @Override
-   public flo b() {
-      return flo.b;
-   }
-
-   @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.t-- <= 0) {
-         this.k();
+public class fmq extends fmb {
+   fmq(fis $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fmk $$7) {
+      super($$0, $$1, $$2, $$3, $$7, 1.25F);
+      this.B = 0.6F;
+      this.j = $$4;
+      this.k = $$5;
+      this.l = $$6;
+      this.D *= 0.75F;
+      this.t = 60 + this.r.a(12);
+      this.b($$7);
+      if (this.r.a(4) == 0) {
+         this.a(0.6F + this.r.i() * 0.2F, 0.6F + this.r.i() * 0.3F, this.r.i() * 0.2F);
       } else {
-         this.k = this.k - (double)this.u;
-         this.a(this.j, this.k, this.l);
-         this.j *= 0.98F;
-         this.k *= 0.98F;
-         this.l *= 0.98F;
-         if (this.m) {
-            if (Math.random() < 0.5) {
-               this.k();
-            }
-
-            this.j *= 0.7F;
-            this.l *= 0.7F;
-         }
-
-         gu $$0 = gu.a(this.g, this.h, this.i);
-         double $$1 = Math.max(
-            this.c.a_($$0).k(this.c, $$0).b(ha.a.b, this.g - (double)$$0.u(), this.i - (double)$$0.w()), (double)this.c.b_($$0).a((cor)this.c, $$0)
-         );
-         if ($$1 > 0.0 && this.h < (double)$$0.v() + $$1) {
-            this.k();
-         }
+         this.a(0.1F + this.r.i() * 0.2F, 0.4F + this.r.i() * 0.3F, this.r.i() * 0.2F);
       }
    }
 
-   public static class a implements fln<iy> {
-      private final fmf a;
+   public static class a implements fls<ja> {
+      private final fmk a;
 
-      public a(fmf $$0) {
+      public a(fmk $$0) {
          this.a = $$0;
       }
 
-      public flk a(iy $$0, fin $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fmq $$8 = new fmq($$1, $$2, $$3, $$4);
-         $$8.a(this.a);
-         return $$8;
+      public flp a(ja $$0, fis $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fmq($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
       }
    }
 }

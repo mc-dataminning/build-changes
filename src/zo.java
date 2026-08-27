@@ -1,24 +1,27 @@
-public class zo implements ux<wp> {
+import javax.annotation.Nullable;
+
+public class zo implements va<ws> {
    private final int a;
 
-   public zo(int $$0) {
-      this.a = $$0;
+   public zo(bil $$0) {
+      this.a = $$0.ah();
    }
 
-   public zo(si $$0) {
+   public zo(sl $$0) {
       this.a = $$0.m();
    }
 
    @Override
-   public void a(si $$0) {
+   public void a(sl $$0) {
       $$0.c(this.a);
    }
 
-   public void a(wp $$0) {
+   public void a(ws $$0) {
       $$0.a(this);
    }
 
-   public int a() {
-      return this.a;
+   @Nullable
+   public bil a(cpq $$0) {
+      return $$0.a(this.a);
    }
 }

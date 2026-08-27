@@ -1,45 +1,764 @@
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import com.mojang.authlib.GameProfile;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Dynamic;
+import java.io.File;
+import java.net.SocketAddress;
+import java.nio.file.Path;
+import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.util.EnumSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.UUID;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
+import org.slf4j.Logger;
 
-public class aoc {
-   private int a;
-   private int b;
+public abstract class aoc {
+   public static final File b = new File("banned-players.json");
+   public static final File c = new File("banned-ips.json");
+   public static final File d = new File("ops.json");
+   public static final File e = new File("whitelist.json");
+   public static final ti f = ti.c("chat.filtered_full");
+   public static final ti g = ti.c("multiplayer.disconnect.duplicate_login");
+   private static final Logger a = LogUtils.getLogger();
+   private static final int i = 600;
+   private static final SimpleDateFormat j = new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
+   private final MinecraftServer k;
+   private final List<ako> l = Lists.newArrayList();
+   private final Map<UUID, ako> m = Maps.newHashMap();
+   private final aoi n = new aoi(b);
+   private final anz o = new anz(c);
+   private final aod p = new aod(d);
+   private final aok q = new aok(e);
+   private final Map<UUID, apf> r = Maps.newHashMap();
+   private final Map<UUID, afc> s = Maps.newHashMap();
+   private final ece t;
+   private boolean u;
+   private final hn<afd> v;
+   protected final int h;
+   private int w;
+   private int x;
+   private boolean y;
+   private static final boolean z = false;
+   private int A;
 
-   public boolean a(int $$0) {
-      return this.b >= this.b($$0);
+   public aoc(MinecraftServer $$0, hn<afd> $$1, ece $$2, int $$3) {
+      this.k = $$0;
+      this.v = $$1;
+      this.h = $$3;
+      this.t = $$2;
    }
 
-   public boolean a(int $$0, List<akl> $$1) {
-      int $$2 = (int)$$1.stream().filter(cbm::fT).count();
-      return $$2 >= this.b($$0);
-   }
+   public void a(sj $$0, ako $$1, int $$2) {
+      GameProfile $$3 = $$1.fP();
+      any $$4 = this.k.ap();
+      String $$6;
+      if ($$4 != null) {
+         Optional<GameProfile> $$5 = $$4.a($$3.getId());
+         $$6 = $$5.<String>map(GameProfile::getName).orElse($$3.getName());
+         $$4.a($$3);
+      } else {
+         $$6 = $$3.getName();
+      }
 
-   public int b(int $$0) {
-      return Math.max(1, arp.f((float)(this.a * $$0) / 100.0F));
-   }
+      qu $$8 = this.a($$1);
+      aet<cpq> $$9 = $$8 != null ? din.a(new Dynamic(rf.a, $$8.c("Dimension"))).resultOrPartial(a::error).orElse(cpq.h) : cpq.h;
+      akn $$10 = this.k.a($$9);
+      akn $$11;
+      if ($$10 == null) {
+         a.warn("Unknown respawn dimension {}, defaulting to overworld", $$9);
+         $$11 = this.k.D();
+      } else {
+         $$11 = $$10;
+      }
 
-   public void a() {
-      this.b = 0;
-   }
+      $$1.c($$11);
+      String $$13 = $$0.a(this.k.be());
+      a.info("{}[{}] logged in with entity id {} at ({}, {}, {})", new Object[]{$$1.ab().getString(), $$13, $$1.ah(), $$1.dp(), $$1.dr(), $$1.dv()});
+      eby $$14 = $$11.u_();
+      $$1.c($$8);
+      all $$15 = new all(this.k, $$0, $$1, $$2);
+      cpm $$16 = $$11.X();
+      boolean $$17 = $$16.b(cpm.B);
+      boolean $$18 = $$16.b(cpm.p);
+      $$15.b(new yi($$1.ah(), $$14.n(), this.k.E(), this.n(), this.w, this.x, $$18, !$$17, $$1.d($$11)));
+      $$15.b(new xf($$14.s(), $$14.t()));
+      $$15.b(new yr($$1.fR()));
+      $$15.b(new zp($$1.fQ().l));
+      $$15.b(new aav(this.k.aE().b()));
+      this.d($$1);
+      $$1.E().c();
+      $$1.F().a($$1);
+      this.a($$11.f(), $$1);
+      this.k.ar();
+      tv $$19;
+      if ($$1.fP().getName().equalsIgnoreCase($$6)) {
+         $$19 = ti.a("multiplayer.player.joined", $$1.H_());
+      } else {
+         $$19 = ti.a("multiplayer.player.joined.renamed", $$1.H_(), $$6);
+      }
 
-   public int b() {
-      return this.b;
-   }
+      this.a($$19.a(n.o), false);
+      $$15.a($$1.dp(), $$1.dr(), $$1.dv(), $$1.dA(), $$1.dC());
+      adx $$21 = this.k.aq();
+      if ($$21 != null) {
+         $$1.a($$21);
+      }
 
-   public boolean a(List<akl> $$0) {
-      int $$1 = this.a;
-      int $$2 = this.b;
-      this.a = 0;
-      this.b = 0;
+      $$1.c.b(yx.a(this.l));
+      this.l.add($$1);
+      this.m.put($$1.cv(), $$1);
+      this.a(yx.a(List.of($$1)));
+      this.a($$1, $$11);
+      $$11.c($$1);
+      this.k.aJ().a($$1);
 
-      for (akl $$3 : $$0) {
-         if (!$$3.G_()) {
-            this.a++;
-            if ($$3.fB()) {
-               this.b++;
+      for (bhy $$22 : $$1.eq()) {
+         $$15.b(new aau($$1.ah(), $$22));
+      }
+
+      if ($$8 != null && $$8.b("RootVehicle", 10)) {
+         qu $$23 = $$8.p("RootVehicle");
+         bil $$24 = bip.a($$23.p("Entity"), $$11, $$1x -> !$$11.c($$1x) ? null : $$1x);
+         if ($$24 != null) {
+            UUID $$25;
+            if ($$23.b("Attach")) {
+               $$25 = $$23.a("Attach");
+            } else {
+               $$25 = null;
+            }
+
+            if ($$24.cv().equals($$25)) {
+               $$1.a($$24, true);
+            } else {
+               for (bil $$27 : $$24.cT()) {
+                  if ($$27.cv().equals($$25)) {
+                     $$1.a($$27, true);
+                     break;
+                  }
+               }
+            }
+
+            if (!$$1.bN()) {
+               a.warn("Couldn't reattach entity to player");
+               $$24.ak();
+
+               for (bil $$28 : $$24.cT()) {
+                  $$28.ak();
+               }
             }
          }
       }
 
-      return ($$2 > 0 || this.b > 0) && ($$1 != this.a || $$2 != this.b);
+      $$1.h();
+   }
+
+   protected void a(afl $$0, ako $$1) {
+      Set<eie> $$2 = Sets.newHashSet();
+
+      for (eif $$3 : $$0.g()) {
+         $$1.c.b(aac.a($$3, true));
+      }
+
+      for (eid $$4 : eid.values()) {
+         eie $$5 = $$0.a($$4);
+         if ($$5 != null && !$$2.contains($$5)) {
+            for (va<?> $$7 : $$0.d($$5)) {
+               $$1.c.b($$7);
+            }
+
+            $$2.add($$5);
+         }
+      }
+   }
+
+   public void a(akn $$0) {
+      $$0.w_().a(new dgt() {
+         @Override
+         public void a(dgv $$0, double $$1) {
+            aoc.this.a(new zl($$0));
+         }
+
+         @Override
+         public void a(dgv $$0, double $$1, double $$2, long $$3) {
+            aoc.this.a(new zk($$0));
+         }
+
+         @Override
+         public void a(dgv $$0, double $$1, double $$2) {
+            aoc.this.a(new zj($$0));
+         }
+
+         @Override
+         public void a(dgv $$0, int $$1) {
+            aoc.this.a(new zm($$0));
+         }
+
+         @Override
+         public void b(dgv $$0, int $$1) {
+            aoc.this.a(new zn($$0));
+         }
+
+         @Override
+         public void b(dgv $$0, double $$1) {
+         }
+
+         @Override
+         public void c(dgv $$0, double $$1) {
+         }
+      });
+   }
+
+   @Nullable
+   public qu a(ako $$0) {
+      qu $$1 = this.k.aT().y();
+      qu $$2;
+      if (this.k.a($$0.fP()) && $$1 != null) {
+         $$2 = $$1;
+         $$0.g($$1);
+         a.debug("loading single player");
+      } else {
+         $$2 = this.t.b($$0);
+      }
+
+      return $$2;
+   }
+
+   protected void b(ako $$0) {
+      this.t.a($$0);
+      apf $$1 = this.r.get($$0.cv());
+      if ($$1 != null) {
+         $$1.a();
+      }
+
+      afc $$2 = this.s.get($$0.cv());
+      if ($$2 != null) {
+         $$2.b();
+      }
+   }
+
+   public void c(ako $$0) {
+      akn $$1 = $$0.x();
+      $$0.a(apj.j);
+      this.b($$0);
+      if ($$0.bN()) {
+         bil $$2 = $$0.cV();
+         if ($$2.cU()) {
+            a.debug("Removing player mount");
+            $$0.aa();
+            $$2.cS().forEach($$0x -> $$0x.b(bil.c.d));
+         }
+      }
+
+      $$0.ae();
+      $$1.a($$0, bil.c.d);
+      $$0.N().a();
+      this.l.remove($$0);
+      this.k.aJ().b($$0);
+      UUID $$3 = $$0.cv();
+      ako $$4 = this.m.get($$3);
+      if ($$4 == $$0) {
+         this.m.remove($$3);
+         this.r.remove($$3);
+         this.s.remove($$3);
+      }
+
+      this.a(new yw(List.of($$0.cv())));
+   }
+
+   @Nullable
+   public ti a(SocketAddress $$0, GameProfile $$1) {
+      if (this.n.a($$1)) {
+         aoj $$2 = this.n.b($$1);
+         tv $$3 = ti.a("multiplayer.disconnect.banned.reason", $$2.d());
+         if ($$2.c() != null) {
+            $$3.b(ti.a("multiplayer.disconnect.banned.expiration", j.format($$2.c())));
+         }
+
+         return $$3;
+      } else if (!this.c($$1)) {
+         return ti.c("multiplayer.disconnect.not_whitelisted");
+      } else if (this.o.a($$0)) {
+         aoa $$4 = this.o.b($$0);
+         tv $$5 = ti.a("multiplayer.disconnect.banned_ip.reason", $$4.d());
+         if ($$4.c() != null) {
+            $$5.b(ti.a("multiplayer.disconnect.banned_ip.expiration", j.format($$4.c())));
+         }
+
+         return $$5;
+      } else {
+         return this.l.size() >= this.h && !this.d($$1) ? ti.c("multiplayer.disconnect.server_full") : null;
+      }
+   }
+
+   public ako e(GameProfile $$0) {
+      return new ako(this.k, this.k.D(), $$0);
+   }
+
+   public boolean f(GameProfile $$0) {
+      UUID $$1 = $$0.getId();
+      Set<ako> $$2 = Sets.newIdentityHashSet();
+
+      for (ako $$3 : this.l) {
+         if ($$3.cv().equals($$1)) {
+            $$2.add($$3);
+         }
+      }
+
+      ako $$4 = this.m.get($$0.getId());
+      if ($$4 != null) {
+         $$2.add($$4);
+      }
+
+      for (ako $$5 : $$2) {
+         $$5.c.b(g);
+      }
+
+      return !$$2.isEmpty();
+   }
+
+   public ako a(ako $$0, boolean $$1) {
+      this.l.remove($$0);
+      $$0.x().a($$0, bil.c.b);
+      gw $$2 = $$0.O();
+      float $$3 = $$0.P();
+      boolean $$4 = $$0.R();
+      akn $$5 = this.k.a($$0.Q());
+      Optional<ehi> $$6;
+      if ($$5 != null && $$2 != null) {
+         $$6 = cbp.a($$5, $$2, $$3, $$4, $$1);
+      } else {
+         $$6 = Optional.empty();
+      }
+
+      akn $$8 = $$5 != null && $$6.isPresent() ? $$5 : this.k.D();
+      ako $$9 = new ako(this.k, $$8, $$0.fP());
+      $$9.c = $$0.c;
+      $$9.a($$0, $$1);
+      $$9.e($$0.ah());
+      $$9.a($$0.fk());
+
+      for (String $$10 : $$0.ai()) {
+         $$9.a($$10);
+      }
+
+      boolean $$11 = false;
+      if ($$6.isPresent()) {
+         dfe $$12 = $$8.a_($$2);
+         boolean $$13 = $$12.a(csr.pl);
+         ehi $$14 = $$6.get();
+         float $$17;
+         if (!$$12.a(apo.R) && !$$13) {
+            $$17 = $$3;
+         } else {
+            ehi $$15 = ehi.c($$2).d($$14).d();
+            $$17 = (float)ars.d(ars.d($$15.e, $$15.c) * 180.0F / (float)Math.PI - 90.0);
+         }
+
+         $$9.b($$14.c, $$14.d, $$14.e, $$17, 0.0F);
+         $$9.a($$8.ac(), $$2, $$3, $$4, false);
+         $$11 = !$$1 && $$13;
+      } else if ($$2 != null) {
+         $$9.c.b(new xy(xy.a, 0.0F));
+      }
+
+      while (!$$8.g($$9) && $$9.dr() < (double)$$8.aj()) {
+         $$9.e($$9.dp(), $$9.dr() + 1.0, $$9.dv());
+      }
+
+      byte $$18 = (byte)($$1 ? 1 : 0);
+      akn $$19 = $$9.x();
+      eby $$20 = $$19.u_();
+      $$9.c.b(new zd($$9.d($$19), $$18));
+      $$9.c.a($$9.dp(), $$9.dr(), $$9.dv(), $$9.dA(), $$9.dC());
+      $$9.c.b(new zs($$8.R(), $$8.S()));
+      $$9.c.b(new xf($$20.s(), $$20.t()));
+      $$9.c.b(new zy($$9.cf, $$9.ce, $$9.cd));
+      this.a($$9, $$8);
+      this.d($$9);
+      $$8.d($$9);
+      this.l.add($$9);
+      this.m.put($$9.cv(), $$9);
+      $$9.h();
+      $$9.c($$9.et());
+      if ($$11) {
+         $$9.c.b(new aak(aoz.tL, apa.e, (double)$$2.u(), (double)$$2.v(), (double)$$2.w(), 1.0F, 1.0F, $$8.y_().g()));
+      }
+
+      return $$9;
+   }
+
+   public void d(ako $$0) {
+      GameProfile $$1 = $$0.fP();
+      int $$2 = this.k.c($$1);
+      this.a($$0, $$2);
+   }
+
+   public void d() {
+      if (++this.A > 600) {
+         this.a(new yx(EnumSet.of(yx.a.e), this.l));
+         this.A = 0;
+      }
+   }
+
+   public void a(va<?> $$0) {
+      for (ako $$1 : this.l) {
+         $$1.c.b($$0);
+      }
+   }
+
+   public void a(va<?> $$0, aet<cpq> $$1) {
+      for (ako $$2 : this.l) {
+         if ($$2.dK().ac() == $$1) {
+            $$2.c.b($$0);
+         }
+      }
+   }
+
+   public void a(cbp $$0, ti $$1) {
+      eij $$2 = $$0.cf();
+      if ($$2 != null) {
+         for (String $$4 : $$2.g()) {
+            ako $$5 = this.a($$4);
+            if ($$5 != null && $$5 != $$0) {
+               $$5.a($$1);
+            }
+         }
+      }
+   }
+
+   public void b(cbp $$0, ti $$1) {
+      eij $$2 = $$0.cf();
+      if ($$2 == null) {
+         this.a($$1, false);
+      } else {
+         for (int $$3 = 0; $$3 < this.l.size(); $$3++) {
+            ako $$4 = this.l.get($$3);
+            if ($$4.cf() != $$2) {
+               $$4.a($$1);
+            }
+         }
+      }
+   }
+
+   public String[] e() {
+      String[] $$0 = new String[this.l.size()];
+
+      for (int $$1 = 0; $$1 < this.l.size(); $$1++) {
+         $$0[$$1] = this.l.get($$1).fP().getName();
+      }
+
+      return $$0;
+   }
+
+   public aoi f() {
+      return this.n;
+   }
+
+   public anz g() {
+      return this.o;
+   }
+
+   public void a(GameProfile $$0) {
+      this.p.a(new aoe($$0, this.k.i(), this.p.a($$0)));
+      ako $$1 = this.a($$0.getId());
+      if ($$1 != null) {
+         this.d($$1);
+      }
+   }
+
+   public void b(GameProfile $$0) {
+      this.p.c($$0);
+      ako $$1 = this.a($$0.getId());
+      if ($$1 != null) {
+         this.d($$1);
+      }
+   }
+
+   private void a(ako $$0, int $$1) {
+      if ($$0.c != null) {
+         byte $$2;
+         if ($$1 <= 0) {
+            $$2 = 24;
+         } else if ($$1 >= 4) {
+            $$2 = 28;
+         } else {
+            $$2 = (byte)(24 + $$1);
+         }
+
+         $$0.c.b(new xv($$0, $$2));
+      }
+
+      this.k.aC().a($$0);
+   }
+
+   public boolean c(GameProfile $$0) {
+      return !this.u || this.p.d($$0) || this.q.d($$0);
+   }
+
+   public boolean g(GameProfile $$0) {
+      return this.p.d($$0) || this.k.a($$0) && this.k.aT().o() || this.y;
+   }
+
+   @Nullable
+   public ako a(String $$0) {
+      for (ako $$1 : this.l) {
+         if ($$1.fP().getName().equalsIgnoreCase($$0)) {
+            return $$1;
+         }
+      }
+
+      return null;
+   }
+
+   public void a(@Nullable cbp $$0, double $$1, double $$2, double $$3, double $$4, aet<cpq> $$5, va<?> $$6) {
+      for (int $$7 = 0; $$7 < this.l.size(); $$7++) {
+         ako $$8 = this.l.get($$7);
+         if ($$8 != $$0 && $$8.dK().ac() == $$5) {
+            double $$9 = $$1 - $$8.dp();
+            double $$10 = $$2 - $$8.dr();
+            double $$11 = $$3 - $$8.dv();
+            if ($$9 * $$9 + $$10 * $$10 + $$11 * $$11 < $$4 * $$4) {
+               $$8.c.b($$6);
+            }
+         }
+      }
+   }
+
+   public void h() {
+      for (int $$0 = 0; $$0 < this.l.size(); $$0++) {
+         this.b(this.l.get($$0));
+      }
+   }
+
+   public aok i() {
+      return this.q;
+   }
+
+   public String[] j() {
+      return this.q.a();
+   }
+
+   public aod k() {
+      return this.p;
+   }
+
+   public String[] l() {
+      return this.p.a();
+   }
+
+   public void a() {
+   }
+
+   public void a(ako $$0, akn $$1) {
+      dgv $$2 = this.k.D().w_();
+      $$0.c.b(new yb($$2));
+      $$0.c.b(new aag($$1.V(), $$1.W(), $$1.X().b(cpm.k)));
+      $$0.c.b(new zs($$1.R(), $$1.S()));
+      if ($$1.Z()) {
+         $$0.c.b(new xy(xy.b, 0.0F));
+         $$0.c.b(new xy(xy.h, $$1.d(1.0F)));
+         $$0.c.b(new xy(xy.i, $$1.b(1.0F)));
+      }
+   }
+
+   public void e(ako $$0) {
+      $$0.bP.b();
+      $$0.u();
+      $$0.c.b(new zp($$0.fQ().l));
+   }
+
+   public int m() {
+      return this.l.size();
+   }
+
+   public int n() {
+      return this.h;
+   }
+
+   public boolean o() {
+      return this.u;
+   }
+
+   public void a(boolean $$0) {
+      this.u = $$0;
+   }
+
+   public List<ako> b(String $$0) {
+      List<ako> $$1 = Lists.newArrayList();
+
+      for (ako $$2 : this.l) {
+         if ($$2.y().equals($$0)) {
+            $$1.add($$2);
+         }
+      }
+
+      return $$1;
+   }
+
+   public int p() {
+      return this.w;
+   }
+
+   public int q() {
+      return this.x;
+   }
+
+   public MinecraftServer c() {
+      return this.k;
+   }
+
+   @Nullable
+   public qu r() {
+      return null;
+   }
+
+   public void b(boolean $$0) {
+      this.y = $$0;
+   }
+
+   public void s() {
+      for (int $$0 = 0; $$0 < this.l.size(); $$0++) {
+         this.l.get($$0).c.b(ti.c("multiplayer.disconnect.server_shutdown"));
+      }
+   }
+
+   public void a(ti $$0, boolean $$1) {
+      this.a($$0, $$1x -> $$0, $$1);
+   }
+
+   public void a(ti $$0, Function<ako, ti> $$1, boolean $$2) {
+      this.k.a($$0);
+
+      for (ako $$3 : this.l) {
+         ti $$4 = $$1.apply($$3);
+         if ($$4 != null) {
+            $$3.b($$4, $$2);
+         }
+      }
+   }
+
+   public void a(tx $$0, dt $$1, te.a $$2) {
+      this.a($$0, $$1::a, $$1.i(), $$2);
+   }
+
+   public void a(tx $$0, ako $$1, te.a $$2) {
+      this.a($$0, $$1::b, $$1, $$2);
+   }
+
+   private void a(tx $$0, Predicate<ako> $$1, @Nullable ako $$2, te.a $$3) {
+      boolean $$4 = this.a($$0);
+      this.k.a($$0.c(), $$3, $$4 ? null : "Not Secure");
+      tw $$5 = tw.a($$0);
+      boolean $$6 = false;
+
+      for (ako $$7 : this.l) {
+         boolean $$8 = $$1.test($$7);
+         $$7.a($$5, $$8, $$3);
+         $$6 |= $$8 && $$0.i();
+      }
+
+      if ($$6 && $$2 != null) {
+         $$2.a(f);
+      }
+   }
+
+   private boolean a(tx $$0) {
+      return $$0.h() && !$$0.a(Instant.now());
+   }
+
+   public apf a(cbp $$0) {
+      UUID $$1 = $$0.cv();
+      apf $$2 = this.r.get($$1);
+      if ($$2 == null) {
+         File $$3 = this.k.a(ebz.b).toFile();
+         File $$4 = new File($$3, $$1 + ".json");
+         if (!$$4.exists()) {
+            File $$5 = new File($$3, $$0.ab().getString() + ".json");
+            Path $$6 = $$5.toPath();
+            if (v.a($$6) && v.b($$6) && $$6.startsWith($$3.getPath()) && $$5.isFile()) {
+               $$5.renameTo($$4);
+            }
+         }
+
+         $$2 = new apf(this.k, $$4);
+         this.r.put($$1, $$2);
+      }
+
+      return $$2;
+   }
+
+   public afc f(ako $$0) {
+      UUID $$1 = $$0.cv();
+      afc $$2 = this.s.get($$1);
+      if ($$2 == null) {
+         Path $$3 = this.k.a(ebz.a).resolve($$1 + ".json");
+         $$2 = new afc(this.k.ay(), this, this.k.az(), $$3, $$0);
+         this.s.put($$1, $$2);
+      }
+
+      $$2.a($$0);
+      return $$2;
+   }
+
+   public void a(int $$0) {
+      this.w = $$0;
+      this.a(new zr($$0));
+
+      for (akn $$1 : this.k.F()) {
+         if ($$1 != null) {
+            $$1.k().a($$0);
+         }
+      }
+   }
+
+   public void b(int $$0) {
+      this.x = $$0;
+      this.a(new aae($$0));
+
+      for (akn $$1 : this.k.F()) {
+         if ($$1 != null) {
+            $$1.k().b($$0);
+         }
+      }
+   }
+
+   public List<ako> t() {
+      return this.l;
+   }
+
+   @Nullable
+   public ako a(UUID $$0) {
+      return this.m.get($$0);
+   }
+
+   public boolean d(GameProfile $$0) {
+      return false;
+   }
+
+   public void u() {
+      for (afc $$0 : this.s.values()) {
+         $$0.a(this.k.az());
+      }
+
+      this.a(new vj(aqg.a(this.v)));
+      aav $$1 = new aav(this.k.aE().b());
+
+      for (ako $$2 : this.l) {
+         $$2.c.b($$1);
+         $$2.F().a($$2);
+      }
+   }
+
+   public boolean v() {
+      return this.y;
    }
 }

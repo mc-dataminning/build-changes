@@ -1,12 +1,13 @@
 import java.util.concurrent.CompletableFuture;
 
-public class mp extends my<dsz> {
-   public mp(jk $$0, CompletableFuture<hg.b> $$1) {
-      super($$0, jc.av, $$1);
+public class mp extends nb<buq> {
+   public mp(jm $$0, CompletableFuture<hi.b> $$1) {
+      super($$0, je.j, $$1);
    }
 
    @Override
-   protected void a(hg.b $$0) {
-      this.b(app.a).a(dta.a).a(dta.b).a(dta.c).a(dta.d).a(dta.e).a(dta.f).a(dta.g).a(dta.h).a(dta.i);
+   protected void a(hi.b $$0) {
+      this.b(app.a).a(buq.a, buq.b, buq.c, buq.d, buq.e, buq.f, buq.g, buq.h, buq.i, buq.j);
+      this.b(app.b).b(app.a).a(buq.k);
    }
 }

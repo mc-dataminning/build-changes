@@ -1,205 +1,123 @@
-import com.google.common.hash.Hashing;
 import com.mojang.logging.LogUtils;
-import com.mojang.util.UndashedUuid;
-import java.io.File;
-import java.io.IOException;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.ArrayList;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.locks.ReentrantLock;
-import java.util.function.Consumer;
-import java.util.regex.Pattern;
-import javax.annotation.Nullable;
-import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.comparator.LastModifiedFileComparator;
-import org.apache.commons.io.filefilter.TrueFileFilter;
+import java.util.Optional;
 import org.slf4j.Logger;
 
-public class fzn implements amz {
-   private static final Logger a = LogUtils.getLogger();
-   private static final Pattern b = Pattern.compile("^[a-fA-F0-9]{40}$");
-   private static final int c = 262144000;
-   private static final int d = 10;
-   private static final String e = "server";
-   private static final tf f = tf.c("resourcePack.server.name");
-   private static final tf g = tf.c("multiplayer.applyingPack");
-   private final File h;
-   private final ReentrantLock i = new ReentrantLock();
-   @Nullable
-   private CompletableFuture<?> j;
-   @Nullable
-   private amu k;
+public class fzn implements fzd {
+   static final Logger c = LogUtils.getLogger();
+   public static final Codec<fzn> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               aeu.a.fieldOf("resource").forGetter($$0x -> $$0x.d),
+               arb.a(fzn.a.a.listOf()).fieldOf("regions").forGetter($$0x -> $$0x.e),
+               Codec.DOUBLE.optionalFieldOf("divisor_x", 1.0).forGetter($$0x -> $$0x.f),
+               Codec.DOUBLE.optionalFieldOf("divisor_y", 1.0).forGetter($$0x -> $$0x.g)
+            )
+            .apply($$0, fzn::new)
+   );
+   private final aeu d;
+   private final List<fzn.a> e;
+   private final double f;
+   private final double g;
 
-   public fzn(File $$0) {
-      this.h = $$0;
+   public fzn(aeu $$0, List<fzn.a> $$1, double $$2, double $$3) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3;
    }
 
    @Override
-   public void a(Consumer<amu> $$0) {
-      if (this.k != null) {
-         $$0.accept(this.k);
-      }
-   }
+   public void a(anp $$0, fzd.a $$1) {
+      aeu $$2 = a.a(this.d);
+      Optional<ann> $$3 = $$0.getResource($$2);
+      if ($$3.isPresent()) {
+         fzj $$4 = new fzj($$2, $$3.get(), this.e.size());
 
-   private static Map<String, String> b() {
-      return Map.of(
-         "X-Minecraft-Username",
-         eql.O().V().c(),
-         "X-Minecraft-UUID",
-         UndashedUuid.toString(eql.O().V().b()),
-         "X-Minecraft-Version",
-         aa.b().c(),
-         "X-Minecraft-Version-ID",
-         aa.b().b(),
-         "X-Minecraft-Pack-Format",
-         String.valueOf(aa.b().a(amb.a)),
-         "User-Agent",
-         "Minecraft Java/" + aa.b().c()
-      );
-   }
-
-   public CompletableFuture<?> a(URL $$0, String $$1, boolean $$2) {
-      String $$3 = Hashing.sha1().hashString($$0.toString(), StandardCharsets.UTF_8).toString();
-      String $$4 = b.matcher($$1).matches() ? $$1 : "";
-      this.i.lock();
-
-      CompletableFuture var14;
-      try {
-         eql $$5 = eql.O();
-         File $$6 = new File(this.h, $$3);
-         CompletableFuture<?> $$7;
-         if ($$6.exists()) {
-            $$7 = CompletableFuture.completedFuture("");
-         } else {
-            exy $$8 = new exy($$2);
-            Map<String, String> $$9 = b();
-            $$5.h(() -> $$5.a($$8));
-            $$7 = arh.a($$6, $$0, $$9, 262144000, $$8, $$5.X());
+         for (fzn.a $$5 : this.e) {
+            $$1.a($$5.b, new fzn.b($$4, $$5, this.f, this.g));
          }
-
-         this.j = $$7.<Void>thenCompose($$4x -> {
-               if (!this.a($$4, $$6)) {
-                  return CompletableFuture.failedFuture(new RuntimeException("Hash check failure for file " + $$6 + ", see log"));
-               } else {
-                  $$5.execute(() -> {
-                     if (!$$2) {
-                        $$5.a(new exg(g));
-                     }
-                  });
-                  return this.a($$6, amy.f);
-               }
-            })
-            .exceptionallyCompose($$2x -> this.a().thenAcceptAsync($$2xx -> {
-                  a.warn("Pack application failed: {}, deleting file {}", $$2x.getMessage(), $$6);
-                  a($$6);
-               }, ac.g()).thenAcceptAsync($$1xx -> $$5.a(new ewt($$1xxx -> {
-                     if ($$1xxx) {
-                        $$5.a(null);
-                     } else {
-                        fio $$2xx = $$5.J();
-                        if ($$2xx != null) {
-                           $$2xx.l().a(tf.c("connect.aborted"));
-                        }
-                     }
-                  }, tf.c("multiplayer.texturePrompt.failure.line1"), tf.c("multiplayer.texturePrompt.failure.line2"), te.i, tf.c("menu.disconnect"))), $$5))
-            .thenAcceptAsync($$0x -> this.c(), ac.g());
-         var14 = this.j;
-      } finally {
-         this.i.unlock();
-      }
-
-      return var14;
-   }
-
-   private static void a(File $$0) {
-      try {
-         Files.delete($$0.toPath());
-      } catch (IOException var2) {
-         a.warn("Failed to delete file {}: {}", $$0, var2.getMessage());
-      }
-   }
-
-   public CompletableFuture<Void> a() {
-      this.i.lock();
-
-      try {
-         if (this.j != null) {
-            this.j.cancel(true);
-         }
-
-         this.j = null;
-         if (this.k != null) {
-            this.k = null;
-            return eql.O().P();
-         }
-      } finally {
-         this.i.unlock();
-      }
-
-      return CompletableFuture.completedFuture(null);
-   }
-
-   private boolean a(String $$0, File $$1) {
-      try {
-         String $$2 = com.google.common.io.Files.asByteSource($$1).hash(Hashing.sha1()).toString();
-         if ($$0.isEmpty()) {
-            a.info("Found file {} without verification hash", $$1);
-            return true;
-         }
-
-         if ($$2.toLowerCase(Locale.ROOT).equals($$0.toLowerCase(Locale.ROOT))) {
-            a.info("Found file {} matching requested hash {}", $$1, $$0);
-            return true;
-         }
-
-         a.warn("File {} had wrong hash (expected {}, found {}).", new Object[]{$$1, $$0, $$2});
-      } catch (IOException var4) {
-         a.warn("File {} couldn't be hashed.", $$1, var4);
-      }
-
-      return false;
-   }
-
-   private void c() {
-      if (this.h.isDirectory()) {
-         try {
-            List<File> $$0 = new ArrayList<>(FileUtils.listFiles(this.h, TrueFileFilter.TRUE, null));
-            $$0.sort(LastModifiedFileComparator.LASTMODIFIED_REVERSE);
-            int $$1 = 0;
-
-            for (File $$2 : $$0) {
-               if ($$1++ >= 10) {
-                  a.info("Deleting old server resource pack {}", $$2.getName());
-                  FileUtils.deleteQuietly($$2);
-               }
-            }
-         } catch (Exception var5) {
-            a.error("Error while deleting old server resource pack : {}", var5.getMessage());
-         }
-      }
-   }
-
-   public CompletableFuture<Void> a(File $$0, amy $$1) {
-      amu.c $$2 = new aly.a($$0, false);
-      int $$3 = aa.b().a(amb.a);
-      amu.a $$4 = amu.a("server", $$2, $$3);
-      if ($$4 == null) {
-         return CompletableFuture.failedFuture(new IllegalArgumentException("Invalid pack metadata at " + $$0));
       } else {
-         a.info("Applying server pack {}", $$0);
-         this.k = amu.a("server", f, true, $$2, $$4, amu.b.a, true, $$1);
-         return eql.O().P();
+         c.warn("Missing sprite: {}", $$2);
       }
    }
 
-   public CompletableFuture<Void> a(ebw.c $$0) {
-      Path $$1 = $$0.a(ebu.k);
-      return Files.exists($$1) && !Files.isDirectory($$1) ? this.a($$1.toFile(), amy.e) : CompletableFuture.completedFuture(null);
+   @Override
+   public fzf a() {
+      return fzg.d;
+   }
+
+   static record a(aeu b, double c, double d, double e, double f) {
+      public static final Codec<fzn.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  aeu.a.fieldOf("sprite").forGetter(fzn.a::a),
+                  Codec.DOUBLE.fieldOf("x").forGetter(fzn.a::b),
+                  Codec.DOUBLE.fieldOf("y").forGetter(fzn.a::c),
+                  Codec.DOUBLE.fieldOf("width").forGetter(fzn.a::d),
+                  Codec.DOUBLE.fieldOf("height").forGetter(fzn.a::e)
+               )
+               .apply($$0, fzn.a::new)
+      );
+
+      public aeu a() {
+         return this.b;
+      }
+
+      public double b() {
+         return this.c;
+      }
+
+      public double c() {
+         return this.d;
+      }
+
+      public double d() {
+         return this.e;
+      }
+
+      public double e() {
+         return this.f;
+      }
+   }
+
+   static class b implements fzd.b {
+      private final fzj a;
+      private final fzn.a b;
+      private final double c;
+      private final double d;
+
+      b(fzj $$0, fzn.a $$1, double $$2, double $$3) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+      }
+
+      public fyt a(fzc $$0) {
+         try {
+            ekl $$1 = this.a.a();
+            double $$2 = (double)$$1.a() / this.c;
+            double $$3 = (double)$$1.b() / this.d;
+            int $$4 = ars.a(this.b.c * $$2);
+            int $$5 = ars.a(this.b.d * $$3);
+            int $$6 = ars.a(this.b.e * $$2);
+            int $$7 = ars.a(this.b.f * $$3);
+            ekl $$8 = new ekl(ekl.a.a, $$6, $$7, false);
+            $$1.a($$8, $$4, $$5, 0, 0, $$6, $$7, false, false);
+            return new fyt(this.b.b, new gam($$6, $$7), $$8, anr.a);
+         } catch (Exception var16) {
+            fzn.c.error("Failed to unstitch region {}", this.b.b, var16);
+         } finally {
+            this.a.b();
+         }
+
+         return fyp.a();
+      }
+
+      @Override
+      public void a() {
+         this.a.b();
+      }
    }
 }

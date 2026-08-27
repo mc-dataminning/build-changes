@@ -1,127 +1,56 @@
-import com.mojang.authlib.GameProfile;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import org.slf4j.Logger;
+import com.mojang.brigadier.builder.ArgumentBuilder;
+import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.suggestion.SuggestionProvider;
+import java.util.Locale;
+import java.util.function.Function;
 
-public class ajh extends anz {
-   private static final Logger a = LogUtils.getLogger();
+public class ajh implements aje {
+   static final SuggestionProvider<dt> b = ($$0, $$1) -> dw.a(a($$0).a(), $$1);
+   public static final Function<String, ajf.c> a = $$0 -> new ajf.c() {
+         @Override
+         public aje a(CommandContext<dt> $$0x) {
+            return new ajh(ajh.a($$0), es.e($$0, $$0));
+         }
 
-   public ajh(aji $$0, hl<afa> $$1, ebz $$2) {
-      super($$0, $$1, $$2, $$0.a().H);
-      ajj $$3 = $$0.a();
-      this.a($$3.F);
-      this.b($$3.G);
-      super.a($$3.V.get());
-      this.z();
-      this.x();
-      this.y();
-      this.w();
-      this.A();
-      this.C();
-      this.B();
-      if (!this.i().b().exists()) {
-         this.D();
-      }
+         @Override
+         public ArgumentBuilder<dt, ?> a(ArgumentBuilder<dt, ?> $$0x, Function<ArgumentBuilder<dt, ?>, ArgumentBuilder<dt, ?>> $$1) {
+            return $$0.then(du.a("storage").then($$1.apply(du.a($$0, es.a()).suggests(ajh.b))));
+         }
+      };
+   private final ebu c;
+   private final aeu d;
+
+   static ebu a(CommandContext<dt> $$0) {
+      return ((dt)$$0.getSource()).l().aG();
+   }
+
+   ajh(ebu $$0, aeu $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
    @Override
-   public void a(boolean $$0) {
-      super.a($$0);
-      this.b().i($$0);
+   public void a(qu $$0) {
+      this.c.a(this.d, $$0);
    }
 
    @Override
-   public void a(GameProfile $$0) {
-      super.a($$0);
-      this.B();
+   public qu a() {
+      return this.c.a(this.d);
    }
 
    @Override
-   public void b(GameProfile $$0) {
-      super.b($$0);
-      this.B();
+   public ti b() {
+      return ti.a("commands.data.storage.modified", this.d);
    }
 
    @Override
-   public void a() {
-      this.C();
-   }
-
-   private void w() {
-      try {
-         this.g().e();
-      } catch (IOException var2) {
-         a.warn("Failed to save ip banlist: ", var2);
-      }
-   }
-
-   private void x() {
-      try {
-         this.f().e();
-      } catch (IOException var2) {
-         a.warn("Failed to save user banlist: ", var2);
-      }
-   }
-
-   private void y() {
-      try {
-         this.g().f();
-      } catch (IOException var2) {
-         a.warn("Failed to load ip banlist: ", var2);
-      }
-   }
-
-   private void z() {
-      try {
-         this.f().f();
-      } catch (IOException var2) {
-         a.warn("Failed to load user banlist: ", var2);
-      }
-   }
-
-   private void A() {
-      try {
-         this.k().f();
-      } catch (Exception var2) {
-         a.warn("Failed to load operators list: ", var2);
-      }
-   }
-
-   private void B() {
-      try {
-         this.k().e();
-      } catch (Exception var2) {
-         a.warn("Failed to save operators list: ", var2);
-      }
-   }
-
-   private void C() {
-      try {
-         this.i().f();
-      } catch (Exception var2) {
-         a.warn("Failed to load white-list: ", var2);
-      }
-   }
-
-   private void D() {
-      try {
-         this.i().e();
-      } catch (Exception var2) {
-         a.warn("Failed to save white-list: ", var2);
-      }
+   public ti a(rn $$0) {
+      return ti.a("commands.data.storage.query", this.d, rg.c($$0));
    }
 
    @Override
-   public boolean c(GameProfile $$0) {
-      return !this.o() || this.g($$0) || this.i().a($$0);
-   }
-
-   public aji b() {
-      return (aji)super.c();
-   }
-
-   @Override
-   public boolean d(GameProfile $$0) {
-      return this.k().a($$0);
+   public ti a(ej.g $$0, double $$1, int $$2) {
+      return ti.a("commands.data.storage.get", $$0, this.d, String.format(Locale.ROOT, "%.2f", $$1), $$2);
    }
 }

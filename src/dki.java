@@ -1,171 +1,111 @@
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectList;
-import it.unimi.dsi.fastutil.objects.ObjectListIterator;
-import java.util.EnumSet;
-import java.util.Set;
-import java.util.function.Predicate;
-import org.slf4j.Logger;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.stream.Stream;
 
-public class dki {
-   private static final Logger a = LogUtils.getLogger();
-   static final Predicate<dez> b = $$0 -> !$$0.i();
-   static final Predicate<dez> c = dey.a::d;
-   private final aqi d;
-   private final Predicate<dez> e;
-   private final dgv f;
+public class dki extends dhb {
+   public static final Codec<dki> c = RecordCodecBuilder.create($$0 -> $$0.group(dtg.a.fieldOf("settings").forGetter(dki::g)).apply($$0, $$0.stable(dki::new)));
+   private final dtg d;
 
-   public dki(dgv $$0, dki.a $$1) {
-      this.e = $$1.e();
-      this.f = $$0;
-      int $$2 = arp.e($$0.D_() + 1);
-      this.d = new asb($$2, 256);
+   public dki(dtg $$0) {
+      super(new cqz($$0.d()), ac.b($$0::a));
+      this.d = $$0;
    }
 
-   public static void a(dgv $$0, Set<dki.a> $$1) {
-      int $$2 = $$1.size();
-      ObjectList<dki> $$3 = new ObjectArrayList($$2);
-      ObjectListIterator<dki> $$4 = $$3.iterator();
-      int $$5 = $$0.b() + 16;
-      gu.a $$6 = new gu.a();
+   @Override
+   public dhc a(hi<dvj> $$0, dlb $$1, long $$2) {
+      Stream<hg<dvj>> $$3 = this.d.c().map(hk::a).orElseGet(() -> $$0.b().map($$0xx -> $$0xx));
+      return dhc.a($$1, $$2, this.b, $$3);
+   }
 
-      for (int $$7 = 0; $$7 < 16; $$7++) {
-         for (int $$8 = 0; $$8 < 16; $$8++) {
-            for (dki.a $$9 : $$1) {
-               $$3.add($$0.a($$9));
-            }
+   @Override
+   protected Codec<? extends dhb> a() {
+      return c;
+   }
 
-            for (int $$10 = $$5 - 1; $$10 >= $$0.C_(); $$10--) {
-               $$6.d($$7, $$10, $$8);
-               dez $$11 = $$0.a_($$6);
-               if (!$$11.a(csm.a)) {
-                  while ($$4.hasNext()) {
-                     dki $$12 = (dki)$$4.next();
-                     if ($$12.e.test($$11)) {
-                        $$12.a($$7, $$8, $$10 + 1);
-                        $$4.remove();
-                     }
-                  }
+   public dtg g() {
+      return this.d;
+   }
 
-                  if ($$3.isEmpty()) {
-                     break;
-                  }
+   @Override
+   public void a(aku $$0, cqi $$1, dlb $$2, dha $$3) {
+   }
 
-                  $$4.back($$2);
+   @Override
+   public int a(cps $$0) {
+      return $$0.C_() + Math.min($$0.D_(), this.d.f().size());
+   }
+
+   @Override
+   public CompletableFuture<dha> a(Executor $$0, dlp $$1, dlb $$2, cqi $$3, dha $$4) {
+      List<dfe> $$5 = this.d.f();
+      gw.a $$6 = new gw.a();
+      dkn $$7 = $$4.a(dkn.a.c);
+      dkn $$8 = $$4.a(dkn.a.a);
+
+      for (int $$9 = 0; $$9 < Math.min($$4.D_(), $$5.size()); $$9++) {
+         dfe $$10 = $$5.get($$9);
+         if ($$10 != null) {
+            int $$11 = $$4.C_() + $$9;
+
+            for (int $$12 = 0; $$12 < 16; $$12++) {
+               for (int $$13 = 0; $$13 < 16; $$13++) {
+                  $$4.a($$6.d($$12, $$11, $$13), $$10, false);
+                  $$7.a($$12, $$11, $$13, $$10);
+                  $$8.a($$12, $$11, $$13, $$10);
                }
             }
          }
       }
+
+      return CompletableFuture.completedFuture($$4);
    }
 
-   public boolean a(int $$0, int $$1, int $$2, dez $$3) {
-      int $$4 = this.a($$0, $$2);
-      if ($$1 <= $$4 - 2) {
-         return false;
-      } else {
-         if (this.e.test($$3)) {
-            if ($$1 >= $$4) {
-               this.a($$0, $$2, $$1 + 1);
-               return true;
-            }
-         } else if ($$4 - 1 == $$1) {
-            gu.a $$5 = new gu.a();
+   @Override
+   public int a(int $$0, int $$1, dkn.a $$2, cps $$3, dlb $$4) {
+      List<dfe> $$5 = this.d.f();
 
-            for (int $$6 = $$1 - 1; $$6 >= this.f.C_(); $$6--) {
-               $$5.d($$0, $$6, $$2);
-               if (this.e.test(this.f.a_($$5))) {
-                  this.a($$0, $$2, $$6 + 1);
-                  return true;
-               }
-            }
-
-            this.a($$0, $$2, this.f.C_());
-            return true;
+      for (int $$6 = Math.min($$5.size(), $$3.aj()) - 1; $$6 >= 0; $$6--) {
+         dfe $$7 = $$5.get($$6);
+         if ($$7 != null && $$2.e().test($$7)) {
+            return $$3.C_() + $$6 + 1;
          }
-
-         return false;
-      }
-   }
-
-   public int a(int $$0, int $$1) {
-      return this.a(c($$0, $$1));
-   }
-
-   public int b(int $$0, int $$1) {
-      return this.a(c($$0, $$1)) - 1;
-   }
-
-   private int a(int $$0) {
-      return this.d.a($$0) + this.f.C_();
-   }
-
-   private void a(int $$0, int $$1, int $$2) {
-      this.d.b(c($$0, $$1), $$2 - this.f.C_());
-   }
-
-   public void a(dgv $$0, dki.a $$1, long[] $$2) {
-      long[] $$3 = this.d.a();
-      if ($$3.length == $$2.length) {
-         System.arraycopy($$2, 0, $$3, 0, $$2.length);
-      } else {
-         a.warn("Ignoring heightmap data for chunk " + $$0.f() + ", size does not match; expected: " + $$3.length + ", got: " + $$2.length);
-         a($$0, EnumSet.of($$1));
-      }
-   }
-
-   public long[] a() {
-      return this.d.a();
-   }
-
-   private static int c(int $$0, int $$1) {
-      return $$0 + $$1 * 16;
-   }
-
-   public static enum a implements ash {
-      a("WORLD_SURFACE_WG", dki.b.a, dki.b),
-      b("WORLD_SURFACE", dki.b.c, dki.b),
-      c("OCEAN_FLOOR_WG", dki.b.a, dki.c),
-      d("OCEAN_FLOOR", dki.b.b, dki.c),
-      e("MOTION_BLOCKING", dki.b.c, $$0 -> $$0.d() || !$$0.u().c()),
-      f("MOTION_BLOCKING_NO_LEAVES", dki.b.b, $$0 -> ($$0.d() || !$$0.u().c()) && !($$0.b() instanceof cws));
-
-      public static final Codec<dki.a> g = ash.a(dki.a::values);
-      private final String h;
-      private final dki.b i;
-      private final Predicate<dez> j;
-
-      private a(String $$0, dki.b $$1, Predicate<dez> $$2) {
-         this.h = $$0;
-         this.i = $$1;
-         this.j = $$2;
       }
 
-      public String a() {
-         return this.h;
-      }
-
-      public boolean b() {
-         return this.i == dki.b.c;
-      }
-
-      public boolean d() {
-         return this.i != dki.b.a;
-      }
-
-      public Predicate<dez> e() {
-         return this.j;
-      }
-
-      @Override
-      public String c() {
-         return this.h;
-      }
+      return $$3.C_();
    }
 
-   public static enum b {
-      a,
-      b,
-      c;
+   @Override
+   public cqc a(int $$0, int $$1, cps $$2, dlb $$3) {
+      return new cqc($$2.C_(), this.d.f().stream().limit((long)$$2.D_()).map($$0x -> $$0x == null ? csr.a.n() : $$0x).toArray(dfe[]::new));
+   }
+
+   @Override
+   public void a(List<String> $$0, dlb $$1, gw $$2) {
+   }
+
+   @Override
+   public void a(aku $$0, long $$1, dlb $$2, cqq $$3, cqi $$4, dha $$5, dkj.a $$6) {
+   }
+
+   @Override
+   public void a(aku $$0) {
+   }
+
+   @Override
+   public int f() {
+      return 0;
+   }
+
+   @Override
+   public int d() {
+      return 384;
+   }
+
+   @Override
+   public int e() {
+      return -63;
    }
 }

@@ -1,52 +1,41 @@
 import com.google.gson.JsonObject;
 import java.util.Optional;
 
-public class dd extends cu<dd.a> {
-   static final aer a = new aer("villager_trade");
-
-   @Override
-   public aer a() {
-      return a;
+public class dd extends cw<dd.a> {
+   public dd.a a(JsonObject $$0, Optional<bc> $$1, bg $$2) {
+      Optional<bc> $$3 = bq.a($$0, "entity", $$2);
+      return new dd.a($$1, $$3);
    }
 
-   public dd.a a(JsonObject $$0, Optional<ba> $$1, be $$2) {
-      Optional<ba> $$3 = bo.a($$0, "villager", $$2);
-      Optional<bz> $$4 = bz.a($$0.get("item"));
-      return new dd.a($$1, $$3, $$4);
+   public void a(ako $$0, bum $$1) {
+      ecl $$2 = bq.b($$0, $$1);
+      this.a($$0, $$1x -> $$1x.a($$2));
    }
 
-   public void a(akl $$0, cau $$1, cix $$2) {
-      ecg $$3 = bo.b($$0, $$1);
-      this.a($$0, $$2x -> $$2x.a($$3, $$2));
-   }
+   public static class a extends at {
+      private final Optional<bc> a;
 
-   public static class a extends ar {
-      private final Optional<ba> a;
-      private final Optional<bz> b;
-
-      public a(Optional<ba> $$0, Optional<ba> $$1, Optional<bz> $$2) {
-         super(dd.a, $$0);
+      public a(Optional<bc> $$0, Optional<bc> $$1) {
+         super($$0);
          this.a = $$1;
-         this.b = $$2;
       }
 
-      public static dd.a d() {
-         return new dd.a(Optional.empty(), Optional.empty(), Optional.empty());
+      public static am<dd.a> c() {
+         return al.x.a(new dd.a(Optional.empty(), Optional.empty()));
       }
 
-      public static dd.a a(bo.a $$0) {
-         return new dd.a(bo.a($$0), Optional.empty(), Optional.empty());
+      public static am<dd.a> a(bq.a $$0) {
+         return al.x.a(new dd.a(Optional.empty(), Optional.of(bq.a($$0))));
       }
 
-      public boolean a(ecg $$0, cix $$1) {
-         return this.a.isPresent() && !this.a.get().a($$0) ? false : !this.b.isPresent() || this.b.get().a($$1);
+      public boolean a(ecl $$0) {
+         return this.a.isEmpty() || this.a.get().a($$0);
       }
 
       @Override
-      public JsonObject b() {
-         JsonObject $$0 = super.b();
-         this.b.ifPresent($$1 -> $$0.add("item", $$1.a()));
-         this.a.ifPresent($$1 -> $$0.add("villager", $$1.a()));
+      public JsonObject a() {
+         JsonObject $$0 = super.a();
+         this.a.ifPresent($$1 -> $$0.add("entity", $$1.a()));
          return $$0;
       }
    }

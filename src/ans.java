@@ -1,88 +1,27 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-import java.util.List;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionStage;
-import java.util.concurrent.Executor;
-import java.util.concurrent.atomic.AtomicInteger;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Map;
+import java.util.Optional;
 
-public class ans<S> implements ani {
-   private static final int c = 2;
-   private static final int d = 2;
-   private static final int e = 1;
-   protected final CompletableFuture<asp> a = new CompletableFuture<>();
-   protected CompletableFuture<List<S>> b;
-   final Set<ang> f;
-   private final int g;
-   private int h;
-   private int i;
-   private final AtomicInteger j = new AtomicInteger();
-   private final AtomicInteger k = new AtomicInteger();
+@FunctionalInterface
+public interface ans {
+   Optional<ann> getResource(aeu var1);
 
-   public static ans<Void> a(anm $$0, List<ang> $$1, Executor $$2, Executor $$3, CompletableFuture<asp> $$4) {
-      return new ans<>($$2, $$3, $$0, $$1, ($$1x, $$2x, $$3x, $$4x, $$5) -> $$3x.a($$1x, $$2x, bde.a, bde.a, $$2, $$5), $$4);
+   default ann getResourceOrThrow(aeu $$0) throws FileNotFoundException {
+      return this.getResource($$0).orElseThrow(() -> new FileNotFoundException($$0.toString()));
    }
 
-   protected ans(Executor $$0, final Executor $$1, anm $$2, List<ang> $$3, ans.a<S> $$4, CompletableFuture<asp> $$5) {
-      this.g = $$3.size();
-      this.j.incrementAndGet();
-      $$5.thenRun(this.k::incrementAndGet);
-      List<CompletableFuture<S>> $$6 = Lists.newArrayList();
-      CompletableFuture<?> $$7 = $$5;
-      this.f = Sets.newHashSet($$3);
-
-      for (final ang $$8 : $$3) {
-         final CompletableFuture<?> $$9 = $$7;
-         CompletableFuture<S> $$10 = $$4.create(new ang.a() {
-            @Override
-            public <T> CompletableFuture<T> a(T $$0) {
-               $$1.execute(() -> {
-                  ans.this.f.remove($$8);
-                  if (ans.this.f.isEmpty()) {
-                     ans.this.a.complete(asp.a);
-                  }
-               });
-               return ans.this.a.thenCombine((CompletionStage<? extends T>)$$9, ($$1xx, $$2) -> $$0);
-            }
-         }, $$2, $$8, $$1x -> {
-            this.j.incrementAndGet();
-            $$0.execute(() -> {
-               $$1x.run();
-               this.k.incrementAndGet();
-            });
-         }, $$1x -> {
-            this.h++;
-            $$1.execute(() -> {
-               $$1x.run();
-               this.i++;
-            });
-         });
-         $$6.add($$10);
-         $$7 = $$10;
-      }
-
-      this.b = ac.c($$6);
+   default InputStream open(aeu $$0) throws IOException {
+      return this.getResourceOrThrow($$0).d();
    }
 
-   @Override
-   public CompletableFuture<?> a() {
-      return this.b;
+   default BufferedReader openAsReader(aeu $$0) throws IOException {
+      return this.getResourceOrThrow($$0).e();
    }
 
-   @Override
-   public float b() {
-      int $$0 = this.g - this.f.size();
-      float $$1 = (float)(this.k.get() * 2 + this.i * 2 + $$0 * 1);
-      float $$2 = (float)(this.j.get() * 2 + this.h * 2 + this.g * 1);
-      return $$1 / $$2;
-   }
-
-   public static ani a(anm $$0, List<ang> $$1, Executor $$2, Executor $$3, CompletableFuture<asp> $$4, boolean $$5) {
-      return (ani)($$5 ? new anh($$0, $$1, $$2, $$3, $$4) : a($$0, $$1, $$2, $$3, $$4));
-   }
-
-   protected interface a<S> {
-      CompletableFuture<S> create(ang.a var1, anm var2, ang var3, Executor var4, Executor var5);
+   static ans fromMap(Map<aeu, ann> $$0) {
+      return $$1 -> Optional.ofNullable($$0.get($$1));
    }
 }

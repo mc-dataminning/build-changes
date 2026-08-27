@@ -1,74 +1,216 @@
-import java.util.UUID;
-
-public class ws implements ux<wp> {
-   private final int a;
-   private final UUID b;
-   private final double c;
-   private final double d;
-   private final double e;
-   private final byte f;
-   private final byte g;
-
-   public ws(cbm $$0) {
-      this.a = $$0.ah();
-      this.b = $$0.fP().getId();
-      this.c = $$0.dp();
-      this.d = $$0.dr();
-      this.e = $$0.dv();
-      this.f = (byte)((int)($$0.dA() * 256.0F / 360.0F));
-      this.g = (byte)((int)($$0.dC() * 256.0F / 360.0F));
-   }
-
-   public ws(si $$0) {
-      this.a = $$0.m();
-      this.b = $$0.o();
-      this.c = $$0.readDouble();
-      this.d = $$0.readDouble();
-      this.e = $$0.readDouble();
-      this.f = $$0.readByte();
-      this.g = $$0.readByte();
-   }
-
+public interface ws extends sf, vd {
    @Override
-   public void a(si $$0) {
-      $$0.c(this.a);
-      $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
-      $$0.k(this.f);
-      $$0.k(this.g);
+   default sk b() {
+      return sk.b;
    }
 
-   public void a(wp $$0) {
-      $$0.a(this);
-   }
+   void a(wt var1);
 
-   public int a() {
-      return this.a;
-   }
+   void a(wu var1);
 
-   public UUID d() {
-      return this.b;
-   }
+   void a(aaa var1);
 
-   public double e() {
-      return this.c;
-   }
+   void a(wv var1);
 
-   public double f() {
-      return this.d;
-   }
+   void a(ww var1);
 
-   public double g() {
-      return this.e;
-   }
+   void a(ya var1);
 
-   public byte h() {
-      return this.f;
-   }
+   void a(wx var1);
 
-   public byte i() {
-      return this.g;
-   }
+   void a(za var1);
+
+   void a(wz var1);
+
+   void a(yp var1);
+
+   void a(xa var1);
+
+   void a(xb var1);
+
+   void a(xc var1);
+
+   void a(aan var1);
+
+   void a(ys var1);
+
+   void a(xu var1);
+
+   void a(xt var1);
+
+   void a(zf var1);
+
+   void a(yj var1);
+
+   void a(xm var1);
+
+   void a(xn var1);
+
+   void a(xz var1);
+
+   void a(xo var1);
+
+   void a(xp var1);
+
+   void a(xv var1);
+
+   void a(zv var1);
+
+   void a(aab var1);
+
+   void a(xw var1);
+
+   void a(xy var1);
+
+   void a(yd var1);
+
+   void a(xi var1);
+
+   void a(xx var1);
+
+   void a(ye var1);
+
+   void a(yi var1);
+
+   void a(yl var1);
+
+   void a(yz var1);
+
+   void a(yf var1);
+
+   void a(yr var1);
+
+   void a(yw var1);
+
+   void a(yx var1);
+
+   void a(zb var1);
+
+   void a(zc var1);
+
+   void a(zd var1);
+
+   void a(ze var1);
+
+   void a(zp var1);
+
+   void a(zt var1);
+
+   void a(zu var1);
+
+   void a(zw var1);
+
+   void a(zx var1);
+
+   void a(zy var1);
+
+   void a(zz var1);
+
+   void a(aac var1);
+
+   void a(aad var1);
+
+   void a(zs var1);
+
+   void a(aag var1);
+
+   void a(aak var1);
+
+   void a(aaj var1);
+
+   void a(aaq var1);
+
+   void a(aar var1);
+
+   void a(aat var1);
+
+   void a(aau var1);
+
+   void a(yt var1);
+
+   void a(yu var1);
+
+   void a(yv var1);
+
+   void a(xf var1);
+
+   void a(zo var1);
+
+   void a(yb var1);
+
+   void a(zk var1);
+
+   void a(zl var1);
+
+   void a(zm var1);
+
+   void a(zn var1);
+
+   void a(zj var1);
+
+   void a(aao var1);
+
+   void a(xd var1);
+
+   void a(xq var1);
+
+   void a(ym var1);
+
+   void a(aas var1);
+
+   void a(zg var1);
+
+   void a(yq var1);
+
+   void a(xl var1);
+
+   void a(aam var1);
+
+   void a(xk var1);
+
+   void a(aav var1);
+
+   void a(yy var1);
+
+   void a(aap var1);
+
+   void a(yg var1);
+
+   void a(yn var1);
+
+   void a(yo var1);
+
+   void a(yk var1);
+
+   void a(zr var1);
+
+   void a(aae var1);
+
+   void a(zq var1);
+
+   void a(wy var1);
+
+   void a(zi var1);
+
+   void a(aaf var1);
+
+   void a(aah var1);
+
+   void a(aai var1);
+
+   void a(xj var1);
+
+   void a(zh var1);
+
+   void a(xr var1);
+
+   void a(xe var1);
+
+   void a(xs var1);
+
+   void a(aal var1);
+
+   void a(xh var1);
+
+   void a(xg var1);
 }

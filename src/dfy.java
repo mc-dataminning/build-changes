@@ -1,20 +1,27 @@
-public enum dfy implements ash {
-   a("top"),
-   b("bottom");
+import com.google.common.collect.Lists;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
-   private final String c;
-
-   private dfy(String $$0) {
-      this.c = $$0;
+public class dfy extends dgc<hc> {
+   protected dfy(String $$0, Collection<hc> $$1) {
+      super($$0, hc.class, $$1);
    }
 
-   @Override
-   public String toString() {
-      return this.c;
+   public static dfy a(String $$0) {
+      return a($$0, $$0x -> true);
    }
 
-   @Override
-   public String c() {
-      return this.c;
+   public static dfy a(String $$0, Predicate<hc> $$1) {
+      return a($$0, Arrays.stream(hc.values()).filter($$1).collect(Collectors.toList()));
+   }
+
+   public static dfy a(String $$0, hc... $$1) {
+      return a($$0, Lists.newArrayList($$1));
+   }
+
+   public static dfy a(String $$0, Collection<hc> $$1) {
+      return new dfy($$0, $$1);
    }
 }

@@ -1,23 +1,11 @@
-public class fsp extends frv<byo, fep<byo>> {
-   private static final aer a = new aer("textures/entity/zombie/drowned.png");
+public class fsp extends fui<but, fer<but>> {
+   private static final aeu a = new aeu("textures/entity/cow/cow.png");
 
-   public fsp(fsx.a $$0) {
-      super($$0, new fep<>($$0.a(fhr.L)), new fep<>($$0.a(fhr.M)), new fep<>($$0.a(fhr.N)));
-      this.a(new fwn<>(this, $$0.f()));
+   public fsp(ftc.a $$0) {
+      super($$0, new fer<>($$0.a(fhw.A)), 0.7F);
    }
 
-   @Override
-   public aer a(bzt $$0) {
+   public aeu a(but $$0) {
       return a;
-   }
-
-   protected void a(byo $$0, elf $$1, float $$2, float $$3, float $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      float $$5 = $$0.a($$4);
-      if ($$5 > 0.0F) {
-         float $$6 = -10.0F - $$0.dC();
-         float $$7 = arp.i($$5, 0.0F, $$6);
-         $$1.a(a.b.rotationDegrees($$7), 0.0F, $$0.dg() / 2.0F, 0.0F);
-      }
    }
 }

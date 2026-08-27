@@ -1,49 +1,30 @@
-public class fkf extends fmk {
-   private final fmf a;
+import com.google.common.annotations.VisibleForTesting;
+import java.util.Optional;
 
-   fkf(fin $$0, double $$1, double $$2, double $$3, double $$4, fmf $$5) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.a = $$5;
-      this.t = 4;
-      float $$6 = this.r.i() * 0.6F + 0.4F;
-      this.v = $$6;
-      this.w = $$6;
-      this.x = $$6;
-      this.D = 1.0F - (float)$$4 * 0.5F;
-      this.b($$5);
+public class fkf {
+   public static final fkf a = new fkf(fke.b, fkg.createDnsSrvRedirectHandler(), fkb.a());
+   private final fke b;
+   private final fkg c;
+   private final fkb d;
+
+   @VisibleForTesting
+   fkf(fke $$0, fkg $$1, fkb $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   @Override
-   public int a(float $$0) {
-      return 15728880;
-   }
+   public Optional<fkc> a(fkd $$0) {
+      Optional<fkc> $$1 = this.b.resolve($$0);
+      if ((!$$1.isPresent() || this.d.a($$1.get())) && this.d.a($$0)) {
+         Optional<fkd> $$2 = this.c.lookupRedirect($$0);
+         if ($$2.isPresent()) {
+            $$1 = this.b.resolve($$2.get()).filter(this.d::a);
+         }
 
-   @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
+         return $$1;
       } else {
-         this.b(this.a);
-      }
-   }
-
-   @Override
-   public flo b() {
-      return flo.d;
-   }
-
-   public static class a implements fln<iy> {
-      private final fmf a;
-
-      public a(fmf $$0) {
-         this.a = $$0;
-      }
-
-      public flk a(iy $$0, fin $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fkf($$1, $$2, $$3, $$4, $$5, this.a);
+         return Optional.empty();
       }
    }
 }

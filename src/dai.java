@@ -1,9 +1,13 @@
-public abstract class dai extends csl {
-   public dai(dey.d $$0) {
-      super($$0);
+public class dai extends crm implements csh {
+   private final cho a;
+
+   public dai(cho $$0, dfd.d $$1) {
+      super($$1);
+      this.a = $$0;
    }
 
-   public abstract dah a();
-
-   public abstract crn b();
+   @Override
+   public cho a() {
+      return this.a;
+   }
 }

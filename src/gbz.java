@@ -1,99 +1,34 @@
-import javax.annotation.Nullable;
+public class gbz extends gbq {
+   private static final float n = 0.0F;
+   private static final float o = 1.0F;
+   private static final float p = 0.7F;
+   private static final float q = 0.5F;
+   private final byz r;
 
-public class gbz implements gdi<gbz> {
-   public static final aek a = new aek("sounds", ".ogg");
-   private final aer b;
-   private final bfy c;
-   private final bfy d;
-   private final int e;
-   private final gbz.a f;
-   private final boolean g;
-   private final boolean h;
-   private final int i;
-
-   public gbz(String $$0, bfy $$1, bfy $$2, int $$3, gbz.a $$4, boolean $$5, boolean $$6, int $$7) {
-      this.b = new aer($$0);
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = $$7;
-   }
-
-   public aer a() {
-      return this.b;
-   }
-
-   public aer b() {
-      return a.a(this.b);
-   }
-
-   public bfy c() {
-      return this.c;
-   }
-
-   public bfy d() {
-      return this.d;
+   public gbz(byz $$0) {
+      super(aoz.kl, apa.f, gch.t());
+      this.r = $$0;
+      this.k = gch.a.a;
+      this.i = true;
+      this.j = 0;
    }
 
    @Override
-   public int e() {
-      return this.e;
-   }
-
-   public gbz a(aru $$0) {
-      return this;
+   public boolean s() {
+      return !this.r.aS();
    }
 
    @Override
-   public void a(gdd $$0) {
-      if (this.h) {
-         $$0.a(this);
-      }
-   }
-
-   public gbz.a f() {
-      return this.f;
-   }
-
-   public boolean g() {
-      return this.g;
-   }
-
-   public boolean h() {
-      return this.h;
-   }
-
-   public int i() {
-      return this.i;
-   }
-
-   @Override
-   public String toString() {
-      return "Sound[" + this.b + "]";
-   }
-
-   public static enum a {
-      a("file"),
-      b("event");
-
-      private final String c;
-
-      private a(String $$0) {
-         this.c = $$0;
-      }
-
-      @Nullable
-      public static gbz.a a(String $$0) {
-         for (gbz.a $$1 : values()) {
-            if ($$1.c.equals($$0)) {
-               return $$1;
-            }
-         }
-
-         return null;
+   public void q() {
+      if (!this.r.dF() && this.r.j() == null) {
+         this.f = (double)((float)this.r.dp());
+         this.g = (double)((float)this.r.dr());
+         this.h = (double)((float)this.r.dv());
+         float $$0 = this.r.G(0.0F);
+         this.d = 0.0F + 1.0F * $$0 * $$0;
+         this.e = 0.7F + 0.5F * $$0;
+      } else {
+         this.n();
       }
    }
 }

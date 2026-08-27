@@ -1,53 +1,77 @@
+import com.google.common.collect.BiMap;
+import com.google.common.collect.ImmutableBiMap;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
-import java.util.function.Function;
 import javax.annotation.Nullable;
 
-public class br<V> {
-   private final Function<bii, Optional<V>> a;
-   private final bp.a b;
+public interface br {
+   Codec<br> a = br.b.t.dispatch(br::a, $$0 -> $$0.a().codec());
 
-   public static <V> br<V> a(hr<V> $$0, Function<bii, Optional<V>> $$1) {
-      return new br<>($$0.q(), $$1);
+   boolean a(bil var1, akn var2, @Nullable ehi var3);
+
+   br.a a();
+
+   static br a(buq $$0) {
+      return br.b.f.a($$0);
    }
 
-   public static <V> br<V> a(Codec<V> $$0, Function<bii, Optional<V>> $$1) {
-      return new br<>($$0, $$1);
+   static br a(bux $$0) {
+      return br.b.g.a($$0);
    }
 
-   private br(Codec<V> $$0, Function<bii, Optional<V>> $$1) {
-      this.a = $$1;
-      MapCodec<br.a<V>> $$2 = RecordCodecBuilder.mapCodec($$1x -> $$1x.group($$0.fieldOf("variant").forGetter(br.a::c)).apply($$1x, this::a));
-      this.b = new bp.a($$2);
+   public static record a(MapCodec<? extends br> a) {
    }
 
-   public bp.a a() {
-      return this.b;
-   }
+   public static final class b {
+      public static final br.a a = new br.a(MapCodec.unit(new br() {
+         @Override
+         public boolean a(bil $$0, akn $$1, @Nullable ehi $$2) {
+            return true;
+         }
 
-   public br.a<V> a(V $$0) {
-      return new br.a<>(this.b, this.a, $$0);
-   }
-
-   public static record a<V>(bp.a b, Function<bii, Optional<V>> c, V d) implements bp {
-      @Override
-      public boolean a(bii $$0, akk $$1, @Nullable ehd $$2) {
-         return this.c.apply($$0).filter($$0x -> $$0x.equals(this.d)).isPresent();
-      }
-
-      @Override
-      public bp.a a() {
-         return this.b;
-      }
-
-      public Function<bii, Optional<V>> b() {
-         return this.c;
-      }
-
-      public V c() {
-         return this.d;
-      }
+         @Override
+         public br.a a() {
+            return br.b.a;
+         }
+      }));
+      public static final br.a b = new br.a(ch.b);
+      public static final br.a c = new br.a(bv.c);
+      public static final br.a d = new br.a(cr.c);
+      public static final br.a e = new br.a(cy.b);
+      public static final bt<buq> f = bt.a(jd.aj, $$0 -> $$0 instanceof bup $$1 ? Optional.of($$1.gh()) : Optional.empty());
+      public static final bt<bux> g = bt.a(jd.ak, $$0 -> $$0 instanceof bwb $$1 ? Optional.of($$1.t()) : Optional.empty());
+      public static final bt<bvt.d> h = bt.a(bvt.d.f, $$0 -> $$0 instanceof bvt $$1 ? Optional.of($$1.ga()) : Optional.empty());
+      public static final bt<cdi.b> i = bt.a(cdi.b.j, $$0 -> $$0 instanceof cdi $$1 ? Optional.of($$1.v()) : Optional.empty());
+      public static final bt<buw.v> j = bt.a(buw.v.c, $$0 -> $$0 instanceof buw $$1 ? Optional.of($$1.q()) : Optional.empty());
+      public static final bt<buz.a> k = bt.a(buz.a.c, $$0 -> $$0 instanceof buz $$1 ? Optional.of($$1.q()) : Optional.empty());
+      public static final bt<hg<bye>> l = bt.a(jd.m.r(), $$0 -> $$0 instanceof byd $$1 ? Optional.of($$1.j()) : Optional.empty());
+      public static final bt<bvg.g> m = bt.a(bvg.g.h, $$0 -> $$0 instanceof bvg $$1 ? Optional.of($$1.ga()) : Optional.empty());
+      public static final bt<bwu> n = bt.a(bwu.h, $$0 -> $$0 instanceof bwn $$1 ? Optional.of($$1.q()) : Optional.empty());
+      public static final bt<bwo.d> o = bt.a(bwo.d.e, $$0 -> $$0 instanceof bwo $$1 ? Optional.of($$1.gm()) : Optional.empty());
+      public static final bt<cbh> p = bt.a(jd.z.q(), $$0 -> $$0 instanceof cbe $$1 ? Optional.of($$1.a()) : Optional.empty());
+      public static final bt<bvc.b> q = bt.a(bvc.b.f, $$0 -> $$0 instanceof bvc $$1 ? Optional.of($$1.gi()) : Optional.empty());
+      public static final bt<bvm.b> r = bt.a(bvm.b.m, $$0 -> $$0 instanceof bvm $$1 ? Optional.of($$1.gl()) : Optional.empty());
+      public static final BiMap<String, br.a> s = ImmutableBiMap.builder()
+         .put("any", a)
+         .put("lightning", b)
+         .put("fishing_hook", c)
+         .put("player", d)
+         .put("slime", e)
+         .put("cat", f.a())
+         .put("frog", g.a())
+         .put("axolotl", h.a())
+         .put("boat", i.a())
+         .put("fox", j.a())
+         .put("mooshroom", k.a())
+         .put("painting", l.a())
+         .put("rabbit", m.a())
+         .put("horse", n.a())
+         .put("llama", o.a())
+         .put("villager", p.a())
+         .put("parrot", q.a())
+         .put("tropical_fish", r.a())
+         .buildOrThrow();
+      public static final Codec<br.a> t = arb.b(s.inverse()::get, s::get);
    }
 }

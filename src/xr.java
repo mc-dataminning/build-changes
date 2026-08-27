@@ -1,24 +1,27 @@
-public record xr(tf a, tb.b b) implements ux<wp> {
-   public xr(si $$0) {
-      this($$0.l(), new tb.b($$0));
+import java.util.List;
+
+public record xr(xr.a a, List<String> b) implements va<ws> {
+   public xr(sl $$0) {
+      this($$0.b(xr.a.class), $$0.a(sl::r));
    }
 
    @Override
-   public void a(si $$0) {
+   public void a(sl $$0) {
       $$0.a(this.a);
-      this.b.a($$0);
+      $$0.a(this.b, sl::a);
    }
 
-   public void a(wp $$0) {
+   public void a(ws $$0) {
       $$0.a(this);
    }
 
-   @Override
-   public boolean b() {
-      return true;
+   public List<String> d() {
+      return this.b;
    }
 
-   public tb.b d() {
-      return this.b;
+   public static enum a {
+      a,
+      b,
+      c;
    }
 }

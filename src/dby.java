@@ -1,12 +1,12 @@
-import javax.annotation.Nullable;
+public class dby extends cwc {
+   public static final eib d = csq.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
 
-public class dby extends dbk {
-   protected dby(dey.d $$0) {
-      super(czn.b.b, $$0);
+   public dby(dfd.d $$0) {
+      super($$0, hc.a, d, false);
    }
 
    @Override
-   public void a(cpl $$0, gu $$1, dez $$2, @Nullable biy $$3, cix $$4) {
-      csm.gG.a($$0, $$1, $$2, $$3, $$4);
+   protected cwd b() {
+      return (cwd)csr.oz;
    }
 }

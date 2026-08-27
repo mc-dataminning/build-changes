@@ -1,24 +1,24 @@
-public class zi implements ux<wp> {
-   private final double a;
+public class zi implements va<ws> {
+   private final ti a;
 
-   public zi(dgq $$0) {
-      this.a = $$0.k();
+   public zi(ti $$0) {
+      this.a = $$0;
    }
 
-   public zi(si $$0) {
-      this.a = $$0.readDouble();
+   public zi(sl $$0) {
+      this.a = $$0.l();
    }
 
    @Override
-   public void a(si $$0) {
+   public void a(sl $$0) {
       $$0.a(this.a);
    }
 
-   public void a(wp $$0) {
+   public void a(ws $$0) {
       $$0.a(this);
    }
 
-   public double a() {
+   public ti a() {
       return this.a;
    }
 }

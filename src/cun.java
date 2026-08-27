@@ -1,209 +1,261 @@
-import javax.annotation.Nullable;
+import java.util.List;
+import java.util.function.Predicate;
 
-public class cun extends csl {
-   public static final dft a = cwe.aC;
-   public static final dfq b = dfp.u;
-   public static final dfx<dfu> c = dfp.be;
-   public static final dfq d = dfp.w;
-   public static final dfx<dfv> e = dfp.ae;
-   protected static final float f = 3.0F;
-   protected static final ehw g = csl.a(0.0, 0.0, 0.0, 16.0, 16.0, 3.0);
-   protected static final ehw h = csl.a(0.0, 0.0, 13.0, 16.0, 16.0, 16.0);
-   protected static final ehw i = csl.a(13.0, 0.0, 0.0, 16.0, 16.0, 16.0);
-   protected static final ehw j = csl.a(0.0, 0.0, 0.0, 3.0, 16.0, 16.0);
-   private final dfo k;
+public class cun extends csg {
+   public static final dgc<dgi> d = dfu.ah;
+   public static final dfv e = dfu.w;
+   private static final int f = 20;
 
-   protected cun(dey.d $$0, dfo $$1) {
-      super($$0.a($$1.d()));
-      this.k = $$1;
-      this.k(this.C.b().a(a, ha.c).a(b, Boolean.valueOf(false)).a(c, dfu.a).a(d, Boolean.valueOf(false)).a(e, dfv.b));
-   }
-
-   public dfo a() {
-      return this.k;
+   public cun(dfd.d $$0) {
+      super(true, $$0);
+      this.k(this.C.b().a(e, Boolean.valueOf(false)).a(d, dgi.a).a(c, Boolean.valueOf(false)));
    }
 
    @Override
-   public ehw a(dez $$0, cor $$1, gu $$2, ehi $$3) {
-      ha $$4 = $$0.c(a);
-      boolean $$5 = !$$0.c(b);
-      boolean $$6 = $$0.c(c) == dfu.b;
-      switch ($$4) {
-         case f:
-         default:
-            return $$5 ? j : ($$6 ? h : g);
+   public boolean f_(dfe $$0) {
+      return true;
+   }
+
+   @Override
+   public void a(dfe $$0, cpq $$1, gw $$2, bil $$3) {
+      if (!$$1.B) {
+         if (!$$0.c(e)) {
+            this.a($$1, $$2, $$0);
+         }
+      }
+   }
+
+   @Override
+   public void a(dfe $$0, akn $$1, gw $$2, arx $$3) {
+      if ($$0.c(e)) {
+         this.a($$1, $$2, $$0);
+      }
+   }
+
+   @Override
+   public int a(dfe $$0, cow $$1, gw $$2, hc $$3) {
+      return $$0.c(e) ? 15 : 0;
+   }
+
+   @Override
+   public int b(dfe $$0, cow $$1, gw $$2, hc $$3) {
+      if (!$$0.c(e)) {
+         return 0;
+      } else {
+         return $$3 == hc.b ? 15 : 0;
+      }
+   }
+
+   private void a(cpq $$0, gw $$1, dfe $$2) {
+      if (this.a($$2, (cpt)$$0, $$1)) {
+         boolean $$3 = $$2.c(e);
+         boolean $$4 = false;
+         List<cdg> $$5 = this.a($$0, $$1, cdg.class, $$0x -> true);
+         if (!$$5.isEmpty()) {
+            $$4 = true;
+         }
+
+         if ($$4 && !$$3) {
+            dfe $$6 = $$2.a(e, Boolean.valueOf(true));
+            $$0.a($$1, $$6, 3);
+            this.b($$0, $$1, $$6, true);
+            $$0.a($$1, this);
+            $$0.a($$1.d(), this);
+            $$0.b($$1, $$2, $$6);
+         }
+
+         if (!$$4 && $$3) {
+            dfe $$7 = $$2.a(e, Boolean.valueOf(false));
+            $$0.a($$1, $$7, 3);
+            this.b($$0, $$1, $$7, false);
+            $$0.a($$1, this);
+            $$0.a($$1.d(), this);
+            $$0.b($$1, $$2, $$7);
+         }
+
+         if ($$4) {
+            $$0.a($$1, this, 20);
+         }
+
+         $$0.c($$1, this);
+      }
+   }
+
+   protected void b(cpq $$0, gw $$1, dfe $$2, boolean $$3) {
+      cyp $$4 = new cyp($$0, $$1, $$2);
+
+      for (gw $$6 : $$4.a()) {
+         dfe $$7 = $$0.a_($$6);
+         $$0.a($$7, $$6, $$7.b(), $$1, false);
+      }
+   }
+
+   @Override
+   public void b(dfe $$0, cpq $$1, gw $$2, dfe $$3, boolean $$4) {
+      if (!$$3.a($$0.b())) {
+         dfe $$5 = this.a($$0, $$1, $$2, $$4);
+         this.a($$1, $$2, $$5);
+      }
+   }
+
+   @Override
+   public dgh<dgi> b() {
+      return d;
+   }
+
+   @Override
+   public boolean d_(dfe $$0) {
+      return true;
+   }
+
+   @Override
+   public int a(dfe $$0, cpq $$1, gw $$2) {
+      if ($$0.c(e)) {
+         List<cdo> $$3 = this.a($$1, $$2, cdo.class, $$0x -> true);
+         if (!$$3.isEmpty()) {
+            return $$3.get(0).A().k();
+         }
+
+         List<cdg> $$4 = this.a($$1, $$2, cdg.class, bio.d);
+         if (!$$4.isEmpty()) {
+            return ceg.b((bgm)$$4.get(0));
+         }
+      }
+
+      return 0;
+   }
+
+   private <T extends cdg> List<T> a(cpq $$0, gw $$1, Class<T> $$2, Predicate<bil> $$3) {
+      return $$0.a($$2, this.a($$1), $$3);
+   }
+
+   private ehd a(gw $$0) {
+      double $$1 = 0.2;
+      return new ehd(
+         (double)$$0.u() + 0.2, (double)$$0.v(), (double)$$0.w() + 0.2, (double)($$0.u() + 1) - 0.2, (double)($$0.v() + 1) - 0.2, (double)($$0.w() + 1) - 0.2
+      );
+   }
+
+   @Override
+   public dfe a(dfe $$0, czc $$1) {
+      switch ($$1) {
+         case c:
+            switch ((dgi)$$0.c(d)) {
+               case c:
+                  return $$0.a(d, dgi.d);
+               case d:
+                  return $$0.a(d, dgi.c);
+               case e:
+                  return $$0.a(d, dgi.f);
+               case f:
+                  return $$0.a(d, dgi.e);
+               case g:
+                  return $$0.a(d, dgi.i);
+               case h:
+                  return $$0.a(d, dgi.j);
+               case i:
+                  return $$0.a(d, dgi.g);
+               case j:
+                  return $$0.a(d, dgi.h);
+            }
          case d:
-            return $$5 ? g : ($$6 ? j : i);
-         case e:
-            return $$5 ? i : ($$6 ? g : h);
-         case c:
-            return $$5 ? h : ($$6 ? i : j);
-      }
-   }
-
-   @Override
-   public dez a(dez $$0, ha $$1, dez $$2, cpm $$3, gu $$4, gu $$5) {
-      dfv $$6 = $$0.c(e);
-      if ($$1.o() != ha.a.b || $$6 == dfv.b != ($$1 == ha.b)) {
-         return $$6 == dfv.b && $$1 == ha.a && !$$0.a($$3, $$4) ? csm.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      } else {
-         return $$2.a(this) && $$2.c(e) != $$6 ? $$0.a(a, $$2.c(a)).a(b, $$2.c(b)).a(c, $$2.c(c)).a(d, $$2.c(d)) : csm.a.n();
-      }
-   }
-
-   @Override
-   public void a(cpl $$0, gu $$1, dez $$2, cbm $$3) {
-      if (!$$0.B && $$3.f()) {
-         cup.b($$0, $$1, $$2, $$3);
-      }
-
-      super.a($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   public boolean a(dez $$0, cor $$1, gu $$2, eas $$3) {
-      switch ($$3) {
-         case a:
-            return $$0.c(b);
+            switch ((dgi)$$0.c(d)) {
+               case c:
+                  return $$0.a(d, dgi.e);
+               case d:
+                  return $$0.a(d, dgi.f);
+               case e:
+                  return $$0.a(d, dgi.d);
+               case f:
+                  return $$0.a(d, dgi.c);
+               case g:
+                  return $$0.a(d, dgi.j);
+               case h:
+                  return $$0.a(d, dgi.g);
+               case i:
+                  return $$0.a(d, dgi.h);
+               case j:
+                  return $$0.a(d, dgi.i);
+               case a:
+                  return $$0.a(d, dgi.b);
+               case b:
+                  return $$0.a(d, dgi.a);
+            }
          case b:
-            return false;
-         case c:
-            return $$0.c(b);
+            switch ((dgi)$$0.c(d)) {
+               case c:
+                  return $$0.a(d, dgi.f);
+               case d:
+                  return $$0.a(d, dgi.e);
+               case e:
+                  return $$0.a(d, dgi.c);
+               case f:
+                  return $$0.a(d, dgi.d);
+               case g:
+                  return $$0.a(d, dgi.h);
+               case h:
+                  return $$0.a(d, dgi.i);
+               case i:
+                  return $$0.a(d, dgi.j);
+               case j:
+                  return $$0.a(d, dgi.g);
+               case a:
+                  return $$0.a(d, dgi.b);
+               case b:
+                  return $$0.a(d, dgi.a);
+            }
          default:
-            return false;
-      }
-   }
-
-   @Nullable
-   @Override
-   public dez a(clf $$0) {
-      gu $$1 = $$0.a();
-      cpl $$2 = $$0.q();
-      if ($$1.v() < $$2.aj() - 1 && $$2.a_($$1.c()).a($$0)) {
-         boolean $$3 = $$2.B($$1) || $$2.B($$1.c());
-         return this.n().a(a, $$0.g()).a(c, this.b($$0)).a(d, Boolean.valueOf($$3)).a(b, Boolean.valueOf($$3)).a(e, dfv.b);
-      } else {
-         return null;
+            return $$0;
       }
    }
 
    @Override
-   public void a(cpl $$0, gu $$1, dez $$2, biy $$3, cix $$4) {
-      $$0.a($$1.c(), $$2.a(e, dfv.a), 3);
-   }
-
-   private dfu b(clf $$0) {
-      cor $$1 = $$0.q();
-      gu $$2 = $$0.a();
-      ha $$3 = $$0.g();
-      gu $$4 = $$2.c();
-      ha $$5 = $$3.i();
-      gu $$6 = $$2.a($$5);
-      dez $$7 = $$1.a_($$6);
-      gu $$8 = $$4.a($$5);
-      dez $$9 = $$1.a_($$8);
-      ha $$10 = $$3.h();
-      gu $$11 = $$2.a($$10);
-      dez $$12 = $$1.a_($$11);
-      gu $$13 = $$4.a($$10);
-      dez $$14 = $$1.a_($$13);
-      int $$15 = ($$7.r($$1, $$6) ? -1 : 0) + ($$9.r($$1, $$8) ? -1 : 0) + ($$12.r($$1, $$11) ? 1 : 0) + ($$14.r($$1, $$13) ? 1 : 0);
-      boolean $$16 = $$7.a(this) && $$7.c(e) == dfv.b;
-      boolean $$17 = $$12.a(this) && $$12.c(e) == dfv.b;
-      if ((!$$16 || $$17) && $$15 <= 0) {
-         if ((!$$17 || $$16) && $$15 >= 0) {
-            int $$18 = $$3.j();
-            int $$19 = $$3.l();
-            ehd $$20 = $$0.l();
-            double $$21 = $$20.c - (double)$$2.u();
-            double $$22 = $$20.e - (double)$$2.w();
-            return ($$18 >= 0 || !($$22 < 0.5)) && ($$18 <= 0 || !($$22 > 0.5)) && ($$19 >= 0 || !($$21 > 0.5)) && ($$19 <= 0 || !($$21 < 0.5)) ? dfu.a : dfu.b;
-         } else {
-            return dfu.a;
-         }
-      } else {
-         return dfu.b;
-      }
-   }
-
-   @Override
-   public bgq a(dez $$0, cpl $$1, gu $$2, cbm $$3, bgp $$4, egz $$5) {
-      if (!this.k.c()) {
-         return bgq.d;
-      } else {
-         $$0 = $$0.a(b);
-         $$1.a($$2, $$0, 10);
-         this.a($$3, $$1, $$2, $$0.c(b));
-         $$1.a($$3, this.h($$0) ? djj.h : djj.d, $$2);
-         return bgq.a($$1.B);
-      }
-   }
-
-   public boolean h(dez $$0) {
-      return $$0.c(b);
-   }
-
-   public void a(@Nullable bii $$0, cpl $$1, dez $$2, gu $$3, boolean $$4) {
-      if ($$2.a(this) && $$2.c(b) != $$4) {
-         $$1.a($$3, $$2.a(b, Boolean.valueOf($$4)), 10);
-         this.a($$0, $$1, $$3, $$4);
-         $$1.a($$0, $$4 ? djj.h : djj.d, $$3);
-      }
-   }
-
-   @Override
-   public void a(dez $$0, cpl $$1, gu $$2, csl $$3, gu $$4, boolean $$5) {
-      boolean $$6 = $$1.B($$2) || $$1.B($$2.a($$0.c(e) == dfv.b ? ha.b : ha.a));
-      if (!this.n().a($$3) && $$6 != $$0.c(d)) {
-         if ($$6 != $$0.c(b)) {
-            this.a(null, $$1, $$2, $$6);
-            $$1.a(null, $$6 ? djj.h : djj.d, $$2);
-         }
-
-         $$1.a($$2, $$0.a(d, Boolean.valueOf($$6)).a(b, Boolean.valueOf($$6)), 2);
-      }
-   }
-
-   @Override
-   public boolean a(dez $$0, cpo $$1, gu $$2) {
-      gu $$3 = $$2.d();
-      dez $$4 = $$1.a_($$3);
-      return $$0.c(e) == dfv.b ? $$4.d($$1, $$3, ha.b) : $$4.a(this);
-   }
-
-   private void a(@Nullable bii $$0, cpl $$1, gu $$2, boolean $$3) {
-      $$1.a($$0, $$2, $$3 ? this.k.f() : this.k.e(), aox.e, 1.0F, $$1.y_().i() * 0.1F + 0.9F);
-   }
-
-   @Override
-   public dez a(dez $$0, cyx $$1) {
-      return $$0.a(a, $$1.a($$0.c(a)));
-   }
-
-   @Override
-   public dez a(dez $$0, cxg $$1) {
-      return $$1 == cxg.a ? $$0 : $$0.a($$1.a($$0.c(a))).a(c);
-   }
-
-   @Override
-   public long a(dez $$0, gu $$1) {
-      return arp.b($$1.u(), $$1.c($$0.c(e) == dfv.b ? 0 : 1).v(), $$1.w());
-   }
-
-   @Override
-   protected void a(dfa.a<csl, dez> $$0) {
-      $$0.a(e, a, b, c, d);
-   }
-
-   public static boolean a(cpl $$0, gu $$1) {
-      return n($$0.a_($$1));
-   }
-
-   public static boolean n(dez $$0) {
-      if ($$0.b() instanceof cun $$1 && $$1.a().c()) {
-         return true;
+   public dfe a(dfe $$0, cxl $$1) {
+      dgi $$2 = $$0.c(d);
+      switch ($$1) {
+         case b:
+            switch ($$2) {
+               case e:
+                  return $$0.a(d, dgi.f);
+               case f:
+                  return $$0.a(d, dgi.e);
+               case g:
+                  return $$0.a(d, dgi.j);
+               case h:
+                  return $$0.a(d, dgi.i);
+               case i:
+                  return $$0.a(d, dgi.h);
+               case j:
+                  return $$0.a(d, dgi.g);
+               default:
+                  return super.a($$0, $$1);
+            }
+         case c:
+            switch ($$2) {
+               case c:
+                  return $$0.a(d, dgi.d);
+               case d:
+                  return $$0.a(d, dgi.c);
+               case e:
+               case f:
+               default:
+                  break;
+               case g:
+                  return $$0.a(d, dgi.h);
+               case h:
+                  return $$0.a(d, dgi.g);
+               case i:
+                  return $$0.a(d, dgi.j);
+               case j:
+                  return $$0.a(d, dgi.i);
+            }
       }
 
-      return false;
+      return super.a($$0, $$1);
+   }
+
+   @Override
+   protected void a(dff.a<csq, dfe> $$0) {
+      $$0.a(d, e, c);
    }
 }

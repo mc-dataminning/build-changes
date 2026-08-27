@@ -1,96 +1,56 @@
 import com.mojang.serialization.Codec;
+import java.util.Optional;
+import java.util.OptionalInt;
+import java.util.function.Predicate;
 
-public class dpf extends dnm<dpx> {
-   private static final ha[] a = ha.values();
-
-   public dpf(Codec<dpx> $$0) {
+public class dpf extends dnr<dqt> {
+   public dpf(Codec<dqt> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dno<dpx> $$0) {
-      cqf $$1 = $$0.b();
-      gu $$2 = $$0.e();
-      aru $$3 = $$0.d();
-      if (!$$1.t($$2)) {
+   public boolean a(dnt<dqt> $$0) {
+      cqk $$1 = $$0.b();
+      gw $$2 = $$0.e();
+      dqt $$3 = $$0.f();
+      arx $$4 = $$0.d();
+      OptionalInt $$5 = a($$1, $$2, $$3);
+      if ($$5.isEmpty()) {
          return false;
       } else {
-         dez $$4 = $$1.a_($$2.c());
-         if (!$$4.a(csm.dW) && !$$4.a(csm.kK)) {
-            return false;
-         } else {
-            this.a($$1, $$3, $$2);
-            this.b($$1, $$3, $$2);
-            return true;
-         }
+         gw $$6 = $$2.h($$5.getAsInt());
+         ib $$7 = new ib($$3.c, $$3.c, $$3.c);
+         ehd $$8 = new ehd($$6.b($$7), $$6.a($$7));
+         return gw.a($$8).filter($$2x -> $$4.i() < $$3.d).filter($$1x -> this.b($$1, $$1x)).mapToInt($$1x -> {
+            $$1.a($$1x, csr.kJ.n(), 2);
+            return 1;
+         }).sum() > 0;
       }
    }
 
-   private void a(cpm $$0, aru $$1, gu $$2) {
-      $$0.a($$2, csm.kK.n(), 2);
-      gu.a $$3 = new gu.a();
-      gu.a $$4 = new gu.a();
+   private static OptionalInt a(cqk $$0, gw $$1, dqt $$2) {
+      Predicate<dfe> $$3 = $$0x -> $$0x.a(csr.G);
+      Predicate<dfe> $$4 = $$0x -> !$$0x.a(csr.G);
+      Optional<dkd> $$5 = dkd.a($$0, $$1, $$2.b, $$3, $$4);
+      return $$5.<OptionalInt>map(dkd::c).orElseGet(OptionalInt::empty);
+   }
 
-      for (int $$5 = 0; $$5 < 200; $$5++) {
-         $$3.a($$2, $$1.a(6) - $$1.a(6), $$1.a(2) - $$1.a(5), $$1.a(6) - $$1.a(6));
-         if ($$0.t($$3)) {
-            int $$6 = 0;
-
-            for (ha $$7 : a) {
-               dez $$8 = $$0.a_($$4.a($$3, $$7));
-               if ($$8.a(csm.dW) || $$8.a(csm.kK)) {
-                  $$6++;
-               }
-
-               if ($$6 > 1) {
-                  break;
-               }
-            }
-
-            if ($$6 == 1) {
-               $$0.a($$3, csm.kK.n(), 2);
+   private boolean b(cqk $$0, gw $$1) {
+      if (!this.a($$0, $$1) && !this.a($$0, $$1.d())) {
+         for (hc $$2 : hc.c.a) {
+            if (this.a($$0, $$1.a($$2))) {
+               return false;
             }
          }
+
+         return true;
+      } else {
+         return false;
       }
    }
 
-   private void b(cpm $$0, aru $$1, gu $$2) {
-      gu.a $$3 = new gu.a();
-
-      for (int $$4 = 0; $$4 < 100; $$4++) {
-         $$3.a($$2, $$1.a(8) - $$1.a(8), $$1.a(2) - $$1.a(7), $$1.a(8) - $$1.a(8));
-         if ($$0.t($$3)) {
-            dez $$5 = $$0.a_($$3.c());
-            if ($$5.a(csm.dW) || $$5.a(csm.kK)) {
-               int $$6 = arp.a($$1, 1, 8);
-               if ($$1.a(6) == 0) {
-                  $$6 *= 2;
-               }
-
-               if ($$1.a(5) == 0) {
-                  $$6 = 1;
-               }
-
-               int $$7 = 17;
-               int $$8 = 25;
-               a($$0, $$1, $$3, $$6, 17, 25);
-            }
-         }
-      }
-   }
-
-   public static void a(cpm $$0, aru $$1, gu.a $$2, int $$3, int $$4, int $$5) {
-      for (int $$6 = 0; $$6 <= $$3; $$6++) {
-         if ($$0.t($$2)) {
-            if ($$6 == $$3 || !$$0.t($$2.d())) {
-               $$0.a($$2, csm.oz.n().a(cvy.d, Integer.valueOf(arp.a($$1, $$4, $$5))), 2);
-               break;
-            }
-
-            $$0.a($$2, csm.oA.n(), 2);
-         }
-
-         $$2.c(ha.a);
-      }
+   private boolean a(cpr $$0, gw $$1) {
+      dfe $$2 = $$0.a_($$1);
+      return $$2.a(csr.G) || $$2.i();
    }
 }

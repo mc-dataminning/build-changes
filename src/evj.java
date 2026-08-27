@@ -1,8 +1,18 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import java.io.IOException;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface evj {
+public interface evj {
+   Codec<evj> b = evk.f.dispatch(evj::a, $$0 -> $$0.a().codec());
+
+   evk a();
+
+   Either<evj.a, evj.b> b();
+
+   public interface a {
+      ejn load(anp var1) throws IOException;
+   }
+
+   public static record b(aeu a) {
+   }
 }

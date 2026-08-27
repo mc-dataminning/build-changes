@@ -1,145 +1,106 @@
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.util.Map;
+import java.util.List;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public class cum extends cry {
-   public static final dft a = cuk.a;
-   public static final dfq b = dfp.A;
-   private static final Map<cis, ih> c = ac.a(new Object2ObjectOpenHashMap(), $$0 -> $$0.defaultReturnValue(new ig()));
-   private static final int d = 4;
+public class cum extends csd implements czr {
+   public static final aeu a = new aeu("sherds");
+   private static final eib b = csq.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
+   private static final dfy c = dfu.R;
+   private static final dfv d = dfu.bw;
+   private static final dfv e = dfu.C;
 
-   public static void a(cpk $$0, ih $$1) {
-      c.put($$0.k(), $$1);
-   }
-
-   protected cum(dey.d $$0) {
+   protected cum(dfd.d $$0) {
       super($$0);
-      this.k(this.C.b().a(a, ha.c).a(b, Boolean.valueOf(false)));
+      this.k(this.C.b().a(c, hc.c).a(e, Boolean.valueOf(false)).a(d, Boolean.valueOf(false)));
    }
 
    @Override
-   public bgq a(dez $$0, cpl $$1, gu $$2, cbm $$3, bgp $$4, egz $$5) {
-      if ($$1.B) {
-         return bgq.a;
-      } else {
-         dcl $$6 = $$1.c_($$2);
-         if ($$6 instanceof ddc) {
-            $$3.a((ddc)$$6);
-            if ($$6 instanceof ddd) {
-               $$3.a(apg.ac);
-            } else {
-               $$3.a(apg.ae);
-            }
-         }
-
-         return bgq.b;
+   public dfe a(dfe $$0, hc $$1, dfe $$2, cpr $$3, gw $$4, gw $$5) {
+      if ($$0.c(e)) {
+         $$3.a($$4, eai.c, eai.c.a($$3));
       }
-   }
 
-   protected void a(akk $$0, gu $$1) {
-      gw $$2 = new gw($$0, $$1);
-      ddc $$3 = $$2.f();
-      int $$4 = $$3.a($$0.z);
-      if ($$4 < 0) {
-         $$0.c(1001, $$1, 0);
-         $$0.a(djj.a, $$1, djj.a.a($$3.q()));
-      } else {
-         cix $$5 = $$3.a($$4);
-         ih $$6 = this.a($$5);
-         if ($$6 != ih.b) {
-            $$3.a($$4, $$6.dispense($$2, $$5));
-         }
-      }
-   }
-
-   protected ih a(cix $$0) {
-      return c.get($$0.d());
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public void a(dez $$0, cpl $$1, gu $$2, csl $$3, gu $$4, boolean $$5) {
-      boolean $$6 = $$1.B($$2) || $$1.B($$2.c());
-      boolean $$7 = $$0.c(b);
-      if ($$6 && !$$7) {
-         $$1.a($$2, this, 4);
-         $$1.a($$2, $$0.a(b, Boolean.valueOf(true)), 4);
-      } else if (!$$6 && $$7) {
-         $$1.a($$2, $$0.a(b, Boolean.valueOf(false)), 4);
+   public dfe a(cli $$0) {
+      eah $$1 = $$0.q().b_($$0.a());
+      return this.n().a(c, $$0.g()).a(e, Boolean.valueOf($$1.a() == eai.c)).a(d, Boolean.valueOf(false));
+   }
+
+   @Override
+   public void a(cpq $$0, gw $$1, dfe $$2, @Nullable bjb $$3, cja $$4) {
+      if ($$0.B) {
+         $$0.a($$1, dcs.O).ifPresent($$1x -> $$1x.a($$4));
       }
    }
 
    @Override
-   public void a(dez $$0, akk $$1, gu $$2, aru $$3) {
-      this.a($$1, $$2);
+   public boolean a(dfe $$0, cow $$1, gw $$2, eax $$3) {
+      return false;
    }
 
    @Override
-   public dcl a(gu $$0, dez $$1) {
-      return new ddc($$0, $$1);
+   public eib a(dfe $$0, cow $$1, gw $$2, ehn $$3) {
+      return b;
    }
 
    @Override
-   public dez a(clf $$0) {
-      return this.n().a(a, $$0.d().g());
+   protected void a(dff.a<csq, dfe> $$0) {
+      $$0.a(c, e, d);
+   }
+
+   @Nullable
+   @Override
+   public dcq a(gw $$0, dfe $$1) {
+      return new ddf($$0, $$1);
    }
 
    @Override
-   public void a(cpl $$0, gu $$1, dez $$2, biy $$3, cix $$4) {
-      if ($$4.A()) {
-         dcl $$5 = $$0.c_($$1);
-         if ($$5 instanceof ddc) {
-            ((ddc)$$5).a($$4.y());
-         }
+   public List<cja> a(dfe $$0, ecr.a $$1) {
+      dcq $$2 = $$1.b(eew.h);
+      if ($$2 instanceof ddf $$3) {
+         $$1.a(a, $$1x -> $$3.f().a().map(civ::ad_).forEach($$1x));
+      }
+
+      return super.a($$0, $$1);
+   }
+
+   @Override
+   public void a(cpq $$0, gw $$1, dfe $$2, cbp $$3) {
+      cja $$4 = $$3.eR();
+      dfe $$5 = $$2;
+      if ($$4.a(apw.aT) && !cnl.f($$4)) {
+         $$5 = $$2.a(d, Boolean.valueOf(true));
+         $$0.a($$1, $$5, 4);
+      }
+
+      super.a($$0, $$1, $$5, $$3);
+   }
+
+   @Override
+   public eah c_(dfe $$0) {
+      return $$0.c(e) ? eai.c.a(false) : super.c_($$0);
+   }
+
+   @Override
+   public dad m(dfe $$0) {
+      return $$0.c(d) ? dad.aY : dad.aX;
+   }
+
+   @Override
+   public void a(cja $$0, @Nullable cow $$1, List<ti> $$2, ckr $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      ddf.a $$4 = ddf.a.b(cgt.a($$0));
+      if (!$$4.equals(ddf.a.a)) {
+         $$2.add(th.a);
+         Stream.of($$4.e(), $$4.c(), $$4.d(), $$4.b()).forEach($$1x -> $$2.add(new cja($$1x, 1).y().d().a(n.h)));
       }
    }
 
    @Override
-   public void a(dez $$0, cpl $$1, gu $$2, dez $$3, boolean $$4) {
-      if (!$$0.a($$3.b())) {
-         dcl $$5 = $$1.c_($$2);
-         if ($$5 instanceof ddc) {
-            bgm.a($$1, $$2, (ddc)$$5);
-            $$1.c($$2, this);
-         }
-
-         super.a($$0, $$1, $$2, $$3, $$4);
-      }
-   }
-
-   public static ho a(gv $$0) {
-      ha $$1 = $$0.e().c(a);
-      double $$2 = $$0.a() + 0.7 * (double)$$1.j();
-      double $$3 = $$0.b() + 0.7 * (double)$$1.k();
-      double $$4 = $$0.c() + 0.7 * (double)$$1.l();
-      return new hp($$2, $$3, $$4);
-   }
-
-   @Override
-   public boolean d_(dez $$0) {
-      return true;
-   }
-
-   @Override
-   public int a(dez $$0, cpl $$1, gu $$2) {
-      return ced.a($$1.c_($$2));
-   }
-
-   @Override
-   public cyq b_(dez $$0) {
-      return cyq.c;
-   }
-
-   @Override
-   public dez a(dez $$0, cyx $$1) {
-      return $$0.a(a, $$1.a($$0.c(a)));
-   }
-
-   @Override
-   public dez a(dez $$0, cxg $$1) {
-      return $$0.a($$1.a($$0.c(a)));
-   }
-
-   @Override
-   protected void a(dfa.a<csl, dez> $$0) {
-      $$0.a(a, b);
+   public cja a(cow $$0, gw $$1, dfe $$2) {
+      return $$0.c_($$1) instanceof ddf $$3 ? $$3.g() : super.a($$0, $$1, $$2);
    }
 }

@@ -1,25 +1,16 @@
-public class fwm extends fxf<bur, feo<bur>> {
-   private final fnq a;
+public class fwm extends fxk<bup, fej<bup>> {
+   private static final aeu a = new aeu("textures/entity/cat/cat_collar.png");
+   private final fej<bup> b;
 
-   public fwm(fus<bur, feo<bur>> $$0, fnq $$1) {
+   public fwm(fux<bup, fej<bup>> $$0, fht $$1) {
       super($$0);
-      this.a = $$1;
+      this.b = new fej<>($$1.a(fhw.o));
    }
 
-   public void a(elf $$0, fnu $$1, int $$2, bur $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      boolean $$10 = $$3.fk() == bis.b;
-      $$0.a();
-      float $$11 = 1.0F;
-      float $$12 = -1.0F;
-      float $$13 = arp.e($$3.dC()) / 60.0F;
-      if ($$3.dC() < 0.0F) {
-         $$0.a(0.0F, 1.0F - $$13 * 0.5F, -1.0F + $$13 * 0.5F);
-      } else {
-         $$0.a(0.0F, 1.0F + $$13 * 0.8F, -1.0F + $$13 * 0.2F);
+   public void a(elk $$0, fnz $$1, int $$2, bup $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if ($$3.p()) {
+         float[] $$10 = $$3.gk().d();
+         a(this.c(), this.b, a, $$0, $$1, $$2, $$3, $$4, $$5, $$7, $$8, $$9, $$6, $$10[0], $$10[1], $$10[2]);
       }
-
-      cix $$14 = $$10 ? $$3.eR() : $$3.eS();
-      this.a.a($$3, $$14, ciu.h, false, $$0, $$1, $$2);
-      $$0.b();
    }
 }

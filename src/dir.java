@@ -1,15 +1,8 @@
-public interface dir {
-   dir a = new dir() {
-      @Override
-      public void a() {
-      }
+import javax.annotation.ParametersAreNonnullByDefault;
 
-      @Override
-      public void a(bii.c $$0) {
-      }
-   };
-
-   void a();
-
-   void a(bii.c var1);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface dir {
 }

@@ -1,61 +1,23 @@
+import java.time.Duration;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
-public abstract class enq {
-   public final int a;
-   public final int b;
-   public final int c;
-   public final int d;
+public class enq {
+   public final eoz a = new eoz(ac.g(), TimeUnit.MILLISECONDS, ac.b);
+   public final eoz.e<List<emq>> b;
+   public final eoz.e<List<emr>> c;
+   public final eoz.e<emw> d;
+   public final eoz.e<Integer> e;
+   public final eoz.e<Boolean> f;
+   public final eoz.e<emp> g;
+   public final enr h = new enr(new epf());
 
-   public enq(int $$0, int $$1, int $$2, int $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-   }
-
-   public void a(erv $$0, int $$1, int $$2, int $$3, int $$4) {
-      int $$5 = $$1 + this.c;
-      int $$6 = $$2 + this.d;
-      boolean $$7 = $$3 >= $$5 && $$3 <= $$5 + this.a && $$4 >= $$6 && $$4 <= $$6 + this.b;
-      this.a($$0, $$5, $$6, $$7);
-   }
-
-   protected abstract void a(erv var1, int var2, int var3, boolean var4);
-
-   public int a() {
-      return this.c + this.a;
-   }
-
-   public int b() {
-      return this.d + this.b;
-   }
-
-   public abstract void a(int var1);
-
-   public static void a(erv $$0, List<enq> $$1, geq<?> $$2, int $$3, int $$4, int $$5, int $$6) {
-      for (enq $$7 : $$1) {
-         if ($$2.b() > $$7.a()) {
-            $$7.a($$0, $$3, $$4, $$5, $$6);
-         }
-      }
-   }
-
-   public static void a(geq<?> $$0, etc.a<?> $$1, List<enq> $$2, int $$3, double $$4, double $$5) {
-      if ($$3 == 0) {
-         int $$6 = $$0.i().indexOf($$1);
-         if ($$6 > -1) {
-            $$0.a($$6);
-            int $$7 = $$0.o();
-            int $$8 = $$0.g($$6);
-            int $$9 = (int)($$4 - (double)$$7);
-            int $$10 = (int)($$5 - (double)$$8);
-
-            for (enq $$11 : $$2) {
-               if ($$9 >= $$11.c && $$9 <= $$11.a() && $$10 >= $$11.d && $$10 <= $$11.b()) {
-                  $$11.a($$6);
-               }
-            }
-         }
-      }
+   public enq(ema $$0) {
+      this.c = this.a.a("server list", () -> $$0.b().a, Duration.ofSeconds(60L), epa.a);
+      this.d = this.a.a("live stats", $$0::d, Duration.ofSeconds(10L), epa.a);
+      this.e = this.a.a("pending invite count", $$0::g, Duration.ofSeconds(10L), epa.a(360));
+      this.f = this.a.a("trial availablity", $$0::k, Duration.ofSeconds(60L), epa.a(60));
+      this.g = this.a.a("unread news", $$0::j, Duration.ofMinutes(5L), epa.a);
+      this.b = this.a.a("notifications", $$0::c, Duration.ofMinutes(5L), epa.a);
    }
 }

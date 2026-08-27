@@ -1,51 +1,135 @@
-public class csg extends cuc {
-   public static final int a = 3;
-   public static final dfz b = dfp.as;
-   private static final ehw[] e = new ehw[]{
-      csl.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0),
-      csl.a(0.0, 0.0, 0.0, 16.0, 4.0, 16.0),
-      csl.a(0.0, 0.0, 0.0, 16.0, 6.0, 16.0),
-      csl.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0)
-   };
+public abstract class csg extends csq implements czr {
+   protected static final eib a = csq.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0);
+   protected static final eib b = csq.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0);
+   public static final dfv c = dfu.C;
+   private final boolean d;
 
-   public csg(dey.d $$0) {
-      super($$0);
+   public static boolean a(cpq $$0, gw $$1) {
+      return g($$0.a_($$1));
+   }
+
+   public static boolean g(dfe $$0) {
+      return $$0.a(apo.N) && $$0.b() instanceof csg;
+   }
+
+   protected csg(boolean $$0, dfd.d $$1) {
+      super($$1);
+      this.d = $$0;
+   }
+
+   public boolean a() {
+      return this.d;
    }
 
    @Override
-   protected dfz a() {
-      return b;
+   public eib a(dfe $$0, cow $$1, gw $$2, ehn $$3) {
+      dgi $$4 = $$0.a(this) ? $$0.c(this.b()) : null;
+      return $$4 != null && $$4.b() ? b : a;
    }
 
    @Override
-   public int b() {
-      return 3;
+   public boolean a(dfe $$0, cpt $$1, gw $$2) {
+      return c($$1, $$2.d());
    }
 
    @Override
-   protected cpk c() {
-      return cja.ur;
+   public void b(dfe $$0, cpq $$1, gw $$2, dfe $$3, boolean $$4) {
+      if (!$$3.a($$0.b())) {
+         this.a($$0, $$1, $$2, $$4);
+      }
+   }
+
+   protected dfe a(dfe $$0, cpq $$1, gw $$2, boolean $$3) {
+      $$0 = this.a($$1, $$2, $$0, true);
+      if (this.d) {
+         $$1.a($$0, $$2, this, $$2, $$3);
+      }
+
+      return $$0;
    }
 
    @Override
-   public void b(dez $$0, akk $$1, gu $$2, aru $$3) {
-      if ($$3.a(3) != 0) {
-         super.b($$0, $$1, $$2, $$3);
+   public void a(dfe $$0, cpq $$1, gw $$2, csq $$3, gw $$4, boolean $$5) {
+      if (!$$1.B && $$1.a_($$2).a(this)) {
+         dgi $$6 = $$0.c(this.b());
+         if (a($$2, $$1, $$6)) {
+            c($$0, $$1, $$2);
+            $$1.a($$2, $$5);
+         } else {
+            this.a($$0, $$1, $$2, $$3);
+         }
+      }
+   }
+
+   private static boolean a(gw $$0, cpq $$1, dgi $$2) {
+      if (!c($$1, $$0.d())) {
+         return true;
+      } else {
+         switch ($$2) {
+            case c:
+               return !c($$1, $$0.h());
+            case d:
+               return !c($$1, $$0.g());
+            case e:
+               return !c($$1, $$0.e());
+            case f:
+               return !c($$1, $$0.f());
+            default:
+               return false;
+         }
+      }
+   }
+
+   protected void a(dfe $$0, cpq $$1, gw $$2, csq $$3) {
+   }
+
+   protected dfe a(cpq $$0, gw $$1, dfe $$2, boolean $$3) {
+      if ($$0.B) {
+         return $$2;
+      } else {
+         dgi $$4 = $$2.c(this.b());
+         return new cyp($$0, $$1, $$2).a($$0.B($$1), $$3, $$4).c();
       }
    }
 
    @Override
-   protected int a(cpl $$0) {
-      return super.a($$0) / 3;
+   public void a(dfe $$0, cpq $$1, gw $$2, dfe $$3, boolean $$4) {
+      if (!$$4) {
+         super.a($$0, $$1, $$2, $$3, $$4);
+         if ($$0.c(this.b()).b()) {
+            $$1.a($$2.c(), this);
+         }
+
+         if (this.d) {
+            $$1.a($$2, this);
+            $$1.a($$2.d(), this);
+         }
+      }
    }
 
    @Override
-   protected void a(dfa.a<csl, dez> $$0) {
-      $$0.a(b);
+   public dfe a(cli $$0) {
+      eah $$1 = $$0.q().b_($$0.a());
+      boolean $$2 = $$1.a() == eai.c;
+      dfe $$3 = super.n();
+      hc $$4 = $$0.g();
+      boolean $$5 = $$4 == hc.f || $$4 == hc.e;
+      return $$3.a(this.b(), $$5 ? dgi.b : dgi.a).a(c, Boolean.valueOf($$2));
+   }
+
+   public abstract dgh<dgi> b();
+
+   @Override
+   public dfe a(dfe $$0, hc $$1, dfe $$2, cpr $$3, gw $$4, gw $$5) {
+      if ($$0.c(c)) {
+         $$3.a($$4, eai.c, eai.c.a($$3));
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public ehw a(dez $$0, cor $$1, gu $$2, ehi $$3) {
-      return e[this.g($$0)];
+   public eah c_(dfe $$0) {
+      return $$0.c(c) ? eai.c.a(false) : super.c_($$0);
    }
 }

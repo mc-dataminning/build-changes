@@ -1,71 +1,129 @@
 import com.google.common.primitives.Ints;
-import com.google.common.primitives.Longs;
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.nio.charset.StandardCharsets;
 import java.security.SignatureException;
+import java.time.Duration;
 import java.time.Instant;
+import java.util.Objects;
 import java.util.Optional;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-public record tx(String b, Instant c, long d, tl e) {
+public record tx(uc d, @Nullable tt e, ua f, @Nullable ti g, tl h) {
    public static final MapCodec<tx> a = RecordCodecBuilder.mapCodec(
       $$0 -> $$0.group(
-               Codec.STRING.fieldOf("content").forGetter(tx::a),
-               aqy.m.fieldOf("time_stamp").forGetter(tx::b),
-               Codec.LONG.fieldOf("salt").forGetter(tx::c),
-               tl.a.optionalFieldOf("last_seen", tl.b).forGetter(tx::d)
+               uc.a.fieldOf("link").forGetter(tx::j),
+               tt.a.optionalFieldOf("signature").forGetter($$0x -> Optional.ofNullable($$0x.e)),
+               ua.a.forGetter(tx::l),
+               arb.b.optionalFieldOf("unsigned_content").forGetter($$0x -> Optional.ofNullable($$0x.g)),
+               tl.a.optionalFieldOf("filter_mask", tl.c).forGetter(tx::n)
             )
-            .apply($$0, tx::new)
+            .apply($$0, ($$0x, $$1, $$2, $$3, $$4) -> new tx($$0x, (tt)$$1.orElse(null), $$2, (ti)$$3.orElse(null), $$4))
    );
+   private static final UUID i = ac.d;
+   public static final Duration b = Duration.ofMinutes(5L);
+   public static final Duration c = b.plus(Duration.ofMinutes(2L));
 
    public static tx a(String $$0) {
-      return new tx($$0, Instant.now(), 0L, tl.b);
+      return a(i, $$0);
    }
 
-   public void a(ary.a $$0) throws SignatureException {
-      $$0.update(Longs.toByteArray(this.d));
-      $$0.update(Longs.toByteArray(this.c.getEpochSecond()));
-      byte[] $$1 = this.b.getBytes(StandardCharsets.UTF_8);
-      $$0.update(Ints.toByteArray($$1.length));
-      $$0.update($$1);
-      this.e.a($$0);
+   public static tx a(UUID $$0, String $$1) {
+      ua $$2 = ua.a($$1);
+      uc $$3 = uc.a($$0);
+      return new tx($$3, null, $$2, null, tl.c);
    }
 
-   public tx.a a(tr $$0) {
-      return new tx.a(this.b, this.c, this.d, this.e.a($$0));
+   public tx a(ti $$0) {
+      ti $$1 = !$$0.equals(ti.b(this.b())) ? $$0 : null;
+      return new tx(this.d, this.e, this.f, $$1, this.h);
    }
 
-   public String a() {
-      return this.b;
+   public tx a() {
+      return this.g != null ? new tx(this.d, this.e, this.f, null, this.h) : this;
    }
 
-   public Instant b() {
-      return this.c;
+   public tx a(tl $$0) {
+      return this.h.equals($$0) ? this : new tx(this.d, this.e, this.f, this.g, $$0);
    }
 
-   public long c() {
+   public tx a(boolean $$0) {
+      return this.a($$0 ? this.h : tl.c);
+   }
+
+   public static void a(asb.a $$0, uc $$1, ua $$2) throws SignatureException {
+      $$0.update(Ints.toByteArray(1));
+      $$1.a($$0);
+      $$2.a($$0);
+   }
+
+   public boolean a(asc $$0) {
+      return this.e != null && this.e.a($$0, $$0x -> a($$0x, this.d, this.f));
+   }
+
+   public String b() {
+      return this.f.a();
+   }
+
+   public ti c() {
+      return Objects.requireNonNullElseGet(this.g, () -> ti.b(this.b()));
+   }
+
+   public Instant d() {
+      return this.f.b();
+   }
+
+   public long e() {
+      return this.f.c();
+   }
+
+   public boolean a(Instant $$0) {
+      return $$0.isAfter(this.d().plus(b));
+   }
+
+   public boolean b(Instant $$0) {
+      return $$0.isAfter(this.d().plus(c));
+   }
+
+   public UUID f() {
+      return this.d.c();
+   }
+
+   public boolean g() {
+      return this.f().equals(i);
+   }
+
+   public boolean h() {
+      return this.e != null;
+   }
+
+   public boolean a(UUID $$0) {
+      return this.h() && this.d.c().equals($$0);
+   }
+
+   public boolean i() {
+      return this.h.b();
+   }
+
+   public uc j() {
       return this.d;
    }
 
-   public tl d() {
+   @Nullable
+   public tt k() {
       return this.e;
    }
 
-   public static record a(String a, Instant b, long c, tl.a d) {
-      public a(si $$0) {
-         this($$0.d(256), $$0.v(), $$0.readLong(), new tl.a($$0));
-      }
+   public ua l() {
+      return this.f;
+   }
 
-      public void a(si $$0) {
-         $$0.a(this.a, 256);
-         $$0.a(this.b);
-         $$0.b(this.c);
-         this.d.a($$0);
-      }
+   @Nullable
+   public ti m() {
+      return this.g;
+   }
 
-      public Optional<tx> a(tr $$0) {
-         return this.d.a($$0).map($$0x -> new tx(this.a, this.b, this.c, $$0x));
-      }
+   public tl n() {
+      return this.h;
    }
 }

@@ -1,66 +1,28 @@
-import com.mojang.datafixers.DataFixer;
-import com.mojang.logging.LogUtils;
-import java.io.File;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
-
 public class ebz {
-   private static final Logger b = LogUtils.getLogger();
-   private final File c;
-   protected final DataFixer a;
+   public static final ebz a = new ebz("advancements");
+   public static final ebz b = new ebz("stats");
+   public static final ebz c = new ebz("playerdata");
+   public static final ebz d = new ebz("players");
+   public static final ebz e = new ebz("level.dat");
+   public static final ebz f = new ebz("level.dat_old");
+   public static final ebz g = new ebz("icon.png");
+   public static final ebz h = new ebz("session.lock");
+   public static final ebz i = new ebz("generated");
+   public static final ebz j = new ebz("datapacks");
+   public static final ebz k = new ebz("resources.zip");
+   public static final ebz l = new ebz(".");
+   private final String m;
 
-   public ebz(ebw.c $$0, DataFixer $$1) {
-      this.a = $$1;
-      this.c = $$0.a(ebu.c).toFile();
-      this.c.mkdirs();
+   private ebz(String $$0) {
+      this.m = $$0;
    }
 
-   public void a(cbm $$0) {
-      try {
-         qr $$1 = $$0.f(new qr());
-         File $$2 = File.createTempFile($$0.cw() + "-", ".dat", this.c);
-         rb.a($$1, $$2);
-         File $$3 = new File(this.c, $$0.cw() + ".dat");
-         File $$4 = new File(this.c, $$0.cw() + ".dat_old");
-         ac.a($$3, $$2, $$4);
-      } catch (Exception var6) {
-         b.warn("Failed to save player data for {}", $$0.ab().getString());
-      }
+   public String a() {
+      return this.m;
    }
 
-   @Nullable
-   public qr b(cbm $$0) {
-      qr $$1 = null;
-
-      try {
-         File $$2 = new File(this.c, $$0.cw() + ".dat");
-         if ($$2.exists() && $$2.isFile()) {
-            $$1 = rb.a($$2);
-         }
-      } catch (Exception var4) {
-         b.warn("Failed to load player data for {}", $$0.ab().getString());
-      }
-
-      if ($$1 != null) {
-         int $$4 = rd.b($$1, -1);
-         $$0.g(ass.b.a(this.a, $$1, $$4));
-      }
-
-      return $$1;
-   }
-
-   public String[] a() {
-      String[] $$0 = this.c.list();
-      if ($$0 == null) {
-         $$0 = new String[0];
-      }
-
-      for (int $$1 = 0; $$1 < $$0.length; $$1++) {
-         if ($$0[$$1].endsWith(".dat")) {
-            $$0[$$1] = $$0[$$1].substring(0, $$0[$$1].length() - 4);
-         }
-      }
-
-      return $$0;
+   @Override
+   public String toString() {
+      return "/" + this.m;
    }
 }

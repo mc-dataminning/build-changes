@@ -1,24 +1,27 @@
-public class fax extends fbb {
-   private static final tf b = tf.c("title.32bit.deprecation.realms.header").a(n.r);
-   private static final tf c = tf.c("title.32bit.deprecation.realms");
-   private static final tf k = tf.c("title.32bit.deprecation.realms.check");
-   private static final tf l = b.e().f("\n").b(c);
-   private final eya m;
+import org.joml.Vector2i;
+import org.joml.Vector2ic;
 
-   public fax(eya $$0) {
-      super(b, c, k, l);
-      this.m = $$0;
+public class fax implements faw {
+   public static final faw a = new fax();
+
+   private fax() {
    }
 
    @Override
-   protected void a(int $$0) {
-      this.d(esg.a(te.d, $$0x -> {
-         if (this.a.a()) {
-            this.f.m.w = true;
-            this.f.m.ar();
-         }
+   public Vector2ic a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      Vector2i $$6 = new Vector2i($$2, $$3).add(12, -12);
+      this.a($$0, $$1, $$6, $$4, $$5);
+      return $$6;
+   }
 
-         this.f.a(this.m);
-      }).a(this.g / 2 - 75, 100 + $$0, 150, 20).a());
+   private void a(int $$0, int $$1, Vector2i $$2, int $$3, int $$4) {
+      if ($$2.x + $$3 > $$0) {
+         $$2.x = Math.max($$2.x - 24 - $$3, 4);
+      }
+
+      int $$5 = $$4 + 3;
+      if ($$2.y + $$5 > $$1) {
+         $$2.y = $$1 - $$5;
+      }
    }
 }

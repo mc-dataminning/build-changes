@@ -1,9 +1,7 @@
 public interface ceq {
-   void a(ced var1, hn<cix> var2, cix var3, int[] var4);
+   int a(int var1);
 
-   void a(ced var1, int var2, cix var3);
+   void a(int var1, int var2);
 
-   void a(ced var1, cix var2);
-
-   void a(ced var1, int var2, int var3);
+   int a();
 }

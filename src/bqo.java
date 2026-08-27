@@ -1,42 +1,32 @@
-import java.util.EnumSet;
+public class bqo extends bpn {
+   private final boolean a;
+   private int b;
 
-public class bqo extends bpt {
-   private final bja a;
-   private double b;
-   private double c;
-   private int d;
-
-   public bqo(bja $$0) {
-      this.a = $$0;
-      this.a(EnumSet.of(bpt.a.a, bpt.a.b));
-   }
-
-   @Override
-   public boolean a() {
-      return this.a.ee().i() < 0.02F;
+   public bqo(bjd $$0, boolean $$1) {
+      super($$0);
+      this.d = $$0;
+      this.a = $$1;
    }
 
    @Override
    public boolean b() {
-      return this.d >= 0;
+      return this.a && this.b > 0 && super.b();
    }
 
    @Override
    public void c() {
-      double $$0 = (Math.PI * 2) * this.a.ee().j();
-      this.b = Math.cos($$0);
-      this.c = Math.sin($$0);
-      this.d = 20 + this.a.ee().a(20);
+      this.b = 20;
+      this.a(true);
    }
 
    @Override
-   public boolean K_() {
-      return true;
+   public void d() {
+      this.a(false);
    }
 
    @Override
    public void e() {
-      this.d--;
-      this.a.D().a(this.a.dp() + this.b, this.a.dt(), this.a.dv() + this.c);
+      this.b--;
+      super.e();
    }
 }

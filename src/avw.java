@@ -1,33 +1,19 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import java.util.Optional;
-import java.util.UUID;
+import com.mojang.serialization.Dynamic;
 
-public class avw extends DataFix {
+public class avw extends axu {
    public avw(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+      super($$0, $$1, "EntityShulkerColorFix", ays.x, "minecraft:shulker");
    }
 
-   public TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         "EntityStringUuidFix",
-         this.getInputSchema().getType(ayp.x),
-         $$0 -> $$0.update(
-               DSL.remainderFinder(),
-               $$0x -> {
-                  Optional<String> $$1 = $$0x.get("UUID").asString().result();
-                  if ($$1.isPresent()) {
-                     UUID $$2 = UUID.fromString($$1.get());
-                     return $$0x.remove("UUID")
-                        .set("UUIDMost", $$0x.createLong($$2.getMostSignificantBits()))
-                        .set("UUIDLeast", $$0x.createLong($$2.getLeastSignificantBits()));
-                  } else {
-                     return $$0x;
-                  }
-               }
-            )
-      );
+   public Dynamic<?> a(Dynamic<?> $$0) {
+      return $$0.get("Color").map(Dynamic::asNumber).result().isEmpty() ? $$0.set("Color", $$0.createByte((byte)10)) : $$0;
+   }
+
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), this::a);
    }
 }

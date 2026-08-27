@@ -1,38 +1,50 @@
-public class geh implements gek {
-   private static final int a = 600;
-   private static final tf b = tf.c("tutorial.open_inventory.title");
-   private static final tf c = tf.a("tutorial.open_inventory.description", gej.a("inventory"));
-   private final gej d;
-   private eup e;
-   private int f;
+import javax.annotation.Nullable;
 
-   public geh(gej $$0) {
-      this.d = $$0;
+public class geh {
+   private final geo a;
+   private final equ b;
+   @Nullable
+   private euu c;
+
+   public geh(geo $$0, equ $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   @Override
-   public void a() {
-      this.f++;
-      if (!this.d.f()) {
-         this.d.a(gel.f);
-      } else {
-         if (this.f >= 600 && this.e == null) {
-            this.e = new eup(eup.a.d, b, c, false);
-            this.d.e().ay().a(this.e);
+   private void a() {
+      if (this.c != null) {
+         this.a.a(this.c);
+      }
+
+      ti $$0 = ti.c("tutorial.bundleInsert.title");
+      ti $$1 = ti.c("tutorial.bundleInsert.description");
+      this.c = new euu(euu.a.g, $$0, $$1, true);
+      this.a.a(this.c, 160);
+   }
+
+   private void b() {
+      if (this.c != null) {
+         this.a.a(this.c);
+         this.c = null;
+      }
+
+      if (!this.b.t) {
+         this.b.t = true;
+         this.b.ar();
+      }
+   }
+
+   public void a(cja $$0, cja $$1, ceo $$2) {
+      if (!this.b.t) {
+         if (!$$0.b() && $$1.a(cjd.qg)) {
+            if ($$2 == ceo.a) {
+               this.a();
+            } else if ($$2 == ceo.b) {
+               this.b();
+            }
+         } else if ($$0.a(cjd.qg) && !$$1.b() && $$2 == ceo.b) {
+            this.b();
          }
       }
-   }
-
-   @Override
-   public void b() {
-      if (this.e != null) {
-         this.e.c();
-         this.e = null;
-      }
-   }
-
-   @Override
-   public void c() {
-      this.d.a(gel.e);
    }
 }

@@ -1,154 +1,141 @@
-import javax.annotation.Nullable;
+public class cdp extends cdg {
+   private static final aec<Boolean> e = aef.a(cdp.class, aee.k);
+   private int f;
+   public double c;
+   public double d;
+   private static final cmb g = cmb.a(cjd.nI, cjd.nJ);
 
-public class cdp extends cdd {
-   private static final byte c = 10;
-   private int d = -1;
-
-   public cdp(bim<? extends cdp> $$0, cpl $$1) {
+   public cdp(bip<? extends cdp> $$0, cpq $$1) {
       super($$0, $$1);
    }
 
-   public cdp(cpl $$0, double $$1, double $$2, double $$3) {
-      super(bim.aZ, $$0, $$1, $$2, $$3);
+   public cdp(cpq $$0, double $$1, double $$2, double $$3) {
+      super(bip.P, $$0, $$1, $$2, $$3);
    }
 
    @Override
-   public cdd.a t() {
-      return cdd.a.d;
+   public cdg.a t() {
+      return cdg.a.c;
    }
 
    @Override
-   public dez w() {
-      return csm.ck.n();
+   protected void a_() {
+      super.a_();
+      this.an.a(e, false);
    }
 
    @Override
    public void l() {
       super.l();
-      if (this.d > 0) {
-         this.d--;
-         this.dK().a(iv.Z, this.dp(), this.dr() + 0.5, this.dv(), 0.0, 0.0, 0.0);
-      } else if (this.d == 0) {
-         this.h(this.dn().i());
-      }
-
-      if (this.P) {
-         double $$0 = this.dn().i();
-         if ($$0 >= 0.01F) {
-            this.h($$0);
+      if (!this.dK().r_()) {
+         if (this.f > 0) {
+            this.f--;
          }
+
+         if (this.f <= 0) {
+            this.c = 0.0;
+            this.d = 0.0;
+         }
+
+         this.p(this.f > 0);
+      }
+
+      if (this.A() && this.ag.a(4) == 0) {
+         this.dK().a(ix.S, this.dp(), this.dr() + 0.8, this.dv(), 0.0, 0.0, 0.0);
       }
    }
 
    @Override
-   public boolean a(bhg $$0, float $$1) {
-      if ($$0.c() instanceof cbs $$3 && $$3.bM()) {
-         bhg $$4 = this.dL().d(this, $$0.d());
-         this.a($$4, $$3.dn().g());
-      }
-
-      return super.a($$0, $$1);
+   protected double m() {
+      return (this.aX() ? 3.0 : 4.0) / 20.0;
    }
 
    @Override
-   public void a(bhg $$0) {
-      double $$1 = this.dn().i();
-      if (!$$0.a(apn.i) && !$$0.a(apn.l) && !($$1 >= 0.01F)) {
-         super.a($$0);
+   protected civ j() {
+      return cjd.nc;
+   }
+
+   @Override
+   protected void c(gw $$0, dfe $$1) {
+      double $$2 = 1.0E-4;
+      double $$3 = 0.001;
+      super.c($$0, $$1);
+      ehi $$4 = this.dn();
+      double $$5 = $$4.i();
+      double $$6 = this.c * this.c + this.d * this.d;
+      if ($$6 > 1.0E-4 && $$5 > 0.001) {
+         double $$7 = Math.sqrt($$5);
+         double $$8 = Math.sqrt($$6);
+         this.c = $$4.c / $$7 * $$8;
+         this.d = $$4.e / $$7 * $$8;
+      }
+   }
+
+   @Override
+   protected void p() {
+      double $$0 = this.c * this.c + this.d * this.d;
+      if ($$0 > 1.0E-7) {
+         $$0 = Math.sqrt($$0);
+         this.c /= $$0;
+         this.d /= $$0;
+         ehi $$1 = this.dn().d(0.8, 0.0, 0.8).b(this.c, 0.0, this.d);
+         if (this.aX()) {
+            $$1 = $$1.a(0.1);
+         }
+
+         this.f($$1);
       } else {
-         if (this.d < 0) {
-            this.A();
-            this.d = this.ag.a(20) + this.ag.a(20);
-         }
+         this.f(this.dn().d(0.98, 0.0, 0.98));
       }
+
+      super.p();
    }
 
    @Override
-   protected cis j() {
-      return cja.nd;
-   }
-
-   protected void h(double $$0) {
-      this.a(null, $$0);
-   }
-
-   protected void a(@Nullable bhg $$0, double $$1) {
-      if (!this.dK().B) {
-         double $$2 = Math.sqrt($$1);
-         if ($$2 > 5.0) {
-            $$2 = 5.0;
+   public bgt a(cbp $$0, bgs $$1) {
+      cja $$2 = $$0.b($$1);
+      if (g.a($$2) && this.f + 3600 <= 32000) {
+         if (!$$0.fR().d) {
+            $$2.h(1);
          }
 
-         this.dK().a(this, $$0, null, this.dp(), this.dr(), this.dv(), (float)(4.0 + this.ag.j() * 1.5 * $$2), false, cpl.a.d);
-         this.ak();
-      }
-   }
-
-   @Override
-   public boolean a(float $$0, float $$1, bhg $$2) {
-      if ($$0 >= 3.0F) {
-         float $$3 = $$0 / 10.0F;
-         this.h((double)($$3 * $$3));
+         this.f += 3600;
       }
 
-      return super.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public void a(int $$0, int $$1, int $$2, boolean $$3) {
-      if ($$3 && this.d < 0) {
-         this.A();
+      if (this.f > 0) {
+         this.c = this.dp() - $$0.dp();
+         this.d = this.dv() - $$0.dv();
       }
+
+      return bgt.a(this.dK().B);
    }
 
    @Override
-   public void b(byte $$0) {
-      if ($$0 == 10) {
-         this.A();
-      } else {
-         super.b($$0);
-      }
-   }
-
-   public void A() {
-      this.d = 80;
-      if (!this.dK().B) {
-         this.dK().a(this, (byte)10);
-         if (!this.aS()) {
-            this.dK().a(null, this.dp(), this.dr(), this.dv(), aow.xL, aox.e, 1.0F, 1.0F);
-         }
-      }
-   }
-
-   public int B() {
-      return this.d;
-   }
-
-   public boolean D() {
-      return this.d > -1;
-   }
-
-   @Override
-   public float a(cpd $$0, cor $$1, gu $$2, dez $$3, eac $$4, float $$5) {
-      return !this.D() || !$$3.a(apl.N) && !$$1.a_($$2.c()).a(apl.N) ? super.a($$0, $$1, $$2, $$3, $$4, $$5) : 0.0F;
-   }
-
-   @Override
-   public boolean a(cpd $$0, cor $$1, gu $$2, dez $$3, float $$4) {
-      return !this.D() || !$$3.a(apl.N) && !$$1.a_($$2.c()).a(apl.N) ? super.a($$0, $$1, $$2, $$3, $$4) : false;
-   }
-
-   @Override
-   protected void a(qr $$0) {
-      super.a($$0);
-      if ($$0.b("TNTFuse", 99)) {
-         this.d = $$0.h("TNTFuse");
-      }
-   }
-
-   @Override
-   protected void b(qr $$0) {
+   protected void b(qu $$0) {
       super.b($$0);
-      $$0.a("TNTFuse", this.d);
+      $$0.a("PushX", this.c);
+      $$0.a("PushZ", this.d);
+      $$0.a("Fuel", (short)this.f);
+   }
+
+   @Override
+   protected void a(qu $$0) {
+      super.a($$0);
+      this.c = $$0.k("PushX");
+      this.d = $$0.k("PushZ");
+      this.f = $$0.g("Fuel");
+   }
+
+   protected boolean A() {
+      return this.an.b(e);
+   }
+
+   protected void p(boolean $$0) {
+      this.an.b(e, $$0);
+   }
+
+   @Override
+   public dfe w() {
+      return csr.cD.n().a(cvt.a, hc.c).a(cvt.b, Boolean.valueOf(this.A()));
    }
 }

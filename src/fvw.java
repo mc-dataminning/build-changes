@@ -1,26 +1,24 @@
-public class fvw extends fud<bxt, fhi<bxt>> {
-   private static final aer a = new aer("textures/entity/wither/wither_invulnerable.png");
-   private static final aer i = new aer("textures/entity/wither/wither.png");
+public class fvw extends fui<cbc, fhj<cbc>> {
+   private static final aeu a = new aeu("textures/entity/villager/villager.png");
 
-   public fvw(fsx.a $$0) {
-      super($$0, new fhi<>($$0.a(fhr.bO)), 1.0F);
-      this.a(new fxt(this, $$0.f()));
+   public fvw(ftc.a $$0) {
+      super($$0, new fhj<>($$0.a(fhw.bJ)), 0.5F);
+      this.a(new fwp<>(this, $$0.f(), $$0.d()));
+      this.a(new fxv<>(this, $$0.e(), "villager"));
+      this.a(new fwo<>(this, $$0.d()));
    }
 
-   protected int a(bxt $$0, gu $$1) {
-      return 15;
+   public aeu a(cbc $$0) {
+      return a;
    }
 
-   public aer a(bxt $$0) {
-      int $$1 = $$0.t();
-      return $$1 > 0 && ($$1 > 80 || $$1 / 5 % 2 != 1) ? a : i;
-   }
-
-   protected void a(bxt $$0, elf $$1, float $$2) {
-      float $$3 = 2.0F;
-      int $$4 = $$0.t();
-      if ($$4 > 0) {
-         $$3 -= ((float)$$4 - $$2) / 220.0F * 0.5F;
+   protected void a(cbc $$0, elk $$1, float $$2) {
+      float $$3 = 0.9375F;
+      if ($$0.i_()) {
+         $$3 *= 0.5F;
+         this.d = 0.25F;
+      } else {
+         this.d = 0.5F;
       }
 
       $$1.b($$3, $$3, $$3);

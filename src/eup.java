@@ -1,84 +1,53 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import javax.annotation.Nullable;
+import java.util.List;
 
-public class eup implements eun {
-   private static final aer g = new aer("toast/tutorial");
-   public static final int a = 154;
-   public static final int d = 1;
-   public static final int e = 3;
-   public static final int f = 28;
-   private final eup.a h;
-   private final tf i;
-   @Nullable
-   private final tf j;
-   private eun.a k = eun.a.a;
-   private long l;
-   private float m;
-   private float n;
-   private final boolean o;
+public class eup implements eus {
+   private static final aeu d = new aeu("toast/advancement");
+   public static final int a = 5000;
+   private final af e;
+   private boolean f;
 
-   public eup(eup.a $$0, tf $$1, @Nullable tf $$2, boolean $$3) {
-      this.h = $$0;
-      this.i = $$1;
-      this.j = $$2;
-      this.o = $$3;
+   public eup(af $$0) {
+      this.e = $$0;
    }
 
    @Override
-   public eun.a a(erv $$0, euo $$1, long $$2) {
-      $$0.a(g, 0, 0, this.a(), this.b());
-      this.h.a($$0, 6, 6);
-      if (this.j == null) {
-         $$0.a($$1.b().h, this.i, 30, 12, -11534256, false);
-      } else {
-         $$0.a($$1.b().h, this.i, 30, 7, -11534256, false);
-         $$0.a($$1.b().h, this.j, 30, 18, -16777216, false);
-      }
-
-      if (this.o) {
-         $$0.a(3, 28, 157, 29, -1);
-         float $$3 = arp.b(this.m, this.n, (float)($$2 - this.l) / 100.0F);
-         int $$4;
-         if (this.n >= this.m) {
-            $$4 = -16755456;
+   public eus.a a(esa $$0, eut $$1, long $$2) {
+      aq $$3 = this.e.b().d().orElse(null);
+      $$0.a(d, 0, 0, this.a(), this.b());
+      if ($$3 != null) {
+         List<arf> $$4 = $$1.b().h.c($$3.a(), 125);
+         int $$5 = $$3.e() == ar.b ? 16746751 : 16776960;
+         if ($$4.size() == 1) {
+            $$0.a($$1.b().h, $$3.e().c(), 30, 7, $$5 | 0xFF000000, false);
+            $$0.a($$1.b().h, $$4.get(0), 30, 18, -1, false);
          } else {
-            $$4 = -11206656;
+            int $$6 = 1500;
+            float $$7 = 300.0F;
+            if ($$2 < 1500L) {
+               int $$8 = ars.d(ars.a((float)(1500L - $$2) / 300.0F, 0.0F, 1.0F) * 255.0F) << 24 | 67108864;
+               $$0.a($$1.b().h, $$3.e().c(), 30, 11, $$5 | $$8, false);
+            } else {
+               int $$9 = ars.d(ars.a((float)($$2 - 1500L) / 300.0F, 0.0F, 1.0F) * 252.0F) << 24 | 67108864;
+               int $$10 = this.b() / 2 - $$4.size() * 9 / 2;
+
+               for (arf $$11 : $$4) {
+                  $$0.a($$1.b().h, $$11, 30, $$10, 16777215 | $$9, false);
+                  $$10 += 9;
+               }
+            }
          }
 
-         $$0.a(3, 28, (int)(3.0F + 154.0F * $$3), 29, $$4);
-         this.m = $$3;
-         this.l = $$2;
-      }
+         if (!this.f && $$2 > 0L) {
+            this.f = true;
+            if ($$3.e() == ar.b) {
+               $$1.b().ai().a(gcc.a(aoz.yA, 1.0F, 1.0F));
+            }
+         }
 
-      return this.k;
-   }
-
-   public void c() {
-      this.k = eun.a.b;
-   }
-
-   public void a(float $$0) {
-      this.n = $$0;
-   }
-
-   public static enum a {
-      a(new aer("toast/movement_keys")),
-      b(new aer("toast/mouse")),
-      c(new aer("toast/tree")),
-      d(new aer("toast/recipe_book")),
-      e(new aer("toast/wooden_planks")),
-      f(new aer("toast/social_interactions")),
-      g(new aer("toast/right_click"));
-
-      private final aer h;
-
-      private a(aer $$0) {
-         this.h = $$0;
-      }
-
-      public void a(erv $$0, int $$1, int $$2) {
-         RenderSystem.enableBlend();
-         $$0.a(this.h, $$1, $$2, 20, 20);
+         $$0.b($$3.c(), 8, 8);
+         return (double)$$2 >= 5000.0 * $$1.c() ? eus.a.b : eus.a.a;
+      } else {
+         return eus.a.b;
       }
    }
 }

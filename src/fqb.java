@@ -1,103 +1,49 @@
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.google.common.collect.ImmutableMap.Builder;
+import java.util.Map;
 
-public class fqb implements fpu<dcx> {
-   public static final gay a = new gay(fyt.e, new aer("entity/conduit/base"));
-   public static final gay b = new gay(fyt.e, new aer("entity/conduit/cage"));
-   public static final gay c = new gay(fyt.e, new aer("entity/conduit/wind"));
-   public static final gay d = new gay(fyt.e, new aer("entity/conduit/wind_vertical"));
-   public static final gay e = new gay(fyt.e, new aer("entity/conduit/open_eye"));
-   public static final gay f = new gay(fyt.e, new aer("entity/conduit/closed_eye"));
-   private final fhs g;
-   private final fhs h;
-   private final fhs i;
-   private final fhs j;
-   private final fpt k;
+public class fqb {
+   private static final Map<dcs<?>, fqa<?>> a = Maps.newHashMap();
 
-   public fqb(fpv.a $$0) {
-      this.k = $$0.a();
-      this.g = $$0.a(fhr.x);
-      this.h = $$0.a(fhr.z);
-      this.i = $$0.a(fhr.y);
-      this.j = $$0.a(fhr.w);
+   private static <T extends dcq> void a(dcs<? extends T> $$0, fqa<T> $$1) {
+      a.put($$0, $$1);
    }
 
-   public static fhy b() {
-      fia $$0 = new fia();
-      fib $$1 = $$0.a();
-      $$1.a("eye", fhx.c().a(0, 0).a(-4.0F, -4.0F, 0.0F, 8.0F, 8.0F, 0.0F, new fhw(0.01F)), fhu.a);
-      return fhy.a($$0, 16, 16);
-   }
-
-   public static fhy c() {
-      fia $$0 = new fia();
-      fib $$1 = $$0.a();
-      $$1.a("wind", fhx.c().a(0, 0).a(-8.0F, -8.0F, -8.0F, 16.0F, 16.0F, 16.0F), fhu.a);
-      return fhy.a($$0, 64, 32);
-   }
-
-   public static fhy d() {
-      fia $$0 = new fia();
-      fib $$1 = $$0.a();
-      $$1.a("shell", fhx.c().a(0, 0).a(-3.0F, -3.0F, -3.0F, 6.0F, 6.0F, 6.0F), fhu.a);
-      return fhy.a($$0, 32, 16);
-   }
-
-   public static fhy e() {
-      fia $$0 = new fia();
-      fib $$1 = $$0.a();
-      $$1.a("shell", fhx.c().a(0, 0).a(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F), fhu.a);
-      return fhy.a($$0, 32, 16);
-   }
-
-   public void a(dcx $$0, float $$1, elf $$2, fnu $$3, int $$4, int $$5) {
-      float $$6 = (float)$$0.a + $$1;
-      if (!$$0.d()) {
-         float $$7 = $$0.a(0.0F);
-         elj $$8 = a.a($$3, foc::c);
-         $$2.a();
-         $$2.a(0.5F, 0.5F, 0.5F);
-         $$2.a(new Quaternionf().rotationY($$7 * (float) (Math.PI / 180.0)));
-         this.i.a($$2, $$8, $$4, $$5);
-         $$2.b();
-      } else {
-         float $$9 = $$0.a($$1) * (180.0F / (float)Math.PI);
-         float $$10 = arp.a($$6 * 0.1F) / 2.0F + 0.5F;
-         $$10 = $$10 * $$10 + $$10;
-         $$2.a();
-         $$2.a(0.5F, 0.3F + $$10 * 0.2F, 0.5F);
-         Vector3f $$11 = new Vector3f(0.5F, 1.0F, 0.5F).normalize();
-         $$2.a(new Quaternionf().rotationAxis($$9 * (float) (Math.PI / 180.0), $$11));
-         this.j.a($$2, b.a($$3, foc::e), $$4, $$5);
-         $$2.b();
-         int $$12 = $$0.a / 66 % 3;
-         $$2.a();
-         $$2.a(0.5F, 0.5F, 0.5F);
-         if ($$12 == 1) {
-            $$2.a(new Quaternionf().rotationX((float) (Math.PI / 2)));
-         } else if ($$12 == 2) {
-            $$2.a(new Quaternionf().rotationZ((float) (Math.PI / 2)));
+   public static Map<dcs<?>, fpz<?>> a(fqa.a $$0) {
+      Builder<dcs<?>, fpz<?>> $$1 = ImmutableMap.builder();
+      a.forEach(($$2, $$3) -> {
+         try {
+            $$1.put($$2, $$3.create($$0));
+         } catch (Exception var5) {
+            throw new IllegalStateException("Failed to create model for " + jd.l.b((dcs<?>)$$2), var5);
          }
+      });
+      return $$1.build();
+   }
 
-         elj $$13 = ($$12 == 1 ? d : c).a($$3, foc::e);
-         this.h.a($$2, $$13, $$4, $$5);
-         $$2.b();
-         $$2.a();
-         $$2.a(0.5F, 0.5F, 0.5F);
-         $$2.b(0.875F, 0.875F, 0.875F);
-         $$2.a(new Quaternionf().rotationXYZ((float) Math.PI, 0.0F, (float) Math.PI));
-         this.h.a($$2, $$13, $$4, $$5);
-         $$2.b();
-         epw $$14 = this.k.b;
-         $$2.a();
-         $$2.a(0.5F, 0.3F + $$10 * 0.2F, 0.5F);
-         $$2.b(0.5F, 0.5F, 0.5F);
-         float $$15 = -$$14.e();
-         $$2.a(new Quaternionf().rotationYXZ($$15 * (float) (Math.PI / 180.0), $$14.d() * (float) (Math.PI / 180.0), (float) Math.PI));
-         float $$16 = 1.3333334F;
-         $$2.b(1.3333334F, 1.3333334F, 1.3333334F);
-         this.g.a($$2, ($$0.f() ? e : f).a($$3, foc::e), $$4, $$5);
-         $$2.b();
-      }
+   static {
+      a(dcs.h, fqn::new);
+      a(dcs.i, fqj::new);
+      a(dcs.j, fqp::new);
+      a(dcs.k, fql::new);
+      a(dcs.b, fqf::new);
+      a(dcs.d, fqf::new);
+      a(dcs.c, fqf::new);
+      a(dcs.m, fqi::new);
+      a(dcs.D, fqk::new);
+      a(dcs.n, fqs::new);
+      a(dcs.v, fqr::new);
+      a(dcs.o, fpv::new);
+      a(dcs.p, fqo::new);
+      a(dcs.t, fpu::new);
+      a(dcs.u, fqq::new);
+      a(dcs.x, fqm::new);
+      a(dcs.y, fpw::new);
+      a(dcs.z, fqg::new);
+      a(dcs.E, fpx::new);
+      a(dcs.G, fqe::new);
+      a(dcs.N, fqd::new);
+      a(dcs.O, fqh::new);
    }
 }

@@ -1,94 +1,50 @@
-import com.google.gson.JsonObject;
-import java.util.stream.Stream;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class cmo implements cmn {
-   private final aer a;
-   final clx b;
-   final clx c;
-   final clx d;
-   final cix e;
+public class cmo<T extends clm> implements cmh<T> {
+   private final cmo.a<T> x;
+   private final Codec<T> y;
 
-   public cmo(aer $$0, clx $$1, clx $$2, clx $$3, cix $$4) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
+   public cmo(cmo.a<T> $$0, int $$1) {
+      this.x = $$0;
+      this.y = RecordCodecBuilder.create(
+         $$2 -> $$2.group(
+                  arb.a(Codec.STRING, "group", "").forGetter($$0xx -> $$0xx.c),
+                  cls.d.fieldOf("category").orElse(cls.c).forGetter($$0xx -> $$0xx.b),
+                  cmb.c.fieldOf("ingredient").forGetter($$0xx -> $$0xx.d),
+                  jd.i.q().xmap(cja::new, cja::d).fieldOf("result").forGetter($$0xx -> $$0xx.e),
+                  Codec.FLOAT.fieldOf("experience").orElse(0.0F).forGetter($$0xx -> $$0xx.f),
+                  Codec.INT.fieldOf("cookingtime").orElse($$1).forGetter($$0xx -> $$0xx.g)
+               )
+               .apply($$2, $$0::create)
+      );
    }
 
    @Override
-   public boolean a(bgj $$0, cpl $$1) {
-      return this.b.a($$0.a(0)) && this.c.a($$0.a(1)) && this.d.a($$0.a(2));
+   public Codec<T> a() {
+      return this.y;
    }
 
-   @Override
-   public cix a(bgj $$0, hs $$1) {
-      cix $$2 = this.e.p();
-      qr $$3 = $$0.a(1).v();
-      if ($$3 != null) {
-         $$2.c($$3.h());
-      }
-
-      return $$2;
+   public T b(sl $$0) {
+      String $$1 = $$0.r();
+      cls $$2 = $$0.b(cls.class);
+      cmb $$3 = cmb.b($$0);
+      cja $$4 = $$0.q();
+      float $$5 = $$0.readFloat();
+      int $$6 = $$0.m();
+      return this.x.create($$1, $$2, $$3, $$4, $$5, $$6);
    }
 
-   @Override
-   public cix a(hs $$0) {
-      return this.e;
+   public void a(sl $$0, T $$1) {
+      $$0.a($$1.c);
+      $$0.a($$1.f());
+      $$1.d.a($$0);
+      $$0.a($$1.e);
+      $$0.a($$1.f);
+      $$0.c($$1.g);
    }
 
-   @Override
-   public boolean a(cix $$0) {
-      return this.b.a($$0);
-   }
-
-   @Override
-   public boolean b(cix $$0) {
-      return this.c.a($$0);
-   }
-
-   @Override
-   public boolean c(cix $$0) {
-      return this.d.a($$0);
-   }
-
-   @Override
-   public aer e() {
-      return this.a;
-   }
-
-   @Override
-   public cmc<?> ai_() {
-      return cmc.u;
-   }
-
-   @Override
-   public boolean j() {
-      return Stream.of(this.b, this.c, this.d).anyMatch(clx::d);
-   }
-
-   public static class a implements cmc<cmo> {
-      public cmo b(aer $$0, JsonObject $$1) {
-         clx $$2 = clx.a(arg.h($$1, "template"));
-         clx $$3 = clx.a(arg.h($$1, "base"));
-         clx $$4 = clx.a(arg.h($$1, "addition"));
-         cix $$5 = cmf.a(arg.u($$1, "result"));
-         return new cmo($$0, $$2, $$3, $$4, $$5);
-      }
-
-      public cmo b(aer $$0, si $$1) {
-         clx $$2 = clx.b($$1);
-         clx $$3 = clx.b($$1);
-         clx $$4 = clx.b($$1);
-         cix $$5 = $$1.q();
-         return new cmo($$0, $$2, $$3, $$4, $$5);
-      }
-
-      public void a(si $$0, cmo $$1) {
-         $$1.b.a($$0);
-         $$1.c.a($$0);
-         $$1.d.a($$0);
-         $$0.a($$1.e);
-      }
+   interface a<T extends clm> {
+      T create(String var1, cls var2, cmb var3, cja var4, float var5, int var6);
    }
 }

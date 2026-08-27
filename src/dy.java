@@ -1,41 +1,59 @@
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.arguments.ArgumentType;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import java.util.Arrays;
-import java.util.Collection;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-public class dy implements ArgumentType<tf> {
-   private static final Collection<String> b = Arrays.asList("\"hello world\"", "\"\"", "\"{\"text\":\"hello world\"}", "[\"\"]");
-   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> tf.a("argument.component.invalid", $$0));
+public record dy(List<dy.a> b) {
+   public static final dy a = new dy(List.of());
+   private static final int c = 8;
+   private static final int d = 16;
 
-   private dy() {
+   public dy(sl $$0) {
+      this($$0.a(sl.a(ArrayList::new, 8), dy.a::new));
    }
 
-   public static tf a(CommandContext<dr> $$0, String $$1) {
-      return (tf)$$0.getArgument($$1, tf.class);
-   }
-
-   public static dy a() {
-      return new dy();
-   }
-
-   public tf a(StringReader $$0) throws CommandSyntaxException {
-      try {
-         tf $$1 = tf.a.a($$0);
-         if ($$1 == null) {
-            throw a.createWithContext($$0, "empty");
-         } else {
-            return $$1;
+   @Nullable
+   public tt a(String $$0) {
+      for (dy.a $$1 : this.b) {
+         if ($$1.a.equals($$0)) {
+            return $$1.b;
          }
-      } catch (Exception var4) {
-         String $$3 = var4.getCause() != null ? var4.getCause().getMessage() : var4.getMessage();
-         throw a.createWithContext($$0, $$3);
+      }
+
+      return null;
+   }
+
+   public void a(sl $$0) {
+      $$0.a(this.b, ($$0x, $$1) -> $$1.a($$0x));
+   }
+
+   public static dy a(tz<?> $$0, dy.b $$1) {
+      List<dy.a> $$2 = $$0.a().stream().map($$1x -> {
+         tt $$2x = $$1.sign($$1x.c());
+         return $$2x != null ? new dy.a($$1x.a(), $$2x) : null;
+      }).filter(Objects::nonNull).toList();
+      return new dy($$2);
+   }
+
+   public List<dy.a> a() {
+      return this.b;
+   }
+
+   public static record a(String a, tt b) {
+
+      public a(sl $$0) {
+         this($$0.d(16), tt.a($$0));
+      }
+
+      public void a(sl $$0) {
+         $$0.a(this.a, 16);
+         tt.a($$0, this.b);
       }
    }
 
-   public Collection<String> getExamples() {
-      return b;
+   @FunctionalInterface
+   public interface b {
+      @Nullable
+      tt sign(String var1);
    }
 }

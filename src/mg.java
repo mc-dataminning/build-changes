@@ -1,97 +1,46 @@
-import com.google.common.hash.Hashing;
-import com.google.common.hash.HashingOutputStream;
+import com.google.gson.JsonElement;
 import com.mojang.logging.LogUtils;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.Encoder;
+import com.mojang.serialization.JsonOps;
 import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class mg implements ji {
+public class mg implements jk {
    private static final Logger d = LogUtils.getLogger();
-   private final Iterable<Path> e;
-   private final jk f;
+   private final jm e;
+   private final CompletableFuture<hi.b> f;
 
-   public mg(jk $$0, Collection<Path> $$1) {
-      this.e = $$1;
-      this.f = $$0;
+   public mg(jm $$0, CompletableFuture<hi.b> $$1) {
+      this.f = $$1;
+      this.e = $$0;
    }
 
    @Override
-   public CompletableFuture<?> a(jg $$0) {
-      Path $$1 = this.f.a();
-      List<CompletableFuture<?>> $$2 = new ArrayList<>();
+   public CompletableFuture<?> a(ji $$0) {
+      return this.f.thenCompose($$1 -> {
+         DynamicOps<JsonElement> $$2 = aes.a(JsonOps.INSTANCE, $$1);
+         return CompletableFuture.allOf(aep.a.stream().flatMap($$3 -> this.a($$0, $$1, $$2, (aep.b<?>)$$3).stream()).toArray(CompletableFuture[]::new));
+      });
+   }
 
-      for (Path $$3 : this.e) {
-         $$2.add(
-            CompletableFuture.<CompletableFuture>supplyAsync(
-                  () -> {
-                     try {
-                        CompletableFuture var4;
-                        try (Stream<Path> $$3x = Files.walk($$3)) {
-                           var4 = CompletableFuture.allOf(
-                              $$3x.filter($$0xx -> $$0xx.toString().endsWith(".nbt"))
-                                 .map($$3xx -> CompletableFuture.runAsync(() -> a($$0, $$3xx, a($$3, $$3xx), $$1), ac.g()))
-                                 .toArray(CompletableFuture[]::new)
-                           );
-                        }
+   private <T> Optional<CompletableFuture<?>> a(ji $$0, hi.b $$1, DynamicOps<JsonElement> $$2, aep.b<T> $$3) {
+      aet<? extends ht<T>> $$4 = $$3.a();
+      return $$1.a($$4).map($$4x -> {
+         jm.a $$5 = this.e.a(jm.b.a, $$4.a().a());
+         return CompletableFuture.allOf($$4x.b().map($$4xx -> a($$5.a($$4xx.g().a()), $$0, $$2, $$3.b(), $$4xx.a())).toArray(CompletableFuture[]::new));
+      });
+   }
 
-                        return var4;
-                     } catch (IOException var8) {
-                        d.error("Failed to read structure input directory", var8);
-                        return CompletableFuture.completedFuture(null);
-                     }
-                  },
-                  ac.f()
-               )
-               .thenCompose($$0x -> $$0x)
-         );
-      }
-
-      return CompletableFuture.allOf($$2.toArray(CompletableFuture[]::new));
+   private static <E> CompletableFuture<?> a(Path $$0, ji $$1, DynamicOps<JsonElement> $$2, Encoder<E> $$3, E $$4) {
+      Optional<JsonElement> $$5 = $$3.encodeStart($$2, $$4).resultOrPartial($$1x -> d.error("Couldn't serialize element {}: {}", $$0, $$1x));
+      return $$5.isPresent() ? jk.a($$1, $$5.get(), $$0) : CompletableFuture.completedFuture(null);
    }
 
    @Override
    public final String a() {
-      return "NBT -> SNBT";
-   }
-
-   private static String a(Path $$0, Path $$1) {
-      String $$2 = $$0.relativize($$1).toString().replaceAll("\\\\", "/");
-      return $$2.substring(0, $$2.length() - ".nbt".length());
-   }
-
-   @Nullable
-   public static Path a(jg $$0, Path $$1, String $$2, Path $$3) {
-      try {
-         Path var6;
-         try (InputStream $$4 = Files.newInputStream($$1)) {
-            Path $$5 = $$3.resolve($$2 + ".snbt");
-            a($$0, $$5, rd.c(rb.a($$4)));
-            d.info("Converted {} from NBT to SNBT", $$2);
-            var6 = $$5;
-         }
-
-         return var6;
-      } catch (IOException var9) {
-         d.error("Couldn't convert {} from NBT to SNBT at {}", new Object[]{$$2, $$1, var9});
-         return null;
-      }
-   }
-
-   public static void a(jg $$0, Path $$1, String $$2) throws IOException {
-      ByteArrayOutputStream $$3 = new ByteArrayOutputStream();
-      HashingOutputStream $$4 = new HashingOutputStream(Hashing.sha1(), $$3);
-      $$4.write($$2.getBytes(StandardCharsets.UTF_8));
-      $$4.write(10);
-      $$0.writeIfNeeded($$1, $$3.toByteArray(), $$4.hash());
+      return "Registries";
    }
 }

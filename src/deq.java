@@ -1,8 +1,11 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public class deq extends dej {
+   @Override
+   protected aet<dne<?, ?>> a(arx $$0, boolean $$1) {
+      return ou.o;
+   }
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface deq {
+   @Override
+   protected aet<dne<?, ?>> a(arx $$0) {
+      return ou.p;
+   }
 }

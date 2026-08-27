@@ -1,46 +1,24 @@
-public class fwz extends fxf<bwl, ffm<bwl>> {
-   private static final aer[] a = new aer[]{
-      new aer("textures/entity/llama/decor/white.png"),
-      new aer("textures/entity/llama/decor/orange.png"),
-      new aer("textures/entity/llama/decor/magenta.png"),
-      new aer("textures/entity/llama/decor/light_blue.png"),
-      new aer("textures/entity/llama/decor/yellow.png"),
-      new aer("textures/entity/llama/decor/lime.png"),
-      new aer("textures/entity/llama/decor/pink.png"),
-      new aer("textures/entity/llama/decor/gray.png"),
-      new aer("textures/entity/llama/decor/light_gray.png"),
-      new aer("textures/entity/llama/decor/cyan.png"),
-      new aer("textures/entity/llama/decor/purple.png"),
-      new aer("textures/entity/llama/decor/blue.png"),
-      new aer("textures/entity/llama/decor/brown.png"),
-      new aer("textures/entity/llama/decor/green.png"),
-      new aer("textures/entity/llama/decor/red.png"),
-      new aer("textures/entity/llama/decor/black.png")
-   };
-   private static final aer b = new aer("textures/entity/llama/decor/trader_llama.png");
-   private final ffm<bwl> c;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   public fwz(fus<bwl, ffm<bwl>> $$0, fho $$1) {
+public class fwz extends fxk<bwn, ffj<bwn>> {
+   private static final Map<bwp, aeu> a = ac.a(Maps.newEnumMap(bwp.class), $$0 -> {
+      $$0.put(bwp.a, null);
+      $$0.put(bwp.b, new aeu("textures/entity/horse/horse_markings_white.png"));
+      $$0.put(bwp.c, new aeu("textures/entity/horse/horse_markings_whitefield.png"));
+      $$0.put(bwp.d, new aeu("textures/entity/horse/horse_markings_whitedots.png"));
+      $$0.put(bwp.e, new aeu("textures/entity/horse/horse_markings_blackdots.png"));
+   });
+
+   public fwz(fux<bwn, ffj<bwn>> $$0) {
       super($$0);
-      this.c = new ffm<>($$1.a(fhr.as));
    }
 
-   public void a(elf $$0, fnu $$1, int $$2, bwl $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      chl $$10 = $$3.gn();
-      aer $$11;
-      if ($$10 != null) {
-         $$11 = a[$$10.a()];
-      } else {
-         if (!$$3.gj()) {
-            return;
-         }
-
-         $$11 = b;
+   public void a(elk $$0, fnz $$1, int $$2, bwn $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      aeu $$10 = a.get($$3.ga());
+      if ($$10 != null && !$$3.cd()) {
+         elo $$11 = $$1.getBuffer(foh.i($$10));
+         this.c().a($$0, $$11, $$2, fud.c($$3, 0.0F), 1.0F, 1.0F, 1.0F, 1.0F);
       }
-
-      this.c().a(this.c);
-      this.c.a($$3, $$4, $$5, $$7, $$8, $$9);
-      elj $$14 = $$1.getBuffer(foc.e($$11));
-      this.c.a($$0, $$14, $$2, fyl.d, 1.0F, 1.0F, 1.0F, 1.0F);
    }
 }

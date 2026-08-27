@@ -1,72 +1,220 @@
-import com.google.gson.JsonObject;
-import com.google.gson.JsonSyntaxException;
-import java.util.Optional;
+import com.google.common.collect.Lists;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public class as extends cu<as.a> {
-   static final aer a = new aer("bee_nest_destroyed");
+public class as {
+   private final ag a;
+   @Nullable
+   private final as b;
+   @Nullable
+   private final as c;
+   private final int d;
+   private final List<as> e = Lists.newArrayList();
+   private as f;
+   @Nullable
+   private as g;
+   private int h;
+   private float i;
+   private float j;
+   private float k;
+   private float l;
 
-   @Override
-   public aer a() {
-      return a;
-   }
+   public as(ag $$0, @Nullable as $$1, @Nullable as $$2, int $$3, int $$4) {
+      if ($$0.a().d().isEmpty()) {
+         throw new IllegalArgumentException("Can't position an invisible advancement!");
+      } else {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.f = this;
+         this.h = $$4;
+         this.i = -1.0F;
+         as $$5 = null;
 
-   public as.a a(JsonObject $$0, Optional<ba> $$1, be $$2) {
-      csl $$3 = a($$0);
-      Optional<bz> $$4 = bz.a($$0.get("item"));
-      cj.d $$5 = cj.d.a($$0.get("num_bees_inside"));
-      return new as.a($$1, $$3, $$4, $$5);
+         for (ag $$6 : $$0.e()) {
+            $$5 = this.a($$6, $$5);
+         }
+      }
    }
 
    @Nullable
-   private static csl a(JsonObject $$0) {
-      if ($$0.has("block")) {
-         aer $$1 = new aer(arg.i($$0, "block"));
-         return jb.f.b($$1).orElseThrow(() -> new JsonSyntaxException("Unknown block type '" + $$1 + "'"));
+   private as a(ag $$0, @Nullable as $$1) {
+      if ($$0.a().d().isPresent()) {
+         $$1 = new as($$0, this, $$1, this.e.size() + 1, this.h + 1);
+         this.e.add($$1);
       } else {
-         return null;
+         for (ag $$2 : $$0.e()) {
+            $$1 = this.a($$2, $$1);
+         }
       }
+
+      return $$1;
    }
 
-   public void a(akl $$0, dez $$1, cix $$2, int $$3) {
-      this.a($$0, $$3x -> $$3x.a($$1, $$2, $$3));
-   }
-
-   public static class a extends ar {
-      @Nullable
-      private final csl a;
-      private final Optional<bz> b;
-      private final cj.d c;
-
-      public a(Optional<ba> $$0, @Nullable csl $$1, Optional<bz> $$2, cj.d $$3) {
-         super(as.a, $$0);
-         this.a = $$1;
-         this.b = $$2;
-         this.c = $$3;
-      }
-
-      public static as.a a(csl $$0, bz.a $$1, cj.d $$2) {
-         return new as.a(Optional.empty(), $$0, $$1.b(), $$2);
-      }
-
-      public boolean a(dez $$0, cix $$1, int $$2) {
-         if (this.a != null && !$$0.a(this.a)) {
-            return false;
+   private void a() {
+      if (this.e.isEmpty()) {
+         if (this.c != null) {
+            this.i = this.c.i + 1.0F;
          } else {
-            return this.b.isPresent() && !this.b.get().a($$1) ? false : this.c.d($$2);
+            this.i = 0.0F;
+         }
+      } else {
+         as $$0 = null;
+
+         for (as $$1 : this.e) {
+            $$1.a();
+            $$0 = $$1.a($$0 == null ? $$1 : $$0);
+         }
+
+         this.b();
+         float $$2 = (this.e.get(0).i + this.e.get(this.e.size() - 1).i) / 2.0F;
+         if (this.c != null) {
+            this.i = this.c.i + 1.0F;
+            this.j = this.i - $$2;
+         } else {
+            this.i = $$2;
          }
       }
+   }
 
-      @Override
-      public JsonObject b() {
-         JsonObject $$0 = super.b();
-         if (this.a != null) {
-            $$0.addProperty("block", jb.f.b(this.a).toString());
+   private float a(float $$0, int $$1, float $$2) {
+      this.i += $$0;
+      this.h = $$1;
+      if (this.i < $$2) {
+         $$2 = this.i;
+      }
+
+      for (as $$3 : this.e) {
+         $$2 = $$3.a($$0 + this.j, $$1 + 1, $$2);
+      }
+
+      return $$2;
+   }
+
+   private void a(float $$0) {
+      this.i += $$0;
+
+      for (as $$1 : this.e) {
+         $$1.a($$0);
+      }
+   }
+
+   private void b() {
+      float $$0 = 0.0F;
+      float $$1 = 0.0F;
+
+      for (int $$2 = this.e.size() - 1; $$2 >= 0; $$2--) {
+         as $$3 = this.e.get($$2);
+         $$3.i += $$0;
+         $$3.j += $$0;
+         $$1 += $$3.k;
+         $$0 += $$3.l + $$1;
+      }
+   }
+
+   @Nullable
+   private as c() {
+      if (this.g != null) {
+         return this.g;
+      } else {
+         return !this.e.isEmpty() ? this.e.get(0) : null;
+      }
+   }
+
+   @Nullable
+   private as d() {
+      if (this.g != null) {
+         return this.g;
+      } else {
+         return !this.e.isEmpty() ? this.e.get(this.e.size() - 1) : null;
+      }
+   }
+
+   private as a(as $$0) {
+      if (this.c == null) {
+         return $$0;
+      } else {
+         as $$1 = this;
+         as $$2 = this;
+         as $$3 = this.c;
+         as $$4 = this.b.e.get(0);
+         float $$5 = this.j;
+         float $$6 = this.j;
+         float $$7 = $$3.j;
+
+         float $$8;
+         for ($$8 = $$4.j; $$3.d() != null && $$1.c() != null; $$6 += $$2.j) {
+            $$3 = $$3.d();
+            $$1 = $$1.c();
+            $$4 = $$4.c();
+            $$2 = $$2.d();
+            $$2.f = this;
+            float $$9 = $$3.i + $$7 - ($$1.i + $$5) + 1.0F;
+            if ($$9 > 0.0F) {
+               $$3.a(this, $$0).a(this, $$9);
+               $$5 += $$9;
+               $$6 += $$9;
+            }
+
+            $$7 += $$3.j;
+            $$5 += $$1.j;
+            $$8 += $$4.j;
          }
 
-         this.b.ifPresent($$1 -> $$0.add("item", $$1.a()));
-         $$0.add("num_bees_inside", this.c.e());
+         if ($$3.d() != null && $$2.d() == null) {
+            $$2.g = $$3.d();
+            $$2.j += $$7 - $$6;
+         } else {
+            if ($$1.c() != null && $$4.c() == null) {
+               $$4.g = $$1.c();
+               $$4.j += $$5 - $$8;
+            }
+
+            $$0 = this;
+         }
+
          return $$0;
+      }
+   }
+
+   private void a(as $$0, float $$1) {
+      float $$2 = (float)($$0.d - this.d);
+      if ($$2 != 0.0F) {
+         $$0.k -= $$1 / $$2;
+         this.k += $$1 / $$2;
+      }
+
+      $$0.l += $$1;
+      $$0.i += $$1;
+      $$0.j += $$1;
+   }
+
+   private as a(as $$0, as $$1) {
+      return this.f != null && $$0.b.e.contains(this.f) ? this.f : $$1;
+   }
+
+   private void e() {
+      this.a.a().d().ifPresent($$0x -> $$0x.a((float)this.h, this.i));
+      if (!this.e.isEmpty()) {
+         for (as $$0 : this.e) {
+            $$0.e();
+         }
+      }
+   }
+
+   public static void a(ag $$0) {
+      if ($$0.a().d().isEmpty()) {
+         throw new IllegalArgumentException("Can't position children of an invisible root!");
+      } else {
+         as $$1 = new as($$0, null, null, 1, 0);
+         $$1.a();
+         float $$2 = $$1.a(0.0F, 0, $$1.i);
+         if ($$2 < 0.0F) {
+            $$1.a(-$$2);
+         }
+
+         $$1.e();
       }
    }
 }

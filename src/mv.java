@@ -1,40 +1,14 @@
 import java.util.concurrent.CompletableFuture;
 
-public class mv extends my<byb> {
-   public mv(jk $$0, CompletableFuture<hg.b> $$1) {
-      super($$0, jc.P, $$1);
+public class mv extends nb<cis> {
+   public mv(jm $$0, CompletableFuture<hi.b> $$1) {
+      super($$0, je.B, $$1);
    }
 
    @Override
-   protected void a(hg.b $$0) {
-      this.b(apu.a)
-         .a(
-            byc.a,
-            byc.b,
-            byc.c,
-            byc.d,
-            byc.e,
-            byc.f,
-            byc.g,
-            byc.h,
-            byc.i,
-            byc.j,
-            byc.k,
-            byc.l,
-            byc.m,
-            byc.n,
-            byc.o,
-            byc.p,
-            byc.q,
-            byc.r,
-            byc.s,
-            byc.t,
-            byc.u,
-            byc.v,
-            byc.w,
-            byc.x,
-            byc.y,
-            byc.z
-         );
+   protected void a(hi.b $$0) {
+      this.b(apv.a).a(ciu.c).a(ciu.d).a(ciu.e).a(ciu.f);
+      this.b(apv.b).a(ciu.g).a(ciu.h).a(ciu.i).a(ciu.j);
+      this.b(apv.c).b(apv.a).b(apv.b);
    }
 }

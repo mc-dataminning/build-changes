@@ -1,160 +1,107 @@
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Maps;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Optional;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public class ckc extends cis {
-   private static final Map<bim<? extends bja>, ckc> a = Maps.newIdentityHashMap();
-   private final int b;
-   private final int c;
-   private final bim<?> d;
+public class ckc extends civ {
+   private static final n a = n.h;
+   private static final n b = n.j;
+   private static final ti c = ti.c(ac.a("item", new aeu("smithing_template.ingredients"))).a(a);
+   private static final ti d = ti.c(ac.a("item", new aeu("smithing_template.applies_to"))).a(a);
+   private static final ti e = ti.c(ac.a("upgrade", new aeu("netherite_upgrade"))).a(a);
+   private static final ti f = ti.c(ac.a("item", new aeu("smithing_template.armor_trim.applies_to"))).a(b);
+   private static final ti g = ti.c(ac.a("item", new aeu("smithing_template.armor_trim.ingredients"))).a(b);
+   private static final ti h = ti.c(ac.a("item", new aeu("smithing_template.armor_trim.base_slot_description")));
+   private static final ti i = ti.c(ac.a("item", new aeu("smithing_template.armor_trim.additions_slot_description")));
+   private static final ti j = ti.c(ac.a("item", new aeu("smithing_template.netherite_upgrade.applies_to"))).a(b);
+   private static final ti k = ti.c(ac.a("item", new aeu("smithing_template.netherite_upgrade.ingredients"))).a(b);
+   private static final ti r = ti.c(ac.a("item", new aeu("smithing_template.netherite_upgrade.base_slot_description")));
+   private static final ti s = ti.c(ac.a("item", new aeu("smithing_template.netherite_upgrade.additions_slot_description")));
+   private static final aeu t = new aeu("item/empty_armor_slot_helmet");
+   private static final aeu u = new aeu("item/empty_armor_slot_chestplate");
+   private static final aeu v = new aeu("item/empty_armor_slot_leggings");
+   private static final aeu w = new aeu("item/empty_armor_slot_boots");
+   private static final aeu x = new aeu("item/empty_slot_hoe");
+   private static final aeu y = new aeu("item/empty_slot_axe");
+   private static final aeu z = new aeu("item/empty_slot_sword");
+   private static final aeu A = new aeu("item/empty_slot_shovel");
+   private static final aeu B = new aeu("item/empty_slot_pickaxe");
+   private static final aeu C = new aeu("item/empty_slot_ingot");
+   private static final aeu D = new aeu("item/empty_slot_redstone_dust");
+   private static final aeu E = new aeu("item/empty_slot_quartz");
+   private static final aeu F = new aeu("item/empty_slot_emerald");
+   private static final aeu G = new aeu("item/empty_slot_diamond");
+   private static final aeu H = new aeu("item/empty_slot_lapis_lazuli");
+   private static final aeu I = new aeu("item/empty_slot_amethyst_shard");
+   private final ti J;
+   private final ti K;
+   private final ti L;
+   private final ti M;
+   private final ti N;
+   private final List<aeu> O;
+   private final List<aeu> P;
 
-   public ckc(bim<? extends bja> $$0, int $$1, int $$2, cis.a $$3) {
-      super($$3);
-      this.d = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      a.put($$0, this);
+   public ckc(ti $$0, ti $$1, ti $$2, ti $$3, ti $$4, List<aeu> $$5, List<aeu> $$6) {
+      super(new civ.a());
+      this.J = $$0;
+      this.K = $$1;
+      this.L = $$2;
+      this.M = $$3;
+      this.N = $$4;
+      this.O = $$5;
+      this.P = $$6;
+   }
+
+   public static ckc a(aet<clf> $$0) {
+      return a($$0.a());
+   }
+
+   public static ckc a(aeu $$0) {
+      return new ckc(f, g, ti.c(ac.a("trim_pattern", $$0)).a(a), h, i, A(), B());
+   }
+
+   public static ckc h() {
+      return new ckc(j, k, e, r, s, C(), D());
+   }
+
+   private static List<aeu> A() {
+      return List.of(t, u, v, w);
+   }
+
+   private static List<aeu> B() {
+      return List.of(C, D, H, E, G, F, I);
+   }
+
+   private static List<aeu> C() {
+      return List.of(t, z, u, B, v, y, w, x, A);
+   }
+
+   private static List<aeu> D() {
+      return List.of(C);
    }
 
    @Override
-   public bgq a(clh $$0) {
-      cpl $$1 = $$0.q();
-      if (!($$1 instanceof akk)) {
-         return bgq.a;
-      } else {
-         cix $$2 = $$0.n();
-         gu $$3 = $$0.a();
-         ha $$4 = $$0.k();
-         dez $$5 = $$1.a_($$3);
-         if ($$5.a(csm.ct)) {
-            dcl $$6 = $$1.c_($$3);
-            if ($$6 instanceof ddx $$7) {
-               bim<?> $$8 = this.a($$2.v());
-               $$7.a($$8, $$1.y_());
-               $$6.e();
-               $$1.a($$3, $$5, $$5, 3);
-               $$1.a($$0.o(), djj.c, $$3);
-               $$2.h(1);
-               return bgq.b;
-            }
-         }
-
-         gu $$9;
-         if ($$5.k($$1, $$3).c()) {
-            $$9 = $$3;
-         } else {
-            $$9 = $$3.a($$4);
-         }
-
-         bim<?> $$11 = this.a($$2.v());
-         if ($$11.a((akk)$$1, $$2, $$0.o(), $$9, bjc.m, true, !Objects.equals($$3, $$9) && $$4 == ha.b) != null) {
-            $$2.h(1);
-            $$1.a($$0.o(), djj.t, $$3);
-         }
-
-         return bgq.b;
-      }
+   public void a(cja $$0, @Nullable cpq $$1, List<ti> $$2, ckr $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$2.add(this.L);
+      $$2.add(th.a);
+      $$2.add(d);
+      $$2.add(th.a().b(this.J));
+      $$2.add(c);
+      $$2.add(th.a().b(this.K));
    }
 
-   @Override
-   public bgr<cix> a(cpl $$0, cbm $$1, bgp $$2) {
-      cix $$3 = $$1.b($$2);
-      egz $$4 = a($$0, $$1, cou.b.b);
-      if ($$4.c() != ehb.a.b) {
-         return bgr.c($$3);
-      } else if (!($$0 instanceof akk)) {
-         return bgr.a($$3);
-      } else {
-         gu $$6 = $$4.a();
-         if (!($$0.a_($$6).b() instanceof cwy)) {
-            return bgr.c($$3);
-         } else if ($$0.a($$1, $$6) && $$1.a($$6, $$4.b(), $$3)) {
-            bim<?> $$7 = this.a($$3.v());
-            bii $$8 = $$7.a((akk)$$0, $$3, $$1, $$6, bjc.m, false, false);
-            if ($$8 == null) {
-               return bgr.c($$3);
-            } else {
-               if (!$$1.fR().d) {
-                  $$3.h(1);
-               }
-
-               $$1.b(apg.c.b(this));
-               $$0.a($$1, djj.t, $$8.di());
-               return bgr.b($$3);
-            }
-         } else {
-            return bgr.d($$3);
-         }
-      }
+   public ti i() {
+      return this.M;
    }
 
-   public boolean a(@Nullable qr $$0, bim<?> $$1) {
-      return Objects.equals(this.a($$0), $$1);
+   public ti x() {
+      return this.N;
    }
 
-   public int a(int $$0) {
-      return $$0 == 0 ? this.b : this.c;
+   public List<aeu> y() {
+      return this.O;
    }
 
-   @Nullable
-   public static ckc a(@Nullable bim<?> $$0) {
-      return a.get($$0);
-   }
-
-   public static Iterable<ckc> h() {
-      return Iterables.unmodifiableIterable(a.values());
-   }
-
-   public bim<?> a(@Nullable qr $$0) {
-      if ($$0 != null && $$0.b("EntityTag", 10)) {
-         qr $$1 = $$0.p("EntityTag");
-         if ($$1.b("id", 8)) {
-            return bim.a($$1.l("id")).orElse(this.d);
-         }
-      }
-
-      return this.d;
-   }
-
-   @Override
-   public cdu m() {
-      return this.d.m();
-   }
-
-   public Optional<bja> a(cbm $$0, bja $$1, bim<? extends bja> $$2, akk $$3, ehd $$4, cix $$5) {
-      if (!this.a($$5.v(), $$2)) {
-         return Optional.empty();
-      } else {
-         bja $$6;
-         if ($$1 instanceof bid) {
-            $$6 = ((bid)$$1).a($$3, (bid)$$1);
-         } else {
-            $$6 = $$2.a((cpl)$$3);
-         }
-
-         if ($$6 == null) {
-            return Optional.empty();
-         } else {
-            $$6.a(true);
-            if (!$$6.i_()) {
-               return Optional.empty();
-            } else {
-               $$6.b($$4.a(), $$4.b(), $$4.c(), 0.0F, 0.0F);
-               $$3.a_($$6);
-               if ($$5.A()) {
-                  $$6.b($$5.y());
-               }
-
-               if (!$$0.fR().d) {
-                  $$5.h(1);
-               }
-
-               return Optional.of($$6);
-            }
-         }
-      }
+   public List<aeu> z() {
+      return this.P;
    }
 }

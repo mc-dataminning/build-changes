@@ -1,54 +1,24 @@
-public class ewm extends eyc {
-   private static eqo<?>[] a(eqp $$0) {
-      return new eqo[]{
-         $$0.ao(),
-         $$0.S(),
-         $$0.q(),
-         $$0.E(),
-         $$0.o(),
-         $$0.U(),
-         $$0.m(),
-         $$0.n(),
-         $$0.x(),
-         $$0.y(),
-         $$0.Y(),
-         $$0.Z(),
-         $$0.af(),
-         $$0.ag(),
-         $$0.ah(),
-         $$0.ak(),
-         $$0.ai(),
-         $$0.aj(),
-         $$0.b(),
-         $$0.a(),
-         $$0.p(),
-         $$0.r()
+public record ewm(int a, int b) {
+   public static ewm a(ewk $$0, int $$1, int $$2) {
+      return switch ($$0) {
+         case a -> new ewm($$1, $$2);
+         case b -> new ewm($$2, $$1);
       };
    }
 
-   public ewm(eya $$0, eqp $$1) {
-      super($$0, $$1, tf.c("options.accessibility.title"), a($$1));
+   public ewm a(ewl $$0) {
+      return switch ($$0) {
+         case b -> new ewm(this.a, this.b + 1);
+         case a -> new ewm(this.a, this.b - 1);
+         case c -> new ewm(this.a - 1, this.b);
+         case d -> new ewm(this.a + 1, this.b);
+      };
    }
 
-   @Override
-   protected void aC_() {
-      super.aC_();
-      ese $$0 = this.k.b(this.b.q());
-      if ($$0 != null && !this.f.aa().b().contains("high_contrast")) {
-         $$0.i = false;
-         $$0.a(etq.a(tf.c("options.accessibility.high_contrast.error.tooltip")));
-      }
-   }
-
-   @Override
-   protected void g() {
-      this.d(esg.a(tf.c("options.accessibility.link"), $$0 -> this.f.a(new ews($$0x -> {
-            if ($$0x) {
-               ac.i().a("https://aka.ms/MinecraftJavaAccessibility");
-            }
-
-            this.f.a(this);
-         }, "https://aka.ms/MinecraftJavaAccessibility", true))).a(this.g / 2 - 155, this.h - 27, 150, 20).a());
-      this.d(esg.a(te.d, $$0 -> this.f.a(this.a)).a(this.g / 2 + 5, this.h - 27, 150, 20).a());
+   public int a(ewk $$0) {
+      return switch ($$0) {
+         case a -> this.a;
+         case b -> this.b;
+      };
    }
 }

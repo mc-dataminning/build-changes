@@ -1,25 +1,31 @@
+import com.mojang.blaze3d.platform.GLX;
+import com.mojang.blaze3d.platform.GlStateManager;
+import java.nio.Buffer;
 import java.nio.ByteBuffer;
 import org.lwjgl.system.MemoryUtil;
-import org.lwjgl.system.MemoryUtil.MemoryAllocator;
 
 public class ekd {
-   private static final MemoryAllocator a = MemoryUtil.getAllocator(false);
-
    public static ByteBuffer a(int $$0) {
-      long $$1 = a.malloc((long)$$0);
-      if ($$1 == 0L) {
-         throw new OutOfMemoryError("Failed to allocate " + $$0 + " bytes");
-      } else {
-         return MemoryUtil.memByteBuffer($$1, $$0);
-      }
+      return MemoryUtil.memAlloc($$0);
    }
 
-   public static ByteBuffer a(ByteBuffer $$0, int $$1) {
-      long $$2 = a.realloc(MemoryUtil.memAddress0($$0), (long)$$1);
-      if ($$2 == 0L) {
-         throw new OutOfMemoryError("Failed to resize buffer from " + $$0.capacity() + " bytes to " + $$1 + " bytes");
-      } else {
-         return MemoryUtil.memByteBuffer($$2, $$1);
-      }
+   public static void a(Buffer $$0) {
+      MemoryUtil.memFree($$0);
+   }
+
+   public static String a() {
+      return GlStateManager._getString(7936);
+   }
+
+   public static String b() {
+      return GLX._getCpuInfo();
+   }
+
+   public static String c() {
+      return GlStateManager._getString(7937);
+   }
+
+   public static String d() {
+      return GlStateManager._getString(7938);
    }
 }

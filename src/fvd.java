@@ -1,20 +1,20 @@
-public class fvd<T extends bzl> extends fud<T, fgu<T>> {
-   private static final aer a = new aer("textures/entity/spider/spider.png");
+public class fvd extends ftt<bym, fgt<bym>> {
+   private static final aeu a = new aeu("textures/entity/skeleton/skeleton.png");
 
-   public fvd(fsx.a $$0) {
-      this($$0, fhr.br);
+   public fvd(ftc.a $$0) {
+      this($$0, fhw.bh, fhw.bj, fhw.bk);
    }
 
-   public fvd(fsx.a $$0, fhq $$1) {
-      super($$0, new fgu<>($$0.a($$1)), 0.8F);
-      this.a(new fxl<>(this));
+   public fvd(ftc.a $$0, fhv $$1, fhv $$2, fhv $$3) {
+      super($$0, new fgt<>($$0.a($$1)), 0.5F);
+      this.a(new fxa<>(this, new fgt($$0.a($$2)), new fgt($$0.a($$3)), $$0.g()));
    }
 
-   protected float b(T $$0) {
-      return 180.0F;
-   }
-
-   public aer a(T $$0) {
+   public aeu a(bym $$0) {
       return a;
+   }
+
+   protected boolean b(bym $$0) {
+      return $$0.ga();
    }
 }

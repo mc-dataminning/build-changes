@@ -1,52 +1,95 @@
-public class cmt extends cls {
-   public cmt(aer $$0, clq $$1) {
-      super($$0, $$1);
-   }
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
 
-   public boolean a(cer $$0, cpl $$1) {
-      if ($$0.f() == 3 && $$0.g() == 3) {
-         for (int $$2 = 0; $$2 < $$0.f(); $$2++) {
-            for (int $$3 = 0; $$3 < $$0.g(); $$3++) {
-               cix $$4 = $$0.a($$2 + $$3 * $$0.f());
-               if ($$4.b()) {
-                  return false;
-               }
+public class cmt implements cms {
+   final cmb a;
+   final cmb b;
+   final cmb c;
+   final cja d;
 
-               if ($$2 == 1 && $$3 == 1) {
-                  if (!$$4.a(cja.ux)) {
-                     return false;
-                  }
-               } else if (!$$4.a(cja.nH)) {
-                  return false;
-               }
-            }
-         }
-
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   public cix a(cer $$0, hs $$1) {
-      cix $$2 = $$0.a(1 + $$0.f());
-      if (!$$2.a(cja.ux)) {
-         return cix.b;
-      } else {
-         cix $$3 = new cix(cja.uw, 8);
-         ckw.a($$3, ckw.d($$2));
-         ckw.a($$3, ckw.b($$2));
-         return $$3;
-      }
+   public cmt(cmb $$0, cmb $$1, cmb $$2, cja $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
    @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 >= 2 && $$1 >= 2;
+   public boolean a(bgm $$0, cpq $$1) {
+      return this.a.a($$0.a(0)) && this.b.a($$0.a(1)) && this.c.a($$0.a(2));
    }
 
    @Override
-   public cmc<?> ai_() {
-      return cmc.j;
+   public cja a(bgm $$0, hu $$1) {
+      cja $$2 = this.d.p();
+      qu $$3 = $$0.a(1).v();
+      if ($$3 != null) {
+         $$2.c($$3.h());
+      }
+
+      return $$2;
+   }
+
+   @Override
+   public cja a(hu $$0) {
+      return this.d;
+   }
+
+   @Override
+   public boolean a(cja $$0) {
+      return this.a.a($$0);
+   }
+
+   @Override
+   public boolean b(cja $$0) {
+      return this.b.a($$0);
+   }
+
+   @Override
+   public boolean c(cja $$0) {
+      return this.c.a($$0);
+   }
+
+   @Override
+   public cmh<?> ai_() {
+      return cmh.u;
+   }
+
+   @Override
+   public boolean i() {
+      return Stream.of(this.a, this.b, this.c).anyMatch(cmb::c);
+   }
+
+   public static class a implements cmh<cmt> {
+      private static final Codec<cmt> x = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  cmb.b.fieldOf("template").forGetter($$0x -> $$0x.a),
+                  cmb.b.fieldOf("base").forGetter($$0x -> $$0x.b),
+                  cmb.b.fieldOf("addition").forGetter($$0x -> $$0x.c),
+                  clv.a.fieldOf("result").forGetter($$0x -> $$0x.d)
+               )
+               .apply($$0, cmt::new)
+      );
+
+      @Override
+      public Codec<cmt> a() {
+         return x;
+      }
+
+      public cmt b(sl $$0) {
+         cmb $$1 = cmb.b($$0);
+         cmb $$2 = cmb.b($$0);
+         cmb $$3 = cmb.b($$0);
+         cja $$4 = $$0.q();
+         return new cmt($$1, $$2, $$3, $$4);
+      }
+
+      public void a(sl $$0, cmt $$1) {
+         $$1.a.a($$0);
+         $$1.b.a($$0);
+         $$1.c.a($$0);
+         $$0.a($$1.d);
+      }
    }
 }

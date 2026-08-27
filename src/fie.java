@@ -1,8 +1,9 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public class fie {
+   final int a;
+   final int b;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface fie {
+   public fie(int $$0, int $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
 }

@@ -1,77 +1,161 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
-import javax.annotation.Nullable;
+import com.google.common.collect.Sets;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonSyntaxException;
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Set;
+import java.util.function.Predicate;
 
-public class ai {
-   private static final Map<aer, al<?>> aa = Maps.newHashMap();
-   public static final bw a = a(new bw());
-   public static final cc b = a(new cc(new aer("player_killed_entity")));
-   public static final cc c = a(new cc(new aer("entity_killed_player")));
-   public static final bk d = a(new bk());
-   public static final bx e = a(new bx());
-   public static final cs f = a(new cs());
-   public static final cn g = a(new cn());
-   public static final bn h = a(new bn());
-   public static final bi i = a(new bi());
-   public static final bs j = a(new bs());
-   public static final av k = a(new av());
-   public static final ay l = a(new ay());
-   public static final de m = a(new de());
-   public static final cz n = a(new cz());
-   public static final au o = a(new au());
-   public static final cq p = a(new cq(new aer("location")));
-   public static final cq q = a(new cq(new aer("slept_in_bed")));
-   public static final bb r = a(new bb());
-   public static final dd s = a(new dd());
-   public static final by t = a(new by());
-   public static final cd u = a(new cd());
-   public static final aw v = a(new aw());
-   public static final cq w = a(new cq(new aer("tick")));
-   public static final db x = a(new db());
-   public static final ca y = a(new ca(new aer("placed_block")));
-   public static final az z = a(new az());
-   public static final bh A = a(new bh());
-   public static final df B = a(new df());
-   public static final bg C = a(new bg(new aer("nether_travel")));
-   public static final bu D = a(new bu());
-   public static final ax E = a(new ax());
-   public static final ct F = a(new ct());
-   public static final cb G = a(new cb());
-   public static final cq H = a(new cq(new aer("hero_of_the_village")));
-   public static final cq I = a(new cq(new aer("voluntary_exile")));
-   public static final cv J = a(new cv());
-   public static final as K = a(new as());
-   public static final dc L = a(new dc());
-   public static final ca M = a(new ca(new aer("item_used_on_block")));
-   public static final ci N = a(new ci());
-   public static final cm O = a(new cm(new aer("thrown_item_picked_up_by_entity")));
-   public static final cm P = a(new cm(new aer("thrown_item_picked_up_by_player")));
-   public static final co Q = a(new co());
-   public static final cx R = a(new cx());
-   public static final cg S = a(new cg());
-   public static final dg T = a(new dg());
-   public static final bg U = a(new bg(new aer("fall_from_height")));
-   public static final bg V = a(new bg(new aer("ride_entity_in_lava")));
-   public static final cc W = a(new cc(new aer("kill_mob_near_sculk_catalyst")));
-   public static final ca X = a(new ca(new aer("allay_drop_item_on_block")));
-   public static final cq Y = a(new cq(new aer("avoid_vibration")));
-   public static final cr Z = a(new cr());
+public record ai(String[][] b) {
+   public static final ai a = new ai(new String[0][]);
 
-   private static <T extends al<?>> T a(T $$0) {
-      if (aa.containsKey($$0.a())) {
-         throw new IllegalArgumentException("Duplicate criterion id " + $$0.a());
-      } else {
-         aa.put($$0.a(), $$0);
-         return $$0;
+   public ai(sl $$0) {
+      this(b($$0));
+   }
+
+   private static String[][] b(sl $$0) {
+      String[][] $$1 = new String[$$0.m()][];
+
+      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
+         $$1[$$2] = new String[$$0.m()];
+
+         for (int $$3 = 0; $$3 < $$1[$$2].length; $$3++) {
+            $$1[$$2][$$3] = $$0.r();
+         }
+      }
+
+      return $$1;
+   }
+
+   public void a(sl $$0) {
+      $$0.c(this.b.length);
+
+      for (String[] $$1 : this.b) {
+         $$0.c($$1.length);
+
+         for (String $$2 : $$1) {
+            $$0.a($$2);
+         }
       }
    }
 
-   @Nullable
-   public static <T extends am> al<T> a(aer $$0) {
-      return (al<T>)aa.get($$0);
+   public static ai a(Collection<String> $$0) {
+      return new ai($$0.stream().map($$0x -> new String[]{$$0x}).toArray(String[][]::new));
    }
 
-   public static Iterable<? extends al<?>> a() {
-      return aa.values();
+   public static ai b(Collection<String> $$0) {
+      return new ai(new String[][]{$$0.toArray(String[]::new)});
+   }
+
+   public int a() {
+      return this.b.length;
+   }
+
+   public boolean a(Predicate<String> $$0) {
+      if (this.b.length == 0) {
+         return false;
+      } else {
+         for (String[] $$1 : this.b) {
+            if (!a($$1, $$0)) {
+               return false;
+            }
+         }
+
+         return true;
+      }
+   }
+
+   public int b(Predicate<String> $$0) {
+      int $$1 = 0;
+
+      for (String[] $$2 : this.b) {
+         if (a($$2, $$0)) {
+            $$1++;
+         }
+      }
+
+      return $$1;
+   }
+
+   private static boolean a(String[] $$0, Predicate<String> $$1) {
+      for (String $$2 : $$0) {
+         if ($$1.test($$2)) {
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   public static ai a(JsonArray $$0, Set<String> $$1) {
+      String[][] $$2 = new String[$$0.size()][];
+      Set<String> $$3 = new ObjectOpenHashSet();
+
+      for (int $$4 = 0; $$4 < $$0.size(); $$4++) {
+         JsonArray $$5 = arj.n($$0.get($$4), "requirements[" + $$4 + "]");
+         if ($$5.isEmpty() && $$1.isEmpty()) {
+            throw new JsonSyntaxException("Requirement entry cannot be empty");
+         }
+
+         $$2[$$4] = new String[$$5.size()];
+
+         for (int $$6 = 0; $$6 < $$5.size(); $$6++) {
+            String $$7 = arj.a($$5.get($$6), "requirements[" + $$4 + "][" + $$6 + "]");
+            $$2[$$4][$$6] = $$7;
+            $$3.add($$7);
+         }
+      }
+
+      if (!$$1.equals($$3)) {
+         Set<String> $$8 = Sets.difference($$1, $$3);
+         Set<String> $$9 = Sets.difference($$3, $$1);
+         throw new JsonSyntaxException("Advancement completion requirements did not exactly match specified criteria. Missing: " + $$8 + ". Unknown: " + $$9);
+      } else {
+         return new ai($$2);
+      }
+   }
+
+   public JsonArray b() {
+      JsonArray $$0 = new JsonArray();
+
+      for (String[] $$1 : this.b) {
+         JsonArray $$2 = new JsonArray();
+         Arrays.stream($$1).forEach($$2::add);
+         $$0.add($$2);
+      }
+
+      return $$0;
+   }
+
+   public boolean c() {
+      return this.b.length == 0;
+   }
+
+   @Override
+   public String toString() {
+      return Arrays.deepToString(this.b);
+   }
+
+   public Set<String> d() {
+      Set<String> $$0 = new ObjectOpenHashSet();
+
+      for (String[] $$1 : this.b) {
+         Collections.addAll($$0, $$1);
+      }
+
+      return $$0;
+   }
+
+   public String[][] e() {
+      return this.b;
+   }
+
+   public interface a {
+      ai.a a = ai::a;
+      ai.a b = ai::b;
+
+      ai create(Collection<String> var1);
    }
 }

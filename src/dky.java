@@ -1,40 +1,95 @@
-public class dky implements djx {
-   private static final int d = 48;
-   private static final long e = 281474976710655L;
-   private static final long f = 25214903917L;
-   private static final long g = 11L;
-   private long h;
-   private final dkk i = new dkk(this);
-
-   public dky(long $$0) {
-      this.b($$0);
-   }
+public class dky implements cpd {
+   private int a;
 
    @Override
-   public aru d() {
-      return new dky(this.g());
+   public int a(akn $$0, boolean $$1, boolean $$2) {
+      if (!$$1) {
+         return 0;
+      } else if (!$$0.X().b(cpm.G)) {
+         return 0;
+      } else {
+         arx $$3 = $$0.z;
+         this.a--;
+         if (this.a > 0) {
+            return 0;
+         } else {
+            this.a = this.a + 12000 + $$3.a(1200);
+            long $$4 = $$0.W() / 24000L;
+            if ($$4 < 5L || !$$0.N()) {
+               return 0;
+            } else if ($$3.a(5) != 0) {
+               return 0;
+            } else {
+               int $$5 = $$0.v().size();
+               if ($$5 < 1) {
+                  return 0;
+               } else {
+                  cbp $$6 = $$0.v().get($$3.a($$5));
+                  if ($$6.G_()) {
+                     return 0;
+                  } else if ($$0.a($$6.dk(), 2)) {
+                     return 0;
+                  } else {
+                     int $$7 = (24 + $$3.a(24)) * ($$3.h() ? -1 : 1);
+                     int $$8 = (24 + $$3.a(24)) * ($$3.h() ? -1 : 1);
+                     gw.a $$9 = $$6.dk().j().e($$7, 0, $$8);
+                     int $$10 = 10;
+                     if (!$$0.b($$9.u() - 10, $$9.w() - 10, $$9.u() + 10, $$9.w() + 10)) {
+                        return 0;
+                     } else {
+                        hg<cqo> $$11 = $$0.s($$9);
+                        if ($$11.a(apn.af)) {
+                           return 0;
+                        } else {
+                           int $$12 = 0;
+                           int $$13 = (int)Math.ceil((double)$$0.d_($$9).b()) + 1;
+
+                           for (int $$14 = 0; $$14 < $$13; $$14++) {
+                              $$12++;
+                              $$9.q($$0.a(dkn.a.f, $$9).v());
+                              if ($$14 == 0) {
+                                 if (!this.a($$0, $$9, $$3, true)) {
+                                    break;
+                                 }
+                              } else {
+                                 this.a($$0, $$9, $$3, false);
+                              }
+
+                              $$9.p($$9.u() + $$3.a(5) - $$3.a(5));
+                              $$9.r($$9.w() + $$3.a(5) - $$3.a(5));
+                           }
+
+                           return $$12;
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      }
    }
 
-   @Override
-   public dkv e() {
-      return new dkj.a(this.g());
-   }
+   private boolean a(akn $$0, gw $$1, arx $$2, boolean $$3) {
+      dfe $$4 = $$0.a_($$1);
+      if (!cqb.a($$0, $$1, $$4, $$4.u(), bip.ay)) {
+         return false;
+      } else if (!bze.b(bip.ay, $$0, bjf.p, $$1, $$2)) {
+         return false;
+      } else {
+         bze $$5 = bip.ay.a((cpq)$$0);
+         if ($$5 != null) {
+            if ($$3) {
+               $$5.w(true);
+               $$5.gi();
+            }
 
-   @Override
-   public void b(long $$0) {
-      this.h = ($$0 ^ 25214903917L) & 281474976710655L;
-      this.i.a();
-   }
-
-   @Override
-   public int c(int $$0) {
-      long $$1 = this.h * 25214903917L + 11L & 281474976710655L;
-      this.h = $$1;
-      return (int)($$1 >> 48 - $$0);
-   }
-
-   @Override
-   public double k() {
-      return this.i.b();
+            $$5.e((double)$$1.u(), (double)$$1.v(), (double)$$1.w());
+            $$5.a($$0, $$0.d_($$1), bjf.p, null, null);
+            $$0.a_($$5);
+            return true;
+         } else {
+            return false;
+         }
+      }
    }
 }

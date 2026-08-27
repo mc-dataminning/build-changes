@@ -1,102 +1,32 @@
-import java.util.EnumSet;
-import java.util.Iterator;
-import java.util.List;
-import javax.annotation.Nullable;
+public class brl extends bqg {
+   private final bzw b;
+   private int c;
 
-public class brl extends brt {
-   private static final btk a = btk.a().d().e();
-   private static final int b = 10;
-   private boolean c;
-   private int d;
-   private final Class<?>[] i;
-   @Nullable
-   private Class<?>[] j;
-
-   public brl(bjh $$0, Class<?>... $$1) {
-      super($$0, true);
-      this.i = $$1;
-      this.a(EnumSet.of(bpt.a.d));
-   }
-
-   @Override
-   public boolean a() {
-      int $$0 = this.e.eg();
-      biy $$1 = this.e.ef();
-      if ($$0 != this.d && $$1 != null) {
-         if ($$1.ag() == bim.bt && this.e.dK().X().b(cph.K)) {
-            return false;
-         } else {
-            for (Class<?> $$2 : this.i) {
-               if ($$2.isAssignableFrom($$1.getClass())) {
-                  return false;
-               }
-            }
-
-            return this.a($$1, a);
-         }
-      } else {
-         return false;
-      }
-   }
-
-   public brl a(Class<?>... $$0) {
-      this.c = true;
-      this.j = $$0;
-      return this;
+   public brl(bzw $$0, double $$1, boolean $$2) {
+      super($$0, $$1, $$2);
+      this.b = $$0;
    }
 
    @Override
    public void c() {
-      this.e.h(this.e.ef());
-      this.g = this.e.j();
-      this.d = this.e.eg();
-      this.h = 300;
-      if (this.c) {
-         this.h();
-      }
-
       super.c();
+      this.c = 0;
    }
 
-   protected void h() {
-      double $$0 = this.l();
-      egy $$1 = egy.a(this.e.di()).c($$0, 10.0, $$0);
-      List<? extends bja> $$2 = this.e.dK().a((Class<? extends bja>)this.e.getClass(), $$1, bil.f);
-      Iterator var5 = $$2.iterator();
+   @Override
+   public void d() {
+      super.d();
+      this.b.v(false);
+   }
 
-      while (true) {
-         bja $$3;
-         while (true) {
-            if (!var5.hasNext()) {
-               return;
-            }
-
-            $$3 = (bja)var5.next();
-            if (this.e != $$3 && $$3.j() == null && (!(this.e instanceof bjt) || ((bjt)this.e).I_() == ((bjt)$$3).I_()) && !$$3.s(this.e.ef())) {
-               if (this.j == null) {
-                  break;
-               }
-
-               boolean $$4 = false;
-
-               for (Class<?> $$5 : this.j) {
-                  if ($$3.getClass() == $$5) {
-                     $$4 = true;
-                     break;
-                  }
-               }
-
-               if (!$$4) {
-                  break;
-               }
-            }
-         }
-
-         this.a($$3, this.e.ef());
+   @Override
+   public void e() {
+      super.e();
+      this.c++;
+      if (this.c >= 5 && this.k() < this.l() / 2) {
+         this.b.v(true);
+      } else {
+         this.b.v(false);
       }
-   }
-
-   protected void a(bja $$0, biy $$1) {
-      $$0.h($$1);
    }
 }

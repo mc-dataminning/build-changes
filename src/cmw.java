@@ -1,15 +1,15 @@
-public class cmw extends cne {
-   public cmw(cne.a $$0, bin... $$1) {
-      super($$0, cnf.k, $$1);
+public class cmw extends cmq {
+   public cmw(String $$0, cmb $$1, civ $$2, int $$3) {
+      super(cmi.f, cmh.t, $$0, $$1, new cja($$2, $$3));
    }
 
    @Override
-   public int a(int $$0) {
-      return 20;
+   public boolean a(bgm $$0, cpq $$1) {
+      return this.a.a($$0.a(0));
    }
 
    @Override
-   public int b(int $$0) {
-      return 50;
+   public cja g() {
+      return new cja(csr.oc);
    }
 }

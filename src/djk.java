@@ -1,59 +1,37 @@
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class djk {
-   private final akk a;
+public class djk implements djs {
+   public static final Codec<djk> a = RecordCodecBuilder.create($$0 -> $$0.group(gw.a.fieldOf("pos").forGetter($$0x -> $$0x.c)).apply($$0, djk::new));
+   final gw c;
 
-   public djk(akk $$0) {
-      this.a = $$0;
+   public djk(gw $$0) {
+      this.c = $$0;
    }
 
-   public void a(djj $$0, ehd $$1, djj.a $$2) {
-      int $$3 = $$0.a();
-      gu $$4 = gu.a($$1);
-      int $$5 = hx.a($$4.u() - $$3);
-      int $$6 = hx.a($$4.v() - $$3);
-      int $$7 = hx.a($$4.w() - $$3);
-      int $$8 = hx.a($$4.u() + $$3);
-      int $$9 = hx.a($$4.v() + $$3);
-      int $$10 = hx.a($$4.w() + $$3);
-      List<djj.b> $$11 = new ArrayList<>();
-      djm.a $$12 = ($$4x, $$5x) -> {
-         if ($$4x.c() == djl.a.b) {
-            $$11.add(new djj.b($$0, $$1, $$2, $$4x, $$5x));
-         } else {
-            $$4x.a(this.a, $$0, $$2, $$1);
-         }
-      };
-      boolean $$13 = false;
-
-      for (int $$14 = $$5; $$14 <= $$8; $$14++) {
-         for (int $$15 = $$7; $$15 <= $$10; $$15++) {
-            dgv $$16 = this.a.k().a($$14, $$15);
-            if ($$16 != null) {
-               for (int $$17 = $$6; $$17 <= $$9; $$17++) {
-                  $$13 |= $$16.a($$17).a($$0, $$1, $$2, $$12);
-               }
-            }
-         }
-      }
-
-      if (!$$11.isEmpty()) {
-         this.a($$11);
-      }
-
-      if ($$13) {
-         aav.a(this.a, $$0, $$1);
-      }
+   @Override
+   public Optional<ehi> a(cpq $$0) {
+      return Optional.of(ehi.b(this.c));
    }
 
-   private void a(List<djj.b> $$0) {
-      Collections.sort($$0);
+   @Override
+   public djt<?> a() {
+      return djt.a;
+   }
 
-      for (djj.b $$1 : $$0) {
-         djl $$2 = $$1.d();
-         $$2.a(this.a, $$1.a(), $$1.c(), $$1.b());
+   public static class a implements djt<djk> {
+      public djk a(sl $$0) {
+         return new djk($$0.e());
+      }
+
+      public void a(sl $$0, djk $$1) {
+         $$0.a($$1.c);
+      }
+
+      @Override
+      public Codec<djk> a() {
+         return djk.a;
       }
    }
 }

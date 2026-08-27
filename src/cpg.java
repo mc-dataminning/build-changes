@@ -1,34 +1,19 @@
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
+import java.util.Optional;
 
-public class cpg extends ebh {
-   public static final String a = "chunks";
-   private static final String b = "Forced";
-   private final LongSet c;
+public class cpg extends cpj {
+   private final bil a;
 
-   public static ebh.a<cpg> a() {
-      return new ebh.a<>(cpg::new, cpg::b, ass.m);
-   }
-
-   private cpg(LongSet $$0) {
-      this.c = $$0;
-   }
-
-   public cpg() {
-      this(new LongOpenHashSet());
-   }
-
-   public static cpg b(qr $$0) {
-      return new cpg(new LongOpenHashSet($$0.o("Forced")));
+   public cpg(bil $$0) {
+      this.a = $$0;
    }
 
    @Override
-   public qr a(qr $$0) {
-      $$0.a("Forced", this.c.toLongArray());
-      return $$0;
+   public Optional<Float> a(cpi $$0, cow $$1, gw $$2, dfe $$3, eah $$4) {
+      return super.a($$0, $$1, $$2, $$3, $$4).map($$5 -> this.a.a($$0, $$1, $$2, $$3, $$4, $$5));
    }
 
-   public LongSet b() {
-      return this.c;
+   @Override
+   public boolean a(cpi $$0, cow $$1, gw $$2, dfe $$3, float $$4) {
+      return this.a.a($$0, $$1, $$2, $$3, $$4);
    }
 }

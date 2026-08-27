@@ -1,34 +1,17 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dte extends dtf {
-   public static final dte a = new dte(dlc.a(0));
-   public static final Codec<dte> b = aqy.c(dlc.a, dlc.a.fieldOf("value").codec()).xmap(dte::new, dte::b);
-   private final dlc d;
+public record dte(hg<civ> c, dtg d) {
+   public static final Codec<dte> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(aer.a(je.D).fieldOf("display").forGetter($$0x -> $$0x.c), dtg.a.fieldOf("settings").forGetter($$0x -> $$0x.d)).apply($$0, dte::new)
+   );
+   public static final Codec<hg<dte>> b = aeq.a(je.av, a);
 
-   public static dte a(dlc $$0) {
-      return new dte($$0);
+   public hg<civ> a() {
+      return this.c;
    }
 
-   private dte(dlc $$0) {
-      this.d = $$0;
-   }
-
-   public dlc b() {
+   public dtg b() {
       return this.d;
-   }
-
-   @Override
-   public int a(aru $$0, dlf $$1) {
-      return this.d.a($$1);
-   }
-
-   @Override
-   public dtg<?> a() {
-      return dtg.a;
-   }
-
-   @Override
-   public String toString() {
-      return this.d.toString();
    }
 }

@@ -1,274 +1,206 @@
 import com.google.gson.JsonElement;
-import com.google.gson.JsonNull;
 import com.google.gson.JsonParseException;
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.JsonOps;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
-import java.util.function.Function;
-import java.util.function.Supplier;
 import javax.annotation.Nullable;
 
-public interface cj<T extends Number> {
-   SimpleCommandExceptionType a = new SimpleCommandExceptionType(tf.c("argument.range.empty"));
-   SimpleCommandExceptionType b = new SimpleCommandExceptionType(tf.c("argument.range.swapped"));
+public record cj(
+   Optional<cj.b> b, Optional<aet<cqo>> c, Optional<aet<dvd>> d, Optional<aet<cpq>> e, Optional<Boolean> f, Optional<cg> g, Optional<av> h, Optional<bx> i
+) {
+   public static final Codec<cj> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               arb.a(cj.b.a, "position").forGetter(cj::b),
+               arb.a(aet.a(je.ap), "biome").forGetter(cj::c),
+               arb.a(aet.a(je.az), "structure").forGetter(cj::d),
+               arb.a(aet.a(je.aH), "dimension").forGetter(cj::e),
+               arb.a(Codec.BOOL, "smokey").forGetter(cj::f),
+               arb.a(cg.a, "light").forGetter(cj::g),
+               arb.a(av.a, "block").forGetter(cj::h),
+               arb.a(bx.a, "fluid").forGetter(cj::i)
+            )
+            .apply($$0, cj::new)
+   );
 
-   Optional<T> a();
-
-   Optional<T> b();
-
-   default boolean c() {
-      return this.a().isEmpty() && this.b().isEmpty();
+   private static Optional<cj> a(
+      Optional<cj.b> $$0,
+      Optional<aet<cqo>> $$1,
+      Optional<aet<dvd>> $$2,
+      Optional<aet<cpq>> $$3,
+      Optional<Boolean> $$4,
+      Optional<cg> $$5,
+      Optional<av> $$6,
+      Optional<bx> $$7
+   ) {
+      return $$0.isEmpty() && $$1.isEmpty() && $$2.isEmpty() && $$3.isEmpty() && $$4.isEmpty() && $$5.isEmpty() && $$6.isEmpty() && $$7.isEmpty()
+         ? Optional.empty()
+         : Optional.of(new cj($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
    }
 
-   default Optional<T> d() {
-      Optional<T> $$0 = this.a();
-      Optional<T> $$1 = this.b();
-      return $$0.equals($$1) ? $$0 : Optional.empty();
-   }
-
-   static <T extends Number, R extends cj<T>> Codec<R> a(Codec<T> $$0, cj.a<T, R> $$1) {
-      Codec<R> $$2 = RecordCodecBuilder.create(
-         $$2x -> $$2x.group(aqy.a($$0, "min").forGetter(cj::a), aqy.a($$0, "max").forGetter(cj::b)).apply($$2x, $$1::create)
-      );
-      return Codec.either($$2, $$0).xmap($$1x -> (cj)$$1x.map($$0xx -> $$0xx, $$1xx -> $$1.create(Optional.of((T)$$1xx), Optional.of((T)$$1xx))), $$0x -> {
-         Optional<T> $$1x = $$0x.d();
-         return $$1x.isPresent() ? Either.right($$1x.get()) : Either.left($$0x);
-      });
-   }
-
-   static <T extends Number, R extends cj<T>> R a(
-      StringReader $$0, cj.b<T, R> $$1, Function<String, T> $$2, Supplier<DynamicCommandExceptionType> $$3, Function<T, T> $$4
-   ) throws CommandSyntaxException {
-      if (!$$0.canRead()) {
-         throw a.createWithContext($$0);
+   public boolean a(akn $$0, double $$1, double $$2, double $$3) {
+      if (this.b.isPresent() && !this.b.get().a($$1, $$2, $$3)) {
+         return false;
+      } else if (this.e.isPresent() && this.e.get() != $$0.ac()) {
+         return false;
       } else {
-         int $$5 = $$0.getCursor();
-
-         try {
-            Optional<T> $$6 = a($$0, $$2, $$3).map($$4);
-            Optional<T> $$7;
-            if ($$0.canRead(2) && $$0.peek() == '.' && $$0.peek(1) == '.') {
-               $$0.skip();
-               $$0.skip();
-               $$7 = a($$0, $$2, $$3).map($$4);
-               if ($$6.isEmpty() && $$7.isEmpty()) {
-                  throw a.createWithContext($$0);
+         gw $$4 = gw.a($$1, $$2, $$3);
+         boolean $$5 = $$0.o($$4);
+         if (!this.c.isPresent() || $$5 && $$0.s($$4).a(this.c.get())) {
+            if (!this.d.isPresent() || $$5 && $$0.a().a($$4, this.d.get()).b()) {
+               if (!this.f.isPresent() || $$5 && this.f.get() == ctd.a($$0, $$4)) {
+                  if (this.g.isPresent() && !this.g.get().a($$0, $$4)) {
+                     return false;
+                  } else {
+                     return this.h.isPresent() && !this.h.get().a($$0, $$4) ? false : !this.i.isPresent() || this.i.get().a($$0, $$4);
+                  }
+               } else {
+                  return false;
                }
             } else {
-               $$7 = $$6;
+               return false;
             }
-
-            if ($$6.isEmpty() && $$7.isEmpty()) {
-               throw a.createWithContext($$0);
-            } else {
-               return $$1.create($$0, $$6, $$7);
-            }
-         } catch (CommandSyntaxException var8) {
-            $$0.setCursor($$5);
-            throw new CommandSyntaxException(var8.getType(), var8.getRawMessage(), var8.getInput(), $$5);
-         }
-      }
-   }
-
-   private static <T extends Number> Optional<T> a(StringReader $$0, Function<String, T> $$1, Supplier<DynamicCommandExceptionType> $$2) throws CommandSyntaxException {
-      int $$3 = $$0.getCursor();
-
-      while ($$0.canRead() && a($$0)) {
-         $$0.skip();
-      }
-
-      String $$4 = $$0.getString().substring($$3, $$0.getCursor());
-      if ($$4.isEmpty()) {
-         return Optional.empty();
-      } else {
-         try {
-            return Optional.of($$1.apply($$4));
-         } catch (NumberFormatException var6) {
-            throw $$2.get().createWithContext($$0, $$4);
-         }
-      }
-   }
-
-   private static boolean a(StringReader $$0) {
-      char $$1 = $$0.peek();
-      if (($$1 < '0' || $$1 > '9') && $$1 != '-') {
-         return $$1 != '.' ? false : !$$0.canRead(2) || $$0.peek(1) != '.';
-      } else {
-         return true;
-      }
-   }
-
-   @FunctionalInterface
-   public interface a<T extends Number, R extends cj<T>> {
-      R create(Optional<T> var1, Optional<T> var2);
-   }
-
-   @FunctionalInterface
-   public interface b<T extends Number, R extends cj<T>> {
-      R create(StringReader var1, Optional<T> var2, Optional<T> var3) throws CommandSyntaxException;
-   }
-
-   public static record c(Optional<Double> e, Optional<Double> f, Optional<Double> g, Optional<Double> h) implements cj<Double> {
-      public static final cj.c c = new cj.c(Optional.empty(), Optional.empty());
-      public static final Codec<cj.c> d = cj.a(Codec.DOUBLE, cj.c::new);
-
-      private c(Optional<Double> $$0, Optional<Double> $$1) {
-         this($$0, $$1, a($$0), a($$1));
-      }
-
-      private static cj.c a(StringReader $$0, Optional<Double> $$1, Optional<Double> $$2) throws CommandSyntaxException {
-         if ($$1.isPresent() && $$2.isPresent() && $$1.get() > $$2.get()) {
-            throw b.createWithContext($$0);
          } else {
-            return new cj.c($$1, $$2);
+            return false;
          }
-      }
-
-      private static Optional<Double> a(Optional<Double> $$0) {
-         return $$0.map($$0x -> $$0x * $$0x);
-      }
-
-      public static cj.c a(double $$0) {
-         return new cj.c(Optional.of($$0), Optional.of($$0));
-      }
-
-      public static cj.c a(double $$0, double $$1) {
-         return new cj.c(Optional.of($$0), Optional.of($$1));
-      }
-
-      public static cj.c b(double $$0) {
-         return new cj.c(Optional.of($$0), Optional.empty());
-      }
-
-      public static cj.c c(double $$0) {
-         return new cj.c(Optional.empty(), Optional.of($$0));
-      }
-
-      public boolean d(double $$0) {
-         return this.e.isPresent() && this.e.get() > $$0 ? false : this.f.isEmpty() || !(this.f.get() < $$0);
-      }
-
-      public boolean e(double $$0) {
-         return this.g.isPresent() && this.g.get() > $$0 ? false : this.h.isEmpty() || !(this.h.get() < $$0);
-      }
-
-      public static cj.c a(@Nullable JsonElement $$0) {
-         return $$0 != null && !$$0.isJsonNull() ? ac.a(d.parse(JsonOps.INSTANCE, $$0), JsonParseException::new) : c;
-      }
-
-      public JsonElement e() {
-         return (JsonElement)(this.c() ? JsonNull.INSTANCE : ac.a(d.encodeStart(JsonOps.INSTANCE, this), IllegalStateException::new));
-      }
-
-      public static cj.c a(StringReader $$0) throws CommandSyntaxException {
-         return a($$0, $$0x -> $$0x);
-      }
-
-      public static cj.c a(StringReader $$0, Function<Double, Double> $$1) throws CommandSyntaxException {
-         return cj.a($$0, cj.c::a, Double::parseDouble, CommandSyntaxException.BUILT_IN_EXCEPTIONS::readerInvalidDouble, $$1);
-      }
-
-      @Override
-      public Optional<Double> a() {
-         return this.e;
-      }
-
-      @Override
-      public Optional<Double> b() {
-         return this.f;
-      }
-
-      public Optional<Double> f() {
-         return this.g;
-      }
-
-      public Optional<Double> g() {
-         return this.h;
       }
    }
 
-   public static record d(Optional<Integer> e, Optional<Integer> f, Optional<Long> g, Optional<Long> h) implements cj<Integer> {
-      public static final cj.d c = new cj.d(Optional.empty(), Optional.empty());
-      public static final Codec<cj.d> d = cj.a(Codec.INT, cj.d::new);
+   public JsonElement a() {
+      return ac.a(a.encodeStart(JsonOps.INSTANCE, this), IllegalStateException::new);
+   }
 
-      private d(Optional<Integer> $$0, Optional<Integer> $$1) {
-         this($$0, $$1, $$0.map($$0x -> $$0x.longValue() * $$0x.longValue()), a($$1));
+   public static Optional<cj> a(@Nullable JsonElement $$0) {
+      return $$0 != null && !$$0.isJsonNull() ? Optional.of(ac.a(a.parse(JsonOps.INSTANCE, $$0), JsonParseException::new)) : Optional.empty();
+   }
+
+   public static class a {
+      private cl.c a;
+      private cl.c b;
+      private cl.c c;
+      private Optional<aet<cqo>> d;
+      private Optional<aet<dvd>> e;
+      private Optional<aet<cpq>> f;
+      private Optional<Boolean> g;
+      private Optional<cg> h;
+      private Optional<av> i;
+      private Optional<bx> j;
+
+      public a() {
+         this.a = cl.c.c;
+         this.b = cl.c.c;
+         this.c = cl.c.c;
+         this.d = Optional.empty();
+         this.e = Optional.empty();
+         this.f = Optional.empty();
+         this.g = Optional.empty();
+         this.h = Optional.empty();
+         this.i = Optional.empty();
+         this.j = Optional.empty();
       }
 
-      private static cj.d a(StringReader $$0, Optional<Integer> $$1, Optional<Integer> $$2) throws CommandSyntaxException {
-         if ($$1.isPresent() && $$2.isPresent() && $$1.get() > $$2.get()) {
-            throw b.createWithContext($$0);
-         } else {
-            return new cj.d($$1, $$2);
-         }
+      public static cj.a a() {
+         return new cj.a();
       }
 
-      private static Optional<Long> a(Optional<Integer> $$0) {
-         return $$0.map($$0x -> $$0x.longValue() * $$0x.longValue());
+      public static cj.a a(aet<cqo> $$0) {
+         return a().d($$0);
       }
 
-      public static cj.d a(int $$0) {
-         return new cj.d(Optional.of($$0), Optional.of($$0));
+      public static cj.a b(aet<cpq> $$0) {
+         return a().f($$0);
       }
 
-      public static cj.d a(int $$0, int $$1) {
-         return new cj.d(Optional.of($$0), Optional.of($$1));
+      public static cj.a c(aet<dvd> $$0) {
+         return a().e($$0);
       }
 
-      public static cj.d b(int $$0) {
-         return new cj.d(Optional.of($$0), Optional.empty());
+      public static cj.a a(cl.c $$0) {
+         return a().c($$0);
       }
 
-      public static cj.d c(int $$0) {
-         return new cj.d(Optional.empty(), Optional.of($$0));
+      public cj.a b(cl.c $$0) {
+         this.a = $$0;
+         return this;
       }
 
-      public boolean d(int $$0) {
-         return this.e.isPresent() && this.e.get() > $$0 ? false : this.f.isEmpty() || this.f.get() >= $$0;
+      public cj.a c(cl.c $$0) {
+         this.b = $$0;
+         return this;
       }
 
-      public boolean a(long $$0) {
-         return this.g.isPresent() && this.g.get() > $$0 ? false : this.h.isEmpty() || this.h.get() >= $$0;
+      public cj.a d(cl.c $$0) {
+         this.c = $$0;
+         return this;
       }
 
-      public static cj.d a(@Nullable JsonElement $$0) {
-         return $$0 != null && !$$0.isJsonNull() ? ac.a(d.parse(JsonOps.INSTANCE, $$0), JsonParseException::new) : c;
+      public cj.a d(aet<cqo> $$0) {
+         this.d = Optional.of($$0);
+         return this;
       }
 
-      public JsonElement e() {
-         return (JsonElement)(this.c() ? JsonNull.INSTANCE : ac.a(d.encodeStart(JsonOps.INSTANCE, this), IllegalStateException::new));
+      public cj.a e(aet<dvd> $$0) {
+         this.e = Optional.of($$0);
+         return this;
       }
 
-      public static cj.d a(StringReader $$0) throws CommandSyntaxException {
-         return a($$0, $$0x -> $$0x);
+      public cj.a f(aet<cpq> $$0) {
+         this.f = Optional.of($$0);
+         return this;
       }
 
-      public static cj.d a(StringReader $$0, Function<Integer, Integer> $$1) throws CommandSyntaxException {
-         return cj.a($$0, cj.d::a, Integer::parseInt, CommandSyntaxException.BUILT_IN_EXCEPTIONS::readerInvalidInt, $$1);
+      public cj.a a(cg.a $$0) {
+         this.h = Optional.of($$0.b());
+         return this;
       }
 
-      @Override
-      public Optional<Integer> a() {
-         return this.e;
+      public cj.a a(av.a $$0) {
+         this.i = Optional.of($$0.b());
+         return this;
       }
 
-      @Override
-      public Optional<Integer> b() {
-         return this.f;
+      public cj.a a(bx.a $$0) {
+         this.j = Optional.of($$0.b());
+         return this;
       }
 
-      public Optional<Long> f() {
-         return this.g;
+      public cj.a a(boolean $$0) {
+         this.g = Optional.of($$0);
+         return this;
       }
 
-      public Optional<Long> g() {
-         return this.h;
+      public cj b() {
+         Optional<cj.b> $$0 = cj.b.a(this.a, this.b, this.c);
+         return new cj($$0, this.d, this.e, this.f, this.g, this.h, this.i, this.j);
+      }
+   }
+
+   static record b(cl.c b, cl.c c, cl.c d) {
+      public static final Codec<cj.b> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  arb.a(cl.c.d, "x", cl.c.c).forGetter(cj.b::a), arb.a(cl.c.d, "y", cl.c.c).forGetter(cj.b::b), arb.a(cl.c.d, "z", cl.c.c).forGetter(cj.b::c)
+               )
+               .apply($$0, cj.b::new)
+      );
+
+      static Optional<cj.b> a(cl.c $$0, cl.c $$1, cl.c $$2) {
+         return $$0.c() && $$1.c() && $$2.c() ? Optional.empty() : Optional.of(new cj.b($$0, $$1, $$2));
+      }
+
+      public boolean a(double $$0, double $$1, double $$2) {
+         return this.b.d($$0) && this.c.d($$1) && this.d.d($$2);
+      }
+
+      public cl.c a() {
+         return this.b;
+      }
+
+      public cl.c b() {
+         return this.c;
+      }
+
+      public cl.c c() {
+         return this.d;
       }
    }
 }

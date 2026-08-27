@@ -1,95 +1,22 @@
-public class faa extends ezf implements fac<cff> {
-   private final cff q;
-   private final cep s = new cep() {
-      @Override
-      public void a(ced $$0, int $$1, cix $$2) {
-         faa.this.I();
-      }
+public class faa extends ezd<cfd> {
+   private static final aeu x = new aeu("textures/gui/container/hopper.png");
 
-      @Override
-      public void a(ced $$0, int $$1, int $$2) {
-         if ($$1 == 0) {
-            faa.this.J();
-         }
-      }
-   };
-
-   public faa(cff $$0, cbl $$1, tf $$2) {
-      this.q = $$0;
-   }
-
-   public cff H() {
-      return this.q;
+   public faa(cfd $$0, cbo $$1, ti $$2) {
+      super($$0, $$1, $$2);
+      this.k = 133;
+      this.o = this.k - 94;
    }
 
    @Override
-   protected void aC_() {
-      super.aC_();
-      this.q.a(this.s);
+   public void a(esa $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.a($$0, $$1, $$2);
    }
 
    @Override
-   public void at_() {
-      this.f.s.q();
-      super.at_();
-   }
-
-   @Override
-   public void h() {
-      super.h();
-      this.q.b(this.s);
-   }
-
-   @Override
-   protected void l() {
-      if (this.f.s.gc()) {
-         this.d(esg.a(te.d, $$0 -> this.at_()).a(this.g / 2 - 100, 196, 98, 20).a());
-         this.d(esg.a(tf.c("lectern.take_book"), $$0 -> this.c(3)).a(this.g / 2 + 2, 196, 98, 20).a());
-      } else {
-         super.l();
-      }
-   }
-
-   @Override
-   protected void E() {
-      this.c(1);
-   }
-
-   @Override
-   protected void F() {
-      this.c(2);
-   }
-
-   @Override
-   protected boolean b(int $$0) {
-      if ($$0 != this.q.m()) {
-         this.c(100 + $$0);
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   private void c(int $$0) {
-      this.f.q.a(this.q.j, $$0);
-   }
-
-   @Override
-   public boolean j() {
-      return false;
-   }
-
-   void I() {
-      cix $$0 = this.q.l();
-      this.a(ezf.a.a($$0));
-   }
-
-   void J() {
-      this.a(this.q.m());
-   }
-
-   @Override
-   protected void G() {
-      this.f.s.q();
+   protected void a(esa $$0, float $$1, int $$2, int $$3) {
+      int $$4 = (this.g - this.c) / 2;
+      int $$5 = (this.h - this.k) / 2;
+      $$0.a(x, $$4, $$5, 0, 0, this.c, this.k);
    }
 }

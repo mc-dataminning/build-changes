@@ -1,10 +1,10 @@
-public class cvz extends csl {
-   protected cvz(dey.d $$0) {
+public class cvz extends cvi {
+   public cvz(dfd.d $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dez $$0, dez $$1, ha $$2) {
-      return $$1.a(this) ? true : super.a($$0, $$1, $$2);
+   public int d(dfe $$0, cow $$1, gw $$2) {
+      return -8356741;
    }
 }

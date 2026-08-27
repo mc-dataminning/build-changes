@@ -1,2763 +1,1351 @@
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
 import com.google.gson.JsonSyntaxException;
 import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap.Entry;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import it.unimi.dsi.fastutil.objects.ObjectListIterator;
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
-import java.util.Collection;
-import java.util.Iterator;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
-import java.util.Set;
-import java.util.SortedSet;
-import java.util.function.Supplier;
+import java.util.Optional;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
 import org.joml.Matrix3f;
 import org.joml.Matrix4f;
-import org.joml.Vector3d;
-import org.joml.Vector4f;
+import org.joml.Vector3f;
 import org.slf4j.Logger;
 
-public class fns implements ann, AutoCloseable {
-   private static final Logger d = LogUtils.getLogger();
-   public static final int a = 16;
-   public static final int b = 8;
-   private static final float e = 512.0F;
-   private static final int f = 32;
-   private static final int g = 10;
-   private static final int h = 21;
-   private static final int i = 15;
-   private static final aer j = new aer("textures/environment/moon_phases.png");
-   private static final aer k = new aer("textures/environment/sun.png");
-   private static final aer l = new aer("textures/environment/clouds.png");
-   private static final aer m = new aer("textures/environment/end_sky.png");
-   private static final aer n = new aer("textures/misc/forcefield.png");
-   private static final aer o = new aer("textures/environment/rain.png");
-   private static final aer p = new aer("textures/environment/snow.png");
-   public static final ha[] c = ha.values();
-   private final eql q;
-   private final fsv r;
-   private final fpt s;
-   private final foa t;
+public class fns implements AutoCloseable {
+   private static final aeu f = new aeu("textures/misc/nausea.png");
+   static final Logger g = LogUtils.getLogger();
+   private static final boolean h = false;
+   public static final float a = 0.05F;
+   private static final float i = 1000.0F;
+   final eqq j;
+   private final anp k;
+   private final arx l = arx.a();
+   private float m;
+   public final fnv b;
+   private final esc n;
+   private final fof o;
+   private int p;
+   private float q;
+   private float r;
+   private float s;
+   private float t;
+   private boolean u = true;
+   private boolean v = true;
+   private long w;
+   private boolean x;
+   private long y = ac.b();
+   private final fny z;
+   private final fyq A = new fyq();
+   private boolean B;
+   private float C = 1.0F;
+   private float D;
+   private float E;
+   public static final int c = 40;
    @Nullable
-   private fin u;
-   private final fog v = new fog();
-   private final ObjectArrayList<fqs.b> w = new ObjectArrayList(10000);
-   private final Set<dcl> x = Sets.newHashSet();
+   private cja F;
+   private int G;
+   private float H;
+   private float I;
    @Nullable
-   private fok y;
+   foc J;
+   static final aeu[] K = new aeu[]{
+      new aeu("shaders/post/notch.json"),
+      new aeu("shaders/post/fxaa.json"),
+      new aeu("shaders/post/art.json"),
+      new aeu("shaders/post/bumpy.json"),
+      new aeu("shaders/post/blobs2.json"),
+      new aeu("shaders/post/pencil.json"),
+      new aeu("shaders/post/color_convolve.json"),
+      new aeu("shaders/post/deconverge.json"),
+      new aeu("shaders/post/flip.json"),
+      new aeu("shaders/post/invert.json"),
+      new aeu("shaders/post/ntsc.json"),
+      new aeu("shaders/post/outline.json"),
+      new aeu("shaders/post/phosphor.json"),
+      new aeu("shaders/post/scan_pincushion.json"),
+      new aeu("shaders/post/sobel.json"),
+      new aeu("shaders/post/bits.json"),
+      new aeu("shaders/post/desaturate.json"),
+      new aeu("shaders/post/green.json"),
+      new aeu("shaders/post/blur.json"),
+      new aeu("shaders/post/wobble.json"),
+      new aeu("shaders/post/blobs.json"),
+      new aeu("shaders/post/antialias.json"),
+      new aeu("shaders/post/creeper.json"),
+      new aeu("shaders/post/spider.json")
+   };
+   public static final int d = K.length;
+   int L = d;
+   private boolean M;
+   private final eqb N = new eqb();
+   public fom e;
+   private final Map<String, fom> O = Maps.newHashMap();
    @Nullable
-   private eli z;
+   private static fom P;
    @Nullable
-   private eli A;
+   private static fom Q;
    @Nullable
-   private eli B;
-   private boolean C = true;
+   private static fom R;
    @Nullable
-   private eli D;
-   private final fod E = new fod(100);
-   private int F;
-   private final Int2ObjectMap<ajs> G = new Int2ObjectOpenHashMap();
-   private final Long2ObjectMap<SortedSet<ajs>> H = new Long2ObjectOpenHashMap();
-   private final Map<gu, gcc> I = Maps.newHashMap();
+   private static fom S;
    @Nullable
-   private ejr J;
+   private static fom T;
    @Nullable
-   private fnx K;
+   private static fom U;
    @Nullable
-   private ejr L;
+   private static fom V;
    @Nullable
-   private ejr M;
+   private static fom W;
    @Nullable
-   private ejr N;
+   private static fom X;
    @Nullable
-   private ejr O;
+   private static fom Y;
    @Nullable
-   private ejr P;
+   private static fom Z;
    @Nullable
-   private fnx Q;
-   private int R = Integer.MIN_VALUE;
-   private int S = Integer.MIN_VALUE;
-   private int T = Integer.MIN_VALUE;
-   private double U = Double.MIN_VALUE;
-   private double V = Double.MIN_VALUE;
-   private double W = Double.MIN_VALUE;
-   private double X = Double.MIN_VALUE;
-   private double Y = Double.MIN_VALUE;
-   private int Z = Integer.MIN_VALUE;
-   private int aa = Integer.MIN_VALUE;
-   private int ab = Integer.MIN_VALUE;
-   private ehd ac = ehd.b;
+   private static fom aa;
    @Nullable
-   private epz ad;
+   private static fom ab;
    @Nullable
-   private fqs ae;
-   private int af = -1;
-   private int ag;
-   private int ah;
-   private fqw ai;
-   private boolean aj;
+   private static fom ac;
    @Nullable
-   private fqw ak;
-   private final Vector4f[] al = new Vector4f[8];
-   private final Vector3d am = new Vector3d(0.0, 0.0, 0.0);
-   private double an;
-   private double ao;
-   private double ap;
-   private int aq;
-   private final float[] ar = new float[1024];
-   private final float[] as = new float[1024];
+   private static fom ad;
+   @Nullable
+   private static fom ae;
+   @Nullable
+   private static fom af;
+   @Nullable
+   private static fom ag;
+   @Nullable
+   private static fom ah;
+   @Nullable
+   private static fom ai;
+   @Nullable
+   private static fom aj;
+   @Nullable
+   private static fom ak;
+   @Nullable
+   private static fom al;
+   @Nullable
+   private static fom am;
+   @Nullable
+   private static fom an;
+   @Nullable
+   private static fom ao;
+   @Nullable
+   private static fom ap;
+   @Nullable
+   private static fom aq;
+   @Nullable
+   private static fom ar;
+   @Nullable
+   private static fom as;
+   @Nullable
+   private static fom at;
+   @Nullable
+   private static fom au;
+   @Nullable
+   private static fom av;
+   @Nullable
+   private static fom aw;
+   @Nullable
+   private static fom ax;
+   @Nullable
+   private static fom ay;
+   @Nullable
+   private static fom az;
+   @Nullable
+   private static fom aA;
+   @Nullable
+   private static fom aB;
+   @Nullable
+   private static fom aC;
+   @Nullable
+   private static fom aD;
+   @Nullable
+   private static fom aE;
+   @Nullable
+   private static fom aF;
+   @Nullable
+   private static fom aG;
+   @Nullable
+   private static fom aH;
+   @Nullable
+   private static fom aI;
+   @Nullable
+   private static fom aJ;
+   @Nullable
+   private static fom aK;
+   @Nullable
+   private static fom aL;
+   @Nullable
+   private static fom aM;
+   @Nullable
+   private static fom aN;
+   @Nullable
+   private static fom aO;
+   @Nullable
+   private static fom aP;
+   @Nullable
+   private static fom aQ;
+   @Nullable
+   private static fom aR;
+   @Nullable
+   private static fom aS;
+   @Nullable
+   private static fom aT;
+   @Nullable
+   private static fom aU;
+   @Nullable
+   private static fom aV;
 
-   public fns(eql $$0, fsv $$1, fpt $$2, foa $$3) {
-      this.q = $$0;
-      this.r = $$1;
-      this.s = $$2;
-      this.t = $$3;
-
-      for (int $$4 = 0; $$4 < 32; $$4++) {
-         for (int $$5 = 0; $$5 < 32; $$5++) {
-            float $$6 = (float)($$5 - 16);
-            float $$7 = (float)($$4 - 16);
-            float $$8 = arp.c($$6 * $$6 + $$7 * $$7);
-            this.ar[$$4 << 5 | $$5] = -$$7 / $$8;
-            this.as[$$4 << 5 | $$5] = $$6 / $$8;
-         }
-      }
-
-      this.C();
-      this.B();
-      this.A();
-   }
-
-   private void a(fnt $$0, float $$1, double $$2, double $$3, double $$4) {
-      float $$5 = this.q.r.d($$1);
-      if (!($$5 <= 0.0F)) {
-         $$0.c();
-         cpl $$6 = this.q.r;
-         int $$7 = arp.a($$2);
-         int $$8 = arp.a($$3);
-         int $$9 = arp.a($$4);
-         elh $$10 = elh.a();
-         ela $$11 = $$10.c();
-         RenderSystem.disableCull();
-         RenderSystem.enableBlend();
-         RenderSystem.enableDepthTest();
-         int $$12 = 5;
-         if (eql.L()) {
-            $$12 = 10;
-         }
-
-         RenderSystem.depthMask(eql.M());
-         int $$13 = -1;
-         float $$14 = (float)this.F + $$1;
-         RenderSystem.setShader(fnn::u);
-         gu.a $$15 = new gu.a();
-
-         for (int $$16 = $$9 - $$12; $$16 <= $$9 + $$12; $$16++) {
-            for (int $$17 = $$7 - $$12; $$17 <= $$7 + $$12; $$17++) {
-               int $$18 = ($$16 - $$9 + 16) * 32 + $$17 - $$7 + 16;
-               double $$19 = (double)this.ar[$$18] * 0.5;
-               double $$20 = (double)this.as[$$18] * 0.5;
-               $$15.b((double)$$17, $$3, (double)$$16);
-               cqj $$21 = $$6.s($$15).a();
-               if ($$21.c()) {
-                  int $$22 = $$6.a(dki.a.e, $$17, $$16);
-                  int $$23 = $$8 - $$12;
-                  int $$24 = $$8 + $$12;
-                  if ($$23 < $$22) {
-                     $$23 = $$22;
-                  }
-
-                  if ($$24 < $$22) {
-                     $$24 = $$22;
-                  }
-
-                  int $$25 = $$22;
-                  if ($$22 < $$8) {
-                     $$25 = $$8;
-                  }
-
-                  if ($$23 != $$24) {
-                     aru $$26 = aru.a((long)($$17 * $$17 * 3121 + $$17 * 45238971 ^ $$16 * $$16 * 418711 + $$16 * 13761));
-                     $$15.d($$17, $$23, $$16);
-                     cqj.c $$27 = $$21.a($$15);
-                     if ($$27 == cqj.c.b) {
-                        if ($$13 != 0) {
-                           if ($$13 >= 0) {
-                              $$10.b();
-                           }
-
-                           $$13 = 0;
-                           RenderSystem.setShaderTexture(0, o);
-                           $$11.a(elk.b.h, eld.l);
-                        }
-
-                        int $$28 = this.F + $$17 * $$17 * 3121 + $$17 * 45238971 + $$16 * $$16 * 418711 + $$16 * 13761 & 31;
-                        float $$29 = -((float)$$28 + $$1) / 32.0F * (3.0F + $$26.i());
-                        double $$30 = (double)$$17 + 0.5 - $$2;
-                        double $$31 = (double)$$16 + 0.5 - $$4;
-                        float $$32 = (float)Math.sqrt($$30 * $$30 + $$31 * $$31) / (float)$$12;
-                        float $$33 = ((1.0F - $$32 * $$32) * 0.5F + 0.5F) * $$5;
-                        $$15.d($$17, $$25, $$16);
-                        int $$34 = a($$6, $$15);
-                        $$11.a((double)$$17 - $$2 - $$19 + 0.5, (double)$$24 - $$3, (double)$$16 - $$4 - $$20 + 0.5)
-                           .a(0.0F, (float)$$23 * 0.25F + $$29)
-                           .a(1.0F, 1.0F, 1.0F, $$33)
-                           .b($$34)
-                           .e();
-                        $$11.a((double)$$17 - $$2 + $$19 + 0.5, (double)$$24 - $$3, (double)$$16 - $$4 + $$20 + 0.5)
-                           .a(1.0F, (float)$$23 * 0.25F + $$29)
-                           .a(1.0F, 1.0F, 1.0F, $$33)
-                           .b($$34)
-                           .e();
-                        $$11.a((double)$$17 - $$2 + $$19 + 0.5, (double)$$23 - $$3, (double)$$16 - $$4 + $$20 + 0.5)
-                           .a(1.0F, (float)$$24 * 0.25F + $$29)
-                           .a(1.0F, 1.0F, 1.0F, $$33)
-                           .b($$34)
-                           .e();
-                        $$11.a((double)$$17 - $$2 - $$19 + 0.5, (double)$$23 - $$3, (double)$$16 - $$4 - $$20 + 0.5)
-                           .a(0.0F, (float)$$24 * 0.25F + $$29)
-                           .a(1.0F, 1.0F, 1.0F, $$33)
-                           .b($$34)
-                           .e();
-                     } else if ($$27 == cqj.c.c) {
-                        if ($$13 != 1) {
-                           if ($$13 >= 0) {
-                              $$10.b();
-                           }
-
-                           $$13 = 1;
-                           RenderSystem.setShaderTexture(0, p);
-                           $$11.a(elk.b.h, eld.l);
-                        }
-
-                        float $$35 = -((float)(this.F & 511) + $$1) / 512.0F;
-                        float $$36 = (float)($$26.j() + (double)$$14 * 0.01 * (double)((float)$$26.k()));
-                        float $$37 = (float)($$26.j() + (double)($$14 * (float)$$26.k()) * 0.001);
-                        double $$38 = (double)$$17 + 0.5 - $$2;
-                        double $$39 = (double)$$16 + 0.5 - $$4;
-                        float $$40 = (float)Math.sqrt($$38 * $$38 + $$39 * $$39) / (float)$$12;
-                        float $$41 = ((1.0F - $$40 * $$40) * 0.3F + 0.5F) * $$5;
-                        $$15.d($$17, $$25, $$16);
-                        int $$42 = a($$6, $$15);
-                        int $$43 = $$42 >> 16 & 65535;
-                        int $$44 = $$42 & 65535;
-                        int $$45 = ($$43 * 3 + 240) / 4;
-                        int $$46 = ($$44 * 3 + 240) / 4;
-                        $$11.a((double)$$17 - $$2 - $$19 + 0.5, (double)$$24 - $$3, (double)$$16 - $$4 - $$20 + 0.5)
-                           .a(0.0F + $$36, (float)$$23 * 0.25F + $$35 + $$37)
-                           .a(1.0F, 1.0F, 1.0F, $$41)
-                           .b($$46, $$45)
-                           .e();
-                        $$11.a((double)$$17 - $$2 + $$19 + 0.5, (double)$$24 - $$3, (double)$$16 - $$4 + $$20 + 0.5)
-                           .a(1.0F + $$36, (float)$$23 * 0.25F + $$35 + $$37)
-                           .a(1.0F, 1.0F, 1.0F, $$41)
-                           .b($$46, $$45)
-                           .e();
-                        $$11.a((double)$$17 - $$2 + $$19 + 0.5, (double)$$23 - $$3, (double)$$16 - $$4 + $$20 + 0.5)
-                           .a(1.0F + $$36, (float)$$24 * 0.25F + $$35 + $$37)
-                           .a(1.0F, 1.0F, 1.0F, $$41)
-                           .b($$46, $$45)
-                           .e();
-                        $$11.a((double)$$17 - $$2 - $$19 + 0.5, (double)$$23 - $$3, (double)$$16 - $$4 - $$20 + 0.5)
-                           .a(0.0F + $$36, (float)$$24 * 0.25F + $$35 + $$37)
-                           .a(1.0F, 1.0F, 1.0F, $$41)
-                           .b($$46, $$45)
-                           .e();
-                     }
-                  }
-               }
-            }
-         }
-
-         if ($$13 >= 0) {
-            $$10.b();
-         }
-
-         RenderSystem.enableCull();
-         RenderSystem.disableBlend();
-         $$0.b();
-      }
-   }
-
-   public void a(epw $$0) {
-      float $$1 = this.q.r.d(1.0F) / (eql.L() ? 1.0F : 2.0F);
-      if (!($$1 <= 0.0F)) {
-         aru $$2 = aru.a((long)this.F * 312987231L);
-         cpo $$3 = this.q.r;
-         gu $$4 = gu.a($$0.b());
-         gu $$5 = null;
-         int $$6 = (int)(100.0F * $$1 * $$1) / (this.q.m.an().c() == eqq.b ? 2 : 1);
-
-         for (int $$7 = 0; $$7 < $$6; $$7++) {
-            int $$8 = $$2.a(21) - 10;
-            int $$9 = $$2.a(21) - 10;
-            gu $$10 = $$3.a(dki.a.e, $$4.b($$8, 0, $$9));
-            if ($$10.v() > $$3.C_() && $$10.v() <= $$4.v() + 10 && $$10.v() >= $$4.v() - 10) {
-               cqj $$11 = $$3.s($$10).a();
-               if ($$11.a($$10) == cqj.c.b) {
-                  $$5 = $$10.d();
-                  if (this.q.m.an().c() == eqq.c) {
-                     break;
-                  }
-
-                  double $$12 = $$2.j();
-                  double $$13 = $$2.j();
-                  dez $$14 = $$3.a_($$5);
-                  eac $$15 = $$3.b_($$5);
-                  ehw $$16 = $$14.k($$3, $$5);
-                  double $$17 = $$16.b(ha.a.b, $$12, $$13);
-                  double $$18 = (double)$$15.a($$3, $$5);
-                  double $$19 = Math.max($$17, $$18);
-                  it $$20 = !$$15.a(apq.b) && !$$14.a(csm.kJ) && !csy.g($$14) ? iv.Y : iv.Z;
-                  this.q.r.a($$20, (double)$$5.u() + $$12, (double)$$5.v() + $$19, (double)$$5.w() + $$13, 0.0, 0.0, 0.0);
-               }
-            }
-         }
-
-         if ($$5 != null && $$2.a(3) < this.aq++) {
-            this.aq = 0;
-            if ($$5.v() > $$4.v() + 1 && $$3.a(dki.a.e, $$4).v() > arp.d((float)$$4.v())) {
-               this.q.r.a($$5, aow.zS, aox.d, 0.1F, 0.5F, false);
-            } else {
-               this.q.r.a($$5, aow.zR, aox.d, 0.2F, 1.0F, false);
-            }
-         }
-      }
+   public fns(eqq $$0, fnv $$1, anp $$2, fof $$3) {
+      this.j = $$0;
+      this.k = $$2;
+      this.b = $$1;
+      this.n = new esc($$0.Y());
+      this.z = new fny(this, $$0);
+      this.o = $$3;
+      this.J = null;
    }
 
    @Override
    public void close() {
-      if (this.K != null) {
-         this.K.close();
-      }
-
-      if (this.Q != null) {
-         this.Q.close();
-      }
-   }
-
-   @Override
-   public void a(anm $$0) {
-      this.a();
-      if (eql.M()) {
-         this.y();
+      this.z.close();
+      this.n.close();
+      this.A.close();
+      this.b();
+      this.aw();
+      if (this.e != null) {
+         this.e.close();
       }
    }
 
-   public void a() {
-      if (this.K != null) {
-         this.K.close();
-      }
-
-      aer $$0 = new aer("shaders/post/entity_outline.json");
-
-      try {
-         this.K = new fnx(this.q.Y(), this.q.Z(), this.q.g(), $$0);
-         this.K.a(this.q.aM().k(), this.q.aM().l());
-         this.J = this.K.a("final");
-      } catch (IOException var3) {
-         d.warn("Failed to load shader: {}", $$0, var3);
-         this.K = null;
-         this.J = null;
-      } catch (JsonSyntaxException var4) {
-         d.warn("Failed to parse shader: {}", $$0, var4);
-         this.K = null;
-         this.J = null;
-      }
+   public void a(boolean $$0) {
+      this.u = $$0;
    }
 
-   private void y() {
-      this.z();
-      aer $$0 = new aer("shaders/post/transparency.json");
-
-      try {
-         fnx $$1 = new fnx(this.q.Y(), this.q.Z(), this.q.g(), $$0);
-         $$1.a(this.q.aM().k(), this.q.aM().l());
-         ejr $$2 = $$1.a("translucent");
-         ejr $$3 = $$1.a("itemEntity");
-         ejr $$4 = $$1.a("particles");
-         ejr $$5 = $$1.a("weather");
-         ejr $$6 = $$1.a("clouds");
-         this.Q = $$1;
-         this.L = $$2;
-         this.M = $$3;
-         this.N = $$4;
-         this.O = $$5;
-         this.P = $$6;
-      } catch (Exception var8) {
-         String $$8 = var8 instanceof JsonSyntaxException ? "parse" : "load";
-         String $$9 = "Failed to " + $$8 + " shader: " + $$0;
-         fns.a $$10 = new fns.a($$9, var8);
-         if (this.q.aa().d().size() > 1) {
-            tf $$11 = this.q.Z().b().findFirst().map($$0x -> tf.b($$0x.a())).orElse(null);
-            this.q.m.i().a(eqe.b);
-            this.q.a($$10, $$11, null);
-         } else {
-            o $$12 = this.q.d(new o($$9, $$10));
-            this.q.m.i().a(eqe.b);
-            this.q.m.ar();
-            d.error(LogUtils.FATAL_MARKER, $$9, $$10);
-            this.q.p();
-            eql.c($$12);
-         }
-      }
+   public void b(boolean $$0) {
+      this.v = $$0;
    }
 
-   private void z() {
-      if (this.Q != null) {
-         this.Q.close();
-         this.L.a();
-         this.M.a();
-         this.N.a();
-         this.O.a();
-         this.P.a();
-         this.Q = null;
-         this.L = null;
-         this.M = null;
-         this.N = null;
-         this.O = null;
-         this.P = null;
-      }
+   public void c(boolean $$0) {
+      this.B = $$0;
+   }
+
+   public boolean a() {
+      return this.B;
    }
 
    public void b() {
-      if (this.d()) {
-         RenderSystem.enableBlend();
-         RenderSystem.blendFuncSeparate(
-            GlStateManager.SourceFactor.SRC_ALPHA,
-            GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA,
-            GlStateManager.SourceFactor.ZERO,
-            GlStateManager.DestFactor.ONE
-         );
-         this.J.c(this.q.aM().k(), this.q.aM().l(), false);
-         RenderSystem.disableBlend();
-         RenderSystem.defaultBlendFunc();
+      if (this.J != null) {
+         this.J.close();
+      }
+
+      this.J = null;
+      this.L = d;
+   }
+
+   public void c() {
+      this.M = !this.M;
+   }
+
+   public void a(@Nullable bil $$0) {
+      if (this.J != null) {
+         this.J.close();
+      }
+
+      this.J = null;
+      if ($$0 instanceof byp) {
+         this.a(new aeu("shaders/post/creeper.json"));
+      } else if ($$0 instanceof bzo) {
+         this.a(new aeu("shaders/post/spider.json"));
+      } else if ($$0 instanceof byt) {
+         this.a(new aeu("shaders/post/invert.json"));
       }
    }
 
-   protected boolean d() {
-      return !this.q.j.a() && this.J != null && this.K != null && this.q.s != null;
-   }
-
-   private void A() {
-      elh $$0 = elh.a();
-      ela $$1 = $$0.c();
-      if (this.B != null) {
-         this.B.close();
-      }
-
-      this.B = new eli(eli.a.a);
-      ela.b $$2 = a($$1, -16.0F);
-      this.B.a();
-      this.B.a($$2);
-      eli.b();
-   }
-
-   private void B() {
-      elh $$0 = elh.a();
-      ela $$1 = $$0.c();
-      if (this.A != null) {
-         this.A.close();
-      }
-
-      this.A = new eli(eli.a.a);
-      ela.b $$2 = a($$1, 16.0F);
-      this.A.a();
-      this.A.a($$2);
-      eli.b();
-   }
-
-   private static ela.b a(ela $$0, float $$1) {
-      float $$2 = Math.signum($$1) * 512.0F;
-      float $$3 = 512.0F;
-      RenderSystem.setShader(fnn::p);
-      $$0.a(elk.b.g, eld.m);
-      $$0.a(0.0, (double)$$1, 0.0).e();
-
-      for (int $$4 = -180; $$4 <= 180; $$4 += 45) {
-         $$0.a((double)($$2 * arp.b((float)$$4 * (float) (Math.PI / 180.0))), (double)$$1, (double)(512.0F * arp.a((float)$$4 * (float) (Math.PI / 180.0))))
-            .e();
-      }
-
-      return $$0.d();
-   }
-
-   private void C() {
-      elh $$0 = elh.a();
-      ela $$1 = $$0.c();
-      RenderSystem.setShader(fnn::p);
-      if (this.z != null) {
-         this.z.close();
-      }
-
-      this.z = new eli(eli.a.a);
-      ela.b $$2 = this.a($$1);
-      this.z.a();
-      this.z.a($$2);
-      eli.b();
-   }
-
-   private ela.b a(ela $$0) {
-      aru $$1 = aru.a(10842L);
-      $$0.a(elk.b.h, eld.m);
-
-      for (int $$2 = 0; $$2 < 1500; $$2++) {
-         double $$3 = (double)($$1.i() * 2.0F - 1.0F);
-         double $$4 = (double)($$1.i() * 2.0F - 1.0F);
-         double $$5 = (double)($$1.i() * 2.0F - 1.0F);
-         double $$6 = (double)(0.15F + $$1.i() * 0.1F);
-         double $$7 = $$3 * $$3 + $$4 * $$4 + $$5 * $$5;
-         if ($$7 < 1.0 && $$7 > 0.01) {
-            $$7 = 1.0 / Math.sqrt($$7);
-            $$3 *= $$7;
-            $$4 *= $$7;
-            $$5 *= $$7;
-            double $$8 = $$3 * 100.0;
-            double $$9 = $$4 * 100.0;
-            double $$10 = $$5 * 100.0;
-            double $$11 = Math.atan2($$3, $$5);
-            double $$12 = Math.sin($$11);
-            double $$13 = Math.cos($$11);
-            double $$14 = Math.atan2(Math.sqrt($$3 * $$3 + $$5 * $$5), $$4);
-            double $$15 = Math.sin($$14);
-            double $$16 = Math.cos($$14);
-            double $$17 = $$1.j() * Math.PI * 2.0;
-            double $$18 = Math.sin($$17);
-            double $$19 = Math.cos($$17);
-
-            for (int $$20 = 0; $$20 < 4; $$20++) {
-               double $$21 = 0.0;
-               double $$22 = (double)(($$20 & 2) - 1) * $$6;
-               double $$23 = (double)(($$20 + 1 & 2) - 1) * $$6;
-               double $$24 = 0.0;
-               double $$25 = $$22 * $$19 - $$23 * $$18;
-               double $$26 = $$23 * $$19 + $$22 * $$18;
-               double $$28 = $$25 * $$15 + 0.0 * $$16;
-               double $$29 = 0.0 * $$15 - $$25 * $$16;
-               double $$30 = $$29 * $$12 - $$26 * $$13;
-               double $$32 = $$26 * $$12 + $$29 * $$13;
-               $$0.a($$8 + $$30, $$9 + $$28, $$10 + $$32).e();
-            }
-         }
-      }
-
-      return $$0.d();
-   }
-
-   public void a(@Nullable fin $$0) {
-      this.R = Integer.MIN_VALUE;
-      this.S = Integer.MIN_VALUE;
-      this.T = Integer.MIN_VALUE;
-      this.r.a($$0);
-      this.u = $$0;
-      if ($$0 != null) {
-         this.f();
-      } else {
-         if (this.y != null) {
-            this.y.a();
-            this.y = null;
+   public void d() {
+      if (this.j.am() instanceof cbp) {
+         if (this.J != null) {
+            this.J.close();
          }
 
-         if (this.ae != null) {
-            this.ae.i();
-         }
-
-         this.ae = null;
-         this.x.clear();
-         this.v.a(null);
-         this.w.clear();
-      }
-   }
-
-   public void e() {
-      if (eql.M()) {
-         this.y();
-      } else {
-         this.z();
-      }
-   }
-
-   public void f() {
-      if (this.u != null) {
-         this.e();
-         this.u.g();
-         if (this.ae == null) {
-            this.ae = new fqs(this.u, this, ac.f(), this.q.af(), this.t.a());
+         this.L = (this.L + 1) % (K.length + 1);
+         if (this.L == d) {
+            this.J = null;
          } else {
-            this.ae.a(this.u);
-         }
-
-         this.C = true;
-         fnp.a(eql.L());
-         this.af = this.q.m.ay();
-         if (this.y != null) {
-            this.y.a();
-         }
-
-         this.ae.g();
-         synchronized (this.x) {
-            this.x.clear();
-         }
-
-         this.y = new fok(this.ae, this.u, this.q.m.ay(), this);
-         this.v.a(this.y);
-         this.w.clear();
-         bii $$0 = this.q.am();
-         if ($$0 != null) {
-            this.y.a($$0.dp(), $$0.dv());
+            this.a(K[this.L]);
          }
       }
    }
 
-   public void a(int $$0, int $$1) {
-      this.r();
-      if (this.K != null) {
-         this.K.a($$0, $$1);
+   void a(aeu $$0) {
+      if (this.J != null) {
+         this.J.close();
       }
 
-      if (this.Q != null) {
-         this.Q.a($$0, $$1);
-      }
-   }
-
-   public String g() {
-      int $$0 = this.y.f.length;
-      int $$1 = this.k();
-      return String.format(Locale.ROOT, "C: %d/%d %sD: %d, %s", $$1, $$0, this.q.D ? "(s) " : "", this.af, this.ae == null ? "null" : this.ae.a());
-   }
-
-   public fqs h() {
-      return this.ae;
-   }
-
-   public double i() {
-      return (double)this.y.f.length;
-   }
-
-   public double j() {
-      return (double)this.af;
-   }
-
-   public int k() {
-      int $$0 = 0;
-      ObjectListIterator var2 = this.w.iterator();
-
-      while (var2.hasNext()) {
-         fqs.b $$1 = (fqs.b)var2.next();
-         if (!$$1.d().a()) {
-            $$0++;
-         }
-      }
-
-      return $$0;
-   }
-
-   public String l() {
-      return "E: " + this.ag + "/" + this.u.h() + ", B: " + this.ah + ", SD: " + this.u.m();
-   }
-
-   private void a(epw $$0, fqw $$1, boolean $$2, boolean $$3) {
-      ehd $$4 = $$0.b();
-      if (this.q.m.ay() != this.af) {
-         this.f();
-      }
-
-      this.u.ad().a("camera");
-      double $$5 = this.q.s.dp();
-      double $$6 = this.q.s.dr();
-      double $$7 = this.q.s.dv();
-      int $$8 = hx.a($$5);
-      int $$9 = hx.a($$6);
-      int $$10 = hx.a($$7);
-      if (this.R != $$8 || this.S != $$9 || this.T != $$10) {
-         this.R = $$8;
-         this.S = $$9;
-         this.T = $$10;
-         this.y.a($$5, $$7);
-      }
-
-      this.ae.a($$4);
-      this.u.ad().b("cull");
-      this.q.aG().b("culling");
-      gu $$11 = $$0.c();
-      double $$12 = Math.floor($$4.c / 8.0);
-      double $$13 = Math.floor($$4.d / 8.0);
-      double $$14 = Math.floor($$4.e / 8.0);
-      if ($$12 != this.U || $$13 != this.V || $$14 != this.W) {
-         this.v.a();
-      }
-
-      this.U = $$12;
-      this.V = $$13;
-      this.W = $$14;
-      this.q.aG().b("update");
-      if (!$$2) {
-         boolean $$15 = this.q.D;
-         if ($$3 && this.u.a_($$11).i(this.u, $$11)) {
-            $$15 = false;
-         }
-
-         bii.b(arp.a((double)this.q.m.ay() / 8.0, 1.0, 2.5) * this.q.m.f().c());
-         this.q.aG().a("section_occlusion_graph");
-         this.v.a($$15, $$0, $$1, this.w);
-         this.q.aG().c();
-         double $$16 = Math.floor((double)($$0.d() / 2.0F));
-         double $$17 = Math.floor((double)($$0.e() / 2.0F));
-         if (this.v.b() || $$16 != this.X || $$17 != this.Y) {
-            this.b(a($$1));
-            this.X = $$16;
-            this.Y = $$17;
-         }
-      }
-
-      this.q.aG().c();
-   }
-
-   public static fqw a(fqw $$0) {
-      return new fqw($$0).a(8);
-   }
-
-   private void b(fqw $$0) {
-      if (!eql.O().bl()) {
-         throw new IllegalStateException("applyFrustum called from wrong thread: " + Thread.currentThread().getName());
-      } else {
-         this.q.aG().a("apply_frustum");
-         this.w.clear();
-         this.v.a($$0, this.w);
-         this.q.aG().c();
+      try {
+         this.J = new foc(this.j.Y(), this.k, this.j.g(), $$0);
+         this.J.a(this.j.aM().k(), this.j.aM().l());
+         this.M = true;
+      } catch (IOException var3) {
+         g.warn("Failed to load shader: {}", $$0, var3);
+         this.L = d;
+         this.M = false;
+      } catch (JsonSyntaxException var4) {
+         g.warn("Failed to parse shader: {}", $$0, var4);
+         this.L = d;
+         this.M = false;
       }
    }
 
-   public void a(fqs.b $$0) {
-      this.v.a($$0);
-   }
-
-   private void a(Matrix4f $$0, Matrix4f $$1, double $$2, double $$3, double $$4, fqw $$5) {
-      this.ak = $$5;
-      Matrix4f $$6 = new Matrix4f($$1);
-      $$6.mul($$0);
-      $$6.invert();
-      this.am.x = $$2;
-      this.am.y = $$3;
-      this.am.z = $$4;
-      this.al[0] = new Vector4f(-1.0F, -1.0F, -1.0F, 1.0F);
-      this.al[1] = new Vector4f(1.0F, -1.0F, -1.0F, 1.0F);
-      this.al[2] = new Vector4f(1.0F, 1.0F, -1.0F, 1.0F);
-      this.al[3] = new Vector4f(-1.0F, 1.0F, -1.0F, 1.0F);
-      this.al[4] = new Vector4f(-1.0F, -1.0F, 1.0F, 1.0F);
-      this.al[5] = new Vector4f(1.0F, -1.0F, 1.0F, 1.0F);
-      this.al[6] = new Vector4f(1.0F, 1.0F, 1.0F, 1.0F);
-      this.al[7] = new Vector4f(-1.0F, 1.0F, 1.0F, 1.0F);
-
-      for (int $$7 = 0; $$7 < 8; $$7++) {
-         $$6.transform(this.al[$$7]);
-         this.al[$$7].div(this.al[$$7].w());
-      }
-   }
-
-   public void a(elf $$0, ehd $$1, Matrix4f $$2) {
-      Matrix4f $$3 = $$0.c().a();
-      double $$4 = $$1.a();
-      double $$5 = $$1.b();
-      double $$6 = $$1.c();
-      this.ai = new fqw($$3, $$2);
-      this.ai.a($$4, $$5, $$6);
-   }
-
-   public void a(elf $$0, float $$1, long $$2, boolean $$3, epw $$4, fnn $$5, fnt $$6, Matrix4f $$7) {
-      RenderSystem.setShaderGameTime(this.u.V(), $$1);
-      this.s.a(this.u, $$4, this.q.v);
-      this.r.a(this.u, $$4, this.q.u);
-      bdh $$8 = this.u.ad();
-      $$8.b("light_update_queue");
-      this.u.b();
-      $$8.b("light_updates");
-      this.u.i().p().a();
-      ehd $$9 = $$4.b();
-      double $$10 = $$9.a();
-      double $$11 = $$9.b();
-      double $$12 = $$9.c();
-      Matrix4f $$13 = $$0.c().a();
-      $$8.b("culling");
-      boolean $$14 = this.ak != null;
-      fqw $$15;
-      if ($$14) {
-         $$15 = this.ak;
-         $$15.a(this.am.x, this.am.y, this.am.z);
-      } else {
-         $$15 = this.ai;
-      }
-
-      this.q.aG().b("captureFrustum");
-      if (this.aj) {
-         this.a($$13, $$7, $$9.c, $$9.d, $$9.e, $$14 ? new fqw($$13, $$7) : $$15);
-         this.aj = false;
-      }
-
-      $$8.b("clear");
-      fnm.a($$4, $$1, this.q.r, this.q.m.ay(), $$5.b($$1));
-      fnm.b();
-      RenderSystem.clear(16640, eql.a);
-      float $$17 = $$5.l();
-      boolean $$18 = this.q.r.d().a(arp.a($$10), arp.a($$11)) || this.q.l.j().d();
-      $$8.b("sky");
-      RenderSystem.setShader(fnn::p);
-      this.a($$0, $$7, $$1, $$4, $$18, () -> fnm.a($$4, fnm.d.a, $$17, $$18, $$1));
-      $$8.b("fog");
-      fnm.a($$4, fnm.d.b, Math.max($$17, 32.0F), $$18, $$1);
-      $$8.b("terrain_setup");
-      this.a($$4, $$15, $$14, this.q.s.G_());
-      $$8.b("compile_sections");
-      this.c($$4);
-      $$8.b("terrain");
-      this.a(foc.c(), $$0, $$10, $$11, $$12, $$7);
-      this.a(foc.d(), $$0, $$10, $$11, $$12, $$7);
-      this.a(foc.e(), $$0, $$10, $$11, $$12, $$7);
-      if (this.u.d().e()) {
-         ekb.a($$0.c().a());
-      } else {
-         ekb.b($$0.c().a());
-      }
-
-      $$8.b("entities");
-      this.ag = 0;
-      this.ah = 0;
-      if (this.M != null) {
-         this.M.b(eql.a);
-         this.M.a(this.q.g());
-         this.q.g().a(false);
-      }
-
-      if (this.O != null) {
-         this.O.b(eql.a);
-      }
-
-      if (this.d()) {
-         this.J.b(eql.a);
-         this.q.g().a(false);
-      }
-
-      boolean $$19 = false;
-      fnu.a $$20 = this.t.b();
-
-      for (bii $$21 : this.u.e()) {
-         if (this.r.a($$21, $$15, $$10, $$11, $$12) || $$21.z(this.q.s)) {
-            gu $$22 = $$21.dk();
-            if ((this.u.d($$22.v()) || this.a($$22))
-               && ($$21 != $$4.g() || $$4.i() || $$4.g() instanceof biy && ((biy)$$4.g()).fB())
-               && (!($$21 instanceof fmw) || $$4.g() == $$21)) {
-               this.ag++;
-               if ($$21.ah == 0) {
-                  $$21.ac = $$21.dp();
-                  $$21.ad = $$21.dr();
-                  $$21.ae = $$21.dv();
+   public anj e() {
+      return new anu<fns.a>() {
+         protected fns.a a(anp $$0, bdk $$1) {
+            Map<aeu, ann> $$2 = $$0.b("shaders", $$0x -> {
+               String $$1x = $$0x.a();
+               return $$1x.endsWith(".json") || $$1x.endsWith(eky.a.b.b()) || $$1x.endsWith(eky.a.a.b()) || $$1x.endsWith(".glsl");
+            });
+            Map<aeu, ann> $$3 = new HashMap<>();
+            $$2.forEach(($$1x, $$2x) -> {
+               try (InputStream $$3x = $$2x.d()) {
+                  byte[] $$4 = $$3x.readAllBytes();
+                  $$3.put($$1x, new ann($$2x.a(), () -> new ByteArrayInputStream($$4)));
+               } catch (Exception var8) {
+                  fns.g.warn("Failed to read resource {}", $$1x, var8);
                }
-
-               fnu $$24;
-               if (this.d() && this.q.b($$21)) {
-                  $$19 = true;
-                  fnv $$23 = this.t.d();
-                  $$24 = $$23;
-                  int $$25 = $$21.c_();
-                  $$23.a(ara.b.b($$25), ara.b.c($$25), ara.b.d($$25), 255);
-               } else {
-                  $$24 = $$20;
-               }
-
-               this.a($$21, $$10, $$11, $$12, $$1, $$0, $$24);
-            }
-         }
-      }
-
-      $$20.a();
-      this.a($$0);
-      $$20.a(foc.c(fyt.e));
-      $$20.a(foc.d(fyt.e));
-      $$20.a(foc.e(fyt.e));
-      $$20.a(foc.k(fyt.e));
-      $$8.b("blockentities");
-      ObjectListIterator var39 = this.w.iterator();
-
-      while (var39.hasNext()) {
-         fqs.b $$27 = (fqs.b)var39.next();
-         List<dcl> $$28 = $$27.d().b();
-         if (!$$28.isEmpty()) {
-            for (dcl $$29 : $$28) {
-               gu $$30 = $$29.p();
-               fnu $$31 = $$20;
-               $$0.a();
-               $$0.a((double)$$30.u() - $$10, (double)$$30.v() - $$11, (double)$$30.w() - $$12);
-               SortedSet<ajs> $$32 = (SortedSet<ajs>)this.H.get($$30.a());
-               if ($$32 != null && !$$32.isEmpty()) {
-                  int $$33 = $$32.last().c();
-                  if ($$33 >= 0) {
-                     elf.a $$34 = $$0.c();
-                     elj $$35 = new elg(this.t.c().getBuffer(gba.l.get($$33)), $$34.a(), $$34.b(), 1.0F);
-                     $$31 = $$2x -> {
-                        elj $$3x = $$20.getBuffer($$2x);
-                        return $$2x.M() ? elm.a($$35, $$3x) : $$3x;
-                     };
-                  }
-               }
-
-               this.s.a($$29, $$1, $$0, $$31);
-               $$0.b();
-            }
-         }
-      }
-
-      synchronized (this.x) {
-         for (dcl $$36 : this.x) {
-            gu $$37 = $$36.p();
-            $$0.a();
-            $$0.a((double)$$37.u() - $$10, (double)$$37.v() - $$11, (double)$$37.w() - $$12);
-            this.s.a($$36, $$1, $$0, $$20);
-            $$0.b();
-         }
-      }
-
-      this.a($$0);
-      $$20.a(foc.c());
-      $$20.a(foc.v());
-      $$20.a(foc.w());
-      $$20.a(foi.h());
-      $$20.a(foi.i());
-      $$20.a(foi.c());
-      $$20.a(foi.d());
-      $$20.a(foi.e());
-      $$20.a(foi.f());
-      $$20.a(foi.g());
-      this.t.d().a();
-      if ($$19) {
-         this.K.a($$1);
-         this.q.g().a(false);
-      }
-
-      $$8.b("destroyProgress");
-      ObjectIterator var41 = this.H.long2ObjectEntrySet().iterator();
-
-      while (var41.hasNext()) {
-         Entry<SortedSet<ajs>> $$38 = (Entry<SortedSet<ajs>>)var41.next();
-         gu $$39 = gu.d($$38.getLongKey());
-         double $$40 = (double)$$39.u() - $$10;
-         double $$41 = (double)$$39.v() - $$11;
-         double $$42 = (double)$$39.w() - $$12;
-         if (!($$40 * $$40 + $$41 * $$41 + $$42 * $$42 > 1024.0)) {
-            SortedSet<ajs> $$43 = (SortedSet<ajs>)$$38.getValue();
-            if ($$43 != null && !$$43.isEmpty()) {
-               int $$44 = $$43.last().c();
-               $$0.a();
-               $$0.a((double)$$39.u() - $$10, (double)$$39.v() - $$11, (double)$$39.w() - $$12);
-               elf.a $$45 = $$0.c();
-               elj $$46 = new elg(this.t.c().getBuffer(gba.l.get($$44)), $$45.a(), $$45.b(), 1.0F);
-               this.q.an().a(this.u.a_($$39), $$39, this.u, $$0, $$46);
-               $$0.b();
-            }
-         }
-      }
-
-      this.a($$0);
-      ehb $$47 = this.q.v;
-      if ($$3 && $$47 != null && $$47.c() == ehb.a.b) {
-         $$8.b("outline");
-         gu $$48 = ((egz)$$47).a();
-         dez $$49 = this.u.a_($$48);
-         if (!$$49.i() && this.u.w_().a($$48)) {
-            elj $$50 = $$20.getBuffer(foc.x());
-            this.a($$0, $$50, $$4.g(), $$10, $$11, $$12, $$48, $$49);
-         }
-      }
-
-      this.q.k.a($$0, $$20, $$10, $$11, $$12);
-      $$20.a();
-      elf $$51 = RenderSystem.getModelViewStack();
-      RenderSystem.applyModelViewMatrix();
-      $$20.a(foi.k());
-      $$20.a(foi.a());
-      $$20.a(foi.b());
-      $$20.a(foc.k());
-      $$20.a(foc.l());
-      $$20.a(foc.n());
-      $$20.a(foc.o());
-      $$20.a(foc.m());
-      $$20.a(foc.p());
-      $$20.a(foc.q());
-      $$20.a(foc.j());
-      this.t.c().b();
-      if (this.Q != null) {
-         $$20.a(foc.x());
-         $$20.b();
-         this.L.b(eql.a);
-         this.L.a(this.q.g());
-         $$8.b("translucent");
-         this.a(foc.f(), $$0, $$10, $$11, $$12, $$7);
-         $$8.b("string");
-         this.a(foc.u(), $$0, $$10, $$11, $$12, $$7);
-         this.N.b(eql.a);
-         this.N.a(this.q.g());
-         fob.aL.a();
-         $$8.b("particles");
-         this.q.g.a($$0, $$20, $$6, $$4, $$1);
-         fob.aL.b();
-      } else {
-         $$8.b("translucent");
-         if (this.L != null) {
-            this.L.b(eql.a);
+            });
+            return new fns.a($$0, $$3);
          }
 
-         this.a(foc.f(), $$0, $$10, $$11, $$12, $$7);
-         $$20.a(foc.x());
-         $$20.b();
-         $$8.b("string");
-         this.a(foc.u(), $$0, $$10, $$11, $$12, $$7);
-         $$8.b("particles");
-         this.q.g.a($$0, $$20, $$6, $$4, $$1);
-      }
-
-      $$51.a();
-      $$51.a($$0.c().a());
-      RenderSystem.applyModelViewMatrix();
-      if (this.q.m.at() != epz.a) {
-         if (this.Q != null) {
-            this.P.b(eql.a);
-            fob.aN.a();
-            $$8.b("clouds");
-            this.a($$0, $$7, $$1, $$10, $$11, $$12);
-            fob.aN.b();
-         } else {
-            $$8.b("clouds");
-            RenderSystem.setShader(fnn::x);
-            this.a($$0, $$7, $$1, $$10, $$11, $$12);
-         }
-      }
-
-      if (this.Q != null) {
-         fob.aM.a();
-         $$8.b("weather");
-         this.a($$6, $$1, $$10, $$11, $$12);
-         this.d($$4);
-         fob.aM.b();
-         this.Q.a($$1);
-         this.q.g().a(false);
-      } else {
-         RenderSystem.depthMask(false);
-         $$8.b("weather");
-         this.a($$6, $$1, $$10, $$11, $$12);
-         this.d($$4);
-         RenderSystem.depthMask(true);
-      }
-
-      $$51.b();
-      RenderSystem.applyModelViewMatrix();
-      this.a($$0, $$20, $$4);
-      $$20.a();
-      RenderSystem.depthMask(true);
-      RenderSystem.disableBlend();
-      fnm.a();
-   }
-
-   private void a(elf $$0) {
-      if (!$$0.d()) {
-         throw new IllegalStateException("Pose stack not empty");
-      }
-   }
-
-   private void a(bii $$0, double $$1, double $$2, double $$3, float $$4, elf $$5, fnu $$6) {
-      double $$7 = arp.d((double)$$4, $$0.ac, $$0.dp());
-      double $$8 = arp.d((double)$$4, $$0.ad, $$0.dr());
-      double $$9 = arp.d((double)$$4, $$0.ae, $$0.dv());
-      float $$10 = arp.i($$4, $$0.N, $$0.dA());
-      this.r.a($$0, $$7 - $$1, $$8 - $$2, $$9 - $$3, $$10, $$4, $$5, $$6, this.r.a($$0, $$4));
-   }
-
-   private void a(foc $$0, elf $$1, double $$2, double $$3, double $$4, Matrix4f $$5) {
-      RenderSystem.assertOnRenderThread();
-      $$0.a();
-      if ($$0 == foc.f()) {
-         this.q.aG().a("translucent_sort");
-         double $$6 = $$2 - this.an;
-         double $$7 = $$3 - this.ao;
-         double $$8 = $$4 - this.ap;
-         if ($$6 * $$6 + $$7 * $$7 + $$8 * $$8 > 1.0) {
-            int $$9 = hx.a($$2);
-            int $$10 = hx.a($$3);
-            int $$11 = hx.a($$4);
-            boolean $$12 = $$9 != hx.a(this.an) || $$11 != hx.a(this.ap) || $$10 != hx.a(this.ao);
-            this.an = $$2;
-            this.ao = $$3;
-            this.ap = $$4;
-            int $$13 = 0;
-            ObjectListIterator var21 = this.w.iterator();
-
-            while (var21.hasNext()) {
-               fqs.b $$14 = (fqs.b)var21.next();
-               if ($$13 < 15 && ($$12 || $$14.b($$9, $$10, $$11)) && $$14.a($$0, this.ae)) {
-                  $$13++;
-               }
-            }
-         }
-
-         this.q.aG().c();
-      }
-
-      this.q.aG().a("filterempty");
-      this.q.aG().b(() -> "render_" + $$0);
-      boolean $$15 = $$0 != foc.f();
-      ObjectListIterator<fqs.b> $$16 = this.w.listIterator($$15 ? 0 : this.w.size());
-      foh $$17 = RenderSystem.getShader();
-
-      for (int $$18 = 0; $$18 < 12; $$18++) {
-         int $$19 = RenderSystem.getShaderTexture($$18);
-         $$17.a("Sampler" + $$18, $$19);
-      }
-
-      if ($$17.b != null) {
-         $$17.b.a($$1.c().a());
-      }
-
-      if ($$17.c != null) {
-         $$17.c.a($$5);
-      }
-
-      if ($$17.g != null) {
-         $$17.g.a(RenderSystem.getShaderColor());
-      }
-
-      if ($$17.j != null) {
-         $$17.j.a(RenderSystem.getShaderGlintAlpha());
-      }
-
-      if ($$17.k != null) {
-         $$17.k.a(RenderSystem.getShaderFogStart());
-      }
-
-      if ($$17.l != null) {
-         $$17.l.a(RenderSystem.getShaderFogEnd());
-      }
-
-      if ($$17.m != null) {
-         $$17.m.a(RenderSystem.getShaderFogColor());
-      }
-
-      if ($$17.n != null) {
-         $$17.n.a(RenderSystem.getShaderFogShape().a());
-      }
-
-      if ($$17.e != null) {
-         $$17.e.a(RenderSystem.getTextureMatrix());
-      }
-
-      if ($$17.p != null) {
-         $$17.p.a(RenderSystem.getShaderGameTime());
-      }
-
-      RenderSystem.setupShaderLights($$17);
-      $$17.g();
-      ekw $$20 = $$17.q;
-
-      while ($$15 ? $$16.hasNext() : $$16.hasPrevious()) {
-         fqs.b $$21 = $$15 ? (fqs.b)$$16.next() : (fqs.b)$$16.previous();
-         if (!$$21.d().a($$0)) {
-            eli $$22 = $$21.a($$0);
-            gu $$23 = $$21.f();
-            if ($$20 != null) {
-               $$20.a((float)((double)$$23.u() - $$2), (float)((double)$$23.v() - $$3), (float)((double)$$23.w() - $$4));
-               $$20.b();
+         protected void a(fns.a $$0, anp $$1, bdk $$2) {
+            fns.this.b($$0);
+            if (fns.this.J != null) {
+               fns.this.J.close();
             }
 
-            $$22.a();
-            $$22.c();
-         }
-      }
-
-      if ($$20 != null) {
-         $$20.a(0.0F, 0.0F, 0.0F);
-      }
-
-      $$17.f();
-      eli.b();
-      this.q.aG().c();
-      $$0.b();
-   }
-
-   private void a(elf $$0, fnu $$1, epw $$2) {
-      if (this.q.B || this.q.C) {
-         double $$3 = $$2.b().a();
-         double $$4 = $$2.b().b();
-         double $$5 = $$2.b().c();
-         ObjectListIterator var10 = this.w.iterator();
-
-         while (var10.hasNext()) {
-            fqs.b $$6 = (fqs.b)var10.next();
-            fog.d $$7 = this.v.b($$6);
-            if ($$7 != null) {
-               gu $$8 = $$6.f();
-               $$0.a();
-               $$0.a((double)$$8.u() - $$3, (double)$$8.v() - $$4, (double)$$8.w() - $$5);
-               Matrix4f $$9 = $$0.c().a();
-               if (this.q.B) {
-                  elj $$10 = $$1.getBuffer(foc.x());
-                  int $$11 = $$7.b == 0 ? 0 : arp.h((float)$$7.b / 50.0F, 0.9F, 0.9F);
-                  int $$12 = $$11 >> 16 & 0xFF;
-                  int $$13 = $$11 >> 8 & 0xFF;
-                  int $$14 = $$11 & 0xFF;
-
-                  for (int $$15 = 0; $$15 < c.length; $$15++) {
-                     if ($$7.a($$15)) {
-                        ha $$16 = c[$$15];
-                        $$10.a($$9, 8.0F, 8.0F, 8.0F).a($$12, $$13, $$14, 255).a((float)$$16.j(), (float)$$16.k(), (float)$$16.l()).e();
-                        $$10.a($$9, (float)(8 - 16 * $$16.j()), (float)(8 - 16 * $$16.k()), (float)(8 - 16 * $$16.l()))
-                           .a($$12, $$13, $$14, 255)
-                           .a((float)$$16.j(), (float)$$16.k(), (float)$$16.l())
-                           .e();
-                     }
-                  }
-               }
-
-               if (this.q.C && !$$6.d().a()) {
-                  elj $$17 = $$1.getBuffer(foc.x());
-                  int $$18 = 0;
-
-                  for (ha $$19 : c) {
-                     for (ha $$20 : c) {
-                        boolean $$21 = $$6.d().a($$19, $$20);
-                        if (!$$21) {
-                           $$18++;
-                           $$17.a($$9, (float)(8 + 8 * $$19.j()), (float)(8 + 8 * $$19.k()), (float)(8 + 8 * $$19.l()))
-                              .a(255, 0, 0, 255)
-                              .a((float)$$19.j(), (float)$$19.k(), (float)$$19.l())
-                              .e();
-                           $$17.a($$9, (float)(8 + 8 * $$20.j()), (float)(8 + 8 * $$20.k()), (float)(8 + 8 * $$20.l()))
-                              .a(255, 0, 0, 255)
-                              .a((float)$$20.j(), (float)$$20.k(), (float)$$20.l())
-                              .e();
-                        }
-                     }
-                  }
-
-                  if ($$18 > 0) {
-                     elj $$22 = $$1.getBuffer(foc.A());
-                     float $$23 = 0.5F;
-                     float $$24 = 0.2F;
-                     $$22.a($$9, 0.5F, 15.5F, 0.5F).a(0.9F, 0.9F, 0.0F, 0.2F).e();
-                     $$22.a($$9, 15.5F, 15.5F, 0.5F).a(0.9F, 0.9F, 0.0F, 0.2F).e();
-                     $$22.a($$9, 15.5F, 15.5F, 15.5F).a(0.9F, 0.9F, 0.0F, 0.2F).e();
-                     $$22.a($$9, 0.5F, 15.5F, 15.5F).a(0.9F, 0.9F, 0.0F, 0.2F).e();
-                     $$22.a($$9, 0.5F, 0.5F, 15.5F).a(0.9F, 0.9F, 0.0F, 0.2F).e();
-                     $$22.a($$9, 15.5F, 0.5F, 15.5F).a(0.9F, 0.9F, 0.0F, 0.2F).e();
-                     $$22.a($$9, 15.5F, 0.5F, 0.5F).a(0.9F, 0.9F, 0.0F, 0.2F).e();
-                     $$22.a($$9, 0.5F, 0.5F, 0.5F).a(0.9F, 0.9F, 0.0F, 0.2F).e();
-                     $$22.a($$9, 0.5F, 15.5F, 0.5F).a(0.9F, 0.9F, 0.0F, 0.2F).e();
-                     $$22.a($$9, 0.5F, 15.5F, 15.5F).a(0.9F, 0.9F, 0.0F, 0.2F).e();
-                     $$22.a($$9, 0.5F, 0.5F, 15.5F).a(0.9F, 0.9F, 0.0F, 0.2F).e();
-                     $$22.a($$9, 0.5F, 0.5F, 0.5F).a(0.9F, 0.9F, 0.0F, 0.2F).e();
-                     $$22.a($$9, 15.5F, 0.5F, 0.5F).a(0.9F, 0.9F, 0.0F, 0.2F).e();
-                     $$22.a($$9, 15.5F, 0.5F, 15.5F).a(0.9F, 0.9F, 0.0F, 0.2F).e();
-                     $$22.a($$9, 15.5F, 15.5F, 15.5F).a(0.9F, 0.9F, 0.0F, 0.2F).e();
-                     $$22.a($$9, 15.5F, 15.5F, 0.5F).a(0.9F, 0.9F, 0.0F, 0.2F).e();
-                     $$22.a($$9, 0.5F, 0.5F, 0.5F).a(0.9F, 0.9F, 0.0F, 0.2F).e();
-                     $$22.a($$9, 15.5F, 0.5F, 0.5F).a(0.9F, 0.9F, 0.0F, 0.2F).e();
-                     $$22.a($$9, 15.5F, 15.5F, 0.5F).a(0.9F, 0.9F, 0.0F, 0.2F).e();
-                     $$22.a($$9, 0.5F, 15.5F, 0.5F).a(0.9F, 0.9F, 0.0F, 0.2F).e();
-                     $$22.a($$9, 0.5F, 15.5F, 15.5F).a(0.9F, 0.9F, 0.0F, 0.2F).e();
-                     $$22.a($$9, 15.5F, 15.5F, 15.5F).a(0.9F, 0.9F, 0.0F, 0.2F).e();
-                     $$22.a($$9, 15.5F, 0.5F, 15.5F).a(0.9F, 0.9F, 0.0F, 0.2F).e();
-                     $$22.a($$9, 0.5F, 0.5F, 15.5F).a(0.9F, 0.9F, 0.0F, 0.2F).e();
-                  }
-               }
-
-               $$0.b();
-            }
-         }
-      }
-
-      if (this.ak != null) {
-         $$0.a();
-         $$0.a((float)(this.am.x - $$2.b().c), (float)(this.am.y - $$2.b().d), (float)(this.am.z - $$2.b().e));
-         Matrix4f $$25 = $$0.c().a();
-         elj $$26 = $$1.getBuffer(foc.A());
-         this.a($$26, $$25, 0, 1, 2, 3, 0, 1, 1);
-         this.a($$26, $$25, 4, 5, 6, 7, 1, 0, 0);
-         this.a($$26, $$25, 0, 1, 5, 4, 1, 1, 0);
-         this.a($$26, $$25, 2, 3, 7, 6, 0, 0, 1);
-         this.a($$26, $$25, 0, 4, 7, 3, 0, 1, 0);
-         this.a($$26, $$25, 1, 5, 6, 2, 1, 0, 1);
-         elj $$27 = $$1.getBuffer(foc.x());
-         this.a($$27, $$25, 0);
-         this.a($$27, $$25, 1);
-         this.a($$27, $$25, 1);
-         this.a($$27, $$25, 2);
-         this.a($$27, $$25, 2);
-         this.a($$27, $$25, 3);
-         this.a($$27, $$25, 3);
-         this.a($$27, $$25, 0);
-         this.a($$27, $$25, 4);
-         this.a($$27, $$25, 5);
-         this.a($$27, $$25, 5);
-         this.a($$27, $$25, 6);
-         this.a($$27, $$25, 6);
-         this.a($$27, $$25, 7);
-         this.a($$27, $$25, 7);
-         this.a($$27, $$25, 4);
-         this.a($$27, $$25, 0);
-         this.a($$27, $$25, 4);
-         this.a($$27, $$25, 1);
-         this.a($$27, $$25, 5);
-         this.a($$27, $$25, 2);
-         this.a($$27, $$25, 6);
-         this.a($$27, $$25, 3);
-         this.a($$27, $$25, 7);
-         $$0.b();
-      }
-   }
-
-   private void a(elj $$0, Matrix4f $$1, int $$2) {
-      $$0.a($$1, this.al[$$2].x(), this.al[$$2].y(), this.al[$$2].z()).a(0, 0, 0, 255).a(0.0F, 0.0F, -1.0F).e();
-   }
-
-   private void a(elj $$0, Matrix4f $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, int $$8) {
-      float $$9 = 0.25F;
-      $$0.a($$1, this.al[$$2].x(), this.al[$$2].y(), this.al[$$2].z()).a((float)$$6, (float)$$7, (float)$$8, 0.25F).e();
-      $$0.a($$1, this.al[$$3].x(), this.al[$$3].y(), this.al[$$3].z()).a((float)$$6, (float)$$7, (float)$$8, 0.25F).e();
-      $$0.a($$1, this.al[$$4].x(), this.al[$$4].y(), this.al[$$4].z()).a((float)$$6, (float)$$7, (float)$$8, 0.25F).e();
-      $$0.a($$1, this.al[$$5].x(), this.al[$$5].y(), this.al[$$5].z()).a((float)$$6, (float)$$7, (float)$$8, 0.25F).e();
-   }
-
-   public void m() {
-      this.aj = true;
-   }
-
-   public void n() {
-      this.ak = null;
-   }
-
-   public void o() {
-      this.F++;
-      if (this.F % 20 == 0) {
-         Iterator<ajs> $$0 = this.G.values().iterator();
-
-         while ($$0.hasNext()) {
-            ajs $$1 = $$0.next();
-            int $$2 = $$1.d();
-            if (this.F - $$2 > 400) {
-               $$0.remove();
-               this.a($$1);
-            }
-         }
-      }
-   }
-
-   private void a(ajs $$0) {
-      long $$1 = $$0.b().a();
-      Set<ajs> $$2 = (Set<ajs>)this.H.get($$1);
-      $$2.remove($$0);
-      if ($$2.isEmpty()) {
-         this.H.remove($$1);
-      }
-   }
-
-   private void b(elf $$0) {
-      RenderSystem.enableBlend();
-      RenderSystem.depthMask(false);
-      RenderSystem.setShader(fnn::t);
-      RenderSystem.setShaderTexture(0, m);
-      elh $$1 = elh.a();
-      ela $$2 = $$1.c();
-
-      for (int $$3 = 0; $$3 < 6; $$3++) {
-         $$0.a();
-         if ($$3 == 1) {
-            $$0.a(a.b.rotationDegrees(90.0F));
-         }
-
-         if ($$3 == 2) {
-            $$0.a(a.b.rotationDegrees(-90.0F));
-         }
-
-         if ($$3 == 3) {
-            $$0.a(a.b.rotationDegrees(180.0F));
-         }
-
-         if ($$3 == 4) {
-            $$0.a(a.f.rotationDegrees(90.0F));
-         }
-
-         if ($$3 == 5) {
-            $$0.a(a.f.rotationDegrees(-90.0F));
-         }
-
-         Matrix4f $$4 = $$0.c().a();
-         $$2.a(elk.b.h, eld.s);
-         $$2.a($$4, -100.0F, -100.0F, -100.0F).a(0.0F, 0.0F).a(40, 40, 40, 255).e();
-         $$2.a($$4, -100.0F, -100.0F, 100.0F).a(0.0F, 16.0F).a(40, 40, 40, 255).e();
-         $$2.a($$4, 100.0F, -100.0F, 100.0F).a(16.0F, 16.0F).a(40, 40, 40, 255).e();
-         $$2.a($$4, 100.0F, -100.0F, -100.0F).a(16.0F, 0.0F).a(40, 40, 40, 255).e();
-         $$1.b();
-         $$0.b();
-      }
-
-      RenderSystem.depthMask(true);
-      RenderSystem.disableBlend();
-   }
-
-   public void a(elf $$0, Matrix4f $$1, float $$2, epw $$3, boolean $$4, Runnable $$5) {
-      $$5.run();
-      if (!$$4) {
-         eae $$6 = $$3.k();
-         if ($$6 != eae.c && $$6 != eae.a && !this.b($$3)) {
-            if (this.q.r.d().c() == fnj.d.c) {
-               this.b($$0);
-            } else if (this.q.r.d().c() == fnj.d.b) {
-               ehd $$7 = this.u.a(this.q.j.m().b(), $$2);
-               float $$8 = (float)$$7.c;
-               float $$9 = (float)$$7.d;
-               float $$10 = (float)$$7.e;
-               fnm.b();
-               ela $$11 = elh.a().c();
-               RenderSystem.depthMask(false);
-               RenderSystem.setShaderColor($$8, $$9, $$10, 1.0F);
-               foh $$12 = RenderSystem.getShader();
-               this.A.a();
-               this.A.a($$0.c().a(), $$1, $$12);
-               eli.b();
-               RenderSystem.enableBlend();
-               float[] $$13 = this.u.d().a(this.u.f($$2), $$2);
-               if ($$13 != null) {
-                  RenderSystem.setShader(fnn::q);
-                  RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
-                  $$0.a();
-                  $$0.a(a.b.rotationDegrees(90.0F));
-                  float $$14 = arp.a(this.u.a($$2)) < 0.0F ? 180.0F : 0.0F;
-                  $$0.a(a.f.rotationDegrees($$14));
-                  $$0.a(a.f.rotationDegrees(90.0F));
-                  float $$15 = $$13[0];
-                  float $$16 = $$13[1];
-                  float $$17 = $$13[2];
-                  Matrix4f $$18 = $$0.c().a();
-                  $$11.a(elk.b.g, eld.n);
-                  $$11.a($$18, 0.0F, 100.0F, 0.0F).a($$15, $$16, $$17, $$13[3]).e();
-                  int $$19 = 16;
-
-                  for (int $$20 = 0; $$20 <= 16; $$20++) {
-                     float $$21 = (float)$$20 * (float) (Math.PI * 2) / 16.0F;
-                     float $$22 = arp.a($$21);
-                     float $$23 = arp.b($$21);
-                     $$11.a($$18, $$22 * 120.0F, $$23 * 120.0F, -$$23 * 40.0F * $$13[3]).a($$13[0], $$13[1], $$13[2], 0.0F).e();
-                  }
-
-                  elb.a($$11.d());
-                  $$0.b();
-               }
-
-               RenderSystem.blendFuncSeparate(
-                  GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO
-               );
-               $$0.a();
-               float $$24 = 1.0F - this.u.d($$2);
-               RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, $$24);
-               $$0.a(a.d.rotationDegrees(-90.0F));
-               $$0.a(a.b.rotationDegrees(this.u.f($$2) * 360.0F));
-               Matrix4f $$25 = $$0.c().a();
-               float $$26 = 30.0F;
-               RenderSystem.setShader(fnn::s);
-               RenderSystem.setShaderTexture(0, k);
-               $$11.a(elk.b.h, eld.q);
-               $$11.a($$25, -$$26, 100.0F, -$$26).a(0.0F, 0.0F).e();
-               $$11.a($$25, $$26, 100.0F, -$$26).a(1.0F, 0.0F).e();
-               $$11.a($$25, $$26, 100.0F, $$26).a(1.0F, 1.0F).e();
-               $$11.a($$25, -$$26, 100.0F, $$26).a(0.0F, 1.0F).e();
-               elb.a($$11.d());
-               $$26 = 20.0F;
-               RenderSystem.setShaderTexture(0, j);
-               int $$27 = this.u.ao();
-               int $$28 = $$27 % 4;
-               int $$29 = $$27 / 4 % 2;
-               float $$30 = (float)($$28 + 0) / 4.0F;
-               float $$31 = (float)($$29 + 0) / 2.0F;
-               float $$32 = (float)($$28 + 1) / 4.0F;
-               float $$33 = (float)($$29 + 1) / 2.0F;
-               $$11.a(elk.b.h, eld.q);
-               $$11.a($$25, -$$26, -100.0F, $$26).a($$32, $$33).e();
-               $$11.a($$25, $$26, -100.0F, $$26).a($$30, $$33).e();
-               $$11.a($$25, $$26, -100.0F, -$$26).a($$30, $$31).e();
-               $$11.a($$25, -$$26, -100.0F, -$$26).a($$32, $$31).e();
-               elb.a($$11.d());
-               float $$34 = this.u.i($$2) * $$24;
-               if ($$34 > 0.0F) {
-                  RenderSystem.setShaderColor($$34, $$34, $$34, $$34);
-                  fnm.a();
-                  this.z.a();
-                  this.z.a($$0.c().a(), $$1, fnn.p());
-                  eli.b();
-                  $$5.run();
-               }
-
-               RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
-               RenderSystem.disableBlend();
-               RenderSystem.defaultBlendFunc();
-               $$0.b();
-               RenderSystem.setShaderColor(0.0F, 0.0F, 0.0F, 1.0F);
-               double $$35 = this.q.s.j($$2).d - this.u.k().a(this.u);
-               if ($$35 < 0.0) {
-                  $$0.a();
-                  $$0.a(0.0F, 12.0F, 0.0F);
-                  this.B.a();
-                  this.B.a($$0.c().a(), $$1, $$12);
-                  eli.b();
-                  $$0.b();
-               }
-
-               RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
-               RenderSystem.depthMask(true);
-            }
-         }
-      }
-   }
-
-   private boolean b(epw $$0) {
-      return !($$0.g() instanceof biy $$1) ? false : $$1.a(bhx.o) || $$1.a(bhx.G);
-   }
-
-   public void a(elf $$0, Matrix4f $$1, float $$2, double $$3, double $$4, double $$5) {
-      float $$6 = this.u.d().a();
-      if (!Float.isNaN($$6)) {
-         RenderSystem.disableCull();
-         RenderSystem.enableBlend();
-         RenderSystem.enableDepthTest();
-         RenderSystem.blendFuncSeparate(
-            GlStateManager.SourceFactor.SRC_ALPHA,
-            GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA,
-            GlStateManager.SourceFactor.ONE,
-            GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA
-         );
-         RenderSystem.depthMask(true);
-         float $$7 = 12.0F;
-         float $$8 = 4.0F;
-         double $$9 = 2.0E-4;
-         double $$10 = (double)(((float)this.F + $$2) * 0.03F);
-         double $$11 = ($$3 + $$10) / 12.0;
-         double $$12 = (double)($$6 - (float)$$4 + 0.33F);
-         double $$13 = $$5 / 12.0 + 0.33F;
-         $$11 -= (double)(arp.a($$11 / 2048.0) * 2048);
-         $$13 -= (double)(arp.a($$13 / 2048.0) * 2048);
-         float $$14 = (float)($$11 - (double)arp.a($$11));
-         float $$15 = (float)($$12 / 4.0 - (double)arp.a($$12 / 4.0)) * 4.0F;
-         float $$16 = (float)($$13 - (double)arp.a($$13));
-         ehd $$17 = this.u.h($$2);
-         int $$18 = (int)Math.floor($$11);
-         int $$19 = (int)Math.floor($$12 / 4.0);
-         int $$20 = (int)Math.floor($$13);
-         if ($$18 != this.Z || $$19 != this.aa || $$20 != this.ab || this.q.m.at() != this.ad || this.ac.g($$17) > 2.0E-4) {
-            this.Z = $$18;
-            this.aa = $$19;
-            this.ab = $$20;
-            this.ac = $$17;
-            this.ad = this.q.m.at();
-            this.C = true;
-         }
-
-         if (this.C) {
-            this.C = false;
-            ela $$21 = elh.a().c();
-            if (this.D != null) {
-               this.D.close();
-            }
-
-            this.D = new eli(eli.a.a);
-            ela.b $$22 = this.a($$21, $$11, $$12, $$13, $$17);
-            this.D.a();
-            this.D.a($$22);
-            eli.b();
-         }
-
-         RenderSystem.setShader(fnn::x);
-         RenderSystem.setShaderTexture(0, l);
-         fnm.b();
-         $$0.a();
-         $$0.b(12.0F, 1.0F, 12.0F);
-         $$0.a(-$$14, $$15, -$$16);
-         if (this.D != null) {
-            this.D.a();
-            int $$23 = this.ad == epz.c ? 0 : 1;
-
-            for (int $$24 = $$23; $$24 < 2; $$24++) {
-               if ($$24 == 0) {
-                  RenderSystem.colorMask(false, false, false, false);
-               } else {
-                  RenderSystem.colorMask(true, true, true, true);
-               }
-
-               foh $$25 = RenderSystem.getShader();
-               this.D.a($$0.c().a(), $$1, $$25);
-            }
-
-            eli.b();
-         }
-
-         $$0.b();
-         RenderSystem.enableCull();
-         RenderSystem.disableBlend();
-         RenderSystem.defaultBlendFunc();
-      }
-   }
-
-   private ela.b a(ela $$0, double $$1, double $$2, double $$3, ehd $$4) {
-      float $$5 = 4.0F;
-      float $$6 = 0.00390625F;
-      int $$7 = 8;
-      int $$8 = 4;
-      float $$9 = 9.765625E-4F;
-      float $$10 = (float)arp.a($$1) * 0.00390625F;
-      float $$11 = (float)arp.a($$3) * 0.00390625F;
-      float $$12 = (float)$$4.c;
-      float $$13 = (float)$$4.d;
-      float $$14 = (float)$$4.e;
-      float $$15 = $$12 * 0.9F;
-      float $$16 = $$13 * 0.9F;
-      float $$17 = $$14 * 0.9F;
-      float $$18 = $$12 * 0.7F;
-      float $$19 = $$13 * 0.7F;
-      float $$20 = $$14 * 0.7F;
-      float $$21 = $$12 * 0.8F;
-      float $$22 = $$13 * 0.8F;
-      float $$23 = $$14 * 0.8F;
-      RenderSystem.setShader(fnn::x);
-      $$0.a(elk.b.h, eld.v);
-      float $$24 = (float)Math.floor($$2 / 4.0) * 4.0F;
-      if (this.ad == epz.c) {
-         for (int $$25 = -3; $$25 <= 4; $$25++) {
-            for (int $$26 = -3; $$26 <= 4; $$26++) {
-               float $$27 = (float)($$25 * 8);
-               float $$28 = (float)($$26 * 8);
-               if ($$24 > -5.0F) {
-                  $$0.a((double)($$27 + 0.0F), (double)($$24 + 0.0F), (double)($$28 + 8.0F))
-                     .a(($$27 + 0.0F) * 0.00390625F + $$10, ($$28 + 8.0F) * 0.00390625F + $$11)
-                     .a($$18, $$19, $$20, 0.8F)
-                     .a(0.0F, -1.0F, 0.0F)
-                     .e();
-                  $$0.a((double)($$27 + 8.0F), (double)($$24 + 0.0F), (double)($$28 + 8.0F))
-                     .a(($$27 + 8.0F) * 0.00390625F + $$10, ($$28 + 8.0F) * 0.00390625F + $$11)
-                     .a($$18, $$19, $$20, 0.8F)
-                     .a(0.0F, -1.0F, 0.0F)
-                     .e();
-                  $$0.a((double)($$27 + 8.0F), (double)($$24 + 0.0F), (double)($$28 + 0.0F))
-                     .a(($$27 + 8.0F) * 0.00390625F + $$10, ($$28 + 0.0F) * 0.00390625F + $$11)
-                     .a($$18, $$19, $$20, 0.8F)
-                     .a(0.0F, -1.0F, 0.0F)
-                     .e();
-                  $$0.a((double)($$27 + 0.0F), (double)($$24 + 0.0F), (double)($$28 + 0.0F))
-                     .a(($$27 + 0.0F) * 0.00390625F + $$10, ($$28 + 0.0F) * 0.00390625F + $$11)
-                     .a($$18, $$19, $$20, 0.8F)
-                     .a(0.0F, -1.0F, 0.0F)
-                     .e();
-               }
-
-               if ($$24 <= 5.0F) {
-                  $$0.a((double)($$27 + 0.0F), (double)($$24 + 4.0F - 9.765625E-4F), (double)($$28 + 8.0F))
-                     .a(($$27 + 0.0F) * 0.00390625F + $$10, ($$28 + 8.0F) * 0.00390625F + $$11)
-                     .a($$12, $$13, $$14, 0.8F)
-                     .a(0.0F, 1.0F, 0.0F)
-                     .e();
-                  $$0.a((double)($$27 + 8.0F), (double)($$24 + 4.0F - 9.765625E-4F), (double)($$28 + 8.0F))
-                     .a(($$27 + 8.0F) * 0.00390625F + $$10, ($$28 + 8.0F) * 0.00390625F + $$11)
-                     .a($$12, $$13, $$14, 0.8F)
-                     .a(0.0F, 1.0F, 0.0F)
-                     .e();
-                  $$0.a((double)($$27 + 8.0F), (double)($$24 + 4.0F - 9.765625E-4F), (double)($$28 + 0.0F))
-                     .a(($$27 + 8.0F) * 0.00390625F + $$10, ($$28 + 0.0F) * 0.00390625F + $$11)
-                     .a($$12, $$13, $$14, 0.8F)
-                     .a(0.0F, 1.0F, 0.0F)
-                     .e();
-                  $$0.a((double)($$27 + 0.0F), (double)($$24 + 4.0F - 9.765625E-4F), (double)($$28 + 0.0F))
-                     .a(($$27 + 0.0F) * 0.00390625F + $$10, ($$28 + 0.0F) * 0.00390625F + $$11)
-                     .a($$12, $$13, $$14, 0.8F)
-                     .a(0.0F, 1.0F, 0.0F)
-                     .e();
-               }
-
-               if ($$25 > -1) {
-                  for (int $$29 = 0; $$29 < 8; $$29++) {
-                     $$0.a((double)($$27 + (float)$$29 + 0.0F), (double)($$24 + 0.0F), (double)($$28 + 8.0F))
-                        .a(($$27 + (float)$$29 + 0.5F) * 0.00390625F + $$10, ($$28 + 8.0F) * 0.00390625F + $$11)
-                        .a($$15, $$16, $$17, 0.8F)
-                        .a(-1.0F, 0.0F, 0.0F)
-                        .e();
-                     $$0.a((double)($$27 + (float)$$29 + 0.0F), (double)($$24 + 4.0F), (double)($$28 + 8.0F))
-                        .a(($$27 + (float)$$29 + 0.5F) * 0.00390625F + $$10, ($$28 + 8.0F) * 0.00390625F + $$11)
-                        .a($$15, $$16, $$17, 0.8F)
-                        .a(-1.0F, 0.0F, 0.0F)
-                        .e();
-                     $$0.a((double)($$27 + (float)$$29 + 0.0F), (double)($$24 + 4.0F), (double)($$28 + 0.0F))
-                        .a(($$27 + (float)$$29 + 0.5F) * 0.00390625F + $$10, ($$28 + 0.0F) * 0.00390625F + $$11)
-                        .a($$15, $$16, $$17, 0.8F)
-                        .a(-1.0F, 0.0F, 0.0F)
-                        .e();
-                     $$0.a((double)($$27 + (float)$$29 + 0.0F), (double)($$24 + 0.0F), (double)($$28 + 0.0F))
-                        .a(($$27 + (float)$$29 + 0.5F) * 0.00390625F + $$10, ($$28 + 0.0F) * 0.00390625F + $$11)
-                        .a($$15, $$16, $$17, 0.8F)
-                        .a(-1.0F, 0.0F, 0.0F)
-                        .e();
-                  }
-               }
-
-               if ($$25 <= 1) {
-                  for (int $$30 = 0; $$30 < 8; $$30++) {
-                     $$0.a((double)($$27 + (float)$$30 + 1.0F - 9.765625E-4F), (double)($$24 + 0.0F), (double)($$28 + 8.0F))
-                        .a(($$27 + (float)$$30 + 0.5F) * 0.00390625F + $$10, ($$28 + 8.0F) * 0.00390625F + $$11)
-                        .a($$15, $$16, $$17, 0.8F)
-                        .a(1.0F, 0.0F, 0.0F)
-                        .e();
-                     $$0.a((double)($$27 + (float)$$30 + 1.0F - 9.765625E-4F), (double)($$24 + 4.0F), (double)($$28 + 8.0F))
-                        .a(($$27 + (float)$$30 + 0.5F) * 0.00390625F + $$10, ($$28 + 8.0F) * 0.00390625F + $$11)
-                        .a($$15, $$16, $$17, 0.8F)
-                        .a(1.0F, 0.0F, 0.0F)
-                        .e();
-                     $$0.a((double)($$27 + (float)$$30 + 1.0F - 9.765625E-4F), (double)($$24 + 4.0F), (double)($$28 + 0.0F))
-                        .a(($$27 + (float)$$30 + 0.5F) * 0.00390625F + $$10, ($$28 + 0.0F) * 0.00390625F + $$11)
-                        .a($$15, $$16, $$17, 0.8F)
-                        .a(1.0F, 0.0F, 0.0F)
-                        .e();
-                     $$0.a((double)($$27 + (float)$$30 + 1.0F - 9.765625E-4F), (double)($$24 + 0.0F), (double)($$28 + 0.0F))
-                        .a(($$27 + (float)$$30 + 0.5F) * 0.00390625F + $$10, ($$28 + 0.0F) * 0.00390625F + $$11)
-                        .a($$15, $$16, $$17, 0.8F)
-                        .a(1.0F, 0.0F, 0.0F)
-                        .e();
-                  }
-               }
-
-               if ($$26 > -1) {
-                  for (int $$31 = 0; $$31 < 8; $$31++) {
-                     $$0.a((double)($$27 + 0.0F), (double)($$24 + 4.0F), (double)($$28 + (float)$$31 + 0.0F))
-                        .a(($$27 + 0.0F) * 0.00390625F + $$10, ($$28 + (float)$$31 + 0.5F) * 0.00390625F + $$11)
-                        .a($$21, $$22, $$23, 0.8F)
-                        .a(0.0F, 0.0F, -1.0F)
-                        .e();
-                     $$0.a((double)($$27 + 8.0F), (double)($$24 + 4.0F), (double)($$28 + (float)$$31 + 0.0F))
-                        .a(($$27 + 8.0F) * 0.00390625F + $$10, ($$28 + (float)$$31 + 0.5F) * 0.00390625F + $$11)
-                        .a($$21, $$22, $$23, 0.8F)
-                        .a(0.0F, 0.0F, -1.0F)
-                        .e();
-                     $$0.a((double)($$27 + 8.0F), (double)($$24 + 0.0F), (double)($$28 + (float)$$31 + 0.0F))
-                        .a(($$27 + 8.0F) * 0.00390625F + $$10, ($$28 + (float)$$31 + 0.5F) * 0.00390625F + $$11)
-                        .a($$21, $$22, $$23, 0.8F)
-                        .a(0.0F, 0.0F, -1.0F)
-                        .e();
-                     $$0.a((double)($$27 + 0.0F), (double)($$24 + 0.0F), (double)($$28 + (float)$$31 + 0.0F))
-                        .a(($$27 + 0.0F) * 0.00390625F + $$10, ($$28 + (float)$$31 + 0.5F) * 0.00390625F + $$11)
-                        .a($$21, $$22, $$23, 0.8F)
-                        .a(0.0F, 0.0F, -1.0F)
-                        .e();
-                  }
-               }
-
-               if ($$26 <= 1) {
-                  for (int $$32 = 0; $$32 < 8; $$32++) {
-                     $$0.a((double)($$27 + 0.0F), (double)($$24 + 4.0F), (double)($$28 + (float)$$32 + 1.0F - 9.765625E-4F))
-                        .a(($$27 + 0.0F) * 0.00390625F + $$10, ($$28 + (float)$$32 + 0.5F) * 0.00390625F + $$11)
-                        .a($$21, $$22, $$23, 0.8F)
-                        .a(0.0F, 0.0F, 1.0F)
-                        .e();
-                     $$0.a((double)($$27 + 8.0F), (double)($$24 + 4.0F), (double)($$28 + (float)$$32 + 1.0F - 9.765625E-4F))
-                        .a(($$27 + 8.0F) * 0.00390625F + $$10, ($$28 + (float)$$32 + 0.5F) * 0.00390625F + $$11)
-                        .a($$21, $$22, $$23, 0.8F)
-                        .a(0.0F, 0.0F, 1.0F)
-                        .e();
-                     $$0.a((double)($$27 + 8.0F), (double)($$24 + 0.0F), (double)($$28 + (float)$$32 + 1.0F - 9.765625E-4F))
-                        .a(($$27 + 8.0F) * 0.00390625F + $$10, ($$28 + (float)$$32 + 0.5F) * 0.00390625F + $$11)
-                        .a($$21, $$22, $$23, 0.8F)
-                        .a(0.0F, 0.0F, 1.0F)
-                        .e();
-                     $$0.a((double)($$27 + 0.0F), (double)($$24 + 0.0F), (double)($$28 + (float)$$32 + 1.0F - 9.765625E-4F))
-                        .a(($$27 + 0.0F) * 0.00390625F + $$10, ($$28 + (float)$$32 + 0.5F) * 0.00390625F + $$11)
-                        .a($$21, $$22, $$23, 0.8F)
-                        .a(0.0F, 0.0F, 1.0F)
-                        .e();
-                  }
-               }
-            }
-         }
-      } else {
-         int $$33 = 1;
-         int $$34 = 32;
-
-         for (int $$35 = -32; $$35 < 32; $$35 += 32) {
-            for (int $$36 = -32; $$36 < 32; $$36 += 32) {
-               $$0.a((double)($$35 + 0), (double)$$24, (double)($$36 + 32))
-                  .a((float)($$35 + 0) * 0.00390625F + $$10, (float)($$36 + 32) * 0.00390625F + $$11)
-                  .a($$12, $$13, $$14, 0.8F)
-                  .a(0.0F, -1.0F, 0.0F)
-                  .e();
-               $$0.a((double)($$35 + 32), (double)$$24, (double)($$36 + 32))
-                  .a((float)($$35 + 32) * 0.00390625F + $$10, (float)($$36 + 32) * 0.00390625F + $$11)
-                  .a($$12, $$13, $$14, 0.8F)
-                  .a(0.0F, -1.0F, 0.0F)
-                  .e();
-               $$0.a((double)($$35 + 32), (double)$$24, (double)($$36 + 0))
-                  .a((float)($$35 + 32) * 0.00390625F + $$10, (float)($$36 + 0) * 0.00390625F + $$11)
-                  .a($$12, $$13, $$14, 0.8F)
-                  .a(0.0F, -1.0F, 0.0F)
-                  .e();
-               $$0.a((double)($$35 + 0), (double)$$24, (double)($$36 + 0))
-                  .a((float)($$35 + 0) * 0.00390625F + $$10, (float)($$36 + 0) * 0.00390625F + $$11)
-                  .a($$12, $$13, $$14, 0.8F)
-                  .a(0.0F, -1.0F, 0.0F)
-                  .e();
-            }
-         }
-      }
-
-      return $$0.d();
-   }
-
-   private void c(epw $$0) {
-      this.q.aG().a("populate_sections_to_compile");
-      dzr $$1 = this.u.s_();
-      fqr $$2 = new fqr();
-      gu $$3 = $$0.c();
-      List<fqs.b> $$4 = Lists.newArrayList();
-      ObjectListIterator var6 = this.w.iterator();
-
-      while (var6.hasNext()) {
-         fqs.b $$5 = (fqs.b)var6.next();
-         hx $$6 = hx.a($$5.f());
-         if ($$5.h() && $$1.a($$6)) {
-            boolean $$7 = false;
-            if (this.q.m.k().c() == eqs.c) {
-               gu $$8 = $$5.f().b(8, 8, 8);
-               $$7 = $$8.j($$3) < 768.0 || $$5.i();
-            } else if (this.q.m.k().c() == eqs.b) {
-               $$7 = $$5.i();
-            }
-
-            if ($$7) {
-               this.q.aG().a("build_near_sync");
-               this.ae.a($$5, $$2);
-               $$5.g();
-               this.q.aG().c();
+            fns.this.J = null;
+            if (fns.this.L == fns.d) {
+               fns.this.a(fns.this.j.am());
             } else {
-               $$4.add($$5);
-            }
-         }
-      }
-
-      this.q.aG().b("upload");
-      this.ae.f();
-      this.q.aG().b("schedule_async_compile");
-
-      for (fqs.b $$9 : $$4) {
-         $$9.a(this.ae, $$2);
-         $$9.g();
-      }
-
-      this.q.aG().c();
-   }
-
-   private void d(epw $$0) {
-      ela $$1 = elh.a().c();
-      dgq $$2 = this.u.w_();
-      double $$3 = (double)(this.q.m.ay() * 16);
-      if (!($$0.b().c < $$2.g() - $$3) || !($$0.b().c > $$2.e() + $$3) || !($$0.b().e < $$2.h() - $$3) || !($$0.b().e > $$2.f() + $$3)) {
-         double $$4 = 1.0 - $$2.b($$0.b().c, $$0.b().e) / $$3;
-         $$4 = Math.pow($$4, 4.0);
-         $$4 = arp.a($$4, 0.0, 1.0);
-         double $$5 = $$0.b().c;
-         double $$6 = $$0.b().e;
-         double $$7 = (double)this.q.j.h();
-         RenderSystem.enableBlend();
-         RenderSystem.enableDepthTest();
-         RenderSystem.blendFuncSeparate(
-            GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO
-         );
-         RenderSystem.setShaderTexture(0, n);
-         RenderSystem.depthMask(eql.M());
-         elf $$8 = RenderSystem.getModelViewStack();
-         $$8.a();
-         RenderSystem.applyModelViewMatrix();
-         int $$9 = $$2.d().a();
-         float $$10 = (float)($$9 >> 16 & 0xFF) / 255.0F;
-         float $$11 = (float)($$9 >> 8 & 0xFF) / 255.0F;
-         float $$12 = (float)($$9 & 0xFF) / 255.0F;
-         RenderSystem.setShaderColor($$10, $$11, $$12, (float)$$4);
-         RenderSystem.setShader(fnn::s);
-         RenderSystem.polygonOffset(-3.0F, -3.0F);
-         RenderSystem.enablePolygonOffset();
-         RenderSystem.disableCull();
-         float $$13 = (float)(ac.b() % 3000L) / 3000.0F;
-         float $$14 = (float)(-arp.e($$0.b().d * 0.5));
-         float $$15 = $$14 + (float)$$7;
-         $$1.a(elk.b.h, eld.q);
-         double $$16 = Math.max((double)arp.a($$6 - $$3), $$2.f());
-         double $$17 = Math.min((double)arp.c($$6 + $$3), $$2.h());
-         float $$18 = (float)(arp.a($$16) & 1) * 0.5F;
-         if ($$5 > $$2.g() - $$3) {
-            float $$19 = $$18;
-
-            for (double $$20 = $$16; $$20 < $$17; $$19 += 0.5F) {
-               double $$21 = Math.min(1.0, $$17 - $$20);
-               float $$22 = (float)$$21 * 0.5F;
-               $$1.a($$2.g() - $$5, -$$7, $$20 - $$6).a($$13 - $$19, $$13 + $$15).e();
-               $$1.a($$2.g() - $$5, -$$7, $$20 + $$21 - $$6).a($$13 - ($$22 + $$19), $$13 + $$15).e();
-               $$1.a($$2.g() - $$5, $$7, $$20 + $$21 - $$6).a($$13 - ($$22 + $$19), $$13 + $$14).e();
-               $$1.a($$2.g() - $$5, $$7, $$20 - $$6).a($$13 - $$19, $$13 + $$14).e();
-               $$20++;
+               fns.this.a(fns.K[fns.this.L]);
             }
          }
 
-         if ($$5 < $$2.e() + $$3) {
-            float $$23 = $$18;
-
-            for (double $$24 = $$16; $$24 < $$17; $$23 += 0.5F) {
-               double $$25 = Math.min(1.0, $$17 - $$24);
-               float $$26 = (float)$$25 * 0.5F;
-               $$1.a($$2.e() - $$5, -$$7, $$24 - $$6).a($$13 + $$23, $$13 + $$15).e();
-               $$1.a($$2.e() - $$5, -$$7, $$24 + $$25 - $$6).a($$13 + $$26 + $$23, $$13 + $$15).e();
-               $$1.a($$2.e() - $$5, $$7, $$24 + $$25 - $$6).a($$13 + $$26 + $$23, $$13 + $$14).e();
-               $$1.a($$2.e() - $$5, $$7, $$24 - $$6).a($$13 + $$23, $$13 + $$14).e();
-               $$24++;
-            }
+         @Override
+         public String c() {
+            return "Shader Loader";
          }
-
-         $$16 = Math.max((double)arp.a($$5 - $$3), $$2.e());
-         $$17 = Math.min((double)arp.c($$5 + $$3), $$2.g());
-         $$18 = (float)(arp.a($$16) & 1) * 0.5F;
-         if ($$6 > $$2.h() - $$3) {
-            float $$27 = $$18;
-
-            for (double $$28 = $$16; $$28 < $$17; $$27 += 0.5F) {
-               double $$29 = Math.min(1.0, $$17 - $$28);
-               float $$30 = (float)$$29 * 0.5F;
-               $$1.a($$28 - $$5, -$$7, $$2.h() - $$6).a($$13 + $$27, $$13 + $$15).e();
-               $$1.a($$28 + $$29 - $$5, -$$7, $$2.h() - $$6).a($$13 + $$30 + $$27, $$13 + $$15).e();
-               $$1.a($$28 + $$29 - $$5, $$7, $$2.h() - $$6).a($$13 + $$30 + $$27, $$13 + $$14).e();
-               $$1.a($$28 - $$5, $$7, $$2.h() - $$6).a($$13 + $$27, $$13 + $$14).e();
-               $$28++;
-            }
-         }
-
-         if ($$6 < $$2.f() + $$3) {
-            float $$31 = $$18;
-
-            for (double $$32 = $$16; $$32 < $$17; $$31 += 0.5F) {
-               double $$33 = Math.min(1.0, $$17 - $$32);
-               float $$34 = (float)$$33 * 0.5F;
-               $$1.a($$32 - $$5, -$$7, $$2.f() - $$6).a($$13 - $$31, $$13 + $$15).e();
-               $$1.a($$32 + $$33 - $$5, -$$7, $$2.f() - $$6).a($$13 - ($$34 + $$31), $$13 + $$15).e();
-               $$1.a($$32 + $$33 - $$5, $$7, $$2.f() - $$6).a($$13 - ($$34 + $$31), $$13 + $$14).e();
-               $$1.a($$32 - $$5, $$7, $$2.f() - $$6).a($$13 - $$31, $$13 + $$14).e();
-               $$32++;
-            }
-         }
-
-         elb.a($$1.d());
-         RenderSystem.enableCull();
-         RenderSystem.polygonOffset(0.0F, 0.0F);
-         RenderSystem.disablePolygonOffset();
-         RenderSystem.disableBlend();
-         RenderSystem.defaultBlendFunc();
-         $$8.b();
-         RenderSystem.applyModelViewMatrix();
-         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
-         RenderSystem.depthMask(true);
-      }
-   }
-
-   private void a(elf $$0, elj $$1, bii $$2, double $$3, double $$4, double $$5, gu $$6, dez $$7) {
-      a($$0, $$1, $$7.a(this.u, $$6, ehi.a($$2)), (double)$$6.u() - $$3, (double)$$6.v() - $$4, (double)$$6.w() - $$5, 0.0F, 0.0F, 0.0F, 0.4F);
-   }
-
-   private static ehd a(float $$0) {
-      float $$1 = 5.99999F;
-      int $$2 = (int)(arp.a($$0, 0.0F, 1.0F) * 5.99999F);
-      float $$3 = $$0 * 5.99999F - (float)$$2;
-
-      return switch ($$2) {
-         case 0 -> new ehd(1.0, (double)$$3, 0.0);
-         case 1 -> new ehd((double)(1.0F - $$3), 1.0, 0.0);
-         case 2 -> new ehd(0.0, 1.0, (double)$$3);
-         case 3 -> new ehd(0.0, 1.0 - (double)$$3, 1.0);
-         case 4 -> new ehd((double)$$3, 0.0, 1.0);
-         case 5 -> new ehd(1.0, 0.0, 1.0 - (double)$$3);
-         default -> throw new IllegalStateException("Unexpected value: " + $$2);
       };
    }
 
-   private static ehd a(float $$0, float $$1, float $$2, float $$3) {
-      ehd $$4 = a($$3).a((double)$$0);
-      ehd $$5 = a(($$3 + 0.33333334F) % 1.0F).a((double)$$1);
-      ehd $$6 = a(($$3 + 0.6666667F) % 1.0F).a((double)$$2);
-      ehd $$7 = $$4.e($$5).e($$6);
-      double $$8 = Math.max(Math.max(1.0, $$7.c), Math.max($$7.d, $$7.e));
-      return new ehd($$7.c / $$8, $$7.d / $$8, $$7.e / $$8);
-   }
-
-   public static void a(elf $$0, elj $$1, ehw $$2, double $$3, double $$4, double $$5, float $$6, float $$7, float $$8, float $$9, boolean $$10) {
-      List<egy> $$11 = $$2.e();
-      if (!$$11.isEmpty()) {
-         int $$12 = $$10 ? $$11.size() : $$11.size() * 8;
-         a($$0, $$1, eht.a($$11.get(0)), $$3, $$4, $$5, $$6, $$7, $$8, $$9);
-
-         for (int $$13 = 1; $$13 < $$11.size(); $$13++) {
-            egy $$14 = $$11.get($$13);
-            float $$15 = (float)$$13 / (float)$$12;
-            ehd $$16 = a($$6, $$7, $$8, $$15);
-            a($$0, $$1, eht.a($$14), $$3, $$4, $$5, (float)$$16.c, (float)$$16.d, (float)$$16.e, $$9);
+   public void a(ans $$0) {
+      if (this.e != null) {
+         throw new RuntimeException("Blit shader already preloaded");
+      } else {
+         try {
+            this.e = new fom($$0, "blit_screen", eli.i);
+         } catch (IOException var3) {
+            throw new RuntimeException("could not preload blit shader", var3);
          }
+
+         aS = this.a($$0, "rendertype_gui", eli.n);
+         aT = this.a($$0, "rendertype_gui_overlay", eli.n);
+         P = this.a($$0, "position", eli.m);
+         Q = this.a($$0, "position_color", eli.n);
+         R = this.a($$0, "position_color_tex", eli.r);
+         S = this.a($$0, "position_tex", eli.q);
+         T = this.a($$0, "position_tex_color", eli.s);
+         aG = this.a($$0, "rendertype_text", eli.t);
       }
    }
 
-   private static void a(elf $$0, elj $$1, ehw $$2, double $$3, double $$4, double $$5, float $$6, float $$7, float $$8, float $$9) {
-      elf.a $$10 = $$0.c();
-      $$2.a(($$9x, $$10x, $$11, $$12, $$13, $$14) -> {
-         float $$15 = (float)($$12 - $$9x);
-         float $$16 = (float)($$13 - $$10x);
-         float $$17 = (float)($$14 - $$11);
-         float $$18 = arp.c($$15 * $$15 + $$16 * $$16 + $$17 * $$17);
-         $$15 /= $$18;
-         $$16 /= $$18;
-         $$17 /= $$18;
-         $$1.a($$10.a(), (float)($$9x + $$3), (float)($$10x + $$4), (float)($$11 + $$5)).a($$6, $$7, $$8, $$9).a($$10.b(), $$15, $$16, $$17).e();
-         $$1.a($$10.a(), (float)($$12 + $$3), (float)($$13 + $$4), (float)($$14 + $$5)).a($$6, $$7, $$8, $$9).a($$10.b(), $$15, $$16, $$17).e();
+   private fom a(ans $$0, String $$1, elp $$2) {
+      try {
+         fom $$3 = new fom($$0, $$1, $$2);
+         this.O.put($$1, $$3);
+         return $$3;
+      } catch (Exception var5) {
+         throw new IllegalStateException("could not preload shader " + $$1, var5);
+      }
+   }
+
+   void b(ans $$0) {
+      RenderSystem.assertOnRenderThread();
+      List<eky> $$1 = Lists.newArrayList();
+      $$1.addAll(eky.a.b.c().values());
+      $$1.addAll(eky.a.a.c().values());
+      $$1.forEach(eky::a);
+      List<Pair<fom, Consumer<fom>>> $$2 = Lists.newArrayListWithCapacity(this.O.size());
+
+      try {
+         $$2.add(Pair.of(new fom($$0, "particle", eli.l), (Consumer<fom>)$$0x -> U = $$0x));
+         $$2.add(Pair.of(new fom($$0, "position", eli.m), (Consumer<fom>)$$0x -> P = $$0x));
+         $$2.add(Pair.of(new fom($$0, "position_color", eli.n), (Consumer<fom>)$$0x -> Q = $$0x));
+         $$2.add(Pair.of(new fom($$0, "position_color_lightmap", eli.p), (Consumer<fom>)$$0x -> V = $$0x));
+         $$2.add(Pair.of(new fom($$0, "position_color_tex", eli.r), (Consumer<fom>)$$0x -> R = $$0x));
+         $$2.add(Pair.of(new fom($$0, "position_color_tex_lightmap", eli.t), (Consumer<fom>)$$0x -> W = $$0x));
+         $$2.add(Pair.of(new fom($$0, "position_tex", eli.q), (Consumer<fom>)$$0x -> S = $$0x));
+         $$2.add(Pair.of(new fom($$0, "position_tex_color", eli.s), (Consumer<fom>)$$0x -> T = $$0x));
+         $$2.add(Pair.of(new fom($$0, "position_tex_color_normal", eli.v), (Consumer<fom>)$$0x -> X = $$0x));
+         $$2.add(Pair.of(new fom($$0, "position_tex_lightmap_color", eli.u), (Consumer<fom>)$$0x -> Y = $$0x));
+         $$2.add(Pair.of(new fom($$0, "rendertype_solid", eli.j), (Consumer<fom>)$$0x -> Z = $$0x));
+         $$2.add(Pair.of(new fom($$0, "rendertype_cutout_mipped", eli.j), (Consumer<fom>)$$0x -> aa = $$0x));
+         $$2.add(Pair.of(new fom($$0, "rendertype_cutout", eli.j), (Consumer<fom>)$$0x -> ab = $$0x));
+         $$2.add(Pair.of(new fom($$0, "rendertype_translucent", eli.j), (Consumer<fom>)$$0x -> ac = $$0x));
+         $$2.add(Pair.of(new fom($$0, "rendertype_translucent_moving_block", eli.j), (Consumer<fom>)$$0x -> ad = $$0x));
+         $$2.add(Pair.of(new fom($$0, "rendertype_translucent_no_crumbling", eli.j), (Consumer<fom>)$$0x -> ae = $$0x));
+         $$2.add(Pair.of(new fom($$0, "rendertype_armor_cutout_no_cull", eli.k), (Consumer<fom>)$$0x -> af = $$0x));
+         $$2.add(Pair.of(new fom($$0, "rendertype_entity_solid", eli.k), (Consumer<fom>)$$0x -> ag = $$0x));
+         $$2.add(Pair.of(new fom($$0, "rendertype_entity_cutout", eli.k), (Consumer<fom>)$$0x -> ah = $$0x));
+         $$2.add(Pair.of(new fom($$0, "rendertype_entity_cutout_no_cull", eli.k), (Consumer<fom>)$$0x -> ai = $$0x));
+         $$2.add(Pair.of(new fom($$0, "rendertype_entity_cutout_no_cull_z_offset", eli.k), (Consumer<fom>)$$0x -> aj = $$0x));
+         $$2.add(Pair.of(new fom($$0, "rendertype_item_entity_translucent_cull", eli.k), (Consumer<fom>)$$0x -> ak = $$0x));
+         $$2.add(Pair.of(new fom($$0, "rendertype_entity_translucent_cull", eli.k), (Consumer<fom>)$$0x -> al = $$0x));
+         $$2.add(Pair.of(new fom($$0, "rendertype_entity_translucent", eli.k), (Consumer<fom>)$$0x -> am = $$0x));
+         $$2.add(Pair.of(new fom($$0, "rendertype_entity_translucent_emissive", eli.k), (Consumer<fom>)$$0x -> an = $$0x));
+         $$2.add(Pair.of(new fom($$0, "rendertype_entity_smooth_cutout", eli.k), (Consumer<fom>)$$0x -> ao = $$0x));
+         $$2.add(Pair.of(new fom($$0, "rendertype_beacon_beam", eli.j), (Consumer<fom>)$$0x -> ap = $$0x));
+         $$2.add(Pair.of(new fom($$0, "rendertype_entity_decal", eli.k), (Consumer<fom>)$$0x -> aq = $$0x));
+         $$2.add(Pair.of(new fom($$0, "rendertype_entity_no_outline", eli.k), (Consumer<fom>)$$0x -> ar = $$0x));
+         $$2.add(Pair.of(new fom($$0, "rendertype_entity_shadow", eli.k), (Consumer<fom>)$$0x -> as = $$0x));
+         $$2.add(Pair.of(new fom($$0, "rendertype_entity_alpha", eli.k), (Consumer<fom>)$$0x -> at = $$0x));
+         $$2.add(Pair.of(new fom($$0, "rendertype_eyes", eli.k), (Consumer<fom>)$$0x -> au = $$0x));
+         $$2.add(Pair.of(new fom($$0, "rendertype_energy_swirl", eli.k), (Consumer<fom>)$$0x -> av = $$0x));
+         $$2.add(Pair.of(new fom($$0, "rendertype_leash", eli.p), (Consumer<fom>)$$0x -> aw = $$0x));
+         $$2.add(Pair.of(new fom($$0, "rendertype_water_mask", eli.m), (Consumer<fom>)$$0x -> ax = $$0x));
+         $$2.add(Pair.of(new fom($$0, "rendertype_outline", eli.r), (Consumer<fom>)$$0x -> ay = $$0x));
+         $$2.add(Pair.of(new fom($$0, "rendertype_armor_glint", eli.q), (Consumer<fom>)$$0x -> az = $$0x));
+         $$2.add(Pair.of(new fom($$0, "rendertype_armor_entity_glint", eli.q), (Consumer<fom>)$$0x -> aA = $$0x));
+         $$2.add(Pair.of(new fom($$0, "rendertype_glint_translucent", eli.q), (Consumer<fom>)$$0x -> aB = $$0x));
+         $$2.add(Pair.of(new fom($$0, "rendertype_glint", eli.q), (Consumer<fom>)$$0x -> aC = $$0x));
+         $$2.add(Pair.of(new fom($$0, "rendertype_glint_direct", eli.q), (Consumer<fom>)$$0x -> aD = $$0x));
+         $$2.add(Pair.of(new fom($$0, "rendertype_entity_glint", eli.q), (Consumer<fom>)$$0x -> aE = $$0x));
+         $$2.add(Pair.of(new fom($$0, "rendertype_entity_glint_direct", eli.q), (Consumer<fom>)$$0x -> aF = $$0x));
+         $$2.add(Pair.of(new fom($$0, "rendertype_text", eli.t), (Consumer<fom>)$$0x -> aG = $$0x));
+         $$2.add(Pair.of(new fom($$0, "rendertype_text_background", eli.p), (Consumer<fom>)$$0x -> aH = $$0x));
+         $$2.add(Pair.of(new fom($$0, "rendertype_text_intensity", eli.t), (Consumer<fom>)$$0x -> aI = $$0x));
+         $$2.add(Pair.of(new fom($$0, "rendertype_text_see_through", eli.t), (Consumer<fom>)$$0x -> aJ = $$0x));
+         $$2.add(Pair.of(new fom($$0, "rendertype_text_background_see_through", eli.p), (Consumer<fom>)$$0x -> aK = $$0x));
+         $$2.add(Pair.of(new fom($$0, "rendertype_text_intensity_see_through", eli.t), (Consumer<fom>)$$0x -> aL = $$0x));
+         $$2.add(Pair.of(new fom($$0, "rendertype_lightning", eli.n), (Consumer<fom>)$$0x -> aM = $$0x));
+         $$2.add(Pair.of(new fom($$0, "rendertype_tripwire", eli.j), (Consumer<fom>)$$0x -> aN = $$0x));
+         $$2.add(Pair.of(new fom($$0, "rendertype_end_portal", eli.m), (Consumer<fom>)$$0x -> aO = $$0x));
+         $$2.add(Pair.of(new fom($$0, "rendertype_end_gateway", eli.m), (Consumer<fom>)$$0x -> aP = $$0x));
+         $$2.add(Pair.of(new fom($$0, "rendertype_lines", eli.o), (Consumer<fom>)$$0x -> aQ = $$0x));
+         $$2.add(Pair.of(new fom($$0, "rendertype_crumbling", eli.j), (Consumer<fom>)$$0x -> aR = $$0x));
+         $$2.add(Pair.of(new fom($$0, "rendertype_gui", eli.n), (Consumer<fom>)$$0x -> aS = $$0x));
+         $$2.add(Pair.of(new fom($$0, "rendertype_gui_overlay", eli.n), (Consumer<fom>)$$0x -> aT = $$0x));
+         $$2.add(Pair.of(new fom($$0, "rendertype_gui_text_highlight", eli.n), (Consumer<fom>)$$0x -> aU = $$0x));
+         $$2.add(Pair.of(new fom($$0, "rendertype_gui_ghost_recipe_overlay", eli.n), (Consumer<fom>)$$0x -> aV = $$0x));
+      } catch (IOException var5) {
+         $$2.forEach($$0x -> ((fom)$$0x.getFirst()).close());
+         throw new RuntimeException("could not reload shaders", var5);
+      }
+
+      this.aw();
+      $$2.forEach($$0x -> {
+         fom $$1x = (fom)$$0x.getFirst();
+         this.O.put($$1x.i(), $$1x);
+         ((Consumer)$$0x.getSecond()).accept($$1x);
       });
    }
 
-   public static void a(elj $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, float $$8, float $$9, float $$10) {
-      a(new elf(), $$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10, $$7, $$8, $$9);
-   }
-
-   public static void a(elf $$0, elj $$1, egy $$2, float $$3, float $$4, float $$5, float $$6) {
-      a($$0, $$1, $$2.a, $$2.b, $$2.c, $$2.d, $$2.e, $$2.f, $$3, $$4, $$5, $$6, $$3, $$4, $$5);
-   }
-
-   public static void a(elf $$0, elj $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7, float $$8, float $$9, float $$10, float $$11) {
-      a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10, $$11, $$8, $$9, $$10);
-   }
-
-   public static void a(
-      elf $$0,
-      elj $$1,
-      double $$2,
-      double $$3,
-      double $$4,
-      double $$5,
-      double $$6,
-      double $$7,
-      float $$8,
-      float $$9,
-      float $$10,
-      float $$11,
-      float $$12,
-      float $$13,
-      float $$14
-   ) {
-      Matrix4f $$15 = $$0.c().a();
-      Matrix3f $$16 = $$0.c().b();
-      float $$17 = (float)$$2;
-      float $$18 = (float)$$3;
-      float $$19 = (float)$$4;
-      float $$20 = (float)$$5;
-      float $$21 = (float)$$6;
-      float $$22 = (float)$$7;
-      $$1.a($$15, $$17, $$18, $$19).a($$8, $$13, $$14, $$11).a($$16, 1.0F, 0.0F, 0.0F).e();
-      $$1.a($$15, $$20, $$18, $$19).a($$8, $$13, $$14, $$11).a($$16, 1.0F, 0.0F, 0.0F).e();
-      $$1.a($$15, $$17, $$18, $$19).a($$12, $$9, $$14, $$11).a($$16, 0.0F, 1.0F, 0.0F).e();
-      $$1.a($$15, $$17, $$21, $$19).a($$12, $$9, $$14, $$11).a($$16, 0.0F, 1.0F, 0.0F).e();
-      $$1.a($$15, $$17, $$18, $$19).a($$12, $$13, $$10, $$11).a($$16, 0.0F, 0.0F, 1.0F).e();
-      $$1.a($$15, $$17, $$18, $$22).a($$12, $$13, $$10, $$11).a($$16, 0.0F, 0.0F, 1.0F).e();
-      $$1.a($$15, $$20, $$18, $$19).a($$8, $$9, $$10, $$11).a($$16, 0.0F, 1.0F, 0.0F).e();
-      $$1.a($$15, $$20, $$21, $$19).a($$8, $$9, $$10, $$11).a($$16, 0.0F, 1.0F, 0.0F).e();
-      $$1.a($$15, $$20, $$21, $$19).a($$8, $$9, $$10, $$11).a($$16, -1.0F, 0.0F, 0.0F).e();
-      $$1.a($$15, $$17, $$21, $$19).a($$8, $$9, $$10, $$11).a($$16, -1.0F, 0.0F, 0.0F).e();
-      $$1.a($$15, $$17, $$21, $$19).a($$8, $$9, $$10, $$11).a($$16, 0.0F, 0.0F, 1.0F).e();
-      $$1.a($$15, $$17, $$21, $$22).a($$8, $$9, $$10, $$11).a($$16, 0.0F, 0.0F, 1.0F).e();
-      $$1.a($$15, $$17, $$21, $$22).a($$8, $$9, $$10, $$11).a($$16, 0.0F, -1.0F, 0.0F).e();
-      $$1.a($$15, $$17, $$18, $$22).a($$8, $$9, $$10, $$11).a($$16, 0.0F, -1.0F, 0.0F).e();
-      $$1.a($$15, $$17, $$18, $$22).a($$8, $$9, $$10, $$11).a($$16, 1.0F, 0.0F, 0.0F).e();
-      $$1.a($$15, $$20, $$18, $$22).a($$8, $$9, $$10, $$11).a($$16, 1.0F, 0.0F, 0.0F).e();
-      $$1.a($$15, $$20, $$18, $$22).a($$8, $$9, $$10, $$11).a($$16, 0.0F, 0.0F, -1.0F).e();
-      $$1.a($$15, $$20, $$18, $$19).a($$8, $$9, $$10, $$11).a($$16, 0.0F, 0.0F, -1.0F).e();
-      $$1.a($$15, $$17, $$21, $$22).a($$8, $$9, $$10, $$11).a($$16, 1.0F, 0.0F, 0.0F).e();
-      $$1.a($$15, $$20, $$21, $$22).a($$8, $$9, $$10, $$11).a($$16, 1.0F, 0.0F, 0.0F).e();
-      $$1.a($$15, $$20, $$18, $$22).a($$8, $$9, $$10, $$11).a($$16, 0.0F, 1.0F, 0.0F).e();
-      $$1.a($$15, $$20, $$21, $$22).a($$8, $$9, $$10, $$11).a($$16, 0.0F, 1.0F, 0.0F).e();
-      $$1.a($$15, $$20, $$21, $$19).a($$8, $$9, $$10, $$11).a($$16, 0.0F, 0.0F, 1.0F).e();
-      $$1.a($$15, $$20, $$21, $$22).a($$8, $$9, $$10, $$11).a($$16, 0.0F, 0.0F, 1.0F).e();
-   }
-
-   public static void b(elf $$0, elj $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7, float $$8, float $$9, float $$10, float $$11) {
-      a($$0, $$1, (float)$$2, (float)$$3, (float)$$4, (float)$$5, (float)$$6, (float)$$7, $$8, $$9, $$10, $$11);
-   }
-
-   public static void a(elf $$0, elj $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9, float $$10, float $$11) {
-      Matrix4f $$12 = $$0.c().a();
-      $$1.a($$12, $$2, $$3, $$4).a($$8, $$9, $$10, $$11).e();
-      $$1.a($$12, $$2, $$3, $$4).a($$8, $$9, $$10, $$11).e();
-      $$1.a($$12, $$2, $$3, $$4).a($$8, $$9, $$10, $$11).e();
-      $$1.a($$12, $$2, $$3, $$7).a($$8, $$9, $$10, $$11).e();
-      $$1.a($$12, $$2, $$6, $$4).a($$8, $$9, $$10, $$11).e();
-      $$1.a($$12, $$2, $$6, $$7).a($$8, $$9, $$10, $$11).e();
-      $$1.a($$12, $$2, $$6, $$7).a($$8, $$9, $$10, $$11).e();
-      $$1.a($$12, $$2, $$3, $$7).a($$8, $$9, $$10, $$11).e();
-      $$1.a($$12, $$5, $$6, $$7).a($$8, $$9, $$10, $$11).e();
-      $$1.a($$12, $$5, $$3, $$7).a($$8, $$9, $$10, $$11).e();
-      $$1.a($$12, $$5, $$3, $$7).a($$8, $$9, $$10, $$11).e();
-      $$1.a($$12, $$5, $$3, $$4).a($$8, $$9, $$10, $$11).e();
-      $$1.a($$12, $$5, $$6, $$7).a($$8, $$9, $$10, $$11).e();
-      $$1.a($$12, $$5, $$6, $$4).a($$8, $$9, $$10, $$11).e();
-      $$1.a($$12, $$5, $$6, $$4).a($$8, $$9, $$10, $$11).e();
-      $$1.a($$12, $$5, $$3, $$4).a($$8, $$9, $$10, $$11).e();
-      $$1.a($$12, $$2, $$6, $$4).a($$8, $$9, $$10, $$11).e();
-      $$1.a($$12, $$2, $$3, $$4).a($$8, $$9, $$10, $$11).e();
-      $$1.a($$12, $$2, $$3, $$4).a($$8, $$9, $$10, $$11).e();
-      $$1.a($$12, $$5, $$3, $$4).a($$8, $$9, $$10, $$11).e();
-      $$1.a($$12, $$2, $$3, $$7).a($$8, $$9, $$10, $$11).e();
-      $$1.a($$12, $$5, $$3, $$7).a($$8, $$9, $$10, $$11).e();
-      $$1.a($$12, $$5, $$3, $$7).a($$8, $$9, $$10, $$11).e();
-      $$1.a($$12, $$2, $$6, $$4).a($$8, $$9, $$10, $$11).e();
-      $$1.a($$12, $$2, $$6, $$4).a($$8, $$9, $$10, $$11).e();
-      $$1.a($$12, $$2, $$6, $$7).a($$8, $$9, $$10, $$11).e();
-      $$1.a($$12, $$5, $$6, $$4).a($$8, $$9, $$10, $$11).e();
-      $$1.a($$12, $$5, $$6, $$7).a($$8, $$9, $$10, $$11).e();
-      $$1.a($$12, $$5, $$6, $$7).a($$8, $$9, $$10, $$11).e();
-      $$1.a($$12, $$5, $$6, $$7).a($$8, $$9, $$10, $$11).e();
-   }
-
-   public void a(cor $$0, gu $$1, dez $$2, dez $$3, int $$4) {
-      this.a($$1, ($$4 & 8) != 0);
-   }
-
-   private void a(gu $$0, boolean $$1) {
-      for (int $$2 = $$0.w() - 1; $$2 <= $$0.w() + 1; $$2++) {
-         for (int $$3 = $$0.u() - 1; $$3 <= $$0.u() + 1; $$3++) {
-            for (int $$4 = $$0.v() - 1; $$4 <= $$0.v() + 1; $$4++) {
-               this.a(hx.a($$3), hx.a($$4), hx.a($$2), $$1);
-            }
-         }
-      }
-   }
-
-   public void a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      for (int $$6 = $$2 - 1; $$6 <= $$5 + 1; $$6++) {
-         for (int $$7 = $$0 - 1; $$7 <= $$3 + 1; $$7++) {
-            for (int $$8 = $$1 - 1; $$8 <= $$4 + 1; $$8++) {
-               this.b(hx.a($$7), hx.a($$8), hx.a($$6));
-            }
-         }
-      }
-   }
-
-   public void a(gu $$0, dez $$1, dez $$2) {
-      if (this.q.aC().a($$1, $$2)) {
-         this.a($$0.u(), $$0.v(), $$0.w(), $$0.u(), $$0.v(), $$0.w());
-      }
-   }
-
-   public void a(int $$0, int $$1, int $$2) {
-      for (int $$3 = $$2 - 1; $$3 <= $$2 + 1; $$3++) {
-         for (int $$4 = $$0 - 1; $$4 <= $$0 + 1; $$4++) {
-            for (int $$5 = $$1 - 1; $$5 <= $$1 + 1; $$5++) {
-               this.b($$4, $$5, $$3);
-            }
-         }
-      }
-   }
-
-   public void b(int $$0, int $$1, int $$2) {
-      this.a($$0, $$1, $$2, false);
-   }
-
-   private void a(int $$0, int $$1, int $$2, boolean $$3) {
-      this.y.a($$0, $$1, $$2, $$3);
-   }
-
-   public void a(@Nullable aov $$0, gu $$1) {
-      gcc $$2 = this.I.get($$1);
-      if ($$2 != null) {
-         this.q.ai().b($$2);
-         this.I.remove($$1);
-      }
-
-      if ($$0 != null) {
-         cjp $$3 = cjp.a($$0);
-         if ($$3 != null) {
-            this.q.l.a($$3.i());
-         }
-
-         gcc var5 = gbx.a($$0, ehd.b($$1));
-         this.I.put($$1, var5);
-         this.q.ai().a(var5);
-      }
-
-      this.a(this.u, $$1, $$0 != null);
-   }
-
-   private void a(cpl $$0, gu $$1, boolean $$2) {
-      for (biy $$4 : $$0.a(biy.class, new egy($$1).g(3.0))) {
-         $$4.a($$1, $$2);
-      }
-   }
-
-   public void a(it $$0, boolean $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-      this.a($$0, $$1, false, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
-
-   public void a(it $$0, boolean $$1, boolean $$2, double $$3, double $$4, double $$5, double $$6, double $$7, double $$8) {
-      try {
-         this.b($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8);
-      } catch (Throwable var19) {
-         o $$10 = o.a(var19, "Exception while adding particle");
-         p $$11 = $$10.a("Particle being added");
-         $$11.a("ID", jb.k.b($$0.b()));
-         $$11.a("Parameters", $$0.a());
-         $$11.a("Position", () -> p.a(this.u, $$3, $$4, $$5));
-         throw new y($$10);
-      }
-   }
-
-   private <T extends it> void a(T $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      this.a($$0, $$0.b().c(), $$1, $$2, $$3, $$4, $$5, $$6);
+   private void aw() {
+      RenderSystem.assertOnRenderThread();
+      this.O.values().forEach(fom::close);
+      this.O.clear();
    }
 
    @Nullable
-   private flk b(it $$0, boolean $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-      return this.b($$0, $$1, false, $$2, $$3, $$4, $$5, $$6, $$7);
+   public fom a(@Nullable String $$0) {
+      return $$0 == null ? null : this.O.get($$0);
+   }
+
+   public void f() {
+      this.ax();
+      this.z.a();
+      if (this.j.am() == null) {
+         this.j.a(this.j.s);
+      }
+
+      this.N.a();
+      this.p++;
+      this.b.a();
+      this.j.f.a(this.N);
+      this.t = this.s;
+      if (this.j.l.j().c()) {
+         this.s += 0.05F;
+         if (this.s > 1.0F) {
+            this.s = 1.0F;
+         }
+      } else if (this.s > 0.0F) {
+         this.s -= 0.0125F;
+      }
+
+      if (this.G > 0) {
+         this.G--;
+         if (this.G == 0) {
+            this.F = null;
+         }
+      }
    }
 
    @Nullable
-   private flk b(it $$0, boolean $$1, boolean $$2, double $$3, double $$4, double $$5, double $$6, double $$7, double $$8) {
-      epw $$9 = this.q.j.m();
-      eqq $$10 = this.a($$2);
-      if ($$1) {
-         return this.q.g.a($$0, $$3, $$4, $$5, $$6, $$7, $$8);
-      } else if ($$9.b().c($$3, $$4, $$5) > 1024.0) {
-         return null;
-      } else {
-         return $$10 == eqq.c ? null : this.q.g.a($$0, $$3, $$4, $$5, $$6, $$7, $$8);
-      }
-   }
-
-   private eqq a(boolean $$0) {
-      eqq $$1 = this.q.m.an().c();
-      if ($$0 && $$1 == eqq.c && this.u.z.a(10) == 0) {
-         $$1 = eqq.b;
-      }
-
-      if ($$1 == eqq.b && this.u.z.a(3) == 0) {
-         $$1 = eqq.c;
-      }
-
-      return $$1;
-   }
-
-   public void p() {
-   }
-
-   public void a(int $$0, gu $$1, int $$2) {
-      switch ($$0) {
-         case 1023:
-         case 1028:
-         case 1038:
-            epw $$3 = this.q.j.m();
-            if ($$3.h()) {
-               double $$4 = (double)$$1.u() - $$3.b().c;
-               double $$5 = (double)$$1.v() - $$3.b().d;
-               double $$6 = (double)$$1.w() - $$3.b().e;
-               double $$7 = Math.sqrt($$4 * $$4 + $$5 * $$5 + $$6 * $$6);
-               double $$8 = $$3.b().c;
-               double $$9 = $$3.b().d;
-               double $$10 = $$3.b().e;
-               if ($$7 > 0.0) {
-                  $$8 += $$4 / $$7 * 2.0;
-                  $$9 += $$5 / $$7 * 2.0;
-                  $$10 += $$6 / $$7 * 2.0;
-               }
-
-               if ($$0 == 1023) {
-                  this.u.a($$8, $$9, $$10, aow.As, aox.f, 1.0F, 1.0F, false);
-               } else if ($$0 == 1038) {
-                  this.u.a($$8, $$9, $$10, aow.hp, aox.f, 1.0F, 1.0F, false);
-               } else {
-                  this.u.a($$8, $$9, $$10, aow.gU, aox.f, 5.0F, 1.0F, false);
-               }
-            }
-      }
-   }
-
-   public void b(int $$0, gu $$1, int $$2) {
-      aru $$3 = this.u.z;
-      switch ($$0) {
-         case 1000:
-            this.u.a($$1, aow.fM, aox.e, 1.0F, 1.0F, false);
-            break;
-         case 1001:
-            this.u.a($$1, aow.fN, aox.e, 1.0F, 1.2F, false);
-            break;
-         case 1002:
-            this.u.a($$1, aow.fO, aox.e, 1.0F, 1.2F, false);
-            break;
-         case 1003:
-            this.u.a($$1, aow.hb, aox.g, 1.0F, 1.2F, false);
-            break;
-         case 1004:
-            this.u.a($$1, aow.hJ, aox.g, 1.0F, 1.2F, false);
-            break;
-         case 1009:
-            if ($$2 == 0) {
-               this.u.a($$1, aow.hN, aox.e, 0.5F, 2.6F + ($$3.i() - $$3.i()) * 0.8F, false);
-            } else if ($$2 == 1) {
-               this.u.a($$1, aow.iY, aox.e, 0.7F, 1.6F + ($$3.i() - $$3.i()) * 0.4F, false);
-            }
-            break;
-         case 1010:
-            if (cis.b($$2) instanceof cjp $$87) {
-               this.a($$87.x(), $$1);
-            }
-            break;
-         case 1011:
-            this.a(null, $$1);
-            break;
-         case 1015:
-            this.u.a($$1, aow.ji, aox.f, 10.0F, ($$3.i() - $$3.i()) * 0.2F + 1.0F, false);
-            break;
-         case 1016:
-            this.u.a($$1, aow.jh, aox.f, 10.0F, ($$3.i() - $$3.i()) * 0.2F + 1.0F, false);
-            break;
-         case 1017:
-            this.u.a($$1, aow.gZ, aox.f, 10.0F, ($$3.i() - $$3.i()) * 0.2F + 1.0F, false);
-            break;
-         case 1018:
-            this.u.a($$1, aow.bV, aox.f, 2.0F, ($$3.i() - $$3.i()) * 0.2F + 1.0F, false);
-            break;
-         case 1019:
-            this.u.a($$1, aow.Bb, aox.f, 2.0F, ($$3.i() - $$3.i()) * 0.2F + 1.0F, false);
-            break;
-         case 1020:
-            this.u.a($$1, aow.Bc, aox.f, 2.0F, ($$3.i() - $$3.i()) * 0.2F + 1.0F, false);
-            break;
-         case 1021:
-            this.u.a($$1, aow.Bd, aox.f, 2.0F, ($$3.i() - $$3.i()) * 0.2F + 1.0F, false);
-            break;
-         case 1022:
-            this.u.a($$1, aow.Ak, aox.f, 2.0F, ($$3.i() - $$3.i()) * 0.2F + 1.0F, false);
-            break;
-         case 1024:
-            this.u.a($$1, aow.An, aox.f, 2.0F, ($$3.i() - $$3.i()) * 0.2F + 1.0F, false);
-            break;
-         case 1025:
-            this.u.a($$1, aow.bu, aox.g, 0.05F, ($$3.i() - $$3.i()) * 0.2F + 1.0F, false);
-            break;
-         case 1026:
-            this.u.a($$1, aow.Bl, aox.f, 2.0F, ($$3.i() - $$3.i()) * 0.2F + 1.0F, false);
-            break;
-         case 1027:
-            this.u.a($$1, aow.Bs, aox.f, 2.0F, ($$3.i() - $$3.i()) * 0.2F + 1.0F, false);
-            break;
-         case 1029:
-            this.u.a($$1, aow.V, aox.e, 1.0F, $$3.i() * 0.1F + 0.9F, false);
-            break;
-         case 1030:
-            this.u.a($$1, aow.ab, aox.e, 1.0F, $$3.i() * 0.1F + 0.9F, false);
-            break;
-         case 1031:
-            this.u.a($$1, aow.Y, aox.e, 0.3F, this.u.z.i() * 0.1F + 0.9F, false);
-            break;
-         case 1032:
-            this.q.ai().a(gbx.b(aow.sV, $$3.i() * 0.4F + 0.8F, 0.25F));
-            break;
-         case 1033:
-            this.u.a($$1, aow.ez, aox.e, 1.0F, 1.0F, false);
-            break;
-         case 1034:
-            this.u.a($$1, aow.ey, aox.e, 1.0F, 1.0F, false);
-            break;
-         case 1035:
-            this.u.a($$1, aow.ck, aox.e, 1.0F, 1.0F, false);
-            break;
-         case 1039:
-            this.u.a($$1, aow.rJ, aox.f, 0.3F, this.u.z.i() * 0.1F + 0.9F, false);
-            break;
-         case 1040:
-            this.u.a($$1, aow.Be, aox.f, 2.0F, ($$3.i() - $$3.i()) * 0.2F + 1.0F, false);
-            break;
-         case 1041:
-            this.u.a($$1, aow.ly, aox.f, 2.0F, ($$3.i() - $$3.i()) * 0.2F + 1.0F, false);
-            break;
-         case 1042:
-            this.u.a($$1, aow.kh, aox.e, 1.0F, this.u.z.i() * 0.1F + 0.9F, false);
-            break;
-         case 1043:
-            this.u.a($$1, aow.ce, aox.e, 1.0F, this.u.z.i() * 0.1F + 0.9F, false);
-            break;
-         case 1044:
-            this.u.a($$1, aow.ww, aox.e, 1.0F, this.u.z.i() * 0.1F + 0.9F, false);
-            break;
-         case 1045:
-            this.u.a($$1, aow.gp, aox.e, 2.0F, this.u.z.i() * 0.1F + 0.9F, false);
-            break;
-         case 1046:
-            this.u.a($$1, aow.gs, aox.e, 2.0F, this.u.z.i() * 0.1F + 0.9F, false);
-            break;
-         case 1047:
-            this.u.a($$1, aow.gt, aox.e, 2.0F, this.u.z.i() * 0.1F + 0.9F, false);
-            break;
-         case 1048:
-            this.u.a($$1, aow.vp, aox.f, 2.0F, ($$3.i() - $$3.i()) * 0.2F + 1.0F, false);
-            break;
-         case 1500:
-            ctu.a(this.u, $$1, $$2 > 0);
-            break;
-         case 1501:
-            this.u.a($$1, aow.mo, aox.e, 0.5F, 2.6F + ($$3.i() - $$3.i()) * 0.8F, false);
-
-            for (int $$70 = 0; $$70 < 8; $$70++) {
-               this.u.a(iv.S, (double)$$1.u() + $$3.j(), (double)$$1.v() + 1.2, (double)$$1.w() + $$3.j(), 0.0, 0.0, 0.0);
-            }
-            break;
-         case 1502:
-            this.u.a($$1, aow.tI, aox.e, 0.5F, 2.6F + ($$3.i() - $$3.i()) * 0.8F, false);
-
-            for (int $$71 = 0; $$71 < 5; $$71++) {
-               double $$72 = (double)$$1.u() + $$3.j() * 0.6 + 0.2;
-               double $$73 = (double)$$1.v() + $$3.j() * 0.6 + 0.2;
-               double $$74 = (double)$$1.w() + $$3.j() * 0.6 + 0.2;
-               this.u.a(iv.Z, $$72, $$73, $$74, 0.0, 0.0, 0.0);
-            }
-            break;
-         case 1503:
-            this.u.a($$1, aow.ho, aox.e, 1.0F, 1.0F, false);
-
-            for (int $$75 = 0; $$75 < 16; $$75++) {
-               double $$76 = (double)$$1.u() + (5.0 + $$3.j() * 6.0) / 16.0;
-               double $$77 = (double)$$1.v() + 0.8125;
-               double $$78 = (double)$$1.w() + (5.0 + $$3.j() * 6.0) / 16.0;
-               this.u.a(iv.Z, $$76, $$77, $$78, 0.0, 0.0, 0.0);
-            }
-            break;
-         case 1504:
-            cyb.a(this.u, $$1, this.u.a_($$1));
-            break;
-         case 1505:
-            cgs.a(this.u, $$1, $$2);
-            this.u.a($$1, aow.cd, aox.e, 1.0F, 1.0F, false);
-            break;
-         case 2000:
-            ha $$4 = ha.a($$2);
-            int $$5 = $$4.j();
-            int $$6 = $$4.k();
-            int $$7 = $$4.l();
-            double $$8 = (double)$$1.u() + (double)$$5 * 0.6 + 0.5;
-            double $$9 = (double)$$1.v() + (double)$$6 * 0.6 + 0.5;
-            double $$10 = (double)$$1.w() + (double)$$7 * 0.6 + 0.5;
-
-            for (int $$11 = 0; $$11 < 10; $$11++) {
-               double $$12 = $$3.j() * 0.2 + 0.01;
-               double $$13 = $$8 + (double)$$5 * 0.01 + ($$3.j() - 0.5) * (double)$$7 * 0.5;
-               double $$14 = $$9 + (double)$$6 * 0.01 + ($$3.j() - 0.5) * (double)$$6 * 0.5;
-               double $$15 = $$10 + (double)$$7 * 0.01 + ($$3.j() - 0.5) * (double)$$5 * 0.5;
-               double $$16 = (double)$$5 * $$12 + $$3.k() * 0.01;
-               double $$17 = (double)$$6 * $$12 + $$3.k() * 0.01;
-               double $$18 = (double)$$7 * $$12 + $$3.k() * 0.01;
-               this.a(iv.Z, $$13, $$14, $$15, $$16, $$17, $$18);
-            }
-            break;
-         case 2001:
-            dez $$38 = csl.a($$2);
-            if (!$$38.i()) {
-               czy $$39 = $$38.w();
-               this.u.a($$1, $$39.c(), aox.e, ($$39.a() + 1.0F) / 2.0F, $$39.b() * 0.8F, false);
-            }
-
-            this.u.a($$1, $$38);
-            break;
-         case 2002:
-         case 2007:
-            ehd $$24 = ehd.c($$1);
-
-            for (int $$25 = 0; $$25 < 8; $$25++) {
-               this.a(new ir(iv.O, new cix(cja.uu)), $$24.c, $$24.d, $$24.e, $$3.k() * 0.15, $$3.j() * 0.2, $$3.k() * 0.15);
-            }
-
-            float $$26 = (float)($$2 >> 16 & 0xFF) / 255.0F;
-            float $$27 = (float)($$2 >> 8 & 0xFF) / 255.0F;
-            float $$28 = (float)($$2 >> 0 & 0xFF) / 255.0F;
-            it $$29 = $$0 == 2007 ? iv.N : iv.q;
-
-            for (int $$30 = 0; $$30 < 100; $$30++) {
-               double $$31 = $$3.j() * 4.0;
-               double $$32 = $$3.j() * Math.PI * 2.0;
-               double $$33 = Math.cos($$32) * $$31;
-               double $$34 = 0.01 + $$3.j() * 0.5;
-               double $$35 = Math.sin($$32) * $$31;
-               flk $$36 = this.b($$29, $$29.b().c(), $$24.c + $$33 * 0.1, $$24.d + 0.3, $$24.e + $$35 * 0.1, $$33, $$34, $$35);
-               if ($$36 != null) {
-                  float $$37 = 0.75F + $$3.i() * 0.25F;
-                  $$36.a($$26 * $$37, $$27 * $$37, $$28 * $$37);
-                  $$36.c((float)$$31);
-               }
-            }
-
-            this.u.a($$1, aow.xc, aox.g, 1.0F, $$3.i() * 0.1F + 0.9F, false);
-            break;
-         case 2003:
-            double $$19 = (double)$$1.u() + 0.5;
-            double $$20 = (double)$$1.v();
-            double $$21 = (double)$$1.w() + 0.5;
-
-            for (int $$22 = 0; $$22 < 8; $$22++) {
-               this.a(new ir(iv.O, new cix(cja.rD)), $$19, $$20, $$21, $$3.k() * 0.15, $$3.j() * 0.2, $$3.k() * 0.15);
-            }
-
-            for (double $$23 = 0.0; $$23 < Math.PI * 2; $$23 += Math.PI / 20) {
-               this.a(iv.X, $$19 + Math.cos($$23) * 5.0, $$20 - 0.4, $$21 + Math.sin($$23) * 5.0, Math.cos($$23) * -5.0, 0.0, Math.sin($$23) * -5.0);
-               this.a(iv.X, $$19 + Math.cos($$23) * 5.0, $$20 - 0.4, $$21 + Math.sin($$23) * 5.0, Math.cos($$23) * -7.0, 0.0, Math.sin($$23) * -7.0);
-            }
-            break;
-         case 2004:
-            for (int $$42 = 0; $$42 < 20; $$42++) {
-               double $$43 = (double)$$1.u() + 0.5 + ($$3.j() - 0.5) * 2.0;
-               double $$44 = (double)$$1.v() + 0.5 + ($$3.j() - 0.5) * 2.0;
-               double $$45 = (double)$$1.w() + 0.5 + ($$3.j() - 0.5) * 2.0;
-               this.u.a(iv.Z, $$43, $$44, $$45, 0.0, 0.0, 0.0);
-               this.u.a(iv.C, $$43, $$44, $$45, 0.0, 0.0, 0.0);
-            }
-            break;
-         case 2005:
-            cgs.a(this.u, $$1, $$2);
-            break;
-         case 2006:
-            for (int $$79 = 0; $$79 < 200; $$79++) {
-               float $$80 = $$3.i() * 4.0F;
-               float $$81 = $$3.i() * (float) (Math.PI * 2);
-               double $$82 = (double)(arp.b($$81) * $$80);
-               double $$83 = 0.01 + $$3.j() * 0.5;
-               double $$84 = (double)(arp.a($$81) * $$80);
-               flk $$85 = this.b(iv.i, false, (double)$$1.u() + $$82 * 0.1, (double)$$1.v() + 0.3, (double)$$1.w() + $$84 * 0.1, $$82, $$83, $$84);
-               if ($$85 != null) {
-                  $$85.c($$80);
-               }
-            }
-
-            if ($$2 == 1) {
-               this.u.a($$1, aow.gV, aox.f, 1.0F, $$3.i() * 0.1F + 0.9F, false);
-            }
-            break;
-         case 2008:
-            this.u.a(iv.x, (double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, 0.0, 0.0, 0.0);
-            break;
-         case 2009:
-            for (int $$86 = 0; $$86 < 8; $$86++) {
-               this.u.a(iv.f, (double)$$1.u() + $$3.j(), (double)$$1.v() + 1.2, (double)$$1.w() + $$3.j(), 0.0, 0.0, 0.0);
-            }
-            break;
-         case 3000:
-            this.u.a(iv.w, true, (double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, 0.0, 0.0, 0.0);
-            this.u.a($$1, aow.hn, aox.e, 10.0F, (1.0F + (this.u.z.i() - this.u.z.i()) * 0.2F) * 0.7F, false);
-            break;
-         case 3001:
-            this.u.a($$1, aow.gX, aox.f, 64.0F, 0.8F + this.u.z.i() * 0.3F, false);
-            break;
-         case 3002:
-            if ($$2 >= 0 && $$2 < ha.a.d.length) {
-               ars.a(ha.a.d[$$2], this.u, $$1, 0.125, iv.aN, bgb.a(10, 19));
-            } else {
-               ars.a(this.u, $$1, iv.aN, bgb.a(3, 5));
-            }
-            break;
-         case 3003:
-            ars.a(this.u, $$1, iv.aL, bgb.a(3, 5));
-            this.u.a($$1, aow.la, aox.e, 1.0F, 1.0F, false);
-            break;
-         case 3004:
-            ars.a(this.u, $$1, iv.aM, bgb.a(3, 5));
-            break;
-         case 3005:
-            ars.a(this.u, $$1, iv.aO, bgb.a(3, 5));
-            break;
-         case 3006:
-            int $$46 = $$2 >> 6;
-            if ($$46 > 0) {
-               if ($$3.i() < 0.3F + (float)$$46 * 0.1F) {
-                  float $$47 = 0.15F + 0.02F * (float)$$46 * (float)$$46 * $$3.i();
-                  float $$48 = 0.4F + 0.3F * (float)$$46 * $$3.i();
-                  this.u.a($$1, aow.uh, aox.e, $$47, $$48, false);
-               }
-
-               byte $$49 = (byte)($$2 & 63);
-               bfv $$50 = bgb.a(0, $$46);
-               float $$51 = 0.005F;
-               Supplier<ehd> $$52 = () -> new ehd(arp.a($$3, -0.005F, 0.005F), arp.a($$3, -0.005F, 0.005F), arp.a($$3, -0.005F, 0.005F));
-               if ($$49 == 0) {
-                  for (ha $$53 : ha.values()) {
-                     float $$54 = $$53 == ha.a ? (float) Math.PI : 0.0F;
-                     double $$55 = $$53.o() == ha.a.b ? 0.65 : 0.57;
-                     ars.a(this.u, $$1, new iw($$54), $$50, $$53, $$52, $$55);
-                  }
-               } else {
-                  for (ha $$56 : cxj.a($$49)) {
-                     float $$57 = $$56 == ha.b ? (float) Math.PI : 0.0F;
-                     double $$58 = 0.35;
-                     ars.a(this.u, $$1, new iw($$57), $$50, $$56, $$52, 0.35);
-                  }
-               }
-            } else {
-               this.u.a($$1, aow.uh, aox.e, 1.0F, 1.0F, false);
-               boolean $$59 = this.u.a_($$1).r(this.u, $$1);
-               int $$60 = $$59 ? 40 : 20;
-               float $$61 = $$59 ? 0.45F : 0.25F;
-               float $$62 = 0.07F;
-
-               for (int $$63 = 0; $$63 < $$60; $$63++) {
-                  float $$64 = 2.0F * $$3.i() - 1.0F;
-                  float $$65 = 2.0F * $$3.i() - 1.0F;
-                  float $$66 = 2.0F * $$3.i() - 1.0F;
-                  this.u
-                     .a(
-                        iv.G,
-                        (double)$$1.u() + 0.5 + (double)($$64 * $$61),
-                        (double)$$1.v() + 0.5 + (double)($$65 * $$61),
-                        (double)$$1.w() + 0.5 + (double)($$66 * $$61),
-                        (double)($$64 * 0.07F),
-                        (double)($$65 * 0.07F),
-                        (double)($$66 * 0.07F)
-                     );
-               }
-            }
-            break;
-         case 3007:
-            for (int $$67 = 0; $$67 < 10; $$67++) {
-               this.u.a(new ix($$67 * 5), false, (double)$$1.u() + 0.5, (double)$$1.v() + czf.e, (double)$$1.w() + 0.5, 0.0, 0.0, 0.0);
-            }
-
-            dez $$68 = this.u.a_($$1);
-            boolean $$69 = $$68.b(dfp.C) && $$68.c(dfp.C);
-            if (!$$69) {
-               this.u.a((double)$$1.u() + 0.5, (double)$$1.v() + czf.e, (double)$$1.w() + 0.5, aow.uE, aox.e, 2.0F, 0.6F + this.u.z.i() * 0.4F, false);
-            }
-            break;
-         case 3008:
-            dez $$40 = csl.a($$2);
-            if ($$40.b() instanceof csp $$41) {
-               this.u.a($$1, $$41.c(), aox.h, 1.0F, 1.0F, false);
-            }
-
-            this.u.a($$1, $$40);
-            break;
-         case 3009:
-            ars.a(this.u, $$1, iv.aQ, bgb.a(3, 6));
-      }
-   }
-
-   public void c(int $$0, gu $$1, int $$2) {
-      if ($$2 >= 0 && $$2 < 10) {
-         ajs $$4 = (ajs)this.G.get($$0);
-         if ($$4 != null) {
-            this.a($$4);
-         }
-
-         if ($$4 == null || $$4.b().u() != $$1.u() || $$4.b().v() != $$1.v() || $$4.b().w() != $$1.w()) {
-            $$4 = new ajs($$0, $$1);
-            this.G.put($$0, $$4);
-         }
-
-         $$4.a($$2);
-         $$4.b(this.F);
-         ((SortedSet)this.H.computeIfAbsent($$4.b().a(), $$0x -> Sets.newTreeSet())).add($$4);
-      } else {
-         ajs $$3 = (ajs)this.G.remove($$0);
-         if ($$3 != null) {
-            this.a($$3);
-         }
-      }
-   }
-
-   public boolean q() {
-      return this.ae.h();
-   }
-
-   public void a(cos $$0) {
-      this.v.a($$0);
-   }
-
-   public void r() {
-      this.v.a();
-      this.C = true;
-   }
-
-   public void a(Collection<dcl> $$0, Collection<dcl> $$1) {
-      synchronized (this.x) {
-         this.x.removeAll($$0);
-         this.x.addAll($$1);
-      }
-   }
-
-   public static int a(coo $$0, gu $$1) {
-      return a($$0, $$0.a_($$1), $$1);
-   }
-
-   public static int a(coo $$0, dez $$1, gu $$2) {
-      if ($$1.e($$0, $$2)) {
-         return 15728880;
-      } else {
-         int $$3 = $$0.a(cpu.a, $$2);
-         int $$4 = $$0.a(cpu.b, $$2);
-         int $$5 = $$1.h();
-         if ($$4 < $$5) {
-            $$4 = $$5;
-         }
-
-         return $$3 << 20 | $$4 << 4;
-      }
-   }
-
-   public boolean a(gu $$0) {
-      fqs.b $$1 = this.y.a($$0);
-      return $$1 != null && $$1.c.get() != fqs.a.a;
-   }
-
-   @Nullable
-   public ejr s() {
+   public foc g() {
       return this.J;
    }
 
-   @Nullable
-   public ejr t() {
-      return this.L;
+   public void a(int $$0, int $$1) {
+      if (this.J != null) {
+         this.J.a($$0, $$1);
+      }
+
+      this.j.f.a($$0, $$1);
    }
 
-   @Nullable
-   public ejr u() {
-      return this.M;
+   public void a(float $$0) {
+      bil $$1 = this.j.am();
+      if ($$1 != null) {
+         if (this.j.r != null) {
+            this.j.aG().a("pick");
+            this.j.u = null;
+            double $$2 = (double)this.j.q.c();
+            this.j.v = $$1.a($$2, $$0, false);
+            ehi $$3 = $$1.j($$0);
+            boolean $$4 = false;
+            int $$5 = 3;
+            double $$6 = $$2;
+            if (this.j.q.h()) {
+               $$6 = 6.0;
+               $$2 = $$6;
+            } else {
+               if ($$2 > 3.0) {
+                  $$4 = true;
+               }
+
+               $$2 = $$2;
+            }
+
+            $$6 *= $$6;
+            if (this.j.v != null) {
+               $$6 = this.j.v.e().g($$3);
+            }
+
+            ehi $$7 = $$1.f(1.0F);
+            ehi $$8 = $$3.b($$7.c * $$2, $$7.d * $$2, $$7.e * $$2);
+            float $$9 = 1.0F;
+            ehd $$10 = $$1.cG().b($$7.a($$2)).c(1.0, 1.0, 1.0);
+            ehf $$11 = cci.a($$1, $$3, $$8, $$10, $$0x -> !$$0x.G_() && $$0x.br(), $$6);
+            if ($$11 != null) {
+               bil $$12 = $$11.a();
+               ehi $$13 = $$11.e();
+               double $$14 = $$3.g($$13);
+               if ($$4 && $$14 > 9.0) {
+                  this.j.v = ehe.a($$13, hc.a($$7.c, $$7.d, $$7.e), gw.a($$13));
+               } else if ($$14 < $$6 || this.j.v == null) {
+                  this.j.v = $$11;
+                  if ($$12 instanceof bjb || $$12 instanceof byb) {
+                     this.j.u = $$12;
+                  }
+               }
+            }
+
+            this.j.aG().c();
+         }
+      }
    }
 
-   @Nullable
-   public ejr v() {
+   private void ax() {
+      float $$0 = 1.0F;
+      if (this.j.am() instanceof fmy $$1) {
+         $$0 = $$1.c();
+      }
+
+      this.r = this.q;
+      this.q = this.q + ($$0 - this.q) * 0.5F;
+      if (this.q > 1.5F) {
+         this.q = 1.5F;
+      }
+
+      if (this.q < 0.1F) {
+         this.q = 0.1F;
+      }
+   }
+
+   private double a(eqb $$0, float $$1, boolean $$2) {
+      if (this.B) {
+         return 90.0;
+      } else {
+         double $$3 = 70.0;
+         if ($$2) {
+            $$3 = (double)this.j.m.ad().c().intValue();
+            $$3 *= (double)ars.i($$1, this.r, this.q);
+         }
+
+         if ($$0.g() instanceof bjb && ((bjb)$$0.g()).eu()) {
+            float $$4 = Math.min((float)((bjb)$$0.g()).aM + $$1, 20.0F);
+            $$3 /= (double)((1.0F - 500.0F / ($$4 + 500.0F)) * 2.0F + 1.0F);
+         }
+
+         eaj $$5 = $$0.k();
+         if ($$5 == eaj.a || $$5 == eaj.b) {
+            $$3 *= ars.d(this.j.m.ag().c(), 1.0, 0.85714287F);
+         }
+
+         return $$3;
+      }
+   }
+
+   private void a(elk $$0, float $$1) {
+      if (this.j.am() instanceof bjb $$2) {
+         float $$3 = (float)$$2.aK - $$1;
+         if ($$2.eu()) {
+            float $$4 = Math.min((float)$$2.aM + $$1, 20.0F);
+            $$0.a(a.f.rotationDegrees(40.0F - 8000.0F / ($$4 + 200.0F)));
+         }
+
+         if ($$3 < 0.0F) {
+            return;
+         }
+
+         $$3 /= (float)$$2.aL;
+         $$3 = ars.a($$3 * $$3 * $$3 * $$3 * (float) Math.PI);
+         float $$5 = $$2.eC();
+         $$0.a(a.d.rotationDegrees(-$$5));
+         float $$6 = (float)((double)(-$$3) * 14.0 * this.j.m.ak().c());
+         $$0.a(a.f.rotationDegrees($$6));
+         $$0.a(a.d.rotationDegrees($$5));
+      }
+   }
+
+   private void b(elk $$0, float $$1) {
+      if (this.j.am() instanceof cbp) {
+         cbp $$2 = (cbp)this.j.am();
+         float $$3 = $$2.Y - $$2.X;
+         float $$4 = -($$2.Y + $$3 * $$1);
+         float $$5 = ars.i($$1, $$2.bT, $$2.bU);
+         $$0.a(ars.a($$4 * (float) Math.PI) * $$5 * 0.5F, -Math.abs(ars.b($$4 * (float) Math.PI) * $$5), 0.0F);
+         $$0.a(a.f.rotationDegrees(ars.a($$4 * (float) Math.PI) * $$5 * 3.0F));
+         $$0.a(a.b.rotationDegrees(Math.abs(ars.b($$4 * (float) Math.PI - 0.2F) * $$5) * 5.0F));
+      }
+   }
+
+   public void a(float $$0, float $$1, float $$2) {
+      this.C = $$0;
+      this.D = $$1;
+      this.E = $$2;
+      this.b(false);
+      this.a(false);
+      this.a(1.0F, 0L, new elk());
+      this.C = 1.0F;
+   }
+
+   private void a(elk $$0, eqb $$1, float $$2) {
+      if (!this.B) {
+         this.a(this.a(this.a($$1, $$2, false)));
+         $$0.e();
+         $$0.a();
+         this.a($$0, $$2);
+         if (this.j.m.X().c()) {
+            this.b($$0, $$2);
+         }
+
+         boolean $$3 = this.j.am() instanceof bjb && ((bjb)this.j.am()).fB();
+         if (this.j.m.av().a() && !$$3 && !this.j.m.Z && this.j.q.l() != cpn.d) {
+            this.z.c();
+            this.b.a($$2, $$0, this.o.b(), this.j.s, this.j.ao().a(this.j.s, $$2));
+            this.z.b();
+         }
+
+         $$0.b();
+         if (this.j.m.av().a() && !$$3) {
+            foj.a(this.j, $$0);
+            this.a($$0, $$2);
+         }
+
+         if (this.j.m.X().c()) {
+            this.b($$0, $$2);
+         }
+      }
+   }
+
+   public void a(Matrix4f $$0) {
+      RenderSystem.setProjectionMatrix($$0, els.a);
+   }
+
+   public Matrix4f a(double $$0) {
+      elk $$1 = new elk();
+      $$1.c().a().identity();
+      if (this.C != 1.0F) {
+         $$1.a(this.D, -this.E, 0.0F);
+         $$1.b(this.C, this.C, 1.0F);
+      }
+
+      $$1.c()
+         .a()
+         .mul(new Matrix4f().setPerspective((float)($$0 * (float) (Math.PI / 180.0)), (float)this.j.aM().k() / (float)this.j.aM().l(), 0.05F, this.h()));
+      return $$1.c().a();
+   }
+
+   public float h() {
+      return this.m * 4.0F;
+   }
+
+   public static float a(bjb $$0, float $$1) {
+      bhy $$2 = $$0.b(bia.p);
+      return !$$2.a(200) ? 1.0F : 0.7F + ars.a(((float)$$2.d() - $$1) * (float) Math.PI * 0.2F) * 0.3F;
+   }
+
+   public void a(float $$0, long $$1, boolean $$2) {
+      if (!this.j.aA() && this.j.m.n && (!this.j.m.V().c() || !this.j.n.d())) {
+         if (ac.b() - this.y > 500L) {
+            this.j.c(false);
+         }
+      } else {
+         this.y = ac.b();
+      }
+
+      if (!this.j.x) {
+         boolean $$3 = this.j.c();
+         int $$4 = (int)(this.j.n.e() * (double)this.j.aM().o() / (double)this.j.aM().m());
+         int $$5 = (int)(this.j.n.f() * (double)this.j.aM().p() / (double)this.j.aM().n());
+         RenderSystem.viewport(0, 0, this.j.aM().k(), this.j.aM().l());
+         if ($$3 && $$2 && this.j.r != null) {
+            this.j.aG().a("level");
+            this.a($$0, $$1, new elk());
+            this.ay();
+            this.j.f.b();
+            if (this.J != null && this.M) {
+               RenderSystem.disableBlend();
+               RenderSystem.disableDepthTest();
+               RenderSystem.resetTextureMatrix();
+               this.J.a($$0);
+            }
+
+            this.j.g().a(true);
+         }
+
+         eko $$6 = this.j.aM();
+         RenderSystem.clear(256, eqq.a);
+         Matrix4f $$7 = new Matrix4f().setOrtho(0.0F, (float)((double)$$6.k() / $$6.s()), (float)((double)$$6.l() / $$6.s()), 0.0F, 1000.0F, 21000.0F);
+         RenderSystem.setProjectionMatrix($$7, els.b);
+         elk $$8 = RenderSystem.getModelViewStack();
+         $$8.a();
+         $$8.e();
+         $$8.a(0.0F, 0.0F, -11000.0F);
+         RenderSystem.applyModelViewMatrix();
+         ekg.b();
+         esa $$9 = new esa(this.j, this.o.b());
+         if ($$3 && $$2 && this.j.r != null) {
+            this.j.aG().b("gui");
+            if (this.j.s != null) {
+               float $$10 = ars.i($$0, this.j.s.cu, this.j.s.ct);
+               float $$11 = this.j.m.af().c().floatValue();
+               if ($$10 > 0.0F && this.j.s.a(bia.i) && $$11 < 1.0F) {
+                  this.a($$9, $$10 * (1.0F - $$11));
+               }
+            }
+
+            if (!this.j.m.Z || this.j.y != null) {
+               this.a(this.j.aM().o(), this.j.aM().p(), $$0);
+               this.j.l.a($$9, $$0);
+               RenderSystem.clear(256, eqq.a);
+            }
+
+            this.j.aG().c();
+         }
+
+         if (this.j.aJ() != null) {
+            try {
+               this.j.aJ().a($$9, $$4, $$5, this.j.av());
+            } catch (Throwable var17) {
+               o $$13 = o.a(var17, "Rendering overlay");
+               p $$14 = $$13.a("Overlay render details");
+               $$14.a("Overlay name", () -> this.j.aJ().getClass().getCanonicalName());
+               throw new y($$13);
+            }
+         } else if ($$3 && this.j.y != null) {
+            try {
+               this.j.y.c($$9, $$4, $$5, this.j.av());
+            } catch (Throwable var16) {
+               o $$16 = o.a(var16, "Rendering screen");
+               p $$17 = $$16.a("Screen render details");
+               $$17.a("Screen name", () -> this.j.y.getClass().getCanonicalName());
+               $$17.a("Mouse location", () -> String.format(Locale.ROOT, "Scaled: (%d, %d). Absolute: (%f, %f)", $$4, $$5, this.j.n.e(), this.j.n.f()));
+               $$17.a(
+                  "Screen size",
+                  () -> String.format(
+                        Locale.ROOT,
+                        "Scaled: (%d, %d). Absolute: (%d, %d). Scale factor of %f",
+                        this.j.aM().o(),
+                        this.j.aM().p(),
+                        this.j.aM().k(),
+                        this.j.aM().l(),
+                        this.j.aM().s()
+                     )
+               );
+               throw new y($$16);
+            }
+
+            try {
+               if (this.j.y != null) {
+                  this.j.y.z();
+               }
+            } catch (Throwable var15) {
+               o $$19 = o.a(var15, "Narrating screen");
+               p $$20 = $$19.a("Screen details");
+               $$20.a("Screen name", () -> this.j.y.getClass().getCanonicalName());
+               throw new y($$19);
+            }
+         }
+
+         if ($$3) {
+            this.j.aG().a("toasts");
+            this.j.ay().a($$9);
+            this.j.aG().c();
+         }
+
+         $$9.e();
+         $$8.b();
+         RenderSystem.applyModelViewMatrix();
+      }
+   }
+
+   private void ay() {
+      if (!this.x && this.j.R()) {
+         long $$0 = ac.b();
+         if ($$0 - this.w >= 1000L) {
+            this.w = $$0;
+            gcy $$1 = this.j.T();
+            if ($$1 != null && !$$1.ab()) {
+               $$1.y().ifPresent($$0x -> {
+                  if (Files.isRegularFile($$0x)) {
+                     this.x = true;
+                  } else {
+                     this.a($$0x);
+                  }
+               });
+            }
+         }
+      }
+   }
+
+   private void a(Path $$0) {
+      if (this.j.f.k() > 10 && this.j.f.q()) {
+         ekl $$1 = erb.a(this.j.g());
+         ac.g().execute(() -> {
+            int $$2 = $$1.a();
+            int $$3 = $$1.b();
+            int $$4 = 0;
+            int $$5 = 0;
+            if ($$2 > $$3) {
+               $$4 = ($$2 - $$3) / 2;
+               $$2 = $$3;
+            } else {
+               $$5 = ($$3 - $$2) / 2;
+               $$3 = $$2;
+            }
+
+            try (ekl $$6 = new ekl(64, 64, false)) {
+               $$1.a($$4, $$5, $$2, $$3, $$6);
+               $$6.a($$0);
+            } catch (IOException var16) {
+               g.warn("Couldn't save auto screenshot", var16);
+            } finally {
+               $$1.close();
+            }
+         });
+      }
+   }
+
+   private boolean az() {
+      if (!this.v) {
+         return false;
+      } else {
+         bil $$0 = this.j.am();
+         boolean $$1 = $$0 instanceof cbp && !this.j.m.Z;
+         if ($$1 && !((cbp)$$0).fR().e) {
+            cja $$2 = ((bjb)$$0).eR();
+            ehg $$3 = this.j.v;
+            if ($$3 != null && $$3.c() == ehg.a.b) {
+               gw $$4 = ((ehe)$$3).a();
+               dfe $$5 = this.j.r.a_($$4);
+               if (this.j.q.l() == cpn.d) {
+                  $$1 = $$5.b(this.j.r, $$4) != null;
+               } else {
+                  dfi $$6 = new dfi(this.j.r, $$4, false);
+                  ht<csq> $$7 = this.j.r.B_().d(je.e);
+                  $$1 = !$$2.b() && ($$2.b($$7, $$6) || $$2.a($$7, $$6));
+               }
+            }
+         }
+
+         return $$1;
+      }
+   }
+
+   public void a(float $$0, long $$1, elk $$2) {
+      this.z.a($$0);
+      if (this.j.am() == null) {
+         this.j.a(this.j.s);
+      }
+
+      this.a($$0);
+      this.j.aG().a("center");
+      boolean $$3 = this.az();
+      this.j.aG().b("camera");
+      eqb $$4 = this.N;
+      this.m = (float)(this.j.m.ay() * 16);
+      elk $$5 = new elk();
+      double $$6 = this.a($$4, $$0, true);
+      $$5.a(this.a($$6));
+      this.a($$5, $$0);
+      if (this.j.m.X().c()) {
+         this.b($$5, $$0);
+      }
+
+      float $$7 = this.j.m.af().c().floatValue();
+      float $$8 = ars.i($$0, this.j.s.cu, this.j.s.ct) * $$7 * $$7;
+      if ($$8 > 0.0F) {
+         int $$9 = this.j.s.a(bia.i) ? 7 : 20;
+         float $$10 = 5.0F / ($$8 * $$8 + 5.0F) - $$8 * 0.04F;
+         $$10 *= $$10;
+         a $$11 = a.of(new Vector3f(0.0F, ars.g / 2.0F, ars.g / 2.0F));
+         $$5.a($$11.rotationDegrees(((float)this.p + $$0) * (float)$$9));
+         $$5.b(1.0F / $$10, 1.0F, 1.0F);
+         float $$12 = -((float)this.p + $$0) * (float)$$9;
+         $$5.a($$11.rotationDegrees($$12));
+      }
+
+      Matrix4f $$13 = $$5.c().a();
+      this.a($$13);
+      $$4.a(this.j.r, (bil)(this.j.am() == null ? this.j.s : this.j.am()), !this.j.m.av().a(), this.j.m.av().b(), $$0);
+      $$2.a(a.b.rotationDegrees($$4.d()));
+      $$2.a(a.d.rotationDegrees($$4.e() + 180.0F));
+      Matrix3f $$14 = new Matrix3f($$2.c().b()).invert();
+      RenderSystem.setInverseViewRotationMatrix($$14);
+      this.j.f.a($$2, $$4.b(), this.a(Math.max($$6, (double)this.j.m.ad().c().intValue())));
+      this.j.f.a($$2, $$0, $$1, $$3, $$4, this, this.z, $$13);
+      this.j.aG().b("hand");
+      if (this.u) {
+         RenderSystem.clear(256, eqq.a);
+         this.a($$2, $$4, $$0);
+      }
+
+      this.j.aG().c();
+   }
+
+   public void i() {
+      this.F = null;
+      this.n.a();
+      this.N.o();
+      this.x = false;
+   }
+
+   public esc j() {
+      return this.n;
+   }
+
+   public void a(cja $$0) {
+      this.F = $$0;
+      this.G = 40;
+      this.H = this.l.i() * 2.0F - 1.0F;
+      this.I = this.l.i() * 2.0F - 1.0F;
+   }
+
+   private void a(int $$0, int $$1, float $$2) {
+      if (this.F != null && this.G > 0) {
+         int $$3 = 40 - this.G;
+         float $$4 = ((float)$$3 + $$2) / 40.0F;
+         float $$5 = $$4 * $$4;
+         float $$6 = $$4 * $$5;
+         float $$7 = 10.25F * $$6 * $$5 - 24.95F * $$5 * $$5 + 25.5F * $$6 - 13.8F * $$5 + 4.0F * $$4;
+         float $$8 = $$7 * (float) Math.PI;
+         float $$9 = this.H * (float)($$0 / 4);
+         float $$10 = this.I * (float)($$1 / 4);
+         RenderSystem.enableDepthTest();
+         RenderSystem.disableCull();
+         elk $$11 = new elk();
+         $$11.a();
+         $$11.a((float)($$0 / 2) + $$9 * ars.e(ars.a($$8 * 2.0F)), (float)($$1 / 2) + $$10 * ars.e(ars.a($$8 * 2.0F)), -50.0F);
+         float $$12 = 50.0F + 175.0F * ars.a($$8);
+         $$11.b($$12, -$$12, $$12);
+         $$11.a(a.d.rotationDegrees(900.0F * ars.e(ars.a($$8))));
+         $$11.a(a.b.rotationDegrees(6.0F * ars.b($$4 * 8.0F)));
+         $$11.a(a.f.rotationDegrees(6.0F * ars.b($$4 * 8.0F)));
+         fnz.a $$13 = this.o.b();
+         this.j.aq().a(this.F, cix.i, 15728880, fyq.d, $$11, $$13, this.j.r, 0);
+         $$11.b();
+         $$13.b();
+         RenderSystem.enableCull();
+         RenderSystem.disableDepthTest();
+      }
+   }
+
+   private void a(esa $$0, float $$1) {
+      int $$2 = $$0.a();
+      int $$3 = $$0.b();
+      $$0.c().a();
+      float $$4 = ars.i($$1, 2.0F, 1.0F);
+      $$0.c().a((float)$$2 / 2.0F, (float)$$3 / 2.0F, 0.0F);
+      $$0.c().b($$4, $$4, $$4);
+      $$0.c().a((float)(-$$2) / 2.0F, (float)(-$$3) / 2.0F, 0.0F);
+      float $$5 = 0.2F * $$1;
+      float $$6 = 0.4F * $$1;
+      float $$7 = 0.2F * $$1;
+      RenderSystem.disableDepthTest();
+      RenderSystem.depthMask(false);
+      RenderSystem.enableBlend();
+      RenderSystem.blendFuncSeparate(
+         GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ONE, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ONE
+      );
+      $$0.a($$5, $$6, $$7, 1.0F);
+      $$0.a(f, 0, 0, -90, 0.0F, 0.0F, $$2, $$3, $$2, $$3);
+      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+      RenderSystem.defaultBlendFunc();
+      RenderSystem.disableBlend();
+      RenderSystem.depthMask(true);
+      RenderSystem.enableDepthTest();
+      $$0.c().b();
+   }
+
+   public eqq k() {
+      return this.j;
+   }
+
+   public float b(float $$0) {
+      return ars.i($$0, this.t, this.s);
+   }
+
+   public float l() {
+      return this.m;
+   }
+
+   public eqb m() {
       return this.N;
    }
 
-   @Nullable
-   public ejr w() {
-      return this.O;
+   public fny n() {
+      return this.z;
+   }
+
+   public fyq o() {
+      return this.A;
    }
 
    @Nullable
-   public ejr x() {
-      return this.P;
+   public static fom p() {
+      return P;
    }
 
-   public static class a extends RuntimeException {
-      public a(String $$0, Throwable $$1) {
-         super($$0, $$1);
+   @Nullable
+   public static fom q() {
+      return Q;
+   }
+
+   @Nullable
+   public static fom r() {
+      return R;
+   }
+
+   @Nullable
+   public static fom s() {
+      return S;
+   }
+
+   @Nullable
+   public static fom t() {
+      return T;
+   }
+
+   @Nullable
+   public static fom u() {
+      return U;
+   }
+
+   @Nullable
+   public static fom v() {
+      return V;
+   }
+
+   @Nullable
+   public static fom w() {
+      return W;
+   }
+
+   @Nullable
+   public static fom x() {
+      return X;
+   }
+
+   @Nullable
+   public static fom y() {
+      return Y;
+   }
+
+   @Nullable
+   public static fom z() {
+      return Z;
+   }
+
+   @Nullable
+   public static fom A() {
+      return aa;
+   }
+
+   @Nullable
+   public static fom B() {
+      return ab;
+   }
+
+   @Nullable
+   public static fom C() {
+      return ac;
+   }
+
+   @Nullable
+   public static fom D() {
+      return ad;
+   }
+
+   @Nullable
+   public static fom E() {
+      return ae;
+   }
+
+   @Nullable
+   public static fom F() {
+      return af;
+   }
+
+   @Nullable
+   public static fom G() {
+      return ag;
+   }
+
+   @Nullable
+   public static fom H() {
+      return ah;
+   }
+
+   @Nullable
+   public static fom I() {
+      return ai;
+   }
+
+   @Nullable
+   public static fom J() {
+      return aj;
+   }
+
+   @Nullable
+   public static fom K() {
+      return ak;
+   }
+
+   @Nullable
+   public static fom L() {
+      return al;
+   }
+
+   @Nullable
+   public static fom M() {
+      return am;
+   }
+
+   @Nullable
+   public static fom N() {
+      return an;
+   }
+
+   @Nullable
+   public static fom O() {
+      return ao;
+   }
+
+   @Nullable
+   public static fom P() {
+      return ap;
+   }
+
+   @Nullable
+   public static fom Q() {
+      return aq;
+   }
+
+   @Nullable
+   public static fom R() {
+      return ar;
+   }
+
+   @Nullable
+   public static fom S() {
+      return as;
+   }
+
+   @Nullable
+   public static fom T() {
+      return at;
+   }
+
+   @Nullable
+   public static fom U() {
+      return au;
+   }
+
+   @Nullable
+   public static fom V() {
+      return av;
+   }
+
+   @Nullable
+   public static fom W() {
+      return aw;
+   }
+
+   @Nullable
+   public static fom X() {
+      return ax;
+   }
+
+   @Nullable
+   public static fom Y() {
+      return ay;
+   }
+
+   @Nullable
+   public static fom Z() {
+      return az;
+   }
+
+   @Nullable
+   public static fom aa() {
+      return aA;
+   }
+
+   @Nullable
+   public static fom ab() {
+      return aB;
+   }
+
+   @Nullable
+   public static fom ac() {
+      return aC;
+   }
+
+   @Nullable
+   public static fom ad() {
+      return aD;
+   }
+
+   @Nullable
+   public static fom ae() {
+      return aE;
+   }
+
+   @Nullable
+   public static fom af() {
+      return aF;
+   }
+
+   @Nullable
+   public static fom ag() {
+      return aG;
+   }
+
+   @Nullable
+   public static fom ah() {
+      return aH;
+   }
+
+   @Nullable
+   public static fom ai() {
+      return aI;
+   }
+
+   @Nullable
+   public static fom aj() {
+      return aJ;
+   }
+
+   @Nullable
+   public static fom ak() {
+      return aK;
+   }
+
+   @Nullable
+   public static fom al() {
+      return aL;
+   }
+
+   @Nullable
+   public static fom am() {
+      return aM;
+   }
+
+   @Nullable
+   public static fom an() {
+      return aN;
+   }
+
+   @Nullable
+   public static fom ao() {
+      return aO;
+   }
+
+   @Nullable
+   public static fom ap() {
+      return aP;
+   }
+
+   @Nullable
+   public static fom aq() {
+      return aQ;
+   }
+
+   @Nullable
+   public static fom ar() {
+      return aR;
+   }
+
+   @Nullable
+   public static fom as() {
+      return aS;
+   }
+
+   @Nullable
+   public static fom at() {
+      return aT;
+   }
+
+   @Nullable
+   public static fom au() {
+      return aU;
+   }
+
+   @Nullable
+   public static fom av() {
+      return aV;
+   }
+
+   public static record a(ans a, Map<aeu, ann> b) implements ans {
+      @Override
+      public Optional<ann> getResource(aeu $$0) {
+         ann $$1 = this.b.get($$0);
+         return $$1 != null ? Optional.of($$1) : this.a.getResource($$0);
       }
    }
 }

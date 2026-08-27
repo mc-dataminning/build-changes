@@ -1,40 +1,49 @@
-public class abr implements ux<aaw> {
-   private final gu a;
-   private final int b;
-   private final boolean c;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.Optional;
 
-   public abr(gu $$0, int $$1, boolean $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+public class abr implements va<aaz> {
+   public static final int a = 4;
+   private static final int b = 128;
+   private static final int c = 8192;
+   private static final int d = 200;
+   private final int e;
+   private final List<String> f;
+   private final Optional<String> g;
+
+   public abr(int $$0, List<String> $$1, Optional<String> $$2) {
+      this.e = $$0;
+      this.f = ImmutableList.copyOf($$1);
+      this.g = $$2;
    }
 
-   public abr(si $$0) {
-      this.a = $$0.e();
-      this.b = $$0.m();
-      this.c = $$0.readBoolean();
+   public abr(sl $$0) {
+      this.e = $$0.m();
+      this.f = $$0.a(sl.a(Lists::newArrayListWithCapacity, 200), $$0x -> $$0x.d(8192));
+      this.g = $$0.b((sl.a<String>)($$0x -> $$0x.d(128)));
    }
 
    @Override
-   public void a(si $$0) {
-      $$0.a(this.a);
-      $$0.c(this.b);
-      $$0.a(this.c);
+   public void a(sl $$0) {
+      $$0.c(this.e);
+      $$0.a(this.f, ($$0x, $$1) -> $$0x.a($$1, 8192));
+      $$0.a(this.g, ($$0x, $$1) -> $$0x.a($$1, 128));
    }
 
-   public void a(aaw $$0) {
+   public void a(aaz $$0) {
       $$0.a(this);
    }
 
-   public gu a() {
-      return this.a;
+   public List<String> a() {
+      return this.f;
    }
 
-   public int d() {
-      return this.b;
+   public Optional<String> d() {
+      return this.g;
    }
 
-   public boolean e() {
-      return this.c;
+   public int e() {
+      return this.e;
    }
 }

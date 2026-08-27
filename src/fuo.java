@@ -1,16 +1,31 @@
-public class fuo extends fud<bvb, ffz<bvb>> {
-   private static final aer a = new aer("textures/entity/bear/polarbear.png");
+public class fuo extends fui<bvc, ffy> {
+   private static final aeu a = new aeu("textures/entity/parrot/parrot_red_blue.png");
+   private static final aeu i = new aeu("textures/entity/parrot/parrot_blue.png");
+   private static final aeu j = new aeu("textures/entity/parrot/parrot_green.png");
+   private static final aeu k = new aeu("textures/entity/parrot/parrot_yellow_blue.png");
+   private static final aeu l = new aeu("textures/entity/parrot/parrot_grey.png");
 
-   public fuo(fsx.a $$0) {
-      super($$0, new ffz<>($$0.a(fhr.aU)), 0.9F);
+   public fuo(ftc.a $$0) {
+      super($$0, new ffy($$0.a(fhw.aA)), 0.3F);
    }
 
-   public aer a(bvb $$0) {
-      return a;
+   public aeu a(bvc $$0) {
+      return a($$0.gi());
    }
 
-   protected void a(bvb $$0, elf $$1, float $$2) {
-      $$1.b(1.2F, 1.2F, 1.2F);
-      super.a($$0, $$1, $$2);
+   public static aeu a(bvc.b $$0) {
+      return switch ($$0) {
+         case a -> a;
+         case b -> i;
+         case c -> j;
+         case d -> k;
+         case e -> l;
+      };
+   }
+
+   public float a(bvc $$0, float $$1) {
+      float $$2 = ars.i($$1, $$0.bZ, $$0.bW);
+      float $$3 = ars.i($$1, $$0.bY, $$0.bX);
+      return (ars.a($$2) + 1.0F) * $$3;
    }
 }

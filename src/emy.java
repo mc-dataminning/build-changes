@@ -1,31 +1,139 @@
-import com.google.common.collect.Lists;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import java.util.List;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-public class emy extends enb {
-   public long a;
-   public List<emx> b = Lists.newArrayList();
+public class emy extends eng {
+   public final boolean a;
+   public final boolean b;
+   public final boolean c;
+   public final boolean d;
+   public final int e;
+   public final boolean f;
+   public final boolean g;
+   public final int h;
+   public final int i;
+   @Nullable
+   private final String m;
+   public long j;
+   @Nullable
+   public String k;
+   public boolean l;
+   private static final boolean n = false;
+   private static final boolean o = true;
+   private static final boolean p = true;
+   private static final boolean q = true;
+   private static final boolean r = true;
+   private static final int s = 0;
+   private static final boolean t = false;
+   private static final int u = 2;
+   private static final int v = 0;
+   private static final String w = "";
+   private static final long x = -1L;
+   private static final String y = null;
 
-   public static emy a(String $$0) {
-      emy $$1 = new emy();
-      JsonParser $$2 = new JsonParser();
+   public emy(boolean $$0, boolean $$1, boolean $$2, boolean $$3, int $$4, boolean $$5, int $$6, int $$7, boolean $$8, @Nullable String $$9) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
+      this.h = $$6;
+      this.i = $$7;
+      this.g = $$8;
+      this.m = $$9;
+   }
 
-      try {
-         JsonElement $$3 = $$2.parse($$0);
-         JsonObject $$4 = $$3.getAsJsonObject();
-         $$1.a = eoy.a("periodInMillis", $$4, -1L);
-         JsonElement $$5 = $$4.get("playerActivityDto");
-         if ($$5 != null && $$5.isJsonArray()) {
-            for (JsonElement $$7 : $$5.getAsJsonArray()) {
-               emx $$8 = emx.a($$7.getAsJsonObject());
-               $$1.b.add($$8);
-            }
-         }
-      } catch (Exception var10) {
+   public static emy a() {
+      return new emy(true, true, true, true, 0, false, 2, 0, false, "");
+   }
+
+   public static emy b() {
+      emy $$0 = a();
+      $$0.a(true);
+      return $$0;
+   }
+
+   public void a(boolean $$0) {
+      this.l = $$0;
+   }
+
+   public static emy a(JsonObject $$0) {
+      emy $$1 = new emy(
+         epd.a("pvp", $$0, true),
+         epd.a("spawnAnimals", $$0, true),
+         epd.a("spawnMonsters", $$0, true),
+         epd.a("spawnNPCs", $$0, true),
+         epd.a("spawnProtection", $$0, 0),
+         epd.a("commandBlocks", $$0, false),
+         epd.a("difficulty", $$0, 2),
+         epd.a("gameMode", $$0, 0),
+         epd.a("forceGameMode", $$0, false),
+         epd.a("slotName", $$0, "")
+      );
+      $$1.j = epd.a("worldTemplateId", $$0, -1L);
+      $$1.k = epd.a("worldTemplateImage", $$0, y);
+      return $$1;
+   }
+
+   public String a(int $$0) {
+      if (this.m != null && !this.m.isEmpty()) {
+         return this.m;
+      } else {
+         return this.l ? gaf.a("mco.configure.world.slot.empty") : this.b($$0);
+      }
+   }
+
+   public String b(int $$0) {
+      return gaf.a("mco.configure.world.slot", $$0);
+   }
+
+   public String c() {
+      JsonObject $$0 = new JsonObject();
+      if (!this.a) {
+         $$0.addProperty("pvp", this.a);
       }
 
-      return $$1;
+      if (!this.b) {
+         $$0.addProperty("spawnAnimals", this.b);
+      }
+
+      if (!this.c) {
+         $$0.addProperty("spawnMonsters", this.c);
+      }
+
+      if (!this.d) {
+         $$0.addProperty("spawnNPCs", this.d);
+      }
+
+      if (this.e != 0) {
+         $$0.addProperty("spawnProtection", this.e);
+      }
+
+      if (this.f) {
+         $$0.addProperty("commandBlocks", this.f);
+      }
+
+      if (this.h != 2) {
+         $$0.addProperty("difficulty", this.h);
+      }
+
+      if (this.i != 0) {
+         $$0.addProperty("gameMode", this.i);
+      }
+
+      if (this.g) {
+         $$0.addProperty("forceGameMode", this.g);
+      }
+
+      if (!Objects.equals(this.m, "")) {
+         $$0.addProperty("slotName", this.m);
+      }
+
+      return $$0.toString();
+   }
+
+   public emy d() {
+      return new emy(this.a, this.b, this.c, this.d, this.e, this.f, this.h, this.i, this.g, this.m);
    }
 }

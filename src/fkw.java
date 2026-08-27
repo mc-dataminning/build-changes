@@ -1,43 +1,43 @@
-public class fkw extends fmk {
-   private final fmf a;
+import org.joml.Vector3f;
 
-   protected fkw(fin $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fmf $$7) {
-      super($$0, $$1, $$2, $$3);
-      this.u = -0.1F;
-      this.B = 0.9F;
-      this.a = $$7;
-      this.j = $$4 + (Math.random() * 2.0 - 1.0) * 0.05F;
-      this.k = $$5 + (Math.random() * 2.0 - 1.0) * 0.05F;
-      this.l = $$6 + (Math.random() * 2.0 - 1.0) * 0.05F;
-      float $$8 = this.r.i() * 0.3F + 0.7F;
-      this.v = $$8;
-      this.w = $$8;
-      this.x = $$8;
-      this.D = 0.1F * (this.r.i() * this.r.i() * 6.0F + 1.0F);
-      this.t = (int)(16.0 / ((double)this.r.i() * 0.8 + 0.2)) + 2;
-      this.b($$7);
+public class fkw extends fky<iq> {
+   private final Vector3f a;
+   private final Vector3f b;
+
+   protected fkw(fis $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, iq $$7, fmk $$8) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8);
+      float $$9 = this.r.i() * 0.4F + 0.6F;
+      this.a = this.a($$7.c(), $$9);
+      this.b = this.a($$7.d(), $$9);
+   }
+
+   private Vector3f a(Vector3f $$0, float $$1) {
+      return new Vector3f(this.a($$0.x(), $$1), this.a($$0.y(), $$1), this.a($$0.z(), $$1));
+   }
+
+   private void f(float $$0) {
+      float $$1 = ((float)this.s + $$0) / ((float)this.t + 1.0F);
+      Vector3f $$2 = new Vector3f(this.a).lerp(this.b, $$1);
+      this.v = $$2.x();
+      this.w = $$2.y();
+      this.x = $$2.z();
    }
 
    @Override
-   public flo b() {
-      return flo.b;
+   public void a(elo $$0, eqb $$1, float $$2) {
+      this.f($$2);
+      super.a($$0, $$1, $$2);
    }
 
-   @Override
-   public void a() {
-      super.a();
-      this.b(this.a);
-   }
+   public static class a implements fls<iq> {
+      private final fmk a;
 
-   public static class a implements fln<iy> {
-      private final fmf a;
-
-      public a(fmf $$0) {
+      public a(fmk $$0) {
          this.a = $$0;
       }
 
-      public flk a(iy $$0, fin $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fkw($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+      public flp a(iq $$0, fis $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fkw($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$0, this.a);
       }
    }
 }

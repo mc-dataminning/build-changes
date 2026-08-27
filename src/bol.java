@@ -1,21 +1,22 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
 
-public class bol {
-   public static <E extends caq> bkq<E> a(Function<E, Optional<? extends biy>> $$0) {
-      return bob.a(
-         (Function<bob.b<E>, ? extends App<bob.c<E>, boe<E>>>)($$1 -> $$1.group($$1.c(brz.ax), $$1.c(brz.o), $$1.a(brz.E))
-               .apply($$1, ($$1x, $$2, $$3) -> ($$3x, $$4, $$5) -> {
-                     Optional<? extends biy> $$6 = $$0.apply((E)$$4);
-                     if ($$6.filter($$4::a).isEmpty()) {
-                        return false;
-                     } else {
-                        $$1x.a($$6.get());
-                        $$3.b();
-                        return true;
-                     }
-                  }))
-      );
+public class bol<E extends cat> extends bks<E> {
+   public bol(int $$0) {
+      super(ImmutableMap.of(bsc.aB, bsd.a, bsc.m, bsd.b, bsc.n, bsd.c), $$0);
+   }
+
+   protected boolean a(akn $$0, E $$1, long $$2) {
+      return true;
+   }
+
+   protected void b(akn $$0, E $$1, long $$2) {
+      $$1.b(bjn.n);
+      $$1.a(aoz.zB, 5.0F, 1.0F);
+   }
+
+   protected void c(akn $$0, E $$1, long $$2) {
+      if ($$1.c(bjn.n)) {
+         $$1.b(bjn.a);
+      }
    }
 }

@@ -1,57 +1,32 @@
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.logging.LogUtils;
 import java.util.Optional;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class ul implements tg {
-   private static final Logger c = LogUtils.getLogger();
-   private final boolean d;
-   private final Optional<tf> e;
-   private final String f;
-   private final ug g;
+public class ul implements tj {
+   private final String b;
    @Nullable
-   protected final eh.g b;
+   private Supplier<ti> c;
 
-   public ul(String $$0, boolean $$1, Optional<tf> $$2, ug $$3) {
-      this($$0, a($$0), $$1, $$2, $$3);
+   public ul(String $$0) {
+      this.b = $$0;
    }
 
-   private ul(String $$0, @Nullable eh.g $$1, boolean $$2, Optional<tf> $$3, ug $$4) {
-      this.f = $$0;
-      this.b = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.g = $$4;
-   }
-
-   @Nullable
-   private static eh.g a(String $$0) {
-      try {
-         return new eh().a(new StringReader($$0));
-      } catch (CommandSyntaxException var2) {
-         return null;
+   private ti b() {
+      if (this.c == null) {
+         this.c = um.a.apply(this.b);
       }
+
+      return this.c.get();
    }
 
-   public String a() {
-      return this.f;
+   @Override
+   public <T> Optional<T> a(tm.a<T> $$0) {
+      return this.b().a($$0);
    }
 
-   public boolean b() {
-      return this.d;
-   }
-
-   public Optional<tf> c() {
-      return this.e;
-   }
-
-   public ug d() {
-      return this.g;
+   @Override
+   public <T> Optional<T> a(tm.b<T> $$0, ue $$1) {
+      return this.b().a($$0, $$1);
    }
 
    @Override
@@ -59,7 +34,7 @@ public class ul implements tg {
       if (this == $$0) {
          return true;
       } else {
-         if ($$0 instanceof ul $$1 && this.g.equals($$1.g) && this.e.equals($$1.e) && this.d == $$1.d && this.f.equals($$1.f)) {
+         if ($$0 instanceof ul $$1 && this.b.equals($$1.b)) {
             return true;
          }
 
@@ -69,45 +44,15 @@ public class ul implements tg {
 
    @Override
    public int hashCode() {
-      int $$0 = this.d ? 1 : 0;
-      $$0 = 31 * $$0 + this.e.hashCode();
-      $$0 = 31 * $$0 + this.f.hashCode();
-      return 31 * $$0 + this.g.hashCode();
+      return this.b.hashCode();
    }
 
    @Override
    public String toString() {
-      return "nbt{" + this.g + ", interpreting=" + this.d + ", separator=" + this.e + "}";
+      return "keybind{" + this.b + "}";
    }
 
-   @Override
-   public ts a(@Nullable dr $$0, @Nullable bii $$1, int $$2) throws CommandSyntaxException {
-      if ($$0 != null && this.b != null) {
-         Stream<String> $$3 = this.g.getData($$0).flatMap($$0x -> {
-            try {
-               return this.b.a($$0x).stream();
-            } catch (CommandSyntaxException var3x) {
-               return Stream.empty();
-            }
-         }).map(rk::m_);
-         if (this.d) {
-            tf $$4 = (tf)DataFixUtils.orElse(th.a($$0, this.e, $$1, $$2), th.c);
-            return $$3.flatMap($$3x -> {
-               try {
-                  ts $$4x = tf.a.a($$3x);
-                  return Stream.of(th.a($$0, $$4x, $$1, $$2));
-               } catch (Exception var5x) {
-                  c.warn("Failed to parse component: {}", $$3x, var5x);
-                  return Stream.of();
-               }
-            }).reduce(($$1x, $$2x) -> $$1x.b($$4).b($$2x)).orElseGet(tf::h);
-         } else {
-            return th.a($$0, this.e, $$1, $$2)
-               .map($$1x -> $$3.map(tf::b).reduce(($$1xx, $$2x) -> $$1xx.b($$1x).b($$2x)).orElseGet(tf::h))
-               .orElseGet(() -> tf.b($$3.collect(Collectors.joining(", "))));
-         }
-      } else {
-         return tf.h();
-      }
+   public String a() {
+      return this.b;
    }
 }

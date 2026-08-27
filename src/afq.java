@@ -1,60 +1,72 @@
-import com.google.common.collect.Maps;
-import java.util.Collection;
-import java.util.Map;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.Stack;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import java.util.Optional;
+import java.util.function.Predicate;
 
 public class afq {
-   private final Map<aer, afp> a = Maps.newHashMap();
+   private static final int a = 2;
 
-   @Nullable
-   public afp a(aer $$0) {
-      return this.a.get($$0);
-   }
-
-   public afp a(aer $$0, tf $$1) {
-      afp $$2 = new afp($$0, $$1);
-      this.a.put($$0, $$2);
-      return $$2;
-   }
-
-   public void a(afp $$0) {
-      this.a.remove($$0.a());
-   }
-
-   public Collection<aer> a() {
-      return this.a.keySet();
-   }
-
-   public Collection<afp> b() {
-      return this.a.values();
-   }
-
-   public qr c() {
-      qr $$0 = new qr();
-
-      for (afp $$1 : this.a.values()) {
-         $$0.a($$1.a().toString(), $$1.f());
-      }
-
-      return $$0;
-   }
-
-   public void a(qr $$0) {
-      for (String $$1 : $$0.e()) {
-         aer $$2 = new aer($$1);
-         this.a.put($$2, afp.a($$0.p($$1), $$2));
+   private static afq.b a(ae $$0, boolean $$1) {
+      Optional<aq> $$2 = $$0.d();
+      if ($$2.isEmpty()) {
+         return afq.b.b;
+      } else if ($$1) {
+         return afq.b.a;
+      } else {
+         return $$2.get().j() ? afq.b.b : afq.b.c;
       }
    }
 
-   public void a(akl $$0) {
-      for (afp $$1 : this.a.values()) {
-         $$1.c($$0);
+   private static boolean a(Stack<afq.b> $$0) {
+      for (int $$1 = 0; $$1 <= 2; $$1++) {
+         afq.b $$2 = (afq.b)$$0.peek($$1);
+         if ($$2 == afq.b.a) {
+            return true;
+         }
+
+         if ($$2 == afq.b.b) {
+            return false;
+         }
       }
+
+      return false;
    }
 
-   public void b(akl $$0) {
-      for (afp $$1 : this.a.values()) {
-         $$1.d($$0);
+   private static boolean a(ag $$0, Stack<afq.b> $$1, Predicate<ag> $$2, afq.a $$3) {
+      boolean $$4 = $$2.test($$0);
+      afq.b $$5 = a($$0.a(), $$4);
+      boolean $$6 = $$4;
+      $$1.push($$5);
+
+      for (ag $$7 : $$0.e()) {
+         $$6 |= a($$7, $$1, $$2, $$3);
       }
+
+      boolean $$8 = $$6 || a($$1);
+      $$1.pop();
+      $$3.accept($$0, $$8);
+      return $$6;
+   }
+
+   public static void a(ag $$0, Predicate<ag> $$1, afq.a $$2) {
+      ag $$3 = $$0.d();
+      Stack<afq.b> $$4 = new ObjectArrayList();
+
+      for (int $$5 = 0; $$5 <= 2; $$5++) {
+         $$4.push(afq.b.c);
+      }
+
+      a($$3, $$4, $$1, $$2);
+   }
+
+   @FunctionalInterface
+   public interface a {
+      void accept(ag var1, boolean var2);
+   }
+
+   static enum b {
+      a,
+      b,
+      c;
    }
 }

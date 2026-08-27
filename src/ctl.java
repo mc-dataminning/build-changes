@@ -1,57 +1,29 @@
-import java.util.Optional;
+import java.util.function.ToIntFunction;
+import javax.annotation.Nullable;
 
-public interface ctl<T extends Enum<T>> {
-   int w_ = 4;
+public interface ctl {
+   eib r_ = csq.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
+   dfv s_ = dfu.D;
 
-   Optional<dez> i_(dez var1);
-
-   float a();
-
-   default void a_(dez $$0, akk $$1, gu $$2, aru $$3) {
-      float $$4 = 0.05688889F;
-      if ($$3.i() < 0.05688889F) {
-         this.c($$0, $$1, $$2, $$3);
+   static bgt a(@Nullable bil $$0, dfe $$1, cpq $$2, gw $$3) {
+      if ($$1.c(s_)) {
+         csq.a($$2, $$3, new cja(cjd.vw, 1));
+         float $$4 = ars.b($$2.z, 0.8F, 1.2F);
+         $$2.a(null, $$3, aoz.dx, apa.e, 1.0F, $$4);
+         dfe $$5 = $$1.a(s_, Boolean.valueOf(false));
+         $$2.a($$3, $$5, 2);
+         $$2.a(djo.c, $$3, djo.a.a($$0, $$5));
+         return bgt.a($$2.B);
+      } else {
+         return bgt.d;
       }
    }
 
-   T b();
+   static boolean h_(dfe $$0) {
+      return $$0.b(s_) && $$0.c(s_);
+   }
 
-   default void c(dez $$0, akk $$1, gu $$2, aru $$3) {
-      int $$4 = this.b().ordinal();
-      int $$5 = 0;
-      int $$6 = 0;
-
-      for (gu $$7 : gu.a($$2, 4, 4, 4)) {
-         int $$8 = $$7.k($$2);
-         if ($$8 > 4) {
-            break;
-         }
-
-         if (!$$7.equals($$2)) {
-            dez $$9 = $$1.a_($$7);
-            csl $$10 = $$9.b();
-            if ($$10 instanceof ctl) {
-               Enum<?> $$11 = ((ctl)$$10).b();
-               if (this.b().getClass() == $$11.getClass()) {
-                  int $$12 = $$11.ordinal();
-                  if ($$12 < $$4) {
-                     return;
-                  }
-
-                  if ($$12 > $$4) {
-                     $$6++;
-                  } else {
-                     $$5++;
-                  }
-               }
-            }
-         }
-      }
-
-      float $$13 = (float)($$6 + 1) / (float)($$6 + $$5 + 1);
-      float $$14 = $$13 * $$13 * this.a();
-      if ($$3.i() < $$14) {
-         this.i_($$0).ifPresent($$2x -> $$1.b($$2, $$2x));
-      }
+   static ToIntFunction<dfe> h_(int $$0) {
+      return $$1 -> $$1.c(dfu.D) ? $$0 : 0;
    }
 }

@@ -1,122 +1,119 @@
-import com.mojang.logging.LogUtils;
+import com.google.common.annotations.VisibleForTesting;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
+import java.util.function.ToDoubleFunction;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class btv implements coy {
-   private static final Logger a = LogUtils.getLogger();
-   private boolean b;
-   private btv.a c;
-   private int d;
-   private int e;
-   private int f;
-   private int g;
-   private int h;
+public class btv {
+   private static final int a = 10;
 
-   public btv() {
-      this.c = btv.a.c;
+   public static gw a(arx $$0, int $$1, int $$2) {
+      int $$3 = $$0.a(2 * $$1 + 1) - $$1;
+      int $$4 = $$0.a(2 * $$2 + 1) - $$2;
+      int $$5 = $$0.a(2 * $$1 + 1) - $$1;
+      return new gw($$3, $$4, $$5);
    }
 
-   @Override
-   public int a(akk $$0, boolean $$1, boolean $$2) {
-      if (!$$0.N() && $$1) {
-         float $$3 = $$0.f(0.0F);
-         if ((double)$$3 == 0.5) {
-            this.c = $$0.z.a(10) == 0 ? btv.a.b : btv.a.c;
-         }
-
-         if (this.c == btv.a.c) {
-            return 0;
-         } else {
-            if (!this.b) {
-               if (!this.a($$0)) {
-                  return 0;
-               }
-
-               this.b = true;
-            }
-
-            if (this.e > 0) {
-               this.e--;
-               return 0;
-            } else {
-               this.e = 2;
-               if (this.d > 0) {
-                  this.b($$0);
-                  this.d--;
-               } else {
-                  this.c = btv.a.c;
-               }
-
-               return 1;
-            }
-         }
+   @Nullable
+   public static gw a(arx $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6) {
+      double $$7 = ars.d($$5, $$4) - (float) (Math.PI / 2);
+      double $$8 = $$7 + (double)(2.0F * $$0.i() - 1.0F) * $$6;
+      double $$9 = Math.sqrt($$0.j()) * (double)ars.g * (double)$$1;
+      double $$10 = -$$9 * Math.sin($$8);
+      double $$11 = $$9 * Math.cos($$8);
+      if (!(Math.abs($$10) > (double)$$1) && !(Math.abs($$11) > (double)$$1)) {
+         int $$12 = $$0.a(2 * $$2 + 1) - $$2 + $$3;
+         return gw.a($$10, (double)$$12, $$11);
       } else {
-         this.c = btv.a.c;
-         this.b = false;
-         return 0;
+         return null;
       }
    }
 
-   private boolean a(akk $$0) {
-      for (cbm $$1 : $$0.v()) {
-         if (!$$1.G_()) {
-            gu $$2 = $$1.dk();
-            if ($$0.b($$2) && !$$0.s($$2).a(apk.ae)) {
-               for (int $$3 = 0; $$3 < 10; $$3++) {
-                  float $$4 = $$0.z.i() * (float) (Math.PI * 2);
-                  this.f = $$2.u() + arp.d(arp.b($$4) * 32.0F);
-                  this.g = $$2.v();
-                  this.h = $$2.w() + arp.d(arp.a($$4) * 32.0F);
-                  if (this.a($$0, new gu(this.f, this.g, this.h)) != null) {
-                     this.e = 0;
-                     this.d = 20;
-                     break;
-                  }
-               }
+   @VisibleForTesting
+   public static gw a(gw $$0, int $$1, Predicate<gw> $$2) {
+      if (!$$2.test($$0)) {
+         return $$0;
+      } else {
+         gw $$3 = $$0.c();
 
-               return true;
+         while ($$3.v() < $$1 && $$2.test($$3)) {
+            $$3 = $$3.c();
+         }
+
+         return $$3;
+      }
+   }
+
+   @VisibleForTesting
+   public static gw a(gw $$0, int $$1, int $$2, Predicate<gw> $$3) {
+      if ($$1 < 0) {
+         throw new IllegalArgumentException("aboveSolidAmount was " + $$1 + ", expected >= 0");
+      } else if (!$$3.test($$0)) {
+         return $$0;
+      } else {
+         gw $$4 = $$0.c();
+
+         while ($$4.v() < $$2 && $$3.test($$4)) {
+            $$4 = $$4.c();
+         }
+
+         gw $$5 = $$4;
+
+         while ($$5.v() < $$2 && $$5.v() - $$4.v() < $$1) {
+            gw $$6 = $$5.c();
+            if ($$3.test($$6)) {
+               break;
             }
-         }
-      }
 
-      return false;
-   }
-
-   private void b(akk $$0) {
-      ehd $$1 = this.a($$0, new gu(this.f, this.g, this.h));
-      if ($$1 != null) {
-         bzt $$2;
-         try {
-            $$2 = new bzt($$0);
-            $$2.a($$0, $$0.d_($$2.dk()), bjc.h, null, null);
-         } catch (Exception var5) {
-            a.warn("Failed to create zombie for village siege at {}", $$1, var5);
-            return;
+            $$5 = $$6;
          }
 
-         $$2.b($$1.c, $$1.d, $$1.e, $$0.z.i() * 360.0F, 0.0F);
-         $$0.a_($$2);
+         return $$5;
       }
    }
 
    @Nullable
-   private ehd a(akk $$0, gu $$1) {
-      for (int $$2 = 0; $$2 < 10; $$2++) {
-         int $$3 = $$1.u() + $$0.z.a(16) - 8;
-         int $$4 = $$1.w() + $$0.z.a(16) - 8;
-         int $$5 = $$0.a(dki.a.b, $$3, $$4);
-         gu $$6 = new gu($$3, $$5, $$4);
-         if ($$0.b($$6) && bza.b(bim.bp, $$0, bjc.h, $$6, $$0.z)) {
-            return ehd.c($$6);
+   public static ehi a(bjk $$0, Supplier<gw> $$1) {
+      return a($$1, $$0::h);
+   }
+
+   @Nullable
+   public static ehi a(Supplier<gw> $$0, ToDoubleFunction<gw> $$1) {
+      double $$2 = Double.NEGATIVE_INFINITY;
+      gw $$3 = null;
+
+      for (int $$4 = 0; $$4 < 10; $$4++) {
+         gw $$5 = $$0.get();
+         if ($$5 != null) {
+            double $$6 = $$1.applyAsDouble($$5);
+            if ($$6 > $$2) {
+               $$2 = $$6;
+               $$3 = $$5;
+            }
          }
       }
 
-      return null;
+      return $$3 != null ? ehi.c($$3) : null;
    }
 
-   static enum a {
-      a,
-      b,
-      c;
+   public static gw a(bjk $$0, int $$1, arx $$2, gw $$3) {
+      int $$4 = $$3.u();
+      int $$5 = $$3.w();
+      if ($$0.fM() && $$1 > 1) {
+         gw $$6 = $$0.fJ();
+         if ($$0.dp() > (double)$$6.u()) {
+            $$4 -= $$2.a($$1 / 2);
+         } else {
+            $$4 += $$2.a($$1 / 2);
+         }
+
+         if ($$0.dv() > (double)$$6.w()) {
+            $$5 -= $$2.a($$1 / 2);
+         } else {
+            $$5 += $$2.a($$1 / 2);
+         }
+      }
+
+      return gw.a((double)$$4 + $$0.dp(), (double)$$3.v() + $$0.dr(), (double)$$5 + $$0.dv());
    }
 }

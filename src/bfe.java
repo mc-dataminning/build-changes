@@ -1,48 +1,52 @@
-import com.google.common.collect.ImmutableList;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.Optional;
+import org.slf4j.Logger;
 
-public class bfe<E extends bfc> {
-   private final int a;
-   private final ImmutableList<E> b;
+public class bfe {
+   public static final Codec<bfe> a = Codec.INT.xmap(bfe::a, bfe::a);
+   private static final bfe b = new bfe(1);
+   private static final Logger c = LogUtils.getLogger();
+   private final int d;
 
-   bfe(List<? extends E> $$0) {
-      this.b = ImmutableList.copyOf($$0);
-      this.a = bfd.a($$0);
+   private bfe(int $$0) {
+      this.d = $$0;
    }
 
-   public static <E extends bfc> bfe<E> c() {
-      return new bfe<>(ImmutableList.of());
-   }
-
-   @SafeVarargs
-   public static <E extends bfc> bfe<E> a(E... $$0) {
-      return new bfe<>(ImmutableList.copyOf($$0));
-   }
-
-   public static <E extends bfc> bfe<E> a(List<E> $$0) {
-      return new bfe<>($$0);
-   }
-
-   public boolean d() {
-      return this.b.isEmpty();
-   }
-
-   public Optional<E> b(aru $$0) {
-      if (this.a == 0) {
-         return Optional.empty();
+   public static bfe a(int $$0) {
+      if ($$0 == 1) {
+         return b;
       } else {
-         int $$1 = $$0.a(this.a);
-         return bfd.a(this.b, $$1);
+         b($$0);
+         return new bfe($$0);
       }
    }
 
-   public List<E> e() {
-      return this.b;
+   public int a() {
+      return this.d;
    }
 
-   public static <E extends bfc> Codec<bfe<E>> c(Codec<E> $$0) {
-      return $$0.listOf().xmap(bfe::a, bfe::e);
+   private static void b(int $$0) {
+      if ($$0 < 0) {
+         throw (IllegalArgumentException)ac.b(new IllegalArgumentException("Weight should be >= 0"));
+      } else {
+         if ($$0 == 0 && aa.aS) {
+            c.warn("Found 0 weight, make sure this is intentional!");
+         }
+      }
+   }
+
+   @Override
+   public String toString() {
+      return Integer.toString(this.d);
+   }
+
+   @Override
+   public int hashCode() {
+      return Integer.hashCode(this.d);
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      return this == $$0 ? true : $$0 instanceof bfe && this.d == ((bfe)$$0).d;
    }
 }

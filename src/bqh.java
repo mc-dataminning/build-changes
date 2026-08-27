@@ -1,42 +1,27 @@
-import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-public class bqh extends bpt {
-   private final bjh a;
-   private double b;
-   private double c;
-   private double d;
-   private final double e;
+public class bqh extends bqt {
+   private static final int i = 10;
+   private static final int j = 7;
 
-   public bqh(bjh $$0, double $$1) {
-      this.a = $$0;
-      this.e = $$1;
-      this.a(EnumSet.of(bpt.a.a));
+   public bqh(bjk $$0, double $$1, boolean $$2) {
+      super($$0, $$1, 10, $$2);
    }
 
    @Override
    public boolean a() {
-      if (this.a.fI()) {
-         return false;
-      } else {
-         ehd $$0 = bto.a(this.a, 16, 7, ehd.c(this.a.fJ()), (float) (Math.PI / 2));
-         if ($$0 == null) {
-            return false;
-         } else {
-            this.b = $$0.c;
-            this.c = $$0.d;
-            this.d = $$0.e;
-            return true;
-         }
-      }
+      akn $$0 = (akn)this.b.dK();
+      gw $$1 = this.b.dk();
+      return $$0.b($$1) ? false : super.a();
    }
 
+   @Nullable
    @Override
-   public boolean b() {
-      return !this.a.H().l();
-   }
-
-   @Override
-   public void c() {
-      this.a.H().a(this.b, this.c, this.d, this.e);
+   protected ehi h() {
+      akn $$0 = (akn)this.b.dK();
+      gw $$1 = this.b.dk();
+      hz $$2 = hz.a($$1);
+      hz $$3 = bku.a($$0, $$2, 2);
+      return $$3 != $$2 ? btr.a(this.b, 10, 7, ehi.c($$3.q()), (float) (Math.PI / 2)) : null;
    }
 }

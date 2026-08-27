@@ -1,52 +1,104 @@
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import java.util.List;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.concurrent.CompletableFuture;
+import javax.annotation.Nullable;
 
-public class frg implements frd.a {
-   private static final int a = 160;
-   private final eql b;
-   private final Int2ObjectMap<frg.a> c = new Int2ObjectOpenHashMap();
+public class frg implements fri.a {
+   final eqq a;
+   private double b = Double.MIN_VALUE;
+   private final int c = 12;
+   @Nullable
+   private frg.a d;
 
-   @Override
-   public void a() {
-      this.c.clear();
-   }
-
-   public void a(int $$0, gu $$1, List<vv.a> $$2) {
-      this.c.put($$0, new frg.a($$1, $$2));
-   }
-
-   public void a(int $$0) {
-      this.c.remove($$0);
-   }
-
-   public frg(eql $$0) {
-      this.b = $$0;
+   public frg(eqq $$0) {
+      this.a = $$0;
    }
 
    @Override
-   public void a(elf $$0, fnu $$1, double $$2, double $$3, double $$4) {
-      epw $$5 = this.b.j.m();
-      gu $$6 = gu.a($$5.b().c, 0.0, $$5.b().e);
-      ObjectIterator var11 = this.c.values().iterator();
+   public void a(elk $$0, fnz $$1, double $$2, double $$3, double $$4) {
+      double $$5 = (double)ac.c();
+      if ($$5 - this.b > 3.0E9) {
+         this.b = $$5;
+         gcy $$6 = this.a.T();
+         if ($$6 != null) {
+            this.d = new frg.a($$6, $$2, $$4);
+         } else {
+            this.d = null;
+         }
+      }
 
-      while (var11.hasNext()) {
-         frg.a $$7 = (frg.a)var11.next();
-         gu $$8 = $$7.a;
-         if ($$6.a($$8, 160.0)) {
-            for (int $$9 = 0; $$9 < $$7.b.size(); $$9++) {
-               vv.a $$10 = $$7.b.get($$9);
-               double $$11 = (double)$$8.u() + 0.5;
-               double $$12 = (double)$$8.v() + 2.0 + (double)$$9 * 0.25;
-               double $$13 = (double)$$8.w() + 0.5;
-               int $$14 = $$10.b() ? -16711936 : -3355444;
-               frd.a($$0, $$1, $$10.c(), $$11, $$12, $$13, $$14);
+      if (this.d != null) {
+         Map<cox, String> $$7 = this.d.c.getNow(null);
+         double $$8 = this.a.j.m().b().d * 0.85;
+
+         for (Entry<cox, String> $$9 : this.d.b.entrySet()) {
+            cox $$10 = $$9.getKey();
+            String $$11 = $$9.getValue();
+            if ($$7 != null) {
+               $$11 = $$11 + $$7.get($$10);
+            }
+
+            String[] $$12 = $$11.split("\n");
+            int $$13 = 0;
+
+            for (String $$14 : $$12) {
+               fri.a($$0, $$1, $$14, (double)hz.a($$10.e, 8), $$8 + (double)$$13, (double)hz.a($$10.f, 8), -1, 0.15F, true, 0.0F, true);
+               $$13 -= 2;
             }
          }
       }
    }
 
-   static record a(gu a, List<vv.a> b) {
+   final class a {
+      final Map<cox, String> b;
+      final CompletableFuture<Map<cox, String>> c;
+
+      a(gcy $$0, double $$1, double $$2) {
+         fis $$3 = frg.this.a.r;
+         aet<cpq> $$4 = $$3.ac();
+         int $$5 = hz.a($$1);
+         int $$6 = hz.a($$2);
+         Builder<cox, String> $$7 = ImmutableMap.builder();
+         fio $$8 = $$3.i();
+
+         for (int $$9 = $$5 - 12; $$9 <= $$5 + 12; $$9++) {
+            for (int $$10 = $$6 - 12; $$10 <= $$6 + 12; $$10++) {
+               cox $$11 = new cox($$9, $$10);
+               String $$12 = "";
+               dhl $$13 = $$8.a($$9, $$10, false);
+               $$12 = $$12 + "Client: ";
+               if ($$13 == null) {
+                  $$12 = $$12 + "0n/a\n";
+               } else {
+                  $$12 = $$12 + ($$13.C() ? " E" : "");
+                  $$12 = $$12 + "\n";
+               }
+
+               $$7.put($$11, $$12);
+            }
+         }
+
+         this.b = $$7.build();
+         this.c = $$0.a(() -> {
+            akn $$4x = $$0.a($$4);
+            if ($$4x == null) {
+               return ImmutableMap.of();
+            } else {
+               Builder<cox, String> $$5x = ImmutableMap.builder();
+               akl $$6x = $$4x.k();
+
+               for (int $$7x = $$5 - 12; $$7x <= $$5 + 12; $$7x++) {
+                  for (int $$8x = $$6 - 12; $$8x <= $$6 + 12; $$8x++) {
+                     cox $$9x = new cox($$7x, $$8x);
+                     $$5x.put($$9x, "Server: " + $$6x.a($$9x));
+                  }
+               }
+
+               return $$5x.build();
+            }
+         });
+      }
    }
 }

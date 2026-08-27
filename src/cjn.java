@@ -1,31 +1,18 @@
-import java.util.function.Predicate;
-
-public abstract class cjn extends cis {
-   public static final Predicate<cix> c = $$0 -> $$0.a(apt.at);
-   public static final Predicate<cix> d = c.or($$0 -> $$0.a(cja.tA));
-
-   public cjn(cis.a $$0) {
-      super($$0);
-   }
-
-   public Predicate<cix> e() {
-      return this.b();
-   }
-
-   public abstract Predicate<cix> b();
-
-   public static cix a(biy $$0, Predicate<cix> $$1) {
-      if ($$1.test($$0.b(bgp.b))) {
-         return $$0.b(bgp.b);
-      } else {
-         return $$1.test($$0.b(bgp.a)) ? $$0.b(bgp.a) : cix.b;
-      }
+public class cjn extends cgt {
+   public cjn(csq $$0, civ.a $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public int c() {
-      return 1;
+   public bgt a(clk $$0) {
+      return bgt.d;
    }
 
-   public abstract int d();
+   @Override
+   public bgu<cja> a(cpq $$0, cbp $$1, bgs $$2) {
+      ehe $$3 = a($$0, $$1, coz.b.b);
+      ehe $$4 = $$3.a($$3.a().c());
+      bgt $$5 = super.a(new clk($$1, $$2, $$4));
+      return new bgu<>($$5, $$1.b($$2));
+   }
 }

@@ -1,93 +1,120 @@
-public interface bhj {
-   aeq<bhi> a = aeq.a(jc.p, new aer("in_fire"));
-   aeq<bhi> b = aeq.a(jc.p, new aer("lightning_bolt"));
-   aeq<bhi> c = aeq.a(jc.p, new aer("on_fire"));
-   aeq<bhi> d = aeq.a(jc.p, new aer("lava"));
-   aeq<bhi> e = aeq.a(jc.p, new aer("hot_floor"));
-   aeq<bhi> f = aeq.a(jc.p, new aer("in_wall"));
-   aeq<bhi> g = aeq.a(jc.p, new aer("cramming"));
-   aeq<bhi> h = aeq.a(jc.p, new aer("drown"));
-   aeq<bhi> i = aeq.a(jc.p, new aer("starve"));
-   aeq<bhi> j = aeq.a(jc.p, new aer("cactus"));
-   aeq<bhi> k = aeq.a(jc.p, new aer("fall"));
-   aeq<bhi> l = aeq.a(jc.p, new aer("fly_into_wall"));
-   aeq<bhi> m = aeq.a(jc.p, new aer("out_of_world"));
-   aeq<bhi> n = aeq.a(jc.p, new aer("generic"));
-   aeq<bhi> o = aeq.a(jc.p, new aer("magic"));
-   aeq<bhi> p = aeq.a(jc.p, new aer("wither"));
-   aeq<bhi> q = aeq.a(jc.p, new aer("dragon_breath"));
-   aeq<bhi> r = aeq.a(jc.p, new aer("dry_out"));
-   aeq<bhi> s = aeq.a(jc.p, new aer("sweet_berry_bush"));
-   aeq<bhi> t = aeq.a(jc.p, new aer("freeze"));
-   aeq<bhi> u = aeq.a(jc.p, new aer("stalagmite"));
-   aeq<bhi> v = aeq.a(jc.p, new aer("falling_block"));
-   aeq<bhi> w = aeq.a(jc.p, new aer("falling_anvil"));
-   aeq<bhi> x = aeq.a(jc.p, new aer("falling_stalactite"));
-   aeq<bhi> y = aeq.a(jc.p, new aer("sting"));
-   aeq<bhi> z = aeq.a(jc.p, new aer("mob_attack"));
-   aeq<bhi> A = aeq.a(jc.p, new aer("mob_attack_no_aggro"));
-   aeq<bhi> B = aeq.a(jc.p, new aer("player_attack"));
-   aeq<bhi> C = aeq.a(jc.p, new aer("arrow"));
-   aeq<bhi> D = aeq.a(jc.p, new aer("trident"));
-   aeq<bhi> E = aeq.a(jc.p, new aer("mob_projectile"));
-   aeq<bhi> F = aeq.a(jc.p, new aer("fireworks"));
-   aeq<bhi> G = aeq.a(jc.p, new aer("fireball"));
-   aeq<bhi> H = aeq.a(jc.p, new aer("unattributed_fireball"));
-   aeq<bhi> I = aeq.a(jc.p, new aer("wither_skull"));
-   aeq<bhi> J = aeq.a(jc.p, new aer("thrown"));
-   aeq<bhi> K = aeq.a(jc.p, new aer("indirect_magic"));
-   aeq<bhi> L = aeq.a(jc.p, new aer("thorns"));
-   aeq<bhi> M = aeq.a(jc.p, new aer("explosion"));
-   aeq<bhi> N = aeq.a(jc.p, new aer("player_explosion"));
-   aeq<bhi> O = aeq.a(jc.p, new aer("sonic_boom"));
-   aeq<bhi> P = aeq.a(jc.p, new aer("bad_respawn_point"));
-   aeq<bhi> Q = aeq.a(jc.p, new aer("outside_border"));
-   aeq<bhi> R = aeq.a(jc.p, new aer("generic_kill"));
+import javax.annotation.Nullable;
 
-   static void a(nm<bhi> $$0) {
-      $$0.a(a, new bhi("inFire", 0.1F, bhe.d));
-      $$0.a(b, new bhi("lightningBolt", 0.1F));
-      $$0.a(c, new bhi("onFire", 0.0F, bhe.d));
-      $$0.a(d, new bhi("lava", 0.1F, bhe.d));
-      $$0.a(e, new bhi("hotFloor", 0.1F, bhe.d));
-      $$0.a(f, new bhi("inWall", 0.0F));
-      $$0.a(g, new bhi("cramming", 0.0F));
-      $$0.a(h, new bhi("drown", 0.0F, bhe.c));
-      $$0.a(i, new bhi("starve", 0.0F));
-      $$0.a(j, new bhi("cactus", 0.1F));
-      $$0.a(k, new bhi("fall", bhf.b, 0.0F, bhe.a, bhk.b));
-      $$0.a(l, new bhi("flyIntoWall", 0.0F));
-      $$0.a(m, new bhi("outOfWorld", 0.0F));
-      $$0.a(n, new bhi("generic", 0.0F));
-      $$0.a(o, new bhi("magic", 0.0F));
-      $$0.a(p, new bhi("wither", 0.0F));
-      $$0.a(q, new bhi("dragonBreath", 0.0F));
-      $$0.a(r, new bhi("dryout", 0.1F));
-      $$0.a(s, new bhi("sweetBerryBush", 0.1F, bhe.e));
-      $$0.a(t, new bhi("freeze", 0.0F, bhe.f));
-      $$0.a(u, new bhi("stalagmite", 0.0F));
-      $$0.a(v, new bhi("fallingBlock", 0.1F));
-      $$0.a(w, new bhi("anvil", 0.1F));
-      $$0.a(x, new bhi("fallingStalactite", 0.1F));
-      $$0.a(y, new bhi("sting", 0.1F));
-      $$0.a(z, new bhi("mob", 0.1F));
-      $$0.a(A, new bhi("mob", 0.1F));
-      $$0.a(B, new bhi("player", 0.1F));
-      $$0.a(C, new bhi("arrow", 0.1F));
-      $$0.a(D, new bhi("trident", 0.1F));
-      $$0.a(E, new bhi("mob", 0.1F));
-      $$0.a(F, new bhi("fireworks", 0.1F));
-      $$0.a(H, new bhi("onFire", 0.1F, bhe.d));
-      $$0.a(G, new bhi("fireball", 0.1F, bhe.d));
-      $$0.a(I, new bhi("witherSkull", 0.1F));
-      $$0.a(J, new bhi("thrown", 0.1F));
-      $$0.a(K, new bhi("indirectMagic", 0.0F));
-      $$0.a(L, new bhi("thorns", 0.1F, bhe.b));
-      $$0.a(M, new bhi("explosion", bhf.c, 0.1F));
-      $$0.a(N, new bhi("explosion.player", bhf.c, 0.1F));
-      $$0.a(O, new bhi("sonic_boom", bhf.c, 0.0F));
-      $$0.a(P, new bhi("badRespawnPoint", bhf.c, 0.1F, bhe.a, bhk.c));
-      $$0.a(Q, new bhi("outsideBorder", 0.0F));
-      $$0.a(R, new bhi("genericKill", 0.0F));
+public class bhj {
+   private final hg<bhl> a;
+   @Nullable
+   private final bil b;
+   @Nullable
+   private final bil c;
+   @Nullable
+   private final ehi d;
+
+   @Override
+   public String toString() {
+      return "DamageSource (" + this.j().a() + ")";
+   }
+
+   public float a() {
+      return this.j().c();
+   }
+
+   public boolean b() {
+      return this.b != this.c;
+   }
+
+   private bhj(hg<bhl> $$0, @Nullable bil $$1, @Nullable bil $$2, @Nullable ehi $$3) {
+      this.a = $$0;
+      this.b = $$2;
+      this.c = $$1;
+      this.d = $$3;
+   }
+
+   public bhj(hg<bhl> $$0, @Nullable bil $$1, @Nullable bil $$2) {
+      this($$0, $$1, $$2, null);
+   }
+
+   public bhj(hg<bhl> $$0, ehi $$1) {
+      this($$0, null, null, $$1);
+   }
+
+   public bhj(hg<bhl> $$0, @Nullable bil $$1) {
+      this($$0, $$1, $$1);
+   }
+
+   public bhj(hg<bhl> $$0) {
+      this($$0, null, null, null);
+   }
+
+   @Nullable
+   public bil c() {
+      return this.c;
+   }
+
+   @Nullable
+   public bil d() {
+      return this.b;
+   }
+
+   public ti a(bjb $$0) {
+      String $$1 = "death.attack." + this.j().a();
+      if (this.b == null && this.c == null) {
+         bjb $$5 = $$0.eJ();
+         String $$6 = $$1 + ".player";
+         return $$5 != null ? ti.a($$6, $$0.H_(), $$5.H_()) : ti.a($$1, $$0.H_());
+      } else {
+         ti $$2 = this.b == null ? this.c.H_() : this.b.H_();
+         cja $$4 = this.b instanceof bjb $$3 ? $$3.eR() : cja.b;
+         return !$$4.b() && $$4.A() ? ti.a($$1 + ".item", $$0.H_(), $$2, $$4.J()) : ti.a($$1, $$0.H_(), $$2);
+      }
+   }
+
+   public String e() {
+      return this.j().a();
+   }
+
+   public boolean f() {
+      return switch (this.j().b()) {
+         case a -> false;
+         case b -> this.b instanceof bjb && !(this.b instanceof cbp);
+         case c -> true;
+      };
+   }
+
+   public boolean g() {
+      if (this.d() instanceof cbp $$0 && $$0.fR().d) {
+         return true;
+      }
+
+      return false;
+   }
+
+   @Nullable
+   public ehi h() {
+      if (this.d != null) {
+         return this.d;
+      } else {
+         return this.c != null ? this.c.di() : null;
+      }
+   }
+
+   @Nullable
+   public ehi i() {
+      return this.d;
+   }
+
+   public boolean a(aqd<bhl> $$0) {
+      return this.a.a($$0);
+   }
+
+   public boolean a(aet<bhl> $$0) {
+      return this.a.a($$0);
+   }
+
+   public bhl j() {
+      return this.a.a();
+   }
+
+   public hg<bhl> k() {
+      return this.a;
    }
 }

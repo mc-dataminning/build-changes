@@ -1,61 +1,106 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
-import java.util.function.Supplier;
+public class cwh extends cwe {
+   private static final double b = 0.13;
+   private static final double c = 0.08;
+   private static final double d = 0.05;
+   private static final int e = 20;
+   protected static final eib a = csq.a(1.0, 0.0, 1.0, 15.0, 15.0, 15.0);
 
-public class cwh extends csl {
-   private final csl a;
-   private static final Map<csl, csl> b = Maps.newIdentityHashMap();
-   private static final Map<dez, dez> c = Maps.newIdentityHashMap();
-   private static final Map<dez, dez> d = Maps.newIdentityHashMap();
-
-   public cwh(csl $$0, dey.d $$1) {
-      super($$1.e($$0.t() / 2.0F).f(0.75F));
-      this.a = $$0;
-      b.put($$0, this);
+   public cwh(dfd.d $$0) {
+      super($$0);
    }
 
-   public csl a() {
-      return this.a;
+   private static boolean c(bil $$0) {
+      return $$0 instanceof bjb || $$0 instanceof cdg || $$0 instanceof byj || $$0 instanceof cdi;
    }
 
-   public static boolean h(dez $$0) {
-      return b.containsKey($$0.b());
+   @Override
+   public eib c(dfe $$0, cow $$1, gw $$2, ehn $$3) {
+      return a;
    }
 
-   private void a(akk $$0, gu $$1) {
-      bzh $$2 = bim.aI.a((cpl)$$0);
-      if ($$2 != null) {
-         $$2.b((double)$$1.u() + 0.5, (double)$$1.v(), (double)$$1.w() + 0.5, 0.0F, 0.0F);
-         $$0.b($$2);
-         $$2.N();
+   @Override
+   public void a(cpq $$0, dfe $$1, gw $$2, bil $$3, float $$4) {
+      $$3.a(aoz.kY, 1.0F, 1.0F);
+      if (!$$0.B) {
+         $$0.a($$3, (byte)54);
+      }
+
+      if ($$3.a($$4, 0.2F, $$0.ag().k())) {
+         $$3.a(this.aH.g(), this.aH.a() * 0.5F, this.aH.b() * 0.75F);
       }
    }
 
    @Override
-   public void a(dez $$0, akk $$1, gu $$2, cix $$3, boolean $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      if ($$1.X().b(cph.g) && cng.a(cni.v, $$3) == 0) {
-         this.a($$1, $$2);
+   public void a(dfe $$0, cpq $$1, gw $$2, bil $$3) {
+      if (this.a($$2, $$3)) {
+         this.a($$3, $$2);
+         this.d($$3);
+         this.a($$1, $$3);
+      }
+
+      super.a($$0, $$1, $$2, $$3);
+   }
+
+   private boolean a(gw $$0, bil $$1) {
+      if ($$1.aA()) {
+         return false;
+      } else if ($$1.dr() > (double)$$0.v() + 0.9375 - 1.0E-7) {
+         return false;
+      } else if ($$1.dn().d >= -0.08) {
+         return false;
+      } else {
+         double $$2 = Math.abs((double)$$0.u() + 0.5 - $$1.dp());
+         double $$3 = Math.abs((double)$$0.w() + 0.5 - $$1.dv());
+         double $$4 = 0.4375 + (double)($$1.df() / 2.0F);
+         return $$2 + 1.0E-7 > $$4 || $$3 + 1.0E-7 > $$4;
       }
    }
 
-   public static dez n(dez $$0) {
-      return a(c, $$0, () -> b.get($$0.b()).n());
+   private void a(bil $$0, gw $$1) {
+      if ($$0 instanceof ako && $$0.dK().V() % 20L == 0L) {
+         al.J.a((ako)$$0, $$0.dK().a_($$1));
+      }
    }
 
-   public dez o(dez $$0) {
-      return a(d, $$0, () -> this.a().n());
+   private void d(bil $$0) {
+      ehi $$1 = $$0.dn();
+      if ($$1.d < -0.13) {
+         double $$2 = -0.05 / $$1.d;
+         $$0.f(new ehi($$1.c * $$2, -0.05, $$1.e * $$2));
+      } else {
+         $$0.f(new ehi($$1.c, -0.05, $$1.e));
+      }
+
+      $$0.n();
    }
 
-   private static dez a(Map<dez, dez> $$0, dez $$1, Supplier<dez> $$2) {
-      return $$0.computeIfAbsent($$1, $$1x -> {
-         dez $$2x = $$2.get();
-
-         for (dgc $$3 : $$1x.B()) {
-            $$2x = $$2x.b($$3) ? $$2x.a($$3, $$1x.c($$3)) : $$2x;
+   private void a(cpq $$0, bil $$1) {
+      if (c($$1)) {
+         if ($$0.z.a(5) == 0) {
+            $$1.a(aoz.kY, 1.0F, 1.0F);
          }
 
-         return $$2x;
-      });
+         if (!$$0.B && $$0.z.a(5) == 0) {
+            $$0.a($$1, (byte)53);
+         }
+      }
+   }
+
+   public static void a(bil $$0) {
+      a($$0, 5);
+   }
+
+   public static void b(bil $$0) {
+      a($$0, 10);
+   }
+
+   private static void a(bil $$0, int $$1) {
+      if ($$0.dK().B) {
+         dfe $$2 = csr.pg.n();
+
+         for (int $$3 = 0; $$3 < $$1; $$3++) {
+            $$0.dK().a(new ip(ix.c, $$2), $$0.dp(), $$0.dr(), $$0.dv(), 0.0, 0.0, 0.0);
+         }
+      }
    }
 }

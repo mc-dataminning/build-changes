@@ -1,189 +1,117 @@
-import com.mojang.authlib.GameProfile;
-import com.mojang.authlib.minecraft.MinecraftSessionService;
-import com.mojang.authlib.yggdrasil.ProfileResult;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Dynamic;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class ddv extends dcl {
-   public static final String a = "SkullOwner";
-   public static final String b = "note_block_sound";
-   @Nullable
-   private static anv c;
-   @Nullable
-   private static MinecraftSessionService d;
-   @Nullable
-   private static Executor e;
-   private static final Executor f = $$0 -> {
-      Executor $$1 = e;
-      if ($$1 != null) {
-         $$1.execute($$0);
-      }
-   };
-   @Nullable
-   private GameProfile g;
-   @Nullable
-   private aer h;
-   private int i;
-   private boolean j;
+public class ddv extends dcq implements djq.b<djx.b>, djx {
+   private static final Logger b = LogUtils.getLogger();
+   private djx.a c;
+   private final djx.b d;
+   private final djx.d e = this.c();
+   private int g;
 
-   public ddv(gu $$0, dez $$1) {
-      super(dcn.p, $$0, $$1);
+   protected ddv(dcs<?> $$0, gw $$1, dfe $$2) {
+      super($$0, $$1, $$2);
+      this.c = new djx.a();
+      this.d = new djx.b(this);
    }
 
-   public static void a(afj $$0, Executor $$1) {
-      c = $$0.e();
-      d = $$0.b();
-      e = $$1;
+   public ddv(gw $$0, dfe $$1) {
+      this(dcs.I, $$0, $$1);
    }
 
-   public static void c() {
-      c = null;
-      d = null;
-      e = null;
+   public djx.d c() {
+      return new ddv.a(this.p());
    }
 
    @Override
-   protected void b(qr $$0) {
-      super.b($$0);
-      if (this.g != null) {
-         qr $$1 = new qr();
-         rd.a($$1, this.g);
-         $$0.a("SkullOwner", $$1);
-      }
-
-      if (this.h != null) {
-         $$0.a("note_block_sound", this.h.toString());
-      }
-   }
-
-   @Override
-   public void a(qr $$0) {
+   public void a(qu $$0) {
       super.a($$0);
-      if ($$0.b("SkullOwner", 10)) {
-         this.a(rd.a($$0.p("SkullOwner")));
-      } else if ($$0.b("ExtraType", 8)) {
-         String $$1 = $$0.l("ExtraType");
-         if (!asi.b($$1)) {
-            this.a(new GameProfile(ac.d, $$1));
-         }
-      }
-
-      if ($$0.b("note_block_sound", 8)) {
-         this.h = aer.a($$0.l("note_block_sound"));
+      this.g = $$0.h("last_vibration_frequency");
+      if ($$0.b("listener", 10)) {
+         djx.a.a.parse(new Dynamic(rf.a, $$0.p("listener"))).resultOrPartial(b::error).ifPresent($$0x -> this.c = $$0x);
       }
    }
 
-   public static void a(cpl $$0, gu $$1, dez $$2, ddv $$3) {
-      if ($$0.B($$1)) {
-         $$3.j = true;
-         $$3.i++;
-      } else {
-         $$3.j = false;
-      }
+   @Override
+   protected void b(qu $$0) {
+      super.b($$0);
+      $$0.a("last_vibration_frequency", this.g);
+      djx.a.a.encodeStart(rf.a, this.c).resultOrPartial(b::error).ifPresent($$1 -> $$0.a("listener", $$1));
    }
 
-   public float a(float $$0) {
-      return this.j ? (float)this.i + $$0 : (float)this.i;
+   @Override
+   public djx.a gc() {
+      return this.c;
    }
 
-   @Nullable
-   public GameProfile d() {
+   @Override
+   public djx.d gd() {
+      return this.e;
+   }
+
+   public int f() {
       return this.g;
    }
 
-   @Nullable
-   public aer f() {
-      return this.h;
+   public void a(int $$0) {
+      this.g = $$0;
    }
 
-   public wx g() {
-      return wx.a(this);
+   public djx.b g() {
+      return this.d;
    }
 
-   @Override
-   public qr an_() {
-      return this.o();
-   }
+   protected class a implements djx.d {
+      public static final int b = 8;
+      protected final gw c;
+      private final djs a;
 
-   public void a(@Nullable GameProfile $$0) {
-      synchronized (this) {
-         this.g = $$0;
+      public a(gw $$1) {
+         this.c = $$1;
+         this.a = new djk($$1);
       }
 
-      this.i();
-   }
-
-   private void i() {
-      if (this.g != null && !ac.b(this.g.getName()) && !c(this.g)) {
-         a(this.g.getName()).thenAcceptAsync($$0 -> {
-            this.g = $$0.orElse(this.g);
-            this.e();
-         }, f);
-      } else {
-         this.e();
+      @Override
+      public int a() {
+         return 8;
       }
-   }
 
-   @Nullable
-   public static GameProfile d(qr $$0) {
-      if ($$0.b("SkullOwner", 10)) {
-         return rd.a($$0.p("SkullOwner"));
-      } else {
-         if ($$0.b("SkullOwner", 8)) {
-            String $$1 = $$0.l("SkullOwner");
-            if (!ac.b($$1)) {
-               $$0.r("SkullOwner");
-               a($$0, $$1);
+      @Override
+      public djs b() {
+         return this.a;
+      }
+
+      @Override
+      public boolean d() {
+         return true;
+      }
+
+      @Override
+      public boolean a(akn $$0, gw $$1, djo $$2, @Nullable djo.a $$3) {
+         return !$$1.equals(this.c) || $$2 != djo.f && $$2 != djo.i ? czj.n(ddv.this.q()) : false;
+      }
+
+      @Override
+      public void a(akn $$0, gw $$1, djo $$2, @Nullable bil $$3, @Nullable bil $$4, float $$5) {
+         dfe $$6 = ddv.this.q();
+         if (czj.n($$6)) {
+            ddv.this.a(djx.a_($$2));
+            int $$7 = djx.a_($$5, this.a());
+            if ($$6.b() instanceof czj $$8) {
+               $$8.a($$3, $$0, this.c, $$6, $$7, ddv.this.f());
             }
          }
-
-         return null;
       }
-   }
 
-   public static void e(qr $$0) {
-      String $$1 = $$0.l("SkullOwner");
-      if (!ac.b($$1)) {
-         a($$0, $$1);
+      @Override
+      public void e() {
+         ddv.this.e();
       }
-   }
 
-   private static void a(qr $$0, String $$1) {
-      a($$1).thenAccept($$2 -> $$0.a("SkullOwner", rd.a(new qr(), $$2.orElse(new GameProfile(ac.d, $$1)))));
-   }
-
-   private static CompletableFuture<Optional<GameProfile>> a(String $$0) {
-      anv $$1 = c;
-      return $$1 == null
-         ? CompletableFuture.completedFuture(Optional.empty())
-         : $$1.b($$0)
-            .thenCompose($$0x -> $$0x.isPresent() ? b((GameProfile)$$0x.get()) : CompletableFuture.completedFuture(Optional.empty()))
-            .thenApplyAsync($$0x -> {
-               anv $$1x = c;
-               if ($$1x != null) {
-                  $$0x.ifPresent($$1x::a);
-                  return $$0x;
-               } else {
-                  return Optional.empty();
-               }
-            }, f);
-   }
-
-   private static CompletableFuture<Optional<GameProfile>> b(GameProfile $$0) {
-      return c($$0) ? CompletableFuture.completedFuture(Optional.of($$0)) : CompletableFuture.supplyAsync(() -> {
-         MinecraftSessionService $$1 = d;
-         if ($$1 != null) {
-            ProfileResult $$2 = $$1.fetchProfile($$0.getId(), true);
-            return $$2 == null ? Optional.of($$0) : Optional.of($$2.profile());
-         } else {
-            return Optional.empty();
-         }
-      }, ac.f());
-   }
-
-   private static boolean c(GameProfile $$0) {
-      return $$0.getProperties().containsKey("textures");
+      @Override
+      public boolean f() {
+         return true;
+      }
    }
 }

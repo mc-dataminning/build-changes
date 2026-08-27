@@ -1,7 +1,7 @@
-public enum dgl implements ash {
-   a("none"),
-   b("low"),
-   c("tall");
+public enum dgl implements ask {
+   a("inactive"),
+   b("active"),
+   c("cooldown");
 
    private final String d;
 
@@ -11,7 +11,7 @@ public enum dgl implements ash {
 
    @Override
    public String toString() {
-      return this.c();
+      return this.d;
    }
 
    @Override

@@ -1,70 +1,13 @@
-import com.google.common.hash.Hashing;
-import com.google.common.hash.HashingOutputStream;
-import com.google.gson.JsonElement;
-import com.google.gson.stream.JsonWriter;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.JsonOps;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.io.ByteArrayOutputStream;
+import com.google.common.hash.HashCode;
 import java.io.IOException;
-import java.io.OutputStreamWriter;
-import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.Comparator;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.ToIntFunction;
-import org.slf4j.Logger;
 
 public interface ji {
-   ToIntFunction<String> a = ac.a(new Object2IntOpenHashMap(), $$0 -> {
-      $$0.put("type", 0);
-      $$0.put("parent", 1);
-      $$0.defaultReturnValue(2);
-   });
-   Comparator<String> b = Comparator.comparingInt(a).thenComparing($$0 -> (String)$$0);
-   Logger c = LogUtils.getLogger();
+   ji a = ($$0, $$1, $$2) -> {
+      Files.createDirectories($$0.getParent());
+      Files.write($$0, $$1);
+   };
 
-   CompletableFuture<?> a(jg var1);
-
-   String a();
-
-   static <T> CompletableFuture<?> a(jg $$0, Codec<T> $$1, T $$2, Path $$3) {
-      JsonElement $$4 = ac.a($$1.encodeStart(JsonOps.INSTANCE, $$2), IllegalStateException::new);
-      return a($$0, $$4, $$3);
-   }
-
-   static CompletableFuture<?> a(jg $$0, JsonElement $$1, Path $$2) {
-      return CompletableFuture.runAsync(() -> {
-         try {
-            ByteArrayOutputStream $$3 = new ByteArrayOutputStream();
-            HashingOutputStream $$4 = new HashingOutputStream(Hashing.sha1(), $$3);
-            JsonWriter $$5 = new JsonWriter(new OutputStreamWriter($$4, StandardCharsets.UTF_8));
-
-            try {
-               $$5.setSerializeNulls(false);
-               $$5.setIndent("  ");
-               arg.a($$5, $$1, b);
-            } catch (Throwable var9) {
-               try {
-                  $$5.close();
-               } catch (Throwable var8) {
-                  var9.addSuppressed(var8);
-               }
-
-               throw var9;
-            }
-
-            $$5.close();
-            $$0.writeIfNeeded($$2, $$3.toByteArray(), $$4.hash());
-         } catch (IOException var10) {
-            c.error("Failed to save file to {}", $$2, var10);
-         }
-      }, ac.f());
-   }
-
-   @FunctionalInterface
-   public interface a<T extends ji> {
-      T create(jk var1);
-   }
+   void writeIfNeeded(Path var1, byte[] var2, HashCode var3) throws IOException;
 }

@@ -2,136 +2,44 @@ import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.Map;
-import java.util.Set;
-import java.util.Map.Entry;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+import java.util.UUID;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-public class fe implements ArgumentType<fe.b> {
-   private static final Collection<String> a = Arrays.asList("stone", "minecraft:stone", "stone[foo=bar]", "#stone", "#stone[foo=bar]{baz=nbt}");
-   private final hg<csl> b;
+public class fe implements ArgumentType<UUID> {
+   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(ti.c("argument.uuid.invalid"));
+   private static final Collection<String> b = Arrays.asList("dd12be42-52a9-4a91-a8a1-11c01849e498");
+   private static final Pattern c = Pattern.compile("^([-A-Fa-f0-9]+)");
 
-   public fe(dl $$0) {
-      this.b = $$0.a(jc.e);
+   public static UUID a(CommandContext<dt> $$0, String $$1) {
+      return (UUID)$$0.getArgument($$1, UUID.class);
    }
 
-   public static fe a(dl $$0) {
-      return new fe($$0);
+   public static fe a() {
+      return new fe();
    }
 
-   public fe.b a(StringReader $$0) throws CommandSyntaxException {
-      return a(this.b, $$0);
-   }
+   public UUID a(StringReader $$0) throws CommandSyntaxException {
+      String $$1 = $$0.getRemaining();
+      Matcher $$2 = c.matcher($$1);
+      if ($$2.find()) {
+         String $$3 = $$2.group(1);
 
-   public static fe.b a(hg<csl> $$0, StringReader $$1) throws CommandSyntaxException {
-      return (fe.b)fg.b($$0, $$1, true).map($$0x -> new fe.a($$0x.a(), $$0x.b().keySet(), $$0x.c()), $$0x -> new fe.c($$0x.a(), $$0x.b(), $$0x.c()));
-   }
+         try {
+            UUID $$4 = UUID.fromString($$3);
+            $$0.setCursor($$0.getCursor() + $$3.length());
+            return $$4;
+         } catch (IllegalArgumentException var6) {
+         }
+      }
 
-   public static Predicate<dfd> a(CommandContext<dr> $$0, String $$1) throws CommandSyntaxException {
-      return (Predicate<dfd>)$$0.getArgument($$1, fe.b.class);
-   }
-
-   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      return fg.a(this.b, $$1, true, true);
+      throw a.create();
    }
 
    public Collection<String> getExamples() {
-      return a;
-   }
-
-   static class a implements fe.b {
-      private final dez a;
-      private final Set<dgc<?>> b;
-      @Nullable
-      private final qr c;
-
-      public a(dez $$0, Set<dgc<?>> $$1, @Nullable qr $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-      }
-
-      public boolean a(dfd $$0) {
-         dez $$1 = $$0.a();
-         if (!$$1.a(this.a.b())) {
-            return false;
-         } else {
-            for (dgc<?> $$2 : this.b) {
-               if ($$1.c($$2) != this.a.c($$2)) {
-                  return false;
-               }
-            }
-
-            if (this.c == null) {
-               return true;
-            } else {
-               dcl $$3 = $$0.b();
-               return $$3 != null && rd.a(this.c, $$3.m(), true);
-            }
-         }
-      }
-
-      @Override
-      public boolean a() {
-         return this.c != null;
-      }
-   }
-
-   public interface b extends Predicate<dfd> {
-      boolean a();
-   }
-
-   static class c implements fe.b {
-      private final hi<csl> a;
-      @Nullable
-      private final qr b;
-      private final Map<String, String> c;
-
-      c(hi<csl> $$0, Map<String, String> $$1, @Nullable qr $$2) {
-         this.a = $$0;
-         this.c = $$1;
-         this.b = $$2;
-      }
-
-      public boolean a(dfd $$0) {
-         dez $$1 = $$0.a();
-         if (!$$1.a(this.a)) {
-            return false;
-         } else {
-            for (Entry<String, String> $$2 : this.c.entrySet()) {
-               dgc<?> $$3 = $$1.b().l().a($$2.getKey());
-               if ($$3 == null) {
-                  return false;
-               }
-
-               Comparable<?> $$4 = (Comparable<?>)$$3.b($$2.getValue()).orElse(null);
-               if ($$4 == null) {
-                  return false;
-               }
-
-               if ($$1.c($$3) != $$4) {
-                  return false;
-               }
-            }
-
-            if (this.b == null) {
-               return true;
-            } else {
-               dcl $$5 = $$0.b();
-               return $$5 != null && rd.a(this.b, $$5.m(), true);
-            }
-         }
-      }
-
-      @Override
-      public boolean a() {
-         return this.b != null;
-      }
+      return b;
    }
 }

@@ -1,23 +1,13 @@
-import java.util.List;
-import javax.annotation.Nullable;
+public interface ckn {
+   int a();
 
-public class ckn extends cgl {
-   public ckn(cis.a $$0) {
-      super($$0);
-   }
+   float b();
 
-   @Override
-   public cix ad_() {
-      return ckw.a(super.ad_(), ckx.E);
-   }
+   float c();
 
-   @Override
-   public void a(cix $$0, @Nullable cpl $$1, List<tf> $$2, cko $$3) {
-      ckw.a($$0, $$2, 0.125F);
-   }
+   int d();
 
-   @Override
-   public String j(cix $$0) {
-      return ckw.d($$0).b(this.a() + ".effect.");
-   }
+   int e();
+
+   cmb f();
 }

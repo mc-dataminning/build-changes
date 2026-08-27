@@ -1,33 +1,25 @@
+import javax.annotation.Nullable;
+
 public class btp {
-   public static boolean a(bja $$0) {
-      return $$0.H() instanceof bsg;
+   @Nullable
+   public static ehi a(bjk $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6) {
+      boolean $$7 = bts.a($$0, $$1);
+      return btv.a($$0, () -> a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
    }
 
-   public static boolean a(bjh $$0, int $$1) {
-      return $$0.fM() && $$0.fJ().a($$0.di(), (double)($$0.fK() + (float)$$1) + 1.0);
-   }
-
-   public static boolean a(gu $$0, bjh $$1) {
-      return $$0.v() < $$1.dK().C_() || $$0.v() > $$1.dK().aj();
-   }
-
-   public static boolean a(boolean $$0, bjh $$1, gu $$2) {
-      return $$0 && !$$1.a($$2);
-   }
-
-   public static boolean a(bsh $$0, gu $$1) {
-      return !$$0.a($$1);
-   }
-
-   public static boolean a(bjh $$0, gu $$1) {
-      return $$0.dK().b_($$1).a(apq.a);
-   }
-
-   public static boolean b(bjh $$0, gu $$1) {
-      return $$0.a(eaw.a($$0.dK(), $$1.j())) != 0.0F;
-   }
-
-   public static boolean c(bjh $$0, gu $$1) {
-      return $$0.dK().a_($$1).e();
+   @Nullable
+   public static gw a(bjk $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6, boolean $$7) {
+      gw $$8 = btv.a($$0.ee(), $$1, $$2, $$3, $$4, $$5, $$6);
+      if ($$8 == null) {
+         return null;
+      } else {
+         gw $$9 = btv.a($$0, $$1, $$0.ee(), $$8);
+         if (!bts.a($$9, $$0) && !bts.a($$7, $$0, $$9)) {
+            $$9 = btv.a($$9, $$0.dK().aj(), $$1x -> bts.c($$0, $$1x));
+            return bts.b($$0, $$9) ? null : $$9;
+         } else {
+            return null;
+         }
+      }
    }
 }

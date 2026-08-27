@@ -1,23 +1,25 @@
-public class fvj extends fsw<ccq> {
-   public static final aer a = new aer("textures/entity/trident.png");
-   private final fgy f;
+public class fvj<T extends bvl> extends fui<T, fha<T>> {
+   private static final aeu a = new aeu("textures/entity/squid/squid.png");
 
-   public fvj(fsx.a $$0) {
-      super($$0);
-      this.f = new fgy($$0.a(fhr.bC));
+   public fvj(ftc.a $$0, fha<T> $$1) {
+      super($$0, $$1, 0.7F);
    }
 
-   public void a(ccq $$0, float $$1, float $$2, elf $$3, fnu $$4, int $$5) {
-      $$3.a();
-      $$3.a(a.d.rotationDegrees(arp.i($$2, $$0.N, $$0.dA()) - 90.0F));
-      $$3.a(a.f.rotationDegrees(arp.i($$2, $$0.O, $$0.dC()) + 90.0F));
-      elj $$6 = ftv.c($$4, this.f.a(this.a($$0)), false, $$0.z());
-      this.f.a($$3, $$6, $$5, fyl.d, 1.0F, 1.0F, 1.0F, 1.0F);
-      $$3.b();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   public aer a(ccq $$0) {
+   public aeu a(T $$0) {
       return a;
+   }
+
+   protected void a(T $$0, elk $$1, float $$2, float $$3, float $$4) {
+      float $$5 = ars.i($$4, $$0.c, $$0.b);
+      float $$6 = ars.i($$4, $$0.e, $$0.d);
+      $$1.a(0.0F, 0.5F, 0.0F);
+      $$1.a(a.d.rotationDegrees(180.0F - $$3));
+      $$1.a(a.b.rotationDegrees($$5));
+      $$1.a(a.d.rotationDegrees($$6));
+      $$1.a(0.0F, -1.2F, 0.0F);
+   }
+
+   protected float a(T $$0, float $$1) {
+      return ars.i($$1, $$0.bW, $$0.bV);
    }
 }

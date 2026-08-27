@@ -1,277 +1,64 @@
-import it.unimi.dsi.fastutil.longs.LongConsumer;
-import java.util.Spliterators.AbstractSpliterator;
-import java.util.function.Consumer;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.Lifecycle;
+import com.mojang.serialization.codecs.UnboundedMapCodec;
+import java.util.Map;
+import java.util.Optional;
 import java.util.stream.Stream;
-import java.util.stream.StreamSupport;
 
-public class hx extends hz {
-   public static final int a = 4;
-   public static final int b = 16;
-   public static final int c = 15;
-   public static final int d = 8;
-   public static final int e = 15;
-   private static final int h = 22;
-   private static final int i = 20;
-   private static final int j = 22;
-   private static final long k = 4194303L;
-   private static final long l = 1048575L;
-   private static final long m = 4194303L;
-   private static final int n = 0;
-   private static final int o = 20;
-   private static final int p = 42;
-   private static final int q = 8;
-   private static final int r = 0;
-   private static final int s = 4;
+public class hx {
+   private static final Map<aet<? extends ht<?>>, hx.a<?>> b = ac.a(() -> {
+      Builder<aet<? extends ht<?>>, hx.a<?>> $$0 = ImmutableMap.builder();
+      a($$0, je.ap, cqo.b);
+      a($$0, je.aq, te.a);
+      a($$0, je.aE, clf.a);
+      a($$0, je.aD, cld.a);
+      a($$0, je.au, din.h);
+      a($$0, je.p, bhl.a);
+      return $$0.build();
+   });
+   public static final Codec<hu> a = a();
 
-   hx(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
+   private static <E> void a(Builder<aet<? extends ht<?>>, hx.a<?>> $$0, aet<? extends ht<E>> $$1, Codec<E> $$2) {
+      $$0.put($$1, new hx.a<>($$1, $$2));
    }
 
-   public static hx a(int $$0, int $$1, int $$2) {
-      return new hx($$0, $$1, $$2);
+   private static Stream<hu.d<?>> a(hu $$0) {
+      return $$0.b().filter($$0x -> b.containsKey($$0x.a()));
    }
 
-   public static hx a(gu $$0) {
-      return new hx(a($$0.u()), a($$0.v()), a($$0.w()));
+   private static <E> DataResult<? extends Codec<E>> a(aet<? extends ht<E>> $$0) {
+      return Optional.ofNullable(b.get($$0))
+         .map($$0x -> $$0x.b())
+         .<DataResult<? extends Codec<E>>>map(DataResult::success)
+         .orElseGet(() -> DataResult.error(() -> "Unknown or not serializable registry: " + $$0));
    }
 
-   public static hx a(cos $$0, int $$1) {
-      return new hx($$0.e, $$1, $$0.f);
+   private static <E> Codec<hu> a() {
+      Codec<aet<? extends ht<E>>> $$0 = aeu.a.xmap(aet::a, aet::a);
+      Codec<ht<E>> $$1 = $$0.partialDispatch(
+         "type", $$0x -> DataResult.success($$0x.c()), $$0x -> a($$0x).map($$1x -> hv.a($$0x, Lifecycle.experimental(), $$1x))
+      );
+      UnboundedMapCodec<? extends aet<? extends ht<?>>, ? extends ht<?>> $$2 = Codec.unboundedMap($$0, $$1);
+      return a($$2);
    }
 
-   public static hx a(diq $$0) {
-      return a($$0.dk());
+   private static <K extends aet<? extends ht<?>>, V extends ht<?>> Codec<hu> a(UnboundedMapCodec<K, V> $$0) {
+      return $$0.xmap(hu.c::new, $$0x -> a($$0x).collect(ImmutableMap.toImmutableMap($$0xx -> $$0xx.a(), $$0xx -> $$0xx.b())));
    }
 
-   public static hx a(ho $$0) {
-      return new hx(b($$0.a()), b($$0.b()), b($$0.c()));
+   public static Stream<hu.d<?>> a(hn<afd> $$0) {
+      return a($$0.c(afd.b));
    }
 
-   public static hx a(long $$0) {
-      return new hx(b($$0), c($$0), d($$0));
+   public static Stream<hu.d<?>> b(hn<afd> $$0) {
+      Stream<hu.d<?>> $$1 = $$0.a(afd.a).b();
+      Stream<hu.d<?>> $$2 = a($$0);
+      return Stream.concat($$2, $$1);
    }
 
-   public static hx a(dgv $$0) {
-      return a($$0.f(), $$0.al());
-   }
-
-   public static long a(long $$0, ha $$1) {
-      return a($$0, $$1.j(), $$1.k(), $$1.l());
-   }
-
-   public static long a(long $$0, int $$1, int $$2, int $$3) {
-      return b(b($$0) + $$1, c($$0) + $$2, d($$0) + $$3);
-   }
-
-   public static int a(double $$0) {
-      return a(arp.a($$0));
-   }
-
-   public static int a(int $$0) {
-      return $$0 >> 4;
-   }
-
-   public static int b(double $$0) {
-      return arp.a($$0) >> 4;
-   }
-
-   public static int b(int $$0) {
-      return $$0 & 15;
-   }
-
-   public static short b(gu $$0) {
-      int $$1 = b($$0.u());
-      int $$2 = b($$0.v());
-      int $$3 = b($$0.w());
-      return (short)($$1 << 8 | $$3 << 4 | $$2 << 0);
-   }
-
-   public static int a(short $$0) {
-      return $$0 >>> 8 & 15;
-   }
-
-   public static int b(short $$0) {
-      return $$0 >>> 0 & 15;
-   }
-
-   public static int c(short $$0) {
-      return $$0 >>> 4 & 15;
-   }
-
-   public int d(short $$0) {
-      return this.d() + a($$0);
-   }
-
-   public int e(short $$0) {
-      return this.e() + b($$0);
-   }
-
-   public int f(short $$0) {
-      return this.f() + c($$0);
-   }
-
-   public gu g(short $$0) {
-      return new gu(this.d($$0), this.e($$0), this.f($$0));
-   }
-
-   public static int c(int $$0) {
-      return $$0 << 4;
-   }
-
-   public static int a(int $$0, int $$1) {
-      return c($$0) + $$1;
-   }
-
-   public static int b(long $$0) {
-      return (int)($$0 << 0 >> 42);
-   }
-
-   public static int c(long $$0) {
-      return (int)($$0 << 44 >> 44);
-   }
-
-   public static int d(long $$0) {
-      return (int)($$0 << 22 >> 42);
-   }
-
-   public int a() {
-      return this.u();
-   }
-
-   public int b() {
-      return this.v();
-   }
-
-   public int c() {
-      return this.w();
-   }
-
-   public int d() {
-      return c(this.a());
-   }
-
-   public int e() {
-      return c(this.b());
-   }
-
-   public int f() {
-      return c(this.c());
-   }
-
-   public int g() {
-      return a(this.a(), 15);
-   }
-
-   public int h() {
-      return a(this.b(), 15);
-   }
-
-   public int i() {
-      return a(this.c(), 15);
-   }
-
-   public static long e(long $$0) {
-      return b(a(gu.a($$0)), a(gu.b($$0)), a(gu.c($$0)));
-   }
-
-   public static long b(int $$0, int $$1) {
-      return f(b($$0, 0, $$1));
-   }
-
-   public static long f(long $$0) {
-      return $$0 & -1048576L;
-   }
-
-   public gu j() {
-      return new gu(c(this.a()), c(this.b()), c(this.c()));
-   }
-
-   public gu q() {
-      int $$0 = 8;
-      return this.j().b(8, 8, 8);
-   }
-
-   public cos r() {
-      return new cos(this.a(), this.c());
-   }
-
-   public static long c(gu $$0) {
-      return b(a($$0.u()), a($$0.v()), a($$0.w()));
-   }
-
-   public static long b(int $$0, int $$1, int $$2) {
-      long $$3 = 0L;
-      $$3 |= ((long)$$0 & 4194303L) << 42;
-      $$3 |= ((long)$$1 & 1048575L) << 0;
-      return $$3 | ((long)$$2 & 4194303L) << 20;
-   }
-
-   public long s() {
-      return b(this.a(), this.b(), this.c());
-   }
-
-   public hx d(int $$0, int $$1, int $$2) {
-      return $$0 == 0 && $$1 == 0 && $$2 == 0 ? this : new hx(this.a() + $$0, this.b() + $$1, this.c() + $$2);
-   }
-
-   public Stream<gu> t() {
-      return gu.a(this.d(), this.e(), this.f(), this.g(), this.h(), this.i());
-   }
-
-   public static Stream<hx> a(hx $$0, int $$1) {
-      int $$2 = $$0.a();
-      int $$3 = $$0.b();
-      int $$4 = $$0.c();
-      return a($$2 - $$1, $$3 - $$1, $$4 - $$1, $$2 + $$1, $$3 + $$1, $$4 + $$1);
-   }
-
-   public static Stream<hx> a(cos $$0, int $$1, int $$2, int $$3) {
-      int $$4 = $$0.e;
-      int $$5 = $$0.f;
-      return a($$4 - $$1, $$2, $$5 - $$1, $$4 + $$1, $$3 - 1, $$5 + $$1);
-   }
-
-   public static Stream<hx> a(final int $$0, final int $$1, final int $$2, final int $$3, final int $$4, final int $$5) {
-      return StreamSupport.stream(new AbstractSpliterator<hx>((long)(($$3 - $$0 + 1) * ($$4 - $$1 + 1) * ($$5 - $$2 + 1)), 64) {
-         final gx a = new gx($$0, $$1, $$2, $$3, $$4, $$5);
-
-         @Override
-         public boolean tryAdvance(Consumer<? super hx> $$0x) {
-            if (this.a.a()) {
-               $$0.accept(new hx(this.a.b(), this.a.c(), this.a.d()));
-               return true;
-            } else {
-               return false;
-            }
-         }
-      }, false);
-   }
-
-   public static void a(gu $$0, LongConsumer $$1) {
-      a($$0.u(), $$0.v(), $$0.w(), $$1);
-   }
-
-   public static void a(long $$0, LongConsumer $$1) {
-      a(gu.a($$0), gu.b($$0), gu.c($$0), $$1);
-   }
-
-   public static void a(int $$0, int $$1, int $$2, LongConsumer $$3) {
-      int $$4 = a($$0 - 1);
-      int $$5 = a($$0 + 1);
-      int $$6 = a($$1 - 1);
-      int $$7 = a($$1 + 1);
-      int $$8 = a($$2 - 1);
-      int $$9 = a($$2 + 1);
-      if ($$4 == $$5 && $$6 == $$7 && $$8 == $$9) {
-         $$3.accept(b($$4, $$6, $$8));
-      } else {
-         for (int $$10 = $$4; $$10 <= $$5; $$10++) {
-            for (int $$11 = $$6; $$11 <= $$7; $$11++) {
-               for (int $$12 = $$8; $$12 <= $$9; $$12++) {
-                  $$3.accept(b($$10, $$11, $$12));
-               }
-            }
-         }
-      }
+   static record a<E>(aet<? extends ht<E>> a, Codec<E> b) {
    }
 }

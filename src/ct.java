@@ -1,47 +1,73 @@
 import com.google.gson.JsonObject;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Optional;
 
-public class ct extends cu<ct.a> {
-   static final aer a = new aer("shot_crossbow");
-
-   @Override
-   public aer a() {
-      return a;
+public class ct extends cw<ct.a> {
+   protected ct.a a(JsonObject $$0, Optional<bc> $$1, bg $$2) {
+      aeu $$3 = new aeu(arj.i($$0, "recipe_id"));
+      List<cb> $$4 = cb.b($$0.get("ingredients"));
+      return new ct.a($$1, $$3, $$4);
    }
 
-   public ct.a a(JsonObject $$0, Optional<ba> $$1, be $$2) {
-      Optional<bz> $$3 = bz.a($$0.get("item"));
-      return new ct.a($$1, $$3);
+   public void a(ako $$0, aeu $$1, List<cja> $$2) {
+      this.a($$0, $$2x -> $$2x.b($$1, $$2));
    }
 
-   public void a(akl $$0, cix $$1) {
-      this.a($$0, $$1x -> $$1x.a($$1));
-   }
+   public static class a extends at {
+      private final aeu a;
+      private final List<cb> b;
 
-   public static class a extends ar {
-      private final Optional<bz> a;
-
-      public a(Optional<ba> $$0, Optional<bz> $$1) {
-         super(ct.a, $$0);
+      public a(Optional<bc> $$0, aeu $$1, List<cb> $$2) {
+         super($$0);
          this.a = $$1;
+         this.b = $$2;
       }
 
-      public static ct.a a(Optional<bz> $$0) {
-         return new ct.a(Optional.empty(), $$0);
+      public static am<ct.a> a(aeu $$0, List<cb.a> $$1) {
+         return al.Z.a(new ct.a(Optional.empty(), $$0, $$1.stream().map(cb.a::b).toList()));
       }
 
-      public static ct.a a(cpk $$0) {
-         return new ct.a(Optional.empty(), bz.a.a().a($$0).b());
+      public static am<ct.a> a(aeu $$0) {
+         return al.Z.a(new ct.a(Optional.empty(), $$0, List.of()));
       }
 
-      public boolean a(cix $$0) {
-         return this.a.isEmpty() || this.a.get().a($$0);
+      boolean b(aeu $$0, List<cja> $$1) {
+         if (!$$0.equals(this.a)) {
+            return false;
+         } else {
+            List<cja> $$2 = new ArrayList<>($$1);
+
+            for (cb $$3 : this.b) {
+               boolean $$4 = false;
+               Iterator<cja> $$5 = $$2.iterator();
+
+               while ($$5.hasNext()) {
+                  if ($$3.a($$5.next())) {
+                     $$5.remove();
+                     $$4 = true;
+                     break;
+                  }
+               }
+
+               if (!$$4) {
+                  return false;
+               }
+            }
+
+            return true;
+         }
       }
 
       @Override
-      public JsonObject b() {
-         JsonObject $$0 = super.b();
-         this.a.ifPresent($$1 -> $$0.add("item", $$1.a()));
+      public JsonObject a() {
+         JsonObject $$0 = super.a();
+         $$0.addProperty("recipe_id", this.a.toString());
+         if (!this.b.isEmpty()) {
+            $$0.add("ingredients", cb.a(this.b));
+         }
+
          return $$0;
       }
    }

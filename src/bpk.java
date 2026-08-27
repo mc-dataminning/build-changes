@@ -1,95 +1,45 @@
-public abstract class bpk extends bpt {
-   protected bja d;
-   protected gu e = gu.b;
-   protected boolean f;
-   private boolean a;
-   private float b;
-   private float c;
+public class bpk extends bqj {
+   private final bup g;
 
-   public bpk(bja $$0) {
-      this.d = $$0;
-      if (!btp.a($$0)) {
-         throw new IllegalArgumentException("Unsupported mob type for DoorInteractGoal");
-      }
-   }
-
-   protected boolean h() {
-      if (!this.f) {
-         return false;
-      } else {
-         dez $$0 = this.d.dK().a_(this.e);
-         if (!($$0.b() instanceof cun)) {
-            this.f = false;
-            return false;
-         } else {
-            return $$0.c(cun.b);
-         }
-      }
-   }
-
-   protected void a(boolean $$0) {
-      if (this.f) {
-         dez $$1 = this.d.dK().a_(this.e);
-         if ($$1.b() instanceof cun) {
-            ((cun)$$1.b()).a(this.d, this.d.dK(), $$1, this.e, $$0);
-         }
-      }
+   public bpk(bup $$0, double $$1) {
+      super($$0, $$1, 8);
+      this.g = $$0;
    }
 
    @Override
    public boolean a() {
-      if (!btp.a(this.d)) {
-         return false;
-      } else if (!this.d.P) {
-         return false;
-      } else {
-         bsg $$0 = (bsg)this.d.H();
-         ear $$1 = $$0.j();
-         if ($$1 != null && !$$1.c() && $$0.f()) {
-            for (int $$2 = 0; $$2 < Math.min($$1.f() + 2, $$1.e()); $$2++) {
-               eap $$3 = $$1.a($$2);
-               this.e = new gu($$3.a, $$3.b + 1, $$3.c);
-               if (!(this.d.i((double)this.e.u(), this.d.dr(), (double)this.e.w()) > 2.25)) {
-                  this.f = cun.a(this.d.dK(), this.e);
-                  if (this.f) {
-                     return true;
-                  }
-               }
-            }
-
-            this.e = this.d.dk().c();
-            this.f = cun.a(this.d.dK(), this.e);
-            return this.f;
-         } else {
-            return false;
-         }
-      }
-   }
-
-   @Override
-   public boolean b() {
-      return !this.a;
+      return this.g.p() && !this.g.ga() && super.a();
    }
 
    @Override
    public void c() {
-      this.a = false;
-      this.b = (float)((double)this.e.u() + 0.5 - this.d.dp());
-      this.c = (float)((double)this.e.w() + 0.5 - this.d.dv());
+      super.c();
+      this.g.y(false);
    }
 
    @Override
-   public boolean K_() {
-      return true;
+   public void d() {
+      super.d();
+      this.g.y(false);
    }
 
    @Override
    public void e() {
-      float $$0 = (float)((double)this.e.u() + 0.5 - this.d.dp());
-      float $$1 = (float)((double)this.e.w() + 0.5 - this.d.dv());
-      float $$2 = this.b * $$0 + this.c * $$1;
-      if ($$2 < 0.0F) {
-         this.a = true;
+      super.e();
+      this.g.y(this.m());
+   }
+
+   @Override
+   protected boolean a(cpt $$0, gw $$1) {
+      if (!$$0.t($$1.c())) {
+         return false;
+      } else {
+         dfe $$2 = $$0.a_($$1);
+         if ($$2.a(csr.cv)) {
+            return dcx.a($$0, $$1) < 1;
+         } else {
+            return $$2.a(csr.cD) && $$2.c(cvt.b) ? true : $$2.a(apo.R, $$0x -> $$0x.d(csj.a).map($$0xx -> $$0xx != dfr.a).orElse(true));
+         }
       }
    }
 }

@@ -1,47 +1,24 @@
-import java.util.ArrayList;
-import java.util.List;
+public class zr implements va<ws> {
+   private final int a;
 
-public record zr(int b, List<aec.b<?>> c) implements ux<wp> {
-   public static final int a = 255;
-
-   public zr(si $$0) {
-      this($$0.m(), b($$0));
+   public zr(int $$0) {
+      this.a = $$0;
    }
 
-   private static void a(List<aec.b<?>> $$0, si $$1) {
-      for (aec.b<?> $$2 : $$0) {
-         $$2.a($$1);
-      }
-
-      $$1.k(255);
-   }
-
-   private static List<aec.b<?>> b(si $$0) {
-      List<aec.b<?>> $$1 = new ArrayList<>();
-
-      int $$2;
-      while (($$2 = $$0.readUnsignedByte()) != 255) {
-         $$1.add(aec.b.a($$0, $$2));
-      }
-
-      return $$1;
+   public zr(sl $$0) {
+      this.a = $$0.m();
    }
 
    @Override
-   public void a(si $$0) {
-      $$0.c(this.b);
-      a(this.c, $$0);
+   public void a(sl $$0) {
+      $$0.c(this.a);
    }
 
-   public void a(wp $$0) {
+   public void a(ws $$0) {
       $$0.a(this);
    }
 
    public int a() {
-      return this.b;
-   }
-
-   public List<aec.b<?>> d() {
-      return this.c;
+      return this.a;
    }
 }

@@ -1,10 +1,6 @@
-public class den extends def {
+public class den extends dek {
    @Override
-   protected aeq<dmz<?, ?>> a(aru $$0, boolean $$1) {
-      if ($$0.a(10) == 0) {
-         return $$1 ? or.I : or.n;
-      } else {
-         return $$1 ? or.C : or.g;
-      }
+   protected aet<dne<?, ?>> a(arx $$0, boolean $$1) {
+      return $$1 ? ou.F : ou.i;
    }
 }

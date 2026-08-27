@@ -1,40 +1,32 @@
-import java.util.Objects;
-import javax.annotation.Nullable;
+public class zq implements va<ws> {
+   private final int a;
+   private final int b;
 
-public class zq implements ux<wp> {
-   private final ehy a;
-   private final String b;
-
-   public zq(ehy $$0, @Nullable ehz $$1) {
+   public zq(int $$0, int $$1) {
       this.a = $$0;
-      if ($$1 == null) {
-         this.b = "";
-      } else {
-         this.b = $$1.b();
-      }
+      this.b = $$1;
    }
 
-   public zq(si $$0) {
-      this.a = $$0.a(ehy.u);
-      this.b = $$0.r();
+   public zq(sl $$0) {
+      this.a = $$0.m();
+      this.b = $$0.m();
    }
 
    @Override
-   public void a(si $$0) {
-      $$0.a(ehy::a, this.a);
-      $$0.a(this.b);
+   public void a(sl $$0) {
+      $$0.c(this.a);
+      $$0.c(this.b);
    }
 
-   public void a(wp $$0) {
+   public void a(ws $$0) {
       $$0.a(this);
    }
 
-   public ehy a() {
+   public int a() {
       return this.a;
    }
 
-   @Nullable
-   public String d() {
-      return Objects.equals(this.b, "") ? null : this.b;
+   public int d() {
+      return this.b;
    }
 }

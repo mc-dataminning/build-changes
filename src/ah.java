@@ -1,189 +1,183 @@
 import com.google.common.collect.Lists;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonNull;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import it.unimi.dsi.fastutil.objects.ObjectListIterator;
-import java.util.Arrays;
+import com.google.common.collect.Maps;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.time.Instant;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Set;
+import java.util.Map.Entry;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
 
-public class ah {
-   public static final ah a = new ah(0, new aer[0], new aer[0], dm.a.a);
-   private final int b;
-   private final aer[] c;
-   private final aer[] d;
-   private final dm.a e;
+public class ah implements Comparable<ah> {
+   private static final DateTimeFormatter b = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss Z", Locale.ROOT);
+   private static final Codec<Instant> c = arb.a(b).xmap(Instant::from, $$0 -> $$0.atZone(ZoneId.systemDefault()));
+   private static final Codec<Map<String, an>> d = Codec.unboundedMap(Codec.STRING, c)
+      .xmap(
+         $$0 -> $$0.entrySet().stream().collect(Collectors.toMap(Entry::getKey, $$0x -> new an((Instant)$$0x.getValue()))),
+         $$0 -> $$0.entrySet()
+               .stream()
+               .filter($$0x -> ((an)$$0x.getValue()).a())
+               .collect(Collectors.toMap(Entry::getKey, $$0x -> Objects.requireNonNull(((an)$$0x.getValue()).d())))
+      );
+   public static final Codec<ah> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(arb.a(d, "criteria", Map.of()).forGetter($$0x -> $$0x.e), Codec.BOOL.fieldOf("done").orElse(true).forGetter(ah::a))
+            .apply($$0, ($$0x, $$1) -> new ah(new HashMap<>($$0x)))
+   );
+   private final Map<String, an> e;
+   private ai f = ai.a;
 
-   public ah(int $$0, aer[] $$1, aer[] $$2, dm.a $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
+   private ah(Map<String, an> $$0) {
+      this.e = $$0;
    }
 
-   public aer[] a() {
-      return this.d;
+   public ah() {
+      this.e = Maps.newHashMap();
    }
 
-   public void a(akl $$0) {
-      $$0.d(this.b);
-      ecm $$1 = new ecm.a($$0.x()).a(eer.a, $$0).a(eer.f, $$0.di()).a(eeq.k);
-      boolean $$2 = false;
+   public void a(ai $$0) {
+      Set<String> $$1 = $$0.d();
+      this.e.entrySet().removeIf($$1x -> !$$1.contains($$1x.getKey()));
 
-      for (aer $$3 : this.c) {
-         ObjectListIterator var8 = $$0.d.aH().getLootTable($$3).a($$1).iterator();
+      for (String $$2 : $$1) {
+         this.e.putIfAbsent($$2, new an());
+      }
 
-         while (var8.hasNext()) {
-            cix $$4 = (cix)var8.next();
-            if ($$0.i($$4)) {
-               $$0.dK().a(null, $$0.dp(), $$0.dr(), $$0.dv(), aow.ma, aox.h, 0.2F, (($$0.ee().i() - $$0.ee().i()) * 0.7F + 1.0F) * 2.0F);
-               $$2 = true;
-            } else {
-               byf $$5 = $$0.a($$4, false);
-               if ($$5 != null) {
-                  $$5.p();
-                  $$5.b($$0.cv());
-               }
-            }
+      this.f = $$0;
+   }
+
+   public boolean a() {
+      return this.f.a(this::d);
+   }
+
+   public boolean b() {
+      for (an $$0 : this.e.values()) {
+         if ($$0.a()) {
+            return true;
          }
       }
 
-      if ($$2) {
-         $$0.bQ.d();
-      }
+      return false;
+   }
 
-      if (this.d.length > 0) {
-         $$0.a(this.d);
+   public boolean a(String $$0) {
+      an $$1 = this.e.get($$0);
+      if ($$1 != null && !$$1.a()) {
+         $$1.b();
+         return true;
+      } else {
+         return false;
       }
+   }
 
-      MinecraftServer $$6 = $$0.d;
-      this.e.a($$6.aA()).ifPresent($$2x -> $$6.aA().a($$2x, $$0.dc().a().a(2)));
+   public boolean b(String $$0) {
+      an $$1 = this.e.get($$0);
+      if ($$1 != null && $$1.a()) {
+         $$1.c();
+         return true;
+      } else {
+         return false;
+      }
    }
 
    @Override
    public String toString() {
-      return "AdvancementRewards{experience="
-         + this.b
-         + ", loot="
-         + Arrays.toString((Object[])this.c)
-         + ", recipes="
-         + Arrays.toString((Object[])this.d)
-         + ", function="
-         + this.e
-         + "}";
+      return "AdvancementProgress{criteria=" + this.e + ", requirements=" + this.f + "}";
    }
 
-   public JsonElement b() {
-      if (this == a) {
-         return JsonNull.INSTANCE;
+   public void a(sl $$0) {
+      $$0.a(this.e, sl::a, ($$0x, $$1) -> $$1.a($$0x));
+   }
+
+   public static ah b(sl $$0) {
+      Map<String, an> $$1 = $$0.a(sl::r, an::b);
+      return new ah($$1);
+   }
+
+   @Nullable
+   public an c(String $$0) {
+      return this.e.get($$0);
+   }
+
+   private boolean d(String $$0) {
+      an $$1 = this.c($$0);
+      return $$1 != null && $$1.a();
+   }
+
+   public float c() {
+      if (this.e.isEmpty()) {
+         return 0.0F;
       } else {
-         JsonObject $$0 = new JsonObject();
-         if (this.b != 0) {
-            $$0.addProperty("experience", this.b);
-         }
-
-         if (this.c.length > 0) {
-            JsonArray $$1 = new JsonArray();
-
-            for (aer $$2 : this.c) {
-               $$1.add($$2.toString());
-            }
-
-            $$0.add("loot", $$1);
-         }
-
-         if (this.d.length > 0) {
-            JsonArray $$3 = new JsonArray();
-
-            for (aer $$4 : this.d) {
-               $$3.add($$4.toString());
-            }
-
-            $$0.add("recipes", $$3);
-         }
-
-         if (this.e.a() != null) {
-            $$0.addProperty("function", this.e.a().toString());
-         }
-
-         return $$0;
+         float $$0 = (float)this.f.a();
+         float $$1 = (float)this.h();
+         return $$1 / $$0;
       }
    }
 
-   public static ah a(JsonObject $$0) throws JsonParseException {
-      int $$1 = arg.a($$0, "experience", 0);
-      JsonArray $$2 = arg.a($$0, "loot", new JsonArray());
-      aer[] $$3 = new aer[$$2.size()];
-
-      for (int $$4 = 0; $$4 < $$3.length; $$4++) {
-         $$3[$$4] = new aer(arg.a($$2.get($$4), "loot[" + $$4 + "]"));
-      }
-
-      JsonArray $$5 = arg.a($$0, "recipes", new JsonArray());
-      aer[] $$6 = new aer[$$5.size()];
-
-      for (int $$7 = 0; $$7 < $$6.length; $$7++) {
-         $$6[$$7] = new aer(arg.a($$5.get($$7), "recipes[" + $$7 + "]"));
-      }
-
-      dm.a $$8;
-      if ($$0.has("function")) {
-         $$8 = new dm.a(new aer(arg.i($$0, "function")));
+   @Nullable
+   public String d() {
+      if (this.e.isEmpty()) {
+         return null;
       } else {
-         $$8 = dm.a.a;
+         int $$0 = this.f.a();
+         if ($$0 <= 1) {
+            return null;
+         } else {
+            int $$1 = this.h();
+            return $$1 + "/" + $$0;
+         }
       }
-
-      return new ah($$1, $$3, $$6, $$8);
    }
 
-   public static class a {
-      private int a;
-      private final List<aer> b = Lists.newArrayList();
-      private final List<aer> c = Lists.newArrayList();
-      @Nullable
-      private aer d;
+   private int h() {
+      return this.f.b(this::d);
+   }
 
-      public static ah.a a(int $$0) {
-         return new ah.a().b($$0);
+   public Iterable<String> e() {
+      List<String> $$0 = Lists.newArrayList();
+
+      for (Entry<String, an> $$1 : this.e.entrySet()) {
+         if (!$$1.getValue().a()) {
+            $$0.add($$1.getKey());
+         }
       }
 
-      public ah.a b(int $$0) {
-         this.a += $$0;
-         return this;
+      return $$0;
+   }
+
+   public Iterable<String> f() {
+      List<String> $$0 = Lists.newArrayList();
+
+      for (Entry<String, an> $$1 : this.e.entrySet()) {
+         if ($$1.getValue().a()) {
+            $$0.add($$1.getKey());
+         }
       }
 
-      public static ah.a a(aer $$0) {
-         return new ah.a().b($$0);
-      }
+      return $$0;
+   }
 
-      public ah.a b(aer $$0) {
-         this.b.add($$0);
-         return this;
-      }
+   @Nullable
+   public Instant g() {
+      return this.e.values().stream().map(an::d).filter(Objects::nonNull).min(Comparator.naturalOrder()).orElse(null);
+   }
 
-      public static ah.a c(aer $$0) {
-         return new ah.a().d($$0);
-      }
-
-      public ah.a d(aer $$0) {
-         this.c.add($$0);
-         return this;
-      }
-
-      public static ah.a e(aer $$0) {
-         return new ah.a().f($$0);
-      }
-
-      public ah.a f(aer $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      public ah a() {
-         return new ah(this.a, this.b.toArray(new aer[0]), this.c.toArray(new aer[0]), this.d == null ? dm.a.a : new dm.a(this.d));
+   public int a(ah $$0) {
+      Instant $$1 = this.g();
+      Instant $$2 = $$0.g();
+      if ($$1 == null && $$2 != null) {
+         return 1;
+      } else if ($$1 != null && $$2 == null) {
+         return -1;
+      } else {
+         return $$1 == null && $$2 == null ? 0 : $$1.compareTo($$2);
       }
    }
 }

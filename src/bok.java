@@ -1,40 +1,31 @@
 import com.google.common.collect.ImmutableMap;
 
-public class bok extends bkp<caq> {
-   private static final int c = 25;
-   private static final int d = 20;
-
-   public bok() {
-      super(ImmutableMap.of(brz.ax, bsa.a, brz.o, bsa.b, brz.aE, bsa.c, brz.aC, bsa.c), car.b);
+public class bok<E extends cat> extends bks<E> {
+   public bok(int $$0) {
+      super(ImmutableMap.of(bsc.o, bsd.b, bsc.m, bsd.b), $$0);
    }
 
-   protected void a(akk $$0, caq $$1, long $$2) {
-      bjy<caq> $$3 = $$1.dM();
-      $$3.a(brz.aC, asp.a, 25L);
-      $$3.b(brz.m);
-      biy $$4 = $$1.dM().c(brz.ax).get();
-      bkr.a($$1, $$4);
-      $$1.b(bjk.l);
-      $$1.a($$4, 20, false);
+   protected boolean a(akn $$0, E $$1, long $$2) {
+      return $$1.dG() == null;
    }
 
-   protected boolean b(akk $$0, caq $$1, long $$2) {
-      return true;
+   protected boolean a(akn $$0, E $$1) {
+      return $$1.aA() || $$1.aX() || $$1.bl();
    }
 
-   protected void c(akk $$0, caq $$1, long $$2) {
-      if (!$$1.dM().a(brz.aC) && !$$1.dM().a(brz.aE)) {
-         $$1.dM().a(brz.aE, asp.a, (long)(car.b - 25));
-         $$1.a(aow.zJ, 3.0F, 1.0F);
+   protected void b(akn $$0, E $$1, long $$2) {
+      if ($$1.aA()) {
+         $$1.b(bjn.o);
+         $$1.a(aoz.zA, 5.0F, 1.0F);
+      } else {
+         $$1.a(aoz.zv, 5.0F, 1.0F);
+         this.c($$0, $$1, $$2);
       }
    }
 
-   protected void d(akk $$0, caq $$1, long $$2) {
-      if ($$1.c(bjk.l)) {
-         $$1.b(bjk.a);
+   protected void c(akn $$0, E $$1, long $$2) {
+      if ($$1.dG() == null) {
+         $$1.a(bil.c.b);
       }
-
-      $$1.dM().c(brz.ax).ifPresent($$1::j);
-      $$1.dM().b(brz.ax);
    }
 }

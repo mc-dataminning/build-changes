@@ -1,35 +1,104 @@
-public interface tt {
-   tf a();
+import com.google.common.base.Preconditions;
+import com.mojang.serialization.Codec;
+import java.nio.ByteBuffer;
+import java.util.Arrays;
+import java.util.Base64;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-   void a(akl var1, boolean var2, tb.a var3);
+public record tt(byte[] c) {
+   public static final Codec<tt> a = arb.n.xmap(tt::new, tt::b);
+   public static final int b = 256;
 
-   static tt a(tu $$0) {
-      return (tt)($$0.g() ? new tt.a($$0.c()) : new tt.b($$0));
+   public tt(byte[] c) {
+      Preconditions.checkState(c.length == 256, "Invalid message signature size");
+      this.c = c;
    }
 
-   public static record a(tf a) implements tt {
-      @Override
-      public void a(akl $$0, boolean $$1, tb.a $$2) {
-         $$0.c.a(this.a, $$2);
+   public static tt a(sl $$0) {
+      byte[] $$1 = new byte[256];
+      $$0.b($$1);
+      return new tt($$1);
+   }
+
+   public static void a(sl $$0, tt $$1) {
+      $$0.c($$1.c);
+   }
+
+   public boolean a(asc $$0, asb $$1) {
+      return $$0.validate($$1, this.c);
+   }
+
+   public ByteBuffer a() {
+      return ByteBuffer.wrap(this.c);
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof tt $$1 && Arrays.equals(this.c, $$1.c)) {
+            return true;
+         }
+
+         return false;
       }
    }
 
-   public static record b(tu a) implements tt {
-      @Override
-      public tf a() {
-         return this.a.c();
+   @Override
+   public int hashCode() {
+      return Arrays.hashCode(this.c);
+   }
+
+   @Override
+   public String toString() {
+      return Base64.getEncoder().encodeToString(this.c);
+   }
+
+   public tt.a a(tu $$0) {
+      int $$1 = $$0.a(this);
+      return $$1 != -1 ? new tt.a($$1) : new tt.a(this);
+   }
+
+   public byte[] b() {
+      return this.c;
+   }
+
+   public static record a(int b, @Nullable tt c) {
+      public static final int a = -1;
+
+      public a(tt $$0) {
+         this(-1, $$0);
       }
 
-      @Override
-      public void a(akl $$0, boolean $$1, tb.a $$2) {
-         tu $$3 = this.a.a($$1);
-         if (!$$3.i()) {
-            $$0.c.a($$3, $$2);
+      public a(int $$0) {
+         this($$0, null);
+      }
+
+      public static tt.a a(sl $$0) {
+         int $$1 = $$0.m() - 1;
+         return $$1 == -1 ? new tt.a(tt.a($$0)) : new tt.a($$1);
+      }
+
+      public static void a(sl $$0, tt.a $$1) {
+         $$0.c($$1.a() + 1);
+         if ($$1.b() != null) {
+            tt.a($$0, $$1.b());
          }
       }
 
-      public tu b() {
-         return this.a;
+      public Optional<tt> a(tu $$0) {
+         return this.c != null ? Optional.of(this.c) : Optional.ofNullable($$0.a(this.b));
+      }
+
+      public int a() {
+         return this.b;
+      }
+
+      @Nullable
+      public tt b() {
+         return this.c;
       }
    }
 }

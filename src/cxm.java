@@ -1,13 +1,20 @@
-public class cxm extends dac {
-   public cxm(dey.d $$0) {
+public class cxm extends csq implements css {
+   public cxm(dfd.d $$0) {
       super($$0);
    }
 
    @Override
-   public void a(dez $$0, cpl $$1, gu $$2, aru $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      if ($$3.a(10) == 0) {
-         $$1.a(iv.U, (double)$$2.u() + $$3.j(), (double)$$2.v() + 1.1, (double)$$2.w() + $$3.j(), 0.0, 0.0, 0.0);
-      }
+   public boolean a(cpt $$0, gw $$1, dfe $$2) {
+      return $$0.a_($$1.c()).i();
+   }
+
+   @Override
+   public boolean a(cpq $$0, arx $$1, gw $$2, dfe $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(akn $$0, arx $$1, gw $$2, dfe $$3) {
+      $$0.B_().c(je.as).flatMap($$0x -> $$0x.b(on.n)).ifPresent($$3x -> ((dne)$$3x.a()).a($$0, $$0.k().g(), $$1, $$2.c()));
    }
 }

@@ -1,15 +1,11 @@
-import java.util.Locale;
+import com.mojang.serialization.Codec;
+import javax.annotation.Nullable;
 
-public class dze {
-   public static double a(double $$0, double $$1) {
-      return $$0 + Math.sin(Math.PI * $$0) * $$1 / Math.PI;
-   }
+public interface dze {
+   Codec<dze> c = jd.q.q().dispatch(dze::a, dzf::codec);
 
-   public static void a(StringBuilder $$0, double $$1, double $$2, double $$3, byte[] $$4) {
-      $$0.append(String.format(Locale.ROOT, "xo=%.3f, yo=%.3f, zo=%.3f, p0=%d, p255=%d", (float)$$1, (float)$$2, (float)$$3, $$4[0], $$4[255]));
-   }
+   @Nullable
+   qu a(arx var1, @Nullable qu var2);
 
-   public static void a(StringBuilder $$0, double $$1, double $$2, double $$3, int[] $$4) {
-      $$0.append(String.format(Locale.ROOT, "xo=%.3f, yo=%.3f, zo=%.3f, p0=%d, p255=%d", (float)$$1, (float)$$2, (float)$$3, $$4[0], $$4[255]));
-   }
+   dzf<?> a();
 }

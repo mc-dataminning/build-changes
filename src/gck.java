@@ -1,36 +1,52 @@
-import com.google.common.collect.AbstractIterator;
-import com.google.common.collect.Iterators;
-import com.google.common.collect.PeekingIterator;
-import java.util.Comparator;
-import java.util.Iterator;
+public class gck {
+   public static class a extends gbq {
+      private final fnb n;
 
-public class gck<T> extends AbstractIterator<T> {
-   private final PeekingIterator<T> a;
-   private final PeekingIterator<T> b;
-   private final Comparator<T> c;
+      protected a(fnb $$0, aoy $$1) {
+         super($$1, apa.i, gch.t());
+         this.n = $$0;
+         this.i = false;
+         this.j = 0;
+         this.d = 1.0F;
+         this.l = true;
+      }
 
-   public gck(Iterator<T> $$0, Iterator<T> $$1, Comparator<T> $$2) {
-      this.a = Iterators.peekingIterator($$0);
-      this.b = Iterators.peekingIterator($$1);
-      this.c = $$2;
+      @Override
+      public void q() {
+         if (this.n.dF() || !this.n.bc()) {
+            this.n();
+         }
+      }
    }
 
-   protected T computeNext() {
-      boolean $$0 = !this.a.hasNext();
-      boolean $$1 = !this.b.hasNext();
-      if ($$0 && $$1) {
-         return (T)this.endOfData();
-      } else if ($$0) {
-         return (T)this.b.next();
-      } else if ($$1) {
-         return (T)this.a.next();
-      } else {
-         int $$2 = this.c.compare((T)this.a.peek(), (T)this.b.peek());
-         if ($$2 == 0) {
-            this.b.next();
-         }
+   public static class b extends gbq {
+      public static final int n = 40;
+      private final fnb o;
+      private int p;
 
-         return (T)($$2 <= 0 ? this.a.next() : this.b.next());
+      public b(fnb $$0) {
+         super(aoz.z, apa.i, gch.t());
+         this.o = $$0;
+         this.i = true;
+         this.j = 0;
+         this.d = 1.0F;
+         this.l = true;
+      }
+
+      @Override
+      public void q() {
+         if (!this.o.dF() && this.p >= 0) {
+            if (this.o.bc()) {
+               this.p++;
+            } else {
+               this.p -= 2;
+            }
+
+            this.p = Math.min(this.p, 40);
+            this.d = Math.max(0.0F, Math.min((float)this.p / 40.0F, 1.0F));
+         } else {
+            this.n();
+         }
       }
    }
 }

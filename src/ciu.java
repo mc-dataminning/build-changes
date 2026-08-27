@@ -1,37 +1,27 @@
-import com.mojang.serialization.Codec;
-import java.util.function.IntFunction;
+public interface ciu {
+   int a = 256;
+   int b = 140;
+   aet<cis> c = a("ponder_goat_horn");
+   aet<cis> d = a("sing_goat_horn");
+   aet<cis> e = a("seek_goat_horn");
+   aet<cis> f = a("feel_goat_horn");
+   aet<cis> g = a("admire_goat_horn");
+   aet<cis> h = a("call_goat_horn");
+   aet<cis> i = a("yearn_goat_horn");
+   aet<cis> j = a("dream_goat_horn");
 
-public enum ciu implements ash {
-   a(0, "none"),
-   b(1, "thirdperson_lefthand"),
-   c(2, "thirdperson_righthand"),
-   d(3, "firstperson_lefthand"),
-   e(4, "firstperson_righthand"),
-   f(5, "head"),
-   g(6, "gui"),
-   h(7, "ground"),
-   i(8, "fixed");
-
-   public static final Codec<ciu> j = ash.a(ciu::values);
-   public static final IntFunction<ciu> k = aqk.a(ciu::a, values(), aqk.a.a);
-   private final byte l;
-   private final String m;
-
-   private ciu(int $$0, String $$1) {
-      this.m = $$1;
-      this.l = (byte)$$0;
+   private static aet<cis> a(String $$0) {
+      return aet.a(je.B, new aeu($$0));
    }
 
-   @Override
-   public String c() {
-      return this.m;
-   }
-
-   public byte a() {
-      return this.l;
-   }
-
-   public boolean b() {
-      return this == d || this == e;
+   static cis a(ht<cis> $$0) {
+      ht.a($$0, c, new cis((hg<aoy>)aoz.ld.get(0), 140, 256.0F));
+      ht.a($$0, d, new cis((hg<aoy>)aoz.ld.get(1), 140, 256.0F));
+      ht.a($$0, e, new cis((hg<aoy>)aoz.ld.get(2), 140, 256.0F));
+      ht.a($$0, f, new cis((hg<aoy>)aoz.ld.get(3), 140, 256.0F));
+      ht.a($$0, g, new cis((hg<aoy>)aoz.ld.get(4), 140, 256.0F));
+      ht.a($$0, h, new cis((hg<aoy>)aoz.ld.get(5), 140, 256.0F));
+      ht.a($$0, i, new cis((hg<aoy>)aoz.ld.get(6), 140, 256.0F));
+      return ht.a($$0, j, new cis((hg<aoy>)aoz.ld.get(7), 140, 256.0F));
    }
 }

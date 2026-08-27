@@ -1,21 +1,25 @@
-public class fxg<T extends bii & bjo, M extends fet<T>> extends fxf<T, M> {
-   private final aer a;
-   private final M b;
+public class fxg extends fxk<bvb, ffx<bvb>> {
+   private final fnv a;
 
-   public fxg(fus<T, M> $$0, M $$1, aer $$2) {
+   public fxg(fux<bvb, ffx<bvb>> $$0, fnv $$1) {
       super($$0);
-      this.b = $$1;
-      this.a = $$2;
+      this.a = $$1;
    }
 
-   @Override
-   public void a(elf $$0, fnu $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ($$3.i()) {
-         this.c().a(this.b);
-         this.b.a($$3, $$4, $$5, $$6);
-         this.b.a($$3, $$4, $$5, $$7, $$8, $$9);
-         elj $$10 = $$1.getBuffer(foc.e(this.a));
-         this.b.a($$0, $$10, $$2, fyl.d, 1.0F, 1.0F, 1.0F, 1.0F);
+   public void a(elk $$0, fnz $$1, int $$2, bvb $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      cja $$10 = $$3.c(biq.a);
+      if ($$3.t() && !$$3.gs()) {
+         float $$11 = -0.6F;
+         float $$12 = 1.4F;
+         if ($$3.gg()) {
+            $$11 -= 0.2F * ars.a($$7 * 0.6F) + 0.2F;
+            $$12 -= 0.09F * ars.a($$7 * 0.6F);
+         }
+
+         $$0.a();
+         $$0.a(0.1F, $$12, $$11);
+         this.a.a($$3, $$10, cix.h, false, $$0, $$1, $$2);
+         $$0.b();
       }
    }
 }

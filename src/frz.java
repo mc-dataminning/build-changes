@@ -1,19 +1,13 @@
-import com.google.common.collect.Maps;
-import java.util.Locale;
-import java.util.Map;
+public abstract class frz<T extends bwl, M extends ffj<T>> extends fui<T, M> {
+   private final float a;
 
-public class frz extends fud<bvq, fdx<bvq>> {
-   private static final Map<bvq.d, aer> a = ac.a(Maps.newHashMap(), $$0 -> {
-      for (bvq.d $$1 : bvq.d.values()) {
-         $$0.put($$1, new aer(String.format(Locale.ROOT, "textures/entity/axolotl/axolotl_%s.png", $$1.b())));
-      }
-   });
-
-   public frz(fsx.a $$0) {
-      super($$0, new fdx<>($$0.a(fhr.e)), 0.5F);
+   public frz(ftc.a $$0, M $$1, float $$2) {
+      super($$0, $$1, 0.75F);
+      this.a = $$2;
    }
 
-   public aer a(bvq $$0) {
-      return a.get($$0.ga());
+   protected void a(T $$0, elk $$1, float $$2) {
+      $$1.b(this.a, this.a, this.a);
+      super.a($$0, $$1, $$2);
    }
 }

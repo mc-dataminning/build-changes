@@ -1,18 +1,23 @@
-public class cug extends cst {
-   protected static final float a = 6.0F;
-   protected static final ehw b = csl.a(2.0, 0.0, 2.0, 14.0, 13.0, 14.0);
+public class cug extends csq {
+   private static final ti a = ti.c("container.crafting");
 
-   protected cug(dey.d $$0) {
+   protected cug(dfd.d $$0) {
       super($$0);
    }
 
    @Override
-   public ehw a(dez $$0, cor $$1, gu $$2, ehi $$3) {
-      return b;
+   public bgt a(dfe $$0, cpq $$1, gw $$2, cbp $$3, bgs $$4, ehe $$5) {
+      if ($$1.B) {
+         return bgt.a;
+      } else {
+         $$3.a($$0.b($$1, $$2));
+         $$3.a(apj.an);
+         return bgt.b;
+      }
    }
 
    @Override
-   protected boolean d(dez $$0, cor $$1, gu $$2) {
-      return $$0.a(apl.cd);
+   public bgw b(dfe $$0, cpq $$1, gw $$2) {
+      return new bhb(($$2x, $$3, $$4) -> new cev($$2x, $$3, cer.a($$1, $$2)), a);
    }
 }

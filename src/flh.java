@@ -1,37 +1,49 @@
-public class flh extends flk {
-   private final ffp a;
-   private final foc b = foc.i(fsq.a);
+public class flh extends fmp {
+   private final fmk a;
 
-   flh(fin $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3);
-      this.a = new ffa(eql.O().aP().a(fhr.P));
-      this.u = 0.0F;
-      this.t = 30;
+   protected flh(fis $$0, double $$1, double $$2, double $$3, double $$4, fmk $$5) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.t = 6 + this.r.a(4);
+      float $$6 = this.r.i() * 0.6F + 0.4F;
+      this.v = $$6;
+      this.w = $$6;
+      this.x = $$6;
+      this.D = 2.0F * (1.0F - (float)$$4 * 0.5F);
+      this.a = $$5;
+      this.b($$5);
    }
 
    @Override
-   public flo b() {
-      return flo.e;
+   public int a(float $$0) {
+      return 15728880;
    }
 
    @Override
-   public void a(elj $$0, epw $$1, float $$2) {
-      float $$3 = ((float)this.s + $$2) / (float)this.t;
-      float $$4 = 0.05F + 0.5F * arp.a($$3 * (float) Math.PI);
-      elf $$5 = new elf();
-      $$5.a($$1.f());
-      $$5.a(a.b.rotationDegrees(150.0F * $$3 - 60.0F));
-      $$5.b(-1.0F, -1.0F, 1.0F);
-      $$5.a(0.0F, -1.101F, 1.5F);
-      fnu.a $$6 = eql.O().aO().b();
-      elj $$7 = $$6.getBuffer(this.b);
-      this.a.a($$5, $$7, 15728880, fyl.d, 1.0F, 1.0F, 1.0F, $$4);
-      $$6.b();
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
+         this.k();
+      } else {
+         this.b(this.a);
+      }
    }
 
-   public static class a implements fln<iy> {
-      public flk a(iy $$0, fin $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new flh($$1, $$2, $$3, $$4);
+   @Override
+   public flt b() {
+      return flt.d;
+   }
+
+   public static class a implements fls<ja> {
+      private final fmk a;
+
+      public a(fmk $$0) {
+         this.a = $$0;
+      }
+
+      public flp a(ja $$0, fis $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new flh($$1, $$2, $$3, $$4, $$5, this.a);
       }
    }
 }

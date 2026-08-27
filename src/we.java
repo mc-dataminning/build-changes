@@ -1,21 +1,18 @@
-import java.util.HashSet;
-import java.util.Set;
+public record we(gw b, int c) implements vs {
+   public static final aeu a = new aeu("debug/poi_ticket_count");
 
-public record we(Set<hx> b, Set<hx> c) implements vp {
-   public static final aer a = new aer("debug/village_sections");
-
-   public we(si $$0) {
-      this($$0.a(HashSet::new, si::g), $$0.a(HashSet::new, si::g));
+   public we(sl $$0) {
+      this($$0.e(), $$0.readInt());
    }
 
    @Override
-   public void a(si $$0) {
-      $$0.a(this.b, si::a);
-      $$0.a(this.c, si::a);
+   public void a(sl $$0) {
+      $$0.a(this.b);
+      $$0.p(this.c);
    }
 
    @Override
-   public aer a() {
+   public aeu a() {
       return a;
    }
 }

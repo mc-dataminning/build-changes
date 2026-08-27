@@ -1,49 +1,22 @@
-import com.google.gson.JsonObject;
-import java.util.Optional;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dc extends cu<dc.a> {
-   static final aer a = new aer("target_hit");
-
-   @Override
-   public aer a() {
-      return a;
+public record dc<T>(aqd<T> a, boolean b) {
+   public static <T> Codec<dc<T>> a(aet<? extends ht<T>> $$0) {
+      return RecordCodecBuilder.create(
+         $$1 -> $$1.group(aqd.a($$0).fieldOf("id").forGetter(dc::a), Codec.BOOL.fieldOf("expected").forGetter(dc::b)).apply($$1, dc::new)
+      );
    }
 
-   public dc.a a(JsonObject $$0, Optional<ba> $$1, be $$2) {
-      cj.d $$3 = cj.d.a($$0.get("signal_strength"));
-      Optional<ba> $$4 = bo.a($$0, "projectile", $$2);
-      return new dc.a($$1, $$3, $$4);
+   public static <T> dc<T> a(aqd<T> $$0) {
+      return new dc<>($$0, true);
    }
 
-   public void a(akl $$0, bii $$1, ehd $$2, int $$3) {
-      ecg $$4 = bo.b($$0, $$1);
-      this.a($$0, $$3x -> $$3x.a($$4, $$2, $$3));
+   public static <T> dc<T> b(aqd<T> $$0) {
+      return new dc<>($$0, false);
    }
 
-   public static class a extends ar {
-      private final cj.d a;
-      private final Optional<ba> b;
-
-      public a(Optional<ba> $$0, cj.d $$1, Optional<ba> $$2) {
-         super(dc.a, $$0);
-         this.a = $$1;
-         this.b = $$2;
-      }
-
-      public static dc.a a(cj.d $$0, Optional<ba> $$1) {
-         return new dc.a(Optional.empty(), $$0, $$1);
-      }
-
-      @Override
-      public JsonObject b() {
-         JsonObject $$0 = super.b();
-         $$0.add("signal_strength", this.a.e());
-         this.b.ifPresent($$1 -> $$0.add("projectile", $$1.a()));
-         return $$0;
-      }
-
-      public boolean a(ecg $$0, ehd $$1, int $$2) {
-         return !this.a.d($$2) ? false : !this.b.isPresent() || this.b.get().a($$0);
-      }
+   public boolean a(hg<T> $$0) {
+      return $$0.a(this.a) == this.b;
    }
 }

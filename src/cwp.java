@@ -1,69 +1,70 @@
-import javax.annotation.Nullable;
+public class cwp extends csq implements cve, cvu {
+   public static final dgc<he> a = dfu.T;
 
-public class cwp extends csl implements czm {
-   public static final dfq a = dfp.j;
-   public static final dfq b = dfp.C;
-   protected static final ehw c = eht.a(csl.a(5.0, 0.0, 5.0, 11.0, 7.0, 11.0), csl.a(6.0, 7.0, 6.0, 10.0, 9.0, 10.0));
-   protected static final ehw d = eht.a(csl.a(5.0, 1.0, 5.0, 11.0, 8.0, 11.0), csl.a(6.0, 8.0, 6.0, 10.0, 10.0, 10.0));
-
-   public cwp(dey.d $$0) {
+   protected cwp(dfd.d $$0) {
       super($$0);
-      this.k(this.C.b().a(a, Boolean.valueOf(false)).a(b, Boolean.valueOf(false)));
+      this.k(this.C.b().a(a, he.k));
    }
 
-   @Nullable
    @Override
-   public dez a(clf $$0) {
-      eac $$1 = $$0.q().b_($$0.a());
+   protected void a(dff.a<csq, dfe> $$0) {
+      $$0.a(a);
+   }
 
-      for (ha $$2 : $$0.f()) {
-         if ($$2.o() == ha.a.b) {
-            dez $$3 = this.n().a(a, Boolean.valueOf($$2 == ha.b));
-            if ($$3.a((cpo)$$0.q(), $$0.a())) {
-               return $$3.a(b, Boolean.valueOf($$1.a() == ead.c));
-            }
-         }
+   @Override
+   public dfe a(dfe $$0, czc $$1) {
+      return $$0.a(a, $$1.a().a($$0.c(a)));
+   }
+
+   @Override
+   public dfe a(dfe $$0, cxl $$1) {
+      return $$0.a(a, $$1.a().a($$0.c(a)));
+   }
+
+   @Override
+   public dfe a(cli $$0) {
+      hc $$1 = $$0.k();
+      hc $$2;
+      if ($$1.o() == hc.a.b) {
+         $$2 = $$0.g().g();
+      } else {
+         $$2 = hc.b;
       }
 
-      return null;
+      return this.n().a(a, he.a($$1, $$2));
    }
 
    @Override
-   public ehw a(dez $$0, cor $$1, gu $$2, ehi $$3) {
-      return $$0.c(a) ? d : c;
+   public dcq a(gw $$0, dfe $$1) {
+      return new ddp($$0, $$1);
    }
 
    @Override
-   protected void a(dfa.a<csl, dez> $$0) {
-      $$0.a(a, b);
-   }
-
-   @Override
-   public boolean a(dez $$0, cpo $$1, gu $$2) {
-      ha $$3 = h($$0).g();
-      return csl.a($$1, $$2.a($$3), $$3.g());
-   }
-
-   protected static ha h(dez $$0) {
-      return $$0.c(a) ? ha.a : ha.b;
-   }
-
-   @Override
-   public dez a(dez $$0, ha $$1, dez $$2, cpm $$3, gu $$4, gu $$5) {
-      if ($$0.c(b)) {
-         $$3.a($$4, ead.c, ead.c.a($$3));
+   public bgt a(dfe $$0, cpq $$1, gw $$2, cbp $$3, bgs $$4, ehe $$5) {
+      dcq $$6 = $$1.c_($$2);
+      if ($$6 instanceof ddp && $$3.gn()) {
+         $$3.a((ddp)$$6);
+         return bgt.a($$1.B);
+      } else {
+         return bgt.d;
       }
-
-      return h($$0).g() == $$1 && !$$0.a($$3, $$4) ? csm.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   @Override
-   public eac c_(dez $$0) {
-      return $$0.c(b) ? ead.c.a(false) : super.c_($$0);
+   public static boolean a(dyw.c $$0, dyw.c $$1) {
+      hc $$2 = h($$0.b());
+      hc $$3 = h($$1.b());
+      hc $$4 = n($$0.b());
+      hc $$5 = n($$1.b());
+      ddp.a $$6 = ddp.a.a($$0.c().l("joint")).orElseGet(() -> $$2.o().d() ? ddp.a.b : ddp.a.a);
+      boolean $$7 = $$6 == ddp.a.a;
+      return $$2 == $$3.g() && ($$7 || $$4 == $$5) && $$0.c().l("target").equals($$1.c().l("name"));
    }
 
-   @Override
-   public boolean a(dez $$0, cor $$1, gu $$2, eas $$3) {
-      return false;
+   public static hc h(dfe $$0) {
+      return $$0.c(a).a();
+   }
+
+   public static hc n(dfe $$0) {
+      return $$0.c(a).b();
    }
 }

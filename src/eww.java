@@ -1,192 +1,223 @@
-import java.util.List;
-import java.util.function.Consumer;
 import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringUtils;
 
-public class eww extends eya {
-   static final aer b = new aer("container/slot");
-   private static final int c = 18;
-   private static final int k = 20;
-   private static final int l = 1;
-   private static final int m = 1;
-   private static final int n = 2;
-   private static final int o = 2;
-   protected final fco a;
-   private final Consumer<dtb> p;
-   dtb q;
-   private tf s;
-   private tf t;
-   private eww.a u;
-   private esg v;
+public class eww extends eyf {
+   public static final double a = 7.0;
+   private static final ti c = ti.c("chat_screen.usage");
+   private static final int k = 210;
+   private String l = "";
+   private int m = -1;
+   protected esu b;
+   private String n;
+   eso o;
 
-   public eww(fco $$0, Consumer<dtb> $$1, dtb $$2) {
-      super(tf.c("createWorld.customize.flat.title"));
-      this.a = $$0;
-      this.p = $$1;
-      this.q = $$2;
-   }
-
-   public dtb k() {
-      return this.q;
-   }
-
-   public void a(dtb $$0) {
-      this.q = $$0;
+   public eww(String $$0) {
+      super(ti.c("chat_screen.title"));
+      this.n = $$0;
    }
 
    @Override
-   protected void aC_() {
-      this.s = tf.c("createWorld.customize.flat.tile");
-      this.t = tf.c("createWorld.customize.flat.height");
-      this.u = new eww.a();
-      this.e(this.u);
-      this.v = this.d(esg.a(tf.c("createWorld.customize.flat.removeLayer"), $$0 -> {
-         if (this.C()) {
-            List<dsy> $$1 = this.q.e();
-            int $$2 = this.u.i().indexOf(this.u.f());
-            int $$3 = $$1.size() - $$2 - 1;
-            $$1.remove($$3);
-            this.u.a($$1.isEmpty() ? null : this.u.i().get(Math.min($$2, $$1.size() - 1)));
-            this.q.g();
-            this.u.d();
-            this.l();
+   protected void aD_() {
+      this.m = this.f.l.d().c().size();
+      this.b = new esu(this.f.i, 4, this.h - 12, this.g - 4, 12, ti.c("chat.editBox")) {
+         @Override
+         protected tv aA_() {
+            return super.aA_().b(eww.this.o.c());
          }
-      }).a(this.g / 2 - 155, this.h - 52, 150, 20).a());
-      this.d(esg.a(tf.c("createWorld.customize.presets"), $$0 -> {
-         this.f.a(new exx(this));
-         this.q.g();
-         this.l();
-      }).a(this.g / 2 + 5, this.h - 52, 150, 20).a());
-      this.d(esg.a(te.d, $$0 -> {
-         this.p.accept(this.q);
-         this.f.a(this.a);
-         this.q.g();
-      }).a(this.g / 2 - 155, this.h - 28, 150, 20).a());
-      this.d(esg.a(te.e, $$0 -> {
-         this.f.a(this.a);
-         this.q.g();
-      }).a(this.g / 2 + 5, this.h - 28, 150, 20).a());
-      this.q.g();
-      this.l();
-   }
-
-   void l() {
-      this.v.i = this.C();
-   }
-
-   private boolean C() {
-      return this.u.f() != null;
+      };
+      this.b.l(256);
+      this.b.d(false);
+      this.b.a(this.n);
+      this.b.b(this::b);
+      this.b.f(false);
+      this.e(this.b);
+      this.o = new eso(this.f, this, this.b, this.i, false, false, 1, 10, true, -805306368);
+      this.o.b();
+      this.c(this.b);
    }
 
    @Override
-   public void at_() {
-      this.f.a(this.a);
+   public void a(eqq $$0, int $$1, int $$2) {
+      String $$3 = this.b.a();
+      this.b($$0, $$1, $$2);
+      this.c($$3);
+      this.o.b();
    }
 
    @Override
-   public void a(erv $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.u.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 8, 16777215);
-      int $$4 = this.g / 2 - 92 - 16;
-      $$0.b(this.i, this.s, $$4, 32, 16777215);
-      $$0.b(this.i, this.t, $$4 + 2 + 213 - this.i.a(this.t), 32, 16777215);
+   public void av_() {
+      this.f.l.d().d();
    }
 
-   class a extends etc<eww.a.a> {
-      private static final aer m = new aer("textures/gui/container/stats_icons.png");
+   private void b(String $$0) {
+      String $$1 = this.b.a();
+      this.o.a(!$$1.equals(this.n));
+      this.o.b();
+   }
 
-      public a() {
-         super(eww.this.f, eww.this.g, eww.this.h, 43, eww.this.h - 60, 24);
-
-         for (int $$0 = 0; $$0 < eww.this.q.e().size(); $$0++) {
-            this.b(new eww.a.a());
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if (this.o.a($$0, $$1, $$2)) {
+         return true;
+      } else if (super.a($$0, $$1, $$2)) {
+         return true;
+      } else if ($$0 == 256) {
+         this.f.a(null);
+         return true;
+      } else if ($$0 == 257 || $$0 == 335) {
+         if (this.b(this.b.a(), true)) {
+            this.f.a(null);
          }
+
+         return true;
+      } else if ($$0 == 265) {
+         this.a(-1);
+         return true;
+      } else if ($$0 == 264) {
+         this.a(1);
+         return true;
+      } else if ($$0 == 266) {
+         this.f.l.d().a(this.f.l.d().i() - 1);
+         return true;
+      } else if ($$0 == 267) {
+         this.f.l.d().a(-this.f.l.d().i() + 1);
+         return true;
+      } else {
+         return false;
       }
+   }
 
-      public void a(@Nullable eww.a.a $$0) {
-         super.a($$0);
-         eww.this.l();
+   @Override
+   public boolean a(double $$0, double $$1, double $$2, double $$3) {
+      $$3 = ars.a($$3, -1.0, 1.0);
+      if (this.o.a($$3)) {
+         return true;
+      } else {
+         if (!q()) {
+            $$3 *= 7.0;
+         }
+
+         this.f.l.d().a((int)$$3);
+         return true;
       }
+   }
 
-      @Override
-      protected int c() {
-         return this.e - 70;
-      }
-
-      public void d() {
-         int $$0 = this.i().indexOf(this.f());
-         this.j();
-
-         for (int $$1 = 0; $$1 < eww.this.q.e().size(); $$1++) {
-            this.b(new eww.a.a());
-         }
-
-         List<eww.a.a> $$2 = this.i();
-         if ($$0 >= 0 && $$0 < $$2.size()) {
-            this.a($$2.get($$0));
-         }
-      }
-
-      class a extends etc.a<eww.a.a> {
-         @Override
-         public void a(erv $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-            dsy $$10 = eww.this.q.e().get(eww.this.q.e().size() - $$1 - 1);
-            dez $$11 = $$10.b();
-            cix $$12 = this.a($$11);
-            this.a($$0, $$3, $$2, $$12);
-            $$0.a(eww.this.i, $$12.y(), $$3 + 18 + 5, $$2 + 3, 16777215, false);
-            tf $$13;
-            if ($$1 == 0) {
-               $$13 = tf.a("createWorld.customize.flat.layer.top", $$10.a());
-            } else if ($$1 == eww.this.q.e().size() - 1) {
-               $$13 = tf.a("createWorld.customize.flat.layer.bottom", $$10.a());
-            } else {
-               $$13 = tf.a("createWorld.customize.flat.layer", $$10.a());
-            }
-
-            $$0.a(eww.this.i, $$13, $$3 + 2 + 213 - eww.this.i.a($$13), $$2 + 3, 16777215, false);
-         }
-
-         private cix a(dez $$0) {
-            cis $$1 = $$0.b().k();
-            if ($$1 == cja.a) {
-               if ($$0.a(csm.G)) {
-                  $$1 = cja.pL;
-               } else if ($$0.a(csm.H)) {
-                  $$1 = cja.pM;
-               }
-            }
-
-            return new cix($$1);
-         }
-
-         @Override
-         public tf a() {
-            dsy $$0 = eww.this.q.e().get(eww.this.q.e().size() - a.this.i().indexOf(this) - 1);
-            cix $$1 = this.a($$0.b());
-            return (tf)(!$$1.b() ? tf.a("narrator.select", $$1.y()) : te.a);
-         }
-
-         @Override
-         public boolean a(double $$0, double $$1, int $$2) {
-            if ($$2 == 0) {
-               a.this.a(this);
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      if (this.o.a((double)((int)$$0), (double)((int)$$1), $$2)) {
+         return true;
+      } else {
+         if ($$2 == 0) {
+            esm $$3 = this.f.l.d();
+            if ($$3.a($$0, $$1)) {
                return true;
-            } else {
-               return false;
+            }
+
+            ue $$4 = this.a($$0, $$1);
+            if ($$4 != null && this.a($$4)) {
+               this.n = this.b.a();
+               return true;
             }
          }
 
-         private void a(erv $$0, int $$1, int $$2, cix $$3) {
-            this.a($$0, $$1 + 1, $$2 + 1);
-            if (!$$3.b()) {
-               $$0.b($$3, $$1 + 2, $$2 + 2);
-            }
-         }
+         return this.b.a($$0, $$1, $$2) ? true : super.a($$0, $$1, $$2);
+      }
+   }
 
-         private void a(erv $$0, int $$1, int $$2) {
-            $$0.a(eww.b, $$1, $$2, 0, 18, 18);
+   @Override
+   protected void a(String $$0, boolean $$1) {
+      if ($$1) {
+         this.b.a($$0);
+      } else {
+         this.b.b($$0);
+      }
+   }
+
+   public void a(int $$0) {
+      int $$1 = this.m + $$0;
+      int $$2 = this.f.l.d().c().size();
+      $$1 = ars.a($$1, 0, $$2);
+      if ($$1 != this.m) {
+         if ($$1 == $$2) {
+            this.m = $$2;
+            this.b.a(this.l);
+         } else {
+            if (this.m == $$2) {
+               this.l = this.b.a();
+            }
+
+            this.b.a(this.f.l.d().c().get($$1));
+            this.o.a(false);
+            this.m = $$1;
          }
       }
+   }
+
+   @Override
+   public void a(esa $$0, int $$1, int $$2, float $$3) {
+      $$0.a(2, this.h - 14, this.g - 2, this.h - 2, this.f.m.a(Integer.MIN_VALUE));
+      this.b.a($$0, $$1, $$2, $$3);
+      super.a($$0, $$1, $$2, $$3);
+      this.o.a($$0, $$1, $$2);
+      eql $$4 = this.f.l.d().c((double)$$1, (double)$$2);
+      if ($$4 != null && $$4.g() != null) {
+         $$0.b(this.i, this.i.c($$4.g(), 210), $$1, $$2);
+      } else {
+         ue $$5 = this.a((double)$$1, (double)$$2);
+         if ($$5 != null && $$5.i() != null) {
+            $$0.a(this.i, $$5, $$1, $$2);
+         }
+      }
+   }
+
+   @Override
+   public void b(esa $$0, int $$1, int $$2, float $$3) {
+   }
+
+   @Override
+   public boolean j() {
+      return false;
+   }
+
+   private void c(String $$0) {
+      this.b.a($$0);
+   }
+
+   @Override
+   protected void a(ewd $$0) {
+      $$0.a(ewc.a, this.m());
+      $$0.a(ewc.d, c);
+      String $$1 = this.b.a();
+      if (!$$1.isEmpty()) {
+         $$0.a().a(ewc.a, ti.a("chat_screen.message", $$1));
+      }
+   }
+
+   @Nullable
+   private ue a(double $$0, double $$1) {
+      return this.f.l.d().b($$0, $$1);
+   }
+
+   public boolean b(String $$0, boolean $$1) {
+      $$0 = this.a($$0);
+      if ($$0.isEmpty()) {
+         return true;
+      } else {
+         if ($$1) {
+            this.f.l.d().a($$0);
+         }
+
+         if ($$0.startsWith("/")) {
+            this.f.s.cl.c($$0.substring(1));
+         } else {
+            this.f.s.cl.b($$0);
+         }
+
+         return true;
+      }
+   }
+
+   public String a(String $$0) {
+      return asl.e(StringUtils.normalizeSpace($$0.trim()));
    }
 }

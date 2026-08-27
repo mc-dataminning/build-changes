@@ -1,84 +1,120 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import java.util.Map;
+import javax.annotation.Nullable;
 
-public class cxx extends csl {
-   private static final ha[] i = ha.values();
-   public static final dfq a = dfp.L;
-   public static final dfq b = dfp.M;
-   public static final dfq c = dfp.N;
-   public static final dfq d = dfp.O;
-   public static final dfq e = dfp.J;
-   public static final dfq f = dfp.K;
-   public static final Map<ha, dfq> g = ImmutableMap.copyOf(ac.a(Maps.newEnumMap(ha.class), $$0 -> {
-      $$0.put(ha.c, a);
-      $$0.put(ha.f, b);
-      $$0.put(ha.d, c);
-      $$0.put(ha.e, d);
-      $$0.put(ha.b, e);
-      $$0.put(ha.a, f);
-   }));
-   protected final ehw[] h;
+public class cxx extends csq {
+   public static final dgc<dgf> a = dfu.bf;
+   public static final dfv b = dfu.w;
+   public static final dge c = dfu.aR;
+   public static final int d = 3;
 
-   protected cxx(float $$0, dey.d $$1) {
-      super($$1);
-      this.h = this.a($$0);
+   public cxx(dfd.d $$0) {
+      super($$0);
+      this.k(this.C.b().a(a, dgf.a).a(c, Integer.valueOf(0)).a(b, Boolean.valueOf(false)));
    }
 
-   private ehw[] a(float $$0) {
-      float $$1 = 0.5F - $$0;
-      float $$2 = 0.5F + $$0;
-      ehw $$3 = csl.a((double)($$1 * 16.0F), (double)($$1 * 16.0F), (double)($$1 * 16.0F), (double)($$2 * 16.0F), (double)($$2 * 16.0F), (double)($$2 * 16.0F));
-      ehw[] $$4 = new ehw[i.length];
-
-      for (int $$5 = 0; $$5 < i.length; $$5++) {
-         ha $$6 = i[$$5];
-         $$4[$$5] = eht.a(
-            0.5 + Math.min((double)(-$$0), (double)$$6.j() * 0.5),
-            0.5 + Math.min((double)(-$$0), (double)$$6.k() * 0.5),
-            0.5 + Math.min((double)(-$$0), (double)$$6.l() * 0.5),
-            0.5 + Math.max((double)$$0, (double)$$6.j() * 0.5),
-            0.5 + Math.max((double)$$0, (double)$$6.k() * 0.5),
-            0.5 + Math.max((double)$$0, (double)$$6.l() * 0.5)
-         );
+   private dfe b(cpr $$0, gw $$1, dfe $$2) {
+      dgf $$3 = $$0.a_($$1.c()).A();
+      if ($$3.e()) {
+         return $$2.a(a, $$3);
+      } else {
+         dgf $$4 = $$0.a_($$1.d()).A();
+         dgf $$5 = $$4.e() ? dgf.a : $$4;
+         return $$2.a(a, $$5);
       }
-
-      ehw[] $$7 = new ehw[64];
-
-      for (int $$8 = 0; $$8 < 64; $$8++) {
-         ehw $$9 = $$3;
-
-         for (int $$10 = 0; $$10 < i.length; $$10++) {
-            if (($$8 & 1 << $$10) != 0) {
-               $$9 = eht.a($$9, $$4[$$10]);
-            }
-         }
-
-         $$7[$$8] = $$9;
-      }
-
-      return $$7;
    }
 
    @Override
-   public boolean c(dez $$0, cor $$1, gu $$2) {
-      return false;
+   public dfe a(cli $$0) {
+      return this.b($$0.q(), $$0.a(), this.n());
    }
 
    @Override
-   public ehw a(dez $$0, cor $$1, gu $$2, ehi $$3) {
-      return this.h[this.h($$0)];
+   public dfe a(dfe $$0, hc $$1, dfe $$2, cpr $$3, gw $$4, gw $$5) {
+      boolean $$6 = $$1.o() == hc.a.b;
+      return $$6 ? this.b($$3, $$4, $$0) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   protected int h(dez $$0) {
-      int $$1 = 0;
-
-      for (int $$2 = 0; $$2 < i.length; $$2++) {
-         if ($$0.c(g.get(i[$$2]))) {
-            $$1 |= 1 << $$2;
+   @Override
+   public void a(dfe $$0, cpq $$1, gw $$2, csq $$3, gw $$4, boolean $$5) {
+      boolean $$6 = $$1.B($$2);
+      if ($$6 != $$0.c(b)) {
+         if ($$6) {
+            this.a(null, $$0, $$1, $$2);
          }
+
+         $$1.a($$2, $$0.a(b, Boolean.valueOf($$6)), 3);
+      }
+   }
+
+   private void a(@Nullable bil $$0, dfe $$1, cpq $$2, gw $$3) {
+      if ($$1.c(a).e() || $$2.a_($$3.c()).i()) {
+         $$2.a($$3, this, 0, 0);
+         $$2.a($$0, djo.H, $$3);
+      }
+   }
+
+   @Override
+   public bgt a(dfe $$0, cpq $$1, gw $$2, cbp $$3, bgs $$4, ehe $$5) {
+      cja $$6 = $$3.b($$4);
+      if ($$6.a(apw.aG) && $$5.b() == hc.b) {
+         return bgt.d;
+      } else if ($$1.B) {
+         return bgt.a;
+      } else {
+         $$0 = $$0.a(c);
+         $$1.a($$2, $$0, 3);
+         this.a($$3, $$0, $$1, $$2);
+         $$3.a(apj.ag);
+         return bgt.b;
+      }
+   }
+
+   @Override
+   public void a(dfe $$0, cpq $$1, gw $$2, cbp $$3) {
+      if (!$$1.B) {
+         this.a($$3, $$0, $$1, $$2);
+         $$3.a(apj.af);
+      }
+   }
+
+   public static float b(int $$0) {
+      return (float)Math.pow(2.0, (double)($$0 - 12) / 12.0);
+   }
+
+   @Override
+   public boolean a(dfe $$0, cpq $$1, gw $$2, int $$3, int $$4) {
+      dgf $$5 = $$0.c(a);
+      float $$7;
+      if ($$5.b()) {
+         int $$6 = $$0.c(c);
+         $$7 = b($$6);
+         $$1.a(ix.V, (double)$$2.u() + 0.5, (double)$$2.v() + 1.2, (double)$$2.w() + 0.5, (double)$$6 / 24.0, 0.0, 0.0);
+      } else {
+         $$7 = 1.0F;
       }
 
-      return $$1;
+      hg<aoy> $$10;
+      if ($$5.d()) {
+         aeu $$9 = this.a($$1, $$2);
+         if ($$9 == null) {
+            return false;
+         }
+
+         $$10 = hg.a(aoy.a($$9));
+      } else {
+         $$10 = $$5.a();
+      }
+
+      $$1.a(null, (double)$$2.u() + 0.5, (double)$$2.v() + 0.5, (double)$$2.w() + 0.5, $$10, apa.c, 3.0F, $$7, $$1.z.g());
+      return true;
+   }
+
+   @Nullable
+   private aeu a(cpq $$0, gw $$1) {
+      return $$0.c_($$1.c()) instanceof dea $$2 ? $$2.f() : null;
+   }
+
+   @Override
+   protected void a(dff.a<csq, dfe> $$0) {
+      $$0.a(a, b, c);
    }
 }

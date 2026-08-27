@@ -1,46 +1,93 @@
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParseException;
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.function.Function;
+import com.mojang.serialization.Dynamic;
+import java.lang.reflect.Type;
+import org.apache.commons.lang3.StringUtils;
 
-public abstract class atu extends DataFix {
-   private final String a;
+public class atu extends axu {
+   public static final Gson a = new GsonBuilder().registerTypeAdapter(ti.class, new JsonDeserializer<ti>() {
+      public tv a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         if ($$0.isJsonPrimitive()) {
+            return ti.b($$0.getAsString());
+         } else if ($$0.isJsonArray()) {
+            JsonArray $$3 = $$0.getAsJsonArray();
+            tv $$4 = null;
 
-   public atu(Schema $$0, String $$1) {
-      super($$0, false);
-      this.a = $$1;
-   }
+            for (JsonElement $$5 : $$3) {
+               tv $$6 = this.a($$5, $$5.getClass(), $$2);
+               if ($$4 == null) {
+                  $$4 = $$6;
+               } else {
+                  $$4.b($$6);
+               }
+            }
 
-   public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(ayp.y);
-      Type<Pair<String, String>> $$1 = DSL.named(ayp.y.typeName(), azx.a());
-      if (!Objects.equals($$0, $$1)) {
-         throw new IllegalStateException("block type is not what was expected.");
-      } else {
-         TypeRewriteRule $$2 = this.fixTypeEverywhere(this.a + " for block", $$1, $$0x -> $$0xx -> $$0xx.mapSecond(this::a));
-         TypeRewriteRule $$3 = this.fixTypeEverywhereTyped(
-            this.a + " for block_state", this.getInputSchema().getType(ayp.u), $$0x -> $$0x.update(DSL.remainderFinder(), $$0xx -> {
-                  Optional<String> $$1x = $$0xx.get("Name").asString().result();
-                  return $$1x.isPresent() ? $$0xx.set("Name", $$0xx.createString(this.a($$1x.get()))) : $$0xx;
-               })
-         );
-         return TypeRewriteRule.seq($$2, $$3);
-      }
-   }
-
-   protected abstract String a(String var1);
-
-   public static DataFix a(Schema $$0, String $$1, final Function<String, String> $$2) {
-      return new atu($$0, $$1) {
-         @Override
-         protected String a(String $$0) {
-            return $$2.apply($$0);
+            return $$4;
+         } else {
+            throw new JsonParseException("Don't know how to turn " + $$0 + " into a Component");
          }
-      };
+      }
+   }).create();
+
+   public atu(Schema $$0, boolean $$1) {
+      super($$0, $$1, "BlockEntitySignTextStrictJsonFix", ays.s, "Sign");
+   }
+
+   private Dynamic<?> a(Dynamic<?> $$0, String $$1) {
+      String $$2 = $$0.get($$1).asString("");
+      ti $$3 = null;
+      if (!"null".equals($$2) && !StringUtils.isEmpty($$2)) {
+         if ($$2.charAt(0) == '"' && $$2.charAt($$2.length() - 1) == '"' || $$2.charAt(0) == '{' && $$2.charAt($$2.length() - 1) == '}') {
+            try {
+               $$3 = arj.b(a, $$2, ti.class, true);
+               if ($$3 == null) {
+                  $$3 = th.a;
+               }
+            } catch (Exception var8) {
+            }
+
+            if ($$3 == null) {
+               try {
+                  $$3 = ti.a.a($$2);
+               } catch (Exception var7) {
+               }
+            }
+
+            if ($$3 == null) {
+               try {
+                  $$3 = ti.a.b($$2);
+               } catch (Exception var6) {
+               }
+            }
+
+            if ($$3 == null) {
+               $$3 = ti.b($$2);
+            }
+         } else {
+            $$3 = ti.b($$2);
+         }
+      } else {
+         $$3 = th.a;
+      }
+
+      return $$0.set($$1, $$0.createString(ti.a.a($$3)));
+   }
+
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), $$0x -> {
+         $$0x = this.a($$0x, "Text1");
+         $$0x = this.a($$0x, "Text2");
+         $$0x = this.a($$0x, "Text3");
+         return this.a($$0x, "Text4");
+      });
    }
 }

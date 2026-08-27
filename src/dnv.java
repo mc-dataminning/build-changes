@@ -1,31 +1,58 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import org.apache.commons.lang3.mutable.MutableInt;
 
-public class dnv implements dpq {
-   public static final Codec<dnv> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dez.b.fieldOf("valid_base_block").forGetter($$0x -> $$0x.b),
-               dez.b.fieldOf("stem_state").forGetter($$0x -> $$0x.c),
-               dez.b.fieldOf("hat_state").forGetter($$0x -> $$0x.d),
-               dez.b.fieldOf("decor_state").forGetter($$0x -> $$0x.e),
-               dlp.b.fieldOf("replaceable_blocks").forGetter($$0x -> $$0x.f),
-               Codec.BOOL.fieldOf("planted").orElse(false).forGetter($$0x -> $$0x.g)
-            )
-            .apply($$0, dnv::new)
-   );
-   public final dez b;
-   public final dez c;
-   public final dez d;
-   public final dez e;
-   public final dlp f;
-   public final boolean g;
+public class dnv extends dnr<dnw> {
+   public dnv(Codec<dnw> $$0) {
+      super($$0);
+   }
 
-   public dnv(dez $$0, dez $$1, dez $$2, dez $$3, dlp $$4, boolean $$5) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
+   @Override
+   public boolean a(dnt<dnw> $$0) {
+      arx $$1 = $$0.d();
+      cqk $$2 = $$0.b();
+      gw $$3 = $$0.e();
+      czc $$4 = czc.a($$1);
+      dnw $$5 = $$0.f();
+      int $$6 = $$1.a($$5.b.size());
+      dyx $$7 = $$2.C().n().aS();
+      dyw $$8 = $$7.a($$5.b.get($$6));
+      dyw $$9 = $$7.a($$5.c.get($$6));
+      cox $$10 = new cox($$3);
+      duv $$11 = new duv($$10.d() - 16, $$2.C_(), $$10.e() - 16, $$10.f() + 16, $$2.aj(), $$10.g() + 16);
+      dys $$12 = new dys().a($$4).a($$11).a($$1);
+      ib $$13 = $$8.a($$4);
+      gw $$14 = $$3.b(-$$13.u() / 2, 0, -$$13.w() / 2);
+      int $$15 = $$3.v();
+
+      for (int $$16 = 0; $$16 < $$13.u(); $$16++) {
+         for (int $$17 = 0; $$17 < $$13.w(); $$17++) {
+            $$15 = Math.min($$15, $$2.a(dkn.a.c, $$14.u() + $$16, $$14.w() + $$17));
+         }
+      }
+
+      int $$18 = Math.max($$15 - 15 - $$1.a(10), $$2.C_() + 10);
+      gw $$19 = $$8.a($$14.h($$18), cxl.a, $$4);
+      if (a($$2, $$8.b($$12, $$19)) > $$5.f) {
+         return false;
+      } else {
+         $$12.b();
+         $$5.d.a().a().forEach($$12::a);
+         $$8.a($$2, $$19, $$19, $$12, $$1, 4);
+         $$12.b();
+         $$5.e.a().a().forEach($$12::a);
+         $$9.a($$2, $$19, $$19, $$12, $$1, 4);
+         return true;
+      }
+   }
+
+   private static int a(cqk $$0, duv $$1) {
+      MutableInt $$2 = new MutableInt(0);
+      $$1.a($$2x -> {
+         dfe $$3 = $$0.a_($$2x);
+         if ($$3.i() || $$3.a(csr.H) || $$3.a(csr.G)) {
+            $$2.add(1);
+         }
+      });
+      return $$2.getValue();
    }
 }

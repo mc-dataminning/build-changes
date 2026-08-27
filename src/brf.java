@@ -1,16 +1,40 @@
-import javax.annotation.Nullable;
+import java.util.EnumSet;
 
-public class brf extends brg {
-   public brf(bjh $$0, double $$1) {
-      super($$0, $$1);
+public class brf extends bpw {
+   private final cax a;
+
+   public brf(cax $$0) {
+      this.a = $$0;
+      this.a(EnumSet.of(bpw.a.c, bpw.a.a));
    }
 
-   @Nullable
    @Override
-   protected ehd h() {
-      ehd $$0 = this.b.f(0.0F);
-      int $$1 = 8;
-      ehd $$2 = btq.a(this.b, 8, 7, $$0.c, $$0.e, (float) (Math.PI / 2), 3, 1);
-      return $$2 != null ? $$2 : btm.a(this.b, 8, 4, -2, $$0.c, $$0.e, (float) (Math.PI / 2));
+   public boolean a() {
+      if (!this.a.bv()) {
+         return false;
+      } else if (this.a.aX()) {
+         return false;
+      } else if (!this.a.aA()) {
+         return false;
+      } else if (this.a.T) {
+         return false;
+      } else {
+         cbp $$0 = this.a.ga();
+         if ($$0 == null) {
+            return false;
+         } else {
+            return this.a.f($$0) > 16.0 ? false : $$0.bQ != null;
+         }
+      }
+   }
+
+   @Override
+   public void c() {
+      this.a.H().n();
+   }
+
+   @Override
+   public void d() {
+      this.a.f(null);
    }
 }

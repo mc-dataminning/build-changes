@@ -1,13 +1,57 @@
 import java.util.EnumSet;
 
-public class bpw extends bqb {
-   public bpw(bja $$0, Class<? extends biy> $$1, float $$2) {
-      super($$0, $$1, $$2);
-      this.a(EnumSet.of(bpt.a.b, bpt.a.a));
+public abstract class bpw {
+   private final EnumSet<bpw.a> a = EnumSet.noneOf(bpw.a.class);
+
+   public abstract boolean a();
+
+   public boolean b() {
+      return this.a();
    }
 
-   public bpw(bja $$0, Class<? extends biy> $$1, float $$2, float $$3) {
-      super($$0, $$1, $$2, $$3);
-      this.a(EnumSet.of(bpt.a.b, bpt.a.a));
+   public boolean J_() {
+      return true;
+   }
+
+   public void c() {
+   }
+
+   public void d() {
+   }
+
+   public boolean K_() {
+      return false;
+   }
+
+   public void e() {
+   }
+
+   public void a(EnumSet<bpw.a> $$0) {
+      this.a.clear();
+      this.a.addAll($$0);
+   }
+
+   @Override
+   public String toString() {
+      return this.getClass().getSimpleName();
+   }
+
+   public EnumSet<bpw.a> j() {
+      return this.a;
+   }
+
+   protected int a(int $$0) {
+      return this.K_() ? $$0 : b($$0);
+   }
+
+   protected static int b(int $$0) {
+      return ars.e($$0, 2);
+   }
+
+   public static enum a {
+      a,
+      b,
+      c,
+      d;
    }
 }

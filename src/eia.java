@@ -1,177 +1,46 @@
-import com.google.common.collect.Sets;
-import java.util.Collection;
-import java.util.Set;
-import javax.annotation.Nullable;
+public final class eia extends ehr {
+   private final ehr d;
+   private final int e;
+   private final int f;
+   private final int g;
+   private final int h;
+   private final int i;
+   private final int j;
 
-public class eia extends eie {
-   private static final int a = 0;
-   private static final int b = 1;
-   private final eic c;
-   private final String d;
-   private final Set<String> e = Sets.newHashSet();
-   private tf f;
-   private tf g = te.a;
-   private tf h = te.a;
-   private boolean i = true;
-   private boolean j = true;
-   private eie.b k = eie.b.a;
-   private eie.b l = eie.b.a;
-   private n m = n.v;
-   private eie.a n = eie.a.a;
-   private final ub o;
-
-   public eia(eic $$0, String $$1) {
-      this.c = $$0;
-      this.d = $$1;
-      this.f = tf.b($$1);
-      this.o = ub.a.a($$1).a(new tk(tk.a.a, tf.b($$1)));
-   }
-
-   public eic a() {
-      return this.c;
+   protected eia(ehr $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
+      super($$4 - $$1, $$5 - $$2, $$6 - $$3);
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3;
+      this.h = $$4;
+      this.i = $$5;
+      this.j = $$6;
    }
 
    @Override
-   public String b() {
-      return this.d;
-   }
-
-   public tf c() {
-      return this.f;
-   }
-
-   public ts d() {
-      ts $$0 = th.a((tf)this.f.e().c(this.o));
-      n $$1 = this.n();
-      if ($$1 != n.v) {
-         $$0.a($$1);
-      }
-
-      return $$0;
-   }
-
-   public void a(tf $$0) {
-      if ($$0 == null) {
-         throw new IllegalArgumentException("Name cannot be null");
-      } else {
-         this.f = $$0;
-         this.c.b(this);
-      }
-   }
-
-   public void b(@Nullable tf $$0) {
-      this.g = $$0 == null ? te.a : $$0;
-      this.c.b(this);
-   }
-
-   public tf e() {
-      return this.g;
-   }
-
-   public void c(@Nullable tf $$0) {
-      this.h = $$0 == null ? te.a : $$0;
-      this.c.b(this);
-   }
-
-   public tf f() {
-      return this.h;
+   public boolean b(int $$0, int $$1, int $$2) {
+      return this.d.b(this.e + $$0, this.f + $$1, this.g + $$2);
    }
 
    @Override
-   public Collection<String> g() {
-      return this.e;
+   public void c(int $$0, int $$1, int $$2) {
+      this.d.c(this.e + $$0, this.f + $$1, this.g + $$2);
    }
 
    @Override
-   public ts d(tf $$0) {
-      ts $$1 = tf.h().b(this.g).b($$0).b(this.h);
-      n $$2 = this.n();
-      if ($$2 != n.v) {
-         $$1.a($$2);
-      }
-
-      return $$1;
-   }
-
-   public static ts a(@Nullable eie $$0, tf $$1) {
-      return $$0 == null ? $$1.e() : $$0.d($$1);
+   public int a(hc.a $$0) {
+      return this.a($$0, this.d.a($$0));
    }
 
    @Override
-   public boolean h() {
-      return this.i;
+   public int b(hc.a $$0) {
+      return this.a($$0, this.d.b($$0));
    }
 
-   public void a(boolean $$0) {
-      this.i = $$0;
-      this.c.b(this);
-   }
-
-   @Override
-   public boolean i() {
-      return this.j;
-   }
-
-   public void b(boolean $$0) {
-      this.j = $$0;
-      this.c.b(this);
-   }
-
-   @Override
-   public eie.b j() {
-      return this.k;
-   }
-
-   @Override
-   public eie.b k() {
-      return this.l;
-   }
-
-   public void a(eie.b $$0) {
-      this.k = $$0;
-      this.c.b(this);
-   }
-
-   public void b(eie.b $$0) {
-      this.l = $$0;
-      this.c.b(this);
-   }
-
-   @Override
-   public eie.a l() {
-      return this.n;
-   }
-
-   public void a(eie.a $$0) {
-      this.n = $$0;
-      this.c.b(this);
-   }
-
-   public int m() {
-      int $$0 = 0;
-      if (this.h()) {
-         $$0 |= 1;
-      }
-
-      if (this.i()) {
-         $$0 |= 2;
-      }
-
-      return $$0;
-   }
-
-   public void a(int $$0) {
-      this.a(($$0 & 1) > 0);
-      this.b(($$0 & 2) > 0);
-   }
-
-   public void a(n $$0) {
-      this.m = $$0;
-      this.c.b(this);
-   }
-
-   @Override
-   public n n() {
-      return this.m;
+   private int a(hc.a $$0, int $$1) {
+      int $$2 = $$0.a(this.e, this.f, this.g);
+      int $$3 = $$0.a(this.h, this.i, this.j);
+      return ars.a($$1, $$2, $$3) - $$2;
    }
 }

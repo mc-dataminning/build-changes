@@ -1,89 +1,43 @@
 import javax.annotation.Nullable;
 
-public class cwl extends cry {
-   public static final dfq a = dfp.n;
-
-   protected cwl(dey.d $$0) {
+public class cwl extends cwe {
+   public cwl(dfd.d $$0) {
       super($$0);
-      this.k(this.C.b().a(a, Boolean.valueOf(false)));
+   }
+
+   public static dfe a() {
+      return csr.G.n();
    }
 
    @Override
-   public void a(cpl $$0, gu $$1, dez $$2, @Nullable biy $$3, cix $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      qr $$5 = cgq.a($$4);
-      if ($$5 != null && $$5.e("RecordItem")) {
-         $$0.a($$1, $$2.a(a, Boolean.valueOf(true)), 2);
-      }
-   }
-
-   @Override
-   public bgq a(dez $$0, cpl $$1, gu $$2, cbm $$3, bgp $$4, egz $$5) {
-      if ($$0.c(a) && $$1.c_($$2) instanceof ddl $$6) {
-         $$6.i();
-         return bgq.a($$1.B);
-      } else {
-         return bgq.d;
-      }
-   }
-
-   @Override
-   public void a(dez $$0, cpl $$1, gu $$2, dez $$3, boolean $$4) {
-      if (!$$0.a($$3.b())) {
-         if ($$1.c_($$2) instanceof ddl $$5) {
-            $$5.i();
+   public void a(cpq $$0, cbp $$1, gw $$2, dfe $$3, @Nullable dcq $$4, cja $$5) {
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      if (cnl.a(cnn.v, $$5) == 0) {
+         if ($$0.x_().i()) {
+            $$0.a($$2, false);
+            return;
          }
 
-         super.a($$0, $$1, $$2, $$3, $$4);
+         dfe $$6 = $$0.a_($$2.d());
+         if ($$6.d() || $$6.k()) {
+            $$0.b($$2, a());
+         }
       }
    }
 
    @Override
-   public dcl a(gu $$0, dez $$1) {
-      return new ddl($$0, $$1);
-   }
-
-   @Override
-   public boolean f_(dez $$0) {
-      return true;
-   }
-
-   @Override
-   public int a(dez $$0, cor $$1, gu $$2, ha $$3) {
-      if ($$1.c_($$2) instanceof ddl $$4 && $$4.f()) {
-         return 15;
+   public void b(dfe $$0, akn $$1, gw $$2, arx $$3) {
+      if ($$1.a(cpz.b, $$2) > 11 - $$0.b($$1, $$2)) {
+         this.d($$0, $$1, $$2);
       }
-
-      return 0;
    }
 
-   @Override
-   public boolean d_(dez $$0) {
-      return true;
-   }
-
-   @Override
-   public int a(dez $$0, cpl $$1, gu $$2) {
-      if ($$1.c_($$2) instanceof ddl $$3 && $$3.aq_().d() instanceof cjp $$4) {
-         return $$4.h();
+   protected void d(dfe $$0, cpq $$1, gw $$2) {
+      if ($$1.x_().i()) {
+         $$1.a($$2, false);
+      } else {
+         $$1.b($$2, a());
+         $$1.a($$2, a().b(), $$2);
       }
-
-      return 0;
-   }
-
-   @Override
-   public cyq b_(dez $$0) {
-      return cyq.c;
-   }
-
-   @Override
-   protected void a(dfa.a<csl, dez> $$0) {
-      $$0.a(a);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dcl> dcm<T> a(cpl $$0, dez $$1, dcn<T> $$2) {
-      return $$1.c(a) ? a($$2, dcn.e, ddl::a) : null;
    }
 }

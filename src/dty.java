@@ -1,29 +1,30 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.stream.Stream;
 
-public class dty extends duf {
-   public static final Codec<dty> a = RecordCodecBuilder.create($$0 -> $$0.group(dki.a.g.fieldOf("heightmap").forGetter($$0x -> $$0x.c)).apply($$0, dty::new));
-   private final dki.a c;
+public enum dty implements ask {
+   a(hc.b, 1, "ceiling"),
+   b(hc.a, -1, "floor");
 
-   private dty(dki.a $$0) {
-      this.c = $$0;
+   public static final Codec<dty> c = ask.a(dty::values);
+   private final hc d;
+   private final int e;
+   private final String f;
+
+   private dty(hc $$0, int $$1, String $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
    }
 
-   public static dty a(dki.a $$0) {
-      return new dty($$0);
+   public hc a() {
+      return this.d;
+   }
+
+   public int b() {
+      return this.e;
    }
 
    @Override
-   public Stream<gu> a_(dud $$0, aru $$1, gu $$2) {
-      int $$3 = $$2.u();
-      int $$4 = $$2.w();
-      int $$5 = $$0.a(this.c, $$3, $$4);
-      return $$5 > $$0.c() ? Stream.of(new gu($$3, $$5, $$4)) : Stream.of();
-   }
-
-   @Override
-   public dug<?> b() {
-      return dug.k;
+   public String c() {
+      return this.f;
    }
 }

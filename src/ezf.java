@@ -1,333 +1,175 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import java.util.Collections;
-import java.util.List;
-import java.util.function.Consumer;
-import java.util.function.IntFunction;
+import java.util.stream.IntStream;
 import javax.annotation.Nullable;
+import org.joml.Vector3f;
 
-public class ezf extends eya {
-   public static final int a = 16;
-   public static final int b = 36;
-   public static final int c = 30;
-   public static final ezf.a k = new ezf.a() {
-      @Override
-      public int a() {
-         return 0;
-      }
+public abstract class ezf extends eyf {
+   private final ddy b;
+   private ddz c;
+   private final String[] k;
+   private final boolean l;
+   protected final dgr a;
+   private int m;
+   private int n;
+   @Nullable
+   private evc o;
 
-      @Override
-      public tj a(int $$0) {
-         return tj.b;
-      }
-   };
-   public static final aer l = new aer("textures/gui/book.png");
-   protected static final int m = 114;
-   protected static final int n = 128;
-   protected static final int o = 192;
-   protected static final int p = 192;
-   private ezf.a q;
-   private int s;
-   private List<arc> t = Collections.emptyList();
-   private int u = -1;
-   private tf v = te.a;
-   private faf w;
-   private faf x;
-   private final boolean y;
-
-   public ezf(ezf.a $$0) {
-      this($$0, true);
+   public ezf(ddy $$0, boolean $$1, boolean $$2) {
+      this($$0, $$1, $$2, ti.c("sign.edit"));
    }
 
-   public ezf() {
-      this(k, false);
-   }
-
-   private ezf(ezf.a $$0, boolean $$1) {
-      super(eqd.a);
-      this.q = $$0;
-      this.y = $$1;
-   }
-
-   public void a(ezf.a $$0) {
-      this.q = $$0;
-      this.s = arp.a(this.s, 0, $$0.a());
-      this.H();
-      this.u = -1;
-   }
-
-   public boolean a(int $$0) {
-      int $$1 = arp.a($$0, 0, this.q.a() - 1);
-      if ($$1 != this.s) {
-         this.s = $$1;
-         this.H();
-         this.u = -1;
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   protected boolean b(int $$0) {
-      return this.a($$0);
+   public ezf(ddy $$0, boolean $$1, boolean $$2, ti $$3) {
+      super($$3);
+      this.b = $$0;
+      this.c = $$0.a($$1);
+      this.l = $$1;
+      this.a = czq.a($$0.q().b());
+      this.k = IntStream.range(0, 4).mapToObj($$1x -> this.c.a($$1x, $$2)).map(ti::getString).toArray(String[]::new);
    }
 
    @Override
-   protected void aC_() {
-      this.l();
-      this.C();
-   }
-
-   protected void l() {
-      this.d(esg.a(te.d, $$0 -> this.at_()).a(this.g / 2 - 100, 196, 200, 20).a());
+   protected void aD_() {
+      this.d(esl.a(th.d, $$0 -> this.D()).a(this.g / 2 - 100, this.h / 4 + 144, 200, 20).a());
+      this.o = new evc(() -> this.k[this.n], this::a, evc.a(this.f), evc.c(this.f), $$0 -> this.f.h.b($$0) <= this.b.d());
    }
 
    @Override
-   protected void C() {
-      int $$0 = (this.g - 192) / 2;
-      int $$1 = 2;
-      this.w = this.d(new faf($$0 + 116, 159, true, $$0x -> this.F(), this.y));
-      this.x = this.d(new faf($$0 + 43, 159, false, $$0x -> this.E(), this.y));
-      this.H();
-   }
-
-   private int D() {
-      return this.q.a();
-   }
-
-   protected void E() {
-      if (this.s > 0) {
-         this.s--;
+   public void c() {
+      this.m++;
+      if (!this.C()) {
+         this.D();
       }
-
-      this.H();
    }
 
-   protected void F() {
-      if (this.s < this.D() - 1) {
-         this.s++;
-      }
-
-      this.H();
-   }
-
-   private void H() {
-      this.w.j = this.s < this.D() - 1;
-      this.x.j = this.s > 0;
+   private boolean C() {
+      return this.f != null && this.f.s != null && !this.b.r() && !this.b.b(this.f.s.cv());
    }
 
    @Override
    public boolean a(int $$0, int $$1, int $$2) {
-      if (super.a($$0, $$1, $$2)) {
+      if ($$0 == 265) {
+         this.n = this.n - 1 & 3;
+         this.o.f();
+         return true;
+      } else if ($$0 == 264 || $$0 == 257 || $$0 == 335) {
+         this.n = this.n + 1 & 3;
+         this.o.f();
          return true;
       } else {
-         switch ($$0) {
-            case 266:
-               this.x.c();
-               return true;
-            case 267:
-               this.w.c();
-               return true;
-            default:
-               return false;
-         }
+         return this.o.a($$0) ? true : super.a($$0, $$1, $$2);
       }
    }
 
    @Override
-   public void a(erv $$0, int $$1, int $$2, float $$3) {
+   public boolean a(char $$0, int $$1) {
+      this.o.a($$0);
+      return true;
+   }
+
+   @Override
+   public void a(esa $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      int $$4 = (this.g - 192) / 2;
-      int $$5 = 2;
-      if (this.u != this.s) {
-         tj $$6 = this.q.b(this.s);
-         this.t = this.i.c($$6, 114);
-         this.v = tf.a("book.pageIndicator", this.s + 1, Math.max(this.D(), 1));
-      }
+      ekg.a();
+      $$0.a(this.i, this.e, this.g / 2, 40, 16777215);
+      this.c($$0);
+      ekg.b();
+   }
 
-      this.u = this.s;
-      int $$7 = this.i.a(this.v);
-      $$0.a(this.i, this.v, $$4 - $$7 + 192 - 44, 18, 0, false);
-      int $$8 = Math.min(128 / 9, this.t.size());
+   @Override
+   public void au_() {
+      this.D();
+   }
 
-      for (int $$9 = 0; $$9 < $$8; $$9++) {
-         arc $$10 = this.t.get($$9);
-         $$0.a(this.i, $$10, $$4 + 36, 32 + $$9 * 9, 0, false);
-      }
-
-      ub $$11 = this.a((double)$$1, (double)$$2);
-      if ($$11 != null) {
-         $$0.a(this.i, $$11, $$1, $$2);
+   @Override
+   public void av_() {
+      fit $$0 = this.f.J();
+      if ($$0 != null) {
+         $$0.b(new acr(this.b.p(), this.l, this.k[0], this.k[1], this.k[2], this.k[3]));
       }
    }
 
    @Override
-   public void b(erv $$0, int $$1, int $$2, float $$3) {
-      super.b($$0, $$1, $$2, $$3);
-      $$0.a(l, (this.g - 192) / 2, 2, 0, 0, 192, 192);
+   public boolean j() {
+      return false;
    }
 
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      if ($$2 == 0) {
-         ub $$3 = this.a($$0, $$1);
-         if ($$3 != null && this.a($$3)) {
-            return true;
-         }
-      }
+   protected abstract void a(esa var1, dfe var2);
 
-      return super.a($$0, $$1, $$2);
+   protected abstract Vector3f l();
+
+   protected void b(esa $$0, dfe $$1) {
+      $$0.c().a((float)this.g / 2.0F, 90.0F, 50.0F);
    }
 
-   @Override
-   public boolean a(ub $$0) {
-      td $$1 = $$0.h();
-      if ($$1 == null) {
-         return false;
-      } else if ($$1.a() == td.a.e) {
-         String $$2 = $$1.b();
-
-         try {
-            int $$3 = Integer.parseInt($$2) - 1;
-            return this.b($$3);
-         } catch (Exception var5) {
-            return false;
-         }
-      } else {
-         boolean $$4 = super.a($$0);
-         if ($$4 && $$1.a() == td.a.c) {
-            this.G();
-         }
-
-         return $$4;
-      }
+   private void c(esa $$0) {
+      dfe $$1 = this.b.q();
+      $$0.c().a();
+      this.b($$0, $$1);
+      $$0.c().a();
+      this.a($$0, $$1);
+      $$0.c().b();
+      this.d($$0);
+      $$0.c().b();
    }
 
-   protected void G() {
-      this.f.a(null);
-   }
+   private void d(esa $$0) {
+      $$0.c().a(0.0F, 0.0F, 4.0F);
+      Vector3f $$1 = this.l();
+      $$0.c().b($$1.x(), $$1.y(), $$1.z());
+      int $$2 = this.c.a() ? this.c.b().g() : fqn.a(this.c);
+      boolean $$3 = this.m / 6 % 2 == 0;
+      int $$4 = this.o.g();
+      int $$5 = this.o.h();
+      int $$6 = 4 * this.b.c() / 2;
+      int $$7 = this.n * this.b.c() - $$6;
 
-   @Nullable
-   public ub a(double $$0, double $$1) {
-      if (this.t.isEmpty()) {
-         return null;
-      } else {
-         int $$2 = arp.a($$0 - (double)((this.g - 192) / 2) - 36.0);
-         int $$3 = arp.a($$1 - 2.0 - 30.0);
-         if ($$2 >= 0 && $$3 >= 0) {
-            int $$4 = Math.min(128 / 9, this.t.size());
-            if ($$2 <= 114 && $$3 < 9 * $$4 + $$4) {
-               int $$5 = $$3 / 9;
-               if ($$5 >= 0 && $$5 < this.t.size()) {
-                  arc $$6 = this.t.get($$5);
-                  return this.f.h.b().a($$6, $$2);
-               } else {
-                  return null;
+      for (int $$8 = 0; $$8 < this.k.length; $$8++) {
+         String $$9 = this.k[$$8];
+         if ($$9 != null) {
+            if (this.i.a()) {
+               $$9 = this.i.a($$9);
+            }
+
+            int $$10 = -this.i.b($$9) / 2;
+            $$0.a(this.i, $$9, $$10, $$8 * this.b.c() - $$6, $$2, false);
+            if ($$8 == this.n && $$4 >= 0 && $$3) {
+               int $$11 = this.i.b($$9.substring(0, Math.max(Math.min($$4, $$9.length()), 0)));
+               int $$12 = $$11 - this.i.b($$9) / 2;
+               if ($$4 >= $$9.length()) {
+                  $$0.a(this.i, "_", $$12, $$7, $$2, false);
                }
-            } else {
-               return null;
             }
-         } else {
-            return null;
          }
       }
-   }
 
-   static List<String> a(qr $$0) {
-      Builder<String> $$1 = ImmutableList.builder();
-      a($$0, $$1::add);
-      return $$1.build();
-   }
-
-   public static void a(qr $$0, Consumer<String> $$1) {
-      qx $$2 = $$0.c("pages", 8).e();
-      IntFunction<String> $$4;
-      if (eql.O().aQ() && $$0.b("filtered_pages", 10)) {
-         qr $$3 = $$0.p("filtered_pages");
-         $$4 = $$2x -> {
-            String $$3x = String.valueOf($$2x);
-            return $$3.e($$3x) ? $$3.l($$3x) : $$2.j($$2x);
-         };
-      } else {
-         $$4 = $$2::j;
-      }
-
-      for (int $$6 = 0; $$6 < $$2.size(); $$6++) {
-         $$1.accept($$4.apply($$6));
-      }
-   }
-
-   public interface a {
-      int a();
-
-      tj a(int var1);
-
-      default tj b(int $$0) {
-         return $$0 >= 0 && $$0 < this.a() ? this.a($$0) : tj.b;
-      }
-
-      static ezf.a a(cix $$0) {
-         if ($$0.a(cja.th)) {
-            return new ezf.c($$0);
-         } else {
-            return (ezf.a)($$0.a(cja.tg) ? new ezf.b($$0) : ezf.k);
-         }
-      }
-   }
-
-   public static class b implements ezf.a {
-      private final List<String> a;
-
-      public b(cix $$0) {
-         this.a = b($$0);
-      }
-
-      private static List<String> b(cix $$0) {
-         qr $$1 = $$0.v();
-         return (List<String>)($$1 != null ? ezf.a($$1) : ImmutableList.of());
-      }
-
-      @Override
-      public int a() {
-         return this.a.size();
-      }
-
-      @Override
-      public tj a(int $$0) {
-         return tj.e(this.a.get($$0));
-      }
-   }
-
-   public static class c implements ezf.a {
-      private final List<String> a;
-
-      public c(cix $$0) {
-         this.a = b($$0);
-      }
-
-      private static List<String> b(cix $$0) {
-         qr $$1 = $$0.v();
-         return (List<String>)($$1 != null && ckt.a($$1) ? ezf.a($$1) : ImmutableList.of(tf.a.a(tf.c("book.invalid.tag").a(n.e))));
-      }
-
-      @Override
-      public int a() {
-         return this.a.size();
-      }
-
-      @Override
-      public tj a(int $$0) {
-         String $$1 = this.a.get($$0);
-
-         try {
-            tj $$2 = tf.a.a($$1);
-            if ($$2 != null) {
-               return $$2;
+      for (int $$13 = 0; $$13 < this.k.length; $$13++) {
+         String $$14 = this.k[$$13];
+         if ($$14 != null && $$13 == this.n && $$4 >= 0) {
+            int $$15 = this.i.b($$14.substring(0, Math.max(Math.min($$4, $$14.length()), 0)));
+            int $$16 = $$15 - this.i.b($$14) / 2;
+            if ($$3 && $$4 < $$14.length()) {
+               $$0.a($$16, $$7 - 1, $$16 + 1, $$7 + this.b.c(), 0xFF000000 | $$2);
             }
-         } catch (Exception var4) {
-         }
 
-         return tj.e($$1);
+            if ($$5 != $$4) {
+               int $$17 = Math.min($$4, $$5);
+               int $$18 = Math.max($$4, $$5);
+               int $$19 = this.i.b($$14.substring(0, $$17)) - this.i.b($$14) / 2;
+               int $$20 = this.i.b($$14.substring(0, $$18)) - this.i.b($$14) / 2;
+               int $$21 = Math.min($$19, $$20);
+               int $$22 = Math.max($$19, $$20);
+               $$0.a(foh.E(), $$21, $$7, $$22, $$7 + this.b.c(), -16776961);
+            }
+         }
       }
+   }
+
+   private void a(String $$0) {
+      this.k[this.n] = $$0;
+      this.c = this.c.a(this.n, ti.b($$0));
+      this.b.a(this.c, this.l);
+   }
+
+   private void D() {
+      this.f.a(null);
    }
 }

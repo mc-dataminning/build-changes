@@ -1,53 +1,103 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
+import javax.annotation.Nullable;
 
-public class crr extends crc {
-   public static final dfz a = dfp.ba;
-   private static final Map<chl, csl> b = Maps.newHashMap();
-   private static final ehw c = csl.a(4.0, 0.0, 4.0, 12.0, 16.0, 12.0);
+public class crr extends cvi {
+   public static final dfy a = cwj.aC;
+   private static final eib b = csq.a(2.0, 0.0, 2.0, 14.0, 4.0, 14.0);
+   private static final eib c = csq.a(3.0, 4.0, 4.0, 13.0, 5.0, 12.0);
+   private static final eib d = csq.a(4.0, 5.0, 6.0, 12.0, 10.0, 10.0);
+   private static final eib e = csq.a(0.0, 10.0, 3.0, 16.0, 16.0, 13.0);
+   private static final eib f = csq.a(4.0, 4.0, 3.0, 12.0, 5.0, 13.0);
+   private static final eib g = csq.a(6.0, 5.0, 4.0, 10.0, 10.0, 12.0);
+   private static final eib h = csq.a(3.0, 10.0, 0.0, 13.0, 16.0, 16.0);
+   private static final eib i = ehy.a(b, c, d, e);
+   private static final eib j = ehy.a(b, f, g, h);
+   private static final ti k = ti.c("container.repair");
+   private static final float l = 2.0F;
+   private static final int m = 40;
 
-   public crr(chl $$0, dey.d $$1) {
-      super($$0, $$1);
-      this.k(this.C.b().a(a, Integer.valueOf(0)));
-      b.put($$0, this);
+   public crr(dfd.d $$0) {
+      super($$0);
+      this.k(this.C.b().a(a, hc.c));
    }
 
    @Override
-   public boolean a(dez $$0, cpo $$1, gu $$2) {
-      return $$1.a_($$2.d()).e();
+   public dfe a(cli $$0) {
+      return this.n().a(a, $$0.g().h());
    }
 
    @Override
-   public ehw a(dez $$0, cor $$1, gu $$2, ehi $$3) {
-      return c;
+   public bgt a(dfe $$0, cpq $$1, gw $$2, cbp $$3, bgs $$4, ehe $$5) {
+      if ($$1.B) {
+         return bgt.a;
+      } else {
+         $$3.a($$0.b($$1, $$2));
+         $$3.a(apj.aC);
+         return bgt.b;
+      }
+   }
+
+   @Nullable
+   @Override
+   public bgw b(dfe $$0, cpq $$1, gw $$2) {
+      return new bhb(($$2x, $$3, $$4) -> new cei($$2x, $$3, cer.a($$1, $$2)), k);
    }
 
    @Override
-   public dez a(clf $$0) {
-      return this.n().a(a, Integer.valueOf(dgf.a($$0.i() + 180.0F)));
+   public eib a(dfe $$0, cow $$1, gw $$2, ehn $$3) {
+      hc $$4 = $$0.c(a);
+      return $$4.o() == hc.a.a ? i : j;
    }
 
    @Override
-   public dez a(dez $$0, ha $$1, dez $$2, cpm $$3, gu $$4, gu $$5) {
-      return $$1 == ha.a && !$$0.a($$3, $$4) ? csm.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   protected void a(byh $$0) {
+      $$0.b(2.0F, 40);
    }
 
    @Override
-   public dez a(dez $$0, cyx $$1) {
-      return $$0.a(a, Integer.valueOf($$1.a($$0.c(a), 16)));
+   public void a(cpq $$0, gw $$1, dfe $$2, dfe $$3, byh $$4) {
+      if (!$$4.aS()) {
+         $$0.c(1031, $$1, 0);
+      }
    }
 
    @Override
-   public dez a(dez $$0, cxg $$1) {
-      return $$0.a(a, Integer.valueOf($$1.a($$0.c(a), 16)));
+   public void a(cpq $$0, gw $$1, byh $$2) {
+      if (!$$2.aS()) {
+         $$0.c(1029, $$1, 0);
+      }
    }
 
    @Override
-   protected void a(dfa.a<csl, dez> $$0) {
+   public bhj a(bil $$0) {
+      return $$0.dL().b($$0);
+   }
+
+   @Nullable
+   public static dfe e(dfe $$0) {
+      if ($$0.a(csr.gS)) {
+         return csr.gT.n().a(a, $$0.c(a));
+      } else {
+         return $$0.a(csr.gT) ? csr.gU.n().a(a, $$0.c(a)) : null;
+      }
+   }
+
+   @Override
+   public dfe a(dfe $$0, czc $$1) {
+      return $$0.a(a, $$1.a($$0.c(a)));
+   }
+
+   @Override
+   protected void a(dff.a<csq, dfe> $$0) {
       $$0.a(a);
    }
 
-   public static csl a(chl $$0) {
-      return b.getOrDefault($$0, csm.iJ);
+   @Override
+   public boolean a(dfe $$0, cow $$1, gw $$2, eax $$3) {
+      return false;
+   }
+
+   @Override
+   public int d(dfe $$0, cow $$1, gw $$2) {
+      return $$0.d($$1, $$2).ak;
    }
 }

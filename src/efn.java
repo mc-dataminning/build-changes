@@ -1,60 +1,47 @@
+import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 import java.util.Set;
 
-public record efn(Optional<Long> b, ecf c) implements eff {
+public record efn(Optional<bq> b, ecl.b c) implements efk {
    public static final Codec<efn> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(aqy.a(Codec.LONG, "period").forGetter(efn::c), ecf.a.fieldOf("value").forGetter(efn::d)).apply($$0, efn::new)
+      $$0 -> $$0.group(arb.a(bq.a, "predicate").forGetter(efn::c), ecl.b.e.fieldOf("entity").forGetter(efn::d)).apply($$0, efn::new)
    );
 
    @Override
-   public efg b() {
-      return efh.r;
+   public efl b() {
+      return efm.g;
    }
 
    @Override
-   public Set<eeo<?>> a() {
-      return this.c.a();
+   public Set<eet<?>> a() {
+      return ImmutableSet.of(eew.f, this.c.a());
    }
 
-   public boolean a(ecg $$0) {
-      akk $$1 = $$0.d();
-      long $$2 = $$1.W();
-      if (this.b.isPresent()) {
-         $$2 %= this.b.get();
-      }
-
-      return this.c.b($$0, (int)$$2);
+   public boolean a(ecl $$0) {
+      bil $$1 = $$0.c(this.c.a());
+      ehi $$2 = $$0.c(eew.f);
+      return this.b.isEmpty() || this.b.get().a($$0.d(), $$2, $$1);
    }
 
-   public static efn.a a(ecf $$0) {
-      return new efn.a($$0);
+   public static efk.a a(ecl.b $$0) {
+      return a($$0, bq.a.a());
    }
 
-   public Optional<Long> c() {
+   public static efk.a a(ecl.b $$0, bq.a $$1) {
+      return () -> new efn(Optional.of($$1.b()), $$0);
+   }
+
+   public static efk.a a(ecl.b $$0, bq $$1) {
+      return () -> new efn(Optional.of($$1), $$0);
+   }
+
+   public Optional<bq> c() {
       return this.b;
    }
 
-   public ecf d() {
+   public ecl.b d() {
       return this.c;
-   }
-
-   public static class a implements eff.a {
-      private Optional<Long> a = Optional.empty();
-      private final ecf b;
-
-      public a(ecf $$0) {
-         this.b = $$0;
-      }
-
-      public efn.a a(long $$0) {
-         this.a = Optional.of($$0);
-         return this;
-      }
-
-      public efn a() {
-         return new efn(this.a, this.b);
-      }
    }
 }

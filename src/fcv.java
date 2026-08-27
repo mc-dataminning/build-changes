@@ -1,173 +1,137 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.BooleanSupplier;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import org.apache.commons.io.FileUtils;
+import org.slf4j.Logger;
 
-class fcv {
-   private static final int a = 44;
-   private final List<fcv.c> b;
+public class fcv extends eyf {
+   private static final Logger a = LogUtils.getLogger();
+   private static final ti b = ti.c("selectWorld.enterName");
+   private esl c;
+   private final BooleanConsumer k;
+   private esu l;
+   private final ecb.c m;
 
-   fcv(List<fcv.c> $$0) {
-      this.b = $$0;
+   public fcv(BooleanConsumer $$0, ecb.c $$1) {
+      super(ti.c("selectWorld.edit.title"));
+      this.k = $$0;
+      this.m = $$1;
    }
 
-   public void a() {
-      this.b.forEach(fcv.c::a);
-   }
+   @Override
+   protected void aD_() {
+      this.c = esl.a(ti.c("selectWorld.edit.save"), $$0x -> this.l()).a(this.g / 2 - 100, this.h / 4 + 144 + 5, 98, 20).a();
+      this.l = new esu(this.i, this.g / 2 - 100, 38, 200, 20, ti.c("selectWorld.enterName"));
+      ecc $$0 = this.m.d();
+      String $$1 = $$0 == null ? "" : $$0.b();
+      this.l.a($$1);
+      this.l.b($$0x -> this.c.i = !ac.b($$0x));
+      this.e(this.l);
+      esl $$2 = this.d(esl.a(ti.c("selectWorld.edit.resetIcon"), $$0x -> {
+         this.m.f().ifPresent($$0xx -> FileUtils.deleteQuietly($$0xx.toFile()));
+         $$0x.i = false;
+      }).a(this.g / 2 - 100, this.h / 4 + 0 + 5, 200, 20).a());
+      this.d(esl.a(ti.c("selectWorld.edit.openFolder"), $$0x -> ac.i().a(this.m.a(ebz.l).toFile())).a(this.g / 2 - 100, this.h / 4 + 24 + 5, 200, 20).a());
+      this.d(esl.a(ti.c("selectWorld.edit.backup"), $$0x -> {
+         boolean $$1x = a(this.m);
+         this.k.accept(!$$1x);
+      }).a(this.g / 2 - 100, this.h / 4 + 48 + 5, 200, 20).a());
+      this.d(esl.a(ti.c("selectWorld.edit.backupFolder"), $$0x -> {
+         ecb $$1x = this.f.l();
+         Path $$2x = $$1x.d();
 
-   public static fcv.a a(int $$0) {
-      return new fcv.a($$0);
-   }
-
-   public static class a {
-      final int a;
-      private final List<fcv.d> b = new ArrayList<>();
-      int c;
-      int d = 4;
-      int e;
-      Optional<fcv.b> f = Optional.empty();
-
-      public a(int $$0) {
-         this.a = $$0;
-      }
-
-      void a() {
-         this.e++;
-      }
-
-      public fcv.d a(tf $$0, BooleanSupplier $$1, Consumer<Boolean> $$2) {
-         fcv.d $$3 = new fcv.d($$0, $$1, $$2, 44);
-         this.b.add($$3);
-         return $$3;
-      }
-
-      public fcv.a a(int $$0) {
-         this.c = $$0;
-         return this;
-      }
-
-      public fcv.a b(int $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      public fcv a(Consumer<evr> $$0) {
-         evo $$1 = new evo().b(this.d);
-         $$1.a(evu.a(this.a - 44), 0, 0);
-         $$1.a(evu.a(44), 0, 1);
-         List<fcv.c> $$2 = new ArrayList<>();
-         this.e = 0;
-
-         for (fcv.d $$3 : this.b) {
-            $$2.add($$3.a(this, $$1, 0));
+         try {
+            v.c($$2x);
+         } catch (IOException var5) {
+            throw new RuntimeException(var5);
          }
 
-         $$1.a();
-         $$0.accept($$1);
-         fcv $$4 = new fcv($$2);
-         $$4.a();
-         return $$4;
-      }
+         ac.i().a($$2x.toFile());
+      }).a(this.g / 2 - 100, this.h / 4 + 72 + 5, 200, 20).a());
+      this.d(esl.a(ti.c("selectWorld.edit.optimize"), $$0x -> this.f.a(new ewt(this, ($$0xx, $$1x) -> {
+            if ($$0xx) {
+               a(this.m);
+            }
 
-      public fcv.a a(int $$0, boolean $$1) {
-         this.f = Optional.of(new fcv.b($$0, $$1));
-         return this;
-      }
+            this.f.a(fcx.a(this.f, this.k, this.f.ar(), this.m, $$1x));
+         }, ti.c("optimizeWorld.confirm.title"), ti.c("optimizeWorld.confirm.description"), true))).a(this.g / 2 - 100, this.h / 4 + 96 + 5, 200, 20).a());
+      this.d(this.c);
+      this.d(esl.a(th.e, $$0x -> this.k.accept(false)).a(this.g / 2 + 2, this.h / 4 + 144 + 5, 98, 20).a());
+      $$2.i = this.m.f().filter($$0x -> Files.isRegularFile($$0x)).isPresent();
+      this.c(this.l);
    }
 
-   static record b(int a, boolean b) {
+   @Override
+   public void a(eqq $$0, int $$1, int $$2) {
+      String $$3 = this.l.a();
+      this.b($$0, $$1, $$2);
+      this.l.a($$3);
    }
 
-   static record c(esn<Boolean> a, BooleanSupplier b, @Nullable BooleanSupplier c) {
-      public void a() {
-         this.a.a(this.b.getAsBoolean());
-         if (this.c != null) {
-            this.a.i = this.c.getAsBoolean();
-         }
-      }
+   @Override
+   public void au_() {
+      this.k.accept(false);
+   }
 
-      public esn<Boolean> b() {
-         return this.a;
-      }
-
-      public BooleanSupplier c() {
-         return this.b;
-      }
-
-      @Nullable
-      public BooleanSupplier d() {
-         return this.c;
+   private void l() {
+      try {
+         this.m.a(this.l.a().trim());
+         this.k.accept(true);
+      } catch (IOException var2) {
+         a.error("Failed to access world '{}'", this.m.b(), var2);
+         eur.a(this.f, this.m.b());
+         this.k.accept(true);
       }
    }
 
-   public static class d {
-      private final tf a;
-      private final BooleanSupplier b;
-      private final Consumer<Boolean> c;
-      @Nullable
-      private tf d;
-      @Nullable
-      private BooleanSupplier e;
-      private final int f;
+   public static void a(ecb $$0, String $$1) {
+      boolean $$2 = false;
 
-      d(tf $$0, BooleanSupplier $$1, Consumer<Boolean> $$2, int $$3) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.f = $$3;
-      }
-
-      public fcv.d a(BooleanSupplier $$0) {
-         this.e = $$0;
-         return this;
-      }
-
-      public fcv.d a(tf $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      fcv.c a(fcv.a $$0, evo $$1, int $$2) {
-         $$0.a();
-         etm $$3 = new etm(this.a, eql.O().h).e();
-         $$1.a($$3, $$0.e, $$2, $$1.b().a(0.0F, 0.5F).b($$0.c));
-         Optional<fcv.b> $$4 = $$0.f;
-         esn.a<Boolean> $$5 = esn.b(this.b.getAsBoolean());
-         $$5.a();
-         boolean $$6 = this.d != null && $$4.isEmpty();
-         if ($$6) {
-            etq $$7 = etq.a(this.d);
-            $$5.a($$1x -> $$7);
+      try (ecb.c $$3 = $$0.c($$1)) {
+         $$2 = true;
+         a($$3);
+      } catch (IOException var8) {
+         if (!$$2) {
+            eur.a(eqq.O(), $$1);
          }
 
-         if (this.d != null && !$$6) {
-            $$5.a($$0x -> te.a(this.a, $$0x.b(), this.d));
-         } else {
-            $$5.a($$0x -> te.a(this.a, $$0x.b()));
-         }
-
-         esn<Boolean> $$8 = $$5.a(0, 0, this.f, 20, tf.h(), ($$0x, $$1x) -> this.c.accept($$1x));
-         if (this.e != null) {
-            $$8.i = this.e.getAsBoolean();
-         }
-
-         $$1.a($$8, $$0.e, $$2 + 1, $$1.b().c());
-         if (this.d != null) {
-            $$4.ifPresent($$3x -> {
-               tf $$4x = this.d.e().a(n.h);
-               ert $$5x = eql.O().h;
-               eta $$6x = new eta($$4x, $$5x);
-               $$6x.j($$0.a - $$0.c - this.f);
-               $$6x.k($$3x.a());
-               $$0.a();
-               int $$7 = $$3x.b ? 9 * $$3x.a - $$6x.i() : 0;
-               $$1.a($$6x, $$0.e, $$2, $$1.b().c(-$$0.d).e($$7));
-            });
-         }
-
-         return new fcv.c($$8, this.b, this.e);
+         a.warn("Failed to create backup of level {}", $$1, var8);
+      } catch (egx var9) {
+         a.warn("{}", var9.getMessage());
+         eur.a(eqq.O(), $$1);
       }
+   }
+
+   public static boolean a(ecb.c $$0) {
+      long $$1 = 0L;
+      IOException $$2 = null;
+
+      try {
+         $$1 = $$0.h();
+      } catch (IOException var6) {
+         $$2 = var6;
+      }
+
+      if ($$2 != null) {
+         ti $$4 = ti.c("selectWorld.edit.backupFailed");
+         ti $$5 = ti.b($$2.getMessage());
+         eqq.O().ay().a(new eur(eur.a.c, $$4, $$5));
+         return false;
+      } else {
+         ti $$6 = ti.a("selectWorld.edit.backupCreated", $$0.b());
+         ti $$7 = ti.a("selectWorld.edit.backupSize", ars.c((double)$$1 / 1048576.0));
+         eqq.O().ay().a(new eur(eur.a.c, $$6, $$7));
+         return true;
+      }
+   }
+
+   @Override
+   public void a(esa $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, this.e, this.g / 2, 15, 16777215);
+      $$0.b(this.i, b, this.g / 2 - 100 + 1, 24, 10526880);
+      this.l.a($$0, $$1, $$2, $$3);
    }
 }

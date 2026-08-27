@@ -1,60 +1,68 @@
-public class clz extends cmf {
-   public clz(aer $$0, clq $$1) {
-      super(
-         $$0,
-         "",
-         $$1,
-         3,
-         3,
-         hn.a(clx.a, clx.a(cja.qa), clx.a(cja.qa), clx.a(cja.qa), clx.a(cja.qa), clx.a(cja.rf), clx.a(cja.qa), clx.a(cja.qa), clx.a(cja.qa), clx.a(cja.qa)),
-         new cix(cja.tp)
-      );
+import com.google.common.collect.Lists;
+import java.util.List;
+
+public class clz extends clw {
+   private static final cmb a = cmb.a(cjd.tB);
+
+   public clz(clt $$0) {
+      super($$0);
    }
 
-   @Override
-   public boolean a(cer $$0, cpl $$1) {
-      if (!super.a($$0, $$1)) {
-         return false;
-      } else {
-         cix $$2 = a($$0);
-         if ($$2.b()) {
-            return false;
-         } else {
-            ebm $$3 = cje.a($$2, $$1);
-            if ($$3 == null) {
-               return false;
+   public boolean a(ceu $$0, cpq $$1) {
+      boolean $$2 = false;
+      boolean $$3 = false;
+
+      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
+         cja $$5 = $$0.a($$4);
+         if (!$$5.b()) {
+            if ($$5.d() instanceof chp) {
+               $$2 = true;
             } else {
-               return $$3.f() ? false : $$3.f < 4;
+               if (!a.a($$5)) {
+                  return false;
+               }
+
+               if ($$3) {
+                  return false;
+               }
+
+               $$3 = true;
             }
          }
       }
+
+      return $$3 && $$2;
    }
 
-   @Override
-   public cix a(cer $$0, hs $$1) {
-      cix $$2 = a($$0).c(1);
-      $$2.w().a("map_scale_direction", 1);
-      return $$2;
-   }
+   public cja a(ceu $$0, hu $$1) {
+      List<Integer> $$2 = Lists.newArrayList();
+      cja $$3 = null;
 
-   private static cix a(cer $$0) {
-      for (int $$1 = 0; $$1 < $$0.b(); $$1++) {
-         cix $$2 = $$0.a($$1);
-         if ($$2.a(cja.rf)) {
-            return $$2;
+      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
+         cja $$5 = $$0.a($$4);
+         civ $$6 = $$5.d();
+         if ($$6 instanceof chp) {
+            $$2.add(((chp)$$6).d().f());
+         } else if (a.a($$5)) {
+            $$3 = $$5.c(1);
          }
       }
 
-      return cix.b;
+      if ($$3 != null && !$$2.isEmpty()) {
+         $$3.a("Explosion").b("FadeColors", $$2);
+         return $$3;
+      } else {
+         return cja.b;
+      }
    }
 
    @Override
-   public boolean ah_() {
-      return true;
+   public boolean a(int $$0, int $$1) {
+      return $$0 * $$1 >= 2;
    }
 
    @Override
-   public cmc<?> ai_() {
-      return cmc.f;
+   public cmh<?> ai_() {
+      return cmh.i;
    }
 }

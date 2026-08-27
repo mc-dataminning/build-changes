@@ -1,37 +1,34 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Optional;
+public class bkv implements bmf {
+   private final gw a;
+   private final ehi b;
 
-public class bkv extends bkp<biy> {
-   private final brz<Integer> c;
-
-   public bkv(brz<Integer> $$0) {
-      super(ImmutableMap.of($$0, bsa.a));
-      this.c = $$0;
+   public bkv(gw $$0) {
+      this.a = $$0.i();
+      this.b = ehi.b($$0);
    }
 
-   private Optional<Integer> b(biy $$0) {
-      return $$0.dM().c(this.c);
-   }
-
-   @Override
-   protected boolean a(long $$0) {
-      return false;
+   public bkv(ehi $$0) {
+      this.a = gw.a($$0);
+      this.b = $$0;
    }
 
    @Override
-   protected boolean a(akk $$0, biy $$1, long $$2) {
-      Optional<Integer> $$3 = this.b($$1);
-      return $$3.isPresent() && $$3.get() > 0;
+   public ehi a() {
+      return this.b;
    }
 
    @Override
-   protected void c(akk $$0, biy $$1, long $$2) {
-      Optional<Integer> $$3 = this.b($$1);
-      $$1.dM().a(this.c, $$3.get() - 1);
+   public gw b() {
+      return this.a;
    }
 
    @Override
-   protected void b(akk $$0, biy $$1, long $$2) {
-      $$1.dM().b(this.c);
+   public boolean a(bjb $$0) {
+      return true;
+   }
+
+   @Override
+   public String toString() {
+      return "BlockPosTracker{blockPos=" + this.a + ", centerPosition=" + this.b + "}";
    }
 }

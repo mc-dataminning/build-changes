@@ -1,22 +1,16 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.function.Function;
 
-class dlw extends dma {
-   private final hi<eab> e;
-   public static final Codec<dlw> a = RecordCodecBuilder.create($$0 -> a($$0).and(ht.a(jc.w).fieldOf("fluids").forGetter($$0x -> $$0x.e)).apply($$0, dlw::new));
+abstract class dlw implements dlu {
+   protected final List<dlu> e;
 
-   public dlw(hz $$0, hi<eab> $$1) {
-      super($$0);
-      this.e = $$1;
+   protected dlw(List<dlu> $$0) {
+      this.e = $$0;
    }
 
-   @Override
-   protected boolean a(dez $$0) {
-      return $$0.u().a(this.e);
-   }
-
-   @Override
-   public dlq<?> a() {
-      return dlq.c;
+   public static <T extends dlw> Codec<T> a(Function<List<dlu>, T> $$0) {
+      return RecordCodecBuilder.create($$1 -> $$1.group(dlu.b.listOf().fieldOf("predicates").forGetter($$0xx -> $$0xx.e)).apply($$1, $$0));
    }
 }

@@ -1,56 +1,56 @@
 import com.google.gson.JsonObject;
-import com.mojang.brigadier.arguments.LongArgumentType;
+import com.mojang.brigadier.arguments.FloatArgumentType;
 
-public class go implements gg<LongArgumentType, go.a> {
-   public void a(go.a $$0, si $$1) {
-      boolean $$2 = $$0.b != Long.MIN_VALUE;
-      boolean $$3 = $$0.c != Long.MAX_VALUE;
-      $$1.k(gi.a($$2, $$3));
+public class go implements gi<FloatArgumentType, go.a> {
+   public void a(go.a $$0, sl $$1) {
+      boolean $$2 = $$0.b != -Float.MAX_VALUE;
+      boolean $$3 = $$0.c != Float.MAX_VALUE;
+      $$1.k(gk.a($$2, $$3));
       if ($$2) {
-         $$1.b($$0.b);
+         $$1.a($$0.b);
       }
 
       if ($$3) {
-         $$1.b($$0.c);
+         $$1.a($$0.c);
       }
    }
 
-   public go.a a(si $$0) {
+   public go.a a(sl $$0) {
       byte $$1 = $$0.readByte();
-      long $$2 = gi.a($$1) ? $$0.readLong() : Long.MIN_VALUE;
-      long $$3 = gi.b($$1) ? $$0.readLong() : Long.MAX_VALUE;
+      float $$2 = gk.a($$1) ? $$0.readFloat() : -Float.MAX_VALUE;
+      float $$3 = gk.b($$1) ? $$0.readFloat() : Float.MAX_VALUE;
       return new go.a($$2, $$3);
    }
 
    public void a(go.a $$0, JsonObject $$1) {
-      if ($$0.b != Long.MIN_VALUE) {
+      if ($$0.b != -Float.MAX_VALUE) {
          $$1.addProperty("min", $$0.b);
       }
 
-      if ($$0.c != Long.MAX_VALUE) {
+      if ($$0.c != Float.MAX_VALUE) {
          $$1.addProperty("max", $$0.c);
       }
    }
 
-   public go.a a(LongArgumentType $$0) {
+   public go.a a(FloatArgumentType $$0) {
       return new go.a($$0.getMinimum(), $$0.getMaximum());
    }
 
-   public final class a implements gg.a<LongArgumentType> {
-      final long b;
-      final long c;
+   public final class a implements gi.a<FloatArgumentType> {
+      final float b;
+      final float c;
 
-      a(long $$1, long $$2) {
+      a(float $$1, float $$2) {
          this.b = $$1;
          this.c = $$2;
       }
 
-      public LongArgumentType a(dl $$0) {
-         return LongArgumentType.longArg(this.b, this.c);
+      public FloatArgumentType a(dn $$0) {
+         return FloatArgumentType.floatArg(this.b, this.c);
       }
 
       @Override
-      public gg<LongArgumentType, ?> a() {
+      public gi<FloatArgumentType, ?> a() {
          return go.this;
       }
    }

@@ -1,148 +1,84 @@
-import com.google.common.base.MoreObjects;
-import java.util.Arrays;
-import org.apache.commons.lang3.exception.ExceptionUtils;
+import com.google.common.base.Stopwatch;
+import java.io.File;
+import java.time.Instant;
+import java.time.format.DateTimeFormatter;
+import java.util.concurrent.TimeUnit;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
-class qd implements ps {
-   private final pr c;
-   private final px d;
-   private final gu e;
-   int a;
-   int b;
+public class qd implements qn {
+   private final Document a;
+   private final Element b;
+   private final Stopwatch c;
+   private final File d;
 
-   public qd(pr $$0, px $$1, gu $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.a = 0;
-      this.b = 0;
+   public qd(File $$0) throws ParserConfigurationException {
+      this.d = $$0;
+      this.a = DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument();
+      this.b = this.a.createElement("testsuite");
+      Element $$1 = this.a.createElement("testsuite");
+      $$1.appendChild(this.b);
+      this.a.appendChild($$1);
+      this.b.setAttribute("timestamp", DateTimeFormatter.ISO_INSTANT.format(Instant.now()));
+      this.c = Stopwatch.createStarted();
+   }
+
+   private Element a(pu $$0, String $$1) {
+      Element $$2 = this.a.createElement("testcase");
+      $$2.setAttribute("name", $$1);
+      $$2.setAttribute("classname", $$0.t());
+      $$2.setAttribute("time", String.valueOf((double)$$0.l() / 1000.0));
+      this.b.appendChild($$2);
+      return $$2;
    }
 
    @Override
-   public void a(pr $$0) {
-      a(this.c, csm.er);
-      this.a++;
-   }
-
-   @Override
-   public void b(pr $$0) {
-      this.b++;
-      if (!$$0.x()) {
-         a($$0, $$0.c() + " passed! (" + $$0.l() + "ms)");
+   public void a(pu $$0) {
+      String $$1 = $$0.c();
+      String $$2 = $$0.n().getMessage();
+      Element $$3;
+      if ($$0.r()) {
+         $$3 = this.a.createElement("failure");
+         $$3.setAttribute("message", $$2);
       } else {
-         if (this.b >= $$0.z()) {
-            a($$0, $$0 + " passed " + this.b + " times of " + this.a + " attempts.");
-         } else {
-            a(this.c.g(), n.k, "Flaky test " + this.c + " succeeded, attempt: " + this.a + " successes: " + this.b);
-            this.a();
-         }
+         $$3 = this.a.createElement("skipped");
+         $$3.setAttribute("message", $$2);
       }
+
+      Element $$5 = this.a($$0, $$1);
+      $$5.appendChild($$3);
    }
 
    @Override
-   public void c(pr $$0) {
-      if (!$$0.x()) {
-         a($$0, $$0.n());
-      } else {
-         qi $$1 = this.c.v();
-         String $$2 = "Flaky test " + this.c + " failed, attempt: " + this.a + "/" + $$1.i();
-         if ($$1.j() > 1) {
-            $$2 = $$2 + ", successes: " + this.b + " (" + $$1.j() + " required)";
-         }
+   public void b(pu $$0) {
+      String $$1 = $$0.c();
+      this.a($$0, $$1);
+   }
 
-         a(this.c.g(), n.o, $$2);
-         if ($$0.y() - this.a + this.b >= $$0.z()) {
-            this.a();
-         } else {
-            a($$0, new pi(this.a, this.b, $$0));
-         }
+   @Override
+   public void a() {
+      this.c.stop();
+      this.b.setAttribute("time", String.valueOf((double)this.c.elapsed(TimeUnit.MILLISECONDS) / 1000.0));
+
+      try {
+         this.a(this.d);
+      } catch (TransformerException var2) {
+         throw new Error("Couldn't save test report", var2);
       }
    }
 
-   public static void a(pr $$0, String $$1) {
-      a($$0, csm.eo);
-      b($$0, $$1);
-   }
-
-   private static void b(pr $$0, String $$1) {
-      a($$0.g(), n.k, $$1);
-      pz.b($$0);
-   }
-
-   protected static void a(pr $$0, Throwable $$1) {
-      a($$0, $$0.r() ? csm.ex : csm.ek);
-      c($$0, ac.c($$1));
-      b($$0, $$1);
-   }
-
-   protected static void b(pr $$0, Throwable $$1) {
-      String $$2 = $$1.getMessage() + ($$1.getCause() == null ? "" : " cause: " + ac.c($$1.getCause()));
-      String $$3 = ($$0.r() ? "" : "(optional) ") + $$0.c() + " failed! " + $$2;
-      a($$0.g(), $$0.r() ? n.m : n.o, $$3);
-      Throwable $$4 = (Throwable)MoreObjects.firstNonNull(ExceptionUtils.getRootCause($$1), $$1);
-      if ($$4 instanceof pl $$5) {
-         a($$0.g(), $$5.c(), $$5.a());
-      }
-
-      pz.a($$0);
-   }
-
-   private void a() {
-      this.c.o();
-      pr $$0 = new pr(this.c.v(), this.c.u(), this.c.g());
-      $$0.a();
-      this.d.a($$0);
-      $$0.a(this);
-      $$0.a(this.e, 2);
-   }
-
-   protected static void a(pr $$0, csl $$1) {
-      akk $$2 = $$0.g();
-      gu $$3 = $$0.d();
-      gu $$4 = new gu(-1, -1, -1);
-      gu $$5 = dyr.a($$3.a((hz)$$4), cxg.a, $$0.u(), $$3);
-      $$2.b($$5, csm.fO.n().a($$0.u()));
-      gu $$6 = $$5.b(0, 1, 0);
-      $$2.b($$6, $$1.n());
-
-      for (int $$7 = -1; $$7 <= 1; $$7++) {
-         for (int $$8 = -1; $$8 <= 1; $$8++) {
-            gu $$9 = $$5.b($$7, -1, $$8);
-            $$2.b($$9, csm.ci.n());
-         }
-      }
-   }
-
-   private static void c(pr $$0, String $$1) {
-      akk $$2 = $$0.g();
-      gu $$3 = $$0.d();
-      gu $$4 = new gu(-1, 1, -1);
-      gu $$5 = dyr.a($$3.a((hz)$$4), cxg.a, $$0.u(), $$3);
-      $$2.b($$5, csm.oa.n().a($$0.u()));
-      dez $$6 = $$2.a_($$5);
-      cix $$7 = a($$0.c(), $$0.r(), $$1);
-      cwt.a(null, $$2, $$5, $$6, $$7);
-   }
-
-   private static cix a(String $$0, boolean $$1, String $$2) {
-      cix $$3 = new cix(cja.tg);
-      qx $$4 = new qx();
-      StringBuffer $$5 = new StringBuffer();
-      Arrays.stream($$0.split("\\.")).forEach($$1x -> $$5.append($$1x).append('\n'));
-      if (!$$1) {
-         $$5.append("(optional)\n");
-      }
-
-      $$5.append("-------------------\n");
-      $$4.add(ri.a($$5 + $$2));
-      $$3.a("pages", $$4);
-      return $$3;
-   }
-
-   protected static void a(akk $$0, n $$1, String $$2) {
-      $$0.a($$0x -> true).forEach($$2x -> $$2x.a(tf.b($$2).a($$1)));
-   }
-
-   private static void a(akk $$0, gu $$1, String $$2) {
-      aav.a($$0, $$1, $$2, -2130771968, Integer.MAX_VALUE);
+   public void a(File $$0) throws TransformerException {
+      TransformerFactory $$1 = TransformerFactory.newInstance();
+      Transformer $$2 = $$1.newTransformer();
+      DOMSource $$3 = new DOMSource(this.a);
+      StreamResult $$4 = new StreamResult($$0);
+      $$2.transform($$3, $$4);
    }
 }

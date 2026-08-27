@@ -1,24 +1,13 @@
-public class vd implements ux<va> {
-   private final long a;
+public interface vd extends sg {
+   void a(vg var1);
 
-   public vd(long $$0) {
-      this.a = $$0;
-   }
+   void a(vh var1);
 
-   public vd(si $$0) {
-      this.a = $$0.readLong();
-   }
+   void a(ve var1);
 
-   @Override
-   public void a(si $$0) {
-      $$0.b(this.a);
-   }
+   void a(vf var1);
 
-   public void a(va $$0) {
-      $$0.a(this);
-   }
+   void a(vi var1);
 
-   public long a() {
-      return this.a;
-   }
+   void a(vj var1);
 }

@@ -9,7 +9,7 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 
-public enum n implements ash {
+public enum n implements ask {
    a("BLACK", '0', 0, 0),
    b("DARK_BLUE", '1', 1, 170),
    c("DARK_GREEN", '2', 2, 43520),
@@ -33,7 +33,7 @@ public enum n implements ash {
    u("ITALIC", 'o', true),
    v("RESET", 'r', -1, null);
 
-   public static final Codec<n> w = ash.a(n::values);
+   public static final Codec<n> w = ask.a(n::values);
    public static final char x = '§';
    private static final Map<String, n> y = Arrays.stream(values()).collect(Collectors.toMap($$0 -> c($$0.A), $$0 -> (n)$$0));
    private static final Pattern z = Pattern.compile("(?i)§[0-9A-FK-OR]");

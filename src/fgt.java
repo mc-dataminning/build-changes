@@ -1,54 +1,57 @@
-public class fgt<T extends bii> extends ffc<T> {
-   private static final String a = "upper_body";
-   private final fhs b;
-   private final fhs f;
-   private final fhs g;
-   private final fhs h;
-   private final fhs i;
-
-   public fgt(fhs $$0) {
-      this.b = $$0;
-      this.g = $$0.b("head");
-      this.h = $$0.b("left_arm");
-      this.i = $$0.b("right_arm");
-      this.f = $$0.b("upper_body");
+public class fgt<T extends bjd & bzh> extends ffl<T> {
+   public fgt(fhx $$0) {
+      super($$0);
    }
 
-   public static fhy b() {
-      fia $$0 = new fia();
-      fib $$1 = $$0.a();
-      float $$2 = 4.0F;
-      fhw $$3 = new fhw(-0.5F);
-      $$1.a("head", fhx.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$3), fhu.a(0.0F, 4.0F, 0.0F));
-      fhx $$4 = fhx.c().a(32, 0).a(-1.0F, 0.0F, -1.0F, 12.0F, 2.0F, 2.0F, $$3);
-      $$1.a("left_arm", $$4, fhu.a(5.0F, 6.0F, 1.0F, 0.0F, 0.0F, 1.0F));
-      $$1.a("right_arm", $$4, fhu.a(-5.0F, 6.0F, -1.0F, 0.0F, (float) Math.PI, -1.0F));
-      $$1.a("upper_body", fhx.c().a(0, 16).a(-5.0F, -10.0F, -5.0F, 10.0F, 10.0F, 10.0F, $$3), fhu.a(0.0F, 13.0F, 0.0F));
-      $$1.a("lower_body", fhx.c().a(0, 36).a(-6.0F, -12.0F, -6.0F, 12.0F, 12.0F, 12.0F, $$3), fhu.a(0.0F, 24.0F, 0.0F));
-      return fhy.a($$0, 64, 64);
+   public static fid c() {
+      fif $$0 = ffl.a(fib.a, 0.0F);
+      fig $$1 = $$0.a();
+      $$1.a("right_arm", fic.c().a(40, 16).a(-1.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F), fhz.a(-5.0F, 2.0F, 0.0F));
+      $$1.a("left_arm", fic.c().a(40, 16).a().a(-1.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F), fhz.a(5.0F, 2.0F, 0.0F));
+      $$1.a("right_leg", fic.c().a(0, 16).a(-1.0F, 0.0F, -1.0F, 2.0F, 12.0F, 2.0F), fhz.a(-2.0F, 12.0F, 0.0F));
+      $$1.a("left_leg", fic.c().a(0, 16).a().a(-1.0F, 0.0F, -1.0F, 2.0F, 12.0F, 2.0F), fhz.a(2.0F, 12.0F, 0.0F));
+      return fid.a($$0, 64, 32);
    }
 
-   @Override
+   public void a(T $$0, float $$1, float $$2, float $$3) {
+      this.s = ffl.a.a;
+      this.r = ffl.a.a;
+      cja $$4 = $$0.b(bgs.a);
+      if ($$4.a(cjd.nG) && $$0.fS()) {
+         if ($$0.fk() == biv.b) {
+            this.s = ffl.a.d;
+         } else {
+            this.r = ffl.a.d;
+         }
+      }
+
+      super.a($$0, $$1, $$2, $$3);
+   }
+
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.g.f = $$4 * (float) (Math.PI / 180.0);
-      this.g.e = $$5 * (float) (Math.PI / 180.0);
-      this.f.f = $$4 * (float) (Math.PI / 180.0) * 0.25F;
-      float $$6 = arp.a(this.f.f);
-      float $$7 = arp.b(this.f.f);
-      this.h.f = this.f.f;
-      this.i.f = this.f.f + (float) Math.PI;
-      this.h.b = $$7 * 5.0F;
-      this.h.d = -$$6 * 5.0F;
-      this.i.b = -$$7 * 5.0F;
-      this.i.d = $$6 * 5.0F;
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      cja $$6 = $$0.eR();
+      if ($$0.fS() && ($$6.b() || !$$6.a(cjd.nG))) {
+         float $$7 = ars.a(this.c * (float) Math.PI);
+         float $$8 = ars.a((1.0F - (1.0F - this.c) * (1.0F - this.c)) * (float) Math.PI);
+         this.n.g = 0.0F;
+         this.o.g = 0.0F;
+         this.n.f = -(0.1F - $$7 * 0.6F);
+         this.o.f = 0.1F - $$7 * 0.6F;
+         this.n.e = (float) (-Math.PI / 2);
+         this.o.e = (float) (-Math.PI / 2);
+         this.n.e -= $$7 * 1.2F - $$8 * 0.4F;
+         this.o.e -= $$7 * 1.2F - $$8 * 0.4F;
+         fdy.a(this.n, this.o, $$3);
+      }
    }
 
    @Override
-   public fhs a() {
-      return this.b;
-   }
-
-   public fhs c() {
-      return this.g;
+   public void a(biv $$0, elk $$1) {
+      float $$2 = $$0 == biv.b ? 1.0F : -1.0F;
+      fhx $$3 = this.a($$0);
+      $$3.b += $$2;
+      $$3.a($$1);
+      $$3.b -= $$2;
    }
 }

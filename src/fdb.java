@@ -1,36 +1,59 @@
-import com.mojang.authlib.GameProfile;
-import java.util.function.Supplier;
+import java.util.function.BiFunction;
+import java.util.function.UnaryOperator;
 
-public class fdb implements fdf {
-   private final GameProfile a;
-   private final Supplier<fzu> b;
-   private final tf c;
-
-   public fdb(GameProfile $$0) {
-      this.a = $$0;
-      this.b = eql.O().al().a($$0);
-      this.c = tf.b($$0.getName());
+public record fdb(dll a, ht<dio> b, dli c, hn<afd> d, afe e, cqj f) {
+   public fdb(dlj $$0, hn<afd> $$1, afe $$2, cqj $$3) {
+      this($$0.a(), $$0.b(), $$1, $$2, $$3);
    }
 
-   @Override
-   public void a(fdd $$0) {
-      eql.O().J().b(new acq(this.a.getId()));
+   public fdb(dll $$0, dli $$1, hn<afd> $$2, afe $$3, cqj $$4) {
+      this($$0, $$2.a(afd.c).d(je.aI), $$1, $$2.a(afd.c), $$3, $$4);
    }
 
-   @Override
-   public tf aD_() {
+   public fdb a(dll $$0, dli $$1) {
+      return new fdb($$0, this.b, $$1, this.d, this.e, this.f);
+   }
+
+   public fdb a(fdb.b $$0) {
+      return new fdb($$0.apply(this.a), this.b, this.c, this.d, this.e, this.f);
+   }
+
+   public fdb a(fdb.a $$0) {
+      return new fdb(this.a, this.b, $$0.apply(this.a(), this.c), this.d, this.e, this.f);
+   }
+
+   public hu.b a() {
+      return this.d.a();
+   }
+
+   public dll b() {
+      return this.a;
+   }
+
+   public ht<dio> c() {
+      return this.b;
+   }
+
+   public dli d() {
       return this.c;
    }
 
-   @Override
-   public void a(erv $$0, float $$1, int $$2) {
-      $$0.a(1.0F, 1.0F, 1.0F, (float)$$2 / 255.0F);
-      etf.a($$0, this.b.get(), 2, 2, 12);
-      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+   public hn<afd> e() {
+      return this.d;
    }
 
-   @Override
-   public boolean aE_() {
-      return true;
+   public afe f() {
+      return this.e;
+   }
+
+   public cqj g() {
+      return this.f;
+   }
+
+   @FunctionalInterface
+   public interface a extends BiFunction<hu.b, dli, dli> {
+   }
+
+   public interface b extends UnaryOperator<dll> {
    }
 }

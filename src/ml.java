@@ -1,139 +1,24 @@
-import java.util.concurrent.CompletableFuture;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public class ml extends my<cqj> {
-   public ml(jk $$0, CompletableFuture<hg.b> $$1) {
-      super($$0, jc.ap, $$1);
-   }
+public class ml implements mk.a {
+   private static final Logger a = LogUtils.getLogger();
 
    @Override
-   protected void a(hg.b $$0) {
-      this.b(apk.a).a(cqq.X).a(cqq.V).a(cqq.T).a(cqq.R);
-      this.b(apk.b).b(apk.a).a(cqq.W).a(cqq.S).a(cqq.U).a(cqq.Q).a(cqq.P);
-      this.b(apk.c).a(cqq.M).a(cqq.N);
-      this.b(apk.d).a(cqq.K).a(cqq.L);
-      this.b(apk.e).a(cqq.D).a(cqq.H).a(cqq.I).a(cqq.J).a(cqq.G).a(cqq.E);
-      this.b(apk.f).a(cqq.A).a(cqq.B).a(cqq.C);
-      this.b(apk.g).a(cqq.t).a(cqq.v).a(cqq.u);
-      this.b(apk.h).a(cqq.p).a(cqq.q).a(cqq.n).a(cqq.o);
-      this.b(apk.i).a(cqq.z).a(cqq.x).a(cqq.y);
-      this.b(apk.j).a(cqq.i).a(cqq.j).a(cqq.k).a(cqq.m).a(cqq.l).a(cqq.F);
-      this.b(apk.k).a(cqq.r).a(cqq.s).a(cqq.w);
-      my.b<cqj> $$1 = this.b(apk.m);
-      cqx.a.a.a().forEach($$1::a);
-      my.b<cqj> $$2 = this.b(apk.l);
-      cqx.a.b.a().forEach($$2::a);
-      this.b(apk.n).a(cqq.ah).a(cqq.ai).a(cqq.aj).a(cqq.ak).a(cqq.al);
-      this.b(apk.p).b(apk.c);
-      this.b(apk.q).a(cqq.f);
-      this.b(apk.r).a(cqq.q).a(cqq.d).a(cqq.G);
-      this.b(apk.s).a(cqq.z).a(cqq.x);
-      this.b(apk.t)
-         .b(apk.b)
-         .b(apk.d)
-         .b(apk.c)
-         .b(apk.e)
-         .b(apk.g)
-         .b(apk.h)
-         .b(apk.i)
-         .b(apk.j)
-         .a(cqq.O)
-         .a(cqq.Y)
-         .a(cqq.e)
-         .a(cqq.w)
-         .a(cqq.f)
-         .a(cqq.r)
-         .a(cqq.d)
-         .a(cqq.b)
-         .a(cqq.c)
-         .a(cqq.g)
-         .a(cqq.h)
-         .a(cqq.s)
-         .a(cqq.Z)
-         .a(cqq.aa);
-      this.b(apk.u).b(apk.f);
-      this.b(apk.X).a(cqq.ab);
-      this.b(apk.v).b(apk.a);
-      this.b(apk.W).b(apk.b).b(apk.d);
-      this.b(apk.w).a(cqq.W).a(cqq.U).a(cqq.S).a(cqq.X).a(cqq.V).a(cqq.T);
-      this.b(apk.x).a(cqq.Q).a(cqq.P).a(cqq.R);
-      this.b(apk.y).a(cqq.f).a(cqq.b).a(cqq.r).a(cqq.d).a(cqq.p).b(apk.e).a(cqq.F);
-      this.b(apk.z).a(cqq.f);
-      this.b(apk.A).b(apk.i);
-      this.b(apk.B).b(apk.b);
-      this.b(apk.C).a(cqq.g).a(cqq.h);
-      this.b(apk.D).b(apk.f).b(apk.g).a(cqq.s).a(cqq.w).a(cqq.O).b(apk.e);
-      this.b(apk.E).b(apk.c).b(apk.d).b(apk.h).b(apk.j).a(cqq.Y).a(cqq.e).a(cqq.Z).a(cqq.aa).a(cqq.r).a(cqq.d).a(cqq.b).a(cqq.c);
-      this.b(apk.F).b(apk.c);
-      this.b(apk.G).b(apk.b);
-      this.b(apk.I).a(cqq.g);
-      this.b(apk.J).a(cqq.f);
-      this.b(apk.K).a(cqq.b).a(cqq.D);
-      this.b(apk.L).a(cqq.r);
-      this.b(apk.M).a(cqq.d);
-      this.b(apk.N).a(cqq.p);
-      this.b(apk.O).a(cqq.p).a(cqq.q).a(cqq.n).a(cqq.o).a(cqq.m).a(cqq.x);
-      this.b(apk.P).a(cqq.l);
-      this.b(apk.o)
-         .a(cqq.b)
-         .a(cqq.c)
-         .a(cqq.d)
-         .a(cqq.e)
-         .a(cqq.f)
-         .a(cqq.i)
-         .a(cqq.j)
-         .a(cqq.k)
-         .a(cqq.l)
-         .a(cqq.m)
-         .a(cqq.n)
-         .a(cqq.o)
-         .a(cqq.p)
-         .a(cqq.q)
-         .a(cqq.r)
-         .a(cqq.s)
-         .a(cqq.t)
-         .a(cqq.u)
-         .a(cqq.v)
-         .a(cqq.w)
-         .a(cqq.x)
-         .a(cqq.y)
-         .a(cqq.z)
-         .a(cqq.A)
-         .a(cqq.B)
-         .a(cqq.C)
-         .a(cqq.D)
-         .a(cqq.F)
-         .a(cqq.G)
-         .a(cqq.H)
-         .a(cqq.I)
-         .a(cqq.J)
-         .a(cqq.Y)
-         .a(cqq.Z)
-         .a(cqq.aa);
-      this.b(apk.H).b(apk.l);
-      this.b(apk.Q).b(apk.m);
-      this.b(apk.R).a(cqq.af);
-      this.b(apk.S).a(cqq.ae).a(cqq.ac).a(cqq.af).a(cqq.ad);
-      this.b(apk.T).a(cqq.ab);
-      this.b(apk.U).b(apk.m);
-      this.b(apk.V).a(cqq.ai).a(cqq.aj);
-      this.b(apk.ab).a(cqq.P);
-      this.b(apk.Y).b(apk.b).b(apk.d);
-      this.b(apk.Z).a(cqq.g).a(cqq.h);
-      this.b(apk.aa).b(apk.b).b(apk.d).a(cqq.g).a(cqq.h);
-      this.b(apk.ae).a(cqq.Y);
-      this.b(apk.af).a(cqq.Y);
-      this.b(apk.ag).a(cqq.a);
-      this.b(apk.ah).a(cqq.d).a(cqq.e).a(cqq.H).a(cqq.I).a(cqq.G).a(cqq.W).a(cqq.X).a(cqq.F).a(cqq.ab).a(cqq.L).a(cqq.q).a(cqq.N).b(apk.n);
-      this.b(apk.ai).a(cqq.f).a(cqq.P).b(apk.i).b(apk.k).b(apk.m).b(apk.f).a(cqq.h);
-      this.b(apk.aj).a(cqq.f);
-      this.b(apk.ak).a(cqq.d).a(cqq.e).a(cqq.W).a(cqq.q).a(cqq.L).a(cqq.N).a(cqq.H).a(cqq.I).a(cqq.G).a(cqq.F);
-      this.b(apk.al).b(apk.d);
-      this.b(apk.am).a(cqq.aa);
-      this.b(apk.an).a(cqq.W).a(cqq.X);
-      this.b(apk.ao).b(apk.d);
-      this.b(apk.ap).a(cqq.g).a(cqq.h);
-      this.b(apk.aq).a(cqq.d).a(cqq.e).a(cqq.W).a(cqq.q).a(cqq.L).a(cqq.N).a(cqq.H).a(cqq.I).a(cqq.G).a(cqq.F);
-      this.b(apk.ac).a(cqq.z).a(cqq.Y).a(cqq.h).a(cqq.G).a(cqq.H).a(cqq.I).a(cqq.g).a(cqq.x);
-      this.b(apk.ad).a(cqq.A).a(cqq.ag).a(cqq.ae).a(cqq.f).a(cqq.B).a(cqq.ac).a(cqq.r).a(cqq.s).a(cqq.af).a(cqq.ad).a(cqq.w).a(cqq.C);
+   public qu apply(String $$0, qu $$1) {
+      return $$0.startsWith("data/minecraft/structures/") ? a($$0, $$1) : $$1;
+   }
+
+   public static qu a(String $$0, qu $$1) {
+      dyw $$2 = new dyw();
+      int $$3 = rg.b($$1, 500);
+      int $$4 = 3563;
+      if ($$3 < 3563) {
+         a.warn("SNBT Too old, do not forget to update: {} < {}: {}", new Object[]{$$3, 3563, $$0});
+      }
+
+      qu $$5 = asv.f.a(asw.a(), $$1, $$3);
+      $$2.a(jd.f.p(), $$5);
+      return $$2.a(new qu());
    }
 }

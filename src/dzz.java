@@ -1,61 +1,17 @@
-public class dzz extends eab {
-   @Override
-   public cis a() {
-      return cja.a;
+public interface dzz {
+   void a(gw var1);
+
+   boolean E_();
+
+   int a();
+
+   default void a(gw $$0, boolean $$1) {
+      this.a(hz.a($$0), $$1);
    }
 
-   @Override
-   public boolean a(eac $$0, cor $$1, gu $$2, eab $$3, ha $$4) {
-      return true;
-   }
+   void a(hz var1, boolean var2);
 
-   @Override
-   public ehd a(cor $$0, gu $$1, eac $$2) {
-      return ehd.b;
-   }
+   void a(cox var1, boolean var2);
 
-   @Override
-   public int a(cpo $$0) {
-      return 0;
-   }
-
-   @Override
-   protected boolean b() {
-      return true;
-   }
-
-   @Override
-   protected float c() {
-      return 0.0F;
-   }
-
-   @Override
-   public float a(eac $$0, cor $$1, gu $$2) {
-      return 0.0F;
-   }
-
-   @Override
-   public float a(eac $$0) {
-      return 0.0F;
-   }
-
-   @Override
-   protected dez b(eac $$0) {
-      return csm.a.n();
-   }
-
-   @Override
-   public boolean c(eac $$0) {
-      return false;
-   }
-
-   @Override
-   public int d(eac $$0) {
-      return 0;
-   }
-
-   @Override
-   public ehw b(eac $$0, cor $$1, gu $$2) {
-      return eht.a();
-   }
+   void b(cox var1);
 }

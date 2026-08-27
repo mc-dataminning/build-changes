@@ -1,70 +1,67 @@
-public class fgs<T extends bwv> extends fdq<T> {
-   private static final float a = 9.0F;
-   private static final float b = 100.0F;
-   private final fhs f;
-   private final fhs g;
+import java.util.Arrays;
 
-   public fgs(fhs $$0) {
-      super(0.5F, 24.0F);
-      this.f = $$0.b("root");
-      this.g = this.f.b("bone").b("body").b("head");
+public class fgs<T extends bil> extends ffh<T> {
+   private static final int a = 7;
+   private final fhx b;
+   private final fhx[] f = new fhx[7];
+   private final fhx[] g = new fhx[3];
+   private static final int[][] h = new int[][]{{3, 2, 2}, {4, 3, 2}, {6, 4, 3}, {3, 3, 3}, {2, 2, 3}, {2, 1, 2}, {1, 1, 2}};
+   private static final int[][] i = new int[][]{{0, 0}, {0, 4}, {0, 9}, {0, 16}, {0, 22}, {11, 0}, {13, 4}};
+
+   public fgs(fhx $$0) {
+      this.b = $$0;
+      Arrays.setAll(this.f, $$1 -> $$0.b(b($$1)));
+      Arrays.setAll(this.g, $$1 -> $$0.b(a($$1)));
    }
 
-   public static fhy b() {
-      fia $$0 = new fia();
-      fib $$1 = $$0.a().a("root", fhx.c(), fhu.a(0.0F, 5.0F, 0.0F));
-      fib $$2 = $$1.a("bone", fhx.c(), fhu.a(0.0F, 0.0F, 0.0F));
-      fib $$3 = $$2.a(
-         "body",
-         fhx.c()
-            .a(62, 68)
-            .a(-12.5F, -14.0F, -20.0F, 25.0F, 29.0F, 40.0F, new fhw(0.0F))
-            .a(62, 0)
-            .a(-12.5F, -14.0F, -20.0F, 25.0F, 24.0F, 40.0F, new fhw(0.5F))
-            .a(87, 68)
-            .a(-12.5F, 12.0F, -20.0F, 25.0F, 0.0F, 40.0F, new fhw(0.0F)),
-         fhu.a(0.0F, 0.0F, 0.0F)
-      );
-      $$2.a("right_front_leg", fhx.c().a(32, 87).a(-3.5F, -1.0F, -4.0F, 7.0F, 10.0F, 8.0F, new fhw(0.0F)), fhu.a(-7.5F, 10.0F, -15.0F));
-      $$2.a("right_mid_leg", fhx.c().a(32, 105).a(-3.5F, -1.0F, -4.0F, 7.0F, 10.0F, 8.0F, new fhw(0.0F)), fhu.a(-7.5F, 10.0F, 0.0F));
-      $$2.a("right_hind_leg", fhx.c().a(32, 123).a(-3.5F, -1.0F, -4.0F, 7.0F, 10.0F, 8.0F, new fhw(0.0F)), fhu.a(-7.5F, 10.0F, 15.0F));
-      $$2.a("left_front_leg", fhx.c().a(0, 87).a(-3.5F, -1.0F, -4.0F, 7.0F, 10.0F, 8.0F, new fhw(0.0F)), fhu.a(7.5F, 10.0F, -15.0F));
-      $$2.a("left_mid_leg", fhx.c().a(0, 105).a(-3.5F, -1.0F, -4.0F, 7.0F, 10.0F, 8.0F, new fhw(0.0F)), fhu.a(7.5F, 10.0F, 0.0F));
-      $$2.a("left_hind_leg", fhx.c().a(0, 123).a(-3.5F, -1.0F, -4.0F, 7.0F, 10.0F, 8.0F, new fhw(0.0F)), fhu.a(7.5F, 10.0F, 15.0F));
-      fib $$4 = $$3.a(
-         "head",
-         fhx.c().a(8, 15).a(-6.5F, -7.5F, -11.5F, 13.0F, 18.0F, 11.0F, new fhw(0.0F)).a(8, 4).a(-6.5F, 7.5F, -11.5F, 13.0F, 0.0F, 11.0F, new fhw(0.0F)),
-         fhu.a(0.0F, 6.5F, -19.48F)
-      );
-      $$4.a("left_ear", fhx.c().a(2, 0).a(0.0F, 0.0F, -3.0F, 1.0F, 19.0F, 7.0F, new fhw(0.0F)), fhu.a(6.51F, -7.5F, -4.51F));
-      $$4.a("right_ear", fhx.c().a(48, 0).a(-1.0F, 0.0F, -3.0F, 1.0F, 19.0F, 7.0F, new fhw(0.0F)), fhu.a(-6.51F, -7.5F, -4.51F));
-      $$4.a("nose", fhx.c().a(10, 45).a(-6.5F, -2.0F, -9.0F, 13.0F, 2.0F, 9.0F, new fhw(0.0F)), fhu.a(0.0F, -4.5F, -11.5F));
-      $$4.a("lower_beak", fhx.c().a(10, 57).a(-6.5F, -7.0F, -8.0F, 13.0F, 12.0F, 9.0F, new fhw(0.0F)), fhu.a(0.0F, 2.5F, -12.5F));
-      return fhy.a($$0, 192, 192);
+   private static String a(int $$0) {
+      return "layer" + $$0;
    }
 
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.a().e().forEach(fhs::c);
-      this.g.e = $$5 * (float) (Math.PI / 180.0);
-      this.g.f = $$4 * (float) (Math.PI / 180.0);
-      if ($$0.q()) {
-         this.a(erh.e, $$1, $$2, 9.0F, 100.0F);
-      } else {
-         this.a(erh.d, $$1, $$2, 9.0F, 100.0F);
+   private static String b(int $$0) {
+      return "segment" + $$0;
+   }
+
+   public static fid b() {
+      fif $$0 = new fif();
+      fig $$1 = $$0.a();
+      float[] $$2 = new float[7];
+      float $$3 = -3.5F;
+
+      for (int $$4 = 0; $$4 < 7; $$4++) {
+         $$1.a(
+            b($$4),
+            fic.c().a(i[$$4][0], i[$$4][1]).a((float)h[$$4][0] * -0.5F, 0.0F, (float)h[$$4][2] * -0.5F, (float)h[$$4][0], (float)h[$$4][1], (float)h[$$4][2]),
+            fhz.a(0.0F, (float)(24 - h[$$4][1]), $$3)
+         );
+         $$2[$$4] = $$3;
+         if ($$4 < 6) {
+            $$3 += (float)(h[$$4][2] + h[$$4 + 1][2]) * 0.5F;
+         }
       }
 
-      this.a($$0.bX, erh.f, $$3);
-      this.a($$0.bW, erh.c, $$3);
-      this.a($$0.bY, erh.g, $$3);
-      this.a($$0.bT, erh.i, $$3);
-      this.a($$0.bU, erh.b, $$3);
-      if (this.e) {
-         this.a(erh.a);
-      }
+      $$1.a(a(0), fic.c().a(20, 0).a(-5.0F, 0.0F, (float)h[2][2] * -0.5F, 10.0F, 8.0F, (float)h[2][2]), fhz.a(0.0F, 16.0F, $$2[2]));
+      $$1.a(a(1), fic.c().a(20, 11).a(-3.0F, 0.0F, (float)h[4][2] * -0.5F, 6.0F, 4.0F, (float)h[4][2]), fhz.a(0.0F, 20.0F, $$2[4]));
+      $$1.a(a(2), fic.c().a(20, 18).a(-3.0F, 0.0F, (float)h[4][2] * -0.5F, 6.0F, 5.0F, (float)h[1][2]), fhz.a(0.0F, 19.0F, $$2[1]));
+      return fid.a($$0, 64, 32);
    }
 
    @Override
-   public fhs a() {
-      return this.f;
+   public fhx a() {
+      return this.b;
+   }
+
+   @Override
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      for (int $$6 = 0; $$6 < this.f.length; $$6++) {
+         this.f[$$6].f = ars.b($$3 * 0.9F + (float)$$6 * 0.15F * (float) Math.PI) * (float) Math.PI * 0.05F * (float)(1 + Math.abs($$6 - 2));
+         this.f[$$6].b = ars.a($$3 * 0.9F + (float)$$6 * 0.15F * (float) Math.PI) * (float) Math.PI * 0.2F * (float)Math.abs($$6 - 2);
+      }
+
+      this.g[0].f = this.f[2].f;
+      this.g[1].f = this.f[4].f;
+      this.g[1].b = this.f[4].b;
+      this.g[2].f = this.f[1].f;
+      this.g[2].b = this.f[1].b;
    }
 }

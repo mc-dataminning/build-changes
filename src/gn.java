@@ -1,56 +1,56 @@
 import com.google.gson.JsonObject;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
+import com.mojang.brigadier.arguments.DoubleArgumentType;
 
-public class gn implements gg<IntegerArgumentType, gn.a> {
-   public void a(gn.a $$0, si $$1) {
-      boolean $$2 = $$0.b != Integer.MIN_VALUE;
-      boolean $$3 = $$0.c != Integer.MAX_VALUE;
-      $$1.k(gi.a($$2, $$3));
+public class gn implements gi<DoubleArgumentType, gn.a> {
+   public void a(gn.a $$0, sl $$1) {
+      boolean $$2 = $$0.b != -Double.MAX_VALUE;
+      boolean $$3 = $$0.c != Double.MAX_VALUE;
+      $$1.k(gk.a($$2, $$3));
       if ($$2) {
-         $$1.p($$0.b);
+         $$1.a($$0.b);
       }
 
       if ($$3) {
-         $$1.p($$0.c);
+         $$1.a($$0.c);
       }
    }
 
-   public gn.a a(si $$0) {
+   public gn.a a(sl $$0) {
       byte $$1 = $$0.readByte();
-      int $$2 = gi.a($$1) ? $$0.readInt() : Integer.MIN_VALUE;
-      int $$3 = gi.b($$1) ? $$0.readInt() : Integer.MAX_VALUE;
+      double $$2 = gk.a($$1) ? $$0.readDouble() : -Double.MAX_VALUE;
+      double $$3 = gk.b($$1) ? $$0.readDouble() : Double.MAX_VALUE;
       return new gn.a($$2, $$3);
    }
 
    public void a(gn.a $$0, JsonObject $$1) {
-      if ($$0.b != Integer.MIN_VALUE) {
+      if ($$0.b != -Double.MAX_VALUE) {
          $$1.addProperty("min", $$0.b);
       }
 
-      if ($$0.c != Integer.MAX_VALUE) {
+      if ($$0.c != Double.MAX_VALUE) {
          $$1.addProperty("max", $$0.c);
       }
    }
 
-   public gn.a a(IntegerArgumentType $$0) {
+   public gn.a a(DoubleArgumentType $$0) {
       return new gn.a($$0.getMinimum(), $$0.getMaximum());
    }
 
-   public final class a implements gg.a<IntegerArgumentType> {
-      final int b;
-      final int c;
+   public final class a implements gi.a<DoubleArgumentType> {
+      final double b;
+      final double c;
 
-      a(int $$1, int $$2) {
+      a(double $$1, double $$2) {
          this.b = $$1;
          this.c = $$2;
       }
 
-      public IntegerArgumentType a(dl $$0) {
-         return IntegerArgumentType.integer(this.b, this.c);
+      public DoubleArgumentType a(dn $$0) {
+         return DoubleArgumentType.doubleArg(this.b, this.c);
       }
 
       @Override
-      public gg<IntegerArgumentType, ?> a() {
+      public gi<DoubleArgumentType, ?> a() {
          return gn.this;
       }
    }

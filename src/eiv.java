@@ -1,8 +1,5 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.function.Function;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface eiv {
+public interface eiv<T> {
+   rn b(long var1, Function<T, String> var3);
 }

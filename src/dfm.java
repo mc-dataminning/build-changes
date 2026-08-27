@@ -1,20 +1,18 @@
-public enum dfm implements ash {
-   a("head"),
-   b("foot");
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-   private final String c;
+public class dfm implements Predicate<dfe> {
+   private final csq a;
 
-   private dfm(String $$0) {
-      this.c = $$0;
+   public dfm(csq $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   public String toString() {
-      return this.c;
+   public static dfm a(csq $$0) {
+      return new dfm($$0);
    }
 
-   @Override
-   public String c() {
-      return this.c;
+   public boolean a(@Nullable dfe $$0) {
+      return $$0 != null && $$0.a(this.a);
    }
 }

@@ -1,29 +1,46 @@
-public enum ewf {
-   a,
-   b;
+import java.util.List;
+import java.util.function.BiConsumer;
+import java.util.function.Consumer;
 
-   public ewf a() {
-      return switch (this) {
-         case a -> b;
-         case b -> a;
-      };
+public class ewf<T> {
+   private final T b;
+   private final BiConsumer<Consumer<String>, T> c;
+   public static final ewf<?> a = new ewf<>(ass.a, ($$0, $$1) -> {
+   });
+
+   private ewf(T $$0, BiConsumer<Consumer<String>, T> $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public ewg b() {
-      return switch (this) {
-         case a -> ewg.d;
-         case b -> ewg.b;
-      };
+   public static ewf<?> a(String $$0) {
+      return new ewf<>($$0, Consumer::accept);
    }
 
-   public ewg c() {
-      return switch (this) {
-         case a -> ewg.c;
-         case b -> ewg.a;
-      };
+   public static ewf<?> a(ti $$0) {
+      return new ewf<>($$0, ($$0x, $$1) -> $$0x.accept($$1.getString()));
    }
 
-   public ewg a(boolean $$0) {
-      return $$0 ? this.b() : this.c();
+   public static ewf<?> a(List<ti> $$0) {
+      return new ewf<>($$0, ($$1, $$2) -> $$0.stream().map(ti::getString).forEach($$1));
+   }
+
+   public void a(Consumer<String> $$0) {
+      this.c.accept($$0, this.b);
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return !($$0 instanceof ewf<?> $$1) ? false : $$1.c == this.c && $$1.b.equals(this.b);
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      int $$0 = this.b.hashCode();
+      return 31 * $$0 + this.c.hashCode();
    }
 }

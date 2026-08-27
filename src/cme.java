@@ -1,90 +1,51 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import java.util.List;
-import java.util.Map;
+public interface cme<C extends bgm> {
+   boolean a(C var1, cpq var2);
 
-public class cme extends cls {
-   public cme(aer $$0, clq $$1) {
-      super($$0, $$1);
-   }
+   cja a(C var1, hu var2);
 
-   public boolean a(cer $$0, cpl $$1) {
-      List<cix> $$2 = Lists.newArrayList();
+   boolean a(int var1, int var2);
 
-      for (int $$3 = 0; $$3 < $$0.b(); $$3++) {
-         cix $$4 = $$0.a($$3);
-         if (!$$4.b()) {
-            $$2.add($$4);
-            if ($$2.size() > 1) {
-               cix $$5 = $$2.get(0);
-               if (!$$4.a($$5.d()) || $$5.L() != 1 || $$4.L() != 1 || !$$5.d().o()) {
-                  return false;
-               }
-            }
+   cja a(hu var1);
+
+   default hp<cja> a(C $$0) {
+      hp<cja> $$1 = hp.a($$0.b(), cja.b);
+
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         civ $$3 = $$0.a($$2).d();
+         if ($$3.t()) {
+            $$1.set($$2, new cja($$3.s()));
          }
       }
 
-      return $$2.size() == 2;
+      return $$1;
    }
 
-   public cix a(cer $$0, hs $$1) {
-      List<cix> $$2 = Lists.newArrayList();
-
-      for (int $$3 = 0; $$3 < $$0.b(); $$3++) {
-         cix $$4 = $$0.a($$3);
-         if (!$$4.b()) {
-            $$2.add($$4);
-            if ($$2.size() > 1) {
-               cix $$5 = $$2.get(0);
-               if (!$$4.a($$5.d()) || $$5.L() != 1 || $$4.L() != 1 || !$$5.d().o()) {
-                  return cix.b;
-               }
-            }
-         }
-      }
-
-      if ($$2.size() == 2) {
-         cix $$6 = $$2.get(0);
-         cix $$7 = $$2.get(1);
-         if ($$6.a($$7.d()) && $$6.L() == 1 && $$7.L() == 1 && $$6.d().o()) {
-            cis $$8 = $$6.d();
-            int $$9 = $$8.n() - $$6.k();
-            int $$10 = $$8.n() - $$7.k();
-            int $$11 = $$9 + $$10 + $$8.n() * 5 / 100;
-            int $$12 = $$8.n() - $$11;
-            if ($$12 < 0) {
-               $$12 = 0;
-            }
-
-            cix $$13 = new cix($$6.d());
-            $$13.b($$12);
-            Map<cne, Integer> $$14 = Maps.newHashMap();
-            Map<cne, Integer> $$15 = cng.a($$6);
-            Map<cne, Integer> $$16 = cng.a($$7);
-            jb.g.s().filter(cne::c).forEach($$3x -> {
-               int $$4 = Math.max($$15.getOrDefault($$3x, 0), $$16.getOrDefault($$3x, 0));
-               if ($$4 > 0) {
-                  $$14.put($$3x, $$4);
-               }
-            });
-            if (!$$14.isEmpty()) {
-               cng.a($$14, $$13);
-            }
-
-            return $$13;
-         }
-      }
-
-      return cix.b;
+   default hp<cmb> a() {
+      return hp.a();
    }
 
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 * $$1 >= 2;
+   default boolean ah_() {
+      return false;
    }
 
-   @Override
-   public cmc<?> ai_() {
-      return cmc.o;
+   default boolean h() {
+      return true;
+   }
+
+   default String c() {
+      return "";
+   }
+
+   default cja g() {
+      return new cja(csr.cA);
+   }
+
+   cmh<?> ai_();
+
+   cmi<?> e();
+
+   default boolean i() {
+      hp<cmb> $$0 = this.a();
+      return $$0.isEmpty() || $$0.stream().anyMatch($$0x -> $$0x.a().length == 0);
    }
 }

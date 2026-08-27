@@ -1,92 +1,73 @@
-import javax.annotation.Nullable;
-
-public class aar implements ux<wp> {
-   private static final int a = 1;
-   private static final int b = 2;
-   private static final int c = 4;
-   private final int d;
-   private final bht e;
+public class aar implements va<ws> {
+   private final int a;
+   private final double b;
+   private final double c;
+   private final double d;
+   private final byte e;
    private final byte f;
-   private final int g;
-   private final byte h;
-   @Nullable
-   private final bhv.a i;
+   private final boolean g;
 
-   public aar(int $$0, bhv $$1) {
-      this.d = $$0;
-      this.e = $$1.c();
-      this.f = (byte)($$1.e() & 0xFF);
-      this.g = $$1.d();
-      byte $$2 = 0;
-      if ($$1.f()) {
-         $$2 = (byte)($$2 | 1);
-      }
-
-      if ($$1.g()) {
-         $$2 = (byte)($$2 | 2);
-      }
-
-      if ($$1.h()) {
-         $$2 = (byte)($$2 | 4);
-      }
-
-      this.h = $$2;
-      this.i = $$1.a().orElse(null);
+   public aar(bil $$0) {
+      this.a = $$0.ah();
+      ehi $$1 = $$0.dj();
+      this.b = $$1.c;
+      this.c = $$1.d;
+      this.d = $$1.e;
+      this.e = (byte)((int)($$0.dA() * 256.0F / 360.0F));
+      this.f = (byte)((int)($$0.dC() * 256.0F / 360.0F));
+      this.g = $$0.aA();
    }
 
-   public aar(si $$0) {
-      this.d = $$0.m();
-      this.e = $$0.a(jb.e);
+   public aar(sl $$0) {
+      this.a = $$0.m();
+      this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
+      this.d = $$0.readDouble();
+      this.e = $$0.readByte();
       this.f = $$0.readByte();
-      this.g = $$0.m();
-      this.h = $$0.readByte();
-      this.i = $$0.c($$0x -> $$0x.a(rc.a, bhv.a.a));
+      this.g = $$0.readBoolean();
    }
 
    @Override
-   public void a(si $$0) {
-      $$0.c(this.d);
-      $$0.a(jb.e, this.e);
+   public void a(sl $$0) {
+      $$0.c(this.a);
+      $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.k(this.e);
       $$0.k(this.f);
-      $$0.c(this.g);
-      $$0.k(this.h);
-      $$0.a(this.i, ($$0x, $$1) -> $$0x.a(rc.a, bhv.a.a, $$1));
+      $$0.a(this.g);
    }
 
-   public void a(wp $$0) {
+   public void a(ws $$0) {
       $$0.a(this);
    }
 
    public int a() {
+      return this.a;
+   }
+
+   public double d() {
+      return this.b;
+   }
+
+   public double e() {
+      return this.c;
+   }
+
+   public double f() {
       return this.d;
    }
 
-   public bht d() {
+   public byte g() {
       return this.e;
    }
 
-   public byte e() {
+   public byte h() {
       return this.f;
    }
 
-   public int f() {
-      return this.g;
-   }
-
-   public boolean g() {
-      return (this.h & 2) == 2;
-   }
-
-   public boolean h() {
-      return (this.h & 1) == 1;
-   }
-
    public boolean i() {
-      return (this.h & 4) == 4;
-   }
-
-   @Nullable
-   public bhv.a j() {
-      return this.i;
+      return this.g;
    }
 }

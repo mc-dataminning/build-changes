@@ -1,49 +1,76 @@
-import java.util.function.IntFunction;
-import javax.annotation.Nullable;
+import java.util.List;
+import java.util.function.Predicate;
 
-public enum bgn implements ash {
-   a(0, "peaceful"),
-   b(1, "easy"),
-   c(2, "normal"),
-   d(3, "hard");
-
-   public static final ash.a<bgn> e = ash.a(bgn::values);
-   private static final IntFunction<bgn> f = aqk.a(bgn::a, values(), aqk.a.b);
-   private final int g;
-   private final String h;
-
-   private bgn(int $$0, String $$1) {
-      this.g = $$0;
-      this.h = $$1;
+public class bgn {
+   public static cja a(List<cja> $$0, int $$1, int $$2) {
+      return $$1 >= 0 && $$1 < $$0.size() && !$$0.get($$1).b() && $$2 > 0 ? $$0.get($$1).a($$2) : cja.b;
    }
 
-   public int a() {
-      return this.g;
+   public static cja a(List<cja> $$0, int $$1) {
+      return $$1 >= 0 && $$1 < $$0.size() ? $$0.set($$1, cja.b) : cja.b;
    }
 
-   public tf b() {
-      return tf.c("options.difficulty." + this.h);
+   public static qu a(qu $$0, hp<cja> $$1) {
+      return a($$0, $$1, true);
    }
 
-   public tf d() {
-      return tf.c("options.difficulty." + this.h + ".info");
+   public static qu a(qu $$0, hp<cja> $$1, boolean $$2) {
+      ra $$3 = new ra();
+
+      for (int $$4 = 0; $$4 < $$1.size(); $$4++) {
+         cja $$5 = $$1.get($$4);
+         if (!$$5.b()) {
+            qu $$6 = new qu();
+            $$6.a("Slot", (byte)$$4);
+            $$5.b($$6);
+            $$3.add($$6);
+         }
+      }
+
+      if (!$$3.isEmpty() || $$2) {
+         $$0.a("Items", $$3);
+      }
+
+      return $$0;
    }
 
-   public static bgn a(int $$0) {
-      return f.apply($$0);
+   public static void b(qu $$0, hp<cja> $$1) {
+      ra $$2 = $$0.c("Items", 10);
+
+      for (int $$3 = 0; $$3 < $$2.size(); $$3++) {
+         qu $$4 = $$2.a($$3);
+         int $$5 = $$4.f("Slot") & 255;
+         if ($$5 >= 0 && $$5 < $$1.size()) {
+            $$1.set($$5, cja.a($$4));
+         }
+      }
    }
 
-   @Nullable
-   public static bgn a(String $$0) {
-      return e.a($$0);
+   public static int a(bgm $$0, Predicate<cja> $$1, int $$2, boolean $$3) {
+      int $$4 = 0;
+
+      for (int $$5 = 0; $$5 < $$0.b(); $$5++) {
+         cja $$6 = $$0.a($$5);
+         int $$7 = a($$6, $$1, $$2 - $$4, $$3);
+         if ($$7 > 0 && !$$3 && $$6.b()) {
+            $$0.a($$5, cja.b);
+         }
+
+         $$4 += $$7;
+      }
+
+      return $$4;
    }
 
-   public String e() {
-      return this.h;
-   }
-
-   @Override
-   public String c() {
-      return this.h;
+   public static int a(cja $$0, Predicate<cja> $$1, int $$2, boolean $$3) {
+      if ($$0.b() || !$$1.test($$0)) {
+         return 0;
+      } else if ($$3) {
+         return $$0.L();
+      } else {
+         int $$4 = $$2 < 0 ? $$0.L() : Math.min($$2, $$0.L());
+         $$0.h($$4);
+         return $$4;
+      }
    }
 }

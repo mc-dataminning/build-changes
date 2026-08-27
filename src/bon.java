@@ -1,35 +1,40 @@
 import com.google.common.collect.ImmutableMap;
 
-public class bon<E extends caq> extends bkp<E> {
-   private static final double c = 6.0;
-   private static final double d = 20.0;
+public class bon extends bks<cat> {
+   private static final int c = 25;
+   private static final int d = 20;
 
-   public bon(int $$0) {
-      super(ImmutableMap.of(brz.aA, bsa.a, brz.o, bsa.b, brz.m, bsa.b, brz.n, bsa.c, brz.B, bsa.c, brz.ay, bsa.c, brz.aF, bsa.c), $$0);
+   public bon() {
+      super(ImmutableMap.of(bsc.ax, bsd.a, bsc.o, bsd.b, bsc.aE, bsd.c, bsc.aC, bsd.c), cau.b);
    }
 
-   protected boolean a(akk $$0, E $$1, long $$2) {
+   protected void a(akn $$0, cat $$1, long $$2) {
+      bkb<cat> $$3 = $$1.dM();
+      $$3.a(bsc.aC, ass.a, 25L);
+      $$3.b(bsc.m);
+      bjb $$4 = $$1.dM().c(bsc.ax).get();
+      bku.a($$1, $$4);
+      $$1.b(bjn.l);
+      $$1.a($$4, 20, false);
+   }
+
+   protected boolean b(akn $$0, cat $$1, long $$2) {
       return true;
    }
 
-   protected void b(akk $$0, E $$1, long $$2) {
-      $$1.a(aow.zK, 5.0F, 1.0F);
+   protected void c(akn $$0, cat $$1, long $$2) {
+      if (!$$1.dM().a(bsc.aC) && !$$1.dM().a(bsc.aE)) {
+         $$1.dM().a(bsc.aE, ass.a, (long)(cau.b - 25));
+         $$1.a(aoz.zJ, 3.0F, 1.0F);
+      }
    }
 
-   protected void c(akk $$0, E $$1, long $$2) {
-      if ($$1.c(bjk.m)) {
-         $$1.b(bjk.a);
+   protected void d(akn $$0, cat $$1, long $$2) {
+      if ($$1.c(bjn.l)) {
+         $$1.b(bjn.a);
       }
 
-      $$1.dM().b(brz.aA);
-      $$1.dM().c(brz.B).filter($$1::a).ifPresent($$1x -> {
-         if ($$1.a($$1x, 6.0, 20.0)) {
-            $$1.c($$1x);
-         }
-
-         if (!$$1.dM().a(brz.ay)) {
-            car.a($$1, $$1x.dk());
-         }
-      });
+      $$1.dM().c(bsc.ax).ifPresent($$1::j);
+      $$1.dM().b(bsc.ax);
    }
 }

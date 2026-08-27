@@ -1,22 +1,23 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.OpticFinder;
+import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.serialization.Dynamic;
 
-public class ayi extends asx {
+public class ayi extends DataFix {
    public ayi(Schema $$0) {
-      super($$0, ayp.b);
+      super($$0, false);
    }
 
-   protected TypeRewriteRule makeRule() {
+   public TypeRewriteRule makeRule() {
       return this.fixTypeEverywhereTyped(
-         "PlayerUUIDFix",
-         this.getInputSchema().getType(this.a),
-         $$0 -> {
-            OpticFinder<?> $$1 = $$0.getType().findField("RootVehicle");
-            return $$0.updateTyped($$1, $$1.type(), $$0x -> $$0x.update(DSL.remainderFinder(), $$0xx -> c($$0xx, "Attach", "Attach").orElse($$0xx)))
-               .update(DSL.remainderFinder(), $$0x -> avz.c(avz.b($$0x)));
-         }
+         "OptionsProgrammerArtFix",
+         this.getInputSchema().getType(ays.e),
+         $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> $$0x.update("resourcePacks", this::a).update("incompatibleResourcePacks", this::a))
       );
+   }
+
+   private <T> Dynamic<T> a(Dynamic<T> $$0) {
+      return $$0.asString().result().map($$1 -> $$0.createString($$1.replace("\"programer_art\"", "\"programmer_art\""))).orElse($$0);
    }
 }

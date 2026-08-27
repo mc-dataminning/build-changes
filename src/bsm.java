@@ -1,19 +1,43 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Optional;
-import java.util.Set;
+public class bsm extends bsk {
+   private boolean p;
 
-public class bsm extends btd<bid> {
+   public bsm(bjd $$0, cpq $$1) {
+      super($$0, $$1);
+   }
+
    @Override
-   public Set<brz<?>> a() {
-      return ImmutableSet.of(brz.J, brz.h);
+   protected eay a(int $$0) {
+      this.p = this.a.ag() == bip.v;
+      this.o = new eaz(this.p);
+      return new eay(this.o, $$0);
    }
 
-   protected void a(akk $$0, bid $$1) {
-      $$1.dM().c(brz.h).ifPresent($$1x -> this.a($$1, $$1x));
+   @Override
+   protected boolean a() {
+      return this.p || this.a.bb();
    }
 
-   private void a(bid $$0, bsb $$1) {
-      Optional<bid> $$2 = $$1.a($$1x -> $$1x.ag() == $$0.ag() && !$$1x.i_()).map(bid.class::cast);
-      $$0.dM().a(brz.J, $$2);
+   @Override
+   protected ehi b() {
+      return new ehi(this.a.dp(), this.a.e(0.5), this.a.dv());
+   }
+
+   @Override
+   protected double a(ehi $$0) {
+      return $$0.d;
+   }
+
+   @Override
+   protected boolean a(ehi $$0, ehi $$1) {
+      return a(this.a, $$0, $$1, false);
+   }
+
+   @Override
+   public boolean a(gw $$0) {
+      return !this.b.a_($$0).i(this.b, $$0);
+   }
+
+   @Override
+   public void a(boolean $$0) {
    }
 }
