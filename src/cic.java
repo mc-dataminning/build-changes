@@ -1,10 +1,5 @@
-public class cic extends cja {
-   public cic(cja.a $$0) {
-      super($$0);
-   }
-
-   @Override
-   public boolean i(cjf $$0) {
-      return true;
+public class cic extends cjb implements cid {
+   public cic(int $$0, String $$1, cjg.a $$2) {
+      super($$0, $$1, $$2);
    }
 }

@@ -28,7 +28,7 @@ public class fr implements ArgumentType<fm> {
       return new fr($$0);
    }
 
-   public static ehn a(CommandContext<dt> $$0, String $$1) {
+   public static ehh a(CommandContext<dt> $$0, String $$1) {
       return ((fm)$$0.getArgument($$1, fm.class)).a((dt)$$0.getSource());
    }
 

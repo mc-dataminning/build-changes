@@ -1,48 +1,34 @@
 import com.mojang.logging.LogUtils;
 import org.slf4j.Logger;
 
-public class epw extends epv {
+public class epw extends epp {
    private static final Logger b = LogUtils.getLogger();
-   private static final tl c = tl.c("mco.configure.world.opening");
-   private final emw d;
-   private final eyk e;
-   private final boolean f;
-   private final eqv g;
+   private static final tl c = tl.c("mco.minigame.world.slot.screen.title");
+   private final long d;
+   private final int e;
+   private final Runnable f;
 
-   public epw(emw $$0, eyk $$1, boolean $$2, eqv $$3) {
+   public epw(long $$0, int $$1, Runnable $$2) {
       this.d = $$0;
       this.e = $$1;
       this.f = $$2;
-      this.g = $$3;
    }
 
    @Override
    public void run() {
-      emf $$0 = emf.a();
+      elz $$0 = elz.a();
 
       for (int $$1 = 0; $$1 < 25; $$1++) {
-         if (this.d()) {
-            return;
-         }
-
          try {
-            boolean $$2 = $$0.f(this.d.a);
-            if ($$2) {
-               this.g.execute(() -> {
-                  if (this.e instanceof eof) {
-                     ((eof)this.e).e();
-                  }
+            if (this.d()) {
+               return;
+            }
 
-                  this.d.e = emw.b.b;
-                  if (this.f) {
-                     ema.a(this.d, this.e);
-                  } else {
-                     this.g.a(this.e);
-                  }
-               });
+            if ($$0.a(this.d, this.e)) {
+               this.f.run();
                break;
             }
-         } catch (ent var4) {
+         } catch (enn var4) {
             if (this.d()) {
                return;
             }
@@ -53,7 +39,7 @@ public class epw extends epv {
                return;
             }
 
-            b.error("Failed to open server", var5);
+            b.error("Couldn't switch world!");
             this.a(var5);
          }
       }

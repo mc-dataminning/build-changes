@@ -1,49 +1,15 @@
-public class cmc extends cmb {
-   public cmc(cly $$0) {
-      super($$0);
-   }
-
-   public boolean a(cez $$0, cpv $$1) {
-      if (!this.a($$0.f(), $$0.g())) {
-         return false;
-      } else {
-         for (int $$2 = 0; $$2 < $$0.b(); $$2++) {
-            cjf $$3 = $$0.a($$2);
-            switch ($$2) {
-               case 1:
-               case 3:
-               case 5:
-               case 7:
-                  if (!$$3.a(aqa.aM)) {
-                     return false;
-                  }
-                  break;
-               case 2:
-               case 4:
-               case 6:
-               default:
-                  if (!$$3.a(cji.a)) {
-                     return false;
-                  }
-            }
-         }
-
-         return true;
-      }
-   }
-
-   public cjf a(cez $$0, hr $$1) {
-      ddk.a $$2 = new ddk.a($$0.a(1).d(), $$0.a(3).d(), $$0.a(5).d(), $$0.a(7).d());
-      return ddk.a($$2);
+public class cmc extends clx {
+   public cmc(String $$0, cmd $$1, cmm $$2, cjl $$3, float $$4, int $$5) {
+      super(cmt.e, $$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 == 3 && $$1 == 3;
+   public cjl g() {
+      return new cjl(cte.og);
    }
 
    @Override
-   public cmm<?> an_() {
-      return cmm.w;
+   public cms<?> an_() {
+      return cms.s;
    }
 }

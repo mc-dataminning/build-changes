@@ -1,23 +1,34 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.DataFixUtils;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
 
 public class ayn extends DataFix {
-   public ayn(Schema $$0) {
-      super($$0, false);
+   public ayn(Schema $$0, boolean $$1) {
+      super($$0, $$1);
    }
 
    public TypeRewriteRule makeRule() {
       return this.fixTypeEverywhereTyped(
-         "OptionsProgrammerArtFix",
-         this.getInputSchema().getType(ayx.e),
-         $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> $$0x.update("resourcePacks", this::a).update("incompatibleResourcePacks", this::a))
+         "OptionsAddTextBackgroundFix",
+         this.getInputSchema().getType(azd.e),
+         $$0 -> $$0.update(
+               DSL.remainderFinder(),
+               $$0x -> (Dynamic)DataFixUtils.orElse(
+                     $$0x.get("chatOpacity").asString().map($$1 -> $$0x.set("textBackgroundOpacity", $$0x.createDouble(this.a($$1)))).result(), $$0x
+                  )
+            )
       );
    }
 
-   private <T> Dynamic<T> a(Dynamic<T> $$0) {
-      return $$0.asString().result().map($$1 -> $$0.createString($$1.replace("\"programer_art\"", "\"programmer_art\""))).orElse($$0);
+   private double a(String $$0) {
+      try {
+         double $$1 = 0.9 * Double.parseDouble($$0) + 0.1;
+         return $$1 / 2.0;
+      } catch (NumberFormatException var4) {
+         return 0.5;
+      }
    }
 }

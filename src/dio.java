@@ -1,212 +1,91 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.mojang.datafixers.DataFixer;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.OptionalDynamic;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.longs.LongLinkedOpenHashSet;
-import java.io.IOException;
-import java.nio.file.Path;
-import java.util.Map;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionException;
-import java.util.function.BooleanSupplier;
-import java.util.function.Function;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.google.common.collect.ImmutableList;
+import java.util.List;
 
-public class dio<R> implements AutoCloseable {
-   private static final Logger a = LogUtils.getLogger();
-   private static final String b = "Sections";
-   private final dij d;
-   private final Long2ObjectMap<Optional<R>> e = new Long2ObjectOpenHashMap();
-   private final LongLinkedOpenHashSet f = new LongLinkedOpenHashSet();
-   private final Function<Runnable, Codec<R>> g;
-   private final Function<Runnable, R> h;
-   private final DataFixer i;
-   private final ata j;
-   private final hr k;
-   protected final cpx c;
+public enum dio {
+   a {
+      @Override
+      public void a(akt $$0, dip $$1, List<bxm> $$2, int $$3, gw $$4) {
+         gw $$5 = new gw(0, 128, 0);
 
-   public dio(Path $$0, Function<Runnable, Codec<R>> $$1, Function<Runnable, R> $$2, DataFixer $$3, ata $$4, boolean $$5, hr $$6, cpx $$7) {
-      this.g = $$1;
-      this.h = $$2;
-      this.i = $$3;
-      this.j = $$4;
-      this.k = $$6;
-      this.c = $$7;
-      this.d = new dij($$0, $$5, $$0.getFileName().toString());
-   }
+         for (bxm $$6 : $$2) {
+            $$6.a($$5);
+         }
 
-   protected void a(BooleanSupplier $$0) {
-      while (this.a() && $$0.getAsBoolean()) {
-         cpc $$1 = hw.a(this.f.firstLong()).r();
-         this.d($$1);
+         $$1.a(b);
       }
-   }
-
-   public boolean a() {
-      return !this.f.isEmpty();
-   }
-
-   @Nullable
-   protected Optional<R> c(long $$0) {
-      return (Optional<R>)this.e.get($$0);
-   }
-
-   protected Optional<R> d(long $$0) {
-      if (this.e($$0)) {
-         return Optional.empty();
-      } else {
-         Optional<R> $$1 = this.c($$0);
-         if ($$1 != null) {
-            return $$1;
-         } else {
-            this.b(hw.a($$0).r());
-            $$1 = this.c($$0);
-            if ($$1 == null) {
-               throw (IllegalStateException)ac.b(new IllegalStateException());
-            } else {
-               return $$1;
+   },
+   b {
+      @Override
+      public void a(akt $$0, dip $$1, List<bxm> $$2, int $$3, gw $$4) {
+         if ($$3 < 100) {
+            if ($$3 == 0 || $$3 == 50 || $$3 == 51 || $$3 == 52 || $$3 >= 95) {
+               $$0.c(3001, new gw(0, 128, 0), 0);
             }
+         } else {
+            $$1.a(c);
          }
       }
-   }
+   },
+   c {
+      @Override
+      public void a(akt $$0, dip $$1, List<bxm> $$2, int $$3, gw $$4) {
+         int $$5 = 40;
+         boolean $$6 = $$3 % 40 == 0;
+         boolean $$7 = $$3 % 40 == 39;
+         if ($$6 || $$7) {
+            List<dpa.a> $$8 = dpa.a($$0);
+            int $$9 = $$3 / 40;
+            if ($$9 < $$8.size()) {
+               dpa.a $$10 = $$8.get($$9);
+               if ($$6) {
+                  for (bxm $$11 : $$2) {
+                     $$11.a(new gw($$10.a(), $$10.d() + 1, $$10.b()));
+                  }
+               } else {
+                  int $$12 = 10;
 
-   protected boolean e(long $$0) {
-      int $$1 = hw.c(hw.c($$0));
-      return this.c.d($$1);
-   }
+                  for (gw $$13 : gw.a(new gw($$10.a() - 10, $$10.d() - 10, $$10.b() - 10), new gw($$10.a() + 10, $$10.d() + 10, $$10.b() + 10))) {
+                     $$0.a($$13, false);
+                  }
 
-   protected R f(long $$0) {
-      if (this.e($$0)) {
-         throw (IllegalArgumentException)ac.b(new IllegalArgumentException("sectionPos out of bounds"));
-      } else {
-         Optional<R> $$1 = this.d($$0);
-         if ($$1.isPresent()) {
-            return $$1.get();
-         } else {
-            R $$2 = this.h.apply(() -> this.a($$0));
-            this.e.put($$0, Optional.of($$2));
-            return $$2;
-         }
-      }
-   }
-
-   private void b(cpc $$0) {
-      Optional<qw> $$1 = this.c($$0).join();
-      aeu<rq> $$2 = aeu.a(ri.a, this.k);
-      this.a($$0, $$2, $$1.orElse(null));
-   }
-
-   private CompletableFuture<Optional<qw>> c(cpc $$0) {
-      return this.d.a($$0).exceptionally($$1 -> {
-         if ($$1 instanceof IOException $$2) {
-            a.error("Error reading chunk {} data from disk", $$0, $$2);
-            return Optional.empty();
-         } else {
-            throw new CompletionException($$1);
-         }
-      });
-   }
-
-   private <T> void a(cpc $$0, DynamicOps<T> $$1, @Nullable T $$2) {
-      if ($$2 == null) {
-         for (int $$3 = this.c.al(); $$3 < this.c.am(); $$3++) {
-            this.e.put(a($$0, $$3), Optional.empty());
-         }
-      } else {
-         Dynamic<T> $$4 = new Dynamic($$1, $$2);
-         int $$5 = a($$4);
-         int $$6 = aa.b().d().c();
-         boolean $$7 = $$5 != $$6;
-         Dynamic<T> $$8 = this.j.a(this.i, $$4, $$5, $$6);
-         OptionalDynamic<T> $$9 = $$8.get("Sections");
-
-         for (int $$10 = this.c.al(); $$10 < this.c.am(); $$10++) {
-            long $$11 = a($$0, $$10);
-            Optional<R> $$12 = $$9.get(Integer.toString($$10)).result().flatMap($$1x -> this.g.apply(() -> this.a($$11)).parse($$1x).resultOrPartial(a::error));
-            this.e.put($$11, $$12);
-            $$12.ifPresent($$2x -> {
-               this.b($$11);
-               if ($$7) {
-                  this.a($$11);
+                  $$0.a(null, (double)((float)$$10.a() + 0.5F), (double)$$10.d(), (double)((float)$$10.b() + 0.5F), 5.0F, cqb.a.b);
+                  dqo $$14 = new dqo(true, ImmutableList.of($$10), new gw(0, 128, 0));
+                  dnq.J.a($$14, $$0, $$0.k().g(), ash.a(), new gw($$10.a(), 45, $$10.b()));
                }
-            });
-         }
-      }
-   }
-
-   private void d(cpc $$0) {
-      aeu<rq> $$1 = aeu.a(ri.a, this.k);
-      Dynamic<rq> $$2 = this.a($$0, $$1);
-      rq $$3 = (rq)$$2.getValue();
-      if ($$3 instanceof qw) {
-         this.d.a($$0, (qw)$$3);
-      } else {
-         a.error("Expected compound tag, got {}", $$3);
-      }
-   }
-
-   private <T> Dynamic<T> a(cpc $$0, DynamicOps<T> $$1) {
-      Map<T, T> $$2 = Maps.newHashMap();
-
-      for (int $$3 = this.c.al(); $$3 < this.c.am(); $$3++) {
-         long $$4 = a($$0, $$3);
-         this.f.remove($$4);
-         Optional<R> $$5 = (Optional<R>)this.e.get($$4);
-         if ($$5 != null && !$$5.isEmpty()) {
-            DataResult<T> $$6 = this.g.apply(() -> this.a($$4)).encodeStart($$1, $$5.get());
-            String $$7 = Integer.toString($$3);
-            $$6.resultOrPartial(a::error).ifPresent($$3x -> $$2.put((T)$$1.createString($$7), (T)$$3x));
-         }
-      }
-
-      return new Dynamic(
-         $$1, $$1.createMap(ImmutableMap.of($$1.createString("Sections"), $$1.createMap($$2), $$1.createString("DataVersion"), $$1.createInt(aa.b().d().c())))
-      );
-   }
-
-   private static long a(cpc $$0, int $$1) {
-      return hw.b($$0.e, $$1, $$0.f);
-   }
-
-   protected void b(long $$0) {
-   }
-
-   protected void a(long $$0) {
-      Optional<R> $$1 = (Optional<R>)this.e.get($$0);
-      if ($$1 != null && !$$1.isEmpty()) {
-         this.f.add($$0);
-      } else {
-         a.warn("No data for position: {}", hw.a($$0));
-      }
-   }
-
-   private static int a(Dynamic<?> $$0) {
-      return $$0.get("DataVersion").asInt(1945);
-   }
-
-   public void a(cpc $$0) {
-      if (this.a()) {
-         for (int $$1 = this.c.al(); $$1 < this.c.am(); $$1++) {
-            long $$2 = a($$0, $$1);
-            if (this.f.contains($$2)) {
-               this.d($$0);
-               return;
+            } else if ($$6) {
+               $$1.a(d);
             }
          }
       }
-   }
+   },
+   d {
+      @Override
+      public void a(akt $$0, dip $$1, List<bxm> $$2, int $$3, gw $$4) {
+         if ($$3 >= 100) {
+            $$1.a(e);
+            $$1.h();
 
-   @Override
-   public void close() throws IOException {
-      this.d.close();
-   }
+            for (bxm $$5 : $$2) {
+               $$5.a(null);
+               $$0.a($$5, $$5.dq(), $$5.ds(), $$5.dw(), 6.0F, cqb.a.a);
+               $$5.ak();
+            }
+         } else if ($$3 >= 80) {
+            $$0.c(3001, new gw(0, 128, 0), 0);
+         } else if ($$3 == 0) {
+            for (bxm $$6 : $$2) {
+               $$6.a(new gw(0, 128, 0));
+            }
+         } else if ($$3 < 5) {
+            $$0.c(3001, new gw(0, 128, 0), 0);
+         }
+      }
+   },
+   e {
+      @Override
+      public void a(akt $$0, dip $$1, List<bxm> $$2, int $$3, gw $$4) {
+      }
+   };
+
+   public abstract void a(akt var1, dip var2, List<bxm> var3, int var4, gw var5);
 }

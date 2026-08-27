@@ -1,26 +1,56 @@
+import com.mojang.logging.LogUtils;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public interface bxr {
-   boolean a();
+public class bxr extends bxp {
+   private static final Logger b = LogUtils.getLogger();
+   private static final int c = 10;
+   @Nullable
+   private ehh d;
+   private int e;
 
-   void b();
+   public bxr(bxn $$0) {
+      super($$0);
+   }
 
-   void c();
+   @Override
+   public void c() {
+      if (this.d == null) {
+         b.warn("Aborting charge player as no target was set.");
+         this.a.gb().a(byd.a);
+      } else if (this.e > 0 && this.e++ >= 10) {
+         this.a.gb().a(byd.a);
+      } else {
+         double $$0 = this.d.c(this.a.dq(), this.a.ds(), this.a.dw());
+         if ($$0 < 100.0 || $$0 > 22500.0 || this.a.P || this.a.Q) {
+            this.e++;
+         }
+      }
+   }
 
-   void a(bxg var1, gw var2, bho var3, @Nullable cbu var4);
+   @Override
+   public void d() {
+      this.d = null;
+      this.e = 0;
+   }
 
-   void d();
+   public void a(ehh $$0) {
+      this.d = $$0;
+   }
 
-   void e();
-
-   float f();
-
-   float h();
-
-   bxx<? extends bxr> i();
+   @Override
+   public float f() {
+      return 3.0F;
+   }
 
    @Nullable
-   ehn g();
+   @Override
+   public ehh g() {
+      return this.d;
+   }
 
-   float a(bho var1, float var2);
+   @Override
+   public byd<bxr> i() {
+      return byd.i;
+   }
 }

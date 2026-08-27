@@ -1,19 +1,9 @@
-import com.mojang.serialization.Codec;
+import javax.annotation.Nullable;
 
-public enum bhn implements asp {
-   a("never"),
-   b("when_caused_by_living_non_player"),
-   c("always");
+public interface bhn extends bgx {
+   int[] a(ha var1);
 
-   public static final Codec<bhn> d = asp.a(bhn::values);
-   private final String e;
+   boolean a(int var1, cjl var2, @Nullable ha var3);
 
-   private bhn(String $$0) {
-      this.e = $$0;
-   }
-
-   @Override
-   public String c() {
-      return this.e;
-   }
+   boolean b(int var1, cjl var2, ha var3);
 }

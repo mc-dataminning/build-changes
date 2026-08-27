@@ -1,35 +1,25 @@
-public class cod extends cno {
-   public cod(cno.a $$0, biv... $$1) {
-      super($$0, cnp.b, $$1);
+public class cod extends cnu {
+   protected cod(cnu.a $$0, cnv $$1, bjb... $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
    public int a(int $$0) {
-      return $$0 * 10;
+      return 15 + ($$0 - 1) * 9;
    }
 
    @Override
    public int b(int $$0) {
-      return this.a($$0) + 15;
-   }
-
-   @Override
-   public boolean b() {
-      return true;
-   }
-
-   @Override
-   public boolean h() {
-      return false;
-   }
-
-   @Override
-   public boolean i() {
-      return false;
+      return super.a($$0) + 50;
    }
 
    @Override
    public int a() {
       return 3;
+   }
+
+   @Override
+   public boolean a(cnu $$0) {
+      return super.a($$0) && $$0 != cny.v;
    }
 }

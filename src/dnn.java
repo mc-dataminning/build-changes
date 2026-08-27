@@ -1,41 +1,39 @@
 import com.mojang.serialization.Codec;
-import java.util.List;
 
-public class dnn extends dnl {
-   public dnn(Codec<dqh> $$0) {
+public class dnn extends dnq<dpt> {
+   public dnn(Codec<dpt> $$0) {
       super($$0);
    }
 
    @Override
-   protected boolean a(cpw $$0, asc $$1, gw $$2, dfj $$3) {
-      gw.a $$4 = $$2.j();
-      int $$5 = $$1.a(3) + 1;
+   public boolean a(dns<dpt> $$0) {
+      gw $$1 = $$0.e();
+      cqv $$2 = $$0.b();
+      dpt $$3 = $$0.f();
 
-      for (int $$6 = 0; $$6 < $$5; $$6++) {
-         if (!this.b($$0, $$1, $$4, $$3)) {
-            return true;
-         }
-
-         $$4.c(ha.b);
-      }
-
-      gw $$7 = $$4.i();
-      int $$8 = $$1.a(3) + 2;
-      List<ha> $$9 = ha.c.a.c($$1);
-
-      for (ha $$11 : $$9.subList(0, $$8)) {
-         $$4.g($$7);
-         $$4.c($$11);
-         int $$12 = $$1.a(5) + 2;
-         int $$13 = 0;
-
-         for (int $$14 = 0; $$14 < $$12 && this.b($$0, $$1, $$4, $$3); $$14++) {
-            $$13++;
-            $$4.c(ha.b);
-            if ($$14 == 0 || $$13 >= 2 && $$1.i() < 0.25F) {
-               $$4.c($$11);
-               $$13 = 0;
-            }
+      for (gw $$4 : gw.a($$1.b(-1, -2, -1), $$1.b(1, 2, 1))) {
+         boolean $$5 = $$4.u() == $$1.u();
+         boolean $$6 = $$4.v() == $$1.v();
+         boolean $$7 = $$4.w() == $$1.w();
+         boolean $$8 = Math.abs($$4.v() - $$1.v()) == 2;
+         if ($$5 && $$6 && $$7) {
+            gw $$9 = $$4.i();
+            this.a($$2, $$9, cte.kF.o());
+            $$3.b().ifPresent($$3x -> {
+               dcz $$4x = $$2.c_($$9);
+               if ($$4x instanceof den $$5x) {
+                  $$5x.a($$3x, $$3.c());
+                  $$4x.e();
+               }
+            });
+         } else if ($$6) {
+            this.a($$2, $$4, cte.a.o());
+         } else if ($$8 && $$5 && $$7) {
+            this.a($$2, $$4, cte.F.o());
+         } else if (($$5 || $$7) && !$$8) {
+            this.a($$2, $$4, cte.F.o());
+         } else {
+            this.a($$2, $$4, cte.a.o());
          }
       }
 

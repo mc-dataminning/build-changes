@@ -1,79 +1,112 @@
-public class daw extends csv {
-   public static final dgj a = dfz.aw;
-   protected static final float b = 6.0F;
-   protected static final eig c = csv.a(2.0, 0.0, 2.0, 14.0, 16.0, 14.0);
+import com.mojang.datafixers.DataFixUtils;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-   protected daw(dfi.d $$0) {
-      super($$0);
-      this.k(this.C.b().a(a, Integer.valueOf(0)));
+public class daw extends ctl implements ctf {
+   public static final MapCodec<daw> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               aey.a(jc.e).fieldOf("fruit").forGetter($$0x -> $$0x.f),
+               aey.a(jc.e).fieldOf("attached_stem").forGetter($$0x -> $$0x.g),
+               aey.a(jc.E).fieldOf("seed").forGetter($$0x -> $$0x.h),
+               t()
+            )
+            .apply($$0, daw::new)
+   );
+   public static final int b = 7;
+   public static final dgd c = dft.av;
+   protected static final float d = 1.0F;
+   protected static final eia[] e = new eia[]{
+      ctc.a(7.0, 0.0, 7.0, 9.0, 2.0, 9.0),
+      ctc.a(7.0, 0.0, 7.0, 9.0, 4.0, 9.0),
+      ctc.a(7.0, 0.0, 7.0, 9.0, 6.0, 9.0),
+      ctc.a(7.0, 0.0, 7.0, 9.0, 8.0, 9.0),
+      ctc.a(7.0, 0.0, 7.0, 9.0, 10.0, 9.0),
+      ctc.a(7.0, 0.0, 7.0, 9.0, 12.0, 9.0),
+      ctc.a(7.0, 0.0, 7.0, 9.0, 14.0, 9.0),
+      ctc.a(7.0, 0.0, 7.0, 9.0, 16.0, 9.0)
+   };
+   private final aey<ctc> f;
+   private final aey<ctc> g;
+   private final aey<cjg> h;
+
+   @Override
+   public MapCodec<daw> a() {
+      return a;
+   }
+
+   protected daw(aey<ctc> $$0, aey<ctc> $$1, aey<cjg> $$2, dfc.d $$3) {
+      super($$3);
+      this.f = $$0;
+      this.g = $$1;
+      this.h = $$2;
+      this.k(this.E.b().a(c, Integer.valueOf(0)));
    }
 
    @Override
-   public eig a(dfj $$0, cpb $$1, gw $$2, ehs $$3) {
-      return c;
+   public eia a(dfd $$0, cph $$1, gw $$2, ehm $$3) {
+      return e[$$0.c(c)];
    }
 
    @Override
-   public void a(dfj $$0, akq $$1, gw $$2, asc $$3) {
-      if (!$$0.a($$1, $$2)) {
-         $$1.b($$2, true);
-      }
+   protected boolean d(dfd $$0, cph $$1, gw $$2) {
+      return $$0.a(cte.cC);
    }
 
    @Override
-   public void b(dfj $$0, akq $$1, gw $$2, asc $$3) {
-      if ($$1.t($$2.c())) {
-         int $$4 = 1;
-
-         while ($$1.a_($$2.c($$4)).a(this)) {
-            $$4++;
-         }
-
-         if ($$4 < 3) {
-            int $$5 = $$0.c(a);
-            if ($$5 == 15) {
-               $$1.b($$2.c(), this.n());
-               $$1.a($$2, $$0.a(a, Integer.valueOf(0)), 4);
+   public void b(dfd $$0, akt $$1, gw $$2, ash $$3) {
+      if ($$1.b($$2, 0) >= 9) {
+         float $$4 = cuv.a(this, $$1, $$2);
+         if ($$3.a((int)(25.0F / $$4) + 1) == 0) {
+            int $$5 = $$0.c(c);
+            if ($$5 < 7) {
+               $$0 = $$0.a(c, Integer.valueOf($$5 + 1));
+               $$1.a($$2, $$0, 2);
             } else {
-               $$1.a($$2, $$0.a(a, Integer.valueOf($$5 + 1)), 4);
-            }
-         }
-      }
-   }
-
-   @Override
-   public dfj a(dfj $$0, ha $$1, dfj $$2, cpw $$3, gw $$4, gw $$5) {
-      if (!$$0.a($$3, $$4)) {
-         $$3.a($$4, this, 1);
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   public boolean a(dfj $$0, cpy $$1, gw $$2) {
-      dfj $$3 = $$1.a_($$2.d());
-      if ($$3.a(this)) {
-         return true;
-      } else {
-         if ($$3.a(aps.af) || $$3.a(aps.H)) {
-            gw $$4 = $$2.d();
-
-            for (ha $$5 : ha.c.a) {
-               dfj $$6 = $$1.a_($$4.a($$5));
-               eam $$7 = $$1.b_($$4.a($$5));
-               if ($$7.a(apx.a) || $$6.a(csw.kI)) {
-                  return true;
+               ha $$6 = ha.c.a.a($$3);
+               gw $$7 = $$2.a($$6);
+               dfd $$8 = $$1.a_($$7.d());
+               if ($$1.a_($$7).i() && ($$8.a(cte.cC) || $$8.a(apv.af))) {
+                  hq<ctc> $$9 = $$1.G_().d(jc.e);
+                  Optional<ctc> $$10 = $$9.d(this.f);
+                  Optional<ctc> $$11 = $$9.d(this.g);
+                  if ($$10.isPresent() && $$11.isPresent()) {
+                     $$1.b($$7, $$10.get().o());
+                     $$1.b($$2, $$11.get().o().a(cww.aE, $$6));
+                  }
                }
             }
          }
-
-         return false;
       }
    }
 
    @Override
-   protected void a(dfk.a<csv, dfj> $$0) {
-      $$0.a(a);
+   public cjl a(cqe $$0, gw $$1, dfd $$2) {
+      return new cjl((cqa)DataFixUtils.orElse($$0.G_().d(jc.E).d(this.h), this));
+   }
+
+   @Override
+   public boolean b(cqe $$0, gw $$1, dfd $$2) {
+      return $$2.c(c) != 7;
+   }
+
+   @Override
+   public boolean a(cqb $$0, ash $$1, gw $$2, dfd $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(akt $$0, ash $$1, gw $$2, dfd $$3) {
+      int $$4 = Math.min(7, $$3.c(c) + asb.a($$0.z, 2, 5));
+      dfd $$5 = $$3.a(c, Integer.valueOf($$4));
+      $$0.a($$2, $$5, 2);
+      if ($$4 == 7) {
+         $$5.b($$0, $$2, $$0.z);
+      }
+   }
+
+   @Override
+   protected void a(dfe.a<ctc, dfd> $$0) {
+      $$0.a(c);
    }
 }

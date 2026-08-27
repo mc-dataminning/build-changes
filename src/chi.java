@@ -1,40 +1,49 @@
-public class chi extends cja {
-   public chi(cja.a $$0) {
+import java.util.List;
+
+public class chi extends cjg {
+   public chi(cjg.a $$0) {
       super($$0);
    }
 
    @Override
-   public cjf a(cjf $$0, cpv $$1, bjg $$2) {
-      cjf $$3 = super.a($$0, $$1, $$2);
-      if (!$$1.B) {
-         double $$4 = $$2.dq();
-         double $$5 = $$2.ds();
-         double $$6 = $$2.dw();
-
-         for (int $$7 = 0; $$7 < 16; $$7++) {
-            double $$8 = $$2.dq() + ($$2.ef().j() - 0.5) * 16.0;
-            double $$9 = arw.a($$2.ds() + (double)($$2.ef().a(16) - 8), (double)$$1.H_(), (double)($$1.H_() + ((akq)$$1).j() - 1));
-            double $$10 = $$2.dw() + ($$2.ef().j() - 0.5) * 16.0;
-            if ($$2.bN()) {
-               $$2.aa();
-            }
-
-            ehn $$11 = $$2.dj();
-            if ($$2.b($$8, $$9, $$10, true)) {
-               $$1.a(djt.R, $$11, djt.a.a($$2));
-               apc $$12 = $$2 instanceof bvb ? apd.ii : apd.eA;
-               $$1.a(null, $$4, $$5, $$6, $$12, ape.h, 1.0F, 1.0F);
-               $$2.a($$12, 1.0F, 1.0F);
-               $$2.n();
-               break;
-            }
+   public bhf<cjl> a(cqb $$0, cca $$1, bhd $$2) {
+      List<bit> $$3 = $$0.a(bit.class, $$1.cG().g(2.0), $$0x -> $$0x != null && $$0x.bv() && $$0x.s() instanceof bxn);
+      cjl $$4 = $$1.b($$2);
+      if (!$$3.isEmpty()) {
+         bit $$5 = $$3.get(0);
+         $$5.a($$5.h() - 0.5F);
+         $$0.a(null, $$1.dq(), $$1.ds(), $$1.dw(), apg.cj, aph.g, 1.0F, 1.0F);
+         $$0.a($$1, djn.y, $$1.dj());
+         if ($$1 instanceof aku $$6) {
+            al.Q.a($$6, $$4, $$5);
          }
 
-         if ($$2 instanceof cbu) {
-            ((cbu)$$2).gm().a(this, 20);
+         return bhf.a(this.a($$4, $$1, new cjl(cjo.ut)), $$0.w_());
+      } else {
+         ehd $$7 = a($$0, $$1, cpk.b.b);
+         if ($$7.c() == ehf.a.a) {
+            return bhf.c($$4);
+         } else {
+            if ($$7.c() == ehf.a.b) {
+               gw $$8 = $$7.a();
+               if (!$$0.a($$1, $$8)) {
+                  return bhf.c($$4);
+               }
+
+               if ($$0.b_($$8).a(aqa.a)) {
+                  $$0.a($$1, $$1.dq(), $$1.ds(), $$1.dw(), apg.ci, aph.g, 1.0F, 1.0F);
+                  $$0.a($$1, djn.y, $$8);
+                  return bhf.a(this.a($$4, $$1, clk.a(new cjl(cjo.rv), cll.c)), $$0.w_());
+               }
+            }
+
+            return bhf.c($$4);
          }
       }
+   }
 
-      return $$3;
+   protected cjl a(cjl $$0, cca $$1, cjl $$2) {
+      $$1.b(apq.c.b(this));
+      return cjn.a($$0, $$1, $$2);
    }
 }

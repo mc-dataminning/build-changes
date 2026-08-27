@@ -2,41 +2,91 @@ import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Set;
+import javax.annotation.Nullable;
 
-public record efv(float b, float c) implements efp {
-   public static final Codec<efv> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.FLOAT.fieldOf("chance").forGetter(efv::c), Codec.FLOAT.fieldOf("looting_multiplier").forGetter(efv::d)).apply($$0, efv::new)
-   );
-
-   @Override
-   public efq b() {
-      return efr.f;
-   }
-
-   @Override
-   public Set<eey<?>> a() {
-      return ImmutableSet.of(efb.d);
-   }
-
-   public boolean a(ecq $$0) {
-      biq $$1 = $$0.c(efb.d);
-      int $$2 = 0;
-      if ($$1 instanceof bjg) {
-         $$2 = cnq.h((bjg)$$1);
+public class efv implements efx {
+   private static final String d = "block_entity";
+   private static final efv.a e = new efv.a() {
+      @Override
+      public rq a(eck $$0) {
+         dcz $$1 = $$0.c(eev.h);
+         return $$1 != null ? $$1.m() : null;
       }
 
-      return $$0.b().i() < this.b + (float)$$2 * this.c;
+      @Override
+      public String a() {
+         return "block_entity";
+      }
+
+      @Override
+      public Set<ees<?>> b() {
+         return ImmutableSet.of(eev.h);
+      }
+   };
+   public static final efv a = new efv(e);
+   private static final Codec<efv.a> f = Codec.STRING.xmap($$0 -> {
+      if ($$0.equals("block_entity")) {
+         return e;
+      } else {
+         eck.b $$1 = eck.b.a($$0);
+         return b($$1);
+      }
+   }, efv.a::a);
+   public static final Codec<efv> b = RecordCodecBuilder.create($$0 -> $$0.group(f.fieldOf("target").forGetter($$0x -> $$0x.g)).apply($$0, efv::new));
+   public static final Codec<efv> c = f.xmap(efv::new, $$0 -> $$0.g);
+   private final efv.a g;
+
+   private static efv.a b(final eck.b $$0) {
+      return new efv.a() {
+         @Nullable
+         @Override
+         public rq a(eck $$0x) {
+            biw $$1 = $$0.c($$0.a());
+            return $$1 != null ? cn.b($$1) : null;
+         }
+
+         @Override
+         public String a() {
+            return $$0.name();
+         }
+
+         @Override
+         public Set<ees<?>> b() {
+            return ImmutableSet.of($$0.a());
+         }
+      };
    }
 
-   public static efp.a a(float $$0, float $$1) {
-      return () -> new efv($$0, $$1);
+   private efv(efv.a $$0) {
+      this.g = $$0;
    }
 
-   public float c() {
-      return this.b;
+   @Override
+   public efw a() {
+      return efy.c;
    }
 
-   public float d() {
-      return this.c;
+   @Nullable
+   @Override
+   public rq a(eck $$0) {
+      return this.g.a($$0);
+   }
+
+   @Override
+   public Set<ees<?>> b() {
+      return this.g.b();
+   }
+
+   public static efx a(eck.b $$0) {
+      return new efv(b($$0));
+   }
+
+   interface a {
+      @Nullable
+      rq a(eck var1);
+
+      String a();
+
+      Set<ees<?>> b();
    }
 }

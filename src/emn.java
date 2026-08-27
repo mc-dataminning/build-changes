@@ -1,20 +1,13 @@
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
-import javax.annotation.Nullable;
+import com.google.gson.annotations.SerializedName;
 
-public class emn {
-   private final Gson a = new Gson();
+public class emn extends enf implements emz {
+   @SerializedName("name")
+   public String a;
+   @SerializedName("description")
+   public String b;
 
-   public String a(enf $$0) {
-      return this.a.toJson($$0);
-   }
-
-   public String a(JsonElement $$0) {
-      return this.a.toJson($$0);
-   }
-
-   @Nullable
-   public <T extends enf> T a(String $$0, Class<T> $$1) {
-      return (T)this.a.fromJson($$0, $$1);
+   public emn(String $$0, String $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 }

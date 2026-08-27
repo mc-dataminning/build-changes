@@ -1,103 +1,95 @@
+import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class crw extends cvn {
-   public static final dgd a = cwo.aC;
-   private static final eig b = csv.a(2.0, 0.0, 2.0, 14.0, 4.0, 14.0);
-   private static final eig c = csv.a(3.0, 4.0, 4.0, 13.0, 5.0, 12.0);
-   private static final eig d = csv.a(4.0, 5.0, 6.0, 12.0, 10.0, 10.0);
-   private static final eig e = csv.a(0.0, 10.0, 3.0, 16.0, 16.0, 13.0);
-   private static final eig f = csv.a(4.0, 4.0, 3.0, 12.0, 5.0, 13.0);
-   private static final eig g = csv.a(6.0, 5.0, 4.0, 10.0, 10.0, 12.0);
-   private static final eig h = csv.a(3.0, 10.0, 0.0, 13.0, 16.0, 16.0);
-   private static final eig i = eid.a(b, c, d, e);
-   private static final eig j = eid.a(b, f, g, h);
-   private static final tl k = tl.c("container.repair");
-   private static final float l = 2.0F;
-   private static final int m = 40;
+public abstract class crw extends cso {
+   public static final dfx a = cww.aE;
+   public static final dfu b = dft.r;
 
-   public crw(dfi.d $$0) {
+   protected crw(dfc.d $$0) {
       super($$0);
-      this.k(this.C.b().a(a, ha.c));
+      this.k(this.E.b().a(a, ha.c).a(b, Boolean.valueOf(false)));
    }
 
    @Override
-   public dfj a(cln $$0) {
-      return this.n().a(a, $$0.g().h());
-   }
+   protected abstract MapCodec<? extends crw> a();
 
    @Override
-   public bgy a(dfj $$0, cpv $$1, gw $$2, cbu $$3, bgx $$4, ehj $$5) {
+   public bhe a(dfd $$0, cqb $$1, gw $$2, cca $$3, bhd $$4, ehd $$5) {
       if ($$1.B) {
-         return bgy.a;
+         return bhe.a;
       } else {
-         $$3.a($$0.b($$1, $$2));
-         $$3.a(apn.aC);
-         return bgy.b;
+         this.a($$1, $$2, $$3);
+         return bhe.b;
       }
    }
 
-   @Nullable
+   protected abstract void a(cqb var1, gw var2, cca var3);
+
    @Override
-   public bhb b(dfj $$0, cpv $$1, gw $$2) {
-      return new bhg(($$2x, $$3, $$4) -> new cen($$2x, $$3, cew.a($$1, $$2)), k);
+   public dfd a(clt $$0) {
+      return this.o().a(a, $$0.g().g());
    }
 
    @Override
-   public eig a(dfj $$0, cpb $$1, gw $$2, ehs $$3) {
-      ha $$4 = $$0.c(a);
-      return $$4.o() == ha.a.a ? i : j;
-   }
-
-   @Override
-   protected void a(bym $$0) {
-      $$0.b(2.0F, 40);
-   }
-
-   @Override
-   public void a(cpv $$0, gw $$1, dfj $$2, dfj $$3, bym $$4) {
-      if (!$$4.aS()) {
-         $$0.c(1031, $$1, 0);
+   public void a(cqb $$0, gw $$1, dfd $$2, bjm $$3, cjl $$4) {
+      if ($$4.A()) {
+         dcz $$5 = $$0.c_($$1);
+         if ($$5 instanceof dco) {
+            ((dco)$$5).a($$4.y());
+         }
       }
    }
 
    @Override
-   public void a(cpv $$0, gw $$1, bym $$2) {
-      if (!$$2.aS()) {
-         $$0.c(1029, $$1, 0);
+   public void a(dfd $$0, cqb $$1, gw $$2, dfd $$3, boolean $$4) {
+      if (!$$0.a($$3.b())) {
+         dcz $$5 = $$1.c_($$2);
+         if ($$5 instanceof dco) {
+            if ($$1 instanceof akt) {
+               bha.a($$1, $$2, (dco)$$5);
+               ((dco)$$5).a((akt)$$1, ehh.b($$2));
+            }
+
+            super.a($$0, $$1, $$2, $$3, $$4);
+            $$1.c($$2, this);
+         } else {
+            super.a($$0, $$1, $$2, $$3, $$4);
+         }
       }
    }
 
    @Override
-   public bho a(biq $$0) {
-      return $$0.dM().b($$0);
-   }
-
-   @Nullable
-   public static dfj e(dfj $$0) {
-      if ($$0.a(csw.gS)) {
-         return csw.gT.n().a(a, $$0.c(a));
-      } else {
-         return $$0.a(csw.gT) ? csw.gU.n().a(a, $$0.c(a)) : null;
-      }
+   public boolean d_(dfd $$0) {
+      return true;
    }
 
    @Override
-   public dfj a(dfj $$0, czh $$1) {
+   public int a(dfd $$0, cqb $$1, gw $$2) {
+      return cer.a($$1.c_($$2));
+   }
+
+   @Override
+   public czg b_(dfd $$0) {
+      return czg.c;
+   }
+
+   @Override
+   public dfd a(dfd $$0, czn $$1) {
       return $$0.a(a, $$1.a($$0.c(a)));
    }
 
    @Override
-   protected void a(dfk.a<csv, dfj> $$0) {
-      $$0.a(a);
+   public dfd a(dfd $$0, cxx $$1) {
+      return $$0.a($$1.a($$0.c(a)));
    }
 
    @Override
-   public boolean a(dfj $$0, cpb $$1, gw $$2, ebc $$3) {
-      return false;
+   protected void a(dfe.a<ctc, dfd> $$0) {
+      $$0.a(a, b);
    }
 
-   @Override
-   public int d(dfj $$0, cpb $$1, gw $$2) {
-      return $$0.d($$1, $$2).ak;
+   @Nullable
+   protected static <T extends dcz> dda<T> a(cqb $$0, ddb<T> $$1, ddb<? extends dco> $$2) {
+      return $$0.B ? null : a($$1, $$2, dco::a);
    }
 }

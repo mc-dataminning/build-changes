@@ -1,10 +1,11 @@
 public class aqb {
-   public static final aqh<byj> a = a("placeable");
+   public static final aqk<djn> a = a("vibrations");
+   public static final aqk<djn> b = a("warden_can_listen");
+   public static final aqk<djn> c = a("shrieker_can_listen");
+   public static final aqk<djn> d = a("ignore_vibrations_sneaking");
+   public static final aqk<djn> e = a("allay_can_listen");
 
-   private aqb() {
-   }
-
-   private static aqh<byj> a(String $$0) {
-      return aqh.a(jc.P, new aew($$0));
+   private static aqk<djn> a(String $$0) {
+      return aqk.a(jc.A, new aez($$0));
    }
 }

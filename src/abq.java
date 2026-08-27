@@ -1,32 +1,18 @@
-public class abq implements vd<abc> {
-   private final int a;
-   private final int b;
-
-   public abq(int $$0, int $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
-
-   public void a(abc $$0) {
-      $$0.a(this);
-   }
-
+public record abq() implements ve<abd> {
    public abq(so $$0) {
-      this.a = $$0.readByte();
-      this.b = $$0.readByte();
+      this();
    }
 
    @Override
    public void a(so $$0) {
-      $$0.k(this.a);
-      $$0.k(this.b);
    }
 
-   public int a() {
-      return this.a;
+   public void a(abd $$0) {
+      $$0.a(this);
    }
 
-   public int d() {
-      return this.b;
+   @Override
+   public sn c() {
+      return sn.e;
    }
 }

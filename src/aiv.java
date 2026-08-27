@@ -1,48 +1,61 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.brigadier.tree.LiteralCommandNode;
-import java.util.List;
 
 public class aiv {
-   private static final uh a = uh.a.a(new tq(tq.a.a, tl.c("chat.type.team.hover"))).a(new tj(tj.a.d, "/teammsg "));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(tl.c("commands.teammsg.failed.noteam"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tl.c("commands.summon.failed"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(tl.c("commands.summon.failed.uuid"));
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(tl.c("commands.summon.invalidPosition"));
 
-   public static void a(CommandDispatcher<dt> $$0) {
-      LiteralCommandNode<dt> $$1 = $$0.register((LiteralArgumentBuilder)du.a("teammsg").then(du.a("message", ei.a()).executes($$0x -> {
-         dt $$1x = (dt)$$0x.getSource();
-         biq $$2 = $$1x.g();
-         eik $$3 = (eik)$$2.cf();
-         if ($$3 == null) {
-            throw b.create();
-         } else {
-            List<akr> $$4 = $$1x.l().ac().t().stream().filter($$2x -> $$2x == $$2 || $$2x.cf() == $$3).toList();
-            if (!$$4.isEmpty()) {
-               ei.a($$0x, "message", $$4x -> a($$1x, $$2, $$3, $$4, $$4x));
-            }
-
-            return $$4.size();
-         }
-      })));
-      $$0.register((LiteralArgumentBuilder)du.a("tm").redirect($$1));
+   public static void a(CommandDispatcher<dt> $$0, dn $$1) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)du.a("summon").requires($$0x -> $$0x.c(2)))
+            .then(
+               ((RequiredArgumentBuilder)du.a("entity", eq.a($$1, jc.t))
+                     .suggests(gm.d)
+                     .executes($$0x -> b((dt)$$0x.getSource(), eq.e($$0x, "entity"), ((dt)$$0x.getSource()).d(), new qw(), true)))
+                  .then(
+                     ((RequiredArgumentBuilder)du.a("pos", fr.a())
+                           .executes($$0x -> b((dt)$$0x.getSource(), eq.e($$0x, "entity"), fr.a($$0x, "pos"), new qw(), true)))
+                        .then(du.a("nbt", eb.a()).executes($$0x -> b((dt)$$0x.getSource(), eq.e($$0x, "entity"), fr.a($$0x, "pos"), eb.a($$0x, "nbt"), false)))
+                  )
+            )
+      );
    }
 
-   private static void a(dt $$0, biq $$1, eik $$2, List<akr> $$3, ua $$4) {
-      tl $$5 = $$2.d().c(a);
-      th.a $$6 = th.a(th.g, $$0).c($$5);
-      th.a $$7 = th.a(th.h, $$0).c($$5);
-      tz $$8 = tz.a($$4);
-      boolean $$9 = false;
+   public static biw a(dt $$0, he.c<bja<?>> $$1, ehh $$2, qw $$3, boolean $$4) throws CommandSyntaxException {
+      gw $$5 = gw.a($$2);
+      if (!cqb.k($$5)) {
+         throw c.create();
+      } else {
+         qw $$6 = $$3.h();
+         $$6.a("id", $$1.g().a().toString());
+         akt $$7 = $$0.e();
+         biw $$8 = bja.a($$6, $$7, $$1x -> {
+            $$1x.b($$2.c, $$2.d, $$2.e, $$1x.dB(), $$1x.dD());
+            return $$1x;
+         });
+         if ($$8 == null) {
+            throw a.create();
+         } else {
+            if ($$4 && $$8 instanceof bjo) {
+               ((bjo)$$8).a($$0.e(), $$0.e().d_($$8.dl()), bjq.n, null, null);
+            }
 
-      for (akr $$10 : $$3) {
-         th.a $$11 = $$10 == $$1 ? $$7 : $$6;
-         boolean $$12 = $$0.a($$10);
-         $$10.a($$8, $$12, $$11);
-         $$9 |= $$12 && $$4.i();
+            if (!$$7.e($$8)) {
+               throw b.create();
+            } else {
+               return $$8;
+            }
+         }
       }
+   }
 
-      if ($$9) {
-         $$0.a(aog.f);
-      }
+   private static int b(dt $$0, he.c<bja<?>> $$1, ehh $$2, qw $$3, boolean $$4) throws CommandSyntaxException {
+      biw $$5 = a($$0, $$1, $$2, $$3, $$4);
+      $$0.a(() -> tl.a("commands.summon.success", $$5.N_()), true);
+      return 1;
    }
 }

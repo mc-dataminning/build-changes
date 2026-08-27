@@ -1,46 +1,26 @@
-import com.mojang.logging.LogUtils;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionException;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.function.BooleanSupplier;
 
-public class erd {
-   private static final Logger a = LogUtils.getLogger();
-   private final eqv b;
-   @Nullable
-   private CompletableFuture<Boolean> c;
-   private boolean d;
+public class erd extends eqn {
+   private final BooleanSupplier h;
 
-   public erd(eqv $$0) {
-      this.b = $$0;
+   public erd(String $$0, int $$1, String $$2, BooleanSupplier $$3) {
+      super($$0, eke.b.a, $$1, $$2);
+      this.h = $$3;
    }
 
-   public void a(eyk $$0) {
-      if (!this.b.af() && !this.b.m.w && !this.d && this.a()) {
-         this.b.a(new fbh($$0));
-         this.d = true;
+   @Override
+   public void a(boolean $$0) {
+      if (this.h.getAsBoolean()) {
+         if ($$0) {
+            super.a(!this.e());
+         }
+      } else {
+         super.a($$0);
       }
    }
 
-   private Boolean a() {
-      if (this.c == null) {
-         this.c = CompletableFuture.supplyAsync(this::b, ac.f());
-      }
-
-      try {
-         return this.c.getNow(false);
-      } catch (CompletionException var2) {
-         a.warn("Failed to retrieve realms subscriptions", var2);
-         this.d = true;
-         return false;
-      }
-   }
-
-   private boolean b() {
-      try {
-         return emf.a(this.b).b().a.stream().anyMatch($$0 -> !$$0.j && this.b.b($$0.g));
-      } catch (ens var2) {
-         return false;
-      }
+   @Override
+   protected void n() {
+      super.a(false);
    }
 }

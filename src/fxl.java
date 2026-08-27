@@ -1,25 +1,48 @@
-public class fxl extends fxp<bvg, fgc<bvg>> {
-   private final foa a;
+public abstract class fxl<T extends biw, M extends fey<T>> {
+   private final fuy<T, M> a;
 
-   public fxl(fvc<bvg, fgc<bvg>> $$0, foa $$1) {
-      super($$0);
-      this.a = $$1;
+   public fxl(fuy<T, M> $$0) {
+      this.a = $$0;
    }
 
-   public void a(elp $$0, foe $$1, int $$2, bvg $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      cjf $$10 = $$3.c(biv.a);
-      if ($$3.y() && !$$3.gv()) {
-         float $$11 = -0.6F;
-         float $$12 = 1.4F;
-         if ($$3.gj()) {
-            $$11 -= 0.2F * arw.a($$7 * 0.6F) + 0.2F;
-            $$12 -= 0.09F * arw.a($$7 * 0.6F);
-         }
-
-         $$0.a();
-         $$0.a(0.1F, $$12, $$11);
-         this.a.a($$3, $$10, cjc.h, false, $$0, $$1, $$2);
-         $$0.b();
+   protected static <T extends bjm> void a(
+      fey<T> $$0,
+      fey<T> $$1,
+      aez $$2,
+      elj $$3,
+      foa $$4,
+      int $$5,
+      T $$6,
+      float $$7,
+      float $$8,
+      float $$9,
+      float $$10,
+      float $$11,
+      float $$12,
+      float $$13,
+      float $$14,
+      float $$15
+   ) {
+      if (!$$6.cd()) {
+         $$0.a($$1);
+         $$1.a($$6, $$7, $$8, $$12);
+         $$1.a($$6, $$7, $$8, $$9, $$10, $$11);
+         a($$1, $$2, $$3, $$4, $$5, $$6, $$13, $$14, $$15);
       }
    }
+
+   protected static <T extends bjm> void a(fey<T> $$0, aez $$1, elj $$2, foa $$3, int $$4, T $$5, float $$6, float $$7, float $$8) {
+      eln $$9 = $$3.getBuffer(foi.e($$1));
+      $$0.a($$2, $$9, $$4, fue.c($$5, 0.0F), $$6, $$7, $$8, 1.0F);
+   }
+
+   public M c() {
+      return this.a.a();
+   }
+
+   protected aez a(T $$0) {
+      return this.a.a($$0);
+   }
+
+   public abstract void a(elj var1, foa var2, int var3, T var4, float var5, float var6, float var7, float var8, float var9, float var10);
 }

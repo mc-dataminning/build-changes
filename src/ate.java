@@ -1,42 +1,63 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
-import java.util.Objects;
-import java.util.stream.Stream;
+import java.util.Arrays;
+import java.util.function.IntConsumer;
+import org.apache.commons.lang3.Validate;
 
-public abstract class ate extends DataFix {
-   private final String a;
+public class ate implements aqs {
+   public static final long[] a = new long[0];
+   private final int b;
 
-   public ate(Schema $$0, String $$1) {
-      super($$0, false);
-      this.a = $$1;
+   public ate(int $$0) {
+      this.b = $$0;
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<Pair<String, Dynamic<?>>> $$0 = DSL.named(ayx.q.typeName(), DSL.remainderType());
-      if (!Objects.equals($$0, this.getInputSchema().getType(ayx.q))) {
-         throw new IllegalStateException("Poi type is not what was expected.");
-      } else {
-         return this.fixTypeEverywhere(this.a, $$0, $$0x -> $$0xx -> $$0xx.mapSecond(this::a));
+   @Override
+   public int a(int $$0, int $$1) {
+      Validate.inclusiveBetween(0L, (long)(this.b - 1), (long)$$0);
+      Validate.inclusiveBetween(0L, 0L, (long)$$1);
+      return 0;
+   }
+
+   @Override
+   public void b(int $$0, int $$1) {
+      Validate.inclusiveBetween(0L, (long)(this.b - 1), (long)$$0);
+      Validate.inclusiveBetween(0L, 0L, (long)$$1);
+   }
+
+   @Override
+   public int a(int $$0) {
+      Validate.inclusiveBetween(0L, (long)(this.b - 1), (long)$$0);
+      return 0;
+   }
+
+   @Override
+   public long[] a() {
+      return a;
+   }
+
+   @Override
+   public int b() {
+      return this.b;
+   }
+
+   @Override
+   public int c() {
+      return 0;
+   }
+
+   @Override
+   public void a(IntConsumer $$0) {
+      for (int $$1 = 0; $$1 < this.b; $$1++) {
+         $$0.accept(0);
       }
    }
 
-   private <T> Dynamic<T> a(Dynamic<T> $$0) {
-      return $$0.update("Sections", $$0x -> $$0x.updateMapValues($$0xx -> $$0xx.mapSecond(this::b)));
+   @Override
+   public void a(int[] $$0) {
+      Arrays.fill($$0, 0, this.b, 0);
    }
 
-   private Dynamic<?> b(Dynamic<?> $$0) {
-      return $$0.update("Records", this::c);
+   @Override
+   public aqs d() {
+      return this;
    }
-
-   private <T> Dynamic<T> c(Dynamic<T> $$0) {
-      return (Dynamic<T>)DataFixUtils.orElse($$0.asStreamOpt().result().map($$1 -> $$0.createList(this.a((Stream<Dynamic<T>>)$$1))), $$0);
-   }
-
-   protected abstract <T> Stream<Dynamic<T>> a(Stream<Dynamic<T>> var1);
 }

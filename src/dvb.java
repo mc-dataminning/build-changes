@@ -1,25 +1,29 @@
-public interface dvb {
-   aev<dvo> a = a("villages");
-   aev<dvo> b = a("desert_pyramids");
-   aev<dvo> c = a("igloos");
-   aev<dvo> d = a("jungle_temples");
-   aev<dvo> e = a("swamp_huts");
-   aev<dvo> f = a("pillager_outposts");
-   aev<dvo> g = a("ocean_monuments");
-   aev<dvo> h = a("woodland_mansions");
-   aev<dvo> i = a("buried_treasures");
-   aev<dvo> j = a("mineshafts");
-   aev<dvo> k = a("ruined_portals");
-   aev<dvo> l = a("shipwrecks");
-   aev<dvo> m = a("ocean_ruins");
-   aev<dvo> n = a("nether_complexes");
-   aev<dvo> o = a("nether_fossils");
-   aev<dvo> p = a("end_cities");
-   aev<dvo> q = a("ancient_cities");
-   aev<dvo> r = a("strongholds");
-   aev<dvo> s = a("trail_ruins");
+import java.util.Optional;
 
-   private static aev<dvo> a(String $$0) {
-      return aev.a(jc.aB, new aew($$0));
+public abstract class dvb extends dvc {
+   private final dvb.a d;
+   private final int e;
+   private final int f;
+
+   protected dvb(dvb.a $$0, int $$1, int $$2, dvc.c $$3) {
+      super($$3);
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+   }
+
+   @Override
+   public Optional<dvc.b> a(dvc.a $$0) {
+      return a($$0, this.e, this.f) < $$0.b().e() ? Optional.empty() : a($$0, dkm.a.a, $$1 -> this.a($$1, $$0));
+   }
+
+   private void a(dvu $$0, dvc.a $$1) {
+      cpi $$2 = $$1.h();
+      $$0.a(this.d.construct($$1.f(), $$2.d(), $$2.e()));
+   }
+
+   @FunctionalInterface
+   protected interface a {
+      dvg construct(dll var1, int var2, int var3);
    }
 }

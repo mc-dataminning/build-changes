@@ -1,226 +1,73 @@
-public class cfs extends cel {
-   protected static final int k = 0;
-   protected static final int l = 1;
-   protected static final int m = 2;
-   private static final int n = 3;
-   private static final int o = 30;
-   private static final int p = 30;
-   private static final int q = 39;
-   private static final int r = 136;
-   private static final int s = 162;
-   private static final int t = 220;
-   private static final int u = 37;
-   private final cos v;
-   private final cfr w;
-   private int x;
-   private boolean y;
-   private boolean z;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
-   public cfs(int $$0, cbt $$1) {
-      this($$0, $$1, new cbe($$1.m));
-   }
+public class cfs {
+   private final List<cfs.b> a;
+   private final cfs.b b;
 
-   public cfs(int $$0, cbt $$1, cos $$2) {
-      super(cfq.s, $$0);
-      this.v = $$2;
-      this.w = new cfr($$2);
-      this.a(new cgd(this.w, 0, 136, 37));
-      this.a(new cgd(this.w, 1, 162, 37));
-      this.a(new cft($$1.m, $$2, this.w, 2, 220, 37));
-
-      for (int $$3 = 0; $$3 < 3; $$3++) {
-         for (int $$4 = 0; $$4 < 9; $$4++) {
-            this.a(new cgd($$1, $$4 + $$3 * 9 + 9, 108 + $$4 * 18, 84 + $$3 * 18));
-         }
-      }
-
-      for (int $$5 = 0; $$5 < 9; $$5++) {
-         this.a(new cgd($$1, $$5, 108 + $$5 * 18, 142));
+   cfs(List<cfs.b> $$0, cfs.b $$1) {
+      if (!$$0.isEmpty() && !$$1.equals(cfs.b.e)) {
+         this.a = $$0;
+         this.b = $$1;
+      } else {
+         throw new IllegalArgumentException("Need to define both inputSlots and resultSlot");
       }
    }
 
-   public void a(boolean $$0) {
-      this.y = $$0;
+   public static cfs.a a() {
+      return new cfs.a();
    }
 
-   @Override
-   public void a(bgr $$0) {
-      this.w.f();
-      super.a($$0);
+   public boolean a(int $$0) {
+      return this.a.size() >= $$0;
    }
 
-   public void e(int $$0) {
-      this.w.c($$0);
+   public cfs.b b(int $$0) {
+      return this.a.get($$0);
    }
 
-   @Override
-   public boolean a(cbu $$0) {
-      return this.v.gd() == $$0;
+   public cfs.b b() {
+      return this.b;
    }
 
-   public int l() {
-      return this.v.t();
+   public List<cfs.b> c() {
+      return this.a;
    }
 
-   public int m() {
-      return this.w.h();
+   public int d() {
+      return this.a.size();
    }
 
-   public void f(int $$0) {
-      this.v.t($$0);
+   public int e() {
+      return this.d();
    }
 
-   public int n() {
-      return this.x;
+   public List<Integer> f() {
+      return this.a.stream().map(cfs.b::a).collect(Collectors.toList());
    }
 
-   public void g(int $$0) {
-      this.x = $$0;
-   }
+   public static class a {
+      private final List<cfs.b> a = new ArrayList<>();
+      private cfs.b b = cfs.b.e;
 
-   public void b(boolean $$0) {
-      this.z = $$0;
-   }
-
-   public boolean o() {
-      return this.z;
-   }
-
-   @Override
-   public boolean a(cjf $$0, cgd $$1) {
-      return false;
-   }
-
-   @Override
-   public cjf a(cbu $$0, int $$1) {
-      cjf $$2 = cjf.b;
-      cgd $$3 = this.i.get($$1);
-      if ($$3 != null && $$3.f()) {
-         cjf $$4 = $$3.e();
-         $$2 = $$4.p();
-         if ($$1 == 2) {
-            if (!this.a($$4, 3, 39, true)) {
-               return cjf.b;
-            }
-
-            $$3.b($$4, $$2);
-            this.r();
-         } else if ($$1 != 0 && $$1 != 1) {
-            if ($$1 >= 3 && $$1 < 30) {
-               if (!this.a($$4, 30, 39, false)) {
-                  return cjf.b;
-               }
-            } else if ($$1 >= 30 && $$1 < 39 && !this.a($$4, 3, 30, false)) {
-               return cjf.b;
-            }
-         } else if (!this.a($$4, 3, 39, false)) {
-            return cjf.b;
-         }
-
-         if ($$4.b()) {
-            $$3.d(cjf.b);
-         } else {
-            $$3.d();
-         }
-
-         if ($$4.L() == $$2.L()) {
-            return cjf.b;
-         }
-
-         $$3.a($$0, $$4);
+      public cfs.a a(int $$0, int $$1, int $$2, Predicate<cjl> $$3) {
+         this.a.add(new cfs.b($$0, $$1, $$2, $$3));
+         return this;
       }
 
-      return $$2;
-   }
+      public cfs.a a(int $$0, int $$1, int $$2) {
+         this.b = new cfs.b($$0, $$1, $$2, $$0x -> false);
+         return this;
+      }
 
-   private void r() {
-      if (!this.v.gl()) {
-         biq $$0 = (biq)this.v;
-         $$0.dL().a($$0.dq(), $$0.ds(), $$0.dw(), this.v.gh(), ape.g, 1.0F, 1.0F, false);
+      public cfs a() {
+         return new cfs(this.a, this.b);
       }
    }
 
-   @Override
-   public void b(cbu $$0) {
-      super.b($$0);
-      this.v.f(null);
-      if (!this.v.gl()) {
-         if (!$$0.bv() || $$0 instanceof akr && ((akr)$$0).t()) {
-            cjf $$1 = this.w.b(0);
-            if (!$$1.b()) {
-               $$0.a($$1, false);
-            }
-
-            $$1 = this.w.b(1);
-            if (!$$1.b()) {
-               $$0.a($$1, false);
-            }
-         } else if ($$0 instanceof akr) {
-            $$0.fR().f(this.w.b(0));
-            $$0.fR().f(this.w.b(1));
-         }
-      }
-   }
-
-   public void h(int $$0) {
-      if ($$0 >= 0 && this.p().size() > $$0) {
-         cjf $$1 = this.w.a(0);
-         if (!$$1.b()) {
-            if (!this.a($$1, 3, 39, true)) {
-               return;
-            }
-
-            this.w.a(0, $$1);
-         }
-
-         cjf $$2 = this.w.a(1);
-         if (!$$2.b()) {
-            if (!this.a($$2, 3, 39, true)) {
-               return;
-            }
-
-            this.w.a(1, $$2);
-         }
-
-         if (this.w.a(0).b() && this.w.a(1).b()) {
-            cjf $$3 = this.p().get($$0).b();
-            this.c(0, $$3);
-            cjf $$4 = this.p().get($$0).c();
-            this.c(1, $$4);
-         }
-      }
-   }
-
-   private void c(int $$0, cjf $$1) {
-      if (!$$1.b()) {
-         for (int $$2 = 3; $$2 < 39; $$2++) {
-            cjf $$3 = this.i.get($$2).e();
-            if (!$$3.b() && cjf.c($$1, $$3)) {
-               cjf $$4 = this.w.a($$0);
-               int $$5 = $$4.b() ? 0 : $$4.L();
-               int $$6 = Math.min($$1.g() - $$5, $$3.L());
-               cjf $$7 = $$3.p();
-               int $$8 = $$5 + $$6;
-               $$3.h($$6);
-               $$7.f($$8);
-               this.w.a($$0, $$7);
-               if ($$8 >= $$1.g()) {
-                  break;
-               }
-            }
-         }
-      }
-   }
-
-   public void a(cou $$0) {
-      this.v.a($$0);
-   }
-
-   public cou p() {
-      return this.v.gf();
-   }
-
-   public boolean q() {
-      return this.y;
+   public static record b(int a, int b, int c, Predicate<cjl> d) {
+      static final cfs.b e = new cfs.b(0, 0, 0, $$0 -> true);
    }
 }

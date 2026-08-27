@@ -1,14 +1,24 @@
-public interface adk extends abd {
-   @Override
-   default sn b() {
-      return sn.d;
+public class adk implements ve<adf> {
+   private final tl a;
+
+   public adk(tl $$0) {
+      this.a = $$0;
    }
 
-   void a(adm var1);
+   public adk(so $$0) {
+      this.a = tl.a.b($$0.d(262144));
+   }
 
-   void a(adn var1);
+   @Override
+   public void a(so $$0) {
+      $$0.a(this.a);
+   }
 
-   void a(adl var1);
+   public void a(adf $$0) {
+      $$0.a(this);
+   }
 
-   void a(ado var1);
+   public tl a() {
+      return this.a;
+   }
 }

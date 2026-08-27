@@ -1,16 +1,19 @@
-public abstract class fsf<T extends cab, M extends fhu<T>> extends fty<T, M> {
-   private static final aew a = new aew("textures/entity/zombie/zombie.png");
+import com.google.common.collect.Maps;
+import java.util.Locale;
+import java.util.Map;
 
-   protected fsf(fth.a $$0, M $$1, M $$2, M $$3) {
-      super($$0, $$1, 0.5F);
-      this.a(new fxf<>(this, $$2, $$3, $$0.g()));
+public class fsf extends fuj<bwe, fec<bwe>> {
+   private static final Map<bwe.d, aez> a = ac.a(Maps.newHashMap(), $$0 -> {
+      for (bwe.d $$1 : bwe.d.values()) {
+         $$0.put($$1, new aez(String.format(Locale.ROOT, "textures/entity/axolotl/axolotl_%s.png", $$1.b())));
+      }
+   });
+
+   public fsf(ftd.a $$0) {
+      super($$0, new fec<>($$0.a(fhw.e)), 0.5F);
    }
 
-   public aew a(cab $$0) {
-      return a;
-   }
-
-   protected boolean b(T $$0) {
-      return super.a($$0) || $$0.gk();
+   public aez a(bwe $$0) {
+      return a.get($$0.ge());
    }
 }

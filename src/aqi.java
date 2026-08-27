@@ -1,130 +1,109 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Maps;
-import com.google.common.collect.ImmutableSet.Builder;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
 import com.mojang.datafixers.util.Either;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.JsonOps;
-import java.io.Reader;
-import java.util.ArrayList;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.Map.Entry;
 import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.stream.Collectors;
+import java.util.function.Predicate;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class aqi<T> {
-   private static final Logger a = LogUtils.getLogger();
-   final Function<aew, Optional<? extends T>> b;
-   private final String c;
+public class aqi {
+   private static final Codec<aqi> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(arj.p.fieldOf("id").forGetter(aqi::a), Codec.BOOL.optionalFieldOf("required", true).forGetter($$0x -> $$0x.e)).apply($$0, aqi::new)
+   );
+   public static final Codec<aqi> a = Codec.either(arj.p, b)
+      .xmap($$0 -> (aqi)$$0.map($$0x -> new aqi($$0x, true), $$0x -> $$0x), $$0 -> $$0.e ? Either.left($$0.a()) : Either.right($$0));
+   private final aez c;
+   private final boolean d;
+   private final boolean e;
 
-   public aqi(Function<aew, Optional<? extends T>> $$0, String $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   private aqi(aez $$0, boolean $$1, boolean $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
-   public Map<aew, List<aqi.a>> a(ant $$0) {
-      Map<aew, List<aqi.a>> $$1 = Maps.newHashMap();
-      aep $$2 = aep.a(this.c);
-
-      for (Entry<aew, List<anr>> $$3 : $$2.b($$0).entrySet()) {
-         aew $$4 = $$3.getKey();
-         aew $$5 = $$2.b($$4);
-
-         for (anr $$6 : $$3.getValue()) {
-            try (Reader $$7 = $$6.e()) {
-               JsonElement $$8 = JsonParser.parseReader($$7);
-               List<aqi.a> $$9 = $$1.computeIfAbsent($$5, $$0x -> new ArrayList<>());
-               aqg $$10 = (aqg)aqg.a.parse(new Dynamic(JsonOps.INSTANCE, $$8)).getOrThrow(false, a::error);
-               if ($$10.b()) {
-                  $$9.clear();
-               }
-
-               String $$11 = $$6.b();
-               $$10.a().forEach($$2x -> $$9.add(new aqi.a($$2x, $$11)));
-            } catch (Exception var17) {
-               a.error("Couldn't read tag list {} from {} in data pack {}", new Object[]{$$5, $$4, $$6.b(), var17});
-            }
-         }
-      }
-
-      return $$1;
+   private aqi(arj.f $$0, boolean $$1) {
+      this.c = $$0.a();
+      this.d = $$0.b();
+      this.e = $$1;
    }
 
-   private Either<Collection<aqi.a>, Collection<T>> a(aqf.a<T> $$0, List<aqi.a> $$1) {
-      Builder<T> $$2 = ImmutableSet.builder();
-      List<aqi.a> $$3 = new ArrayList<>();
-
-      for (aqi.a $$4 : $$1) {
-         if (!$$4.a().a($$0, $$2::add)) {
-            $$3.add($$4);
-         }
-      }
-
-      return $$3.isEmpty() ? Either.right($$2.build()) : Either.left($$3);
+   private arj.f a() {
+      return new arj.f(this.c, this.d);
    }
 
-   public Map<aew, Collection<T>> a(Map<aew, List<aqi.a>> $$0) {
-      final Map<aew, Collection<T>> $$1 = Maps.newHashMap();
-      aqf.a<T> $$2 = new aqf.a<T>() {
-         @Nullable
-         @Override
-         public T a(aew $$0) {
-            return (T)aqi.this.b.apply($$0).orElse(null);
+   public static aqi a(aez $$0) {
+      return new aqi($$0, false, true);
+   }
+
+   public static aqi b(aez $$0) {
+      return new aqi($$0, false, false);
+   }
+
+   public static aqi c(aez $$0) {
+      return new aqi($$0, true, true);
+   }
+
+   public static aqi d(aez $$0) {
+      return new aqi($$0, true, false);
+   }
+
+   public <T> boolean a(aqi.a<T> $$0, Consumer<T> $$1) {
+      if (this.d) {
+         Collection<T> $$2 = $$0.b(this.c);
+         if ($$2 == null) {
+            return !this.e;
          }
 
-         @Nullable
-         @Override
-         public Collection<T> b(aew $$0) {
-            return $$1.get($$0);
+         $$2.forEach($$1);
+      } else {
+         T $$3 = $$0.a(this.c);
+         if ($$3 == null) {
+            return !this.e;
          }
-      };
-      arc<aew, aqi.b> $$3 = new arc<>();
-      $$0.forEach(($$1x, $$2x) -> $$3.a($$1x, new aqi.b($$2x)));
-      $$3.a(
-         ($$2x, $$3x) -> this.a($$2, $$3x.a)
-               .ifLeft(
-                  $$1xx -> a.error(
-                        "Couldn't load tag {} as it is missing following references: {}",
-                        $$2x,
-                        $$1xx.stream().map(Objects::toString).collect(Collectors.joining(", "))
-                     )
-               )
-               .ifRight($$2xx -> $$1.put($$2x, $$2xx))
-      );
-      return $$1;
+
+         $$1.accept($$3);
+      }
+
+      return true;
    }
 
-   public Map<aew, Collection<T>> b(ant $$0) {
-      return this.a(this.a($$0));
-   }
-
-   public static record a(aqf a, String b) {
-
-      @Override
-      public String toString() {
-         return this.a + " (from " + this.b + ")";
+   public void a(Consumer<aez> $$0) {
+      if (this.d && this.e) {
+         $$0.accept(this.c);
       }
    }
 
-   static record b(List<aqi.a> a) implements arc.a<aew> {
+   public void b(Consumer<aez> $$0) {
+      if (this.d && !this.e) {
+         $$0.accept(this.c);
+      }
+   }
 
-      @Override
-      public void a(Consumer<aew> $$0) {
-         this.a.forEach($$1 -> $$1.a.a($$0));
+   public boolean a(Predicate<aez> $$0, Predicate<aez> $$1) {
+      return !this.e || (this.d ? $$1 : $$0).test(this.c);
+   }
+
+   @Override
+   public String toString() {
+      StringBuilder $$0 = new StringBuilder();
+      if (this.d) {
+         $$0.append('#');
       }
 
-      @Override
-      public void b(Consumer<aew> $$0) {
-         this.a.forEach($$1 -> $$1.a.b($$0));
+      $$0.append(this.c);
+      if (!this.e) {
+         $$0.append('?');
       }
+
+      return $$0.toString();
+   }
+
+   public interface a<T> {
+      @Nullable
+      T a(aez var1);
+
+      @Nullable
+      Collection<T> b(aez var1);
    }
 }

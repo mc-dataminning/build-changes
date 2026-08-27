@@ -11,18 +11,18 @@ public interface sv {
 
          @Nullable
          @Override
-         public vd<?> b() {
+         public ve<?> b() {
             $$0.run();
             return null;
          }
       };
    }
 
-   static sv a(final Supplier<vd<?>> $$0) {
+   static sv a(final Supplier<ve<?>> $$0) {
       return new sv() {
          @Nullable
          @Override
-         public vd<?> b() {
+         public ve<?> b() {
             return $$0.get();
          }
       };
@@ -32,7 +32,7 @@ public interface sv {
    }
 
    @Nullable
-   default vd<?> b() {
+   default ve<?> b() {
       return null;
    }
 }

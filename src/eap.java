@@ -1,213 +1,98 @@
-import java.util.Optional;
 import javax.annotation.Nullable;
 
-public abstract class eap extends eak {
-   public static final float e = 0.44444445F;
+public class eap extends eba {
+   private final boolean l;
+   private float m;
+   private float n;
 
-   @Override
-   public eal d() {
-      return ean.d;
+   public eap(boolean $$0) {
+      this.l = $$0;
    }
 
    @Override
-   public eal e() {
-      return ean.e;
+   public void a(cqo $$0, bjo $$1) {
+      super.a($$0, $$1);
+      $$1.a(ear.j, 0.0F);
+      this.m = $$1.a(ear.c);
+      $$1.a(ear.c, 6.0F);
+      this.n = $$1.a(ear.k);
+      $$1.a(ear.k, 4.0F);
    }
 
    @Override
-   public cja a() {
-      return cji.pM;
+   public void b() {
+      this.b.a(ear.c, this.m);
+      this.b.a(ear.k, this.n);
+      super.b();
    }
 
    @Override
-   public void a(cpv $$0, gw $$1, eam $$2, asc $$3) {
-      gw $$4 = $$1.c();
-      if ($$0.a_($$4).i() && !$$0.a_($$4).i($$0, $$4)) {
-         if ($$3.a(100) == 0) {
-            double $$5 = (double)$$1.u() + $$3.j();
-            double $$6 = (double)$$1.v() + 1.0;
-            double $$7 = (double)$$1.w() + $$3.j();
-            $$0.a(iv.T, $$5, $$6, $$7, 0.0, 0.0, 0.0);
-            $$0.a($$5, $$6, $$7, apd.mp, ape.e, 0.2F + $$3.i() * 0.2F, 0.9F + $$3.i() * 0.15F, false);
-         }
+   public eat a() {
+      return !this.b.aX() ? super.a() : this.c(new gw(asb.a(this.b.cG().a), asb.a(this.b.cG().b + 0.5), asb.a(this.b.cG().c)));
+   }
 
-         if ($$3.a(200) == 0) {
-            $$0.a((double)$$1.u(), (double)$$1.v(), (double)$$1.w(), apd.mn, ape.e, 0.2F + $$3.i() * 0.2F, 0.9F + $$3.i() * 0.15F, false);
-         }
+   @Override
+   public eaz a(double $$0, double $$1, double $$2) {
+      return this.a(this.b(asb.a($$0), asb.a($$1 + 0.5), asb.a($$2)));
+   }
+
+   @Override
+   public int a(eat[] $$0, eat $$1) {
+      int $$2 = super.a($$0, $$1);
+      ear $$3 = this.a(this.b, $$1.a, $$1.b + 1, $$1.c);
+      ear $$4 = this.a(this.b, $$1.a, $$1.b, $$1.c);
+      int $$5;
+      if (this.b.a($$3) >= 0.0F && $$4 != ear.w) {
+         $$5 = asb.d(Math.max(1.0F, this.b.dF()));
+      } else {
+         $$5 = 0;
       }
-   }
 
-   @Override
-   public void b(cpv $$0, gw $$1, eam $$2, asc $$3) {
-      if ($$0.X().b(cpr.b)) {
-         int $$4 = $$3.a(3);
-         if ($$4 > 0) {
-            gw $$5 = $$1;
-
-            for (int $$6 = 0; $$6 < $$4; $$6++) {
-               $$5 = $$5.b($$3.a(3) - 1, 1, $$3.a(3) - 1);
-               if (!$$0.o($$5)) {
-                  return;
-               }
-
-               dfj $$7 = $$0.a_($$5);
-               if ($$7.i()) {
-                  if (this.a((cpy)$$0, $$5)) {
-                     $$0.b($$5, csj.a($$0, $$5));
-                     return;
-                  }
-               } else if ($$7.d()) {
-                  return;
-               }
-            }
-         } else {
-            for (int $$8 = 0; $$8 < 3; $$8++) {
-               gw $$9 = $$1.b($$3.a(3) - 1, 0, $$3.a(3) - 1);
-               if (!$$0.o($$9)) {
-                  return;
-               }
-
-               if ($$0.t($$9.c()) && this.b($$0, $$9)) {
-                  $$0.b($$9.c(), csj.a($$0, $$9));
-               }
-            }
-         }
+      double $$7 = this.d(new gw($$1.a, $$1.b, $$1.c));
+      eat $$8 = this.a($$1.a, $$1.b + 1, $$1.c, Math.max(0, $$5 - 1), $$7, ha.b, $$4);
+      eat $$9 = this.a($$1.a, $$1.b - 1, $$1.c, $$5, $$7, ha.a, $$4);
+      if (this.b($$8, $$1)) {
+         $$0[$$2++] = $$8;
       }
-   }
 
-   private boolean a(cpy $$0, gw $$1) {
-      for (ha $$2 : ha.values()) {
-         if (this.b($$0, $$1.a($$2))) {
-            return true;
+      if (this.b($$9, $$1) && $$4 != ear.e) {
+         $$0[$$2++] = $$9;
+      }
+
+      for (int $$10 = 0; $$10 < $$2; $$10++) {
+         eat $$11 = $$0[$$10];
+         if ($$11.l == ear.j && this.l && $$11.b < this.b.dL().y_() - 10) {
+            $$11.k++;
          }
       }
 
-      return false;
+      return $$2;
    }
 
-   private boolean b(cpy $$0, gw $$1) {
-      return $$1.v() >= $$0.H_() && $$1.v() < $$0.aj() && !$$0.A($$1) ? false : $$0.a_($$1).j();
-   }
-
-   @Nullable
-   @Override
-   public it h() {
-      return iv.j;
+   private boolean b(@Nullable eat $$0, eat $$1) {
+      return this.a($$0, $$1) && $$0.l == ear.j;
    }
 
    @Override
-   protected void a(cpw $$0, gw $$1, dfj $$2) {
-      this.a($$0, $$1);
-   }
-
-   @Override
-   public int b(cpy $$0) {
-      return $$0.C_().i() ? 4 : 2;
-   }
-
-   @Override
-   public dfj b(eam $$0) {
-      return csw.H.n().a(cxi.a, Integer.valueOf(e($$0)));
-   }
-
-   @Override
-   public boolean a(eal $$0) {
-      return $$0 == ean.e || $$0 == ean.d;
-   }
-
-   @Override
-   public int c(cpy $$0) {
-      return $$0.C_().i() ? 1 : 2;
-   }
-
-   @Override
-   public boolean a(eam $$0, cpb $$1, gw $$2, eal $$3, ha $$4) {
-      return $$0.a($$1, $$2) >= 0.44444445F && $$3.a(apx.a);
-   }
-
-   @Override
-   public int a(cpy $$0) {
-      return $$0.C_().i() ? 10 : 30;
-   }
-
-   @Override
-   public int a(cpv $$0, gw $$1, eam $$2, eam $$3) {
-      int $$4 = this.a((cpy)$$0);
-      if (!$$2.c() && !$$3.c() && !$$2.c(a) && !$$3.c(a) && $$3.a((cpb)$$0, $$1) > $$2.a((cpb)$$0, $$1) && $$0.D_().a(4) != 0) {
-         $$4 *= 4;
-      }
-
-      return $$4;
-   }
-
-   private void a(cpw $$0, gw $$1) {
-      $$0.c(1501, $$1, 0);
-   }
-
-   @Override
-   protected boolean a(cpv $$0) {
-      return $$0.X().b(cpr.R);
-   }
-
-   @Override
-   protected void a(cpw $$0, gw $$1, dfj $$2, ha $$3, eam $$4) {
-      if ($$3 == ha.a) {
-         eam $$5 = $$0.b_($$1);
-         if (this.a(apx.b) && $$5.a(apx.a)) {
-            if ($$2.b() instanceof cxi) {
-               $$0.a($$1, csw.b.n(), 3);
-            }
-
-            this.a($$0, $$1);
-            return;
-         }
-      }
-
-      super.a($$0, $$1, $$2, $$3, $$4);
-   }
-
-   @Override
-   protected boolean i() {
+   protected boolean c() {
       return true;
    }
 
    @Override
-   protected float c() {
-      return 100.0F;
-   }
+   public ear a(cph $$0, int $$1, int $$2, int $$3) {
+      gw.a $$4 = new gw.a();
+      ear $$5 = b($$0, $$4.d($$1, $$2, $$3));
+      if ($$5 == ear.j) {
+         for (ha $$6 : ha.values()) {
+            ear $$7 = b($$0, $$4.d($$1, $$2, $$3).c($$6));
+            if ($$7 == ear.a) {
+               return ear.k;
+            }
+         }
 
-   @Override
-   public Optional<apc> j() {
-      return Optional.of(apd.cE);
-   }
-
-   public static class a extends eap {
-      @Override
-      protected void a(dfk.a<eal, eam> $$0) {
-         super.a($$0);
-         $$0.a(b);
-      }
-
-      @Override
-      public int d(eam $$0) {
-         return $$0.c(b);
-      }
-
-      @Override
-      public boolean c(eam $$0) {
-         return false;
-      }
-   }
-
-   public static class b extends eap {
-      @Override
-      public int d(eam $$0) {
-         return 8;
-      }
-
-      @Override
-      public boolean c(eam $$0) {
-         return true;
+         return ear.j;
+      } else {
+         return a($$0, $$4);
       }
    }
 }

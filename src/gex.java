@@ -1,37 +1,37 @@
-public class gex extends gfb {
-   private final tl a;
-   private etj b = etj.a;
-   private final eyk c;
-   private int y;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.stream.Collectors;
 
-   public gex(eyk $$0, tl $$1, tl $$2) {
-      super($$1);
-      this.c = $$0;
-      this.a = $$2;
+public abstract class gex extends eye {
+   protected static final int k = 17;
+   protected static final int l = 7;
+   protected static final long m = 5368709120L;
+   protected static final int n = 5000268;
+   protected static final int o = 7105644;
+   protected static final int p = 8388479;
+   protected static final int q = 15553363;
+   protected static final int s = 13413468;
+   protected static final int t = -256;
+   protected static final int u = 3368635;
+   protected static final int v = 7107012;
+   protected static final int w = 8226750;
+   protected static final int x = 8;
+   private final List<gev> a = Lists.newArrayList();
+
+   public gex(tl $$0) {
+      super($$0);
    }
 
-   @Override
-   public void aH_() {
-      this.f.ac().a();
-      this.b = etj.a(this.i, this.a, this.g - 50);
-      this.y = this.b.a() * 9;
-      this.d(esq.a(tk.k, $$0 -> this.f.a(this.c)).a(this.g / 2 - 100, this.h / 2 + this.y / 2 + 9, 200, 20).a());
+   protected static int h(int $$0) {
+      return 40 + $$0 * 13;
    }
 
-   @Override
-   public tl g() {
-      return tl.h().b(this.e).f(": ").b(this.a);
+   protected gev a(gev $$0) {
+      this.a.add($$0);
+      return this.a($$0);
    }
 
-   @Override
-   public void az_() {
-      eqv.O().a(this.c);
-   }
-
-   @Override
-   public void a(esf $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, this.h / 2 - this.y / 2 - 9 * 2, 11184810);
-      this.b.a($$0, this.g / 2, this.h / 2 - this.y / 2);
+   public tl l() {
+      return tk.a(this.a.stream().map(gev::a).collect(Collectors.toList()));
    }
 }

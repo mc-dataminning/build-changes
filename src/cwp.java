@@ -1,68 +1,73 @@
-import java.util.Map;
+import com.mojang.serialization.MapCodec;
+import java.util.Optional;
 
-public class cwp extends csv {
-   public static final dga a = cyh.a;
-   public static final dga b = cyh.b;
-   public static final dga c = cyh.c;
-   public static final dga d = cyh.d;
-   public static final dga e = cyh.e;
-   public static final dga f = cyh.f;
-   private static final Map<ha, dga> g = cyh.g;
-
-   public cwp(dfi.d $$0) {
-      super($$0);
-      this.k(
-         this.C
-            .b()
-            .a(a, Boolean.valueOf(true))
-            .a(b, Boolean.valueOf(true))
-            .a(c, Boolean.valueOf(true))
-            .a(d, Boolean.valueOf(true))
-            .a(e, Boolean.valueOf(true))
-            .a(f, Boolean.valueOf(true))
-      );
+public abstract class cwp extends cwo implements ctf {
+   protected cwp(dfc.d $$0, ha $$1, eia $$2, boolean $$3) {
+      super($$0, $$1, $$2, $$3);
    }
 
    @Override
-   public dfj a(cln $$0) {
-      cpb $$1 = $$0.q();
-      gw $$2 = $$0.a();
-      return this.n()
-         .a(f, Boolean.valueOf(!$$1.a_($$2.d()).a(this)))
-         .a(e, Boolean.valueOf(!$$1.a_($$2.c()).a(this)))
-         .a(a, Boolean.valueOf(!$$1.a_($$2.e()).a(this)))
-         .a(b, Boolean.valueOf(!$$1.a_($$2.h()).a(this)))
-         .a(c, Boolean.valueOf(!$$1.a_($$2.f()).a(this)))
-         .a(d, Boolean.valueOf(!$$1.a_($$2.g()).a(this)));
+   protected abstract MapCodec<? extends cwp> a();
+
+   protected dfd a(dfd $$0, dfd $$1) {
+      return $$1;
    }
 
    @Override
-   public dfj a(dfj $$0, ha $$1, dfj $$2, cpw $$3, gw $$4, gw $$5) {
-      return $$2.a(this) ? $$0.a(g.get($$1), Boolean.valueOf(false)) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   public dfd a(dfd $$0, ha $$1, dfd $$2, cqc $$3, gw $$4, gw $$5) {
+      if ($$1 == this.a.g() && !$$0.a($$3, $$4)) {
+         $$3.a($$4, this, 1);
+      }
+
+      cwq $$6 = this.c();
+      if ($$1 == this.a && !$$2.a(this) && !$$2.a($$6)) {
+         return this.a($$0, $$6.a($$3));
+      } else {
+         if (this.b) {
+            $$3.a($$4, eah.c, eah.c.a($$3));
+         }
+
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      }
    }
 
    @Override
-   public dfj a(dfj $$0, czh $$1) {
-      return $$0.a(g.get($$1.a(ha.c)), $$0.c(a))
-         .a(g.get($$1.a(ha.d)), $$0.c(c))
-         .a(g.get($$1.a(ha.f)), $$0.c(b))
-         .a(g.get($$1.a(ha.e)), $$0.c(d))
-         .a(g.get($$1.a(ha.b)), $$0.c(e))
-         .a(g.get($$1.a(ha.a)), $$0.c(f));
+   public cjl a(cqe $$0, gw $$1, dfd $$2) {
+      return new cjl(this.c());
    }
 
    @Override
-   public dfj a(dfj $$0, cxq $$1) {
-      return $$0.a(g.get($$1.b(ha.c)), $$0.c(a))
-         .a(g.get($$1.b(ha.d)), $$0.c(c))
-         .a(g.get($$1.b(ha.f)), $$0.c(b))
-         .a(g.get($$1.b(ha.e)), $$0.c(d))
-         .a(g.get($$1.b(ha.b)), $$0.c(e))
-         .a(g.get($$1.b(ha.a)), $$0.c(f));
+   public boolean b(cqe $$0, gw $$1, dfd $$2) {
+      Optional<gw> $$3 = this.a($$0, $$1, $$2.b());
+      return $$3.isPresent() && this.c().g($$0.a_($$3.get().a(this.a)));
    }
 
    @Override
-   protected void a(dfk.a<csv, dfj> $$0) {
-      $$0.a(e, f, a, b, c, d);
+   public boolean a(cqb $$0, ash $$1, gw $$2, dfd $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(akt $$0, ash $$1, gw $$2, dfd $$3) {
+      Optional<gw> $$4 = this.a($$0, $$2, $$3.b());
+      if ($$4.isPresent()) {
+         dfd $$5 = $$0.a_($$4.get());
+         ((cwq)$$5.b()).a($$0, $$1, $$4.get(), $$5);
+      }
+   }
+
+   private Optional<gw> a(cph $$0, gw $$1, ctc $$2) {
+      return l.a($$0, $$1, $$2, this.a, this.c());
+   }
+
+   @Override
+   public boolean a(dfd $$0, clt $$1) {
+      boolean $$2 = super.a($$0, $$1);
+      return $$2 && $$1.n().a(this.c().k()) ? false : $$2;
+   }
+
+   @Override
+   protected ctc b() {
+      return this;
    }
 }

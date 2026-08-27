@@ -1,37 +1,25 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class duk extends dut {
-   public static final Codec<duk> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.INT.fieldOf("noise_to_count_ratio").forGetter($$0x -> $$0x.c),
-               Codec.DOUBLE.fieldOf("noise_factor").forGetter($$0x -> $$0x.d),
-               Codec.DOUBLE.fieldOf("noise_offset").orElse(0.0).forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, duk::new)
-   );
-   private final int c;
-   private final double d;
-   private final double e;
+public interface duk<P extends duj> {
+   duk<dtv> a = a("block_predicate_filter", dtv.a);
+   duk<dum> b = a("rarity_filter", dum.a);
+   duk<duo> c = a("surface_relative_threshold_filter", duo.a);
+   duk<dup> d = a("surface_water_depth_filter", dup.a);
+   duk<dtu> e = a("biome", dtu.a);
+   duk<dtz> f = a("count", dtz.a);
+   duk<due> g = a("noise_based_count", due.a);
+   duk<duf> h = a("noise_threshold_count", duf.a);
+   duk<dty> i = a("count_on_every_layer", dty.a);
+   duk<dua> j = a("environment_scan", dua.a);
+   duk<duc> k = a("heightmap", duc.a);
+   duk<dub> l = a("height_range", dub.a);
+   duk<dud> m = a("in_square", dud.a);
+   duk<dul> n = a("random_offset", dul.a);
+   duk<dtw> o = a("carving_mask", dtw.a);
 
-   private duk(int $$0, double $$1, double $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-   }
+   Codec<P> codec();
 
-   public static duk a(int $$0, double $$1, double $$2) {
-      return new duk($$0, $$1, $$2);
-   }
-
-   @Override
-   protected int a(asc $$0, gw $$1) {
-      double $$2 = cqt.e.a((double)$$1.u() / this.d, (double)$$1.w() / this.d, false);
-      return (int)Math.ceil(($$2 + this.e) * (double)this.c);
-   }
-
-   @Override
-   public duq<?> b() {
-      return duq.g;
+   private static <P extends duj> duk<P> a(String $$0, Codec<P> $$1) {
+      return hq.a(jb.V, $$0, () -> $$1);
    }
 }

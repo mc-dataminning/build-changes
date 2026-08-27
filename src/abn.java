@@ -1,12 +1,6 @@
-public class abn implements vd<abc> {
-   private final abn.a a;
-
-   public abn(abn.a $$0) {
-      this.a = $$0;
-   }
-
+public record abn(float a) implements ve<abd> {
    public abn(so $$0) {
-      this.a = $$0.b(abn.a.class);
+      this($$0.readFloat());
    }
 
    @Override
@@ -14,16 +8,7 @@ public class abn implements vd<abc> {
       $$0.a(this.a);
    }
 
-   public void a(abc $$0) {
+   public void a(abd $$0) {
       $$0.a(this);
-   }
-
-   public abn.a a() {
-      return this.a;
-   }
-
-   public static enum a {
-      a,
-      b;
    }
 }

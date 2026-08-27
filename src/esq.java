@@ -1,98 +1,193 @@
-import java.util.function.Supplier;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public class esq extends esi {
-   public static final int l = 120;
-   public static final int m = 150;
-   public static final int n = 20;
-   protected static final esq.b o = $$0 -> $$0.get();
-   protected final esq.c p;
-   protected final esq.b q;
-
-   public static esq.a a(tl $$0, esq.c $$1) {
-      return new esq.a($$0, $$1);
+public abstract class esq<E extends esq.a<E>> extends esf<E> {
+   public esq(eqp $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   protected esq(int $$0, int $$1, int $$2, int $$3, tl $$4, esq.c $$5, esq.b $$6) {
-      super($$0, $$1, $$2, $$3, $$4);
-      this.p = $$5;
-      this.q = $$6;
+   @Nullable
+   @Override
+   public erw a(ewj $$0) {
+      if (this.k() == 0) {
+         return null;
+      } else if (!($$0 instanceof ewj.a $$1)) {
+         return super.a($$0);
+      } else {
+         E $$2 = this.h();
+         if ($$1.b().a() == ewk.a && $$2 != null) {
+            return erw.a(this, $$2.a($$0));
+         } else {
+            int $$3 = -1;
+            ewl $$4 = $$1.b();
+            if ($$2 != null) {
+               $$3 = $$2.i().indexOf($$2.t());
+            }
+
+            if ($$3 == -1) {
+               switch ($$4) {
+                  case c:
+                     $$3 = Integer.MAX_VALUE;
+                     $$4 = ewl.b;
+                     break;
+                  case d:
+                     $$3 = 0;
+                     $$4 = ewl.b;
+                     break;
+                  default:
+                     $$3 = 0;
+               }
+            }
+
+            E $$5 = $$2;
+
+            erw $$6;
+            do {
+               $$5 = this.a($$4, $$0x -> !$$0x.i().isEmpty(), $$5);
+               if ($$5 == null) {
+                  return null;
+               }
+
+               $$6 = $$5.a($$1, $$3);
+            } while ($$6 == null);
+
+            return erw.a(this, $$6);
+         }
+      }
    }
 
    @Override
-   public void c() {
-      this.p.onPress(this);
+   public void a(@Nullable euf $$0) {
+      super.a($$0);
+      if ($$0 == null) {
+         this.a(null);
+      }
    }
 
    @Override
-   protected ty aE_() {
-      return this.q.createNarrationMessage(() -> super.aE_());
+   public ewb.a q() {
+      return this.aC_() ? ewb.a.c : super.q();
    }
 
    @Override
-   public void a(ewi $$0) {
-      this.c($$0);
+   protected boolean e(int $$0) {
+      return false;
    }
 
-   public static class a {
-      private final tl a;
-      private final esq.c b;
+   @Override
+   public void b(ewd $$0) {
+      E $$1 = this.r();
+      if ($$1 != null) {
+         $$1.a($$0.a());
+         this.a($$0, $$1);
+      } else {
+         E $$2 = this.h();
+         if ($$2 != null) {
+            $$2.a($$0.a());
+            this.a($$0, $$2);
+         }
+      }
+
+      $$0.a(ewc.d, tl.c("narration.component_list.usage"));
+   }
+
+   public abstract static class a<E extends esq.a<E>> extends esf.a<E> implements eue {
       @Nullable
-      private eua c;
-      private int d;
-      private int e;
-      private int f = 150;
-      private int g = 20;
-      private esq.b h = esq.o;
+      private euf a;
+      @Nullable
+      private ewb b;
+      private boolean c;
 
-      public a(tl $$0, esq.c $$1) {
-         this.a = $$0;
-         this.b = $$1;
+      @Override
+      public boolean aB_() {
+         return this.c;
       }
 
-      public esq.a a(int $$0, int $$1) {
-         this.d = $$0;
-         this.e = $$1;
-         return this;
-      }
-
-      public esq.a a(int $$0) {
-         this.f = $$0;
-         return this;
-      }
-
-      public esq.a b(int $$0, int $$1) {
-         this.f = $$0;
-         this.g = $$1;
-         return this;
-      }
-
-      public esq.a a(int $$0, int $$1, int $$2, int $$3) {
-         return this.a($$0, $$1).b($$2, $$3);
-      }
-
-      public esq.a a(@Nullable eua $$0) {
+      @Override
+      public void b(boolean $$0) {
          this.c = $$0;
-         return this;
       }
 
-      public esq.a a(esq.b $$0) {
-         this.h = $$0;
-         return this;
+      @Override
+      public boolean a(double $$0, double $$1, int $$2) {
+         return eue.super.a($$0, $$1, $$2);
       }
 
-      public esq a() {
-         esq $$0 = new esq(this.d, this.e, this.f, this.g, this.a, this.b, this.h);
-         $$0.a(this.c);
-         return $$0;
+      @Override
+      public void a(@Nullable euf $$0) {
+         if (this.a != null) {
+            this.a.b_(false);
+         }
+
+         if ($$0 != null) {
+            $$0.b_(true);
+         }
+
+         this.a = $$0;
       }
-   }
 
-   public interface b {
-      ty createNarrationMessage(Supplier<ty> var1);
-   }
+      @Nullable
+      @Override
+      public euf t() {
+         return this.a;
+      }
 
-   public interface c {
-      void onPress(esq var1);
+      @Nullable
+      public erw a(ewj $$0, int $$1) {
+         if (this.i().isEmpty()) {
+            return null;
+         } else {
+            erw $$2 = this.i().get(Math.min($$1, this.i().size() - 1)).a($$0);
+            return erw.a(this, $$2);
+         }
+      }
+
+      @Nullable
+      @Override
+      public erw a(ewj $$0) {
+         if ($$0 instanceof ewj.a $$1) {
+            int $$2 = switch ($$1.b()) {
+               case c -> -1;
+               case d -> 1;
+               case a, b -> 0;
+            };
+            if ($$2 == 0) {
+               return null;
+            }
+
+            int $$3 = asb.a($$2 + this.i().indexOf(this.t()), 0, this.i().size() - 1);
+
+            for (int $$4 = $$3; $$4 >= 0 && $$4 < this.i().size(); $$4 += $$2) {
+               euf $$5 = this.i().get($$4);
+               erw $$6 = $$5.a($$0);
+               if ($$6 != null) {
+                  return erw.a(this, $$6);
+               }
+            }
+         }
+
+         return eue.super.a($$0);
+      }
+
+      public abstract List<? extends ewb> b();
+
+      void a(ewd $$0) {
+         List<? extends ewb> $$1 = this.b();
+         eye.b $$2 = eye.a($$1, this.b);
+         if ($$2 != null) {
+            if ($$2.c.a()) {
+               this.b = $$2.a;
+            }
+
+            if ($$1.size() > 1) {
+               $$0.a(ewc.b, tl.a("narrator.position.object_list", $$2.b + 1, $$1.size()));
+               if ($$2.c == ewb.a.c) {
+                  $$0.a(ewc.d, tl.c("narration.component_list.usage"));
+               }
+            }
+
+            $$2.a.b($$0.a());
+         }
+      }
    }
 }

@@ -85,14 +85,14 @@ public class eg implements ArgumentType<eg.a> {
 
       @Override
       public Collection<GameProfile> getNames(dt $$0) throws CommandSyntaxException {
-         List<akr> $$1 = this.a.d($$0);
+         List<aku> $$1 = this.a.d($$0);
          if ($$1.isEmpty()) {
             throw ee.e.create();
          } else {
             List<GameProfile> $$2 = Lists.newArrayList();
 
-            for (akr $$3 : $$1) {
-               $$2.add($$3.fQ());
+            for (aku $$3 : $$1) {
+               $$2.add($$3.fR());
             }
 
             return $$2;

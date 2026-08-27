@@ -1,27 +1,58 @@
-public interface ciz {
-   int a = 256;
-   int b = 140;
-   aev<cix> c = a("ponder_goat_horn");
-   aev<cix> d = a("sing_goat_horn");
-   aev<cix> e = a("seek_goat_horn");
-   aev<cix> f = a("feel_goat_horn");
-   aev<cix> g = a("admire_goat_horn");
-   aev<cix> h = a("call_goat_horn");
-   aev<cix> i = a("yearn_goat_horn");
-   aev<cix> j = a("dream_goat_horn");
+public class ciz extends cjg {
+   private static final int a = 40;
 
-   private static aev<cix> a(String $$0) {
-      return aev.a(jc.B, new aew($$0));
+   public ciz(cjg.a $$0) {
+      super($$0);
    }
 
-   static cix a(hq<cix> $$0) {
-      hq.a($$0, c, new cix((he<apc>)apd.ld.get(0), 140, 256.0F));
-      hq.a($$0, d, new cix((he<apc>)apd.ld.get(1), 140, 256.0F));
-      hq.a($$0, e, new cix((he<apc>)apd.ld.get(2), 140, 256.0F));
-      hq.a($$0, f, new cix((he<apc>)apd.ld.get(3), 140, 256.0F));
-      hq.a($$0, g, new cix((he<apc>)apd.ld.get(4), 140, 256.0F));
-      hq.a($$0, h, new cix((he<apc>)apd.ld.get(5), 140, 256.0F));
-      hq.a($$0, i, new cix((he<apc>)apd.ld.get(6), 140, 256.0F));
-      return hq.a($$0, j, new cix((he<apc>)apd.ld.get(7), 140, 256.0F));
+   @Override
+   public cjl a(cjl $$0, cqb $$1, bjm $$2) {
+      super.a($$0, $$1, $$2);
+      if ($$2 instanceof aku $$3) {
+         al.z.a($$3, $$0);
+         $$3.b(apq.c.b(this));
+      }
+
+      if (!$$1.B) {
+         $$2.d(bil.s);
+      }
+
+      if ($$0.b()) {
+         return new cjl(cjo.rw);
+      } else {
+         if ($$2 instanceof cca $$4 && !$$4.fT().d) {
+            cjl $$5 = new cjl(cjo.rw);
+            if (!$$4.fS().e($$5)) {
+               $$4.a($$5, false);
+            }
+         }
+
+         return $$0;
+      }
+   }
+
+   @Override
+   public int b(cjl $$0) {
+      return 40;
+   }
+
+   @Override
+   public cle c(cjl $$0) {
+      return cle.c;
+   }
+
+   @Override
+   public apf aj_() {
+      return apg.lb;
+   }
+
+   @Override
+   public apf ak_() {
+      return apg.lb;
+   }
+
+   @Override
+   public bhf<cjl> a(cqb $$0, cca $$1, bhd $$2) {
+      return cjn.a($$0, $$1, $$2);
    }
 }

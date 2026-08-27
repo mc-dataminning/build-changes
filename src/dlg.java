@@ -1,127 +1,93 @@
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import java.util.function.Function;
 
-public final class dlg {
-   final dlf a;
-   private final hf<dzp.a> b;
-   private final dky c;
-   private final crc.f d;
-   private final dlk e;
-   private final dlf f;
-   private final dlf g;
-   private final Map<aev<dzp.a>, dzp> h;
-   private final Map<aew, dlf> i;
+public interface dlg {
+   Codec<dlg> a = arj.a(dlg.b.d, arj.a(dlg.a.d, dlg.c.d)).xmap(dlg::a, dlg::a);
+   dlg b = b(0);
+   dlg c = c(0);
 
-   public static dlg a(hf.a $$0, aev<dkx> $$1, long $$2) {
-      return a($$0.b(jc.aw).b($$1).a(), $$0.b(jc.ax), $$2);
+   static dlg a(int $$0) {
+      return new dlg.b($$0);
    }
 
-   public static dlg a(dkx $$0, hf<dzp.a> $$1, long $$2) {
-      return new dlg($$0, $$1, $$2);
+   static dlg b(int $$0) {
+      return new dlg.a($$0);
    }
 
-   private dlg(dkx $$0, hf<dzp.a> $$1, final long $$2) {
-      this.a = $$0.d().a($$2).e();
-      this.b = $$1;
-      this.f = this.a.a(new aew("aquifer")).e();
-      this.g = this.a.a(new aew("ore")).e();
-      this.h = new ConcurrentHashMap<>();
-      this.i = new ConcurrentHashMap<>();
-      this.e = new dlk(this, $$0.g(), $$0.l(), this.a);
-      final boolean $$3 = $$0.n();
+   static dlg c(int $$0) {
+      return new dlg.c($$0);
+   }
 
-      class a implements dkl.f {
-         private final Map<dkl, dkl> d = new HashMap<>();
+   static dlg a() {
+      return b;
+   }
 
-         private asc a(long $$0) {
-            return new dkt($$2 + $$0);
-         }
+   static dlg b() {
+      return c;
+   }
 
-         @Override
-         public dkl.c a(dkl.c $$0) {
-            he<dzp.a> $$1 = $$0.b();
-            if ($$3) {
-               if ($$1.a(dlb.a)) {
-                  dzp $$2 = dzp.a(this.a(0L), new dzp.a(-7, 1.0, 1.0));
-                  return new dkl.c($$1, $$2);
-               }
+   private static dlg a(Either<dlg.b, Either<dlg.a, dlg.c>> $$0) {
+      return (dlg)$$0.map(Function.identity(), $$0x -> (Record)$$0x.map(Function.identity(), Function.identity()));
+   }
 
-               if ($$1.a(dlb.b)) {
-                  dzp $$3 = dzp.a(this.a(1L), new dzp.a(-7, 1.0, 1.0));
-                  return new dkl.c($$1, $$3);
-               }
+   private static Either<dlg.b, Either<dlg.a, dlg.c>> a(dlg $$0) {
+      return $$0 instanceof dlg.b ? Either.left((dlg.b)$$0) : Either.right($$0 instanceof dlg.a ? Either.left((dlg.a)$$0) : Either.right((dlg.c)$$0));
+   }
 
-               if ($$1.a(dlb.j)) {
-                  dzp $$4 = dzp.b(dlg.this.a.a(dlb.j.a()), new dzp.a(0, 0.0));
-                  return new dkl.c($$1, $$4);
-               }
-            }
+   int a(dlj var1);
 
-            dzp $$5 = dlg.this.a($$1.e().orElseThrow());
-            return new dkl.c($$1, $$5);
-         }
+   public static record a(int e) implements dlg {
+      public static final Codec<dlg.a> d = Codec.intRange(dim.e, dim.d).fieldOf("above_bottom").xmap(dlg.a::new, dlg.a::c).codec();
 
-         private dkl a(dkl $$0) {
-            if ($$0 instanceof dzm $$1) {
-               asc $$2 = $$3 ? this.a(0L) : dlg.this.a.a(new aew("terrain"));
-               return $$1.a($$2);
-            } else {
-               return (dkl)($$0 instanceof dkm.i ? new dkm.i($$2) : $$0);
-            }
-         }
-
-         @Override
-         public dkl apply(dkl $$0) {
-            return this.d.computeIfAbsent($$0, this::a);
-         }
+      @Override
+      public int a(dlj $$0) {
+         return $$0.a() + this.e;
       }
 
-      this.c = $$0.i().a(new a());
-      dkl.f $$4 = new dkl.f() {
-         private final Map<dkl, dkl> b = new HashMap<>();
+      @Override
+      public String toString() {
+         return this.e + " above bottom";
+      }
 
-         private dkl a(dkl $$0) {
-            if ($$0 instanceof dkm.j $$1) {
-               return $$1.j().a();
-            } else {
-               return $$0 instanceof dkm.l $$2 ? $$2.k() : $$0;
-            }
-         }
-
-         @Override
-         public dkl apply(dkl $$0) {
-            return this.b.computeIfAbsent($$0, this::a);
-         }
-      };
-      this.d = new crc.f(this.c.e().a($$4), this.c.f().a($$4), this.c.g().a($$4), this.c.h().a($$4), this.c.i().a($$4), this.c.j().a($$4), $$0.k());
+      public int c() {
+         return this.e;
+      }
    }
 
-   public dzp a(aev<dzp.a> $$0) {
-      return this.h.computeIfAbsent($$0, $$1 -> dlb.a(this.b, this.a, $$0));
+   public static record b(int e) implements dlg {
+      public static final Codec<dlg.b> d = Codec.intRange(dim.e, dim.d).fieldOf("absolute").xmap(dlg.b::new, dlg.b::c).codec();
+
+      @Override
+      public int a(dlj $$0) {
+         return this.e;
+      }
+
+      @Override
+      public String toString() {
+         return this.e + " absolute";
+      }
+
+      public int c() {
+         return this.e;
+      }
    }
 
-   public dlf a(aew $$0) {
-      return this.i.computeIfAbsent($$0, $$1 -> this.a.a($$0).e());
-   }
+   public static record c(int e) implements dlg {
+      public static final Codec<dlg.c> d = Codec.intRange(dim.e, dim.d).fieldOf("below_top").xmap(dlg.c::new, dlg.c::c).codec();
 
-   public dky a() {
-      return this.c;
-   }
+      @Override
+      public int a(dlj $$0) {
+         return $$0.b() - 1 + $$0.a() - this.e;
+      }
 
-   public crc.f b() {
-      return this.d;
-   }
+      @Override
+      public String toString() {
+         return this.e + " below top";
+      }
 
-   public dlk c() {
-      return this.e;
-   }
-
-   public dlf d() {
-      return this.f;
-   }
-
-   public dlf e() {
-      return this.g;
+      public int c() {
+         return this.e;
+      }
    }
 }

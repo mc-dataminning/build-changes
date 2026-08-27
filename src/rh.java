@@ -24,7 +24,7 @@ public class rh {
    }
 
    private static DataInputStream b(InputStream $$0) throws IOException {
-      return new DataInputStream(new arg(new GZIPInputStream($$0)));
+      return new DataInputStream(new ark(new GZIPInputStream($$0)));
    }
 
    public static qw a(InputStream $$0) throws IOException {

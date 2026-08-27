@@ -1,17 +1,24 @@
-public class fwm extends fty<cac, fhv<cac>> {
-   private static final aew a = new aew("textures/entity/zombie_villager/zombie_villager.png");
+public class fwm extends fxl<bze, few<bze>> {
+   private final fou a;
 
-   public fwm(fth.a $$0) {
-      super($$0, new fhv<>($$0.a(fib.cc)), 0.5F);
-      this.a(new fxf<>(this, new fhv($$0.a(fib.cd)), new fhv($$0.a(fib.ce)), $$0.g()));
-      this.a(new fya<>(this, $$0.e(), "zombie_villager"));
+   public fwm(fuy<bze, few<bze>> $$0, fou $$1) {
+      super($$0);
+      this.a = $$1;
    }
 
-   public aew a(cac $$0) {
-      return a;
-   }
-
-   protected boolean b(cac $$0) {
-      return super.a($$0) || $$0.gn();
+   public void a(elj $$0, foa $$1, int $$2, bze $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      dfd $$10 = $$3.ge();
+      if ($$10 != null) {
+         $$0.a();
+         $$0.a(0.0F, 0.6875F, -0.75F);
+         $$0.a(a.b.rotationDegrees(20.0F));
+         $$0.a(a.d.rotationDegrees(45.0F));
+         $$0.a(0.25F, 0.1875F, 0.25F);
+         float $$11 = 0.5F;
+         $$0.b(-0.5F, -0.5F, 0.5F);
+         $$0.a(a.d.rotationDegrees(90.0F));
+         this.a.a($$10, $$0, $$1, $$2, fyr.d);
+         $$0.b();
+      }
    }
 }

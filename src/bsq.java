@@ -1,50 +1,35 @@
-import javax.annotation.Nullable;
+public class bsq {
+   private final bmq a;
+   private final float b;
+   private final int c;
 
-public class bsq extends bso {
-   @Nullable
-   private gw p;
-
-   public bsq(bji $$0, cpv $$1) {
-      super($$0, $$1);
+   public bsq(gw $$0, float $$1, int $$2) {
+      this(new blg($$0), $$1, $$2);
    }
 
-   @Override
-   public ebb a(gw $$0, int $$1) {
-      this.p = $$0;
-      return super.a($$0, $$1);
+   public bsq(ehh $$0, float $$1, int $$2) {
+      this(new blg(gw.a($$0)), $$1, $$2);
    }
 
-   @Override
-   public ebb a(biq $$0, int $$1) {
-      this.p = $$0.dl();
-      return super.a($$0, $$1);
+   public bsq(biw $$0, float $$1, int $$2) {
+      this(new blo($$0, false), $$1, $$2);
    }
 
-   @Override
-   public boolean a(biq $$0, double $$1) {
-      ebb $$2 = this.a($$0, 0);
-      if ($$2 != null) {
-         return this.a($$2, $$1);
-      } else {
-         this.p = $$0.dl();
-         this.d = $$1;
-         return true;
-      }
+   public bsq(bmq $$0, float $$1, int $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   @Override
-   public void c() {
-      if (!this.l()) {
-         super.c();
-      } else {
-         if (this.p != null) {
-            if (!this.p.a(this.a.dj(), (double)this.a.df())
-               && (!(this.a.ds() > (double)this.p.v()) || !gw.a((double)this.p.u(), this.a.ds(), (double)this.p.w()).a(this.a.dj(), (double)this.a.df()))) {
-               this.a.I().a((double)this.p.u(), (double)this.p.v(), (double)this.p.w(), this.d);
-            } else {
-               this.p = null;
-            }
-         }
-      }
+   public bmq a() {
+      return this.a;
+   }
+
+   public float b() {
+      return this.b;
+   }
+
+   public int c() {
+      return this.c;
    }
 }

@@ -1,10 +1,5 @@
-public class ddn extends ddm {
-   public ddn(gw $$0, dfj $$1) {
-      super(dcx.g, $$0, $$1);
-   }
-
-   @Override
-   protected tl g() {
-      return tl.c("container.dropper");
+public class ddn extends dcz {
+   public ddn(gw $$0, dfd $$1) {
+      super(ddb.q, $$0, $$1);
    }
 }

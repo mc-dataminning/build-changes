@@ -1,31 +1,52 @@
 import com.mojang.logging.LogUtils;
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.atomic.AtomicInteger;
+import com.mojang.serialization.Codec;
 import org.slf4j.Logger;
 
-public class bfp implements ThreadFactory {
-   private static final Logger a = LogUtils.getLogger();
-   private final ThreadGroup b;
-   private final AtomicInteger c = new AtomicInteger(1);
-   private final String d;
+public class bfp {
+   public static final Codec<bfp> a = Codec.INT.xmap(bfp::a, bfp::a);
+   private static final bfp b = new bfp(1);
+   private static final Logger c = LogUtils.getLogger();
+   private final int d;
 
-   public bfp(String $$0) {
-      SecurityManager $$1 = System.getSecurityManager();
-      this.b = $$1 != null ? $$1.getThreadGroup() : Thread.currentThread().getThreadGroup();
-      this.d = $$0 + "-";
+   private bfp(int $$0) {
+      this.d = $$0;
+   }
+
+   public static bfp a(int $$0) {
+      if ($$0 == 1) {
+         return b;
+      } else {
+         b($$0);
+         return new bfp($$0);
+      }
+   }
+
+   public int a() {
+      return this.d;
+   }
+
+   private static void b(int $$0) {
+      if ($$0 < 0) {
+         throw (IllegalArgumentException)ac.b(new IllegalArgumentException("Weight should be >= 0"));
+      } else {
+         if ($$0 == 0 && aa.aT) {
+            c.warn("Found 0 weight, make sure this is intentional!");
+         }
+      }
    }
 
    @Override
-   public Thread newThread(Runnable $$0) {
-      Thread $$1 = new Thread(this.b, $$0, this.d + this.c.getAndIncrement(), 0L);
-      $$1.setUncaughtExceptionHandler(($$1x, $$2) -> {
-         a.error("Caught exception in thread {} from {}", $$1x, $$0);
-         a.error("", $$2);
-      });
-      if ($$1.getPriority() != 5) {
-         $$1.setPriority(5);
-      }
+   public String toString() {
+      return Integer.toString(this.d);
+   }
 
-      return $$1;
+   @Override
+   public int hashCode() {
+      return Integer.hashCode(this.d);
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      return this == $$0 ? true : $$0 instanceof bfp && this.d == ((bfp)$$0).d;
    }
 }

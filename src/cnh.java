@@ -1,20 +1,15 @@
-public class cnh extends cno {
-   public cnh(cno.a $$0, biv... $$1) {
-      super($$0, cnp.k, $$1);
+public class cnh extends cnb {
+   public cnh(String $$0, cmm $$1, cjl $$2) {
+      super(cmt.f, cms.t, $$0, $$1, $$2);
    }
 
    @Override
-   public int a(int $$0) {
-      return 20;
+   public boolean a(bgx $$0, cqb $$1) {
+      return this.a.a($$0.a(0));
    }
 
    @Override
-   public int b(int $$0) {
-      return 50;
-   }
-
-   @Override
-   public boolean a(cno $$0) {
-      return $$0 instanceof cny ? false : super.a($$0);
+   public cjl g() {
+      return new cjl(cte.oc);
    }
 }

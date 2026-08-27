@@ -1,51 +1,140 @@
-import it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap;
-import java.util.SortedMap;
+import com.mojang.blaze3d.systems.RenderSystem;
+import javax.annotation.Nullable;
+import org.joml.Matrix4f;
 
 public class fok {
-   private final fop a = new fop();
-   private final SortedMap<fom, elk> b = ac.a(new Object2ObjectLinkedOpenHashMap(), $$0 -> {
-      $$0.put(fot.h(), this.a.a(fom.c()));
-      $$0.put(fot.i(), this.a.a(fom.e()));
-      $$0.put(fot.a(), this.a.a(fom.d()));
-      $$0.put(fot.k(), this.a.a(fom.f()));
-      a($$0, fot.b());
-      a($$0, fot.c());
-      a($$0, fot.d());
-      a($$0, fot.e());
-      a($$0, fot.f());
-      a($$0, fot.g());
-      a($$0, fom.h());
-      a($$0, fom.k());
-      a($$0, fom.l());
-      a($$0, fom.n());
-      a($$0, fom.o());
-      a($$0, fom.m());
-      a($$0, fom.p());
-      a($$0, fom.q());
-      a($$0, fom.j());
-      gbk.l.forEach($$1 -> a($$0, $$1));
-   });
-   private final foe.a c = foe.a(this.b, new elk(256));
-   private final foe.a d = foe.a(new elk(256));
-   private final fof e = new fof(this.c);
+   private static final aez a = new aez("textures/misc/underwater.png");
 
-   private static void a(Object2ObjectLinkedOpenHashMap<fom, elk> $$0, fom $$1) {
-      $$0.put($$1, new elk($$1.H()));
+   public static void a(eqp $$0, elj $$1) {
+      cca $$2 = $$0.s;
+      if (!$$2.af) {
+         dfd $$3 = a($$2);
+         if ($$3 != null) {
+            a($$0.an().a().a($$3), $$1);
+         }
+      }
+
+      if (!$$0.s.M_()) {
+         if ($$0.s.a(aqa.a)) {
+            b($$0, $$1);
+         }
+
+         if ($$0.s.bM()) {
+            c($$0, $$1);
+         }
+      }
    }
 
-   public fop a() {
-      return this.a;
+   @Nullable
+   private static dfd a(cca $$0) {
+      gw.a $$1 = new gw.a();
+
+      for (int $$2 = 0; $$2 < 8; $$2++) {
+         double $$3 = $$0.dq() + (double)(((float)(($$2 >> 0) % 2) - 0.5F) * $$0.df() * 0.8F);
+         double $$4 = $$0.du() + (double)(((float)(($$2 >> 1) % 2) - 0.5F) * 0.1F);
+         double $$5 = $$0.dw() + (double)(((float)(($$2 >> 2) % 2) - 0.5F) * $$0.df() * 0.8F);
+         $$1.b($$3, $$4, $$5);
+         dfd $$6 = $$0.dL().a_($$1);
+         if ($$6.l() != czg.a && $$6.p($$0.dL(), $$1)) {
+            return $$6;
+         }
+      }
+
+      return null;
    }
 
-   public foe.a b() {
-      return this.c;
+   private static void a(fza $$0, elj $$1) {
+      RenderSystem.setShaderTexture(0, $$0.i());
+      RenderSystem.setShader(fnt::r);
+      ele $$2 = ell.a().c();
+      float $$3 = 0.1F;
+      float $$4 = -1.0F;
+      float $$5 = 1.0F;
+      float $$6 = -1.0F;
+      float $$7 = 1.0F;
+      float $$8 = -0.5F;
+      float $$9 = $$0.c();
+      float $$10 = $$0.d();
+      float $$11 = $$0.g();
+      float $$12 = $$0.h();
+      Matrix4f $$13 = $$1.c().a();
+      $$2.a(elo.b.h, elh.r);
+      $$2.a($$13, -1.0F, -1.0F, -0.5F).a(0.1F, 0.1F, 0.1F, 1.0F).a($$10, $$12).e();
+      $$2.a($$13, 1.0F, -1.0F, -0.5F).a(0.1F, 0.1F, 0.1F, 1.0F).a($$9, $$12).e();
+      $$2.a($$13, 1.0F, 1.0F, -0.5F).a(0.1F, 0.1F, 0.1F, 1.0F).a($$9, $$11).e();
+      $$2.a($$13, -1.0F, 1.0F, -0.5F).a(0.1F, 0.1F, 0.1F, 1.0F).a($$10, $$11).e();
+      elf.a($$2.d());
    }
 
-   public foe.a c() {
-      return this.d;
+   private static void b(eqp $$0, elj $$1) {
+      RenderSystem.setShader(fnt::s);
+      RenderSystem.setShaderTexture(0, a);
+      ele $$2 = ell.a().c();
+      gw $$3 = gw.a($$0.s.dq(), $$0.s.du(), $$0.s.dw());
+      float $$4 = fnz.a($$0.s.dL().C_(), $$0.s.dL().z($$3));
+      RenderSystem.enableBlend();
+      RenderSystem.setShaderColor($$4, $$4, $$4, 0.1F);
+      float $$5 = 4.0F;
+      float $$6 = -1.0F;
+      float $$7 = 1.0F;
+      float $$8 = -1.0F;
+      float $$9 = 1.0F;
+      float $$10 = -0.5F;
+      float $$11 = -$$0.s.dB() / 64.0F;
+      float $$12 = $$0.s.dD() / 64.0F;
+      Matrix4f $$13 = $$1.c().a();
+      $$2.a(elo.b.h, elh.q);
+      $$2.a($$13, -1.0F, -1.0F, -0.5F).a(4.0F + $$11, 4.0F + $$12).e();
+      $$2.a($$13, 1.0F, -1.0F, -0.5F).a(0.0F + $$11, 4.0F + $$12).e();
+      $$2.a($$13, 1.0F, 1.0F, -0.5F).a(0.0F + $$11, 0.0F + $$12).e();
+      $$2.a($$13, -1.0F, 1.0F, -0.5F).a(4.0F + $$11, 0.0F + $$12).e();
+      elf.a($$2.d());
+      RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
+      RenderSystem.disableBlend();
    }
 
-   public fof d() {
-      return this.e;
+   private static void c(eqp $$0, elj $$1) {
+      ele $$2 = ell.a().c();
+      RenderSystem.setShader(fnt::r);
+      RenderSystem.depthFunc(519);
+      RenderSystem.depthMask(false);
+      RenderSystem.enableBlend();
+      fza $$3 = gbg.b.c();
+      RenderSystem.setShaderTexture(0, $$3.i());
+      float $$4 = $$3.c();
+      float $$5 = $$3.d();
+      float $$6 = ($$4 + $$5) / 2.0F;
+      float $$7 = $$3.g();
+      float $$8 = $$3.h();
+      float $$9 = ($$7 + $$8) / 2.0F;
+      float $$10 = $$3.k();
+      float $$11 = asb.i($$10, $$4, $$6);
+      float $$12 = asb.i($$10, $$5, $$6);
+      float $$13 = asb.i($$10, $$7, $$9);
+      float $$14 = asb.i($$10, $$8, $$9);
+      float $$15 = 1.0F;
+
+      for (int $$16 = 0; $$16 < 2; $$16++) {
+         $$1.a();
+         float $$17 = -0.5F;
+         float $$18 = 0.5F;
+         float $$19 = -0.5F;
+         float $$20 = 0.5F;
+         float $$21 = -0.5F;
+         $$1.a((float)(-($$16 * 2 - 1)) * 0.24F, -0.3F, 0.0F);
+         $$1.a(a.d.rotationDegrees((float)($$16 * 2 - 1) * 10.0F));
+         Matrix4f $$22 = $$1.c().a();
+         $$2.a(elo.b.h, elh.r);
+         $$2.a($$22, -0.5F, -0.5F, -0.5F).a(1.0F, 1.0F, 1.0F, 0.9F).a($$12, $$14).e();
+         $$2.a($$22, 0.5F, -0.5F, -0.5F).a(1.0F, 1.0F, 1.0F, 0.9F).a($$11, $$14).e();
+         $$2.a($$22, 0.5F, 0.5F, -0.5F).a(1.0F, 1.0F, 1.0F, 0.9F).a($$11, $$13).e();
+         $$2.a($$22, -0.5F, 0.5F, -0.5F).a(1.0F, 1.0F, 1.0F, 0.9F).a($$12, $$13).e();
+         elf.a($$2.d());
+         $$1.b();
+      }
+
+      RenderSystem.disableBlend();
+      RenderSystem.depthMask(true);
+      RenderSystem.depthFunc(515);
    }
 }

@@ -2,9 +2,9 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class se {
    private final AtomicInteger a = new AtomicInteger();
-   private final ase b;
+   private final asj b;
 
-   public se(ase $$0) {
+   public se(asj $$0) {
       this.b = $$0;
    }
 

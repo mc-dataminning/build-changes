@@ -1,89 +1,94 @@
-import java.util.List;
-import java.util.function.Predicate;
+import com.mojang.datafixers.DataFixer;
+import com.mojang.serialization.Codec;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.Validate;
 
-public class dib<T> implements dhw<T> {
-   private final hj<T> a;
+public class dib implements AutoCloseable {
+   public static final int d = 1493;
+   private final did a;
+   protected final DataFixer e;
    @Nullable
-   private T b;
-   private final dhx<T> c;
+   private volatile dux b;
 
-   public dib(hj<T> $$0, dhx<T> $$1, List<T> $$2) {
-      this.a = $$0;
-      this.c = $$1;
-      if ($$2.size() > 0) {
-         Validate.isTrue($$2.size() <= 1, "Can't initialize SingleValuePalette with %d values.", (long)$$2.size());
-         this.b = $$2.get(0);
+   public dib(Path $$0, DataFixer $$1, boolean $$2) {
+      this.e = $$1;
+      this.a = new did($$0, $$2, "chunk");
+   }
+
+   public boolean b(cpi $$0, int $$1) {
+      return this.a.a($$0, $$1);
+   }
+
+   public qw a(aey<cqb> $$0, Supplier<ebw> $$1, qw $$2, Optional<aey<Codec<? extends dha>>> $$3) {
+      int $$4 = a($$2);
+      if ($$4 < 1493) {
+         $$2 = atg.c.a(this.e, $$2, $$4, 1493);
+         if ($$2.p("Level").q("hasLegacyStructureData")) {
+            dux $$5 = this.a($$0, $$1);
+            $$2 = $$5.a($$2);
+         }
+      }
+
+      a($$2, $$0, $$3);
+      $$2 = atg.c.a(this.e, $$2, Math.max(1493, $$4));
+      if ($$4 < aa.b().d().c()) {
+         rj.g($$2);
+      }
+
+      $$2.r("__context");
+      return $$2;
+   }
+
+   private dux a(aey<cqb> $$0, Supplier<ebw> $$1) {
+      dux $$2 = this.b;
+      if ($$2 == null) {
+         synchronized (this) {
+            $$2 = this.b;
+            if ($$2 == null) {
+               this.b = $$2 = dux.a($$0, $$1.get());
+            }
+         }
+      }
+
+      return $$2;
+   }
+
+   public static void a(qw $$0, aey<cqb> $$1, Optional<aey<Codec<? extends dha>>> $$2) {
+      qw $$3 = new qw();
+      $$3.a("dimension", $$1.a().toString());
+      $$2.ifPresent($$1x -> $$3.a("generator", $$1x.a().toString()));
+      $$0.a("__context", $$3);
+   }
+
+   public static int a(qw $$0) {
+      return rj.b($$0, -1);
+   }
+
+   public CompletableFuture<Optional<qw>> e(cpi $$0) {
+      return this.a.a($$0);
+   }
+
+   public void a(cpi $$0, qw $$1) {
+      this.a.a($$0, $$1);
+      if (this.b != null) {
+         this.b.a($$0.a());
       }
    }
 
-   public static <A> dhw<A> a(int $$0, hj<A> $$1, dhx<A> $$2, List<A> $$3) {
-      return new dib<>($$1, $$2, $$3);
+   public void o() {
+      this.a.a(true).join();
    }
 
    @Override
-   public int a(T $$0) {
-      if (this.b != null && this.b != $$0) {
-         return this.c.onResize(1, $$0);
-      } else {
-         this.b = $$0;
-         return 0;
-      }
+   public void close() throws IOException {
+      this.a.close();
    }
 
-   @Override
-   public boolean a(Predicate<T> $$0) {
-      if (this.b == null) {
-         throw new IllegalStateException("Use of an uninitialized palette");
-      } else {
-         return $$0.test(this.b);
-      }
-   }
-
-   @Override
-   public T a(int $$0) {
-      if (this.b != null && $$0 == 0) {
-         return this.b;
-      } else {
-         throw new IllegalStateException("Missing Palette entry for id " + $$0 + ".");
-      }
-   }
-
-   @Override
-   public void a(so $$0) {
-      this.b = this.a.b($$0.m());
-   }
-
-   @Override
-   public void b(so $$0) {
-      if (this.b == null) {
-         throw new IllegalStateException("Use of an uninitialized palette");
-      } else {
-         $$0.c(this.a.a(this.b));
-      }
-   }
-
-   @Override
-   public int a() {
-      if (this.b == null) {
-         throw new IllegalStateException("Use of an uninitialized palette");
-      } else {
-         return tc.a(this.a.a(this.b));
-      }
-   }
-
-   @Override
-   public int b() {
-      return 1;
-   }
-
-   @Override
-   public dhw<T> c() {
-      if (this.b == null) {
-         throw new IllegalStateException("Use of an uninitialized palette");
-      } else {
-         return this;
-      }
+   public dhz p() {
+      return this.a;
    }
 }

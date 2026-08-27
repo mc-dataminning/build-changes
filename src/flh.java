@@ -1,79 +1,53 @@
-import javax.annotation.Nullable;
-
-public class flh extends fmu {
-   private final float a;
-   private final fmp b;
-
-   flh(fix $$0, double $$1, double $$2, double $$3, float $$4, float $$5, float $$6, fmp $$7) {
-      super($$0, $$1, $$2, $$3);
-      this.b = $$7;
-      this.v = $$4;
-      this.w = $$5;
-      this.x = $$6;
-      float $$8 = 0.9F;
-      this.D *= 0.67499995F;
-      int $$9 = (int)(32.0 / (Math.random() * 0.8 + 0.2));
-      this.t = (int)Math.max((float)$$9 * 0.9F, 1.0F);
-      this.b($$7);
-      this.a = ((float)Math.random() - 0.5F) * 0.1F;
-      this.z = (float)Math.random() * (float) (Math.PI * 2);
+public class flh extends fmq {
+   flh(fis $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.C = true;
+      this.B = 0.86F;
+      this.j *= 0.01F;
+      this.k *= 0.01F;
+      this.l *= 0.01F;
+      this.k += 0.1;
+      this.D *= 1.5F;
+      this.t = 16;
+      this.n = false;
    }
 
    @Override
-   public fly b() {
-      return fly.b;
+   public flu b() {
+      return flu.b;
    }
 
    @Override
    public float b(float $$0) {
-      return this.D * arw.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
+      return this.D * asb.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
    }
 
-   @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
-      } else {
-         this.b(this.b);
-         this.A = this.z;
-         this.z = this.z + (float) Math.PI * this.a * 2.0F;
-         if (this.m) {
-            this.A = this.z = 0.0F;
-         }
+   public static class a implements flt<iy> {
+      private final fml a;
 
-         this.a(this.j, this.k, this.l);
-         this.k -= 0.003F;
-         this.k = Math.max(this.k, -0.14F);
-      }
-   }
-
-   public static class a implements flx<in> {
-      private final fmp a;
-
-      public a(fmp $$0) {
+      public a(fml $$0) {
          this.a = $$0;
       }
 
-      @Nullable
-      public flu a(in $$0, fix $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         dfj $$8 = $$0.c();
-         if (!$$8.i() && $$8.l() == cza.a) {
-            return null;
-         } else {
-            gw $$9 = gw.a($$2, $$3, $$4);
-            int $$10 = eqv.O().aw().a($$8, $$1, $$9);
-            if ($$8.b() instanceof cvn) {
-               $$10 = ((cvn)$$8.b()).d($$8, $$1, $$9);
-            }
+      public flq a(iy $$0, fis $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         flh $$8 = new flh($$1, $$2, $$3 + 0.5, $$4);
+         $$8.a(this.a);
+         $$8.a(1.0F, 1.0F, 1.0F);
+         return $$8;
+      }
+   }
 
-            float $$11 = (float)($$10 >> 16 & 0xFF) / 255.0F;
-            float $$12 = (float)($$10 >> 8 & 0xFF) / 255.0F;
-            float $$13 = (float)($$10 & 0xFF) / 255.0F;
-            return new flh($$1, $$2, $$3, $$4, $$11, $$12, $$13, this.a);
-         }
+   public static class b implements flt<iy> {
+      private final fml a;
+
+      public b(fml $$0) {
+         this.a = $$0;
+      }
+
+      public flq a(iy $$0, fis $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         flh $$8 = new flh($$1, $$2, $$3, $$4);
+         $$8.a(this.a);
+         return $$8;
       }
    }
 }

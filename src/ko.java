@@ -2,31 +2,31 @@ import java.util.function.BiConsumer;
 
 public class ko implements kd {
    @Override
-   public void generate(BiConsumer<aew, ecy.a> $$0) {
+   public void generate(BiConsumer<aez, ecs.a> $$0) {
       $$0.accept(
-         eco.aB,
-         ecy.b()
+         eci.aB,
+         ecs.b()
             .a(
-               ecx.a()
-                  .a(egi.a(1.0F))
-                  .a(edg.a(cji.qb).a(5).a(new edv.a().a(cns.l)))
-                  .a(edg.a(cji.oV).a(8).a(new edv.a().a(cns.l)))
-                  .a(edg.a(cji.rv).a(8).a(eet.a(clf.n)))
-                  .a(edg.a(cji.uu).a(8).a(eet.a(clf.n)))
-                  .a(edg.a(cji.rv).a(10).a(eet.a(clf.c)))
-                  .a(edg.a(cji.uB).a(10).a(eeo.a(egn.a(10.0F, 36.0F))))
-                  .a(edg.a(cji.rq).a(10).a(eeo.a(egn.a(2.0F, 4.0F))))
-                  .a(edg.a(cji.oE).a(20).a(eeo.a(egn.a(3.0F, 9.0F))))
-                  .a(edg.a(cji.nN).a(20).a(eeo.a(egn.a(5.0F, 12.0F))))
-                  .a(edg.a(cji.ei).a(40))
-                  .a(edg.a(cji.vG).a(40).a(eeo.a(egn.a(1.0F, 3.0F))))
-                  .a(edg.a(cji.tf).a(40))
-                  .a(edg.a(cji.pP).a(40).a(eeo.a(egn.a(2.0F, 4.0F))))
-                  .a(edg.a(cji.eS).a(40).a(eeo.a(egn.a(2.0F, 8.0F))))
-                  .a(edg.a(cji.tD).a(40).a(eeo.a(egn.a(2.0F, 8.0F))))
-                  .a(edg.a(cji.uv).a(40).a(eeo.a(egn.a(6.0F, 12.0F))))
-                  .a(edg.a(cji.W).a(40).a(eeo.a(egn.a(8.0F, 16.0F))))
-                  .a(edg.a(cji.vH).a(40).a(eeo.a(egn.a(8.0F, 16.0F))))
+               ecr.a()
+                  .a(egc.a(1.0F))
+                  .a(eda.a(cjo.qb).a(5).a(new edp.a().a(cny.l)))
+                  .a(eda.a(cjo.oV).a(8).a(new edp.a().a(cny.l)))
+                  .a(eda.a(cjo.rv).a(8).a(een.a(cll.n)))
+                  .a(eda.a(cjo.uu).a(8).a(een.a(cll.n)))
+                  .a(eda.a(cjo.rv).a(10).a(een.a(cll.c)))
+                  .a(eda.a(cjo.uB).a(10).a(eei.a(egh.a(10.0F, 36.0F))))
+                  .a(eda.a(cjo.rq).a(10).a(eei.a(egh.a(2.0F, 4.0F))))
+                  .a(eda.a(cjo.oE).a(20).a(eei.a(egh.a(3.0F, 9.0F))))
+                  .a(eda.a(cjo.nN).a(20).a(eei.a(egh.a(5.0F, 12.0F))))
+                  .a(eda.a(cjo.ei).a(40))
+                  .a(eda.a(cjo.vG).a(40).a(eei.a(egh.a(1.0F, 3.0F))))
+                  .a(eda.a(cjo.tf).a(40))
+                  .a(eda.a(cjo.pP).a(40).a(eei.a(egh.a(2.0F, 4.0F))))
+                  .a(eda.a(cjo.eS).a(40).a(eei.a(egh.a(2.0F, 8.0F))))
+                  .a(eda.a(cjo.tD).a(40).a(eei.a(egh.a(2.0F, 8.0F))))
+                  .a(eda.a(cjo.uv).a(40).a(eei.a(egh.a(6.0F, 12.0F))))
+                  .a(eda.a(cjo.W).a(40).a(eei.a(egh.a(8.0F, 16.0F))))
+                  .a(eda.a(cjo.vH).a(40).a(eei.a(egh.a(8.0F, 16.0F))))
             )
       );
    }

@@ -1,109 +1,92 @@
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public class ddo extends dcv implements bhc {
-   public int a;
-   public float b;
-   public float c;
-   public float d;
-   public float e;
-   public float f;
-   public float g;
-   public float h;
-   public float i;
-   public float j;
-   private static final asc k = asc.a();
-   private tl l;
+public class ddo extends dcz {
+   public static final String a = "sherds";
+   private ddo.a b = ddo.a.a;
 
-   public ddo(gw $$0, dfj $$1) {
-      super(dcx.m, $$0, $$1);
+   public ddo(gw $$0, dfd $$1) {
+      super(ddb.O, $$0, $$1);
    }
 
    @Override
    protected void b(qw $$0) {
       super.b($$0);
-      if (this.ac()) {
-         $$0.a("CustomName", tl.a.a(this.l));
-      }
+      this.b.a($$0);
    }
 
    @Override
    public void a(qw $$0) {
       super.a($$0);
-      if ($$0.b("CustomName", 8)) {
-         this.l = tl.a.a($$0.l("CustomName"));
-      }
+      this.b = ddo.a.b($$0);
    }
 
-   public static void a(cpv $$0, gw $$1, dfj $$2, ddo $$3) {
-      $$3.g = $$3.f;
-      $$3.i = $$3.h;
-      cbu $$4 = $$0.a((double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, 3.0, false);
-      if ($$4 != null) {
-         double $$5 = $$4.dq() - ((double)$$1.u() + 0.5);
-         double $$6 = $$4.dw() - ((double)$$1.w() + 0.5);
-         $$3.j = (float)arw.d($$6, $$5);
-         $$3.f += 0.1F;
-         if ($$3.f < 0.5F || k.a(40) == 0) {
-            float $$7 = $$3.d;
+   public xe c() {
+      return xe.a(this);
+   }
 
-            do {
-               $$3.d = $$3.d + (float)(k.a(4) - k.a(4));
-            } while ($$7 == $$3.d);
+   @Override
+   public qw as_() {
+      return this.o();
+   }
+
+   public ha d() {
+      return this.q().c(dft.R);
+   }
+
+   public ddo.a f() {
+      return this.b;
+   }
+
+   public void a(cjl $$0) {
+      this.b = ddo.a.b(che.a($$0));
+   }
+
+   public cjl g() {
+      return a(this.b);
+   }
+
+   public static cjl a(ddo.a $$0) {
+      cjl $$1 = cjo.eg.ai_();
+      qw $$2 = $$0.a(new qw());
+      che.a($$1, ddb.O, $$2);
+      return $$1;
+   }
+
+   public static record a(cjg b, cjg c, cjg d, cjg e) {
+      public static final ddo.a a = new ddo.a(cjo.pX, cjo.pX, cjo.pX, cjo.pX);
+
+      public qw a(qw $$0) {
+         if (this.equals(a)) {
+            return $$0;
+         } else {
+            rc $$1 = new rc();
+            this.a().forEach($$1x -> $$1.add(ro.a(jb.i.b($$1x).toString())));
+            $$0.a("sherds", $$1);
+            return $$0;
          }
-      } else {
-         $$3.j += 0.02F;
-         $$3.f -= 0.1F;
       }
 
-      while ($$3.h >= (float) Math.PI) {
-         $$3.h -= (float) (Math.PI * 2);
+      public Stream<cjg> a() {
+         return Stream.of(this.b, this.c, this.d, this.e);
       }
 
-      while ($$3.h < (float) -Math.PI) {
-         $$3.h += (float) (Math.PI * 2);
+      public static ddo.a b(@Nullable qw $$0) {
+         if ($$0 != null && $$0.b("sherds", 9)) {
+            rc $$1 = $$0.c("sherds", 8);
+            return new ddo.a(a($$1, 0), a($$1, 1), a($$1, 2), a($$1, 3));
+         } else {
+            return a;
+         }
       }
 
-      while ($$3.j >= (float) Math.PI) {
-         $$3.j -= (float) (Math.PI * 2);
+      private static cjg a(rc $$0, int $$1) {
+         if ($$1 >= $$0.size()) {
+            return cjo.pX;
+         } else {
+            rq $$2 = $$0.k($$1);
+            return jb.i.a(aez.a($$2.r_()));
+         }
       }
-
-      while ($$3.j < (float) -Math.PI) {
-         $$3.j += (float) (Math.PI * 2);
-      }
-
-      float $$8 = $$3.j - $$3.h;
-
-      while ($$8 >= (float) Math.PI) {
-         $$8 -= (float) (Math.PI * 2);
-      }
-
-      while ($$8 < (float) -Math.PI) {
-         $$8 += (float) (Math.PI * 2);
-      }
-
-      $$3.h += $$8 * 0.4F;
-      $$3.f = arw.a($$3.f, 0.0F, 1.0F);
-      $$3.a++;
-      $$3.c = $$3.b;
-      float $$9 = ($$3.d - $$3.b) * 0.4F;
-      float $$10 = 0.2F;
-      $$9 = arw.a($$9, -0.2F, 0.2F);
-      $$3.e = $$3.e + ($$9 - $$3.e) * 0.9F;
-      $$3.b = $$3.b + $$3.e;
-   }
-
-   @Override
-   public tl ab() {
-      return (tl)(this.l != null ? this.l : tl.c("container.enchant"));
-   }
-
-   public void a(@Nullable tl $$0) {
-      this.l = $$0;
-   }
-
-   @Nullable
-   @Override
-   public tl ad() {
-      return this.l;
    }
 }

@@ -1,48 +1,57 @@
 import java.util.EnumSet;
 
-public class bqh extends bqb {
-   private final bji a;
-   private bjg b;
-   private final float c;
+public abstract class bqh {
+   private final EnumSet<bqh.a> a = EnumSet.noneOf(bqh.a.class);
 
-   public bqh(bji $$0, float $$1) {
-      this.a = $$0;
-      this.c = $$1;
-      this.a(EnumSet.of(bqb.a.c, bqb.a.a));
-   }
+   public abstract boolean a();
 
-   @Override
-   public boolean a() {
-      if (this.a.cO()) {
-         return false;
-      } else {
-         this.b = this.a.q();
-         if (this.b == null) {
-            return false;
-         } else {
-            double $$0 = this.a.f(this.b);
-            if ($$0 < 4.0 || $$0 > 16.0) {
-               return false;
-            } else {
-               return !this.a.aA() ? false : this.a.ef().a(b(5)) == 0;
-            }
-         }
-      }
-   }
-
-   @Override
    public boolean b() {
-      return !this.a.aA();
+      return this.a();
+   }
+
+   public boolean P_() {
+      return true;
+   }
+
+   public void c() {
+   }
+
+   public void d() {
+   }
+
+   public boolean Q_() {
+      return false;
+   }
+
+   public void e() {
+   }
+
+   public void a(EnumSet<bqh.a> $$0) {
+      this.a.clear();
+      this.a.addAll($$0);
    }
 
    @Override
-   public void c() {
-      ehn $$0 = this.a.do();
-      ehn $$1 = new ehn(this.b.dq() - this.a.dq(), 0.0, this.b.dw() - this.a.dw());
-      if ($$1.g() > 1.0E-7) {
-         $$1 = $$1.d().a(0.4).e($$0.a(0.2));
-      }
+   public String toString() {
+      return this.getClass().getSimpleName();
+   }
 
-      this.a.o($$1.c, (double)this.c, $$1.e);
+   public EnumSet<bqh.a> j() {
+      return this.a;
+   }
+
+   protected int a(int $$0) {
+      return this.Q_() ? $$0 : b($$0);
+   }
+
+   protected static int b(int $$0) {
+      return asb.e($$0, 2);
+   }
+
+   public static enum a {
+      a,
+      b,
+      c,
+      d;
    }
 }

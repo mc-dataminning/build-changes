@@ -10,17 +10,17 @@ public class qn {
    private final Consumer<pv> g;
    private final int h;
    private final long i;
-   private final czh j;
+   private final czn j;
 
    public qn(String $$0, String $$1, String $$2, int $$3, long $$4, boolean $$5, Consumer<pv> $$6) {
-      this($$0, $$1, $$2, czh.a, $$3, $$4, $$5, 1, 1, $$6);
+      this($$0, $$1, $$2, czn.a, $$3, $$4, $$5, 1, 1, $$6);
    }
 
-   public qn(String $$0, String $$1, String $$2, czh $$3, int $$4, long $$5, boolean $$6, Consumer<pv> $$7) {
+   public qn(String $$0, String $$1, String $$2, czn $$3, int $$4, long $$5, boolean $$6, Consumer<pv> $$7) {
       this($$0, $$1, $$2, $$3, $$4, $$5, $$6, 1, 1, $$7);
    }
 
-   public qn(String $$0, String $$1, String $$2, czh $$3, int $$4, long $$5, boolean $$6, int $$7, int $$8, Consumer<pv> $$9) {
+   public qn(String $$0, String $$1, String $$2, czn $$3, int $$4, long $$5, boolean $$6, int $$7, int $$8, Consumer<pv> $$9) {
       this.a = $$0;
       this.b = $$1;
       this.c = $$2;
@@ -66,7 +66,7 @@ public class qn {
       return this.i;
    }
 
-   public czh g() {
+   public czn g() {
       return this.j;
    }
 

@@ -1,136 +1,34 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.logging.LogUtils;
-import java.io.DataOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.nio.ByteBuffer;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.google.common.collect.Maps;
+import java.util.List;
+import java.util.Map;
+import org.apache.commons.compress.utils.Lists;
 
-public class erg {
-   private static final Logger b = LogUtils.getLogger();
-   public static final String a = "screenshots";
-   private int c;
-   private final DataOutputStream d;
-   private final byte[] e;
-   private final int f;
-   private final int g;
-   private File h;
+public record erg(float a, boolean b, Map<String, List<erf>> c) {
+   public static class a {
+      private final float a;
+      private final Map<String, List<erf>> b = Maps.newHashMap();
+      private boolean c;
 
-   public static void a(File $$0, ekb $$1, Consumer<tl> $$2) {
-      a($$0, null, $$1, $$2);
-   }
-
-   public static void a(File $$0, @Nullable String $$1, ekb $$2, Consumer<tl> $$3) {
-      if (!RenderSystem.isOnRenderThread()) {
-         RenderSystem.recordRenderCall(() -> b($$0, $$1, $$2, $$3));
-      } else {
-         b($$0, $$1, $$2, $$3);
-      }
-   }
-
-   private static void b(File $$0, @Nullable String $$1, ekb $$2, Consumer<tl> $$3) {
-      ekq $$4 = a($$2);
-      File $$5 = new File($$0, "screenshots");
-      $$5.mkdir();
-      File $$6;
-      if ($$1 == null) {
-         $$6 = a($$5);
-      } else {
-         $$6 = new File($$5, $$1);
+      public static erg.a a(float $$0) {
+         return new erg.a($$0);
       }
 
-      ac.g().execute(() -> {
-         try {
-            $$4.a($$6);
-            tl $$3x = tl.b($$6.getName()).a(n.t).a($$1xx -> $$1xx.a(new tj(tj.a.b, $$6.getAbsolutePath())));
-            $$3.accept(tl.a("screenshot.success", $$3x));
-         } catch (Exception var7) {
-            b.warn("Couldn't save screenshot", var7);
-            $$3.accept(tl.a("screenshot.failure", var7.getMessage()));
-         } finally {
-            $$4.close();
-         }
-      });
-   }
-
-   public static ekq a(ekb $$0) {
-      int $$1 = $$0.c;
-      int $$2 = $$0.d;
-      ekq $$3 = new ekq($$1, $$2, false);
-      RenderSystem.bindTexture($$0.f());
-      $$3.a(0, true);
-      $$3.h();
-      return $$3;
-   }
-
-   private static File a(File $$0) {
-      String $$1 = ac.e();
-      int $$2 = 1;
-
-      while (true) {
-         File $$3 = new File($$0, $$1 + ($$2 == 1 ? "" : "_" + $$2) + ".png");
-         if (!$$3.exists()) {
-            return $$3;
-         }
-
-         $$2++;
-      }
-   }
-
-   public erg(File $$0, int $$1, int $$2, int $$3) throws IOException {
-      this.f = $$1;
-      this.g = $$2;
-      this.c = $$3;
-      File $$4 = new File($$0, "screenshots");
-      $$4.mkdir();
-      String $$5 = "huge_" + ac.e();
-      int $$6 = 1;
-
-      while ((this.h = new File($$4, $$5 + ($$6 == 1 ? "" : "_" + $$6) + ".tga")).exists()) {
-         $$6++;
+      private a(float $$0) {
+         this.a = $$0;
       }
 
-      byte[] $$7 = new byte[18];
-      $$7[2] = 2;
-      $$7[12] = (byte)($$1 % 256);
-      $$7[13] = (byte)($$1 / 256);
-      $$7[14] = (byte)($$2 % 256);
-      $$7[15] = (byte)($$2 / 256);
-      $$7[16] = 24;
-      this.e = new byte[$$1 * $$3 * 3];
-      this.d = new DataOutputStream(new FileOutputStream(this.h));
-      this.d.write($$7);
-   }
-
-   public void a(ByteBuffer $$0, int $$1, int $$2, int $$3, int $$4) {
-      int $$5 = $$3;
-      int $$6 = $$4;
-      if ($$3 > this.f - $$1) {
-         $$5 = this.f - $$1;
+      public erg.a a() {
+         this.c = true;
+         return this;
       }
 
-      if ($$4 > this.g - $$2) {
-         $$6 = this.g - $$2;
+      public erg.a a(String $$0, erf $$1) {
+         this.b.computeIfAbsent($$0, $$0x -> Lists.newArrayList()).add($$1);
+         return this;
       }
 
-      this.c = $$6;
-
-      for (int $$7 = 0; $$7 < $$6; $$7++) {
-         $$0.position(($$4 - $$6) * $$3 * 3 + $$7 * $$3 * 3);
-         int $$8 = ($$1 + $$7 * this.f) * 3;
-         $$0.get(this.e, $$8, $$5 * 3);
+      public erg b() {
+         return new erg(this.a, this.c, this.b);
       }
-   }
-
-   public void a() throws IOException {
-      this.d.write(this.e, 0, this.f * 3 * this.c);
-   }
-
-   public File b() throws IOException {
-      this.d.close();
-      return this.h;
    }
 }

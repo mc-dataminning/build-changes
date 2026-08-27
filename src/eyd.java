@@ -1,16 +1,15 @@
-public class eyd extends eyk {
-   private etj a;
+import java.util.function.BooleanSupplier;
 
-   public eyd() {
-      super(tl.c("outOfMemory.title"));
-      this.a = etj.a;
-   }
+public class eyd extends eye {
+   private static final tl a = tl.c("multiplayer.downloadingTerrain");
+   private static final long b = 30000L;
+   private final long c;
+   private final BooleanSupplier k;
 
-   @Override
-   protected void aH_() {
-      this.d(esq.a(tk.l, $$0 -> this.f.a(new eyp())).a(this.g / 2 - 155, this.h / 4 + 120 + 12, 150, 20).a());
-      this.d(esq.a(tl.c("menu.quit"), $$0 -> this.f.q()).a(this.g / 2 - 155 + 160, this.h / 4 + 120 + 12, 150, 20).a());
-      this.a = etj.a(this.i, tl.c("outOfMemory.message"), 295);
+   public eyd(BooleanSupplier $$0) {
+      super(eqh.a);
+      this.k = $$0;
+      this.c = System.currentTimeMillis();
    }
 
    @Override
@@ -19,9 +18,36 @@ public class eyd extends eyk {
    }
 
    @Override
-   public void a(esf $$0, int $$1, int $$2, float $$3) {
+   protected boolean aG_() {
+      return false;
+   }
+
+   @Override
+   public void a(erz $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, this.h / 4 - 60 + 20, 16777215);
-      this.a.b($$0, this.g / 2 - 145, this.h / 4, 9, 10526880);
+      $$0.a(this.i, a, this.g / 2, this.h / 2 - 50, 16777215);
+   }
+
+   @Override
+   public void b(erz $$0, int $$1, int $$2, float $$3) {
+      this.b($$0);
+   }
+
+   @Override
+   public void c() {
+      if (this.k.getAsBoolean() || System.currentTimeMillis() > this.c + 30000L) {
+         this.az_();
+      }
+   }
+
+   @Override
+   public void az_() {
+      this.f.aV().c(tl.c("narrator.ready_to_play"));
+      super.az_();
+   }
+
+   @Override
+   public boolean j() {
+      return false;
    }
 }

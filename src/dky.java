@@ -1,110 +1,60 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.Function;
+public class dky implements cpo {
+   private int a;
 
-public record dky(dkl b, dkl c, dkl d, dkl e, dkl f, dkl g, dkl h, dkl i, dkl j, dkl k, dkl l, dkl m, dkl n, dkl o, dkl p) {
-   public static final Codec<dky> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               a("barrier", dky::a),
-               a("fluid_level_floodedness", dky::b),
-               a("fluid_level_spread", dky::c),
-               a("lava", dky::d),
-               a("temperature", dky::e),
-               a("vegetation", dky::f),
-               a("continents", dky::g),
-               a("erosion", dky::h),
-               a("depth", dky::i),
-               a("ridges", dky::j),
-               a("initial_density_without_jaggedness", dky::k),
-               a("final_density", dky::l),
-               a("vein_toggle", dky::m),
-               a("vein_ridged", dky::n),
-               a("vein_gap", dky::o)
-            )
-            .apply($$0, dky::new)
-   );
+   @Override
+   public int a(akt $$0, boolean $$1, boolean $$2) {
+      if (!$$1) {
+         return 0;
+      } else if (!$$0.X().b(cpx.A)) {
+         return 0;
+      } else {
+         ash $$3 = $$0.z;
+         this.a--;
+         if (this.a > 0) {
+            return 0;
+         } else {
+            this.a = this.a + (60 + $$3.a(60)) * 20;
+            if ($$0.A_() < 5 && $$0.C_().g()) {
+               return 0;
+            } else {
+               int $$4 = 0;
 
-   private static RecordCodecBuilder<dky, dkl> a(String $$0, Function<dky, dkl> $$1) {
-      return dkl.d.fieldOf($$0).forGetter($$1);
-   }
+               for (aku $$5 : $$0.v()) {
+                  if (!$$5.M_()) {
+                     gw $$6 = $$5.dl();
+                     if (!$$0.C_().g() || $$6.v() >= $$0.y_() && $$0.g($$6)) {
+                        bhc $$7 = $$0.d_($$6);
+                        if ($$7.a($$3.i() * 3.0F)) {
+                           apm $$8 = $$5.F();
+                           int $$9 = asb.a($$8.a(apq.i.b(apq.n)), 1, Integer.MAX_VALUE);
+                           int $$10 = 24000;
+                           if ($$3.a($$9) >= 72000) {
+                              gw $$11 = $$6.b(20 + $$3.a(15)).g(-10 + $$3.a(21)).e(-10 + $$3.a(21));
+                              dfd $$12 = $$0.a_($$11);
+                              eag $$13 = $$0.b_($$11);
+                              if (cqm.a($$0, $$11, $$12, $$13, bja.au)) {
+                                 bkf $$14 = null;
+                                 int $$15 = 1 + $$3.a($$7.a().a() + 1);
 
-   public dky a(dkl.f $$0) {
-      return new dky(
-         this.b.a($$0),
-         this.c.a($$0),
-         this.d.a($$0),
-         this.e.a($$0),
-         this.f.a($$0),
-         this.g.a($$0),
-         this.h.a($$0),
-         this.i.a($$0),
-         this.j.a($$0),
-         this.k.a($$0),
-         this.l.a($$0),
-         this.m.a($$0),
-         this.n.a($$0),
-         this.o.a($$0),
-         this.p.a($$0)
-      );
-   }
+                                 for (int $$16 = 0; $$16 < $$15; $$16++) {
+                                    bzq $$17 = bja.au.a((cqb)$$0);
+                                    if ($$17 != null) {
+                                       $$17.a($$11, 0.0F, 0.0F);
+                                       $$14 = $$17.a($$0, $$7, bjq.a, $$14, null);
+                                       $$0.a_($$17);
+                                       $$4++;
+                                    }
+                                 }
+                              }
+                           }
+                        }
+                     }
+                  }
+               }
 
-   public dkl a() {
-      return this.b;
-   }
-
-   public dkl b() {
-      return this.c;
-   }
-
-   public dkl c() {
-      return this.d;
-   }
-
-   public dkl d() {
-      return this.e;
-   }
-
-   public dkl e() {
-      return this.f;
-   }
-
-   public dkl f() {
-      return this.g;
-   }
-
-   public dkl g() {
-      return this.h;
-   }
-
-   public dkl h() {
-      return this.i;
-   }
-
-   public dkl i() {
-      return this.j;
-   }
-
-   public dkl j() {
-      return this.k;
-   }
-
-   public dkl k() {
-      return this.l;
-   }
-
-   public dkl l() {
-      return this.m;
-   }
-
-   public dkl m() {
-      return this.n;
-   }
-
-   public dkl n() {
-      return this.o;
-   }
-
-   public dkl o() {
-      return this.p;
+               return $$4;
+            }
+         }
+      }
    }
 }

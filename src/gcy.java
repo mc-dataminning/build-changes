@@ -1,63 +1,34 @@
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.function.Function;
+import com.mojang.authlib.GameProfile;
+import java.net.SocketAddress;
 
-public class gcy implements anu {
-   public static final gcy.a<cjf> a = new gcy.a<>();
-   public static final gcy.a<cjf> b = new gcy.a<>();
-   public static final gcy.a<fca> c = new gcy.a<>();
-   private final Map<gcy.a<?>, gcy.c<?>> d = new HashMap<>();
+public class gcy extends aoj {
+   private qw a;
+
+   public gcy(gcz $$0, hl<afi> $$1, ecd $$2) {
+      super($$0, $$1, $$2, 8);
+      this.a(10);
+   }
 
    @Override
-   public void a(ant $$0) {
-      for (gcy.c<?> $$1 : this.d.values()) {
-         $$1.a();
-      }
-   }
-
-   public <T> void a(gcy.a<T> $$0, gcy.b<T> $$1) {
-      this.d.put($$0, new gcy.c<>($$1));
-   }
-
-   private <T> gcy.c<T> b(gcy.a<T> $$0) {
-      gcy.c<T> $$1 = (gcy.c<T>)this.d.get($$0);
-      if ($$1 == null) {
-         throw new IllegalStateException("Tree builder not registered");
-      } else {
-         return $$1;
-      }
-   }
-
-   public <T> void a(gcy.a<T> $$0, List<T> $$1) {
-      this.b($$0).a($$1);
-   }
-
-   public <T> gcz<T> a(gcy.a<T> $$0) {
-      return this.b($$0).b;
-   }
-
-   public static class a<T> {
-   }
-
-   public interface b<T> extends Function<List<T>, gcw<T>> {
-   }
-
-   static class c<T> {
-      private final gcy.b<T> a;
-      gcw<T> b = gcw.b();
-
-      c(gcy.b<T> $$0) {
-         this.a = $$0;
+   protected void b(aku $$0) {
+      if (this.b().a($$0.fR())) {
+         this.a = $$0.f(new qw());
       }
 
-      void a(List<T> $$0) {
-         this.b = this.a.apply($$0);
-         this.b.a();
-      }
+      super.b($$0);
+   }
 
-      void a() {
-         this.b.a();
-      }
+   @Override
+   public tl a(SocketAddress $$0, GameProfile $$1) {
+      return (tl)(this.b().a($$1) && this.a($$1.getName()) != null ? tl.c("multiplayer.disconnect.name_taken") : super.a($$0, $$1));
+   }
+
+   public gcz b() {
+      return (gcz)super.c();
+   }
+
+   @Override
+   public qw r() {
+      return this.a;
    }
 }

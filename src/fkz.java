@@ -1,83 +1,41 @@
-public class fkz extends fmu {
-   private static final int a = 11993298;
-   private static final int b = 14614777;
-   private static final float F = 0.7176471F;
-   private static final float G = 0.0F;
-   private static final float H = 0.8235294F;
-   private static final float I = 0.8745098F;
-   private static final float J = 0.0F;
-   private static final float K = 0.9764706F;
-   private boolean L;
-   private final fmp M;
+public class fkz<T extends iq> extends fmq {
+   private final fml a;
 
-   fkz(fix $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fmp $$7) {
-      super($$0, $$1, $$2, $$3);
+   protected fkz(fis $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, T $$7, fml $$8) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
       this.B = 0.96F;
-      this.j = $$4;
-      this.k = $$5;
-      this.l = $$6;
-      this.v = arw.a(this.r, 0.7176471F, 0.8745098F);
-      this.w = arw.a(this.r, 0.0F, 0.0F);
-      this.x = arw.a(this.r, 0.8235294F, 0.9764706F);
-      this.D *= 0.75F;
-      this.t = (int)(20.0 / ((double)this.r.i() * 0.8 + 0.2));
-      this.L = false;
-      this.n = false;
-      this.M = $$7;
-      this.b($$7);
+      this.C = true;
+      this.a = $$8;
+      this.j *= 0.1F;
+      this.k *= 0.1F;
+      this.l *= 0.1F;
+      float $$9 = this.r.i() * 0.4F + 0.6F;
+      this.v = this.a($$7.e().x(), $$9);
+      this.w = this.a($$7.e().y(), $$9);
+      this.x = this.a($$7.e().z(), $$9);
+      this.D = this.D * 0.75F * $$7.f();
+      int $$10 = (int)(8.0 / (this.r.j() * 0.8 + 0.2));
+      this.t = (int)Math.max((float)$$10 * $$7.f(), 1.0F);
+      this.b($$8);
+   }
+
+   protected float a(float $$0, float $$1) {
+      return (this.r.i() * 0.2F + 0.8F) * $$0 * $$1;
    }
 
    @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
-      } else {
-         this.b(this.M);
-         if (this.m) {
-            this.k = 0.0;
-            this.L = true;
-         }
-
-         if (this.L) {
-            this.k += 0.002;
-         }
-
-         this.a(this.j, this.k, this.l);
-         if (this.h == this.e) {
-            this.j *= 1.1;
-            this.l *= 1.1;
-         }
-
-         this.j = this.j * (double)this.B;
-         this.l = this.l * (double)this.B;
-         if (this.L) {
-            this.k = this.k * (double)this.B;
-         }
-      }
-   }
-
-   @Override
-   public fly b() {
-      return fly.b;
+   public flu b() {
+      return flu.b;
    }
 
    @Override
    public float b(float $$0) {
-      return this.D * arw.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
+      return this.D * asb.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
    }
 
-   public static class a implements flx<iy> {
-      private final fmp a;
-
-      public a(fmp $$0) {
-         this.a = $$0;
-      }
-
-      public flu a(iy $$0, fix $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fkz($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-      }
+   @Override
+   public void a() {
+      super.a();
+      this.b(this.a);
    }
 }

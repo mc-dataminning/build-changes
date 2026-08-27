@@ -1,107 +1,45 @@
-import com.google.common.collect.Maps;
-import java.util.HashMap;
+import com.google.common.collect.Lists;
 import java.util.List;
-import java.util.Map;
 
-public class fry implements frn.a {
-   private final eqv a;
-   private final Map<aev<cpv>, Map<String, dva>> b = Maps.newIdentityHashMap();
-   private final Map<aev<cpv>, Map<String, wk.a>> c = Maps.newIdentityHashMap();
-   private static final int d = 500;
+public class fry implements frj.a {
+   private final List<gw> a = Lists.newArrayList();
+   private final List<Float> b = Lists.newArrayList();
+   private final List<Float> c = Lists.newArrayList();
+   private final List<Float> d = Lists.newArrayList();
+   private final List<Float> e = Lists.newArrayList();
+   private final List<Float> f = Lists.newArrayList();
 
-   public fry(eqv $$0) {
-      this.a = $$0;
+   public void a(gw $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.a.add($$0);
+      this.b.add($$1);
+      this.c.add($$5);
+      this.d.add($$2);
+      this.e.add($$3);
+      this.f.add($$4);
    }
 
    @Override
-   public void a(elp $$0, foe $$1, double $$2, double $$3, double $$4) {
-      eqg $$5 = this.a.j.m();
-      aev<cpv> $$6 = this.a.r.ac();
-      gw $$7 = gw.a($$5.b().c, 0.0, $$5.b().e);
-      elt $$8 = $$1.getBuffer(fom.x());
-      if (this.b.containsKey($$6)) {
-         for (dva $$9 : this.b.get($$6).values()) {
-            if ($$7.a($$9.f(), 500.0)) {
-               foc.a(
-                  $$0,
-                  $$8,
-                  (double)$$9.g() - $$2,
-                  (double)$$9.h() - $$3,
-                  (double)$$9.i() - $$4,
-                  (double)($$9.j() + 1) - $$2,
-                  (double)($$9.k() + 1) - $$3,
-                  (double)($$9.l() + 1) - $$4,
-                  1.0F,
-                  1.0F,
-                  1.0F,
-                  1.0F,
-                  1.0F,
-                  1.0F,
-                  1.0F
-               );
-            }
-         }
+   public void a(elj $$0, foa $$1, double $$2, double $$3, double $$4) {
+      eln $$5 = $$1.getBuffer(foi.z());
+
+      for (int $$6 = 0; $$6 < this.a.size(); $$6++) {
+         gw $$7 = this.a.get($$6);
+         Float $$8 = this.b.get($$6);
+         float $$9 = $$8 / 2.0F;
+         fny.b(
+            $$0,
+            $$5,
+            (double)((float)$$7.u() + 0.5F - $$9) - $$2,
+            (double)((float)$$7.v() + 0.5F - $$9) - $$3,
+            (double)((float)$$7.w() + 0.5F - $$9) - $$4,
+            (double)((float)$$7.u() + 0.5F + $$9) - $$2,
+            (double)((float)$$7.v() + 0.5F + $$9) - $$3,
+            (double)((float)$$7.w() + 0.5F + $$9) - $$4,
+            this.d.get($$6),
+            this.e.get($$6),
+            this.f.get($$6),
+            this.c.get($$6)
+         );
       }
-
-      Map<String, wk.a> $$10 = this.c.get($$6);
-      if ($$10 != null) {
-         for (wk.a $$11 : $$10.values()) {
-            dva $$12 = $$11.a();
-            if ($$7.a($$12.f(), 500.0)) {
-               if ($$11.b()) {
-                  foc.a(
-                     $$0,
-                     $$8,
-                     (double)$$12.g() - $$2,
-                     (double)$$12.h() - $$3,
-                     (double)$$12.i() - $$4,
-                     (double)($$12.j() + 1) - $$2,
-                     (double)($$12.k() + 1) - $$3,
-                     (double)($$12.l() + 1) - $$4,
-                     0.0F,
-                     1.0F,
-                     0.0F,
-                     1.0F,
-                     0.0F,
-                     1.0F,
-                     0.0F
-                  );
-               } else {
-                  foc.a(
-                     $$0,
-                     $$8,
-                     (double)$$12.g() - $$2,
-                     (double)$$12.h() - $$3,
-                     (double)$$12.i() - $$4,
-                     (double)($$12.j() + 1) - $$2,
-                     (double)($$12.k() + 1) - $$3,
-                     (double)($$12.l() + 1) - $$4,
-                     0.0F,
-                     0.0F,
-                     1.0F,
-                     1.0F,
-                     0.0F,
-                     0.0F,
-                     1.0F
-                  );
-               }
-            }
-         }
-      }
-   }
-
-   public void a(dva $$0, List<wk.a> $$1, aev<cpv> $$2) {
-      this.b.computeIfAbsent($$2, $$0x -> new HashMap<>()).put($$0.toString(), $$0);
-      Map<String, wk.a> $$3 = this.c.computeIfAbsent($$2, $$0x -> new HashMap<>());
-
-      for (wk.a $$4 : $$1) {
-         $$3.put($$4.a().toString(), $$4);
-      }
-   }
-
-   @Override
-   public void a() {
-      this.b.clear();
-      this.c.clear();
    }
 }

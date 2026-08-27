@@ -1,82 +1,55 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.datafixers.util.Pair;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.Set;
+import org.slf4j.Logger;
 
-public class eej extends eec {
-   private static final Codec<Pair<he<dcm>, cht>> b = Codec.mapPair(jb.al.r().fieldOf("pattern"), cht.q.fieldOf("color")).codec();
+public class eej extends edw {
+   private static final Logger b = LogUtils.getLogger();
    public static final Codec<eej> a = RecordCodecBuilder.create(
       $$0 -> a($$0)
-            .and($$0.group(b.listOf().fieldOf("patterns").forGetter($$0x -> $$0x.c), Codec.BOOL.fieldOf("append").forGetter($$0x -> $$0x.d)))
+            .and($$0.group(egf.a.fieldOf("damage").forGetter($$0x -> $$0x.c), Codec.BOOL.fieldOf("add").orElse(false).forGetter($$0x -> $$0x.d)))
             .apply($$0, eej::new)
    );
-   private final List<Pair<he<dcm>, cht>> c;
+   private final ege c;
    private final boolean d;
 
-   eej(List<efp> $$0, List<Pair<he<dcm>, cht>> $$1, boolean $$2) {
+   private eej(List<efj> $$0, ege $$1, boolean $$2) {
       super($$0);
       this.c = $$1;
       this.d = $$2;
    }
 
    @Override
-   protected cjf a(cjf $$0, ecq $$1) {
-      qw $$2 = cgy.a($$0);
-      if ($$2 == null) {
-         $$2 = new qw();
-      }
-
-      dcm.a $$3 = new dcm.a();
-      this.c.forEach($$3::a);
-      rc $$4 = $$3.a();
-      rc $$5;
-      if (this.d) {
-         $$5 = $$2.c("Patterns", 10).e();
-         $$5.addAll($$4);
-      } else {
-         $$5 = $$4;
-      }
-
-      $$2.a("Patterns", $$5);
-      cgy.a($$0, dcx.t, $$2);
-      return $$0;
+   public edy b() {
+      return edz.j;
    }
 
    @Override
-   public eee b() {
-      return eef.y;
+   public Set<ees<?>> a() {
+      return this.c.a();
    }
 
-   public static eej.a a(boolean $$0) {
-      return new eej.a($$0);
+   @Override
+   public cjl a(cjl $$0, eck $$1) {
+      if ($$0.i()) {
+         int $$2 = $$0.l();
+         float $$3 = this.d ? 1.0F - (float)$$0.k() / (float)$$2 : 0.0F;
+         float $$4 = 1.0F - asb.a(this.c.b($$1) + $$3, 0.0F, 1.0F);
+         $$0.b(asb.d($$4 * (float)$$2));
+      } else {
+         b.warn("Couldn't set damage of loot item {}", $$0);
+      }
+
+      return $$0;
    }
 
-   public static class a extends eec.a<eej.a> {
-      private final Builder<Pair<he<dcm>, cht>> a = ImmutableList.builder();
-      private final boolean b;
+   public static edw.a<?> a(ege $$0) {
+      return a($$1 -> new eej($$1, $$0, false));
+   }
 
-      a(boolean $$0) {
-         this.b = $$0;
-      }
-
-      protected eej.a a() {
-         return this;
-      }
-
-      @Override
-      public eed b() {
-         return new eej(this.g(), this.a.build(), this.b);
-      }
-
-      public eej.a a(aev<dcm> $$0, cht $$1) {
-         return this.a(jb.al.f($$0), $$1);
-      }
-
-      public eej.a a(he<dcm> $$0, cht $$1) {
-         this.a.add(Pair.of($$0, $$1));
-         return this;
-      }
+   public static edw.a<?> a(ege $$0, boolean $$1) {
+      return a($$2 -> new eej($$2, $$0, $$1));
    }
 }

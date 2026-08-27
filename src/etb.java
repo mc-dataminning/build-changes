@@ -1,41 +1,35 @@
-public class etb extends etk {
-   private static final int a = 1426063360;
-   private static final int b = 4;
-   private final boolean c;
+public class etb {
+   public static final aez a = new aez("textures/gui/title/minecraft.png");
+   public static final aez b = new aez("textures/gui/title/minceraft.png");
+   public static final aez c = new aez("textures/gui/title/edition.png");
+   public static final int d = 256;
+   public static final int e = 44;
+   private static final int g = 256;
+   private static final int h = 64;
+   private static final int i = 128;
+   private static final int j = 14;
+   private static final int k = 128;
+   private static final int l = 16;
+   public static final int f = 30;
+   private static final int m = 7;
+   private final boolean n = (double)ash.a().i() < 1.0E-4;
+   private final boolean o;
 
-   public etb(int $$0, tl $$1, esd $$2) {
-      this($$0, $$1, $$2, true);
+   public etb(boolean $$0) {
+      this.o = $$0;
    }
 
-   public etb(int $$0, tl $$1, esd $$2, boolean $$3) {
-      super($$1, $$2);
-      this.j($$0);
-      this.b(true);
-      this.i = true;
-      this.c = $$3;
+   public void a(erz $$0, int $$1, float $$2) {
+      this.a($$0, $$1, $$2, 30);
    }
 
-   @Override
-   protected void a(ewi $$0) {
-      $$0.a(ewh.a, this.m());
-   }
-
-   @Override
-   public void b(esf $$0, int $$1, int $$2, float $$3) {
-      if (this.aC_() || this.c) {
-         int $$4 = this.r() - 4;
-         int $$5 = this.t() - 4;
-         int $$6 = this.l() + 8;
-         int $$7 = this.i() + 8;
-         int $$8 = this.c ? (this.aC_() ? -1 : -6250336) : -1;
-         $$0.a($$4 + 1, $$5, $$4 + $$6, $$5 + $$7, 1426063360);
-         $$0.b($$4, $$5, $$6, $$7, $$8);
-      }
-
-      super.b($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   public void a(gdq $$0) {
+   public void a(erz $$0, int $$1, float $$2, int $$3) {
+      $$0.a(1.0F, 1.0F, 1.0F, this.o ? 1.0F : $$2);
+      int $$4 = $$1 / 2 - 128;
+      $$0.a(this.n ? b : a, $$4, $$3, 0.0F, 0.0F, 256, 44, 256, 64);
+      int $$5 = $$1 / 2 - 64;
+      int $$6 = $$3 + 44 - 7;
+      $$0.a(c, $$5, $$6, 0.0F, 0.0F, 128, 14, 128, 16);
+      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
    }
 }

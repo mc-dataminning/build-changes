@@ -1,6 +1,5 @@
-import java.util.Set;
-import java.util.function.Supplier;
+import java.time.Duration;
 
 public interface bev {
-   Set<bet> a(Supplier<bdn> var1);
+   Duration a();
 }

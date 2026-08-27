@@ -1,48 +1,15 @@
-import java.util.EnumSet;
-import java.util.Set;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-public enum bju {
-   a(0),
-   b(1),
-   c(2),
-   d(3),
-   e(4);
+public interface bju {
+   @Nullable
+   UUID d();
 
-   public static final Set<bju> f = Set.of(values());
-   public static final Set<bju> g = Set.of(e, d);
-   private final int h;
+   cps e();
 
-   private bju(int $$0) {
-      this.h = $$0;
-   }
-
-   private int a() {
-      return 1 << this.h;
-   }
-
-   private boolean b(int $$0) {
-      return ($$0 & this.a()) == this.a();
-   }
-
-   public static Set<bju> a(int $$0) {
-      Set<bju> $$1 = EnumSet.noneOf(bju.class);
-
-      for (bju $$2 : values()) {
-         if ($$2.b($$0)) {
-            $$1.add($$2);
-         }
-      }
-
-      return $$1;
-   }
-
-   public static int a(Set<bju> $$0) {
-      int $$1 = 0;
-
-      for (bju $$2 : $$0) {
-         $$1 |= $$2.a();
-      }
-
-      return $$1;
+   @Nullable
+   default bjm O_() {
+      UUID $$0 = this.d();
+      return $$0 == null ? null : this.e().b($$0);
    }
 }

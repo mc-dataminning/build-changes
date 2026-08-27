@@ -1,39 +1,33 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import com.mojang.serialization.Codec;
 
-public class eqd extends epv {
-   private static final Logger b = LogUtils.getLogger();
-   private static final tl c = tl.c("mco.create.world.wait");
-   private final String d;
-   private final String e;
-   private final long f;
-   private final eyk g;
+public enum eqd implements asd, asu {
+   a(0, "false", "options.off"),
+   b(1, "fast", "options.clouds.fast"),
+   c(2, "true", "options.clouds.fancy");
 
-   public eqd(long $$0, String $$1, String $$2, eyk $$3) {
-      this.f = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.g = $$3;
+   public static final Codec<eqd> d = asu.a(eqd::values);
+   private final int e;
+   private final String f;
+   private final String g;
+
+   private eqd(int $$0, String $$1, String $$2) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
    @Override
-   public void run() {
-      emf $$0 = emf.a();
-
-      try {
-         $$0.a(this.f, this.d, this.e);
-         a(this.g);
-      } catch (ens var3) {
-         b.error("Couldn't create world", var3);
-         this.a(var3);
-      } catch (Exception var4) {
-         b.error("Could not create world", var4);
-         this.a(var4);
-      }
+   public String c() {
+      return this.f;
    }
 
    @Override
-   public tl a() {
-      return c;
+   public int a() {
+      return this.e;
+   }
+
+   @Override
+   public String b() {
+      return this.g;
    }
 }

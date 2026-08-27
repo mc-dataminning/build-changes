@@ -1,45 +1,68 @@
-public class bpp extends bqo {
-   private final buu g;
+import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-   public bpp(buu $$0, double $$1) {
-      super($$0, $$1, 8);
-      this.g = $$0;
+public class bpp extends bqh {
+   private final bwa a;
+   @Nullable
+   private cca b;
+   private final cqb c;
+   private final float d;
+   private int e;
+   private final bty f;
+
+   public bpp(bwa $$0, float $$1) {
+      this.a = $$0;
+      this.c = $$0.dL();
+      this.d = $$1;
+      this.f = bty.b().a((double)$$1);
+      this.a(EnumSet.of(bqh.a.b));
    }
 
    @Override
    public boolean a() {
-      return this.g.s() && !this.g.gd() && super.a();
+      this.b = this.c.a(this.f, this.a);
+      return this.b == null ? false : this.a(this.b);
+   }
+
+   @Override
+   public boolean b() {
+      if (!this.b.bv()) {
+         return false;
+      } else {
+         return this.a.f((biw)this.b) > (double)(this.d * this.d) ? false : this.e > 0 && this.a(this.b);
+      }
    }
 
    @Override
    public void c() {
-      super.c();
-      this.g.y(false);
+      this.a.A(true);
+      this.e = this.a(40 + this.a.ef().a(40));
    }
 
    @Override
    public void d() {
-      super.d();
-      this.g.y(false);
+      this.a.A(false);
+      this.b = null;
    }
 
    @Override
    public void e() {
-      super.e();
-      this.g.y(this.m());
+      this.a.G().a(this.b.dq(), this.b.du(), this.b.dw(), 10.0F, (float)this.a.Y());
+      this.e--;
    }
 
-   @Override
-   protected boolean a(cpy $$0, gw $$1) {
-      if (!$$0.t($$1.c())) {
-         return false;
-      } else {
-         dfj $$2 = $$0.a_($$1);
-         if ($$2.a(csw.cv)) {
-            return ddc.a($$0, $$1) < 1;
-         } else {
-            return $$2.a(csw.cD) && $$2.c(cvy.b) ? true : $$2.a(aps.R, $$0x -> $$0x.d(cso.a).map($$0xx -> $$0xx != dfw.a).orElse(true));
+   private boolean a(cca $$0) {
+      for (bhd $$1 : bhd.values()) {
+         cjl $$2 = $$0.b($$1);
+         if (this.a.s() && $$2.a(cjo.qL)) {
+            return true;
+         }
+
+         if (this.a.m($$2)) {
+            return true;
          }
       }
+
+      return false;
    }
 }

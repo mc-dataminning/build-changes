@@ -1,24 +1,23 @@
 import com.mojang.logging.LogUtils;
 import org.slf4j.Logger;
 
-public class ept extends epv {
+public abstract class ept extends epp {
    private static final Logger b = LogUtils.getLogger();
-   private static final tl c = tl.c("mco.download.preparing");
-   private final long d;
-   private final int e;
-   private final eyk f;
-   private final String g;
+   private final long c;
+   private final tl d;
+   private final Runnable e;
 
-   public ept(long $$0, int $$1, String $$2, eyk $$3) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$3;
-      this.g = $$2;
+   public ept(long $$0, tl $$1, Runnable $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
+
+   protected abstract void a(elz var1, long var2) throws enm;
 
    @Override
    public void run() {
-      emf $$0 = emf.a();
+      elz $$0 = elz.a();
       int $$1 = 0;
 
       while ($$1 < 25) {
@@ -27,37 +26,27 @@ public class ept extends epv {
                return;
             }
 
-            enm $$2 = $$0.b(this.d, this.e);
-            a(1L);
+            this.a($$0, this.c);
             if (this.d()) {
                return;
             }
 
-            a(new eoi(this.f, $$2, this.g, $$0x -> {
-            }));
+            this.e.run();
             return;
-         } catch (ent var4) {
+         } catch (enn var4) {
             if (this.d()) {
                return;
             }
 
             a((long)var4.c);
             $$1++;
-         } catch (ens var5) {
+         } catch (Exception var5) {
             if (this.d()) {
                return;
             }
 
-            b.error("Couldn't download world data", var5);
-            a(new eoj(var5, this.f));
-            return;
-         } catch (Exception var6) {
-            if (this.d()) {
-               return;
-            }
-
-            b.error("Couldn't download world data", var6);
-            this.a(var6);
+            b.error("Couldn't reset world");
+            this.a(var5);
             return;
          }
       }
@@ -65,6 +54,6 @@ public class ept extends epv {
 
    @Override
    public tl a() {
-      return c;
+      return this.d;
    }
 }

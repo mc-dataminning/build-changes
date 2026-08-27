@@ -1,98 +1,82 @@
-public class ccz extends ccb {
-   private static final aee<Boolean> e = aeh.a(ccz.class, aeg.k);
-
-   public ccz(biu<? extends ccz> $$0, cpv $$1) {
+public abstract class ccz extends ccs {
+   protected ccz(bja<? extends ccz> $$0, cqb $$1) {
       super($$0, $$1);
    }
 
-   public ccz(cpv $$0, bjg $$1, double $$2, double $$3, double $$4) {
-      super(biu.bm, $$1, $$2, $$3, $$4, $$0);
+   protected ccz(bja<? extends ccz> $$0, double $$1, double $$2, double $$3, cqb $$4) {
+      this($$0, $$4);
+      this.e($$1, $$2, $$3);
+   }
+
+   protected ccz(bja<? extends ccz> $$0, bjm $$1, cqb $$2) {
+      this($$0, $$1.dq(), $$1.du() - 0.1F, $$1.dw(), $$2);
+      this.b((biw)$$1);
    }
 
    @Override
-   protected float t() {
-      return this.w() ? 0.73F : super.t();
+   public boolean a(double $$0) {
+      double $$1 = this.cG().a() * 4.0;
+      if (Double.isNaN($$1)) {
+         $$1 = 4.0;
+      }
+
+      $$1 *= 64.0;
+      return $$0 < $$1 * $$1;
    }
 
    @Override
-   public boolean bM() {
-      return false;
-   }
-
-   @Override
-   public float a(cpn $$0, cpb $$1, gw $$2, dfj $$3, eam $$4, float $$5) {
-      return this.w() && byb.d($$3) ? Math.min(0.8F, $$5) : $$5;
-   }
-
-   @Override
-   protected void a(ehk $$0) {
-      super.a($$0);
-      if (!this.dL().B) {
-         biq $$1 = $$0.a();
-         boolean $$4;
-         if (this.v() instanceof bjg $$3) {
-            $$4 = $$1.a(this.dM().a(this, $$3), 8.0F);
-            if ($$4) {
-               if ($$1.bv()) {
-                  this.a($$3, $$1);
-               } else {
-                  $$3.b(5.0F);
-               }
-            }
-         } else {
-            $$4 = $$1.a(this.dM().o(), 5.0F);
-         }
-
-         if ($$4 && $$1 instanceof bjg $$6) {
-            int $$7 = 0;
-            if (this.dL().ai() == bgv.c) {
-               $$7 = 10;
-            } else if (this.dL().ai() == bgv.d) {
-               $$7 = 40;
+   public void l() {
+      super.l();
+      ehf $$0 = cct.a(this, this::a);
+      boolean $$1 = false;
+      if ($$0.c() == ehf.a.b) {
+         gw $$2 = ((ehd)$$0).a();
+         dfd $$3 = this.dL().a_($$2);
+         if ($$3.a(cte.ed)) {
+            this.f($$2);
+            $$1 = true;
+         } else if ($$3.a(cte.kF)) {
+            dcz $$4 = this.dL().c_($$2);
+            if ($$4 instanceof den && den.a(this)) {
+               den.a(this.dL(), $$2, $$3, this, (den)$$4);
             }
 
-            if ($$7 > 0) {
-               $$6.b(new bid(bif.t, 20 * $$7, 1), this.G());
-            }
+            $$1 = true;
          }
       }
-   }
 
-   @Override
-   protected void a(ehl $$0) {
-      super.a($$0);
-      if (!this.dL().B) {
-         this.dL().a(this, this.dq(), this.ds(), this.dw(), 1.0F, false, cpv.a.c);
-         this.ak();
+      if ($$0.c() != ehf.a.a && !$$1) {
+         this.a($$0);
       }
+
+      this.aO();
+      ehh $$5 = this.do();
+      double $$6 = this.dq() + $$5.c;
+      double $$7 = this.ds() + $$5.d;
+      double $$8 = this.dw() + $$5.e;
+      this.H();
+      float $$11;
+      if (this.aX()) {
+         for (int $$9 = 0; $$9 < 4; $$9++) {
+            float $$10 = 0.25F;
+            this.dL().a(iv.e, $$6 - $$5.c * 0.25, $$7 - $$5.d * 0.25, $$8 - $$5.e * 0.25, $$5.c, $$5.d, $$5.e);
+         }
+
+         $$11 = 0.8F;
+      } else {
+         $$11 = 0.99F;
+      }
+
+      this.f($$5.a((double)$$11));
+      if (!this.aT()) {
+         ehh $$13 = this.do();
+         this.o($$13.c, $$13.d - (double)this.w(), $$13.e);
+      }
+
+      this.e($$6, $$7, $$8);
    }
 
-   @Override
-   public boolean br() {
-      return false;
-   }
-
-   @Override
-   public boolean a(bho $$0, float $$1) {
-      return false;
-   }
-
-   @Override
-   protected void a_() {
-      this.an.a(e, false);
-   }
-
-   @Override
-   public boolean w() {
-      return this.an.b(e);
-   }
-
-   public void a(boolean $$0) {
-      this.an.b(e, $$0);
-   }
-
-   @Override
-   protected boolean ae_() {
-      return false;
+   protected float w() {
+      return 0.03F;
    }
 }

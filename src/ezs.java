@@ -1,82 +1,50 @@
-public class ezs extends ezh {
-   private final ddf m;
-   private esx<ddf.a> n;
-   private esx<Boolean> o;
-   private esx<Boolean> p;
-   private ddf.a q = ddf.a.c;
-   private boolean s;
-   private boolean t;
+import java.util.List;
 
-   public ezs(ddf $$0) {
-      this.m = $$0;
+public class ezs {
+   private static final int a = 30;
+   private static final int b = 16;
+   private static final int c = 4;
+   private final int d;
+   private List<aez> e = List.of();
+   private int f;
+   private int g;
+
+   public ezs(int $$0) {
+      this.d = $$0;
    }
 
-   @Override
-   cow l() {
-      return this.m.c();
+   public void a(List<aez> $$0) {
+      if (!this.e.equals($$0)) {
+         this.e = $$0;
+         this.g = 0;
+      }
+
+      if (!this.e.isEmpty() && ++this.f % 30 == 0) {
+         this.g = (this.g + 1) % this.e.size();
+      }
    }
 
-   @Override
-   int D() {
-      return 135;
+   public void a(cer $$0, erz $$1, float $$2, int $$3, int $$4) {
+      cgj $$5 = $$0.b(this.d);
+      if (!this.e.isEmpty() && !$$5.f()) {
+         boolean $$6 = this.e.size() > 1 && this.f >= 30;
+         float $$7 = $$6 ? this.a($$2) : 1.0F;
+         if ($$7 < 1.0F) {
+            int $$8 = Math.floorMod(this.g - 1, this.e.size());
+            this.a($$5, this.e.get($$8), 1.0F - $$7, $$1, $$3, $$4);
+         }
+
+         this.a($$5, this.e.get(this.g), $$7, $$1, $$3, $$4);
+      }
    }
 
-   @Override
-   protected void aH_() {
-      super.aH_();
-      this.n = this.d(esx.<ddf.a>a($$0 -> {
-         return switch ($$0) {
-            case a -> tl.c("advMode.mode.sequence");
-            case b -> tl.c("advMode.mode.auto");
-            case c -> tl.c("advMode.mode.redstone");
-         };
-      }).a(ddf.a.values()).a().a(this.q).a(this.g / 2 - 50 - 100 - 4, 165, 100, 20, tl.c("advMode.mode"), ($$0, $$1) -> this.q = $$1));
-      this.o = this.d(
-         esx.a(tl.c("advMode.mode.conditional"), tl.c("advMode.mode.unconditional"))
-            .a()
-            .a(this.s)
-            .a(this.g / 2 - 50, 165, 100, 20, tl.c("advMode.type"), ($$0, $$1) -> this.s = $$1)
-      );
-      this.p = this.d(
-         esx.a(tl.c("advMode.mode.autoexec.bat"), tl.c("advMode.mode.redstoneTriggered"))
-            .a()
-            .a(this.t)
-            .a(this.g / 2 + 50 + 4, 165, 100, 20, tl.c("advMode.triggering"), ($$0, $$1) -> this.t = $$1)
-      );
-      this.e(false);
+   private void a(cgj $$0, aez $$1, float $$2, erz $$3, int $$4, int $$5) {
+      fza $$6 = eqp.O().a(fyz.e).apply($$1);
+      $$3.a($$4 + $$0.f, $$5 + $$0.g, 0, 16, 16, $$6, 1.0F, 1.0F, 1.0F, $$2);
    }
 
-   private void e(boolean $$0) {
-      this.c.i = $$0;
-      this.l.i = $$0;
-      this.n.i = $$0;
-      this.o.i = $$0;
-      this.p.i = $$0;
-   }
-
-   public void F() {
-      cow $$0 = this.m.c();
-      this.a.a($$0.m());
-      boolean $$1 = $$0.o();
-      this.q = this.m.v();
-      this.s = this.m.w();
-      this.t = this.m.f();
-      this.l.a($$1);
-      this.n.a(this.q);
-      this.o.a(this.s);
-      this.p.a(this.t);
-      this.c($$1);
-      this.e(true);
-   }
-
-   @Override
-   public void a(eqv $$0, int $$1, int $$2) {
-      super.a($$0, $$1, $$2);
-      this.e(true);
-   }
-
-   @Override
-   protected void a(cow $$0) {
-      this.f.J().b(new aco(gw.a($$0.g()), this.a.a(), this.q, $$0.o(), this.s, this.t));
+   private float a(float $$0) {
+      float $$1 = (float)(this.f % 30) + $$0;
+      return Math.min($$1, 4.0F) / 4.0F;
    }
 }

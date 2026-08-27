@@ -7,7 +7,7 @@ import io.netty.util.ReferenceCountUtil;
 import java.util.List;
 import org.slf4j.Logger;
 
-public class st extends MessageToMessageCodec<vd<?>, vd<?>> {
+public class st extends MessageToMessageCodec<ve<?>, ve<?>> {
    private static final Logger a = LogUtils.getLogger();
    private final AttributeKey<sn.a<?>> b;
    private final AttributeKey<sn.a<?>> c;
@@ -17,7 +17,7 @@ public class st extends MessageToMessageCodec<vd<?>, vd<?>> {
       this.c = $$1;
    }
 
-   private static void a(ChannelHandlerContext $$0, vd<?> $$1, List<Object> $$2, AttributeKey<sn.a<?>> $$3) {
+   private static void a(ChannelHandlerContext $$0, ve<?> $$1, List<Object> $$2, AttributeKey<sn.a<?>> $$3) {
       Attribute<sn.a<?>> $$4 = $$0.channel().attr($$3);
       sn.a<?> $$5 = (sn.a<?>)$$4.get();
       if (!$$5.b($$1)) {
@@ -29,11 +29,11 @@ public class st extends MessageToMessageCodec<vd<?>, vd<?>> {
       sw.a($$4, $$1);
    }
 
-   protected void a(ChannelHandlerContext $$0, vd<?> $$1, List<Object> $$2) throws Exception {
+   protected void a(ChannelHandlerContext $$0, ve<?> $$1, List<Object> $$2) throws Exception {
       a($$0, $$1, $$2, this.b);
    }
 
-   protected void b(ChannelHandlerContext $$0, vd<?> $$1, List<Object> $$2) throws Exception {
+   protected void b(ChannelHandlerContext $$0, ve<?> $$1, List<Object> $$2) throws Exception {
       a($$0, $$1, $$2, this.c);
    }
 }

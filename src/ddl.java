@@ -1,110 +1,256 @@
-import java.util.Map;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.UUID;
 import javax.annotation.Nullable;
 
-public class ddl {
-   private static final String b = "decorated_pot_base";
-   public static final aev<String> a = a("decorated_pot_base");
-   private static final String c = "decorated_pot_side";
-   private static final String d = "angler_pottery_pattern";
-   private static final String e = "archer_pottery_pattern";
-   private static final String f = "arms_up_pottery_pattern";
-   private static final String g = "blade_pottery_pattern";
-   private static final String h = "brewer_pottery_pattern";
-   private static final String i = "burn_pottery_pattern";
-   private static final String j = "danger_pottery_pattern";
-   private static final String k = "explorer_pottery_pattern";
-   private static final String l = "friend_pottery_pattern";
-   private static final String m = "heart_pottery_pattern";
-   private static final String n = "heartbreak_pottery_pattern";
-   private static final String o = "howl_pottery_pattern";
-   private static final String p = "miner_pottery_pattern";
-   private static final String q = "mourner_pottery_pattern";
-   private static final String r = "plenty_pottery_pattern";
-   private static final String s = "prize_pottery_pattern";
-   private static final String t = "sheaf_pottery_pattern";
-   private static final String u = "shelter_pottery_pattern";
-   private static final String v = "skull_pottery_pattern";
-   private static final String w = "snort_pottery_pattern";
-   private static final aev<String> x = a("decorated_pot_side");
-   private static final aev<String> y = a("angler_pottery_pattern");
-   private static final aev<String> z = a("archer_pottery_pattern");
-   private static final aev<String> A = a("arms_up_pottery_pattern");
-   private static final aev<String> B = a("blade_pottery_pattern");
-   private static final aev<String> C = a("brewer_pottery_pattern");
-   private static final aev<String> D = a("burn_pottery_pattern");
-   private static final aev<String> E = a("danger_pottery_pattern");
-   private static final aev<String> F = a("explorer_pottery_pattern");
-   private static final aev<String> G = a("friend_pottery_pattern");
-   private static final aev<String> H = a("heart_pottery_pattern");
-   private static final aev<String> I = a("heartbreak_pottery_pattern");
-   private static final aev<String> J = a("howl_pottery_pattern");
-   private static final aev<String> K = a("miner_pottery_pattern");
-   private static final aev<String> L = a("mourner_pottery_pattern");
-   private static final aev<String> M = a("plenty_pottery_pattern");
-   private static final aev<String> N = a("prize_pottery_pattern");
-   private static final aev<String> O = a("sheaf_pottery_pattern");
-   private static final aev<String> P = a("shelter_pottery_pattern");
-   private static final aev<String> Q = a("skull_pottery_pattern");
-   private static final aev<String> R = a("snort_pottery_pattern");
-   private static final Map<cja, aev<String>> S = Map.ofEntries(
-      Map.entry(cji.pX, x),
-      Map.entry(cji.wN, y),
-      Map.entry(cji.wO, z),
-      Map.entry(cji.wP, A),
-      Map.entry(cji.wQ, B),
-      Map.entry(cji.wR, C),
-      Map.entry(cji.wS, D),
-      Map.entry(cji.wT, E),
-      Map.entry(cji.wU, F),
-      Map.entry(cji.wV, G),
-      Map.entry(cji.wW, H),
-      Map.entry(cji.wX, I),
-      Map.entry(cji.wY, J),
-      Map.entry(cji.wZ, K),
-      Map.entry(cji.xa, L),
-      Map.entry(cji.xb, M),
-      Map.entry(cji.xc, N),
-      Map.entry(cji.xd, O),
-      Map.entry(cji.xe, P),
-      Map.entry(cji.xf, Q),
-      Map.entry(cji.xg, R)
-   );
+public class ddl extends dcz {
+   private static final int b = 2;
+   private static final int c = 13;
+   private static final float d = -0.0375F;
+   private static final int e = 16;
+   private static final int f = 42;
+   private static final int g = 8;
+   private static final ctc[] h = new ctc[]{cte.hZ, cte.ia, cte.ii, cte.ib};
+   public int a;
+   private float i;
+   private boolean j;
+   private boolean k;
+   private final List<gw> l = Lists.newArrayList();
+   @Nullable
+   private bjm m;
+   @Nullable
+   private UUID n;
+   private long r;
 
-   private static aev<String> a(String $$0) {
-      return aev.a(jc.ao, new aew($$0));
+   public ddl(gw $$0, dfd $$1) {
+      super(ddb.z, $$0, $$1);
    }
 
-   public static aew a(aev<String> $$0) {
-      return $$0.a().d("entity/decorated_pot/");
+   @Override
+   public void a(qw $$0) {
+      super.a($$0);
+      if ($$0.b("Target")) {
+         this.n = $$0.a("Target");
+      } else {
+         this.n = null;
+      }
+   }
+
+   @Override
+   protected void b(qw $$0) {
+      super.b($$0);
+      if (this.m != null) {
+         $$0.a("Target", this.m.cv());
+      }
+   }
+
+   public xe c() {
+      return xe.a(this);
+   }
+
+   @Override
+   public qw as_() {
+      return this.o();
+   }
+
+   public static void a(cqb $$0, gw $$1, dfd $$2, ddl $$3) {
+      $$3.a++;
+      long $$4 = $$0.V();
+      List<gw> $$5 = $$3.l;
+      if ($$4 % 40L == 0L) {
+         $$3.j = a($$0, $$1, $$5);
+         a($$3, $$5);
+      }
+
+      a($$0, $$1, $$3);
+      a($$0, $$1, $$5, $$3.m, $$3.a);
+      if ($$3.d()) {
+         $$3.i++;
+      }
+   }
+
+   public static void b(cqb $$0, gw $$1, dfd $$2, ddl $$3) {
+      $$3.a++;
+      long $$4 = $$0.V();
+      List<gw> $$5 = $$3.l;
+      if ($$4 % 40L == 0L) {
+         boolean $$6 = a($$0, $$1, $$5);
+         if ($$6 != $$3.j) {
+            apf $$7 = $$6 ? apg.eK : apg.eO;
+            $$0.a(null, $$1, $$7, aph.e, 1.0F, 1.0F);
+         }
+
+         $$3.j = $$6;
+         a($$3, $$5);
+         if ($$6) {
+            b($$0, $$1, $$5);
+            a($$0, $$1, $$2, $$5, $$3);
+         }
+      }
+
+      if ($$3.d()) {
+         if ($$4 % 80L == 0L) {
+            $$0.a(null, $$1, apg.eL, aph.e, 1.0F, 1.0F);
+         }
+
+         if ($$4 > $$3.r) {
+            $$3.r = $$4 + 60L + (long)$$0.D_().a(40);
+            $$0.a(null, $$1, apg.eM, aph.e, 1.0F, 1.0F);
+         }
+      }
+   }
+
+   private static void a(ddl $$0, List<gw> $$1) {
+      $$0.a($$1.size() >= 42);
+   }
+
+   private static boolean a(cqb $$0, gw $$1, List<gw> $$2) {
+      $$2.clear();
+
+      for (int $$3 = -1; $$3 <= 1; $$3++) {
+         for (int $$4 = -1; $$4 <= 1; $$4++) {
+            for (int $$5 = -1; $$5 <= 1; $$5++) {
+               gw $$6 = $$1.b($$3, $$4, $$5);
+               if (!$$0.y($$6)) {
+                  return false;
+               }
+            }
+         }
+      }
+
+      for (int $$7 = -2; $$7 <= 2; $$7++) {
+         for (int $$8 = -2; $$8 <= 2; $$8++) {
+            for (int $$9 = -2; $$9 <= 2; $$9++) {
+               int $$10 = Math.abs($$7);
+               int $$11 = Math.abs($$8);
+               int $$12 = Math.abs($$9);
+               if (($$10 > 1 || $$11 > 1 || $$12 > 1)
+                  && ($$7 == 0 && ($$11 == 2 || $$12 == 2) || $$8 == 0 && ($$10 == 2 || $$12 == 2) || $$9 == 0 && ($$10 == 2 || $$11 == 2))) {
+                  gw $$13 = $$1.b($$7, $$8, $$9);
+                  dfd $$14 = $$0.a_($$13);
+
+                  for (ctc $$15 : h) {
+                     if ($$14.a($$15)) {
+                        $$2.add($$13);
+                     }
+                  }
+               }
+            }
+         }
+      }
+
+      return $$2.size() >= 16;
+   }
+
+   private static void b(cqb $$0, gw $$1, List<gw> $$2) {
+      int $$3 = $$2.size();
+      int $$4 = $$3 / 7 * 16;
+      int $$5 = $$1.u();
+      int $$6 = $$1.v();
+      int $$7 = $$1.w();
+      ehc $$8 = new ehc((double)$$5, (double)$$6, (double)$$7, (double)($$5 + 1), (double)($$6 + 1), (double)($$7 + 1))
+         .g((double)$$4)
+         .b(0.0, (double)$$0.I_(), 0.0);
+      List<cca> $$9 = $$0.a(cca.class, $$8);
+      if (!$$9.isEmpty()) {
+         for (cca $$10 : $$9) {
+            if ($$1.a($$10.dl(), (double)$$4) && $$10.aY()) {
+               $$10.b(new bij(bil.C, 260, 0, true, true));
+            }
+         }
+      }
+   }
+
+   private static void a(cqb $$0, gw $$1, dfd $$2, List<gw> $$3, ddl $$4) {
+      bjm $$5 = $$4.m;
+      int $$6 = $$3.size();
+      if ($$6 < 42) {
+         $$4.m = null;
+      } else if ($$4.m == null && $$4.n != null) {
+         $$4.m = a($$0, $$1, $$4.n);
+         $$4.n = null;
+      } else if ($$4.m == null) {
+         List<bjm> $$7 = $$0.a(bjm.class, a($$1), $$0x -> $$0x instanceof bzg && $$0x.aY());
+         if (!$$7.isEmpty()) {
+            $$4.m = $$7.get($$0.z.a($$7.size()));
+         }
+      } else if (!$$4.m.bv() || !$$1.a($$4.m.dl(), 8.0)) {
+         $$4.m = null;
+      }
+
+      if ($$4.m != null) {
+         $$0.a(null, $$4.m.dq(), $$4.m.ds(), $$4.m.dw(), apg.eN, aph.e, 1.0F, 1.0F);
+         $$4.m.a($$0.ag().o(), 4.0F);
+      }
+
+      if ($$5 != $$4.m) {
+         $$0.a($$1, $$2, $$2, 2);
+      }
+   }
+
+   private static void a(cqb $$0, gw $$1, ddl $$2) {
+      if ($$2.n == null) {
+         $$2.m = null;
+      } else if ($$2.m == null || !$$2.m.cv().equals($$2.n)) {
+         $$2.m = a($$0, $$1, $$2.n);
+         if ($$2.m == null) {
+            $$2.n = null;
+         }
+      }
+   }
+
+   private static ehc a(gw $$0) {
+      int $$1 = $$0.u();
+      int $$2 = $$0.v();
+      int $$3 = $$0.w();
+      return new ehc((double)$$1, (double)$$2, (double)$$3, (double)($$1 + 1), (double)($$2 + 1), (double)($$3 + 1)).g(8.0);
    }
 
    @Nullable
-   public static aev<String> a(cja $$0) {
-      return S.get($$0);
+   private static bjm a(cqb $$0, gw $$1, UUID $$2) {
+      List<bjm> $$3 = $$0.a(bjm.class, a($$1), $$1x -> $$1x.cv().equals($$2));
+      return $$3.size() == 1 ? $$3.get(0) : null;
    }
 
-   public static String a(hq<String> $$0) {
-      hq.a($$0, x, "decorated_pot_side");
-      hq.a($$0, y, "angler_pottery_pattern");
-      hq.a($$0, z, "archer_pottery_pattern");
-      hq.a($$0, A, "arms_up_pottery_pattern");
-      hq.a($$0, B, "blade_pottery_pattern");
-      hq.a($$0, C, "brewer_pottery_pattern");
-      hq.a($$0, D, "burn_pottery_pattern");
-      hq.a($$0, E, "danger_pottery_pattern");
-      hq.a($$0, F, "explorer_pottery_pattern");
-      hq.a($$0, G, "friend_pottery_pattern");
-      hq.a($$0, H, "heart_pottery_pattern");
-      hq.a($$0, I, "heartbreak_pottery_pattern");
-      hq.a($$0, J, "howl_pottery_pattern");
-      hq.a($$0, K, "miner_pottery_pattern");
-      hq.a($$0, L, "mourner_pottery_pattern");
-      hq.a($$0, M, "plenty_pottery_pattern");
-      hq.a($$0, N, "prize_pottery_pattern");
-      hq.a($$0, O, "sheaf_pottery_pattern");
-      hq.a($$0, P, "shelter_pottery_pattern");
-      hq.a($$0, Q, "skull_pottery_pattern");
-      hq.a($$0, R, "snort_pottery_pattern");
-      return hq.a($$0, a, "decorated_pot_base");
+   private static void a(cqb $$0, gw $$1, List<gw> $$2, @Nullable biw $$3, int $$4) {
+      ash $$5 = $$0.z;
+      double $$6 = (double)(asb.a((float)($$4 + 35) * 0.1F) / 2.0F + 0.5F);
+      $$6 = ($$6 * $$6 + $$6) * 0.3F;
+      ehh $$7 = new ehh((double)$$1.u() + 0.5, (double)$$1.v() + 1.5 + $$6, (double)$$1.w() + 0.5);
+
+      for (gw $$8 : $$2) {
+         if ($$5.a(50) == 0) {
+            gw $$9 = $$8.b($$1);
+            float $$10 = -0.5F + $$5.i() + (float)$$9.u();
+            float $$11 = -2.0F + $$5.i() + (float)$$9.v();
+            float $$12 = -0.5F + $$5.i() + (float)$$9.w();
+            $$0.a(iv.al, $$7.c, $$7.d, $$7.e, (double)$$10, (double)$$11, (double)$$12);
+         }
+      }
+
+      if ($$3 != null) {
+         ehh $$13 = new ehh($$3.dq(), $$3.du(), $$3.dw());
+         float $$14 = (-0.5F + $$5.i()) * (3.0F + $$3.df());
+         float $$15 = -1.0F + $$5.i() * $$3.dg();
+         float $$16 = (-0.5F + $$5.i()) * (3.0F + $$3.df());
+         ehh $$17 = new ehh((double)$$14, (double)$$15, (double)$$16);
+         $$0.a(iv.al, $$13.c, $$13.d, $$13.e, $$17.c, $$17.d, $$17.e);
+      }
+   }
+
+   public boolean d() {
+      return this.j;
+   }
+
+   public boolean f() {
+      return this.k;
+   }
+
+   private void a(boolean $$0) {
+      this.k = $$0;
+   }
+
+   public float a(float $$0) {
+      return (this.i + $$0) * -0.0375F;
    }
 }

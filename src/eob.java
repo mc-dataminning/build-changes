@@ -1,121 +1,56 @@
-import java.util.Locale;
+public class eob extends gex {
+   private static final tl a = tl.c("mco.configure.world.name");
+   private static final tl b = tl.c("mco.configure.world.description");
+   private static final int c = 10;
+   private static final int y = 210;
+   private final emq z;
+   private final elu A;
+   private final evu B = new evu(this);
+   private est C;
+   private est D;
 
-public class eob extends gfb {
-   private static final tl a = tl.c("mco.backup.info.title");
-   private static final tl b = tl.c("mco.backup.unknown");
-   private final eyk c;
-   final eml y;
-   final evz z = new evz(this);
-   private eob.a A;
-
-   public eob(eyk $$0, eml $$1) {
-      super(a);
-      this.c = $$0;
-      this.y = $$1;
+   public eob(emq $$0, elu $$1) {
+      super(tl.c("mco.selectServer.create"));
+      this.z = $$0;
+      this.A = $$1;
    }
 
    @Override
    public void aH_() {
-      this.z.a(new etw(a, this.i));
-      this.A = new eob.a(this.f);
-      this.d(this.A);
-      this.z.b(esq.a(tk.k, $$0 -> this.az_()).a());
-      this.z.a();
-      this.z.a($$1 -> {
-         eso var10000 = this.d($$1);
+      this.B.a(new etr(this.e, this.i));
+      evy $$0 = this.B.c(evy.d()).a(10);
+      esk $$1 = esk.a(tl.c("mco.create.world"), $$0x -> this.D()).a();
+      $$1.i = false;
+      this.C = new est(this.i, 210, 20, tl.c("mco.configure.world.name"));
+      this.C.b($$1x -> $$1.i = !ac.b($$1x));
+      this.D = new est(this.i, 210, 20, tl.c("mco.configure.world.description"));
+      $$0.a(evq.a(this.i, this.C, a));
+      $$0.a(evq.a(this.i, this.D, b));
+      evy $$2 = this.B.b(evy.e().a(10));
+      $$2.a($$1);
+      $$2.a(esk.a(tk.e, $$0x -> this.az_()).a());
+      this.B.a($$1x -> {
+         esi var10000 = this.d($$1x);
       });
+      this.b();
+      this.c(this.C);
    }
 
    @Override
    protected void b() {
-      this.z.a();
-      this.A.a(this.g, this.h, this.z.c(), this.h - this.z.b());
+      this.B.a();
+   }
+
+   private void D() {
+      eoo $$0 = eoo.a(this.A, this.z, () -> this.f.execute(() -> {
+            this.A.e();
+            this.f.a(this.A);
+         }));
+      this.f.a(new eog(this.A, new epx(this.z.a, this.C.a(), this.D.a(), $$0)));
    }
 
    @Override
    public void az_() {
-      this.f.a(this.c);
-   }
-
-   tl a(String $$0, String $$1) {
-      String $$2 = $$0.toLowerCase(Locale.ROOT);
-      if ($$2.contains("game") && $$2.contains("mode")) {
-         return this.b($$1);
-      } else {
-         return (tl)($$2.contains("game") && $$2.contains("difficulty") ? this.a($$1) : tl.b($$1));
-      }
-   }
-
-   private tl a(String $$0) {
-      try {
-         return eoy.a.get(Integer.parseInt($$0)).b();
-      } catch (Exception var3) {
-         return b;
-      }
-   }
-
-   private tl b(String $$0) {
-      try {
-         return eoy.b.get(Integer.parseInt($$0)).e();
-      } catch (Exception var3) {
-         return b;
-      }
-   }
-
-   class a extends etm<eob.b> {
-      public a(eqv $$0) {
-         super($$0, eob.this.g, eob.this.h, eob.this.z.c(), eob.this.h - eob.this.z.b(), 36);
-         if (eob.this.y.e != null) {
-            eob.this.y.e.forEach(($$0x, $$1) -> this.b(eob.this.new b($$0x, $$1)));
-         }
-      }
-   }
-
-   class b extends etm.a<eob.b> {
-      private static final tl b = tl.c("mco.backup.entry.templateName");
-      private static final tl c = tl.c("mco.backup.entry.gameDifficulty");
-      private static final tl d = tl.c("mco.backup.entry.name");
-      private static final tl e = tl.c("mco.backup.entry.gameServerVersion");
-      private static final tl f = tl.c("mco.backup.entry.uploaded");
-      private static final tl g = tl.c("mco.backup.entry.enabledPack");
-      private static final tl h = tl.c("mco.backup.entry.description");
-      private static final tl i = tl.c("mco.backup.entry.gameMode");
-      private static final tl j = tl.c("mco.backup.entry.seed");
-      private static final tl k = tl.c("mco.backup.entry.worldType");
-      private static final tl l = tl.c("mco.backup.entry.undefined");
-      private final String m;
-      private final String n;
-
-      public b(String $$0, String $$1) {
-         this.m = $$0;
-         this.n = $$1;
-      }
-
-      @Override
-      public void a(esf $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         $$0.b(eob.this.i, this.a(this.m), $$3, $$2, -6250336);
-         $$0.b(eob.this.i, eob.this.a(this.m, this.n), $$3, $$2 + 12, -1);
-      }
-
-      private tl a(String $$0) {
-         return switch ($$0) {
-            case "template_name" -> b;
-            case "game_difficulty" -> c;
-            case "name" -> d;
-            case "game_server_version" -> e;
-            case "uploaded" -> f;
-            case "enabled_pack" -> g;
-            case "description" -> h;
-            case "game_mode" -> i;
-            case "seed" -> j;
-            case "world_type" -> k;
-            default -> l;
-         };
-      }
-
-      @Override
-      public tl a() {
-         return tl.a("narrator.select", this.m + " " + this.n);
-      }
+      this.f.a(this.A);
    }
 }

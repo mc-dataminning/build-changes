@@ -1,210 +1,204 @@
-import java.util.UUID;
-import net.minecraft.server.MinecraftServer;
+import java.nio.file.Path;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringUtils;
 
-public class ecb implements ecl {
-   private final ecm a;
-   private final ecl b;
+public class ecb implements Comparable<ecb> {
+   private final cqf a;
+   private final ecc b;
+   private final String c;
+   private final boolean d;
+   private final boolean e;
+   private final boolean f;
+   private final Path g;
+   @Nullable
+   private tl h;
 
-   public ecb(ecm $$0, ecl $$1) {
+   public ecb(cqf $$0, ecc $$1, String $$2, boolean $$3, boolean $$4, boolean $$5, Path $$6) {
       this.a = $$0;
       this.b = $$1;
+      this.c = $$2;
+      this.e = $$4;
+      this.f = $$5;
+      this.g = $$6;
+      this.d = $$3;
    }
 
-   @Override
-   public int a() {
-      return this.b.a();
+   public String a() {
+      return this.c;
    }
 
-   @Override
-   public int b() {
+   public String b() {
+      return StringUtils.isEmpty(this.a.a()) ? this.c : this.a.a();
+   }
+
+   public Path c() {
+      return this.g;
+   }
+
+   public boolean d() {
+      return this.d;
+   }
+
+   public boolean e() {
+      return this.f;
+   }
+
+   public long f() {
       return this.b.b();
    }
 
-   @Override
-   public int c() {
-      return this.b.c();
+   public int a(ecb $$0) {
+      if (this.f() < $$0.f()) {
+         return 1;
+      } else {
+         return this.f() > $$0.f() ? -1 : this.c.compareTo($$0.c);
+      }
    }
 
-   @Override
-   public float d() {
-      return this.b.d();
+   public cqf g() {
+      return this.a;
    }
 
-   @Override
-   public long e() {
-      return this.b.e();
+   public cpy h() {
+      return this.a.b();
    }
 
-   @Override
-   public long f() {
-      return this.b.f();
-   }
-
-   @Override
-   public String g() {
-      return this.a.g();
-   }
-
-   @Override
-   public int h() {
-      return this.b.h();
-   }
-
-   @Override
-   public void a(int $$0) {
-   }
-
-   @Override
    public boolean i() {
-      return this.b.i();
+      return this.a.c();
    }
 
-   @Override
-   public int j() {
-      return this.b.j();
+   public boolean j() {
+      return this.a.e();
    }
 
-   @Override
-   public boolean k() {
-      return this.b.k();
+   public tz k() {
+      return asv.b(this.b.c()) ? tl.c("selectWorld.versionUnknown") : tl.b(this.b.c());
    }
 
-   @Override
-   public int l() {
-      return this.b.l();
+   public ecc l() {
+      return this.b;
    }
 
-   @Override
-   public cps m() {
-      return this.a.m();
+   public boolean m() {
+      return this.n() || !aa.b().g() && !this.b.e() || this.o().a();
    }
 
-   @Override
-   public void b(int $$0) {
-   }
-
-   @Override
-   public void c(int $$0) {
-   }
-
-   @Override
-   public void d(int $$0) {
-   }
-
-   @Override
-   public void a(float $$0) {
-   }
-
-   @Override
-   public void a(long $$0) {
-   }
-
-   @Override
-   public void b(long $$0) {
-   }
-
-   @Override
-   public void a(gw $$0, float $$1) {
-   }
-
-   @Override
-   public void a(boolean $$0) {
-   }
-
-   @Override
-   public void e(int $$0) {
-   }
-
-   @Override
-   public void b(boolean $$0) {
-   }
-
-   @Override
-   public void f(int $$0) {
-   }
-
-   @Override
-   public void a(cps $$0) {
-   }
-
-   @Override
    public boolean n() {
-      return this.a.n();
+      return this.b.d().c() > aa.b().d().c();
    }
 
-   @Override
-   public boolean o() {
-      return this.a.o();
+   public ecb.a o() {
+      ad $$0 = aa.b();
+      int $$1 = $$0.d().c();
+      int $$2 = this.b.d().c();
+      if (!$$0.g() && $$2 < $$1) {
+         return ecb.a.c;
+      } else {
+         return $$2 > $$1 ? ecb.a.b : ecb.a.a;
+      }
    }
 
-   @Override
    public boolean p() {
-      return this.b.p();
+      return this.e;
    }
 
-   @Override
-   public void c(boolean $$0) {
+   public boolean q() {
+      return !this.p() && !this.d() ? !this.r() : true;
    }
 
-   @Override
-   public cpr q() {
-      return this.a.q();
+   public boolean r() {
+      return aa.b().d().a(this.b.d());
    }
 
-   @Override
-   public dha.c r() {
-      return this.b.r();
+   public tl s() {
+      if (this.h == null) {
+         this.h = this.t();
+      }
+
+      return this.h;
    }
 
-   @Override
-   public void a(dha.c $$0) {
+   private tl t() {
+      if (this.p()) {
+         return tl.c("selectWorld.locked").a(n.m);
+      } else if (this.d()) {
+         return tl.c("selectWorld.conversion").a(n.m);
+      } else if (!this.r()) {
+         return tl.c("selectWorld.incompatible_series").a(n.m);
+      } else {
+         tz $$0 = this.i() ? tl.i().b(tl.c("gameMode.hardcore").a($$0x -> $$0x.a(-65536))) : tl.c("gameMode." + this.h().b());
+         if (this.j()) {
+            $$0.f(", ").b(tl.c("selectWorld.cheats"));
+         }
+
+         if (this.e()) {
+            $$0.f(", ").b(tl.c("selectWorld.experimental").a(n.o));
+         }
+
+         tz $$1 = this.k();
+         tz $$2 = tl.b(", ").b(tl.c("selectWorld.version")).b(tk.u);
+         if (this.m()) {
+            $$2.b($$1.a(this.n() ? n.m : n.u));
+         } else {
+            $$2.b($$1);
+         }
+
+         $$0.b($$2);
+         return $$0;
+      }
    }
 
-   @Override
-   public bgv s() {
-      return this.a.s();
+   public static enum a {
+      a(false, false, ""),
+      b(true, true, "downgrade"),
+      c(true, false, "snapshot");
+
+      private final boolean d;
+      private final boolean e;
+      private final String f;
+
+      private a(boolean $$0, boolean $$1, String $$2) {
+         this.d = $$0;
+         this.e = $$1;
+         this.f = $$2;
+      }
+
+      public boolean a() {
+         return this.d;
+      }
+
+      public boolean b() {
+         return this.e;
+      }
+
+      public String c() {
+         return this.f;
+      }
    }
 
-   @Override
-   public boolean t() {
-      return this.a.t();
-   }
+   public static class b extends ecb {
+      public b(String $$0, Path $$1) {
+         super(null, null, $$0, false, false, false, $$1);
+      }
 
-   @Override
-   public eha<MinecraftServer> u() {
-      return this.b.u();
-   }
+      @Override
+      public String b() {
+         return this.a();
+      }
 
-   @Override
-   public int v() {
-      return 0;
-   }
+      @Override
+      public tl s() {
+         return tl.c("symlink_warning.title").a($$0 -> $$0.a(-65536));
+      }
 
-   @Override
-   public void g(int $$0) {
-   }
+      @Override
+      public long f() {
+         return -1L;
+      }
 
-   @Override
-   public int w() {
-      return 0;
-   }
-
-   @Override
-   public void h(int $$0) {
-   }
-
-   @Override
-   public UUID x() {
-      return null;
-   }
-
-   @Override
-   public void a(UUID $$0) {
-   }
-
-   @Override
-   public void a(p $$0, cpx $$1) {
-      $$0.a("Derived", true);
-      this.b.a($$0, $$1);
+      @Override
+      public boolean q() {
+         return false;
+      }
    }
 }

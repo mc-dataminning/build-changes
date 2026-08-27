@@ -14,7 +14,7 @@ import org.joml.Quaternionf;
 import org.joml.Vector3f;
 import org.joml.Vector4f;
 
-public enum ha implements asp {
+public enum ha implements asu {
    a(0, 1, -1, "down", ha.b.b, ha.a.b, new hy(0, -1, 0)),
    b(1, 0, -1, "up", ha.b.a, ha.a.b, new hy(0, 1, 0)),
    c(2, 3, 2, "north", ha.b.b, ha.a.c, new hy(0, 0, -1)),
@@ -22,8 +22,8 @@ public enum ha implements asp {
    e(4, 5, 1, "west", ha.b.b, ha.a.a, new hy(-1, 0, 0)),
    f(5, 4, 3, "east", ha.b.a, ha.a.a, new hy(1, 0, 0));
 
-   public static final asp.a<ha> g = asp.a(ha::values);
-   public static final Codec<ha> h = arf.a(g, ha::a);
+   public static final asu.a<ha> g = asu.a(ha::values);
+   public static final Codec<ha> h = arj.a(g, ha::a);
    private final int i;
    private final int j;
    private final int k;
@@ -45,13 +45,13 @@ public enum ha implements asp {
       this.o = $$6;
    }
 
-   public static ha[] a(biq $$0) {
+   public static ha[] a(biw $$0) {
       float $$1 = $$0.g(1.0F) * (float) (Math.PI / 180.0);
       float $$2 = -$$0.h(1.0F) * (float) (Math.PI / 180.0);
-      float $$3 = arw.a($$1);
-      float $$4 = arw.b($$1);
-      float $$5 = arw.a($$2);
-      float $$6 = arw.b($$2);
+      float $$3 = asb.a($$1);
+      float $$4 = asb.b($$1);
+      float $$5 = asb.a($$2);
+      float $$6 = asb.b($$2);
       boolean $$7 = $$5 > 0.0F;
       boolean $$8 = $$3 < 0.0F;
       boolean $$9 = $$6 > 0.0F;
@@ -86,7 +86,7 @@ public enum ha implements asp {
       return a($$3.x(), $$3.y(), $$3.z());
    }
 
-   public static Collection<ha> a(asc $$0) {
+   public static Collection<ha> a(ash $$0) {
       return ac.b(values(), $$0);
    }
 
@@ -117,7 +117,7 @@ public enum ha implements asp {
       return this.n;
    }
 
-   public static ha a(biq $$0, ha.a $$1) {
+   public static ha a(biw $$0, ha.a $$1) {
       return switch ($$1) {
          case a -> f.a($$0.h(1.0F)) ? f : e;
          case c -> d.a($$0.h(1.0F)) ? d : c;
@@ -235,11 +235,11 @@ public enum ha implements asp {
    }
 
    public static ha a(int $$0) {
-      return q[arw.a($$0 % q.length)];
+      return q[asb.a($$0 % q.length)];
    }
 
    public static ha b(int $$0) {
-      return r[arw.a($$0 % r.length)];
+      return r[asb.a($$0 % r.length)];
    }
 
    @Nullable
@@ -272,7 +272,7 @@ public enum ha implements asp {
    }
 
    public static ha a(double $$0) {
-      return b(arw.a($$0 / 90.0 + 0.5) & 3);
+      return b(asb.a($$0 / 90.0 + 0.5) & 3);
    }
 
    public static ha a(ha.a $$0, ha.b $$1) {
@@ -287,7 +287,7 @@ public enum ha implements asp {
       return (float)((this.k & 3) * 90);
    }
 
-   public static ha b(asc $$0) {
+   public static ha b(ash $$0) {
       return ac.a(p, $$0);
    }
 
@@ -340,12 +340,12 @@ public enum ha implements asp {
 
    public boolean a(float $$0) {
       float $$1 = $$0 * (float) (Math.PI / 180.0);
-      float $$2 = -arw.a($$1);
-      float $$3 = arw.b($$1);
+      float $$2 = -asb.a($$1);
+      float $$3 = asb.b($$1);
       return (float)this.o.u() * $$2 + (float)this.o.w() * $$3 > 0.0F;
    }
 
-   public static enum a implements asp, Predicate<ha> {
+   public static enum a implements asu, Predicate<ha> {
       a("x") {
          @Override
          public int a(int $$0, int $$1, int $$2) {
@@ -381,7 +381,7 @@ public enum ha implements asp {
       };
 
       public static final ha.a[] d = values();
-      public static final asp.a<ha.a> e = asp.a(ha.a::values);
+      public static final asu.a<ha.a> e = asu.a(ha.a::values);
       private final String f;
 
       a(String $$0) {
@@ -410,7 +410,7 @@ public enum ha implements asp {
          return this.f;
       }
 
-      public static ha.a a(asc $$0) {
+      public static ha.a a(ash $$0) {
          return ac.a(d, $$0);
       }
 
@@ -477,11 +477,11 @@ public enum ha implements asp {
          this.d = $$1;
       }
 
-      public ha a(asc $$0) {
+      public ha a(ash $$0) {
          return ac.a(this.c, $$0);
       }
 
-      public ha.a b(asc $$0) {
+      public ha.a b(ash $$0) {
          return ac.a(this.d, $$0);
       }
 
@@ -498,7 +498,7 @@ public enum ha implements asp {
          return Arrays.stream(this.c);
       }
 
-      public List<ha> c(asc $$0) {
+      public List<ha> c(ash $$0) {
          return ac.b(this.c, $$0);
       }
    }

@@ -1,68 +1,95 @@
 import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.logging.LogUtils;
-import java.util.Optional;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import net.minecraft.server.MinecraftServer;
 
 public class ut implements tm {
-   private static final Logger c = LogUtils.getLogger();
-   private final String d;
+   private static final String d = "*";
+   public static final MapCodec<ut> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(Codec.STRING.fieldOf("name").forGetter(ut::b), Codec.STRING.fieldOf("objective").forGetter(ut::d)).apply($$0, ut::new)
+   );
+   public static final MapCodec<ut> b = a.fieldOf("score");
+   public static final tm.a<ut> c = new tm.a<>(b, "score");
+   private final String e;
    @Nullable
-   private final gc e;
-   protected final Optional<tl> b;
-
-   public ut(String $$0, Optional<tl> $$1) {
-      this.d = $$0;
-      this.b = $$1;
-      this.e = a($$0);
-   }
+   private final gc f;
+   private final String g;
 
    @Nullable
    private static gc a(String $$0) {
-      gc $$1 = null;
-
       try {
-         gd $$2 = new gd(new StringReader($$0));
-         $$1 = $$2.t();
-      } catch (CommandSyntaxException var3) {
-         c.warn("Invalid selector component: {}: {}", $$0, var3.getMessage());
+         return new gd(new StringReader($$0)).t();
+      } catch (CommandSyntaxException var2) {
+         return null;
       }
-
-      return $$1;
    }
 
-   public String a() {
-      return this.d;
+   public ut(String $$0, String $$1) {
+      this.e = $$0;
+      this.f = a($$0);
+      this.g = $$1;
    }
 
-   @Nullable
-   public gc b() {
+   @Override
+   public tm.a<?> a() {
+      return c;
+   }
+
+   public String b() {
       return this.e;
    }
 
-   public Optional<tl> c() {
-      return this.b;
+   @Nullable
+   public gc c() {
+      return this.f;
    }
 
-   @Override
-   public ty a(@Nullable dt $$0, @Nullable biq $$1, int $$2) throws CommandSyntaxException {
-      if ($$0 != null && this.e != null) {
-         Optional<? extends tl> $$3 = tn.a($$0, this.b, $$1, $$2);
-         return tn.a(this.e.b($$0), $$3, biq::N_);
-      } else {
-         return tl.h();
+   public String d() {
+      return this.g;
+   }
+
+   private String a(dt $$0) throws CommandSyntaxException {
+      if (this.f != null) {
+         List<? extends biw> $$1 = this.f.b($$0);
+         if (!$$1.isEmpty()) {
+            if ($$1.size() != 1) {
+               throw ee.a.create();
+            }
+
+            return $$1.get(0).cx();
+         }
       }
+
+      return this.e;
+   }
+
+   private String a(String $$0, dt $$1) {
+      MinecraftServer $$2 = $$1.l();
+      if ($$2 != null) {
+         eig $$3 = $$2.aF();
+         eid $$4 = $$3.b(this.g);
+         if ($$4 != null && $$3.b($$0, $$4)) {
+            eif $$5 = $$3.c($$0, $$4);
+            return Integer.toString($$5.b());
+         }
+      }
+
+      return "";
    }
 
    @Override
-   public <T> Optional<T> a(tp.b<T> $$0, uh $$1) {
-      return $$0.accept($$1, this.d);
-   }
-
-   @Override
-   public <T> Optional<T> a(tp.a<T> $$0) {
-      return $$0.accept(this.d);
+   public tz a(@Nullable dt $$0, @Nullable biw $$1, int $$2) throws CommandSyntaxException {
+      if ($$0 == null) {
+         return tl.i();
+      } else {
+         String $$3 = this.a($$0);
+         String $$4 = $$1 != null && $$3.equals("*") ? $$1.cx() : $$3;
+         return tl.b(this.a($$4, $$0));
+      }
    }
 
    @Override
@@ -70,7 +97,7 @@ public class ut implements tm {
       if (this == $$0) {
          return true;
       } else {
-         if ($$0 instanceof ut $$1 && this.d.equals($$1.d) && this.b.equals($$1.b)) {
+         if ($$0 instanceof ut $$1 && this.e.equals($$1.e) && this.g.equals($$1.g)) {
             return true;
          }
 
@@ -80,12 +107,12 @@ public class ut implements tm {
 
    @Override
    public int hashCode() {
-      int $$0 = this.d.hashCode();
-      return 31 * $$0 + this.b.hashCode();
+      int $$0 = this.e.hashCode();
+      return 31 * $$0 + this.g.hashCode();
    }
 
    @Override
    public String toString() {
-      return "pattern{" + this.d + "}";
+      return "score{name='" + this.e + "', objective='" + this.g + "'}";
    }
 }

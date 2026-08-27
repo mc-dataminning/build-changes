@@ -1,36 +1,42 @@
-import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.Set;
 
-public class btp extends btf {
-   private static final ImmutableMap<biu<?>, Float> a = ImmutableMap.builder()
-      .put(biu.y, 8.0F)
-      .put(biu.G, 12.0F)
-      .put(biu.Z, 8.0F)
-      .put(biu.aa, 12.0F)
-      .put(biu.ay, 15.0F)
-      .put(biu.aD, 12.0F)
-      .put(biu.be, 8.0F)
-      .put(biu.bg, 10.0F)
-      .put(biu.bo, 10.0F)
-      .put(biu.bp, 8.0F)
-      .put(biu.br, 8.0F)
-      .build();
+public class btp extends btr<cbn> {
+   private static final int a = 40;
+
+   public btp() {
+      super(40);
+   }
+
+   protected void a(akt $$0, cbn $$1) {
+      aey<cqb> $$2 = $$0.ac();
+      gw $$3 = $$1.dl();
+      List<hd> $$4 = Lists.newArrayList();
+      int $$5 = 4;
+
+      for (int $$6 = -4; $$6 <= 4; $$6++) {
+         for (int $$7 = -2; $$7 <= 2; $$7++) {
+            for (int $$8 = -4; $$8 <= 4; $$8++) {
+               gw $$9 = $$3.b($$6, $$7, $$8);
+               if ($$1.gp().b().e().contains($$0.a_($$9).b())) {
+                  $$4.add(hd.a($$2, $$9));
+               }
+            }
+         }
+      }
+
+      bkm<?> $$10 = $$1.dN();
+      if (!$$4.isEmpty()) {
+         $$10.a(bsn.f, $$4);
+      } else {
+         $$10.b(bsn.f);
+      }
+   }
 
    @Override
-   protected boolean a(bjg $$0, bjg $$1) {
-      return this.b($$1) && this.e($$0, $$1);
-   }
-
-   private boolean e(bjg $$0, bjg $$1) {
-      float $$2 = (Float)a.get($$1.ag());
-      return $$1.f((biq)$$0) <= (double)($$2 * $$2);
-   }
-
-   @Override
-   protected bsh<bjg> b() {
-      return bsh.A;
-   }
-
-   private boolean b(bjg $$0) {
-      return a.containsKey($$0.ag());
+   public Set<bsn<?>> a() {
+      return ImmutableSet.of(bsn.f);
    }
 }

@@ -1,10 +1,16 @@
-public class cvs extends cul {
-   protected cvs(dfi.d $$0) {
-      super($$0);
+import javax.annotation.Nullable;
+
+public interface cvs {
+   @Nullable
+   dcz a(gw var1, dfd var2);
+
+   @Nullable
+   default <T extends dcz> dda<T> a(cqb $$0, dfd $$1, ddb<T> $$2) {
+      return null;
    }
 
-   @Override
-   public bgy a(dfj $$0, cpv $$1, gw $$2, cbu $$3, bgx $$4, ehj $$5) {
-      return bgy.d;
+   @Nullable
+   default <T extends dcz> djp a(akt $$0, T $$1) {
+      return $$1 instanceof djp.b<?> $$2 ? $$2.d() : null;
    }
 }

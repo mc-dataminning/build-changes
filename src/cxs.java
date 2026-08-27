@@ -1,32 +1,41 @@
-public class cxs extends csv {
-   protected static final eig a = csv.a(0.0, 0.0, 0.0, 16.0, 14.0, 16.0);
+import com.mojang.serialization.MapCodec;
 
-   public cxs(dfi.d $$0) {
+public class cxs extends cww {
+   public static final MapCodec<cxs> a = b(cxs::new);
+   private static final tl b = tl.c("container.loom");
+
+   @Override
+   public MapCodec<cxs> a() {
+      return a;
+   }
+
+   protected cxs(dfc.d $$0) {
       super($$0);
    }
 
    @Override
-   public eig c(dfj $$0, cpb $$1, gw $$2, ehs $$3) {
-      return a;
+   public bhe a(dfd $$0, cqb $$1, gw $$2, cca $$3, bhd $$4, ehd $$5) {
+      if ($$1.B) {
+         return bhe.a;
+      } else {
+         $$3.a($$0.b($$1, $$2));
+         $$3.a(apq.ax);
+         return bhe.b;
+      }
    }
 
    @Override
-   public eig b_(dfj $$0, cpb $$1, gw $$2) {
-      return eid.b();
+   public bhh b(dfd $$0, cqb $$1, gw $$2) {
+      return new bhm(($$2x, $$3, $$4) -> new cfu($$2x, $$3, cfc.a($$1, $$2)), b);
    }
 
    @Override
-   public eig b(dfj $$0, cpb $$1, gw $$2, ehs $$3) {
-      return eid.b();
+   public dfd a(clt $$0) {
+      return this.o().a(aE, $$0.g().g());
    }
 
    @Override
-   public boolean a(dfj $$0, cpb $$1, gw $$2, ebc $$3) {
-      return false;
-   }
-
-   @Override
-   public float b(dfj $$0, cpb $$1, gw $$2) {
-      return 0.2F;
+   protected void a(dfe.a<ctc, dfd> $$0) {
+      $$0.a(aE);
    }
 }

@@ -1,118 +1,42 @@
-public class fms extends fmu {
-   fms(fix $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      float $$7 = this.r.i() * 0.1F + 0.2F;
-      this.v = $$7;
-      this.w = $$7;
-      this.x = $$7;
-      this.b(0.02F, 0.02F);
-      this.D = this.D * (this.r.i() * 0.6F + 0.5F);
-      this.j *= 0.02F;
-      this.k *= 0.02F;
-      this.l *= 0.02F;
-      this.t = (int)(20.0 / (Math.random() * 0.8 + 0.2));
+public class fms extends flo {
+   private final biw a;
+   private int b;
+   private final int D;
+   private final it E;
+
+   public fms(fis $$0, biw $$1, it $$2) {
+      this($$0, $$1, $$2, 3);
    }
 
-   @Override
-   public fly b() {
-      return fly.b;
+   public fms(fis $$0, biw $$1, it $$2, int $$3) {
+      this($$0, $$1, $$2, $$3, $$1.do());
    }
 
-   @Override
-   public void a(double $$0, double $$1, double $$2) {
-      this.a(this.n().d($$0, $$1, $$2));
-      this.l();
+   private fms(fis $$0, biw $$1, it $$2, int $$3, ehh $$4) {
+      super($$0, $$1.dq(), $$1.e(0.5), $$1.dw(), $$4.c, $$4.d, $$4.e);
+      this.a = $$1;
+      this.D = $$3;
+      this.E = $$2;
+      this.a();
    }
 
    @Override
    public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.t-- <= 0) {
+      for (int $$0 = 0; $$0 < 16; $$0++) {
+         double $$1 = (double)(this.r.i() * 2.0F - 1.0F);
+         double $$2 = (double)(this.r.i() * 2.0F - 1.0F);
+         double $$3 = (double)(this.r.i() * 2.0F - 1.0F);
+         if (!($$1 * $$1 + $$2 * $$2 + $$3 * $$3 > 1.0)) {
+            double $$4 = this.a.c($$1 / 4.0);
+            double $$5 = this.a.e(0.5 + $$2 / 4.0);
+            double $$6 = this.a.f($$3 / 4.0);
+            this.c.a(this.E, false, $$4, $$5, $$6, $$1, $$2 + 0.2, $$3);
+         }
+      }
+
+      this.b++;
+      if (this.b >= this.D) {
          this.k();
-      } else {
-         this.a(this.j, this.k, this.l);
-         this.j *= 0.99;
-         this.k *= 0.99;
-         this.l *= 0.99;
-      }
-   }
-
-   public static class a implements flx<iy> {
-      private final fmp a;
-
-      public a(fmp $$0) {
-         this.a = $$0;
-      }
-
-      public flu a(iy $$0, fix $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fms $$8 = new fms($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         $$8.a(1.0F, 1.0F, 1.0F);
-         $$8.a(3 + $$1.D_().a(5));
-         return $$8;
-      }
-   }
-
-   public static class b implements flx<iy> {
-      private final fmp a;
-
-      public b(fmp $$0) {
-         this.a = $$0;
-      }
-
-      public flu a(iy $$0, fix $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fms $$8 = new fms($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(0.3F, 0.5F, 1.0F);
-         $$8.a(this.a);
-         $$8.e(1.0F - $$1.z.i() * 0.7F);
-         $$8.a($$8.j() / 2);
-         return $$8;
-      }
-   }
-
-   public static class c implements flx<iy> {
-      private final fmp a;
-
-      public c(fmp $$0) {
-         this.a = $$0;
-      }
-
-      public flu a(iy $$0, fix $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fms $$8 = new fms($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         $$8.a(1.0F, 1.0F, 1.0F);
-         return $$8;
-      }
-   }
-
-   public static class d implements flx<iy> {
-      private final fmp a;
-
-      public d(fmp $$0) {
-         this.a = $$0;
-      }
-
-      public flu a(iy $$0, fix $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fms $$8 = new fms($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         $$8.a(1.0F, 1.0F, 1.0F);
-         return $$8;
-      }
-   }
-
-   public static class e implements flx<iy> {
-      private final fmp a;
-
-      public e(fmp $$0) {
-         this.a = $$0;
-      }
-
-      public flu a(iy $$0, fix $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fms $$8 = new fms($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         return $$8;
       }
    }
 }

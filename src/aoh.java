@@ -1,29 +1,34 @@
 import com.google.gson.JsonObject;
-import com.mojang.authlib.GameProfile;
-import java.io.File;
-import java.util.Objects;
+import java.util.Date;
+import javax.annotation.Nullable;
 
-public class aoh extends aol<GameProfile, aoi> {
-   public aoh(File $$0) {
-      super($$0);
+public class aoh extends aoe<String> {
+   public aoh(String $$0) {
+      this($$0, null, null, null, null);
+   }
+
+   public aoh(String $$0, @Nullable Date $$1, @Nullable String $$2, @Nullable Date $$3, @Nullable String $$4) {
+      super($$0, $$1, $$2, $$3, $$4);
    }
 
    @Override
-   protected aok<GameProfile> a(JsonObject $$0) {
-      return new aoi($$0);
+   public tl e() {
+      return tl.b(String.valueOf(this.g()));
+   }
+
+   public aoh(JsonObject $$0) {
+      super(b($$0), $$0);
+   }
+
+   private static String b(JsonObject $$0) {
+      return $$0.has("ip") ? $$0.get("ip").getAsString() : null;
    }
 
    @Override
-   public String[] a() {
-      return this.d().stream().map(aok::g).filter(Objects::nonNull).map(GameProfile::getName).toArray(String[]::new);
-   }
-
-   public boolean a(GameProfile $$0) {
-      aoi $$1 = this.b($$0);
-      return $$1 != null ? $$1.b() : false;
-   }
-
-   protected String b(GameProfile $$0) {
-      return $$0.getId().toString();
+   protected void a(JsonObject $$0) {
+      if (this.g() != null) {
+         $$0.addProperty("ip", this.g());
+         super.a($$0);
+      }
    }
 }

@@ -1,89 +1,73 @@
 import com.mojang.serialization.Codec;
+import java.util.List;
 
-public class doi extends dnw<dqh> {
-   public doi(Codec<dqh> $$0) {
+public class doi extends dnq<dpz> {
+   public doi(Codec<dpz> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dny<dqh> $$0) {
-      gw $$1 = $$0.e();
-      asc $$2 = $$0.d();
-      cqp $$3 = $$0.b();
-
-      while ($$3.t($$1) && $$1.v() > $$3.H_() + 2) {
-         $$1 = $$1.d();
-      }
-
-      if (!$$3.a_($$1).a(csw.dP)) {
+   public boolean a(dns<dpz> $$0) {
+      cqv $$1 = $$0.b();
+      gw $$2 = $$0.e();
+      ash $$3 = $$0.d();
+      dpz $$4 = $$0.f();
+      if (!c($$1.a_($$2))) {
          return false;
       } else {
-         $$1 = $$1.b($$2.a(4));
-         int $$4 = $$2.a(4) + 7;
-         int $$5 = $$4 / 4 + $$2.a(2);
-         if ($$5 > 1 && $$2.a(60) == 0) {
-            $$1 = $$1.b(10 + $$2.a(30));
-         }
+         List<ha> $$5 = $$4.a($$3);
+         if (a($$1, $$2, $$1.a_($$2), $$4, $$3, $$5)) {
+            return true;
+         } else {
+            gw.a $$6 = $$2.j();
 
-         for (int $$6 = 0; $$6 < $$4; $$6++) {
-            float $$7 = (1.0F - (float)$$6 / (float)$$4) * (float)$$5;
-            int $$8 = arw.f($$7);
+            for (ha $$7 : $$5) {
+               $$6.g($$2);
+               List<ha> $$8 = $$4.a($$3, $$7.g());
 
-            for (int $$9 = -$$8; $$9 <= $$8; $$9++) {
-               float $$10 = (float)arw.a($$9) - 0.25F;
-
-               for (int $$11 = -$$8; $$11 <= $$8; $$11++) {
-                  float $$12 = (float)arw.a($$11) - 0.25F;
-                  if (($$9 == 0 && $$11 == 0 || !($$10 * $$10 + $$12 * $$12 > $$7 * $$7))
-                     && ($$9 != -$$8 && $$9 != $$8 && $$11 != -$$8 && $$11 != $$8 || !($$2.i() > 0.75F))) {
-                     dfj $$13 = $$3.a_($$1.b($$9, $$6, $$11));
-                     if ($$13.i() || b($$13) || $$13.a(csw.dP) || $$13.a(csw.dO)) {
-                        this.a($$3, $$1.b($$9, $$6, $$11), csw.iC.n());
-                     }
-
-                     if ($$6 != 0 && $$8 > 1) {
-                        $$13 = $$3.a_($$1.b($$9, -$$6, $$11));
-                        if ($$13.i() || b($$13) || $$13.a(csw.dP) || $$13.a(csw.dO)) {
-                           this.a($$3, $$1.b($$9, -$$6, $$11), csw.iC.n());
-                        }
-                     }
-                  }
-               }
-            }
-         }
-
-         int $$14 = $$5 - 1;
-         if ($$14 < 0) {
-            $$14 = 0;
-         } else if ($$14 > 1) {
-            $$14 = 1;
-         }
-
-         for (int $$15 = -$$14; $$15 <= $$14; $$15++) {
-            for (int $$16 = -$$14; $$16 <= $$14; $$16++) {
-               gw $$17 = $$1.b($$15, -1, $$16);
-               int $$18 = 50;
-               if (Math.abs($$15) == 1 && Math.abs($$16) == 1) {
-                  $$18 = $$2.a(5);
-               }
-
-               while ($$17.v() > 50) {
-                  dfj $$19 = $$3.a_($$17);
-                  if (!$$19.i() && !b($$19) && !$$19.a(csw.dP) && !$$19.a(csw.dO) && !$$19.a(csw.iC)) {
+               for (int $$9 = 0; $$9 < $$4.c; $$9++) {
+                  $$6.a($$2, $$7);
+                  dfd $$10 = $$1.a_($$6);
+                  if (!c($$10) && !$$10.a($$4.b)) {
                      break;
                   }
 
-                  this.a($$3, $$17, csw.iC.n());
-                  $$17 = $$17.d();
-                  if (--$$18 <= 0) {
-                     $$17 = $$17.c($$2.a(5) + 1);
-                     $$18 = $$2.a(5);
+                  if (a($$1, $$6, $$10, $$4, $$3, $$8)) {
+                     return true;
                   }
                }
             }
-         }
 
-         return true;
+            return false;
+         }
       }
+   }
+
+   public static boolean a(cqv $$0, gw $$1, dfd $$2, dpz $$3, ash $$4, List<ha> $$5) {
+      gw.a $$6 = $$1.j();
+
+      for (ha $$7 : $$5) {
+         dfd $$8 = $$0.a_($$6.a($$1, $$7));
+         if ($$8.a($$3.h)) {
+            dfd $$9 = $$3.b.c($$2, $$0, $$1, $$7);
+            if ($$9 == null) {
+               return false;
+            }
+
+            $$0.a($$1, $$9, 3);
+            $$0.x($$1).e($$1);
+            if ($$4.i() < $$3.g) {
+               $$3.b.c().a($$9, $$0, $$1, $$7, $$4, true);
+            }
+
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   private static boolean c(dfd $$0) {
+      return $$0.i() || $$0.a(cte.G);
    }
 }

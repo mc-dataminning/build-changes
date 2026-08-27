@@ -1,79 +1,20 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Optional;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+public class bks {
+   public static final bkn a = a("generic.armor", new bku("attribute.name.generic.armor", 0.0, 0.0, 30.0).a(true));
+   public static final bkn b = a("generic.armor_toughness", new bku("attribute.name.generic.armor_toughness", 0.0, 0.0, 20.0).a(true));
+   public static final bkn c = a("generic.attack_damage", new bku("attribute.name.generic.attack_damage", 2.0, 0.0, 2048.0));
+   public static final bkn d = a("generic.attack_knockback", new bku("attribute.name.generic.attack_knockback", 0.0, 0.0, 5.0));
+   public static final bkn e = a("generic.attack_speed", new bku("attribute.name.generic.attack_speed", 4.0, 0.0, 1024.0).a(true));
+   public static final bkn f = a("generic.flying_speed", new bku("attribute.name.generic.flying_speed", 0.4F, 0.0, 1024.0).a(true));
+   public static final bkn g = a("generic.follow_range", new bku("attribute.name.generic.follow_range", 32.0, 0.0, 2048.0));
+   public static final bkn h = a("horse.jump_strength", new bku("attribute.name.horse.jump_strength", 0.7, 0.0, 2.0).a(true));
+   public static final bkn i = a("generic.knockback_resistance", new bku("attribute.name.generic.knockback_resistance", 0.0, 0.0, 1.0));
+   public static final bkn j = a("generic.luck", new bku("attribute.name.generic.luck", 0.0, -1024.0, 1024.0).a(true));
+   public static final bkn k = a("generic.max_absorption", new bku("attribute.name.generic.max_absorption", 0.0, 0.0, 2048.0)).a(true);
+   public static final bkn l = a("generic.max_health", new bku("attribute.name.generic.max_health", 20.0, 1.0, 1024.0).a(true));
+   public static final bkn m = a("generic.movement_speed", new bku("attribute.name.generic.movement_speed", 0.7F, 0.0, 1024.0).a(true));
+   public static final bkn n = a("zombie.spawn_reinforcements", new bku("attribute.name.zombie.spawn_reinforcements", 0.0, 0.0, 1.0));
 
-public class bks extends bkx<bjp> {
-   private static final int c = 100;
-   private static final int d = 120;
-   private static final int e = 5;
-   private static final int f = 4;
-   private static final Predicate<bjp> g = $$0 -> $$0.eg() != null || $$0.dA() || $$0.bM();
-   private final float h;
-   private final Predicate<bjp> i;
-
-   public bks(float $$0) {
-      this($$0, g);
-   }
-
-   public bks(float $$0, Predicate<bjp> $$1) {
-      super(ImmutableMap.of(bsh.Y, bsi.c, bsh.x, bsi.a), 100, 120);
-      this.h = $$0;
-      this.i = $$1;
-   }
-
-   protected boolean a(akq $$0, bjp $$1) {
-      return this.i.test($$1);
-   }
-
-   protected boolean a(akq $$0, bjp $$1, long $$2) {
-      return true;
-   }
-
-   protected void b(akq $$0, bjp $$1, long $$2) {
-      $$1.dN().a(bsh.Y, true);
-      $$1.dN().b(bsh.m);
-   }
-
-   protected void c(akq $$0, bjp $$1, long $$2) {
-      bkg<?> $$3 = $$1.dN();
-      $$3.b(bsh.Y);
-   }
-
-   protected void d(akq $$0, bjp $$1, long $$2) {
-      if ($$1.L().l()) {
-         ehn $$3 = this.a($$1, $$0);
-         if ($$3 != null) {
-            $$1.dN().a(bsh.m, new bsk($$3, this.h, 0));
-         }
-      }
-   }
-
-   @Nullable
-   private ehn a(bjp $$0, akq $$1) {
-      if ($$0.bM()) {
-         Optional<ehn> $$2 = this.a((cpb)$$1, (biq)$$0).map(ehn::c);
-         if ($$2.isPresent()) {
-            return $$2.get();
-         }
-      }
-
-      return btz.a($$0, 5, 4);
-   }
-
-   private Optional<gw> a(cpb $$0, biq $$1) {
-      gw $$2 = $$1.dl();
-      if (!$$0.a_($$2).k($$0, $$2).c()) {
-         return Optional.empty();
-      } else {
-         Predicate<gw> $$3;
-         if (arw.f($$1.df()) == 2) {
-            $$3 = $$1x -> gw.a($$1x).allMatch($$1xx -> $$0.b_($$1xx).a(apx.a));
-         } else {
-            $$3 = $$1x -> $$0.b_($$1x).a(apx.a);
-         }
-
-         return gw.a($$2, 5, 1, $$3);
-      }
+   private static bkn a(String $$0, bkn $$1) {
+      return hq.a(jb.v, $$0, $$1);
    }
 }

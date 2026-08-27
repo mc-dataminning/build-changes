@@ -13,14 +13,14 @@ public interface hr extends hg.b {
    Logger a = LogUtils.getLogger();
    hr.b b = new hr.c(Map.of()).c();
 
-   <E> Optional<hq<E>> c(aev<? extends hq<? extends E>> var1);
+   <E> Optional<hq<E>> c(aey<? extends hq<? extends E>> var1);
 
    @Override
-   default <T> Optional<hg.c<T>> a(aev<? extends hq<? extends T>> $$0) {
+   default <T> Optional<hg.c<T>> a(aey<? extends hq<? extends T>> $$0) {
       return this.c($$0).map(hq::p);
    }
 
-   default <E> hq<E> d(aev<? extends hq<? extends E>> $$0) {
+   default <E> hq<E> d(aey<? extends hq<? extends E>> $$0) {
       return this.c($$0).orElseThrow(() -> new IllegalStateException("Missing registry: " + $$0));
    }
 
@@ -29,9 +29,9 @@ public interface hr extends hg.b {
    static hr.b a(final hq<? extends hq<?>> $$0) {
       return new hr.b() {
          @Override
-         public <T> Optional<hq<T>> c(aev<? extends hq<? extends T>> $$0x) {
+         public <T> Optional<hq<T>> c(aey<? extends hq<? extends T>> $$0x) {
             hq<hq<T>> $$1 = (hq<hq<T>>)$$0;
-            return $$1.d((aev<hq<T>>)$$0);
+            return $$1.d((aey<hq<T>>)$$0);
          }
 
          @Override
@@ -64,13 +64,13 @@ public interface hr extends hg.b {
    }
 
    public static class c implements hr {
-      private final Map<? extends aev<? extends hq<?>>, ? extends hq<?>> c;
+      private final Map<? extends aey<? extends hq<?>>, ? extends hq<?>> c;
 
       public c(List<? extends hq<?>> $$0) {
          this.c = $$0.stream().collect(Collectors.toUnmodifiableMap(hq::c, $$0x -> $$0x));
       }
 
-      public c(Map<? extends aev<? extends hq<?>>, ? extends hq<?>> $$0) {
+      public c(Map<? extends aey<? extends hq<?>>, ? extends hq<?>> $$0) {
          this.c = Map.copyOf($$0);
       }
 
@@ -79,7 +79,7 @@ public interface hr extends hg.b {
       }
 
       @Override
-      public <E> Optional<hq<E>> c(aev<? extends hq<? extends E>> $$0) {
+      public <E> Optional<hq<E>> c(aey<? extends hq<? extends E>> $$0) {
          return Optional.ofNullable(this.c.get($$0)).map($$0x -> $$0x);
       }
 
@@ -89,14 +89,14 @@ public interface hr extends hg.b {
       }
    }
 
-   public static record d<T>(aev<? extends hq<T>> a, hq<T> b) {
+   public static record d<T>(aey<? extends hq<T>> a, hq<T> b) {
 
-      private static <T, R extends hq<? extends T>> hr.d<T> a(Entry<? extends aev<? extends hq<?>>, R> $$0) {
-         return a((aev<? extends hq<?>>)$$0.getKey(), $$0.getValue());
+      private static <T, R extends hq<? extends T>> hr.d<T> a(Entry<? extends aey<? extends hq<?>>, R> $$0) {
+         return a((aey<? extends hq<?>>)$$0.getKey(), $$0.getValue());
       }
 
-      private static <T> hr.d<T> a(aev<? extends hq<?>> $$0, hq<?> $$1) {
-         return new hr.d<>((aev<? extends hq<T>>)$$0, (hq<T>)$$1);
+      private static <T> hr.d<T> a(aey<? extends hq<?>> $$0, hq<?> $$1) {
+         return new hr.d<>((aey<? extends hq<T>>)$$0, (hq<T>)$$1);
       }
 
       private hr.d<T> c() {

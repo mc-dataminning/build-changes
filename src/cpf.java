@@ -1,123 +1,80 @@
-import com.google.common.collect.Iterables;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.StreamSupport;
+import com.google.common.collect.AbstractIterator;
+import java.util.function.BiFunction;
 import javax.annotation.Nullable;
 
-public interface cpf extends cpb {
-   dha B_();
-
+public class cpf<T> extends AbstractIterator<T> {
+   private final ehc a;
+   private final ehm b;
+   private final gx c;
+   private final gw.a d;
+   private final eia e;
+   private final cpl f;
+   private final boolean g;
    @Nullable
-   cpb c(int var1, int var2);
+   private cph h;
+   private long i;
+   private final BiFunction<gw.a, eia, T> j;
 
-   default boolean a(@Nullable biq $$0, eig $$1) {
-      return true;
-   }
-
-   default boolean a(dfj $$0, gw $$1, ehs $$2) {
-      eig $$3 = $$0.b(this, $$1, $$2);
-      return $$3.c() || this.a(null, $$3.a((double)$$1.u(), (double)$$1.v(), (double)$$1.w()));
-   }
-
-   default boolean f(biq $$0) {
-      return this.a($$0, eid.a($$0.cG()));
-   }
-
-   default boolean b(ehi $$0) {
-      return this.a(null, $$0);
-   }
-
-   default boolean g(biq $$0) {
-      return this.a($$0, $$0.cG());
-   }
-
-   default boolean a(@Nullable biq $$0, ehi $$1) {
-      for (eig $$2 : this.e($$0, $$1)) {
-         if (!$$2.c()) {
-            return false;
-         }
-      }
-
-      if (!this.c($$0, $$1).isEmpty()) {
-         return false;
-      } else if ($$0 == null) {
-         return true;
-      } else {
-         eig $$3 = this.h($$0, $$1);
-         return $$3 == null || !eid.c($$3, eid.a($$1), ehr.i);
-      }
-   }
-
-   default boolean b(@Nullable biq $$0, ehi $$1) {
-      for (eig $$2 : this.e($$0, $$1)) {
-         if (!$$2.c()) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   List<eig> c(@Nullable biq var1, ehi var2);
-
-   default Iterable<eig> d(@Nullable biq $$0, ehi $$1) {
-      List<eig> $$2 = this.c($$0, $$1);
-      Iterable<eig> $$3 = this.e($$0, $$1);
-      return $$2.isEmpty() ? $$3 : Iterables.concat($$2, $$3);
-   }
-
-   default Iterable<eig> e(@Nullable biq $$0, ehi $$1) {
-      return () -> new coz<eig>(this, $$0, $$1, false, ($$0xx, $$1xx) -> $$1xx);
+   public cpf(cpl $$0, @Nullable biw $$1, ehc $$2, boolean $$3, BiFunction<gw.a, eia, T> $$4) {
+      this.b = $$1 == null ? ehm.a() : ehm.a($$1);
+      this.d = new gw.a();
+      this.e = ehx.a($$2);
+      this.f = $$0;
+      this.a = $$2;
+      this.g = $$3;
+      this.j = $$4;
+      int $$5 = asb.a($$2.a - 1.0E-7) - 1;
+      int $$6 = asb.a($$2.d + 1.0E-7) + 1;
+      int $$7 = asb.a($$2.b - 1.0E-7) - 1;
+      int $$8 = asb.a($$2.e + 1.0E-7) + 1;
+      int $$9 = asb.a($$2.c - 1.0E-7) - 1;
+      int $$10 = asb.a($$2.f + 1.0E-7) + 1;
+      this.c = new gx($$5, $$7, $$9, $$6, $$8, $$10);
    }
 
    @Nullable
-   private eig h(biq $$0, ehi $$1) {
-      dha $$2 = this.B_();
-      return $$2.a($$0, $$1) ? $$2.c() : null;
-   }
-
-   default boolean f(@Nullable biq $$0, ehi $$1) {
-      coz<eig> $$2 = new coz<>(this, $$0, $$1, true, ($$0x, $$1x) -> $$1x);
-
-      while ($$2.hasNext()) {
-         if (!((eig)$$2.next()).c()) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   default Optional<gw> g(biq $$0, ehi $$1) {
-      gw $$2 = null;
-      double $$3 = Double.MAX_VALUE;
-      coz<gw> $$4 = new coz<>(this, $$0, $$1, false, ($$0x, $$1x) -> $$0x);
-
-      while ($$4.hasNext()) {
-         gw $$5 = (gw)$$4.next();
-         double $$6 = $$5.b($$0.dj());
-         if ($$6 < $$3 || $$6 == $$3 && ($$2 == null || $$2.i($$5) < 0)) {
-            $$2 = $$5.i();
-            $$3 = $$6;
-         }
-      }
-
-      return Optional.ofNullable($$2);
-   }
-
-   default Optional<ehn> a(@Nullable biq $$0, eig $$1, ehn $$2, double $$3, double $$4, double $$5) {
-      if ($$1.c()) {
-         return Optional.empty();
+   private cph a(int $$0, int $$1) {
+      int $$2 = hw.a($$0);
+      int $$3 = hw.a($$1);
+      long $$4 = cpi.c($$2, $$3);
+      if (this.h != null && this.i == $$4) {
+         return this.h;
       } else {
-         ehi $$6 = $$1.a().c($$3, $$4, $$5);
-         eig $$7 = StreamSupport.stream(this.e($$0, $$6).spliterator(), false)
-            .filter($$0x -> this.B_() == null || this.B_().a($$0x.a()))
-            .flatMap($$0x -> $$0x.e().stream())
-            .map($$3x -> $$3x.c($$3 / 2.0, $$4 / 2.0, $$5 / 2.0))
-            .map(eid::a)
-            .reduce(eid.a(), eid::a);
-         eig $$8 = eid.a($$1, $$7, ehr.e);
-         return $$8.a($$2);
+         cph $$5 = this.f.c($$2, $$3);
+         this.h = $$5;
+         this.i = $$4;
+         return $$5;
       }
+   }
+
+   protected T computeNext() {
+      while (this.c.a()) {
+         int $$0 = this.c.b();
+         int $$1 = this.c.c();
+         int $$2 = this.c.d();
+         int $$3 = this.c.e();
+         if ($$3 != 3) {
+            cph $$4 = this.a($$0, $$2);
+            if ($$4 != null) {
+               this.d.d($$0, $$1, $$2);
+               dfd $$5 = $$4.a_(this.d);
+               if ((!this.g || $$5.o($$4, this.d)) && ($$3 != 1 || $$5.f()) && ($$3 != 2 || $$5.a(cte.bQ))) {
+                  eia $$6 = $$5.b(this.f, this.d, this.b);
+                  if ($$6 == ehx.b()) {
+                     if (this.a.a((double)$$0, (double)$$1, (double)$$2, (double)$$0 + 1.0, (double)$$1 + 1.0, (double)$$2 + 1.0)) {
+                        return this.j.apply(this.d, $$6.a((double)$$0, (double)$$1, (double)$$2));
+                     }
+                  } else {
+                     eia $$7 = $$6.a((double)$$0, (double)$$1, (double)$$2);
+                     if (!$$7.c() && ehx.c($$7, this.e, ehl.i)) {
+                        return this.j.apply(this.d, $$7);
+                     }
+                  }
+               }
+            }
+         }
+      }
+
+      return (T)this.endOfData();
    }
 }

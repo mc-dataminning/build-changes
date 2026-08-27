@@ -1,83 +1,134 @@
-import com.google.common.collect.ImmutableMap;
+import java.util.Comparator;
+import java.util.Optional;
+import java.util.UUID;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public class blf<E extends bji & byv, T extends bjg> extends bkx<E> {
-   private static final int c = 1200;
-   private int d;
-   private blf.a e = blf.a.a;
-
-   public blf() {
-      super(ImmutableMap.of(bsh.n, bsi.c, bsh.o, bsi.a), 1200);
+public class blf {
+   private blf() {
    }
 
-   protected boolean a(akq $$0, E $$1) {
-      bjg $$2 = b($$1);
-      return $$1.b(cji.uZ) && bkz.b($$1, $$2) && bkz.a($$1, $$2, 0);
+   public static void a(bjm $$0, bjm $$1, float $$2) {
+      c($$0, $$1);
+      b($$0, $$1, $$2);
    }
 
-   protected boolean a(akq $$0, E $$1, long $$2) {
-      return $$1.dN().a(bsh.o) && this.a($$0, $$1);
+   public static boolean a(bkm<?> $$0, bjm $$1) {
+      Optional<bsp> $$2 = $$0.c(bsn.h);
+      return $$2.isPresent() && $$2.get().a($$1);
    }
 
-   protected void b(akq $$0, E $$1, long $$2) {
-      bjg $$3 = b($$1);
-      this.b($$1, $$3);
-      this.a($$1, $$3);
+   public static boolean a(bkm<?> $$0, bsn<? extends bjm> $$1, bja<?> $$2) {
+      return a($$0, $$1, $$1x -> $$1x.ag() == $$2);
    }
 
-   protected void c(akq $$0, E $$1, long $$2) {
-      if ($$1.fm()) {
-         $$1.fs();
+   private static boolean a(bkm<?> $$0, bsn<? extends bjm> $$1, Predicate<bjm> $$2) {
+      return $$0.c($$1).filter($$2).filter(bjm::bv).filter($$1x -> a($$0, $$1x)).isPresent();
+   }
+
+   private static void c(bjm $$0, bjm $$1) {
+      a($$0, $$1);
+      a($$1, $$0);
+   }
+
+   public static void a(bjm $$0, bjm $$1) {
+      $$0.dN().a(bsn.n, new blo($$1, true));
+   }
+
+   private static void b(bjm $$0, bjm $$1, float $$2) {
+      int $$3 = 2;
+      a($$0, $$1, $$2, 2);
+      a($$1, $$0, $$2, 2);
+   }
+
+   public static void a(bjm $$0, biw $$1, float $$2, int $$3) {
+      a($$0, new blo($$1, true), $$2, $$3);
+   }
+
+   public static void a(bjm $$0, gw $$1, float $$2, int $$3) {
+      a($$0, new blg($$1), $$2, $$3);
+   }
+
+   public static void a(bjm $$0, bmq $$1, float $$2, int $$3) {
+      bsq $$4 = new bsq($$1, $$2, $$3);
+      $$0.dN().a(bsn.n, $$1);
+      $$0.dN().a(bsn.m, $$4);
+   }
+
+   public static void a(bjm $$0, cjl $$1, ehh $$2) {
+      ehh $$3 = new ehh(0.3F, 0.3F, 0.3F);
+      a($$0, $$1, $$2, $$3, 0.3F);
+   }
+
+   public static void a(bjm $$0, cjl $$1, ehh $$2, ehh $$3, float $$4) {
+      double $$5 = $$0.du() - (double)$$4;
+      byt $$6 = new byt($$0.dL(), $$0.dq(), $$5, $$0.dw(), $$1);
+      $$6.c($$0.cv());
+      ehh $$7 = $$2.d($$0.dj());
+      $$7 = $$7.d().d($$3.c, $$3.d, $$3.e);
+      $$6.f($$7);
+      $$6.t();
+      $$0.dL().b($$6);
+   }
+
+   public static hw a(akt $$0, hw $$1, int $$2) {
+      int $$3 = $$0.b($$1);
+      return hw.a($$1, $$2).filter($$2x -> $$0.b($$2x) < $$3).min(Comparator.comparingInt($$0::b)).orElse($$1);
+   }
+
+   public static boolean a(bjo $$0, bjm $$1, int $$2) {
+      if ($$0.eS().d() instanceof ckb $$3 && $$0.a($$3)) {
+         int $$4 = $$3.d() - $$2;
+         return $$0.a($$1, (double)$$4);
       }
 
-      if ($$1.b(cji.uZ)) {
-         $$1.b(false);
-         chn.a($$1.fo(), false);
+      return $$0.i($$1);
+   }
+
+   public static boolean a(bjm $$0, bjm $$1, double $$2) {
+      Optional<bjm> $$3 = $$0.dN().c(bsn.o);
+      if ($$3.isEmpty()) {
+         return false;
+      } else {
+         double $$4 = $$0.e($$3.get().dj());
+         double $$5 = $$0.e($$1.dj());
+         return $$5 > $$4 + $$2 * $$2;
       }
    }
 
-   private void a(E $$0, bjg $$1) {
-      if (this.e == blf.a.a) {
-         $$0.c(ccn.a($$0, cji.uZ));
-         this.e = blf.a.b;
-         $$0.b(true);
-      } else if (this.e == blf.a.b) {
-         if (!$$0.fm()) {
-            this.e = blf.a.a;
-         }
+   public static boolean b(bjm $$0, bjm $$1) {
+      bkm<?> $$2 = $$0.dN();
+      return !$$2.a(bsn.h) ? false : $$2.c(bsn.h).get().a($$1);
+   }
 
-         int $$2 = $$0.fq();
-         cjf $$3 = $$0.fo();
-         if ($$2 >= chn.k($$3)) {
-            $$0.fr();
-            this.e = blf.a.c;
-            this.d = 20 + $$0.ef().a(20);
-            $$0.b(false);
-         }
-      } else if (this.e == blf.a.c) {
-         this.d--;
-         if (this.d == 0) {
-            this.e = blf.a.d;
-         }
-      } else if (this.e == blf.a.d) {
-         $$0.a($$1, 1.0F);
-         cjf $$4 = $$0.b(ccn.a($$0, cji.uZ));
-         chn.a($$4, false);
-         this.e = blf.a.a;
+   public static bjm a(bjm $$0, Optional<bjm> $$1, bjm $$2) {
+      return $$1.isEmpty() ? $$2 : a($$0, $$1.get(), $$2);
+   }
+
+   public static bjm a(bjm $$0, bjm $$1, bjm $$2) {
+      ehh $$3 = $$1.dj();
+      ehh $$4 = $$2.dj();
+      return $$0.e($$3) < $$0.e($$4) ? $$1 : $$2;
+   }
+
+   public static Optional<bjm> a(bjm $$0, bsn<UUID> $$1) {
+      Optional<UUID> $$2 = $$0.dN().c($$1);
+      return $$2.<biw>map($$1x -> ((akt)$$0.dL()).a($$1x)).map($$0x -> $$0x instanceof bjm $$1x ? $$1x : null);
+   }
+
+   @Nullable
+   public static ehh a(bjv $$0, int $$1, int $$2) {
+      ehh $$3 = buc.a($$0, $$1, $$2);
+      int $$4 = 0;
+
+      while ($$3 != null && !$$0.dL().a_(gw.a($$3)).a($$0.dL(), gw.a($$3), eaw.b) && $$4++ < 10) {
+         $$3 = buc.a($$0, $$1, $$2);
       }
+
+      return $$3;
    }
 
-   private void b(bji $$0, bjg $$1) {
-      $$0.dN().a(bsh.n, new bli($$1, true));
-   }
-
-   private static bjg b(bjg $$0) {
-      return $$0.dN().c(bsh.o).get();
-   }
-
-   static enum a {
-      a,
-      b,
-      c,
-      d;
+   public static boolean a(bjm $$0) {
+      return $$0.dN().a(bsn.r);
    }
 }

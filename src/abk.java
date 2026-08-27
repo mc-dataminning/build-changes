@@ -1,9 +1,8 @@
 import java.time.Instant;
-import javax.annotation.Nullable;
 
-public record abk(String a, Instant b, long c, @Nullable tw d, tr.b e) implements vd<abc> {
+public record abk(String a, Instant b, long c, dy d, ts.b e) implements ve<abd> {
    public abk(so $$0) {
-      this($$0.d(256), $$0.v(), $$0.readLong(), $$0.c(tw::a), new tr.b($$0));
+      this($$0.d(256), $$0.w(), $$0.readLong(), new dy($$0), new ts.b($$0));
    }
 
    @Override
@@ -11,11 +10,11 @@ public record abk(String a, Instant b, long c, @Nullable tw d, tr.b e) implement
       $$0.a(this.a, 256);
       $$0.a(this.b);
       $$0.b(this.c);
-      $$0.a(this.d, tw::a);
+      this.d.a($$0);
       this.e.a($$0);
    }
 
-   public void a(abc $$0) {
+   public void a(abd $$0) {
       $$0.a(this);
    }
 
@@ -27,12 +26,11 @@ public record abk(String a, Instant b, long c, @Nullable tw d, tr.b e) implement
       return this.c;
    }
 
-   @Nullable
-   public tw f() {
+   public dy f() {
       return this.d;
    }
 
-   public tr.b g() {
+   public ts.b g() {
       return this.e;
    }
 }

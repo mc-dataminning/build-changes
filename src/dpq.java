@@ -1,20 +1,41 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dpq {
+public class dpq implements dpu {
    public static final Codec<dpq> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(dum.b.fieldOf("feature").forGetter($$0x -> $$0x.b), Codec.floatRange(0.0F, 1.0F).fieldOf("chance").forGetter($$0x -> $$0x.c))
+      $$0 -> $$0.group(
+               dfd.b.fieldOf("contents").forGetter($$0x -> $$0x.b),
+               dfd.b.fieldOf("rim").forGetter($$0x -> $$0x.c),
+               bgj.b(0, 16).fieldOf("size").forGetter($$0x -> $$0x.d),
+               bgj.b(0, 16).fieldOf("rim_size").forGetter($$0x -> $$0x.e)
+            )
             .apply($$0, dpq::new)
    );
-   public final he<dum> b;
-   public final float c;
+   private final dfd b;
+   private final dfd c;
+   private final bgj d;
+   private final bgj e;
 
-   public dpq(he<dum> $$0, float $$1) {
+   public dpq(dfd $$0, dfd $$1, bgj $$2, bgj $$3) {
       this.b = $$0;
       this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
    }
 
-   public boolean a(cqp $$0, dhg $$1, asc $$2, gw $$3) {
-      return this.b.a().a($$0, $$1, $$2, $$3);
+   public dfd a() {
+      return this.b;
+   }
+
+   public dfd b() {
+      return this.c;
+   }
+
+   public bgj c() {
+      return this.d;
+   }
+
+   public bgj d() {
+      return this.e;
    }
 }

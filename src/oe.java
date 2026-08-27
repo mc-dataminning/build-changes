@@ -2,201 +2,201 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableList.Builder;
 
 public class oe {
-   private static final dlj.o a = a(csw.a);
-   private static final dlj.o b = a(csw.F);
-   private static final dlj.o c = a(csw.hj);
-   private static final dlj.o d = a(csw.hk);
-   private static final dlj.o e = a(csw.iA);
-   private static final dlj.o f = a(csw.K);
-   private static final dlj.o g = a(csw.jp);
-   private static final dlj.o h = a(csw.b);
-   private static final dlj.o i = a(csw.rI);
-   private static final dlj.o j = a(csw.j);
-   private static final dlj.o k = a(csw.l);
-   private static final dlj.o l = a(csw.k);
-   private static final dlj.o m = a(csw.fl);
-   private static final dlj.o n = a(csw.i);
-   private static final dlj.o o = a(csw.qA);
-   private static final dlj.o p = a(csw.L);
-   private static final dlj.o q = a(csw.I);
-   private static final dlj.o r = a(csw.aV);
-   private static final dlj.o s = a(csw.iC);
-   private static final dlj.o t = a(csw.dP);
-   private static final dlj.o u = a(csw.rH);
-   private static final dlj.o v = a(csw.qC);
-   private static final dlj.o w = a(csw.dO);
-   private static final dlj.o x = a(csw.G);
-   private static final dlj.o y = a(csw.H);
-   private static final dlj.o z = a(csw.dW);
-   private static final dlj.o A = a(csw.dX);
-   private static final dlj.o B = a(csw.dY);
-   private static final dlj.o C = a(csw.dZ);
-   private static final dlj.o D = a(csw.pr);
-   private static final dlj.o E = a(csw.op);
-   private static final dlj.o F = a(csw.on);
-   private static final dlj.o G = a(csw.kK);
-   private static final dlj.o H = a(csw.ow);
-   private static final dlj.o I = a(csw.fz);
+   private static final dld.o a = a(cte.a);
+   private static final dld.o b = a(cte.F);
+   private static final dld.o c = a(cte.hj);
+   private static final dld.o d = a(cte.hk);
+   private static final dld.o e = a(cte.iA);
+   private static final dld.o f = a(cte.K);
+   private static final dld.o g = a(cte.jp);
+   private static final dld.o h = a(cte.b);
+   private static final dld.o i = a(cte.rI);
+   private static final dld.o j = a(cte.j);
+   private static final dld.o k = a(cte.l);
+   private static final dld.o l = a(cte.k);
+   private static final dld.o m = a(cte.fl);
+   private static final dld.o n = a(cte.i);
+   private static final dld.o o = a(cte.qA);
+   private static final dld.o p = a(cte.L);
+   private static final dld.o q = a(cte.I);
+   private static final dld.o r = a(cte.aV);
+   private static final dld.o s = a(cte.iC);
+   private static final dld.o t = a(cte.dP);
+   private static final dld.o u = a(cte.rH);
+   private static final dld.o v = a(cte.qC);
+   private static final dld.o w = a(cte.dO);
+   private static final dld.o x = a(cte.G);
+   private static final dld.o y = a(cte.H);
+   private static final dld.o z = a(cte.dV);
+   private static final dld.o A = a(cte.dW);
+   private static final dld.o B = a(cte.dX);
+   private static final dld.o C = a(cte.dY);
+   private static final dld.o D = a(cte.pr);
+   private static final dld.o E = a(cte.op);
+   private static final dld.o F = a(cte.on);
+   private static final dld.o G = a(cte.kK);
+   private static final dld.o H = a(cte.ow);
+   private static final dld.o I = a(cte.fz);
 
-   private static dlj.o a(csv $$0) {
-      return dlj.a($$0.n());
+   private static dld.o a(ctc $$0) {
+      return dld.a($$0.o());
    }
 
-   public static dlj.o a() {
+   public static dld.o a() {
       return a(true, false, true);
    }
 
-   public static dlj.o a(boolean $$0, boolean $$1, boolean $$2) {
-      dlj.f $$3 = dlj.a(dlm.a(97), 2);
-      dlj.f $$4 = dlj.a(dlm.a(256), 0);
-      dlj.f $$5 = dlj.b(dlm.a(63), -1);
-      dlj.f $$6 = dlj.b(dlm.a(74), 1);
-      dlj.f $$7 = dlj.a(dlm.a(60), 0);
-      dlj.f $$8 = dlj.a(dlm.a(62), 0);
-      dlj.f $$9 = dlj.a(dlm.a(63), 0);
-      dlj.f $$10 = dlj.a(-1, 0);
-      dlj.f $$11 = dlj.a(0, 0);
-      dlj.f $$12 = dlj.b(-6, -1);
-      dlj.f $$13 = dlj.b();
-      dlj.f $$14 = dlj.a(cra.W, cra.X);
-      dlj.f $$15 = dlj.a();
-      dlj.o $$16 = dlj.a(dlj.a($$11, n), j);
-      dlj.o $$17 = dlj.a(dlj.a(dlj.e, r), q);
-      dlj.o $$18 = dlj.a(dlj.a(dlj.e, h), p);
-      dlj.f $$19 = dlj.a(cra.P, cra.M, cra.N);
-      dlj.f $$20 = dlj.a(cra.f);
-      dlj.o $$21 = dlj.a(
-         dlj.a(dlj.a(cra.J), dlj.a(dlj.a(dlj.a(dlb.X, -0.0125, 0.0125), o), h)),
-         dlj.a(dlj.a(cra.O), dlj.a(dlj.a(dlj.a(dlb.Y, -0.05, 0.05), $$18), h)),
-         dlj.a(dlj.a(cra.t), dlj.a(a(1.0), h)),
-         dlj.a($$19, $$17),
-         dlj.a($$20, $$17),
-         dlj.a(dlj.a(cra.Z), h)
+   public static dld.o a(boolean $$0, boolean $$1, boolean $$2) {
+      dld.f $$3 = dld.a(dlg.a(97), 2);
+      dld.f $$4 = dld.a(dlg.a(256), 0);
+      dld.f $$5 = dld.b(dlg.a(63), -1);
+      dld.f $$6 = dld.b(dlg.a(74), 1);
+      dld.f $$7 = dld.a(dlg.a(60), 0);
+      dld.f $$8 = dld.a(dlg.a(62), 0);
+      dld.f $$9 = dld.a(dlg.a(63), 0);
+      dld.f $$10 = dld.a(-1, 0);
+      dld.f $$11 = dld.a(0, 0);
+      dld.f $$12 = dld.b(-6, -1);
+      dld.f $$13 = dld.b();
+      dld.f $$14 = dld.a(crg.W, crg.X);
+      dld.f $$15 = dld.a();
+      dld.o $$16 = dld.a(dld.a($$11, n), j);
+      dld.o $$17 = dld.a(dld.a(dld.e, r), q);
+      dld.o $$18 = dld.a(dld.a(dld.e, h), p);
+      dld.f $$19 = dld.a(crg.P, crg.M, crg.N);
+      dld.f $$20 = dld.a(crg.f);
+      dld.o $$21 = dld.a(
+         dld.a(dld.a(crg.J), dld.a(dld.a(dld.a(dkv.X, -0.0125, 0.0125), o), h)),
+         dld.a(dld.a(crg.O), dld.a(dld.a(dld.a(dkv.Y, -0.05, 0.05), $$18), h)),
+         dld.a(dld.a(crg.t), dld.a(a(1.0), h)),
+         dld.a($$19, $$17),
+         dld.a($$20, $$17),
+         dld.a(dld.a(crg.Z), h)
       );
-      dlj.o $$22 = dlj.a(dlj.a(dlb.Z, 0.45, 0.58), dlj.a($$11, v));
-      dlj.o $$23 = dlj.a(dlj.a(dlb.Z, 0.35, 0.6), dlj.a($$11, v));
-      dlj.o $$24 = dlj.a(
-         dlj.a(dlj.a(cra.H), dlj.a(dlj.a($$15, s), dlj.a(dlj.a(dlb.aa, -0.5, 0.2), s), dlj.a(dlj.a(dlb.ab, -0.0625, 0.025), w), dlj.a($$11, t))),
-         dlj.a(dlj.a(cra.G), dlj.a(dlj.a($$15, h), $$22, dlj.a($$11, t))),
-         dlj.a(dlj.a(cra.I), h),
-         dlj.a(dlj.a(cra.F), dlj.a($$22, j)),
+      dld.o $$22 = dld.a(dld.a(dkv.Z, 0.45, 0.58), dld.a($$11, v));
+      dld.o $$23 = dld.a(dld.a(dkv.Z, 0.35, 0.6), dld.a($$11, v));
+      dld.o $$24 = dld.a(
+         dld.a(dld.a(crg.H), dld.a(dld.a($$15, s), dld.a(dld.a(dkv.aa, -0.5, 0.2), s), dld.a(dld.a(dkv.ab, -0.0625, 0.025), w), dld.a($$11, t))),
+         dld.a(dld.a(crg.G), dld.a(dld.a($$15, h), $$22, dld.a($$11, t))),
+         dld.a(dld.a(crg.I), h),
+         dld.a(dld.a(crg.F), dld.a($$22, j)),
          $$21,
-         dlj.a(dlj.a(cra.w), dlj.a(a(1.75), h)),
-         dlj.a(dlj.a(cra.u), dlj.a(dlj.a(a(2.0), $$18), dlj.a(a(1.0), h), dlj.a(a(-1.0), j), $$18)),
-         dlj.a(dlj.a(cra.h), u),
+         dld.a(dld.a(crg.w), dld.a(a(1.75), h)),
+         dld.a(dld.a(crg.u), dld.a(dld.a(a(2.0), $$18), dld.a(a(1.0), h), dld.a(a(-1.0), j), $$18)),
+         dld.a(dld.a(crg.h), u),
          j
       );
-      dlj.o $$25 = dlj.a(
-         dlj.a(dlj.a(cra.H), dlj.a(dlj.a($$15, s), dlj.a(dlj.a(dlb.aa, 0.0, 0.2), s), dlj.a(dlj.a(dlb.ab, 0.0, 0.025), w), dlj.a($$11, t))),
-         dlj.a(dlj.a(cra.G), dlj.a(dlj.a($$15, h), $$23, dlj.a($$11, t))),
-         dlj.a(dlj.a(cra.I), dlj.a(dlj.a($$15, h), dlj.a($$11, t))),
-         dlj.a(dlj.a(cra.F), dlj.a($$23, dlj.a($$11, t))),
+      dld.o $$25 = dld.a(
+         dld.a(dld.a(crg.H), dld.a(dld.a($$15, s), dld.a(dld.a(dkv.aa, 0.0, 0.2), s), dld.a(dld.a(dkv.ab, 0.0, 0.025), w), dld.a($$11, t))),
+         dld.a(dld.a(crg.G), dld.a(dld.a($$15, h), $$23, dld.a($$11, t))),
+         dld.a(dld.a(crg.I), dld.a(dld.a($$15, h), dld.a($$11, t))),
+         dld.a(dld.a(crg.F), dld.a($$23, dld.a($$11, t))),
          $$21,
-         dlj.a(dlj.a(cra.w), dlj.a(dlj.a(a(1.75), h), dlj.a(a(-0.5), l))),
-         dlj.a(dlj.a(cra.u), dlj.a(dlj.a(a(2.0), $$18), dlj.a(a(1.0), h), dlj.a(a(-1.0), $$16), $$18)),
-         dlj.a(dlj.a(cra.n, cra.o), dlj.a(dlj.a(a(1.75), l), dlj.a(a(-0.95), k))),
-         dlj.a(dlj.a(cra.e), dlj.a($$11, t)),
-         dlj.a(dlj.a(cra.h), u),
-         dlj.a(dlj.a(cra.Y), m),
+         dld.a(dld.a(crg.w), dld.a(dld.a(a(1.75), h), dld.a(a(-0.5), l))),
+         dld.a(dld.a(crg.u), dld.a(dld.a(a(2.0), $$18), dld.a(a(1.0), h), dld.a(a(-1.0), $$16), $$18)),
+         dld.a(dld.a(crg.n, crg.o), dld.a(dld.a(a(1.75), l), dld.a(a(-0.95), k))),
+         dld.a(dld.a(crg.e), dld.a($$11, t)),
+         dld.a(dld.a(crg.h), u),
+         dld.a(dld.a(crg.Y), m),
          $$16
       );
-      dlj.f $$26 = dlj.a(dlb.N, -0.909, -0.5454);
-      dlj.f $$27 = dlj.a(dlb.N, -0.1818, 0.1818);
-      dlj.f $$28 = dlj.a(dlb.N, 0.5454, 0.909);
-      dlj.o $$29 = dlj.a(
-         dlj.a(
-            dlj.a,
-            dlj.a(
-               dlj.a(dlj.a(cra.C), dlj.a($$3, dlj.a(dlj.a($$26, l), dlj.a($$27, l), dlj.a($$28, l), $$16))),
-               dlj.a(dlj.a(cra.g), dlj.a($$8, dlj.a(dlj.a($$9), dlj.a(dlj.a(dlb.W, 0.0), x)))),
-               dlj.a(dlj.a(cra.h), dlj.a($$7, dlj.a(dlj.a($$9), dlj.a(dlj.a(dlb.W, 0.0), x))))
+      dld.f $$26 = dld.a(dkv.N, -0.909, -0.5454);
+      dld.f $$27 = dld.a(dkv.N, -0.1818, 0.1818);
+      dld.f $$28 = dld.a(dkv.N, 0.5454, 0.909);
+      dld.o $$29 = dld.a(
+         dld.a(
+            dld.a,
+            dld.a(
+               dld.a(dld.a(crg.C), dld.a($$3, dld.a(dld.a($$26, l), dld.a($$27, l), dld.a($$28, l), $$16))),
+               dld.a(dld.a(crg.g), dld.a($$8, dld.a(dld.a($$9), dld.a(dld.a(dkv.W, 0.0), x)))),
+               dld.a(dld.a(crg.h), dld.a($$7, dld.a(dld.a($$9), dld.a(dld.a(dkv.W, 0.0), x))))
             )
          ),
-         dlj.a(
-            dlj.a(cra.A, cra.B, cra.C),
-            dlj.a(
-               dlj.a(
-                  dlj.a,
-                  dlj.a(
-                     dlj.a($$4, d),
-                     dlj.a($$6, dlj.a(dlj.a($$26, e), dlj.a($$27, e), dlj.a($$28, e), dlj.e())),
-                     dlj.a($$10, dlj.a(dlj.a(dlj.e, g), f)),
-                     dlj.a(dlj.a($$13), d),
-                     dlj.a($$12, c),
+         dld.a(
+            dld.a(crg.A, crg.B, crg.C),
+            dld.a(
+               dld.a(
+                  dld.a,
+                  dld.a(
+                     dld.a($$4, d),
+                     dld.a($$6, dld.a(dld.a($$26, e), dld.a($$27, e), dld.a($$28, e), dld.e())),
+                     dld.a($$10, dld.a(dld.a(dld.e, g), f)),
+                     dld.a(dld.a($$13), d),
+                     dld.a($$12, c),
                      $$18
                   )
                ),
-               dlj.a($$5, dlj.a(dlj.a($$9, dlj.a(dlj.a($$6), d)), dlj.e())),
-               dlj.a(dlj.b, dlj.a($$12, c))
+               dld.a($$5, dld.a(dld.a($$9, dld.a(dld.a($$6), d)), dld.e())),
+               dld.a(dld.b, dld.a($$12, c))
             )
          ),
-         dlj.a(dlj.a, dlj.a($$10, dlj.a(dlj.a($$14, dlj.a($$13, dlj.a(dlj.a($$11, a), dlj.a(dlj.d(), w), x))), $$25))),
-         dlj.a($$12, dlj.a(dlj.a(dlj.a, dlj.a($$14, dlj.a($$13, x))), dlj.a(dlj.b, $$24), dlj.a($$19, dlj.a(dlj.c, r)), dlj.a($$20, dlj.a(dlj.d, r)))),
-         dlj.a(dlj.a, dlj.a(dlj.a(dlj.a(cra.H, cra.I), h), dlj.a(dlj.a(cra.P, cra.Q, cra.R), $$17), $$18))
+         dld.a(dld.a, dld.a($$10, dld.a(dld.a($$14, dld.a($$13, dld.a(dld.a($$11, a), dld.a(dld.d(), w), x))), $$25))),
+         dld.a($$12, dld.a(dld.a(dld.a, dld.a($$14, dld.a($$13, x))), dld.a(dld.b, $$24), dld.a($$19, dld.a(dld.c, r)), dld.a($$20, dld.a(dld.d, r)))),
+         dld.a(dld.a, dld.a(dld.a(dld.a(crg.H, crg.I), h), dld.a(dld.a(crg.P, crg.Q, crg.R), $$17), $$18))
       );
-      Builder<dlj.o> $$30 = ImmutableList.builder();
+      Builder<dld.o> $$30 = ImmutableList.builder();
       if ($$1) {
-         $$30.add(dlj.a(dlj.a(dlj.a("bedrock_roof", dlm.c(5), dlm.b())), b));
+         $$30.add(dld.a(dld.a(dld.a("bedrock_roof", dlg.c(5), dlg.b())), b));
       }
 
       if ($$2) {
-         $$30.add(dlj.a(dlj.a("bedrock_floor", dlm.a(), dlm.b(5)), b));
+         $$30.add(dld.a(dld.a("bedrock_floor", dlg.a(), dlg.b(5)), b));
       }
 
-      dlj.o $$31 = dlj.a(dlj.c(), $$29);
+      dld.o $$31 = dld.a(dld.c(), $$29);
       $$30.add($$0 ? $$31 : $$29);
-      $$30.add(dlj.a(dlj.a("deepslate", dlm.a(0), dlm.a(8)), i));
-      return dlj.a((dlj.o[])$$30.build().toArray(dlj.o[]::new));
+      $$30.add(dld.a(dld.a("deepslate", dlg.a(0), dlg.a(8)), i));
+      return dld.a((dld.o[])$$30.build().toArray(dld.o[]::new));
    }
 
-   public static dlj.o b() {
-      dlj.f $$0 = dlj.a(dlm.a(31), 0);
-      dlj.f $$1 = dlj.a(dlm.a(32), 0);
-      dlj.f $$2 = dlj.b(dlm.a(30), 0);
-      dlj.f $$3 = dlj.a(dlj.b(dlm.a(35), 0));
-      dlj.f $$4 = dlj.a(dlm.c(5), 0);
-      dlj.f $$5 = dlj.b();
-      dlj.f $$6 = dlj.a(dlb.ac, -0.012);
-      dlj.f $$7 = dlj.a(dlb.ad, -0.012);
-      dlj.f $$8 = dlj.a(dlb.ae, -0.012);
-      dlj.f $$9 = dlj.a(dlb.af, 0.54);
-      dlj.f $$10 = dlj.a(dlb.ag, 1.17);
-      dlj.f $$11 = dlj.a(dlb.ah, 0.0);
-      dlj.o $$12 = dlj.a($$8, dlj.a($$2, dlj.a($$3, p)));
-      return dlj.a(
-         dlj.a(dlj.a("bedrock_floor", dlm.a(), dlm.b(5)), b),
-         dlj.a(dlj.a(dlj.a("bedrock_roof", dlm.c(5), dlm.b())), b),
-         dlj.a($$4, z),
-         dlj.a(dlj.a(cra.ag), dlj.a(dlj.a(dlj.f, C), dlj.a(dlj.b, dlj.a($$12, dlj.a($$11, C), D)))),
-         dlj.a(dlj.a(cra.af), dlj.a(dlj.a(dlj.f, dlj.a(dlj.a($$11, A), B)), dlj.a(dlj.b, dlj.a($$12, dlj.a($$11, A), B)))),
-         dlj.a(
-            dlj.a,
-            dlj.a(
-               dlj.a(dlj.a($$1), dlj.a($$5, y)),
-               dlj.a(dlj.a(cra.ad), dlj.a(dlj.a($$9), dlj.a($$0, dlj.a(dlj.a($$10, E), F)))),
-               dlj.a(dlj.a(cra.ae), dlj.a(dlj.a($$9), dlj.a($$0, dlj.a(dlj.a($$10, G), H))))
+   public static dld.o b() {
+      dld.f $$0 = dld.a(dlg.a(31), 0);
+      dld.f $$1 = dld.a(dlg.a(32), 0);
+      dld.f $$2 = dld.b(dlg.a(30), 0);
+      dld.f $$3 = dld.a(dld.b(dlg.a(35), 0));
+      dld.f $$4 = dld.a(dlg.c(5), 0);
+      dld.f $$5 = dld.b();
+      dld.f $$6 = dld.a(dkv.ac, -0.012);
+      dld.f $$7 = dld.a(dkv.ad, -0.012);
+      dld.f $$8 = dld.a(dkv.ae, -0.012);
+      dld.f $$9 = dld.a(dkv.af, 0.54);
+      dld.f $$10 = dld.a(dkv.ag, 1.17);
+      dld.f $$11 = dld.a(dkv.ah, 0.0);
+      dld.o $$12 = dld.a($$8, dld.a($$2, dld.a($$3, p)));
+      return dld.a(
+         dld.a(dld.a("bedrock_floor", dlg.a(), dlg.b(5)), b),
+         dld.a(dld.a(dld.a("bedrock_roof", dlg.c(5), dlg.b())), b),
+         dld.a($$4, z),
+         dld.a(dld.a(crg.ag), dld.a(dld.a(dld.f, C), dld.a(dld.b, dld.a($$12, dld.a($$11, C), D)))),
+         dld.a(dld.a(crg.af), dld.a(dld.a(dld.f, dld.a(dld.a($$11, A), B)), dld.a(dld.b, dld.a($$12, dld.a($$11, A), B)))),
+         dld.a(
+            dld.a,
+            dld.a(
+               dld.a(dld.a($$1), dld.a($$5, y)),
+               dld.a(dld.a(crg.ad), dld.a(dld.a($$9), dld.a($$0, dld.a(dld.a($$10, E), F)))),
+               dld.a(dld.a(crg.ae), dld.a(dld.a($$9), dld.a($$0, dld.a(dld.a($$10, G), H))))
             )
          ),
-         dlj.a(
-            dlj.a(cra.ac),
-            dlj.a(
-               dlj.a(dlj.b, dlj.a($$6, dlj.a(dlj.a(dlj.a($$5), dlj.a($$2, dlj.a($$3, A))), z))),
-               dlj.a(dlj.a, dlj.a($$0, dlj.a($$3, dlj.a($$7, dlj.a(dlj.a($$1, p), dlj.a(dlj.a($$5), p))))))
+         dld.a(
+            dld.a(crg.ac),
+            dld.a(
+               dld.a(dld.b, dld.a($$6, dld.a(dld.a(dld.a($$5), dld.a($$2, dld.a($$3, A))), z))),
+               dld.a(dld.a, dld.a($$0, dld.a($$3, dld.a($$7, dld.a(dld.a($$1, p), dld.a(dld.a($$5), p))))))
             )
          ),
          z
       );
    }
 
-   public static dlj.o c() {
+   public static dld.o c() {
       return I;
    }
 
-   public static dlj.o d() {
+   public static dld.o d() {
       return a;
    }
 
-   private static dlj.f a(double $$0) {
-      return dlj.a(dlb.N, $$0 / 8.25, Double.MAX_VALUE);
+   private static dld.f a(double $$0) {
+      return dld.a(dkv.N, $$0 / 8.25, Double.MAX_VALUE);
    }
 }

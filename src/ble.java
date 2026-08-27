@@ -1,34 +1,11 @@
-import com.google.common.collect.ImmutableMap;
+public interface ble<E extends bjm> {
+   bld.a a();
 
-public class ble extends bkx<bwg> {
-   private static final int c = 60;
-   private static final int d = 100;
-   private int e;
+   boolean e(akt var1, E var2, long var3);
 
-   public ble() {
-      super(ImmutableMap.of(bsh.m, bsi.b), 100);
-   }
+   void f(akt var1, E var2, long var3);
 
-   protected boolean a(akq $$0, bwg $$1) {
-      return $$1.an() == bjs.a;
-   }
+   void g(akt var1, E var2, long var3);
 
-   protected boolean a(akq $$0, bwg $$1, long $$2) {
-      return this.e < 60;
-   }
-
-   protected void b(akq $$0, bwg $$1, long $$2) {
-      if (!$$1.bb()) {
-         $$1.b(bjs.i);
-         this.e = 0;
-      }
-   }
-
-   protected void c(akq $$0, bwg $$1, long $$2) {
-      $$1.b(bjs.a);
-   }
-
-   protected void d(akq $$0, bwg $$1, long $$2) {
-      this.e++;
-   }
+   String b();
 }

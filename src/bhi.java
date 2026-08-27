@@ -1,3 +1,18 @@
+import javax.annotation.Nullable;
+
 public interface bhi {
-   bhh a(dfj var1, cpw var2, gw var3);
+   tl ab();
+
+   default boolean ac() {
+      return this.ad() != null;
+   }
+
+   default tl N_() {
+      return this.ab();
+   }
+
+   @Nullable
+   default tl ad() {
+      return null;
+   }
 }

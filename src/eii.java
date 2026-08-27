@@ -1,66 +1,83 @@
-import java.util.function.IntFunction;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Map;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 
-public enum eii implements asp {
-   a(0, "list"),
-   b(1, "sidebar"),
-   c(2, "below_name"),
-   d(3, "sidebar.team.black"),
-   e(4, "sidebar.team.dark_blue"),
-   f(5, "sidebar.team.dark_green"),
-   g(6, "sidebar.team.dark_aqua"),
-   h(7, "sidebar.team.dark_red"),
-   i(8, "sidebar.team.dark_purple"),
-   j(9, "sidebar.team.gold"),
-   k(10, "sidebar.team.gray"),
-   l(11, "sidebar.team.dark_gray"),
-   m(12, "sidebar.team.blue"),
-   n(13, "sidebar.team.green"),
-   o(14, "sidebar.team.aqua"),
-   p(15, "sidebar.team.red"),
-   q(16, "sidebar.team.light_purple"),
-   r(17, "sidebar.team.yellow"),
-   s(18, "sidebar.team.white");
-
-   public static final asp.a<eii> t = asp.a(eii::values);
-   public static final IntFunction<eii> u = aqr.a(eii::a, values(), aqr.a.a);
-   private final int v;
-   private final String w;
-
-   private eii(int $$0, String $$1) {
-      this.v = $$0;
-      this.w = $$1;
+public abstract class eii {
+   public boolean a(@Nullable eii $$0) {
+      return $$0 == null ? false : this == $$0;
    }
 
-   public int a() {
-      return this.v;
+   public abstract String b();
+
+   public abstract tz d(tl var1);
+
+   public abstract boolean i();
+
+   public abstract boolean h();
+
+   public abstract eii.b j();
+
+   public abstract n n();
+
+   public abstract Collection<String> g();
+
+   public abstract eii.b k();
+
+   public abstract eii.a l();
+
+   public static enum a {
+      a("always", 0),
+      b("never", 1),
+      c("pushOtherTeams", 2),
+      d("pushOwnTeam", 3);
+
+      private static final Map<String, eii.a> g = Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.e, $$0 -> (eii.a)$$0));
+      public final String e;
+      public final int f;
+
+      @Nullable
+      public static eii.a a(String $$0) {
+         return g.get($$0);
+      }
+
+      private a(String $$0, int $$1) {
+         this.e = $$0;
+         this.f = $$1;
+      }
+
+      public tl a() {
+         return tl.c("team.collision." + this.e);
+      }
    }
 
-   @Override
-   public String c() {
-      return this.w;
-   }
+   public static enum b {
+      a("always", 0),
+      b("never", 1),
+      c("hideForOtherTeams", 2),
+      d("hideForOwnTeam", 3);
 
-   @Nullable
-   public static eii a(n $$0) {
-      return switch ($$0) {
-         case a -> d;
-         case b -> e;
-         case c -> f;
-         case d -> g;
-         case e -> h;
-         case f -> i;
-         case g -> j;
-         case h -> k;
-         case i -> l;
-         case j -> m;
-         case k -> n;
-         case l -> o;
-         case m -> p;
-         case n -> q;
-         case o -> r;
-         case p -> s;
-         case r, u, t, v, q, s -> null;
-      };
+      private static final Map<String, eii.b> g = Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.e, $$0 -> (eii.b)$$0));
+      public final String e;
+      public final int f;
+
+      public static String[] a() {
+         return g.keySet().toArray(new String[0]);
+      }
+
+      @Nullable
+      public static eii.b a(String $$0) {
+         return g.get($$0);
+      }
+
+      private b(String $$0, int $$1) {
+         this.e = $$0;
+         this.f = $$1;
+      }
+
+      public tl b() {
+         return tl.c("team.visibility." + this.e);
+      }
    }
 }

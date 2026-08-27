@@ -1,68 +1,108 @@
-import java.util.EnumSet;
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public class bpj extends bqb {
-   private final bvu a;
-   @Nullable
-   private cbu b;
-   private final cpv c;
-   private final float d;
-   private int e;
-   private final bts f;
+public class bpj implements bpg {
+   protected final bjo a;
+   protected float b;
+   protected float c;
+   protected int d;
+   protected double e;
+   protected double f;
+   protected double g;
 
-   public bpj(bvu $$0, float $$1) {
+   public bpj(bjo $$0) {
       this.a = $$0;
-      this.c = $$0.dL();
-      this.d = $$1;
-      this.f = bts.b().a((double)$$1);
-      this.a(EnumSet.of(bqb.a.b));
    }
 
-   @Override
-   public boolean a() {
-      this.b = this.c.a(this.f, this.a);
-      return this.b == null ? false : this.a(this.b);
+   public void a(ehh $$0) {
+      this.a($$0.c, $$0.d, $$0.e);
    }
 
-   @Override
-   public boolean b() {
-      if (!this.b.bv()) {
-         return false;
+   public void a(biw $$0) {
+      this.a($$0.dq(), b($$0), $$0.dw());
+   }
+
+   public void a(biw $$0, float $$1, float $$2) {
+      this.a($$0.dq(), b($$0), $$0.dw(), $$1, $$2);
+   }
+
+   public void a(double $$0, double $$1, double $$2) {
+      this.a($$0, $$1, $$2, (float)this.a.fH(), (float)this.a.Y());
+   }
+
+   public void a(double $$0, double $$1, double $$2, float $$3, float $$4) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
+      this.b = $$3;
+      this.c = $$4;
+      this.d = 2;
+   }
+
+   public void a() {
+      if (this.c()) {
+         this.a.s(0.0F);
+      }
+
+      if (this.d > 0) {
+         this.d--;
+         this.i().ifPresent($$0 -> this.a.aW = this.a(this.a.aW, $$0, this.b));
+         this.h().ifPresent($$0 -> this.a.s(this.a(this.a.dD(), $$0, this.c)));
       } else {
-         return this.a.f((biq)this.b) > (double)(this.d * this.d) ? false : this.e > 0 && this.a(this.b);
+         this.a.aW = this.a(this.a.aW, this.a.aU, 10.0F);
+      }
+
+      this.b();
+   }
+
+   protected void b() {
+      if (!this.a.L().l()) {
+         this.a.aW = asb.c(this.a.aW, this.a.aU, (float)this.a.Z());
       }
    }
 
-   @Override
-   public void c() {
-      this.a.A(true);
-      this.e = this.a(40 + this.a.ef().a(40));
+   protected boolean c() {
+      return true;
    }
 
-   @Override
-   public void d() {
-      this.a.A(false);
-      this.b = null;
+   public boolean d() {
+      return this.d > 0;
    }
 
-   @Override
-   public void e() {
-      this.a.G().a(this.b.dq(), this.b.du(), this.b.dw(), 10.0F, (float)this.a.Y());
-      this.e--;
+   public double e() {
+      return this.e;
    }
 
-   private boolean a(cbu $$0) {
-      for (bgx $$1 : bgx.values()) {
-         cjf $$2 = $$0.b($$1);
-         if (this.a.s() && $$2.a(cji.qL)) {
-            return true;
-         }
+   public double f() {
+      return this.f;
+   }
 
-         if (this.a.m($$2)) {
-            return true;
-         }
-      }
+   public double g() {
+      return this.g;
+   }
 
-      return false;
+   protected Optional<Float> h() {
+      double $$0 = this.e - this.a.dq();
+      double $$1 = this.f - this.a.du();
+      double $$2 = this.g - this.a.dw();
+      double $$3 = Math.sqrt($$0 * $$0 + $$2 * $$2);
+      return !(Math.abs($$1) > 1.0E-5F) && !(Math.abs($$3) > 1.0E-5F) ? Optional.empty() : Optional.of((float)(-(asb.d($$1, $$3) * 180.0F / (float)Math.PI)));
+   }
+
+   protected Optional<Float> i() {
+      double $$0 = this.e - this.a.dq();
+      double $$1 = this.g - this.a.dw();
+      return !(Math.abs($$1) > 1.0E-5F) && !(Math.abs($$0) > 1.0E-5F)
+         ? Optional.empty()
+         : Optional.of((float)(asb.d($$1, $$0) * 180.0F / (float)Math.PI) - 90.0F);
+   }
+
+   protected float a(float $$0, float $$1, float $$2) {
+      float $$3 = asb.c($$0, $$1);
+      float $$4 = asb.a($$3, -$$2, $$2);
+      return $$0 + $$4;
+   }
+
+   private static double b(biw $$0) {
+      return $$0 instanceof bjm ? $$0.du() : ($$0.cG().b + $$0.cG().e) / 2.0;
    }
 }

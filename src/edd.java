@@ -1,30 +1,66 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.datafixers.Products.P1;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 import java.util.List;
-import java.util.function.Consumer;
+import java.util.function.Predicate;
 
-public class edd extends edl {
-   public static final Codec<edd> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(aew.a.fieldOf("name").forGetter($$0x -> $$0x.j)).and(b($$0)).apply($$0, edd::new)
-   );
-   private final aew j;
+public abstract class edd implements ecv {
+   protected final List<efj> e;
+   private final Predicate<eck> a;
 
-   private edd(aew $$0, int $$1, int $$2, List<efp> $$3, List<eed> $$4) {
-      super($$1, $$2, $$3, $$4);
-      this.j = $$0;
+   protected edd(List<efj> $$0) {
+      this.e = $$0;
+      this.a = efl.a($$0);
    }
 
-   @Override
-   public edk a() {
-      return edh.e;
+   protected static <T extends edd> P1<Mu<T>, List<efj>> a(Instance<T> $$0) {
+      return $$0.group(arj.a(efl.a.listOf(), "conditions", List.of()).forGetter($$0x -> $$0x.e));
    }
 
-   @Override
-   public void a(Consumer<cjf> $$0, ecq $$1) {
-      $$1.a(this.j, $$0);
+   public void a(ect $$0) {
+      for (int $$1 = 0; $$1 < this.e.size(); $$1++) {
+         this.e.get($$1).a($$0.b(".condition[" + $$1 + "]"));
+      }
    }
 
-   public static edl.a<?> a(aew $$0) {
-      return a(($$1, $$2, $$3, $$4) -> new edd($$0, $$1, $$2, $$3, $$4));
+   protected final boolean a(eck $$0) {
+      return this.a.test($$0);
+   }
+
+   public abstract ede a();
+
+   public abstract static class a<T extends edd.a<T>> implements efc<T> {
+      private final Builder<efj> a = ImmutableList.builder();
+
+      protected abstract T ax_();
+
+      public T a(efj.a $$0) {
+         this.a.add($$0.build());
+         return this.ax_();
+      }
+
+      public final T e() {
+         return this.ax_();
+      }
+
+      protected List<efj> f() {
+         return this.a.build();
+      }
+
+      public ecu.a a(edd.a<?> $$0) {
+         return new ecu.a(this, $$0);
+      }
+
+      public ecz.a b(edd.a<?> $$0) {
+         return new ecz.a(this, $$0);
+      }
+
+      public edh.a c(edd.a<?> $$0) {
+         return new edh.a(this, $$0);
+      }
+
+      public abstract edd b();
    }
 }

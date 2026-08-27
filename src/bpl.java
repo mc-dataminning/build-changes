@@ -1,77 +1,32 @@
-import java.util.function.Predicate;
+public class bpl extends bpj {
+   private final int h;
+   private static final int i = 10;
+   private static final int j = 20;
 
-public class bpl extends bps {
-   private static final int g = 240;
-   private final Predicate<bgv> h;
-   protected int a;
-   protected int b = -1;
-   protected int c = -1;
-
-   public bpl(bji $$0, Predicate<bgv> $$1) {
+   public bpl(bjo $$0, int $$1) {
       super($$0);
       this.h = $$1;
    }
 
-   public bpl(bji $$0, int $$1, Predicate<bgv> $$2) {
-      this($$0, $$2);
-      this.c = $$1;
-   }
-
-   protected int f() {
-      return Math.max(240, this.c);
-   }
-
    @Override
-   public boolean a() {
-      if (!super.a()) {
-         return false;
+   public void a() {
+      if (this.d > 0) {
+         this.d--;
+         this.i().ifPresent($$0x -> this.a.aW = this.a(this.a.aW, $$0x + 20.0F, this.b));
+         this.h().ifPresent($$0x -> this.a.s(this.a(this.a.dD(), $$0x + 10.0F, this.c)));
       } else {
-         return !this.d.dL().X().b(cpr.c) ? false : this.a(this.d.dL().ai()) && !this.h();
-      }
-   }
-
-   @Override
-   public void c() {
-      super.c();
-      this.a = 0;
-   }
-
-   @Override
-   public boolean b() {
-      return this.a <= this.f() && !this.h() && this.e.a(this.d.dj(), 2.0) && this.a(this.d.dL().ai());
-   }
-
-   @Override
-   public void d() {
-      super.d();
-      this.d.dL().a(this.d.ah(), this.e, -1);
-   }
-
-   @Override
-   public void e() {
-      super.e();
-      if (this.d.ef().a(20) == 0) {
-         this.d.dL().c(1019, this.e, 0);
-         if (!this.d.aF) {
-            this.d.a(this.d.fn());
+         if (this.a.L().l()) {
+            this.a.s(this.a(this.a.dD(), 0.0F, 5.0F));
          }
+
+         this.a.aW = this.a(this.a.aW, this.a.aU, this.b);
       }
 
-      this.a++;
-      int $$0 = (int)((float)this.a / (float)this.f() * 10.0F);
-      if ($$0 != this.b) {
-         this.d.dL().a(this.d.ah(), this.e, $$0);
-         this.b = $$0;
+      float $$0 = asb.g(this.a.aW - this.a.aU);
+      if ($$0 < (float)(-this.h)) {
+         this.a.aU -= 4.0F;
+      } else if ($$0 > (float)this.h) {
+         this.a.aU += 4.0F;
       }
-
-      if (this.a == this.f() && this.a(this.d.dL().ai())) {
-         this.d.dL().a(this.e, false);
-         this.d.dL().c(1021, this.e, 0);
-         this.d.dL().c(2001, this.e, csv.i(this.d.dL().a_(this.e)));
-      }
-   }
-
-   private boolean a(bgv $$0) {
-      return this.h.test($$0);
    }
 }

@@ -1,88 +1,259 @@
-public class cfn extends cel {
-   private static final int o = 1;
-   private static final int p = 1;
-   public static final int k = 1;
-   public static final int l = 2;
-   public static final int m = 3;
-   public static final int n = 100;
-   private final bgr q;
-   private final cev r;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.stream.Collectors;
 
-   public cfn(int $$0) {
-      this($$0, new bhf(1), new cgc(1));
+public class cfn extends cer {
+   public static final int k = 35;
+   public static final int l = 0;
+   public static final int m = 1;
+   public static final int n = 2;
+   private static final int o = 3;
+   private static final int p = 30;
+   private static final int q = 30;
+   private static final int r = 39;
+   private final bgx s = new cge();
+   final bgx t = new bhl(2) {
+      @Override
+      public void e() {
+         super.e();
+         cfn.this.a(this);
+      }
+   };
+   private final cfc u;
+
+   public cfn(int $$0, cbz $$1) {
+      this($$0, $$1, cfc.a);
    }
 
-   public cfn(int $$0, bgr $$1, cev $$2) {
-      super(cfq.q, $$0);
-      a($$1, 1);
-      a($$2, 1);
-      this.q = $$1;
-      this.r = $$2;
-      this.a(new cgd($$1, 0, 0, 0) {
+   public cfn(int $$0, cbz $$1, final cfc $$2) {
+      super(cfw.o, $$0);
+      this.u = $$2;
+      this.a(new cgj(this.t, 0, 49, 19) {
          @Override
-         public void d() {
-            super.d();
-            cfn.this.a(this.d);
+         public boolean a(cjl $$0) {
+            return $$0.i() || $$0.a(cjo.tC) || $$0.E();
          }
       });
-      this.a($$2);
-   }
-
-   @Override
-   public boolean b(cbu $$0, int $$1) {
-      if ($$1 >= 100) {
-         int $$2 = $$1 - 100;
-         this.a(0, $$2);
-         return true;
-      } else {
-         switch ($$1) {
-            case 1:
-               int $$4 = this.r.a(0);
-               this.a(0, $$4 - 1);
-               return true;
-            case 2:
-               int $$3 = this.r.a(0);
-               this.a(0, $$3 + 1);
-               return true;
-            case 3:
-               if (!$$0.gd()) {
-                  return false;
-               }
-
-               cjf $$5 = this.q.b(0);
-               this.q.e();
-               if (!$$0.fR().e($$5)) {
-                  $$0.a($$5, false);
-               }
-
-               return true;
-            default:
-               return false;
+      this.a(new cgj(this.t, 1, 49, 40) {
+         @Override
+         public boolean a(cjl $$0) {
+            return $$0.i() || $$0.a(cjo.tC) || $$0.E();
          }
+      });
+      this.a(new cgj(this.s, 2, 129, 34) {
+         @Override
+         public boolean a(cjl $$0) {
+            return false;
+         }
+
+         @Override
+         public void a(cca $$0, cjl $$1) {
+            $$2.a(($$0x, $$1x) -> {
+               if ($$0x instanceof akt) {
+                  bjc.a((akt)$$0x, ehh.b($$1x), this.a($$0x));
+               }
+
+               $$0x.c(1042, $$1x, 0);
+            });
+            cfn.this.t.a(0, cjl.b);
+            cfn.this.t.a(1, cjl.b);
+         }
+
+         private int a(cqb $$0) {
+            int $$1 = 0;
+            $$1 += this.g(cfn.this.t.a(0));
+            $$1 += this.g(cfn.this.t.a(1));
+            if ($$1 > 0) {
+               int $$2 = (int)Math.ceil((double)$$1 / 2.0);
+               return $$2 + $$0.z.a($$2);
+            } else {
+               return 0;
+            }
+         }
+
+         private int g(cjl $$0) {
+            int $$1 = 0;
+            Map<cnu, Integer> $$2 = cnw.a($$0);
+
+            for (Entry<cnu, Integer> $$3 : $$2.entrySet()) {
+               cnu $$4 = $$3.getKey();
+               Integer $$5 = $$3.getValue();
+               if (!$$4.c()) {
+                  $$1 += $$4.a($$5);
+               }
+            }
+
+            return $$1;
+         }
+      });
+
+      for (int $$3 = 0; $$3 < 3; $$3++) {
+         for (int $$4 = 0; $$4 < 9; $$4++) {
+            this.a(new cgj($$1, $$4 + $$3 * 9 + 9, 8 + $$4 * 18, 84 + $$3 * 18));
+         }
+      }
+
+      for (int $$5 = 0; $$5 < 9; $$5++) {
+         this.a(new cgj($$1, $$5, 8 + $$5 * 18, 142));
       }
    }
 
    @Override
-   public cjf a(cbu $$0, int $$1) {
-      return cjf.b;
+   public void a(bgx $$0) {
+      super.a($$0);
+      if ($$0 == this.t) {
+         this.l();
+      }
    }
 
-   @Override
-   public void a(int $$0, int $$1) {
-      super.a($$0, $$1);
+   private void l() {
+      cjl $$0 = this.t.a(0);
+      cjl $$1 = this.t.a(1);
+      boolean $$2 = !$$0.b() || !$$1.b();
+      boolean $$3 = !$$0.b() && !$$1.b();
+      if (!$$2) {
+         this.s.a(0, cjl.b);
+      } else {
+         boolean $$4 = !$$0.b() && !$$0.a(cjo.tC) && !$$0.E() || !$$1.b() && !$$1.a(cjo.tC) && !$$1.E();
+         if ($$0.L() > 1 || $$1.L() > 1 || !$$3 && $$4) {
+            this.s.a(0, cjl.b);
+            this.d();
+            return;
+         }
+
+         int $$5 = 1;
+         int $$10;
+         cjl $$11;
+         if ($$3) {
+            if (!$$0.a($$1.d())) {
+               this.s.a(0, cjl.b);
+               this.d();
+               return;
+            }
+
+            cjg $$6 = $$0.d();
+            int $$7 = $$6.n() - $$0.k();
+            int $$8 = $$6.n() - $$1.k();
+            int $$9 = $$7 + $$8 + $$6.n() * 5 / 100;
+            $$10 = Math.max($$6.n() - $$9, 0);
+            $$11 = this.a($$0, $$1);
+            if (!$$11.i()) {
+               if (!cjl.a($$0, $$1)) {
+                  this.s.a(0, cjl.b);
+                  this.d();
+                  return;
+               }
+
+               $$5 = 2;
+            }
+         } else {
+            boolean $$12 = !$$0.b();
+            $$10 = $$12 ? $$0.k() : $$1.k();
+            $$11 = $$12 ? $$0 : $$1;
+         }
+
+         this.s.a(0, this.a($$11, $$10, $$5));
+      }
+
       this.d();
    }
 
+   private cjl a(cjl $$0, cjl $$1) {
+      cjl $$2 = $$0.p();
+      Map<cnu, Integer> $$3 = cnw.a($$1);
+
+      for (Entry<cnu, Integer> $$4 : $$3.entrySet()) {
+         cnu $$5 = $$4.getKey();
+         if (!$$5.c() || cnw.a($$5, $$2) == 0) {
+            $$2.a($$5, $$4.getValue());
+         }
+      }
+
+      return $$2;
+   }
+
+   private cjl a(cjl $$0, int $$1, int $$2) {
+      cjl $$3 = $$0.c($$2);
+      $$3.c("Enchantments");
+      $$3.c("StoredEnchantments");
+      if ($$1 > 0) {
+         $$3.b($$1);
+      } else {
+         $$3.c("Damage");
+      }
+
+      Map<cnu, Integer> $$4 = cnw.a($$0).entrySet().stream().filter($$0x -> ((cnu)$$0x.getKey()).c()).collect(Collectors.toMap(Entry::getKey, Entry::getValue));
+      cnw.a($$4, $$3);
+      $$3.d(0);
+      if ($$3.a(cjo.tC) && $$4.size() == 0) {
+         $$3 = new cjl(cjo.qb);
+         if ($$0.A()) {
+            $$3.a($$0.y());
+         }
+      }
+
+      for (int $$5 = 0; $$5 < $$4.size(); $$5++) {
+         $$3.d(cet.e($$3.I()));
+      }
+
+      return $$3;
+   }
+
    @Override
-   public boolean a(cbu $$0) {
-      return this.q.a($$0);
+   public void b(cca $$0) {
+      super.b($$0);
+      this.u.a(($$1, $$2) -> this.a($$0, this.t));
    }
 
-   public cjf l() {
-      return this.q.a(0);
+   @Override
+   public boolean a(cca $$0) {
+      return a(this.u, $$0, cte.nZ);
    }
 
-   public int m() {
-      return this.r.a(0);
+   @Override
+   public cjl a(cca $$0, int $$1) {
+      cjl $$2 = cjl.b;
+      cgj $$3 = this.i.get($$1);
+      if ($$3 != null && $$3.f()) {
+         cjl $$4 = $$3.e();
+         $$2 = $$4.p();
+         cjl $$5 = this.t.a(0);
+         cjl $$6 = this.t.a(1);
+         if ($$1 == 2) {
+            if (!this.a($$4, 3, 39, true)) {
+               return cjl.b;
+            }
+
+            $$3.b($$4, $$2);
+         } else if ($$1 != 0 && $$1 != 1) {
+            if (!$$5.b() && !$$6.b()) {
+               if ($$1 >= 3 && $$1 < 30) {
+                  if (!this.a($$4, 30, 39, false)) {
+                     return cjl.b;
+                  }
+               } else if ($$1 >= 30 && $$1 < 39 && !this.a($$4, 3, 30, false)) {
+                  return cjl.b;
+               }
+            } else if (!this.a($$4, 0, 2, false)) {
+               return cjl.b;
+            }
+         } else if (!this.a($$4, 3, 39, false)) {
+            return cjl.b;
+         }
+
+         if ($$4.b()) {
+            $$3.d(cjl.b);
+         } else {
+            $$3.d();
+         }
+
+         if ($$4.L() == $$2.L()) {
+            return cjl.b;
+         }
+
+         $$3.a($$0, $$4);
+      }
+
+      return $$2;
    }
 }

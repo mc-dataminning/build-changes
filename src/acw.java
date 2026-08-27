@@ -1,40 +1,28 @@
-public class acw implements vd<abc> {
-   private final ehj a;
-   private final bgx b;
-   private final int c;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-   public acw(bgx $$0, ehj $$1, int $$2) {
-      this.b = $$0;
-      this.a = $$1;
-      this.c = $$2;
+public class acw implements ve<abd> {
+   private final UUID a;
+
+   public acw(UUID $$0) {
+      this.a = $$0;
    }
 
    public acw(so $$0) {
-      this.b = $$0.b(bgx.class);
-      this.a = $$0.x();
-      this.c = $$0.m();
+      this.a = $$0.p();
    }
 
    @Override
    public void a(so $$0) {
-      $$0.a(this.b);
       $$0.a(this.a);
-      $$0.c(this.c);
    }
 
-   public void a(abc $$0) {
+   public void a(abd $$0) {
       $$0.a(this);
    }
 
-   public bgx a() {
-      return this.b;
-   }
-
-   public ehj d() {
-      return this.a;
-   }
-
-   public int e() {
-      return this.c;
+   @Nullable
+   public biw a(akt $$0) {
+      return $$0.a(this.a);
    }
 }

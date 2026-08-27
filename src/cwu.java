@@ -1,70 +1,114 @@
-public class cwu extends csv implements cvj, cvz {
-   public static final dgh<hc> a = dfz.T;
+import com.mojang.serialization.MapCodec;
 
-   protected cwu(dfi.d $$0) {
+public class cwu extends cwr {
+   public static final MapCodec<cwu> a = b(cwu::new);
+   private static final double c = 0.13;
+   private static final double e = 0.08;
+   private static final double f = 0.05;
+   private static final int g = 20;
+   protected static final eia b = ctc.a(1.0, 0.0, 1.0, 15.0, 15.0, 15.0);
+
+   @Override
+   public MapCodec<cwu> a() {
+      return a;
+   }
+
+   public cwu(dfc.d $$0) {
       super($$0);
-      this.k(this.C.b().a(a, hc.k));
+   }
+
+   private static boolean c(biw $$0) {
+      return $$0 instanceof bjm || $$0 instanceof cdr || $$0 instanceof byu || $$0 instanceof cdt;
    }
 
    @Override
-   protected void a(dfk.a<csv, dfj> $$0) {
-      $$0.a(a);
+   public eia c(dfd $$0, cph $$1, gw $$2, ehm $$3) {
+      return b;
    }
 
    @Override
-   public dfj a(dfj $$0, czh $$1) {
-      return $$0.a(a, $$1.a().a($$0.c(a)));
-   }
-
-   @Override
-   public dfj a(dfj $$0, cxq $$1) {
-      return $$0.a(a, $$1.a().a($$0.c(a)));
-   }
-
-   @Override
-   public dfj a(cln $$0) {
-      ha $$1 = $$0.k();
-      ha $$2;
-      if ($$1.o() == ha.a.b) {
-         $$2 = $$0.g().g();
-      } else {
-         $$2 = ha.b;
+   public void a(cqb $$0, dfd $$1, gw $$2, biw $$3, float $$4) {
+      $$3.a(apg.kY, 1.0F, 1.0F);
+      if (!$$0.B) {
+         $$0.a($$3, (byte)54);
       }
 
-      return this.n().a(a, hc.a($$1, $$2));
-   }
-
-   @Override
-   public dcv a(gw $$0, dfj $$1) {
-      return new ddu($$0, $$1);
-   }
-
-   @Override
-   public bgy a(dfj $$0, cpv $$1, gw $$2, cbu $$3, bgx $$4, ehj $$5) {
-      dcv $$6 = $$1.c_($$2);
-      if ($$6 instanceof ddu && $$3.go()) {
-         $$3.a((ddu)$$6);
-         return bgy.a($$1.B);
-      } else {
-         return bgy.d;
+      if ($$3.a($$4, 0.2F, $$0.ag().k())) {
+         $$3.a(this.aJ.g(), this.aJ.a() * 0.5F, this.aJ.b() * 0.75F);
       }
    }
 
-   public static boolean a(dzb.c $$0, dzb.c $$1) {
-      ha $$2 = h($$0.b());
-      ha $$3 = h($$1.b());
-      ha $$4 = n($$0.b());
-      ha $$5 = n($$1.b());
-      ddu.a $$6 = ddu.a.a($$0.c().l("joint")).orElseGet(() -> $$2.o().d() ? ddu.a.b : ddu.a.a);
-      boolean $$7 = $$6 == ddu.a.a;
-      return $$2 == $$3.g() && ($$7 || $$4 == $$5) && $$0.c().l("target").equals($$1.c().l("name"));
+   @Override
+   public void a(dfd $$0, cqb $$1, gw $$2, biw $$3) {
+      if (this.a($$2, $$3)) {
+         this.a($$3, $$2);
+         this.d($$3);
+         this.a($$1, $$3);
+      }
+
+      super.a($$0, $$1, $$2, $$3);
    }
 
-   public static ha h(dfj $$0) {
-      return $$0.c(a).a();
+   private boolean a(gw $$0, biw $$1) {
+      if ($$1.aA()) {
+         return false;
+      } else if ($$1.ds() > (double)$$0.v() + 0.9375 - 1.0E-7) {
+         return false;
+      } else if ($$1.do().d >= -0.08) {
+         return false;
+      } else {
+         double $$2 = Math.abs((double)$$0.u() + 0.5 - $$1.dq());
+         double $$3 = Math.abs((double)$$0.w() + 0.5 - $$1.dw());
+         double $$4 = 0.4375 + (double)($$1.df() / 2.0F);
+         return $$2 + 1.0E-7 > $$4 || $$3 + 1.0E-7 > $$4;
+      }
    }
 
-   public static ha n(dfj $$0) {
-      return $$0.c(a).b();
+   private void a(biw $$0, gw $$1) {
+      if ($$0 instanceof aku && $$0.dL().V() % 20L == 0L) {
+         al.J.a((aku)$$0, $$0.dL().a_($$1));
+      }
+   }
+
+   private void d(biw $$0) {
+      ehh $$1 = $$0.do();
+      if ($$1.d < -0.13) {
+         double $$2 = -0.05 / $$1.d;
+         $$0.f(new ehh($$1.c * $$2, -0.05, $$1.e * $$2));
+      } else {
+         $$0.f(new ehh($$1.c, -0.05, $$1.e));
+      }
+
+      $$0.n();
+   }
+
+   private void a(cqb $$0, biw $$1) {
+      if (c($$1)) {
+         if ($$0.z.a(5) == 0) {
+            $$1.a(apg.kY, 1.0F, 1.0F);
+         }
+
+         if (!$$0.B && $$0.z.a(5) == 0) {
+            $$0.a($$1, (byte)53);
+         }
+      }
+   }
+
+   public static void a(biw $$0) {
+      a($$0, 5);
+   }
+
+   public static void b(biw $$0) {
+      a($$0, 10);
+   }
+
+   private static void a(biw $$0, int $$1) {
+      if ($$0.dL().B) {
+         dfd $$2 = cte.pg.o();
+
+         for (int $$3 = 0; $$3 < $$1; $$3++) {
+            $$0.dL().a(new in(iv.c, $$2), $$0.dq(), $$0.ds(), $$0.dw(), 0.0, 0.0, 0.0);
+         }
+      }
    }
 }

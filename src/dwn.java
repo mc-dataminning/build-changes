@@ -1,81 +1,53 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-
-public class dwn extends dwp {
-   public static final Codec<dwn> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(dwp.e.listOf().fieldOf("elements").forGetter($$0x -> $$0x.b), d()).apply($$0, dwn::new)
-   );
-   private final List<dwp> b;
-
-   public dwn(List<dwp> $$0, dwr.a $$1) {
-      super($$1);
-      if ($$0.isEmpty()) {
-         throw new IllegalArgumentException("Elements are empty");
-      } else {
-         this.b = $$0;
-         this.b($$1);
-      }
-   }
-
-   @Override
-   public hy a(dzc $$0, czh $$1) {
-      int $$2 = 0;
-      int $$3 = 0;
-      int $$4 = 0;
-
-      for (dwp $$5 : this.b) {
-         hy $$6 = $$5.a($$0, $$1);
-         $$2 = Math.max($$2, $$6.u());
-         $$3 = Math.max($$3, $$6.v());
-         $$4 = Math.max($$4, $$6.w());
+public class dwn {
+   public static class a extends dvg {
+      public a(gw $$0) {
+         super(dvt.aa, 0, new duu($$0));
       }
 
-      return new hy($$2, $$3, $$4);
-   }
+      public a(qw $$0) {
+         super(dvt.aa, $$0);
+      }
 
-   @Override
-   public List<dzb.c> a(dzc $$0, gw $$1, czh $$2, asc $$3) {
-      return this.b.get(0).a($$0, $$1, $$2, $$3);
-   }
+      @Override
+      protected void a(dvs $$0, qw $$1) {
+      }
 
-   @Override
-   public dva a(dzc $$0, gw $$1, czh $$2) {
-      Stream<dva> $$3 = this.b.stream().filter($$0x -> $$0x != dwi.b).map($$3x -> $$3x.a($$0, $$1, $$2));
-      return dva.b($$3::iterator).orElseThrow(() -> new IllegalStateException("Unable to calculate boundingbox for ListPoolElement"));
-   }
+      @Override
+      public void a(cqv $$0, cqt $$1, dha $$2, ash $$3, duu $$4, cpi $$5, gw $$6) {
+         int $$7 = $$0.a(dkm.a.c, this.f.g(), this.f.i());
+         gw.a $$8 = new gw.a(this.f.g(), $$7, this.f.i());
 
-   @Override
-   public boolean a(dzc $$0, cqp $$1, cqn $$2, dhg $$3, gw $$4, gw $$5, czh $$6, dva $$7, asc $$8, boolean $$9) {
-      for (dwp $$10 : this.b) {
-         if (!$$10.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9)) {
-            return false;
+         while ($$8.v() > $$0.H_()) {
+            dfd $$9 = $$0.a_($$8);
+            dfd $$10 = $$0.a_($$8.d());
+            if ($$10 == cte.aV.o() || $$10 == cte.b.o() || $$10 == cte.g.o() || $$10 == cte.c.o() || $$10 == cte.e.o()) {
+               dfd $$11 = !$$9.i() && !this.b($$9) ? $$9 : cte.I.o();
+
+               for (ha $$12 : ha.values()) {
+                  gw $$13 = $$8.a($$12);
+                  dfd $$14 = $$0.a_($$13);
+                  if ($$14.i() || this.b($$14)) {
+                     gw $$15 = $$13.d();
+                     dfd $$16 = $$0.a_($$15);
+                     if (($$16.i() || this.b($$16)) && $$12 != ha.b) {
+                        $$0.a($$13, $$10, 3);
+                     } else {
+                        $$0.a($$13, $$11, 3);
+                     }
+                  }
+               }
+
+               this.f = new duu($$8);
+               this.a($$0, $$4, $$3, $$8, eci.G, null);
+               return;
+            }
+
+            $$8.e(0, -1, 0);
          }
       }
 
-      return true;
-   }
-
-   @Override
-   public dwq<?> a() {
-      return dwq.b;
-   }
-
-   @Override
-   public dwp a(dwr.a $$0) {
-      super.a($$0);
-      this.b($$0);
-      return this;
-   }
-
-   @Override
-   public String toString() {
-      return "List[" + this.b.stream().map(Object::toString).collect(Collectors.joining(", ")) + "]";
-   }
-
-   private void b(dwr.a $$0) {
-      this.b.forEach($$1 -> $$1.a($$0));
+      private boolean b(dfd $$0) {
+         return $$0 == cte.G.o() || $$0 == cte.H.o();
+      }
    }
 }

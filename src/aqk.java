@@ -1,69 +1,43 @@
-import com.mojang.datafixers.util.Pair;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import com.google.common.collect.Interner;
+import com.google.common.collect.Interners;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
-public class aqk {
-   public static Map<aev<? extends hq<?>>, aqk.a> a(hl<aff> $$0) {
-      return hu.b($$0)
-         .map($$0x -> Pair.of($$0x.a(), a($$0x.b())))
-         .filter($$0x -> !((aqk.a)$$0x.getSecond()).a())
-         .collect(Collectors.toMap(Pair::getFirst, Pair::getSecond));
+public record aqk<T>(aey<? extends hq<T>> a, aez b) {
+   private static final Interner<aqk<?>> c = Interners.newWeakInterner();
+
+   @Deprecated
+   public aqk(aey<? extends hq<T>> a, aez b) {
+      this.a = a;
+      this.b = b;
    }
 
-   private static <T> aqk.a a(hq<T> $$0) {
-      Map<aew, IntList> $$1 = new HashMap<>();
-      $$0.i().forEach($$2 -> {
-         hi<T> $$3 = (hi<T>)$$2.getSecond();
-         IntList $$4 = new IntArrayList($$3.b());
-
-         for (he<T> $$5 : $$3) {
-            if ($$5.f() != he.b.a) {
-               throw new IllegalStateException("Can't serialize unregistered value " + $$5);
-            }
-
-            $$4.add($$0.a($$5.a()));
-         }
-
-         $$1.put(((aqh)$$2.getFirst()).b(), $$4);
-      });
-      return new aqk.a($$1);
+   public static <T> Codec<aqk<T>> a(aey<? extends hq<T>> $$0) {
+      return aez.a.xmap($$1 -> a($$0, $$1), aqk::b);
    }
 
-   public static <T> void a(aev<? extends hq<T>> $$0, hq<T> $$1, aqk.a $$2, aqk.b<T> $$3) {
-      $$2.a.forEach(($$3x, $$4) -> {
-         aqh<T> $$5 = aqh.a($$0, $$3x);
-         List<he<T>> $$6 = $$4.intStream().mapToObj($$1::c).flatMap(Optional::stream).collect(Collectors.toUnmodifiableList());
-         $$3.accept($$5, $$6);
-      });
+   public static <T> Codec<aqk<T>> b(aey<? extends hq<T>> $$0) {
+      return Codec.STRING
+         .comapFlatMap(
+            $$1 -> $$1.startsWith("#") ? aez.b($$1.substring(1)).map($$1x -> a($$0, $$1x)) : DataResult.error(() -> "Not a tag id"), $$0x -> "#" + $$0x.b
+         );
    }
 
-   public static final class a {
-      final Map<aew, IntList> a;
-
-      a(Map<aew, IntList> $$0) {
-         this.a = $$0;
-      }
-
-      public void a(so $$0) {
-         $$0.a(this.a, so::a, so::a);
-      }
-
-      public static aqk.a b(so $$0) {
-         return new aqk.a($$0.a(so::s, so::a));
-      }
-
-      public boolean a() {
-         return this.a.isEmpty();
-      }
+   public static <T> aqk<T> a(aey<? extends hq<T>> $$0, aez $$1) {
+      return (aqk<T>)c.intern(new aqk<>($$0, $$1));
    }
 
-   @FunctionalInterface
-   public interface b<T> {
-      void accept(aqh<T> var1, List<he<T>> var2);
+   public boolean c(aey<? extends hq<?>> $$0) {
+      return this.a == $$0;
+   }
+
+   public <E> Optional<aqk<E>> d(aey<? extends hq<E>> $$0) {
+      return this.c($$0) ? Optional.of((aqk<E>)this) : Optional.empty();
+   }
+
+   @Override
+   public String toString() {
+      return "TagKey[" + this.a.a() + " / " + this.b + "]";
    }
 }

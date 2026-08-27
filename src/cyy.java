@@ -1,126 +1,39 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.Map;
-import java.util.WeakHashMap;
+import com.mojang.serialization.MapCodec;
 
-public class cyy extends dbg {
-   public static final dga a = dfz.r;
-   private static final Map<cpb, List<cyy.a>> e = new WeakHashMap<>();
-   public static final int b = 60;
-   public static final int c = 8;
-   public static final int d = 160;
-   private static final int f = 2;
+public class cyy extends ctc {
+   public static final MapCodec<cyy> a = b(cyy::new);
 
-   protected cyy(dfi.d $$0) {
-      super($$0, ip.b);
-      this.k(this.C.b().a(a, Boolean.valueOf(true)));
+   @Override
+   public MapCodec<cyy> a() {
+      return a;
+   }
+
+   protected cyy(dfc.d $$0) {
+      super($$0);
    }
 
    @Override
-   public void b(dfj $$0, cpv $$1, gw $$2, dfj $$3, boolean $$4) {
-      for (ha $$5 : ha.values()) {
-         $$1.a($$2.a($$5), this);
-      }
-   }
-
-   @Override
-   public void a(dfj $$0, cpv $$1, gw $$2, dfj $$3, boolean $$4) {
-      if (!$$4) {
-         for (ha $$5 : ha.values()) {
-            $$1.a($$2.a($$5), this);
+   public bhe a(dfd $$0, cqb $$1, gw $$2, cca $$3, bhd $$4, ehd $$5) {
+      cjl $$6 = $$3.b($$4);
+      if ($$6.a(cjo.rg)) {
+         if (!$$1.B) {
+            ha $$7 = $$5.b();
+            ha $$8 = $$7.o() == ha.a.b ? $$3.cD().g() : $$7;
+            $$1.a(null, $$2, apg.tj, aph.e, 1.0F, 1.0F);
+            $$1.a($$2, cte.ee.o().a(ctw.b, $$8), 11);
+            byt $$9 = new byt(
+               $$1, (double)$$2.u() + 0.5 + (double)$$8.j() * 0.65, (double)$$2.v() + 0.1, (double)$$2.w() + 0.5 + (double)$$8.l() * 0.65, new cjl(cjo.rj, 4)
+            );
+            $$9.o(0.05 * (double)$$8.j() + $$1.z.j() * 0.02, 0.05, 0.05 * (double)$$8.l() + $$1.z.j() * 0.02);
+            $$1.b($$9);
+            $$6.a(1, $$3, $$1x -> $$1x.d($$4));
+            $$1.a($$3, djn.M, $$2);
+            $$3.b(apq.c.b(cjo.rg));
          }
-      }
-   }
 
-   @Override
-   public int a(dfj $$0, cpb $$1, gw $$2, ha $$3) {
-      return $$0.c(a) && ha.b != $$3 ? 15 : 0;
-   }
-
-   protected boolean a(cpv $$0, gw $$1, dfj $$2) {
-      return $$0.b($$1.d(), ha.a);
-   }
-
-   @Override
-   public void a(dfj $$0, akq $$1, gw $$2, asc $$3) {
-      boolean $$4 = this.a($$1, $$2, $$0);
-      List<cyy.a> $$5 = e.get($$1);
-
-      while ($$5 != null && !$$5.isEmpty() && $$1.V() - $$5.get(0).b > 60L) {
-         $$5.remove(0);
-      }
-
-      if ($$0.c(a)) {
-         if ($$4) {
-            $$1.a($$2, $$0.a(a, Boolean.valueOf(false)), 3);
-            if (a($$1, $$2, true)) {
-               $$1.c(1502, $$2, 0);
-               $$1.a($$2, $$1.a_($$2).b(), 160);
-            }
-         }
-      } else if (!$$4 && !a($$1, $$2, false)) {
-         $$1.a($$2, $$0.a(a, Boolean.valueOf(true)), 3);
-      }
-   }
-
-   @Override
-   public void a(dfj $$0, cpv $$1, gw $$2, csv $$3, gw $$4, boolean $$5) {
-      if ($$0.c(a) == this.a($$1, $$2, $$0) && !$$1.L().b($$2, this)) {
-         $$1.a($$2, this, 2);
-      }
-   }
-
-   @Override
-   public int b(dfj $$0, cpb $$1, gw $$2, ha $$3) {
-      return $$3 == ha.a ? $$0.b($$1, $$2, $$3) : 0;
-   }
-
-   @Override
-   public boolean f_(dfj $$0) {
-      return true;
-   }
-
-   @Override
-   public void a(dfj $$0, cpv $$1, gw $$2, asc $$3) {
-      if ($$0.c(a)) {
-         double $$4 = (double)$$2.u() + 0.5 + ($$3.j() - 0.5) * 0.2;
-         double $$5 = (double)$$2.v() + 0.7 + ($$3.j() - 0.5) * 0.2;
-         double $$6 = (double)$$2.w() + 0.5 + ($$3.j() - 0.5) * 0.2;
-         $$1.a(this.i, $$4, $$5, $$6, 0.0, 0.0, 0.0);
-      }
-   }
-
-   @Override
-   protected void a(dfk.a<csv, dfj> $$0) {
-      $$0.a(a);
-   }
-
-   private static boolean a(cpv $$0, gw $$1, boolean $$2) {
-      List<cyy.a> $$3 = e.computeIfAbsent($$0, $$0x -> Lists.newArrayList());
-      if ($$2) {
-         $$3.add(new cyy.a($$1.i(), $$0.V()));
-      }
-
-      int $$4 = 0;
-
-      for (cyy.a $$5 : $$3) {
-         if ($$5.a.equals($$1)) {
-            if (++$$4 >= 8) {
-               return true;
-            }
-         }
-      }
-
-      return false;
-   }
-
-   public static class a {
-      final gw a;
-      final long b;
-
-      public a(gw $$0, long $$1) {
-         this.a = $$0;
-         this.b = $$1;
+         return bhe.a($$1.B);
+      } else {
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
       }
    }
 }

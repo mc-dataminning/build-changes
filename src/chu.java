@@ -1,46 +1,87 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
+import java.util.Collection;
+import javax.annotation.Nullable;
 
-public class chu extends cja implements cke {
-   private static final Map<cht, chu> a = Maps.newEnumMap(cht.class);
-   private final cht b;
-
-   public chu(cht $$0, cja.a $$1) {
-      super($$1);
-      this.b = $$0;
-      a.put($$0, this);
+public class chu extends cjg {
+   public chu(cjg.a $$0) {
+      super($$0);
    }
 
    @Override
-   public bgy a(cjf $$0, cbu $$1, bjg $$2, bgx $$3) {
-      if ($$2 instanceof bvn $$4 && $$4.bv() && !$$4.y() && $$4.t() != this.b) {
-         $$4.dL().a($$1, $$4, apd.gF, ape.h, 1.0F, 1.0F);
-         if (!$$1.dL().B) {
-            $$4.b(this.b);
-            $$0.h(1);
+   public boolean i(cjl $$0) {
+      return true;
+   }
+
+   @Override
+   public boolean a(dfd $$0, cqb $$1, gw $$2, cca $$3) {
+      if (!$$1.B) {
+         this.a($$3, $$0, $$1, $$2, false, $$3.b(bhd.a));
+      }
+
+      return false;
+   }
+
+   @Override
+   public bhe a(clv $$0) {
+      cca $$1 = $$0.o();
+      cqb $$2 = $$0.q();
+      if (!$$2.B && $$1 != null) {
+         gw $$3 = $$0.a();
+         if (!this.a($$1, $$2.a_($$3), $$2, $$3, true, $$0.n())) {
+            return bhe.e;
          }
-
-         return bgy.a($$1.dL().B);
       }
 
-      return bgy.d;
+      return bhe.a($$2.B);
    }
 
-   public cht d() {
-      return this.b;
-   }
-
-   public static chu a(cht $$0) {
-      return a.get($$0);
-   }
-
-   @Override
-   public boolean a(cpv $$0, ded $$1, boolean $$2, cbu $$3) {
-      if ($$1.a($$0x -> $$0x.a(this.d()), $$2)) {
-         $$0.a(null, $$1.p(), apd.gF, ape.e, 1.0F, 1.0F);
-         return true;
-      } else {
+   private boolean a(cca $$0, dfd $$1, cqc $$2, gw $$3, boolean $$4, cjl $$5) {
+      if (!$$0.gp()) {
          return false;
+      } else {
+         ctc $$6 = $$1.b();
+         dfe<ctc, dfd> $$7 = $$6.n();
+         Collection<dgg<?>> $$8 = $$7.d();
+         String $$9 = jb.f.b($$6).toString();
+         if ($$8.isEmpty()) {
+            a($$0, tl.a(this.a() + ".empty", $$9));
+            return false;
+         } else {
+            qw $$10 = $$5.a("DebugProperty");
+            String $$11 = $$10.l($$9);
+            dgg<?> $$12 = $$7.a($$11);
+            if ($$4) {
+               if ($$12 == null) {
+                  $$12 = $$8.iterator().next();
+               }
+
+               dfd $$13 = a($$1, $$12, $$0.fI());
+               $$2.a($$3, $$13, 18);
+               a($$0, tl.a(this.a() + ".update", $$12.f(), a($$13, $$12)));
+            } else {
+               $$12 = a($$8, $$12, $$0.fI());
+               String $$14 = $$12.f();
+               $$10.a($$9, $$14);
+               a($$0, tl.a(this.a() + ".select", $$14, a($$1, $$12)));
+            }
+
+            return true;
+         }
       }
+   }
+
+   private static <T extends Comparable<T>> dfd a(dfd $$0, dgg<T> $$1, boolean $$2) {
+      return $$0.a($$1, a($$1.a(), $$0.c($$1), $$2));
+   }
+
+   private static <T> T a(Iterable<T> $$0, @Nullable T $$1, boolean $$2) {
+      return $$2 ? ac.b($$0, $$1) : ac.a($$0, $$1);
+   }
+
+   private static void a(cca $$0, tl $$1) {
+      ((aku)$$0).b($$1, true);
+   }
+
+   private static <T extends Comparable<T>> String a(dfd $$0, dgg<T> $$1) {
+      return $$1.a($$0.c($$1));
    }
 }

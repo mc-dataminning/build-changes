@@ -1,40 +1,24 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record drw(hi<csv> b, hi<csv> c, dsb d, int e, int f, float g) {
-   public static final Codec<drw> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               hs.a(jc.e).fieldOf("can_grow_through").forGetter($$0x -> $$0x.b),
-               hs.a(jc.e).fieldOf("muddy_roots_in").forGetter($$0x -> $$0x.c),
-               dsb.a.fieldOf("muddy_roots_provider").forGetter($$0x -> $$0x.d),
-               Codec.intRange(1, 12).fieldOf("max_root_width").forGetter($$0x -> $$0x.e),
-               Codec.intRange(1, 64).fieldOf("max_root_length").forGetter($$0x -> $$0x.f),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("random_skew_chance").forGetter($$0x -> $$0x.g)
-            )
-            .apply($$0, drw::new)
-   );
+public class drw<P extends drv> {
+   public static final drw<dse> a = a("simple_state_provider", dse.b);
+   public static final drw<dsf> b = a("weighted_state_provider", dsf.b);
+   public static final drw<dsa> c = a("noise_threshold_provider", dsa.b);
+   public static final drw<drz> d = a("noise_provider", drz.g);
+   public static final drw<drx> e = a("dual_noise_provider", drx.b);
+   public static final drw<dsc> f = a("rotated_block_provider", dsc.b);
+   public static final drw<dsb> g = a("randomized_int_state_provider", dsb.b);
+   private final Codec<P> h;
 
-   public hi<csv> a() {
-      return this.b;
+   private static <P extends drv> drw<P> a(String $$0, Codec<P> $$1) {
+      return hq.a(jb.W, $$0, new drw<>($$1));
    }
 
-   public hi<csv> b() {
-      return this.c;
+   private drw(Codec<P> $$0) {
+      this.h = $$0;
    }
 
-   public dsb c() {
-      return this.d;
-   }
-
-   public int d() {
-      return this.e;
-   }
-
-   public int e() {
-      return this.f;
-   }
-
-   public float f() {
-      return this.g;
+   public Codec<P> a() {
+      return this.h;
    }
 }

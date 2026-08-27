@@ -67,7 +67,7 @@ public class en implements ArgumentType<en.a> {
                if ($$1 == 0) {
                   throw c.create();
                } else {
-                  return arw.a($$0x, $$1);
+                  return asb.a($$0x, $$1);
                }
             };
          case "%=":
@@ -75,7 +75,7 @@ public class en implements ArgumentType<en.a> {
                if ($$1 == 0) {
                   throw c.create();
                } else {
-                  return arw.b($$0x, $$1);
+                  return asb.b($$0x, $$1);
                }
             };
          case "<":
@@ -89,7 +89,7 @@ public class en implements ArgumentType<en.a> {
 
    @FunctionalInterface
    public interface a {
-      void apply(eil var1, eil var2) throws CommandSyntaxException;
+      void apply(eif var1, eif var2) throws CommandSyntaxException;
    }
 
    @FunctionalInterface
@@ -97,7 +97,7 @@ public class en implements ArgumentType<en.a> {
       int apply(int var1, int var2) throws CommandSyntaxException;
 
       @Override
-      default void apply(eil $$0, eil $$1) throws CommandSyntaxException {
+      default void apply(eif $$0, eif $$1) throws CommandSyntaxException {
          $$0.b(this.apply($$0.b(), $$1.b()));
       }
    }

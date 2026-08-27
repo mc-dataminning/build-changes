@@ -1,38 +1,36 @@
-public class ger implements geu {
-   private static final int a = 600;
-   private static final tl b = tl.c("tutorial.open_inventory.title");
-   private static final tl c = tl.a("tutorial.open_inventory.description", get.a("inventory"));
-   private final get d;
-   private euz e;
-   private int f;
+import java.util.function.Function;
 
-   public ger(get $$0) {
-      this.d = $$0;
+public enum ger {
+   a("movement", gem::new),
+   b("find_tree", gel::new),
+   c("punch_tree", geo::new),
+   d("open_inventory", gen::new),
+   e("craft_planks", gek::new),
+   f("none", gej::new);
+
+   private final String g;
+   private final Function<gep, ? extends geq> h;
+
+   private <T extends geq> ger(String $$0, Function<gep, T> $$1) {
+      this.g = $$0;
+      this.h = $$1;
    }
 
-   @Override
-   public void a() {
-      this.f++;
-      if (!this.d.f()) {
-         this.d.a(gev.f);
-      } else {
-         if (this.f >= 600 && this.e == null) {
-            this.e = new euz(euz.a.d, b, c, false);
-            this.d.e().ay().a(this.e);
+   public geq a(gep $$0) {
+      return this.h.apply($$0);
+   }
+
+   public String a() {
+      return this.g;
+   }
+
+   public static ger a(String $$0) {
+      for (ger $$1 : values()) {
+         if ($$1.g.equals($$0)) {
+            return $$1;
          }
       }
-   }
 
-   @Override
-   public void b() {
-      if (this.e != null) {
-         this.e.c();
-         this.e = null;
-      }
-   }
-
-   @Override
-   public void c() {
-      this.d.a(gev.e);
+      return f;
    }
 }

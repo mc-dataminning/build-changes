@@ -1,40 +1,24 @@
-import java.util.EnumSet;
+public class brk extends bqh {
+   private final bjv a;
 
-public class brk extends bqb {
-   private final cbc a;
-
-   public brk(cbc $$0) {
+   public brk(bjv $$0) {
       this.a = $$0;
-      this.a(EnumSet.of(bqb.a.c, bqb.a.a));
    }
 
    @Override
    public boolean a() {
-      if (!this.a.bv()) {
-         return false;
-      } else if (this.a.aX()) {
-         return false;
-      } else if (!this.a.aA()) {
-         return false;
-      } else if (this.a.T) {
-         return false;
-      } else {
-         cbu $$0 = this.a.gd();
-         if ($$0 == null) {
-            return false;
-         } else {
-            return this.a.f($$0) > 16.0 ? false : $$0.bS != null;
-         }
-      }
+      return this.a.dL().N() && this.a.c(bjb.f).b() && bud.a(this.a);
    }
 
    @Override
    public void c() {
-      this.a.L().n();
+      ((bsu)this.a.L()).d(true);
    }
 
    @Override
    public void d() {
-      this.a.f(null);
+      if (bud.a(this.a)) {
+         ((bsu)this.a.L()).d(false);
+      }
    }
 }

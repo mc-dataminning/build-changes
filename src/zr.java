@@ -1,14 +1,12 @@
-import javax.annotation.Nullable;
-
-public class zr implements vd<ww> {
+public class zr implements ve<wx> {
    private final int a;
 
-   public zr(biq $$0) {
-      this.a = $$0.ah();
+   public zr(dgu $$0) {
+      this.a = $$0.r();
    }
 
    public zr(so $$0) {
-      this.a = $$0.m();
+      this.a = $$0.n();
    }
 
    @Override
@@ -16,12 +14,11 @@ public class zr implements vd<ww> {
       $$0.c(this.a);
    }
 
-   public void a(ww $$0) {
+   public void a(wx $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public biq a(cpv $$0) {
-      return $$0.a(this.a);
+   public int a() {
+      return this.a;
    }
 }

@@ -1,54 +1,83 @@
-import java.util.UUID;
-import javax.annotation.Nullable;
+public class yv implements ve<wx> {
+   private static final int a = 1;
+   private static final int b = 2;
+   private static final int c = 4;
+   private static final int d = 8;
+   private final boolean e;
+   private final boolean f;
+   private final boolean g;
+   private final boolean h;
+   private final float i;
+   private final float j;
 
-public record yv(UUID a, int b, @Nullable tw c, ud.a d, @Nullable tl e, to f, th.b g) implements vd<ww> {
+   public yv(cbx $$0) {
+      this.e = $$0.a;
+      this.f = $$0.b;
+      this.g = $$0.c;
+      this.h = $$0.d;
+      this.i = $$0.a();
+      this.j = $$0.b();
+   }
+
    public yv(so $$0) {
-      this($$0.o(), $$0.m(), $$0.c(tw::a), new ud.a($$0), $$0.c(so::l), to.a($$0), new th.b($$0));
+      byte $$1 = $$0.readByte();
+      this.e = ($$1 & 1) != 0;
+      this.f = ($$1 & 2) != 0;
+      this.g = ($$1 & 4) != 0;
+      this.h = ($$1 & 8) != 0;
+      this.i = $$0.readFloat();
+      this.j = $$0.readFloat();
    }
 
    @Override
    public void a(so $$0) {
-      $$0.a(this.a);
-      $$0.c(this.b);
-      $$0.a(this.c, tw::a);
-      this.d.a($$0);
-      $$0.a(this.e, so::a);
-      to.a($$0, this.f);
-      this.g.a($$0);
+      byte $$1 = 0;
+      if (this.e) {
+         $$1 = (byte)($$1 | 1);
+      }
+
+      if (this.f) {
+         $$1 = (byte)($$1 | 2);
+      }
+
+      if (this.g) {
+         $$1 = (byte)($$1 | 4);
+      }
+
+      if (this.h) {
+         $$1 = (byte)($$1 | 8);
+      }
+
+      $$0.k($$1);
+      $$0.a(this.i);
+      $$0.a(this.j);
    }
 
-   public void a(ww $$0) {
+   public void a(wx $$0) {
       $$0.a(this);
    }
 
-   @Override
-   public boolean b() {
-      return true;
-   }
-
-   public int d() {
-      return this.b;
-   }
-
-   @Nullable
-   public tw e() {
-      return this.c;
-   }
-
-   public ud.a f() {
-      return this.d;
-   }
-
-   @Nullable
-   public tl g() {
+   public boolean a() {
       return this.e;
    }
 
-   public to h() {
+   public boolean d() {
       return this.f;
    }
 
-   public th.b i() {
+   public boolean e() {
       return this.g;
+   }
+
+   public boolean f() {
+      return this.h;
+   }
+
+   public float g() {
+      return this.i;
+   }
+
+   public float h() {
+      return this.j;
    }
 }

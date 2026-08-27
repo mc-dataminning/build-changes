@@ -1,17 +1,13 @@
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record dtj(he<cja> c, dtl d) {
-   public static final Codec<dtj> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(aet.a(jc.D).fieldOf("display").forGetter($$0x -> $$0x.c), dtl.a.fieldOf("settings").forGetter($$0x -> $$0x.d)).apply($$0, dtj::new)
+public abstract class dtj {
+   private static final Codec<Either<dlg, dtj>> a = Codec.either(dlg.a, jb.O.q().dispatch(dtj::a, dtk::codec));
+   public static final Codec<dtj> c = a.xmap(
+      $$0 -> (dtj)$$0.map(dti::a, $$0x -> $$0x), $$0 -> $$0.a() == dtk.a ? Either.left(((dti)$$0).b()) : Either.right($$0)
    );
-   public static final Codec<he<dtj>> b = aes.a(jc.av, a);
 
-   public he<cja> a() {
-      return this.c;
-   }
+   public abstract int a(ash var1, dlj var2);
 
-   public dtl b() {
-      return this.d;
-   }
+   public abstract dtk<?> a();
 }

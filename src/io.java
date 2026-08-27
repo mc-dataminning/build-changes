@@ -6,12 +6,12 @@ import java.util.Locale;
 import org.joml.Vector3f;
 
 public class io extends iq {
-   public static final Vector3f a = ehn.a(3790560).j();
+   public static final Vector3f a = ehh.a(3790560).j();
    public static final io b = new io(a, ip.a, 1.0F);
    public static final Codec<io> c = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               arf.d.fieldOf("fromColor").forGetter($$0x -> $$0x.g),
-               arf.d.fieldOf("toColor").forGetter($$0x -> $$0x.i),
+               arj.d.fieldOf("fromColor").forGetter($$0x -> $$0x.g),
+               arj.d.fieldOf("toColor").forGetter($$0x -> $$0x.i),
                Codec.FLOAT.fieldOf("scale").forGetter($$0x -> $$0x.h)
             )
             .apply($$0, io::new)

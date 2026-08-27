@@ -1,30 +1,29 @@
-import java.util.function.IntFunction;
+import com.google.common.collect.Lists;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public enum eqf implements ary {
-   a(0, "options.off"),
-   b(1, "options.attack.crosshair"),
-   c(2, "options.attack.hotbar");
+public class eqf {
+   private final List<tq> a = Lists.newArrayList();
 
-   private static final IntFunction<eqf> d = aqr.a(eqf::a, values(), aqr.a.b);
-   private final int e;
-   private final String f;
-
-   private eqf(int $$0, String $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   public void a(tq $$0) {
+      this.a.add($$0);
    }
 
-   @Override
-   public int a() {
-      return this.e;
+   @Nullable
+   public tq a() {
+      if (this.a.isEmpty()) {
+         return null;
+      } else {
+         return this.a.size() == 1 ? this.a.get(0) : tq.a(this.a);
+      }
    }
 
-   @Override
-   public String b() {
-      return this.f;
+   public tq b() {
+      tq $$0 = this.a();
+      return $$0 != null ? $$0 : tq.b;
    }
 
-   public static eqf a(int $$0) {
-      return d.apply($$0);
+   public void c() {
+      this.a.clear();
    }
 }

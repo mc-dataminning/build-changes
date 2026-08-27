@@ -96,17 +96,17 @@ public class qz extends rk {
 
    @Override
    public int g() {
-      return arw.d(this.w);
+      return asb.d(this.w);
    }
 
    @Override
    public short h() {
-      return (short)(arw.d(this.w) & 65535);
+      return (short)(asb.d(this.w) & 65535);
    }
 
    @Override
    public byte i() {
-      return (byte)(arw.d(this.w) & 0xFF);
+      return (byte)(asb.d(this.w) & 0xFF);
    }
 
    @Override

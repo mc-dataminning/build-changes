@@ -1,19 +1,26 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dyn extends dyo {
-   public static final Codec<dyn> a = Codec.unit(() -> dyn.b);
-   public static final dyn b = new dyn();
+public class dyn extends dyp {
+   public static final Codec<dyn> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(dfd.b.fieldOf("block_state").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("probability").forGetter($$0x -> $$0x.d))
+            .apply($$0, dyn::new)
+   );
+   private final dfd b;
+   private final float d;
 
-   private dyn() {
+   public dyn(dfd $$0, float $$1) {
+      this.b = $$0;
+      this.d = $$1;
    }
 
    @Override
-   public boolean a(gw $$0, gw $$1, gw $$2, asc $$3) {
-      return true;
+   public boolean a(dfd $$0, ash $$1) {
+      return $$0 == this.b && $$1.i() < this.d;
    }
 
    @Override
-   protected dyp<?> a() {
-      return dyp.a;
+   protected dyq<?> a() {
+      return dyq.f;
    }
 }

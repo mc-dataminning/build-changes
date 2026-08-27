@@ -14,7 +14,7 @@ public class kq implements ji {
       this.d = $$0;
    }
 
-   public <T> kq a(amu<T> $$0, T $$1) {
+   public <T> kq a(amx<T> $$0, T $$1) {
       this.e.put($$0.a(), () -> $$0.a($$1));
       return this;
    }
@@ -32,10 +32,10 @@ public class kq implements ji {
    }
 
    public static kq a(jk $$0, tl $$1) {
-      return new kq($$0).a(amv.b, new amv($$1, t.a.a(ami.b), Optional.empty()));
+      return new kq($$0).a(amy.b, new amy($$1, t.a.a(aml.b), Optional.empty()));
    }
 
-   public static kq a(jk $$0, tl $$1, cec $$2) {
-      return a($$0, $$1).a(ame.a, new ame($$2));
+   public static kq a(jk $$0, tl $$1, cei $$2) {
+      return a($$0, $$1).a(amh.a, new amh($$2));
    }
 }

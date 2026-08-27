@@ -1,31 +1,60 @@
-public class ftd extends fun<byy, ffb<byy>> {
-   private static final aew a = new aew("textures/entity/enderman/enderman.png");
-   private final asc i = asc.a();
+@FunctionalInterface
+public interface ftd<T extends biw> {
+   ftc<T> create(ftd.a var1);
 
-   public ftd(fth.a $$0) {
-      super($$0, new ffb<>($$0.a(fib.R)), 0.5F);
-      this.a(new fwz<>(this));
-      this.a(new fwq(this, $$0.c()));
-   }
+   public static class a {
+      private final ftb a;
+      private final fub b;
+      private final fou c;
+      private final fnw d;
+      private final anw e;
+      private final fht f;
+      private final erx g;
 
-   public void a(byy $$0, float $$1, float $$2, elp $$3, foe $$4, int $$5) {
-      dfj $$6 = $$0.gd();
-      ffb<byy> $$7 = this.a();
-      $$7.a = $$6 != null;
-      $$7.b = $$0.ge();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   public ehn a(byy $$0, float $$1) {
-      if ($$0.ge()) {
-         double $$2 = 0.02;
-         return new ehn(this.i.k() * 0.02, 0.0, this.i.k() * 0.02);
-      } else {
-         return super.a($$0, $$1);
+      public a(ftb $$0, fub $$1, fou $$2, fnw $$3, anw $$4, fht $$5, erx $$6) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+         this.f = $$5;
+         this.g = $$6;
       }
-   }
 
-   public aew a(byy $$0) {
-      return a;
+      public ftb a() {
+         return this.a;
+      }
+
+      public fub b() {
+         return this.b;
+      }
+
+      public fou c() {
+         return this.c;
+      }
+
+      public fnw d() {
+         return this.d;
+      }
+
+      public anw e() {
+         return this.e;
+      }
+
+      public fht f() {
+         return this.f;
+      }
+
+      public gbh g() {
+         return this.c.a().a();
+      }
+
+      public fhx a(fhv $$0) {
+         return this.f.a($$0);
+      }
+
+      public erx h() {
+         return this.g;
+      }
    }
 }

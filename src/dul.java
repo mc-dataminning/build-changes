@@ -1,37 +1,42 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
 
-public class dul extends dut {
+public class dul extends duj {
    public static final Codec<dul> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.DOUBLE.fieldOf("noise_level").forGetter($$0x -> $$0x.c),
-               Codec.INT.fieldOf("below_noise").forGetter($$0x -> $$0x.d),
-               Codec.INT.fieldOf("above_noise").forGetter($$0x -> $$0x.e)
-            )
+      $$0 -> $$0.group(bgj.b(-16, 16).fieldOf("xz_spread").forGetter($$0x -> $$0x.c), bgj.b(-16, 16).fieldOf("y_spread").forGetter($$0x -> $$0x.d))
             .apply($$0, dul::new)
    );
-   private final double c;
-   private final int d;
-   private final int e;
+   private final bgj c;
+   private final bgj d;
 
-   private dul(double $$0, int $$1, int $$2) {
+   public static dul a(bgj $$0, bgj $$1) {
+      return new dul($$0, $$1);
+   }
+
+   public static dul a(bgj $$0) {
+      return new dul(bgg.a(0), $$0);
+   }
+
+   public static dul b(bgj $$0) {
+      return new dul($$0, bgg.a(0));
+   }
+
+   private dul(bgj $$0, bgj $$1) {
       this.c = $$0;
       this.d = $$1;
-      this.e = $$2;
-   }
-
-   public static dul a(double $$0, int $$1, int $$2) {
-      return new dul($$0, $$1, $$2);
    }
 
    @Override
-   protected int a(asc $$0, gw $$1) {
-      double $$2 = cqt.e.a((double)$$1.u() / 200.0, (double)$$1.w() / 200.0, false);
-      return $$2 < this.c ? this.d : this.e;
+   public Stream<gw> a_(duh $$0, ash $$1, gw $$2) {
+      int $$3 = $$2.u() + this.c.a($$1);
+      int $$4 = $$2.v() + this.d.a($$1);
+      int $$5 = $$2.w() + this.c.a($$1);
+      return Stream.of(new gw($$3, $$4, $$5));
    }
 
    @Override
-   public duq<?> b() {
-      return duq.h;
+   public duk<?> b() {
+      return duk.n;
    }
 }

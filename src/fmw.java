@@ -1,42 +1,62 @@
-public class fmw extends fls {
-   private final biq a;
-   private int b;
-   private final int D;
-   private final it E;
-
-   public fmw(fix $$0, biq $$1, it $$2) {
-      this($$0, $$1, $$2, 3);
+public class fmw extends fmq {
+   protected fmw(fis $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.j *= 0.3F;
+      this.k = Math.random() * 0.2F + 0.1F;
+      this.l *= 0.3F;
+      this.b(0.01F, 0.01F);
+      this.u = 0.06F;
+      this.t = (int)(8.0 / (Math.random() * 0.8 + 0.2));
    }
 
-   public fmw(fix $$0, biq $$1, it $$2, int $$3) {
-      this($$0, $$1, $$2, $$3, $$1.do());
-   }
-
-   private fmw(fix $$0, biq $$1, it $$2, int $$3, ehn $$4) {
-      super($$0, $$1.dq(), $$1.e(0.5), $$1.dw(), $$4.c, $$4.d, $$4.e);
-      this.a = $$1;
-      this.D = $$3;
-      this.E = $$2;
-      this.a();
+   @Override
+   public flu b() {
+      return flu.b;
    }
 
    @Override
    public void a() {
-      for (int $$0 = 0; $$0 < 16; $$0++) {
-         double $$1 = (double)(this.r.i() * 2.0F - 1.0F);
-         double $$2 = (double)(this.r.i() * 2.0F - 1.0F);
-         double $$3 = (double)(this.r.i() * 2.0F - 1.0F);
-         if (!($$1 * $$1 + $$2 * $$2 + $$3 * $$3 > 1.0)) {
-            double $$4 = this.a.c($$1 / 4.0);
-            double $$5 = this.a.e(0.5 + $$2 / 4.0);
-            double $$6 = this.a.f($$3 / 4.0);
-            this.c.a(this.E, false, $$4, $$5, $$6, $$1, $$2 + 0.2, $$3);
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.t-- <= 0) {
+         this.k();
+      } else {
+         this.k = this.k - (double)this.u;
+         this.a(this.j, this.k, this.l);
+         this.j *= 0.98F;
+         this.k *= 0.98F;
+         this.l *= 0.98F;
+         if (this.m) {
+            if (Math.random() < 0.5) {
+               this.k();
+            }
+
+            this.j *= 0.7F;
+            this.l *= 0.7F;
+         }
+
+         gw $$0 = gw.a(this.g, this.h, this.i);
+         double $$1 = Math.max(
+            this.c.a_($$0).k(this.c, $$0).b(ha.a.b, this.g - (double)$$0.u(), this.i - (double)$$0.w()), (double)this.c.b_($$0).a((cph)this.c, $$0)
+         );
+         if ($$1 > 0.0 && this.h < (double)$$0.v() + $$1) {
+            this.k();
          }
       }
+   }
 
-      this.b++;
-      if (this.b >= this.D) {
-         this.k();
+   public static class a implements flt<iy> {
+      private final fml a;
+
+      public a(fml $$0) {
+         this.a = $$0;
+      }
+
+      public flq a(iy $$0, fis $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fmw $$8 = new fmw($$1, $$2, $$3, $$4);
+         $$8.a(this.a);
+         return $$8;
       }
    }
 }

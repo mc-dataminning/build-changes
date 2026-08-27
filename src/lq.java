@@ -11,9 +11,9 @@ public interface lq {
       return $$0;
    }
 
-   aew b();
+   aez b();
 
-   cmm<?> c();
+   cms<?> c();
 
    @Nullable
    af d();

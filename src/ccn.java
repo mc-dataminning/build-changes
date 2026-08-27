@@ -1,139 +1,267 @@
-import java.util.Optional;
-import java.util.function.Predicate;
+import java.util.OptionalInt;
 import javax.annotation.Nullable;
 
-public final class ccn {
-   public static ehl a(biq $$0, Predicate<biq> $$1) {
-      ehn $$2 = $$0.do();
-      cpv $$3 = $$0.dL();
-      ehn $$4 = $$0.dj();
-      return a($$4, $$0, $$1, $$2, $$3);
-   }
-
-   public static ehl a(biq $$0, Predicate<biq> $$1, double $$2) {
-      ehn $$3 = $$0.f(0.0F).a($$2);
-      cpv $$4 = $$0.dL();
-      ehn $$5 = $$0.bp();
-      return a($$5, $$0, $$1, $$3, $$4);
-   }
-
-   private static ehl a(ehn $$0, biq $$1, Predicate<biq> $$2, ehn $$3, cpv $$4) {
-      ehn $$5 = $$0.e($$3);
-      ehl $$6 = $$4.a(new cpe($$0, $$5, cpe.a.a, cpe.b.a, $$1));
-      if ($$6.c() != ehl.a.a) {
-         $$5 = $$6.e();
-      }
-
-      ehl $$7 = a($$4, $$1, $$0, $$5, $$1.cG().b($$3).g(1.0), $$2);
-      if ($$7 != null) {
-         $$6 = $$7;
-      }
-
-      return $$6;
-   }
-
+public class ccn extends ccs implements ccp {
+   private static final aef<cjl> b = aei.a(ccn.class, aeh.h);
+   private static final aef<OptionalInt> c = aei.a(ccn.class, aeh.u);
+   private static final aef<Boolean> d = aei.a(ccn.class, aeh.k);
+   private int e;
+   private int f;
    @Nullable
-   public static ehk a(biq $$0, ehn $$1, ehn $$2, ehi $$3, Predicate<biq> $$4, double $$5) {
-      cpv $$6 = $$0.dL();
-      double $$7 = $$5;
-      biq $$8 = null;
-      ehn $$9 = null;
+   private bjm g;
 
-      for (biq $$10 : $$6.a($$0, $$3, $$4)) {
-         ehi $$11 = $$10.cG().g((double)$$10.bD());
-         Optional<ehn> $$12 = $$11.b($$1, $$2);
-         if ($$11.d($$1)) {
-            if ($$7 >= 0.0) {
-               $$8 = $$10;
-               $$9 = $$12.orElse($$1);
-               $$7 = 0.0;
+   public ccn(bja<? extends ccn> $$0, cqb $$1) {
+      super($$0, $$1);
+   }
+
+   public ccn(cqb $$0, double $$1, double $$2, double $$3, cjl $$4) {
+      super(bja.M, $$0);
+      this.e = 0;
+      this.e($$1, $$2, $$3);
+      int $$5 = 1;
+      if (!$$4.b() && $$4.u()) {
+         this.an.b(b, $$4.p());
+         $$5 += $$4.a("Fireworks").f("Flight");
+      }
+
+      this.o(this.ag.a(0.0, 0.002297), 0.05, this.ag.a(0.0, 0.002297));
+      this.f = 10 * $$5 + this.ag.a(6) + this.ag.a(7);
+   }
+
+   public ccn(cqb $$0, @Nullable biw $$1, double $$2, double $$3, double $$4, cjl $$5) {
+      this($$0, $$2, $$3, $$4, $$5);
+      this.b($$1);
+   }
+
+   public ccn(cqb $$0, cjl $$1, bjm $$2) {
+      this($$0, $$2, $$2.dq(), $$2.ds(), $$2.dw(), $$1);
+      this.an.b(c, OptionalInt.of($$2.ah()));
+      this.g = $$2;
+   }
+
+   public ccn(cqb $$0, cjl $$1, double $$2, double $$3, double $$4, boolean $$5) {
+      this($$0, $$2, $$3, $$4, $$1);
+      this.an.b(d, $$5);
+   }
+
+   public ccn(cqb $$0, cjl $$1, biw $$2, double $$3, double $$4, double $$5, boolean $$6) {
+      this($$0, $$1, $$3, $$4, $$5, $$6);
+      this.b($$2);
+   }
+
+   @Override
+   protected void a_() {
+      this.an.a(b, cjl.b);
+      this.an.a(c, OptionalInt.empty());
+      this.an.a(d, false);
+   }
+
+   @Override
+   public boolean a(double $$0) {
+      return $$0 < 4096.0 && !this.y();
+   }
+
+   @Override
+   public boolean k(double $$0, double $$1, double $$2) {
+      return super.k($$0, $$1, $$2) && !this.y();
+   }
+
+   @Override
+   public void l() {
+      super.l();
+      if (this.y()) {
+         if (this.g == null) {
+            this.an.b(c).ifPresent($$0x -> {
+               biw $$1x = this.dL().a($$0x);
+               if ($$1x instanceof bjm) {
+                  this.g = (bjm)$$1x;
+               }
+            });
+         }
+
+         if (this.g != null) {
+            ehh $$4;
+            if (this.g.fw()) {
+               ehh $$0 = this.g.bE();
+               double $$1 = 1.5;
+               double $$2 = 0.1;
+               ehh $$3 = this.g.do();
+               this.g.f($$3.b($$0.c * 0.1 + ($$0.c * 1.5 - $$3.c) * 0.5, $$0.d * 0.1 + ($$0.d * 1.5 - $$3.d) * 0.5, $$0.e * 0.1 + ($$0.e * 1.5 - $$3.e) * 0.5));
+               $$4 = this.g.a(cjo.tA);
+            } else {
+               $$4 = ehh.b;
             }
-         } else if ($$12.isPresent()) {
-            ehn $$13 = $$12.get();
-            double $$14 = $$1.g($$13);
-            if ($$14 < $$7 || $$7 == 0.0) {
-               if ($$10.cV() == $$0.cV()) {
-                  if ($$7 == 0.0) {
-                     $$8 = $$10;
-                     $$9 = $$13;
+
+            this.e(this.g.dq() + $$4.c, this.g.ds() + $$4.d, this.g.dw() + $$4.e);
+            this.f(this.g.do());
+         }
+      } else {
+         if (!this.s()) {
+            double $$6 = this.P ? 1.0 : 1.15;
+            this.f(this.do().d($$6, 1.0, $$6).b(0.0, 0.04, 0.0));
+         }
+
+         ehh $$7 = this.do();
+         this.a(bjs.a, $$7);
+         this.f($$7);
+      }
+
+      ehf $$8 = cct.a(this, this::a);
+      if (!this.af) {
+         this.a($$8);
+         this.au = true;
+      }
+
+      this.H();
+      if (this.e == 0 && !this.aS()) {
+         this.dL().a(null, this.dq(), this.ds(), this.dw(), apg.hI, aph.i, 3.0F, 1.0F);
+      }
+
+      this.e++;
+      if (this.dL().B && this.e % 2 < 2) {
+         this.dL().a(iv.A, this.dq(), this.ds(), this.dw(), this.ag.k() * 0.05, -this.do().d * 0.5, this.ag.k() * 0.05);
+      }
+
+      if (!this.dL().B && this.e > this.f) {
+         this.t();
+      }
+   }
+
+   private void t() {
+      this.dL().a(this, (byte)17);
+      this.a(djn.w, this.v());
+      this.x();
+      this.ak();
+   }
+
+   @Override
+   protected void a(ehe $$0) {
+      super.a($$0);
+      if (!this.dL().B) {
+         this.t();
+      }
+   }
+
+   @Override
+   protected void a(ehd $$0) {
+      gw $$1 = new gw($$0.a());
+      this.dL().a_($$1).a(this.dL(), $$1, this);
+      if (!this.dL().w_() && this.w()) {
+         this.t();
+      }
+
+      super.a($$0);
+   }
+
+   private boolean w() {
+      cjl $$0 = this.an.b(b);
+      qw $$1 = $$0.b() ? null : $$0.b("Fireworks");
+      rc $$2 = $$1 != null ? $$1.c("Explosions", 10) : null;
+      return $$2 != null && !$$2.isEmpty();
+   }
+
+   private void x() {
+      float $$0 = 0.0F;
+      cjl $$1 = this.an.b(b);
+      qw $$2 = $$1.b() ? null : $$1.b("Fireworks");
+      rc $$3 = $$2 != null ? $$2.c("Explosions", 10) : null;
+      if ($$3 != null && !$$3.isEmpty()) {
+         $$0 = 5.0F + (float)($$3.size() * 2);
+      }
+
+      if ($$0 > 0.0F) {
+         if (this.g != null) {
+            this.g.a(this.dM().a(this, this.v()), 5.0F + (float)($$3.size() * 2));
+         }
+
+         double $$4 = 5.0;
+         ehh $$5 = this.dj();
+
+         for (bjm $$7 : this.dL().a(bjm.class, this.cG().g(5.0))) {
+            if ($$7 != this.g && !(this.f($$7) > 25.0)) {
+               boolean $$8 = false;
+
+               for (int $$9 = 0; $$9 < 2; $$9++) {
+                  ehh $$10 = new ehh($$7.dq(), $$7.e(0.5 * (double)$$9), $$7.dw());
+                  ehf $$11 = this.dL().a(new cpk($$5, $$10, cpk.a.a, cpk.b.a, this));
+                  if ($$11.c() == ehf.a.a) {
+                     $$8 = true;
+                     break;
                   }
-               } else {
-                  $$8 = $$10;
-                  $$9 = $$13;
-                  $$7 = $$14;
+               }
+
+               if ($$8) {
+                  float $$12 = $$0 * (float)Math.sqrt((5.0 - (double)this.e($$7)) / 5.0);
+                  $$7.a(this.dM().a(this, this.v()), $$12);
                }
             }
          }
       }
-
-      return $$8 == null ? null : new ehk($$8, $$9);
    }
 
-   @Nullable
-   public static ehk a(cpv $$0, biq $$1, ehn $$2, ehn $$3, ehi $$4, Predicate<biq> $$5) {
-      return a($$0, $$1, $$2, $$3, $$4, $$5, 0.3F);
+   private boolean y() {
+      return this.an.b(c).isPresent();
    }
 
-   @Nullable
-   public static ehk a(cpv $$0, biq $$1, ehn $$2, ehn $$3, ehi $$4, Predicate<biq> $$5, float $$6) {
-      double $$7 = Double.MAX_VALUE;
-      biq $$8 = null;
+   @Override
+   public boolean s() {
+      return this.an.b(d);
+   }
 
-      for (biq $$9 : $$0.a($$1, $$4, $$5)) {
-         ehi $$10 = $$9.cG().g((double)$$6);
-         Optional<ehn> $$11 = $$10.b($$2, $$3);
-         if ($$11.isPresent()) {
-            double $$12 = $$2.g($$11.get());
-            if ($$12 < $$7) {
-               $$8 = $$9;
-               $$7 = $$12;
+   @Override
+   public void b(byte $$0) {
+      if ($$0 == 17 && this.dL().B) {
+         if (!this.w()) {
+            for (int $$1 = 0; $$1 < this.ag.a(3) + 2; $$1++) {
+               this.dL().a(iv.W, this.dq(), this.ds(), this.dw(), this.ag.k() * 0.05, 0.005, this.ag.k() * 0.05);
             }
+         } else {
+            cjl $$2 = this.an.b(b);
+            qw $$3 = $$2.b() ? null : $$2.b("Fireworks");
+            ehh $$4 = this.do();
+            this.dL().a(this.dq(), this.ds(), this.dw(), $$4.c, $$4.d, $$4.e, $$3);
          }
       }
 
-      return $$8 == null ? null : new ehk($$8);
+      super.b($$0);
    }
 
-   public static void a(biq $$0, float $$1) {
-      ehn $$2 = $$0.do();
-      if ($$2.g() != 0.0) {
-         double $$3 = $$2.h();
-         $$0.r((float)(arw.d($$2.e, $$2.c) * 180.0F / (float)Math.PI) + 90.0F);
-         $$0.s((float)(arw.d($$3, $$2.d) * 180.0F / (float)Math.PI) - 90.0F);
+   @Override
+   public void b(qw $$0) {
+      super.b($$0);
+      $$0.a("Life", this.e);
+      $$0.a("LifeTime", this.f);
+      cjl $$1 = this.an.b(b);
+      if (!$$1.b()) {
+         $$0.a("FireworksItem", $$1.b(new qw()));
+      }
 
-         while ($$0.dD() - $$0.O < -180.0F) {
-            $$0.O -= 360.0F;
-         }
+      $$0.a("ShotAtAngle", this.an.b(d));
+   }
 
-         while ($$0.dD() - $$0.O >= 180.0F) {
-            $$0.O += 360.0F;
-         }
+   @Override
+   public void a(qw $$0) {
+      super.a($$0);
+      this.e = $$0.h("Life");
+      this.f = $$0.h("LifeTime");
+      cjl $$1 = cjl.a($$0.p("FireworksItem"));
+      if (!$$1.b()) {
+         this.an.b(b, $$1);
+      }
 
-         while ($$0.dB() - $$0.N < -180.0F) {
-            $$0.N -= 360.0F;
-         }
-
-         while ($$0.dB() - $$0.N >= 180.0F) {
-            $$0.N += 360.0F;
-         }
-
-         $$0.s(arw.i($$1, $$0.O, $$0.dD()));
-         $$0.r(arw.i($$1, $$0.N, $$0.dB()));
+      if ($$0.e("ShotAtAngle")) {
+         this.an.b(d, $$0.q("ShotAtAngle"));
       }
    }
 
-   public static bgx a(bjg $$0, cja $$1) {
-      return $$0.eS().a($$1) ? bgx.a : bgx.b;
+   @Override
+   public cjl q() {
+      cjl $$0 = this.an.b(b);
+      return $$0.b() ? new cjl(cjo.tA) : $$0;
    }
 
-   public static cca a(bjg $$0, cjf $$1, float $$2) {
-      cgt $$3 = (cgt)($$1.d() instanceof cgt ? $$1.d() : cji.nH);
-      cca $$4 = $$3.a($$0.dL(), $$1, $$0);
-      $$4.a($$0, $$2);
-      if ($$1.a(cji.uw) && $$4 instanceof ccc) {
-         ((ccc)$$4).a($$1);
-      }
-
-      return $$4;
+   @Override
+   public boolean cp() {
+      return false;
    }
 }

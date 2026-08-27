@@ -1,143 +1,38 @@
-import javax.annotation.Nullable;
+public class eaz extends eat {
+   private float m = Float.MAX_VALUE;
+   private eat n;
+   private boolean o;
 
-public class eaz {
-   public final int a;
-   public final int b;
-   public final int c;
-   private final int m;
-   public int d = -1;
-   public float e;
-   public float f;
-   public float g;
-   @Nullable
-   public eaz h;
-   public boolean i;
-   public float j;
-   public float k;
-   public eax l = eax.a;
+   public eaz(eat $$0) {
+      super($$0.a, $$0.b, $$0.c);
+   }
 
    public eaz(int $$0, int $$1, int $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.m = b($$0, $$1, $$2);
+      super($$0, $$1, $$2);
    }
 
-   public eaz a(int $$0, int $$1, int $$2) {
-      eaz $$3 = new eaz($$0, $$1, $$2);
-      $$3.d = this.d;
-      $$3.e = this.e;
-      $$3.f = this.f;
-      $$3.g = this.g;
-      $$3.h = this.h;
-      $$3.i = this.i;
-      $$3.j = this.j;
-      $$3.k = this.k;
-      $$3.l = this.l;
-      return $$3;
+   public void a(float $$0, eat $$1) {
+      if ($$0 < this.m) {
+         this.m = $$0;
+         this.n = $$1;
+      }
    }
 
-   public static int b(int $$0, int $$1, int $$2) {
-      return $$1 & 0xFF | ($$0 & 32767) << 8 | ($$2 & 32767) << 24 | ($$0 < 0 ? Integer.MIN_VALUE : 0) | ($$2 < 0 ? 32768 : 0);
+   public eat d() {
+      return this.n;
    }
 
-   public float a(eaz $$0) {
-      float $$1 = (float)($$0.a - this.a);
-      float $$2 = (float)($$0.b - this.b);
-      float $$3 = (float)($$0.c - this.c);
-      return arw.c($$1 * $$1 + $$2 * $$2 + $$3 * $$3);
+   public void e() {
+      this.o = true;
    }
 
-   public float b(eaz $$0) {
-      float $$1 = (float)($$0.a - this.a);
-      float $$2 = (float)($$0.c - this.c);
-      return arw.c($$1 * $$1 + $$2 * $$2);
+   public boolean f() {
+      return this.o;
    }
 
-   public float a(gw $$0) {
-      float $$1 = (float)($$0.u() - this.a);
-      float $$2 = (float)($$0.v() - this.b);
-      float $$3 = (float)($$0.w() - this.c);
-      return arw.c($$1 * $$1 + $$2 * $$2 + $$3 * $$3);
-   }
-
-   public float c(eaz $$0) {
-      float $$1 = (float)($$0.a - this.a);
-      float $$2 = (float)($$0.b - this.b);
-      float $$3 = (float)($$0.c - this.c);
-      return $$1 * $$1 + $$2 * $$2 + $$3 * $$3;
-   }
-
-   public float b(gw $$0) {
-      float $$1 = (float)($$0.u() - this.a);
-      float $$2 = (float)($$0.v() - this.b);
-      float $$3 = (float)($$0.w() - this.c);
-      return $$1 * $$1 + $$2 * $$2 + $$3 * $$3;
-   }
-
-   public float d(eaz $$0) {
-      float $$1 = (float)Math.abs($$0.a - this.a);
-      float $$2 = (float)Math.abs($$0.b - this.b);
-      float $$3 = (float)Math.abs($$0.c - this.c);
-      return $$1 + $$2 + $$3;
-   }
-
-   public float c(gw $$0) {
-      float $$1 = (float)Math.abs($$0.u() - this.a);
-      float $$2 = (float)Math.abs($$0.v() - this.b);
-      float $$3 = (float)Math.abs($$0.w() - this.c);
-      return $$1 + $$2 + $$3;
-   }
-
-   public gw a() {
-      return new gw(this.a, this.b, this.c);
-   }
-
-   public ehn b() {
-      return new ehn((double)this.a, (double)this.b, (double)this.c);
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      return !($$0 instanceof eaz $$1) ? false : this.m == $$1.m && this.a == $$1.a && this.b == $$1.b && this.c == $$1.c;
-   }
-
-   @Override
-   public int hashCode() {
-      return this.m;
-   }
-
-   public boolean c() {
-      return this.d >= 0;
-   }
-
-   @Override
-   public String toString() {
-      return "Node{x=" + this.a + ", y=" + this.b + ", z=" + this.c + "}";
-   }
-
-   public void a(so $$0) {
-      $$0.p(this.a);
-      $$0.p(this.b);
-      $$0.p(this.c);
-      $$0.a(this.j);
-      $$0.a(this.k);
-      $$0.a(this.i);
-      $$0.a(this.l);
-      $$0.a(this.g);
-   }
-
-   public static eaz b(so $$0) {
+   public static eaz c(so $$0) {
       eaz $$1 = new eaz($$0.readInt(), $$0.readInt(), $$0.readInt());
       a($$0, $$1);
       return $$1;
-   }
-
-   protected static void a(so $$0, eaz $$1) {
-      $$1.j = $$0.readFloat();
-      $$1.k = $$0.readFloat();
-      $$1.i = $$0.readBoolean();
-      $$1.l = $$0.b(eax.class);
-      $$1.g = $$0.readFloat();
    }
 }

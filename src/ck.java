@@ -3,27 +3,27 @@ import java.util.Optional;
 
 public class ck extends cw<ck.a> {
    protected ck.a a(JsonObject $$0, Optional<bc> $$1, bg $$2) {
-      aew $$3 = new aew(arn.i($$0, "loot_table"));
+      aez $$3 = new aez(arr.i($$0, "loot_table"));
       return new ck.a($$1, $$3);
    }
 
-   public void a(akr $$0, aew $$1) {
+   public void a(aku $$0, aez $$1) {
       this.a($$0, $$1x -> $$1x.b($$1));
    }
 
    public static class a extends at {
-      private final aew a;
+      private final aez a;
 
-      public a(Optional<bc> $$0, aew $$1) {
+      public a(Optional<bc> $$0, aez $$1) {
          super($$0);
          this.a = $$1;
       }
 
-      public static am<ck.a> a(aew $$0) {
+      public static am<ck.a> a(aez $$0) {
          return al.N.a(new ck.a(Optional.empty(), $$0));
       }
 
-      public boolean b(aew $$0) {
+      public boolean b(aez $$0) {
          return this.a.equals($$0);
       }
 

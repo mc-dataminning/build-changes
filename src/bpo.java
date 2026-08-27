@@ -1,50 +1,84 @@
 import java.util.EnumSet;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public class bpo extends bqo {
-   private final buu g;
+public class bpo<T extends bjm> extends bqh {
+   protected final bjv a;
+   private final double i;
+   private final double j;
+   @Nullable
+   protected T b;
+   protected final float c;
+   @Nullable
+   protected eav d;
+   protected final bsv e;
+   protected final Class<T> f;
+   protected final Predicate<bjm> g;
+   protected final Predicate<bjm> h;
+   private final bty k;
 
-   public bpo(buu $$0, double $$1, int $$2) {
-      super($$0, $$1, $$2, 6);
-      this.g = $$0;
-      this.f = -2;
-      this.a(EnumSet.of(bqb.a.c, bqb.a.a));
+   public bpo(bjv $$0, Class<T> $$1, float $$2, double $$3, double $$4) {
+      this($$0, $$1, $$0x -> true, $$2, $$3, $$4, biz.e::test);
+   }
+
+   public bpo(bjv $$0, Class<T> $$1, Predicate<bjm> $$2, float $$3, double $$4, double $$5, Predicate<bjm> $$6) {
+      this.a = $$0;
+      this.f = $$1;
+      this.g = $$2;
+      this.c = $$3;
+      this.i = $$4;
+      this.j = $$5;
+      this.h = $$6;
+      this.e = $$0.L();
+      this.a(EnumSet.of(bqh.a.a));
+      this.k = bty.a().a((double)$$3).a($$6.and($$2));
+   }
+
+   public bpo(bjv $$0, Class<T> $$1, float $$2, double $$3, double $$4, Predicate<bjm> $$5) {
+      this($$0, $$1, $$0x -> true, $$2, $$3, $$4, $$5);
    }
 
    @Override
    public boolean a() {
-      return this.g.s() && !this.g.gd() && !this.g.gl() && super.a();
-   }
-
-   @Override
-   public void c() {
-      super.c();
-      this.g.y(false);
-   }
-
-   @Override
-   protected int a(bjp $$0) {
-      return 40;
-   }
-
-   @Override
-   public void d() {
-      super.d();
-      this.g.A(false);
-   }
-
-   @Override
-   public void e() {
-      super.e();
-      this.g.y(false);
-      if (!this.m()) {
-         this.g.A(false);
-      } else if (!this.g.gl()) {
-         this.g.A(true);
+      this.b = this.a
+         .dL()
+         .a(this.a.dL().a(this.f, this.a.cG().c((double)this.c, 3.0, (double)this.c), $$0x -> true), this.k, this.a, this.a.dq(), this.a.ds(), this.a.dw());
+      if (this.b == null) {
+         return false;
+      } else {
+         ehh $$0 = buc.a(this.a, 16, 7, this.b.dj());
+         if ($$0 == null) {
+            return false;
+         } else if (this.b.i($$0.c, $$0.d, $$0.e) < this.b.f(this.a)) {
+            return false;
+         } else {
+            this.d = this.e.a($$0.c, $$0.d, $$0.e, 0);
+            return this.d != null;
+         }
       }
    }
 
    @Override
-   protected boolean a(cpy $$0, gw $$1) {
-      return $$0.t($$1.c()) && $$0.a_($$1).a(aps.R);
+   public boolean b() {
+      return !this.e.l();
+   }
+
+   @Override
+   public void c() {
+      this.e.a(this.d, this.i);
+   }
+
+   @Override
+   public void d() {
+      this.b = null;
+   }
+
+   @Override
+   public void e() {
+      if (this.a.f((biw)this.b) < 49.0) {
+         this.a.L().a(this.j);
+      } else {
+         this.a.L().a(this.i);
+      }
    }
 }

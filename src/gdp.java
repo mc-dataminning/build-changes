@@ -1,3 +1,8 @@
-public interface gdp {
-   void a(gcm var1, gdr var2);
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface gdp {
 }

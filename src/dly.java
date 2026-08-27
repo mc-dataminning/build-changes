@@ -1,25 +1,22 @@
 import com.mojang.serialization.Codec;
-import java.util.List;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-class dly extends dmb {
-   public static final Codec<dly> a = a(dly::new);
+public class dly extends dme {
+   final aqk<ctc> a;
+   public static final Codec<dly> e = RecordCodecBuilder.create($$0 -> a($$0).and(aqk.a(jc.e).fieldOf("tag").forGetter($$0x -> $$0x.a)).apply($$0, dly::new));
 
-   public dly(List<dlz> $$0) {
+   protected dly(hy $$0, aqk<ctc> $$1) {
       super($$0);
-   }
-
-   public boolean a(cqp $$0, gw $$1) {
-      for (dlz $$2 : this.e) {
-         if ($$2.test($$0, $$1)) {
-            return true;
-         }
-      }
-
-      return false;
+      this.a = $$1;
    }
 
    @Override
-   public dma<?> a() {
-      return dma.i;
+   protected boolean a(dfd $$0) {
+      return $$0.a(this.a);
+   }
+
+   @Override
+   public dlu<?> a() {
+      return dlu.b;
    }
 }

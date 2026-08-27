@@ -1,24 +1,31 @@
-public class dag extends csj {
-   public dag(dfi.d $$0) {
-      super($$0, 2.0F);
+import com.mojang.serialization.MapCodec;
+
+public class dag extends cuu {
+   public static final MapCodec<dag> b = b(dag::new);
+   private static final tl c = tl.c("container.upgrade");
+
+   @Override
+   public MapCodec<dag> a() {
+      return b;
+   }
+
+   protected dag(dfc.d $$0) {
+      super($$0);
    }
 
    @Override
-   public dfj a(dfj $$0, ha $$1, dfj $$2, cpw $$3, gw $$4, gw $$5) {
-      return this.a($$0, $$3, $$4) ? this.n() : csw.a.n();
+   public bhh b(dfd $$0, cqb $$1, gw $$2) {
+      return new bhm(($$2x, $$3, $$4) -> new cgk($$2x, $$3, cfc.a($$1, $$2)), c);
    }
 
    @Override
-   public boolean a(dfj $$0, cpy $$1, gw $$2) {
-      return h($$1.a_($$2.d()));
-   }
-
-   public static boolean h(dfj $$0) {
-      return $$0.a(aps.aS);
-   }
-
-   @Override
-   protected boolean f(dfj $$0) {
-      return true;
+   public bhe a(dfd $$0, cqb $$1, gw $$2, cca $$3, bhd $$4, ehd $$5) {
+      if ($$1.B) {
+         return bhe.a;
+      } else {
+         $$3.a($$0.b($$1, $$2));
+         $$3.a(apq.aF);
+         return bhe.b;
+      }
    }
 }

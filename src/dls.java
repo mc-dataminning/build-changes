@@ -1,32 +1,25 @@
 import com.mojang.serialization.Codec;
-import java.util.stream.LongStream;
+import java.util.List;
 
-public class dls {
-   private long b;
-   private long c;
-   public static final Codec<dls> a = Codec.LONG_STREAM
-      .comapFlatMap($$0 -> ac.a($$0, 2).map($$0x -> new dls($$0x[0], $$0x[1])), $$0 -> LongStream.of($$0.b, $$0.c));
+class dls extends dlv {
+   public static final Codec<dls> a = a(dls::new);
 
-   public dls(dlh.a $$0) {
-      this($$0.b(), $$0.c());
+   public dls(List<dlt> $$0) {
+      super($$0);
    }
 
-   public dls(long $$0, long $$1) {
-      this.b = $$0;
-      this.c = $$1;
-      if ((this.b | this.c) == 0L) {
-         this.b = -7046029254386353131L;
-         this.c = 7640891576956012809L;
+   public boolean a(cqv $$0, gw $$1) {
+      for (dlt $$2 : this.e) {
+         if ($$2.test($$0, $$1)) {
+            return true;
+         }
       }
+
+      return false;
    }
 
-   public long a() {
-      long $$0 = this.b;
-      long $$1 = this.c;
-      long $$2 = Long.rotateLeft($$0 + $$1, 17) + $$0;
-      $$1 ^= $$0;
-      this.b = Long.rotateLeft($$0, 49) ^ $$1 ^ $$1 << 21;
-      this.c = Long.rotateLeft($$1, 28);
-      return $$2;
+   @Override
+   public dlu<?> a() {
+      return dlu.i;
    }
 }

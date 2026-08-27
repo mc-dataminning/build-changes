@@ -1,59 +1,36 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.Function;
-import java.util.function.Predicate;
+import java.util.Set;
 
-public abstract class efg implements efp {
-   protected final List<efp> c;
-   private final Predicate<ecq> a;
+public record efg(efj b) implements efj {
+   public static final Codec<efg> a = RecordCodecBuilder.create($$0 -> $$0.group(efl.a.fieldOf("term").forGetter(efg::c)).apply($$0, efg::new));
 
-   protected efg(List<efp> $$0, Predicate<ecq> $$1) {
-      this.c = $$0;
-      this.a = $$1;
+   @Override
+   public efk b() {
+      return efl.b;
    }
 
-   protected static <T extends efg> Codec<T> a(Function<List<efp>, T> $$0) {
-      return RecordCodecBuilder.create($$1 -> $$1.group(efr.a.listOf().fieldOf("terms").forGetter($$0xx -> $$0xx.c)).apply($$1, $$0));
-   }
-
-   protected static <T extends efg> Codec<T> b(Function<List<efp>, T> $$0) {
-      return efr.a.listOf().xmap($$0, $$0x -> $$0x.c);
-   }
-
-   public final boolean a(ecq $$0) {
-      return this.a.test($$0);
+   public boolean a(eck $$0) {
+      return !this.b.test($$0);
    }
 
    @Override
-   public void a(ecz $$0) {
-      efp.super.a($$0);
-
-      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
-         this.c.get($$1).a($$0.b(".term[" + $$1 + "]"));
-      }
+   public Set<ees<?>> a() {
+      return this.b.a();
    }
 
-   public abstract static class a implements efp.a {
-      private final Builder<efp> a = ImmutableList.builder();
+   @Override
+   public void a(ect $$0) {
+      efj.super.a($$0);
+      this.b.a($$0);
+   }
 
-      protected a(efp.a... $$0) {
-         for (efp.a $$1 : $$0) {
-            this.a.add($$1.build());
-         }
-      }
+   public static efj.a a(efj.a $$0) {
+      efg $$1 = new efg($$0.build());
+      return () -> $$1;
+   }
 
-      public void a(efp.a $$0) {
-         this.a.add($$0.build());
-      }
-
-      @Override
-      public efp build() {
-         return this.a(this.a.build());
-      }
-
-      protected abstract efp a(List<efp> var1);
+   public efj c() {
+      return this.b;
    }
 }

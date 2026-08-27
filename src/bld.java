@@ -1,37 +1,101 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Optional;
+import java.util.Map;
+import java.util.Map.Entry;
 
-public class bld extends bkx<bjg> {
-   private final bsh<Integer> c;
+public abstract class bld<E extends bjm> implements ble<E> {
+   public static final int a = 60;
+   protected final Map<bsn<?>, bso> b;
+   private bld.a c = bld.a.a;
+   private long d;
+   private final int e;
+   private final int f;
 
-   public bld(bsh<Integer> $$0) {
-      super(ImmutableMap.of($$0, bsi.a));
-      this.c = $$0;
+   public bld(Map<bsn<?>, bso> $$0) {
+      this($$0, 60);
    }
 
-   private Optional<Integer> b(bjg $$0) {
-      return $$0.dN().c(this.c);
+   public bld(Map<bsn<?>, bso> $$0, int $$1) {
+      this($$0, $$1, $$1);
+   }
+
+   public bld(Map<bsn<?>, bso> $$0, int $$1, int $$2) {
+      this.e = $$1;
+      this.f = $$2;
+      this.b = $$0;
    }
 
    @Override
-   protected boolean a(long $$0) {
+   public bld.a a() {
+      return this.c;
+   }
+
+   @Override
+   public final boolean e(akt $$0, E $$1, long $$2) {
+      if (this.a($$1) && this.a($$0, $$1)) {
+         this.c = bld.a.b;
+         int $$3 = this.e + $$0.D_().a(this.f + 1 - this.e);
+         this.d = $$2 + (long)$$3;
+         this.d($$0, $$1, $$2);
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   protected void d(akt $$0, E $$1, long $$2) {
+   }
+
+   @Override
+   public final void f(akt $$0, E $$1, long $$2) {
+      if (!this.a($$2) && this.a($$0, $$1, $$2)) {
+         this.c($$0, $$1, $$2);
+      } else {
+         this.g($$0, $$1, $$2);
+      }
+   }
+
+   protected void c(akt $$0, E $$1, long $$2) {
+   }
+
+   @Override
+   public final void g(akt $$0, E $$1, long $$2) {
+      this.c = bld.a.a;
+      this.b($$0, $$1, $$2);
+   }
+
+   protected void b(akt $$0, E $$1, long $$2) {
+   }
+
+   protected boolean a(akt $$0, E $$1, long $$2) {
       return false;
    }
 
-   @Override
-   protected boolean a(akq $$0, bjg $$1, long $$2) {
-      Optional<Integer> $$3 = this.b($$1);
-      return $$3.isPresent() && $$3.get() > 0;
+   protected boolean a(long $$0) {
+      return $$0 > this.d;
+   }
+
+   protected boolean a(akt $$0, E $$1) {
+      return true;
    }
 
    @Override
-   protected void c(akq $$0, bjg $$1, long $$2) {
-      Optional<Integer> $$3 = this.b($$1);
-      $$1.dN().a(this.c, $$3.get() - 1);
+   public String b() {
+      return this.getClass().getSimpleName();
    }
 
-   @Override
-   protected void b(akq $$0, bjg $$1, long $$2) {
-      $$1.dN().b(this.c);
+   protected boolean a(E $$0) {
+      for (Entry<bsn<?>, bso> $$1 : this.b.entrySet()) {
+         bsn<?> $$2 = $$1.getKey();
+         bso $$3 = $$1.getValue();
+         if (!$$0.dN().a($$2, $$3)) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   public static enum a {
+      a,
+      b;
    }
 }

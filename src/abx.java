@@ -1,24 +1,40 @@
-public class abx implements vd<abc> {
-   private final boolean a;
+public class abx implements ve<abd> {
+   private final gw a;
+   private final int b;
+   private final boolean c;
 
-   public abx(boolean $$0) {
+   public abx(gw $$0, int $$1, boolean $$2) {
       this.a = $$0;
-   }
-
-   public void a(abc $$0) {
-      $$0.a(this);
+      this.b = $$1;
+      this.c = $$2;
    }
 
    public abx(so $$0) {
-      this.a = $$0.readBoolean();
+      this.a = $$0.e();
+      this.b = $$0.n();
+      this.c = $$0.readBoolean();
    }
 
    @Override
    public void a(so $$0) {
       $$0.a(this.a);
+      $$0.c(this.b);
+      $$0.a(this.c);
    }
 
-   public boolean a() {
+   public void a(abd $$0) {
+      $$0.a(this);
+   }
+
+   public gw a() {
       return this.a;
+   }
+
+   public int d() {
+      return this.b;
+   }
+
+   public boolean e() {
+      return this.c;
    }
 }

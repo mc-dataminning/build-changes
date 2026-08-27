@@ -1,15 +1,8 @@
-import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public class deu extends deo {
-   @Nullable
-   @Override
-   protected aev<dnj<?, ?>> a(asc $$0, boolean $$1) {
-      return null;
-   }
-
-   @Nullable
-   @Override
-   protected aev<dnj<?, ?>> a(asc $$0) {
-      return ow.h;
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface deu {
 }

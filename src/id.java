@@ -1,9 +1,9 @@
-public record id(akq a, gw b, dfj c, ddm d) {
-   public ehn a() {
+public record id(akt a, gw b, dfd c, ddq d) {
+   public ehh a() {
       return this.b.b();
    }
 
-   public akq b() {
+   public akt b() {
       return this.a;
    }
 
@@ -11,11 +11,11 @@ public record id(akq a, gw b, dfj c, ddm d) {
       return this.b;
    }
 
-   public dfj d() {
+   public dfd d() {
       return this.c;
    }
 
-   public ddm e() {
+   public ddq e() {
       return this.d;
    }
 }

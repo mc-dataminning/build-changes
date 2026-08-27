@@ -1,81 +1,48 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.List;
+import com.mojang.datafixers.kinds.App;
 import java.util.Optional;
-import java.util.Set;
+import java.util.function.Function;
 
-public class bng extends bkx<bjg> {
-   public static final int c = 100;
-   private long d;
-
-   public bng() {
-      super(ImmutableMap.of(bsh.b, bsi.a, bsh.H, bsi.c));
+public class bng {
+   public static ble<bjv> a(bsn<gw> $$0, float $$1, int $$2, boolean $$3) {
+      return a($$0, $$1, $$2, $$3, ehh::c);
    }
 
-   @Override
-   protected boolean a(akq $$0, bjg $$1) {
-      if ($$1.bN()) {
-         return false;
-      } else {
-         bkg<?> $$2 = $$1.dN();
-         hd $$3 = $$2.c(bsh.b).get();
-         if ($$0.ac() != $$3.a()) {
-            return false;
-         } else {
-            Optional<Long> $$4 = $$2.c(bsh.H);
-            if ($$4.isPresent()) {
-               long $$5 = $$0.V() - $$4.get();
-               if ($$5 > 0L && $$5 < 100L) {
-                  return false;
-               }
-            }
-
-            dfj $$6 = $$0.a_($$3.b());
-            return $$3.b().a($$1.dj(), 2.0) && $$6.a(aps.R) && !$$6.c(cso.b);
-         }
-      }
+   public static bmn<bjv> b(bsn<? extends biw> $$0, float $$1, int $$2, boolean $$3) {
+      return a($$0, $$1, $$2, $$3, biw::dj);
    }
 
-   @Override
-   protected boolean a(akq $$0, bjg $$1, long $$2) {
-      Optional<hd> $$3 = $$1.dN().c(bsh.b);
-      if ($$3.isEmpty()) {
-         return false;
-      } else {
-         gw $$4 = $$3.get().b();
-         return $$1.dN().c(cdf.e) && $$1.ds() > (double)$$4.v() + 0.4 && $$4.a($$1.dj(), 1.14);
-      }
-   }
+   private static <T> bmn<bjv> a(bsn<T> $$0, float $$1, int $$2, boolean $$3, Function<T, ehh> $$4) {
+      return bop.a(
+         (Function<bop.b<bjv>, ? extends App<bop.c<bjv>, bos<bjv>>>)($$5 -> $$5.group($$5.a(bsn.m), $$5.b($$0)).apply($$5, ($$5x, $$6) -> ($$7, $$8, $$9) -> {
+                  Optional<bsq> $$10 = $$5.a($$5x);
+                  if ($$10.isPresent() && !$$3) {
+                     return false;
+                  } else {
+                     ehh $$11 = $$8.dj();
+                     ehh $$12 = $$4.apply($$5.b($$6));
+                     if (!$$11.a((ho)$$12, (double)$$2)) {
+                        return false;
+                     } else {
+                        if ($$10.isPresent() && $$10.get().b() == $$1) {
+                           ehh $$13 = $$10.get().a().a().d($$11);
+                           ehh $$14 = $$12.d($$11);
+                           if ($$13.b($$14) < 0.0) {
+                              return false;
+                           }
+                        }
 
-   @Override
-   protected void d(akq $$0, bjg $$1, long $$2) {
-      if ($$2 > this.d) {
-         bkg<?> $$3 = $$1.dN();
-         if ($$3.a(bsh.v)) {
-            Set<hd> $$4 = $$3.c(bsh.v).get();
-            Optional<List<bjg>> $$5;
-            if ($$3.a(bsh.g)) {
-               $$5 = $$3.c(bsh.g);
-            } else {
-               $$5 = Optional.empty();
-            }
+                        for (int $$15 = 0; $$15 < 10; $$15++) {
+                           ehh $$16 = buf.b($$8, 16, 7, $$12);
+                           if ($$16 != null) {
+                              $$5x.a(new bsq($$16, $$1, 0));
+                              break;
+                           }
+                        }
 
-            blv.a($$0, $$1, null, null, $$4, $$5);
-         }
-
-         $$1.b($$1.dN().c(bsh.b).get().b());
-      }
-   }
-
-   @Override
-   protected boolean a(long $$0) {
-      return false;
-   }
-
-   @Override
-   protected void b(akq $$0, bjg $$1, long $$2) {
-      if ($$1.fC()) {
-         $$1.fD();
-         this.d = $$2 + 40L;
-      }
+                        return true;
+                     }
+                  }
+               }))
+      );
    }
 }

@@ -1,8 +1,15 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public class aed implements ve<aeb> {
+   public aed() {
+   }
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface aed {
+   public aed(so $$0) {
+   }
+
+   @Override
+   public void a(so $$0) {
+   }
+
+   public void a(aeb $$0) {
+      $$0.a(this);
+   }
 }

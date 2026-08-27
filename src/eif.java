@@ -1,46 +1,74 @@
-public final class eif extends ehw {
-   private final ehw d;
-   private final int e;
-   private final int f;
-   private final int g;
-   private final int h;
-   private final int i;
-   private final int j;
+import java.util.Comparator;
 
-   protected eif(ehw $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
-      super($$4 - $$1, $$5 - $$2, $$6 - $$3);
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
-      this.h = $$4;
-      this.i = $$5;
-      this.j = $$6;
+public class eif {
+   public static final Comparator<eif> a = ($$0, $$1) -> {
+      if ($$0.b() > $$1.b()) {
+         return 1;
+      } else {
+         return $$0.b() < $$1.b() ? -1 : $$1.e().compareToIgnoreCase($$0.e());
+      }
+   };
+   private final eig b;
+   private final eid c;
+   private final String d;
+   private int e;
+   private boolean f;
+   private boolean g;
+
+   public eif(eig $$0, eid $$1, String $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.f = true;
+      this.g = true;
    }
 
-   @Override
-   public boolean b(int $$0, int $$1, int $$2) {
-      return this.d.b(this.e + $$0, this.f + $$1, this.g + $$2);
+   public void a(int $$0) {
+      if (this.c.c().e()) {
+         throw new IllegalStateException("Cannot modify read-only score");
+      } else {
+         this.b(this.b() + $$0);
+      }
    }
 
-   @Override
-   public void c(int $$0, int $$1, int $$2) {
-      this.d.c(this.e + $$0, this.f + $$1, this.g + $$2);
+   public void a() {
+      this.a(1);
    }
 
-   @Override
-   public int a(ha.a $$0) {
-      return this.a($$0, this.d.a($$0));
+   public int b() {
+      return this.e;
    }
 
-   @Override
-   public int b(ha.a $$0) {
-      return this.a($$0, this.d.b($$0));
+   public void c() {
+      this.b(0);
    }
 
-   private int a(ha.a $$0, int $$1) {
-      int $$2 = $$0.a(this.e, this.f, this.g);
-      int $$3 = $$0.a(this.h, this.i, this.j);
-      return arw.a($$1, $$2, $$3) - $$2;
+   public void b(int $$0) {
+      int $$1 = this.e;
+      this.e = $$0;
+      if ($$1 != $$0 || this.g) {
+         this.g = false;
+         this.f().a(this);
+      }
+   }
+
+   public eid d() {
+      return this.c;
+   }
+
+   public String e() {
+      return this.d;
+   }
+
+   public eig f() {
+      return this.b;
+   }
+
+   public boolean g() {
+      return this.f;
+   }
+
+   public void a(boolean $$0) {
+      this.f = $$0;
    }
 }

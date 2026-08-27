@@ -20,15 +20,15 @@ public abstract class nc<T> implements ji {
    private final CompletableFuture<hg.b> g;
    private final CompletableFuture<Void> h = new CompletableFuture<>();
    private final CompletableFuture<nc.c<T>> i;
-   protected final aev<? extends hq<T>> f;
-   private final Map<aew, aqe> j = Maps.newLinkedHashMap();
+   protected final aey<? extends hq<T>> f;
+   private final Map<aez, aqh> j = Maps.newLinkedHashMap();
 
-   protected nc(jk $$0, aev<? extends hq<T>> $$1, CompletableFuture<hg.b> $$2) {
+   protected nc(jk $$0, aey<? extends hq<T>> $$1, CompletableFuture<hg.b> $$2) {
       this($$0, $$1, $$2, CompletableFuture.completedFuture(nc.c.empty()));
    }
 
-   protected nc(jk $$0, aev<? extends hq<T>> $$1, CompletableFuture<hg.b> $$2, CompletableFuture<nc.c<T>> $$3) {
-      this.e = $$0.a(jk.b.a, aqj.a($$1));
+   protected nc(jk $$0, aey<? extends hq<T>> $$1, CompletableFuture<hg.b> $$2, CompletableFuture<nc.c<T>> $$3) {
+      this.e = $$0.a(jk.b.a, aqm.a($$1));
       this.f = $$1;
       this.i = $$3;
       this.g = $$2;
@@ -55,18 +55,18 @@ public abstract class nc<T> implements ji {
          .thenCompose(
             $$1 -> {
                hg.c<T> $$2 = $$1.a.b(this.f);
-               Predicate<aew> $$3 = $$1x -> $$2.a(aev.a(this.f, $$1x)).isPresent();
-               Predicate<aew> $$4 = $$1x -> this.j.containsKey($$1x) || $$1.b.contains(aqh.a(this.f, $$1x));
+               Predicate<aez> $$3 = $$1x -> $$2.a(aey.a(this.f, $$1x)).isPresent();
+               Predicate<aez> $$4 = $$1x -> this.j.containsKey($$1x) || $$1.b.contains(aqk.a(this.f, $$1x));
                return CompletableFuture.allOf(
                   this.j
                      .entrySet()
                      .stream()
                      .map(
                         $$3x -> {
-                           aew $$4x = (aew)$$3x.getKey();
-                           aqe $$5 = (aqe)$$3x.getValue();
-                           List<aqf> $$6 = $$5.b();
-                           List<aqf> $$7 = $$6.stream().filter($$2xx -> !$$2xx.a($$3, $$4)).toList();
+                           aez $$4x = (aez)$$3x.getKey();
+                           aqh $$5 = (aqh)$$3x.getValue();
+                           List<aqi> $$6 = $$5.b();
+                           List<aqi> $$7 = $$6.stream().filter($$2xx -> !$$2xx.a($$3, $$4)).toList();
                            if (!$$7.isEmpty()) {
                               throw new IllegalArgumentException(
                                  String.format(
@@ -77,7 +77,7 @@ public abstract class nc<T> implements ji {
                                  )
                               );
                            } else {
-                              JsonElement $$8 = (JsonElement)aqg.a.encodeStart(JsonOps.INSTANCE, new aqg($$6, false)).getOrThrow(false, d::error);
+                              JsonElement $$8 = (JsonElement)aqj.a.encodeStart(JsonOps.INSTANCE, new aqj($$6, false)).getOrThrow(false, d::error);
                               Path $$9 = this.e.a($$4x);
                               return ji.a($$0, $$8, $$9);
                            }
@@ -89,13 +89,13 @@ public abstract class nc<T> implements ji {
          );
    }
 
-   protected nc.b<T> b(aqh<T> $$0) {
-      aqe $$1 = this.c($$0);
+   protected nc.b<T> b(aqk<T> $$0) {
+      aqh $$1 = this.c($$0);
       return new nc.b<>($$1);
    }
 
-   protected aqe c(aqh<T> $$0) {
-      return this.j.computeIfAbsent($$0.b(), $$0x -> aqe.a());
+   protected aqh c(aqk<T> $$0) {
+      return this.j.computeIfAbsent($$0.b(), $$0x -> aqh.a());
    }
 
    public CompletableFuture<nc.c<T>> c() {
@@ -111,49 +111,49 @@ public abstract class nc<T> implements ji {
    }
 
    protected static class b<T> {
-      private final aqe a;
+      private final aqh a;
 
-      protected b(aqe $$0) {
+      protected b(aqh $$0) {
          this.a = $$0;
       }
 
-      public final nc.b<T> a(aev<T> $$0) {
+      public final nc.b<T> a(aey<T> $$0) {
          this.a.a($$0.a());
          return this;
       }
 
       @SafeVarargs
-      public final nc.b<T> a(aev<T>... $$0) {
-         for (aev<T> $$1 : $$0) {
+      public final nc.b<T> a(aey<T>... $$0) {
+         for (aey<T> $$1 : $$0) {
             this.a.a($$1.a());
          }
 
          return this;
       }
 
-      public nc.b<T> a(aew $$0) {
+      public nc.b<T> a(aez $$0) {
          this.a.b($$0);
          return this;
       }
 
-      public nc.b<T> b(aqh<T> $$0) {
+      public nc.b<T> b(aqk<T> $$0) {
          this.a.c($$0.b());
          return this;
       }
 
-      public nc.b<T> b(aew $$0) {
+      public nc.b<T> b(aez $$0) {
          this.a.d($$0);
          return this;
       }
    }
 
    @FunctionalInterface
-   public interface c<T> extends Function<aqh<T>, Optional<aqe>> {
+   public interface c<T> extends Function<aqk<T>, Optional<aqh>> {
       static <T> nc.c<T> empty() {
          return $$0 -> Optional.empty();
       }
 
-      default boolean contains(aqh<T> $$0) {
+      default boolean contains(aqk<T> $$0) {
          return this.apply($$0).isPresent();
       }
    }

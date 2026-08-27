@@ -1,59 +1,58 @@
 import com.mojang.serialization.Codec;
 
-public class dna extends dnw<dqk> {
-   private static final dfj a = csw.mZ.n().a(csa.g, Integer.valueOf(1)).a(csa.h, dfv.a).a(csa.i, Integer.valueOf(0));
-   private static final dfj b = a.a(csa.h, dfv.c).a(csa.i, Integer.valueOf(1));
-   private static final dfj c = a.a(csa.h, dfv.c);
-   private static final dfj d = a.a(csa.h, dfv.b);
-
-   public dna(Codec<dqk> $$0) {
+public class dna extends dnq<dqb> {
+   public dna(Codec<dqb> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dny<dqk> $$0) {
-      int $$1 = 0;
-      gw $$2 = $$0.e();
-      cqp $$3 = $$0.b();
-      asc $$4 = $$0.d();
-      dqk $$5 = $$0.f();
-      gw.a $$6 = $$2.j();
-      gw.a $$7 = $$2.j();
-      if ($$3.t($$6)) {
-         if (csw.mZ.n().a($$3, $$6)) {
-            int $$8 = $$4.a(12) + 5;
-            if ($$4.i() < $$5.l) {
-               int $$9 = $$4.a(4) + 1;
+   public boolean a(dns<dqb> $$0) {
+      gw $$1 = $$0.e();
+      cqv $$2 = $$0.b();
+      ash $$3 = $$0.d();
+      if ($$1.v() > $$2.y_() - 1) {
+         return false;
+      } else if (!$$2.a_($$1).a(cte.G) && !$$2.a_($$1.d()).a(cte.G)) {
+         return false;
+      } else {
+         boolean $$4 = false;
 
-               for (int $$10 = $$2.u() - $$9; $$10 <= $$2.u() + $$9; $$10++) {
-                  for (int $$11 = $$2.w() - $$9; $$11 <= $$2.w() + $$9; $$11++) {
-                     int $$12 = $$10 - $$2.u();
-                     int $$13 = $$11 - $$2.w();
-                     if ($$12 * $$12 + $$13 * $$13 <= $$9 * $$9) {
-                        $$7.d($$10, $$3.a(dks.a.b, $$10, $$11) - 1, $$11);
-                        if (b($$3.a_($$7))) {
-                           $$3.a($$7, csw.l.n(), 2);
+         for (ha $$5 : ha.values()) {
+            if ($$5 != ha.a && $$2.a_($$1.a($$5)).a(cte.iC)) {
+               $$4 = true;
+               break;
+            }
+         }
+
+         if (!$$4) {
+            return false;
+         } else {
+            $$2.a($$1, cte.mW.o(), 2);
+
+            for (int $$6 = 0; $$6 < 200; $$6++) {
+               int $$7 = $$3.a(5) - $$3.a(6);
+               int $$8 = 3;
+               if ($$7 < 2) {
+                  $$8 += $$7 / 2;
+               }
+
+               if ($$8 >= 1) {
+                  gw $$9 = $$1.b($$3.a($$8) - $$3.a($$8), $$7, $$3.a($$8) - $$3.a($$8));
+                  dfd $$10 = $$2.a_($$9);
+                  if ($$10.i() || $$10.a(cte.G) || $$10.a(cte.iC) || $$10.a(cte.dO)) {
+                     for (ha $$11 : ha.values()) {
+                        dfd $$12 = $$2.a_($$9.a($$11));
+                        if ($$12.a(cte.mW)) {
+                           $$2.a($$9, cte.mW.o(), 2);
+                           break;
                         }
                      }
                   }
                }
             }
 
-            for (int $$14 = 0; $$14 < $$8 && $$3.t($$6); $$14++) {
-               $$3.a($$6, a, 2);
-               $$6.c(ha.b, 1);
-            }
-
-            if ($$6.v() - $$2.v() >= 3) {
-               $$3.a($$6, b, 2);
-               $$3.a($$6.c(ha.a, 1), c, 2);
-               $$3.a($$6.c(ha.a, 1), d, 2);
-            }
+            return true;
          }
-
-         $$1++;
       }
-
-      return $$1 > 0;
    }
 }

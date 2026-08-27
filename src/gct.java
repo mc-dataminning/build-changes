@@ -1,35 +1,54 @@
-import com.google.common.collect.AbstractIterator;
-import com.google.common.collect.Iterators;
-import com.google.common.collect.PeekingIterator;
-import java.util.Comparator;
-import java.util.Iterator;
+import java.util.List;
+import java.util.Locale;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
-public class gct<T> extends AbstractIterator<T> {
-   private final PeekingIterator<T> a;
-   private final PeekingIterator<T> b;
-   private final Comparator<T> c;
+public interface gct<T> {
+   static <T> gct<T> a() {
+      return new gct<T>() {
+         @Override
+         public List<T> a(String $$0) {
+            return List.of();
+         }
 
-   public gct(Iterator<T> $$0, Iterator<T> $$1, Comparator<T> $$2) {
-      this.a = Iterators.peekingIterator($$0);
-      this.b = Iterators.peekingIterator($$1);
-      this.c = $$2;
+         @Override
+         public List<T> b(String $$0) {
+            return List.of();
+         }
+      };
    }
 
-   protected T computeNext() {
-      while (this.a.hasNext() && this.b.hasNext()) {
-         int $$0 = this.c.compare((T)this.a.peek(), (T)this.b.peek());
-         if ($$0 == 0) {
-            this.b.next();
-            return (T)this.a.next();
+   static <T> gct<T> a(List<T> $$0, Function<T, Stream<aez>> $$1) {
+      if ($$0.isEmpty()) {
+         return a();
+      } else {
+         final gcw<T> $$2 = new gcw<>();
+         final gcw<T> $$3 = new gcw<>();
+
+         for (T $$4 : $$0) {
+            $$1.apply($$4).forEach($$3x -> {
+               $$2.a($$4, $$3x.b().toLowerCase(Locale.ROOT));
+               $$3.a($$4, $$3x.a().toLowerCase(Locale.ROOT));
+            });
          }
 
-         if ($$0 < 0) {
-            this.a.next();
-         } else {
-            this.b.next();
-         }
+         $$2.a();
+         $$3.a();
+         return new gct<T>() {
+            @Override
+            public List<T> a(String $$0) {
+               return $$2.a($$0);
+            }
+
+            @Override
+            public List<T> b(String $$0) {
+               return $$3.a($$0);
+            }
+         };
       }
-
-      return (T)this.endOfData();
    }
+
+   List<T> a(String var1);
+
+   List<T> b(String var1);
 }

@@ -1,3 +1,8 @@
-public interface fdq {
-   void a(fdn var1);
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface fdq {
 }

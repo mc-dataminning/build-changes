@@ -1,23 +1,45 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.OptionalInt;
 
-public record dqx(int b, int c, int d) implements dqa {
-   public static final Codec<dqx> a = RecordCodecBuilder.create(
+public class dqx extends dqv {
+   public static final Codec<dqx> d = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               arf.j.fieldOf("spread_width").forGetter(dqx::a), arf.j.fieldOf("spread_height").forGetter(dqx::b), arf.j.fieldOf("max_height").forGetter(dqx::c)
+               Codec.intRange(0, 80).fieldOf("limit").orElse(1).forGetter($$0x -> $$0x.e),
+               Codec.intRange(0, 80).fieldOf("upper_limit").orElse(1).forGetter($$0x -> $$0x.f),
+               Codec.intRange(0, 16).fieldOf("lower_size").orElse(0).forGetter($$0x -> $$0x.g),
+               Codec.intRange(0, 16).fieldOf("middle_size").orElse(1).forGetter($$0x -> $$0x.h),
+               Codec.intRange(0, 16).fieldOf("upper_size").orElse(1).forGetter($$0x -> $$0x.i),
+               a()
             )
             .apply($$0, dqx::new)
    );
+   private final int e;
+   private final int f;
+   private final int g;
+   private final int h;
+   private final int i;
 
-   public int a() {
-      return this.b;
+   public dqx(int $$0, int $$1, int $$2, int $$3, int $$4, OptionalInt $$5) {
+      super($$5);
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
+      this.h = $$3;
+      this.i = $$4;
    }
 
-   public int b() {
-      return this.c;
+   @Override
+   protected dqw<?> b() {
+      return dqw.b;
    }
 
-   public int c() {
-      return this.d;
+   @Override
+   public int a(int $$0, int $$1) {
+      if ($$1 < this.e) {
+         return this.g;
+      } else {
+         return $$1 >= $$0 - this.f ? this.i : this.h;
+      }
    }
 }

@@ -1,114 +1,50 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.stream.Stream;
 
-public class cmz implements cmx {
-   final cmg a;
-   final cmg b;
-   final cmg c;
+public class cmz<T extends clx> implements cms<T> {
+   private final cmz.a<T> x;
+   private final Codec<T> y;
 
-   cmz(cmg $$0, cmg $$1, cmg $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-   }
-
-   @Override
-   public boolean a(bgr $$0, cpv $$1) {
-      return this.a.a($$0.a(0)) && this.b.a($$0.a(1)) && this.c.a($$0.a(2));
-   }
-
-   @Override
-   public cjf a(bgr $$0, hr $$1) {
-      cjf $$2 = $$0.a(1);
-      if (this.b.a($$2)) {
-         Optional<he.c<cli>> $$3 = clj.a($$1, $$0.a(2));
-         Optional<he.c<clk>> $$4 = cll.a($$1, $$0.a(0));
-         if ($$3.isPresent() && $$4.isPresent()) {
-            Optional<clh> $$5 = clh.a($$1, $$2, false);
-            if ($$5.isPresent() && $$5.get().a($$4.get(), $$3.get())) {
-               return cjf.b;
-            }
-
-            cjf $$6 = $$2.p();
-            $$6.f(1);
-            clh $$7 = new clh($$3.get(), $$4.get());
-            if (clh.a($$1, $$6, $$7)) {
-               return $$6;
-            }
-         }
-      }
-
-      return cjf.b;
-   }
-
-   @Override
-   public cjf a(hr $$0) {
-      cjf $$1 = new cjf(cji.oT);
-      Optional<he.c<clk>> $$2 = $$0.d(jc.aE).h().findFirst();
-      if ($$2.isPresent()) {
-         Optional<he.c<cli>> $$3 = $$0.d(jc.aD).b(clj.d);
-         if ($$3.isPresent()) {
-            clh $$4 = new clh($$3.get(), $$2.get());
-            clh.a($$0, $$1, $$4);
-         }
-      }
-
-      return $$1;
-   }
-
-   @Override
-   public boolean a(cjf $$0) {
-      return this.a.a($$0);
-   }
-
-   @Override
-   public boolean b(cjf $$0) {
-      return this.b.a($$0);
-   }
-
-   @Override
-   public boolean c(cjf $$0) {
-      return this.c.a($$0);
-   }
-
-   @Override
-   public cmm<?> an_() {
-      return cmm.v;
-   }
-
-   @Override
-   public boolean i() {
-      return Stream.of(this.a, this.b, this.c).anyMatch(cmg::c);
-   }
-
-   public static class a implements cmm<cmz> {
-      private static final Codec<cmz> x = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  cmg.b.fieldOf("template").forGetter($$0x -> $$0x.a),
-                  cmg.b.fieldOf("base").forGetter($$0x -> $$0x.b),
-                  cmg.b.fieldOf("addition").forGetter($$0x -> $$0x.c)
+   public cmz(cmz.a<T> $$0, int $$1) {
+      this.x = $$0;
+      this.y = RecordCodecBuilder.create(
+         $$2 -> $$2.group(
+                  arj.a(Codec.STRING, "group", "").forGetter($$0xx -> $$0xx.c),
+                  cmd.d.fieldOf("category").orElse(cmd.c).forGetter($$0xx -> $$0xx.b),
+                  cmm.c.fieldOf("ingredient").forGetter($$0xx -> $$0xx.d),
+                  jb.i.q().xmap(cjl::new, cjl::d).fieldOf("result").forGetter($$0xx -> $$0xx.e),
+                  Codec.FLOAT.fieldOf("experience").orElse(0.0F).forGetter($$0xx -> $$0xx.f),
+                  Codec.INT.fieldOf("cookingtime").orElse($$1).forGetter($$0xx -> $$0xx.g)
                )
-               .apply($$0, cmz::new)
+               .apply($$2, $$0::create)
       );
+   }
 
-      @Override
-      public Codec<cmz> a() {
-         return x;
-      }
+   @Override
+   public Codec<T> a() {
+      return this.y;
+   }
 
-      public cmz b(so $$0) {
-         cmg $$1 = cmg.b($$0);
-         cmg $$2 = cmg.b($$0);
-         cmg $$3 = cmg.b($$0);
-         return new cmz($$1, $$2, $$3);
-      }
+   public T b(so $$0) {
+      String $$1 = $$0.s();
+      cmd $$2 = $$0.b(cmd.class);
+      cmm $$3 = cmm.b($$0);
+      cjl $$4 = $$0.r();
+      float $$5 = $$0.readFloat();
+      int $$6 = $$0.n();
+      return this.x.create($$1, $$2, $$3, $$4, $$5, $$6);
+   }
 
-      public void a(so $$0, cmz $$1) {
-         $$1.a.a($$0);
-         $$1.b.a($$0);
-         $$1.c.a($$0);
-      }
+   public void a(so $$0, T $$1) {
+      $$0.a($$1.c);
+      $$0.a($$1.f());
+      $$1.d.a($$0);
+      $$0.a($$1.e);
+      $$0.a($$1.f);
+      $$0.c($$1.g);
+   }
+
+   interface a<T extends clx> {
+      T create(String var1, cmd var2, cmm var3, cjl var4, float var5, int var6);
    }
 }

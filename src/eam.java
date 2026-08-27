@@ -1,118 +1,117 @@
-import com.google.common.collect.ImmutableMap;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import java.util.stream.Stream;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public final class eam extends dfl<eal, eam> {
-   public static final Codec<eam> a = a(jb.d.q(), eal::g).stable();
-   public static final int b = 9;
-   public static final int g = 8;
-
-   public eam(eal $$0, ImmutableMap<dgm<?>, Comparable<?>> $$1, MapCodec<eam> $$2) {
-      super($$0, $$1, $$2);
+public abstract class eam extends eae {
+   @Override
+   public eaf d() {
+      return eah.b;
    }
 
-   public eal a() {
-      return this.e;
+   @Override
+   public eaf e() {
+      return eah.c;
    }
 
-   public boolean b() {
-      return this.a().c(this);
+   @Override
+   public cjg a() {
+      return cjo.pL;
    }
 
-   public boolean a(eal $$0) {
-      return this.e == $$0 && this.e.c(this);
-   }
-
-   public boolean c() {
-      return this.a().b();
-   }
-
-   public float a(cpb $$0, gw $$1) {
-      return this.a().a(this, $$0, $$1);
-   }
-
-   public float d() {
-      return this.a().a(this);
-   }
-
-   public int e() {
-      return this.a().d(this);
-   }
-
-   public boolean b(cpb $$0, gw $$1) {
-      for (int $$2 = -1; $$2 <= 1; $$2++) {
-         for (int $$3 = -1; $$3 <= 1; $$3++) {
-            gw $$4 = $$1.b($$2, 0, $$3);
-            eam $$5 = $$0.b_($$4);
-            if (!$$5.a().a(this.a()) && !$$0.a_($$4).i($$0, $$4)) {
-               return true;
-            }
+   @Override
+   public void a(cqb $$0, gw $$1, eag $$2, ash $$3) {
+      if (!$$2.b() && !$$2.c(a)) {
+         if ($$3.a(64) == 0) {
+            $$0.a((double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, apg.zQ, aph.e, $$3.i() * 0.25F + 0.75F, $$3.i() + 0.5F, false);
          }
+      } else if ($$3.a(10) == 0) {
+         $$0.a(iv.af, (double)$$1.u() + $$3.j(), (double)$$1.v() + $$3.j(), (double)$$1.w() + $$3.j(), 0.0, 0.0, 0.0);
       }
-
-      return false;
-   }
-
-   public void a(cpv $$0, gw $$1) {
-      this.a().b($$0, $$1, this);
-   }
-
-   public void a(cpv $$0, gw $$1, asc $$2) {
-      this.a().a($$0, $$1, this, $$2);
-   }
-
-   public boolean f() {
-      return this.a().i();
-   }
-
-   public void b(cpv $$0, gw $$1, asc $$2) {
-      this.a().b($$0, $$1, this, $$2);
-   }
-
-   public ehn c(cpb $$0, gw $$1) {
-      return this.a().a($$0, $$1, this);
-   }
-
-   public dfj g() {
-      return this.a().b(this);
    }
 
    @Nullable
+   @Override
    public it h() {
-      return this.a().h();
+      return iv.m;
    }
 
-   public boolean a(aqh<eal> $$0) {
-      return this.a().k().a($$0);
+   @Override
+   protected boolean a(cqb $$0) {
+      return $$0.X().b(cpx.Q);
    }
 
-   public boolean a(hi<eal> $$0) {
-      return $$0.a(this.a().k());
+   @Override
+   protected void a(cqc $$0, gw $$1, dfd $$2) {
+      dcz $$3 = $$2.t() ? $$0.c_($$1) : null;
+      ctc.a($$2, $$0, $$1, $$3);
    }
 
-   public boolean b(eal $$0) {
-      return this.a() == $$0;
+   @Override
+   public int b(cqe $$0) {
+      return 4;
    }
 
-   public float i() {
-      return this.a().c();
+   @Override
+   public dfd b(eag $$0) {
+      return cte.G.o().a(cxq.b, Integer.valueOf(e($$0)));
    }
 
-   public boolean a(cpb $$0, gw $$1, eal $$2, ha $$3) {
-      return this.a().a(this, $$0, $$1, $$2, $$3);
+   @Override
+   public boolean a(eaf $$0) {
+      return $$0 == eah.c || $$0 == eah.b;
    }
 
-   public eig d(cpb $$0, gw $$1) {
-      return this.a().b(this, $$0, $$1);
+   @Override
+   public int c(cqe $$0) {
+      return 1;
    }
 
-   public he<eal> j() {
-      return this.e.k();
+   @Override
+   public int a(cqe $$0) {
+      return 5;
    }
 
-   public Stream<aqh<eal>> k() {
-      return this.e.k().c();
+   @Override
+   public boolean a(eag $$0, cph $$1, gw $$2, eaf $$3, ha $$4) {
+      return $$4 == ha.a && !$$3.a(aqa.a);
+   }
+
+   @Override
+   protected float c() {
+      return 100.0F;
+   }
+
+   @Override
+   public Optional<apf> j() {
+      return Optional.of(apg.cB);
+   }
+
+   public static class a extends eam {
+      @Override
+      protected void a(dfe.a<eaf, eag> $$0) {
+         super.a($$0);
+         $$0.a(b);
+      }
+
+      @Override
+      public int d(eag $$0) {
+         return $$0.c(b);
+      }
+
+      @Override
+      public boolean c(eag $$0) {
+         return false;
+      }
+   }
+
+   public static class b extends eam {
+      @Override
+      public int d(eag $$0) {
+         return 8;
+      }
+
+      @Override
+      public boolean c(eag $$0) {
+         return true;
+      }
    }
 }

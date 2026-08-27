@@ -1,41 +1,59 @@
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Map;
 
 public class dbu extends crs {
-   public static final dgd b = cwo.aC;
-   private static final Map<ha, eig> c = Maps.newEnumMap(
+   public static final MapCodec<dbu> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(chz.q.fieldOf("color").forGetter(crs::b), t()).apply($$0, dbu::new));
+   public static final dfx b = cww.aE;
+   private static final Map<ha, eia> c = Maps.newEnumMap(
       ImmutableMap.of(
          ha.c,
-         csv.a(4.0, 4.0, 8.0, 12.0, 12.0, 16.0),
+         ctc.a(0.0, 0.0, 14.0, 16.0, 12.5, 16.0),
          ha.d,
-         csv.a(4.0, 4.0, 0.0, 12.0, 12.0, 8.0),
-         ha.f,
-         csv.a(0.0, 4.0, 4.0, 8.0, 12.0, 12.0),
+         ctc.a(0.0, 0.0, 0.0, 16.0, 12.5, 2.0),
          ha.e,
-         csv.a(8.0, 4.0, 4.0, 16.0, 12.0, 12.0)
+         ctc.a(14.0, 0.0, 0.0, 16.0, 12.5, 16.0),
+         ha.f,
+         ctc.a(0.0, 0.0, 0.0, 2.0, 12.5, 16.0)
       )
    );
 
-   protected dbu(czx.a $$0, dfi.d $$1) {
+   @Override
+   public MapCodec<dbu> a() {
+      return a;
+   }
+
+   public dbu(chz $$0, dfc.d $$1) {
       super($$0, $$1);
-      this.k(this.n().a(b, ha.c));
+      this.k(this.E.b().a(b, ha.c));
    }
 
    @Override
-   public String f() {
+   public String h() {
       return this.k().a();
    }
 
    @Override
-   public eig a(dfj $$0, cpb $$1, gw $$2, ehs $$3) {
+   public boolean a(dfd $$0, cqe $$1, gw $$2) {
+      return $$1.a_($$2.a($$0.c(b).g())).e();
+   }
+
+   @Override
+   public dfd a(dfd $$0, ha $$1, dfd $$2, cqc $$3, gw $$4, gw $$5) {
+      return $$1 == $$0.c(b).g() && !$$0.a($$3, $$4) ? cte.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   public eia a(dfd $$0, cph $$1, gw $$2, ehm $$3) {
       return c.get($$0.c(b));
    }
 
    @Override
-   public dfj a(cln $$0) {
-      dfj $$1 = super.a($$0);
-      cpb $$2 = $$0.q();
+   public dfd a(clt $$0) {
+      dfd $$1 = this.o();
+      cqe $$2 = $$0.q();
       gw $$3 = $$0.a();
       ha[] $$4 = $$0.f();
 
@@ -43,7 +61,7 @@ public class dbu extends crs {
          if ($$5.o().d()) {
             ha $$6 = $$5.g();
             $$1 = $$1.a(b, $$6);
-            if (!$$2.a_($$3.a($$5)).a($$0)) {
+            if ($$1.a($$2, $$3)) {
                return $$1;
             }
          }
@@ -53,18 +71,17 @@ public class dbu extends crs {
    }
 
    @Override
-   public dfj a(dfj $$0, czh $$1) {
+   public dfd a(dfd $$0, czn $$1) {
       return $$0.a(b, $$1.a($$0.c(b)));
    }
 
    @Override
-   public dfj a(dfj $$0, cxq $$1) {
+   public dfd a(dfd $$0, cxx $$1) {
       return $$0.a($$1.a($$0.c(b)));
    }
 
    @Override
-   protected void a(dfk.a<csv, dfj> $$0) {
-      super.a($$0);
+   protected void a(dfe.a<ctc, dfd> $$0) {
       $$0.a(b);
    }
 }

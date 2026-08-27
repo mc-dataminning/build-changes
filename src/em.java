@@ -11,9 +11,9 @@ import java.util.Collection;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
-public class em implements ArgumentType<eip> {
+public class em implements ArgumentType<eij> {
    private static final Collection<String> b = Arrays.asList("foo", "foo.bar.baz", "minecraft:foo");
-   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> tl.a("argument.criteria.invalid", $$0));
+   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> tl.b("argument.criteria.invalid", $$0));
 
    private em() {
    }
@@ -22,11 +22,11 @@ public class em implements ArgumentType<eip> {
       return new em();
    }
 
-   public static eip a(CommandContext<dt> $$0, String $$1) {
-      return (eip)$$0.getArgument($$1, eip.class);
+   public static eij a(CommandContext<dt> $$0, String $$1) {
+      return (eij)$$0.getArgument($$1, eij.class);
    }
 
-   public eip a(StringReader $$0) throws CommandSyntaxException {
+   public eij a(StringReader $$0) throws CommandSyntaxException {
       int $$1 = $$0.getCursor();
 
       while ($$0.canRead() && $$0.peek() != ' ') {
@@ -34,16 +34,16 @@ public class em implements ArgumentType<eip> {
       }
 
       String $$2 = $$0.getString().substring($$1, $$0.getCursor());
-      return eip.a($$2).orElseThrow(() -> {
+      return eij.a($$2).orElseThrow(() -> {
          $$0.setCursor($$1);
          return a.create($$2);
       });
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      List<String> $$2 = Lists.newArrayList(eip.c());
+      List<String> $$2 = Lists.newArrayList(eij.c());
 
-      for (apm<?> $$3 : jb.y) {
+      for (app<?> $$3 : jb.y) {
          for (Object $$4 : $$3.a()) {
             String $$5 = this.a($$3, $$4);
             $$2.add($$5);
@@ -53,8 +53,8 @@ public class em implements ArgumentType<eip> {
       return dw.b($$2, $$1);
    }
 
-   public <T> String a(apm<T> $$0, Object $$1) {
-      return apk.a($$0, (T)$$1);
+   public <T> String a(app<T> $$0, Object $$1) {
+      return apn.a($$0, (T)$$1);
    }
 
    public Collection<String> getExamples() {

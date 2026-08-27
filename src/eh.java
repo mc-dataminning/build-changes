@@ -3,11 +3,11 @@ import com.mojang.serialization.Codec;
 import java.util.Arrays;
 import java.util.Locale;
 
-public class eh extends ez<dks.a> {
-   private static final Codec<dks.a> a = asp.a(eh::b, $$0 -> $$0.toLowerCase(Locale.ROOT));
+public class eh extends ez<dkm.a> {
+   private static final Codec<dkm.a> a = asu.a(eh::b, $$0 -> $$0.toLowerCase(Locale.ROOT));
 
-   private static dks.a[] b() {
-      return Arrays.stream(dks.a.values()).filter(dks.a::d).toArray(dks.a[]::new);
+   private static dkm.a[] b() {
+      return Arrays.stream(dkm.a.values()).filter(dkm.a::d).toArray(dkm.a[]::new);
    }
 
    private eh() {
@@ -18,8 +18,8 @@ public class eh extends ez<dks.a> {
       return new eh();
    }
 
-   public static dks.a a(CommandContext<dt> $$0, String $$1) {
-      return (dks.a)$$0.getArgument($$1, dks.a.class);
+   public static dkm.a a(CommandContext<dt> $$0, String $$1) {
+      return (dkm.a)$$0.getArgument($$1, dkm.a.class);
    }
 
    @Override

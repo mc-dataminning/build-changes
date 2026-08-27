@@ -1,13 +1,11 @@
-public class flf extends fmg {
-   flf(fix $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fmp $$7) {
-      super($$0, $$1, $$2, $$3, $$7, 0.0125F);
-      this.j = $$4;
-      this.k = $$5;
-      this.l = $$6;
-      this.D *= 0.75F;
-      this.t = 60 + this.r.a(12);
-      this.c(15916745);
-      this.b($$7);
+public class flf extends fly {
+   flf(fis $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+   }
+
+   @Override
+   public flu b() {
+      return flu.b;
    }
 
    @Override
@@ -16,15 +14,53 @@ public class flf extends fmg {
       this.l();
    }
 
-   public static class a implements flx<iy> {
-      private final fmp a;
+   @Override
+   public float b(float $$0) {
+      float $$1 = ((float)this.s + $$0) / (float)this.t;
+      return this.D * (1.0F - $$1 * $$1 * 0.5F);
+   }
 
-      public a(fmp $$0) {
+   @Override
+   public int a(float $$0) {
+      float $$1 = ((float)this.s + $$0) / (float)this.t;
+      $$1 = asb.a($$1, 0.0F, 1.0F);
+      int $$2 = super.a($$0);
+      int $$3 = $$2 & 0xFF;
+      int $$4 = $$2 >> 16 & 0xFF;
+      $$3 += (int)($$1 * 15.0F * 16.0F);
+      if ($$3 > 240) {
+         $$3 = 240;
+      }
+
+      return $$3 | $$4 << 16;
+   }
+
+   public static class a implements flt<iy> {
+      private final fml a;
+
+      public a(fml $$0) {
          this.a = $$0;
       }
 
-      public flu a(iy $$0, fix $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new flf($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+      public flq a(iy $$0, fis $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         flf $$8 = new flf($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         return $$8;
+      }
+   }
+
+   public static class b implements flt<iy> {
+      private final fml a;
+
+      public b(fml $$0) {
+         this.a = $$0;
+      }
+
+      public flq a(iy $$0, fis $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         flf $$8 = new flf($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         $$8.d(0.5F);
+         return $$8;
       }
    }
 }

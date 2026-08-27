@@ -1,101 +1,28 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Optional;
-import javax.annotation.Nullable;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
 
-public class blw extends bkx<bji> {
-   private static final int c = 100;
-   private static final int d = 3;
-   private static final int e = 6;
-   private static final int f = 5;
-   private final float g;
-   @Nullable
-   private gw h;
-   private int i;
-   private int j;
-   private int k;
-
-   public blw(float $$0) {
-      super(ImmutableMap.of(bsh.w, bsi.a, bsh.m, bsi.b));
-      this.g = $$0;
+public class blw {
+   private static gw a(bjo $$0, gw $$1) {
+      ash $$2 = $$0.dL().z;
+      return $$1.b(a($$2), 0, a($$2));
    }
 
-   protected boolean a(akq $$0, bji $$1) {
-      return $$1.m_() && this.b($$0, $$1);
+   private static int a(ash $$0) {
+      return $$0.a(3) - 1;
    }
 
-   protected void a(akq $$0, bji $$1, long $$2) {
-      super.d($$0, $$1, $$2);
-      this.a($$1).ifPresent($$2x -> {
-         this.h = $$2x;
-         this.i = 100;
-         this.j = 3 + $$0.z.a(4);
-         this.k = 0;
-         this.a($$1, $$2x);
-      });
-   }
+   public static <E extends bjo> bmn<E> a(bsn<gw> $$0, int $$1, float $$2) {
+      return bop.a(
+         (Function<bop.b<E>, ? extends App<bop.c<E>, bos<E>>>)($$3 -> $$3.group($$3.b($$0), $$3.c(bsn.o), $$3.c(bsn.m), $$3.a(bsn.n))
+               .apply($$3, ($$3x, $$4, $$5, $$6) -> ($$4x, $$5x, $$6x) -> {
+                     gw $$7 = $$3.b($$3x);
+                     boolean $$8 = $$7.a($$5x.dl(), (double)$$1);
+                     if (!$$8) {
+                        blf.a($$5x, a($$5x, $$7), $$2, $$1);
+                     }
 
-   protected void b(akq $$0, bji $$1, long $$2) {
-      super.b($$0, $$1, $$2);
-      this.h = null;
-      this.i = 0;
-      this.j = 0;
-      this.k = 0;
-   }
-
-   protected boolean c(akq $$0, bji $$1, long $$2) {
-      return $$1.m_() && this.h != null && this.a($$0, this.h) && !this.e($$0, $$1) && !this.f($$0, $$1);
-   }
-
-   @Override
-   protected boolean a(long $$0) {
-      return false;
-   }
-
-   protected void d(akq $$0, bji $$1, long $$2) {
-      if (!this.c($$0, $$1)) {
-         this.i--;
-      } else if (this.k > 0) {
-         this.k--;
-      } else {
-         if (this.d($$0, $$1)) {
-            $$1.K().a();
-            this.j--;
-            this.k = 5;
-         }
-      }
-   }
-
-   private void a(bji $$0, gw $$1) {
-      $$0.dN().a(bsh.m, new bsk($$1, this.g, 0));
-   }
-
-   private boolean b(akq $$0, bji $$1) {
-      return this.c($$0, $$1) || this.a($$1).isPresent();
-   }
-
-   private boolean c(akq $$0, bji $$1) {
-      gw $$2 = $$1.dl();
-      gw $$3 = $$2.d();
-      return this.a($$0, $$2) || this.a($$0, $$3);
-   }
-
-   private boolean d(akq $$0, bji $$1) {
-      return this.a($$0, $$1.dl());
-   }
-
-   private boolean a(akq $$0, gw $$1) {
-      return $$0.a_($$1).a(aps.R);
-   }
-
-   private Optional<gw> a(bji $$0) {
-      return $$0.dN().c(bsh.w);
-   }
-
-   private boolean e(akq $$0, bji $$1) {
-      return !this.c($$0, $$1) && this.i <= 0;
-   }
-
-   private boolean f(akq $$0, bji $$1) {
-      return this.c($$0, $$1) && this.j <= 0;
+                     return true;
+                  }))
+      );
    }
 }

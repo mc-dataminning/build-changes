@@ -1,47 +1,125 @@
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import java.util.Map.Entry;
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public class fob {
-   public final Int2ObjectMap<gbm> a = new Int2ObjectOpenHashMap(256);
-   private final Int2ObjectMap<gbf> b = new Int2ObjectOpenHashMap(256);
-   private final gbl c;
+public class fob implements foa {
+   private final foa.a a;
+   private final foa.a b = foa.a(new ele(256));
+   private int c = 255;
+   private int d = 255;
+   private int e = 255;
+   private int f = 255;
 
-   public fob(gbl $$0) {
+   public fob(foa.a $$0) {
+      this.a = $$0;
+   }
+
+   @Override
+   public eln getBuffer(foi $$0) {
+      if ($$0.L()) {
+         eln $$1 = this.b.getBuffer($$0);
+         return new fob.a($$1, this.c, this.d, this.e, this.f);
+      } else {
+         eln $$2 = this.a.getBuffer($$0);
+         Optional<foi> $$3 = $$0.K();
+         if ($$3.isPresent()) {
+            eln $$4 = this.b.getBuffer($$3.get());
+            fob.a $$5 = new fob.a($$4, this.c, this.d, this.e, this.f);
+            return elq.a($$5, $$2);
+         } else {
+            return $$2;
+         }
+      }
+   }
+
+   public void a(int $$0, int $$1, int $$2, int $$3) {
       this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
    }
 
-   public gbf a(cjf $$0) {
-      gbf $$1 = this.a($$0.d());
-      return $$1 == null ? this.c.a() : $$1;
+   public void a() {
+      this.b.b();
    }
 
-   @Nullable
-   public gbf a(cja $$0) {
-      return (gbf)this.b.get(b($$0));
-   }
+   static class a extends eli {
+      private final eln f;
+      private double g;
+      private double h;
+      private double i;
+      private float j;
+      private float k;
 
-   private static int b(cja $$0) {
-      return cja.a($$0);
-   }
+      a(eln $$0, int $$1, int $$2, int $$3, int $$4) {
+         this.f = $$0;
+         super.b($$1, $$2, $$3, $$4);
+      }
 
-   public void a(cja $$0, gbm $$1) {
-      this.a.put(b($$0), $$1);
-   }
+      @Override
+      public void b(int $$0, int $$1, int $$2, int $$3) {
+      }
 
-   public gbl a() {
-      return this.c;
-   }
+      @Override
+      public void k() {
+      }
 
-   public void b() {
-      this.b.clear();
-      ObjectIterator var1 = this.a.entrySet().iterator();
+      @Override
+      public eln a(double $$0, double $$1, double $$2) {
+         this.g = $$0;
+         this.h = $$1;
+         this.i = $$2;
+         return this;
+      }
 
-      while (var1.hasNext()) {
-         Entry<Integer, gbm> $$0 = (Entry<Integer, gbm>)var1.next();
-         this.b.put($$0.getKey(), this.c.a($$0.getValue()));
+      @Override
+      public eln a(int $$0, int $$1, int $$2, int $$3) {
+         return this;
+      }
+
+      @Override
+      public eln a(float $$0, float $$1) {
+         this.j = $$0;
+         this.k = $$1;
+         return this;
+      }
+
+      @Override
+      public eln a(int $$0, int $$1) {
+         return this;
+      }
+
+      @Override
+      public eln b(int $$0, int $$1) {
+         return this;
+      }
+
+      @Override
+      public eln a(float $$0, float $$1, float $$2) {
+         return this;
+      }
+
+      @Override
+      public void a(
+         float $$0,
+         float $$1,
+         float $$2,
+         float $$3,
+         float $$4,
+         float $$5,
+         float $$6,
+         float $$7,
+         float $$8,
+         int $$9,
+         int $$10,
+         float $$11,
+         float $$12,
+         float $$13
+      ) {
+         this.f.a((double)$$0, (double)$$1, (double)$$2).a(this.b, this.c, this.d, this.e).a($$7, $$8).e();
+      }
+
+      @Override
+      public void e() {
+         this.f.a(this.g, this.h, this.i).a(this.b, this.c, this.d, this.e).a(this.j, this.k).e();
       }
    }
 }

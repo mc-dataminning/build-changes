@@ -1,52 +1,26 @@
-import java.util.Collection;
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
 
-public interface czl {
-   czl t_ = new czl() {
-      @Override
-      public boolean a(cpw $$0, gw $$1, dfj $$2, @Nullable Collection<ha> $$3, boolean $$4) {
-         if ($$3 == null) {
-            return ((czr)csw.qG).g().a($$0.a_($$1), $$0, $$1, $$4) > 0L;
-         } else if (!$$3.isEmpty()) {
-            return !$$2.i() && !$$2.u().b(ean.c) ? false : czr.a($$0, $$1, $$2, $$3);
-         } else {
-            return czl.super.a($$0, $$1, $$2, $$3, $$4);
-         }
-      }
+public class czl extends ctl {
+   public static final MapCodec<czl> a = b(czl::new);
+   protected static final float b = 6.0F;
+   protected static final eia c = ctc.a(2.0, 0.0, 2.0, 14.0, 13.0, 14.0);
 
-      @Override
-      public int a(czq.a $$0, cpw $$1, gw $$2, asc $$3, czq $$4, boolean $$5) {
-         return $$0.c() > 0 ? $$0.b() : 0;
-      }
-
-      @Override
-      public int i_(int $$0) {
-         return Math.max($$0 - 1, 0);
-      }
-   };
-
-   default byte a() {
-      return 1;
+   @Override
+   public MapCodec<czl> a() {
+      return a;
    }
 
-   default void a(cpw $$0, dfj $$1, gw $$2, asc $$3) {
+   protected czl(dfc.d $$0) {
+      super($$0);
    }
 
-   default boolean a(cpw $$0, gw $$1, asc $$2) {
-      return false;
+   @Override
+   public eia a(dfd $$0, cph $$1, gw $$2, ehm $$3) {
+      return c;
    }
 
-   default boolean a(cpw $$0, gw $$1, dfj $$2, @Nullable Collection<ha> $$3, boolean $$4) {
-      return ((cxt)csw.qG).b().a($$2, $$0, $$1, $$4) > 0L;
+   @Override
+   protected boolean d(dfd $$0, cph $$1, gw $$2) {
+      return $$0.a(apv.aK) || $$0.a(cte.dX) || super.d($$0, $$1, $$2);
    }
-
-   default boolean c() {
-      return true;
-   }
-
-   default int i_(int $$0) {
-      return 1;
-   }
-
-   int a(czq.a var1, cpw var2, gw var3, asc var4, czq var5, boolean var6);
 }

@@ -1,15 +1,11 @@
-public class ftw extends fun<cae, ffn<cae>> {
-   private static final aew a = new aew("textures/entity/hoglin/hoglin.png");
-
-   public ftw(fth.a $$0) {
-      super($$0, new ffn<>($$0.a(fib.ah)), 0.7F);
+public abstract class ftw<T extends byw> extends fuj<T, ffm<T>> {
+   protected ftw(ftd.a $$0, ffm<T> $$1, float $$2) {
+      super($$0, $$1, $$2);
+      this.a(new fwq<>(this, $$0.f(), $$0.d()));
    }
 
-   public aew a(cae $$0) {
-      return a;
-   }
-
-   protected boolean b(cae $$0) {
-      return super.a($$0) || $$0.y();
+   protected void a(T $$0, elj $$1, float $$2) {
+      float $$3 = 0.9375F;
+      $$1.b(0.9375F, 0.9375F, 0.9375F);
    }
 }

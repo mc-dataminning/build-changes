@@ -1,34 +1,24 @@
-public class fwj extends fun<bvu, fht<bvu>> {
-   private static final aew a = new aew("textures/entity/wolf/wolf.png");
-   private static final aew i = new aew("textures/entity/wolf/wolf_tame.png");
-   private static final aew j = new aew("textures/entity/wolf/wolf_angry.png");
+public class fwj<T extends bjm, M extends fgd<T>> extends fxu<T, M> {
+   private final ftb a;
 
-   public fwj(fth.a $$0) {
-      super($$0, new fht<>($$0.a(fib.bV)), 0.5F);
-      this.a(new fye(this));
+   public fwj(ftd.a $$0, fue<T, M> $$1) {
+      super($$1);
+      this.a = $$0.a();
    }
 
-   protected float a(bvu $$0, float $$1) {
-      return $$0.gl();
+   @Override
+   protected int a(T $$0) {
+      return $$0.eN();
    }
 
-   public void a(bvu $$0, float $$1, float $$2, elp $$3, foe $$4, int $$5) {
-      if ($$0.gk()) {
-         float $$6 = $$0.E($$2);
-         this.f.a($$6, $$6, $$6);
-      }
-
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      if ($$0.gk()) {
-         this.f.a(1.0F, 1.0F, 1.0F);
-      }
-   }
-
-   public aew a(bvu $$0) {
-      if ($$0.s()) {
-         return i;
-      } else {
-         return $$0.X_() ? j : a;
-      }
+   @Override
+   protected void a(elj $$0, foa $$1, int $$2, biw $$3, float $$4, float $$5, float $$6, float $$7) {
+      float $$8 = asb.c($$4 * $$4 + $$6 * $$6);
+      cci $$9 = new cci($$3.dL(), $$3.dq(), $$3.ds(), $$3.dw());
+      $$9.r((float)(Math.atan2((double)$$4, (double)$$6) * 180.0F / (float)Math.PI));
+      $$9.s((float)(Math.atan2((double)$$5, (double)$$8) * 180.0F / (float)Math.PI));
+      $$9.N = $$9.dB();
+      $$9.O = $$9.dD();
+      this.a.a($$9, 0.0, 0.0, 0.0, 0.0F, $$7, $$0, $$1, $$2);
    }
 }

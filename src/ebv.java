@@ -1,48 +1,210 @@
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
+import java.util.UUID;
+import net.minecraft.server.MinecraftServer;
 
-public class ebv extends ebr {
-   public static final String a = "idcounts";
-   private final Object2IntMap<String> b = new Object2IntOpenHashMap();
+public class ebv implements ecf {
+   private final ecg a;
+   private final ecf b;
 
-   public static ebr.a<ebv> a() {
-      return new ebr.a<>(ebv::new, ebv::b, ata.k);
-   }
-
-   public ebv() {
-      this.b.defaultReturnValue(-1);
-   }
-
-   public static ebv b(qw $$0) {
-      ebv $$1 = new ebv();
-
-      for (String $$2 : $$0.e()) {
-         if ($$0.b($$2, 99)) {
-            $$1.b.put($$2, $$0.h($$2));
-         }
-      }
-
-      return $$1;
+   public ebv(ecg $$0, ecf $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
    @Override
-   public qw a(qw $$0) {
-      ObjectIterator var2 = this.b.object2IntEntrySet().iterator();
-
-      while (var2.hasNext()) {
-         Entry<String> $$1 = (Entry<String>)var2.next();
-         $$0.a((String)$$1.getKey(), $$1.getIntValue());
-      }
-
-      return $$0;
+   public int a() {
+      return this.b.a();
    }
 
+   @Override
    public int b() {
-      int $$0 = this.b.getInt("map") + 1;
-      this.b.put("map", $$0);
-      this.c();
-      return $$0;
+      return this.b.b();
+   }
+
+   @Override
+   public int c() {
+      return this.b.c();
+   }
+
+   @Override
+   public float d() {
+      return this.b.d();
+   }
+
+   @Override
+   public long e() {
+      return this.b.e();
+   }
+
+   @Override
+   public long f() {
+      return this.b.f();
+   }
+
+   @Override
+   public String g() {
+      return this.a.g();
+   }
+
+   @Override
+   public int h() {
+      return this.b.h();
+   }
+
+   @Override
+   public void a(int $$0) {
+   }
+
+   @Override
+   public boolean i() {
+      return this.b.i();
+   }
+
+   @Override
+   public int j() {
+      return this.b.j();
+   }
+
+   @Override
+   public boolean k() {
+      return this.b.k();
+   }
+
+   @Override
+   public int l() {
+      return this.b.l();
+   }
+
+   @Override
+   public cpy m() {
+      return this.a.m();
+   }
+
+   @Override
+   public void b(int $$0) {
+   }
+
+   @Override
+   public void c(int $$0) {
+   }
+
+   @Override
+   public void d(int $$0) {
+   }
+
+   @Override
+   public void a(float $$0) {
+   }
+
+   @Override
+   public void a(long $$0) {
+   }
+
+   @Override
+   public void b(long $$0) {
+   }
+
+   @Override
+   public void a(gw $$0, float $$1) {
+   }
+
+   @Override
+   public void a(boolean $$0) {
+   }
+
+   @Override
+   public void e(int $$0) {
+   }
+
+   @Override
+   public void b(boolean $$0) {
+   }
+
+   @Override
+   public void f(int $$0) {
+   }
+
+   @Override
+   public void a(cpy $$0) {
+   }
+
+   @Override
+   public boolean n() {
+      return this.a.n();
+   }
+
+   @Override
+   public boolean o() {
+      return this.a.o();
+   }
+
+   @Override
+   public boolean p() {
+      return this.b.p();
+   }
+
+   @Override
+   public void c(boolean $$0) {
+   }
+
+   @Override
+   public cpx q() {
+      return this.a.q();
+   }
+
+   @Override
+   public dgu.c r() {
+      return this.b.r();
+   }
+
+   @Override
+   public void a(dgu.c $$0) {
+   }
+
+   @Override
+   public bhb s() {
+      return this.a.s();
+   }
+
+   @Override
+   public boolean t() {
+      return this.a.t();
+   }
+
+   @Override
+   public egu<MinecraftServer> u() {
+      return this.b.u();
+   }
+
+   @Override
+   public int v() {
+      return 0;
+   }
+
+   @Override
+   public void g(int $$0) {
+   }
+
+   @Override
+   public int w() {
+      return 0;
+   }
+
+   @Override
+   public void h(int $$0) {
+   }
+
+   @Override
+   public UUID x() {
+      return null;
+   }
+
+   @Override
+   public void a(UUID $$0) {
+   }
+
+   @Override
+   public void a(p $$0, cqd $$1) {
+      $$0.a("Derived", true);
+      this.b.a($$0, $$1);
    }
 }

@@ -4,15 +4,37 @@ import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class bbc extends baf {
+public class bbc extends bal {
    public bbc(int $$0, Schema $$1) {
       super($$0, $$1);
    }
 
-   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
-      Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
-      $$0.register($$1, "minecraft:panda", () -> bag.a($$0));
-      $$0.register($$1, "minecraft:pillager", $$1x -> DSL.optionalFields("Inventory", DSL.list(ayx.t.in($$0)), bag.a($$0)));
+   public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
+      super.registerTypes($$0, $$1, $$2);
+      $$0.registerType(
+         false,
+         azd.c,
+         () -> DSL.fields(
+               "Level",
+               DSL.optionalFields(
+                  "Entities",
+                  DSL.list(azd.w.in($$0)),
+                  "TileEntities",
+                  DSL.list(DSL.or(azd.s.in($$0), DSL.remainder())),
+                  "TileTicks",
+                  DSL.list(DSL.fields("i", azd.y.in($$0))),
+                  "Sections",
+                  DSL.list(DSL.optionalFields("Palette", DSL.list(azd.u.in($$0)))),
+                  "Structures",
+                  DSL.optionalFields("Starts", DSL.compoundList(azd.C.in($$0)))
+               )
+            )
+      );
+   }
+
+   public Map<String, Supplier<TypeTemplate>> registerBlockEntities(Schema $$0) {
+      Map<String, Supplier<TypeTemplate>> $$1 = super.registerBlockEntities($$0);
+      $$1.put("DUMMY", DSL::remainder);
       return $$1;
    }
 }

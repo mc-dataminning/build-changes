@@ -1,86 +1,55 @@
 import java.util.List;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class ciq extends cja {
-   private static final tl a = tl.c("painting.random").a(n.h);
-   private final biu<? extends byf> b;
-
-   public ciq(biu<? extends byf> $$0, cja.a $$1) {
-      super($$1);
-      this.b = $$0;
+public class ciq extends cjg {
+   public ciq(cjg.a $$0) {
+      super($$0);
    }
 
    @Override
-   public bgy a(clp $$0) {
-      gw $$1 = $$0.a();
-      ha $$2 = $$0.k();
-      gw $$3 = $$1.a($$2);
-      cbu $$4 = $$0.o();
-      cjf $$5 = $$0.n();
-      if ($$4 != null && !this.a($$4, $$2, $$5, $$3)) {
-         return bgy.e;
-      } else {
-         cpv $$6 = $$0.q();
-         byf $$8;
-         if (this.b == biu.ar) {
-            Optional<byi> $$7 = byi.a($$6, $$3, $$2);
-            if ($$7.isEmpty()) {
-               return bgy.b;
-            }
-
-            $$8 = $$7.get();
-         } else if (this.b == biu.af) {
-            $$8 = new byg($$6, $$3, $$2);
-         } else {
-            if (this.b != biu.S) {
-               return bgy.a($$6.B);
-            }
-
-            $$8 = new bye($$6, $$3, $$2);
-         }
-
-         qw $$12 = $$5.v();
-         if ($$12 != null) {
-            biu.a($$6, $$4, $$8, $$12);
-         }
-
-         if ($$8.z()) {
-            if (!$$6.B) {
-               $$8.C();
-               $$6.a($$4, djt.t, $$8.dj());
-               $$6.b($$8);
-            }
-
-            $$5.h(1);
-            return bgy.a($$6.B);
-         } else {
-            return bgy.b;
-         }
+   public void a(cjl $$0, @Nullable cqb $$1, List<tl> $$2, clc $$3) {
+      qw $$4 = $$0.b("Explosion");
+      if ($$4 != null) {
+         a($$4, $$2);
       }
    }
 
-   protected boolean a(cbu $$0, ha $$1, cjf $$2, gw $$3) {
-      return !$$1.o().b() && $$0.a($$3, $$1, $$2);
+   public static void a(qw $$0, List<tl> $$1) {
+      cip.a $$2 = cip.a.a($$0.f("Type"));
+      $$1.add(tl.c("item.minecraft.firework_star.shape." + $$2.b()).a(n.h));
+      int[] $$3 = $$0.n("Colors");
+      if ($$3.length > 0) {
+         $$1.add(a(tl.i().a(n.h), $$3));
+      }
+
+      int[] $$4 = $$0.n("FadeColors");
+      if ($$4.length > 0) {
+         $$1.add(a(tl.c("item.minecraft.firework_star.fade_to").b(tk.u).a(n.h), $$4));
+      }
+
+      if ($$0.q("Trail")) {
+         $$1.add(tl.c("item.minecraft.firework_star.trail").a(n.h));
+      }
+
+      if ($$0.q("Flicker")) {
+         $$1.add(tl.c("item.minecraft.firework_star.flicker").a(n.h));
+      }
    }
 
-   @Override
-   public void a(cjf $$0, @Nullable cpv $$1, List<tl> $$2, ckw $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      if (this.b == biu.ar) {
-         qw $$4 = $$0.v();
-         if ($$4 != null && $$4.b("EntityTag", 10)) {
-            qw $$5 = $$4.p("EntityTag");
-            byi.c($$5).ifPresentOrElse($$1x -> {
-               $$1x.e().ifPresent($$1xx -> {
-                  $$2.add(tl.c($$1xx.a().b("painting", "title")).a(n.o));
-                  $$2.add(tl.c($$1xx.a().b("painting", "author")).a(n.h));
-               });
-               $$2.add(tl.a("painting.dimensions", arw.e(((byj)$$1x.a()).a(), 16), arw.e(((byj)$$1x.a()).b(), 16)));
-            }, () -> $$2.add(a));
-         } else if ($$3.b()) {
-            $$2.add(a);
+   private static tl a(tz $$0, int[] $$1) {
+      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
+         if ($$2 > 0) {
+            $$0.f(", ");
          }
+
+         $$0.b(a($$1[$$2]));
       }
+
+      return $$0;
+   }
+
+   private static tl a(int $$0) {
+      chz $$1 = chz.b($$0);
+      return $$1 == null ? tl.c("item.minecraft.firework_star.custom_color") : tl.c("item.minecraft.firework_star." + $$1.b());
    }
 }

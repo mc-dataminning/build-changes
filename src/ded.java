@@ -1,248 +1,96 @@
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.logging.LogUtils;
-import java.util.List;
-import java.util.UUID;
-import java.util.function.UnaryOperator;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.google.common.annotations.VisibleForTesting;
 
-public class ded extends dcv {
-   private static final Logger a = LogUtils.getLogger();
-   private static final int b = 90;
-   private static final int c = 10;
-   @Nullable
-   private UUID d;
-   private dee e = this.f();
-   private dee f = this.f();
-   private boolean g;
+public class ded extends dcz implements djp.b<ded.a> {
+   private final ded.a a;
 
-   public ded(gw $$0, dfj $$1) {
-      this(dcx.h, $$0, $$1);
+   public ded(gw $$0, dfd $$1) {
+      super(ddb.K, $$0, $$1);
+      this.a = new ded.a($$1, new djj($$0));
    }
 
-   public ded(dcx $$0, gw $$1, dfj $$2) {
-      super($$0, $$1, $$2);
-   }
-
-   protected dee f() {
-      return new dee();
-   }
-
-   public boolean a(cbu $$0) {
-      if (this.q().b() instanceof czv $$1) {
-         ehn $$2 = $$1.h(this.q());
-         double $$3 = $$0.dq() - ((double)this.p().u() + $$2.c);
-         double $$4 = $$0.dw() - ((double)this.p().w() + $$2.e);
-         float $$5 = $$1.g(this.q());
-         float $$6 = (float)(arw.d($$4, $$3) * 180.0F / (float)Math.PI) - 90.0F;
-         return arw.d($$5, $$6) <= 90.0F;
-      } else {
-         return false;
-      }
-   }
-
-   public dee b(cbu $$0) {
-      return this.a(this.a($$0));
-   }
-
-   public dee a(boolean $$0) {
-      return $$0 ? this.e : this.f;
-   }
-
-   public dee g() {
-      return this.e;
-   }
-
-   public dee i() {
-      return this.f;
-   }
-
-   public int c() {
-      return 10;
-   }
-
-   public int d() {
-      return 90;
-   }
-
-   @Override
-   protected void b(qw $$0) {
-      super.b($$0);
-      dee.a.encodeStart(ri.a, this.e).resultOrPartial(a::error).ifPresent($$1 -> $$0.a("front_text", $$1));
-      dee.a.encodeStart(ri.a, this.f).resultOrPartial(a::error).ifPresent($$1 -> $$0.a("back_text", $$1));
-      $$0.a("is_waxed", this.g);
+   public static void a(cqb $$0, gw $$1, dfd $$2, ded $$3) {
+      $$3.a.d().a($$0, $$1, $$0.D_(), true);
    }
 
    @Override
    public void a(qw $$0) {
-      super.a($$0);
-      if ($$0.e("front_text")) {
-         dee.a.parse(ri.a, $$0.p("front_text")).resultOrPartial(a::error).ifPresent($$0x -> this.e = this.a($$0x));
-      }
-
-      if ($$0.e("back_text")) {
-         dee.a.parse(ri.a, $$0.p("back_text")).resultOrPartial(a::error).ifPresent($$0x -> this.f = this.a($$0x));
-      }
-
-      this.g = $$0.q("is_waxed");
+      this.a.b.a($$0);
    }
 
-   private dee a(dee $$0) {
-      for (int $$1 = 0; $$1 < 4; $$1++) {
-         tl $$2 = this.a($$0.a($$1, false));
-         tl $$3 = this.a($$0.a($$1, true));
-         $$0 = $$0.a($$1, $$2, $$3);
+   @Override
+   protected void b(qw $$0) {
+      this.a.b.b($$0);
+      super.b($$0);
+   }
+
+   public ded.a c() {
+      return this.a;
+   }
+
+   public static class a implements djp {
+      public static final int a = 8;
+      final czv b;
+      private final dfd c;
+      private final djr d;
+
+      public a(dfd $$0, djr $$1) {
+         this.c = $$0;
+         this.d = $$1;
+         this.b = czv.a();
       }
 
-      return $$0;
-   }
-
-   private tl a(tl $$0) {
-      if (this.o instanceof akq $$1) {
-         try {
-            return tn.a(a(null, $$1, this.p), $$0, null, 0);
-         } catch (CommandSyntaxException var4) {
-         }
+      @Override
+      public djr a() {
+         return this.d;
       }
 
-      return $$0;
-   }
-
-   public void a(cbu $$0, boolean $$1, List<alh> $$2) {
-      if (!this.w() && $$0.cv().equals(this.v()) && this.o != null) {
-         this.a($$2x -> this.a($$0, $$2, $$2x), $$1);
-         this.a(null);
-         this.o.a(this.p(), this.q(), this.q(), 3);
-      } else {
-         a.warn("Player {} just tried to change non-editable sign", $$0.ab().getString());
+      @Override
+      public int b() {
+         return 8;
       }
-   }
 
-   public boolean a(UnaryOperator<dee> $$0, boolean $$1) {
-      dee $$2 = this.a($$1);
-      return this.a($$0.apply($$2), $$1);
-   }
+      @Override
+      public djp.a c() {
+         return djp.a.b;
+      }
 
-   private dee a(cbu $$0, List<alh> $$1, dee $$2) {
-      for (int $$3 = 0; $$3 < $$1.size(); $$3++) {
-         alh $$4 = $$1.get($$3);
-         uh $$5 = $$2.a($$3, $$0.W()).a();
-         if ($$0.W()) {
-            $$2 = $$2.a($$3, tl.b($$4.b()).b($$5));
+      @Override
+      public boolean a(akt $$0, djn $$1, djn.a $$2, ehh $$3) {
+         if ($$1 == djn.p && $$2.a() instanceof bjm $$4) {
+            if (!$$4.eC()) {
+               int $$5 = $$4.ed();
+               if ($$4.eb() && $$5 > 0) {
+                  this.b.a(gw.a($$3.a(ha.b, 0.5)), $$5);
+                  this.a($$0, $$4);
+               }
+
+               $$4.eB();
+               this.d.a($$0).ifPresent($$1x -> this.a($$0, gw.a($$1x), this.c, $$0.D_()));
+            }
+
+            return true;
          } else {
-            $$2 = $$2.a($$3, tl.b($$4.d()).b($$5), tl.b($$4.b()).b($$5));
+            return false;
          }
       }
 
-      return $$2;
-   }
-
-   public boolean a(dee $$0, boolean $$1) {
-      return $$1 ? this.c($$0) : this.b($$0);
-   }
-
-   private boolean b(dee $$0) {
-      if ($$0 != this.f) {
-         this.f = $$0;
-         this.x();
-         return true;
-      } else {
-         return false;
+      @VisibleForTesting
+      public czv d() {
+         return this.b;
       }
-   }
 
-   private boolean c(dee $$0) {
-      if ($$0 != this.e) {
-         this.e = $$0;
-         this.x();
-         return true;
-      } else {
-         return false;
+      private void a(akt $$0, gw $$1, dfd $$2, ash $$3) {
+         $$0.a($$1, $$2.a(czs.b, Boolean.valueOf(true)), 3);
+         $$0.a($$1, $$2.b(), 8);
+         $$0.a(iv.E, (double)$$1.u() + 0.5, (double)$$1.v() + 1.15, (double)$$1.w() + 0.5, 2, 0.2, 0.0, 0.2, 0.0);
+         $$0.a(null, $$1, apg.un, aph.e, 2.0F, 0.6F + $$3.i() * 0.4F);
       }
-   }
 
-   public boolean a(boolean $$0, cbu $$1) {
-      return this.w() && this.a($$0).b($$1);
-   }
-
-   public boolean a(cbu $$0, cpv $$1, gw $$2, boolean $$3) {
-      boolean $$4 = false;
-
-      for (tl $$5 : this.a($$3).b($$0.W())) {
-         uh $$6 = $$5.a();
-         tj $$7 = $$6.h();
-         if ($$7 != null && $$7.a() == tj.a.c) {
-            $$0.cK().aC().a(a($$0, $$1, $$2), $$7.b());
-            $$4 = true;
+      private void a(cqb $$0, bjm $$1) {
+         if ($$1.eg() instanceof aku $$3) {
+            bhu $$4 = $$1.ew() == null ? $$0.ag().a((cca)$$3) : $$1.ew();
+            al.W.a($$3, $$1, $$4);
          }
-      }
-
-      return $$4;
-   }
-
-   private static dt a(@Nullable cbu $$0, cpv $$1, gw $$2) {
-      String $$3 = $$0 == null ? "Sign" : $$0.ab().getString();
-      tl $$4 = (tl)($$0 == null ? tl.b("Sign") : $$0.N_());
-      return new dt(ds.a, ehn.b($$2), ehm.a, (akq)$$1, 2, $$3, $$4, $$1.n(), $$0);
-   }
-
-   public xd j() {
-      return xd.a(this);
-   }
-
-   @Override
-   public qw as_() {
-      return this.o();
-   }
-
-   @Override
-   public boolean t() {
-      return true;
-   }
-
-   public void a(@Nullable UUID $$0) {
-      this.d = $$0;
-   }
-
-   @Nullable
-   public UUID v() {
-      return this.d;
-   }
-
-   private void x() {
-      this.e();
-      this.o.a(this.p(), this.q(), this.q(), 3);
-   }
-
-   public boolean w() {
-      return this.g;
-   }
-
-   public boolean b(boolean $$0) {
-      if (this.g != $$0) {
-         this.g = $$0;
-         this.x();
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   public boolean b(UUID $$0) {
-      cbu $$1 = this.o.b($$0);
-      return $$1 == null || $$1.i((double)this.p().u(), (double)this.p().v(), (double)this.p().w()) > 64.0;
-   }
-
-   public static void a(cpv $$0, gw $$1, dfj $$2, ded $$3) {
-      UUID $$4 = $$3.v();
-      if ($$4 != null) {
-         $$3.a($$3, $$0, $$4);
-      }
-   }
-
-   private void a(ded $$0, cpv $$1, UUID $$2) {
-      if ($$0.b($$2)) {
-         $$0.a(null);
       }
    }
 }

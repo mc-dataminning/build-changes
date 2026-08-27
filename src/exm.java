@@ -1,52 +1,82 @@
-public class exm extends eyk {
-   private static final tl a = tl.c("gui.toMenu");
-   private static final tl b = tl.c("gui.toTitle");
-   private final eyk c;
+import javax.annotation.Nullable;
+
+public class exm extends eye {
+   private static final int a = 80;
+   private static final int b = 120;
+   private static final int c = 360;
+   @Nullable
    private final tl k;
    private final tl l;
-   private final ewd m = ewd.d();
+   private final Runnable m;
+   @Nullable
+   private etd n;
+   private esk o;
+   private int p;
 
-   public exm(eyk $$0, tl $$1, tl $$2) {
-      this($$0, $$1, $$2, a);
+   public static exm a(tl $$0, tl $$1, Runnable $$2) {
+      return new exm($$0, null, $$1, $$2, 0);
    }
 
-   public exm(eyk $$0, tl $$1, tl $$2, tl $$3) {
-      super($$1);
-      this.c = $$0;
-      this.k = $$2;
-      this.l = $$3;
+   public static exm a(tl $$0, tl $$1, tl $$2, Runnable $$3) {
+      return new exm($$0, $$1, $$2, $$3, 20);
+   }
+
+   protected exm(tl $$0, @Nullable tl $$1, tl $$2, Runnable $$3, int $$4) {
+      super($$0);
+      this.k = $$1;
+      this.l = $$2;
+      this.m = $$3;
+      this.p = $$4;
    }
 
    @Override
    protected void aH_() {
-      this.m.c().b().a(10);
-      this.m.a(new etw(this.e, this.i));
-      this.m.a(new etk(this.k, this.i).j(this.g - 50).b(true));
-      esq $$0;
-      if (this.f.D()) {
-         $$0 = esq.a(this.l, $$0x -> this.f.a(this.c)).a();
-      } else {
-         $$0 = esq.a(b, $$0x -> this.f.a(new eyp())).a();
+      super.aH_();
+      if (this.k != null) {
+         this.n = etd.a(this.i, this.k, 360);
       }
 
-      this.m.a($$0);
-      this.m.a();
-      this.m.a(this::d);
-      this.b();
+      int $$0 = 150;
+      int $$1 = 20;
+      int $$2 = this.n != null ? this.n.a() : 1;
+      int $$3 = Math.max($$2, 5) * 9;
+      int $$4 = Math.min(120 + $$3, this.h - 40);
+      this.o = this.d(esk.a(this.l, $$0x -> this.az_()).a((this.g - 150) / 2, $$4, 150, 20).a());
    }
 
    @Override
-   protected void b() {
-      evx.a(this.m, this.s());
+   public void c() {
+      if (this.p > 0) {
+         this.p--;
+      }
+
+      this.o.i = this.p == 0;
    }
 
    @Override
-   public tl g() {
-      return tk.a(this.e, this.k);
+   public void a(erz $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, this.e, this.g / 2, 80, 16777215);
+      if (this.n == null) {
+         String $$4 = exq.a(ac.b());
+         $$0.a(this.i, $$4, this.g / 2, 120, 10526880);
+      } else {
+         this.n.a($$0, this.g / 2, 120);
+      }
    }
 
    @Override
    public boolean ay_() {
-      return false;
+      return this.n != null && this.o.i;
+   }
+
+   @Override
+   public void az_() {
+      this.m.run();
+   }
+
+   @Override
+   public tl g() {
+      return tk.a(this.e, this.k != null ? this.k : tk.a);
    }
 }

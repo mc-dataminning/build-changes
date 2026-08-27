@@ -1,15 +1,58 @@
-public interface fqe<T extends dcv> {
-   void a(T var1, float var2, elp var3, foe var4, int var5, int var6);
+public class fqe implements fqa<ddd> {
+   private final fub a;
 
-   default boolean a(T $$0) {
-      return false;
+   public fqe(fqb.a $$0) {
+      this.a = $$0.d();
    }
 
-   default int aK_() {
-      return 64;
+   public void a(ddd $$0, float $$1, elj $$2, foa $$3, int $$4, int $$5) {
+      if ($$0.k() != null) {
+         int $$6 = $$0.q().c(dft.bv);
+         if ($$6 > 0) {
+            ha $$7 = $$0.f();
+            if ($$7 != null) {
+               cjl $$8 = $$0.g();
+               if (!$$8.b()) {
+                  $$2.a();
+                  $$2.a(0.0F, 0.5F, 0.0F);
+                  float[] $$9 = this.a($$7, $$6);
+                  $$2.a($$9[0], $$9[1], $$9[2]);
+                  $$2.a(a.d.rotationDegrees(75.0F));
+                  boolean $$10 = $$7 == ha.f || $$7 == ha.e;
+                  $$2.a(a.d.rotationDegrees((float)(($$10 ? 90 : 0) + 11)));
+                  $$2.b(0.5F, 0.5F, 0.5F);
+                  int $$11 = fny.a($$0.k(), $$0.q(), $$0.p().a($$7));
+                  this.a.a($$8, cji.i, $$11, fyr.d, $$2, $$3, $$0.k(), 0);
+                  $$2.b();
+               }
+            }
+         }
+      }
    }
 
-   default boolean a(T $$0, ehn $$1) {
-      return ehn.b($$0.p()).a((ho)$$1, (double)this.aK_());
+   private float[] a(ha $$0, int $$1) {
+      float[] $$2 = new float[]{0.5F, 0.0F, 0.5F};
+      float $$3 = (float)$$1 / 10.0F * 0.75F;
+      switch ($$0) {
+         case f:
+            $$2[0] = 0.73F + $$3;
+            break;
+         case e:
+            $$2[0] = 0.25F - $$3;
+            break;
+         case b:
+            $$2[1] = 0.25F + $$3;
+            break;
+         case a:
+            $$2[1] = -0.23F - $$3;
+            break;
+         case c:
+            $$2[2] = 0.25F - $$3;
+            break;
+         case d:
+            $$2[2] = 0.73F + $$3;
+      }
+
+      return $$2;
    }
 }

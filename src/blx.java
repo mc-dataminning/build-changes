@@ -1,33 +1,27 @@
 import com.mojang.datafixers.kinds.App;
+import com.mojang.datafixers.kinds.K1;
 import java.util.function.Function;
+import java.util.function.Predicate;
 
 public class blx {
-   public static bmh<bjg> a(int $$0, float $$1, int $$2) {
-      return boj.a(
-         (Function<boj.b<bjg>, ? extends App<boj.c<bjg>, bom<bjg>>>)($$3 -> $$3.group(
-                  $$3.c(bsh.m), $$3.a(bsh.b), $$3.a(bsh.C), $$3.a(bsh.t), $$3.a(bsh.n), $$3.a(bsh.r), $$3.a(bsh.q)
-               )
-               .apply(
-                  $$3,
-                  ($$4, $$5, $$6, $$7, $$8, $$9, $$10) -> ($$11, $$12, $$13) -> {
-                        $$11.w()
-                           .d($$0xxxx -> $$0xxxx.a(buj.n), $$0xxxx -> true, $$12.dl(), $$2 + 1, buf.b.c)
-                           .filter($$2xxxx -> $$2xxxx.a($$12.dj(), (double)$$2))
-                           .or(() -> $$11.w().a($$0xxxxx -> $$0xxxxx.a(buj.n), $$0xxxxx -> true, buf.b.c, $$12.dl(), $$0, $$12.ef()))
-                           .or(() -> $$3.<hd>a($$5).map(hd::b))
-                           .ifPresent($$10xx -> {
-                              $$7.b();
-                              $$8.b();
-                              $$9.b();
-                              $$10.b();
-                              $$6.a(hd.a($$11.ac(), $$10xx));
-                              if (!$$10xx.a($$12.dj(), (double)$$2)) {
-                                 $$4.a(new bsk($$10xx, $$1, $$2));
-                              }
-                           });
-                        return true;
-                     }
-               ))
-      );
+   public static ble<bjm> a(float $$0, boolean $$1, int $$2) {
+      return a($$0x -> true, $$0, $$1, $$2);
+   }
+
+   public static <E extends bjm> ble<E> a(Predicate<E> $$0, float $$1, boolean $$2, int $$3) {
+      return bop.a((Function<bop.b<E>, ? extends App<bop.c<E>, bos<E>>>)($$4 -> {
+         bop<E, ? extends boq<? extends K1, bsq>> $$5 = $$2 ? $$4.a(bsn.m) : $$4.c(bsn.m);
+         return $$4.group($$4.a(bsn.n), $$5, $$4.b(bsn.K), $$4.a(bsn.aO)).apply($$4, ($$4x, $$5x, $$6, $$7) -> ($$8, $$9, $$10) -> {
+               byt $$11 = $$4.b($$6);
+               if ($$4.a($$7).isEmpty() && $$0.test((E)$$9) && $$11.a($$9, (double)$$3) && $$9.dL().B_().a($$11.dl())) {
+                  bsq $$12 = new bsq(new blo($$11, false), $$1, 0);
+                  $$4x.a(new blo($$11, true));
+                  $$5x.a($$12);
+                  return true;
+               } else {
+                  return false;
+               }
+            });
+      }));
    }
 }

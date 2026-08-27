@@ -1,40 +1,42 @@
 import java.util.EnumSet;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class bry extends bsb {
-   private final bkb a;
-   private bjg b;
-   private int c;
+public class bry extends bsh {
+   private final bvj a;
+   @Nullable
+   private bjm b;
+   private final bty c = bty.a().a(64.0);
 
-   public bry(bkb $$0) {
-      super($$0, false);
+   public bry(bvj $$0) {
+      super($$0, false, true);
       this.a = $$0;
-      this.a(EnumSet.of(bqb.a.d));
+      this.a(EnumSet.of(bqh.a.d));
    }
 
    @Override
    public boolean a() {
-      if (this.a.s() && !this.a.gd()) {
-         bjg $$0 = this.a.O_();
-         if ($$0 == null) {
-            return false;
-         } else {
-            this.b = $$0.eg();
-            int $$1 = $$0.eh();
-            return $$1 != this.c && this.a(this.b, bts.a) && this.a.a(this.b, $$0);
+      ehc $$0 = this.a.cG().c(10.0, 8.0, 10.0);
+      List<? extends bjm> $$1 = this.a.dL().a(cbn.class, this.c, this.a, $$0);
+      List<cca> $$2 = this.a.dL().a(this.c, this.a, $$0);
+
+      for (bjm $$3 : $$1) {
+         cbn $$4 = (cbn)$$3;
+
+         for (cca $$5 : $$2) {
+            int $$6 = $$4.g($$5);
+            if ($$6 <= -100) {
+               this.b = $$5;
+            }
          }
-      } else {
-         return false;
       }
+
+      return this.b == null ? false : !(this.b instanceof cca) || !this.b.M_() && !((cca)this.b).f();
    }
 
    @Override
    public void c() {
-      this.e.h(this.b);
-      bjg $$0 = this.a.O_();
-      if ($$0 != null) {
-         this.c = $$0.eh();
-      }
-
+      this.a.h(this.b);
       super.c();
    }
 }

@@ -1,35 +1,32 @@
-public class bsk {
-   private final bmk a;
-   private final float b;
-   private final int c;
+import com.mojang.serialization.Codec;
 
-   public bsk(gw $$0, float $$1, int $$2) {
-      this(new bla($$0), $$1, $$2);
+public enum bsk implements asu {
+   a("major_negative", -5, 100, 10, 10),
+   b("minor_negative", -1, 200, 20, 20),
+   c("minor_positive", 1, 25, 1, 5),
+   d("major_positive", 5, 20, 0, 20),
+   e("trading", 1, 25, 2, 20);
+
+   public static final int f = 25;
+   public static final int g = 20;
+   public static final int h = 2;
+   public final String i;
+   public final int j;
+   public final int k;
+   public final int l;
+   public final int m;
+   public static final Codec<bsk> n = asu.a(bsk::values);
+
+   private bsk(String $$0, int $$1, int $$2, int $$3, int $$4) {
+      this.i = $$0;
+      this.j = $$1;
+      this.k = $$2;
+      this.l = $$3;
+      this.m = $$4;
    }
 
-   public bsk(ehn $$0, float $$1, int $$2) {
-      this(new bla(gw.a($$0)), $$1, $$2);
-   }
-
-   public bsk(biq $$0, float $$1, int $$2) {
-      this(new bli($$0, false), $$1, $$2);
-   }
-
-   public bsk(bmk $$0, float $$1, int $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-   }
-
-   public bmk a() {
-      return this.a;
-   }
-
-   public float b() {
-      return this.b;
-   }
-
-   public int c() {
-      return this.c;
+   @Override
+   public String c() {
+      return this.i;
    }
 }

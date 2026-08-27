@@ -1,58 +1,29 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import javax.annotation.Nullable;
+import com.mojang.authlib.minecraft.TelemetryEvent;
+import com.mojang.authlib.minecraft.TelemetrySession;
+import com.mojang.serialization.Codec;
 
-public class gdr implements gds<gcj> {
-   private final List<gds<gcj>> a = Lists.newArrayList();
-   @Nullable
-   private final tl b;
+public record gdr(gdv b, gdy c) {
+   public static final Codec<gdr> a = gdv.a.dispatchStable(gdr::a, gdv::c);
 
-   public gdr(aew $$0, @Nullable String $$1) {
-      this.b = $$1 == null ? null : tl.c($$1);
-   }
-
-   @Override
-   public int e() {
-      int $$0 = 0;
-
-      for (gds<gcj> $$1 : this.a) {
-         $$0 += $$1.e();
-      }
-
-      return $$0;
-   }
-
-   public gcj a(asc $$0) {
-      int $$1 = this.e();
-      if (!this.a.isEmpty() && $$1 != 0) {
-         int $$2 = $$0.a($$1);
-
-         for (gds<gcj> $$3 : this.a) {
-            $$2 -= $$3.e();
-            if ($$2 < 0) {
-               return $$3.b($$0);
-            }
+   public gdr(gdv b, gdy c) {
+      c.b().forEach($$1x -> {
+         if (!$$0.a($$1x)) {
+            throw new IllegalArgumentException("Property '" + $$1x.b() + "' not expected for event: '" + $$0.a() + "'");
          }
-
-         return gdq.a;
-      } else {
-         return gdq.a;
-      }
+      });
+      this.b = b;
+      this.c = c;
    }
 
-   public void a(gds<gcj> $$0) {
-      this.a.add($$0);
+   public TelemetryEvent a(TelemetrySession $$0) {
+      return this.b.a($$0, this.c);
    }
 
-   @Nullable
-   public tl a() {
+   public gdv a() {
       return this.b;
    }
 
-   @Override
-   public void a(gdn $$0) {
-      for (gds<gcj> $$1 : this.a) {
-         $$1.a($$0);
-      }
+   public gdy b() {
+      return this.c;
    }
 }

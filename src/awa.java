@@ -1,87 +1,36 @@
-import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Maps;
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Either;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.datafixers.util.Unit;
-import java.util.List;
-import java.util.Objects;
+import com.mojang.serialization.Dynamic;
+import java.util.Locale;
+import java.util.Map;
 import java.util.Optional;
 
-public class awa extends DataFix {
+public class awa extends ayf {
+   private static final Map<String, String> a = (Map<String, String>)DataFixUtils.make(Maps.newHashMap(), $$0 -> {
+      $$0.put("donkeykong", "donkey_kong");
+      $$0.put("burningskull", "burning_skull");
+      $$0.put("skullandroses", "skull_and_roses");
+   });
+
    public awa(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+      super($$0, $$1, "EntityPaintingMotiveFix", azd.x, "minecraft:painting");
    }
 
-   public TypeRewriteRule makeRule() {
-      Schema $$0 = this.getInputSchema();
-      Schema $$1 = this.getOutputSchema();
-      Type<?> $$2 = $$0.getTypeRaw(ayx.w);
-      Type<?> $$3 = $$1.getTypeRaw(ayx.w);
-      Type<?> $$4 = $$0.getTypeRaw(ayx.x);
-      return this.a($$0, $$1, $$2, $$3, $$4);
-   }
-
-   private <OldEntityTree, NewEntityTree, Entity> TypeRewriteRule a(Schema $$0, Schema $$1, Type<OldEntityTree> $$2, Type<NewEntityTree> $$3, Type<Entity> $$4) {
-      Type<Pair<String, Pair<Either<OldEntityTree, Unit>, Entity>>> $$5 = DSL.named(ayx.w.typeName(), DSL.and(DSL.optional(DSL.field("Riding", $$2)), $$4));
-      Type<Pair<String, Pair<Either<List<NewEntityTree>, Unit>, Entity>>> $$6 = DSL.named(
-         ayx.w.typeName(), DSL.and(DSL.optional(DSL.field("Passengers", DSL.list($$3))), $$4)
-      );
-      Type<?> $$7 = $$0.getType(ayx.w);
-      Type<?> $$8 = $$1.getType(ayx.w);
-      if (!Objects.equals($$7, $$5)) {
-         throw new IllegalStateException("Old entity type is not what was expected.");
-      } else if (!$$8.equals($$6, true, true)) {
-         throw new IllegalStateException("New entity type is not what was expected.");
+   public Dynamic<?> a(Dynamic<?> $$0) {
+      Optional<String> $$1 = $$0.get("Motive").asString().result();
+      if ($$1.isPresent()) {
+         String $$2 = $$1.get().toLowerCase(Locale.ROOT);
+         return $$0.set("Motive", $$0.createString(new aez(a.getOrDefault($$2, $$2)).toString()));
       } else {
-         OpticFinder<Pair<String, Pair<Either<OldEntityTree, Unit>, Entity>>> $$9 = DSL.typeFinder($$5);
-         OpticFinder<Pair<String, Pair<Either<List<NewEntityTree>, Unit>, Entity>>> $$10 = DSL.typeFinder($$6);
-         OpticFinder<NewEntityTree> $$11 = DSL.typeFinder($$3);
-         Type<?> $$12 = $$0.getType(ayx.b);
-         Type<?> $$13 = $$1.getType(ayx.b);
-         return TypeRewriteRule.seq(
-            this.fixTypeEverywhere(
-               "EntityRidingToPassengerFix",
-               $$5,
-               $$6,
-               $$5x -> $$6x -> {
-                     Optional<Pair<String, Pair<Either<List<NewEntityTree>, Unit>, Entity>>> $$7x = Optional.empty();
-                     Pair<String, Pair<Either<OldEntityTree, Unit>, Entity>> $$8x = $$6x;
-
-                     while (true) {
-                        Either<List<NewEntityTree>, Unit> $$9x = (Either<List<NewEntityTree>, Unit>)DataFixUtils.orElse(
-                           $$7x.map(
-                              $$4xxx -> {
-                                 Typed<NewEntityTree> $$5xxx = (Typed<NewEntityTree>)$$3.pointTyped($$5x)
-                                    .orElseThrow(() -> new IllegalStateException("Could not create new entity tree"));
-                                 NewEntityTree $$6xx = (NewEntityTree)$$5xxx.set($$10, $$4xxx)
-                                    .getOptional($$11)
-                                    .orElseThrow(() -> new IllegalStateException("Should always have an entity tree here"));
-                                 return Either.left(ImmutableList.of($$6xx));
-                              }
-                           ),
-                           Either.right(DSL.unit())
-                        );
-                        $$7x = Optional.of(Pair.of(ayx.w.typeName(), Pair.of($$9x, ((Pair)$$8x.getSecond()).getSecond())));
-                        Optional<OldEntityTree> $$10x = ((Either)((Pair)$$8x.getSecond()).getFirst()).left();
-                        if ($$10x.isEmpty()) {
-                           return $$7x.orElseThrow(() -> new IllegalStateException("Should always have an entity tree here"));
-                        }
-
-                        $$8x = (Pair<String, Pair<Either<OldEntityTree, Unit>, Entity>>)new Typed($$2, $$5x, $$10x.get())
-                           .getOptional($$9)
-                           .orElseThrow(() -> new IllegalStateException("Should always have an entity here"));
-                     }
-                  }
-            ),
-            this.writeAndRead("player RootVehicle injecter", $$12, $$13)
-         );
+         return $$0;
       }
+   }
+
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), this::a);
    }
 }

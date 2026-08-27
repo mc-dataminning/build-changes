@@ -1,57 +1,34 @@
-public class eoj extends gfb {
-   private final eyk a;
-   private final eoj.a b;
-   private etj c = etj.a;
+public class eoj extends gex {
+   private static final tl a = tl.c("mco.account.privacyinfo");
+   private final eye b;
+   private etd c = etd.a;
 
-   public eoj(ens $$0, eyk $$1) {
-      super(eqn.a);
-      this.a = $$1;
-      this.b = a($$0);
-   }
-
-   public eoj(tl $$0, eyk $$1) {
-      super(eqn.a);
-      this.a = $$1;
-      this.b = a($$0);
-   }
-
-   public eoj(tl $$0, tl $$1, eyk $$2) {
-      super(eqn.a);
-      this.a = $$2;
-      this.b = a($$0, $$1);
-   }
-
-   private static eoj.a a(ens $$0) {
-      emh $$1 = $$0.a;
-      return a(tl.a("mco.errorMessage.realmsService.realmsError", $$1.a()), $$1.b());
-   }
-
-   private static eoj.a a(tl $$0) {
-      return a(tl.c("mco.errorMessage.generic"), $$0);
-   }
-
-   private static eoj.a a(tl $$0, tl $$1) {
-      return new eoj.a($$0, $$1);
+   public eoj(eye $$0) {
+      super(eqh.a);
+      this.b = $$0;
    }
 
    @Override
    public void aH_() {
-      this.d(esq.a(tk.h, $$0 -> this.f.a(this.a)).a(this.g / 2 - 100, this.h - 52, 200, 20).a());
-      this.c = etj.a(this.i, this.b.b, this.g * 3 / 4);
+      tl $$0 = tl.c("mco.account.update");
+      tl $$1 = tk.k;
+      int $$2 = Math.max(this.i.a($$0), this.i.a($$1)) + 30;
+      tl $$3 = tl.c("mco.account.privacy.info");
+      int $$4 = (int)((double)this.i.a($$3) * 1.2);
+      this.d(esk.a($$3, $$0x -> ac.i().a("https://aka.ms/MinecraftGDPR")).a(this.g / 2 - $$4 / 2, h(11), $$4, 20).a());
+      this.d(esk.a($$0, $$0x -> ac.i().a("https://aka.ms/UpdateMojangAccount")).a(this.g / 2 - ($$2 + 5), h(13), $$2, 20).a());
+      this.d(esk.a($$1, $$0x -> this.f.a(this.b)).a(this.g / 2 + 5, h(13), $$2, 20).a());
+      this.c = etd.a(this.i, a, (int)Math.round((double)this.g * 0.9));
    }
 
    @Override
    public tl g() {
-      return tl.h().b(this.b.a).f(": ").b(this.b.b);
+      return a;
    }
 
    @Override
-   public void a(esf $$0, int $$1, int $$2, float $$3) {
+   public void a(erz $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.b.a, this.g / 2, 80, -1);
-      this.c.a($$0, this.g / 2, 100, 9, -65536);
-   }
-
-   static record a(tl a, tl b) {
+      this.c.a($$0, this.g / 2, 15, 15, 16777215);
    }
 }

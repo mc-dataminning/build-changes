@@ -15,7 +15,7 @@ public class hy implements Comparable<hy> {
    private int c;
 
    public static Codec<hy> v(int $$0) {
-      return arf.a(
+      return arj.a(
          f,
          (Function<hy, DataResult<hy>>)($$1 -> Math.abs($$1.u()) < $$0 && Math.abs($$1.v()) < $$0 && Math.abs($$1.w()) < $$0
                ? DataResult.success($$1)
@@ -174,11 +174,11 @@ public class hy implements Comparable<hy> {
    }
 
    public boolean a(hy $$0, double $$1) {
-      return this.j($$0) < arw.k($$1);
+      return this.j($$0) < asb.k($$1);
    }
 
    public boolean a(ho $$0, double $$1) {
-      return this.b($$0) < arw.k($$1);
+      return this.b($$0) < asb.k($$1);
    }
 
    public double j(hy $$0) {

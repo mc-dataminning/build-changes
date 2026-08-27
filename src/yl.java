@@ -1,73 +1,86 @@
-import com.google.common.collect.Sets;
-import java.util.Set;
+import com.google.common.collect.Lists;
+import java.util.BitSet;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public record yl(int a, boolean b, Set<aev<cpv>> c, int d, int e, int f, boolean g, boolean h, boolean i, aaz j) implements vd<ww> {
-   public yl(so $$0) {
-      this(
-         $$0.readInt(),
-         $$0.readBoolean(),
-         $$0.a(Sets::newHashSetWithExpectedSize, $$0x -> $$0x.a(jc.aH)),
-         $$0.m(),
-         $$0.m(),
-         $$0.m(),
-         $$0.readBoolean(),
-         $$0.readBoolean(),
-         $$0.readBoolean(),
-         new aaz($$0)
-      );
+public class yl {
+   private final BitSet a;
+   private final BitSet b;
+   private final BitSet c;
+   private final BitSet d;
+   private final List<byte[]> e;
+   private final List<byte[]> f;
+
+   public yl(cpi $$0, dzv $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
+      this.a = new BitSet();
+      this.b = new BitSet();
+      this.c = new BitSet();
+      this.d = new BitSet();
+      this.e = Lists.newArrayList();
+      this.f = Lists.newArrayList();
+
+      for (int $$4 = 0; $$4 < $$1.c(); $$4++) {
+         if ($$2 == null || $$2.get($$4)) {
+            this.a($$0, $$1, cqk.a, $$4, this.a, this.c, this.e);
+         }
+
+         if ($$3 == null || $$3.get($$4)) {
+            this.a($$0, $$1, cqk.b, $$4, this.b, this.d, this.f);
+         }
+      }
    }
 
-   @Override
+   public yl(so $$0, int $$1, int $$2) {
+      this.a = $$0.z();
+      this.b = $$0.z();
+      this.c = $$0.z();
+      this.d = $$0.z();
+      this.e = $$0.a((so.a<byte[]>)($$0x -> $$0x.a(2048)));
+      this.f = $$0.a((so.a<byte[]>)($$0x -> $$0x.a(2048)));
+   }
+
    public void a(so $$0) {
-      $$0.p(this.a);
+      $$0.a(this.a);
       $$0.a(this.b);
-      $$0.a(this.c, so::b);
-      $$0.c(this.d);
-      $$0.c(this.e);
-      $$0.c(this.f);
-      $$0.a(this.g);
-      $$0.a(this.h);
-      $$0.a(this.i);
-      this.j.a($$0);
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e, so::a);
+      $$0.a(this.f, so::a);
    }
 
-   public void a(ww $$0) {
-      $$0.a(this);
+   private void a(cpi $$0, dzv $$1, cqk $$2, int $$3, BitSet $$4, BitSet $$5, List<byte[]> $$6) {
+      dhf $$7 = $$1.a($$2).a(hw.a($$0, $$1.d() + $$3));
+      if ($$7 != null) {
+         if ($$7.d()) {
+            $$5.set($$3);
+         } else {
+            $$4.set($$3);
+            $$6.add($$7.b().a());
+         }
+      }
    }
 
-   public boolean d() {
-      return this.b;
+   public BitSet a() {
+      return this.a;
    }
 
-   public Set<aev<cpv>> e() {
+   public BitSet b() {
       return this.c;
    }
 
-   public int f() {
-      return this.d;
-   }
-
-   public int g() {
+   public List<byte[]> c() {
       return this.e;
    }
 
-   public int h() {
+   public BitSet d() {
+      return this.b;
+   }
+
+   public BitSet e() {
+      return this.d;
+   }
+
+   public List<byte[]> f() {
       return this.f;
-   }
-
-   public boolean i() {
-      return this.g;
-   }
-
-   public boolean j() {
-      return this.h;
-   }
-
-   public boolean k() {
-      return this.i;
-   }
-
-   public aaz l() {
-      return this.j;
    }
 }

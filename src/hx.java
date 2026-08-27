@@ -1,3 +1,4 @@
+import com.mojang.authlib.GameProfile;
 import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
@@ -26,8 +27,9 @@ public final class hx {
          return DataResult.error(() -> "Invalid UUID " + $$0 + ": " + var2.getMessage());
       }
    }, UndashedUuid::toString)).xmap($$0 -> (UUID)$$0.map($$0x -> $$0x, $$0x -> $$0x), Either::right);
-   public static final int d = 16;
-   private static final String e = "OfflinePlayer:";
+   public static Codec<UUID> d = Codec.either(a, b).xmap($$0 -> (UUID)$$0.map($$0x -> $$0x, $$0x -> $$0x), Either::left);
+   public static final int e = 16;
+   private static final String f = "OfflinePlayer:";
 
    private hx() {
    }
@@ -63,5 +65,10 @@ public final class hx {
 
    public static UUID a(String $$0) {
       return UUID.nameUUIDFromBytes(("OfflinePlayer:" + $$0).getBytes(StandardCharsets.UTF_8));
+   }
+
+   public static GameProfile b(String $$0) {
+      UUID $$1 = a($$0);
+      return new GameProfile($$1, $$0);
    }
 }

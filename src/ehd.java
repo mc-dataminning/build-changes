@@ -1,79 +1,47 @@
-import java.io.IOException;
-import java.nio.file.FileVisitResult;
-import java.nio.file.Files;
-import java.nio.file.LinkOption;
-import java.nio.file.NoSuchFileException;
-import java.nio.file.Path;
-import java.nio.file.PathMatcher;
-import java.nio.file.SimpleFileVisitor;
-import java.nio.file.attribute.BasicFileAttributes;
-import java.util.ArrayList;
-import java.util.List;
+public class ehd extends ehf {
+   private final ha b;
+   private final gw c;
+   private final boolean d;
+   private final boolean e;
 
-public class ehd {
-   private final PathMatcher a;
-
-   public ehd(PathMatcher $$0) {
-      this.a = $$0;
+   public static ehd a(ehh $$0, ha $$1, gw $$2) {
+      return new ehd(true, $$0, $$1, $$2, false);
    }
 
-   public void a(Path $$0, List<ehe> $$1) throws IOException {
-      Path $$2 = Files.readSymbolicLink($$0);
-      if (!this.a.matches($$2)) {
-         $$1.add(new ehe($$0, $$2));
-      }
+   public ehd(ehh $$0, ha $$1, gw $$2, boolean $$3) {
+      this(false, $$0, $$1, $$2, $$3);
    }
 
-   public List<ehe> a(Path $$0) throws IOException {
-      List<ehe> $$1 = new ArrayList<>();
-      this.a($$0, $$1);
-      return $$1;
+   private ehd(boolean $$0, ehh $$1, ha $$2, gw $$3, boolean $$4) {
+      super($$1);
+      this.d = $$0;
+      this.b = $$2;
+      this.c = $$3;
+      this.e = $$4;
    }
 
-   public List<ehe> a(Path $$0, boolean $$1) throws IOException {
-      List<ehe> $$2 = new ArrayList<>();
-
-      BasicFileAttributes $$3;
-      try {
-         $$3 = Files.readAttributes($$0, BasicFileAttributes.class, LinkOption.NOFOLLOW_LINKS);
-      } catch (NoSuchFileException var6) {
-         return $$2;
-      }
-
-      if ($$3.isRegularFile()) {
-         throw new IOException("Path " + $$0 + " is not a directory");
-      } else {
-         if ($$3.isSymbolicLink()) {
-            if (!$$1) {
-               this.a($$0, $$2);
-               return $$2;
-            }
-
-            $$0 = Files.readSymbolicLink($$0);
-         }
-
-         this.b($$0, $$2);
-         return $$2;
-      }
+   public ehd a(ha $$0) {
+      return new ehd(this.d, this.a, $$0, this.c, this.e);
    }
 
-   public void b(Path $$0, final List<ehe> $$1) throws IOException {
-      Files.walkFileTree($$0, new SimpleFileVisitor<Path>() {
-         private void c(Path $$0, BasicFileAttributes $$1x) throws IOException {
-            if ($$1.isSymbolicLink()) {
-               ehd.this.a($$0, $$1);
-            }
-         }
+   public ehd a(gw $$0) {
+      return new ehd(this.d, this.a, this.b, $$0, this.e);
+   }
 
-         public FileVisitResult a(Path $$0, BasicFileAttributes $$1x) throws IOException {
-            this.c($$0, $$1);
-            return super.preVisitDirectory($$0, $$1);
-         }
+   public gw a() {
+      return this.c;
+   }
 
-         public FileVisitResult b(Path $$0, BasicFileAttributes $$1x) throws IOException {
-            this.c($$0, $$1);
-            return super.visitFile($$0, $$1);
-         }
-      });
+   public ha b() {
+      return this.b;
+   }
+
+   @Override
+   public ehf.a c() {
+      return this.d ? ehf.a.a : ehf.a.b;
+   }
+
+   public boolean d() {
+      return this.e;
    }
 }

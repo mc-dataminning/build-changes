@@ -1,30 +1,35 @@
-import net.minecraft.server.MinecraftServer;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-public class alk implements adc {
-   private final MinecraftServer a;
-   private final sm b;
+public record alk(String b, tp c) {
+   public static final alk a = a("");
 
-   public alk(MinecraftServer $$0, sm $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public static alk a(String $$0) {
+      return new alk($$0, tp.c);
    }
 
-   @Override
-   public void a(adb $$0) {
-      if ($$0.f() != ada.b) {
-         throw new UnsupportedOperationException("Invalid intention " + $$0.f());
-      } else {
-         this.b.a(ada.b);
-         this.b.a(new alr(this.a, this.b));
-      }
+   public static alk b(String $$0) {
+      return new alk($$0, tp.b);
    }
 
-   @Override
-   public void a(tl $$0) {
+   @Nullable
+   public String a() {
+      return this.c.a(this.b);
    }
 
-   @Override
+   public String b() {
+      return Objects.requireNonNullElse(this.a(), "");
+   }
+
    public boolean c() {
-      return this.b.k();
+      return !this.c.a();
+   }
+
+   public String d() {
+      return this.b;
+   }
+
+   public tp e() {
+      return this.c;
    }
 }

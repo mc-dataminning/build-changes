@@ -1,6 +1,5 @@
-import javax.annotation.Nullable;
-
 public interface bkd {
-   @Nullable
-   biq v();
+   void a(aph var1);
+
+   boolean a();
 }

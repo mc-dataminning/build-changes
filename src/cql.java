@@ -1,92 +1,50 @@
-public interface cql extends cpb {
-   ha[] C = ha.values();
+import com.google.common.collect.Maps;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import java.util.List;
+import java.util.Map;
 
-   default int a(gw $$0, ha $$1) {
-      return this.a_($$0).c(this, $$0, $$1);
+public class cql {
+   private final Long2ObjectMap<List<aku>> a = new Long2ObjectOpenHashMap();
+   private final Map<aku, cql.a> b = Maps.newHashMap();
+   private final akd c;
+
+   public cql(akd $$0) {
+      this.c = $$0;
    }
 
-   default int e_(gw $$0) {
-      int $$1 = 0;
-      $$1 = Math.max($$1, this.a($$0.d(), ha.a));
-      if ($$1 >= 15) {
-         return $$1;
-      } else {
-         $$1 = Math.max($$1, this.a($$0.c(), ha.b));
-         if ($$1 >= 15) {
-            return $$1;
-         } else {
-            $$1 = Math.max($$1, this.a($$0.e(), ha.c));
-            if ($$1 >= 15) {
-               return $$1;
-            } else {
-               $$1 = Math.max($$1, this.a($$0.f(), ha.d));
-               if ($$1 >= 15) {
-                  return $$1;
-               } else {
-                  $$1 = Math.max($$1, this.a($$0.g(), ha.e));
-                  if ($$1 >= 15) {
-                     return $$1;
-                  } else {
-                     $$1 = Math.max($$1, this.a($$0.h(), ha.f));
-                     return $$1 >= 15 ? $$1 : $$1;
-                  }
-               }
-            }
-         }
+   private List<aku> a(cpi $$0) {
+      return (List<aku>)this.a.computeIfAbsent($$0.a(), $$1 -> this.c.d($$0));
+   }
+
+   public void a(cpi $$0, bjp $$1) {
+      for (aku $$2 : this.a($$0)) {
+         this.b.computeIfAbsent($$2, $$0x -> new cql.a()).a($$1);
       }
    }
 
-   default int a(gw $$0, ha $$1, boolean $$2) {
-      dfj $$3 = this.a_($$0);
-      if ($$2) {
-         return cut.h($$3) ? this.a($$0, $$1) : 0;
-      } else if ($$3.a(csw.ha)) {
-         return 15;
-      } else if ($$3.a(csw.cw)) {
-         return $$3.c(cyw.e);
-      } else {
-         return $$3.m() ? this.a($$0, $$1) : 0;
-      }
-   }
-
-   default boolean b(gw $$0, ha $$1) {
-      return this.c($$0, $$1) > 0;
-   }
-
-   default int c(gw $$0, ha $$1) {
-      dfj $$2 = this.a_($$0);
-      int $$3 = $$2.b(this, $$0, $$1);
-      return $$2.g(this, $$0) ? Math.max($$3, this.e_($$0)) : $$3;
-   }
-
-   default boolean B(gw $$0) {
-      if (this.c($$0.d(), ha.a) > 0) {
-         return true;
-      } else if (this.c($$0.c(), ha.b) > 0) {
-         return true;
-      } else if (this.c($$0.e(), ha.c) > 0) {
-         return true;
-      } else if (this.c($$0.f(), ha.d) > 0) {
-         return true;
-      } else {
-         return this.c($$0.g(), ha.e) > 0 ? true : this.c($$0.h(), ha.f) > 0;
-      }
-   }
-
-   default int C(gw $$0) {
-      int $$1 = 0;
-
-      for (ha $$2 : C) {
-         int $$3 = this.c($$0.a($$2), $$2);
-         if ($$3 >= 15) {
-            return 15;
-         }
-
-         if ($$3 > $$1) {
-            $$1 = $$3;
+   public boolean a(bjp $$0, cpi $$1) {
+      for (aku $$2 : this.a($$1)) {
+         cql.a $$3 = this.b.get($$2);
+         if ($$3 == null || $$3.b($$0)) {
+            return true;
          }
       }
 
-      return $$1;
+      return false;
+   }
+
+   static class a {
+      private final Object2IntMap<bjp> a = new Object2IntOpenHashMap(bjp.values().length);
+
+      public void a(bjp $$0) {
+         this.a.computeInt($$0, ($$0x, $$1) -> $$1 == null ? 1 : $$1 + 1);
+      }
+
+      public boolean b(bjp $$0) {
+         return this.a.getOrDefault($$0, 0) < $$0.b();
+      }
    }
 }

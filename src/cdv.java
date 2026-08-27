@@ -1,106 +1,147 @@
-public class cdv extends cdm implements dds {
-   private boolean f = true;
+import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 
-   public cdv(biu<? extends cdv> $$0, cpv $$1) {
-      super($$0, $$1);
-   }
+public interface cdv extends bgx, bhh {
+   ehh dj();
 
-   public cdv(cpv $$0, double $$1, double $$2, double $$3) {
-      super(biu.X, $$1, $$2, $$3, $$0);
-   }
+   @Nullable
+   aez G();
 
-   @Override
-   public cdl.a z() {
-      return cdl.a.f;
-   }
+   void a(@Nullable aez var1);
 
-   @Override
-   public dfj B() {
-      return csw.hc.n();
-   }
+   long H();
 
-   @Override
-   public int E() {
-      return 1;
-   }
+   void a(long var1);
+
+   hn<cjl> I();
+
+   void K();
+
+   cqb dL();
+
+   boolean dG();
 
    @Override
-   public int b() {
-      return 5;
+   default boolean af_() {
+      return this.g();
    }
 
-   @Override
-   public void a(int $$0, int $$1, int $$2, boolean $$3) {
-      boolean $$4 = !$$3;
-      if ($$4 != this.L()) {
-         this.p($$4);
-      }
-   }
-
-   public boolean L() {
-      return this.f;
-   }
-
-   public void p(boolean $$0) {
-      this.f = $$0;
-   }
-
-   @Override
-   public double M() {
-      return this.dq();
-   }
-
-   @Override
-   public double N() {
-      return this.ds() + 0.5;
-   }
-
-   @Override
-   public double O() {
-      return this.dw();
-   }
-
-   @Override
-   public void l() {
-      super.l();
-      if (!this.dL().B && this.bv() && this.L() && this.P()) {
-         this.e();
-      }
-   }
-
-   public boolean P() {
-      if (ddt.a(this.dL(), this)) {
-         return true;
+   default void c(qw $$0) {
+      if (this.G() != null) {
+         $$0.a("LootTable", this.G().toString());
+         if (this.H() != 0L) {
+            $$0.a("LootTableSeed", this.H());
+         }
       } else {
-         for (byn $$1 : this.dL().a(byn.class, this.cG().c(0.25, 0.0, 0.25), bit.a)) {
-            if (ddt.a(this, $$1)) {
-               return true;
+         bgy.a($$0, this.I());
+      }
+   }
+
+   default void b_(qw $$0) {
+      this.K();
+      if ($$0.b("LootTable", 8)) {
+         this.a(new aez($$0.l("LootTable")));
+         this.a($$0.i("LootTableSeed"));
+      } else {
+         bgy.b($$0, this.I());
+      }
+   }
+
+   default void a(bhu $$0, cqb $$1, biw $$2) {
+      if ($$1.X().b(cpx.h)) {
+         bha.a($$1, $$2, this);
+         if (!$$1.B) {
+            biw $$3 = $$0.c();
+            if ($$3 != null && $$3.ag() == bja.bt) {
+               car.a((cca)$$3, true);
             }
          }
-
-         return false;
       }
    }
 
-   @Override
-   protected cja q() {
-      return cji.ne;
+   default bhe c_(cca $$0) {
+      $$0.a(this);
+      return !$$0.dL().B ? bhe.b : bhe.a;
    }
 
-   @Override
-   protected void b(qw $$0) {
-      super.b($$0);
-      $$0.a("Enabled", this.f);
+   default void f(@Nullable cca $$0) {
+      MinecraftServer $$1 = this.dL().n();
+      if (this.G() != null && $$1 != null) {
+         ecs $$2 = $$1.aH().getLootTable(this.G());
+         if ($$0 != null) {
+            al.N.a((aku)$$0, this.G());
+         }
+
+         this.a(null);
+         ecq.a $$3 = new ecq.a((akt)this.dL()).a(eev.f, this.dj());
+         if ($$0 != null) {
+            $$3.a($$0.go()).a(eev.a, $$0);
+         }
+
+         $$2.a(this, $$3.a(eeu.c), this.H());
+      }
    }
 
-   @Override
-   protected void a(qw $$0) {
-      super.a($$0);
-      this.f = $$0.e("Enabled") ? $$0.q("Enabled") : true;
+   default void f() {
+      this.f(null);
+      this.I().clear();
    }
 
-   @Override
-   public cel a(int $$0, cbt $$1) {
-      return new cfi($$0, $$1, this);
+   default boolean g() {
+      for (cjl $$0 : this.I()) {
+         if (!$$0.b()) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   default cjl e_(int $$0) {
+      this.f(null);
+      cjl $$1 = this.I().get($$0);
+      if ($$1.b()) {
+         return cjl.b;
+      } else {
+         this.I().set($$0, cjl.b);
+         return $$1;
+      }
+   }
+
+   default cjl f_(int $$0) {
+      this.f(null);
+      return this.I().get($$0);
+   }
+
+   default cjl b(int $$0, int $$1) {
+      this.f(null);
+      return bgy.a(this.I(), $$0, $$1);
+   }
+
+   default void c(int $$0, cjl $$1) {
+      this.f(null);
+      this.I().set($$0, $$1);
+      if (!$$1.b() && $$1.L() > this.ag_()) {
+         $$1.f(this.ag_());
+      }
+   }
+
+   default bke g_(final int $$0) {
+      return $$0 >= 0 && $$0 < this.b() ? new bke() {
+         @Override
+         public cjl a() {
+            return cdv.this.f_($$0);
+         }
+
+         @Override
+         public boolean a(cjl $$0x) {
+            cdv.this.c($$0, $$0);
+            return true;
+         }
+      } : bke.b;
+   }
+
+   default boolean g(cca $$0) {
+      return !this.dG() && this.dj().a((ho)$$0.dj(), 8.0);
    }
 }

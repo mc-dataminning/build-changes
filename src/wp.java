@@ -1,12 +1,8 @@
-public interface wp extends vg {
-   @Override
-   default sn b() {
-      return sn.e;
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   void a(wq var1);
-
-   void a(wr var1);
-
-   void a(ws var1);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface wp {
 }

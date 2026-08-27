@@ -1,238 +1,283 @@
 import com.google.common.collect.Lists;
-import com.google.common.math.DoubleMath;
-import it.unimi.dsi.fastutil.doubles.DoubleList;
+import com.google.common.collect.Maps;
+import com.mojang.logging.LogUtils;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.EnumMap;
 import java.util.List;
-import java.util.Optional;
+import java.util.Map;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public abstract class eig {
-   protected final ehw a;
+public class eig {
+   private static final Logger a = LogUtils.getLogger();
+   private final Map<String, eid> b = Maps.newHashMap();
+   private final Map<eij, List<eid>> c = Maps.newHashMap();
+   private final Map<String, Map<eid, eif>> d = Maps.newHashMap();
+   private final Map<eic, eid> e = new EnumMap<>(eic.class);
+   private final Map<String, eie> f = Maps.newHashMap();
+   private final Map<String, eie> g = Maps.newHashMap();
+
    @Nullable
-   private eig[] b;
-
-   eig(ehw $$0) {
-      this.a = $$0;
+   public eid b(@Nullable String $$0) {
+      return this.b.get($$0);
    }
 
-   public double b(ha.a $$0) {
-      int $$1 = this.a.a($$0);
-      return $$1 >= this.a.c($$0) ? Double.POSITIVE_INFINITY : this.a($$0, $$1);
-   }
-
-   public double c(ha.a $$0) {
-      int $$1 = this.a.b($$0);
-      return $$1 <= 0 ? Double.NEGATIVE_INFINITY : this.a($$0, $$1);
-   }
-
-   public ehi a() {
-      if (this.c()) {
-         throw (UnsupportedOperationException)ac.b(new UnsupportedOperationException("No bounds for empty shape."));
+   public eid a(String $$0, eij $$1, tl $$2, eij.a $$3) {
+      if (this.b.containsKey($$0)) {
+         throw new IllegalArgumentException("An objective with the name '" + $$0 + "' already exists!");
       } else {
-         return new ehi(this.b(ha.a.a), this.b(ha.a.b), this.b(ha.a.c), this.c(ha.a.a), this.c(ha.a.b), this.c(ha.a.c));
+         eid $$4 = new eid(this, $$0, $$1, $$2, $$3);
+         this.c.computeIfAbsent($$1, $$0x -> Lists.newArrayList()).add($$4);
+         this.b.put($$0, $$4);
+         this.a($$4);
+         return $$4;
       }
    }
 
-   public eig b() {
-      return this.c() ? eid.a() : eid.a(this.b(ha.a.a), this.b(ha.a.b), this.b(ha.a.c), this.c(ha.a.a), this.c(ha.a.b), this.c(ha.a.c));
+   public final void a(eij $$0, String $$1, Consumer<eif> $$2) {
+      this.c.getOrDefault($$0, Collections.emptyList()).forEach($$2x -> $$2.accept(this.c($$1, $$2x)));
    }
 
-   protected double a(ha.a $$0, int $$1) {
-      return this.a($$0).getDouble($$1);
+   public boolean b(String $$0, eid $$1) {
+      Map<eid, eif> $$2 = this.d.get($$0);
+      if ($$2 == null) {
+         return false;
+      } else {
+         eif $$3 = $$2.get($$1);
+         return $$3 != null;
+      }
    }
 
-   protected abstract DoubleList a(ha.a var1);
-
-   public boolean c() {
-      return this.a.a();
+   public eif c(String $$0, eid $$1) {
+      Map<eid, eif> $$2 = this.d.computeIfAbsent($$0, $$0x -> Maps.newHashMap());
+      return $$2.computeIfAbsent($$1, $$1x -> {
+         eif $$2x = new eif(this, $$1x, $$0);
+         $$2x.b(0);
+         return $$2x;
+      });
    }
 
-   public eig a(double $$0, double $$1, double $$2) {
-      return (eig)(this.c() ? eid.a() : new ehp(this.a, new eic(this.a(ha.a.a), $$0), new eic(this.a(ha.a.b), $$1), new eic(this.a(ha.a.c), $$2)));
+   public Collection<eif> i(eid $$0) {
+      List<eif> $$1 = Lists.newArrayList();
+
+      for (Map<eid, eif> $$2 : this.d.values()) {
+         eif $$3 = $$2.get($$0);
+         if ($$3 != null) {
+            $$1.add($$3);
+         }
+      }
+
+      $$1.sort(eif.a);
+      return $$1;
    }
 
-   public eig d() {
-      eig[] $$0 = new eig[]{eid.a()};
-      this.b(($$1, $$2, $$3, $$4, $$5, $$6) -> $$0[0] = eid.b($$0[0], eid.a($$1, $$2, $$3, $$4, $$5, $$6), ehr.o));
-      return $$0[0];
+   public Collection<eid> c() {
+      return this.b.values();
    }
 
-   public void a(eid.a $$0) {
-      this.a
-         .a(
-            ($$1, $$2, $$3, $$4, $$5, $$6) -> $$0.consume(
-                  this.a(ha.a.a, $$1), this.a(ha.a.b, $$2), this.a(ha.a.c, $$3), this.a(ha.a.a, $$4), this.a(ha.a.b, $$5), this.a(ha.a.c, $$6)
-               ),
-            true
-         );
+   public Collection<String> d() {
+      return this.b.keySet();
    }
 
-   public void b(eid.a $$0) {
-      DoubleList $$1 = this.a(ha.a.a);
-      DoubleList $$2 = this.a(ha.a.b);
-      DoubleList $$3 = this.a(ha.a.c);
-      this.a
-         .b(
-            ($$4, $$5, $$6, $$7, $$8, $$9) -> $$0.consume(
-                  $$1.getDouble($$4), $$2.getDouble($$5), $$3.getDouble($$6), $$1.getDouble($$7), $$2.getDouble($$8), $$3.getDouble($$9)
-               ),
-            true
-         );
+   public Collection<String> e() {
+      return Lists.newArrayList(this.d.keySet());
    }
 
-   public List<ehi> e() {
-      List<ehi> $$0 = Lists.newArrayList();
-      this.b(($$1, $$2, $$3, $$4, $$5, $$6) -> $$0.add(new ehi($$1, $$2, $$3, $$4, $$5, $$6)));
+   public void d(String $$0, @Nullable eid $$1) {
+      if ($$1 == null) {
+         Map<eid, eif> $$2 = this.d.remove($$0);
+         if ($$2 != null) {
+            this.a($$0);
+         }
+      } else {
+         Map<eid, eif> $$3 = this.d.get($$0);
+         if ($$3 != null) {
+            eif $$4 = $$3.remove($$1);
+            if ($$3.size() < 1) {
+               Map<eid, eif> $$5 = this.d.remove($$0);
+               if ($$5 != null) {
+                  this.a($$0);
+               }
+            } else if ($$4 != null) {
+               this.a($$0, $$1);
+            }
+         }
+      }
+   }
+
+   public Map<eid, eif> c(String $$0) {
+      Map<eid, eif> $$1 = this.d.get($$0);
+      if ($$1 == null) {
+         $$1 = Maps.newHashMap();
+      }
+
+      return $$1;
+   }
+
+   public void j(eid $$0) {
+      this.b.remove($$0.b());
+
+      for (eic $$1 : eic.values()) {
+         if (this.a($$1) == $$0) {
+            this.a($$1, null);
+         }
+      }
+
+      List<eid> $$2 = this.c.get($$0.c());
+      if ($$2 != null) {
+         $$2.remove($$0);
+      }
+
+      for (Map<eid, eif> $$3 : this.d.values()) {
+         $$3.remove($$0);
+      }
+
+      this.c($$0);
+   }
+
+   public void a(eic $$0, @Nullable eid $$1) {
+      this.e.put($$0, $$1);
+   }
+
+   @Nullable
+   public eid a(eic $$0) {
+      return this.e.get($$0);
+   }
+
+   @Nullable
+   public eie d(String $$0) {
+      return this.f.get($$0);
+   }
+
+   public eie e(String $$0) {
+      eie $$1 = this.d($$0);
+      if ($$1 != null) {
+         a.warn("Requested creation of existing team '{}'", $$0);
+         return $$1;
+      } else {
+         $$1 = new eie(this, $$0);
+         this.f.put($$0, $$1);
+         this.a($$1);
+         return $$1;
+      }
+   }
+
+   public void d(eie $$0) {
+      this.f.remove($$0.b());
+
+      for (String $$1 : $$0.g()) {
+         this.g.remove($$1);
+      }
+
+      this.c($$0);
+   }
+
+   public boolean a(String $$0, eie $$1) {
+      if (this.g($$0) != null) {
+         this.f($$0);
+      }
+
+      this.g.put($$0, $$1);
+      return $$1.g().add($$0);
+   }
+
+   public boolean f(String $$0) {
+      eie $$1 = this.g($$0);
+      if ($$1 != null) {
+         this.b($$0, $$1);
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   public void b(String $$0, eie $$1) {
+      if (this.g($$0) != $$1) {
+         throw new IllegalStateException("Player is either on another team or not on any team. Cannot remove from team '" + $$1.b() + "'.");
+      } else {
+         this.g.remove($$0);
+         $$1.g().remove($$0);
+      }
+   }
+
+   public Collection<String> f() {
+      return this.f.keySet();
+   }
+
+   public Collection<eie> g() {
+      return this.f.values();
+   }
+
+   @Nullable
+   public eie g(String $$0) {
+      return this.g.get($$0);
+   }
+
+   public void a(eid $$0) {
+   }
+
+   public void b(eid $$0) {
+   }
+
+   public void c(eid $$0) {
+   }
+
+   public void a(eif $$0) {
+   }
+
+   public void a(String $$0) {
+   }
+
+   public void a(String $$0, eid $$1) {
+   }
+
+   public void a(eie $$0) {
+   }
+
+   public void b(eie $$0) {
+   }
+
+   public void c(eie $$0) {
+   }
+
+   public void a(biw $$0) {
+      if (!($$0 instanceof cca) && !$$0.bv()) {
+         String $$1 = $$0.cw();
+         this.d($$1, null);
+         this.f($$1);
+      }
+   }
+
+   protected rc h() {
+      rc $$0 = new rc();
+      this.d.values().stream().map(Map::values).forEach($$1 -> $$1.forEach($$1x -> {
+            qw $$2 = new qw();
+            $$2.a("Name", $$1x.e());
+            $$2.a("Objective", $$1x.d().b());
+            $$2.a("Score", $$1x.b());
+            $$2.a("Locked", $$1x.g());
+            $$0.add($$2);
+         }));
       return $$0;
    }
 
-   public double a(ha.a $$0, double $$1, double $$2) {
-      ha.a $$3 = gu.b.a($$0);
-      ha.a $$4 = gu.c.a($$0);
-      int $$5 = this.a($$3, $$1);
-      int $$6 = this.a($$4, $$2);
-      int $$7 = this.a.a($$0, $$5, $$6);
-      return $$7 >= this.a.c($$0) ? Double.POSITIVE_INFINITY : this.a($$0, $$7);
-   }
-
-   public double b(ha.a $$0, double $$1, double $$2) {
-      ha.a $$3 = gu.b.a($$0);
-      ha.a $$4 = gu.c.a($$0);
-      int $$5 = this.a($$3, $$1);
-      int $$6 = this.a($$4, $$2);
-      int $$7 = this.a.b($$0, $$5, $$6);
-      return $$7 <= 0 ? Double.NEGATIVE_INFINITY : this.a($$0, $$7);
-   }
-
-   protected int a(ha.a $$0, double $$1) {
-      return arw.a(0, this.a.c($$0) + 1, $$2 -> $$1 < this.a($$0, $$2)) - 1;
-   }
-
-   @Nullable
-   public ehj a(ehn $$0, ehn $$1, gw $$2) {
-      if (this.c()) {
-         return null;
-      } else {
-         ehn $$3 = $$1.d($$0);
-         if ($$3.g() < 1.0E-7) {
-            return null;
+   protected void a(rc $$0) {
+      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
+         qw $$2 = $$0.a($$1);
+         String $$3 = $$2.l("Name");
+         String $$4 = $$2.l("Objective");
+         eid $$5 = this.b($$4);
+         if ($$5 == null) {
+            a.error("Unknown objective {} for name {}, ignoring", $$4, $$3);
          } else {
-            ehn $$4 = $$0.e($$3.a(0.001));
-            return this.a.d(this.a(ha.a.a, $$4.c - (double)$$2.u()), this.a(ha.a.b, $$4.d - (double)$$2.v()), this.a(ha.a.c, $$4.e - (double)$$2.w()))
-               ? new ehj($$4, ha.a($$3.c, $$3.d, $$3.e).g(), $$2, true)
-               : ehi.a(this.e(), $$0, $$1, $$2);
-         }
-      }
-   }
-
-   public Optional<ehn> a(ehn $$0) {
-      if (this.c()) {
-         return Optional.empty();
-      } else {
-         ehn[] $$1 = new ehn[1];
-         this.b(($$2, $$3, $$4, $$5, $$6, $$7) -> {
-            double $$8 = arw.a($$0.a(), $$2, $$5);
-            double $$9 = arw.a($$0.b(), $$3, $$6);
-            double $$10 = arw.a($$0.c(), $$4, $$7);
-            if ($$1[0] == null || $$0.c($$8, $$9, $$10) < $$0.g($$1[0])) {
-               $$1[0] = new ehn($$8, $$9, $$10);
-            }
-         });
-         return Optional.of($$1[0]);
-      }
-   }
-
-   public eig a(ha $$0) {
-      if (!this.c() && this != eid.b()) {
-         if (this.b != null) {
-            eig $$1 = this.b[$$0.ordinal()];
-            if ($$1 != null) {
-               return $$1;
-            }
-         } else {
-            this.b = new eig[6];
-         }
-
-         eig $$2 = this.b($$0);
-         this.b[$$0.ordinal()] = $$2;
-         return $$2;
-      } else {
-         return this;
-      }
-   }
-
-   private eig b(ha $$0) {
-      ha.a $$1 = $$0.o();
-      DoubleList $$2 = this.a($$1);
-      if ($$2.size() == 2 && DoubleMath.fuzzyEquals($$2.getDouble(0), 0.0, 1.0E-7) && DoubleMath.fuzzyEquals($$2.getDouble(1), 1.0, 1.0E-7)) {
-         return this;
-      } else {
-         ha.b $$3 = $$0.f();
-         int $$4 = this.a($$1, $$3 == ha.b.a ? 0.9999999 : 1.0E-7);
-         return new eie(this, $$1, $$4);
-      }
-   }
-
-   public double a(ha.a $$0, ehi $$1, double $$2) {
-      return this.a(gu.a($$0, ha.a.a), $$1, $$2);
-   }
-
-   protected double a(gu $$0, ehi $$1, double $$2) {
-      if (this.c()) {
-         return $$2;
-      } else if (Math.abs($$2) < 1.0E-7) {
-         return 0.0;
-      } else {
-         gu $$3 = $$0.a();
-         ha.a $$4 = $$3.a(ha.a.a);
-         ha.a $$5 = $$3.a(ha.a.b);
-         ha.a $$6 = $$3.a(ha.a.c);
-         double $$7 = $$1.b($$4);
-         double $$8 = $$1.a($$4);
-         int $$9 = this.a($$4, $$8 + 1.0E-7);
-         int $$10 = this.a($$4, $$7 - 1.0E-7);
-         int $$11 = Math.max(0, this.a($$5, $$1.a($$5) + 1.0E-7));
-         int $$12 = Math.min(this.a.c($$5), this.a($$5, $$1.b($$5) - 1.0E-7) + 1);
-         int $$13 = Math.max(0, this.a($$6, $$1.a($$6) + 1.0E-7));
-         int $$14 = Math.min(this.a.c($$6), this.a($$6, $$1.b($$6) - 1.0E-7) + 1);
-         int $$15 = this.a.c($$4);
-         if ($$2 > 0.0) {
-            for (int $$16 = $$10 + 1; $$16 < $$15; $$16++) {
-               for (int $$17 = $$11; $$17 < $$12; $$17++) {
-                  for (int $$18 = $$13; $$18 < $$14; $$18++) {
-                     if (this.a.a($$3, $$16, $$17, $$18)) {
-                        double $$19 = this.a($$4, $$16) - $$7;
-                        if ($$19 >= -1.0E-7) {
-                           $$2 = Math.min($$2, $$19);
-                        }
-
-                        return $$2;
-                     }
-                  }
-               }
-            }
-         } else if ($$2 < 0.0) {
-            for (int $$20 = $$9 - 1; $$20 >= 0; $$20--) {
-               for (int $$21 = $$11; $$21 < $$12; $$21++) {
-                  for (int $$22 = $$13; $$22 < $$14; $$22++) {
-                     if (this.a.a($$3, $$20, $$21, $$22)) {
-                        double $$23 = this.a($$4, $$20 + 1) - $$8;
-                        if ($$23 <= 1.0E-7) {
-                           $$2 = Math.max($$2, $$23);
-                        }
-
-                        return $$2;
-                     }
-                  }
-               }
+            eif $$6 = this.c($$3, $$5);
+            $$6.b($$2.h("Score"));
+            if ($$2.e("Locked")) {
+               $$6.a($$2.q("Locked"));
             }
          }
-
-         return $$2;
       }
-   }
-
-   @Override
-   public String toString() {
-      return this.c() ? "EMPTY" : "VoxelShape[" + this.a() + "]";
    }
 }

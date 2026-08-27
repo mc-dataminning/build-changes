@@ -1,27 +1,25 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import java.util.function.Predicate;
 
 public class cpj {
-   public static final cpj a = new cpj(ImmutableList.of("vanilla"), ImmutableList.of());
-   public static final Codec<cpj> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.STRING.listOf().fieldOf("Enabled").forGetter($$0x -> $$0x.c), Codec.STRING.listOf().fieldOf("Disabled").forGetter($$0x -> $$0x.d))
-            .apply($$0, cpj::new)
-   );
-   private final List<String> c;
-   private final List<String> d;
+   private final ehh a;
+   private final ehh b;
+   private final Predicate<dfd> c;
 
-   public cpj(List<String> $$0, List<String> $$1) {
-      this.c = ImmutableList.copyOf($$0);
-      this.d = ImmutableList.copyOf($$1);
+   public cpj(ehh $$0, ehh $$1, Predicate<dfd> $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public List<String> a() {
+   public ehh a() {
+      return this.b;
+   }
+
+   public ehh b() {
+      return this.a;
+   }
+
+   public Predicate<dfd> c() {
       return this.c;
-   }
-
-   public List<String> b() {
-      return this.d;
    }
 }

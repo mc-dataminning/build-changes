@@ -1,18 +1,61 @@
-import java.util.Map;
-import java.util.stream.Collectors;
+public class fop implements eln {
+   private final eln a;
+   private final fza b;
 
-public class fop {
-   private final Map<fom, elk> a = fom.G().stream().collect(Collectors.toMap($$0 -> (fom)$$0, $$0 -> new elk($$0.H())));
-
-   public elk a(fom $$0) {
-      return this.a.get($$0);
+   public fop(eln $$0, fza $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public void a() {
-      this.a.values().forEach(elk::g);
+   @Override
+   public eln a(double $$0, double $$1, double $$2) {
+      return this.a.a($$0, $$1, $$2);
    }
 
-   public void b() {
-      this.a.values().forEach(elk::h);
+   @Override
+   public eln a(int $$0, int $$1, int $$2, int $$3) {
+      return this.a.a($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   public eln a(float $$0, float $$1) {
+      return this.a.a(this.b.a($$0), this.b.c($$1));
+   }
+
+   @Override
+   public eln a(int $$0, int $$1) {
+      return this.a.a($$0, $$1);
+   }
+
+   @Override
+   public eln b(int $$0, int $$1) {
+      return this.a.b($$0, $$1);
+   }
+
+   @Override
+   public eln a(float $$0, float $$1, float $$2) {
+      return this.a.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public void e() {
+      this.a.e();
+   }
+
+   @Override
+   public void b(int $$0, int $$1, int $$2, int $$3) {
+      this.a.b($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   public void k() {
+      this.a.k();
+   }
+
+   @Override
+   public void a(
+      float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, int $$9, int $$10, float $$11, float $$12, float $$13
+   ) {
+      this.a.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, this.b.a($$7), this.b.c($$8), $$9, $$10, $$11, $$12, $$13);
    }
 }

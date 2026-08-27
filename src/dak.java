@@ -1,65 +1,36 @@
-public class dak extends csv {
-   public static final int a = 6;
-   public static final int b = 64;
-   private static final ha[] c = ha.values();
+import com.mojang.serialization.MapCodec;
 
-   protected dak(dfi.d $$0) {
+public class dak extends ctc {
+   public static final MapCodec<dak> b = b(dak::new);
+   public static final dfu c = dft.z;
+
+   @Override
+   protected MapCodec<? extends dak> a() {
+      return b;
+   }
+
+   protected dak(dfc.d $$0) {
       super($$0);
+      this.k(this.E.b().a(c, Boolean.valueOf(false)));
    }
 
    @Override
-   public void b(dfj $$0, cpv $$1, gw $$2, dfj $$3, boolean $$4) {
-      if (!$$3.a($$0.b())) {
-         this.a($$1, $$2);
-      }
+   public dfd a(dfd $$0, ha $$1, dfd $$2, cqc $$3, gw $$4, gw $$5) {
+      return $$1 == ha.b ? $$0.a(c, Boolean.valueOf(h($$2))) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public void a(dfj $$0, cpv $$1, gw $$2, csv $$3, gw $$4, boolean $$5) {
-      this.a($$1, $$2);
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   public dfd a(clt $$0) {
+      dfd $$1 = $$0.q().a_($$0.a().c());
+      return this.o().a(c, Boolean.valueOf(h($$1)));
    }
 
-   protected void a(cpv $$0, gw $$1) {
-      if (this.b($$0, $$1)) {
-         $$0.a($$1, csw.aP.n(), 2);
-         $$0.a(null, $$1, apd.xj, ape.e, 1.0F, 1.0F);
-      }
+   private static boolean h(dfd $$0) {
+      return $$0.a(apv.by);
    }
 
-   private boolean b(cpv $$0, gw $$1) {
-      return gw.a($$1, 6, 65, ($$0x, $$1x) -> {
-         for (ha $$2 : c) {
-            $$1x.accept($$0x.a($$2));
-         }
-      }, $$2 -> {
-         if ($$2.equals($$1)) {
-            return true;
-         } else {
-            dfj $$3 = $$0.a_($$2);
-            eam $$4 = $$0.b_($$2);
-            if (!$$4.a(apx.a)) {
-               return false;
-            } else {
-               if ($$3.b() instanceof ctb $$6 && !$$6.a(null, $$0, $$2, $$3).b()) {
-                  return true;
-               }
-
-               if ($$3.b() instanceof cxi) {
-                  $$0.a($$2, csw.a.n(), 3);
-               } else {
-                  if (!$$3.a(csw.mc) && !$$3.a(csw.md) && !$$3.a(csw.bw) && !$$3.a(csw.bx)) {
-                     return false;
-                  }
-
-                  dcv $$7 = $$3.t() ? $$0.c_($$2) : null;
-                  a($$3, $$0, $$2, $$7);
-                  $$0.a($$2, csw.a.n(), 3);
-               }
-
-               return true;
-            }
-         }
-      }) > 1;
+   @Override
+   protected void a(dfe.a<ctc, dfd> $$0) {
+      $$0.a(c);
    }
 }

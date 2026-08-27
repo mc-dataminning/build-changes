@@ -1,119 +1,22 @@
 import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.function.BiPredicate;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public interface dlz extends BiPredicate<cqp, gw> {
-   Codec<dlz> b = jb.P.q().dispatch(dlz::a, dma::codec);
-   dlz c = a(csw.a);
-   dlz d = a(csw.a, csw.G);
+class dlz extends dme {
+   private final hi<ctc> e;
+   public static final Codec<dlz> a = RecordCodecBuilder.create($$0 -> a($$0).and(hs.a(jc.e).fieldOf("blocks").forGetter($$0x -> $$0x.e)).apply($$0, dlz::new));
 
-   dma<?> a();
-
-   static dlz a(List<dlz> $$0) {
-      return new dlx($$0);
+   public dlz(hy $$0, hi<ctc> $$1) {
+      super($$0);
+      this.e = $$1;
    }
 
-   static dlz a(dlz... $$0) {
-      return a(List.of($$0));
+   @Override
+   protected boolean a(dfd $$0) {
+      return $$0.a(this.e);
    }
 
-   static dlz a(dlz $$0, dlz $$1) {
-      return a(List.of($$0, $$1));
-   }
-
-   static dlz b(List<dlz> $$0) {
-      return new dly($$0);
-   }
-
-   static dlz b(dlz... $$0) {
-      return b(List.of($$0));
-   }
-
-   static dlz b(dlz $$0, dlz $$1) {
-      return b(List.of($$0, $$1));
-   }
-
-   static dlz a(hy $$0, List<csv> $$1) {
-      return new dmf($$0, hi.a(csv::q, $$1));
-   }
-
-   static dlz c(List<csv> $$0) {
-      return a(hy.g, $$0);
-   }
-
-   static dlz a(hy $$0, csv... $$1) {
-      return a($$0, List.of($$1));
-   }
-
-   static dlz a(csv... $$0) {
-      return a(hy.g, $$0);
-   }
-
-   static dlz a(hy $$0, aqh<csv> $$1) {
-      return new dme($$0, $$1);
-   }
-
-   static dlz a(aqh<csv> $$0) {
-      return a(hy.g, $$0);
-   }
-
-   static dlz b(hy $$0, List<eal> $$1) {
-      return new dmg($$0, hi.a(eal::k, $$1));
-   }
-
-   static dlz a(hy $$0, eal... $$1) {
-      return b($$0, List.of($$1));
-   }
-
-   static dlz a(eal... $$0) {
-      return a(hy.g, $$0);
-   }
-
-   static dlz a(dlz $$0) {
-      return new dmh($$0);
-   }
-
-   static dlz a(hy $$0) {
-      return new dmi($$0);
-   }
-
-   static dlz b() {
-      return a(hy.g);
-   }
-
-   static dlz a(dfj $$0, hy $$1) {
-      return new dmm($$1, $$0);
-   }
-
-   static dlz a(hy $$0, ha $$1) {
-      return new dmc($$0, $$1);
-   }
-
-   static dlz a(ha $$0) {
-      return a(hy.g, $$0);
-   }
-
-   static dlz b(hy $$0) {
-      return new dmj($$0);
-   }
-
-   static dlz c() {
-      return b(hy.g);
-   }
-
-   static dlz d() {
-      return c(hy.g);
-   }
-
-   static dlz c(hy $$0) {
-      return a($$0, ean.a);
-   }
-
-   static dlz d(hy $$0) {
-      return new dmd($$0);
-   }
-
-   static dlz e() {
-      return dml.a;
+   @Override
+   public dlu<?> a() {
+      return dlu.a;
    }
 }

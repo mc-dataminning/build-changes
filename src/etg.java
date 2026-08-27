@@ -1,49 +1,57 @@
-public class etg extends esq {
-   private boolean a;
+import javax.annotation.Nullable;
 
-   public etg(int $$0, int $$1, esq.c $$2) {
-      super($$0, $$1, 20, 20, tl.c("narrator.button.difficulty_lock"), $$2, o);
+public abstract class etg<E extends etg.a<E>> extends esf<E> {
+   private static final tl a = tl.c("narration.selection.usage");
+
+   public etg(eqp $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
+   @Nullable
    @Override
-   protected ty aE_() {
-      return tk.a(super.aE_(), this.a() ? tl.c("narrator.button.difficulty_lock.locked") : tl.c("narrator.button.difficulty_lock.unlocked"));
-   }
+   public erw a(ewj $$0) {
+      if (this.k() == 0) {
+         return null;
+      } else if (this.aC_() && $$0 instanceof ewj.a $$1) {
+         E $$2 = this.a($$1.b());
+         return $$2 != null ? erw.a(this, erw.a($$2)) : null;
+      } else if (!this.aC_()) {
+         E $$3 = this.f();
+         if ($$3 == null) {
+            $$3 = this.a($$0.a());
+         }
 
-   public boolean a() {
-      return this.a;
-   }
-
-   public void b(boolean $$0) {
-      this.a = $$0;
-   }
-
-   @Override
-   public void b(esf $$0, int $$1, int $$2, float $$3) {
-      etg.a $$4;
-      if (!this.i) {
-         $$4 = this.a ? etg.a.c : etg.a.f;
-      } else if (this.o()) {
-         $$4 = this.a ? etg.a.b : etg.a.e;
+         return $$3 == null ? null : erw.a(this, erw.a($$3));
       } else {
-         $$4 = this.a ? etg.a.a : etg.a.d;
+         return null;
+      }
+   }
+
+   @Override
+   public void b(ewd $$0) {
+      E $$1 = this.r();
+      if ($$1 != null) {
+         this.a($$0.a(), $$1);
+         $$1.b($$0);
+      } else {
+         E $$2 = this.f();
+         if ($$2 != null) {
+            this.a($$0.a(), $$2);
+            $$2.b($$0);
+         }
       }
 
-      $$0.a($$4.g, this.r(), this.t(), this.f, this.g);
+      if (this.aC_()) {
+         $$0.a(ewc.d, a);
+      }
    }
 
-   static enum a {
-      a(new aew("widget/locked_button")),
-      b(new aew("widget/locked_button_highlighted")),
-      c(new aew("widget/locked_button_disabled")),
-      d(new aew("widget/unlocked_button")),
-      e(new aew("widget/unlocked_button_highlighted")),
-      f(new aew("widget/unlocked_button_disabled"));
+   public abstract static class a<E extends etg.a<E>> extends esf.a<E> implements ewe {
+      public abstract tl a();
 
-      final aew g;
-
-      private a(aew $$0) {
-         this.g = $$0;
+      @Override
+      public void b(ewd $$0) {
+         $$0.a(ewc.a, this.a());
       }
    }
 }

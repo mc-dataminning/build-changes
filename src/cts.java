@@ -1,46 +1,106 @@
-public class cts extends cwh implements csx, ctq {
-   public cts(dfi.d $$0) {
-      super($$0, ha.a, r_, false);
-      this.k(this.C.b().a(s_, Boolean.valueOf(false)));
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Maps;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
+
+public class cts extends crt {
+   public static final MapCodec<cts> c = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(jb.f.q().fieldOf("candle").forGetter($$0x -> $$0x.k), t()).apply($$0, cts::new)
+   );
+   public static final dfu d = crt.b;
+   protected static final float e = 1.0F;
+   protected static final eia f = ctc.a(1.0, 0.0, 1.0, 15.0, 8.0, 15.0);
+   protected static final eia g = ctc.a(7.0, 8.0, 7.0, 9.0, 14.0, 9.0);
+   protected static final eia h = ehx.a(f, g);
+   private static final Map<ctc, cts> i = Maps.newHashMap();
+   private static final Iterable<ehh> j = ImmutableList.of(new ehh(0.5, 1.0, 0.5));
+   private final ctc k;
+
+   @Override
+   public MapCodec<cts> a() {
+      return c;
+   }
+
+   protected cts(ctc $$0, dfc.d $$1) {
+      super($$1);
+      this.k(this.E.b().a(d, Boolean.valueOf(false)));
+      i.put($$0, this);
+      this.k = $$0;
    }
 
    @Override
-   protected cwi b() {
-      return (cwi)csw.ru;
+   protected Iterable<ehh> b(dfd $$0) {
+      return j;
    }
 
    @Override
-   protected dfj a(dfj $$0, dfj $$1) {
-      return $$1.a(s_, $$0.c(s_));
+   public eia a(dfd $$0, cph $$1, gw $$2, ehm $$3) {
+      return h;
    }
 
    @Override
-   public cjf a(cpb $$0, gw $$1, dfj $$2) {
-      return new cjf(cji.vw);
+   public bhe a(dfd $$0, cqb $$1, gw $$2, cca $$3, bhd $$4, ehd $$5) {
+      cjl $$6 = $$3.b($$4);
+      if ($$6.a(cjo.nE) || $$6.a(cjo.tf)) {
+         return bhe.d;
+      } else if (a($$5) && $$3.b($$4).b() && $$0.c(d)) {
+         a($$3, $$0, $$1, $$2);
+         return bhe.a($$1.B);
+      } else {
+         bhe $$7 = cto.a($$1, $$2, cte.eg.o(), $$3);
+         if ($$7.a()) {
+            c($$0, $$1, $$2);
+         }
+
+         return $$7;
+      }
+   }
+
+   private static boolean a(ehd $$0) {
+      return $$0.e().d - (double)$$0.a().v() > 0.5;
    }
 
    @Override
-   public bgy a(dfj $$0, cpv $$1, gw $$2, cbu $$3, bgx $$4, ehj $$5) {
-      return ctq.a($$3, $$0, $$1, $$2);
+   protected void a(dfe.a<ctc, dfd> $$0) {
+      $$0.a(d);
    }
 
    @Override
-   protected void a(dfk.a<csv, dfj> $$0) {
-      $$0.a(s_);
+   public cjl a(cqe $$0, gw $$1, dfd $$2) {
+      return new cjl(cte.eg);
    }
 
    @Override
-   public boolean a(cpy $$0, gw $$1, dfj $$2) {
-      return !$$2.c(s_);
+   public dfd a(dfd $$0, ha $$1, dfd $$2, cqc $$3, gw $$4, gw $$5) {
+      return $$1 == ha.a && !$$0.a($$3, $$4) ? cte.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public boolean a(cpv $$0, asc $$1, gw $$2, dfj $$3) {
+   public boolean a(dfd $$0, cqe $$1, gw $$2) {
+      return $$1.a_($$2.d()).e();
+   }
+
+   @Override
+   public int a(dfd $$0, cqb $$1, gw $$2) {
+      return cto.d;
+   }
+
+   @Override
+   public boolean d_(dfd $$0) {
       return true;
    }
 
    @Override
-   public void a(akq $$0, asc $$1, gw $$2, dfj $$3) {
-      $$0.a($$2, $$3.a(s_, Boolean.valueOf(true)), 2);
+   public boolean a(dfd $$0, cph $$1, gw $$2, eaw $$3) {
+      return false;
+   }
+
+   public static dfd a(ctc $$0) {
+      return i.get($$0).o();
+   }
+
+   public static boolean g(dfd $$0) {
+      return $$0.a(apv.bj, $$1 -> $$1.b(d) && !$$0.c(d));
    }
 }

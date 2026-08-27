@@ -1,35 +1,40 @@
-import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.kinds.K1;
-import java.util.Optional;
+import com.google.common.collect.ImmutableMap;
 
-public final class bok<F extends K1, Value> {
-   private final bkg<?> a;
-   private final bsh<Value> b;
-   private final App<F, Value> c;
-
-   public bok(bkg<?> $$0, bsh<Value> $$1, App<F, Value> $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+public class bok extends bld<cbn> {
+   public bok() {
+      super(ImmutableMap.of());
    }
 
-   public App<F, Value> a() {
-      return this.c;
+   protected boolean a(akt $$0, cbn $$1, long $$2) {
+      return c($$1) || b($$1);
    }
 
-   public void a(Value $$0) {
-      this.a.a(this.b, Optional.of($$0));
+   protected void b(akt $$0, cbn $$1, long $$2) {
+      if (c($$1) || b($$1)) {
+         bkm<?> $$3 = $$1.dN();
+         if (!$$3.c(cdl.g)) {
+            $$3.b(bsn.t);
+            $$3.b(bsn.m);
+            $$3.b(bsn.n);
+            $$3.b(bsn.r);
+            $$3.b(bsn.q);
+         }
+
+         $$3.a(cdl.g);
+      }
    }
 
-   public void a(Optional<Value> $$0) {
-      this.a.a(this.b, $$0);
+   protected void c(akt $$0, cbn $$1, long $$2) {
+      if ($$2 % 100L == 0L) {
+         $$1.a($$0, $$2, 3);
+      }
    }
 
-   public void a(Value $$0, long $$1) {
-      this.a.a(this.b, $$0, $$1);
+   public static boolean b(bjm $$0) {
+      return $$0.dN().a(bsn.A);
    }
 
-   public void b() {
-      this.a.b(this.b);
+   public static boolean c(bjm $$0) {
+      return $$0.dN().a(bsn.x);
    }
 }

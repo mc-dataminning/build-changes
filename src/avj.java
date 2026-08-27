@@ -1,15 +1,19 @@
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
-import java.util.Objects;
 
-public class avj extends azg {
+public class avj extends ayf {
    public avj(Schema $$0, boolean $$1) {
-      super("EntityElderGuardianSplitFix", $$0, $$1);
+      super($$0, $$1, "EntityArmorStandSilentFix", azd.x, "ArmorStand");
+   }
+
+   public Dynamic<?> a(Dynamic<?> $$0) {
+      return $$0.get("Silent").asBoolean(false) && !$$0.get("Marker").asBoolean(false) ? $$0.remove("Silent") : $$0;
    }
 
    @Override
-   protected Pair<String, Dynamic<?>> a(String $$0, Dynamic<?> $$1) {
-      return Pair.of(Objects.equals($$0, "Guardian") && $$1.get("Elder").asBoolean(false) ? "ElderGuardian" : $$0, $$1);
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), this::a);
    }
 }

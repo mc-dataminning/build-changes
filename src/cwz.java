@@ -1,69 +1,69 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.Maps;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
+import java.util.function.Supplier;
 
-public class cwz extends csv implements czw {
-   public static final dga a = dfz.j;
-   public static final dga b = dfz.C;
-   protected static final eig c = eid.a(csv.a(5.0, 0.0, 5.0, 11.0, 7.0, 11.0), csv.a(6.0, 7.0, 6.0, 10.0, 9.0, 10.0));
-   protected static final eig d = eid.a(csv.a(5.0, 1.0, 5.0, 11.0, 8.0, 11.0), csv.a(6.0, 8.0, 6.0, 10.0, 10.0, 10.0));
+public class cwz extends ctc {
+   public static final MapCodec<cwz> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(jb.f.q().fieldOf("host").forGetter(cwz::b), t()).apply($$0, cwz::new));
+   private final ctc b;
+   private static final Map<ctc, ctc> c = Maps.newIdentityHashMap();
+   private static final Map<dfd, dfd> d = Maps.newIdentityHashMap();
+   private static final Map<dfd, dfd> e = Maps.newIdentityHashMap();
 
-   public cwz(dfi.d $$0) {
-      super($$0);
-      this.k(this.C.b().a(a, Boolean.valueOf(false)).a(b, Boolean.valueOf(false)));
+   @Override
+   public MapCodec<? extends cwz> a() {
+      return a;
    }
 
-   @Nullable
-   @Override
-   public dfj a(cln $$0) {
-      eam $$1 = $$0.q().b_($$0.a());
+   public cwz(ctc $$0, dfc.d $$1) {
+      super($$1.e($$0.w() / 2.0F).f(0.75F));
+      this.b = $$0;
+      c.put($$0, this);
+   }
 
-      for (ha $$2 : $$0.f()) {
-         if ($$2.o() == ha.a.b) {
-            dfj $$3 = this.n().a(a, Boolean.valueOf($$2 == ha.b));
-            if ($$3.a((cpy)$$0.q(), $$0.a())) {
-               return $$3.a(b, Boolean.valueOf($$1.a() == ean.c));
-            }
+   public ctc b() {
+      return this.b;
+   }
+
+   public static boolean h(dfd $$0) {
+      return c.containsKey($$0.b());
+   }
+
+   private void a(akt $$0, gw $$1) {
+      bzv $$2 = bja.aI.a((cqb)$$0);
+      if ($$2 != null) {
+         $$2.b((double)$$1.u() + 0.5, (double)$$1.v(), (double)$$1.w() + 0.5, 0.0F, 0.0F);
+         $$0.b($$2);
+         $$2.Q();
+      }
+   }
+
+   @Override
+   public void a(dfd $$0, akt $$1, gw $$2, cjl $$3, boolean $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      if ($$1.X().b(cpx.g) && cnw.a(cny.v, $$3) == 0) {
+         this.a($$1, $$2);
+      }
+   }
+
+   public static dfd n(dfd $$0) {
+      return a(d, $$0, () -> c.get($$0.b()).o());
+   }
+
+   public dfd o(dfd $$0) {
+      return a(e, $$0, () -> this.b().o());
+   }
+
+   private static dfd a(Map<dfd, dfd> $$0, dfd $$1, Supplier<dfd> $$2) {
+      return $$0.computeIfAbsent($$1, $$1x -> {
+         dfd $$2x = $$2.get();
+
+         for (dgg $$3 : $$1x.B()) {
+            $$2x = $$2x.b($$3) ? $$2x.a($$3, $$1x.c($$3)) : $$2x;
          }
-      }
 
-      return null;
-   }
-
-   @Override
-   public eig a(dfj $$0, cpb $$1, gw $$2, ehs $$3) {
-      return $$0.c(a) ? d : c;
-   }
-
-   @Override
-   protected void a(dfk.a<csv, dfj> $$0) {
-      $$0.a(a, b);
-   }
-
-   @Override
-   public boolean a(dfj $$0, cpy $$1, gw $$2) {
-      ha $$3 = h($$0).g();
-      return csv.a($$1, $$2.a($$3), $$3.g());
-   }
-
-   protected static ha h(dfj $$0) {
-      return $$0.c(a) ? ha.a : ha.b;
-   }
-
-   @Override
-   public dfj a(dfj $$0, ha $$1, dfj $$2, cpw $$3, gw $$4, gw $$5) {
-      if ($$0.c(b)) {
-         $$3.a($$4, ean.c, ean.c.a($$3));
-      }
-
-      return h($$0).g() == $$1 && !$$0.a($$3, $$4) ? csw.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   public eam c_(dfj $$0) {
-      return $$0.c(b) ? ean.c.a(false) : super.c_($$0);
-   }
-
-   @Override
-   public boolean a(dfj $$0, cpb $$1, gw $$2, ebc $$3) {
-      return false;
+         return $$2x;
+      });
    }
 }

@@ -1,4 +1,4 @@
-// 1.20.2	2026-08-28T00:41:26.4241783	vanilla/Tags for minecraft:item
+// 23w40a	2026-08-28T00:43:26.8714005	vanilla/Tags for minecraft:item
 71180030d3ebe73ed7aa07473fb200e0aa359909 data\minecraft\tags\items\candles.json
 a91a14b0d844c2e8beb882a51072178e0667620c data\minecraft\tags\items\jungle_logs.json
 3e070569b31d1100ac334efd44a58e52df25df1a data\minecraft\tags\items\flowers.json
@@ -45,11 +45,11 @@ b659daa5aa6d07472c8191c9548c70e2239d56ac data\minecraft\tags\items\breaks_decora
 4b41342be611564da2a2009e3322c8fd08f20cdd data\minecraft\tags\items\warped_stems.json
 a6c8bad401aae8576742844c87f1b8717cf253b7 data\minecraft\tags\items\noteblock_top_instruments.json
 37c1e07dffc966dafe0401977955eba42bfaeccf data\minecraft\tags\items\copper_ores.json
-47be456ad97366b91300f74739cd8cac544f698d data\minecraft\tags\items\creeper_igniters.json
 7e7d3420a52ab3a414f357e405493da7fd6434ad data\minecraft\tags\items\chest_boats.json
+47be456ad97366b91300f74739cd8cac544f698d data\minecraft\tags\items\creeper_igniters.json
 31855d768b20e56a7ad007279733d27e91becc21 data\minecraft\tags\items\dark_oak_logs.json
-5a1da22b7562d3101cd95b2874ef21e709215ca8 data\minecraft\tags\items\beds.json
 f28dc9f2c7d071fef84fb760a59427d564938731 data\minecraft\tags\items\diamond_ores.json
+5a1da22b7562d3101cd95b2874ef21e709215ca8 data\minecraft\tags\items\beds.json
 50e13739c5004ff1f5177fb29ecff7b5d3d45cd3 data\minecraft\tags\items\coals.json
 49731163f40c037fed63e50ebb86dc7fd3d2722b data\minecraft\tags\items\sniffer_food.json
 913bc5c31b098eada6b776a32e560c19f9515e61 data\minecraft\tags\items\emerald_ores.json
@@ -59,8 +59,8 @@ d795677dfa226e3d5f7f602fd7e9d9e7a55ee61b data\minecraft\tags\items\small_flowers
 b197c522c5d1bf863432ab04a9c9b18fa9e8ced7 data\minecraft\tags\items\axolotl_tempt_items.json
 4b5f3ef91668afe7be45b3949ecab5d666d7977f data\minecraft\tags\items\completes_find_tree_tutorial.json
 daec9f32b34c685d972f66ea58ffc7ef3fc977a5 data\minecraft\tags\items\wooden_fences.json
-b8301ea44cd37172345daf7b728de0a78e6ad149 data\minecraft\tags\items\bamboo_blocks.json
 88dcd99364a64f164a26461c5d5b9da0cb960b10 data\minecraft\tags\items\trapdoors.json
+b8301ea44cd37172345daf7b728de0a78e6ad149 data\minecraft\tags\items\bamboo_blocks.json
 3bd2eeaac98c81e18bfb56e9bd09c764e71d4cf5 data\minecraft\tags\items\spruce_logs.json
 29bd5ab148d15d405e857a8e2cb900ae069b0655 data\minecraft\tags\items\axes.json
 76ac0bd2e48021aef9ecffd104321ebc03c694eb data\minecraft\tags\items\signs.json

@@ -1,85 +1,77 @@
-public class bpr extends bqf {
-   private static final int[] a = new int[]{0, 1, 4, 5, 6, 7};
-   private final buz b;
-   private final int c;
-   private boolean d;
+import java.util.function.Predicate;
 
-   public bpr(buz $$0, int $$1) {
-      this.b = $$0;
-      this.c = b($$1);
+public class bpr extends bpy {
+   private static final int g = 240;
+   private final Predicate<bhb> h;
+   protected int a;
+   protected int b = -1;
+   protected int c = -1;
+
+   public bpr(bjo $$0, Predicate<bhb> $$1) {
+      super($$0);
+      this.h = $$1;
+   }
+
+   public bpr(bjo $$0, int $$1, Predicate<bhb> $$2) {
+      this($$0, $$2);
+      this.c = $$1;
+   }
+
+   protected int f() {
+      return Math.max(240, this.c);
    }
 
    @Override
    public boolean a() {
-      if (this.b.ef().a(this.c) != 0) {
+      if (!super.a()) {
          return false;
       } else {
-         ha $$0 = this.b.cE();
-         int $$1 = $$0.j();
-         int $$2 = $$0.l();
-         gw $$3 = this.b.dl();
-
-         for (int $$4 : a) {
-            if (!this.a($$3, $$1, $$2, $$4) || !this.b($$3, $$1, $$2, $$4)) {
-               return false;
-            }
-         }
-
-         return true;
+         return !this.d.dL().X().b(cpx.c) ? false : this.a(this.d.dL().ai()) && !this.h();
       }
-   }
-
-   private boolean a(gw $$0, int $$1, int $$2, int $$3) {
-      gw $$4 = $$0.b($$1 * $$3, 0, $$2 * $$3);
-      return this.b.dL().b_($$4).a(apx.a) && !this.b.dL().a_($$4).d();
-   }
-
-   private boolean b(gw $$0, int $$1, int $$2, int $$3) {
-      return this.b.dL().a_($$0.b($$1 * $$3, 1, $$2 * $$3)).i() && this.b.dL().a_($$0.b($$1 * $$3, 2, $$2 * $$3)).i();
-   }
-
-   @Override
-   public boolean b() {
-      double $$0 = this.b.do().d;
-      return (!($$0 * $$0 < 0.03F) || this.b.dD() == 0.0F || !(Math.abs(this.b.dD()) < 10.0F) || !this.b.aX()) && !this.b.aA();
-   }
-
-   @Override
-   public boolean P_() {
-      return false;
    }
 
    @Override
    public void c() {
-      ha $$0 = this.b.cE();
-      this.b.f(this.b.do().b((double)$$0.j() * 0.6, 0.7, (double)$$0.l() * 0.6));
-      this.b.L().n();
+      super.c();
+      this.a = 0;
+   }
+
+   @Override
+   public boolean b() {
+      return this.a <= this.f() && !this.h() && this.e.a(this.d.dj(), 2.0) && this.a(this.d.dL().ai());
    }
 
    @Override
    public void d() {
-      this.b.s(0.0F);
+      super.d();
+      this.d.dL().a(this.d.ah(), this.e, -1);
    }
 
    @Override
    public void e() {
-      boolean $$0 = this.d;
-      if (!$$0) {
-         eam $$1 = this.b.dL().b_(this.b.dl());
-         this.d = $$1.a(apx.a);
+      super.e();
+      if (this.d.ef().a(20) == 0) {
+         this.d.dL().c(1019, this.e, 0);
+         if (!this.d.aF) {
+            this.d.a(this.d.fo());
+         }
       }
 
-      if (this.d && !$$0) {
-         this.b.a(apd.fV, 1.0F, 1.0F);
+      this.a++;
+      int $$0 = (int)((float)this.a / (float)this.f() * 10.0F);
+      if ($$0 != this.b) {
+         this.d.dL().a(this.d.ah(), this.e, $$0);
+         this.b = $$0;
       }
 
-      ehn $$2 = this.b.do();
-      if ($$2.d * $$2.d < 0.03F && this.b.dD() != 0.0F) {
-         this.b.s(arw.j(0.2F, this.b.dD(), 0.0F));
-      } else if ($$2.f() > 1.0E-5F) {
-         double $$3 = $$2.h();
-         double $$4 = Math.atan2(-$$2.d, $$3) * 180.0F / (float)Math.PI;
-         this.b.s((float)$$4);
+      if (this.a == this.f() && this.a(this.d.dL().ai())) {
+         this.d.dL().a(this.e, false);
+         this.d.dL().c(1021, this.e, 0);
+         this.d.dL().c(2001, this.e, ctc.i(this.d.dL().a_(this.e)));
       }
+   }
+
+   private boolean a(bhb $$0) {
+      return this.h.test($$0);
    }
 }

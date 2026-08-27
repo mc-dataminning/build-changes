@@ -1,111 +1,43 @@
-import java.util.function.Consumer;
+import java.util.Optional;
 
-public class dns {
-   protected static double a(double $$0, double $$1, double $$2, double $$3) {
-      if ($$0 < $$3) {
-         $$0 = $$3;
-      }
+public class dns<FC extends dpu> {
+   private final Optional<dnd<?, ?>> a;
+   private final cqv b;
+   private final dha c;
+   private final ash d;
+   private final gw e;
+   private final FC f;
 
-      double $$4 = 0.384;
-      double $$5 = $$0 / $$1 * 0.384;
-      double $$6 = 0.75 * Math.pow($$5, 1.3333333333333333);
-      double $$7 = Math.pow($$5, 0.6666666666666666);
-      double $$8 = 0.3333333333333333 * Math.log($$5);
-      double $$9 = $$2 * ($$6 - $$7 - $$8);
-      $$9 = Math.max($$9, 0.0);
-      return $$9 / 0.384 * $$1;
+   public dns(Optional<dnd<?, ?>> $$0, cqv $$1, dha $$2, ash $$3, gw $$4, FC $$5) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
    }
 
-   protected static boolean a(cqp $$0, gw $$1, int $$2) {
-      if (b($$0, $$1)) {
-         return false;
-      } else {
-         float $$3 = 6.0F;
-         float $$4 = 6.0F / (float)$$2;
-
-         for (float $$5 = 0.0F; $$5 < (float) (Math.PI * 2); $$5 += $$4) {
-            int $$6 = (int)(arw.b($$5) * (float)$$2);
-            int $$7 = (int)(arw.a($$5) * (float)$$2);
-            if (b($$0, $$1.b($$6, 0, $$7))) {
-               return false;
-            }
-         }
-
-         return true;
-      }
+   public Optional<dnd<?, ?>> a() {
+      return this.a;
    }
 
-   protected static boolean a(cpw $$0, gw $$1) {
-      return $$0.a($$1, dns::c);
+   public cqv b() {
+      return this.b;
    }
 
-   protected static boolean b(cpw $$0, gw $$1) {
-      return $$0.a($$1, dns::e);
+   public dha c() {
+      return this.c;
    }
 
-   protected static void a(ha $$0, int $$1, boolean $$2, Consumer<dfj> $$3) {
-      if ($$1 >= 3) {
-         $$3.accept(a($$0, dgg.e));
-
-         for (int $$4 = 0; $$4 < $$1 - 3; $$4++) {
-            $$3.accept(a($$0, dgg.d));
-         }
-      }
-
-      if ($$1 >= 2) {
-         $$3.accept(a($$0, dgg.c));
-      }
-
-      if ($$1 >= 1) {
-         $$3.accept(a($$0, $$2 ? dgg.a : dgg.b));
-      }
+   public ash d() {
+      return this.d;
    }
 
-   protected static void a(cpw $$0, gw $$1, ha $$2, int $$3, boolean $$4) {
-      if (b($$0.a_($$1.a($$2.g())))) {
-         gw.a $$5 = $$1.j();
-         a($$2, $$3, $$4, $$3x -> {
-            if ($$3x.a(csw.rs)) {
-               $$3x = $$3x.a(cyl.c, Boolean.valueOf($$0.y($$5)));
-            }
-
-            $$0.a($$5, $$3x, 2);
-            $$5.c($$2);
-         });
-      }
+   public gw e() {
+      return this.e;
    }
 
-   protected static boolean c(cpw $$0, gw $$1) {
-      dfj $$2 = $$0.a_($$1);
-      if ($$2.a(aps.br)) {
-         $$0.a($$1, csw.rt.n(), 2);
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   private static dfj a(ha $$0, dgg $$1) {
-      return csw.rs.n().a(cyl.a, $$0).a(cyl.b, $$1);
-   }
-
-   public static boolean a(dfj $$0) {
-      return b($$0) || $$0.a(csw.H);
-   }
-
-   public static boolean b(dfj $$0) {
-      return $$0.a(csw.rt) || $$0.a(aps.br);
-   }
-
-   public static boolean c(dfj $$0) {
-      return $$0.i() || $$0.a(csw.G);
-   }
-
-   public static boolean d(dfj $$0) {
-      return !$$0.i() && !$$0.a(csw.G);
-   }
-
-   public static boolean e(dfj $$0) {
-      return $$0.i() || $$0.a(csw.G) || $$0.a(csw.H);
+   public FC f() {
+      return this.f;
    }
 }

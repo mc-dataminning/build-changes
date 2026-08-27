@@ -5,7 +5,7 @@ public class iv {
    public static final iy a = a("ambient_entity_effect", false);
    public static final iy b = a("angry_villager", false);
    public static final iu<in> c = a("block", false, in.a, in::a);
-   public static final iu<in> d = a("block_marker", false, in.a, in::a);
+   public static final iu<in> d = a("block_marker", true, in.a, in::a);
    public static final iy e = a("bubble", false);
    public static final iy f = a("cloud", false);
    public static final iy g = a("crit", false);

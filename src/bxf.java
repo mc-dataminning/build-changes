@@ -1,63 +1,35 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import java.util.function.IntFunction;
 
-public class bxf extends biq {
-   public final bxh b;
-   public final String c;
-   private final bir d;
+public enum bxf implements asu {
+   a(0, "white"),
+   b(1, "creamy"),
+   c(2, "chestnut"),
+   d(3, "brown"),
+   e(4, "black"),
+   f(5, "gray"),
+   g(6, "dark_brown");
 
-   public bxf(bxh $$0, String $$1, float $$2, float $$3) {
-      super($$0.ag(), $$0.dL());
-      this.d = bir.b($$2, $$3);
-      this.i_();
-      this.b = $$0;
-      this.c = $$1;
+   public static final Codec<bxf> h = asu.a(bxf::values);
+   private static final IntFunction<bxf> i = aqu.a(bxf::a, values(), aqu.a.b);
+   private final int j;
+   private final String k;
+
+   private bxf(int $$0, String $$1) {
+      this.j = $$0;
+      this.k = $$1;
+   }
+
+   public int a() {
+      return this.j;
+   }
+
+   public static bxf a(int $$0) {
+      return i.apply($$0);
    }
 
    @Override
-   protected void a_() {
-   }
-
-   @Override
-   protected void a(qw $$0) {
-   }
-
-   @Override
-   protected void b(qw $$0) {
-   }
-
-   @Override
-   public boolean br() {
-      return true;
-   }
-
-   @Nullable
-   @Override
-   public cjf dy() {
-      return this.b.dy();
-   }
-
-   @Override
-   public boolean a(bho $$0, float $$1) {
-      return this.b($$0) ? false : this.b.a(this, $$0, $$1);
-   }
-
-   @Override
-   public boolean t(biq $$0) {
-      return this == $$0 || this.b == $$0;
-   }
-
-   @Override
-   public vd<ww> di() {
-      throw new UnsupportedOperationException();
-   }
-
-   @Override
-   public bir a(bjs $$0) {
-      return this.d;
-   }
-
-   @Override
-   public boolean dJ() {
-      return false;
+   public String c() {
+      return this.k;
    }
 }

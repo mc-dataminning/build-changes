@@ -1,21 +1,13 @@
-import it.unimi.dsi.fastutil.doubles.AbstractDoubleList;
+import it.unimi.dsi.fastutil.doubles.DoubleList;
 
-public class eht extends AbstractDoubleList {
-   private final int a;
+interface eht {
+   DoubleList a();
 
-   eht(int $$0) {
-      if ($$0 <= 0) {
-         throw new IllegalArgumentException("Need at least 1 part");
-      } else {
-         this.a = $$0;
-      }
-   }
+   boolean a(eht.a var1);
 
-   public double getDouble(int $$0) {
-      return (double)$$0 / (double)this.a;
-   }
+   int size();
 
-   public int size() {
-      return this.a + 1;
+   public interface a {
+      boolean merge(int var1, int var2, int var3);
    }
 }

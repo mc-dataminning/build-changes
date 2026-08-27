@@ -1,235 +1,123 @@
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
 import java.util.Collection;
-import java.util.Locale;
-import java.util.Set;
-import java.util.UUID;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
 
-public class fcs extends eyk {
-   private static final aew c = new aew("social_interactions/background");
-   private static final aew k = new aew("icon/search");
-   private static final tl l = tl.c("gui.socialInteractions.tab_all");
-   private static final tl m = tl.c("gui.socialInteractions.tab_hidden");
-   private static final tl n = tl.c("gui.socialInteractions.tab_blocked");
-   private static final tl o = l.d().a(n.t);
-   private static final tl p = m.d().a(n.t);
-   private static final tl q = n.d().a(n.t);
-   private static final tl s = tl.c("gui.socialInteractions.search_hint").a(n.u).a(n.h);
-   static final tl t = tl.c("gui.socialInteractions.search_empty").a(n.h);
-   private static final tl u = tl.c("gui.socialInteractions.empty_hidden").a(n.h);
-   private static final tl v = tl.c("gui.socialInteractions.empty_blocked").a(n.h);
-   private static final tl w = tl.c("gui.socialInteractions.blocking_hint");
-   private static final int x = 8;
-   private static final int y = 236;
-   private static final int z = 16;
-   private static final int A = 64;
-   public static final int a = 72;
-   public static final int b = 88;
-   private static final int B = 238;
-   private static final int C = 20;
-   private static final int D = 36;
-   fcr E;
-   esz F;
-   private String G = "";
-   private fcs.a H = fcs.a.a;
-   private esq I;
-   private esq J;
-   private esq K;
-   private esq L;
-   @Nullable
-   private tl M;
-   private int N;
-   private boolean O;
+public class fcs extends eye {
+   private static final tl a = tl.c("selectWorld.experimental.title");
+   private static final tl b = tl.c("selectWorld.experimental.message");
+   private static final tl c = tl.c("selectWorld.experimental.details");
+   private static final int k = 10;
+   private static final int l = 100;
+   private final BooleanConsumer m;
+   final Collection<ane> n;
+   private final evt o = new evt().a(10).b(20);
 
-   public fcs() {
-      super(tl.c("gui.socialInteractions.title"));
-      this.a(eqv.O());
-   }
-
-   private int l() {
-      return Math.max(52, this.h - 128 - 16);
-   }
-
-   private int D() {
-      return 80 + this.l() - 8;
-   }
-
-   private int E() {
-      return (this.g - 238) / 2;
+   public fcs(Collection<ane> $$0, BooleanConsumer $$1) {
+      super(a);
+      this.n = $$0;
+      this.m = $$1;
    }
 
    @Override
    public tl g() {
-      return (tl)(this.M != null ? tk.a(super.g(), this.M) : super.g());
+      return tk.a(super.g(), b);
    }
 
    @Override
    protected void aH_() {
-      if (this.O) {
-         this.E.a(this.g, this.h, 88, this.D());
-      } else {
-         this.E = new fcr(this, this.f, this.g, this.h, 88, this.D(), 36);
+      super.aH_();
+      evt.b $$0 = this.o.d(2);
+      evx $$1 = $$0.b().b();
+      $$0.a(new etr(this.e, this.i), 2, $$1);
+      ete $$2 = $$0.a(new ete(b, this.i).b(true), 2, $$1);
+      $$2.j(310);
+      $$0.a(esk.a(c, $$0x -> this.f.a(new fcs.a())).a(100).a(), 2, $$1);
+      $$0.a(esk.a(tk.i, $$0x -> this.m.accept(true)).a());
+      $$0.a(esk.a(tk.k, $$0x -> this.m.accept(false)).a());
+      this.o.a($$1x -> {
+         esi var10000 = this.d($$1x);
+      });
+      this.o.a();
+      this.b();
+   }
+
+   @Override
+   protected void b() {
+      evs.a(this.o, 0, 0, this.g, this.h, 0.5F, 0.5F);
+   }
+
+   @Override
+   public void az_() {
+      this.m.accept(false);
+   }
+
+   class a extends eye {
+      private fcs.a.a b;
+
+      a() {
+         super(tl.c("selectWorld.experimental.details.title"));
       }
 
-      int $$0 = this.E.b() / 3;
-      int $$1 = this.E.o();
-      int $$2 = this.E.p();
-      int $$3 = this.i.a(w) + 40;
-      int $$4 = 64 + this.l();
-      int $$5 = (this.g - $$3) / 2 + 3;
-      this.I = this.d(esq.a(l, $$0x -> this.a(fcs.a.a)).a($$1, 45, $$0, 20).a());
-      this.J = this.d(esq.a(m, $$0x -> this.a(fcs.a.b)).a(($$1 + $$2 - $$0) / 2 + 1, 45, $$0, 20).a());
-      this.K = this.d(esq.a(n, $$0x -> this.a(fcs.a.c)).a($$2 - $$0 + 1, 45, $$0, 20).a());
-      String $$6 = this.F != null ? this.F.a() : "";
-      this.F = new esz(this.i, this.E() + 28, 74, 200, 15, s) {
-         @Override
-         protected ty aE_() {
-            return !fcs.this.F.a().isEmpty() && fcs.this.E.d() ? super.aE_().f(", ").b(fcs.t) : super.aE_();
-         }
-      };
-      this.F.l(16);
-      this.F.g(true);
-      this.F.m(16777215);
-      this.F.a($$6);
-      this.F.c(s);
-      this.F.b(this::a);
-      this.e(this.F);
-      this.e(this.E);
-      this.L = this.d(esq.a(w, $$0x -> this.f.a(new exc($$0xx -> {
-            if ($$0xx) {
-               ac.i().a("https://aka.ms/javablocking");
+      @Override
+      public void az_() {
+         this.f.a(fcs.this);
+      }
+
+      @Override
+      protected void aH_() {
+         super.aH_();
+         this.d(esk.a(tk.k, $$0 -> this.az_()).a(this.g / 2 - 100, this.h / 4 + 120 + 24, 200, 20).a());
+         this.b = new fcs.a.a(this.f, fcs.this.n);
+         this.e(this.b);
+      }
+
+      @Override
+      public void a(erz $$0, int $$1, int $$2, float $$3) {
+         super.a($$0, $$1, $$2, $$3);
+         this.b.a($$0, $$1, $$2, $$3);
+         $$0.a(this.i, this.e, this.g / 2, 10, 16777215);
+      }
+
+      class a extends etg<fcs.a.b> {
+         public a(eqp $$0, Collection<ane> $$1) {
+            super($$0, a.this.g, a.this.h, 32, a.this.h - 64, (9 + 2) * 3);
+
+            for (ane $$2 : $$1) {
+               String $$3 = cek.a(cek.f, $$2.d());
+               if (!$$3.isEmpty()) {
+                  tl $$4 = to.a($$2.a().f(), ui.a.a(true));
+                  tl $$5 = tl.a("selectWorld.experimental.details.entry", $$3);
+                  this.b(a.this.new b($$4, $$5, etd.a(a.this.i, $$5, this.b())));
+               }
             }
-
-            this.f.a(this);
-         }, "https://aka.ms/javablocking", true))).a($$5, $$4, $$3, 20).a());
-      this.O = true;
-      this.a(this.H);
-   }
-
-   private void a(fcs.a $$0) {
-      this.H = $$0;
-      this.I.b(l);
-      this.J.b(m);
-      this.K.b(n);
-      boolean $$1 = false;
-      switch ($$0) {
-         case a:
-            this.I.b(o);
-            Collection<UUID> $$2 = this.f.s.cn.o();
-            this.E.a($$2, this.E.l(), true);
-            break;
-         case b:
-            this.J.b(p);
-            Set<UUID> $$3 = this.f.aK().c();
-            $$1 = $$3.isEmpty();
-            this.E.a($$3, this.E.l(), false);
-            break;
-         case c:
-            this.K.b(q);
-            fcq $$4 = this.f.aK();
-            Set<UUID> $$5 = this.f.s.cn.o().stream().filter($$4::e).collect(Collectors.toSet());
-            $$1 = $$5.isEmpty();
-            this.E.a($$5, this.E.l(), false);
-      }
-
-      eqn $$6 = this.f.aV();
-      if (!this.F.a().isEmpty() && this.E.d() && !this.F.aC_()) {
-         $$6.c(t);
-      } else if ($$1) {
-         if ($$0 == fcs.a.b) {
-            $$6.c(u);
-         } else if ($$0 == fcs.a.c) {
-            $$6.c(v);
-         }
-      }
-   }
-
-   @Override
-   public void b(esf $$0, int $$1, int $$2, float $$3) {
-      int $$4 = this.E() + 3;
-      super.b($$0, $$1, $$2, $$3);
-      $$0.a(c, $$4, 64, 236, this.l() + 16);
-      $$0.a(k, $$4 + 10, 76, 12, 12);
-   }
-
-   @Override
-   public void a(esf $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.a(this.f);
-      if (this.M != null) {
-         $$0.b(this.f.h, this.M, this.E() + 8, 35, -1);
-      }
-
-      if (!this.E.d()) {
-         this.E.a($$0, $$1, $$2, $$3);
-      } else if (!this.F.a().isEmpty()) {
-         $$0.a(this.f.h, t, this.g / 2, (72 + this.D()) / 2, -1);
-      } else if (this.H == fcs.a.b) {
-         $$0.a(this.f.h, u, this.g / 2, (72 + this.D()) / 2, -1);
-      } else if (this.H == fcs.a.c) {
-         $$0.a(this.f.h, v, this.g / 2, (72 + this.D()) / 2, -1);
-      }
-
-      this.F.a($$0, $$1, $$2, $$3);
-      this.L.j = this.H == fcs.a.c;
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (!this.F.aC_() && this.f.m.N.a($$0, $$1)) {
-         this.f.a(null);
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
-      }
-   }
-
-   @Override
-   public boolean j() {
-      return false;
-   }
-
-   private void a(String $$0) {
-      $$0 = $$0.toLowerCase(Locale.ROOT);
-      if (!$$0.equals(this.G)) {
-         this.E.a($$0);
-         this.G = $$0;
-         this.a(this.H);
-      }
-   }
-
-   private void a(eqv $$0) {
-      int $$1 = $$0.J().n().size();
-      if (this.N != $$1) {
-         String $$2 = "";
-         fjh $$3 = $$0.Q();
-         if ($$0.R()) {
-            $$2 = $$0.T().aa();
-         } else if ($$3 != null) {
-            $$2 = $$3.a;
          }
 
-         if ($$1 > 1) {
-            this.M = tl.a("gui.socialInteractions.server_label.multiple", $$2, $$1);
-         } else {
-            this.M = tl.a("gui.socialInteractions.server_label.single", $$2, $$1);
+         @Override
+         public int b() {
+            return this.e * 3 / 4;
+         }
+      }
+
+      class b extends etg.a<fcs.a.b> {
+         private final tl b;
+         private final tl c;
+         private final etd d;
+
+         b(tl $$0, tl $$1, etd $$2) {
+            this.b = $$0;
+            this.c = $$1;
+            this.d = $$2;
          }
 
-         this.N = $$1;
+         @Override
+         public void a(erz $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+            $$0.b(a.this.f.h, this.b, $$3, $$2, 16777215);
+            this.d.b($$0, $$3, $$2 + 12, 9, 16777215);
+         }
+
+         @Override
+         public tl a() {
+            return tl.a("narrator.select", tk.a(this.b, this.c));
+         }
       }
-   }
-
-   public void a(fjf $$0) {
-      this.E.a($$0, this.H);
-   }
-
-   public void a(UUID $$0) {
-      this.E.a($$0);
-   }
-
-   public static enum a {
-      a,
-      b,
-      c;
    }
 }

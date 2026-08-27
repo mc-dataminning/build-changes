@@ -1,146 +1,156 @@
-public class ddf extends dcv {
-   private boolean a;
-   private boolean b;
-   private boolean c;
-   private final cow d = new cow() {
-      @Override
-      public void a(String $$0) {
-         super.a($$0);
-         ddf.this.e();
-      }
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-      @Override
-      public akq e() {
-         return (akq)ddf.this.o;
-      }
+public class ddf extends dcz implements bgv {
+   private static final int a = 2;
+   private static final int b = 4;
+   private final hn<cjl> c = hn.a(4, cjl.b);
+   private final int[] d = new int[4];
+   private final int[] e = new int[4];
+   private final cmr.a<bgx, cmc> f = cmr.b(cmt.e);
 
-      @Override
-      public void f() {
-         dfj $$0 = ddf.this.o.a_(ddf.this.p);
-         this.e().a(ddf.this.p, $$0, $$0, 3);
-      }
-
-      @Override
-      public ehn g() {
-         return ehn.b(ddf.this.p);
-      }
-
-      @Override
-      public dt i() {
-         ha $$0 = ddf.this.q().c(cuc.a);
-         return new dt(this, ehn.b(ddf.this.p), new ehm(0.0F, $$0.p()), this.e(), 2, this.n().getString(), this.n(), this.e().n(), null);
-      }
-
-      @Override
-      public boolean j() {
-         return !ddf.this.r();
-      }
-   };
-
-   public ddf(gw $$0, dfj $$1) {
-      super(dcx.w, $$0, $$1);
+   public ddf(gw $$0, dfd $$1) {
+      super(ddb.G, $$0, $$1);
    }
 
-   @Override
-   protected void b(qw $$0) {
-      super.b($$0);
-      this.d.a($$0);
-      $$0.a("powered", this.d());
-      $$0.a("conditionMet", this.i());
-      $$0.a("auto", this.f());
+   public static void a(cqb $$0, gw $$1, dfd $$2, ddf $$3) {
+      boolean $$4 = false;
+
+      for (int $$5 = 0; $$5 < $$3.c.size(); $$5++) {
+         cjl $$6 = $$3.c.get($$5);
+         if (!$$6.b()) {
+            $$4 = true;
+            $$3.d[$$5]++;
+            if ($$3.d[$$5] >= $$3.e[$$5]) {
+               bgx $$7 = new bhl($$6);
+               cjl $$8 = $$3.f.a($$7, $$0).map($$2x -> ((cmc)$$2x.b()).a($$7, $$0.G_())).orElse($$6);
+               if ($$8.a($$0.G())) {
+                  bha.a($$0, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), $$8);
+                  $$3.c.set($$5, cjl.b);
+                  $$0.a($$1, $$2, $$2, 3);
+                  $$0.a(djn.c, $$1, djn.a.a($$2));
+               }
+            }
+         }
+      }
+
+      if ($$4) {
+         a($$0, $$1, $$2);
+      }
+   }
+
+   public static void b(cqb $$0, gw $$1, dfd $$2, ddf $$3) {
+      boolean $$4 = false;
+
+      for (int $$5 = 0; $$5 < $$3.c.size(); $$5++) {
+         if ($$3.d[$$5] > 0) {
+            $$4 = true;
+            $$3.d[$$5] = asb.a($$3.d[$$5] - 2, 0, $$3.e[$$5]);
+         }
+      }
+
+      if ($$4) {
+         a($$0, $$1, $$2);
+      }
+   }
+
+   public static void c(cqb $$0, gw $$1, dfd $$2, ddf $$3) {
+      ash $$4 = $$0.z;
+      if ($$4.i() < 0.11F) {
+         for (int $$5 = 0; $$5 < $$4.a(2) + 2; $$5++) {
+            ctq.a($$0, $$1, $$2.c(ctq.d), false);
+         }
+      }
+
+      int $$6 = $$2.c(ctq.f).e();
+
+      for (int $$7 = 0; $$7 < $$3.c.size(); $$7++) {
+         if (!$$3.c.get($$7).b() && $$4.i() < 0.2F) {
+            ha $$8 = ha.b(Math.floorMod($$7 + $$6, 4));
+            float $$9 = 0.3125F;
+            double $$10 = (double)$$1.u() + 0.5 - (double)((float)$$8.j() * 0.3125F) + (double)((float)$$8.h().j() * 0.3125F);
+            double $$11 = (double)$$1.v() + 0.5;
+            double $$12 = (double)$$1.w() + 0.5 - (double)((float)$$8.l() * 0.3125F) + (double)((float)$$8.h().l() * 0.3125F);
+
+            for (int $$13 = 0; $$13 < 4; $$13++) {
+               $$0.a(iv.Z, $$10, $$11, $$12, 0.0, 5.0E-4, 0.0);
+            }
+         }
+      }
+   }
+
+   public hn<cjl> c() {
+      return this.c;
    }
 
    @Override
    public void a(qw $$0) {
       super.a($$0);
-      this.d.b($$0);
-      this.a = $$0.q("powered");
-      this.c = $$0.q("conditionMet");
-      this.b($$0.q("auto"));
+      this.c.clear();
+      bgy.b($$0, this.c);
+      if ($$0.b("CookingTimes", 11)) {
+         int[] $$1 = $$0.n("CookingTimes");
+         System.arraycopy($$1, 0, this.d, 0, Math.min(this.e.length, $$1.length));
+      }
+
+      if ($$0.b("CookingTotalTimes", 11)) {
+         int[] $$2 = $$0.n("CookingTotalTimes");
+         System.arraycopy($$2, 0, this.e, 0, Math.min(this.e.length, $$2.length));
+      }
    }
 
    @Override
-   public boolean t() {
-      return true;
+   protected void b(qw $$0) {
+      super.b($$0);
+      bgy.a($$0, this.c, true);
+      $$0.a("CookingTimes", this.d);
+      $$0.a("CookingTotalTimes", this.e);
    }
 
-   public cow c() {
-      return this.d;
+   public xe d() {
+      return xe.a(this);
    }
 
-   public void a(boolean $$0) {
-      this.a = $$0;
+   @Override
+   public qw as_() {
+      qw $$0 = new qw();
+      bgy.a($$0, this.c, true);
+      return $$0;
    }
 
-   public boolean d() {
-      return this.a;
+   public Optional<cmq<cmc>> a(cjl $$0) {
+      return this.c.stream().noneMatch(cjl::b) ? Optional.empty() : this.f.a(new bhl($$0), this.o);
    }
 
-   public boolean f() {
-      return this.b;
-   }
-
-   public void b(boolean $$0) {
-      boolean $$1 = this.b;
-      this.b = $$0;
-      if (!$$1 && $$0 && !this.a && this.o != null && this.v() != ddf.a.a) {
-         this.x();
-      }
-   }
-
-   public void g() {
-      ddf.a $$0 = this.v();
-      if ($$0 == ddf.a.b && (this.a || this.b) && this.o != null) {
-         this.x();
-      }
-   }
-
-   private void x() {
-      csv $$0 = this.q().b();
-      if ($$0 instanceof cuc) {
-         this.j();
-         this.o.a(this.p, $$0, 1);
-      }
-   }
-
-   public boolean i() {
-      return this.c;
-   }
-
-   public boolean j() {
-      this.c = true;
-      if (this.w()) {
-         gw $$0 = this.p.a(this.o.a_(this.p).c(cuc.a).g());
-         if (this.o.a_($$0).b() instanceof cuc) {
-            dcv $$1 = this.o.c_($$0);
-            this.c = $$1 instanceof ddf && ((ddf)$$1).c().k() > 0;
-         } else {
-            this.c = false;
+   public boolean a(@Nullable biw $$0, cjl $$1, int $$2) {
+      for (int $$3 = 0; $$3 < this.c.size(); $$3++) {
+         cjl $$4 = this.c.get($$3);
+         if ($$4.b()) {
+            this.e[$$3] = $$2;
+            this.d[$$3] = 0;
+            this.c.set($$3, $$1.a(1));
+            this.o.a(djn.c, this.p(), djn.a.a($$0, this.q()));
+            this.g();
+            return true;
          }
       }
 
-      return this.c;
+      return false;
    }
 
-   public ddf.a v() {
-      dfj $$0 = this.q();
-      if ($$0.a(csw.fN)) {
-         return ddf.a.c;
-      } else if ($$0.a(csw.kG)) {
-         return ddf.a.b;
-      } else {
-         return $$0.a(csw.kH) ? ddf.a.a : ddf.a.c;
+   private void g() {
+      this.e();
+      this.k().a(this.p(), this.q(), this.q(), 3);
+   }
+
+   @Override
+   public void a() {
+      this.c.clear();
+   }
+
+   public void f() {
+      if (this.o != null) {
+         this.g();
       }
-   }
-
-   public boolean w() {
-      dfj $$0 = this.o.a_(this.p());
-      return $$0.b() instanceof cuc ? $$0.c(cuc.b) : false;
-   }
-
-   public static enum a {
-      a,
-      b,
-      c;
    }
 }

@@ -1,15 +1,7 @@
-public enum bic {
-   a(n.j),
-   b(n.m),
-   c(n.j);
+import java.util.UUID;
 
-   private final n d;
+public interface bic {
+   UUID a();
 
-   private bic(n $$0) {
-      this.d = $$0;
-   }
-
-   public n a() {
-      return this.d;
-   }
+   bkq a(int var1);
 }

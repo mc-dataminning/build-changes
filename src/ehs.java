@@ -1,17 +1,32 @@
-public interface ehs {
-   static ehs a() {
-      return ehx.a;
+import it.unimi.dsi.fastutil.doubles.DoubleList;
+
+public class ehs implements eht {
+   private final DoubleList a;
+
+   public ehs(DoubleList $$0) {
+      this.a = $$0;
    }
 
-   static ehs a(biq $$0) {
-      return new ehx($$0);
+   @Override
+   public boolean a(eht.a $$0) {
+      int $$1 = this.a.size() - 1;
+
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         if (!$$0.merge($$2, $$2, $$2)) {
+            return false;
+         }
+      }
+
+      return true;
    }
 
-   boolean b();
+   @Override
+   public int size() {
+      return this.a.size();
+   }
 
-   boolean a(eig var1, gw var2, boolean var3);
-
-   boolean a(cja var1);
-
-   boolean a(eam var1, eam var2);
+   @Override
+   public DoubleList a() {
+      return this.a;
+   }
 }

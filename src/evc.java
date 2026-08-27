@@ -1,110 +1,276 @@
-import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
-import it.unimi.dsi.fastutil.ints.IntSet;
-import java.util.Arrays;
-import java.util.function.IntFunction;
-import javax.annotation.Nullable;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
 
-public class evc<T> {
-   private static final int a = 8;
-   private static final int b = 256;
-   private static final int c = 255;
-   private static final int d = 4351;
-   private static final int e = 4352;
-   private final T[] f;
-   private final T[][] g;
-   private final IntFunction<T[]> h;
+public class evc {
+   private final Supplier<String> a;
+   private final Consumer<String> b;
+   private final Supplier<String> c;
+   private final Consumer<String> d;
+   private final Predicate<String> e;
+   private int f;
+   private int g;
 
-   public evc(IntFunction<T[]> $$0, IntFunction<T[][]> $$1) {
-      this.f = (T[])((Object[])$$0.apply(256));
-      this.g = (T[][])((Object[][])$$1.apply(4352));
-      Arrays.fill(this.g, this.f);
-      this.h = $$0;
+   public evc(Supplier<String> $$0, Consumer<String> $$1, Supplier<String> $$2, Consumer<String> $$3, Predicate<String> $$4) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f();
+   }
+
+   public static Supplier<String> a(eqp $$0) {
+      return () -> b($$0);
+   }
+
+   public static String b(eqp $$0) {
+      return n.a($$0.o.a().replaceAll("\\r", ""));
+   }
+
+   public static Consumer<String> c(eqp $$0) {
+      return $$1 -> a($$0, $$1);
+   }
+
+   public static void a(eqp $$0, String $$1) {
+      $$0.o.a($$1);
+   }
+
+   public boolean a(char $$0) {
+      if (aa.a($$0)) {
+         this.a(this.a.get(), Character.toString($$0));
+      }
+
+      return true;
+   }
+
+   public boolean a(int $$0) {
+      if (eye.g($$0)) {
+         this.d();
+         return true;
+      } else if (eye.f($$0)) {
+         this.c();
+         return true;
+      } else if (eye.e($$0)) {
+         this.b();
+         return true;
+      } else if (eye.d($$0)) {
+         this.a();
+         return true;
+      } else {
+         evc.a $$1 = eye.p() ? evc.a.b : evc.a.a;
+         if ($$0 == 259) {
+            this.a(-1, $$1);
+            return true;
+         } else {
+            if ($$0 == 261) {
+               this.a(1, $$1);
+            } else {
+               if ($$0 == 263) {
+                  this.a(-1, eye.q(), $$1);
+                  return true;
+               }
+
+               if ($$0 == 262) {
+                  this.a(1, eye.q(), $$1);
+                  return true;
+               }
+
+               if ($$0 == 268) {
+                  this.a(eye.q());
+                  return true;
+               }
+
+               if ($$0 == 269) {
+                  this.b(eye.q());
+                  return true;
+               }
+            }
+
+            return false;
+         }
+      }
+   }
+
+   private int h(int $$0) {
+      return asb.a($$0, 0, this.a.get().length());
+   }
+
+   private void a(String $$0, String $$1) {
+      if (this.g != this.f) {
+         $$0 = this.c($$0);
+      }
+
+      this.f = asb.a(this.f, 0, $$0.length());
+      String $$2 = new StringBuilder($$0).insert(this.f, $$1).toString();
+      if (this.e.test($$2)) {
+         this.b.accept($$2);
+         this.g = this.f = Math.min($$2.length(), this.f + $$1.length());
+      }
+   }
+
+   public void a(String $$0) {
+      this.a(this.a.get(), $$0);
+   }
+
+   private void c(boolean $$0) {
+      if (!$$0) {
+         this.g = this.f;
+      }
+   }
+
+   public void a(int $$0, boolean $$1, evc.a $$2) {
+      switch ($$2) {
+         case a:
+            this.a($$0, $$1);
+            break;
+         case b:
+            this.b($$0, $$1);
+      }
+   }
+
+   public void b(int $$0) {
+      this.a($$0, false);
+   }
+
+   public void a(int $$0, boolean $$1) {
+      this.f = ac.a(this.a.get(), this.f, $$0);
+      this.c($$1);
+   }
+
+   public void c(int $$0) {
+      this.b($$0, false);
+   }
+
+   public void b(int $$0, boolean $$1) {
+      this.f = erb.a(this.a.get(), $$0, this.f, true);
+      this.c($$1);
+   }
+
+   public void a(int $$0, evc.a $$1) {
+      switch ($$1) {
+         case a:
+            this.e($$0);
+            break;
+         case b:
+            this.d($$0);
+      }
+   }
+
+   public void d(int $$0) {
+      int $$1 = erb.a(this.a.get(), $$0, this.f, true);
+      this.e($$1 - this.f);
+   }
+
+   public void e(int $$0) {
+      String $$1 = this.a.get();
+      if (!$$1.isEmpty()) {
+         String $$2;
+         if (this.g != this.f) {
+            $$2 = this.c($$1);
+         } else {
+            int $$3 = ac.a($$1, this.f, $$0);
+            int $$4 = Math.min($$3, this.f);
+            int $$5 = Math.max($$3, this.f);
+            $$2 = new StringBuilder($$1).delete($$4, $$5).toString();
+            if ($$0 < 0) {
+               this.g = this.f = $$4;
+            }
+         }
+
+         this.b.accept($$2);
+      }
    }
 
    public void a() {
-      Arrays.fill(this.g, this.f);
+      String $$0 = this.a.get();
+      this.d.accept(this.b($$0));
+      this.b.accept(this.c($$0));
    }
 
-   @Nullable
-   public T a(int $$0) {
-      int $$1 = $$0 >> 8;
-      int $$2 = $$0 & 0xFF;
-      return this.g[$$1][$$2];
+   public void b() {
+      this.a(this.a.get(), this.c.get());
+      this.g = this.f;
    }
 
-   @Nullable
-   public T a(int $$0, T $$1) {
-      int $$2 = $$0 >> 8;
-      int $$3 = $$0 & 0xFF;
-      T[] $$4 = this.g[$$2];
-      if ($$4 == this.f) {
-         $$4 = (T[])((Object[])this.h.apply(256));
-         this.g[$$2] = $$4;
-         $$4[$$3] = $$1;
-         return null;
+   public void c() {
+      this.d.accept(this.b(this.a.get()));
+   }
+
+   public void d() {
+      this.g = 0;
+      this.f = this.a.get().length();
+   }
+
+   private String b(String $$0) {
+      int $$1 = Math.min(this.f, this.g);
+      int $$2 = Math.max(this.f, this.g);
+      return $$0.substring($$1, $$2);
+   }
+
+   private String c(String $$0) {
+      if (this.g == this.f) {
+         return $$0;
       } else {
-         T $$5 = $$4[$$3];
-         $$4[$$3] = $$1;
-         return $$5;
+         int $$1 = Math.min(this.f, this.g);
+         int $$2 = Math.max(this.f, this.g);
+         String $$3 = $$0.substring(0, $$1) + $$0.substring($$2);
+         this.g = this.f = $$1;
+         return $$3;
       }
    }
 
-   public T a(int $$0, IntFunction<T> $$1) {
-      int $$2 = $$0 >> 8;
-      int $$3 = $$0 & 0xFF;
-      T[] $$4 = this.g[$$2];
-      T $$5 = $$4[$$3];
-      if ($$5 != null) {
-         return $$5;
-      } else {
-         if ($$4 == this.f) {
-            $$4 = (T[])((Object[])this.h.apply(256));
-            this.g[$$2] = $$4;
-         }
-
-         T $$6 = $$1.apply($$0);
-         $$4[$$3] = $$6;
-         return $$6;
-      }
+   public void e() {
+      this.a(false);
    }
 
-   @Nullable
-   public T b(int $$0) {
-      int $$1 = $$0 >> 8;
-      int $$2 = $$0 & 0xFF;
-      T[] $$3 = this.g[$$1];
-      if ($$3 == this.f) {
-         return null;
-      } else {
-         T $$4 = $$3[$$2];
-         $$3[$$2] = null;
-         return $$4;
-      }
+   public void a(boolean $$0) {
+      this.f = 0;
+      this.c($$0);
    }
 
-   public void a(evc.a<T> $$0) {
-      for (int $$1 = 0; $$1 < this.g.length; $$1++) {
-         T[] $$2 = this.g[$$1];
-         if ($$2 != this.f) {
-            for (int $$3 = 0; $$3 < $$2.length; $$3++) {
-               T $$4 = $$2[$$3];
-               if ($$4 != null) {
-                  int $$5 = $$1 << 8 | $$3;
-                  $$0.accept($$5, $$4);
-               }
-            }
-         }
-      }
+   public void f() {
+      this.b(false);
    }
 
-   public IntSet b() {
-      IntOpenHashSet $$0 = new IntOpenHashSet();
-      this.a(($$1, $$2) -> $$0.add($$1));
-      return $$0;
+   public void b(boolean $$0) {
+      this.f = this.a.get().length();
+      this.c($$0);
    }
 
-   @FunctionalInterface
-   public interface a<T> {
-      void accept(int var1, T var2);
+   public int g() {
+      return this.f;
+   }
+
+   public void f(int $$0) {
+      this.c($$0, true);
+   }
+
+   public void c(int $$0, boolean $$1) {
+      this.f = this.h($$0);
+      this.c($$1);
+   }
+
+   public int h() {
+      return this.g;
+   }
+
+   public void g(int $$0) {
+      this.g = this.h($$0);
+   }
+
+   public void a(int $$0, int $$1) {
+      int $$2 = this.a.get().length();
+      this.f = asb.a($$0, 0, $$2);
+      this.g = asb.a($$1, 0, $$2);
+   }
+
+   public boolean i() {
+      return this.f != this.g;
+   }
+
+   public static enum a {
+      a,
+      b;
    }
 }

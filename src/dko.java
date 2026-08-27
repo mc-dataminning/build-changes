@@ -1,54 +1,34 @@
-import com.mojang.serialization.Codec;
-
 public class dko {
-   public static enum a implements asp {
-      a("air"),
-      b("liquid");
+   public final ash a;
+   private double b;
+   private boolean c;
 
-      public static final Codec<dko.a> c = asp.a(dko.a::values);
-      private final String d;
-
-      private a(String $$0) {
-         this.d = $$0;
-      }
-
-      public String a() {
-         return this.d;
-      }
-
-      @Override
-      public String c() {
-         return this.d;
-      }
+   public dko(ash $$0) {
+      this.a = $$0;
    }
 
-   public static enum b implements asp {
-      a("raw_generation"),
-      b("lakes"),
-      c("local_modifications"),
-      d("underground_structures"),
-      e("surface_structures"),
-      f("strongholds"),
-      g("underground_ores"),
-      h("underground_decoration"),
-      i("fluid_springs"),
-      j("vegetal_decoration"),
-      k("top_layer_modification");
+   public void a() {
+      this.c = false;
+   }
 
-      public static final Codec<dko.b> l = asp.a(dko.b::values);
-      private final String m;
+   public double b() {
+      if (this.c) {
+         this.c = false;
+         return this.b;
+      } else {
+         double $$0;
+         double $$1;
+         double $$2;
+         do {
+            $$0 = 2.0 * this.a.j() - 1.0;
+            $$1 = 2.0 * this.a.j() - 1.0;
+            $$2 = asb.k($$0) + asb.k($$1);
+         } while ($$2 >= 1.0 || $$2 == 0.0);
 
-      private b(String $$0) {
-         this.m = $$0;
-      }
-
-      public String a() {
-         return this.m;
-      }
-
-      @Override
-      public String c() {
-         return this.m;
+         double $$3 = Math.sqrt(-2.0 * Math.log($$2) / $$2);
+         this.b = $$1 * $$3;
+         this.c = true;
+         return $$0 * $$3;
       }
    }
 }

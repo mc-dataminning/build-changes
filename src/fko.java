@@ -1,17 +1,66 @@
-public class fko extends fkq {
-   protected fko(fix $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, fmp $$8) {
-      super($$0, $$1, $$2, $$3, 0.1F, -0.1F, 0.1F, $$4, $$5, $$6, $$7, $$8, 0.5F, 20, 0.1F, false);
+public class fko extends fmq {
+   private final float a;
+   private final float b;
+
+   fko(fis $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, cjl $$7) {
+      this($$0, $$1, $$2, $$3, $$7);
+      this.j *= 0.1F;
+      this.k *= 0.1F;
+      this.l *= 0.1F;
+      this.j += $$4;
+      this.k += $$5;
+      this.l += $$6;
    }
 
-   public static class a implements flx<iy> {
-      private final fmp a;
+   @Override
+   public flu b() {
+      return flu.a;
+   }
 
-      public a(fmp $$0) {
-         this.a = $$0;
+   protected fko(fis $$0, double $$1, double $$2, double $$3, cjl $$4) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.a(eqp.O().aq().a($$4, $$0, null, 0).e());
+      this.u = 1.0F;
+      this.D /= 2.0F;
+      this.a = this.r.i() * 3.0F;
+      this.b = this.r.i() * 3.0F;
+   }
+
+   @Override
+   protected float c() {
+      return this.E.a((this.a + 1.0F) / 4.0F);
+   }
+
+   @Override
+   protected float d() {
+      return this.E.a(this.a / 4.0F);
+   }
+
+   @Override
+   protected float e() {
+      return this.E.c(this.b / 4.0F);
+   }
+
+   @Override
+   protected float f() {
+      return this.E.c((this.b + 1.0F) / 4.0F);
+   }
+
+   public static class a implements flt<ir> {
+      public flq a(ir $$0, fis $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fko($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$0.c());
       }
+   }
 
-      public flu a(iy $$0, fix $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fko($$1, $$2, $$3, $$4, 0.0, 0.0, 0.0, 1.0F, this.a);
+   public static class b implements flt<iy> {
+      public flq a(iy $$0, fis $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fko($$1, $$2, $$3, $$4, new cjl(cjo.qc));
+      }
+   }
+
+   public static class c implements flt<iy> {
+      public flq a(iy $$0, fis $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fko($$1, $$2, $$3, $$4, new cjl(cjo.pO));
       }
    }
 }

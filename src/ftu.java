@@ -1,11 +1,12 @@
-public class ftu extends fun<bwm, ffj<bwm>> {
-   private static final aew a = new aew("textures/entity/goat/goat.png");
-
-   public ftu(fth.a $$0) {
-      super($$0, new ffj<>($$0.a(fib.af)), 0.7F);
+public abstract class ftu<T extends bjo, M extends ffl<T>> extends fuj<T, M> {
+   public ftu(ftd.a $$0, M $$1, float $$2) {
+      this($$0, $$1, $$2, 1.0F, 1.0F, 1.0F);
    }
 
-   public aew a(bwm $$0) {
-      return a;
+   public ftu(ftd.a $$0, M $$1, float $$2, float $$3, float $$4, float $$5) {
+      super($$0, $$1, $$2);
+      this.a(new fwq<>(this, $$0.f(), $$3, $$4, $$5, $$0.d()));
+      this.a(new fwu<>(this, $$0.f()));
+      this.a(new fxe<>(this, $$0.d()));
    }
 }

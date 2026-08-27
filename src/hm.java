@@ -4,10 +4,10 @@ import com.google.common.collect.Sets;
 import com.mojang.datafixers.util.Pair;
 import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Lifecycle;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenCustomHashMap;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import it.unimi.dsi.fastutil.objects.ObjectList;
+import it.unimi.dsi.fastutil.objects.Reference2IntMap;
+import it.unimi.dsi.fastutil.objects.Reference2IntOpenHashMap;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -27,15 +27,15 @@ import org.slf4j.Logger;
 
 public class hm<T> implements hz<T> {
    private static final Logger b = LogUtils.getLogger();
-   final aev<? extends hq<T>> c;
+   final aey<? extends hq<T>> c;
    private final ObjectList<he.c<T>> d = new ObjectArrayList(256);
-   private final Object2IntMap<T> e = ac.a(new Object2IntOpenCustomHashMap(ac.k()), $$0x -> $$0x.defaultReturnValue(-1));
-   private final Map<aew, he.c<T>> f = new HashMap<>();
-   private final Map<aev<T>, he.c<T>> g = new HashMap<>();
+   private final Reference2IntMap<T> e = ac.a(new Reference2IntOpenHashMap(), $$0x -> $$0x.defaultReturnValue(-1));
+   private final Map<aez, he.c<T>> f = new HashMap<>();
+   private final Map<aey<T>, he.c<T>> g = new HashMap<>();
    private final Map<T, he.c<T>> h = new IdentityHashMap<>();
    private final Map<T, Lifecycle> i = new IdentityHashMap<>();
    private Lifecycle j;
-   private volatile Map<aqh<T>, hi.c<T>> k = new IdentityHashMap<>();
+   private volatile Map<aqk<T>, hi.c<T>> k = new IdentityHashMap<>();
    private boolean l;
    @Nullable
    private Map<T, he.c<T>> m;
@@ -44,7 +44,7 @@ public class hm<T> implements hz<T> {
    private int o;
    private final hg.c<T> p = new hg.c<T>() {
       @Override
-      public aev<? extends hq<? extends T>> f() {
+      public aey<? extends hq<? extends T>> f() {
          return hm.this.c;
       }
 
@@ -54,7 +54,7 @@ public class hm<T> implements hz<T> {
       }
 
       @Override
-      public Optional<he.c<T>> a(aev<T> $$0) {
+      public Optional<he.c<T>> a(aey<T> $$0) {
          return hm.this.b($$0);
       }
 
@@ -64,7 +64,7 @@ public class hm<T> implements hz<T> {
       }
 
       @Override
-      public Optional<hi.c<T>> a(aqh<T> $$0) {
+      public Optional<hi.c<T>> a(aqk<T> $$0) {
          return hm.this.b($$0);
       }
 
@@ -74,12 +74,12 @@ public class hm<T> implements hz<T> {
       }
    };
 
-   public hm(aev<? extends hq<T>> $$0, Lifecycle $$1) {
+   public hm(aey<? extends hq<T>> $$0, Lifecycle $$1) {
       this($$0, $$1, false);
    }
 
-   public hm(aev<? extends hq<T>> $$0, Lifecycle $$1, boolean $$2) {
-      aey.a(() -> "registry " + $$0);
+   public hm(aey<? extends hq<T>> $$0, Lifecycle $$1, boolean $$2) {
+      afb.a(() -> "registry " + $$0);
       this.c = $$0;
       this.j = $$1;
       if ($$2) {
@@ -88,7 +88,7 @@ public class hm<T> implements hz<T> {
    }
 
    @Override
-   public aev<? extends hq<T>> c() {
+   public aey<? extends hq<T>> c() {
       return this.c;
    }
 
@@ -111,13 +111,13 @@ public class hm<T> implements hz<T> {
       }
    }
 
-   private void g(aev<T> $$0) {
+   private void g(aey<T> $$0) {
       if (this.l) {
          throw new IllegalStateException("Registry is already frozen (trying to add key " + $$0 + ")");
       }
    }
 
-   public he.c<T> a(int $$0, aev<T> $$1, T $$2, Lifecycle $$3) {
+   public he.c<T> a(int $$0, aey<T> $$1, T $$2, Lifecycle $$3) {
       this.g($$1);
       Validate.notNull($$1);
       Validate.notNull($$2);
@@ -158,19 +158,19 @@ public class hm<T> implements hz<T> {
    }
 
    @Override
-   public he.c<T> a(aev<T> $$0, T $$1, Lifecycle $$2) {
+   public he.c<T> a(aey<T> $$0, T $$1, Lifecycle $$2) {
       return this.a(this.o, $$0, $$1, $$2);
    }
 
    @Nullable
    @Override
-   public aew b(T $$0) {
+   public aez b(T $$0) {
       he.c<T> $$1 = this.h.get($$0);
       return $$1 != null ? $$1.g().a() : null;
    }
 
    @Override
-   public Optional<aev<T>> c(T $$0) {
+   public Optional<aey<T>> c(T $$0) {
       return Optional.ofNullable(this.h.get($$0)).map(he.c::g);
    }
 
@@ -181,7 +181,7 @@ public class hm<T> implements hz<T> {
 
    @Nullable
    @Override
-   public T a(@Nullable aev<T> $$0) {
+   public T a(@Nullable aey<T> $$0) {
       return a(this.g.get($$0));
    }
 
@@ -197,7 +197,7 @@ public class hm<T> implements hz<T> {
    }
 
    @Override
-   public Optional<he.c<T>> b(aev<T> $$0) {
+   public Optional<he.c<T>> b(aey<T> $$0) {
       return Optional.ofNullable(this.g.get($$0));
    }
 
@@ -207,7 +207,7 @@ public class hm<T> implements hz<T> {
       return (he<T>)($$1 != null ? $$1 : he.a($$0));
    }
 
-   he.c<T> h(aev<T> $$0) {
+   he.c<T> h(aey<T> $$0) {
       return this.g.computeIfAbsent($$0, $$0x -> {
          if (this.m != null) {
             throw new IllegalStateException("This registry can't create new holders without value");
@@ -240,7 +240,7 @@ public class hm<T> implements hz<T> {
 
    @Nullable
    @Override
-   public T a(@Nullable aew $$0) {
+   public T a(@Nullable aez $$0) {
       he.c<T> $$1 = this.f.get($$0);
       return a($$1);
    }
@@ -251,17 +251,17 @@ public class hm<T> implements hz<T> {
    }
 
    @Override
-   public Set<aew> e() {
+   public Set<aez> e() {
       return Collections.unmodifiableSet(this.f.keySet());
    }
 
    @Override
-   public Set<aev<T>> f() {
+   public Set<aey<T>> f() {
       return Collections.unmodifiableSet(this.g.keySet());
    }
 
    @Override
-   public Set<Entry<aev<T>, T>> g() {
+   public Set<Entry<aey<T>, T>> g() {
       return Collections.unmodifiableSet(Maps.transformValues(this.g, he::a).entrySet());
    }
 
@@ -271,16 +271,16 @@ public class hm<T> implements hz<T> {
    }
 
    @Override
-   public Stream<Pair<aqh<T>, hi.c<T>>> i() {
+   public Stream<Pair<aqk<T>, hi.c<T>>> i() {
       return this.k.entrySet().stream().map($$0 -> Pair.of($$0.getKey(), $$0.getValue()));
    }
 
    @Override
-   public hi.c<T> a(aqh<T> $$0) {
+   public hi.c<T> a(aqk<T> $$0) {
       hi.c<T> $$1 = this.k.get($$0);
       if ($$1 == null) {
          $$1 = this.d($$0);
-         Map<aqh<T>, hi.c<T>> $$2 = new IdentityHashMap<>(this.k);
+         Map<aqk<T>, hi.c<T>> $$2 = new IdentityHashMap<>(this.k);
          $$2.put($$0, $$1);
          this.k = $$2;
       }
@@ -288,12 +288,12 @@ public class hm<T> implements hz<T> {
       return $$1;
    }
 
-   private hi.c<T> d(aqh<T> $$0) {
+   private hi.c<T> d(aqk<T> $$0) {
       return new hi.c<>(this.o(), $$0);
    }
 
    @Override
-   public Stream<aqh<T>> j() {
+   public Stream<aqk<T>> j() {
       return this.k.keySet().stream();
    }
 
@@ -303,17 +303,17 @@ public class hm<T> implements hz<T> {
    }
 
    @Override
-   public Optional<he.c<T>> a(asc $$0) {
+   public Optional<he.c<T>> a(ash $$0) {
       return ac.b(this.a(), $$0);
    }
 
    @Override
-   public boolean c(aew $$0) {
+   public boolean c(aez $$0) {
       return this.f.containsKey($$0);
    }
 
    @Override
-   public boolean c(aev<T> $$0) {
+   public boolean c(aey<T> $$0) {
       return this.g.containsKey($$0);
    }
 
@@ -324,7 +324,7 @@ public class hm<T> implements hz<T> {
       } else {
          this.l = true;
          this.h.forEach(($$0x, $$1) -> $$1.b((T)$$0x));
-         List<aew> $$0 = this.g.entrySet().stream().filter($$0x -> !((he.c)$$0x.getValue()).b()).map($$0x -> ((aev)$$0x.getKey()).a()).sorted().toList();
+         List<aez> $$0 = this.g.entrySet().stream().filter($$0x -> !((he.c)$$0x.getValue()).b()).map($$0x -> ((aey)$$0x.getKey()).a()).sorted().toList();
          if (!$$0.isEmpty()) {
             throw new IllegalStateException("Unbound values in registry " + this.c() + ": " + $$0);
          } else {
@@ -352,13 +352,13 @@ public class hm<T> implements hz<T> {
    }
 
    @Override
-   public Optional<hi.c<T>> b(aqh<T> $$0) {
+   public Optional<hi.c<T>> b(aqk<T> $$0) {
       return Optional.ofNullable(this.k.get($$0));
    }
 
    @Override
-   public void a(Map<aqh<T>, List<he<T>>> $$0) {
-      Map<he.c<T>, List<aqh<T>>> $$1 = new IdentityHashMap<>();
+   public void a(Map<aqk<T>, List<he<T>>> $$0) {
+      Map<he.c<T>, List<aqk<T>>> $$1 = new IdentityHashMap<>();
       this.g.values().forEach($$1x -> $$1.put($$1x, new ArrayList<>()));
       $$0.forEach(($$1x, $$2x) -> {
          for (he<T> $$3x : $$2x) {
@@ -373,7 +373,7 @@ public class hm<T> implements hz<T> {
             $$1.get($$4).add($$1x);
          }
       });
-      Set<aqh<T>> $$2 = Sets.difference(this.k.keySet(), $$0.keySet());
+      Set<aqk<T>> $$2 = Sets.difference(this.k.keySet(), $$0.keySet());
       if (!$$2.isEmpty()) {
          b.warn(
             "Not all defined tags for registry {} are present in data pack: {}",
@@ -382,7 +382,7 @@ public class hm<T> implements hz<T> {
          );
       }
 
-      Map<aqh<T>, hi.c<T>> $$3 = new IdentityHashMap<>(this.k);
+      Map<aqk<T>, hi.c<T>> $$3 = new IdentityHashMap<>(this.k);
       $$0.forEach(($$1x, $$2x) -> $$3.computeIfAbsent($$1x, this::d).b($$2x));
       $$1.forEach(he.c::a);
       this.k = $$3;
@@ -399,22 +399,22 @@ public class hm<T> implements hz<T> {
       this.v();
       return new hf<T>() {
          @Override
-         public Optional<he.c<T>> a(aev<T> $$0) {
+         public Optional<he.c<T>> a(aey<T> $$0) {
             return Optional.of(this.b($$0));
          }
 
          @Override
-         public he.c<T> b(aev<T> $$0) {
+         public he.c<T> b(aey<T> $$0) {
             return hm.this.h($$0);
          }
 
          @Override
-         public Optional<hi.c<T>> a(aqh<T> $$0) {
+         public Optional<hi.c<T>> a(aqk<T> $$0) {
             return Optional.of(this.b($$0));
          }
 
          @Override
-         public hi.c<T> b(aqh<T> $$0) {
+         public hi.c<T> b(aqk<T> $$0) {
             return hm.this.a($$0);
          }
       };

@@ -1,7 +1,8 @@
-@FunctionalInterface
-public interface dvv<C extends dqa> {
-   void generatePieces(dwa var1, dvv.a<C> var2);
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   public static record a<C extends dqa>(C a, dhg b, dzc c, cpc d, cpx e, dlr f, long g) {
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface dvv {
 }

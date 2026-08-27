@@ -4,26 +4,18 @@ import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
-import com.mojang.serialization.Dynamic;
-import java.util.Objects;
 
 public class aus extends DataFix {
-   public aus(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+   public aus(Schema $$0) {
+      super($$0, false);
    }
 
    protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(ayx.c);
-      Type<?> $$1 = $$0.findFieldType("Level");
-      OpticFinder<?> $$2 = DSL.fieldFinder("Level", $$1);
-      return this.fixTypeEverywhereTyped("ChunkStatusFix", $$0, this.getOutputSchema().getType(ayx.c), $$1x -> $$1x.updateTyped($$2, $$0xx -> {
-            Dynamic<?> $$1xx = (Dynamic<?>)$$0xx.get(DSL.remainderFinder());
-            String $$2x = $$1xx.get("Status").asString("empty");
-            if (Objects.equals($$2x, "postprocessed")) {
-               $$1xx = $$1xx.set("Status", $$1xx.createString("fullchunk"));
-            }
-
-            return $$0xx.set(DSL.remainderFinder(), $$1xx);
-         }));
+      Type<?> $$0 = this.getInputSchema().getType(azd.c);
+      OpticFinder<?> $$1 = $$0.findField("sections");
+      return this.fixTypeEverywhereTyped("ChunkDeleteLightFix for " + this.getOutputSchema().getVersionKey(), $$0, $$1x -> {
+         $$1x = $$1x.update(DSL.remainderFinder(), $$0xx -> $$0xx.remove("isLightOn"));
+         return $$1x.updateTyped($$1, $$0xx -> $$0xx.update(DSL.remainderFinder(), $$0xxx -> $$0xxx.remove("BlockLight").remove("SkyLight")));
+      });
    }
 }

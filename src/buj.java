@@ -1,97 +1,122 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Maps;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
+import com.mojang.logging.LogUtils;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class buj {
-   public static final aev<bui> a = a("armorer");
-   public static final aev<bui> b = a("butcher");
-   public static final aev<bui> c = a("cartographer");
-   public static final aev<bui> d = a("cleric");
-   public static final aev<bui> e = a("farmer");
-   public static final aev<bui> f = a("fisherman");
-   public static final aev<bui> g = a("fletcher");
-   public static final aev<bui> h = a("leatherworker");
-   public static final aev<bui> i = a("librarian");
-   public static final aev<bui> j = a("mason");
-   public static final aev<bui> k = a("shepherd");
-   public static final aev<bui> l = a("toolsmith");
-   public static final aev<bui> m = a("weaponsmith");
-   public static final aev<bui> n = a("home");
-   public static final aev<bui> o = a("meeting");
-   public static final aev<bui> p = a("beehive");
-   public static final aev<bui> q = a("bee_nest");
-   public static final aev<bui> r = a("nether_portal");
-   public static final aev<bui> s = a("lodestone");
-   public static final aev<bui> t = a("lightning_rod");
-   private static final Set<dfj> u = ImmutableList.of(
-         csw.bn, csw.bo, csw.bk, csw.bl, csw.bi, csw.bg, csw.bm, csw.bc, csw.bh, csw.be, csw.bb, csw.ba, new csv[]{csw.bf, csw.bj, csw.aZ, csw.bd}
-      )
-      .stream()
-      .flatMap($$0 -> $$0.l().a().stream())
-      .filter($$0 -> $$0.c(cso.a) == dfw.a)
-      .collect(ImmutableSet.toImmutableSet());
-   private static final Set<dfj> v = ImmutableList.of(csw.ft, csw.fv, csw.fu, csw.fw)
-      .stream()
-      .flatMap($$0 -> $$0.l().a().stream())
-      .collect(ImmutableSet.toImmutableSet());
-   private static final Map<dfj, he<bui>> w = Maps.newHashMap();
+public class buj implements cpo {
+   private static final Logger a = LogUtils.getLogger();
+   private boolean b;
+   private buj.a c;
+   private int d;
+   private int e;
+   private int f;
+   private int g;
+   private int h;
 
-   private static Set<dfj> a(csv $$0) {
-      return ImmutableSet.copyOf($$0.l().a());
+   public buj() {
+      this.c = buj.a.c;
    }
 
-   private static aev<bui> a(String $$0) {
-      return aev.a(jc.S, new aew($$0));
-   }
-
-   private static bui a(hq<bui> $$0, aev<bui> $$1, Set<dfj> $$2, int $$3, int $$4) {
-      bui $$5 = new bui($$2, $$3, $$4);
-      hq.a($$0, $$1, $$5);
-      a($$0.f($$1), $$2);
-      return $$5;
-   }
-
-   private static void a(he<bui> $$0, Set<dfj> $$1) {
-      $$1.forEach($$1x -> {
-         he<bui> $$2 = w.put($$1x, $$0);
-         if ($$2 != null) {
-            throw (IllegalStateException)ac.b(new IllegalStateException(String.format(Locale.ROOT, "%s is defined in more than one PoI type", $$1x)));
+   @Override
+   public int a(akt $$0, boolean $$1, boolean $$2) {
+      if (!$$0.N() && $$1) {
+         float $$3 = $$0.f(0.0F);
+         if ((double)$$3 == 0.5) {
+            this.c = $$0.z.a(10) == 0 ? buj.a.b : buj.a.c;
          }
-      });
+
+         if (this.c == buj.a.c) {
+            return 0;
+         } else {
+            if (!this.b) {
+               if (!this.a($$0)) {
+                  return 0;
+               }
+
+               this.b = true;
+            }
+
+            if (this.e > 0) {
+               this.e--;
+               return 0;
+            } else {
+               this.e = 2;
+               if (this.d > 0) {
+                  this.b($$0);
+                  this.d--;
+               } else {
+                  this.c = buj.a.c;
+               }
+
+               return 1;
+            }
+         }
+      } else {
+         this.c = buj.a.c;
+         this.b = false;
+         return 0;
+      }
    }
 
-   public static Optional<he<bui>> a(dfj $$0) {
-      return Optional.ofNullable(w.get($$0));
+   private boolean a(akt $$0) {
+      for (cca $$1 : $$0.v()) {
+         if (!$$1.M_()) {
+            gw $$2 = $$1.dl();
+            if ($$0.b($$2) && !$$0.s($$2).a(apu.ae)) {
+               for (int $$3 = 0; $$3 < 10; $$3++) {
+                  float $$4 = $$0.z.i() * (float) (Math.PI * 2);
+                  this.f = $$2.u() + asb.d(asb.b($$4) * 32.0F);
+                  this.g = $$2.v();
+                  this.h = $$2.w() + asb.d(asb.a($$4) * 32.0F);
+                  if (this.a($$0, new gw(this.f, this.g, this.h)) != null) {
+                     this.e = 0;
+                     this.d = 20;
+                     break;
+                  }
+               }
+
+               return true;
+            }
+         }
+      }
+
+      return false;
    }
 
-   public static boolean b(dfj $$0) {
-      return w.containsKey($$0);
+   private void b(akt $$0) {
+      ehh $$1 = this.a($$0, new gw(this.f, this.g, this.h));
+      if ($$1 != null) {
+         cah $$2;
+         try {
+            $$2 = new cah($$0);
+            $$2.a($$0, $$0.d_($$2.dl()), bjq.h, null, null);
+         } catch (Exception var5) {
+            a.warn("Failed to create zombie for village siege at {}", $$1, var5);
+            return;
+         }
+
+         $$2.b($$1.c, $$1.d, $$1.e, $$0.z.i() * 360.0F, 0.0F);
+         $$0.a_($$2);
+      }
    }
 
-   public static bui a(hq<bui> $$0) {
-      a($$0, a, a(csw.nW), 1, 1);
-      a($$0, b, a(csw.nV), 1, 1);
-      a($$0, c, a(csw.nX), 1, 1);
-      a($$0, d, a(csw.fs), 1, 1);
-      a($$0, e, a(csw.pc), 1, 1);
-      a($$0, f, a(csw.nU), 1, 1);
-      a($$0, g, a(csw.nY), 1, 1);
-      a($$0, h, v, 1, 1);
-      a($$0, i, a(csw.oa), 1, 1);
-      a($$0, j, a(csw.oc), 1, 1);
-      a($$0, k, a(csw.nT), 1, 1);
-      a($$0, l, a(csw.ob), 1, 1);
-      a($$0, m, a(csw.nZ), 1, 1);
-      a($$0, n, u, 1, 1);
-      a($$0, o, a(csw.od), 32, 6);
-      a($$0, p, a(csw.pf), 0, 1);
-      a($$0, q, a(csw.pe), 0, 1);
-      a($$0, r, a(csw.ee), 0, 1);
-      a($$0, s, a(csw.pq), 0, 1);
-      return a($$0, t, a(csw.rr), 0, 1);
+   @Nullable
+   private ehh a(akt $$0, gw $$1) {
+      for (int $$2 = 0; $$2 < 10; $$2++) {
+         int $$3 = $$1.u() + $$0.z.a(16) - 8;
+         int $$4 = $$1.w() + $$0.z.a(16) - 8;
+         int $$5 = $$0.a(dkm.a.b, $$3, $$4);
+         gw $$6 = new gw($$3, $$5, $$4);
+         if ($$0.b($$6) && bzo.b(bja.bp, $$0, bjq.h, $$6, $$0.z)) {
+            return ehh.c($$6);
+         }
+      }
+
+      return null;
+   }
+
+   static enum a {
+      a,
+      b,
+      c;
    }
 }

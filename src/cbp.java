@@ -1,8 +1,13 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface cbp extends bkk<cbs> {
+   cbo gp();
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface cbp {
+   void a(cbo var1);
+
+   default cbs a() {
+      return this.gp().a();
+   }
+
+   default void a(cbs $$0) {
+      this.a(this.gp().a($$0));
+   }
 }

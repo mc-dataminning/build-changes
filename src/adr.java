@@ -1,7 +1,5 @@
-public record adr() implements adp {
-   public static final adr a = new adr();
+public interface adr {
+   aez a();
 
-   @Override
-   public void a(so $$0) {
-   }
+   void a(so var1);
 }

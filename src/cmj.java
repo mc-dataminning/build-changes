@@ -1,51 +1,78 @@
-public interface cmj<C extends bgr> {
-   boolean a(C var1, cpv var2);
+public class cmj extends cmh {
+   private static final cmm a = cmm.a(cjo.qa);
+   private static final cmm b = cmm.a(cjo.oG);
+   private static final cmm c = cmm.a(cjo.tB);
 
-   cjf a(C var1, hr var2);
+   public cmj(cme $$0) {
+      super($$0);
+   }
 
-   boolean a(int var1, int var2);
+   public boolean a(cff $$0, cqb $$1) {
+      boolean $$2 = false;
+      int $$3 = 0;
 
-   cjf a(hr var1);
+      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
+         cjl $$5 = $$0.a($$4);
+         if (!$$5.b()) {
+            if (a.a($$5)) {
+               if ($$2) {
+                  return false;
+               }
 
-   default hn<cjf> a(C $$0) {
-      hn<cjf> $$1 = hn.a($$0.b(), cjf.b);
-
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         cja $$3 = $$0.a($$2).d();
-         if ($$3.t()) {
-            $$1.set($$2, new cjf($$3.s()));
+               $$2 = true;
+            } else if (b.a($$5)) {
+               if (++$$3 > 3) {
+                  return false;
+               }
+            } else if (!c.a($$5)) {
+               return false;
+            }
          }
       }
 
-      return $$1;
+      return $$2 && $$3 >= 1;
    }
 
-   default hn<cmg> a() {
-      return hn.a();
+   public cjl a(cff $$0, hr $$1) {
+      cjl $$2 = new cjl(cjo.tA, 3);
+      qw $$3 = $$2.a("Fireworks");
+      rc $$4 = new rc();
+      int $$5 = 0;
+
+      for (int $$6 = 0; $$6 < $$0.b(); $$6++) {
+         cjl $$7 = $$0.a($$6);
+         if (!$$7.b()) {
+            if (b.a($$7)) {
+               $$5++;
+            } else if (c.a($$7)) {
+               qw $$8 = $$7.b("Explosion");
+               if ($$8 != null) {
+                  $$4.add($$8);
+               }
+            }
+         }
+      }
+
+      $$3.a("Flight", (byte)$$5);
+      if (!$$4.isEmpty()) {
+         $$3.a("Explosions", $$4);
+      }
+
+      return $$2;
    }
 
-   default boolean am_() {
-      return false;
+   @Override
+   public boolean a(int $$0, int $$1) {
+      return $$0 * $$1 >= 2;
    }
 
-   default boolean h() {
-      return true;
+   @Override
+   public cjl a(hr $$0) {
+      return new cjl(cjo.tA);
    }
 
-   default String c() {
-      return "";
-   }
-
-   default cjf g() {
-      return new cjf(csw.cA);
-   }
-
-   cmm<?> an_();
-
-   cmn<?> e();
-
-   default boolean i() {
-      hn<cmg> $$0 = this.a();
-      return $$0.isEmpty() || $$0.stream().anyMatch($$0x -> $$0x.a().length == 0);
+   @Override
+   public cms<?> an_() {
+      return cms.g;
    }
 }

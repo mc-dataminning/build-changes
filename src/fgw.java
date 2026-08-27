@@ -1,58 +1,33 @@
-import com.google.common.collect.ImmutableList;
+public class fgw<T extends biw> extends ffh<T> {
+   private final fhx a;
 
-public class fgw<T extends bzo> extends ffv<T> {
-   private static final String a = "lid";
-   private static final String b = "base";
-   private final fic f;
-   private final fic g;
-   private final fic h;
-
-   public fgw(fic $$0) {
-      super(fom::f);
-      this.g = $$0.b("lid");
-      this.f = $$0.b("base");
-      this.h = $$0.b("head");
+   public fgw(fhx $$0) {
+      this.a = $$0;
    }
 
-   public static fii a() {
-      fik $$0 = new fik();
-      fil $$1 = $$0.a();
-      $$1.a("lid", fih.c().a(0, 0).a(-8.0F, -16.0F, -8.0F, 16.0F, 12.0F, 16.0F), fie.a(0.0F, 24.0F, 0.0F));
-      $$1.a("base", fih.c().a(0, 28).a(-8.0F, -8.0F, -8.0F, 16.0F, 8.0F, 16.0F), fie.a(0.0F, 24.0F, 0.0F));
-      $$1.a("head", fih.c().a(0, 52).a(-3.0F, 0.0F, -3.0F, 6.0F, 6.0F, 6.0F), fie.a(0.0F, 12.0F, 0.0F));
-      return fii.a($$0, 64, 64);
+   public static fid b() {
+      fif $$0 = new fif();
+      fig $$1 = $$0.a();
+      $$1.a("cube", fic.c().a(0, 0).a(-4.0F, 16.0F, -4.0F, 8.0F, 8.0F, 8.0F), fhz.a);
+      return fid.a($$0, 64, 32);
    }
 
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      float $$6 = $$3 - (float)$$0.ah;
-      float $$7 = (0.5F + $$0.E($$6)) * (float) Math.PI;
-      float $$8 = -1.0F + arw.a($$7);
-      float $$9 = 0.0F;
-      if ($$7 > (float) Math.PI) {
-         $$9 = arw.a($$3 * 0.1F) * 0.7F;
-      }
-
-      this.g.a(0.0F, 16.0F + arw.a($$7) * 8.0F + $$9, 0.0F);
-      if ($$0.E($$6) > 0.3F) {
-         this.g.f = $$8 * $$8 * $$8 * $$8 * (float) Math.PI * 0.125F;
-      } else {
-         this.g.f = 0.0F;
-      }
-
-      this.h.e = $$5 * (float) (Math.PI / 180.0);
-      this.h.f = ($$0.aW - 180.0F - $$0.aU) * (float) (Math.PI / 180.0);
+   public static fid c() {
+      fif $$0 = new fif();
+      fig $$1 = $$0.a();
+      $$1.a("cube", fic.c().a(0, 16).a(-3.0F, 17.0F, -3.0F, 6.0F, 6.0F, 6.0F), fhz.a);
+      $$1.a("right_eye", fic.c().a(32, 0).a(-3.25F, 18.0F, -3.5F, 2.0F, 2.0F, 2.0F), fhz.a);
+      $$1.a("left_eye", fic.c().a(32, 4).a(1.25F, 18.0F, -3.5F, 2.0F, 2.0F, 2.0F), fhz.a);
+      $$1.a("mouth", fic.c().a(32, 8).a(0.0F, 21.0F, -3.5F, 1.0F, 1.0F, 1.0F), fhz.a);
+      return fid.a($$0, 64, 32);
    }
 
    @Override
-   public Iterable<fic> d() {
-      return ImmutableList.of(this.f, this.g);
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
    }
 
-   public fic b() {
-      return this.g;
-   }
-
-   public fic c() {
-      return this.h;
+   @Override
+   public fhx a() {
+      return this.a;
    }
 }

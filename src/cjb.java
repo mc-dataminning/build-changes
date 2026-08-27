@@ -1,65 +1,19 @@
-import com.google.common.collect.Maps;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
+public class cjb extends cjg {
+   private static final String a = "textures/entity/horse/";
+   private final int b;
+   private final String c;
 
-public class cjb {
-   private final Map<cja, cjb.a> a = Maps.newHashMap();
-   private int b;
-
-   public boolean a(cja $$0) {
-      return this.a($$0, 0.0F) > 0.0F;
+   public cjb(int $$0, String $$1, cjg.a $$2) {
+      super($$2);
+      this.b = $$0;
+      this.c = "textures/entity/horse/armor/horse_armor_" + $$1 + ".png";
    }
 
-   public float a(cja $$0, float $$1) {
-      cjb.a $$2 = this.a.get($$0);
-      if ($$2 != null) {
-         float $$3 = (float)($$2.b - $$2.a);
-         float $$4 = (float)$$2.b - ((float)this.b + $$1);
-         return arw.a($$4 / $$3, 0.0F, 1.0F);
-      } else {
-         return 0.0F;
-      }
+   public aez h() {
+      return new aez(this.c);
    }
 
-   public void a() {
-      this.b++;
-      if (!this.a.isEmpty()) {
-         Iterator<Entry<cja, cjb.a>> $$0 = this.a.entrySet().iterator();
-
-         while ($$0.hasNext()) {
-            Entry<cja, cjb.a> $$1 = $$0.next();
-            if ($$1.getValue().b <= this.b) {
-               $$0.remove();
-               this.c($$1.getKey());
-            }
-         }
-      }
-   }
-
-   public void a(cja $$0, int $$1) {
-      this.a.put($$0, new cjb.a(this.b, this.b + $$1));
-      this.b($$0, $$1);
-   }
-
-   public void b(cja $$0) {
-      this.a.remove($$0);
-      this.c($$0);
-   }
-
-   protected void b(cja $$0, int $$1) {
-   }
-
-   protected void c(cja $$0) {
-   }
-
-   static class a {
-      final int a;
-      final int b;
-
-      a(int $$0, int $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
+   public int i() {
+      return this.b;
    }
 }

@@ -1,104 +1,166 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.text2speech.Narrator;
-import org.lwjgl.util.tinyfd.TinyFileDialogs;
-import org.slf4j.Logger;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import java.util.Map;
+import java.util.Set;
+import java.util.function.Supplier;
 
-public class eqn {
-   public static final tl a = tk.a;
-   private static final Logger b = LogUtils.getLogger();
-   private final eqv c;
-   private final Narrator d = Narrator.getNarrator();
+public class eqn implements Comparable<eqn> {
+   private static final Map<String, eqn> h = Maps.newHashMap();
+   private static final Map<eke.a, eqn> i = Maps.newHashMap();
+   private static final Set<String> j = Sets.newHashSet();
+   public static final String a = "key.categories.movement";
+   public static final String b = "key.categories.misc";
+   public static final String c = "key.categories.multiplayer";
+   public static final String d = "key.categories.gameplay";
+   public static final String e = "key.categories.inventory";
+   public static final String f = "key.categories.ui";
+   public static final String g = "key.categories.creative";
+   private static final Map<String, Integer> k = ac.a(Maps.newHashMap(), $$0 -> {
+      $$0.put("key.categories.movement", 1);
+      $$0.put("key.categories.gameplay", 2);
+      $$0.put("key.categories.inventory", 3);
+      $$0.put("key.categories.creative", 4);
+      $$0.put("key.categories.multiplayer", 5);
+      $$0.put("key.categories.ui", 6);
+      $$0.put("key.categories.misc", 7);
+   });
+   private final String l;
+   private final eke.a m;
+   private final String n;
+   private eke.a o;
+   private boolean p;
+   private int q;
 
-   public eqn(eqv $$0) {
-      this.c = $$0;
-   }
-
-   public void a(tl $$0) {
-      if (this.d().c()) {
-         String $$1 = $$0.getString();
-         this.b($$1);
-         this.d.say($$1, false);
+   public static void a(eke.a $$0) {
+      eqn $$1 = i.get($$0);
+      if ($$1 != null) {
+         $$1.q++;
       }
    }
 
-   public void b(tl $$0) {
-      String $$1 = $$0.getString();
-      if (this.d().d() && !$$1.isEmpty()) {
-         this.b($$1);
-         this.d.say($$1, false);
+   public static void a(eke.a $$0, boolean $$1) {
+      eqn $$2 = i.get($$0);
+      if ($$2 != null) {
+         $$2.a($$1);
       }
    }
 
-   public void c(tl $$0) {
-      this.a($$0.getString());
-   }
-
-   public void a(String $$0) {
-      if (this.d().d() && !$$0.isEmpty()) {
-         this.b($$0);
-         if (this.d.active()) {
-            this.d.clear();
-            this.d.say($$0, true);
+   public static void a() {
+      for (eqn $$0 : h.values()) {
+         if ($$0.o.a() == eke.b.a && $$0.o.b() != eke.bv.b()) {
+            $$0.a(eke.a(eqp.O().aM().i(), $$0.o.b()));
          }
       }
    }
 
-   private eqx d() {
-      return this.c.m.ao().c();
-   }
-
-   private void b(String $$0) {
-      if (aa.aT) {
-         b.debug("Narrating: {}", $$0.replaceAll("\n", "\\\\n"));
+   public static void b() {
+      for (eqn $$0 : h.values()) {
+         $$0.n();
       }
    }
 
-   public void a(eqx $$0) {
-      this.b();
-      this.d.say(tl.c("options.narrator").f(" : ").b($$0.b()).getString(), true);
-      euy $$1 = eqv.O().ay();
-      if (this.d.active()) {
-         if ($$0 == eqx.a) {
-            euw.b($$1, euw.a.b, tl.c("narrator.toast.disabled"), null);
-         } else {
-            euw.b($$1, euw.a.b, tl.c("narrator.toast.enabled"), $$0.b());
+   public static void c() {
+      for (eqn $$0 : h.values()) {
+         if ($$0 instanceof erd $$1) {
+            $$1.n();
          }
+      }
+   }
+
+   public static void d() {
+      i.clear();
+
+      for (eqn $$0 : h.values()) {
+         i.put($$0.o, $$0);
+      }
+   }
+
+   public eqn(String $$0, int $$1, String $$2) {
+      this($$0, eke.b.a, $$1, $$2);
+   }
+
+   public eqn(String $$0, eke.b $$1, int $$2, String $$3) {
+      this.l = $$0;
+      this.o = $$1.a($$2);
+      this.m = this.o;
+      this.n = $$3;
+      h.put($$0, this);
+      i.put(this.o, this);
+      j.add($$3);
+   }
+
+   public boolean e() {
+      return this.p;
+   }
+
+   public String f() {
+      return this.n;
+   }
+
+   public boolean g() {
+      if (this.q == 0) {
+         return false;
       } else {
-         euw.b($$1, euw.a.b, tl.c("narrator.toast.disabled"), tl.c("options.narrator.notavailable"));
+         this.q--;
+         return true;
       }
    }
 
-   public boolean a() {
-      return this.d.active();
+   private void n() {
+      this.q = 0;
+      this.a(false);
    }
 
-   public void b() {
-      if (this.d() != eqx.a && this.d.active()) {
-         this.d.clear();
-      }
+   public String h() {
+      return this.l;
    }
 
-   public void c() {
-      this.d.destroy();
+   public eke.a i() {
+      return this.m;
+   }
+
+   public void b(eke.a $$0) {
+      this.o = $$0;
+   }
+
+   public int a(eqn $$0) {
+      return this.n.equals($$0.n) ? gag.a(this.l).compareTo(gag.a($$0.l)) : k.get(this.n).compareTo(k.get($$0.n));
+   }
+
+   public static Supplier<tl> a(String $$0) {
+      eqn $$1 = h.get($$0);
+      return $$1 == null ? () -> tl.c($$0) : $$1::k;
+   }
+
+   public boolean b(eqn $$0) {
+      return this.o.equals($$0.o);
+   }
+
+   public boolean j() {
+      return this.o.equals(eke.bv);
+   }
+
+   public boolean a(int $$0, int $$1) {
+      return $$0 == eke.bv.b() ? this.o.a() == eke.b.b && this.o.b() == $$1 : this.o.a() == eke.b.a && this.o.b() == $$0;
+   }
+
+   public boolean a(int $$0) {
+      return this.o.a() == eke.b.c && this.o.b() == $$0;
+   }
+
+   public tl k() {
+      return this.o.d();
+   }
+
+   public boolean l() {
+      return this.o.equals(this.m);
+   }
+
+   public String m() {
+      return this.o.c();
    }
 
    public void a(boolean $$0) {
-      if ($$0
-         && !this.a()
-         && !TinyFileDialogs.tinyfd_messageBox(
-            "Minecraft",
-            "Failed to initialize text-to-speech library. Do you want to continue?\nIf this problem persists, please report it at bugs.mojang.com",
-            "yesno",
-            "error",
-            true
-         )) {
-         throw new eqn.a("Narrator library is not active");
-      }
-   }
-
-   public static class a extends fdx {
-      public a(String $$0) {
-         super($$0);
-      }
+      this.p = $$0;
    }
 }

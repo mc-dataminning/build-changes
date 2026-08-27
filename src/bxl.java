@@ -1,56 +1,63 @@
-import com.mojang.logging.LogUtils;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class bxl extends bxj {
-   private static final Logger b = LogUtils.getLogger();
-   private static final int c = 10;
-   @Nullable
-   private ehn d;
-   private int e;
+public class bxl extends biw {
+   public final bxn b;
+   public final String c;
+   private final bix d;
 
-   public bxl(bxh $$0) {
-      super($$0);
+   public bxl(bxn $$0, String $$1, float $$2, float $$3) {
+      super($$0.ag(), $$0.dL());
+      this.d = bix.b($$2, $$3);
+      this.i_();
+      this.b = $$0;
+      this.c = $$1;
    }
 
    @Override
-   public void c() {
-      if (this.d == null) {
-         b.warn("Aborting charge player as no target was set.");
-         this.a.ga().a(bxx.a);
-      } else if (this.e > 0 && this.e++ >= 10) {
-         this.a.ga().a(bxx.a);
-      } else {
-         double $$0 = this.d.c(this.a.dq(), this.a.ds(), this.a.dw());
-         if ($$0 < 100.0 || $$0 > 22500.0 || this.a.P || this.a.Q) {
-            this.e++;
-         }
-      }
+   protected void a_() {
    }
 
    @Override
-   public void d() {
-      this.d = null;
-      this.e = 0;
-   }
-
-   public void a(ehn $$0) {
-      this.d = $$0;
+   protected void a(qw $$0) {
    }
 
    @Override
-   public float f() {
-      return 3.0F;
+   protected void b(qw $$0) {
+   }
+
+   @Override
+   public boolean br() {
+      return true;
    }
 
    @Nullable
    @Override
-   public ehn g() {
+   public cjl dy() {
+      return this.b.dy();
+   }
+
+   @Override
+   public boolean a(bhu $$0, float $$1) {
+      return this.b($$0) ? false : this.b.a(this, $$0, $$1);
+   }
+
+   @Override
+   public boolean t(biw $$0) {
+      return this == $$0 || this.b == $$0;
+   }
+
+   @Override
+   public ve<wx> di() {
+      throw new UnsupportedOperationException();
+   }
+
+   @Override
+   public bix a(bjy $$0) {
       return this.d;
    }
 
    @Override
-   public bxx<bxl> i() {
-      return bxx.i;
+   public boolean dJ() {
+      return false;
    }
 }

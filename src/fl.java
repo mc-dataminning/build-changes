@@ -18,9 +18,9 @@ public class fl implements ArgumentType<fm> {
       return new fl();
    }
 
-   public static akg a(CommandContext<dt> $$0, String $$1) {
+   public static akj a(CommandContext<dt> $$0, String $$1) {
       gw $$2 = ((fm)$$0.getArgument($$1, fm.class)).c((dt)$$0.getSource());
-      return new akg($$2.u(), $$2.w());
+      return new akj($$2.u(), $$2.w());
    }
 
    public fm a(StringReader $$0) throws CommandSyntaxException {

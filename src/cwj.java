@@ -1,10 +1,14 @@
-public class cwj extends csv {
-   protected cwj(dfi.d $$0) {
-      super($$0);
-   }
+import com.mojang.serialization.MapCodec;
+
+public class cwj extends crx {
+   public static final MapCodec<cwj> a = b(cwj::new);
 
    @Override
-   public boolean a(dfj $$0, dfj $$1, ha $$2) {
-      return $$1.a(this) ? true : super.a($$0, $$1, $$2);
+   public MapCodec<cwj> a() {
+      return a;
+   }
+
+   public cwj(dfc.d $$0) {
+      super($$0);
    }
 }

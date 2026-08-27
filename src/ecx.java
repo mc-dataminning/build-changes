@@ -1,146 +1,30 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.BiFunction;
 import java.util.function.Consumer;
-import java.util.function.Predicate;
-import org.apache.commons.lang3.mutable.MutableInt;
 
-public class ecx {
+public class ecx extends edf {
    public static final Codec<ecx> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               edh.a.listOf().fieldOf("entries").forGetter($$0x -> $$0x.b),
-               arf.a(efr.a.listOf(), "conditions", List.of()).forGetter($$0x -> $$0x.c),
-               arf.a(eef.b.listOf(), "functions", List.of()).forGetter($$0x -> $$0x.e),
-               egl.a.fieldOf("rolls").forGetter($$0x -> $$0x.g),
-               egl.a.fieldOf("bonus_rolls").orElse(egi.a(0.0F)).forGetter($$0x -> $$0x.h)
-            )
-            .apply($$0, ecx::new)
+      $$0 -> $$0.group(aez.a.fieldOf("name").forGetter($$0x -> $$0x.j)).and(b($$0)).apply($$0, ecx::new)
    );
-   private final List<edj> b;
-   private final List<efp> c;
-   private final Predicate<ecq> d;
-   private final List<eed> e;
-   private final BiFunction<cjf, ecq, cjf> f;
-   private final egk g;
-   private final egk h;
+   private final aez j;
 
-   ecx(List<edj> $$0, List<efp> $$1, List<eed> $$2, egk $$3, egk $$4) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = efr.a($$1);
-      this.e = $$2;
-      this.f = eef.a($$2);
-      this.g = $$3;
-      this.h = $$4;
+   private ecx(aez $$0, int $$1, int $$2, List<efj> $$3, List<edx> $$4) {
+      super($$1, $$2, $$3, $$4);
+      this.j = $$0;
    }
 
-   private void b(Consumer<cjf> $$0, ecq $$1) {
-      asc $$2 = $$1.b();
-      List<edi> $$3 = Lists.newArrayList();
-      MutableInt $$4 = new MutableInt();
-
-      for (edj $$5 : this.b) {
-         $$5.expand($$1, $$3x -> {
-            int $$4x = $$3x.a($$1.c());
-            if ($$4x > 0) {
-               $$3.add($$3x);
-               $$4.add($$4x);
-            }
-         });
-      }
-
-      int $$6 = $$3.size();
-      if ($$4.intValue() != 0 && $$6 != 0) {
-         if ($$6 == 1) {
-            $$3.get(0).a($$0, $$1);
-         } else {
-            int $$7 = $$2.a($$4.intValue());
-
-            for (edi $$8 : $$3) {
-               $$7 -= $$8.a($$1.c());
-               if ($$7 < 0) {
-                  $$8.a($$0, $$1);
-                  return;
-               }
-            }
-         }
-      }
+   @Override
+   public ede a() {
+      return edb.e;
    }
 
-   public void a(Consumer<cjf> $$0, ecq $$1) {
-      if (this.d.test($$1)) {
-         Consumer<cjf> $$2 = eed.a(this.f, $$0, $$1);
-         int $$3 = this.g.a($$1) + arw.d(this.h.b($$1) * $$1.c());
-
-         for (int $$4 = 0; $$4 < $$3; $$4++) {
-            this.b($$2, $$1);
-         }
-      }
+   @Override
+   public void a(Consumer<cjl> $$0, eck $$1) {
+      $$1.a(this.j, $$0);
    }
 
-   public void a(ecz $$0) {
-      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
-         this.c.get($$1).a($$0.b(".condition[" + $$1 + "]"));
-      }
-
-      for (int $$2 = 0; $$2 < this.e.size(); $$2++) {
-         this.e.get($$2).a($$0.b(".functions[" + $$2 + "]"));
-      }
-
-      for (int $$3 = 0; $$3 < this.b.size(); $$3++) {
-         this.b.get($$3).a($$0.b(".entries[" + $$3 + "]"));
-      }
-
-      this.g.a($$0.b(".rolls"));
-      this.h.a($$0.b(".bonusRolls"));
-   }
-
-   public static ecx.a a() {
-      return new ecx.a();
-   }
-
-   public static class a implements eea<ecx.a>, efi<ecx.a> {
-      private final Builder<edj> a = ImmutableList.builder();
-      private final Builder<efp> b = ImmutableList.builder();
-      private final Builder<eed> c = ImmutableList.builder();
-      private egk d = egi.a(1.0F);
-      private egk e = egi.a(0.0F);
-
-      public ecx.a a(egk $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      public ecx.a a() {
-         return this;
-      }
-
-      public ecx.a b(egk $$0) {
-         this.e = $$0;
-         return this;
-      }
-
-      public ecx.a a(edj.a<?> $$0) {
-         this.a.add($$0.b());
-         return this;
-      }
-
-      public ecx.a a(efp.a $$0) {
-         this.b.add($$0.build());
-         return this;
-      }
-
-      public ecx.a a(eed.a $$0) {
-         this.c.add($$0.b());
-         return this;
-      }
-
-      public ecx b() {
-         return new ecx(this.a.build(), this.b.build(), this.c.build(), this.d, this.e);
-      }
+   public static edf.a<?> a(aez $$0) {
+      return a(($$1, $$2, $$3, $$4) -> new ecx($$0, $$1, $$2, $$3, $$4));
    }
 }

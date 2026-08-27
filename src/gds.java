@@ -1,7 +1,33 @@
-public interface gds<T> {
-   int e();
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.nio.channels.FileChannel;
+import java.util.concurrent.Executor;
+import org.apache.commons.io.IOUtils;
+import org.slf4j.Logger;
 
-   T b(asc var1);
+public class gds implements AutoCloseable {
+   private static final Logger a = LogUtils.getLogger();
+   private final bdi<gdr> b;
+   private final bfx<Runnable> c;
 
-   void a(gdn var1);
+   public gds(FileChannel $$0, Executor $$1) {
+      this.b = new bdi<>(gdr.a, $$0);
+      this.c = bfx.a($$1, "telemetry-event-log");
+   }
+
+   public gdt a() {
+      return $$0 -> this.c.a(() -> {
+            try {
+               this.b.a($$0);
+            } catch (IOException var3) {
+               a.error("Failed to write telemetry event to log", var3);
+            }
+         });
+   }
+
+   @Override
+   public void close() {
+      this.c.a(() -> IOUtils.closeQuietly(this.b));
+      this.c.close();
+   }
 }

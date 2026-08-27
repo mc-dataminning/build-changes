@@ -1,22 +1,25 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-class dmg extends dmk {
-   private final hi<eal> e;
-   public static final Codec<dmg> a = RecordCodecBuilder.create($$0 -> a($$0).and(hs.a(jc.w).fieldOf("fluids").forGetter($$0x -> $$0x.e)).apply($$0, dmg::new));
+public class dmg implements dlt {
+   public static final Codec<dmg> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(hy.v(16).optionalFieldOf("offset", hy.g).forGetter($$0x -> $$0x.e), dfd.b.fieldOf("state").forGetter($$0x -> $$0x.f))
+            .apply($$0, dmg::new)
+   );
+   private final hy e;
+   private final dfd f;
 
-   public dmg(hy $$0, hi<eal> $$1) {
-      super($$0);
-      this.e = $$1;
+   protected dmg(hy $$0, dfd $$1) {
+      this.e = $$0;
+      this.f = $$1;
+   }
+
+   public boolean a(cqv $$0, gw $$1) {
+      return this.f.a($$0, $$1.a(this.e));
    }
 
    @Override
-   protected boolean a(dfj $$0) {
-      return $$0.u().a(this.e);
-   }
-
-   @Override
-   public dma<?> a() {
-      return dma.c;
+   public dlu<?> a() {
+      return dlu.g;
    }
 }

@@ -1,37 +1,48 @@
-import com.mojang.datafixers.kinds.App;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
+import java.util.function.BiPredicate;
 import java.util.function.Function;
-import javax.annotation.Nullable;
 
-public class bmf {
-   public static bmh<bjg> a(float $$0) {
-      return boj.a((Function<boj.b<bjg>, ? extends App<boj.c<bjg>, bom<bjg>>>)($$1 -> $$1.group($$1.c(bsh.m)).apply($$1, $$1x -> ($$2, $$3, $$4) -> {
-               if ($$2.g($$3.dl())) {
-                  return false;
-               } else {
-                  Optional<ehn> $$5 = Optional.ofNullable(a($$2, $$3));
-                  $$5.ifPresent($$2x -> $$1x.a(new bsk($$2x, $$0, 0)));
-                  return true;
+public class bmf<E extends bjo> extends bmg<E> {
+   private final aqk<ctc> m;
+   private final float n;
+   private final List<bmg.a> o = new ArrayList<>();
+   private boolean p;
+
+   public bmf(bgp $$0, int $$1, int $$2, float $$3, Function<E, apf> $$4, aqk<ctc> $$5, float $$6, BiPredicate<E, gw> $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$7);
+      this.m = $$5;
+      this.n = $$6;
+   }
+
+   @Override
+   protected void a(akt $$0, E $$1, long $$2) {
+      super.a($$0, $$1, $$2);
+      this.o.clear();
+      this.p = $$1.ef().i() < this.n;
+   }
+
+   @Override
+   protected Optional<bmg.a> a(akt $$0) {
+      if (!this.p) {
+         return super.a($$0);
+      } else {
+         gw.a $$1 = new gw.a();
+
+         while (!this.h.isEmpty()) {
+            Optional<bmg.a> $$2 = super.a($$0);
+            if ($$2.isPresent()) {
+               bmg.a $$3 = $$2.get();
+               if ($$0.a_($$1.a($$3.b(), ha.a)).a(this.m)) {
+                  return $$2;
                }
-            })));
-   }
 
-   @Nullable
-   private static ehn a(akq $$0, bjg $$1) {
-      asc $$2 = $$1.ef();
-      gw $$3 = $$1.dl();
-
-      for (int $$4 = 0; $$4 < 10; $$4++) {
-         gw $$5 = $$3.b($$2.a(20) - 10, $$2.a(6) - 3, $$2.a(20) - 10);
-         if (a($$0, $$1, $$5)) {
-            return ehn.c($$5);
+               this.o.add($$3);
+            }
          }
+
+         return !this.o.isEmpty() ? Optional.of(this.o.remove(0)) : Optional.empty();
       }
-
-      return null;
-   }
-
-   public static boolean a(akq $$0, bjg $$1, gw $$2) {
-      return $$0.g($$2) && (double)$$0.a(dks.a.e, $$2).v() <= $$1.ds();
    }
 }

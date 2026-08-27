@@ -1,124 +1,84 @@
-import com.mojang.serialization.Codec;
-import javax.annotation.Nullable;
+import com.google.common.collect.Maps;
+import java.util.Map;
+import java.util.stream.Stream;
 
-public record ebt(ebt.a a, byte b, byte c, byte d, @Nullable tl e) {
-   public byte a() {
-      return this.a.a();
+public class ebt {
+   private static final String a = "command_storage_";
+   private final Map<String, ebt.a> b = Maps.newHashMap();
+   private final ebw c;
+
+   public ebt(ebw $$0) {
+      this.c = $$0;
    }
 
-   public boolean b() {
-      return this.a.d();
+   private ebt.a a(String $$0) {
+      ebt.a $$1 = new ebt.a();
+      this.b.put($$0, $$1);
+      return $$1;
    }
 
-   public ebt.a c() {
-      return this.a;
+   private ebl.a<ebt.a> b(String $$0) {
+      return new ebl.a<>(() -> this.a($$0), $$1 -> this.a($$0).b($$1), atg.h);
    }
 
-   public byte d() {
-      return this.b;
+   public qw a(aez $$0) {
+      String $$1 = $$0.b();
+      ebt.a $$2 = this.c.b(this.b($$1), c($$1));
+      return $$2 != null ? $$2.a($$0.a()) : new qw();
    }
 
-   public byte e() {
-      return this.c;
+   public void a(aez $$0, qw $$1) {
+      String $$2 = $$0.b();
+      this.c.a(this.b($$2), c($$2)).a($$0.a(), $$1);
    }
 
-   public byte f() {
-      return this.d;
+   public Stream<aez> a() {
+      return this.b.entrySet().stream().flatMap($$0 -> $$0.getValue().b($$0.getKey()));
    }
 
-   @Nullable
-   public tl g() {
-      return this.e;
+   private static String c(String $$0) {
+      return "command_storage_" + $$0;
    }
 
-   public static enum a implements asp {
-      a("player", false, true),
-      b("frame", true, true),
-      c("red_marker", false, true),
-      d("blue_marker", false, true),
-      e("target_x", true, false),
-      f("target_point", true, false),
-      g("player_off_map", false, true),
-      h("player_off_limits", false, true),
-      i("mansion", true, 5393476, false, true),
-      j("monument", true, 3830373, false, true),
-      k("banner_white", true, true),
-      l("banner_orange", true, true),
-      m("banner_magenta", true, true),
-      n("banner_light_blue", true, true),
-      o("banner_yellow", true, true),
-      p("banner_lime", true, true),
-      q("banner_pink", true, true),
-      r("banner_gray", true, true),
-      s("banner_light_gray", true, true),
-      t("banner_cyan", true, true),
-      u("banner_purple", true, true),
-      v("banner_blue", true, true),
-      w("banner_brown", true, true),
-      x("banner_green", true, true),
-      y("banner_red", true, true),
-      z("banner_black", true, true),
-      A("red_x", true, false),
-      B("village_desert", true, eaq.w.ak, false, true),
-      C("village_plains", true, eaq.w.ak, false, true),
-      D("village_savanna", true, eaq.w.ak, false, true),
-      E("village_snowy", true, eaq.w.ak, false, true),
-      F("village_taiga", true, eaq.w.ak, false, true),
-      G("jungle_temple", true, eaq.w.ak, false, true),
-      H("swamp_hut", true, eaq.w.ak, false, true);
+   static class a extends ebl {
+      private static final String a = "contents";
+      private final Map<String, qw> b = Maps.newHashMap();
 
-      public static final Codec<ebt.a> I = asp.a(ebt.a::values);
-      private final String J;
-      private final byte K;
-      private final boolean L;
-      private final int M;
-      private final boolean N;
-      private final boolean O;
+      ebt.a b(qw $$0) {
+         qw $$1 = $$0.p("contents");
 
-      private a(String $$0, boolean $$1, boolean $$2) {
-         this($$0, $$1, -1, $$2, false);
-      }
+         for (String $$2 : $$1.e()) {
+            this.b.put($$2, $$1.p($$2));
+         }
 
-      private a(String $$0, boolean $$1, int $$2, boolean $$3, boolean $$4) {
-         this.J = $$0;
-         this.O = $$3;
-         this.K = (byte)this.ordinal();
-         this.L = $$1;
-         this.M = $$2;
-         this.N = $$4;
-      }
-
-      public byte a() {
-         return this.K;
-      }
-
-      public boolean b() {
-         return this.N;
-      }
-
-      public boolean d() {
-         return this.L;
-      }
-
-      public boolean e() {
-         return this.M >= 0;
-      }
-
-      public int f() {
-         return this.M;
-      }
-
-      public static ebt.a a(byte $$0) {
-         return values()[arw.a($$0, 0, values().length - 1)];
-      }
-
-      public boolean g() {
-         return this.O;
+         return this;
       }
 
       @Override
-      public String c() {
-         return this.J;
+      public qw a(qw $$0) {
+         qw $$1 = new qw();
+         this.b.forEach(($$1x, $$2) -> $$1.a($$1x, $$2.h()));
+         $$0.a("contents", $$1);
+         return $$0;
+      }
+
+      public qw a(String $$0) {
+         qw $$1 = this.b.get($$0);
+         return $$1 != null ? $$1 : new qw();
+      }
+
+      public void a(String $$0, qw $$1) {
+         if ($$1.g()) {
+            this.b.remove($$0);
+         } else {
+            this.b.put($$0, $$1);
+         }
+
+         this.c();
+      }
+
+      public Stream<aez> b(String $$0) {
+         return this.b.keySet().stream().map($$1 -> new aez($$0, $$1));
       }
    }
 }

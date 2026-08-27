@@ -1,39 +1,49 @@
-public class czd extends cuu {
-   protected static final float e = 6.0F;
-   protected static final float f = 10.0F;
-   protected static final eig g = csv.a(6.0, 0.0, 6.0, 10.0, 16.0, 10.0);
-   protected static final eig h = csv.a(6.0, 6.0, 0.0, 10.0, 10.0, 16.0);
-   protected static final eig i = csv.a(0.0, 6.0, 6.0, 16.0, 10.0, 10.0);
+import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-   protected czd(dfi.d $$0) {
+public class czd extends ctc {
+   public static final MapCodec<czd> a = b(czd::new);
+   public static final dfu b = cze.d;
+
+   @Override
+   public MapCodec<czd> a() {
+      return a;
+   }
+
+   public czd(dfc.d $$0) {
       super($$0);
+      this.k(this.o().a(b, Boolean.valueOf(false)));
+   }
+
+   @Nullable
+   @Override
+   public dfd a(clt $$0) {
+      return this.o().a(b, Boolean.valueOf($$0.q().B($$0.a())));
    }
 
    @Override
-   public eig a(dfj $$0, cpb $$1, gw $$2, ehs $$3) {
-      switch ($$0.c(a).o()) {
-         case a:
-         default:
-            return i;
-         case c:
-            return h;
-         case b:
-            return g;
+   public void a(dfd $$0, cqb $$1, gw $$2, ctc $$3, gw $$4, boolean $$5) {
+      if (!$$1.B) {
+         boolean $$6 = $$0.c(b);
+         if ($$6 != $$1.B($$2)) {
+            if ($$6) {
+               $$1.a($$2, this, 4);
+            } else {
+               $$1.a($$2, $$0.a(b), 2);
+            }
+         }
       }
    }
 
    @Override
-   public dfj a(dfj $$0, czh $$1) {
-      return $$0.a(a, $$1.a($$0.c(a)));
+   public void a(dfd $$0, akt $$1, gw $$2, ash $$3) {
+      if ($$0.c(b) && !$$1.B($$2)) {
+         $$1.a($$2, $$0.a(b), 2);
+      }
    }
 
    @Override
-   public dfj a(dfj $$0, cxq $$1) {
-      return $$0.a(a, $$1.b($$0.c(a)));
-   }
-
-   @Override
-   public boolean a(dfj $$0, cpb $$1, gw $$2, ebc $$3) {
-      return false;
+   protected void a(dfe.a<ctc, dfd> $$0) {
+      $$0.a(b);
    }
 }

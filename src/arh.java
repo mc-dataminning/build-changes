@@ -1,69 +1,100 @@
-public class arh {
-   public static class a {
-      public static int a(int $$0) {
-         return $$0 >>> 24;
-      }
+import com.google.common.base.Charsets;
+import java.io.IOException;
+import java.nio.ByteBuffer;
+import java.nio.channels.FileChannel;
+import java.nio.channels.FileLock;
+import java.nio.file.AccessDeniedException;
+import java.nio.file.NoSuchFileException;
+import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
 
-      public static int b(int $$0) {
-         return $$0 & 0xFF;
-      }
+public class arh implements AutoCloseable {
+   public static final String a = "session.lock";
+   private final FileChannel b;
+   private final FileLock c;
+   private static final ByteBuffer d;
 
-      public static int c(int $$0) {
-         return $$0 >> 8 & 0xFF;
-      }
+   public static arh a(Path $$0) throws IOException {
+      Path $$1 = $$0.resolve("session.lock");
+      v.c($$0);
+      FileChannel $$2 = FileChannel.open($$1, StandardOpenOption.CREATE, StandardOpenOption.WRITE);
 
-      public static int d(int $$0) {
-         return $$0 >> 16 & 0xFF;
-      }
+      try {
+         $$2.write(d.duplicate());
+         $$2.force(true);
+         FileLock $$3 = $$2.tryLock();
+         if ($$3 == null) {
+            throw arh.a.a($$1);
+         } else {
+            return new arh($$2, $$3);
+         }
+      } catch (IOException var6) {
+         try {
+            $$2.close();
+         } catch (IOException var5) {
+            var6.addSuppressed(var5);
+         }
 
-      public static int e(int $$0) {
-         return $$0 & 16777215;
-      }
-
-      public static int f(int $$0) {
-         return $$0 | 0xFF000000;
-      }
-
-      public static int a(int $$0, int $$1, int $$2, int $$3) {
-         return $$0 << 24 | $$1 << 16 | $$2 << 8 | $$3;
-      }
-
-      public static int a(int $$0, int $$1) {
-         return $$0 << 24 | $$1 & 16777215;
+         throw var6;
       }
    }
 
-   public static class b {
-      public static int a(int $$0) {
-         return $$0 >>> 24;
+   private arh(FileChannel $$0, FileLock $$1) {
+      this.b = $$0;
+      this.c = $$1;
+   }
+
+   @Override
+   public void close() throws IOException {
+      try {
+         if (this.c.isValid()) {
+            this.c.release();
+         }
+      } finally {
+         if (this.b.isOpen()) {
+            this.b.close();
+         }
+      }
+   }
+
+   public boolean a() {
+      return this.c.isValid();
+   }
+
+   public static boolean b(Path $$0) throws IOException {
+      Path $$1 = $$0.resolve("session.lock");
+
+      try {
+         boolean var4;
+         try (
+            FileChannel $$2 = FileChannel.open($$1, StandardOpenOption.WRITE);
+            FileLock $$3 = $$2.tryLock();
+         ) {
+            var4 = $$3 == null;
+         }
+
+         return var4;
+      } catch (AccessDeniedException var10) {
+         return true;
+      } catch (NoSuchFileException var11) {
+         return false;
+      }
+   }
+
+   static {
+      byte[] $$0 = "☃".getBytes(Charsets.UTF_8);
+      d = ByteBuffer.allocateDirect($$0.length);
+      d.put($$0);
+      d.flip();
+   }
+
+   public static class a extends IOException {
+      private a(Path $$0, String $$1) {
+         super($$0.toAbsolutePath() + ": " + $$1);
       }
 
-      public static int b(int $$0) {
-         return $$0 >> 16 & 0xFF;
-      }
-
-      public static int c(int $$0) {
-         return $$0 >> 8 & 0xFF;
-      }
-
-      public static int d(int $$0) {
-         return $$0 & 0xFF;
-      }
-
-      public static int a(int $$0, int $$1, int $$2, int $$3) {
-         return $$0 << 24 | $$1 << 16 | $$2 << 8 | $$3;
-      }
-
-      public static int a(int $$0, int $$1) {
-         return a(a($$0) * a($$1) / 255, b($$0) * b($$1) / 255, c($$0) * c($$1) / 255, d($$0) * d($$1) / 255);
-      }
-
-      public static int a(float $$0, int $$1, int $$2) {
-         int $$3 = arw.a($$0, a($$1), a($$2));
-         int $$4 = arw.a($$0, b($$1), b($$2));
-         int $$5 = arw.a($$0, c($$1), c($$2));
-         int $$6 = arw.a($$0, d($$1), d($$2));
-         return a($$3, $$4, $$5, $$6);
+      public static arh.a a(Path $$0) {
+         return new arh.a($$0, "already locked (possibly by other Minecraft instance?)");
       }
    }
 }

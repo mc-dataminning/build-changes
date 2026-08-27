@@ -1,35 +1,76 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.DataFixer;
 import com.mojang.datafixers.DSL.TypeReference;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.DynamicOps;
+import java.util.Set;
 
-public class atg extends DataFix {
-   private final String a;
-   private final boolean b;
-   private final String c;
-   private final TypeReference d;
+public enum atg {
+   a(azd.a),
+   b(azd.b),
+   c(azd.c),
+   d(azd.d),
+   e(azd.e),
+   f(azd.f),
+   g(azd.g),
+   h(azd.h),
+   i(azd.i),
+   j(azd.j),
+   k(azd.k),
+   l(azd.l),
+   m(azd.m),
+   n(azd.o),
+   o(azd.n),
+   p(azd.p),
+   q(azd.q),
+   r(azd.I),
+   s(azd.r);
 
-   public atg(Schema $$0, TypeReference $$1, String $$2, boolean $$3) {
-      super($$0, true);
-      this.b = $$3;
-      this.c = $$2;
-      this.a = "AddFlagIfNotPresentFix_" + this.c + "=" + this.b + " for " + $$0.getVersionKey();
-      this.d = $$1;
+   public static final Set<TypeReference> t;
+   private final TypeReference u;
+
+   private atg(TypeReference $$0) {
+      this.u = $$0;
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(this.d);
-      return this.fixTypeEverywhereTyped(
-         this.a,
-         $$0,
-         $$0x -> $$0x.update(
-               DSL.remainderFinder(),
-               $$0xx -> $$0xx.set(this.c, (Dynamic)DataFixUtils.orElseGet($$0xx.get(this.c).result(), () -> $$0xx.createBoolean(this.b)))
-            )
-      );
+   static int a() {
+      return aa.b().d().c();
+   }
+
+   public <A> Codec<A> a(final Codec<A> $$0, final DataFixer $$1, final int $$2) {
+      return new Codec<A>() {
+         public <T> DataResult<T> encode(A $$0x, DynamicOps<T> $$1x, T $$2x) {
+            return $$0.encode($$0, $$1, $$2).flatMap($$1xxx -> $$1.mergeToMap($$1xxx, $$1.createString("DataVersion"), $$1.createInt(atg.a())));
+         }
+
+         public <T> DataResult<Pair<A, T>> decode(DynamicOps<T> $$0x, T $$1x) {
+            int $$2 = $$0.get($$1, "DataVersion").flatMap($$0::getNumberValue).map(Number::intValue).result().orElse($$2);
+            Dynamic<T> $$3 = new Dynamic($$0, $$0.remove($$1, "DataVersion"));
+            Dynamic<T> $$4 = atg.this.a($$1, $$3, $$2);
+            return $$0.decode($$4);
+         }
+      };
+   }
+
+   public <T> Dynamic<T> a(DataFixer $$0, Dynamic<T> $$1, int $$2, int $$3) {
+      return $$0.update(this.u, $$1, $$2, $$3);
+   }
+
+   public <T> Dynamic<T> a(DataFixer $$0, Dynamic<T> $$1, int $$2) {
+      return this.a($$0, $$1, $$2, a());
+   }
+
+   public qw a(DataFixer $$0, qw $$1, int $$2, int $$3) {
+      return (qw)this.a($$0, new Dynamic(ri.a, $$1), $$2, $$3).getValue();
+   }
+
+   public qw a(DataFixer $$0, qw $$1, int $$2) {
+      return this.a($$0, $$1, $$2, a());
+   }
+
+   static {
+      t = Set.of(a.u);
    }
 }

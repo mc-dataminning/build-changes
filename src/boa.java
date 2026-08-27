@@ -1,33 +1,46 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
 import java.util.function.Function;
+import org.apache.commons.lang3.mutable.MutableLong;
 
 public class boa {
-   private static final int a = 10;
-   private static final int b = 7;
+   public static ble<bjv> a(int $$0, float $$1) {
+      MutableLong $$2 = new MutableLong(0L);
+      return bop.a(
+         (Function<bop.b<bjv>, ? extends App<bop.c<bjv>, bos<bjv>>>)($$3 -> $$3.group($$3.c(bsn.o), $$3.c(bsn.m), $$3.a(bsn.n))
+               .apply(
+                  $$3,
+                  ($$3x, $$4, $$5) -> ($$5x, $$6, $$7) -> {
+                        if ($$5x.b_($$6.dl()).a(aqa.a)) {
+                           return false;
+                        } else if ($$7 < $$2.getValue()) {
+                           $$2.setValue($$7 + 40L);
+                           return true;
+                        } else {
+                           ehm $$8 = ehm.a($$6);
+                           gw $$9 = $$6.dl();
+                           gw.a $$10 = new gw.a();
 
-   public static bmh<bjp> a(float $$0) {
-      return a($$0, 10, 7);
-   }
+                           label45:
+                           for (gw $$11 : gw.a($$9, $$0, $$0, $$0)) {
+                              if (($$11.u() != $$9.u() || $$11.w() != $$9.w())
+                                 && $$5x.a_($$11).b($$5x, $$11, $$8).c()
+                                 && !$$5x.a_($$10.a($$11, ha.a)).b($$5x, $$11, $$8).c()) {
+                                 for (ha $$12 : ha.c.a) {
+                                    $$10.a($$11, $$12);
+                                    if ($$5x.a_($$10).i() && $$5x.a_($$10.c(ha.a)).a(cte.G)) {
+                                       $$5.a(new blg($$11));
+                                       $$4.a(new bsq(new blg($$11), $$1, 0));
+                                       break label45;
+                                    }
+                                 }
+                              }
+                           }
 
-   public static bmh<bjp> a(float $$0, int $$1, int $$2) {
-      return boj.a((Function<boj.b<bjp>, ? extends App<boj.c<bjp>, bom<bjp>>>)($$3 -> $$3.group($$3.c(bsh.m)).apply($$3, $$3x -> ($$4, $$5, $$6) -> {
-               gw $$7 = $$5.dl();
-               ehn $$8;
-               if ($$4.b($$7)) {
-                  $$8 = btz.a($$5, $$1, $$2);
-               } else {
-                  hw $$9 = hw.a($$7);
-                  hw $$10 = bkz.a($$4, $$9, 2);
-                  if ($$10 != $$9) {
-                     $$8 = btw.a($$5, $$1, $$2, ehn.c($$10.q()), (float) (Math.PI / 2));
-                  } else {
-                     $$8 = btz.a($$5, $$1, $$2);
-                  }
-               }
-
-               $$3x.a(Optional.ofNullable($$8).map($$1xxxx -> new bsk($$1xxxx, $$0, 0)));
-               return true;
-            })));
+                           $$2.setValue($$7 + 40L);
+                           return true;
+                        }
+                     }
+               ))
+      );
    }
 }

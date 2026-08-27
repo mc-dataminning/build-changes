@@ -1,37 +1,27 @@
-public class flr extends flu {
-   private final ffz a;
-   private final fom b = fom.i(fta.a);
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Streams;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import java.util.List;
 
-   flr(fix $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3);
-      this.a = new ffk(eqv.O().aP().a(fib.P));
-      this.u = 0.0F;
-      this.t = 30;
+public class flr {
+   private final List<aez> a;
+
+   private flr(List<aez> $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   public fly b() {
-      return fly.e;
+   public List<aez> a() {
+      return this.a;
    }
 
-   @Override
-   public void a(elt $$0, eqg $$1, float $$2) {
-      float $$3 = ((float)this.s + $$2) / (float)this.t;
-      float $$4 = 0.05F + 0.5F * arw.a($$3 * (float) Math.PI);
-      elp $$5 = new elp();
-      $$5.a($$1.f());
-      $$5.a(a.b.rotationDegrees(150.0F * $$3 - 60.0F));
-      $$5.b(-1.0F, -1.0F, 1.0F);
-      $$5.a(0.0F, -1.101F, 1.5F);
-      foe.a $$6 = eqv.O().aO().b();
-      elt $$7 = $$6.getBuffer(this.b);
-      this.a.a($$5, $$7, 15728880, fyv.d, 1.0F, 1.0F, 1.0F, $$4);
-      $$6.b();
-   }
-
-   public static class a implements flx<iy> {
-      public flu a(iy $$0, fix $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new flr($$1, $$2, $$3, $$4);
+   public static flr a(JsonObject $$0) {
+      JsonArray $$1 = arr.a($$0, "textures", null);
+      if ($$1 == null) {
+         return new flr(List.of());
+      } else {
+         List<aez> $$2 = Streams.stream($$1).map($$0x -> arr.a($$0x, "texture")).map(aez::new).collect(ImmutableList.toImmutableList());
+         return new flr($$2);
       }
    }
 }

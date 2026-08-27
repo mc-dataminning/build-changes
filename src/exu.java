@@ -1,103 +1,62 @@
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import javax.annotation.Nullable;
 
-public class exu extends eyk {
-   private static final long a = 2000L;
-   private final ald b;
-   private long c = -1L;
-   private boolean k;
-   private static final Object2IntMap<dhk> l = ac.a(new Object2IntOpenHashMap(), $$0 -> {
-      $$0.defaultReturnValue(0);
-      $$0.put(dhk.c, 5526612);
-      $$0.put(dhk.d, 10066329);
-      $$0.put(dhk.e, 6250897);
-      $$0.put(dhk.f, 8434258);
-      $$0.put(dhk.g, 13750737);
-      $$0.put(dhk.h, 7497737);
-      $$0.put(dhk.i, 3159410);
-      $$0.put(dhk.j, 2213376);
-      $$0.put(dhk.k, 13421772);
-      $$0.put(dhk.l, 16769184);
-      $$0.put(dhk.m, 15884384);
-      $$0.put(dhk.n, 16777215);
-   });
+public class exu extends eye {
+   private static final tl a = tl.c("symlink_warning.title.world").a(n.r);
+   private static final tl b = tl.a("symlink_warning.message.world", "https://aka.ms/MinecraftSymLinks");
+   private static final tl c = tl.c("symlink_warning.title.pack").a(n.r);
+   private static final tl k = tl.a("symlink_warning.message.pack", "https://aka.ms/MinecraftSymLinks");
+   private final tl l;
+   private final String m;
+   @Nullable
+   private final eye n;
+   private final evt o = new evt().b(10);
 
-   public exu(ald $$0) {
-      super(eqn.a);
-      this.b = $$0;
+   public exu(tl $$0, tl $$1, String $$2, @Nullable eye $$3) {
+      super($$0);
+      this.l = $$1;
+      this.m = $$2;
+      this.n = $$3;
+   }
+
+   public static eye a(@Nullable eye $$0) {
+      return new exu(a, b, "https://aka.ms/MinecraftSymLinks", $$0);
+   }
+
+   public static eye b(@Nullable eye $$0) {
+      return new exu(c, k, "https://aka.ms/MinecraftSymLinks", $$0);
    }
 
    @Override
-   public boolean ay_() {
-      return false;
+   protected void aH_() {
+      super.aH_();
+      this.o.c().b();
+      evt.b $$0 = this.o.d(1);
+      $$0.a(new etr(this.e, this.i));
+      $$0.a(new ete(this.l, this.i).j(this.g - 50).b(true));
+      int $$1 = 120;
+      evt $$2 = new evt().a(5);
+      evt.b $$3 = $$2.d(3);
+      $$3.a(esk.a(tk.n, $$0x -> ac.i().a(this.m)).b(120, 20).a());
+      $$3.a(esk.a(tk.o, $$0x -> this.f.o.a(this.m)).b(120, 20).a());
+      $$3.a(esk.a(tk.k, $$0x -> this.az_()).b(120, 20).a());
+      $$0.a($$2);
+      this.b();
+      this.o.a(this::d);
    }
 
    @Override
-   protected boolean aG_() {
-      return false;
+   protected void b() {
+      this.o.a();
+      evs.a(this.o, this.s());
    }
 
    @Override
-   public void h() {
-      this.k = true;
-      this.d(true);
+   public tl g() {
+      return tk.a(super.g(), this.l);
    }
 
    @Override
-   protected void b(ewi $$0) {
-      if (this.k) {
-         $$0.a(ewh.a, tl.c("narrator.loading.done"));
-      } else {
-         $$0.a(ewh.a, this.l());
-      }
-   }
-
-   private tl l() {
-      return tl.a("loading.progress", arw.a(this.b.e(), 0, 100));
-   }
-
-   @Override
-   public void a(esf $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      long $$4 = ac.b();
-      if ($$4 - this.c > 2000L) {
-         this.c = $$4;
-         this.d(true);
-      }
-
-      int $$5 = this.g / 2;
-      int $$6 = this.h / 2;
-      int $$7 = 30;
-      a($$0, this.b, $$5, $$6 + 30, 2, 0);
-      $$0.a(this.i, this.l(), $$5, $$6 - 9 / 2 - 30, 16777215);
-   }
-
-   public static void a(esf $$0, ald $$1, int $$2, int $$3, int $$4, int $$5) {
-      int $$6 = $$4 + $$5;
-      int $$7 = $$1.c();
-      int $$8 = $$7 * $$6 - $$5;
-      int $$9 = $$1.d();
-      int $$10 = $$9 * $$6 - $$5;
-      int $$11 = $$2 - $$10 / 2;
-      int $$12 = $$3 - $$10 / 2;
-      int $$13 = $$8 / 2 + 1;
-      int $$14 = -16772609;
-      $$0.a(() -> {
-         if ($$5 != 0) {
-            $$0.a($$2 - $$13, $$3 - $$13, $$2 - $$13 + 1, $$3 + $$13, -16772609);
-            $$0.a($$2 + $$13 - 1, $$3 - $$13, $$2 + $$13, $$3 + $$13, -16772609);
-            $$0.a($$2 - $$13, $$3 - $$13, $$2 + $$13, $$3 - $$13 + 1, -16772609);
-            $$0.a($$2 - $$13, $$3 + $$13 - 1, $$2 + $$13, $$3 + $$13, -16772609);
-         }
-
-         for (int $$11x = 0; $$11x < $$9; $$11x++) {
-            for (int $$12x = 0; $$12x < $$9; $$12x++) {
-               dhk $$13x = $$1.a($$11x, $$12x);
-               int $$14x = $$11 + $$11x * $$6;
-               int $$15 = $$12 + $$12x * $$6;
-               $$0.a($$14x, $$15, $$14x + $$4, $$15 + $$4, l.getInt($$13x) | 0xFF000000);
-            }
-         }
-      });
+   public void az_() {
+      this.f.a(this.n);
    }
 }

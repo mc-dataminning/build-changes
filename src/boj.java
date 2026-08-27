@@ -1,358 +1,99 @@
-import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.kinds.Applicative;
-import com.mojang.datafixers.kinds.IdF;
-import com.mojang.datafixers.kinds.K1;
-import com.mojang.datafixers.kinds.OptionalBox;
-import com.mojang.datafixers.kinds.OptionalBox.Mu;
-import com.mojang.datafixers.util.Function3;
-import com.mojang.datafixers.util.Function4;
-import com.mojang.datafixers.util.Unit;
+import com.google.common.collect.ImmutableMap;
 import java.util.Optional;
-import java.util.function.BiFunction;
-import java.util.function.BiPredicate;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
 
-public class boj<E extends bjg, M> implements App<boj.c<E>, M> {
-   private final boj.e<E, M> a;
+public class boj extends bld<cbn> {
+   private static final int c = 5;
+   private static final float d = 0.5F;
+   private long e;
 
-   public static <E extends bjg, M> boj<E, M> a(App<boj.c<E>, M> $$0) {
-      return (boj<E, M>)$$0;
+   public boj() {
+      super(ImmutableMap.of(bsn.r, bso.a, bsn.h, bso.a), 350, 350);
    }
 
-   public static <E extends bjg> boj.b<E> a() {
-      return new boj.b<>();
+   protected boolean a(akt $$0, cbn $$1) {
+      return this.a($$1);
    }
 
-   public static <E extends bjg> bmh<E> a(Function<boj.b<E>, ? extends App<boj.c<E>, bom<E>>> $$0) {
-      final boj.e<E, bom<E>> $$1 = b((App<boj.c<E>, bom<E>>)$$0.apply(a()));
-      return new bmh<E>() {
-         @Override
-         public boolean trigger(akq $$0, E $$1x, long $$2) {
-            bom<E> $$3 = $$1.a($$0, $$1, $$2);
-            return $$3 == null ? false : $$3.trigger($$0, $$1, $$2);
-         }
-
-         @Override
-         public String b() {
-            return "OneShot[" + $$1.a() + "]";
-         }
-
-         @Override
-         public String toString() {
-            return this.b();
-         }
-      };
+   protected boolean a(akt $$0, cbn $$1, long $$2) {
+      return $$2 <= this.e && this.a($$1);
    }
 
-   public static <E extends bjg> bmh<E> a(bom<? super E> $$0, bom<? super E> $$1) {
-      return a((Function<boj.b<E>, ? extends App<boj.c<E>, bom<E>>>)($$2 -> $$2.group($$2.a($$0)).apply($$2, $$1xx -> $$1::trigger)));
+   protected void b(akt $$0, cbn $$1, long $$2) {
+      bir $$3 = $$1.dN().c(bsn.r).get();
+      blf.a($$1, $$3, 0.5F);
+      $$0.a($$3, (byte)18);
+      $$0.a($$1, (byte)18);
+      int $$4 = 275 + $$1.ef().a(50);
+      this.e = $$2 + (long)$$4;
    }
 
-   public static <E extends bjg> bmh<E> a(Predicate<E> $$0, bmh<? super E> $$1) {
-      return a(a($$0), $$1);
-   }
-
-   public static <E extends bjg> bmh<E> a(Predicate<E> $$0) {
-      return a((Function<boj.b<E>, ? extends App<boj.c<E>, bom<E>>>)($$1 -> $$1.a((bom<E>)(($$1x, $$2, $$3) -> $$0.test($$2)))));
-   }
-
-   public static <E extends bjg> bmh<E> a(BiPredicate<akq, E> $$0) {
-      return a((Function<boj.b<E>, ? extends App<boj.c<E>, bom<E>>>)($$1 -> $$1.a((bom<E>)(($$1x, $$2, $$3) -> $$0.test($$1x, $$2)))));
-   }
-
-   static <E extends bjg, M> boj.e<E, M> b(App<boj.c<E>, M> $$0) {
-      return a($$0).a;
-   }
-
-   boj(boj.e<E, M> $$0) {
-      this.a = $$0;
-   }
-
-   static <E extends bjg, M> boj<E, M> a(boj.e<E, M> $$0) {
-      return new boj<>($$0);
-   }
-
-   static final class a<E extends bjg, A> extends boj<E, A> {
-      a(A $$0) {
-         this($$0, () -> "C[" + $$0 + "]");
-      }
-
-      a(final A $$0, final Supplier<String> $$1) {
-         super(new boj.e<E, A>() {
-            @Override
-            public A a(akq $$0x, E $$1x, long $$2) {
-               return $$0;
-            }
-
-            @Override
-            public String a() {
-               return $$1.get();
-            }
-
-            @Override
-            public String toString() {
-               return this.a();
-            }
-         });
-      }
-   }
-
-   public static final class b<E extends bjg> implements Applicative<boj.c<E>, boj.b.a<E>> {
-      public <Value> Optional<Value> a(bok<Mu, Value> $$0) {
-         return OptionalBox.unbox($$0.a());
-      }
-
-      public <Value> Value b(bok<com.mojang.datafixers.kinds.IdF.Mu, Value> $$0) {
-         return (Value)IdF.get($$0.a());
-      }
-
-      public <Value> boj<E, bok<Mu, Value>> a(bsh<Value> $$0) {
-         return new boj.d<>(new bol.c<>($$0));
-      }
-
-      public <Value> boj<E, bok<com.mojang.datafixers.kinds.IdF.Mu, Value>> b(bsh<Value> $$0) {
-         return new boj.d<>(new bol.b<>($$0));
-      }
-
-      public <Value> boj<E, bok<com.mojang.datafixers.kinds.Const.Mu<Unit>, Value>> c(bsh<Value> $$0) {
-         return new boj.d<>(new bol.a<>($$0));
-      }
-
-      public boj<E, Unit> a(bom<? super E> $$0) {
-         return new boj.f<>($$0);
-      }
-
-      public <A> boj<E, A> a(A $$0) {
-         return new boj.a<>($$0);
-      }
-
-      public <A> boj<E, A> a(Supplier<String> $$0, A $$1) {
-         return new boj.a<>($$1, $$0);
-      }
-
-      public <A, R> Function<App<boj.c<E>, A>, App<boj.c<E>, R>> lift1(App<boj.c<E>, Function<A, R>> $$0) {
-         return $$1 -> {
-            final boj.e<E, A> $$2 = (boj.e<E, A>)boj.b((App<boj.c<E>, M>)$$1);
-            final boj.e<E, Function<A, R>> $$3 = boj.b($$0);
-            return boj.a(new boj.e<E, R>() {
-               @Override
-               public R a(akq $$0, E $$1, long $$2x) {
-                  A $$3 = (A)$$2.a($$0, $$1, $$2);
-                  if ($$3 == null) {
-                     return null;
-                  } else {
-                     Function<A, R> $$4 = (Function<A, R>)$$3.a($$0, $$1, $$2);
-                     return (R)($$4 == null ? null : $$4.apply($$3));
-                  }
-               }
-
-               @Override
-               public String a() {
-                  return $$3.a() + " * " + $$2.a();
-               }
-
-               @Override
-               public String toString() {
-                  return this.a();
-               }
-            });
-         };
-      }
-
-      public <T, R> boj<E, R> a(final Function<? super T, ? extends R> $$0, App<boj.c<E>, T> $$1) {
-         final boj.e<E, T> $$2 = (boj.e<E, T>)boj.b((App<boj.c<E>, M>)$$1);
-         return boj.a(new boj.e<E, R>() {
-            @Override
-            public R a(akq $$0x, E $$1, long $$2x) {
-               T $$3 = $$2.a($$0, $$1, $$2);
-               return (R)($$3 == null ? null : $$0.apply($$3));
-            }
-
-            @Override
-            public String a() {
-               return $$2.a() + ".map[" + $$0 + "]";
-            }
-
-            @Override
-            public String toString() {
-               return this.a();
-            }
-         });
-      }
-
-      public <A, B, R> boj<E, R> a(App<boj.c<E>, BiFunction<A, B, R>> $$0, App<boj.c<E>, A> $$1, App<boj.c<E>, B> $$2) {
-         final boj.e<E, A> $$3 = (boj.e<E, A>)boj.b((App<boj.c<E>, M>)$$1);
-         final boj.e<E, B> $$4 = (boj.e<E, B>)boj.b((App<boj.c<E>, M>)$$2);
-         final boj.e<E, BiFunction<A, B, R>> $$5 = boj.b($$0);
-         return boj.a(new boj.e<E, R>() {
-            @Override
-            public R a(akq $$0, E $$1, long $$2) {
-               A $$3 = $$3.a($$0, $$1, $$2);
-               if ($$3 == null) {
-                  return null;
-               } else {
-                  B $$4 = $$4.a($$0, $$1, $$2);
-                  if ($$4 == null) {
-                     return null;
-                  } else {
-                     BiFunction<A, B, R> $$5 = $$5.a($$0, $$1, $$2);
-                     return $$5 == null ? null : $$5.apply($$3, $$4);
-                  }
-               }
-            }
-
-            @Override
-            public String a() {
-               return $$5.a() + " * " + $$3.a() + " * " + $$4.a();
-            }
-
-            @Override
-            public String toString() {
-               return this.a();
-            }
-         });
-      }
-
-      public <T1, T2, T3, R> boj<E, R> a(App<boj.c<E>, Function3<T1, T2, T3, R>> $$0, App<boj.c<E>, T1> $$1, App<boj.c<E>, T2> $$2, App<boj.c<E>, T3> $$3) {
-         final boj.e<E, T1> $$4 = (boj.e<E, T1>)boj.b((App<boj.c<E>, M>)$$1);
-         final boj.e<E, T2> $$5 = (boj.e<E, T2>)boj.b((App<boj.c<E>, M>)$$2);
-         final boj.e<E, T3> $$6 = (boj.e<E, T3>)boj.b((App<boj.c<E>, M>)$$3);
-         final boj.e<E, Function3<T1, T2, T3, R>> $$7 = boj.b($$0);
-         return boj.a(new boj.e<E, R>() {
-            @Override
-            public R a(akq $$0, E $$1, long $$2) {
-               T1 $$3 = $$4.a($$0, $$1, $$2);
-               if ($$3 == null) {
-                  return null;
-               } else {
-                  T2 $$4 = $$5.a($$0, $$1, $$2);
-                  if ($$4 == null) {
-                     return null;
-                  } else {
-                     T3 $$5 = $$6.a($$0, $$1, $$2);
-                     if ($$5 == null) {
-                        return null;
-                     } else {
-                        Function3<T1, T2, T3, R> $$6 = $$7.a($$0, $$1, $$2);
-                        return (R)($$6 == null ? null : $$6.apply($$3, $$4, $$5));
-                     }
-                  }
-               }
-            }
-
-            @Override
-            public String a() {
-               return $$7.a() + " * " + $$4.a() + " * " + $$5.a() + " * " + $$6.a();
-            }
-
-            @Override
-            public String toString() {
-               return this.a();
-            }
-         });
-      }
-
-      public <T1, T2, T3, T4, R> boj<E, R> a(
-         App<boj.c<E>, Function4<T1, T2, T3, T4, R>> $$0, App<boj.c<E>, T1> $$1, App<boj.c<E>, T2> $$2, App<boj.c<E>, T3> $$3, App<boj.c<E>, T4> $$4
-      ) {
-         final boj.e<E, T1> $$5 = (boj.e<E, T1>)boj.b((App<boj.c<E>, M>)$$1);
-         final boj.e<E, T2> $$6 = (boj.e<E, T2>)boj.b((App<boj.c<E>, M>)$$2);
-         final boj.e<E, T3> $$7 = (boj.e<E, T3>)boj.b((App<boj.c<E>, M>)$$3);
-         final boj.e<E, T4> $$8 = (boj.e<E, T4>)boj.b((App<boj.c<E>, M>)$$4);
-         final boj.e<E, Function4<T1, T2, T3, T4, R>> $$9 = boj.b($$0);
-         return boj.a(new boj.e<E, R>() {
-            @Override
-            public R a(akq $$0, E $$1, long $$2) {
-               T1 $$3 = $$5.a($$0, $$1, $$2);
-               if ($$3 == null) {
-                  return null;
-               } else {
-                  T2 $$4 = $$6.a($$0, $$1, $$2);
-                  if ($$4 == null) {
-                     return null;
-                  } else {
-                     T3 $$5 = $$7.a($$0, $$1, $$2);
-                     if ($$5 == null) {
-                        return null;
-                     } else {
-                        T4 $$6 = $$8.a($$0, $$1, $$2);
-                        if ($$6 == null) {
-                           return null;
-                        } else {
-                           Function4<T1, T2, T3, T4, R> $$7 = $$9.a($$0, $$1, $$2);
-                           return (R)($$7 == null ? null : $$7.apply($$3, $$4, $$5, $$6));
-                        }
-                     }
-                  }
-               }
-            }
-
-            @Override
-            public String a() {
-               return $$9.a() + " * " + $$5.a() + " * " + $$6.a() + " * " + $$7.a() + " * " + $$8.a();
-            }
-
-            @Override
-            public String toString() {
-               return this.a();
-            }
-         });
-      }
-
-      static final class a<E extends bjg> implements com.mojang.datafixers.kinds.Applicative.Mu {
-         private a() {
+   protected void c(akt $$0, cbn $$1, long $$2) {
+      cbn $$3 = (cbn)$$1.dN().c(bsn.r).get();
+      if (!($$1.f($$3) > 5.0)) {
+         blf.a($$1, $$3, 0.5F);
+         if ($$2 >= this.e) {
+            $$1.gv();
+            $$3.gv();
+            this.a($$0, $$1, $$3);
+         } else if ($$1.ef().a(35) == 0) {
+            $$0.a($$3, (byte)12);
+            $$0.a($$1, (byte)12);
          }
       }
    }
 
-   public static final class c<E extends bjg> implements K1 {
-   }
-
-   static final class d<E extends bjg, F extends K1, Value> extends boj<E, bok<F, Value>> {
-      d(final bol<F, Value> $$0) {
-         super(new boj.e<E, bok<F, Value>>() {
-            public bok<F, Value> b(akq $$0x, E $$1, long $$2) {
-               bkg<?> $$3 = $$1.dN();
-               Optional<Value> $$4 = $$3.d($$0.a());
-               return $$4 == null ? null : $$0.a($$3, $$4);
-            }
-
-            @Override
-            public String a() {
-               return "M[" + $$0 + "]";
-            }
-
-            @Override
-            public String toString() {
-               return this.a();
-            }
-         });
+   private void a(akt $$0, cbn $$1, cbn $$2) {
+      Optional<gw> $$3 = this.b($$0, $$1);
+      if ($$3.isEmpty()) {
+         $$0.a($$2, (byte)13);
+         $$0.a($$1, (byte)13);
+      } else {
+         Optional<cbn> $$4 = this.b($$0, $$1, $$2);
+         if ($$4.isPresent()) {
+            this.a($$0, $$4.get(), $$3.get());
+         } else {
+            $$0.w().b($$3.get());
+            abc.c($$0, $$3.get());
+         }
       }
    }
 
-   interface e<E extends bjg, R> {
-      @Nullable
-      R a(akq var1, E var2, long var3);
-
-      String a();
+   protected void d(akt $$0, cbn $$1, long $$2) {
+      $$1.dN().b(bsn.r);
    }
 
-   static final class f<E extends bjg> extends boj<E, Unit> {
-      f(final bom<? super E> $$0) {
-         super(new boj.e<E, Unit>() {
-            @Nullable
-            public Unit b(akq $$0x, E $$1, long $$2) {
-               return $$0.trigger($$0, $$1, $$2) ? Unit.INSTANCE : null;
-            }
+   private boolean a(cbn $$0) {
+      bkm<cbn> $$1 = $$0.dN();
+      Optional<bir> $$2 = $$1.c(bsn.r).filter($$0x -> $$0x.ag() == bja.bf);
+      return $$2.isEmpty() ? false : blf.a($$1, bsn.r, bja.bf) && $$0.V_() && $$2.get().V_();
+   }
 
-            @Override
-            public String a() {
-               return "T[" + $$0 + "]";
-            }
-         });
+   private Optional<gw> b(akt $$0, cbn $$1) {
+      return $$0.w().a($$0x -> $$0x.a(bup.n), ($$1x, $$2) -> this.a($$1, $$2, $$1x), $$1.dl(), 48);
+   }
+
+   private boolean a(cbn $$0, gw $$1, he<buo> $$2) {
+      eav $$3 = $$0.L().a($$1, $$2.a().c());
+      return $$3 != null && $$3.j();
+   }
+
+   private Optional<cbn> b(akt $$0, cbn $$1, cbn $$2) {
+      cbn $$3 = $$1.b($$0, $$2);
+      if ($$3 == null) {
+         return Optional.empty();
+      } else {
+         $$1.c_(6000);
+         $$2.c_(6000);
+         $$3.c_(-24000);
+         $$3.b($$1.dq(), $$1.ds(), $$1.dw(), 0.0F, 0.0F);
+         $$0.a_($$3);
+         $$0.a($$3, (byte)12);
+         return Optional.of($$3);
       }
+   }
+
+   private void a(akt $$0, cbn $$1, gw $$2) {
+      hd $$3 = hd.a($$0.ac(), $$2);
+      $$1.dN().a(bsn.b, $$3);
    }
 }

@@ -1,70 +1,118 @@
 import org.joml.Vector3f;
 
-public class bzf extends cab {
-   public bzf(biu<? extends bzf> $$0, cpv $$1) {
+public class bzf extends bzo {
+   private static final int b = 2400;
+   private int c;
+
+   public bzf(bja<? extends bzf> $$0, cqb $$1) {
       super($$0, $$1);
-   }
-
-   public static boolean a(biu<bzf> $$0, cqk $$1, bjk $$2, gw $$3, asc $$4) {
-      return b($$0, $$1, $$2, $$3, $$4) && ($$2 == bjk.c || $$1.g($$3));
+      this.bJ = 3;
    }
 
    @Override
-   protected boolean ab_() {
-      return false;
+   protected void z() {
+      this.bO.a(1, new bqb(this));
+      this.bO.a(1, new bpw(this, this.dL()));
+      this.bO.a(2, new bqr(this, 1.0, false));
+      this.bO.a(3, new bru(this, 1.0));
+      this.bO.a(7, new bqp(this, cca.class, 8.0F));
+      this.bO.a(8, new brc(this));
+      this.bP.a(1, new brz(this).a());
+      this.bP.a(2, new bsa<>(this, cca.class, true));
    }
 
    @Override
-   protected apc w() {
-      return apd.lx;
+   protected float b(bjy $$0, bix $$1) {
+      return 0.13F;
+   }
+
+   public static bkr.a s() {
+      return bzo.gk().a(bks.l, 8.0).a(bks.m, 0.25).a(bks.c, 2.0);
    }
 
    @Override
-   protected apc d(bho $$0) {
-      return apd.lA;
+   protected biw.b aU() {
+      return biw.b.c;
    }
 
    @Override
-   protected apc l_() {
-      return apd.lz;
+   protected apf w() {
+      return apg.hi;
    }
 
    @Override
-   protected apc y() {
-      return apd.lB;
+   protected apf d(bhu $$0) {
+      return apg.hk;
    }
 
    @Override
-   public boolean C(biq $$0) {
-      boolean $$1 = super.C($$0);
-      if ($$1 && this.eS().b() && $$0 instanceof bjg) {
-         float $$2 = this.dL().d_(this.dl()).b();
-         ((bjg)$$0).b(new bid(bif.q, 140 * (int)$$2), this);
+   protected apf l_() {
+      return apg.hj;
+   }
+
+   @Override
+   protected void b(gw $$0, dfd $$1) {
+      this.a(apg.hl, 0.15F, 1.0F);
+   }
+
+   @Override
+   public void a(qw $$0) {
+      super.a($$0);
+      this.c = $$0.h("Lifetime");
+   }
+
+   @Override
+   public void b(qw $$0) {
+      super.b($$0);
+      $$0.a("Lifetime", this.c);
+   }
+
+   @Override
+   public void l() {
+      this.aU = this.dB();
+      super.l();
+   }
+
+   @Override
+   public void o(float $$0) {
+      this.r($$0);
+      super.o($$0);
+   }
+
+   @Override
+   public void b_() {
+      super.b_();
+      if (this.dL().B) {
+         for (int $$0 = 0; $$0 < 2; $$0++) {
+            this.dL().a(iv.X, this.d(0.5), this.dt(), this.g(0.5), (this.ag.j() - 0.5) * 2.0, -this.ag.j(), (this.ag.j() - 0.5) * 2.0);
+         }
+      } else {
+         if (!this.fL()) {
+            this.c++;
+         }
+
+         if (this.c >= 2400) {
+            this.ak();
+         }
       }
-
-      return $$1;
    }
 
-   @Override
-   protected boolean ge() {
-      return true;
-   }
-
-   @Override
-   protected void gg() {
-      this.b(biu.bp);
-      if (!this.aS()) {
-         this.dL().a(null, 1041, this.dl(), 0);
+   public static boolean b(bja<bzf> $$0, cqc $$1, bjq $$2, gw $$3, ash $$4) {
+      if (c($$0, $$1, $$2, $$3, $$4)) {
+         cca $$5 = $$1.a((double)$$3.u() + 0.5, (double)$$3.v() + 0.5, (double)$$3.w() + 0.5, 5.0, true);
+         return $$5 == null;
+      } else {
+         return false;
       }
    }
 
    @Override
-   protected cjf gd() {
-      return cjf.b;
+   public bjr eR() {
+      return bjr.c;
    }
 
    @Override
-   protected Vector3f a(biq $$0, bir $$1, float $$2) {
-      return new Vector3f(0.0F, $$1.b + 0.125F * $$2, 0.0F);
+   protected Vector3f a(biw $$0, bix $$1, float $$2) {
+      return new Vector3f(0.0F, $$1.b - 0.0625F * $$2, 0.0F);
    }
 }

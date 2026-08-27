@@ -1,74 +1,315 @@
-import javax.annotation.Nullable;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Arrays;
+import java.util.List;
+import org.lwjgl.glfw.GLFWDropCallback;
 
-public record eqq(int a, @Nullable eqq.a b, @Nullable tl c, @Nullable String d) {
-   private static final tl e = tl.c("chat.tag.system");
-   private static final tl f = tl.c("chat.tag.system_single_player");
-   private static final tl g = tl.c("chat.tag.not_secure");
-   private static final tl h = tl.c("chat.tag.modified");
-   private static final tl i = tl.c("chat.tag.error");
-   private static final int j = 13684944;
-   private static final int k = 6316128;
-   private static final eqq l = new eqq(13684944, null, e, "System");
-   private static final eqq m = new eqq(13684944, null, f, "System");
-   private static final eqq n = new eqq(13684944, null, g, "Not Secure");
-   private static final eqq o = new eqq(16733525, null, i, "Chat Error");
+public class eqq {
+   private final eqp a;
+   private boolean b;
+   private boolean c;
+   private boolean d;
+   private double e;
+   private double f;
+   private int g;
+   private int h = -1;
+   private boolean i = true;
+   private int j;
+   private double k;
+   private final asq l = new asq();
+   private final asq m = new asq();
+   private double n;
+   private double o;
+   private double p;
+   private double q;
+   private double r = Double.MIN_VALUE;
+   private boolean s;
 
-   public static eqq a() {
-      return l;
+   public eqq(eqp $$0) {
+      this.a = $$0;
    }
 
-   public static eqq b() {
-      return m;
+   private void a(long $$0, int $$1, int $$2, int $$3) {
+      if ($$0 == this.a.aM().i()) {
+         if (this.a.y != null) {
+            this.a.a(eqm.b);
+         }
+
+         boolean $$4 = $$2 == 1;
+         if (eqp.a && $$1 == 0) {
+            if ($$4) {
+               if (($$3 & 2) == 2) {
+                  $$1 = 1;
+                  this.g++;
+               }
+            } else if (this.g > 0) {
+               $$1 = 1;
+               this.g--;
+            }
+         }
+
+         int $$5 = $$1;
+         if ($$4) {
+            if (this.a.m.V().c() && this.j++ > 0) {
+               return;
+            }
+
+            this.h = $$5;
+            this.k = eja.b();
+         } else if (this.h != -1) {
+            if (this.a.m.V().c() && --this.j > 0) {
+               return;
+            }
+
+            this.h = -1;
+         }
+
+         boolean[] $$6 = new boolean[]{false};
+         if (this.a.aJ() == null) {
+            if (this.a.y == null) {
+               if (!this.s && $$4) {
+                  this.i();
+               }
+            } else {
+               double $$7 = this.e * (double)this.a.aM().o() / (double)this.a.aM().m();
+               double $$8 = this.f * (double)this.a.aM().p() / (double)this.a.aM().n();
+               eye $$9 = this.a.y;
+               if ($$4) {
+                  $$9.x();
+                  eye.a(() -> $$6[0] = $$9.a($$7, $$8, $$5), "mouseClicked event handler", $$9.getClass().getCanonicalName());
+               } else {
+                  eye.a(() -> $$6[0] = $$9.b($$7, $$8, $$5), "mouseReleased event handler", $$9.getClass().getCanonicalName());
+               }
+            }
+         }
+
+         if (!$$6[0] && this.a.y == null && this.a.aJ() == null) {
+            if ($$5 == 0) {
+               this.b = $$4;
+            } else if ($$5 == 2) {
+               this.c = $$4;
+            } else if ($$5 == 1) {
+               this.d = $$4;
+            }
+
+            eqn.a(eke.b.c.a($$5), $$4);
+            if ($$4) {
+               if (this.a.s.M_() && $$5 == 2) {
+                  this.a.l.g().b();
+               } else {
+                  eqn.a(eke.b.c.a($$5));
+               }
+            }
+         }
+      }
    }
 
-   public static eqq c() {
-      return n;
+   private void a(long $$0, double $$1, double $$2) {
+      if ($$0 == eqp.O().aM().i()) {
+         boolean $$3 = this.a.m.O().c();
+         double $$4 = this.a.m.C().c();
+         double $$5 = ($$3 ? Math.signum($$1) : $$1) * $$4;
+         double $$6 = ($$3 ? Math.signum($$2) : $$2) * $$4;
+         if (this.a.aJ() == null) {
+            if (this.a.y != null) {
+               double $$7 = this.e * (double)this.a.aM().o() / (double)this.a.aM().m();
+               double $$8 = this.f * (double)this.a.aM().p() / (double)this.a.aM().n();
+               this.a.y.a($$7, $$8, $$5, $$6);
+               this.a.y.x();
+            } else if (this.a.s != null) {
+               if (this.p != 0.0 && Math.signum($$5) != Math.signum(this.p)) {
+                  this.p = 0.0;
+               }
+
+               if (this.q != 0.0 && Math.signum($$6) != Math.signum(this.q)) {
+                  this.q = 0.0;
+               }
+
+               this.p += $$5;
+               this.q += $$6;
+               int $$9 = (int)this.p;
+               int $$10 = (int)this.q;
+               if ($$9 == 0 && $$10 == 0) {
+                  return;
+               }
+
+               this.p -= (double)$$9;
+               this.q -= (double)$$10;
+               int $$11 = $$10 == 0 ? -$$9 : $$10;
+               if (this.a.s.M_()) {
+                  if (this.a.l.g().a()) {
+                     this.a.l.g().b(-$$11);
+                  } else {
+                     float $$12 = asb.a(this.a.s.fT().a() + (float)$$10 * 0.005F, 0.0F, 0.2F);
+                     this.a.s.fT().a($$12);
+                  }
+               } else {
+                  this.a.s.fS().a((double)$$11);
+               }
+            }
+         }
+      }
    }
 
-   public static eqq a(String $$0) {
-      tl $$1 = tl.b($$0).a(n.h);
-      tl $$2 = tl.h().b(h).b(tk.r).b($$1);
-      return new eqq(6316128, eqq.a.a, $$2, "Modified");
+   private void a(long $$0, List<Path> $$1) {
+      if (this.a.y != null) {
+         this.a.y.a($$1);
+      }
    }
 
-   public static eqq d() {
-      return o;
+   public void a(long $$0) {
+      eke.a(
+         $$0,
+         ($$0x, $$1, $$2) -> this.a.execute(() -> this.b($$0x, $$1, $$2)),
+         ($$0x, $$1, $$2, $$3) -> this.a.execute(() -> this.a($$0x, $$1, $$2, $$3)),
+         ($$0x, $$1, $$2) -> this.a.execute(() -> this.a($$0x, $$1, $$2)),
+         ($$0x, $$1, $$2) -> {
+            Path[] $$3 = new Path[$$1];
+
+            for (int $$4 = 0; $$4 < $$1; $$4++) {
+               $$3[$$4] = Paths.get(GLFWDropCallback.getName($$2, $$4));
+            }
+
+            this.a.execute(() -> this.a($$0x, Arrays.asList($$3)));
+         }
+      );
    }
 
-   public int e() {
-      return this.a;
+   private void b(long $$0, double $$1, double $$2) {
+      if ($$0 == eqp.O().aM().i()) {
+         if (this.i) {
+            this.e = $$1;
+            this.f = $$2;
+            this.i = false;
+         }
+
+         eye $$3 = this.a.y;
+         if ($$3 != null && this.a.aJ() == null) {
+            double $$4 = $$1 * (double)this.a.aM().o() / (double)this.a.aM().m();
+            double $$5 = $$2 * (double)this.a.aM().p() / (double)this.a.aM().n();
+            eye.a(() -> $$3.e($$4, $$5), "mouseMoved event handler", $$3.getClass().getCanonicalName());
+            if (this.h != -1 && this.k > 0.0) {
+               double $$6 = ($$1 - this.e) * (double)this.a.aM().o() / (double)this.a.aM().m();
+               double $$7 = ($$2 - this.f) * (double)this.a.aM().p() / (double)this.a.aM().n();
+               eye.a(() -> $$3.a($$4, $$5, this.h, $$6, $$7), "mouseDragged event handler", $$3.getClass().getCanonicalName());
+            }
+
+            $$3.w();
+         }
+
+         this.a.aG().a("mouse");
+         if (this.h() && this.a.aA()) {
+            this.n = this.n + ($$1 - this.e);
+            this.o = this.o + ($$2 - this.f);
+         }
+
+         this.a();
+         this.e = $$1;
+         this.f = $$2;
+         this.a.aG().c();
+      }
    }
 
-   @Nullable
-   public eqq.a f() {
+   public void a() {
+      double $$0 = eja.b();
+      double $$1 = $$0 - this.r;
+      this.r = $$0;
+      if (this.h() && this.a.aA()) {
+         double $$2 = this.a.m.c().c() * 0.6F + 0.2F;
+         double $$3 = $$2 * $$2 * $$2;
+         double $$4 = $$3 * 8.0;
+         double $$7;
+         double $$8;
+         if (this.a.m.ab) {
+            double $$5 = this.l.a(this.n * $$4, $$1 * $$4);
+            double $$6 = this.m.a(this.o * $$4, $$1 * $$4);
+            $$7 = $$5;
+            $$8 = $$6;
+         } else if (this.a.m.aw().a() && this.a.s.gq()) {
+            this.l.a();
+            this.m.a();
+            $$7 = this.n * $$3;
+            $$8 = this.o * $$3;
+         } else {
+            this.l.a();
+            this.m.a();
+            $$7 = this.n * $$4;
+            $$8 = this.o * $$4;
+         }
+
+         this.n = 0.0;
+         this.o = 0.0;
+         int $$13 = 1;
+         if (this.a.m.N().c()) {
+            $$13 = -1;
+         }
+
+         this.a.az().a($$7, $$8);
+         if (this.a.s != null) {
+            this.a.s.b($$7, $$8 * (double)$$13);
+         }
+      } else {
+         this.n = 0.0;
+         this.o = 0.0;
+      }
+   }
+
+   public boolean b() {
       return this.b;
    }
 
-   @Nullable
-   public tl g() {
+   public boolean c() {
       return this.c;
    }
 
-   @Nullable
-   public String h() {
+   public boolean d() {
       return this.d;
    }
 
-   public static enum a {
-      a(new aew("icon/chat_modified"), 9, 9);
+   public double e() {
+      return this.e;
+   }
 
-      public final aew b;
-      public final int c;
-      public final int d;
+   public double f() {
+      return this.f;
+   }
 
-      private a(aew $$0, int $$1, int $$2) {
-         this.b = $$0;
-         this.c = $$1;
-         this.d = $$2;
+   public void g() {
+      this.i = true;
+   }
+
+   public boolean h() {
+      return this.s;
+   }
+
+   public void i() {
+      if (this.a.aA()) {
+         if (!this.s) {
+            if (!eqp.a) {
+               eqn.a();
+            }
+
+            this.s = true;
+            this.e = (double)(this.a.aM().m() / 2);
+            this.f = (double)(this.a.aM().n() / 2);
+            eke.a(this.a.aM().i(), 212995, this.e, this.f);
+            this.a.a(null);
+            this.a.w = 10000;
+            this.i = true;
+         }
       }
+   }
 
-      public void a(esf $$0, int $$1, int $$2) {
-         $$0.a(this.b, $$1, $$2, this.c, this.d);
+   public void j() {
+      if (this.s) {
+         this.s = false;
+         this.e = (double)(this.a.aM().m() / 2);
+         this.f = (double)(this.a.aM().n() / 2);
+         eke.a(this.a.aM().i(), 212993, this.e, this.f);
       }
+   }
+
+   public void k() {
+      this.i = true;
    }
 }

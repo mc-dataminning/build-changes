@@ -1,23 +1,24 @@
-public class fxh extends fxp<bvd, ffs<bvd>> {
-   private final foy a;
+public class fxh extends fxl<bvm, ffx<bvm>> {
+   private final fnw a;
 
-   public fxh(fvc<bvd, ffs<bvd>> $$0, foy $$1) {
+   public fxh(fuy<bvm, ffx<bvm>> $$0, fnw $$1) {
       super($$0);
       this.a = $$1;
    }
 
-   public void a(elp $$0, foe $$1, int $$2, bvd $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ($$3.gd() != 0) {
+   public void a(elj $$0, foa $$1, int $$2, bvm $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      cjl $$10 = $$3.c(bjb.a);
+      if ($$3.y() && !$$3.gw()) {
+         float $$11 = -0.6F;
+         float $$12 = 1.4F;
+         if ($$3.gk()) {
+            $$11 -= 0.2F * asb.a($$7 * 0.6F) + 0.2F;
+            $$12 -= 0.09F * asb.a($$7 * 0.6F);
+         }
+
          $$0.a();
-         fic $$10 = this.c().c();
-         $$10.a($$0);
-         $$0.a(-1.1875F, 1.0625F, -0.9375F);
-         $$0.a(0.5F, 0.5F, 0.5F);
-         float $$11 = 0.5F;
-         $$0.b(0.5F, 0.5F, 0.5F);
-         $$0.a(a.b.rotationDegrees(-90.0F));
-         $$0.a(-0.5F, -0.5F, -0.5F);
-         this.a.a(csw.bT.n(), $$0, $$1, $$2, fyv.d);
+         $$0.a(0.1F, $$12, $$11);
+         this.a.a($$3, $$10, cji.h, false, $$0, $$1, $$2);
          $$0.b();
       }
    }

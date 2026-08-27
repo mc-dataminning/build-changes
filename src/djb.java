@@ -1,15 +1,23 @@
-public interface djb {
-   djb a = new djb() {
-      @Override
-      public void a() {
-      }
+import javax.annotation.Nullable;
 
-      @Override
-      public void a(biq.c $$0) {
-      }
-   };
+public interface djb<B, T extends B> {
+   static <B, T extends B> djb<B, T> a(final Class<T> $$0) {
+      return new djb<B, T>() {
+         @Nullable
+         @Override
+         public T a(B $$0x) {
+            return (T)($$0.isInstance($$0) ? $$0 : null);
+         }
 
-   void a();
+         @Override
+         public Class<? extends B> a() {
+            return $$0;
+         }
+      };
+   }
 
-   void a(biq.c var1);
+   @Nullable
+   T a(B var1);
+
+   Class<? extends B> a();
 }

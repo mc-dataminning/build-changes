@@ -1,41 +1,82 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import java.util.Map;
 
-public class dac extends crq {
-   protected dac(dfi.d $$0) {
-      super($$0);
+public class dac extends cry {
+   public static final MapCodec<dac> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dac.a.b.fieldOf("kind").forGetter(cry::b), t()).apply($$0, dac::new));
+   public static final int d = dgj.a();
+   private static final int b = d + 1;
+   public static final dgd e = dft.ba;
+   protected static final eia f = ctc.a(4.0, 0.0, 4.0, 12.0, 8.0, 12.0);
+   protected static final eia g = ctc.a(3.0, 0.0, 3.0, 13.0, 8.0, 13.0);
+
+   @Override
+   public MapCodec<? extends dac> a() {
+      return c;
+   }
+
+   protected dac(dac.a $$0, dfc.d $$1) {
+      super($$0, $$1);
+      this.k(this.o().a(e, Integer.valueOf(0)));
    }
 
    @Override
-   public dcv a(gw $$0, dfj $$1) {
-      return new deg($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dcv> dcw<T> a(cpv $$0, dfj $$1, dcx<T> $$2) {
-      return a($$0, $$2, dcx.B);
+   public eia a(dfd $$0, cph $$1, gw $$2, ehm $$3) {
+      return this.b() == dac.b.h ? g : f;
    }
 
    @Override
-   protected void a(cpv $$0, gw $$1, cbu $$2) {
-      dcv $$3 = $$0.c_($$1);
-      if ($$3 instanceof deg) {
-         $$2.a((bhb)$$3);
-         $$2.a(apn.at);
+   public eia f(dfd $$0, cph $$1, gw $$2) {
+      return ehx.a();
+   }
+
+   @Override
+   public dfd a(clt $$0) {
+      return super.a($$0).a(e, Integer.valueOf(dgj.a($$0.i())));
+   }
+
+   @Override
+   public dfd a(dfd $$0, czn $$1) {
+      return $$0.a(e, Integer.valueOf($$1.a($$0.c(e), b)));
+   }
+
+   @Override
+   public dfd a(dfd $$0, cxx $$1) {
+      return $$0.a(e, Integer.valueOf($$1.a($$0.c(e), b)));
+   }
+
+   @Override
+   protected void a(dfe.a<ctc, dfd> $$0) {
+      super.a($$0);
+      $$0.a(e);
+   }
+
+   public interface a extends asu {
+      Map<String, dac.a> a = new Object2ObjectArrayMap();
+      Codec<dac.a> b = arj.a(asu::c, a::get);
+   }
+
+   public static enum b implements dac.a {
+      c("skeleton"),
+      d("wither_skeleton"),
+      e("player"),
+      f("zombie"),
+      g("creeper"),
+      h("piglin"),
+      i("dragon");
+
+      private final String j;
+
+      private b(String $$0) {
+         this.j = $$0;
+         a.put($$0, this);
       }
-   }
 
-   @Override
-   public void a(dfj $$0, cpv $$1, gw $$2, asc $$3) {
-      if ($$0.c(b)) {
-         double $$4 = (double)$$2.u() + 0.5;
-         double $$5 = (double)$$2.v();
-         double $$6 = (double)$$2.w() + 0.5;
-         if ($$3.j() < 0.1) {
-            $$1.a($$4, $$5, $$6, apd.wx, ape.e, 1.0F, 1.0F, false);
-         }
-
-         $$1.a(iv.Z, $$4, $$5 + 1.1, $$6, 0.0, 0.0, 0.0);
+      @Override
+      public String c() {
+         return this.j;
       }
    }
 }

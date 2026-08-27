@@ -1,13 +1,49 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Map;
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.OpticFinder;
+import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
+import com.mojang.serialization.Dynamic;
+import java.util.List;
+import java.util.Optional;
 
-public class ayv {
-   public static final Map<String, String> a = ImmutableMap.builder()
-      .put("minecraft:acacia_bark", "minecraft:acacia_wood")
-      .put("minecraft:birch_bark", "minecraft:birch_wood")
-      .put("minecraft:dark_oak_bark", "minecraft:dark_oak_wood")
-      .put("minecraft:jungle_bark", "minecraft:jungle_wood")
-      .put("minecraft:oak_bark", "minecraft:oak_wood")
-      .put("minecraft:spruce_bark", "minecraft:spruce_wood")
-      .build();
+public class ayv extends DataFix {
+   public ayv(Schema $$0) {
+      super($$0, false);
+   }
+
+   protected TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(azd.c);
+      OpticFinder<?> $$1 = $$0.findField("block_ticks");
+      return this.fixTypeEverywhereTyped("Handle ticks saved in the wrong chunk", $$0, $$1x -> {
+         Optional<? extends Typed<?>> $$2 = $$1x.getOptionalTyped($$1);
+         Optional<? extends Dynamic<?>> $$3 = $$2.isPresent() ? $$2.get().write().result() : Optional.empty();
+         return $$1x.update(DSL.remainderFinder(), $$1xx -> {
+            int $$2x = $$1xx.get("xPos").asInt(0);
+            int $$3x = $$1xx.get("zPos").asInt(0);
+            Optional<? extends Dynamic<?>> $$4 = $$1xx.get("fluid_ticks").get().result();
+            $$1xx = a($$1xx, $$2x, $$3x, $$3, "neighbor_block_ticks");
+            return a($$1xx, $$2x, $$3x, $$4, "neighbor_fluid_ticks");
+         });
+      });
+   }
+
+   private static Dynamic<?> a(Dynamic<?> $$0, int $$1, int $$2, Optional<? extends Dynamic<?>> $$3, String $$4) {
+      if ($$3.isPresent()) {
+         List<? extends Dynamic<?>> $$5 = $$3.get().asStream().filter($$2x -> {
+            int $$3x = $$2x.get("x").asInt(0);
+            int $$4x = $$2x.get("z").asInt(0);
+            int $$5x = Math.abs($$1 - ($$3x >> 4));
+            int $$6 = Math.abs($$2 - ($$4x >> 4));
+            return ($$5x != 0 || $$6 != 0) && $$5x <= 1 && $$6 <= 1;
+         }).toList();
+         if (!$$5.isEmpty()) {
+            $$0 = $$0.set("UpgradeData", $$0.get("UpgradeData").orElseEmptyMap().set($$4, $$0.createList($$5.stream())));
+         }
+      }
+
+      return $$0;
+   }
 }

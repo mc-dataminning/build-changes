@@ -1,16 +1,31 @@
-public class coj extends cno {
-   public coj(cno.a $$0, biv... $$1) {
-      super($$0, cnp.i, $$1);
+public class coj extends cnu {
+   public coj(cnu.a $$0, bjb... $$1) {
+      super($$0, cnv.b, $$1);
    }
 
    @Override
    public int a(int $$0) {
-      return 5 + $$0 * 7;
+      return $$0 * 10;
    }
 
    @Override
    public int b(int $$0) {
-      return 50;
+      return this.a($$0) + 15;
+   }
+
+   @Override
+   public boolean b() {
+      return true;
+   }
+
+   @Override
+   public boolean h() {
+      return false;
+   }
+
+   @Override
+   public boolean i() {
+      return false;
    }
 
    @Override

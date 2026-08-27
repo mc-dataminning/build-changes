@@ -1,24 +1,14 @@
-public class chy extends cja {
-   public chy(cja.a $$0) {
-      super($$0);
+public class chy extends che {
+   public chy(ctc $$0, cjg.a $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public bgz<cjf> a(cpv $$0, cbu $$1, bgx $$2) {
-      cjf $$3 = $$1.b($$2);
-      $$0.a(null, $$1.dq(), $$1.ds(), $$1.dw(), apd.gG, ape.h, 0.5F, 0.4F / ($$0.D_().i() * 0.4F + 0.8F));
-      if (!$$0.B) {
-         ccu $$4 = new ccu($$0, $$1);
-         $$4.a($$3);
-         $$4.a($$1, $$1.dD(), $$1.dB(), 0.0F, 1.5F, 1.0F);
-         $$0.b($$4);
-      }
-
-      $$1.b(apn.c.b(this));
-      if (!$$1.fS().d) {
-         $$3.h(1);
-      }
-
-      return bgz.a($$3, $$0.w_());
+   protected boolean a(clt $$0, dfd $$1) {
+      cqb $$2 = $$0.q();
+      gw $$3 = $$0.a().c();
+      dfd $$4 = $$2.y($$3) ? cte.G.o() : cte.a.o();
+      $$2.a($$3, $$4, 27);
+      return super.a($$0, $$1);
    }
 }

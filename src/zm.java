@@ -1,32 +1,24 @@
-public class zm implements vd<ww> {
-   private final double a;
-   private final double b;
+public class zm implements ve<wx> {
+   private final tl a;
 
-   public zm(dha $$0) {
-      this.a = $$0.a();
-      this.b = $$0.b();
+   public zm(tl $$0) {
+      this.a = $$0;
    }
 
    public zm(so $$0) {
-      this.a = $$0.readDouble();
-      this.b = $$0.readDouble();
+      this.a = $$0.m();
    }
 
    @Override
    public void a(so $$0) {
       $$0.a(this.a);
-      $$0.a(this.b);
    }
 
-   public void a(ww $$0) {
+   public void a(wx $$0) {
       $$0.a(this);
    }
 
-   public double a() {
-      return this.b;
-   }
-
-   public double d() {
+   public tl a() {
       return this.a;
    }
 }

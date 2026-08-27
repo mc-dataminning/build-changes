@@ -1,37 +1,13 @@
-import com.google.common.annotations.VisibleForTesting;
-import it.unimi.dsi.fastutil.ints.IntArraySet;
-import it.unimi.dsi.fastutil.ints.IntCollection;
-import it.unimi.dsi.fastutil.ints.IntSet;
-import java.util.BitSet;
-
 public class dik {
-   private final BitSet a = new BitSet();
+   public static final aey<dim> a = a("overworld");
+   public static final aey<dim> b = a("the_nether");
+   public static final aey<dim> c = a("the_end");
+   public static final aey<dim> d = a("overworld_caves");
+   public static final aez e = new aez("overworld");
+   public static final aez f = new aez("the_nether");
+   public static final aez g = new aez("the_end");
 
-   public void a(int $$0, int $$1) {
-      this.a.set($$0, $$0 + $$1);
-   }
-
-   public void b(int $$0, int $$1) {
-      this.a.clear($$0, $$0 + $$1);
-   }
-
-   public int a(int $$0) {
-      int $$1 = 0;
-
-      while (true) {
-         int $$2 = this.a.nextClearBit($$1);
-         int $$3 = this.a.nextSetBit($$2);
-         if ($$3 == -1 || $$3 - $$2 >= $$0) {
-            this.a($$2, $$0);
-            return $$2;
-         }
-
-         $$1 = $$3;
-      }
-   }
-
-   @VisibleForTesting
-   public IntSet a() {
-      return this.a.stream().collect(IntArraySet::new, IntCollection::add, IntCollection::addAll);
+   private static aey<dim> a(String $$0) {
+      return aey.a(jc.av, new aez($$0));
    }
 }

@@ -1,10 +1,19 @@
-public class ckg extends cja {
-   public ckg(cja.a $$0) {
-      super($$0);
+public class ckg extends cjh {
+   private final aku a;
+
+   public ckg(aku $$0) {
+      this.a = $$0;
    }
 
    @Override
-   public boolean i(cjf $$0) {
-      return true;
+   protected void b(cjg $$0, int $$1) {
+      super.b($$0, $$1);
+      this.a.c.b(new xu($$0, $$1));
+   }
+
+   @Override
+   protected void c(cjg $$0) {
+      super.c($$0);
+      this.a.c.b(new xu($$0, 0));
    }
 }

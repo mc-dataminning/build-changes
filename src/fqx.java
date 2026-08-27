@@ -1,46 +1,76 @@
-import org.joml.Matrix4f;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import javax.annotation.Nullable;
 
-public class fqx<T extends dek> implements fqe<T> {
-   public static final aew a = new aew("textures/environment/end_sky.png");
-   public static final aew b = new aew("textures/entity/end_portal.png");
+public class fqx {
+   private final Long2ObjectMap<fqx.a> a = new Long2ObjectOpenHashMap();
 
-   public fqx(fqf.a $$0) {
-   }
+   @Nullable
+   public fqw a(cqb $$0, gw $$1, gw $$2, int $$3) {
+      int $$4 = hw.a($$1.u() - $$3);
+      int $$5 = hw.a($$1.w() - $$3);
+      int $$6 = hw.a($$2.u() + $$3);
+      int $$7 = hw.a($$2.w() + $$3);
+      fqx.a[][] $$8 = new fqx.a[$$6 - $$4 + 1][$$7 - $$5 + 1];
 
-   public void a(T $$0, float $$1, elp $$2, foe $$3, int $$4, int $$5) {
-      Matrix4f $$6 = $$2.c().a();
-      this.a($$0, $$6, $$3.getBuffer(this.d()));
-   }
+      for (int $$9 = $$4; $$9 <= $$6; $$9++) {
+         for (int $$10 = $$5; $$10 <= $$7; $$10++) {
+            $$8[$$9 - $$4][$$10 - $$5] = (fqx.a)this.a.computeIfAbsent(cpi.c($$9, $$10), $$1x -> new fqx.a($$0.d(cpi.a($$1x), cpi.b($$1x))));
+         }
+      }
 
-   private void a(T $$0, Matrix4f $$1, elt $$2) {
-      float $$3 = this.c();
-      float $$4 = this.b();
-      this.a($$0, $$1, $$2, 0.0F, 1.0F, 0.0F, 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, ha.d);
-      this.a($$0, $$1, $$2, 0.0F, 1.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, ha.c);
-      this.a($$0, $$1, $$2, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 0.0F, ha.f);
-      this.a($$0, $$1, $$2, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 1.0F, 1.0F, 0.0F, ha.e);
-      this.a($$0, $$1, $$2, 0.0F, 1.0F, $$3, $$3, 0.0F, 0.0F, 1.0F, 1.0F, ha.a);
-      this.a($$0, $$1, $$2, 0.0F, 1.0F, $$4, $$4, 1.0F, 1.0F, 0.0F, 0.0F, ha.b);
-   }
+      if (a($$1, $$2, $$4, $$5, $$8)) {
+         return null;
+      } else {
+         fqv[][] $$11 = new fqv[$$6 - $$4 + 1][$$7 - $$5 + 1];
 
-   private void a(T $$0, Matrix4f $$1, elt $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9, float $$10, ha $$11) {
-      if ($$0.a($$11)) {
-         $$2.a($$1, $$3, $$5, $$7).e();
-         $$2.a($$1, $$4, $$5, $$8).e();
-         $$2.a($$1, $$4, $$6, $$9).e();
-         $$2.a($$1, $$3, $$6, $$10).e();
+         for (int $$12 = $$4; $$12 <= $$6; $$12++) {
+            for (int $$13 = $$5; $$13 <= $$7; $$13++) {
+               $$11[$$12 - $$4][$$13 - $$5] = $$8[$$12 - $$4][$$13 - $$5].b();
+            }
+         }
+
+         return new fqw($$0, $$4, $$5, $$11);
       }
    }
 
-   protected float b() {
-      return 0.75F;
+   private static boolean a(gw $$0, gw $$1, int $$2, int $$3, fqx.a[][] $$4) {
+      int $$5 = hw.a($$0.u());
+      int $$6 = hw.a($$0.w());
+      int $$7 = hw.a($$1.u());
+      int $$8 = hw.a($$1.w());
+
+      for (int $$9 = $$5; $$9 <= $$7; $$9++) {
+         for (int $$10 = $$6; $$10 <= $$8; $$10++) {
+            dhk $$11 = $$4[$$9 - $$2][$$10 - $$3].a();
+            if (!$$11.a($$0.v(), $$1.v())) {
+               return false;
+            }
+         }
+      }
+
+      return true;
    }
 
-   protected float c() {
-      return 0.375F;
-   }
+   static final class a {
+      private final dhk a;
+      @Nullable
+      private fqv b;
 
-   protected fom d() {
-      return fom.v();
+      a(dhk $$0) {
+         this.a = $$0;
+      }
+
+      public dhk a() {
+         return this.a;
+      }
+
+      public fqv b() {
+         if (this.b == null) {
+            this.b = new fqv(this.a);
+         }
+
+         return this.b;
+      }
    }
 }

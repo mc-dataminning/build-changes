@@ -1,132 +1,119 @@
-import com.google.common.annotations.VisibleForTesting;
 import com.mojang.serialization.Codec;
+import java.util.List;
+import java.util.function.BiPredicate;
 
-public class dlt implements asc {
-   private static final float c = 5.9604645E-8F;
-   private static final double d = 1.110223E-16F;
-   public static final Codec<dlt> b = dls.a.xmap($$0 -> new dlt($$0), $$0 -> $$0.e);
-   private dls e;
-   private final dku f = new dku(this);
+public interface dlt extends BiPredicate<cqv, gw> {
+   Codec<dlt> b = jb.P.q().dispatch(dlt::a, dlu::codec);
+   dlt c = a(cte.a);
+   dlt d = a(cte.a, cte.G);
 
-   public dlt(long $$0) {
-      this.e = new dls(dlh.c($$0));
+   dlu<?> a();
+
+   static dlt a(List<dlt> $$0) {
+      return new dlr($$0);
    }
 
-   public dlt(dlh.a $$0) {
-      this.e = new dls($$0);
+   static dlt a(dlt... $$0) {
+      return a(List.of($$0));
    }
 
-   public dlt(long $$0, long $$1) {
-      this.e = new dls($$0, $$1);
+   static dlt a(dlt $$0, dlt $$1) {
+      return a(List.of($$0, $$1));
    }
 
-   private dlt(dls $$0) {
-      this.e = $$0;
+   static dlt b(List<dlt> $$0) {
+      return new dls($$0);
    }
 
-   @Override
-   public asc d() {
-      return new dlt(this.e.a(), this.e.a());
+   static dlt b(dlt... $$0) {
+      return b(List.of($$0));
    }
 
-   @Override
-   public dlf e() {
-      return new dlt.a(this.e.a(), this.e.a());
+   static dlt b(dlt $$0, dlt $$1) {
+      return b(List.of($$0, $$1));
    }
 
-   @Override
-   public void b(long $$0) {
-      this.e = new dls(dlh.c($$0));
-      this.f.a();
+   static dlt a(hy $$0, List<ctc> $$1) {
+      return new dlz($$0, hi.a(ctc::r, $$1));
    }
 
-   @Override
-   public int f() {
-      return (int)this.e.a();
+   static dlt c(List<ctc> $$0) {
+      return a(hy.g, $$0);
    }
 
-   @Override
-   public int a(int $$0) {
-      if ($$0 <= 0) {
-         throw new IllegalArgumentException("Bound must be positive");
-      } else {
-         long $$1 = Integer.toUnsignedLong(this.f());
-         long $$2 = $$1 * (long)$$0;
-         long $$3 = $$2 & 4294967295L;
-         if ($$3 < (long)$$0) {
-            for (int $$4 = Integer.remainderUnsigned(~$$0 + 1, $$0); $$3 < (long)$$4; $$3 = $$2 & 4294967295L) {
-               $$1 = Integer.toUnsignedLong(this.f());
-               $$2 = $$1 * (long)$$0;
-            }
-         }
-
-         long $$5 = $$2 >> 32;
-         return (int)$$5;
-      }
+   static dlt a(hy $$0, ctc... $$1) {
+      return a($$0, List.of($$1));
    }
 
-   @Override
-   public long g() {
-      return this.e.a();
+   static dlt a(ctc... $$0) {
+      return a(hy.g, $$0);
    }
 
-   @Override
-   public boolean h() {
-      return (this.e.a() & 1L) != 0L;
+   static dlt a(hy $$0, aqk<ctc> $$1) {
+      return new dly($$0, $$1);
    }
 
-   @Override
-   public float i() {
-      return (float)this.c(24) * 5.9604645E-8F;
+   static dlt a(aqk<ctc> $$0) {
+      return a(hy.g, $$0);
    }
 
-   @Override
-   public double j() {
-      return (double)this.c(53) * 1.110223E-16F;
+   static dlt b(hy $$0, List<eaf> $$1) {
+      return new dma($$0, hi.a(eaf::k, $$1));
    }
 
-   @Override
-   public double k() {
-      return this.f.b();
+   static dlt a(hy $$0, eaf... $$1) {
+      return b($$0, List.of($$1));
    }
 
-   @Override
-   public void b(int $$0) {
-      for (int $$1 = 0; $$1 < $$0; $$1++) {
-         this.e.a();
-      }
+   static dlt a(eaf... $$0) {
+      return a(hy.g, $$0);
    }
 
-   private long c(int $$0) {
-      return this.e.a() >>> 64 - $$0;
+   static dlt a(dlt $$0) {
+      return new dmb($$0);
    }
 
-   public static class a implements dlf {
-      private final long a;
-      private final long b;
+   static dlt a(hy $$0) {
+      return new dmc($$0);
+   }
 
-      public a(long $$0, long $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
+   static dlt b() {
+      return a(hy.g);
+   }
 
-      @Override
-      public asc a(int $$0, int $$1, int $$2) {
-         long $$3 = arw.b($$0, $$1, $$2);
-         long $$4 = $$3 ^ this.a;
-         return new dlt($$4, this.b);
-      }
+   static dlt a(dfd $$0, hy $$1) {
+      return new dmg($$1, $$0);
+   }
 
-      @Override
-      public asc a(String $$0) {
-         dlh.a $$1 = dlh.a($$0);
-         return new dlt($$1.a(this.a, this.b));
-      }
+   static dlt a(hy $$0, ha $$1) {
+      return new dlw($$0, $$1);
+   }
 
-      @VisibleForTesting
-      @Override
-      public void a(StringBuilder $$0) {
-         $$0.append("seedLo: ").append(this.a).append(", seedHi: ").append(this.b);
-      }
+   static dlt a(ha $$0) {
+      return a(hy.g, $$0);
+   }
+
+   static dlt b(hy $$0) {
+      return new dmd($$0);
+   }
+
+   static dlt c() {
+      return b(hy.g);
+   }
+
+   static dlt d() {
+      return c(hy.g);
+   }
+
+   static dlt c(hy $$0) {
+      return a($$0, eah.a);
+   }
+
+   static dlt d(hy $$0) {
+      return new dlx($$0);
+   }
+
+   static dlt e() {
+      return dmf.a;
    }
 }

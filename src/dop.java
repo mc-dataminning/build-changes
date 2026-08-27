@@ -1,37 +1,24 @@
 import com.mojang.serialization.Codec;
 
-public class dop extends dnw<dqg> {
+public class dop extends dnq<dqg> {
    public dop(Codec<dqg> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dny<dqg> $$0) {
-      cqp $$1 = $$0.b();
-      gw $$2 = $$0.e();
-      dfj $$3 = $$1.a_($$2.d());
-      dqg $$4 = $$0.f();
-      asc $$5 = $$0.d();
-      if (!$$3.a(aps.aK)) {
-         return false;
-      } else {
-         int $$6 = $$2.v();
-         if ($$6 >= $$1.H_() + 1 && $$6 + 1 < $$1.aj()) {
-            int $$7 = 0;
+   public boolean a(dns<dqg> $$0) {
+      dqg $$1 = $$0.f();
+      ash $$2 = $$0.d();
+      cqv $$3 = $$0.b();
+      dha $$4 = $$0.c();
+      gw $$5 = $$0.e();
 
-            for (int $$8 = 0; $$8 < $$4.d * $$4.d; $$8++) {
-               gw $$9 = $$2.b($$5.a($$4.d) - $$5.a($$4.d), $$5.a($$4.e) - $$5.a($$4.e), $$5.a($$4.d) - $$5.a($$4.d));
-               dfj $$10 = $$4.b.a($$5, $$9);
-               if ($$1.t($$9) && $$9.v() > $$1.H_() && $$10.a($$1, $$9)) {
-                  $$1.a($$9, $$10, 2);
-                  $$7++;
-               }
-            }
-
-            return $$7 > 0;
-         } else {
-            return false;
+      for (dpk $$6 : $$1.b) {
+         if ($$2.i() < $$6.c) {
+            return $$6.a($$3, $$4, $$2, $$5);
          }
       }
+
+      return $$1.c.a().a($$3, $$4, $$2, $$5);
    }
 }

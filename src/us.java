@@ -1,105 +1,53 @@
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import java.util.List;
-import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class us implements tm {
-   private static final String b = "*";
-   private final String c;
-   @Nullable
-   private final gc d;
-   private final String e;
-
-   @Nullable
-   private static gc a(String $$0) {
-      try {
-         return new gd(new StringReader($$0)).t();
-      } catch (CommandSyntaxException var2) {
-         return null;
-      }
-   }
-
-   public us(String $$0, String $$1) {
-      this.c = $$0;
-      this.d = a($$0);
-      this.e = $$1;
-   }
-
-   public String a() {
-      return this.c;
-   }
-
-   @Nullable
-   public gc b() {
-      return this.d;
-   }
-
-   public String c() {
-      return this.e;
-   }
-
-   private String a(dt $$0) throws CommandSyntaxException {
-      if (this.d != null) {
-         List<? extends biq> $$1 = this.d.b($$0);
-         if (!$$1.isEmpty()) {
-            if ($$1.size() != 1) {
-               throw ee.a.create();
-            }
-
-            return $$1.get(0).cx();
-         }
+public interface us extends tm {
+   MapCodec<us> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.STRING.fieldOf("text").forGetter(us::b)).apply($$0, us::a));
+   tm.a<us> b = new tm.a<>(a, "text");
+   us c = new us() {
+      @Override
+      public String toString() {
+         return "empty";
       }
 
-      return this.c;
-   }
-
-   private String a(String $$0, dt $$1) {
-      MinecraftServer $$2 = $$1.l();
-      if ($$2 != null) {
-         eim $$3 = $$2.aF();
-         eij $$4 = $$3.b(this.e);
-         if ($$4 != null && $$3.b($$0, $$4)) {
-            eil $$5 = $$3.c($$0, $$4);
-            return Integer.toString($$5.b());
-         }
+      @Override
+      public String b() {
+         return "";
       }
+   };
 
-      return "";
+   static us a(String $$0) {
+      return (us)($$0.isEmpty() ? c : new us.a($$0));
    }
+
+   String b();
 
    @Override
-   public ty a(@Nullable dt $$0, @Nullable biq $$1, int $$2) throws CommandSyntaxException {
-      if ($$0 == null) {
-         return tl.h();
-      } else {
-         String $$3 = this.a($$0);
-         String $$4 = $$1 != null && $$3.equals("*") ? $$1.cx() : $$3;
-         return tl.b(this.a($$4, $$0));
+   default tm.a<?> a() {
+      return b;
+   }
+
+   public static record a(String d) implements us {
+      @Override
+      public <T> Optional<T> a(tq.a<T> $$0) {
+         return $$0.accept(this.d);
       }
-   }
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof us $$1 && this.c.equals($$1.c) && this.e.equals($$1.e)) {
-            return true;
-         }
-
-         return false;
+      @Override
+      public <T> Optional<T> a(tq.b<T> $$0, ui $$1) {
+         return $$0.accept($$1, this.d);
       }
-   }
 
-   @Override
-   public int hashCode() {
-      int $$0 = this.c.hashCode();
-      return 31 * $$0 + this.e.hashCode();
-   }
+      @Override
+      public String toString() {
+         return "literal{" + this.d + "}";
+      }
 
-   @Override
-   public String toString() {
-      return "score{name='" + this.c + "', objective='" + this.e + "'}";
+      @Override
+      public String b() {
+         return this.d;
+      }
    }
 }

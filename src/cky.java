@@ -1,12 +1,13 @@
-public enum cky {
-   a,
-   b,
-   c,
-   d,
-   e,
-   f,
-   g,
-   h,
-   i,
-   j;
+public interface cky {
+   int a();
+
+   float b();
+
+   float c();
+
+   int d();
+
+   int e();
+
+   cmm f();
 }

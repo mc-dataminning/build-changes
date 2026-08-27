@@ -1,17 +1,55 @@
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
+import javax.annotation.Nullable;
 
-public interface anu extends ann {
-   @Override
-   default CompletableFuture<Void> a(ann.a $$0, ant $$1, bdp $$2, bdp $$3, Executor $$4, Executor $$5) {
-      return $$0.a(asx.a).thenRunAsync(() -> {
-         $$3.a();
-         $$3.a("listener");
-         this.a($$1);
-         $$3.c();
-         $$3.b();
-      }, $$5);
+public class anu {
+   private final amk a;
+   private final ano<InputStream> b;
+   private final ano<any> c;
+   @Nullable
+   private any d;
+
+   public anu(amk $$0, ano<InputStream> $$1, ano<any> $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   void a(ant var1);
+   public anu(amk $$0, ano<InputStream> $$1) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = any.b;
+      this.d = any.a;
+   }
+
+   public amk a() {
+      return this.a;
+   }
+
+   public String b() {
+      return this.a.a();
+   }
+
+   public boolean c() {
+      return this.a.b();
+   }
+
+   public InputStream d() throws IOException {
+      return this.b.get();
+   }
+
+   public BufferedReader e() throws IOException {
+      return new BufferedReader(new InputStreamReader(this.d(), StandardCharsets.UTF_8));
+   }
+
+   public any f() throws IOException {
+      if (this.d == null) {
+         this.d = this.c.get();
+      }
+
+      return this.d;
+   }
 }

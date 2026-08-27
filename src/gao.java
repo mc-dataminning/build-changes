@@ -1,22 +1,38 @@
+import java.util.Arrays;
+import java.util.Map;
+import java.util.stream.Collectors;
+
 public class gao {
-   public static final int a = -1;
-   private final int b;
-   private final int c;
+   public static final gap a = new gap();
+   public static final String b = "villager";
+   private final gao.a c;
 
-   public gao(int $$0) {
-      this($$0, -1);
+   public gao(gao.a $$0) {
+      this.c = $$0;
    }
 
-   public gao(int $$0, int $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public gao.a a() {
+      return this.c;
    }
 
-   public int a(int $$0) {
-      return this.c == -1 ? $$0 : this.c;
-   }
+   public static enum a {
+      a("none"),
+      b("partial"),
+      c("full");
 
-   public int a() {
-      return this.b;
+      private static final Map<String, gao.a> d = Arrays.stream(values()).collect(Collectors.toMap(gao.a::a, $$0 -> (gao.a)$$0));
+      private final String e;
+
+      private a(String $$0) {
+         this.e = $$0;
+      }
+
+      public String a() {
+         return this.e;
+      }
+
+      public static gao.a a(String $$0) {
+         return d.getOrDefault($$0, a);
+      }
    }
 }

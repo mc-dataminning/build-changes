@@ -1,39 +1,25 @@
-import org.joml.Vector2i;
-import org.joml.Vector2ic;
+public class fbd extends fbg {
+   private static final tl b = tl.c("multiplayerWarning.header").a(n.r);
+   private static final tl c = tl.c("multiplayerWarning.message");
+   private static final tl k = tl.c("multiplayerWarning.check");
+   private static final tl l = b.f().f("\n").b(c);
+   private final eye m;
 
-public class fbd implements fbb {
-   private static final int c = 5;
-   private static final int d = 12;
-   public static final int a = 3;
-   public static final int b = 5;
-   private final eso e;
-
-   public fbd(eso $$0) {
-      this.e = $$0;
+   public fbd(eye $$0) {
+      super(b, c, k, l);
+      this.m = $$0;
    }
 
    @Override
-   public Vector2ic a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      Vector2i $$6 = new Vector2i($$2 + 12, $$3);
-      if ($$6.x + $$4 > $$0 - 5) {
-         $$6.x = Math.max($$2 - 12 - $$4, 9);
-      }
+   protected void a(int $$0) {
+      this.d(esk.a(tk.i, $$0x -> {
+         if (this.a.a()) {
+            this.f.m.v = true;
+            this.f.m.ar();
+         }
 
-      $$6.y += 3;
-      int $$7 = $$5 + 3 + 3;
-      int $$8 = this.e.t() + this.e.i() + 3 + a(0, 0, this.e.i());
-      int $$9 = $$1 - 5;
-      if ($$8 + $$7 <= $$9) {
-         $$6.y = $$6.y + a($$6.y, this.e.t(), this.e.i());
-      } else {
-         $$6.y = $$6.y - ($$7 + a($$6.y, this.e.t() + this.e.i(), this.e.i()));
-      }
-
-      return $$6;
-   }
-
-   private static int a(int $$0, int $$1, int $$2) {
-      int $$3 = Math.min(Math.abs($$0 - $$1), $$2);
-      return Math.round(arw.i((float)$$3 / (float)$$2, (float)($$2 - 3), 5.0F));
+         this.f.a(new fbb(this.m));
+      }).a(this.g / 2 - 155, 100 + $$0, 150, 20).a());
+      this.d(esk.a(tk.k, $$0x -> this.f.a(this.m)).a(this.g / 2 - 155 + 160, 100 + $$0, 150, 20).a());
    }
 }

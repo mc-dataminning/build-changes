@@ -1,38 +1,35 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Iterables;
+import java.util.Collection;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.Predicate;
 
-public class btw {
-   @Nullable
-   public static ehn a(bjp $$0, int $$1, int $$2) {
-      boolean $$3 = btx.a($$0, $$1);
-      return bua.a($$0, () -> {
-         gw $$4 = bua.a($$0.ef(), $$1, $$2);
-         return a($$0, $$1, $$3, $$4);
-      });
+public class btw extends btk<cbe> {
+   @Override
+   public Set<bsn<?>> a() {
+      return ImmutableSet.copyOf(Iterables.concat(super.a(), List.of(bsn.B)));
    }
 
-   @Nullable
-   public static ehn a(bjp $$0, int $$1, int $$2, ehn $$3, double $$4) {
-      ehn $$5 = $$3.a($$0.dq(), $$0.ds(), $$0.dw());
-      boolean $$6 = btx.a($$0, $$1);
-      return bua.a($$0, () -> {
-         gw $$6x = bua.a($$0.ef(), $$1, $$2, 0, $$5.c, $$5.e, $$4);
-         return $$6x == null ? null : a($$0, $$1, $$6, $$6x);
-      });
+   protected void a(akt $$0, cbe $$1) {
+      super.a($$0, $$1);
+      a($$1, $$0x -> $$0x.ag() == bja.bt)
+         .or(() -> a($$1, $$0xx -> $$0xx.ag() != bja.bt))
+         .ifPresentOrElse($$1x -> $$1.dN().a(bsn.B, $$1x), () -> $$1.dN().b(bsn.B));
    }
 
-   @Nullable
-   public static ehn a(bjp $$0, int $$1, int $$2, ehn $$3) {
-      ehn $$4 = $$0.dj().d($$3);
-      boolean $$5 = btx.a($$0, $$1);
-      return bua.a($$0, () -> {
-         gw $$5x = bua.a($$0.ef(), $$1, $$2, 0, $$4.c, $$4.e, (float) (Math.PI / 2));
-         return $$5x == null ? null : a($$0, $$1, $$5, $$5x);
-      });
+   private static Optional<bjm> a(cbe $$0, Predicate<bjm> $$1) {
+      return $$0.dN().c(bsn.g).stream().flatMap(Collection::stream).filter($$0::a).filter($$1).findFirst();
    }
 
-   @Nullable
-   private static gw a(bjp $$0, int $$1, boolean $$2, gw $$3) {
-      gw $$4 = bua.a($$0, $$1, $$0.ef(), $$3);
-      return !btx.a($$4, $$0) && !btx.a($$2, $$0, $$4) && !btx.a($$0.L(), $$4) && !btx.b($$0, $$4) ? $$4 : null;
+   @Override
+   protected int b() {
+      return 24;
+   }
+
+   @Override
+   protected int c() {
+      return 24;
    }
 }

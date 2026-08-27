@@ -1,214 +1,44 @@
-import com.google.common.collect.Lists;
-import java.util.ArrayList;
-import javax.annotation.Nullable;
+import java.util.Arrays;
 
-public abstract class cbc extends bil implements cbf, cbg, cos {
-   private static final aee<Integer> bV = aeh.a(cbc.class, aeg.b);
-   public static final int bT = 300;
-   private static final int bW = 8;
-   @Nullable
-   private cbu bX;
-   @Nullable
-   protected cou bU;
-   private final bhf bY = new bhf(8);
+public enum cbc {
+   a(0, apg.zw, apg.zE),
+   b(40, apg.zv, apg.zF),
+   c(80, apg.zx, apg.zF);
 
-   public cbc(biu<? extends cbc> $$0, cpv $$1) {
-      super($$0, $$1);
-      this.a(eax.n, 16.0F);
-      this.a(eax.o, -1.0F);
+   private static final cbc[] d = ac.a(values(), $$0 -> Arrays.sort($$0, ($$0x, $$1) -> Integer.compare($$1.e, $$0x.e)));
+   private final int e;
+   private final apf f;
+   private final apf g;
+
+   private cbc(int $$0, apf $$1, apf $$2) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
-   @Override
-   public bjz a(cqk $$0, bgw $$1, bjk $$2, @Nullable bjz $$3, @Nullable qw $$4) {
-      if ($$3 == null) {
-         $$3 = new bil.a(false);
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4);
+   public int a() {
+      return this.e;
    }
 
-   public int s() {
-      return this.an.b(bV);
+   public apf b() {
+      return this.f;
    }
 
-   public void s(int $$0) {
-      this.an.b(bV, $$0);
+   public apf c() {
+      return this.g;
    }
 
-   @Override
-   public int t() {
-      return 0;
-   }
-
-   @Override
-   protected float b(bjs $$0, bir $$1) {
-      return this.m_() ? 0.81F : 1.62F;
-   }
-
-   @Override
-   protected void a_() {
-      super.a_();
-      this.an.a(bV, 0);
-   }
-
-   @Override
-   public void f(@Nullable cbu $$0) {
-      this.bX = $$0;
-   }
-
-   @Nullable
-   @Override
-   public cbu gd() {
-      return this.bX;
-   }
-
-   public boolean ge() {
-      return this.bX != null;
-   }
-
-   @Override
-   public cou gf() {
-      if (this.bU == null) {
-         this.bU = new cou();
-         this.gk();
-      }
-
-      return this.bU;
-   }
-
-   @Override
-   public void a(@Nullable cou $$0) {
-   }
-
-   @Override
-   public void t(int $$0) {
-   }
-
-   @Override
-   public void a(cot $$0) {
-      $$0.j();
-      this.bI = -this.O();
-      this.b($$0);
-      if (this.bX instanceof akr) {
-         al.s.a((akr)this.bX, this, $$0.d());
-      }
-   }
-
-   protected abstract void b(cot var1);
-
-   @Override
-   public boolean gg() {
-      return true;
-   }
-
-   @Override
-   public void l(cjf $$0) {
-      if (!this.dL().B && this.bI > -this.O() + 20) {
-         this.bI = -this.O();
-         this.a(this.w(!$$0.b()), this.eV(), this.eW());
-      }
-   }
-
-   @Override
-   public apc gh() {
-      return apd.yN;
-   }
-
-   protected apc w(boolean $$0) {
-      return $$0 ? apd.yN : apd.yL;
-   }
-
-   public void gi() {
-      this.a(apd.yI, this.eV(), this.eW());
-   }
-
-   @Override
-   public void b(qw $$0) {
-      super.b($$0);
-      cou $$1 = this.gf();
-      if (!$$1.isEmpty()) {
-         $$0.a("Offers", $$1.a());
-      }
-
-      this.a_($$0);
-   }
-
-   @Override
-   public void a(qw $$0) {
-      super.a($$0);
-      if ($$0.b("Offers", 10)) {
-         this.bU = new cou($$0.p("Offers"));
-      }
-
-      this.c($$0);
-   }
-
-   @Nullable
-   @Override
-   public biq b(akq $$0) {
-      this.gj();
-      return super.b($$0);
-   }
-
-   protected void gj() {
-      this.f(null);
-   }
-
-   @Override
-   public void a(bho $$0) {
-      super.a($$0);
-      this.gj();
-   }
-
-   protected void a(it $$0) {
-      for (int $$1 = 0; $$1 < 5; $$1++) {
-         double $$2 = this.ag.k() * 0.02;
-         double $$3 = this.ag.k() * 0.02;
-         double $$4 = this.ag.k() * 0.02;
-         this.dL().a($$0, this.d(1.0), this.dt() + 1.0, this.g(1.0), $$2, $$3, $$4);
-      }
-   }
-
-   @Override
-   public boolean a(cbu $$0) {
-      return false;
-   }
-
-   @Override
-   public bhf y() {
-      return this.bY;
-   }
-
-   @Override
-   public bjy a_(int $$0) {
-      int $$1 = $$0 - 300;
-      return $$1 >= 0 && $$1 < this.bY.b() ? bjy.a(this.bY, $$1) : super.a_($$0);
-   }
-
-   protected abstract void gk();
-
-   protected void a(cou $$0, cbl.g[] $$1, int $$2) {
-      ArrayList<cbl.g> $$3 = Lists.newArrayList($$1);
-      int $$4 = 0;
-
-      while ($$4 < $$2 && !$$3.isEmpty()) {
-         cot $$5 = $$3.remove(this.ag.a($$3.size())).a(this, this.ag);
-         if ($$5 != null) {
-            $$0.add($$5);
-            $$4++;
+   public static cbc a(int $$0) {
+      for (cbc $$1 : d) {
+         if ($$0 >= $$1.e) {
+            return $$1;
          }
       }
+
+      return a;
    }
 
-   @Override
-   public ehn q(float $$0) {
-      float $$1 = arw.i($$0, this.aV, this.aU) * (float) (Math.PI / 180.0);
-      ehn $$2 = new ehn(0.0, this.cG().c() - 1.0, 0.2);
-      return this.l($$0).e($$2.b(-$$1));
-   }
-
-   @Override
-   public boolean gl() {
-      return this.dL().B;
+   public boolean d() {
+      return this == c;
    }
 }

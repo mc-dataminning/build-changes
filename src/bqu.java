@@ -1,79 +1,122 @@
 import java.util.EnumSet;
-import javax.annotation.Nullable;
 
-public class bqu extends bqb {
-   public static final int a = 1;
-   protected final bjp b;
-   protected final double c;
-   protected double d;
-   protected double e;
-   protected double f;
-   protected boolean g;
+public abstract class bqu extends bqh {
+   private static final int g = 1200;
+   private static final int h = 1200;
+   private static final int i = 200;
+   protected final bjv a;
+   public final double b;
+   protected int c;
+   protected int d;
+   private int j;
+   protected gw e = gw.b;
+   private boolean k;
+   private final int l;
+   private final int m;
+   protected int f;
 
-   public bqu(bjp $$0, double $$1) {
-      this.b = $$0;
-      this.c = $$1;
-      this.a(EnumSet.of(bqb.a.a));
+   public bqu(bjv $$0, double $$1, int $$2) {
+      this($$0, $$1, $$2, 1);
+   }
+
+   public bqu(bjv $$0, double $$1, int $$2, int $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.l = $$2;
+      this.f = 0;
+      this.m = $$3;
+      this.a(EnumSet.of(bqh.a.a, bqh.a.c));
    }
 
    @Override
    public boolean a() {
-      if (!this.h()) {
+      if (this.c > 0) {
+         this.c--;
          return false;
       } else {
-         if (this.b.bM()) {
-            gw $$0 = this.a(this.b.dL(), this.b, 5);
-            if ($$0 != null) {
-               this.d = (double)$$0.u();
-               this.e = (double)$$0.v();
-               this.f = (double)$$0.w();
-               return true;
-            }
-         }
-
-         return this.i();
+         this.c = this.a(this.a);
+         return this.n();
       }
    }
 
-   protected boolean h() {
-      return this.b.eg() != null || this.b.dA() || this.b.bM();
-   }
-
-   protected boolean i() {
-      ehn $$0 = btw.a(this.b, 5, 4);
-      if ($$0 == null) {
-         return false;
-      } else {
-         this.d = $$0.c;
-         this.e = $$0.d;
-         this.f = $$0.e;
-         return true;
-      }
-   }
-
-   public boolean k() {
-      return this.g;
-   }
-
-   @Override
-   public void c() {
-      this.b.L().a(this.d, this.e, this.f, this.c);
-      this.g = true;
-   }
-
-   @Override
-   public void d() {
-      this.g = false;
+   protected int a(bjv $$0) {
+      return b(200 + $$0.ef().a(200));
    }
 
    @Override
    public boolean b() {
-      return !this.b.L().l();
+      return this.d >= -this.j && this.d <= 1200 && this.a(this.a.dL(), this.e);
    }
 
-   @Nullable
-   protected gw a(cpb $$0, biq $$1, int $$2) {
-      gw $$3 = $$1.dl();
-      return !$$0.a_($$3).k($$0, $$3).c() ? null : gw.a($$1.dl(), $$2, 1, $$1x -> $$0.b_($$1x).a(apx.a)).orElse(null);
+   @Override
+   public void c() {
+      this.h();
+      this.d = 0;
+      this.j = this.a.ef().a(this.a.ef().a(1200) + 1200) + 1200;
    }
+
+   protected void h() {
+      this.a.L().a((double)((float)this.e.u()) + 0.5, (double)(this.e.v() + 1), (double)((float)this.e.w()) + 0.5, this.b);
+   }
+
+   public double i() {
+      return 1.0;
+   }
+
+   protected gw k() {
+      return this.e.c();
+   }
+
+   @Override
+   public boolean Q_() {
+      return true;
+   }
+
+   @Override
+   public void e() {
+      gw $$0 = this.k();
+      if (!$$0.a(this.a.dj(), this.i())) {
+         this.k = false;
+         this.d++;
+         if (this.l()) {
+            this.a.L().a((double)((float)$$0.u()) + 0.5, (double)$$0.v(), (double)((float)$$0.w()) + 0.5, this.b);
+         }
+      } else {
+         this.k = true;
+         this.d--;
+      }
+   }
+
+   public boolean l() {
+      return this.d % 40 == 0;
+   }
+
+   protected boolean m() {
+      return this.k;
+   }
+
+   protected boolean n() {
+      int $$0 = this.l;
+      int $$1 = this.m;
+      gw $$2 = this.a.dl();
+      gw.a $$3 = new gw.a();
+
+      for (int $$4 = this.f; $$4 <= $$1; $$4 = $$4 > 0 ? -$$4 : 1 - $$4) {
+         for (int $$5 = 0; $$5 < $$0; $$5++) {
+            for (int $$6 = 0; $$6 <= $$5; $$6 = $$6 > 0 ? -$$6 : 1 - $$6) {
+               for (int $$7 = $$6 < $$5 && $$6 > -$$5 ? $$5 : 0; $$7 <= $$5; $$7 = $$7 > 0 ? -$$7 : 1 - $$7) {
+                  $$3.a($$2, $$6, $$4 - 1, $$7);
+                  if (this.a.a($$3) && this.a(this.a.dL(), $$3)) {
+                     this.e = $$3;
+                     return true;
+                  }
+               }
+            }
+         }
+      }
+
+      return false;
+   }
+
+   protected abstract boolean a(cqe var1, gw var2);
 }

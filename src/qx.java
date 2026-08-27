@@ -97,17 +97,17 @@ public class qx extends rk {
 
    @Override
    public int g() {
-      return arw.a(this.w);
+      return asb.a(this.w);
    }
 
    @Override
    public short h() {
-      return (short)(arw.a(this.w) & 65535);
+      return (short)(asb.a(this.w) & 65535);
    }
 
    @Override
    public byte i() {
-      return (byte)(arw.a(this.w) & 0xFF);
+      return (byte)(asb.a(this.w) & 0xFF);
    }
 
    @Override

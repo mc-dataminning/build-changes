@@ -1,54 +1,29 @@
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.objects.ObjectOpenCustomHashSet;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Function;
+public enum eix {
+   a(-3),
+   b(-2),
+   c(-1),
+   d(0),
+   e(1),
+   f(2),
+   g(3);
 
-public class eix<T> implements eja<T>, ejc<T> {
-   private final List<eiy<T>> a = Lists.newArrayList();
-   private final Set<eiy<?>> b = new ObjectOpenCustomHashSet(eiy.a);
+   private final int h;
 
-   @Override
-   public void a(eiz<T> $$0) {
-      eiy<T> $$1 = new eiy<>($$0.a(), $$0.b(), 0, $$0.d());
-      this.a($$1);
+   private eix(int $$0) {
+      this.h = $$0;
    }
 
-   private void a(eiy<T> $$0) {
-      if (this.b.add($$0)) {
-         this.a.add($$0);
+   public static eix a(int $$0) {
+      for (eix $$1 : values()) {
+         if ($$1.h == $$0) {
+            return $$1;
+         }
       }
+
+      return $$0 < a.h ? a : g;
    }
 
-   @Override
-   public boolean a(gw $$0, T $$1) {
-      return this.b.contains(eiy.a($$1, $$0));
-   }
-
-   @Override
    public int a() {
-      return this.a.size();
-   }
-
-   @Override
-   public rq b(long $$0, Function<T, String> $$1) {
-      rc $$2 = new rc();
-
-      for (eiy<T> $$3 : this.a) {
-         $$2.add($$3.a($$1));
-      }
-
-      return $$2;
-   }
-
-   public List<eiy<T>> b() {
-      return List.copyOf(this.a);
-   }
-
-   public static <T> eix<T> a(rc $$0, Function<String, Optional<T>> $$1, cpc $$2) {
-      eix<T> $$3 = new eix<>();
-      eiy.a($$0, $$1, $$2, $$3::a);
-      return $$3;
+      return this.h;
    }
 }

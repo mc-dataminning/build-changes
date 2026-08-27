@@ -1,169 +1,105 @@
-import com.mojang.blaze3d.platform.GlStateManager;
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Optional;
-import java.util.function.Consumer;
-import java.util.function.IntSupplier;
+import java.util.function.Supplier;
 
 public class exw extends eye {
-   static final aew c = new aew("textures/gui/title/mojangstudios.png");
-   private static final int d = arh.b.a(255, 239, 50, 61);
-   private static final int e = arh.b.a(255, 0, 0, 0);
-   private static final IntSupplier f = () -> eqv.O().m.a().c() ? e : d;
-   private static final int g = 240;
-   private static final float h = 60.0F;
-   private static final int i = 60;
-   private static final int j = 120;
-   private static final float k = 0.0625F;
-   private static final float l = 0.95F;
-   public static final long a = 1000L;
-   public static final long b = 500L;
-   private final eqv m;
-   private final anp n;
-   private final Consumer<Optional<Throwable>> o;
-   private final boolean p;
-   private float q;
-   private long r = -1L;
-   private long s = -1L;
+   private static final tl a = tl.c("options.skinCustomisation");
+   private static final tl b = tl.c("options.sounds");
+   private static final tl c = tl.c("options.video");
+   private static final tl k = tl.c("options.controls");
+   private static final tl l = tl.c("options.language");
+   private static final tl m = tl.c("options.chat");
+   private static final tl n = tl.c("options.resourcepack");
+   private static final tl o = tl.c("options.accessibility");
+   private static final tl p = tl.c("options.telemetry");
+   private static final tl q = tl.c("options.credits_and_attribution");
+   private static final int s = 2;
+   private final eye t;
+   private final eqt u;
+   private esr<bhb> v;
+   private eta w;
 
-   public exw(eqv $$0, anp $$1, Consumer<Optional<Throwable>> $$2, boolean $$3) {
-      this.m = $$0;
-      this.n = $$1;
-      this.o = $$2;
-      this.p = $$3;
-   }
-
-   public static void a(eqv $$0) {
-      $$0.Y().a(c, new exw.a());
-   }
-
-   private static int a(int $$0, int $$1) {
-      return $$0 & 16777215 | $$1 << 24;
+   public exw(eye $$0, eqt $$1) {
+      super(tl.c("options.title"));
+      this.t = $$0;
+      this.u = $$1;
    }
 
    @Override
-   public void a(esf $$0, int $$1, int $$2, float $$3) {
-      int $$4 = $$0.a();
-      int $$5 = $$0.b();
-      long $$6 = ac.b();
-      if (this.p && this.s == -1L) {
-         this.s = $$6;
-      }
-
-      float $$7 = this.r > -1L ? (float)($$6 - this.r) / 1000.0F : -1.0F;
-      float $$8 = this.s > -1L ? (float)($$6 - this.s) / 500.0F : -1.0F;
-      float $$10;
-      if ($$7 >= 1.0F) {
-         if (this.m.y != null) {
-            this.m.y.a($$0, 0, 0, $$3);
-         }
-
-         int $$9 = arw.f((1.0F - arw.a($$7 - 1.0F, 0.0F, 1.0F)) * 255.0F);
-         $$0.a(fom.D(), 0, 0, $$4, $$5, a(f.getAsInt(), $$9));
-         $$10 = 1.0F - arw.a($$7 - 1.0F, 0.0F, 1.0F);
-      } else if (this.p) {
-         if (this.m.y != null && $$8 < 1.0F) {
-            this.m.y.a($$0, $$1, $$2, $$3);
-         }
-
-         int $$11 = arw.c(arw.a((double)$$8, 0.15, 1.0) * 255.0);
-         $$0.a(fom.D(), 0, 0, $$4, $$5, a(f.getAsInt(), $$11));
-         $$10 = arw.a($$8, 0.0F, 1.0F);
-      } else {
-         int $$13 = f.getAsInt();
-         float $$14 = (float)($$13 >> 16 & 0xFF) / 255.0F;
-         float $$15 = (float)($$13 >> 8 & 0xFF) / 255.0F;
-         float $$16 = (float)($$13 & 0xFF) / 255.0F;
-         GlStateManager._clearColor($$14, $$15, $$16, 1.0F);
-         GlStateManager._clear(16384, eqv.a);
-         $$10 = 1.0F;
-      }
-
-      int $$18 = (int)((double)$$0.a() * 0.5);
-      int $$19 = (int)((double)$$0.b() * 0.5);
-      double $$20 = Math.min((double)$$0.a() * 0.75, (double)$$0.b()) * 0.25;
-      int $$21 = (int)($$20 * 0.5);
-      double $$22 = $$20 * 4.0;
-      int $$23 = (int)($$22 * 0.5);
-      RenderSystem.disableDepthTest();
-      RenderSystem.depthMask(false);
-      RenderSystem.enableBlend();
-      RenderSystem.blendFunc(770, 1);
-      $$0.a(1.0F, 1.0F, 1.0F, $$10);
-      $$0.a(c, $$18 - $$23, $$19 - $$21, $$23, (int)$$20, -0.0625F, 0.0F, 120, 60, 120, 120);
-      $$0.a(c, $$18, $$19 - $$21, $$23, (int)$$20, 0.0625F, 60.0F, 120, 60, 120, 120);
-      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
-      RenderSystem.defaultBlendFunc();
-      RenderSystem.disableBlend();
-      RenderSystem.depthMask(true);
-      RenderSystem.enableDepthTest();
-      int $$24 = (int)((double)$$0.b() * 0.8325);
-      float $$25 = this.n.b();
-      this.q = arw.a(this.q * 0.95F + $$25 * 0.050000012F, 0.0F, 1.0F);
-      if ($$7 < 1.0F) {
-         this.a($$0, $$4 / 2 - $$23, $$24 - 5, $$4 / 2 + $$23, $$24 + 5, 1.0F - arw.a($$7, 0.0F, 1.0F));
-      }
-
-      if ($$7 >= 2.0F) {
-         this.m.a(null);
-      }
-
-      if (this.r == -1L && this.n.c() && (!this.p || $$8 >= 2.0F)) {
-         try {
-            this.n.d();
-            this.o.accept(Optional.empty());
-         } catch (Throwable var23) {
-            this.o.accept(Optional.of(var23));
-         }
-
-         this.r = ac.b();
-         if (this.m.y != null) {
-            this.m.y.b(this.m, $$0.a(), $$0.b());
-         }
-      }
+   protected void aH_() {
+      evt $$0 = new evt();
+      $$0.c().f(5).e(4).b();
+      evt.b $$1 = $$0.d(2);
+      $$1.a(this.u.ad().a(this.f.m, 0, 0, 150));
+      $$1.a(this.l());
+      $$1.a(evz.b(26), 2);
+      $$1.a(this.a(a, () -> new eyh(this, this.u)));
+      $$1.a(this.a(b, () -> new eyi(this, this.u)));
+      $$1.a(this.a(c, () -> new eyl(this, this.u)));
+      $$1.a(this.a(k, () -> new eyw(this, this.u)));
+      $$1.a(this.a(l, () -> new exo(this, this.u, this.f.ae())));
+      $$1.a(this.a(m, () -> new ewv(this, this.u)));
+      $$1.a(this.a(n, () -> new fbk(this.f.aa(), this::a, this.f.ad(), tl.c("resourcePack.title"))));
+      $$1.a(this.a(o, () -> new ewr(this, this.u)));
+      $$1.a(this.a(p, () -> new fcq(this, this.u)));
+      $$1.a(this.a(q, () -> new exc(this)));
+      $$1.a(esk.a(tk.d, $$0x -> this.f.a(this.t)).a(200).a(), 2, $$1.b().c(6));
+      $$0.a();
+      evs.a($$0, 0, this.h / 6 - 12, this.g, this.h, 0.5F, 0.0F);
+      $$0.a(this::d);
    }
 
-   private void a(esf $$0, int $$1, int $$2, int $$3, int $$4, float $$5) {
-      int $$6 = arw.f((float)($$3 - $$1 - 2) * this.q);
-      int $$7 = Math.round($$5 * 255.0F);
-      int $$8 = arh.b.a($$7, 255, 255, 255);
-      $$0.a($$1 + 2, $$2 + 2, $$1 + $$6, $$4 - 2, $$8);
-      $$0.a($$1 + 1, $$2, $$3 - 1, $$2 + 1, $$8);
-      $$0.a($$1 + 1, $$4, $$3 - 1, $$4 - 1, $$8);
-      $$0.a($$1, $$2, $$1 + 1, $$4, $$8);
-      $$0.a($$3, $$2, $$3 - 1, $$4, $$8);
+   private void a(anh $$0) {
+      this.u.a($$0);
+      this.f.a(this);
    }
 
-   @Override
-   public boolean a() {
-      return true;
-   }
-
-   static class a extends fyx {
-      public a() {
-         super(exw.c);
-      }
-
-      @Override
-      protected fyx.a b(ant $$0) {
-         amk $$1 = eqv.O().ab();
-         anl<InputStream> $$2 = $$1.a(ami.a, exw.c);
-         if ($$2 == null) {
-            return new fyx.a(new FileNotFoundException(exw.c.toString()));
+   private evw l() {
+      if (this.f.r != null && this.f.S()) {
+         this.v = a(0, 0, "options.difficulty", this.f);
+         if (!this.f.r.k().n()) {
+            this.w = new eta(0, 0, $$0x -> this.f.a(new ewy(this::c, tl.c("difficulty.lock.title"), tl.a("difficulty.lock.question", this.f.r.k().s().b()))));
+            this.v.d(this.v.l() - this.w.l());
+            this.w.b(this.f.r.k().t());
+            this.w.i = !this.w.a();
+            this.v.i = !this.w.a();
+            evr $$0 = new evr(150, 0, evr.b.a);
+            $$0.a(this.v);
+            $$0.a(this.w);
+            return $$0;
          } else {
-            try {
-               fyx.a var5;
-               try (InputStream $$3 = $$2.get()) {
-                  var5 = new fyx.a(new gbb(true, true), ekq.a($$3));
-               }
-
-               return var5;
-            } catch (IOException var9) {
-               return new fyx.a(var9);
-            }
+            this.v.i = false;
+            return this.v;
          }
+      } else {
+         return esk.a(tl.c("options.online"), $$0x -> this.f.a(exv.a(this.f, this, this.u))).a(this.g / 2 + 5, this.h / 6 - 12 + 24, 150, 20).a();
       }
+   }
+
+   public static esr<bhb> a(int $$0, int $$1, String $$2, eqp $$3) {
+      return esr.a(bhb::b).a(bhb.values()).a($$3.r.ai()).a($$0, $$1, 150, 20, tl.c($$2), ($$1x, $$2x) -> $$3.J().b(new abi($$2x)));
+   }
+
+   private void c(boolean $$0) {
+      this.f.a(this);
+      if ($$0 && this.f.r != null) {
+         this.f.J().b(new aby(true));
+         this.w.b(true);
+         this.w.i = false;
+         this.v.i = false;
+      }
+   }
+
+   @Override
+   public void h() {
+      this.u.ar();
+   }
+
+   @Override
+   public void a(erz $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, this.e, this.g / 2, 15, 16777215);
+   }
+
+   private esk a(tl $$0, Supplier<eye> $$1) {
+      return esk.a($$0, $$1x -> this.f.a($$1.get())).a();
    }
 }

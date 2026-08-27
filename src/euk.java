@@ -1,58 +1,26 @@
-import javax.annotation.Nullable;
+import java.util.function.Consumer;
 
-public interface euk extends etz {
-   long r = 250L;
+public class euk implements eul {
+   private final tl b;
+   protected final evt a = new evt();
 
-   default void e(double $$0, double $$1) {
+   public euk(tl $$0) {
+      this.b = $$0;
    }
 
-   default boolean a(double $$0, double $$1, int $$2) {
-      return false;
+   @Override
+   public tl a() {
+      return this.b;
    }
 
-   default boolean b(double $$0, double $$1, int $$2) {
-      return false;
+   @Override
+   public void a(Consumer<esi> $$0) {
+      this.a.a($$0);
    }
 
-   default boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
-      return false;
-   }
-
-   default boolean a(double $$0, double $$1, double $$2, double $$3) {
-      return false;
-   }
-
-   default boolean a(int $$0, int $$1, int $$2) {
-      return false;
-   }
-
-   default boolean b(int $$0, int $$1, int $$2) {
-      return false;
-   }
-
-   default boolean a(char $$0, int $$1) {
-      return false;
-   }
-
-   @Nullable
-   default esc a(ewo $$0) {
-      return null;
-   }
-
-   default boolean a_(double $$0, double $$1) {
-      return false;
-   }
-
-   void b_(boolean var1);
-
-   boolean aC_();
-
-   @Nullable
-   default esc aF_() {
-      return this.aC_() ? esc.a(this) : null;
-   }
-
-   default ews s() {
-      return ews.a();
+   @Override
+   public void a(ewn $$0) {
+      this.a.a();
+      evs.a(this.a, $$0, 0.5F, 0.16666667F);
    }
 }

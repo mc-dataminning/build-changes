@@ -27,9 +27,9 @@ public class fq implements ArgumentType<fm> {
       return new fq($$0);
    }
 
-   public static ehm a(CommandContext<dt> $$0, String $$1) {
-      ehn $$2 = ((fm)$$0.getArgument($$1, fm.class)).a((dt)$$0.getSource());
-      return new ehm((float)$$2.c, (float)$$2.e);
+   public static ehg a(CommandContext<dt> $$0, String $$1) {
+      ehh $$2 = ((fm)$$0.getArgument($$1, fm.class)).a((dt)$$0.getSource());
+      return new ehg((float)$$2.c, (float)$$2.e);
    }
 
    public fm a(StringReader $$0) throws CommandSyntaxException {

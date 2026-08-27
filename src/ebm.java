@@ -1,141 +1,116 @@
-import com.mojang.logging.LogUtils;
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Objects;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class ebm implements ebo {
-   private static final Logger b = LogUtils.getLogger();
-   private final cpv c;
-   private final int d;
-   private final ArrayDeque<ebm.c> e = new ArrayDeque<>();
-   private final List<ebm.c> f = new ArrayList<>();
-   private int g = 0;
+public class ebm {
+   private final gw a;
+   private final chz b;
+   @Nullable
+   private final tl c;
 
-   public ebm(cpv $$0, int $$1) {
-      this.c = $$0;
-      this.d = $$1;
+   public ebm(gw $$0, chz $$1, @Nullable tl $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   @Override
-   public void a(ha $$0, dfj $$1, gw $$2, gw $$3, int $$4, int $$5) {
-      this.a($$2, new ebm.d($$0, $$1, $$2.i(), $$3.i(), $$4, $$5));
+   public static ebm a(qw $$0) {
+      gw $$1 = rj.b($$0.p("Pos"));
+      chz $$2 = chz.a($$0.l("Color"), chz.a);
+      tl $$3 = $$0.e("Name") ? tl.a.a($$0.l("Name")) : null;
+      return new ebm($$1, $$2, $$3);
    }
 
-   @Override
-   public void a(gw $$0, csv $$1, gw $$2) {
-      this.a($$0, new ebm.e($$0, $$1, $$2.i()));
-   }
-
-   @Override
-   public void a(dfj $$0, gw $$1, csv $$2, gw $$3, boolean $$4) {
-      this.a($$1, new ebm.a($$0, $$1.i(), $$2, $$3.i(), $$4));
-   }
-
-   @Override
-   public void a(gw $$0, csv $$1, @Nullable ha $$2) {
-      this.a($$0, new ebm.b($$0.i(), $$1, $$2));
-   }
-
-   private void a(gw $$0, ebm.c $$1) {
-      boolean $$2 = this.g > 0;
-      boolean $$3 = this.d >= 0 && this.g >= this.d;
-      this.g++;
-      if (!$$3) {
-         if ($$2) {
-            this.f.add($$1);
-         } else {
-            this.e.push($$1);
-         }
-      } else if (this.g - 1 == this.d) {
-         b.error("Too many chained neighbor updates. Skipping the rest. First skipped position: " + $$0.x());
-      }
-
-      if (!$$2) {
-         this.a();
+   @Nullable
+   public static ebm a(cph $$0, gw $$1) {
+      if ($$0.c_($$1) instanceof dcp $$3) {
+         chz $$4 = $$3.g();
+         tl $$5 = $$3.ac() ? $$3.ad() : null;
+         return new ebm($$1, $$4, $$5);
+      } else {
+         return null;
       }
    }
 
-   private void a() {
-      try {
-         while (!this.e.isEmpty() || !this.f.isEmpty()) {
-            for (int $$0 = this.f.size() - 1; $$0 >= 0; $$0--) {
-               this.e.push(this.f.get($$0));
-            }
+   public gw a() {
+      return this.a;
+   }
 
-            this.f.clear();
-            ebm.c $$1 = this.e.peek();
+   public chz b() {
+      return this.b;
+   }
 
-            while (this.f.isEmpty()) {
-               if (!$$1.a(this.c)) {
-                  this.e.pop();
-                  break;
-               }
-            }
-         }
-      } finally {
-         this.e.clear();
-         this.f.clear();
-         this.g = 0;
+   public ebn.a c() {
+      switch (this.b) {
+         case a:
+            return ebn.a.k;
+         case b:
+            return ebn.a.l;
+         case c:
+            return ebn.a.m;
+         case d:
+            return ebn.a.n;
+         case e:
+            return ebn.a.o;
+         case f:
+            return ebn.a.p;
+         case g:
+            return ebn.a.q;
+         case h:
+            return ebn.a.r;
+         case i:
+            return ebn.a.s;
+         case j:
+            return ebn.a.t;
+         case k:
+            return ebn.a.u;
+         case l:
+            return ebn.a.v;
+         case m:
+            return ebn.a.w;
+         case n:
+            return ebn.a.x;
+         case o:
+            return ebn.a.y;
+         case p:
+         default:
+            return ebn.a.z;
       }
    }
 
-   static record a(dfj a, gw b, csv c, gw d, boolean e) implements ebm.c {
-      @Override
-      public boolean a(cpv $$0) {
-         ebo.a($$0, this.a, this.b, this.c, this.d, this.e);
+   @Nullable
+   public tl d() {
+      return this.c;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         ebm $$1 = (ebm)$$0;
+         return Objects.equals(this.a, $$1.a) && this.b == $$1.b && Objects.equals(this.c, $$1.c);
+      } else {
          return false;
       }
    }
 
-   static final class b implements ebm.c {
-      private final gw a;
-      private final csv b;
-      @Nullable
-      private final ha c;
-      private int d = 0;
-
-      b(gw $$0, csv $$1, @Nullable ha $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         if (ebo.a[this.d] == $$2) {
-            this.d++;
-         }
-      }
-
-      @Override
-      public boolean a(cpv $$0) {
-         gw $$1 = this.a.a(ebo.a[this.d++]);
-         dfj $$2 = $$0.a_($$1);
-         ebo.a($$0, $$2, $$1, this.b, this.a, false);
-         if (this.d < ebo.a.length && ebo.a[this.d] == this.c) {
-            this.d++;
-         }
-
-         return this.d < ebo.a.length;
-      }
+   @Override
+   public int hashCode() {
+      return Objects.hash(this.a, this.b, this.c);
    }
 
-   interface c {
-      boolean a(cpv var1);
+   public qw e() {
+      qw $$0 = new qw();
+      $$0.a("Pos", rj.a(this.a));
+      $$0.a("Color", this.b.b());
+      if (this.c != null) {
+         $$0.a("Name", tl.a.a(this.c));
+      }
+
+      return $$0;
    }
 
-   static record d(ha a, dfj b, gw c, gw d, int e, int f) implements ebm.c {
-      @Override
-      public boolean a(cpv $$0) {
-         ebo.a($$0, this.a, this.b, this.c, this.d, this.e, this.f);
-         return false;
-      }
-   }
-
-   static record e(gw a, csv b, gw c) implements ebm.c {
-      @Override
-      public boolean a(cpv $$0) {
-         dfj $$1 = $$0.a_(this.a);
-         ebo.a($$0, $$1, this.a, this.b, this.c, false);
-         return false;
-      }
+   public String f() {
+      return "banner-" + this.a.u() + "," + this.a.v() + "," + this.a.w();
    }
 }

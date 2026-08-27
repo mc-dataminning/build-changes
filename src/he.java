@@ -11,19 +11,19 @@ public interface he<T> {
 
    boolean b();
 
-   boolean a(aew var1);
+   boolean a(aez var1);
 
-   boolean a(aev<T> var1);
+   boolean a(aey<T> var1);
 
-   boolean a(Predicate<aev<T>> var1);
+   boolean a(Predicate<aey<T>> var1);
 
-   boolean a(aqh<T> var1);
+   boolean a(aqk<T> var1);
 
-   Stream<aqh<T>> c();
+   Stream<aqk<T>> c();
 
-   Either<aev<T>, T> d();
+   Either<aey<T>, T> d();
 
-   Optional<aev<T>> e();
+   Optional<aey<T>> e();
 
    he.b f();
 
@@ -40,32 +40,32 @@ public interface he<T> {
       }
 
       @Override
-      public boolean a(aew $$0) {
+      public boolean a(aez $$0) {
          return false;
       }
 
       @Override
-      public boolean a(aev<T> $$0) {
+      public boolean a(aey<T> $$0) {
          return false;
       }
 
       @Override
-      public boolean a(aqh<T> $$0) {
+      public boolean a(aqk<T> $$0) {
          return false;
       }
 
       @Override
-      public boolean a(Predicate<aev<T>> $$0) {
+      public boolean a(Predicate<aey<T>> $$0) {
          return false;
       }
 
       @Override
-      public Either<aev<T>, T> d() {
+      public Either<aey<T>, T> d() {
          return Either.right(this.a);
       }
 
       @Override
-      public Optional<aev<T>> e() {
+      public Optional<aey<T>> e() {
          return Optional.empty();
       }
 
@@ -85,7 +85,7 @@ public interface he<T> {
       }
 
       @Override
-      public Stream<aqh<T>> c() {
+      public Stream<aqk<T>> c() {
          return Stream.of();
       }
    }
@@ -97,21 +97,21 @@ public interface he<T> {
 
    public static class c<T> implements he<T> {
       private final hh<T> a;
-      private Set<aqh<T>> b = Set.of();
+      private Set<aqk<T>> b = Set.of();
       private final he.c.a c;
       @Nullable
-      private aev<T> d;
+      private aey<T> d;
       @Nullable
       private T e;
 
-      private c(he.c.a $$0, hh<T> $$1, @Nullable aev<T> $$2, @Nullable T $$3) {
+      private c(he.c.a $$0, hh<T> $$1, @Nullable aey<T> $$2, @Nullable T $$3) {
          this.a = $$1;
          this.c = $$0;
          this.d = $$2;
          this.e = $$3;
       }
 
-      public static <T> he.c<T> a(hh<T> $$0, aev<T> $$1) {
+      public static <T> he.c<T> a(hh<T> $$0, aey<T> $$1) {
          return new he.c<>(he.c.a.a, $$0, $$1, null);
       }
 
@@ -120,7 +120,7 @@ public interface he<T> {
          return new he.c<>(he.c.a.b, $$0, null, $$1);
       }
 
-      public aev<T> g() {
+      public aey<T> g() {
          if (this.d == null) {
             throw new IllegalStateException("Trying to access unbound value '" + this.e + "' from registry " + this.a);
          } else {
@@ -138,22 +138,22 @@ public interface he<T> {
       }
 
       @Override
-      public boolean a(aew $$0) {
+      public boolean a(aez $$0) {
          return this.g().a().equals($$0);
       }
 
       @Override
-      public boolean a(aev<T> $$0) {
+      public boolean a(aey<T> $$0) {
          return this.g() == $$0;
       }
 
       @Override
-      public boolean a(aqh<T> $$0) {
+      public boolean a(aqk<T> $$0) {
          return this.b.contains($$0);
       }
 
       @Override
-      public boolean a(Predicate<aev<T>> $$0) {
+      public boolean a(Predicate<aey<T>> $$0) {
          return $$0.test(this.g());
       }
 
@@ -163,12 +163,12 @@ public interface he<T> {
       }
 
       @Override
-      public Either<aev<T>, T> d() {
+      public Either<aey<T>, T> d() {
          return Either.left(this.g());
       }
 
       @Override
-      public Optional<aev<T>> e() {
+      public Optional<aey<T>> e() {
          return Optional.of(this.g());
       }
 
@@ -182,7 +182,7 @@ public interface he<T> {
          return this.d != null && this.e != null;
       }
 
-      void b(aev<T> $$0) {
+      void b(aey<T> $$0) {
          if (this.d != null && $$0 != this.d) {
             throw new IllegalStateException("Can't change holder key: existing=" + this.d + ", new=" + $$0);
          } else {
@@ -198,12 +198,12 @@ public interface he<T> {
          }
       }
 
-      void a(Collection<aqh<T>> $$0) {
+      void a(Collection<aqk<T>> $$0) {
          this.b = Set.copyOf($$0);
       }
 
       @Override
-      public Stream<aqh<T>> c() {
+      public Stream<aqk<T>> c() {
          return this.b.stream();
       }
 

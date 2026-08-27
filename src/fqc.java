@@ -1,41 +1,49 @@
-public class fqc implements fqe<dct> {
-   public static final gbi a = new gbi(fzd.e, new aew("entity/bell/bell_body"));
-   private static final String b = "bell_body";
-   private final fic c;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.google.common.collect.ImmutableMap.Builder;
+import java.util.Map;
 
-   public fqc(fqf.a $$0) {
-      fic $$1 = $$0.a(fib.k);
-      this.c = $$1.b("bell_body");
+public class fqc {
+   private static final Map<ddb<?>, fqb<?>> a = Maps.newHashMap();
+
+   private static <T extends dcz> void a(ddb<? extends T> $$0, fqb<T> $$1) {
+      a.put($$0, $$1);
    }
 
-   public static fii b() {
-      fik $$0 = new fik();
-      fil $$1 = $$0.a();
-      fil $$2 = $$1.a("bell_body", fih.c().a(0, 0).a(-3.0F, -6.0F, -3.0F, 6.0F, 7.0F, 6.0F), fie.a(8.0F, 12.0F, 8.0F));
-      $$2.a("bell_base", fih.c().a(0, 13).a(4.0F, 4.0F, 4.0F, 8.0F, 2.0F, 8.0F), fie.a(-8.0F, -12.0F, -8.0F));
-      return fii.a($$0, 32, 32);
-   }
-
-   public void a(dct $$0, float $$1, elp $$2, foe $$3, int $$4, int $$5) {
-      float $$6 = (float)$$0.a + $$1;
-      float $$7 = 0.0F;
-      float $$8 = 0.0F;
-      if ($$0.b) {
-         float $$9 = arw.a($$6 / (float) Math.PI) / (4.0F + $$6 / 3.0F);
-         if ($$0.c == ha.c) {
-            $$7 = -$$9;
-         } else if ($$0.c == ha.d) {
-            $$7 = $$9;
-         } else if ($$0.c == ha.f) {
-            $$8 = -$$9;
-         } else if ($$0.c == ha.e) {
-            $$8 = $$9;
+   public static Map<ddb<?>, fqa<?>> a(fqb.a $$0) {
+      Builder<ddb<?>, fqa<?>> $$1 = ImmutableMap.builder();
+      a.forEach(($$2, $$3) -> {
+         try {
+            $$1.put($$2, $$3.create($$0));
+         } catch (Exception var5) {
+            throw new IllegalStateException("Failed to create model for " + jb.l.b((ddb<?>)$$2), var5);
          }
-      }
+      });
+      return $$1.build();
+   }
 
-      this.c.e = $$7;
-      this.c.g = $$8;
-      elt $$10 = a.a($$3, fom::c);
-      this.c.a($$2, $$10, $$4, $$5);
+   static {
+      a(ddb.h, fqo::new);
+      a(ddb.i, fqk::new);
+      a(ddb.j, fqq::new);
+      a(ddb.k, fqm::new);
+      a(ddb.b, fqg::new);
+      a(ddb.d, fqg::new);
+      a(ddb.c, fqg::new);
+      a(ddb.m, fqj::new);
+      a(ddb.D, fql::new);
+      a(ddb.n, fqt::new);
+      a(ddb.v, fqs::new);
+      a(ddb.o, fpw::new);
+      a(ddb.p, fqp::new);
+      a(ddb.t, fpv::new);
+      a(ddb.u, fqr::new);
+      a(ddb.x, fqn::new);
+      a(ddb.y, fpx::new);
+      a(ddb.z, fqh::new);
+      a(ddb.E, fpy::new);
+      a(ddb.G, fqf::new);
+      a(ddb.N, fqe::new);
+      a(ddb.O, fqi::new);
    }
 }

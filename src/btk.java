@@ -1,37 +1,29 @@
-import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
-import it.unimi.dsi.fastutil.ints.IntSet;
+import com.google.common.collect.ImmutableSet;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Set;
 
-public class btk {
-   private final bji a;
-   private final IntSet b = new IntOpenHashSet();
-   private final IntSet c = new IntOpenHashSet();
-
-   public btk(bji $$0) {
-      this.a = $$0;
+public class btk<T extends bjm> extends btr<T> {
+   @Override
+   protected void a(akt $$0, T $$1) {
+      ehc $$2 = $$1.cG().c((double)this.b(), (double)this.c(), (double)this.b());
+      List<bjm> $$3 = $$0.a(bjm.class, $$2, $$1x -> $$1x != $$1 && $$1x.bv());
+      $$3.sort(Comparator.comparingDouble($$1::f));
+      bkm<?> $$4 = $$1.dN();
+      $$4.a(bsn.g, $$3);
+      $$4.a(bsn.h, new bsp($$1, $$3));
    }
 
-   public void a() {
-      this.b.clear();
-      this.c.clear();
+   protected int b() {
+      return 16;
    }
 
-   public boolean a(biq $$0) {
-      int $$1 = $$0.ah();
-      if (this.b.contains($$1)) {
-         return true;
-      } else if (this.c.contains($$1)) {
-         return false;
-      } else {
-         this.a.dL().ad().a("hasLineOfSight");
-         boolean $$2 = this.a.E($$0);
-         this.a.dL().ad().c();
-         if ($$2) {
-            this.b.add($$1);
-         } else {
-            this.c.add($$1);
-         }
+   protected int c() {
+      return 16;
+   }
 
-         return $$2;
-      }
+   @Override
+   public Set<bsn<?>> a() {
+      return ImmutableSet.of(bsn.g, bsn.h);
    }
 }

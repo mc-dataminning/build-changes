@@ -1,108 +1,38 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
 
-public class dkj extends dhg {
-   public static final Codec<dkj> c = RecordCodecBuilder.create($$0 -> $$0.group(aeu.d(cra.b)).apply($$0, $$0.stable(dkj::new)));
-   private static final int h = 2;
-   private static final List<dfj> i = StreamSupport.stream(jb.f.spliterator(), false).flatMap($$0 -> $$0.l().a().stream()).collect(Collectors.toList());
-   private static final int j = arw.f(arw.c((float)i.size()));
-   private static final int k = arw.f((float)i.size() / (float)j);
-   protected static final dfj d = csw.a.n();
-   protected static final dfj e = csw.hW.n();
-   public static final int f = 70;
-   public static final int g = 60;
+public class dkj {
+   public final drv a;
+   public final drv b;
+   public final drv c;
+   public final drv d;
+   public final drv e;
+   public final List<dfd> f;
+   public final aqk<ctc> g;
+   public final aqk<ctc> h;
+   public static final Codec<dkj> i = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               drv.a.fieldOf("filling_provider").forGetter($$0x -> $$0x.a),
+               drv.a.fieldOf("inner_layer_provider").forGetter($$0x -> $$0x.b),
+               drv.a.fieldOf("alternate_inner_layer_provider").forGetter($$0x -> $$0x.c),
+               drv.a.fieldOf("middle_layer_provider").forGetter($$0x -> $$0x.d),
+               drv.a.fieldOf("outer_layer_provider").forGetter($$0x -> $$0x.e),
+               arj.a(dfd.b.listOf()).fieldOf("inner_placements").forGetter($$0x -> $$0x.f),
+               aqk.b(jc.e).fieldOf("cannot_replace").forGetter($$0x -> $$0x.g),
+               aqk.b(jc.e).fieldOf("invalid_blocks").forGetter($$0x -> $$0x.h)
+            )
+            .apply($$0, dkj::new)
+   );
 
-   public dkj(he.c<cqt> $$0) {
-      super(new cre($$0));
-   }
-
-   @Override
-   protected Codec<? extends dhg> a() {
-      return c;
-   }
-
-   @Override
-   public void a(akx $$0, cqn $$1, dlg $$2, dhf $$3) {
-   }
-
-   @Override
-   public void a(cqp $$0, dhf $$1, cqn $$2) {
-      gw.a $$3 = new gw.a();
-      cpc $$4 = $$1.f();
-      int $$5 = $$4.e;
-      int $$6 = $$4.f;
-
-      for (int $$7 = 0; $$7 < 16; $$7++) {
-         for (int $$8 = 0; $$8 < 16; $$8++) {
-            int $$9 = hw.a($$5, $$7);
-            int $$10 = hw.a($$6, $$8);
-            $$0.a($$3.d($$9, 60, $$10), e, 2);
-            dfj $$11 = a($$9, $$10);
-            $$0.a($$3.d($$9, 70, $$10), $$11, 2);
-         }
-      }
-   }
-
-   @Override
-   public CompletableFuture<dhf> a(Executor $$0, dlu $$1, dlg $$2, cqn $$3, dhf $$4) {
-      return CompletableFuture.completedFuture($$4);
-   }
-
-   @Override
-   public int a(int $$0, int $$1, dks.a $$2, cpx $$3, dlg $$4) {
-      return 0;
-   }
-
-   @Override
-   public cqh a(int $$0, int $$1, cpx $$2, dlg $$3) {
-      return new cqh(0, new dfj[0]);
-   }
-
-   @Override
-   public void a(List<String> $$0, dlg $$1, gw $$2) {
-   }
-
-   public static dfj a(int $$0, int $$1) {
-      dfj $$2 = d;
-      if ($$0 > 0 && $$1 > 0 && $$0 % 2 != 0 && $$1 % 2 != 0) {
-         $$0 /= 2;
-         $$1 /= 2;
-         if ($$0 <= j && $$1 <= k) {
-            int $$3 = arw.a($$0 * j + $$1);
-            if ($$3 < i.size()) {
-               $$2 = i.get($$3);
-            }
-         }
-      }
-
-      return $$2;
-   }
-
-   @Override
-   public void a(akx $$0, long $$1, dlg $$2, cqv $$3, cqn $$4, dhf $$5, dko.a $$6) {
-   }
-
-   @Override
-   public void a(akx $$0) {
-   }
-
-   @Override
-   public int f() {
-      return 0;
-   }
-
-   @Override
-   public int d() {
-      return 384;
-   }
-
-   @Override
-   public int e() {
-      return 63;
+   public dkj(drv $$0, drv $$1, drv $$2, drv $$3, drv $$4, List<dfd> $$5, aqk<ctc> $$6, aqk<ctc> $$7) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
+      this.g = $$6;
+      this.h = $$7;
    }
 }

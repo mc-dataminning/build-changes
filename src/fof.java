@@ -1,125 +1,70 @@
-import java.util.Optional;
+public class fof {
+   private int a;
+   private int b;
+   private int c;
+   private int d;
 
-public class fof implements foe {
-   private final foe.a a;
-   private final foe.a b = foe.a(new elk(256));
-   private int c = 255;
-   private int d = 255;
-   private int e = 255;
-   private int f = 255;
+   public fof(int $$0, int $$1, int $$2, int $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+   }
 
-   public fof(foe.a $$0) {
+   public fof a(fof $$0) {
+      int $$1 = this.a;
+      int $$2 = this.b;
+      int $$3 = this.a + this.c;
+      int $$4 = this.b + this.d;
+      int $$5 = $$0.a();
+      int $$6 = $$0.b();
+      int $$7 = $$5 + $$0.c();
+      int $$8 = $$6 + $$0.d();
+      this.a = Math.max($$1, $$5);
+      this.b = Math.max($$2, $$6);
+      this.c = Math.max(0, Math.min($$3, $$7) - this.a);
+      this.d = Math.max(0, Math.min($$4, $$8) - this.b);
+      return this;
+   }
+
+   public int a() {
+      return this.a;
+   }
+
+   public int b() {
+      return this.b;
+   }
+
+   public void a(int $$0) {
       this.a = $$0;
    }
 
-   @Override
-   public elt getBuffer(fom $$0) {
-      if ($$0.L()) {
-         elt $$1 = this.b.getBuffer($$0);
-         return new fof.a($$1, this.c, this.d, this.e, this.f);
-      } else {
-         elt $$2 = this.a.getBuffer($$0);
-         Optional<fom> $$3 = $$0.K();
-         if ($$3.isPresent()) {
-            elt $$4 = this.b.getBuffer($$3.get());
-            fof.a $$5 = new fof.a($$4, this.c, this.d, this.e, this.f);
-            return elw.a($$5, $$2);
-         } else {
-            return $$2;
-         }
-      }
+   public void b(int $$0) {
+      this.b = $$0;
    }
 
-   public void a(int $$0, int $$1, int $$2, int $$3) {
+   public int c() {
+      return this.c;
+   }
+
+   public int d() {
+      return this.d;
+   }
+
+   public void c(int $$0) {
       this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
    }
 
-   public void a() {
-      this.b.b();
+   public void d(int $$0) {
+      this.d = $$0;
    }
 
-   static class a extends elo {
-      private final elt f;
-      private double g;
-      private double h;
-      private double i;
-      private float j;
-      private float k;
+   public void a(int $$0, int $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
 
-      a(elt $$0, int $$1, int $$2, int $$3, int $$4) {
-         this.f = $$0;
-         super.b($$1, $$2, $$3, $$4);
-      }
-
-      @Override
-      public void b(int $$0, int $$1, int $$2, int $$3) {
-      }
-
-      @Override
-      public void k() {
-      }
-
-      @Override
-      public elt a(double $$0, double $$1, double $$2) {
-         this.g = $$0;
-         this.h = $$1;
-         this.i = $$2;
-         return this;
-      }
-
-      @Override
-      public elt a(int $$0, int $$1, int $$2, int $$3) {
-         return this;
-      }
-
-      @Override
-      public elt a(float $$0, float $$1) {
-         this.j = $$0;
-         this.k = $$1;
-         return this;
-      }
-
-      @Override
-      public elt a(int $$0, int $$1) {
-         return this;
-      }
-
-      @Override
-      public elt b(int $$0, int $$1) {
-         return this;
-      }
-
-      @Override
-      public elt a(float $$0, float $$1, float $$2) {
-         return this;
-      }
-
-      @Override
-      public void a(
-         float $$0,
-         float $$1,
-         float $$2,
-         float $$3,
-         float $$4,
-         float $$5,
-         float $$6,
-         float $$7,
-         float $$8,
-         int $$9,
-         int $$10,
-         float $$11,
-         float $$12,
-         float $$13
-      ) {
-         this.f.a((double)$$0, (double)$$1, (double)$$2).a(this.b, this.c, this.d, this.e).a($$7, $$8).e();
-      }
-
-      @Override
-      public void e() {
-         this.f.a(this.g, this.h, this.i).a(this.b, this.c, this.d, this.e).a(this.j, this.k).e();
-      }
+   public boolean b(int $$0, int $$1) {
+      return $$0 >= this.a && $$0 <= this.a + this.c && $$1 >= this.b && $$1 <= this.b + this.d;
    }
 }

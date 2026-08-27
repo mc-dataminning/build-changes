@@ -1,21 +1,33 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.stream.Stream;
 
-public class dql implements dqa {
+public record dql(int b, int c, int d, int e, int f, bgj g, float h) implements dpu {
    public static final Codec<dql> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(dum.b.fieldOf("feature_true").forGetter($$0x -> $$0x.b), dum.b.fieldOf("feature_false").forGetter($$0x -> $$0x.c)).apply($$0, dql::new)
+      $$0 -> $$0.group(
+               Codec.intRange(1, 32).fieldOf("charge_count").forGetter(dql::a),
+               Codec.intRange(1, 500).fieldOf("amount_per_charge").forGetter(dql::b),
+               Codec.intRange(1, 64).fieldOf("spread_attempts").forGetter(dql::c),
+               Codec.intRange(0, 8).fieldOf("growth_rounds").forGetter(dql::d),
+               Codec.intRange(0, 8).fieldOf("spread_rounds").forGetter(dql::f),
+               bgj.c.fieldOf("extra_rare_growths").forGetter(dql::g),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("catalyst_chance").forGetter(dql::h)
+            )
+            .apply($$0, dql::new)
    );
-   public final he<dum> b;
-   public final he<dum> c;
 
-   public dql(he<dum> $$0, he<dum> $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public int a() {
+      return this.b;
    }
 
-   @Override
-   public Stream<dnj<?, ?>> e() {
-      return Stream.concat(this.b.a().a(), this.c.a().a());
+   public int b() {
+      return this.c;
+   }
+
+   public int c() {
+      return this.d;
+   }
+
+   public int d() {
+      return this.e;
    }
 }

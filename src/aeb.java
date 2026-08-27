@@ -1,24 +1,8 @@
-public class aeb implements vd<abe> {
-   private final long a;
-
-   public aeb(long $$0) {
-      this.a = $$0;
-   }
-
-   public aeb(so $$0) {
-      this.a = $$0.readLong();
-   }
-
+public interface aeb extends abe, abf {
    @Override
-   public void a(so $$0) {
-      $$0.b(this.a);
+   default sn b() {
+      return sn.c;
    }
 
-   public void a(abe $$0) {
-      $$0.a(this);
-   }
-
-   public long a() {
-      return this.a;
-   }
+   void a(aed var1);
 }

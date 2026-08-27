@@ -1,29 +1,41 @@
 import com.google.common.collect.ImmutableSet;
-import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
-public class bte<T extends bjg> extends btl<T> {
-   @Override
-   protected void a(akq $$0, T $$1) {
-      ehi $$2 = $$1.cG().c((double)this.b(), (double)this.c(), (double)this.b());
-      List<bjg> $$3 = $$0.a(bjg.class, $$2, $$1x -> $$1x != $$1 && $$1x.bv());
-      $$3.sort(Comparator.comparingDouble($$1::f));
-      bkg<?> $$4 = $$1.dN();
-      $$4.a(bsh.g, $$3);
-      $$4.a(bsh.h, new bsj($$1, $$3));
+public class bte extends btr<bjm> {
+   private static final int a = 200;
+   private static final int c = 599;
+
+   public bte() {
+      this(200);
    }
 
-   protected int b() {
-      return 16;
-   }
-
-   protected int c() {
-      return 16;
+   public bte(int $$0) {
+      super($$0);
    }
 
    @Override
-   public Set<bsh<?>> a() {
-      return ImmutableSet.of(bsh.g, bsh.h);
+   protected void a(akt $$0, bjm $$1) {
+      a($$1);
+   }
+
+   @Override
+   public Set<bsn<?>> a() {
+      return ImmutableSet.of(bsn.g);
+   }
+
+   public static void a(bjm $$0) {
+      Optional<List<bjm>> $$1 = $$0.dN().c(bsn.g);
+      if (!$$1.isEmpty()) {
+         boolean $$2 = $$1.get().stream().anyMatch($$0x -> $$0x.ag().equals(bja.ac));
+         if ($$2) {
+            b($$0);
+         }
+      }
+   }
+
+   public static void b(bjm $$0) {
+      $$0.dN().a(bsn.F, true, 599L);
    }
 }

@@ -1,17 +1,13 @@
-public class fwt<T extends bjg, M extends ffd<T>> extends fxp<T, M> {
-   private final foa a;
+public class fwt<T extends bzc> extends fxl<T, feu<T>> {
+   private static final aez a = new aez("textures/entity/zombie/drowned_outer_layer.png");
+   private final feu<T> b;
 
-   public fwt(fvc<T, M> $$0, foa $$1) {
+   public fwt(fuy<T, feu<T>> $$0, fht $$1) {
       super($$0);
-      this.a = $$1;
+      this.b = new feu<>($$1.a(fhw.O));
    }
 
-   public void a(elp $$0, foe $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      $$0.a();
-      $$0.a(0.0F, 0.4F, -0.4F);
-      $$0.a(a.b.rotationDegrees(180.0F));
-      cjf $$10 = $$3.c(biv.a);
-      this.a.a($$3, $$10, cjc.h, false, $$0, $$1, $$2);
-      $$0.b();
+   public void a(elj $$0, foa $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      a(this.c(), this.b, a, $$0, $$1, $$2, $$3, $$4, $$5, $$7, $$8, $$9, $$6, 1.0F, 1.0F, 1.0F);
    }
 }

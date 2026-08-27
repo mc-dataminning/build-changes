@@ -1,57 +1,88 @@
-public class cft extends cgd {
-   private final cfr a;
-   private final cbu b;
-   private int c;
-   private final cos h;
+public class cft extends cer {
+   private static final int o = 1;
+   private static final int p = 1;
+   public static final int k = 1;
+   public static final int l = 2;
+   public static final int m = 3;
+   public static final int n = 100;
+   private final bgx q;
+   private final cfb r;
 
-   public cft(cbu $$0, cos $$1, cfr $$2, int $$3, int $$4, int $$5) {
-      super($$2, $$3, $$4, $$5);
-      this.b = $$0;
-      this.h = $$1;
-      this.a = $$2;
+   public cft(int $$0) {
+      this($$0, new bhl(1), new cgi(1));
    }
 
-   @Override
-   public boolean a(cjf $$0) {
-      return false;
-   }
-
-   @Override
-   public cjf a(int $$0) {
-      if (this.f()) {
-         this.c = this.c + Math.min($$0, this.e().L());
-      }
-
-      return super.a($$0);
-   }
-
-   @Override
-   protected void a(cjf $$0, int $$1) {
-      this.c += $$1;
-      this.b_($$0);
-   }
-
-   @Override
-   protected void b_(cjf $$0) {
-      $$0.a(this.b.dL(), this.b, this.c);
-      this.c = 0;
-   }
-
-   @Override
-   public void a(cbu $$0, cjf $$1) {
-      this.b_($$1);
-      cot $$2 = this.a.g();
-      if ($$2 != null) {
-         cjf $$3 = this.a.a(0);
-         cjf $$4 = this.a.a(1);
-         if ($$2.b($$3, $$4) || $$2.b($$4, $$3)) {
-            this.h.a($$2);
-            $$0.a(apn.T);
-            this.a.a(0, $$3);
-            this.a.a(1, $$4);
+   public cft(int $$0, bgx $$1, cfb $$2) {
+      super(cfw.q, $$0);
+      a($$1, 1);
+      a($$2, 1);
+      this.q = $$1;
+      this.r = $$2;
+      this.a(new cgj($$1, 0, 0, 0) {
+         @Override
+         public void d() {
+            super.d();
+            cft.this.a(this.d);
          }
+      });
+      this.a($$2);
+   }
 
-         this.h.t(this.h.t() + $$2.o());
+   @Override
+   public boolean b(cca $$0, int $$1) {
+      if ($$1 >= 100) {
+         int $$2 = $$1 - 100;
+         this.a(0, $$2);
+         return true;
+      } else {
+         switch ($$1) {
+            case 1:
+               int $$4 = this.r.a(0);
+               this.a(0, $$4 - 1);
+               return true;
+            case 2:
+               int $$3 = this.r.a(0);
+               this.a(0, $$3 + 1);
+               return true;
+            case 3:
+               if (!$$0.ge()) {
+                  return false;
+               }
+
+               cjl $$5 = this.q.b(0);
+               this.q.e();
+               if (!$$0.fS().e($$5)) {
+                  $$0.a($$5, false);
+               }
+
+               return true;
+            default:
+               return false;
+         }
       }
+   }
+
+   @Override
+   public cjl a(cca $$0, int $$1) {
+      return cjl.b;
+   }
+
+   @Override
+   public void a(int $$0, int $$1) {
+      super.a($$0, $$1);
+      this.d();
+   }
+
+   @Override
+   public boolean a(cca $$0) {
+      return this.q.a($$0);
+   }
+
+   public cjl l() {
+      return this.q.a(0);
+   }
+
+   public int m() {
+      return this.r.a(0);
    }
 }

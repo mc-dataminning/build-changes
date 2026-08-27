@@ -4,9 +4,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 public class jf {
-   private final csv a;
-   final Map<jf.b, csv> b = Maps.newHashMap();
-   cec c = cee.f;
+   private final ctc a;
+   final Map<jf.b, ctc> b = Maps.newHashMap();
+   cei c = cek.f;
    boolean d = true;
    boolean e = true;
    @Nullable
@@ -14,19 +14,19 @@ public class jf {
    @Nullable
    String g;
 
-   jf(csv $$0) {
+   jf(ctc $$0) {
       this.a = $$0;
    }
 
-   public csv a() {
+   public ctc a() {
       return this.a;
    }
 
-   public Map<jf.b, csv> b() {
+   public Map<jf.b, ctc> b() {
       return this.b;
    }
 
-   public csv a(jf.b $$0) {
+   public ctc a(jf.b $$0) {
       return this.b.get($$0);
    }
 
@@ -34,7 +34,7 @@ public class jf {
       return this.d;
    }
 
-   public boolean a(cec $$0) {
+   public boolean a(cei $$0) {
       return this.e && this.c.a($$0);
    }
 
@@ -49,7 +49,7 @@ public class jf {
    public static class a {
       private final jf a;
 
-      public a(csv $$0) {
+      public a(ctc $$0) {
          this.a = new jf($$0);
       }
 
@@ -57,88 +57,88 @@ public class jf {
          return this.a;
       }
 
-      public jf.a a(csv $$0) {
+      public jf.a a(ctc $$0) {
          this.a.b.put(jf.b.a, $$0);
          return this;
       }
 
-      public jf.a b(csv $$0) {
+      public jf.a b(ctc $$0) {
          this.a.b.put(jf.b.b, $$0);
          return this;
       }
 
-      public jf.a c(csv $$0) {
+      public jf.a c(ctc $$0) {
          this.a.b.put(jf.b.j, $$0);
          return this;
       }
 
-      public jf.a d(csv $$0) {
+      public jf.a d(ctc $$0) {
          this.a.b.put(jf.b.c, $$0);
          return this;
       }
 
-      public jf.a e(csv $$0) {
+      public jf.a e(ctc $$0) {
          this.a.b.put(jf.b.d, $$0);
          return this;
       }
 
-      public jf.a f(csv $$0) {
+      public jf.a f(ctc $$0) {
          this.a.b.put(jf.b.e, $$0);
          return this;
       }
 
-      public jf.a g(csv $$0) {
+      public jf.a g(ctc $$0) {
          this.a.b.put(jf.b.f, $$0);
          return this;
       }
 
-      public jf.a h(csv $$0) {
+      public jf.a h(ctc $$0) {
          this.a.b.put(jf.b.g, $$0);
          return this;
       }
 
-      public jf.a i(csv $$0) {
+      public jf.a i(ctc $$0) {
          this.a.b.put(jf.b.h, $$0);
          return this;
       }
 
-      public jf.a j(csv $$0) {
+      public jf.a j(ctc $$0) {
          this.a.b.put(jf.b.i, $$0);
          return this;
       }
 
-      public jf.a a(csv $$0, csv $$1) {
+      public jf.a a(ctc $$0, ctc $$1) {
          this.a.b.put(jf.b.k, $$0);
          this.a.b.put(jf.b.r, $$1);
          return this;
       }
 
-      public jf.a k(csv $$0) {
+      public jf.a k(ctc $$0) {
          this.a.b.put(jf.b.l, $$0);
          return this;
       }
 
-      public jf.a l(csv $$0) {
+      public jf.a l(ctc $$0) {
          this.a.b.put(jf.b.m, $$0);
          return this;
       }
 
-      public jf.a m(csv $$0) {
+      public jf.a m(ctc $$0) {
          this.a.b.put(jf.b.n, $$0);
          return this;
       }
 
-      public jf.a n(csv $$0) {
+      public jf.a n(ctc $$0) {
          this.a.b.put(jf.b.o, $$0);
          return this;
       }
 
-      public jf.a o(csv $$0) {
+      public jf.a o(ctc $$0) {
          this.a.b.put(jf.b.p, $$0);
          return this;
       }
 
-      public jf.a p(csv $$0) {
+      public jf.a p(ctc $$0) {
          this.a.b.put(jf.b.q, $$0);
          return this;
       }
@@ -153,8 +153,8 @@ public class jf {
          return this;
       }
 
-      public jf.a a(cea... $$0) {
-         this.a.c = cee.d.a($$0);
+      public jf.a a(ceg... $$0) {
+         this.a.c = cek.d.a($$0);
          return this;
       }
 

@@ -1,48 +1,44 @@
 import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntListIterator;
-import java.util.stream.IntStream;
+import java.util.List;
 
-public class dnh extends dnw<dqh> {
-   public dnh(Codec<dqh> $$0) {
+public class dnh extends dnf {
+   public dnh(Codec<dqb> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dny<dqh> $$0) {
-      asc $$1 = $$0.d();
-      cqp $$2 = $$0.b();
-      cpc $$3 = new cpc($$0.e());
-      IntArrayList $$4 = ac.a(IntStream.rangeClosed($$3.d(), $$3.f()), $$1);
-      IntArrayList $$5 = ac.a(IntStream.rangeClosed($$3.e(), $$3.g()), $$1);
-      gw.a $$6 = new gw.a();
-      IntListIterator var8 = $$4.iterator();
+   protected boolean a(cqc $$0, ash $$1, gw $$2, dfd $$3) {
+      gw.a $$4 = $$2.j();
+      int $$5 = $$1.a(3) + 1;
 
-      while (var8.hasNext()) {
-         Integer $$7 = (Integer)var8.next();
-         IntListIterator var10 = $$5.iterator();
+      for (int $$6 = 0; $$6 < $$5; $$6++) {
+         if (!this.b($$0, $$1, $$4, $$3)) {
+            return true;
+         }
 
-         while (var10.hasNext()) {
-            Integer $$8 = (Integer)var10.next();
-            $$6.d($$7, 0, $$8);
-            gw $$9 = $$2.a(dks.a.f, $$6);
-            if ($$2.t($$9) || $$2.a_($$9).k($$2, $$9).c()) {
-               $$2.a($$9, csw.cv.n(), 2);
-               ddy.a($$2, $$1, $$9, eco.b);
-               dfj $$10 = csw.cp.n();
+         $$4.c(ha.b);
+      }
 
-               for (ha $$11 : ha.c.a) {
-                  gw $$12 = $$9.a($$11);
-                  if ($$10.a($$2, $$12)) {
-                     $$2.a($$12, $$10, 2);
-                  }
-               }
+      gw $$7 = $$4.i();
+      int $$8 = $$1.a(3) + 2;
+      List<ha> $$9 = ha.c.a.c($$1);
 
-               return true;
+      for (ha $$11 : $$9.subList(0, $$8)) {
+         $$4.g($$7);
+         $$4.c($$11);
+         int $$12 = $$1.a(5) + 2;
+         int $$13 = 0;
+
+         for (int $$14 = 0; $$14 < $$12 && this.b($$0, $$1, $$4, $$3); $$14++) {
+            $$13++;
+            $$4.c(ha.b);
+            if ($$14 == 0 || $$13 >= 2 && $$1.i() < 0.25F) {
+               $$4.c($$11);
+               $$13 = 0;
             }
          }
       }
 
-      return false;
+      return true;
    }
 }

@@ -1,52 +1,59 @@
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import java.util.List;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Ordering;
+import com.google.common.collect.Sets;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+import java.util.Map.Entry;
 
-public class frq implements frn.a {
-   private static final int a = 160;
-   private final eqv b;
-   private final Int2ObjectMap<frq.a> c = new Int2ObjectOpenHashMap();
+public class frq implements frj.a {
+   private final eqp a;
+   private final Map<Long, Map<gw, Integer>> b = Maps.newTreeMap(Ordering.natural().reverse());
 
-   @Override
-   public void a() {
-      this.c.clear();
+   frq(eqp $$0) {
+      this.a = $$0;
    }
 
-   public void a(int $$0, gw $$1, List<wc.a> $$2) {
-      this.c.put($$0, new frq.a($$1, $$2));
-   }
-
-   public void a(int $$0) {
-      this.c.remove($$0);
-   }
-
-   public frq(eqv $$0) {
-      this.b = $$0;
+   public void a(long $$0, gw $$1) {
+      Map<gw, Integer> $$2 = this.b.computeIfAbsent($$0, $$0x -> Maps.newHashMap());
+      int $$3 = $$2.getOrDefault($$1, 0);
+      $$2.put($$1, $$3 + 1);
    }
 
    @Override
-   public void a(elp $$0, foe $$1, double $$2, double $$3, double $$4) {
-      eqg $$5 = this.b.j.m();
-      gw $$6 = gw.a($$5.b().c, 0.0, $$5.b().e);
-      ObjectIterator var11 = this.c.values().iterator();
+   public void a(elj $$0, foa $$1, double $$2, double $$3, double $$4) {
+      long $$5 = this.a.r.V();
+      int $$6 = 200;
+      double $$7 = 0.0025;
+      Set<gw> $$8 = Sets.newHashSet();
+      Map<gw, Integer> $$9 = Maps.newHashMap();
+      eln $$10 = $$1.getBuffer(foi.x());
+      Iterator<Entry<Long, Map<gw, Integer>>> $$11 = this.b.entrySet().iterator();
 
-      while (var11.hasNext()) {
-         frq.a $$7 = (frq.a)var11.next();
-         gw $$8 = $$7.a;
-         if ($$6.a($$8, 160.0)) {
-            for (int $$9 = 0; $$9 < $$7.b.size(); $$9++) {
-               wc.a $$10 = $$7.b.get($$9);
-               double $$11 = (double)$$8.u() + 0.5;
-               double $$12 = (double)$$8.v() + 2.0 + (double)$$9 * 0.25;
-               double $$13 = (double)$$8.w() + 0.5;
-               int $$14 = $$10.b() ? -16711936 : -3355444;
-               frn.a($$0, $$1, $$10.c(), $$11, $$12, $$13, $$14);
+      while ($$11.hasNext()) {
+         Entry<Long, Map<gw, Integer>> $$12 = $$11.next();
+         Long $$13 = $$12.getKey();
+         Map<gw, Integer> $$14 = $$12.getValue();
+         long $$15 = $$5 - $$13;
+         if ($$15 > 200L) {
+            $$11.remove();
+         } else {
+            for (Entry<gw, Integer> $$16 : $$14.entrySet()) {
+               gw $$17 = $$16.getKey();
+               Integer $$18 = $$16.getValue();
+               if ($$8.add($$17)) {
+                  ehc $$19 = new ehc(gw.b).g(0.002).h(0.0025 * (double)$$15).d((double)$$17.u(), (double)$$17.v(), (double)$$17.w()).d(-$$2, -$$3, -$$4);
+                  fny.a($$0, $$10, $$19.a, $$19.b, $$19.c, $$19.d, $$19.e, $$19.f, 1.0F, 1.0F, 1.0F, 1.0F);
+                  $$9.put($$17, $$18);
+               }
             }
          }
       }
-   }
 
-   static record a(gw a, List<wc.a> b) {
+      for (Entry<gw, Integer> $$20 : $$9.entrySet()) {
+         gw $$21 = $$20.getKey();
+         Integer $$22 = $$20.getValue();
+         frj.a($$0, $$1, String.valueOf($$22), $$21.u(), $$21.v(), $$21.w(), -1);
+      }
    }
 }

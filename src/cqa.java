@@ -1,2 +1,3 @@
-public interface cqa extends cqb, cqd {
+public interface cqa {
+   cjg k();
 }

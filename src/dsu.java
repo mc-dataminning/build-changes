@@ -1,45 +1,77 @@
+import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.OptionalInt;
+import java.util.function.BiConsumer;
 
-public class dsu extends dss {
-   public static final Codec<dsu> a = Codec.unit(() -> dsu.b);
-   public static final dsu b = new dsu();
+public class dsu extends dsy {
+   public static final Codec<dsu> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, dsu::new));
 
-   @Override
-   protected dst<?> a() {
-      return dst.a;
+   public dsu(int $$0, int $$1, int $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   public void a(dss.a $$0) {
-      asc $$1 = $$0.b();
-      $$0.c().forEach($$2 -> {
-         if ($$1.a(3) > 0) {
-            gw $$3 = $$2.g();
-            if ($$0.a($$3)) {
-               $$0.a($$3, dbp.c);
-            }
+   protected dsz<?> a() {
+      return dsz.b;
+   }
+
+   @Override
+   public List<drg.a> a(cqh $$0, BiConsumer<gw, dfd> $$1, ash $$2, int $$3, gw $$4, dqq $$5) {
+      a($$0, $$1, $$2, $$4.d(), $$5);
+      List<drg.a> $$6 = Lists.newArrayList();
+      ha $$7 = ha.c.a.a($$2);
+      int $$8 = $$3 - $$2.a(4) - 1;
+      int $$9 = 3 - $$2.a(3);
+      gw.a $$10 = new gw.a();
+      int $$11 = $$4.u();
+      int $$12 = $$4.w();
+      OptionalInt $$13 = OptionalInt.empty();
+
+      for (int $$14 = 0; $$14 < $$3; $$14++) {
+         int $$15 = $$4.v() + $$14;
+         if ($$14 >= $$8 && $$9 > 0) {
+            $$11 += $$7.j();
+            $$12 += $$7.l();
+            $$9--;
          }
 
-         if ($$1.a(3) > 0) {
-            gw $$4 = $$2.h();
-            if ($$0.a($$4)) {
-               $$0.a($$4, dbp.e);
+         if (this.b($$0, $$1, $$2, $$10.d($$11, $$15, $$12), $$5)) {
+            $$13 = OptionalInt.of($$15 + 1);
+         }
+      }
+
+      if ($$13.isPresent()) {
+         $$6.add(new drg.a(new gw($$11, $$13.getAsInt(), $$12), 1, false));
+      }
+
+      $$11 = $$4.u();
+      $$12 = $$4.w();
+      ha $$16 = ha.c.a.a($$2);
+      if ($$16 != $$7) {
+         int $$17 = $$8 - $$2.a(2) - 1;
+         int $$18 = 1 + $$2.a(3);
+         $$13 = OptionalInt.empty();
+
+         for (int $$19 = $$17; $$19 < $$3 && $$18 > 0; $$18--) {
+            if ($$19 >= 1) {
+               int $$20 = $$4.v() + $$19;
+               $$11 += $$16.j();
+               $$12 += $$16.l();
+               if (this.b($$0, $$1, $$2, $$10.d($$11, $$20, $$12), $$5)) {
+                  $$13 = OptionalInt.of($$20 + 1);
+               }
             }
+
+            $$19++;
          }
 
-         if ($$1.a(3) > 0) {
-            gw $$5 = $$2.e();
-            if ($$0.a($$5)) {
-               $$0.a($$5, dbp.d);
-            }
+         if ($$13.isPresent()) {
+            $$6.add(new drg.a(new gw($$11, $$13.getAsInt(), $$12), 0, false));
          }
+      }
 
-         if ($$1.a(3) > 0) {
-            gw $$6 = $$2.f();
-            if ($$0.a($$6)) {
-               $$0.a($$6, dbp.b);
-            }
-         }
-      });
+      return $$6;
    }
 }

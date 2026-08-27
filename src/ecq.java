@@ -1,142 +1,136 @@
+import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
-import java.util.Optional;
+import java.util.Map;
+import java.util.NoSuchElementException;
 import java.util.Set;
 import java.util.function.Consumer;
 import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
 
 public class ecq {
-   private final ecw a;
-   private final asc b;
-   private final ecu c;
-   private final Set<ecq.c<?>> d = Sets.newLinkedHashSet();
+   private final akt a;
+   private final Map<ees<?>, Object> b;
+   private final Map<aez, ecq.b> c;
+   private final float d;
 
-   ecq(ecw $$0, asc $$1, ecu $$2) {
+   public ecq(akt $$0, Map<ees<?>, Object> $$1, Map<aez, ecq.b> $$2, float $$3) {
       this.a = $$0;
       this.b = $$1;
       this.c = $$2;
+      this.d = $$3;
    }
 
-   public boolean a(eey<?> $$0) {
-      return this.a.a($$0);
+   public akt a() {
+      return this.a;
    }
 
-   public <T> T b(eey<T> $$0) {
-      return this.a.b($$0);
+   public boolean a(ees<?> $$0) {
+      return this.b.containsKey($$0);
    }
 
-   public void a(aew $$0, Consumer<cjf> $$1) {
-      this.a.a($$0, $$1);
+   public <T> T b(ees<T> $$0) {
+      T $$1 = (T)this.b.get($$0);
+      if ($$1 == null) {
+         throw new NoSuchElementException($$0.a().toString());
+      } else {
+         return $$1;
+      }
    }
 
    @Nullable
-   public <T> T c(eey<T> $$0) {
-      return this.a.d($$0);
+   public <T> T c(ees<T> $$0) {
+      return (T)this.b.get($$0);
    }
 
-   public boolean a(ecq.c<?> $$0) {
-      return this.d.contains($$0);
+   @Nullable
+   public <T> T d(ees<T> $$0) {
+      return (T)this.b.get($$0);
    }
 
-   public boolean b(ecq.c<?> $$0) {
-      return this.d.add($$0);
+   public void a(aez $$0, Consumer<cjl> $$1) {
+      ecq.b $$2 = this.c.get($$0);
+      if ($$2 != null) {
+         $$2.add($$1);
+      }
    }
 
-   public void c(ecq.c<?> $$0) {
-      this.d.remove($$0);
-   }
-
-   public ecu a() {
-      return this.c;
-   }
-
-   public asc b() {
-      return this.b;
-   }
-
-   public float c() {
-      return this.a.b();
-   }
-
-   public akq d() {
-      return this.a.a();
-   }
-
-   public static ecq.c<ecy> a(ecy $$0) {
-      return new ecq.c<>(ecv.c, $$0);
-   }
-
-   public static ecq.c<efp> a(efp $$0) {
-      return new ecq.c<>(ecv.a, $$0);
-   }
-
-   public static ecq.c<eed> a(eed $$0) {
-      return new ecq.c<>(ecv.b, $$0);
+   public float b() {
+      return this.d;
    }
 
    public static class a {
-      private final ecw a;
-      @Nullable
-      private asc b;
+      private final akt a;
+      private final Map<ees<?>, Object> b = Maps.newIdentityHashMap();
+      private final Map<aez, ecq.b> c = Maps.newHashMap();
+      private float d;
 
-      public a(ecw $$0) {
+      public a(akt $$0) {
          this.a = $$0;
       }
 
-      public ecq.a a(long $$0) {
-         if ($$0 != 0L) {
-            this.b = asc.a($$0);
+      public akt a() {
+         return this.a;
+      }
+
+      public <T> ecq.a a(ees<T> $$0, T $$1) {
+         this.b.put($$0, $$1);
+         return this;
+      }
+
+      public <T> ecq.a b(ees<T> $$0, @Nullable T $$1) {
+         if ($$1 == null) {
+            this.b.remove($$0);
+         } else {
+            this.b.put($$0, $$1);
          }
 
          return this;
       }
 
-      public akq a() {
-         return this.a.a();
-      }
-
-      public ecq a(Optional<aew> $$0) {
-         akq $$1 = this.a();
-         MinecraftServer $$2 = $$1.n();
-         asc $$3 = Optional.ofNullable(this.b).or(() -> $$0.map($$1::a)).orElseGet($$1::D_);
-         return new ecq(this.a, $$3, $$2.aH());
-      }
-   }
-
-   public static enum b implements asp {
-      a("this", efb.a),
-      b("killer", efb.d),
-      c("direct_killer", efb.e),
-      d("killer_player", efb.b);
-
-      public static final asp.a<ecq.b> e = asp.a(ecq.b::values);
-      private final String f;
-      private final eey<? extends biq> g;
-
-      private b(String $$0, eey<? extends biq> $$1) {
-         this.f = $$0;
-         this.g = $$1;
-      }
-
-      public eey<? extends biq> a() {
-         return this.g;
-      }
-
-      public static ecq.b a(String $$0) {
-         ecq.b $$1 = e.a($$0);
-         if ($$1 != null) {
-            return $$1;
+      public <T> T a(ees<T> $$0) {
+         T $$1 = (T)this.b.get($$0);
+         if ($$1 == null) {
+            throw new NoSuchElementException($$0.a().toString());
          } else {
-            throw new IllegalArgumentException("Invalid entity target " + $$0);
+            return $$1;
          }
       }
 
-      @Override
-      public String c() {
-         return this.f;
+      @Nullable
+      public <T> T b(ees<T> $$0) {
+         return (T)this.b.get($$0);
+      }
+
+      public ecq.a a(aez $$0, ecq.b $$1) {
+         ecq.b $$2 = this.c.put($$0, $$1);
+         if ($$2 != null) {
+            throw new IllegalStateException("Duplicated dynamic drop '" + this.c + "'");
+         } else {
+            return this;
+         }
+      }
+
+      public ecq.a a(float $$0) {
+         this.d = $$0;
+         return this;
+      }
+
+      public ecq a(eet $$0) {
+         Set<ees<?>> $$1 = Sets.difference(this.b.keySet(), $$0.b());
+         if (!$$1.isEmpty()) {
+            throw new IllegalArgumentException("Parameters not allowed in this parameter set: " + $$1);
+         } else {
+            Set<ees<?>> $$2 = Sets.difference($$0.a(), this.b.keySet());
+            if (!$$2.isEmpty()) {
+               throw new IllegalArgumentException("Missing required parameters: " + $$2);
+            } else {
+               return new ecq(this.a, this.b, this.c, this.d);
+            }
+         }
       }
    }
 
-   public static record c<T>(ecv<T> a, T b) {
+   @FunctionalInterface
+   public interface b {
+      void add(Consumer<cjl> var1);
    }
 }

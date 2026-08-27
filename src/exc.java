@@ -1,73 +1,42 @@
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+public class exc extends eye {
+   private static final int a = 8;
+   private static final int b = 210;
+   private static final tl c = tl.c("credits_and_attribution.screen.title");
+   private static final tl k = tl.c("credits_and_attribution.button.credits");
+   private static final tl l = tl.c("credits_and_attribution.button.attribution");
+   private static final tl m = tl.c("credits_and_attribution.button.licenses");
+   private final eye n;
+   private final evu o = new evu(this);
 
-public class exc extends exd {
-   private static final tl k = tl.c("chat.copy");
-   private static final tl l = tl.c("chat.link.warning");
-   private final String m;
-   private final boolean n;
-
-   public exc(BooleanConsumer $$0, String $$1, boolean $$2) {
-      this($$0, c($$2), tl.b($$1), $$1, $$2 ? tk.e : tk.g, $$2);
-   }
-
-   public exc(BooleanConsumer $$0, tl $$1, String $$2, boolean $$3) {
-      this($$0, $$1, $$2, $$3 ? tk.e : tk.g, $$3);
-   }
-
-   public exc(BooleanConsumer $$0, tl $$1, String $$2, tl $$3, boolean $$4) {
-      this($$0, $$1, a($$4, $$2), $$2, $$3, $$4);
-   }
-
-   public exc(BooleanConsumer $$0, tl $$1, tl $$2, String $$3, tl $$4, boolean $$5) {
-      super($$0, $$1, $$2);
-      this.a = (tl)($$5 ? tl.c("chat.link.open") : tk.f);
-      this.b = $$4;
-      this.n = !$$5;
-      this.m = $$3;
-   }
-
-   protected static ty a(boolean $$0, String $$1) {
-      return c($$0).b(tk.u).b(tl.b($$1));
-   }
-
-   protected static ty c(boolean $$0) {
-      return tl.c($$0 ? "chat.link.confirmTrusted" : "chat.link.confirm");
+   public exc(eye $$0) {
+      super(c);
+      this.n = $$0;
    }
 
    @Override
-   protected void a(int $$0) {
-      this.d(esq.a(this.a, $$0x -> this.c.accept(true)).a(this.g / 2 - 50 - 105, $$0, 100, 20).a());
-      this.d(esq.a(k, $$0x -> {
-         this.k();
-         this.c.accept(false);
-      }).a(this.g / 2 - 50, $$0, 100, 20).a());
-      this.d(esq.a(this.b, $$0x -> this.c.accept(false)).a(this.g / 2 - 50 + 105, $$0, 100, 20).a());
-   }
-
-   public void k() {
-      this.f.o.a(this.m);
+   protected void aH_() {
+      this.o.a(new etr(this.m(), this.i));
+      evy $$0 = this.o.c(evy.d()).a(8);
+      $$0.c().b();
+      $$0.a(esk.a(k, $$0x -> this.l()).a(210).a());
+      $$0.a(esk.a(l, ewx.b("https://aka.ms/MinecraftJavaAttribution", this, true)).a(210).a());
+      $$0.a(esk.a(m, ewx.b("https://aka.ms/MinecraftJavaLicenses", this, true)).a(210).a());
+      this.o.b(esk.a(tk.d, $$0x -> this.az_()).a());
+      this.o.a();
+      this.o.a(this::d);
    }
 
    @Override
-   public void a(esf $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      if (this.n) {
-         $$0.a(this.i, l, this.g / 2, 110, 16764108);
-      }
+   protected void b() {
+      this.o.a();
    }
 
-   public static void a(String $$0, eyk $$1, boolean $$2) {
-      eqv $$3 = eqv.O();
-      $$3.a(new exc($$3x -> {
-         if ($$3x) {
-            ac.i().a($$0);
-         }
-
-         $$3.a($$1);
-      }, $$0, $$2));
+   private void l() {
+      this.f.a(new eym(false, () -> this.f.a(this)));
    }
 
-   public static esq.c b(String $$0, eyk $$1, boolean $$2) {
-      return $$3 -> a($$0, $$1, $$2);
+   @Override
+   public void az_() {
+      this.f.a(this.n);
    }
 }

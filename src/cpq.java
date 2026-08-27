@@ -1,34 +1,31 @@
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
+import javax.annotation.Nullable;
 
-public class cpq extends ebr {
-   public static final String a = "chunks";
-   private static final String b = "Forced";
-   private final LongSet c;
+public enum cpq implements cph {
+   a;
 
-   public static ebr.a<cpq> a() {
-      return new ebr.a<>(cpq::new, cpq::b, ata.i);
-   }
-
-   private cpq(LongSet $$0) {
-      this.c = $$0;
-   }
-
-   public cpq() {
-      this(new LongOpenHashSet());
-   }
-
-   public static cpq b(qw $$0) {
-      return new cpq(new LongOpenHashSet($$0.o("Forced")));
+   @Nullable
+   @Override
+   public dcz c_(gw $$0) {
+      return null;
    }
 
    @Override
-   public qw a(qw $$0) {
-      $$0.a("Forced", this.c.toLongArray());
-      return $$0;
+   public dfd a_(gw $$0) {
+      return cte.a.o();
    }
 
-   public LongSet b() {
-      return this.c;
+   @Override
+   public eag b_(gw $$0) {
+      return eah.a.g();
+   }
+
+   @Override
+   public int H_() {
+      return 0;
+   }
+
+   @Override
+   public int I_() {
+      return 0;
    }
 }

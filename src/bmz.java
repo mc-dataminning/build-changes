@@ -1,26 +1,15 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.datafixers.util.Pair;
+import java.util.List;
+import java.util.Map;
 
-public class bmz {
-   public static bky<bjg> a() {
-      return boj.a((Function<boj.b<bjg>, ? extends App<boj.c<bjg>, bom<bjg>>>)($$0 -> $$0.a((bom<bjg>)(($$0x, $$1, $$2) -> {
-            if ($$0x.z.a(20) != 0) {
-               return false;
-            } else {
-               bkg<?> $$3 = $$1.dN();
-               cdb $$4 = $$0x.c($$1.dl());
-               if ($$4 != null) {
-                  if ($$4.c() && !$$4.b()) {
-                     $$3.b(cdf.h);
-                     $$3.a(cdf.h);
-                  } else {
-                     $$3.b(cdf.i);
-                     $$3.a(cdf.i);
-                  }
-               }
+public class bmz<E extends bjm> extends blr<E> {
+   public bmz(List<Pair<? extends ble<? super E>, Integer>> $$0) {
+      this(ImmutableMap.of(), $$0);
+   }
 
-               return true;
-            }
-         }))));
+   public bmz(Map<bsn<?>, bso> $$0, List<Pair<? extends ble<? super E>, Integer>> $$1) {
+      super($$0, ImmutableSet.of(), blr.a.b, blr.b.a, $$1);
    }
 }

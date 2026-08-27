@@ -1,44 +1,30 @@
-import javax.annotation.Nullable;
-
-public interface cig extends ckz {
-   biv g();
-
-   default apc ao_() {
-      return apd.af;
+public class cig extends chq {
+   public cig(cjg.a $$0) {
+      super($$0);
    }
 
-   default bgz<cjf> a(cja $$0, cpv $$1, cbu $$2, bgx $$3) {
-      cjf $$4 = $$2.b($$3);
-      biv $$5 = bji.h($$4);
-      cjf $$6 = $$2.c($$5);
-      if ((!cnq.d($$6) || $$2.f()) && !cjf.a($$4, $$6)) {
-         if (!$$1.w_()) {
-            $$2.b(apn.c.b($$0));
+   @Override
+   public bhf<cjl> a(cqb $$0, cca $$1, bhd $$2) {
+      cjl $$3 = $$1.b($$2);
+      if ($$0.B) {
+         return bhf.a($$3);
+      } else {
+         if (!$$1.fT().d) {
+            $$3.h(1);
          }
 
-         cjf $$7 = $$6.b() ? $$4 : $$6.c();
-         cjf $$8 = $$4.c();
-         $$2.a($$5, $$8);
-         return bgz.a($$7, $$1.w_());
-      } else {
-         return bgz.d($$4);
-      }
-   }
-
-   @Nullable
-   static cig c_(cjf $$0) {
-      cja $$3 = $$0.d();
-      if ($$3 instanceof cig) {
-         return (cig)$$3;
-      } else {
-         if ($$0.d() instanceof cgy $$2) {
-            csv var6 = $$2.e();
-            if (var6 instanceof cig) {
-               return (cig)var6;
+         $$1.b(apq.c.b(this));
+         $$1.dL().a(null, $$1, apg.yx, $$1.da(), 1.0F, 1.0F);
+         cjl $$4 = cjs.a($$0, $$1.dp(), $$1.dv(), (byte)0, true, false);
+         if ($$3.b()) {
+            return bhf.b($$4);
+         } else {
+            if (!$$1.fS().e($$4.p())) {
+               $$1.a($$4, false);
             }
-         }
 
-         return null;
+            return bhf.b($$3);
+         }
       }
    }
 }

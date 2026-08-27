@@ -1,6 +1,6 @@
 public interface sj extends su {
    @Override
-   default ve a() {
-      return ve.b;
+   default vf a() {
+      return vf.b;
    }
 }

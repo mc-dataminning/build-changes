@@ -2,6 +2,9 @@ import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.datafixers.DataFixUtils;
 import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -9,24 +12,34 @@ import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
 public class ur implements tm {
-   private static final Logger c = LogUtils.getLogger();
-   private final boolean d;
-   private final Optional<tl> e;
-   private final String f;
-   private final um g;
+   private static final Logger d = LogUtils.getLogger();
+   public static final MapCodec<ur> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.STRING.fieldOf("nbt").forGetter(ur::b),
+               Codec.BOOL.optionalFieldOf("interpret", false).forGetter(ur::c),
+               tn.a.optionalFieldOf("separator").forGetter(ur::d),
+               un.c.forGetter(ur::e)
+            )
+            .apply($$0, ur::new)
+   );
+   public static final tm.a<ur> b = new tm.a<>(a, "nbt");
+   private final boolean e;
+   private final Optional<tl> f;
+   private final String g;
+   private final un h;
    @Nullable
-   protected final ej.g b;
+   protected final ej.g c;
 
-   public ur(String $$0, boolean $$1, Optional<tl> $$2, um $$3) {
+   public ur(String $$0, boolean $$1, Optional<tl> $$2, un $$3) {
       this($$0, a($$0), $$1, $$2, $$3);
    }
 
-   private ur(String $$0, @Nullable ej.g $$1, boolean $$2, Optional<tl> $$3, um $$4) {
-      this.f = $$0;
-      this.b = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.g = $$4;
+   private ur(String $$0, @Nullable ej.g $$1, boolean $$2, Optional<tl> $$3, un $$4) {
+      this.g = $$0;
+      this.c = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.h = $$4;
    }
 
    @Nullable
@@ -38,20 +51,20 @@ public class ur implements tm {
       }
    }
 
-   public String a() {
-      return this.f;
+   public String b() {
+      return this.g;
    }
 
-   public boolean b() {
-      return this.d;
-   }
-
-   public Optional<tl> c() {
+   public boolean c() {
       return this.e;
    }
 
-   public um d() {
-      return this.g;
+   public Optional<tl> d() {
+      return this.f;
+   }
+
+   public un e() {
+      return this.h;
    }
 
    @Override
@@ -59,7 +72,7 @@ public class ur implements tm {
       if (this == $$0) {
          return true;
       } else {
-         if ($$0 instanceof ur $$1 && this.g.equals($$1.g) && this.e.equals($$1.e) && this.d == $$1.d && this.f.equals($$1.f)) {
+         if ($$0 instanceof ur $$1 && this.h.equals($$1.h) && this.f.equals($$1.f) && this.e == $$1.e && this.g.equals($$1.g)) {
             return true;
          }
 
@@ -69,45 +82,50 @@ public class ur implements tm {
 
    @Override
    public int hashCode() {
-      int $$0 = this.d ? 1 : 0;
-      $$0 = 31 * $$0 + this.e.hashCode();
+      int $$0 = this.e ? 1 : 0;
       $$0 = 31 * $$0 + this.f.hashCode();
-      return 31 * $$0 + this.g.hashCode();
+      $$0 = 31 * $$0 + this.g.hashCode();
+      return 31 * $$0 + this.h.hashCode();
    }
 
    @Override
    public String toString() {
-      return "nbt{" + this.g + ", interpreting=" + this.d + ", separator=" + this.e + "}";
+      return "nbt{" + this.h + ", interpreting=" + this.e + ", separator=" + this.f + "}";
    }
 
    @Override
-   public ty a(@Nullable dt $$0, @Nullable biq $$1, int $$2) throws CommandSyntaxException {
-      if ($$0 != null && this.b != null) {
-         Stream<String> $$3 = this.g.getData($$0).flatMap($$0x -> {
+   public tz a(@Nullable dt $$0, @Nullable biw $$1, int $$2) throws CommandSyntaxException {
+      if ($$0 != null && this.c != null) {
+         Stream<String> $$3 = this.h.a($$0).flatMap($$0x -> {
             try {
-               return this.b.a($$0x).stream();
+               return this.c.a($$0x).stream();
             } catch (CommandSyntaxException var3x) {
                return Stream.empty();
             }
          }).map(rq::r_);
-         if (this.d) {
-            tl $$4 = (tl)DataFixUtils.orElse(tn.a($$0, this.e, $$1, $$2), tn.c);
+         if (this.e) {
+            tl $$4 = (tl)DataFixUtils.orElse(to.a($$0, this.f, $$1, $$2), to.c);
             return $$3.flatMap($$3x -> {
                try {
-                  ty $$4x = tl.a.a($$3x);
-                  return Stream.of(tn.a($$0, $$4x, $$1, $$2));
+                  tz $$4x = tl.a.a($$3x);
+                  return Stream.of(to.a($$0, $$4x, $$1, $$2));
                } catch (Exception var5x) {
-                  c.warn("Failed to parse component: {}", $$3x, var5x);
+                  d.warn("Failed to parse component: {}", $$3x, var5x);
                   return Stream.of();
                }
-            }).reduce(($$1x, $$2x) -> $$1x.b($$4).b($$2x)).orElseGet(tl::h);
+            }).reduce(($$1x, $$2x) -> $$1x.b($$4).b($$2x)).orElseGet(tl::i);
          } else {
-            return tn.a($$0, this.e, $$1, $$2)
-               .map($$1x -> $$3.map(tl::b).reduce(($$1xx, $$2x) -> $$1xx.b($$1x).b($$2x)).orElseGet(tl::h))
+            return to.a($$0, this.f, $$1, $$2)
+               .map($$1x -> $$3.map(tl::b).reduce(($$1xx, $$2x) -> $$1xx.b($$1x).b($$2x)).orElseGet(tl::i))
                .orElseGet(() -> tl.b($$3.collect(Collectors.joining(", "))));
          }
       } else {
-         return tl.h();
+         return tl.i();
       }
+   }
+
+   @Override
+   public tm.a<?> a() {
+      return b;
    }
 }

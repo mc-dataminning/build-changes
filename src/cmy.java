@@ -1,95 +1,65 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.stream.Stream;
-
-public class cmy implements cmx {
-   final cmg a;
-   final cmg b;
-   final cmg c;
-   final cjf d;
-
-   public cmy(cmg $$0, cmg $$1, cmg $$2, cjf $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+public class cmy extends cmh {
+   public cmy(cme $$0) {
+      super($$0);
    }
 
-   @Override
-   public boolean a(bgr $$0, cpv $$1) {
-      return this.a.a($$0.a(0)) && this.b.a($$0.a(1)) && this.c.a($$0.a(2));
-   }
+   public boolean a(cff $$0, cqb $$1) {
+      int $$2 = 0;
+      int $$3 = 0;
 
-   @Override
-   public cjf a(bgr $$0, hr $$1) {
-      cjf $$2 = this.d.p();
-      qw $$3 = $$0.a(1).v();
-      if ($$3 != null) {
-         $$2.c($$3.h());
+      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
+         cjl $$5 = $$0.a($$4);
+         if (!$$5.b()) {
+            if (ctc.a($$5.d()) instanceof czz) {
+               $$2++;
+            } else {
+               if (!($$5.d() instanceof cia)) {
+                  return false;
+               }
+
+               $$3++;
+            }
+
+            if ($$3 > 1 || $$2 > 1) {
+               return false;
+            }
+         }
       }
 
-      return $$2;
+      return $$2 == 1 && $$3 == 1;
    }
 
-   @Override
-   public cjf a(hr $$0) {
-      return this.d;
-   }
+   public cjl a(cff $$0, hr $$1) {
+      cjl $$2 = cjl.b;
+      cia $$3 = (cia)cjo.qu;
 
-   @Override
-   public boolean a(cjf $$0) {
-      return this.a.a($$0);
-   }
-
-   @Override
-   public boolean b(cjf $$0) {
-      return this.b.a($$0);
-   }
-
-   @Override
-   public boolean c(cjf $$0) {
-      return this.c.a($$0);
-   }
-
-   @Override
-   public cmm<?> an_() {
-      return cmm.u;
-   }
-
-   @Override
-   public boolean i() {
-      return Stream.of(this.a, this.b, this.c).anyMatch(cmg::c);
-   }
-
-   public static class a implements cmm<cmy> {
-      private static final Codec<cmy> x = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  cmg.b.fieldOf("template").forGetter($$0x -> $$0x.a),
-                  cmg.b.fieldOf("base").forGetter($$0x -> $$0x.b),
-                  cmg.b.fieldOf("addition").forGetter($$0x -> $$0x.c),
-                  cma.a.fieldOf("result").forGetter($$0x -> $$0x.d)
-               )
-               .apply($$0, cmy::new)
-      );
-
-      @Override
-      public Codec<cmy> a() {
-         return x;
+      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
+         cjl $$5 = $$0.a($$4);
+         if (!$$5.b()) {
+            cjg $$6 = $$5.d();
+            if (ctc.a($$6) instanceof czz) {
+               $$2 = $$5;
+            } else if ($$6 instanceof cia) {
+               $$3 = (cia)$$6;
+            }
+         }
       }
 
-      public cmy b(so $$0) {
-         cmg $$1 = cmg.b($$0);
-         cmg $$2 = cmg.b($$0);
-         cmg $$3 = cmg.b($$0);
-         cjf $$4 = $$0.q();
-         return new cmy($$1, $$2, $$3, $$4);
+      cjl $$7 = czz.b($$3.d());
+      if ($$2.u()) {
+         $$7.c($$2.v().h());
       }
 
-      public void a(so $$0, cmy $$1) {
-         $$1.a.a($$0);
-         $$1.b.a($$0);
-         $$1.c.a($$0);
-         $$0.a($$1.d);
-      }
+      return $$7;
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1) {
+      return $$0 * $$1 >= 2;
+   }
+
+   @Override
+   public cms<?> an_() {
+      return cms.m;
    }
 }

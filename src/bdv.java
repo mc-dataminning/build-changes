@@ -1,79 +1,101 @@
-import com.mojang.logging.LogUtils;
-import java.net.SocketAddress;
-import java.nio.file.Path;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.function.Supplier;
 
 public interface bdv {
-   bdv e = (bdv)(Runtime.class.getModule().getLayer().findModule("jdk.jfr").isPresent() ? bdu.a() : new bdv.a());
+   String b = "root";
 
-   boolean a(bdt var1);
+   void a();
 
-   Path b();
+   void b();
 
-   boolean c();
+   void a(String var1);
 
-   boolean d();
+   void a(Supplier<String> var1);
 
-   void a(float var1);
+   void c();
 
-   void a(sn var1, int var2, SocketAddress var3, int var4);
+   void b(String var1);
 
-   void b(sn var1, int var2, SocketAddress var3, int var4);
+   void b(Supplier<String> var1);
 
-   @Nullable
-   bdy e();
+   void a(bey var1);
 
-   @Nullable
-   bdy a(cpc var1, aev<cpv> var2, String var3);
+   default void d(String $$0) {
+      this.a($$0, 1);
+   }
 
-   public static class a implements bdv {
-      private static final Logger b = LogUtils.getLogger();
-      static final bdy a = () -> {
-      };
+   void a(String var1, int var2);
 
-      @Override
-      public boolean a(bdt $$0) {
-         b.warn("Attempted to start Flight Recorder, but it's not supported on this JVM");
-         return false;
-      }
+   default void c(Supplier<String> $$0) {
+      this.a($$0, 1);
+   }
 
-      @Override
-      public Path b() {
-         throw new IllegalStateException("Attempted to stop Flight Recorder, but it's not supported on this JVM");
-      }
+   void a(Supplier<String> var1, int var2);
 
-      @Override
-      public boolean c() {
-         return false;
-      }
+   static bdv a(final bdv $$0, final bdv $$1) {
+      if ($$0 == bds.a) {
+         return $$1;
+      } else {
+         return $$1 == bds.a ? $$0 : new bdv() {
+            @Override
+            public void a() {
+               $$0.a();
+               $$1.a();
+            }
 
-      @Override
-      public boolean d() {
-         return false;
-      }
+            @Override
+            public void b() {
+               $$0.b();
+               $$1.b();
+            }
 
-      @Override
-      public void a(sn $$0, int $$1, SocketAddress $$2, int $$3) {
-      }
+            @Override
+            public void a(String $$0x) {
+               $$0.a($$0);
+               $$1.a($$0);
+            }
 
-      @Override
-      public void b(sn $$0, int $$1, SocketAddress $$2, int $$3) {
-      }
+            @Override
+            public void a(Supplier<String> $$0x) {
+               $$0.a($$0);
+               $$1.a($$0);
+            }
 
-      @Override
-      public void a(float $$0) {
-      }
+            @Override
+            public void a(bey $$0x) {
+               $$0.a($$0);
+               $$1.a($$0);
+            }
 
-      @Override
-      public bdy e() {
-         return a;
-      }
+            @Override
+            public void c() {
+               $$0.c();
+               $$1.c();
+            }
 
-      @Nullable
-      @Override
-      public bdy a(cpc $$0, aev<cpv> $$1, String $$2) {
-         return null;
+            @Override
+            public void b(String $$0x) {
+               $$0.b($$0);
+               $$1.b($$0);
+            }
+
+            @Override
+            public void b(Supplier<String> $$0x) {
+               $$0.b($$0);
+               $$1.b($$0);
+            }
+
+            @Override
+            public void a(String $$0x, int $$1x) {
+               $$0.a($$0, $$1);
+               $$1.a($$0, $$1);
+            }
+
+            @Override
+            public void a(Supplier<String> $$0x, int $$1x) {
+               $$0.a($$0, $$1);
+               $$1.a($$0, $$1);
+            }
+         };
       }
    }
 }

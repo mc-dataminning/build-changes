@@ -1,33 +1,44 @@
-import java.util.function.IntSupplier;
-import java.util.function.LongSupplier;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParseException;
+import com.google.gson.JsonParser;
+import com.google.gson.stream.JsonReader;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.JsonOps;
+import java.io.Closeable;
+import java.io.EOFException;
+import java.io.IOException;
+import java.io.Reader;
+import javax.annotation.Nullable;
 
-public class bdj {
-   private final LongSupplier a;
-   private final IntSupplier b;
-   private bdn c = bdm.a;
+public interface bdj<T> extends Closeable {
+   static <T> bdj<T> a(final Codec<T> $$0, Reader $$1) {
+      final JsonReader $$2 = new JsonReader($$1);
+      $$2.setLenient(true);
+      return new bdj<T>() {
+         @Nullable
+         @Override
+         public T a() throws IOException {
+            try {
+               if (!$$2.hasNext()) {
+                  return null;
+               } else {
+                  JsonElement $$0 = JsonParser.parseReader($$2);
+                  return ac.a($$0.parse(JsonOps.INSTANCE, $$0), IOException::new);
+               }
+            } catch (JsonParseException var2) {
+               throw new IOException(var2);
+            } catch (EOFException var3) {
+               return null;
+            }
+         }
 
-   public bdj(LongSupplier $$0, IntSupplier $$1) {
-      this.a = $$0;
-      this.b = $$1;
+         @Override
+         public void close() throws IOException {
+            $$2.close();
+         }
+      };
    }
 
-   public boolean a() {
-      return this.c != bdm.a;
-   }
-
-   public void b() {
-      this.c = bdm.a;
-   }
-
-   public void c() {
-      this.c = new bdi(this.a, this.b, true);
-   }
-
-   public bdp d() {
-      return this.c;
-   }
-
-   public bdo e() {
-      return this.c.d();
-   }
+   @Nullable
+   T a() throws IOException;
 }

@@ -1,8 +1,34 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.Locale;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface ebx {
+public interface ebx {
+   int a();
+
+   int b();
+
+   int c();
+
+   float d();
+
+   long e();
+
+   long f();
+
+   boolean i();
+
+   boolean k();
+
+   void b(boolean var1);
+
+   boolean n();
+
+   cpx q();
+
+   bhb s();
+
+   boolean t();
+
+   default void a(p $$0, cqd $$1) {
+      $$0.a("Level spawn location", () -> p.a($$1, this.a(), this.b(), this.c()));
+      $$0.a("Level time", () -> String.format(Locale.ROOT, "%d game time, %d day time", this.e(), this.f()));
+   }
 }

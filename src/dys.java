@@ -1,25 +1,15 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class dys extends dyv {
-   public static final Codec<dys> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(jb.f.q().fieldOf("block").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("probability").forGetter($$0x -> $$0x.d)).apply($$0, dys::new)
-   );
-   private final csv b;
-   private final float d;
-
-   public dys(csv $$0, float $$1) {
-      this.b = $$0;
-      this.d = $$1;
+public abstract class dys {
+   @Nullable
+   public dyv.c a(cqe $$0, gw $$1, gw $$2, dyv.c $$3, dyv.c $$4, dyr $$5) {
+      return $$4;
    }
 
-   @Override
-   public boolean a(dfj $$0, asc $$1) {
-      return $$0.a(this.b) && $$1.i() < this.d;
-   }
+   protected abstract dyu<?> a();
 
-   @Override
-   protected dyw<?> a() {
-      return dyw.e;
+   public List<dyv.c> a(cqq $$0, gw $$1, gw $$2, List<dyv.c> $$3, List<dyv.c> $$4, dyr $$5) {
+      return $$4;
    }
 }

@@ -1,28 +1,29 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.OptionalInt;
 
-public class dqv implements dqa {
-   public static final Codec<dqv> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               eam.a.fieldOf("state").forGetter($$0x -> $$0x.b),
-               Codec.BOOL.fieldOf("requires_block_below").orElse(true).forGetter($$0x -> $$0x.c),
-               Codec.INT.fieldOf("rock_count").orElse(4).forGetter($$0x -> $$0x.d),
-               Codec.INT.fieldOf("hole_count").orElse(1).forGetter($$0x -> $$0x.e),
-               hs.a(jc.e).fieldOf("valid_blocks").forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, dqv::new)
-   );
-   public final eam b;
-   public final boolean c;
-   public final int d;
-   public final int e;
-   public final hi<csv> f;
+public abstract class dqv {
+   public static final Codec<dqv> a = jb.ab.q().dispatch(dqv::b, dqw::a);
+   protected static final int b = 16;
+   protected final OptionalInt c;
 
-   public dqv(eam $$0, boolean $$1, int $$2, int $$3, hi<csv> $$4) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
+   protected static <S extends dqv> RecordCodecBuilder<S, OptionalInt> a() {
+      return Codec.intRange(0, 80)
+         .optionalFieldOf("min_clipped_height")
+         .xmap($$0 -> $$0.map(OptionalInt::of).orElse(OptionalInt.empty()), $$0 -> $$0.isPresent() ? Optional.of($$0.getAsInt()) : Optional.empty())
+         .forGetter($$0 -> $$0.c);
+   }
+
+   public dqv(OptionalInt $$0) {
+      this.c = $$0;
+   }
+
+   protected abstract dqw<?> b();
+
+   public abstract int a(int var1, int var2);
+
+   public OptionalInt c() {
+      return this.c;
    }
 }

@@ -1,118 +1,89 @@
-import com.google.common.collect.Lists;
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.List;
+import java.util.stream.IntStream;
+import javax.annotation.Nullable;
+import org.joml.Vector3f;
 
-public class ezf extends eyk {
-   static final aew a = new aew("gamemode_switcher/slot");
-   static final aew b = new aew("gamemode_switcher/selection");
-   private static final aew c = new aew("textures/gui/container/gamemode_switcher.png");
-   private static final int k = 128;
-   private static final int l = 128;
-   private static final int m = 26;
-   private static final int n = 5;
-   private static final int o = 31;
-   private static final int p = 5;
-   private static final int q = ezf.a.values().length * 31 - 5;
-   private static final tl s = tl.a("debug.gamemodes.select_next", tl.c("debug.gamemodes.press_f4").a(n.l));
-   private final ezf.a t;
-   private ezf.a u;
-   private int v;
-   private int w;
-   private boolean x;
-   private final List<ezf.b> y = Lists.newArrayList();
+public abstract class ezf extends eye {
+   private final deh b;
+   private dei c;
+   private final String[] k;
+   private final boolean l;
+   protected final dgq a;
+   private int m;
+   private int n;
+   @Nullable
+   private evc o;
 
-   public ezf() {
-      super(eqn.a);
-      this.t = ezf.a.a(this.l());
-      this.u = this.t;
+   public ezf(deh $$0, boolean $$1, boolean $$2) {
+      this($$0, $$1, $$2, tl.c("sign.edit"));
    }
 
-   private cps l() {
-      fjd $$0 = eqv.O().q;
-      cps $$1 = $$0.k();
-      if ($$1 != null) {
-         return $$1;
-      } else {
-         return $$0.l() == cps.b ? cps.a : cps.b;
-      }
+   public ezf(deh $$0, boolean $$1, boolean $$2, tl $$3) {
+      super($$3);
+      this.b = $$0;
+      this.c = $$0.a($$1);
+      this.l = $$1;
+      this.a = daa.a($$0.q().b());
+      this.k = IntStream.range(0, 4).mapToObj($$1x -> this.c.a($$1x, $$2)).map(tl::getString).toArray(String[]::new);
    }
 
    @Override
    protected void aH_() {
-      super.aH_();
-      this.u = this.t;
-
-      for (int $$0 = 0; $$0 < ezf.a.e.length; $$0++) {
-         ezf.a $$1 = ezf.a.e[$$0];
-         this.y.add(new ezf.b($$1, this.g / 2 - q / 2 + $$0 * 31, this.h / 2 - 31));
-      }
+      this.d(esk.a(tk.d, $$0 -> this.E()).a(this.g / 2 - 100, this.h / 4 + 144, 200, 20).a());
+      this.o = new evc(() -> this.k[this.n], this::a, evc.a(this.f), evc.c(this.f), $$0 -> this.f.h.b($$0) <= this.b.d());
    }
 
    @Override
-   public void a(esf $$0, int $$1, int $$2, float $$3) {
-      if (!this.E()) {
-         $$0.c().a();
-         RenderSystem.enableBlend();
-         int $$4 = this.g / 2 - 62;
-         int $$5 = this.h / 2 - 31 - 27;
-         $$0.a(c, $$4, $$5, 0.0F, 0.0F, 125, 75, 128, 128);
-         $$0.c().b();
-         super.a($$0, $$1, $$2, $$3);
-         $$0.a(this.i, this.u.a(), this.g / 2, this.h / 2 - 31 - 20, -1);
-         $$0.a(this.i, s, this.g / 2, this.h / 2 + 5, 16777215);
-         if (!this.x) {
-            this.v = $$1;
-            this.w = $$2;
-            this.x = true;
-         }
-
-         boolean $$6 = this.v == $$1 && this.w == $$2;
-
-         for (ezf.b $$7 : this.y) {
-            $$7.a($$0, $$1, $$2, $$3);
-            $$7.b(this.u == $$7.b);
-            if (!$$6 && $$7.o()) {
-               this.u = $$7.b;
-            }
-         }
+   public void c() {
+      this.m++;
+      if (!this.D()) {
+         this.E();
       }
    }
 
-   @Override
-   public void b(esf $$0, int $$1, int $$2, float $$3) {
-   }
-
-   private void D() {
-      a(this.f, this.u);
-   }
-
-   private static void a(eqv $$0, ezf.a $$1) {
-      if ($$0.q != null && $$0.s != null) {
-         ezf.a $$2 = ezf.a.a($$0.q.l());
-         if ($$0.s.l(2) && $$1 != $$2) {
-            $$0.s.cn.d($$1.b());
-         }
-      }
-   }
-
-   private boolean E() {
-      if (!ekk.a(this.f.aM().i(), 292)) {
-         this.D();
-         this.f.a(null);
-         return true;
-      } else {
-         return false;
-      }
+   private boolean D() {
+      return this.f != null && this.f.s != null && !this.b.r() && !this.b.b(this.f.s.cv());
    }
 
    @Override
    public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 293) {
-         this.x = false;
-         this.u = this.u.c();
+      if ($$0 == 265) {
+         this.n = this.n - 1 & 3;
+         this.o.f();
+         return true;
+      } else if ($$0 == 264 || $$0 == 257 || $$0 == 335) {
+         this.n = this.n + 1 & 3;
+         this.o.f();
          return true;
       } else {
-         return super.a($$0, $$1, $$2);
+         return this.o.a($$0) ? true : super.a($$0, $$1, $$2);
+      }
+   }
+
+   @Override
+   public boolean a(char $$0, int $$1) {
+      this.o.a($$0);
+      return true;
+   }
+
+   @Override
+   public void a(erz $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      ekf.a();
+      $$0.a(this.i, this.e, this.g / 2, 40, 16777215);
+      this.c($$0);
+      ekf.b();
+   }
+
+   @Override
+   public void az_() {
+      this.E();
+   }
+
+   @Override
+   public void h() {
+      fit $$0 = this.f.J();
+      if ($$0 != null) {
+         $$0.b(new acu(this.b.p(), this.l, this.k[0], this.k[1], this.k[2], this.k[3]));
       }
    }
 
@@ -121,94 +92,84 @@ public class ezf extends eyk {
       return false;
    }
 
-   static enum a {
-      a(tl.c("gameMode.creative"), "gamemode creative", new cjf(csw.i)),
-      b(tl.c("gameMode.survival"), "gamemode survival", new cjf(cji.om)),
-      c(tl.c("gameMode.adventure"), "gamemode adventure", new cjf(cji.tp)),
-      d(tl.c("gameMode.spectator"), "gamemode spectator", new cjf(cji.rD));
+   protected abstract void a(erz var1, dfd var2);
 
-      protected static final ezf.a[] e = values();
-      private static final int j = 16;
-      protected static final int f = 5;
-      final tl g;
-      final String h;
-      final cjf i;
+   protected abstract Vector3f l();
 
-      private a(tl $$0, String $$1, cjf $$2) {
-         this.g = $$0;
-         this.h = $$1;
-         this.i = $$2;
-      }
-
-      void a(esf $$0, int $$1, int $$2) {
-         $$0.a(this.i, $$1, $$2);
-      }
-
-      tl a() {
-         return this.g;
-      }
-
-      String b() {
-         return this.h;
-      }
-
-      ezf.a c() {
-         return switch (this) {
-            case a -> b;
-            case b -> c;
-            case c -> d;
-            case d -> a;
-         };
-      }
-
-      static ezf.a a(cps $$0) {
-         return switch ($$0) {
-            case d -> d;
-            case a -> b;
-            case b -> a;
-            case c -> c;
-         };
-      }
+   protected void b(erz $$0, dfd $$1) {
+      $$0.c().a((float)this.g / 2.0F, 90.0F, 50.0F);
    }
 
-   public class b extends eso {
-      final ezf.a b;
-      private boolean c;
+   private void c(erz $$0) {
+      dfd $$1 = this.b.q();
+      $$0.c().a();
+      this.b($$0, $$1);
+      $$0.c().a();
+      this.a($$0, $$1);
+      $$0.c().b();
+      this.d($$0);
+      $$0.c().b();
+   }
 
-      public b(ezf.a $$1, int $$2, int $$3) {
-         super($$2, $$3, 26, 26, $$1.a());
-         this.b = $$1;
-      }
+   private void d(erz $$0) {
+      $$0.c().a(0.0F, 0.0F, 4.0F);
+      Vector3f $$1 = this.l();
+      $$0.c().b($$1.x(), $$1.y(), $$1.z());
+      int $$2 = this.c.a() ? this.c.b().g() : fqo.a(this.c);
+      boolean $$3 = this.m / 6 % 2 == 0;
+      int $$4 = this.o.g();
+      int $$5 = this.o.h();
+      int $$6 = 4 * this.b.c() / 2;
+      int $$7 = this.n * this.b.c() - $$6;
 
-      @Override
-      public void b(esf $$0, int $$1, int $$2, float $$3) {
-         this.a($$0);
-         this.b.a($$0, this.r() + 5, this.t() + 5);
-         if (this.c) {
-            this.b($$0);
+      for (int $$8 = 0; $$8 < this.k.length; $$8++) {
+         String $$9 = this.k[$$8];
+         if ($$9 != null) {
+            if (this.i.a()) {
+               $$9 = this.i.a($$9);
+            }
+
+            int $$10 = -this.i.b($$9) / 2;
+            $$0.a(this.i, $$9, $$10, $$8 * this.b.c() - $$6, $$2, false);
+            if ($$8 == this.n && $$4 >= 0 && $$3) {
+               int $$11 = this.i.b($$9.substring(0, Math.max(Math.min($$4, $$9.length()), 0)));
+               int $$12 = $$11 - this.i.b($$9) / 2;
+               if ($$4 >= $$9.length()) {
+                  $$0.a(this.i, "_", $$12, $$7, $$2, false);
+               }
+            }
          }
       }
 
-      @Override
-      public void a(ewi $$0) {
-         this.c($$0);
-      }
+      for (int $$13 = 0; $$13 < this.k.length; $$13++) {
+         String $$14 = this.k[$$13];
+         if ($$14 != null && $$13 == this.n && $$4 >= 0) {
+            int $$15 = this.i.b($$14.substring(0, Math.max(Math.min($$4, $$14.length()), 0)));
+            int $$16 = $$15 - this.i.b($$14) / 2;
+            if ($$3 && $$4 < $$14.length()) {
+               $$0.a($$16, $$7 - 1, $$16 + 1, $$7 + this.b.c(), 0xFF000000 | $$2);
+            }
 
-      @Override
-      public boolean o() {
-         return super.o() || this.c;
+            if ($$5 != $$4) {
+               int $$17 = Math.min($$4, $$5);
+               int $$18 = Math.max($$4, $$5);
+               int $$19 = this.i.b($$14.substring(0, $$17)) - this.i.b($$14) / 2;
+               int $$20 = this.i.b($$14.substring(0, $$18)) - this.i.b($$14) / 2;
+               int $$21 = Math.min($$19, $$20);
+               int $$22 = Math.max($$19, $$20);
+               $$0.a(foi.E(), $$21, $$7, $$22, $$7 + this.b.c(), -16776961);
+            }
+         }
       }
+   }
 
-      public void b(boolean $$0) {
-         this.c = $$0;
-      }
+   private void a(String $$0) {
+      this.k[this.n] = $$0;
+      this.c = this.c.a(this.n, tl.b($$0));
+      this.b.a(this.c, this.l);
+   }
 
-      private void a(esf $$0) {
-         $$0.a(ezf.a, this.r(), this.t(), 26, 26);
-      }
-
-      private void b(esf $$0) {
-         $$0.a(ezf.b, this.r(), this.t(), 26, 26);
-      }
+   private void E() {
+      this.f.a(null);
    }
 }

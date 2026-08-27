@@ -1,25 +1,15 @@
-public class coo extends cno {
-   public coo(cno.a $$0, biv... $$1) {
-      super($$0, cnp.b, $$1);
+public class coo extends cnu {
+   public coo(cnu.a $$0, bjb... $$1) {
+      super($$0, cnv.i, $$1);
    }
 
    @Override
    public int a(int $$0) {
-      return $$0 * 10;
+      return 25;
    }
 
    @Override
    public int b(int $$0) {
-      return this.a($$0) + 15;
-   }
-
-   @Override
-   public int a() {
-      return 3;
-   }
-
-   @Override
-   public boolean a(cno $$0) {
-      return super.a($$0) && $$0 != cns.j;
+      return 50;
    }
 }

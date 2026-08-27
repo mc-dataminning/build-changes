@@ -1,17 +1,18 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import java.util.Map;
+public class fvz extends fuj<cbt, fhj<cbt>> {
+   private static final aez a = new aez("textures/entity/wandering_trader.png");
 
-public class fvz extends fse<bwq, ffo<bwq>> {
-   private static final Map<biu<?>, aew> a = Maps.newHashMap(
-      ImmutableMap.of(biu.bq, new aew("textures/entity/horse/horse_zombie.png"), biu.aK, new aew("textures/entity/horse/horse_skeleton.png"))
-   );
-
-   public fvz(fth.a $$0, fia $$1) {
-      super($$0, new ffo<>($$0.a($$1)), 1.0F);
+   public fvz(ftd.a $$0) {
+      super($$0, new fhj<>($$0.a(fhw.bM)), 0.5F);
+      this.a(new fwq<>(this, $$0.f(), $$0.d()));
+      this.a(new fwp<>(this, $$0.d()));
    }
 
-   public aew a(bwq $$0) {
-      return a.get($$0.ag());
+   public aez a(cbt $$0) {
+      return a;
+   }
+
+   protected void a(cbt $$0, elj $$1, float $$2) {
+      float $$3 = 0.9375F;
+      $$1.b(0.9375F, 0.9375F, 0.9375F);
    }
 }

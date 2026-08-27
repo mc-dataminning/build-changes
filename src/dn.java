@@ -1,16 +1,16 @@
 public interface dn {
-   <T> hg<T> a(aev<? extends hq<T>> var1);
+   <T> hg<T> a(aey<? extends hq<T>> var1);
 
-   static dn a(final hg.b $$0, final cec $$1) {
+   static dn a(final hg.b $$0, final cei $$1) {
       return new dn() {
          @Override
-         public <T> hg<T> a(aev<? extends hq<T>> $$0x) {
+         public <T> hg<T> a(aey<? extends hq<T>> $$0x) {
             return $$0.b($$0).a($$1);
          }
       };
    }
 
-   static dn.a a(final hr $$0, final cec $$1) {
+   static dn.a a(final hr $$0, final cei $$1) {
       return new dn.a() {
          dn.b c = dn.b.b;
 
@@ -20,7 +20,7 @@ public interface dn {
          }
 
          @Override
-         public <T> hg<T> a(aev<? extends hq<T>> $$0x) {
+         public <T> hg<T> a(aey<? extends hq<T>> $$0x) {
             hq<T> $$1 = $$0.d($$0);
             final hg.c<T> $$2 = $$1.p();
             final hg.c<T> $$3 = $$1.u();

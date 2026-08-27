@@ -1,65 +1,37 @@
-public class cms extends cmb {
-   public cms(cly $$0) {
-      super($$0);
-   }
+import com.mojang.serialization.Codec;
 
-   public boolean a(cez $$0, cpv $$1) {
-      int $$2 = 0;
-      int $$3 = 0;
+public interface cms<T extends cmp<?>> {
+   cms<cmv> a = a("crafting_shaped", new cmv.a());
+   cms<cmw> b = a("crafting_shapeless", new cmw.a());
+   cms<cly> c = a("crafting_special_armordye", new cna<>(cly::new));
+   cms<cmb> d = a("crafting_special_bookcloning", new cna<>(cmb::new));
+   cms<cmn> e = a("crafting_special_mapcloning", new cna<>(cmn::new));
+   cms<cmo> f = a("crafting_special_mapextending", new cna<>(cmo::new));
+   cms<cmj> g = a("crafting_special_firework_rocket", new cna<>(cmj::new));
+   cms<cml> h = a("crafting_special_firework_star", new cna<>(cml::new));
+   cms<cmk> i = a("crafting_special_firework_star_fade", new cna<>(cmk::new));
+   cms<cnj> j = a("crafting_special_tippedarrow", new cna<>(cnj::new));
+   cms<clz> k = a("crafting_special_bannerduplicate", new cna<>(clz::new));
+   cms<cmx> l = a("crafting_special_shielddecoration", new cna<>(cmx::new));
+   cms<cmy> m = a("crafting_special_shulkerboxcoloring", new cna<>(cmy::new));
+   cms<cni> n = a("crafting_special_suspiciousstew", new cna<>(cni::new));
+   cms<cmu> o = a("crafting_special_repairitem", new cna<>(cmu::new));
+   cms<cnc> p = a("smelting", new cmz<>(cnc::new, 200));
+   cms<cma> q = a("blasting", new cmz<>(cma::new, 100));
+   cms<cng> r = a("smoking", new cmz<>(cng::new, 100));
+   cms<cmc> s = a("campfire_cooking", new cmz<>(cmc::new, 100));
+   cms<cnh> t = a("stonecutting", new cnb.a<>(cnh::new));
+   cms<cne> u = a("smithing_transform", new cne.a());
+   cms<cnf> v = a("smithing_trim", new cnf.a());
+   cms<cmi> w = a("crafting_decorated_pot", new cna<>(cmi::new));
 
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         cjf $$5 = $$0.a($$4);
-         if (!$$5.b()) {
-            if (csv.a($$5.d()) instanceof czu) {
-               $$2++;
-            } else {
-               if (!($$5.d() instanceof chu)) {
-                  return false;
-               }
+   Codec<T> a();
 
-               $$3++;
-            }
+   T a(so var1);
 
-            if ($$3 > 1 || $$2 > 1) {
-               return false;
-            }
-         }
-      }
+   void a(so var1, T var2);
 
-      return $$2 == 1 && $$3 == 1;
-   }
-
-   public cjf a(cez $$0, hr $$1) {
-      cjf $$2 = cjf.b;
-      chu $$3 = (chu)cji.qu;
-
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         cjf $$5 = $$0.a($$4);
-         if (!$$5.b()) {
-            cja $$6 = $$5.d();
-            if (csv.a($$6) instanceof czu) {
-               $$2 = $$5;
-            } else if ($$6 instanceof chu) {
-               $$3 = (chu)$$6;
-            }
-         }
-      }
-
-      cjf $$7 = czu.b($$3.d());
-      if ($$2.u()) {
-         $$7.c($$2.v().h());
-      }
-
-      return $$7;
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 * $$1 >= 2;
-   }
-
-   @Override
-   public cmm<?> an_() {
-      return cmm.m;
+   static <S extends cms<T>, T extends cmp<?>> S a(String $$0, S $$1) {
+      return hq.a(jb.u, $$0, $$1);
    }
 }

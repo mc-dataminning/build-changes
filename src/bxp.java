@@ -1,80 +1,57 @@
 import javax.annotation.Nullable;
 
-public class bxp extends bxj {
-   private static final bts b = bts.a().d();
-   @Nullable
-   private ebb c;
-   @Nullable
-   private ehn d;
+public abstract class bxp implements bxx {
+   protected final bxn a;
 
-   public bxp(bxh $$0) {
-      super($$0);
+   public bxp(bxn $$0) {
+      this.a = $$0;
    }
 
    @Override
-   public bxx<bxp> i() {
-      return bxx.c;
+   public boolean a() {
+      return false;
    }
 
    @Override
-   public void d() {
-      this.c = null;
-      this.d = null;
+   public void b() {
    }
 
    @Override
    public void c() {
-      double $$0 = this.d == null ? 0.0 : this.d.c(this.a.dq(), this.a.ds(), this.a.dw());
-      if ($$0 < 100.0 || $$0 > 22500.0 || this.a.P || this.a.Q) {
-         this.j();
-      }
+   }
+
+   @Override
+   public void a(bxm $$0, gw $$1, bhu $$2, @Nullable cca $$3) {
+   }
+
+   @Override
+   public void d() {
+   }
+
+   @Override
+   public void e() {
+   }
+
+   @Override
+   public float f() {
+      return 0.6F;
    }
 
    @Nullable
    @Override
-   public ehn g() {
-      return this.d;
+   public ehh g() {
+      return null;
    }
 
-   private void j() {
-      if (this.c == null || this.c.c()) {
-         int $$0 = this.a.y();
-         gw $$1 = this.a.dL().a(dks.a.f, dnv.a(this.a.s()));
-         cbu $$2 = this.a.dL().a(b, this.a, (double)$$1.u(), (double)$$1.v(), (double)$$1.w());
-         int $$4;
-         if ($$2 != null) {
-            ehn $$3 = new ehn($$2.dq(), 0.0, $$2.dw()).d();
-            $$4 = this.a.r(-$$3.c * 40.0, 105.0, -$$3.e * 40.0);
-         } else {
-            $$4 = this.a.r(40.0, (double)$$1.v(), 0.0);
-         }
-
-         eaz $$6 = new eaz($$1.u(), $$1.v(), $$1.w());
-         this.c = this.a.a($$0, $$4, $$6);
-         if (this.c != null) {
-            this.c.a();
-         }
-      }
-
-      this.k();
-      if (this.c != null && this.c.c()) {
-         this.a.ga().a(bxx.d);
-      }
+   @Override
+   public float a(bhu $$0, float $$1) {
+      return $$1;
    }
 
-   private void k() {
-      if (this.c != null && !this.c.c()) {
-         hy $$0 = this.c.g();
-         this.c.a();
-         double $$1 = (double)$$0.u();
-         double $$2 = (double)$$0.w();
-
-         double $$3;
-         do {
-            $$3 = (double)((float)$$0.v() + this.a.ef().i() * 20.0F);
-         } while ($$3 < (double)$$0.v());
-
-         this.d = new ehn($$1, $$3, $$2);
-      }
+   @Override
+   public float h() {
+      float $$0 = (float)this.a.do().h() + 1.0F;
+      float $$1 = Math.min($$0, 40.0F);
+      return 0.7F / $$1 / $$0;
    }
 }

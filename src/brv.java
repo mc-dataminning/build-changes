@@ -1,19 +1,99 @@
-import java.util.function.Predicate;
+import java.util.EnumSet;
 import javax.annotation.Nullable;
 
-public class brv<T extends bjg> extends bru<T> {
-   private boolean i = true;
+public class brv extends bqh {
+   private final bqh a;
+   private final int b;
+   private boolean c;
 
-   public brv(cdc $$0, Class<T> $$1, int $$2, boolean $$3, boolean $$4, @Nullable Predicate<bjg> $$5) {
-      super($$0, $$1, $$2, $$3, $$4, $$5);
+   public brv(int $$0, bqh $$1) {
+      this.b = $$0;
+      this.a = $$1;
    }
 
-   public void a(boolean $$0) {
-      this.i = $$0;
+   public boolean a(brv $$0) {
+      return this.P_() && $$0.i() < this.i();
    }
 
    @Override
    public boolean a() {
-      return this.i && super.a();
+      return this.a.a();
+   }
+
+   @Override
+   public boolean b() {
+      return this.a.b();
+   }
+
+   @Override
+   public boolean P_() {
+      return this.a.P_();
+   }
+
+   @Override
+   public void c() {
+      if (!this.c) {
+         this.c = true;
+         this.a.c();
+      }
+   }
+
+   @Override
+   public void d() {
+      if (this.c) {
+         this.c = false;
+         this.a.d();
+      }
+   }
+
+   @Override
+   public boolean Q_() {
+      return this.a.Q_();
+   }
+
+   @Override
+   protected int a(int $$0) {
+      return this.a.a($$0);
+   }
+
+   @Override
+   public void e() {
+      this.a.e();
+   }
+
+   @Override
+   public void a(EnumSet<bqh.a> $$0) {
+      this.a.a($$0);
+   }
+
+   @Override
+   public EnumSet<bqh.a> j() {
+      return this.a.j();
+   }
+
+   public boolean h() {
+      return this.c;
+   }
+
+   public int i() {
+      return this.b;
+   }
+
+   public bqh k() {
+      return this.a;
+   }
+
+   @Override
+   public boolean equals(@Nullable Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return $$0 != null && this.getClass() == $$0.getClass() ? this.a.equals(((brv)$$0).a) : false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return this.a.hashCode();
    }
 }

@@ -1,67 +1,42 @@
-import com.mojang.datafixers.Products.P4;
-import com.mojang.datafixers.Products.P5;
-import com.mojang.datafixers.Products.P9;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import java.util.Collections;
 import java.util.List;
-import java.util.Optional;
 
-public class dwc extends dwf {
-   public static final Codec<dwc> a = RecordCodecBuilder.create($$0 -> b($$0).apply($$0, dwc::new));
-   private final int c;
-   private final int d;
-   private final int e;
-   private final hi<cqt> f;
+public class dwc extends dwj {
+   public static final Codec<dwc> a = Codec.unit(() -> dwc.b);
+   public static final dwc b = new dwc();
 
-   private static P9<Mu<dwc>, hy, dwf.c, Float, Integer, Optional<dwf.a>, Integer, Integer, Integer, hi<cqt>> b(Instance<dwc> $$0) {
-      P5<Mu<dwc>, hy, dwf.c, Float, Integer, Optional<dwf.a>> $$1 = a($$0);
-      P4<Mu<dwc>, Integer, Integer, Integer, hi<cqt>> $$2 = $$0.group(
-         Codec.intRange(0, 1023).fieldOf("distance").forGetter(dwc::a),
-         Codec.intRange(0, 1023).fieldOf("spread").forGetter(dwc::b),
-         Codec.intRange(1, 4095).fieldOf("count").forGetter(dwc::c),
-         hs.a(jc.ap).fieldOf("preferred_biomes").forGetter(dwc::d)
-      );
-      return new P9($$1.t1(), $$1.t2(), $$1.t3(), $$1.t4(), $$1.t5(), $$2.t1(), $$2.t2(), $$2.t3(), $$2.t4());
-   }
-
-   public dwc(hy $$0, dwf.c $$1, float $$2, int $$3, Optional<dwf.a> $$4, int $$5, int $$6, int $$7, hi<cqt> $$8) {
-      super($$0, $$1, $$2, $$3, $$4);
-      this.c = $$5;
-      this.d = $$6;
-      this.e = $$7;
-      this.f = $$8;
-   }
-
-   public dwc(int $$0, int $$1, int $$2, hi<cqt> $$3) {
-      this(hy.g, dwf.c.a, 1.0F, 0, Optional.empty(), $$0, $$1, $$2, $$3);
-   }
-
-   public int a() {
-      return this.c;
-   }
-
-   public int b() {
-      return this.d;
-   }
-
-   public int c() {
-      return this.e;
-   }
-
-   public hi<cqt> d() {
-      return this.f;
+   private dwc() {
+      super(dwl.a.a);
    }
 
    @Override
-   protected boolean a(dhh $$0, int $$1, int $$2) {
-      List<cpc> $$3 = $$0.a(this);
-      return $$3 == null ? false : $$3.contains(new cpc($$1, $$2));
+   public hy a(dyw $$0, czn $$1) {
+      return hy.g;
    }
 
    @Override
-   public dwg<?> e() {
-      return dwg.b;
+   public List<dyv.c> a(dyw $$0, gw $$1, czn $$2, ash $$3) {
+      return Collections.emptyList();
+   }
+
+   @Override
+   public duu a(dyw $$0, gw $$1, czn $$2) {
+      throw new IllegalStateException("Invalid call to EmtyPoolElement.getBoundingBox, filter me!");
+   }
+
+   @Override
+   public boolean a(dyw $$0, cqv $$1, cqt $$2, dha $$3, gw $$4, gw $$5, czn $$6, duu $$7, ash $$8, boolean $$9) {
+      return true;
+   }
+
+   @Override
+   public dwk<?> a() {
+      return dwk.d;
+   }
+
+   @Override
+   public String toString() {
+      return "Empty";
    }
 }

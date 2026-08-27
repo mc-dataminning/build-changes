@@ -1,23 +1,14 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-
-public record cix(he<apc> b, int c, float d) {
-   public static final Codec<cix> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               apc.b.fieldOf("sound_event").forGetter(cix::a), arf.j.fieldOf("use_duration").forGetter(cix::b), arf.k.fieldOf("range").forGetter(cix::c)
-            )
-            .apply($$0, cix::new)
-   );
-
-   public he<apc> a() {
-      return this.b;
+public class cix extends ckl {
+   public cix(ctc $$0, ctc $$1, cjg.a $$2) {
+      super($$2, $$0, $$1, ha.b);
    }
 
-   public int b() {
-      return this.c;
-   }
+   @Override
+   protected boolean a(cqe $$0, dfd $$1, gw $$2) {
+      if ($$1.b() instanceof dbw $$3 && !$$3.b($$1, $$0, $$2)) {
+         return false;
+      }
 
-   public float c() {
-      return this.d;
+      return super.a($$0, $$1, $$2);
    }
 }

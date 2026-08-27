@@ -1,24 +1,28 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public class bnq extends bkx<bji> {
-   private final float c;
-
-   public bnq(float $$0) {
-      super(ImmutableMap.of());
-      this.c = $$0;
-   }
-
-   protected boolean a(akq $$0, bji $$1) {
-      return $$1.aX() && $$1.b(apx.a) > $$1.de() || $$1.bl();
-   }
-
-   protected boolean a(akq $$0, bji $$1, long $$2) {
-      return this.a($$0, $$1);
-   }
-
-   protected void b(akq $$0, bji $$1, long $$2) {
-      if ($$1.ef().i() < this.c) {
-         $$1.K().a();
-      }
+public class bnq {
+   public static ble<bjm> a(Function<bjm, Optional<bmq>> $$0, Predicate<bjm> $$1, int $$2, int $$3, float $$4) {
+      return bop.a(
+         (Function<bop.b<bjm>, ? extends App<bop.c<bjm>, bos<bjm>>>)($$5 -> $$5.group($$5.a(bsn.n), $$5.a(bsn.m))
+               .apply($$5, ($$5x, $$6) -> ($$7, $$8, $$9) -> {
+                     Optional<bmq> $$10 = $$0.apply($$8);
+                     if (!$$10.isEmpty() && $$1.test($$8)) {
+                        bmq $$11 = $$10.get();
+                        if ($$8.dj().a((ho)$$11.a(), (double)$$3)) {
+                           return false;
+                        } else {
+                           bmq $$12 = $$10.get();
+                           $$5x.a($$12);
+                           $$6.a(new bsq($$12, $$4, $$2));
+                           return true;
+                        }
+                     } else {
+                        return false;
+                     }
+                  }))
+      );
    }
 }

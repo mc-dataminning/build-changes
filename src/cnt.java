@@ -1,11 +1,11 @@
-public class cnt extends cno {
-   protected cnt(cno.a $$0, biv... $$1) {
-      super($$0, cnp.f, $$1);
+public class cnt extends cnu {
+   protected cnt(cnu.a $$0, bjb... $$1) {
+      super($$0, cnv.g, $$1);
    }
 
    @Override
    public int a(int $$0) {
-      return 10 + 20 * ($$0 - 1);
+      return 1 + 10 * ($$0 - 1);
    }
 
    @Override
@@ -15,6 +15,11 @@ public class cnt extends cno {
 
    @Override
    public int a() {
-      return 2;
+      return 5;
+   }
+
+   @Override
+   public boolean a(cjl $$0) {
+      return $$0.a(cjo.rg) ? true : super.a($$0);
    }
 }

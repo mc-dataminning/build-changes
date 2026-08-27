@@ -1,42 +1,29 @@
 import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
 import java.util.function.Function;
 import org.apache.commons.lang3.mutable.MutableLong;
 
 public class bnt {
-   private static final int a = 60;
+   private static final int a = 180;
+   private static final int b = 8;
+   private static final int c = 6;
 
-   public static bky<bjp> a(int $$0, float $$1) {
-      MutableLong $$2 = new MutableLong(0L);
-      return boj.a(
-         (Function<boj.b<bjp>, ? extends App<boj.c<bjp>, bom<bjp>>>)($$3 -> $$3.group($$3.c(bsh.o), $$3.c(bsh.m), $$3.a(bsh.n))
-               .apply($$3, ($$3x, $$4, $$5) -> ($$5x, $$6, $$7) -> {
-                     if (!$$5x.b_($$6.dl()).a(apx.a)) {
-                        return false;
-                     } else if ($$7 < $$2.getValue()) {
-                        $$2.setValue($$7 + 60L);
-                        return true;
-                     } else {
-                        gw $$8 = $$6.dl();
-                        gw.a $$9 = new gw.a();
-                        ehs $$10 = ehs.a($$6);
-
-                        for (gw $$11 : gw.a($$8, $$0, $$0, $$0)) {
-                           if ($$11.u() != $$8.u() || $$11.w() != $$8.w()) {
-                              dfj $$12 = $$5x.a_($$11);
-                              dfj $$13 = $$5x.a_($$9.a($$11, ha.a));
-                              if (!$$12.a(csw.G) && $$5x.b_($$11).c() && $$12.b($$5x, $$11, $$10).c() && $$13.d($$5x, $$9, ha.b)) {
-                                 gw $$14 = $$11.i();
-                                 $$5.a(new bla($$14));
-                                 $$4.a(new bsk(new bla($$14), $$1, 1));
-                                 break;
-                              }
-                           }
-                        }
-
-                        $$2.setValue($$7 + 60L);
-                        return true;
-                     }
-                  }))
+   public static bmn<bjv> a(bsn<hd> $$0, float $$1, int $$2) {
+      MutableLong $$3 = new MutableLong(0L);
+      return bop.a(
+         (Function<bop.b<bjv>, ? extends App<bop.c<bjv>, bos<bjv>>>)($$4 -> $$4.group($$4.a(bsn.m), $$4.b($$0)).apply($$4, ($$4x, $$5) -> ($$6, $$7, $$8) -> {
+                  hd $$9 = $$4.b($$5);
+                  if ($$6.ac() != $$9.a() || !$$9.b().a($$7.dj(), (double)$$2)) {
+                     return false;
+                  } else if ($$8 <= $$3.getValue()) {
+                     return true;
+                  } else {
+                     Optional<ehh> $$10 = Optional.ofNullable(buf.a($$7, 8, 6));
+                     $$4x.a($$10.map($$1xxxx -> new bsq($$1xxxx, $$1, 1)));
+                     $$3.setValue($$8 + 180L);
+                     return true;
+                  }
+               }))
       );
    }
 }

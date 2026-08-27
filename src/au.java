@@ -5,44 +5,44 @@ import javax.annotation.Nullable;
 
 public class au extends cw<au.a> {
    public au.a a(JsonObject $$0, Optional<bc> $$1, bg $$2) {
-      csv $$3 = a($$0);
+      ctc $$3 = a($$0);
       Optional<cb> $$4 = cb.a($$0.get("item"));
       cl.d $$5 = cl.d.a($$0.get("num_bees_inside"));
       return new au.a($$1, $$3, $$4, $$5);
    }
 
    @Nullable
-   private static csv a(JsonObject $$0) {
+   private static ctc a(JsonObject $$0) {
       if ($$0.has("block")) {
-         aew $$1 = new aew(arn.i($$0, "block"));
+         aez $$1 = new aez(arr.i($$0, "block"));
          return jb.f.b($$1).orElseThrow(() -> new JsonSyntaxException("Unknown block type '" + $$1 + "'"));
       } else {
          return null;
       }
    }
 
-   public void a(akr $$0, dfj $$1, cjf $$2, int $$3) {
+   public void a(aku $$0, dfd $$1, cjl $$2, int $$3) {
       this.a($$0, $$3x -> $$3x.a($$1, $$2, $$3));
    }
 
    public static class a extends at {
       @Nullable
-      private final csv a;
+      private final ctc a;
       private final Optional<cb> b;
       private final cl.d c;
 
-      public a(Optional<bc> $$0, @Nullable csv $$1, Optional<cb> $$2, cl.d $$3) {
+      public a(Optional<bc> $$0, @Nullable ctc $$1, Optional<cb> $$2, cl.d $$3) {
          super($$0);
          this.a = $$1;
          this.b = $$2;
          this.c = $$3;
       }
 
-      public static am<au.a> a(csv $$0, cb.a $$1, cl.d $$2) {
+      public static am<au.a> a(ctc $$0, cb.a $$1, cl.d $$2) {
          return al.K.a(new au.a(Optional.empty(), $$0, Optional.of($$1.b()), $$2));
       }
 
-      public boolean a(dfj $$0, cjf $$1, int $$2) {
+      public boolean a(dfd $$0, cjl $$1, int $$2) {
          if (this.a != null && !$$0.a(this.a)) {
             return false;
          } else {

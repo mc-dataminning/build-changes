@@ -1,45 +1,29 @@
 import com.mojang.serialization.Codec;
+import java.util.stream.Stream;
 
-public class dnd extends dnw<dpt> {
-   public dnd(Codec<dpt> $$0) {
-      super($$0);
+public record dnd<FC extends dpu, F extends dnq<FC>>(F d, FC e) {
+   public static final Codec<dnd<?, ?>> a = jb.R.q().dispatch($$0 -> $$0.d, dnq::a);
+   public static final Codec<he<dnd<?, ?>>> b = aev.a(jc.at, a);
+   public static final Codec<hi<dnd<?, ?>>> c = hs.a(jc.at, a);
+
+   public boolean a(cqv $$0, dha $$1, ash $$2, gw $$3) {
+      return this.d.a(this.e, $$0, $$1, $$2, $$3);
+   }
+
+   public Stream<dnd<?, ?>> a() {
+      return Stream.concat(Stream.of(this), this.e.e());
    }
 
    @Override
-   public boolean a(dny<dpt> $$0) {
-      gw $$1 = $$0.e();
-      cqp $$2 = $$0.b();
-      asc $$3 = $$0.d();
+   public String toString() {
+      return "Configured: " + this.d + ": " + this.e;
+   }
 
-      dpt $$4;
-      for ($$4 = $$0.f(); $$1.v() > $$2.H_() + 3; $$1 = $$1.d()) {
-         if (!$$2.t($$1.d())) {
-            dfj $$5 = $$2.a_($$1.d());
-            if (b($$5) || a($$5)) {
-               break;
-            }
-         }
-      }
+   public F b() {
+      return this.d;
+   }
 
-      if ($$1.v() <= $$2.H_() + 3) {
-         return false;
-      } else {
-         for (int $$6 = 0; $$6 < 3; $$6++) {
-            int $$7 = $$3.a(2);
-            int $$8 = $$3.a(2);
-            int $$9 = $$3.a(2);
-            float $$10 = (float)($$7 + $$8 + $$9) * 0.333F + 0.5F;
-
-            for (gw $$11 : gw.a($$1.b(-$$7, -$$8, -$$9), $$1.b($$7, $$8, $$9))) {
-               if ($$11.j($$1) <= (double)($$10 * $$10)) {
-                  $$2.a($$11, $$4.b, 3);
-               }
-            }
-
-            $$1 = $$1.b(-1 + $$3.a(2), -$$3.a(2), -1 + $$3.a(2));
-         }
-
-         return true;
-      }
+   public FC c() {
+      return this.e;
    }
 }

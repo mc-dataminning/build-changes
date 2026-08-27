@@ -1,63 +1,77 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.datafixers.Products.P1;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 import java.util.List;
-import java.util.Set;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public class edw extends eec {
-   public static final Codec<edw> a = RecordCodecBuilder.create(
-      $$0 -> a($$0)
-            .and($$0.group(egl.a.fieldOf("levels").forGetter($$0x -> $$0x.b), Codec.BOOL.fieldOf("treasure").orElse(false).forGetter($$0x -> $$0x.c)))
-            .apply($$0, edw::new)
-   );
-   private final egk b;
-   private final boolean c;
+public abstract class edw implements edx {
+   protected final List<efj> g;
+   private final Predicate<eck> a;
 
-   edw(List<efp> $$0, egk $$1, boolean $$2) {
-      super($$0);
-      this.b = $$1;
-      this.c = $$2;
+   protected edw(List<efj> $$0) {
+      this.g = $$0;
+      this.a = efl.a($$0);
    }
+
+   protected static <T extends edw> P1<Mu<T>, List<efj>> a(Instance<T> $$0) {
+      return $$0.group(arj.a(efl.a.listOf(), "conditions", List.of()).forGetter($$0x -> $$0x.g));
+   }
+
+   public final cjl b(cjl $$0, eck $$1) {
+      return this.a.test($$1) ? this.a($$0, $$1) : $$0;
+   }
+
+   protected abstract cjl a(cjl var1, eck var2);
 
    @Override
-   public eee b() {
-      return eef.d;
+   public void a(ect $$0) {
+      edx.super.a($$0);
+
+      for (int $$1 = 0; $$1 < this.g.size(); $$1++) {
+         this.g.get($$1).a($$0.b(".conditions[" + $$1 + "]"));
+      }
    }
 
-   @Override
-   public Set<eey<?>> a() {
-      return this.b.a();
+   protected static edw.a<?> a(Function<List<efj>, edx> $$0) {
+      return new edw.b($$0);
    }
 
-   @Override
-   public cjf a(cjf $$0, ecq $$1) {
-      asc $$2 = $$1.b();
-      return cnq.a($$2, $$0, this.b.a($$1), this.c);
+   public abstract static class a<T extends edw.a<T>> implements edx.a, efc<T> {
+      private final Builder<efj> a = ImmutableList.builder();
+
+      public T a(efj.a $$0) {
+         this.a.add($$0.build());
+         return this.c();
+      }
+
+      public final T f() {
+         return this.c();
+      }
+
+      protected abstract T c();
+
+      protected List<efj> g() {
+         return this.a.build();
+      }
    }
 
-   public static edw.a a(egk $$0) {
-      return new edw.a($$0);
-   }
+   static final class b extends edw.a<edw.b> {
+      private final Function<List<efj>, edx> a;
 
-   public static class a extends eec.a<edw.a> {
-      private final egk a;
-      private boolean b;
-
-      public a(egk $$0) {
+      public b(Function<List<efj>, edx> $$0) {
          this.a = $$0;
       }
 
-      protected edw.a a() {
-         return this;
-      }
-
-      public edw.a e() {
-         this.b = true;
+      protected edw.b a() {
          return this;
       }
 
       @Override
-      public eed b() {
-         return new edw(this.g(), this.a, this.b);
+      public edx b() {
+         return this.a.apply(this.g());
       }
    }
 }

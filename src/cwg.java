@@ -1,52 +1,55 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public abstract class cwg extends csv {
-   protected final ha a;
-   protected final boolean b;
-   protected final eig c;
-
-   protected cwg(dfi.d $$0, ha $$1, eig $$2, boolean $$3) {
-      super($$0);
-      this.a = $$1;
-      this.c = $$2;
-      this.b = $$3;
-   }
-
-   @Nullable
-   @Override
-   public dfj a(cln $$0) {
-      dfj $$1 = $$0.q().a_($$0.a().a(this.a));
-      return !$$1.a(this.b()) && !$$1.a(this.a()) ? this.a($$0.q()) : this.a().n();
-   }
-
-   public dfj a(cpw $$0) {
-      return this.n();
-   }
+public class cwg extends ctl implements ctf {
+   public static final MapCodec<cwg> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(aey.a(jc.at).fieldOf("feature").forGetter($$0x -> $$0x.e), jb.f.q().fieldOf("grows_on").forGetter($$0x -> $$0x.d), t())
+            .apply($$0, cwg::new)
+   );
+   protected static final eia b = ctc.a(4.0, 0.0, 4.0, 12.0, 9.0, 12.0);
+   private static final double c = 0.4;
+   private final ctc d;
+   private final aey<dnd<?, ?>> e;
 
    @Override
-   public boolean a(dfj $$0, cpy $$1, gw $$2) {
-      gw $$3 = $$2.a(this.a.g());
-      dfj $$4 = $$1.a_($$3);
-      return !this.h($$4) ? false : $$4.a(this.b()) || $$4.a(this.a()) || $$4.d($$1, $$3, this.a);
+   public MapCodec<cwg> a() {
+      return a;
+   }
+
+   protected cwg(aey<dnd<?, ?>> $$0, ctc $$1, dfc.d $$2) {
+      super($$2);
+      this.e = $$0;
+      this.d = $$1;
    }
 
    @Override
-   public void a(dfj $$0, akq $$1, gw $$2, asc $$3) {
-      if (!$$0.a($$1, $$2)) {
-         $$1.b($$2, true);
-      }
-   }
-
-   protected boolean h(dfj $$0) {
-      return true;
+   public eia a(dfd $$0, cph $$1, gw $$2, ehm $$3) {
+      return b;
    }
 
    @Override
-   public eig a(dfj $$0, cpb $$1, gw $$2, ehs $$3) {
-      return this.c;
+   protected boolean d(dfd $$0, cph $$1, gw $$2) {
+      return $$0.a(apv.aK) || $$0.a(cte.fl) || $$0.a(cte.dX) || super.d($$0, $$1, $$2);
    }
 
-   protected abstract cwi b();
+   private Optional<? extends he<dnd<?, ?>>> a(cqe $$0) {
+      return $$0.G_().d(jc.at).b(this.e);
+   }
 
-   protected abstract csv a();
+   @Override
+   public boolean b(cqe $$0, gw $$1, dfd $$2) {
+      dfd $$3 = $$0.a_($$1.d());
+      return $$3.a(this.d);
+   }
+
+   @Override
+   public boolean a(cqb $$0, ash $$1, gw $$2, dfd $$3) {
+      return (double)$$1.i() < 0.4;
+   }
+
+   @Override
+   public void a(akt $$0, ash $$1, gw $$2, dfd $$3) {
+      this.a($$0).ifPresent($$3x -> ((dnd)$$3x.a()).a($$0, $$0.k().g(), $$1, $$2));
+   }
 }

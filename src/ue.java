@@ -1,89 +1,71 @@
-import com.mojang.logging.LogUtils;
+import com.google.common.primitives.Ints;
+import com.google.common.primitives.Longs;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.nio.charset.StandardCharsets;
+import java.security.SignatureException;
 import java.time.Instant;
-import java.util.UUID;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.Optional;
 
-public class ue {
-   private static final Logger a = LogUtils.getLogger();
-   @Nullable
-   private uf b;
+public record ue(String b, Instant c, long d, ts e) {
+   public static final MapCodec<ue> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.STRING.fieldOf("content").forGetter(ue::a),
+               arj.m.fieldOf("time_stamp").forGetter(ue::b),
+               Codec.LONG.fieldOf("salt").forGetter(ue::c),
+               ts.a.optionalFieldOf("last_seen", ts.b).forGetter(ue::d)
+            )
+            .apply($$0, ue::new)
+   );
 
-   public ue(UUID $$0, UUID $$1) {
-      this.b = uf.a($$0, $$1);
+   public static ue a(String $$0) {
+      return new ue($$0, Instant.now(), 0L, ts.b);
    }
 
-   public ue.c a(asi $$0) {
-      return $$1 -> {
-         uf $$2 = this.a();
-         return $$2 == null ? null : new tw($$0.sign($$2x -> ua.a($$2x, $$2, $$1)));
-      };
+   public void a(asl.a $$0) throws SignatureException {
+      $$0.update(Longs.toByteArray(this.d));
+      $$0.update(Longs.toByteArray(this.c.getEpochSecond()));
+      byte[] $$1 = this.b.getBytes(StandardCharsets.UTF_8);
+      $$0.update(Ints.toByteArray($$1.length));
+      $$0.update($$1);
+      this.e.a($$0);
    }
 
-   public ue.b a(cbx $$0) {
-      ash $$1 = $$0.a();
-      return ($$2, $$3) -> {
-         uf $$4 = this.a();
-         if ($$4 == null) {
-            throw new ue.a(tl.c("chat.disabled.chain_broken"), false);
-         } else if ($$0.b().a()) {
-            throw new ue.a(tl.c("chat.disabled.expiredProfileKey"), false);
-         } else {
-            ua $$5 = new ua($$4, $$2, $$3, null, to.c);
-            if (!$$5.a($$1)) {
-               throw new ue.a(tl.c("multiplayer.disconnect.unsigned_chat"), true);
-            } else {
-               if ($$5.a(Instant.now())) {
-                  a.warn("Received expired chat: '{}'. Is the client/server system time unsynchronized?", $$3.a());
-               }
-
-               return $$5;
-            }
-         }
-      };
+   public ue.a a(ty $$0) {
+      return new ue.a(this.b, this.c, this.d, this.e.a($$0));
    }
 
-   @Nullable
-   private uf a() {
-      uf $$0 = this.b;
-      if ($$0 != null) {
-         this.b = $$0.a();
+   public String a() {
+      return this.b;
+   }
+
+   public Instant b() {
+      return this.c;
+   }
+
+   public long c() {
+      return this.d;
+   }
+
+   public ts d() {
+      return this.e;
+   }
+
+   public static record a(String a, Instant b, long c, ts.a d) {
+      public a(so $$0) {
+         this($$0.d(256), $$0.w(), $$0.readLong(), new ts.a($$0));
       }
 
-      return $$0;
-   }
-
-   public static class a extends uk {
-      private final boolean a;
-
-      public a(tl $$0, boolean $$1) {
-         super($$0);
-         this.a = $$1;
+      public void a(so $$0) {
+         $$0.a(this.a, 256);
+         $$0.a(this.b);
+         $$0.b(this.c);
+         this.d.a($$0);
       }
 
-      public boolean a() {
-         return this.a;
+      public Optional<ue> a(ty $$0) {
+         return this.d.a($$0).map($$0x -> new ue(this.a, this.b, this.c, $$0x));
       }
-   }
-
-   @FunctionalInterface
-   public interface b {
-      ue.b a = ($$0, $$1) -> {
-         throw new ue.a(tl.c("chat.disabled.missingProfileKey"), false);
-      };
-
-      static ue.b unsigned(UUID $$0) {
-         return ($$1, $$2) -> ua.a($$0, $$2.a());
-      }
-
-      ua unpack(@Nullable tw var1, ud var2) throws ue.a;
-   }
-
-   @FunctionalInterface
-   public interface c {
-      ue.c a = $$0 -> null;
-
-      @Nullable
-      tw pack(ud var1);
    }
 }

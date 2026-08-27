@@ -1,18 +1,26 @@
-public class fkw extends fmu {
-   fkw(fix $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, boolean $$7) {
-      super($$0, $$1, $$2, $$3);
-      this.d(3.0F);
-      this.b(0.25F, 0.25F);
-      if ($$7) {
-         this.t = this.r.a(50) + 280;
-      } else {
-         this.t = this.r.a(50) + 80;
-      }
+public class fkw extends fmq {
+   private final eaf b;
+   protected boolean a;
 
-      this.u = 3.0E-6F;
-      this.j = $$4;
-      this.k = $$5 + (double)(this.r.i() / 500.0F);
-      this.l = $$6;
+   fkw(fis $$0, double $$1, double $$2, double $$3, eaf $$4) {
+      super($$0, $$1, $$2, $$3);
+      this.b(0.01F, 0.01F);
+      this.u = 0.06F;
+      this.b = $$4;
+   }
+
+   protected eaf g() {
+      return this.b;
+   }
+
+   @Override
+   public flu b() {
+      return flu.b;
+   }
+
+   @Override
+   public int a(float $$0) {
+      return this.a ? 240 : super.a($$0);
    }
 
    @Override
@@ -20,51 +28,260 @@ public class fkw extends fmu {
       this.d = this.g;
       this.e = this.h;
       this.f = this.i;
-      if (this.s++ < this.t && !(this.y <= 0.0F)) {
-         this.j = this.j + (double)(this.r.i() / 5000.0F * (float)(this.r.h() ? 1 : -1));
-         this.l = this.l + (double)(this.r.i() / 5000.0F * (float)(this.r.h() ? 1 : -1));
+      this.h();
+      if (!this.o) {
          this.k = this.k - (double)this.u;
          this.a(this.j, this.k, this.l);
-         if (this.s >= this.t - 60 && this.y > 0.01F) {
-            this.y -= 0.015F;
+         this.i();
+         if (!this.o) {
+            this.j *= 0.98F;
+            this.k *= 0.98F;
+            this.l *= 0.98F;
+            if (this.b != eah.a) {
+               gw $$0 = gw.a(this.g, this.h, this.i);
+               eag $$1 = this.c.b_($$0);
+               if ($$1.a() == this.b && this.h < (double)((float)$$0.v() + $$1.a((cph)this.c, $$0))) {
+                  this.k();
+               }
+            }
          }
-      } else {
+      }
+   }
+
+   protected void h() {
+      if (this.t-- <= 0) {
          this.k();
       }
    }
 
-   @Override
-   public fly b() {
-      return fly.c;
+   protected void i() {
    }
 
-   public static class a implements flx<iy> {
-      private final fmp a;
+   public static fmq a(iy $$0, fis $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      fkw $$8 = new fkw.b($$1, $$2, $$3, $$4, eah.c, iv.n);
+      $$8.a(0.2F, 0.3F, 1.0F);
+      return $$8;
+   }
 
-      public a(fmp $$0) {
-         this.a = $$0;
+   public static fmq b(iy $$0, fis $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      fkw $$8 = new fkw.e($$1, $$2, $$3, $$4, eah.c, iv.ag);
+      $$8.a(0.2F, 0.3F, 1.0F);
+      return $$8;
+   }
+
+   public static fmq c(iy $$0, fis $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      return new fkw.a($$1, $$2, $$3, $$4, eah.e, iv.k);
+   }
+
+   public static fmq d(iy $$0, fis $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      fkw $$8 = new fkw.e($$1, $$2, $$3, $$4, eah.e, iv.l);
+      $$8.a(1.0F, 0.2857143F, 0.083333336F);
+      return $$8;
+   }
+
+   public static fmq e(iy $$0, fis $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      fkw $$8 = new fkw.c($$1, $$2, $$3, $$4, eah.e);
+      $$8.a(1.0F, 0.2857143F, 0.083333336F);
+      return $$8;
+   }
+
+   public static fmq f(iy $$0, fis $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      fkw.b $$8 = new fkw.b($$1, $$2, $$3, $$4, eah.a, iv.aq);
+      $$8.u *= 0.01F;
+      $$8.t = 100;
+      $$8.a(0.622F, 0.508F, 0.082F);
+      return $$8;
+   }
+
+   public static fmq g(iy $$0, fis $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      fkw $$8 = new fkw.g($$1, $$2, $$3, $$4, eah.a, iv.ar);
+      $$8.u = 0.01F;
+      $$8.a(0.582F, 0.448F, 0.082F);
+      return $$8;
+   }
+
+   public static fmq h(iy $$0, fis $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      fkw $$8 = new fkw.c($$1, $$2, $$3, $$4, eah.a);
+      $$8.t = (int)(128.0 / (Math.random() * 0.8 + 0.2));
+      $$8.a(0.522F, 0.408F, 0.082F);
+      return $$8;
+   }
+
+   public static fmq i(iy $$0, fis $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      fkw $$8 = new fkw.b($$1, $$2, $$3, $$4, eah.c, iv.aI);
+      $$8.a(0.2F, 0.3F, 1.0F);
+      return $$8;
+   }
+
+   public static fmq j(iy $$0, fis $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      fkw $$8 = new fkw.d($$1, $$2, $$3, $$4, eah.c, iv.ag);
+      $$8.a(0.2F, 0.3F, 1.0F);
+      return $$8;
+   }
+
+   public static fmq k(iy $$0, fis $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      return new fkw.a($$1, $$2, $$3, $$4, eah.e, iv.aG);
+   }
+
+   public static fmq l(iy $$0, fis $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      fkw $$8 = new fkw.d($$1, $$2, $$3, $$4, eah.e, iv.l);
+      $$8.a(1.0F, 0.2857143F, 0.083333336F);
+      return $$8;
+   }
+
+   public static fmq m(iy $$0, fis $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      fkw $$8 = new fkw.f($$1, $$2, $$3, $$4, eah.a);
+      $$8.t = (int)(16.0 / (Math.random() * 0.8 + 0.2));
+      $$8.u = 0.007F;
+      $$8.a(0.92F, 0.782F, 0.72F);
+      return $$8;
+   }
+
+   public static fmq n(iy $$0, fis $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      int $$8 = (int)(64.0F / asb.b($$1.D_(), 0.1F, 0.9F));
+      fkw $$9 = new fkw.f($$1, $$2, $$3, $$4, eah.a, $$8);
+      $$9.u = 0.005F;
+      $$9.a(0.32F, 0.5F, 0.22F);
+      return $$9;
+   }
+
+   public static fmq o(iy $$0, fis $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      fkw.b $$8 = new fkw.b($$1, $$2, $$3, $$4, eah.a, iv.az);
+      $$8.a = true;
+      $$8.u *= 0.01F;
+      $$8.t = 100;
+      $$8.a(0.51171875F, 0.03125F, 0.890625F);
+      return $$8;
+   }
+
+   public static fmq p(iy $$0, fis $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      fkw $$8 = new fkw.e($$1, $$2, $$3, $$4, eah.a, iv.aA);
+      $$8.a = true;
+      $$8.u = 0.01F;
+      $$8.a(0.51171875F, 0.03125F, 0.890625F);
+      return $$8;
+   }
+
+   public static fmq q(iy $$0, fis $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      fkw $$8 = new fkw.c($$1, $$2, $$3, $$4, eah.a);
+      $$8.a = true;
+      $$8.t = (int)(28.0 / (Math.random() * 0.8 + 0.2));
+      $$8.a(0.51171875F, 0.03125F, 0.890625F);
+      return $$8;
+   }
+
+   static class a extends fkw.b {
+      a(fis $$0, double $$1, double $$2, double $$3, eaf $$4, it $$5) {
+         super($$0, $$1, $$2, $$3, $$4, $$5);
       }
 
-      public flu a(iy $$0, fix $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fkw $$8 = new fkw($$1, $$2, $$3, $$4, $$5, $$6, $$7, false);
-         $$8.e(0.9F);
-         $$8.a(this.a);
-         return $$8;
+      @Override
+      protected void h() {
+         this.v = 1.0F;
+         this.w = 16.0F / (float)(40 - this.t + 16);
+         this.x = 4.0F / (float)(40 - this.t + 8);
+         super.h();
       }
    }
 
-   public static class b implements flx<iy> {
-      private final fmp a;
+   static class b extends fkw {
+      private final it b;
 
-      public b(fmp $$0) {
-         this.a = $$0;
+      b(fis $$0, double $$1, double $$2, double $$3, eaf $$4, it $$5) {
+         super($$0, $$1, $$2, $$3, $$4);
+         this.b = $$5;
+         this.u *= 0.02F;
+         this.t = 40;
       }
 
-      public flu a(iy $$0, fix $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fkw $$8 = new fkw($$1, $$2, $$3, $$4, $$5, $$6, $$7, true);
-         $$8.e(0.95F);
-         $$8.a(this.a);
-         return $$8;
+      @Override
+      protected void h() {
+         if (this.t-- <= 0) {
+            this.k();
+            this.c.a(this.b, this.g, this.h, this.i, this.j, this.k, this.l);
+         }
+      }
+
+      @Override
+      protected void i() {
+         this.j *= 0.02;
+         this.k *= 0.02;
+         this.l *= 0.02;
+      }
+   }
+
+   static class c extends fkw {
+      c(fis $$0, double $$1, double $$2, double $$3, eaf $$4) {
+         super($$0, $$1, $$2, $$3, $$4);
+         this.t = (int)(16.0 / (Math.random() * 0.8 + 0.2));
+      }
+   }
+
+   static class d extends fkw.e {
+      d(fis $$0, double $$1, double $$2, double $$3, eaf $$4, it $$5) {
+         super($$0, $$1, $$2, $$3, $$4, $$5);
+      }
+
+      @Override
+      protected void i() {
+         if (this.m) {
+            this.k();
+            this.c.a(this.b, this.g, this.h, this.i, 0.0, 0.0, 0.0);
+            apf $$0 = this.g() == eah.e ? apg.gq : apg.gr;
+            float $$1 = asb.b(this.r, 0.3F, 1.0F);
+            this.c.a(this.g, this.h, this.i, $$0, aph.e, $$1, 1.0F, false);
+         }
+      }
+   }
+
+   static class e extends fkw.f {
+      protected final it b;
+
+      e(fis $$0, double $$1, double $$2, double $$3, eaf $$4, it $$5) {
+         super($$0, $$1, $$2, $$3, $$4);
+         this.b = $$5;
+      }
+
+      @Override
+      protected void i() {
+         if (this.m) {
+            this.k();
+            this.c.a(this.b, this.g, this.h, this.i, 0.0, 0.0, 0.0);
+         }
+      }
+   }
+
+   static class f extends fkw {
+      f(fis $$0, double $$1, double $$2, double $$3, eaf $$4) {
+         this($$0, $$1, $$2, $$3, $$4, (int)(64.0 / (Math.random() * 0.8 + 0.2)));
+      }
+
+      f(fis $$0, double $$1, double $$2, double $$3, eaf $$4, int $$5) {
+         super($$0, $$1, $$2, $$3, $$4);
+         this.t = $$5;
+      }
+
+      @Override
+      protected void i() {
+         if (this.m) {
+            this.k();
+         }
+      }
+   }
+
+   static class g extends fkw.e {
+      g(fis $$0, double $$1, double $$2, double $$3, eaf $$4, it $$5) {
+         super($$0, $$1, $$2, $$3, $$4, $$5);
+      }
+
+      @Override
+      protected void i() {
+         if (this.m) {
+            this.k();
+            this.c.a(this.b, this.g, this.h, this.i, 0.0, 0.0, 0.0);
+            float $$0 = asb.b(this.r, 0.3F, 1.0F);
+            this.c.a(this.g, this.h, this.i, apg.bF, aph.e, $$0, 1.0F, false);
+         }
       }
    }
 }

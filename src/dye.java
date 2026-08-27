@@ -1,20 +1,20 @@
 import com.mojang.serialization.Codec;
+import javax.annotation.Nullable;
 
-public class dye extends dyv {
-   public static final Codec<dye> a = jb.f.q().fieldOf("block").xmap(dye::new, $$0 -> $$0.b).codec();
-   private final csv b;
+public class dye extends dys {
+   public static final Codec<dye> a = Codec.unit(() -> dye.b);
+   public static final dye b = new dye();
 
-   public dye(csv $$0) {
-      this.b = $$0;
+   @Nullable
+   @Override
+   public dyv.c a(cqe $$0, gw $$1, gw $$2, dyv.c $$3, dyv.c $$4, dyr $$5) {
+      gw $$6 = $$4.a();
+      boolean $$7 = $$0.a_($$6).a(cte.H);
+      return $$7 && !ctc.a($$4.b().j($$0, $$6)) ? new dyv.c($$6, cte.H.o(), $$4.c()) : $$4;
    }
 
    @Override
-   public boolean a(dfj $$0, asc $$1) {
-      return $$0.a(this.b);
-   }
-
-   @Override
-   protected dyw<?> a() {
-      return dyw.b;
+   protected dyu<?> a() {
+      return dyu.m;
    }
 }

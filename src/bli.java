@@ -1,44 +1,18 @@
-import java.util.Optional;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public class bli implements bmk {
-   private final biq a;
-   private final boolean b;
-
-   public bli(biq $$0, boolean $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
-
-   @Override
-   public ehn a() {
-      return this.b ? this.a.dj().b(0.0, (double)this.a.cH(), 0.0) : this.a.dj();
-   }
-
-   @Override
-   public gw b() {
-      return this.a.dl();
-   }
-
-   @Override
-   public boolean a(bjg $$0) {
-      if (this.a instanceof bjg $$1) {
-         if (!$$1.bv()) {
-            return false;
-         } else {
-            Optional<bsj> $$3 = $$0.dN().c(bsh.h);
-            return $$3.isPresent() && $$3.get().a($$1);
-         }
-      } else {
-         return true;
-      }
-   }
-
-   public biq c() {
-      return this.a;
-   }
-
-   @Override
-   public String toString() {
-      return "EntityTracker for " + this.a;
+public class bli {
+   public static <E extends bjm, T> ble<E> a(Predicate<E> $$0, bsn<? extends T> $$1, bsn<T> $$2, bgp $$3) {
+      return bop.a(
+         (Function<bop.b<E>, ? extends App<bop.c<E>, bos<E>>>)($$4 -> $$4.group($$4.b($$1), $$4.c($$2)).apply($$4, ($$3xx, $$4x) -> ($$5, $$6, $$7) -> {
+                  if (!$$0.test((E)$$6)) {
+                     return false;
+                  } else {
+                     $$4x.a($$4.b($$3xx), (long)$$3.a($$5.z));
+                     return true;
+                  }
+               }))
+      );
    }
 }

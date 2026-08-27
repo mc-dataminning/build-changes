@@ -1,36 +1,22 @@
-import java.util.function.Function;
+public class gev implements etn {
+   private final tl a;
+   private final int b;
+   private final int c;
+   private final int d;
 
-public enum gev {
-   a("movement", geq::new),
-   b("find_tree", gep::new),
-   c("punch_tree", ges::new),
-   d("open_inventory", ger::new),
-   e("craft_planks", geo::new),
-   f("none", gen::new);
-
-   private final String g;
-   private final Function<get, ? extends geu> h;
-
-   private <T extends geu> gev(String $$0, Function<get, T> $$1) {
-      this.g = $$0;
-      this.h = $$1;
+   public gev(tl $$0, int $$1, int $$2, int $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   public geu a(get $$0) {
-      return this.h.apply($$0);
+   @Override
+   public void a(erz $$0, int $$1, int $$2, float $$3) {
+      $$0.a(eqp.O().h, this.a, this.b, this.c, this.d);
    }
 
-   public String a() {
-      return this.g;
-   }
-
-   public static gev a(String $$0) {
-      for (gev $$1 : values()) {
-         if ($$1.g.equals($$0)) {
-            return $$1;
-         }
-      }
-
-      return f;
+   public tl a() {
+      return this.a;
    }
 }

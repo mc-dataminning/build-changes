@@ -1,217 +1,166 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.ImmutableList;
-import com.mojang.datafixers.util.Pair;
-import it.unimi.dsi.fastutil.doubles.DoubleArrayList;
-import it.unimi.dsi.fastutil.doubles.DoubleList;
-import it.unimi.dsi.fastutil.ints.IntBidirectionalIterator;
-import it.unimi.dsi.fastutil.ints.IntRBTreeSet;
-import it.unimi.dsi.fastutil.ints.IntSortedSet;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Locale;
-import java.util.Objects;
-import java.util.stream.IntStream;
-import javax.annotation.Nullable;
-
 public class dzq {
-   private static final int a = 33554432;
-   private final dzn[] b;
+   private static final int b = 16;
+   public static final int a = Integer.MIN_VALUE;
    private final int c;
-   private final DoubleList d;
-   private final double e;
-   private final double f;
-   private final double g;
+   private final aqs d;
+   private final gw.a e = new gw.a();
+   private final gw.a f = new gw.a();
 
-   @Deprecated
-   public static dzq a(asc $$0, IntStream $$1) {
-      return new dzq($$0, a(new IntRBTreeSet($$1.boxed().collect(ImmutableList.toImmutableList()))), false);
+   public dzq(cqd $$0) {
+      this.c = $$0.H_() - 1;
+      int $$1 = $$0.aj();
+      int $$2 = asb.e($$1 - this.c + 1);
+      this.d = new aso($$2, 256);
    }
 
-   @Deprecated
-   public static dzq a(asc $$0, int $$1, DoubleList $$2) {
-      return new dzq($$0, Pair.of($$1, $$2), false);
-   }
-
-   public static dzq b(asc $$0, IntStream $$1) {
-      return a($$0, $$1.boxed().collect(ImmutableList.toImmutableList()));
-   }
-
-   public static dzq a(asc $$0, List<Integer> $$1) {
-      return new dzq($$0, a(new IntRBTreeSet($$1)), true);
-   }
-
-   public static dzq a(asc $$0, int $$1, double $$2, double... $$3) {
-      DoubleArrayList $$4 = new DoubleArrayList($$3);
-      $$4.add(0, $$2);
-      return new dzq($$0, Pair.of($$1, $$4), true);
-   }
-
-   public static dzq b(asc $$0, int $$1, DoubleList $$2) {
-      return new dzq($$0, Pair.of($$1, $$2), true);
-   }
-
-   private static Pair<Integer, DoubleList> a(IntSortedSet $$0) {
-      if ($$0.isEmpty()) {
-         throw new IllegalArgumentException("Need some octaves!");
+   public void a(dgz $$0) {
+      int $$1 = $$0.a();
+      if ($$1 == -1) {
+         this.a(this.c);
       } else {
-         int $$1 = -$$0.firstInt();
-         int $$2 = $$0.lastInt();
-         int $$3 = $$1 + $$2 + 1;
-         if ($$3 < 1) {
-            throw new IllegalArgumentException("Total number of octaves needs to be >= 1");
+         for (int $$2 = 0; $$2 < 16; $$2++) {
+            for (int $$3 = 0; $$3 < 16; $$3++) {
+               int $$4 = Math.max(this.a($$0, $$1, $$3, $$2), this.c);
+               this.b(c($$3, $$2), $$4);
+            }
+         }
+      }
+   }
+
+   private int a(dgz $$0, int $$1, int $$2, int $$3) {
+      int $$4 = hw.c($$0.g($$1) + 1);
+      gw.a $$5 = this.e.d($$2, $$4, $$3);
+      gw.a $$6 = this.f.a($$5, ha.a);
+      dfd $$7 = cte.a.o();
+
+      for (int $$8 = $$1; $$8 >= 0; $$8--) {
+         dhl $$9 = $$0.b($$8);
+         if ($$9.c()) {
+            $$7 = cte.a.o();
+            int $$10 = $$0.g($$8);
+            $$5.q(hw.c($$10));
+            $$6.q($$5.v() - 1);
          } else {
-            DoubleList $$4 = new DoubleArrayList(new double[$$3]);
-            IntBidirectionalIterator $$5 = $$0.iterator();
-
-            while ($$5.hasNext()) {
-               int $$6 = $$5.nextInt();
-               $$4.set($$6 + $$1, 1.0);
-            }
-
-            return Pair.of(-$$1, $$4);
-         }
-      }
-   }
-
-   protected dzq(asc $$0, Pair<Integer, DoubleList> $$1, boolean $$2) {
-      this.c = (Integer)$$1.getFirst();
-      this.d = (DoubleList)$$1.getSecond();
-      int $$3 = this.d.size();
-      int $$4 = -this.c;
-      this.b = new dzn[$$3];
-      if ($$2) {
-         dlf $$5 = $$0.e();
-
-         for (int $$6 = 0; $$6 < $$3; $$6++) {
-            if (this.d.getDouble($$6) != 0.0) {
-               int $$7 = this.c + $$6;
-               this.b[$$6] = new dzn($$5.a("octave_" + $$7));
-            }
-         }
-      } else {
-         dzn $$8 = new dzn($$0);
-         if ($$4 >= 0 && $$4 < $$3) {
-            double $$9 = this.d.getDouble($$4);
-            if ($$9 != 0.0) {
-               this.b[$$4] = $$8;
-            }
-         }
-
-         for (int $$10 = $$4 - 1; $$10 >= 0; $$10--) {
-            if ($$10 < $$3) {
-               double $$11 = this.d.getDouble($$10);
-               if ($$11 != 0.0) {
-                  this.b[$$10] = new dzn($$0);
-               } else {
-                  a($$0);
+            for (int $$11 = 15; $$11 >= 0; $$11--) {
+               dfd $$12 = $$9.a($$2, $$11, $$3);
+               if (a($$0, $$5, $$7, $$6, $$12)) {
+                  return $$5.v();
                }
-            } else {
-               a($$0);
+
+               $$7 = $$12;
+               $$5.g($$6);
+               $$6.c(ha.a);
             }
          }
-
-         if (Arrays.stream(this.b).filter(Objects::nonNull).count() != this.d.stream().filter($$0x -> $$0x != 0.0).count()) {
-            throw new IllegalStateException("Failed to create correct number of noise levels for given non-zero amplitudes");
-         }
-
-         if ($$4 < $$3 - 1) {
-            throw new IllegalArgumentException("Positive octaves are temporarily disabled");
-         }
       }
 
-      this.f = Math.pow(2.0, (double)(-$$4));
-      this.e = Math.pow(2.0, (double)($$3 - 1)) / (Math.pow(2.0, (double)$$3) - 1.0);
-      this.g = this.c(2.0);
-   }
-
-   protected double a() {
-      return this.g;
-   }
-
-   private static void a(asc $$0) {
-      $$0.b(262);
-   }
-
-   public double a(double $$0, double $$1, double $$2) {
-      return this.a($$0, $$1, $$2, 0.0, 0.0, false);
-   }
-
-   @Deprecated
-   public double a(double $$0, double $$1, double $$2, double $$3, double $$4, boolean $$5) {
-      double $$6 = 0.0;
-      double $$7 = this.f;
-      double $$8 = this.e;
-
-      for (int $$9 = 0; $$9 < this.b.length; $$9++) {
-         dzn $$10 = this.b[$$9];
-         if ($$10 != null) {
-            double $$11 = $$10.a(b($$0 * $$7), $$5 ? -$$10.b : b($$1 * $$7), b($$2 * $$7), $$3 * $$7, $$4 * $$7);
-            $$6 += this.d.getDouble($$9) * $$11 * $$8;
-         }
-
-         $$7 *= 2.0;
-         $$8 /= 2.0;
-      }
-
-      return $$6;
-   }
-
-   public double a(double $$0) {
-      return this.c($$0 + 2.0);
-   }
-
-   private double c(double $$0) {
-      double $$1 = 0.0;
-      double $$2 = this.e;
-
-      for (int $$3 = 0; $$3 < this.b.length; $$3++) {
-         dzn $$4 = this.b[$$3];
-         if ($$4 != null) {
-            $$1 += this.d.getDouble($$3) * $$0 * $$2;
-         }
-
-         $$2 /= 2.0;
-      }
-
-      return $$1;
-   }
-
-   @Nullable
-   public dzn a(int $$0) {
-      return this.b[this.b.length - 1 - $$0];
-   }
-
-   public static double b(double $$0) {
-      return $$0 - (double)arw.b($$0 / 3.3554432E7 + 0.5) * 3.3554432E7;
-   }
-
-   protected int b() {
       return this.c;
    }
 
-   protected DoubleList c() {
-      return this.d;
+   public boolean a(cph $$0, int $$1, int $$2, int $$3) {
+      int $$4 = $$2 + 1;
+      int $$5 = c($$1, $$3);
+      int $$6 = this.b($$5);
+      if ($$4 < $$6) {
+         return false;
+      } else {
+         gw $$7 = this.e.d($$1, $$2 + 1, $$3);
+         dfd $$8 = $$0.a_($$7);
+         gw $$9 = this.f.d($$1, $$2, $$3);
+         dfd $$10 = $$0.a_($$9);
+         if (this.a($$0, $$5, $$6, $$7, $$8, $$9, $$10)) {
+            return true;
+         } else {
+            gw $$11 = this.e.d($$1, $$2 - 1, $$3);
+            dfd $$12 = $$0.a_($$11);
+            return this.a($$0, $$5, $$6, $$9, $$10, $$11, $$12);
+         }
+      }
    }
 
-   @VisibleForTesting
-   public void a(StringBuilder $$0) {
-      $$0.append("PerlinNoise{");
-      List<String> $$1 = this.d.stream().map($$0x -> String.format(Locale.ROOT, "%.2f", $$0x)).toList();
-      $$0.append("first octave: ").append(this.c).append(", amplitudes: ").append($$1).append(", noise levels: [");
-
-      for (int $$2 = 0; $$2 < this.b.length; $$2++) {
-         $$0.append($$2).append(": ");
-         dzn $$3 = this.b[$$2];
-         if ($$3 == null) {
-            $$0.append("null");
-         } else {
-            $$3.a($$0);
+   private boolean a(cph $$0, int $$1, int $$2, gw $$3, dfd $$4, gw $$5, dfd $$6) {
+      int $$7 = $$3.v();
+      if (a($$0, $$3, $$4, $$5, $$6)) {
+         if ($$7 > $$2) {
+            this.b($$1, $$7);
+            return true;
          }
-
-         $$0.append(", ");
+      } else if ($$7 == $$2) {
+         this.b($$1, this.a($$0, $$5, $$6));
+         return true;
       }
 
-      $$0.append("]");
-      $$0.append("}");
+      return false;
+   }
+
+   private int a(cph $$0, gw $$1, dfd $$2) {
+      gw.a $$3 = this.e.g($$1);
+      gw.a $$4 = this.f.a($$1, ha.a);
+      dfd $$5 = $$2;
+
+      while ($$4.v() >= this.c) {
+         dfd $$6 = $$0.a_($$4);
+         if (a($$0, $$3, $$5, $$4, $$6)) {
+            return $$3.v();
+         }
+
+         $$5 = $$6;
+         $$3.g($$4);
+         $$4.c(ha.a);
+      }
+
+      return this.c;
+   }
+
+   private static boolean a(cph $$0, gw $$1, dfd $$2, gw $$3, dfd $$4) {
+      if ($$4.b($$0, $$3) != 0) {
+         return true;
+      } else {
+         eia $$5 = dzx.a($$0, $$1, $$2, ha.a);
+         eia $$6 = dzx.a($$0, $$3, $$4, ha.b);
+         return ehx.b($$5, $$6);
+      }
+   }
+
+   public int a(int $$0, int $$1) {
+      int $$2 = this.b(c($$0, $$1));
+      return this.c($$2);
+   }
+
+   public int a() {
+      int $$0 = Integer.MIN_VALUE;
+
+      for (int $$1 = 0; $$1 < this.d.b(); $$1++) {
+         int $$2 = this.d.a($$1);
+         if ($$2 > $$0) {
+            $$0 = $$2;
+         }
+      }
+
+      return this.c($$0 + this.c);
+   }
+
+   private void a(int $$0) {
+      int $$1 = $$0 - this.c;
+
+      for (int $$2 = 0; $$2 < this.d.b(); $$2++) {
+         this.d.b($$2, $$1);
+      }
+   }
+
+   private void b(int $$0, int $$1) {
+      this.d.b($$0, $$1 - this.c);
+   }
+
+   private int b(int $$0) {
+      return this.d.a($$0) + this.c;
+   }
+
+   private int c(int $$0) {
+      return $$0 == this.c ? Integer.MIN_VALUE : $$0;
+   }
+
+   private static int c(int $$0, int $$1) {
+      return $$0 + $$1 * 16;
    }
 }

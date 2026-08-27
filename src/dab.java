@@ -1,23 +1,42 @@
-public class dab extends cul {
-   private static final tl a = tl.c("container.upgrade");
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-   protected dab(dfi.d $$0) {
-      super($$0);
+public interface dab extends ctj, cxr {
+   @Override
+   default boolean a(@Nullable cca $$0, cph $$1, gw $$2, dfd $$3, eaf $$4) {
+      return $$4 == eah.c;
    }
 
    @Override
-   public bhb b(dfj $$0, cpv $$1, gw $$2) {
-      return new bhg(($$2x, $$3, $$4) -> new cge($$2x, $$3, cew.a($$1, $$2)), a);
-   }
+   default boolean a(cqc $$0, gw $$1, dfd $$2, eag $$3) {
+      if (!$$2.c(dft.C) && $$3.a() == eah.c) {
+         if (!$$0.w_()) {
+            $$0.a($$1, $$2.a(dft.C, Boolean.valueOf(true)), 3);
+            $$0.a($$1, $$3.a(), $$3.a().a($$0));
+         }
 
-   @Override
-   public bgy a(dfj $$0, cpv $$1, gw $$2, cbu $$3, bgx $$4, ehj $$5) {
-      if ($$1.B) {
-         return bgy.a;
+         return true;
       } else {
-         $$3.a($$0.b($$1, $$2));
-         $$3.a(apn.aF);
-         return bgy.b;
+         return false;
       }
+   }
+
+   @Override
+   default cjl a(@Nullable cca $$0, cqc $$1, gw $$2, dfd $$3) {
+      if ($$3.c(dft.C)) {
+         $$1.a($$2, $$3.a(dft.C, Boolean.valueOf(false)), 3);
+         if (!$$3.a($$1, $$2)) {
+            $$1.b($$2, true);
+         }
+
+         return new cjl(cjo.pL);
+      } else {
+         return cjl.b;
+      }
+   }
+
+   @Override
+   default Optional<apf> aq_() {
+      return eah.c.j();
    }
 }

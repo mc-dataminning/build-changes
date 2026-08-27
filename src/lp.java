@@ -1,19 +1,19 @@
 import com.google.gson.JsonObject;
 
 public abstract class lp {
-   protected static cly a(ls $$0) {
+   protected static cme a(ls $$0) {
       return switch ($$0) {
-         case a -> cly.a;
-         case e, f -> cly.c;
-         case c -> cly.b;
-         default -> cly.d;
+         case a -> cme.a;
+         case e, f -> cme.c;
+         case c -> cme.b;
+         default -> cme.d;
       };
    }
 
    protected abstract static class a implements lq {
-      private final cly a;
+      private final cme a;
 
-      protected a(cly $$0) {
+      protected a(cme $$0) {
          this.a = $$0;
       }
 

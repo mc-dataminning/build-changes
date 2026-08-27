@@ -1,52 +1,62 @@
-public class fge<T extends bzk> extends ffm<T> {
-   private static final String a = "tail_base";
-   private static final String b = "tail_tip";
-   private final fic f;
-   private final fic g;
-   private final fic h;
-   private final fic i;
-   private final fic j;
-   private final fic k;
-   private final fic l;
-
-   public fge(fic $$0) {
-      this.f = $$0;
-      fic $$1 = $$0.b("body");
-      this.k = $$1.b("tail_base");
-      this.l = this.k.b("tail_tip");
-      this.g = $$1.b("left_wing_base");
-      this.h = this.g.b("left_wing_tip");
-      this.i = $$1.b("right_wing_base");
-      this.j = this.i.b("right_wing_tip");
+public class fge<T extends bvp> extends fgi<T> {
+   public fge(fhx $$0) {
+      super($$0, true, 16.0F, 4.0F, 2.25F, 2.0F, 24);
    }
 
-   public static fii b() {
-      fik $$0 = new fik();
-      fil $$1 = $$0.a();
-      fil $$2 = $$1.a("body", fih.c().a(0, 8).a(-3.0F, -2.0F, -8.0F, 5.0F, 3.0F, 9.0F), fie.b(-0.1F, 0.0F, 0.0F));
-      fil $$3 = $$2.a("tail_base", fih.c().a(3, 20).a(-2.0F, 0.0F, 0.0F, 3.0F, 2.0F, 6.0F), fie.a(0.0F, -2.0F, 1.0F));
-      $$3.a("tail_tip", fih.c().a(4, 29).a(-1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 6.0F), fie.a(0.0F, 0.5F, 6.0F));
-      fil $$4 = $$2.a("left_wing_base", fih.c().a(23, 12).a(0.0F, 0.0F, 0.0F, 6.0F, 2.0F, 9.0F), fie.a(2.0F, -2.0F, -8.0F, 0.0F, 0.0F, 0.1F));
-      $$4.a("left_wing_tip", fih.c().a(16, 24).a(0.0F, 0.0F, 0.0F, 13.0F, 1.0F, 9.0F), fie.a(6.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.1F));
-      fil $$5 = $$2.a("right_wing_base", fih.c().a(23, 12).a().a(-6.0F, 0.0F, 0.0F, 6.0F, 2.0F, 9.0F), fie.a(-3.0F, -2.0F, -8.0F, 0.0F, 0.0F, -0.1F));
-      $$5.a("right_wing_tip", fih.c().a(16, 24).a().a(-13.0F, 0.0F, 0.0F, 13.0F, 1.0F, 9.0F), fie.a(-6.0F, 0.0F, 0.0F, 0.0F, 0.0F, -0.1F));
-      $$2.a("head", fih.c().a(0, 0).a(-4.0F, -2.0F, -5.0F, 7.0F, 3.0F, 5.0F), fie.a(0.0F, 1.0F, -7.0F, 0.2F, 0.0F, 0.0F));
-      return fii.a($$0, 64, 64);
-   }
-
-   @Override
-   public fic a() {
-      return this.f;
+   public static fid c() {
+      fif $$0 = new fif();
+      fig $$1 = $$0.a();
+      $$1.a(
+         "head",
+         fic.c()
+            .a(0, 0)
+            .a(-3.5F, -3.0F, -3.0F, 7.0F, 7.0F, 7.0F)
+            .a(0, 44)
+            .a("mouth", -2.5F, 1.0F, -6.0F, 5.0F, 3.0F, 3.0F)
+            .a(26, 0)
+            .a("right_ear", -4.5F, -4.0F, -1.0F, 2.0F, 2.0F, 1.0F)
+            .a(26, 0)
+            .a()
+            .a("left_ear", 2.5F, -4.0F, -1.0F, 2.0F, 2.0F, 1.0F),
+         fhz.a(0.0F, 10.0F, -16.0F)
+      );
+      $$1.a(
+         "body",
+         fic.c().a(0, 19).a(-5.0F, -13.0F, -7.0F, 14.0F, 14.0F, 11.0F).a(39, 0).a(-4.0F, -25.0F, -7.0F, 12.0F, 12.0F, 10.0F),
+         fhz.a(-2.0F, 9.0F, 12.0F, (float) (Math.PI / 2), 0.0F, 0.0F)
+      );
+      int $$2 = 10;
+      fic $$3 = fic.c().a(50, 22).a(-2.0F, 0.0F, -2.0F, 4.0F, 10.0F, 8.0F);
+      $$1.a("right_hind_leg", $$3, fhz.a(-4.5F, 14.0F, 6.0F));
+      $$1.a("left_hind_leg", $$3, fhz.a(4.5F, 14.0F, 6.0F));
+      fic $$4 = fic.c().a(50, 40).a(-2.0F, 0.0F, -2.0F, 4.0F, 10.0F, 6.0F);
+      $$1.a("right_front_leg", $$4, fhz.a(-3.5F, 14.0F, -8.0F));
+      $$1.a("left_front_leg", $$4, fhz.a(3.5F, 14.0F, -8.0F));
+      return fid.a($$0, 128, 64);
    }
 
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      float $$6 = ((float)$$0.t() + $$3) * 7.448451F * (float) (Math.PI / 180.0);
-      float $$7 = 16.0F;
-      this.g.g = arw.b($$6) * 16.0F * (float) (Math.PI / 180.0);
-      this.h.g = arw.b($$6) * 16.0F * (float) (Math.PI / 180.0);
-      this.i.g = -this.g.g;
-      this.j.g = -this.h.g;
-      this.k.e = -(5.0F + arw.b($$6 * 2.0F) * 5.0F) * (float) (Math.PI / 180.0);
-      this.l.e = -(5.0F + arw.b($$6 * 2.0F) * 5.0F) * (float) (Math.PI / 180.0);
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      float $$6 = $$3 - (float)$$0.ah;
+      float $$7 = $$0.E($$6);
+      $$7 *= $$7;
+      float $$8 = 1.0F - $$7;
+      this.b.e = (float) (Math.PI / 2) - $$7 * (float) Math.PI * 0.35F;
+      this.b.c = 9.0F * $$8 + 11.0F * $$7;
+      this.h.c = 14.0F * $$8 - 6.0F * $$7;
+      this.h.d = -8.0F * $$8 - 4.0F * $$7;
+      this.h.e -= $$7 * (float) Math.PI * 0.45F;
+      this.i.c = this.h.c;
+      this.i.d = this.h.d;
+      this.i.e -= $$7 * (float) Math.PI * 0.45F;
+      if (this.e) {
+         this.a.c = 10.0F * $$8 - 9.0F * $$7;
+         this.a.d = -16.0F * $$8 - 7.0F * $$7;
+      } else {
+         this.a.c = 10.0F * $$8 - 14.0F * $$7;
+         this.a.d = -16.0F * $$8 - 3.0F * $$7;
+      }
+
+      this.a.e += $$7 * (float) Math.PI * 0.15F;
    }
 }

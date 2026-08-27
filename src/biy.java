@@ -1,83 +1,59 @@
-public class biy extends bvq {
-   private static final aee<Integer> bX = aeh.a(biy.class, aeg.b);
-
-   public biy(biu<? extends biy> $$0, cpv $$1) {
-      super($$0, $$1);
-   }
-
-   @Override
-   protected it s() {
-      return iv.aJ;
-   }
-
-   @Override
-   protected void a_() {
-      super.a_();
-      this.an.a(bX, 0);
-   }
-
-   @Override
-   protected apc t() {
-      return apd.jC;
-   }
-
-   @Override
-   protected apc w() {
-      return apd.jz;
-   }
-
-   @Override
-   protected apc d(bho $$0) {
-      return apd.jB;
-   }
-
-   @Override
-   protected apc l_() {
-      return apd.jA;
-   }
-
-   @Override
-   public void b(qw $$0) {
-      super.b($$0);
-      $$0.a("DarkTicksRemaining", this.y());
-   }
-
-   @Override
-   public void a(qw $$0) {
-      super.a($$0);
-      this.c($$0.h("DarkTicksRemaining"));
-   }
-
-   @Override
-   public void b_() {
-      super.b_();
-      int $$0 = this.y();
-      if ($$0 > 0) {
-         this.c($$0 - 1);
-      }
-
-      this.dL().a(iv.aK, this.d(0.6), this.dt(), this.g(0.6), 0.0, 0.0, 0.0);
-   }
-
-   @Override
-   public boolean a(bho $$0, float $$1) {
-      boolean $$2 = super.a($$0, $$1);
-      if ($$2) {
-         this.c(100);
-      }
-
-      return $$2;
-   }
-
-   private void c(int $$0) {
-      this.an.b(bX, $$0);
-   }
-
-   public int y() {
-      return this.an.b(bX);
-   }
-
-   public static boolean a(biu<? extends bjg> $$0, cqk $$1, bjk $$2, gw $$3, asc $$4) {
-      return $$3.v() <= $$1.y_() - 33 && $$1.b($$3, 0) == 0 && $$1.a_($$3).a(csw.G);
-   }
+public class biy {
+   public static final byte a = 1;
+   public static final byte b = 3;
+   public static final byte c = 4;
+   public static final byte d = 5;
+   public static final byte e = 6;
+   public static final byte f = 7;
+   public static final byte g = 8;
+   public static final byte h = 9;
+   public static final byte i = 10;
+   public static final byte j = 11;
+   public static final byte k = 12;
+   public static final byte l = 13;
+   public static final byte m = 14;
+   public static final byte n = 15;
+   public static final byte o = 16;
+   public static final byte p = 17;
+   public static final byte q = 18;
+   public static final byte r = 19;
+   public static final byte s = 20;
+   public static final byte t = 21;
+   public static final byte u = 22;
+   public static final byte v = 23;
+   public static final byte w = 24;
+   public static final byte x = 25;
+   public static final byte y = 26;
+   public static final byte z = 27;
+   public static final byte A = 28;
+   public static final byte B = 29;
+   public static final byte C = 30;
+   public static final byte D = 31;
+   public static final byte E = 32;
+   public static final byte F = 34;
+   public static final byte G = 35;
+   public static final byte H = 38;
+   public static final byte I = 39;
+   public static final byte J = 40;
+   public static final byte K = 41;
+   public static final byte L = 42;
+   public static final byte M = 43;
+   public static final byte N = 45;
+   public static final byte O = 46;
+   public static final byte P = 47;
+   public static final byte Q = 48;
+   public static final byte R = 49;
+   public static final byte S = 50;
+   public static final byte T = 51;
+   public static final byte U = 52;
+   public static final byte V = 53;
+   public static final byte W = 54;
+   public static final byte X = 55;
+   public static final byte Y = 56;
+   public static final byte Z = 58;
+   public static final byte aa = 59;
+   public static final byte ab = 60;
+   public static final byte ac = 61;
+   public static final byte ad = 62;
+   public static final byte ae = 63;
 }

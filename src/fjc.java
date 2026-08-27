@@ -1,68 +1,26 @@
-import com.google.common.base.Splitter;
-import io.netty.buffer.ByteBuf;
-import io.netty.channel.ChannelFutureListener;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.channel.SimpleChannelInboundHandler;
-import java.util.List;
+import com.mojang.authlib.minecraft.UserApiService;
+import java.nio.file.Path;
+import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
 
-public class fjc extends SimpleChannelInboundHandler<ByteBuf> {
-   private static final Splitter a = Splitter.on('\u0000').limit(6);
-   private final fki b;
-   private final fjc.a c;
-
-   public fjc(fki $$0, fjc.a $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
-
-   public void channelActive(ChannelHandlerContext $$0) throws Exception {
-      super.channelActive($$0);
-      ByteBuf $$1 = $$0.alloc().buffer();
-
-      try {
-         $$1.writeByte(254);
-         $$1.writeByte(1);
-         $$1.writeByte(250);
-         ali.a($$1, "MC|PingHost");
-         int $$2 = $$1.writerIndex();
-         $$1.writeShort(0);
-         int $$3 = $$1.writerIndex();
-         $$1.writeByte(127);
-         ali.a($$1, this.b.a());
-         $$1.writeInt(this.b.b());
-         int $$4 = $$1.writerIndex() - $$3;
-         $$1.setShort($$2, $$4);
-         $$0.channel().writeAndFlush($$1).addListener(ChannelFutureListener.CLOSE_ON_FAILURE);
-      } catch (Exception var6) {
-         $$1.release();
-         throw var6;
-      }
-   }
-
-   protected void a(ChannelHandlerContext $$0, ByteBuf $$1) {
-      short $$2 = $$1.readUnsignedByte();
-      if ($$2 == 255) {
-         String $$3 = ali.a($$1);
-         List<String> $$4 = a.splitToList($$3);
-         if ("§1".equals($$4.get(0))) {
-            int $$5 = arw.a($$4.get(1), 0);
-            String $$6 = $$4.get(2);
-            String $$7 = $$4.get(3);
-            int $$8 = arw.a($$4.get(4), -1);
-            int $$9 = arw.a($$4.get(5), -1);
-            this.c.handleResponse($$5, $$6, $$7, $$8, $$9);
-         }
+public interface fjc {
+   fjc a = new fjc() {
+      @Override
+      public CompletableFuture<Optional<ccc>> a() {
+         return CompletableFuture.completedFuture(Optional.empty());
       }
 
-      $$0.close();
+      @Override
+      public boolean b() {
+         return false;
+      }
+   };
+
+   static fjc a(UserApiService $$0, ere $$1, Path $$2) {
+      return (fjc)($$1.g() == ere.a.c ? new fil($$0, $$1.b(), $$2) : a);
    }
 
-   public void exceptionCaught(ChannelHandlerContext $$0, Throwable $$1) {
-      $$0.close();
-   }
+   CompletableFuture<Optional<ccc>> a();
 
-   @FunctionalInterface
-   public interface a {
-      void handleResponse(int var1, String var2, String var3, int var4, int var5);
-   }
+   boolean b();
 }

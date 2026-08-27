@@ -1,4 +1,8 @@
-import org.joml.Vector3f;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public record ern(float a, Vector3f b, erl.a c) {
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface ern {
 }

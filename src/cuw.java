@@ -1,149 +1,148 @@
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import com.google.common.collect.UnmodifiableIterator;
+import com.mojang.serialization.MapCodec;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import java.util.Map;
-import org.slf4j.Logger;
 
-public class cuw extends csi {
-   private static final Logger c = LogUtils.getLogger();
-   public static final dgd a = cuu.a;
-   public static final dga b = dfz.A;
-   private static final Map<cja, ih> d = ac.a(new Object2ObjectOpenHashMap(), $$0 -> $$0.defaultReturnValue(new ig()));
-   private static final int e = 4;
+public abstract class cuw extends ctc implements dab {
+   public static final dfu a = cyo.b;
+   public static final dfu b = cyo.c;
+   public static final dfu c = cyo.d;
+   public static final dfu d = cyo.e;
+   public static final dfu e = dft.C;
+   protected static final Map<ha, dfu> f = cyo.h.entrySet().stream().filter($$0 -> $$0.getKey().o().d()).collect(ac.a());
+   protected final eia[] g;
+   protected final eia[] h;
+   private final Object2IntMap<dfd> i = new Object2IntOpenHashMap();
 
-   public static void a(cpu $$0, ih $$1) {
-      d.put($$0.k(), $$1);
-   }
+   protected cuw(float $$0, float $$1, float $$2, float $$3, float $$4, dfc.d $$5) {
+      super($$5);
+      this.g = this.a($$0, $$1, $$4, 0.0F, $$4);
+      this.h = this.a($$0, $$1, $$2, 0.0F, $$3);
+      UnmodifiableIterator var7 = this.E.a().iterator();
 
-   protected cuw(dfi.d $$0) {
-      super($$0);
-      this.k(this.C.b().a(a, ha.c).a(b, Boolean.valueOf(false)));
+      while (var7.hasNext()) {
+         dfd $$6 = (dfd)var7.next();
+         this.g($$6);
+      }
    }
 
    @Override
-   public bgy a(dfj $$0, cpv $$1, gw $$2, cbu $$3, bgx $$4, ehj $$5) {
-      if ($$1.B) {
-         return bgy.a;
-      } else {
-         dcv $$6 = $$1.c_($$2);
-         if ($$6 instanceof ddm) {
-            $$3.a((ddm)$$6);
-            if ($$6 instanceof ddn) {
-               $$3.a(apn.ac);
-            } else {
-               $$3.a(apn.ae);
-            }
+   protected abstract MapCodec<? extends cuw> a();
+
+   protected eia[] a(float $$0, float $$1, float $$2, float $$3, float $$4) {
+      float $$5 = 8.0F - $$0;
+      float $$6 = 8.0F + $$0;
+      float $$7 = 8.0F - $$1;
+      float $$8 = 8.0F + $$1;
+      eia $$9 = ctc.a((double)$$5, 0.0, (double)$$5, (double)$$6, (double)$$2, (double)$$6);
+      eia $$10 = ctc.a((double)$$7, (double)$$3, 0.0, (double)$$8, (double)$$4, (double)$$8);
+      eia $$11 = ctc.a((double)$$7, (double)$$3, (double)$$7, (double)$$8, (double)$$4, 16.0);
+      eia $$12 = ctc.a(0.0, (double)$$3, (double)$$7, (double)$$8, (double)$$4, (double)$$8);
+      eia $$13 = ctc.a((double)$$7, (double)$$3, (double)$$7, 16.0, (double)$$4, (double)$$8);
+      eia $$14 = ehx.a($$10, $$13);
+      eia $$15 = ehx.a($$11, $$12);
+      eia[] $$16 = new eia[]{
+         ehx.a(),
+         $$11,
+         $$12,
+         $$15,
+         $$10,
+         ehx.a($$11, $$10),
+         ehx.a($$12, $$10),
+         ehx.a($$15, $$10),
+         $$13,
+         ehx.a($$11, $$13),
+         ehx.a($$12, $$13),
+         ehx.a($$15, $$13),
+         $$14,
+         ehx.a($$11, $$14),
+         ehx.a($$12, $$14),
+         ehx.a($$15, $$14)
+      };
+
+      for (int $$17 = 0; $$17 < 16; $$17++) {
+         $$16[$$17] = ehx.a($$9, $$16[$$17]);
+      }
+
+      return $$16;
+   }
+
+   @Override
+   public boolean c(dfd $$0, cph $$1, gw $$2) {
+      return !$$0.c(e);
+   }
+
+   @Override
+   public eia a(dfd $$0, cph $$1, gw $$2, ehm $$3) {
+      return this.h[this.g($$0)];
+   }
+
+   @Override
+   public eia c(dfd $$0, cph $$1, gw $$2, ehm $$3) {
+      return this.g[this.g($$0)];
+   }
+
+   private static int a(ha $$0) {
+      return 1 << $$0.e();
+   }
+
+   protected int g(dfd $$0) {
+      return this.i.computeIntIfAbsent($$0, $$0x -> {
+         int $$1 = 0;
+         if ($$0x.c(a)) {
+            $$1 |= a(ha.c);
          }
 
-         return bgy.b;
-      }
-   }
-
-   protected void a(akq $$0, dfj $$1, gw $$2) {
-      ddm $$3 = $$0.a($$2, dcx.f).orElse(null);
-      if ($$3 == null) {
-         c.warn("Ignoring dispensing attempt for Dispenser without matching block entity at {}", $$2);
-      } else {
-         id $$4 = new id($$0, $$2, $$1, $$3);
-         int $$5 = $$3.a($$0.z);
-         if ($$5 < 0) {
-            $$0.c(1001, $$2, 0);
-            $$0.a(djt.a, $$2, djt.a.a($$3.q()));
-         } else {
-            cjf $$6 = $$3.a($$5);
-            ih $$7 = this.a($$6);
-            if ($$7 != ih.b) {
-               $$3.a($$5, $$7.dispense($$4, $$6));
-            }
-         }
-      }
-   }
-
-   protected ih a(cjf $$0) {
-      return d.get($$0.d());
-   }
-
-   @Override
-   public void a(dfj $$0, cpv $$1, gw $$2, csv $$3, gw $$4, boolean $$5) {
-      boolean $$6 = $$1.B($$2) || $$1.B($$2.c());
-      boolean $$7 = $$0.c(b);
-      if ($$6 && !$$7) {
-         $$1.a($$2, this, 4);
-         $$1.a($$2, $$0.a(b, Boolean.valueOf(true)), 2);
-      } else if (!$$6 && $$7) {
-         $$1.a($$2, $$0.a(b, Boolean.valueOf(false)), 2);
-      }
-   }
-
-   @Override
-   public void a(dfj $$0, akq $$1, gw $$2, asc $$3) {
-      this.a($$1, $$0, $$2);
-   }
-
-   @Override
-   public dcv a(gw $$0, dfj $$1) {
-      return new ddm($$0, $$1);
-   }
-
-   @Override
-   public dfj a(cln $$0) {
-      return this.n().a(a, $$0.d().g());
-   }
-
-   @Override
-   public void a(cpv $$0, gw $$1, dfj $$2, bjg $$3, cjf $$4) {
-      if ($$4.A()) {
-         dcv $$5 = $$0.c_($$1);
-         if ($$5 instanceof ddm) {
-            ((ddm)$$5).a($$4.y());
-         }
-      }
-   }
-
-   @Override
-   public void a(dfj $$0, cpv $$1, gw $$2, dfj $$3, boolean $$4) {
-      if (!$$0.a($$3.b())) {
-         dcv $$5 = $$1.c_($$2);
-         if ($$5 instanceof ddm) {
-            bgu.a($$1, $$2, (ddm)$$5);
-            $$1.c($$2, this);
+         if ($$0x.c(b)) {
+            $$1 |= a(ha.f);
          }
 
-         super.a($$0, $$1, $$2, $$3, $$4);
+         if ($$0x.c(c)) {
+            $$1 |= a(ha.d);
+         }
+
+         if ($$0x.c(d)) {
+            $$1 |= a(ha.e);
+         }
+
+         return $$1;
+      });
+   }
+
+   @Override
+   public eag c_(dfd $$0) {
+      return $$0.c(e) ? eah.c.a(false) : super.c_($$0);
+   }
+
+   @Override
+   public boolean a(dfd $$0, cph $$1, gw $$2, eaw $$3) {
+      return false;
+   }
+
+   @Override
+   public dfd a(dfd $$0, czn $$1) {
+      switch ($$1) {
+         case c:
+            return $$0.a(a, $$0.c(c)).a(b, $$0.c(d)).a(c, $$0.c(a)).a(d, $$0.c(b));
+         case d:
+            return $$0.a(a, $$0.c(b)).a(b, $$0.c(c)).a(c, $$0.c(d)).a(d, $$0.c(a));
+         case b:
+            return $$0.a(a, $$0.c(d)).a(b, $$0.c(a)).a(c, $$0.c(b)).a(d, $$0.c(c));
+         default:
+            return $$0;
       }
    }
 
-   public static ho a(id $$0) {
-      ha $$1 = $$0.d().c(a);
-      return $$0.a().b(0.7 * (double)$$1.j(), 0.7 * (double)$$1.k(), 0.7 * (double)$$1.l());
-   }
-
    @Override
-   public boolean d_(dfj $$0) {
-      return true;
-   }
-
-   @Override
-   public int a(dfj $$0, cpv $$1, gw $$2) {
-      return cel.a($$1.c_($$2));
-   }
-
-   @Override
-   public cza b_(dfj $$0) {
-      return cza.c;
-   }
-
-   @Override
-   public dfj a(dfj $$0, czh $$1) {
-      return $$0.a(a, $$1.a($$0.c(a)));
-   }
-
-   @Override
-   public dfj a(dfj $$0, cxq $$1) {
-      return $$0.a($$1.a($$0.c(a)));
-   }
-
-   @Override
-   protected void a(dfk.a<csv, dfj> $$0) {
-      $$0.a(a, b);
+   public dfd a(dfd $$0, cxx $$1) {
+      switch ($$1) {
+         case b:
+            return $$0.a(a, $$0.c(c)).a(c, $$0.c(a));
+         case c:
+            return $$0.a(b, $$0.c(d)).a(d, $$0.c(b));
+         default:
+            return super.a($$0, $$1);
+      }
    }
 }

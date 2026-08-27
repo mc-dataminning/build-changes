@@ -1,17 +1,17 @@
-public interface cgq {
-   int a(cgp.a var1);
+public class cgq implements cgr {
+   private final hn<cjl> a;
+   private final int b;
 
-   int b(cgp.a var1);
+   public cgq(hn<cjl> $$0, int $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
 
-   int a();
+   public hn<cjl> a() {
+      return this.a;
+   }
 
-   apc b();
-
-   cmg d();
-
-   String e();
-
-   float f();
-
-   float g();
+   public int b() {
+      return this.b;
+   }
 }

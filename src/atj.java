@@ -1,26 +1,40 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
 import com.mojang.serialization.Dynamic;
 import java.util.function.Function;
 
 public class atj extends DataFix {
-   private final String a;
-   private final Function<String, String> b;
-
-   public atj(Schema $$0, boolean $$1, String $$2, Function<String, String> $$3) {
-      super($$0, $$1);
-      this.a = $$2;
-      this.b = $$3;
+   public atj(Schema $$0) {
+      super($$0, false);
    }
 
    protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         this.a, this.getInputSchema().getType(ayx.p), $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> $$0x.updateMapValues($$1 -> {
-                  String $$2 = ((Dynamic)$$1.getFirst()).asString("");
-                  return $$1.mapFirst($$2x -> $$0x.createString(this.b.apply($$2)));
-               }))
-      );
+      Schema $$0 = this.getInputSchema();
+      return this.fixTypeEverywhereTyped("AbstractArrowPickupFix", $$0.getType(azd.x), this::a);
+   }
+
+   private Typed<?> a(Typed<?> $$0) {
+      $$0 = this.a($$0, "minecraft:arrow", atj::a);
+      $$0 = this.a($$0, "minecraft:spectral_arrow", atj::a);
+      return this.a($$0, "minecraft:trident", atj::a);
+   }
+
+   private static Dynamic<?> a(Dynamic<?> $$0) {
+      if ($$0.get("pickup").result().isPresent()) {
+         return $$0;
+      } else {
+         boolean $$1 = $$0.get("player").asBoolean(true);
+         return $$0.set("pickup", $$0.createByte((byte)($$1 ? 1 : 0))).remove("player");
+      }
+   }
+
+   private Typed<?> a(Typed<?> $$0, String $$1, Function<Dynamic<?>, Dynamic<?>> $$2) {
+      Type<?> $$3 = this.getInputSchema().getChoiceType(azd.x, $$1);
+      Type<?> $$4 = this.getOutputSchema().getChoiceType(azd.x, $$1);
+      return $$0.updateTyped(DSL.namedChoice($$1, $$3), $$4, $$1x -> $$1x.update(DSL.remainderFinder(), $$2));
    }
 }

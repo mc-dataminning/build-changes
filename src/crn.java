@@ -1,60 +1,89 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public abstract class crn extends csv {
-   public static final int a = 3;
-   public static final dga b = dfz.r;
+public class crn {
+   public static final Codec<crn> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(crn.a.c.fieldOf("preset").forGetter($$0x -> $$0x.c), aex.c(jc.aq)).apply($$0, crn::new)
+   );
+   public static final Codec<he<crn>> b = aev.a(jc.aH, a);
+   private final crn.a c;
+   private final cri.c<he<cqz>> d;
 
-   protected crn(dfi.d $$0) {
-      super($$0);
+   public crn(crn.a $$0, hf<cqz> $$1) {
+      this.c = $$0;
+      this.d = $$0.e.apply($$1::b);
    }
 
-   protected abstract Iterable<ehn> b(dfj var1);
-
-   public static boolean c(dfj $$0) {
-      return $$0.b(b) && ($$0.a(aps.ae) || $$0.a(aps.bj)) && $$0.c(b);
+   public cri.c<he<cqz>> a() {
+      return this.d;
    }
 
-   @Override
-   public void a(cpv $$0, dfj $$1, ehj $$2, ccm $$3) {
-      if (!$$0.B && $$3.bM() && this.d($$1)) {
-         a($$0, $$1, $$2.a(), true);
-      }
+   public static Map<crn.a, cri.c<aey<cqz>>> b() {
+      return crn.a.f.values().stream().collect(Collectors.toMap($$0 -> (crn.a)$$0, $$0 -> $$0.c().apply($$0x -> $$0x)));
    }
 
-   protected boolean d(dfj $$0) {
-      return !$$0.c(b);
-   }
-
-   @Override
-   public void a(dfj $$0, cpv $$1, gw $$2, asc $$3) {
-      if ($$0.c(b)) {
-         this.b($$0).forEach($$3x -> a($$1, $$3x.b((double)$$2.u(), (double)$$2.v(), (double)$$2.w()), $$3));
-      }
-   }
-
-   private static void a(cpv $$0, ehn $$1, asc $$2) {
-      float $$3 = $$2.i();
-      if ($$3 < 0.3F) {
-         $$0.a(iv.Z, $$1.c, $$1.d, $$1.e, 0.0, 0.0, 0.0);
-         if ($$3 < 0.17F) {
-            $$0.a($$1.c + 0.5, $$1.d + 0.5, $$1.e + 0.5, apd.dc, ape.e, 1.0F + $$2.i(), $$2.i() * 0.7F + 0.3F, false);
+   public static record a(aez d, crn.a.a e) {
+      public static final crn.a a = new crn.a(
+         new aez("nether"),
+         new crn.a.a() {
+            @Override
+            public <T> cri.c<T> apply(Function<aey<cqz>, T> $$0) {
+               return new cri.c<>(
+                  List.of(
+                     Pair.of(cri.a(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), $$0.apply(crg.ac)),
+                     Pair.of(cri.a(0.0F, -0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), $$0.apply(crg.af)),
+                     Pair.of(cri.a(0.4F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), $$0.apply(crg.ae)),
+                     Pair.of(cri.a(0.0F, 0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.375F), $$0.apply(crg.ad)),
+                     Pair.of(cri.a(-0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.175F), $$0.apply(crg.ag))
+                  )
+               );
+            }
          }
+      );
+      public static final crn.a b = new crn.a(new aez("overworld"), new crn.a.a() {
+         @Override
+         public <T> cri.c<T> apply(Function<aey<cqz>, T> $$0) {
+            return crn.a.a($$0);
+         }
+      });
+      static final Map<aez, crn.a> f = Stream.of(a, b).collect(Collectors.toMap(crn.a::b, $$0 -> (crn.a)$$0));
+      public static final Codec<crn.a> c = aez.a
+         .flatXmap(
+            $$0 -> Optional.ofNullable(f.get($$0)).<DataResult>map(DataResult::success).orElseGet(() -> DataResult.error(() -> "Unknown preset: " + $$0)),
+            $$0 -> DataResult.success($$0.d)
+         );
+
+      static <T> cri.c<T> a(Function<aey<cqz>, T> $$0) {
+         Builder<Pair<cri.d, T>> $$1 = ImmutableList.builder();
+         new crp().a($$2 -> $$1.add($$2.mapSecond($$0)));
+         return new cri.c<>($$1.build());
       }
 
-      $$0.a(iv.aD, $$1.c, $$1.d, $$1.e, 0.0, 0.0, 0.0);
-   }
-
-   public static void a(@Nullable cbu $$0, dfj $$1, cpw $$2, gw $$3) {
-      a($$2, $$1, $$3, false);
-      if ($$1.b() instanceof crn) {
-         ((crn)$$1.b()).b($$1).forEach($$2x -> $$2.a(iv.Z, (double)$$3.u() + $$2x.a(), (double)$$3.v() + $$2x.b(), (double)$$3.w() + $$2x.c(), 0.0, 0.1F, 0.0));
+      public Stream<aey<cqz>> a() {
+         return this.e.apply($$0 -> $$0).a().stream().<aey<cqz>>map(Pair::getSecond).distinct();
       }
 
-      $$2.a(null, $$3, apd.de, ape.e, 1.0F, 1.0F);
-      $$2.a($$0, djt.c, $$3);
-   }
+      public aez b() {
+         return this.d;
+      }
 
-   private static void a(cpw $$0, dfj $$1, gw $$2, boolean $$3) {
-      $$0.a($$2, $$1.a(b, Boolean.valueOf($$3)), 11);
+      public crn.a.a c() {
+         return this.e;
+      }
+
+      @FunctionalInterface
+      interface a {
+         <T> cri.c<T> apply(Function<aey<cqz>, T> var1);
+      }
    }
 }

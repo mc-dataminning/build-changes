@@ -15,9 +15,9 @@ public class rr {
    public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tl.c("argument.nbt.trailing"));
    public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(tl.c("argument.nbt.expected.key"));
    public static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(tl.c("argument.nbt.expected.value"));
-   public static final Dynamic2CommandExceptionType d = new Dynamic2CommandExceptionType(($$0, $$1) -> tl.a("argument.nbt.list.mixed", $$0, $$1));
-   public static final Dynamic2CommandExceptionType e = new Dynamic2CommandExceptionType(($$0, $$1) -> tl.a("argument.nbt.array.mixed", $$0, $$1));
-   public static final DynamicCommandExceptionType f = new DynamicCommandExceptionType($$0 -> tl.a("argument.nbt.array.invalid", $$0));
+   public static final Dynamic2CommandExceptionType d = new Dynamic2CommandExceptionType(($$0, $$1) -> tl.b("argument.nbt.list.mixed", $$0, $$1));
+   public static final Dynamic2CommandExceptionType e = new Dynamic2CommandExceptionType(($$0, $$1) -> tl.b("argument.nbt.array.mixed", $$0, $$1));
+   public static final DynamicCommandExceptionType f = new DynamicCommandExceptionType($$0 -> tl.b("argument.nbt.array.invalid", $$0));
    public static final char g = ',';
    public static final char h = ':';
    private static final char j = '[';

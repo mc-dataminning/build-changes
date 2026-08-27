@@ -1,67 +1,83 @@
-import java.util.List;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
+import java.security.PublicKey;
+import java.time.Duration;
+import java.time.Instant;
+import java.util.Arrays;
+import java.util.UUID;
 
-public class ccd extends ccb {
-   public static final float e = 4.0F;
+public record ccd(ccd.a d) {
+   public static final tl a = tl.c("multiplayer.disconnect.expired_public_key");
+   private static final tl e = tl.c("multiplayer.disconnect.invalid_public_key_signature.new");
+   public static final Duration b = Duration.ofHours(8L);
+   public static final Codec<ccd> c = ccd.a.a.xmap(ccd::new, ccd::b);
 
-   public ccd(biu<? extends ccd> $$0, cpv $$1) {
-      super($$0, $$1);
-   }
-
-   public ccd(cpv $$0, bjg $$1, double $$2, double $$3, double $$4) {
-      super(biu.x, $$1, $$2, $$3, $$4, $$0);
-   }
-
-   @Override
-   protected void a(ehl $$0) {
-      super.a($$0);
-      if ($$0.c() != ehl.a.c || !this.d(((ehk)$$0).a())) {
-         if (!this.dL().B) {
-            List<bjg> $$1 = this.dL().a(bjg.class, this.cG().c(4.0, 2.0, 4.0));
-            bin $$2 = new bin(this.dL(), this.dq(), this.ds(), this.dw());
-            biq $$3 = this.v();
-            if ($$3 instanceof bjg) {
-               $$2.a((bjg)$$3);
-            }
-
-            $$2.a(iv.i);
-            $$2.a(3.0F);
-            $$2.b(600);
-            $$2.c((7.0F - $$2.h()) / (float)$$2.m());
-            $$2.a(new bid(bif.g, 1, 1));
-            if (!$$1.isEmpty()) {
-               for (bjg $$4 : $$1) {
-                  double $$5 = this.f($$4);
-                  if ($$5 < 16.0) {
-                     $$2.e($$4.dq(), $$4.ds(), $$4.dw());
-                     break;
-                  }
-               }
-            }
-
-            this.dL().c(2006, this.dl(), this.aS() ? -1 : 1);
-            this.dL().b($$2);
-            this.ak();
-         }
+   public static ccd a(asm $$0, UUID $$1, ccd.a $$2) throws ccd.b {
+      if (!$$2.a($$0, $$1)) {
+         throw new ccd.b(e);
+      } else {
+         return new ccd($$2);
       }
    }
 
-   @Override
-   public boolean br() {
-      return false;
+   public asm a() {
+      return asm.a(this.d.c, "SHA256withRSA");
    }
 
-   @Override
-   public boolean a(bho $$0, float $$1) {
-      return false;
+   public ccd.a b() {
+      return this.d;
    }
 
-   @Override
-   protected it s() {
-      return iv.i;
+   public static record a(Instant b, PublicKey c, byte[] d) {
+      private static final int e = 4096;
+      public static final Codec<ccd.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  arj.m.fieldOf("expires_at").forGetter(ccd.a::b), ara.f.fieldOf("key").forGetter(ccd.a::c), arj.n.fieldOf("signature_v2").forGetter(ccd.a::d)
+               )
+               .apply($$0, ccd.a::new)
+      );
+
+      public a(so $$0) {
+         this($$0.w(), $$0.x(), $$0.a(4096));
+      }
+
+      public void a(so $$0) {
+         $$0.a(this.b);
+         $$0.a(this.c);
+         $$0.a(this.d);
+      }
+
+      boolean a(asm $$0, UUID $$1) {
+         return $$0.a(this.a($$1), this.d);
+      }
+
+      private byte[] a(UUID $$0) {
+         byte[] $$1 = this.c.getEncoded();
+         byte[] $$2 = new byte[24 + $$1.length];
+         ByteBuffer $$3 = ByteBuffer.wrap($$2).order(ByteOrder.BIG_ENDIAN);
+         $$3.putLong($$0.getMostSignificantBits()).putLong($$0.getLeastSignificantBits()).putLong(this.b.toEpochMilli()).put($$1);
+         return $$2;
+      }
+
+      public boolean a() {
+         return this.b.isBefore(Instant.now());
+      }
+
+      public boolean a(Duration $$0) {
+         return this.b.plus($$0).isBefore(Instant.now());
+      }
+
+      @Override
+      public boolean equals(Object $$0) {
+         return !($$0 instanceof ccd.a $$1) ? false : this.b.equals($$1.b) && this.c.equals($$1.c) && Arrays.equals(this.d, $$1.d);
+      }
    }
 
-   @Override
-   protected boolean ae_() {
-      return false;
+   public static class b extends ul {
+      public b(tl $$0) {
+         super($$0);
+      }
    }
 }

@@ -1,24 +1,39 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
+public class fxe<T extends bjm, M extends fey<T> & fdz> extends fxl<T, M> {
+   private final fnw a;
 
-public class fxe extends fxp<bws, ffo<bws>> {
-   private static final Map<bwu, aew> a = ac.a(Maps.newEnumMap(bwu.class), $$0 -> {
-      $$0.put(bwu.a, null);
-      $$0.put(bwu.b, new aew("textures/entity/horse/horse_markings_white.png"));
-      $$0.put(bwu.c, new aew("textures/entity/horse/horse_markings_whitefield.png"));
-      $$0.put(bwu.d, new aew("textures/entity/horse/horse_markings_whitedots.png"));
-      $$0.put(bwu.e, new aew("textures/entity/horse/horse_markings_blackdots.png"));
-   });
-
-   public fxe(fvc<bws, ffo<bws>> $$0) {
+   public fxe(fuy<T, M> $$0, fnw $$1) {
       super($$0);
+      this.a = $$1;
    }
 
-   public void a(elp $$0, foe $$1, int $$2, bws $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      aew $$10 = a.get($$3.gd());
-      if ($$10 != null && !$$3.cd()) {
-         elt $$11 = $$1.getBuffer(fom.i($$10));
-         this.c().a($$0, $$11, $$2, fui.c($$3, 0.0F), 1.0F, 1.0F, 1.0F, 1.0F);
+   public void a(elj $$0, foa $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      boolean $$10 = $$3.fm() == bjg.b;
+      cjl $$11 = $$10 ? $$3.eT() : $$3.eS();
+      cjl $$12 = $$10 ? $$3.eS() : $$3.eT();
+      if (!$$11.b() || !$$12.b()) {
+         $$0.a();
+         if (this.c().e) {
+            float $$13 = 0.5F;
+            $$0.a(0.0F, 0.75F, 0.0F);
+            $$0.b(0.5F, 0.5F, 0.5F);
+         }
+
+         this.a($$3, $$12, cji.c, bjg.b, $$0, $$1, $$2);
+         this.a($$3, $$11, cji.b, bjg.a, $$0, $$1, $$2);
+         $$0.b();
+      }
+   }
+
+   protected void a(bjm $$0, cjl $$1, cji $$2, bjg $$3, elj $$4, foa $$5, int $$6) {
+      if (!$$1.b()) {
+         $$4.a();
+         this.c().a($$3, $$4);
+         $$4.a(a.b.rotationDegrees(-90.0F));
+         $$4.a(a.d.rotationDegrees(180.0F));
+         boolean $$7 = $$3 == bjg.a;
+         $$4.a((float)($$7 ? -1 : 1) / 16.0F, 0.125F, -0.625F);
+         this.a.a($$0, $$1, $$2, $$7, $$4, $$5, $$6);
+         $$4.b();
       }
    }
 }

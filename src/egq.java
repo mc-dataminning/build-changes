@@ -1,33 +1,29 @@
-import com.google.common.collect.ImmutableSet;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
-import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 
-public record egq(String b) implements egs {
-   public static final Codec<egq> a = RecordCodecBuilder.create($$0 -> $$0.group(Codec.STRING.fieldOf("name").forGetter(egq::c)).apply($$0, egq::new));
+public class egq implements egs<MinecraftServer> {
+   final aez a;
 
-   public static egs a(String $$0) {
-      return new egq($$0);
+   public egq(aez $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   public egr a() {
-      return egt.b;
+   public void a(MinecraftServer $$0, egu<MinecraftServer> $$1, long $$2) {
+      afn $$3 = $$0.aA();
+      $$3.a(this.a).ifPresent($$1x -> $$3.a($$1x, $$3.d()));
    }
 
-   @Nullable
-   @Override
-   public String a(ecq $$0) {
-      return this.b;
-   }
+   public static class a extends egs.a<MinecraftServer, egq> {
+      public a() {
+         super(new aez("function"), egq.class);
+      }
 
-   @Override
-   public Set<eey<?>> b() {
-      return ImmutableSet.of();
-   }
+      public void a(qw $$0, egq $$1) {
+         $$0.a("Name", $$1.a.toString());
+      }
 
-   public String c() {
-      return this.b;
+      public egq a(qw $$0) {
+         aez $$1 = new aez($$0.l("Name"));
+         return new egq($$1);
+      }
    }
 }

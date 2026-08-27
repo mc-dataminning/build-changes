@@ -1,70 +1,47 @@
-import com.google.common.base.Joiner;
 import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Sets;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
-public class eez {
-   private final Set<eey<?>> a;
-   private final Set<eey<?>> b;
+public record eez(he<cnu> b, List<Float> c) implements efj {
+   public static final Codec<eez> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(jb.g.r().fieldOf("enchantment").forGetter(eez::c), Codec.FLOAT.listOf().fieldOf("chances").forGetter(eez::d)).apply($$0, eez::new)
+   );
 
-   eez(Set<eey<?>> $$0, Set<eey<?>> $$1) {
-      this.a = ImmutableSet.copyOf($$0);
-      this.b = ImmutableSet.copyOf(Sets.union($$0, $$1));
-   }
-
-   public boolean a(eey<?> $$0) {
-      return this.b.contains($$0);
-   }
-
-   public Set<eey<?>> a() {
-      return this.a;
-   }
-
-   public Set<eey<?>> b() {
-      return this.b;
+   @Override
+   public efk b() {
+      return efl.l;
    }
 
    @Override
-   public String toString() {
-      return "[" + Joiner.on(", ").join(this.b.stream().map($$0 -> (this.a.contains($$0) ? "!" : "") + $$0.a()).iterator()) + "]";
+   public Set<ees<?>> a() {
+      return ImmutableSet.of(eev.i);
    }
 
-   public void a(ecz $$0, ecr $$1) {
-      Set<eey<?>> $$2 = $$1.a();
-      Set<eey<?>> $$3 = Sets.difference($$2, this.b);
-      if (!$$3.isEmpty()) {
-         $$0.a("Parameters " + $$3 + " are not provided in this context");
-      }
+   public boolean a(eck $$0) {
+      cjl $$1 = $$0.c(eev.i);
+      int $$2 = $$1 != null ? cnw.a(this.b.a(), $$1) : 0;
+      float $$3 = this.c.get(Math.min($$2, this.c.size() - 1));
+      return $$0.b().i() < $$3;
    }
 
-   public static eez.a c() {
-      return new eez.a();
+   public static efj.a a(cnu $$0, float... $$1) {
+      List<Float> $$2 = new ArrayList<>($$1.length);
+
+      for (float $$3 : $$1) {
+         $$2.add($$3);
+      }
+
+      return () -> new eez($$0.j(), $$2);
    }
 
-   public static class a {
-      private final Set<eey<?>> a = Sets.newIdentityHashSet();
-      private final Set<eey<?>> b = Sets.newIdentityHashSet();
+   public he<cnu> c() {
+      return this.b;
+   }
 
-      public eez.a a(eey<?> $$0) {
-         if (this.b.contains($$0)) {
-            throw new IllegalArgumentException("Parameter " + $$0.a() + " is already optional");
-         } else {
-            this.a.add($$0);
-            return this;
-         }
-      }
-
-      public eez.a b(eey<?> $$0) {
-         if (this.a.contains($$0)) {
-            throw new IllegalArgumentException("Parameter " + $$0.a() + " is already required");
-         } else {
-            this.b.add($$0);
-            return this;
-         }
-      }
-
-      public eez a() {
-         return new eez(this.a, this.b);
-      }
+   public List<Float> d() {
+      return this.c;
    }
 }

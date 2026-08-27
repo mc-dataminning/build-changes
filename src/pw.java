@@ -12,7 +12,7 @@ public class pw {
    private final qn a;
    @Nullable
    private gw b;
-   private final akq c;
+   private final akt c;
    private final Collection<px> d = Lists.newArrayList();
    private final int e;
    private final Collection<qa> f = Lists.newCopyOnWriteArrayList();
@@ -20,19 +20,20 @@ public class pw {
    private long h;
    private long i;
    private boolean j;
-   private final Stopwatch k = Stopwatch.createUnstarted();
-   private boolean l;
-   private final czh m;
+   private boolean k;
+   private final Stopwatch l = Stopwatch.createUnstarted();
+   private boolean m;
+   private final czn n;
    @Nullable
-   private Throwable n;
+   private Throwable o;
    @Nullable
-   private dei o;
+   private dem p;
 
-   public pw(qn $$0, czh $$1, akq $$2) {
+   public pw(qn $$0, czn $$1, akt $$2) {
       this.a = $$0;
       this.c = $$2;
       this.e = $$0.c();
-      this.m = $$0.g().a($$1);
+      this.n = $$0.g().a($$1);
    }
 
    void a(gw $$0) {
@@ -41,14 +42,14 @@ public class pw {
 
    void a() {
       this.h = this.c.V() + 1L + this.a.f();
-      this.k.start();
+      this.l.start();
    }
 
    public void b() {
       if (!this.k()) {
-         this.A();
+         this.B();
          if (this.k()) {
-            if (this.n != null) {
+            if (this.o != null) {
                this.d.forEach($$0 -> $$0.c(this));
             } else {
                this.d.forEach($$0 -> $$0.b(this));
@@ -57,11 +58,11 @@ public class pw {
       }
    }
 
-   private void A() {
+   private void B() {
       this.i = this.c.V() - this.h;
       if (this.i >= 0L) {
          if (this.i == 0L) {
-            this.B();
+            this.C();
          }
 
          ObjectIterator<Entry<Runnable>> $$0 = this.g.object2LongEntrySet().iterator();
@@ -84,7 +85,7 @@ public class pw {
                this.a(new qd("Didn't succeed or fail within " + this.a.c() + " ticks"));
             } else {
                this.f.forEach($$0x -> $$0x.b(this.i));
-               if (this.n == null) {
+               if (this.o == null) {
                   this.a(new qd("No sequences finished"));
                }
             }
@@ -94,7 +95,7 @@ public class pw {
       }
    }
 
-   private void B() {
+   private void C() {
       if (this.j) {
          throw new IllegalStateException("Test already started");
       } else {
@@ -122,31 +123,31 @@ public class pw {
 
    @Nullable
    public hy e() {
-      dei $$0 = this.C();
+      dem $$0 = this.D();
       return $$0 == null ? null : $$0.j();
    }
 
    @Nullable
-   public ehi f() {
-      dei $$0 = this.C();
+   public ehc f() {
+      dem $$0 = this.D();
       return $$0 == null ? null : qj.a($$0);
    }
 
    @Nullable
-   private dei C() {
-      return (dei)this.c.c_(this.b);
+   private dem D() {
+      return (dem)this.c.c_(this.b);
    }
 
-   public akq g() {
+   public akt g() {
       return this.c;
    }
 
    public boolean h() {
-      return this.l && this.n == null;
+      return this.m && this.o == null;
    }
 
    public boolean i() {
-      return this.n != null;
+      return this.o != null;
    }
 
    public boolean j() {
@@ -154,34 +155,34 @@ public class pw {
    }
 
    public boolean k() {
-      return this.l;
+      return this.m;
    }
 
    public long l() {
-      return this.k.elapsed(TimeUnit.MILLISECONDS);
+      return this.l.elapsed(TimeUnit.MILLISECONDS);
    }
 
-   private void D() {
-      if (!this.l) {
-         this.l = true;
-         this.k.stop();
+   private void E() {
+      if (!this.m) {
+         this.m = true;
+         this.l.stop();
       }
    }
 
    public void m() {
-      if (this.n == null) {
-         this.D();
+      if (this.o == null) {
+         this.E();
       }
    }
 
    public void a(Throwable $$0) {
-      this.n = $$0;
-      this.D();
+      this.o = $$0;
+      this.E();
    }
 
    @Nullable
    public Throwable n() {
-      return this.n;
+      return this.o;
    }
 
    @Override
@@ -194,18 +195,18 @@ public class pw {
    }
 
    public void a(gw $$0, int $$1) {
-      this.o = qj.a(this.t(), $$0, this.u(), $$1, this.c, false);
-      this.b = this.o.p();
-      this.o.a(this.c());
+      this.p = qj.a(this.t(), $$0, this.u(), $$1, this.c, false);
+      this.b = this.p.p();
+      this.p.a(this.c());
       qj.a(this.b, new gw(1, 0, -1), this.u(), this.c);
       this.d.forEach($$0x -> $$0x.a(this));
    }
 
    public void o() {
-      if (this.o == null) {
+      if (this.p == null) {
          throw new IllegalStateException("Expected structure to be initialized, but it was null");
       } else {
-         dva $$0 = qj.b(this.o);
+         duu $$0 = qj.b(this.p);
          qj.a($$0, this.b.v(), this.c);
       }
    }
@@ -232,8 +233,8 @@ public class pw {
       return this.a.b();
    }
 
-   public czh u() {
-      return this.m;
+   public czn u() {
+      return this.n;
    }
 
    public qn v() {
@@ -254,5 +255,13 @@ public class pw {
 
    public int z() {
       return this.a.j();
+   }
+
+   public void a(boolean $$0) {
+      this.k = $$0;
+   }
+
+   public boolean A() {
+      return this.k;
    }
 }

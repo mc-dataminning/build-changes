@@ -1,33 +1,50 @@
-public class ccw extends ccs {
-   public ccw(biu<? extends ccw> $$0, cpv $$1) {
+public class ccw extends ccy {
+   public ccw(bja<? extends ccw> $$0, cqb $$1) {
       super($$0, $$1);
    }
 
-   public ccw(cpv $$0, bjg $$1) {
-      super(biu.I, $$1, $$0);
+   public ccw(cqb $$0, bjm $$1) {
+      super(bja.aP, $$1, $$0);
    }
 
-   public ccw(cpv $$0, double $$1, double $$2, double $$3) {
-      super(biu.I, $$1, $$2, $$3, $$0);
-   }
-
-   @Override
-   protected cja s() {
-      return cji.te;
+   public ccw(cqb $$0, double $$1, double $$2, double $$3) {
+      super(bja.aP, $$1, $$2, $$3, $$0);
    }
 
    @Override
-   protected float w() {
-      return 0.07F;
+   protected cjg s() {
+      return cjo.pO;
+   }
+
+   private it x() {
+      cjl $$0 = this.t();
+      return (it)($$0.b() ? iv.R : new ir(iv.O, $$0));
    }
 
    @Override
-   protected void a(ehl $$0) {
+   public void b(byte $$0) {
+      if ($$0 == 3) {
+         it $$1 = this.x();
+
+         for (int $$2 = 0; $$2 < 8; $$2++) {
+            this.dL().a($$1, this.dq(), this.ds(), this.dw(), 0.0, 0.0, 0.0);
+         }
+      }
+   }
+
+   @Override
+   protected void a(ehe $$0) {
       super.a($$0);
-      if (this.dL() instanceof akq) {
-         this.dL().c(2002, this.dl(), cle.a(clf.c));
-         int $$1 = 3 + this.dL().z.a(5) + this.dL().z.a(5);
-         biw.a((akq)this.dL(), this.dj(), $$1);
+      biw $$1 = $$0.a();
+      int $$2 = $$1 instanceof byy ? 3 : 0;
+      $$1.a(this.dM().b(this, this.v()), (float)$$2);
+   }
+
+   @Override
+   protected void a(ehf $$0) {
+      super.a($$0);
+      if (!this.dL().B) {
+         this.dL().a(this, (byte)3);
          this.ak();
       }
    }

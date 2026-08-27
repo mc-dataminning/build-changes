@@ -1,7 +1,7 @@
-public enum dfv implements asp {
-   a("none"),
-   b("small"),
-   c("large");
+public enum dfv implements asu {
+   a("single"),
+   b("left"),
+   c("right");
 
    private final String d;
 
@@ -10,12 +10,15 @@ public enum dfv implements asp {
    }
 
    @Override
-   public String toString() {
+   public String c() {
       return this.d;
    }
 
-   @Override
-   public String c() {
-      return this.d;
+   public dfv a() {
+      return switch (this) {
+         case a -> a;
+         case b -> c;
+         case c -> b;
+      };
    }
 }

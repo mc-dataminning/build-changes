@@ -7,7 +7,7 @@ public class cv extends cw<cv.a> {
       return new cv.a($$1, $$3);
    }
 
-   public void a(akr $$0, cjf $$1) {
+   public void a(aku $$0, cjl $$1) {
       this.a($$0, $$1x -> $$1x.a($$1));
    }
 
@@ -23,11 +23,11 @@ public class cv extends cw<cv.a> {
          return al.F.a(new cv.a(Optional.empty(), $$0));
       }
 
-      public static am<cv.a> a(cpu $$0) {
+      public static am<cv.a> a(cqa $$0) {
          return al.F.a(new cv.a(Optional.empty(), Optional.of(cb.a.a().a($$0).b())));
       }
 
-      public boolean a(cjf $$0) {
+      public boolean a(cjl $$0) {
          return this.a.isEmpty() || this.a.get().a($$0);
       }
 

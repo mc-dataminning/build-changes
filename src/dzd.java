@@ -1,20 +1,11 @@
 import com.mojang.serialization.Codec;
+import javax.annotation.Nullable;
 
-public class dzd extends dyv {
-   public static final Codec<dzd> a = aqh.a(jc.e).fieldOf("tag").xmap(dzd::new, $$0 -> $$0.b).codec();
-   private final aqh<csv> b;
+public interface dzd {
+   Codec<dzd> c = jb.q.q().dispatch(dzd::a, dze::codec);
 
-   public dzd(aqh<csv> $$0) {
-      this.b = $$0;
-   }
+   @Nullable
+   qw a(ash var1, @Nullable qw var2);
 
-   @Override
-   public boolean a(dfj $$0, asc $$1) {
-      return $$0.a(this.b);
-   }
-
-   @Override
-   protected dyw<?> a() {
-      return dyw.d;
-   }
+   dze<?> a();
 }

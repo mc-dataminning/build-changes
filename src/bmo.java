@@ -1,71 +1,85 @@
+import com.google.common.collect.Maps;
 import com.mojang.datafixers.kinds.App;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import java.util.Map.Entry;
 import java.util.function.Function;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
 
 public class bmo {
-   private static final int a = 10;
-   private static final int b = 7;
-   private static final int[][] c = new int[][]{{1, 1}, {3, 3}, {5, 5}, {6, 5}, {7, 7}, {10, 7}};
+   private static final int a = 20;
+   private static final int b = 8;
+   private static final float c = 0.6F;
+   private static final float d = 0.6F;
+   private static final int e = 5;
+   private static final int f = 10;
 
-   public static bmh<bjp> a(float $$0) {
-      return a($$0, true);
+   public static ble<bjv> a() {
+      return bop.a(
+         (Function<bop.b<bjv>, ? extends App<bop.c<bjv>, bos<bjv>>>)($$0 -> $$0.group($$0.b(bsn.i), $$0.c(bsn.m), $$0.a(bsn.n), $$0.a(bsn.q))
+               .apply($$0, ($$1, $$2, $$3, $$4) -> ($$5, $$6, $$7) -> {
+                     if ($$5.D_().a(10) != 0) {
+                        return false;
+                     } else {
+                        List<bjm> $$8 = $$0.b($$1);
+                        Optional<bjm> $$9 = $$8.stream().filter($$1xx -> a((bjm)$$6, $$1xx)).findAny();
+                        if (!$$9.isPresent()) {
+                           Optional<bjm> $$12 = a($$8);
+                           if ($$12.isPresent()) {
+                              a($$4, $$3, $$2, $$12.get());
+                              return true;
+                           } else {
+                              $$8.stream().findAny().ifPresent($$3xx -> a($$4, $$3, $$2, $$3xx));
+                              return true;
+                           }
+                        } else {
+                           for (int $$10 = 0; $$10 < 10; $$10++) {
+                              ehh $$11 = buf.a($$6, 20, 8);
+                              if ($$11 != null && $$5.b(gw.a($$11))) {
+                                 $$2.a(new bsq($$11, 0.6F, 0));
+                                 break;
+                              }
+                           }
+
+                           return true;
+                        }
+                     }
+                  }))
+      );
    }
 
-   public static bmh<bjp> a(float $$0, boolean $$1) {
-      return a($$0, $$0x -> btz.a($$0x, 10, 7), $$1 ? $$0x -> true : $$0x -> !$$0x.ba());
+   private static void a(boq<?, bjm> $$0, boq<?, bmq> $$1, boq<?, bsq> $$2, bjm $$3) {
+      $$0.a($$3);
+      $$1.a(new blo($$3, true));
+      $$2.a(new bsq(new blo($$3, false), 0.6F, 1));
    }
 
-   public static bky<bjp> a(float $$0, int $$1, int $$2) {
-      return a($$0, $$2x -> btz.a($$2x, $$1, $$2), $$0x -> true);
+   private static Optional<bjm> a(List<bjm> $$0) {
+      Map<bjm, Integer> $$1 = b($$0);
+      return $$1.entrySet()
+         .stream()
+         .sorted(Comparator.comparingInt(Entry::getValue))
+         .filter($$0x -> (Integer)$$0x.getValue() > 0 && (Integer)$$0x.getValue() <= 5)
+         .map(Entry::getKey)
+         .findFirst();
    }
 
-   public static bky<bjp> b(float $$0) {
-      return a($$0, $$0x -> a($$0x, 10, 7), $$0x -> true);
+   private static Map<bjm, Integer> b(List<bjm> $$0) {
+      Map<bjm, Integer> $$1 = Maps.newHashMap();
+      $$0.stream().filter(bmo::b).forEach($$1x -> $$1.compute(a($$1x), ($$0xx, $$1xx) -> $$1xx == null ? 1 : $$1xx + 1));
+      return $$1;
    }
 
-   public static bky<bjp> c(float $$0) {
-      return a($$0, bmo::a, biq::ba);
+   private static bjm a(bjm $$0) {
+      return $$0.dN().c(bsn.q).get();
    }
 
-   private static bmh<bjp> a(float $$0, Function<bjp, ehn> $$1, Predicate<bjp> $$2) {
-      return boj.a((Function<boj.b<bjp>, ? extends App<boj.c<bjp>, bom<bjp>>>)($$3 -> $$3.group($$3.c(bsh.m)).apply($$3, $$3x -> ($$4, $$5, $$6) -> {
-               if (!$$2.test($$5)) {
-                  return false;
-               } else {
-                  Optional<ehn> $$7 = Optional.ofNullable($$1.apply($$5));
-                  $$3x.a($$7.map($$1xxxx -> new bsk($$1xxxx, $$0, 0)));
-                  return true;
-               }
-            })));
+   private static boolean b(bjm $$0) {
+      return $$0.dN().c(bsn.q).isPresent();
    }
 
-   @Nullable
-   private static ehn a(bjp $$0) {
-      ehn $$1 = null;
-      ehn $$2 = null;
-
-      for (int[] $$3 : c) {
-         if ($$1 == null) {
-            $$2 = bkz.a($$0, $$3[0], $$3[1]);
-         } else {
-            $$2 = $$0.dj().e($$0.dj().a($$1).d().d((double)$$3[0], (double)$$3[1], (double)$$3[0]));
-         }
-
-         if ($$2 == null || $$0.dL().b_(gw.a($$2)).c()) {
-            return $$1;
-         }
-
-         $$1 = $$2;
-      }
-
-      return $$2;
-   }
-
-   @Nullable
-   private static ehn a(bjp $$0, int $$1, int $$2) {
-      ehn $$3 = $$0.f(0.0F);
-      return btu.a($$0, $$1, $$2, -2, $$3.c, $$3.e, (float) (Math.PI / 2));
+   private static boolean a(bjm $$0, bjm $$1) {
+      return $$1.dN().c(bsn.q).filter($$1x -> $$1x == $$0).isPresent();
    }
 }

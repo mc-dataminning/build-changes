@@ -1,10 +1,23 @@
-public class cjd extends ciq {
-   public cjd(biu<? extends byf> $$0, cja.a $$1) {
-      super($$0, $$1);
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+
+public record cjd(he<apf> b, int c, float d) {
+   public static final Codec<cjd> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               apf.b.fieldOf("sound_event").forGetter(cjd::a), arj.j.fieldOf("use_duration").forGetter(cjd::b), arj.k.fieldOf("range").forGetter(cjd::c)
+            )
+            .apply($$0, cjd::new)
+   );
+
+   public he<apf> a() {
+      return this.b;
    }
 
-   @Override
-   protected boolean a(cbu $$0, ha $$1, cjf $$2, gw $$3) {
-      return !$$0.dL().r($$3) && $$0.a($$3, $$1, $$2);
+   public int b() {
+      return this.c;
+   }
+
+   public float c() {
+      return this.d;
    }
 }

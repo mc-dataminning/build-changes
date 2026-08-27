@@ -1,22 +1,22 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public interface dma<P extends dlz> {
-   dma<dmf> a = a("matching_blocks", dmf.a);
-   dma<dme> b = a("matching_block_tag", dme.e);
-   dma<dmg> c = a("matching_fluids", dmg.a);
-   dma<dmc> d = a("has_sturdy_face", dmc.a);
-   dma<dmj> e = a("solid", dmj.a);
-   dma<dmi> f = a("replaceable", dmi.a);
-   dma<dmm> g = a("would_survive", dmm.a);
-   dma<dmd> h = a("inside_world_bounds", dmd.a);
-   dma<dly> i = a("any_of", dly.a);
-   dma<dlx> j = a("all_of", dlx.a);
-   dma<dmh> k = a("not", dmh.a);
-   dma<dml> l = a("true", dml.e);
+class dma extends dme {
+   private final hi<eaf> e;
+   public static final Codec<dma> a = RecordCodecBuilder.create($$0 -> a($$0).and(hs.a(jc.x).fieldOf("fluids").forGetter($$0x -> $$0x.e)).apply($$0, dma::new));
 
-   Codec<P> codec();
+   public dma(hy $$0, hi<eaf> $$1) {
+      super($$0);
+      this.e = $$1;
+   }
 
-   private static <P extends dlz> dma<P> a(String $$0, Codec<P> $$1) {
-      return hq.a(jb.P, $$0, () -> $$1);
+   @Override
+   protected boolean a(dfd $$0) {
+      return $$0.u().a(this.e);
+   }
+
+   @Override
+   public dlu<?> a() {
+      return dlu.c;
    }
 }

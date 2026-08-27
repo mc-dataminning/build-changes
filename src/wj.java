@@ -1,19 +1,18 @@
-import java.util.List;
-
-public record wj(List<gw> b) implements vw {
-   public static final aew a = new aew("debug/raids");
+public record wj(gw b, int c) implements vx {
+   public static final aez a = new aez("debug/poi_ticket_count");
 
    public wj(so $$0) {
-      this($$0.a(so::e));
+      this($$0.e(), $$0.readInt());
    }
 
    @Override
    public void a(so $$0) {
-      $$0.a(this.b, so::a);
+      $$0.a(this.b);
+      $$0.p(this.c);
    }
 
    @Override
-   public aew a() {
+   public aez a() {
       return a;
    }
 }

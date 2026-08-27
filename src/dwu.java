@@ -1,25 +1,28 @@
 import com.mojang.serialization.Codec;
 import java.util.Optional;
 
-public class dwu extends dvi {
+public class dwu extends dvc {
    public static final Codec<dwu> d = a(dwu::new);
 
-   public dwu(dvi.c $$0) {
+   public dwu(dvc.c $$0) {
       super($$0);
    }
 
    @Override
-   public Optional<dvi.b> a(dvi.a $$0) {
-      return a($$0, dks.a.c, $$1 -> a($$1, $$0));
+   public Optional<dvc.b> a(dvc.a $$0) {
+      return a($$0, dkm.a.a, $$1 -> this.a($$1, $$0));
    }
 
-   private static void a(dwa $$0, dvi.a $$1) {
-      gw $$2 = new gw($$1.h().a(9), 90, $$1.h().b(9));
-      $$0.a(new dwt.a($$2));
+   private void a(dvu $$0, dvc.a $$1) {
+      cpi $$2 = $$1.h();
+      dll $$3 = $$1.f();
+      gw $$4 = new gw($$2.d(), 90, $$2.e());
+      czn $$5 = czn.a($$3);
+      dwt.a($$1.e(), $$4, $$5, $$0, $$3);
    }
 
    @Override
-   public dvr<?> e() {
-      return dvr.a;
+   public dvl<?> e() {
+      return dvl.e;
    }
 }

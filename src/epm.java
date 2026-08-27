@@ -1,41 +1,34 @@
-import com.mojang.authlib.yggdrasil.ProfileResult;
-import java.util.Date;
-import java.util.UUID;
+public class epm extends epp {
+   private static final tl b = tl.c("mco.connect.connecting");
+   private final geu c;
+   private final emq d;
+   private final emr e;
 
-public class epm {
-   private static final tl a = tl.c("mco.util.time.now");
-   private static final int b = 60;
-   private static final int c = 3600;
-   private static final int d = 86400;
-
-   public static tl a(long $$0) {
-      if ($$0 < 0L) {
-         return a;
-      } else {
-         long $$1 = $$0 / 1000L;
-         if ($$1 < 60L) {
-            return tl.a("mco.time.secondsAgo", $$1);
-         } else if ($$1 < 3600L) {
-            long $$2 = $$1 / 60L;
-            return tl.a("mco.time.minutesAgo", $$2);
-         } else if ($$1 < 86400L) {
-            long $$3 = $$1 / 3600L;
-            return tl.a("mco.time.hoursAgo", $$3);
-         } else {
-            long $$4 = $$1 / 86400L;
-            return tl.a("mco.time.daysAgo", $$4);
-         }
-      }
+   public epm(eye $$0, emq $$1, emr $$2) {
+      this.d = $$1;
+      this.e = $$2;
+      this.c = new geu($$0);
    }
 
-   public static tl a(Date $$0) {
-      return a(System.currentTimeMillis() - $$0.getTime());
+   @Override
+   public void run() {
+      this.c.a(this.d, fke.a(this.e.a));
    }
 
-   public static void a(esf $$0, int $$1, int $$2, int $$3, UUID $$4) {
-      eqv $$5 = eqv.O();
-      ProfileResult $$6 = $$5.ak().fetchProfile($$4, false);
-      gae $$7 = $$6 != null ? $$5.al().b($$6.profile()) : fzw.a($$4);
-      etp.a($$0, $$7.a(), $$1, $$2, $$3);
+   @Override
+   public void b() {
+      super.b();
+      this.c.a();
+      eqp.O().ac().a();
+   }
+
+   @Override
+   public void c() {
+      this.c.b();
+   }
+
+   @Override
+   public tl a() {
+      return b;
    }
 }

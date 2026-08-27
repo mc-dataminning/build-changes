@@ -1,19 +1,15 @@
-public class civ extends cja {
-   private static final String a = "textures/entity/horse/";
-   private final int b;
-   private final String c;
-
-   public civ(int $$0, String $$1, cja.a $$2) {
-      super($$2);
-      this.b = $$0;
-      this.c = "textures/entity/horse/armor/horse_armor_" + $$1 + ".png";
+public class civ extends cjg implements ckk {
+   public civ(cjg.a $$0) {
+      super($$0);
    }
 
-   public aew h() {
-      return new aew(this.c);
-   }
-
-   public int i() {
-      return this.b;
+   @Override
+   public boolean a(cqb $$0, deh $$1, boolean $$2, cca $$3) {
+      if ($$1.a($$0x -> $$0x.a(true), $$2)) {
+         $$0.a(null, $$1.p(), apg.jt, aph.e, 1.0F, 1.0F);
+         return true;
+      } else {
+         return false;
+      }
    }
 }

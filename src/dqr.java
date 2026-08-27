@@ -1,16 +1,10 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record dqr(int b, int c, int d, int e, int f, bgd g, float h) implements dqa {
+public record dqr(int b, int c, int d) implements dpu {
    public static final Codec<dqr> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               Codec.intRange(1, 32).fieldOf("charge_count").forGetter(dqr::a),
-               Codec.intRange(1, 500).fieldOf("amount_per_charge").forGetter(dqr::b),
-               Codec.intRange(1, 64).fieldOf("spread_attempts").forGetter(dqr::c),
-               Codec.intRange(0, 8).fieldOf("growth_rounds").forGetter(dqr::d),
-               Codec.intRange(0, 8).fieldOf("spread_rounds").forGetter(dqr::f),
-               bgd.c.fieldOf("extra_rare_growths").forGetter(dqr::g),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("catalyst_chance").forGetter(dqr::h)
+               arj.j.fieldOf("spread_width").forGetter(dqr::a), arj.j.fieldOf("spread_height").forGetter(dqr::b), arj.j.fieldOf("max_height").forGetter(dqr::c)
             )
             .apply($$0, dqr::new)
    );
@@ -25,9 +19,5 @@ public record dqr(int b, int c, int d, int e, int f, bgd g, float h) implements 
 
    public int c() {
       return this.d;
-   }
-
-   public int d() {
-      return this.e;
    }
 }

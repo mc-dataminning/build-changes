@@ -1,22 +1,27 @@
-import java.util.Arrays;
-import java.util.Map;
-import java.util.stream.Collectors;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.Lifecycle;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
 public class tj {
-   private final tj.a a;
-   private final String b;
+   public static final Codec<tj> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(tj.a.h.forGetter($$0x -> $$0x.b), Codec.STRING.fieldOf("value").forGetter($$0x -> $$0x.c)).apply($$0, tj::new)
+   );
+   private final tj.a b;
+   private final String c;
 
    public tj(tj.a $$0, String $$1) {
-      this.a = $$0;
-      this.b = $$1;
+      this.b = $$0;
+      this.c = $$1;
    }
 
    public tj.a a() {
-      return this.a;
+      return this.b;
    }
 
    public String b() {
-      return this.b;
+      return this.c;
    }
 
    @Override
@@ -25,11 +30,7 @@ public class tj {
          return true;
       } else if ($$0 != null && this.getClass() == $$0.getClass()) {
          tj $$1 = (tj)$$0;
-         if (this.a != $$1.a) {
-            return false;
-         } else {
-            return this.b != null ? this.b.equals($$1.b) : $$1.b == null;
-         }
+         return this.b == $$1.b && this.c.equals($$1.c);
       } else {
          return false;
       }
@@ -37,16 +38,16 @@ public class tj {
 
    @Override
    public String toString() {
-      return "ClickEvent{action=" + this.a + ", value='" + this.b + "'}";
+      return "ClickEvent{action=" + this.b + ", value='" + this.c + "'}";
    }
 
    @Override
    public int hashCode() {
-      int $$0 = this.a.hashCode();
-      return 31 * $$0 + (this.b != null ? this.b.hashCode() : 0);
+      int $$0 = this.b.hashCode();
+      return 31 * $$0 + this.c.hashCode();
    }
 
-   public static enum a {
+   public static enum a implements asu {
       a("open_url", true),
       b("open_file", false),
       c("run_command", true),
@@ -54,25 +55,27 @@ public class tj {
       e("change_page", true),
       f("copy_to_clipboard", true);
 
-      private static final Map<String, tj.a> g = Arrays.stream(values()).collect(Collectors.toMap(tj.a::b, $$0 -> (tj.a)$$0));
-      private final boolean h;
-      private final String i;
+      public static final MapCodec<tj.a> g = asu.a(tj.a::values).fieldOf("action");
+      public static final MapCodec<tj.a> h = arj.a(g, tj.a::a);
+      private final boolean i;
+      private final String j;
 
       private a(String $$0, boolean $$1) {
-         this.i = $$0;
-         this.h = $$1;
+         this.j = $$0;
+         this.i = $$1;
       }
 
       public boolean a() {
-         return this.h;
-      }
-
-      public String b() {
          return this.i;
       }
 
-      public static tj.a a(String $$0) {
-         return g.get($$0);
+      @Override
+      public String c() {
+         return this.j;
+      }
+
+      public static DataResult<tj.a> a(tj.a $$0) {
+         return !$$0.a() ? DataResult.error(() -> "Action not allowed: " + $$0) : DataResult.success($$0, Lifecycle.stable());
       }
    }
 }

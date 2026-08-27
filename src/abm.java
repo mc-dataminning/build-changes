@@ -1,14 +1,14 @@
-public record abm(float a) implements vd<abc> {
+public record abm(uc.a a) implements ve<abd> {
    public abm(so $$0) {
-      this($$0.readFloat());
+      this(uc.a.a($$0));
    }
 
    @Override
    public void a(so $$0) {
-      $$0.a(this.a);
+      uc.a.a($$0, this.a);
    }
 
-   public void a(abc $$0) {
+   public void a(abd $$0) {
       $$0.a(this);
    }
 }

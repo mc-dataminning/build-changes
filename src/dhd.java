@@ -1,59 +1,46 @@
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import java.io.IOException;
+import java.util.function.BooleanSupplier;
 import javax.annotation.Nullable;
 
-public class dhd implements AutoCloseable {
-   private final cpw a;
-   private final Long2ObjectMap<dhr> b = new Long2ObjectOpenHashMap();
+public abstract class dhd implements dhn, AutoCloseable {
    @Nullable
-   private dhr c;
-   private long d;
-
-   public dhd(cpw $$0) {
-      this.a = $$0;
+   public dhk a(int $$0, int $$1, boolean $$2) {
+      return (dhk)this.a($$0, $$1, dhe.n, $$2);
    }
 
    @Nullable
-   public dhr a(gw $$0) {
-      int $$1 = this.a.e($$0.v());
-      if ($$1 >= 0 && $$1 < this.a.ak()) {
-         long $$2 = hw.c($$0);
-         if (this.c == null || this.d != $$2) {
-            this.c = (dhr)this.b.computeIfAbsent($$2, $$2x -> {
-               dhf $$3 = this.a.a(hw.a($$0.u()), hw.a($$0.w()));
-               dhr $$4 = $$3.b($$1);
-               $$4.a();
-               return $$4;
-            });
-            this.d = $$2;
-         }
-
-         return this.c;
-      } else {
-         return null;
-      }
+   public dhk a(int $$0, int $$1) {
+      return this.a($$0, $$1, false);
    }
 
-   public dfj b(gw $$0) {
-      dhr $$1 = this.a($$0);
-      if ($$1 == null) {
-         return csw.a.n();
-      } else {
-         int $$2 = hw.b($$0.u());
-         int $$3 = hw.b($$0.v());
-         int $$4 = hw.b($$0.w());
-         return $$1.a($$2, $$3, $$4);
-      }
+   @Nullable
+   @Override
+   public dhm c(int $$0, int $$1) {
+      return this.a($$0, $$1, dhe.c, false);
    }
+
+   public boolean b(int $$0, int $$1) {
+      return this.a($$0, $$1, dhe.n, false) != null;
+   }
+
+   @Nullable
+   public abstract dgz a(int var1, int var2, dhe var3, boolean var4);
+
+   public abstract void a(BooleanSupplier var1, boolean var2);
+
+   public abstract String e();
+
+   public abstract int j();
 
    @Override
-   public void close() {
-      ObjectIterator var1 = this.b.values().iterator();
+   public void close() throws IOException {
+   }
 
-      while (var1.hasNext()) {
-         dhr $$0 = (dhr)var1.next();
-         $$0.b();
-      }
+   public abstract dzv p();
+
+   public void a(boolean $$0, boolean $$1) {
+   }
+
+   public void a(cpi $$0, boolean $$1) {
    }
 }

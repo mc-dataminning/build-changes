@@ -1,34 +1,66 @@
-import java.util.Locale;
+import com.mojang.datafixers.DataFixer;
+import com.mojang.logging.LogUtils;
+import java.io.File;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public interface ecd {
-   int a();
+public class ecd {
+   private static final Logger b = LogUtils.getLogger();
+   private final File c;
+   protected final DataFixer a;
 
-   int b();
+   public ecd(eca.c $$0, DataFixer $$1) {
+      this.a = $$1;
+      this.c = $$0.a(eby.c).toFile();
+      this.c.mkdirs();
+   }
 
-   int c();
+   public void a(cca $$0) {
+      try {
+         qw $$1 = $$0.f(new qw());
+         File $$2 = File.createTempFile($$0.cw() + "-", ".dat", this.c);
+         rh.a($$1, $$2);
+         File $$3 = new File(this.c, $$0.cw() + ".dat");
+         File $$4 = new File(this.c, $$0.cw() + ".dat_old");
+         ac.a($$3, $$2, $$4);
+      } catch (Exception var6) {
+         b.warn("Failed to save player data for {}", $$0.ab().getString());
+      }
+   }
 
-   float d();
+   @Nullable
+   public qw b(cca $$0) {
+      qw $$1 = null;
 
-   long e();
+      try {
+         File $$2 = new File(this.c, $$0.cw() + ".dat");
+         if ($$2.exists() && $$2.isFile()) {
+            $$1 = rh.a($$2);
+         }
+      } catch (Exception var4) {
+         b.warn("Failed to load player data for {}", $$0.ab().getString());
+      }
 
-   long f();
+      if ($$1 != null) {
+         int $$4 = rj.b($$1, -1);
+         $$0.g(atg.b.a(this.a, $$1, $$4));
+      }
 
-   boolean i();
+      return $$1;
+   }
 
-   boolean k();
+   public String[] a() {
+      String[] $$0 = this.c.list();
+      if ($$0 == null) {
+         $$0 = new String[0];
+      }
 
-   void b(boolean var1);
+      for (int $$1 = 0; $$1 < $$0.length; $$1++) {
+         if ($$0[$$1].endsWith(".dat")) {
+            $$0[$$1] = $$0[$$1].substring(0, $$0[$$1].length() - 4);
+         }
+      }
 
-   boolean n();
-
-   cpr q();
-
-   bgv s();
-
-   boolean t();
-
-   default void a(p $$0, cpx $$1) {
-      $$0.a("Level spawn location", () -> p.a($$1, this.a(), this.b(), this.c()));
-      $$0.a("Level time", () -> String.format(Locale.ROOT, "%d game time, %d day time", this.e(), this.f()));
+      return $$0;
    }
 }

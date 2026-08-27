@@ -1,40 +1,11 @@
-public class flt extends fmu {
-   flt(fix $$0, double $$1, double $$2, double $$3, double $$4) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.B = 0.66F;
-      this.C = true;
-      this.j *= 0.01F;
-      this.k *= 0.01F;
-      this.l *= 0.01F;
-      this.k += 0.2;
-      this.v = Math.max(0.0F, arw.a(((float)$$4 + 0.0F) * (float) (Math.PI * 2)) * 0.65F + 0.35F);
-      this.w = Math.max(0.0F, arw.a(((float)$$4 + 0.33333334F) * (float) (Math.PI * 2)) * 0.65F + 0.35F);
-      this.x = Math.max(0.0F, arw.a(((float)$$4 + 0.6666667F) * (float) (Math.PI * 2)) * 0.65F + 0.35F);
-      this.D *= 1.5F;
-      this.t = 6;
-   }
+import javax.annotation.Nullable;
 
-   @Override
-   public fly b() {
-      return fly.b;
-   }
+public interface flt<T extends it> {
+   @Nullable
+   flq createParticle(T var1, fis var2, double var3, double var5, double var7, double var9, double var11, double var13);
 
-   @Override
-   public float b(float $$0) {
-      return this.D * arw.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
-   }
-
-   public static class a implements flx<iy> {
-      private final fmp a;
-
-      public a(fmp $$0) {
-         this.a = $$0;
-      }
-
-      public flu a(iy $$0, fix $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         flt $$8 = new flt($$1, $$2, $$3, $$4, $$5);
-         $$8.a(this.a);
-         return $$8;
-      }
+   public interface a<T extends it> {
+      @Nullable
+      fmq createParticle(T var1, fis var2, double var3, double var5, double var7, double var9, double var11, double var13);
    }
 }

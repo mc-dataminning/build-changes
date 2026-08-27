@@ -1,59 +1,71 @@
 import com.google.common.collect.Maps;
-import com.google.common.collect.ImmutableMap.Builder;
+import java.util.List;
 import java.util.Map;
+import javax.annotation.Nullable;
 
-public class ckd extends chp {
-   protected static final Map<csv, dfj> a = Maps.newHashMap(
-      new Builder()
-         .put(csw.i, csw.kE.n())
-         .put(csw.j, csw.kE.n())
-         .put(csw.l, csw.kE.n())
-         .put(csw.k, csw.kE.n())
-         .put(csw.fl, csw.kE.n())
-         .put(csw.rG, csw.kE.n())
-         .build()
-   );
+public class ckd extends cjg {
+   private static final Map<apf, ckd> a = Maps.newHashMap();
+   private final int b;
+   private final apf c;
+   private final int d;
 
-   public ckd(cks $$0, float $$1, float $$2, cja.a $$3) {
-      super($$1, $$2, $$0, aps.bC, $$3);
+   protected ckd(int $$0, apf $$1, cjg.a $$2, int $$3) {
+      super($$2);
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$3 * 20;
+      a.put(this.c, this);
    }
 
    @Override
-   public bgy a(clp $$0) {
-      cpv $$1 = $$0.q();
+   public bhe a(clv $$0) {
+      cqb $$1 = $$0.q();
       gw $$2 = $$0.a();
-      dfj $$3 = $$1.a_($$2);
-      if ($$0.k() == ha.a) {
-         return bgy.d;
+      dfd $$3 = $$1.a_($$2);
+      if ($$3.a(cte.dT) && !$$3.c(cxd.b)) {
+         cjl $$4 = $$0.n();
+         if (!$$1.B) {
+            cca $$5 = $$0.o();
+            if ($$1.c_($$2) instanceof ddz $$6) {
+               $$6.a($$4.p());
+               $$1.a(djn.c, $$2, djn.a.a($$5, $$3));
+            }
+
+            $$4.h(1);
+            if ($$5 != null) {
+               $$5.a(apq.al);
+            }
+         }
+
+         return bhe.a($$1.B);
       } else {
-         cbu $$4 = $$0.o();
-         dfj $$5 = a.get($$3.b());
-         dfj $$6 = null;
-         if ($$5 != null && $$1.a_($$2.c()).i()) {
-            $$1.a($$4, $$2, apd.uX, ape.e, 1.0F, 1.0F);
-            $$6 = $$5;
-         } else if ($$3.b() instanceof cti && $$3.c(cti.b)) {
-            if (!$$1.w_()) {
-               $$1.a(null, 1009, $$2, 0);
-            }
-
-            cti.a($$0.o(), $$1, $$2, $$3);
-            $$6 = $$3.a(cti.b, Boolean.valueOf(false));
-         }
-
-         if ($$6 != null) {
-            if (!$$1.B) {
-               $$1.a($$2, $$6, 11);
-               $$1.a(djt.c, $$2, djt.a.a($$4, $$6));
-               if ($$4 != null) {
-                  $$0.n().a(1, $$4, $$1x -> $$1x.d($$0.p()));
-               }
-            }
-
-            return bgy.a($$1.B);
-         } else {
-            return bgy.d;
-         }
+         return bhe.d;
       }
+   }
+
+   public int h() {
+      return this.b;
+   }
+
+   @Override
+   public void a(cjl $$0, @Nullable cqb $$1, List<tl> $$2, clc $$3) {
+      $$2.add(this.i().a(n.h));
+   }
+
+   public tz i() {
+      return tl.c(this.a() + ".desc");
+   }
+
+   @Nullable
+   public static ckd a(apf $$0) {
+      return a.get($$0);
+   }
+
+   public apf x() {
+      return this.c;
+   }
+
+   public int y() {
+      return this.d;
    }
 }

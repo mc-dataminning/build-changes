@@ -8,15 +8,15 @@ import javax.annotation.Nullable;
 public interface br {
    Codec<br> a = br.b.t.dispatch(br::a, $$0 -> $$0.a().codec());
 
-   boolean a(biq var1, akq var2, @Nullable ehn var3);
+   boolean a(biw var1, akt var2, @Nullable ehh var3);
 
    br.a a();
 
-   static br a(buv $$0) {
+   static br a(bvb $$0) {
       return br.b.f.a($$0);
    }
 
-   static br a(bvc $$0) {
+   static br a(bvi $$0) {
       return br.b.g.a($$0);
    }
 
@@ -26,7 +26,7 @@ public interface br {
    public static final class b {
       public static final br.a a = new br.a(MapCodec.unit(new br() {
          @Override
-         public boolean a(biq $$0, akq $$1, @Nullable ehn $$2) {
+         public boolean a(biw $$0, akt $$1, @Nullable ehh $$2) {
             return true;
          }
 
@@ -39,19 +39,19 @@ public interface br {
       public static final br.a c = new br.a(bv.c);
       public static final br.a d = new br.a(cr.c);
       public static final br.a e = new br.a(cy.b);
-      public static final bt<buv> f = bt.a(jb.aj, $$0 -> $$0 instanceof buu $$1 ? Optional.of($$1.gk()) : Optional.empty());
-      public static final bt<bvc> g = bt.a(jb.ak, $$0 -> $$0 instanceof bwg $$1 ? Optional.of($$1.y()) : Optional.empty());
-      public static final bt<bvy.d> h = bt.a(bvy.d.f, $$0 -> $$0 instanceof bvy $$1 ? Optional.of($$1.gd()) : Optional.empty());
-      public static final bt<cdn.b> i = bt.a(cdn.b.j, $$0 -> $$0 instanceof cdn $$1 ? Optional.of($$1.A()) : Optional.empty());
-      public static final bt<bvb.v> j = bt.a(bvb.v.c, $$0 -> $$0 instanceof bvb $$1 ? Optional.of($$1.t()) : Optional.empty());
-      public static final bt<bve.a> k = bt.a(bve.a.c, $$0 -> $$0 instanceof bve $$1 ? Optional.of($$1.t()) : Optional.empty());
-      public static final bt<he<byj>> l = bt.a(jb.m.r(), $$0 -> $$0 instanceof byi $$1 ? Optional.of($$1.q()) : Optional.empty());
-      public static final bt<bvl.g> m = bt.a(bvl.g.h, $$0 -> $$0 instanceof bvl $$1 ? Optional.of($$1.gd()) : Optional.empty());
-      public static final bt<bwz> n = bt.a(bwz.h, $$0 -> $$0 instanceof bws $$1 ? Optional.of($$1.t()) : Optional.empty());
-      public static final bt<bwt.d> o = bt.a(bwt.d.e, $$0 -> $$0 instanceof bwt $$1 ? Optional.of($$1.gp()) : Optional.empty());
-      public static final bt<cbm> p = bt.a(jb.z.q(), $$0 -> $$0 instanceof cbj $$1 ? Optional.of($$1.a()) : Optional.empty());
-      public static final bt<bvh.b> q = bt.a(bvh.b.f, $$0 -> $$0 instanceof bvh $$1 ? Optional.of($$1.gl()) : Optional.empty());
-      public static final bt<bvr.b> r = bt.a(bvr.b.m, $$0 -> $$0 instanceof bvr $$1 ? Optional.of($$1.go()) : Optional.empty());
+      public static final bt<bvb> f = bt.a(jb.ak, $$0 -> $$0 instanceof bva $$1 ? Optional.of($$1.gl()) : Optional.empty());
+      public static final bt<bvi> g = bt.a(jb.al, $$0 -> $$0 instanceof bwm $$1 ? Optional.of($$1.y()) : Optional.empty());
+      public static final bt<bwe.d> h = bt.a(bwe.d.f, $$0 -> $$0 instanceof bwe $$1 ? Optional.of($$1.ge()) : Optional.empty());
+      public static final bt<cdt.b> i = bt.a(cdt.b.j, $$0 -> $$0 instanceof cdt $$1 ? Optional.of($$1.A()) : Optional.empty());
+      public static final bt<bvh.v> j = bt.a(bvh.v.c, $$0 -> $$0 instanceof bvh $$1 ? Optional.of($$1.t()) : Optional.empty());
+      public static final bt<bvk.a> k = bt.a(bvk.a.c, $$0 -> $$0 instanceof bvk $$1 ? Optional.of($$1.t()) : Optional.empty());
+      public static final bt<he<byp>> l = bt.a(jb.m.r(), $$0 -> $$0 instanceof byo $$1 ? Optional.of($$1.q()) : Optional.empty());
+      public static final bt<bvr.g> m = bt.a(bvr.g.h, $$0 -> $$0 instanceof bvr $$1 ? Optional.of($$1.ge()) : Optional.empty());
+      public static final bt<bxf> n = bt.a(bxf.h, $$0 -> $$0 instanceof bwy $$1 ? Optional.of($$1.t()) : Optional.empty());
+      public static final bt<bwz.d> o = bt.a(bwz.d.e, $$0 -> $$0 instanceof bwz $$1 ? Optional.of($$1.gq()) : Optional.empty());
+      public static final bt<cbs> p = bt.a(jb.z.q(), $$0 -> $$0 instanceof cbp $$1 ? Optional.of($$1.a()) : Optional.empty());
+      public static final bt<bvn.b> q = bt.a(bvn.b.f, $$0 -> $$0 instanceof bvn $$1 ? Optional.of($$1.gm()) : Optional.empty());
+      public static final bt<bvx.b> r = bt.a(bvx.b.m, $$0 -> $$0 instanceof bvx $$1 ? Optional.of($$1.gp()) : Optional.empty());
       public static final BiMap<String, br.a> s = ImmutableBiMap.builder()
          .put("any", a)
          .put("lightning", b)
@@ -72,6 +72,6 @@ public interface br {
          .put("parrot", q.a())
          .put("tropical_fish", r.a())
          .buildOrThrow();
-      public static final Codec<br.a> t = arf.b(s.inverse()::get, s::get);
+      public static final Codec<br.a> t = arj.a(s.inverse()::get, s::get);
    }
 }

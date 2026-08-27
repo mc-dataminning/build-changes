@@ -1,162 +1,75 @@
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
+import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class dcl extends dcv implements bhc {
-   public static final int a = 6;
-   public static final String b = "Patterns";
-   public static final String c = "Pattern";
-   public static final String d = "Color";
+public class dcl extends dac {
+   public static final MapCodec<dcl> b = b(dcl::new);
    @Nullable
-   private tl e;
-   private cht f;
+   private static dfi h;
    @Nullable
-   private rc g;
-   @Nullable
-   private List<Pair<he<dcm>, cht>> h;
+   private static dfi i;
 
-   public dcl(gw $$0, dfj $$1) {
-      super(dcx.t, $$0, $$1);
-      this.f = ((crm)$$1.b()).a();
+   @Override
+   public MapCodec<dcl> a() {
+      return b;
    }
 
-   public dcl(gw $$0, dfj $$1, cht $$2) {
-      this($$0, $$1);
-      this.f = $$2;
-   }
-
-   @Nullable
-   public static rc a(cjf $$0) {
-      rc $$1 = null;
-      qw $$2 = cgy.a($$0);
-      if ($$2 != null && $$2.b("Patterns", 9)) {
-         $$1 = $$2.c("Patterns", 10).e();
-      }
-
-      return $$1;
-   }
-
-   public void a(cjf $$0, cht $$1) {
-      this.f = $$1;
-      this.b($$0);
-   }
-
-   public void b(cjf $$0) {
-      this.g = a($$0);
-      this.h = null;
-      this.e = $$0.A() ? $$0.y() : null;
+   protected dcl(dfc.d $$0) {
+      super(dac.b.d, $$0);
    }
 
    @Override
-   public tl ab() {
-      return (tl)(this.e != null ? this.e : tl.c("block.minecraft.banner"));
-   }
-
-   @Nullable
-   @Override
-   public tl ad() {
-      return this.e;
-   }
-
-   public void a(tl $$0) {
-      this.e = $$0;
-   }
-
-   @Override
-   protected void b(qw $$0) {
-      super.b($$0);
-      if (this.g != null) {
-         $$0.a("Patterns", this.g);
-      }
-
-      if (this.e != null) {
-         $$0.a("CustomName", tl.a.a(this.e));
+   public void a(cqb $$0, gw $$1, dfd $$2, @Nullable bjm $$3, cjl $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      dcz $$5 = $$0.c_($$1);
+      if ($$5 instanceof dej) {
+         a($$0, $$1, (dej)$$5);
       }
    }
 
-   @Override
-   public void a(qw $$0) {
-      super.a($$0);
-      if ($$0.b("CustomName", 8)) {
-         this.e = tl.a.a($$0.l("CustomName"));
-      }
-
-      this.g = $$0.c("Patterns", 10);
-      this.h = null;
-   }
-
-   public xd a() {
-      return xd.a(this);
-   }
-
-   @Override
-   public qw as_() {
-      return this.o();
-   }
-
-   public static int c(cjf $$0) {
-      qw $$1 = cgy.a($$0);
-      return $$1 != null && $$1.e("Patterns") ? $$1.c("Patterns", 10).size() : 0;
-   }
-
-   public List<Pair<he<dcm>, cht>> c() {
-      if (this.h == null) {
-         this.h = a(this.f, this.g);
-      }
-
-      return this.h;
-   }
-
-   public static List<Pair<he<dcm>, cht>> a(cht $$0, @Nullable rc $$1) {
-      List<Pair<he<dcm>, cht>> $$2 = Lists.newArrayList();
-      $$2.add(Pair.of(jb.al.f(dcn.a), $$0));
-      if ($$1 != null) {
-         for (int $$3 = 0; $$3 < $$1.size(); $$3++) {
-            qw $$4 = $$1.a($$3);
-            he<dcm> $$5 = dcm.a($$4.l("Pattern"));
+   public static void a(cqb $$0, gw $$1, dej $$2) {
+      if (!$$0.B) {
+         dfd $$3 = $$2.q();
+         boolean $$4 = $$3.a(cte.gG) || $$3.a(cte.gH);
+         if ($$4 && $$1.v() >= $$0.H_() && $$0.ai() != bhb.a) {
+            dfi.b $$5 = x().a($$0, $$1);
             if ($$5 != null) {
-               int $$6 = $$4.h("Color");
-               $$2.add(Pair.of($$5, cht.a($$6)));
+               byh $$6 = bja.bk.a($$0);
+               if ($$6 != null) {
+                  ctw.a($$0, $$5);
+                  gw $$7 = $$5.a(1, 2, 0).d();
+                  $$6.b((double)$$7.u() + 0.5, (double)$$7.v() + 0.55, (double)$$7.w() + 0.5, $$5.b().o() == ha.a.a ? 0.0F : 90.0F, 0.0F);
+                  $$6.aU = $$5.b().o() == ha.a.a ? 0.0F : 90.0F;
+                  $$6.s();
+
+                  for (aku $$8 : $$0.a(aku.class, $$6.cG().g(50.0))) {
+                     al.n.a($$8, $$6);
+                  }
+
+                  $$0.b($$6);
+                  ctw.b($$0, $$5);
+               }
             }
          }
       }
-
-      return $$2;
    }
 
-   public static void d(cjf $$0) {
-      qw $$1 = cgy.a($$0);
-      if ($$1 != null && $$1.b("Patterns", 9)) {
-         rc $$2 = $$1.c("Patterns", 10);
-         if (!$$2.isEmpty()) {
-            $$2.c($$2.size() - 1);
-            if ($$2.isEmpty()) {
-               $$1.r("Patterns");
-            }
-         }
-
-         $$1.r("id");
-         cgy.a($$0, dcx.t, $$1);
-      }
+   public static boolean b(cqb $$0, gw $$1, cjl $$2) {
+      return $$2.a(cjo.ts) && $$1.v() >= $$0.H_() + 2 && $$0.ai() != bhb.a && !$$0.B ? y().a($$0, $$1) != null : false;
    }
 
-   public cjf f() {
-      cjf $$0 = new cjf(csb.a(this.f));
-      if (this.g != null && !this.g.isEmpty()) {
-         qw $$1 = new qw();
-         $$1.a("Patterns", this.g.e());
-         cgy.a($$0, this.u(), $$1);
+   private static dfi x() {
+      if (h == null) {
+         h = dfj.a().a("^^^", "###", "~#~").a('#', $$0 -> $$0.a().a(apv.aE)).a('^', dfh.a(dfm.a(cte.gG).or(dfm.a(cte.gH)))).a('~', $$0 -> $$0.a().i()).b();
       }
 
-      if (this.e != null) {
-         $$0.a(this.e);
-      }
-
-      return $$0;
+      return h;
    }
 
-   public cht g() {
-      return this.f;
+   private static dfi y() {
+      if (i == null) {
+         i = dfj.a().a("   ", "###", "~#~").a('#', $$0 -> $$0.a().a(apv.aE)).a('~', $$0 -> $$0.a().i()).b();
+      }
+
+      return i;
    }
 }

@@ -1,21 +1,23 @@
-public class cfz extends cgd {
-   private final cez a;
-   private final cbu b;
+public class cfz extends cgj {
+   private final cfx a;
+   private final cca b;
    private int c;
+   private final coy h;
 
-   public cfz(cbu $$0, cez $$1, bgr $$2, int $$3, int $$4, int $$5) {
+   public cfz(cca $$0, coy $$1, cfx $$2, int $$3, int $$4, int $$5) {
       super($$2, $$3, $$4, $$5);
       this.b = $$0;
-      this.a = $$1;
+      this.h = $$1;
+      this.a = $$2;
    }
 
    @Override
-   public boolean a(cjf $$0) {
+   public boolean a(cjl $$0) {
       return false;
    }
 
    @Override
-   public cjf a(int $$0) {
+   public cjl a(int $$0) {
       if (this.f()) {
          this.c = this.c + Math.min($$0, this.e().L());
       }
@@ -24,52 +26,32 @@ public class cfz extends cgd {
    }
 
    @Override
-   protected void a(cjf $$0, int $$1) {
+   protected void a(cjl $$0, int $$1) {
       this.c += $$1;
       this.b_($$0);
    }
 
    @Override
-   protected void b(int $$0) {
-      this.c += $$0;
-   }
-
-   @Override
-   protected void b_(cjf $$0) {
-      if (this.c > 0) {
-         $$0.a(this.b.dL(), this.b, this.c);
-      }
-
-      if (this.d instanceof cfx $$1) {
-         $$1.a(this.b, this.a.h());
-      }
-
+   protected void b_(cjl $$0) {
+      $$0.a(this.b.dL(), this.b, this.c);
       this.c = 0;
    }
 
    @Override
-   public void a(cbu $$0, cjf $$1) {
+   public void a(cca $$0, cjl $$1) {
       this.b_($$1);
-      hn<cjf> $$2 = $$0.dL().q().c(cmn.a, this.a, $$0.dL());
-
-      for (int $$3 = 0; $$3 < $$2.size(); $$3++) {
-         cjf $$4 = this.a.a($$3);
-         cjf $$5 = $$2.get($$3);
-         if (!$$4.b()) {
-            this.a.a($$3, 1);
-            $$4 = this.a.a($$3);
+      coz $$2 = this.a.g();
+      if ($$2 != null) {
+         cjl $$3 = this.a.a(0);
+         cjl $$4 = this.a.a(1);
+         if ($$2.b($$3, $$4) || $$2.b($$4, $$3)) {
+            this.h.a($$2);
+            $$0.a(apq.T);
+            this.a.a(0, $$3);
+            this.a.a(1, $$4);
          }
 
-         if (!$$5.b()) {
-            if ($$4.b()) {
-               this.a.a($$3, $$5);
-            } else if (cjf.c($$4, $$5)) {
-               $$5.g($$4.L());
-               this.a.a($$3, $$5);
-            } else if (!this.b.fR().e($$5)) {
-               this.b.a($$5, false);
-            }
-         }
+         this.h.t(this.h.t() + $$2.o());
       }
    }
 }

@@ -1,108 +1,49 @@
-import com.ibm.icu.text.Collator;
-import java.util.Comparator;
-import java.util.Locale;
-import java.util.Objects;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+public class exf extends eye {
+   private static final aez a = new aez("textures/gui/demo_background.png");
+   private etd b = etd.a;
+   private etd c = etd.a;
 
-public class exf extends eyk {
-   private static final tl a = tl.c("createWorld.customize.buffet.biome");
-   private final eyk b;
-   private final Consumer<he<cqt>> c;
-   final hq<cqt> k;
-   private exf.a l;
-   he<cqt> m;
-   private esq n;
-
-   public exf(eyk $$0, fdg $$1, Consumer<he<cqt>> $$2) {
-      super(tl.c("createWorld.customize.buffet.title"));
-      this.b = $$0;
-      this.c = $$2;
-      this.k = $$1.a().d(jc.ap);
-      he<cqt> $$3 = this.k.b(cra.b).or(() -> this.k.h().findAny()).orElseThrow();
-      this.m = $$1.d().a().c().c().stream().findFirst().orElse($$3);
-   }
-
-   @Override
-   public void az_() {
-      this.f.a(this.b);
+   public exf() {
+      super(tl.c("demo.help.title"));
    }
 
    @Override
    protected void aH_() {
-      this.l = new exf.a();
-      this.e(this.l);
-      this.n = this.d(esq.a(tk.d, $$0 -> {
-         this.c.accept(this.m);
-         this.f.a(this.b);
-      }).a(this.g / 2 - 155, this.h - 28, 150, 20).a());
-      this.d(esq.a(tk.e, $$0 -> this.f.a(this.b)).a(this.g / 2 + 5, this.h - 28, 150, 20).a());
-      this.l.a(this.l.i().stream().filter($$0 -> Objects.equals($$0.b, this.m)).findFirst().orElse(null));
-   }
-
-   void l() {
-      this.n.i = this.l.f() != null;
+      int $$0 = -16;
+      this.d(esk.a(tl.c("demo.help.buy"), $$0x -> {
+         $$0x.i = false;
+         ac.i().a("https://aka.ms/BuyMinecraftJava");
+      }).a(this.g / 2 - 116, this.h / 2 + 62 + -16, 114, 20).a());
+      this.d(esk.a(tl.c("demo.help.later"), $$0x -> {
+         this.f.a(null);
+         this.f.n.i();
+      }).a(this.g / 2 + 2, this.h / 2 + 62 + -16, 114, 20).a());
+      eqt $$1 = this.f.m;
+      this.b = etd.a(
+         this.i,
+         tl.a("demo.help.movementShort", $$1.x.k(), $$1.y.k(), $$1.z.k(), $$1.A.k()),
+         tl.c("demo.help.movementMouse"),
+         tl.a("demo.help.jump", $$1.B.k()),
+         tl.a("demo.help.inventory", $$1.E.k())
+      );
+      this.c = etd.a(this.i, tl.c("demo.help.fullWrapped"), 218);
    }
 
    @Override
-   public void a(esf $$0, int $$1, int $$2, float $$3) {
+   public void b(erz $$0, int $$1, int $$2, float $$3) {
+      super.b($$0, $$1, $$2, $$3);
+      int $$4 = (this.g - 248) / 2;
+      int $$5 = (this.h - 166) / 2;
+      $$0.a(a, $$4, $$5, 0, 0, 248, 166);
+   }
+
+   @Override
+   public void a(erz $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      this.l.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 8, 16777215);
-      $$0.a(this.i, a, this.g / 2, 28, 10526880);
-   }
-
-   @Override
-   public void b(esf $$0, int $$1, int $$2, float $$3) {
-      this.b($$0);
-   }
-
-   class a extends etm<exf.a.a> {
-      a() {
-         super(exf.this.f, exf.this.g, exf.this.h, 40, exf.this.h - 37, 16);
-         Collator $$0 = Collator.getInstance(Locale.getDefault());
-         exf.this.k.h().map($$0x -> new exf.a.a($$0x)).sorted(Comparator.comparing($$0x -> $$0x.c.getString(), $$0)).forEach($$1 -> this.b($$1));
-      }
-
-      public void a(@Nullable exf.a.a $$0) {
-         super.a($$0);
-         if ($$0 != null) {
-            exf.this.m = $$0.b;
-         }
-
-         exf.this.l();
-      }
-
-      class a extends etm.a<exf.a.a> {
-         final he.c<cqt> b;
-         final tl c;
-
-         public a(he.c<cqt> $$0) {
-            this.b = $$0;
-            aew $$1 = $$0.g().a();
-            String $$2 = $$1.f("biome");
-            if (qr.a().b($$2)) {
-               this.c = tl.c($$2);
-            } else {
-               this.c = tl.b($$1.toString());
-            }
-         }
-
-         @Override
-         public tl a() {
-            return tl.a("narrator.select", this.c);
-         }
-
-         @Override
-         public void a(esf $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-            $$0.b(exf.this.i, this.c, $$3 + 5, $$2 + 2, 16777215);
-         }
-
-         @Override
-         public boolean a(double $$0, double $$1, int $$2) {
-            a.this.a(this);
-            return true;
-         }
-      }
+      int $$4 = (this.g - 248) / 2 + 10;
+      int $$5 = (this.h - 166) / 2 + 8;
+      $$0.a(this.i, this.e, $$4, $$5, 2039583, false);
+      $$5 = this.b.c($$0, $$4, $$5 + 12, 12, 5197647);
+      this.c.c($$0, $$4, $$5 + 20, 9, 2039583);
    }
 }

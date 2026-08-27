@@ -1,26 +1,21 @@
-import com.google.common.collect.Sets;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import java.util.Set;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public class emo extends enl {
-   public Set<String> a = Sets.newHashSet();
+public class emo extends enf {
+   private static final Logger b = LogUtils.getLogger();
+   public String a;
 
    public static emo a(String $$0) {
       emo $$1 = new emo();
-      JsonParser $$2 = new JsonParser();
 
       try {
-         JsonElement $$3 = $$2.parse($$0);
-         JsonObject $$4 = $$3.getAsJsonObject();
-         JsonElement $$5 = $$4.get("ops");
-         if ($$5.isJsonArray()) {
-            for (JsonElement $$6 : $$5.getAsJsonArray()) {
-               $$1.a.add($$6.getAsString());
-            }
-         }
-      } catch (Exception var8) {
+         JsonParser $$2 = new JsonParser();
+         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
+         $$1.a = epc.a("newsLink", $$3, null);
+      } catch (Exception var4) {
+         b.error("Could not parse RealmsNews: {}", var4.getMessage());
       }
 
       return $$1;

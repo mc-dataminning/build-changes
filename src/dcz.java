@@ -1,221 +1,181 @@
 import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.Objects;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class dcz extends dcv {
-   private static final Logger a = LogUtils.getLogger();
-   private static final String b = "LootTable";
-   private static final String c = "LootTableSeed";
-   private static final String d = "hit_direction";
-   private static final String e = "item";
-   private static final int f = 10;
-   private static final int g = 40;
-   private static final int h = 10;
-   private int i;
-   private long j;
-   private long k;
-   private cjf l = cjf.b;
+public abstract class dcz {
+   private static final Logger c = LogUtils.getLogger();
+   private final ddb<?> d;
    @Nullable
-   private ha m;
+   protected cqb o;
+   protected final gw p;
+   protected boolean q;
+   private dfd e;
+
+   public dcz(ddb<?> $$0, gw $$1, dfd $$2) {
+      this.d = $$0;
+      this.p = $$1.i();
+      this.e = $$2;
+   }
+
+   public static gw c(qw $$0) {
+      return new gw($$0.h("x"), $$0.h("y"), $$0.h("z"));
+   }
+
    @Nullable
-   private aew n;
-   private long r;
-
-   public dcz(gw $$0, dfj $$1) {
-      super(dcx.N, $$0, $$1);
+   public cqb k() {
+      return this.o;
    }
 
-   public boolean a(long $$0, cbu $$1, ha $$2) {
-      if (this.m == null) {
-         this.m = $$2;
-      }
-
-      this.j = $$0 + 40L;
-      if ($$0 >= this.k && this.o instanceof akq) {
-         this.k = $$0 + 10L;
-         this.a($$1);
-         int $$3 = this.i();
-         if (++this.i >= 10) {
-            this.b($$1);
-            return true;
-         } else {
-            this.o.a(this.p(), this.q().b(), 40);
-            int $$4 = this.i();
-            if ($$3 != $$4) {
-               dfj $$5 = this.q();
-               dfj $$6 = $$5.a(dfz.bv, Integer.valueOf($$4));
-               this.o.a(this.p(), $$6, 3);
-            }
-
-            return false;
-         }
-      } else {
-         return false;
-      }
+   public void a(cqb $$0) {
+      this.o = $$0;
    }
 
-   public void a(cbu $$0) {
-      if (this.n != null && this.o != null && !this.o.w_() && this.o.n() != null) {
-         ecy $$1 = this.o.n().aH().getLootTable(this.n);
-         if ($$0 instanceof akr $$2) {
-            al.N.a($$2, this.n);
-         }
-
-         ecw $$3 = new ecw.a((akq)this.o).a(efb.f, ehn.b(this.p)).a($$0.gn()).a(efb.a, $$0).a(efa.c);
-         ObjectArrayList<cjf> $$4 = $$1.a($$3, this.r);
-
-         this.l = switch ($$4.size()) {
-            case 0 -> cjf.b;
-            case 1 -> (cjf)$$4.get(0);
-            default -> {
-               a.warn("Expected max 1 loot from loot table " + this.n + " got " + $$4.size());
-               yield (cjf)$$4.get(0);
-            }
-         };
-         this.n = null;
-         this.e();
-      }
+   public boolean l() {
+      return this.o != null;
    }
 
-   private void b(cbu $$0) {
-      if (this.o != null && this.o.n() != null) {
-         this.c($$0);
-         dfj $$1 = this.q();
-         this.o.c(3008, this.p(), csv.i($$1));
-         csv $$4;
-         if (this.q().b() instanceof csz $$3) {
-            $$4 = $$3.a();
-         } else {
-            $$4 = csw.a;
-         }
-
-         this.o.a(this.p, $$4.n(), 3);
-      }
+   public void a(qw $$0) {
    }
 
-   private void c(cbu $$0) {
-      if (this.o != null && this.o.n() != null) {
-         this.a($$0);
-         if (!this.l.b()) {
-            double $$1 = (double)biu.ad.k();
-            double $$2 = 1.0 - $$1;
-            double $$3 = $$1 / 2.0;
-            ha $$4 = Objects.requireNonNullElse(this.m, ha.b);
-            gw $$5 = this.p.a($$4, 1);
-            double $$6 = (double)$$5.u() + 0.5 * $$2 + $$3;
-            double $$7 = (double)$$5.v() + 0.5 + (double)(biu.ad.l() / 2.0F);
-            double $$8 = (double)$$5.w() + 0.5 * $$2 + $$3;
-            byn $$9 = new byn(this.o, $$6, $$7, $$8, this.l.a(this.o.z.a(21) + 10));
-            $$9.f(ehn.b);
-            this.o.b($$9);
-            this.l = cjf.b;
-         }
-      }
+   protected void b(qw $$0) {
    }
 
-   public void c() {
-      if (this.o != null) {
-         if (this.i != 0 && this.o.V() >= this.j) {
-            int $$0 = this.i();
-            this.i = Math.max(0, this.i - 2);
-            int $$1 = this.i();
-            if ($$0 != $$1) {
-               this.o.a(this.p(), this.q().a(dfz.bv, Integer.valueOf($$1)), 3);
-            }
-
-            int $$2 = 4;
-            this.j = this.o.V() + 4L;
-         }
-
-         if (this.i == 0) {
-            this.m = null;
-            this.j = 0L;
-            this.k = 0L;
-         } else {
-            this.o.a(this.p(), this.q().b(), (int)(this.j - this.o.V()));
-         }
-      }
-   }
-
-   private boolean d(qw $$0) {
-      if ($$0.b("LootTable", 8)) {
-         this.n = new aew($$0.l("LootTable"));
-         this.r = $$0.i("LootTableSeed");
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   private boolean e(qw $$0) {
-      if (this.n == null) {
-         return false;
-      } else {
-         $$0.a("LootTable", this.n.toString());
-         if (this.r != 0L) {
-            $$0.a("LootTableSeed", this.r);
-         }
-
-         return true;
-      }
-   }
-
-   @Override
-   public qw as_() {
-      qw $$0 = super.as_();
-      if (this.m != null) {
-         $$0.a("hit_direction", this.m.ordinal());
-      }
-
-      $$0.a("item", this.l.b(new qw()));
+   public final qw m() {
+      qw $$0 = this.o();
+      this.e($$0);
       return $$0;
    }
 
-   public xd d() {
-      return xd.a(this);
+   public final qw n() {
+      qw $$0 = this.o();
+      this.d($$0);
+      return $$0;
    }
 
-   @Override
-   public void a(qw $$0) {
-      if (!this.d($$0) && $$0.e("item")) {
-         this.l = cjf.a($$0.p("item"));
-      }
-
-      if ($$0.e("hit_direction")) {
-         this.m = ha.values()[$$0.h("hit_direction")];
-      }
+   public final qw o() {
+      qw $$0 = new qw();
+      this.b($$0);
+      return $$0;
    }
 
-   @Override
-   protected void b(qw $$0) {
-      if (!this.e($$0)) {
-         $$0.a("item", this.l.b(new qw()));
-      }
-   }
-
-   public void a(aew $$0, long $$1) {
-      this.n = $$0;
-      this.r = $$1;
-   }
-
-   private int i() {
-      if (this.i == 0) {
-         return 0;
-      } else if (this.i < 3) {
-         return 1;
+   private void d(qw $$0) {
+      aez $$1 = ddb.a(this.u());
+      if ($$1 == null) {
+         throw new RuntimeException(this.getClass() + " is missing a mapping! This is a bug!");
       } else {
-         return this.i < 6 ? 2 : 3;
+         $$0.a("id", $$1.toString());
       }
+   }
+
+   public static void a(qw $$0, ddb<?> $$1) {
+      $$0.a("id", ddb.a($$1).toString());
+   }
+
+   public void e(cjl $$0) {
+      che.a($$0, this.u(), this.o());
+   }
+
+   private void e(qw $$0) {
+      this.d($$0);
+      $$0.a("x", this.p.u());
+      $$0.a("y", this.p.v());
+      $$0.a("z", this.p.w());
    }
 
    @Nullable
-   public ha f() {
-      return this.m;
+   public static dcz a(gw $$0, dfd $$1, qw $$2) {
+      String $$3 = $$2.l("id");
+      aez $$4 = aez.a($$3);
+      if ($$4 == null) {
+         c.error("Block entity has invalid type: {}", $$3);
+         return null;
+      } else {
+         return jb.l.b($$4).map($$3x -> {
+            try {
+               return $$3x.a($$0, $$1);
+            } catch (Throwable var5) {
+               c.error("Failed to create block entity {}", $$3, var5);
+               return null;
+            }
+         }).map($$2x -> {
+            try {
+               $$2x.a($$2);
+               return $$2x;
+            } catch (Throwable var4x) {
+               c.error("Failed to load data for block entity {}", $$3, var4x);
+               return null;
+            }
+         }).orElseGet(() -> {
+            c.warn("Skipping BlockEntity with id {}", $$3);
+            return null;
+         });
+      }
    }
 
-   public cjf g() {
-      return this.l;
+   public void e() {
+      if (this.o != null) {
+         a(this.o, this.p, this.e);
+      }
+   }
+
+   protected static void a(cqb $$0, gw $$1, dfd $$2) {
+      $$0.p($$1);
+      if (!$$2.i()) {
+         $$0.c($$1, $$2.b());
+      }
+   }
+
+   public gw p() {
+      return this.p;
+   }
+
+   public dfd q() {
+      return this.e;
+   }
+
+   @Nullable
+   public ve<wx> h() {
+      return null;
+   }
+
+   public qw as_() {
+      return new qw();
+   }
+
+   public boolean r() {
+      return this.q;
+   }
+
+   public void at_() {
+      this.q = true;
+   }
+
+   public void s() {
+      this.q = false;
+   }
+
+   public boolean a_(int $$0, int $$1) {
+      return false;
+   }
+
+   public void a(p $$0) {
+      $$0.a("Name", () -> jb.l.b(this.u()) + " // " + this.getClass().getCanonicalName());
+      if (this.o != null) {
+         p.a($$0, this.o, this.p, this.q());
+         p.a($$0, this.o, this.p, this.o.a_(this.p));
+      }
+   }
+
+   public boolean t() {
+      return false;
+   }
+
+   public ddb<?> u() {
+      return this.d;
+   }
+
+   @Deprecated
+   public void b(dfd $$0) {
+      this.e = $$0;
    }
 }

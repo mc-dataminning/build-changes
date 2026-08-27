@@ -1,111 +1,104 @@
-public class ctg extends csv {
-   public static final int a = 6;
-   public static final dgj b = dfz.ay;
-   public static final int c = b(0);
-   protected static final float d = 1.0F;
-   protected static final float e = 2.0F;
-   protected static final eig[] f = new eig[]{
-      csv.a(1.0, 0.0, 1.0, 15.0, 8.0, 15.0),
-      csv.a(3.0, 0.0, 1.0, 15.0, 8.0, 15.0),
-      csv.a(5.0, 0.0, 1.0, 15.0, 8.0, 15.0),
-      csv.a(7.0, 0.0, 1.0, 15.0, 8.0, 15.0),
-      csv.a(9.0, 0.0, 1.0, 15.0, 8.0, 15.0),
-      csv.a(11.0, 0.0, 1.0, 15.0, 8.0, 15.0),
-      csv.a(13.0, 0.0, 1.0, 15.0, 8.0, 15.0)
-   };
+import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-   protected ctg(dfi.d $$0) {
+public class ctg extends cso {
+   public static final MapCodec<ctg> a = b(ctg::new);
+   public static final dfu[] b = new dfu[]{dft.k, dft.l, dft.m};
+   protected static final eia c = ehx.a(ctc.a(1.0, 0.0, 1.0, 15.0, 2.0, 15.0), ctc.a(7.0, 0.0, 7.0, 9.0, 14.0, 9.0));
+
+   @Override
+   public MapCodec<ctg> a() {
+      return a;
+   }
+
+   public ctg(dfc.d $$0) {
       super($$0);
-      this.k(this.C.b().a(b, Integer.valueOf(0)));
+      this.k(this.E.b().a(b[0], Boolean.valueOf(false)).a(b[1], Boolean.valueOf(false)).a(b[2], Boolean.valueOf(false)));
    }
 
    @Override
-   public eig a(dfj $$0, cpb $$1, gw $$2, ehs $$3) {
-      return f[$$0.c(b)];
+   public czg b_(dfd $$0) {
+      return czg.c;
    }
 
    @Override
-   public bgy a(dfj $$0, cpv $$1, gw $$2, cbu $$3, bgx $$4, ehj $$5) {
-      cjf $$6 = $$3.b($$4);
-      cja $$7 = $$6.d();
-      if ($$6.a(aqa.ai) && $$0.c(b) == 0) {
-         csv $$8 = csv.a($$7);
-         if ($$8 instanceof ctj) {
-            if (!$$3.f()) {
-               $$6.h(1);
-            }
+   public dcz a(gw $$0, dfd $$1) {
+      return new ddc($$0, $$1);
+   }
 
-            $$1.a(null, $$2, apd.cK, ape.e, 1.0F, 1.0F);
-            $$1.b($$2, ctk.a($$8));
-            $$1.a($$3, djt.c, $$2);
-            $$3.b(apn.c.b($$7));
-            return bgy.a;
-         }
-      }
+   @Nullable
+   @Override
+   public <T extends dcz> dda<T> a(cqb $$0, dfd $$1, ddb<T> $$2) {
+      return $$0.B ? null : a($$2, ddb.l, ddc::a);
+   }
 
+   @Override
+   public eia a(dfd $$0, cph $$1, gw $$2, ehm $$3) {
+      return c;
+   }
+
+   @Override
+   public bhe a(dfd $$0, cqb $$1, gw $$2, cca $$3, bhd $$4, ehd $$5) {
       if ($$1.B) {
-         if (a($$1, $$2, $$0, $$3).a()) {
-            return bgy.a;
-         }
-
-         if ($$6.b()) {
-            return bgy.b;
-         }
-      }
-
-      return a($$1, $$2, $$0, $$3);
-   }
-
-   protected static bgy a(cpw $$0, gw $$1, dfj $$2, cbu $$3) {
-      if (!$$3.t(false)) {
-         return bgy.d;
+         return bhe.a;
       } else {
-         $$3.a(apn.U);
-         $$3.gb().a(2, 0.1F);
-         int $$4 = $$2.c(b);
-         $$0.a($$3, djt.m, $$1);
-         if ($$4 < 6) {
-            $$0.a($$1, $$2.a(b, Integer.valueOf($$4 + 1)), 3);
-         } else {
-            $$0.a($$1, false);
-            $$0.a($$3, djt.f, $$1);
+         dcz $$6 = $$1.c_($$2);
+         if ($$6 instanceof ddc) {
+            $$3.a((ddc)$$6);
+            $$3.a(apq.aa);
          }
 
-         return bgy.a;
+         return bhe.b;
       }
    }
 
    @Override
-   public dfj a(dfj $$0, ha $$1, dfj $$2, cpw $$3, gw $$4, gw $$5) {
-      return $$1 == ha.a && !$$0.a($$3, $$4) ? csw.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   public void a(cqb $$0, gw $$1, dfd $$2, bjm $$3, cjl $$4) {
+      if ($$4.A()) {
+         dcz $$5 = $$0.c_($$1);
+         if ($$5 instanceof ddc) {
+            ((ddc)$$5).a($$4.y());
+         }
+      }
    }
 
    @Override
-   public boolean a(dfj $$0, cpy $$1, gw $$2) {
-      return $$1.a_($$2.d()).e();
+   public void a(dfd $$0, cqb $$1, gw $$2, ash $$3) {
+      double $$4 = (double)$$2.u() + 0.4 + (double)$$3.i() * 0.2;
+      double $$5 = (double)$$2.v() + 0.7 + (double)$$3.i() * 0.3;
+      double $$6 = (double)$$2.w() + 0.4 + (double)$$3.i() * 0.2;
+      $$1.a(iv.Z, $$4, $$5, $$6, 0.0, 0.0, 0.0);
    }
 
    @Override
-   protected void a(dfk.a<csv, dfj> $$0) {
-      $$0.a(b);
+   public void a(dfd $$0, cqb $$1, gw $$2, dfd $$3, boolean $$4) {
+      if (!$$0.a($$3.b())) {
+         dcz $$5 = $$1.c_($$2);
+         if ($$5 instanceof ddc) {
+            bha.a($$1, $$2, (ddc)$$5);
+         }
+
+         super.a($$0, $$1, $$2, $$3, $$4);
+      }
    }
 
    @Override
-   public int a(dfj $$0, cpv $$1, gw $$2) {
-      return b($$0.c(b));
-   }
-
-   public static int b(int $$0) {
-      return (7 - $$0) * 2;
-   }
-
-   @Override
-   public boolean d_(dfj $$0) {
+   public boolean d_(dfd $$0) {
       return true;
    }
 
    @Override
-   public boolean a(dfj $$0, cpb $$1, gw $$2, ebc $$3) {
+   public int a(dfd $$0, cqb $$1, gw $$2) {
+      return cer.a($$1.c_($$2));
+   }
+
+   @Override
+   protected void a(dfe.a<ctc, dfd> $$0) {
+      $$0.a(b[0], b[1], b[2]);
+   }
+
+   @Override
+   public boolean a(dfd $$0, cph $$1, gw $$2, eaw $$3) {
       return false;
    }
 }

@@ -1,61 +1,22 @@
 import com.google.common.collect.ImmutableMap;
 
-public class bow extends bkx<cay> {
-   private static final int d = 15;
-   private static final int e = 20;
-   private static final double f = 0.5;
-   private static final double g = 2.5;
-   public static final int c = 40;
-   private static final int h = arw.c(34.0);
-   private static final int i = arw.f(60.0F);
-
-   public bow() {
-      super(ImmutableMap.of(bsh.o, bsi.a, bsh.aI, bsi.b, bsh.aJ, bsi.c, bsh.aK, bsi.c), i);
+public class bow<E extends cbe> extends bld<E> {
+   public bow(int $$0) {
+      super(ImmutableMap.of(bsn.aB, bso.a, bsn.m, bso.b, bsn.n, bso.c), $$0);
    }
 
-   protected boolean a(akq $$0, cay $$1) {
-      return $$1.a($$1.dN().c(bsh.o).get(), 15.0, 20.0);
-   }
-
-   protected boolean a(akq $$0, cay $$1, long $$2) {
+   protected boolean a(akt $$0, E $$1, long $$2) {
       return true;
    }
 
-   protected void b(akq $$0, cay $$1, long $$2) {
-      $$1.dN().a(bsh.p, true, (long)i);
-      $$1.dN().a(bsh.aK, asx.a, (long)h);
-      $$0.a($$1, (byte)62);
-      $$1.a(apd.zM, 3.0F, 1.0F);
+   protected void b(akt $$0, E $$1, long $$2) {
+      $$1.b(bjy.n);
+      $$1.a(apg.zB, 5.0F, 1.0F);
    }
 
-   protected void c(akq $$0, cay $$1, long $$2) {
-      $$1.dN().c(bsh.o).ifPresent($$1x -> $$1.G().a($$1x.dj()));
-      if (!$$1.dN().a(bsh.aK) && !$$1.dN().a(bsh.aJ)) {
-         $$1.dN().a(bsh.aJ, asx.a, (long)(i - h));
-         $$1.dN().c(bsh.o).filter($$1::a).filter($$1x -> $$1.a($$1x, 15.0, 20.0)).ifPresent($$2x -> {
-            ehn $$3 = $$1.dj().b(0.0, 1.6F, 0.0);
-            ehn $$4 = $$2x.bp().d($$3);
-            ehn $$5 = $$4.d();
-
-            for (int $$6 = 1; $$6 < arw.a($$4.f()) + 7; $$6++) {
-               ehn $$7 = $$3.e($$5.a((double)$$6));
-               $$0.a(iv.y, $$7.c, $$7.d, $$7.e, 1, 0.0, 0.0, 0.0, 0.0);
-            }
-
-            $$1.a(apd.zL, 3.0F, 1.0F);
-            $$2x.a($$0.ag().e($$1), 10.0F);
-            double $$8 = 0.5 * (1.0 - $$2x.b(bkm.c));
-            double $$9 = 2.5 * (1.0 - $$2x.b(bkm.c));
-            $$2x.j($$5.a() * $$9, $$5.b() * $$8, $$5.c() * $$9);
-         });
+   protected void c(akt $$0, E $$1, long $$2) {
+      if ($$1.c(bjy.n)) {
+         $$1.b(bjy.a);
       }
-   }
-
-   protected void d(akq $$0, cay $$1, long $$2) {
-      a($$1, 40);
-   }
-
-   public static void a(bjg $$0, int $$1) {
-      $$0.dN().a(bsh.aI, asx.a, (long)$$1);
    }
 }

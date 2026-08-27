@@ -1,316 +1,112 @@
-import com.google.common.base.Splitter;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
 import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.Object2LongMap;
-import it.unimi.dsi.fastutil.objects.Object2LongMaps;
-import java.io.Writer;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.Iterator;
+import java.lang.management.ManagementFactory;
+import java.util.Arrays;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
-import java.util.Map.Entry;
-import org.apache.commons.io.IOUtils;
-import org.apache.commons.lang3.ObjectUtils;
+import java.util.Objects;
+import java.util.function.Function;
+import java.util.function.Supplier;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
+import javax.management.Attribute;
+import javax.management.AttributeList;
+import javax.management.DynamicMBean;
+import javax.management.InstanceAlreadyExistsException;
+import javax.management.MBeanAttributeInfo;
+import javax.management.MBeanInfo;
+import javax.management.MBeanNotificationInfo;
+import javax.management.MBeanRegistrationException;
+import javax.management.MalformedObjectNameException;
+import javax.management.NotCompliantMBeanException;
+import javax.management.ObjectName;
+import net.minecraft.server.MinecraftServer;
 import org.slf4j.Logger;
 
-public class bdl implements bdo {
+public final class bdl implements DynamicMBean {
    private static final Logger a = LogUtils.getLogger();
-   private static final bdq b = new bdq() {
-      @Override
-      public long a() {
-         return 0L;
-      }
+   private final MinecraftServer b;
+   private final MBeanInfo c;
+   private final Map<String, bdl.a> d = Stream.of(
+         new bdl.a("tickTimes", this::b, "Historical tick times (ms)", long[].class),
+         new bdl.a("averageTickTime", this::a, "Current average tick time (ms)", long.class)
+      )
+      .collect(Collectors.toMap($$0x -> $$0x.a, Function.identity()));
 
-      @Override
-      public long b() {
-         return 0L;
-      }
-
-      @Override
-      public long c() {
-         return 0L;
-      }
-
-      @Override
-      public Object2LongMap<String> d() {
-         return Object2LongMaps.emptyMap();
-      }
-   };
-   private static final Splitter c = Splitter.on('\u001e');
-   private static final Comparator<Entry<String, bdl.a>> e = Entry.<String, bdl.a>comparingByValue(Comparator.comparingLong($$0 -> $$0.b)).reversed();
-   private final Map<String, ? extends bdq> f;
-   private final long g;
-   private final int h;
-   private final long i;
-   private final int j;
-   private final int k;
-
-   public bdl(Map<String, ? extends bdq> $$0, long $$1, int $$2, long $$3, int $$4) {
-      this.f = $$0;
-      this.g = $$1;
-      this.h = $$2;
-      this.i = $$3;
-      this.j = $$4;
-      this.k = $$4 - $$2;
+   private bdl(MinecraftServer $$0) {
+      this.b = $$0;
+      MBeanAttributeInfo[] $$1 = this.d.values().stream().map(bdl.a::a).toArray(MBeanAttributeInfo[]::new);
+      this.c = new MBeanInfo(bdl.class.getSimpleName(), "metrics for dedicated server", $$1, null, null, new MBeanNotificationInfo[0]);
    }
 
-   private bdq c(String $$0) {
-      bdq $$1 = this.f.get($$0);
-      return $$1 != null ? $$1 : b;
-   }
-
-   @Override
-   public List<bdr> a(String $$0) {
-      String $$1 = $$0;
-      bdq $$2 = this.c("root");
-      long $$3 = $$2.a();
-      bdq $$4 = this.c($$0);
-      long $$5 = $$4.a();
-      long $$6 = $$4.c();
-      List<bdr> $$7 = Lists.newArrayList();
-      if (!$$0.isEmpty()) {
-         $$0 = $$0 + "\u001e";
-      }
-
-      long $$8 = 0L;
-
-      for (String $$9 : this.f.keySet()) {
-         if (a($$0, $$9)) {
-            $$8 += this.c($$9).a();
-         }
-      }
-
-      float $$10 = (float)$$8;
-      if ($$8 < $$5) {
-         $$8 = $$5;
-      }
-
-      if ($$3 < $$8) {
-         $$3 = $$8;
-      }
-
-      for (String $$11 : this.f.keySet()) {
-         if (a($$0, $$11)) {
-            bdq $$12 = this.c($$11);
-            long $$13 = $$12.a();
-            double $$14 = (double)$$13 * 100.0 / (double)$$8;
-            double $$15 = (double)$$13 * 100.0 / (double)$$3;
-            String $$16 = $$11.substring($$0.length());
-            $$7.add(new bdr($$16, $$14, $$15, $$12.c()));
-         }
-      }
-
-      if ((float)$$8 > $$10) {
-         $$7.add(new bdr("unspecified", (double)((float)$$8 - $$10) * 100.0 / (double)$$8, (double)((float)$$8 - $$10) * 100.0 / (double)$$3, $$6));
-      }
-
-      Collections.sort($$7);
-      $$7.add(0, new bdr($$1, 100.0, (double)$$8 * 100.0 / (double)$$3, $$6));
-      return $$7;
-   }
-
-   private static boolean a(String $$0, String $$1) {
-      return $$1.length() > $$0.length() && $$1.startsWith($$0) && $$1.indexOf(30, $$0.length() + 1) < 0;
-   }
-
-   private Map<String, bdl.a> h() {
-      Map<String, bdl.a> $$0 = Maps.newTreeMap();
-      this.f.forEach(($$1, $$2) -> {
-         Object2LongMap<String> $$3 = $$2.d();
-         if (!$$3.isEmpty()) {
-            List<String> $$4 = c.splitToList($$1);
-            $$3.forEach(($$2x, $$3x) -> $$0.computeIfAbsent($$2x, $$0xxx -> new bdl.a()).a($$4.iterator(), $$3x));
-         }
-      });
-      return $$0;
-   }
-
-   @Override
-   public long a() {
-      return this.g;
-   }
-
-   @Override
-   public int b() {
-      return this.h;
-   }
-
-   @Override
-   public long c() {
-      return this.i;
-   }
-
-   @Override
-   public int d() {
-      return this.j;
-   }
-
-   @Override
-   public boolean a(Path $$0) {
-      Writer $$1 = null;
-
-      boolean var4;
+   public static void a(MinecraftServer $$0) {
       try {
-         Files.createDirectories($$0.getParent());
-         $$1 = Files.newBufferedWriter($$0, StandardCharsets.UTF_8);
-         $$1.write(this.a(this.g(), this.f()));
-         return true;
-      } catch (Throwable var8) {
-         a.error("Could not save profiler results to {}", $$0, var8);
-         var4 = false;
-      } finally {
-         IOUtils.closeQuietly($$1);
+         ManagementFactory.getPlatformMBeanServer().registerMBean(new bdl($$0), new ObjectName("net.minecraft.server:type=Server"));
+      } catch (InstanceAlreadyExistsException | MBeanRegistrationException | NotCompliantMBeanException | MalformedObjectNameException var2) {
+         a.warn("Failed to initialise server as JMX bean", var2);
       }
-
-      return var4;
    }
 
-   protected String a(long $$0, int $$1) {
-      StringBuilder $$2 = new StringBuilder();
-      $$2.append("---- Minecraft Profiler Results ----\n");
-      $$2.append("// ");
-      $$2.append(i());
-      $$2.append("\n\n");
-      $$2.append("Version: ").append(aa.b().b()).append('\n');
-      $$2.append("Time span: ").append($$0 / 1000000L).append(" ms\n");
-      $$2.append("Tick span: ").append($$1).append(" ticks\n");
-      $$2.append("// This is approximately ")
-         .append(String.format(Locale.ROOT, "%.2f", (float)$$1 / ((float)$$0 / 1.0E9F)))
-         .append(" ticks per second. It should be ")
-         .append(20)
-         .append(" ticks per second\n\n");
-      $$2.append("--- BEGIN PROFILE DUMP ---\n\n");
-      this.a(0, "root", $$2);
-      $$2.append("--- END PROFILE DUMP ---\n\n");
-      Map<String, bdl.a> $$3 = this.h();
-      if (!$$3.isEmpty()) {
-         $$2.append("--- BEGIN COUNTER DUMP ---\n\n");
-         this.a($$3, $$2, $$1);
-         $$2.append("--- END COUNTER DUMP ---\n\n");
-      }
+   private float a() {
+      return this.b.aL();
+   }
 
-      return $$2.toString();
+   private long[] b() {
+      return this.b.k;
+   }
+
+   @Nullable
+   @Override
+   public Object getAttribute(String $$0) {
+      bdl.a $$1 = this.d.get($$0);
+      return $$1 == null ? null : $$1.b.get();
    }
 
    @Override
-   public String e() {
-      StringBuilder $$0 = new StringBuilder();
-      this.a(0, "root", $$0);
-      return $$0.toString();
-   }
-
-   private static StringBuilder a(StringBuilder $$0, int $$1) {
-      $$0.append(String.format(Locale.ROOT, "[%02d] ", $$1));
-
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         $$0.append("|   ");
-      }
-
-      return $$0;
-   }
-
-   private void a(int $$0, String $$1, StringBuilder $$2) {
-      List<bdr> $$3 = this.a($$1);
-      Object2LongMap<String> $$4 = ((bdq)ObjectUtils.firstNonNull(new bdq[]{this.f.get($$1), b})).d();
-      $$4.forEach(($$2x, $$3x) -> a($$2, $$0).append('#').append($$2x).append(' ').append($$3x).append('/').append($$3x / (long)this.k).append('\n'));
-      if ($$3.size() >= 3) {
-         for (int $$5 = 1; $$5 < $$3.size(); $$5++) {
-            bdr $$6 = $$3.get($$5);
-            a($$2, $$0)
-               .append($$6.d)
-               .append('(')
-               .append($$6.c)
-               .append('/')
-               .append(String.format(Locale.ROOT, "%.0f", (float)$$6.c / (float)this.k))
-               .append(')')
-               .append(" - ")
-               .append(String.format(Locale.ROOT, "%.2f", $$6.a))
-               .append("%/")
-               .append(String.format(Locale.ROOT, "%.2f", $$6.b))
-               .append("%\n");
-            if (!"unspecified".equals($$6.d)) {
-               try {
-                  this.a($$0 + 1, $$1 + "\u001e" + $$6.d, $$2);
-               } catch (Exception var9) {
-                  $$2.append("[[ EXCEPTION ").append(var9).append(" ]]");
-               }
-            }
-         }
-      }
-   }
-
-   private void a(int $$0, String $$1, bdl.a $$2, int $$3, StringBuilder $$4) {
-      a($$4, $$0)
-         .append($$1)
-         .append(" total:")
-         .append($$2.a)
-         .append('/')
-         .append($$2.b)
-         .append(" average: ")
-         .append($$2.a / (long)$$3)
-         .append('/')
-         .append($$2.b / (long)$$3)
-         .append('\n');
-      $$2.c.entrySet().stream().sorted(e).forEach($$3x -> this.a($$0 + 1, (String)$$3x.getKey(), (bdl.a)$$3x.getValue(), $$3, $$4));
-   }
-
-   private void a(Map<String, bdl.a> $$0, StringBuilder $$1, int $$2) {
-      $$0.forEach(($$2x, $$3) -> {
-         $$1.append("-- Counter: ").append($$2x).append(" --\n");
-         this.a(0, "root", $$3.c.get("root"), $$2, $$1);
-         $$1.append("\n\n");
-      });
-   }
-
-   private static String i() {
-      String[] $$0 = new String[]{
-         "I'd Rather Be Surfing",
-         "Shiny numbers!",
-         "Am I not running fast enough? :(",
-         "I'm working as hard as I can!",
-         "Will I ever be good enough for you? :(",
-         "Speedy. Zoooooom!",
-         "Hello world",
-         "40% better than a crash report.",
-         "Now with extra numbers",
-         "Now with less numbers",
-         "Now with the same numbers",
-         "You should add flames to things, it makes them go faster!",
-         "Do you feel the need for... optimization?",
-         "*cracks redstone whip*",
-         "Maybe if you treated it better then it'll have more motivation to work faster! Poor server."
-      };
-
-      try {
-         return $$0[(int)(ac.c() % (long)$$0.length)];
-      } catch (Throwable var2) {
-         return "Witty comment unavailable :(";
-      }
+   public void setAttribute(Attribute $$0) {
    }
 
    @Override
-   public int f() {
-      return this.k;
+   public AttributeList getAttributes(String[] $$0) {
+      List<Attribute> $$1 = Arrays.stream($$0)
+         .map(this.d::get)
+         .filter(Objects::nonNull)
+         .map($$0x -> new Attribute($$0x.a, $$0x.b.get()))
+         .collect(Collectors.toList());
+      return new AttributeList($$1);
    }
 
-   static class a {
-      long a;
-      long b;
-      final Map<String, bdl.a> c = Maps.newHashMap();
+   @Override
+   public AttributeList setAttributes(AttributeList $$0) {
+      return new AttributeList();
+   }
 
-      public void a(Iterator<String> $$0, long $$1) {
-         this.b += $$1;
-         if (!$$0.hasNext()) {
-            this.a += $$1;
-         } else {
-            this.c.computeIfAbsent($$0.next(), $$0x -> new bdl.a()).a($$0, $$1);
-         }
+   @Nullable
+   @Override
+   public Object invoke(String $$0, Object[] $$1, String[] $$2) {
+      return null;
+   }
+
+   @Override
+   public MBeanInfo getMBeanInfo() {
+      return this.c;
+   }
+
+   static final class a {
+      final String a;
+      final Supplier<Object> b;
+      private final String c;
+      private final Class<?> d;
+
+      a(String $$0, Supplier<Object> $$1, String $$2, Class<?> $$3) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+      }
+
+      private MBeanAttributeInfo a() {
+         return new MBeanAttributeInfo(this.a, this.d.getSimpleName(), this.c, true, false, false);
       }
    }
 }

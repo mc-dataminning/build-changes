@@ -1,22 +1,33 @@
-public class dcc extends cwi {
-   protected static final eig f = csv.a(4.0, 9.0, 4.0, 12.0, 16.0, 12.0);
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   public dcc(dfi.d $$0) {
-      super($$0, ha.a, f, false, 0.1);
+public class dcc extends ctc implements dcb {
+   public static final MapCodec<dcc> d = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dcb.a.e.fieldOf("weathering_state").forGetter(cud::c), t()).apply($$0, dcc::new)
+   );
+   private final dcb.a e;
+
+   @Override
+   public MapCodec<dcc> a() {
+      return d;
+   }
+
+   public dcc(dcb.a $$0, dfc.d $$1) {
+      super($$1);
+      this.e = $$0;
    }
 
    @Override
-   protected int a(asc $$0) {
-      return cxz.a($$0);
+   public void b(dfd $$0, akt $$1, gw $$2, ash $$3) {
+      this.a_($$0, $$1, $$2, $$3);
    }
 
    @Override
-   protected csv a() {
-      return csw.oA;
+   public boolean e_(dfd $$0) {
+      return dcb.c($$0.b()).isPresent();
    }
 
-   @Override
-   protected boolean g(dfj $$0) {
-      return cxz.a($$0);
+   public dcb.a g() {
+      return this.e;
    }
 }

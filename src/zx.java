@@ -1,47 +1,40 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-public record zx(int b, List<aeh.b<?>> c) implements vd<ww> {
-   public static final int a = 255;
+public class zx implements ve<wx> {
+   private final eic a;
+   private final String b;
+
+   public zx(eic $$0, @Nullable eid $$1) {
+      this.a = $$0;
+      if ($$1 == null) {
+         this.b = "";
+      } else {
+         this.b = $$1.b();
+      }
+   }
 
    public zx(so $$0) {
-      this($$0.m(), b($$0));
-   }
-
-   private static void a(List<aeh.b<?>> $$0, so $$1) {
-      for (aeh.b<?> $$2 : $$0) {
-         $$2.a($$1);
-      }
-
-      $$1.k(255);
-   }
-
-   private static List<aeh.b<?>> b(so $$0) {
-      List<aeh.b<?>> $$1 = new ArrayList<>();
-
-      int $$2;
-      while (($$2 = $$0.readUnsignedByte()) != 255) {
-         $$1.add(aeh.b.a($$0, $$2));
-      }
-
-      return $$1;
+      this.a = $$0.a(eic.u);
+      this.b = $$0.s();
    }
 
    @Override
    public void a(so $$0) {
-      $$0.c(this.b);
-      a(this.c, $$0);
+      $$0.a(eic::a, this.a);
+      $$0.a(this.b);
    }
 
-   public void a(ww $$0) {
+   public void a(wx $$0) {
       $$0.a(this);
    }
 
-   public int a() {
-      return this.b;
+   public eic a() {
+      return this.a;
    }
 
-   public List<aeh.b<?>> d() {
-      return this.c;
+   @Nullable
+   public String d() {
+      return Objects.equals(this.b, "") ? null : this.b;
    }
 }

@@ -1,80 +1,96 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Map;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.function.IntFunction;
 
-public class dwz {
-   public static final int a = 90;
-   static final aew b = new aew("igloo/top");
-   private static final aew c = new aew("igloo/middle");
-   private static final aew d = new aew("igloo/bottom");
-   static final Map<aew, gw> e = ImmutableMap.of(b, new gw(3, 5, 5), c, new gw(1, 3, 1), d, new gw(3, 6, 7));
-   static final Map<aew, gw> f = ImmutableMap.of(b, gw.b, c, new gw(2, -3, 4), d, new gw(0, -3, -2));
+public class dwz extends dvc {
+   public static final Codec<dwz> d = RecordCodecBuilder.create(
+      $$0 -> $$0.group(a($$0), dwz.a.c.fieldOf("mineshaft_type").forGetter($$0x -> $$0x.e)).apply($$0, dwz::new)
+   );
+   private final dwz.a e;
 
-   public static void a(dzc $$0, gw $$1, czh $$2, dvn $$3, asc $$4) {
-      if ($$4.j() < 0.5) {
-         int $$5 = $$4.a(8) + 4;
-         $$3.a(new dwz.a($$0, d, $$1, $$2, $$5 * 3));
-
-         for (int $$6 = 0; $$6 < $$5 - 1; $$6++) {
-            $$3.a(new dwz.a($$0, c, $$1, $$2, $$6 * 3));
-         }
-      }
-
-      $$3.a(new dwz.a($$0, b, $$1, $$2, 0));
+   public dwz(dvc.c $$0, dwz.a $$1) {
+      super($$0);
+      this.e = $$1;
    }
 
-   public static class a extends dvs {
-      public a(dzc $$0, aew $$1, gw $$2, czh $$3, int $$4) {
-         super(dvz.I, 0, $$0, $$1, $$1.toString(), a($$3, $$1), a($$1, $$2, $$4));
+   @Override
+   public Optional<dvc.b> a(dvc.a $$0) {
+      $$0.f().j();
+      cpi $$1 = $$0.h();
+      gw $$2 = new gw($$1.b(), 50, $$1.e());
+      dvu $$3 = new dvu();
+      int $$4 = this.a($$3, $$0);
+      return Optional.of(new dvc.b($$2.b(0, $$4, 0), Either.right($$3)));
+   }
+
+   private int a(dvu $$0, dvc.a $$1) {
+      cpi $$2 = $$1.h();
+      dll $$3 = $$1.f();
+      dha $$4 = $$1.b();
+      dwy.d $$5 = new dwy.d(0, $$3, $$2.a(2), $$2.b(2), this.e);
+      $$0.a($$5);
+      $$5.a($$5, $$0, $$3);
+      int $$6 = $$4.e();
+      if (this.e == dwz.a.b) {
+         gw $$7 = $$0.d().f();
+         int $$8 = $$4.a($$7.u(), $$7.w(), dkm.a.a, $$1.i(), $$1.d());
+         int $$9 = $$8 <= $$6 ? $$6 : asb.b($$3, $$6, $$8);
+         int $$10 = $$9 - $$7.v();
+         $$0.a($$10);
+         return $$10;
+      } else {
+         return $$0.a($$6, $$4.f(), $$3, 10);
+      }
+   }
+
+   @Override
+   public dvl<?> e() {
+      return dvl.h;
+   }
+
+   public static enum a implements asu {
+      a("normal", cte.U, cte.n, cte.dU),
+      b("mesa", cte.aa, cte.t, cte.ki);
+
+      public static final Codec<dwz.a> c = asu.a(dwz.a::values);
+      private static final IntFunction<dwz.a> d = aqu.a(Enum::ordinal, values(), aqu.a.a);
+      private final String e;
+      private final dfd f;
+      private final dfd g;
+      private final dfd h;
+
+      private a(String $$0, ctc $$1, ctc $$2, ctc $$3) {
+         this.e = $$0;
+         this.f = $$1.o();
+         this.g = $$2.o();
+         this.h = $$3.o();
       }
 
-      public a(dzc $$0, qw $$1) {
-         super(dvz.I, $$1, $$0, $$1x -> a(czh.valueOf($$1.l("Rot")), $$1x));
+      public String a() {
+         return this.e;
       }
 
-      private static dyx a(czh $$0, aew $$1) {
-         return new dyx().a($$0).a(cxq.a).a(dwz.e.get($$1)).a(dyd.b);
+      public static dwz.a a(int $$0) {
+         return d.apply($$0);
       }
 
-      private static gw a(aew $$0, gw $$1, int $$2) {
-         return $$1.a(dwz.f.get($$0)).c($$2);
+      public dfd b() {
+         return this.f;
+      }
+
+      public dfd d() {
+         return this.g;
+      }
+
+      public dfd e() {
+         return this.h;
       }
 
       @Override
-      protected void a(dvy $$0, qw $$1) {
-         super.a($$0, $$1);
-         $$1.a("Rot", this.c.d().name());
-      }
-
-      @Override
-      protected void a(String $$0, gw $$1, cqk $$2, asc $$3, dva $$4) {
-         if ("chest".equals($$0)) {
-            $$2.a($$1, csw.a.n(), 3);
-            dcv $$5 = $$2.c_($$1.d());
-            if ($$5 instanceof ddc) {
-               ((ddc)$$5).a(eco.C, $$3.g());
-            }
-         }
-      }
-
-      @Override
-      public void a(cqp $$0, cqn $$1, dhg $$2, asc $$3, dva $$4, cpc $$5, gw $$6) {
-         aew $$7 = new aew(this.a);
-         dyx $$8 = a(this.c.d(), $$7);
-         gw $$9 = dwz.f.get($$7);
-         gw $$10 = this.d.a((hy)dzb.a($$8, new gw(3 - $$9.u(), 0, -$$9.w())));
-         int $$11 = $$0.a(dks.a.a, $$10.u(), $$10.w());
-         gw $$12 = this.d;
-         this.d = this.d.b(0, $$11 - 90 - 1, 0);
-         super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-         if ($$7.equals(dwz.b)) {
-            gw $$13 = this.d.a((hy)dzb.a($$8, new gw(3, 0, 5)));
-            dfj $$14 = $$0.a_($$13.d());
-            if (!$$14.i() && !$$14.a(csw.cO)) {
-               $$0.a($$13, csw.dP.n(), 3);
-            }
-         }
-
-         this.d = $$12;
+      public String c() {
+         return this.e;
       }
    }
 }

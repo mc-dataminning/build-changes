@@ -1,5 +1,5 @@
 public class oi {
-   public static void a(nr<dwr> $$0) {
+   public static void a(nr<dwl> $$0) {
       nx.a($$0);
       ob.a($$0);
       oa.a($$0);

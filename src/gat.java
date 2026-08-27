@@ -1,12 +1,8 @@
-import com.google.gson.JsonObject;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public class gat implements amt<gas> {
-   public gas b(JsonObject $$0) {
-      return new gas(gas.a.a(arn.a($$0, "hat", "none")));
-   }
-
-   @Override
-   public String a() {
-      return "villager";
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface gat {
 }

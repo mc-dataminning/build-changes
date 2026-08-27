@@ -8,7 +8,7 @@ import java.util.Collection;
 
 public class ea implements ArgumentType<tl> {
    private static final Collection<String> b = Arrays.asList("\"hello world\"", "\"\"", "\"{\"text\":\"hello world\"}", "[\"\"]");
-   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> tl.a("argument.component.invalid", $$0));
+   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> tl.b("argument.component.invalid", $$0));
 
    private ea() {
    }

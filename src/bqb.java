@@ -1,57 +1,28 @@
 import java.util.EnumSet;
 
-public abstract class bqb {
-   private final EnumSet<bqb.a> a = EnumSet.noneOf(bqb.a.class);
+public class bqb extends bqh {
+   private final bjo a;
 
-   public abstract boolean a();
-
-   public boolean b() {
-      return this.a();
-   }
-
-   public boolean P_() {
-      return true;
-   }
-
-   public void c() {
-   }
-
-   public void d() {
-   }
-
-   public boolean Q_() {
-      return false;
-   }
-
-   public void e() {
-   }
-
-   public void a(EnumSet<bqb.a> $$0) {
-      this.a.clear();
-      this.a.addAll($$0);
+   public bqb(bjo $$0) {
+      this.a = $$0;
+      this.a(EnumSet.of(bqh.a.c));
+      $$0.L().a(true);
    }
 
    @Override
-   public String toString() {
-      return this.getClass().getSimpleName();
+   public boolean a() {
+      return this.a.aX() && this.a.b(aqa.a) > this.a.de() || this.a.bl();
    }
 
-   public EnumSet<bqb.a> j() {
-      return this.a;
+   @Override
+   public boolean Q_() {
+      return true;
    }
 
-   protected int a(int $$0) {
-      return this.Q_() ? $$0 : b($$0);
-   }
-
-   protected static int b(int $$0) {
-      return arw.e($$0, 2);
-   }
-
-   public static enum a {
-      a,
-      b,
-      c,
-      d;
+   @Override
+   public void e() {
+      if (this.a.ef().i() < 0.8F) {
+         this.a.K().a();
+      }
    }
 }

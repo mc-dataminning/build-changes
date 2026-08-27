@@ -1,192 +1,239 @@
-import com.mojang.datafixers.DSL;
+import com.google.common.base.Splitter;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.google.gson.JsonElement;
 import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.DSL.TypeReference;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
 import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.JsonOps;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
 import java.util.Optional;
-import java.util.Set;
-import java.util.function.Function;
-import java.util.stream.Stream;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
 public class axx extends DataFix {
-   private static final Int2ObjectMap<String> a = ac.a(new Int2ObjectOpenHashMap(), $$0 -> {
-      $$0.put(1, "minecraft:speed");
-      $$0.put(2, "minecraft:slowness");
-      $$0.put(3, "minecraft:haste");
-      $$0.put(4, "minecraft:mining_fatigue");
-      $$0.put(5, "minecraft:strength");
-      $$0.put(6, "minecraft:instant_health");
-      $$0.put(7, "minecraft:instant_damage");
-      $$0.put(8, "minecraft:jump_boost");
-      $$0.put(9, "minecraft:nausea");
-      $$0.put(10, "minecraft:regeneration");
-      $$0.put(11, "minecraft:resistance");
-      $$0.put(12, "minecraft:fire_resistance");
-      $$0.put(13, "minecraft:water_breathing");
-      $$0.put(14, "minecraft:invisibility");
-      $$0.put(15, "minecraft:blindness");
-      $$0.put(16, "minecraft:night_vision");
-      $$0.put(17, "minecraft:hunger");
-      $$0.put(18, "minecraft:weakness");
-      $$0.put(19, "minecraft:poison");
-      $$0.put(20, "minecraft:wither");
-      $$0.put(21, "minecraft:health_boost");
-      $$0.put(22, "minecraft:absorption");
-      $$0.put(23, "minecraft:saturation");
-      $$0.put(24, "minecraft:glowing");
-      $$0.put(25, "minecraft:levitation");
-      $$0.put(26, "minecraft:luck");
-      $$0.put(27, "minecraft:unluck");
-      $$0.put(28, "minecraft:slow_falling");
-      $$0.put(29, "minecraft:conduit_power");
-      $$0.put(30, "minecraft:dolphins_grace");
-      $$0.put(31, "minecraft:bad_omen");
-      $$0.put(32, "minecraft:hero_of_the_village");
-      $$0.put(33, "minecraft:darkness");
+   static final Map<String, String> a = ac.a(Maps.newHashMap(), $$0 -> {
+      $$0.put("0", "minecraft:ocean");
+      $$0.put("1", "minecraft:plains");
+      $$0.put("2", "minecraft:desert");
+      $$0.put("3", "minecraft:mountains");
+      $$0.put("4", "minecraft:forest");
+      $$0.put("5", "minecraft:taiga");
+      $$0.put("6", "minecraft:swamp");
+      $$0.put("7", "minecraft:river");
+      $$0.put("8", "minecraft:nether");
+      $$0.put("9", "minecraft:the_end");
+      $$0.put("10", "minecraft:frozen_ocean");
+      $$0.put("11", "minecraft:frozen_river");
+      $$0.put("12", "minecraft:snowy_tundra");
+      $$0.put("13", "minecraft:snowy_mountains");
+      $$0.put("14", "minecraft:mushroom_fields");
+      $$0.put("15", "minecraft:mushroom_field_shore");
+      $$0.put("16", "minecraft:beach");
+      $$0.put("17", "minecraft:desert_hills");
+      $$0.put("18", "minecraft:wooded_hills");
+      $$0.put("19", "minecraft:taiga_hills");
+      $$0.put("20", "minecraft:mountain_edge");
+      $$0.put("21", "minecraft:jungle");
+      $$0.put("22", "minecraft:jungle_hills");
+      $$0.put("23", "minecraft:jungle_edge");
+      $$0.put("24", "minecraft:deep_ocean");
+      $$0.put("25", "minecraft:stone_shore");
+      $$0.put("26", "minecraft:snowy_beach");
+      $$0.put("27", "minecraft:birch_forest");
+      $$0.put("28", "minecraft:birch_forest_hills");
+      $$0.put("29", "minecraft:dark_forest");
+      $$0.put("30", "minecraft:snowy_taiga");
+      $$0.put("31", "minecraft:snowy_taiga_hills");
+      $$0.put("32", "minecraft:giant_tree_taiga");
+      $$0.put("33", "minecraft:giant_tree_taiga_hills");
+      $$0.put("34", "minecraft:wooded_mountains");
+      $$0.put("35", "minecraft:savanna");
+      $$0.put("36", "minecraft:savanna_plateau");
+      $$0.put("37", "minecraft:badlands");
+      $$0.put("38", "minecraft:wooded_badlands_plateau");
+      $$0.put("39", "minecraft:badlands_plateau");
+      $$0.put("40", "minecraft:small_end_islands");
+      $$0.put("41", "minecraft:end_midlands");
+      $$0.put("42", "minecraft:end_highlands");
+      $$0.put("43", "minecraft:end_barrens");
+      $$0.put("44", "minecraft:warm_ocean");
+      $$0.put("45", "minecraft:lukewarm_ocean");
+      $$0.put("46", "minecraft:cold_ocean");
+      $$0.put("47", "minecraft:deep_warm_ocean");
+      $$0.put("48", "minecraft:deep_lukewarm_ocean");
+      $$0.put("49", "minecraft:deep_cold_ocean");
+      $$0.put("50", "minecraft:deep_frozen_ocean");
+      $$0.put("127", "minecraft:the_void");
+      $$0.put("129", "minecraft:sunflower_plains");
+      $$0.put("130", "minecraft:desert_lakes");
+      $$0.put("131", "minecraft:gravelly_mountains");
+      $$0.put("132", "minecraft:flower_forest");
+      $$0.put("133", "minecraft:taiga_mountains");
+      $$0.put("134", "minecraft:swamp_hills");
+      $$0.put("140", "minecraft:ice_spikes");
+      $$0.put("149", "minecraft:modified_jungle");
+      $$0.put("151", "minecraft:modified_jungle_edge");
+      $$0.put("155", "minecraft:tall_birch_forest");
+      $$0.put("156", "minecraft:tall_birch_hills");
+      $$0.put("157", "minecraft:dark_forest_hills");
+      $$0.put("158", "minecraft:snowy_taiga_mountains");
+      $$0.put("160", "minecraft:giant_spruce_taiga");
+      $$0.put("161", "minecraft:giant_spruce_taiga_hills");
+      $$0.put("162", "minecraft:modified_gravelly_mountains");
+      $$0.put("163", "minecraft:shattered_savanna");
+      $$0.put("164", "minecraft:shattered_savanna_plateau");
+      $$0.put("165", "minecraft:eroded_badlands");
+      $$0.put("166", "minecraft:modified_wooded_badlands_plateau");
+      $$0.put("167", "minecraft:modified_badlands_plateau");
    });
-   private static final Set<String> b = Set.of("minecraft:potion", "minecraft:splash_potion", "minecraft:lingering_potion", "minecraft:tipped_arrow");
+   public static final String b = "generatorOptions";
 
-   public axx(Schema $$0) {
-      super($$0, false);
-   }
-
-   private static <T> Optional<Dynamic<T>> a(Dynamic<T> $$0, String $$1) {
-      return $$0.get($$1).asNumber().result().map($$0x -> (String)a.get($$0x.intValue())).map($$0::createString);
-   }
-
-   private static <T> Dynamic<T> a(Dynamic<T> $$0, String $$1, Optional<Dynamic<T>> $$2) {
-      return $$2.isEmpty() ? $$0 : $$0.set($$1, $$2.get());
-   }
-
-   private static <T> Dynamic<T> a(Dynamic<T> $$0, String $$1, String $$2, Optional<Dynamic<T>> $$3) {
-      return a($$0.remove($$1), $$2, $$3);
-   }
-
-   private static <T> Dynamic<T> a(Dynamic<T> $$0, String $$1, String $$2) {
-      return a($$0.remove($$1), $$2, $$0.get($$1).result());
-   }
-
-   private static <T> Dynamic<T> a(Dynamic<T> $$0, String $$1, Dynamic<T> $$2, String $$3) {
-      Optional<Dynamic<T>> $$4 = a($$0, $$1);
-      return a($$2, $$1, $$3, $$4);
-   }
-
-   private static <T> Dynamic<T> b(Dynamic<T> $$0, String $$1, String $$2) {
-      return a($$0, $$1, $$0, $$2);
-   }
-
-   private static <T> Dynamic<T> a(Dynamic<T> $$0) {
-      $$0 = b($$0, "Id", "id");
-      $$0 = a($$0, "Ambient", "ambient");
-      $$0 = a($$0, "Amplifier", "amplifier");
-      $$0 = a($$0, "Duration", "duration");
-      $$0 = a($$0, "ShowParticles", "show_particles");
-      $$0 = a($$0, "ShowIcon", "show_icon");
-      $$0 = a($$0, "FactorCalculationData", "factor_calculation_data");
-      Optional<Dynamic<T>> $$1 = $$0.get("HiddenEffect").result().map(axx::a);
-      return a($$0, "HiddenEffect", "hidden_effect", $$1);
-   }
-
-   private static <T> Dynamic<T> c(Dynamic<T> $$0, String $$1, String $$2) {
-      Optional<Dynamic<T>> $$3 = $$0.get($$1).asStreamOpt().result().map($$1x -> $$0.createList($$1x.map(axx::a)));
-      return a($$0, $$1, $$2, $$3);
-   }
-
-   private static <T> Dynamic<T> a(Dynamic<T> $$0, Dynamic<T> $$1) {
-      $$1 = a($$0, "EffectId", $$1, "id");
-      Optional<Dynamic<T>> $$2 = $$0.get("EffectDuration").result();
-      return a($$1, "EffectDuration", "duration", $$2);
-   }
-
-   private static <T> Dynamic<T> b(Dynamic<T> $$0) {
-      return a($$0, $$0);
-   }
-
-   private Typed<?> a(Typed<?> $$0, TypeReference $$1, String $$2, Function<Dynamic<?>, Dynamic<?>> $$3) {
-      Type<?> $$4 = this.getInputSchema().getChoiceType($$1, $$2);
-      Type<?> $$5 = this.getOutputSchema().getChoiceType($$1, $$2);
-      return $$0.updateTyped(DSL.namedChoice($$2, $$4), $$5, $$1x -> $$1x.update(DSL.remainderFinder(), $$3));
-   }
-
-   private TypeRewriteRule a() {
-      Type<?> $$0 = this.getInputSchema().getType(ayx.s);
-      return this.fixTypeEverywhereTyped("BlockEntityMobEffectIdFix", $$0, $$0x -> this.a($$0x, ayx.s, "minecraft:beacon", $$0xx -> {
-            $$0xx = b($$0xx, "Primary", "primary_effect");
-            return b($$0xx, "Secondary", "secondary_effect");
-         }));
-   }
-
-   private static <T> Dynamic<T> c(Dynamic<T> $$0) {
-      Dynamic<T> $$1 = $$0.emptyMap();
-      Dynamic<T> $$2 = a($$0, $$1);
-      if (!$$2.equals($$1)) {
-         $$0 = $$0.set("stew_effects", $$0.createList(Stream.of($$2)));
-      }
-
-      return $$0.remove("EffectId").remove("EffectDuration");
-   }
-
-   private static <T> Dynamic<T> d(Dynamic<T> $$0) {
-      return c($$0, "CustomPotionEffects", "custom_potion_effects");
-   }
-
-   private static <T> Dynamic<T> e(Dynamic<T> $$0) {
-      return c($$0, "Effects", "effects");
-   }
-
-   private static Dynamic<?> f(Dynamic<?> $$0) {
-      return c($$0, "ActiveEffects", "active_effects");
-   }
-
-   private TypeRewriteRule b() {
-      Type<?> $$0 = this.getInputSchema().getType(ayx.x);
-      return this.fixTypeEverywhereTyped("EntityMobEffectIdFix", $$0, $$0x -> {
-         $$0x = this.a($$0x, ayx.x, "minecraft:mooshroom", axx::c);
-         $$0x = this.a($$0x, ayx.x, "minecraft:arrow", axx::d);
-         $$0x = this.a($$0x, ayx.x, "minecraft:area_effect_cloud", axx::e);
-         return $$0x.update(DSL.remainderFinder(), axx::f);
-      });
-   }
-
-   private TypeRewriteRule c() {
-      Type<?> $$0 = this.getInputSchema().getType(ayx.b);
-      return this.fixTypeEverywhereTyped("PlayerMobEffectIdFix", $$0, $$0x -> $$0x.update(DSL.remainderFinder(), axx::f));
-   }
-
-   private static <T> Dynamic<T> g(Dynamic<T> $$0) {
-      Optional<Dynamic<T>> $$1 = $$0.get("Effects").asStreamOpt().result().map($$1x -> $$0.createList($$1x.map(axx::b)));
-      return a($$0, "Effects", "effects", $$1);
-   }
-
-   private TypeRewriteRule d() {
-      OpticFinder<Pair<String, String>> $$0 = DSL.fieldFinder("id", DSL.named(ayx.z.typeName(), baf.a()));
-      Type<?> $$1 = this.getInputSchema().getType(ayx.t);
-      OpticFinder<?> $$2 = $$1.findField("tag");
-      return this.fixTypeEverywhereTyped("ItemStackMobEffectIdFix", $$1, $$2x -> {
-         Optional<Pair<String, String>> $$3 = $$2x.getOptional($$0);
-         if ($$3.isPresent()) {
-            String $$4 = (String)$$3.get().getSecond();
-            if ($$4.equals("minecraft:suspicious_stew")) {
-               return $$2x.updateTyped($$2, $$0xx -> $$0xx.update(DSL.remainderFinder(), axx::g));
-            }
-
-            if (b.contains($$4)) {
-               return $$2x.updateTyped($$2, $$0xx -> $$0xx.update(DSL.remainderFinder(), $$0xxx -> c($$0xxx, "CustomPotionEffects", "custom_potion_effects")));
-            }
-         }
-
-         return $$2x;
-      });
+   public axx(Schema $$0, boolean $$1) {
+      super($$0, $$1);
    }
 
    protected TypeRewriteRule makeRule() {
-      return TypeRewriteRule.seq(this.a(), new TypeRewriteRule[]{this.b(), this.c(), this.d()});
+      Type<?> $$0 = this.getOutputSchema().getType(azd.a);
+      return this.fixTypeEverywhereTyped("LevelDataGeneratorOptionsFix", this.getInputSchema().getType(azd.a), $$0, $$1 -> (Typed)$$1.write().flatMap($$1x -> {
+            Optional<String> $$2 = $$1x.get("generatorOptions").asString().result();
+            Dynamic<?> $$4;
+            if ("flat".equalsIgnoreCase($$1x.get("generatorName").asString(""))) {
+               String $$3 = $$2.orElse("");
+               $$4 = $$1x.set("generatorOptions", a($$3, $$1x.getOps()));
+            } else if ("buffet".equalsIgnoreCase($$1x.get("generatorName").asString("")) && $$2.isPresent()) {
+               Dynamic<JsonElement> $$5 = new Dynamic(JsonOps.INSTANCE, arr.a($$2.get(), true));
+               $$4 = $$1x.set("generatorOptions", $$5.convert($$1x.getOps()));
+            } else {
+               $$4 = $$1x;
+            }
+
+            return $$0.readTyped($$4);
+         }).map(Pair::getFirst).result().orElseThrow(() -> new IllegalStateException("Could not read new level type.")));
+   }
+
+   private static <T> Dynamic<T> a(String $$0, DynamicOps<T> $$1) {
+      Iterator<String> $$2 = Splitter.on(';').split($$0).iterator();
+      String $$3 = "minecraft:plains";
+      Map<String, Map<String, String>> $$4 = Maps.newHashMap();
+      List<Pair<Integer, String>> $$5;
+      if (!$$0.isEmpty() && $$2.hasNext()) {
+         $$5 = b($$2.next());
+         if (!$$5.isEmpty()) {
+            if ($$2.hasNext()) {
+               $$3 = a.getOrDefault($$2.next(), "minecraft:plains");
+            }
+
+            if ($$2.hasNext()) {
+               String[] $$6 = $$2.next().toLowerCase(Locale.ROOT).split(",");
+
+               for (String $$7 : $$6) {
+                  String[] $$8 = $$7.split("\\(", 2);
+                  if (!$$8[0].isEmpty()) {
+                     $$4.put($$8[0], Maps.newHashMap());
+                     if ($$8.length > 1 && $$8[1].endsWith(")") && $$8[1].length() > 1) {
+                        String[] $$9 = $$8[1].substring(0, $$8[1].length() - 1).split(" ");
+
+                        for (String $$10 : $$9) {
+                           String[] $$11 = $$10.split("=", 2);
+                           if ($$11.length == 2) {
+                              $$4.get($$8[0]).put($$11[0], $$11[1]);
+                           }
+                        }
+                     }
+                  }
+               }
+            } else {
+               $$4.put("village", Maps.newHashMap());
+            }
+         }
+      } else {
+         $$5 = Lists.newArrayList();
+         $$5.add(Pair.of(1, "minecraft:bedrock"));
+         $$5.add(Pair.of(2, "minecraft:dirt"));
+         $$5.add(Pair.of(1, "minecraft:grass_block"));
+         $$4.put("village", Maps.newHashMap());
+      }
+
+      T $$13 = (T)$$1.createList(
+         $$5.stream()
+            .map(
+               $$1x -> $$1.createMap(
+                     ImmutableMap.of(
+                        $$1.createString("height"),
+                        $$1.createInt((Integer)$$1x.getFirst()),
+                        $$1.createString("block"),
+                        $$1.createString((String)$$1x.getSecond())
+                     )
+                  )
+            )
+      );
+      T $$14 = (T)$$1.createMap(
+         $$4.entrySet()
+            .stream()
+            .map(
+               $$1x -> Pair.of(
+                     $$1.createString(((String)$$1x.getKey()).toLowerCase(Locale.ROOT)),
+                     $$1.createMap(
+                        ((Map)$$1x.getValue())
+                           .entrySet()
+                           .stream()
+                           .map($$1xx -> Pair.of($$1.createString((String)$$1xx.getKey()), $$1.createString((String)$$1xx.getValue())))
+                           .collect(Collectors.toMap(Pair::getFirst, Pair::getSecond))
+                     )
+                  )
+            )
+            .collect(Collectors.toMap(Pair::getFirst, Pair::getSecond))
+      );
+      return new Dynamic(
+         $$1,
+         $$1.createMap(
+            ImmutableMap.of($$1.createString("layers"), $$13, $$1.createString("biome"), $$1.createString($$3), $$1.createString("structures"), $$14)
+         )
+      );
+   }
+
+   @Nullable
+   private static Pair<Integer, String> a(String $$0) {
+      String[] $$1 = $$0.split("\\*", 2);
+      int $$2;
+      if ($$1.length == 2) {
+         try {
+            $$2 = Integer.parseInt($$1[0]);
+         } catch (NumberFormatException var4) {
+            return null;
+         }
+      } else {
+         $$2 = 1;
+      }
+
+      String $$5 = $$1[$$1.length - 1];
+      return Pair.of($$2, $$5);
+   }
+
+   private static List<Pair<Integer, String>> b(String $$0) {
+      List<Pair<Integer, String>> $$1 = Lists.newArrayList();
+      String[] $$2 = $$0.split(",");
+
+      for (String $$3 : $$2) {
+         Pair<Integer, String> $$4 = a($$3);
+         if ($$4 == null) {
+            return Collections.emptyList();
+         }
+
+         $$1.add($$4);
+      }
+
+      return $$1;
    }
 }

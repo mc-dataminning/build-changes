@@ -1,21 +1,22 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.stream.Stream;
 
-public class dqg extends dps {
-   public static final Codec<dqg> c = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dsb.a.fieldOf("state_provider").forGetter($$0x -> $$0x.b),
-               arf.j.fieldOf("spread_width").forGetter($$0x -> $$0x.d),
-               arf.j.fieldOf("spread_height").forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, dqg::new)
+public class dqg implements dpu {
+   public static final Codec<dqg> a = RecordCodecBuilder.create(
+      $$0 -> $$0.apply2(dqg::new, dpk.a.listOf().fieldOf("features").forGetter($$0x -> $$0x.b), dug.b.fieldOf("default").forGetter($$0x -> $$0x.c))
    );
-   public final int d;
-   public final int e;
+   public final List<dpk> b;
+   public final he<dug> c;
 
-   public dqg(dsb $$0, int $$1, int $$2) {
-      super($$0);
-      this.d = $$1;
-      this.e = $$2;
+   public dqg(List<dpk> $$0, he<dug> $$1) {
+      this.b = $$0;
+      this.c = $$1;
+   }
+
+   @Override
+   public Stream<dnd<?, ?>> e() {
+      return Stream.concat(this.b.stream().flatMap($$0 -> $$0.b.a().a()), this.c.a().a());
    }
 }

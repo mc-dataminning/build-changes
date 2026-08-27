@@ -1,101 +1,77 @@
-import java.util.Map;
-import java.util.Map.Entry;
+import com.google.common.collect.ImmutableMap;
+import java.util.Optional;
 
-public abstract class bkx<E extends bjg> implements bky<E> {
-   public static final int a = 60;
-   protected final Map<bsh<?>, bsi> b;
-   private bkx.a c = bkx.a.a;
-   private long d;
-   private final int e;
-   private final int f;
+public class bkx extends bld<bux> {
+   private static final int c = 3;
+   private static final int d = 60;
+   private static final int e = 110;
+   private final bja<? extends bux> f;
+   private final float g;
+   private long h;
 
-   public bkx(Map<bsh<?>, bsi> $$0) {
-      this($$0, 60);
+   public bkx(bja<? extends bux> $$0, float $$1) {
+      super(ImmutableMap.of(bsn.h, bso.a, bsn.r, bso.b, bsn.m, bso.c, bsn.n, bso.c, bsn.Y, bso.b), 110);
+      this.f = $$0;
+      this.g = $$1;
    }
 
-   public bkx(Map<bsh<?>, bsi> $$0, int $$1) {
-      this($$0, $$1, $$1);
+   protected boolean a(akt $$0, bux $$1) {
+      return $$1.gi() && this.c($$1).isPresent();
    }
 
-   public bkx(Map<bsh<?>, bsi> $$0, int $$1, int $$2) {
-      this.e = $$1;
-      this.f = $$2;
-      this.b = $$0;
+   protected void a(akt $$0, bux $$1, long $$2) {
+      bux $$3 = this.c($$1).get();
+      $$1.dN().a(bsn.r, $$3);
+      $$3.dN().a(bsn.r, $$1);
+      blf.a($$1, $$3, this.g);
+      int $$4 = 60 + $$1.ef().a(50);
+      this.h = $$2 + (long)$$4;
    }
 
-   @Override
-   public bkx.a a() {
-      return this.c;
-   }
-
-   @Override
-   public final boolean e(akq $$0, E $$1, long $$2) {
-      if (this.a($$1) && this.a($$0, $$1)) {
-         this.c = bkx.a.b;
-         int $$3 = this.e + $$0.D_().a(this.f + 1 - this.e);
-         this.d = $$2 + (long)$$3;
-         this.d($$0, $$1, $$2);
-         return true;
-      } else {
+   protected boolean b(akt $$0, bux $$1, long $$2) {
+      if (!this.b($$1)) {
          return false;
-      }
-   }
-
-   protected void d(akq $$0, E $$1, long $$2) {
-   }
-
-   @Override
-   public final void f(akq $$0, E $$1, long $$2) {
-      if (!this.a($$2) && this.a($$0, $$1, $$2)) {
-         this.c($$0, $$1, $$2);
       } else {
-         this.g($$0, $$1, $$2);
+         bux $$3 = this.a($$1);
+         return $$3.bv() && $$1.a($$3) && blf.a($$1.dN(), $$3) && $$2 <= this.h && !$$1.gb() && !$$3.gb();
       }
    }
 
-   protected void c(akq $$0, E $$1, long $$2) {
-   }
-
-   @Override
-   public final void g(akq $$0, E $$1, long $$2) {
-      this.c = bkx.a.a;
-      this.b($$0, $$1, $$2);
-   }
-
-   protected void b(akq $$0, E $$1, long $$2) {
-   }
-
-   protected boolean a(akq $$0, E $$1, long $$2) {
-      return false;
-   }
-
-   protected boolean a(long $$0) {
-      return $$0 > this.d;
-   }
-
-   protected boolean a(akq $$0, E $$1) {
-      return true;
-   }
-
-   @Override
-   public String b() {
-      return this.getClass().getSimpleName();
-   }
-
-   protected boolean a(E $$0) {
-      for (Entry<bsh<?>, bsi> $$1 : this.b.entrySet()) {
-         bsh<?> $$2 = $$1.getKey();
-         bsi $$3 = $$1.getValue();
-         if (!$$0.dN().a($$2, $$3)) {
-            return false;
+   protected void c(akt $$0, bux $$1, long $$2) {
+      bux $$3 = this.a($$1);
+      blf.a($$1, $$3, this.g);
+      if ($$1.a($$3, 3.0)) {
+         if ($$2 >= this.h) {
+            $$1.a($$0, $$3);
+            $$1.dN().b(bsn.r);
+            $$3.dN().b(bsn.r);
          }
       }
-
-      return true;
    }
 
-   public static enum a {
-      a,
-      b;
+   protected void d(akt $$0, bux $$1, long $$2) {
+      $$1.dN().b(bsn.r);
+      $$1.dN().b(bsn.m);
+      $$1.dN().b(bsn.n);
+      this.h = 0L;
+   }
+
+   private bux a(bux $$0) {
+      return (bux)$$0.dN().c(bsn.r).get();
+   }
+
+   private boolean b(bux $$0) {
+      bkm<?> $$1 = $$0.dN();
+      return $$1.a(bsn.r) && $$1.c(bsn.r).get().ag() == this.f;
+   }
+
+   private Optional<? extends bux> c(bux $$0) {
+      return $$0.dN().c(bsn.h).get().a($$1 -> {
+         if ($$1.ag() == this.f && $$1 instanceof bux $$2 && $$0.a($$2) && !$$2.gb()) {
+            return true;
+         }
+
+         return false;
+      }).map(bux.class::cast);
    }
 }

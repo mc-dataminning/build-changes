@@ -1,28 +1,32 @@
-import java.util.List;
-import javax.annotation.Nullable;
+public class gck implements gbs {
+   public static final float a = 0.01F;
+   public static final float b = 0.001F;
+   public static final float c = 1.0E-4F;
+   private static final int d = 0;
+   private final fnc e;
+   private final gdm f;
+   private int g = 0;
 
-public class gck {
-   private final List<gcj> a;
-   private final boolean b;
-   @Nullable
-   private final String c;
-
-   public gck(List<gcj> $$0, boolean $$1, @Nullable String $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public gck(fnc $$0, gdm $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
-   public List<gcj> a() {
-      return this.a;
-   }
-
-   public boolean b() {
-      return this.b;
-   }
-
-   @Nullable
-   public String c() {
-      return this.c;
+   @Override
+   public void a() {
+      this.g--;
+      if (this.g <= 0 && this.e.bc()) {
+         float $$0 = this.e.dL().z.i();
+         if ($$0 < 1.0E-4F) {
+            this.g = 0;
+            this.f.a((gci)(new gcl.a(this.e, apg.C)));
+         } else if ($$0 < 0.001F) {
+            this.g = 0;
+            this.f.a((gci)(new gcl.a(this.e, apg.B)));
+         } else if ($$0 < 0.01F) {
+            this.g = 0;
+            this.f.a((gci)(new gcl.a(this.e, apg.A)));
+         }
+      }
    }
 }

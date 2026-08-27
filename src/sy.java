@@ -1,6 +1,6 @@
 public interface sy extends su {
    @Override
-   default ve a() {
-      return ve.a;
+   default vf a() {
+      return vf.a;
    }
 }

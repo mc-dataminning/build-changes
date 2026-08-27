@@ -16,7 +16,7 @@ import java.util.concurrent.CompletableFuture;
 public class fd implements ArgumentType<Integer> {
    private static final Collection<String> a = Arrays.asList("0d", "0s", "0t", "0");
    private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(tl.c("argument.time.invalid_unit"));
-   private static final Dynamic2CommandExceptionType c = new Dynamic2CommandExceptionType(($$0, $$1) -> tl.a("argument.time.tick_count_too_low", $$1, $$0));
+   private static final Dynamic2CommandExceptionType c = new Dynamic2CommandExceptionType(($$0, $$1) -> tl.b("argument.time.tick_count_too_low", $$1, $$0));
    private static final Object2IntMap<String> d = new Object2IntOpenHashMap();
    final int e;
 

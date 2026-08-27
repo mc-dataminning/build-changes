@@ -1,28 +1,60 @@
 import com.mojang.serialization.Codec;
 
-public class dou extends dnw<dqn> {
-   public dou(Codec<dqn> $$0) {
+public class dou extends dnq<dql> {
+   public dou(Codec<dql> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dny<dqn> $$0) {
-      dqn $$1 = $$0.f();
-      asc $$2 = $$0.d();
-      gw $$3 = $$0.e();
-      cqp $$4 = $$0.b();
-      int $$5 = 0;
-      gw.a $$6 = new gw.a();
-      int $$7 = $$1.b() + 1;
-      int $$8 = $$1.c() + 1;
+   public boolean a(dns<dql> $$0) {
+      cqv $$1 = $$0.b();
+      gw $$2 = $$0.e();
+      if (!this.a($$1, $$2)) {
+         return false;
+      } else {
+         dql $$3 = $$0.f();
+         ash $$4 = $$0.d();
+         czv $$5 = czv.b();
+         int $$6 = $$3.f() + $$3.d();
 
-      for (int $$9 = 0; $$9 < $$1.a(); $$9++) {
-         $$6.a($$3, $$2.a($$7) - $$2.a($$7), $$2.a($$8) - $$2.a($$8), $$2.a($$7) - $$2.a($$7));
-         if ($$1.d().a().a($$4, $$0.c(), $$2, $$6)) {
-            $$5++;
+         for (int $$7 = 0; $$7 < $$6; $$7++) {
+            for (int $$8 = 0; $$8 < $$3.a(); $$8++) {
+               $$5.a($$2, $$3.b());
+            }
+
+            boolean $$9 = $$7 < $$3.f();
+
+            for (int $$10 = 0; $$10 < $$3.c(); $$10++) {
+               $$5.a($$1, $$2, $$4, $$9);
+            }
+
+            $$5.j();
          }
-      }
 
-      return $$5 > 0;
+         gw $$11 = $$2.d();
+         if ($$4.i() <= $$3.h() && $$1.a_($$11).r($$1, $$11)) {
+            $$1.a($$2, cte.qH.o(), 3);
+         }
+
+         int $$12 = $$3.g().a($$4);
+
+         for (int $$13 = 0; $$13 < $$12; $$13++) {
+            gw $$14 = $$2.b($$4.a(5) - 2, 0, $$4.a(5) - 2);
+            if ($$1.a_($$14).i() && $$1.a_($$14.d()).d($$1, $$14.d(), ha.b)) {
+               $$1.a($$14, cte.qI.o().a(czu.d, Boolean.valueOf(true)), 3);
+            }
+         }
+
+         return true;
+      }
+   }
+
+   private boolean a(cqc $$0, gw $$1) {
+      dfd $$2 = $$0.a_($$1);
+      if ($$2.b() instanceof czq) {
+         return true;
+      } else {
+         return !$$2.i() && (!$$2.a(cte.G) || !$$2.u().b()) ? false : ha.a().map($$1::a).anyMatch($$1x -> $$0.a_($$1x).r($$0, $$1x));
+      }
    }
 }

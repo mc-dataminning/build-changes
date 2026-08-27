@@ -1,92 +1,147 @@
-import java.util.Locale;
+import com.mojang.datafixers.Products.P5;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import java.util.Optional;
 
-public interface dvz {
-   dvz a = a(dxe.a::new, "MSCorridor");
-   dvz b = a(dxe.b::new, "MSCrossing");
-   dvz c = a(dxe.d::new, "MSRoom");
-   dvz d = a(dxe.e::new, "MSStairs");
-   dvz e = a(dxg.a::new, "NeBCr");
-   dvz f = a(dxg.b::new, "NeBEF");
-   dvz g = a(dxg.c::new, "NeBS");
-   dvz h = a(dxg.d::new, "NeCCS");
-   dvz i = a(dxg.e::new, "NeCTB");
-   dvz j = a(dxg.f::new, "NeCE");
-   dvz k = a(dxg.g::new, "NeSCSC");
-   dvz l = a(dxg.h::new, "NeSCLT");
-   dvz m = a(dxg.i::new, "NeSC");
-   dvz n = a(dxg.j::new, "NeSCRT");
-   dvz o = a(dxg.k::new, "NeCSR");
-   dvz p = a(dxg.l::new, "NeMT");
-   dvz q = a(dxg.o::new, "NeRC");
-   dvz r = a(dxg.p::new, "NeSR");
-   dvz s = a(dxg.q::new, "NeStart");
-   dvz t = a(dxs.a::new, "SHCC");
-   dvz u = a(dxs.b::new, "SHFC");
-   dvz v = a(dxs.c::new, "SH5C");
-   dvz w = a(dxs.d::new, "SHLT");
-   dvz x = a(dxs.e::new, "SHLi");
-   dvz y = a(dxs.g::new, "SHPR");
-   dvz z = a(dxs.h::new, "SHPH");
-   dvz A = a(dxs.i::new, "SHRT");
-   dvz B = a(dxs.j::new, "SHRC");
-   dvz C = a(dxs.l::new, "SHSD");
-   dvz D = a(dxs.m::new, "SHStart");
-   dvz E = a(dxs.n::new, "SHS");
-   dvz F = a(dxs.o::new, "SHSSD");
-   dvz G = a(dxc::new, "TeJP");
-   dvz H = a(dxm.a::a, "ORP");
-   dvz I = a(dwz.a::new, "Iglu");
-   dvz J = a(dxo::new, "RUPO");
-   dvz K = a(dxu::new, "TeSH");
-   dvz L = a(dwv::new, "TeDP");
-   dvz M = a(dxk.h::new, "OMB");
-   dvz N = a(dxk.j::new, "OMCR");
-   dvz O = a(dxk.k::new, "OMDXR");
-   dvz P = a(dxk.l::new, "OMDXYR");
-   dvz Q = a(dxk.m::new, "OMDYR");
-   dvz R = a(dxk.n::new, "OMDYZR");
-   dvz S = a(dxk.o::new, "OMDZR");
-   dvz T = a(dxk.p::new, "OMEntry");
-   dvz U = a(dxk.q::new, "OMPenthouse");
-   dvz V = a(dxk.s::new, "OMSimple");
-   dvz W = a(dxk.t::new, "OMSimpleT");
-   dvz X = a(dxk.u::new, "OMWR");
-   dvz Y = a(dwx.a::new, "ECP");
-   dvz Z = a(dxw.i::new, "WMP");
-   dvz aa = a(dwt.a::new, "BTP");
-   dvz ab = a(dxq.a::new, "Shipwreck");
-   dvz ac = a(dxi.a::new, "NeFos");
-   dvz ad = a(dve::new, "jigsaw");
+public abstract class dvz {
+   public static final Codec<dvz> b = jb.S.q().dispatch(dvz::e, dwa::codec);
+   private static final int a = 10387320;
+   private final hy c;
+   private final dvz.c d;
+   private final float e;
+   private final int f;
+   private final Optional<dvz.a> g;
 
-   dvm load(dvy var1, qw var2);
-
-   private static dvz a(dvz $$0, String $$1) {
-      return hq.a(jb.T, $$1.toLowerCase(Locale.ROOT), $$0);
+   protected static <S extends dvz> P5<Mu<S>, hy, dvz.c, Float, Integer, Optional<dvz.a>> a(Instance<S> $$0) {
+      return $$0.group(
+         hy.v(16).optionalFieldOf("locate_offset", hy.g).forGetter(dvz::f),
+         dvz.c.e.optionalFieldOf("frequency_reduction_method", dvz.c.a).forGetter(dvz::g),
+         Codec.floatRange(0.0F, 1.0F).optionalFieldOf("frequency", 1.0F).forGetter(dvz::h),
+         arj.i.fieldOf("salt").forGetter(dvz::i),
+         dvz.a.a.optionalFieldOf("exclusion_zone").forGetter(dvz::j)
+      );
    }
 
-   private static dvz a(dvz.a $$0, String $$1) {
-      return a((dvz)$$0, $$1);
+   protected dvz(hy $$0, dvz.c $$1, float $$2, int $$3, Optional<dvz.a> $$4) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
    }
 
-   private static dvz a(dvz.b $$0, String $$1) {
-      return a((dvz)$$0, $$1);
+   protected hy f() {
+      return this.c;
    }
 
-   public interface a extends dvz {
-      dvm load(qw var1);
+   protected dvz.c g() {
+      return this.d;
+   }
 
-      @Override
-      default dvm load(dvy $$0, qw $$1) {
-         return this.load($$1);
+   protected float h() {
+      return this.e;
+   }
+
+   protected int i() {
+      return this.f;
+   }
+
+   protected Optional<dvz.a> j() {
+      return this.g;
+   }
+
+   public boolean b(dhb $$0, int $$1, int $$2) {
+      if (!this.a($$0, $$1, $$2)) {
+         return false;
+      } else {
+         return this.e < 1.0F && !this.d.a($$0.d(), this.f, $$1, $$2, this.e) ? false : !this.g.isPresent() || !this.g.get().a($$0, $$1, $$2);
       }
    }
 
-   public interface b extends dvz {
-      dvm load(dzc var1, qw var2);
+   protected abstract boolean a(dhb var1, int var2, int var3);
+
+   public gw a(cpi $$0) {
+      return new gw($$0.d(), 0, $$0.e()).a(this.f());
+   }
+
+   public abstract dwa<?> e();
+
+   private static boolean a(long $$0, int $$1, int $$2, int $$3, float $$4) {
+      dll $$5 = new dll(new dkn(0L));
+      $$5.a($$0, $$1, $$2, $$3);
+      return $$5.i() < $$4;
+   }
+
+   private static boolean b(long $$0, int $$1, int $$2, int $$3, float $$4) {
+      dll $$5 = new dll(new dkn(0L));
+      $$5.c($$0, $$2, $$3);
+      return $$5.j() < (double)$$4;
+   }
+
+   private static boolean c(long $$0, int $$1, int $$2, int $$3, float $$4) {
+      dll $$5 = new dll(new dkn(0L));
+      $$5.a($$0, $$2, $$3, 10387320);
+      return $$5.i() < $$4;
+   }
+
+   private static boolean d(long $$0, int $$1, int $$2, int $$3, float $$4) {
+      int $$5 = $$2 >> 4;
+      int $$6 = $$3 >> 4;
+      dll $$7 = new dll(new dkn(0L));
+      $$7.b((long)($$5 ^ $$6 << 4) ^ $$0);
+      $$7.f();
+      return $$7.a((int)(1.0F / $$4)) == 0;
+   }
+
+   @Deprecated
+   public static record a(he<dvi> b, int c) {
+      public static final Codec<dvz.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(aev.a(jc.aC, dvi.a, false).fieldOf("other_set").forGetter(dvz.a::a), Codec.intRange(1, 16).fieldOf("chunk_count").forGetter(dvz.a::b))
+               .apply($$0, dvz.a::new)
+      );
+
+      boolean a(dhb $$0, int $$1, int $$2) {
+         return $$0.a(this.b, $$1, $$2, this.c);
+      }
+
+      public he<dvi> a() {
+         return this.b;
+      }
+
+      public int b() {
+         return this.c;
+      }
+   }
+
+   @FunctionalInterface
+   public interface b {
+      boolean shouldGenerate(long var1, int var3, int var4, int var5, float var6);
+   }
+
+   public static enum c implements asu {
+      a("default", dvz::a),
+      b("legacy_type_1", dvz::d),
+      c("legacy_type_2", dvz::c),
+      d("legacy_type_3", dvz::b);
+
+      public static final Codec<dvz.c> e = asu.a(dvz.c::values);
+      private final String f;
+      private final dvz.b g;
+
+      private c(String $$0, dvz.b $$1) {
+         this.f = $$0;
+         this.g = $$1;
+      }
+
+      public boolean a(long $$0, int $$1, int $$2, int $$3, float $$4) {
+         return this.g.shouldGenerate($$0, $$1, $$2, $$3, $$4);
+      }
 
       @Override
-      default dvm load(dvy $$0, qw $$1) {
-         return this.load($$0.c(), $$1);
+      public String c() {
+         return this.f;
       }
    }
 }

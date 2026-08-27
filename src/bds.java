@@ -1,47 +1,68 @@
-import com.mojang.logging.LogUtils;
-import java.io.File;
-import java.util.function.LongSupplier;
+import com.google.common.collect.ImmutableSet;
+import java.util.Set;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import org.apache.commons.lang3.tuple.Pair;
 
-public class bds {
-   private static final Logger a = LogUtils.getLogger();
-   private final LongSupplier b;
-   private final long c;
-   private int d;
-   private final File e;
-   private bdn f = bdm.a;
+public class bds implements bdt {
+   public static final bds a = new bds();
 
-   public bds(LongSupplier $$0, String $$1, long $$2) {
-      this.b = $$0;
-      this.e = new File("debug", $$1);
-      this.c = $$2;
+   private bds() {
    }
 
-   public bdp a() {
-      this.f = new bdi(this.b, () -> this.d, false);
-      this.d++;
-      return this.f;
+   @Override
+   public void a() {
    }
 
+   @Override
    public void b() {
-      if (this.f != bdm.a) {
-         bdo $$0 = this.f.d();
-         this.f = bdm.a;
-         if ($$0.g() >= this.c) {
-            File $$1 = new File(this.e, "tick-results-" + ac.e() + ".txt");
-            $$0.a($$1.toPath());
-            a.info("Recorded long tick -- wrote info to: {}", $$1.getAbsolutePath());
-         }
-      }
+   }
+
+   @Override
+   public void a(String $$0) {
+   }
+
+   @Override
+   public void a(Supplier<String> $$0) {
+   }
+
+   @Override
+   public void a(bey $$0) {
+   }
+
+   @Override
+   public void c() {
+   }
+
+   @Override
+   public void b(String $$0) {
+   }
+
+   @Override
+   public void b(Supplier<String> $$0) {
+   }
+
+   @Override
+   public void a(String $$0, int $$1) {
+   }
+
+   @Override
+   public void a(Supplier<String> $$0, int $$1) {
+   }
+
+   @Override
+   public bdu d() {
+      return bdq.a;
    }
 
    @Nullable
-   public static bds a(String $$0) {
+   @Override
+   public bdo.a c(String $$0) {
       return null;
    }
 
-   public static bdp a(bdp $$0, @Nullable bds $$1) {
-      return $$1 != null ? bdp.a($$1.a(), $$0) : $$0;
+   @Override
+   public Set<Pair<String, bey>> e() {
+      return ImmutableSet.of();
    }
 }

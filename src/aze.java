@@ -1,44 +1,34 @@
 import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.DataFixUtils;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Dynamic;
-import org.slf4j.Logger;
+import java.util.Optional;
+import java.util.function.UnaryOperator;
 
-public class aze extends atf {
-   private static final Logger b = LogUtils.getLogger();
+public class aze extends DataFix {
+   private final String a;
+   private final UnaryOperator<String> b;
 
-   public aze(Schema $$0) {
-      super($$0, ayx.l);
+   public aze(Schema $$0, String $$1, UnaryOperator<String> $$2) {
+      super($$0, false);
+      this.a = $$1;
+      this.b = $$2;
    }
 
    protected TypeRewriteRule makeRule() {
       return this.fixTypeEverywhereTyped(
-         "SavedDataUUIDFix",
-         this.getInputSchema().getType(this.a),
+         this.a,
+         this.getInputSchema().getType(azd.c),
          $$0 -> $$0.update(
-               DSL.remainderFinder(),
-               $$0x -> $$0x.update(
-                     "data",
-                     $$0xx -> $$0xx.update(
-                           "Raids",
-                           $$0xxx -> $$0xxx.createList(
-                                 $$0xxx.asStream()
-                                    .map(
-                                       $$0xxxx -> $$0xxxx.update(
-                                             "HeroesOfTheVillage",
-                                             $$0xxxxx -> $$0xxxxx.createList(
-                                                   $$0xxxxx.asStream().map($$0xxxxxx -> (Dynamic)d($$0xxxxxx, "UUIDMost", "UUIDLeast").orElseGet(() -> {
-                                                         b.warn("HeroesOfTheVillage contained invalid UUIDs.");
-                                                         return $$0xxxxxx;
-                                                      }))
-                                                )
-                                          )
-                                    )
-                              )
-                        )
-                  )
+               DSL.remainderFinder(), $$0x -> $$0x.update("Status", this::a).update("below_zero_retrogen", $$0xx -> $$0xx.update("target_status", this::a))
             )
       );
+   }
+
+   private <T> Dynamic<T> a(Dynamic<T> $$0) {
+      Optional<Dynamic<T>> $$1 = $$0.asString().result().map(bal::a).map(this.b).map($$0::createString);
+      return (Dynamic<T>)DataFixUtils.orElse($$1, $$0);
    }
 }

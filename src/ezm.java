@@ -1,285 +1,96 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class ezm extends ezi<ceo> {
-   private static final aew x = new aew("textures/gui/container/beacon.png");
-   static final aew y = new aew("container/beacon/button_disabled");
-   static final aew z = new aew("container/beacon/button_selected");
-   static final aew A = new aew("container/beacon/button_highlighted");
-   static final aew B = new aew("container/beacon/button");
-   static final aew C = new aew("container/beacon/confirm");
-   static final aew D = new aew("container/beacon/cancel");
-   private static final tl E = tl.c("block.minecraft.beacon.primary");
-   private static final tl F = tl.c("block.minecraft.beacon.secondary");
-   private final List<ezm.a> G = Lists.newArrayList();
-   @Nullable
-   bib H;
-   @Nullable
-   bib I;
+public class ezm extends ezd<cex> {
+   private static final aez x = new aez("container/cartography_table/error");
+   private static final aez y = new aez("container/cartography_table/scaled_map");
+   private static final aez z = new aez("container/cartography_table/duplicated_map");
+   private static final aez A = new aez("container/cartography_table/map");
+   private static final aez B = new aez("container/cartography_table/locked");
+   private static final aez C = new aez("textures/gui/container/cartography_table.png");
 
-   public ezm(final ceo $$0, cbt $$1, tl $$2) {
+   public ezm(cex $$0, cbz $$1, tl $$2) {
       super($$0, $$1, $$2);
-      this.c = 230;
-      this.k = 219;
-      $$0.a(new cex() {
-         @Override
-         public void a(cel $$0x, int $$1, cjf $$2) {
-         }
-
-         @Override
-         public void a(cel $$0x, int $$1, int $$2) {
-            ezm.this.H = $$0.m();
-            ezm.this.I = $$0.n();
-         }
-      });
-   }
-
-   private <T extends eso & ezm.a> void a(T $$0) {
-      this.d($$0);
-      this.G.add($$0);
+      this.m -= 2;
    }
 
    @Override
-   protected void aH_() {
-      super.aH_();
-      this.G.clear();
-      this.a(new ezm.c(this.t + 164, this.u + 107));
-      this.a(new ezm.b(this.t + 190, this.u + 107));
-
-      for (int $$0 = 0; $$0 <= 2; $$0++) {
-         int $$1 = dcq.a[$$0].length;
-         int $$2 = $$1 * 22 + ($$1 - 1) * 2;
-
-         for (int $$3 = 0; $$3 < $$1; $$3++) {
-            bib $$4 = dcq.a[$$0][$$3];
-            ezm.d $$5 = new ezm.d(this.t + 76 + $$3 * 24 - $$2 / 2, this.u + 22 + $$0 * 25, $$4, true, $$0);
-            $$5.i = false;
-            this.a($$5);
-         }
-      }
-
-      int $$6 = 3;
-      int $$7 = dcq.a[3].length + 1;
-      int $$8 = $$7 * 22 + ($$7 - 1) * 2;
-
-      for (int $$9 = 0; $$9 < $$7 - 1; $$9++) {
-         bib $$10 = dcq.a[3][$$9];
-         ezm.d $$11 = new ezm.d(this.t + 167 + $$9 * 24 - $$8 / 2, this.u + 47, $$10, false, 3);
-         $$11.i = false;
-         this.a($$11);
-      }
-
-      ezm.d $$12 = new ezm.g(this.t + 167 + ($$7 - 1) * 24 - $$8 / 2, this.u + 47, dcq.a[0][0]);
-      $$12.j = false;
-      this.a($$12);
-   }
-
-   @Override
-   public void D() {
-      super.D();
-      this.F();
-   }
-
-   void F() {
-      int $$0 = this.p.l();
-      this.G.forEach($$1 -> $$1.a($$0));
-   }
-
-   @Override
-   protected void b(esf $$0, int $$1, int $$2) {
-      $$0.a(this.i, E, 62, 10, 14737632);
-      $$0.a(this.i, F, 169, 10, 14737632);
-   }
-
-   @Override
-   protected void a(esf $$0, float $$1, int $$2, int $$3) {
-      int $$4 = (this.g - this.c) / 2;
-      int $$5 = (this.h - this.k) / 2;
-      $$0.a(x, $$4, $$5, 0, 0, this.c, this.k);
-      $$0.c().a();
-      $$0.c().a(0.0F, 0.0F, 100.0F);
-      $$0.a(new cjf(cji.nV), $$4 + 20, $$5 + 109);
-      $$0.a(new cjf(cji.nL), $$4 + 41, $$5 + 109);
-      $$0.a(new cjf(cji.nK), $$4 + 41 + 22, $$5 + 109);
-      $$0.a(new cjf(cji.nU), $$4 + 42 + 44, $$5 + 109);
-      $$0.a(new cjf(cji.nQ), $$4 + 42 + 66, $$5 + 109);
-      $$0.c().b();
-   }
-
-   @Override
-   public void a(esf $$0, int $$1, int $$2, float $$3) {
+   public void a(erz $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
       this.a($$0, $$1, $$2);
    }
 
-   interface a {
-      void a(int var1);
-   }
-
-   class b extends ezm.f {
-      public b(int $$0, int $$1) {
-         super($$0, $$1, ezm.D, tk.e);
-      }
-
-      @Override
-      public void c() {
-         ezm.this.f.s.q();
-      }
-
-      @Override
-      public void a(int $$0) {
-      }
-   }
-
-   class c extends ezm.f {
-      public c(int $$0, int $$1) {
-         super($$0, $$1, ezm.C, tk.d);
-      }
-
-      @Override
-      public void c() {
-         ezm.this.f.J().b(new acm(Optional.ofNullable(ezm.this.H), Optional.ofNullable(ezm.this.I)));
-         ezm.this.f.s.q();
-      }
-
-      @Override
-      public void a(int $$0) {
-         this.i = ezm.this.p.o() && ezm.this.H != null;
-      }
-   }
-
-   class d extends ezm.e {
-      private final boolean c;
-      protected final int a;
-      private bib d;
-      private fze l;
-
-      public d(int $$0, int $$1, bib $$2, boolean $$3, int $$4) {
-         super($$0, $$1);
-         this.c = $$3;
-         this.a = $$4;
-         this.a($$2);
-      }
-
-      protected void a(bib $$0) {
-         this.d = $$0;
-         this.l = eqv.O().aE().a($$0);
-         this.a(eua.a(this.b($$0), null));
-      }
-
-      protected ty b(bib $$0) {
-         return tl.c($$0.d());
-      }
-
-      @Override
-      public void c() {
-         if (!this.a()) {
-            if (this.c) {
-               ezm.this.H = this.d;
-            } else {
-               ezm.this.I = this.d;
+   @Override
+   protected void a(erz $$0, float $$1, int $$2, int $$3) {
+      int $$4 = this.t;
+      int $$5 = this.u;
+      $$0.a(C, $$4, $$5, 0, 0, this.c, this.k);
+      cjl $$6 = this.p.b(1).e();
+      boolean $$7 = $$6.a(cjo.tp);
+      boolean $$8 = $$6.a(cjo.qa);
+      boolean $$9 = $$6.a(cjo.fx);
+      cjl $$10 = this.p.b(0).e();
+      boolean $$11 = false;
+      Integer $$12;
+      ebq $$13;
+      if ($$10.a(cjo.rf)) {
+         $$12 = cjs.d($$10);
+         $$13 = cjs.a($$12, this.f.r);
+         if ($$13 != null) {
+            if ($$13.h) {
+               $$11 = true;
+               if ($$8 || $$9) {
+                  $$0.a(x, $$4 + 35, $$5 + 31, 28, 21);
+               }
             }
 
-            ezm.this.F();
+            if ($$8 && $$13.f >= 4) {
+               $$11 = true;
+               $$0.a(x, $$4 + 35, $$5 + 31, 28, 21);
+            }
          }
+      } else {
+         $$12 = null;
+         $$13 = null;
       }
 
-      @Override
-      protected void a(esf $$0) {
-         $$0.a(this.r() + 2, this.t() + 2, 0, 18, 18, this.l);
-      }
+      this.a($$0, $$12, $$13, $$7, $$8, $$9, $$11);
+   }
 
-      @Override
-      public void a(int $$0) {
-         this.i = this.a < $$0;
-         this.b(this.d == (this.c ? ezm.this.H : ezm.this.I));
-      }
-
-      @Override
-      protected ty aE_() {
-         return this.b(this.d);
+   private void a(erz $$0, @Nullable Integer $$1, @Nullable ebq $$2, boolean $$3, boolean $$4, boolean $$5, boolean $$6) {
+      int $$7 = this.t;
+      int $$8 = this.u;
+      if ($$4 && !$$6) {
+         $$0.a(y, $$7 + 67, $$8 + 13, 66, 66);
+         this.a($$0, $$1, $$2, $$7 + 85, $$8 + 31, 0.226F);
+      } else if ($$3) {
+         $$0.a(z, $$7 + 67 + 16, $$8 + 13, 50, 66);
+         this.a($$0, $$1, $$2, $$7 + 86, $$8 + 16, 0.34F);
+         $$0.c().a();
+         $$0.c().a(0.0F, 0.0F, 1.0F);
+         $$0.a(z, $$7 + 67, $$8 + 13 + 16, 50, 66);
+         this.a($$0, $$1, $$2, $$7 + 70, $$8 + 32, 0.34F);
+         $$0.c().b();
+      } else if ($$5) {
+         $$0.a(A, $$7 + 67, $$8 + 13, 66, 66);
+         this.a($$0, $$1, $$2, $$7 + 71, $$8 + 17, 0.45F);
+         $$0.c().a();
+         $$0.c().a(0.0F, 0.0F, 1.0F);
+         $$0.a(B, $$7 + 118, $$8 + 60, 10, 14);
+         $$0.c().b();
+      } else {
+         $$0.a(A, $$7 + 67, $$8 + 13, 66, 66);
+         this.a($$0, $$1, $$2, $$7 + 71, $$8 + 17, 0.45F);
       }
    }
 
-   abstract static class e extends esi implements ezm.a {
-      private boolean a;
-
-      protected e(int $$0, int $$1) {
-         super($$0, $$1, 22, 22, tk.a);
-      }
-
-      protected e(int $$0, int $$1, tl $$2) {
-         super($$0, $$1, 22, 22, $$2);
-      }
-
-      @Override
-      public void b(esf $$0, int $$1, int $$2, float $$3) {
-         aew $$4;
-         if (!this.i) {
-            $$4 = ezm.y;
-         } else if (this.a) {
-            $$4 = ezm.z;
-         } else if (this.o()) {
-            $$4 = ezm.A;
-         } else {
-            $$4 = ezm.B;
-         }
-
-         $$0.a($$4, this.r(), this.t(), this.f, this.g);
-         this.a($$0);
-      }
-
-      protected abstract void a(esf var1);
-
-      public boolean a() {
-         return this.a;
-      }
-
-      public void b(boolean $$0) {
-         this.a = $$0;
-      }
-
-      @Override
-      public void a(ewi $$0) {
-         this.c($$0);
-      }
-   }
-
-   abstract static class f extends ezm.e {
-      private final aew a;
-
-      protected f(int $$0, int $$1, aew $$2, tl $$3) {
-         super($$0, $$1, $$3);
-         this.a = $$2;
-      }
-
-      @Override
-      protected void a(esf $$0) {
-         $$0.a(this.a, this.r() + 2, this.t() + 2, 18, 18);
-      }
-   }
-
-   class g extends ezm.d {
-      public g(int $$0, int $$1, bib $$2) {
-         super($$0, $$1, $$2, false, 3);
-      }
-
-      @Override
-      protected ty b(bib $$0) {
-         return tl.c($$0.d()).f(" II");
-      }
-
-      @Override
-      public void a(int $$0) {
-         if (ezm.this.H != null) {
-            this.j = true;
-            this.a(ezm.this.H);
-            super.a($$0);
-         } else {
-            this.j = false;
-         }
+   private void a(erz $$0, @Nullable Integer $$1, @Nullable ebq $$2, int $$3, int $$4, float $$5) {
+      if ($$1 != null && $$2 != null) {
+         $$0.c().a();
+         $$0.c().a((float)$$3, (float)$$4, 1.0F);
+         $$0.c().b($$5, $$5, 1.0F);
+         this.f.j.j().a($$0.c(), $$0.d(), $$1, $$2, true, 15728880);
+         $$0.e();
+         $$0.c().b();
       }
    }
 }

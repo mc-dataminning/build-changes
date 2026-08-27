@@ -1,100 +1,163 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class byo extends biq implements bkd {
-   private static final aee<Integer> b = aeh.a(byo.class, aeg.b);
-   private static final int c = 80;
-   @Nullable
-   private bjg d;
+public class byo extends byl implements bkk<he<byp>> {
+   private static final aef<he<byp>> f = aei.a(byo.class, aeh.y);
+   private static final aey<byp> g = byq.a;
+   public static final String e = "variant";
 
-   public byo(biu<? extends byo> $$0, cpv $$1) {
-      super($$0, $$1);
-      this.I = true;
+   private static he<byp> s() {
+      return jb.m.f(g);
    }
 
-   public byo(cpv $$0, double $$1, double $$2, double $$3, @Nullable bjg $$4) {
-      this(biu.aY, $$0);
-      this.e($$1, $$2, $$3);
-      double $$5 = $$0.z.j() * (float) (Math.PI * 2);
-      this.o(-Math.sin($$5) * 0.02, 0.2F, -Math.cos($$5) * 0.02);
-      this.b(80);
-      this.K = $$1;
-      this.L = $$2;
-      this.M = $$3;
-      this.d = $$4;
+   public byo(bja<? extends byo> $$0, cqb $$1) {
+      super($$0, $$1);
    }
 
    @Override
    protected void a_() {
-      this.an.a(b, 80);
+      this.an.a(f, s());
    }
 
    @Override
-   protected biq.b aU() {
-      return biq.b.a;
-   }
-
-   @Override
-   public boolean br() {
-      return !this.dG();
-   }
-
-   @Override
-   public void l() {
-      if (!this.aT()) {
-         this.f(this.do().b(0.0, -0.04, 0.0));
+   public void a(aef<?> $$0) {
+      if (f.equals($$0)) {
+         this.y();
       }
+   }
 
-      this.a(bjm.a, this.do());
-      this.f(this.do().a(0.98));
-      if (this.aA()) {
-         this.f(this.do().d(0.7, -0.5, 0.7));
-      }
+   public void a(he<byp> $$0) {
+      this.an.b(f, $$0);
+   }
 
-      int $$0 = this.s() - 1;
-      this.b($$0);
-      if ($$0 <= 0) {
-         this.ak();
-         if (!this.dL().B) {
-            this.t();
-         }
+   public he<byp> q() {
+      return this.an.b(f);
+   }
+
+   public static Optional<byo> a(cqb $$0, gw $$1, ha $$2) {
+      byo $$3 = new byo($$0, $$1);
+      List<he<byp>> $$4 = new ArrayList<>();
+      jb.m.c(aqe.a).forEach($$4::add);
+      if ($$4.isEmpty()) {
+         return Optional.empty();
       } else {
-         this.be();
-         if (this.dL().B) {
-            this.dL().a(iv.Z, this.dq(), this.ds() + 0.5, this.dw(), 0.0, 0.0, 0.0);
+         $$3.a($$2);
+         $$4.removeIf($$1x -> {
+            $$3.a($$1x);
+            return !$$3.z();
+         });
+         if ($$4.isEmpty()) {
+            return Optional.empty();
+         } else {
+            int $$5 = $$4.stream().mapToInt(byo::b).max().orElse(0);
+            $$4.removeIf($$1x -> b($$1x) < $$5);
+            Optional<he<byp>> $$6 = ac.b($$4, $$3.ag);
+            if ($$6.isEmpty()) {
+               return Optional.empty();
+            } else {
+               $$3.a($$6.get());
+               $$3.a($$2);
+               return Optional.of($$3);
+            }
          }
       }
    }
 
-   private void t() {
-      float $$0 = 4.0F;
-      this.dL().a(this, this.dq(), this.e(0.0625), this.dw(), 4.0F, cpv.a.d);
+   private static int b(he<byp> $$0) {
+      return $$0.a().a() * $$0.a().b();
+   }
+
+   private byo(cqb $$0, gw $$1) {
+      super(bja.ar, $$0, $$1);
+   }
+
+   public byo(cqb $$0, gw $$1, ha $$2, he<byp> $$3) {
+      this($$0, $$1);
+      this.a($$3);
+      this.a($$2);
    }
 
    @Override
-   protected void b(qw $$0) {
-      $$0.a("Fuse", (short)this.s());
+   public void b(qw $$0) {
+      a($$0, this.q());
+      $$0.a("facing", (byte)this.d.e());
+      super.b($$0);
    }
 
    @Override
-   protected void a(qw $$0) {
-      this.b($$0.g("Fuse"));
+   public void a(qw $$0) {
+      he<byp> $$1 = c($$0).orElseGet(byo::s);
+      this.a($$1);
+      this.d = ha.b($$0.f("facing"));
+      super.a($$0);
+      this.a(this.d);
    }
 
-   @Nullable
-   public bjg q() {
-      return this.d;
+   public static void a(qw $$0, he<byp> $$1) {
+      $$0.a("variant", $$1.e().orElse(g).a().toString());
+   }
+
+   public static Optional<he<byp>> c(qw $$0) {
+      return Optional.ofNullable(aez.a($$0.l("variant"))).map($$0x -> aey.a(jc.Q, $$0x)).flatMap(jb.m::b);
    }
 
    @Override
-   protected float a(bjs $$0, bir $$1) {
-      return 0.15F;
+   public int A() {
+      return this.q().a().a();
    }
 
-   public void b(int $$0) {
-      this.an.b(b, $$0);
+   @Override
+   public int B() {
+      return this.q().a().b();
    }
 
-   public int s() {
-      return this.an.b(b);
+   @Override
+   public void a(@Nullable biw $$0) {
+      if (this.dL().X().b(cpx.h)) {
+         this.a(apg.qI, 1.0F, 1.0F);
+         if ($$0 instanceof cca $$1 && $$1.fT().d) {
+            return;
+         }
+
+         this.a(cjo.pl);
+      }
+   }
+
+   @Override
+   public void C() {
+      this.a(apg.qJ, 1.0F, 1.0F);
+   }
+
+   @Override
+   public void b(double $$0, double $$1, double $$2, float $$3, float $$4) {
+      this.e($$0, $$1, $$2);
+   }
+
+   @Override
+   public void a(double $$0, double $$1, double $$2, float $$3, float $$4, int $$5) {
+      this.e($$0, $$1, $$2);
+   }
+
+   @Override
+   public ehh dk() {
+      return ehh.a(this.c);
+   }
+
+   @Override
+   public ve<wx> di() {
+      return new wy(this, this.d.d(), this.E());
+   }
+
+   @Override
+   public void a(wy $$0) {
+      super.a($$0);
+      this.a(ha.a($$0.o()));
+   }
+
+   @Override
+   public cjl dy() {
+      return new cjl(cjo.pl);
    }
 }

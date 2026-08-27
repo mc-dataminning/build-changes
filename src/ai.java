@@ -16,13 +16,13 @@ public record ai(String[][] b) {
    }
 
    private static String[][] b(so $$0) {
-      String[][] $$1 = new String[$$0.m()][];
+      String[][] $$1 = new String[$$0.n()][];
 
       for (int $$2 = 0; $$2 < $$1.length; $$2++) {
-         $$1[$$2] = new String[$$0.m()];
+         $$1[$$2] = new String[$$0.n()];
 
          for (int $$3 = 0; $$3 < $$1[$$2].length; $$3++) {
-            $$1[$$2][$$3] = $$0.r();
+            $$1[$$2][$$3] = $$0.s();
          }
       }
 
@@ -94,7 +94,7 @@ public record ai(String[][] b) {
       Set<String> $$3 = new ObjectOpenHashSet();
 
       for (int $$4 = 0; $$4 < $$0.size(); $$4++) {
-         JsonArray $$5 = arn.n($$0.get($$4), "requirements[" + $$4 + "]");
+         JsonArray $$5 = arr.n($$0.get($$4), "requirements[" + $$4 + "]");
          if ($$5.isEmpty() && $$1.isEmpty()) {
             throw new JsonSyntaxException("Requirement entry cannot be empty");
          }
@@ -102,7 +102,7 @@ public record ai(String[][] b) {
          $$2[$$4] = new String[$$5.size()];
 
          for (int $$6 = 0; $$6 < $$5.size(); $$6++) {
-            String $$7 = arn.a($$5.get($$6), "requirements[" + $$4 + "][" + $$6 + "]");
+            String $$7 = arr.a($$5.get($$6), "requirements[" + $$4 + "][" + $$6 + "]");
             $$2[$$4][$$6] = $$7;
             $$3.add($$7);
          }

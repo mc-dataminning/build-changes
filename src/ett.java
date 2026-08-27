@@ -1,23 +1,61 @@
-public class ett {
-   public static final ett a = new ett("Merry X-mas!");
-   public static final ett b = new ett("Happy new year!");
-   public static final ett c = new ett("OOoooOOOoooo! Spooky!");
-   private static final int d = 123;
-   private static final int e = 69;
-   private final String f;
+public class ett extends esi {
+   private static final etx a = new etx(
+      new aez("widget/tab_selected"), new aez("widget/tab"), new aez("widget/tab_selected_highlighted"), new aez("widget/tab_highlighted")
+   );
+   private static final int b = 3;
+   private static final int c = 1;
+   private static final int d = 1;
+   private static final int e = 4;
+   private static final int l = 2;
+   private final eum m;
+   private final eul n;
 
-   public ett(String $$0) {
-      this.f = $$0;
+   public ett(eum $$0, eul $$1, int $$2, int $$3) {
+      super(0, 0, $$2, $$3, $$1.a());
+      this.m = $$0;
+      this.n = $$1;
    }
 
-   public void a(esf $$0, int $$1, esd $$2, int $$3) {
-      $$0.c().a();
-      $$0.c().a((float)$$1 / 2.0F + 123.0F, 69.0F, 0.0F);
-      $$0.c().a(a.f.rotationDegrees(-20.0F));
-      float $$4 = 1.8F - arw.e(arw.a((float)(ac.b() % 1000L) / 1000.0F * (float) (Math.PI * 2)) * 0.1F);
-      $$4 = $$4 * 100.0F / (float)($$2.b(this.f) + 32);
-      $$0.c().b($$4, $$4, $$4);
-      $$0.a($$2, this.f, 0, -8, 16776960 | $$3);
-      $$0.c().b();
+   @Override
+   public void b(erz $$0, int $$1, int $$2, float $$3) {
+      $$0.a(a.a(this.b(), this.n()), this.r(), this.t(), this.f, this.g);
+      erx $$4 = eqp.O().h;
+      int $$5 = this.i ? -1 : -6250336;
+      this.a($$0, $$4, $$5);
+      if (this.b()) {
+         this.b($$0, $$4, $$5);
+      }
+   }
+
+   public void a(erz $$0, erx $$1, int $$2) {
+      int $$3 = this.r() + 1;
+      int $$4 = this.t() + (this.b() ? 0 : 3);
+      int $$5 = this.r() + this.l() - 1;
+      int $$6 = this.t() + this.i();
+      a($$0, $$1, this.m(), $$3, $$4, $$5, $$6, $$2);
+   }
+
+   private void b(erz $$0, erx $$1, int $$2) {
+      int $$3 = Math.min($$1.a(this.m()), this.l() - 4);
+      int $$4 = this.r() + (this.l() - $$3) / 2;
+      int $$5 = this.t() + this.i() - 2;
+      $$0.a($$4, $$5, $$4 + $$3, $$5 + 1, $$2);
+   }
+
+   @Override
+   protected void a(ewd $$0) {
+      $$0.a(ewc.a, tl.a("gui.narrate.tab", this.n.a()));
+   }
+
+   @Override
+   public void a(gdm $$0) {
+   }
+
+   public eul a() {
+      return this.n;
+   }
+
+   public boolean b() {
+      return this.m.a() == this.n;
    }
 }

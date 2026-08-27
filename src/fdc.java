@@ -1,99 +1,274 @@
-import com.mojang.datafixers.DataFixer;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenCustomHashMap;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.OptionalLong;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class fdc extends eyk {
-   private static final Logger a = LogUtils.getLogger();
-   private static final Object2IntMap<aev<cpv>> b = ac.a(new Object2IntOpenCustomHashMap(ac.k()), $$0 -> {
-      $$0.put(cpv.h, -13408734);
-      $$0.put(cpv.i, -10075085);
-      $$0.put(cpv.j, -8943531);
-      $$0.defaultReturnValue(-2236963);
-   });
-   private final BooleanConsumer c;
-   private final bgm k;
+public class fdc {
+   private static final tl a = tl.c("selectWorld.newWorld");
+   private final List<Consumer<fdc>> b = new ArrayList<>();
+   private String c = a.getString();
+   private fdc.a d = fdc.a.a;
+   private bhb e = bhb.c;
+   @Nullable
+   private Boolean f;
+   private String g;
+   private boolean h;
+   private boolean i;
+   private final Path j;
+   private String k;
+   private fdb l;
+   private fdc.b m;
+   private final List<fdc.b> n = new ArrayList<>();
+   private final List<fdc.b> o = new ArrayList<>();
+   private cpx p = new cpx();
+
+   public fdc(Path $$0, fdb $$1, Optional<aey<dur>> $$2, OptionalLong $$3) {
+      this.j = $$0;
+      this.l = $$1;
+      this.m = new fdc.b(a($$1, $$2).orElse(null));
+      this.r();
+      this.g = $$3.isPresent() ? Long.toString($$3.getAsLong()) : "";
+      this.h = $$1.b().c();
+      this.i = $$1.b().d();
+      this.k = this.c(this.c);
+   }
+
+   public void a(Consumer<fdc> $$0) {
+      this.b.add($$0);
+   }
+
+   public void a() {
+      boolean $$0 = this.j();
+      if ($$0 != this.l.b().d()) {
+         this.l = this.l.a($$1x -> $$1x.a($$0));
+      }
+
+      boolean $$1 = this.i();
+      if ($$1 != this.l.b().c()) {
+         this.l = this.l.a($$1x -> $$1x.b($$1));
+      }
+
+      for (Consumer<fdc> $$2 : this.b) {
+         $$2.accept(this);
+      }
+   }
+
+   public void a(String $$0) {
+      this.c = $$0;
+      this.k = this.c($$0);
+      this.a();
+   }
+
+   private String c(String $$0) {
+      String $$1 = $$0.trim();
+
+      try {
+         return v.a(this.j, !$$1.isEmpty() ? $$1 : a.getString(), "");
+      } catch (Exception var5) {
+         try {
+            return v.a(this.j, "World", "");
+         } catch (IOException var4) {
+            throw new RuntimeException("Could not create save folder", var4);
+         }
+      }
+   }
+
+   public String b() {
+      return this.c;
+   }
+
+   public String c() {
+      return this.k;
+   }
+
+   public void a(fdc.a $$0) {
+      this.d = $$0;
+      this.a();
+   }
+
+   public fdc.a d() {
+      return this.l() ? fdc.a.d : this.d;
+   }
+
+   public void a(bhb $$0) {
+      this.e = $$0;
+      this.a();
+   }
+
+   public bhb e() {
+      return this.f() ? bhb.d : this.e;
+   }
+
+   public boolean f() {
+      return this.d() == fdc.a.b;
+   }
+
+   public void a(boolean $$0) {
+      this.f = $$0;
+      this.a();
+   }
+
+   public boolean g() {
+      if (this.l()) {
+         return true;
+      } else if (this.f()) {
+         return false;
+      } else {
+         return this.f == null ? this.d() == fdc.a.c : this.f;
+      }
+   }
+
+   public void b(String $$0) {
+      this.g = $$0;
+      this.l = this.l.a($$0x -> $$0x.a(dlk.a(this.h())));
+      this.a();
+   }
+
+   public String h() {
+      return this.g;
+   }
+
+   public void b(boolean $$0) {
+      this.h = $$0;
+      this.a();
+   }
+
+   public boolean i() {
+      return this.l() ? false : this.h;
+   }
+
+   public void c(boolean $$0) {
+      this.i = $$0;
+      this.a();
+   }
+
+   public boolean j() {
+      return !this.l() && !this.f() ? this.i : false;
+   }
+
+   public void a(fdb $$0) {
+      this.l = $$0;
+      this.r();
+      this.a();
+   }
+
+   public fdb k() {
+      return this.l;
+   }
+
+   public void a(fdb.a $$0) {
+      this.l = this.l.a($$0);
+      this.a();
+   }
+
+   protected boolean a(cqu $$0) {
+      cqu $$1 = this.l.g();
+      if ($$1.a().a().equals($$0.a().a()) && $$1.b().equals($$0.b())) {
+         this.l = new fdb(this.l.b(), this.l.c(), this.l.d(), this.l.e(), this.l.f(), $$0);
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   public boolean l() {
+      return this.l.d().c();
+   }
+
+   public void a(fdc.b $$0) {
+      this.m = $$0;
+      he<dur> $$1 = $$0.c();
+      if ($$1 != null) {
+         this.a(($$1x, $$2) -> $$1.a().a());
+      }
+   }
+
+   public fdc.b m() {
+      return this.m;
+   }
 
    @Nullable
-   public static fdc a(eqv $$0, BooleanConsumer $$1, DataFixer $$2, ecg.c $$3, boolean $$4) {
-      try {
-         fdc var8;
-         try (afr $$5 = $$0.y().a($$3, false)) {
-            ecm $$6 = $$5.d();
-            hr.b $$7 = $$5.c().a();
-            $$3.a($$7, $$6);
-            var8 = new fdc($$1, $$2, $$3, $$6.L(), $$4, $$7.d(jc.aI));
-         }
+   public fcy n() {
+      he<dur> $$0 = this.m().c();
+      return $$0 != null ? fcy.a.get($$0.e()) : null;
+   }
 
-         return var8;
-      } catch (Exception var11) {
-         a.warn("Failed to load datapacks, can't optimize world", var11);
-         return null;
+   public List<fdc.b> o() {
+      return this.n;
+   }
+
+   public List<fdc.b> p() {
+      return this.o;
+   }
+
+   private void r() {
+      hq<dur> $$0 = this.k().a().d(jc.aG);
+      this.n.clear();
+      this.n.addAll(a($$0, aqo.a).orElseGet(() -> $$0.h().map(fdc.b::new).toList()));
+      this.o.clear();
+      this.o.addAll(a($$0, aqo.b).orElse(this.n));
+      he<dur> $$1 = this.m.c();
+      if ($$1 != null) {
+         this.m = a(this.k(), $$1.e()).map(fdc.b::new).orElse(this.n.get(0));
       }
    }
 
-   private fdc(BooleanConsumer $$0, DataFixer $$1, ecg.c $$2, cpz $$3, boolean $$4, hq<dit> $$5) {
-      super(tl.a("optimizeWorld.title", $$3.a()));
-      this.c = $$0;
-      this.k = new bgm($$2, $$1, $$5, $$4);
+   private static Optional<he<dur>> a(fdb $$0, Optional<aey<dur>> $$1) {
+      return $$1.flatMap($$1x -> $$0.a().d(jc.aG).b($$1x));
    }
 
-   @Override
-   protected void aH_() {
-      super.aH_();
-      this.d(esq.a(tk.e, $$0 -> {
-         this.k.a();
-         this.c.accept(false);
-      }).a(this.g / 2 - 100, this.h / 4 + 150, 200, 20).a());
+   private static Optional<List<fdc.b>> a(hq<dur> $$0, aqk<dur> $$1) {
+      return $$0.b($$1).map($$0x -> $$0x.a().map(fdc.b::new).toList()).filter($$0x -> !$$0x.isEmpty());
    }
 
-   @Override
-   public void c() {
-      if (this.k.b()) {
-         this.c.accept(true);
+   public void a(cpx $$0) {
+      this.p = $$0;
+      this.a();
+   }
+
+   public cpx q() {
+      return this.p;
+   }
+
+   public static enum a {
+      a("survival", cpy.a),
+      b("hardcore", cpy.a),
+      c("creative", cpy.b),
+      d("spectator", cpy.d);
+
+      public final cpy e;
+      public final tl f;
+      private final tl g;
+
+      private a(String $$0, cpy $$1) {
+         this.e = $$1;
+         this.f = tl.c("selectWorld.gameMode." + $$0);
+         this.g = tl.c("selectWorld.gameMode." + $$0 + ".info");
+      }
+
+      public tl a() {
+         return this.g;
       }
    }
 
-   @Override
-   public void az_() {
-      this.c.accept(false);
-   }
+   public static record b(@Nullable he<dur> a) {
+      private static final tl b = tl.c("generator.custom");
 
-   @Override
-   public void h() {
-      this.k.a();
-   }
+      public tl a() {
+         return Optional.ofNullable(this.a).flatMap(he::e).map($$0 -> tl.c($$0.a().f("generator"))).orElse(b);
+      }
 
-   @Override
-   public void a(esf $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 20, 16777215);
-      int $$4 = this.g / 2 - 150;
-      int $$5 = this.g / 2 + 150;
-      int $$6 = this.h / 4 + 100;
-      int $$7 = $$6 + 10;
-      $$0.a(this.i, this.k.h(), this.g / 2, $$6 - 9 - 2, 10526880);
-      if (this.k.e() > 0) {
-         $$0.a($$4 - 1, $$6 - 1, $$5 + 1, $$7 + 1, -16777216);
-         $$0.b(this.i, tl.a("optimizeWorld.info.converted", this.k.f()), $$4, 40, 10526880);
-         $$0.b(this.i, tl.a("optimizeWorld.info.skipped", this.k.g()), $$4, 40 + 9 + 3, 10526880);
-         $$0.b(this.i, tl.a("optimizeWorld.info.total", this.k.e()), $$4, 40 + (9 + 3) * 2, 10526880);
-         int $$8 = 0;
+      public boolean b() {
+         return Optional.ofNullable(this.a).flatMap(he::e).filter($$0 -> $$0.equals(dus.d)).isPresent();
+      }
 
-         for (aev<cpv> $$9 : this.k.c()) {
-            int $$10 = arw.d(this.k.a($$9) * (float)($$5 - $$4));
-            $$0.a($$4 + $$8, $$6, $$4 + $$8 + $$10, $$7, b.getInt($$9));
-            $$8 += $$10;
-         }
-
-         int $$11 = this.k.f() + this.k.g();
-         tl $$12 = tl.a("optimizeWorld.progress.counter", $$11, this.k.e());
-         tl $$13 = tl.a("optimizeWorld.progress.percentage", arw.d(this.k.d() * 100.0F));
-         $$0.a(this.i, $$12, this.g / 2, $$6 + 2 * 9 + 2, 10526880);
-         $$0.a(this.i, $$13, this.g / 2, $$6 + ($$7 - $$6) / 2 - 9 / 2, 10526880);
+      @Nullable
+      public he<dur> c() {
+         return this.a;
       }
    }
 }

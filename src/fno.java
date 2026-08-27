@@ -1,125 +1,115 @@
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.JsonOps;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.time.Instant;
-import java.util.List;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import org.joml.Matrix4f;
 
 public class fno {
-   private static final fno a = new fno("") {
-      @Override
-      public void a(eqv $$0) {
+   private static final int a = 6;
+   private final aez[] b = new aez[6];
+
+   public fno(aez $$0) {
+      for (int $$1 = 0; $$1 < 6; $$1++) {
+         this.b[$$1] = $$0.c($$0.a() + "_" + $$1 + ".png");
       }
-
-      @Override
-      public void a(fno.c $$0, String $$1, String $$2) {
-      }
-   };
-   private static final Logger b = LogUtils.getLogger();
-   private static final Gson c = new GsonBuilder().create();
-   private final Path d;
-   @Nullable
-   private fno.b e;
-
-   fno(String $$0) {
-      this.d = eqv.O().p.toPath().resolve($$0);
    }
 
-   public static fno a(@Nullable String $$0) {
-      return $$0 == null ? a : new fno($$0);
-   }
+   public void a(eqp $$0, float $$1, float $$2, float $$3) {
+      ell $$4 = ell.a();
+      ele $$5 = $$4.c();
+      Matrix4f $$6 = new Matrix4f().setPerspective(1.4835298F, (float)$$0.aM().k() / (float)$$0.aM().l(), 0.05F, 10.0F);
+      RenderSystem.backupProjectionMatrix();
+      RenderSystem.setProjectionMatrix($$6, elr.a);
+      elj $$7 = RenderSystem.getModelViewStack();
+      $$7.a();
+      $$7.e();
+      $$7.a(a.b.rotationDegrees(180.0F));
+      RenderSystem.applyModelViewMatrix();
+      RenderSystem.setShader(fnt::t);
+      RenderSystem.enableBlend();
+      RenderSystem.disableCull();
+      RenderSystem.depthMask(false);
+      int $$8 = 2;
 
-   public void a(fno.c $$0, String $$1, String $$2) {
-      this.e = new fno.b($$0, $$1, $$2);
-   }
+      for (int $$9 = 0; $$9 < 4; $$9++) {
+         $$7.a();
+         float $$10 = ((float)($$9 % 2) / 2.0F - 0.5F) / 256.0F;
+         float $$11 = ((float)($$9 / 2) / 2.0F - 0.5F) / 256.0F;
+         float $$12 = 0.0F;
+         $$7.a($$10, $$11, 0.0F);
+         $$7.a(a.b.rotationDegrees($$1));
+         $$7.a(a.d.rotationDegrees($$2));
+         RenderSystem.applyModelViewMatrix();
 
-   public void a(eqv $$0) {
-      if ($$0.q != null && this.e != null) {
-         ac.g().execute(() -> {
-            try {
-               Files.deleteIfExists(this.d);
-            } catch (IOException var3) {
-               b.error("Failed to delete quickplay log file {}", this.d, var3);
+         for (int $$13 = 0; $$13 < 6; $$13++) {
+            RenderSystem.setShaderTexture(0, this.b[$$13]);
+            $$5.a(elo.b.h, elh.s);
+            int $$14 = Math.round(255.0F * $$3) / ($$9 + 1);
+            if ($$13 == 0) {
+               $$5.a(-1.0, -1.0, 1.0).a(0.0F, 0.0F).a(255, 255, 255, $$14).e();
+               $$5.a(-1.0, 1.0, 1.0).a(0.0F, 1.0F).a(255, 255, 255, $$14).e();
+               $$5.a(1.0, 1.0, 1.0).a(1.0F, 1.0F).a(255, 255, 255, $$14).e();
+               $$5.a(1.0, -1.0, 1.0).a(1.0F, 0.0F).a(255, 255, 255, $$14).e();
             }
 
-            fno.a $$2 = new fno.a(this.e, Instant.now(), $$0.q.l());
-            Codec.list(fno.a.a).encodeStart(JsonOps.INSTANCE, List.of($$2)).resultOrPartial(ac.a("Quick Play: ", b::error)).ifPresent($$0xx -> {
-               try {
-                  Files.createDirectories(this.d.getParent());
-                  Files.writeString(this.d, c.toJson($$0xx));
-               } catch (IOException var3x) {
-                  b.error("Failed to write to quickplay log file {}", this.d, var3x);
-               }
-            });
-         });
-      } else {
-         b.error("Failed to log session for quickplay. Missing world data or gamemode");
+            if ($$13 == 1) {
+               $$5.a(1.0, -1.0, 1.0).a(0.0F, 0.0F).a(255, 255, 255, $$14).e();
+               $$5.a(1.0, 1.0, 1.0).a(0.0F, 1.0F).a(255, 255, 255, $$14).e();
+               $$5.a(1.0, 1.0, -1.0).a(1.0F, 1.0F).a(255, 255, 255, $$14).e();
+               $$5.a(1.0, -1.0, -1.0).a(1.0F, 0.0F).a(255, 255, 255, $$14).e();
+            }
+
+            if ($$13 == 2) {
+               $$5.a(1.0, -1.0, -1.0).a(0.0F, 0.0F).a(255, 255, 255, $$14).e();
+               $$5.a(1.0, 1.0, -1.0).a(0.0F, 1.0F).a(255, 255, 255, $$14).e();
+               $$5.a(-1.0, 1.0, -1.0).a(1.0F, 1.0F).a(255, 255, 255, $$14).e();
+               $$5.a(-1.0, -1.0, -1.0).a(1.0F, 0.0F).a(255, 255, 255, $$14).e();
+            }
+
+            if ($$13 == 3) {
+               $$5.a(-1.0, -1.0, -1.0).a(0.0F, 0.0F).a(255, 255, 255, $$14).e();
+               $$5.a(-1.0, 1.0, -1.0).a(0.0F, 1.0F).a(255, 255, 255, $$14).e();
+               $$5.a(-1.0, 1.0, 1.0).a(1.0F, 1.0F).a(255, 255, 255, $$14).e();
+               $$5.a(-1.0, -1.0, 1.0).a(1.0F, 0.0F).a(255, 255, 255, $$14).e();
+            }
+
+            if ($$13 == 4) {
+               $$5.a(-1.0, -1.0, -1.0).a(0.0F, 0.0F).a(255, 255, 255, $$14).e();
+               $$5.a(-1.0, -1.0, 1.0).a(0.0F, 1.0F).a(255, 255, 255, $$14).e();
+               $$5.a(1.0, -1.0, 1.0).a(1.0F, 1.0F).a(255, 255, 255, $$14).e();
+               $$5.a(1.0, -1.0, -1.0).a(1.0F, 0.0F).a(255, 255, 255, $$14).e();
+            }
+
+            if ($$13 == 5) {
+               $$5.a(-1.0, 1.0, 1.0).a(0.0F, 0.0F).a(255, 255, 255, $$14).e();
+               $$5.a(-1.0, 1.0, -1.0).a(0.0F, 1.0F).a(255, 255, 255, $$14).e();
+               $$5.a(1.0, 1.0, -1.0).a(1.0F, 1.0F).a(255, 255, 255, $$14).e();
+               $$5.a(1.0, 1.0, 1.0).a(1.0F, 0.0F).a(255, 255, 255, $$14).e();
+            }
+
+            $$4.b();
+         }
+
+         $$7.b();
+         RenderSystem.applyModelViewMatrix();
+         RenderSystem.colorMask(true, true, true, false);
       }
+
+      RenderSystem.colorMask(true, true, true, true);
+      RenderSystem.restoreProjectionMatrix();
+      $$7.b();
+      RenderSystem.applyModelViewMatrix();
+      RenderSystem.depthMask(true);
+      RenderSystem.enableCull();
+      RenderSystem.enableDepthTest();
    }
 
-   static record a(fno.b b, Instant c, cps d) {
-      public static final Codec<fno.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(fno.b.a.forGetter(fno.a::a), arf.m.fieldOf("lastPlayedTime").forGetter(fno.a::b), cps.f.fieldOf("gamemode").forGetter(fno.a::c))
-               .apply($$0, fno.a::new)
-      );
+   public CompletableFuture<Void> a(fzb $$0, Executor $$1) {
+      CompletableFuture<?>[] $$2 = new CompletableFuture[6];
 
-      public fno.b a() {
-         return this.b;
+      for (int $$3 = 0; $$3 < $$2.length; $$3++) {
+         $$2[$$3] = $$0.a(this.b[$$3], $$1);
       }
 
-      public Instant b() {
-         return this.c;
-      }
-
-      public cps c() {
-         return this.d;
-      }
-   }
-
-   static record b(fno.c b, String c, String d) {
-      public static final MapCodec<fno.b> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(
-                  fno.c.d.fieldOf("type").forGetter(fno.b::a), arf.o.fieldOf("id").forGetter(fno.b::b), Codec.STRING.fieldOf("name").forGetter(fno.b::c)
-               )
-               .apply($$0, fno.b::new)
-      );
-
-      public fno.c a() {
-         return this.b;
-      }
-
-      public String b() {
-         return this.c;
-      }
-
-      public String c() {
-         return this.d;
-      }
-   }
-
-   public static enum c implements asp {
-      a("singleplayer"),
-      b("multiplayer"),
-      c("realms");
-
-      static final Codec<fno.c> d = asp.a(fno.c::values);
-      private final String e;
-
-      private c(String $$0) {
-         this.e = $$0;
-      }
-
-      @Override
-      public String c() {
-         return this.e;
-      }
+      return CompletableFuture.allOf($$2);
    }
 }

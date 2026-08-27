@@ -1,46 +1,28 @@
-import java.io.ByteArrayOutputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
+import com.google.gson.JsonObject;
+import com.mojang.authlib.GameProfile;
+import java.io.File;
+import java.util.Objects;
 
-public class aor {
-   private final ByteArrayOutputStream a;
-   private final DataOutputStream b;
-
-   public aor(int $$0) {
-      this.a = new ByteArrayOutputStream($$0);
-      this.b = new DataOutputStream(this.a);
+public class aor extends aoo<GameProfile, aos> {
+   public aor(File $$0) {
+      super($$0);
    }
 
-   public void a(byte[] $$0) throws IOException {
-      this.b.write($$0, 0, $$0.length);
+   @Override
+   protected aon<GameProfile> a(JsonObject $$0) {
+      return new aos($$0);
    }
 
-   public void a(String $$0) throws IOException {
-      this.b.writeBytes($$0);
-      this.b.write(0);
+   public boolean a(GameProfile $$0) {
+      return this.d($$0);
    }
 
-   public void a(int $$0) throws IOException {
-      this.b.write($$0);
+   @Override
+   public String[] a() {
+      return this.d().stream().map(aon::g).filter(Objects::nonNull).map(GameProfile::getName).toArray(String[]::new);
    }
 
-   public void a(short $$0) throws IOException {
-      this.b.writeShort(Short.reverseBytes($$0));
-   }
-
-   public void b(int $$0) throws IOException {
-      this.b.writeInt(Integer.reverseBytes($$0));
-   }
-
-   public void a(float $$0) throws IOException {
-      this.b.writeInt(Integer.reverseBytes(Float.floatToIntBits($$0)));
-   }
-
-   public byte[] a() {
-      return this.a.toByteArray();
-   }
-
-   public void b() {
-      this.a.reset();
+   protected String b(GameProfile $$0) {
+      return $$0.getId().toString();
    }
 }

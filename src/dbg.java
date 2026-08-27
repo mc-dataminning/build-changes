@@ -1,34 +1,73 @@
-public class dbg extends csv {
-   protected static final int g = 2;
-   protected static final eig h = csv.a(6.0, 0.0, 6.0, 10.0, 10.0, 10.0);
-   protected final it i;
+import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-   protected dbg(dfi.d $$0, it $$1) {
+public class dbg extends cvi implements cxr {
+   public static final MapCodec<dbg> c = b(dbg::new);
+   public static final dgb<dfz> d = cvi.b;
+   protected static final float e = 6.0F;
+   protected static final eia f = ctc.a(2.0, 0.0, 2.0, 14.0, 16.0, 14.0);
+
+   @Override
+   public MapCodec<dbg> a() {
+      return c;
+   }
+
+   public dbg(dfc.d $$0) {
       super($$0);
-      this.i = $$1;
    }
 
    @Override
-   public eig a(dfj $$0, cpb $$1, gw $$2, ehs $$3) {
-      return h;
+   public eia a(dfd $$0, cph $$1, gw $$2, ehm $$3) {
+      return f;
    }
 
    @Override
-   public dfj a(dfj $$0, ha $$1, dfj $$2, cpw $$3, gw $$4, gw $$5) {
-      return $$1 == ha.a && !this.a($$0, $$3, $$4) ? csw.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   protected boolean d(dfd $$0, cph $$1, gw $$2) {
+      return $$0.d($$1, $$2, ha.b) && !$$0.a(cte.kJ);
    }
 
    @Override
-   public boolean a(dfj $$0, cpy $$1, gw $$2) {
-      return a($$1, $$2.d(), ha.b);
+   public cjl a(cqe $$0, gw $$1, dfd $$2) {
+      return new cjl(cte.bw);
+   }
+
+   @Nullable
+   @Override
+   public dfd a(clt $$0) {
+      dfd $$1 = super.a($$0);
+      if ($$1 != null) {
+         eag $$2 = $$0.q().b_($$0.a().c());
+         if ($$2.a(aqa.a) && $$2.e() == 8) {
+            return $$1;
+         }
+      }
+
+      return null;
    }
 
    @Override
-   public void a(dfj $$0, cpv $$1, gw $$2, asc $$3) {
-      double $$4 = (double)$$2.u() + 0.5;
-      double $$5 = (double)$$2.v() + 0.7;
-      double $$6 = (double)$$2.w() + 0.5;
-      $$1.a(iv.Z, $$4, $$5, $$6, 0.0, 0.0, 0.0);
-      $$1.a(this.i, $$4, $$5, $$6, 0.0, 0.0, 0.0);
+   public boolean a(dfd $$0, cqe $$1, gw $$2) {
+      if ($$0.c(d) == dfz.a) {
+         dfd $$3 = $$1.a_($$2.d());
+         return $$3.a(this) && $$3.c(d) == dfz.b;
+      } else {
+         eag $$4 = $$1.b_($$2);
+         return super.a($$0, $$1, $$2) && $$4.a(aqa.a) && $$4.e() == 8;
+      }
+   }
+
+   @Override
+   public eag c_(dfd $$0) {
+      return eah.c.a(false);
+   }
+
+   @Override
+   public boolean a(@Nullable cca $$0, cph $$1, gw $$2, dfd $$3, eaf $$4) {
+      return false;
+   }
+
+   @Override
+   public boolean a(cqc $$0, gw $$1, dfd $$2, eag $$3) {
+      return false;
    }
 }

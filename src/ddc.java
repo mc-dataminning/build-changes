@@ -1,159 +1,250 @@
-public class ddc extends ddy implements ddx {
-   private static final int c = 1;
-   private hn<cjf> f = hn.a(27, cjf.b);
-   private final ddi g = new ddi() {
-      @Override
-      protected void a(cpv $$0, gw $$1, dfj $$2) {
-         ddc.a($$0, $$1, $$2, apd.ej);
-      }
+import java.util.Arrays;
+import javax.annotation.Nullable;
 
+public class ddc extends dct implements bhn {
+   private static final int h = 3;
+   private static final int i = 4;
+   private static final int[] j = new int[]{3};
+   private static final int[] k = new int[]{0, 1, 2, 3};
+   private static final int[] l = new int[]{0, 1, 2, 4};
+   public static final int c = 20;
+   public static final int d = 0;
+   public static final int e = 1;
+   public static final int f = 2;
+   private hn<cjl> m = hn.a(5, cjl.b);
+   int n;
+   private boolean[] r;
+   private cjg s;
+   int t;
+   protected final cfb g = new cfb() {
       @Override
-      protected void b(cpv $$0, gw $$1, dfj $$2) {
-         ddc.a($$0, $$1, $$2, apd.eh);
-      }
-
-      @Override
-      protected void a(cpv $$0, gw $$1, dfj $$2, int $$3, int $$4) {
-         ddc.this.a($$0, $$1, $$2, $$3, $$4);
-      }
-
-      @Override
-      protected boolean a(cbu $$0) {
-         if (!($$0.bS instanceof ces)) {
-            return false;
-         } else {
-            bgr $$1 = ((ces)$$0.bS).l();
-            return $$1 == ddc.this || $$1 instanceof bgq && ((bgq)$$1).a(ddc.this);
+      public int a(int $$0) {
+         switch ($$0) {
+            case 0:
+               return ddc.this.n;
+            case 1:
+               return ddc.this.t;
+            default:
+               return 0;
          }
       }
+
+      @Override
+      public void a(int $$0, int $$1) {
+         switch ($$0) {
+            case 0:
+               ddc.this.n = $$1;
+               break;
+            case 1:
+               ddc.this.t = $$1;
+         }
+      }
+
+      @Override
+      public int a() {
+         return 2;
+      }
    };
-   private final ddd j = new ddd();
 
-   protected ddc(dcx<?> $$0, gw $$1, dfj $$2) {
-      super($$0, $$1, $$2);
-   }
-
-   public ddc(gw $$0, dfj $$1) {
-      this(dcx.b, $$0, $$1);
-   }
-
-   @Override
-   public int b() {
-      return 27;
+   public ddc(gw $$0, dfd $$1) {
+      super(ddb.l, $$0, $$1);
    }
 
    @Override
    protected tl g() {
-      return tl.c("container.chest");
+      return tl.c("container.brewing");
+   }
+
+   @Override
+   public int b() {
+      return this.m.size();
+   }
+
+   @Override
+   public boolean af_() {
+      for (cjl $$0 : this.m) {
+         if (!$$0.b()) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   public static void a(cqb $$0, gw $$1, dfd $$2, ddc $$3) {
+      cjl $$4 = $$3.m.get(4);
+      if ($$3.t <= 0 && $$4.a(cjo.rz)) {
+         $$3.t = 20;
+         $$4.h(1);
+         a($$0, $$1, $$2);
+      }
+
+      boolean $$5 = a($$3.m);
+      boolean $$6 = $$3.n > 0;
+      cjl $$7 = $$3.m.get(3);
+      if ($$6) {
+         $$3.n--;
+         boolean $$8 = $$3.n == 0;
+         if ($$8 && $$5) {
+            a($$0, $$1, $$3.m);
+            a($$0, $$1, $$2);
+         } else if (!$$5 || !$$7.a($$3.s)) {
+            $$3.n = 0;
+            a($$0, $$1, $$2);
+         }
+      } else if ($$5 && $$3.t > 0) {
+         $$3.t--;
+         $$3.n = 400;
+         $$3.s = $$7.d();
+         a($$0, $$1, $$2);
+      }
+
+      boolean[] $$9 = $$3.f();
+      if (!Arrays.equals($$9, $$3.r)) {
+         $$3.r = $$9;
+         dfd $$10 = $$2;
+         if (!($$2.b() instanceof ctg)) {
+            return;
+         }
+
+         for (int $$11 = 0; $$11 < ctg.b.length; $$11++) {
+            $$10 = $$10.a(ctg.b[$$11], Boolean.valueOf($$9[$$11]));
+         }
+
+         $$0.a($$1, $$10, 2);
+      }
+   }
+
+   private boolean[] f() {
+      boolean[] $$0 = new boolean[3];
+
+      for (int $$1 = 0; $$1 < 3; $$1++) {
+         if (!this.m.get($$1).b()) {
+            $$0[$$1] = true;
+         }
+      }
+
+      return $$0;
+   }
+
+   private static boolean a(hn<cjl> $$0) {
+      cjl $$1 = $$0.get(3);
+      if ($$1.b()) {
+         return false;
+      } else if (!clj.a($$1)) {
+         return false;
+      } else {
+         for (int $$2 = 0; $$2 < 3; $$2++) {
+            cjl $$3 = $$0.get($$2);
+            if (!$$3.b() && clj.a($$3, $$1)) {
+               return true;
+            }
+         }
+
+         return false;
+      }
+   }
+
+   private static void a(cqb $$0, gw $$1, hn<cjl> $$2) {
+      cjl $$3 = $$2.get(3);
+
+      for (int $$4 = 0; $$4 < 3; $$4++) {
+         $$2.set($$4, clj.d($$3, $$2.get($$4)));
+      }
+
+      $$3.h(1);
+      if ($$3.d().t()) {
+         cjl $$5 = new cjl($$3.d().s());
+         if ($$3.b()) {
+            $$3 = $$5;
+         } else {
+            bha.a($$0, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), $$5);
+         }
+      }
+
+      $$2.set(3, $$3);
+      $$0.c(1035, $$1, 0);
    }
 
    @Override
    public void a(qw $$0) {
       super.a($$0);
-      this.f = hn.a(this.b(), cjf.b);
-      if (!this.d($$0)) {
-         bgs.b($$0, this.f);
-      }
+      this.m = hn.a(this.b(), cjl.b);
+      bgy.b($$0, this.m);
+      this.n = $$0.g("BrewTime");
+      this.t = $$0.f("Fuel");
    }
 
    @Override
    protected void b(qw $$0) {
       super.b($$0);
-      if (!this.e($$0)) {
-         bgs.a($$0, this.f);
-      }
+      $$0.a("BrewTime", (short)this.n);
+      bgy.a($$0, this.m);
+      $$0.a("Fuel", (byte)this.t);
    }
 
-   public static void a(cpv $$0, gw $$1, dfj $$2, ddc $$3) {
-      $$3.j.a();
+   @Override
+   public cjl a(int $$0) {
+      return $$0 >= 0 && $$0 < this.m.size() ? this.m.get($$0) : cjl.b;
    }
 
-   static void a(cpv $$0, gw $$1, dfj $$2, apc $$3) {
-      dgb $$4 = $$2.c(ctx.c);
-      if ($$4 != dgb.b) {
-         double $$5 = (double)$$1.u() + 0.5;
-         double $$6 = (double)$$1.v() + 0.5;
-         double $$7 = (double)$$1.w() + 0.5;
-         if ($$4 == dgb.c) {
-            ha $$8 = ctx.h($$2);
-            $$5 += (double)$$8.j() * 0.5;
-            $$7 += (double)$$8.l() * 0.5;
-         }
+   @Override
+   public cjl a(int $$0, int $$1) {
+      return bgy.a(this.m, $$0, $$1);
+   }
 
-         $$0.a(null, $$5, $$6, $$7, $$3, ape.e, 0.5F, $$0.z.i() * 0.1F + 0.9F);
+   @Override
+   public cjl b(int $$0) {
+      return bgy.a(this.m, $$0);
+   }
+
+   @Override
+   public void a(int $$0, cjl $$1) {
+      if ($$0 >= 0 && $$0 < this.m.size()) {
+         this.m.set($$0, $$1);
       }
    }
 
    @Override
-   public boolean a_(int $$0, int $$1) {
-      if ($$0 == 1) {
-         this.j.a($$1 > 0);
-         return true;
+   public boolean a(cca $$0) {
+      return bgx.a(this, $$0);
+   }
+
+   @Override
+   public boolean b(int $$0, cjl $$1) {
+      if ($$0 == 3) {
+         return clj.a($$1);
       } else {
-         return super.a_($$0, $$1);
+         return $$0 == 4 ? $$1.a(cjo.rz) : ($$1.a(cjo.rv) || $$1.a(cjo.uu) || $$1.a(cjo.ux) || $$1.a(cjo.rw)) && this.a($$0).b();
       }
    }
 
    @Override
-   public void d_(cbu $$0) {
-      if (!this.q && !$$0.M_()) {
-         this.g.a($$0, this.k(), this.p(), this.q());
+   public int[] a(ha $$0) {
+      if ($$0 == ha.b) {
+         return j;
+      } else {
+         return $$0 == ha.a ? k : l;
       }
    }
 
    @Override
-   public void c(cbu $$0) {
-      if (!this.q && !$$0.M_()) {
-         this.g.b($$0, this.k(), this.p(), this.q());
-      }
+   public boolean a(int $$0, cjl $$1, @Nullable ha $$2) {
+      return this.b($$0, $$1);
    }
 
    @Override
-   protected hn<cjf> f() {
-      return this.f;
+   public boolean b(int $$0, cjl $$1, ha $$2) {
+      return $$0 == 3 ? $$1.a(cjo.rw) : true;
    }
 
    @Override
-   protected void a(hn<cjf> $$0) {
-      this.f = $$0;
+   public void a() {
+      this.m.clear();
    }
 
    @Override
-   public float a(float $$0) {
-      return this.j.a($$0);
-   }
-
-   public static int a(cpb $$0, gw $$1) {
-      dfj $$2 = $$0.a_($$1);
-      if ($$2.t()) {
-         dcv $$3 = $$0.c_($$1);
-         if ($$3 instanceof ddc) {
-            return ((ddc)$$3).g.a();
-         }
-      }
-
-      return 0;
-   }
-
-   public static void a(ddc $$0, ddc $$1) {
-      hn<cjf> $$2 = $$0.f();
-      $$0.a($$1.f());
-      $$1.a($$2);
-   }
-
-   @Override
-   protected cel a(int $$0, cbt $$1) {
-      return ces.a($$0, $$1, this);
-   }
-
-   public void i() {
-      if (!this.q) {
-         this.g.c(this.k(), this.p(), this.q());
-      }
-   }
-
-   protected void a(cpv $$0, gw $$1, dfj $$2, int $$3, int $$4) {
-      csv $$5 = $$2.b();
-      $$0.a($$1, $$5, 1, $$4);
+   protected cer a(int $$0, cbz $$1) {
+      return new cew($$0, $$1, this, this.g);
    }
 }

@@ -1,18 +1,18 @@
-public record vz(djx b, int c) implements vw {
-   public static final aew a = new aew("debug/game_event_listeners");
+public record vz(aey<djn> b, ehh c) implements vx {
+   public static final aez a = new aez("debug/game_event");
 
    public vz(so $$0) {
-      this(djy.c($$0), $$0.m());
+      this($$0.a(jc.A), $$0.k());
    }
 
    @Override
    public void a(so $$0) {
-      djy.a(this.b, $$0);
-      $$0.c(this.c);
+      $$0.b(this.b);
+      $$0.a(this.c);
    }
 
    @Override
-   public aew a() {
+   public aez a() {
       return a;
    }
 }

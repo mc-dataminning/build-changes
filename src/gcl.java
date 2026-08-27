@@ -1,66 +1,52 @@
-import com.google.common.collect.Lists;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
-import java.util.List;
-import org.apache.commons.lang3.Validate;
+public class gcl {
+   public static class a extends gbr {
+      private final fnc n;
 
-public class gcl implements JsonDeserializer<gck> {
-   private static final bgb a = bfz.a(1.0F);
+      protected a(fnc $$0, apf $$1) {
+         super($$1, aph.i, gci.t());
+         this.n = $$0;
+         this.i = false;
+         this.j = 0;
+         this.d = 1.0F;
+         this.l = true;
+      }
 
-   public gck a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-      JsonObject $$3 = arn.m($$0, "entry");
-      boolean $$4 = arn.a($$3, "replace", false);
-      String $$5 = arn.a($$3, "subtitle", null);
-      List<gcj> $$6 = this.a($$3);
-      return new gck($$6, $$4, $$5);
-   }
-
-   private List<gcj> a(JsonObject $$0) {
-      List<gcj> $$1 = Lists.newArrayList();
-      if ($$0.has("sounds")) {
-         JsonArray $$2 = arn.v($$0, "sounds");
-
-         for (int $$3 = 0; $$3 < $$2.size(); $$3++) {
-            JsonElement $$4 = $$2.get($$3);
-            if (arn.a($$4)) {
-               String $$5 = arn.a($$4, "sound");
-               $$1.add(new gcj($$5, a, a, 1, gcj.a.a, false, false, 16));
-            } else {
-               $$1.add(this.b(arn.m($$4, "sound")));
-            }
+      @Override
+      public void q() {
+         if (this.n.dG() || !this.n.bc()) {
+            this.n();
          }
       }
-
-      return $$1;
    }
 
-   private gcj b(JsonObject $$0) {
-      String $$1 = arn.i($$0, "name");
-      gcj.a $$2 = this.a($$0, gcj.a.a);
-      float $$3 = arn.a($$0, "volume", 1.0F);
-      Validate.isTrue($$3 > 0.0F, "Invalid volume", new Object[0]);
-      float $$4 = arn.a($$0, "pitch", 1.0F);
-      Validate.isTrue($$4 > 0.0F, "Invalid pitch", new Object[0]);
-      int $$5 = arn.a($$0, "weight", 1);
-      Validate.isTrue($$5 > 0, "Invalid weight", new Object[0]);
-      boolean $$6 = arn.a($$0, "preload", false);
-      boolean $$7 = arn.a($$0, "stream", false);
-      int $$8 = arn.a($$0, "attenuation_distance", 16);
-      return new gcj($$1, bfz.a($$3), bfz.a($$4), $$5, $$2, $$7, $$6, $$8);
-   }
+   public static class b extends gbr {
+      public static final int n = 40;
+      private final fnc o;
+      private int p;
 
-   private gcj.a a(JsonObject $$0, gcj.a $$1) {
-      gcj.a $$2 = $$1;
-      if ($$0.has("type")) {
-         $$2 = gcj.a.a(arn.i($$0, "type"));
-         Validate.notNull($$2, "Invalid type", new Object[0]);
+      public b(fnc $$0) {
+         super(apg.z, aph.i, gci.t());
+         this.o = $$0;
+         this.i = true;
+         this.j = 0;
+         this.d = 1.0F;
+         this.l = true;
       }
 
-      return $$2;
+      @Override
+      public void q() {
+         if (!this.o.dG() && this.p >= 0) {
+            if (this.o.bc()) {
+               this.p++;
+            } else {
+               this.p -= 2;
+            }
+
+            this.p = Math.min(this.p, 40);
+            this.d = Math.max(0.0F, Math.min((float)this.p / 40.0F, 1.0F));
+         } else {
+            this.n();
+         }
+      }
    }
 }

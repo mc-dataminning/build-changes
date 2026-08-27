@@ -1,17 +1,33 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import java.util.Map;
-import java.util.Objects;
+import com.mojang.serialization.Dynamic;
 
-public class avw extends azh {
-   public static final Map<String, String> a = ImmutableMap.builder().put("minecraft:puffer_fish_spawn_egg", "minecraft:pufferfish_spawn_egg").build();
-
+public class avw extends ayf {
    public avw(Schema $$0, boolean $$1) {
-      super("EntityPufferfishRenameFix", $$0, $$1);
+      super($$0, $$1, "EntityItemFrameDirectionFix", azd.x, "minecraft:item_frame");
+   }
+
+   public Dynamic<?> a(Dynamic<?> $$0) {
+      return $$0.set("Facing", $$0.createByte(a($$0.get("Facing").asByte((byte)0))));
    }
 
    @Override
-   protected String a(String $$0) {
-      return Objects.equals("minecraft:puffer_fish", $$0) ? "minecraft:pufferfish" : $$0;
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), this::a);
+   }
+
+   private static byte a(byte $$0) {
+      switch ($$0) {
+         case 0:
+            return 3;
+         case 1:
+            return 4;
+         case 2:
+         default:
+            return 2;
+         case 3:
+            return 5;
+      }
    }
 }

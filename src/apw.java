@@ -1,10 +1,11 @@
 public class apw {
-   public static final aqh<dtj> a = a("visible");
+   public static final aqk<bvb> a = a("default_spawns");
+   public static final aqk<bvb> b = a("full_moon_spawns");
 
    private apw() {
    }
 
-   private static aqh<dtj> a(String $$0) {
-      return aqh.a(jc.av, new aew($$0));
+   private static aqk<bvb> a(String $$0) {
+      return aqk.a(jc.k, new aez($$0));
    }
 }

@@ -1,120 +1,99 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class cyc extends csv {
-   public static final dgh<dgk> a = dfz.bf;
-   public static final dga b = dfz.w;
-   public static final dgj c = dfz.aR;
-   public static final int d = 3;
+public class cyc extends ctl implements ctf {
+   public static final MapCodec<cyc> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(aey.a(jc.at).fieldOf("feature").forGetter($$0x -> $$0x.d), t()).apply($$0, cyc::new)
+   );
+   protected static final float b = 3.0F;
+   protected static final eia c = ctc.a(5.0, 0.0, 5.0, 11.0, 6.0, 11.0);
+   private final aey<dnd<?, ?>> d;
 
-   public cyc(dfi.d $$0) {
-      super($$0);
-      this.k(this.C.b().a(a, dgk.a).a(c, Integer.valueOf(0)).a(b, Boolean.valueOf(false)));
+   @Override
+   public MapCodec<cyc> a() {
+      return a;
    }
 
-   private dfj b(cpw $$0, gw $$1, dfj $$2) {
-      dgk $$3 = $$0.a_($$1.c()).A();
-      if ($$3.e()) {
-         return $$2.a(a, $$3);
-      } else {
-         dgk $$4 = $$0.a_($$1.d()).A();
-         dgk $$5 = $$4.e() ? dgk.a : $$4;
-         return $$2.a(a, $$5);
-      }
+   public cyc(aey<dnd<?, ?>> $$0, dfc.d $$1) {
+      super($$1);
+      this.d = $$0;
    }
 
    @Override
-   public dfj a(cln $$0) {
-      return this.b($$0.q(), $$0.a(), this.n());
+   public eia a(dfd $$0, cph $$1, gw $$2, ehm $$3) {
+      return c;
    }
 
    @Override
-   public dfj a(dfj $$0, ha $$1, dfj $$2, cpw $$3, gw $$4, gw $$5) {
-      boolean $$6 = $$1.o() == ha.a.b;
-      return $$6 ? this.b($$3, $$4, $$0) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
+   public void b(dfd $$0, akt $$1, gw $$2, ash $$3) {
+      if ($$3.a(25) == 0) {
+         int $$4 = 5;
+         int $$5 = 4;
 
-   @Override
-   public void a(dfj $$0, cpv $$1, gw $$2, csv $$3, gw $$4, boolean $$5) {
-      boolean $$6 = $$1.B($$2);
-      if ($$6 != $$0.c(b)) {
-         if ($$6) {
-            this.a(null, $$0, $$1, $$2);
+         for (gw $$6 : gw.a($$2.b(-4, -1, -4), $$2.b(4, 1, 4))) {
+            if ($$1.a_($$6).a(this)) {
+               if (--$$4 <= 0) {
+                  return;
+               }
+            }
          }
 
-         $$1.a($$2, $$0.a(b, Boolean.valueOf($$6)), 3);
-      }
-   }
+         gw $$7 = $$2.b($$3.a(3) - 1, $$3.a(2) - $$3.a(2), $$3.a(3) - 1);
 
-   private void a(@Nullable biq $$0, dfj $$1, cpv $$2, gw $$3) {
-      if ($$1.c(a).e() || $$2.a_($$3.c()).i()) {
-         $$2.a($$3, this, 0, 0);
-         $$2.a($$0, djt.H, $$3);
+         for (int $$8 = 0; $$8 < 4; $$8++) {
+            if ($$1.t($$7) && $$0.a($$1, $$7)) {
+               $$2 = $$7;
+            }
+
+            $$7 = $$2.b($$3.a(3) - 1, $$3.a(2) - $$3.a(2), $$3.a(3) - 1);
+         }
+
+         if ($$1.t($$7) && $$0.a($$1, $$7)) {
+            $$1.a($$7, $$0, 2);
+         }
       }
    }
 
    @Override
-   public bgy a(dfj $$0, cpv $$1, gw $$2, cbu $$3, bgx $$4, ehj $$5) {
-      cjf $$6 = $$3.b($$4);
-      if ($$6.a(aqa.aG) && $$5.b() == ha.b) {
-         return bgy.d;
-      } else if ($$1.B) {
-         return bgy.a;
+   protected boolean d(dfd $$0, cph $$1, gw $$2) {
+      return $$0.i($$1, $$2);
+   }
+
+   @Override
+   public boolean a(dfd $$0, cqe $$1, gw $$2) {
+      gw $$3 = $$2.d();
+      dfd $$4 = $$1.a_($$3);
+      return $$4.a(apv.aZ) ? true : $$1.b($$2, 0) < 13 && this.d($$4, $$1, $$3);
+   }
+
+   public boolean a(akt $$0, gw $$1, dfd $$2, ash $$3) {
+      Optional<? extends he<dnd<?, ?>>> $$4 = $$0.G_().d(jc.at).b(this.d);
+      if ($$4.isEmpty()) {
+         return false;
       } else {
-         $$0 = $$0.a(c);
-         $$1.a($$2, $$0, 3);
-         this.a($$3, $$0, $$1, $$2);
-         $$3.a(apn.ag);
-         return bgy.b;
-      }
-   }
-
-   @Override
-   public void a(dfj $$0, cpv $$1, gw $$2, cbu $$3) {
-      if (!$$1.B) {
-         this.a($$3, $$0, $$1, $$2);
-         $$3.a(apn.af);
-      }
-   }
-
-   public static float b(int $$0) {
-      return (float)Math.pow(2.0, (double)($$0 - 12) / 12.0);
-   }
-
-   @Override
-   public boolean a(dfj $$0, cpv $$1, gw $$2, int $$3, int $$4) {
-      dgk $$5 = $$0.c(a);
-      float $$7;
-      if ($$5.b()) {
-         int $$6 = $$0.c(c);
-         $$7 = b($$6);
-         $$1.a(iv.V, (double)$$2.u() + 0.5, (double)$$2.v() + 1.2, (double)$$2.w() + 0.5, (double)$$6 / 24.0, 0.0, 0.0);
-      } else {
-         $$7 = 1.0F;
-      }
-
-      he<apc> $$10;
-      if ($$5.d()) {
-         aew $$9 = this.a($$1, $$2);
-         if ($$9 == null) {
+         $$0.a($$1, false);
+         if ($$4.get().a().a($$0, $$0.k().g(), $$3, $$1)) {
+            return true;
+         } else {
+            $$0.a($$1, $$2, 3);
             return false;
          }
-
-         $$10 = he.a(apc.a($$9));
-      } else {
-         $$10 = $$5.a();
       }
+   }
 
-      $$1.a(null, (double)$$2.u() + 0.5, (double)$$2.v() + 0.5, (double)$$2.w() + 0.5, $$10, ape.c, 3.0F, $$7, $$1.z.g());
+   @Override
+   public boolean b(cqe $$0, gw $$1, dfd $$2) {
       return true;
    }
 
-   @Nullable
-   private aew a(cpv $$0, gw $$1) {
-      return $$0.c_($$1.c()) instanceof def $$2 ? $$2.f() : null;
+   @Override
+   public boolean a(cqb $$0, ash $$1, gw $$2, dfd $$3) {
+      return (double)$$1.i() < 0.4;
    }
 
    @Override
-   protected void a(dfk.a<csv, dfj> $$0) {
-      $$0.a(a, b, c);
+   public void a(akt $$0, ash $$1, gw $$2, dfd $$3) {
+      this.a($$0, $$2, $$3, $$1);
    }
 }

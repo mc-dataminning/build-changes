@@ -1,28 +1,45 @@
-import java.util.EnumSet;
+public class bpv extends bqu {
+   private final bva g;
 
-public class bpv extends bqb {
-   private final bji a;
-
-   public bpv(bji $$0) {
-      this.a = $$0;
-      this.a(EnumSet.of(bqb.a.c));
-      $$0.L().a(true);
+   public bpv(bva $$0, double $$1) {
+      super($$0, $$1, 8);
+      this.g = $$0;
    }
 
    @Override
    public boolean a() {
-      return this.a.aX() && this.a.b(apx.a) > this.a.de() || this.a.bl();
+      return this.g.s() && !this.g.ge() && super.a();
    }
 
    @Override
-   public boolean Q_() {
-      return true;
+   public void c() {
+      super.c();
+      this.g.y(false);
+   }
+
+   @Override
+   public void d() {
+      super.d();
+      this.g.y(false);
    }
 
    @Override
    public void e() {
-      if (this.a.ef().i() < 0.8F) {
-         this.a.K().a();
+      super.e();
+      this.g.y(this.m());
+   }
+
+   @Override
+   protected boolean a(cqe $$0, gw $$1) {
+      if (!$$0.t($$1.c())) {
+         return false;
+      } else {
+         dfd $$2 = $$0.a_($$1);
+         if ($$2.a(cte.cv)) {
+            return ddg.a($$0, $$1) < 1;
+         } else {
+            return $$2.a(cte.cD) && $$2.c(cwh.b) ? true : $$2.a(apv.R, $$0x -> $$0x.d(csv.b).map($$0xx -> $$0xx != dfq.a).orElse(true));
+         }
       }
    }
 }

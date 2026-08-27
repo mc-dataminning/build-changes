@@ -1,92 +1,78 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.Lists;
+import java.util.Collection;
+import java.util.List;
 
-public class aax implements vd<ww> {
-   private static final int a = 1;
-   private static final int b = 2;
-   private static final int c = 4;
-   private final int d;
-   private final bib e;
-   private final byte f;
-   private final int g;
-   private final byte h;
-   @Nullable
-   private final bid.a i;
+public class aax implements ve<wx> {
+   private final int a;
+   private final List<aax.a> b;
 
-   public aax(int $$0, bid $$1) {
-      this.d = $$0;
-      this.e = $$1.c();
-      this.f = (byte)($$1.e() & 0xFF);
-      this.g = $$1.d();
-      byte $$2 = 0;
-      if ($$1.f()) {
-         $$2 = (byte)($$2 | 1);
+   public aax(int $$0, Collection<bko> $$1) {
+      this.a = $$0;
+      this.b = Lists.newArrayList();
+
+      for (bko $$2 : $$1) {
+         this.b.add(new aax.a($$2.a(), $$2.b(), $$2.c()));
       }
-
-      if ($$1.g()) {
-         $$2 = (byte)($$2 | 2);
-      }
-
-      if ($$1.h()) {
-         $$2 = (byte)($$2 | 4);
-      }
-
-      this.h = $$2;
-      this.i = $$1.a().orElse(null);
    }
 
    public aax(so $$0) {
-      this.d = $$0.m();
-      this.e = $$0.a(jb.e);
-      this.f = $$0.readByte();
-      this.g = $$0.m();
-      this.h = $$0.readByte();
-      this.i = $$0.c($$0x -> $$0x.a(ri.a, bid.a.a));
+      this.a = $$0.n();
+      this.b = $$0.a((so.a<aax.a>)($$0x -> {
+         aez $$1 = $$0x.t();
+         bkn $$2 = jb.v.a($$1);
+         double $$3 = $$0x.readDouble();
+         List<bkq> $$4 = $$0x.a((so.a<bkq>)($$0xx -> new bkq($$0xx.p(), "Unknown synced attribute modifier", $$0xx.readDouble(), bkq.a.a($$0xx.readByte()))));
+         return new aax.a($$2, $$3, $$4);
+      }));
    }
 
    @Override
    public void a(so $$0) {
-      $$0.c(this.d);
-      $$0.a(jb.e, this.e);
-      $$0.k(this.f);
-      $$0.c(this.g);
-      $$0.k(this.h);
-      $$0.a(this.i, ($$0x, $$1) -> $$0x.a(ri.a, bid.a.a, $$1));
+      $$0.c(this.a);
+      $$0.a(this.b, ($$0x, $$1) -> {
+         $$0x.a(jb.v.b($$1.a()));
+         $$0x.a($$1.b());
+         $$0x.a($$1.c(), ($$0xx, $$1x) -> {
+            $$0xx.a($$1x.a());
+            $$0xx.a($$1x.c());
+            $$0xx.k($$1x.b().a());
+         });
+      });
    }
 
-   public void a(ww $$0) {
+   public void a(wx $$0) {
       $$0.a(this);
    }
 
    public int a() {
-      return this.d;
+      return this.a;
    }
 
-   public bib d() {
-      return this.e;
+   public List<aax.a> d() {
+      return this.b;
    }
 
-   public byte e() {
-      return this.f;
-   }
+   public static class a {
+      private final bkn a;
+      private final double b;
+      private final Collection<bkq> c;
 
-   public int f() {
-      return this.g;
-   }
+      public a(bkn $$0, double $$1, Collection<bkq> $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+      }
 
-   public boolean g() {
-      return (this.h & 2) == 2;
-   }
+      public bkn a() {
+         return this.a;
+      }
 
-   public boolean h() {
-      return (this.h & 1) == 1;
-   }
+      public double b() {
+         return this.b;
+      }
 
-   public boolean i() {
-      return (this.h & 4) == 4;
-   }
-
-   @Nullable
-   public bid.a j() {
-      return this.i;
+      public Collection<bkq> c() {
+         return this.c;
+      }
    }
 }

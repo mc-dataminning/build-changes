@@ -1,20 +1,12 @@
-import net.minecraft.server.MinecraftServer;
+import java.util.Set;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.tuple.Pair;
 
-public enum bdt {
-   a("client"),
-   b("server");
+public interface bdt extends bdv {
+   bdu d();
 
-   private final String c;
+   @Nullable
+   bdo.a c(String var1);
 
-   private bdt(String $$0) {
-      this.c = $$0;
-   }
-
-   public static bdt a(MinecraftServer $$0) {
-      return $$0.l() ? b : a;
-   }
-
-   public String a() {
-      return this.c;
-   }
+   Set<Pair<String, bey>> e();
 }

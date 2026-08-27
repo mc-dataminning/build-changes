@@ -1,49 +1,37 @@
-import java.util.Arrays;
+public class fhf<T extends biw> extends feq<T> {
+   private final fhx a;
+   private final fhx b;
 
-public class fhf<T extends biq> extends ffm<T> {
-   private final fic[] a = new fic[8];
-   private final fic b;
-
-   public fhf(fic $$0) {
-      this.b = $$0;
-      Arrays.setAll(this.a, $$1 -> $$0.b(a($$1)));
+   public fhf(fhx $$0) {
+      this.a = $$0;
+      this.b = $$0.b("tail");
    }
 
-   private static String a(int $$0) {
-      return "tentacle" + $$0;
+   public static fid a(fib $$0) {
+      fif $$1 = new fif();
+      fig $$2 = $$1.a();
+      int $$3 = 19;
+      $$2.a("body", fic.c().a(0, 20).a(-1.0F, -3.0F, -3.0F, 2.0F, 6.0F, 6.0F, $$0), fhz.a(0.0F, 19.0F, 0.0F));
+      $$2.a("tail", fic.c().a(21, 16).a(0.0F, -3.0F, 0.0F, 0.0F, 6.0F, 5.0F, $$0), fhz.a(0.0F, 19.0F, 3.0F));
+      $$2.a("right_fin", fic.c().a(2, 16).a(-2.0F, 0.0F, 0.0F, 2.0F, 2.0F, 0.0F, $$0), fhz.a(-1.0F, 20.0F, 0.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
+      $$2.a("left_fin", fic.c().a(2, 12).a(0.0F, 0.0F, 0.0F, 2.0F, 2.0F, 0.0F, $$0), fhz.a(1.0F, 20.0F, 0.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
+      $$2.a("top_fin", fic.c().a(20, 11).a(0.0F, -4.0F, 0.0F, 0.0F, 4.0F, 6.0F, $$0), fhz.a(0.0F, 16.0F, -3.0F));
+      $$2.a("bottom_fin", fic.c().a(20, 21).a(0.0F, 0.0F, 0.0F, 0.0F, 4.0F, 6.0F, $$0), fhz.a(0.0F, 22.0F, -3.0F));
+      return fid.a($$1, 32, 32);
    }
 
-   public static fii b() {
-      fik $$0 = new fik();
-      fil $$1 = $$0.a();
-      fig $$2 = new fig(0.02F);
-      int $$3 = -16;
-      $$1.a("body", fih.c().a(0, 0).a(-6.0F, -8.0F, -6.0F, 12.0F, 16.0F, 12.0F, $$2), fie.a(0.0F, 8.0F, 0.0F));
-      int $$4 = 8;
-      fih $$5 = fih.c().a(48, 0).a(-1.0F, 0.0F, -1.0F, 2.0F, 18.0F, 2.0F);
-
-      for (int $$6 = 0; $$6 < 8; $$6++) {
-         double $$7 = (double)$$6 * Math.PI * 2.0 / 8.0;
-         float $$8 = (float)Math.cos($$7) * 5.0F;
-         float $$9 = 15.0F;
-         float $$10 = (float)Math.sin($$7) * 5.0F;
-         $$7 = (double)$$6 * Math.PI * -2.0 / 8.0 + (Math.PI / 2);
-         float $$11 = (float)$$7;
-         $$1.a(a($$6), $$5, fie.a($$8, 15.0F, $$10, 0.0F, $$11, 0.0F));
-      }
-
-      return fii.a($$0, 64, 32);
+   @Override
+   public fhx a() {
+      return this.a;
    }
 
    @Override
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      for (fic $$6 : this.a) {
-         $$6.e = $$3;
+      float $$6 = 1.0F;
+      if (!$$0.aX()) {
+         $$6 = 1.5F;
       }
-   }
 
-   @Override
-   public fic a() {
-      return this.b;
+      this.b.f = -$$6 * 0.45F * asb.a(0.6F * $$3);
    }
 }

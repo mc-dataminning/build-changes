@@ -1,94 +1,58 @@
-import com.mojang.datafixers.DataFixer;
-import com.mojang.serialization.Codec;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import java.io.BufferedOutputStream;
 import java.io.IOException;
-import java.nio.file.Path;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Supplier;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.util.zip.DeflaterOutputStream;
+import java.util.zip.GZIPInputStream;
+import java.util.zip.GZIPOutputStream;
+import java.util.zip.InflaterInputStream;
 import javax.annotation.Nullable;
 
-public class dih implements AutoCloseable {
-   public static final int d = 1493;
-   private final dij a;
-   protected final DataFixer e;
+public class dih {
+   private static final Int2ObjectMap<dih> d = new Int2ObjectOpenHashMap();
+   public static final dih a = a(new dih(1, $$0 -> new ark(new GZIPInputStream($$0)), $$0 -> new BufferedOutputStream(new GZIPOutputStream($$0))));
+   public static final dih b = a(new dih(2, $$0 -> new ark(new InflaterInputStream($$0)), $$0 -> new BufferedOutputStream(new DeflaterOutputStream($$0))));
+   public static final dih c = a(new dih(3, $$0 -> $$0, $$0 -> $$0));
+   private final int e;
+   private final dih.a<InputStream> f;
+   private final dih.a<OutputStream> g;
+
+   private dih(int $$0, dih.a<InputStream> $$1, dih.a<OutputStream> $$2) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
+   }
+
+   private static dih a(dih $$0) {
+      d.put($$0.e, $$0);
+      return $$0;
+   }
+
    @Nullable
-   private volatile dvd b;
-
-   public dih(Path $$0, DataFixer $$1, boolean $$2) {
-      this.e = $$1;
-      this.a = new dij($$0, $$2, "chunk");
+   public static dih a(int $$0) {
+      return (dih)d.get($$0);
    }
 
-   public boolean b(cpc $$0, int $$1) {
-      return this.a.a($$0, $$1);
+   public static boolean b(int $$0) {
+      return d.containsKey($$0);
    }
 
-   public qw a(aev<cpv> $$0, Supplier<ecc> $$1, qw $$2, Optional<aev<Codec<? extends dhg>>> $$3) {
-      int $$4 = a($$2);
-      if ($$4 < 1493) {
-         $$2 = ata.c.a(this.e, $$2, $$4, 1493);
-         if ($$2.p("Level").q("hasLegacyStructureData")) {
-            dvd $$5 = this.a($$0, $$1);
-            $$2 = $$5.a($$2);
-         }
-      }
-
-      a($$2, $$0, $$3);
-      $$2 = ata.c.a(this.e, $$2, Math.max(1493, $$4));
-      if ($$4 < aa.b().d().c()) {
-         rj.g($$2);
-      }
-
-      $$2.r("__context");
-      return $$2;
+   public int a() {
+      return this.e;
    }
 
-   private dvd a(aev<cpv> $$0, Supplier<ecc> $$1) {
-      dvd $$2 = this.b;
-      if ($$2 == null) {
-         synchronized (this) {
-            $$2 = this.b;
-            if ($$2 == null) {
-               this.b = $$2 = dvd.a($$0, $$1.get());
-            }
-         }
-      }
-
-      return $$2;
+   public OutputStream a(OutputStream $$0) throws IOException {
+      return this.g.wrap($$0);
    }
 
-   public static void a(qw $$0, aev<cpv> $$1, Optional<aev<Codec<? extends dhg>>> $$2) {
-      qw $$3 = new qw();
-      $$3.a("dimension", $$1.a().toString());
-      $$2.ifPresent($$1x -> $$3.a("generator", $$1x.a().toString()));
-      $$0.a("__context", $$3);
+   public InputStream a(InputStream $$0) throws IOException {
+      return this.f.wrap($$0);
    }
 
-   public static int a(qw $$0) {
-      return rj.b($$0, -1);
-   }
-
-   public CompletableFuture<Optional<qw>> e(cpc $$0) {
-      return this.a.a($$0);
-   }
-
-   public void a(cpc $$0, qw $$1) {
-      this.a.a($$0, $$1);
-      if (this.b != null) {
-         this.b.a($$0.a());
-      }
-   }
-
-   public void o() {
-      this.a.a(true).join();
-   }
-
-   @Override
-   public void close() throws IOException {
-      this.a.close();
-   }
-
-   public dif p() {
-      return this.a;
+   @FunctionalInterface
+   interface a<O> {
+      O wrap(O var1) throws IOException;
    }
 }

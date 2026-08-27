@@ -1,30 +1,14 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.serialization.Dynamic;
 
-public class awv extends DataFix {
-   public awv(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+public class awv extends ayf {
+   public awv(Schema $$0) {
+      super($$0, false, "Remove filtered text from signs", azd.s, "minecraft:sign");
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(ayx.C);
-      return this.fixTypeEverywhereTyped("IglooMetadataRemovalFix", $$0, $$0x -> $$0x.update(DSL.remainderFinder(), awv::a));
-   }
-
-   private static <T> Dynamic<T> a(Dynamic<T> $$0) {
-      boolean $$1 = $$0.get("Children").asStreamOpt().map($$0x -> $$0x.allMatch(awv::c)).result().orElse(false);
-      return $$1 ? $$0.set("id", $$0.createString("Igloo")).remove("Children") : $$0.update("Children", awv::b);
-   }
-
-   private static <T> Dynamic<T> b(Dynamic<T> $$0) {
-      return $$0.asStreamOpt().map($$0x -> $$0x.filter($$0xx -> !c($$0xx))).map($$0::createList).result().orElse($$0);
-   }
-
-   private static boolean c(Dynamic<?> $$0) {
-      return $$0.get("id").asString("").equals("Iglu");
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), $$0x -> $$0x.remove("FilteredText1").remove("FilteredText2").remove("FilteredText3").remove("FilteredText4"));
    }
 }

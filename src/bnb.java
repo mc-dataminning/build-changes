@@ -1,28 +1,33 @@
 import com.mojang.datafixers.kinds.App;
 import java.util.Optional;
 import java.util.function.Function;
+import java.util.function.Predicate;
 
 public class bnb {
-   private static final int a = 1;
-
-   public static bky<bji> a(float $$0) {
-      return a($$1 -> $$0);
+   public static ble<bjm> a(bjp $$0, float $$1) {
+      return a($$1x -> $$0.equals($$1x.ag().f()), $$1);
    }
 
-   public static bky<bji> a(Function<bjg, Float> $$0) {
-      return boj.a(
-         (Function<boj.b<bji>, ? extends App<boj.c<bji>, bom<bji>>>)($$1 -> $$1.group($$1.a(bsh.m), $$1.a(bsh.n), $$1.b(bsh.o), $$1.a(bsh.h))
-               .apply($$1, ($$2, $$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
-                     bjg $$9 = $$1.b($$4);
-                     Optional<bsj> $$10 = $$1.a($$5);
-                     if ($$10.isPresent() && $$10.get().a($$9) && bkz.a($$7, $$9, 1)) {
-                        $$2.b();
-                     } else {
-                        $$3.a(new bli($$9, true));
-                        $$2.a(new bsk(new bli($$9, false), $$0.apply($$7), 0));
-                     }
+   public static bmn<bjm> a(bja<?> $$0, float $$1) {
+      return a($$1x -> $$0.equals($$1x.ag()), $$1);
+   }
 
-                     return true;
+   public static bmn<bjm> a(float $$0) {
+      return a($$0x -> true, $$0);
+   }
+
+   public static bmn<bjm> a(Predicate<bjm> $$0, float $$1) {
+      float $$2 = $$1 * $$1;
+      return bop.a(
+         (Function<bop.b<bjm>, ? extends App<bop.c<bjm>, bos<bjm>>>)($$2x -> $$2x.group($$2x.c(bsn.n), $$2x.b(bsn.h))
+               .apply($$2x, ($$3, $$4) -> ($$5, $$6, $$7) -> {
+                     Optional<bjm> $$8 = $$2x.<bsp>b($$4).a($$0.and($$2xxxx -> $$2xxxx.f((biw)$$6) <= (double)$$2 && !$$6.x($$2xxxx)));
+                     if ($$8.isEmpty()) {
+                        return false;
+                     } else {
+                        $$3.a(new blo($$8.get(), true));
+                        return true;
+                     }
                   }))
       );
    }

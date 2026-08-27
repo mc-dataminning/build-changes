@@ -1,73 +1,45 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
+public class cfm extends cgj {
+   private final cca a;
+   private int b;
 
-public class cfm {
-   private final List<cfm.b> a;
-   private final cfm.b b;
-
-   cfm(List<cfm.b> $$0, cfm.b $$1) {
-      if (!$$0.isEmpty() && !$$1.equals(cfm.b.e)) {
-         this.a = $$0;
-         this.b = $$1;
-      } else {
-         throw new IllegalArgumentException("Need to define both inputSlots and resultSlot");
-      }
+   public cfm(cca $$0, bgx $$1, int $$2, int $$3, int $$4) {
+      super($$1, $$2, $$3, $$4);
+      this.a = $$0;
    }
 
-   public static cfm.a a() {
-      return new cfm.a();
+   @Override
+   public boolean a(cjl $$0) {
+      return false;
    }
 
-   public boolean a(int $$0) {
-      return this.a.size() >= $$0;
-   }
-
-   public cfm.b b(int $$0) {
-      return this.a.get($$0);
-   }
-
-   public cfm.b b() {
-      return this.b;
-   }
-
-   public List<cfm.b> c() {
-      return this.a;
-   }
-
-   public int d() {
-      return this.a.size();
-   }
-
-   public int e() {
-      return this.d();
-   }
-
-   public List<Integer> f() {
-      return this.a.stream().map(cfm.b::a).collect(Collectors.toList());
-   }
-
-   public static class a {
-      private final List<cfm.b> a = new ArrayList<>();
-      private cfm.b b = cfm.b.e;
-
-      public cfm.a a(int $$0, int $$1, int $$2, Predicate<cjf> $$3) {
-         this.a.add(new cfm.b($$0, $$1, $$2, $$3));
-         return this;
+   @Override
+   public cjl a(int $$0) {
+      if (this.f()) {
+         this.b = this.b + Math.min($$0, this.e().L());
       }
 
-      public cfm.a a(int $$0, int $$1, int $$2) {
-         this.b = new cfm.b($$0, $$1, $$2, $$0x -> false);
-         return this;
-      }
-
-      public cfm a() {
-         return new cfm(this.a, this.b);
-      }
+      return super.a($$0);
    }
 
-   public static record b(int a, int b, int c, Predicate<cjf> d) {
-      static final cfm.b e = new cfm.b(0, 0, 0, $$0 -> true);
+   @Override
+   public void a(cca $$0, cjl $$1) {
+      this.b_($$1);
+      super.a($$0, $$1);
+   }
+
+   @Override
+   protected void a(cjl $$0, int $$1) {
+      this.b += $$1;
+      this.b_($$0);
+   }
+
+   @Override
+   protected void b_(cjl $$0) {
+      $$0.a(this.a.dL(), this.a, this.b);
+      if (this.a instanceof aku $$1 && this.d instanceof dco $$2) {
+         $$2.a($$1);
+      }
+
+      this.b = 0;
    }
 }

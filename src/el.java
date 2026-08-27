@@ -11,17 +11,17 @@ import java.util.concurrent.CompletableFuture;
 
 public class el implements ArgumentType<String> {
    private static final Collection<String> a = Arrays.asList("foo", "*", "012");
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> tl.a("arguments.objective.notFound", $$0));
-   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> tl.a("arguments.objective.readonly", $$0));
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> tl.b("arguments.objective.notFound", $$0));
+   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> tl.b("arguments.objective.readonly", $$0));
 
    public static el a() {
       return new el();
    }
 
-   public static eij a(CommandContext<dt> $$0, String $$1) throws CommandSyntaxException {
+   public static eid a(CommandContext<dt> $$0, String $$1) throws CommandSyntaxException {
       String $$2 = (String)$$0.getArgument($$1, String.class);
-      eim $$3 = ((dt)$$0.getSource()).l().aF();
-      eij $$4 = $$3.b($$2);
+      eig $$3 = ((dt)$$0.getSource()).l().aF();
+      eid $$4 = $$3.b($$2);
       if ($$4 == null) {
          throw b.create($$2);
       } else {
@@ -29,8 +29,8 @@ public class el implements ArgumentType<String> {
       }
    }
 
-   public static eij b(CommandContext<dt> $$0, String $$1) throws CommandSyntaxException {
-      eij $$2 = a($$0, $$1);
+   public static eid b(CommandContext<dt> $$0, String $$1) throws CommandSyntaxException {
+      eid $$2 = a($$0, $$1);
       if ($$2.c().e()) {
          throw c.create($$2.b());
       } else {

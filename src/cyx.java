@@ -1,42 +1,43 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class cyx extends csv {
-   public static final dga a = cyy.a;
-
-   public cyx(dfi.d $$0) {
-      super($$0);
-      this.k(this.n().a(a, Boolean.valueOf(false)));
-   }
-
-   @Nullable
-   @Override
-   public dfj a(cln $$0) {
-      return this.n().a(a, Boolean.valueOf($$0.q().B($$0.a())));
-   }
+public class cyx extends csq {
+   public static final MapCodec<cyx> e = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dfs.a.fieldOf("block_set_type").forGetter($$0x -> $$0x.d), t()).apply($$0, cyx::new)
+   );
+   public static final dfu f = dft.w;
 
    @Override
-   public void a(dfj $$0, cpv $$1, gw $$2, csv $$3, gw $$4, boolean $$5) {
-      if (!$$1.B) {
-         boolean $$6 = $$0.c(a);
-         if ($$6 != $$1.B($$2)) {
-            if ($$6) {
-               $$1.a($$2, this, 4);
-            } else {
-               $$1.a($$2, $$0.a(a), 2);
-            }
-         }
-      }
+   public MapCodec<cyx> a() {
+      return e;
+   }
+
+   protected cyx(dfs $$0, dfc.d $$1) {
+      super($$1, $$0);
+      this.k(this.E.b().a(f, Boolean.valueOf(false)));
    }
 
    @Override
-   public void a(dfj $$0, akq $$1, gw $$2, asc $$3) {
-      if ($$0.c(a) && !$$1.B($$2)) {
-         $$1.a($$2, $$0.a(a), 2);
-      }
+   protected int g(dfd $$0) {
+      return $$0.c(f) ? 15 : 0;
    }
 
    @Override
-   protected void a(dfk.a<csv, dfj> $$0) {
-      $$0.a(a);
+   protected dfd a(dfd $$0, int $$1) {
+      return $$0.a(f, Boolean.valueOf($$1 > 0));
+   }
+
+   @Override
+   protected int b(cqb $$0, gw $$1) {
+      Class<? extends biw> $$2 = switch (this.d.e()) {
+         case a -> biw.class;
+         case b -> bjm.class;
+      };
+      return a($$0, c.a($$1), $$2) > 0 ? 15 : 0;
+   }
+
+   @Override
+   protected void a(dfe.a<ctc, dfd> $$0) {
+      $$0.a(f);
    }
 }

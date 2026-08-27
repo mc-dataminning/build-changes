@@ -1,3 +1,3 @@
 public interface si extends su {
-   void a(adx var1);
+   void a(ady var1);
 }

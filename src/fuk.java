@@ -1,25 +1,18 @@
-public class fuk extends ftg<ccl> {
-   private static final aew a = new aew("textures/entity/llama/spit.png");
-   private final ffx<ccl> f;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   public fuk(fth.a $$0) {
-      super($$0);
-      this.f = new ffx<>($$0.a(fib.at));
+public class fuk extends fuj<bvk, fer<bvk>> {
+   private static final Map<bvk.a, aez> a = ac.a(Maps.newHashMap(), $$0 -> {
+      $$0.put(bvk.a.b, new aez("textures/entity/cow/brown_mooshroom.png"));
+      $$0.put(bvk.a.a, new aez("textures/entity/cow/red_mooshroom.png"));
+   });
+
+   public fuk(ftd.a $$0) {
+      super($$0, new fer<>($$0.a(fhw.aw)), 0.7F);
+      this.a(new fxg<>(this, $$0.c()));
    }
 
-   public void a(ccl $$0, float $$1, float $$2, elp $$3, foe $$4, int $$5) {
-      $$3.a();
-      $$3.a(0.0F, 0.15F, 0.0F);
-      $$3.a(a.d.rotationDegrees(arw.i($$2, $$0.N, $$0.dB()) - 90.0F));
-      $$3.a(a.f.rotationDegrees(arw.i($$2, $$0.O, $$0.dD())));
-      this.f.a($$0, $$2, 0.0F, -0.1F, 0.0F, 0.0F);
-      elt $$6 = $$4.getBuffer(this.f.a(a));
-      this.f.a($$3, $$6, $$5, fyv.d, 1.0F, 1.0F, 1.0F, 1.0F);
-      $$3.b();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   public aew a(ccl $$0) {
-      return a;
+   public aez a(bvk $$0) {
+      return a.get($$0.t());
    }
 }

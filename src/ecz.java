@@ -1,70 +1,70 @@
-import com.google.common.collect.HashMultimap;
-import com.google.common.collect.ImmutableMultimap;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Multimap;
-import java.util.Set;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.serialization.Codec;
+import java.util.List;
 
-public class ecz {
-   private final Multimap<String, String> a;
-   private final Supplier<String> b;
-   private final eez c;
-   private final ecu d;
-   private final Set<ecs<?>> e;
-   @Nullable
-   private String f;
+public class ecz extends ecw {
+   public static final Codec<ecz> a = a(ecz::new);
 
-   public ecz(eez $$0, ecu $$1) {
-      this(HashMultimap.create(), () -> "", $$0, $$1, ImmutableSet.of());
+   ecz(List<edd> $$0, List<efj> $$1) {
+      super($$0, $$1);
    }
 
-   public ecz(Multimap<String, String> $$0, Supplier<String> $$1, eez $$2, ecu $$3, Set<ecs<?>> $$4) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
+   @Override
+   public ede a() {
+      return edb.i;
    }
 
-   private String c() {
-      if (this.f == null) {
-         this.f = this.b.get();
+   @Override
+   protected ecv a(List<? extends ecv> $$0) {
+      return switch ($$0.size()) {
+         case 0 -> c;
+         case 1 -> (ecv)$$0.get(0);
+         case 2 -> {
+            ecv $$1 = $$0.get(0);
+            ecv $$2 = $$0.get(1);
+            yield ($$2x, $$3) -> {
+               $$1.expand($$2x, $$3);
+               $$2.expand($$2x, $$3);
+               return true;
+            };
+         }
+         default -> ($$1x, $$2x) -> {
+         for (ecv $$3 : $$0) {
+            $$3.expand($$1x, $$2x);
+         }
+
+         return true;
+      };
+      };
+   }
+
+   public static ecz.a a(edd.a<?>... $$0) {
+      return new ecz.a($$0);
+   }
+
+   public static class a extends edd.a<ecz.a> {
+      private final Builder<edd> a = ImmutableList.builder();
+
+      public a(edd.a<?>... $$0) {
+         for (edd.a<?> $$1 : $$0) {
+            this.a.add($$1.b());
+         }
       }
 
-      return this.f;
-   }
+      protected ecz.a a() {
+         return this;
+      }
 
-   public void a(String $$0) {
-      this.a.put(this.c(), $$0);
-   }
+      @Override
+      public ecz.a b(edd.a<?> $$0) {
+         this.a.add($$0.b());
+         return this;
+      }
 
-   public ecz b(String $$0) {
-      return new ecz(this.a, () -> this.c() + $$0, this.c, this.d, this.e);
-   }
-
-   public ecz a(String $$0, ecs<?> $$1) {
-      ImmutableSet<ecs<?>> $$2 = ImmutableSet.builder().addAll(this.e).add($$1).build();
-      return new ecz(this.a, () -> this.c() + $$0, this.c, this.d, $$2);
-   }
-
-   public boolean a(ecs<?> $$0) {
-      return this.e.contains($$0);
-   }
-
-   public Multimap<String, String> a() {
-      return ImmutableMultimap.copyOf(this.a);
-   }
-
-   public void a(ecr $$0) {
-      this.c.a(this, $$0);
-   }
-
-   public ecu b() {
-      return this.d;
-   }
-
-   public ecz a(eez $$0) {
-      return new ecz(this.a, this.b, $$0, this.d, this.e);
+      @Override
+      public edd b() {
+         return new ecz(this.a.build(), this.f());
+      }
    }
 }

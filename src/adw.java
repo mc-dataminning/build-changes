@@ -1,8 +1,8 @@
-public interface adw extends si, sj {
-   @Override
-   default sn b() {
-      return sn.c;
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   void a(ady var1);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface adw {
 }

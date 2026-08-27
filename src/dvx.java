@@ -1,78 +1,74 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import org.slf4j.Logger;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public record dvx(List<dvm> a) {
-   private static final Logger b = LogUtils.getLogger();
-   private static final aew c = new aew("jigsaw");
-   private static final Map<aew, aew> d = ImmutableMap.builder()
-      .put(new aew("nvi"), c)
-      .put(new aew("pcp"), c)
-      .put(new aew("bastionremnant"), c)
-      .put(new aew("runtime"), c)
-      .build();
+public class dvx extends dvz {
+   public static final Codec<dvx> a = arj.<dvx>a(
+         RecordCodecBuilder.mapCodec(
+            $$0 -> a($$0)
+                  .and(
+                     $$0.group(
+                        Codec.intRange(0, 4096).fieldOf("spacing").forGetter(dvx::a),
+                        Codec.intRange(0, 4096).fieldOf("separation").forGetter(dvx::b),
+                        dvy.c.optionalFieldOf("spread_type", dvy.a).forGetter(dvx::c)
+                     )
+                  )
+                  .apply($$0, dvx::new)
+         ),
+         dvx::a
+      )
+      .codec();
+   private final int c;
+   private final int d;
+   private final dvy e;
 
-   public dvx(List<dvm> a) {
-      this.a = List.copyOf(a);
+   private static DataResult<dvx> a(dvx $$0) {
+      return $$0.c <= $$0.d ? DataResult.error(() -> "Spacing has to be larger than separation") : DataResult.success($$0);
    }
 
-   public boolean a() {
-      return this.a.isEmpty();
+   public dvx(hy $$0, dvz.c $$1, float $$2, int $$3, Optional<dvz.a> $$4, int $$5, int $$6, dvy $$7) {
+      super($$0, $$1, $$2, $$3, $$4);
+      this.c = $$5;
+      this.d = $$6;
+      this.e = $$7;
    }
 
-   public boolean a(gw $$0) {
-      for (dvm $$1 : this.a) {
-         if ($$1.f().b($$0)) {
-            return true;
-         }
-      }
-
-      return false;
+   public dvx(int $$0, int $$1, dvy $$2, int $$3) {
+      this(hy.g, dvz.c.a, 1.0F, $$3, Optional.empty(), $$0, $$1, $$2);
    }
 
-   public rq a(dvy $$0) {
-      rc $$1 = new rc();
-
-      for (dvm $$2 : this.a) {
-         $$1.add($$2.a($$0));
-      }
-
-      return $$1;
+   public int a() {
+      return this.c;
    }
 
-   public static dvx a(rc $$0, dvy $$1) {
-      List<dvm> $$2 = Lists.newArrayList();
-
-      for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
-         qw $$4 = $$0.a($$3);
-         String $$5 = $$4.l("id").toLowerCase(Locale.ROOT);
-         aew $$6 = new aew($$5);
-         aew $$7 = d.getOrDefault($$6, $$6);
-         dvz $$8 = jb.T.a($$7);
-         if ($$8 == null) {
-            b.error("Unknown structure piece id: {}", $$7);
-         } else {
-            try {
-               dvm $$9 = $$8.load($$1, $$4);
-               $$2.add($$9);
-            } catch (Exception var10) {
-               b.error("Exception loading structure piece with id {}", $$7, var10);
-            }
-         }
-      }
-
-      return new dvx($$2);
+   public int b() {
+      return this.d;
    }
 
-   public dva b() {
-      return dvm.a(this.a.stream());
+   public dvy c() {
+      return this.e;
    }
 
-   public List<dvm> c() {
-      return this.a;
+   public cpi a(long $$0, int $$1, int $$2) {
+      int $$3 = Math.floorDiv($$1, this.c);
+      int $$4 = Math.floorDiv($$2, this.c);
+      dll $$5 = new dll(new dkn(0L));
+      $$5.a($$0, $$3, $$4, this.i());
+      int $$6 = this.c - this.d;
+      int $$7 = this.e.a($$5, $$6);
+      int $$8 = this.e.a($$5, $$6);
+      return new cpi($$3 * this.c + $$7, $$4 * this.c + $$8);
+   }
+
+   @Override
+   protected boolean a(dhb $$0, int $$1, int $$2) {
+      cpi $$3 = this.a($$0.d(), $$1, $$2);
+      return $$3.e == $$1 && $$3.f == $$2;
+   }
+
+   @Override
+   public dwa<?> e() {
+      return dwa.a;
    }
 }

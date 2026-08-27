@@ -1,22 +1,33 @@
 import com.mojang.datafixers.kinds.App;
 import java.util.function.Function;
-import java.util.function.Predicate;
+import org.apache.commons.lang3.mutable.MutableInt;
 
 public class bnd {
-   public static bmh<bjg> a(float $$0, int $$1) {
-      return a($$0x -> true, $$1x -> $$0, $$1);
-   }
+   private static final int a = 300;
 
-   public static bmh<bjg> a(Predicate<bjg> $$0, Function<bjg, Float> $$1, int $$2) {
-      return boj.a(
-         (Function<boj.b<bjg>, ? extends App<boj.c<bjg>, bom<bjg>>>)($$3 -> $$3.group($$3.c(bsh.m), $$3.b(bsh.n)).apply($$3, ($$4, $$5) -> ($$6, $$7, $$8) -> {
-                  if (!$$0.test($$7)) {
-                     return false;
-                  } else {
-                     $$4.a(new bsk($$3.b($$5), $$1.apply($$7), $$2));
-                     return true;
-                  }
-               }))
+   public static ble<bjm> a(int $$0, int $$1) {
+      int $$2 = $$0 * 20;
+      MutableInt $$3 = new MutableInt(0);
+      return bop.a(
+         (Function<bop.b<bjm>, ? extends App<bop.c<bjm>, bos<bjm>>>)($$3x -> $$3x.group($$3x.b(bsn.C), $$3x.b(bsn.D))
+               .apply($$3x, ($$4, $$5) -> ($$6, $$7, $$8) -> {
+                     long $$9 = $$3x.<Long>b($$5);
+                     boolean $$10 = $$9 + 300L <= $$8;
+                     if ($$3.getValue() <= $$2 && !$$10) {
+                        gw $$11 = $$3x.<hd>b($$4).b();
+                        if ($$11.a($$7.dl(), (double)$$1)) {
+                           $$3.increment();
+                        }
+
+                        return true;
+                     } else {
+                        $$5.b();
+                        $$4.b();
+                        $$7.dN().a($$6.W(), $$6.V());
+                        $$3.setValue(0);
+                        return true;
+                     }
+                  }))
       );
    }
 }

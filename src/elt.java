@@ -1,129 +1,70 @@
-import java.nio.ByteBuffer;
-import java.nio.IntBuffer;
-import org.joml.Matrix3f;
-import org.joml.Matrix4f;
-import org.joml.Vector3f;
-import org.joml.Vector4f;
-import org.lwjgl.system.MemoryStack;
+import com.mojang.logging.LogUtils;
+import java.util.Objects;
+import java.util.concurrent.CompletableFuture;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public interface elt {
-   elt a(double var1, double var3, double var5);
+public class elt {
+   private static final Logger a = LogUtils.getLogger();
+   @Nullable
+   private static CompletableFuture<elt.a> b;
 
-   elt a(int var1, int var2, int var3, int var4);
+   public static CompletableFuture<elt.a> a() {
+      if (b == null || a(b)) {
+         b = b();
+      }
 
-   elt a(float var1, float var2);
-
-   elt a(int var1, int var2);
-
-   elt b(int var1, int var2);
-
-   elt a(float var1, float var2, float var3);
-
-   void e();
-
-   default void a(
-      float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, int $$9, int $$10, float $$11, float $$12, float $$13
-   ) {
-      this.a((double)$$0, (double)$$1, (double)$$2);
-      this.a($$3, $$4, $$5, $$6);
-      this.a($$7, $$8);
-      this.c($$9);
-      this.b($$10);
-      this.a($$11, $$12, $$13);
-      this.e();
+      return b;
    }
 
-   void b(int var1, int var2, int var3, int var4);
-
-   void k();
-
-   default elt a(float $$0, float $$1, float $$2, float $$3) {
-      return this.a((int)($$0 * 255.0F), (int)($$1 * 255.0F), (int)($$2 * 255.0F), (int)($$3 * 255.0F));
+   private static boolean a(CompletableFuture<elt.a> $$0) {
+      elt.a $$1 = $$0.getNow(null);
+      return $$1 != null && $$1.b() != null;
    }
 
-   default elt a(int $$0) {
-      return this.a(arh.b.b($$0), arh.b.c($$0), arh.b.d($$0), arh.b.a($$0));
-   }
+   private static CompletableFuture<elt.a> b() {
+      return CompletableFuture.supplyAsync(() -> {
+         elz $$0 = elz.a();
 
-   default elt b(int $$0) {
-      return this.b($$0 & 65535, $$0 >> 16 & 65535);
-   }
-
-   default elt c(int $$0) {
-      return this.a($$0 & 65535, $$0 >> 16 & 65535);
-   }
-
-   default void a(elp.a $$0, fpb $$1, float $$2, float $$3, float $$4, int $$5, int $$6) {
-      this.a($$0, $$1, new float[]{1.0F, 1.0F, 1.0F, 1.0F}, $$2, $$3, $$4, new int[]{$$5, $$5, $$5, $$5}, $$6, false);
-   }
-
-   default void a(elp.a $$0, fpb $$1, float[] $$2, float $$3, float $$4, float $$5, int[] $$6, int $$7, boolean $$8) {
-      float[] $$9 = new float[]{$$2[0], $$2[1], $$2[2], $$2[3]};
-      int[] $$10 = new int[]{$$6[0], $$6[1], $$6[2], $$6[3]};
-      int[] $$11 = $$1.b();
-      hy $$12 = $$1.e().q();
-      Matrix4f $$13 = $$0.a();
-      Vector3f $$14 = $$0.b().transform(new Vector3f((float)$$12.u(), (float)$$12.v(), (float)$$12.w()));
-      int $$15 = 8;
-      int $$16 = $$11.length / 8;
-      MemoryStack $$17 = MemoryStack.stackPush();
-
-      try {
-         ByteBuffer $$18 = $$17.malloc(eln.j.b());
-         IntBuffer $$19 = $$18.asIntBuffer();
-
-         for (int $$20 = 0; $$20 < $$16; $$20++) {
-            $$19.clear();
-            $$19.put($$11, $$20 * 8, 8);
-            float $$21 = $$18.getFloat(0);
-            float $$22 = $$18.getFloat(4);
-            float $$23 = $$18.getFloat(8);
-            float $$27;
-            float $$28;
-            float $$29;
-            if ($$8) {
-               float $$24 = (float)($$18.get(12) & 255) / 255.0F;
-               float $$25 = (float)($$18.get(13) & 255) / 255.0F;
-               float $$26 = (float)($$18.get(14) & 255) / 255.0F;
-               $$27 = $$24 * $$9[$$20] * $$3;
-               $$28 = $$25 * $$9[$$20] * $$4;
-               $$29 = $$26 * $$9[$$20] * $$5;
+         try {
+            if ($$0.f() != elz.a.a) {
+               return new elt.a(elt.b.b);
             } else {
-               $$27 = $$9[$$20] * $$3;
-               $$28 = $$9[$$20] * $$4;
-               $$29 = $$9[$$20] * $$5;
+               return !$$0.e() ? new elt.a(elt.b.c) : new elt.a(elt.b.a);
             }
-
-            int $$33 = $$10[$$20];
-            float $$34 = $$18.getFloat(16);
-            float $$35 = $$18.getFloat(20);
-            Vector4f $$36 = $$13.transform(new Vector4f($$21, $$22, $$23, 1.0F));
-            this.a($$36.x(), $$36.y(), $$36.z(), $$27, $$28, $$29, 1.0F, $$34, $$35, $$7, $$33, $$14.x(), $$14.y(), $$14.z());
+         } catch (enm var2) {
+            a.error("Couldn't connect to realms", var2);
+            return var2.a.a() == 401 ? new elt.a(elt.b.d) : new elt.a(var2);
          }
-      } catch (Throwable var33) {
-         if ($$17 != null) {
-            try {
-               $$17.close();
-            } catch (Throwable var32) {
-               var33.addSuppressed(var32);
-            }
-         }
+      }, ac.g());
+   }
 
-         throw var33;
+   public static record a(elt.b a, @Nullable enm b) {
+      public a(elt.b $$0) {
+         this($$0, null);
       }
 
-      if ($$17 != null) {
-         $$17.close();
+      public a(enm $$0) {
+         this(elt.b.e, $$0);
+      }
+
+      @Nullable
+      public eye a(eye $$0) {
+         return (eye)(switch (this.a) {
+            case a -> null;
+            case b -> new eny($$0);
+            case c -> new eoj($$0);
+            case d -> new eod(tl.c("mco.error.invalid.session.title"), tl.c("mco.error.invalid.session.message"), $$0);
+            case e -> new eod(Objects.requireNonNull(this.b), $$0);
+         });
       }
    }
 
-   default elt a(Matrix4f $$0, float $$1, float $$2, float $$3) {
-      Vector4f $$4 = $$0.transform(new Vector4f($$1, $$2, $$3, 1.0F));
-      return this.a((double)$$4.x(), (double)$$4.y(), (double)$$4.z());
-   }
-
-   default elt a(Matrix3f $$0, float $$1, float $$2, float $$3) {
-      Vector3f $$4 = $$0.transform(new Vector3f($$1, $$2, $$3));
-      return this.a($$4.x(), $$4.y(), $$4.z());
+   public static enum b {
+      a,
+      b,
+      c,
+      d,
+      e;
    }
 }

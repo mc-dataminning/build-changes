@@ -1,32 +1,40 @@
-public class brq extends bql {
-   private final cab b;
-   private int c;
+import java.util.EnumSet;
 
-   public brq(cab $$0, double $$1, boolean $$2) {
-      super($$0, $$1, $$2);
-      this.b = $$0;
+public class brq extends bqh {
+   private final cbi a;
+
+   public brq(cbi $$0) {
+      this.a = $$0;
+      this.a(EnumSet.of(bqh.a.c, bqh.a.a));
+   }
+
+   @Override
+   public boolean a() {
+      if (!this.a.bv()) {
+         return false;
+      } else if (this.a.aX()) {
+         return false;
+      } else if (!this.a.aA()) {
+         return false;
+      } else if (this.a.T) {
+         return false;
+      } else {
+         cca $$0 = this.a.ge();
+         if ($$0 == null) {
+            return false;
+         } else {
+            return this.a.f($$0) > 16.0 ? false : $$0.bS != null;
+         }
+      }
    }
 
    @Override
    public void c() {
-      super.c();
-      this.c = 0;
+      this.a.L().n();
    }
 
    @Override
    public void d() {
-      super.d();
-      this.b.v(false);
-   }
-
-   @Override
-   public void e() {
-      super.e();
-      this.c++;
-      if (this.c >= 5 && this.k() < this.l() / 2) {
-         this.b.v(true);
-      } else {
-         this.b.v(false);
-      }
+      this.a.f(null);
    }
 }

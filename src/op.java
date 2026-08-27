@@ -1,172 +1,172 @@
 import java.util.List;
 
 public class op {
-   public static final aev<dnj<?, ?>> a = or.a("monster_room");
-   public static final aev<dnj<?, ?>> b = or.a("fossil_coal");
-   public static final aev<dnj<?, ?>> c = or.a("fossil_diamonds");
-   public static final aev<dnj<?, ?>> d = or.a("dripstone_cluster");
-   public static final aev<dnj<?, ?>> e = or.a("large_dripstone");
-   public static final aev<dnj<?, ?>> f = or.a("pointed_dripstone");
-   public static final aev<dnj<?, ?>> g = or.a("underwater_magma");
-   public static final aev<dnj<?, ?>> h = or.a("glow_lichen");
-   public static final aev<dnj<?, ?>> i = or.a("rooted_azalea_tree");
-   public static final aev<dnj<?, ?>> j = or.a("cave_vine");
-   public static final aev<dnj<?, ?>> k = or.a("cave_vine_in_moss");
-   public static final aev<dnj<?, ?>> l = or.a("moss_vegetation");
-   public static final aev<dnj<?, ?>> m = or.a("moss_patch");
-   public static final aev<dnj<?, ?>> n = or.a("moss_patch_bonemeal");
-   public static final aev<dnj<?, ?>> o = or.a("dripleaf");
-   public static final aev<dnj<?, ?>> p = or.a("clay_with_dripleaves");
-   public static final aev<dnj<?, ?>> q = or.a("clay_pool_with_dripleaves");
-   public static final aev<dnj<?, ?>> r = or.a("lush_caves_clay");
-   public static final aev<dnj<?, ?>> s = or.a("moss_patch_ceiling");
-   public static final aev<dnj<?, ?>> t = or.a("spore_blossom");
-   public static final aev<dnj<?, ?>> u = or.a("amethyst_geode");
-   public static final aev<dnj<?, ?>> v = or.a("sculk_patch_deep_dark");
-   public static final aev<dnj<?, ?>> w = or.a("sculk_patch_ancient_city");
-   public static final aev<dnj<?, ?>> x = or.a("sculk_vein");
+   public static final aey<dnd<?, ?>> a = or.a("monster_room");
+   public static final aey<dnd<?, ?>> b = or.a("fossil_coal");
+   public static final aey<dnd<?, ?>> c = or.a("fossil_diamonds");
+   public static final aey<dnd<?, ?>> d = or.a("dripstone_cluster");
+   public static final aey<dnd<?, ?>> e = or.a("large_dripstone");
+   public static final aey<dnd<?, ?>> f = or.a("pointed_dripstone");
+   public static final aey<dnd<?, ?>> g = or.a("underwater_magma");
+   public static final aey<dnd<?, ?>> h = or.a("glow_lichen");
+   public static final aey<dnd<?, ?>> i = or.a("rooted_azalea_tree");
+   public static final aey<dnd<?, ?>> j = or.a("cave_vine");
+   public static final aey<dnd<?, ?>> k = or.a("cave_vine_in_moss");
+   public static final aey<dnd<?, ?>> l = or.a("moss_vegetation");
+   public static final aey<dnd<?, ?>> m = or.a("moss_patch");
+   public static final aey<dnd<?, ?>> n = or.a("moss_patch_bonemeal");
+   public static final aey<dnd<?, ?>> o = or.a("dripleaf");
+   public static final aey<dnd<?, ?>> p = or.a("clay_with_dripleaves");
+   public static final aey<dnd<?, ?>> q = or.a("clay_pool_with_dripleaves");
+   public static final aey<dnd<?, ?>> r = or.a("lush_caves_clay");
+   public static final aey<dnd<?, ?>> s = or.a("moss_patch_ceiling");
+   public static final aey<dnd<?, ?>> t = or.a("spore_blossom");
+   public static final aey<dnd<?, ?>> u = or.a("amethyst_geode");
+   public static final aey<dnd<?, ?>> v = or.a("sculk_patch_deep_dark");
+   public static final aey<dnd<?, ?>> w = or.a("sculk_patch_ancient_city");
+   public static final aey<dnd<?, ?>> x = or.a("sculk_vein");
 
-   private static he<dum> a(ha $$0) {
+   private static he<dug> a(ha $$0) {
       return pg.a(
-         dnw.w,
-         new dpr(
+         dnq.w,
+         new dpl(
             List.of(
-               dpr.a(new bgk(bfi.<bgd>a().a(bgj.a(0, 4), 2).a(bga.a(0), 1).a()), dsb.a(csw.rD.n().a(dfz.R, $$0))),
-               dpr.a(bga.a(1), dsb.a(csw.rC.n().a(dfz.R, $$0)))
+               dpl.a(new bgq(bfo.<bgj>a().a(bgp.a(0, 4), 2).a(bgg.a(0), 1).a()), drv.a(cte.rD.o().a(dft.R, $$0))),
+               dpl.a(bgg.a(1), drv.a(cte.rC.o().a(dft.R, $$0)))
             ),
             ha.b,
-            dlz.d,
+            dlt.d,
             true
          )
       );
    }
 
-   private static he<dum> a() {
+   private static he<dug> a() {
       return pg.a(
-         dnw.S,
-         new dqs(
-            new dsl(
-               bfi.<dfj>a().a(csw.rE.n().a(daa.b, ha.f), 1).a(csw.rE.n().a(daa.b, ha.e), 1).a(csw.rE.n().a(daa.b, ha.c), 1).a(csw.rE.n().a(daa.b, ha.d), 1)
+         dnq.S,
+         new dqm(
+            new dsf(
+               bfo.<dfd>a().a(cte.rE.o().a(daf.d, ha.f), 1).a(cte.rE.o().a(daf.d, ha.e), 1).a(cte.rE.o().a(daf.d, ha.c), 1).a(cte.rE.o().a(daf.d, ha.d), 1)
             )
          )
       );
    }
 
-   public static void a(nr<dnj<?, ?>> $$0) {
-      hf<dnj<?, ?>> $$1 = $$0.a(jc.as);
-      hf<dyz> $$2 = $$0.a(jc.aA);
-      or.a($$0, a, dnw.C);
-      List<aew> $$3 = List.of(
-         new aew("fossil/spine_1"),
-         new aew("fossil/spine_2"),
-         new aew("fossil/spine_3"),
-         new aew("fossil/spine_4"),
-         new aew("fossil/skull_1"),
-         new aew("fossil/skull_2"),
-         new aew("fossil/skull_3"),
-         new aew("fossil/skull_4")
+   public static void a(nr<dnd<?, ?>> $$0) {
+      hf<dnd<?, ?>> $$1 = $$0.a(jc.at);
+      hf<dyt> $$2 = $$0.a(jc.aB);
+      or.a($$0, a, dnq.C);
+      List<aez> $$3 = List.of(
+         new aez("fossil/spine_1"),
+         new aez("fossil/spine_2"),
+         new aez("fossil/spine_3"),
+         new aez("fossil/spine_4"),
+         new aez("fossil/skull_1"),
+         new aez("fossil/skull_2"),
+         new aez("fossil/skull_3"),
+         new aez("fossil/skull_4")
       );
-      List<aew> $$4 = List.of(
-         new aew("fossil/spine_1_coal"),
-         new aew("fossil/spine_2_coal"),
-         new aew("fossil/spine_3_coal"),
-         new aew("fossil/spine_4_coal"),
-         new aew("fossil/skull_1_coal"),
-         new aew("fossil/skull_2_coal"),
-         new aew("fossil/skull_3_coal"),
-         new aew("fossil/skull_4_coal")
+      List<aez> $$4 = List.of(
+         new aez("fossil/spine_1_coal"),
+         new aez("fossil/spine_2_coal"),
+         new aez("fossil/spine_3_coal"),
+         new aez("fossil/spine_4_coal"),
+         new aez("fossil/skull_1_coal"),
+         new aez("fossil/skull_2_coal"),
+         new aez("fossil/skull_3_coal"),
+         new aez("fossil/skull_4_coal")
       );
-      he<dyz> $$5 = $$2.b(nz.D);
-      or.a($$0, b, dnw.p, new dob($$3, $$4, $$5, $$2.b(nz.E), 4));
-      or.a($$0, c, dnw.p, new dob($$3, $$4, $$5, $$2.b(nz.F), 4));
-      or.a($$0, d, dnw.aj, new dpy(12, bgj.a(3, 6), bgj.a(2, 8), 1, 3, bgj.a(2, 4), bgi.b(0.3F, 0.7F), bfx.a(0.1F, 0.3F, 0.1F, 0.9F), 0.1F, 3, 8));
-      or.a($$0, e, dnw.ak, new dqd(30, bgj.a(3, 19), bgi.b(0.4F, 2.0F), 0.33F, bgi.b(0.3F, 0.9F), bgi.b(0.4F, 1.0F), bgi.b(0.0F, 0.3F), 4, 0.6F));
+      he<dyt> $$5 = $$2.b(nz.D);
+      or.a($$0, b, dnq.p, new dnv($$3, $$4, $$5, $$2.b(nz.E), 4));
+      or.a($$0, c, dnq.p, new dnv($$3, $$4, $$5, $$2.b(nz.F), 4));
+      or.a($$0, d, dnq.aj, new dps(12, bgp.a(3, 6), bgp.a(2, 8), 1, 3, bgp.a(2, 4), bgo.b(0.3F, 0.7F), bgd.a(0.1F, 0.3F, 0.1F, 0.9F), 0.1F, 3, 8));
+      or.a($$0, e, dnq.ak, new dpx(30, bgp.a(3, 19), bgo.b(0.4F, 2.0F), 0.33F, bgo.b(0.3F, 0.9F), bgo.b(0.4F, 1.0F), bgo.b(0.0F, 0.3F), 4, 0.6F));
       or.a(
          $$0,
          f,
-         dnw.ag,
-         new dqt(
+         dnq.ag,
+         new dqn(
             hi.a(
-               pg.a(dnw.al, new dqj(0.2F, 0.7F, 0.5F, 0.5F), dug.a(ha.a, dlz.c(), dlz.d, 12), dur.a(bga.a(1))),
-               pg.a(dnw.al, new dqj(0.2F, 0.7F, 0.5F, 0.5F), dug.a(ha.b, dlz.c(), dlz.d, 12), dur.a(bga.a(-1)))
+               pg.a(dnq.al, new dqd(0.2F, 0.7F, 0.5F, 0.5F), dua.a(ha.a, dlt.c(), dlt.d, 12), dul.a(bgg.a(1))),
+               pg.a(dnq.al, new dqd(0.2F, 0.7F, 0.5F, 0.5F), dua.a(ha.b, dlt.c(), dlt.d, 12), dul.a(bgg.a(-1)))
             )
          )
       );
-      or.a($$0, g, dnw.B, new dqy(5, 1, 0.5F));
-      cxt $$6 = (cxt)csw.fg;
-      or.a($$0, h, dnw.A, new dqf($$6, 20, false, true, true, 0.5F, hi.a(csv::q, csw.b, csw.g, csw.e, csw.c, csw.rt, csw.qA, csw.qz, csw.rI)));
+      or.a($$0, g, dnq.B, new dqs(5, 1, 0.5F));
+      cya $$6 = (cya)cte.fg;
+      or.a($$0, h, dnq.A, new dpz($$6, 20, false, true, true, 0.5F, hi.a(ctc::r, cte.b, cte.g, cte.e, cte.c, cte.rt, cte.qA, cte.qz, cte.rI)));
       or.a(
          $$0,
          i,
-         dnw.z,
-         new dqq(
+         dnq.z,
+         new dqk(
             pg.a($$1.b(ow.w)),
             3,
             3,
-            aps.bv,
-            dsb.a(csw.rG),
+            apv.bv,
+            drv.a(cte.rG),
             20,
             100,
             3,
             2,
-            dsb.a(csw.rF),
+            drv.a(cte.rF),
             20,
             2,
-            dlz.a(dlz.b(dlz.c(List.of(csw.a, csw.nc, csw.nb)), dlz.a(aps.cf)), dlz.a(ha.a.q(), aps.bZ))
+            dlt.a(dlt.b(dlt.c(List.of(cte.a, cte.nc, cte.nb)), dlt.a(apv.cf)), dlt.a(ha.a.q(), apv.bZ))
          )
       );
-      dsl $$7 = new dsl(bfi.<dfj>a().a(csw.rv.n(), 4).a(csw.rv.n().a(ctq.s_, Boolean.valueOf(true)), 1));
-      dsh $$8 = new dsh(new dsl(bfi.<dfj>a().a(csw.ru.n(), 4).a(csw.ru.n().a(ctq.s_, Boolean.valueOf(true)), 1)), ctr.d, bgj.a(23, 25));
+      dsf $$7 = new dsf(bfo.<dfd>a().a(cte.rv.o(), 4).a(cte.rv.o().a(cty.s_, Boolean.valueOf(true)), 1));
+      dsb $$8 = new dsb(new dsf(bfo.<dfd>a().a(cte.ru.o(), 4).a(cte.ru.o().a(cty.s_, Boolean.valueOf(true)), 1)), ctz.e, bgp.a(23, 25));
       or.a(
          $$0,
          j,
-         dnw.w,
-         new dpr(
-            List.of(dpr.a(new bgk(bfi.<bgd>a().a(bgj.a(0, 19), 2).a(bgj.a(0, 2), 3).a(bgj.a(0, 6), 10).a()), $$7), dpr.a(bga.a(1), $$8)), ha.a, dlz.c, true
+         dnq.w,
+         new dpl(
+            List.of(dpl.a(new bgq(bfo.<bgj>a().a(bgp.a(0, 19), 2).a(bgp.a(0, 2), 3).a(bgp.a(0, 6), 10).a()), $$7), dpl.a(bgg.a(1), $$8)), ha.a, dlt.c, true
          )
       );
-      or.a($$0, k, dnw.w, new dpr(List.of(dpr.a(new bgk(bfi.<bgd>a().a(bgj.a(0, 3), 5).a(bgj.a(1, 7), 1).a()), $$7), dpr.a(bga.a(1), $$8)), ha.a, dlz.c, true));
-      or.a($$0, l, dnw.S, new dqs(new dsl(bfi.<dfj>a().a(csw.ry.n(), 4).a(csw.rx.n(), 7).a(csw.rz.n(), 25).a(csw.bt.n(), 50).a(csw.iH.n(), 10))));
-      or.a($$0, m, dnw.x, new dqz(aps.bt, dsb.a(csw.rB), pg.a($$1.b(l)), dud.b, bga.a(1), 0.0F, 5, 0.8F, bgj.a(4, 7), 0.3F));
-      or.a($$0, n, dnw.x, new dqz(aps.bt, dsb.a(csw.rB), pg.a($$1.b(l)), dud.b, bga.a(1), 0.0F, 5, 0.6F, bgj.a(1, 2), 0.75F));
-      or.a($$0, o, dnw.ag, new dqt(hi.a(a(), a(ha.f), a(ha.e), a(ha.d), a(ha.c))));
-      or.a($$0, p, dnw.x, new dqz(aps.bu, dsb.a(csw.dR), pg.a($$1.b(o)), dud.b, bga.a(3), 0.8F, 2, 0.05F, bgj.a(4, 7), 0.7F));
-      or.a($$0, q, dnw.y, new dqz(aps.bu, dsb.a(csw.dR), pg.a($$1.b(o)), dud.b, bga.a(3), 0.8F, 5, 0.1F, bgj.a(4, 7), 0.7F));
-      or.a($$0, r, dnw.ah, new dql(pg.a($$1.b(p)), pg.a($$1.b(q))));
-      or.a($$0, s, dnw.x, new dqz(aps.bt, dsb.a(csw.rB), pg.a($$1.b(k)), dud.a, bgj.a(1, 2), 0.0F, 5, 0.08F, bgj.a(4, 7), 0.3F));
-      or.a($$0, t, dnw.S, new dqs(dsb.a(csw.rw)));
+      or.a($$0, k, dnq.w, new dpl(List.of(dpl.a(new bgq(bfo.<bgj>a().a(bgp.a(0, 3), 5).a(bgp.a(1, 7), 1).a()), $$7), dpl.a(bgg.a(1), $$8)), ha.a, dlt.c, true));
+      or.a($$0, l, dnq.S, new dqm(new dsf(bfo.<dfd>a().a(cte.ry.o(), 4).a(cte.rx.o(), 7).a(cte.rz.o(), 25).a(cte.bt.o(), 50).a(cte.iH.o(), 10))));
+      or.a($$0, m, dnq.x, new dqt(apv.bt, drv.a(cte.rB), pg.a($$1.b(l)), dtx.b, bgg.a(1), 0.0F, 5, 0.8F, bgp.a(4, 7), 0.3F));
+      or.a($$0, n, dnq.x, new dqt(apv.bt, drv.a(cte.rB), pg.a($$1.b(l)), dtx.b, bgg.a(1), 0.0F, 5, 0.6F, bgp.a(1, 2), 0.75F));
+      or.a($$0, o, dnq.ag, new dqn(hi.a(a(), a(ha.f), a(ha.e), a(ha.d), a(ha.c))));
+      or.a($$0, p, dnq.x, new dqt(apv.bu, drv.a(cte.dR), pg.a($$1.b(o)), dtx.b, bgg.a(3), 0.8F, 2, 0.05F, bgp.a(4, 7), 0.7F));
+      or.a($$0, q, dnq.y, new dqt(apv.bu, drv.a(cte.dR), pg.a($$1.b(o)), dtx.b, bgg.a(3), 0.8F, 5, 0.1F, bgp.a(4, 7), 0.7F));
+      or.a($$0, r, dnq.ah, new dqf(pg.a($$1.b(p)), pg.a($$1.b(q))));
+      or.a($$0, s, dnq.x, new dqt(apv.bt, drv.a(cte.rB), pg.a($$1.b(k)), dtx.a, bgp.a(1, 2), 0.0F, 5, 0.08F, bgp.a(4, 7), 0.3F));
+      or.a($$0, t, dnq.S, new dqm(drv.a(cte.rw)));
       or.a(
          $$0,
          u,
-         dnw.ai,
-         new dqb(
-            new dkp(
-               dsb.a(csw.a),
-               dsb.a(csw.qt),
-               dsb.a(csw.qu),
-               dsb.a(csw.qA),
-               dsb.a(csw.sd),
-               List.of(csw.qy.n(), csw.qx.n(), csw.qw.n(), csw.qv.n()),
-               aps.bH,
-               aps.bJ
+         dnq.ai,
+         new dpv(
+            new dkj(
+               drv.a(cte.a),
+               drv.a(cte.qt),
+               drv.a(cte.qu),
+               drv.a(cte.qA),
+               drv.a(cte.sd),
+               List.of(cte.qy.o(), cte.qx.o(), cte.qw.o(), cte.qv.o()),
+               apv.bH,
+               apv.bJ
             ),
-            new dkr(1.7, 2.2, 3.2, 4.2),
-            new dkq(0.95, 2.0, 2),
+            new dkl(1.7, 2.2, 3.2, 4.2),
+            new dkk(0.95, 2.0, 2),
             0.35,
             0.083,
             true,
-            bgj.a(4, 6),
-            bgj.a(3, 4),
-            bgj.a(1, 2),
+            bgp.a(4, 6),
+            bgp.a(3, 4),
+            bgp.a(1, 2),
             -16,
             16,
             0.05,
             1
          )
       );
-      or.a($$0, v, dnw.am, new dqr(10, 32, 64, 0, 1, bga.a(0), 0.5F));
-      or.a($$0, w, dnw.am, new dqr(10, 32, 64, 0, 1, bgj.a(1, 3), 0.5F));
-      cxt $$9 = (cxt)csw.qG;
-      or.a($$0, x, dnw.A, new dqf($$9, 20, true, true, true, 1.0F, hi.a(csv::q, csw.b, csw.g, csw.e, csw.c, csw.rt, csw.qA, csw.qz, csw.rI)));
+      or.a($$0, v, dnq.am, new dql(10, 32, 64, 0, 1, bgg.a(0), 0.5F));
+      or.a($$0, w, dnq.am, new dql(10, 32, 64, 0, 1, bgp.a(1, 3), 0.5F));
+      cya $$9 = (cya)cte.qG;
+      or.a($$0, x, dnq.A, new dpz($$9, 20, true, true, true, 1.0F, hi.a(ctc::r, cte.b, cte.g, cte.e, cte.c, cte.rt, cte.qA, cte.qz, cte.rI)));
    }
 }

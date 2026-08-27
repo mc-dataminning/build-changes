@@ -1,9 +1,8 @@
-import com.google.common.collect.ImmutableList;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public class fik {
-   private final fil a = new fil(ImmutableList.of(), fie.a);
-
-   public fil a() {
-      return this.a;
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface fik {
 }

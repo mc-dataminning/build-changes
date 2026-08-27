@@ -4,7 +4,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 public record be(cl.c a, cl.c b, Optional<bq> c, Optional<Boolean> d, Optional<bf> e) {
-   public boolean a(akr $$0, bho $$1, float $$2, float $$3, boolean $$4) {
+   public boolean a(aku $$0, bhu $$1, float $$2, float $$3, boolean $$4) {
       if (!this.a.d((double)$$2)) {
          return false;
       } else if (!this.b.d((double)$$3)) {
@@ -18,10 +18,10 @@ public record be(cl.c a, cl.c b, Optional<bq> c, Optional<Boolean> d, Optional<b
 
    public static Optional<be> a(@Nullable JsonElement $$0) {
       if ($$0 != null && !$$0.isJsonNull()) {
-         JsonObject $$1 = arn.m($$0, "damage");
+         JsonObject $$1 = arr.m($$0, "damage");
          cl.c $$2 = cl.c.a($$1.get("dealt"));
          cl.c $$3 = cl.c.a($$1.get("taken"));
-         Optional<Boolean> $$4 = $$1.has("blocked") ? Optional.of(arn.k($$1, "blocked")) : Optional.empty();
+         Optional<Boolean> $$4 = $$1.has("blocked") ? Optional.of(arr.k($$1, "blocked")) : Optional.empty();
          Optional<bq> $$5 = bq.a($$1.get("source_entity"));
          Optional<bf> $$6 = bf.a($$1.get("type"));
          return $$2.c() && $$3.c() && $$5.isEmpty() && $$4.isEmpty() && $$6.isEmpty() ? Optional.empty() : Optional.of(new be($$2, $$3, $$5, $$4, $$6));

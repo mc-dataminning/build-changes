@@ -1,22 +1,35 @@
-public class ctl extends csv {
-   protected static final eig a = csv.a(0.0, 0.0, 0.0, 16.0, 1.0, 16.0);
+import com.mojang.serialization.MapCodec;
 
-   public ctl(dfi.d $$0) {
+public abstract class ctl extends ctc {
+   protected ctl(dfc.d $$0) {
       super($$0);
    }
 
    @Override
-   public eig a(dfj $$0, cpb $$1, gw $$2, ehs $$3) {
-      return a;
+   protected abstract MapCodec<? extends ctl> a();
+
+   protected boolean d(dfd $$0, cph $$1, gw $$2) {
+      return $$0.a(apv.af) || $$0.a(cte.cC);
    }
 
    @Override
-   public dfj a(dfj $$0, ha $$1, dfj $$2, cpw $$3, gw $$4, gw $$5) {
-      return !$$0.a($$3, $$4) ? csw.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   public dfd a(dfd $$0, ha $$1, dfd $$2, cqc $$3, gw $$4, gw $$5) {
+      return !$$0.a($$3, $$4) ? cte.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public boolean a(dfj $$0, cpy $$1, gw $$2) {
-      return !$$1.t($$2.d());
+   public boolean a(dfd $$0, cqe $$1, gw $$2) {
+      gw $$3 = $$2.d();
+      return this.d($$1.a_($$3), $$1, $$3);
+   }
+
+   @Override
+   public boolean c(dfd $$0, cph $$1, gw $$2) {
+      return $$0.u().c();
+   }
+
+   @Override
+   public boolean a(dfd $$0, cph $$1, gw $$2, eaw $$3) {
+      return $$3 == eaw.c && !this.aG ? true : super.a($$0, $$1, $$2, $$3);
    }
 }

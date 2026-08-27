@@ -1,88 +1,82 @@
-public class cvp extends cun {
-   private final eig[] i;
+import com.google.common.base.Predicates;
+import com.mojang.serialization.MapCodec;
 
-   public cvp(dfi.d $$0) {
-      super(2.0F, 2.0F, 16.0F, 16.0F, 24.0F, $$0);
-      this.k(
-         this.C
-            .b()
-            .a(a, Boolean.valueOf(false))
-            .a(b, Boolean.valueOf(false))
-            .a(c, Boolean.valueOf(false))
-            .a(d, Boolean.valueOf(false))
-            .a(e, Boolean.valueOf(false))
-      );
-      this.i = this.a(2.0F, 1.0F, 16.0F, 6.0F, 15.0F);
+public class cvp extends ctc {
+   public static final MapCodec<cvp> a = b(cvp::new);
+   public static final dfx b = cww.aE;
+   public static final dfu c = dft.h;
+   protected static final eia d = ctc.a(0.0, 0.0, 0.0, 16.0, 13.0, 16.0);
+   protected static final eia e = ctc.a(4.0, 13.0, 4.0, 12.0, 16.0, 12.0);
+   protected static final eia f = ehx.a(d, e);
+   private static dfi g;
+
+   @Override
+   public MapCodec<cvp> a() {
+      return a;
+   }
+
+   public cvp(dfc.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(b, ha.c).a(c, Boolean.valueOf(false)));
    }
 
    @Override
-   public eig f(dfj $$0, cpb $$1, gw $$2) {
-      return this.i[this.g($$0)];
+   public boolean g_(dfd $$0) {
+      return true;
    }
 
    @Override
-   public eig b(dfj $$0, cpb $$1, gw $$2, ehs $$3) {
-      return this.a($$0, $$1, $$2, $$3);
+   public eia a(dfd $$0, cph $$1, gw $$2, ehm $$3) {
+      return $$0.c(c) ? f : d;
    }
 
    @Override
-   public boolean a(dfj $$0, cpb $$1, gw $$2, ebc $$3) {
+   public dfd a(clt $$0) {
+      return this.o().a(b, $$0.g().g()).a(c, Boolean.valueOf(false));
+   }
+
+   @Override
+   public boolean d_(dfd $$0) {
+      return true;
+   }
+
+   @Override
+   public int a(dfd $$0, cqb $$1, gw $$2) {
+      return $$0.c(c) ? 15 : 0;
+   }
+
+   @Override
+   public dfd a(dfd $$0, czn $$1) {
+      return $$0.a(b, $$1.a($$0.c(b)));
+   }
+
+   @Override
+   public dfd a(dfd $$0, cxx $$1) {
+      return $$0.a($$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected void a(dfe.a<ctc, dfd> $$0) {
+      $$0.a(b, c);
+   }
+
+   public static dfi b() {
+      if (g == null) {
+         g = dfj.a()
+            .a("?vvv?", ">???<", ">???<", ">???<", "?^^^?")
+            .a('?', dfh.a(dfm.a))
+            .a('^', dfh.a(dfm.a(cte.fy).a(c, Predicates.equalTo(true)).a(b, Predicates.equalTo(ha.d))))
+            .a('>', dfh.a(dfm.a(cte.fy).a(c, Predicates.equalTo(true)).a(b, Predicates.equalTo(ha.e))))
+            .a('v', dfh.a(dfm.a(cte.fy).a(c, Predicates.equalTo(true)).a(b, Predicates.equalTo(ha.c))))
+            .a('<', dfh.a(dfm.a(cte.fy).a(c, Predicates.equalTo(true)).a(b, Predicates.equalTo(ha.f))))
+            .b();
+      }
+
+      return g;
+   }
+
+   @Override
+   public boolean a(dfd $$0, cph $$1, gw $$2, eaw $$3) {
       return false;
-   }
-
-   public boolean a(dfj $$0, boolean $$1, ha $$2) {
-      csv $$3 = $$0.b();
-      boolean $$4 = this.h($$0);
-      boolean $$5 = $$3 instanceof cvq && cvq.a($$0, $$2);
-      return !j($$0) && $$1 || $$4 || $$5;
-   }
-
-   private boolean h(dfj $$0) {
-      return $$0.a(aps.S) && $$0.a(aps.k) == this.n().a(aps.k);
-   }
-
-   @Override
-   public bgy a(dfj $$0, cpv $$1, gw $$2, cbu $$3, bgx $$4, ehj $$5) {
-      if ($$1.B) {
-         cjf $$6 = $$3.b($$4);
-         return $$6.a(cji.tQ) ? bgy.a : bgy.d;
-      } else {
-         return cjk.a($$3, $$1, $$2);
-      }
-   }
-
-   @Override
-   public dfj a(cln $$0) {
-      cpb $$1 = $$0.q();
-      gw $$2 = $$0.a();
-      eam $$3 = $$0.q().b_($$0.a());
-      gw $$4 = $$2.e();
-      gw $$5 = $$2.h();
-      gw $$6 = $$2.f();
-      gw $$7 = $$2.g();
-      dfj $$8 = $$1.a_($$4);
-      dfj $$9 = $$1.a_($$5);
-      dfj $$10 = $$1.a_($$6);
-      dfj $$11 = $$1.a_($$7);
-      return super.a($$0)
-         .a(a, Boolean.valueOf(this.a($$8, $$8.d($$1, $$4, ha.d), ha.d)))
-         .a(b, Boolean.valueOf(this.a($$9, $$9.d($$1, $$5, ha.e), ha.e)))
-         .a(c, Boolean.valueOf(this.a($$10, $$10.d($$1, $$6, ha.c), ha.c)))
-         .a(d, Boolean.valueOf(this.a($$11, $$11.d($$1, $$7, ha.f), ha.f)))
-         .a(e, Boolean.valueOf($$3.a() == ean.c));
-   }
-
-   @Override
-   public dfj a(dfj $$0, ha $$1, dfj $$2, cpw $$3, gw $$4, gw $$5) {
-      if ($$0.c(e)) {
-         $$3.a($$4, ean.c, ean.c.a($$3));
-      }
-
-      return $$1.o().e() == ha.c.a ? $$0.a(f.get($$1), Boolean.valueOf(this.a($$2, $$2.d($$3, $$5, $$1.g()), $$1.g()))) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   protected void a(dfk.a<csv, dfj> $$0) {
-      $$0.a(a, b, d, c, e);
    }
 }

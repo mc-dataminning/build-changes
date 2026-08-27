@@ -1,45 +1,30 @@
-import com.mojang.logging.LogUtils;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public class bxy extends bxq {
+   private static final int b = 40;
+   private int c;
 
-public class bxy {
-   private static final Logger a = LogUtils.getLogger();
-   private final bxh b;
-   private final bxr[] c = new bxr[bxx.c()];
-   @Nullable
-   private bxr d;
-
-   public bxy(bxh $$0) {
-      this.b = $$0;
-      this.a(bxx.k);
+   public bxy(bxn $$0) {
+      super($$0);
    }
 
-   public void a(bxx<?> $$0) {
-      if (this.d == null || $$0 != this.d.i()) {
-         if (this.d != null) {
-            this.d.e();
-         }
+   @Override
+   public void b() {
+      this.a.dL().a(this.a.dq(), this.a.ds(), this.a.dw(), apg.gX, this.a.da(), 2.5F, 0.8F + this.a.ef().i() * 0.3F, false);
+   }
 
-         this.d = this.b((bxx<bxr>)$$0);
-         if (!this.b.dL().B) {
-            this.b.al().b(bxh.b, $$0.b());
-         }
-
-         a.debug("Dragon is now in phase {} on the {}", $$0, this.b.dL().B ? "client" : "server");
-         this.d.d();
+   @Override
+   public void c() {
+      if (this.c++ >= 40) {
+         this.a.gb().a(byd.f);
       }
    }
 
-   public bxr a() {
-      return this.d;
+   @Override
+   public void d() {
+      this.c = 0;
    }
 
-   public <T extends bxr> T b(bxx<T> $$0) {
-      int $$1 = $$0.b();
-      if (this.c[$$1] == null) {
-         this.c[$$1] = $$0.a(this.b);
-      }
-
-      return (T)this.c[$$1];
+   @Override
+   public byd<bxy> i() {
+      return byd.h;
    }
 }

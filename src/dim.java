@@ -1,104 +1,232 @@
-import it.unimi.dsi.fastutil.longs.Long2ObjectLinkedOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import java.io.DataInput;
-import java.io.DataInputStream;
-import java.io.DataOutput;
-import java.io.DataOutputStream;
-import java.io.IOException;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.nio.file.Path;
-import javax.annotation.Nullable;
+import java.util.Optional;
+import java.util.OptionalLong;
 
-public final class dim implements AutoCloseable {
-   public static final String a = ".mca";
-   private static final int b = 256;
-   private final Long2ObjectLinkedOpenHashMap<dil> c = new Long2ObjectLinkedOpenHashMap();
-   private final Path d;
-   private final boolean e;
+public record dim(
+   OptionalLong k, boolean l, boolean m, boolean n, boolean o, double p, boolean q, boolean r, int s, int t, int u, aqk<ctc> v, aez w, float x, dim.a y
+) {
+   public static final int a = gw.c;
+   public static final int b = 16;
+   public static final int c = (1 << a) - 32;
+   public static final int d = (c >> 1) - 1;
+   public static final int e = d - c + 1;
+   public static final int f = d << 4;
+   public static final int g = e << 4;
+   public static final Codec<dim> h = arj.c(
+      RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  arj.a(Codec.LONG.optionalFieldOf("fixed_time")).forGetter(dim::f),
+                  Codec.BOOL.fieldOf("has_skylight").forGetter(dim::g),
+                  Codec.BOOL.fieldOf("has_ceiling").forGetter(dim::h),
+                  Codec.BOOL.fieldOf("ultrawarm").forGetter(dim::i),
+                  Codec.BOOL.fieldOf("natural").forGetter(dim::j),
+                  Codec.doubleRange(1.0E-5F, 3.0E7).fieldOf("coordinate_scale").forGetter(dim::k),
+                  Codec.BOOL.fieldOf("bed_works").forGetter(dim::l),
+                  Codec.BOOL.fieldOf("respawn_anchor_works").forGetter(dim::m),
+                  Codec.intRange(e, d).fieldOf("min_y").forGetter(dim::n),
+                  Codec.intRange(16, c).fieldOf("height").forGetter(dim::o),
+                  Codec.intRange(0, c).fieldOf("logical_height").forGetter(dim::p),
+                  aqk.b(jc.e).fieldOf("infiniburn").forGetter(dim::q),
+                  aez.a.fieldOf("effects").orElse(dik.e).forGetter(dim::r),
+                  Codec.FLOAT.fieldOf("ambient_light").forGetter(dim::s),
+                  dim.a.a.forGetter(dim::t)
+               )
+               .apply($$0, dim::new)
+      )
+   );
+   private static final int z = 8;
+   public static final float[] i = new float[]{1.0F, 0.75F, 0.5F, 0.25F, 0.0F, 0.25F, 0.5F, 0.75F};
+   public static final Codec<he<dim>> j = aev.a(jc.av, h);
 
-   dim(Path $$0, boolean $$1) {
-      this.d = $$0;
-      this.e = $$1;
-   }
-
-   private dil b(cpc $$0) throws IOException {
-      long $$1 = cpc.c($$0.h(), $$0.i());
-      dil $$2 = (dil)this.c.getAndMoveToFirst($$1);
-      if ($$2 != null) {
-         return $$2;
+   public dim(
+      OptionalLong k, boolean l, boolean m, boolean n, boolean o, double p, boolean q, boolean r, int s, int t, int u, aqk<ctc> v, aez w, float x, dim.a y
+   ) {
+      if (t < 16) {
+         throw new IllegalStateException("height has to be at least 16");
+      } else if (s + t > d + 1) {
+         throw new IllegalStateException("min_y + height cannot be higher than: " + (d + 1));
+      } else if (u > t) {
+         throw new IllegalStateException("logical_height cannot be higher than height");
+      } else if (t % 16 != 0) {
+         throw new IllegalStateException("height has to be multiple of 16");
+      } else if (s % 16 != 0) {
+         throw new IllegalStateException("min_y has to be a multiple of 16");
       } else {
-         if (this.c.size() >= 256) {
-            ((dil)this.c.removeLast()).close();
-         }
-
-         v.c(this.d);
-         Path $$3 = this.d.resolve("r." + $$0.h() + "." + $$0.i() + ".mca");
-         dil $$4 = new dil($$3, this.d, this.e);
-         this.c.putAndMoveToFirst($$1, $$4);
-         return $$4;
+         this.k = k;
+         this.l = l;
+         this.m = m;
+         this.n = n;
+         this.o = o;
+         this.p = p;
+         this.q = q;
+         this.r = r;
+         this.s = s;
+         this.t = t;
+         this.u = u;
+         this.v = v;
+         this.w = w;
+         this.x = x;
+         this.y = y;
       }
    }
 
-   @Nullable
-   public qw a(cpc $$0) throws IOException {
-      dil $$1 = this.b($$0);
-
-      qw var4;
-      try (DataInputStream $$2 = $$1.a($$0)) {
-         if ($$2 == null) {
-            return null;
+   @Deprecated
+   public static DataResult<aey<cqb>> a(Dynamic<?> $$0) {
+      Optional<Number> $$1 = $$0.asNumber().result();
+      if ($$1.isPresent()) {
+         int $$2 = $$1.get().intValue();
+         if ($$2 == -1) {
+            return DataResult.success(cqb.i);
          }
 
-         var4 = rh.a((DataInput)$$2);
-      }
+         if ($$2 == 0) {
+            return DataResult.success(cqb.h);
+         }
 
-      return var4;
-   }
-
-   public void a(cpc $$0, rn $$1) throws IOException {
-      dil $$2 = this.b($$0);
-
-      try (DataInputStream $$3 = $$2.a($$0)) {
-         if ($$3 != null) {
-            rh.a((DataInput)$$3, $$1, rf.a());
+         if ($$2 == 1) {
+            return DataResult.success(cqb.j);
          }
       }
+
+      return cqb.g.parse($$0);
    }
 
-   protected void a(cpc $$0, @Nullable qw $$1) throws IOException {
-      dil $$2 = this.b($$0);
-      if ($$1 == null) {
-         $$2.d($$0);
+   public static double a(dim $$0, dim $$1) {
+      double $$2 = $$0.k();
+      double $$3 = $$1.k();
+      return $$2 / $$3;
+   }
+
+   public static Path a(aey<cqb> $$0, Path $$1) {
+      if ($$0 == cqb.h) {
+         return $$1;
+      } else if ($$0 == cqb.j) {
+         return $$1.resolve("DIM1");
       } else {
-         try (DataOutputStream $$3 = $$2.c($$0)) {
-            rh.a($$1, (DataOutput)$$3);
-         }
+         return $$0 == cqb.i ? $$1.resolve("DIM-1") : $$1.resolve("dimensions").resolve($$0.a().b()).resolve($$0.a().a());
       }
    }
 
-   @Override
-   public void close() throws IOException {
-      are<IOException> $$0 = new are<>();
-      ObjectIterator var2 = this.c.values().iterator();
-
-      while (var2.hasNext()) {
-         dil $$1 = (dil)var2.next();
-
-         try {
-            $$1.close();
-         } catch (IOException var5) {
-            $$0.a(var5);
-         }
-      }
-
-      $$0.a();
+   public boolean a() {
+      return this.k.isPresent();
    }
 
-   public void a() throws IOException {
-      ObjectIterator var1 = this.c.values().iterator();
+   public float a(long $$0) {
+      double $$1 = asb.e((double)this.k.orElse($$0) / 24000.0 - 0.25);
+      double $$2 = 0.5 - Math.cos($$1 * Math.PI) / 2.0;
+      return (float)($$1 * 2.0 + $$2) / 3.0F;
+   }
 
-      while (var1.hasNext()) {
-         dil $$0 = (dil)var1.next();
-         $$0.a();
+   public int b(long $$0) {
+      return (int)($$0 / 24000L % 8L + 8L) % 8;
+   }
+
+   public boolean b() {
+      return this.y.a();
+   }
+
+   public boolean c() {
+      return this.y.b();
+   }
+
+   public bgj d() {
+      return this.y.c();
+   }
+
+   public int e() {
+      return this.y.d();
+   }
+
+   public OptionalLong f() {
+      return this.k;
+   }
+
+   public boolean g() {
+      return this.l;
+   }
+
+   public boolean h() {
+      return this.m;
+   }
+
+   public boolean i() {
+      return this.n;
+   }
+
+   public boolean j() {
+      return this.o;
+   }
+
+   public double k() {
+      return this.p;
+   }
+
+   public boolean l() {
+      return this.q;
+   }
+
+   public boolean m() {
+      return this.r;
+   }
+
+   public int n() {
+      return this.s;
+   }
+
+   public int o() {
+      return this.t;
+   }
+
+   public int p() {
+      return this.u;
+   }
+
+   public aqk<ctc> q() {
+      return this.v;
+   }
+
+   public aez r() {
+      return this.w;
+   }
+
+   public float s() {
+      return this.x;
+   }
+
+   public dim.a t() {
+      return this.y;
+   }
+
+   public static record a(boolean b, boolean c, bgj d, int e) {
+      public static final MapCodec<dim.a> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(
+                  Codec.BOOL.fieldOf("piglin_safe").forGetter(dim.a::a),
+                  Codec.BOOL.fieldOf("has_raids").forGetter(dim.a::b),
+                  bgj.b(0, 15).fieldOf("monster_spawn_light_level").forGetter(dim.a::c),
+                  Codec.intRange(0, 15).fieldOf("monster_spawn_block_light_limit").forGetter(dim.a::d)
+               )
+               .apply($$0, dim.a::new)
+      );
+
+      public boolean a() {
+         return this.b;
+      }
+
+      public boolean b() {
+         return this.c;
+      }
+
+      public bgj c() {
+         return this.d;
+      }
+
+      public int d() {
+         return this.e;
       }
    }
 }

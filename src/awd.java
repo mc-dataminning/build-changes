@@ -1,24 +1,17 @@
+import com.google.common.collect.ImmutableMap;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
+import java.util.Map;
 import java.util.Objects;
 
-public class awd extends azg {
+public class awd extends azn {
+   public static final Map<String, String> a = ImmutableMap.builder().put("minecraft:illager_beast_spawn_egg", "minecraft:ravager_spawn_egg").build();
+
    public awd(Schema $$0, boolean $$1) {
-      super("EntitySkeletonSplitFix", $$0, $$1);
+      super("EntityRavagerRenameFix", $$0, $$1);
    }
 
    @Override
-   protected Pair<String, Dynamic<?>> a(String $$0, Dynamic<?> $$1) {
-      if (Objects.equals($$0, "Skeleton")) {
-         int $$2 = $$1.get("SkeletonType").asInt(0);
-         if ($$2 == 1) {
-            $$0 = "WitherSkeleton";
-         } else if ($$2 == 2) {
-            $$0 = "Stray";
-         }
-      }
-
-      return Pair.of($$0, $$1);
+   protected String a(String $$0) {
+      return Objects.equals("minecraft:illager_beast", $$0) ? "minecraft:ravager" : $$0;
    }
 }

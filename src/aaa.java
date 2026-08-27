@@ -1,55 +1,56 @@
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
-
-public class aaa implements vd<ww> {
-   private static final byte a = -128;
+public class aaa implements ve<wx> {
+   private final int a;
    private final int b;
-   private final List<Pair<biv, cjf>> c;
+   private final int c;
+   private final int d;
 
-   public aaa(int $$0, List<Pair<biv, cjf>> $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public aaa(biw $$0) {
+      this($$0.ah(), $$0.do());
+   }
+
+   public aaa(int $$0, ehh $$1) {
+      this.a = $$0;
+      double $$2 = 3.9;
+      double $$3 = asb.a($$1.c, -3.9, 3.9);
+      double $$4 = asb.a($$1.d, -3.9, 3.9);
+      double $$5 = asb.a($$1.e, -3.9, 3.9);
+      this.b = (int)($$3 * 8000.0);
+      this.c = (int)($$4 * 8000.0);
+      this.d = (int)($$5 * 8000.0);
    }
 
    public aaa(so $$0) {
-      this.b = $$0.m();
-      biv[] $$1 = biv.values();
-      this.c = Lists.newArrayList();
-
-      int $$2;
-      do {
-         $$2 = $$0.readByte();
-         biv $$3 = $$1[$$2 & 127];
-         cjf $$4 = $$0.q();
-         this.c.add(Pair.of($$3, $$4));
-      } while (($$2 & -128) != 0);
+      this.a = $$0.n();
+      this.b = $$0.readShort();
+      this.c = $$0.readShort();
+      this.d = $$0.readShort();
    }
 
    @Override
    public void a(so $$0) {
-      $$0.c(this.b);
-      int $$1 = this.c.size();
-
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         Pair<biv, cjf> $$3 = this.c.get($$2);
-         biv $$4 = (biv)$$3.getFirst();
-         boolean $$5 = $$2 != $$1 - 1;
-         int $$6 = $$4.ordinal();
-         $$0.k($$5 ? $$6 | -128 : $$6);
-         $$0.a((cjf)$$3.getSecond());
-      }
+      $$0.c(this.a);
+      $$0.l(this.b);
+      $$0.l(this.c);
+      $$0.l(this.d);
    }
 
-   public void a(ww $$0) {
+   public void a(wx $$0) {
       $$0.a(this);
    }
 
    public int a() {
+      return this.a;
+   }
+
+   public int d() {
       return this.b;
    }
 
-   public List<Pair<biv, cjf>> d() {
+   public int e() {
       return this.c;
+   }
+
+   public int f() {
+      return this.d;
    }
 }

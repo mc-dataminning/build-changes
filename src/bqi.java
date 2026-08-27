@@ -1,119 +1,151 @@
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.Sets;
+import com.mojang.logging.LogUtils;
+import java.util.EnumMap;
 import java.util.EnumSet;
-import java.util.List;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+import java.util.Map.Entry;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
+import java.util.stream.Stream;
+import org.slf4j.Logger;
 
-public class bqi extends bqb {
-   public final bwt a;
-   private double b;
-   private static final int c = 8;
-   private int d;
+public class bqi {
+   private static final Logger a = LogUtils.getLogger();
+   private static final brv b = new brv(Integer.MAX_VALUE, new bqh() {
+      @Override
+      public boolean a() {
+         return false;
+      }
+   }) {
+      @Override
+      public boolean h() {
+         return false;
+      }
+   };
+   private final Map<bqh.a, brv> c = new EnumMap<>(bqh.a.class);
+   private final Set<brv> d = Sets.newLinkedHashSet();
+   private final Supplier<bdv> e;
+   private final EnumSet<bqh.a> f = EnumSet.noneOf(bqh.a.class);
+   private int g;
+   private int h = 3;
 
-   public bqi(bwt $$0, double $$1) {
-      this.a = $$0;
-      this.b = $$1;
-      this.a(EnumSet.of(bqb.a.a));
+   public bqi(Supplier<bdv> $$0) {
+      this.e = $$0;
    }
 
-   @Override
-   public boolean a() {
-      if (!this.a.fR() && !this.a.gR()) {
-         List<biq> $$0 = this.a.dL().a(this.a, this.a.cG().c(9.0, 4.0, 9.0), $$0x -> {
-            biu<?> $$1x = $$0x.ag();
-            return $$1x == biu.aj || $$1x == biu.ba;
-         });
-         bwt $$1 = null;
-         double $$2 = Double.MAX_VALUE;
+   public void a(int $$0, bqh $$1) {
+      this.d.add(new brv($$0, $$1));
+   }
 
-         for (biq $$3 : $$0) {
-            bwt $$4 = (bwt)$$3;
-            if ($$4.gR() && !$$4.gQ()) {
-               double $$5 = this.a.f($$4);
-               if (!($$5 > $$2)) {
-                  $$2 = $$5;
-                  $$1 = $$4;
-               }
-            }
-         }
+   @VisibleForTesting
+   public void a(Predicate<bqh> $$0) {
+      this.d.removeIf($$1 -> $$0.test($$1.k()));
+   }
 
-         if ($$1 == null) {
-            for (biq $$6 : $$0) {
-               bwt $$7 = (bwt)$$6;
-               if ($$7.fR() && !$$7.gQ()) {
-                  double $$8 = this.a.f($$7);
-                  if (!($$8 > $$2)) {
-                     $$2 = $$8;
-                     $$1 = $$7;
-                  }
-               }
-            }
-         }
+   public void a(bqh $$0) {
+      this.d.stream().filter($$1 -> $$1.k() == $$0).filter(brv::h).forEach(brv::d);
+      this.d.removeIf($$1 -> $$1.k() == $$0);
+   }
 
-         if ($$1 == null) {
-            return false;
-         } else if ($$2 < 4.0) {
-            return false;
-         } else if (!$$1.fR() && !this.a($$1, 1)) {
-            return false;
-         } else {
-            this.a.a($$1);
+   private static boolean a(brv $$0, EnumSet<bqh.a> $$1) {
+      for (bqh.a $$2 : $$0.j()) {
+         if ($$1.contains($$2)) {
             return true;
          }
-      } else {
-         return false;
       }
+
+      return false;
    }
 
-   @Override
-   public boolean b() {
-      if (this.a.gR() && this.a.gS().bv() && this.a(this.a, 0)) {
-         double $$0 = this.a.f(this.a.gS());
-         if ($$0 > 676.0) {
-            if (this.b <= 3.0) {
-               this.b *= 1.2;
-               this.d = b(40);
-               return true;
+   private static boolean a(brv $$0, Map<bqh.a, brv> $$1) {
+      for (bqh.a $$2 : $$0.j()) {
+         if (!$$1.getOrDefault($$2, b).a($$0)) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   public void a() {
+      bdv $$0 = this.e.get();
+      $$0.a("goalCleanup");
+
+      for (brv $$1 : this.d) {
+         if ($$1.h() && (a($$1, this.f) || !$$1.b())) {
+            $$1.d();
+         }
+      }
+
+      Iterator<Entry<bqh.a, brv>> $$2 = this.c.entrySet().iterator();
+
+      while ($$2.hasNext()) {
+         Entry<bqh.a, brv> $$3 = $$2.next();
+         if (!$$3.getValue().h()) {
+            $$2.remove();
+         }
+      }
+
+      $$0.c();
+      $$0.a("goalUpdate");
+
+      for (brv $$4 : this.d) {
+         if (!$$4.h() && !a($$4, this.f) && a($$4, this.c) && $$4.a()) {
+            for (bqh.a $$5 : $$4.j()) {
+               brv $$6 = this.c.getOrDefault($$5, b);
+               $$6.d();
+               this.c.put($$5, $$4);
             }
 
-            if (this.d == 0) {
-               return false;
-            }
-         }
-
-         if (this.d > 0) {
-            this.d--;
-         }
-
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public void d() {
-      this.a.gP();
-      this.b = 2.1;
-   }
-
-   @Override
-   public void e() {
-      if (this.a.gR()) {
-         if (!(this.a.fS() instanceof byh)) {
-            bwt $$0 = this.a.gS();
-            double $$1 = (double)this.a.e($$0);
-            float $$2 = 2.0F;
-            ehn $$3 = new ehn($$0.dq() - this.a.dq(), $$0.ds() - this.a.ds(), $$0.dw() - this.a.dw()).d().a(Math.max($$1 - 2.0, 0.0));
-            this.a.L().a(this.a.dq() + $$3.c, this.a.ds() + $$3.d, this.a.dw() + $$3.e, this.b);
+            $$4.c();
          }
       }
+
+      $$0.c();
+      this.a(true);
    }
 
-   private boolean a(bwt $$0, int $$1) {
-      if ($$1 > 8) {
-         return false;
-      } else if ($$0.gR()) {
-         return $$0.gS().fR() ? true : this.a($$0.gS(), ++$$1);
+   public void a(boolean $$0) {
+      bdv $$1 = this.e.get();
+      $$1.a("goalTick");
+
+      for (brv $$2 : this.d) {
+         if ($$2.h() && ($$0 || $$2.Q_())) {
+            $$2.e();
+         }
+      }
+
+      $$1.c();
+   }
+
+   public Set<brv> b() {
+      return this.d;
+   }
+
+   public Stream<brv> c() {
+      return this.d.stream().filter(brv::h);
+   }
+
+   public void a(int $$0) {
+      this.h = $$0;
+   }
+
+   public void a(bqh.a $$0) {
+      this.f.add($$0);
+   }
+
+   public void b(bqh.a $$0) {
+      this.f.remove($$0);
+   }
+
+   public void a(bqh.a $$0, boolean $$1) {
+      if ($$1) {
+         this.b($$0);
       } else {
-         return false;
+         this.a($$0);
       }
    }
 }

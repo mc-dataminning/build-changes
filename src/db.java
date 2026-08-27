@@ -7,8 +7,8 @@ public class db extends cw<db.a> {
       return new db.a($$1, $$3);
    }
 
-   public void a(akr $$0, biq $$1) {
-      ecq $$2 = bq.b($$0, $$1);
+   public void a(aku $$0, biw $$1) {
+      eck $$2 = bq.b($$0, $$1);
       this.a($$0, $$1x -> $$1x.a($$2));
    }
 
@@ -24,7 +24,7 @@ public class db extends cw<db.a> {
          return al.n.a(new db.a(Optional.empty(), Optional.of(bq.a($$0))));
       }
 
-      public boolean a(ecq $$0) {
+      public boolean a(eck $$0) {
          return this.a.isEmpty() || this.a.get().a($$0);
       }
 

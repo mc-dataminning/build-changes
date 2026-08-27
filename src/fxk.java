@@ -1,52 +1,33 @@
-public class fxk<T extends bve> extends fxp<T, few<T>> {
-   private final foy a;
+public class fxk<T extends cca, M extends fey<T> & fdz & ffg> extends fxe<T, M> {
+   private final fnw a;
+   private static final float b = (float) (-Math.PI / 6);
+   private static final float c = (float) (Math.PI / 2);
 
-   public fxk(fvc<T, few<T>> $$0, foy $$1) {
-      super($$0);
+   public fxk(fuy<T, M> $$0, fnw $$1) {
+      super($$0, $$1);
       this.a = $$1;
    }
 
-   public void a(elp $$0, foe $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if (!$$3.m_()) {
-         eqv $$10 = eqv.O();
-         boolean $$11 = $$10.b($$3) && $$3.cd();
-         if (!$$3.cd() || $$11) {
-            dfj $$12 = $$3.t().a();
-            int $$13 = fui.c($$3, 0.0F);
-            gbf $$14 = this.a.a($$12);
-            $$0.a();
-            $$0.a(0.2F, -0.35F, 0.5F);
-            $$0.a(a.d.rotationDegrees(-48.0F));
-            $$0.b(-1.0F, -1.0F, 1.0F);
-            $$0.a(-0.5F, -0.5F, -0.5F);
-            this.a($$0, $$1, $$2, $$11, $$12, $$13, $$14);
-            $$0.b();
-            $$0.a();
-            $$0.a(0.2F, -0.35F, 0.5F);
-            $$0.a(a.d.rotationDegrees(42.0F));
-            $$0.a(0.1F, 0.0F, -0.6F);
-            $$0.a(a.d.rotationDegrees(-48.0F));
-            $$0.b(-1.0F, -1.0F, 1.0F);
-            $$0.a(-0.5F, -0.5F, -0.5F);
-            this.a($$0, $$1, $$2, $$11, $$12, $$13, $$14);
-            $$0.b();
-            $$0.a();
-            this.c().d().a($$0);
-            $$0.a(0.0F, -0.7F, -0.2F);
-            $$0.a(a.d.rotationDegrees(-78.0F));
-            $$0.b(-1.0F, -1.0F, 1.0F);
-            $$0.a(-0.5F, -0.5F, -0.5F);
-            this.a($$0, $$1, $$2, $$11, $$12, $$13, $$14);
-            $$0.b();
-         }
+   @Override
+   protected void a(bjm $$0, cjl $$1, cji $$2, bjg $$3, elj $$4, foa $$5, int $$6) {
+      if ($$1.a(cjo.qj) && $$0.fp() == $$1 && $$0.aH == 0) {
+         this.a($$0, $$1, $$3, $$4, $$5, $$6);
+      } else {
+         super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
       }
    }
 
-   private void a(elp $$0, foe $$1, int $$2, boolean $$3, dfj $$4, int $$5, gbf $$6) {
-      if ($$3) {
-         this.a.b().a($$0.c(), $$1.getBuffer(fom.q(fzd.e)), $$4, $$6, 0.0F, 0.0F, 0.0F, $$2, $$5);
-      } else {
-         this.a.a($$4, $$0, $$1, $$2, $$5);
-      }
+   private void a(bjm $$0, cjl $$1, bjg $$2, elj $$3, foa $$4, int $$5) {
+      $$3.a();
+      fhx $$6 = this.c().d();
+      float $$7 = $$6.e;
+      $$6.e = asb.a($$6.e, (float) (-Math.PI / 6), (float) (Math.PI / 2));
+      $$6.a($$3);
+      $$6.e = $$7;
+      fwq.a($$3, false);
+      boolean $$8 = $$2 == bjg.a;
+      $$3.a(($$8 ? -2.5F : 2.5F) / 16.0F, -0.0625F, 0.0F);
+      this.a.a($$0, $$1, cji.f, false, $$3, $$4, $$5);
+      $$3.b();
    }
 }

@@ -1,36 +1,18 @@
-import com.google.common.collect.Sets;
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
+import java.util.function.Function;
+import java.util.function.Supplier;
 
-public record efy(egk b, ecp c) implements efp {
-   public static final Codec<efy> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(egl.a.fieldOf("value").forGetter(efy::c), ecp.a.fieldOf("range").forGetter(efy::d)).apply($$0, efy::new)
+public class efy {
+   private static final Codec<efx> d = jb.K.q().dispatch(efx::a, efw::a);
+   public static final Codec<efx> a = arj.a(
+      (Supplier<Codec<efx>>)(() -> Codec.either(efv.c, d)
+            .xmap($$0 -> (efx)$$0.map(Function.identity(), Function.identity()), $$0 -> $$0 instanceof efv $$1 ? Either.left($$1) : Either.right($$0)))
    );
+   public static final efw b = a("storage", efz.a);
+   public static final efw c = a("context", efv.b);
 
-   @Override
-   public efq b() {
-      return efr.s;
-   }
-
-   @Override
-   public Set<eey<?>> a() {
-      return Sets.union(this.b.a(), this.c.a());
-   }
-
-   public boolean a(ecq $$0) {
-      return this.c.b($$0, this.b.a($$0));
-   }
-
-   public static efp.a a(egk $$0, ecp $$1) {
-      return () -> new efy($$0, $$1);
-   }
-
-   public egk c() {
-      return this.b;
-   }
-
-   public ecp d() {
-      return this.c;
+   private static efw a(String $$0, Codec<? extends efx> $$1) {
+      return hq.a(jb.K, new aez($$0), new efw($$1));
    }
 }

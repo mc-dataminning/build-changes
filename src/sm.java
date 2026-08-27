@@ -41,7 +41,7 @@ import org.slf4j.Logger;
 import org.slf4j.Marker;
 import org.slf4j.MarkerFactory;
 
-public class sm extends SimpleChannelInboundHandler<vd<?>> {
+public class sm extends SimpleChannelInboundHandler<ve<?>> {
    private static final float j = 0.75F;
    private static final Logger k = LogUtils.getLogger();
    public static final Marker a = MarkerFactory.getMarker("NETWORK");
@@ -59,7 +59,7 @@ public class sm extends SimpleChannelInboundHandler<vd<?>> {
    public static final Supplier<DefaultEventLoopGroup> i = Suppliers.memoize(
       () -> new DefaultEventLoopGroup(0, new ThreadFactoryBuilder().setNameFormat("Netty Local Client IO #%d").setDaemon(true).build())
    );
-   private final ve l;
+   private final vf l;
    private final Queue<Consumer<sm>> m = Queues.newConcurrentLinkedQueue();
    private Channel n;
    private SocketAddress o;
@@ -82,7 +82,7 @@ public class sm extends SimpleChannelInboundHandler<vd<?>> {
    @Nullable
    se B;
 
-   public sm(ve $$0) {
+   public sm(vf $$0) {
       this.l = $$0;
    }
 
@@ -96,8 +96,8 @@ public class sm extends SimpleChannelInboundHandler<vd<?>> {
    }
 
    public static void a(Channel $$0) {
-      $$0.attr(e).set(sn.a.b(ve.a));
-      $$0.attr(f).set(sn.a.b(ve.b));
+      $$0.attr(e).set(sn.a.b(vf.a));
+      $$0.attr(f).set(sn.a.b(vf.b));
    }
 
    public void channelInactive(ChannelHandlerContext $$0) {
@@ -118,9 +118,9 @@ public class sm extends SimpleChannelInboundHandler<vd<?>> {
                tl $$3 = tl.a("disconnect.genericReason", "Internal Exception: " + $$1);
                if ($$2) {
                   k.debug("Failed to sent packet", $$1);
-                  if (this.i() == ve.b) {
+                  if (this.i() == vf.b) {
                      sn $$4 = ((sn.a)this.n.attr(f).get()).a();
-                     vd<?> $$5 = (vd<?>)($$4 == sn.d ? new adj($$3) : new vi($$3));
+                     ve<?> $$5 = (ve<?>)($$4 == sn.d ? new adk($$3) : new vj($$3));
                      this.a($$5, sv.a(() -> this.a($$3)));
                   } else {
                      this.a($$3);
@@ -136,7 +136,7 @@ public class sm extends SimpleChannelInboundHandler<vd<?>> {
       }
    }
 
-   protected void a(ChannelHandlerContext $$0, vd<?> $$1) {
+   protected void a(ChannelHandlerContext $$0, ve<?> $$1) {
       if (this.n.isOpen()) {
          su $$2 = this.q;
          if ($$2 == null) {
@@ -145,7 +145,7 @@ public class sm extends SimpleChannelInboundHandler<vd<?>> {
             if ($$2.a($$1)) {
                try {
                   a($$1, $$2);
-               } catch (afh var5) {
+               } catch (afk var5) {
                } catch (RejectedExecutionException var6) {
                   this.a(tl.c("multiplayer.disconnect.server_shutdown"));
                } catch (ClassCastException var7) {
@@ -159,7 +159,7 @@ public class sm extends SimpleChannelInboundHandler<vd<?>> {
       }
    }
 
-   private static <T extends su> void a(vd<T> $$0, su $$1) {
+   private static <T extends su> void a(ve<T> $$0, su $$1) {
       $$0.a((T)$$1);
    }
 
@@ -173,7 +173,7 @@ public class sm extends SimpleChannelInboundHandler<vd<?>> {
 
    public void a(su $$0) {
       Validate.notNull($$0, "packetListener", new Object[0]);
-      ve $$1 = $$0.a();
+      vf $$1 = $$0.a();
       if ($$1 != this.l) {
          throw new IllegalStateException("Trying to set listener for wrong side: connection is " + this.l + ", but listener is " + $$1);
       } else {
@@ -191,43 +191,43 @@ public class sm extends SimpleChannelInboundHandler<vd<?>> {
    public void b(su $$0) {
       if (this.q != null) {
          throw new IllegalStateException("Listener already set");
-      } else if (this.l == ve.a && $$0.a() == ve.a && $$0.b() == sn.a) {
+      } else if (this.l == vf.a && $$0.a() == vf.a && $$0.b() == sn.a) {
          this.q = $$0;
       } else {
          throw new IllegalStateException("Invalid initial listener");
       }
    }
 
-   public void a(String $$0, int $$1, adw $$2) {
-      this.a($$0, $$1, $$2, ada.a);
+   public void a(String $$0, int $$1, adx $$2) {
+      this.a($$0, $$1, $$2, adb.a);
    }
 
-   public void a(String $$0, int $$1, ade $$2) {
-      this.a($$0, $$1, $$2, ada.b);
+   public void a(String $$0, int $$1, adf $$2) {
+      this.a($$0, $$1, $$2, adb.b);
    }
 
-   private void a(String $$0, int $$1, su $$2, ada $$3) {
+   private void a(String $$0, int $$1, su $$2, adb $$3) {
       this.p = $$2;
       this.a((Consumer<sm>)($$4 -> {
          $$4.a($$3);
          this.a($$2);
-         $$4.b(new adb(aa.b().e(), $$0, $$1, $$3), null, true);
+         $$4.b(new adc(aa.b().e(), $$0, $$1, $$3), null, true);
       }));
    }
 
-   public void a(ada $$0) {
-      this.n.attr(f).set($$0.b().b(ve.b));
+   public void a(adb $$0) {
+      this.n.attr(f).set($$0.b().b(vf.b));
    }
 
-   public void a(vd<?> $$0) {
+   public void a(ve<?> $$0) {
       this.a($$0, null);
    }
 
-   public void a(vd<?> $$0, @Nullable sv $$1) {
+   public void a(ve<?> $$0, @Nullable sv $$1) {
       this.a($$0, $$1, true);
    }
 
-   public void a(vd<?> $$0, @Nullable sv $$1, boolean $$2) {
+   public void a(ve<?> $$0, @Nullable sv $$1, boolean $$2) {
       if (this.k()) {
          this.t();
          this.b($$0, $$1, $$2);
@@ -245,7 +245,7 @@ public class sm extends SimpleChannelInboundHandler<vd<?>> {
       }
    }
 
-   private void b(vd<?> $$0, @Nullable sv $$1, boolean $$2) {
+   private void b(ve<?> $$0, @Nullable sv $$1, boolean $$2) {
       this.v++;
       if (this.n.eventLoop().inEventLoop()) {
          this.c($$0, $$1, $$2);
@@ -254,14 +254,14 @@ public class sm extends SimpleChannelInboundHandler<vd<?>> {
       }
    }
 
-   private void c(vd<?> $$0, @Nullable sv $$1, boolean $$2) {
+   private void c(ve<?> $$0, @Nullable sv $$1, boolean $$2) {
       ChannelFuture $$3 = $$2 ? this.n.writeAndFlush($$0) : this.n.write($$0);
       if ($$1 != null) {
          $$3.addListener($$1x -> {
             if ($$1x.isSuccess()) {
                $$1.a();
             } else {
-               vd<?> $$2x = $$1.b();
+               ve<?> $$2x = $$1.b();
                if ($$2x != null) {
                   ChannelFuture $$3x = this.n.writeAndFlush($$2x);
                   $$3x.addListener(ChannelFutureListener.FIRE_EXCEPTION_ON_FAILURE);
@@ -289,7 +289,7 @@ public class sm extends SimpleChannelInboundHandler<vd<?>> {
       }
    }
 
-   private static AttributeKey<sn.a<?>> a(ve $$0) {
+   private static AttributeKey<sn.a<?>> a(vf $$0) {
       return switch ($$0) {
          case b -> f;
          case a -> e;
@@ -331,8 +331,8 @@ public class sm extends SimpleChannelInboundHandler<vd<?>> {
    }
 
    protected void e() {
-      this.x = arw.i(0.75F, (float)this.v, this.x);
-      this.w = arw.i(0.75F, (float)this.u, this.w);
+      this.x = asb.i(0.75F, (float)this.v, this.x);
+      this.w = asb.i(0.75F, (float)this.u, this.w);
       this.v = 0;
       this.u = 0;
    }
@@ -364,16 +364,16 @@ public class sm extends SimpleChannelInboundHandler<vd<?>> {
       return this.n instanceof LocalChannel || this.n instanceof LocalServerChannel;
    }
 
-   public ve h() {
+   public vf h() {
       return this.l;
    }
 
-   public ve i() {
+   public vf i() {
       return this.l.a();
    }
 
-   public static sm a(InetSocketAddress $$0, boolean $$1, @Nullable ase $$2) {
-      sm $$3 = new sm(ve.b);
+   public static sm a(InetSocketAddress $$0, boolean $$1, @Nullable asj $$2) {
+      sm $$3 = new sm(vf.b);
       if ($$2 != null) {
          $$3.a($$2);
       }
@@ -404,14 +404,14 @@ public class sm extends SimpleChannelInboundHandler<vd<?>> {
             }
 
             ChannelPipeline $$1 = $$0.pipeline().addLast("timeout", new ReadTimeoutHandler(30));
-            sm.a($$1, ve.b, $$2.B);
+            sm.a($$1, vf.b, $$2.B);
             $$2.a($$1);
          }
       })).channel($$3)).connect($$0.getAddress(), $$0.getPort());
    }
 
-   public static void a(ChannelPipeline $$0, ve $$1, @Nullable se $$2) {
-      ve $$3 = $$1.a();
+   public static void a(ChannelPipeline $$0, vf $$1, @Nullable se $$2) {
+      vf $$3 = $$1.a();
       AttributeKey<sn.a<?>> $$4 = a($$1);
       AttributeKey<sn.a<?>> $$5 = a($$3);
       $$0.addLast("splitter", new te($$2))
@@ -426,24 +426,24 @@ public class sm extends SimpleChannelInboundHandler<vd<?>> {
       $$0.addLast(new ChannelHandler[]{new FlowControlHandler()}).addLast("packet_handler", this);
    }
 
-   private static void b(ChannelPipeline $$0, ve $$1) {
-      ve $$2 = $$1.a();
+   private static void b(ChannelPipeline $$0, vf $$1) {
+      vf $$2 = $$1.a();
       AttributeKey<sn.a<?>> $$3 = a($$1);
       AttributeKey<sn.a<?>> $$4 = a($$2);
       $$0.addLast("validator", new st($$3, $$4));
    }
 
-   public static void a(ChannelPipeline $$0, ve $$1) {
+   public static void a(ChannelPipeline $$0, vf $$1) {
       b($$0, $$1);
    }
 
    public static sm a(SocketAddress $$0) {
-      final sm $$1 = new sm(ve.b);
+      final sm $$1 = new sm(vf.b);
       ((Bootstrap)((Bootstrap)((Bootstrap)new Bootstrap().group((EventLoopGroup)i.get())).handler(new ChannelInitializer<Channel>() {
          protected void initChannel(Channel $$0) {
             sm.a($$0);
             ChannelPipeline $$1 = $$0.pipeline();
-            sm.a($$1, ve.b);
+            sm.a($$1, vf.b);
             $$1.a($$1);
          }
       })).channel(LocalChannel.class)).connect($$0).syncUninterruptibly();
@@ -532,7 +532,7 @@ public class sm extends SimpleChannelInboundHandler<vd<?>> {
       return this.x;
    }
 
-   public void a(ase $$0) {
+   public void a(asj $$0) {
       this.B = new se($$0);
    }
 }

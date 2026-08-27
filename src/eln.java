@@ -1,30 +1,129 @@
-import com.google.common.collect.ImmutableMap;
+import java.nio.ByteBuffer;
+import java.nio.IntBuffer;
+import org.joml.Matrix3f;
+import org.joml.Matrix4f;
+import org.joml.Vector3f;
+import org.joml.Vector4f;
+import org.lwjgl.system.MemoryStack;
 
-public class eln {
-   public static final elv a = new elv(0, elv.a.a, elv.b.a, 3);
-   public static final elv b = new elv(0, elv.a.b, elv.b.c, 4);
-   public static final elv c = new elv(0, elv.a.a, elv.b.d, 2);
-   public static final elv d = new elv(1, elv.a.e, elv.b.d, 2);
-   public static final elv e = new elv(2, elv.a.e, elv.b.d, 2);
-   public static final elv f = new elv(0, elv.a.c, elv.b.b, 3);
-   public static final elv g = new elv(0, elv.a.c, elv.b.e, 1);
-   public static final elv h = c;
-   public static final elu i = new elu(ImmutableMap.builder().put("Position", a).put("UV", h).put("Color", b).build());
-   public static final elu j = new elu(
-      ImmutableMap.builder().put("Position", a).put("Color", b).put("UV0", c).put("UV2", e).put("Normal", f).put("Padding", g).build()
-   );
-   public static final elu k = new elu(
-      ImmutableMap.builder().put("Position", a).put("Color", b).put("UV0", c).put("UV1", d).put("UV2", e).put("Normal", f).put("Padding", g).build()
-   );
-   public static final elu l = new elu(ImmutableMap.builder().put("Position", a).put("UV0", c).put("Color", b).put("UV2", e).build());
-   public static final elu m = new elu(ImmutableMap.builder().put("Position", a).build());
-   public static final elu n = new elu(ImmutableMap.builder().put("Position", a).put("Color", b).build());
-   public static final elu o = new elu(ImmutableMap.builder().put("Position", a).put("Color", b).put("Normal", f).put("Padding", g).build());
-   public static final elu p = new elu(ImmutableMap.builder().put("Position", a).put("Color", b).put("UV2", e).build());
-   public static final elu q = new elu(ImmutableMap.builder().put("Position", a).put("UV0", c).build());
-   public static final elu r = new elu(ImmutableMap.builder().put("Position", a).put("Color", b).put("UV0", c).build());
-   public static final elu s = new elu(ImmutableMap.builder().put("Position", a).put("UV0", c).put("Color", b).build());
-   public static final elu t = new elu(ImmutableMap.builder().put("Position", a).put("Color", b).put("UV0", c).put("UV2", e).build());
-   public static final elu u = new elu(ImmutableMap.builder().put("Position", a).put("UV0", c).put("UV2", e).put("Color", b).build());
-   public static final elu v = new elu(ImmutableMap.builder().put("Position", a).put("UV0", c).put("Color", b).put("Normal", f).put("Padding", g).build());
+public interface eln {
+   eln a(double var1, double var3, double var5);
+
+   eln a(int var1, int var2, int var3, int var4);
+
+   eln a(float var1, float var2);
+
+   eln a(int var1, int var2);
+
+   eln b(int var1, int var2);
+
+   eln a(float var1, float var2, float var3);
+
+   void e();
+
+   default void a(
+      float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, int $$9, int $$10, float $$11, float $$12, float $$13
+   ) {
+      this.a((double)$$0, (double)$$1, (double)$$2);
+      this.a($$3, $$4, $$5, $$6);
+      this.a($$7, $$8);
+      this.c($$9);
+      this.b($$10);
+      this.a($$11, $$12, $$13);
+      this.e();
+   }
+
+   void b(int var1, int var2, int var3, int var4);
+
+   void k();
+
+   default eln a(float $$0, float $$1, float $$2, float $$3) {
+      return this.a((int)($$0 * 255.0F), (int)($$1 * 255.0F), (int)($$2 * 255.0F), (int)($$3 * 255.0F));
+   }
+
+   default eln a(int $$0) {
+      return this.a(arl.b.b($$0), arl.b.c($$0), arl.b.d($$0), arl.b.a($$0));
+   }
+
+   default eln b(int $$0) {
+      return this.b($$0 & 65535, $$0 >> 16 & 65535);
+   }
+
+   default eln c(int $$0) {
+      return this.a($$0 & 65535, $$0 >> 16 & 65535);
+   }
+
+   default void a(elj.a $$0, fox $$1, float $$2, float $$3, float $$4, int $$5, int $$6) {
+      this.a($$0, $$1, new float[]{1.0F, 1.0F, 1.0F, 1.0F}, $$2, $$3, $$4, new int[]{$$5, $$5, $$5, $$5}, $$6, false);
+   }
+
+   default void a(elj.a $$0, fox $$1, float[] $$2, float $$3, float $$4, float $$5, int[] $$6, int $$7, boolean $$8) {
+      float[] $$9 = new float[]{$$2[0], $$2[1], $$2[2], $$2[3]};
+      int[] $$10 = new int[]{$$6[0], $$6[1], $$6[2], $$6[3]};
+      int[] $$11 = $$1.b();
+      hy $$12 = $$1.e().q();
+      Matrix4f $$13 = $$0.a();
+      Vector3f $$14 = $$0.b().transform(new Vector3f((float)$$12.u(), (float)$$12.v(), (float)$$12.w()));
+      int $$15 = 8;
+      int $$16 = $$11.length / 8;
+      MemoryStack $$17 = MemoryStack.stackPush();
+
+      try {
+         ByteBuffer $$18 = $$17.malloc(elh.j.b());
+         IntBuffer $$19 = $$18.asIntBuffer();
+
+         for (int $$20 = 0; $$20 < $$16; $$20++) {
+            $$19.clear();
+            $$19.put($$11, $$20 * 8, 8);
+            float $$21 = $$18.getFloat(0);
+            float $$22 = $$18.getFloat(4);
+            float $$23 = $$18.getFloat(8);
+            float $$27;
+            float $$28;
+            float $$29;
+            if ($$8) {
+               float $$24 = (float)($$18.get(12) & 255) / 255.0F;
+               float $$25 = (float)($$18.get(13) & 255) / 255.0F;
+               float $$26 = (float)($$18.get(14) & 255) / 255.0F;
+               $$27 = $$24 * $$9[$$20] * $$3;
+               $$28 = $$25 * $$9[$$20] * $$4;
+               $$29 = $$26 * $$9[$$20] * $$5;
+            } else {
+               $$27 = $$9[$$20] * $$3;
+               $$28 = $$9[$$20] * $$4;
+               $$29 = $$9[$$20] * $$5;
+            }
+
+            int $$33 = $$10[$$20];
+            float $$34 = $$18.getFloat(16);
+            float $$35 = $$18.getFloat(20);
+            Vector4f $$36 = $$13.transform(new Vector4f($$21, $$22, $$23, 1.0F));
+            this.a($$36.x(), $$36.y(), $$36.z(), $$27, $$28, $$29, 1.0F, $$34, $$35, $$7, $$33, $$14.x(), $$14.y(), $$14.z());
+         }
+      } catch (Throwable var33) {
+         if ($$17 != null) {
+            try {
+               $$17.close();
+            } catch (Throwable var32) {
+               var33.addSuppressed(var32);
+            }
+         }
+
+         throw var33;
+      }
+
+      if ($$17 != null) {
+         $$17.close();
+      }
+   }
+
+   default eln a(Matrix4f $$0, float $$1, float $$2, float $$3) {
+      Vector4f $$4 = $$0.transform(new Vector4f($$1, $$2, $$3, 1.0F));
+      return this.a((double)$$4.x(), (double)$$4.y(), (double)$$4.z());
+   }
+
+   default eln a(Matrix3f $$0, float $$1, float $$2, float $$3) {
+      Vector3f $$4 = $$0.transform(new Vector3f($$1, $$2, $$3));
+      return this.a($$4.x(), $$4.y(), $$4.z());
+   }
 }

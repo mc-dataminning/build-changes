@@ -1,35 +1,37 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Iterables;
-import java.util.Collection;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Predicate;
+import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
+import it.unimi.dsi.fastutil.ints.IntSet;
 
-public class btq extends bte<cay> {
-   @Override
-   public Set<bsh<?>> a() {
-      return ImmutableSet.copyOf(Iterables.concat(super.a(), List.of(bsh.B)));
+public class btq {
+   private final bjo a;
+   private final IntSet b = new IntOpenHashSet();
+   private final IntSet c = new IntOpenHashSet();
+
+   public btq(bjo $$0) {
+      this.a = $$0;
    }
 
-   protected void a(akq $$0, cay $$1) {
-      super.a($$0, $$1);
-      a($$1, $$0x -> $$0x.ag() == biu.bt)
-         .or(() -> a($$1, $$0xx -> $$0xx.ag() != biu.bt))
-         .ifPresentOrElse($$1x -> $$1.dN().a(bsh.B, $$1x), () -> $$1.dN().b(bsh.B));
+   public void a() {
+      this.b.clear();
+      this.c.clear();
    }
 
-   private static Optional<bjg> a(cay $$0, Predicate<bjg> $$1) {
-      return $$0.dN().c(bsh.g).stream().flatMap(Collection::stream).filter($$0::a).filter($$1).findFirst();
-   }
+   public boolean a(biw $$0) {
+      int $$1 = $$0.ah();
+      if (this.b.contains($$1)) {
+         return true;
+      } else if (this.c.contains($$1)) {
+         return false;
+      } else {
+         this.a.dL().ad().a("hasLineOfSight");
+         boolean $$2 = this.a.E($$0);
+         this.a.dL().ad().c();
+         if ($$2) {
+            this.b.add($$1);
+         } else {
+            this.c.add($$1);
+         }
 
-   @Override
-   protected int b() {
-      return 24;
-   }
-
-   @Override
-   protected int c() {
-      return 24;
+         return $$2;
+      }
    }
 }

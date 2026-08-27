@@ -1,17 +1,11 @@
-import javax.annotation.Nullable;
-
-public class chk extends cja {
-   public chk(cja.a $$0) {
+public class chk extends cjg {
+   public chk(cjg.a $$0) {
       super($$0);
    }
 
    @Override
-   public boolean ah_() {
-      return true;
-   }
-
-   @Nullable
-   public vd<?> a(cjf $$0, cpv $$1, cbu $$2) {
-      return null;
+   public cjl a(cjl $$0, cqb $$1, bjm $$2) {
+      cjl $$3 = super.a($$0, $$1, $$2);
+      return $$2 instanceof cca && ((cca)$$2).fT().d ? $$3 : new cjl(cjo.oC);
    }
 }

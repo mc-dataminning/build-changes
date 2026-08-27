@@ -1,43 +1,35 @@
-import com.google.common.collect.Interner;
-import com.google.common.collect.Interners;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.Optional;
+import java.util.ArrayList;
+import java.util.List;
 
-public record aqh<T>(aev<? extends hq<T>> a, aew b) {
-   private static final Interner<aqh<?>> c = Interners.newWeakInterner();
+public class aqh {
+   private final List<aqi> a = new ArrayList<>();
 
-   @Deprecated
-   public aqh(aev<? extends hq<T>> a, aew b) {
-      this.a = a;
-      this.b = b;
+   public static aqh a() {
+      return new aqh();
    }
 
-   public static <T> Codec<aqh<T>> a(aev<? extends hq<T>> $$0) {
-      return aew.a.xmap($$1 -> a($$0, $$1), aqh::b);
+   public List<aqi> b() {
+      return List.copyOf(this.a);
    }
 
-   public static <T> Codec<aqh<T>> b(aev<? extends hq<T>> $$0) {
-      return Codec.STRING
-         .comapFlatMap(
-            $$1 -> $$1.startsWith("#") ? aew.b($$1.substring(1)).map($$1x -> a($$0, $$1x)) : DataResult.error(() -> "Not a tag id"), $$0x -> "#" + $$0x.b
-         );
+   public aqh a(aqi $$0) {
+      this.a.add($$0);
+      return this;
    }
 
-   public static <T> aqh<T> a(aev<? extends hq<T>> $$0, aew $$1) {
-      return (aqh<T>)c.intern(new aqh<>($$0, $$1));
+   public aqh a(aez $$0) {
+      return this.a(aqi.a($$0));
    }
 
-   public boolean c(aev<? extends hq<?>> $$0) {
-      return this.a == $$0;
+   public aqh b(aez $$0) {
+      return this.a(aqi.b($$0));
    }
 
-   public <E> Optional<aqh<E>> d(aev<? extends hq<E>> $$0) {
-      return this.c($$0) ? Optional.of((aqh<E>)this) : Optional.empty();
+   public aqh c(aez $$0) {
+      return this.a(aqi.c($$0));
    }
 
-   @Override
-   public String toString() {
-      return "TagKey[" + this.a.a() + " / " + this.b + "]";
+   public aqh d(aez $$0) {
+      return this.a(aqi.d($$0));
    }
 }

@@ -1,39 +1,26 @@
-public class cyr extends csk {
-   public static final dga d = dfz.w;
-   private final cyr.a e;
+import com.mojang.serialization.MapCodec;
+import java.util.List;
+import javax.annotation.Nullable;
 
-   protected cyr(cyr.a $$0, dfi.d $$1, dfy $$2) {
-      super($$1, $$2);
-      this.k(this.C.b().a(d, Boolean.valueOf(false)));
-      this.e = $$0;
+public class cyr extends dby {
+   public static final MapCodec<cyr> b = b(cyr::new);
+
+   @Override
+   public MapCodec<cyr> a() {
+      return b;
+   }
+
+   protected cyr(dfc.d $$0) {
+      super(dac.b.e, $$0);
    }
 
    @Override
-   protected int g(dfj $$0) {
-      return $$0.c(d) ? 15 : 0;
+   public void a(cqb $$0, gw $$1, dfd $$2, @Nullable bjm $$3, cjl $$4) {
+      cte.gK.a($$0, $$1, $$2, $$3, $$4);
    }
 
    @Override
-   protected dfj a(dfj $$0, int $$1) {
-      return $$0.a(d, Boolean.valueOf($$1 > 0));
-   }
-
-   @Override
-   protected int b(cpv $$0, gw $$1) {
-      Class $$2 = switch (this.e) {
-         case a -> biq.class;
-         case b -> bjg.class;
-      };
-      return a($$0, c.a($$1), $$2) > 0 ? 15 : 0;
-   }
-
-   @Override
-   protected void a(dfk.a<csv, dfj> $$0) {
-      $$0.a(d);
-   }
-
-   public static enum a {
-      a,
-      b;
+   public List<cjl> a(dfd $$0, ecq.a $$1) {
+      return cte.gK.a($$0, $$1);
    }
 }

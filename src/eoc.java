@@ -1,294 +1,274 @@
+import com.google.common.collect.Lists;
+import com.google.common.util.concurrent.RateLimiter;
 import com.mojang.logging.LogUtils;
-import java.text.DateFormat;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Date;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
 import java.util.List;
+import java.util.Locale;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.locks.ReentrantLock;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class eoc extends gfb {
-   static final Logger a = LogUtils.getLogger();
-   static final tl b = tl.c("mco.backup.button.restore");
-   static final tl c = tl.c("mco.backup.changes.tooltip");
-   private static final tl y = tl.c("mco.configure.world.backup");
-   private static final tl z = tl.c("mco.backup.nobackups");
-   private final eof A;
-   List<eml> B = Collections.emptyList();
-   eoc.a C;
-   int D = -1;
-   private final int E;
-   private esq F;
-   private esq G;
-   private esq H;
-   Boolean I = false;
-   final emw J;
-   private static final String K = "uploaded";
+public class eoc extends gex {
+   private static final Logger a = LogUtils.getLogger();
+   private static final ReentrantLock b = new ReentrantLock();
+   private static final int c = 200;
+   private static final int y = 80;
+   private static final int z = 95;
+   private static final int A = 1;
+   private final eye B;
+   private final eng C;
+   private final tl D;
+   private final RateLimiter E;
+   private esk F;
+   private final String G;
+   private final eoc.a H;
+   @Nullable
+   private volatile tl I;
+   private volatile tl J = tl.c("mco.download.preparing");
+   @Nullable
+   private volatile String K;
+   private volatile boolean L;
+   private volatile boolean M = true;
+   private volatile boolean N;
+   private volatile boolean O;
+   @Nullable
+   private Long P;
+   @Nullable
+   private Long Q;
+   private long R;
+   private int S;
+   private static final String[] T = new String[]{"", ".", ". .", ". . ."};
+   private int U;
+   private boolean V;
+   private final BooleanConsumer W;
 
-   public eoc(eof $$0, emw $$1, int $$2) {
-      super(y);
-      this.A = $$0;
-      this.J = $$1;
-      this.E = $$2;
+   public eoc(eye $$0, eng $$1, String $$2, BooleanConsumer $$3) {
+      super(eqh.a);
+      this.W = $$3;
+      this.B = $$0;
+      this.G = $$2;
+      this.C = $$1;
+      this.H = new eoc.a();
+      this.D = tl.c("mco.download.title");
+      this.E = RateLimiter.create(0.1F);
    }
 
    @Override
    public void aH_() {
-      this.C = new eoc.a();
-      (new Thread("Realms-fetch-backups") {
-         @Override
-         public void run() {
-            emf $$0 = emf.a();
-
-            try {
-               List<eml> $$1 = $$0.e(eoc.this.J.a).a;
-               eoc.this.f.execute(() -> {
-                  eoc.this.B = $$1;
-                  eoc.this.I = eoc.this.B.isEmpty();
-                  eoc.this.C.w();
-
-                  for (eml $$1x : eoc.this.B) {
-                     eoc.this.C.a($$1x);
-                  }
-               });
-            } catch (ens var3) {
-               eoc.a.error("Couldn't request backups", var3);
-            }
-         }
-      }).start();
-      this.F = this.d((esq)esq.a(tl.c("mco.backup.button.download"), $$0 -> this.G()).a(this.g - 135, h(1), 120, 20).a());
-      this.G = this.d((esq)esq.a(tl.c("mco.backup.button.restore"), $$0 -> this.a(this.D)).a(this.g - 135, h(3), 120, 20).a());
-      this.H = this.d((esq)esq.a(tl.c("mco.backup.changes.tooltip"), $$0 -> {
-         this.f.a(new eob(this, this.B.get(this.D)));
-         this.D = -1;
-      }).a(this.g - 135, h(5), 120, 20).a());
-      this.d((esq)esq.a(tk.k, $$0 -> this.f.a(this.A)).a(this.g - 100, this.h - 35, 85, 20).a());
-      this.e(this.C);
-      this.b(this.C);
+      this.F = this.d(esk.a(tk.e, $$0 -> {
+         this.L = true;
+         this.F();
+      }).a((this.g - 200) / 2, this.h - 42, 200, 20).a());
       this.D();
    }
 
+   private void D() {
+      if (!this.N) {
+         if (!this.V && this.a(this.C.a) >= 5368709120L) {
+            tl $$0 = tl.a("mco.download.confirmation.line1", elv.b(5368709120L));
+            tl $$1 = tl.c("mco.download.confirmation.line2");
+            this.f.a(new eof($$0x -> {
+               this.V = true;
+               this.f.a(this);
+               this.G();
+            }, eof.a.a, $$0, $$1, false));
+         } else {
+            this.G();
+         }
+      }
+   }
+
+   private long a(String $$0) {
+      elw $$1 = new elw();
+      return $$1.a($$0);
+   }
+
    @Override
-   void D() {
-      this.G.j = this.F();
-      this.H.j = this.E();
+   public void c() {
+      super.c();
+      this.S++;
+      if (this.J != null && this.E.tryAcquire(1)) {
+         tl $$0 = this.E();
+         this.f.aV().c($$0);
+      }
    }
 
-   private boolean E() {
-      return this.D == -1 ? false : !this.B.get(this.D).e.isEmpty();
-   }
+   private tl E() {
+      List<tl> $$0 = Lists.newArrayList();
+      $$0.add(this.D);
+      $$0.add(this.J);
+      if (this.K != null) {
+         $$0.add(tl.a("mco.download.percent", this.K));
+         $$0.add(tl.a("mco.download.speed.narration", elv.b(this.R)));
+      }
 
-   private boolean F() {
-      return this.D == -1 ? false : !this.J.j;
+      if (this.I != null) {
+         $$0.add(this.I);
+      }
+
+      return tk.a($$0);
    }
 
    @Override
    public boolean a(int $$0, int $$1, int $$2) {
       if ($$0 == 256) {
-         this.f.a(this.A);
+         this.L = true;
+         this.F();
          return true;
       } else {
          return super.a($$0, $$1, $$2);
       }
    }
 
-   void a(int $$0) {
-      if ($$0 >= 0 && $$0 < this.B.size() && !this.J.j) {
-         this.D = $$0;
-         Date $$1 = this.B.get($$0).b;
-         String $$2 = DateFormat.getDateTimeInstance(3, 3).format($$1);
-         tl $$3 = epm.a($$1);
-         tl $$4 = tl.a("mco.configure.world.restore.question.line1", $$2, $$3);
-         tl $$5 = tl.c("mco.configure.world.restore.question.line2");
-         this.f.a(new eol($$0x -> {
-            if ($$0x) {
-               this.I();
-            } else {
-               this.D = -1;
-               this.f.a(this);
+   private void F() {
+      if (this.N && this.W != null && this.I == null) {
+         this.W.accept(true);
+      }
+
+      this.f.a(this.B);
+   }
+
+   @Override
+   public void a(erz $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, this.D, this.g / 2, 20, 16777215);
+      $$0.a(this.i, this.J, this.g / 2, 50, 16777215);
+      if (this.M) {
+         this.c($$0);
+      }
+
+      if (this.H.a != 0L && !this.L) {
+         this.d($$0);
+         this.e($$0);
+      }
+
+      if (this.I != null) {
+         $$0.a(this.i, this.I, this.g / 2, 110, 16711680);
+      }
+   }
+
+   private void c(erz $$0) {
+      int $$1 = this.i.a(this.J);
+      if (this.S % 10 == 0) {
+         this.U++;
+      }
+
+      $$0.a(this.i, T[this.U % T.length], this.g / 2 + $$1 / 2 + 5, 50, 16777215, false);
+   }
+
+   private void d(erz $$0) {
+      double $$1 = Math.min((double)this.H.a / (double)this.H.b, 1.0);
+      this.K = String.format(Locale.ROOT, "%.1f", $$1 * 100.0);
+      int $$2 = (this.g - 200) / 2;
+      int $$3 = $$2 + (int)Math.round(200.0 * $$1);
+      $$0.a($$2 - 1, 79, $$3 + 1, 96, -2501934);
+      $$0.a($$2, 80, $$3, 95, -8355712);
+      $$0.a(this.i, tl.a("mco.download.percent", this.K), this.g / 2, 84, 16777215);
+   }
+
+   private void e(erz $$0) {
+      if (this.S % 20 == 0) {
+         if (this.P != null) {
+            long $$1 = ac.b() - this.Q;
+            if ($$1 == 0L) {
+               $$1 = 1L;
             }
-         }, eol.a.a, $$4, $$5, true));
+
+            this.R = 1000L * (this.H.a - this.P) / $$1;
+            this.a($$0, this.R);
+         }
+
+         this.P = this.H.a;
+         this.Q = ac.b();
+      } else {
+         this.a($$0, this.R);
+      }
+   }
+
+   private void a(erz $$0, long $$1) {
+      if ($$1 > 0L) {
+         int $$2 = this.i.b(this.K);
+         $$0.a(this.i, tl.a("mco.download.speed", elv.b($$1)), this.g / 2 + $$2 / 2 + 15, 84, 16777215, false);
       }
    }
 
    private void G() {
-      tl $$0 = tl.c("mco.configure.world.restore.download.question.line1");
-      tl $$1 = tl.c("mco.configure.world.restore.download.question.line2");
-      this.f.a(new eol($$0x -> {
-         if ($$0x) {
-            this.H();
-         } else {
-            this.f.a(this);
+      new Thread(() -> {
+         try {
+            try {
+               if (!b.tryLock(1L, TimeUnit.SECONDS)) {
+                  this.J = tl.c("mco.download.failed");
+                  return;
+               }
+
+               if (this.L) {
+                  this.H();
+                  return;
+               }
+
+               this.J = tl.a("mco.download.downloading", this.G);
+               elw $$0 = new elw();
+               $$0.a(this.C.a);
+               $$0.a(this.C, this.G, this.H, this.f.l());
+
+               while (!$$0.b()) {
+                  if ($$0.c()) {
+                     $$0.a();
+                     this.I = tl.c("mco.download.failed");
+                     this.F.b(tk.d);
+                     return;
+                  }
+
+                  if ($$0.d()) {
+                     if (!this.O) {
+                        this.J = tl.c("mco.download.extracting");
+                     }
+
+                     this.O = true;
+                  }
+
+                  if (this.L) {
+                     $$0.a();
+                     this.H();
+                     return;
+                  }
+
+                  try {
+                     Thread.sleep(500L);
+                  } catch (InterruptedException var8) {
+                     a.error("Failed to check Realms backup download status");
+                  }
+               }
+
+               this.N = true;
+               this.J = tl.c("mco.download.done");
+               this.F.b(tk.d);
+               return;
+            } catch (InterruptedException var9) {
+               a.error("Could not acquire upload lock");
+            } catch (Exception var10) {
+               this.I = tl.c("mco.download.failed");
+               a.info("Exception while downloading world", var10);
+            }
+         } finally {
+            if (!b.isHeldByCurrentThread()) {
+               return;
+            } else {
+               b.unlock();
+               this.M = false;
+               this.N = true;
+            }
          }
-      }, eol.a.b, $$0, $$1, true));
+      }).start();
    }
 
    private void H() {
-      this.f.a(new eom(this.A.f(), new ept(this.J.a, this.E, this.J.c + " (" + this.J.i.get(this.J.n).a(this.J.n) + ")", this)));
+      this.J = tl.c("mco.download.cancelled");
    }
 
-   private void I() {
-      eml $$0 = this.B.get(this.D);
-      this.D = -1;
-      this.f.a(new eom(this.A.f(), new eqa($$0, this.J.a, this.A)));
-   }
-
-   @Override
-   public void a(esf $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.C.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 12, -1);
-      if (this.I) {
-         $$0.a(this.i, z, 20, this.h / 2 - 10, -1, false);
-      }
-
-      this.F.i = !this.I;
-   }
-
-   class a extends gfa<eoc.b> {
-      public a() {
-         super(eoc.this.g - 150, eoc.this.h, 32, eoc.this.h - 15, 36);
-      }
-
-      public void a(eml $$0) {
-         this.a((eoc.b)(eoc.this.new b($$0)));
-      }
-
-      @Override
-      public int b() {
-         return (int)((double)this.e * 0.93);
-      }
-
-      @Override
-      public int a() {
-         return this.k() * 36;
-      }
-
-      @Override
-      public int c() {
-         return this.e - 5;
-      }
-
-      @Override
-      public void a(int $$0) {
-         super.a($$0);
-         this.b($$0);
-      }
-
-      public void b(int $$0) {
-         eoc.this.D = $$0;
-         eoc.this.D();
-      }
-
-      public void a(@Nullable eoc.b $$0) {
-         super.a($$0);
-         eoc.this.D = this.i().indexOf($$0);
-         eoc.this.D();
-      }
-   }
-
-   class b extends etm.a<eoc.b> {
-      private static final int b = 2;
-      private static final int c = 7;
-      private static final euc d = new euc(new aew("backup/changes"), new aew("backup/changes_highlighted"));
-      private static final euc e = new euc(new aew("backup/restore"), new aew("backup/restore_highlighted"));
-      private final eml f;
-      private final List<eso> g = new ArrayList<>();
-      @Nullable
-      private etc h;
-      @Nullable
-      private etc i;
-
-      public b(eml $$0) {
-         this.f = $$0;
-         this.a($$0);
-         if (!$$0.e.isEmpty()) {
-            this.b();
-         }
-
-         if (!eoc.this.J.j) {
-            this.d();
-         }
-      }
-
-      private void a(eml $$0) {
-         int $$1 = eoc.this.B.indexOf($$0);
-         if ($$1 != eoc.this.B.size() - 1) {
-            eml $$2 = eoc.this.B.get($$1 + 1);
-
-            for (String $$3 : $$0.d.keySet()) {
-               if (!$$3.contains("uploaded") && $$2.d.containsKey($$3)) {
-                  if (!$$0.d.get($$3).equals($$2.d.get($$3))) {
-                     this.a($$3);
-                  }
-               } else {
-                  this.a($$3);
-               }
-            }
-         }
-      }
-
-      private void a(String $$0) {
-         if ($$0.contains("uploaded")) {
-            String $$1 = DateFormat.getDateTimeInstance(3, 3).format(this.f.b);
-            this.f.e.put($$0, $$1);
-            this.f.a(true);
-         } else {
-            this.f.e.put($$0, this.f.d.get($$0));
-         }
-      }
-
-      private void b() {
-         int $$0 = 9;
-         int $$1 = 9;
-         int $$2 = eoc.this.C.p() - 9 - 28;
-         int $$3 = eoc.this.C.h(eoc.this.B.indexOf(this.f)) + 2;
-         this.i = new etc($$2, $$3, 9, 9, d, $$0x -> eoc.this.f.a(new eob(eoc.this, this.f)), tk.a);
-         this.i.a(eua.a(eoc.c));
-         this.g.add(this.i);
-      }
-
-      private void d() {
-         int $$0 = 17;
-         int $$1 = 10;
-         int $$2 = eoc.this.C.p() - 17 - 7;
-         int $$3 = eoc.this.C.h(eoc.this.B.indexOf(this.f)) + 2;
-         this.h = new etc($$2, $$3, 17, 10, e, $$0x -> eoc.this.a(eoc.this.B.indexOf(this.f)), tk.a);
-         this.h.a(eua.a(eoc.b));
-         this.g.add(this.h);
-      }
-
-      @Override
-      public boolean a(double $$0, double $$1, int $$2) {
-         if (this.h != null) {
-            this.h.a($$0, $$1, $$2);
-         }
-
-         if (this.i != null) {
-            this.i.a($$0, $$1, $$2);
-         }
-
-         return true;
-      }
-
-      @Override
-      public void a(esf $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         int $$10 = this.f.a() ? -8388737 : 16777215;
-         $$0.a(eoc.this.i, tl.a("mco.backup.entry", epm.a(this.f.b)), $$3, $$2 + 1, $$10, false);
-         $$0.a(eoc.this.i, this.a(this.f.b), $$3, $$2 + 12, 5000268, false);
-         this.g.forEach($$5x -> {
-            $$5x.g($$2 + 2);
-            $$5x.a($$0, $$6, $$7, $$9);
-         });
-      }
-
-      private String a(Date $$0) {
-         return DateFormat.getDateTimeInstance(3, 3).format($$0);
-      }
-
-      @Override
-      public tl a() {
-         return tl.a("narrator.select", this.f.b.toString());
-      }
+   public static class a {
+      public volatile long a;
+      public volatile long b;
    }
 }

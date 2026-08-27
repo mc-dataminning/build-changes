@@ -1,94 +1,81 @@
+import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class cup extends csi {
-   public static final dgj a = dfz.aT;
-   public static final dga b = dfz.p;
-   protected static final eig c = csv.a(0.0, 0.0, 0.0, 16.0, 6.0, 16.0);
+public class cup extends cso implements dab {
+   public static final MapCodec<cup> a = b(cup::new);
+   public static final dfu b = dft.C;
+   private static final int d = 3;
+   protected static final eia c = ctc.a(5.0, 5.0, 5.0, 11.0, 11.0, 11.0);
 
-   public cup(dfi.d $$0) {
+   @Override
+   public MapCodec<cup> a() {
+      return a;
+   }
+
+   public cup(dfc.d $$0) {
       super($$0);
-      this.k(this.C.b().a(a, Integer.valueOf(0)).a(b, Boolean.valueOf(false)));
+      this.k(this.E.b().a(b, Boolean.valueOf(true)));
    }
 
    @Override
-   public eig a(dfj $$0, cpb $$1, gw $$2, ehs $$3) {
-      return c;
+   protected void a(dfe.a<ctc, dfd> $$0) {
+      $$0.a(b);
    }
 
    @Override
-   public boolean g_(dfj $$0) {
-      return true;
-   }
-
-   @Override
-   public int a(dfj $$0, cpb $$1, gw $$2, ha $$3) {
-      return $$0.c(a);
-   }
-
-   private static void d(dfj $$0, cpv $$1, gw $$2) {
-      int $$3 = $$1.a(cqe.a, $$2) - $$1.A_();
-      float $$4 = $$1.a(1.0F);
-      boolean $$5 = $$0.c(b);
-      if ($$5) {
-         $$3 = 15 - $$3;
-      } else if ($$3 > 0) {
-         float $$6 = $$4 < (float) Math.PI ? 0.0F : (float) (Math.PI * 2);
-         $$4 += ($$6 - $$4) * 0.2F;
-         $$3 = Math.round((float)$$3 * arw.b($$4));
-      }
-
-      $$3 = arw.a($$3, 0, 15);
-      if ($$0.c(a) != $$3) {
-         $$1.a($$2, $$0.a(a, Integer.valueOf($$3)), 3);
-      }
-   }
-
-   @Override
-   public bgy a(dfj $$0, cpv $$1, gw $$2, cbu $$3, bgx $$4, ehj $$5) {
-      if ($$3.gd()) {
-         if ($$1.B) {
-            return bgy.a;
-         } else {
-            dfj $$6 = $$0.a(b);
-            $$1.a($$2, $$6, 2);
-            $$1.a(djt.c, $$2, djt.a.a($$3, $$6));
-            d($$6, $$1, $$2);
-            return bgy.b;
-         }
-      } else {
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      }
-   }
-
-   @Override
-   public cza b_(dfj $$0) {
-      return cza.c;
-   }
-
-   @Override
-   public boolean f_(dfj $$0) {
-      return true;
-   }
-
-   @Override
-   public dcv a(gw $$0, dfj $$1) {
-      return new ddj($$0, $$1);
+   public dcz a(gw $$0, dfd $$1) {
+      return new ddl($$0, $$1);
    }
 
    @Nullable
    @Override
-   public <T extends dcv> dcw<T> a(cpv $$0, dfj $$1, dcx<T> $$2) {
-      return !$$0.B && $$0.C_().g() ? a($$2, dcx.q, cup::a) : null;
-   }
-
-   private static void a(cpv $$0, gw $$1, dfj $$2, ddj $$3) {
-      if ($$0.V() % 20L == 0L) {
-         d($$2, $$0, $$1);
-      }
+   public <T extends dcz> dda<T> a(cqb $$0, dfd $$1, ddb<T> $$2) {
+      return a($$2, ddb.z, $$0.B ? ddl::a : ddl::b);
    }
 
    @Override
-   protected void a(dfk.a<csv, dfj> $$0) {
-      $$0.a(a, b);
+   public czg b_(dfd $$0) {
+      return czg.b;
+   }
+
+   @Override
+   public eag c_(dfd $$0) {
+      return $$0.c(b) ? eah.c.a(false) : super.c_($$0);
+   }
+
+   @Override
+   public dfd a(dfd $$0, ha $$1, dfd $$2, cqc $$3, gw $$4, gw $$5) {
+      if ($$0.c(b)) {
+         $$3.a($$4, eah.c, eah.c.a($$3));
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   public eia a(dfd $$0, cph $$1, gw $$2, ehm $$3) {
+      return c;
+   }
+
+   @Override
+   public void a(cqb $$0, gw $$1, dfd $$2, @Nullable bjm $$3, cjl $$4) {
+      if ($$4.A()) {
+         dcz $$5 = $$0.c_($$1);
+         if ($$5 instanceof dcu) {
+            ((dcu)$$5).a($$4.y());
+         }
+      }
+   }
+
+   @Nullable
+   @Override
+   public dfd a(clt $$0) {
+      eag $$1 = $$0.q().b_($$0.a());
+      return this.o().a(b, Boolean.valueOf($$1.a(aqa.a) && $$1.e() == 8));
+   }
+
+   @Override
+   public boolean a(dfd $$0, cph $$1, gw $$2, eaw $$3) {
+      return false;
    }
 }

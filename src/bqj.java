@@ -1,86 +1,86 @@
-import java.util.EnumSet;
+import java.util.List;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 
-public class bqj extends bqb {
-   public static final float a = 0.02F;
-   protected final bji b;
+public class bqj extends bre {
+   private static final int i = 2;
+   private static final int j = 32;
+   private static final int k = 10;
+   private static final int l = 7;
+
+   public bqj(bjv $$0, double $$1) {
+      super($$0, $$1, 240, false);
+   }
+
    @Nullable
-   protected biq c;
-   protected final float d;
-   private int h;
-   protected final float e;
-   private final boolean i;
-   protected final Class<? extends bjg> f;
-   protected final bts g;
-
-   public bqj(bji $$0, Class<? extends bjg> $$1, float $$2) {
-      this($$0, $$1, $$2, 0.02F);
-   }
-
-   public bqj(bji $$0, Class<? extends bjg> $$1, float $$2, float $$3) {
-      this($$0, $$1, $$2, $$3, false);
-   }
-
-   public bqj(bji $$0, Class<? extends bjg> $$1, float $$2, float $$3, boolean $$4) {
-      this.b = $$0;
-      this.f = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.i = $$4;
-      this.a(EnumSet.of(bqb.a.b));
-      if ($$1 == cbu.class) {
-         this.g = bts.b().a((double)$$2).a($$1x -> bit.b($$0).test($$1x));
-      } else {
-         this.g = bts.b().a((double)$$2);
-      }
-   }
-
    @Override
-   public boolean a() {
-      if (this.b.ef().i() >= this.e) {
-         return false;
+   protected ehh h() {
+      float $$0 = this.b.dL().z.i();
+      if (this.b.dL().z.i() < 0.3F) {
+         return this.k();
       } else {
-         if (this.b.q() != null) {
-            this.c = this.b.q();
-         }
-
-         if (this.f == cbu.class) {
-            this.c = this.b.dL().a(this.g, this.b, this.b.dq(), this.b.du(), this.b.dw());
+         ehh $$1;
+         if ($$0 < 0.7F) {
+            $$1 = this.l();
+            if ($$1 == null) {
+               $$1 = this.m();
+            }
          } else {
-            this.c = this.b
-               .dL()
-               .a(this.b.dL().a(this.f, this.b.cG().c((double)this.d, 3.0, (double)this.d), $$0 -> true), this.g, this.b, this.b.dq(), this.b.du(), this.b.dw());
+            $$1 = this.m();
+            if ($$1 == null) {
+               $$1 = this.l();
+            }
          }
 
-         return this.c != null;
+         return $$1 == null ? this.k() : $$1;
       }
    }
 
-   @Override
-   public boolean b() {
-      if (!this.c.bv()) {
-         return false;
+   @Nullable
+   private ehh k() {
+      return buf.a(this.b, 10, 7);
+   }
+
+   @Nullable
+   private ehh l() {
+      akt $$0 = (akt)this.b.dL();
+      List<cbn> $$1 = $$0.a(bja.bf, this.b.cG().g(32.0), this::a);
+      if ($$1.isEmpty()) {
+         return null;
       } else {
-         return this.b.f(this.c) > (double)(this.d * this.d) ? false : this.h > 0;
+         cbn $$2 = $$1.get(this.b.dL().z.a($$1.size()));
+         ehh $$3 = $$2.dj();
+         return buf.a(this.b, 10, 7, $$3);
       }
    }
 
-   @Override
-   public void c() {
-      this.h = this.a(40 + this.b.ef().a(40));
-   }
-
-   @Override
-   public void d() {
-      this.c = null;
-   }
-
-   @Override
-   public void e() {
-      if (this.c.bv()) {
-         double $$0 = this.i ? this.b.du() : this.c.du();
-         this.b.G().a(this.c.dq(), $$0, this.c.dw());
-         this.h--;
+   @Nullable
+   private ehh m() {
+      hw $$0 = this.n();
+      if ($$0 == null) {
+         return null;
+      } else {
+         gw $$1 = this.a($$0);
+         return $$1 == null ? null : buf.a(this.b, 10, 7, ehh.c($$1));
       }
+   }
+
+   @Nullable
+   private hw n() {
+      akt $$0 = (akt)this.b.dL();
+      List<hw> $$1 = hw.a(hw.a(this.b), 2).filter($$1x -> $$0.b($$1x) == 0).collect(Collectors.toList());
+      return $$1.isEmpty() ? null : $$1.get($$0.z.a($$1.size()));
+   }
+
+   @Nullable
+   private gw a(hw $$0) {
+      akt $$1 = (akt)this.b.dL();
+      bul $$2 = $$1.w();
+      List<gw> $$3 = $$2.c($$0x -> true, $$0.q(), 8, bul.b.b).map(bum::f).collect(Collectors.toList());
+      return $$3.isEmpty() ? null : $$3.get($$1.z.a($$3.size()));
+   }
+
+   private boolean a(cbn $$0) {
+      return $$0.a(this.b.dL().V());
    }
 }

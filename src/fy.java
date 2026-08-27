@@ -12,32 +12,32 @@ import javax.annotation.Nullable;
 
 public class fy {
    private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tl.c("argument.item.tag.disallowed"));
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> tl.a("argument.item.id.invalid", $$0));
-   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> tl.a("arguments.item.tag.unknown", $$0));
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> tl.b("argument.item.id.invalid", $$0));
+   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> tl.b("arguments.item.tag.unknown", $$0));
    private static final char d = '{';
    private static final char e = '#';
    private static final Function<SuggestionsBuilder, CompletableFuture<Suggestions>> f = SuggestionsBuilder::buildFuture;
-   private final hg<cja> g;
+   private final hg<cjg> g;
    private final StringReader h;
    private final boolean i;
-   private Either<he<cja>, hi<cja>> j;
+   private Either<he<cjg>, hi<cjg>> j;
    @Nullable
    private qw k;
    private Function<SuggestionsBuilder, CompletableFuture<Suggestions>> l = f;
 
-   private fy(hg<cja> $$0, StringReader $$1, boolean $$2) {
+   private fy(hg<cjg> $$0, StringReader $$1, boolean $$2) {
       this.g = $$0;
       this.h = $$1;
       this.i = $$2;
    }
 
-   public static fy.a a(hg<cja> $$0, StringReader $$1) throws CommandSyntaxException {
+   public static fy.a a(hg<cjg> $$0, StringReader $$1) throws CommandSyntaxException {
       int $$2 = $$1.getCursor();
 
       try {
          fy $$3 = new fy($$0, $$1, false);
          $$3.d();
-         he<cja> $$4 = (he<cja>)$$3.j.left().orElseThrow(() -> new IllegalStateException("Parser returned unexpected tag name"));
+         he<cjg> $$4 = (he<cjg>)$$3.j.left().orElseThrow(() -> new IllegalStateException("Parser returned unexpected tag name"));
          return new fy.a($$4, $$3.k);
       } catch (CommandSyntaxException var5) {
          $$1.setCursor($$2);
@@ -45,7 +45,7 @@ public class fy {
       }
    }
 
-   public static Either<fy.a, fy.b> b(hg<cja> $$0, StringReader $$1) throws CommandSyntaxException {
+   public static Either<fy.a, fy.b> b(hg<cjg> $$0, StringReader $$1) throws CommandSyntaxException {
       int $$2 = $$1.getCursor();
 
       try {
@@ -58,7 +58,7 @@ public class fy {
       }
    }
 
-   public static CompletableFuture<Suggestions> a(hg<cja> $$0, SuggestionsBuilder $$1, boolean $$2) {
+   public static CompletableFuture<Suggestions> a(hg<cjg> $$0, SuggestionsBuilder $$1, boolean $$2) {
       StringReader $$3 = new StringReader($$1.getInput());
       $$3.setCursor($$1.getStart());
       fy $$4 = new fy($$0, $$3, $$2);
@@ -73,8 +73,8 @@ public class fy {
 
    private void a() throws CommandSyntaxException {
       int $$0 = this.h.getCursor();
-      aew $$1 = aew.a(this.h);
-      Optional<? extends he<cja>> $$2 = this.g.a(aev.a(jc.D, $$1));
+      aez $$1 = aez.a(this.h);
+      Optional<? extends he<cjg>> $$2 = this.g.a(aey.a(jc.E, $$1));
       this.j = Either.left($$2.orElseThrow(() -> {
          this.h.setCursor($$0);
          return b.createWithContext(this.h, $$1);
@@ -88,8 +88,8 @@ public class fy {
          int $$0 = this.h.getCursor();
          this.h.expect('#');
          this.l = this::b;
-         aew $$1 = aew.a(this.h);
-         Optional<? extends hi<cja>> $$2 = this.g.a(aqh.a(jc.D, $$1));
+         aez $$1 = aez.a(this.h);
+         Optional<? extends hi<cjg>> $$2 = this.g.a(aqk.a(jc.E, $$1));
          this.j = Either.right($$2.orElseThrow(() -> {
             this.h.setCursor($$0);
             return c.createWithContext(this.h, $$1);
@@ -130,11 +130,11 @@ public class fy {
    }
 
    private CompletableFuture<Suggestions> b(SuggestionsBuilder $$0) {
-      return dw.a(this.g.e().map(aqh::b), $$0, String.valueOf('#'));
+      return dw.a(this.g.e().map(aqk::b), $$0, String.valueOf('#'));
    }
 
    private CompletableFuture<Suggestions> c(SuggestionsBuilder $$0) {
-      return dw.a(this.g.c().map(aev::a), $$0);
+      return dw.a(this.g.c().map(aey::a), $$0);
    }
 
    private CompletableFuture<Suggestions> d(SuggestionsBuilder $$0) {
@@ -142,9 +142,9 @@ public class fy {
       return this.c($$0);
    }
 
-   public static record a(he<cja> a, @Nullable qw b) {
+   public static record a(he<cjg> a, @Nullable qw b) {
    }
 
-   public static record b(hi<cja> a, @Nullable qw b) {
+   public static record b(hi<cjg> a, @Nullable qw b) {
    }
 }

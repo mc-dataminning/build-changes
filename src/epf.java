@@ -1,41 +1,57 @@
+import com.google.common.collect.Maps;
 import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.nio.ByteBuffer;
+import java.util.Base64;
+import java.util.Map;
+import javax.annotation.Nullable;
+import org.lwjgl.system.MemoryUtil;
 import org.slf4j.Logger;
 
-public interface epf {
-   epf a = new epf() {
-      @Override
-      public long a() {
-         return 1L;
+public class epf {
+   private static final Map<String, epf.a> a = Maps.newHashMap();
+   private static final Logger b = LogUtils.getLogger();
+   private static final aez c = new aez("textures/gui/presets/isles.png");
+
+   public static aez a(String $$0, @Nullable String $$1) {
+      return $$1 == null ? c : b($$0, $$1);
+   }
+
+   private static aez b(String $$0, String $$1) {
+      epf.a $$2 = a.get($$0);
+      if ($$2 != null && $$2.a().equals($$1)) {
+         return $$2.b;
+      } else {
+         ekk $$3 = a($$1);
+         if ($$3 == null) {
+            aez $$4 = fyq.b();
+            a.put($$0, new epf.a($$1, $$4));
+            return $$4;
+         } else {
+            aez $$5 = new aez("realms", "dynamic/" + $$0);
+            eqp.O().Y().a($$5, new fyn($$3));
+            a.put($$0, new epf.a($$1, $$5));
+            return $$5;
+         }
+      }
+   }
+
+   @Nullable
+   private static ekk a(String $$0) {
+      byte[] $$1 = Base64.getDecoder().decode($$0);
+      ByteBuffer $$2 = MemoryUtil.memAlloc($$1.length);
+
+      try {
+         return ekk.a($$2.put($$1).flip());
+      } catch (IOException var7) {
+         b.warn("Failed to load world image: {}", $$0, var7);
+      } finally {
+         MemoryUtil.memFree($$2);
       }
 
-      @Override
-      public long b() {
-         return 1L;
-      }
-   };
+      return null;
+   }
 
-   long a();
-
-   long b();
-
-   static epf a(final int $$0) {
-      return new epf() {
-         private static final Logger c = LogUtils.getLogger();
-         private int d;
-
-         @Override
-         public long a() {
-            this.d = 0;
-            return 1L;
-         }
-
-         @Override
-         public long b() {
-            this.d++;
-            long $$0 = Math.min(1L << this.d, (long)$$0);
-            c.debug("Skipping for {} extra cycles", $$0);
-            return $$0;
-         }
-      };
+   public static record a(String a, aez b) {
    }
 }

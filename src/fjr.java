@@ -1,47 +1,89 @@
+import com.mojang.authlib.minecraft.report.AbuseReport;
+import com.mojang.authlib.minecraft.report.AbuseReportLimits;
+import com.mojang.datafixers.util.Either;
+import java.time.Instant;
+import java.util.UUID;
 import javax.annotation.Nullable;
 
-public enum fjr {
-   a("generic_violation"),
-   b("false_reporting"),
-   c("hate_speech"),
-   d("hate_terrorism_notorious_figure"),
-   e("harassment_or_bullying"),
-   f("defamation_impersonation_false_information"),
-   g("drugs"),
-   h("fraud"),
-   i("spam_or_advertising"),
-   j("nudity_or_pornography"),
-   k("sexually_inappropriate"),
-   l("extreme_violence_or_gore"),
-   m("imminent_harm_to_person_or_property");
-
-   private final tl n;
-
-   private fjr(String $$0) {
-      this.n = tl.c("gui.banned.reason." + $$0);
-   }
-
-   public tl a() {
-      return this.n;
-   }
-
+public abstract class fjr {
+   protected final UUID a;
+   protected final Instant b;
+   protected final UUID c;
+   protected String d = "";
    @Nullable
-   public static fjr a(int $$0) {
-      return switch ($$0) {
-         case 2 -> b;
-         default -> null;
-         case 5 -> c;
-         case 16, 25 -> d;
-         case 17, 19, 23, 31 -> a;
-         case 21 -> e;
-         case 27 -> f;
-         case 28 -> g;
-         case 29 -> h;
-         case 30 -> i;
-         case 32 -> j;
-         case 33 -> k;
-         case 34 -> l;
-         case 53 -> m;
-      };
+   protected fjt e;
+
+   public fjr(UUID $$0, Instant $$1, UUID $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+   }
+
+   public boolean a(UUID $$0) {
+      return $$0.equals(this.c);
+   }
+
+   public abstract fjr b();
+
+   public abstract eye a(eye var1, fjv var2);
+
+   public abstract static class a<R extends fjr> {
+      protected final R a;
+      protected final AbuseReportLimits b;
+
+      protected a(R $$0, AbuseReportLimits $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public R e() {
+         return this.a;
+      }
+
+      public UUID f() {
+         return this.a.c;
+      }
+
+      public String g() {
+         return this.a.d;
+      }
+
+      public void a(String $$0) {
+         this.a.d = $$0;
+      }
+
+      @Nullable
+      public fjt h() {
+         return this.a.e;
+      }
+
+      public void a(fjt $$0) {
+         this.a.e = $$0;
+      }
+
+      public abstract boolean b();
+
+      @Nullable
+      public abstract fjr.b c();
+
+      public abstract Either<fjr.c, fjr.b> a(fjv var1);
+   }
+
+   public static record b(tl e) {
+      public static final fjr.b a = new fjr.b(tl.c("gui.abuseReport.send.no_reason"));
+      public static final fjr.b b = new fjr.b(tl.c("gui.chatReport.send.no_reported_messages"));
+      public static final fjr.b c = new fjr.b(tl.c("gui.chatReport.send.too_many_messages"));
+      public static final fjr.b d = new fjr.b(tl.c("gui.abuseReport.send.comment_too_long"));
+
+      public etv a() {
+         return etv.a(this.e);
+      }
+
+      public tl b() {
+         return this.e;
+      }
+   }
+
+   public static record c(UUID a, fju b, AbuseReport c) {
    }
 }

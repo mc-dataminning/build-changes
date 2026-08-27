@@ -1,18 +1,15 @@
 import com.mojang.datafixers.kinds.App;
 import java.util.function.Function;
-import java.util.function.Predicate;
 
 public class blc {
-   public static <E extends bjg, T> bky<E> a(Predicate<E> $$0, bsh<? extends T> $$1, bsh<T> $$2, bgj $$3) {
-      return boj.a(
-         (Function<boj.b<E>, ? extends App<boj.c<E>, bom<E>>>)($$4 -> $$4.group($$4.b($$1), $$4.c($$2)).apply($$4, ($$3xx, $$4x) -> ($$5, $$6, $$7) -> {
-                  if (!$$0.test((E)$$6)) {
-                     return false;
-                  } else {
-                     $$4x.a($$4.b($$3xx), (long)$$3.a($$5.z));
+   public static ble<bjm> a(bsn<?> $$0, int $$1) {
+      return bop.a(
+         (Function<bop.b<bjm>, ? extends App<bop.c<bjm>, bos<bjm>>>)($$2 -> $$2.group($$2.a(bsn.o), $$2.c(bsn.aw), $$2.b($$0))
+               .apply($$2, $$2.a(() -> "[BecomePassive if " + $$0 + " present]", ($$1xx, $$2x, $$3) -> ($$3x, $$4, $$5) -> {
+                     $$2x.a(true, (long)$$1);
+                     $$1xx.b();
                      return true;
-                  }
-               }))
+                  })))
       );
    }
 }

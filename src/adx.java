@@ -1,24 +1,8 @@
-public class adx implements vd<si> {
-   private final long a;
-
-   public adx(long $$0) {
-      this.a = $$0;
-   }
-
-   public adx(so $$0) {
-      this.a = $$0.readLong();
-   }
-
+public interface adx extends si, sj {
    @Override
-   public void a(so $$0) {
-      $$0.b(this.a);
+   default sn b() {
+      return sn.c;
    }
 
-   public void a(si $$0) {
-      $$0.a(this);
-   }
-
-   public long a() {
-      return this.a;
-   }
+   void a(adz var1);
 }

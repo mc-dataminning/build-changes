@@ -1,24 +1,14 @@
-public class aai implements vd<ww> {
-   private final tl a;
-
-   public aai(tl $$0) {
-      this.a = $$0;
-   }
-
+public record aai(int a) implements ve<wx> {
    public aai(so $$0) {
-      this.a = $$0.l();
+      this($$0.n());
    }
 
    @Override
    public void a(so $$0) {
-      $$0.a(this.a);
+      $$0.c(this.a);
    }
 
-   public void a(ww $$0) {
+   public void a(wx $$0) {
       $$0.a(this);
-   }
-
-   public tl a() {
-      return this.a;
    }
 }

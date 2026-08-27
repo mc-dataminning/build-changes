@@ -1,6 +1,5 @@
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
-import com.mojang.datafixers.DataFixUtils;
 import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.DataResult;
 import com.mojang.serialization.DynamicOps;
@@ -233,7 +232,10 @@ public class ri implements DynamicOps<rq> {
    }
 
    public rq a(ByteBuffer $$0) {
-      return new qt(DataFixUtils.toArray($$0));
+      ByteBuffer $$1 = $$0.duplicate().clear();
+      byte[] $$2 = new byte[$$0.capacity()];
+      $$1.get(0, $$2, 0, $$2.length);
+      return new qt($$2);
    }
 
    public DataResult<IntStream> i(rq $$0) {

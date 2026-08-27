@@ -1,41 +1,62 @@
-public class fqw extends fqx<dej> {
-   private static final aew c = new aew("textures/entity/end_gateway_beam.png");
+import javax.annotation.Nullable;
 
-   public fqw(fqf.a $$0) {
-      super($$0);
-   }
+public class fqw implements cpe {
+   private final int c;
+   private final int d;
+   protected final fqv[][] a;
+   protected final cqb b;
 
-   public void a(dej $$0, float $$1, elp $$2, foe $$3, int $$4, int $$5) {
-      if ($$0.c() || $$0.d()) {
-         float $$6 = $$0.c() ? $$0.a($$1) : $$0.b($$1);
-         double $$7 = $$0.c() ? (double)$$0.k().aj() : 50.0;
-         $$6 = arw.a($$6 * (float) Math.PI);
-         int $$8 = arw.a((double)$$6 * $$7);
-         float[] $$9 = $$0.c() ? cht.c.d() : cht.k.d();
-         long $$10 = $$0.k().V();
-         fqa.a($$2, $$3, c, $$1, $$6, $$10, -$$8, $$8 * 2, $$9, 0.15F, 0.175F);
-      }
-
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   fqw(cqb $$0, int $$1, int $$2, fqv[][] $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.a = $$3;
    }
 
    @Override
-   protected float b() {
-      return 1.0F;
+   public dfd a_(gw $$0) {
+      int $$1 = hw.a($$0.u()) - this.c;
+      int $$2 = hw.a($$0.w()) - this.d;
+      return this.a[$$1][$$2].b($$0);
    }
 
    @Override
-   protected float c() {
-      return 0.0F;
+   public eag b_(gw $$0) {
+      int $$1 = hw.a($$0.u()) - this.c;
+      int $$2 = hw.a($$0.w()) - this.d;
+      return this.a[$$1][$$2].b($$0).u();
    }
 
    @Override
-   protected fom d() {
-      return fom.w();
+   public float a(ha $$0, boolean $$1) {
+      return this.b.a($$0, $$1);
    }
 
    @Override
-   public int aK_() {
-      return 256;
+   public dzv x_() {
+      return this.b.x_();
+   }
+
+   @Nullable
+   @Override
+   public dcz c_(gw $$0) {
+      int $$1 = hw.a($$0.u()) - this.c;
+      int $$2 = hw.a($$0.w()) - this.d;
+      return this.a[$$1][$$2].a($$0);
+   }
+
+   @Override
+   public int a(gw $$0, cpm $$1) {
+      return this.b.a($$0, $$1);
+   }
+
+   @Override
+   public int H_() {
+      return this.b.H_();
+   }
+
+   @Override
+   public int I_() {
+      return this.b.I_();
    }
 }

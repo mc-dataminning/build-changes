@@ -1,225 +1,208 @@
-import com.google.common.collect.ImmutableList;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import javax.annotation.Nullable;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.Iterator;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Set;
+import java.util.Map.Entry;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import org.slf4j.Logger;
 
-public class fzb<T extends fzb.a> {
-   private static final Comparator<fzb.b<?>> a = Comparator.<fzb.b<?>, Integer>comparing($$0 -> -$$0.c)
-      .thenComparing($$0 -> -$$0.b)
-      .thenComparing($$0 -> $$0.a.c());
-   private final int b;
-   private final List<fzb.b<T>> c = new ArrayList<>();
-   private final List<fzb.c<T>> d = new ArrayList<>();
-   private int e;
-   private int f;
-   private final int g;
-   private final int h;
+public class fzb implements anq, fzc, AutoCloseable {
+   private static final Logger b = LogUtils.getLogger();
+   public static final aez a = new aez("");
+   private final Map<aez, fyl> c = Maps.newHashMap();
+   private final Set<fzc> d = Sets.newHashSet();
+   private final Map<String, Integer> e = Maps.newHashMap();
+   private final anw f;
 
-   public fzb(int $$0, int $$1, int $$2) {
-      this.b = $$2;
-      this.g = $$0;
-      this.h = $$1;
+   public fzb(anw $$0) {
+      this.f = $$0;
    }
 
-   public int a() {
-      return this.e;
-   }
-
-   public int b() {
-      return this.f;
-   }
-
-   public void a(T $$0) {
-      fzb.b<T> $$1 = new fzb.b<>($$0, this.b);
-      this.c.add($$1);
-   }
-
-   public void c() {
-      List<fzb.b<T>> $$0 = new ArrayList<>(this.c);
-      $$0.sort(a);
-
-      for (fzb.b<T> $$1 : $$0) {
-         if (!this.a($$1)) {
-            throw new fzc($$1.a, $$0.stream().map($$0x -> $$0x.a).collect(ImmutableList.toImmutableList()));
-         }
-      }
-   }
-
-   public void a(fzb.d<T> $$0) {
-      for (fzb.c<T> $$1 : this.d) {
-         $$1.a($$0);
-      }
-   }
-
-   static int a(int $$0, int $$1) {
-      return ($$0 >> $$1) + (($$0 & (1 << $$1) - 1) == 0 ? 0 : 1) << $$1;
-   }
-
-   private boolean a(fzb.b<T> $$0) {
-      for (fzb.c<T> $$1 : this.d) {
-         if ($$1.a($$0)) {
-            return true;
-         }
-      }
-
-      return this.b($$0);
-   }
-
-   private boolean b(fzb.b<T> $$0) {
-      int $$1 = arw.c(this.e);
-      int $$2 = arw.c(this.f);
-      int $$3 = arw.c(this.e + $$0.b);
-      int $$4 = arw.c(this.f + $$0.c);
-      boolean $$5 = $$3 <= this.g;
-      boolean $$6 = $$4 <= this.h;
-      if (!$$5 && !$$6) {
-         return false;
+   public void a(aez $$0) {
+      if (!RenderSystem.isOnRenderThread()) {
+         RenderSystem.recordRenderCall(() -> this.d($$0));
       } else {
-         boolean $$7 = $$5 && $$1 != $$3;
-         boolean $$8 = $$6 && $$2 != $$4;
-         boolean $$9;
-         if ($$7 ^ $$8) {
-            $$9 = $$7;
-         } else {
-            $$9 = $$5 && $$1 <= $$2;
+         this.d($$0);
+      }
+   }
+
+   private void d(aez $$0) {
+      fyl $$1 = this.c.get($$0);
+      if ($$1 == null) {
+         $$1 = new fyt($$0);
+         this.a($$0, $$1);
+      }
+
+      $$1.c();
+   }
+
+   public void a(aez $$0, fyl $$1) {
+      $$1 = this.d($$0, $$1);
+      fyl $$2 = this.c.put($$0, $$1);
+      if ($$2 != $$1) {
+         if ($$2 != null && $$2 != fyq.c()) {
+            this.c($$0, $$2);
          }
 
-         fzb.c<T> $$11;
-         if ($$9) {
-            if (this.f == 0) {
-               this.f = $$4;
-            }
+         if ($$1 instanceof fzc) {
+            this.d.add((fzc)$$1);
+         }
+      }
+   }
 
-            $$11 = new fzb.c<>(this.e, 0, $$3 - this.e, this.f);
-            this.e = $$3;
-         } else {
-            $$11 = new fzb.c<>(0, this.f, this.e, $$4 - this.f);
-            this.f = $$4;
+   private void c(aez $$0, fyl $$1) {
+      if ($$1 != fyq.c()) {
+         this.d.remove($$1);
+
+         try {
+            $$1.close();
+         } catch (Exception var4) {
+            b.warn("Failed to close texture {}", $$0, var4);
+         }
+      }
+
+      $$1.b();
+   }
+
+   private fyl d(aez $$0, fyl $$1) {
+      try {
+         $$1.a(this.f);
+         return $$1;
+      } catch (IOException var6) {
+         if ($$0 != a) {
+            b.warn("Failed to load texture: {}", $$0, var6);
          }
 
-         $$11.a($$0);
-         this.d.add($$11);
-         return true;
+         return fyq.c();
+      } catch (Throwable var7) {
+         o $$4 = o.a(var7, "Registering texture");
+         p $$5 = $$4.a("Resource location being registered");
+         $$5.a("Resource location", $$0);
+         $$5.a("Texture object class", () -> $$1.getClass().getName());
+         throw new y($$4);
       }
    }
 
-   public interface a {
-      int a();
+   public fyl b(aez $$0) {
+      fyl $$1 = this.c.get($$0);
+      if ($$1 == null) {
+         $$1 = new fyt($$0);
+         this.a($$0, $$1);
+      }
 
-      int b();
-
-      aew c();
+      return $$1;
    }
 
-   static record b<T extends fzb.a>(T a, int b, int c) {
+   public fyl b(aez $$0, fyl $$1) {
+      return this.c.getOrDefault($$0, $$1);
+   }
 
-      public b(T $$0, int $$1) {
-         this($$0, fzb.a($$0.a(), $$1), fzb.a($$0.b(), $$1));
+   public aez a(String $$0, fyn $$1) {
+      Integer $$2 = this.e.get($$0);
+      if ($$2 == null) {
+         $$2 = 1;
+      } else {
+         $$2 = $$2 + 1;
+      }
+
+      this.e.put($$0, $$2);
+      aez $$3 = new aez(String.format(Locale.ROOT, "dynamic/%s_%d", $$0, $$2));
+      this.a($$3, $$1);
+      return $$3;
+   }
+
+   public CompletableFuture<Void> a(aez $$0, Executor $$1) {
+      if (!this.c.containsKey($$0)) {
+         fys $$2 = new fys(this.f, $$0, $$1);
+         this.c.put($$0, $$2);
+         return $$2.d().thenRunAsync(() -> this.a($$0, (fyl)$$2), fzb::a);
+      } else {
+         return CompletableFuture.completedFuture(null);
       }
    }
 
-   public static class c<T extends fzb.a> {
-      private final int a;
-      private final int b;
-      private final int c;
-      private final int d;
-      @Nullable
-      private List<fzb.c<T>> e;
-      @Nullable
-      private fzb.b<T> f;
+   private static void a(Runnable $$0) {
+      eqp.O().execute(() -> RenderSystem.recordRenderCall($$0::run));
+   }
 
-      public c(int $$0, int $$1, int $$2, int $$3) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
+   @Override
+   public void e() {
+      for (fzc $$0 : this.d) {
+         $$0.e();
       }
+   }
 
-      public int a() {
-         return this.a;
+   public void c(aez $$0) {
+      fyl $$1 = this.c.remove($$0);
+      if ($$1 != null) {
+         this.c($$0, $$1);
       }
+   }
 
-      public int b() {
-         return this.b;
-      }
+   @Override
+   public void close() {
+      this.c.forEach(this::c);
+      this.c.clear();
+      this.d.clear();
+      this.e.clear();
+   }
 
-      public boolean a(fzb.b<T> $$0) {
-         if (this.f != null) {
-            return false;
-         } else {
-            int $$1 = $$0.b;
-            int $$2 = $$0.c;
-            if ($$1 <= this.c && $$2 <= this.d) {
-               if ($$1 == this.c && $$2 == this.d) {
-                  this.f = $$0;
-                  return true;
-               } else {
-                  if (this.e == null) {
-                     this.e = new ArrayList<>(1);
-                     this.e.add(new fzb.c<>(this.a, this.b, $$1, $$2));
-                     int $$3 = this.c - $$1;
-                     int $$4 = this.d - $$2;
-                     if ($$4 > 0 && $$3 > 0) {
-                        int $$5 = Math.max(this.d, $$3);
-                        int $$6 = Math.max(this.c, $$4);
-                        if ($$5 >= $$6) {
-                           this.e.add(new fzb.c<>(this.a, this.b + $$2, $$1, $$4));
-                           this.e.add(new fzb.c<>(this.a + $$1, this.b, $$3, this.d));
-                        } else {
-                           this.e.add(new fzb.c<>(this.a + $$1, this.b, $$3, $$2));
-                           this.e.add(new fzb.c<>(this.a, this.b + $$2, this.c, $$4));
-                        }
-                     } else if ($$3 == 0) {
-                        this.e.add(new fzb.c<>(this.a, this.b + $$2, $$1, $$4));
-                     } else if ($$4 == 0) {
-                        this.e.add(new fzb.c<>(this.a + $$1, this.b, $$3, $$2));
-                     }
-                  }
+   @Override
+   public CompletableFuture<Void> a(anq.a $$0, anw $$1, bdv $$2, bdv $$3, Executor $$4, Executor $$5) {
+      CompletableFuture<Void> $$6 = new CompletableFuture<>();
+      eyj.a(this, $$4).thenCompose($$0::a).thenAcceptAsync($$3x -> {
+         fyq.c();
+         eom.a(this.f);
+         Iterator<Entry<aez, fyl>> $$4x = this.c.entrySet().iterator();
 
-                  for (fzb.c<T> $$7 : this.e) {
-                     if ($$7.a($$0)) {
-                        return true;
-                     }
-                  }
-
-                  return false;
-               }
+         while ($$4x.hasNext()) {
+            Entry<aez, fyl> $$5x = $$4x.next();
+            aez $$6x = $$5x.getKey();
+            fyl $$7 = $$5x.getValue();
+            if ($$7 == fyq.c() && !$$6x.equals(fyq.b())) {
+               $$4x.remove();
             } else {
-               return false;
+               $$7.a(this, $$1, $$6x, $$5);
             }
          }
-      }
 
-      public void a(fzb.d<T> $$0) {
-         if (this.f != null) {
-            $$0.load(this.f.a, this.a(), this.b());
-         } else if (this.e != null) {
-            for (fzb.c<T> $$1 : this.e) {
-               $$1.a($$0);
-            }
-         }
-      }
+         eqp.O().i(() -> $$6.complete(null));
+      }, $$0x -> RenderSystem.recordRenderCall($$0x::run));
+      return $$6;
+   }
 
-      @Override
-      public String toString() {
-         return "Slot{originX="
-            + this.a
-            + ", originY="
-            + this.b
-            + ", width="
-            + this.c
-            + ", height="
-            + this.d
-            + ", texture="
-            + this.f
-            + ", subSlots="
-            + this.e
-            + "}";
+   public void a(Path $$0) {
+      if (!RenderSystem.isOnRenderThread()) {
+         RenderSystem.recordRenderCall(() -> this.b($$0));
+      } else {
+         this.b($$0);
       }
    }
 
-   public interface d<T extends fzb.a> {
-      void load(T var1, int var2, int var3);
+   private void b(Path $$0) {
+      try {
+         Files.createDirectories($$0);
+      } catch (IOException var3) {
+         b.error("Failed to create directory {}", $$0, var3);
+         return;
+      }
+
+      this.c.forEach(($$1, $$2) -> {
+         if ($$2 instanceof fym $$3) {
+            try {
+               $$3.a($$1, $$0);
+            } catch (IOException var5) {
+               b.error("Failed to dump texture {}", $$1, var5);
+            }
+         }
+      });
    }
 }

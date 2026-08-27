@@ -14,7 +14,7 @@ public class ix implements it {
       }
 
       public ix a(iu<ix> $$0, so $$1) {
-         return new ix($$1.m());
+         return new ix($$1.n());
       }
    };
    private final int c;

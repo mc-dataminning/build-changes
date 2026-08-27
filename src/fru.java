@@ -1,59 +1,107 @@
 import com.google.common.collect.Maps;
-import com.google.common.collect.Ordering;
-import com.google.common.collect.Sets;
-import java.util.Iterator;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
-import java.util.Set;
-import java.util.Map.Entry;
 
-public class fru implements frn.a {
-   private final eqv a;
-   private final Map<Long, Map<gw, Integer>> b = Maps.newTreeMap(Ordering.natural().reverse());
+public class fru implements frj.a {
+   private final eqp a;
+   private final Map<aey<cqb>, Map<String, duu>> b = Maps.newIdentityHashMap();
+   private final Map<aey<cqb>, Map<String, wl.a>> c = Maps.newIdentityHashMap();
+   private static final int d = 500;
 
-   fru(eqv $$0) {
+   public fru(eqp $$0) {
       this.a = $$0;
    }
 
-   public void a(long $$0, gw $$1) {
-      Map<gw, Integer> $$2 = this.b.computeIfAbsent($$0, $$0x -> Maps.newHashMap());
-      int $$3 = $$2.getOrDefault($$1, 0);
-      $$2.put($$1, $$3 + 1);
-   }
-
    @Override
-   public void a(elp $$0, foe $$1, double $$2, double $$3, double $$4) {
-      long $$5 = this.a.r.V();
-      int $$6 = 200;
-      double $$7 = 0.0025;
-      Set<gw> $$8 = Sets.newHashSet();
-      Map<gw, Integer> $$9 = Maps.newHashMap();
-      elt $$10 = $$1.getBuffer(fom.x());
-      Iterator<Entry<Long, Map<gw, Integer>>> $$11 = this.b.entrySet().iterator();
-
-      while ($$11.hasNext()) {
-         Entry<Long, Map<gw, Integer>> $$12 = $$11.next();
-         Long $$13 = $$12.getKey();
-         Map<gw, Integer> $$14 = $$12.getValue();
-         long $$15 = $$5 - $$13;
-         if ($$15 > 200L) {
-            $$11.remove();
-         } else {
-            for (Entry<gw, Integer> $$16 : $$14.entrySet()) {
-               gw $$17 = $$16.getKey();
-               Integer $$18 = $$16.getValue();
-               if ($$8.add($$17)) {
-                  ehi $$19 = new ehi(gw.b).g(0.002).h(0.0025 * (double)$$15).d((double)$$17.u(), (double)$$17.v(), (double)$$17.w()).d(-$$2, -$$3, -$$4);
-                  foc.a($$0, $$10, $$19.a, $$19.b, $$19.c, $$19.d, $$19.e, $$19.f, 1.0F, 1.0F, 1.0F, 1.0F);
-                  $$9.put($$17, $$18);
-               }
+   public void a(elj $$0, foa $$1, double $$2, double $$3, double $$4) {
+      eqa $$5 = this.a.j.m();
+      aey<cqb> $$6 = this.a.r.ac();
+      gw $$7 = gw.a($$5.b().c, 0.0, $$5.b().e);
+      eln $$8 = $$1.getBuffer(foi.x());
+      if (this.b.containsKey($$6)) {
+         for (duu $$9 : this.b.get($$6).values()) {
+            if ($$7.a($$9.f(), 500.0)) {
+               fny.a(
+                  $$0,
+                  $$8,
+                  (double)$$9.g() - $$2,
+                  (double)$$9.h() - $$3,
+                  (double)$$9.i() - $$4,
+                  (double)($$9.j() + 1) - $$2,
+                  (double)($$9.k() + 1) - $$3,
+                  (double)($$9.l() + 1) - $$4,
+                  1.0F,
+                  1.0F,
+                  1.0F,
+                  1.0F,
+                  1.0F,
+                  1.0F,
+                  1.0F
+               );
             }
          }
       }
 
-      for (Entry<gw, Integer> $$20 : $$9.entrySet()) {
-         gw $$21 = $$20.getKey();
-         Integer $$22 = $$20.getValue();
-         frn.a($$0, $$1, String.valueOf($$22), $$21.u(), $$21.v(), $$21.w(), -1);
+      Map<String, wl.a> $$10 = this.c.get($$6);
+      if ($$10 != null) {
+         for (wl.a $$11 : $$10.values()) {
+            duu $$12 = $$11.a();
+            if ($$7.a($$12.f(), 500.0)) {
+               if ($$11.b()) {
+                  fny.a(
+                     $$0,
+                     $$8,
+                     (double)$$12.g() - $$2,
+                     (double)$$12.h() - $$3,
+                     (double)$$12.i() - $$4,
+                     (double)($$12.j() + 1) - $$2,
+                     (double)($$12.k() + 1) - $$3,
+                     (double)($$12.l() + 1) - $$4,
+                     0.0F,
+                     1.0F,
+                     0.0F,
+                     1.0F,
+                     0.0F,
+                     1.0F,
+                     0.0F
+                  );
+               } else {
+                  fny.a(
+                     $$0,
+                     $$8,
+                     (double)$$12.g() - $$2,
+                     (double)$$12.h() - $$3,
+                     (double)$$12.i() - $$4,
+                     (double)($$12.j() + 1) - $$2,
+                     (double)($$12.k() + 1) - $$3,
+                     (double)($$12.l() + 1) - $$4,
+                     0.0F,
+                     0.0F,
+                     1.0F,
+                     1.0F,
+                     0.0F,
+                     0.0F,
+                     1.0F
+                  );
+               }
+            }
+         }
       }
+   }
+
+   public void a(duu $$0, List<wl.a> $$1, aey<cqb> $$2) {
+      this.b.computeIfAbsent($$2, $$0x -> new HashMap<>()).put($$0.toString(), $$0);
+      Map<String, wl.a> $$3 = this.c.computeIfAbsent($$2, $$0x -> new HashMap<>());
+
+      for (wl.a $$4 : $$1) {
+         $$3.put($$4.a().toString(), $$4);
+      }
+   }
+
+   @Override
+   public void a() {
+      this.b.clear();
+      this.c.clear();
    }
 }

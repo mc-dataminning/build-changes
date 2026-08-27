@@ -1,59 +1,39 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.util.List;
 
-public class bsg<T> {
-   private final T a;
-   private long b;
+public class bsg<T extends bjo & bjt> extends bqh {
+   private static final int a = 10;
+   private final T b;
+   private final boolean c;
+   private int d;
 
-   public bsg(T $$0, long $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
-
-   public void a() {
-      if (this.e()) {
-         this.b--;
-      }
-   }
-
-   public static <T> bsg<T> a(T $$0) {
-      return new bsg<>($$0, Long.MAX_VALUE);
-   }
-
-   public static <T> bsg<T> a(T $$0, long $$1) {
-      return new bsg<>($$0, $$1);
-   }
-
-   public long b() {
-      return this.b;
-   }
-
-   public T c() {
-      return this.a;
-   }
-
-   public boolean d() {
-      return this.b <= 0L;
+   public bsg(T $$0, boolean $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
    @Override
-   public String toString() {
-      return this.a + (this.e() ? " (ttl: " + this.b + ")" : "");
+   public boolean a() {
+      return this.b.dL().X().b(cpx.K) && this.h();
    }
 
-   @asy
-   public boolean e() {
-      return this.b != Long.MAX_VALUE;
+   private boolean h() {
+      return this.b.eg() != null && this.b.eg().ag() == bja.bt && this.b.eh() > this.d;
    }
 
-   public static <T> Codec<bsg<T>> a(Codec<T> $$0) {
-      return RecordCodecBuilder.create(
-         $$1 -> $$1.group(
-                  $$0.fieldOf("value").forGetter($$0xx -> $$0xx.a),
-                  Codec.LONG.optionalFieldOf("ttl").forGetter($$0xx -> $$0xx.e() ? Optional.of($$0xx.b) : Optional.empty())
-               )
-               .apply($$1, ($$0xx, $$1x) -> new bsg<>($$0xx, $$1x.orElse(Long.MAX_VALUE)))
-      );
+   @Override
+   public void c() {
+      this.d = this.b.eh();
+      this.b.Y_();
+      if (this.c) {
+         this.i().stream().filter($$0 -> $$0 != this.b).map($$0 -> (bjt)$$0).forEach(bjt::Y_);
+      }
+
+      super.c();
+   }
+
+   private List<? extends bjo> i() {
+      double $$0 = this.b.b(bks.g);
+      ehc $$1 = ehc.a(this.b.dj()).c($$0, 10.0, $$0);
+      return this.b.dL().a((Class<? extends bjo>)this.b.getClass(), $$1, biz.f);
    }
 }

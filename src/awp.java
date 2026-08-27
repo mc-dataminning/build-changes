@@ -1,14 +1,19 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.serialization.Dynamic;
 
-public class awp extends axz {
-   public awp(Schema $$0) {
-      super($$0, false, "Remove filtered text from signs", ayx.s, "minecraft:sign");
+public class awp extends ayf {
+   public awp(Schema $$0, boolean $$1) {
+      super($$0, $$1, "EntityWolfColorFix", azd.x, "minecraft:wolf");
+   }
+
+   public Dynamic<?> a(Dynamic<?> $$0) {
+      return $$0.update("CollarColor", $$0x -> $$0x.createByte((byte)(15 - $$0x.asInt(0))));
    }
 
    @Override
    protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), $$0x -> $$0x.remove("FilteredText1").remove("FilteredText2").remove("FilteredText3").remove("FilteredText4"));
+      return $$0.update(DSL.remainderFinder(), this::a);
    }
 }

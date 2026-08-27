@@ -1,13 +1,14 @@
-public record xk() implements vd<ww> {
+public record xk(int a) implements ve<wx> {
    public xk(so $$0) {
-      this();
+      this($$0.n());
    }
 
    @Override
    public void a(so $$0) {
+      $$0.c(this.a);
    }
 
-   public void a(ww $$0) {
+   public void a(wx $$0) {
       $$0.a(this);
    }
 }

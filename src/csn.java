@@ -1,53 +1,89 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.mojang.serialization.MapCodec;
+import java.util.Map;
 import javax.annotation.Nullable;
 
-public class csn extends csi implements csm {
-   public csn(dfi.d $$0) {
+public class csn extends csk {
+   public static final MapCodec<csn> b = b(csn::new);
+   public static final dfx c = cww.aE;
+   private static final Map<ha, eia> e = Maps.newEnumMap(
+      ImmutableMap.of(
+         ha.c,
+         ctc.a(0.0, 4.0, 5.0, 16.0, 12.0, 16.0),
+         ha.d,
+         ctc.a(0.0, 4.0, 0.0, 16.0, 12.0, 11.0),
+         ha.e,
+         ctc.a(5.0, 4.0, 0.0, 16.0, 12.0, 16.0),
+         ha.f,
+         ctc.a(0.0, 4.0, 0.0, 11.0, 12.0, 16.0)
+      )
+   );
+
+   @Override
+   public MapCodec<? extends csn> a() {
+      return b;
+   }
+
+   protected csn(dfc.d $$0) {
       super($$0);
+      this.k(this.E.b().a(c, ha.c).a(d, Boolean.valueOf(true)));
    }
 
    @Override
-   public cht a() {
-      return cht.a;
+   public eia a(dfd $$0, cph $$1, gw $$2, ehm $$3) {
+      return e.get($$0.c(c));
    }
 
    @Override
-   public dcv a(gw $$0, dfj $$1) {
-      return new dcq($$0, $$1);
+   public dfd a(dfd $$0, czn $$1) {
+      return $$0.a(c, $$1.a($$0.c(c)));
+   }
+
+   @Override
+   public dfd a(dfd $$0, cxx $$1) {
+      return $$0.a($$1.a($$0.c(c)));
+   }
+
+   @Override
+   protected void a(dfe.a<ctc, dfd> $$0) {
+      $$0.a(c, d);
+   }
+
+   @Override
+   public dfd a(dfd $$0, ha $$1, dfd $$2, cqc $$3, gw $$4, gw $$5) {
+      if ($$0.c(d)) {
+         $$3.a($$4, eah.c, eah.c.a($$3));
+      }
+
+      return $$1.g() == $$0.c(c) && !$$0.a($$3, $$4) ? cte.a.o() : $$0;
+   }
+
+   @Override
+   public boolean a(dfd $$0, cqe $$1, gw $$2) {
+      ha $$3 = $$0.c(c);
+      gw $$4 = $$2.a($$3.g());
+      dfd $$5 = $$1.a_($$4);
+      return $$5.d($$1, $$4, $$3);
    }
 
    @Nullable
    @Override
-   public <T extends dcv> dcw<T> a(cpv $$0, dfj $$1, dcx<T> $$2) {
-      return a($$2, dcx.o, dcq::a);
-   }
+   public dfd a(clt $$0) {
+      dfd $$1 = super.a($$0);
+      cqe $$2 = $$0.q();
+      gw $$3 = $$0.a();
+      ha[] $$4 = $$0.f();
 
-   @Override
-   public bgy a(dfj $$0, cpv $$1, gw $$2, cbu $$3, bgx $$4, ehj $$5) {
-      if ($$1.B) {
-         return bgy.a;
-      } else {
-         dcv $$6 = $$1.c_($$2);
-         if ($$6 instanceof dcq) {
-            $$3.a((dcq)$$6);
-            $$3.a(apn.ab);
-         }
-
-         return bgy.b;
-      }
-   }
-
-   @Override
-   public cza b_(dfj $$0) {
-      return cza.c;
-   }
-
-   @Override
-   public void a(cpv $$0, gw $$1, dfj $$2, bjg $$3, cjf $$4) {
-      if ($$4.A()) {
-         dcv $$5 = $$0.c_($$1);
-         if ($$5 instanceof dcq) {
-            ((dcq)$$5).a($$4.y());
+      for (ha $$5 : $$4) {
+         if ($$5.o().d()) {
+            $$1 = $$1.a(c, $$5.g());
+            if ($$1.a($$2, $$3)) {
+               return $$1;
+            }
          }
       }
+
+      return null;
    }
 }

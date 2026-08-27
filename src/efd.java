@@ -1,41 +1,33 @@
+import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
-import java.util.List;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.Set;
 
-public class efd extends efg {
-   public static final Codec<efd> a = a(efd::new);
-   public static final Codec<efd> b = b(efd::new);
+public record efd(Optional<bf> b) implements efj {
+   public static final Codec<efd> a = RecordCodecBuilder.create($$0 -> $$0.group(arj.a(bf.a, "predicate").forGetter(efd::c)).apply($$0, efd::new));
 
-   efd(List<efp> $$0) {
-      super($$0, efr.a($$0));
-   }
-
-   public static efd a(List<efp> $$0) {
-      return new efd(List.copyOf($$0));
+   @Override
+   public efk b() {
+      return efl.n;
    }
 
    @Override
-   public efq b() {
-      return efr.d;
+   public Set<ees<?>> a() {
+      return ImmutableSet.of(eev.f, eev.c);
    }
 
-   public static efd.a a(efp.a... $$0) {
-      return new efd.a($$0);
+   public boolean a(eck $$0) {
+      bhu $$1 = $$0.c(eev.c);
+      ehh $$2 = $$0.c(eev.f);
+      return $$2 != null && $$1 != null ? this.b.isEmpty() || this.b.get().a($$0.d(), $$2, $$1) : false;
    }
 
-   public static class a extends efg.a {
-      public a(efp.a... $$0) {
-         super($$0);
-      }
+   public static efj.a a(bf.a $$0) {
+      return () -> new efd(Optional.of($$0.b()));
+   }
 
-      @Override
-      public efd.a and(efp.a $$0) {
-         this.a($$0);
-         return this;
-      }
-
-      @Override
-      protected efp a(List<efp> $$0) {
-         return new efd($$0);
-      }
+   public Optional<bf> c() {
+      return this.b;
    }
 }

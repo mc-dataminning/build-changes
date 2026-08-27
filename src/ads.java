@@ -1,4 +1,6 @@
-public record ads(aew a) implements adq {
+public record ads() implements adq {
+   public static final ads a = new ads();
+
    @Override
    public void a(so $$0) {
    }

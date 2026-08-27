@@ -1,70 +1,67 @@
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.stream.Collectors;
+import java.util.Comparator;
+import java.util.Objects;
+import java.util.function.Function;
 import javax.annotation.Nullable;
 
-public class gbe implements AutoCloseable {
-   private final Map<aew, gbe.a> a;
+public class gbe {
+   public static final Comparator<gbe> a = Comparator.<gbe, aez>comparing(gbe::a).thenComparing(gbe::b);
+   private final aez b;
+   private final aez c;
+   @Nullable
+   private foi d;
 
-   public gbe(Map<aew, aew> $$0, fzf $$1) {
-      this.a = $$0.entrySet().stream().collect(Collectors.toMap(Entry::getKey, $$1x -> {
-         fzd $$2 = new fzd((aew)$$1x.getKey());
-         $$1.a((aew)$$1x.getKey(), $$2);
-         return new gbe.a($$2, (aew)$$1x.getValue());
-      }));
+   public gbe(aez $$0, aez $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public fzd a(aew $$0) {
-      return this.a.get($$0).a();
+   public aez a() {
+      return this.b;
+   }
+
+   public aez b() {
+      return this.c;
+   }
+
+   public fza c() {
+      return eqp.O().a(this.a()).apply(this.b());
+   }
+
+   public foi a(Function<aez, foi> $$0) {
+      if (this.d == null) {
+         this.d = $$0.apply(this.b);
+      }
+
+      return this.d;
+   }
+
+   public eln a(foa $$0, Function<aez, foi> $$1) {
+      return this.c().a($$0.getBuffer(this.a($$1)));
+   }
+
+   public eln a(foa $$0, Function<aez, foi> $$1, boolean $$2) {
+      return this.c().a(fub.c($$0, this.a($$1), true, $$2));
    }
 
    @Override
-   public void close() {
-      this.a.values().forEach(gbe.a::close);
-      this.a.clear();
-   }
-
-   public Map<aew, CompletableFuture<gbe.b>> a(ant $$0, int $$1, Executor $$2) {
-      return this.a.entrySet().stream().collect(Collectors.toMap(Entry::getKey, $$3 -> {
-         gbe.a $$4 = $$3.getValue();
-         return fyz.a($$4.a).a($$0, $$4.b, $$1, $$2).thenApply($$1xx -> new gbe.b($$4.a, $$1xx));
-      }));
-   }
-
-   static record a(fzd a, aew b) implements AutoCloseable {
-
-      @Override
-      public void close() {
-         this.a.f();
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         gbe $$1 = (gbe)$$0;
+         return this.b.equals($$1.b) && this.c.equals($$1.c);
+      } else {
+         return false;
       }
    }
 
-   public static class b {
-      private final fzd a;
-      private final fyz.a b;
+   @Override
+   public int hashCode() {
+      return Objects.hash(this.b, this.c);
+   }
 
-      public b(fzd $$0, fyz.a $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      @Nullable
-      public fze a(aew $$0) {
-         return this.b.f().get($$0);
-      }
-
-      public fze a() {
-         return this.b.e();
-      }
-
-      public CompletableFuture<Void> b() {
-         return this.b.g();
-      }
-
-      public void c() {
-         this.a.a(this.b);
-      }
+   @Override
+   public String toString() {
+      return "Material{atlasLocation=" + this.b + ", texture=" + this.c + "}";
    }
 }

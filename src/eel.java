@@ -1,69 +1,68 @@
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.UnaryOperator;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class eel extends eec {
+public class eel extends edw {
+   private static final Logger b = LogUtils.getLogger();
    public static final Codec<eel> a = RecordCodecBuilder.create(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  aew.a.fieldOf("name").forGetter($$0x -> $$0x.b),
-                  arf.a(Codec.LONG, "seed", 0L).forGetter($$0x -> $$0x.c),
-                  jb.l.r().fieldOf("type").forGetter($$0x -> $$0x.d)
-               )
-            )
-            .apply($$0, eel::new)
+      $$0 -> a($$0).and($$0.group(arj.a(tn.a, "name").forGetter($$0x -> $$0x.c), arj.a(eck.b.e, "entity").forGetter($$0x -> $$0x.d))).apply($$0, eel::new)
    );
-   private final aew b;
-   private final long c;
-   private final he<dcx<?>> d;
+   private final Optional<tl> c;
+   private final Optional<eck.b> d;
 
-   private eel(List<efp> $$0, aew $$1, long $$2, he<dcx<?>> $$3) {
+   private eel(List<efj> $$0, Optional<tl> $$1, Optional<eck.b> $$2) {
       super($$0);
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+      this.c = $$1;
+      this.d = $$2;
    }
 
    @Override
-   public eee b() {
-      return eef.s;
+   public edy b() {
+      return edz.l;
    }
 
    @Override
-   public cjf a(cjf $$0, ecq $$1) {
-      if ($$0.b()) {
-         return $$0;
-      } else {
-         qw $$2 = cgy.a($$0);
-         if ($$2 == null) {
-            $$2 = new qw();
+   public Set<ees<?>> a() {
+      return this.d.<Set<ees<?>>>map($$0 -> Set.of($$0.a())).orElse(Set.of());
+   }
+
+   public static UnaryOperator<tl> a(eck $$0, @Nullable eck.b $$1) {
+      if ($$1 != null) {
+         biw $$2 = $$0.c($$1.a());
+         if ($$2 != null) {
+            dt $$3 = $$2.dc().a(2);
+            return $$2x -> {
+               try {
+                  return to.a($$3, $$2x, $$2, 0);
+               } catch (CommandSyntaxException var4) {
+                  b.warn("Failed to resolve text component", var4);
+                  return $$2x;
+               }
+            };
          }
-
-         $$2.a("LootTable", this.b.toString());
-         if (this.c != 0L) {
-            $$2.a("LootTableSeed", this.c);
-         }
-
-         cgy.a($$0, this.d.a(), $$2);
-         return $$0;
       }
+
+      return $$0x -> $$0x;
    }
 
    @Override
-   public void a(ecz $$0) {
-      super.a($$0);
-      ecs<ecy> $$1 = new ecs<>(ecv.c, this.b);
-      if ($$0.b().getElementOptional($$1).isEmpty()) {
-         $$0.a("Missing loot table used for container: " + this.b);
-      }
+   public cjl a(cjl $$0, eck $$1) {
+      this.c.ifPresent($$2 -> $$0.a(a($$1, this.d.orElse(null)).apply($$2)));
+      return $$0;
    }
 
-   public static eec.a<?> a(dcx<?> $$0, aew $$1) {
-      return a($$2 -> new eel($$2, $$1, 0L, $$0.a()));
+   public static edw.a<?> a(tl $$0) {
+      return a($$1 -> new eel($$1, Optional.of($$0), Optional.empty()));
    }
 
-   public static eec.a<?> a(dcx<?> $$0, aew $$1, long $$2) {
-      return a($$3 -> new eel($$3, $$1, $$2, $$0.a()));
+   public static edw.a<?> a(tl $$0, eck.b $$1) {
+      return a($$2 -> new eel($$2, Optional.of($$0), Optional.of($$1)));
    }
 }

@@ -1,16 +1,15 @@
-public class fta extends ftv {
-   public static final aew a = new aew("textures/entity/guardian_elder.png");
+public class fta extends fuj<bzf, fex<bzf>> {
+   private static final aez a = new aez("textures/entity/endermite.png");
 
-   public fta(fth.a $$0) {
-      super($$0, 1.2F, fib.P);
+   public fta(ftd.a $$0) {
+      super($$0, new fex<>($$0.a(fhw.S)), 0.3F);
    }
 
-   protected void a(bze $$0, elp $$1, float $$2) {
-      $$1.b(byx.b, byx.b, byx.b);
+   protected float a(bzf $$0) {
+      return 180.0F;
    }
 
-   @Override
-   public aew a(bze $$0) {
+   public aez b(bzf $$0) {
       return a;
    }
 }

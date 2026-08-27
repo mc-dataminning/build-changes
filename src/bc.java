@@ -8,37 +8,37 @@ import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
 public class bc {
-   private final List<efp> a;
-   private final Predicate<ecq> b;
+   private final List<efj> a;
+   private final Predicate<eck> b;
 
-   bc(List<efp> $$0) {
+   bc(List<efj> $$0) {
       if ($$0.isEmpty()) {
          throw new IllegalArgumentException("ContextAwarePredicate must have at least one condition");
       } else {
          this.a = $$0;
-         this.b = efr.a($$0);
+         this.b = efl.a($$0);
       }
    }
 
-   public static bc a(efp... $$0) {
+   public static bc a(efj... $$0) {
       return new bc(List.of($$0));
    }
 
-   public static Optional<Optional<bc>> a(String $$0, bg $$1, @Nullable JsonElement $$2, eez $$3) {
+   public static Optional<Optional<bc>> a(String $$0, bg $$1, @Nullable JsonElement $$2, eet $$3) {
       if ($$2 != null && $$2.isJsonArray()) {
-         List<efp> $$4 = $$1.a($$2.getAsJsonArray(), $$1.a() + "/" + $$0, $$3);
+         List<efj> $$4 = $$1.a($$2.getAsJsonArray(), $$1.a() + "/" + $$0, $$3);
          return $$4.isEmpty() ? Optional.of(Optional.empty()) : Optional.of(Optional.of(new bc($$4)));
       } else {
          return Optional.empty();
       }
    }
 
-   public boolean a(ecq $$0) {
+   public boolean a(eck $$0) {
       return this.b.test($$0);
    }
 
    public JsonElement a() {
-      return ac.a(efr.a.listOf().encodeStart(JsonOps.INSTANCE, this.a), IllegalStateException::new);
+      return ac.a(efl.a.listOf().encodeStart(JsonOps.INSTANCE, this.a), IllegalStateException::new);
    }
 
    public static JsonElement a(List<bc> $$0) {

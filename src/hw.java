@@ -35,11 +35,11 @@ public class hw extends hy {
       return new hw(a($$0.u()), a($$0.v()), a($$0.w()));
    }
 
-   public static hw a(cpc $$0, int $$1) {
+   public static hw a(cpi $$0, int $$1) {
       return new hw($$0.e, $$1, $$0.f);
    }
 
-   public static hw a(dja $$0) {
+   public static hw a(diu $$0) {
       return a($$0.dl());
    }
 
@@ -51,7 +51,7 @@ public class hw extends hy {
       return new hw(b($$0), c($$0), d($$0));
    }
 
-   public static hw a(dhf $$0) {
+   public static hw a(dgz $$0) {
       return a($$0.f(), $$0.al());
    }
 
@@ -64,7 +64,7 @@ public class hw extends hy {
    }
 
    public static int a(double $$0) {
-      return a(arw.a($$0));
+      return a(asb.a($$0));
    }
 
    public static int a(int $$0) {
@@ -72,7 +72,7 @@ public class hw extends hy {
    }
 
    public static int b(double $$0) {
-      return arw.a($$0) >> 4;
+      return asb.a($$0) >> 4;
    }
 
    public static int b(int $$0) {
@@ -191,8 +191,8 @@ public class hw extends hy {
       return this.j().b(8, 8, 8);
    }
 
-   public cpc r() {
-      return new cpc(this.a(), this.c());
+   public cpi r() {
+      return new cpi(this.a(), this.c());
    }
 
    public static long c(gw $$0) {
@@ -225,7 +225,7 @@ public class hw extends hy {
       return a($$2 - $$1, $$3 - $$1, $$4 - $$1, $$2 + $$1, $$3 + $$1, $$4 + $$1);
    }
 
-   public static Stream<hw> a(cpc $$0, int $$1, int $$2, int $$3) {
+   public static Stream<hw> a(cpi $$0, int $$1, int $$2, int $$3) {
       int $$4 = $$0.e;
       int $$5 = $$0.f;
       return a($$4 - $$1, $$2, $$5 - $$1, $$4 + $$1, $$3 - 1, $$5 + $$1);

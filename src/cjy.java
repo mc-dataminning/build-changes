@@ -1,20 +1,18 @@
-public class cjy extends cja {
-   public cjy(cja.a $$0) {
-      super($$0);
+public class cjy extends che {
+   public cjy(ctc $$0, cjg.a $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public bgy a(cjf $$0, cbu $$1, bjg $$2, bgx $$3) {
-      if ($$2 instanceof bjw $$4 && $$2.bv() && !$$4.i() && $$4.g()) {
-         if (!$$1.dL().B) {
-            $$4.a(ape.g);
-            $$2.dL().a($$2, djt.v, $$2.dj());
-            $$0.h(1);
-         }
+   public bhe a(clv $$0) {
+      return bhe.d;
+   }
 
-         return bgy.a($$1.dL().B);
-      }
-
-      return bgy.d;
+   @Override
+   public bhf<cjl> a(cqb $$0, cca $$1, bhd $$2) {
+      ehd $$3 = a($$0, $$1, cpk.b.b);
+      ehd $$4 = $$3.a($$3.a().c());
+      bhe $$5 = super.a(new clv($$1, $$2, $$4));
+      return new bhf<>($$5, $$1.b($$2));
    }
 }

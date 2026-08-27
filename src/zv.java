@@ -1,32 +1,24 @@
-public class zv implements vd<ww> {
-   private final gw a;
-   private final float b;
+public class zv implements ve<wx> {
+   private final int a;
 
-   public zv(gw $$0, float $$1) {
+   public zv(int $$0) {
       this.a = $$0;
-      this.b = $$1;
    }
 
    public zv(so $$0) {
-      this.a = $$0.e();
-      this.b = $$0.readFloat();
+      this.a = $$0.n();
    }
 
    @Override
    public void a(so $$0) {
-      $$0.a(this.a);
-      $$0.a(this.b);
+      $$0.c(this.a);
    }
 
-   public void a(ww $$0) {
+   public void a(wx $$0) {
       $$0.a(this);
    }
 
-   public gw a() {
+   public int a() {
       return this.a;
-   }
-
-   public float d() {
-      return this.b;
    }
 }

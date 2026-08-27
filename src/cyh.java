@@ -1,84 +1,57 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import java.util.Map;
+import com.mojang.serialization.MapCodec;
 
-public class cyh extends csv {
-   private static final ha[] i = ha.values();
-   public static final dga a = dfz.L;
-   public static final dga b = dfz.M;
-   public static final dga c = dfz.N;
-   public static final dga d = dfz.O;
-   public static final dga e = dfz.J;
-   public static final dga f = dfz.K;
-   public static final Map<ha, dga> g = ImmutableMap.copyOf(ac.a(Maps.newEnumMap(ha.class), $$0 -> {
-      $$0.put(ha.c, a);
-      $$0.put(ha.f, b);
-      $$0.put(ha.d, c);
-      $$0.put(ha.e, d);
-      $$0.put(ha.b, e);
-      $$0.put(ha.a, f);
-   }));
-   protected final eig[] h;
+public class cyh extends ctl {
+   public static final MapCodec<cyh> a = b(cyh::new);
+   public static final int b = 3;
+   public static final dgd c = dft.as;
+   private static final eia[] d = new eia[]{
+      ctc.a(0.0, 0.0, 0.0, 16.0, 5.0, 16.0),
+      ctc.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0),
+      ctc.a(0.0, 0.0, 0.0, 16.0, 11.0, 16.0),
+      ctc.a(0.0, 0.0, 0.0, 16.0, 14.0, 16.0)
+   };
 
-   protected cyh(float $$0, dfi.d $$1) {
-      super($$1);
-      this.h = this.a($$0);
+   @Override
+   public MapCodec<cyh> a() {
+      return a;
    }
 
-   private eig[] a(float $$0) {
-      float $$1 = 0.5F - $$0;
-      float $$2 = 0.5F + $$0;
-      eig $$3 = csv.a((double)($$1 * 16.0F), (double)($$1 * 16.0F), (double)($$1 * 16.0F), (double)($$2 * 16.0F), (double)($$2 * 16.0F), (double)($$2 * 16.0F));
-      eig[] $$4 = new eig[i.length];
-
-      for (int $$5 = 0; $$5 < i.length; $$5++) {
-         ha $$6 = i[$$5];
-         $$4[$$5] = eid.a(
-            0.5 + Math.min((double)(-$$0), (double)$$6.j() * 0.5),
-            0.5 + Math.min((double)(-$$0), (double)$$6.k() * 0.5),
-            0.5 + Math.min((double)(-$$0), (double)$$6.l() * 0.5),
-            0.5 + Math.max((double)$$0, (double)$$6.j() * 0.5),
-            0.5 + Math.max((double)$$0, (double)$$6.k() * 0.5),
-            0.5 + Math.max((double)$$0, (double)$$6.l() * 0.5)
-         );
-      }
-
-      eig[] $$7 = new eig[64];
-
-      for (int $$8 = 0; $$8 < 64; $$8++) {
-         eig $$9 = $$3;
-
-         for (int $$10 = 0; $$10 < i.length; $$10++) {
-            if (($$8 & 1 << $$10) != 0) {
-               $$9 = eid.a($$9, $$4[$$10]);
-            }
-         }
-
-         $$7[$$8] = $$9;
-      }
-
-      return $$7;
+   protected cyh(dfc.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(c, Integer.valueOf(0)));
    }
 
    @Override
-   public boolean c(dfj $$0, cpb $$1, gw $$2) {
-      return false;
+   public eia a(dfd $$0, cph $$1, gw $$2, ehm $$3) {
+      return d[$$0.c(c)];
    }
 
    @Override
-   public eig a(dfj $$0, cpb $$1, gw $$2, ehs $$3) {
-      return this.h[this.h($$0)];
+   protected boolean d(dfd $$0, cph $$1, gw $$2) {
+      return $$0.a(cte.dW);
    }
 
-   protected int h(dfj $$0) {
-      int $$1 = 0;
+   @Override
+   public boolean e_(dfd $$0) {
+      return $$0.c(c) < 3;
+   }
 
-      for (int $$2 = 0; $$2 < i.length; $$2++) {
-         if ($$0.c(g.get(i[$$2]))) {
-            $$1 |= 1 << $$2;
-         }
+   @Override
+   public void b(dfd $$0, akt $$1, gw $$2, ash $$3) {
+      int $$4 = $$0.c(c);
+      if ($$4 < 3 && $$3.a(10) == 0) {
+         $$0 = $$0.a(c, Integer.valueOf($$4 + 1));
+         $$1.a($$2, $$0, 2);
       }
+   }
 
-      return $$1;
+   @Override
+   public cjl a(cqe $$0, gw $$1, dfd $$2) {
+      return new cjl(cjo.ru);
+   }
+
+   @Override
+   protected void a(dfe.a<ctc, dfd> $$0) {
+      $$0.a(c);
    }
 }

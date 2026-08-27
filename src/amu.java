@@ -1,28 +1,29 @@
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.JsonOps;
+import java.nio.file.Path;
+import java.util.Map;
 
-public interface amu<T> extends amt<T> {
-   JsonObject a(T var1);
+interface amu {
+   amu a = new amu() {
+      @Override
+      public String toString() {
+         return "empty";
+      }
+   };
+   amu b = new amu() {
+      @Override
+      public String toString() {
+         return "relative";
+      }
+   };
 
-   static <T> amu<T> a(final String $$0, final Codec<T> $$1) {
-      return new amu<T>() {
-         @Override
-         public String a() {
-            return $$0;
-         }
+   public static record a(Map<String, amr> c) implements amu {
+      public Map<String, amr> a() {
+         return this.c;
+      }
+   }
 
-         @Override
-         public T a(JsonObject $$0x) {
-            return ac.a($$1.parse(JsonOps.INSTANCE, $$0), JsonParseException::new);
-         }
-
-         @Override
-         public JsonObject a(T $$0x) {
-            return ac.<JsonElement, IllegalArgumentException>a($$1.encodeStart(JsonOps.INSTANCE, $$0), IllegalArgumentException::new).getAsJsonObject();
-         }
-      };
+   public static record b(Path c) implements amu {
+      public Path a() {
+         return this.c;
+      }
    }
 }

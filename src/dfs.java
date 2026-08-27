@@ -1,51 +1,94 @@
-import com.google.common.collect.Maps;
+import com.mojang.serialization.Codec;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
 import java.util.Map;
-import java.util.Map.Entry;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+import java.util.stream.Stream;
 
-public class dfs implements Predicate<dfj> {
-   public static final Predicate<dfj> a = $$0 -> true;
-   private final dfk<csv, dfj> b;
-   private final Map<dgm<?>, Predicate<Object>> c = Maps.newHashMap();
+public record dfs(String q, boolean r, boolean s, dfs.a t, dan u, apf v, apf w, apf x, apf y, apf z, apf A, apf B, apf C) {
+   private static final Map<String, dfs> D = new Object2ObjectArrayMap();
+   public static final Codec<dfs> a = arj.a(dfs::b, D::get);
+   public static final dfs b = a(new dfs("iron", false, false, dfs.a.a, dan.g, apg.lK, apg.lL, apg.lS, apg.lT, apg.nd, apg.ne, apg.xr, apg.xs));
+   public static final dfs c = a(new dfs("gold", false, false, dfs.a.a, dan.g, apg.lK, apg.lL, apg.lS, apg.lT, apg.nd, apg.ne, apg.xr, apg.xs));
+   public static final dfs d = a(new dfs("stone", true, false, dfs.a.b, dan.f, apg.lK, apg.lL, apg.lS, apg.lT, apg.xw, apg.xx, apg.xr, apg.xs));
+   public static final dfs e = a(new dfs("polished_blackstone", true, false, dfs.a.b, dan.f, apg.lK, apg.lL, apg.lS, apg.lT, apg.xw, apg.xx, apg.xr, apg.xs));
+   public static final dfs f = a(new dfs("oak"));
+   public static final dfs g = a(new dfs("spruce"));
+   public static final dfs h = a(new dfs("birch"));
+   public static final dfs i = a(new dfs("acacia"));
+   public static final dfs j = a(new dfs("cherry", true, true, dfs.a.a, dan.aQ, apg.dX, apg.dY, apg.dZ, apg.ea, apg.ed, apg.ee, apg.eb, apg.ec));
+   public static final dfs k = a(new dfs("jungle"));
+   public static final dfs l = a(new dfs("dark_oak"));
+   public static final dfs m = a(new dfs("crimson", true, true, dfs.a.a, dan.aP, apg.pf, apg.pg, apg.ph, apg.pi, apg.pl, apg.pm, apg.pj, apg.pk));
+   public static final dfs n = a(new dfs("warped", true, true, dfs.a.a, dan.aP, apg.pf, apg.pg, apg.ph, apg.pi, apg.pl, apg.pm, apg.pj, apg.pk));
+   public static final dfs o = a(new dfs("mangrove"));
+   public static final dfs p = a(new dfs("bamboo", true, true, dfs.a.a, dan.aO, apg.aZ, apg.ba, apg.bb, apg.bc, apg.bf, apg.bg, apg.bd, apg.be));
 
-   private dfs(dfk<csv, dfj> $$0) {
-      this.b = $$0;
+   public dfs(String $$0) {
+      this($$0, true, true, dfs.a.a, dan.b, apg.AC, apg.AD, apg.AE, apg.AF, apg.AI, apg.AJ, apg.AG, apg.AH);
    }
 
-   public static dfs a(csv $$0) {
-      return new dfs($$0.l());
+   private static dfs a(dfs $$0) {
+      D.put($$0.q, $$0);
+      return $$0;
    }
 
-   public boolean a(@Nullable dfj $$0) {
-      if ($$0 != null && $$0.b().equals(this.b.c())) {
-         if (this.c.isEmpty()) {
-            return true;
-         } else {
-            for (Entry<dgm<?>, Predicate<Object>> $$1 : this.c.entrySet()) {
-               if (!this.a($$0, $$1.getKey(), $$1.getValue())) {
-                  return false;
-               }
-            }
-
-            return true;
-         }
-      } else {
-         return false;
-      }
+   public static Stream<dfs> a() {
+      return D.values().stream();
    }
 
-   protected <T extends Comparable<T>> boolean a(dfj $$0, dgm<T> $$1, Predicate<Object> $$2) {
-      T $$3 = $$0.c($$1);
-      return $$2.test($$3);
+   public String b() {
+      return this.q;
    }
 
-   public <V extends Comparable<V>> dfs a(dgm<V> $$0, Predicate<Object> $$1) {
-      if (!this.b.d().contains($$0)) {
-         throw new IllegalArgumentException(this.b + " cannot support property " + $$0);
-      } else {
-         this.c.put($$0, $$1);
-         return this;
-      }
+   public boolean c() {
+      return this.r;
+   }
+
+   public boolean d() {
+      return this.s;
+   }
+
+   public dfs.a e() {
+      return this.t;
+   }
+
+   public dan f() {
+      return this.u;
+   }
+
+   public apf g() {
+      return this.v;
+   }
+
+   public apf h() {
+      return this.w;
+   }
+
+   public apf i() {
+      return this.x;
+   }
+
+   public apf j() {
+      return this.y;
+   }
+
+   public apf k() {
+      return this.z;
+   }
+
+   public apf l() {
+      return this.A;
+   }
+
+   public apf m() {
+      return this.B;
+   }
+
+   public apf n() {
+      return this.C;
+   }
+
+   public static enum a {
+      a,
+      b;
    }
 }

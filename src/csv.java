@@ -1,453 +1,304 @@
-import com.google.common.cache.CacheBuilder;
-import com.google.common.cache.CacheLoader;
-import com.google.common.cache.LoadingCache;
-import com.google.common.collect.ImmutableMap;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.Object2ByteLinkedOpenHashMap;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.Function;
-import java.util.function.Supplier;
+import java.util.Optional;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import org.apache.commons.lang3.ArrayUtils;
 
-public class csv extends dfi implements cpu {
-   private static final Logger a = LogUtils.getLogger();
-   private final he.c<csv> b = jb.f.f(this);
-   public static final hk<dfj> o = new hk<>();
-   private static final LoadingCache<eig, Boolean> c = CacheBuilder.newBuilder().maximumSize(512L).weakKeys().build(new CacheLoader<eig, Boolean>() {
-      public Boolean a(eig $$0) {
-         return !eid.c(eid.b(), $$0, ehr.g);
-      }
-   });
-   public static final int p = 1;
-   public static final int q = 2;
-   public static final int r = 4;
-   public static final int s = 8;
-   public static final int t = 16;
-   public static final int u = 32;
-   public static final int v = 64;
-   public static final int w = 4;
-   public static final int x = 3;
-   public static final int y = 11;
-   public static final float z = -1.0F;
-   public static final float A = 0.0F;
-   public static final int B = 512;
-   protected final dfk<csv, dfj> C;
-   private dfj d;
+public class csv extends cww implements cvs {
+   public static final MapCodec<csv> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(chz.q.fieldOf("color").forGetter(csv::b), t()).apply($$0, csv::new));
+   public static final dgb<dfq> b = dft.bb;
+   public static final dfu c = dft.t;
+   protected static final int d = 9;
+   protected static final eia e = ctc.a(0.0, 3.0, 0.0, 16.0, 9.0, 16.0);
+   private static final int n = 3;
+   protected static final eia f = ctc.a(0.0, 0.0, 0.0, 3.0, 3.0, 3.0);
+   protected static final eia g = ctc.a(0.0, 0.0, 13.0, 3.0, 3.0, 16.0);
+   protected static final eia h = ctc.a(13.0, 0.0, 0.0, 16.0, 3.0, 3.0);
+   protected static final eia i = ctc.a(13.0, 0.0, 13.0, 16.0, 3.0, 16.0);
+   protected static final eia j = ehx.a(e, f, h);
+   protected static final eia k = ehx.a(e, g, i);
+   protected static final eia l = ehx.a(e, f, g);
+   protected static final eia m = ehx.a(e, h, i);
+   private final chz o;
+
+   @Override
+   public MapCodec<csv> a() {
+      return a;
+   }
+
+   public csv(chz $$0, dfc.d $$1) {
+      super($$1);
+      this.o = $$0;
+      this.k(this.E.b().a(b, dfq.b).a(c, Boolean.valueOf(false)));
+   }
+
    @Nullable
-   private String e;
-   @Nullable
-   private cja f;
-   private static final int g = 2048;
-   private static final ThreadLocal<Object2ByteLinkedOpenHashMap<csv.a>> h = ThreadLocal.withInitial(() -> {
-      Object2ByteLinkedOpenHashMap<csv.a> $$0 = new Object2ByteLinkedOpenHashMap<csv.a>(2048, 0.25F) {
-         protected void rehash(int $$0) {
-         }
-      };
-      $$0.defaultReturnValue((byte)127);
-      return $$0;
-   });
+   public static ha a(cph $$0, gw $$1) {
+      dfd $$2 = $$0.a_($$1);
+      return $$2.b() instanceof csv ? $$2.c(aE) : null;
+   }
 
-   public static int i(@Nullable dfj $$0) {
-      if ($$0 == null) {
-         return 0;
+   @Override
+   public bhe a(dfd $$0, cqb $$1, gw $$2, cca $$3, bhd $$4, ehd $$5) {
+      if ($$1.B) {
+         return bhe.b;
       } else {
-         int $$1 = o.a($$0);
-         return $$1 == -1 ? 0 : $$1;
-      }
-   }
-
-   public static dfj a(int $$0) {
-      dfj $$1 = o.a($$0);
-      return $$1 == null ? csw.a.n() : $$1;
-   }
-
-   public static csv a(@Nullable cja $$0) {
-      return $$0 instanceof cgy ? ((cgy)$$0).e() : csw.a;
-   }
-
-   public static dfj a(dfj $$0, dfj $$1, cpw $$2, gw $$3) {
-      eig $$4 = eid.b($$0.k($$2, $$3), $$1.k($$2, $$3), ehr.c).a((double)$$3.u(), (double)$$3.v(), (double)$$3.w());
-      if ($$4.c()) {
-         return $$1;
-      } else {
-         for (biq $$6 : $$2.a_(null, $$4.a())) {
-            double $$7 = eid.a(ha.a.b, $$6.cG().d(0.0, 1.0, 0.0), List.of($$4), -1.0);
-            $$6.c(0.0, 1.0 + $$7, 0.0);
-         }
-
-         return $$1;
-      }
-   }
-
-   public static eig a(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5) {
-      return eid.a($$0 / 16.0, $$1 / 16.0, $$2 / 16.0, $$3 / 16.0, $$4 / 16.0, $$5 / 16.0);
-   }
-
-   public static dfj b(dfj $$0, cpw $$1, gw $$2) {
-      dfj $$3 = $$0;
-      gw.a $$4 = new gw.a();
-
-      for (ha $$5 : aD) {
-         $$4.a($$2, $$5);
-         $$3 = $$3.a($$5, $$1.a_($$4), $$1, $$2, $$4);
-      }
-
-      return $$3;
-   }
-
-   public static void a(dfj $$0, dfj $$1, cpw $$2, gw $$3, int $$4) {
-      a($$0, $$1, $$2, $$3, $$4, 512);
-   }
-
-   public static void a(dfj $$0, dfj $$1, cpw $$2, gw $$3, int $$4, int $$5) {
-      if ($$1 != $$0) {
-         if ($$1.i()) {
-            if (!$$2.w_()) {
-               $$2.a($$3, ($$4 & 32) == 0, null, $$5);
+         if ($$0.c(b) != dfq.a) {
+            $$2 = $$2.a($$0.c(aE));
+            $$0 = $$1.a_($$2);
+            if (!$$0.a(this)) {
+               return bhe.b;
             }
-         } else {
-            $$2.a($$3, $$1, $$4 & -33, $$5);
          }
-      }
-   }
 
-   public csv(dfi.d $$0) {
-      super($$0);
-      dfk.a<csv, dfj> $$1 = new dfk.a<>(this);
-      this.a($$1);
-      this.C = $$1.a(csv::n, dfj::new);
-      this.k(this.C.b());
-      if (aa.aT) {
-         String $$2 = this.getClass().getSimpleName();
-         if (!$$2.endsWith("Block")) {
-            a.error("Block classes should end with Block and {} doesn't.", $$2);
-         }
-      }
-   }
+         if (!a($$1)) {
+            $$1.a($$2, false);
+            gw $$6 = $$2.a($$0.c(aE).g());
+            if ($$1.a_($$6).a(this)) {
+               $$1.a($$6, false);
+            }
 
-   public static boolean j(dfj $$0) {
-      return $$0.b() instanceof cxc || $$0.a(csw.hW) || $$0.a(csw.ef) || $$0.a(csw.eg) || $$0.a(csw.fa) || $$0.a(csw.dV) || $$0.a(aps.aQ);
-   }
+            ehh $$7 = $$2.b();
+            $$1.a(null, $$1.ag().a($$7), null, $$7, 5.0F, true, cqb.a.b);
+            return bhe.a;
+         } else if ($$0.c(c)) {
+            if (!this.a($$1, $$2)) {
+               $$3.a(tl.c("block.minecraft.bed.occupied"), true);
+            }
 
-   public boolean e_(dfj $$0) {
-      return this.aG;
-   }
-
-   public static boolean a(dfj $$0, cpb $$1, gw $$2, ha $$3, gw $$4) {
-      dfj $$5 = $$1.a_($$4);
-      if ($$0.a($$5, $$3)) {
-         return false;
-      } else if ($$5.p()) {
-         csv.a $$6 = new csv.a($$0, $$5, $$3);
-         Object2ByteLinkedOpenHashMap<csv.a> $$7 = h.get();
-         byte $$8 = $$7.getAndMoveToFirst($$6);
-         if ($$8 != 127) {
-            return $$8 != 0;
+            return bhe.a;
          } else {
-            eig $$9 = $$0.a($$1, $$2, $$3);
-            if ($$9.c()) {
-               return true;
-            } else {
-               eig $$10 = $$5.a($$1, $$4, $$3.g());
-               boolean $$11 = eid.c($$9, $$10, ehr.e);
-               if ($$7.size() == 2048) {
-                  $$7.removeLastByte();
+            $$3.a($$2).ifLeft($$1x -> {
+               if ($$1x.a() != null) {
+                  $$3.a($$1x.a(), true);
                }
-
-               $$7.putAndMoveToFirst($$6, (byte)($$11 ? 1 : 0));
-               return $$11;
-            }
+            });
+            return bhe.a;
          }
+      }
+   }
+
+   public static boolean a(cqb $$0) {
+      return $$0.C_().l();
+   }
+
+   private boolean a(cqb $$0, gw $$1) {
+      List<cbn> $$2 = $$0.a(cbn.class, new ehc($$1), bjm::fD);
+      if ($$2.isEmpty()) {
+         return false;
       } else {
+         $$2.get(0).fE();
          return true;
       }
    }
 
-   public static boolean c(cpb $$0, gw $$1) {
-      return $$0.a_($$1).a($$0, $$1, ha.b, dax.c);
+   @Override
+   public void a(cqb $$0, dfd $$1, gw $$2, biw $$3, float $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4 * 0.5F);
    }
 
-   public static boolean a(cpy $$0, gw $$1, ha $$2) {
-      dfj $$3 = $$0.a_($$1);
-      return $$2 == ha.a && $$3.a(aps.aY) ? false : $$3.a($$0, $$1, $$2, dax.b);
-   }
-
-   public static boolean a(eig $$0, ha $$1) {
-      eig $$2 = $$0.a($$1);
-      return a($$2);
-   }
-
-   public static boolean a(eig $$0) {
-      return (Boolean)c.getUnchecked($$0);
-   }
-
-   public boolean c(dfj $$0, cpb $$1, gw $$2) {
-      return !a($$0.j($$1, $$2)) && $$0.u().c();
-   }
-
-   public void a(dfj $$0, cpv $$1, gw $$2, asc $$3) {
-   }
-
-   public void a(cpw $$0, gw $$1, dfj $$2) {
-   }
-
-   public static List<cjf> a(dfj $$0, akq $$1, gw $$2, @Nullable dcv $$3) {
-      ecw.a $$4 = new ecw.a($$1).a(efb.f, ehn.b($$2)).a(efb.i, cjf.b).b(efb.h, $$3);
-      return $$0.a($$4);
-   }
-
-   public static List<cjf> a(dfj $$0, akq $$1, gw $$2, @Nullable dcv $$3, @Nullable biq $$4, cjf $$5) {
-      ecw.a $$6 = new ecw.a($$1).a(efb.f, ehn.b($$2)).a(efb.i, $$5).b(efb.a, $$4).b(efb.h, $$3);
-      return $$0.a($$6);
-   }
-
-   public static void c(dfj $$0, cpv $$1, gw $$2) {
-      if ($$1 instanceof akq) {
-         a($$0, (akq)$$1, $$2, null).forEach($$2x -> a($$1, $$2, $$2x));
-         $$0.a((akq)$$1, $$2, cjf.b, true);
+   @Override
+   public void a(cph $$0, biw $$1) {
+      if ($$1.bT()) {
+         super.a($$0, $$1);
+      } else {
+         this.a($$1);
       }
    }
 
-   public static void a(dfj $$0, cpw $$1, gw $$2, @Nullable dcv $$3) {
-      if ($$1 instanceof akq) {
-         a($$0, (akq)$$1, $$2, $$3).forEach($$2x -> a((cpv)((akq)$$1), $$2, $$2x));
-         $$0.a((akq)$$1, $$2, cjf.b, true);
+   private void a(biw $$0) {
+      ehh $$1 = $$0.do();
+      if ($$1.d < 0.0) {
+         double $$2 = $$0 instanceof bjm ? 1.0 : 0.8;
+         $$0.o($$1.c, -$$1.d * 0.66F * $$2, $$1.e);
       }
    }
 
-   public static void a(dfj $$0, cpv $$1, gw $$2, @Nullable dcv $$3, @Nullable biq $$4, cjf $$5) {
-      if ($$1 instanceof akq) {
-         a($$0, (akq)$$1, $$2, $$3, $$4, $$5).forEach($$2x -> a($$1, $$2, $$2x));
-         $$0.a((akq)$$1, $$2, $$5, true);
+   @Override
+   public dfd a(dfd $$0, ha $$1, dfd $$2, cqc $$3, gw $$4, gw $$5) {
+      if ($$1 == a($$0.c(b), $$0.c(aE))) {
+         return $$2.a(this) && $$2.c(b) != $$0.c(b) ? $$0.a(c, $$2.c(c)) : cte.a.o();
+      } else {
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
       }
    }
 
-   public static void a(cpv $$0, gw $$1, cjf $$2) {
-      double $$3 = (double)biu.ad.l() / 2.0;
-      double $$4 = (double)$$1.u() + 0.5 + arw.a($$0.z, -0.25, 0.25);
-      double $$5 = (double)$$1.v() + 0.5 + arw.a($$0.z, -0.25, 0.25) - $$3;
-      double $$6 = (double)$$1.w() + 0.5 + arw.a($$0.z, -0.25, 0.25);
-      a($$0, () -> new byn($$0, $$4, $$5, $$6, $$2), $$2);
+   private static ha a(dfq $$0, ha $$1) {
+      return $$0 == dfq.b ? $$1 : $$1.g();
    }
 
-   public static void a(cpv $$0, gw $$1, ha $$2, cjf $$3) {
-      int $$4 = $$2.j();
-      int $$5 = $$2.k();
-      int $$6 = $$2.l();
-      double $$7 = (double)biu.ad.k() / 2.0;
-      double $$8 = (double)biu.ad.l() / 2.0;
-      double $$9 = (double)$$1.u() + 0.5 + ($$4 == 0 ? arw.a($$0.z, -0.25, 0.25) : (double)$$4 * (0.5 + $$7));
-      double $$10 = (double)$$1.v() + 0.5 + ($$5 == 0 ? arw.a($$0.z, -0.25, 0.25) : (double)$$5 * (0.5 + $$8)) - $$8;
-      double $$11 = (double)$$1.w() + 0.5 + ($$6 == 0 ? arw.a($$0.z, -0.25, 0.25) : (double)$$6 * (0.5 + $$7));
-      double $$12 = $$4 == 0 ? arw.a($$0.z, -0.1, 0.1) : (double)$$4 * 0.1;
-      double $$13 = $$5 == 0 ? arw.a($$0.z, 0.0, 0.1) : (double)$$5 * 0.1 + 0.1;
-      double $$14 = $$6 == 0 ? arw.a($$0.z, -0.1, 0.1) : (double)$$6 * 0.1;
-      a($$0, () -> new byn($$0, $$9, $$10, $$11, $$3, $$12, $$13, $$14), $$3);
-   }
-
-   private static void a(cpv $$0, Supplier<byn> $$1, cjf $$2) {
-      if (!$$0.B && !$$2.b() && $$0.X().b(cpr.g)) {
-         byn $$3 = $$1.get();
-         $$3.t();
-         $$0.b($$3);
+   @Override
+   public dfd a(cqb $$0, gw $$1, dfd $$2, cca $$3) {
+      if (!$$0.B && $$3.f()) {
+         dfq $$4 = $$2.c(b);
+         if ($$4 == dfq.b) {
+            gw $$5 = $$1.a(a($$4, $$2.c(aE)));
+            dfd $$6 = $$0.a_($$5);
+            if ($$6.a(this) && $$6.c(b) == dfq.a) {
+               $$0.a($$5, cte.a.o(), 35);
+               $$0.a($$3, 2001, $$5, ctc.i($$6));
+            }
+         }
       }
-   }
 
-   protected void a(akq $$0, gw $$1, int $$2) {
-      if ($$0.X().b(cpr.g)) {
-         biw.a($$0, ehn.b($$1), $$2);
-      }
-   }
-
-   public float d() {
-      return this.aF;
-   }
-
-   public void a(cpv $$0, gw $$1, cpn $$2) {
-   }
-
-   public void a(cpv $$0, gw $$1, dfj $$2, biq $$3) {
+      return super.a($$0, $$1, $$2, $$3);
    }
 
    @Nullable
-   public dfj a(cln $$0) {
-      return this.n();
-   }
-
-   public void a(cpv $$0, cbu $$1, gw $$2, dfj $$3, @Nullable dcv $$4, cjf $$5) {
-      $$1.b(apn.a.b(this));
-      $$1.A(0.005F);
-      a($$3, $$0, $$2, $$4, $$1, $$5);
-   }
-
-   public void a(cpv $$0, gw $$1, dfj $$2, @Nullable bjg $$3, cjf $$4) {
-   }
-
-   public boolean a(dfj $$0) {
-      return !$$0.e() && !$$0.k();
-   }
-
-   public ty e() {
-      return tl.c(this.f());
-   }
-
-   public String f() {
-      if (this.e == null) {
-         this.e = ac.a("block", jb.f.b(this));
-      }
-
-      return this.e;
-   }
-
-   public void a(cpv $$0, dfj $$1, gw $$2, biq $$3, float $$4) {
-      $$3.a($$4, 1.0F, $$3.dM().k());
-   }
-
-   public void a(cpb $$0, biq $$1) {
-      $$1.f($$1.do().d(1.0, 0.0, 1.0));
-   }
-
-   public cjf a(cpb $$0, gw $$1, dfj $$2) {
-      return new cjf(this);
-   }
-
-   public float h() {
-      return this.aI;
-   }
-
-   public float i() {
-      return this.aJ;
-   }
-
-   public float j() {
-      return this.aK;
-   }
-
-   protected void a(cpv $$0, cbu $$1, gw $$2, dfj $$3) {
-      $$0.a($$1, 2001, $$2, i($$3));
-   }
-
-   public void a(cpv $$0, gw $$1, dfj $$2, cbu $$3) {
-      this.a($$0, $$3, $$1, $$2);
-      if ($$2.a(aps.aV)) {
-         cal.a($$3, false);
-      }
-
-      $$0.a(djt.f, $$1, djt.a.a($$3, $$2));
-   }
-
-   public void a(dfj $$0, cpv $$1, gw $$2, cqt.c $$3) {
-   }
-
-   public boolean a(cpn $$0) {
-      return true;
-   }
-
-   protected void a(dfk.a<csv, dfj> $$0) {
-   }
-
-   public dfk<csv, dfj> l() {
-      return this.C;
-   }
-
-   protected final void k(dfj $$0) {
-      this.d = $$0;
-   }
-
-   public final dfj n() {
-      return this.d;
-   }
-
-   public final dfj l(dfj $$0) {
-      dfj $$1 = this.n();
-
-      for (dgm<?> $$2 : $$0.b().l().d()) {
-         if ($$1.b($$2)) {
-            $$1 = a($$0, $$1, $$2);
-         }
-      }
-
-      return $$1;
-   }
-
-   private static <T extends Comparable<T>> dfj a(dfj $$0, dfj $$1, dgm<T> $$2) {
-      return $$1.a($$2, $$0.c($$2));
-   }
-
-   public dai m(dfj $$0) {
-      return this.aH;
+   @Override
+   public dfd a(clt $$0) {
+      ha $$1 = $$0.g();
+      gw $$2 = $$0.a();
+      gw $$3 = $$2.a($$1);
+      cqb $$4 = $$0.q();
+      return $$4.a_($$3).a($$0) && $$4.B_().a($$3) ? this.o().a(aE, $$1) : null;
    }
 
    @Override
-   public cja k() {
-      if (this.f == null) {
-         this.f = cja.a(this);
-      }
-
-      return this.f;
-   }
-
-   public boolean o() {
-      return this.aL;
-   }
-
-   @Override
-   public String toString() {
-      return "Block{" + jb.f.b(this) + "}";
-   }
-
-   public void a(cjf $$0, @Nullable cpb $$1, List<tl> $$2, ckw $$3) {
-   }
-
-   @Override
-   protected csv p() {
-      return this;
-   }
-
-   protected ImmutableMap<dfj, eig> a(Function<dfj, eig> $$0) {
-      return this.C.a().stream().collect(ImmutableMap.toImmutableMap(Function.identity(), $$0));
-   }
-
-   @Deprecated
-   public he.c<csv> q() {
-      return this.b;
-   }
-
-   protected void a(akq $$0, gw $$1, cjf $$2, bgd $$3) {
-      if (cnq.a(cns.v, $$2) == 0) {
-         int $$4 = $$3.a($$0.z);
-         if ($$4 > 0) {
-            this.a($$0, $$1, $$4);
-         }
+   public eia a(dfd $$0, cph $$1, gw $$2, ehm $$3) {
+      ha $$4 = g($$0).g();
+      switch ($$4) {
+         case c:
+            return j;
+         case d:
+            return k;
+         case e:
+            return l;
+         default:
+            return m;
       }
    }
 
-   public static final class a {
-      private final dfj a;
-      private final dfj b;
-      private final ha c;
+   public static ha g(dfd $$0) {
+      ha $$1 = $$0.c(aE);
+      return $$0.c(b) == dfq.a ? $$1.g() : $$1;
+   }
 
-      public a(dfj $$0, dfj $$1, ha $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
+   public static cvh.a h(dfd $$0) {
+      dfq $$1 = $$0.c(b);
+      return $$1 == dfq.a ? cvh.a.b : cvh.a.c;
+   }
+
+   private static boolean b(cph $$0, gw $$1) {
+      return $$0.a_($$1.d()).b() instanceof csv;
+   }
+
+   public static Optional<ehh> a(bja<?> $$0, cpl $$1, gw $$2, ha $$3, float $$4) {
+      ha $$5 = $$3.h();
+      ha $$6 = $$5.a($$4) ? $$5.g() : $$5;
+      if (b($$1, $$2)) {
+         return a($$0, $$1, $$2, $$3, $$6);
+      } else {
+         int[][] $$7 = a($$3, $$6);
+         Optional<ehh> $$8 = a($$0, $$1, $$2, $$7, true);
+         return $$8.isPresent() ? $$8 : a($$0, $$1, $$2, $$7, false);
       }
+   }
 
-      @Override
-      public boolean equals(Object $$0) {
-         if (this == $$0) {
-            return true;
+   private static Optional<ehh> a(bja<?> $$0, cpl $$1, gw $$2, ha $$3, ha $$4) {
+      int[][] $$5 = b($$3, $$4);
+      Optional<ehh> $$6 = a($$0, $$1, $$2, $$5, true);
+      if ($$6.isPresent()) {
+         return $$6;
+      } else {
+         gw $$7 = $$2.d();
+         Optional<ehh> $$8 = a($$0, $$1, $$7, $$5, true);
+         if ($$8.isPresent()) {
+            return $$8;
          } else {
-            return !($$0 instanceof csv.a $$1) ? false : this.a == $$1.a && this.b == $$1.b && this.c == $$1.c;
+            int[][] $$9 = a($$3);
+            Optional<ehh> $$10 = a($$0, $$1, $$2, $$9, true);
+            if ($$10.isPresent()) {
+               return $$10;
+            } else {
+               Optional<ehh> $$11 = a($$0, $$1, $$2, $$5, false);
+               if ($$11.isPresent()) {
+                  return $$11;
+               } else {
+                  Optional<ehh> $$12 = a($$0, $$1, $$7, $$5, false);
+                  return $$12.isPresent() ? $$12 : a($$0, $$1, $$2, $$9, false);
+               }
+            }
+         }
+      }
+   }
+
+   private static Optional<ehh> a(bja<?> $$0, cpl $$1, gw $$2, int[][] $$3, boolean $$4) {
+      gw.a $$5 = new gw.a();
+
+      for (int[] $$6 : $$3) {
+         $$5.d($$2.u() + $$6[0], $$2.v(), $$2.w() + $$6[1]);
+         ehh $$7 = cdw.a($$0, $$1, $$5, $$4);
+         if ($$7 != null) {
+            return Optional.of($$7);
          }
       }
 
-      @Override
-      public int hashCode() {
-         int $$0 = this.a.hashCode();
-         $$0 = 31 * $$0 + this.b.hashCode();
-         return 31 * $$0 + this.c.hashCode();
+      return Optional.empty();
+   }
+
+   @Override
+   public czg b_(dfd $$0) {
+      return czg.b;
+   }
+
+   @Override
+   protected void a(dfe.a<ctc, dfd> $$0) {
+      $$0.a(aE, b, c);
+   }
+
+   @Override
+   public dcz a(gw $$0, dfd $$1) {
+      return new dcv($$0, $$1, this.o);
+   }
+
+   @Override
+   public void a(cqb $$0, gw $$1, dfd $$2, @Nullable bjm $$3, cjl $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      if (!$$0.B) {
+         gw $$5 = $$1.a($$2.c(aE));
+         $$0.a($$5, $$2.a(b, dfq.a), 3);
+         $$0.b($$1, cte.a);
+         $$2.a($$0, $$1, 3);
       }
+   }
+
+   public chz b() {
+      return this.o;
+   }
+
+   @Override
+   public long a(dfd $$0, gw $$1) {
+      gw $$2 = $$1.a($$0.c(aE), $$0.c(b) == dfq.a ? 0 : 1);
+      return asb.b($$2.u(), $$1.v(), $$2.w());
+   }
+
+   @Override
+   public boolean a(dfd $$0, cph $$1, gw $$2, eaw $$3) {
+      return false;
+   }
+
+   private static int[][] a(ha $$0, ha $$1) {
+      return (int[][])ArrayUtils.addAll(b($$0, $$1), a($$0));
+   }
+
+   private static int[][] b(ha $$0, ha $$1) {
+      return new int[][]{
+         {$$1.j(), $$1.l()},
+         {$$1.j() - $$0.j(), $$1.l() - $$0.l()},
+         {$$1.j() - $$0.j() * 2, $$1.l() - $$0.l() * 2},
+         {-$$0.j() * 2, -$$0.l() * 2},
+         {-$$1.j() - $$0.j() * 2, -$$1.l() - $$0.l() * 2},
+         {-$$1.j() - $$0.j(), -$$1.l() - $$0.l()},
+         {-$$1.j(), -$$1.l()},
+         {-$$1.j() + $$0.j(), -$$1.l() + $$0.l()},
+         {$$0.j(), $$0.l()},
+         {$$1.j() + $$0.j(), $$1.l() + $$0.l()}
+      };
+   }
+
+   private static int[][] a(ha $$0) {
+      return new int[][]{{0, 0}, {-$$0.j(), -$$0.l()}};
    }
 }

@@ -1,1208 +1,252 @@
 import com.google.common.collect.Lists;
 import java.util.List;
-import javax.annotation.Nullable;
 
 public class dxg {
-   private static final int b = 30;
-   private static final int c = 10;
-   public static final int a = 64;
-   static final dxg.n[] d = new dxg.n[]{
-      new dxg.n(dxg.c.class, 30, 0, true),
-      new dxg.n(dxg.a.class, 10, 4),
-      new dxg.n(dxg.o.class, 10, 4),
-      new dxg.n(dxg.p.class, 10, 3),
-      new dxg.n(dxg.l.class, 5, 2),
-      new dxg.n(dxg.f.class, 5, 1)
+   static final dys a = a(cte.I, cte.J, eci.aG);
+   static final dys b = a(cte.L, cte.M, eci.aH);
+   private static final aez[] c = new aez[]{
+      new aez("underwater_ruin/warm_1"),
+      new aez("underwater_ruin/warm_2"),
+      new aez("underwater_ruin/warm_3"),
+      new aez("underwater_ruin/warm_4"),
+      new aez("underwater_ruin/warm_5"),
+      new aez("underwater_ruin/warm_6"),
+      new aez("underwater_ruin/warm_7"),
+      new aez("underwater_ruin/warm_8")
    };
-   static final dxg.n[] e = new dxg.n[]{
-      new dxg.n(dxg.i.class, 25, 0, true),
-      new dxg.n(dxg.g.class, 15, 5),
-      new dxg.n(dxg.j.class, 5, 10),
-      new dxg.n(dxg.h.class, 5, 10),
-      new dxg.n(dxg.d.class, 10, 3, true),
-      new dxg.n(dxg.e.class, 7, 2),
-      new dxg.n(dxg.k.class, 5, 2)
+   private static final aez[] d = new aez[]{
+      new aez("underwater_ruin/brick_1"),
+      new aez("underwater_ruin/brick_2"),
+      new aez("underwater_ruin/brick_3"),
+      new aez("underwater_ruin/brick_4"),
+      new aez("underwater_ruin/brick_5"),
+      new aez("underwater_ruin/brick_6"),
+      new aez("underwater_ruin/brick_7"),
+      new aez("underwater_ruin/brick_8")
+   };
+   private static final aez[] e = new aez[]{
+      new aez("underwater_ruin/cracked_1"),
+      new aez("underwater_ruin/cracked_2"),
+      new aez("underwater_ruin/cracked_3"),
+      new aez("underwater_ruin/cracked_4"),
+      new aez("underwater_ruin/cracked_5"),
+      new aez("underwater_ruin/cracked_6"),
+      new aez("underwater_ruin/cracked_7"),
+      new aez("underwater_ruin/cracked_8")
+   };
+   private static final aez[] f = new aez[]{
+      new aez("underwater_ruin/mossy_1"),
+      new aez("underwater_ruin/mossy_2"),
+      new aez("underwater_ruin/mossy_3"),
+      new aez("underwater_ruin/mossy_4"),
+      new aez("underwater_ruin/mossy_5"),
+      new aez("underwater_ruin/mossy_6"),
+      new aez("underwater_ruin/mossy_7"),
+      new aez("underwater_ruin/mossy_8")
+   };
+   private static final aez[] g = new aez[]{
+      new aez("underwater_ruin/big_brick_1"),
+      new aez("underwater_ruin/big_brick_2"),
+      new aez("underwater_ruin/big_brick_3"),
+      new aez("underwater_ruin/big_brick_8")
+   };
+   private static final aez[] h = new aez[]{
+      new aez("underwater_ruin/big_mossy_1"),
+      new aez("underwater_ruin/big_mossy_2"),
+      new aez("underwater_ruin/big_mossy_3"),
+      new aez("underwater_ruin/big_mossy_8")
+   };
+   private static final aez[] i = new aez[]{
+      new aez("underwater_ruin/big_cracked_1"),
+      new aez("underwater_ruin/big_cracked_2"),
+      new aez("underwater_ruin/big_cracked_3"),
+      new aez("underwater_ruin/big_cracked_8")
+   };
+   private static final aez[] j = new aez[]{
+      new aez("underwater_ruin/big_warm_4"),
+      new aez("underwater_ruin/big_warm_5"),
+      new aez("underwater_ruin/big_warm_6"),
+      new aez("underwater_ruin/big_warm_7")
    };
 
-   static dxg.m a(dxg.n $$0, dvn $$1, asc $$2, int $$3, int $$4, int $$5, ha $$6, int $$7) {
-      Class<? extends dxg.m> $$8 = $$0.a;
-      dxg.m $$9 = null;
-      if ($$8 == dxg.c.class) {
-         $$9 = dxg.c.a($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      } else if ($$8 == dxg.a.class) {
-         $$9 = dxg.a.a($$1, $$3, $$4, $$5, $$6, $$7);
-      } else if ($$8 == dxg.o.class) {
-         $$9 = dxg.o.a($$1, $$3, $$4, $$5, $$6, $$7);
-      } else if ($$8 == dxg.p.class) {
-         $$9 = dxg.p.a($$1, $$3, $$4, $$5, $$7, $$6);
-      } else if ($$8 == dxg.l.class) {
-         $$9 = dxg.l.a($$1, $$3, $$4, $$5, $$7, $$6);
-      } else if ($$8 == dxg.f.class) {
-         $$9 = dxg.f.a($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      } else if ($$8 == dxg.i.class) {
-         $$9 = dxg.i.a($$1, $$3, $$4, $$5, $$6, $$7);
-      } else if ($$8 == dxg.j.class) {
-         $$9 = dxg.j.a($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      } else if ($$8 == dxg.h.class) {
-         $$9 = dxg.h.a($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      } else if ($$8 == dxg.d.class) {
-         $$9 = dxg.d.a($$1, $$3, $$4, $$5, $$6, $$7);
-      } else if ($$8 == dxg.e.class) {
-         $$9 = dxg.e.a($$1, $$3, $$4, $$5, $$6, $$7);
-      } else if ($$8 == dxg.g.class) {
-         $$9 = dxg.g.a($$1, $$3, $$4, $$5, $$6, $$7);
-      } else if ($$8 == dxg.k.class) {
-         $$9 = dxg.k.a($$1, $$3, $$4, $$5, $$6, $$7);
-      }
-
-      return $$9;
+   private static dys a(ctc $$0, ctc $$1, aez $$2) {
+      return new dyb(new dyo(List.of(new dyk(new dxy($$0), dxt.b, dyh.b, $$1.o(), new dyz($$2)))), bgg.a(5));
    }
 
-   public static class a extends dxg.m {
-      private static final int a = 19;
-      private static final int b = 10;
-      private static final int c = 19;
+   private static aez a(ash $$0) {
+      return ac.a(c, $$0);
+   }
 
-      public a(int $$0, dva $$1, ha $$2) {
-         super(dvz.e, $$0, $$1);
-         this.a($$2);
+   private static aez b(ash $$0) {
+      return ac.a(j, $$0);
+   }
+
+   public static void a(dyw $$0, gw $$1, czn $$2, dvh $$3, ash $$4, dxh $$5) {
+      boolean $$6 = $$4.i() <= $$5.f;
+      float $$7 = $$6 ? 0.9F : 0.8F;
+      a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      if ($$6 && $$4.i() <= $$5.g) {
+         a($$0, $$4, $$2, $$1, $$5, $$3);
       }
+   }
 
-      protected a(int $$0, int $$1, ha $$2) {
-         super(dvz.e, 0, dvm.a($$0, 64, $$1, $$2, 19, 10, 19));
-         this.a($$2);
-      }
+   private static void a(dyw $$0, ash $$1, czn $$2, gw $$3, dxh $$4, dvh $$5) {
+      gw $$6 = new gw($$3.u(), 90, $$3.w());
+      gw $$7 = dyv.a(new gw(15, 0, 15), cxx.a, $$2, gw.b).a((hy)$$6);
+      duu $$8 = duu.a($$6, $$7);
+      gw $$9 = new gw(Math.min($$6.u(), $$7.u()), $$6.v(), Math.min($$6.w(), $$7.w()));
+      List<gw> $$10 = a($$1, $$9);
+      int $$11 = asb.a($$1, 4, 8);
 
-      protected a(dvz $$0, qw $$1) {
-         super($$0, $$1);
-      }
-
-      public a(qw $$0) {
-         this(dvz.e, $$0);
-      }
-
-      @Override
-      public void a(dvm $$0, dvn $$1, asc $$2) {
-         this.a((dxg.q)$$0, $$1, $$2, 8, 3, false);
-         this.b((dxg.q)$$0, $$1, $$2, 3, 8, false);
-         this.c((dxg.q)$$0, $$1, $$2, 3, 8, false);
-      }
-
-      public static dxg.a a(dvn $$0, int $$1, int $$2, int $$3, ha $$4, int $$5) {
-         dva $$6 = dva.a($$1, $$2, $$3, -8, -3, 0, 19, 10, 19, $$4);
-         return a($$6) && $$0.a($$6) == null ? new dxg.a($$5, $$6, $$4) : null;
-      }
-
-      @Override
-      public void a(cqp $$0, cqn $$1, dhg $$2, asc $$3, dva $$4, cpc $$5, gw $$6) {
-         this.a($$0, $$4, 7, 3, 0, 11, 4, 18, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 0, 3, 7, 18, 4, 11, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 8, 5, 0, 10, 7, 18, csw.a.n(), csw.a.n(), false);
-         this.a($$0, $$4, 0, 5, 8, 18, 7, 10, csw.a.n(), csw.a.n(), false);
-         this.a($$0, $$4, 7, 5, 0, 7, 5, 7, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 7, 5, 11, 7, 5, 18, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 11, 5, 0, 11, 5, 7, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 11, 5, 11, 11, 5, 18, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 0, 5, 7, 7, 5, 7, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 11, 5, 7, 18, 5, 7, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 0, 5, 11, 7, 5, 11, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 11, 5, 11, 18, 5, 11, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 7, 2, 0, 11, 2, 5, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 7, 2, 13, 11, 2, 18, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 7, 0, 0, 11, 1, 3, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 7, 0, 15, 11, 1, 18, csw.fn.n(), csw.fn.n(), false);
-
-         for (int $$7 = 7; $$7 <= 11; $$7++) {
-            for (int $$8 = 0; $$8 <= 2; $$8++) {
-               this.b($$0, csw.fn.n(), $$7, -1, $$8, $$4);
-               this.b($$0, csw.fn.n(), $$7, -1, 18 - $$8, $$4);
-            }
-         }
-
-         this.a($$0, $$4, 0, 2, 7, 5, 2, 11, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 13, 2, 7, 18, 2, 11, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 0, 0, 7, 3, 1, 11, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 15, 0, 7, 18, 1, 11, csw.fn.n(), csw.fn.n(), false);
-
-         for (int $$9 = 0; $$9 <= 2; $$9++) {
-            for (int $$10 = 7; $$10 <= 11; $$10++) {
-               this.b($$0, csw.fn.n(), $$9, -1, $$10, $$4);
-               this.b($$0, csw.fn.n(), 18 - $$9, -1, $$10, $$4);
+      for (int $$12 = 0; $$12 < $$11; $$12++) {
+         if (!$$10.isEmpty()) {
+            int $$13 = $$1.a($$10.size());
+            gw $$14 = $$10.remove($$13);
+            czn $$15 = czn.a($$1);
+            gw $$16 = dyv.a(new gw(5, 0, 6), cxx.a, $$15, gw.b).a((hy)$$14);
+            duu $$17 = duu.a($$14, $$16);
+            if (!$$17.a($$8)) {
+               a($$0, $$14, $$15, $$5, $$1, $$4, false, 0.8F);
             }
          }
       }
    }
 
-   public static class b extends dxg.m {
-      private static final int a = 5;
-      private static final int b = 10;
-      private static final int c = 8;
-      private final int d;
+   private static List<gw> a(ash $$0, gw $$1) {
+      List<gw> $$2 = Lists.newArrayList();
+      $$2.add($$1.b(-16 + asb.a($$0, 1, 8), 0, 16 + asb.a($$0, 1, 7)));
+      $$2.add($$1.b(-16 + asb.a($$0, 1, 8), 0, asb.a($$0, 1, 7)));
+      $$2.add($$1.b(-16 + asb.a($$0, 1, 8), 0, -16 + asb.a($$0, 4, 8)));
+      $$2.add($$1.b(asb.a($$0, 1, 7), 0, 16 + asb.a($$0, 1, 7)));
+      $$2.add($$1.b(asb.a($$0, 1, 7), 0, -16 + asb.a($$0, 4, 6)));
+      $$2.add($$1.b(16 + asb.a($$0, 1, 7), 0, 16 + asb.a($$0, 3, 8)));
+      $$2.add($$1.b(16 + asb.a($$0, 1, 7), 0, asb.a($$0, 1, 7)));
+      $$2.add($$1.b(16 + asb.a($$0, 1, 7), 0, -16 + asb.a($$0, 4, 8)));
+      return $$2;
+   }
 
-      public b(int $$0, asc $$1, dva $$2, ha $$3) {
-         super(dvz.f, $$0, $$2);
-         this.a($$3);
-         this.d = $$1.f();
+   private static void a(dyw $$0, gw $$1, czn $$2, dvh $$3, ash $$4, dxh $$5, boolean $$6, float $$7) {
+      switch ($$5.e) {
+         case a:
+         default:
+            aez $$8 = $$6 ? b($$4) : a($$4);
+            $$3.a(new dxg.a($$0, $$8, $$1, $$2, $$7, $$5.e, $$6));
+            break;
+         case b:
+            aez[] $$9 = $$6 ? g : d;
+            aez[] $$10 = $$6 ? i : e;
+            aez[] $$11 = $$6 ? h : f;
+            int $$12 = $$4.a($$9.length);
+            $$3.a(new dxg.a($$0, $$9[$$12], $$1, $$2, $$7, $$5.e, $$6));
+            $$3.a(new dxg.a($$0, $$10[$$12], $$1, $$2, 0.7F, $$5.e, $$6));
+            $$3.a(new dxg.a($$0, $$11[$$12], $$1, $$2, 0.5F, $$5.e, $$6));
+      }
+   }
+
+   public static class a extends dvm {
+      private final dxh.a h;
+      private final float i;
+      private final boolean j;
+
+      public a(dyw $$0, aez $$1, gw $$2, czn $$3, float $$4, dxh.a $$5, boolean $$6) {
+         super(dvt.H, 0, $$0, $$1, $$1.toString(), a($$3, $$4, $$5), $$2);
+         this.i = $$4;
+         this.h = $$5;
+         this.j = $$6;
       }
 
-      public b(qw $$0) {
-         super(dvz.f, $$0);
-         this.d = $$0.h("Seed");
+      private a(dyw $$0, qw $$1, czn $$2, float $$3, dxh.a $$4, boolean $$5) {
+         super(dvt.H, $$1, $$0, $$3x -> a($$2, $$3, $$4));
+         this.i = $$3;
+         this.h = $$4;
+         this.j = $$5;
       }
 
-      public static dxg.b a(dvn $$0, asc $$1, int $$2, int $$3, int $$4, ha $$5, int $$6) {
-         dva $$7 = dva.a($$2, $$3, $$4, -1, -3, 0, 5, 10, 8, $$5);
-         return a($$7) && $$0.a($$7) == null ? new dxg.b($$6, $$1, $$7, $$5) : null;
+      private static dyr a(czn $$0, float $$1, dxh.a $$2) {
+         dys $$3 = $$2 == dxh.a.b ? dxg.b : dxg.a;
+         return new dyr().a($$0).a(cxx.a).a(new dxz($$1)).a(dxx.d).a($$3);
+      }
+
+      public static dxg.a a(dyw $$0, qw $$1) {
+         czn $$2 = czn.valueOf($$1.l("Rot"));
+         float $$3 = $$1.j("Integrity");
+         dxh.a $$4 = dxh.a.valueOf($$1.l("BiomeType"));
+         boolean $$5 = $$1.q("IsLarge");
+         return new dxg.a($$0, $$1, $$2, $$3, $$4, $$5);
       }
 
       @Override
-      protected void a(dvy $$0, qw $$1) {
+      protected void a(dvs $$0, qw $$1) {
          super.a($$0, $$1);
-         $$1.a("Seed", this.d);
+         $$1.a("Rot", this.c.d().name());
+         $$1.a("Integrity", this.i);
+         $$1.a("BiomeType", this.h.toString());
+         $$1.a("IsLarge", this.j);
       }
 
       @Override
-      public void a(cqp $$0, cqn $$1, dhg $$2, asc $$3, dva $$4, cpc $$5, gw $$6) {
-         asc $$7 = asc.a((long)this.d);
-
-         for (int $$8 = 0; $$8 <= 4; $$8++) {
-            for (int $$9 = 3; $$9 <= 4; $$9++) {
-               int $$10 = $$7.a(8);
-               this.a($$0, $$4, $$8, $$9, 0, $$8, $$9, $$10, csw.fn.n(), csw.fn.n(), false);
+      protected void a(String $$0, gw $$1, cqq $$2, ash $$3, duu $$4) {
+         if ("chest".equals($$0)) {
+            $$2.a($$1, cte.cv.o().a(cuf.e, Boolean.valueOf($$2.b_($$1).a(aqa.a))), 2);
+            dcz $$5 = $$2.c_($$1);
+            if ($$5 instanceof ddg) {
+               ((ddg)$$5).a(this.j ? eci.F : eci.E, $$3.g());
             }
-         }
-
-         int $$11 = $$7.a(8);
-         this.a($$0, $$4, 0, 5, 0, 0, 5, $$11, csw.fn.n(), csw.fn.n(), false);
-         $$11 = $$7.a(8);
-         this.a($$0, $$4, 4, 5, 0, 4, 5, $$11, csw.fn.n(), csw.fn.n(), false);
-
-         for (int $$13 = 0; $$13 <= 4; $$13++) {
-            int $$14 = $$7.a(5);
-            this.a($$0, $$4, $$13, 2, 0, $$13, 2, $$14, csw.fn.n(), csw.fn.n(), false);
-         }
-
-         for (int $$15 = 0; $$15 <= 4; $$15++) {
-            for (int $$16 = 0; $$16 <= 1; $$16++) {
-               int $$17 = $$7.a(3);
-               this.a($$0, $$4, $$15, $$16, 0, $$15, $$16, $$17, csw.fn.n(), csw.fn.n(), false);
-            }
-         }
-      }
-   }
-
-   public static class c extends dxg.m {
-      private static final int a = 5;
-      private static final int b = 10;
-      private static final int c = 19;
-
-      public c(int $$0, asc $$1, dva $$2, ha $$3) {
-         super(dvz.g, $$0, $$2);
-         this.a($$3);
-      }
-
-      public c(qw $$0) {
-         super(dvz.g, $$0);
-      }
-
-      @Override
-      public void a(dvm $$0, dvn $$1, asc $$2) {
-         this.a((dxg.q)$$0, $$1, $$2, 1, 3, false);
-      }
-
-      public static dxg.c a(dvn $$0, asc $$1, int $$2, int $$3, int $$4, ha $$5, int $$6) {
-         dva $$7 = dva.a($$2, $$3, $$4, -1, -3, 0, 5, 10, 19, $$5);
-         return a($$7) && $$0.a($$7) == null ? new dxg.c($$6, $$1, $$7, $$5) : null;
-      }
-
-      @Override
-      public void a(cqp $$0, cqn $$1, dhg $$2, asc $$3, dva $$4, cpc $$5, gw $$6) {
-         this.a($$0, $$4, 0, 3, 0, 4, 4, 18, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 1, 5, 0, 3, 7, 18, csw.a.n(), csw.a.n(), false);
-         this.a($$0, $$4, 0, 5, 0, 0, 5, 18, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 4, 5, 0, 4, 5, 18, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 0, 2, 0, 4, 2, 5, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 0, 2, 13, 4, 2, 18, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 0, 0, 0, 4, 1, 3, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 0, 0, 15, 4, 1, 18, csw.fn.n(), csw.fn.n(), false);
-
-         for (int $$7 = 0; $$7 <= 4; $$7++) {
-            for (int $$8 = 0; $$8 <= 2; $$8++) {
-               this.b($$0, csw.fn.n(), $$7, -1, $$8, $$4);
-               this.b($$0, csw.fn.n(), $$7, -1, 18 - $$8, $$4);
-            }
-         }
-
-         dfj $$9 = csw.fo.n().a(cvp.a, Boolean.valueOf(true)).a(cvp.c, Boolean.valueOf(true));
-         dfj $$10 = $$9.a(cvp.b, Boolean.valueOf(true));
-         dfj $$11 = $$9.a(cvp.d, Boolean.valueOf(true));
-         this.a($$0, $$4, 0, 1, 1, 0, 4, 1, $$10, $$10, false);
-         this.a($$0, $$4, 0, 3, 4, 0, 4, 4, $$10, $$10, false);
-         this.a($$0, $$4, 0, 3, 14, 0, 4, 14, $$10, $$10, false);
-         this.a($$0, $$4, 0, 1, 17, 0, 4, 17, $$10, $$10, false);
-         this.a($$0, $$4, 4, 1, 1, 4, 4, 1, $$11, $$11, false);
-         this.a($$0, $$4, 4, 3, 4, 4, 4, 4, $$11, $$11, false);
-         this.a($$0, $$4, 4, 3, 14, 4, 4, 14, $$11, $$11, false);
-         this.a($$0, $$4, 4, 1, 17, 4, 4, 17, $$11, $$11, false);
-      }
-   }
-
-   public static class d extends dxg.m {
-      private static final int a = 5;
-      private static final int b = 14;
-      private static final int c = 10;
-
-      public d(int $$0, dva $$1, ha $$2) {
-         super(dvz.h, $$0, $$1);
-         this.a($$2);
-      }
-
-      public d(qw $$0) {
-         super(dvz.h, $$0);
-      }
-
-      @Override
-      public void a(dvm $$0, dvn $$1, asc $$2) {
-         this.a((dxg.q)$$0, $$1, $$2, 1, 0, true);
-      }
-
-      public static dxg.d a(dvn $$0, int $$1, int $$2, int $$3, ha $$4, int $$5) {
-         dva $$6 = dva.a($$1, $$2, $$3, -1, -7, 0, 5, 14, 10, $$4);
-         return a($$6) && $$0.a($$6) == null ? new dxg.d($$5, $$6, $$4) : null;
-      }
-
-      @Override
-      public void a(cqp $$0, cqn $$1, dhg $$2, asc $$3, dva $$4, cpc $$5, gw $$6) {
-         dfj $$7 = csw.fp.n().a(dap.a, ha.d);
-         dfj $$8 = csw.fo.n().a(cvp.a, Boolean.valueOf(true)).a(cvp.c, Boolean.valueOf(true));
-
-         for (int $$9 = 0; $$9 <= 9; $$9++) {
-            int $$10 = Math.max(1, 7 - $$9);
-            int $$11 = Math.min(Math.max($$10 + 5, 14 - $$9), 13);
-            int $$12 = $$9;
-            this.a($$0, $$4, 0, 0, $$9, 4, $$10, $$9, csw.fn.n(), csw.fn.n(), false);
-            this.a($$0, $$4, 1, $$10 + 1, $$9, 3, $$11 - 1, $$9, csw.a.n(), csw.a.n(), false);
-            if ($$9 <= 6) {
-               this.a($$0, $$7, 1, $$10 + 1, $$9, $$4);
-               this.a($$0, $$7, 2, $$10 + 1, $$9, $$4);
-               this.a($$0, $$7, 3, $$10 + 1, $$9, $$4);
-            }
-
-            this.a($$0, $$4, 0, $$11, $$9, 4, $$11, $$9, csw.fn.n(), csw.fn.n(), false);
-            this.a($$0, $$4, 0, $$10 + 1, $$9, 0, $$11 - 1, $$9, csw.fn.n(), csw.fn.n(), false);
-            this.a($$0, $$4, 4, $$10 + 1, $$9, 4, $$11 - 1, $$9, csw.fn.n(), csw.fn.n(), false);
-            if (($$9 & 1) == 0) {
-               this.a($$0, $$4, 0, $$10 + 2, $$9, 0, $$10 + 3, $$9, $$8, $$8, false);
-               this.a($$0, $$4, 4, $$10 + 2, $$9, 4, $$10 + 3, $$9, $$8, $$8, false);
-            }
-
-            for (int $$13 = 0; $$13 <= 4; $$13++) {
-               this.b($$0, csw.fn.n(), $$13, -1, $$12, $$4);
-            }
-         }
-      }
-   }
-
-   public static class e extends dxg.m {
-      private static final int a = 9;
-      private static final int b = 7;
-      private static final int c = 9;
-
-      public e(int $$0, dva $$1, ha $$2) {
-         super(dvz.i, $$0, $$1);
-         this.a($$2);
-      }
-
-      public e(qw $$0) {
-         super(dvz.i, $$0);
-      }
-
-      @Override
-      public void a(dvm $$0, dvn $$1, asc $$2) {
-         int $$3 = 1;
-         ha $$4 = this.i();
-         if ($$4 == ha.e || $$4 == ha.c) {
-            $$3 = 5;
-         }
-
-         this.b((dxg.q)$$0, $$1, $$2, 0, $$3, $$2.a(8) > 0);
-         this.c((dxg.q)$$0, $$1, $$2, 0, $$3, $$2.a(8) > 0);
-      }
-
-      public static dxg.e a(dvn $$0, int $$1, int $$2, int $$3, ha $$4, int $$5) {
-         dva $$6 = dva.a($$1, $$2, $$3, -3, 0, 0, 9, 7, 9, $$4);
-         return a($$6) && $$0.a($$6) == null ? new dxg.e($$5, $$6, $$4) : null;
-      }
-
-      @Override
-      public void a(cqp $$0, cqn $$1, dhg $$2, asc $$3, dva $$4, cpc $$5, gw $$6) {
-         dfj $$7 = csw.fo.n().a(cvp.a, Boolean.valueOf(true)).a(cvp.c, Boolean.valueOf(true));
-         dfj $$8 = csw.fo.n().a(cvp.d, Boolean.valueOf(true)).a(cvp.b, Boolean.valueOf(true));
-         this.a($$0, $$4, 0, 0, 0, 8, 1, 8, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 0, 2, 0, 8, 5, 8, csw.a.n(), csw.a.n(), false);
-         this.a($$0, $$4, 0, 6, 0, 8, 6, 5, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 0, 2, 0, 2, 5, 0, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 6, 2, 0, 8, 5, 0, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 1, 3, 0, 1, 4, 0, $$8, $$8, false);
-         this.a($$0, $$4, 7, 3, 0, 7, 4, 0, $$8, $$8, false);
-         this.a($$0, $$4, 0, 2, 4, 8, 2, 8, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 1, 1, 4, 2, 2, 4, csw.a.n(), csw.a.n(), false);
-         this.a($$0, $$4, 6, 1, 4, 7, 2, 4, csw.a.n(), csw.a.n(), false);
-         this.a($$0, $$4, 1, 3, 8, 7, 3, 8, $$8, $$8, false);
-         this.a($$0, csw.fo.n().a(cvp.b, Boolean.valueOf(true)).a(cvp.c, Boolean.valueOf(true)), 0, 3, 8, $$4);
-         this.a($$0, csw.fo.n().a(cvp.d, Boolean.valueOf(true)).a(cvp.c, Boolean.valueOf(true)), 8, 3, 8, $$4);
-         this.a($$0, $$4, 0, 3, 6, 0, 3, 7, $$7, $$7, false);
-         this.a($$0, $$4, 8, 3, 6, 8, 3, 7, $$7, $$7, false);
-         this.a($$0, $$4, 0, 3, 4, 0, 5, 5, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 8, 3, 4, 8, 5, 5, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 1, 3, 5, 2, 5, 5, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 6, 3, 5, 7, 5, 5, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 1, 4, 5, 1, 5, 5, $$8, $$8, false);
-         this.a($$0, $$4, 7, 4, 5, 7, 5, 5, $$8, $$8, false);
-
-         for (int $$9 = 0; $$9 <= 5; $$9++) {
-            for (int $$10 = 0; $$10 <= 8; $$10++) {
-               this.b($$0, csw.fn.n(), $$10, -1, $$9, $$4);
-            }
-         }
-      }
-   }
-
-   public static class f extends dxg.m {
-      private static final int a = 13;
-      private static final int b = 14;
-      private static final int c = 13;
-
-      public f(int $$0, asc $$1, dva $$2, ha $$3) {
-         super(dvz.j, $$0, $$2);
-         this.a($$3);
-      }
-
-      public f(qw $$0) {
-         super(dvz.j, $$0);
-      }
-
-      @Override
-      public void a(dvm $$0, dvn $$1, asc $$2) {
-         this.a((dxg.q)$$0, $$1, $$2, 5, 3, true);
-      }
-
-      public static dxg.f a(dvn $$0, asc $$1, int $$2, int $$3, int $$4, ha $$5, int $$6) {
-         dva $$7 = dva.a($$2, $$3, $$4, -5, -3, 0, 13, 14, 13, $$5);
-         return a($$7) && $$0.a($$7) == null ? new dxg.f($$6, $$1, $$7, $$5) : null;
-      }
-
-      @Override
-      public void a(cqp $$0, cqn $$1, dhg $$2, asc $$3, dva $$4, cpc $$5, gw $$6) {
-         this.a($$0, $$4, 0, 3, 0, 12, 4, 12, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 0, 5, 0, 12, 13, 12, csw.a.n(), csw.a.n(), false);
-         this.a($$0, $$4, 0, 5, 0, 1, 12, 12, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 11, 5, 0, 12, 12, 12, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 2, 5, 11, 4, 12, 12, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 8, 5, 11, 10, 12, 12, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 5, 9, 11, 7, 12, 12, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 2, 5, 0, 4, 12, 1, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 8, 5, 0, 10, 12, 1, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 5, 9, 0, 7, 12, 1, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 2, 11, 2, 10, 12, 10, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 5, 8, 0, 7, 8, 0, csw.fo.n(), csw.fo.n(), false);
-         dfj $$7 = csw.fo.n().a(cvp.d, Boolean.valueOf(true)).a(cvp.b, Boolean.valueOf(true));
-         dfj $$8 = csw.fo.n().a(cvp.a, Boolean.valueOf(true)).a(cvp.c, Boolean.valueOf(true));
-
-         for (int $$9 = 1; $$9 <= 11; $$9 += 2) {
-            this.a($$0, $$4, $$9, 10, 0, $$9, 11, 0, $$7, $$7, false);
-            this.a($$0, $$4, $$9, 10, 12, $$9, 11, 12, $$7, $$7, false);
-            this.a($$0, $$4, 0, 10, $$9, 0, 11, $$9, $$8, $$8, false);
-            this.a($$0, $$4, 12, 10, $$9, 12, 11, $$9, $$8, $$8, false);
-            this.a($$0, csw.fn.n(), $$9, 13, 0, $$4);
-            this.a($$0, csw.fn.n(), $$9, 13, 12, $$4);
-            this.a($$0, csw.fn.n(), 0, 13, $$9, $$4);
-            this.a($$0, csw.fn.n(), 12, 13, $$9, $$4);
-            if ($$9 != 11) {
-               this.a($$0, $$7, $$9 + 1, 13, 0, $$4);
-               this.a($$0, $$7, $$9 + 1, 13, 12, $$4);
-               this.a($$0, $$8, 0, 13, $$9 + 1, $$4);
-               this.a($$0, $$8, 12, 13, $$9 + 1, $$4);
-            }
-         }
-
-         this.a($$0, csw.fo.n().a(cvp.a, Boolean.valueOf(true)).a(cvp.b, Boolean.valueOf(true)), 0, 13, 0, $$4);
-         this.a($$0, csw.fo.n().a(cvp.c, Boolean.valueOf(true)).a(cvp.b, Boolean.valueOf(true)), 0, 13, 12, $$4);
-         this.a($$0, csw.fo.n().a(cvp.c, Boolean.valueOf(true)).a(cvp.d, Boolean.valueOf(true)), 12, 13, 12, $$4);
-         this.a($$0, csw.fo.n().a(cvp.a, Boolean.valueOf(true)).a(cvp.d, Boolean.valueOf(true)), 12, 13, 0, $$4);
-
-         for (int $$10 = 3; $$10 <= 9; $$10 += 2) {
-            this.a($$0, $$4, 1, 7, $$10, 1, 8, $$10, $$8.a(cvp.d, Boolean.valueOf(true)), $$8.a(cvp.d, Boolean.valueOf(true)), false);
-            this.a($$0, $$4, 11, 7, $$10, 11, 8, $$10, $$8.a(cvp.b, Boolean.valueOf(true)), $$8.a(cvp.b, Boolean.valueOf(true)), false);
-         }
-
-         this.a($$0, $$4, 4, 2, 0, 8, 2, 12, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 0, 2, 4, 12, 2, 8, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 4, 0, 0, 8, 1, 3, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 4, 0, 9, 8, 1, 12, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 0, 0, 4, 3, 1, 8, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 9, 0, 4, 12, 1, 8, csw.fn.n(), csw.fn.n(), false);
-
-         for (int $$11 = 4; $$11 <= 8; $$11++) {
-            for (int $$12 = 0; $$12 <= 2; $$12++) {
-               this.b($$0, csw.fn.n(), $$11, -1, $$12, $$4);
-               this.b($$0, csw.fn.n(), $$11, -1, 12 - $$12, $$4);
-            }
-         }
-
-         for (int $$13 = 0; $$13 <= 2; $$13++) {
-            for (int $$14 = 4; $$14 <= 8; $$14++) {
-               this.b($$0, csw.fn.n(), $$13, -1, $$14, $$4);
-               this.b($$0, csw.fn.n(), 12 - $$13, -1, $$14, $$4);
-            }
-         }
-
-         this.a($$0, $$4, 5, 5, 5, 7, 5, 7, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 6, 1, 6, 6, 4, 6, csw.a.n(), csw.a.n(), false);
-         this.a($$0, csw.fn.n(), 6, 0, 6, $$4);
-         this.a($$0, csw.H.n(), 6, 5, 6, $$4);
-         gw $$15 = this.b(6, 5, 6);
-         if ($$4.b($$15)) {
-            $$0.a($$15, ean.e, 0);
-         }
-      }
-   }
-
-   public static class g extends dxg.m {
-      private static final int a = 5;
-      private static final int b = 7;
-      private static final int c = 5;
-
-      public g(int $$0, dva $$1, ha $$2) {
-         super(dvz.k, $$0, $$1);
-         this.a($$2);
-      }
-
-      public g(qw $$0) {
-         super(dvz.k, $$0);
-      }
-
-      @Override
-      public void a(dvm $$0, dvn $$1, asc $$2) {
-         this.a((dxg.q)$$0, $$1, $$2, 1, 0, true);
-         this.b((dxg.q)$$0, $$1, $$2, 0, 1, true);
-         this.c((dxg.q)$$0, $$1, $$2, 0, 1, true);
-      }
-
-      public static dxg.g a(dvn $$0, int $$1, int $$2, int $$3, ha $$4, int $$5) {
-         dva $$6 = dva.a($$1, $$2, $$3, -1, 0, 0, 5, 7, 5, $$4);
-         return a($$6) && $$0.a($$6) == null ? new dxg.g($$5, $$6, $$4) : null;
-      }
-
-      @Override
-      public void a(cqp $$0, cqn $$1, dhg $$2, asc $$3, dva $$4, cpc $$5, gw $$6) {
-         this.a($$0, $$4, 0, 0, 0, 4, 1, 4, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 0, 2, 0, 4, 5, 4, csw.a.n(), csw.a.n(), false);
-         this.a($$0, $$4, 0, 2, 0, 0, 5, 0, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 4, 2, 0, 4, 5, 0, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 0, 2, 4, 0, 5, 4, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 4, 2, 4, 4, 5, 4, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 0, 6, 0, 4, 6, 4, csw.fn.n(), csw.fn.n(), false);
-
-         for (int $$7 = 0; $$7 <= 4; $$7++) {
-            for (int $$8 = 0; $$8 <= 4; $$8++) {
-               this.b($$0, csw.fn.n(), $$7, -1, $$8, $$4);
-            }
-         }
-      }
-   }
-
-   public static class h extends dxg.m {
-      private static final int a = 5;
-      private static final int b = 7;
-      private static final int c = 5;
-      private boolean d;
-
-      public h(int $$0, asc $$1, dva $$2, ha $$3) {
-         super(dvz.l, $$0, $$2);
-         this.a($$3);
-         this.d = $$1.a(3) == 0;
-      }
-
-      public h(qw $$0) {
-         super(dvz.l, $$0);
-         this.d = $$0.q("Chest");
-      }
-
-      @Override
-      protected void a(dvy $$0, qw $$1) {
-         super.a($$0, $$1);
-         $$1.a("Chest", this.d);
-      }
-
-      @Override
-      public void a(dvm $$0, dvn $$1, asc $$2) {
-         this.b((dxg.q)$$0, $$1, $$2, 0, 1, true);
-      }
-
-      public static dxg.h a(dvn $$0, asc $$1, int $$2, int $$3, int $$4, ha $$5, int $$6) {
-         dva $$7 = dva.a($$2, $$3, $$4, -1, 0, 0, 5, 7, 5, $$5);
-         return a($$7) && $$0.a($$7) == null ? new dxg.h($$6, $$1, $$7, $$5) : null;
-      }
-
-      @Override
-      public void a(cqp $$0, cqn $$1, dhg $$2, asc $$3, dva $$4, cpc $$5, gw $$6) {
-         this.a($$0, $$4, 0, 0, 0, 4, 1, 4, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 0, 2, 0, 4, 5, 4, csw.a.n(), csw.a.n(), false);
-         dfj $$7 = csw.fo.n().a(cvp.d, Boolean.valueOf(true)).a(cvp.b, Boolean.valueOf(true));
-         dfj $$8 = csw.fo.n().a(cvp.a, Boolean.valueOf(true)).a(cvp.c, Boolean.valueOf(true));
-         this.a($$0, $$4, 4, 2, 0, 4, 5, 4, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 4, 3, 1, 4, 4, 1, $$8, $$8, false);
-         this.a($$0, $$4, 4, 3, 3, 4, 4, 3, $$8, $$8, false);
-         this.a($$0, $$4, 0, 2, 0, 0, 5, 0, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 0, 2, 4, 3, 5, 4, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 1, 3, 4, 1, 4, 4, $$7, $$7, false);
-         this.a($$0, $$4, 3, 3, 4, 3, 4, 4, $$7, $$7, false);
-         if (this.d && $$4.b(this.b(3, 2, 3))) {
-            this.d = false;
-            this.a($$0, $$4, $$3, 3, 2, 3, eco.v);
-         }
-
-         this.a($$0, $$4, 0, 6, 0, 4, 6, 4, csw.fn.n(), csw.fn.n(), false);
-
-         for (int $$9 = 0; $$9 <= 4; $$9++) {
-            for (int $$10 = 0; $$10 <= 4; $$10++) {
-               this.b($$0, csw.fn.n(), $$9, -1, $$10, $$4);
-            }
-         }
-      }
-   }
-
-   public static class i extends dxg.m {
-      private static final int a = 5;
-      private static final int b = 7;
-      private static final int c = 5;
-
-      public i(int $$0, dva $$1, ha $$2) {
-         super(dvz.m, $$0, $$1);
-         this.a($$2);
-      }
-
-      public i(qw $$0) {
-         super(dvz.m, $$0);
-      }
-
-      @Override
-      public void a(dvm $$0, dvn $$1, asc $$2) {
-         this.a((dxg.q)$$0, $$1, $$2, 1, 0, true);
-      }
-
-      public static dxg.i a(dvn $$0, int $$1, int $$2, int $$3, ha $$4, int $$5) {
-         dva $$6 = dva.a($$1, $$2, $$3, -1, 0, 0, 5, 7, 5, $$4);
-         return a($$6) && $$0.a($$6) == null ? new dxg.i($$5, $$6, $$4) : null;
-      }
-
-      @Override
-      public void a(cqp $$0, cqn $$1, dhg $$2, asc $$3, dva $$4, cpc $$5, gw $$6) {
-         this.a($$0, $$4, 0, 0, 0, 4, 1, 4, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 0, 2, 0, 4, 5, 4, csw.a.n(), csw.a.n(), false);
-         dfj $$7 = csw.fo.n().a(cvp.a, Boolean.valueOf(true)).a(cvp.c, Boolean.valueOf(true));
-         this.a($$0, $$4, 0, 2, 0, 0, 5, 4, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 4, 2, 0, 4, 5, 4, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 0, 3, 1, 0, 4, 1, $$7, $$7, false);
-         this.a($$0, $$4, 0, 3, 3, 0, 4, 3, $$7, $$7, false);
-         this.a($$0, $$4, 4, 3, 1, 4, 4, 1, $$7, $$7, false);
-         this.a($$0, $$4, 4, 3, 3, 4, 4, 3, $$7, $$7, false);
-         this.a($$0, $$4, 0, 6, 0, 4, 6, 4, csw.fn.n(), csw.fn.n(), false);
-
-         for (int $$8 = 0; $$8 <= 4; $$8++) {
-            for (int $$9 = 0; $$9 <= 4; $$9++) {
-               this.b($$0, csw.fn.n(), $$8, -1, $$9, $$4);
-            }
-         }
-      }
-   }
-
-   public static class j extends dxg.m {
-      private static final int a = 5;
-      private static final int b = 7;
-      private static final int c = 5;
-      private boolean d;
-
-      public j(int $$0, asc $$1, dva $$2, ha $$3) {
-         super(dvz.n, $$0, $$2);
-         this.a($$3);
-         this.d = $$1.a(3) == 0;
-      }
-
-      public j(qw $$0) {
-         super(dvz.n, $$0);
-         this.d = $$0.q("Chest");
-      }
-
-      @Override
-      protected void a(dvy $$0, qw $$1) {
-         super.a($$0, $$1);
-         $$1.a("Chest", this.d);
-      }
-
-      @Override
-      public void a(dvm $$0, dvn $$1, asc $$2) {
-         this.c((dxg.q)$$0, $$1, $$2, 0, 1, true);
-      }
-
-      public static dxg.j a(dvn $$0, asc $$1, int $$2, int $$3, int $$4, ha $$5, int $$6) {
-         dva $$7 = dva.a($$2, $$3, $$4, -1, 0, 0, 5, 7, 5, $$5);
-         return a($$7) && $$0.a($$7) == null ? new dxg.j($$6, $$1, $$7, $$5) : null;
-      }
-
-      @Override
-      public void a(cqp $$0, cqn $$1, dhg $$2, asc $$3, dva $$4, cpc $$5, gw $$6) {
-         this.a($$0, $$4, 0, 0, 0, 4, 1, 4, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 0, 2, 0, 4, 5, 4, csw.a.n(), csw.a.n(), false);
-         dfj $$7 = csw.fo.n().a(cvp.d, Boolean.valueOf(true)).a(cvp.b, Boolean.valueOf(true));
-         dfj $$8 = csw.fo.n().a(cvp.a, Boolean.valueOf(true)).a(cvp.c, Boolean.valueOf(true));
-         this.a($$0, $$4, 0, 2, 0, 0, 5, 4, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 0, 3, 1, 0, 4, 1, $$8, $$8, false);
-         this.a($$0, $$4, 0, 3, 3, 0, 4, 3, $$8, $$8, false);
-         this.a($$0, $$4, 4, 2, 0, 4, 5, 0, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 1, 2, 4, 4, 5, 4, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 1, 3, 4, 1, 4, 4, $$7, $$7, false);
-         this.a($$0, $$4, 3, 3, 4, 3, 4, 4, $$7, $$7, false);
-         if (this.d && $$4.b(this.b(1, 2, 3))) {
-            this.d = false;
-            this.a($$0, $$4, $$3, 1, 2, 3, eco.v);
-         }
-
-         this.a($$0, $$4, 0, 6, 0, 4, 6, 4, csw.fn.n(), csw.fn.n(), false);
-
-         for (int $$9 = 0; $$9 <= 4; $$9++) {
-            for (int $$10 = 0; $$10 <= 4; $$10++) {
-               this.b($$0, csw.fn.n(), $$9, -1, $$10, $$4);
-            }
-         }
-      }
-   }
-
-   public static class k extends dxg.m {
-      private static final int a = 13;
-      private static final int b = 14;
-      private static final int c = 13;
-
-      public k(int $$0, dva $$1, ha $$2) {
-         super(dvz.o, $$0, $$1);
-         this.a($$2);
-      }
-
-      public k(qw $$0) {
-         super(dvz.o, $$0);
-      }
-
-      @Override
-      public void a(dvm $$0, dvn $$1, asc $$2) {
-         this.a((dxg.q)$$0, $$1, $$2, 5, 3, true);
-         this.a((dxg.q)$$0, $$1, $$2, 5, 11, true);
-      }
-
-      public static dxg.k a(dvn $$0, int $$1, int $$2, int $$3, ha $$4, int $$5) {
-         dva $$6 = dva.a($$1, $$2, $$3, -5, -3, 0, 13, 14, 13, $$4);
-         return a($$6) && $$0.a($$6) == null ? new dxg.k($$5, $$6, $$4) : null;
-      }
-
-      @Override
-      public void a(cqp $$0, cqn $$1, dhg $$2, asc $$3, dva $$4, cpc $$5, gw $$6) {
-         this.a($$0, $$4, 0, 3, 0, 12, 4, 12, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 0, 5, 0, 12, 13, 12, csw.a.n(), csw.a.n(), false);
-         this.a($$0, $$4, 0, 5, 0, 1, 12, 12, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 11, 5, 0, 12, 12, 12, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 2, 5, 11, 4, 12, 12, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 8, 5, 11, 10, 12, 12, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 5, 9, 11, 7, 12, 12, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 2, 5, 0, 4, 12, 1, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 8, 5, 0, 10, 12, 1, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 5, 9, 0, 7, 12, 1, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 2, 11, 2, 10, 12, 10, csw.fn.n(), csw.fn.n(), false);
-         dfj $$7 = csw.fo.n().a(cvp.d, Boolean.valueOf(true)).a(cvp.b, Boolean.valueOf(true));
-         dfj $$8 = csw.fo.n().a(cvp.a, Boolean.valueOf(true)).a(cvp.c, Boolean.valueOf(true));
-         dfj $$9 = $$8.a(cvp.d, Boolean.valueOf(true));
-         dfj $$10 = $$8.a(cvp.b, Boolean.valueOf(true));
-
-         for (int $$11 = 1; $$11 <= 11; $$11 += 2) {
-            this.a($$0, $$4, $$11, 10, 0, $$11, 11, 0, $$7, $$7, false);
-            this.a($$0, $$4, $$11, 10, 12, $$11, 11, 12, $$7, $$7, false);
-            this.a($$0, $$4, 0, 10, $$11, 0, 11, $$11, $$8, $$8, false);
-            this.a($$0, $$4, 12, 10, $$11, 12, 11, $$11, $$8, $$8, false);
-            this.a($$0, csw.fn.n(), $$11, 13, 0, $$4);
-            this.a($$0, csw.fn.n(), $$11, 13, 12, $$4);
-            this.a($$0, csw.fn.n(), 0, 13, $$11, $$4);
-            this.a($$0, csw.fn.n(), 12, 13, $$11, $$4);
-            if ($$11 != 11) {
-               this.a($$0, $$7, $$11 + 1, 13, 0, $$4);
-               this.a($$0, $$7, $$11 + 1, 13, 12, $$4);
-               this.a($$0, $$8, 0, 13, $$11 + 1, $$4);
-               this.a($$0, $$8, 12, 13, $$11 + 1, $$4);
-            }
-         }
-
-         this.a($$0, csw.fo.n().a(cvp.a, Boolean.valueOf(true)).a(cvp.b, Boolean.valueOf(true)), 0, 13, 0, $$4);
-         this.a($$0, csw.fo.n().a(cvp.c, Boolean.valueOf(true)).a(cvp.b, Boolean.valueOf(true)), 0, 13, 12, $$4);
-         this.a($$0, csw.fo.n().a(cvp.c, Boolean.valueOf(true)).a(cvp.d, Boolean.valueOf(true)), 12, 13, 12, $$4);
-         this.a($$0, csw.fo.n().a(cvp.a, Boolean.valueOf(true)).a(cvp.d, Boolean.valueOf(true)), 12, 13, 0, $$4);
-
-         for (int $$12 = 3; $$12 <= 9; $$12 += 2) {
-            this.a($$0, $$4, 1, 7, $$12, 1, 8, $$12, $$9, $$9, false);
-            this.a($$0, $$4, 11, 7, $$12, 11, 8, $$12, $$10, $$10, false);
-         }
-
-         dfj $$13 = csw.fp.n().a(dap.a, ha.c);
-
-         for (int $$14 = 0; $$14 <= 6; $$14++) {
-            int $$15 = $$14 + 4;
-
-            for (int $$16 = 5; $$16 <= 7; $$16++) {
-               this.a($$0, $$13, $$16, 5 + $$14, $$15, $$4);
-            }
-
-            if ($$15 >= 5 && $$15 <= 8) {
-               this.a($$0, $$4, 5, 5, $$15, 7, $$14 + 4, $$15, csw.fn.n(), csw.fn.n(), false);
-            } else if ($$15 >= 9 && $$15 <= 10) {
-               this.a($$0, $$4, 5, 8, $$15, 7, $$14 + 4, $$15, csw.fn.n(), csw.fn.n(), false);
-            }
-
-            if ($$14 >= 1) {
-               this.a($$0, $$4, 5, 6 + $$14, $$15, 7, 9 + $$14, $$15, csw.a.n(), csw.a.n(), false);
-            }
-         }
-
-         for (int $$17 = 5; $$17 <= 7; $$17++) {
-            this.a($$0, $$13, $$17, 12, 11, $$4);
-         }
-
-         this.a($$0, $$4, 5, 6, 7, 5, 7, 7, $$10, $$10, false);
-         this.a($$0, $$4, 7, 6, 7, 7, 7, 7, $$9, $$9, false);
-         this.a($$0, $$4, 5, 13, 12, 7, 13, 12, csw.a.n(), csw.a.n(), false);
-         this.a($$0, $$4, 2, 5, 2, 3, 5, 3, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 2, 5, 9, 3, 5, 10, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 2, 5, 4, 2, 5, 8, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 9, 5, 2, 10, 5, 3, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 9, 5, 9, 10, 5, 10, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 10, 5, 4, 10, 5, 8, csw.fn.n(), csw.fn.n(), false);
-         dfj $$18 = $$13.a(dap.a, ha.f);
-         dfj $$19 = $$13.a(dap.a, ha.e);
-         this.a($$0, $$19, 4, 5, 2, $$4);
-         this.a($$0, $$19, 4, 5, 3, $$4);
-         this.a($$0, $$19, 4, 5, 9, $$4);
-         this.a($$0, $$19, 4, 5, 10, $$4);
-         this.a($$0, $$18, 8, 5, 2, $$4);
-         this.a($$0, $$18, 8, 5, 3, $$4);
-         this.a($$0, $$18, 8, 5, 9, $$4);
-         this.a($$0, $$18, 8, 5, 10, $$4);
-         this.a($$0, $$4, 3, 4, 4, 4, 4, 8, csw.dX.n(), csw.dX.n(), false);
-         this.a($$0, $$4, 8, 4, 4, 9, 4, 8, csw.dX.n(), csw.dX.n(), false);
-         this.a($$0, $$4, 3, 5, 4, 4, 5, 8, csw.fq.n(), csw.fq.n(), false);
-         this.a($$0, $$4, 8, 5, 4, 9, 5, 8, csw.fq.n(), csw.fq.n(), false);
-         this.a($$0, $$4, 4, 2, 0, 8, 2, 12, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 0, 2, 4, 12, 2, 8, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 4, 0, 0, 8, 1, 3, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 4, 0, 9, 8, 1, 12, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 0, 0, 4, 3, 1, 8, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 9, 0, 4, 12, 1, 8, csw.fn.n(), csw.fn.n(), false);
-
-         for (int $$20 = 4; $$20 <= 8; $$20++) {
-            for (int $$21 = 0; $$21 <= 2; $$21++) {
-               this.b($$0, csw.fn.n(), $$20, -1, $$21, $$4);
-               this.b($$0, csw.fn.n(), $$20, -1, 12 - $$21, $$4);
-            }
-         }
-
-         for (int $$22 = 0; $$22 <= 2; $$22++) {
-            for (int $$23 = 4; $$23 <= 8; $$23++) {
-               this.b($$0, csw.fn.n(), $$22, -1, $$23, $$4);
-               this.b($$0, csw.fn.n(), 12 - $$22, -1, $$23, $$4);
-            }
-         }
-      }
-   }
-
-   public static class l extends dxg.m {
-      private static final int a = 7;
-      private static final int b = 8;
-      private static final int c = 9;
-      private boolean d;
-
-      public l(int $$0, dva $$1, ha $$2) {
-         super(dvz.p, $$0, $$1);
-         this.a($$2);
-      }
-
-      public l(qw $$0) {
-         super(dvz.p, $$0);
-         this.d = $$0.q("Mob");
-      }
-
-      @Override
-      protected void a(dvy $$0, qw $$1) {
-         super.a($$0, $$1);
-         $$1.a("Mob", this.d);
-      }
-
-      public static dxg.l a(dvn $$0, int $$1, int $$2, int $$3, int $$4, ha $$5) {
-         dva $$6 = dva.a($$1, $$2, $$3, -2, 0, 0, 7, 8, 9, $$5);
-         return a($$6) && $$0.a($$6) == null ? new dxg.l($$4, $$6, $$5) : null;
-      }
-
-      @Override
-      public void a(cqp $$0, cqn $$1, dhg $$2, asc $$3, dva $$4, cpc $$5, gw $$6) {
-         this.a($$0, $$4, 0, 2, 0, 6, 7, 7, csw.a.n(), csw.a.n(), false);
-         this.a($$0, $$4, 1, 0, 0, 5, 1, 7, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 1, 2, 1, 5, 2, 7, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 1, 3, 2, 5, 3, 7, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 1, 4, 3, 5, 4, 7, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 1, 2, 0, 1, 4, 2, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 5, 2, 0, 5, 4, 2, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 1, 5, 2, 1, 5, 3, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 5, 5, 2, 5, 5, 3, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 0, 5, 3, 0, 5, 8, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 6, 5, 3, 6, 5, 8, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 1, 5, 8, 5, 5, 8, csw.fn.n(), csw.fn.n(), false);
-         dfj $$7 = csw.fo.n().a(cvp.d, Boolean.valueOf(true)).a(cvp.b, Boolean.valueOf(true));
-         dfj $$8 = csw.fo.n().a(cvp.a, Boolean.valueOf(true)).a(cvp.c, Boolean.valueOf(true));
-         this.a($$0, csw.fo.n().a(cvp.d, Boolean.valueOf(true)), 1, 6, 3, $$4);
-         this.a($$0, csw.fo.n().a(cvp.b, Boolean.valueOf(true)), 5, 6, 3, $$4);
-         this.a($$0, csw.fo.n().a(cvp.b, Boolean.valueOf(true)).a(cvp.a, Boolean.valueOf(true)), 0, 6, 3, $$4);
-         this.a($$0, csw.fo.n().a(cvp.d, Boolean.valueOf(true)).a(cvp.a, Boolean.valueOf(true)), 6, 6, 3, $$4);
-         this.a($$0, $$4, 0, 6, 4, 0, 6, 7, $$8, $$8, false);
-         this.a($$0, $$4, 6, 6, 4, 6, 6, 7, $$8, $$8, false);
-         this.a($$0, csw.fo.n().a(cvp.b, Boolean.valueOf(true)).a(cvp.c, Boolean.valueOf(true)), 0, 6, 8, $$4);
-         this.a($$0, csw.fo.n().a(cvp.d, Boolean.valueOf(true)).a(cvp.c, Boolean.valueOf(true)), 6, 6, 8, $$4);
-         this.a($$0, $$4, 1, 6, 8, 5, 6, 8, $$7, $$7, false);
-         this.a($$0, csw.fo.n().a(cvp.b, Boolean.valueOf(true)), 1, 7, 8, $$4);
-         this.a($$0, $$4, 2, 7, 8, 4, 7, 8, $$7, $$7, false);
-         this.a($$0, csw.fo.n().a(cvp.d, Boolean.valueOf(true)), 5, 7, 8, $$4);
-         this.a($$0, csw.fo.n().a(cvp.b, Boolean.valueOf(true)), 2, 8, 8, $$4);
-         this.a($$0, $$7, 3, 8, 8, $$4);
-         this.a($$0, csw.fo.n().a(cvp.d, Boolean.valueOf(true)), 4, 8, 8, $$4);
-         if (!this.d) {
-            gw $$9 = this.b(3, 5, 5);
-            if ($$4.b($$9)) {
-               this.d = true;
-               $$0.a($$9, csw.ct.n(), 2);
-               if ($$0.c_($$9) instanceof deh $$11) {
-                  $$11.a(biu.i, $$3);
+         } else if ("drowned".equals($$0)) {
+            bzc $$6 = bja.y.a((cqb)$$2.C());
+            if ($$6 != null) {
+               $$6.fJ();
+               $$6.a($$1, 0.0F, 0.0F);
+               $$6.a($$2, $$2.d_($$1), bjq.d, null, null);
+               $$2.a_($$6);
+               if ($$1.v() > $$2.y_()) {
+                  $$2.a($$1, cte.a.o(), 2);
+               } else {
+                  $$2.a($$1, cte.G.o(), 2);
                }
             }
          }
-
-         for (int $$12 = 0; $$12 <= 6; $$12++) {
-            for (int $$13 = 0; $$13 <= 6; $$13++) {
-               this.b($$0, csw.fn.n(), $$12, -1, $$13, $$4);
-            }
-         }
-      }
-   }
-
-   abstract static class m extends dvm {
-      protected m(dvz $$0, int $$1, dva $$2) {
-         super($$0, $$1, $$2);
-      }
-
-      public m(dvz $$0, qw $$1) {
-         super($$0, $$1);
       }
 
       @Override
-      protected void a(dvy $$0, qw $$1) {
+      public void a(cqv $$0, cqt $$1, dha $$2, ash $$3, duu $$4, cpi $$5, gw $$6) {
+         int $$7 = $$0.a(dkm.a.c, this.d.u(), this.d.w());
+         this.d = new gw(this.d.u(), $$7, this.d.w());
+         gw $$8 = dyv.a(new gw(this.b.a().u() - 1, 0, this.b.a().w() - 1), cxx.a, this.c.d(), gw.b).a((hy)this.d);
+         this.d = new gw(this.d.u(), this.a(this.d, $$0, $$8), this.d.w());
+         super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
       }
 
-      private int a(List<dxg.n> $$0) {
-         boolean $$1 = false;
-         int $$2 = 0;
+      private int a(gw $$0, cph $$1, gw $$2) {
+         int $$3 = $$0.v();
+         int $$4 = 512;
+         int $$5 = $$3 - 1;
+         int $$6 = 0;
 
-         for (dxg.n $$3 : $$0) {
-            if ($$3.d > 0 && $$3.c < $$3.d) {
-               $$1 = true;
+         for (gw $$7 : gw.a($$0, $$2)) {
+            int $$8 = $$7.u();
+            int $$9 = $$7.w();
+            int $$10 = $$0.v() - 1;
+            gw.a $$11 = new gw.a($$8, $$10, $$9);
+            dfd $$12 = $$1.a_($$11);
+
+            for (eag $$13 = $$1.b_($$11); ($$12.i() || $$13.a(aqa.a) || $$12.a(apv.al)) && $$10 > $$1.H_() + 1; $$13 = $$1.b_($$11)) {
+               $$11.d($$8, --$$10, $$9);
+               $$12 = $$1.a_($$11);
             }
 
-            $$2 += $$3.b;
-         }
-
-         return $$1 ? $$2 : -1;
-      }
-
-      private dxg.m a(dxg.q $$0, List<dxg.n> $$1, dvn $$2, asc $$3, int $$4, int $$5, int $$6, ha $$7, int $$8) {
-         int $$9 = this.a($$1);
-         boolean $$10 = $$9 > 0 && $$8 <= 30;
-         int $$11 = 0;
-
-         while ($$11 < 5 && $$10) {
-            $$11++;
-            int $$12 = $$3.a($$9);
-
-            for (dxg.n $$13 : $$1) {
-               $$12 -= $$13.b;
-               if ($$12 < 0) {
-                  if (!$$13.a($$8) || $$13 == $$0.a && !$$13.e) {
-                     break;
-                  }
-
-                  dxg.m $$14 = dxg.a($$13, $$2, $$3, $$4, $$5, $$6, $$7, $$8);
-                  if ($$14 != null) {
-                     $$13.c++;
-                     $$0.a = $$13;
-                     if (!$$13.a()) {
-                        $$1.remove($$13);
-                     }
-
-                     return $$14;
-                  }
-               }
+            $$4 = Math.min($$4, $$10);
+            if ($$10 < $$5 - 2) {
+               $$6++;
             }
          }
 
-         return dxg.b.a($$2, $$3, $$4, $$5, $$6, $$7, $$8);
-      }
-
-      private dvm a(dxg.q $$0, dvn $$1, asc $$2, int $$3, int $$4, int $$5, @Nullable ha $$6, int $$7, boolean $$8) {
-         if (Math.abs($$3 - $$0.f().g()) <= 112 && Math.abs($$5 - $$0.f().i()) <= 112) {
-            List<dxg.n> $$9 = $$0.b;
-            if ($$8) {
-               $$9 = $$0.c;
-            }
-
-            dvm $$10 = this.a($$0, $$9, $$1, $$2, $$3, $$4, $$5, $$6, $$7 + 1);
-            if ($$10 != null) {
-               $$1.a($$10);
-               $$0.d.add($$10);
-            }
-
-            return $$10;
-         } else {
-            return dxg.b.a($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         }
-      }
-
-      @Nullable
-      protected dvm a(dxg.q $$0, dvn $$1, asc $$2, int $$3, int $$4, boolean $$5) {
-         ha $$6 = this.i();
-         if ($$6 != null) {
-            switch ($$6) {
-               case c:
-                  return this.a($$0, $$1, $$2, this.f.g() + $$3, this.f.h() + $$4, this.f.i() - 1, $$6, this.g(), $$5);
-               case d:
-                  return this.a($$0, $$1, $$2, this.f.g() + $$3, this.f.h() + $$4, this.f.l() + 1, $$6, this.g(), $$5);
-               case e:
-                  return this.a($$0, $$1, $$2, this.f.g() - 1, this.f.h() + $$4, this.f.i() + $$3, $$6, this.g(), $$5);
-               case f:
-                  return this.a($$0, $$1, $$2, this.f.j() + 1, this.f.h() + $$4, this.f.i() + $$3, $$6, this.g(), $$5);
-            }
+         int $$14 = Math.abs($$0.u() - $$2.u());
+         if ($$5 - $$4 > 2 && $$6 > $$14 - 2) {
+            $$3 = $$4 + 1;
          }
 
-         return null;
-      }
-
-      @Nullable
-      protected dvm b(dxg.q $$0, dvn $$1, asc $$2, int $$3, int $$4, boolean $$5) {
-         ha $$6 = this.i();
-         if ($$6 != null) {
-            switch ($$6) {
-               case c:
-                  return this.a($$0, $$1, $$2, this.f.g() - 1, this.f.h() + $$3, this.f.i() + $$4, ha.e, this.g(), $$5);
-               case d:
-                  return this.a($$0, $$1, $$2, this.f.g() - 1, this.f.h() + $$3, this.f.i() + $$4, ha.e, this.g(), $$5);
-               case e:
-                  return this.a($$0, $$1, $$2, this.f.g() + $$4, this.f.h() + $$3, this.f.i() - 1, ha.c, this.g(), $$5);
-               case f:
-                  return this.a($$0, $$1, $$2, this.f.g() + $$4, this.f.h() + $$3, this.f.i() - 1, ha.c, this.g(), $$5);
-            }
-         }
-
-         return null;
-      }
-
-      @Nullable
-      protected dvm c(dxg.q $$0, dvn $$1, asc $$2, int $$3, int $$4, boolean $$5) {
-         ha $$6 = this.i();
-         if ($$6 != null) {
-            switch ($$6) {
-               case c:
-                  return this.a($$0, $$1, $$2, this.f.j() + 1, this.f.h() + $$3, this.f.i() + $$4, ha.f, this.g(), $$5);
-               case d:
-                  return this.a($$0, $$1, $$2, this.f.j() + 1, this.f.h() + $$3, this.f.i() + $$4, ha.f, this.g(), $$5);
-               case e:
-                  return this.a($$0, $$1, $$2, this.f.g() + $$4, this.f.h() + $$3, this.f.l() + 1, ha.d, this.g(), $$5);
-               case f:
-                  return this.a($$0, $$1, $$2, this.f.g() + $$4, this.f.h() + $$3, this.f.l() + 1, ha.d, this.g(), $$5);
-            }
-         }
-
-         return null;
-      }
-
-      protected static boolean a(dva $$0) {
-         return $$0 != null && $$0.h() > 10;
-      }
-   }
-
-   static class n {
-      public final Class<? extends dxg.m> a;
-      public final int b;
-      public int c;
-      public final int d;
-      public final boolean e;
-
-      public n(Class<? extends dxg.m> $$0, int $$1, int $$2, boolean $$3) {
-         this.a = $$0;
-         this.b = $$1;
-         this.d = $$2;
-         this.e = $$3;
-      }
-
-      public n(Class<? extends dxg.m> $$0, int $$1, int $$2) {
-         this($$0, $$1, $$2, false);
-      }
-
-      public boolean a(int $$0) {
-         return this.d == 0 || this.c < this.d;
-      }
-
-      public boolean a() {
-         return this.d == 0 || this.c < this.d;
-      }
-   }
-
-   public static class o extends dxg.m {
-      private static final int a = 7;
-      private static final int b = 9;
-      private static final int c = 7;
-
-      public o(int $$0, dva $$1, ha $$2) {
-         super(dvz.q, $$0, $$1);
-         this.a($$2);
-      }
-
-      public o(qw $$0) {
-         super(dvz.q, $$0);
-      }
-
-      @Override
-      public void a(dvm $$0, dvn $$1, asc $$2) {
-         this.a((dxg.q)$$0, $$1, $$2, 2, 0, false);
-         this.b((dxg.q)$$0, $$1, $$2, 0, 2, false);
-         this.c((dxg.q)$$0, $$1, $$2, 0, 2, false);
-      }
-
-      public static dxg.o a(dvn $$0, int $$1, int $$2, int $$3, ha $$4, int $$5) {
-         dva $$6 = dva.a($$1, $$2, $$3, -2, 0, 0, 7, 9, 7, $$4);
-         return a($$6) && $$0.a($$6) == null ? new dxg.o($$5, $$6, $$4) : null;
-      }
-
-      @Override
-      public void a(cqp $$0, cqn $$1, dhg $$2, asc $$3, dva $$4, cpc $$5, gw $$6) {
-         this.a($$0, $$4, 0, 0, 0, 6, 1, 6, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 0, 2, 0, 6, 7, 6, csw.a.n(), csw.a.n(), false);
-         this.a($$0, $$4, 0, 2, 0, 1, 6, 0, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 0, 2, 6, 1, 6, 6, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 5, 2, 0, 6, 6, 0, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 5, 2, 6, 6, 6, 6, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 0, 2, 0, 0, 6, 1, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 0, 2, 5, 0, 6, 6, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 6, 2, 0, 6, 6, 1, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 6, 2, 5, 6, 6, 6, csw.fn.n(), csw.fn.n(), false);
-         dfj $$7 = csw.fo.n().a(cvp.d, Boolean.valueOf(true)).a(cvp.b, Boolean.valueOf(true));
-         dfj $$8 = csw.fo.n().a(cvp.a, Boolean.valueOf(true)).a(cvp.c, Boolean.valueOf(true));
-         this.a($$0, $$4, 2, 6, 0, 4, 6, 0, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 2, 5, 0, 4, 5, 0, $$7, $$7, false);
-         this.a($$0, $$4, 2, 6, 6, 4, 6, 6, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 2, 5, 6, 4, 5, 6, $$7, $$7, false);
-         this.a($$0, $$4, 0, 6, 2, 0, 6, 4, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 0, 5, 2, 0, 5, 4, $$8, $$8, false);
-         this.a($$0, $$4, 6, 6, 2, 6, 6, 4, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 6, 5, 2, 6, 5, 4, $$8, $$8, false);
-
-         for (int $$9 = 0; $$9 <= 6; $$9++) {
-            for (int $$10 = 0; $$10 <= 6; $$10++) {
-               this.b($$0, csw.fn.n(), $$9, -1, $$10, $$4);
-            }
-         }
-      }
-   }
-
-   public static class p extends dxg.m {
-      private static final int a = 7;
-      private static final int b = 11;
-      private static final int c = 7;
-
-      public p(int $$0, dva $$1, ha $$2) {
-         super(dvz.r, $$0, $$1);
-         this.a($$2);
-      }
-
-      public p(qw $$0) {
-         super(dvz.r, $$0);
-      }
-
-      @Override
-      public void a(dvm $$0, dvn $$1, asc $$2) {
-         this.c((dxg.q)$$0, $$1, $$2, 6, 2, false);
-      }
-
-      public static dxg.p a(dvn $$0, int $$1, int $$2, int $$3, int $$4, ha $$5) {
-         dva $$6 = dva.a($$1, $$2, $$3, -2, 0, 0, 7, 11, 7, $$5);
-         return a($$6) && $$0.a($$6) == null ? new dxg.p($$4, $$6, $$5) : null;
-      }
-
-      @Override
-      public void a(cqp $$0, cqn $$1, dhg $$2, asc $$3, dva $$4, cpc $$5, gw $$6) {
-         this.a($$0, $$4, 0, 0, 0, 6, 1, 6, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 0, 2, 0, 6, 10, 6, csw.a.n(), csw.a.n(), false);
-         this.a($$0, $$4, 0, 2, 0, 1, 8, 0, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 5, 2, 0, 6, 8, 0, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 0, 2, 1, 0, 8, 6, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 6, 2, 1, 6, 8, 6, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 1, 2, 6, 5, 8, 6, csw.fn.n(), csw.fn.n(), false);
-         dfj $$7 = csw.fo.n().a(cvp.d, Boolean.valueOf(true)).a(cvp.b, Boolean.valueOf(true));
-         dfj $$8 = csw.fo.n().a(cvp.a, Boolean.valueOf(true)).a(cvp.c, Boolean.valueOf(true));
-         this.a($$0, $$4, 0, 3, 2, 0, 5, 4, $$8, $$8, false);
-         this.a($$0, $$4, 6, 3, 2, 6, 5, 2, $$8, $$8, false);
-         this.a($$0, $$4, 6, 3, 4, 6, 5, 4, $$8, $$8, false);
-         this.a($$0, csw.fn.n(), 5, 2, 5, $$4);
-         this.a($$0, $$4, 4, 2, 5, 4, 3, 5, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 3, 2, 5, 3, 4, 5, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 2, 2, 5, 2, 5, 5, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 1, 2, 5, 1, 6, 5, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 1, 7, 1, 5, 7, 4, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 6, 8, 2, 6, 8, 4, csw.a.n(), csw.a.n(), false);
-         this.a($$0, $$4, 2, 6, 0, 4, 8, 0, csw.fn.n(), csw.fn.n(), false);
-         this.a($$0, $$4, 2, 5, 0, 4, 5, 0, $$7, $$7, false);
-
-         for (int $$9 = 0; $$9 <= 6; $$9++) {
-            for (int $$10 = 0; $$10 <= 6; $$10++) {
-               this.b($$0, csw.fn.n(), $$9, -1, $$10, $$4);
-            }
-         }
-      }
-   }
-
-   public static class q extends dxg.a {
-      public dxg.n a;
-      public List<dxg.n> b;
-      public List<dxg.n> c;
-      public final List<dvm> d = Lists.newArrayList();
-
-      public q(asc $$0, int $$1, int $$2) {
-         super($$1, $$2, a($$0));
-         this.b = Lists.newArrayList();
-
-         for (dxg.n $$3 : dxg.d) {
-            $$3.c = 0;
-            this.b.add($$3);
-         }
-
-         this.c = Lists.newArrayList();
-
-         for (dxg.n $$4 : dxg.e) {
-            $$4.c = 0;
-            this.c.add($$4);
-         }
-      }
-
-      public q(qw $$0) {
-         super(dvz.s, $$0);
+         return $$3;
       }
    }
 }

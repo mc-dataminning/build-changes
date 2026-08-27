@@ -1,65 +1,64 @@
-import com.google.common.collect.Maps;
 import com.mojang.serialization.Codec;
-import java.util.Map;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntIterator;
+import java.util.List;
+import java.util.stream.IntStream;
 
-public class dyb extends dyy {
-   public static final Codec<dyb> a = Codec.unit(() -> dyb.b);
-   public static final dyb b = new dyb();
-   private final Map<csv, csv> c = ac.a(Maps.newHashMap(), $$0 -> {
-      $$0.put(csw.m, csw.pr);
-      $$0.put(csw.cn, csw.pr);
-      $$0.put(csw.b, csw.pv);
-      $$0.put(csw.eI, csw.pw);
-      $$0.put(csw.eJ, csw.pw);
-      $$0.put(csw.cQ, csw.ps);
-      $$0.put(csw.ni, csw.ps);
-      $$0.put(csw.nk, csw.pD);
-      $$0.put(csw.fj, csw.pA);
-      $$0.put(csw.ng, csw.pA);
-      $$0.put(csw.jI, csw.pu);
-      $$0.put(csw.nw, csw.pu);
-      $$0.put(csw.jE, csw.pE);
-      $$0.put(csw.jD, csw.pE);
-      $$0.put(csw.jK, csw.pz);
-      $$0.put(csw.nu, csw.pz);
-      $$0.put(csw.nK, csw.pB);
-      $$0.put(csw.nI, csw.pB);
-      $$0.put(csw.fP, csw.pt);
-      $$0.put(csw.fQ, csw.pt);
-      $$0.put(csw.eL, csw.py);
-      $$0.put(csw.eK, csw.px);
-      $$0.put(csw.eX, csw.eY);
-   });
+public class dyb extends dys {
+   public static final Codec<dyb> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(dyu.a.fieldOf("delegate").forGetter($$0x -> $$0x.b), bgj.e.fieldOf("limit").forGetter($$0x -> $$0x.c)).apply($$0, dyb::new)
+   );
+   private final dys b;
+   private final bgj c;
 
-   private dyb() {
+   public dyb(dys $$0, bgj $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
    @Override
-   public dzb.c a(cpy $$0, gw $$1, gw $$2, dzb.c $$3, dzb.c $$4, dyx $$5) {
-      csv $$6 = this.c.get($$4.b().b());
-      if ($$6 == null) {
-         return $$4;
+   protected dyu<?> a() {
+      return dyu.o;
+   }
+
+   @Override
+   public final List<dyv.c> a(cqq $$0, gw $$1, gw $$2, List<dyv.c> $$3, List<dyv.c> $$4, dyr $$5) {
+      if (this.c.b() != 0 && !$$4.isEmpty()) {
+         if ($$3.size() != $$4.size()) {
+            ac.a(
+               "Original block info list not in sync with processed list, skipping processing. Original size: "
+                  + $$3.size()
+                  + ", Processed size: "
+                  + $$4.size()
+            );
+            return $$4;
+         } else {
+            ash $$6 = ash.a($$0.C().A()).e().a($$1);
+            int $$7 = Math.min(this.c.a($$6), $$4.size());
+            if ($$7 < 1) {
+               return $$4;
+            } else {
+               IntArrayList $$8 = ac.a(IntStream.range(0, $$4.size()), $$6);
+               IntIterator $$9 = $$8.intIterator();
+               int $$10 = 0;
+
+               while ($$9.hasNext() && $$10 < $$7) {
+                  int $$11 = $$9.nextInt();
+                  dyv.c $$12 = $$3.get($$11);
+                  dyv.c $$13 = $$4.get($$11);
+                  dyv.c $$14 = this.b.a($$0, $$1, $$2, $$12, $$13, $$5);
+                  if ($$14 != null && !$$13.equals($$14)) {
+                     $$10++;
+                     $$4.set($$11, $$14);
+                  }
+               }
+
+               return $$4;
+            }
+         }
       } else {
-         dfj $$7 = $$4.b();
-         dfj $$8 = $$6.n();
-         if ($$7.b(dap.a)) {
-            $$8 = $$8.a(dap.a, $$7.c(dap.a));
-         }
-
-         if ($$7.b(dap.b)) {
-            $$8 = $$8.a(dap.b, $$7.c(dap.b));
-         }
-
-         if ($$7.b(czy.a)) {
-            $$8 = $$8.a(czy.a, $$7.c(czy.a));
-         }
-
-         return new dzb.c($$4.a(), $$8, $$4.c());
+         return $$4;
       }
-   }
-
-   @Override
-   protected dza<?> a() {
-      return dza.l;
    }
 }

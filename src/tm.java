@@ -1,24 +1,27 @@
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.serialization.MapCodec;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 public interface tm {
-   tm a = new tm() {
+   default <T> Optional<T> a(tq.b<T> $$0, ui $$1) {
+      return Optional.empty();
+   }
+
+   default <T> Optional<T> a(tq.a<T> $$0) {
+      return Optional.empty();
+   }
+
+   default tz a(@Nullable dt $$0, @Nullable biw $$1, int $$2) throws CommandSyntaxException {
+      return tz.a(this);
+   }
+
+   tm.a<?> a();
+
+   public static record a<T extends tm>(MapCodec<T> a, String b) implements asu {
       @Override
-      public String toString() {
-         return "empty";
+      public String c() {
+         return this.b;
       }
-   };
-
-   default <T> Optional<T> a(tp.b<T> $$0, uh $$1) {
-      return Optional.empty();
-   }
-
-   default <T> Optional<T> a(tp.a<T> $$0) {
-      return Optional.empty();
-   }
-
-   default ty a(@Nullable dt $$0, @Nullable biq $$1, int $$2) throws CommandSyntaxException {
-      return ty.a(this);
    }
 }

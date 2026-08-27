@@ -1,27 +1,38 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
 import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
 import java.util.Objects;
 
-public class awq extends DataFix {
+public class awq extends azm {
    public awq(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+      super("EntityZombieSplitFix", $$0, $$1);
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<Pair<String, Dynamic<?>>> $$0 = DSL.named(ayx.q.typeName(), DSL.remainderType());
-      if (!Objects.equals($$0, this.getInputSchema().getType(ayx.q))) {
-         throw new IllegalStateException("Poi type is not what was expected.");
+   @Override
+   protected Pair<String, Dynamic<?>> a(String $$0, Dynamic<?> $$1) {
+      if (Objects.equals("Zombie", $$0)) {
+         String $$2 = "Zombie";
+         int $$3 = $$1.get("ZombieType").asInt(0);
+         switch ($$3) {
+            case 0:
+            default:
+               break;
+            case 1:
+            case 2:
+            case 3:
+            case 4:
+            case 5:
+               $$2 = "ZombieVillager";
+               $$1 = $$1.set("Profession", $$1.createInt($$3 - 1));
+               break;
+            case 6:
+               $$2 = "Husk";
+         }
+
+         $$1 = $$1.remove("ZombieType");
+         return Pair.of($$2, $$1);
       } else {
-         return this.fixTypeEverywhere("POI rebuild", $$0, $$0x -> $$0xx -> $$0xx.mapSecond(awq::a));
+         return Pair.of($$0, $$1);
       }
-   }
-
-   private static <T> Dynamic<T> a(Dynamic<T> $$0) {
-      return $$0.update("Sections", $$0x -> $$0x.updateMapValues($$0xx -> $$0xx.mapSecond($$0xxx -> $$0xxx.remove("Valid"))));
    }
 }

@@ -1,3 +1,8 @@
-public interface ekp {
-   eko createMonitor(long var1);
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@ejd
+@ejc
+interface ekp {
 }

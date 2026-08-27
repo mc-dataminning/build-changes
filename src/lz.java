@@ -3,15 +3,15 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class lz {
-   private final cmg a;
-   private final cmg b;
-   private final cmg c;
+   private final cmm a;
+   private final cmm b;
+   private final cmm c;
    private final ls d;
-   private final cja e;
+   private final cjg e;
    private final Map<String, am<?>> f = new LinkedHashMap<>();
-   private final cmm<?> g;
+   private final cms<?> g;
 
-   public lz(cmm<?> $$0, cmg $$1, cmg $$2, cmg $$3, ls $$4, cja $$5) {
+   public lz(cms<?> $$0, cmm $$1, cmm $$2, cmm $$3, ls $$4, cjg $$5) {
       this.d = $$4;
       this.g = $$0;
       this.a = $$1;
@@ -20,8 +20,8 @@ public class lz {
       this.e = $$5;
    }
 
-   public static lz a(cmg $$0, cmg $$1, cmg $$2, ls $$3, cja $$4) {
-      return new lz(cmm.u, $$0, $$1, $$2, $$3, $$4);
+   public static lz a(cmm $$0, cmm $$1, cmm $$2, ls $$3, cjg $$4) {
+      return new lz(cms.u, $$0, $$1, $$2, $$3, $$4);
    }
 
    public lz a(String $$0, am<?> $$1) {
@@ -30,23 +30,23 @@ public class lz {
    }
 
    public void a(lt $$0, String $$1) {
-      this.a($$0, new aew($$1));
+      this.a($$0, new aez($$1));
    }
 
-   public void a(lt $$0, aew $$1) {
+   public void a(lt $$0, aez $$1) {
       this.a($$1);
       ae.a $$2 = $$0.a().a("has_the_recipe", cu.a($$1)).a(aj.a.c($$1)).a(ai.a.b);
       this.f.forEach($$2::a);
       $$0.a(new lz.a($$1, this.g, this.a, this.b, this.c, this.e, $$2.b($$1.d("recipes/" + this.d.a() + "/"))));
    }
 
-   private void a(aew $$0) {
+   private void a(aez $$0) {
       if (this.f.isEmpty()) {
          throw new IllegalStateException("No way of obtaining recipe " + $$0);
       }
    }
 
-   public static record a(aew a, cmm<?> b, cmg c, cmg d, cmg e, cja f, af g) implements lq {
+   public static record a(aez a, cms<?> b, cmm c, cmm d, cmm e, cjg f, af g) implements lq {
       @Override
       public void a(JsonObject $$0) {
          $$0.add("template", this.c.a(true));
@@ -58,28 +58,28 @@ public class lz {
       }
 
       @Override
-      public aew b() {
+      public aez b() {
          return this.a;
       }
 
       @Override
-      public cmm<?> c() {
+      public cms<?> c() {
          return this.b;
       }
 
-      public cmg e() {
+      public cmm e() {
          return this.c;
       }
 
-      public cmg f() {
+      public cmm f() {
          return this.d;
       }
 
-      public cmg g() {
+      public cmm g() {
          return this.e;
       }
 
-      public cja h() {
+      public cjg h() {
          return this.f;
       }
 

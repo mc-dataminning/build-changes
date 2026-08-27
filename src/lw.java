@@ -8,48 +8,48 @@ import javax.annotation.Nullable;
 
 public class lw extends lp implements lr {
    private final ls b;
-   private final cja c;
+   private final cjg c;
    private final int d;
-   private final List<cmg> e = Lists.newArrayList();
+   private final List<cmm> e = Lists.newArrayList();
    private final Map<String, am<?>> f = new LinkedHashMap<>();
    @Nullable
    private String g;
 
-   public lw(ls $$0, cpu $$1, int $$2) {
+   public lw(ls $$0, cqa $$1, int $$2) {
       this.b = $$0;
       this.c = $$1.k();
       this.d = $$2;
    }
 
-   public static lw a(ls $$0, cpu $$1) {
+   public static lw a(ls $$0, cqa $$1) {
       return new lw($$0, $$1, 1);
    }
 
-   public static lw a(ls $$0, cpu $$1, int $$2) {
+   public static lw a(ls $$0, cqa $$1, int $$2) {
       return new lw($$0, $$1, $$2);
    }
 
-   public lw a(aqh<cja> $$0) {
-      return this.a(cmg.a($$0));
+   public lw a(aqk<cjg> $$0) {
+      return this.a(cmm.a($$0));
    }
 
-   public lw b(cpu $$0) {
+   public lw b(cqa $$0) {
       return this.a($$0, 1);
    }
 
-   public lw a(cpu $$0, int $$1) {
+   public lw a(cqa $$0, int $$1) {
       for (int $$2 = 0; $$2 < $$1; $$2++) {
-         this.a(cmg.a($$0));
+         this.a(cmm.a($$0));
       }
 
       return this;
    }
 
-   public lw a(cmg $$0) {
+   public lw a(cmm $$0) {
       return this.a($$0, 1);
    }
 
-   public lw a(cmg $$0, int $$1) {
+   public lw a(cmm $$0, int $$1) {
       for (int $$2 = 0; $$2 < $$1; $$2++) {
          this.e.add($$0);
       }
@@ -68,33 +68,33 @@ public class lw extends lp implements lr {
    }
 
    @Override
-   public cja a() {
+   public cjg a() {
       return this.c;
    }
 
    @Override
-   public void a(lt $$0, aew $$1) {
+   public void a(lt $$0, aez $$1) {
       this.a($$1);
       ae.a $$2 = $$0.a().a("has_the_recipe", cu.a($$1)).a(aj.a.c($$1)).a(ai.a.b);
       this.f.forEach($$2::a);
       $$0.a(new lw.a($$1, this.c, this.d, this.g == null ? "" : this.g, a(this.b), this.e, $$2.b($$1.d("recipes/" + this.b.a() + "/"))));
    }
 
-   private void a(aew $$0) {
+   private void a(aez $$0) {
       if (this.f.isEmpty()) {
          throw new IllegalStateException("No way of obtaining recipe " + $$0);
       }
    }
 
    public static class a extends lp.a {
-      private final aew a;
-      private final cja b;
+      private final aez a;
+      private final cjg b;
       private final int c;
       private final String d;
-      private final List<cmg> e;
+      private final List<cmm> e;
       private final af f;
 
-      public a(aew $$0, cja $$1, int $$2, String $$3, cly $$4, List<cmg> $$5, af $$6) {
+      public a(aez $$0, cjg $$1, int $$2, String $$3, cme $$4, List<cmm> $$5, af $$6) {
          super($$4);
          this.a = $$0;
          this.b = $$1;
@@ -113,7 +113,7 @@ public class lw extends lp implements lr {
 
          JsonArray $$1 = new JsonArray();
 
-         for (cmg $$2 : this.e) {
+         for (cmm $$2 : this.e) {
             $$1.add($$2.a(false));
          }
 
@@ -128,12 +128,12 @@ public class lw extends lp implements lr {
       }
 
       @Override
-      public cmm<?> c() {
-         return cmm.b;
+      public cms<?> c() {
+         return cms.b;
       }
 
       @Override
-      public aew b() {
+      public aez b() {
          return this.a;
       }
 

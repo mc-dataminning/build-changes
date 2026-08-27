@@ -1,27 +1,36 @@
-import javax.annotation.Nullable;
+public class bqm extends bqh {
+   private final bvu a;
+   private aku b;
+   private boolean c;
 
-public class bqm extends bqy {
-   private static final int i = 10;
-   private static final int j = 7;
-
-   public bqm(bjp $$0, double $$1, boolean $$2) {
-      super($$0, $$1, 10, $$2);
+   public bqm(bvu $$0) {
+      this.a = $$0;
    }
 
    @Override
    public boolean a() {
-      akq $$0 = (akq)this.b.dL();
-      gw $$1 = this.b.dl();
-      return $$0.b($$1) ? false : super.a();
+      aku $$0 = (aku)this.a.O_();
+      boolean $$1 = $$0 != null && !$$0.M_() && !$$0.fT().b && !$$0.aX() && !$$0.aA;
+      return !this.a.ge() && $$1 && this.a.gn();
    }
 
-   @Nullable
    @Override
-   protected ehn h() {
-      akq $$0 = (akq)this.b.dL();
-      gw $$1 = this.b.dl();
-      hw $$2 = hw.a($$1);
-      hw $$3 = bkz.a($$0, $$2, 2);
-      return $$3 != $$2 ? btw.a(this.b, 10, 7, ehn.c($$3.q()), (float) (Math.PI / 2)) : null;
+   public boolean P_() {
+      return !this.c;
+   }
+
+   @Override
+   public void c() {
+      this.b = (aku)this.a.O_();
+      this.c = false;
+   }
+
+   @Override
+   public void e() {
+      if (!this.c && !this.a.y() && !this.a.fS()) {
+         if (this.a.cG().c(this.b.cG())) {
+            this.c = this.a.b(this.b);
+         }
+      }
    }
 }

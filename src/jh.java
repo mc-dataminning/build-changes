@@ -55,7 +55,7 @@ public class jh {
    }
 
    static {
-      aey.a();
+      afb.a();
    }
 
    public class a {

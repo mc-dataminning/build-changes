@@ -1,27 +1,71 @@
-import com.google.common.collect.Lists;
-import java.util.Arrays;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Sets;
 import java.util.Collection;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
+import java.util.Optional;
+import java.util.Set;
 
-public class dgd extends dgh<ha> {
-   protected dgd(String $$0, Collection<ha> $$1) {
-      super($$0, ha.class, $$1);
+public class dgd extends dgg<Integer> {
+   private final ImmutableSet<Integer> a;
+   private final int b;
+   private final int c;
+
+   protected dgd(String $$0, int $$1, int $$2) {
+      super($$0, Integer.class);
+      if ($$1 < 0) {
+         throw new IllegalArgumentException("Min value of " + $$0 + " must be 0 or greater");
+      } else if ($$2 <= $$1) {
+         throw new IllegalArgumentException("Max value of " + $$0 + " must be greater than min (" + $$1 + ")");
+      } else {
+         this.b = $$1;
+         this.c = $$2;
+         Set<Integer> $$3 = Sets.newHashSet();
+
+         for (int $$4 = $$1; $$4 <= $$2; $$4++) {
+            $$3.add($$4);
+         }
+
+         this.a = ImmutableSet.copyOf($$3);
+      }
    }
 
-   public static dgd a(String $$0) {
-      return a($$0, $$0x -> true);
+   @Override
+   public Collection<Integer> a() {
+      return this.a;
    }
 
-   public static dgd a(String $$0, Predicate<ha> $$1) {
-      return a($$0, Arrays.stream(ha.values()).filter($$1).collect(Collectors.toList()));
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof dgd $$1 && super.equals($$0)) {
+            return this.a.equals($$1.a);
+         }
+
+         return false;
+      }
    }
 
-   public static dgd a(String $$0, ha... $$1) {
-      return a($$0, Lists.newArrayList($$1));
+   @Override
+   public int b() {
+      return 31 * super.b() + this.a.hashCode();
    }
 
-   public static dgd a(String $$0, Collection<ha> $$1) {
-      return new dgd($$0, $$1);
+   public static dgd a(String $$0, int $$1, int $$2) {
+      return new dgd($$0, $$1, $$2);
+   }
+
+   @Override
+   public Optional<Integer> b(String $$0) {
+      try {
+         Integer $$1 = Integer.valueOf($$0);
+         return $$1 >= this.b && $$1 <= this.c ? Optional.of($$1) : Optional.empty();
+      } catch (NumberFormatException var3) {
+         return Optional.empty();
+      }
+   }
+
+   public String a(Integer $$0) {
+      return $$0.toString();
    }
 }

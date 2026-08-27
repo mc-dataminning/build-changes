@@ -5,10 +5,10 @@ import javax.annotation.Nullable;
 
 public class cx extends cw<cx.a> {
    public cx.a a(JsonObject $$0, Optional<bc> $$1, bg $$2) {
-      csv $$3 = a($$0);
+      ctc $$3 = a($$0);
       Optional<da> $$4 = da.a($$0.get("state"));
       if ($$3 != null) {
-         $$4.ifPresent($$1x -> $$1x.a($$3.l(), $$1xx -> {
+         $$4.ifPresent($$1x -> $$1x.a($$3.n(), $$1xx -> {
                throw new JsonSyntaxException("Block " + $$3 + " has no property " + $$1xx);
             }));
       }
@@ -17,31 +17,31 @@ public class cx extends cw<cx.a> {
    }
 
    @Nullable
-   private static csv a(JsonObject $$0) {
+   private static ctc a(JsonObject $$0) {
       if ($$0.has("block")) {
-         aew $$1 = new aew(arn.i($$0, "block"));
+         aez $$1 = new aez(arr.i($$0, "block"));
          return jb.f.b($$1).orElseThrow(() -> new JsonSyntaxException("Unknown block type '" + $$1 + "'"));
       } else {
          return null;
       }
    }
 
-   public void a(akr $$0, dfj $$1) {
+   public void a(aku $$0, dfd $$1) {
       this.a($$0, $$1x -> $$1x.a($$1));
    }
 
    public static class a extends at {
       @Nullable
-      private final csv a;
+      private final ctc a;
       private final Optional<da> b;
 
-      public a(Optional<bc> $$0, @Nullable csv $$1, Optional<da> $$2) {
+      public a(Optional<bc> $$0, @Nullable ctc $$1, Optional<da> $$2) {
          super($$0);
          this.a = $$1;
          this.b = $$2;
       }
 
-      public static am<cx.a> a(csv $$0) {
+      public static am<cx.a> a(ctc $$0) {
          return al.J.a(new cx.a(Optional.empty(), $$0, Optional.empty()));
       }
 
@@ -56,7 +56,7 @@ public class cx extends cw<cx.a> {
          return $$0;
       }
 
-      public boolean a(dfj $$0) {
+      public boolean a(dfd $$0) {
          return this.a != null && !$$0.a(this.a) ? false : !this.b.isPresent() || this.b.get().a($$0);
       }
    }

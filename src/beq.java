@@ -1,22 +1,31 @@
+import com.mojang.datafixers.util.Pair;
 import java.time.Duration;
-import java.util.Comparator;
 import java.util.List;
-import java.util.Map;
+import java.util.Map.Entry;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 
-public record beq<T extends bep>(T a, T b, @Nullable T c, int d, Map<Integer, Double> e, Duration f) {
-   public static <T extends bep> beq<T> a(List<T> $$0) {
-      if ($$0.isEmpty()) {
-         throw new IllegalArgumentException("No values");
-      } else {
-         List<T> $$1 = $$0.stream().sorted(Comparator.comparing(bep::a)).toList();
-         Duration $$2 = $$1.stream().map(bep::a).reduce(Duration::plus).orElse(Duration.ZERO);
-         T $$3 = (T)$$1.get(0);
-         T $$4 = (T)$$1.get($$1.size() - 1);
-         T $$5 = $$1.size() > 1 ? $$1.get($$1.size() - 2) : null;
-         int $$6 = $$1.size();
-         Map<Integer, Double> $$7 = bdw.a($$1.stream().mapToLong($$0x -> $$0x.a().toNanos()).toArray());
-         return new beq<>($$3, $$4, $$5, $$6, $$7, $$2);
-      }
+public record beq(Duration a, @Nullable String b, long c) {
+   public static beq.a a(Duration $$0, List<beq> $$1) {
+      long $$2 = $$1.stream().mapToLong($$0x -> $$0x.c).sum();
+      return new beq.a(
+         $$2,
+         (double)$$2 / (double)$$0.getSeconds(),
+         (long)$$1.size(),
+         (double)$$1.size() / (double)$$0.getSeconds(),
+         $$1.stream().map(beq::a).reduce(Duration.ZERO, Duration::plus),
+         $$1.stream()
+            .filter($$0x -> $$0x.b != null)
+            .collect(Collectors.groupingBy($$0x -> $$0x.b, Collectors.summingLong($$0x -> $$0x.c)))
+            .entrySet()
+            .stream()
+            .sorted(Entry.<String, Long>comparingByValue().reversed())
+            .map($$0x -> Pair.of((String)$$0x.getKey(), (Long)$$0x.getValue()))
+            .limit(10L)
+            .toList()
+      );
+   }
+
+   public static record a(long a, double b, long c, double d, Duration e, List<Pair<String, Long>> f) {
    }
 }

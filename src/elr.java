@@ -1,29 +1,36 @@
-import com.mojang.blaze3d.systems.RenderSystem;
+import com.google.common.primitives.Floats;
+import it.unimi.dsi.fastutil.ints.IntArrays;
+import org.joml.Vector3f;
 
-public class elr {
-   private static final int a = 8388608;
-   private static final int b = 2097152;
-   private final elk c;
-   private static final elr d = new elr();
+public interface elr {
+   elr a = a(0.0F, 0.0F, 0.0F);
+   elr b = a((elr.a)($$0 -> -$$0.z()));
 
-   public static elr a() {
-      RenderSystem.assertOnGameThreadOrInit();
-      return d;
+   static elr a(float $$0, float $$1, float $$2) {
+      return a(new Vector3f($$0, $$1, $$2));
    }
 
-   public elr(int $$0) {
-      this.c = new elk($$0);
+   static elr a(Vector3f $$0) {
+      return a($$0::distanceSquared);
    }
 
-   public elr() {
-      this(2097152);
+   static elr a(elr.a $$0) {
+      return $$1 -> {
+         float[] $$2 = new float[$$1.length];
+         int[] $$3 = new int[$$1.length];
+
+         for (int $$4 = 0; $$4 < $$1.length; $$3[$$4] = $$4++) {
+            $$2[$$4] = $$0.apply($$1[$$4]);
+         }
+
+         IntArrays.mergeSort($$3, ($$1x, $$2x) -> Floats.compare($$2[$$2x], $$2[$$1x]));
+         return $$3;
+      };
    }
 
-   public void b() {
-      ell.a(this.c.d());
-   }
+   int[] sort(Vector3f[] var1);
 
-   public elk c() {
-      return this.c;
+   public interface a {
+      float apply(Vector3f var1);
    }
 }

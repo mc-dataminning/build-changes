@@ -1,91 +1,71 @@
-public class clv extends cmb {
-   public clv(cly $$0) {
-      super($$0);
+import javax.annotation.Nullable;
+
+public class clv {
+   @Nullable
+   private final cca a;
+   private final bhd b;
+   private final ehd c;
+   private final cqb d;
+   private final cjl e;
+
+   public clv(cca $$0, bhd $$1, ehd $$2) {
+      this($$0.dL(), $$0, $$1, $$0.b($$1), $$2);
    }
 
-   public boolean a(cez $$0, cpv $$1) {
-      int $$2 = 0;
-      cjf $$3 = cjf.b;
-
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         cjf $$5 = $$0.a($$4);
-         if (!$$5.b()) {
-            if ($$5.a(cji.th)) {
-               if (!$$3.b()) {
-                  return false;
-               }
-
-               $$3 = $$5;
-            } else {
-               if (!$$5.a(cji.tg)) {
-                  return false;
-               }
-
-               $$2++;
-            }
-         }
-      }
-
-      return !$$3.b() && $$3.u() && $$2 > 0;
+   protected clv(cqb $$0, @Nullable cca $$1, bhd $$2, cjl $$3, ehd $$4) {
+      this.a = $$1;
+      this.b = $$2;
+      this.c = $$4;
+      this.e = $$3;
+      this.d = $$0;
    }
 
-   public cjf a(cez $$0, hr $$1) {
-      int $$2 = 0;
-      cjf $$3 = cjf.b;
-
-      for (int $$4 = 0; $$4 < $$0.b(); $$4++) {
-         cjf $$5 = $$0.a($$4);
-         if (!$$5.b()) {
-            if ($$5.a(cji.th)) {
-               if (!$$3.b()) {
-                  return cjf.b;
-               }
-
-               $$3 = $$5;
-            } else {
-               if (!$$5.a(cji.tg)) {
-                  return cjf.b;
-               }
-
-               $$2++;
-            }
-         }
-      }
-
-      if (!$$3.b() && $$3.u() && $$2 >= 1 && clb.d($$3) < 2) {
-         cjf $$6 = new cjf(cji.th, $$2);
-         qw $$7 = $$3.v().h();
-         $$7.a("generation", clb.d($$3) + 1);
-         $$6.c($$7);
-         return $$6;
-      } else {
-         return cjf.b;
-      }
+   protected final ehd j() {
+      return this.c;
    }
 
-   public hn<cjf> a(cez $$0) {
-      hn<cjf> $$1 = hn.a($$0.b(), cjf.b);
-
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         cjf $$3 = $$0.a($$2);
-         if ($$3.d().t()) {
-            $$1.set($$2, new cjf($$3.d().s()));
-         } else if ($$3.d() instanceof clb) {
-            $$1.set($$2, $$3.c(1));
-            break;
-         }
-      }
-
-      return $$1;
+   public gw a() {
+      return this.c.a();
    }
 
-   @Override
-   public cmm<?> an_() {
-      return cmm.d;
+   public ha k() {
+      return this.c.b();
    }
 
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 >= 3 && $$1 >= 3;
+   public ehh l() {
+      return this.c.e();
+   }
+
+   public boolean m() {
+      return this.c.d();
+   }
+
+   public cjl n() {
+      return this.e;
+   }
+
+   @Nullable
+   public cca o() {
+      return this.a;
+   }
+
+   public bhd p() {
+      return this.b;
+   }
+
+   public cqb q() {
+      return this.d;
+   }
+
+   public ha g() {
+      return this.a == null ? ha.c : this.a.cD();
+   }
+
+   public boolean h() {
+      return this.a != null && this.a.fI();
+   }
+
+   public float i() {
+      return this.a == null ? 0.0F : this.a.dB();
    }
 }

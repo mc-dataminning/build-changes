@@ -5,15 +5,15 @@ import javax.annotation.Nullable;
 
 public class ly implements lr {
    private final ls b;
-   private final cja c;
-   private final cmg d;
+   private final cjg c;
+   private final cmm d;
    private final int e;
    private final Map<String, am<?>> f = new LinkedHashMap<>();
    @Nullable
    private String g;
-   private final cmm<?> h;
+   private final cms<?> h;
 
-   public ly(ls $$0, cmm<?> $$1, cmg $$2, cpu $$3, int $$4) {
+   public ly(ls $$0, cms<?> $$1, cmm $$2, cqa $$3, int $$4) {
       this.b = $$0;
       this.h = $$1;
       this.c = $$3.k();
@@ -21,12 +21,12 @@ public class ly implements lr {
       this.e = $$4;
    }
 
-   public static ly a(cmg $$0, ls $$1, cpu $$2) {
-      return new ly($$1, cmm.t, $$0, $$2, 1);
+   public static ly a(cmm $$0, ls $$1, cqa $$2) {
+      return new ly($$1, cms.t, $$0, $$2, 1);
    }
 
-   public static ly a(cmg $$0, ls $$1, cpu $$2, int $$3) {
-      return new ly($$1, cmm.t, $$0, $$2, $$3);
+   public static ly a(cmm $$0, ls $$1, cqa $$2, int $$3) {
+      return new ly($$1, cms.t, $$0, $$2, $$3);
    }
 
    public ly b(String $$0, am<?> $$1) {
@@ -40,25 +40,25 @@ public class ly implements lr {
    }
 
    @Override
-   public cja a() {
+   public cjg a() {
       return this.c;
    }
 
    @Override
-   public void a(lt $$0, aew $$1) {
+   public void a(lt $$0, aez $$1) {
       this.a($$1);
       ae.a $$2 = $$0.a().a("has_the_recipe", cu.a($$1)).a(aj.a.c($$1)).a(ai.a.b);
       this.f.forEach($$2::a);
       $$0.a(new ly.a($$1, this.h, this.g == null ? "" : this.g, this.d, this.c, this.e, $$2.b($$1.d("recipes/" + this.b.a() + "/"))));
    }
 
-   private void a(aew $$0) {
+   private void a(aez $$0) {
       if (this.f.isEmpty()) {
          throw new IllegalStateException("No way of obtaining recipe " + $$0);
       }
    }
 
-   public static record a(aew a, cmm<?> b, String c, cmg d, cja e, int f, af g) implements lq {
+   public static record a(aez a, cms<?> b, String c, cmm d, cjg e, int f, af g) implements lq {
       @Override
       public void a(JsonObject $$0) {
          if (!this.c.isEmpty()) {
@@ -71,12 +71,12 @@ public class ly implements lr {
       }
 
       @Override
-      public aew b() {
+      public aez b() {
          return this.a;
       }
 
       @Override
-      public cmm<?> c() {
+      public cms<?> c() {
          return this.b;
       }
 
@@ -84,11 +84,11 @@ public class ly implements lr {
          return this.c;
       }
 
-      public cmg f() {
+      public cmm f() {
          return this.d;
       }
 
-      public cja g() {
+      public cjg g() {
          return this.e;
       }
 

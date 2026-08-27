@@ -1,11 +1,4 @@
-import java.util.Set;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
 
-public interface egd {
-   @Nullable
-   rq a(ecq var1);
-
-   Set<eey<?>> b();
-
-   egc a();
+public record egd(Codec<? extends ege> a) {
 }

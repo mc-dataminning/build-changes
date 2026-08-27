@@ -1,22 +1,51 @@
+import it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap;
+import java.util.SortedMap;
+
 public class fog {
-   private final eqv a;
-   private final fns b;
-   private float c;
-   private float d;
+   private final fol a = new fol();
+   private final SortedMap<foi, ele> b = ac.a(new Object2ObjectLinkedOpenHashMap(), $$0 -> {
+      $$0.put(foo.h(), this.a.a(foi.c()));
+      $$0.put(foo.i(), this.a.a(foi.e()));
+      $$0.put(foo.a(), this.a.a(foi.d()));
+      $$0.put(foo.k(), this.a.a(foi.f()));
+      a($$0, foo.b());
+      a($$0, foo.c());
+      a($$0, foo.d());
+      a($$0, foo.e());
+      a($$0, foo.f());
+      a($$0, foo.g());
+      a($$0, foi.h());
+      a($$0, foi.k());
+      a($$0, foi.l());
+      a($$0, foi.n());
+      a($$0, foi.o());
+      a($$0, foi.m());
+      a($$0, foi.p());
+      a($$0, foi.q());
+      a($$0, foi.j());
+      gbg.l.forEach($$1 -> a($$0, $$1));
+   });
+   private final foa.a c = foa.a(this.b, new ele(256));
+   private final foa.a d = foa.a(new ele(256));
+   private final fob e = new fob(this.c);
 
-   public fog(fns $$0) {
-      this.b = $$0;
-      this.a = eqv.O();
+   private static void a(Object2ObjectLinkedOpenHashMap<foi, ele> $$0, foi $$1) {
+      $$0.put($$1, new ele($$1.H()));
    }
 
-   public void a(float $$0, float $$1) {
-      float $$2 = (float)((double)$$0 * this.a.m.p().c());
-      this.c = b(this.c + $$2 * 0.1F, 360.0F);
-      this.d = b(this.d + $$2 * 0.001F, (float) (Math.PI * 2));
-      this.b.a(this.a, 10.0F, -this.c, $$1);
+   public fol a() {
+      return this.a;
    }
 
-   private static float b(float $$0, float $$1) {
-      return $$0 > $$1 ? $$0 - $$1 : $$0;
+   public foa.a b() {
+      return this.c;
+   }
+
+   public foa.a c() {
+      return this.d;
+   }
+
+   public fob d() {
+      return this.e;
    }
 }

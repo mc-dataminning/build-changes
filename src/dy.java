@@ -13,7 +13,7 @@ public record dy(List<dy.a> b) {
    }
 
    @Nullable
-   public tw a(String $$0) {
+   public tx a(String $$0) {
       for (dy.a $$1 : this.b) {
          if ($$1.a.equals($$0)) {
             return $$1.b;
@@ -27,9 +27,9 @@ public record dy(List<dy.a> b) {
       $$0.a(this.b, ($$0x, $$1) -> $$1.a($$0x));
    }
 
-   public static dy a(uc<?> $$0, dy.b $$1) {
+   public static dy a(ud<?> $$0, dy.b $$1) {
       List<dy.a> $$2 = $$0.a().stream().map($$1x -> {
-         tw $$2x = $$1.sign($$1x.c());
+         tx $$2x = $$1.sign($$1x.c());
          return $$2x != null ? new dy.a($$1x.a(), $$2x) : null;
       }).filter(Objects::nonNull).toList();
       return new dy($$2);
@@ -39,21 +39,21 @@ public record dy(List<dy.a> b) {
       return this.b;
    }
 
-   public static record a(String a, tw b) {
+   public static record a(String a, tx b) {
 
       public a(so $$0) {
-         this($$0.d(16), tw.a($$0));
+         this($$0.d(16), tx.a($$0));
       }
 
       public void a(so $$0) {
          $$0.a(this.a, 16);
-         tw.a($$0, this.b);
+         tx.a($$0, this.b);
       }
    }
 
    @FunctionalInterface
    public interface b {
       @Nullable
-      tw sign(String var1);
+      tx sign(String var1);
    }
 }

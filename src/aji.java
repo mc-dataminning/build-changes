@@ -3,56 +3,60 @@ import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import java.util.Locale;
-import java.util.UUID;
 import java.util.function.Function;
 
-public class aji implements ajg {
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(tl.c("commands.data.entity.invalid"));
-   public static final Function<String, ajh.c> a = $$0 -> new ajh.c() {
+public class aji implements ajj {
+   static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(tl.c("commands.data.block.invalid"));
+   public static final Function<String, ajk.c> a = $$0 -> new ajk.c() {
          @Override
-         public ajg a(CommandContext<dt> $$0x) throws CommandSyntaxException {
-            return new aji(ee.a($$0, $$0));
+         public ajj a(CommandContext<dt> $$0x) throws CommandSyntaxException {
+            gw $$1 = fk.a($$0, $$0 + "Pos");
+            dcz $$2 = ((dt)$$0.getSource()).e().c_($$1);
+            if ($$2 == null) {
+               throw aji.b.create();
+            } else {
+               return new aji($$2, $$1);
+            }
          }
 
          @Override
          public ArgumentBuilder<dt, ?> a(ArgumentBuilder<dt, ?> $$0x, Function<ArgumentBuilder<dt, ?>, ArgumentBuilder<dt, ?>> $$1) {
-            return $$0.then(du.a("entity").then($$1.apply(du.a($$0, ee.a()))));
+            return $$0.then(du.a("block").then($$1.apply(du.a($$0 + "Pos", fk.a()))));
          }
       };
-   private final biq c;
+   private final dcz c;
+   private final gw d;
 
-   public aji(biq $$0) {
+   public aji(dcz $$0, gw $$1) {
       this.c = $$0;
+      this.d = $$1;
    }
 
    @Override
-   public void a(qw $$0) throws CommandSyntaxException {
-      if (this.c instanceof cbu) {
-         throw b.create();
-      } else {
-         UUID $$1 = this.c.cv();
-         this.c.g($$0);
-         this.c.a_($$1);
-      }
+   public void a(qw $$0) {
+      dfd $$1 = this.c.k().a_(this.d);
+      this.c.a($$0);
+      this.c.e();
+      this.c.k().a(this.d, $$1, $$1, 3);
    }
 
    @Override
    public qw a() {
-      return cn.b(this.c);
+      return this.c.m();
    }
 
    @Override
    public tl b() {
-      return tl.a("commands.data.entity.modified", this.c.N_());
+      return tl.a("commands.data.block.modified", this.d.u(), this.d.v(), this.d.w());
    }
 
    @Override
    public tl a(rq $$0) {
-      return tl.a("commands.data.entity.query", this.c.N_(), rj.c($$0));
+      return tl.a("commands.data.block.query", this.d.u(), this.d.v(), this.d.w(), rj.c($$0));
    }
 
    @Override
    public tl a(ej.g $$0, double $$1, int $$2) {
-      return tl.a("commands.data.entity.get", $$0, this.c.N_(), String.format(Locale.ROOT, "%.2f", $$1), $$2);
+      return tl.a("commands.data.block.get", $$0.a(), this.d.u(), this.d.v(), this.d.w(), String.format(Locale.ROOT, "%.2f", $$1), $$2);
    }
 }

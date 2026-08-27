@@ -1,45 +1,43 @@
-import java.util.UUID;
 import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
-public class djk<T extends dja> implements djj<T> {
-   private final djc<T> a;
-   private final djf<T> b;
+public class djk<T extends djp> {
+   private final T a;
+   @Nullable
+   private hw b;
 
-   public djk(djc<T> $$0, djf<T> $$1) {
+   public djk(T $$0) {
       this.a = $$0;
-      this.b = $$1;
    }
 
-   @Nullable
-   @Override
-   public T a(int $$0) {
-      return this.a.a($$0);
+   public void a(akt $$0) {
+      this.c($$0);
    }
 
-   @Nullable
-   @Override
-   public T a(UUID $$0) {
-      return this.a.a($$0);
+   public T a() {
+      return this.a;
    }
 
-   @Override
-   public Iterable<T> a() {
-      return this.a.a();
+   public void b(akt $$0) {
+      a($$0, this.b, $$0x -> $$0x.b(this.a));
    }
 
-   @Override
-   public <U extends T> void a(djh<T, U> $$0, aqn<U> $$1) {
-      this.a.a($$0, $$1);
+   public void c(akt $$0) {
+      this.a.a().a($$0).map(hw::a).ifPresent($$1 -> {
+         if (this.b == null || !this.b.equals($$1)) {
+            a($$0, this.b, $$0xx -> $$0xx.b(this.a));
+            this.b = $$1;
+            a($$0, this.b, $$0xx -> $$0xx.a(this.a));
+         }
+      });
    }
 
-   @Override
-   public void a(ehi $$0, Consumer<T> $$1) {
-      this.b.b($$0, aqn.forConsumer($$1));
-   }
-
-   @Override
-   public <U extends T> void a(djh<T, U> $$0, ehi $$1, aqn<U> $$2) {
-      this.b.a($$0, $$1, $$2);
+   private static void a(cqe $$0, @Nullable hw $$1, Consumer<djq> $$2) {
+      if ($$1 != null) {
+         dgz $$3 = $$0.a($$1.a(), $$1.c(), dhe.n, false);
+         if ($$3 != null) {
+            $$2.accept($$3.a($$1.b()));
+         }
+      }
    }
 }

@@ -1,62 +1,69 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.BiFunction;
-import java.util.function.Supplier;
 
-public class eef {
-   public static final BiFunction<cjf, ecq, cjf> a = ($$0, $$1) -> $$0;
-   private static final Codec<eed> D = jb.H.q().dispatch("function", eed::b, eee::a);
-   public static final Codec<eed> b = arf.a((Supplier<Codec<eed>>)(() -> arf.e(D, eeh.b)));
-   public static final eee c = a("set_count", eeo.a);
-   public static final eee d = a("enchant_with_levels", edw.a);
-   public static final eee e = a("enchant_randomly", edv.a);
-   public static final eee f = a("set_enchantments", eem.a);
-   public static final eee g = a("set_nbt", ees.a);
-   public static final eee h = a("furnace_smelt", eev.a);
-   public static final eee i = a("looting_enchant", eeg.b);
-   public static final eee j = a("set_damage", eep.a);
-   public static final eee k = a("set_attributes", eei.a);
-   public static final eee l = a("set_name", eer.a);
-   public static final eee m = a("exploration_map", edx.f);
-   public static final eee n = a("set_stew_effect", eeu.a);
-   public static final eee o = a("copy_name", edt.a);
-   public static final eee p = a("set_contents", eek.a);
-   public static final eee q = a("limit_count", eeb.a);
-   public static final eee r = a("apply_bonus", edq.a);
-   public static final eee s = a("set_loot_table", eel.a);
-   public static final eee t = a("explosion_decay", edr.a);
-   public static final eee u = a("set_lore", eeq.a);
-   public static final eee v = a("fill_player_head", edy.a);
-   public static final eee w = a("copy_nbt", edu.a);
-   public static final eee x = a("copy_state", eds.a);
-   public static final eee y = a("set_banner_pattern", eej.a);
-   public static final eee z = a("set_potion", eet.a);
-   public static final eee A = a("set_instrument", een.a);
-   public static final eee B = a("reference", edz.a);
-   public static final eee C = a("sequence", eeh.a);
+public class eef extends edw {
+   public static final Codec<eef> a = RecordCodecBuilder.create(
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  aez.a.fieldOf("name").forGetter($$0x -> $$0x.b),
+                  arj.a(Codec.LONG, "seed", 0L).forGetter($$0x -> $$0x.c),
+                  jb.l.r().fieldOf("type").forGetter($$0x -> $$0x.d)
+               )
+            )
+            .apply($$0, eef::new)
+   );
+   private final aez b;
+   private final long c;
+   private final he<ddb<?>> d;
 
-   private static eee a(String $$0, Codec<? extends eed> $$1) {
-      return hq.a(jb.H, new aew($$0), new eee($$1));
+   private eef(List<efj> $$0, aez $$1, long $$2, he<ddb<?>> $$3) {
+      super($$0);
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   public static BiFunction<cjf, ecq, cjf> a(List<? extends BiFunction<cjf, ecq, cjf>> $$0) {
-      List<BiFunction<cjf, ecq, cjf>> $$1 = List.copyOf($$0);
+   @Override
+   public edy b() {
+      return edz.s;
+   }
 
-      return switch ($$1.size()) {
-         case 0 -> a;
-         case 1 -> (BiFunction)$$1.get(0);
-         case 2 -> {
-            BiFunction<cjf, ecq, cjf> $$2 = $$1.get(0);
-            BiFunction<cjf, ecq, cjf> $$3 = $$1.get(1);
-            yield ($$2x, $$3x) -> $$3.apply($$2.apply($$2x, $$3x), $$3x);
-         }
-         default -> ($$1x, $$2x) -> {
-         for (BiFunction<cjf, ecq, cjf> $$3x : $$1) {
-            $$1x = $$3x.apply($$1x, $$2x);
+   @Override
+   public cjl a(cjl $$0, eck $$1) {
+      if ($$0.b()) {
+         return $$0;
+      } else {
+         qw $$2 = che.a($$0);
+         if ($$2 == null) {
+            $$2 = new qw();
          }
 
-         return $$1x;
-      };
-      };
+         $$2.a("LootTable", this.b.toString());
+         if (this.c != 0L) {
+            $$2.a("LootTableSeed", this.c);
+         }
+
+         che.a($$0, this.d.a(), $$2);
+         return $$0;
+      }
+   }
+
+   @Override
+   public void a(ect $$0) {
+      super.a($$0);
+      ecm<ecs> $$1 = new ecm<>(ecp.c, this.b);
+      if ($$0.b().getElementOptional($$1).isEmpty()) {
+         $$0.a("Missing loot table used for container: " + this.b);
+      }
+   }
+
+   public static edw.a<?> a(ddb<?> $$0, aez $$1) {
+      return a($$2 -> new eef($$2, $$1, 0L, $$0.a()));
+   }
+
+   public static edw.a<?> a(ddb<?> $$0, aez $$1, long $$2) {
+      return a($$3 -> new eef($$3, $$1, $$2, $$0.a()));
    }
 }

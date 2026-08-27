@@ -7,19 +7,19 @@ import java.util.List;
 import java.util.function.Supplier;
 
 public class kx implements kv {
-   private final csv a;
+   private final ctc a;
    private final List<kx.b> b = Lists.newArrayList();
 
-   private kx(csv $$0) {
+   private kx(ctc $$0) {
       this.a = $$0;
    }
 
    @Override
-   public csv a() {
+   public ctc a() {
       return this.a;
    }
 
-   public static kx a(csv $$0) {
+   public static kx a(ctc $$0) {
       return new kx($$0);
    }
 
@@ -46,7 +46,7 @@ public class kx implements kv {
    }
 
    public JsonElement b() {
-      dfk<csv, dfj> $$0 = this.a.l();
+      dfe<ctc, dfd> $$0 = this.a.n();
       this.b.forEach($$1x -> $$1x.a($$0));
       JsonArray $$1 = new JsonArray();
       this.b.stream().map(kx.b::a).forEach($$1::add);
@@ -64,7 +64,7 @@ public class kx implements kv {
       }
 
       @Override
-      public void a(dfk<?, ?> $$0) {
+      public void a(dfe<?, ?> $$0) {
          this.a.a($$0);
       }
 
@@ -81,7 +81,7 @@ public class kx implements kv {
          this.a = $$0;
       }
 
-      public void a(dfk<?, ?> $$0) {
+      public void a(dfe<?, ?> $$0) {
       }
 
       public void a(JsonObject $$0) {

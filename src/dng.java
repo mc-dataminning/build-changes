@@ -1,58 +1,34 @@
 import com.mojang.serialization.Codec;
 
-public class dng extends dnw<dqh> {
-   public dng(Codec<dqh> $$0) {
+public class dng extends dnf {
+   public dng(Codec<dqb> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dny<dqh> $$0) {
-      gw $$1 = $$0.e();
-      cqp $$2 = $$0.b();
-      asc $$3 = $$0.d();
-      if ($$1.v() > $$2.y_() - 1) {
-         return false;
-      } else if (!$$2.a_($$1).a(csw.G) && !$$2.a_($$1.d()).a(csw.G)) {
-         return false;
-      } else {
-         boolean $$4 = false;
+   protected boolean a(cqc $$0, ash $$1, gw $$2, dfd $$3) {
+      int $$4 = $$1.a(3) + 3;
+      int $$5 = $$1.a(3) + 3;
+      int $$6 = $$1.a(3) + 3;
+      int $$7 = $$1.a(3) + 1;
+      gw.a $$8 = $$2.j();
 
-         for (ha $$5 : ha.values()) {
-            if ($$5 != ha.a && $$2.a_($$1.a($$5)).a(csw.iC)) {
-               $$4 = true;
-               break;
-            }
-         }
-
-         if (!$$4) {
-            return false;
-         } else {
-            $$2.a($$1, csw.mW.n(), 2);
-
-            for (int $$6 = 0; $$6 < 200; $$6++) {
-               int $$7 = $$3.a(5) - $$3.a(6);
-               int $$8 = 3;
-               if ($$7 < 2) {
-                  $$8 += $$7 / 2;
-               }
-
-               if ($$8 >= 1) {
-                  gw $$9 = $$1.b($$3.a($$8) - $$3.a($$8), $$7, $$3.a($$8) - $$3.a($$8));
-                  dfj $$10 = $$2.a_($$9);
-                  if ($$10.i() || $$10.a(csw.G) || $$10.a(csw.iC) || $$10.a(csw.dO)) {
-                     for (ha $$11 : ha.values()) {
-                        dfj $$12 = $$2.a_($$9.a($$11));
-                        if ($$12.a(csw.mW)) {
-                           $$2.a($$9, csw.mW.n(), 2);
-                           break;
-                        }
-                     }
-                  }
+      for (int $$9 = 0; $$9 <= $$5; $$9++) {
+         for (int $$10 = 0; $$10 <= $$4; $$10++) {
+            for (int $$11 = 0; $$11 <= $$6; $$11++) {
+               $$8.d($$9 + $$2.u(), $$10 + $$2.v(), $$11 + $$2.w());
+               $$8.c(ha.a, $$7);
+               if (($$9 != 0 && $$9 != $$5 || $$10 != 0 && $$10 != $$4)
+                  && ($$11 != 0 && $$11 != $$6 || $$10 != 0 && $$10 != $$4)
+                  && ($$9 != 0 && $$9 != $$5 || $$11 != 0 && $$11 != $$6)
+                  && ($$9 == 0 || $$9 == $$5 || $$10 == 0 || $$10 == $$4 || $$11 == 0 || $$11 == $$6)
+                  && !($$1.i() < 0.1F)
+                  && !this.b($$0, $$1, $$8, $$3)) {
                }
             }
-
-            return true;
          }
       }
+
+      return true;
    }
 }

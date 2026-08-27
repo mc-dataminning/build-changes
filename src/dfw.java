@@ -1,6 +1,6 @@
-public enum dfw implements asp {
-   a("head"),
-   b("foot");
+public enum dfw implements asu {
+   a("compare"),
+   b("subtract");
 
    private final String c;
 

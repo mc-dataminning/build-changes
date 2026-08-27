@@ -11,11 +11,11 @@ import java.util.concurrent.CompletableFuture;
 
 public class eo implements ArgumentType<it> {
    private static final Collection<String> b = Arrays.asList("foo", "foo:bar", "particle with options");
-   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> tl.a("particle.notFound", $$0));
+   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> tl.b("particle.notFound", $$0));
    private final hg<iu<?>> c;
 
    public eo(dn $$0) {
-      this.c = $$0.a(jc.Q);
+      this.c = $$0.a(jc.R);
    }
 
    public static eo a(dn $$0) {
@@ -40,8 +40,8 @@ public class eo implements ArgumentType<it> {
    }
 
    private static iu<?> b(StringReader $$0, hg<iu<?>> $$1) throws CommandSyntaxException {
-      aew $$2 = aew.a($$0);
-      aev<iu<?>> $$3 = aev.a(jc.Q, $$2);
+      aez $$2 = aez.a($$0);
+      aey<iu<?>> $$3 = aey.a(jc.R, $$2);
       return $$1.a($$3).orElseThrow(() -> a.create($$2)).a();
    }
 
@@ -50,6 +50,6 @@ public class eo implements ArgumentType<it> {
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      return dw.a(this.c.c().map(aev::a), $$1);
+      return dw.a(this.c.c().map(aey::a), $$1);
    }
 }

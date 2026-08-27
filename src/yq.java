@@ -1,24 +1,56 @@
-public class yq implements vd<ww> {
-   private final bgx a;
+public class yq implements ve<wx> {
+   private final double a;
+   private final double b;
+   private final double c;
+   private final float d;
+   private final float e;
 
-   public yq(bgx $$0) {
-      this.a = $$0;
+   public yq(biw $$0) {
+      this.a = $$0.dq();
+      this.b = $$0.ds();
+      this.c = $$0.dw();
+      this.d = $$0.dB();
+      this.e = $$0.dD();
    }
 
    public yq(so $$0) {
-      this.a = $$0.b(bgx.class);
+      this.a = $$0.readDouble();
+      this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
+      this.d = $$0.readFloat();
+      this.e = $$0.readFloat();
    }
 
    @Override
    public void a(so $$0) {
       $$0.a(this.a);
+      $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
    }
 
-   public void a(ww $$0) {
+   public void a(wx $$0) {
       $$0.a(this);
    }
 
-   public bgx a() {
+   public double a() {
       return this.a;
+   }
+
+   public double d() {
+      return this.b;
+   }
+
+   public double e() {
+      return this.c;
+   }
+
+   public float f() {
+      return this.d;
+   }
+
+   public float g() {
+      return this.e;
    }
 }

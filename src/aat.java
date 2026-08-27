@@ -1,28 +1,27 @@
-public class aat implements vd<ww> {
-   private final int a;
-   private final int b;
-   private final int c;
+import javax.annotation.Nullable;
 
-   public aat(int $$0, int $$1, int $$2) {
+public class aat implements ve<wx> {
+   private final int a;
+   @Nullable
+   private final qw b;
+
+   public aat(int $$0, @Nullable qw $$1) {
       this.a = $$0;
       this.b = $$1;
-      this.c = $$2;
    }
 
    public aat(so $$0) {
-      this.a = $$0.m();
-      this.b = $$0.m();
-      this.c = $$0.m();
+      this.a = $$0.n();
+      this.b = $$0.q();
    }
 
    @Override
    public void a(so $$0) {
       $$0.c(this.a);
-      $$0.c(this.b);
-      $$0.c(this.c);
+      $$0.a((rq)this.b);
    }
 
-   public void a(ww $$0) {
+   public void a(wx $$0) {
       $$0.a(this);
    }
 
@@ -30,11 +29,13 @@ public class aat implements vd<ww> {
       return this.a;
    }
 
-   public int d() {
+   @Nullable
+   public qw d() {
       return this.b;
    }
 
-   public int e() {
-      return this.c;
+   @Override
+   public boolean b() {
+      return true;
    }
 }

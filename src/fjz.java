@@ -1,73 +1,77 @@
-import com.mojang.authlib.minecraft.UserApiService;
-import java.util.Objects;
-import java.util.UUID;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap.Entry;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
 
-public final class fjz {
-   private static final int a = 1024;
-   private final fjq b;
-   private final fjw c;
-   private final fjl d;
-   @Nullable
-   private fjv e;
+public class fjz implements AutoCloseable {
+   private final Long2ObjectOpenHashMap<fjz.a> a = new Long2ObjectOpenHashMap();
+   private int b;
+   private boolean c;
 
-   public fjz(fjq $$0, fjw $$1, fjl $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   public void a(gw $$0, dfd $$1, fnc $$2) {
+      this.a.compute($$0.a(), ($$2x, $$3) -> $$3 != null ? $$3.a(this.b) : new fjz.a(this.b, $$1, $$2.dj()));
    }
 
-   public static fjz a(fjw $$0, UserApiService $$1) {
-      fjl $$2 = new fjl(1024);
-      fjq $$3 = fjq.a($$0, $$1);
-      return new fjz($$3, $$0, $$2);
-   }
-
-   public void a(eqv $$0, eyk $$1, Runnable $$2, boolean $$3) {
-      if (this.e != null) {
-         fjv $$4 = this.e.b();
-         $$0.a(
-            new exd(
-               $$4x -> {
-                  this.a(null);
-                  if ($$4x) {
-                     $$0.a($$4.a($$1, this));
-                  } else {
-                     $$2.run();
-                  }
-               },
-               tl.c($$3 ? "gui.abuseReport.draft.quittotitle.title" : "gui.abuseReport.draft.title"),
-               tl.c($$3 ? "gui.abuseReport.draft.quittotitle.content" : "gui.abuseReport.draft.content"),
-               tl.c("gui.abuseReport.draft.edit"),
-               tl.c("gui.abuseReport.draft.discard")
-            )
-         );
+   public boolean a(gw $$0, dfd $$1) {
+      fjz.a $$2 = (fjz.a)this.a.get($$0.a());
+      if ($$2 == null) {
+         return false;
       } else {
-         $$2.run();
+         $$2.a($$1);
+         return true;
       }
    }
 
-   public fjq a() {
+   public void a(int $$0, fis $$1) {
+      ObjectIterator<Entry<fjz.a>> $$2 = this.a.long2ObjectEntrySet().iterator();
+
+      while ($$2.hasNext()) {
+         Entry<fjz.a> $$3 = (Entry<fjz.a>)$$2.next();
+         fjz.a $$4 = (fjz.a)$$3.getValue();
+         if ($$4.b <= $$0) {
+            gw $$5 = gw.d($$3.getLongKey());
+            $$2.remove();
+            $$1.a($$5, $$4.c, $$4.a);
+         }
+      }
+   }
+
+   public fjz a() {
+      this.b++;
+      this.c = true;
+      return this;
+   }
+
+   @Override
+   public void close() {
+      this.c = false;
+   }
+
+   public int b() {
       return this.b;
    }
 
-   public fjl b() {
-      return this.d;
-   }
-
-   public boolean a(fjw $$0) {
-      return Objects.equals(this.c, $$0);
-   }
-
-   public void a(@Nullable fjv $$0) {
-      this.e = $$0;
-   }
-
    public boolean c() {
-      return this.e != null;
+      return this.c;
    }
 
-   public boolean a(UUID $$0) {
-      return this.c() && this.e.a($$0);
+   static class a {
+      final ehh a;
+      int b;
+      dfd c;
+
+      a(int $$0, dfd $$1, ehh $$2) {
+         this.b = $$0;
+         this.c = $$1;
+         this.a = $$2;
+      }
+
+      fjz.a a(int $$0) {
+         this.b = $$0;
+         return this;
+      }
+
+      void a(dfd $$0) {
+         this.c = $$0;
+      }
    }
 }

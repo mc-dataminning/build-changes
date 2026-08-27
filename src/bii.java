@@ -1,13 +1,15 @@
-class bii extends bia {
-   protected bii(bic $$0, int $$1) {
-      super($$0, $$1);
+public enum bii {
+   a(n.j),
+   b(n.m),
+   c(n.j);
+
+   private final n d;
+
+   private bii(n $$0) {
+      this.d = $$0;
    }
 
-   @Override
-   public void a(bjg $$0, int $$1) {
-      super.a($$0, $$1);
-      if (!$$0.dL().B && $$0 instanceof cbu $$2) {
-         $$2.gb().a($$1 + 1, 1.0F);
-      }
+   public n a() {
+      return this.d;
    }
 }

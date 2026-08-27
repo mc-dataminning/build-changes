@@ -1,95 +1,226 @@
-import com.mojang.datafixers.util.Pair;
-import com.mojang.logging.LogUtils;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
+import java.util.Set;
+import javax.annotation.Nullable;
 import net.minecraft.server.MinecraftServer;
-import org.slf4j.Logger;
 
-public class afq {
-   private static final Logger a = LogUtils.getLogger();
+public class afq extends eig {
+   private final MinecraftServer a;
+   private final Set<eid> b = Sets.newHashSet();
+   private final List<Runnable> c = Lists.newArrayList();
 
-   public static <D, R> CompletableFuture<R> a(afq.c $$0, afq.f<D> $$1, afq.e<D, R> $$2, Executor $$3, Executor $$4) {
-      try {
-         Pair<cqo, anj> $$5 = $$0.a.a();
-         anj $$6 = (anj)$$5.getSecond();
-         hl<aff> $$7 = aff.a();
-         hl<aff> $$8 = b($$6, $$7, aff.b, aer.a);
-         hr.b $$9 = $$8.b(aff.c);
-         hr.b $$10 = aer.a($$6, $$9, aer.b);
-         cqo $$11 = (cqo)$$5.getFirst();
-         afq.b<D> $$12 = $$1.get(new afq.a($$6, $$11, $$9, $$10));
-         hl<aff> $$13 = $$8.a(aff.c, $$12.b);
-         hr.b $$14 = $$13.b(aff.d);
-         return afg.a($$6, $$14, $$11.b(), $$0.b(), $$0.c(), $$3, $$4).whenComplete(($$1x, $$2x) -> {
-            if ($$2x != null) {
-               $$6.close();
-            }
-         }).thenApplyAsync($$5x -> {
-            $$5x.a($$14);
-            return $$2.create($$6, $$5x, $$13, $$12.a);
-         }, $$4);
-      } catch (Exception var15) {
-         return CompletableFuture.failedFuture(var15);
+   public afq(MinecraftServer $$0) {
+      this.a = $$0;
+   }
+
+   @Override
+   public void a(eif $$0) {
+      super.a($$0);
+      if (this.b.contains($$0.d())) {
+         this.a.ac().a(new aah(afq.a.a, $$0.d().b(), $$0.e(), $$0.b()));
       }
+
+      this.a();
    }
 
-   private static hr.b a(ant $$0, hl<aff> $$1, aff $$2, List<aer.b<?>> $$3) {
-      hr.b $$4 = $$1.b($$2);
-      return aer.a($$0, $$4, $$3);
+   @Override
+   public void a(String $$0) {
+      super.a($$0);
+      this.a.ac().a(new aah(afq.a.b, null, $$0, 0));
+      this.a();
    }
 
-   private static hl<aff> b(ant $$0, hl<aff> $$1, aff $$2, List<aer.b<?>> $$3) {
-      hr.b $$4 = a($$0, $$1, $$2, $$3);
-      return $$1.a($$2, $$4);
+   @Override
+   public void a(String $$0, eid $$1) {
+      super.a($$0, $$1);
+      if (this.b.contains($$1)) {
+         this.a.ac().a(new aah(afq.a.b, $$1.b(), $$0, 0));
+      }
+
+      this.a();
    }
 
-   public static record a(ant a, cqo b, hr.b c, hr.b d) {
-   }
-
-   public static record b<D>(D a, hr.b b) {
-   }
-
-   public static record c(afq.d a, du.a b, int c) {
-   }
-
-   public static record d(ane a, cqo b, boolean c, boolean d) {
-      public Pair<cqo, anj> a() {
-         cec $$0 = this.d ? cee.d.a() : this.b.b();
-         cqo $$1 = MinecraftServer.a(this.a, this.b.a(), this.c, $$0);
-         if (!this.d) {
-            $$1 = $$1.a(this.b.b());
+   @Override
+   public void a(eic $$0, @Nullable eid $$1) {
+      eid $$2 = this.a($$0);
+      super.a($$0, $$1);
+      if ($$2 != $$1 && $$2 != null) {
+         if (this.h($$2) > 0) {
+            this.a.ac().a(new zx($$0, $$1));
+         } else {
+            this.g($$2);
          }
-
-         List<amh> $$2 = this.a.g();
-         anj $$3 = new anm(ami.b, $$2);
-         return Pair.of($$1, $$3);
       }
 
-      public ane b() {
-         return this.a;
+      if ($$1 != null) {
+         if (this.b.contains($$1)) {
+            this.a.ac().a(new zx($$0, $$1));
+         } else {
+            this.e($$1);
+         }
       }
 
-      public cqo c() {
-         return this.b;
-      }
+      this.a();
+   }
 
-      public boolean d() {
-         return this.c;
-      }
-
-      public boolean e() {
-         return this.d;
+   @Override
+   public boolean a(String $$0, eie $$1) {
+      if (super.a($$0, $$1)) {
+         this.a.ac().a(aag.a($$1, $$0, aag.a.a));
+         this.a();
+         return true;
+      } else {
+         return false;
       }
    }
 
-   @FunctionalInterface
-   public interface e<D, R> {
-      R create(anj var1, afg var2, hl<aff> var3, D var4);
+   @Override
+   public void b(String $$0, eie $$1) {
+      super.b($$0, $$1);
+      this.a.ac().a(aag.a($$1, $$0, aag.a.b));
+      this.a();
    }
 
-   @FunctionalInterface
-   public interface f<D> {
-      afq.b<D> get(afq.a var1);
+   @Override
+   public void a(eid $$0) {
+      super.a($$0);
+      this.a();
+   }
+
+   @Override
+   public void b(eid $$0) {
+      super.b($$0);
+      if (this.b.contains($$0)) {
+         this.a.ac().a(new aae($$0, 2));
+      }
+
+      this.a();
+   }
+
+   @Override
+   public void c(eid $$0) {
+      super.c($$0);
+      if (this.b.contains($$0)) {
+         this.g($$0);
+      }
+
+      this.a();
+   }
+
+   @Override
+   public void a(eie $$0) {
+      super.a($$0);
+      this.a.ac().a(aag.a($$0, true));
+      this.a();
+   }
+
+   @Override
+   public void b(eie $$0) {
+      super.b($$0);
+      this.a.ac().a(aag.a($$0, false));
+      this.a();
+   }
+
+   @Override
+   public void c(eie $$0) {
+      super.c($$0);
+      this.a.ac().a(aag.a($$0));
+      this.a();
+   }
+
+   public void a(Runnable $$0) {
+      this.c.add($$0);
+   }
+
+   protected void a() {
+      for (Runnable $$0 : this.c) {
+         $$0.run();
+      }
+   }
+
+   public List<ve<?>> d(eid $$0) {
+      List<ve<?>> $$1 = Lists.newArrayList();
+      $$1.add(new aae($$0, 0));
+
+      for (eic $$2 : eic.values()) {
+         if (this.a($$2) == $$0) {
+            $$1.add(new zx($$2, $$0));
+         }
+      }
+
+      for (eif $$3 : this.i($$0)) {
+         $$1.add(new aah(afq.a.a, $$3.d().b(), $$3.e(), $$3.b()));
+      }
+
+      return $$1;
+   }
+
+   public void e(eid $$0) {
+      List<ve<?>> $$1 = this.d($$0);
+
+      for (aku $$2 : this.a.ac().t()) {
+         for (ve<?> $$3 : $$1) {
+            $$2.c.b($$3);
+         }
+      }
+
+      this.b.add($$0);
+   }
+
+   public List<ve<?>> f(eid $$0) {
+      List<ve<?>> $$1 = Lists.newArrayList();
+      $$1.add(new aae($$0, 1));
+
+      for (eic $$2 : eic.values()) {
+         if (this.a($$2) == $$0) {
+            $$1.add(new zx($$2, $$0));
+         }
+      }
+
+      return $$1;
+   }
+
+   public void g(eid $$0) {
+      List<ve<?>> $$1 = this.f($$0);
+
+      for (aku $$2 : this.a.ac().t()) {
+         for (ve<?> $$3 : $$1) {
+            $$2.c.b($$3);
+         }
+      }
+
+      this.b.remove($$0);
+   }
+
+   public int h(eid $$0) {
+      int $$1 = 0;
+
+      for (eic $$2 : eic.values()) {
+         if (this.a($$2) == $$0) {
+            $$1++;
+         }
+      }
+
+      return $$1;
+   }
+
+   public ebl.a<eih> b() {
+      return new ebl.a<>(this::i, this::a, atg.n);
+   }
+
+   private eih i() {
+      eih $$0 = new eih(this);
+      this.a($$0::c);
+      return $$0;
+   }
+
+   private eih a(qw $$0) {
+      return this.i().b($$0);
+   }
+
+   public static enum a {
+      a,
+      b;
    }
 }

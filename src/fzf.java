@@ -1,208 +1,75 @@
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import com.mojang.blaze3d.systems.RenderSystem;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
 import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.JsonOps;
+import java.io.BufferedReader;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Locale;
+import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.Map.Entry;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
+import java.util.function.Function;
+import java.util.function.Predicate;
 import org.slf4j.Logger;
 
-public class fzf implements ann, fzg, AutoCloseable {
-   private static final Logger b = LogUtils.getLogger();
-   public static final aew a = new aew("");
-   private final Map<aew, fyp> c = Maps.newHashMap();
-   private final Set<fzg> d = Sets.newHashSet();
-   private final Map<String, Integer> e = Maps.newHashMap();
-   private final ant f;
+public class fzf {
+   private static final Logger a = LogUtils.getLogger();
+   private static final aes b = new aes("atlases", ".json");
+   private final List<fze> c;
 
-   public fzf(ant $$0) {
-      this.f = $$0;
+   private fzf(List<fze> $$0) {
+      this.c = $$0;
    }
 
-   public void a(aew $$0) {
-      if (!RenderSystem.isOnRenderThread()) {
-         RenderSystem.recordRenderCall(() -> this.d($$0));
-      } else {
-         this.d($$0);
-      }
-   }
-
-   private void d(aew $$0) {
-      fyp $$1 = this.c.get($$0);
-      if ($$1 == null) {
-         $$1 = new fyx($$0);
-         this.a($$0, $$1);
-      }
-
-      $$1.c();
-   }
-
-   public void a(aew $$0, fyp $$1) {
-      $$1 = this.d($$0, $$1);
-      fyp $$2 = this.c.put($$0, $$1);
-      if ($$2 != $$1) {
-         if ($$2 != null && $$2 != fyu.c()) {
-            this.c($$0, $$2);
-         }
-
-         if ($$1 instanceof fzg) {
-            this.d.add((fzg)$$1);
-         }
-      }
-   }
-
-   private void c(aew $$0, fyp $$1) {
-      if ($$1 != fyu.c()) {
-         this.d.remove($$1);
-
-         try {
-            $$1.close();
-         } catch (Exception var4) {
-            b.warn("Failed to close texture {}", $$0, var4);
-         }
-      }
-
-      $$1.b();
-   }
-
-   private fyp d(aew $$0, fyp $$1) {
-      try {
-         $$1.a(this.f);
-         return $$1;
-      } catch (IOException var6) {
-         if ($$0 != a) {
-            b.warn("Failed to load texture: {}", $$0, var6);
-         }
-
-         return fyu.c();
-      } catch (Throwable var7) {
-         o $$4 = o.a(var7, "Registering texture");
-         p $$5 = $$4.a("Resource location being registered");
-         $$5.a("Resource location", $$0);
-         $$5.a("Texture object class", () -> $$1.getClass().getName());
-         throw new y($$4);
-      }
-   }
-
-   public fyp b(aew $$0) {
-      fyp $$1 = this.c.get($$0);
-      if ($$1 == null) {
-         $$1 = new fyx($$0);
-         this.a($$0, $$1);
-      }
-
-      return $$1;
-   }
-
-   public fyp b(aew $$0, fyp $$1) {
-      return this.c.getOrDefault($$0, $$1);
-   }
-
-   public aew a(String $$0, fyr $$1) {
-      Integer $$2 = this.e.get($$0);
-      if ($$2 == null) {
-         $$2 = 1;
-      } else {
-         $$2 = $$2 + 1;
-      }
-
-      this.e.put($$0, $$2);
-      aew $$3 = new aew(String.format(Locale.ROOT, "dynamic/%s_%d", $$0, $$2));
-      this.a($$3, $$1);
-      return $$3;
-   }
-
-   public CompletableFuture<Void> a(aew $$0, Executor $$1) {
-      if (!this.c.containsKey($$0)) {
-         fyw $$2 = new fyw(this.f, $$0, $$1);
-         this.c.put($$0, $$2);
-         return $$2.d().thenRunAsync(() -> this.a($$0, (fyp)$$2), fzf::a);
-      } else {
-         return CompletableFuture.completedFuture(null);
-      }
-   }
-
-   private static void a(Runnable $$0) {
-      eqv.O().execute(() -> RenderSystem.recordRenderCall($$0::run));
-   }
-
-   @Override
-   public void e() {
-      for (fzg $$0 : this.d) {
-         $$0.e();
-      }
-   }
-
-   public void c(aew $$0) {
-      fyp $$1 = this.c.remove($$0);
-      if ($$1 != null) {
-         this.c($$0, $$1);
-      }
-   }
-
-   @Override
-   public void close() {
-      this.c.forEach(this::c);
-      this.c.clear();
-      this.d.clear();
-      this.e.clear();
-   }
-
-   @Override
-   public CompletableFuture<Void> a(ann.a $$0, ant $$1, bdp $$2, bdp $$3, Executor $$4, Executor $$5) {
-      CompletableFuture<Void> $$6 = new CompletableFuture<>();
-      eyp.a(this, $$4).thenCompose($$0::a).thenAcceptAsync($$3x -> {
-         fyu.c();
-         eos.a(this.f);
-         Iterator<Entry<aew, fyp>> $$4x = this.c.entrySet().iterator();
-
-         while ($$4x.hasNext()) {
-            Entry<aew, fyp> $$5x = $$4x.next();
-            aew $$6x = $$5x.getKey();
-            fyp $$7 = $$5x.getValue();
-            if ($$7 == fyu.c() && !$$6x.equals(fyu.b())) {
-               $$4x.remove();
-            } else {
-               $$7.a(this, $$1, $$6x, $$5);
+   public List<Function<fzd, fyu>> a(anw $$0) {
+      final Map<aez, fze.b> $$1 = new HashMap<>();
+      fze.a $$2 = new fze.a() {
+         @Override
+         public void a(aez $$0, fze.b $$1x) {
+            fze.b $$2 = $$1.put($$0, $$1);
+            if ($$2 != null) {
+               $$2.a();
             }
          }
 
-         eqv.O().i(() -> $$6.complete(null));
-      }, $$0x -> RenderSystem.recordRenderCall($$0x::run));
-      return $$6;
-   }
+         @Override
+         public void a(Predicate<aez> $$0) {
+            Iterator<Entry<aez, fze.b>> $$1 = $$1.entrySet().iterator();
 
-   public void a(Path $$0) {
-      if (!RenderSystem.isOnRenderThread()) {
-         RenderSystem.recordRenderCall(() -> this.b($$0));
-      } else {
-         this.b($$0);
-      }
-   }
-
-   private void b(Path $$0) {
-      try {
-         Files.createDirectories($$0);
-      } catch (IOException var3) {
-         b.error("Failed to create directory {}", $$0, var3);
-         return;
-      }
-
-      this.c.forEach(($$1, $$2) -> {
-         if ($$2 instanceof fyq $$3) {
-            try {
-               $$3.a($$1, $$0);
-            } catch (IOException var5) {
-               b.error("Failed to dump texture {}", $$1, var5);
+            while ($$1.hasNext()) {
+               Entry<aez, fze.b> $$2 = $$1.next();
+               if ($$0.test($$2.getKey())) {
+                  $$2.getValue().a();
+                  $$1.remove();
+               }
             }
          }
-      });
+      };
+      this.c.forEach($$2x -> $$2x.a($$0, $$2));
+      Builder<Function<fzd, fyu>> $$3 = ImmutableList.builder();
+      $$3.add((Function<fzd, fyu>)$$0x -> fyq.a());
+      $$3.addAll($$1.values());
+      return $$3.build();
+   }
+
+   public static fzf a(anw $$0, aez $$1) {
+      aez $$2 = b.a($$1);
+      List<fze> $$3 = new ArrayList<>();
+
+      for (anu $$4 : $$0.a($$2)) {
+         try (BufferedReader $$5 = $$4.e()) {
+            Dynamic<JsonElement> $$6 = new Dynamic(JsonOps.INSTANCE, JsonParser.parseReader($$5));
+            $$3.addAll((Collection<? extends fze>)fzh.h.parse($$6).getOrThrow(false, a::error));
+         } catch (Exception var11) {
+            a.warn("Failed to parse atlas definition {} in pack {}", new Object[]{$$2, $$4.b(), var11});
+         }
+      }
+
+      return new fzf($$3);
    }
 }

@@ -1,47 +1,73 @@
-public class ewx extends eyk {
-   private static final int a = 90;
-   private final tl b;
-   private etj c = etj.a;
-   private final Runnable k;
-   private final tl l;
-   private final boolean m;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
 
-   public ewx(Runnable $$0, tl $$1, tl $$2) {
-      this($$0, $$1, $$2, tk.k, true);
+public class ewx extends ewy {
+   private static final tl k = tl.c("chat.copy");
+   private static final tl l = tl.c("chat.link.warning");
+   private final String m;
+   private final boolean n;
+
+   public ewx(BooleanConsumer $$0, String $$1, boolean $$2) {
+      this($$0, c($$2), tl.b($$1), $$1, $$2 ? tk.e : tk.g, $$2);
    }
 
-   public ewx(Runnable $$0, tl $$1, tl $$2, tl $$3, boolean $$4) {
-      super($$1);
-      this.k = $$0;
-      this.b = $$2;
-      this.l = $$3;
-      this.m = $$4;
+   public ewx(BooleanConsumer $$0, tl $$1, String $$2, boolean $$3) {
+      this($$0, $$1, $$2, $$3 ? tk.e : tk.g, $$3);
+   }
+
+   public ewx(BooleanConsumer $$0, tl $$1, String $$2, tl $$3, boolean $$4) {
+      this($$0, $$1, a($$4, $$2), $$2, $$3, $$4);
+   }
+
+   public ewx(BooleanConsumer $$0, tl $$1, tl $$2, String $$3, tl $$4, boolean $$5) {
+      super($$0, $$1, $$2);
+      this.a = (tl)($$5 ? tl.c("chat.link.open") : tk.f);
+      this.b = $$4;
+      this.n = !$$5;
+      this.m = $$3;
+   }
+
+   protected static tz a(boolean $$0, String $$1) {
+      return c($$0).b(tk.u).b(tl.b($$1));
+   }
+
+   protected static tz c(boolean $$0) {
+      return tl.c($$0 ? "chat.link.confirmTrusted" : "chat.link.confirm");
    }
 
    @Override
-   public tl g() {
-      return tk.a(super.g(), this.b);
+   protected void a(int $$0) {
+      this.d(esk.a(this.a, $$0x -> this.c.accept(true)).a(this.g / 2 - 50 - 105, $$0, 100, 20).a());
+      this.d(esk.a(k, $$0x -> {
+         this.k();
+         this.c.accept(false);
+      }).a(this.g / 2 - 50, $$0, 100, 20).a());
+      this.d(esk.a(this.b, $$0x -> this.c.accept(false)).a(this.g / 2 - 50 + 105, $$0, 100, 20).a());
+   }
+
+   public void k() {
+      this.f.o.a(this.m);
    }
 
    @Override
-   protected void aH_() {
-      super.aH_();
-      this.c = etj.a(this.i, this.b, this.g - 50);
-      int $$0 = this.c.a() * 9;
-      int $$1 = arw.a(90 + $$0 + 12, this.h / 6 + 96, this.h - 24);
-      int $$2 = 150;
-      this.d(esq.a(this.l, $$0x -> this.k.run()).a((this.g - 150) / 2, $$1, 150, 20).a());
-   }
-
-   @Override
-   public void a(esf $$0, int $$1, int $$2, float $$3) {
+   public void a(erz $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.i, this.e, this.g / 2, 70, 16777215);
-      this.c.a($$0, this.g / 2, 90);
+      if (this.n) {
+         $$0.a(this.i, l, this.g / 2, 110, 16764108);
+      }
    }
 
-   @Override
-   public boolean ay_() {
-      return this.m;
+   public static void a(String $$0, eye $$1, boolean $$2) {
+      eqp $$3 = eqp.O();
+      $$3.a(new ewx($$3x -> {
+         if ($$3x) {
+            ac.i().a($$0);
+         }
+
+         $$3.a($$1);
+      }, $$0, $$2));
+   }
+
+   public static esk.c b(String $$0, eye $$1, boolean $$2) {
+      return $$3 -> a($$0, $$1, $$2);
    }
 }

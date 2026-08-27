@@ -1,16 +1,110 @@
-import java.util.function.Consumer;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.MapLike;
+import com.mojang.serialization.RecordBuilder;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectOpenHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-@FunctionalInterface
-public interface gdy {
-   gdy a = ($$0, $$1) -> {
-   };
+public class gdy {
+   final Map<gdx<?>, Object> a;
 
-   default gdy decorate(Consumer<gec.a> $$0) {
-      return ($$1, $$2) -> this.send($$1, $$2x -> {
-            $$2.accept($$2x);
-            $$0.accept($$2x);
-         });
+   gdy(Map<gdx<?>, Object> $$0) {
+      this.a = $$0;
    }
 
-   void send(gdz var1, Consumer<gec.a> var2);
+   public static gdy.a a() {
+      return new gdy.a();
+   }
+
+   public static Codec<gdy> a(final List<gdx<?>> $$0) {
+      return (new MapCodec<gdy>() {
+         public <T> RecordBuilder<T> a(gdy $$0x, DynamicOps<T> $$1, RecordBuilder<T> $$2) {
+            RecordBuilder<T> $$3 = $$2;
+
+            for (gdx<?> $$4 : $$0) {
+               $$3 = this.a($$0, $$3, $$4);
+            }
+
+            return $$3;
+         }
+
+         private <T, V> RecordBuilder<T> a(gdy $$0x, RecordBuilder<T> $$1, gdx<V> $$2) {
+            V $$3 = $$0.a($$2);
+            return $$3 != null ? $$1.add($$2.b(), $$3, $$2.d()) : $$1;
+         }
+
+         public <T> DataResult<gdy> decode(DynamicOps<T> $$0x, MapLike<T> $$1) {
+            DataResult<gdy.a> $$2 = DataResult.success(new gdy.a());
+
+            for (gdx<?> $$3 : $$0) {
+               $$2 = this.a($$2, $$0, $$1, $$3);
+            }
+
+            return $$2.map(gdy.a::a);
+         }
+
+         private <T, V> DataResult<gdy.a> a(DataResult<gdy.a> $$0x, DynamicOps<T> $$1, MapLike<T> $$2, gdx<V> $$3) {
+            T $$4 = (T)$$2.get($$3.b());
+            if ($$4 != null) {
+               DataResult<V> $$5 = $$3.d().parse($$1, $$4);
+               return $$0.apply2stable(($$1x, $$2x) -> $$1x.a($$3, (V)$$2x), $$5);
+            } else {
+               return $$0;
+            }
+         }
+
+         public <T> Stream<T> keys(DynamicOps<T> $$0x) {
+            return $$0.stream().map(gdx::b).map($$0::createString);
+         }
+      }).codec();
+   }
+
+   @Nullable
+   public <T> T a(gdx<T> $$0) {
+      return (T)this.a.get($$0);
+   }
+
+   @Override
+   public String toString() {
+      return this.a.toString();
+   }
+
+   public Set<gdx<?>> b() {
+      return this.a.keySet();
+   }
+
+   public static class a {
+      private final Map<gdx<?>, Object> a = new Reference2ObjectOpenHashMap();
+
+      a() {
+      }
+
+      public <T> gdy.a a(gdx<T> $$0, T $$1) {
+         this.a.put($$0, $$1);
+         return this;
+      }
+
+      public <T> gdy.a b(gdx<T> $$0, @Nullable T $$1) {
+         if ($$1 != null) {
+            this.a.put($$0, $$1);
+         }
+
+         return this;
+      }
+
+      public gdy.a a(gdy $$0) {
+         this.a.putAll($$0.a);
+         return this;
+      }
+
+      public gdy a() {
+         return new gdy(this.a);
+      }
+   }
 }

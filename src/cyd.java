@@ -1,50 +1,22 @@
-public class cyd extends csv implements csx {
-   protected cyd(dfi.d $$0) {
+import com.mojang.serialization.MapCodec;
+
+public class cyd extends dar {
+   public static final MapCodec<cyd> a = b(cyd::new);
+
+   @Override
+   public MapCodec<cyd> a() {
+      return a;
+   }
+
+   public cyd(dfc.d $$0) {
       super($$0);
    }
 
-   private static boolean b(dfj $$0, cpy $$1, gw $$2) {
-      gw $$3 = $$2.c();
-      dfj $$4 = $$1.a_($$3);
-      int $$5 = ead.a($$1, $$0, $$2, $$4, $$3, ha.b, $$4.b($$1, $$3));
-      return $$5 < $$1.M();
-   }
-
    @Override
-   public void b(dfj $$0, akq $$1, gw $$2, asc $$3) {
-      if (!b($$0, $$1, $$2)) {
-         $$1.b($$2, csw.dW.n());
+   public void a(dfd $$0, cqb $$1, gw $$2, ash $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if ($$3.a(10) == 0) {
+         $$1.a(iv.U, (double)$$2.u() + $$3.j(), (double)$$2.v() + 1.1, (double)$$2.w() + $$3.j(), 0.0, 0.0, 0.0);
       }
-   }
-
-   @Override
-   public boolean a(cpy $$0, gw $$1, dfj $$2) {
-      return $$0.a_($$1.c()).i();
-   }
-
-   @Override
-   public boolean a(cpv $$0, asc $$1, gw $$2, dfj $$3) {
-      return true;
-   }
-
-   @Override
-   public void a(akq $$0, asc $$1, gw $$2, dfj $$3) {
-      dfj $$4 = $$0.a_($$2);
-      gw $$5 = $$2.c();
-      dhg $$6 = $$0.k().g();
-      hq<dnj<?, ?>> $$7 = $$0.G_().d(jc.as);
-      if ($$4.a(csw.ow)) {
-         this.a($$7, ot.h, $$0, $$6, $$1, $$5);
-      } else if ($$4.a(csw.on)) {
-         this.a($$7, ot.j, $$0, $$6, $$1, $$5);
-         this.a($$7, ot.l, $$0, $$6, $$1, $$5);
-         if ($$1.a(8) == 0) {
-            this.a($$7, ot.n, $$0, $$6, $$1, $$5);
-         }
-      }
-   }
-
-   private void a(hq<dnj<?, ?>> $$0, aev<dnj<?, ?>> $$1, akq $$2, dhg $$3, asc $$4, gw $$5) {
-      $$0.b($$1).ifPresent($$4x -> ((dnj)$$4x.a()).a($$2, $$3, $$4, $$5));
    }
 }

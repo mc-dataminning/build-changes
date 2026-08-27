@@ -1,64 +1,59 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
+import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.Set;
 
-public class edn extends edc {
-   public static final Codec<edn> a = a(edn::new);
+public class edn extends edw {
+   public static final Codec<edn> a = RecordCodecBuilder.create($$0 -> a($$0).and(edn.a.e.fieldOf("source").forGetter($$0x -> $$0x.b)).apply($$0, edn::new));
+   private final edn.a b;
 
-   edn(List<edj> $$0, List<efp> $$1) {
-      super($$0, $$1);
+   private edn(List<efj> $$0, edn.a $$1) {
+      super($$0);
+      this.b = $$1;
    }
 
    @Override
-   public edk a() {
-      return edh.h;
+   public edy b() {
+      return edz.o;
    }
 
    @Override
-   protected edb a(List<? extends edb> $$0) {
-      return switch ($$0.size()) {
-         case 0 -> c;
-         case 1 -> (edb)$$0.get(0);
-         case 2 -> $$0.get(0).and($$0.get(1));
-         default -> ($$1, $$2) -> {
-         for (edb $$3 : $$0) {
-            if (!$$3.expand($$1, $$2)) {
-               return false;
-            }
-         }
-
-         return true;
-      };
-      };
+   public Set<ees<?>> a() {
+      return ImmutableSet.of(this.b.g);
    }
 
-   public static edn.a a(edj.a<?>... $$0) {
-      return new edn.a($$0);
-   }
-
-   public static class a extends edj.a<edn.a> {
-      private final Builder<edj> a = ImmutableList.builder();
-
-      public a(edj.a<?>... $$0) {
-         for (edj.a<?> $$1 : $$0) {
-            this.a.add($$1.b());
-         }
+   @Override
+   public cjl a(cjl $$0, eck $$1) {
+      if ($$1.c(this.b.g) instanceof bhi $$3 && $$3.ac()) {
+         $$0.a($$3.N_());
       }
 
-      protected edn.a a() {
-         return this;
+      return $$0;
+   }
+
+   public static edw.a<?> a(edn.a $$0) {
+      return a($$1 -> new edn($$1, $$0));
+   }
+
+   public static enum a implements asu {
+      a("this", eev.a),
+      b("killer", eev.d),
+      c("killer_player", eev.b),
+      d("block_entity", eev.h);
+
+      public static final Codec<edn.a> e = asu.a(edn.a::values);
+      private final String f;
+      final ees<?> g;
+
+      private a(String $$0, ees<?> $$1) {
+         this.f = $$0;
+         this.g = $$1;
       }
 
       @Override
-      public edn.a c(edj.a<?> $$0) {
-         this.a.add($$0.b());
-         return this;
-      }
-
-      @Override
-      public edj b() {
-         return new edn(this.a.build(), this.f());
+      public String c() {
+         return this.f;
       }
    }
 }

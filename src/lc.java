@@ -3,7 +3,7 @@ import com.google.gson.JsonPrimitive;
 public class lc {
    public static final ld<lc.a> a = new ld<>("x", $$0 -> new JsonPrimitive($$0.e));
    public static final ld<lc.a> b = new ld<>("y", $$0 -> new JsonPrimitive($$0.e));
-   public static final ld<aew> c = new ld<>("model", $$0 -> new JsonPrimitive($$0.toString()));
+   public static final ld<aez> c = new ld<>("model", $$0 -> new JsonPrimitive($$0.toString()));
    public static final ld<Boolean> d = new ld<>("uvlock", JsonPrimitive::new);
    public static final ld<Integer> e = new ld<>("weight", JsonPrimitive::new);
 

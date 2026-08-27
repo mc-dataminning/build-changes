@@ -1,42 +1,92 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+public interface cqr extends cph {
+   ha[] C = ha.values();
 
-public class cqr {
-   public static final Codec<cqr> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               apc.b.fieldOf("sound").forGetter($$0x -> $$0x.c),
-               Codec.INT.fieldOf("tick_delay").forGetter($$0x -> $$0x.d),
-               Codec.INT.fieldOf("block_search_extent").forGetter($$0x -> $$0x.e),
-               Codec.DOUBLE.fieldOf("offset").forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, cqr::new)
-   );
-   public static final cqr b = new cqr(apd.h, 6000, 8, 2.0);
-   private final he<apc> c;
-   private final int d;
-   private final int e;
-   private final double f;
-
-   public cqr(he<apc> $$0, int $$1, int $$2, double $$3) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
+   default int a(gw $$0, ha $$1) {
+      return this.a_($$0).c(this, $$0, $$1);
    }
 
-   public he<apc> a() {
-      return this.c;
+   default int e_(gw $$0) {
+      int $$1 = 0;
+      $$1 = Math.max($$1, this.a($$0.d(), ha.a));
+      if ($$1 >= 15) {
+         return $$1;
+      } else {
+         $$1 = Math.max($$1, this.a($$0.c(), ha.b));
+         if ($$1 >= 15) {
+            return $$1;
+         } else {
+            $$1 = Math.max($$1, this.a($$0.e(), ha.c));
+            if ($$1 >= 15) {
+               return $$1;
+            } else {
+               $$1 = Math.max($$1, this.a($$0.f(), ha.d));
+               if ($$1 >= 15) {
+                  return $$1;
+               } else {
+                  $$1 = Math.max($$1, this.a($$0.g(), ha.e));
+                  if ($$1 >= 15) {
+                     return $$1;
+                  } else {
+                     $$1 = Math.max($$1, this.a($$0.h(), ha.f));
+                     return $$1 >= 15 ? $$1 : $$1;
+                  }
+               }
+            }
+         }
+      }
    }
 
-   public int b() {
-      return this.d;
+   default int a(gw $$0, ha $$1, boolean $$2) {
+      dfd $$3 = this.a_($$0);
+      if ($$2) {
+         return cvc.h($$3) ? this.a($$0, $$1) : 0;
+      } else if ($$3.a(cte.ha)) {
+         return 15;
+      } else if ($$3.a(cte.cw)) {
+         return $$3.c(czc.f);
+      } else {
+         return $$3.m() ? this.a($$0, $$1) : 0;
+      }
    }
 
-   public int c() {
-      return this.e;
+   default boolean b(gw $$0, ha $$1) {
+      return this.c($$0, $$1) > 0;
    }
 
-   public double d() {
-      return this.f;
+   default int c(gw $$0, ha $$1) {
+      dfd $$2 = this.a_($$0);
+      int $$3 = $$2.b(this, $$0, $$1);
+      return $$2.g(this, $$0) ? Math.max($$3, this.e_($$0)) : $$3;
+   }
+
+   default boolean B(gw $$0) {
+      if (this.c($$0.d(), ha.a) > 0) {
+         return true;
+      } else if (this.c($$0.c(), ha.b) > 0) {
+         return true;
+      } else if (this.c($$0.e(), ha.c) > 0) {
+         return true;
+      } else if (this.c($$0.f(), ha.d) > 0) {
+         return true;
+      } else {
+         return this.c($$0.g(), ha.e) > 0 ? true : this.c($$0.h(), ha.f) > 0;
+      }
+   }
+
+   default int C(gw $$0) {
+      int $$1 = 0;
+
+      for (ha $$2 : C) {
+         int $$3 = this.c($$0.a($$2), $$2);
+         if ($$3 >= 15) {
+            return 15;
+         }
+
+         if ($$3 > $$1) {
+            $$1 = $$3;
+         }
+      }
+
+      return $$1;
    }
 }

@@ -1,30 +1,47 @@
-import com.mojang.serialization.Codec;
-import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-public interface fjn {
-   Codec<fjn> a = asp.a(fjn.a::values).dispatch(fjn::a, fjn.a::a);
+public enum fjn {
+   a("generic_violation"),
+   b("false_reporting"),
+   c("hate_speech"),
+   d("hate_terrorism_notorious_figure"),
+   e("harassment_or_bullying"),
+   f("defamation_impersonation_false_information"),
+   g("drugs"),
+   h("fraud"),
+   i("spam_or_advertising"),
+   j("nudity_or_pornography"),
+   k("sexually_inappropriate"),
+   l("extreme_violence_or_gore"),
+   m("imminent_harm_to_person_or_property");
 
-   fjn.a a();
+   private final tl n;
 
-   public static enum a implements asp {
-      a("player", () -> fjo.a.b),
-      b("system", () -> fjo.b.b);
+   private fjn(String $$0) {
+      this.n = tl.c("gui.banned.reason." + $$0);
+   }
 
-      private final String c;
-      private final Supplier<Codec<? extends fjn>> d;
+   public tl a() {
+      return this.n;
+   }
 
-      private a(String $$0, Supplier<Codec<? extends fjn>> $$1) {
-         this.c = $$0;
-         this.d = $$1;
-      }
-
-      private Codec<? extends fjn> a() {
-         return this.d.get();
-      }
-
-      @Override
-      public String c() {
-         return this.c;
-      }
+   @Nullable
+   public static fjn a(int $$0) {
+      return switch ($$0) {
+         case 2 -> b;
+         default -> null;
+         case 5 -> c;
+         case 16, 25 -> d;
+         case 17, 19, 23, 31 -> a;
+         case 21 -> e;
+         case 27 -> f;
+         case 28 -> g;
+         case 29 -> h;
+         case 30 -> i;
+         case 32 -> j;
+         case 33 -> k;
+         case 34 -> l;
+         case 53 -> m;
+      };
    }
 }

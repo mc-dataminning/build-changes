@@ -1,42 +1,9 @@
-import javax.annotation.Nullable;
+public interface dep {
+   void a();
 
-public abstract class dep {
-   @Nullable
-   protected abstract aev<dnj<?, ?>> a(asc var1, boolean var2);
+   boolean b();
 
-   public boolean a(akq $$0, dhg $$1, gw $$2, dfj $$3, asc $$4) {
-      aev<dnj<?, ?>> $$5 = this.a($$4, this.a($$0, $$2));
-      if ($$5 == null) {
-         return false;
-      } else {
-         he<dnj<?, ?>> $$6 = $$0.G_().d(jc.as).b($$5).orElse(null);
-         if ($$6 == null) {
-            return false;
-         } else {
-            dnj<?, ?> $$7 = $$6.a();
-            dfj $$8 = $$0.b_($$2).g();
-            $$0.a($$2, $$8, 4);
-            if ($$7.a($$0, $$1, $$4, $$2)) {
-               if ($$0.a_($$2) == $$8) {
-                  $$0.a($$2, $$3, $$8, 2);
-               }
+   gw c();
 
-               return true;
-            } else {
-               $$0.a($$2, $$3, 4);
-               return false;
-            }
-         }
-      }
-   }
-
-   private boolean a(cpw $$0, gw $$1) {
-      for (gw $$2 : gw.a.a($$1.d().d(2).f(2), $$1.c().e(2).g(2))) {
-         if ($$0.a_($$2).a(aps.U)) {
-            return true;
-         }
-      }
-
-      return false;
-   }
+   String d();
 }

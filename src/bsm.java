@@ -1,41 +1,59 @@
-public class bsm extends bsp {
-   public bsm(bji $$0, cpv $$1) {
-      super($$0, $$1);
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+
+public class bsm<T> {
+   private final T a;
+   private long b;
+
+   public bsm(T $$0, long $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
+
+   public void a() {
+      if (this.e()) {
+         this.b--;
+      }
+   }
+
+   public static <T> bsm<T> a(T $$0) {
+      return new bsm<>($$0, Long.MAX_VALUE);
+   }
+
+   public static <T> bsm<T> a(T $$0, long $$1) {
+      return new bsm<>($$0, $$1);
+   }
+
+   public long b() {
+      return this.b;
+   }
+
+   public T c() {
+      return this.a;
+   }
+
+   public boolean d() {
+      return this.b <= 0L;
    }
 
    @Override
-   protected ebd a(int $$0) {
-      this.o = new eav(false);
-      this.o.a(true);
-      return new ebd(this.o, $$0);
+   public String toString() {
+      return this.a + (this.e() ? " (ttl: " + this.b + ")" : "");
    }
 
-   @Override
-   protected boolean a() {
-      return true;
+   @atd
+   public boolean e() {
+      return this.b != Long.MAX_VALUE;
    }
 
-   @Override
-   protected ehn b() {
-      return new ehn(this.a.dq(), this.a.e(0.5), this.a.dw());
-   }
-
-   @Override
-   protected double a(ehn $$0) {
-      return $$0.d;
-   }
-
-   @Override
-   protected boolean a(ehn $$0, ehn $$1) {
-      return this.a.bb() ? a(this.a, $$0, $$1, false) : false;
-   }
-
-   @Override
-   public boolean a(gw $$0) {
-      return !this.b.a_($$0.d()).i();
-   }
-
-   @Override
-   public void a(boolean $$0) {
+   public static <T> Codec<bsm<T>> a(Codec<T> $$0) {
+      return RecordCodecBuilder.create(
+         $$1 -> $$1.group(
+                  $$0.fieldOf("value").forGetter($$0xx -> $$0xx.a),
+                  Codec.LONG.optionalFieldOf("ttl").forGetter($$0xx -> $$0xx.e() ? Optional.of($$0xx.b) : Optional.empty())
+               )
+               .apply($$1, ($$0xx, $$1x) -> new bsm<>($$0xx, $$1x.orElse(Long.MAX_VALUE)))
+      );
    }
 }

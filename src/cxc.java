@@ -1,117 +1,78 @@
-import java.util.OptionalInt;
+import com.mojang.serialization.MapCodec;
 
-public class cxc extends csv implements czw {
-   public static final int a = 7;
-   public static final dgj b = dfz.aC;
-   public static final dga c = dfz.v;
-   public static final dga d = dfz.C;
-   private static final int e = 1;
+public class cxc extends ctc implements cvs, cwi {
+   public static final MapCodec<cxc> a = b(cxc::new);
+   public static final dgb<hc> b = dft.T;
 
-   public cxc(dfi.d $$0) {
+   @Override
+   public MapCodec<cxc> a() {
+      return a;
+   }
+
+   protected cxc(dfc.d $$0) {
       super($$0);
-      this.k(this.C.b().a(b, Integer.valueOf(7)).a(c, Boolean.valueOf(false)).a(d, Boolean.valueOf(false)));
+      this.k(this.E.b().a(b, hc.k));
    }
 
    @Override
-   public eig b_(dfj $$0, cpb $$1, gw $$2) {
-      return eid.a();
+   protected void a(dfe.a<ctc, dfd> $$0) {
+      $$0.a(b);
    }
 
    @Override
-   public boolean e_(dfj $$0) {
-      return $$0.c(b) == 7 && !$$0.c(c);
+   public dfd a(dfd $$0, czn $$1) {
+      return $$0.a(b, $$1.a().a($$0.c(b)));
    }
 
    @Override
-   public void b(dfj $$0, akq $$1, gw $$2, asc $$3) {
-      if (this.h($$0)) {
-         c($$0, $$1, $$2);
-         $$1.a($$2, false);
-      }
-   }
-
-   protected boolean h(dfj $$0) {
-      return !$$0.c(c) && $$0.c(b) == 7;
+   public dfd a(dfd $$0, cxx $$1) {
+      return $$0.a(b, $$1.a().a($$0.c(b)));
    }
 
    @Override
-   public void a(dfj $$0, akq $$1, gw $$2, asc $$3) {
-      $$1.a($$2, a($$0, $$1, $$2), 3);
-   }
-
-   @Override
-   public int g(dfj $$0, cpb $$1, gw $$2) {
-      return 1;
-   }
-
-   @Override
-   public dfj a(dfj $$0, ha $$1, dfj $$2, cpw $$3, gw $$4, gw $$5) {
-      if ($$0.c(d)) {
-         $$3.a($$4, ean.c, ean.c.a($$3));
-      }
-
-      int $$6 = o($$2) + 1;
-      if ($$6 != 1 || $$0.c(b) != $$6) {
-         $$3.a($$4, this, 1);
-      }
-
-      return $$0;
-   }
-
-   private static dfj a(dfj $$0, cpw $$1, gw $$2) {
-      int $$3 = 7;
-      gw.a $$4 = new gw.a();
-
-      for (ha $$5 : ha.values()) {
-         $$4.a($$2, $$5);
-         $$3 = Math.min($$3, o($$1.a_($$4)) + 1);
-         if ($$3 == 1) {
-            break;
-         }
-      }
-
-      return $$0.a(b, Integer.valueOf($$3));
-   }
-
-   private static int o(dfj $$0) {
-      return n($$0).orElse(7);
-   }
-
-   public static OptionalInt n(dfj $$0) {
-      if ($$0.a(aps.t)) {
-         return OptionalInt.of(0);
+   public dfd a(clt $$0) {
+      ha $$1 = $$0.k();
+      ha $$2;
+      if ($$1.o() == ha.a.b) {
+         $$2 = $$0.g().g();
       } else {
-         return $$0.b(b) ? OptionalInt.of($$0.c(b)) : OptionalInt.empty();
+         $$2 = ha.b;
+      }
+
+      return this.o().a(b, hc.a($$1, $$2));
+   }
+
+   @Override
+   public dcz a(gw $$0, dfd $$1) {
+      return new ddy($$0, $$1);
+   }
+
+   @Override
+   public bhe a(dfd $$0, cqb $$1, gw $$2, cca $$3, bhd $$4, ehd $$5) {
+      dcz $$6 = $$1.c_($$2);
+      if ($$6 instanceof ddy && $$3.gp()) {
+         $$3.a((ddy)$$6);
+         return bhe.a($$1.B);
+      } else {
+         return bhe.d;
       }
    }
 
-   @Override
-   public eam c_(dfj $$0) {
-      return $$0.c(d) ? ean.c.a(false) : super.c_($$0);
+   public static boolean a(dyv.c $$0, dyv.c $$1) {
+      ha $$2 = h($$0.b());
+      ha $$3 = h($$1.b());
+      ha $$4 = n($$0.b());
+      ha $$5 = n($$1.b());
+      ddy.a $$6 = ddy.a.a($$0.c().l("joint")).orElseGet(() -> $$2.o().d() ? ddy.a.b : ddy.a.a);
+      boolean $$7 = $$6 == ddy.a.a;
+      return $$2 == $$3.g() && ($$7 || $$4 == $$5) && $$0.c().l("target").equals($$1.c().l("name"));
    }
 
-   @Override
-   public void a(dfj $$0, cpv $$1, gw $$2, asc $$3) {
-      if ($$1.q($$2.c())) {
-         if ($$3.a(15) == 1) {
-            gw $$4 = $$2.d();
-            dfj $$5 = $$1.a_($$4);
-            if (!$$5.p() || !$$5.d($$1, $$4, ha.b)) {
-               arz.a($$1, $$2, $$3, iv.m);
-            }
-         }
-      }
+   public static ha h(dfd $$0) {
+      return $$0.c(b).a();
    }
 
-   @Override
-   protected void a(dfk.a<csv, dfj> $$0) {
-      $$0.a(b, c, d);
-   }
-
-   @Override
-   public dfj a(cln $$0) {
-      eam $$1 = $$0.q().b_($$0.a());
-      dfj $$2 = this.n().a(c, Boolean.valueOf(true)).a(d, Boolean.valueOf($$1.a() == ean.c));
-      return a($$2, $$0.q(), $$0.a());
+   public static ha n(dfd $$0) {
+      return $$0.c(b).b();
    }
 }

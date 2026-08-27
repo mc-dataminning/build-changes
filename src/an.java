@@ -40,7 +40,7 @@ public class an {
 
    public static an b(so $$0) {
       an $$1 = new an();
-      $$1.a = $$0.c(so::v);
+      $$1.a = $$0.c(so::w);
       return $$1;
    }
 }

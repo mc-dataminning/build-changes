@@ -1,125 +1,123 @@
-import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.util.Pair;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import java.util.HashSet;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Objects;
+import java.util.UUID;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.mutable.MutableLong;
+import org.slf4j.Logger;
 
 public class bkq {
-   public static final int a = 48;
+   private static final Logger b = LogUtils.getLogger();
+   public static final Codec<bkq> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               hx.a.fieldOf("UUID").forGetter(bkq::a),
+               Codec.STRING.fieldOf("Name").forGetter($$0x -> $$0x.e),
+               Codec.DOUBLE.fieldOf("Amount").forGetter(bkq::c),
+               bkq.a.d.fieldOf("Operation").forGetter(bkq::b)
+            )
+            .apply($$0, bkq::new)
+   );
+   private final double c;
+   private final bkq.a d;
+   private final String e;
+   private final UUID f;
 
-   public static bky<bjp> a(Predicate<he<bui>> $$0, bsh<hd> $$1, boolean $$2, Optional<Byte> $$3) {
-      return a($$0, $$1, $$1, $$2, $$3);
+   public bkq(String $$0, double $$1, bkq.a $$2) {
+      this(asb.a(ash.c()), $$0, $$1, $$2);
    }
 
-   public static bky<bjp> a(Predicate<he<bui>> $$0, bsh<hd> $$1, bsh<hd> $$2, boolean $$3, Optional<Byte> $$4) {
-      int $$5 = 5;
-      int $$6 = 20;
-      MutableLong $$7 = new MutableLong(0L);
-      Long2ObjectMap<bkq.a> $$8 = new Long2ObjectOpenHashMap();
-      bmh<bjp> $$9 = boj.a(
-         (Function<boj.b<bjp>, ? extends App<boj.c<bjp>, bom<bjp>>>)($$6x -> $$6x.group($$6x.c($$2)).apply($$6x, $$5xx -> ($$6xx, $$7x, $$8x) -> {
-                  if ($$3 && $$7x.m_()) {
-                     return false;
-                  } else if ($$7.getValue() == 0L) {
-                     $$7.setValue($$6xx.V() + (long)$$6xx.z.a(20));
-                     return false;
-                  } else if ($$6xx.V() < $$7.getValue()) {
-                     return false;
-                  } else {
-                     $$7.setValue($$8x + 20L + (long)$$6xx.D_().a(20));
-                     buf $$9x = $$6xx.w();
-                     $$8.long2ObjectEntrySet().removeIf($$1xxxx -> !((bkq.a)$$1xxxx.getValue()).b($$8x));
-                     Predicate<gw> $$10 = $$2xxxx -> {
-                        bkq.a $$3xxxx = (bkq.a)$$8.get($$2xxxx.a());
-                        if ($$3xxxx == null) {
-                           return true;
-                        } else if (!$$3xxxx.c($$8x)) {
-                           return false;
-                        } else {
-                           $$3xxxx.a($$8x);
-                           return true;
-                        }
-                     };
-                     Set<Pair<he<bui>, gw>> $$11 = $$9x.c($$0, $$10, $$7x.dl(), 48, buf.b.a).limit(5L).collect(Collectors.toSet());
-                     ebb $$12 = a($$7x, $$11);
-                     if ($$12 != null && $$12.j()) {
-                        gw $$13 = $$12.l();
-                        $$9x.c($$13).ifPresent($$8xx -> {
-                           $$9x.a($$0, ($$1xxxxx, $$2xxxxx) -> $$2xxxxx.equals($$13), $$13, 1);
-                           $$5xx.a(hd.a($$6xx.ac(), $$13));
-                           $$4.ifPresent($$2xxxxx -> $$6xx.a($$7x, $$2xxxxx));
-                           $$8.clear();
-                           abb.c($$6xx, $$13);
-                        });
-                     } else {
-                        for (Pair<he<bui>, gw> $$14 : $$11) {
-                           $$8.computeIfAbsent(((gw)$$14.getSecond()).a(), $$2xxxx -> new bkq.a($$6xx.z, $$8x));
-                        }
-                     }
+   public bkq(UUID $$0, String $$1, double $$2, bkq.a $$3) {
+      this.f = $$0;
+      this.e = $$1;
+      this.c = $$2;
+      this.d = $$3;
+   }
 
-                     return true;
-                  }
-               }))
-      );
-      return $$2 == $$1 ? $$9 : boj.a((Function<boj.b<bjp>, ? extends App<boj.c<bjp>, bom<bjp>>>)($$2x -> $$2x.group($$2x.c($$1)).apply($$2x, $$1xx -> $$9)));
+   public UUID a() {
+      return this.f;
+   }
+
+   public bkq.a b() {
+      return this.d;
+   }
+
+   public double c() {
+      return this.c;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         bkq $$1 = (bkq)$$0;
+         return Objects.equals(this.f, $$1.f);
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return this.f.hashCode();
+   }
+
+   @Override
+   public String toString() {
+      return "AttributeModifier{amount=" + this.c + ", operation=" + this.d + ", name='" + this.e + "', id=" + this.f + "}";
+   }
+
+   public qw d() {
+      qw $$0 = new qw();
+      $$0.a("Name", this.e);
+      $$0.a("Amount", this.c);
+      $$0.a("Operation", this.d.a());
+      $$0.a("UUID", this.f);
+      return $$0;
    }
 
    @Nullable
-   public static ebb a(bji $$0, Set<Pair<he<bui>, gw>> $$1) {
-      if ($$1.isEmpty()) {
+   public static bkq a(qw $$0) {
+      try {
+         UUID $$1 = $$0.a("UUID");
+         bkq.a $$2 = bkq.a.a($$0.h("Operation"));
+         return new bkq($$1, $$0.l("Name"), $$0.k("Amount"), $$2);
+      } catch (Exception var3) {
+         b.warn("Unable to create attribute: {}", var3.getMessage());
          return null;
-      } else {
-         Set<gw> $$2 = new HashSet<>();
-         int $$3 = 1;
-
-         for (Pair<he<bui>, gw> $$4 : $$1) {
-            $$3 = Math.max($$3, ((bui)((he)$$4.getFirst()).a()).c());
-            $$2.add((gw)$$4.getSecond());
-         }
-
-         return $$0.L().a($$2, $$3);
       }
    }
 
-   static class a {
-      private static final int a = 40;
-      private static final int b = 80;
-      private static final int c = 400;
-      private final asc d;
-      private long e;
-      private long f;
-      private int g;
+   public static enum a implements asu {
+      a("addition", 0),
+      b("multiply_base", 1),
+      c("multiply_total", 2);
 
-      a(asc $$0, long $$1) {
-         this.d = $$0;
-         this.a($$1);
+      private static final bkq.a[] e = new bkq.a[]{a, b, c};
+      public static final Codec<bkq.a> d = asu.a(bkq.a::values);
+      private final String f;
+      private final int g;
+
+      private a(String $$0, int $$1) {
+         this.f = $$0;
+         this.g = $$1;
       }
 
-      public void a(long $$0) {
-         this.e = $$0;
-         int $$1 = this.g + this.d.a(40) + 40;
-         this.g = Math.min($$1, 400);
-         this.f = $$0 + (long)this.g;
+      public int a() {
+         return this.g;
       }
 
-      public boolean b(long $$0) {
-         return $$0 - this.e < 400L;
-      }
-
-      public boolean c(long $$0) {
-         return $$0 >= this.f;
+      public static bkq.a a(int $$0) {
+         if ($$0 >= 0 && $$0 < e.length) {
+            return e[$$0];
+         } else {
+            throw new IllegalArgumentException("No operation with value " + $$0);
+         }
       }
 
       @Override
-      public String toString() {
-         return "RetryMarker{, previousAttemptAt=" + this.e + ", nextScheduledAttemptAt=" + this.f + ", currentDelay=" + this.g + "}";
+      public String c() {
+         return this.f;
       }
    }
 }

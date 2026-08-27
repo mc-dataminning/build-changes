@@ -1,34 +1,17 @@
-public class fvw extends ftg<byo> {
-   private final foy a;
+public class fvw extends fuj<cac, fhh> {
+   private static final aez a = new aez("textures/entity/illager/vex.png");
+   private static final aez i = new aez("textures/entity/illager/vex_charging.png");
 
-   public fvw(fth.a $$0) {
-      super($$0);
-      this.d = 0.5F;
-      this.a = $$0.c();
+   public fvw(ftd.a $$0) {
+      super($$0, new fhh($$0.a(fhw.bI)), 0.3F);
+      this.a(new fxe<>(this, $$0.d()));
    }
 
-   public void a(byo $$0, float $$1, float $$2, elp $$3, foe $$4, int $$5) {
-      $$3.a();
-      $$3.a(0.0F, 0.5F, 0.0F);
-      int $$6 = $$0.s();
-      if ((float)$$6 - $$2 + 1.0F < 10.0F) {
-         float $$7 = 1.0F - ((float)$$6 - $$2 + 1.0F) / 10.0F;
-         $$7 = arw.a($$7, 0.0F, 1.0F);
-         $$7 *= $$7;
-         $$7 *= $$7;
-         float $$8 = 1.0F + $$7 * 0.3F;
-         $$3.b($$8, $$8, $$8);
-      }
-
-      $$3.a(a.d.rotationDegrees(-90.0F));
-      $$3.a(-0.5F, -0.5F, 0.5F);
-      $$3.a(a.d.rotationDegrees(90.0F));
-      fvv.a(this.a, csw.ck.n(), $$3, $$4, $$5, $$6 / 5 % 2 == 0);
-      $$3.b();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   protected int a(cac $$0, gw $$1) {
+      return 15;
    }
 
-   public aew a(byo $$0) {
-      return fzd.e;
+   public aez a(cac $$0) {
+      return $$0.ge() ? i : a;
    }
 }

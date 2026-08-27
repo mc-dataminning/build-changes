@@ -1,69 +1,57 @@
-import java.util.Optional;
+import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public abstract class cwh extends cwg implements csx {
-   protected cwh(dfi.d $$0, ha $$1, eig $$2, boolean $$3) {
-      super($$0, $$1, $$2, $$3);
+public class cwh extends crw {
+   public static final MapCodec<cwh> c = b(cwh::new);
+
+   @Override
+   public MapCodec<cwh> a() {
+      return c;
    }
 
-   protected dfj a(dfj $$0, dfj $$1) {
-      return $$1;
+   protected cwh(dfc.d $$0) {
+      super($$0);
    }
 
    @Override
-   public dfj a(dfj $$0, ha $$1, dfj $$2, cpw $$3, gw $$4, gw $$5) {
-      if ($$1 == this.a.g() && !$$0.a($$3, $$4)) {
-         $$3.a($$4, this, 1);
-      }
+   public dcz a(gw $$0, dfd $$1) {
+      return new ddu($$0, $$1);
+   }
 
-      cwi $$6 = this.b();
-      if ($$1 == this.a && !$$2.a(this) && !$$2.a($$6)) {
-         return this.a($$0, $$6.a($$3));
-      } else {
-         if (this.b) {
-            $$3.a($$4, ean.c, ean.c.a($$3));
+   @Nullable
+   @Override
+   public <T extends dcz> dda<T> a(cqb $$0, dfd $$1, ddb<T> $$2) {
+      return a($$0, $$2, ddb.a);
+   }
+
+   @Override
+   protected void a(cqb $$0, gw $$1, cca $$2) {
+      dcz $$3 = $$0.c_($$1);
+      if ($$3 instanceof ddu) {
+         $$2.a((bhh)$$3);
+         $$2.a(apq.am);
+      }
+   }
+
+   @Override
+   public void a(dfd $$0, cqb $$1, gw $$2, ash $$3) {
+      if ($$0.c(b)) {
+         double $$4 = (double)$$2.u() + 0.5;
+         double $$5 = (double)$$2.v();
+         double $$6 = (double)$$2.w() + 0.5;
+         if ($$3.j() < 0.1) {
+            $$1.a($$4, $$5, $$6, apg.iR, aph.e, 1.0F, 1.0F, false);
          }
 
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+         ha $$7 = $$0.c(a);
+         ha.a $$8 = $$7.o();
+         double $$9 = 0.52;
+         double $$10 = $$3.j() * 0.6 - 0.3;
+         double $$11 = $$8 == ha.a.a ? (double)$$7.j() * 0.52 : $$10;
+         double $$12 = $$3.j() * 6.0 / 16.0;
+         double $$13 = $$8 == ha.a.c ? (double)$$7.l() * 0.52 : $$10;
+         $$1.a(iv.Z, $$4 + $$11, $$5 + $$12, $$6 + $$13, 0.0, 0.0, 0.0);
+         $$1.a(iv.C, $$4 + $$11, $$5 + $$12, $$6 + $$13, 0.0, 0.0, 0.0);
       }
-   }
-
-   @Override
-   public cjf a(cpb $$0, gw $$1, dfj $$2) {
-      return new cjf(this.b());
-   }
-
-   @Override
-   public boolean a(cpy $$0, gw $$1, dfj $$2) {
-      Optional<gw> $$3 = this.a($$0, $$1, $$2.b());
-      return $$3.isPresent() && this.b().g($$0.a_($$3.get().a(this.a)));
-   }
-
-   @Override
-   public boolean a(cpv $$0, asc $$1, gw $$2, dfj $$3) {
-      return true;
-   }
-
-   @Override
-   public void a(akq $$0, asc $$1, gw $$2, dfj $$3) {
-      Optional<gw> $$4 = this.a($$0, $$2, $$3.b());
-      if ($$4.isPresent()) {
-         dfj $$5 = $$0.a_($$4.get());
-         ((cwi)$$5.b()).a($$0, $$1, $$4.get(), $$5);
-      }
-   }
-
-   private Optional<gw> a(cpb $$0, gw $$1, csv $$2) {
-      return l.a($$0, $$1, $$2, this.a, this.b());
-   }
-
-   @Override
-   public boolean a(dfj $$0, cln $$1) {
-      boolean $$2 = super.a($$0, $$1);
-      return $$2 && $$1.n().a(this.b().k()) ? false : $$2;
-   }
-
-   @Override
-   protected csv a() {
-      return this;
    }
 }

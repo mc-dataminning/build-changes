@@ -1,7 +1,7 @@
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 
-public enum hc implements asp {
+public enum hc implements asu {
    a("down_east", ha.a, ha.f),
    b("down_north", ha.a, ha.c),
    c("down_south", ha.a, ha.d),

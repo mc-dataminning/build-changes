@@ -3,51 +3,40 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Set;
 
-public record egh(egk b, egk c) implements egk {
+public record egh(ege b, ege c) implements ege {
    public static final Codec<egh> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(egl.a.fieldOf("n").forGetter(egh::c), egl.a.fieldOf("p").forGetter(egh::d)).apply($$0, egh::new)
+      $$0 -> $$0.group(egf.a.fieldOf("min").forGetter(egh::c), egf.a.fieldOf("max").forGetter(egh::d)).apply($$0, egh::new)
    );
 
    @Override
-   public egj b() {
-      return egl.d;
+   public egd b() {
+      return egf.c;
+   }
+
+   public static egh a(float $$0, float $$1) {
+      return new egh(egc.a($$0), egc.a($$1));
    }
 
    @Override
-   public int a(ecq $$0) {
-      int $$1 = this.b.a($$0);
-      float $$2 = this.c.b($$0);
-      asc $$3 = $$0.b();
-      int $$4 = 0;
-
-      for (int $$5 = 0; $$5 < $$1; $$5++) {
-         if ($$3.i() < $$2) {
-            $$4++;
-         }
-      }
-
-      return $$4;
+   public int a(eck $$0) {
+      return asb.a($$0.b(), this.b.a($$0), this.c.a($$0));
    }
 
    @Override
-   public float b(ecq $$0) {
-      return (float)this.a($$0);
-   }
-
-   public static egh a(int $$0, float $$1) {
-      return new egh(egi.a((float)$$0), egi.a($$1));
+   public float b(eck $$0) {
+      return asb.a($$0.b(), this.b.b($$0), this.c.b($$0));
    }
 
    @Override
-   public Set<eey<?>> a() {
+   public Set<ees<?>> a() {
       return Sets.union(this.b.a(), this.c.a());
    }
 
-   public egk c() {
+   public ege c() {
       return this.b;
    }
 
-   public egk d() {
+   public ege d() {
       return this.c;
    }
 }

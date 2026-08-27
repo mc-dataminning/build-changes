@@ -1,45 +1,52 @@
 import com.mojang.serialization.Codec;
+import java.util.Optional;
 
-public class dnf extends dnw<dps> {
-   public dnf(Codec<dps> $$0) {
+public abstract class dnf extends dnq<dqb> {
+   public dnf(Codec<dqb> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dny<dps> $$0) {
-      gw $$1 = $$0.e();
-      cqp $$2 = $$0.b();
-      asc $$3 = $$0.d();
-      dps $$4 = $$0.f();
-      if ($$1.v() < $$2.H_() + 5) {
-         return false;
-      } else {
-         int $$5 = 2 + $$3.a(2);
-         int $$6 = 2 + $$3.a(2);
+   public boolean a(dns<dqb> $$0) {
+      ash $$1 = $$0.d();
+      cqv $$2 = $$0.b();
+      gw $$3 = $$0.e();
+      Optional<ctc> $$4 = jb.f.b(apv.ap).flatMap($$1x -> $$1x.a($$1)).map(he::a);
+      return $$4.isEmpty() ? false : this.a($$2, $$1, $$3, $$4.get().o());
+   }
 
-         for (gw $$7 : gw.a($$1.b(-$$5, 0, -$$6), $$1.b($$5, 1, $$6))) {
-            int $$8 = $$1.u() - $$7.u();
-            int $$9 = $$1.w() - $$7.w();
-            if ((float)($$8 * $$8 + $$9 * $$9) <= $$3.i() * 10.0F - $$3.i() * 6.0F) {
-               this.a($$2, $$7, $$3, $$4);
-            } else if ((double)$$3.i() < 0.031) {
-               this.a($$2, $$7, $$3, $$4);
+   protected abstract boolean a(cqc var1, ash var2, gw var3, dfd var4);
+
+   protected boolean b(cqc $$0, ash $$1, gw $$2, dfd $$3) {
+      gw $$4 = $$2.c();
+      dfd $$5 = $$0.a_($$2);
+      if (($$5.a(cte.G) || $$5.a(apv.as)) && $$0.a_($$4).a(cte.G)) {
+         $$0.a($$2, $$3, 3);
+         if ($$1.i() < 0.25F) {
+            jb.f.b(apv.as).flatMap($$1x -> $$1x.a($$1)).map(he::a).ifPresent($$2x -> $$0.a($$4, $$2x.o(), 2));
+         } else if ($$1.i() < 0.05F) {
+            $$0.a($$4, cte.mV.o().a(czx.c, Integer.valueOf($$1.a(4) + 1)), 2);
+         }
+
+         for (ha $$6 : ha.c.a) {
+            if ($$1.i() < 0.2F) {
+               gw $$7 = $$2.a($$6);
+               if ($$0.a_($$7).a(cte.G)) {
+                  jb.f.b(apv.aq).flatMap($$1x -> $$1x.a($$1)).map(he::a).ifPresent($$3x -> {
+                     dfd $$4x = $$3x.o();
+                     if ($$4x.b(csn.c)) {
+                        $$4x = $$4x.a(csn.c, $$6);
+                     }
+
+                     $$0.a($$7, $$4x, 2);
+                  });
+               }
             }
          }
 
          return true;
-      }
-   }
-
-   private boolean a(cpw $$0, gw $$1, asc $$2) {
-      gw $$3 = $$1.d();
-      dfj $$4 = $$0.a_($$3);
-      return $$4.a(csw.kE) ? $$2.h() : $$4.d($$0, $$3, ha.b);
-   }
-
-   private void a(cpw $$0, gw $$1, asc $$2, dps $$3) {
-      if ($$0.t($$1) && this.a($$0, $$1, $$2)) {
-         $$0.a($$1, $$3.b.a($$2, $$1), 4);
+      } else {
+         return false;
       }
    }
 }

@@ -1,36 +1,23 @@
-public enum dgn implements asp {
-   a("north_south"),
-   b("east_west"),
-   c("ascending_east"),
-   d("ascending_west"),
-   e("ascending_north"),
-   f("ascending_south"),
-   g("south_east"),
-   h("south_west"),
-   i("north_west"),
-   j("north_east");
+public enum dgn implements asu {
+   a("save"),
+   b("load"),
+   c("corner"),
+   d("data");
 
-   private final String k;
+   private final String e;
+   private final tl f;
 
    private dgn(String $$0) {
-      this.k = $$0;
-   }
-
-   public String a() {
-      return this.k;
-   }
-
-   @Override
-   public String toString() {
-      return this.k;
-   }
-
-   public boolean b() {
-      return this == e || this == c || this == f || this == d;
+      this.e = $$0;
+      this.f = tl.c("structure_block.mode_info." + $$0);
    }
 
    @Override
    public String c() {
-      return this.k;
+      return this.e;
+   }
+
+   public tl a() {
+      return this.f;
    }
 }

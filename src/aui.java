@@ -1,47 +1,46 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.util.Pair;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.function.Function;
 
-public final class aui {
-   public static final ImmutableMap<String, String> a = ImmutableMap.builder()
-      .put("minecraft:badlands_plateau", "minecraft:badlands")
-      .put("minecraft:bamboo_jungle_hills", "minecraft:bamboo_jungle")
-      .put("minecraft:birch_forest_hills", "minecraft:birch_forest")
-      .put("minecraft:dark_forest_hills", "minecraft:dark_forest")
-      .put("minecraft:desert_hills", "minecraft:desert")
-      .put("minecraft:desert_lakes", "minecraft:desert")
-      .put("minecraft:giant_spruce_taiga_hills", "minecraft:old_growth_spruce_taiga")
-      .put("minecraft:giant_spruce_taiga", "minecraft:old_growth_spruce_taiga")
-      .put("minecraft:giant_tree_taiga_hills", "minecraft:old_growth_pine_taiga")
-      .put("minecraft:giant_tree_taiga", "minecraft:old_growth_pine_taiga")
-      .put("minecraft:gravelly_mountains", "minecraft:windswept_gravelly_hills")
-      .put("minecraft:jungle_edge", "minecraft:sparse_jungle")
-      .put("minecraft:jungle_hills", "minecraft:jungle")
-      .put("minecraft:modified_badlands_plateau", "minecraft:badlands")
-      .put("minecraft:modified_gravelly_mountains", "minecraft:windswept_gravelly_hills")
-      .put("minecraft:modified_jungle_edge", "minecraft:sparse_jungle")
-      .put("minecraft:modified_jungle", "minecraft:jungle")
-      .put("minecraft:modified_wooded_badlands_plateau", "minecraft:wooded_badlands")
-      .put("minecraft:mountain_edge", "minecraft:windswept_hills")
-      .put("minecraft:mountains", "minecraft:windswept_hills")
-      .put("minecraft:mushroom_field_shore", "minecraft:mushroom_fields")
-      .put("minecraft:shattered_savanna", "minecraft:windswept_savanna")
-      .put("minecraft:shattered_savanna_plateau", "minecraft:windswept_savanna")
-      .put("minecraft:snowy_mountains", "minecraft:snowy_plains")
-      .put("minecraft:snowy_taiga_hills", "minecraft:snowy_taiga")
-      .put("minecraft:snowy_taiga_mountains", "minecraft:snowy_taiga")
-      .put("minecraft:snowy_tundra", "minecraft:snowy_plains")
-      .put("minecraft:stone_shore", "minecraft:stony_shore")
-      .put("minecraft:swamp_hills", "minecraft:swamp")
-      .put("minecraft:taiga_hills", "minecraft:taiga")
-      .put("minecraft:taiga_mountains", "minecraft:taiga")
-      .put("minecraft:tall_birch_forest", "minecraft:old_growth_birch_forest")
-      .put("minecraft:tall_birch_hills", "minecraft:old_growth_birch_forest")
-      .put("minecraft:wooded_badlands_plateau", "minecraft:wooded_badlands")
-      .put("minecraft:wooded_hills", "minecraft:forest")
-      .put("minecraft:wooded_mountains", "minecraft:windswept_forest")
-      .put("minecraft:lofty_peaks", "minecraft:jagged_peaks")
-      .put("minecraft:snowcapped_peaks", "minecraft:frozen_peaks")
-      .build();
+public abstract class aui extends DataFix {
+   private final String a;
 
-   private aui() {
+   public aui(Schema $$0, String $$1) {
+      super($$0, false);
+      this.a = $$1;
+   }
+
+   public TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(azd.y);
+      Type<Pair<String, String>> $$1 = DSL.named(azd.y.typeName(), bal.a());
+      if (!Objects.equals($$0, $$1)) {
+         throw new IllegalStateException("block type is not what was expected.");
+      } else {
+         TypeRewriteRule $$2 = this.fixTypeEverywhere(this.a + " for block", $$1, $$0x -> $$0xx -> $$0xx.mapSecond(this::a));
+         TypeRewriteRule $$3 = this.fixTypeEverywhereTyped(
+            this.a + " for block_state", this.getInputSchema().getType(azd.u), $$0x -> $$0x.update(DSL.remainderFinder(), $$0xx -> {
+                  Optional<String> $$1x = $$0xx.get("Name").asString().result();
+                  return $$1x.isPresent() ? $$0xx.set("Name", $$0xx.createString(this.a($$1x.get()))) : $$0xx;
+               })
+         );
+         return TypeRewriteRule.seq($$2, $$3);
+      }
+   }
+
+   protected abstract String a(String var1);
+
+   public static DataFix a(Schema $$0, String $$1, final Function<String, String> $$2) {
+      return new aui($$0, $$1) {
+         @Override
+         protected String a(String $$0) {
+            return $$2.apply($$0);
+         }
+      };
    }
 }

@@ -1,6 +1,5 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.DataFixUtils;
@@ -9,68 +8,392 @@ import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.templates.List.ListType;
 import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
-import it.unimi.dsi.fastutil.ints.Int2IntMap;
-import it.unimi.dsi.fastutil.ints.Int2IntOpenHashMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.ints.IntIterator;
-import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
-import it.unimi.dsi.fastutil.ints.IntSet;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
+import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 
 public class axp extends DataFix {
-   private static final int a = 128;
-   private static final int b = 64;
-   private static final int c = 32;
-   private static final int d = 16;
-   private static final int e = 8;
-   private static final int f = 4;
-   private static final int g = 2;
-   private static final int h = 1;
-   private static final int[][] i = new int[][]{{-1, 0, 0}, {1, 0, 0}, {0, -1, 0}, {0, 1, 0}, {0, 0, -1}, {0, 0, 1}};
-   private static final int j = 7;
-   private static final int k = 12;
-   private static final int l = 4096;
-   static final Object2IntMap<String> m = (Object2IntMap<String>)DataFixUtils.make(new Object2IntOpenHashMap(), $$0 -> {
-      $$0.put("minecraft:acacia_leaves", 0);
-      $$0.put("minecraft:birch_leaves", 1);
-      $$0.put("minecraft:dark_oak_leaves", 2);
-      $$0.put("minecraft:jungle_leaves", 3);
-      $$0.put("minecraft:oak_leaves", 4);
-      $$0.put("minecraft:spruce_leaves", 5);
+   private static final Map<String, String> a = (Map<String, String>)DataFixUtils.make(Maps.newHashMap(), $$0 -> {
+      $$0.put("minecraft:stone.0", "minecraft:stone");
+      $$0.put("minecraft:stone.1", "minecraft:granite");
+      $$0.put("minecraft:stone.2", "minecraft:polished_granite");
+      $$0.put("minecraft:stone.3", "minecraft:diorite");
+      $$0.put("minecraft:stone.4", "minecraft:polished_diorite");
+      $$0.put("minecraft:stone.5", "minecraft:andesite");
+      $$0.put("minecraft:stone.6", "minecraft:polished_andesite");
+      $$0.put("minecraft:dirt.0", "minecraft:dirt");
+      $$0.put("minecraft:dirt.1", "minecraft:coarse_dirt");
+      $$0.put("minecraft:dirt.2", "minecraft:podzol");
+      $$0.put("minecraft:leaves.0", "minecraft:oak_leaves");
+      $$0.put("minecraft:leaves.1", "minecraft:spruce_leaves");
+      $$0.put("minecraft:leaves.2", "minecraft:birch_leaves");
+      $$0.put("minecraft:leaves.3", "minecraft:jungle_leaves");
+      $$0.put("minecraft:leaves2.0", "minecraft:acacia_leaves");
+      $$0.put("minecraft:leaves2.1", "minecraft:dark_oak_leaves");
+      $$0.put("minecraft:log.0", "minecraft:oak_log");
+      $$0.put("minecraft:log.1", "minecraft:spruce_log");
+      $$0.put("minecraft:log.2", "minecraft:birch_log");
+      $$0.put("minecraft:log.3", "minecraft:jungle_log");
+      $$0.put("minecraft:log2.0", "minecraft:acacia_log");
+      $$0.put("minecraft:log2.1", "minecraft:dark_oak_log");
+      $$0.put("minecraft:sapling.0", "minecraft:oak_sapling");
+      $$0.put("minecraft:sapling.1", "minecraft:spruce_sapling");
+      $$0.put("minecraft:sapling.2", "minecraft:birch_sapling");
+      $$0.put("minecraft:sapling.3", "minecraft:jungle_sapling");
+      $$0.put("minecraft:sapling.4", "minecraft:acacia_sapling");
+      $$0.put("minecraft:sapling.5", "minecraft:dark_oak_sapling");
+      $$0.put("minecraft:planks.0", "minecraft:oak_planks");
+      $$0.put("minecraft:planks.1", "minecraft:spruce_planks");
+      $$0.put("minecraft:planks.2", "minecraft:birch_planks");
+      $$0.put("minecraft:planks.3", "minecraft:jungle_planks");
+      $$0.put("minecraft:planks.4", "minecraft:acacia_planks");
+      $$0.put("minecraft:planks.5", "minecraft:dark_oak_planks");
+      $$0.put("minecraft:sand.0", "minecraft:sand");
+      $$0.put("minecraft:sand.1", "minecraft:red_sand");
+      $$0.put("minecraft:quartz_block.0", "minecraft:quartz_block");
+      $$0.put("minecraft:quartz_block.1", "minecraft:chiseled_quartz_block");
+      $$0.put("minecraft:quartz_block.2", "minecraft:quartz_pillar");
+      $$0.put("minecraft:anvil.0", "minecraft:anvil");
+      $$0.put("minecraft:anvil.1", "minecraft:chipped_anvil");
+      $$0.put("minecraft:anvil.2", "minecraft:damaged_anvil");
+      $$0.put("minecraft:wool.0", "minecraft:white_wool");
+      $$0.put("minecraft:wool.1", "minecraft:orange_wool");
+      $$0.put("minecraft:wool.2", "minecraft:magenta_wool");
+      $$0.put("minecraft:wool.3", "minecraft:light_blue_wool");
+      $$0.put("minecraft:wool.4", "minecraft:yellow_wool");
+      $$0.put("minecraft:wool.5", "minecraft:lime_wool");
+      $$0.put("minecraft:wool.6", "minecraft:pink_wool");
+      $$0.put("minecraft:wool.7", "minecraft:gray_wool");
+      $$0.put("minecraft:wool.8", "minecraft:light_gray_wool");
+      $$0.put("minecraft:wool.9", "minecraft:cyan_wool");
+      $$0.put("minecraft:wool.10", "minecraft:purple_wool");
+      $$0.put("minecraft:wool.11", "minecraft:blue_wool");
+      $$0.put("minecraft:wool.12", "minecraft:brown_wool");
+      $$0.put("minecraft:wool.13", "minecraft:green_wool");
+      $$0.put("minecraft:wool.14", "minecraft:red_wool");
+      $$0.put("minecraft:wool.15", "minecraft:black_wool");
+      $$0.put("minecraft:carpet.0", "minecraft:white_carpet");
+      $$0.put("minecraft:carpet.1", "minecraft:orange_carpet");
+      $$0.put("minecraft:carpet.2", "minecraft:magenta_carpet");
+      $$0.put("minecraft:carpet.3", "minecraft:light_blue_carpet");
+      $$0.put("minecraft:carpet.4", "minecraft:yellow_carpet");
+      $$0.put("minecraft:carpet.5", "minecraft:lime_carpet");
+      $$0.put("minecraft:carpet.6", "minecraft:pink_carpet");
+      $$0.put("minecraft:carpet.7", "minecraft:gray_carpet");
+      $$0.put("minecraft:carpet.8", "minecraft:light_gray_carpet");
+      $$0.put("minecraft:carpet.9", "minecraft:cyan_carpet");
+      $$0.put("minecraft:carpet.10", "minecraft:purple_carpet");
+      $$0.put("minecraft:carpet.11", "minecraft:blue_carpet");
+      $$0.put("minecraft:carpet.12", "minecraft:brown_carpet");
+      $$0.put("minecraft:carpet.13", "minecraft:green_carpet");
+      $$0.put("minecraft:carpet.14", "minecraft:red_carpet");
+      $$0.put("minecraft:carpet.15", "minecraft:black_carpet");
+      $$0.put("minecraft:hardened_clay.0", "minecraft:terracotta");
+      $$0.put("minecraft:stained_hardened_clay.0", "minecraft:white_terracotta");
+      $$0.put("minecraft:stained_hardened_clay.1", "minecraft:orange_terracotta");
+      $$0.put("minecraft:stained_hardened_clay.2", "minecraft:magenta_terracotta");
+      $$0.put("minecraft:stained_hardened_clay.3", "minecraft:light_blue_terracotta");
+      $$0.put("minecraft:stained_hardened_clay.4", "minecraft:yellow_terracotta");
+      $$0.put("minecraft:stained_hardened_clay.5", "minecraft:lime_terracotta");
+      $$0.put("minecraft:stained_hardened_clay.6", "minecraft:pink_terracotta");
+      $$0.put("minecraft:stained_hardened_clay.7", "minecraft:gray_terracotta");
+      $$0.put("minecraft:stained_hardened_clay.8", "minecraft:light_gray_terracotta");
+      $$0.put("minecraft:stained_hardened_clay.9", "minecraft:cyan_terracotta");
+      $$0.put("minecraft:stained_hardened_clay.10", "minecraft:purple_terracotta");
+      $$0.put("minecraft:stained_hardened_clay.11", "minecraft:blue_terracotta");
+      $$0.put("minecraft:stained_hardened_clay.12", "minecraft:brown_terracotta");
+      $$0.put("minecraft:stained_hardened_clay.13", "minecraft:green_terracotta");
+      $$0.put("minecraft:stained_hardened_clay.14", "minecraft:red_terracotta");
+      $$0.put("minecraft:stained_hardened_clay.15", "minecraft:black_terracotta");
+      $$0.put("minecraft:silver_glazed_terracotta.0", "minecraft:light_gray_glazed_terracotta");
+      $$0.put("minecraft:stained_glass.0", "minecraft:white_stained_glass");
+      $$0.put("minecraft:stained_glass.1", "minecraft:orange_stained_glass");
+      $$0.put("minecraft:stained_glass.2", "minecraft:magenta_stained_glass");
+      $$0.put("minecraft:stained_glass.3", "minecraft:light_blue_stained_glass");
+      $$0.put("minecraft:stained_glass.4", "minecraft:yellow_stained_glass");
+      $$0.put("minecraft:stained_glass.5", "minecraft:lime_stained_glass");
+      $$0.put("minecraft:stained_glass.6", "minecraft:pink_stained_glass");
+      $$0.put("minecraft:stained_glass.7", "minecraft:gray_stained_glass");
+      $$0.put("minecraft:stained_glass.8", "minecraft:light_gray_stained_glass");
+      $$0.put("minecraft:stained_glass.9", "minecraft:cyan_stained_glass");
+      $$0.put("minecraft:stained_glass.10", "minecraft:purple_stained_glass");
+      $$0.put("minecraft:stained_glass.11", "minecraft:blue_stained_glass");
+      $$0.put("minecraft:stained_glass.12", "minecraft:brown_stained_glass");
+      $$0.put("minecraft:stained_glass.13", "minecraft:green_stained_glass");
+      $$0.put("minecraft:stained_glass.14", "minecraft:red_stained_glass");
+      $$0.put("minecraft:stained_glass.15", "minecraft:black_stained_glass");
+      $$0.put("minecraft:stained_glass_pane.0", "minecraft:white_stained_glass_pane");
+      $$0.put("minecraft:stained_glass_pane.1", "minecraft:orange_stained_glass_pane");
+      $$0.put("minecraft:stained_glass_pane.2", "minecraft:magenta_stained_glass_pane");
+      $$0.put("minecraft:stained_glass_pane.3", "minecraft:light_blue_stained_glass_pane");
+      $$0.put("minecraft:stained_glass_pane.4", "minecraft:yellow_stained_glass_pane");
+      $$0.put("minecraft:stained_glass_pane.5", "minecraft:lime_stained_glass_pane");
+      $$0.put("minecraft:stained_glass_pane.6", "minecraft:pink_stained_glass_pane");
+      $$0.put("minecraft:stained_glass_pane.7", "minecraft:gray_stained_glass_pane");
+      $$0.put("minecraft:stained_glass_pane.8", "minecraft:light_gray_stained_glass_pane");
+      $$0.put("minecraft:stained_glass_pane.9", "minecraft:cyan_stained_glass_pane");
+      $$0.put("minecraft:stained_glass_pane.10", "minecraft:purple_stained_glass_pane");
+      $$0.put("minecraft:stained_glass_pane.11", "minecraft:blue_stained_glass_pane");
+      $$0.put("minecraft:stained_glass_pane.12", "minecraft:brown_stained_glass_pane");
+      $$0.put("minecraft:stained_glass_pane.13", "minecraft:green_stained_glass_pane");
+      $$0.put("minecraft:stained_glass_pane.14", "minecraft:red_stained_glass_pane");
+      $$0.put("minecraft:stained_glass_pane.15", "minecraft:black_stained_glass_pane");
+      $$0.put("minecraft:prismarine.0", "minecraft:prismarine");
+      $$0.put("minecraft:prismarine.1", "minecraft:prismarine_bricks");
+      $$0.put("minecraft:prismarine.2", "minecraft:dark_prismarine");
+      $$0.put("minecraft:concrete.0", "minecraft:white_concrete");
+      $$0.put("minecraft:concrete.1", "minecraft:orange_concrete");
+      $$0.put("minecraft:concrete.2", "minecraft:magenta_concrete");
+      $$0.put("minecraft:concrete.3", "minecraft:light_blue_concrete");
+      $$0.put("minecraft:concrete.4", "minecraft:yellow_concrete");
+      $$0.put("minecraft:concrete.5", "minecraft:lime_concrete");
+      $$0.put("minecraft:concrete.6", "minecraft:pink_concrete");
+      $$0.put("minecraft:concrete.7", "minecraft:gray_concrete");
+      $$0.put("minecraft:concrete.8", "minecraft:light_gray_concrete");
+      $$0.put("minecraft:concrete.9", "minecraft:cyan_concrete");
+      $$0.put("minecraft:concrete.10", "minecraft:purple_concrete");
+      $$0.put("minecraft:concrete.11", "minecraft:blue_concrete");
+      $$0.put("minecraft:concrete.12", "minecraft:brown_concrete");
+      $$0.put("minecraft:concrete.13", "minecraft:green_concrete");
+      $$0.put("minecraft:concrete.14", "minecraft:red_concrete");
+      $$0.put("minecraft:concrete.15", "minecraft:black_concrete");
+      $$0.put("minecraft:concrete_powder.0", "minecraft:white_concrete_powder");
+      $$0.put("minecraft:concrete_powder.1", "minecraft:orange_concrete_powder");
+      $$0.put("minecraft:concrete_powder.2", "minecraft:magenta_concrete_powder");
+      $$0.put("minecraft:concrete_powder.3", "minecraft:light_blue_concrete_powder");
+      $$0.put("minecraft:concrete_powder.4", "minecraft:yellow_concrete_powder");
+      $$0.put("minecraft:concrete_powder.5", "minecraft:lime_concrete_powder");
+      $$0.put("minecraft:concrete_powder.6", "minecraft:pink_concrete_powder");
+      $$0.put("minecraft:concrete_powder.7", "minecraft:gray_concrete_powder");
+      $$0.put("minecraft:concrete_powder.8", "minecraft:light_gray_concrete_powder");
+      $$0.put("minecraft:concrete_powder.9", "minecraft:cyan_concrete_powder");
+      $$0.put("minecraft:concrete_powder.10", "minecraft:purple_concrete_powder");
+      $$0.put("minecraft:concrete_powder.11", "minecraft:blue_concrete_powder");
+      $$0.put("minecraft:concrete_powder.12", "minecraft:brown_concrete_powder");
+      $$0.put("minecraft:concrete_powder.13", "minecraft:green_concrete_powder");
+      $$0.put("minecraft:concrete_powder.14", "minecraft:red_concrete_powder");
+      $$0.put("minecraft:concrete_powder.15", "minecraft:black_concrete_powder");
+      $$0.put("minecraft:cobblestone_wall.0", "minecraft:cobblestone_wall");
+      $$0.put("minecraft:cobblestone_wall.1", "minecraft:mossy_cobblestone_wall");
+      $$0.put("minecraft:sandstone.0", "minecraft:sandstone");
+      $$0.put("minecraft:sandstone.1", "minecraft:chiseled_sandstone");
+      $$0.put("minecraft:sandstone.2", "minecraft:cut_sandstone");
+      $$0.put("minecraft:red_sandstone.0", "minecraft:red_sandstone");
+      $$0.put("minecraft:red_sandstone.1", "minecraft:chiseled_red_sandstone");
+      $$0.put("minecraft:red_sandstone.2", "minecraft:cut_red_sandstone");
+      $$0.put("minecraft:stonebrick.0", "minecraft:stone_bricks");
+      $$0.put("minecraft:stonebrick.1", "minecraft:mossy_stone_bricks");
+      $$0.put("minecraft:stonebrick.2", "minecraft:cracked_stone_bricks");
+      $$0.put("minecraft:stonebrick.3", "minecraft:chiseled_stone_bricks");
+      $$0.put("minecraft:monster_egg.0", "minecraft:infested_stone");
+      $$0.put("minecraft:monster_egg.1", "minecraft:infested_cobblestone");
+      $$0.put("minecraft:monster_egg.2", "minecraft:infested_stone_bricks");
+      $$0.put("minecraft:monster_egg.3", "minecraft:infested_mossy_stone_bricks");
+      $$0.put("minecraft:monster_egg.4", "minecraft:infested_cracked_stone_bricks");
+      $$0.put("minecraft:monster_egg.5", "minecraft:infested_chiseled_stone_bricks");
+      $$0.put("minecraft:yellow_flower.0", "minecraft:dandelion");
+      $$0.put("minecraft:red_flower.0", "minecraft:poppy");
+      $$0.put("minecraft:red_flower.1", "minecraft:blue_orchid");
+      $$0.put("minecraft:red_flower.2", "minecraft:allium");
+      $$0.put("minecraft:red_flower.3", "minecraft:azure_bluet");
+      $$0.put("minecraft:red_flower.4", "minecraft:red_tulip");
+      $$0.put("minecraft:red_flower.5", "minecraft:orange_tulip");
+      $$0.put("minecraft:red_flower.6", "minecraft:white_tulip");
+      $$0.put("minecraft:red_flower.7", "minecraft:pink_tulip");
+      $$0.put("minecraft:red_flower.8", "minecraft:oxeye_daisy");
+      $$0.put("minecraft:double_plant.0", "minecraft:sunflower");
+      $$0.put("minecraft:double_plant.1", "minecraft:lilac");
+      $$0.put("minecraft:double_plant.2", "minecraft:tall_grass");
+      $$0.put("minecraft:double_plant.3", "minecraft:large_fern");
+      $$0.put("minecraft:double_plant.4", "minecraft:rose_bush");
+      $$0.put("minecraft:double_plant.5", "minecraft:peony");
+      $$0.put("minecraft:deadbush.0", "minecraft:dead_bush");
+      $$0.put("minecraft:tallgrass.0", "minecraft:dead_bush");
+      $$0.put("minecraft:tallgrass.1", "minecraft:grass");
+      $$0.put("minecraft:tallgrass.2", "minecraft:fern");
+      $$0.put("minecraft:sponge.0", "minecraft:sponge");
+      $$0.put("minecraft:sponge.1", "minecraft:wet_sponge");
+      $$0.put("minecraft:purpur_slab.0", "minecraft:purpur_slab");
+      $$0.put("minecraft:stone_slab.0", "minecraft:stone_slab");
+      $$0.put("minecraft:stone_slab.1", "minecraft:sandstone_slab");
+      $$0.put("minecraft:stone_slab.2", "minecraft:petrified_oak_slab");
+      $$0.put("minecraft:stone_slab.3", "minecraft:cobblestone_slab");
+      $$0.put("minecraft:stone_slab.4", "minecraft:brick_slab");
+      $$0.put("minecraft:stone_slab.5", "minecraft:stone_brick_slab");
+      $$0.put("minecraft:stone_slab.6", "minecraft:nether_brick_slab");
+      $$0.put("minecraft:stone_slab.7", "minecraft:quartz_slab");
+      $$0.put("minecraft:stone_slab2.0", "minecraft:red_sandstone_slab");
+      $$0.put("minecraft:wooden_slab.0", "minecraft:oak_slab");
+      $$0.put("minecraft:wooden_slab.1", "minecraft:spruce_slab");
+      $$0.put("minecraft:wooden_slab.2", "minecraft:birch_slab");
+      $$0.put("minecraft:wooden_slab.3", "minecraft:jungle_slab");
+      $$0.put("minecraft:wooden_slab.4", "minecraft:acacia_slab");
+      $$0.put("minecraft:wooden_slab.5", "minecraft:dark_oak_slab");
+      $$0.put("minecraft:coal.0", "minecraft:coal");
+      $$0.put("minecraft:coal.1", "minecraft:charcoal");
+      $$0.put("minecraft:fish.0", "minecraft:cod");
+      $$0.put("minecraft:fish.1", "minecraft:salmon");
+      $$0.put("minecraft:fish.2", "minecraft:clownfish");
+      $$0.put("minecraft:fish.3", "minecraft:pufferfish");
+      $$0.put("minecraft:cooked_fish.0", "minecraft:cooked_cod");
+      $$0.put("minecraft:cooked_fish.1", "minecraft:cooked_salmon");
+      $$0.put("minecraft:skull.0", "minecraft:skeleton_skull");
+      $$0.put("minecraft:skull.1", "minecraft:wither_skeleton_skull");
+      $$0.put("minecraft:skull.2", "minecraft:zombie_head");
+      $$0.put("minecraft:skull.3", "minecraft:player_head");
+      $$0.put("minecraft:skull.4", "minecraft:creeper_head");
+      $$0.put("minecraft:skull.5", "minecraft:dragon_head");
+      $$0.put("minecraft:golden_apple.0", "minecraft:golden_apple");
+      $$0.put("minecraft:golden_apple.1", "minecraft:enchanted_golden_apple");
+      $$0.put("minecraft:fireworks.0", "minecraft:firework_rocket");
+      $$0.put("minecraft:firework_charge.0", "minecraft:firework_star");
+      $$0.put("minecraft:dye.0", "minecraft:ink_sac");
+      $$0.put("minecraft:dye.1", "minecraft:rose_red");
+      $$0.put("minecraft:dye.2", "minecraft:cactus_green");
+      $$0.put("minecraft:dye.3", "minecraft:cocoa_beans");
+      $$0.put("minecraft:dye.4", "minecraft:lapis_lazuli");
+      $$0.put("minecraft:dye.5", "minecraft:purple_dye");
+      $$0.put("minecraft:dye.6", "minecraft:cyan_dye");
+      $$0.put("minecraft:dye.7", "minecraft:light_gray_dye");
+      $$0.put("minecraft:dye.8", "minecraft:gray_dye");
+      $$0.put("minecraft:dye.9", "minecraft:pink_dye");
+      $$0.put("minecraft:dye.10", "minecraft:lime_dye");
+      $$0.put("minecraft:dye.11", "minecraft:dandelion_yellow");
+      $$0.put("minecraft:dye.12", "minecraft:light_blue_dye");
+      $$0.put("minecraft:dye.13", "minecraft:magenta_dye");
+      $$0.put("minecraft:dye.14", "minecraft:orange_dye");
+      $$0.put("minecraft:dye.15", "minecraft:bone_meal");
+      $$0.put("minecraft:silver_shulker_box.0", "minecraft:light_gray_shulker_box");
+      $$0.put("minecraft:fence.0", "minecraft:oak_fence");
+      $$0.put("minecraft:fence_gate.0", "minecraft:oak_fence_gate");
+      $$0.put("minecraft:wooden_door.0", "minecraft:oak_door");
+      $$0.put("minecraft:boat.0", "minecraft:oak_boat");
+      $$0.put("minecraft:lit_pumpkin.0", "minecraft:jack_o_lantern");
+      $$0.put("minecraft:pumpkin.0", "minecraft:carved_pumpkin");
+      $$0.put("minecraft:trapdoor.0", "minecraft:oak_trapdoor");
+      $$0.put("minecraft:nether_brick.0", "minecraft:nether_bricks");
+      $$0.put("minecraft:red_nether_brick.0", "minecraft:red_nether_bricks");
+      $$0.put("minecraft:netherbrick.0", "minecraft:nether_brick");
+      $$0.put("minecraft:wooden_button.0", "minecraft:oak_button");
+      $$0.put("minecraft:wooden_pressure_plate.0", "minecraft:oak_pressure_plate");
+      $$0.put("minecraft:noteblock.0", "minecraft:note_block");
+      $$0.put("minecraft:bed.0", "minecraft:white_bed");
+      $$0.put("minecraft:bed.1", "minecraft:orange_bed");
+      $$0.put("minecraft:bed.2", "minecraft:magenta_bed");
+      $$0.put("minecraft:bed.3", "minecraft:light_blue_bed");
+      $$0.put("minecraft:bed.4", "minecraft:yellow_bed");
+      $$0.put("minecraft:bed.5", "minecraft:lime_bed");
+      $$0.put("minecraft:bed.6", "minecraft:pink_bed");
+      $$0.put("minecraft:bed.7", "minecraft:gray_bed");
+      $$0.put("minecraft:bed.8", "minecraft:light_gray_bed");
+      $$0.put("minecraft:bed.9", "minecraft:cyan_bed");
+      $$0.put("minecraft:bed.10", "minecraft:purple_bed");
+      $$0.put("minecraft:bed.11", "minecraft:blue_bed");
+      $$0.put("minecraft:bed.12", "minecraft:brown_bed");
+      $$0.put("minecraft:bed.13", "minecraft:green_bed");
+      $$0.put("minecraft:bed.14", "minecraft:red_bed");
+      $$0.put("minecraft:bed.15", "minecraft:black_bed");
+      $$0.put("minecraft:banner.15", "minecraft:white_banner");
+      $$0.put("minecraft:banner.14", "minecraft:orange_banner");
+      $$0.put("minecraft:banner.13", "minecraft:magenta_banner");
+      $$0.put("minecraft:banner.12", "minecraft:light_blue_banner");
+      $$0.put("minecraft:banner.11", "minecraft:yellow_banner");
+      $$0.put("minecraft:banner.10", "minecraft:lime_banner");
+      $$0.put("minecraft:banner.9", "minecraft:pink_banner");
+      $$0.put("minecraft:banner.8", "minecraft:gray_banner");
+      $$0.put("minecraft:banner.7", "minecraft:light_gray_banner");
+      $$0.put("minecraft:banner.6", "minecraft:cyan_banner");
+      $$0.put("minecraft:banner.5", "minecraft:purple_banner");
+      $$0.put("minecraft:banner.4", "minecraft:blue_banner");
+      $$0.put("minecraft:banner.3", "minecraft:brown_banner");
+      $$0.put("minecraft:banner.2", "minecraft:green_banner");
+      $$0.put("minecraft:banner.1", "minecraft:red_banner");
+      $$0.put("minecraft:banner.0", "minecraft:black_banner");
+      $$0.put("minecraft:grass.0", "minecraft:grass_block");
+      $$0.put("minecraft:brick_block.0", "minecraft:bricks");
+      $$0.put("minecraft:end_bricks.0", "minecraft:end_stone_bricks");
+      $$0.put("minecraft:golden_rail.0", "minecraft:powered_rail");
+      $$0.put("minecraft:magma.0", "minecraft:magma_block");
+      $$0.put("minecraft:quartz_ore.0", "minecraft:nether_quartz_ore");
+      $$0.put("minecraft:reeds.0", "minecraft:sugar_cane");
+      $$0.put("minecraft:slime.0", "minecraft:slime_block");
+      $$0.put("minecraft:stone_stairs.0", "minecraft:cobblestone_stairs");
+      $$0.put("minecraft:waterlily.0", "minecraft:lily_pad");
+      $$0.put("minecraft:web.0", "minecraft:cobweb");
+      $$0.put("minecraft:snow.0", "minecraft:snow_block");
+      $$0.put("minecraft:snow_layer.0", "minecraft:snow");
+      $$0.put("minecraft:record_11.0", "minecraft:music_disc_11");
+      $$0.put("minecraft:record_13.0", "minecraft:music_disc_13");
+      $$0.put("minecraft:record_blocks.0", "minecraft:music_disc_blocks");
+      $$0.put("minecraft:record_cat.0", "minecraft:music_disc_cat");
+      $$0.put("minecraft:record_chirp.0", "minecraft:music_disc_chirp");
+      $$0.put("minecraft:record_far.0", "minecraft:music_disc_far");
+      $$0.put("minecraft:record_mall.0", "minecraft:music_disc_mall");
+      $$0.put("minecraft:record_mellohi.0", "minecraft:music_disc_mellohi");
+      $$0.put("minecraft:record_stal.0", "minecraft:music_disc_stal");
+      $$0.put("minecraft:record_strad.0", "minecraft:music_disc_strad");
+      $$0.put("minecraft:record_wait.0", "minecraft:music_disc_wait");
+      $$0.put("minecraft:record_ward.0", "minecraft:music_disc_ward");
    });
-   static final Set<String> n = ImmutableSet.of(
-      "minecraft:acacia_bark",
-      "minecraft:birch_bark",
-      "minecraft:dark_oak_bark",
-      "minecraft:jungle_bark",
-      "minecraft:oak_bark",
-      "minecraft:spruce_bark",
+   private static final Set<String> b = a.keySet().stream().map($$0 -> $$0.substring(0, $$0.indexOf(46))).collect(Collectors.toSet());
+   private static final Set<String> c = Sets.newHashSet(
       new String[]{
-         "minecraft:acacia_log",
-         "minecraft:birch_log",
-         "minecraft:dark_oak_log",
-         "minecraft:jungle_log",
-         "minecraft:oak_log",
-         "minecraft:spruce_log",
-         "minecraft:stripped_acacia_log",
-         "minecraft:stripped_birch_log",
-         "minecraft:stripped_dark_oak_log",
-         "minecraft:stripped_jungle_log",
-         "minecraft:stripped_oak_log",
-         "minecraft:stripped_spruce_log"
+         "minecraft:bow",
+         "minecraft:carrot_on_a_stick",
+         "minecraft:chainmail_boots",
+         "minecraft:chainmail_chestplate",
+         "minecraft:chainmail_helmet",
+         "minecraft:chainmail_leggings",
+         "minecraft:diamond_axe",
+         "minecraft:diamond_boots",
+         "minecraft:diamond_chestplate",
+         "minecraft:diamond_helmet",
+         "minecraft:diamond_hoe",
+         "minecraft:diamond_leggings",
+         "minecraft:diamond_pickaxe",
+         "minecraft:diamond_shovel",
+         "minecraft:diamond_sword",
+         "minecraft:elytra",
+         "minecraft:fishing_rod",
+         "minecraft:flint_and_steel",
+         "minecraft:golden_axe",
+         "minecraft:golden_boots",
+         "minecraft:golden_chestplate",
+         "minecraft:golden_helmet",
+         "minecraft:golden_hoe",
+         "minecraft:golden_leggings",
+         "minecraft:golden_pickaxe",
+         "minecraft:golden_shovel",
+         "minecraft:golden_sword",
+         "minecraft:iron_axe",
+         "minecraft:iron_boots",
+         "minecraft:iron_chestplate",
+         "minecraft:iron_helmet",
+         "minecraft:iron_hoe",
+         "minecraft:iron_leggings",
+         "minecraft:iron_pickaxe",
+         "minecraft:iron_shovel",
+         "minecraft:iron_sword",
+         "minecraft:leather_boots",
+         "minecraft:leather_chestplate",
+         "minecraft:leather_helmet",
+         "minecraft:leather_leggings",
+         "minecraft:shears",
+         "minecraft:shield",
+         "minecraft:stone_axe",
+         "minecraft:stone_hoe",
+         "minecraft:stone_pickaxe",
+         "minecraft:stone_shovel",
+         "minecraft:stone_sword",
+         "minecraft:wooden_axe",
+         "minecraft:wooden_hoe",
+         "minecraft:wooden_pickaxe",
+         "minecraft:wooden_shovel",
+         "minecraft:wooden_sword"
       }
    );
 
@@ -78,298 +401,42 @@ public class axp extends DataFix {
       super($$0, $$1);
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(ayx.c);
-      OpticFinder<?> $$1 = $$0.findField("Level");
-      OpticFinder<?> $$2 = $$1.type().findField("Sections");
-      Type<?> $$3 = $$2.type();
-      if (!($$3 instanceof ListType)) {
-         throw new IllegalStateException("Expecting sections to be a list.");
+   public TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(azd.t);
+      OpticFinder<Pair<String, String>> $$1 = DSL.fieldFinder("id", DSL.named(azd.z.typeName(), bal.a()));
+      OpticFinder<?> $$2 = $$0.findField("tag");
+      return this.fixTypeEverywhereTyped("ItemInstanceTheFlatteningFix", $$0, $$2x -> {
+         Optional<Pair<String, String>> $$3 = $$2x.getOptional($$1);
+         if ($$3.isEmpty()) {
+            return $$2x;
+         } else {
+            Typed<?> $$4 = $$2x;
+            Dynamic<?> $$5 = (Dynamic<?>)$$2x.get(DSL.remainderFinder());
+            int $$6 = $$5.get("Damage").asInt(0);
+            String $$7 = a((String)$$3.get().getSecond(), $$6);
+            if ($$7 != null) {
+               $$4 = $$2x.set($$1, Pair.of(azd.z.typeName(), $$7));
+            }
+
+            if (c.contains($$3.get().getSecond())) {
+               Typed<?> $$8 = $$2x.getOrCreateTyped($$2);
+               Dynamic<?> $$9 = (Dynamic<?>)$$8.get(DSL.remainderFinder());
+               $$9 = $$9.set("Damage", $$9.createInt($$6));
+               $$4 = $$4.set($$2, $$8.set(DSL.remainderFinder(), $$9));
+            }
+
+            return $$4.set(DSL.remainderFinder(), $$5.remove("Damage"));
+         }
+      });
+   }
+
+   @Nullable
+   public static String a(@Nullable String $$0, int $$1) {
+      if (b.contains($$0)) {
+         String $$2 = a.get($$0 + "." + $$1);
+         return $$2 == null ? a.get($$0 + ".0") : $$2;
       } else {
-         Type<?> $$4 = ((ListType)$$3).getElement();
-         OpticFinder<?> $$5 = DSL.typeFinder($$4);
-         return this.fixTypeEverywhereTyped(
-            "Leaves fix",
-            $$0,
-            $$3x -> $$3x.updateTyped(
-                  $$1,
-                  $$2xx -> {
-                     int[] $$3xx = new int[]{0};
-                     Typed<?> $$4x = $$2xx.updateTyped(
-                        $$2,
-                        $$2xxx -> {
-                           Int2ObjectMap<axp.a> $$3xxx = new Int2ObjectOpenHashMap(
-                              $$2xxx.getAllTyped($$5)
-                                 .stream()
-                                 .map($$0xxxx -> new axp.a($$0xxxx, this.getInputSchema()))
-                                 .collect(Collectors.toMap(axp.b::c, $$0xxxx -> $$0xxxx))
-                           );
-                           if ($$3xxx.values().stream().allMatch(axp.b::b)) {
-                              return $$2xxx;
-                           } else {
-                              List<IntSet> $$4xx = Lists.newArrayList();
-
-                              for (int $$5x = 0; $$5x < 7; $$5x++) {
-                                 $$4xx.add(new IntOpenHashSet());
-                              }
-
-                              ObjectIterator var25 = $$3xxx.values().iterator();
-
-                              while (var25.hasNext()) {
-                                 axp.a $$6 = (axp.a)var25.next();
-                                 if (!$$6.b()) {
-                                    for (int $$7 = 0; $$7 < 4096; $$7++) {
-                                       int $$8 = $$6.c($$7);
-                                       if ($$6.a($$8)) {
-                                          $$4xx.get(0).add($$6.c() << 12 | $$7);
-                                       } else if ($$6.b($$8)) {
-                                          int $$9 = this.a($$7);
-                                          int $$10 = this.c($$7);
-                                          $$3xx[0] |= a($$9 == 0, $$9 == 15, $$10 == 0, $$10 == 15);
-                                       }
-                                    }
-                                 }
-                              }
-
-                              for (int $$11 = 1; $$11 < 7; $$11++) {
-                                 IntSet $$12 = $$4xx.get($$11 - 1);
-                                 IntSet $$13 = $$4xx.get($$11);
-                                 IntIterator $$14 = $$12.iterator();
-
-                                 while ($$14.hasNext()) {
-                                    int $$15 = $$14.nextInt();
-                                    int $$16 = this.a($$15);
-                                    int $$17 = this.b($$15);
-                                    int $$18 = this.c($$15);
-
-                                    for (int[] $$19 : i) {
-                                       int $$20 = $$16 + $$19[0];
-                                       int $$21 = $$17 + $$19[1];
-                                       int $$22 = $$18 + $$19[2];
-                                       if ($$20 >= 0 && $$20 <= 15 && $$22 >= 0 && $$22 <= 15 && $$21 >= 0 && $$21 <= 255) {
-                                          axp.a $$23 = (axp.a)$$3xxx.get($$21 >> 4);
-                                          if ($$23 != null && !$$23.b()) {
-                                             int $$24 = a($$20, $$21 & 15, $$22);
-                                             int $$25 = $$23.c($$24);
-                                             if ($$23.b($$25)) {
-                                                int $$26 = $$23.d($$25);
-                                                if ($$26 > $$11) {
-                                                   $$23.a($$24, $$25, $$11);
-                                                   $$13.add(a($$20, $$21, $$22));
-                                                }
-                                             }
-                                          }
-                                       }
-                                    }
-                                 }
-                              }
-
-                              return $$2xxx.updateTyped(
-                                 $$5, $$1xxxx -> ((axp.a)$$3xxx.get(((Dynamic)$$1xxxx.get(DSL.remainderFinder())).get("Y").asInt(0))).a($$1xxxx)
-                              );
-                           }
-                        }
-                     );
-                     if ($$3xx[0] != 0) {
-                        $$4x = $$4x.update(DSL.remainderFinder(), $$1xxx -> {
-                           Dynamic<?> $$2xxx = (Dynamic<?>)DataFixUtils.orElse($$1xxx.get("UpgradeData").result(), $$1xxx.emptyMap());
-                           return $$1xxx.set("UpgradeData", $$2xxx.set("Sides", $$1xxx.createByte((byte)($$2xxx.get("Sides").asByte((byte)0) | $$3xx[0]))));
-                        });
-                     }
-
-                     return $$4x;
-                  }
-               )
-         );
+         return null;
       }
-   }
-
-   public static int a(int $$0, int $$1, int $$2) {
-      return $$1 << 8 | $$2 << 4 | $$0;
-   }
-
-   private int a(int $$0) {
-      return $$0 & 15;
-   }
-
-   private int b(int $$0) {
-      return $$0 >> 8 & 0xFF;
-   }
-
-   private int c(int $$0) {
-      return $$0 >> 4 & 15;
-   }
-
-   public static int a(boolean $$0, boolean $$1, boolean $$2, boolean $$3) {
-      int $$4 = 0;
-      if ($$2) {
-         if ($$1) {
-            $$4 |= 2;
-         } else if ($$0) {
-            $$4 |= 128;
-         } else {
-            $$4 |= 1;
-         }
-      } else if ($$3) {
-         if ($$0) {
-            $$4 |= 32;
-         } else if ($$1) {
-            $$4 |= 8;
-         } else {
-            $$4 |= 16;
-         }
-      } else if ($$1) {
-         $$4 |= 4;
-      } else if ($$0) {
-         $$4 |= 64;
-      }
-
-      return $$4;
-   }
-
-   public static final class a extends axp.b {
-      private static final String h = "persistent";
-      private static final String i = "decayable";
-      private static final String j = "distance";
-      @Nullable
-      private IntSet k;
-      @Nullable
-      private IntSet l;
-      @Nullable
-      private Int2IntMap m;
-
-      public a(Typed<?> $$0, Schema $$1) {
-         super($$0, $$1);
-      }
-
-      @Override
-      protected boolean a() {
-         this.k = new IntOpenHashSet();
-         this.l = new IntOpenHashSet();
-         this.m = new Int2IntOpenHashMap();
-
-         for (int $$0 = 0; $$0 < this.e.size(); $$0++) {
-            Dynamic<?> $$1 = this.e.get($$0);
-            String $$2 = $$1.get("Name").asString("");
-            if (axp.m.containsKey($$2)) {
-               boolean $$3 = Objects.equals($$1.get("Properties").get("decayable").asString(""), "false");
-               this.k.add($$0);
-               this.m.put(this.a($$2, $$3, 7), $$0);
-               this.e.set($$0, this.a($$1, $$2, $$3, 7));
-            }
-
-            if (axp.n.contains($$2)) {
-               this.l.add($$0);
-            }
-         }
-
-         return this.k.isEmpty() && this.l.isEmpty();
-      }
-
-      private Dynamic<?> a(Dynamic<?> $$0, String $$1, boolean $$2, int $$3) {
-         Dynamic<?> $$4 = $$0.emptyMap();
-         $$4 = $$4.set("persistent", $$4.createString($$2 ? "true" : "false"));
-         $$4 = $$4.set("distance", $$4.createString(Integer.toString($$3)));
-         Dynamic<?> $$5 = $$0.emptyMap();
-         $$5 = $$5.set("Properties", $$4);
-         return $$5.set("Name", $$5.createString($$1));
-      }
-
-      public boolean a(int $$0) {
-         return this.l.contains($$0);
-      }
-
-      public boolean b(int $$0) {
-         return this.k.contains($$0);
-      }
-
-      int d(int $$0) {
-         return this.a($$0) ? 0 : Integer.parseInt(this.e.get($$0).get("Properties").get("distance").asString(""));
-      }
-
-      void a(int $$0, int $$1, int $$2) {
-         Dynamic<?> $$3 = this.e.get($$1);
-         String $$4 = $$3.get("Name").asString("");
-         boolean $$5 = Objects.equals($$3.get("Properties").get("persistent").asString(""), "true");
-         int $$6 = this.a($$4, $$5, $$2);
-         if (!this.m.containsKey($$6)) {
-            int $$7 = this.e.size();
-            this.k.add($$7);
-            this.m.put($$6, $$7);
-            this.e.add(this.a($$3, $$4, $$5, $$2));
-         }
-
-         int $$8 = this.m.get($$6);
-         if (1 << this.g.b() <= $$8) {
-            atc $$9 = new atc(this.g.b() + 1, 4096);
-
-            for (int $$10 = 0; $$10 < 4096; $$10++) {
-               $$9.a($$10, this.g.a($$10));
-            }
-
-            this.g = $$9;
-         }
-
-         this.g.a($$0, $$8);
-      }
-   }
-
-   public abstract static class b {
-      protected static final String a = "BlockStates";
-      protected static final String b = "Name";
-      protected static final String c = "Properties";
-      private final Type<Pair<String, Dynamic<?>>> h = DSL.named(ayx.u.typeName(), DSL.remainderType());
-      protected final OpticFinder<List<Pair<String, Dynamic<?>>>> d = DSL.fieldFinder("Palette", DSL.list(this.h));
-      protected final List<Dynamic<?>> e;
-      protected final int f;
-      @Nullable
-      protected atc g;
-
-      public b(Typed<?> $$0, Schema $$1) {
-         if (!Objects.equals($$1.getType(ayx.u), this.h)) {
-            throw new IllegalStateException("Block state type is not what was expected.");
-         } else {
-            Optional<List<Pair<String, Dynamic<?>>>> $$2 = $$0.getOptional(this.d);
-            this.e = $$2.<List<Dynamic<?>>>map($$0x -> $$0x.stream().<Dynamic<?>>map(Pair::getSecond).collect(Collectors.toList())).orElse(ImmutableList.of());
-            Dynamic<?> $$3 = (Dynamic<?>)$$0.get(DSL.remainderFinder());
-            this.f = $$3.get("Y").asInt(0);
-            this.a($$3);
-         }
-      }
-
-      protected void a(Dynamic<?> $$0) {
-         if (this.a()) {
-            this.g = null;
-         } else {
-            long[] $$1 = $$0.get("BlockStates").asLongStream().toArray();
-            int $$2 = Math.max(4, DataFixUtils.ceillog2(this.e.size()));
-            this.g = new atc($$2, 4096, $$1);
-         }
-      }
-
-      public Typed<?> a(Typed<?> $$0) {
-         return this.b()
-            ? $$0
-            : $$0.update(DSL.remainderFinder(), $$0x -> $$0x.set("BlockStates", $$0x.createLongList(Arrays.stream(this.g.a()))))
-               .set(this.d, this.e.stream().map($$0x -> Pair.of(ayx.u.typeName(), $$0x)).collect(Collectors.toList()));
-      }
-
-      public boolean b() {
-         return this.g == null;
-      }
-
-      public int c(int $$0) {
-         return this.g.a($$0);
-      }
-
-      protected int a(String $$0, boolean $$1, int $$2) {
-         return axp.m.get($$0) << 5 | ($$1 ? 16 : 0) | $$2;
-      }
-
-      int c() {
-         return this.f;
-      }
-
-      protected abstract boolean a();
    }
 }

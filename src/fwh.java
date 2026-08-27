@@ -1,16 +1,9 @@
-public class fwh extends fvi {
-   private static final aew a = new aew("textures/entity/skeleton/wither_skeleton.png");
-
-   public fwh(fth.a $$0) {
-      super($$0, fib.bQ, fib.bR, fib.bS);
+public class fwh extends fsb<cah, fhp<cah>> {
+   public fwh(ftd.a $$0) {
+      this($$0, fhw.bX, fhw.ca, fhw.cb);
    }
 
-   @Override
-   public aew a(byr $$0) {
-      return a;
-   }
-
-   protected void a(byr $$0, elp $$1, float $$2) {
-      $$1.b(1.2F, 1.2F, 1.2F);
+   public fwh(ftd.a $$0, fhv $$1, fhv $$2, fhv $$3) {
+      super($$0, new fhp<>($$0.a($$1)), new fhp<>($$0.a($$2)), new fhp<>($$0.a($$3)));
    }
 }

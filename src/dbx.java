@@ -1,68 +1,104 @@
-import com.google.common.base.Suppliers;
-import com.google.common.collect.BiMap;
-import com.google.common.collect.ImmutableBiMap;
-import java.util.Optional;
-import java.util.function.Supplier;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-public interface dbx extends ctv<dbx.a> {
-   Supplier<BiMap<csv, csv>> u_ = Suppliers.memoize(
-      () -> ImmutableBiMap.builder()
-            .put(csw.qM, csw.qL)
-            .put(csw.qL, csw.qK)
-            .put(csw.qK, csw.qJ)
-            .put(csw.qS, csw.qR)
-            .put(csw.qR, csw.qQ)
-            .put(csw.qQ, csw.qP)
-            .put(csw.ra, csw.qZ)
-            .put(csw.qZ, csw.qY)
-            .put(csw.qY, csw.qX)
-            .put(csw.qW, csw.qV)
-            .put(csw.qV, csw.qU)
-            .put(csw.qU, csw.qT)
-            .build()
+public class dbx extends daa {
+   public static final MapCodec<dbx> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dgq.a.fieldOf("wood_type").forGetter(daa::d), t()).apply($$0, dbx::new));
+   public static final dfx b = cww.aE;
+   protected static final float c = 2.0F;
+   protected static final float d = 4.5F;
+   protected static final float e = 12.5F;
+   private static final Map<ha, eia> i = Maps.newEnumMap(
+      ImmutableMap.of(
+         ha.c,
+         ctc.a(0.0, 4.5, 14.0, 16.0, 12.5, 16.0),
+         ha.d,
+         ctc.a(0.0, 4.5, 0.0, 16.0, 12.5, 2.0),
+         ha.f,
+         ctc.a(0.0, 4.5, 0.0, 2.0, 12.5, 16.0),
+         ha.e,
+         ctc.a(14.0, 4.5, 0.0, 16.0, 12.5, 16.0)
+      )
    );
-   Supplier<BiMap<csv, csv>> v_ = Suppliers.memoize(() -> u_.get().inverse());
 
-   static Optional<csv> a(csv $$0) {
-      return Optional.ofNullable((csv)v_.get().get($$0));
+   @Override
+   public MapCodec<dbx> a() {
+      return a;
    }
 
-   static csv b(csv $$0) {
-      csv $$1 = $$0;
+   public dbx(dgq $$0, dfc.d $$1) {
+      super($$0, $$1.a($$0.d()));
+      this.k(this.E.b().a(b, ha.c).a(f, Boolean.valueOf(false)));
+   }
 
-      for (csv $$2 = (csv)v_.get().get($$0); $$2 != null; $$2 = (csv)v_.get().get($$2)) {
-         $$1 = $$2;
+   @Override
+   public String h() {
+      return this.k().a();
+   }
+
+   @Override
+   public eia a(dfd $$0, cph $$1, gw $$2, ehm $$3) {
+      return i.get($$0.c(b));
+   }
+
+   @Override
+   public boolean a(dfd $$0, cqe $$1, gw $$2) {
+      return $$1.a_($$2.a($$0.c(b).g())).e();
+   }
+
+   @Nullable
+   @Override
+   public dfd a(clt $$0) {
+      dfd $$1 = this.o();
+      eag $$2 = $$0.q().b_($$0.a());
+      cqe $$3 = $$0.q();
+      gw $$4 = $$0.a();
+      ha[] $$5 = $$0.f();
+
+      for (ha $$6 : $$5) {
+         if ($$6.o().d()) {
+            ha $$7 = $$6.g();
+            $$1 = $$1.a(b, $$7);
+            if ($$1.a($$3, $$4)) {
+               return $$1.a(f, Boolean.valueOf($$2.a() == eah.c));
+            }
+         }
       }
 
-      return $$1;
-   }
-
-   static Optional<dfj> b(dfj $$0) {
-      return a($$0.b()).map($$1 -> $$1.l($$0));
-   }
-
-   static Optional<csv> c(csv $$0) {
-      return Optional.ofNullable((csv)u_.get().get($$0));
-   }
-
-   static dfj c(dfj $$0) {
-      return b($$0.b()).l($$0);
+      return null;
    }
 
    @Override
-   default Optional<dfj> i_(dfj $$0) {
-      return c($$0.b()).map($$1 -> $$1.l($$0));
+   public dfd a(dfd $$0, ha $$1, dfd $$2, cqc $$3, gw $$4, gw $$5) {
+      return $$1.g() == $$0.c(b) && !$$0.a($$3, $$4) ? cte.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   default float a() {
-      return this.b() == dbx.a.a ? 0.75F : 1.0F;
+   public float g(dfd $$0) {
+      return $$0.c(b).p();
    }
 
-   public static enum a {
-      a,
-      b,
-      c,
-      d;
+   @Override
+   public ehh h(dfd $$0) {
+      eia $$1 = i.get($$0.c(b));
+      return $$1.a().f();
+   }
+
+   @Override
+   public dfd a(dfd $$0, czn $$1) {
+      return $$0.a(b, $$1.a($$0.c(b)));
+   }
+
+   @Override
+   public dfd a(dfd $$0, cxx $$1) {
+      return $$0.a($$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected void a(dfe.a<ctc, dfd> $$0) {
+      $$0.a(b, f);
    }
 }

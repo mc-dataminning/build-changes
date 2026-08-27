@@ -1,17 +1,58 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.Lists;
+import java.util.List;
 
-public record gal(String b, String c, boolean d) {
-   public static final Codec<gal> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               arf.v.fieldOf("region").forGetter(gal::b),
-               arf.v.fieldOf("name").forGetter(gal::c),
-               Codec.BOOL.optionalFieldOf("bidirectional", false).forGetter(gal::d)
-            )
-            .apply($$0, gal::new)
-   );
+public class gal {
+   public static final gam a = new gam();
+   public static final String b = "animation";
+   public static final int c = 1;
+   public static final int d = -1;
+   public static final gal e = new gal(Lists.newArrayList(), -1, -1, 1, false) {
+      @Override
+      public gan a(int $$0, int $$1) {
+         return new gan($$0, $$1);
+      }
+   };
+   private final List<gak> f;
+   private final int g;
+   private final int h;
+   private final int i;
+   private final boolean j;
 
-   public tl a() {
-      return tl.b(this.c + " (" + this.b + ")");
+   public gal(List<gak> $$0, int $$1, int $$2, int $$3, boolean $$4) {
+      this.f = $$0;
+      this.g = $$1;
+      this.h = $$2;
+      this.i = $$3;
+      this.j = $$4;
+   }
+
+   public gan a(int $$0, int $$1) {
+      if (this.g != -1) {
+         return this.h != -1 ? new gan(this.g, this.h) : new gan(this.g, $$1);
+      } else if (this.h != -1) {
+         return new gan($$0, this.h);
+      } else {
+         int $$2 = Math.min($$0, $$1);
+         return new gan($$2, $$2);
+      }
+   }
+
+   public int a() {
+      return this.i;
+   }
+
+   public boolean b() {
+      return this.j;
+   }
+
+   public void a(gal.a $$0) {
+      for (gak $$1 : this.f) {
+         $$0.accept($$1.a(), $$1.a(this.i));
+      }
+   }
+
+   @FunctionalInterface
+   public interface a {
+      void accept(int var1, int var2);
    }
 }

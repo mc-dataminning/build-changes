@@ -1,77 +1,96 @@
 import com.google.common.collect.ImmutableMap;
-import java.util.Optional;
+import com.google.common.collect.Maps;
+import java.util.Map;
+import java.util.UUID;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public class bkr extends bkx<bur> {
-   private static final int c = 3;
-   private static final int d = 60;
-   private static final int e = 110;
-   private final biu<? extends bur> f;
-   private final float g;
-   private long h;
+public class bkr {
+   private final Map<bkn, bko> a;
 
-   public bkr(biu<? extends bur> $$0, float $$1) {
-      super(ImmutableMap.of(bsh.h, bsi.a, bsh.r, bsi.b, bsh.m, bsi.c, bsh.n, bsi.c, bsh.Y, bsi.b), 110);
-      this.f = $$0;
-      this.g = $$1;
+   public bkr(Map<bkn, bko> $$0) {
+      this.a = ImmutableMap.copyOf($$0);
    }
 
-   protected boolean a(akq $$0, bur $$1) {
-      return $$1.gh() && this.c($$1).isPresent();
-   }
-
-   protected void a(akq $$0, bur $$1, long $$2) {
-      bur $$3 = this.c($$1).get();
-      $$1.dN().a(bsh.r, $$3);
-      $$3.dN().a(bsh.r, $$1);
-      bkz.a($$1, $$3, this.g);
-      int $$4 = 60 + $$1.ef().a(50);
-      this.h = $$2 + (long)$$4;
-   }
-
-   protected boolean b(akq $$0, bur $$1, long $$2) {
-      if (!this.b($$1)) {
-         return false;
+   private bko d(bkn $$0) {
+      bko $$1 = this.a.get($$0);
+      if ($$1 == null) {
+         throw new IllegalArgumentException("Can't find attribute " + jb.v.b($$0));
       } else {
-         bur $$3 = this.a($$1);
-         return $$3.bv() && $$1.a($$3) && bkz.a($$1.dN(), $$3) && $$2 <= this.h && !$$1.ga() && !$$3.ga();
+         return $$1;
       }
    }
 
-   protected void c(akq $$0, bur $$1, long $$2) {
-      bur $$3 = this.a($$1);
-      bkz.a($$1, $$3, this.g);
-      if ($$1.a($$3, 3.0)) {
-         if ($$2 >= this.h) {
-            $$1.a($$0, $$3);
-            $$1.dN().b(bsh.r);
-            $$3.dN().b(bsh.r);
-         }
+   public double a(bkn $$0) {
+      return this.d($$0).f();
+   }
+
+   public double b(bkn $$0) {
+      return this.d($$0).b();
+   }
+
+   public double a(bkn $$0, UUID $$1) {
+      bkq $$2 = this.d($$0).a($$1);
+      if ($$2 == null) {
+         throw new IllegalArgumentException("Can't find modifier " + $$1 + " on attribute " + jb.v.b($$0));
+      } else {
+         return $$2.c();
       }
    }
 
-   protected void d(akq $$0, bur $$1, long $$2) {
-      $$1.dN().b(bsh.r);
-      $$1.dN().b(bsh.m);
-      $$1.dN().b(bsh.n);
-      this.h = 0L;
+   @Nullable
+   public bko a(Consumer<bko> $$0, bkn $$1) {
+      bko $$2 = this.a.get($$1);
+      if ($$2 == null) {
+         return null;
+      } else {
+         bko $$3 = new bko($$1, $$0);
+         $$3.a($$2);
+         return $$3;
+      }
    }
 
-   private bur a(bur $$0) {
-      return (bur)$$0.dN().c(bsh.r).get();
+   public static bkr.a a() {
+      return new bkr.a();
    }
 
-   private boolean b(bur $$0) {
-      bkg<?> $$1 = $$0.dN();
-      return $$1.a(bsh.r) && $$1.c(bsh.r).get().ag() == this.f;
+   public boolean c(bkn $$0) {
+      return this.a.containsKey($$0);
    }
 
-   private Optional<? extends bur> c(bur $$0) {
-      return $$0.dN().c(bsh.h).get().a($$1 -> {
-         if ($$1.ag() == this.f && $$1 instanceof bur $$2 && $$0.a($$2) && !$$2.ga()) {
-            return true;
-         }
+   public boolean b(bkn $$0, UUID $$1) {
+      bko $$2 = this.a.get($$0);
+      return $$2 != null && $$2.a($$1) != null;
+   }
 
-         return false;
-      }).map(bur.class::cast);
+   public static class a {
+      private final Map<bkn, bko> a = Maps.newHashMap();
+      private boolean b;
+
+      private bko b(bkn $$0) {
+         bko $$1 = new bko($$0, $$1x -> {
+            if (this.b) {
+               throw new UnsupportedOperationException("Tried to change value for default attribute instance: " + jb.v.b($$0));
+            }
+         });
+         this.a.put($$0, $$1);
+         return $$1;
+      }
+
+      public bkr.a a(bkn $$0) {
+         this.b($$0);
+         return this;
+      }
+
+      public bkr.a a(bkn $$0, double $$1) {
+         bko $$2 = this.b($$0);
+         $$2.a($$1);
+         return this;
+      }
+
+      public bkr a() {
+         this.b = true;
+         return new bkr(this.a);
+      }
    }
 }

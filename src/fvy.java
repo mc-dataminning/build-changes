@@ -1,19 +1,18 @@
-public class fvy extends fun<bvs, fhl<bvs>> {
-   private static final aew a = new aew("textures/entity/turtle/big_sea_turtle.png");
+public class fvy extends ftw<cad> {
+   private static final aez a = new aez("textures/entity/illager/vindicator.png");
 
-   public fvy(fth.a $$0) {
-      super($$0, new fhl<>($$0.a(fib.bH)), 0.7F);
+   public fvy(ftd.a $$0) {
+      super($$0, new ffm<>($$0.a(fhw.bK)), 0.5F);
+      this.a(new fxe<cad, ffm<cad>>(this, $$0.d()) {
+         public void a(elj $$0, foa $$1, int $$2, cad $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+            if ($$3.fW()) {
+               super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
+            }
+         }
+      });
    }
 
-   public void a(bvs $$0, float $$1, float $$2, elp $$3, foe $$4, int $$5) {
-      if ($$0.m_()) {
-         this.d *= 0.5F;
-      }
-
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   public aew a(bvs $$0) {
+   public aez a(cad $$0) {
       return a;
    }
 }

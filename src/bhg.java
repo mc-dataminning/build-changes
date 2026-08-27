@@ -1,19 +1,26 @@
-public final class bhg implements bhb {
-   private final tl a;
-   private final cfp b;
+import javax.annotation.concurrent.Immutable;
 
-   public bhg(cfp $$0, tl $$1) {
-      this.b = $$0;
-      this.a = $$1;
+@Immutable
+public class bhg {
+   public static final bhg a = new bhg("");
+   public static final String b = "Lock";
+   private final String c;
+
+   public bhg(String $$0) {
+      this.c = $$0;
    }
 
-   @Override
-   public tl N_() {
-      return this.a;
+   public boolean a(cjl $$0) {
+      return this.c.isEmpty() || !$$0.b() && $$0.A() && this.c.equals($$0.y().getString());
    }
 
-   @Override
-   public cel createMenu(int $$0, cbt $$1, cbu $$2) {
-      return this.b.createMenu($$0, $$1, $$2);
+   public void a(qw $$0) {
+      if (!this.c.isEmpty()) {
+         $$0.a("Lock", this.c);
+      }
+   }
+
+   public static bhg b(qw $$0) {
+      return $$0.b("Lock", 8) ? new bhg($$0.l("Lock")) : a;
    }
 }

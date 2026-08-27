@@ -1,9 +1,8 @@
-public interface fdp {
-   void a(fdn var1);
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   tl aI_();
-
-   void a(esf var1, float var2, int var3);
-
-   boolean aJ_();
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface fdp {
 }

@@ -1,34 +1,47 @@
-import javax.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.List;
 
-public class zy implements vd<ww> {
-   private final int a;
-   private final int b;
-
-   public zy(biq $$0, @Nullable biq $$1) {
-      this.a = $$0.ah();
-      this.b = $$1 != null ? $$1.ah() : 0;
-   }
+public record zy(int b, List<aei.b<?>> c) implements ve<wx> {
+   public static final int a = 255;
 
    public zy(so $$0) {
-      this.a = $$0.readInt();
-      this.b = $$0.readInt();
+      this($$0.n(), b($$0));
+   }
+
+   private static void a(List<aei.b<?>> $$0, so $$1) {
+      for (aei.b<?> $$2 : $$0) {
+         $$2.a($$1);
+      }
+
+      $$1.k(255);
+   }
+
+   private static List<aei.b<?>> b(so $$0) {
+      List<aei.b<?>> $$1 = new ArrayList<>();
+
+      int $$2;
+      while (($$2 = $$0.readUnsignedByte()) != 255) {
+         $$1.add(aei.b.a($$0, $$2));
+      }
+
+      return $$1;
    }
 
    @Override
    public void a(so $$0) {
-      $$0.p(this.a);
-      $$0.p(this.b);
+      $$0.c(this.b);
+      a(this.c, $$0);
    }
 
-   public void a(ww $$0) {
+   public void a(wx $$0) {
       $$0.a(this);
    }
 
    public int a() {
-      return this.a;
+      return this.b;
    }
 
-   public int d() {
-      return this.b;
+   public List<aei.b<?>> d() {
+      return this.c;
    }
 }

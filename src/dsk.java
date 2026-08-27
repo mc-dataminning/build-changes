@@ -1,20 +1,36 @@
 import com.mojang.serialization.Codec;
+import java.util.List;
 
-public class dsk extends dsb {
-   public static final Codec<dsk> b = dfj.b.fieldOf("state").xmap(dsk::new, $$0 -> $$0.c).codec();
-   private final dfj c;
+public class dsk extends dsm {
+   public static final Codec<dsk> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(dsk::new, $$0 -> $$0.b).codec();
+   private final float b;
 
-   protected dsk(dfj $$0) {
-      this.c = $$0;
+   public dsk(float $$0) {
+      this.b = $$0;
    }
 
    @Override
-   protected dsc<?> a() {
-      return dsc.a;
+   protected dsn<?> a() {
+      return dsn.c;
    }
 
    @Override
-   public dfj a(asc $$0, gw $$1) {
-      return this.c;
+   public void a(dsm.a $$0) {
+      ash $$1 = $$0.b();
+      if (!($$1.i() >= this.b)) {
+         List<gw> $$2 = $$0.c();
+         int $$3 = $$2.get(0).v();
+         $$2.stream().filter($$1x -> $$1x.v() - $$3 <= 2).forEach($$2x -> {
+            for (ha $$3x : ha.c.a) {
+               if ($$1.i() <= 0.25F) {
+                  ha $$4 = $$3x.g();
+                  gw $$5 = $$2x.b($$4.j(), 0, $$4.l());
+                  if ($$0.a($$5)) {
+                     $$0.a($$5, cte.fC.o().a(cuj.c, Integer.valueOf($$1.a(3))).a(cuj.aE, $$3x));
+                  }
+               }
+            }
+         });
+      }
    }
 }

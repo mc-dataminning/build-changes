@@ -1,46 +1,26 @@
-import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.function.Function;
+import com.mojang.datafixers.types.templates.TaggedChoice.TaggedChoiceType;
+import java.util.function.UnaryOperator;
 
-public abstract class auc extends DataFix {
+public class auc extends DataFix {
    private final String a;
+   private final UnaryOperator<String> b;
 
-   public auc(Schema $$0, String $$1) {
-      super($$0, false);
+   private auc(Schema $$0, String $$1, UnaryOperator<String> $$2) {
+      super($$0, true);
       this.a = $$1;
+      this.b = $$2;
    }
 
    public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(ayx.y);
-      Type<Pair<String, String>> $$1 = DSL.named(ayx.y.typeName(), baf.a());
-      if (!Objects.equals($$0, $$1)) {
-         throw new IllegalStateException("block type is not what was expected.");
-      } else {
-         TypeRewriteRule $$2 = this.fixTypeEverywhere(this.a + " for block", $$1, $$0x -> $$0xx -> $$0xx.mapSecond(this::a));
-         TypeRewriteRule $$3 = this.fixTypeEverywhereTyped(
-            this.a + " for block_state", this.getInputSchema().getType(ayx.u), $$0x -> $$0x.update(DSL.remainderFinder(), $$0xx -> {
-                  Optional<String> $$1x = $$0xx.get("Name").asString().result();
-                  return $$1x.isPresent() ? $$0xx.set("Name", $$0xx.createString(this.a($$1x.get()))) : $$0xx;
-               })
-         );
-         return TypeRewriteRule.seq($$2, $$3);
-      }
+      TaggedChoiceType<String> $$0 = this.getInputSchema().findChoiceType(azd.s);
+      TaggedChoiceType<String> $$1 = this.getOutputSchema().findChoiceType(azd.s);
+      return this.fixTypeEverywhere(this.a, $$0, $$1, $$0x -> $$0xx -> $$0xx.mapFirst(this.b));
    }
 
-   protected abstract String a(String var1);
-
-   public static DataFix a(Schema $$0, String $$1, final Function<String, String> $$2) {
-      return new auc($$0, $$1) {
-         @Override
-         protected String a(String $$0) {
-            return $$2.apply($$0);
-         }
-      };
+   public static DataFix a(Schema $$0, String $$1, UnaryOperator<String> $$2) {
+      return new auc($$0, $$1, $$2);
    }
 }

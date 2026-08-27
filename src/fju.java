@@ -1,65 +1,17 @@
-import com.mojang.authlib.minecraft.report.AbuseReport;
-import com.mojang.authlib.minecraft.report.AbuseReportLimits;
-import com.mojang.authlib.minecraft.report.ReportedEntity;
-import com.mojang.datafixers.util.Either;
-import java.time.Instant;
-import java.util.UUID;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
+import java.util.Locale;
 
-public class fju extends fjv {
-   private final String f;
+public enum fju {
+   a("chat"),
+   b("skin"),
+   c("username");
 
-   fju(UUID $$0, Instant $$1, UUID $$2, String $$3) {
-      super($$0, $$1, $$2);
-      this.f = $$3;
+   private final String d;
+
+   private fju(String $$0) {
+      this.d = $$0.toUpperCase(Locale.ROOT);
    }
 
    public String a() {
-      return this.f;
-   }
-
-   public fju c() {
-      fju $$0 = new fju(this.a, this.b, this.c, this.f);
-      $$0.d = this.d;
-      return $$0;
-   }
-
-   @Override
-   public eyk a(eyk $$0, fjz $$1) {
-      return new fck($$0, $$1, this);
-   }
-
-   public static class a extends fjv.a<fju> {
-      public a(fju $$0, AbuseReportLimits $$1) {
-         super($$0, $$1);
-      }
-
-      public a(UUID $$0, String $$1, AbuseReportLimits $$2) {
-         super(new fju(UUID.randomUUID(), Instant.now(), $$0, $$1), $$2);
-      }
-
-      @Override
-      public boolean b() {
-         return StringUtils.isNotEmpty(this.g());
-      }
-
-      @Nullable
-      @Override
-      public fjv.b c() {
-         return this.a.d.length() > this.b.maxOpinionCommentsLength() ? fjv.b.d : null;
-      }
-
-      @Override
-      public Either<fjv.c, fjv.b> a(fjz $$0) {
-         fjv.b $$1 = this.c();
-         if ($$1 != null) {
-            return Either.right($$1);
-         } else {
-            ReportedEntity $$2 = new ReportedEntity(this.a.c);
-            AbuseReport $$3 = AbuseReport.name(this.a.d, $$2, this.a.b);
-            return Either.left(new fjv.c(this.a.a, fjy.c, $$3));
-         }
-      }
+      return this.d;
    }
 }

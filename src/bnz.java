@@ -1,33 +1,42 @@
 import com.mojang.datafixers.kinds.App;
 import java.util.function.Function;
-import java.util.function.Predicate;
+import org.apache.commons.lang3.mutable.MutableLong;
 
 public class bnz {
-   private static final int a = 16;
+   private static final int a = 60;
 
-   public static bky<bjg> a(Predicate<he<bui>> $$0, bsh<hd> $$1) {
-      return boj.a((Function<boj.b<bjg>, ? extends App<boj.c<bjg>, bom<bjg>>>)($$2 -> $$2.group($$2.b($$1)).apply($$2, $$2x -> ($$3, $$4, $$5) -> {
-               hd $$6 = $$2.b($$2x);
-               gw $$7 = $$6.b();
-               if ($$3.ac() == $$6.a() && $$7.a($$4.dj(), 16.0)) {
-                  akq $$8 = $$3.n().a($$6.a());
-                  if ($$8 == null || !$$8.w().a($$7, $$0)) {
-                     $$2x.b();
-                  } else if (a($$8, $$7, $$4)) {
-                     $$2x.b();
-                     $$3.w().b($$7);
-                     abb.c($$3, $$7);
-                  }
+   public static ble<bjv> a(int $$0, float $$1) {
+      MutableLong $$2 = new MutableLong(0L);
+      return bop.a(
+         (Function<bop.b<bjv>, ? extends App<bop.c<bjv>, bos<bjv>>>)($$3 -> $$3.group($$3.c(bsn.o), $$3.c(bsn.m), $$3.a(bsn.n))
+               .apply($$3, ($$3x, $$4, $$5) -> ($$5x, $$6, $$7) -> {
+                     if (!$$5x.b_($$6.dl()).a(aqa.a)) {
+                        return false;
+                     } else if ($$7 < $$2.getValue()) {
+                        $$2.setValue($$7 + 60L);
+                        return true;
+                     } else {
+                        gw $$8 = $$6.dl();
+                        gw.a $$9 = new gw.a();
+                        ehm $$10 = ehm.a($$6);
 
-                  return true;
-               } else {
-                  return false;
-               }
-            })));
-   }
+                        for (gw $$11 : gw.a($$8, $$0, $$0, $$0)) {
+                           if ($$11.u() != $$8.u() || $$11.w() != $$8.w()) {
+                              dfd $$12 = $$5x.a_($$11);
+                              dfd $$13 = $$5x.a_($$9.a($$11, ha.a));
+                              if (!$$12.a(cte.G) && $$5x.b_($$11).c() && $$12.b($$5x, $$11, $$10).c() && $$13.d($$5x, $$9, ha.b)) {
+                                 gw $$14 = $$11.i();
+                                 $$5.a(new blg($$14));
+                                 $$4.a(new bsq(new blg($$14), $$1, 1));
+                                 break;
+                              }
+                           }
+                        }
 
-   private static boolean a(akq $$0, gw $$1, bjg $$2) {
-      dfj $$3 = $$0.a_($$1);
-      return $$3.a(aps.R) && $$3.c(cso.b) && !$$2.fC();
+                        $$2.setValue($$7 + 60L);
+                        return true;
+                     }
+                  }))
+      );
    }
 }

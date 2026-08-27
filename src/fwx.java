@@ -1,13 +1,13 @@
-public class fwx<T extends byw> extends fxp<T, fez<T>> {
-   private static final aew a = new aew("textures/entity/zombie/drowned_outer_layer.png");
-   private final fez<T> b;
-
-   public fwx(fvc<T, fez<T>> $$0, fhy $$1) {
+public abstract class fwx<T extends biw, M extends fey<T>> extends fxl<T, M> {
+   public fwx(fuy<T, M> $$0) {
       super($$0);
-      this.b = new fez<>($$1.a(fib.O));
    }
 
-   public void a(elp $$0, foe $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      a(this.c(), this.b, a, $$0, $$1, $$2, $$3, $$4, $$5, $$7, $$8, $$9, $$6, 1.0F, 1.0F, 1.0F);
+   @Override
+   public void a(elj $$0, foa $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      eln $$10 = $$1.getBuffer(this.a());
+      this.c().a($$0, $$10, 15728640, fyr.d, 1.0F, 1.0F, 1.0F, 1.0F);
    }
+
+   public abstract foi a();
 }

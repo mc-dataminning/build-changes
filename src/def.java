@@ -1,141 +1,86 @@
-import com.mojang.authlib.GameProfile;
-import com.mojang.authlib.minecraft.MinecraftSessionService;
-import com.mojang.authlib.yggdrasil.ProfileResult;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Dynamic;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import java.util.OptionalInt;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class def extends dcv {
-   public static final String a = "SkullOwner";
-   public static final String b = "note_block_sound";
-   @Nullable
-   private static aoc c;
-   @Nullable
-   private static MinecraftSessionService d;
-   @Nullable
-   private static Executor e;
-   private static final Executor f = $$0 -> {
-      Executor $$1 = e;
-      if ($$1 != null) {
-         $$1.execute($$0);
-      }
-   };
-   @Nullable
-   private GameProfile g;
-   @Nullable
-   private aew h;
-   private int i;
-   private boolean j;
+public class def extends dcz implements djp.b<djw.b>, djw {
+   private static final Logger b = LogUtils.getLogger();
+   private static final int c = 10;
+   private static final int d = 20;
+   private static final int e = 5;
+   private static final int g = 6;
+   private static final int h = 40;
+   private static final int i = 90;
+   private static final Int2ObjectMap<apf> j = ac.a(new Int2ObjectOpenHashMap(), $$0 -> {
+      $$0.put(1, apg.zG);
+      $$0.put(2, apg.zH);
+      $$0.put(3, apg.zI);
+      $$0.put(4, apg.zF);
+   });
+   private int k;
+   private final djw.d l = new def.a();
+   private djw.a m = new djw.a();
+   private final djw.b n = new djw.b(this);
 
-   public def(gw $$0, dfj $$1) {
-      super(dcx.p, $$0, $$1);
-   }
-
-   public static void a(afo $$0, Executor $$1) {
-      c = $$0.e();
-      d = $$0.b();
-      e = $$1;
-   }
-
-   public static void c() {
-      c = null;
-      d = null;
-      e = null;
+   public def(gw $$0, dfd $$1) {
+      super(ddb.L, $$0, $$1);
    }
 
    @Override
-   protected void b(qw $$0) {
-      super.b($$0);
-      if (this.g != null) {
-         qw $$1 = new qw();
-         rj.a($$1, this.g);
-         $$0.a("SkullOwner", $$1);
-      }
+   public djw.a gg() {
+      return this.m;
+   }
 
-      if (this.h != null) {
-         $$0.a("note_block_sound", this.h.toString());
-      }
+   @Override
+   public djw.d gh() {
+      return this.l;
    }
 
    @Override
    public void a(qw $$0) {
       super.a($$0);
-      if ($$0.b("SkullOwner", 10)) {
-         this.a(rj.a($$0.p("SkullOwner")));
-      } else if ($$0.b("ExtraType", 8)) {
-         String $$1 = $$0.l("ExtraType");
-         if (!asq.b($$1)) {
-            this.a(new GameProfile(ac.d, $$1));
-         }
+      if ($$0.b("warning_level", 99)) {
+         this.k = $$0.h("warning_level");
       }
 
-      if ($$0.b("note_block_sound", 8)) {
-         this.h = aew.a($$0.l("note_block_sound"));
+      if ($$0.b("listener", 10)) {
+         djw.a.a.parse(new Dynamic(ri.a, $$0.p("listener"))).resultOrPartial(b::error).ifPresent($$0x -> this.m = $$0x);
       }
-   }
-
-   public static void a(cpv $$0, gw $$1, dfj $$2, def $$3) {
-      if ($$2.b(czx.a) && $$2.c(czx.a)) {
-         $$3.j = true;
-         $$3.i++;
-      } else {
-         $$3.j = false;
-      }
-   }
-
-   public float a(float $$0) {
-      return this.j ? (float)this.i + $$0 : (float)this.i;
-   }
-
-   @Nullable
-   public GameProfile d() {
-      return this.g;
-   }
-
-   @Nullable
-   public aew f() {
-      return this.h;
-   }
-
-   public xd g() {
-      return xd.a(this);
    }
 
    @Override
-   public qw as_() {
-      return this.o();
-   }
-
-   public void a(@Nullable GameProfile $$0) {
-      synchronized (this) {
-         this.g = $$0;
-      }
-
-      this.i();
-   }
-
-   private void i() {
-      if (this.g != null && !ac.b(this.g.getName()) && !c(this.g)) {
-         a(this.g.getName()).thenAcceptAsync($$0 -> {
-            this.g = $$0.orElse(this.g);
-            this.e();
-         }, f);
-      } else {
-         this.e();
-      }
+   protected void b(qw $$0) {
+      super.b($$0);
+      $$0.a("warning_level", this.k);
+      djw.a.a.encodeStart(ri.a, this.m).resultOrPartial(b::error).ifPresent($$1 -> $$0.a("listener", $$1));
    }
 
    @Nullable
-   public static GameProfile d(qw $$0) {
-      if ($$0.b("SkullOwner", 10)) {
-         return rj.a($$0.p("SkullOwner"));
+   public static aku a(@Nullable biw $$0) {
+      if ($$0 instanceof aku) {
+         return (aku)$$0;
       } else {
-         if ($$0.b("SkullOwner", 8)) {
-            String $$1 = $$0.l("SkullOwner");
-            if (!ac.b($$1)) {
-               $$0.r("SkullOwner");
-               a($$0, $$1);
+         if ($$0 != null) {
+            bjm $$6 = $$0.cN();
+            if ($$6 instanceof aku) {
+               return (aku)$$6;
+            }
+         }
+
+         if ($$0 instanceof ccs $$3) {
+            biw var3 = $$3.v();
+            if (var3 instanceof aku) {
+               return (aku)var3;
+            }
+         }
+
+         if ($$0 instanceof byt $$5) {
+            biw var9 = $$5.v();
+            if (var9 instanceof aku) {
+               return (aku)var9;
             }
          }
 
@@ -143,47 +88,106 @@ public class def extends dcv {
       }
    }
 
-   public static void e(qw $$0) {
-      String $$1 = $$0.l("SkullOwner");
-      if (!ac.b($$1)) {
-         a($$0, $$1);
+   public void a(akt $$0, @Nullable aku $$1) {
+      if ($$1 != null) {
+         dfd $$2 = this.q();
+         if (!$$2.c(czu.b)) {
+            this.k = 0;
+            if (!this.b($$0) || this.b($$0, $$1)) {
+               this.a($$0, (biw)$$1);
+            }
+         }
       }
    }
 
-   private static void a(qw $$0, String $$1) {
-      a($$1).thenAccept($$2 -> $$0.a("SkullOwner", rj.a(new qw(), $$2.orElse(new GameProfile(ac.d, $$1)))));
+   private boolean b(akt $$0, aku $$1) {
+      OptionalInt $$2 = cbg.a($$0, this.p(), $$1);
+      $$2.ifPresent($$0x -> this.k = $$0x);
+      return $$2.isPresent();
    }
 
-   private static CompletableFuture<Optional<GameProfile>> a(String $$0) {
-      aoc $$1 = c;
-      return $$1 == null
-         ? CompletableFuture.completedFuture(Optional.empty())
-         : $$1.b($$0)
-            .thenCompose($$0x -> $$0x.isPresent() ? b((GameProfile)$$0x.get()) : CompletableFuture.completedFuture(Optional.empty()))
-            .thenApplyAsync($$0x -> {
-               aoc $$1x = c;
-               if ($$1x != null) {
-                  $$0x.ifPresent($$1x::a);
-                  return $$0x;
-               } else {
-                  return Optional.empty();
-               }
-            }, f);
+   private void a(akt $$0, @Nullable biw $$1) {
+      gw $$2 = this.p();
+      dfd $$3 = this.q();
+      $$0.a($$2, $$3.a(czu.b, Boolean.valueOf(true)), 2);
+      $$0.a($$2, $$3.b(), 90);
+      $$0.c(3007, $$2, 0);
+      $$0.a(djn.N, $$2, djn.a.a($$1));
    }
 
-   private static CompletableFuture<Optional<GameProfile>> b(GameProfile $$0) {
-      return c($$0) ? CompletableFuture.completedFuture(Optional.of($$0)) : CompletableFuture.supplyAsync(() -> {
-         MinecraftSessionService $$1 = d;
-         if ($$1 != null) {
-            ProfileResult $$2 = $$1.fetchProfile($$0.getId(), true);
-            return $$2 == null ? Optional.of($$0) : Optional.of($$2.profile());
-         } else {
-            return Optional.empty();
+   private boolean b(akt $$0) {
+      return this.q().c(czu.d) && $$0.ai() != bhb.a && $$0.X().b(cpx.I);
+   }
+
+   public void a(akt $$0) {
+      if (this.b($$0) && this.k > 0) {
+         if (!this.c($$0)) {
+            this.b((cqb)$$0);
          }
-      }, ac.f());
+
+         cbe.a($$0, ehh.b(this.p()), null, 40);
+      }
    }
 
-   private static boolean c(GameProfile $$0) {
-      return $$0.getProperties().containsKey("textures");
+   private void b(cqb $$0) {
+      apf $$1 = (apf)j.get(this.k);
+      if ($$1 != null) {
+         gw $$2 = this.p();
+         int $$3 = $$2.u() + asb.b($$0.z, -10, 10);
+         int $$4 = $$2.v() + asb.b($$0.z, -10, 10);
+         int $$5 = $$2.w() + asb.b($$0.z, -10, 10);
+         $$0.a(null, (double)$$3, (double)$$4, (double)$$5, $$1, aph.f, 5.0F, 1.0F);
+      }
+   }
+
+   private boolean c(akt $$0) {
+      return this.k < 4 ? false : ass.a(bja.bi, bjq.k, $$0, this.p(), 20, 5, 6, ass.a.b).isPresent();
+   }
+
+   public djw.b c() {
+      return this.n;
+   }
+
+   class a implements djw.d {
+      private static final int b = 8;
+      private final djr c = new djj(def.this.p);
+
+      public a() {
+      }
+
+      @Override
+      public int a() {
+         return 8;
+      }
+
+      @Override
+      public djr b() {
+         return this.c;
+      }
+
+      @Override
+      public aqk<djn> c() {
+         return aqb.c;
+      }
+
+      @Override
+      public boolean a(akt $$0, gw $$1, djn $$2, djn.a $$3) {
+         return !def.this.q().c(czu.b) && def.a($$3.a()) != null;
+      }
+
+      @Override
+      public void a(akt $$0, gw $$1, djn $$2, @Nullable biw $$3, @Nullable biw $$4, float $$5) {
+         def.this.a($$0, def.a($$4 != null ? $$4 : $$3));
+      }
+
+      @Override
+      public void e() {
+         def.this.e();
+      }
+
+      @Override
+      public boolean f() {
+         return true;
+      }
    }
 }

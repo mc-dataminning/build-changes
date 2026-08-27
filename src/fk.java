@@ -21,11 +21,11 @@ public class fk implements ArgumentType<fm> {
    }
 
    public static gw a(CommandContext<dt> $$0, String $$1) throws CommandSyntaxException {
-      akq $$2 = ((dt)$$0.getSource()).e();
+      akt $$2 = ((dt)$$0.getSource()).e();
       return a($$0, $$2, $$1);
    }
 
-   public static gw a(CommandContext<dt> $$0, akq $$1, String $$2) throws CommandSyntaxException {
+   public static gw a(CommandContext<dt> $$0, akt $$1, String $$2) throws CommandSyntaxException {
       gw $$3 = b($$0, $$2);
       if (!$$1.A($$3)) {
          throw a.create();
@@ -42,7 +42,7 @@ public class fk implements ArgumentType<fm> {
 
    public static gw c(CommandContext<dt> $$0, String $$1) throws CommandSyntaxException {
       gw $$2 = b($$0, $$1);
-      if (!cpv.k($$2)) {
+      if (!cqb.k($$2)) {
          throw c.create();
       } else {
          return $$2;

@@ -1,55 +1,45 @@
-import java.util.Comparator;
-import java.util.Objects;
-import java.util.function.Function;
+import com.google.common.annotations.VisibleForTesting;
+import java.util.Locale;
 import javax.annotation.Nullable;
 
-public class gbi {
-   public static final Comparator<gbi> a = Comparator.<gbi, aew>comparing(gbi::a).thenComparing(gbi::b);
-   private final aew b;
-   private final aew c;
-   @Nullable
-   private fom d;
+public class gbi extends aez {
+   @VisibleForTesting
+   static final char e = '#';
+   private final String f;
 
-   public gbi(aew $$0, aew $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   private gbi(String $$0, String $$1, String $$2, @Nullable aez.a $$3) {
+      super($$0, $$1, $$3);
+      this.f = $$2;
    }
 
-   public aew a() {
-      return this.b;
+   public gbi(String $$0, String $$1, String $$2) {
+      super($$0, $$1);
+      this.f = j($$2);
    }
 
-   public aew b() {
-      return this.c;
+   public gbi(aez $$0, String $$1) {
+      this($$0.b(), $$0.a(), j($$1), null);
    }
 
-   public fze c() {
-      return eqv.O().a(this.a()).apply(this.b());
+   public static gbi c(String $$0, String $$1) {
+      return new gbi("minecraft", $$0, $$1);
    }
 
-   public fom a(Function<aew, fom> $$0) {
-      if (this.d == null) {
-         this.d = $$0.apply(this.b);
-      }
-
-      return this.d;
+   private static String j(String $$0) {
+      return $$0.toLowerCase(Locale.ROOT);
    }
 
-   public elt a(foe $$0, Function<aew, fom> $$1) {
-      return this.c().a($$0.getBuffer(this.a($$1)));
-   }
-
-   public elt a(foe $$0, Function<aew, fom> $$1, boolean $$2) {
-      return this.c().a(fuf.c($$0, this.a($$1), true, $$2));
+   public String f() {
+      return this.f;
    }
 
    @Override
    public boolean equals(Object $$0) {
       if (this == $$0) {
          return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+      } else if ($$0 instanceof gbi && super.equals($$0)) {
          gbi $$1 = (gbi)$$0;
-         return this.b.equals($$1.b) && this.c.equals($$1.c);
+         return this.f.equals($$1.f);
       } else {
          return false;
       }
@@ -57,11 +47,11 @@ public class gbi {
 
    @Override
    public int hashCode() {
-      return Objects.hash(this.b, this.c);
+      return 31 * super.hashCode() + this.f.hashCode();
    }
 
    @Override
    public String toString() {
-      return "Material{atlasLocation=" + this.b + ", texture=" + this.c + "}";
+      return super.toString() + "#" + this.f;
    }
 }

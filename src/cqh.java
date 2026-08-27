@@ -1,25 +1,12 @@
-public final class cqh implements dhc {
-   private final int a;
-   private final dfj[] b;
+import java.util.Optional;
+import java.util.function.Predicate;
 
-   public cqh(int $$0, dfj[] $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
+public interface cqh {
+   boolean a(gw var1, Predicate<dfd> var2);
 
-   @Override
-   public dfj a(int $$0) {
-      int $$1 = $$0 - this.a;
-      return $$1 >= 0 && $$1 < this.b.length ? this.b[$$1] : csw.a.n();
-   }
+   boolean b(gw var1, Predicate<eag> var2);
 
-   @Override
-   public void a(int $$0, dfj $$1) {
-      int $$2 = $$0 - this.a;
-      if ($$2 >= 0 && $$2 < this.b.length) {
-         this.b[$$2] = $$1;
-      } else {
-         throw new IllegalArgumentException("Outside of column height: " + $$0);
-      }
-   }
+   <T extends dcz> Optional<T> a(gw var1, ddb<T> var2);
+
+   gw a(dkm.a var1, gw var2);
 }

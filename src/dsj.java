@@ -1,49 +1,49 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public record dsj(dsb b, List<dsj.a> c) {
-   public static final Codec<dsj> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(dsb.a.fieldOf("fallback").forGetter(dsj::a), dsj.a.a.listOf().fieldOf("rules").forGetter(dsj::b)).apply($$0, dsj::new)
-   );
+public class dsj extends dsm {
+   public static final Codec<dsj> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(dsj::new, $$0 -> $$0.d).codec();
+   private static final ha b = ha.d;
+   private static final ha[] c = ha.c.a.a().filter($$0 -> $$0 != b.g()).toArray(ha[]::new);
+   private final float d;
 
-   public static dsj a(dsb $$0) {
-      return new dsj($$0, List.of());
+   public dsj(float $$0) {
+      this.d = $$0;
    }
 
-   public static dsj a(csv $$0) {
-      return a(dsb.a($$0));
+   @Override
+   protected dsn<?> a() {
+      return dsn.d;
    }
 
-   public dfj a(cqp $$0, asc $$1, gw $$2) {
-      for (dsj.a $$3 : this.c) {
-         if ($$3.a().test($$0, $$2)) {
-            return $$3.b().a($$1, $$2);
+   @Override
+   public void a(dsm.a $$0) {
+      ash $$1 = $$0.b();
+      if (!($$1.i() >= this.d)) {
+         List<gw> $$2 = $$0.d();
+         List<gw> $$3 = $$0.c();
+         int $$4 = !$$2.isEmpty() ? Math.max($$2.get(0).v() - 1, $$3.get(0).v() + 1) : Math.min($$3.get(0).v() + 1 + $$1.a(3), $$3.get($$3.size() - 1).v());
+         List<gw> $$5 = $$3.stream().filter($$1x -> $$1x.v() == $$4).flatMap($$0x -> Stream.of(c).map($$0x::a)).collect(Collectors.toList());
+         if (!$$5.isEmpty()) {
+            Collections.shuffle($$5);
+            Optional<gw> $$6 = $$5.stream().filter($$1x -> $$0.a($$1x) && $$0.a($$1x.a(b))).findFirst();
+            if (!$$6.isEmpty()) {
+               $$0.a($$6.get(), cte.pe.o().a(csw.b, b));
+               $$0.a().a($$6.get(), ddb.H).ifPresent($$1x -> {
+                  int $$2x = 2 + $$1.a(2);
+
+                  for (int $$3x = 0; $$3x < $$2x; $$3x++) {
+                     qw $$4x = new qw();
+                     $$4x.a("id", jb.h.b(bja.h).toString());
+                     $$1x.a($$4x, $$1.a(599), false);
+                  }
+               });
+            }
          }
-      }
-
-      return this.b.a($$1, $$2);
-   }
-
-   public dsb a() {
-      return this.b;
-   }
-
-   public List<dsj.a> b() {
-      return this.c;
-   }
-
-   public static record a(dlz b, dsb c) {
-      public static final Codec<dsj.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(dlz.b.fieldOf("if_true").forGetter(dsj.a::a), dsb.a.fieldOf("then").forGetter(dsj.a::b)).apply($$0, dsj.a::new)
-      );
-
-      public dlz a() {
-         return this.b;
-      }
-
-      public dsb b() {
-         return this.c;
       }
    }
 }

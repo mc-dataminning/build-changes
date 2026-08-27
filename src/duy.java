@@ -1,103 +1,106 @@
-import java.util.Map;
-import java.util.Optional;
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.DynamicOps;
+import java.util.List;
+import java.util.Locale;
+import org.slf4j.Logger;
 
-public class duy {
-   public static final aev<dux> a = a("normal");
-   public static final aev<dux> b = a("flat");
-   public static final aev<dux> c = a("large_biomes");
-   public static final aev<dux> d = a("amplified");
-   public static final aev<dux> e = a("single_biome_surface");
-   public static final aev<dux> f = a("debug_all_block_states");
+public class duy extends dvg {
+   private static final Logger d = LogUtils.getLogger();
+   protected final dwj a;
+   protected gw b;
+   private final int h;
+   protected final czn c;
+   private final List<dwe> i = Lists.newArrayList();
+   private final dyw j;
 
-   public static void a(nr<dux> $$0) {
-      new duy.a($$0).a();
+   public duy(dyw $$0, dwj $$1, gw $$2, int $$3, czn $$4, duu $$5) {
+      super(dvt.ad, 0, $$5);
+      this.j = $$0;
+      this.a = $$1;
+      this.b = $$2;
+      this.h = $$3;
+      this.c = $$4;
    }
 
-   private static aev<dux> a(String $$0) {
-      return aev.a(jc.aF, new aew($$0));
+   public duy(dvs $$0, qw $$1) {
+      super(dvt.ad, $$1);
+      this.j = $$0.c();
+      this.b = new gw($$1.h("PosX"), $$1.h("PosY"), $$1.h("PosZ"));
+      this.h = $$1.h("ground_level_delta");
+      DynamicOps<rq> $$2 = aex.a(ri.a, $$0.b());
+      this.a = (dwj)dwj.e
+         .parse($$2, $$1.p("pool_element"))
+         .resultOrPartial(d::error)
+         .orElseThrow(() -> new IllegalStateException("Invalid pool element found"));
+      this.c = czn.valueOf($$1.l("rotation"));
+      this.f = this.a.a(this.j, this.b, this.c);
+      rc $$3 = $$1.c("junctions", 10);
+      this.i.clear();
+      $$3.forEach($$1x -> this.i.add(dwe.a(new Dynamic($$2, $$1x))));
    }
 
-   public static Optional<aev<dux>> a(hq<dit> $$0) {
-      return $$0.d(dit.b).flatMap($$0x -> {
-         dhg $$1 = $$0x.b();
-         if ($$1 instanceof dkn) {
-            return Optional.of(b);
-         } else {
-            return $$1 instanceof dkj ? Optional.of(f) : Optional.empty();
-         }
-      });
+   @Override
+   protected void a(dvs $$0, qw $$1) {
+      $$1.a("PosX", this.b.u());
+      $$1.a("PosY", this.b.v());
+      $$1.a("PosZ", this.b.w());
+      $$1.a("ground_level_delta", this.h);
+      DynamicOps<rq> $$2 = aex.a(ri.a, $$0.b());
+      dwj.e.encodeStart($$2, this.a).resultOrPartial(d::error).ifPresent($$1x -> $$1.a("pool_element", $$1x));
+      $$1.a("rotation", this.c.name());
+      rc $$3 = new rc();
+
+      for (dwe $$4 : this.i) {
+         $$3.add((rq)$$4.a($$2).getValue());
+      }
+
+      $$1.a("junctions", $$3);
    }
 
-   public static dln a(hr $$0) {
-      return $$0.d(jc.aF).f(a).a().a();
+   @Override
+   public void a(cqv $$0, cqt $$1, dha $$2, ash $$3, duu $$4, cpi $$5, gw $$6) {
+      this.a($$0, $$1, $$2, $$3, $$4, $$6, false);
    }
 
-   public static dit b(hr $$0) {
-      return $$0.d(jc.aF).f(a).a().b().orElseThrow();
+   public void a(cqv $$0, cqt $$1, dha $$2, ash $$3, duu $$4, gw $$5, boolean $$6) {
+      this.a.a(this.j, $$0, $$1, $$2, this.b, $$5, this.c, $$4, $$3, $$6);
    }
 
-   static class a {
-      private final nr<dux> a;
-      private final hf<dkx> b;
-      private final hf<cqt> c;
-      private final hf<dum> d;
-      private final hf<dvo> e;
-      private final hf<crh> f;
-      private final he<dis> g;
-      private final dit h;
-      private final dit i;
+   @Override
+   public void a(int $$0, int $$1, int $$2) {
+      super.a($$0, $$1, $$2);
+      this.b = this.b.b($$0, $$1, $$2);
+   }
 
-      a(nr<dux> $$0) {
-         this.a = $$0;
-         hf<dis> $$1 = $$0.a(jc.au);
-         this.b = $$0.a(jc.aw);
-         this.c = $$0.a(jc.ap);
-         this.d = $$0.a(jc.ay);
-         this.e = $$0.a(jc.aB);
-         this.f = $$0.a(jc.aG);
-         this.g = $$1.b(diq.a);
-         he<dis> $$2 = $$1.b(diq.b);
-         he<dkx> $$3 = this.b.b(dkx.f);
-         he.c<crh> $$4 = this.f.b(cri.a);
-         this.h = new dit($$2, new dkv(crg.a($$4), $$3));
-         he<dis> $$5 = $$1.b(diq.c);
-         he<dkx> $$6 = this.b.b(dkx.g);
-         this.i = new dit($$5, new dkv(crk.a(this.c), $$6));
-      }
+   @Override
+   public czn a() {
+      return this.c;
+   }
 
-      private dit a(dhg $$0) {
-         return new dit(this.g, $$0);
-      }
+   @Override
+   public String toString() {
+      return String.format(Locale.ROOT, "<%s | %s | %s | %s>", this.getClass().getSimpleName(), this.b, this.c, this.a);
+   }
 
-      private dit a(cqx $$0, he<dkx> $$1) {
-         return this.a(new dkv($$0, $$1));
-      }
+   public dwj b() {
+      return this.a;
+   }
 
-      private dux a(dit $$0) {
-         return new dux(Map.of(dit.b, $$0, dit.c, this.h, dit.d, this.i));
-      }
+   public gw c() {
+      return this.b;
+   }
 
-      private void a(aev<dux> $$0, dit $$1) {
-         this.a.a($$0, this.a($$1));
-      }
+   public int d() {
+      return this.h;
+   }
 
-      private void a(cqx $$0) {
-         he<dkx> $$1 = this.b.b(dkx.c);
-         this.a(duy.a, this.a($$0, $$1));
-         he<dkx> $$2 = this.b.b(dkx.d);
-         this.a(duy.c, this.a($$0, $$2));
-         he<dkx> $$3 = this.b.b(dkx.e);
-         this.a(duy.d, this.a($$0, $$3));
-      }
+   public void a(dwe $$0) {
+      this.i.add($$0);
+   }
 
-      public void a() {
-         he.c<crh> $$0 = this.f.b(cri.b);
-         this.a(crg.a($$0));
-         he<dkx> $$1 = this.b.b(dkx.c);
-         he.c<cqt> $$2 = this.c.b(cra.b);
-         this.a(duy.e, this.a(new cre($$2), $$1));
-         this.a(duy.b, this.a(new dkn(dtl.a(this.c, this.e, this.d))));
-         this.a(duy.f, this.a(new dkj($$2)));
-      }
+   public List<dwe> e() {
+      return this.i;
    }
 }

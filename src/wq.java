@@ -1,18 +1,12 @@
-public record wq() implements vd<wp> {
-   public wq(so $$0) {
-      this();
-   }
-
+public interface wq extends vh {
    @Override
-   public void a(so $$0) {
+   default sn b() {
+      return sn.e;
    }
 
-   public void a(wp $$0) {
-      $$0.a(this);
-   }
+   void a(wr var1);
 
-   @Override
-   public sn c() {
-      return sn.b;
-   }
+   void a(ws var1);
+
+   void a(wt var1);
 }

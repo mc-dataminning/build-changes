@@ -1,20 +1,21 @@
-public enum dgl implements asp {
-   a("normal"),
-   b("sticky");
+public enum dgl implements asu {
+   a("top"),
+   b("bottom"),
+   c("double");
 
-   private final String c;
+   private final String d;
 
    private dgl(String $$0) {
-      this.c = $$0;
+      this.d = $$0;
    }
 
    @Override
    public String toString() {
-      return this.c;
+      return this.d;
    }
 
    @Override
    public String c() {
-      return this.c;
+      return this.d;
    }
 }

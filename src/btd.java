@@ -1,24 +1,22 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Comparator;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.UUID;
 
-public class btd extends btl<bji> {
-   private static final long c = 32L;
-   private static final long d = 16L;
-   public static final int a = 32;
+public class btd extends btl {
+   public static final float a = 10.0F;
 
    @Override
-   public Set<bsh<?>> a() {
-      return ImmutableSet.of(bsh.K);
+   protected boolean a(bjm $$0, bjm $$1) {
+      return !$$0.dN().a(bsn.T) && btr.c($$0, $$1) && bwm.j($$1) && !this.e($$0, $$1) ? $$1.a($$0, 10.0) : false;
    }
 
-   protected void a(akq $$0, bji $$1) {
-      bkg<?> $$2 = $$1.dN();
-      List<byn> $$3 = $$0.a(byn.class, $$1.cG().c(32.0, 16.0, 32.0), $$0x -> true);
-      $$3.sort(Comparator.comparingDouble($$1::f));
-      Optional<byn> $$4 = $$3.stream().filter($$1x -> $$1.k($$1x.q())).filter($$1x -> $$1x.a($$1, 32.0)).filter($$1::E).findFirst();
-      $$2.a(bsh.K, $$4);
+   private boolean e(bjm $$0, bjm $$1) {
+      List<UUID> $$2 = $$0.dN().c(bsn.Z).orElseGet(ArrayList::new);
+      return $$2.contains($$1.cv());
+   }
+
+   @Override
+   protected bsn<bjm> b() {
+      return bsn.B;
    }
 }

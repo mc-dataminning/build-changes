@@ -1,78 +1,42 @@
-import com.google.common.collect.ImmutableMap;
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
-import java.util.Map;
+import java.util.Objects;
+import java.util.stream.Stream;
 
-public class atk extends DataFix {
-   private static final Map<String, String> a = ImmutableMap.builder()
-      .put("generic.maxHealth", "generic.max_health")
-      .put("Max Health", "generic.max_health")
-      .put("zombie.spawnReinforcements", "zombie.spawn_reinforcements")
-      .put("Spawn Reinforcements Chance", "zombie.spawn_reinforcements")
-      .put("horse.jumpStrength", "horse.jump_strength")
-      .put("Jump Strength", "horse.jump_strength")
-      .put("generic.followRange", "generic.follow_range")
-      .put("Follow Range", "generic.follow_range")
-      .put("generic.knockbackResistance", "generic.knockback_resistance")
-      .put("Knockback Resistance", "generic.knockback_resistance")
-      .put("generic.movementSpeed", "generic.movement_speed")
-      .put("Movement Speed", "generic.movement_speed")
-      .put("generic.flyingSpeed", "generic.flying_speed")
-      .put("Flying Speed", "generic.flying_speed")
-      .put("generic.attackDamage", "generic.attack_damage")
-      .put("generic.attackKnockback", "generic.attack_knockback")
-      .put("generic.attackSpeed", "generic.attack_speed")
-      .put("generic.armorToughness", "generic.armor_toughness")
-      .build();
+public abstract class atk extends DataFix {
+   private final String a;
 
-   public atk(Schema $$0) {
+   public atk(Schema $$0, String $$1) {
       super($$0, false);
+      this.a = $$1;
    }
 
    protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(ayx.t);
-      OpticFinder<?> $$1 = $$0.findField("tag");
-      return TypeRewriteRule.seq(
-         this.fixTypeEverywhereTyped("Rename ItemStack Attributes", $$0, $$1x -> $$1x.updateTyped($$1, atk::a)),
-         new TypeRewriteRule[]{
-            this.fixTypeEverywhereTyped("Rename Entity Attributes", this.getInputSchema().getType(ayx.x), atk::b),
-            this.fixTypeEverywhereTyped("Rename Player Attributes", this.getInputSchema().getType(ayx.b), atk::b)
-         }
-      );
+      Type<Pair<String, Dynamic<?>>> $$0 = DSL.named(azd.q.typeName(), DSL.remainderType());
+      if (!Objects.equals($$0, this.getInputSchema().getType(azd.q))) {
+         throw new IllegalStateException("Poi type is not what was expected.");
+      } else {
+         return this.fixTypeEverywhere(this.a, $$0, $$0x -> $$0xx -> $$0xx.mapSecond(this::a));
+      }
    }
 
-   private static Dynamic<?> a(Dynamic<?> $$0) {
-      return (Dynamic<?>)DataFixUtils.orElse($$0.asString().result().map($$0x -> a.getOrDefault($$0x, $$0x)).map($$0::createString), $$0);
+   private <T> Dynamic<T> a(Dynamic<T> $$0) {
+      return $$0.update("Sections", $$0x -> $$0x.updateMapValues($$0xx -> $$0xx.mapSecond(this::b)));
    }
 
-   private static Typed<?> a(Typed<?> $$0) {
-      return $$0.update(
-         DSL.remainderFinder(),
-         $$0x -> $$0x.update(
-               "AttributeModifiers",
-               $$0xx -> (Dynamic)DataFixUtils.orElse(
-                     $$0xx.asStreamOpt().result().map($$0xxx -> $$0xxx.map($$0xxxx -> $$0xxxx.update("AttributeName", atk::a))).map($$0xx::createList), $$0xx
-                  )
-            )
-      );
+   private Dynamic<?> b(Dynamic<?> $$0) {
+      return $$0.update("Records", this::c);
    }
 
-   private static Typed<?> b(Typed<?> $$0) {
-      return $$0.update(
-         DSL.remainderFinder(),
-         $$0x -> $$0x.update(
-               "Attributes",
-               $$0xx -> (Dynamic)DataFixUtils.orElse(
-                     $$0xx.asStreamOpt().result().map($$0xxx -> $$0xxx.map($$0xxxx -> $$0xxxx.update("Name", atk::a))).map($$0xx::createList), $$0xx
-                  )
-            )
-      );
+   private <T> Dynamic<T> c(Dynamic<T> $$0) {
+      return (Dynamic<T>)DataFixUtils.orElse($$0.asStreamOpt().result().map($$1 -> $$0.createList(this.a((Stream<Dynamic<T>>)$$1))), $$0);
    }
+
+   protected abstract <T> Stream<Dynamic<T>> a(Stream<Dynamic<T>> var1);
 }

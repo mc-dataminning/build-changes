@@ -1,3 +1,8 @@
-public interface bgt {
-   void a(bgr var1);
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface bgt {
 }

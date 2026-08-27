@@ -1,45 +1,69 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.OptionalInt;
 
-public class drd extends drb {
-   public static final Codec<drd> d = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.intRange(0, 80).fieldOf("limit").orElse(1).forGetter($$0x -> $$0x.e),
-               Codec.intRange(0, 80).fieldOf("upper_limit").orElse(1).forGetter($$0x -> $$0x.f),
-               Codec.intRange(0, 16).fieldOf("lower_size").orElse(0).forGetter($$0x -> $$0x.g),
-               Codec.intRange(0, 16).fieldOf("middle_size").orElse(1).forGetter($$0x -> $$0x.h),
-               Codec.intRange(0, 16).fieldOf("upper_size").orElse(1).forGetter($$0x -> $$0x.i),
-               a()
+public class drd extends drg {
+   public static final Codec<drd> a = RecordCodecBuilder.create(
+      $$0 -> b($$0)
+            .and(
+               $$0.group(
+                  bgj.b(4, 16).fieldOf("height").forGetter($$0x -> $$0x.b),
+                  Codec.floatRange(0.0F, 1.0F).fieldOf("wide_bottom_layer_hole_chance").forGetter($$0x -> $$0x.c),
+                  Codec.floatRange(0.0F, 1.0F).fieldOf("corner_hole_chance").forGetter($$0x -> $$0x.c),
+                  Codec.floatRange(0.0F, 1.0F).fieldOf("hanging_leaves_chance").forGetter($$0x -> $$0x.h),
+                  Codec.floatRange(0.0F, 1.0F).fieldOf("hanging_leaves_extension_chance").forGetter($$0x -> $$0x.i)
+               )
             )
             .apply($$0, drd::new)
    );
-   private final int e;
-   private final int f;
-   private final int g;
-   private final int h;
-   private final int i;
+   private final bgj b;
+   private final float c;
+   private final float g;
+   private final float h;
+   private final float i;
 
-   public drd(int $$0, int $$1, int $$2, int $$3, int $$4, OptionalInt $$5) {
-      super($$5);
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.h = $$3;
-      this.i = $$4;
+   public drd(bgj $$0, bgj $$1, bgj $$2, float $$3, float $$4, float $$5, float $$6) {
+      super($$0, $$1);
+      this.b = $$2;
+      this.c = $$3;
+      this.g = $$4;
+      this.h = $$5;
+      this.i = $$6;
    }
 
    @Override
-   protected drc<?> b() {
-      return drc.b;
+   protected drh<?> a() {
+      return drh.k;
    }
 
    @Override
-   public int a(int $$0, int $$1) {
-      if ($$1 < this.e) {
-         return this.g;
+   protected void a(cqh $$0, drg.b $$1, ash $$2, dqq $$3, int $$4, drg.a $$5, int $$6, int $$7, int $$8) {
+      boolean $$9 = $$5.c();
+      gw $$10 = $$5.a().b($$8);
+      int $$11 = $$7 + $$5.b() - 1;
+      this.a($$0, $$1, $$2, $$3, $$10, $$11 - 2, $$6 - 3, $$9);
+      this.a($$0, $$1, $$2, $$3, $$10, $$11 - 1, $$6 - 4, $$9);
+
+      for (int $$12 = $$6 - 5; $$12 >= 0; $$12--) {
+         this.a($$0, $$1, $$2, $$3, $$10, $$11, $$12, $$9);
+      }
+
+      this.a($$0, $$1, $$2, $$3, $$10, $$11, -1, $$9, this.h, this.i);
+      this.a($$0, $$1, $$2, $$3, $$10, $$11 - 1, -2, $$9, this.h, this.i);
+   }
+
+   @Override
+   public int a(ash $$0, int $$1, dqq $$2) {
+      return this.b.a($$0);
+   }
+
+   @Override
+   protected boolean a(ash $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      if ($$2 == -1 && ($$1 == $$4 || $$3 == $$4) && $$0.i() < this.c) {
+         return true;
       } else {
-         return $$1 >= $$0 - this.f ? this.i : this.h;
+         boolean $$6 = $$1 == $$4 && $$3 == $$4;
+         boolean $$7 = $$4 > 2;
+         return $$7 ? $$6 || $$1 + $$3 > $$4 * 2 - 2 && $$0.i() < this.g : $$6 && $$0.i() < this.g;
       }
    }
 }

@@ -1,66 +1,70 @@
-public class fks extends fmu {
-   private final float a;
-   private final float b;
+public class fks extends fmq {
+   fks(fis $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, boolean $$7) {
+      super($$0, $$1, $$2, $$3);
+      this.d(3.0F);
+      this.b(0.25F, 0.25F);
+      if ($$7) {
+         this.t = this.r.a(50) + 280;
+      } else {
+         this.t = this.r.a(50) + 80;
+      }
 
-   fks(fix $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, cjf $$7) {
-      this($$0, $$1, $$2, $$3, $$7);
-      this.j *= 0.1F;
-      this.k *= 0.1F;
-      this.l *= 0.1F;
-      this.j += $$4;
-      this.k += $$5;
-      this.l += $$6;
+      this.u = 3.0E-6F;
+      this.j = $$4;
+      this.k = $$5 + (double)(this.r.i() / 500.0F);
+      this.l = $$6;
    }
 
    @Override
-   public fly b() {
-      return fly.a;
-   }
-
-   protected fks(fix $$0, double $$1, double $$2, double $$3, cjf $$4) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.a(eqv.O().aq().a($$4, $$0, null, 0).e());
-      this.u = 1.0F;
-      this.D /= 2.0F;
-      this.a = this.r.i() * 3.0F;
-      this.b = this.r.i() * 3.0F;
-   }
-
-   @Override
-   protected float c() {
-      return this.E.a((this.a + 1.0F) / 4.0F);
-   }
-
-   @Override
-   protected float d() {
-      return this.E.a(this.a / 4.0F);
-   }
-
-   @Override
-   protected float e() {
-      return this.E.c(this.b / 4.0F);
-   }
-
-   @Override
-   protected float f() {
-      return this.E.c((this.b + 1.0F) / 4.0F);
-   }
-
-   public static class a implements flx<ir> {
-      public flu a(ir $$0, fix $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fks($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$0.c());
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ < this.t && !(this.y <= 0.0F)) {
+         this.j = this.j + (double)(this.r.i() / 5000.0F * (float)(this.r.h() ? 1 : -1));
+         this.l = this.l + (double)(this.r.i() / 5000.0F * (float)(this.r.h() ? 1 : -1));
+         this.k = this.k - (double)this.u;
+         this.a(this.j, this.k, this.l);
+         if (this.s >= this.t - 60 && this.y > 0.01F) {
+            this.y -= 0.015F;
+         }
+      } else {
+         this.k();
       }
    }
 
-   public static class b implements flx<iy> {
-      public flu a(iy $$0, fix $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fks($$1, $$2, $$3, $$4, new cjf(cji.qc));
+   @Override
+   public flu b() {
+      return flu.c;
+   }
+
+   public static class a implements flt<iy> {
+      private final fml a;
+
+      public a(fml $$0) {
+         this.a = $$0;
+      }
+
+      public flq a(iy $$0, fis $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fks $$8 = new fks($$1, $$2, $$3, $$4, $$5, $$6, $$7, false);
+         $$8.e(0.9F);
+         $$8.a(this.a);
+         return $$8;
       }
    }
 
-   public static class c implements flx<iy> {
-      public flu a(iy $$0, fix $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fks($$1, $$2, $$3, $$4, new cjf(cji.pO));
+   public static class b implements flt<iy> {
+      private final fml a;
+
+      public b(fml $$0) {
+         this.a = $$0;
+      }
+
+      public flq a(iy $$0, fis $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fks $$8 = new fks($$1, $$2, $$3, $$4, $$5, $$6, $$7, true);
+         $$8.e(0.95F);
+         $$8.a(this.a);
+         return $$8;
       }
    }
 }

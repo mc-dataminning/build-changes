@@ -1,15 +1,6 @@
-public class aar implements vd<ww> {
-   private final tl a;
-   private final tl b;
-
-   public aar(tl $$0, tl $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
-
+public record aar(tl a, boolean b) implements ve<wx> {
    public aar(so $$0) {
-      this.a = $$0.l();
-      this.b = $$0.l();
+      this($$0.m(), $$0.readBoolean());
    }
 
    @Override
@@ -18,15 +9,16 @@ public class aar implements vd<ww> {
       $$0.a(this.b);
    }
 
-   public void a(ww $$0) {
+   public void a(wx $$0) {
       $$0.a(this);
    }
 
-   public tl a() {
-      return this.a;
+   @Override
+   public boolean b() {
+      return true;
    }
 
-   public tl d() {
+   public boolean d() {
       return this.b;
    }
 }

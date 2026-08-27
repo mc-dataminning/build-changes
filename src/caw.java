@@ -1,44 +1,19 @@
-import java.util.Arrays;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
 
-public enum caw {
-   a(0, apd.zw, apd.zE),
-   b(40, apd.zv, apd.zF),
-   c(80, apd.zx, apd.zF);
-
-   private static final caw[] d = ac.a(values(), $$0 -> Arrays.sort($$0, ($$0x, $$1) -> Integer.compare($$1.e, $$0x.e)));
-   private final int e;
-   private final apc f;
-   private final apc g;
-
-   private caw(int $$0, apc $$1, apc $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
-   }
-
-   public int a() {
-      return this.e;
-   }
-
-   public apc b() {
-      return this.f;
-   }
-
-   public apc c() {
-      return this.g;
-   }
-
-   public static caw a(int $$0) {
-      for (caw $$1 : d) {
-         if ($$0 >= $$1.e) {
-            return $$1;
-         }
-      }
-
-      return a;
-   }
-
-   public boolean d() {
-      return this == c;
+public class caw {
+   public static ble<bjm> a(int $$0) {
+      return bop.a(
+         (Function<bop.b<bjm>, ? extends App<bop.c<bjm>, bos<bjm>>>)($$1 -> $$1.group($$1.b(bsn.K), $$1.c(bsn.ac), $$1.c(bsn.af), $$1.c(bsn.ae))
+               .apply($$1, ($$2, $$3, $$4, $$5) -> ($$4x, $$5x, $$6) -> {
+                     byt $$7 = $$1.b($$2);
+                     if (!car.a($$7.q())) {
+                        return false;
+                     } else {
+                        $$3.a(true, (long)$$0);
+                        return true;
+                     }
+                  }))
+      );
    }
 }

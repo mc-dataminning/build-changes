@@ -1,11 +1,66 @@
-public interface elf {
-   int a();
+import com.mojang.blaze3d.systems.RenderSystem;
+import javax.annotation.Nullable;
 
-   void b();
+public class elf {
+   @Nullable
+   private static elm a;
 
-   eld c();
+   public static void a() {
+      if (a != null) {
+         b();
+         elm.b();
+      }
+   }
 
-   eld d();
+   public static void b() {
+      a = null;
+   }
 
-   void e();
+   public static void a(ele.b $$0) {
+      if (!RenderSystem.isOnRenderThreadOrInit()) {
+         RenderSystem.recordRenderCall(() -> c($$0));
+      } else {
+         c($$0);
+      }
+   }
+
+   private static void c(ele.b $$0) {
+      elm $$1 = d($$0);
+      if ($$1 != null) {
+         $$1.a(RenderSystem.getModelViewMatrix(), RenderSystem.getProjectionMatrix(), RenderSystem.getShader());
+      }
+   }
+
+   public static void b(ele.b $$0) {
+      elm $$1 = d($$0);
+      if ($$1 != null) {
+         $$1.c();
+      }
+   }
+
+   @Nullable
+   private static elm d(ele.b $$0) {
+      RenderSystem.assertOnRenderThread();
+      if ($$0.d()) {
+         $$0.e();
+         return null;
+      } else {
+         elm $$1 = a($$0.c().g());
+         $$1.a($$0);
+         return $$1;
+      }
+   }
+
+   private static elm a(elo $$0) {
+      elm $$1 = $$0.g();
+      a($$1);
+      return $$1;
+   }
+
+   private static void a(elm $$0) {
+      if ($$0 != a) {
+         $$0.a();
+         a = $$0;
+      }
+   }
 }

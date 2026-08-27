@@ -1,46 +1,17 @@
-public class fwp extends fxp<fnd, fgi<fnd>> {
-   public fwp(fvc<fnd, fgi<fnd>> $$0) {
+public class fwp<T extends bjm, M extends fey<T>> extends fxl<T, M> {
+   private final fnw a;
+
+   public fwp(fuy<T, M> $$0, fnw $$1) {
       super($$0);
+      this.a = $$1;
    }
 
-   public void a(elp $$0, foe $$1, int $$2, fnd $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if (!$$3.cd() && $$3.a(cbv.a)) {
-         gae $$10 = $$3.b();
-         if ($$10.c() != null) {
-            cjf $$11 = $$3.c(biv.e);
-            if (!$$11.a(cji.nh)) {
-               $$0.a();
-               $$0.a(0.0F, 0.0F, 0.125F);
-               double $$12 = arw.d((double)$$6, $$3.bY, $$3.cb) - arw.d((double)$$6, $$3.K, $$3.dq());
-               double $$13 = arw.d((double)$$6, $$3.bZ, $$3.cc) - arw.d((double)$$6, $$3.L, $$3.ds());
-               double $$14 = arw.d((double)$$6, $$3.ca, $$3.cd) - arw.d((double)$$6, $$3.M, $$3.dw());
-               float $$15 = arw.j($$6, $$3.aV, $$3.aU);
-               double $$16 = (double)arw.a($$15 * (float) (Math.PI / 180.0));
-               double $$17 = (double)(-arw.b($$15 * (float) (Math.PI / 180.0)));
-               float $$18 = (float)$$13 * 10.0F;
-               $$18 = arw.a($$18, -6.0F, 32.0F);
-               float $$19 = (float)($$12 * $$16 + $$14 * $$17) * 100.0F;
-               $$19 = arw.a($$19, 0.0F, 150.0F);
-               float $$20 = (float)($$12 * $$17 - $$14 * $$16) * 100.0F;
-               $$20 = arw.a($$20, -20.0F, 20.0F);
-               if ($$19 < 0.0F) {
-                  $$19 = 0.0F;
-               }
-
-               float $$21 = arw.i($$6, $$3.bV, $$3.bW);
-               $$18 += arw.a(arw.i($$6, $$3.X, $$3.Y) * 6.0F) * 32.0F * $$21;
-               if ($$3.bW()) {
-                  $$18 += 25.0F;
-               }
-
-               $$0.a(a.b.rotationDegrees(6.0F + $$19 / 2.0F + $$18));
-               $$0.a(a.f.rotationDegrees($$20 / 2.0F));
-               $$0.a(a.d.rotationDegrees(180.0F - $$20 / 2.0F));
-               elt $$22 = $$1.getBuffer(fom.c($$10.c()));
-               this.c().b($$0, $$22, $$2, fyv.d);
-               $$0.b();
-            }
-         }
-      }
+   public void a(elj $$0, foa $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      $$0.a();
+      $$0.a(0.0F, 0.4F, -0.4F);
+      $$0.a(a.b.rotationDegrees(180.0F));
+      cjl $$10 = $$3.c(bjb.a);
+      this.a.a($$3, $$10, cji.h, false, $$0, $$1, $$2);
+      $$0.b();
    }
 }

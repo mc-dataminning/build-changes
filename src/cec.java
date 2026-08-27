@@ -1,93 +1,70 @@
-import it.unimi.dsi.fastutil.HashCommon;
-import java.util.Arrays;
-import java.util.Collection;
-import javax.annotation.Nullable;
-
-public final class cec {
-   private static final cec b = new cec(null, 0L);
-   public static final int a = 64;
-   @Nullable
-   private final ced c;
-   private final long d;
-
-   private cec(@Nullable ced $$0, long $$1) {
-      this.c = $$0;
-      this.d = $$1;
-   }
-
-   static cec a(ced $$0, Collection<cea> $$1) {
-      if ($$1.isEmpty()) {
-         return b;
-      } else {
-         long $$2 = a($$0, 0L, $$1);
-         return new cec($$0, $$2);
+public class cec extends cdr {
+   private final cpd c = new cpd() {
+      @Override
+      public void a(cqb $$0, gw $$1, int $$2) {
+         $$0.a(cec.this, (byte)$$2);
       }
+   };
+   private final Runnable d;
+
+   public cec(bja<? extends cec> $$0, cqb $$1) {
+      super($$0, $$1);
+      this.d = this.b($$1);
    }
 
-   public static cec a() {
-      return b;
-   }
-
-   public static cec a(cea $$0) {
-      return new cec($$0.a, $$0.b);
-   }
-
-   public static cec a(cea $$0, cea... $$1) {
-      long $$2 = $$1.length == 0 ? $$0.b : a($$0.a, $$0.b, Arrays.asList($$1));
-      return new cec($$0.a, $$2);
-   }
-
-   private static long a(ced $$0, long $$1, Iterable<cea> $$2) {
-      for (cea $$3 : $$2) {
-         if ($$0 != $$3.a) {
-            throw new IllegalStateException("Mismatched feature universe, expected '" + $$0 + "', but got '" + $$3.a + "'");
-         }
-
-         $$1 |= $$3.b;
-      }
-
-      return $$1;
-   }
-
-   public boolean b(cea $$0) {
-      return this.c != $$0.a ? false : (this.d & $$0.b) != 0L;
-   }
-
-   public boolean a(cec $$0) {
-      if (this.c == null) {
-         return true;
-      } else {
-         return this.c != $$0.c ? false : (this.d & ~$$0.d) == 0L;
-      }
-   }
-
-   public cec b(cec $$0) {
-      if (this.c == null) {
-         return $$0;
-      } else if ($$0.c == null) {
-         return this;
-      } else if (this.c != $$0.c) {
-         throw new IllegalArgumentException("Mismatched set elements: '" + this.c + "' != '" + $$0.c + "'");
-      } else {
-         return new cec(this.c, this.d | $$0.d);
-      }
+   public cec(cqb $$0, double $$1, double $$2, double $$3) {
+      super(bja.aQ, $$0, $$1, $$2, $$3);
+      this.d = this.b($$0);
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof cec $$1 && this.c == $$1.c && this.d == $$1.d) {
-            return true;
-         }
+   protected cjg q() {
+      return cjo.na;
+   }
 
-         return false;
-      }
+   private Runnable b(cqb $$0) {
+      return $$0 instanceof akt ? () -> this.c.a((akt)$$0, this.dl()) : () -> this.c.a($$0, this.dl());
    }
 
    @Override
-   public int hashCode() {
-      return (int)HashCommon.mix(this.d);
+   public cdr.a z() {
+      return cdr.a.e;
+   }
+
+   @Override
+   public dfd B() {
+      return cte.ct.o();
+   }
+
+   @Override
+   protected void a(qw $$0) {
+      super.a($$0);
+      this.c.a(this.dL(), this.dl(), $$0);
+   }
+
+   @Override
+   protected void b(qw $$0) {
+      super.b($$0);
+      this.c.a($$0);
+   }
+
+   @Override
+   public void b(byte $$0) {
+      this.c.a(this.dL(), $$0);
+   }
+
+   @Override
+   public void l() {
+      super.l();
+      this.d.run();
+   }
+
+   public cpd G() {
+      return this.c;
+   }
+
+   @Override
+   public boolean cM() {
+      return true;
    }
 }

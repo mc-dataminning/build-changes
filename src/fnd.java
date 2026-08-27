@@ -1,85 +1,88 @@
 import com.mojang.authlib.GameProfile;
-import javax.annotation.Nullable;
 
-public abstract class fnd extends cbu {
-   @Nullable
-   private fjf cm;
-   protected ehn b;
-   public float c;
-   public float d;
-   public float e;
-   public final fix f;
+public class fnd extends fmz {
+   private ehh cm = ehh.b;
+   private int cn;
 
-   public fnd(fix $$0, GameProfile $$1) {
-      super($$0, $$0.R(), $$0.S(), $$1);
-      this.b = ehn.b;
-      this.f = $$0;
+   public fnd(fis $$0, GameProfile $$1) {
+      super($$0, $$1);
+      this.t(1.0F);
+      this.af = true;
    }
 
    @Override
-   public boolean M_() {
-      fjf $$0 = this.a();
-      return $$0 != null && $$0.e() == cps.d;
-   }
-
-   @Override
-   public boolean f() {
-      fjf $$0 = this.a();
-      return $$0 != null && $$0.e() == cps.b;
-   }
-
-   @Nullable
-   protected fjf a() {
-      if (this.cm == null) {
-         this.cm = eqv.O().J().a(this.cv());
+   public boolean a(double $$0) {
+      double $$1 = this.cG().a() * 10.0;
+      if (Double.isNaN($$1)) {
+         $$1 = 1.0;
       }
 
-      return this.cm;
+      $$1 *= 64.0 * cz();
+      return $$0 < $$1 * $$1;
+   }
+
+   @Override
+   public boolean a(bhu $$0, float $$1) {
+      return true;
    }
 
    @Override
    public void l() {
-      this.b = this.do();
       super.l();
+      this.q(false);
    }
 
-   public ehn C(float $$0) {
-      return this.b.a(this.do(), (double)$$0);
+   @Override
+   public void b_() {
+      if (this.bn > 0) {
+         this.a(this.bn, this.bo, this.bp, this.bq, this.br, this.bs);
+         this.bn--;
+      }
+
+      if (this.bu > 0) {
+         this.a(this.bu, this.bt);
+         this.bu--;
+      }
+
+      if (this.cn > 0) {
+         this.g(new ehh((this.cm.c - this.do().c) / (double)this.cn, (this.cm.d - this.do().d) / (double)this.cn, (this.cm.e - this.do().e) / (double)this.cn));
+         this.cn--;
+      }
+
+      this.bV = this.bW;
+      this.eP();
+      float $$1;
+      if (this.aA() && !this.ev()) {
+         $$1 = (float)Math.min(0.1, this.do().h());
+      } else {
+         $$1 = 0.0F;
+      }
+
+      this.bW = this.bW + ($$1 - this.bW) * 0.4F;
+      this.dL().ad().a("push");
+      this.fi();
+      this.dL().ad().c();
    }
 
-   public gae b() {
-      fjf $$0 = this.a();
-      return $$0 == null ? fzw.a(this.cv()) : $$0.g();
+   @Override
+   public void l(double $$0, double $$1, double $$2) {
+      this.cm = new ehh($$0, $$1, $$2);
+      this.cn = this.ag().p() + 1;
    }
 
-   public float c() {
-      float $$0 = 1.0F;
-      if (this.fS().b) {
-         $$0 *= 1.1F;
-      }
+   @Override
+   protected void fM() {
+   }
 
-      $$0 *= ((float)this.b(bkm.d) / this.fS().b() + 1.0F) / 2.0F;
-      if (this.fS().b() == 0.0F || Float.isNaN($$0) || Float.isInfinite($$0)) {
-         $$0 = 1.0F;
-      }
+   @Override
+   public void a(tl $$0) {
+      eqp $$1 = eqp.O();
+      $$1.l.d().a($$0);
+   }
 
-      cjf $$1 = this.fo();
-      if (this.fm()) {
-         if ($$1.a(cji.nG)) {
-            int $$2 = this.fq();
-            float $$3 = (float)$$2 / 20.0F;
-            if ($$3 > 1.0F) {
-               $$3 = 1.0F;
-            } else {
-               $$3 *= $$3;
-            }
-
-            $$0 *= 1.0F - $$3 * 0.15F;
-         } else if (eqv.O().m.aw().a() && this.gp()) {
-            return 0.1F;
-         }
-      }
-
-      return arw.i(eqv.O().m.ag().c().floatValue(), 1.0F, $$0);
+   @Override
+   public void a(wy $$0) {
+      super.a($$0);
+      this.bn();
    }
 }

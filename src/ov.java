@@ -1,15 +1,15 @@
 public class ov {
-   public static final aev<dnj<?, ?>> a = or.a("pile_hay");
-   public static final aev<dnj<?, ?>> b = or.a("pile_melon");
-   public static final aev<dnj<?, ?>> c = or.a("pile_snow");
-   public static final aev<dnj<?, ?>> d = or.a("pile_ice");
-   public static final aev<dnj<?, ?>> e = or.a("pile_pumpkin");
+   public static final aey<dnd<?, ?>> a = or.a("pile_hay");
+   public static final aey<dnd<?, ?>> b = or.a("pile_melon");
+   public static final aey<dnd<?, ?>> c = or.a("pile_snow");
+   public static final aey<dnd<?, ?>> d = or.a("pile_ice");
+   public static final aey<dnd<?, ?>> e = or.a("pile_pumpkin");
 
-   public static void a(nr<dnj<?, ?>> $$0) {
-      or.a($$0, a, dnw.j, new dps(new dsi(csw.ij)));
-      or.a($$0, b, dnw.j, new dps(dsb.a(csw.fa)));
-      or.a($$0, c, dnw.j, new dps(dsb.a(csw.dN)));
-      or.a($$0, d, dnw.j, new dps(new dsl(bfi.<dfj>a().a(csw.mW.n(), 1).a(csw.iC.n(), 5))));
-      or.a($$0, e, dnw.j, new dps(new dsl(bfi.<dfj>a().a(csw.dV.n(), 19).a(csw.eg.n(), 1))));
+   public static void a(nr<dnd<?, ?>> $$0) {
+      or.a($$0, a, dnq.j, new dpm(new dsc(cte.ij)));
+      or.a($$0, b, dnq.j, new dpm(drv.a(cte.fa)));
+      or.a($$0, c, dnq.j, new dpm(drv.a(cte.dN)));
+      or.a($$0, d, dnq.j, new dpm(new dsf(bfo.<dfd>a().a(cte.mW.o(), 1).a(cte.iC.o(), 5))));
+      or.a($$0, e, dnq.j, new dpm(new dsf(bfo.<dfd>a().a(cte.eZ.o(), 19).a(cte.ef.o(), 1))));
    }
 }

@@ -1,32 +1,40 @@
-public class xe implements vd<ww> {
-   private final gw a;
-   private final int b;
-   private final int c;
-   private final csv d;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-   public xe(gw $$0, csv $$1, int $$2, int $$3) {
+public class xe implements ve<wx> {
+   private final gw a;
+   private final ddb<?> b;
+   @Nullable
+   private final qw c;
+
+   public static xe a(dcz $$0, Function<dcz, qw> $$1) {
+      return new xe($$0.p(), $$0.u(), $$1.apply($$0));
+   }
+
+   public static xe a(dcz $$0) {
+      return a($$0, dcz::as_);
+   }
+
+   private xe(gw $$0, ddb<?> $$1, qw $$2) {
       this.a = $$0;
-      this.d = $$1;
-      this.b = $$2;
-      this.c = $$3;
+      this.b = $$1;
+      this.c = $$2.g() ? null : $$2;
    }
 
    public xe(so $$0) {
       this.a = $$0.e();
-      this.b = $$0.readUnsignedByte();
-      this.c = $$0.readUnsignedByte();
-      this.d = $$0.a(jb.f);
+      this.b = $$0.a(jb.l);
+      this.c = $$0.q();
    }
 
    @Override
    public void a(so $$0) {
       $$0.a(this.a);
-      $$0.k(this.b);
-      $$0.k(this.c);
-      $$0.a(jb.f, this.d);
+      $$0.a(jb.l, this.b);
+      $$0.a((rq)this.c);
    }
 
-   public void a(ww $$0) {
+   public void a(wx $$0) {
       $$0.a(this);
    }
 
@@ -34,15 +42,12 @@ public class xe implements vd<ww> {
       return this.a;
    }
 
-   public int d() {
+   public ddb<?> d() {
       return this.b;
    }
 
-   public int e() {
+   @Nullable
+   public qw e() {
       return this.c;
-   }
-
-   public csv f() {
-      return this.d;
    }
 }

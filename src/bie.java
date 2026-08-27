@@ -1,47 +1,35 @@
-import java.util.List;
 import javax.annotation.Nullable;
 
-public final class bie {
-   public static tl a(bid $$0, float $$1) {
-      if ($$0.b()) {
-         return tl.c("effect.duration.infinite");
+class bie extends big {
+   private final boolean a;
+
+   public bie(bii $$0, int $$1, boolean $$2) {
+      super($$0, $$1);
+      this.a = $$2;
+   }
+
+   @Override
+   public void a(bjm $$0, int $$1) {
+      super.a($$0, $$1);
+      if (this.a == $$0.et()) {
+         $$0.b((float)Math.max(4 << $$1, 0));
       } else {
-         int $$2 = arw.d((float)$$0.d() * $$1);
-         return tl.b(asq.a($$2));
+         $$0.a($$0.dM().o(), (float)(6 << $$1));
       }
    }
 
-   public static boolean a(bjg $$0) {
-      return $$0.a(bif.c) || $$0.a(bif.C);
-   }
-
-   public static int b(bjg $$0) {
-      int $$1 = 0;
-      int $$2 = 0;
-      if ($$0.a(bif.c)) {
-         $$1 = $$0.b(bif.c).e();
+   @Override
+   public void a(@Nullable biw $$0, @Nullable biw $$1, bjm $$2, int $$3, double $$4) {
+      if (this.a == $$2.et()) {
+         int $$5 = (int)($$4 * (double)(4 << $$3) + 0.5);
+         $$2.b((float)$$5);
+      } else {
+         int $$6 = (int)($$4 * (double)(6 << $$3) + 0.5);
+         if ($$0 == null) {
+            $$2.a($$2.dM().o(), (float)$$6);
+         } else {
+            $$2.a($$2.dM().c($$0, $$1), (float)$$6);
+         }
       }
-
-      if ($$0.a(bif.C)) {
-         $$2 = $$0.b(bif.C).e();
-      }
-
-      return Math.max($$1, $$2);
-   }
-
-   public static boolean c(bjg $$0) {
-      return $$0.a(bif.m) || $$0.a(bif.C);
-   }
-
-   public static List<akr> a(akq $$0, @Nullable biq $$1, ehn $$2, double $$3, bid $$4, int $$5) {
-      bib $$6 = $$4.c();
-      List<akr> $$7 = $$0.a(
-         $$6x -> $$6x.e.d()
-               && ($$1 == null || !$$1.s($$6x))
-               && $$2.a((ho)$$6x.dj(), $$3)
-               && (!$$6x.a($$6) || $$6x.b($$6).e() < $$4.e() || $$6x.b($$6).a($$5 - 1))
-      );
-      $$7.forEach($$2x -> $$2x.b(new bid($$4), $$1));
-      return $$7;
    }
 }

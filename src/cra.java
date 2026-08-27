@@ -1,70 +1,111 @@
-public abstract class cra {
-   public static final aev<cqt> a = a("the_void");
-   public static final aev<cqt> b = a("plains");
-   public static final aev<cqt> c = a("sunflower_plains");
-   public static final aev<cqt> d = a("snowy_plains");
-   public static final aev<cqt> e = a("ice_spikes");
-   public static final aev<cqt> f = a("desert");
-   public static final aev<cqt> g = a("swamp");
-   public static final aev<cqt> h = a("mangrove_swamp");
-   public static final aev<cqt> i = a("forest");
-   public static final aev<cqt> j = a("flower_forest");
-   public static final aev<cqt> k = a("birch_forest");
-   public static final aev<cqt> l = a("dark_forest");
-   public static final aev<cqt> m = a("old_growth_birch_forest");
-   public static final aev<cqt> n = a("old_growth_pine_taiga");
-   public static final aev<cqt> o = a("old_growth_spruce_taiga");
-   public static final aev<cqt> p = a("taiga");
-   public static final aev<cqt> q = a("snowy_taiga");
-   public static final aev<cqt> r = a("savanna");
-   public static final aev<cqt> s = a("savanna_plateau");
-   public static final aev<cqt> t = a("windswept_hills");
-   public static final aev<cqt> u = a("windswept_gravelly_hills");
-   public static final aev<cqt> v = a("windswept_forest");
-   public static final aev<cqt> w = a("windswept_savanna");
-   public static final aev<cqt> x = a("jungle");
-   public static final aev<cqt> y = a("sparse_jungle");
-   public static final aev<cqt> z = a("bamboo_jungle");
-   public static final aev<cqt> A = a("badlands");
-   public static final aev<cqt> B = a("eroded_badlands");
-   public static final aev<cqt> C = a("wooded_badlands");
-   public static final aev<cqt> D = a("meadow");
-   public static final aev<cqt> E = a("cherry_grove");
-   public static final aev<cqt> F = a("grove");
-   public static final aev<cqt> G = a("snowy_slopes");
-   public static final aev<cqt> H = a("frozen_peaks");
-   public static final aev<cqt> I = a("jagged_peaks");
-   public static final aev<cqt> J = a("stony_peaks");
-   public static final aev<cqt> K = a("river");
-   public static final aev<cqt> L = a("frozen_river");
-   public static final aev<cqt> M = a("beach");
-   public static final aev<cqt> N = a("snowy_beach");
-   public static final aev<cqt> O = a("stony_shore");
-   public static final aev<cqt> P = a("warm_ocean");
-   public static final aev<cqt> Q = a("lukewarm_ocean");
-   public static final aev<cqt> R = a("deep_lukewarm_ocean");
-   public static final aev<cqt> S = a("ocean");
-   public static final aev<cqt> T = a("deep_ocean");
-   public static final aev<cqt> U = a("cold_ocean");
-   public static final aev<cqt> V = a("deep_cold_ocean");
-   public static final aev<cqt> W = a("frozen_ocean");
-   public static final aev<cqt> X = a("deep_frozen_ocean");
-   public static final aev<cqt> Y = a("mushroom_fields");
-   public static final aev<cqt> Z = a("dripstone_caves");
-   public static final aev<cqt> aa = a("lush_caves");
-   public static final aev<cqt> ab = a("deep_dark");
-   public static final aev<cqt> ac = a("nether_wastes");
-   public static final aev<cqt> ad = a("warped_forest");
-   public static final aev<cqt> ae = a("crimson_forest");
-   public static final aev<cqt> af = a("soul_sand_valley");
-   public static final aev<cqt> ag = a("basalt_deltas");
-   public static final aev<cqt> ah = a("the_end");
-   public static final aev<cqt> ai = a("end_highlands");
-   public static final aev<cqt> aj = a("end_midlands");
-   public static final aev<cqt> ak = a("small_end_islands");
-   public static final aev<cqt> al = a("end_barrens");
+import com.google.common.base.Suppliers;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Set;
+import java.util.Map.Entry;
+import java.util.function.Supplier;
+import java.util.stream.Collectors;
+import org.slf4j.Logger;
 
-   private static aev<cqt> a(String $$0) {
-      return aev.a(jc.ap, new aew($$0));
+public class cra {
+   private static final Logger c = LogUtils.getLogger();
+   public static final cra a = new cra(ImmutableMap.of(), ImmutableList.of());
+   public static final MapCodec<cra> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.simpleMap(dki.a.c, dmp.c.promotePartial(ac.a("Carver: ", c::error)), asu.a(dki.a.values())).fieldOf("carvers").forGetter($$0x -> $$0x.d),
+               dug.d.promotePartial(ac.a("Features: ", c::error)).fieldOf("features").forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, cra::new)
+   );
+   private final Map<dki.a, hi<dmp<?>>> d;
+   private final List<hi<dug>> e;
+   private final Supplier<List<dnd<?, ?>>> f;
+   private final Supplier<Set<dug>> g;
+
+   cra(Map<dki.a, hi<dmp<?>>> $$0, List<hi<dug>> $$1) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = Suppliers.memoize(
+         () -> $$1.stream().flatMap(hi::a).map(he::a).flatMap(dug::a).filter($$0xx -> $$0xx.b() == dnq.g).collect(ImmutableList.toImmutableList())
+      );
+      this.g = Suppliers.memoize(() -> $$1.stream().flatMap(hi::a).map(he::a).collect(Collectors.toSet()));
+   }
+
+   public Iterable<he<dmp<?>>> a(dki.a $$0) {
+      return Objects.requireNonNullElseGet(this.d.get($$0), List::of);
+   }
+
+   public List<dnd<?, ?>> a() {
+      return this.f.get();
+   }
+
+   public List<hi<dug>> b() {
+      return this.e;
+   }
+
+   public boolean a(dug $$0) {
+      return this.g.get().contains($$0);
+   }
+
+   public static class a extends cra.b {
+      private final hf<dug> a;
+      private final hf<dmp<?>> b;
+
+      public a(hf<dug> $$0, hf<dmp<?>> $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public cra.a a(dki.b $$0, aey<dug> $$1) {
+         this.a($$0.ordinal(), this.a.b($$1));
+         return this;
+      }
+
+      public cra.a a(dki.a $$0, aey<dmp<?>> $$1) {
+         this.a($$0, this.b.b($$1));
+         return this;
+      }
+   }
+
+   public static class b {
+      private final Map<dki.a, List<he<dmp<?>>>> a = Maps.newLinkedHashMap();
+      private final List<List<he<dug>>> b = Lists.newArrayList();
+
+      public cra.b a(dki.b $$0, he<dug> $$1) {
+         return this.a($$0.ordinal(), $$1);
+      }
+
+      public cra.b a(int $$0, he<dug> $$1) {
+         this.a($$0);
+         this.b.get($$0).add($$1);
+         return this;
+      }
+
+      public cra.b a(dki.a $$0, he<dmp<?>> $$1) {
+         this.a.computeIfAbsent($$0, $$0x -> Lists.newArrayList()).add($$1);
+         return this;
+      }
+
+      private void a(int $$0) {
+         while (this.b.size() <= $$0) {
+            this.b.add(Lists.newArrayList());
+         }
+      }
+
+      public cra a() {
+         return new cra(
+            this.a.entrySet().stream().collect(ImmutableMap.toImmutableMap(Entry::getKey, $$0 -> hi.a((List)$$0.getValue()))),
+            this.b.stream().map(hi::a).collect(ImmutableList.toImmutableList())
+         );
+      }
    }
 }

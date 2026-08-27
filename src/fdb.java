@@ -1,83 +1,59 @@
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.objects.Object2BooleanLinkedOpenHashMap;
-import it.unimi.dsi.fastutil.objects.Object2BooleanMap;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Consumer;
+import java.util.function.BiFunction;
+import java.util.function.UnaryOperator;
 
-public class fdb extends eyk {
-   private static final int a = 310;
-   private final evz b = new evz(this);
-   private final eyk c;
-   private final ane k;
-   private final Consumer<ane> l;
-   private final Object2BooleanMap<anb> m = new Object2BooleanLinkedOpenHashMap();
-
-   protected fdb(eyk $$0, ane $$1, Consumer<ane> $$2) {
-      super(tl.c("experiments_screen.title"));
-      this.c = $$0;
-      this.k = $$1;
-      this.l = $$2;
-
-      for (anb $$3 : $$1.c()) {
-         if ($$3.j() == anf.d) {
-            this.m.put($$3, $$1.f().contains($$3));
-         }
-      }
+public record fdb(dlk a, hq<din> b, dlh c, hl<afi> d, afj e, cqu f) {
+   public fdb(dli $$0, hl<afi> $$1, afj $$2, cqu $$3) {
+      this($$0.a(), $$0.b(), $$1, $$2, $$3);
    }
 
-   @Override
-   protected void aH_() {
-      this.b.a(new etw(tl.c("selectWorld.experiments"), this.i));
-      ewd $$0 = this.b.c(ewd.d());
-      $$0.a(new etk(tl.c("selectWorld.experiments.info").a(n.m), this.i).j(310), $$0x -> $$0x.e(15));
-      fdf.a $$1 = fdf.a(310).a(2, true).b(4);
-      this.m.forEach(($$1x, $$2x) -> $$1.a(a($$1x), () -> this.m.getBoolean($$1x), $$1xx -> this.m.put($$1x, $$1xx)).a($$1x.b()));
-      $$1.a($$0::a);
-      evy.b $$2 = this.b.b(new evy().a(10)).d(2);
-      $$2.a(esq.a(tk.d, $$0x -> this.l()).a());
-      $$2.a(esq.a(tk.e, $$0x -> this.az_()).a());
-      this.b.a($$1x -> {
-         eso var10000 = this.d($$1x);
-      });
-      this.b();
+   public fdb(dlk $$0, dlh $$1, hl<afi> $$2, afj $$3, cqu $$4) {
+      this($$0, $$2.a(afi.c).d(jc.aJ), $$1, $$2.a(afi.c), $$3, $$4);
    }
 
-   private static tl a(anb $$0) {
-      String $$1 = "dataPack." + $$0.f() + ".name";
-      return (tl)(gak.a($$1) ? tl.c($$1) : $$0.a());
+   public fdb a(dlk $$0, dlh $$1) {
+      return new fdb($$0, this.b, $$1, this.d, this.e, this.f);
    }
 
-   @Override
-   public void az_() {
-      this.f.a(this.c);
+   public fdb a(fdb.b $$0) {
+      return new fdb($$0.apply(this.a), this.b, this.c, this.d, this.e, this.f);
    }
 
-   private void l() {
-      List<anb> $$0 = new ArrayList<>(this.k.f());
-      List<anb> $$1 = new ArrayList<>();
-      this.m.forEach(($$2, $$3) -> {
-         $$0.remove($$2);
-         if ($$3) {
-            $$1.add($$2);
-         }
-      });
-      $$0.addAll(Lists.reverse($$1));
-      this.k.a($$0.stream().map(anb::f).toList());
-      this.l.accept(this.k);
+   public fdb a(fdb.a $$0) {
+      return new fdb(this.a, this.b, $$0.apply(this.a(), this.c), this.d, this.e, this.f);
    }
 
-   @Override
-   protected void b() {
-      this.b.a();
+   public hr.b a() {
+      return this.d.a();
    }
 
-   @Override
-   public void b(esf $$0, int $$1, int $$2, float $$3) {
-      super.b($$0, $$1, $$2, $$3);
-      $$0.a(0.125F, 0.125F, 0.125F, 1.0F);
-      int $$4 = 32;
-      $$0.a(d, 0, this.b.c(), 0.0F, 0.0F, this.g, this.h - this.b.c() - this.b.b(), 32, 32);
-      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+   public dlk b() {
+      return this.a;
+   }
+
+   public hq<din> c() {
+      return this.b;
+   }
+
+   public dlh d() {
+      return this.c;
+   }
+
+   public hl<afi> e() {
+      return this.d;
+   }
+
+   public afj f() {
+      return this.e;
+   }
+
+   public cqu g() {
+      return this.f;
+   }
+
+   @FunctionalInterface
+   public interface a extends BiFunction<hr.b, dlh, dlh> {
+   }
+
+   public interface b extends UnaryOperator<dlk> {
    }
 }

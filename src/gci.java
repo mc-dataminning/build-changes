@@ -1,31 +1,47 @@
-public class gci extends gbv {
-   private static final float n = 1.0F;
-   private static final float o = 1.0F;
-   private final bxd p;
+import javax.annotation.Nullable;
 
-   public gci(bxd $$0) {
-      super(apd.wH, ape.g, gcm.t());
-      this.p = $$0;
-      this.k = gcm.a.b;
-      this.i = false;
-      this.j = 0;
+public interface gci {
+   aez a();
+
+   @Nullable
+   gdn a(gdm var1);
+
+   gcf b();
+
+   aph c();
+
+   boolean d();
+
+   boolean l();
+
+   int e();
+
+   float f();
+
+   float g();
+
+   double h();
+
+   double i();
+
+   double j();
+
+   gci.a k();
+
+   default boolean r() {
+      return false;
    }
 
-   @Override
-   public boolean s() {
-      return !this.p.aS();
+   default boolean s() {
+      return true;
    }
 
-   @Override
-   public void q() {
-      if (!this.p.dG() && this.p.q() == null && this.p.gj()) {
-         this.f = (double)((float)this.p.dq());
-         this.g = (double)((float)this.p.ds());
-         this.h = (double)((float)this.p.dw());
-         this.d = 1.0F;
-         this.e = 1.0F;
-      } else {
-         this.n();
-      }
+   static ash t() {
+      return ash.a();
+   }
+
+   public static enum a {
+      a,
+      b;
    }
 }

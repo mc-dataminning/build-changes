@@ -1,13 +1,29 @@
-import java.time.Instant;
+public class bff implements bfg {
+   public static final bfg a = new bff();
 
-public final class bff {
-   public final Instant a;
-   public final int b;
-   public final bdo c;
+   @Override
+   public void a() {
+   }
 
-   public bff(Instant $$0, int $$1, bdo $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   @Override
+   public void b() {
+   }
+
+   @Override
+   public void c() {
+   }
+
+   @Override
+   public boolean e() {
+      return false;
+   }
+
+   @Override
+   public bdv f() {
+      return bds.a;
+   }
+
+   @Override
+   public void d() {
    }
 }

@@ -1,20 +1,18 @@
 import java.util.function.Consumer;
 
-public class evv {
-   private static final int a = 4;
+public interface evv extends evw {
+   void b(Consumer<evw> var1);
 
-   private evv() {
+   @Override
+   default void a(Consumer<esi> $$0) {
+      this.b($$1 -> $$1.a($$0));
    }
 
-   public static ewa a(esd $$0, ewb $$1, tl $$2) {
-      return a($$0, $$1, $$2, $$0x -> {
+   default void a() {
+      this.b($$0 -> {
+         if ($$0 instanceof evv $$1) {
+            $$1.a();
+         }
       });
-   }
-
-   public static ewa a(esd $$0, ewb $$1, tl $$2, Consumer<ewc> $$3) {
-      ewd $$4 = ewd.d().a(4);
-      $$4.a(new etw($$2, $$0));
-      $$4.a($$1, $$3);
-      return $$4;
    }
 }

@@ -1,53 +1,17 @@
-public class fll extends fmu {
-   fll(fix $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.C = true;
-      this.B = 0.86F;
-      this.j *= 0.01F;
-      this.k *= 0.01F;
-      this.l *= 0.01F;
-      this.k += 0.1;
-      this.D *= 1.5F;
-      this.t = 16;
-      this.n = false;
+public class fll extends fme {
+   protected fll(fis $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fml $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6, 2.5F, $$7);
    }
 
-   @Override
-   public fly b() {
-      return fly.b;
-   }
+   public static class a implements flt<iy> {
+      private final fml a;
 
-   @Override
-   public float b(float $$0) {
-      return this.D * arw.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
-   }
-
-   public static class a implements flx<iy> {
-      private final fmp a;
-
-      public a(fmp $$0) {
+      public a(fml $$0) {
          this.a = $$0;
       }
 
-      public flu a(iy $$0, fix $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fll $$8 = new fll($$1, $$2, $$3 + 0.5, $$4);
-         $$8.a(this.a);
-         $$8.a(1.0F, 1.0F, 1.0F);
-         return $$8;
-      }
-   }
-
-   public static class b implements flx<iy> {
-      private final fmp a;
-
-      public b(fmp $$0) {
-         this.a = $$0;
-      }
-
-      public flu a(iy $$0, fix $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fll $$8 = new fll($$1, $$2, $$3, $$4);
-         $$8.a(this.a);
-         return $$8;
+      public flq a(iy $$0, fis $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fll($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
       }
    }
 }

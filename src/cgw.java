@@ -1,24 +1,17 @@
-import java.util.List;
-import javax.annotation.Nullable;
+public interface cgw {
+   int a(cgv.a var1);
 
-public class cgw extends cja {
-   private final aqh<dcm> a;
+   int b(cgv.a var1);
 
-   public cgw(aqh<dcm> $$0, cja.a $$1) {
-      super($$1);
-      this.a = $$0;
-   }
+   int a();
 
-   public aqh<dcm> b() {
-      return this.a;
-   }
+   apf b();
 
-   @Override
-   public void a(cjf $$0, @Nullable cpv $$1, List<tl> $$2, ckw $$3) {
-      $$2.add(this.d().a(n.h));
-   }
+   cmm d();
 
-   public ty d() {
-      return tl.c(this.a() + ".desc");
-   }
+   String e();
+
+   float f();
+
+   float g();
 }

@@ -1,47 +1,46 @@
-public class ehj extends ehl {
-   private final ha b;
-   private final gw c;
-   private final boolean d;
-   private final boolean e;
+import it.unimi.dsi.fastutil.doubles.DoubleArrayList;
+import it.unimi.dsi.fastutil.doubles.DoubleList;
+import java.util.Arrays;
 
-   public static ehj a(ehn $$0, ha $$1, gw $$2) {
-      return new ehj(true, $$0, $$1, $$2, false);
+public class ehj extends eia {
+   private final DoubleList b;
+   private final DoubleList c;
+   private final DoubleList d;
+
+   protected ehj(ehq $$0, double[] $$1, double[] $$2, double[] $$3) {
+      this(
+         $$0,
+         DoubleArrayList.wrap(Arrays.copyOf($$1, $$0.b() + 1)),
+         DoubleArrayList.wrap(Arrays.copyOf($$2, $$0.c() + 1)),
+         DoubleArrayList.wrap(Arrays.copyOf($$3, $$0.d() + 1))
+      );
    }
 
-   public ehj(ehn $$0, ha $$1, gw $$2, boolean $$3) {
-      this(false, $$0, $$1, $$2, $$3);
-   }
-
-   private ehj(boolean $$0, ehn $$1, ha $$2, gw $$3, boolean $$4) {
-      super($$1);
-      this.d = $$0;
-      this.b = $$2;
-      this.c = $$3;
-      this.e = $$4;
-   }
-
-   public ehj a(ha $$0) {
-      return new ehj(this.d, this.a, $$0, this.c, this.e);
-   }
-
-   public ehj a(gw $$0) {
-      return new ehj(this.d, this.a, this.b, $$0, this.e);
-   }
-
-   public gw a() {
-      return this.c;
-   }
-
-   public ha b() {
-      return this.b;
+   ehj(ehq $$0, DoubleList $$1, DoubleList $$2, DoubleList $$3) {
+      super($$0);
+      int $$4 = $$0.b() + 1;
+      int $$5 = $$0.c() + 1;
+      int $$6 = $$0.d() + 1;
+      if ($$4 == $$1.size() && $$5 == $$2.size() && $$6 == $$3.size()) {
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+      } else {
+         throw (IllegalArgumentException)ac.b(new IllegalArgumentException("Lengths of point arrays must be consistent with the size of the VoxelShape."));
+      }
    }
 
    @Override
-   public ehl.a c() {
-      return this.d ? ehl.a.a : ehl.a.b;
-   }
-
-   public boolean d() {
-      return this.e;
+   protected DoubleList a(ha.a $$0) {
+      switch ($$0) {
+         case a:
+            return this.b;
+         case b:
+            return this.c;
+         case c:
+            return this.d;
+         default:
+            throw new IllegalArgumentException();
+      }
    }
 }

@@ -1,36 +1,25 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.UnmodifiableIterator;
 import com.mojang.serialization.Codec;
-import java.util.List;
-import javax.annotation.Nullable;
 
-public class dyu extends dyy {
-   public static final Codec<dyu> a = dyq.b.listOf().fieldOf("rules").xmap(dyu::new, $$0 -> $$0.b).codec();
-   private final ImmutableList<dyq> b;
+public interface dyu<P extends dys> {
+   Codec<dys> a = jb.ai.q().dispatch("processor_type", dys::a, dyu::codec);
+   Codec<dyt> b = a.listOf().xmap(dyt::new, dyt::a);
+   Codec<dyt> c = arj.e(b.fieldOf("processors").codec(), b);
+   Codec<he<dyt>> d = aev.a(jc.aB, c);
+   dyu<dxx> e = a("block_ignore", dxx.a);
+   dyu<dxz> f = a("block_rot", dxz.a);
+   dyu<dyc> g = a("gravity", dyc.a);
+   dyu<dyd> h = a("jigsaw_replacement", dyd.a);
+   dyu<dyo> i = a("rule", dyo.a);
+   dyu<dyg> j = a("nop", dyg.a);
+   dyu<dxw> k = a("block_age", dxw.a);
+   dyu<dxv> l = a("blackstone_replace", dxv.a);
+   dyu<dye> m = a("lava_submerged_block", dye.a);
+   dyu<dyl> n = a("protected_blocks", dyl.b);
+   dyu<dyb> o = a("capped", dyb.a);
 
-   public dyu(List<? extends dyq> $$0) {
-      this.b = ImmutableList.copyOf($$0);
-   }
+   Codec<P> codec();
 
-   @Nullable
-   @Override
-   public dzb.c a(cpy $$0, gw $$1, gw $$2, dzb.c $$3, dzb.c $$4, dyx $$5) {
-      asc $$6 = asc.a(arw.a($$4.a()));
-      dfj $$7 = $$0.a_($$4.a());
-      UnmodifiableIterator var9 = this.b.iterator();
-
-      while (var9.hasNext()) {
-         dyq $$8 = (dyq)var9.next();
-         if ($$8.a($$4.b(), $$7, $$3.a(), $$4.a(), $$2, $$6)) {
-            return new dzb.c($$4.a(), $$8.a(), $$8.a($$6, $$4.c()));
-         }
-      }
-
-      return $$4;
-   }
-
-   @Override
-   protected dza<?> a() {
-      return dza.i;
+   static <P extends dys> dyu<P> a(String $$0, Codec<P> $$1) {
+      return hq.a(jb.ai, $$0, () -> $$1);
    }
 }

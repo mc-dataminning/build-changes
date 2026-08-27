@@ -1,29 +1,52 @@
-import com.google.common.collect.ImmutableList;
-import java.util.Collections;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
 import java.util.List;
 
-public class frm implements frn.a {
-   private final eqv a;
-   private double b = Double.MIN_VALUE;
-   private List<eig> c = Collections.emptyList();
+public class frm implements frj.a {
+   private static final int a = 160;
+   private final eqp b;
+   private final Int2ObjectMap<frm.a> c = new Int2ObjectOpenHashMap();
 
-   public frm(eqv $$0) {
-      this.a = $$0;
+   @Override
+   public void a() {
+      this.c.clear();
+   }
+
+   public void a(int $$0, gw $$1, List<wd.a> $$2) {
+      this.c.put($$0, new frm.a($$1, $$2));
+   }
+
+   public void a(int $$0) {
+      this.c.remove($$0);
+   }
+
+   public frm(eqp $$0) {
+      this.b = $$0;
    }
 
    @Override
-   public void a(elp $$0, foe $$1, double $$2, double $$3, double $$4) {
-      double $$5 = (double)ac.c();
-      if ($$5 - this.b > 1.0E8) {
-         this.b = $$5;
-         biq $$6 = this.a.j.m().g();
-         this.c = ImmutableList.copyOf($$6.dL().d($$6, $$6.cG().g(6.0)));
-      }
+   public void a(elj $$0, foa $$1, double $$2, double $$3, double $$4) {
+      eqa $$5 = this.b.j.m();
+      gw $$6 = gw.a($$5.b().c, 0.0, $$5.b().e);
+      ObjectIterator var11 = this.c.values().iterator();
 
-      elt $$7 = $$1.getBuffer(fom.x());
-
-      for (eig $$8 : this.c) {
-         foc.a($$0, $$7, $$8, -$$2, -$$3, -$$4, 1.0F, 1.0F, 1.0F, 1.0F, true);
+      while (var11.hasNext()) {
+         frm.a $$7 = (frm.a)var11.next();
+         gw $$8 = $$7.a;
+         if ($$6.a($$8, 160.0)) {
+            for (int $$9 = 0; $$9 < $$7.b.size(); $$9++) {
+               wd.a $$10 = $$7.b.get($$9);
+               double $$11 = (double)$$8.u() + 0.5;
+               double $$12 = (double)$$8.v() + 2.0 + (double)$$9 * 0.25;
+               double $$13 = (double)$$8.w() + 0.5;
+               int $$14 = $$10.b() ? -16711936 : -3355444;
+               frj.a($$0, $$1, $$10.c(), $$11, $$12, $$13, $$14);
+            }
+         }
       }
+   }
+
+   static record a(gw a, List<wd.a> b) {
    }
 }

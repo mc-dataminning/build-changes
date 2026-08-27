@@ -1,83 +1,97 @@
+import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Sets;
+import com.google.common.collect.ImmutableMap.Builder;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
-public class eeg extends eec {
-   public static final int a = 0;
-   public static final Codec<eeg> b = RecordCodecBuilder.create(
+public class eeg extends edw {
+   public static final Codec<eeg> a = RecordCodecBuilder.create(
       $$0 -> a($$0)
-            .and($$0.group(egl.a.fieldOf("count").forGetter($$0x -> $$0x.c), arf.a(Codec.INT, "limit", Integer.valueOf(0)).forGetter($$0x -> $$0x.d)))
+            .and(
+               $$0.group(
+                  arj.a(Codec.unboundedMap(jb.g.r(), egf.a), "enchantments", Map.of()).forGetter($$0x -> $$0x.b),
+                  Codec.BOOL.fieldOf("add").orElse(false).forGetter($$0x -> $$0x.c)
+               )
+            )
             .apply($$0, eeg::new)
    );
-   private final egk c;
-   private final int d;
+   private final Map<he<cnu>, ege> b;
+   private final boolean c;
 
-   eeg(List<efp> $$0, egk $$1, int $$2) {
+   eeg(List<efj> $$0, Map<he<cnu>, ege> $$1, boolean $$2) {
       super($$0);
-      this.c = $$1;
-      this.d = $$2;
+      this.b = Map.copyOf($$1);
+      this.c = $$2;
    }
 
    @Override
-   public eee b() {
-      return eef.i;
+   public edy b() {
+      return edz.f;
    }
 
    @Override
-   public Set<eey<?>> a() {
-      return Sets.union(ImmutableSet.of(efb.d), this.c.a());
-   }
-
-   private boolean c() {
-      return this.d > 0;
+   public Set<ees<?>> a() {
+      return this.b.values().stream().flatMap($$0 -> $$0.a().stream()).collect(ImmutableSet.toImmutableSet());
    }
 
    @Override
-   public cjf a(cjf $$0, ecq $$1) {
-      biq $$2 = $$1.c(efb.d);
-      if ($$2 instanceof bjg) {
-         int $$3 = cnq.h((bjg)$$2);
-         if ($$3 == 0) {
-            return $$0;
+   public cjl a(cjl $$0, eck $$1) {
+      Object2IntMap<cnu> $$2 = new Object2IntOpenHashMap();
+      this.b.forEach(($$2x, $$3) -> $$2.put((cnu)$$2x.a(), $$3.a($$1)));
+      if ($$0.d() == cjo.qb) {
+         cjl $$3 = new cjl(cjo.tC);
+         $$2.forEach(($$1x, $$2x) -> cih.a($$3, new cnx($$1x, $$2x)));
+         return $$3;
+      } else {
+         Map<cnu, Integer> $$4 = cnw.a($$0);
+         if (this.c) {
+            $$2.forEach(($$1x, $$2x) -> a($$4, $$1x, Math.max($$4.getOrDefault($$1x, 0) + $$2x, 0)));
+         } else {
+            $$2.forEach(($$1x, $$2x) -> a($$4, $$1x, Math.max($$2x, 0)));
          }
 
-         float $$4 = (float)$$3 * this.c.b($$1);
-         $$0.g(Math.round($$4));
-         if (this.c() && $$0.L() > this.d) {
-            $$0.f(this.d);
-         }
+         cnw.a($$4, $$0);
+         return $$0;
+      }
+   }
+
+   private static void a(Map<cnu, Integer> $$0, cnu $$1, int $$2) {
+      if ($$2 == 0) {
+         $$0.remove($$1);
+      } else {
+         $$0.put($$1, $$2);
+      }
+   }
+
+   public static class a extends edw.a<eeg.a> {
+      private final Builder<he<cnu>, ege> a = ImmutableMap.builder();
+      private final boolean b;
+
+      public a() {
+         this(false);
       }
 
-      return $$0;
-   }
-
-   public static eeg.a a(egk $$0) {
-      return new eeg.a($$0);
-   }
-
-   public static class a extends eec.a<eeg.a> {
-      private final egk a;
-      private int b = 0;
-
-      public a(egk $$0) {
-         this.a = $$0;
+      public a(boolean $$0) {
+         this.b = $$0;
       }
 
       protected eeg.a a() {
          return this;
       }
 
-      public eeg.a a(int $$0) {
-         this.b = $$0;
+      public eeg.a a(cnu $$0, ege $$1) {
+         this.a.put($$0.j(), $$1);
          return this;
       }
 
       @Override
-      public eed b() {
-         return new eeg(this.g(), this.a, this.b);
+      public edx b() {
+         return new eeg(this.g(), this.a.build(), this.b);
       }
    }
 }

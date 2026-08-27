@@ -1,20 +1,75 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Map;
-
-public class fhy implements anu {
-   private Map<fia, fii> a = ImmutableMap.of();
-
-   public fic a(fia $$0) {
-      fii $$1 = this.a.get($$0);
-      if ($$1 == null) {
-         throw new IllegalArgumentException("No model for layer " + $$0);
-      } else {
-         return $$1.a();
-      }
-   }
-
-   @Override
-   public void a(ant $$0) {
-      this.a = ImmutableMap.copyOf(fhz.a());
-   }
+public class fhy {
+   public static final String a = "left_fin";
+   public static final String b = "right_fin";
+   public static final String c = "top_fin";
+   public static final String d = "bottom_fin";
+   public static final String e = "tail_fin";
+   public static final String f = "left_blue_fin";
+   public static final String g = "right_blue_fin";
+   public static final String h = "left_arm";
+   public static final String i = "right_arm";
+   public static final String j = "left_wing";
+   public static final String k = "right_wing";
+   public static final String l = "left_wing_base";
+   public static final String m = "right_wing_base";
+   public static final String n = "left_wing_tip";
+   public static final String o = "right_wing_tip";
+   public static final String p = "left_ear";
+   public static final String q = "right_ear";
+   public static final String r = "left_leg";
+   public static final String s = "right_leg";
+   public static final String t = "left_hind_leg";
+   public static final String u = "right_hind_leg";
+   public static final String v = "left_mid_leg";
+   public static final String w = "right_mid_leg";
+   public static final String x = "left_front_leg";
+   public static final String y = "right_front_leg";
+   public static final String z = "left_hind_foot";
+   public static final String A = "right_hind_foot";
+   public static final String B = "left_front_foot";
+   public static final String C = "right_front_foot";
+   public static final String D = "left_hind_leg_tip";
+   public static final String E = "right_hind_leg_tip";
+   public static final String F = "left_front_leg_tip";
+   public static final String G = "right_front_leg_tip";
+   public static final String H = "left_lid";
+   public static final String I = "right_lid";
+   public static final String J = "left_chest";
+   public static final String K = "right_chest";
+   public static final String L = "left_horn";
+   public static final String M = "right_horn";
+   public static final String N = "left_eye";
+   public static final String O = "right_eye";
+   public static final String P = "jaw";
+   public static final String Q = "nose";
+   public static final String R = "arms";
+   public static final String S = "tail";
+   public static final String T = "cube";
+   public static final String U = "beak";
+   public static final String V = "back_fin";
+   public static final String W = "mane";
+   public static final String X = "neck";
+   public static final String Y = "mouth";
+   public static final String Z = "head";
+   public static final String aa = "hat";
+   public static final String ab = "body";
+   public static final String ac = "hat_rim";
+   public static final String ad = "jacket";
+   public static final String ae = "top_gills";
+   public static final String af = "left_gills";
+   public static final String ag = "right_gills";
+   public static final String ah = "root";
+   public static final String ai = "croaking_body";
+   public static final String aj = "tongue";
+   public static final String ak = "tongue_r1";
+   public static final String al = "left_hand";
+   public static final String am = "right_hand";
+   public static final String an = "left_foot";
+   public static final String ao = "right_foot";
+   public static final String ap = "eyes";
+   public static final String aq = "right_tendril";
+   public static final String ar = "left_tendril";
+   public static final String as = "right_ribcage";
+   public static final String at = "left_ribcage";
+   public static final String au = "bone";
 }

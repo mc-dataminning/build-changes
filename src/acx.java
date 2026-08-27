@@ -1,32 +1,40 @@
-public class acx implements vd<abc> {
-   private final bgx a;
-   private final int b;
+public class acx implements ve<abd> {
+   private final ehd a;
+   private final bhd b;
+   private final int c;
 
-   public acx(bgx $$0, int $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public acx(bhd $$0, ehd $$1, int $$2) {
+      this.b = $$0;
+      this.a = $$1;
+      this.c = $$2;
    }
 
    public acx(so $$0) {
-      this.a = $$0.b(bgx.class);
-      this.b = $$0.m();
+      this.b = $$0.b(bhd.class);
+      this.a = $$0.y();
+      this.c = $$0.n();
    }
 
    @Override
    public void a(so $$0) {
+      $$0.a(this.b);
       $$0.a(this.a);
-      $$0.c(this.b);
+      $$0.c(this.c);
    }
 
-   public void a(abc $$0) {
+   public void a(abd $$0) {
       $$0.a(this);
    }
 
-   public bgx a() {
+   public bhd a() {
+      return this.b;
+   }
+
+   public ehd d() {
       return this.a;
    }
 
-   public int d() {
-      return this.b;
+   public int e() {
+      return this.c;
    }
 }

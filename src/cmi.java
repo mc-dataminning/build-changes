@@ -1,59 +1,49 @@
-public class cmi extends cmp {
-   public cmi(cly $$0) {
-      super(
-         "",
-         $$0,
-         3,
-         3,
-         hn.a(cmg.a, cmg.a(cji.qa), cmg.a(cji.qa), cmg.a(cji.qa), cmg.a(cji.qa), cmg.a(cji.rf), cmg.a(cji.qa), cmg.a(cji.qa), cmg.a(cji.qa), cmg.a(cji.qa)),
-         new cjf(cji.tp)
-      );
+public class cmi extends cmh {
+   public cmi(cme $$0) {
+      super($$0);
    }
 
-   @Override
-   public boolean a(cez $$0, cpv $$1) {
-      if (!super.a($$0, $$1)) {
+   public boolean a(cff $$0, cqb $$1) {
+      if (!this.a($$0.f(), $$0.g())) {
          return false;
       } else {
-         cjf $$2 = a($$0);
-         if ($$2.b()) {
-            return false;
-         } else {
-            ebw $$3 = cjm.a($$2, $$1);
-            if ($$3 == null) {
-               return false;
-            } else {
-               return $$3.f() ? false : $$3.f < 4;
+         for (int $$2 = 0; $$2 < $$0.b(); $$2++) {
+            cjl $$3 = $$0.a($$2);
+            switch ($$2) {
+               case 1:
+               case 3:
+               case 5:
+               case 7:
+                  if (!$$3.a(aqd.aM)) {
+                     return false;
+                  }
+                  break;
+               case 2:
+               case 4:
+               case 6:
+               default:
+                  if (!$$3.a(cjo.a)) {
+                     return false;
+                  }
             }
          }
+
+         return true;
       }
    }
 
-   @Override
-   public cjf a(cez $$0, hr $$1) {
-      cjf $$2 = a($$0).c(1);
-      $$2.w().a("map_scale_direction", 1);
-      return $$2;
-   }
-
-   private static cjf a(cez $$0) {
-      for (int $$1 = 0; $$1 < $$0.b(); $$1++) {
-         cjf $$2 = $$0.a($$1);
-         if ($$2.a(cji.rf)) {
-            return $$2;
-         }
-      }
-
-      return cjf.b;
+   public cjl a(cff $$0, hr $$1) {
+      ddo.a $$2 = new ddo.a($$0.a(1).d(), $$0.a(3).d(), $$0.a(5).d(), $$0.a(7).d());
+      return ddo.a($$2);
    }
 
    @Override
-   public boolean am_() {
-      return true;
+   public boolean a(int $$0, int $$1) {
+      return $$0 == 3 && $$1 == 3;
    }
 
    @Override
-   public cmm<?> an_() {
-      return cmm.f;
+   public cms<?> an_() {
+      return cms.w;
    }
 }

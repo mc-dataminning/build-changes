@@ -1,23 +1,23 @@
-public class fuc extends fun<bvd, ffs<bvd>> {
-   private static final aew a = new aew("textures/entity/iron_golem/iron_golem.png");
+public class fuc extends ftc<byn> {
+   private static final aez a = new aez("textures/entity/lead_knot.png");
+   private final ffp<byn> f;
 
-   public fuc(fth.a $$0) {
-      super($$0, new ffs<>($$0.a(fib.ap)), 0.7F);
-      this.a(new fxg(this));
-      this.a(new fxh(this, $$0.c()));
+   public fuc(ftd.a $$0) {
+      super($$0);
+      this.f = new ffp<>($$0.a(fhw.aq));
    }
 
-   public aew a(bvd $$0) {
+   public void a(byn $$0, float $$1, float $$2, elj $$3, foa $$4, int $$5) {
+      $$3.a();
+      $$3.b(-1.0F, -1.0F, 1.0F);
+      this.f.a($$0, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F);
+      eln $$6 = $$4.getBuffer(this.f.a(a));
+      this.f.a($$3, $$6, $$5, fyr.d, 1.0F, 1.0F, 1.0F, 1.0F);
+      $$3.b();
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   public aez a(byn $$0) {
       return a;
-   }
-
-   protected void a(bvd $$0, elp $$1, float $$2, float $$3, float $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      if (!((double)$$0.aQ.a() < 0.01)) {
-         float $$5 = 13.0F;
-         float $$6 = $$0.aQ.c($$4) + 6.0F;
-         float $$7 = (Math.abs($$6 % 13.0F - 6.5F) - 3.25F) / 3.25F;
-         $$1.a(a.f.rotationDegrees(6.5F * $$7));
-      }
    }
 }

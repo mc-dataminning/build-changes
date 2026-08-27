@@ -1,45 +1,27 @@
-public class fxc extends fxp<bvb, fff<bvb>> {
-   private final foa a;
+import com.google.common.collect.ImmutableMap;
+import java.util.Map;
 
-   public fxc(fvc<bvb, fff<bvb>> $$0, foa $$1) {
+public class fxc extends fxl<bvj, ffn<bvj>> {
+   private static final Map<bvj.a, aez> a = ImmutableMap.of(
+      bvj.a.b,
+      new aez("textures/entity/iron_golem/iron_golem_crackiness_low.png"),
+      bvj.a.c,
+      new aez("textures/entity/iron_golem/iron_golem_crackiness_medium.png"),
+      bvj.a.d,
+      new aez("textures/entity/iron_golem/iron_golem_crackiness_high.png")
+   );
+
+   public fxc(fuy<bvj, ffn<bvj>> $$0) {
       super($$0);
-      this.a = $$1;
    }
 
-   public void a(elp $$0, foe $$1, int $$2, bvb $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      boolean $$10 = $$3.fC();
-      boolean $$11 = $$3.m_();
-      $$0.a();
-      if ($$11) {
-         float $$12 = 0.75F;
-         $$0.b(0.75F, 0.75F, 0.75F);
-         $$0.a(0.0F, 0.5F, 0.209375F);
-      }
-
-      $$0.a(this.c().a.b / 16.0F, this.c().a.c / 16.0F, this.c().a.d / 16.0F);
-      float $$13 = $$3.E($$6);
-      $$0.a(a.f.rotation($$13));
-      $$0.a(a.d.rotationDegrees($$8));
-      $$0.a(a.b.rotationDegrees($$9));
-      if ($$3.m_()) {
-         if ($$10) {
-            $$0.a(0.4F, 0.26F, 0.15F);
-         } else {
-            $$0.a(0.06F, 0.26F, -0.5F);
+   public void a(elj $$0, foa $$1, int $$2, bvj $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if (!$$3.cd()) {
+         bvj.a $$10 = $$3.t();
+         if ($$10 != bvj.a.a) {
+            aez $$11 = a.get($$10);
+            a(this.c(), $$11, $$0, $$1, $$2, $$3, 1.0F, 1.0F, 1.0F);
          }
-      } else if ($$10) {
-         $$0.a(0.46F, 0.26F, 0.22F);
-      } else {
-         $$0.a(0.06F, 0.27F, -0.5F);
       }
-
-      $$0.a(a.b.rotationDegrees(90.0F));
-      if ($$10) {
-         $$0.a(a.f.rotationDegrees(90.0F));
-      }
-
-      cjf $$14 = $$3.c(biv.a);
-      this.a.a($$3, $$14, cjc.h, false, $$0, $$1, $$2);
-      $$0.b();
    }
 }

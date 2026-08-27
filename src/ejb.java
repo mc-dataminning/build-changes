@@ -1,7 +1,9 @@
-public interface ejb<T> {
-   void a(eiz<T> var1);
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import javax.annotation.meta.TypeQualifierDefault;
 
-   boolean a(gw var1, T var2);
-
-   int a();
+@TypeQualifierDefault({ElementType.TYPE, ElementType.METHOD})
+@Retention(RetentionPolicy.CLASS)
+public @interface ejb {
 }

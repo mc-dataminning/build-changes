@@ -51,31 +51,31 @@ public class ll {
       return this;
    }
 
-   public aew a(csv $$0, BiConsumer<aew, Supplier<JsonElement>> $$1) {
+   public aez a(ctc $$0, BiConsumer<aez, Supplier<JsonElement>> $$1) {
       return this.A.a($$0, this.z, $$1);
    }
 
-   public aew a(csv $$0, String $$1, BiConsumer<aew, Supplier<JsonElement>> $$2) {
+   public aez a(ctc $$0, String $$1, BiConsumer<aez, Supplier<JsonElement>> $$2) {
       return this.A.a($$0, $$1, this.z, $$2);
    }
 
-   private static ll.a a(Function<csv, lj> $$0, lh $$1) {
+   private static ll.a a(Function<ctc, lj> $$0, lh $$1) {
       return $$2 -> new ll($$0.apply($$2), $$1);
    }
 
-   public static ll a(aew $$0) {
+   public static ll a(aez $$0) {
       return new ll(lj.b($$0), li.c);
    }
 
    @FunctionalInterface
    public interface a {
-      ll get(csv var1);
+      ll get(ctc var1);
 
-      default aew create(csv $$0, BiConsumer<aew, Supplier<JsonElement>> $$1) {
+      default aez create(ctc $$0, BiConsumer<aez, Supplier<JsonElement>> $$1) {
          return this.get($$0).a($$0, $$1);
       }
 
-      default aew createWithSuffix(csv $$0, String $$1, BiConsumer<aew, Supplier<JsonElement>> $$2) {
+      default aez createWithSuffix(ctc $$0, String $$1, BiConsumer<aez, Supplier<JsonElement>> $$2) {
          return this.get($$0).a($$0, $$1, $$2);
       }
 

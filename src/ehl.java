@@ -1,26 +1,20 @@
-public abstract class ehl {
-   protected final ehn a;
+public interface ehl {
+   ehl a = ($$0, $$1) -> false;
+   ehl b = ($$0, $$1) -> !$$0 && !$$1;
+   ehl c = ($$0, $$1) -> $$1 && !$$0;
+   ehl d = ($$0, $$1) -> !$$0;
+   ehl e = ($$0, $$1) -> $$0 && !$$1;
+   ehl f = ($$0, $$1) -> !$$1;
+   ehl g = ($$0, $$1) -> $$0 != $$1;
+   ehl h = ($$0, $$1) -> !$$0 || !$$1;
+   ehl i = ($$0, $$1) -> $$0 && $$1;
+   ehl j = ($$0, $$1) -> $$0 == $$1;
+   ehl k = ($$0, $$1) -> $$1;
+   ehl l = ($$0, $$1) -> !$$0 || $$1;
+   ehl m = ($$0, $$1) -> $$0;
+   ehl n = ($$0, $$1) -> $$0 || !$$1;
+   ehl o = ($$0, $$1) -> $$0 || $$1;
+   ehl p = ($$0, $$1) -> true;
 
-   protected ehl(ehn $$0) {
-      this.a = $$0;
-   }
-
-   public double a(biq $$0) {
-      double $$1 = this.a.c - $$0.dq();
-      double $$2 = this.a.d - $$0.ds();
-      double $$3 = this.a.e - $$0.dw();
-      return $$1 * $$1 + $$2 * $$2 + $$3 * $$3;
-   }
-
-   public abstract ehl.a c();
-
-   public ehn e() {
-      return this.a;
-   }
-
-   public static enum a {
-      a,
-      b,
-      c;
-   }
+   boolean apply(boolean var1, boolean var2);
 }

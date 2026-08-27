@@ -1,130 +1,39 @@
-import com.mojang.logging.LogUtils;
-import io.netty.channel.ChannelFuture;
-import java.net.InetSocketAddress;
-import java.util.Optional;
-import java.util.concurrent.atomic.AtomicInteger;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import java.util.List;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class exe extends eyk {
-   private static final AtomicInteger c = new AtomicInteger(0);
-   static final Logger k = LogUtils.getLogger();
-   private static final long l = 2000L;
-   public static final tl a = tl.c("connect.aborted");
-   public static final tl b = tl.a("disconnect.genericReason", tl.c("disconnect.unknownHost"));
+public class exe extends eye {
+   private static final aez a = new aez("icon/draft_report");
+   private int b;
+   private final tl c;
+   private final boolean k;
+   private tl l;
+   private final List<esk> m = Lists.newArrayList();
    @Nullable
-   volatile sm m;
-   @Nullable
-   ChannelFuture n;
-   volatile boolean o;
-   final eyk p;
-   private tl q = tl.c("connect.connecting");
-   private long s = -1L;
-   final tl t;
+   private esk n;
 
-   private exe(eyk $$0, tl $$1) {
-      super(eqn.a);
-      this.p = $$0;
-      this.t = $$1;
-   }
-
-   public static void a(eyk $$0, eqv $$1, fki $$2, fjh $$3, boolean $$4) {
-      if ($$1.y instanceof exe) {
-         k.error("Attempt to connect while already connecting");
-      } else {
-         exe $$5 = new exe($$0, $$4 ? fnn.a : tk.q);
-         $$1.z();
-         $$1.aR();
-         $$1.a(fjw.a($$3 != null ? $$3.b : $$2.a()));
-         $$1.aZ().a(fno.c.b, $$3.b, $$3.a);
-         $$1.a($$5);
-         $$5.a($$1, $$2, $$3);
-      }
-   }
-
-   private void a(final eqv $$0, final fki $$1, @Nullable final fjh $$2) {
-      k.info("Connecting to {}, {}", $$1.a(), $$1.b());
-      Thread $$3 = new Thread("Server Connector #" + c.incrementAndGet()) {
-         @Override
-         public void run() {
-            InetSocketAddress $$0 = null;
-
-            try {
-               if (exe.this.o) {
-                  return;
-               }
-
-               Optional<InetSocketAddress> $$1 = fkk.a.a($$1).map(fkh::d);
-               if (exe.this.o) {
-                  return;
-               }
-
-               if ($$1.isEmpty()) {
-                  $$0.execute(() -> $$0.a(new exm(exe.this.p, exe.this.t, exe.b)));
-                  return;
-               }
-
-               $$0 = $$1.get();
-               sm $$2;
-               synchronized (exe.this) {
-                  if (exe.this.o) {
-                     return;
-                  }
-
-                  $$2 = new sm(ve.b);
-                  $$2.a($$0.aN().l());
-                  exe.this.n = sm.a($$0, $$0.m.av(), $$2);
-               }
-
-               exe.this.n.syncUninterruptibly();
-               synchronized (exe.this) {
-                  if (exe.this.o) {
-                     $$2.a(exe.a);
-                     return;
-                  }
-
-                  exe.this.m = $$2;
-               }
-
-               exe.this.m.a($$0.getHostName(), $$0.getPort(), new fiw(exe.this.m, $$0, $$2, exe.this.p, false, null, exe.this::a));
-               exe.this.m.a(new adm($$0.V().c(), $$0.V().b()));
-            } catch (Exception var9) {
-               if (exe.this.o) {
-                  return;
-               }
-
-               Exception $$6;
-               if (var9.getCause() instanceof Exception $$5) {
-                  $$6 = $$5;
-               } else {
-                  $$6 = var9;
-               }
-
-               exe.k.error("Couldn't connect to server", var9);
-               String $$8 = $$0 == null
-                  ? $$6.getMessage()
-                  : $$6.getMessage().replaceAll($$0.getHostName() + ":" + $$0.getPort(), "").replaceAll($$0.toString(), "");
-               $$0.execute(() -> $$0.a(new exm(exe.this.p, exe.this.t, tl.a("disconnect.genericReason", $$8))));
-            }
-         }
-      };
-      $$3.setUncaughtExceptionHandler(new r(k));
-      $$3.start();
-   }
-
-   private void a(tl $$0) {
-      this.q = $$0;
+   public exe(@Nullable tl $$0, boolean $$1) {
+      super(tl.c($$1 ? "deathScreen.title.hardcore" : "deathScreen.title"));
+      this.c = $$0;
+      this.k = $$1;
    }
 
    @Override
-   public void c() {
-      if (this.m != null) {
-         if (this.m.k()) {
-            this.m.d();
-         } else {
-            this.m.p();
-         }
-      }
+   protected void aH_() {
+      this.b = 0;
+      this.m.clear();
+      tl $$0 = this.k ? tl.c("deathScreen.spectate") : tl.c("deathScreen.respawn");
+      this.m.add(this.d(esk.a($$0, $$0x -> {
+         this.f.s.fQ();
+         $$0x.i = false;
+      }).a(this.g / 2 - 100, this.h / 4 + 72, 200, 20).a()));
+      this.n = this.d(
+         esk.a(tl.c("deathScreen.titleScreen"), $$0x -> this.f.aX().a(this.f, this, this::l, true)).a(this.g / 2 - 100, this.h / 4 + 96, 200, 20).a()
+      );
+      this.m.add(this.n);
+      this.c(false);
+      this.l = tl.a("deathScreen.score.value", tl.b(Integer.toString(this.f.s.fN())).a(n.o));
    }
 
    @Override
@@ -132,34 +41,107 @@ public class exe extends eyk {
       return false;
    }
 
-   @Override
-   protected void aH_() {
-      this.d(esq.a(tk.e, $$0 -> {
-         synchronized (this) {
-            this.o = true;
-            if (this.n != null) {
-               this.n.cancel(true);
-               this.n = null;
+   private void l() {
+      if (this.k) {
+         this.D();
+      } else {
+         ewy $$0 = new exe.a($$0x -> {
+            if ($$0x) {
+               this.D();
+            } else {
+               this.f.s.fQ();
+               this.f.a(null);
             }
+         }, tl.c("deathScreen.quit.confirm"), tk.a, tl.c("deathScreen.titleScreen"), tl.c("deathScreen.respawn"));
+         this.f.a($$0);
+         $$0.b(20);
+      }
+   }
 
-            if (this.m != null) {
-               this.m.a(a);
-            }
-         }
+   private void D() {
+      if (this.f.r != null) {
+         this.f.r.U();
+      }
 
-         this.f.a(this.p);
-      }).a(this.g / 2 - 100, this.h / 4 + 120 + 12, 200, 20).a());
+      this.f.b(new exl(tl.c("menu.savingLevel")));
+      this.f.a(new eyj());
    }
 
    @Override
-   public void a(esf $$0, int $$1, int $$2, float $$3) {
+   public void a(erz $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      long $$4 = ac.b();
-      if ($$4 - this.s > 2000L) {
-         this.s = $$4;
-         this.f.aV().c(tl.c("narrator.joining"));
+      $$0.c().a();
+      $$0.c().b(2.0F, 2.0F, 2.0F);
+      $$0.a(this.i, this.e, this.g / 2 / 2, 30, 16777215);
+      $$0.c().b();
+      if (this.c != null) {
+         $$0.a(this.i, this.c, this.g / 2, 85, 16777215);
       }
 
-      $$0.a(this.i, this.q, this.g / 2, this.h / 2 - 50, 16777215);
+      $$0.a(this.i, this.l, this.g / 2, 100, 16777215);
+      if (this.c != null && $$2 > 85 && $$2 < 85 + 9) {
+         ui $$4 = this.a($$1);
+         $$0.a(this.i, $$4, $$1, $$2);
+      }
+
+      if (this.n != null && this.f.aX().c()) {
+         $$0.a(a, this.n.r() + this.n.l() - 17, this.n.t() + 3, 15, 15);
+      }
+   }
+
+   @Override
+   public void b(erz $$0, int $$1, int $$2, float $$3) {
+      $$0.b(0, 0, this.g, this.h, 1615855616, -1602211792);
+   }
+
+   @Nullable
+   private ui a(int $$0) {
+      if (this.c == null) {
+         return null;
+      } else {
+         int $$1 = this.f.h.a(this.c);
+         int $$2 = this.g / 2 - $$1 / 2;
+         int $$3 = this.g / 2 + $$1 / 2;
+         return $$0 >= $$2 && $$0 <= $$3 ? this.f.h.b().a(this.c, $$0 - $$2) : null;
+      }
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      if (this.c != null && $$1 > 85.0 && $$1 < (double)(85 + 9)) {
+         ui $$3 = this.a((int)$$0);
+         if ($$3 != null && $$3.h() != null && $$3.h().a() == tj.a.a) {
+            this.a($$3);
+            return false;
+         }
+      }
+
+      return super.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public boolean j() {
+      return false;
+   }
+
+   @Override
+   public void c() {
+      super.c();
+      this.b++;
+      if (this.b == 20) {
+         this.c(true);
+      }
+   }
+
+   private void c(boolean $$0) {
+      for (esk $$1 : this.m) {
+         $$1.i = $$0;
+      }
+   }
+
+   public static class a extends ewy {
+      public a(BooleanConsumer $$0, tl $$1, tl $$2, tl $$3, tl $$4) {
+         super($$0, $$1, $$2, $$3, $$4);
+      }
    }
 }

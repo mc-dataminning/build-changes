@@ -1,167 +1,58 @@
-import com.mojang.datafixers.util.Either;
+import com.google.gson.annotations.SerializedName;
 import com.mojang.logging.LogUtils;
-import java.time.Duration;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.Callable;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.concurrent.TimeUnit;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
+import java.nio.file.Path;
 import org.slf4j.Logger;
 
 public class epe {
-   static final Logger a = LogUtils.getLogger();
-   final Executor b;
-   final TimeUnit c;
-   final ast d;
+   private static final String a = "realms_persistence.json";
+   private static final emh b = new emh();
+   private static final Logger c = LogUtils.getLogger();
 
-   public epe(Executor $$0, TimeUnit $$1, ast $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   public epe.a a() {
+      return b();
    }
 
-   public <T> epe.e<T> a(String $$0, Callable<T> $$1, Duration $$2, epf $$3) {
-      long $$4 = this.c.convert($$2);
-      if ($$4 == 0L) {
-         throw new IllegalArgumentException("Period of " + $$2 + " too short for selected resolution of " + this.c);
-      } else {
-         return new epe.e<>($$0, $$1, $$4, $$3);
-      }
+   public void a(epe.a $$0) {
+      b($$0);
    }
 
-   public epe.c a() {
-      return new epe.c();
-   }
+   public static epe.a b() {
+      Path $$0 = c();
 
-   static record a<T>(Either<T, Exception> a, long b) {
-   }
-
-   class b<T> {
-      private final epe.e<T> b;
-      private final Consumer<T> c;
-      private long d = -1L;
-
-      b(epe.e<T> $$0, Consumer<T> $$1) {
-         this.b = $$0;
-         this.c = $$1;
-      }
-
-      void a(long $$0) {
-         this.b.a($$0);
-         this.a();
-      }
-
-      void a() {
-         epe.d<T> $$0 = this.b.g;
-         if ($$0 != null && this.d < $$0.b) {
-            this.c.accept($$0.a);
-            this.d = $$0.b;
+      try {
+         String $$1 = Files.readString($$0, StandardCharsets.UTF_8);
+         epe.a $$2 = b.a($$1, epe.a.class);
+         if ($$2 != null) {
+            return $$2;
          }
+      } catch (NoSuchFileException var3) {
+      } catch (Exception var4) {
+         c.warn("Failed to read Realms storage {}", $$0, var4);
       }
 
-      void b() {
-         epe.d<T> $$0 = this.b.g;
-         if ($$0 != null) {
-            this.c.accept($$0.a);
-            this.d = $$0.b;
-         }
-      }
+      return new epe.a();
+   }
 
-      void c() {
-         this.b.a();
-         this.d = -1L;
+   public static void b(epe.a $$0) {
+      Path $$1 = c();
+
+      try {
+         Files.writeString($$1, b.a($$0), StandardCharsets.UTF_8);
+      } catch (Exception var3) {
       }
    }
 
-   public class c {
-      private final List<epe.b<?>> b = new ArrayList<>();
-
-      public <T> void a(epe.e<T> $$0, Consumer<T> $$1) {
-         epe.b<T> $$2 = epe.this.new b<>($$0, $$1);
-         this.b.add($$2);
-         $$2.a();
-      }
-
-      public void a() {
-         for (epe.b<?> $$0 : this.b) {
-            $$0.b();
-         }
-      }
-
-      public void b() {
-         for (epe.b<?> $$0 : this.b) {
-            $$0.a(epe.this.d.get(epe.this.c));
-         }
-      }
-
-      public void c() {
-         for (epe.b<?> $$0 : this.b) {
-            $$0.c();
-         }
-      }
+   private static Path c() {
+      return eqp.O().p.toPath().resolve("realms_persistence.json");
    }
 
-   static record d<T>(T a, long b) {
-   }
-
-   public class e<T> {
-      private final String b;
-      private final Callable<T> c;
-      private final long d;
-      private final epf e;
-      @Nullable
-      private CompletableFuture<epe.a<T>> f;
-      @Nullable
-      epe.d<T> g;
-      private long h = -1L;
-
-      e(String $$1, Callable<T> $$2, long $$3, epf $$4) {
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$4;
-      }
-
-      void a(long $$0) {
-         if (this.f != null) {
-            epe.a<T> $$1 = this.f.getNow(null);
-            if ($$1 == null) {
-               return;
-            }
-
-            this.f = null;
-            long $$2 = $$1.b;
-            $$1.a().ifLeft($$1x -> {
-               this.g = new epe.d<>((T)$$1x, $$2);
-               this.h = $$2 + this.d * this.e.a();
-            }).ifRight($$1x -> {
-               long $$2x = this.e.b();
-               epe.a.warn("Failed to process task {}, will repeat after {} cycles", new Object[]{this.b, $$2x, $$1x});
-               this.h = $$2 + this.d * $$2x;
-            });
-         }
-
-         if (this.h <= $$0) {
-            this.f = CompletableFuture.supplyAsync(() -> {
-               try {
-                  T $$0x = this.c.call();
-                  long $$1x = epe.this.d.get(epe.this.c);
-                  return new epe.a<>(Either.left($$0x), $$1x);
-               } catch (Exception var4x) {
-                  long $$3 = epe.this.d.get(epe.this.c);
-                  return new epe.a<>(Either.right(var4x), $$3);
-               }
-            }, epe.this.b);
-         }
-      }
-
-      public void a() {
-         this.f = null;
-         this.g = null;
-         this.h = -1L;
-      }
+   public static class a implements emz {
+      @SerializedName("newsLink")
+      public String a;
+      @SerializedName("hasUnreadNews")
+      public boolean b;
    }
 }

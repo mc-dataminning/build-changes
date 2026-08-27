@@ -1,80 +1,58 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
+import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class cvu extends csv {
-   private static final Map<csv, csv> c = Maps.newHashMap();
-   public static final float a = 3.0F;
-   protected static final eig b = csv.a(5.0, 0.0, 5.0, 11.0, 6.0, 11.0);
-   private final csv d;
+public abstract class cvu extends cww {
+   public static final dgb<dfo> K = dft.U;
 
-   public cvu(csv $$0, dfi.d $$1) {
-      super($$1);
-      this.d = $$0;
-      c.put($$0, this);
+   protected cvu(dfc.d $$0) {
+      super($$0);
    }
 
    @Override
-   public eig a(dfj $$0, cpb $$1, gw $$2, ehs $$3) {
-      return b;
-   }
+   protected abstract MapCodec<? extends cvu> a();
 
    @Override
-   public cza b_(dfj $$0) {
-      return cza.c;
+   public boolean a(dfd $$0, cqe $$1, gw $$2) {
+      return b($$1, $$2, h($$0).g());
    }
 
+   public static boolean b(cqe $$0, gw $$1, ha $$2) {
+      gw $$3 = $$1.a($$2);
+      return $$0.a_($$3).d($$0, $$3, $$2.g());
+   }
+
+   @Nullable
    @Override
-   public bgy a(dfj $$0, cpv $$1, gw $$2, cbu $$3, bgx $$4, ehj $$5) {
-      cjf $$6 = $$3.b($$4);
-      cja $$7 = $$6.d();
-      dfj $$8 = ($$7 instanceof cgy ? c.getOrDefault(((cgy)$$7).e(), csw.a) : csw.a).n();
-      boolean $$9 = $$8.a(csw.a);
-      boolean $$10 = this.g();
-      if ($$9 != $$10) {
-         if ($$10) {
-            $$1.a($$2, $$8, 3);
-            $$3.a(apn.ah);
-            if (!$$3.fS().d) {
-               $$6.h(1);
-            }
+   public dfd a(clt $$0) {
+      for (ha $$1 : $$0.f()) {
+         dfd $$2;
+         if ($$1.o() == ha.a.b) {
+            $$2 = this.o().a(K, $$1 == ha.b ? dfo.c : dfo.a).a(aE, $$0.g());
          } else {
-            cjf $$11 = new cjf(this.d);
-            if ($$6.b()) {
-               $$3.a($$4, $$11);
-            } else if (!$$3.i($$11)) {
-               $$3.a($$11, false);
-            }
-
-            $$1.a($$2, csw.fR.n(), 3);
+            $$2 = this.o().a(K, dfo.b).a(aE, $$1.g());
          }
 
-         $$1.a($$3, djt.c, $$2);
-         return bgy.a($$1.B);
-      } else {
-         return bgy.b;
+         if ($$2.a((cqe)$$0.q(), $$0.a())) {
+            return $$2;
+         }
       }
+
+      return null;
    }
 
    @Override
-   public cjf a(cpb $$0, gw $$1, dfj $$2) {
-      return this.g() ? super.a($$0, $$1, $$2) : new cjf(this.d);
+   public dfd a(dfd $$0, ha $$1, dfd $$2, cqc $$3, gw $$4, gw $$5) {
+      return h($$0).g() == $$1 && !$$0.a($$3, $$4) ? cte.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   private boolean g() {
-      return this.d == csw.a;
-   }
-
-   @Override
-   public dfj a(dfj $$0, ha $$1, dfj $$2, cpw $$3, gw $$4, gw $$5) {
-      return $$1 == ha.a && !$$0.a($$3, $$4) ? csw.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   public csv a() {
-      return this.d;
-   }
-
-   @Override
-   public boolean a(dfj $$0, cpb $$1, gw $$2, ebc $$3) {
-      return false;
+   protected static ha h(dfd $$0) {
+      switch ((dfo)$$0.c(K)) {
+         case c:
+            return ha.a;
+         case a:
+            return ha.b;
+         default:
+            return $$0.c(aE);
+      }
    }
 }

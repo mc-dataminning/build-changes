@@ -4,15 +4,15 @@ import io.netty.handler.codec.MessageToMessageEncoder;
 import io.netty.util.AttributeKey;
 import java.util.List;
 
-public class sq extends MessageToMessageEncoder<vd<?>> {
-   private final AttributeKey<? extends vc.b> a;
+public class sq extends MessageToMessageEncoder<ve<?>> {
+   private final AttributeKey<? extends vd.b> a;
 
-   public sq(AttributeKey<? extends vc.b> $$0) {
+   public sq(AttributeKey<? extends vd.b> $$0) {
       this.a = $$0;
    }
 
-   protected void a(ChannelHandlerContext $$0, vd<?> $$1, List<Object> $$2) throws Exception {
-      vc.b $$3 = (vc.b)$$0.channel().attr(this.a).get();
+   protected void a(ChannelHandlerContext $$0, ve<?> $$1, List<Object> $$2) throws Exception {
+      vd.b $$3 = (vd.b)$$0.channel().attr(this.a).get();
       if ($$3 == null) {
          throw new EncoderException("Bundler not configured: " + $$1);
       } else {

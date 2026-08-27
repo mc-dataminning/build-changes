@@ -1,29 +1,56 @@
-public class fmv extends fmg {
-   fmv(fix $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fmp $$7) {
-      super($$0, $$1, $$2, $$3, $$7, 1.25F);
-      this.B = 0.6F;
-      this.j = $$4;
-      this.k = $$5;
-      this.l = $$6;
-      this.D *= 0.75F;
-      this.t = 60 + this.r.a(12);
-      this.b($$7);
-      if (this.r.a(4) == 0) {
-         this.a(0.6F + this.r.i() * 0.2F, 0.6F + this.r.i() * 0.3F, this.r.i() * 0.2F);
+public class fmv extends fmq {
+   private float a;
+
+   fmv(fis $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1, $$2, $$3);
+      this.t = (int)(Math.random() * 60.0) + 30;
+      this.n = false;
+      this.j = 0.0;
+      this.k = -0.05;
+      this.l = 0.0;
+      this.b(0.02F, 0.02F);
+      this.D = this.D * (this.r.i() * 0.6F + 0.2F);
+      this.u = 0.002F;
+   }
+
+   @Override
+   public flu b() {
+      return flu.b;
+   }
+
+   @Override
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
+         this.k();
       } else {
-         this.a(0.1F + this.r.i() * 0.2F, 0.4F + this.r.i() * 0.3F, this.r.i() * 0.2F);
+         float $$0 = 0.6F;
+         this.j = this.j + (double)(0.6F * asb.b(this.a));
+         this.l = this.l + (double)(0.6F * asb.a(this.a));
+         this.j *= 0.07;
+         this.l *= 0.07;
+         this.a(this.j, this.k, this.l);
+         if (!this.c.b_(gw.a(this.g, this.h, this.i)).a(aqa.a) || this.m) {
+            this.k();
+         }
+
+         this.a += 0.08F;
       }
    }
 
-   public static class a implements flx<iy> {
-      private final fmp a;
+   public static class a implements flt<iy> {
+      private final fml a;
 
-      public a(fmp $$0) {
+      public a(fml $$0) {
          this.a = $$0;
       }
 
-      public flu a(iy $$0, fix $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fmv($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+      public flq a(iy $$0, fis $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fmv $$8 = new fmv($$1, $$2, $$3, $$4);
+         $$8.a(this.a);
+         return $$8;
       }
    }
 }

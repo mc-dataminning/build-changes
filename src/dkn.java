@@ -1,111 +1,77 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.stream.Stream;
+import com.google.common.annotations.VisibleForTesting;
+import java.util.concurrent.atomic.AtomicLong;
 
-public class dkn extends dhg {
-   public static final Codec<dkn> c = RecordCodecBuilder.create($$0 -> $$0.group(dtl.a.fieldOf("settings").forGetter(dkn::g)).apply($$0, $$0.stable(dkn::new)));
-   private final dtl d;
+public class dkn implements dkb {
+   private static final int d = 48;
+   private static final long e = 281474976710655L;
+   private static final long f = 25214903917L;
+   private static final long g = 11L;
+   private final AtomicLong h = new AtomicLong();
+   private final dko i = new dko(this);
 
-   public dkn(dtl $$0) {
-      super(new cre($$0.d()), ac.b($$0::a));
-      this.d = $$0;
+   public dkn(long $$0) {
+      this.b($$0);
    }
 
    @Override
-   public dhh a(hg<dvo> $$0, dlg $$1, long $$2) {
-      Stream<he<dvo>> $$3 = this.d.c().map(hi::a).orElseGet(() -> $$0.b().map($$0xx -> $$0xx));
-      return dhh.a($$1, $$2, this.b, $$3);
+   public ash d() {
+      return new dkn(this.g());
    }
 
    @Override
-   protected Codec<? extends dhg> a() {
-      return c;
-   }
-
-   public dtl g() {
-      return this.d;
+   public dkz e() {
+      return new dkn.a(this.g());
    }
 
    @Override
-   public void a(akx $$0, cqn $$1, dlg $$2, dhf $$3) {
+   public void b(long $$0) {
+      if (!this.h.compareAndSet(this.h.get(), ($$0 ^ 25214903917L) & 281474976710655L)) {
+         throw asx.a("LegacyRandomSource", null);
+      } else {
+         this.i.a();
+      }
    }
 
    @Override
-   public int a(cpx $$0) {
-      return $$0.H_() + Math.min($$0.I_(), this.d.f().size());
+   public int c(int $$0) {
+      long $$1 = this.h.get();
+      long $$2 = $$1 * 25214903917L + 11L & 281474976710655L;
+      if (!this.h.compareAndSet($$1, $$2)) {
+         throw asx.a("LegacyRandomSource", null);
+      } else {
+         return (int)($$2 >> 48 - $$0);
+      }
    }
 
    @Override
-   public CompletableFuture<dhf> a(Executor $$0, dlu $$1, dlg $$2, cqn $$3, dhf $$4) {
-      List<dfj> $$5 = this.d.f();
-      gw.a $$6 = new gw.a();
-      dks $$7 = $$4.a(dks.a.c);
-      dks $$8 = $$4.a(dks.a.a);
+   public double k() {
+      return this.i.b();
+   }
 
-      for (int $$9 = 0; $$9 < Math.min($$4.I_(), $$5.size()); $$9++) {
-         dfj $$10 = $$5.get($$9);
-         if ($$10 != null) {
-            int $$11 = $$4.H_() + $$9;
+   public static class a implements dkz {
+      private final long a;
 
-            for (int $$12 = 0; $$12 < 16; $$12++) {
-               for (int $$13 = 0; $$13 < 16; $$13++) {
-                  $$4.a($$6.d($$12, $$11, $$13), $$10, false);
-                  $$7.a($$12, $$11, $$13, $$10);
-                  $$8.a($$12, $$11, $$13, $$10);
-               }
-            }
-         }
+      public a(long $$0) {
+         this.a = $$0;
       }
 
-      return CompletableFuture.completedFuture($$4);
-   }
-
-   @Override
-   public int a(int $$0, int $$1, dks.a $$2, cpx $$3, dlg $$4) {
-      List<dfj> $$5 = this.d.f();
-
-      for (int $$6 = Math.min($$5.size(), $$3.aj()) - 1; $$6 >= 0; $$6--) {
-         dfj $$7 = $$5.get($$6);
-         if ($$7 != null && $$2.e().test($$7)) {
-            return $$3.H_() + $$6 + 1;
-         }
+      @Override
+      public ash a(int $$0, int $$1, int $$2) {
+         long $$3 = asb.b($$0, $$1, $$2);
+         long $$4 = $$3 ^ this.a;
+         return new dkn($$4);
       }
 
-      return $$3.H_();
-   }
+      @Override
+      public ash a(String $$0) {
+         int $$1 = $$0.hashCode();
+         return new dkn((long)$$1 ^ this.a);
+      }
 
-   @Override
-   public cqh a(int $$0, int $$1, cpx $$2, dlg $$3) {
-      return new cqh($$2.H_(), this.d.f().stream().limit((long)$$2.I_()).map($$0x -> $$0x == null ? csw.a.n() : $$0x).toArray(dfj[]::new));
-   }
-
-   @Override
-   public void a(List<String> $$0, dlg $$1, gw $$2) {
-   }
-
-   @Override
-   public void a(akx $$0, long $$1, dlg $$2, cqv $$3, cqn $$4, dhf $$5, dko.a $$6) {
-   }
-
-   @Override
-   public void a(akx $$0) {
-   }
-
-   @Override
-   public int f() {
-      return 0;
-   }
-
-   @Override
-   public int d() {
-      return 384;
-   }
-
-   @Override
-   public int e() {
-      return -63;
+      @VisibleForTesting
+      @Override
+      public void a(StringBuilder $$0) {
+         $$0.append("LegacyPositionalRandomFactory{").append(this.a).append("}");
+      }
    }
 }

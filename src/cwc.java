@@ -1,65 +1,47 @@
-import java.util.function.ToIntFunction;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class cwc extends cxt implements csx, czw {
-   private static final dga b = dfz.C;
-   private final cxu c = new cxu(this);
-
-   public cwc(dfi.d $$0) {
-      super($$0);
-      this.k(this.n().a(b, Boolean.valueOf(false)));
-   }
-
-   public static ToIntFunction<dfj> b(int $$0) {
-      return $$1 -> cxt.n($$1) ? $$0 : 0;
-   }
+public class cwc extends ctl implements dbc {
+   protected static final MapCodec<List<dbc.a>> a = dbc.a.b.fieldOf("suspicious_stew_effects");
+   public static final MapCodec<cwc> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(a.forGetter(cwc::b), t()).apply($$0, cwc::new));
+   protected static final float c = 3.0F;
+   protected static final eia d = ctc.a(5.0, 0.0, 5.0, 11.0, 10.0, 11.0);
+   private final List<dbc.a> e;
 
    @Override
-   protected void a(dfk.a<csv, dfj> $$0) {
-      super.a($$0);
-      $$0.a(b);
+   public MapCodec<? extends cwc> a() {
+      return b;
    }
 
-   @Override
-   public dfj a(dfj $$0, ha $$1, dfj $$2, cpw $$3, gw $$4, gw $$5) {
-      if ($$0.c(b)) {
-         $$3.a($$4, ean.c, ean.c.a($$3));
+   public cwc(bih $$0, int $$1, dfc.d $$2) {
+      this(a($$0, $$1), $$2);
+   }
+
+   public cwc(List<dbc.a> $$0, dfc.d $$1) {
+      super($$1);
+      this.e = $$0;
+   }
+
+   protected static List<dbc.a> a(bih $$0, int $$1) {
+      int $$2;
+      if ($$0.a()) {
+         $$2 = $$1;
+      } else {
+         $$2 = $$1 * 20;
       }
 
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      return List.of(new dbc.a($$0, $$2));
    }
 
    @Override
-   public boolean a(dfj $$0, cln $$1) {
-      return !$$1.n().a(cji.fA) || super.a($$0, $$1);
+   public eia a(dfd $$0, cph $$1, gw $$2, ehm $$3) {
+      ehh $$4 = $$0.n($$1, $$2);
+      return d.a($$4.c, $$4.d, $$4.e);
    }
 
    @Override
-   public boolean a(cpy $$0, gw $$1, dfj $$2) {
-      return ha.a().anyMatch($$3 -> this.c.a($$2, $$0, $$1, $$3.g()));
-   }
-
-   @Override
-   public boolean a(cpv $$0, asc $$1, gw $$2, dfj $$3) {
-      return true;
-   }
-
-   @Override
-   public void a(akq $$0, asc $$1, gw $$2, dfj $$3) {
-      this.c.a($$3, $$0, $$2, $$1);
-   }
-
-   @Override
-   public eam c_(dfj $$0) {
-      return $$0.c(b) ? ean.c.a(false) : super.c_($$0);
-   }
-
-   @Override
-   public boolean c(dfj $$0, cpb $$1, gw $$2) {
-      return $$0.u().c();
-   }
-
-   @Override
-   public cxu b() {
-      return this.c;
+   public List<dbc.a> b() {
+      return this.e;
    }
 }

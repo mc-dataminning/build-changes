@@ -1,56 +1,47 @@
+import com.google.common.collect.Lists;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.logging.LogUtils;
+import java.util.Collection;
+import net.minecraft.server.MinecraftServer;
+import org.slf4j.Logger;
 
 public class aib {
-   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> tl.a("commands.ride.not_riding", $$0));
-   private static final Dynamic2CommandExceptionType b = new Dynamic2CommandExceptionType(($$0, $$1) -> tl.a("commands.ride.already_riding", $$0, $$1));
-   private static final Dynamic2CommandExceptionType c = new Dynamic2CommandExceptionType(($$0, $$1) -> tl.a("commands.ride.mount.failure.generic", $$0, $$1));
-   private static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(tl.c("commands.ride.mount.failure.cant_ride_players"));
-   private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(tl.c("commands.ride.mount.failure.loop"));
-   private static final SimpleCommandExceptionType f = new SimpleCommandExceptionType(tl.c("commands.ride.mount.failure.wrong_dimension"));
+   private static final Logger a = LogUtils.getLogger();
+
+   public static void a(Collection<String> $$0, dt $$1) {
+      $$1.l().a($$0).exceptionally($$1x -> {
+         a.warn("Failed to execute reload", $$1x);
+         $$1.b(tl.c("commands.reload.failure"));
+         return null;
+      });
+   }
+
+   private static Collection<String> a(anh $$0, ecg $$1, Collection<String> $$2) {
+      $$0.a();
+      Collection<String> $$3 = Lists.newArrayList($$2);
+      Collection<String> $$4 = $$1.F().a().b();
+
+      for (String $$5 : $$0.b()) {
+         if (!$$4.contains($$5) && !$$3.contains($$5)) {
+            $$3.add($$5);
+         }
+      }
+
+      return $$3;
+   }
 
    public static void a(CommandDispatcher<dt> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)du.a("ride").requires($$0x -> $$0x.c(2)))
-            .then(
-               ((RequiredArgumentBuilder)du.a("target", ee.a())
-                     .then(du.a("mount").then(du.a("vehicle", ee.a()).executes($$0x -> a((dt)$$0x.getSource(), ee.a($$0x, "target"), ee.a($$0x, "vehicle"))))))
-                  .then(du.a("dismount").executes($$0x -> a((dt)$$0x.getSource(), ee.a($$0x, "target"))))
-            )
-      );
-   }
-
-   private static int a(dt $$0, biq $$1, biq $$2) throws CommandSyntaxException {
-      biq $$3 = $$1.cY();
-      if ($$3 != null) {
-         throw b.create($$1.N_(), $$3.N_());
-      } else if ($$2.ag() == biu.bt) {
-         throw d.create();
-      } else if ($$1.cR().anyMatch($$1x -> $$1x == $$2)) {
-         throw e.create();
-      } else if ($$1.dL() != $$2.dL()) {
-         throw f.create();
-      } else if (!$$1.a($$2, true)) {
-         throw c.create($$1.N_(), $$2.N_());
-      } else {
-         $$0.a(() -> tl.a("commands.ride.mount.success", $$1.N_(), $$2.N_()), true);
-         return 1;
-      }
-   }
-
-   private static int a(dt $$0, biq $$1) throws CommandSyntaxException {
-      biq $$2 = $$1.cY();
-      if ($$2 == null) {
-         throw a.create($$1.N_());
-      } else {
-         $$1.aa();
-         $$0.a(() -> tl.a("commands.ride.dismount.success", $$1.N_(), $$2.N_()), true);
-         return 1;
-      }
+      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)du.a("reload").requires($$0x -> $$0x.c(2))).executes($$0x -> {
+         dt $$1 = (dt)$$0x.getSource();
+         MinecraftServer $$2 = $$1.l();
+         anh $$3 = $$2.aB();
+         ecg $$4 = $$2.aT();
+         Collection<String> $$5 = $$3.d();
+         Collection<String> $$6 = a($$3, $$4, $$5);
+         $$1.a(() -> tl.c("commands.reload.success"), true);
+         a($$6, $$1);
+         return 0;
+      }));
    }
 }

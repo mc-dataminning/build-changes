@@ -9,11 +9,14 @@ import com.mojang.datafixers.util.Pair;
 import com.mojang.logging.LogUtils;
 import com.mojang.serialization.DataResult;
 import com.mojang.serialization.DataResult.PartialResult;
-import it.unimi.dsi.fastutil.Hash.Strategy;
 import it.unimi.dsi.fastutil.ints.IntArrayList;
 import it.unimi.dsi.fastutil.objects.Object2IntMap;
 import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.Reference2IntMap;
+import it.unimi.dsi.fastutil.objects.Reference2IntOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ReferenceImmutableList;
+import it.unimi.dsi.fastutil.objects.ReferenceList;
 import java.io.File;
 import java.io.IOException;
 import java.lang.management.ManagementFactory;
@@ -56,7 +59,6 @@ import java.util.function.BiFunction;
 import java.util.function.BooleanSupplier;
 import java.util.function.Consumer;
 import java.util.function.Function;
-import java.util.function.IntFunction;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
 import java.util.function.ToIntFunction;
@@ -74,10 +76,11 @@ public class ac {
    private static final String h = "max.bg.threads";
    private static final AtomicInteger i = new AtomicInteger(1);
    private static final ExecutorService j = c("Main");
-   private static final ExecutorService k = n();
+   private static final ExecutorService k = m();
    private static final DateTimeFormatter l = DateTimeFormatter.ofPattern("yyyy-MM-dd_HH.mm.ss", Locale.ROOT);
+   private static final int m = 8;
    public static final long a = 1000000L;
-   public static ast.a b = System::nanoTime;
+   public static asy.a b = System::nanoTime;
    public static final Ticker c = new Ticker() {
       public long read() {
          return ac.b.getAsLong();
@@ -89,18 +92,18 @@ public class ac {
       .filter($$0 -> $$0.getScheme().equalsIgnoreCase("jar"))
       .findFirst()
       .orElseThrow(() -> new IllegalStateException("No jar file system provider found"));
-   private static Consumer<String> m = $$0 -> {
+   private static Consumer<String> n = $$0 -> {
    };
 
    public static <K, V> Collector<Entry<? extends K, ? extends V>, ?, Map<K, V>> a() {
       return Collectors.toMap(Entry::getKey, Entry::getValue);
    }
 
-   public static <T extends Comparable<T>> String a(dgm<T> $$0, Object $$1) {
+   public static <T extends Comparable<T>> String a(dgg<T> $$0, Object $$1) {
       return $$0.a((T)$$1);
    }
 
-   public static String a(String $$0, @Nullable aew $$1) {
+   public static String a(String $$0, @Nullable aez $$1) {
       return $$1 == null ? $$0 + ".unregistered_sadface" : $$0 + "." + $$1.b() + "." + $$1.a().replace('/', '.');
    }
 
@@ -121,7 +124,7 @@ public class ac {
    }
 
    private static ExecutorService c(String $$0) {
-      int $$1 = arw.a(Runtime.getRuntime().availableProcessors() - 1, 1, m());
+      int $$1 = asb.a(Runtime.getRuntime().availableProcessors() - 1, 1, l());
       ExecutorService $$2;
       if ($$1 <= 0) {
          $$2 = MoreExecutors.newDirectExecutorService();
@@ -147,7 +150,7 @@ public class ac {
       return $$2;
    }
 
-   private static int m() {
+   private static int l() {
       String $$0 = System.getProperty("max.bg.threads");
       if ($$0 != null) {
          try {
@@ -193,7 +196,7 @@ public class ac {
       }
    }
 
-   private static ExecutorService n() {
+   private static ExecutorService m() {
       return Executors.newCachedThreadPool($$0 -> {
          Thread $$1 = new Thread($$0);
          $$1.setName("IO-Worker-" + i.getAndIncrement());
@@ -213,7 +216,7 @@ public class ac {
       }
 
       if ($$1 instanceof y) {
-         aey.a(((y)$$1).a().e());
+         afb.a(((y)$$1).a().e());
          System.exit(-1);
       }
 
@@ -230,7 +233,7 @@ public class ac {
       Type<?> $$2 = null;
 
       try {
-         $$2 = atb.a().getSchema(DataFixUtils.makeKey(aa.b().d().c())).getChoiceType($$0, $$1);
+         $$2 = ath.a().getSchema(DataFixUtils.makeKey(aa.b().d().c())).getChoiceType($$0, $$1);
       } catch (IllegalArgumentException var4) {
          f.error("No data fixer registered for {}", $$1);
          if (aa.aT) {
@@ -272,20 +275,20 @@ public class ac {
       } : $$1;
    }
 
-   public static ac.b i() {
+   public static ac.a i() {
       String $$0 = System.getProperty("os.name").toLowerCase(Locale.ROOT);
       if ($$0.contains("win")) {
-         return ac.b.c;
+         return ac.a.c;
       } else if ($$0.contains("mac")) {
-         return ac.b.d;
+         return ac.a.d;
       } else if ($$0.contains("solaris")) {
-         return ac.b.b;
+         return ac.a.b;
       } else if ($$0.contains("sunos")) {
-         return ac.b.b;
+         return ac.a.b;
       } else if ($$0.contains("linux")) {
-         return ac.b.a;
+         return ac.a.a;
       } else {
-         return $$0.contains("unix") ? ac.b.a : ac.b.e;
+         return $$0.contains("unix") ? ac.a.a : ac.a.e;
       }
    }
 
@@ -344,10 +347,6 @@ public class ac {
    public static <T> T a(T $$0, Consumer<? super T> $$1) {
       $$1.accept($$0);
       return $$0;
-   }
-
-   public static <K> Strategy<K> k() {
-      return ac.a.a;
    }
 
    public static <V> CompletableFuture<List<V>> b(List<? extends CompletableFuture<V>> $$0) {
@@ -436,7 +435,7 @@ public class ac {
    }
 
    public static void a(Consumer<String> $$0) {
-      m = $$0;
+      n = $$0;
    }
 
    private static void d(String $$0) {
@@ -444,7 +443,7 @@ public class ac {
       f.warn("Did you remember to set a breakpoint here?");
       boolean $$2 = Duration.between($$1, Instant.now()).toMillis() > 500L;
       if (!$$2) {
-         m.accept($$0);
+         n.accept($$0);
       }
    }
 
@@ -456,19 +455,19 @@ public class ac {
       }
    }
 
-   public static <T> T a(T[] $$0, asc $$1) {
+   public static <T> T a(T[] $$0, ash $$1) {
       return $$0[$$1.a($$0.length)];
    }
 
-   public static int a(int[] $$0, asc $$1) {
+   public static int a(int[] $$0, ash $$1) {
       return $$0[$$1.a($$0.length)];
    }
 
-   public static <T> T a(List<T> $$0, asc $$1) {
+   public static <T> T a(List<T> $$0, ash $$1) {
       return $$0.get($$1.a($$0.size()));
    }
 
-   public static <T> Optional<T> b(List<T> $$0, asc $$1) {
+   public static <T> Optional<T> b(List<T> $$0, ash $$1) {
       return $$0.isEmpty() ? Optional.empty() : Optional.of(a($$0, $$1));
    }
 
@@ -640,7 +639,7 @@ public class ac {
       }
    }
 
-   public static void l() {
+   public static void k() {
       Thread $$0 = new Thread("Timer hack thread") {
          @Override
          public void run() {
@@ -669,8 +668,8 @@ public class ac {
       return $$0.toLowerCase(Locale.ROOT).chars().mapToObj($$1x -> $$1.test((char)$$1x) ? Character.toString((char)$$1x) : "_").collect(Collectors.joining());
    }
 
-   public static <K, V> ask<K, V> a(Function<K, V> $$0) {
-      return new ask<>($$0);
+   public static <K, V> asp<K, V> a(Function<K, V> $$0) {
+      return new asp<>($$0);
    }
 
    public static <T, R> Function<T, R> b(final Function<T, R> $$0) {
@@ -705,13 +704,13 @@ public class ac {
       };
    }
 
-   public static <T> List<T> a(Stream<T> $$0, asc $$1) {
+   public static <T> List<T> a(Stream<T> $$0, ash $$1) {
       ObjectArrayList<T> $$2 = $$0.collect(ObjectArrayList.toList());
       b($$2, $$1);
       return $$2;
    }
 
-   public static IntArrayList a(IntStream $$0, asc $$1) {
+   public static IntArrayList a(IntStream $$0, ash $$1) {
       IntArrayList $$2 = IntArrayList.wrap($$0.toArray());
       int $$3 = $$2.size();
 
@@ -723,19 +722,19 @@ public class ac {
       return $$2;
    }
 
-   public static <T> List<T> b(T[] $$0, asc $$1) {
+   public static <T> List<T> b(T[] $$0, ash $$1) {
       ObjectArrayList<T> $$2 = new ObjectArrayList($$0);
       b($$2, $$1);
       return $$2;
    }
 
-   public static <T> List<T> a(ObjectArrayList<T> $$0, asc $$1) {
+   public static <T> List<T> a(ObjectArrayList<T> $$0, ash $$1) {
       ObjectArrayList<T> $$2 = new ObjectArrayList($$0);
       b($$2, $$1);
       return $$2;
    }
 
-   public static <T> void b(ObjectArrayList<T> $$0, asc $$1) {
+   public static <T> void b(ObjectArrayList<T> $$0, ash $$1) {
       int $$2 = $$0.size();
 
       for (int $$3 = $$2; $$3 > 1; $$3--) {
@@ -773,20 +772,39 @@ public class ac {
    }
 
    public static <T> ToIntFunction<T> e(List<T> $$0) {
-      return a($$0, Object2IntOpenHashMap::new);
-   }
+      int $$1 = $$0.size();
+      if ($$1 < 8) {
+         return $$0::indexOf;
+      } else {
+         Object2IntMap<T> $$2 = new Object2IntOpenHashMap($$1);
+         $$2.defaultReturnValue(-1);
 
-   public static <T> ToIntFunction<T> a(List<T> $$0, IntFunction<Object2IntMap<T>> $$1) {
-      Object2IntMap<T> $$2 = $$1.apply($$0.size());
+         for (int $$3 = 0; $$3 < $$1; $$3++) {
+            $$2.put($$0.get($$3), $$3);
+         }
 
-      for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
-         $$2.put($$0.get($$3), $$3);
+         return $$2;
       }
-
-      return $$2;
    }
 
-   public static <T, E extends Exception> T a(DataResult<T> $$0, Function<String, E> $$1) throws E {
+   public static <T> ToIntFunction<T> f(List<T> $$0) {
+      int $$1 = $$0.size();
+      if ($$1 < 8) {
+         ReferenceList<T> $$2 = new ReferenceImmutableList($$0);
+         return $$2::indexOf;
+      } else {
+         Reference2IntMap<T> $$3 = new Reference2IntOpenHashMap($$1);
+         $$3.defaultReturnValue(-1);
+
+         for (int $$4 = 0; $$4 < $$1; $$4++) {
+            $$3.put($$0.get($$4), $$4);
+         }
+
+         return $$3;
+      }
+   }
+
+   public static <T, E extends Throwable> T a(DataResult<T> $$0, Function<String, E> $$1) throws E {
       Optional<PartialResult<T>> $$2 = $$0.error();
       if ($$2.isPresent()) {
          throw $$1.apply($$2.get().message());
@@ -803,19 +821,7 @@ public class ac {
       return $$0 != null && $$0.length() != 0 ? $$0.chars().allMatch(ac::a) : true;
    }
 
-   static enum a implements Strategy<Object> {
-      a;
-
-      public int hashCode(Object $$0) {
-         return System.identityHashCode($$0);
-      }
-
-      public boolean equals(Object $$0, Object $$1) {
-         return $$0 == $$1;
-      }
-   }
-
-   public static enum b {
+   public static enum a {
       a("linux"),
       b("solaris"),
       c("windows") {
@@ -834,7 +840,7 @@ public class ac {
 
       private final String f;
 
-      b(String $$0) {
+      a(String $$0) {
          this.f = $$0;
       }
 

@@ -1,199 +1,130 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.function.Predicate;
+import com.google.common.collect.ImmutableMultimap;
+import com.google.common.collect.Multimap;
+import com.google.common.collect.ImmutableMultimap.Builder;
 
-public class cld {
-   public static final int a = 20;
-   private static final List<cld.a<clc>> b = Lists.newArrayList();
-   private static final List<cld.a<cja>> c = Lists.newArrayList();
-   private static final List<cmg> d = Lists.newArrayList();
-   private static final Predicate<cjf> e = $$0 -> {
-      for (cmg $$1 : d) {
-         if ($$1.a($$0)) {
-            return true;
-         }
-      }
+public class cld extends cjg implements clf {
+   public static final int a = 10;
+   public static final float b = 8.0F;
+   public static final float c = 2.5F;
+   private final Multimap<bkn, bkq> d;
 
-      return false;
-   };
-
-   public static boolean a(cjf $$0) {
-      return b($$0) || c($$0);
+   public cld(cjg.a $$0) {
+      super($$0);
+      Builder<bkn, bkq> $$1 = ImmutableMultimap.builder();
+      $$1.put(bks.c, new bkq(m, "Tool modifier", 8.0, bkq.a.a));
+      $$1.put(bks.e, new bkq(n, "Tool modifier", -2.9F, bkq.a.a));
+      this.d = $$1.build();
    }
 
-   protected static boolean b(cjf $$0) {
-      for (cld.a<cja> $$1 : c) {
-         if ($$1.b.a($$0)) {
-            return true;
-         }
-      }
-
-      return false;
+   @Override
+   public boolean a(dfd $$0, cqb $$1, gw $$2, cca $$3) {
+      return !$$3.f();
    }
 
-   protected static boolean c(cjf $$0) {
-      for (cld.a<clc> $$1 : b) {
-         if ($$1.b.a($$0)) {
-            return true;
-         }
-      }
-
-      return false;
+   @Override
+   public cle c(cjl $$0) {
+      return cle.f;
    }
 
-   public static boolean a(clc $$0) {
-      for (cld.a<clc> $$1 : b) {
-         if ($$1.c == $$0) {
-            return true;
-         }
-      }
-
-      return false;
+   @Override
+   public int b(cjl $$0) {
+      return 72000;
    }
 
-   public static boolean a(cjf $$0, cjf $$1) {
-      return !e.test($$0) ? false : b($$0, $$1) || c($$0, $$1);
-   }
+   @Override
+   public void a(cjl $$0, cqb $$1, bjm $$2, int $$3) {
+      if ($$2 instanceof cca $$4) {
+         int $$5 = this.b($$0) - $$3;
+         if ($$5 >= 10) {
+            int $$6 = cnw.h($$0);
+            if ($$6 <= 0 || $$4.aY()) {
+               if (!$$1.B) {
+                  $$0.a(1, $$4, $$1x -> $$1x.d($$2.fo()));
+                  if ($$6 == 0) {
+                     cde $$7 = new cde($$1, $$4, $$0);
+                     $$7.a($$4, $$4.dD(), $$4.dB(), 0.0F, 2.5F + (float)$$6 * 0.5F, 1.0F);
+                     if ($$4.fT().d) {
+                        $$7.d = ccg.a.c;
+                     }
 
-   protected static boolean b(cjf $$0, cjf $$1) {
-      cja $$2 = $$0.d();
+                     $$1.b($$7);
+                     $$1.a(null, $$7, apg.xT, aph.h, 1.0F, 1.0F);
+                     if (!$$4.fT().d) {
+                        $$4.fS().g($$0);
+                     }
+                  }
+               }
 
-      for (cld.a<cja> $$3 : c) {
-         if ($$3.a == $$2 && $$3.b.a($$1)) {
-            return true;
-         }
-      }
+               $$4.b(apq.c.b(this));
+               if ($$6 > 0) {
+                  float $$8 = $$4.dB();
+                  float $$9 = $$4.dD();
+                  float $$10 = -asb.a($$8 * (float) (Math.PI / 180.0)) * asb.b($$9 * (float) (Math.PI / 180.0));
+                  float $$11 = -asb.a($$9 * (float) (Math.PI / 180.0));
+                  float $$12 = asb.b($$8 * (float) (Math.PI / 180.0)) * asb.b($$9 * (float) (Math.PI / 180.0));
+                  float $$13 = asb.c($$10 * $$10 + $$11 * $$11 + $$12 * $$12);
+                  float $$14 = 3.0F * ((1.0F + (float)$$6) / 4.0F);
+                  $$10 *= $$14 / $$13;
+                  $$11 *= $$14 / $$13;
+                  $$12 *= $$14 / $$13;
+                  $$4.j((double)$$10, (double)$$11, (double)$$12);
+                  $$4.t(20);
+                  if ($$4.aA()) {
+                     float $$15 = 1.1999999F;
+                     $$4.a(bjs.a, new ehh(0.0, 1.1999999F, 0.0));
+                  }
 
-      return false;
-   }
+                  apf $$16;
+                  if ($$6 >= 3) {
+                     $$16 = apg.xS;
+                  } else if ($$6 == 2) {
+                     $$16 = apg.xR;
+                  } else {
+                     $$16 = apg.xQ;
+                  }
 
-   protected static boolean c(cjf $$0, cjf $$1) {
-      clc $$2 = cle.d($$0);
-
-      for (cld.a<clc> $$3 : b) {
-         if ($$3.a == $$2 && $$3.b.a($$1)) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   public static cjf d(cjf $$0, cjf $$1) {
-      if (!$$1.b()) {
-         clc $$2 = cle.d($$1);
-         cja $$3 = $$1.d();
-
-         for (cld.a<cja> $$4 : c) {
-            if ($$4.a == $$3 && $$4.b.a($$0)) {
-               return cle.a(new cjf($$4.c), $$2);
-            }
-         }
-
-         for (cld.a<clc> $$5 : b) {
-            if ($$5.a == $$2 && $$5.b.a($$0)) {
-               return cle.a(new cjf($$3), $$5.c);
+                  $$1.a(null, $$4, $$16, aph.h, 1.0F, 1.0F);
+               }
             }
          }
       }
-
-      return $$1;
    }
 
-   public static void a() {
-      a(cji.rv);
-      a(cji.uu);
-      a(cji.ux);
-      a(cji.rv, cji.oG, cji.uu);
-      a(cji.uu, cji.ut, cji.ux);
-      a(clf.c, cji.rE, clf.d);
-      a(clf.c, cji.rs, clf.d);
-      a(clf.c, cji.tJ, clf.d);
-      a(clf.c, cji.rz, clf.d);
-      a(clf.c, cji.rx, clf.d);
-      a(clf.c, cji.qM, clf.d);
-      a(clf.c, cji.rA, clf.d);
-      a(clf.c, cji.qk, clf.e);
-      a(clf.c, cji.ll, clf.d);
-      a(clf.c, cji.ru, clf.f);
-      a(clf.f, cji.tq, clf.g);
-      a(clf.g, cji.ll, clf.h);
-      a(clf.g, cji.ry, clf.i);
-      a(clf.h, cji.ry, clf.j);
-      a(clf.i, cji.ll, clf.j);
-      a(clf.f, cji.rA, clf.n);
-      a(clf.n, cji.ll, clf.o);
-      a(clf.f, cji.tJ, clf.k);
-      a(clf.k, cji.ll, clf.l);
-      a(clf.k, cji.qk, clf.m);
-      a(clf.k, cji.ry, clf.s);
-      a(clf.l, cji.ry, clf.t);
-      a(clf.s, cji.ll, clf.t);
-      a(clf.s, cji.qk, clf.u);
-      a(clf.f, cji.nC, clf.v);
-      a(clf.v, cji.ll, clf.w);
-      a(clf.v, cji.qk, clf.x);
-      a(clf.p, cji.ry, clf.s);
-      a(clf.q, cji.ry, clf.t);
-      a(clf.f, cji.qM, clf.p);
-      a(clf.p, cji.ll, clf.q);
-      a(clf.p, cji.qk, clf.r);
-      a(clf.f, cji.qo, clf.y);
-      a(clf.y, cji.ll, clf.z);
-      a(clf.f, cji.rE, clf.A);
-      a(clf.A, cji.qk, clf.B);
-      a(clf.A, cji.ry, clf.C);
-      a(clf.B, cji.ry, clf.D);
-      a(clf.C, cji.qk, clf.D);
-      a(clf.E, cji.ry, clf.C);
-      a(clf.F, cji.ry, clf.C);
-      a(clf.G, cji.ry, clf.D);
-      a(clf.f, cji.rx, clf.E);
-      a(clf.E, cji.ll, clf.F);
-      a(clf.E, cji.qk, clf.G);
-      a(clf.f, cji.rs, clf.H);
-      a(clf.H, cji.ll, clf.I);
-      a(clf.H, cji.qk, clf.J);
-      a(clf.f, cji.rz, clf.K);
-      a(clf.K, cji.ll, clf.L);
-      a(clf.K, cji.qk, clf.M);
-      a(clf.c, cji.ry, clf.N);
-      a(clf.N, cji.ll, clf.O);
-      a(clf.f, cji.uW, clf.Q);
-      a(clf.Q, cji.ll, clf.R);
-   }
-
-   private static void a(cja $$0, cja $$1, cja $$2) {
-      if (!($$0 instanceof cju)) {
-         throw new IllegalArgumentException("Expected a potion, got: " + jb.i.b($$0));
-      } else if (!($$2 instanceof cju)) {
-         throw new IllegalArgumentException("Expected a potion, got: " + jb.i.b($$2));
+   @Override
+   public bhf<cjl> a(cqb $$0, cca $$1, bhd $$2) {
+      cjl $$3 = $$1.b($$2);
+      if ($$3.k() >= $$3.l() - 1) {
+         return bhf.d($$3);
+      } else if (cnw.h($$3) > 0 && !$$1.aY()) {
+         return bhf.d($$3);
       } else {
-         c.add(new cld.a<>($$0, cmg.a($$1), $$2));
+         $$1.c($$2);
+         return bhf.b($$3);
       }
    }
 
-   private static void a(cja $$0) {
-      if (!($$0 instanceof cju)) {
-         throw new IllegalArgumentException("Expected a potion, got: " + jb.i.b($$0));
-      } else {
-         d.add(cmg.a($$0));
-      }
+   @Override
+   public boolean a(cjl $$0, bjm $$1, bjm $$2) {
+      $$0.a(1, $$2, $$0x -> $$0x.d(bjb.a));
+      return true;
    }
 
-   private static void a(clc $$0, cja $$1, clc $$2) {
-      b.add(new cld.a<>($$0, cmg.a($$1), $$2));
+   @Override
+   public boolean a(cjl $$0, cqb $$1, dfd $$2, gw $$3, bjm $$4) {
+      if ((double)$$2.h($$1, $$3) != 0.0) {
+         $$0.a(2, $$4, $$0x -> $$0x.d(bjb.a));
+      }
+
+      return true;
    }
 
-   static class a<T> {
-      final T a;
-      final cmg b;
-      final T c;
+   @Override
+   public Multimap<bkn, bkq> a(bjb $$0) {
+      return $$0 == bjb.a ? this.d : super.a($$0);
+   }
 
-      public a(T $$0, cmg $$1, T $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-      }
+   @Override
+   public int c() {
+      return 1;
    }
 }

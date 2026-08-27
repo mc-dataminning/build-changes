@@ -1,32 +1,31 @@
-public class zh implements vd<ww> {
-   private final int a;
-   private final byte b;
-
-   public zh(biq $$0, byte $$1) {
-      this.a = $$0.ah();
-      this.b = $$1;
-   }
+public record zh(aba d, byte e) implements ve<wx> {
+   public static final byte a = 1;
+   public static final byte b = 2;
+   public static final byte c = 3;
 
    public zh(so $$0) {
-      this.a = $$0.m();
-      this.b = $$0.readByte();
+      this(new aba($$0), $$0.readByte());
    }
 
    @Override
    public void a(so $$0) {
-      $$0.c(this.a);
-      $$0.k(this.b);
+      this.d.a($$0);
+      $$0.k(this.e);
    }
 
-   public void a(ww $$0) {
+   public void a(wx $$0) {
       $$0.a(this);
    }
 
-   public biq a(cpv $$0) {
-      return $$0.a(this.a);
+   public boolean a(byte $$0) {
+      return (this.e & $$0) != 0;
    }
 
-   public byte a() {
-      return this.b;
+   public aba a() {
+      return this.d;
+   }
+
+   public byte d() {
+      return this.e;
    }
 }

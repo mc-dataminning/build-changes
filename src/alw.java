@@ -1,15 +1,36 @@
-import java.util.function.Consumer;
+public class alw implements aeb {
+   private static final tl a = tl.c("multiplayer.status.request_handled");
+   private final aea b;
+   private final sm c;
+   private boolean d;
 
-public class alw implements alg {
-   public static final alg.a a = new alg.a("join_world");
-
-   @Override
-   public void a(Consumer<vd<?>> $$0) {
-      $$0.accept(new wq());
+   public alw(aea $$0, sm $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
    @Override
-   public alg.a a() {
-      return a;
+   public void a(tl $$0) {
+   }
+
+   @Override
+   public boolean c() {
+      return this.c.k();
+   }
+
+   @Override
+   public void a(aed $$0) {
+      if (this.d) {
+         this.c.a(a);
+      } else {
+         this.d = true;
+         this.c.a(new adz(this.b));
+      }
+   }
+
+   @Override
+   public void a(aec $$0) {
+      this.c.a(new ady($$0.a()));
+      this.c.a(a);
    }
 }

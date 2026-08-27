@@ -1,55 +1,107 @@
 import com.mojang.serialization.Codec;
-import java.util.Optional;
+import java.util.function.Predicate;
 
-public class dos extends dnw<dqj> {
-   public dos(Codec<dqj> $$0) {
+public class dos extends dnq<dqk> {
+   public dos(Codec<dqk> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dny<dqj> $$0) {
-      cpw $$1 = $$0.b();
+   public boolean a(dns<dqk> $$0) {
+      cqv $$1 = $$0.b();
       gw $$2 = $$0.e();
-      asc $$3 = $$0.d();
-      dqj $$4 = $$0.f();
-      Optional<ha> $$5 = a($$1, $$2, $$3);
-      if ($$5.isEmpty()) {
+      if (!$$1.a_($$2).i()) {
          return false;
       } else {
-         gw $$6 = $$2.a($$5.get().g());
-         a($$1, $$3, $$6, $$4);
-         int $$7 = $$3.i() < $$4.b && dns.c($$1.a_($$2.a($$5.get()))) ? 2 : 1;
-         dns.a($$1, $$2, $$5.get(), $$7, false);
+         ash $$3 = $$0.d();
+         gw $$4 = $$0.e();
+         dqk $$5 = $$0.f();
+         gw.a $$6 = $$4.j();
+         if (a($$1, $$0.c(), $$5, $$3, $$6, $$4)) {
+            a($$1, $$5, $$3, $$4, $$6);
+         }
+
          return true;
       }
    }
 
-   private static Optional<ha> a(cpw $$0, gw $$1, asc $$2) {
-      boolean $$3 = dns.b($$0.a_($$1.c()));
-      boolean $$4 = dns.b($$0.a_($$1.d()));
-      if ($$3 && $$4) {
-         return Optional.of($$2.h() ? ha.a : ha.b);
-      } else if ($$3) {
-         return Optional.of(ha.a);
+   private static boolean a(cqv $$0, dqk $$1, gw $$2) {
+      gw.a $$3 = $$2.j();
+
+      for (int $$4 = 1; $$4 <= $$1.c; $$4++) {
+         $$3.c(ha.b);
+         dfd $$5 = $$0.a_($$3);
+         if (!a($$5, $$4, $$1.n)) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   private static boolean a(dfd $$0, int $$1, int $$2) {
+      if ($$0.i()) {
+         return true;
       } else {
-         return $$4 ? Optional.of(ha.b) : Optional.empty();
+         int $$3 = $$1 + 1;
+         return $$3 <= $$2 && $$0.u().a(aqa.a);
       }
    }
 
-   private static void a(cpw $$0, asc $$1, gw $$2, dqj $$3) {
-      dns.c($$0, $$2);
+   private static boolean a(cqv $$0, dha $$1, dqk $$2, ash $$3, gw.a $$4, gw $$5) {
+      for (int $$6 = 0; $$6 < $$2.h; $$6++) {
+         $$4.c(ha.b);
+         if ($$2.o.test($$0, $$4) && a($$0, $$2, $$4)) {
+            gw $$7 = $$4.d();
+            if ($$0.b_($$7).a(aqa.b) || !$$0.a_($$7).e()) {
+               return false;
+            }
 
-      for (ha $$4 : ha.c.a) {
-         if (!($$1.i() > $$3.c)) {
-            gw $$5 = $$2.a($$4);
-            dns.c($$0, $$5);
-            if (!($$1.i() > $$3.d)) {
-               gw $$6 = $$5.a(ha.b($$1));
-               dns.c($$0, $$6);
-               if (!($$1.i() > $$3.e)) {
-                  gw $$7 = $$6.a(ha.b($$1));
-                  dns.c($$0, $$7);
-               }
+            if ($$2.b.a().a($$0, $$1, $$3, $$4)) {
+               a($$5, $$5.v() + $$6, $$0, $$2, $$3);
+               return true;
+            }
+         }
+      }
+
+      return false;
+   }
+
+   private static void a(gw $$0, int $$1, cqv $$2, dqk $$3, ash $$4) {
+      int $$5 = $$0.u();
+      int $$6 = $$0.w();
+      gw.a $$7 = $$0.j();
+
+      for (int $$8 = $$0.v(); $$8 < $$1; $$8++) {
+         a($$2, $$3, $$4, $$5, $$6, $$7.d($$5, $$8, $$6));
+      }
+   }
+
+   private static void a(cqv $$0, dqk $$1, ash $$2, int $$3, int $$4, gw.a $$5) {
+      int $$6 = $$1.d;
+      Predicate<dfd> $$7 = $$1x -> $$1x.a($$1.e);
+
+      for (int $$8 = 0; $$8 < $$1.g; $$8++) {
+         $$5.a($$5, $$2.a($$6) - $$2.a($$6), 0, $$2.a($$6) - $$2.a($$6));
+         if ($$7.test($$0.a_($$5))) {
+            $$0.a($$5, $$1.f.a($$2, $$5), 2);
+         }
+
+         $$5.p($$3);
+         $$5.r($$4);
+      }
+   }
+
+   private static void a(cqv $$0, dqk $$1, ash $$2, gw $$3, gw.a $$4) {
+      int $$5 = $$1.i;
+      int $$6 = $$1.j;
+
+      for (int $$7 = 0; $$7 < $$1.l; $$7++) {
+         $$4.a($$3, $$2.a($$5) - $$2.a($$5), $$2.a($$6) - $$2.a($$6), $$2.a($$5) - $$2.a($$5));
+         if ($$0.t($$4)) {
+            dfd $$8 = $$1.k.a($$2, $$4);
+            if ($$8.a($$0, $$4) && $$0.a_($$4.c()).d($$0, $$4, ha.a)) {
+               $$0.a($$4, $$8, 2);
             }
          }
       }

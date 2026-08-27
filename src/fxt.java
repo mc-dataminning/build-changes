@@ -1,26 +1,13 @@
-public class fxt<T extends bjg> extends fxp<T, fhb<T>> {
-   private final ffd<T> a;
+public class fxt<T extends bjo & bzs, M extends fey<T>> extends fxl<T, M> {
+   private static final aez a = new aez("textures/entity/skeleton/stray_overlay.png");
+   private final fgt<T> b;
 
-   public fxt(fvc<T, fhb<T>> $$0, fhy $$1) {
+   public fxt(fuy<T, M> $$0, fht $$1) {
       super($$0);
-      this.a = new fhb<>($$1.a(fib.bn));
+      this.b = new fgt<>($$1.a(fhw.bw));
    }
 
-   public void a(elp $$0, foe $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      eqv $$10 = eqv.O();
-      boolean $$11 = $$10.b($$3) && $$3.cd();
-      if (!$$3.cd() || $$11) {
-         elt $$12;
-         if ($$11) {
-            $$12 = $$1.getBuffer(fom.q(this.a($$3)));
-         } else {
-            $$12 = $$1.getBuffer(fom.i(this.a($$3)));
-         }
-
-         this.c().a(this.a);
-         this.a.a($$3, $$4, $$5, $$6);
-         this.a.a($$3, $$4, $$5, $$7, $$8, $$9);
-         this.a.a($$0, $$12, $$2, fui.c($$3, 0.0F), 1.0F, 1.0F, 1.0F, 1.0F);
-      }
+   public void a(elj $$0, foa $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      a(this.c(), this.b, a, $$0, $$1, $$2, $$3, $$4, $$5, $$7, $$8, $$9, $$6, 1.0F, 1.0F, 1.0F);
    }
 }

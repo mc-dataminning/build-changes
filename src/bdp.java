@@ -1,101 +1,33 @@
-import java.util.function.Supplier;
+import java.util.function.IntSupplier;
+import java.util.function.LongSupplier;
 
-public interface bdp {
-   String b = "root";
+public class bdp {
+   private final LongSupplier a;
+   private final IntSupplier b;
+   private bdt c = bds.a;
 
-   void a();
-
-   void b();
-
-   void a(String var1);
-
-   void a(Supplier<String> var1);
-
-   void c();
-
-   void b(String var1);
-
-   void b(Supplier<String> var1);
-
-   void a(bes var1);
-
-   default void d(String $$0) {
-      this.a($$0, 1);
+   public bdp(LongSupplier $$0, IntSupplier $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   void a(String var1, int var2);
-
-   default void c(Supplier<String> $$0) {
-      this.a($$0, 1);
+   public boolean a() {
+      return this.c != bds.a;
    }
 
-   void a(Supplier<String> var1, int var2);
+   public void b() {
+      this.c = bds.a;
+   }
 
-   static bdp a(final bdp $$0, final bdp $$1) {
-      if ($$0 == bdm.a) {
-         return $$1;
-      } else {
-         return $$1 == bdm.a ? $$0 : new bdp() {
-            @Override
-            public void a() {
-               $$0.a();
-               $$1.a();
-            }
+   public void c() {
+      this.c = new bdo(this.a, this.b, true);
+   }
 
-            @Override
-            public void b() {
-               $$0.b();
-               $$1.b();
-            }
+   public bdv d() {
+      return this.c;
+   }
 
-            @Override
-            public void a(String $$0x) {
-               $$0.a($$0);
-               $$1.a($$0);
-            }
-
-            @Override
-            public void a(Supplier<String> $$0x) {
-               $$0.a($$0);
-               $$1.a($$0);
-            }
-
-            @Override
-            public void a(bes $$0x) {
-               $$0.a($$0);
-               $$1.a($$0);
-            }
-
-            @Override
-            public void c() {
-               $$0.c();
-               $$1.c();
-            }
-
-            @Override
-            public void b(String $$0x) {
-               $$0.b($$0);
-               $$1.b($$0);
-            }
-
-            @Override
-            public void b(Supplier<String> $$0x) {
-               $$0.b($$0);
-               $$1.b($$0);
-            }
-
-            @Override
-            public void a(String $$0x, int $$1x) {
-               $$0.a($$0, $$1);
-               $$1.a($$0, $$1);
-            }
-
-            @Override
-            public void a(Supplier<String> $$0x, int $$1x) {
-               $$0.a($$0, $$1);
-               $$1.a($$0, $$1);
-            }
-         };
-      }
+   public bdu e() {
+      return this.c.d();
    }
 }

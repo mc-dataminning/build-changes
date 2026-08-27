@@ -1,142 +1,231 @@
 import com.google.common.collect.Lists;
 import java.util.List;
-import java.util.Objects;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 
-public class bhl {
-   public static final int a = 100;
-   public static final int b = 300;
-   private static final uh c = uh.a.a(new tj(tj.a.a, "https://bugs.mojang.com/browse/MCPE-28723")).a(new tq(tq.a.a, tl.b("MCPE-28723")));
-   private final List<bhj> d = Lists.newArrayList();
-   private final bjg e;
-   private int f;
-   private int g;
-   private int h;
-   private boolean i;
-   private boolean j;
-
-   public bhl(bjg $$0) {
-      this.e = $$0;
-   }
-
-   public void a(bho $$0, float $$1) {
-      this.c();
-      bht $$2 = bht.a(this.e);
-      bhj $$3 = new bhj($$0, $$1, $$2, this.e.ab);
-      this.d.add($$3);
-      this.f = this.e.ah;
-      this.j = true;
-      if (!this.i && this.e.bv() && a($$0)) {
-         this.i = true;
-         this.g = this.e.ah;
-         this.h = this.g;
-         this.e.e_();
-      }
-   }
-
-   private static boolean a(bho $$0) {
-      return $$0.d() instanceof bjg;
-   }
-
-   private tl a(biq $$0, tl $$1, String $$2, String $$3) {
-      cjf $$5 = $$0 instanceof bjg $$4 ? $$4.eS() : cjf.b;
-      return !$$5.b() && $$5.A() ? tl.a($$2, this.e.N_(), $$1, $$5.J()) : tl.a($$3, this.e.N_(), $$1);
-   }
-
-   private tl a(bhj $$0, @Nullable biq $$1) {
-      bho $$2 = $$0.a();
-      if (!$$2.a(apu.m) && !$$2.a(apu.s)) {
-         tl $$4 = a($$1);
-         biq $$5 = $$2.d();
-         tl $$6 = a($$5);
-         if ($$6 != null && !$$6.equals($$4)) {
-            return this.a($$5, $$6, "death.fell.assist.item", "death.fell.assist");
-         } else {
-            return (tl)($$4 != null ? this.a($$1, $$4, "death.fell.finish.item", "death.fell.finish") : tl.a("death.fell.killer", this.e.N_()));
-         }
-      } else {
-         bht $$3 = Objects.requireNonNullElse($$0.c(), bht.a);
-         return tl.a($$3.a(), this.e.N_());
-      }
-   }
-
+public class bhl implements bgx, cgm {
+   private final int c;
+   private final hn<cjl> d;
    @Nullable
-   private static tl a(@Nullable biq $$0) {
-      return $$0 == null ? null : $$0.N_();
+   private List<bgz> e;
+
+   public bhl(int $$0) {
+      this.c = $$0;
+      this.d = hn.a($$0, cjl.b);
    }
 
-   public tl a() {
-      if (this.d.isEmpty()) {
-         return tl.a("death.attack.generic", this.e.N_());
-      } else {
-         bhj $$0 = this.d.get(this.d.size() - 1);
-         bho $$1 = $$0.a();
-         bhj $$2 = this.d();
-         bhs $$3 = $$1.j().e();
-         if ($$3 == bhs.b && $$2 != null) {
-            return this.a($$2, $$1.d());
-         } else if ($$3 == bhs.c) {
-            String $$4 = "death.attack." + $$1.e();
-            tl $$5 = tn.a((tl)tl.c($$4 + ".link")).c(c);
-            return tl.a($$4 + ".message", this.e.N_(), $$5);
-         } else {
-            return $$1.a(this.e);
-         }
+   public bhl(cjl... $$0) {
+      this.c = $$0.length;
+      this.d = hn.a(cjl.b, $$0);
+   }
+
+   public void a(bgz $$0) {
+      if (this.e == null) {
+         this.e = Lists.newArrayList();
+      }
+
+      this.e.add($$0);
+   }
+
+   public void b(bgz $$0) {
+      if (this.e != null) {
+         this.e.remove($$0);
       }
    }
 
-   @Nullable
-   private bhj d() {
-      bhj $$0 = null;
-      bhj $$1 = null;
-      float $$2 = 0.0F;
-      float $$3 = 0.0F;
+   @Override
+   public cjl a(int $$0) {
+      return $$0 >= 0 && $$0 < this.d.size() ? this.d.get($$0) : cjl.b;
+   }
 
-      for (int $$4 = 0; $$4 < this.d.size(); $$4++) {
-         bhj $$5 = this.d.get($$4);
-         bhj $$6 = $$4 > 0 ? this.d.get($$4 - 1) : null;
-         bho $$7 = $$5.a();
-         boolean $$8 = $$7.a(apu.s);
-         float $$9 = $$8 ? Float.MAX_VALUE : $$5.d();
-         if (($$7.a(apu.m) || $$8) && $$9 > 0.0F && ($$0 == null || $$9 > $$3)) {
-            if ($$4 > 0) {
-               $$0 = $$6;
-            } else {
-               $$0 = $$5;
+   public List<cjl> f() {
+      List<cjl> $$0 = this.d.stream().filter($$0x -> !$$0x.b()).collect(Collectors.toList());
+      this.a();
+      return $$0;
+   }
+
+   @Override
+   public cjl a(int $$0, int $$1) {
+      cjl $$2 = bgy.a(this.d, $$0, $$1);
+      if (!$$2.b()) {
+         this.e();
+      }
+
+      return $$2;
+   }
+
+   public cjl a(cjg $$0, int $$1) {
+      cjl $$2 = new cjl($$0, 0);
+
+      for (int $$3 = this.c - 1; $$3 >= 0; $$3--) {
+         cjl $$4 = this.a($$3);
+         if ($$4.d().equals($$0)) {
+            int $$5 = $$1 - $$2.L();
+            cjl $$6 = $$4.a($$5);
+            $$2.g($$6.L());
+            if ($$2.L() == $$1) {
+               break;
             }
-
-            $$3 = $$9;
-         }
-
-         if ($$5.c() != null && ($$1 == null || $$5.b() > $$2)) {
-            $$1 = $$5;
-            $$2 = $$5.b();
          }
       }
 
-      if ($$3 > 5.0F && $$0 != null) {
-         return $$0;
+      if (!$$2.b()) {
+         this.e();
+      }
+
+      return $$2;
+   }
+
+   public cjl a(cjl $$0) {
+      if ($$0.b()) {
+         return cjl.b;
       } else {
-         return $$2 > 5.0F && $$1 != null ? $$1 : null;
-      }
-   }
-
-   public int b() {
-      return this.i ? this.e.ah - this.g : this.h - this.g;
-   }
-
-   public void c() {
-      int $$0 = this.i ? 300 : 100;
-      if (this.j && (!this.e.bv() || this.e.ah - this.f > $$0)) {
-         boolean $$1 = this.i;
-         this.j = false;
-         this.i = false;
-         this.h = this.e.ah;
-         if ($$1) {
-            this.e.f_();
+         cjl $$1 = $$0.p();
+         this.d($$1);
+         if ($$1.b()) {
+            return cjl.b;
+         } else {
+            this.c($$1);
+            return $$1.b() ? cjl.b : $$1;
          }
-
-         this.d.clear();
       }
+   }
+
+   public boolean b(cjl $$0) {
+      boolean $$1 = false;
+
+      for (cjl $$2 : this.d) {
+         if ($$2.b() || cjl.c($$2, $$0) && $$2.L() < $$2.g()) {
+            $$1 = true;
+            break;
+         }
+      }
+
+      return $$1;
+   }
+
+   @Override
+   public cjl b(int $$0) {
+      cjl $$1 = this.d.get($$0);
+      if ($$1.b()) {
+         return cjl.b;
+      } else {
+         this.d.set($$0, cjl.b);
+         return $$1;
+      }
+   }
+
+   @Override
+   public void a(int $$0, cjl $$1) {
+      this.d.set($$0, $$1);
+      if (!$$1.b() && $$1.L() > this.ag_()) {
+         $$1.f(this.ag_());
+      }
+
+      this.e();
+   }
+
+   @Override
+   public int b() {
+      return this.c;
+   }
+
+   @Override
+   public boolean af_() {
+      for (cjl $$0 : this.d) {
+         if (!$$0.b()) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   @Override
+   public void e() {
+      if (this.e != null) {
+         for (bgz $$0 : this.e) {
+            $$0.a(this);
+         }
+      }
+   }
+
+   @Override
+   public boolean a(cca $$0) {
+      return true;
+   }
+
+   @Override
+   public void a() {
+      this.d.clear();
+      this.e();
+   }
+
+   @Override
+   public void a(cce $$0) {
+      for (cjl $$1 : this.d) {
+         $$0.b($$1);
+      }
+   }
+
+   @Override
+   public String toString() {
+      return this.d.stream().filter($$0 -> !$$0.b()).collect(Collectors.toList()).toString();
+   }
+
+   private void c(cjl $$0) {
+      for (int $$1 = 0; $$1 < this.c; $$1++) {
+         cjl $$2 = this.a($$1);
+         if ($$2.b()) {
+            this.a($$1, $$0.c());
+            return;
+         }
+      }
+   }
+
+   private void d(cjl $$0) {
+      for (int $$1 = 0; $$1 < this.c; $$1++) {
+         cjl $$2 = this.a($$1);
+         if (cjl.c($$2, $$0)) {
+            this.a($$0, $$2);
+            if ($$0.b()) {
+               return;
+            }
+         }
+      }
+   }
+
+   private void a(cjl $$0, cjl $$1) {
+      int $$2 = Math.min(this.ag_(), $$1.g());
+      int $$3 = Math.min($$0.L(), $$2 - $$1.L());
+      if ($$3 > 0) {
+         $$1.g($$3);
+         $$0.h($$3);
+         this.e();
+      }
+   }
+
+   public void a(rc $$0) {
+      this.a();
+
+      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
+         cjl $$2 = cjl.a($$0.a($$1));
+         if (!$$2.b()) {
+            this.a($$2);
+         }
+      }
+   }
+
+   public rc g() {
+      rc $$0 = new rc();
+
+      for (int $$1 = 0; $$1 < this.b(); $$1++) {
+         cjl $$2 = this.a($$1);
+         if (!$$2.b()) {
+            $$0.add($$2.b(new qw()));
+         }
+      }
+
+      return $$0;
    }
 }

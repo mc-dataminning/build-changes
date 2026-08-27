@@ -1,18 +1,17 @@
-public class afp implements Runnable {
-   private final int a;
-   private final Runnable b;
+public interface afp extends afo {
+   ajr a();
 
-   public afp(int $$0, Runnable $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
+   String b();
 
-   public int a() {
-      return this.a;
-   }
+   int d();
 
-   @Override
-   public void run() {
-      this.b.run();
-   }
+   String f();
+
+   String[] J();
+
+   String q();
+
+   String s();
+
+   String a(String var1);
 }

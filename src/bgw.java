@@ -1,59 +1,86 @@
-import javax.annotation.concurrent.Immutable;
+public class bgw implements bgx {
+   private final bgx c;
+   private final bgx d;
 
-@Immutable
-public class bgw {
-   private static final float a = -72000.0F;
-   private static final float b = 1440000.0F;
-   private static final float c = 3600000.0F;
-   private final bgv d;
-   private final float e;
-
-   public bgw(bgv $$0, long $$1, long $$2, float $$3) {
-      this.d = $$0;
-      this.e = this.a($$0, $$1, $$2, $$3);
+   public bgw(bgx $$0, bgx $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
-   public bgv a() {
-      return this.d;
+   @Override
+   public int b() {
+      return this.c.b() + this.d.b();
    }
 
-   public float b() {
-      return this.e;
+   @Override
+   public boolean af_() {
+      return this.c.af_() && this.d.af_();
    }
 
-   public boolean c() {
-      return this.e >= (float)bgv.d.ordinal();
+   public boolean a(bgx $$0) {
+      return this.c == $$0 || this.d == $$0;
    }
 
-   public boolean a(float $$0) {
-      return this.e > $$0;
+   @Override
+   public cjl a(int $$0) {
+      return $$0 >= this.c.b() ? this.d.a($$0 - this.c.b()) : this.c.a($$0);
    }
 
-   public float d() {
-      if (this.e < 2.0F) {
-         return 0.0F;
+   @Override
+   public cjl a(int $$0, int $$1) {
+      return $$0 >= this.c.b() ? this.d.a($$0 - this.c.b(), $$1) : this.c.a($$0, $$1);
+   }
+
+   @Override
+   public cjl b(int $$0) {
+      return $$0 >= this.c.b() ? this.d.b($$0 - this.c.b()) : this.c.b($$0);
+   }
+
+   @Override
+   public void a(int $$0, cjl $$1) {
+      if ($$0 >= this.c.b()) {
+         this.d.a($$0 - this.c.b(), $$1);
       } else {
-         return this.e > 4.0F ? 1.0F : (this.e - 2.0F) / 2.0F;
+         this.c.a($$0, $$1);
       }
    }
 
-   private float a(bgv $$0, long $$1, long $$2, float $$3) {
-      if ($$0 == bgv.a) {
-         return 0.0F;
-      } else {
-         boolean $$4 = $$0 == bgv.d;
-         float $$5 = 0.75F;
-         float $$6 = arw.a(((float)$$1 + -72000.0F) / 1440000.0F, 0.0F, 1.0F) * 0.25F;
-         $$5 += $$6;
-         float $$7 = 0.0F;
-         $$7 += arw.a((float)$$2 / 3600000.0F, 0.0F, 1.0F) * ($$4 ? 1.0F : 0.75F);
-         $$7 += arw.a($$3 * 0.25F, 0.0F, $$6);
-         if ($$0 == bgv.b) {
-            $$7 *= 0.5F;
-         }
+   @Override
+   public int ag_() {
+      return this.c.ag_();
+   }
 
-         $$5 += $$7;
-         return (float)$$0.a() * $$5;
-      }
+   @Override
+   public void e() {
+      this.c.e();
+      this.d.e();
+   }
+
+   @Override
+   public boolean a(cca $$0) {
+      return this.c.a($$0) && this.d.a($$0);
+   }
+
+   @Override
+   public void d_(cca $$0) {
+      this.c.d_($$0);
+      this.d.d_($$0);
+   }
+
+   @Override
+   public void c(cca $$0) {
+      this.c.c($$0);
+      this.d.c($$0);
+   }
+
+   @Override
+   public boolean b(int $$0, cjl $$1) {
+      return $$0 >= this.c.b() ? this.d.b($$0 - this.c.b(), $$1) : this.c.b($$0, $$1);
+   }
+
+   @Override
+   public void a() {
+      this.c.a();
+      this.d.a();
    }
 }

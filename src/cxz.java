@@ -1,19 +1,40 @@
-public class cxz {
-   private static final double b = 0.826;
-   public static final double a = 0.1;
+import com.mojang.serialization.MapCodec;
 
-   public static boolean a(dfj $$0) {
-      return $$0.i();
+public class cxz extends ctc {
+   public static final MapCodec<cxz> a = b(cxz::new);
+   protected static final eia b = ctc.a(0.0, 0.0, 0.0, 16.0, 14.0, 16.0);
+
+   @Override
+   public MapCodec<cxz> a() {
+      return a;
    }
 
-   public static int a(asc $$0) {
-      double $$1 = 1.0;
+   public cxz(dfc.d $$0) {
+      super($$0);
+   }
 
-      int $$2;
-      for ($$2 = 0; $$0.j() < $$1; $$2++) {
-         $$1 *= 0.826;
-      }
+   @Override
+   public eia c(dfd $$0, cph $$1, gw $$2, ehm $$3) {
+      return b;
+   }
 
-      return $$2;
+   @Override
+   public eia b_(dfd $$0, cph $$1, gw $$2) {
+      return ehx.b();
+   }
+
+   @Override
+   public eia b(dfd $$0, cph $$1, gw $$2, ehm $$3) {
+      return ehx.b();
+   }
+
+   @Override
+   public boolean a(dfd $$0, cph $$1, gw $$2, eaw $$3) {
+      return false;
+   }
+
+   @Override
+   public float b(dfd $$0, cph $$1, gw $$2) {
+      return 0.2F;
    }
 }

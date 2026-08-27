@@ -1,110 +1,151 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
 
-public class czp extends csi implements czw {
-   public static final dga a = dfz.F;
-   public static final dga b = dfz.C;
-   public static final dga c = dfz.G;
-   protected static final eig d = csv.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0);
-   public static final double e = d.c(ha.a.b);
+public class czp extends ctc implements dab {
+   public static final MapCodec<czp> a = b(czp::new);
+   private static final int f = 1;
+   private static final eia g;
+   private static final eia h;
+   private static final eia i = ctc.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0);
+   private static final eia j = ehx.b().a(0.0, -1.0, 0.0);
+   public static final int b = 7;
+   public static final dgd c = dft.aW;
+   public static final dfu d = dft.C;
+   public static final dfu e = dft.b;
 
-   public czp(dfi.d $$0) {
+   @Override
+   public MapCodec<czp> a() {
+      return a;
+   }
+
+   protected czp(dfc.d $$0) {
       super($$0);
-      this.k(this.C.b().a(a, Boolean.valueOf(false)).a(b, Boolean.valueOf(false)).a(c, Boolean.valueOf(false)));
+      this.k(this.E.b().a(c, Integer.valueOf(7)).a(d, Boolean.valueOf(false)).a(e, Boolean.valueOf(false)));
    }
 
    @Override
-   protected void a(dfk.a<csv, dfj> $$0) {
-      $$0.a(a);
-      $$0.a(b);
-      $$0.a(c);
+   protected void a(dfe.a<ctc, dfd> $$0) {
+      $$0.a(c, d, e);
    }
 
    @Override
-   public void a(cpv $$0, gw $$1, dfj $$2, biq $$3) {
-      if ($$0 instanceof akq $$4) {
-         akr $$5 = deb.a($$3);
-         if ($$5 != null) {
-            $$4.a($$1, dcx.L).ifPresent($$2x -> $$2x.a($$4, $$5));
+   public eia a(dfd $$0, cph $$1, gw $$2, ehm $$3) {
+      if (!$$3.a($$0.b().k())) {
+         return $$0.c(e) ? h : g;
+      } else {
+         return ehx.b();
+      }
+   }
+
+   @Override
+   public eia a(dfd $$0, cph $$1, gw $$2) {
+      return ehx.b();
+   }
+
+   @Override
+   public boolean a(dfd $$0, clt $$1) {
+      return $$1.n().a(this.k());
+   }
+
+   @Override
+   public dfd a(clt $$0) {
+      gw $$1 = $$0.a();
+      cqb $$2 = $$0.q();
+      int $$3 = a($$2, $$1);
+      return this.o().a(d, Boolean.valueOf($$2.b_($$1).a() == eah.c)).a(c, Integer.valueOf($$3)).a(e, Boolean.valueOf(this.a($$2, $$1, $$3)));
+   }
+
+   @Override
+   public void b(dfd $$0, cqb $$1, gw $$2, dfd $$3, boolean $$4) {
+      if (!$$1.B) {
+         $$1.a($$2, this, 1);
+      }
+   }
+
+   @Override
+   public dfd a(dfd $$0, ha $$1, dfd $$2, cqc $$3, gw $$4, gw $$5) {
+      if ($$0.c(d)) {
+         $$3.a($$4, eah.c, eah.c.a($$3));
+      }
+
+      if (!$$3.w_()) {
+         $$3.a($$4, this, 1);
+      }
+
+      return $$0;
+   }
+
+   @Override
+   public void a(dfd $$0, akt $$1, gw $$2, ash $$3) {
+      int $$4 = a($$1, $$2);
+      dfd $$5 = $$0.a(c, Integer.valueOf($$4)).a(e, Boolean.valueOf(this.a($$1, $$2, $$4)));
+      if ($$5.c(c) == 7) {
+         if ($$0.c(c) == 7) {
+            bys.a($$1, $$2, $$5);
+         } else {
+            $$1.b($$2, true);
+         }
+      } else if ($$0 != $$5) {
+         $$1.a($$2, $$5, 3);
+      }
+   }
+
+   @Override
+   public boolean a(dfd $$0, cqe $$1, gw $$2) {
+      return a($$1, $$2) < 7;
+   }
+
+   @Override
+   public eia c(dfd $$0, cph $$1, gw $$2, ehm $$3) {
+      if ($$3.a(ehx.b(), $$2, true) && !$$3.b()) {
+         return g;
+      } else {
+         return $$0.c(c) != 0 && $$0.c(e) && $$3.a(j, $$2, true) ? i : ehx.a();
+      }
+   }
+
+   @Override
+   public eag c_(dfd $$0) {
+      return $$0.c(d) ? eah.c.a(false) : super.c_($$0);
+   }
+
+   private boolean a(cph $$0, gw $$1, int $$2) {
+      return $$2 > 0 && !$$0.a_($$1.d()).a(this);
+   }
+
+   public static int a(cph $$0, gw $$1) {
+      gw.a $$2 = $$1.j().c(ha.a);
+      dfd $$3 = $$0.a_($$2);
+      int $$4 = 7;
+      if ($$3.a(cte.nS)) {
+         $$4 = $$3.c(c);
+      } else if ($$3.d($$0, $$2, ha.b)) {
+         return 0;
+      }
+
+      for (ha $$5 : ha.c.a) {
+         dfd $$6 = $$0.a_($$2.a($$1, $$5));
+         if ($$6.a(cte.nS)) {
+            $$4 = Math.min($$4, $$6.c(c) + 1);
+            if ($$4 == 1) {
+               break;
+            }
          }
       }
 
-      super.a($$0, $$1, $$2, $$3);
+      return $$4;
    }
 
-   @Override
-   public void a(dfj $$0, cpv $$1, gw $$2, dfj $$3, boolean $$4) {
-      if ($$1 instanceof akq $$5 && $$0.c(a) && !$$0.a($$3.b())) {
-         $$5.a($$2, dcx.L).ifPresent($$1x -> $$1x.a($$5));
-      }
-
-      super.a($$0, $$1, $$2, $$3, $$4);
-   }
-
-   @Override
-   public void a(dfj $$0, akq $$1, gw $$2, asc $$3) {
-      if ($$0.c(a)) {
-         $$1.a($$2, $$0.a(a, Boolean.valueOf(false)), 3);
-         $$1.a($$2, dcx.L).ifPresent($$1x -> $$1x.a($$1));
-      }
-   }
-
-   @Override
-   public cza b_(dfj $$0) {
-      return cza.c;
-   }
-
-   @Override
-   public eig c(dfj $$0, cpb $$1, gw $$2, ehs $$3) {
-      return d;
-   }
-
-   @Override
-   public eig f(dfj $$0, cpb $$1, gw $$2) {
-      return d;
-   }
-
-   @Override
-   public boolean g_(dfj $$0) {
-      return true;
-   }
-
-   @Nullable
-   @Override
-   public dcv a(gw $$0, dfj $$1) {
-      return new deb($$0, $$1);
-   }
-
-   @Override
-   public dfj a(dfj $$0, ha $$1, dfj $$2, cpw $$3, gw $$4, gw $$5) {
-      if ($$0.c(b)) {
-         $$3.a($$4, ean.c, ean.c.a($$3));
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Nullable
-   @Override
-   public dfj a(cln $$0) {
-      return this.n().a(b, Boolean.valueOf($$0.q().b_($$0.a()).a() == ean.c));
-   }
-
-   @Override
-   public eam c_(dfj $$0) {
-      return $$0.c(b) ? ean.c.a(false) : super.c_($$0);
-   }
-
-   @Override
-   public void a(dfj $$0, akq $$1, gw $$2, cjf $$3, boolean $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      if ($$4) {
-         this.a($$1, $$2, $$3, bga.a(5));
-      }
-   }
-
-   @Nullable
-   @Override
-   public <T extends dcv> dcw<T> a(cpv $$0, dfj $$1, dcx<T> $$2) {
-      return !$$0.B ? csi.a($$2, dcx.L, ($$0x, $$1x, $$2x, $$3) -> dkc.c.a($$0x, $$3.gf(), $$3.gg())) : null;
+   static {
+      eia $$0 = ctc.a(0.0, 14.0, 0.0, 16.0, 16.0, 16.0);
+      eia $$1 = ctc.a(0.0, 0.0, 0.0, 2.0, 16.0, 2.0);
+      eia $$2 = ctc.a(14.0, 0.0, 0.0, 16.0, 16.0, 2.0);
+      eia $$3 = ctc.a(0.0, 0.0, 14.0, 2.0, 16.0, 16.0);
+      eia $$4 = ctc.a(14.0, 0.0, 14.0, 16.0, 16.0, 16.0);
+      g = ehx.a($$0, $$1, $$2, $$3, $$4);
+      eia $$5 = ctc.a(0.0, 0.0, 0.0, 2.0, 2.0, 16.0);
+      eia $$6 = ctc.a(14.0, 0.0, 0.0, 16.0, 2.0, 16.0);
+      eia $$7 = ctc.a(0.0, 0.0, 14.0, 16.0, 2.0, 16.0);
+      eia $$8 = ctc.a(0.0, 0.0, 0.0, 16.0, 2.0, 2.0);
+      h = ehx.a(czp.i, g, $$6, $$5, $$8, $$7);
    }
 }

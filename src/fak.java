@@ -1,95 +1,33 @@
-public class fak extends ezp implements fam<cfn> {
-   private final cfn q;
-   private final cex s = new cex() {
-      @Override
-      public void a(cel $$0, int $$1, cjf $$2) {
-         fak.this.J();
-      }
+public class fak extends esk {
+   private static final aez a = new aez("widget/page_forward_highlighted");
+   private static final aez b = new aez("widget/page_forward");
+   private static final aez c = new aez("widget/page_backward_highlighted");
+   private static final aez d = new aez("widget/page_backward");
+   private final boolean s;
+   private final boolean t;
 
-      @Override
-      public void a(cel $$0, int $$1, int $$2) {
-         if ($$1 == 0) {
-            fak.this.K();
-         }
-      }
-   };
-
-   public fak(cfn $$0, cbt $$1, tl $$2) {
-      this.q = $$0;
-   }
-
-   public cfn I() {
-      return this.q;
+   public fak(int $$0, int $$1, boolean $$2, esk.c $$3, boolean $$4) {
+      super($$0, $$1, 23, 13, tk.a, $$3, o);
+      this.s = $$2;
+      this.t = $$4;
    }
 
    @Override
-   protected void aH_() {
-      super.aH_();
-      this.q.a(this.s);
-   }
-
-   @Override
-   public void az_() {
-      this.f.s.q();
-      super.az_();
-   }
-
-   @Override
-   public void h() {
-      super.h();
-      this.q.b(this.s);
-   }
-
-   @Override
-   protected void l() {
-      if (this.f.s.gd()) {
-         this.d(esq.a(tk.d, $$0 -> this.az_()).a(this.g / 2 - 100, 196, 98, 20).a());
-         this.d(esq.a(tl.c("lectern.take_book"), $$0 -> this.c(3)).a(this.g / 2 + 2, 196, 98, 20).a());
+   public void b(erz $$0, int $$1, int $$2, float $$3) {
+      aez $$4;
+      if (this.s) {
+         $$4 = this.o() ? a : b;
       } else {
-         super.l();
+         $$4 = this.o() ? c : d;
       }
+
+      $$0.a($$4, this.r(), this.t(), 23, 13);
    }
 
    @Override
-   protected void F() {
-      this.c(1);
-   }
-
-   @Override
-   protected void G() {
-      this.c(2);
-   }
-
-   @Override
-   protected boolean b(int $$0) {
-      if ($$0 != this.q.m()) {
-         this.c(100 + $$0);
-         return true;
-      } else {
-         return false;
+   public void a(gdm $$0) {
+      if (this.t) {
+         $$0.a(gcd.a(apg.ce, 1.0F));
       }
-   }
-
-   private void c(int $$0) {
-      this.f.q.a(this.q.j, $$0);
-   }
-
-   @Override
-   public boolean j() {
-      return false;
-   }
-
-   void J() {
-      cjf $$0 = this.q.l();
-      this.a(ezp.a.a($$0));
-   }
-
-   void K() {
-      this.a(this.q.m());
-   }
-
-   @Override
-   protected void H() {
-      this.f.s.q();
    }
 }

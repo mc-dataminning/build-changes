@@ -1,54 +1,46 @@
-import javax.annotation.Nullable;
+import com.mojang.blaze3d.systems.RenderSystem;
 
-public interface esc {
-   static esc a(euk $$0) {
-      return new esc.a($$0);
+public abstract class esc extends esi {
+   protected static final int e = 2;
+   private static final etx a = new etx(new aez("widget/button"), new aez("widget/button_disabled"), new aez("widget/button_highlighted"));
+
+   public esc(int $$0, int $$1, int $$2, int $$3, tl $$4) {
+      super($$0, $$1, $$2, $$3, $$4);
    }
 
-   @Nullable
-   static esc a(euj $$0, @Nullable esc $$1) {
-      return $$1 == null ? null : new esc.b($$0, $$1);
+   public abstract void c();
+
+   @Override
+   protected void b(erz $$0, int $$1, int $$2, float $$3) {
+      eqp $$4 = eqp.O();
+      $$0.a(1.0F, 1.0F, 1.0F, this.k);
+      RenderSystem.enableBlend();
+      RenderSystem.enableDepthTest();
+      $$0.a(a.a(this.i, this.o()), this.r(), this.t(), this.l(), this.i());
+      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+      int $$5 = this.i ? 16777215 : 10526880;
+      this.a($$0, $$4.h, $$5 | asb.f(this.k * 255.0F) << 24);
    }
 
-   static esc a(euk $$0, euj... $$1) {
-      esc $$2 = a($$0);
-
-      for (euj $$3 : $$1) {
-         $$2 = a($$3, $$2);
-      }
-
-      return $$2;
+   public void a(erz $$0, erx $$1, int $$2) {
+      this.a($$0, $$1, 2, $$2);
    }
 
-   euk a();
-
-   void a(boolean var1);
-
-   public static record a(euk a) implements esc {
-      @Override
-      public void a(boolean $$0) {
-         this.a.b_($$0);
-      }
+   @Override
+   public void a(double $$0, double $$1) {
+      this.c();
    }
 
-   public static record b(euj a, esc b) implements esc {
-      @Override
-      public void a(boolean $$0) {
-         if (!$$0) {
-            this.a.a(null);
-         } else {
-            this.a.a(this.b.a());
-         }
-
-         this.b.a($$0);
-      }
-
-      public euj b() {
-         return this.a;
-      }
-
-      public esc c() {
-         return this.b;
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if (!this.i || !this.j) {
+         return false;
+      } else if (ewi.a($$0)) {
+         this.a(eqp.O().ai());
+         this.c();
+         return true;
+      } else {
+         return false;
       }
    }
 }

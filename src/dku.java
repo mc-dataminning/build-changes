@@ -1,34 +1,70 @@
-public class dku {
-   public final asc a;
-   private double b;
-   private boolean c;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Function;
 
-   public dku(asc $$0) {
-      this.a = $$0;
-   }
+public record dku(int g, int h, int i, int j) {
+   public static final Codec<dku> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  Codec.intRange(dim.e, dim.d).fieldOf("min_y").forGetter(dku::c),
+                  Codec.intRange(0, dim.c).fieldOf("height").forGetter(dku::d),
+                  Codec.intRange(1, 4).fieldOf("size_horizontal").forGetter(dku::e),
+                  Codec.intRange(1, 4).fieldOf("size_vertical").forGetter(dku::f)
+               )
+               .apply($$0, dku::new)
+      )
+      .comapFlatMap(dku::a, Function.identity());
+   protected static final dku b = a(-64, 384, 1, 2);
+   protected static final dku c = a(0, 128, 1, 2);
+   protected static final dku d = a(0, 128, 2, 1);
+   protected static final dku e = a(-64, 192, 1, 2);
+   protected static final dku f = a(0, 256, 2, 1);
 
-   public void a() {
-      this.c = false;
-   }
-
-   public double b() {
-      if (this.c) {
-         this.c = false;
-         return this.b;
+   private static DataResult<dku> a(dku $$0) {
+      if ($$0.c() + $$0.d() > dim.d + 1) {
+         return DataResult.error(() -> "min_y + height cannot be higher than: " + (dim.d + 1));
+      } else if ($$0.d() % 16 != 0) {
+         return DataResult.error(() -> "height has to be a multiple of 16");
       } else {
-         double $$0;
-         double $$1;
-         double $$2;
-         do {
-            $$0 = 2.0 * this.a.j() - 1.0;
-            $$1 = 2.0 * this.a.j() - 1.0;
-            $$2 = arw.k($$0) + arw.k($$1);
-         } while ($$2 >= 1.0 || $$2 == 0.0);
-
-         double $$3 = Math.sqrt(-2.0 * Math.log($$2) / $$2);
-         this.b = $$1 * $$3;
-         this.c = true;
-         return $$0 * $$3;
+         return $$0.c() % 16 != 0 ? DataResult.error(() -> "min_y has to be a multiple of 16") : DataResult.success($$0);
       }
+   }
+
+   public static dku a(int $$0, int $$1, int $$2, int $$3) {
+      dku $$4 = new dku($$0, $$1, $$2, $$3);
+      a($$4).error().ifPresent($$0x -> {
+         throw new IllegalStateException($$0x.message());
+      });
+      return $$4;
+   }
+
+   public int a() {
+      return hp.c(this.f());
+   }
+
+   public int b() {
+      return hp.c(this.e());
+   }
+
+   public dku a(cqd $$0) {
+      int $$1 = Math.max(this.g, $$0.H_());
+      int $$2 = Math.min(this.g + this.h, $$0.aj()) - $$1;
+      return new dku($$1, $$2, this.i, this.j);
+   }
+
+   public int c() {
+      return this.g;
+   }
+
+   public int d() {
+      return this.h;
+   }
+
+   public int e() {
+      return this.i;
+   }
+
+   public int f() {
+      return this.j;
    }
 }

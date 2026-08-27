@@ -1,12 +1,12 @@
-public class acj implements vd<abc> {
-   private final String a;
+public class acj implements ve<abd> {
+   private final aez a;
 
-   public acj(String $$0) {
-      this.a = $$0;
+   public acj(cmq<?> $$0) {
+      this.a = $$0.a();
    }
 
    public acj(so $$0) {
-      this.a = $$0.r();
+      this.a = $$0.t();
    }
 
    @Override
@@ -14,11 +14,11 @@ public class acj implements vd<abc> {
       $$0.a(this.a);
    }
 
-   public void a(abc $$0) {
+   public void a(abd $$0) {
       $$0.a(this);
    }
 
-   public String a() {
+   public aez a() {
       return this.a;
    }
 }

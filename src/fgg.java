@@ -1,31 +1,40 @@
-public class fgg extends fha {
-   private final fic a;
-   private final fic b;
-   private final fic c;
+public class fgg<T extends biw> extends ffh<T> {
+   private final fhx a;
+   private final fhx b;
+   private final fhx f;
 
-   public fgg(fic $$0) {
-      this.a = $$0.b("head");
-      this.b = this.a.b("left_ear");
-      this.c = this.a.b("right_ear");
+   public fgg(fhx $$0) {
+      this.a = $$0;
+      this.b = $$0.b("left_blue_fin");
+      this.f = $$0.b("right_blue_fin");
    }
 
-   public static fik a() {
-      fik $$0 = new fik();
-      fgh.a(fig.a, $$0);
-      return $$0;
+   public static fid b() {
+      fif $$0 = new fif();
+      fig $$1 = $$0.a();
+      int $$2 = 22;
+      $$1.a("body", fic.c().a(12, 22).a(-2.5F, -5.0F, -2.5F, 5.0F, 5.0F, 5.0F), fhz.a(0.0F, 22.0F, 0.0F));
+      $$1.a("right_blue_fin", fic.c().a(24, 0).a(-2.0F, 0.0F, 0.0F, 2.0F, 0.0F, 2.0F), fhz.a(-2.5F, 17.0F, -1.5F));
+      $$1.a("left_blue_fin", fic.c().a(24, 3).a(0.0F, 0.0F, 0.0F, 2.0F, 0.0F, 2.0F), fhz.a(2.5F, 17.0F, -1.5F));
+      $$1.a("top_front_fin", fic.c().a(15, 16).a(-2.5F, -1.0F, 0.0F, 5.0F, 1.0F, 1.0F), fhz.a(0.0F, 17.0F, -2.5F, (float) (Math.PI / 4), 0.0F, 0.0F));
+      $$1.a("top_back_fin", fic.c().a(10, 16).a(-2.5F, -1.0F, -1.0F, 5.0F, 1.0F, 1.0F), fhz.a(0.0F, 17.0F, 2.5F, (float) (-Math.PI / 4), 0.0F, 0.0F));
+      $$1.a("right_front_fin", fic.c().a(8, 16).a(-1.0F, -5.0F, 0.0F, 1.0F, 5.0F, 1.0F), fhz.a(-2.5F, 22.0F, -2.5F, 0.0F, (float) (-Math.PI / 4), 0.0F));
+      $$1.a("right_back_fin", fic.c().a(8, 16).a(-1.0F, -5.0F, 0.0F, 1.0F, 5.0F, 1.0F), fhz.a(-2.5F, 22.0F, 2.5F, 0.0F, (float) (Math.PI / 4), 0.0F));
+      $$1.a("left_back_fin", fic.c().a(4, 16).a(0.0F, -5.0F, 0.0F, 1.0F, 5.0F, 1.0F), fhz.a(2.5F, 22.0F, 2.5F, 0.0F, (float) (-Math.PI / 4), 0.0F));
+      $$1.a("left_front_fin", fic.c().a(0, 16).a(0.0F, -5.0F, 0.0F, 1.0F, 5.0F, 1.0F), fhz.a(2.5F, 22.0F, -2.5F, 0.0F, (float) (Math.PI / 4), 0.0F));
+      $$1.a("bottom_back_fin", fic.c().a(8, 22).a(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F), fhz.a(0.5F, 22.0F, 2.5F, (float) (Math.PI / 4), 0.0F, 0.0F));
+      $$1.a("bottom_front_fin", fic.c().a(17, 21).a(-2.5F, 0.0F, 0.0F, 5.0F, 1.0F, 1.0F), fhz.a(0.0F, 22.0F, -2.5F, (float) (-Math.PI / 4), 0.0F, 0.0F));
+      return fid.a($$0, 32, 32);
    }
 
    @Override
-   public void a(float $$0, float $$1, float $$2) {
-      this.a.f = $$1 * (float) (Math.PI / 180.0);
-      this.a.e = $$2 * (float) (Math.PI / 180.0);
-      float $$3 = 1.2F;
-      this.b.g = (float)(-(Math.cos((double)($$0 * (float) Math.PI * 0.2F * 1.2F)) + 2.5)) * 0.2F;
-      this.c.g = (float)(Math.cos((double)($$0 * (float) Math.PI * 0.2F)) + 2.5) * 0.2F;
+   public fhx a() {
+      return this.a;
    }
 
    @Override
-   public void a(elp $$0, elt $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-      this.a.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.f.g = -0.2F + 0.4F * asb.a($$3 * 0.2F);
+      this.b.g = 0.2F - 0.4F * asb.a($$3 * 0.2F);
    }
 }

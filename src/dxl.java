@@ -1,60 +1,32 @@
 import com.mojang.serialization.Codec;
-import java.util.Objects;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
-public class dxl extends dvi {
-   public static final Codec<dxl> d = a(dxl::new);
+public class dxl extends dvc {
+   public static final Codec<dxl> d = RecordCodecBuilder.create(
+      $$0 -> $$0.group(a($$0), Codec.BOOL.fieldOf("is_beached").forGetter($$0x -> $$0x.e)).apply($$0, dxl::new)
+   );
+   public final boolean e;
 
-   public dxl(dvi.c $$0) {
+   public dxl(dvc.c $$0, boolean $$1) {
       super($$0);
+      this.e = $$1;
    }
 
    @Override
-   public Optional<dvi.b> a(dvi.a $$0) {
-      int $$1 = $$0.h().a(9);
-      int $$2 = $$0.h().b(9);
-
-      for (he<cqt> $$4 : $$0.c().a($$1, $$0.b().e(), $$2, 29, $$0.d().b())) {
-         if (!$$4.a(apr.W)) {
-            return Optional.empty();
-         }
-      }
-
-      return a($$0, dks.a.c, $$1x -> a($$1x, $$0));
+   public Optional<dvc.b> a(dvc.a $$0) {
+      dkm.a $$1 = this.e ? dkm.a.a : dkm.a.c;
+      return a($$0, $$1, $$1x -> this.a($$1x, $$0));
    }
 
-   private static dvm a(cpc $$0, dlr $$1) {
-      int $$2 = $$0.d() - 29;
-      int $$3 = $$0.e() - 29;
-      ha $$4 = ha.c.a.a($$1);
-      return new dxk.h($$1, $$2, $$3, $$4);
-   }
-
-   private static void a(dwa $$0, dvi.a $$1) {
-      $$0.a(a($$1.h(), $$1.f()));
-   }
-
-   public static dvx a(cpc $$0, long $$1, dvx $$2) {
-      if ($$2.a()) {
-         return $$2;
-      } else {
-         dlr $$3 = new dlr(new dkt(dlh.a()));
-         $$3.c($$1, $$0.e, $$0.f);
-         dvm $$4 = $$2.c().get(0);
-         dva $$5 = $$4.f();
-         int $$6 = $$5.g();
-         int $$7 = $$5.i();
-         ha $$8 = ha.c.a.a($$3);
-         ha $$9 = Objects.requireNonNullElse($$4.i(), $$8);
-         dvm $$10 = new dxk.h($$3, $$6, $$7, $$9);
-         dwa $$11 = new dwa();
-         $$11.a($$10);
-         return $$11.a();
-      }
+   private void a(dvu $$0, dvc.a $$1) {
+      czn $$2 = czn.a($$1.f());
+      gw $$3 = new gw($$1.h().d(), 90, $$1.h().e());
+      dxk.a($$1.e(), $$3, $$2, $$0, $$1.f(), this.e);
    }
 
    @Override
-   public dvr<?> e() {
-      return dvr.j;
+   public dvl<?> e() {
+      return dvl.m;
    }
 }

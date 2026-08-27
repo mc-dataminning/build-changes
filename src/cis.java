@@ -1,73 +1,40 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.mojang.datafixers.util.Pair;
-import java.util.Map;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
-
-public class cis extends chp {
-   protected static final Map<csv, Pair<Predicate<clp>, Consumer<clp>>> a = Maps.newHashMap(
-      ImmutableMap.of(
-         csw.i,
-         Pair.of(cis::b, b(csw.cC.n())),
-         csw.kE,
-         Pair.of(cis::b, b(csw.cC.n())),
-         csw.j,
-         Pair.of(cis::b, b(csw.cC.n())),
-         csw.k,
-         Pair.of(cis::b, b(csw.j.n())),
-         csw.rG,
-         Pair.of((Predicate<clp>)$$0 -> true, a(csw.j.n(), cji.ds))
-      )
-   );
-
-   protected cis(cks $$0, int $$1, float $$2, cja.a $$3) {
-      super((float)$$1, $$2, $$0, aps.bA, $$3);
+public class cis extends cjg {
+   public cis(cjg.a $$0) {
+      super($$0);
    }
 
    @Override
-   public bgy a(clp $$0) {
-      cpv $$1 = $$0.q();
-      gw $$2 = $$0.a();
-      Pair<Predicate<clp>, Consumer<clp>> $$3 = a.get($$1.a_($$2).b());
-      if ($$3 == null) {
-         return bgy.d;
-      } else {
-         Predicate<clp> $$4 = (Predicate<clp>)$$3.getFirst();
-         Consumer<clp> $$5 = (Consumer<clp>)$$3.getSecond();
-         if ($$4.test($$0)) {
-            cbu $$6 = $$0.o();
-            $$1.a($$6, $$2, apd.kL, ape.e, 1.0F, 1.0F);
-            if (!$$1.B) {
-               $$5.accept($$0);
-               if ($$6 != null) {
-                  $$0.n().a(1, $$6, $$1x -> $$1x.d($$0.p()));
-               }
+   public bhe a(clv $$0) {
+      cca $$1 = $$0.o();
+      cqb $$2 = $$0.q();
+      gw $$3 = $$0.a();
+      dfd $$4 = $$2.a_($$3);
+      if (!ctq.h($$4) && !ctr.g($$4) && !cts.g($$4)) {
+         gw $$5 = $$3.a($$0.k());
+         if (csp.a($$2, $$5, $$0.g())) {
+            $$2.a($$1, $$5, apg.hS, aph.e, 1.0F, $$2.D_().i() * 0.4F + 0.8F);
+            dfd $$6 = csp.a($$2, $$5);
+            $$2.a($$5, $$6, 11);
+            $$2.a($$1, djn.i, $$3);
+            cjl $$7 = $$0.n();
+            if ($$1 instanceof aku) {
+               al.y.a((aku)$$1, $$5, $$7);
+               $$7.a(1, $$1, $$1x -> $$1x.d($$0.p()));
             }
 
-            return bgy.a($$1.B);
+            return bhe.a($$2.w_());
          } else {
-            return bgy.d;
+            return bhe.e;
          }
+      } else {
+         $$2.a($$1, $$3, apg.hS, aph.e, 1.0F, $$2.D_().i() * 0.4F + 0.8F);
+         $$2.a($$3, $$4.a(dft.r, Boolean.valueOf(true)), 11);
+         $$2.a($$1, djn.c, $$3);
+         if ($$1 != null) {
+            $$0.n().a(1, $$1, $$1x -> $$1x.d($$0.p()));
+         }
+
+         return bhe.a($$2.w_());
       }
-   }
-
-   public static Consumer<clp> b(dfj $$0) {
-      return $$1 -> {
-         $$1.q().a($$1.a(), $$0, 11);
-         $$1.q().a(djt.c, $$1.a(), djt.a.a($$1.o(), $$0));
-      };
-   }
-
-   public static Consumer<clp> a(dfj $$0, cpu $$1) {
-      return $$2 -> {
-         $$2.q().a($$2.a(), $$0, 11);
-         $$2.q().a(djt.c, $$2.a(), djt.a.a($$2.o(), $$0));
-         csv.a($$2.q(), $$2.a(), $$2.k(), new cjf($$1));
-      };
-   }
-
-   public static boolean b(clp $$0) {
-      return $$0.k() != ha.a && $$0.q().a_($$0.a().c()).i();
    }
 }

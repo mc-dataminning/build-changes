@@ -1,54 +1,74 @@
-import com.google.common.base.Charsets;
-import com.mojang.logging.LogUtils;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.Collection;
-import org.slf4j.Logger;
+import javax.annotation.Nullable;
 
-public class eqk {
-   private static final Logger a = LogUtils.getLogger();
-   private static final int b = 50;
-   private static final String c = "command_history.txt";
-   private final Path d;
-   private final aqo<String> e = new aqo<>(50);
+public record eqk(int a, @Nullable eqk.a b, @Nullable tl c, @Nullable String d) {
+   private static final tl e = tl.c("chat.tag.system");
+   private static final tl f = tl.c("chat.tag.system_single_player");
+   private static final tl g = tl.c("chat.tag.not_secure");
+   private static final tl h = tl.c("chat.tag.modified");
+   private static final tl i = tl.c("chat.tag.error");
+   private static final int j = 13684944;
+   private static final int k = 6316128;
+   private static final eqk l = new eqk(13684944, null, e, "System");
+   private static final eqk m = new eqk(13684944, null, f, "System");
+   private static final eqk n = new eqk(13684944, null, g, "Not Secure");
+   private static final eqk o = new eqk(16733525, null, i, "Chat Error");
 
-   public eqk(Path $$0) {
-      this.d = $$0.resolve("command_history.txt");
-      if (Files.exists(this.d)) {
-         try (BufferedReader $$1 = Files.newBufferedReader(this.d, Charsets.UTF_8)) {
-            this.e.addAll($$1.lines().toList());
-         } catch (Exception var7) {
-            a.error("Failed to read {}, command history will be missing", "command_history.txt", var7);
-         }
-      }
+   public static eqk a() {
+      return l;
    }
 
-   public void a(String $$0) {
-      if (!$$0.equals(this.e.peekLast())) {
-         if (this.e.size() >= 50) {
-            this.e.removeFirst();
-         }
-
-         this.e.addLast($$0);
-         this.b();
-      }
+   public static eqk b() {
+      return m;
    }
 
-   private void b() {
-      try (BufferedWriter $$0 = Files.newBufferedWriter(this.d, Charsets.UTF_8)) {
-         for (String $$1 : this.e) {
-            $$0.write($$1);
-            $$0.newLine();
-         }
-      } catch (IOException var6) {
-         a.error("Failed to write {}, command history will be missing", "command_history.txt", var6);
-      }
+   public static eqk c() {
+      return n;
    }
 
-   public Collection<String> a() {
-      return this.e;
+   public static eqk a(String $$0) {
+      tl $$1 = tl.b($$0).a(n.h);
+      tl $$2 = tl.i().b(h).b(tk.r).b($$1);
+      return new eqk(6316128, eqk.a.a, $$2, "Modified");
+   }
+
+   public static eqk d() {
+      return o;
+   }
+
+   public int e() {
+      return this.a;
+   }
+
+   @Nullable
+   public eqk.a f() {
+      return this.b;
+   }
+
+   @Nullable
+   public tl g() {
+      return this.c;
+   }
+
+   @Nullable
+   public String h() {
+      return this.d;
+   }
+
+   public static enum a {
+      a(new aez("icon/chat_modified"), 9, 9);
+
+      public final aez b;
+      public final int c;
+      public final int d;
+
+      private a(aez $$0, int $$1, int $$2) {
+         this.b = $$0;
+         this.c = $$1;
+         this.d = $$2;
+      }
+
+      public void a(erz $$0, int $$1, int $$2) {
+         $$0.a(this.b, $$1, $$2, this.c, this.d);
+      }
    }
 }

@@ -1,18 +1,28 @@
-public class fwc extends fua<bzx> {
-   private static final aew a = new aew("textures/entity/illager/vindicator.png");
+public class fwc extends fuj<byh, fhn<byh>> {
+   private static final aez a = new aez("textures/entity/wither/wither_invulnerable.png");
+   private static final aez i = new aez("textures/entity/wither/wither.png");
 
-   public fwc(fth.a $$0) {
-      super($$0, new ffr<>($$0.a(fib.bK)), 0.5F);
-      this.a(new fxi<bzx, ffr<bzx>>(this, $$0.d()) {
-         public void a(elp $$0, foe $$1, int $$2, bzx $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-            if ($$3.fV()) {
-               super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
-            }
-         }
-      });
+   public fwc(ftd.a $$0) {
+      super($$0, new fhn<>($$0.a(fhw.bO)), 1.0F);
+      this.a(new fxz(this, $$0.f()));
    }
 
-   public aew a(bzx $$0) {
-      return a;
+   protected int a(byh $$0, gw $$1) {
+      return 15;
+   }
+
+   public aez a(byh $$0) {
+      int $$1 = $$0.y();
+      return $$1 > 0 && ($$1 > 80 || $$1 / 5 % 2 != 1) ? a : i;
+   }
+
+   protected void a(byh $$0, elj $$1, float $$2) {
+      float $$3 = 2.0F;
+      int $$4 = $$0.y();
+      if ($$4 > 0) {
+         $$3 -= ((float)$$4 - $$2) / 220.0F * 0.5F;
+      }
+
+      $$1.b($$3, $$3, $$3);
    }
 }

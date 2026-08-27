@@ -3,208 +3,208 @@ import java.util.Map;
 import java.util.stream.Stream;
 
 public class je {
-   private static final Map<csv, jf> am = Maps.newHashMap();
+   private static final Map<ctc, jf> am = Maps.newHashMap();
    private static final String an = "wooden";
    private static final String ao = "has_planks";
-   public static final jf a = a(csw.r)
-      .a(csw.gz)
-      .h(csw.kg)
-      .j(csw.jY)
-      .m(csw.dD)
-      .a(csw.cH, csw.cU)
-      .k(csw.jx)
-      .l(csw.hP)
-      .f(csw.ko)
-      .o(csw.eD)
+   public static final jf a = a(cte.r)
+      .a(cte.gz)
+      .h(cte.kg)
+      .j(cte.jY)
+      .m(cte.dD)
+      .a(cte.cH, cte.cU)
+      .k(cte.jx)
+      .l(cte.hP)
+      .f(cte.ko)
+      .o(cte.eC)
       .a("wooden")
       .b("has_planks")
       .a();
-   public static final jf b = a(csw.s)
-      .a(csw.gA)
-      .h(csw.kh)
-      .j(csw.jZ)
-      .m(csw.dE)
-      .a(csw.cI, csw.cV)
-      .k(csw.jy)
-      .l(csw.hQ)
-      .f(csw.kp)
-      .o(csw.eE)
+   public static final jf b = a(cte.s)
+      .a(cte.gA)
+      .h(cte.kh)
+      .j(cte.jZ)
+      .m(cte.dE)
+      .a(cte.cI, cte.cV)
+      .k(cte.jy)
+      .l(cte.hQ)
+      .f(cte.kp)
+      .o(cte.eD)
       .a("wooden")
       .b("has_planks")
       .a();
-   public static final jf c = a(csw.p)
-      .a(csw.gx)
-      .h(csw.ke)
-      .j(csw.jW)
-      .m(csw.dB)
-      .a(csw.cG, csw.cT)
-      .k(csw.jv)
-      .l(csw.fL)
-      .f(csw.km)
-      .o(csw.eB)
+   public static final jf c = a(cte.p)
+      .a(cte.gx)
+      .h(cte.ke)
+      .j(cte.jW)
+      .m(cte.dB)
+      .a(cte.cG, cte.cT)
+      .k(cte.jv)
+      .l(cte.fL)
+      .f(cte.km)
+      .o(cte.eA)
       .a("wooden")
       .b("has_planks")
       .a();
-   public static final jf d = a(csw.oE)
-      .a(csw.oS)
-      .h(csw.oK)
-      .j(csw.oO)
-      .m(csw.oI)
-      .a(csw.oW, csw.oY)
-      .k(csw.oG)
-      .l(csw.oQ)
-      .f(csw.oU)
-      .o(csw.oM)
+   public static final jf d = a(cte.oE)
+      .a(cte.oS)
+      .h(cte.oK)
+      .j(cte.oO)
+      .m(cte.oI)
+      .a(cte.oW, cte.oY)
+      .k(cte.oG)
+      .l(cte.oQ)
+      .f(cte.oU)
+      .o(cte.oM)
       .a("wooden")
       .b("has_planks")
       .a();
-   public static final jf e = a(csw.q)
-      .a(csw.gy)
-      .h(csw.kf)
-      .j(csw.jX)
-      .m(csw.dC)
-      .a(csw.cJ, csw.cW)
-      .k(csw.jw)
-      .l(csw.fM)
-      .f(csw.kn)
-      .o(csw.eC)
+   public static final jf e = a(cte.q)
+      .a(cte.gy)
+      .h(cte.kf)
+      .j(cte.jX)
+      .m(cte.dC)
+      .a(cte.cJ, cte.cW)
+      .k(cte.jw)
+      .l(cte.fM)
+      .f(cte.kn)
+      .o(cte.eB)
       .a("wooden")
       .b("has_planks")
       .a();
-   public static final jf f = a(csw.n)
-      .a(csw.gv)
-      .h(csw.dU)
-      .j(csw.fh)
-      .m(csw.dz)
-      .a(csw.cE, csw.cR)
-      .k(csw.jt)
-      .l(csw.cu)
-      .f(csw.cN)
-      .o(csw.ez)
+   public static final jf f = a(cte.n)
+      .a(cte.gv)
+      .h(cte.dU)
+      .j(cte.fh)
+      .m(cte.dz)
+      .a(cte.cE, cte.cR)
+      .k(cte.jt)
+      .l(cte.cu)
+      .f(cte.cN)
+      .o(cte.ey)
       .a("wooden")
       .b("has_planks")
       .a();
-   public static final jf g = a(csw.t)
-      .a(csw.gB)
-      .h(csw.ki)
-      .j(csw.ka)
-      .m(csw.dF)
-      .a(csw.cK, csw.cX)
-      .k(csw.jz)
-      .l(csw.hR)
-      .f(csw.kq)
-      .o(csw.eF)
+   public static final jf g = a(cte.t)
+      .a(cte.gB)
+      .h(cte.ki)
+      .j(cte.ka)
+      .m(cte.dF)
+      .a(cte.cK, cte.cX)
+      .k(cte.jz)
+      .l(cte.hR)
+      .f(cte.kq)
+      .o(cte.eE)
       .a("wooden")
       .b("has_planks")
       .a();
-   public static final jf h = a(csw.o)
-      .a(csw.gw)
-      .h(csw.kd)
-      .j(csw.jV)
-      .m(csw.dA)
-      .a(csw.cF, csw.cS)
-      .k(csw.ju)
-      .l(csw.fK)
-      .f(csw.kl)
-      .o(csw.eA)
+   public static final jf h = a(cte.o)
+      .a(cte.gw)
+      .h(cte.kd)
+      .j(cte.jV)
+      .m(cte.dA)
+      .a(cte.cF, cte.cS)
+      .k(cte.ju)
+      .l(cte.fK)
+      .f(cte.kl)
+      .o(cte.ez)
       .a("wooden")
       .b("has_planks")
       .a();
-   public static final jf i = a(csw.oF)
-      .a(csw.oT)
-      .h(csw.oL)
-      .j(csw.oP)
-      .m(csw.oJ)
-      .a(csw.oX, csw.oZ)
-      .k(csw.oH)
-      .l(csw.oR)
-      .f(csw.oV)
-      .o(csw.oN)
+   public static final jf i = a(cte.oF)
+      .a(cte.oT)
+      .h(cte.oL)
+      .j(cte.oP)
+      .m(cte.oJ)
+      .a(cte.oX, cte.oZ)
+      .k(cte.oH)
+      .l(cte.oR)
+      .f(cte.oV)
+      .o(cte.oN)
       .a("wooden")
       .b("has_planks")
       .a();
-   public static final jf j = a(csw.u)
-      .a(csw.gC)
-      .k(csw.jA)
-      .l(csw.hS)
-      .h(csw.kj)
-      .j(csw.kb)
-      .m(csw.dG)
-      .a(csw.cL, csw.cY)
-      .f(csw.kr)
-      .o(csw.eG)
+   public static final jf j = a(cte.u)
+      .a(cte.gC)
+      .k(cte.jA)
+      .l(cte.hS)
+      .h(cte.kj)
+      .j(cte.kb)
+      .m(cte.dG)
+      .a(cte.cL, cte.cY)
+      .f(cte.kr)
+      .o(cte.eF)
       .a("wooden")
       .b("has_planks")
       .a();
-   public static final jf k = a(csw.v)
-      .a(csw.gD)
-      .k(csw.jB)
-      .l(csw.hT)
-      .g(csw.kk)
-      .i(csw.kc)
-      .m(csw.dH)
-      .a(csw.cM, csw.cZ)
-      .f(csw.ks)
-      .o(csw.eH)
-      .c(csw.w)
+   public static final jf k = a(cte.v)
+      .a(cte.gD)
+      .k(cte.jB)
+      .l(cte.hT)
+      .g(cte.kk)
+      .i(cte.kc)
+      .m(cte.dH)
+      .a(cte.cM, cte.cZ)
+      .f(cte.ks)
+      .o(cte.eG)
+      .c(cte.w)
       .a("wooden")
       .b("has_planks")
       .a();
-   public static final jf l = a(csw.w).k(csw.jC).l(csw.hU).a();
-   public static final jf m = a(csw.eN).p(csw.nL).l(csw.fk).k(csw.jL).a();
-   public static final jf n = a(csw.g).p(csw.nN).l(csw.no).k(csw.nB).n(csw.h).a();
-   public static final jf o = a(csw.h).l(csw.nq).k(csw.nD).a();
-   public static final jf p = a(csw.pr).p(csw.pt).l(csw.ps).k(csw.pu).n(csw.pv).a();
-   public static final jf q = a(csw.pv).p(csw.pH).m(csw.pF).a(csw.pG).l(csw.pD).k(csw.pE).n(csw.pw).b(csw.py).a();
-   public static final jf r = a(csw.pw).p(csw.pB).l(csw.pA).k(csw.pz).d(csw.px).a();
-   public static final jf s = a(csw.cj).p(csw.nF).l(csw.fi).k(csw.jJ).a();
-   public static final jf t = a(csw.kz).p(csw.nQ).l(csw.nj).k(csw.nx).a();
-   public static final jf u = a(csw.eJ).p(csw.nI).l(csw.ng).k(csw.nu).a();
-   public static final jf v = a(csw.qM).e(csw.qS).b().a();
-   public static final jf w = a(csw.qS).k(csw.ra).l(csw.qW).b().a();
-   public static final jf x = a(csw.rb).e(csw.ri).a("waxed_cut_copper").b().a();
-   public static final jf y = a(csw.ri).k(csw.rq).l(csw.rm).a("waxed_cut_copper").b().a();
-   public static final jf z = a(csw.qL).e(csw.qR).b().a();
-   public static final jf A = a(csw.qR).k(csw.qZ).l(csw.qV).b().a();
-   public static final jf B = a(csw.rd).e(csw.rh).a("waxed_exposed_cut_copper").b().a();
-   public static final jf C = a(csw.rh).k(csw.rp).l(csw.rl).a("waxed_exposed_cut_copper").b().a();
-   public static final jf D = a(csw.qK).e(csw.qQ).b().a();
-   public static final jf E = a(csw.qQ).k(csw.qY).l(csw.qU).b().a();
-   public static final jf F = a(csw.rc).e(csw.rg).a("waxed_weathered_cut_copper").b().a();
-   public static final jf G = a(csw.rg).k(csw.ro).l(csw.rk).a("waxed_weathered_cut_copper").b().a();
-   public static final jf H = a(csw.qJ).e(csw.qP).b().a();
-   public static final jf I = a(csw.qP).k(csw.qX).l(csw.qT).b().a();
-   public static final jf J = a(csw.re).e(csw.rf).a("waxed_oxidized_cut_copper").b().a();
-   public static final jf K = a(csw.rf).k(csw.rn).l(csw.rj).a("waxed_oxidized_cut_copper").b().a();
-   public static final jf L = a(csw.m).p(csw.fP).l(csw.cQ).k(csw.jI).a();
-   public static final jf M = a(csw.cn).p(csw.fQ).l(csw.ni).k(csw.nw).a();
-   public static final jf N = a(csw.e).p(csw.nR).l(csw.nr).k(csw.nE).n(csw.f).a();
-   public static final jf O = a(csw.f).l(csw.nh).k(csw.nv).a();
-   public static final jf P = a(csw.c).p(csw.nJ).l(csw.nn).k(csw.nA).n(csw.d).a();
-   public static final jf Q = a(csw.d).l(csw.ne).k(csw.ns).a();
-   public static final jf R = a(csw.fn).h(csw.fo).p(csw.nM).l(csw.fp).k(csw.jM).b(csw.pI).d(csw.pJ).a();
-   public static final jf S = a(csw.kL).k(csw.nC).l(csw.np).p(csw.nO).a();
-   public static final jf T = a(csw.hZ).p(csw.nG).l(csw.ic).k(csw.if).a();
-   public static final jf U = a(csw.kw).l(csw.ky).k(csw.jQ).c().a();
-   public static final jf V = a(csw.ia).l(csw.id).k(csw.ig).a();
-   public static final jf W = a(csw.ib).l(csw.ie).k(csw.ih).a();
-   public static final jf X = a(csw.hd).l(csw.hg).k(csw.jN).b(csw.he).c().a();
-   public static final jf Y = a(csw.jT).l(csw.nm).k(csw.nz).a();
-   public static final jf Z = a(csw.aV).p(csw.nP).l(csw.fD).k(csw.jF).b(csw.aW).e(csw.aX).c().a();
-   public static final jf aa = a(csw.aX).k(csw.jG).a();
-   public static final jf ab = a(csw.jS).k(csw.ny).l(csw.nl).a();
-   public static final jf ac = a(csw.jp).p(csw.nH).l(csw.js).k(csw.jO).b(csw.jq).e(csw.jr).c().a();
-   public static final jf ad = a(csw.jr).k(csw.jP).a();
-   public static final jf ae = a(csw.jU).k(csw.nt).l(csw.nf).a();
-   public static final jf af = a(csw.b).k(csw.jD).m(csw.dx).a(csw.dM).l(csw.nk).a();
-   public static final jf ag = a(csw.eI).p(csw.nK).l(csw.fj).k(csw.jK).b(csw.eL).d(csw.eK).c().a();
-   public static final jf ah = a(csw.rI).a();
-   public static final jf ai = a(csw.rJ).k(csw.rL).l(csw.rK).p(csw.rM).b(csw.rZ).n(csw.rN).a();
-   public static final jf aj = a(csw.rN).k(csw.rP).l(csw.rO).p(csw.rQ).a();
-   public static final jf ak = a(csw.rV).k(csw.rX).l(csw.rW).p(csw.rY).d(csw.sa).a();
-   public static final jf al = a(csw.rR).k(csw.rT).l(csw.rS).p(csw.rU).d(csw.sb).a();
+   public static final jf l = a(cte.w).k(cte.jC).l(cte.hU).a();
+   public static final jf m = a(cte.eM).p(cte.nL).l(cte.fk).k(cte.jL).a();
+   public static final jf n = a(cte.g).p(cte.nN).l(cte.no).k(cte.nB).n(cte.h).a();
+   public static final jf o = a(cte.h).l(cte.nq).k(cte.nD).a();
+   public static final jf p = a(cte.pr).p(cte.pt).l(cte.ps).k(cte.pu).n(cte.pv).a();
+   public static final jf q = a(cte.pv).p(cte.pH).m(cte.pF).a(cte.pG).l(cte.pD).k(cte.pE).n(cte.pw).b(cte.py).a();
+   public static final jf r = a(cte.pw).p(cte.pB).l(cte.pA).k(cte.pz).d(cte.px).a();
+   public static final jf s = a(cte.cj).p(cte.nF).l(cte.fi).k(cte.jJ).a();
+   public static final jf t = a(cte.kz).p(cte.nQ).l(cte.nj).k(cte.nx).a();
+   public static final jf u = a(cte.eI).p(cte.nI).l(cte.ng).k(cte.nu).a();
+   public static final jf v = a(cte.qM).e(cte.qS).b().a();
+   public static final jf w = a(cte.qS).k(cte.ra).l(cte.qW).b().a();
+   public static final jf x = a(cte.rb).e(cte.ri).a("waxed_cut_copper").b().a();
+   public static final jf y = a(cte.ri).k(cte.rq).l(cte.rm).a("waxed_cut_copper").b().a();
+   public static final jf z = a(cte.qL).e(cte.qR).b().a();
+   public static final jf A = a(cte.qR).k(cte.qZ).l(cte.qV).b().a();
+   public static final jf B = a(cte.rd).e(cte.rh).a("waxed_exposed_cut_copper").b().a();
+   public static final jf C = a(cte.rh).k(cte.rp).l(cte.rl).a("waxed_exposed_cut_copper").b().a();
+   public static final jf D = a(cte.qK).e(cte.qQ).b().a();
+   public static final jf E = a(cte.qQ).k(cte.qY).l(cte.qU).b().a();
+   public static final jf F = a(cte.rc).e(cte.rg).a("waxed_weathered_cut_copper").b().a();
+   public static final jf G = a(cte.rg).k(cte.ro).l(cte.rk).a("waxed_weathered_cut_copper").b().a();
+   public static final jf H = a(cte.qJ).e(cte.qP).b().a();
+   public static final jf I = a(cte.qP).k(cte.qX).l(cte.qT).b().a();
+   public static final jf J = a(cte.re).e(cte.rf).a("waxed_oxidized_cut_copper").b().a();
+   public static final jf K = a(cte.rf).k(cte.rn).l(cte.rj).a("waxed_oxidized_cut_copper").b().a();
+   public static final jf L = a(cte.m).p(cte.fP).l(cte.cQ).k(cte.jI).a();
+   public static final jf M = a(cte.cn).p(cte.fQ).l(cte.ni).k(cte.nw).a();
+   public static final jf N = a(cte.e).p(cte.nR).l(cte.nr).k(cte.nE).n(cte.f).a();
+   public static final jf O = a(cte.f).l(cte.nh).k(cte.nv).a();
+   public static final jf P = a(cte.c).p(cte.nJ).l(cte.nn).k(cte.nA).n(cte.d).a();
+   public static final jf Q = a(cte.d).l(cte.ne).k(cte.ns).a();
+   public static final jf R = a(cte.fn).h(cte.fo).p(cte.nM).l(cte.fp).k(cte.jM).b(cte.pI).d(cte.pJ).a();
+   public static final jf S = a(cte.kL).k(cte.nC).l(cte.np).p(cte.nO).a();
+   public static final jf T = a(cte.hZ).p(cte.nG).l(cte.ic).k(cte.if).a();
+   public static final jf U = a(cte.kw).l(cte.ky).k(cte.jQ).c().a();
+   public static final jf V = a(cte.ia).l(cte.id).k(cte.ig).a();
+   public static final jf W = a(cte.ib).l(cte.ie).k(cte.ih).a();
+   public static final jf X = a(cte.hd).l(cte.hg).k(cte.jN).b(cte.he).c().a();
+   public static final jf Y = a(cte.jT).l(cte.nm).k(cte.nz).a();
+   public static final jf Z = a(cte.aV).p(cte.nP).l(cte.fD).k(cte.jF).b(cte.aW).e(cte.aX).c().a();
+   public static final jf aa = a(cte.aX).k(cte.jG).a();
+   public static final jf ab = a(cte.jS).k(cte.ny).l(cte.nl).a();
+   public static final jf ac = a(cte.jp).p(cte.nH).l(cte.js).k(cte.jO).b(cte.jq).e(cte.jr).c().a();
+   public static final jf ad = a(cte.jr).k(cte.jP).a();
+   public static final jf ae = a(cte.jU).k(cte.nt).l(cte.nf).a();
+   public static final jf af = a(cte.b).k(cte.jD).m(cte.dx).a(cte.dM).l(cte.nk).a();
+   public static final jf ag = a(cte.eH).p(cte.nK).l(cte.fj).k(cte.jK).b(cte.eK).d(cte.eJ).c().a();
+   public static final jf ah = a(cte.rI).a();
+   public static final jf ai = a(cte.rJ).k(cte.rL).l(cte.rK).p(cte.rM).b(cte.rZ).n(cte.rN).a();
+   public static final jf aj = a(cte.rN).k(cte.rP).l(cte.rO).p(cte.rQ).a();
+   public static final jf ak = a(cte.rV).k(cte.rX).l(cte.rW).p(cte.rY).d(cte.sa).a();
+   public static final jf al = a(cte.rR).k(cte.rT).l(cte.rS).p(cte.rU).d(cte.sb).a();
 
-   private static jf.a a(csv $$0) {
+   private static jf.a a(ctc $$0) {
       jf.a $$1 = new jf.a($$0);
       jf $$2 = am.put($$0, $$1.a());
       if ($$2 != null) {

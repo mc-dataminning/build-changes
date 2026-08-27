@@ -2,24 +2,25 @@ import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
 import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.OptionalDynamic;
+import java.util.function.Function;
 
 public class atp extends DataFix {
-   public atp(Schema $$0) {
-      super($$0, false);
+   private final String a;
+   private final Function<String, String> b;
+
+   public atp(Schema $$0, boolean $$1, String $$2, Function<String, String> $$3) {
+      super($$0, $$1);
+      this.a = $$2;
+      this.b = $$3;
    }
 
    protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getOutputSchema().getType(ayx.c);
       return this.fixTypeEverywhereTyped(
-         "BlendingDataRemoveFromNetherEndFix", $$0, $$0x -> $$0x.update(DSL.remainderFinder(), $$0xx -> a($$0xx, $$0xx.get("__context")))
+         this.a, this.getInputSchema().getType(azd.p), $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> $$0x.updateMapValues($$1 -> {
+                  String $$2 = ((Dynamic)$$1.getFirst()).asString("");
+                  return $$1.mapFirst($$2x -> $$0x.createString(this.b.apply($$2)));
+               }))
       );
-   }
-
-   private static Dynamic<?> a(Dynamic<?> $$0, OptionalDynamic<?> $$1) {
-      boolean $$2 = "minecraft:overworld".equals($$1.get("dimension").asString().result().orElse(""));
-      return $$2 ? $$0 : $$0.remove("blending_data");
    }
 }

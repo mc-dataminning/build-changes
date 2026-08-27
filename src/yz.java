@@ -1,17 +1,37 @@
-import java.util.List;
-import java.util.UUID;
+public class yz implements ve<wx> {
+   private final int a;
+   private final tl b;
 
-public record yz(List<UUID> a) implements vd<ww> {
+   public yz(int $$0, tl $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
+
    public yz(so $$0) {
-      this($$0.a(so::o));
+      this.a = $$0.n();
+      this.b = $$0.m();
    }
 
    @Override
    public void a(so $$0) {
-      $$0.a(this.a, so::a);
+      $$0.c(this.a);
+      $$0.a(this.b);
    }
 
-   public void a(ww $$0) {
+   public void a(wx $$0) {
       $$0.a(this);
+   }
+
+   @Override
+   public boolean b() {
+      return true;
+   }
+
+   public int a() {
+      return this.a;
+   }
+
+   public tl d() {
+      return this.b;
    }
 }

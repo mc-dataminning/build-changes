@@ -1,42 +1,28 @@
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class zk implements vd<ww> {
-   private final tl a;
-   private final Optional<byte[]> b;
-   private final boolean c;
+public class zk implements ve<wx> {
+   @Nullable
+   private final aez a;
 
-   public zk(tl $$0, Optional<byte[]> $$1, boolean $$2) {
+   public zk(@Nullable aez $$0) {
       this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   }
+
+   public void a(wx $$0) {
+      $$0.a(this);
    }
 
    public zk(so $$0) {
-      this.a = $$0.l();
-      this.b = $$0.b(so::b);
-      this.c = $$0.readBoolean();
+      this.a = $$0.c(so::t);
    }
 
    @Override
    public void a(so $$0) {
-      $$0.a(this.a);
-      $$0.a(this.b, so::a);
-      $$0.a(this.c);
+      $$0.a(this.a, so::a);
    }
 
-   public void a(ww $$0) {
-      $$0.a(this);
-   }
-
-   public tl a() {
+   @Nullable
+   public aez a() {
       return this.a;
-   }
-
-   public Optional<byte[]> d() {
-      return this.b;
-   }
-
-   public boolean e() {
-      return this.c;
    }
 }

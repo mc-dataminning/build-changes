@@ -1,18 +1,32 @@
-public record abp() implements vd<abc> {
+public class abp implements ve<abd> {
+   private final int a;
+   private final String b;
+
+   public abp(int $$0, String $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
+
    public abp(so $$0) {
-      this();
+      this.a = $$0.n();
+      this.b = $$0.d(32500);
    }
 
    @Override
    public void a(so $$0) {
+      $$0.c(this.a);
+      $$0.a(this.b, 32500);
    }
 
-   public void a(abc $$0) {
+   public void a(abd $$0) {
       $$0.a(this);
    }
 
-   @Override
-   public sn c() {
-      return sn.e;
+   public int a() {
+      return this.a;
+   }
+
+   public String d() {
+      return this.b;
    }
 }

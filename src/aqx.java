@@ -1,5 +1,7 @@
-public class aqx extends Exception {
-   public aqx(Throwable $$0) {
-      super($$0);
-   }
+public class aqx {
+   public static final int a = -1;
+   public static final int b = -16777216;
+   public static final int c = -8355712;
+   public static final int d = -6250336;
+   public static final int e = -65536;
 }

@@ -1,21 +1,33 @@
-import java.util.function.Consumer;
-import net.minecraft.server.MinecraftServer;
+import com.google.common.collect.ImmutableList;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
-public class alx implements alg {
-   public static final alg.a a = new alg.a("server_resource_pack");
-   private final MinecraftServer.b b;
+public interface alx {
+   alx a = new alx() {
+      @Override
+      public void a() {
+      }
 
-   public alx(MinecraftServer.b $$0) {
-      this.b = $$0;
-   }
+      @Override
+      public void b() {
+      }
 
-   @Override
-   public void a(Consumer<vd<?>> $$0) {
-      $$0.accept(new vl(this.b.a(), this.b.b(), this.b.c(), this.b.d()));
-   }
+      @Override
+      public CompletableFuture<alk> a(String $$0) {
+         return CompletableFuture.completedFuture(alk.a($$0));
+      }
 
-   @Override
-   public alg.a a() {
-      return a;
-   }
+      @Override
+      public CompletableFuture<List<alk>> a(List<String> $$0) {
+         return CompletableFuture.completedFuture($$0.stream().map(alk::a).collect(ImmutableList.toImmutableList()));
+      }
+   };
+
+   void a();
+
+   void b();
+
+   CompletableFuture<alk> a(String var1);
+
+   CompletableFuture<List<alk>> a(List<String> var1);
 }

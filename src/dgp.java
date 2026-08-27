@@ -1,37 +1,21 @@
-import java.util.Optional;
+public enum dgp implements asu {
+   a("none"),
+   b("low"),
+   c("tall");
 
-public class dgp {
-   private static final asf a = new asf(4);
-   private static final int b = a.a();
-   private static final int c = 0;
-   private static final int d = 4;
-   private static final int e = 8;
-   private static final int f = 12;
+   private final String d;
 
-   public static int a() {
-      return b;
+   private dgp(String $$0) {
+      this.d = $$0;
    }
 
-   public static int a(ha $$0) {
-      return a.a($$0);
+   @Override
+   public String toString() {
+      return this.c();
    }
 
-   public static int a(float $$0) {
-      return a.b($$0);
-   }
-
-   public static Optional<ha> a(int $$0) {
-      ha $$1 = switch ($$0) {
-         case 0 -> ha.c;
-         case 4 -> ha.f;
-         case 8 -> ha.d;
-         case 12 -> ha.e;
-         default -> null;
-      };
-      return Optional.ofNullable($$1);
-   }
-
-   public static float b(int $$0) {
-      return a.b($$0);
+   @Override
+   public String c() {
+      return this.d;
    }
 }

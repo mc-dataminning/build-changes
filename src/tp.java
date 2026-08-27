@@ -1,99 +1,159 @@
-import com.google.common.collect.ImmutableList;
-import java.util.List;
-import java.util.Optional;
+import com.mojang.serialization.Codec;
+import java.util.BitSet;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringUtils;
 
-public interface tp {
-   Optional<asx> a = Optional.of(asx.a);
-   tp b = new tp() {
-      @Override
-      public <T> Optional<T> a(tp.a<T> $$0) {
-         return Optional.empty();
-      }
+public class tp {
+   public static final Codec<tp> a = asu.a(tp.a::values).dispatch(tp::c, tp.a::a);
+   public static final tp b = new tp(new BitSet(0), tp.a.b);
+   public static final tp c = new tp(new BitSet(0), tp.a.a);
+   public static final ui d = ui.a.a(n.i).a(new tr(tr.a.a, tl.c("chat.filtered")));
+   static final Codec<tp> e = Codec.unit(c);
+   static final Codec<tp> f = Codec.unit(b);
+   static final Codec<tp> g = arj.s.xmap(tp::new, tp::d);
+   private static final char h = '#';
+   private final BitSet i;
+   private final tp.a j;
 
-      @Override
-      public <T> Optional<T> a(tp.b<T> $$0, uh $$1) {
-         return Optional.empty();
-      }
-   };
+   private tp(BitSet $$0, tp.a $$1) {
+      this.i = $$0;
+      this.j = $$1;
+   }
 
-   <T> Optional<T> a(tp.a<T> var1);
+   private tp(BitSet $$0) {
+      this.i = $$0;
+      this.j = tp.a.c;
+   }
 
-   <T> Optional<T> a(tp.b<T> var1, uh var2);
+   public tp(int $$0) {
+      this(new BitSet($$0), tp.a.c);
+   }
 
-   static tp e(final String $$0) {
-      return new tp() {
-         @Override
-         public <T> Optional<T> a(tp.a<T> $$0x) {
-            return $$0.accept($$0);
-         }
+   private tp.a c() {
+      return this.j;
+   }
 
-         @Override
-         public <T> Optional<T> a(tp.b<T> $$0x, uh $$1) {
-            return $$0.accept($$1, $$0);
-         }
+   private BitSet d() {
+      return this.i;
+   }
+
+   public static tp a(so $$0) {
+      tp.a $$1 = $$0.b(tp.a.class);
+
+      return switch ($$1) {
+         case a -> c;
+         case b -> b;
+         case c -> new tp($$0.z(), tp.a.c);
       };
    }
 
-   static tp a(final String $$0, final uh $$1) {
-      return new tp() {
-         @Override
-         public <T> Optional<T> a(tp.a<T> $$0x) {
-            return $$0.accept($$0);
-         }
-
-         @Override
-         public <T> Optional<T> a(tp.b<T> $$0x, uh $$1x) {
-            return $$0.accept($$1.a($$1), $$0);
-         }
-      };
+   public static void a(so $$0, tp $$1) {
+      $$0.a($$1.j);
+      if ($$1.j == tp.a.c) {
+         $$0.a($$1.i);
+      }
    }
 
-   static tp a(tp... $$0) {
-      return a(ImmutableList.copyOf($$0));
+   public void a(int $$0) {
+      this.i.set($$0);
    }
 
-   static tp a(final List<? extends tp> $$0) {
-      return new tp() {
-         @Override
-         public <T> Optional<T> a(tp.a<T> $$0x) {
-            for (tp $$1 : $$0) {
-               Optional<T> $$2 = $$1.a($$0);
-               if ($$2.isPresent()) {
-                  return $$2;
+   @Nullable
+   public String a(String $$0) {
+      return switch (this.j) {
+         case a -> $$0;
+         case b -> null;
+         case c -> {
+            char[] $$1 = $$0.toCharArray();
+
+            for (int $$2 = 0; $$2 < $$1.length && $$2 < this.i.length(); $$2++) {
+               if (this.i.get($$2)) {
+                  $$1[$$2] = '#';
                }
             }
 
-            return Optional.empty();
-         }
-
-         @Override
-         public <T> Optional<T> a(tp.b<T> $$0x, uh $$1) {
-            for (tp $$2 : $$0) {
-               Optional<T> $$3 = $$2.a($$0, $$1);
-               if ($$3.isPresent()) {
-                  return $$3;
-               }
-            }
-
-            return Optional.empty();
+            yield new String($$1);
          }
       };
    }
 
-   default String getString() {
-      StringBuilder $$0 = new StringBuilder();
-      this.a($$1 -> {
-         $$0.append($$1);
-         return Optional.empty();
-      });
-      return $$0.toString();
+   @Nullable
+   public tl b(String $$0) {
+      return switch (this.j) {
+         case a -> tl.b($$0);
+         case b -> null;
+         case c -> {
+            tz $$1 = tl.i();
+            int $$2 = 0;
+            boolean $$3 = this.i.get(0);
+
+            while (true) {
+               int $$4 = $$3 ? this.i.nextClearBit($$2) : this.i.nextSetBit($$2);
+               $$4 = $$4 < 0 ? $$0.length() : $$4;
+               if ($$4 == $$2) {
+                  yield $$1;
+               }
+
+               if ($$3) {
+                  $$1.b(tl.b(StringUtils.repeat('#', $$4 - $$2)).c(d));
+               } else {
+                  $$1.f($$0.substring($$2, $$4));
+               }
+
+               $$3 = !$$3;
+               $$2 = $$4;
+            }
+         }
+      };
    }
 
-   public interface a<T> {
-      Optional<T> accept(String var1);
+   public boolean a() {
+      return this.j == tp.a.a;
    }
 
-   public interface b<T> {
-      Optional<T> accept(uh var1, String var2);
+   public boolean b() {
+      return this.j == tp.a.b;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         tp $$1 = (tp)$$0;
+         return this.i.equals($$1.i) && this.j == $$1.j;
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      int $$0 = this.i.hashCode();
+      return 31 * $$0 + this.j.hashCode();
+   }
+
+   static enum a implements asu {
+      a("pass_through", () -> tp.e),
+      b("fully_filtered", () -> tp.f),
+      c("partially_filtered", () -> tp.g);
+
+      private final String d;
+      private final Supplier<Codec<tp>> e;
+
+      private a(String $$0, Supplier<Codec<tp>> $$1) {
+         this.d = $$0;
+         this.e = $$1;
+      }
+
+      @Override
+      public String c() {
+         return this.d;
+      }
+
+      private Codec<tp> a() {
+         return this.e.get();
+      }
    }
 }

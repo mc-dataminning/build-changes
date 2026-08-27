@@ -1,72 +1,77 @@
 import java.util.EnumSet;
-import java.util.function.Predicate;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class bpt extends bqb {
-   private static final int a = 40;
-   private static final Predicate<dfj> b = dfs.a(csw.bt);
-   private final bji c;
-   private final cpv d;
-   private int e;
+public class bpt extends bqh {
+   private static final bty d = bty.b().a(8.0).d();
+   protected final bux a;
+   private final Class<? extends bux> e;
+   protected final cqb b;
+   @Nullable
+   protected bux c;
+   private int f;
+   private final double g;
 
-   public bpt(bji $$0) {
-      this.c = $$0;
-      this.d = $$0.dL();
-      this.a(EnumSet.of(bqb.a.a, bqb.a.b, bqb.a.c));
+   public bpt(bux $$0, double $$1) {
+      this($$0, $$1, (Class<? extends bux>)$$0.getClass());
+   }
+
+   public bpt(bux $$0, double $$1, Class<? extends bux> $$2) {
+      this.a = $$0;
+      this.b = $$0.dL();
+      this.e = $$2;
+      this.g = $$1;
+      this.a(EnumSet.of(bqh.a.a, bqh.a.b));
    }
 
    @Override
    public boolean a() {
-      if (this.c.ef().a(this.c.m_() ? 50 : 1000) != 0) {
+      if (!this.a.gi()) {
          return false;
       } else {
-         gw $$0 = this.c.dl();
-         return b.test(this.d.a_($$0)) ? true : this.d.a_($$0.d()).a(csw.i);
+         this.c = this.h();
+         return this.c != null;
       }
-   }
-
-   @Override
-   public void c() {
-      this.e = this.a(40);
-      this.d.a(this.c, (byte)10);
-      this.c.L().n();
-   }
-
-   @Override
-   public void d() {
-      this.e = 0;
    }
 
    @Override
    public boolean b() {
-      return this.e > 0;
+      return this.c.bv() && this.c.gi() && this.f < 60 && !this.c.gb();
    }
 
-   public int h() {
-      return this.e;
+   @Override
+   public void d() {
+      this.c = null;
+      this.f = 0;
    }
 
    @Override
    public void e() {
-      this.e = Math.max(0, this.e - 1);
-      if (this.e == this.a(4)) {
-         gw $$0 = this.c.dl();
-         if (b.test(this.d.a_($$0))) {
-            if (this.d.X().b(cpr.c)) {
-               this.d.b($$0, false);
-            }
+      this.a.G().a(this.c, 10.0F, (float)this.a.Y());
+      this.a.L().a(this.c, this.g);
+      this.f++;
+      if (this.f >= this.a(60) && this.a.f(this.c) < 9.0) {
+         this.g();
+      }
+   }
 
-            this.c.N();
-         } else {
-            gw $$1 = $$0.d();
-            if (this.d.a_($$1).a(csw.i)) {
-               if (this.d.X().b(cpr.c)) {
-                  this.d.c(2001, $$1, csv.i(csw.i.n()));
-                  this.d.a($$1, csw.j.n(), 2);
-               }
+   @Nullable
+   private bux h() {
+      List<? extends bux> $$0 = this.b.a(this.e, d, this.a, this.a.cG().g(8.0));
+      double $$1 = Double.MAX_VALUE;
+      bux $$2 = null;
 
-               this.c.N();
-            }
+      for (bux $$3 : $$0) {
+         if (this.a.a($$3) && !$$3.gb() && this.a.f($$3) < $$1) {
+            $$2 = $$3;
+            $$1 = this.a.f($$3);
          }
       }
+
+      return $$2;
+   }
+
+   protected void g() {
+      this.a.a((akt)this.b, this.c);
    }
 }

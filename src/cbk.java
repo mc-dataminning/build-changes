@@ -1,68 +1,64 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public record cbk(String q, Predicate<he<bui>> r, Predicate<he<bui>> s, ImmutableSet<cja> t, ImmutableSet<csv> u, @Nullable apc v) {
-   public static final Predicate<he<bui>> a = $$0 -> $$0.a(aqc.a);
-   public static final cbk b = a("none", bui.a, a, null);
-   public static final cbk c = a("armorer", buj.a, apd.yO);
-   public static final cbk d = a("butcher", buj.b, apd.yP);
-   public static final cbk e = a("cartographer", buj.c, apd.yQ);
-   public static final cbk f = a("cleric", buj.d, apd.yR);
-   public static final cbk g = a("farmer", buj.e, ImmutableSet.of(cji.oI, cji.oH, cji.ur, cji.qK), ImmutableSet.of(csw.cC), apd.yS);
-   public static final cbk h = a("fisherman", buj.f, apd.yT);
-   public static final cbk i = a("fletcher", buj.g, apd.yU);
-   public static final cbk j = a("leatherworker", buj.h, apd.yV);
-   public static final cbk k = a("librarian", buj.i, apd.yW);
-   public static final cbk l = a("mason", buj.j, apd.yX);
-   public static final cbk m = a("nitwit", bui.a, bui.a, null);
-   public static final cbk n = a("shepherd", buj.k, apd.yY);
-   public static final cbk o = a("toolsmith", buj.l, apd.yZ);
-   public static final cbk p = a("weaponsmith", buj.m, apd.za);
+public class cbk implements coy {
+   private final cca a;
+   private cpa b = new cpa();
+   private int c;
+
+   public cbk(cca $$0) {
+      this.a = $$0;
+   }
 
    @Override
-   public String toString() {
-      return this.q;
+   public cca ge() {
+      return this.a;
    }
 
-   private static cbk a(String $$0, aev<bui> $$1, @Nullable apc $$2) {
-      return a($$0, $$1x -> $$1x.a($$1), $$1x -> $$1x.a($$1), $$2);
+   @Override
+   public void f(@Nullable cca $$0) {
    }
 
-   private static cbk a(String $$0, Predicate<he<bui>> $$1, Predicate<he<bui>> $$2, @Nullable apc $$3) {
-      return a($$0, $$1, $$2, ImmutableSet.of(), ImmutableSet.of(), $$3);
+   @Override
+   public cpa gg() {
+      return this.b;
    }
 
-   private static cbk a(String $$0, aev<bui> $$1, ImmutableSet<cja> $$2, ImmutableSet<csv> $$3, @Nullable apc $$4) {
-      return a($$0, $$1x -> $$1x.a($$1), $$1x -> $$1x.a($$1), $$2, $$3, $$4);
+   @Override
+   public void a(cpa $$0) {
+      this.b = $$0;
    }
 
-   private static cbk a(String $$0, Predicate<he<bui>> $$1, Predicate<he<bui>> $$2, ImmutableSet<cja> $$3, ImmutableSet<csv> $$4, @Nullable apc $$5) {
-      return hq.a(jb.A, new aew($$0), new cbk($$0, $$1, $$2, $$3, $$4, $$5));
+   @Override
+   public void a(coz $$0) {
+      $$0.j();
    }
 
-   public String a() {
-      return this.q;
+   @Override
+   public void l(cjl $$0) {
    }
 
-   public Predicate<he<bui>> b() {
-      return this.r;
+   @Override
+   public boolean gm() {
+      return this.a.dL().B;
    }
 
-   public Predicate<he<bui>> c() {
-      return this.s;
+   @Override
+   public int t() {
+      return this.c;
    }
 
-   public ImmutableSet<cja> d() {
-      return this.t;
+   @Override
+   public void t(int $$0) {
+      this.c = $$0;
    }
 
-   public ImmutableSet<csv> e() {
-      return this.u;
+   @Override
+   public boolean gh() {
+      return true;
    }
 
-   @Nullable
-   public apc f() {
-      return this.v;
+   @Override
+   public apf gi() {
+      return apg.yN;
    }
 }

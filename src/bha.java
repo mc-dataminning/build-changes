@@ -1,26 +1,35 @@
-import javax.annotation.concurrent.Immutable;
-
-@Immutable
 public class bha {
-   public static final bha a = new bha("");
-   public static final String b = "Lock";
-   private final String c;
-
-   public bha(String $$0) {
-      this.c = $$0;
+   public static void a(cqb $$0, gw $$1, bgx $$2) {
+      a($$0, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), $$2);
    }
 
-   public boolean a(cjf $$0) {
-      return this.c.isEmpty() || !$$0.b() && $$0.A() && this.c.equals($$0.y().getString());
+   public static void a(cqb $$0, biw $$1, bgx $$2) {
+      a($$0, $$1.dq(), $$1.ds(), $$1.dw(), $$2);
    }
 
-   public void a(qw $$0) {
-      if (!this.c.isEmpty()) {
-         $$0.a("Lock", this.c);
+   private static void a(cqb $$0, double $$1, double $$2, double $$3, bgx $$4) {
+      for (int $$5 = 0; $$5 < $$4.b(); $$5++) {
+         a($$0, $$1, $$2, $$3, $$4.a($$5));
       }
    }
 
-   public static bha b(qw $$0) {
-      return $$0.b("Lock", 8) ? new bha($$0.l("Lock")) : a;
+   public static void a(cqb $$0, gw $$1, hn<cjl> $$2) {
+      $$2.forEach($$2x -> a($$0, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), $$2x));
+   }
+
+   public static void a(cqb $$0, double $$1, double $$2, double $$3, cjl $$4) {
+      double $$5 = (double)bja.ad.k();
+      double $$6 = 1.0 - $$5;
+      double $$7 = $$5 / 2.0;
+      double $$8 = Math.floor($$1) + $$0.z.j() * $$6 + $$7;
+      double $$9 = Math.floor($$2) + $$0.z.j() * $$6;
+      double $$10 = Math.floor($$3) + $$0.z.j() * $$6 + $$7;
+
+      while (!$$4.b()) {
+         byt $$11 = new byt($$0, $$8, $$9, $$10, $$4.a($$0.z.a(21) + 10));
+         float $$12 = 0.05F;
+         $$11.o($$0.z.a(0.0, 0.11485000171139836), $$0.z.a(0.2, 0.11485000171139836), $$0.z.a(0.0, 0.11485000171139836));
+         $$0.b($$11);
+      }
    }
 }

@@ -22,12 +22,12 @@ public class sr extends ByteToMessageDecoder implements sw {
          Attribute<sn.a<?>> $$4 = $$0.channel().attr(this.b);
          sn.a<?> $$5 = (sn.a<?>)$$4.get();
          so $$6 = new so($$1);
-         int $$7 = $$6.m();
-         vd<?> $$8 = $$5.a($$7, $$6);
+         int $$7 = $$6.n();
+         ve<?> $$8 = $$5.a($$7, $$6);
          if ($$8 == null) {
             throw new IOException("Bad packet id " + $$7);
          } else {
-            bdv.e.a($$5.a(), $$7, $$0.channel().remoteAddress(), $$3);
+            beb.e.a($$5.a(), $$7, $$0.channel().remoteAddress(), $$3);
             if ($$6.readableBytes() > 0) {
                throw new IOException(
                   "Packet "

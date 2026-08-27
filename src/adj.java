@@ -1,24 +1,24 @@
-public class adj implements vd<ade> {
-   private final tl a;
+public class adj implements ve<adf> {
+   private final int a;
 
-   public adj(tl $$0) {
+   public adj(int $$0) {
       this.a = $$0;
    }
 
    public adj(so $$0) {
-      this.a = tl.a.b($$0.d(262144));
+      this.a = $$0.n();
    }
 
    @Override
    public void a(so $$0) {
-      $$0.a(this.a);
+      $$0.c(this.a);
    }
 
-   public void a(ade $$0) {
+   public void a(adf $$0) {
       $$0.a(this);
    }
 
-   public tl a() {
+   public int a() {
       return this.a;
    }
 }

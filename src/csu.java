@@ -1,48 +1,61 @@
+import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class csu extends crq {
-   protected csu(dfi.d $$0) {
+public class csu extends cso implements cst {
+   public static final MapCodec<csu> a = b(csu::new);
+
+   @Override
+   public MapCodec<csu> a() {
+      return a;
+   }
+
+   public csu(dfc.d $$0) {
       super($$0);
    }
 
    @Override
-   public dcv a(gw $$0, dfj $$1) {
+   public chz b() {
+      return chz.a;
+   }
+
+   @Override
+   public dcz a(gw $$0, dfd $$1) {
       return new dcu($$0, $$1);
    }
 
    @Nullable
    @Override
-   public <T extends dcv> dcw<T> a(cpv $$0, dfj $$1, dcx<T> $$2) {
-      return a($$0, $$2, dcx.C);
+   public <T extends dcz> dda<T> a(cqb $$0, dfd $$1, ddb<T> $$2) {
+      return a($$2, ddb.o, dcu::a);
    }
 
    @Override
-   protected void a(cpv $$0, gw $$1, cbu $$2) {
-      dcv $$3 = $$0.c_($$1);
-      if ($$3 instanceof dcu) {
-         $$2.a((bhb)$$3);
-         $$2.a(apn.as);
+   public bhe a(dfd $$0, cqb $$1, gw $$2, cca $$3, bhd $$4, ehd $$5) {
+      if ($$1.B) {
+         return bhe.a;
+      } else {
+         dcz $$6 = $$1.c_($$2);
+         if ($$6 instanceof dcu) {
+            $$3.a((dcu)$$6);
+            $$3.a(apq.ab);
+         }
+
+         return bhe.b;
       }
    }
 
    @Override
-   public void a(dfj $$0, cpv $$1, gw $$2, asc $$3) {
-      if ($$0.c(b)) {
-         double $$4 = (double)$$2.u() + 0.5;
-         double $$5 = (double)$$2.v();
-         double $$6 = (double)$$2.w() + 0.5;
-         if ($$3.j() < 0.1) {
-            $$1.a($$4, $$5, $$6, apd.cg, ape.e, 1.0F, 1.0F, false);
-         }
+   public czg b_(dfd $$0) {
+      return czg.c;
+   }
 
-         ha $$7 = $$0.c(a);
-         ha.a $$8 = $$7.o();
-         double $$9 = 0.52;
-         double $$10 = $$3.j() * 0.6 - 0.3;
-         double $$11 = $$8 == ha.a.a ? (double)$$7.j() * 0.52 : $$10;
-         double $$12 = $$3.j() * 9.0 / 16.0;
-         double $$13 = $$8 == ha.a.c ? (double)$$7.l() * 0.52 : $$10;
-         $$1.a(iv.Z, $$4 + $$11, $$5 + $$12, $$6 + $$13, 0.0, 0.0, 0.0);
+   @Override
+   public void a(cqb $$0, gw $$1, dfd $$2, bjm $$3, cjl $$4) {
+      if ($$4.A()) {
+         dcz $$5 = $$0.c_($$1);
+         if ($$5 instanceof dcu) {
+            ((dcu)$$5).a($$4.y());
+         }
       }
    }
 }

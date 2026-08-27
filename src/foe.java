@@ -1,94 +1,88 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Sets;
+import com.google.common.collect.Lists;
 import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.Set;
+import java.io.IOException;
+import java.util.List;
+import java.util.function.IntSupplier;
+import org.joml.Matrix4f;
 
-public interface foe {
-   static foe.a a(elk $$0) {
-      return a(ImmutableMap.of(), $$0);
+public class foe implements AutoCloseable {
+   private final fnq c;
+   public final ejv a;
+   public final ejv b;
+   private final List<IntSupplier> d = Lists.newArrayList();
+   private final List<String> e = Lists.newArrayList();
+   private final List<Integer> f = Lists.newArrayList();
+   private final List<Integer> g = Lists.newArrayList();
+   private Matrix4f h;
+
+   public foe(anw $$0, String $$1, ejv $$2, ejv $$3) throws IOException {
+      this.c = new fnq($$0, $$1);
+      this.a = $$2;
+      this.b = $$3;
    }
 
-   static foe.a a(Map<fom, elk> $$0, elk $$1) {
-      return new foe.a($$1, $$0);
+   @Override
+   public void close() {
+      this.c.close();
    }
 
-   elt getBuffer(fom var1);
+   public final String a() {
+      return this.c.h();
+   }
 
-   public static class a implements foe {
-      protected final elk a;
-      protected final Map<fom, elk> b;
-      protected Optional<fom> c = Optional.empty();
-      protected final Set<elk> d = Sets.newHashSet();
+   public void a(String $$0, IntSupplier $$1, int $$2, int $$3) {
+      this.e.add(this.e.size(), $$0);
+      this.d.add(this.d.size(), $$1);
+      this.f.add(this.f.size(), $$2);
+      this.g.add(this.g.size(), $$3);
+   }
 
-      protected a(elk $$0, Map<fom, elk> $$1) {
-         this.a = $$0;
-         this.b = $$1;
+   public void a(Matrix4f $$0) {
+      this.h = $$0;
+   }
+
+   public void a(float $$0) {
+      this.a.e();
+      float $$1 = (float)this.b.c;
+      float $$2 = (float)this.b.d;
+      RenderSystem.viewport(0, 0, (int)$$1, (int)$$2);
+      this.c.a("DiffuseSampler", this.a::f);
+
+      for (int $$3 = 0; $$3 < this.d.size(); $$3++) {
+         this.c.a(this.e.get($$3), this.d.get($$3));
+         this.c.b("AuxSize" + $$3).a((float)this.f.get($$3).intValue(), (float)this.g.get($$3).intValue());
       }
 
-      @Override
-      public elt getBuffer(fom $$0) {
-         Optional<fom> $$1 = $$0.O();
-         elk $$2 = this.b($$0);
-         if (!Objects.equals(this.c, $$1) || !$$0.N()) {
-            if (this.c.isPresent()) {
-               fom $$3 = this.c.get();
-               if (!this.b.containsKey($$3)) {
-                  this.a($$3);
-               }
-            }
+      this.c.b("ProjMat").a(this.h);
+      this.c.b("InSize").a((float)this.a.c, (float)this.a.d);
+      this.c.b("OutSize").a($$1, $$2);
+      this.c.b("Time").a($$0);
+      eqp $$4 = eqp.O();
+      this.c.b("ScreenSize").a((float)$$4.aM().k(), (float)$$4.aM().l());
+      this.c.g();
+      this.b.b(eqp.a);
+      this.b.a(false);
+      RenderSystem.depthFunc(519);
+      ele $$5 = ell.a().c();
+      $$5.a(elo.b.h, elh.m);
+      $$5.a(0.0, 0.0, 500.0).e();
+      $$5.a((double)$$1, 0.0, 500.0).e();
+      $$5.a((double)$$1, (double)$$2, 500.0).e();
+      $$5.a(0.0, (double)$$2, 500.0).e();
+      elf.b($$5.d());
+      RenderSystem.depthFunc(515);
+      this.c.f();
+      this.b.e();
+      this.a.d();
 
-            if (this.d.add($$2)) {
-               $$2.a($$0.J(), $$0.I());
-            }
-
-            this.c = $$1;
-         }
-
-         return $$2;
-      }
-
-      private elk b(fom $$0) {
-         return this.b.getOrDefault($$0, this.a);
-      }
-
-      public void a() {
-         if (this.c.isPresent()) {
-            fom $$0 = this.c.get();
-            if (!this.b.containsKey($$0)) {
-               this.a($$0);
-            }
-
-            this.c = Optional.empty();
-         }
-      }
-
-      public void b() {
-         this.c.ifPresent($$0x -> {
-            elt $$1 = this.getBuffer($$0x);
-            if ($$1 == this.a) {
-               this.a($$0x);
-            }
-         });
-
-         for (fom $$0 : this.b.keySet()) {
-            this.a($$0);
+      for (Object $$6 : this.d) {
+         if ($$6 instanceof ejv) {
+            ((ejv)$$6).d();
          }
       }
+   }
 
-      public void a(fom $$0) {
-         elk $$1 = this.b($$0);
-         boolean $$2 = Objects.equals(this.c, $$0.O());
-         if ($$2 || $$1 != this.a) {
-            if (this.d.remove($$1)) {
-               $$0.a($$1, RenderSystem.getVertexSorting());
-               if ($$2) {
-                  this.c = Optional.empty();
-               }
-            }
-         }
-      }
+   public fnq b() {
+      return this.c;
    }
 }

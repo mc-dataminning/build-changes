@@ -1,107 +1,66 @@
-import java.util.List;
-import javax.annotation.Nullable;
-
-public class ckh extends cja {
-   private static final n a = n.h;
-   private static final n b = n.j;
-   private static final tl c = tl.c(ac.a("item", new aew("smithing_template.ingredients"))).a(a);
-   private static final tl d = tl.c(ac.a("item", new aew("smithing_template.applies_to"))).a(a);
-   private static final tl e = tl.c(ac.a("upgrade", new aew("netherite_upgrade"))).a(a);
-   private static final tl f = tl.c(ac.a("item", new aew("smithing_template.armor_trim.applies_to"))).a(b);
-   private static final tl g = tl.c(ac.a("item", new aew("smithing_template.armor_trim.ingredients"))).a(b);
-   private static final tl h = tl.c(ac.a("item", new aew("smithing_template.armor_trim.base_slot_description")));
-   private static final tl i = tl.c(ac.a("item", new aew("smithing_template.armor_trim.additions_slot_description")));
-   private static final tl j = tl.c(ac.a("item", new aew("smithing_template.netherite_upgrade.applies_to"))).a(b);
-   private static final tl k = tl.c(ac.a("item", new aew("smithing_template.netherite_upgrade.ingredients"))).a(b);
-   private static final tl r = tl.c(ac.a("item", new aew("smithing_template.netherite_upgrade.base_slot_description")));
-   private static final tl s = tl.c(ac.a("item", new aew("smithing_template.netherite_upgrade.additions_slot_description")));
-   private static final aew t = new aew("item/empty_armor_slot_helmet");
-   private static final aew u = new aew("item/empty_armor_slot_chestplate");
-   private static final aew v = new aew("item/empty_armor_slot_leggings");
-   private static final aew w = new aew("item/empty_armor_slot_boots");
-   private static final aew x = new aew("item/empty_slot_hoe");
-   private static final aew y = new aew("item/empty_slot_axe");
-   private static final aew z = new aew("item/empty_slot_sword");
-   private static final aew A = new aew("item/empty_slot_shovel");
-   private static final aew B = new aew("item/empty_slot_pickaxe");
-   private static final aew C = new aew("item/empty_slot_ingot");
-   private static final aew D = new aew("item/empty_slot_redstone_dust");
-   private static final aew E = new aew("item/empty_slot_quartz");
-   private static final aew F = new aew("item/empty_slot_emerald");
-   private static final aew G = new aew("item/empty_slot_diamond");
-   private static final aew H = new aew("item/empty_slot_lapis_lazuli");
-   private static final aew I = new aew("item/empty_slot_amethyst_shard");
-   private final tl J;
-   private final tl K;
-   private final tl L;
-   private final tl M;
-   private final tl N;
-   private final List<aew> O;
-   private final List<aew> P;
-
-   public ckh(tl $$0, tl $$1, tl $$2, tl $$3, tl $$4, List<aew> $$5, List<aew> $$6) {
-      super(new cja.a());
-      this.J = $$0;
-      this.K = $$1;
-      this.L = $$2;
-      this.M = $$3;
-      this.N = $$4;
-      this.O = $$5;
-      this.P = $$6;
-   }
-
-   public static ckh a(aev<clk> $$0) {
-      return a($$0.a());
-   }
-
-   public static ckh a(aew $$0) {
-      return new ckh(f, g, tl.c(ac.a("trim_pattern", $$0)).a(a), h, i, A(), B());
-   }
-
-   public static ckh h() {
-      return new ckh(j, k, e, r, s, C(), D());
-   }
-
-   private static List<aew> A() {
-      return List.of(t, u, v, w);
-   }
-
-   private static List<aew> B() {
-      return List.of(C, D, H, E, G, F, I);
-   }
-
-   private static List<aew> C() {
-      return List.of(t, z, u, B, v, y, w, x, A);
-   }
-
-   private static List<aew> D() {
-      return List.of(C);
+public class ckh extends cjg {
+   public ckh(cjg.a $$0) {
+      super($$0);
    }
 
    @Override
-   public void a(cjf $$0, @Nullable cpv $$1, List<tl> $$2, ckw $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$2.add(this.L);
-      $$2.add(tk.a);
-      $$2.add(d);
-      $$2.add(tk.a().b(this.J));
-      $$2.add(c);
-      $$2.add(tk.a().b(this.K));
+   public boolean a(cjl $$0, cqb $$1, dfd $$2, gw $$3, bjm $$4) {
+      if (!$$1.B && !$$2.a(apv.aJ)) {
+         $$0.a(1, $$4, $$0x -> $$0x.d(bjb.a));
+      }
+
+      return !$$2.a(apv.O)
+            && !$$2.a(cte.bs)
+            && !$$2.a(cte.bt)
+            && !$$2.a(cte.bu)
+            && !$$2.a(cte.bv)
+            && !$$2.a(cte.rF)
+            && !$$2.a(cte.ff)
+            && !$$2.a(cte.fI)
+            && !$$2.a(apv.a)
+         ? super.a($$0, $$1, $$2, $$3, $$4)
+         : true;
    }
 
-   public tl i() {
-      return this.M;
+   @Override
+   public boolean a_(dfd $$0) {
+      return $$0.a(cte.bs) || $$0.a(cte.cw) || $$0.a(cte.fI);
    }
 
-   public tl x() {
-      return this.N;
+   @Override
+   public float a(cjl $$0, dfd $$1) {
+      if ($$1.a(cte.bs) || $$1.a(apv.O)) {
+         return 15.0F;
+      } else if ($$1.a(apv.a)) {
+         return 5.0F;
+      } else {
+         return !$$1.a(cte.ff) && !$$1.a(cte.fg) ? super.a($$0, $$1) : 2.0F;
+      }
    }
 
-   public List<aew> y() {
-      return this.O;
-   }
+   @Override
+   public bhe a(clv $$0) {
+      cqb $$1 = $$0.q();
+      gw $$2 = $$0.a();
+      dfd $$3 = $$1.a_($$2);
+      if ($$3.b() instanceof cwq $$5 && !$$5.o($$3)) {
+         cca $$6 = $$0.o();
+         cjl $$7 = $$0.n();
+         if ($$6 instanceof aku) {
+            al.M.a((aku)$$6, $$2, $$7);
+         }
 
-   public List<aew> z() {
-      return this.P;
+         $$1.a($$6, $$2, apg.ki, aph.e, 1.0F, 1.0F);
+         dfd $$8 = $$5.n($$3);
+         $$1.b($$2, $$8);
+         $$1.a(djn.c, $$2, djn.a.a($$0.o(), $$8));
+         if ($$6 != null) {
+            $$7.a(1, $$6, $$1x -> $$1x.d($$0.p()));
+         }
+
+         return bhe.a($$1.B);
+      }
+
+      return super.a($$0);
    }
 }

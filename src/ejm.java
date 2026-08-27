@@ -1,38 +1,15 @@
-import org.joml.Vector3f;
-import org.lwjgl.openal.AL10;
+import it.unimi.dsi.fastutil.ints.IntSet;
+import javax.annotation.Nullable;
 
-public class ejm {
-   private float a = 1.0F;
-   private ehn b;
-
-   public ejm() {
-      this.b = ehn.b;
+public interface ejm extends AutoCloseable {
+   @Override
+   default void close() {
    }
 
-   public void a(ehn $$0) {
-      this.b = $$0;
-      AL10.alListener3f(4100, (float)$$0.c, (float)$$0.d, (float)$$0.e);
+   @Nullable
+   default ejl a(int $$0) {
+      return null;
    }
 
-   public ehn a() {
-      return this.b;
-   }
-
-   public void a(Vector3f $$0, Vector3f $$1) {
-      AL10.alListenerfv(4111, new float[]{$$0.x(), $$0.y(), $$0.z(), $$1.x(), $$1.y(), $$1.z()});
-   }
-
-   public void a(float $$0) {
-      AL10.alListenerf(4106, $$0);
-      this.a = $$0;
-   }
-
-   public float b() {
-      return this.a;
-   }
-
-   public void c() {
-      this.a(ehn.b);
-      this.a(new Vector3f(0.0F, 0.0F, -1.0F), new Vector3f(0.0F, 1.0F, 0.0F));
-   }
+   IntSet a();
 }

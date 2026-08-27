@@ -1,18 +1,15 @@
-import java.util.function.Function;
+public class ffv {
+   public static float a(float $$0, float $$1, float $$2) {
+      float $$3 = $$1 - $$0;
 
-public abstract class ffv<E extends biq> extends ffd<E> {
-   public ffv() {
-      this(fom::e);
+      while ($$3 < (float) -Math.PI) {
+         $$3 += (float) (Math.PI * 2);
+      }
+
+      while ($$3 >= (float) Math.PI) {
+         $$3 -= (float) (Math.PI * 2);
+      }
+
+      return $$0 + $$2 * $$3;
    }
-
-   public ffv(Function<aew, fom> $$0) {
-      super($$0);
-   }
-
-   @Override
-   public void a(elp $$0, elt $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-      this.d().forEach($$8 -> $$8.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
-   }
-
-   public abstract Iterable<fic> d();
 }

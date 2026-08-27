@@ -1,37 +1,46 @@
-import java.util.function.IntFunction;
+import com.mojang.logging.LogUtils;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionException;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public enum eqx {
-   a(0, "options.narrator.off"),
-   b(1, "options.narrator.all"),
-   c(2, "options.narrator.chat"),
-   d(3, "options.narrator.system");
+public class eqx {
+   private static final Logger a = LogUtils.getLogger();
+   private final eqp b;
+   @Nullable
+   private CompletableFuture<Boolean> c;
+   private boolean d;
 
-   private static final IntFunction<eqx> e = aqr.a(eqx::a, values(), aqr.a.b);
-   private final int f;
-   private final tl g;
-
-   private eqx(int $$0, String $$1) {
-      this.f = $$0;
-      this.g = tl.c($$1);
+   public eqx(eqp $$0) {
+      this.b = $$0;
    }
 
-   public int a() {
-      return this.f;
+   public void a(eye $$0) {
+      if (!this.b.af() && !this.b.m.w && !this.d && this.a()) {
+         this.b.a(new fbc($$0));
+         this.d = true;
+      }
    }
 
-   public tl b() {
-      return this.g;
+   private Boolean a() {
+      if (this.c == null) {
+         this.c = CompletableFuture.supplyAsync(this::b, ac.f());
+      }
+
+      try {
+         return this.c.getNow(false);
+      } catch (CompletionException var2) {
+         a.warn("Failed to retrieve realms subscriptions", var2);
+         this.d = true;
+         return false;
+      }
    }
 
-   public static eqx a(int $$0) {
-      return e.apply($$0);
-   }
-
-   public boolean c() {
-      return this == b || this == c;
-   }
-
-   public boolean d() {
-      return this == b || this == d;
+   private boolean b() {
+      try {
+         return elz.a(this.b).b().a.stream().anyMatch($$0 -> !$$0.j && this.b.b($$0.g));
+      } catch (enm var2) {
+         return false;
+      }
    }
 }

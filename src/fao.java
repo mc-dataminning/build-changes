@@ -1,30 +1,9 @@
-public class fao extends ezh {
-   private final cow m;
+public class fao extends eze<cgl> {
+   private static final aez y = new aez("container/smoker/lit_progress");
+   private static final aez z = new aez("container/smoker/burn_progress");
+   private static final aez A = new aez("textures/gui/container/smoker.png");
 
-   public fao(cow $$0) {
-      this.m = $$0;
-   }
-
-   @Override
-   public cow l() {
-      return this.m;
-   }
-
-   @Override
-   int D() {
-      return 150;
-   }
-
-   @Override
-   protected void aH_() {
-      super.aH_();
-      this.a.a(this.l().m());
-   }
-
-   @Override
-   protected void a(cow $$0) {
-      if ($$0 instanceof cdt.a $$1) {
-         this.f.J().b(new acp($$1.h().ah(), this.a.a(), $$0.o()));
-      }
+   public fao(cgl $$0, cbz $$1, tl $$2) {
+      super($$0, new fbz(), $$1, $$2, A, y, z);
    }
 }

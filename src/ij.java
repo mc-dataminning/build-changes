@@ -1,9 +1,9 @@
 public class ij extends ii {
    @Override
-   protected cjf a(id $$0, cjf $$1) {
-      akq $$2 = $$0.b();
+   protected cjl a(id $$0, cjl $$1) {
+      akt $$2 = $$0.b();
       if (!$$2.w_()) {
-         gw $$3 = $$0.c().a($$0.d().c(cuw.a));
+         gw $$3 = $$0.c().a($$0.d().c(cvf.b));
          this.a(a($$2, $$3) || b($$2, $$3));
          if (this.a() && $$1.a(1, $$2.D_(), null)) {
             $$1.f(0);
@@ -13,15 +13,15 @@ public class ij extends ii {
       return $$1;
    }
 
-   private static boolean a(akq $$0, gw $$1) {
-      dfj $$2 = $$0.a_($$1);
-      if ($$2.a(aps.aF, $$0x -> $$0x.b(csp.b) && $$0x.b() instanceof csp)) {
-         int $$3 = $$2.c(csp.b);
+   private static boolean a(akt $$0, gw $$1) {
+      dfd $$2 = $$0.a_($$1);
+      if ($$2.a(apv.aF, $$0x -> $$0x.b(csw.c) && $$0x.b() instanceof csw)) {
+         int $$3 = $$2.c(csw.c);
          if ($$3 >= 5) {
-            $$0.a(null, $$1, apd.bI, ape.e, 1.0F, 1.0F);
-            csp.a($$0, $$1);
-            ((csp)$$2.b()).a($$0, $$2, $$1, null, dcs.b.b);
-            $$0.a(null, djt.M, $$1);
+            $$0.a(null, $$1, apg.bI, aph.e, 1.0F, 1.0F);
+            csw.a($$0, $$1);
+            ((csw)$$2.b()).a($$0, $$2, $$1, null, dcw.b.b);
+            $$0.a(null, djn.M, $$1);
             return true;
          }
       }
@@ -29,11 +29,11 @@ public class ij extends ii {
       return false;
    }
 
-   private static boolean b(akq $$0, gw $$1) {
-      for (bjg $$3 : $$0.a(bjg.class, new ehi($$1), bit.f)) {
-         if ($$3 instanceof bjx $$4 && $$4.a()) {
-            $$4.a(ape.e);
-            $$0.a(null, djt.M, $$1);
+   private static boolean b(akt $$0, gw $$1) {
+      for (bjm $$3 : $$0.a(bjm.class, new ehc($$1), biz.f)) {
+         if ($$3 instanceof bkd $$4 && $$4.a()) {
+            $$4.a(aph.e);
+            $$0.a(null, djn.M, $$1);
             return true;
          }
       }

@@ -1,29 +1,34 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dti {
-   public static final Codec<dti> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.intRange(0, dis.c).fieldOf("height").forGetter(dti::a), jb.f.q().fieldOf("block").orElse(csw.a).forGetter($$0x -> $$0x.b().b()))
-            .apply($$0, dti::new)
-   );
-   private final csv b;
-   private final int c;
+public class dti extends dtj {
+   public static final dti a = new dti(dlg.a(0));
+   public static final Codec<dti> b = arj.e(dlg.a, dlg.a.fieldOf("value").codec()).xmap(dti::new, dti::b);
+   private final dlg d;
 
-   public dti(int $$0, csv $$1) {
-      this.c = $$0;
-      this.b = $$1;
+   public static dti a(dlg $$0) {
+      return new dti($$0);
    }
 
-   public int a() {
-      return this.c;
+   private dti(dlg $$0) {
+      this.d = $$0;
    }
 
-   public dfj b() {
-      return this.b.n();
+   public dlg b() {
+      return this.d;
+   }
+
+   @Override
+   public int a(ash $$0, dlj $$1) {
+      return this.d.a($$1);
+   }
+
+   @Override
+   public dtk<?> a() {
+      return dtk.a;
    }
 
    @Override
    public String toString() {
-      return (this.c != 1 ? this.c + "*" : "") + jb.f.b(this.b);
+      return this.d.toString();
    }
 }

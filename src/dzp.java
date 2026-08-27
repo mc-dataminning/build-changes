@@ -1,112 +1,24 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.doubles.DoubleArrayList;
-import it.unimi.dsi.fastutil.doubles.DoubleList;
-import it.unimi.dsi.fastutil.doubles.DoubleListIterator;
-import java.util.List;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
 
-public class dzp {
-   private static final double a = 1.0181268882175227;
-   private static final double b = 0.3333333333333333;
-   private final double c;
-   private final dzq d;
-   private final dzq e;
-   private final double f;
-   private final dzp.a g;
-
-   @Deprecated
-   public static dzp a(asc $$0, dzp.a $$1) {
-      return new dzp($$0, $$1, false);
+public class dzp extends dzu<dzp.a> {
+   protected dzp(dhn $$0) {
+      super(cqk.b, $$0, new dzp.a(new Long2ObjectOpenHashMap()));
    }
 
-   public static dzp a(asc $$0, int $$1, double... $$2) {
-      return b($$0, new dzp.a($$1, new DoubleArrayList($$2)));
+   @Override
+   protected int a(long $$0) {
+      long $$1 = hw.e($$0);
+      dhf $$2 = this.a($$1, false);
+      return $$2 == null ? 0 : $$2.a(hw.b(gw.a($$0)), hw.b(gw.b($$0)), hw.b(gw.c($$0)));
    }
 
-   public static dzp b(asc $$0, dzp.a $$1) {
-      return new dzp($$0, $$1, true);
-   }
-
-   private dzp(asc $$0, dzp.a $$1, boolean $$2) {
-      int $$3 = $$1.c;
-      DoubleList $$4 = $$1.d;
-      this.g = $$1;
-      if ($$2) {
-         this.d = dzq.b($$0, $$3, $$4);
-         this.e = dzq.b($$0, $$3, $$4);
-      } else {
-         this.d = dzq.a($$0, $$3, $$4);
-         this.e = dzq.a($$0, $$3, $$4);
+   protected static final class a extends dzr<dzp.a> {
+      public a(Long2ObjectOpenHashMap<dhf> $$0) {
+         super($$0);
       }
 
-      int $$5 = Integer.MAX_VALUE;
-      int $$6 = Integer.MIN_VALUE;
-      DoubleListIterator $$7 = $$4.iterator();
-
-      while ($$7.hasNext()) {
-         int $$8 = $$7.nextIndex();
-         double $$9 = $$7.nextDouble();
-         if ($$9 != 0.0) {
-            $$5 = Math.min($$5, $$8);
-            $$6 = Math.max($$6, $$8);
-         }
-      }
-
-      this.c = 0.16666666666666666 / a($$6 - $$5);
-      this.f = (this.d.a() + this.e.a()) * this.c;
-   }
-
-   public double a() {
-      return this.f;
-   }
-
-   private static double a(int $$0) {
-      return 0.1 * (1.0 + 1.0 / (double)($$0 + 1));
-   }
-
-   public double a(double $$0, double $$1, double $$2) {
-      double $$3 = $$0 * 1.0181268882175227;
-      double $$4 = $$1 * 1.0181268882175227;
-      double $$5 = $$2 * 1.0181268882175227;
-      return (this.d.a($$0, $$1, $$2) + this.e.a($$3, $$4, $$5)) * this.c;
-   }
-
-   public dzp.a b() {
-      return this.g;
-   }
-
-   @VisibleForTesting
-   public void a(StringBuilder $$0) {
-      $$0.append("NormalNoise {");
-      $$0.append("first: ");
-      this.d.a($$0);
-      $$0.append(", second: ");
-      this.e.a($$0);
-      $$0.append("}");
-   }
-
-   public static record a(int c, DoubleList d) {
-      public static final Codec<dzp.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(Codec.INT.fieldOf("firstOctave").forGetter(dzp.a::a), Codec.DOUBLE.listOf().fieldOf("amplitudes").forGetter(dzp.a::b))
-               .apply($$0, dzp.a::new)
-      );
-      public static final Codec<he<dzp.a>> b = aes.a(jc.ax, a);
-
-      public a(int $$0, List<Double> $$1) {
-         this($$0, new DoubleArrayList($$1));
-      }
-
-      public a(int $$0, double $$1, double... $$2) {
-         this($$0, ac.a(new DoubleArrayList($$2), $$1x -> $$1x.add(0, $$1)));
-      }
-
-      public int a() {
-         return this.c;
-      }
-
-      public DoubleList b() {
-         return this.d;
+      public dzp.a a() {
+         return new dzp.a(this.a.clone());
       }
    }
 }

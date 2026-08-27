@@ -1,17 +1,9 @@
-import java.io.IOException;
-
-public class fzy extends any<int[]> {
-   private static final aew a = new aew("textures/colormap/foliage.png");
-
-   protected int[] a(ant $$0, bdp $$1) {
-      try {
-         return gab.a($$0, a);
-      } catch (IOException var4) {
-         throw new IllegalStateException("Failed to load foliage color texture", var4);
-      }
+public class fzy extends gad {
+   public fzy(fzb $$0) {
+      super($$0, new aez("textures/atlas/mob_effects.png"), new aez("mob_effects"));
    }
 
-   protected void a(int[] $$0, ant $$1, bdp $$2) {
-      cpp.a($$0);
+   public fza a(bih $$0) {
+      return this.a(jb.e.b($$0));
    }
 }

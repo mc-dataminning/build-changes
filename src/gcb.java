@@ -1,31 +1,49 @@
-public class gcb implements gbw {
-   private final fng a;
-   private boolean b;
-   private boolean c = true;
+public class gcb extends gbr {
+   private static final float n = 0.0F;
+   private static final float o = 0.7F;
+   private static final float p = 0.0F;
+   private static final float q = 1.0F;
+   private static final float r = 0.0025F;
+   private final cdr s;
+   private float t = 0.0F;
 
-   public gcb(fng $$0) {
-      this.a = $$0;
+   public gcb(cdr $$0) {
+      super(apg.ni, aph.g, gci.t());
+      this.s = $$0;
+      this.i = true;
+      this.j = 0;
+      this.d = 0.0F;
+      this.f = (double)((float)$$0.dq());
+      this.g = (double)((float)$$0.ds());
+      this.h = (double)((float)$$0.dw());
    }
 
    @Override
-   public void a() {
-      cpv $$0 = this.a.dL();
-      dfj $$1 = $$0.c(this.a.cG().c(0.0, -0.4F, 0.0).h(1.0E-6)).filter($$0x -> $$0x.a(csw.nd)).findFirst().orElse(null);
-      if ($$1 != null) {
-         if (!this.b && !this.c && $$1.a(csw.nd) && !this.a.M_()) {
-            boolean $$2 = $$1.c(cta.a);
-            if ($$2) {
-               this.a.a(apd.cu, 1.0F, 1.0F);
-            } else {
-               this.a.a(apd.cs, 1.0F, 1.0F);
-            }
-         }
+   public boolean s() {
+      return !this.s.aS();
+   }
 
-         this.b = true;
+   @Override
+   public boolean r() {
+      return true;
+   }
+
+   @Override
+   public void q() {
+      if (this.s.dG()) {
+         this.n();
       } else {
-         this.b = false;
+         this.f = (double)((float)this.s.dq());
+         this.g = (double)((float)this.s.ds());
+         this.h = (double)((float)this.s.dw());
+         float $$0 = (float)this.s.do().h();
+         if ($$0 >= 0.01F) {
+            this.t = asb.a(this.t + 0.0025F, 0.0F, 1.0F);
+            this.d = asb.i(asb.a($$0, 0.0F, 0.5F), 0.0F, 0.7F);
+         } else {
+            this.t = 0.0F;
+            this.d = 0.0F;
+         }
       }
-
-      this.c = false;
    }
 }

@@ -1,19 +1,19 @@
-public record wg(gw b, String c, int d) implements vw {
-   public static final aew a = new aew("debug/poi_added");
+public record wg(int b, eav c, float d) implements vx {
+   public static final aez a = new aez("debug/path");
 
    public wg(so $$0) {
-      this($$0.e(), $$0.r(), $$0.readInt());
+      this($$0.readInt(), eav.b($$0), $$0.readFloat());
    }
 
    @Override
    public void a(so $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.p(this.d);
+      $$0.p(this.b);
+      this.c.a($$0);
+      $$0.a(this.d);
    }
 
    @Override
-   public aew a() {
+   public aez a() {
       return a;
    }
 }

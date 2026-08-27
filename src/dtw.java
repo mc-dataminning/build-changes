@@ -1,17 +1,26 @@
-import java.util.List;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import java.util.stream.Stream;
 
-public record dtw(List<dkw.c> a) implements dkw.c {
-   @Nullable
+public class dtw extends duj {
+   public static final Codec<dtw> a = dki.a.c.fieldOf("step").xmap(dtw::new, $$0 -> $$0.c).codec();
+   private final dki.a c;
+
+   private dtw(dki.a $$0) {
+      this.c = $$0;
+   }
+
+   public static dtw a(dki.a $$0) {
+      return new dtw($$0);
+   }
+
    @Override
-   public dfj calculate(dkl.b $$0) {
-      for (dkw.c $$1 : this.a) {
-         dfj $$2 = $$1.calculate($$0);
-         if ($$2 != null) {
-            return $$2;
-         }
-      }
+   public Stream<gw> a_(duh $$0, ash $$1, gw $$2) {
+      cpi $$3 = new cpi($$2);
+      return $$0.a($$3, this.c).a($$3);
+   }
 
-      return null;
+   @Override
+   public duk<?> b() {
+      return duk.o;
    }
 }

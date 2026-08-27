@@ -1,117 +1,95 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+public class dkx implements cpo {
+   private int a;
 
-public record dkx(dla j, dfj k, dfj l, dky m, dlj.o n, List<crc.d> o, int p, boolean q, boolean r, boolean s, boolean t) {
-   public static final Codec<dkx> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dla.a.fieldOf("noise").forGetter(dkx::f),
-               dfj.b.fieldOf("default_block").forGetter(dkx::g),
-               dfj.b.fieldOf("default_fluid").forGetter(dkx::h),
-               dky.a.fieldOf("noise_router").forGetter(dkx::i),
-               dlj.o.b.fieldOf("surface_rule").forGetter(dkx::j),
-               crc.d.a.listOf().fieldOf("spawn_target").forGetter(dkx::k),
-               Codec.INT.fieldOf("sea_level").forGetter(dkx::l),
-               Codec.BOOL.fieldOf("disable_mob_generation").forGetter(dkx::a),
-               Codec.BOOL.fieldOf("aquifers_enabled").forGetter(dkx::b),
-               Codec.BOOL.fieldOf("ore_veins_enabled").forGetter(dkx::c),
-               Codec.BOOL.fieldOf("legacy_random_source").forGetter(dkx::n)
-            )
-            .apply($$0, dkx::new)
-   );
-   public static final Codec<he<dkx>> b = aes.a(jc.aw, a);
-   public static final aev<dkx> c = aev.a(jc.aw, new aew("overworld"));
-   public static final aev<dkx> d = aev.a(jc.aw, new aew("large_biomes"));
-   public static final aev<dkx> e = aev.a(jc.aw, new aew("amplified"));
-   public static final aev<dkx> f = aev.a(jc.aw, new aew("nether"));
-   public static final aev<dkx> g = aev.a(jc.aw, new aew("end"));
-   public static final aev<dkx> h = aev.a(jc.aw, new aew("caves"));
-   public static final aev<dkx> i = aev.a(jc.aw, new aew("floating_islands"));
+   @Override
+   public int a(akt $$0, boolean $$1, boolean $$2) {
+      if (!$$1) {
+         return 0;
+      } else if (!$$0.X().b(cpx.G)) {
+         return 0;
+      } else {
+         ash $$3 = $$0.z;
+         this.a--;
+         if (this.a > 0) {
+            return 0;
+         } else {
+            this.a = this.a + 12000 + $$3.a(1200);
+            long $$4 = $$0.W() / 24000L;
+            if ($$4 < 5L || !$$0.N()) {
+               return 0;
+            } else if ($$3.a(5) != 0) {
+               return 0;
+            } else {
+               int $$5 = $$0.v().size();
+               if ($$5 < 1) {
+                  return 0;
+               } else {
+                  cca $$6 = $$0.v().get($$3.a($$5));
+                  if ($$6.M_()) {
+                     return 0;
+                  } else if ($$0.a($$6.dl(), 2)) {
+                     return 0;
+                  } else {
+                     int $$7 = (24 + $$3.a(24)) * ($$3.h() ? -1 : 1);
+                     int $$8 = (24 + $$3.a(24)) * ($$3.h() ? -1 : 1);
+                     gw.a $$9 = $$6.dl().j().e($$7, 0, $$8);
+                     int $$10 = 10;
+                     if (!$$0.b($$9.u() - 10, $$9.w() - 10, $$9.u() + 10, $$9.w() + 10)) {
+                        return 0;
+                     } else {
+                        he<cqz> $$11 = $$0.s($$9);
+                        if ($$11.a(apu.af)) {
+                           return 0;
+                        } else {
+                           int $$12 = 0;
+                           int $$13 = (int)Math.ceil((double)$$0.d_($$9).b()) + 1;
 
-   @Deprecated
-   public boolean a() {
-      return this.q;
+                           for (int $$14 = 0; $$14 < $$13; $$14++) {
+                              $$12++;
+                              $$9.q($$0.a(dkm.a.f, $$9).v());
+                              if ($$14 == 0) {
+                                 if (!this.a($$0, $$9, $$3, true)) {
+                                    break;
+                                 }
+                              } else {
+                                 this.a($$0, $$9, $$3, false);
+                              }
+
+                              $$9.p($$9.u() + $$3.a(5) - $$3.a(5));
+                              $$9.r($$9.w() + $$3.a(5) - $$3.a(5));
+                           }
+
+                           return $$12;
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      }
    }
 
-   public boolean b() {
-      return this.r;
-   }
+   private boolean a(akt $$0, gw $$1, ash $$2, boolean $$3) {
+      dfd $$4 = $$0.a_($$1);
+      if (!cqm.a($$0, $$1, $$4, $$4.u(), bja.ay)) {
+         return false;
+      } else if (!bzp.b(bja.ay, $$0, bjq.p, $$1, $$2)) {
+         return false;
+      } else {
+         bzp $$5 = bja.ay.a((cqb)$$0);
+         if ($$5 != null) {
+            if ($$3) {
+               $$5.w(true);
+               $$5.gm();
+            }
 
-   public boolean c() {
-      return this.s;
-   }
-
-   public dlr.a d() {
-      return this.t ? dlr.a.a : dlr.a.b;
-   }
-
-   public static void a(nr<dkx> $$0) {
-      $$0.a(c, a($$0, false, false));
-      $$0.a(d, a($$0, false, true));
-      $$0.a(e, a($$0, true, false));
-      $$0.a(f, c($$0));
-      $$0.a(g, b($$0));
-      $$0.a(h, d($$0));
-      $$0.a(i, e($$0));
-   }
-
-   private static dkx b(nr<?> $$0) {
-      return new dkx(dla.d, csw.fz.n(), csw.a.n(), dkz.a($$0.a(jc.at)), oe.c(), List.of(), 0, true, false, false, true);
-   }
-
-   private static dkx c(nr<?> $$0) {
-      return new dkx(dla.c, csw.dW.n(), csw.H.n(), dkz.a($$0.a(jc.at), $$0.a(jc.ax)), oe.b(), List.of(), 32, false, false, false, true);
-   }
-
-   private static dkx a(nr<?> $$0, boolean $$1, boolean $$2) {
-      return new dkx(dla.b, csw.b.n(), csw.G.n(), dkz.a($$0.a(jc.at), $$0.a(jc.ax), $$2, $$1), oe.a(), new crj().a(), 63, false, true, true, false);
-   }
-
-   private static dkx d(nr<?> $$0) {
-      return new dkx(dla.e, csw.b.n(), csw.G.n(), dkz.b($$0.a(jc.at), $$0.a(jc.ax)), oe.a(false, true, true), List.of(), 32, false, false, false, true);
-   }
-
-   private static dkx e(nr<?> $$0) {
-      return new dkx(dla.f, csw.b.n(), csw.G.n(), dkz.c($$0.a(jc.at), $$0.a(jc.ax)), oe.a(false, false, false), List.of(), -64, false, false, false, true);
-   }
-
-   public static dkx e() {
-      return new dkx(dla.b, csw.b.n(), csw.a.n(), dkz.a(), oe.d(), List.of(), 63, true, false, false, false);
-   }
-
-   public dla f() {
-      return this.j;
-   }
-
-   public dfj g() {
-      return this.k;
-   }
-
-   public dfj h() {
-      return this.l;
-   }
-
-   public dky i() {
-      return this.m;
-   }
-
-   public dlj.o j() {
-      return this.n;
-   }
-
-   public List<crc.d> k() {
-      return this.o;
-   }
-
-   public int l() {
-      return this.p;
-   }
-
-   public boolean m() {
-      return this.r;
-   }
-
-   public boolean n() {
-      return this.t;
+            $$5.e((double)$$1.u(), (double)$$1.v(), (double)$$1.w());
+            $$5.a($$0, $$0.d_($$1), bjq.p, null, null);
+            $$0.a_($$5);
+            return true;
+         } else {
+            return false;
+         }
+      }
    }
 }

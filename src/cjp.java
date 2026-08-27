@@ -1,62 +1,50 @@
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
 import java.util.List;
-import javax.annotation.Nullable;
+import java.util.Optional;
+import org.slf4j.Logger;
 
-public class cjp extends chg {
-   private final biu<?> a;
-   private final apc b;
+public class cjp extends cjg {
+   private static final String a = "Recipes";
+   private static final Logger b = LogUtils.getLogger();
 
-   public cjp(biu<?> $$0, eal $$1, apc $$2, cja.a $$3) {
-      super($$1, $$3);
-      this.a = $$0;
-      this.b = $$2;
+   public cjp(cjg.a $$0) {
+      super($$0);
    }
 
    @Override
-   public void a(@Nullable cbu $$0, cpv $$1, cjf $$2, gw $$3) {
-      if ($$1 instanceof akq) {
-         this.a((akq)$$1, $$2, $$3);
-         $$1.a($$0, djt.t, $$3);
+   public bhf<cjl> a(cqb $$0, cca $$1, bhd $$2) {
+      cjl $$3 = $$1.b($$2);
+      qw $$4 = $$3.v();
+      if (!$$1.fT().d) {
+         $$1.a($$2, cjl.b);
       }
-   }
 
-   @Override
-   protected void a(@Nullable cbu $$0, cpw $$1, gw $$2) {
-      $$1.a($$0, $$2, this.b, ape.g, 1.0F, 1.0F);
-   }
+      if ($$4 != null && $$4.b("Recipes", 9)) {
+         if (!$$0.B) {
+            rc $$5 = $$4.c("Recipes", 8);
+            List<cmq<?>> $$6 = Lists.newArrayList();
+            cmr $$7 = $$0.n().aE();
 
-   private void a(akq $$0, cjf $$1, gw $$2) {
-      if (this.a.a($$0, $$1, null, $$2, bjk.l, true, false) instanceof but $$4) {
-         $$4.c($$1.w());
-         $$4.w(true);
-      }
-   }
-
-   @Override
-   public void a(cjf $$0, @Nullable cpv $$1, List<tl> $$2, ckw $$3) {
-      if (this.a == biu.bc) {
-         qw $$4 = $$0.v();
-         if ($$4 != null && $$4.b("BucketVariantTag", 3)) {
-            int $$5 = $$4.h("BucketVariantTag");
-            n[] $$6 = new n[]{n.u, n.h};
-            String $$7 = "color.minecraft." + bvr.s($$5);
-            String $$8 = "color.minecraft." + bvr.t($$5);
-
-            for (int $$9 = 0; $$9 < bvr.c.size(); $$9++) {
-               if ($$5 == bvr.c.get($$9).a()) {
-                  $$2.add(tl.c(bvr.c($$9)).a($$6));
-                  return;
+            for (int $$8 = 0; $$8 < $$5.size(); $$8++) {
+               String $$9 = $$5.j($$8);
+               Optional<cmq<?>> $$10 = $$7.a(new aez($$9));
+               if (!$$10.isPresent()) {
+                  b.error("Invalid recipe: {}", $$9);
+                  return bhf.d($$3);
                }
+
+               $$6.add($$10.get());
             }
 
-            $$2.add(bvr.u($$5).d().d().a($$6));
-            ty $$10 = tl.c($$7);
-            if (!$$7.equals($$8)) {
-               $$10.f(", ").b(tl.c($$8));
-            }
-
-            $$10.a($$6);
-            $$2.add($$10);
+            $$1.a($$6);
+            $$1.b(apq.c.b(this));
          }
+
+         return bhf.a($$3, $$0.w_());
+      } else {
+         b.error("Tag not valid: {}", $$4);
+         return bhf.d($$3);
       }
    }
 }

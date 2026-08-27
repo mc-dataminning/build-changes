@@ -1,27 +1,43 @@
 import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Lists;
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
-public abstract class btf extends btl<bjg> {
-   protected abstract boolean a(bjg var1, bjg var2);
-
-   protected abstract bsh<bjg> b();
-
+public class btf extends btr<cak> {
    @Override
-   public Set<bsh<?>> a() {
-      return ImmutableSet.of(this.b());
+   public Set<bsn<?>> a() {
+      return ImmutableSet.of(bsn.h, bsn.av, bsn.ap, bsn.ao, bsn.ar, bsn.as, new bsn[0]);
    }
 
-   @Override
-   protected void a(akq $$0, bjg $$1) {
-      $$1.dN().a(this.b(), this.b($$1));
+   protected void a(akt $$0, cak $$1) {
+      bkm<?> $$2 = $$1.dN();
+      $$2.a(bsn.av, this.b($$0, $$1));
+      Optional<caq> $$3 = Optional.empty();
+      int $$4 = 0;
+      List<cak> $$5 = Lists.newArrayList();
+      bsp $$6 = $$2.c(bsn.h).orElse(bsp.a());
+
+      for (bjm $$7 : $$6.b($$0x -> !$$0x.m_() && ($$0x instanceof caq || $$0x instanceof cak))) {
+         if ($$7 instanceof caq $$8) {
+            $$4++;
+            if ($$3.isEmpty()) {
+               $$3 = Optional.of($$8);
+            }
+         }
+
+         if ($$7 instanceof cak $$9) {
+            $$5.add($$9);
+         }
+      }
+
+      $$2.a(bsn.ap, $$3);
+      $$2.a(bsn.ao, $$5);
+      $$2.a(bsn.ar, $$4);
+      $$2.a(bsn.as, $$5.size());
    }
 
-   private Optional<bjg> b(bjg $$0) {
-      return this.a($$0).flatMap($$1 -> $$1.a($$1x -> this.a($$0, $$1x)));
-   }
-
-   protected Optional<bsj> a(bjg $$0) {
-      return $$0.dN().c(bsh.h);
+   private Optional<gw> b(akt $$0, cak $$1) {
+      return gw.a($$1.dl(), 8, 4, $$1x -> $$0.a_($$1x).a(apv.aR));
    }
 }

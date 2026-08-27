@@ -1,78 +1,70 @@
-import java.util.List;
+import java.util.EnumSet;
 import javax.annotation.Nullable;
 
-public class bqa extends bqb {
-   public static final int a = 8;
-   public static final int b = 4;
-   public static final int c = 3;
-   private final bur d;
-   @Nullable
-   private bur e;
-   private final double f;
-   private int g;
+public class bqa extends bqh {
+   protected final bjv a;
+   private double b;
+   private double c;
+   private double d;
+   private final double e;
+   private final cqb f;
 
-   public bqa(bur $$0, double $$1) {
-      this.d = $$0;
-      this.f = $$1;
+   public bqa(bjv $$0, double $$1) {
+      this.a = $$0;
+      this.e = $$1;
+      this.f = $$0.dL();
+      this.a(EnumSet.of(bqh.a.a));
    }
 
    @Override
    public boolean a() {
-      if (this.d.h() >= 0) {
+      if (this.a.q() != null) {
+         return false;
+      } else if (!this.f.N()) {
+         return false;
+      } else if (!this.a.bM()) {
+         return false;
+      } else if (!this.f.g(this.a.dl())) {
          return false;
       } else {
-         List<? extends bur> $$0 = this.d.dL().a((Class<? extends bur>)this.d.getClass(), this.d.cG().c(8.0, 4.0, 8.0));
-         bur $$1 = null;
-         double $$2 = Double.MAX_VALUE;
+         return !this.a.c(bjb.f).b() ? false : this.h();
+      }
+   }
 
-         for (bur $$3 : $$0) {
-            if ($$3.h() >= 0) {
-               double $$4 = this.d.f($$3);
-               if (!($$4 > $$2)) {
-                  $$2 = $$4;
-                  $$1 = $$3;
-               }
-            }
-         }
-
-         if ($$1 == null) {
-            return false;
-         } else if ($$2 < 9.0) {
-            return false;
-         } else {
-            this.e = $$1;
-            return true;
-         }
+   protected boolean h() {
+      ehh $$0 = this.i();
+      if ($$0 == null) {
+         return false;
+      } else {
+         this.b = $$0.c;
+         this.c = $$0.d;
+         this.d = $$0.e;
+         return true;
       }
    }
 
    @Override
    public boolean b() {
-      if (this.d.h() >= 0) {
-         return false;
-      } else if (!this.e.bv()) {
-         return false;
-      } else {
-         double $$0 = this.d.f(this.e);
-         return !($$0 < 9.0) && !($$0 > 256.0);
-      }
+      return !this.a.L().l();
    }
 
    @Override
    public void c() {
-      this.g = 0;
+      this.a.L().a(this.b, this.c, this.d, this.e);
    }
 
-   @Override
-   public void d() {
-      this.e = null;
-   }
+   @Nullable
+   protected ehh i() {
+      ash $$0 = this.a.ef();
+      gw $$1 = this.a.dl();
 
-   @Override
-   public void e() {
-      if (--this.g <= 0) {
-         this.g = this.a(10);
-         this.d.L().a(this.e, this.f);
+      for (int $$2 = 0; $$2 < 10; $$2++) {
+         gw $$3 = $$1.b($$0.a(20) - 10, $$0.a(6) - 3, $$0.a(20) - 10);
+         if (!this.f.g($$3) && this.a.h($$3) < 0.0F) {
+            return ehh.c($$3);
+         }
       }
+
+      return null;
    }
 }

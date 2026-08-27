@@ -1,8 +1,9 @@
-import javax.annotation.Nullable;
-
 public interface gbj {
-   gbq a(aew var1);
+   default j b() {
+      return j.a();
+   }
 
-   @Nullable
-   gbf a(aew var1, gbn var2);
+   default boolean c() {
+      return false;
+   }
 }

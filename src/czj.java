@@ -1,52 +1,44 @@
-public class czj extends ctd implements csx {
-   public static final dgj d = dfz.aU;
-   protected static final float e = 6.0F;
-   protected static final eig f = csv.a(2.0, 0.0, 2.0, 14.0, 12.0, 14.0);
-   private final dep a;
+import com.mojang.serialization.MapCodec;
 
-   protected czj(dep $$0, dfi.d $$1) {
-      super($$1);
-      this.a = $$0;
-      this.k(this.C.b().a(d, Integer.valueOf(0)));
+public abstract class czj extends cvd {
+   protected static final float f = 6.0F;
+   protected static final float g = 10.0F;
+   protected static final eia h = ctc.a(6.0, 0.0, 6.0, 10.0, 16.0, 10.0);
+   protected static final eia i = ctc.a(6.0, 6.0, 0.0, 10.0, 10.0, 16.0);
+   protected static final eia j = ctc.a(0.0, 6.0, 6.0, 16.0, 10.0, 10.0);
+
+   protected czj(dfc.d $$0) {
+      super($$0);
    }
 
    @Override
-   public eig a(dfj $$0, cpb $$1, gw $$2, ehs $$3) {
-      return f;
-   }
+   protected abstract MapCodec<? extends czj> a();
 
    @Override
-   public void b(dfj $$0, akq $$1, gw $$2, asc $$3) {
-      if ($$1.z($$2.c()) >= 9 && $$3.a(7) == 0) {
-         this.a($$1, $$2, $$0, $$3);
+   public eia a(dfd $$0, cph $$1, gw $$2, ehm $$3) {
+      switch ($$0.c(a).o()) {
+         case a:
+         default:
+            return j;
+         case c:
+            return i;
+         case b:
+            return h;
       }
    }
 
-   public void a(akq $$0, gw $$1, dfj $$2, asc $$3) {
-      if ($$2.c(d) == 0) {
-         $$0.a($$1, $$2.a(d), 4);
-      } else {
-         this.a.a($$0, $$0.k().g(), $$1, $$2, $$3);
-      }
+   @Override
+   public dfd a(dfd $$0, czn $$1) {
+      return $$0.a(a, $$1.a($$0.c(a)));
    }
 
    @Override
-   public boolean a(cpy $$0, gw $$1, dfj $$2) {
-      return true;
+   public dfd a(dfd $$0, cxx $$1) {
+      return $$0.a(a, $$1.b($$0.c(a)));
    }
 
    @Override
-   public boolean a(cpv $$0, asc $$1, gw $$2, dfj $$3) {
-      return (double)$$0.z.i() < 0.45;
-   }
-
-   @Override
-   public void a(akq $$0, asc $$1, gw $$2, dfj $$3) {
-      this.a($$0, $$2, $$3, $$1);
-   }
-
-   @Override
-   protected void a(dfk.a<csv, dfj> $$0) {
-      $$0.a(d);
+   public boolean a(dfd $$0, cph $$1, gw $$2, eaw $$3) {
+      return false;
    }
 }

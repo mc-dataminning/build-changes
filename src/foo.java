@@ -1,140 +1,197 @@
-import com.mojang.blaze3d.systems.RenderSystem;
+import com.google.common.collect.ImmutableList;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Map;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
-import org.joml.Matrix4f;
 
 public class foo {
-   private static final aew a = new aew("textures/misc/underwater.png");
+   public static final aez a = new aez("textures/atlas/shulker_boxes.png");
+   public static final aez b = new aez("textures/atlas/beds.png");
+   public static final aez c = new aez("textures/atlas/banner_patterns.png");
+   public static final aez d = new aez("textures/atlas/shield_patterns.png");
+   public static final aez e = new aez("textures/atlas/signs.png");
+   public static final aez f = new aez("textures/atlas/chest.png");
+   public static final aez g = new aez("textures/atlas/armor_trims.png");
+   public static final aez h = new aez("textures/atlas/decorated_pot.png");
+   private static final foi A = foi.e(a);
+   private static final foi B = foi.c(b);
+   private static final foi C = foi.m(c);
+   private static final foi D = foi.m(d);
+   private static final foi E = foi.e(e);
+   private static final foi F = foi.d(f);
+   private static final foi G = foi.a(g);
+   private static final foi H = foi.b(g);
+   private static final foi I = foi.c(fyz.e);
+   private static final foi J = foi.d(fyz.e);
+   private static final foi K = foi.g(fyz.e);
+   private static final foi L = foi.h(fyz.e);
+   public static final gbe i = new gbe(a, new aez("entity/shulker/shulker"));
+   public static final List<gbe> j = Stream.of(
+         "white", "orange", "magenta", "light_blue", "yellow", "lime", "pink", "gray", "light_gray", "cyan", "purple", "blue", "brown", "green", "red", "black"
+      )
+      .map($$0 -> new gbe(a, new aez("entity/shulker/shulker_" + $$0)))
+      .collect(ImmutableList.toImmutableList());
+   public static final Map<dgq, gbe> k = dgq.a().collect(Collectors.toMap(Function.identity(), foo::c));
+   public static final Map<dgq, gbe> l = dgq.a().collect(Collectors.toMap(Function.identity(), foo::d));
+   public static final Map<aey<dcq>, gbe> m = jb.am.f().stream().collect(Collectors.toMap(Function.identity(), foo::d));
+   public static final Map<aey<dcq>, gbe> n = jb.am.f().stream().collect(Collectors.toMap(Function.identity(), foo::e));
+   public static final Map<aey<String>, gbe> o = jb.ao.f().stream().collect(Collectors.toMap(Function.identity(), foo::f));
+   public static final gbe[] p = Arrays.stream(chz.values())
+      .sorted(Comparator.comparingInt(chz::a))
+      .map($$0 -> new gbe(b, new aez("entity/bed/" + $$0.b())))
+      .toArray(gbe[]::new);
+   public static final gbe q = a("trapped");
+   public static final gbe r = a("trapped_left");
+   public static final gbe s = a("trapped_right");
+   public static final gbe t = a("christmas");
+   public static final gbe u = a("christmas_left");
+   public static final gbe v = a("christmas_right");
+   public static final gbe w = a("normal");
+   public static final gbe x = a("normal_left");
+   public static final gbe y = a("normal_right");
+   public static final gbe z = a("ender");
 
-   public static void a(eqv $$0, elp $$1) {
-      cbu $$2 = $$0.s;
-      if (!$$2.af) {
-         dfj $$3 = a($$2);
-         if ($$3 != null) {
-            a($$0.an().a().a($$3), $$1);
-         }
+   public static foi a() {
+      return C;
+   }
+
+   public static foi b() {
+      return D;
+   }
+
+   public static foi c() {
+      return B;
+   }
+
+   public static foi d() {
+      return A;
+   }
+
+   public static foi e() {
+      return E;
+   }
+
+   public static foi f() {
+      return E;
+   }
+
+   public static foi g() {
+      return F;
+   }
+
+   public static foi a(boolean $$0) {
+      return $$0 ? H : G;
+   }
+
+   public static foi h() {
+      return I;
+   }
+
+   public static foi i() {
+      return J;
+   }
+
+   public static foi j() {
+      return K;
+   }
+
+   public static foi k() {
+      return L;
+   }
+
+   public static void a(Consumer<gbe> $$0) {
+      $$0.accept(i);
+      j.forEach($$0);
+      m.values().forEach($$0);
+      n.values().forEach($$0);
+      k.values().forEach($$0);
+      l.values().forEach($$0);
+
+      for (gbe $$1 : p) {
+         $$0.accept($$1);
       }
 
-      if (!$$0.s.M_()) {
-         if ($$0.s.a(apx.a)) {
-            b($$0, $$1);
-         }
+      $$0.accept(q);
+      $$0.accept(r);
+      $$0.accept(s);
+      $$0.accept(t);
+      $$0.accept(u);
+      $$0.accept(v);
+      $$0.accept(w);
+      $$0.accept(x);
+      $$0.accept(y);
+      $$0.accept(z);
+   }
 
-         if ($$0.s.bM()) {
-            c($$0, $$1);
-         }
-      }
+   private static gbe c(dgq $$0) {
+      return new gbe(e, new aez("entity/signs/" + $$0.b()));
+   }
+
+   private static gbe d(dgq $$0) {
+      return new gbe(e, new aez("entity/signs/hanging/" + $$0.b()));
+   }
+
+   public static gbe a(dgq $$0) {
+      return k.get($$0);
+   }
+
+   public static gbe b(dgq $$0) {
+      return l.get($$0);
+   }
+
+   private static gbe d(aey<dcq> $$0) {
+      return new gbe(c, dcq.a($$0, true));
+   }
+
+   public static gbe a(aey<dcq> $$0) {
+      return m.get($$0);
+   }
+
+   private static gbe e(aey<dcq> $$0) {
+      return new gbe(d, dcq.a($$0, false));
+   }
+
+   public static gbe b(aey<dcq> $$0) {
+      return n.get($$0);
+   }
+
+   private static gbe a(String $$0) {
+      return new gbe(f, new aez("entity/chest/" + $$0));
+   }
+
+   private static gbe f(aey<String> $$0) {
+      return new gbe(h, ddp.a($$0));
    }
 
    @Nullable
-   private static dfj a(cbu $$0) {
-      gw.a $$1 = new gw.a();
+   public static gbe c(@Nullable aey<String> $$0) {
+      return $$0 == null ? null : o.get($$0);
+   }
 
-      for (int $$2 = 0; $$2 < 8; $$2++) {
-         double $$3 = $$0.dq() + (double)(((float)(($$2 >> 0) % 2) - 0.5F) * $$0.df() * 0.8F);
-         double $$4 = $$0.du() + (double)(((float)(($$2 >> 1) % 2) - 0.5F) * 0.1F);
-         double $$5 = $$0.dw() + (double)(((float)(($$2 >> 2) % 2) - 0.5F) * $$0.df() * 0.8F);
-         $$1.b($$3, $$4, $$5);
-         dfj $$6 = $$0.dL().a_($$1);
-         if ($$6.l() != cza.a && $$6.p($$0.dL(), $$1)) {
-            return $$6;
-         }
+   public static gbe a(dcz $$0, dfv $$1, boolean $$2) {
+      if ($$0 instanceof ddt) {
+         return z;
+      } else if ($$2) {
+         return a($$1, t, u, v);
+      } else {
+         return $$0 instanceof deq ? a($$1, q, r, s) : a($$1, w, x, y);
       }
-
-      return null;
    }
 
-   private static void a(fze $$0, elp $$1) {
-      RenderSystem.setShaderTexture(0, $$0.i());
-      RenderSystem.setShader(fnx::r);
-      elk $$2 = elr.a().c();
-      float $$3 = 0.1F;
-      float $$4 = -1.0F;
-      float $$5 = 1.0F;
-      float $$6 = -1.0F;
-      float $$7 = 1.0F;
-      float $$8 = -0.5F;
-      float $$9 = $$0.c();
-      float $$10 = $$0.d();
-      float $$11 = $$0.g();
-      float $$12 = $$0.h();
-      Matrix4f $$13 = $$1.c().a();
-      $$2.a(elu.b.h, eln.r);
-      $$2.a($$13, -1.0F, -1.0F, -0.5F).a(0.1F, 0.1F, 0.1F, 1.0F).a($$10, $$12).e();
-      $$2.a($$13, 1.0F, -1.0F, -0.5F).a(0.1F, 0.1F, 0.1F, 1.0F).a($$9, $$12).e();
-      $$2.a($$13, 1.0F, 1.0F, -0.5F).a(0.1F, 0.1F, 0.1F, 1.0F).a($$9, $$11).e();
-      $$2.a($$13, -1.0F, 1.0F, -0.5F).a(0.1F, 0.1F, 0.1F, 1.0F).a($$10, $$11).e();
-      ell.a($$2.d());
-   }
-
-   private static void b(eqv $$0, elp $$1) {
-      RenderSystem.setShader(fnx::s);
-      RenderSystem.setShaderTexture(0, a);
-      elk $$2 = elr.a().c();
-      gw $$3 = gw.a($$0.s.dq(), $$0.s.du(), $$0.s.dw());
-      float $$4 = fod.a($$0.s.dL().C_(), $$0.s.dL().z($$3));
-      RenderSystem.enableBlend();
-      RenderSystem.setShaderColor($$4, $$4, $$4, 0.1F);
-      float $$5 = 4.0F;
-      float $$6 = -1.0F;
-      float $$7 = 1.0F;
-      float $$8 = -1.0F;
-      float $$9 = 1.0F;
-      float $$10 = -0.5F;
-      float $$11 = -$$0.s.dB() / 64.0F;
-      float $$12 = $$0.s.dD() / 64.0F;
-      Matrix4f $$13 = $$1.c().a();
-      $$2.a(elu.b.h, eln.q);
-      $$2.a($$13, -1.0F, -1.0F, -0.5F).a(4.0F + $$11, 4.0F + $$12).e();
-      $$2.a($$13, 1.0F, -1.0F, -0.5F).a(0.0F + $$11, 4.0F + $$12).e();
-      $$2.a($$13, 1.0F, 1.0F, -0.5F).a(0.0F + $$11, 0.0F + $$12).e();
-      $$2.a($$13, -1.0F, 1.0F, -0.5F).a(4.0F + $$11, 0.0F + $$12).e();
-      ell.a($$2.d());
-      RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
-      RenderSystem.disableBlend();
-   }
-
-   private static void c(eqv $$0, elp $$1) {
-      elk $$2 = elr.a().c();
-      RenderSystem.setShader(fnx::r);
-      RenderSystem.depthFunc(519);
-      RenderSystem.depthMask(false);
-      RenderSystem.enableBlend();
-      fze $$3 = gbk.b.c();
-      RenderSystem.setShaderTexture(0, $$3.i());
-      float $$4 = $$3.c();
-      float $$5 = $$3.d();
-      float $$6 = ($$4 + $$5) / 2.0F;
-      float $$7 = $$3.g();
-      float $$8 = $$3.h();
-      float $$9 = ($$7 + $$8) / 2.0F;
-      float $$10 = $$3.k();
-      float $$11 = arw.i($$10, $$4, $$6);
-      float $$12 = arw.i($$10, $$5, $$6);
-      float $$13 = arw.i($$10, $$7, $$9);
-      float $$14 = arw.i($$10, $$8, $$9);
-      float $$15 = 1.0F;
-
-      for (int $$16 = 0; $$16 < 2; $$16++) {
-         $$1.a();
-         float $$17 = -0.5F;
-         float $$18 = 0.5F;
-         float $$19 = -0.5F;
-         float $$20 = 0.5F;
-         float $$21 = -0.5F;
-         $$1.a((float)(-($$16 * 2 - 1)) * 0.24F, -0.3F, 0.0F);
-         $$1.a(a.d.rotationDegrees((float)($$16 * 2 - 1) * 10.0F));
-         Matrix4f $$22 = $$1.c().a();
-         $$2.a(elu.b.h, eln.r);
-         $$2.a($$22, -0.5F, -0.5F, -0.5F).a(1.0F, 1.0F, 1.0F, 0.9F).a($$12, $$14).e();
-         $$2.a($$22, 0.5F, -0.5F, -0.5F).a(1.0F, 1.0F, 1.0F, 0.9F).a($$11, $$14).e();
-         $$2.a($$22, 0.5F, 0.5F, -0.5F).a(1.0F, 1.0F, 1.0F, 0.9F).a($$11, $$13).e();
-         $$2.a($$22, -0.5F, 0.5F, -0.5F).a(1.0F, 1.0F, 1.0F, 0.9F).a($$12, $$13).e();
-         ell.a($$2.d());
-         $$1.b();
+   private static gbe a(dfv $$0, gbe $$1, gbe $$2, gbe $$3) {
+      switch ($$0) {
+         case b:
+            return $$2;
+         case c:
+            return $$3;
+         case a:
+         default:
+            return $$1;
       }
-
-      RenderSystem.disableBlend();
-      RenderSystem.depthMask(true);
-      RenderSystem.depthFunc(515);
    }
 }

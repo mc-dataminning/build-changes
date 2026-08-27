@@ -1,41 +1,32 @@
-import javax.annotation.Nullable;
+public class aas implements ve<wx> {
+   private final tl a;
+   private final tl b;
 
-public class aas implements vd<ww> {
-   private final int a;
-   @Nullable
-   private final qw b;
-
-   public aas(int $$0, @Nullable qw $$1) {
+   public aas(tl $$0, tl $$1) {
       this.a = $$0;
       this.b = $$1;
    }
 
    public aas(so $$0) {
       this.a = $$0.m();
-      this.b = $$0.p();
+      this.b = $$0.m();
    }
 
    @Override
    public void a(so $$0) {
-      $$0.c(this.a);
-      $$0.a((rq)this.b);
+      $$0.a(this.a);
+      $$0.a(this.b);
    }
 
-   public void a(ww $$0) {
+   public void a(wx $$0) {
       $$0.a(this);
    }
 
-   public int a() {
+   public tl a() {
       return this.a;
    }
 
-   @Nullable
-   public qw d() {
+   public tl d() {
       return this.b;
-   }
-
-   @Override
-   public boolean b() {
-      return true;
    }
 }

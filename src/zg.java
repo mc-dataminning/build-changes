@@ -1,31 +1,36 @@
-public record zg(aaz d, byte e) implements vd<ww> {
-   public static final byte a = 1;
-   public static final byte b = 2;
-   public static final byte c = 3;
+import javax.annotation.Nullable;
+
+public class zg implements ve<wx> {
+   private final int a;
+   private final bih b;
+
+   public zg(int $$0, bih $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
 
    public zg(so $$0) {
-      this(new aaz($$0), $$0.readByte());
+      this.a = $$0.n();
+      this.b = $$0.a(jb.e);
    }
 
    @Override
    public void a(so $$0) {
-      this.d.a($$0);
-      $$0.k(this.e);
+      $$0.c(this.a);
+      $$0.a(jb.e, this.b);
    }
 
-   public void a(ww $$0) {
+   public void a(wx $$0) {
       $$0.a(this);
    }
 
-   public boolean a(byte $$0) {
-      return (this.e & $$0) != 0;
+   @Nullable
+   public biw a(cqb $$0) {
+      return $$0.a(this.a);
    }
 
-   public aaz a() {
-      return this.d;
-   }
-
-   public byte d() {
-      return this.e;
+   @Nullable
+   public bih a() {
+      return this.b;
    }
 }

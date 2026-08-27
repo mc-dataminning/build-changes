@@ -1,100 +1,148 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.function.Function;
-import java.util.function.UnaryOperator;
-import org.slf4j.Logger;
+import javax.annotation.Nullable;
 
-public class clh {
-   public static final Codec<clh> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(cli.b.fieldOf("material").forGetter(clh::b), clk.b.fieldOf("pattern").forGetter(clh::a)).apply($$0, clh::new)
-   );
-   private static final Logger c = LogUtils.getLogger();
-   public static final String b = "Trim";
-   private static final tl d = tl.c(ac.a("item", new aew("smithing_template.upgrade"))).a(n.h);
-   private final he<cli> e;
-   private final he<clk> f;
-   private final Function<cgq, aew> g;
-   private final Function<cgq, aew> h;
+public class clh extends cjg {
+   public static final int a = 16;
+   public static final int b = 32;
+   public static final int c = 1024;
+   public static final int d = 32767;
+   public static final int e = 100;
+   public static final int f = 2;
+   public static final String g = "title";
+   public static final String h = "filtered_title";
+   public static final String i = "author";
+   public static final String j = "pages";
+   public static final String k = "filtered_pages";
+   public static final String r = "generation";
+   public static final String s = "resolved";
 
-   public clh(he<cli> $$0, he<clk> $$1) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = ac.b($$1x -> {
-         aew $$2 = $$1.a().a();
-         String $$3 = this.c($$1x);
-         return $$2.a((UnaryOperator<String>)($$1xx -> "trims/models/armor/" + $$1xx + "_leggings_" + $$3));
-      });
-      this.h = ac.b($$1x -> {
-         aew $$2 = $$1.a().a();
-         String $$3 = this.c($$1x);
-         return $$2.a((UnaryOperator<String>)($$1xx -> "trims/models/armor/" + $$1xx + "_" + $$3));
-      });
+   public clh(cjg.a $$0) {
+      super($$0);
    }
 
-   private String c(cgq $$0) {
-      Map<cgr, String> $$1 = this.e.a().d();
-      return $$0 instanceof cgr && $$1.containsKey($$0) ? $$1.get($$0) : this.e.a().a();
+   public static boolean a(@Nullable qw $$0) {
+      if (!clg.a($$0)) {
+         return false;
+      } else if (!$$0.b("title", 8)) {
+         return false;
+      } else {
+         String $$1 = $$0.l("title");
+         return $$1.length() > 32 ? false : $$0.b("author", 8);
+      }
    }
 
-   public boolean a(he<clk> $$0, he<cli> $$1) {
-      return $$0 == this.f && $$1 == this.e;
+   public static int d(cjl $$0) {
+      return $$0.v().h("generation");
    }
 
-   public he<clk> a() {
-      return this.f;
-   }
-
-   public he<cli> b() {
-      return this.e;
-   }
-
-   public aew a(cgq $$0) {
-      return this.g.apply($$0);
-   }
-
-   public aew b(cgq $$0) {
-      return this.h.apply($$0);
+   public static int k(cjl $$0) {
+      qw $$1 = $$0.v();
+      return $$1 != null ? $$1.c("pages", 8).size() : 0;
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      return !($$0 instanceof clh $$1) ? false : $$1.f == this.f && $$1.e == this.e;
+   public tl m(cjl $$0) {
+      qw $$1 = $$0.v();
+      if ($$1 != null) {
+         String $$2 = $$1.l("title");
+         if (!asv.b($$2)) {
+            return tl.b($$2);
+         }
+      }
+
+      return super.m($$0);
    }
 
-   public static boolean a(hr $$0, cjf $$1, clh $$2) {
-      if ($$1.a(aqa.aH)) {
-         $$1.w().a("Trim", (rq)a.encodeStart(aeu.a(ri.a, $$0), $$2).result().orElseThrow());
-         return true;
+   @Override
+   public void a(cjl $$0, @Nullable cqb $$1, List<tl> $$2, clc $$3) {
+      if ($$0.u()) {
+         qw $$4 = $$0.v();
+         String $$5 = $$4.l("author");
+         if (!asv.b($$5)) {
+            $$2.add(tl.a("book.byAuthor", $$5).a(n.h));
+         }
+
+         $$2.add(tl.c("book.generation." + $$4.h("generation")).a(n.h));
+      }
+   }
+
+   @Override
+   public bhe a(clv $$0) {
+      cqb $$1 = $$0.q();
+      gw $$2 = $$0.a();
+      dfd $$3 = $$1.a_($$2);
+      if ($$3.a(cte.oa)) {
+         return cxl.a($$0.o(), $$1, $$2, $$3, $$0.n()) ? bhe.a($$1.B) : bhe.d;
+      } else {
+         return bhe.d;
+      }
+   }
+
+   @Override
+   public bhf<cjl> a(cqb $$0, cca $$1, bhd $$2) {
+      cjl $$3 = $$1.b($$2);
+      $$1.a($$3, $$2);
+      $$1.b(apq.c.b(this));
+      return bhf.a($$3, $$0.w_());
+   }
+
+   public static boolean a(cjl $$0, @Nullable dt $$1, @Nullable cca $$2) {
+      qw $$3 = $$0.v();
+      if ($$3 != null && !$$3.q("resolved")) {
+         $$3.a("resolved", true);
+         if (!a($$3)) {
+            return false;
+         } else {
+            rc $$4 = $$3.c("pages", 8);
+            rc $$5 = new rc();
+
+            for (int $$6 = 0; $$6 < $$4.size(); $$6++) {
+               String $$7 = a($$1, $$2, $$4.j($$6));
+               if ($$7.length() > 32767) {
+                  return false;
+               }
+
+               $$5.c($$6, ro.a($$7));
+            }
+
+            if ($$3.b("filtered_pages", 10)) {
+               qw $$8 = $$3.p("filtered_pages");
+               qw $$9 = new qw();
+
+               for (String $$10 : $$8.e()) {
+                  String $$11 = a($$1, $$2, $$8.l($$10));
+                  if ($$11.length() > 32767) {
+                     return false;
+                  }
+
+                  $$9.a($$10, $$11);
+               }
+
+               $$3.a("filtered_pages", $$9);
+            }
+
+            $$3.a("pages", $$5);
+            return true;
+         }
       } else {
          return false;
       }
    }
 
-   public static Optional<clh> a(hr $$0, cjf $$1, boolean $$2) {
-      if ($$1.a(aqa.aH) && $$1.v() != null && $$1.v().e("Trim")) {
-         qw $$3 = $$1.b("Trim");
-         clh $$4 = (clh)a.parse(aeu.a(ri.a, $$0), $$3).resultOrPartial($$1x -> {
-            if (!$$2) {
-               c.warn($$1x);
-            }
-         }).orElse(null);
-         return Optional.ofNullable($$4);
-      } else {
-         return Optional.empty();
+   private static String a(@Nullable dt $$0, @Nullable cca $$1, String $$2) {
+      tl $$5;
+      try {
+         $$5 = tl.a.b($$2);
+         $$5 = to.a($$0, $$5, $$1, 0);
+      } catch (Exception var5) {
+         $$5 = tl.b($$2);
       }
+
+      return tl.a.a($$5);
    }
 
-   public static void a(cjf $$0, hr $$1, List<tl> $$2) {
-      Optional<clh> $$3 = a($$1, $$0, true);
-      if ($$3.isPresent()) {
-         clh $$4 = $$3.get();
-         $$2.add(d);
-         $$2.add(tk.a().b($$4.a().a().a($$4.b())));
-         $$2.add(tk.a().b($$4.b().a().e()));
-      }
+   @Override
+   public boolean i(cjl $$0) {
+      return true;
    }
 }

@@ -1,22 +1,21 @@
-public record wm(gw b, float c, float d, float e, float f, float g) implements vw {
-   public static final aew a = new aew("debug/worldgen_attempt");
+import java.util.HashSet;
+import java.util.Set;
+
+public record wm(Set<hw> b, Set<hw> c) implements vx {
+   public static final aez a = new aez("debug/village_sections");
 
    public wm(so $$0) {
-      this($$0.e(), $$0.readFloat(), $$0.readFloat(), $$0.readFloat(), $$0.readFloat(), $$0.readFloat());
+      this($$0.a(HashSet::new, so::g), $$0.a(HashSet::new, so::g));
    }
 
    @Override
    public void a(so $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
-      $$0.a(this.f);
-      $$0.a(this.g);
+      $$0.a(this.b, so::a);
+      $$0.a(this.c, so::a);
    }
 
    @Override
-   public aew a() {
+   public aez a() {
       return a;
    }
 }

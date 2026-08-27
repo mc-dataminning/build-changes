@@ -1,26 +1,48 @@
+import java.util.EnumSet;
 import javax.annotation.Nullable;
 
-public class bro extends bqy {
-   public static final float i = 0.001F;
-   protected final float j;
-
-   public bro(bjp $$0, double $$1) {
-      this($$0, $$1, 0.001F);
-   }
-
-   public bro(bjp $$0, double $$1, float $$2) {
-      super($$0, $$1);
-      this.j = $$2;
-   }
-
+public class bro extends bqh {
+   private final bza a;
    @Nullable
+   private bjm b;
+
+   public bro(bza $$0) {
+      this.a = $$0;
+      this.a(EnumSet.of(bqh.a.a));
+   }
+
    @Override
-   protected ehn h() {
-      if (this.b.ba()) {
-         ehn $$0 = btz.a(this.b, 15, 7);
-         return $$0 == null ? super.h() : $$0;
+   public boolean a() {
+      bjm $$0 = this.a.q();
+      return this.a.t() > 0 || $$0 != null && this.a.f((biw)$$0) < 9.0;
+   }
+
+   @Override
+   public void c() {
+      this.a.L().n();
+      this.b = this.a.q();
+   }
+
+   @Override
+   public void d() {
+      this.b = null;
+   }
+
+   @Override
+   public boolean Q_() {
+      return true;
+   }
+
+   @Override
+   public void e() {
+      if (this.b == null) {
+         this.a.b(-1);
+      } else if (this.a.f((biw)this.b) > 49.0) {
+         this.a.b(-1);
+      } else if (!this.a.M().a(this.b)) {
+         this.a.b(-1);
       } else {
-         return this.b.ef().i() >= this.j ? btz.a(this.b, 10, 7) : super.h();
+         this.a.b(1);
       }
    }
 }

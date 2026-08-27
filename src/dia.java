@@ -1,283 +1,432 @@
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import java.util.Collections;
+import com.google.common.collect.Maps;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.Dynamic;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import it.unimi.dsi.fastutil.shorts.ShortList;
+import it.unimi.dsi.fastutil.shorts.ShortListIterator;
+import java.util.Arrays;
 import java.util.EnumSet;
-import java.util.List;
 import java.util.Map;
+import java.util.Objects;
+import java.util.Map.Entry;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class dia extends dhf {
-   @Nullable
-   private volatile eab n;
-   private volatile dhk o = dhk.c;
-   private final List<qw> p = Lists.newArrayList();
-   private final Map<dko.a, dhe> q = new Object2ObjectArrayMap();
-   @Nullable
-   private dkg r;
-   private final eix<csv> s;
-   private final eix<eal> t;
+public class dia {
+   private static final Codec<dhs<dfd>> h = dhs.a(ctc.q, dfd.b, dhs.d.d, cte.a.o());
+   private static final Logger i = LogUtils.getLogger();
+   private static final String j = "UpgradeData";
+   private static final String k = "block_ticks";
+   private static final String l = "fluid_ticks";
+   public static final String a = "xPos";
+   public static final String b = "zPos";
+   public static final String c = "Heightmaps";
+   public static final String d = "isLightOn";
+   public static final String e = "sections";
+   public static final String f = "BlockLight";
+   public static final String g = "SkyLight";
 
-   public dia(cpc $$0, did $$1, cpx $$2, hq<cqt> $$3, @Nullable dlv $$4) {
-      this($$0, $$1, null, new eix<>(), new eix<>(), $$2, $$3, $$4);
-   }
-
-   public dia(cpc $$0, did $$1, @Nullable dhr[] $$2, eix<csv> $$3, eix<eal> $$4, cpx $$5, hq<cqt> $$6, @Nullable dlv $$7) {
-      super($$0, $$1, $$5, $$6, 0L, $$2, $$7);
-      this.s = $$3;
-      this.t = $$4;
-   }
-
-   @Override
-   public ejc<csv> o() {
-      return this.s;
-   }
-
-   @Override
-   public ejc<eal> p() {
-      return this.t;
-   }
-
-   @Override
-   public dhf.a q() {
-      return new dhf.a(this.s, this.t);
-   }
-
-   @Override
-   public dfj a_(gw $$0) {
-      int $$1 = $$0.v();
-      if (this.d($$1)) {
-         return csw.nb.n();
-      } else {
-         dhr $$2 = this.b(this.e($$1));
-         return $$2.c() ? csw.a.n() : $$2.a($$0.u() & 15, $$1 & 15, $$0.w() & 15);
+   public static dhu a(akt $$0, bul $$1, cpi $$2, qw $$3) {
+      cpi $$4 = new cpi($$3.h("xPos"), $$3.h("zPos"));
+      if (!Objects.equals($$2, $$4)) {
+         i.error("Chunk file at {} is in the wrong location; relocating. (Expected {}, got {})", new Object[]{$$2, $$2, $$4});
       }
-   }
 
-   @Override
-   public eam b_(gw $$0) {
-      int $$1 = $$0.v();
-      if (this.d($$1)) {
-         return ean.a.g();
-      } else {
-         dhr $$2 = this.b(this.e($$1));
-         return $$2.c() ? ean.a.g() : $$2.b($$0.u() & 15, $$1 & 15, $$0.w() & 15);
+      dhx $$5 = $$3.b("UpgradeData", 10) ? new dhx($$3.p("UpgradeData"), $$0) : dhx.a;
+      boolean $$6 = $$3.q("isLightOn");
+      rc $$7 = $$3.c("sections", 10);
+      int $$8 = $$0.ak();
+      dhl[] $$9 = new dhl[$$8];
+      boolean $$10 = $$0.C_().g();
+      dhd $$11 = $$0.k();
+      dzv $$12 = $$11.p();
+      hq<cqz> $$13 = $$0.G_().d(jc.aq);
+      Codec<dht<he<cqz>>> $$14 = a($$13);
+      boolean $$15 = false;
+
+      for (int $$16 = 0; $$16 < $$7.size(); $$16++) {
+         qw $$17 = $$7.a($$16);
+         int $$18 = $$17.f("Y");
+         int $$19 = $$0.f($$18);
+         if ($$19 >= 0 && $$19 < $$9.length) {
+            dhs<dfd> $$20;
+            if ($$17.b("block_states", 10)) {
+               $$20 = (dhs<dfd>)h.parse(ri.a, $$17.p("block_states")).promotePartial($$2x -> a($$2, $$18, $$2x)).getOrThrow(false, i::error);
+            } else {
+               $$20 = new dhs<>(ctc.q, cte.a.o(), dhs.d.d);
+            }
+
+            dht<he<cqz>> $$22;
+            if ($$17.b("biomes", 10)) {
+               $$22 = (dht<he<cqz>>)$$14.parse(ri.a, $$17.p("biomes")).promotePartial($$2x -> a($$2, $$18, $$2x)).getOrThrow(false, i::error);
+            } else {
+               $$22 = new dhs<>($$13.t(), $$13.f(crg.b), dhs.d.e);
+            }
+
+            dhl $$24 = new dhl($$20, $$22);
+            $$9[$$19] = $$24;
+            hw $$25 = hw.a($$2, $$18);
+            $$1.a($$25, $$24);
+         }
+
+         boolean $$26 = $$17.b("BlockLight", 7);
+         boolean $$27 = $$10 && $$17.b("SkyLight", 7);
+         if ($$26 || $$27) {
+            if (!$$15) {
+               $$12.b($$2, true);
+               $$15 = true;
+            }
+
+            if ($$26) {
+               $$12.a(cqk.b, hw.a($$2, $$18), new dhf($$17.m("BlockLight")));
+            }
+
+            if ($$27) {
+               $$12.a(cqk.a, hw.a($$2, $$18), new dhf($$17.m("SkyLight")));
+            }
+         }
       }
-   }
 
-   @Nullable
-   @Override
-   public dfj a(gw $$0, dfj $$1, boolean $$2) {
-      int $$3 = $$0.u();
-      int $$4 = $$0.v();
-      int $$5 = $$0.w();
-      if ($$4 >= this.H_() && $$4 < this.aj()) {
-         int $$6 = this.e($$4);
-         dhr $$7 = this.b($$6);
-         boolean $$8 = $$7.c();
-         if ($$8 && $$1.a(csw.a)) {
-            return $$1;
+      long $$28 = $$3.i("InhabitedTime");
+      dhe.a $$29 = a($$3);
+      dlp $$30;
+      if ($$3.b("blending_data", 10)) {
+         $$30 = (dlp)dlp.e.parse(new Dynamic(ri.a, $$3.p("blending_data"))).resultOrPartial(i::error).orElse(null);
+      } else {
+         $$30 = null;
+      }
+
+      dgz $$34;
+      if ($$29 == dhe.a.b) {
+         eio<ctc> $$32 = eio.a($$3.c("block_ticks", 10), $$0x -> jb.f.b(aez.a($$0x)), $$2);
+         eio<eaf> $$33 = eio.a($$3.c("fluid_ticks", 10), $$0x -> jb.d.b(aez.a($$0x)), $$2);
+         $$34 = new dhk($$0.C(), $$2, $$5, $$32, $$33, $$28, $$9, a($$0, $$3), $$30);
+      } else {
+         eir<ctc> $$35 = eir.a($$3.c("block_ticks", 10), $$0x -> jb.f.b(aez.a($$0x)), $$2);
+         eir<eaf> $$36 = eir.a($$3.c("fluid_ticks", 10), $$0x -> jb.d.b(aez.a($$0x)), $$2);
+         dhu $$37 = new dhu($$2, $$5, $$9, $$35, $$36, $$0, $$13, $$30);
+         $$34 = $$37;
+         $$37.b($$28);
+         if ($$3.b("below_zero_retrogen", 10)) {
+            dka.a.parse(new Dynamic(ri.a, $$3.p("below_zero_retrogen"))).resultOrPartial(i::error).ifPresent($$37::a);
+         }
+
+         dhe $$39 = dhe.a($$3.l("Status"));
+         $$37.a($$39);
+         if ($$39.b(dhe.k)) {
+            $$37.a($$12);
+         }
+      }
+
+      $$34.b($$6);
+      qw $$40 = $$3.p("Heightmaps");
+      EnumSet<dkm.a> $$41 = EnumSet.noneOf(dkm.a.class);
+
+      for (dkm.a $$42 : $$34.j().h()) {
+         String $$43 = $$42.a();
+         if ($$40.b($$43, 12)) {
+            $$34.a($$42, $$40.o($$43));
          } else {
-            int $$9 = hw.b($$3);
-            int $$10 = hw.b($$4);
-            int $$11 = hw.b($$5);
-            dfj $$12 = $$7.a($$9, $$10, $$11, $$1);
-            if (this.o.b(dhk.k)) {
-               boolean $$13 = $$7.c();
-               if ($$13 != $$8) {
-                  this.n.a($$0, $$13);
-               }
+            $$41.add($$42);
+         }
+      }
 
-               if (ead.a(this, $$0, $$12, $$1)) {
-                  this.i.a(this, $$9, $$4, $$11);
-                  this.n.a($$0);
-               }
+      dkm.a($$34, $$41);
+      qw $$44 = $$3.p("structures");
+      $$34.a(a(dvs.a($$0), $$44, $$0.A()));
+      $$34.b(a($$0.G_(), $$2, $$44));
+      if ($$3.q("shouldSave")) {
+         $$34.a(true);
+      }
+
+      rc $$45 = $$3.c("PostProcessing", 9);
+
+      for (int $$46 = 0; $$46 < $$45.size(); $$46++) {
+         rc $$47 = $$45.b($$46);
+
+         for (int $$48 = 0; $$48 < $$47.size(); $$48++) {
+            $$34.a($$47.d($$48), $$46);
+         }
+      }
+
+      if ($$29 == dhe.a.b) {
+         return new dhj((dhk)$$34, false);
+      } else {
+         dhu $$49 = (dhu)$$34;
+         rc $$50 = $$3.c("entities", 10);
+
+         for (int $$51 = 0; $$51 < $$50.size(); $$51++) {
+            $$49.b($$50.a($$51));
+         }
+
+         rc $$52 = $$3.c("block_entities", 10);
+
+         for (int $$53 = 0; $$53 < $$52.size(); $$53++) {
+            qw $$54 = $$52.a($$53);
+            $$34.a($$54);
+         }
+
+         qw $$55 = $$3.p("CarvingMasks");
+
+         for (String $$56 : $$55.e()) {
+            dki.a $$57 = dki.a.valueOf($$56);
+            $$49.a($$57, new dgy($$55.o($$56), $$34.H_()));
+         }
+
+         return $$49;
+      }
+   }
+
+   private static void a(cpi $$0, int $$1, String $$2) {
+      i.error("Recoverable errors when loading section [" + $$0.e + ", " + $$1 + ", " + $$0.f + "]: " + $$2);
+   }
+
+   private static Codec<dht<he<cqz>>> a(hq<cqz> $$0) {
+      return dhs.b($$0.t(), $$0.r(), dhs.d.e, $$0.f(crg.b));
+   }
+
+   public static qw a(akt $$0, dgz $$1) {
+      cpi $$2 = $$1.f();
+      qw $$3 = rj.g(new qw());
+      $$3.a("xPos", $$2.e);
+      $$3.a("yPos", $$1.al());
+      $$3.a("zPos", $$2.f);
+      $$3.a("LastUpdate", $$0.V());
+      $$3.a("InhabitedTime", $$1.u());
+      $$3.a("Status", jb.o.b($$1.j()).toString());
+      dlp $$4 = $$1.t();
+      if ($$4 != null) {
+         dlp.e.encodeStart(ri.a, $$4).resultOrPartial(i::error).ifPresent($$1x -> $$3.a("blending_data", $$1x));
+      }
+
+      dka $$5 = $$1.x();
+      if ($$5 != null) {
+         dka.a.encodeStart(ri.a, $$5).resultOrPartial(i::error).ifPresent($$1x -> $$3.a("below_zero_retrogen", $$1x));
+      }
+
+      dhx $$6 = $$1.r();
+      if (!$$6.a()) {
+         $$3.a("UpgradeData", $$6.b());
+      }
+
+      dhl[] $$7 = $$1.d();
+      rc $$8 = new rc();
+      dzv $$9 = $$0.k().a();
+      hq<cqz> $$10 = $$0.G_().d(jc.aq);
+      Codec<dht<he<cqz>>> $$11 = a($$10);
+      boolean $$12 = $$1.v();
+
+      for (int $$13 = $$9.d(); $$13 < $$9.e(); $$13++) {
+         int $$14 = $$1.f($$13);
+         boolean $$15 = $$14 >= 0 && $$14 < $$7.length;
+         dhf $$16 = $$9.a(cqk.b).a(hw.a($$2, $$13));
+         dhf $$17 = $$9.a(cqk.a).a(hw.a($$2, $$13));
+         if ($$15 || $$16 != null || $$17 != null) {
+            qw $$18 = new qw();
+            if ($$15) {
+               dhl $$19 = $$7[$$14];
+               $$18.a("block_states", (rq)h.encodeStart(ri.a, $$19.h()).getOrThrow(false, i::error));
+               $$18.a("biomes", (rq)$$11.encodeStart(ri.a, $$19.i()).getOrThrow(false, i::error));
             }
 
-            EnumSet<dks.a> $$14 = this.j().h();
-            EnumSet<dks.a> $$15 = null;
+            if ($$16 != null && !$$16.d()) {
+               $$18.a("BlockLight", $$16.a());
+            }
 
-            for (dks.a $$16 : $$14) {
-               dks $$17 = this.h.get($$16);
-               if ($$17 == null) {
-                  if ($$15 == null) {
-                     $$15 = EnumSet.noneOf(dks.a.class);
+            if ($$17 != null && !$$17.d()) {
+               $$18.a("SkyLight", $$17.a());
+            }
+
+            if (!$$18.g()) {
+               $$18.a("Y", (byte)$$13);
+               $$8.add($$18);
+            }
+         }
+      }
+
+      $$3.a("sections", $$8);
+      if ($$12) {
+         $$3.a("isLightOn", true);
+      }
+
+      rc $$20 = new rc();
+
+      for (gw $$21 : $$1.c()) {
+         qw $$22 = $$1.g($$21);
+         if ($$22 != null) {
+            $$20.add($$22);
+         }
+      }
+
+      $$3.a("block_entities", $$20);
+      if ($$1.j().g() == dhe.a.a) {
+         dhu $$23 = (dhu)$$1;
+         rc $$24 = new rc();
+         $$24.addAll($$23.E());
+         $$3.a("entities", $$24);
+         qw $$25 = new qw();
+
+         for (dki.a $$26 : dki.a.values()) {
+            dgy $$27 = $$23.a($$26);
+            if ($$27 != null) {
+               $$25.a($$26.toString(), $$27.a());
+            }
+         }
+
+         $$3.a("CarvingMasks", $$25);
+      }
+
+      a($$0, $$3, $$1.q());
+      $$3.a("PostProcessing", a($$1.n()));
+      qw $$28 = new qw();
+
+      for (Entry<dkm.a, dkm> $$29 : $$1.e()) {
+         if ($$1.j().h().contains($$29.getKey())) {
+            $$28.a($$29.getKey().a(), new rd($$29.getValue().a()));
+         }
+      }
+
+      $$3.a("Heightmaps", $$28);
+      $$3.a("structures", a(dvs.a($$0), $$2, $$1.g(), $$1.h()));
+      return $$3;
+   }
+
+   private static void a(akt $$0, qw $$1, dgz.a $$2) {
+      long $$3 = $$0.z_().e();
+      $$1.a("block_ticks", $$2.a().b($$3, $$0x -> jb.f.b($$0x).toString()));
+      $$1.a("fluid_ticks", $$2.b().b($$3, $$0x -> jb.d.b($$0x).toString()));
+   }
+
+   public static dhe.a a(@Nullable qw $$0) {
+      return $$0 != null ? dhe.a($$0.l("Status")).g() : dhe.a.a;
+   }
+
+   @Nullable
+   private static dhk.c a(akt $$0, qw $$1) {
+      rc $$2 = a($$1, "entities");
+      rc $$3 = a($$1, "block_entities");
+      return $$2 == null && $$3 == null ? null : $$3x -> {
+         if ($$2 != null) {
+            $$0.a(bja.a($$2, $$0));
+         }
+
+         if ($$3 != null) {
+            for (int $$4 = 0; $$4 < $$3.size(); $$4++) {
+               qw $$5 = $$3.a($$4);
+               boolean $$6 = $$5.q("keepPacked");
+               if ($$6) {
+                  $$3x.a($$5);
+               } else {
+                  gw $$7 = dcz.c($$5);
+                  dcz $$8 = dcz.a($$7, $$3x.a_($$7), $$5);
+                  if ($$8 != null) {
+                     $$3x.a($$8);
                   }
-
-                  $$15.add($$16);
                }
             }
-
-            if ($$15 != null) {
-               dks.a(this, $$15);
-            }
-
-            for (dks.a $$18 : $$14) {
-               this.h.get($$18).a($$9, $$4, $$11, $$1);
-            }
-
-            return $$12;
          }
-      } else {
-         return csw.nb.n();
-      }
-   }
-
-   @Override
-   public void a(dcv $$0) {
-      this.k.put($$0.p(), $$0);
+      };
    }
 
    @Nullable
-   @Override
-   public dcv c_(gw $$0) {
-      return this.k.get($$0);
+   private static rc a(qw $$0, String $$1) {
+      rc $$2 = $$0.c($$1, 10);
+      return $$2.isEmpty() ? null : $$2;
    }
 
-   public Map<gw, dcv> D() {
-      return this.k;
-   }
+   private static qw a(dvs $$0, cpi $$1, Map<dvc, dvk> $$2, Map<dvc, LongSet> $$3) {
+      qw $$4 = new qw();
+      qw $$5 = new qw();
+      hq<dvc> $$6 = $$0.b().d(jc.aA);
 
-   public void b(qw $$0) {
-      this.p.add($$0);
-   }
-
-   @Override
-   public void a(biq $$0) {
-      if (!$$0.bN()) {
-         qw $$1 = new qw();
-         $$0.e($$1);
-         this.b($$1);
+      for (Entry<dvc, dvk> $$7 : $$2.entrySet()) {
+         aez $$8 = $$6.b($$7.getKey());
+         $$5.a($$8.toString(), $$7.getValue().a($$0, $$1));
       }
-   }
 
-   @Override
-   public void a(dvi $$0, dvq $$1) {
-      dkg $$2 = this.x();
-      if ($$2 != null && $$1.b()) {
-         dva $$3 = $$1.a();
-         cpx $$4 = this.z();
-         if ($$3.h() < $$4.H_() || $$3.k() >= $$4.aj()) {
-            return;
+      $$4.a("starts", $$5);
+      qw $$9 = new qw();
+
+      for (Entry<dvc, LongSet> $$10 : $$3.entrySet()) {
+         if (!$$10.getValue().isEmpty()) {
+            aez $$11 = $$6.b($$10.getKey());
+            $$9.a($$11.toString(), new rd($$10.getValue()));
          }
       }
 
-      super.a($$0, $$1);
+      $$4.a("References", $$9);
+      return $$4;
    }
 
-   public List<qw> E() {
-      return this.p;
-   }
+   private static Map<dvc, dvk> a(dvs $$0, qw $$1, long $$2) {
+      Map<dvc, dvk> $$3 = Maps.newHashMap();
+      hq<dvc> $$4 = $$0.b().d(jc.aA);
+      qw $$5 = $$1.p("starts");
 
-   @Override
-   public dhk j() {
-      return this.o;
-   }
-
-   public void a(dhk $$0) {
-      this.o = $$0;
-      if (this.r != null && $$0.b(this.r.a())) {
-         this.a(null);
+      for (String $$6 : $$5.e()) {
+         aez $$7 = aez.a($$6);
+         dvc $$8 = $$4.a($$7);
+         if ($$8 == null) {
+            i.error("Unknown structure start: {}", $$7);
+         } else {
+            dvk $$9 = dvk.a($$0, $$5.p($$6), $$2);
+            if ($$9 != null) {
+               $$3.put($$8, $$9);
+            }
+         }
       }
 
-      this.a(true);
+      return $$3;
    }
 
-   @Override
-   public he<cqt> getNoiseBiome(int $$0, int $$1, int $$2) {
-      if (this.k().b(dhk.f)) {
-         return super.getNoiseBiome($$0, $$1, $$2);
-      } else {
-         throw new IllegalStateException("Asking for biomes before we have biomes");
+   private static Map<dvc, LongSet> a(hr $$0, cpi $$1, qw $$2) {
+      Map<dvc, LongSet> $$3 = Maps.newHashMap();
+      hq<dvc> $$4 = $$0.d(jc.aA);
+      qw $$5 = $$2.p("References");
+
+      for (String $$6 : $$5.e()) {
+         aez $$7 = aez.a($$6);
+         dvc $$8 = $$4.a($$7);
+         if ($$8 == null) {
+            i.warn("Found reference to unknown structure '{}' in chunk {}, discarding", $$7, $$1);
+         } else {
+            long[] $$9 = $$5.o($$6);
+            if ($$9.length != 0) {
+               $$3.put($$8, new LongOpenHashSet(Arrays.stream($$9).filter($$2x -> {
+                  cpi $$3x = new cpi($$2x);
+                  if ($$3x.a($$1) > 8) {
+                     i.warn("Found invalid structure reference [ {} @ {} ] for chunk {}.", new Object[]{$$7, $$3x, $$1});
+                     return false;
+                  } else {
+                     return true;
+                  }
+               }).toArray()));
+            }
+         }
       }
+
+      return $$3;
    }
 
-   public static short j(gw $$0) {
-      int $$1 = $$0.u();
-      int $$2 = $$0.v();
-      int $$3 = $$0.w();
-      int $$4 = $$1 & 15;
-      int $$5 = $$2 & 15;
-      int $$6 = $$3 & 15;
-      return (short)($$4 | $$5 << 4 | $$6 << 8);
-   }
+   public static rc a(ShortList[] $$0) {
+      rc $$1 = new rc();
 
-   public static gw a(short $$0, int $$1, cpc $$2) {
-      int $$3 = hw.a($$2.e, $$0 & 15);
-      int $$4 = hw.a($$1, $$0 >>> 4 & 15);
-      int $$5 = hw.a($$2.f, $$0 >>> 8 & 15);
-      return new gw($$3, $$4, $$5);
-   }
+      for (ShortList $$2 : $$0) {
+         rc $$3 = new rc();
+         if ($$2 != null) {
+            ShortListIterator var7 = $$2.iterator();
 
-   @Override
-   public void e(gw $$0) {
-      if (!this.r($$0)) {
-         dhf.a(this.b, this.e($$0.v())).add(j($$0));
+            while (var7.hasNext()) {
+               Short $$4 = (Short)var7.next();
+               $$3.add(rl.a($$4));
+            }
+         }
+
+         $$1.add($$3);
       }
-   }
 
-   @Override
-   public void a(short $$0, int $$1) {
-      dhf.a(this.b, $$1).add($$0);
-   }
-
-   public Map<gw, qw> F() {
-      return Collections.unmodifiableMap(this.j);
-   }
-
-   @Nullable
-   @Override
-   public qw g(gw $$0) {
-      dcv $$1 = this.c_($$0);
-      return $$1 != null ? $$1.m() : this.j.get($$0);
-   }
-
-   @Override
-   public void d(gw $$0) {
-      this.k.remove($$0);
-      this.j.remove($$0);
-   }
-
-   @Nullable
-   public dhe a(dko.a $$0) {
-      return this.q.get($$0);
-   }
-
-   public dhe b(dko.a $$0) {
-      return this.q.computeIfAbsent($$0, $$0x -> new dhe(this.I_(), this.H_()));
-   }
-
-   public void a(dko.a $$0, dhe $$1) {
-      this.q.put($$0, $$1);
-   }
-
-   public void a(eab $$0) {
-      this.n = $$0;
-   }
-
-   public void a(@Nullable dkg $$0) {
-      this.r = $$0;
-   }
-
-   @Nullable
-   @Override
-   public dkg x() {
-      return this.r;
-   }
-
-   private static <T> eiu<T> a(eix<T> $$0) {
-      return new eiu<>($$0.b());
-   }
-
-   public eiu<csv> G() {
-      return a(this.s);
-   }
-
-   public eiu<eal> H() {
-      return a(this.t);
-   }
-
-   @Override
-   public cpx z() {
-      return (cpx)(this.y() ? dkg.b : this);
+      return $$1;
    }
 }

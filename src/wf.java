@@ -1,19 +1,18 @@
-public record wf(int b, ebb c, float d) implements vw {
-   public static final aew a = new aew("debug/path");
+public record wf(long b, gw c) implements vx {
+   public static final aez a = new aez("debug/neighbors_update");
 
    public wf(so $$0) {
-      this($$0.readInt(), ebb.b($$0), $$0.readFloat());
+      this($$0.o(), $$0.e());
    }
 
    @Override
    public void a(so $$0) {
-      $$0.p(this.b);
-      this.c.a($$0);
-      $$0.a(this.d);
+      $$0.a(this.b);
+      $$0.a(this.c);
    }
 
    @Override
-   public aew a() {
+   public aez a() {
       return a;
    }
 }

@@ -1,40 +1,26 @@
-public class dli implements dkh {
-   private static final int d = 48;
-   private static final long e = 281474976710655L;
-   private static final long f = 25214903917L;
-   private static final long g = 11L;
-   private long h;
-   private final dku i = new dku(this);
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   public dli(long $$0) {
-      this.b($$0);
+public record dli(dlk b, dlh c) {
+   public static final Codec<dli> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(dlk.a.forGetter(dli::a), dlh.a.forGetter(dli::b)).apply($$0, $$0.stable(dli::new))
+   );
+
+   public static <T> DataResult<T> a(DynamicOps<T> $$0, dlk $$1, dlh $$2) {
+      return a.encodeStart($$0, new dli($$1, $$2));
    }
 
-   @Override
-   public asc d() {
-      return new dli(this.g());
+   public static <T> DataResult<T> a(DynamicOps<T> $$0, dlk $$1, hr $$2) {
+      return a($$0, $$1, new dlh($$2.d(jc.aJ)));
    }
 
-   @Override
-   public dlf e() {
-      return new dkt.a(this.g());
+   public dlk a() {
+      return this.b;
    }
 
-   @Override
-   public void b(long $$0) {
-      this.h = ($$0 ^ 25214903917L) & 281474976710655L;
-      this.i.a();
-   }
-
-   @Override
-   public int c(int $$0) {
-      long $$1 = this.h * 25214903917L + 11L & 281474976710655L;
-      this.h = $$1;
-      return (int)($$1 >> 48 - $$0);
-   }
-
-   @Override
-   public double k() {
-      return this.i.b();
+   public dlh b() {
+      return this.c;
    }
 }

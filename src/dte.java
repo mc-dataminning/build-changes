@@ -1,76 +1,112 @@
-import com.mojang.datafixers.Products.P3;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
-import java.util.List;
-import java.util.function.BiConsumer;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableSet;
+import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 
-public abstract class dte {
-   public static final Codec<dte> c = jb.Y.q().dispatch(dte::a, dtf::a);
-   private static final int a = 32;
-   private static final int b = 24;
-   public static final int d = 80;
-   protected final int e;
-   protected final int f;
-   protected final int g;
+public class dte {
+   public static final aey<dtd> a = a("classic_flat");
+   public static final aey<dtd> b = a("tunnelers_dream");
+   public static final aey<dtd> c = a("water_world");
+   public static final aey<dtd> d = a("overworld");
+   public static final aey<dtd> e = a("snowy_kingdom");
+   public static final aey<dtd> f = a("bottomless_pit");
+   public static final aey<dtd> g = a("desert");
+   public static final aey<dtd> h = a("redstone_ready");
+   public static final aey<dtd> i = a("the_void");
 
-   protected static <P extends dte> P3<Mu<P>, Integer, Integer, Integer> a(Instance<P> $$0) {
-      return $$0.group(
-         Codec.intRange(0, 32).fieldOf("base_height").forGetter($$0x -> $$0x.e),
-         Codec.intRange(0, 24).fieldOf("height_rand_a").forGetter($$0x -> $$0x.f),
-         Codec.intRange(0, 24).fieldOf("height_rand_b").forGetter($$0x -> $$0x.g)
-      );
+   public static void a(nr<dtd> $$0) {
+      new dte.a($$0).a();
    }
 
-   public dte(int $$0, int $$1, int $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
+   private static aey<dtd> a(String $$0) {
+      return aey.a(jc.aw, new aez($$0));
    }
 
-   protected abstract dtf<?> a();
+   static class a {
+      private final nr<dtd> a;
 
-   public abstract List<drm.a> a(cqb var1, BiConsumer<gw, dfj> var2, asc var3, int var4, gw var5, dqw var6);
-
-   public int a(asc $$0) {
-      return this.e + $$0.a(this.f + 1) + $$0.a(this.g + 1);
-   }
-
-   private static boolean c(cqb $$0, gw $$1) {
-      return $$0.a($$1, $$0x -> dnw.b($$0x) && !$$0x.a(csw.i) && !$$0x.a(csw.fl));
-   }
-
-   protected static void a(cqb $$0, BiConsumer<gw, dfj> $$1, asc $$2, gw $$3, dqw $$4) {
-      if ($$4.k || !c($$0, $$3)) {
-         $$1.accept($$3, $$4.c.a($$2, $$3));
+      a(nr<dtd> $$0) {
+         this.a = $$0;
       }
-   }
 
-   protected boolean b(cqb $$0, BiConsumer<gw, dfj> $$1, asc $$2, gw $$3, dqw $$4) {
-      return this.a($$0, $$1, $$2, $$3, $$4, Function.identity());
-   }
+      private void a(aey<dtd> $$0, cqa $$1, aey<cqz> $$2, Set<aey<dvi>> $$3, boolean $$4, boolean $$5, dtc... $$6) {
+         hf<dvi> $$7 = this.a.a(jc.aC);
+         hf<dug> $$8 = this.a.a(jc.az);
+         hf<cqz> $$9 = this.a.a(jc.aq);
+         hi.a<dvi> $$10 = hi.a($$3.stream().map($$7::b).collect(Collectors.toList()));
+         dtf $$11 = new dtf(Optional.of($$10), $$9.b($$2), dtf.b($$8));
+         if ($$4) {
+            $$11.a();
+         }
 
-   protected boolean a(cqb $$0, BiConsumer<gw, dfj> $$1, asc $$2, gw $$3, dqw $$4, Function<dfj, dfj> $$5) {
-      if (this.a($$0, $$3)) {
-         $$1.accept($$3, $$5.apply($$4.b.a($$2, $$3)));
-         return true;
-      } else {
-         return false;
+         if ($$5) {
+            $$11.b();
+         }
+
+         for (int $$12 = $$6.length - 1; $$12 >= 0; $$12--) {
+            $$11.e().add($$6[$$12]);
+         }
+
+         this.a.a($$0, new dtd($$1.k().j(), $$11));
       }
-   }
 
-   protected void a(cqb $$0, BiConsumer<gw, dfj> $$1, asc $$2, gw.a $$3, dqw $$4) {
-      if (this.b($$0, $$3)) {
-         this.b($$0, $$1, $$2, $$3, $$4);
+      public void a() {
+         this.a(dte.a, cte.i, crg.b, ImmutableSet.of(duv.a), false, false, new dtc(1, cte.i), new dtc(2, cte.j), new dtc(1, cte.F));
+         this.a(dte.b, cte.b, crg.t, ImmutableSet.of(duv.j, duv.r), true, false, new dtc(1, cte.i), new dtc(5, cte.j), new dtc(230, cte.b), new dtc(1, cte.F));
+         this.a(
+            dte.c,
+            cjo.pL,
+            crg.T,
+            ImmutableSet.of(duv.m, duv.l, duv.g),
+            false,
+            false,
+            new dtc(90, cte.G),
+            new dtc(5, cte.L),
+            new dtc(5, cte.j),
+            new dtc(5, cte.b),
+            new dtc(64, cte.rI),
+            new dtc(1, cte.F)
+         );
+         this.a(
+            dte.d,
+            cte.bt,
+            crg.b,
+            ImmutableSet.of(duv.a, duv.j, duv.f, duv.k, duv.r),
+            true,
+            true,
+            new dtc(1, cte.i),
+            new dtc(3, cte.j),
+            new dtc(59, cte.b),
+            new dtc(1, cte.F)
+         );
+         this.a(
+            dte.e,
+            cte.dN,
+            crg.d,
+            ImmutableSet.of(duv.a, duv.c),
+            false,
+            false,
+            new dtc(1, cte.dN),
+            new dtc(1, cte.i),
+            new dtc(3, cte.j),
+            new dtc(59, cte.b),
+            new dtc(1, cte.F)
+         );
+         this.a(dte.f, cjo.oF, crg.b, ImmutableSet.of(duv.a), false, false, new dtc(1, cte.i), new dtc(3, cte.j), new dtc(2, cte.m));
+         this.a(
+            dte.g,
+            cte.I,
+            crg.f,
+            ImmutableSet.of(duv.a, duv.b, duv.j, duv.r),
+            true,
+            false,
+            new dtc(8, cte.I),
+            new dtc(52, cte.aV),
+            new dtc(3, cte.b),
+            new dtc(1, cte.F)
+         );
+         this.a(dte.h, cjo.ll, crg.f, ImmutableSet.of(), false, false, new dtc(116, cte.aV), new dtc(3, cte.b), new dtc(1, cte.F));
+         this.a(dte.i, cte.hW, crg.a, ImmutableSet.of(), true, false, new dtc(1, cte.a));
       }
-   }
-
-   protected boolean a(cqb $$0, gw $$1) {
-      return dpi.c($$0, $$1);
-   }
-
-   public boolean b(cqb $$0, gw $$1) {
-      return this.a($$0, $$1) || $$0.a($$1, $$0x -> $$0x.a(aps.t));
    }
 }

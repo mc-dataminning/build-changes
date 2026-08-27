@@ -1,13 +1,32 @@
-import javax.annotation.Nullable;
+public class bqz extends bpy {
+   private final boolean a;
+   private int b;
 
-public class bqz extends bqy {
-   public bqz(bjp $$0, double $$1, int $$2) {
-      super($$0, $$1, $$2);
+   public bqz(bjo $$0, boolean $$1) {
+      super($$0);
+      this.d = $$0;
+      this.a = $$1;
    }
 
-   @Nullable
    @Override
-   protected ehn h() {
-      return bkz.a(this.b, 10, 7);
+   public boolean b() {
+      return this.a && this.b > 0 && super.b();
+   }
+
+   @Override
+   public void c() {
+      this.b = 20;
+      this.a(true);
+   }
+
+   @Override
+   public void d() {
+      this.a(false);
+   }
+
+   @Override
+   public void e() {
+      this.b--;
+      super.e();
    }
 }

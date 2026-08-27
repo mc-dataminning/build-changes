@@ -1,133 +1,104 @@
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
-import org.slf4j.Logger;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 
-public class djm<T extends dja> {
-   static final Logger a = LogUtils.getLogger();
-   final dji<T> b;
-   final djc<T> c;
-   final djf<T> d;
-   private final LongSet e = new LongOpenHashSet();
-   private final djj<T> f;
+public class djm implements djq {
+   private final List<djp> b = Lists.newArrayList();
+   private final Set<djp> c = Sets.newHashSet();
+   private final List<djp> d = Lists.newArrayList();
+   private boolean e;
+   private final akt f;
+   private final int g;
+   private final djm.a h;
 
-   public djm(Class<T> $$0, dji<T> $$1) {
-      this.c = new djc<>();
-      this.d = new djf<>($$0, $$0x -> this.e.contains($$0x) ? djn.c : djn.b);
-      this.b = $$1;
-      this.f = new djk<>(this.c, this.d);
+   public djm(akt $$0, int $$1, djm.a $$2) {
+      this.f = $$0;
+      this.g = $$1;
+      this.h = $$2;
    }
 
-   public void a(cpc $$0) {
-      long $$1 = $$0.a();
-      this.e.add($$1);
-      this.d.b($$1).forEach($$0x -> {
-         djn $$1x = $$0x.a(djn.c);
-         if (!$$1x.a()) {
-            $$0x.b().filter($$0xx -> !$$0xx.dK()).forEach(this.b::e);
-         }
-      });
+   @Override
+   public boolean a() {
+      return this.b.isEmpty();
    }
 
-   public void b(cpc $$0) {
-      long $$1 = $$0.a();
-      this.e.remove($$1);
-      this.d.b($$1).forEach($$0x -> {
-         djn $$1x = $$0x.a(djn.b);
-         if ($$1x.a()) {
-            $$0x.b().filter($$0xx -> !$$0xx.dK()).forEach(this.b::d);
-         }
-      });
+   @Override
+   public void a(djp $$0) {
+      if (this.e) {
+         this.d.add($$0);
+      } else {
+         this.b.add($$0);
+      }
+
+      abc.a(this.f, $$0);
    }
 
-   public djj<T> a() {
-      return this.f;
-   }
+   @Override
+   public void b(djp $$0) {
+      if (this.e) {
+         this.c.add($$0);
+      } else {
+         this.b.remove($$0);
+      }
 
-   public void a(T $$0) {
-      this.c.a($$0);
-      long $$1 = hw.c($$0.dl());
-      dje<T> $$2 = this.d.c($$1);
-      $$2.a($$0);
-      $$0.a(new djm.a($$0, $$1, $$2));
-      this.b.g($$0);
-      this.b.c($$0);
-      if ($$0.dK() || $$2.c().a()) {
-         this.b.e($$0);
+      if (this.b.isEmpty()) {
+         this.h.apply(this.g);
       }
    }
 
-   @asy
-   public int b() {
-      return this.c.b();
-   }
+   @Override
+   public boolean a(djn $$0, ehh $$1, djn.a $$2, djq.a $$3) {
+      this.e = true;
+      boolean $$4 = false;
 
-   void a(long $$0, dje<T> $$1) {
-      if ($$1.a()) {
-         this.d.e($$0);
-      }
-   }
+      try {
+         Iterator<djp> $$5 = this.b.iterator();
 
-   @asy
-   public String c() {
-      return this.c.b() + "," + this.d.b() + "," + this.e.size();
-   }
-
-   class a implements djb {
-      private final T c;
-      private long d;
-      private dje<T> e;
-
-      a(T $$0, long $$1, dje<T> $$2) {
-         this.c = $$0;
-         this.d = $$1;
-         this.e = $$2;
-      }
-
-      @Override
-      public void a() {
-         gw $$0 = this.c.dl();
-         long $$1 = hw.c($$0);
-         if ($$1 != this.d) {
-            djn $$2 = this.e.c();
-            if (!this.e.b(this.c)) {
-               djm.a.warn("Entity {} wasn't found in section {} (moving to {})", new Object[]{this.c, hw.a(this.d), $$1});
-            }
-
-            djm.this.a(this.d, this.e);
-            dje<T> $$3 = djm.this.d.c($$1);
-            $$3.a(this.c);
-            this.e = $$3;
-            this.d = $$1;
-            djm.this.b.a(this.c);
-            if (!this.c.dK()) {
-               boolean $$4 = $$2.a();
-               boolean $$5 = $$3.c().a();
-               if ($$4 && !$$5) {
-                  djm.this.b.d(this.c);
-               } else if (!$$4 && $$5) {
-                  djm.this.b.e(this.c);
+         while ($$5.hasNext()) {
+            djp $$6 = $$5.next();
+            if (this.c.remove($$6)) {
+               $$5.remove();
+            } else {
+               Optional<ehh> $$7 = a(this.f, $$1, $$6);
+               if ($$7.isPresent()) {
+                  $$3.visit($$6, $$7.get());
+                  $$4 = true;
                }
             }
          }
+      } finally {
+         this.e = false;
       }
 
-      @Override
-      public void a(biq.c $$0) {
-         if (!this.e.b(this.c)) {
-            djm.a.warn("Entity {} wasn't found in section {} (destroying due to {})", new Object[]{this.c, hw.a(this.d), $$0});
-         }
-
-         djn $$1 = this.e.c();
-         if ($$1.a() || this.c.dK()) {
-            djm.this.b.d(this.c);
-         }
-
-         djm.this.b.b(this.c);
-         djm.this.b.f(this.c);
-         djm.this.c.b(this.c);
-         this.c.a(a);
-         djm.this.a(this.d, this.e);
+      if (!this.d.isEmpty()) {
+         this.b.addAll(this.d);
+         this.d.clear();
       }
+
+      if (!this.c.isEmpty()) {
+         this.b.removeAll(this.c);
+         this.c.clear();
+      }
+
+      return $$4;
+   }
+
+   private static Optional<ehh> a(akt $$0, ehh $$1, djp $$2) {
+      Optional<ehh> $$3 = $$2.a().a($$0);
+      if ($$3.isEmpty()) {
+         return Optional.empty();
+      } else {
+         double $$4 = gw.a($$3.get()).j(gw.a($$1));
+         int $$5 = $$2.b() * $$2.b();
+         return $$4 > (double)$$5 ? Optional.empty() : $$3;
+      }
+   }
+
+   @FunctionalInterface
+   public interface a {
+      void apply(int var1);
    }
 }

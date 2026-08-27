@@ -49,7 +49,7 @@ import javax.imageio.ImageIO;
 import net.minecraft.obfuscate.DontObfuscate;
 import org.slf4j.Logger;
 
-public abstract class MinecraftServer extends bfs<afp> implements afl, ds, AutoCloseable {
+public abstract class MinecraftServer extends bfy<afs> implements afo, ds, AutoCloseable {
    private static final Logger n = LogUtils.getLogger();
    public static final String b = "vanilla";
    private static final float o = 0.8F;
@@ -64,34 +64,34 @@ public abstract class MinecraftServer extends bfs<afp> implements afl, ds, AutoC
    private static final int v = 6000;
    private static final int w = 3;
    public static final int e = 29999984;
-   public static final cpz f = new cpz("Demo World", cps.a, false, bgv.c, false, new cpr(), cqo.c);
+   public static final cqf f = new cqf("Demo World", cpy.a, false, bhb.c, false, new cpx(), cqu.c);
    private static final long x = 50L;
    public static final GameProfile g = new GameProfile(ac.d, "Anonymous Player");
-   protected final ecg.c h;
-   protected final ecj i;
+   protected final eca.c h;
+   protected final ecd i;
    private final List<Runnable> y = Lists.newArrayList();
-   private bfa z = bez.a;
-   private bdp A = this.z.f();
-   private Consumer<bdo> B = $$0x -> this.aO();
+   private bfg z = bff.a;
+   private bdv A = this.z.f();
+   private Consumer<bdu> B = $$0x -> this.aO();
    private Consumer<Path> C = $$0x -> {
    };
    private boolean D;
    @Nullable
    private MinecraftServer.c E;
    private boolean F;
-   private final alo G;
-   private final ala H;
+   private final alr G;
+   private final ald H;
    @Nullable
-   private adz I;
+   private aea I;
    @Nullable
-   private adz.a J;
-   private final asc K = asc.a();
+   private aea.a J;
+   private final ash K = ash.a();
    private final DataFixer L;
    private String M;
    private int N = -1;
-   private final hl<aff> O;
-   private final Map<aev<cpv>, akq> P = Maps.newLinkedHashMap();
-   private aog Q;
+   private final hl<afi> O;
+   private final Map<aey<cqb>, akt> P = Maps.newLinkedHashMap();
+   private aoj Q;
    private volatile boolean R = true;
    private boolean S;
    private int T;
@@ -111,26 +111,26 @@ public abstract class MinecraftServer extends bfs<afp> implements afl, ds, AutoC
    private boolean ac;
    private volatile boolean ad;
    private long ae;
-   protected final afo l;
+   protected final afr l;
    private long af;
    private final Thread ag;
    private long ah = ac.b();
    private long ai;
    private boolean aj;
-   private final ane ak;
-   private final afn al = new afn(this);
+   private final anh ak;
+   private final afq al = new afq(this);
    @Nullable
-   private ebz am;
-   private final afv an = new afv();
-   private final afk ao;
+   private ebt am;
+   private final afy an = new afy();
+   private final afn ao;
    private boolean ap;
    private float aq;
    private final Executor ar;
    @Nullable
    private String as;
    private MinecraftServer.a at;
-   private final dzc au;
-   protected final ecm m;
+   private final dyw au;
+   protected final ecg m;
    private volatile boolean av;
 
    public static <S extends MinecraftServer> S a(Function<Thread, S> $$0) {
@@ -147,11 +147,11 @@ public abstract class MinecraftServer extends bfs<afp> implements afl, ds, AutoC
       return $$3;
    }
 
-   public MinecraftServer(Thread $$0, ecg.c $$1, ane $$2, afr $$3, Proxy $$4, DataFixer $$5, afo $$6, ala $$7) {
+   public MinecraftServer(Thread $$0, eca.c $$1, anh $$2, afu $$3, Proxy $$4, DataFixer $$5, afr $$6, ald $$7) {
       super("Server");
       this.O = $$3.c();
       this.m = $$3.d();
-      if (!this.O.a().d(jc.aI).c(dit.b)) {
+      if (!this.O.a().d(jc.aJ).c(din.b)) {
          throw new IllegalStateException("Missing Overworld dimension data");
       } else {
          this.j = $$4;
@@ -162,33 +162,33 @@ public abstract class MinecraftServer extends bfs<afp> implements afl, ds, AutoC
             $$6.e().a(this);
          }
 
-         this.G = new alo(this);
+         this.G = new alr(this);
          this.H = $$7;
          this.h = $$1;
          this.i = $$1.c();
          this.L = $$5;
-         this.ao = new afk(this, this.at.b.a());
-         hf<csv> $$8 = this.O.a().d(jc.e).p().a(this.m.M());
-         this.au = new dzc($$3.a(), $$1, $$5, $$8);
+         this.ao = new afn(this, this.at.b.a());
+         hf<ctc> $$8 = this.O.a().d(jc.e).p().a(this.m.M());
+         this.au = new dyw($$3.a(), $$1, $$5, $$8);
          this.ag = $$0;
          this.ar = ac.f();
       }
    }
 
-   private void a(ecc $$0) {
+   private void a(ebw $$0) {
       $$0.a(this.aF().b(), "scoreboard");
    }
 
    protected abstract boolean e() throws IOException;
 
    protected void s_() {
-      if (!bdv.e.c()) {
+      if (!beb.e.c()) {
       }
 
       boolean $$0 = false;
-      bdy $$1 = bdv.e.e();
+      bee $$1 = beb.e.e();
       this.m.a(this.getServerModName(), this.K().a());
-      akz $$2 = this.H.create(11);
+      alc $$2 = this.H.create(11);
       this.a($$2);
       this.r();
       this.b($$2);
@@ -198,7 +198,7 @@ public abstract class MinecraftServer extends bfs<afp> implements afl, ds, AutoC
 
       if ($$0) {
          try {
-            bdv.e.b();
+            beb.e.b();
          } catch (Throwable var5) {
             n.warn("Failed to stop JFR profiling", var5);
          }
@@ -208,21 +208,21 @@ public abstract class MinecraftServer extends bfs<afp> implements afl, ds, AutoC
    protected void r() {
    }
 
-   protected void a(akz $$0) {
-      ecl $$1 = this.m.K();
+   protected void a(alc $$0) {
+      ecf $$1 = this.m.K();
       boolean $$2 = this.m.C();
-      hq<dit> $$3 = this.O.a().d(jc.aI);
-      dlq $$4 = this.m.A();
+      hq<din> $$3 = this.O.a().d(jc.aJ);
+      dlk $$4 = this.m.A();
       long $$5 = $$4.b();
-      long $$6 = cqv.a($$5);
-      List<cpi> $$7 = ImmutableList.of(new dle(), new dld(), new cbd(), new bud(), new cbo($$1));
-      dit $$8 = $$3.a(dit.b);
-      akq $$9 = new akq(this, this.ar, this.h, $$1, cpv.h, $$8, $$0, $$2, $$6, $$7, true, null);
-      this.P.put(cpv.h, $$9);
-      ecc $$10 = $$9.s();
+      long $$6 = crb.a($$5);
+      List<cpo> $$7 = ImmutableList.of(new dky(), new dkx(), new cbj(), new buj(), new cbu($$1));
+      din $$8 = $$3.a(din.b);
+      akt $$9 = new akt(this, this.ar, this.h, $$1, cqb.h, $$8, $$0, $$2, $$6, $$7, true, null);
+      this.P.put(cqb.h, $$9);
+      ebw $$10 = $$9.s();
       this.a($$10);
-      this.am = new ebz($$10);
-      dha $$11 = $$9.B_();
+      this.am = new ebt($$10);
+      dgu $$11 = $$9.B_();
       if (!$$1.p()) {
          try {
             a($$9, $$1, $$4.d(), $$2);
@@ -249,15 +249,15 @@ public abstract class MinecraftServer extends bfs<afp> implements afl, ds, AutoC
          this.aJ().a(this.m.G());
       }
 
-      bhe $$14 = $$9.H();
+      bhk $$14 = $$9.H();
 
-      for (Entry<aev<dit>, dit> $$15 : $$3.g()) {
-         aev<dit> $$16 = $$15.getKey();
-         if ($$16 != dit.b) {
-            aev<cpv> $$17 = aev.a(jc.aH, $$16.a());
-            ecb $$18 = new ecb(this.m, $$1);
-            akq $$19 = new akq(this, this.ar, this.h, $$18, $$17, $$15.getValue(), $$0, $$2, $$6, ImmutableList.of(), false, $$14);
-            $$11.a(new dgy.a($$19.B_()));
+      for (Entry<aey<din>, din> $$15 : $$3.g()) {
+         aey<din> $$16 = $$15.getKey();
+         if ($$16 != din.b) {
+            aey<cqb> $$17 = aey.a(jc.aI, $$16.a());
+            ebv $$18 = new ebv(this.m, $$1);
+            akt $$19 = new akt(this, this.ar, this.h, $$18, $$17, $$15.getValue(), $$0, $$2, $$6, ImmutableList.of(), false, $$14);
+            $$11.a(new dgs.a($$19.B_()));
             this.P.put($$17, $$19);
          }
       }
@@ -265,16 +265,16 @@ public abstract class MinecraftServer extends bfs<afp> implements afl, ds, AutoC
       $$11.a($$1.r());
    }
 
-   private static void a(akq $$0, ecl $$1, boolean $$2, boolean $$3) {
+   private static void a(akt $$0, ecf $$1, boolean $$2, boolean $$3) {
       if ($$3) {
          $$1.a(gw.b.b(80), 0.0F);
       } else {
-         ako $$4 = $$0.k();
-         cpc $$5 = new cpc($$4.i().b().a());
+         akr $$4 = $$0.k();
+         cpi $$5 = new cpi($$4.i().b().a());
          int $$6 = $$4.g().a($$0);
          if ($$6 < $$0.H_()) {
             gw $$7 = $$5.l();
-            $$6 = $$0.a(dks.a.b, $$7.u() + 8, $$7.w() + 8);
+            $$6 = $$0.a(dkm.a.b, $$7.u() + 8, $$7.w() + 8);
          }
 
          $$1.a($$5.l().b(8, $$6, 8), 0.0F);
@@ -284,9 +284,9 @@ public abstract class MinecraftServer extends bfs<afp> implements afl, ds, AutoC
          int $$11 = -1;
          int $$12 = 5;
 
-         for (int $$13 = 0; $$13 < arw.h(11); $$13++) {
+         for (int $$13 = 0; $$13 < asb.h(11); $$13++) {
             if ($$8 >= -5 && $$8 <= 5 && $$9 >= -5 && $$9 <= 5) {
-               gw $$14 = akl.a($$0, new cpc($$5.e + $$8, $$5.f + $$9));
+               gw $$14 = ako.a($$0, new cpi($$5.e + $$8, $$5.f + $$9));
                if ($$14 != null) {
                   $$1.a($$14, 0.0F);
                   break;
@@ -304,30 +304,30 @@ public abstract class MinecraftServer extends bfs<afp> implements afl, ds, AutoC
          }
 
          if ($$2) {
-            $$0.G_().c(jc.as).flatMap($$0x -> $$0x.b(os.m)).ifPresent($$3x -> ((dnj)$$3x.a()).a($$0, $$4.g(), $$0.z, new gw($$1.a(), $$1.b(), $$1.c())));
+            $$0.G_().c(jc.at).flatMap($$0x -> $$0x.b(os.m)).ifPresent($$3x -> ((dnd)$$3x.a()).a($$0, $$4.g(), $$0.z, new gw($$1.a(), $$1.b(), $$1.c())));
          }
       }
    }
 
-   private void a(ecm $$0) {
-      $$0.a(bgv.a);
+   private void a(ecg $$0) {
+      $$0.a(bhb.a);
       $$0.d(true);
-      ecl $$1 = $$0.K();
+      ecf $$1 = $$0.K();
       $$1.b(false);
       $$1.a(false);
       $$1.a(1000000000);
       $$1.b(6000L);
-      $$1.a(cps.d);
+      $$1.a(cpy.d);
    }
 
-   private void b(akz $$0) {
-      akq $$1 = this.D();
+   private void b(alc $$0) {
+      akt $$1 = this.D();
       n.info("Preparing start region for dimension {}", $$1.ac().a());
       gw $$2 = $$1.R();
-      $$0.a(new cpc($$2));
-      ako $$3 = $$1.k();
+      $$0.a(new cpi($$2));
+      akr $$3 = $$1.k();
       this.ah = ac.b();
-      $$3.a(akv.a, new cpc($$2), 11, asx.a);
+      $$3.a(aky.a, new cpi($$2), 11, atc.a);
 
       while ($$3.b() != 441) {
          this.ah = ac.b() + 10L;
@@ -337,14 +337,14 @@ public abstract class MinecraftServer extends bfs<afp> implements afl, ds, AutoC
       this.ah = ac.b() + 10L;
       this.u_();
 
-      for (akq $$4 : this.P.values()) {
-         cpq $$5 = $$4.s().b(cpq.a(), "chunks");
+      for (akt $$4 : this.P.values()) {
+         cpw $$5 = $$4.s().b(cpw.a(), "chunks");
          if ($$5 != null) {
             LongIterator $$6 = $$5.b().iterator();
 
             while ($$6.hasNext()) {
                long $$7 = $$6.nextLong();
-               cpc $$8 = new cpc($$7);
+               cpi $$8 = new cpi($$7);
                $$4.k().a($$8, true);
             }
          }
@@ -356,7 +356,7 @@ public abstract class MinecraftServer extends bfs<afp> implements afl, ds, AutoC
       this.bs();
    }
 
-   public cps t_() {
+   public cpy t_() {
       return this.m.m();
    }
 
@@ -373,7 +373,7 @@ public abstract class MinecraftServer extends bfs<afp> implements afl, ds, AutoC
    public boolean a(boolean $$0, boolean $$1, boolean $$2) {
       boolean $$3 = false;
 
-      for (akq $$4 : this.F()) {
+      for (akt $$4 : this.F()) {
          if (!$$0) {
             n.info("Saving chunks for level '{}'/{}", $$4, $$4.ac().a());
          }
@@ -382,13 +382,13 @@ public abstract class MinecraftServer extends bfs<afp> implements afl, ds, AutoC
          $$3 = true;
       }
 
-      akq $$5 = this.D();
-      ecl $$6 = this.m.K();
+      akt $$5 = this.D();
+      ecf $$6 = this.m.K();
       $$6.a($$5.B_().t());
       this.m.a(this.aJ().c());
       this.h.a(this.aU(), this.m, this.ac().r());
       if ($$1) {
-         for (akq $$7 : this.F()) {
+         for (akt $$7 : this.F()) {
             n.info("ThreadedAnvilChunkStorage ({}): All chunks are saved", $$7.k().a.n());
          }
 
@@ -432,7 +432,7 @@ public abstract class MinecraftServer extends bfs<afp> implements afl, ds, AutoC
 
       n.info("Saving worlds");
 
-      for (akq $$0 : this.F()) {
+      for (akt $$0 : this.F()) {
          if ($$0 != null) {
             $$0.e = false;
          }
@@ -441,7 +441,7 @@ public abstract class MinecraftServer extends bfs<afp> implements afl, ds, AutoC
       while (this.P.values().stream().anyMatch($$0x -> $$0x.k().a.f())) {
          this.ah = ac.b() + 1L;
 
-         for (akq $$1 : this.F()) {
+         for (akt $$1 : this.F()) {
             $$1.k().o();
             $$1.k().a(() -> true, false);
          }
@@ -451,7 +451,7 @@ public abstract class MinecraftServer extends bfs<afp> implements afl, ds, AutoC
 
       this.a(false, true, false);
 
-      for (akq $$2 : this.F()) {
+      for (akt $$2 : this.F()) {
          if ($$2 != null) {
             try {
                $$2.close();
@@ -529,7 +529,7 @@ public abstract class MinecraftServer extends bfs<afp> implements afl, ds, AutoC
             this.A.c();
             this.bu();
             this.ad = true;
-            bdv.e.a(this.aq);
+            beb.e.a(this.aq);
          }
       } catch (Throwable var44) {
          n.error("Encountered an unexpected exception", var44);
@@ -590,11 +590,11 @@ public abstract class MinecraftServer extends bfs<afp> implements afl, ds, AutoC
       this.c(() -> !this.bf());
    }
 
-   protected afp a(Runnable $$0) {
-      return new afp(this.T, $$0);
+   protected afs a(Runnable $$0) {
+      return new afs(this.T, $$0);
    }
 
-   protected boolean a(afp $$0) {
+   protected boolean a(afs $$0) {
       return $$0.a() + 3 < this.T || this.bf();
    }
 
@@ -610,7 +610,7 @@ public abstract class MinecraftServer extends bfs<afp> implements afl, ds, AutoC
          return true;
       } else {
          if (this.bf()) {
-            for (akq $$0 : this.F()) {
+            for (akt $$0 : this.F()) {
                if ($$0.k().d()) {
                   return true;
                }
@@ -621,12 +621,12 @@ public abstract class MinecraftServer extends bfs<afp> implements afl, ds, AutoC
       }
    }
 
-   protected void b(afp $$0) {
+   protected void b(afs $$0) {
       this.aM().d("runTask");
       super.d($$0);
    }
 
-   private Optional<adz.a> bh() {
+   private Optional<aea.a> bh() {
       Optional<Path> $$0 = Optional.of(this.c("server-icon.png").toPath())
          .filter($$0x -> Files.isRegularFile($$0x))
          .or(() -> this.h.f().filter($$0x -> Files.isRegularFile($$0x)));
@@ -637,7 +637,7 @@ public abstract class MinecraftServer extends bfs<afp> implements afl, ds, AutoC
             Preconditions.checkState($$1.getHeight() == 64, "Must be 64 pixels high");
             ByteArrayOutputStream $$2 = new ByteArrayOutputStream();
             ImageIO.write($$1, "PNG", $$2);
-            return Optional.of(new adz.a($$2.toByteArray()));
+            return Optional.of(new aea.a($$2.toByteArray()));
          } catch (Exception var3) {
             n.error("Couldn't load server icon", var3);
             return Optional.empty();
@@ -687,28 +687,28 @@ public abstract class MinecraftServer extends bfs<afp> implements afl, ds, AutoC
    protected void a(long $$0) {
    }
 
-   private adz bi() {
-      adz.b $$0 = this.bj();
-      return new adz(tl.a(this.Y), Optional.of($$0), Optional.of(adz.c.a()), Optional.ofNullable(this.J), this.aw());
+   private aea bi() {
+      aea.b $$0 = this.bj();
+      return new aea(tl.a(this.Y), Optional.of($$0), Optional.of(aea.c.a()), Optional.ofNullable(this.J), this.aw());
    }
 
-   private adz.b bj() {
-      List<akr> $$0 = this.Q.t();
+   private aea.b bj() {
+      List<aku> $$0 = this.Q.t();
       int $$1 = this.I();
       if (this.aj()) {
-         return new adz.b($$1, $$0.size(), List.of());
+         return new aea.b($$1, $$0.size(), List.of());
       } else {
          int $$2 = Math.min($$0.size(), 12);
          ObjectArrayList<GameProfile> $$3 = new ObjectArrayList($$2);
-         int $$4 = arw.a(this.K, 0, $$0.size() - $$2);
+         int $$4 = asb.a(this.K, 0, $$0.size() - $$2);
 
          for (int $$5 = 0; $$5 < $$2; $$5++) {
-            akr $$6 = $$0.get($$4 + $$5);
-            $$3.add($$6.X() ? $$6.fQ() : g);
+            aku $$6 = $$0.get($$4 + $$5);
+            $$3.add($$6.X() ? $$6.fR() : g);
          }
 
          ac.b($$3, this.K);
-         return new adz.b($$1, $$0.size(), $$3);
+         return new aea.b($$1, $$0.size(), $$3);
       }
    }
 
@@ -718,7 +718,7 @@ public abstract class MinecraftServer extends bfs<afp> implements afl, ds, AutoC
       this.aA().c();
       this.A.b("levels");
 
-      for (akq $$1 : this.F()) {
+      for (akt $$1 : this.F()) {
          this.A.a(() -> $$1 + " " + $$1.ac().a());
          if (this.T % 20 == 0) {
             this.A.a("timeSync");
@@ -756,7 +756,7 @@ public abstract class MinecraftServer extends bfs<afp> implements afl, ds, AutoC
 
       this.A.b("send chunks");
 
-      for (akr $$5 : this.Q.t()) {
+      for (aku $$5 : this.Q.t()) {
          $$5.c.f.a($$5);
          $$5.c.h();
       }
@@ -764,14 +764,14 @@ public abstract class MinecraftServer extends bfs<afp> implements afl, ds, AutoC
       this.A.c();
    }
 
-   private void b(akq $$0) {
-      this.Q.a(new aaj($$0.V(), $$0.W(), $$0.X().b(cpr.k)), $$0.ac());
+   private void b(akt $$0) {
+      this.Q.a(new aak($$0.V(), $$0.W(), $$0.X().b(cpx.k)), $$0.ac());
    }
 
    public void A() {
       this.A.a("timeSync");
 
-      for (akq $$0 : this.F()) {
+      for (akt $$0 : this.F()) {
          this.b($$0);
       }
 
@@ -798,20 +798,20 @@ public abstract class MinecraftServer extends bfs<afp> implements afl, ds, AutoC
       return new File(this.z(), $$0);
    }
 
-   public final akq D() {
-      return this.P.get(cpv.h);
+   public final akt D() {
+      return this.P.get(cqb.h);
    }
 
    @Nullable
-   public akq a(aev<cpv> $$0) {
+   public akt a(aey<cqb> $$0) {
       return this.P.get($$0);
    }
 
-   public Set<aev<cpv>> E() {
+   public Set<aey<cqb>> E() {
       return this.P.keySet();
    }
 
-   public Iterable<akq> F() {
+   public Iterable<akt> F() {
       return this.P.values();
    }
 
@@ -846,7 +846,7 @@ public abstract class MinecraftServer extends bfs<afp> implements afl, ds, AutoC
       }
 
       $$0.a("Data Packs", () -> this.ak.f().stream().map($$0x -> $$0x.f() + ($$0x.c().a() ? "" : " (incompatible)")).collect(Collectors.joining(", ")));
-      $$0.a("Enabled Feature Flags", () -> cee.d.b(this.m.M()).stream().map(aew::toString).collect(Collectors.joining(", ")));
+      $$0.a("Enabled Feature Flags", () -> cek.d.b(this.m.M()).stream().map(aez::toString).collect(Collectors.joining(", ")));
       $$0.a("World Generation", () -> this.m.D().toString());
       if (this.as != null) {
          $$0.a("Server Id", () -> this.as);
@@ -857,8 +857,8 @@ public abstract class MinecraftServer extends bfs<afp> implements afl, ds, AutoC
 
    public abstract ab a(ab var1);
 
-   public arv K() {
-      return arv.a("vanilla", this::getServerModName, "Server", MinecraftServer.class);
+   public asa K() {
+      return asa.a("vanilla", this::getServerModName, "Server", MinecraftServer.class);
    }
 
    @Override
@@ -895,15 +895,15 @@ public abstract class MinecraftServer extends bfs<afp> implements afl, ds, AutoC
       n.info("Generating keypair");
 
       try {
-         this.aa = aqw.b();
-      } catch (aqx var2) {
+         this.aa = ara.b();
+      } catch (arb var2) {
          throw new IllegalStateException("Failed to generate key pair", var2);
       }
    }
 
-   public void a(bgv $$0, boolean $$1) {
+   public void a(bhb $$0, boolean $$1) {
       if ($$1 || !this.m.t()) {
-         this.m.a(this.m.n() ? bgv.d : $$0);
+         this.m.a(this.m.n() ? bhb.d : $$0);
          this.bs();
          this.ac().t().forEach(this::c);
       }
@@ -914,7 +914,7 @@ public abstract class MinecraftServer extends bfs<afp> implements afl, ds, AutoC
    }
 
    private void bs() {
-      for (akq $$0 : this.F()) {
+      for (akt $$0 : this.F()) {
          $$0.b(this.Q(), this.W());
       }
    }
@@ -924,13 +924,13 @@ public abstract class MinecraftServer extends bfs<afp> implements afl, ds, AutoC
       this.ac().t().forEach(this::c);
    }
 
-   private void c(akr $$0) {
-      ecd $$1 = $$0.dL().z_();
-      $$0.c.b(new xi($$1.s(), $$1.t()));
+   private void c(aku $$0) {
+      ebx $$1 = $$0.dL().z_();
+      $$0.c.b(new xj($$1.s(), $$1.t()));
    }
 
    public boolean Q() {
-      return this.m.s() != bgv.a;
+      return this.m.s() != bhb.a;
    }
 
    public boolean R() {
@@ -1010,21 +1010,21 @@ public abstract class MinecraftServer extends bfs<afp> implements afl, ds, AutoC
       return this.S;
    }
 
-   public aog ac() {
+   public aoj ac() {
       return this.Q;
    }
 
-   public void a(aog $$0) {
+   public void a(aoj $$0) {
       this.Q = $$0;
    }
 
    public abstract boolean p();
 
-   public void a(cps $$0) {
+   public void a(cpy $$0) {
       this.m.a($$0);
    }
 
-   public alo ad() {
+   public alr ad() {
       return this.G;
    }
 
@@ -1036,7 +1036,7 @@ public abstract class MinecraftServer extends bfs<afp> implements afl, ds, AutoC
       return false;
    }
 
-   public boolean a(@Nullable cps $$0, boolean $$1, int $$2) {
+   public boolean a(@Nullable cpy $$0, boolean $$1, int $$2) {
       return false;
    }
 
@@ -1048,7 +1048,7 @@ public abstract class MinecraftServer extends bfs<afp> implements afl, ds, AutoC
       return 16;
    }
 
-   public boolean a(akq $$0, gw $$1, cbu $$2) {
+   public boolean a(akt $$0, gw $$1, cca $$2) {
       return false;
    }
 
@@ -1077,7 +1077,7 @@ public abstract class MinecraftServer extends bfs<afp> implements afl, ds, AutoC
    }
 
    @Nullable
-   public ash an() {
+   public asm an() {
       return this.l.a();
    }
 
@@ -1086,12 +1086,12 @@ public abstract class MinecraftServer extends bfs<afp> implements afl, ds, AutoC
    }
 
    @Nullable
-   public aoc ap() {
+   public aof ap() {
       return this.l.e();
    }
 
    @Nullable
-   public adz aq() {
+   public aea aq() {
       return this.I;
    }
 
@@ -1138,26 +1138,26 @@ public abstract class MinecraftServer extends bfs<afp> implements afl, ds, AutoC
       return this.L;
    }
 
-   public int a(@Nullable akq $$0) {
-      return $$0 != null ? $$0.X().c(cpr.r) : 10;
+   public int a(@Nullable akt $$0) {
+      return $$0 != null ? $$0.X().c(cpx.r) : 10;
    }
 
-   public afi az() {
+   public afl az() {
       return this.at.b.e();
    }
 
-   public afk aA() {
+   public afn aA() {
       return this.ao;
    }
 
    public CompletableFuture<Void> a(Collection<String> $$0) {
-      hr.b $$1 = this.O.b(aff.d);
+      hr.b $$1 = this.O.b(afi.d);
       CompletableFuture<Void> $$2 = CompletableFuture.<ImmutableList>supplyAsync(
-            () -> $$0.stream().map(this.ak::c).filter(Objects::nonNull).map(anb::e).collect(ImmutableList.toImmutableList()), this
+            () -> $$0.stream().map(this.ak::c).filter(Objects::nonNull).map(ane::e).collect(ImmutableList.toImmutableList()), this
          )
          .thenCompose($$1x -> {
-            anj $$2x = new anm(ami.b, $$1x);
-            return afg.a($$2x, $$1, this.m.M(), this.l() ? du.a.b : du.a.c, this.j(), this.ar, this).whenComplete(($$1xx, $$2xx) -> {
+            anm $$2x = new anp(aml.b, $$1x);
+            return afj.a($$2x, $$1, this.m.M(), this.l() ? du.a.b : du.a.c, this.j(), this.ar, this).whenComplete(($$1xx, $$2xx) -> {
                if ($$2xx != null) {
                   $$2x.close();
                }
@@ -1167,7 +1167,7 @@ public abstract class MinecraftServer extends bfs<afp> implements afl, ds, AutoC
             this.at.close();
             this.at = $$1x;
             this.ak.a($$0);
-            cqo $$2x = new cqo(a(this.ak), this.m.M());
+            cqu $$2x = new cqu(a(this.ak), this.m.M());
             this.m.a($$2x);
             this.at.b.a(this.aU());
             this.ac().h();
@@ -1182,11 +1182,11 @@ public abstract class MinecraftServer extends bfs<afp> implements afl, ds, AutoC
       return $$2;
    }
 
-   public static cqo a(ane $$0, cpj $$1, boolean $$2, cec $$3) {
+   public static cqu a(anh $$0, cpp $$1, boolean $$2, cei $$3) {
       $$0.a();
       if ($$2) {
          $$0.a(Collections.singleton("vanilla"));
-         return cqo.c;
+         return cqu.c;
       } else {
          Set<String> $$4 = Sets.newLinkedHashSet();
 
@@ -1198,22 +1198,22 @@ public abstract class MinecraftServer extends bfs<afp> implements afl, ds, AutoC
             }
          }
 
-         for (anb $$6 : $$0.c()) {
+         for (ane $$6 : $$0.c()) {
             String $$7 = $$6.f();
             if (!$$1.b().contains($$7)) {
-               cec $$8 = $$6.d();
+               cei $$8 = $$6.d();
                boolean $$9 = $$4.contains($$7);
                if (!$$9 && $$6.j().a()) {
                   if ($$8.a($$3)) {
                      n.info("Found new data pack {}, loading it automatically", $$7);
                      $$4.add($$7);
                   } else {
-                     n.info("Found new data pack {}, but can't load it due to missing features {}", $$7, cee.a($$3, $$8));
+                     n.info("Found new data pack {}, but can't load it due to missing features {}", $$7, cek.a($$3, $$8));
                   }
                }
 
                if ($$9 && !$$8.a($$3)) {
-                  n.warn("Pack {} requires features {} that are not enabled for this world, disabling pack.", $$7, cee.a($$3, $$8));
+                  n.warn("Pack {} requires features {} that are not enabled for this world, disabling pack.", $$7, cek.a($$3, $$8));
                   $$4.remove($$7);
                }
             }
@@ -1225,33 +1225,33 @@ public abstract class MinecraftServer extends bfs<afp> implements afl, ds, AutoC
          }
 
          $$0.a($$4);
-         cpj $$10 = a($$0);
-         cec $$11 = $$0.e();
-         return new cqo($$10, $$11);
+         cpp $$10 = a($$0);
+         cei $$11 = $$0.e();
+         return new cqu($$10, $$11);
       }
    }
 
-   private static cpj a(ane $$0) {
+   private static cpp a(anh $$0) {
       Collection<String> $$1 = $$0.d();
       List<String> $$2 = ImmutableList.copyOf($$1);
       List<String> $$3 = $$0.b().stream().filter($$1x -> !$$1.contains($$1x)).collect(ImmutableList.toImmutableList());
-      return new cpj($$2, $$3);
+      return new cpp($$2, $$3);
    }
 
    public void a(dt $$0) {
       if (this.aK()) {
-         aog $$1 = $$0.l().ac();
-         aoo $$2 = $$1.i();
+         aoj $$1 = $$0.l().ac();
+         aor $$2 = $$1.i();
 
-         for (akr $$4 : Lists.newArrayList($$1.t())) {
-            if (!$$2.a($$4.fQ())) {
+         for (aku $$4 : Lists.newArrayList($$1.t())) {
+            if (!$$2.a($$4.fR())) {
                $$4.c.b(tl.c("multiplayer.disconnect.not_whitelisted"));
             }
          }
       }
    }
 
-   public ane aB() {
+   public anh aB() {
       return this.ak;
    }
 
@@ -1260,8 +1260,8 @@ public abstract class MinecraftServer extends bfs<afp> implements afl, ds, AutoC
    }
 
    public dt aD() {
-      akq $$0 = this.D();
-      return new dt(this, $$0 == null ? ehn.b : ehn.a($$0.R()), ehm.a, $$0, 4, "Server", tl.b("Server"), this, null);
+      akt $$0 = this.D();
+      return new dt(this, $$0 == null ? ehh.b : ehh.a($$0.R()), ehg.a, $$0, 4, "Server", tl.b("Server"), this, null);
    }
 
    @Override
@@ -1277,15 +1277,15 @@ public abstract class MinecraftServer extends bfs<afp> implements afl, ds, AutoC
    @Override
    public abstract boolean T_();
 
-   public cml aE() {
+   public cmr aE() {
       return this.at.b.c();
    }
 
-   public afn aF() {
+   public afq aF() {
       return this.al;
    }
 
-   public ebz aG() {
+   public ebt aG() {
       if (this.am == null) {
          throw new NullPointerException("Called before server init");
       } else {
@@ -1293,15 +1293,15 @@ public abstract class MinecraftServer extends bfs<afp> implements afl, ds, AutoC
       }
    }
 
-   public ect aH() {
+   public ecn aH() {
       return this.at.b.b();
    }
 
-   public cpr aI() {
+   public cpx aI() {
       return this.D().X();
    }
 
-   public afv aJ() {
+   public afy aJ() {
       return this.an;
    }
 
@@ -1319,7 +1319,7 @@ public abstract class MinecraftServer extends bfs<afp> implements afl, ds, AutoC
 
    public int c(GameProfile $$0) {
       if (this.ac().f($$0)) {
-         aoi $$1 = this.ac().k().b($$0);
+         aol $$1 = this.ac().k().b($$0);
          if ($$1 != null) {
             return $$1.a();
          } else if (this.a($$0)) {
@@ -1334,7 +1334,7 @@ public abstract class MinecraftServer extends bfs<afp> implements afl, ds, AutoC
       }
    }
 
-   public bdp aM() {
+   public bdv aM() {
       return this.A;
    }
 
@@ -1347,8 +1347,8 @@ public abstract class MinecraftServer extends bfs<afp> implements afl, ds, AutoC
       Path $$1 = $$0.resolve("levels");
 
       try {
-         for (Entry<aev<cpv>, akq> $$2 : this.P.entrySet()) {
-            aew $$3 = $$2.getKey().a();
+         for (Entry<aey<cqb>, akt> $$2 : this.P.entrySet()) {
+            aez $$3 = $$2.getKey().a();
             Path $$4 = $$1.resolve($$3.b()).resolve($$3.a());
             Files.createDirectories($$4);
             $$2.getValue().a($$4);
@@ -1377,10 +1377,10 @@ public abstract class MinecraftServer extends bfs<afp> implements afl, ds, AutoC
    private void d(Path $$0) throws IOException {
       try (Writer $$1 = Files.newBufferedWriter($$0)) {
          final List<String> $$2 = Lists.newArrayList();
-         final cpr $$3 = this.aI();
-         cpr.a(new cpr.c() {
+         final cpx $$3 = this.aI();
+         cpx.a(new cpx.c() {
             @Override
-            public <T extends cpr.g<T>> void a(cpr.e<T> $$0, cpr.f<T> $$1) {
+            public <T extends cpx.g<T>> void a(cpx.e<T> $$0, cpx.f<T> $$1) {
                $$2.add(String.format(Locale.ROOT, "%s=%s\n", $$0.a(), $$3.a($$0)));
             }
          });
@@ -1418,9 +1418,9 @@ public abstract class MinecraftServer extends bfs<afp> implements afl, ds, AutoC
 
    private void g(Path $$0) throws IOException {
       try (Writer $$1 = Files.newBufferedWriter($$0)) {
-         List<arx.a> $$2;
+         List<asc.a> $$2;
          try {
-            $$2 = Lists.newArrayList(arx.a());
+            $$2 = Lists.newArrayList(asc.a());
          } catch (Throwable var7) {
             n.warn("Failed to list native modules", var7);
             return;
@@ -1428,7 +1428,7 @@ public abstract class MinecraftServer extends bfs<afp> implements afl, ds, AutoC
 
          $$2.sort(Comparator.comparing($$0x -> $$0x.a));
 
-         for (arx.a $$5 : $$2) {
+         for (asc.a $$5 : $$2) {
             $$1.write($$5.toString());
             $$1.write(10);
          }
@@ -1437,14 +1437,14 @@ public abstract class MinecraftServer extends bfs<afp> implements afl, ds, AutoC
 
    private void bt() {
       if (this.D) {
-         this.z = bey.a(new bfc(ac.b, this.l()), ac.b, ac.g(), new bfe("server"), this.B, $$0 -> {
+         this.z = bfe.a(new bfi(ac.b, this.l()), ac.b, ac.g(), new bfk("server"), this.B, $$0 -> {
             this.h(() -> this.b($$0.resolve("server")));
             this.C.accept($$0);
          });
          this.D = false;
       }
 
-      this.A = bds.a(this.z.f(), bds.a("Server"));
+      this.A = bdy.a(this.z.f(), bdy.a("Server"));
       this.z.c();
       this.A.a();
    }
@@ -1458,7 +1458,7 @@ public abstract class MinecraftServer extends bfs<afp> implements afl, ds, AutoC
       return this.z.e();
    }
 
-   public void a(Consumer<bdo> $$0, Consumer<Path> $$1) {
+   public void a(Consumer<bdu> $$0, Consumer<Path> $$1) {
       this.B = $$1x -> {
          this.aO();
          $$0.accept($$1x);
@@ -1468,7 +1468,7 @@ public abstract class MinecraftServer extends bfs<afp> implements afl, ds, AutoC
    }
 
    public void aO() {
-      this.z = bez.a;
+      this.z = bff.a;
    }
 
    public void aP() {
@@ -1480,7 +1480,7 @@ public abstract class MinecraftServer extends bfs<afp> implements afl, ds, AutoC
       this.A = this.z.f();
    }
 
-   public Path a(ece $$0) {
+   public Path a(eby $$0) {
       return this.h.a($$0);
    }
 
@@ -1488,11 +1488,11 @@ public abstract class MinecraftServer extends bfs<afp> implements afl, ds, AutoC
       return true;
    }
 
-   public dzc aS() {
+   public dyw aS() {
       return this.au;
    }
 
-   public ecm aT() {
+   public ecg aT() {
       return this.m;
    }
 
@@ -1500,24 +1500,24 @@ public abstract class MinecraftServer extends bfs<afp> implements afl, ds, AutoC
       return this.O.a();
    }
 
-   public hl<aff> aV() {
+   public hl<afi> aV() {
       return this.O;
    }
 
-   public alu a(akr $$0) {
-      return alu.a;
+   public alx a(aku $$0) {
+      return alx.a;
    }
 
-   public aks b(akr $$0) {
-      return (aks)(this.R() ? new akh($$0) : new aks($$0));
+   public akv b(aku $$0) {
+      return (akv)(this.R() ? new akk($$0) : new akv($$0));
    }
 
    @Nullable
-   public cps aW() {
+   public cpy aW() {
       return null;
    }
 
-   public ant aX() {
+   public anw aX() {
       return this.at.a;
    }
 
@@ -1533,11 +1533,11 @@ public abstract class MinecraftServer extends bfs<afp> implements afl, ds, AutoC
       this.F = true;
    }
 
-   public bdo bb() {
+   public bdu bb() {
       if (this.E == null) {
-         return bdk.a;
+         return bdq.a;
       } else {
-         bdo $$0 = this.E.a(ac.c(), this.T);
+         bdu $$0 = this.E.a(ac.c(), this.T);
          this.E = null;
          return $$0;
       }
@@ -1564,7 +1564,7 @@ public abstract class MinecraftServer extends bfs<afp> implements afl, ds, AutoC
       return true;
    }
 
-   static record a(anj a, afg b) implements AutoCloseable {
+   static record a(anm a, afj b) implements AutoCloseable {
 
       @Override
       public void close() {
@@ -1584,10 +1584,10 @@ public abstract class MinecraftServer extends bfs<afp> implements afl, ds, AutoC
          this.b = $$1;
       }
 
-      bdo a(final long $$0, final int $$1) {
-         return new bdo() {
+      bdu a(final long $$0, final int $$1) {
+         return new bdu() {
             @Override
-            public List<bdr> a(String $$0x) {
+            public List<bdx> a(String $$0x) {
                return Collections.emptyList();
             }
 

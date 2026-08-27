@@ -1,20 +1,35 @@
-public class col extends cno {
-   protected col(cno.a $$0, biv... $$1) {
-      super($$0, cnp.g, $$1);
+public class col extends cnu {
+   public col(cnu.a $$0, bjb... $$1) {
+      super($$0, cnv.c, $$1);
    }
 
    @Override
    public int a(int $$0) {
-      return 15;
+      return $$0 * 25;
    }
 
    @Override
    public int b(int $$0) {
-      return super.a($$0) + 50;
+      return this.a($$0) + 50;
    }
 
    @Override
-   public boolean a(cno $$0) {
-      return super.a($$0) && $$0 != cns.x;
+   public boolean b() {
+      return true;
+   }
+
+   @Override
+   public boolean h() {
+      return false;
+   }
+
+   @Override
+   public boolean i() {
+      return false;
+   }
+
+   @Override
+   public int a() {
+      return 3;
    }
 }

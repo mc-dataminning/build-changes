@@ -1,167 +1,195 @@
 import com.mojang.serialization.Codec;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class dog extends dnw<dof> {
-   private static final float a = 0.06F;
-
-   public dog(Codec<dof> $$0) {
+public class dog extends dnq<dpx> {
+   public dog(Codec<dpx> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dny<dof> $$0) {
-      cqp $$1 = $$0.b();
+   public boolean a(dns<dpx> $$0) {
+      cqv $$1 = $$0.b();
       gw $$2 = $$0.e();
-      asc $$3 = $$0.d();
-      dhg $$4 = $$0.c();
-      dof $$5 = $$0.f();
-      csv $$6 = $$5.b.b();
-      gw $$7 = null;
-      dfj $$8 = $$1.a_($$2.d());
-      if ($$8.a($$6)) {
-         $$7 = $$2;
-      }
-
-      if ($$7 == null) {
+      dpx $$3 = $$0.f();
+      ash $$4 = $$0.d();
+      if (!dnm.a($$1, $$2)) {
          return false;
       } else {
-         int $$9 = arw.a($$3, 4, 13);
-         if ($$3.a(12) == 0) {
-            $$9 *= 2;
-         }
-
-         if (!$$5.g) {
-            int $$10 = $$4.d();
-            if ($$7.v() + $$9 + 1 >= $$10) {
+         Optional<dkc> $$5 = dkc.a($$1, $$2, $$3.b, dnm::c, dnm::a);
+         if (!$$5.isEmpty() && $$5.get() instanceof dkc.b) {
+            dkc.b $$6 = (dkc.b)$$5.get();
+            if ($$6.g() < 4) {
                return false;
+            } else {
+               int $$7 = (int)((float)$$6.g() * $$3.e);
+               int $$8 = asb.a($$7, $$3.c.a(), $$3.c.b());
+               int $$9 = asb.b($$4, $$3.c.a(), $$8);
+               dog.a $$10 = a($$2.h($$6.e() - 1), false, $$4, $$9, $$3.f, $$3.d);
+               dog.a $$11 = a($$2.h($$6.f() + 1), true, $$4, $$9, $$3.g, $$3.d);
+               dog.b $$12;
+               if ($$10.a($$3) && $$11.a($$3)) {
+                  $$12 = new dog.b($$2.v(), $$4, $$3.h);
+               } else {
+                  $$12 = dog.b.a();
+               }
+
+               boolean $$14 = $$10.a($$1, $$12);
+               boolean $$15 = $$11.a($$1, $$12);
+               if ($$14) {
+                  $$10.a($$1, $$4, $$12);
+               }
+
+               if ($$15) {
+                  $$11.a($$1, $$4, $$12);
+               }
+
+               return true;
             }
+         } else {
+            return false;
+         }
+      }
+   }
+
+   private static dog.a a(gw $$0, boolean $$1, ash $$2, int $$3, bgh $$4, bgh $$5) {
+      return new dog.a($$0, $$1, $$3, (double)$$4.a($$2), (double)$$5.a($$2));
+   }
+
+   private void a(cqv $$0, gw $$1, dkc.b $$2, dog.b $$3) {
+      $$0.a($$3.a($$1.h($$2.e() - 1)), cte.cz.o(), 2);
+      $$0.a($$3.a($$1.h($$2.f() + 1)), cte.ch.o(), 2);
+
+      for (gw.a $$4 = $$1.h($$2.f() + 2).j(); $$4.v() < $$2.e() - 1; $$4.c(ha.b)) {
+         gw $$5 = $$3.a($$4);
+         if (dnm.a($$0, $$5) || $$0.a_($$5).a(cte.rt)) {
+            $$0.a($$5, cte.gM.o(), 2);
+         }
+      }
+   }
+
+   static final class a {
+      private gw a;
+      private final boolean b;
+      private int c;
+      private final double d;
+      private final double e;
+
+      a(gw $$0, boolean $$1, int $$2, double $$3, double $$4) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+      }
+
+      private int a() {
+         return this.a(0.0F);
+      }
+
+      private int b() {
+         return this.b ? this.a.v() : this.a.v() - this.a();
+      }
+
+      private int c() {
+         return !this.b ? this.a.v() : this.a.v() + this.a();
+      }
+
+      boolean a(cqv $$0, dog.b $$1) {
+         while (this.c > 1) {
+            gw.a $$2 = this.a.j();
+            int $$3 = Math.min(10, this.a());
+
+            for (int $$4 = 0; $$4 < $$3; $$4++) {
+               if ($$0.a_($$2).a(cte.H)) {
+                  return false;
+               }
+
+               if (dnm.a($$0, $$1.a($$2), this.c)) {
+                  this.a = $$2;
+                  return true;
+               }
+
+               $$2.c(this.b ? ha.a : ha.b);
+            }
+
+            this.c /= 2;
          }
 
-         boolean $$11 = !$$5.g && $$3.i() < 0.06F;
-         $$1.a($$2, csw.a.n(), 4);
-         this.a($$1, $$3, $$5, $$7, $$9, $$11);
-         this.b($$1, $$3, $$5, $$7, $$9, $$11);
-         return true;
+         return false;
       }
-   }
 
-   private static boolean a(cqp $$0, gw $$1, dof $$2, boolean $$3) {
-      if ($$0.a($$1, dfi.a::r)) {
-         return true;
-      } else {
-         return $$3 ? $$2.f.test($$0, $$1) : false;
+      private int a(float $$0) {
+         return (int)dnm.a((double)$$0, (double)this.c, this.e, this.d);
       }
-   }
 
-   private void a(cqp $$0, asc $$1, dof $$2, gw $$3, int $$4, boolean $$5) {
-      gw.a $$6 = new gw.a();
-      dfj $$7 = $$2.c;
-      int $$8 = $$5 ? 1 : 0;
-
-      for (int $$9 = -$$8; $$9 <= $$8; $$9++) {
-         for (int $$10 = -$$8; $$10 <= $$8; $$10++) {
-            boolean $$11 = $$5 && arw.a($$9) == $$8 && arw.a($$10) == $$8;
-
-            for (int $$12 = 0; $$12 < $$4; $$12++) {
-               $$6.a($$3, $$9, $$12, $$10);
-               if (a($$0, $$6, $$2, true)) {
-                  if ($$2.g) {
-                     if (!$$0.a_($$6.d()).i()) {
-                        $$0.b($$6, true);
+      void a(cqv $$0, ash $$1, dog.b $$2) {
+         for (int $$3 = -this.c; $$3 <= this.c; $$3++) {
+            for (int $$4 = -this.c; $$4 <= this.c; $$4++) {
+               float $$5 = asb.c((float)($$3 * $$3 + $$4 * $$4));
+               if (!($$5 > (float)this.c)) {
+                  int $$6 = this.a($$5);
+                  if ($$6 > 0) {
+                     if ((double)$$1.i() < 0.2) {
+                        $$6 = (int)((float)$$6 * asb.b($$1, 0.8F, 1.0F));
                      }
 
-                     $$0.a($$6, $$7, 3);
-                  } else if ($$11) {
-                     if ($$1.i() < 0.1F) {
-                        this.a($$0, $$6, $$7);
+                     gw.a $$7 = this.a.b($$3, 0, $$4).j();
+                     boolean $$8 = false;
+                     int $$9 = this.b ? $$0.a(dkm.a.a, $$7.u(), $$7.w()) : Integer.MAX_VALUE;
+
+                     for (int $$10 = 0; $$10 < $$6 && $$7.v() < $$9; $$10++) {
+                        gw $$11 = $$2.a($$7);
+                        if (dnm.b($$0, $$11)) {
+                           $$8 = true;
+                           ctc $$12 = cte.rt;
+                           $$0.a($$11, $$12.o(), 2);
+                        } else if ($$8 && $$0.a_($$11).a(apv.bd)) {
+                           break;
+                        }
+
+                        $$7.c(this.b ? ha.b : ha.a);
                      }
-                  } else {
-                     this.a($$0, $$6, $$7);
                   }
                }
             }
          }
       }
-   }
 
-   private void b(cqp $$0, asc $$1, dof $$2, gw $$3, int $$4, boolean $$5) {
-      gw.a $$6 = new gw.a();
-      boolean $$7 = $$2.d.a(csw.kK);
-      int $$8 = Math.min($$1.a(1 + $$4 / 3) + 5, $$4);
-      int $$9 = $$4 - $$8;
-
-      for (int $$10 = $$9; $$10 <= $$4; $$10++) {
-         int $$11 = $$10 < $$4 - $$1.a(3) ? 2 : 1;
-         if ($$8 > 8 && $$10 < $$9 + 4) {
-            $$11 = 3;
-         }
-
-         if ($$5) {
-            $$11++;
-         }
-
-         for (int $$12 = -$$11; $$12 <= $$11; $$12++) {
-            for (int $$13 = -$$11; $$13 <= $$11; $$13++) {
-               boolean $$14 = $$12 == -$$11 || $$12 == $$11;
-               boolean $$15 = $$13 == -$$11 || $$13 == $$11;
-               boolean $$16 = !$$14 && !$$15 && $$10 != $$4;
-               boolean $$17 = $$14 && $$15;
-               boolean $$18 = $$10 < $$9 + 3;
-               $$6.a($$3, $$12, $$10, $$13);
-               if (a($$0, $$6, $$2, false)) {
-                  if ($$2.g && !$$0.a_($$6.d()).i()) {
-                     $$0.b($$6, true);
-                  }
-
-                  if ($$18) {
-                     if (!$$16) {
-                        this.a($$0, $$1, $$6, $$2.d, $$7);
-                     }
-                  } else if ($$16) {
-                     this.a($$0, $$1, $$2, $$6, 0.1F, 0.2F, $$7 ? 0.1F : 0.0F);
-                  } else if ($$17) {
-                     this.a($$0, $$1, $$2, $$6, 0.01F, 0.7F, $$7 ? 0.083F : 0.0F);
-                  } else {
-                     this.a($$0, $$1, $$2, $$6, 5.0E-4F, 0.98F, $$7 ? 0.07F : 0.0F);
-                  }
-               }
-            }
-         }
+      boolean a(dpx $$0) {
+         return this.c >= $$0.i && this.d >= (double)$$0.j;
       }
    }
 
-   private void a(cpw $$0, asc $$1, dof $$2, gw.a $$3, float $$4, float $$5, float $$6) {
-      if ($$1.i() < $$4) {
-         this.a($$0, $$3, $$2.e);
-      } else if ($$1.i() < $$5) {
-         this.a($$0, $$3, $$2.d);
-         if ($$1.i() < $$6) {
-            a($$3, $$0, $$1);
-         }
+   static final class b {
+      private final int a;
+      @Nullable
+      private final ehh b;
+
+      b(int $$0, ash $$1, bgh $$2) {
+         this.a = $$0;
+         float $$3 = $$2.a($$1);
+         float $$4 = asb.b($$1, 0.0F, (float) Math.PI);
+         this.b = new ehh((double)(asb.b($$4) * $$3), 0.0, (double)(asb.a($$4) * $$3));
       }
-   }
 
-   private void a(cpw $$0, asc $$1, gw $$2, dfj $$3, boolean $$4) {
-      if ($$0.a_($$2.d()).a($$3.b())) {
-         this.a($$0, $$2, $$3);
-      } else if ((double)$$1.i() < 0.15) {
-         this.a($$0, $$2, $$3);
-         if ($$4 && $$1.a(11) == 0) {
-            a($$2, $$0, $$1);
-         }
+      private b() {
+         this.a = 0;
+         this.b = null;
       }
-   }
 
-   private static void a(gw $$0, cpw $$1, asc $$2) {
-      gw.a $$3 = $$0.j().c(ha.a);
-      if ($$1.t($$3)) {
-         int $$4 = arw.a($$2, 1, 5);
-         if ($$2.a(7) == 0) {
-            $$4 *= 2;
+      static dog.b a() {
+         return new dog.b();
+      }
+
+      gw a(gw $$0) {
+         if (this.b == null) {
+            return $$0;
+         } else {
+            int $$1 = this.a - $$0.v();
+            ehh $$2 = this.b.a((double)$$1);
+            return $$0.b(asb.a($$2.c), 0, asb.a($$2.e));
          }
-
-         int $$5 = 23;
-         int $$6 = 25;
-         dpp.a($$1, $$2, $$3, $$4, 23, 25);
       }
    }
 }

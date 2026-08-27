@@ -1,49 +1,99 @@
-public class gcf extends gbv {
-   private static final float n = 0.0F;
-   private static final float o = 0.7F;
-   private static final float p = 0.0F;
-   private static final float q = 1.0F;
-   private static final float r = 0.0025F;
-   private final cdl s;
-   private float t = 0.0F;
+import javax.annotation.Nullable;
 
-   public gcf(cdl $$0) {
-      super(apd.ni, ape.g, gcm.t());
-      this.s = $$0;
-      this.i = true;
-      this.j = 0;
-      this.d = 0.0F;
-      this.f = (double)((float)$$0.dq());
-      this.g = (double)((float)$$0.ds());
-      this.h = (double)((float)$$0.dw());
+public class gcf implements gdo<gcf> {
+   public static final aes a = new aes("sounds", ".ogg");
+   private final aez b;
+   private final bgm c;
+   private final bgm d;
+   private final int e;
+   private final gcf.a f;
+   private final boolean g;
+   private final boolean h;
+   private final int i;
+
+   public gcf(String $$0, bgm $$1, bgm $$2, int $$3, gcf.a $$4, boolean $$5, boolean $$6, int $$7) {
+      this.b = new aez($$0);
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.i = $$7;
+   }
+
+   public aez a() {
+      return this.b;
+   }
+
+   public aez b() {
+      return a.a(this.b);
+   }
+
+   public bgm c() {
+      return this.c;
+   }
+
+   public bgm d() {
+      return this.d;
    }
 
    @Override
-   public boolean s() {
-      return !this.s.aS();
+   public int e() {
+      return this.e;
+   }
+
+   public gcf a(ash $$0) {
+      return this;
    }
 
    @Override
-   public boolean r() {
-      return true;
+   public void a(gdj $$0) {
+      if (this.h) {
+         $$0.a(this);
+      }
+   }
+
+   public gcf.a f() {
+      return this.f;
+   }
+
+   public boolean g() {
+      return this.g;
+   }
+
+   public boolean h() {
+      return this.h;
+   }
+
+   public int i() {
+      return this.i;
    }
 
    @Override
-   public void q() {
-      if (this.s.dG()) {
-         this.n();
-      } else {
-         this.f = (double)((float)this.s.dq());
-         this.g = (double)((float)this.s.ds());
-         this.h = (double)((float)this.s.dw());
-         float $$0 = (float)this.s.do().h();
-         if ($$0 >= 0.01F) {
-            this.t = arw.a(this.t + 0.0025F, 0.0F, 1.0F);
-            this.d = arw.i(arw.a($$0, 0.0F, 0.5F), 0.0F, 0.7F);
-         } else {
-            this.t = 0.0F;
-            this.d = 0.0F;
+   public String toString() {
+      return "Sound[" + this.b + "]";
+   }
+
+   public static enum a {
+      a("file"),
+      b("event");
+
+      private final String c;
+
+      private a(String $$0) {
+         this.c = $$0;
+      }
+
+      @Nullable
+      public static gcf.a a(String $$0) {
+         for (gcf.a $$1 : values()) {
+            if ($$1.c.equals($$0)) {
+               return $$1;
+            }
          }
+
+         return null;
       }
    }
 }

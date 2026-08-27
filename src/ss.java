@@ -7,7 +7,7 @@ import io.netty.util.AttributeKey;
 import java.io.IOException;
 import org.slf4j.Logger;
 
-public class ss extends MessageToByteEncoder<vd<?>> {
+public class ss extends MessageToByteEncoder<ve<?>> {
    private static final Logger a = LogUtils.getLogger();
    private final AttributeKey<sn.a<?>> b;
 
@@ -15,7 +15,7 @@ public class ss extends MessageToByteEncoder<vd<?>> {
       this.b = $$0;
    }
 
-   protected void a(ChannelHandlerContext $$0, vd<?> $$1, ByteBuf $$2) throws Exception {
+   protected void a(ChannelHandlerContext $$0, ve<?> $$1, ByteBuf $$2) throws Exception {
       Attribute<sn.a<?>> $$3 = $$0.channel().attr(this.b);
       sn.a<?> $$4 = (sn.a<?>)$$3.get();
       if ($$4 == null) {
@@ -40,7 +40,7 @@ public class ss extends MessageToByteEncoder<vd<?>> {
                   throw new IllegalArgumentException("Packet too big (is " + $$8 + ", should be less than 8388608): " + $$1);
                }
 
-               bdv.e.b($$4.a(), $$5, $$0.channel().remoteAddress(), $$8);
+               beb.e.b($$4.a(), $$5, $$0.channel().remoteAddress(), $$8);
             } catch (Throwable var13) {
                a.error("Error receiving packet {}", $$5, var13);
                if ($$1.b()) {

@@ -1,59 +1,70 @@
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-public class dju {
-   private final akq a;
+public record dju(djn b, float c, ehh d, @Nullable UUID e, @Nullable UUID f, @Nullable biw g) {
+   public static final Codec<dju> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               jb.b.q().fieldOf("game_event").forGetter(dju::a),
+               Codec.floatRange(0.0F, Float.MAX_VALUE).fieldOf("distance").forGetter(dju::b),
+               ehh.a.fieldOf("pos").forGetter(dju::c),
+               hx.a.optionalFieldOf("source").forGetter($$0x -> Optional.ofNullable($$0x.d())),
+               hx.a.optionalFieldOf("projectile_owner").forGetter($$0x -> Optional.ofNullable($$0x.e()))
+            )
+            .apply($$0, ($$0x, $$1, $$2, $$3, $$4) -> new dju($$0x, $$1, $$2, (UUID)$$3.orElse(null), (UUID)$$4.orElse(null)))
+   );
 
-   public dju(akq $$0) {
-      this.a = $$0;
+   public dju(djn $$0, float $$1, ehh $$2, @Nullable UUID $$3, @Nullable UUID $$4) {
+      this($$0, $$1, $$2, $$3, $$4, null);
    }
 
-   public void a(djt $$0, ehn $$1, djt.a $$2) {
-      int $$3 = $$0.a();
-      gw $$4 = gw.a($$1);
-      int $$5 = hw.a($$4.u() - $$3);
-      int $$6 = hw.a($$4.v() - $$3);
-      int $$7 = hw.a($$4.w() - $$3);
-      int $$8 = hw.a($$4.u() + $$3);
-      int $$9 = hw.a($$4.v() + $$3);
-      int $$10 = hw.a($$4.w() + $$3);
-      List<djt.b> $$11 = new ArrayList<>();
-      djw.a $$12 = ($$4x, $$5x) -> {
-         if ($$4x.c() == djv.a.b) {
-            $$11.add(new djt.b($$0, $$1, $$2, $$4x, $$5x));
-         } else {
-            $$4x.a(this.a, $$0, $$2, $$1);
-         }
-      };
-      boolean $$13 = false;
-
-      for (int $$14 = $$5; $$14 <= $$8; $$14++) {
-         for (int $$15 = $$7; $$15 <= $$10; $$15++) {
-            dhf $$16 = this.a.k().a($$14, $$15);
-            if ($$16 != null) {
-               for (int $$17 = $$6; $$17 <= $$9; $$17++) {
-                  $$13 |= $$16.a($$17).a($$0, $$1, $$2, $$12);
-               }
-            }
-         }
-      }
-
-      if (!$$11.isEmpty()) {
-         this.a($$11);
-      }
-
-      if ($$13) {
-         abb.a(this.a, $$0, $$1);
-      }
+   public dju(djn $$0, float $$1, ehh $$2, @Nullable biw $$3) {
+      this($$0, $$1, $$2, $$3 == null ? null : $$3.cv(), a($$3), $$3);
    }
 
-   private void a(List<djt.b> $$0) {
-      Collections.sort($$0);
-
-      for (djt.b $$1 : $$0) {
-         djv $$2 = $$1.d();
-         $$2.a(this.a, $$1.a(), $$1.c(), $$1.b());
+   @Nullable
+   private static UUID a(@Nullable biw $$0) {
+      if ($$0 instanceof ccs $$1 && $$1.v() != null) {
+         return $$1.v().cv();
       }
+
+      return null;
+   }
+
+   public Optional<biw> a(akt $$0) {
+      return Optional.ofNullable(this.g).or(() -> Optional.ofNullable(this.e).map($$0::a));
+   }
+
+   public Optional<biw> b(akt $$0) {
+      return this.a($$0).filter($$0x -> $$0x instanceof ccs).map($$0x -> (ccs)$$0x).map(ccs::v).or(() -> Optional.ofNullable(this.f).map($$0::a));
+   }
+
+   public djn a() {
+      return this.b;
+   }
+
+   public float b() {
+      return this.c;
+   }
+
+   public ehh c() {
+      return this.d;
+   }
+
+   @Nullable
+   public UUID d() {
+      return this.e;
+   }
+
+   @Nullable
+   public UUID e() {
+      return this.f;
+   }
+
+   @Nullable
+   public biw f() {
+      return this.g;
    }
 }

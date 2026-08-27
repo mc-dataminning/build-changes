@@ -1,90 +1,59 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import java.util.List;
-import java.util.Map;
-
-public class cmo extends cmb {
-   public cmo(cly $$0) {
-      super($$0);
-   }
-
-   public boolean a(cez $$0, cpv $$1) {
-      List<cjf> $$2 = Lists.newArrayList();
-
-      for (int $$3 = 0; $$3 < $$0.b(); $$3++) {
-         cjf $$4 = $$0.a($$3);
-         if (!$$4.b()) {
-            $$2.add($$4);
-            if ($$2.size() > 1) {
-               cjf $$5 = $$2.get(0);
-               if (!$$4.a($$5.d()) || $$5.L() != 1 || $$4.L() != 1 || !$$5.d().o()) {
-                  return false;
-               }
-            }
-         }
-      }
-
-      return $$2.size() == 2;
-   }
-
-   public cjf a(cez $$0, hr $$1) {
-      List<cjf> $$2 = Lists.newArrayList();
-
-      for (int $$3 = 0; $$3 < $$0.b(); $$3++) {
-         cjf $$4 = $$0.a($$3);
-         if (!$$4.b()) {
-            $$2.add($$4);
-            if ($$2.size() > 1) {
-               cjf $$5 = $$2.get(0);
-               if (!$$4.a($$5.d()) || $$5.L() != 1 || $$4.L() != 1 || !$$5.d().o()) {
-                  return cjf.b;
-               }
-            }
-         }
-      }
-
-      if ($$2.size() == 2) {
-         cjf $$6 = $$2.get(0);
-         cjf $$7 = $$2.get(1);
-         if ($$6.a($$7.d()) && $$6.L() == 1 && $$7.L() == 1 && $$6.d().o()) {
-            cja $$8 = $$6.d();
-            int $$9 = $$8.n() - $$6.k();
-            int $$10 = $$8.n() - $$7.k();
-            int $$11 = $$9 + $$10 + $$8.n() * 5 / 100;
-            int $$12 = $$8.n() - $$11;
-            if ($$12 < 0) {
-               $$12 = 0;
-            }
-
-            cjf $$13 = new cjf($$6.d());
-            $$13.b($$12);
-            Map<cno, Integer> $$14 = Maps.newHashMap();
-            Map<cno, Integer> $$15 = cnq.a($$6);
-            Map<cno, Integer> $$16 = cnq.a($$7);
-            jb.g.s().filter(cno::c).forEach($$3x -> {
-               int $$4 = Math.max($$15.getOrDefault($$3x, 0), $$16.getOrDefault($$3x, 0));
-               if ($$4 > 0) {
-                  $$14.put($$3x, $$4);
-               }
-            });
-            if (!$$14.isEmpty()) {
-               cnq.a($$14, $$13);
-            }
-
-            return $$13;
-         }
-      }
-
-      return cjf.b;
+public class cmo extends cmv {
+   public cmo(cme $$0) {
+      super(
+         "",
+         $$0,
+         3,
+         3,
+         hn.a(cmm.a, cmm.a(cjo.qa), cmm.a(cjo.qa), cmm.a(cjo.qa), cmm.a(cjo.qa), cmm.a(cjo.rf), cmm.a(cjo.qa), cmm.a(cjo.qa), cmm.a(cjo.qa), cmm.a(cjo.qa)),
+         new cjl(cjo.tp)
+      );
    }
 
    @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 * $$1 >= 2;
+   public boolean a(cff $$0, cqb $$1) {
+      if (!super.a($$0, $$1)) {
+         return false;
+      } else {
+         cjl $$2 = a($$0);
+         if ($$2.b()) {
+            return false;
+         } else {
+            ebq $$3 = cjs.a($$2, $$1);
+            if ($$3 == null) {
+               return false;
+            } else {
+               return $$3.f() ? false : $$3.f < 4;
+            }
+         }
+      }
    }
 
    @Override
-   public cmm<?> an_() {
-      return cmm.o;
+   public cjl a(cff $$0, hr $$1) {
+      cjl $$2 = a($$0).c(1);
+      $$2.w().a("map_scale_direction", 1);
+      return $$2;
+   }
+
+   private static cjl a(cff $$0) {
+      for (int $$1 = 0; $$1 < $$0.b(); $$1++) {
+         cjl $$2 = $$0.a($$1);
+         if ($$2.a(cjo.rf)) {
+            return $$2;
+         }
+      }
+
+      return cjl.b;
+   }
+
+   @Override
+   public boolean am_() {
+      return true;
+   }
+
+   @Override
+   public cms<?> an_() {
+      return cms.f;
    }
 }

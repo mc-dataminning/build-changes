@@ -4,32 +4,32 @@ import java.util.List;
 import java.util.Objects;
 import javax.annotation.Nullable;
 
-public record ti(String b, List<ti.a> c, uh d) {
+public record ti(String b, List<ti.a> c, ui d) {
    public static final Codec<ti> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
                Codec.STRING.fieldOf("translation_key").forGetter(ti::a),
                ti.a.d.listOf().fieldOf("parameters").forGetter(ti::b),
-               uh.b.optionalFieldOf("style", uh.a).forGetter(ti::c)
+               ui.b.b.optionalFieldOf("style", ui.a).forGetter(ti::c)
             )
             .apply($$0, ti::new)
    );
 
    public static ti a(String $$0) {
-      return new ti($$0, List.of(ti.a.a, ti.a.c), uh.a);
+      return new ti($$0, List.of(ti.a.a, ti.a.c), ui.a);
    }
 
    public static ti b(String $$0) {
-      uh $$1 = uh.a.a(n.h).b(true);
+      ui $$1 = ui.a.a(n.h).b(true);
       return new ti($$0, List.of(ti.a.a, ti.a.c), $$1);
    }
 
    public static ti c(String $$0) {
-      uh $$1 = uh.a.a(n.h).b(true);
+      ui $$1 = ui.a.a(n.h).b(true);
       return new ti($$0, List.of(ti.a.b, ti.a.c), $$1);
    }
 
    public static ti d(String $$0) {
-      return new ti($$0, List.of(ti.a.b, ti.a.a, ti.a.c), uh.a);
+      return new ti($$0, List.of(ti.a.b, ti.a.a, ti.a.c), ui.a);
    }
 
    public tl a(tl $$0, th.a $$1) {
@@ -56,16 +56,16 @@ public record ti(String b, List<ti.a> c, uh d) {
       return this.c;
    }
 
-   public uh c() {
+   public ui c() {
       return this.d;
    }
 
-   public static enum a implements asp {
+   public static enum a implements asu {
       a("sender", ($$0, $$1) -> $$1.b()),
       b("target", ($$0, $$1) -> $$1.c()),
       c("content", ($$0, $$1) -> $$0);
 
-      public static final Codec<ti.a> d = asp.a(ti.a::values);
+      public static final Codec<ti.a> d = asu.a(ti.a::values);
       private final String e;
       private final ti.a.a f;
 

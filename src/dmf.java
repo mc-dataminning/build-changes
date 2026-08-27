@@ -1,22 +1,18 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-class dmf extends dmk {
-   private final hi<csv> e;
-   public static final Codec<dmf> a = RecordCodecBuilder.create($$0 -> a($$0).and(hs.a(jc.e).fieldOf("blocks").forGetter($$0x -> $$0x.e)).apply($$0, dmf::new));
+class dmf implements dlt {
+   public static dmf a = new dmf();
+   public static final Codec<dmf> e = Codec.unit(() -> a);
 
-   public dmf(hy $$0, hi<csv> $$1) {
-      super($$0);
-      this.e = $$1;
+   private dmf() {
+   }
+
+   public boolean a(cqv $$0, gw $$1) {
+      return true;
    }
 
    @Override
-   protected boolean a(dfj $$0) {
-      return $$0.a(this.e);
-   }
-
-   @Override
-   public dma<?> a() {
-      return dma.a;
+   public dlu<?> a() {
+      return dlu.l;
    }
 }

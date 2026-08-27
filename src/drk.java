@@ -1,51 +1,48 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class drk extends drm {
-   public static final Codec<drk> a = RecordCodecBuilder.create($$0 -> b($$0).apply($$0, drk::new));
+public class drk extends drg {
+   public static final Codec<drk> a = RecordCodecBuilder.create(
+      $$0 -> b($$0).and(bgj.b(0, 24).fieldOf("height").forGetter($$0x -> $$0x.b)).apply($$0, drk::new)
+   );
+   private final bgj b;
 
-   public drk(bgd $$0, bgd $$1) {
+   public drk(bgj $$0, bgj $$1, bgj $$2) {
       super($$0, $$1);
+      this.b = $$2;
    }
 
    @Override
-   protected drn<?> a() {
-      return drn.i;
+   protected drh<?> a() {
+      return drh.c;
    }
 
    @Override
-   protected void a(cqb $$0, drm.b $$1, asc $$2, dqw $$3, int $$4, drm.a $$5, int $$6, int $$7, int $$8) {
-      gw $$9 = $$5.a().b($$8);
-      boolean $$10 = $$5.c();
-      if ($$10) {
-         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 2, -1, $$10);
-         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 3, 0, $$10);
-         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 2, 1, $$10);
-         if ($$2.h()) {
-            this.a($$0, $$1, $$2, $$3, $$9, $$7, 2, $$10);
+   protected void a(cqh $$0, drg.b $$1, ash $$2, dqq $$3, int $$4, drg.a $$5, int $$6, int $$7, int $$8) {
+      int $$9 = 0;
+
+      for (int $$10 = $$8; $$10 >= $$8 - $$6; $$10--) {
+         this.a($$0, $$1, $$2, $$3, $$5.a(), $$9, $$10, $$5.c());
+         if ($$9 >= 1 && $$10 == $$8 - $$6 + 1) {
+            $$9--;
+         } else if ($$9 < $$7 + $$5.b()) {
+            $$9++;
          }
-      } else {
-         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 2, -1, $$10);
-         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 1, 0, $$10);
       }
    }
 
    @Override
-   public int a(asc $$0, int $$1, dqw $$2) {
-      return 4;
+   public int a(ash $$0, int $$1) {
+      return super.a($$0, $$1) + $$0.a(Math.max($$1 + 1, 1));
    }
 
    @Override
-   protected boolean b(asc $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$2 != 0 || !$$5 || $$1 != -$$4 && $$1 < $$4 || $$3 != -$$4 && $$3 < $$4 ? super.b($$0, $$1, $$2, $$3, $$4, $$5) : true;
+   public int a(ash $$0, int $$1, dqq $$2) {
+      return this.b.a($$0);
    }
 
    @Override
-   protected boolean a(asc $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      if ($$2 == -1 && !$$5) {
-         return $$1 == $$4 && $$3 == $$4;
-      } else {
-         return $$2 == 1 ? $$1 + $$3 > $$4 * 2 - 2 : false;
-      }
+   protected boolean a(ash $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$1 == $$4 && $$3 == $$4 && $$4 > 0;
    }
 }

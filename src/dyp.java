@@ -1,13 +1,9 @@
 import com.mojang.serialization.Codec;
 
-public interface dyp<P extends dyo> {
-   dyp<dyn> a = a("always_true", dyn.a);
-   dyp<dyl> b = a("linear_pos", dyl.a);
-   dyp<dya> c = a("axis_aligned_linear_pos", dya.a);
+public abstract class dyp {
+   public static final Codec<dyp> c = jb.p.q().dispatch("predicate_type", dyp::a, dyq::codec);
 
-   Codec<P> codec();
+   public abstract boolean a(dfd var1, ash var2);
 
-   static <P extends dyo> dyp<P> a(String $$0, Codec<P> $$1) {
-      return hq.a(jb.r, $$0, () -> $$1);
-   }
+   protected abstract dyq<?> a();
 }

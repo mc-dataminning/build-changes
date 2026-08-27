@@ -1,24 +1,18 @@
-import java.util.List;
-import java.util.function.Predicate;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-public interface dhw<T> {
-   int a(T var1);
+public interface dhw {
+   @Nullable
+   dvk a(dvc var1);
 
-   boolean a(Predicate<T> var1);
+   void a(dvc var1, dvk var2);
 
-   T a(int var1);
+   LongSet b(dvc var1);
 
-   void a(so var1);
+   void a(dvc var1, long var2);
 
-   void b(so var1);
+   Map<dvc, LongSet> h();
 
-   int a();
-
-   int b();
-
-   dhw<T> c();
-
-   public interface a {
-      <A> dhw<A> create(int var1, hj<A> var2, dhx<A> var3, List<A> var4);
-   }
+   void b(Map<dvc, LongSet> var1);
 }

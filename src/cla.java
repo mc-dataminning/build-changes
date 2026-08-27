@@ -1,46 +1,56 @@
-import javax.annotation.Nullable;
+import java.util.function.Supplier;
 
-public class cla extends cja {
-   public cla(cja.a $$0) {
-      super($$0);
+public enum cla implements cky {
+   a(0, 59, 2.0F, 0.0F, 15, () -> cmm.a(aqd.b)),
+   b(1, 131, 4.0F, 1.0F, 5, () -> cmm.a(aqd.ax)),
+   c(2, 250, 6.0F, 2.0F, 14, () -> cmm.a(cjo.nQ)),
+   d(3, 1561, 8.0F, 3.0F, 10, () -> cmm.a(cjo.nK)),
+   e(0, 32, 12.0F, 0.0F, 22, () -> cmm.a(cjo.nU)),
+   f(4, 2031, 9.0F, 4.0F, 15, () -> cmm.a(cjo.nV));
+
+   private final int g;
+   private final int h;
+   private final float i;
+   private final float j;
+   private final int k;
+   private final arw<cmm> l;
+
+   private cla(int $$0, int $$1, float $$2, float $$3, int $$4, Supplier<cmm> $$5) {
+      this.g = $$0;
+      this.h = $$1;
+      this.i = $$2;
+      this.j = $$3;
+      this.k = $$4;
+      this.l = new arw<>($$5);
    }
 
    @Override
-   public bgy a(clp $$0) {
-      cpv $$1 = $$0.q();
-      gw $$2 = $$0.a();
-      dfj $$3 = $$1.a_($$2);
-      if ($$3.a(csw.oa)) {
-         return cxd.a($$0.o(), $$1, $$2, $$3, $$0.n()) ? bgy.a($$1.B) : bgy.d;
-      } else {
-         return bgy.d;
-      }
+   public int a() {
+      return this.h;
    }
 
    @Override
-   public bgz<cjf> a(cpv $$0, cbu $$1, bgx $$2) {
-      cjf $$3 = $$1.b($$2);
-      $$1.a($$3, $$2);
-      $$1.b(apn.c.b(this));
-      return bgz.a($$3, $$0.w_());
+   public float b() {
+      return this.i;
    }
 
-   public static boolean a(@Nullable qw $$0) {
-      if ($$0 == null) {
-         return false;
-      } else if (!$$0.b("pages", 9)) {
-         return false;
-      } else {
-         rc $$1 = $$0.c("pages", 8);
+   @Override
+   public float c() {
+      return this.j;
+   }
 
-         for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-            String $$3 = $$1.j($$2);
-            if ($$3.length() > 32767) {
-               return false;
-            }
-         }
+   @Override
+   public int d() {
+      return this.g;
+   }
 
-         return true;
-      }
+   @Override
+   public int e() {
+      return this.k;
+   }
+
+   @Override
+   public cmm f() {
+      return this.l.a();
    }
 }

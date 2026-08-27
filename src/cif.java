@@ -1,25 +1,30 @@
-public class cif extends cja {
-   public cif(cja.a $$0) {
+public class cif extends cjg implements cim {
+   public cif(cjg.a $$0) {
       super($$0);
+      cvf.a(this, cgv.a);
+   }
+
+   public static boolean d(cjl $$0) {
+      return $$0.k() < $$0.l() - 1;
    }
 
    @Override
-   public bgz<cjf> a(cpv $$0, cbu $$1, bgx $$2) {
-      cjf $$3 = $$1.b($$2);
-      $$0.a(null, $$1.dq(), $$1.ds(), $$1.dw(), apd.hm, ape.g, 0.5F, 0.4F / ($$0.D_().i() * 0.4F + 0.8F));
-      $$1.gm().a(this, 20);
-      if (!$$0.B) {
-         ccv $$4 = new ccv($$0, $$1);
-         $$4.a($$3);
-         $$4.a($$1, $$1.dD(), $$1.dB(), 0.0F, 1.5F, 1.0F);
-         $$0.b($$4);
-      }
+   public boolean a(cjl $$0, cjl $$1) {
+      return $$1.a(cjo.uW);
+   }
 
-      $$1.b(apn.c.b(this));
-      if (!$$1.fS().d) {
-         $$3.h(1);
-      }
+   @Override
+   public bhf<cjl> a(cqb $$0, cca $$1, bhd $$2) {
+      return this.a(this, $$0, $$1, $$2);
+   }
 
-      return bgz.a($$3, $$0.w_());
+   @Override
+   public apf ao_() {
+      return apg.ae;
+   }
+
+   @Override
+   public bjb g() {
+      return bjb.e;
    }
 }

@@ -39,14 +39,14 @@ public class hv {
    }
 
    public float e() {
-      return arw.g(this.a);
+      return asb.g(this.a);
    }
 
    public float f() {
-      return arw.g(this.b);
+      return asb.g(this.b);
    }
 
    public float g() {
-      return arw.g(this.c);
+      return asb.g(this.c);
    }
 }

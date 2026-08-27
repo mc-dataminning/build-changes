@@ -1,7 +1,9 @@
-public interface cev {
-   int a(int var1);
+public class cev extends ces {
+   public cev(int $$0, cbz $$1) {
+      super(cfw.j, cmt.c, cgc.c, $$0, $$1);
+   }
 
-   void a(int var1, int var2);
-
-   int a();
+   public cev(int $$0, cbz $$1, bgx $$2, cfb $$3) {
+      super(cfw.j, cmt.c, cgc.c, $$0, $$1, $$2, $$3);
+   }
 }

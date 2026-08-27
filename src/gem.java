@@ -1,50 +1,110 @@
-import javax.annotation.Nullable;
+public class gem implements geq {
+   private static final int a = 40;
+   private static final int b = 40;
+   private static final int c = 100;
+   private static final int d = 20;
+   private static final int e = -1;
+   private static final tl f = tl.a("tutorial.move.title", gep.a("forward"), gep.a("left"), gep.a("back"), gep.a("right"));
+   private static final tl g = tl.a("tutorial.move.description", gep.a("jump"));
+   private static final tl h = tl.c("tutorial.look.title");
+   private static final tl i = tl.c("tutorial.look.description");
+   private final gep j;
+   private euu k;
+   private euu l;
+   private int m;
+   private int n;
+   private int o;
+   private boolean p;
+   private boolean q;
+   private int r = -1;
+   private int s = -1;
 
-public class gem {
-   private final get a;
-   private final eqz b;
-   @Nullable
-   private euz c;
-
-   public gem(get $$0, eqz $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public gem(gep $$0) {
+      this.j = $$0;
    }
 
-   private void a() {
-      if (this.c != null) {
-         this.a.a(this.c);
+   @Override
+   public void a() {
+      this.m++;
+      if (this.p) {
+         this.n++;
+         this.p = false;
       }
 
-      tl $$0 = tl.c("tutorial.bundleInsert.title");
-      tl $$1 = tl.c("tutorial.bundleInsert.description");
-      this.c = new euz(euz.a.g, $$0, $$1, true);
-      this.a.a(this.c, 160);
-   }
-
-   private void b() {
-      if (this.c != null) {
-         this.a.a(this.c);
-         this.c = null;
+      if (this.q) {
+         this.o++;
+         this.q = false;
       }
 
-      if (!this.b.t) {
-         this.b.t = true;
-         this.b.ar();
-      }
-   }
-
-   public void a(cjf $$0, cjf $$1, cet $$2) {
-      if (!this.b.t) {
-         if (!$$0.b() && $$1.a(cji.qg)) {
-            if ($$2 == cet.a) {
-               this.a();
-            } else if ($$2 == cet.b) {
-               this.b();
-            }
-         } else if ($$0.a(cji.qg) && !$$1.b() && $$2 == cet.b) {
-            this.b();
+      if (this.r == -1 && this.n > 40) {
+         if (this.k != null) {
+            this.k.c();
+            this.k = null;
          }
+
+         this.r = this.m;
+      }
+
+      if (this.s == -1 && this.o > 40) {
+         if (this.l != null) {
+            this.l.c();
+            this.l = null;
+         }
+
+         this.s = this.m;
+      }
+
+      if (this.r != -1 && this.s != -1) {
+         if (this.j.f()) {
+            this.j.a(ger.b);
+         } else {
+            this.j.a(ger.f);
+         }
+      }
+
+      if (this.k != null) {
+         this.k.a((float)this.n / 40.0F);
+      }
+
+      if (this.l != null) {
+         this.l.a((float)this.o / 40.0F);
+      }
+
+      if (this.m >= 100) {
+         if (this.r == -1 && this.k == null) {
+            this.k = new euu(euu.a.a, f, g, true);
+            this.j.e().ay().a(this.k);
+         } else if (this.r != -1 && this.m - this.r >= 20 && this.s == -1 && this.l == null) {
+            this.l = new euu(euu.a.b, h, i, true);
+            this.j.e().ay().a(this.l);
+         }
+      }
+   }
+
+   @Override
+   public void b() {
+      if (this.k != null) {
+         this.k.c();
+         this.k = null;
+      }
+
+      if (this.l != null) {
+         this.l.c();
+         this.l = null;
+      }
+   }
+
+   @Override
+   public void a(fna $$0) {
+      if ($$0.c || $$0.d || $$0.e || $$0.f || $$0.g) {
+         this.p = true;
+      }
+   }
+
+   @Override
+   public void a(double $$0, double $$1) {
+      if (Math.abs($$0) > 0.01 || Math.abs($$1) > 0.01) {
+         this.q = true;
       }
    }
 }

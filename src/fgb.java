@@ -1,146 +1,31 @@
-import com.google.common.collect.ImmutableList;
+public class fgb extends fgv {
+   private final fhx a;
+   private final fhx b;
+   private final fhx c;
 
-public class fgb<T extends biq> extends feb<T> {
-   private static final int q = 0;
-   private static final int r = 1;
-   private static final int s = 2;
-   protected static final int a = 3;
-   private static final float t = 0.0F;
-   private static final float u = 16.0F;
-   private static final float w = -9.0F;
-   private static final float x = 15.0F;
-   private static final float y = -9.0F;
-   private static final float z = 12.0F;
-   private static final float A = -10.0F;
-   private static final float B = 15.0F;
-   private static final float C = 8.0F;
-   private static final float D = 20.0F;
-   private static final float E = 14.0F;
-   protected static final float b = 18.0F;
-   protected static final float f = 5.0F;
-   protected static final float g = 14.1F;
-   private static final float F = -5.0F;
-   private static final String G = "tail1";
-   private static final String H = "tail2";
-   protected final fic h;
-   protected final fic i;
-   protected final fic j;
-   protected final fic k;
-   protected final fic l;
-   protected final fic m;
-   protected final fic n;
-   protected final fic o;
-   protected int p = 1;
-
-   public fgb(fic $$0) {
-      super(true, 10.0F, 4.0F);
-      this.n = $$0.b("head");
-      this.o = $$0.b("body");
-      this.l = $$0.b("tail1");
-      this.m = $$0.b("tail2");
-      this.h = $$0.b("left_hind_leg");
-      this.i = $$0.b("right_hind_leg");
-      this.j = $$0.b("left_front_leg");
-      this.k = $$0.b("right_front_leg");
+   public fgb(fhx $$0) {
+      this.a = $$0.b("head");
+      this.b = this.a.b("left_ear");
+      this.c = this.a.b("right_ear");
    }
 
-   public static fik a(fig $$0) {
-      fik $$1 = new fik();
-      fil $$2 = $$1.a();
-      fig $$3 = new fig(-0.02F);
-      $$2.a(
-         "head",
-         fih.c()
-            .a("main", -2.5F, -2.0F, -3.0F, 5.0F, 4.0F, 5.0F, $$0)
-            .a("nose", -1.5F, -0.001F, -4.0F, 3, 2, 2, $$0, 0, 24)
-            .a("ear1", -2.0F, -3.0F, 0.0F, 1, 1, 2, $$0, 0, 10)
-            .a("ear2", 1.0F, -3.0F, 0.0F, 1, 1, 2, $$0, 6, 10),
-         fie.a(0.0F, 15.0F, -9.0F)
-      );
-      $$2.a("body", fih.c().a(20, 0).a(-2.0F, 3.0F, -8.0F, 4.0F, 16.0F, 6.0F, $$0), fie.a(0.0F, 12.0F, -10.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
-      $$2.a("tail1", fih.c().a(0, 15).a(-0.5F, 0.0F, 0.0F, 1.0F, 8.0F, 1.0F, $$0), fie.a(0.0F, 15.0F, 8.0F, 0.9F, 0.0F, 0.0F));
-      $$2.a("tail2", fih.c().a(4, 15).a(-0.5F, 0.0F, 0.0F, 1.0F, 8.0F, 1.0F, $$3), fie.a(0.0F, 20.0F, 14.0F));
-      fih $$4 = fih.c().a(8, 13).a(-1.0F, 0.0F, 1.0F, 2.0F, 6.0F, 2.0F, $$0);
-      $$2.a("left_hind_leg", $$4, fie.a(1.1F, 18.0F, 5.0F));
-      $$2.a("right_hind_leg", $$4, fie.a(-1.1F, 18.0F, 5.0F));
-      fih $$5 = fih.c().a(40, 0).a(-1.0F, 0.0F, 0.0F, 2.0F, 10.0F, 2.0F, $$0);
-      $$2.a("left_front_leg", $$5, fie.a(1.2F, 14.1F, -5.0F));
-      $$2.a("right_front_leg", $$5, fie.a(-1.2F, 14.1F, -5.0F));
-      return $$1;
+   public static fif a() {
+      fif $$0 = new fif();
+      fgc.a(fib.a, $$0);
+      return $$0;
    }
 
    @Override
-   protected Iterable<fic> a() {
-      return ImmutableList.of(this.n);
+   public void a(float $$0, float $$1, float $$2) {
+      this.a.f = $$1 * (float) (Math.PI / 180.0);
+      this.a.e = $$2 * (float) (Math.PI / 180.0);
+      float $$3 = 1.2F;
+      this.b.g = (float)(-(Math.cos((double)($$0 * (float) Math.PI * 0.2F * 1.2F)) + 2.5)) * 0.2F;
+      this.c.g = (float)(Math.cos((double)($$0 * (float) Math.PI * 0.2F)) + 2.5) * 0.2F;
    }
 
    @Override
-   protected Iterable<fic> b() {
-      return ImmutableList.of(this.o, this.h, this.i, this.j, this.k, this.l, this.m);
-   }
-
-   @Override
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.n.e = $$5 * (float) (Math.PI / 180.0);
-      this.n.f = $$4 * (float) (Math.PI / 180.0);
-      if (this.p != 3) {
-         this.o.e = (float) (Math.PI / 2);
-         if (this.p == 2) {
-            this.h.e = arw.b($$1 * 0.6662F) * $$2;
-            this.i.e = arw.b($$1 * 0.6662F + 0.3F) * $$2;
-            this.j.e = arw.b($$1 * 0.6662F + (float) Math.PI + 0.3F) * $$2;
-            this.k.e = arw.b($$1 * 0.6662F + (float) Math.PI) * $$2;
-            this.m.e = 1.7278761F + (float) (Math.PI / 10) * arw.b($$1) * $$2;
-         } else {
-            this.h.e = arw.b($$1 * 0.6662F) * $$2;
-            this.i.e = arw.b($$1 * 0.6662F + (float) Math.PI) * $$2;
-            this.j.e = arw.b($$1 * 0.6662F + (float) Math.PI) * $$2;
-            this.k.e = arw.b($$1 * 0.6662F) * $$2;
-            if (this.p == 1) {
-               this.m.e = 1.7278761F + (float) (Math.PI / 4) * arw.b($$1) * $$2;
-            } else {
-               this.m.e = 1.7278761F + 0.47123894F * arw.b($$1) * $$2;
-            }
-         }
-      }
-   }
-
-   @Override
-   public void a(T $$0, float $$1, float $$2, float $$3) {
-      this.o.c = 12.0F;
-      this.o.d = -10.0F;
-      this.n.c = 15.0F;
-      this.n.d = -9.0F;
-      this.l.c = 15.0F;
-      this.l.d = 8.0F;
-      this.m.c = 20.0F;
-      this.m.d = 14.0F;
-      this.j.c = 14.1F;
-      this.j.d = -5.0F;
-      this.k.c = 14.1F;
-      this.k.d = -5.0F;
-      this.h.c = 18.0F;
-      this.h.d = 5.0F;
-      this.i.c = 18.0F;
-      this.i.d = 5.0F;
-      this.l.e = 0.9F;
-      if ($$0.bW()) {
-         this.o.c++;
-         this.n.c += 2.0F;
-         this.l.c++;
-         this.m.c += -4.0F;
-         this.m.d += 2.0F;
-         this.l.e = (float) (Math.PI / 2);
-         this.m.e = (float) (Math.PI / 2);
-         this.p = 0;
-      } else if ($$0.bX()) {
-         this.m.c = this.l.c;
-         this.m.d += 2.0F;
-         this.l.e = (float) (Math.PI / 2);
-         this.m.e = (float) (Math.PI / 2);
-         this.p = 2;
-      } else {
-         this.p = 1;
-      }
+   public void a(elj $$0, eln $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
+      this.a.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 }

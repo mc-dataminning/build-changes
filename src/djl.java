@@ -1,410 +1,71 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Queues;
-import com.google.common.collect.Sets;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMaps;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap.Entry;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import java.io.IOException;
-import java.io.UncheckedIOException;
-import java.io.Writer;
-import java.util.List;
-import java.util.Queue;
-import java.util.Set;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 import java.util.UUID;
-import java.util.function.Consumer;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import org.slf4j.Logger;
+import java.util.function.Function;
 
-public class djl<T extends dja> implements AutoCloseable {
-   static final Logger a = LogUtils.getLogger();
-   final Set<UUID> b = Sets.newHashSet();
-   final dji<T> c;
-   private final djd<T> d;
-   private final djc<T> e;
-   final djf<T> f;
-   private final djj<T> g;
-   private final Long2ObjectMap<djn> h = new Long2ObjectOpenHashMap();
-   private final Long2ObjectMap<djl.b> i = new Long2ObjectOpenHashMap();
-   private final LongSet j = new LongOpenHashSet();
-   private final Queue<diy<T>> k = Queues.newConcurrentLinkedQueue();
+public class djl implements djr {
+   public static final Codec<djl> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(hx.a.fieldOf("source_entity").forGetter(djl::b), Codec.FLOAT.fieldOf("y_offset").orElse(0.0F).forGetter($$0x -> $$0x.d))
+            .apply($$0, ($$0x, $$1) -> new djl(Either.right(Either.left($$0x)), $$1))
+   );
+   private Either<biw, Either<UUID, Integer>> c;
+   final float d;
 
-   public djl(Class<T> $$0, dji<T> $$1, djd<T> $$2) {
-      this.e = new djc<>();
-      this.f = new djf<>($$0, this.h);
-      this.h.defaultReturnValue(djn.a);
-      this.i.defaultReturnValue(djl.b.a);
-      this.c = $$1;
-      this.d = $$2;
-      this.g = new djk<>(this.e, this.f);
+   public djl(biw $$0, float $$1) {
+      this(Either.left($$0), $$1);
    }
 
-   void a(long $$0, dje<T> $$1) {
-      if ($$1.a()) {
-         this.f.e($$0);
-      }
-   }
-
-   private boolean b(T $$0) {
-      if (!this.b.add($$0.cv())) {
-         a.warn("UUID of added entity already exists: {}", $$0);
-         return false;
-      } else {
-         return true;
-      }
-   }
-
-   public boolean a(T $$0) {
-      return this.a($$0, false);
-   }
-
-   private boolean a(T $$0, boolean $$1) {
-      if (!this.b($$0)) {
-         return false;
-      } else {
-         long $$2 = hw.c($$0.dl());
-         dje<T> $$3 = this.f.c($$2);
-         $$3.a($$0);
-         $$0.a(new djl.a($$0, $$2, $$3));
-         if (!$$1) {
-            this.c.g($$0);
-         }
-
-         djn $$4 = a($$0, $$3.c());
-         if ($$4.b()) {
-            this.e($$0);
-         }
-
-         if ($$4.a()) {
-            this.c($$0);
-         }
-
-         return true;
-      }
-   }
-
-   static <T extends dja> djn a(T $$0, djn $$1) {
-      return $$0.dK() ? djn.c : $$1;
-   }
-
-   public void a(Stream<T> $$0) {
-      $$0.forEach($$0x -> this.a((T)$$0x, true));
-   }
-
-   public void b(Stream<T> $$0) {
-      $$0.forEach($$0x -> this.a((T)$$0x, false));
-   }
-
-   void c(T $$0) {
-      this.c.e($$0);
-   }
-
-   void d(T $$0) {
-      this.c.d($$0);
-   }
-
-   void e(T $$0) {
-      this.e.a($$0);
-      this.c.c($$0);
-   }
-
-   void f(T $$0) {
-      this.c.b($$0);
-      this.e.b($$0);
-   }
-
-   public void a(cpc $$0, akj $$1) {
-      djn $$2 = djn.a($$1);
-      this.a($$0, $$2);
-   }
-
-   public void a(cpc $$0, djn $$1) {
-      long $$2 = $$0.a();
-      if ($$1 == djn.a) {
-         this.h.remove($$2);
-         this.j.add($$2);
-      } else {
-         this.h.put($$2, $$1);
-         this.j.remove($$2);
-         this.b($$2);
-      }
-
-      this.f.b($$2).forEach($$1x -> {
-         djn $$2x = $$1x.a($$1);
-         boolean $$3 = $$2x.b();
-         boolean $$4 = $$1.b();
-         boolean $$5 = $$2x.a();
-         boolean $$6 = $$1.a();
-         if ($$5 && !$$6) {
-            $$1x.b().filter($$0xx -> !$$0xx.dK()).forEach(this::d);
-         }
-
-         if ($$3 && !$$4) {
-            $$1x.b().filter($$0xx -> !$$0xx.dK()).forEach(this::f);
-         } else if (!$$3 && $$4) {
-            $$1x.b().filter($$0xx -> !$$0xx.dK()).forEach(this::e);
-         }
-
-         if (!$$5 && $$6) {
-            $$1x.b().filter($$0xx -> !$$0xx.dK()).forEach(this::c);
-         }
-      });
-   }
-
-   private void b(long $$0) {
-      djl.b $$1 = (djl.b)this.i.get($$0);
-      if ($$1 == djl.b.a) {
-         this.c($$0);
-      }
-   }
-
-   private boolean a(long $$0, Consumer<T> $$1) {
-      djl.b $$2 = (djl.b)this.i.get($$0);
-      if ($$2 == djl.b.b) {
-         return false;
-      } else {
-         List<T> $$3 = this.f.b($$0).flatMap($$0x -> $$0x.b().filter(dja::dJ)).collect(Collectors.toList());
-         if ($$3.isEmpty()) {
-            if ($$2 == djl.b.c) {
-               this.d.a(new diy<>(new cpc($$0), ImmutableList.of()));
-            }
-
-            return true;
-         } else if ($$2 == djl.b.a) {
-            this.c($$0);
-            return false;
-         } else {
-            this.d.a(new diy<>(new cpc($$0), $$3));
-            $$3.forEach($$1);
-            return true;
-         }
-      }
-   }
-
-   private void c(long $$0) {
-      this.i.put($$0, djl.b.b);
-      cpc $$1 = new cpc($$0);
-      this.d.a($$1).thenAccept(this.k::add).exceptionally($$1x -> {
-         a.error("Failed to read chunk {}", $$1, $$1x);
-         return null;
-      });
-   }
-
-   private boolean d(long $$0) {
-      boolean $$1 = this.a($$0, $$0x -> $$0x.cS().forEach(this::g));
-      if (!$$1) {
-         return false;
-      } else {
-         this.i.remove($$0);
-         return true;
-      }
-   }
-
-   private void g(dja $$0) {
-      $$0.b(biq.c.c);
-      $$0.a(djb.a);
-   }
-
-   private void f() {
-      this.j.removeIf($$0 -> this.h.get($$0) != djn.a ? true : this.d($$0));
-   }
-
-   private void g() {
-      diy<T> $$0;
-      while (($$0 = this.k.poll()) != null) {
-         $$0.b().forEach($$0x -> this.a((T)$$0x, true));
-         this.i.put($$0.a().a(), djl.b.c);
-      }
-   }
-
-   public void a() {
-      this.g();
-      this.f();
-   }
-
-   private LongSet h() {
-      LongSet $$0 = this.f.a();
-      ObjectIterator var2 = Long2ObjectMaps.fastIterable(this.i).iterator();
-
-      while (var2.hasNext()) {
-         Entry<djl.b> $$1 = (Entry<djl.b>)var2.next();
-         if ($$1.getValue() == djl.b.c) {
-            $$0.add($$1.getLongKey());
-         }
-      }
-
-      return $$0;
-   }
-
-   public void b() {
-      this.h().forEach($$0 -> {
-         boolean $$1 = this.h.get($$0) == djn.a;
-         if ($$1) {
-            this.d($$0);
-         } else {
-            this.a($$0, $$0x -> {
-            });
-         }
-      });
-   }
-
-   public void c() {
-      LongSet $$0 = this.h();
-
-      while (!$$0.isEmpty()) {
-         this.d.a(false);
-         this.g();
-         $$0.removeIf($$0x -> {
-            boolean $$1 = this.h.get($$0x) == djn.a;
-            return $$1 ? this.d($$0x) : this.a($$0x, $$0xx -> {
-            });
-         });
-      }
-
-      this.d.a(true);
+   djl(Either<biw, Either<UUID, Integer>> $$0, float $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
    @Override
-   public void close() throws IOException {
-      this.c();
-      this.d.close();
+   public Optional<ehh> a(cqb $$0) {
+      if (this.c.left().isEmpty()) {
+         this.b($$0);
+      }
+
+      return this.c.left().map($$0x -> $$0x.dj().b(0.0, (double)this.d, 0.0));
    }
 
-   public boolean a(UUID $$0) {
-      return this.b.contains($$0);
+   private void b(cqb $$0) {
+      ((Optional)this.c.map(Optional::of, $$1 -> Optional.ofNullable((biw)$$1.map($$1x -> $$0 instanceof akt $$2 ? $$2.a($$1x) : null, $$0::a))))
+         .ifPresent($$0x -> this.c = Either.left($$0x));
    }
 
-   public djj<T> d() {
-      return this.g;
+   private UUID b() {
+      return (UUID)this.c.map(biw::cv, $$0 -> (UUID)$$0.map(Function.identity(), $$0x -> {
+            throw new RuntimeException("Unable to get entityId from uuid");
+         }));
    }
 
-   public boolean a(gw $$0) {
-      return ((djn)this.h.get(cpc.a($$0))).a();
+   int c() {
+      return (Integer)this.c.map(biw::ah, $$0 -> (Integer)$$0.map($$0x -> {
+            throw new IllegalStateException("Unable to get entityId from uuid");
+         }, Function.identity()));
    }
 
-   public boolean a(cpc $$0) {
-      return ((djn)this.h.get($$0.a())).a();
+   @Override
+   public djs<?> a() {
+      return djs.b;
    }
 
-   public boolean a(long $$0) {
-      return this.i.get($$0) == djl.b.c;
-   }
+   public static class a implements djs<djl> {
+      public djl a(so $$0) {
+         return new djl(Either.right(Either.right($$0.n())), $$0.readFloat());
+      }
 
-   public void a(Writer $$0) throws IOException {
-      aqy $$1 = aqy.a().a("x").a("y").a("z").a("visibility").a("load_status").a("entity_count").a($$0);
-      this.f.a().forEach($$1x -> {
-         djl.b $$2 = (djl.b)this.i.get($$1x);
-         this.f.a($$1x).forEach($$2x -> {
-            dje<T> $$3 = this.f.d($$2x);
-            if ($$3 != null) {
-               try {
-                  $$1.a(hw.b($$2x), hw.c($$2x), hw.d($$2x), $$3.c(), $$2, $$3.d());
-               } catch (IOException var7) {
-                  throw new UncheckedIOException(var7);
-               }
-            }
-         });
-      });
-   }
-
-   @asy
-   public String e() {
-      return this.b.size() + "," + this.e.b() + "," + this.f.b() + "," + this.i.size() + "," + this.h.size() + "," + this.k.size() + "," + this.j.size();
-   }
-
-   class a implements djb {
-      private final T c;
-      private long d;
-      private dje<T> e;
-
-      a(T $$0, long $$1, dje<T> $$2) {
-         this.c = $$0;
-         this.d = $$1;
-         this.e = $$2;
+      public void a(so $$0, djl $$1) {
+         $$0.c($$1.c());
+         $$0.a($$1.d);
       }
 
       @Override
-      public void a() {
-         gw $$0 = this.c.dl();
-         long $$1 = hw.c($$0);
-         if ($$1 != this.d) {
-            djn $$2 = this.e.c();
-            if (!this.e.b(this.c)) {
-               djl.a.warn("Entity {} wasn't found in section {} (moving to {})", new Object[]{this.c, hw.a(this.d), $$1});
-            }
-
-            djl.this.a(this.d, this.e);
-            dje<T> $$3 = djl.this.f.c($$1);
-            $$3.a(this.c);
-            this.e = $$3;
-            this.d = $$1;
-            this.a($$2, $$3.c());
-         }
+      public Codec<djl> a() {
+         return djl.a;
       }
-
-      private void a(djn $$0, djn $$1) {
-         djn $$2 = djl.a(this.c, $$0);
-         djn $$3 = djl.a(this.c, $$1);
-         if ($$2 == $$3) {
-            if ($$3.b()) {
-               djl.this.c.a(this.c);
-            }
-         } else {
-            boolean $$4 = $$2.b();
-            boolean $$5 = $$3.b();
-            if ($$4 && !$$5) {
-               djl.this.f(this.c);
-            } else if (!$$4 && $$5) {
-               djl.this.e(this.c);
-            }
-
-            boolean $$6 = $$2.a();
-            boolean $$7 = $$3.a();
-            if ($$6 && !$$7) {
-               djl.this.d(this.c);
-            } else if (!$$6 && $$7) {
-               djl.this.c(this.c);
-            }
-
-            if ($$5) {
-               djl.this.c.a(this.c);
-            }
-         }
-      }
-
-      @Override
-      public void a(biq.c $$0) {
-         if (!this.e.b(this.c)) {
-            djl.a.warn("Entity {} wasn't found in section {} (destroying due to {})", new Object[]{this.c, hw.a(this.d), $$0});
-         }
-
-         djn $$1 = djl.a(this.c, this.e.c());
-         if ($$1.a()) {
-            djl.this.d(this.c);
-         }
-
-         if ($$1.b()) {
-            djl.this.f(this.c);
-         }
-
-         if ($$0.a()) {
-            djl.this.c.f(this.c);
-         }
-
-         djl.this.b.remove(this.c.cv());
-         this.c.a(a);
-         djl.this.a(this.d, this.e);
-      }
-   }
-
-   static enum b {
-      a,
-      b,
-      c;
    }
 }

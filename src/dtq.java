@@ -1,16 +1,17 @@
-import com.mojang.serialization.Codec;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public interface dtq<P extends dtp> {
-   dtq<dto> a = a("constant", dto.b);
-   dtq<dts> b = a("uniform", dts.a);
-   dtq<dtn> c = a("biased_to_bottom", dtn.a);
-   dtq<dtt> d = a("very_biased_to_bottom", dtt.a);
-   dtq<dtr> e = a("trapezoid", dtr.a);
-   dtq<dtu> f = a("weighted_list", dtu.a);
+public record dtq(List<dkq.c> a) implements dkq.c {
+   @Nullable
+   @Override
+   public dfd calculate(dkf.b $$0) {
+      for (dkq.c $$1 : this.a) {
+         dfd $$2 = $$1.calculate($$0);
+         if ($$2 != null) {
+            return $$2;
+         }
+      }
 
-   Codec<P> codec();
-
-   private static <P extends dtp> dtq<P> a(String $$0, Codec<P> $$1) {
-      return hq.a(jb.O, $$0, () -> $$1);
+      return null;
    }
 }

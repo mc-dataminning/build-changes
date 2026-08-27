@@ -1,47 +1,154 @@
-import com.google.common.collect.Lists;
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.logging.LogUtils;
-import java.util.Collection;
-import net.minecraft.server.MinecraftServer;
-import org.slf4j.Logger;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import javax.annotation.Nullable;
 
 public class ahy {
-   private static final Logger a = LogUtils.getLogger();
-
-   public static void a(Collection<String> $$0, dt $$1) {
-      $$1.l().a($$0).exceptionally($$1x -> {
-         a.warn("Failed to execute reload", $$1x);
-         $$1.b(tl.c("commands.reload.failure"));
-         return null;
-      });
+   public static void a(CommandDispatcher<dt> $$0) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)du.a(
+                                    "raid"
+                                 )
+                                 .requires($$0x -> $$0x.c(3)))
+                              .then(
+                                 du.a("start")
+                                    .then(
+                                       du.a("omenlvl", IntegerArgumentType.integer(0))
+                                          .executes($$0x -> b((dt)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "omenlvl")))
+                                    )
+                              ))
+                           .then(du.a("stop").executes($$0x -> c((dt)$$0x.getSource()))))
+                        .then(du.a("check").executes($$0x -> d((dt)$$0x.getSource()))))
+                     .then(du.a("sound").then(du.a("type", ea.a()).executes($$0x -> a((dt)$$0x.getSource(), ea.a($$0x, "type"))))))
+                  .then(du.a("spawnleader").executes($$0x -> b((dt)$$0x.getSource()))))
+               .then(
+                  du.a("setomen")
+                     .then(
+                        du.a("level", IntegerArgumentType.integer(0)).executes($$0x -> a((dt)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "level")))
+                     )
+               ))
+            .then(du.a("glow").executes($$0x -> a((dt)$$0x.getSource())))
+      );
    }
 
-   private static Collection<String> a(ane $$0, ecm $$1, Collection<String> $$2) {
-      $$0.a();
-      Collection<String> $$3 = Lists.newArrayList($$2);
-      Collection<String> $$4 = $$1.F().a().b();
-
-      for (String $$5 : $$0.b()) {
-         if (!$$4.contains($$5) && !$$3.contains($$5)) {
-            $$3.add($$5);
+   private static int a(dt $$0) throws CommandSyntaxException {
+      cdh $$1 = a($$0.h());
+      if ($$1 != null) {
+         for (cdi $$3 : $$1.h()) {
+            $$3.b(new bij(bil.x, 1000, 1));
          }
       }
 
-      return $$3;
+      return 1;
    }
 
-   public static void a(CommandDispatcher<dt> $$0) {
-      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)du.a("reload").requires($$0x -> $$0x.c(2))).executes($$0x -> {
-         dt $$1 = (dt)$$0x.getSource();
-         MinecraftServer $$2 = $$1.l();
-         ane $$3 = $$2.aB();
-         ecm $$4 = $$2.aT();
-         Collection<String> $$5 = $$3.d();
-         Collection<String> $$6 = a($$3, $$4, $$5);
-         $$1.a(() -> tl.c("commands.reload.success"), true);
-         a($$6, $$1);
+   private static int a(dt $$0, int $$1) throws CommandSyntaxException {
+      cdh $$2 = a($$0.h());
+      if ($$2 != null) {
+         int $$3 = $$2.l();
+         if ($$1 > $$3) {
+            $$0.b(tl.b("Sorry, the max bad omen level you can set is " + $$3));
+         } else {
+            int $$4 = $$2.m();
+            $$2.a($$1);
+            $$0.a(() -> tl.b("Changed village's bad omen level from " + $$4 + " to " + $$1), false);
+         }
+      } else {
+         $$0.b(tl.b("No raid found here"));
+      }
+
+      return 1;
+   }
+
+   private static int b(dt $$0) {
+      $$0.a(() -> tl.b("Spawned a raid captain"), false);
+      cdi $$1 = bja.ay.a((cqb)$$0.e());
+      if ($$1 == null) {
+         $$0.b(tl.b("Pillager failed to spawn"));
          return 0;
-      }));
+      } else {
+         $$1.w(true);
+         $$1.a(bjb.f, cdh.s());
+         $$1.e($$0.d().c, $$0.d().d, $$0.d().e);
+         $$1.a($$0.e(), $$0.e().d_(gw.a($$0.d())), bjq.n, null, null);
+         $$0.e().a_($$1);
+         return 1;
+      }
+   }
+
+   private static int a(dt $$0, @Nullable tl $$1) {
+      if ($$1 != null && $$1.getString().equals("local")) {
+         akt $$2 = $$0.e();
+         ehh $$3 = $$0.d().b(5.0, 0.0, 0.0);
+         $$2.a(null, $$3.c, $$3.d, $$3.e, apg.tp, aph.g, 2.0F, 1.0F, $$2.z.g());
+      }
+
+      return 1;
+   }
+
+   private static int b(dt $$0, int $$1) throws CommandSyntaxException {
+      aku $$2 = $$0.h();
+      gw $$3 = $$2.dl();
+      if ($$2.x().d($$3)) {
+         $$0.b(tl.b("Raid already started close by"));
+         return -1;
+      } else {
+         cdj $$4 = $$2.x().x();
+         cdh $$5 = $$4.a($$2);
+         if ($$5 != null) {
+            $$5.a($$1);
+            $$4.c();
+            $$0.a(() -> tl.b("Created a raid in your local village"), false);
+         } else {
+            $$0.b(tl.b("Failed to create a raid in your local village"));
+         }
+
+         return 1;
+      }
+   }
+
+   private static int c(dt $$0) throws CommandSyntaxException {
+      aku $$1 = $$0.h();
+      gw $$2 = $$1.dl();
+      cdh $$3 = $$1.x().c($$2);
+      if ($$3 != null) {
+         $$3.n();
+         $$0.a(() -> tl.b("Stopped raid"), false);
+         return 1;
+      } else {
+         $$0.b(tl.b("No raid here"));
+         return -1;
+      }
+   }
+
+   private static int d(dt $$0) throws CommandSyntaxException {
+      cdh $$1 = a($$0.h());
+      if ($$1 != null) {
+         StringBuilder $$2 = new StringBuilder();
+         $$2.append("Found a started raid! ");
+         $$0.a(() -> tl.b($$2.toString()), false);
+         StringBuilder $$3 = new StringBuilder();
+         $$3.append("Num groups spawned: ");
+         $$3.append($$1.k());
+         $$3.append(" Bad omen level: ");
+         $$3.append($$1.m());
+         $$3.append(" Num mobs: ");
+         $$3.append($$1.r());
+         $$3.append(" Raid health: ");
+         $$3.append($$1.q());
+         $$3.append(" / ");
+         $$3.append($$1.g());
+         $$0.a(() -> tl.b($$3.toString()), false);
+         return 1;
+      } else {
+         $$0.b(tl.b("Found no started raids"));
+         return 0;
+      }
+   }
+
+   @Nullable
+   private static cdh a(aku $$0) {
+      return $$0.x().c($$0.dl());
    }
 }

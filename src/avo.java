@@ -1,38 +1,29 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.OpticFinder;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
 import java.util.Objects;
+import java.util.Optional;
 
-public class avo extends avz {
+public class avo extends DataFix {
    public avo(Schema $$0, boolean $$1) {
-      super("EntityHorseSplitFix", $$0, $$1);
+      super($$0, $$1);
    }
 
-   @Override
-   protected Pair<String, Typed<?>> a(String $$0, Typed<?> $$1) {
-      Dynamic<?> $$2 = (Dynamic<?>)$$1.get(DSL.remainderFinder());
-      if (Objects.equals("EntityHorse", $$0)) {
-         int $$3 = $$2.get("Type").asInt(0);
+   public TypeRewriteRule makeRule() {
+      OpticFinder<String> $$0 = DSL.fieldFinder("id", bal.a());
+      return this.fixTypeEverywhereTyped(
+         "EntityCustomNameToComponentFix", this.getInputSchema().getType(azd.x), $$1 -> $$1.update(DSL.remainderFinder(), $$2 -> {
+               Optional<String> $$3 = $$1.getOptional($$0);
+               return $$3.isPresent() && Objects.equals($$3.get(), "minecraft:commandblock_minecart") ? $$2 : a($$2);
+            })
+      );
+   }
 
-         String $$8 = switch ($$3) {
-            default -> "Horse";
-            case 1 -> "Donkey";
-            case 2 -> "Mule";
-            case 3 -> "ZombieHorse";
-            case 4 -> "SkeletonHorse";
-         };
-         $$2.remove("Type");
-         Type<?> $$9 = (Type<?>)this.getOutputSchema().findChoiceType(ayx.x).types().get($$8);
-         return Pair.of(
-            $$8,
-            (Typed)((Pair)$$1.write().flatMap($$9::readTyped).result().orElseThrow(() -> new IllegalStateException("Could not parse the new horse")))
-               .getFirst()
-         );
-      } else {
-         return Pair.of($$0, $$1);
-      }
+   public static Dynamic<?> a(Dynamic<?> $$0) {
+      String $$1 = $$0.get("CustomName").asString("");
+      return $$1.isEmpty() ? $$0.remove("CustomName") : $$0.set("CustomName", atf.a($$0.getOps(), $$1));
    }
 }

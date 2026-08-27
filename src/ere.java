@@ -1,51 +1,77 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import java.util.List;
+import com.mojang.util.UndashedUuid;
+import java.util.Arrays;
+import java.util.Locale;
 import java.util.Map;
+import java.util.Optional;
+import java.util.UUID;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public enum ere {
-   a(new cjf(cji.qe)),
-   b(new cjf(csw.cj)),
-   c(new cjf(cji.ll)),
-   d(new cjf(cji.op), new cjf(cji.oh)),
-   e(new cjf(cji.pM), new cjf(cji.nF)),
-   f(new cjf(cji.qe)),
-   g(new cjf(cji.pj)),
-   h(new cjf(csw.b)),
-   i(new cjf(cji.pM), new cjf(cji.nL)),
-   j(new cjf(cji.qe)),
-   k(new cjf(csw.dI)),
-   l(new cjf(cji.on), new cjf(cji.pc)),
-   m(new cjf(cji.qe)),
-   n(new cjf(cji.pj)),
-   o(new cjf(cji.fj)),
-   p(new cjf(cji.pf)),
-   q(new cjf(cji.pj)),
-   r(new cjf(cji.hf));
+public class ere {
+   private final String a;
+   private final UUID b;
+   private final String c;
+   private final Optional<String> d;
+   private final Optional<String> e;
+   private final ere.a f;
 
-   public static final List<ere> s = ImmutableList.of(m, n);
-   public static final List<ere> t = ImmutableList.of(j, k, l);
-   public static final List<ere> u = ImmutableList.of(f, g, h, i);
-   public static final List<ere> v = ImmutableList.of(a, d, b, e, c);
-   public static final Map<ere, List<ere>> w = ImmutableMap.of(
-      a, ImmutableList.of(d, b, e, c), f, ImmutableList.of(g, h, i), j, ImmutableList.of(k, l), m, ImmutableList.of(n)
-   );
-   private final List<cjf> x;
-
-   private ere(cjf... $$0) {
-      this.x = ImmutableList.copyOf($$0);
+   public ere(String $$0, UUID $$1, String $$2, Optional<String> $$3, Optional<String> $$4, ere.a $$5) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
    }
 
-   public static List<ere> a(cfw $$0) {
-      return switch ($$0) {
-         case a -> v;
-         case b -> u;
-         case c -> t;
-         case d -> s;
-      };
+   public String a() {
+      return "token:" + this.c + ":" + UndashedUuid.toString(this.b);
    }
 
-   public List<cjf> a() {
-      return this.x;
+   public UUID b() {
+      return this.b;
+   }
+
+   public String c() {
+      return this.a;
+   }
+
+   public String d() {
+      return this.c;
+   }
+
+   public Optional<String> e() {
+      return this.e;
+   }
+
+   public Optional<String> f() {
+      return this.d;
+   }
+
+   public ere.a g() {
+      return this.f;
+   }
+
+   public static enum a {
+      a("legacy"),
+      b("mojang"),
+      c("msa");
+
+      private static final Map<String, ere.a> d = Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.e, Function.identity()));
+      private final String e;
+
+      private a(String $$0) {
+         this.e = $$0;
+      }
+
+      @Nullable
+      public static ere.a a(String $$0) {
+         return d.get($$0.toLowerCase(Locale.ROOT));
+      }
+
+      public String a() {
+         return this.e;
+      }
    }
 }

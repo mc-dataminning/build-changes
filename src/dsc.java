@@ -1,24 +1,21 @@
 import com.mojang.serialization.Codec;
 
-public class dsc<P extends dsb> {
-   public static final dsc<dsk> a = a("simple_state_provider", dsk.b);
-   public static final dsc<dsl> b = a("weighted_state_provider", dsl.b);
-   public static final dsc<dsg> c = a("noise_threshold_provider", dsg.b);
-   public static final dsc<dsf> d = a("noise_provider", dsf.g);
-   public static final dsc<dsd> e = a("dual_noise_provider", dsd.b);
-   public static final dsc<dsi> f = a("rotated_block_provider", dsi.b);
-   public static final dsc<dsh> g = a("randomized_int_state_provider", dsh.b);
-   private final Codec<P> h;
+public class dsc extends drv {
+   public static final Codec<dsc> b = dfd.b.fieldOf("state").xmap(dfc.a::b, ctc::o).xmap(dsc::new, $$0 -> $$0.c).codec();
+   private final ctc c;
 
-   private static <P extends dsb> dsc<P> a(String $$0, Codec<P> $$1) {
-      return hq.a(jb.W, $$0, new dsc<>($$1));
+   public dsc(ctc $$0) {
+      this.c = $$0;
    }
 
-   private dsc(Codec<P> $$0) {
-      this.h = $$0;
+   @Override
+   protected drw<?> a() {
+      return drw.f;
    }
 
-   public Codec<P> a() {
-      return this.h;
+   @Override
+   public dfd a(ash $$0, gw $$1) {
+      ha.a $$2 = ha.a.a($$0);
+      return this.c.o().a(czm.i, $$2);
    }
 }

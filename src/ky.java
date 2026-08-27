@@ -12,19 +12,19 @@ import java.util.TreeMap;
 import java.util.stream.Stream;
 
 public class ky implements kv {
-   private final csv a;
+   private final ctc a;
    private final List<lb> b;
-   private final Set<dgm<?>> c = Sets.newHashSet();
+   private final Set<dgg<?>> c = Sets.newHashSet();
    private final List<kz> d = Lists.newArrayList();
 
-   private ky(csv $$0, List<lb> $$1) {
+   private ky(ctc $$0, List<lb> $$1) {
       this.a = $$0;
       this.b = $$1;
    }
 
    public ky a(kz $$0) {
       $$0.b().forEach($$0x -> {
-         if (this.a.l().a($$0x.f()) != $$0x) {
+         if (this.a.n().a($$0x.f()) != $$0x) {
             throw new IllegalStateException("Property " + $$0x + " is not defined for block " + this.a);
          } else if (!this.c.add($$0x)) {
             throw new IllegalStateException("Values of property " + $$0x + " already defined for block " + this.a);
@@ -60,19 +60,19 @@ public class ky implements kv {
    }
 
    @Override
-   public csv a() {
+   public ctc a() {
       return this.a;
    }
 
-   public static ky a(csv $$0) {
+   public static ky a(ctc $$0) {
       return new ky($$0, ImmutableList.of(lb.a()));
    }
 
-   public static ky a(csv $$0, lb $$1) {
+   public static ky a(ctc $$0, lb $$1) {
       return new ky($$0, ImmutableList.of($$1));
    }
 
-   public static ky a(csv $$0, lb... $$1) {
+   public static ky a(ctc $$0, lb... $$1) {
       return new ky($$0, ImmutableList.copyOf($$1));
    }
 }

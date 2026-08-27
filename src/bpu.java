@@ -1,70 +1,50 @@
 import java.util.EnumSet;
-import javax.annotation.Nullable;
 
-public class bpu extends bqb {
-   protected final bjp a;
-   private double b;
-   private double c;
-   private double d;
-   private final double e;
-   private final cpv f;
+public class bpu extends bqu {
+   private final bva g;
 
-   public bpu(bjp $$0, double $$1) {
-      this.a = $$0;
-      this.e = $$1;
-      this.f = $$0.dL();
-      this.a(EnumSet.of(bqb.a.a));
+   public bpu(bva $$0, double $$1, int $$2) {
+      super($$0, $$1, $$2, 6);
+      this.g = $$0;
+      this.f = -2;
+      this.a(EnumSet.of(bqh.a.c, bqh.a.a));
    }
 
    @Override
    public boolean a() {
-      if (this.a.q() != null) {
-         return false;
-      } else if (!this.f.N()) {
-         return false;
-      } else if (!this.a.bM()) {
-         return false;
-      } else if (!this.f.g(this.a.dl())) {
-         return false;
-      } else {
-         return !this.a.c(biv.f).b() ? false : this.h();
-      }
-   }
-
-   protected boolean h() {
-      ehn $$0 = this.i();
-      if ($$0 == null) {
-         return false;
-      } else {
-         this.b = $$0.c;
-         this.c = $$0.d;
-         this.d = $$0.e;
-         return true;
-      }
-   }
-
-   @Override
-   public boolean b() {
-      return !this.a.L().l();
+      return this.g.s() && !this.g.ge() && !this.g.gm() && super.a();
    }
 
    @Override
    public void c() {
-      this.a.L().a(this.b, this.c, this.d, this.e);
+      super.c();
+      this.g.y(false);
    }
 
-   @Nullable
-   protected ehn i() {
-      asc $$0 = this.a.ef();
-      gw $$1 = this.a.dl();
+   @Override
+   protected int a(bjv $$0) {
+      return 40;
+   }
 
-      for (int $$2 = 0; $$2 < 10; $$2++) {
-         gw $$3 = $$1.b($$0.a(20) - 10, $$0.a(6) - 3, $$0.a(20) - 10);
-         if (!this.f.g($$3) && this.a.h($$3) < 0.0F) {
-            return ehn.c($$3);
-         }
+   @Override
+   public void d() {
+      super.d();
+      this.g.A(false);
+   }
+
+   @Override
+   public void e() {
+      super.e();
+      this.g.y(false);
+      if (!this.m()) {
+         this.g.A(false);
+      } else if (!this.g.gm()) {
+         this.g.A(true);
       }
+   }
 
-      return null;
+   @Override
+   protected boolean a(cqe $$0, gw $$1) {
+      return $$0.t($$1.c()) && $$0.a_($$1).a(apv.R);
    }
 }

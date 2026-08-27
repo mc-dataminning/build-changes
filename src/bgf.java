@@ -1,25 +1,44 @@
-import java.util.Arrays;
+import com.mojang.serialization.Codec;
 
-public class bgf implements bgg {
-   private final bgg[] a;
+public class bgf extends bgh {
+   public static final bgf a = new bgf(0.0F);
+   public static final Codec<bgf> b = arj.e(Codec.FLOAT, Codec.FLOAT.fieldOf("value").codec()).xmap(bgf::new, bgf::d);
+   private final float d;
 
-   public bgf(bgg... $$0) {
-      this.a = $$0;
+   public static bgf a(float $$0) {
+      return $$0 == 0.0F ? a : new bgf($$0);
+   }
+
+   private bgf(float $$0) {
+      this.d = $$0;
+   }
+
+   public float d() {
+      return this.d;
    }
 
    @Override
-   public float a(asc $$0) {
-      float $$1 = 1.0F;
+   public float a(ash $$0) {
+      return this.d;
+   }
 
-      for (bgg $$2 : this.a) {
-         $$1 *= $$2.a($$0);
-      }
+   @Override
+   public float a() {
+      return this.d;
+   }
 
-      return $$1;
+   @Override
+   public float b() {
+      return this.d + 1.0F;
+   }
+
+   @Override
+   public bgi<?> c() {
+      return bgi.a;
    }
 
    @Override
    public String toString() {
-      return "MultipliedFloats" + Arrays.toString((Object[])this.a);
+      return Float.toString(this.d);
    }
 }

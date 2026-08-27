@@ -1,50 +1,62 @@
-import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
+import org.apache.commons.lang3.Validate;
 
-public class dho<T> implements dhw<T> {
+public class dho<T> implements dhq<T> {
    private final hj<T> a;
-   private final aqv<T> b;
-   private final dhx<T> c;
+   private final T[] b;
+   private final dhr<T> c;
    private final int d;
+   private int e;
 
-   public dho(hj<T> $$0, int $$1, dhx<T> $$2, List<T> $$3) {
-      this($$0, $$1, $$2);
-      $$3.forEach(this.b::c);
-   }
-
-   public dho(hj<T> $$0, int $$1, dhx<T> $$2) {
-      this($$0, $$1, $$2, aqv.c(1 << $$1));
-   }
-
-   private dho(hj<T> $$0, int $$1, dhx<T> $$2, aqv<T> $$3) {
+   private dho(hj<T> $$0, int $$1, dhr<T> $$2, List<T> $$3) {
       this.a = $$0;
+      this.b = (T[])(new Object[1 << $$1]);
       this.d = $$1;
       this.c = $$2;
-      this.b = $$3;
+      Validate.isTrue($$3.size() <= this.b.length, "Can't initialize LinearPalette of size %d with %d entries", new Object[]{this.b.length, $$3.size()});
+
+      for (int $$4 = 0; $$4 < $$3.size(); $$4++) {
+         this.b[$$4] = $$3.get($$4);
+      }
+
+      this.e = $$3.size();
    }
 
-   public static <A> dhw<A> a(int $$0, hj<A> $$1, dhx<A> $$2, List<A> $$3) {
+   private dho(hj<T> $$0, T[] $$1, dhr<T> $$2, int $$3, int $$4) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+   }
+
+   public static <A> dhq<A> a(int $$0, hj<A> $$1, dhr<A> $$2, List<A> $$3) {
       return new dho<>($$1, $$0, $$2, $$3);
    }
 
    @Override
    public int a(T $$0) {
-      int $$1 = this.b.a($$0);
-      if ($$1 == -1) {
-         $$1 = this.b.c($$0);
-         if ($$1 >= 1 << this.d) {
-            $$1 = this.c.onResize(this.d + 1, $$0);
+      for (int $$1 = 0; $$1 < this.e; $$1++) {
+         if (this.b[$$1] == $$0) {
+            return $$1;
          }
       }
 
-      return $$1;
+      int $$2 = this.e;
+      if ($$2 < this.b.length) {
+         this.b[$$2] = $$0;
+         this.e++;
+         return $$2;
+      } else {
+         return this.c.onResize(this.d + 1, $$0);
+      }
    }
 
    @Override
    public boolean a(Predicate<T> $$0) {
-      for (int $$1 = 0; $$1 < this.b(); $$1++) {
-         if ($$0.test(this.b.a($$1))) {
+      for (int $$1 = 0; $$1 < this.e; $$1++) {
+         if ($$0.test(this.b[$$1])) {
             return true;
          }
       }
@@ -54,31 +66,28 @@ public class dho<T> implements dhw<T> {
 
    @Override
    public T a(int $$0) {
-      T $$1 = this.b.a($$0);
-      if ($$1 == null) {
-         throw new dhv($$0);
+      if ($$0 >= 0 && $$0 < this.e) {
+         return this.b[$$0];
       } else {
-         return $$1;
+         throw new dhp($$0);
       }
    }
 
    @Override
    public void a(so $$0) {
-      this.b.a();
-      int $$1 = $$0.m();
+      this.e = $$0.n();
 
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         this.b.c(this.a.b($$0.m()));
+      for (int $$1 = 0; $$1 < this.e; $$1++) {
+         this.b[$$1] = this.a.b($$0.n());
       }
    }
 
    @Override
    public void b(so $$0) {
-      int $$1 = this.b();
-      $$0.c($$1);
+      $$0.c(this.e);
 
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         $$0.c(this.a.a(this.b.a($$2)));
+      for (int $$1 = 0; $$1 < this.e; $$1++) {
+         $$0.c(this.a.a(this.b[$$1]));
       }
    }
 
@@ -87,25 +96,19 @@ public class dho<T> implements dhw<T> {
       int $$0 = tc.a(this.b());
 
       for (int $$1 = 0; $$1 < this.b(); $$1++) {
-         $$0 += tc.a(this.a.a(this.b.a($$1)));
+         $$0 += tc.a(this.a.a(this.b[$$1]));
       }
 
       return $$0;
    }
 
-   public List<T> d() {
-      ArrayList<T> $$0 = new ArrayList<>();
-      this.b.iterator().forEachRemaining($$0::add);
-      return $$0;
-   }
-
    @Override
    public int b() {
-      return this.b.b();
+      return this.e;
    }
 
    @Override
-   public dhw<T> c() {
-      return new dho<>(this.a, this.d, this.c, this.b.c());
+   public dhq<T> c() {
+      return new dho<>(this.a, (T[])((Object[])this.b.clone()), this.c, this.d, this.e);
    }
 }

@@ -1,32 +1,29 @@
-public class gce extends gbv {
-   private static final float n = 0.0F;
+public class gce extends gbr {
+   private static final float n = 1.0F;
    private static final float o = 1.0F;
-   private static final float p = 0.7F;
-   private static final float q = 0.5F;
-   private final bze r;
+   private final bxj p;
 
-   public gce(bze $$0) {
-      super(apd.kl, ape.f, gcm.t());
-      this.r = $$0;
-      this.k = gcm.a.a;
-      this.i = true;
+   public gce(bxj $$0) {
+      super(apg.wH, aph.g, gci.t());
+      this.p = $$0;
+      this.k = gci.a.b;
+      this.i = false;
       this.j = 0;
    }
 
    @Override
    public boolean s() {
-      return !this.r.aS();
+      return !this.p.aS();
    }
 
    @Override
    public void q() {
-      if (!this.r.dG() && this.r.q() == null) {
-         this.f = (double)((float)this.r.dq());
-         this.g = (double)((float)this.r.ds());
-         this.h = (double)((float)this.r.dw());
-         float $$0 = this.r.G(0.0F);
-         this.d = 0.0F + 1.0F * $$0 * $$0;
-         this.e = 0.7F + 0.5F * $$0;
+      if (!this.p.dG() && this.p.q() == null && this.p.gk()) {
+         this.f = (double)((float)this.p.dq());
+         this.g = (double)((float)this.p.ds());
+         this.h = (double)((float)this.p.dw());
+         this.d = 1.0F;
+         this.e = 1.0F;
       } else {
          this.n();
       }

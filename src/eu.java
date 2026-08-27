@@ -15,17 +15,17 @@ import java.util.function.Predicate;
 
 public class eu<T> implements ArgumentType<eu.c<T>> {
    private static final Collection<String> a = Arrays.asList("foo", "foo:bar", "012", "#skeletons", "#minecraft:skeletons");
-   final aev<? extends hq<T>> b;
+   final aey<? extends hq<T>> b;
 
-   public eu(aev<? extends hq<T>> $$0) {
+   public eu(aey<? extends hq<T>> $$0) {
       this.b = $$0;
    }
 
-   public static <T> eu<T> a(aev<? extends hq<T>> $$0) {
+   public static <T> eu<T> a(aey<? extends hq<T>> $$0) {
       return new eu<>($$0);
    }
 
-   public static <T> eu.c<T> a(CommandContext<dt> $$0, String $$1, aev<hq<T>> $$2, DynamicCommandExceptionType $$3) throws CommandSyntaxException {
+   public static <T> eu.c<T> a(CommandContext<dt> $$0, String $$1, aey<hq<T>> $$2, DynamicCommandExceptionType $$3) throws CommandSyntaxException {
       eu.c<?> $$4 = (eu.c<?>)$$0.getArgument($$1, eu.c.class);
       Optional<eu.c<T>> $$5 = $$4.a($$2);
       return $$5.orElseThrow(() -> $$3.create($$4));
@@ -37,15 +37,15 @@ public class eu<T> implements ArgumentType<eu.c<T>> {
 
          try {
             $$0.skip();
-            aew $$2 = aew.a($$0);
-            return new eu.d<>(aqh.a(this.b, $$2));
+            aez $$2 = aez.a($$0);
+            return new eu.d<>(aqk.a(this.b, $$2));
          } catch (CommandSyntaxException var4) {
             $$0.setCursor($$1);
             throw var4;
          }
       } else {
-         aew $$4 = aew.a($$0);
-         return new eu.b<>(aev.a(this.b, $$4));
+         aez $$4 = aez.a($$0);
+         return new eu.b<>(aey.a(this.b, $$4));
       }
    }
 
@@ -63,7 +63,7 @@ public class eu<T> implements ArgumentType<eu.c<T>> {
       }
 
       public eu.a<T>.a a(so $$0) {
-         return new eu.a.a($$0.t());
+         return new eu.a.a($$0.u());
       }
 
       public void a(eu.a<T>.a $$0, JsonObject $$1) {
@@ -75,9 +75,9 @@ public class eu<T> implements ArgumentType<eu.c<T>> {
       }
 
       public final class a implements gi.a<eu<T>> {
-         final aev<? extends hq<T>> b;
+         final aey<? extends hq<T>> b;
 
-         a(aev<? extends hq<T>> $$1) {
+         a(aey<? extends hq<T>> $$1) {
             this.b = $$1;
          }
 
@@ -92,14 +92,14 @@ public class eu<T> implements ArgumentType<eu.c<T>> {
       }
    }
 
-   static record b<T>(aev<T> a) implements eu.c<T> {
+   static record b<T>(aey<T> a) implements eu.c<T> {
       @Override
-      public Either<aev<T>, aqh<T>> a() {
+      public Either<aey<T>, aqk<T>> a() {
          return Either.left(this.a);
       }
 
       @Override
-      public <E> Optional<eu.c<E>> a(aev<? extends hq<E>> $$0) {
+      public <E> Optional<eu.c<E>> a(aey<? extends hq<E>> $$0) {
          return this.a.c($$0).map(eu.b::new);
       }
 
@@ -112,27 +112,27 @@ public class eu<T> implements ArgumentType<eu.c<T>> {
          return this.a.a().toString();
       }
 
-      public aev<T> c() {
+      public aey<T> c() {
          return this.a;
       }
    }
 
    public interface c<T> extends Predicate<he<T>> {
-      Either<aev<T>, aqh<T>> a();
+      Either<aey<T>, aqk<T>> a();
 
-      <E> Optional<eu.c<E>> a(aev<? extends hq<E>> var1);
+      <E> Optional<eu.c<E>> a(aey<? extends hq<E>> var1);
 
       String b();
    }
 
-   static record d<T>(aqh<T> a) implements eu.c<T> {
+   static record d<T>(aqk<T> a) implements eu.c<T> {
       @Override
-      public Either<aev<T>, aqh<T>> a() {
+      public Either<aey<T>, aqk<T>> a() {
          return Either.right(this.a);
       }
 
       @Override
-      public <E> Optional<eu.c<E>> a(aev<? extends hq<E>> $$0) {
+      public <E> Optional<eu.c<E>> a(aey<? extends hq<E>> $$0) {
          return this.a.d($$0).map(eu.d::new);
       }
 
@@ -145,7 +145,7 @@ public class eu<T> implements ArgumentType<eu.c<T>> {
          return "#" + this.a.b();
       }
 
-      public aqh<T> c() {
+      public aqk<T> c() {
          return this.a;
       }
    }

@@ -1,51 +1,30 @@
 import com.mojang.datafixers.kinds.App;
+import java.util.List;
 import java.util.function.Function;
 import org.apache.commons.lang3.mutable.MutableLong;
 
 public class bnv {
-   public static bky<bjp> a(int $$0, float $$1) {
-      MutableLong $$2 = new MutableLong(0L);
-      return boj.a(
-         (Function<boj.b<bjp>, ? extends App<boj.c<bjp>, bom<bjp>>>)($$3 -> $$3.group($$3.c(bsh.o), $$3.c(bsh.m), $$3.a(bsh.n))
-               .apply($$3, ($$3x, $$4, $$5) -> ($$5x, $$6, $$7) -> {
-                     if ($$5x.b_($$6.dl()).a(apx.a)) {
+   public static ble<cbn> a(bsn<List<hd>> $$0, float $$1, int $$2, int $$3, bsn<hd> $$4) {
+      MutableLong $$5 = new MutableLong(0L);
+      return bop.a(
+         (Function<bop.b<cbn>, ? extends App<bop.c<cbn>, bos<cbn>>>)($$6 -> $$6.group($$6.a(bsn.m), $$6.b($$0), $$6.b($$4))
+               .apply($$6, ($$5xx, $$6x, $$7) -> ($$8, $$9, $$10) -> {
+                     List<hd> $$11 = $$6.b($$6x);
+                     hd $$12 = $$6.b($$7);
+                     if ($$11.isEmpty()) {
                         return false;
-                     } else if ($$7 < $$2.getValue()) {
-                        $$2.setValue($$7 + 20L + 2L);
-                        return true;
                      } else {
-                        gw $$8 = null;
-                        gw $$9 = null;
-                        gw $$10 = $$6.dl();
-
-                        for (gw $$12 : gw.a($$10, $$0, $$0, $$0)) {
-                           if ($$12.u() != $$10.u() || $$12.w() != $$10.w()) {
-                              dfj $$13 = $$6.dL().a_($$12.c());
-                              dfj $$14 = $$6.dL().a_($$12);
-                              if ($$14.a(csw.G)) {
-                                 if ($$13.i()) {
-                                    $$8 = $$12.i();
-                                    break;
-                                 }
-
-                                 if ($$9 == null && !$$12.a($$6.dj(), 1.5)) {
-                                    $$9 = $$12.i();
-                                 }
-                              }
+                        hd $$13 = $$11.get($$8.D_().a($$11.size()));
+                        if ($$13 != null && $$8.ac() == $$13.a() && $$12.b().a($$9.dj(), (double)$$3)) {
+                           if ($$10 > $$5.getValue()) {
+                              $$5xx.a(new bsq($$13.b(), $$1, $$2));
+                              $$5.setValue($$10 + 100L);
                            }
-                        }
 
-                        if ($$8 == null) {
-                           $$8 = $$9;
+                           return true;
+                        } else {
+                           return false;
                         }
-
-                        if ($$8 != null) {
-                           $$5.a(new bla($$8));
-                           $$4.a(new bsk(new bla($$8), $$1, 0));
-                        }
-
-                        $$2.setValue($$7 + 40L);
-                        return true;
                      }
                   }))
       );

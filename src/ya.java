@@ -1,14 +1,108 @@
-public record ya(cpc a) implements vd<ww> {
+import com.google.common.collect.Lists;
+import java.util.List;
+import javax.annotation.Nullable;
+
+public class ya implements ve<wx> {
+   private final double a;
+   private final double b;
+   private final double c;
+   private final float d;
+   private final List<gw> e;
+   private final float f;
+   private final float g;
+   private final float h;
+
+   public ya(double $$0, double $$1, double $$2, float $$3, List<gw> $$4, @Nullable ehh $$5) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = Lists.newArrayList($$4);
+      if ($$5 != null) {
+         this.f = (float)$$5.c;
+         this.g = (float)$$5.d;
+         this.h = (float)$$5.e;
+      } else {
+         this.f = 0.0F;
+         this.g = 0.0F;
+         this.h = 0.0F;
+      }
+   }
+
    public ya(so $$0) {
-      this($$0.f());
+      this.a = $$0.readDouble();
+      this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
+      this.d = $$0.readFloat();
+      int $$1 = asb.a(this.a);
+      int $$2 = asb.a(this.b);
+      int $$3 = asb.a(this.c);
+      this.e = $$0.a((so.a<gw>)($$3x -> {
+         int $$4 = $$3x.readByte() + $$1;
+         int $$5 = $$3x.readByte() + $$2;
+         int $$6 = $$3x.readByte() + $$3;
+         return new gw($$4, $$5, $$6);
+      }));
+      this.f = $$0.readFloat();
+      this.g = $$0.readFloat();
+      this.h = $$0.readFloat();
    }
 
    @Override
    public void a(so $$0) {
       $$0.a(this.a);
+      $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
+      int $$1 = asb.a(this.a);
+      int $$2 = asb.a(this.b);
+      int $$3 = asb.a(this.c);
+      $$0.a(this.e, ($$3x, $$4) -> {
+         int $$5 = $$4.u() - $$1;
+         int $$6 = $$4.v() - $$2;
+         int $$7 = $$4.w() - $$3;
+         $$3x.k($$5);
+         $$3x.k($$6);
+         $$3x.k($$7);
+      });
+      $$0.a(this.f);
+      $$0.a(this.g);
+      $$0.a(this.h);
    }
 
-   public void a(ww $$0) {
+   public void a(wx $$0) {
       $$0.a(this);
+   }
+
+   public float a() {
+      return this.f;
+   }
+
+   public float d() {
+      return this.g;
+   }
+
+   public float e() {
+      return this.h;
+   }
+
+   public double f() {
+      return this.a;
+   }
+
+   public double g() {
+      return this.b;
+   }
+
+   public double h() {
+      return this.c;
+   }
+
+   public float i() {
+      return this.d;
+   }
+
+   public List<gw> j() {
+      return this.e;
    }
 }

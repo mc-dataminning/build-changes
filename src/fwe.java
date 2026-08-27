@@ -1,20 +1,37 @@
-public class fwe extends fun<cay, fhp<cay>> {
-   private static final aew a = new aew("textures/entity/warden/warden.png");
-   private static final aew i = new aew("textures/entity/warden/warden_bioluminescent_layer.png");
-   private static final aew j = new aew("textures/entity/warden/warden_heart.png");
-   private static final aew k = new aew("textures/entity/warden/warden_pulsating_spots_1.png");
-   private static final aew l = new aew("textures/entity/warden/warden_pulsating_spots_2.png");
+public class fwe extends ftc<cdf> {
+   private static final aez a = new aez("textures/entity/wither/wither_invulnerable.png");
+   private static final aez f = new aez("textures/entity/wither/wither.png");
+   private final fgu g;
 
-   public fwe(fth.a $$0) {
-      super($$0, new fhp<>($$0.a(fib.bL)), 0.9F);
-      this.a(new fyb<>(this, i, ($$0x, $$1, $$2) -> 1.0F, fhp::e));
-      this.a(new fyb<>(this, k, ($$0x, $$1, $$2) -> Math.max(0.0F, arw.b($$2 * 0.045F) * 0.25F), fhp::f));
-      this.a(new fyb<>(this, l, ($$0x, $$1, $$2) -> Math.max(0.0F, arw.b($$2 * 0.045F + (float) Math.PI) * 0.25F), fhp::f));
-      this.a(new fyb<>(this, a, ($$0x, $$1, $$2) -> $$0x.E($$1), fhp::c));
-      this.a(new fyb<>(this, j, ($$0x, $$1, $$2) -> $$0x.F($$1), fhp::d));
+   public fwe(ftd.a $$0) {
+      super($$0);
+      this.g = new fgu($$0.a(fhw.bU));
    }
 
-   public aew a(cay $$0) {
-      return a;
+   public static fid a() {
+      fif $$0 = new fif();
+      fig $$1 = $$0.a();
+      $$1.a("head", fic.c().a(0, 35).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F), fhz.a);
+      return fid.a($$0, 64, 64);
+   }
+
+   protected int a(cdf $$0, gw $$1) {
+      return 15;
+   }
+
+   public void a(cdf $$0, float $$1, float $$2, elj $$3, foa $$4, int $$5) {
+      $$3.a();
+      $$3.b(-1.0F, -1.0F, 1.0F);
+      float $$6 = asb.j($$2, $$0.N, $$0.dB());
+      float $$7 = asb.i($$2, $$0.O, $$0.dD());
+      eln $$8 = $$4.getBuffer(this.g.a(this.a($$0)));
+      this.g.a(0.0F, $$6, $$7);
+      this.g.a($$3, $$8, $$5, fyr.d, 1.0F, 1.0F, 1.0F, 1.0F);
+      $$3.b();
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   public aez a(cdf $$0) {
+      return $$0.w() ? a : f;
    }
 }

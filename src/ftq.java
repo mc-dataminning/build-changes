@@ -1,9 +1,11 @@
-public class ftq extends fun<bwg, ffg<bwg>> {
-   public ftq(fth.a $$0) {
-      super($$0, new ffg<>($$0.a(fib.Y)), 0.3F);
+public class ftq extends fuj<bws, ffe<bws>> {
+   private static final aez a = new aez("textures/entity/goat/goat.png");
+
+   public ftq(ftd.a $$0) {
+      super($$0, new ffe<>($$0.a(fhw.af)), 0.7F);
    }
 
-   public aew a(bwg $$0) {
-      return $$0.y().a();
+   public aez a(bws $$0) {
+      return a;
    }
 }

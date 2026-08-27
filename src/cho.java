@@ -1,87 +1,40 @@
-import java.util.Collection;
-import javax.annotation.Nullable;
-
-public class cho extends cja {
-   public cho(cja.a $$0) {
+public class cho extends cjg {
+   public cho(cjg.a $$0) {
       super($$0);
    }
 
    @Override
-   public boolean i(cjf $$0) {
-      return true;
-   }
-
-   @Override
-   public boolean a(dfj $$0, cpv $$1, gw $$2, cbu $$3) {
+   public cjl a(cjl $$0, cqb $$1, bjm $$2) {
+      cjl $$3 = super.a($$0, $$1, $$2);
       if (!$$1.B) {
-         this.a($$3, $$0, $$1, $$2, false, $$3.b(bgx.a));
-      }
+         double $$4 = $$2.dq();
+         double $$5 = $$2.ds();
+         double $$6 = $$2.dw();
 
-      return false;
-   }
-
-   @Override
-   public bgy a(clp $$0) {
-      cbu $$1 = $$0.o();
-      cpv $$2 = $$0.q();
-      if (!$$2.B && $$1 != null) {
-         gw $$3 = $$0.a();
-         if (!this.a($$1, $$2.a_($$3), $$2, $$3, true, $$0.n())) {
-            return bgy.e;
-         }
-      }
-
-      return bgy.a($$2.B);
-   }
-
-   private boolean a(cbu $$0, dfj $$1, cpw $$2, gw $$3, boolean $$4, cjf $$5) {
-      if (!$$0.go()) {
-         return false;
-      } else {
-         csv $$6 = $$1.b();
-         dfk<csv, dfj> $$7 = $$6.l();
-         Collection<dgm<?>> $$8 = $$7.d();
-         String $$9 = jb.f.b($$6).toString();
-         if ($$8.isEmpty()) {
-            a($$0, tl.a(this.a() + ".empty", $$9));
-            return false;
-         } else {
-            qw $$10 = $$5.a("DebugProperty");
-            String $$11 = $$10.l($$9);
-            dgm<?> $$12 = $$7.a($$11);
-            if ($$4) {
-               if ($$12 == null) {
-                  $$12 = $$8.iterator().next();
-               }
-
-               dfj $$13 = a($$1, $$12, $$0.fH());
-               $$2.a($$3, $$13, 18);
-               a($$0, tl.a(this.a() + ".update", $$12.f(), a($$13, $$12)));
-            } else {
-               $$12 = a($$8, $$12, $$0.fH());
-               String $$14 = $$12.f();
-               $$10.a($$9, $$14);
-               a($$0, tl.a(this.a() + ".select", $$14, a($$1, $$12)));
+         for (int $$7 = 0; $$7 < 16; $$7++) {
+            double $$8 = $$2.dq() + ($$2.ef().j() - 0.5) * 16.0;
+            double $$9 = asb.a($$2.ds() + (double)($$2.ef().a(16) - 8), (double)$$1.H_(), (double)($$1.H_() + ((akt)$$1).j() - 1));
+            double $$10 = $$2.dw() + ($$2.ef().j() - 0.5) * 16.0;
+            if ($$2.bN()) {
+               $$2.aa();
             }
 
-            return true;
+            ehh $$11 = $$2.dj();
+            if ($$2.b($$8, $$9, $$10, true)) {
+               $$1.a(djn.R, $$11, djn.a.a($$2));
+               apf $$12 = $$2 instanceof bvh ? apg.ii : apg.eA;
+               $$1.a(null, $$4, $$5, $$6, $$12, aph.h, 1.0F, 1.0F);
+               $$2.a($$12, 1.0F, 1.0F);
+               $$2.n();
+               break;
+            }
+         }
+
+         if ($$2 instanceof cca) {
+            ((cca)$$2).gn().a(this, 20);
          }
       }
-   }
 
-   private static <T extends Comparable<T>> dfj a(dfj $$0, dgm<T> $$1, boolean $$2) {
-      return $$0.a($$1, a($$1.a(), $$0.c($$1), $$2));
-   }
-
-   private static <T> T a(Iterable<T> $$0, @Nullable T $$1, boolean $$2) {
-      return $$2 ? ac.b($$0, $$1) : ac.a($$0, $$1);
-   }
-
-   private static void a(cbu $$0, tl $$1) {
-      ((akr)$$0).b($$1, true);
-   }
-
-   private static <T extends Comparable<T>> String a(dfj $$0, dgm<T> $$1) {
-      return $$1.a($$0.c($$1));
+      return $$3;
    }
 }

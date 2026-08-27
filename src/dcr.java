@@ -1,25 +1,91 @@
-public class dcr extends dcv {
-   private cht a;
+public class dcr {
+   public static final aey<dcq> a = a("base");
+   public static final aey<dcq> b = a("square_bottom_left");
+   public static final aey<dcq> c = a("square_bottom_right");
+   public static final aey<dcq> d = a("square_top_left");
+   public static final aey<dcq> e = a("square_top_right");
+   public static final aey<dcq> f = a("stripe_bottom");
+   public static final aey<dcq> g = a("stripe_top");
+   public static final aey<dcq> h = a("stripe_left");
+   public static final aey<dcq> i = a("stripe_right");
+   public static final aey<dcq> j = a("stripe_center");
+   public static final aey<dcq> k = a("stripe_middle");
+   public static final aey<dcq> l = a("stripe_downright");
+   public static final aey<dcq> m = a("stripe_downleft");
+   public static final aey<dcq> n = a("small_stripes");
+   public static final aey<dcq> o = a("cross");
+   public static final aey<dcq> p = a("straight_cross");
+   public static final aey<dcq> q = a("triangle_bottom");
+   public static final aey<dcq> r = a("triangle_top");
+   public static final aey<dcq> s = a("triangles_bottom");
+   public static final aey<dcq> t = a("triangles_top");
+   public static final aey<dcq> u = a("diagonal_left");
+   public static final aey<dcq> v = a("diagonal_up_right");
+   public static final aey<dcq> w = a("diagonal_up_left");
+   public static final aey<dcq> x = a("diagonal_right");
+   public static final aey<dcq> y = a("circle");
+   public static final aey<dcq> z = a("rhombus");
+   public static final aey<dcq> A = a("half_vertical");
+   public static final aey<dcq> B = a("half_horizontal");
+   public static final aey<dcq> C = a("half_vertical_right");
+   public static final aey<dcq> D = a("half_horizontal_bottom");
+   public static final aey<dcq> E = a("border");
+   public static final aey<dcq> F = a("curly_border");
+   public static final aey<dcq> G = a("gradient");
+   public static final aey<dcq> H = a("gradient_up");
+   public static final aey<dcq> I = a("bricks");
+   public static final aey<dcq> J = a("globe");
+   public static final aey<dcq> K = a("creeper");
+   public static final aey<dcq> L = a("skull");
+   public static final aey<dcq> M = a("flower");
+   public static final aey<dcq> N = a("mojang");
+   public static final aey<dcq> O = a("piglin");
 
-   public dcr(gw $$0, dfj $$1) {
-      super(dcx.y, $$0, $$1);
-      this.a = ((cso)$$1.b()).a();
+   private static aey<dcq> a(String $$0) {
+      return aey.a(jc.c, new aez($$0));
    }
 
-   public dcr(gw $$0, dfj $$1, cht $$2) {
-      super(dcx.y, $$0, $$1);
-      this.a = $$2;
-   }
-
-   public xd c() {
-      return xd.a(this);
-   }
-
-   public cht d() {
-      return this.a;
-   }
-
-   public void a(cht $$0) {
-      this.a = $$0;
+   public static dcq a(hq<dcq> $$0) {
+      hq.a($$0, a, new dcq("b"));
+      hq.a($$0, b, new dcq("bl"));
+      hq.a($$0, c, new dcq("br"));
+      hq.a($$0, d, new dcq("tl"));
+      hq.a($$0, e, new dcq("tr"));
+      hq.a($$0, f, new dcq("bs"));
+      hq.a($$0, g, new dcq("ts"));
+      hq.a($$0, h, new dcq("ls"));
+      hq.a($$0, i, new dcq("rs"));
+      hq.a($$0, j, new dcq("cs"));
+      hq.a($$0, k, new dcq("ms"));
+      hq.a($$0, l, new dcq("drs"));
+      hq.a($$0, m, new dcq("dls"));
+      hq.a($$0, n, new dcq("ss"));
+      hq.a($$0, o, new dcq("cr"));
+      hq.a($$0, p, new dcq("sc"));
+      hq.a($$0, q, new dcq("bt"));
+      hq.a($$0, r, new dcq("tt"));
+      hq.a($$0, s, new dcq("bts"));
+      hq.a($$0, t, new dcq("tts"));
+      hq.a($$0, u, new dcq("ld"));
+      hq.a($$0, v, new dcq("rd"));
+      hq.a($$0, w, new dcq("lud"));
+      hq.a($$0, x, new dcq("rud"));
+      hq.a($$0, y, new dcq("mc"));
+      hq.a($$0, z, new dcq("mr"));
+      hq.a($$0, A, new dcq("vh"));
+      hq.a($$0, B, new dcq("hh"));
+      hq.a($$0, C, new dcq("vhr"));
+      hq.a($$0, D, new dcq("hhb"));
+      hq.a($$0, E, new dcq("bo"));
+      hq.a($$0, F, new dcq("cbo"));
+      hq.a($$0, G, new dcq("gra"));
+      hq.a($$0, H, new dcq("gru"));
+      hq.a($$0, I, new dcq("bri"));
+      hq.a($$0, J, new dcq("glb"));
+      hq.a($$0, K, new dcq("cre"));
+      hq.a($$0, L, new dcq("sku"));
+      hq.a($$0, M, new dcq("flo"));
+      hq.a($$0, N, new dcq("moj"));
+      return hq.a($$0, O, new dcq("pig"));
    }
 }

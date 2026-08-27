@@ -1,46 +1,84 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Objects;
-import java.util.stream.Collectors;
+import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public interface day {
-   List<day.a> a();
+public class day extends cso implements cwi {
+   public static final MapCodec<day> a = b(day::new);
+   public static final dgb<dgn> b = dft.bj;
 
-   static List<day> b() {
-      return jb.i.s().map(day::a).filter(Objects::nonNull).collect(Collectors.toList());
+   @Override
+   public MapCodec<day> a() {
+      return a;
    }
 
-   @Nullable
-   static day a(cpu $$0) {
-      if ($$0.k() instanceof cgy $$1) {
-         csv var6 = $$1.e();
-         if (var6 instanceof day) {
-            return (day)var6;
+   protected day(dfc.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(b, dgn.b));
+   }
+
+   @Override
+   public dcz a(gw $$0, dfd $$1) {
+      return new dem($$0, $$1);
+   }
+
+   @Override
+   public bhe a(dfd $$0, cqb $$1, gw $$2, cca $$3, bhd $$4, ehd $$5) {
+      dcz $$6 = $$1.c_($$2);
+      if ($$6 instanceof dem) {
+         return ((dem)$$6).a($$3) ? bhe.a($$1.B) : bhe.d;
+      } else {
+         return bhe.d;
+      }
+   }
+
+   @Override
+   public void a(cqb $$0, gw $$1, dfd $$2, @Nullable bjm $$3, cjl $$4) {
+      if (!$$0.B) {
+         if ($$3 != null) {
+            dcz $$5 = $$0.c_($$1);
+            if ($$5 instanceof dem) {
+               ((dem)$$5).a($$3);
+            }
          }
       }
-
-      cja $$2 = $$0.k();
-      return $$2 instanceof day ? (day)$$2 : null;
    }
 
-   public static record a(bib c, int d) {
-      public static final Codec<day.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(jb.e.q().fieldOf("id").forGetter(day.a::b), Codec.INT.optionalFieldOf("duration", 160).forGetter(day.a::c)).apply($$0, day.a::new)
-      );
-      public static final Codec<List<day.a>> b = a.listOf();
+   @Override
+   public czg b_(dfd $$0) {
+      return czg.c;
+   }
 
-      public bid a() {
-         return new bid(this.c, this.d);
+   @Override
+   protected void a(dfe.a<ctc, dfd> $$0) {
+      $$0.a(b);
+   }
+
+   @Override
+   public void a(dfd $$0, cqb $$1, gw $$2, ctc $$3, gw $$4, boolean $$5) {
+      if ($$1 instanceof akt) {
+         if ($$1.c_($$2) instanceof dem $$7) {
+            boolean $$8 = $$1.B($$2);
+            boolean $$9 = $$7.G();
+            if ($$8 && !$$9) {
+               $$7.c(true);
+               this.a((akt)$$1, $$7);
+            } else if (!$$8 && $$9) {
+               $$7.c(false);
+            }
+         }
       }
+   }
 
-      public bib b() {
-         return this.c;
-      }
-
-      public int c() {
-         return this.d;
+   private void a(akt $$0, dem $$1) {
+      switch ($$1.y()) {
+         case a:
+            $$1.b(false);
+            break;
+         case b:
+            $$1.a($$0, false);
+            break;
+         case c:
+            $$1.E();
+         case d:
       }
    }
 }

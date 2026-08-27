@@ -1,88 +1,103 @@
-public class fud extends ftg<byn> {
-   private static final float a = 0.15F;
-   private static final int f = 48;
-   private static final int g = 32;
-   private static final int h = 16;
-   private static final int i = 1;
-   private static final float j = 0.0F;
-   private static final float k = 0.0F;
-   private static final float l = 0.09375F;
-   private final fuf m;
-   private final asc n = asc.a();
+import org.joml.Matrix4f;
 
-   public fud(fth.a $$0) {
+public class fud extends ftc<bjl> {
+   public fud(ftd.a $$0) {
       super($$0);
-      this.m = $$0.b();
-      this.d = 0.15F;
-      this.e = 0.75F;
    }
 
-   private int a(cjf $$0) {
-      int $$1 = 1;
-      if ($$0.L() > 48) {
-         $$1 = 5;
-      } else if ($$0.L() > 32) {
-         $$1 = 4;
-      } else if ($$0.L() > 16) {
-         $$1 = 3;
-      } else if ($$0.L() > 1) {
-         $$1 = 2;
+   public void a(bjl $$0, float $$1, float $$2, elj $$3, foa $$4, int $$5) {
+      float[] $$6 = new float[8];
+      float[] $$7 = new float[8];
+      float $$8 = 0.0F;
+      float $$9 = 0.0F;
+      ash $$10 = ash.a($$0.b);
+
+      for (int $$11 = 7; $$11 >= 0; $$11--) {
+         $$6[$$11] = $$8;
+         $$7[$$11] = $$9;
+         $$8 += (float)($$10.a(11) - 5);
+         $$9 += (float)($$10.a(11) - 5);
       }
 
-      return $$1;
-   }
+      eln $$12 = $$4.getBuffer(foi.t());
+      Matrix4f $$13 = $$3.c().a();
 
-   public void a(byn $$0, float $$1, float $$2, elp $$3, foe $$4, int $$5) {
-      $$3.a();
-      cjf $$6 = $$0.q();
-      int $$7 = $$6.b() ? 187 : cja.a($$6.d()) + $$6.k();
-      this.n.b((long)$$7);
-      gbf $$8 = this.m.a($$6, $$0.dL(), null, $$0.ah());
-      boolean $$9 = $$8.b();
-      int $$10 = this.a($$6);
-      float $$11 = 0.25F;
-      float $$12 = arw.a(((float)$$0.s() + $$2) / 10.0F + $$0.b) * 0.1F + 0.1F;
-      float $$13 = $$8.f().a(cjc.h).d.y();
-      $$3.a(0.0F, $$12 + 0.25F * $$13, 0.0F);
-      float $$14 = $$0.a($$2);
-      $$3.a(a.d.rotation($$14));
-      float $$15 = $$8.f().h.d.x();
-      float $$16 = $$8.f().h.d.y();
-      float $$17 = $$8.f().h.d.z();
-      if (!$$9) {
-         float $$18 = -0.0F * (float)($$10 - 1) * 0.5F * $$15;
-         float $$19 = -0.0F * (float)($$10 - 1) * 0.5F * $$16;
-         float $$20 = -0.09375F * (float)($$10 - 1) * 0.5F * $$17;
-         $$3.a($$18, $$19, $$20);
-      }
+      for (int $$14 = 0; $$14 < 4; $$14++) {
+         ash $$15 = ash.a($$0.b);
 
-      for (int $$21 = 0; $$21 < $$10; $$21++) {
-         $$3.a();
-         if ($$21 > 0) {
-            if ($$9) {
-               float $$22 = (this.n.i() * 2.0F - 1.0F) * 0.15F;
-               float $$23 = (this.n.i() * 2.0F - 1.0F) * 0.15F;
-               float $$24 = (this.n.i() * 2.0F - 1.0F) * 0.15F;
-               $$3.a($$22, $$23, $$24);
-            } else {
-               float $$25 = (this.n.i() * 2.0F - 1.0F) * 0.15F * 0.5F;
-               float $$26 = (this.n.i() * 2.0F - 1.0F) * 0.15F * 0.5F;
-               $$3.a($$25, $$26, 0.0F);
+         for (int $$16 = 0; $$16 < 3; $$16++) {
+            int $$17 = 7;
+            int $$18 = 0;
+            if ($$16 > 0) {
+               $$17 = 7 - $$16;
+            }
+
+            if ($$16 > 0) {
+               $$18 = $$17 - 2;
+            }
+
+            float $$19 = $$6[$$17] - $$8;
+            float $$20 = $$7[$$17] - $$9;
+
+            for (int $$21 = $$17; $$21 >= $$18; $$21--) {
+               float $$22 = $$19;
+               float $$23 = $$20;
+               if ($$16 == 0) {
+                  $$19 += (float)($$15.a(11) - 5);
+                  $$20 += (float)($$15.a(11) - 5);
+               } else {
+                  $$19 += (float)($$15.a(31) - 15);
+                  $$20 += (float)($$15.a(31) - 15);
+               }
+
+               float $$24 = 0.5F;
+               float $$25 = 0.45F;
+               float $$26 = 0.45F;
+               float $$27 = 0.5F;
+               float $$28 = 0.1F + (float)$$14 * 0.2F;
+               if ($$16 == 0) {
+                  $$28 *= (float)$$21 * 0.1F + 1.0F;
+               }
+
+               float $$29 = 0.1F + (float)$$14 * 0.2F;
+               if ($$16 == 0) {
+                  $$29 *= ((float)$$21 - 1.0F) * 0.1F + 1.0F;
+               }
+
+               a($$13, $$12, $$19, $$20, $$21, $$22, $$23, 0.45F, 0.45F, 0.5F, $$28, $$29, false, false, true, false);
+               a($$13, $$12, $$19, $$20, $$21, $$22, $$23, 0.45F, 0.45F, 0.5F, $$28, $$29, true, false, true, true);
+               a($$13, $$12, $$19, $$20, $$21, $$22, $$23, 0.45F, 0.45F, 0.5F, $$28, $$29, true, true, false, true);
+               a($$13, $$12, $$19, $$20, $$21, $$22, $$23, 0.45F, 0.45F, 0.5F, $$28, $$29, false, true, false, false);
             }
          }
-
-         this.m.a($$6, cjc.h, false, $$3, $$4, $$5, fyv.d, $$8);
-         $$3.b();
-         if (!$$9) {
-            $$3.a(0.0F * $$15, 0.0F * $$16, 0.09375F * $$17);
-         }
       }
-
-      $$3.b();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   public aew a(byn $$0) {
-      return fzd.e;
+   private static void a(
+      Matrix4f $$0,
+      eln $$1,
+      float $$2,
+      float $$3,
+      int $$4,
+      float $$5,
+      float $$6,
+      float $$7,
+      float $$8,
+      float $$9,
+      float $$10,
+      float $$11,
+      boolean $$12,
+      boolean $$13,
+      boolean $$14,
+      boolean $$15
+   ) {
+      $$1.a($$0, $$2 + ($$12 ? $$11 : -$$11), (float)($$4 * 16), $$3 + ($$13 ? $$11 : -$$11)).a($$7, $$8, $$9, 0.3F).e();
+      $$1.a($$0, $$5 + ($$12 ? $$10 : -$$10), (float)(($$4 + 1) * 16), $$6 + ($$13 ? $$10 : -$$10)).a($$7, $$8, $$9, 0.3F).e();
+      $$1.a($$0, $$5 + ($$14 ? $$10 : -$$10), (float)(($$4 + 1) * 16), $$6 + ($$15 ? $$10 : -$$10)).a($$7, $$8, $$9, 0.3F).e();
+      $$1.a($$0, $$2 + ($$14 ? $$11 : -$$11), (float)($$4 * 16), $$3 + ($$15 ? $$11 : -$$11)).a($$7, $$8, $$9, 0.3F).e();
+   }
+
+   public aez a(bjl $$0) {
+      return fyz.e;
    }
 }

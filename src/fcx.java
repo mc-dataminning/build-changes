@@ -1,123 +1,99 @@
+import com.mojang.datafixers.DataFixer;
+import com.mojang.logging.LogUtils;
 import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import java.util.Collection;
+import it.unimi.dsi.fastutil.objects.Reference2IntOpenHashMap;
+import java.util.function.ToIntFunction;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class fcx extends eyk {
-   private static final tl a = tl.c("selectWorld.experimental.title");
-   private static final tl b = tl.c("selectWorld.experimental.message");
-   private static final tl c = tl.c("selectWorld.experimental.details");
-   private static final int k = 10;
-   private static final int l = 100;
-   private final BooleanConsumer m;
-   final Collection<anb> n;
-   private final evy o = new evy().a(10).b(20);
+public class fcx extends eye {
+   private static final Logger a = LogUtils.getLogger();
+   private static final ToIntFunction<aey<cqb>> b = ac.a(new Reference2IntOpenHashMap(), $$0 -> {
+      $$0.put(cqb.h, -13408734);
+      $$0.put(cqb.i, -10075085);
+      $$0.put(cqb.j, -8943531);
+      $$0.defaultReturnValue(-2236963);
+   });
+   private final BooleanConsumer c;
+   private final bgs k;
 
-   public fcx(Collection<anb> $$0, BooleanConsumer $$1) {
-      super(a);
-      this.n = $$0;
-      this.m = $$1;
+   @Nullable
+   public static fcx a(eqp $$0, BooleanConsumer $$1, DataFixer $$2, eca.c $$3, boolean $$4) {
+      try {
+         fcx var8;
+         try (afu $$5 = $$0.y().a($$3, false)) {
+            ecg $$6 = $$5.d();
+            hr.b $$7 = $$5.c().a();
+            $$3.a($$7, $$6);
+            var8 = new fcx($$1, $$2, $$3, $$6.L(), $$4, $$7.d(jc.aJ));
+         }
+
+         return var8;
+      } catch (Exception var11) {
+         a.warn("Failed to load datapacks, can't optimize world", var11);
+         return null;
+      }
    }
 
-   @Override
-   public tl g() {
-      return tk.a(super.g(), b);
+   private fcx(BooleanConsumer $$0, DataFixer $$1, eca.c $$2, cqf $$3, boolean $$4, hq<din> $$5) {
+      super(tl.a("optimizeWorld.title", $$3.a()));
+      this.c = $$0;
+      this.k = new bgs($$2, $$1, $$5, $$4);
    }
 
    @Override
    protected void aH_() {
       super.aH_();
-      evy.b $$0 = this.o.d(2);
-      ewc $$1 = $$0.b().b();
-      $$0.a(new etw(this.e, this.i), 2, $$1);
-      etk $$2 = $$0.a(new etk(b, this.i).b(true), 2, $$1);
-      $$2.j(310);
-      $$0.a(esq.a(c, $$0x -> this.f.a(new fcx.a())).a(100).a(), 2, $$1);
-      $$0.a(esq.a(tk.i, $$0x -> this.m.accept(true)).a());
-      $$0.a(esq.a(tk.k, $$0x -> this.m.accept(false)).a());
-      this.o.a($$1x -> {
-         eso var10000 = this.d($$1x);
-      });
-      this.o.a();
-      this.b();
+      this.d(esk.a(tk.e, $$0 -> {
+         this.k.a();
+         this.c.accept(false);
+      }).a(this.g / 2 - 100, this.h / 4 + 150, 200, 20).a());
    }
 
    @Override
-   protected void b() {
-      evx.a(this.o, 0, 0, this.g, this.h, 0.5F, 0.5F);
+   public void c() {
+      if (this.k.b()) {
+         this.c.accept(true);
+      }
    }
 
    @Override
    public void az_() {
-      this.m.accept(false);
+      this.c.accept(false);
    }
 
-   class a extends eyk {
-      private fcx.a.a b;
+   @Override
+   public void h() {
+      this.k.a();
+   }
 
-      a() {
-         super(tl.c("selectWorld.experimental.details.title"));
-      }
+   @Override
+   public void a(erz $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, this.e, this.g / 2, 20, 16777215);
+      int $$4 = this.g / 2 - 150;
+      int $$5 = this.g / 2 + 150;
+      int $$6 = this.h / 4 + 100;
+      int $$7 = $$6 + 10;
+      $$0.a(this.i, this.k.h(), this.g / 2, $$6 - 9 - 2, 10526880);
+      if (this.k.e() > 0) {
+         $$0.a($$4 - 1, $$6 - 1, $$5 + 1, $$7 + 1, -16777216);
+         $$0.b(this.i, tl.a("optimizeWorld.info.converted", this.k.f()), $$4, 40, 10526880);
+         $$0.b(this.i, tl.a("optimizeWorld.info.skipped", this.k.g()), $$4, 40 + 9 + 3, 10526880);
+         $$0.b(this.i, tl.a("optimizeWorld.info.total", this.k.e()), $$4, 40 + (9 + 3) * 2, 10526880);
+         int $$8 = 0;
 
-      @Override
-      public void az_() {
-         this.f.a(fcx.this);
-      }
-
-      @Override
-      protected void aH_() {
-         super.aH_();
-         this.d(esq.a(tk.k, $$0 -> this.az_()).a(this.g / 2 - 100, this.h / 4 + 120 + 24, 200, 20).a());
-         this.b = new fcx.a.a(this.f, fcx.this.n);
-         this.e(this.b);
-      }
-
-      @Override
-      public void a(esf $$0, int $$1, int $$2, float $$3) {
-         super.a($$0, $$1, $$2, $$3);
-         this.b.a($$0, $$1, $$2, $$3);
-         $$0.a(this.i, this.e, this.g / 2, 10, 16777215);
-      }
-
-      class a extends etm<fcx.a.b> {
-         public a(eqv $$0, Collection<anb> $$1) {
-            super($$0, a.this.g, a.this.h, 32, a.this.h - 64, (9 + 2) * 3);
-
-            for (anb $$2 : $$1) {
-               String $$3 = cee.a(cee.f, $$2.d());
-               if (!$$3.isEmpty()) {
-                  tl $$4 = tn.a($$2.a().e(), uh.a.a(true));
-                  tl $$5 = tl.a("selectWorld.experimental.details.entry", $$3);
-                  this.b(a.this.new b($$4, $$5, etj.a(a.this.i, $$5, this.b())));
-               }
-            }
+         for (aey<cqb> $$9 : this.k.c()) {
+            int $$10 = asb.d(this.k.a($$9) * (float)($$5 - $$4));
+            $$0.a($$4 + $$8, $$6, $$4 + $$8 + $$10, $$7, b.applyAsInt($$9));
+            $$8 += $$10;
          }
 
-         @Override
-         public int b() {
-            return this.e * 3 / 4;
-         }
-      }
-
-      class b extends etm.a<fcx.a.b> {
-         private final tl b;
-         private final tl c;
-         private final etj d;
-
-         b(tl $$0, tl $$1, etj $$2) {
-            this.b = $$0;
-            this.c = $$1;
-            this.d = $$2;
-         }
-
-         @Override
-         public void a(esf $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-            $$0.b(a.this.f.h, this.b, $$3, $$2, 16777215);
-            this.d.b($$0, $$3, $$2 + 12, 9, 16777215);
-         }
-
-         @Override
-         public tl a() {
-            return tl.a("narrator.select", tk.a(this.b, this.c));
-         }
+         int $$11 = this.k.f() + this.k.g();
+         tl $$12 = tl.a("optimizeWorld.progress.counter", $$11, this.k.e());
+         tl $$13 = tl.a("optimizeWorld.progress.percentage", asb.d(this.k.d() * 100.0F));
+         $$0.a(this.i, $$12, this.g / 2, $$6 + 2 * 9 + 2, 10526880);
+         $$0.a(this.i, $$13, this.g / 2, $$6 + ($$7 - $$6) / 2 - 9 / 2, 10526880);
       }
    }
 }

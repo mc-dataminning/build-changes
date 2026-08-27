@@ -1,51 +1,35 @@
-public class bpb extends bpe {
-   private final int l;
-   private final boolean m;
+import com.google.common.collect.ImmutableMap;
 
-   public bpb(bji $$0, int $$1, boolean $$2) {
-      super($$0);
-      this.l = $$1;
-      this.m = $$2;
+public class bpb<E extends cbe> extends bld<E> {
+   private static final double c = 6.0;
+   private static final double d = 20.0;
+
+   public bpb(int $$0) {
+      super(ImmutableMap.of(bsn.aA, bso.a, bsn.o, bso.b, bsn.m, bso.b, bsn.n, bso.c, bsn.B, bso.c, bsn.ay, bso.c, bsn.aF, bso.c), $$0);
    }
 
-   @Override
-   public void a() {
-      if (this.k == bpe.a.b) {
-         this.k = bpe.a.a;
-         this.d.e(true);
-         double $$0 = this.e - this.d.dq();
-         double $$1 = this.f - this.d.ds();
-         double $$2 = this.g - this.d.dw();
-         double $$3 = $$0 * $$0 + $$1 * $$1 + $$2 * $$2;
-         if ($$3 < 2.5000003E-7F) {
-            this.d.B(0.0F);
-            this.d.A(0.0F);
-            return;
-         }
+   protected boolean a(akt $$0, E $$1, long $$2) {
+      return true;
+   }
 
-         float $$4 = (float)(arw.d($$2, $$0) * 180.0F / (float)Math.PI) - 90.0F;
-         this.d.r(this.a(this.d.dB(), $$4, 90.0F));
-         float $$5;
-         if (this.d.aA()) {
-            $$5 = (float)(this.h * this.d.b(bkm.d));
-         } else {
-            $$5 = (float)(this.h * this.d.b(bkm.e));
-         }
+   protected void b(akt $$0, E $$1, long $$2) {
+      $$1.a(apg.zK, 5.0F, 1.0F);
+   }
 
-         this.d.w($$5);
-         double $$7 = Math.sqrt($$0 * $$0 + $$2 * $$2);
-         if (Math.abs($$1) > 1.0E-5F || Math.abs($$7) > 1.0E-5F) {
-            float $$8 = (float)(-(arw.d($$1, $$7) * 180.0F / (float)Math.PI));
-            this.d.s(this.a(this.d.dD(), $$8, (float)this.l));
-            this.d.B($$1 > 0.0 ? $$5 : -$$5);
-         }
-      } else {
-         if (!this.m) {
-            this.d.e(false);
-         }
-
-         this.d.B(0.0F);
-         this.d.A(0.0F);
+   protected void c(akt $$0, E $$1, long $$2) {
+      if ($$1.c(bjy.m)) {
+         $$1.b(bjy.a);
       }
+
+      $$1.dN().b(bsn.aA);
+      $$1.dN().c(bsn.B).filter($$1::a).ifPresent($$1x -> {
+         if ($$1.a($$1x, 6.0, 20.0)) {
+            $$1.c($$1x);
+         }
+
+         if (!$$1.dN().a(bsn.ay)) {
+            cbf.a($$1, $$1x.dl());
+         }
+      });
    }
 }

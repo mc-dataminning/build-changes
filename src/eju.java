@@ -1,47 +1,94 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.ints.IntSet;
-import it.unimi.dsi.fastutil.ints.IntSets;
-import java.util.Map;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import java.util.List;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
-public class eju implements ejs {
-   private final Int2ObjectMap<ejr.a> a;
+public class eju {
+   private final List<ConcurrentLinkedQueue<ejt>> a = ImmutableList.of(
+      new ConcurrentLinkedQueue(), new ConcurrentLinkedQueue(), new ConcurrentLinkedQueue(), new ConcurrentLinkedQueue()
+   );
+   private volatile boolean b;
+   private volatile int c;
+   private volatile boolean d;
+   private volatile int e;
+   private volatile int f;
 
-   public eju(Map<Integer, Float> $$0) {
-      this.a = new Int2ObjectOpenHashMap($$0.size());
-      $$0.forEach(($$0x, $$1) -> this.a.put($$0x, (ejr.a)() -> $$1));
+   public eju() {
+      this.c = this.e = this.f + 1;
    }
 
-   @Nullable
-   @Override
-   public ejr a(int $$0) {
-      return (ejr)this.a.get($$0);
+   public boolean a() {
+      return !this.b && this.c == this.e;
    }
 
-   @Override
-   public IntSet a() {
-      return IntSets.unmodifiable(this.a.keySet());
-   }
-
-   public static record a(Map<Integer, Float> c) implements evo {
-      public static final MapCodec<eju.a> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(Codec.unboundedMap(arf.w, Codec.FLOAT).fieldOf("advances").forGetter(eju.a::c)).apply($$0, eju.a::new)
-      );
-
-      @Override
-      public evp a() {
-         return evp.c;
+   public boolean b() {
+      if (this.b) {
+         throw new RuntimeException("ALREADY RECORDING !!!");
+      } else if (this.a()) {
+         this.c = (this.e + 1) % this.a.size();
+         this.b = true;
+         return true;
+      } else {
+         return false;
       }
+   }
 
-      @Override
-      public Either<evo.a, evo.b> b() {
-         evo.a $$0 = $$0x -> new eju(this.c);
-         return Either.left($$0);
+   public void a(ejt $$0) {
+      if (!this.b) {
+         throw new RuntimeException("NOT RECORDING !!!");
+      } else {
+         ConcurrentLinkedQueue<ejt> $$1 = this.i();
+         $$1.add($$0);
       }
+   }
+
+   public void c() {
+      if (this.b) {
+         this.b = false;
+      } else {
+         throw new RuntimeException("NOT RECORDING !!!");
+      }
+   }
+
+   public boolean d() {
+      return !this.d && this.c != this.e;
+   }
+
+   public boolean e() {
+      if (this.d) {
+         throw new RuntimeException("ALREADY PROCESSING !!!");
+      } else if (this.d()) {
+         this.d = true;
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   public void f() {
+      if (!this.d) {
+         throw new RuntimeException("NOT PROCESSING !!!");
+      }
+   }
+
+   public void g() {
+      if (this.d) {
+         this.d = false;
+         this.f = this.e;
+         this.e = this.c;
+      } else {
+         throw new RuntimeException("NOT PROCESSING !!!");
+      }
+   }
+
+   public ConcurrentLinkedQueue<ejt> h() {
+      return this.a.get(this.f);
+   }
+
+   public ConcurrentLinkedQueue<ejt> i() {
+      return this.a.get(this.c);
+   }
+
+   public ConcurrentLinkedQueue<ejt> j() {
+      return this.a.get(this.e);
    }
 }

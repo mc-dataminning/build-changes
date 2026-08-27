@@ -1,140 +1,118 @@
-import it.unimi.dsi.fastutil.longs.Long2IntOpenHashMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import com.google.common.collect.ImmutableMap;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public class eag extends eaa<eag.a> {
-   protected eag(dht $$0) {
-      super(cqe.a, $$0, new eag.a(new Long2ObjectOpenHashMap(), new Long2IntOpenHashMap(), Integer.MAX_VALUE));
+public final class eag extends dff<eaf, eag> {
+   public static final Codec<eag> a = a(jb.d.q(), eaf::g).stable();
+   public static final int b = 9;
+   public static final int g = 8;
+
+   public eag(eaf $$0, ImmutableMap<dgg<?>, Comparable<?>> $$1, MapCodec<eag> $$2) {
+      super($$0, $$1, $$2);
    }
 
-   @Override
-   protected int a(long $$0) {
-      return this.e($$0, false);
+   public eaf a() {
+      return this.e;
    }
 
-   protected int e(long $$0, boolean $$1) {
-      long $$2 = hw.e($$0);
-      int $$3 = hw.c($$2);
-      eag.a $$4 = $$1 ? this.d : this.c;
-      int $$5 = $$4.c.get(hw.f($$2));
-      if ($$5 != $$4.b && $$3 < $$5) {
-         dhl $$6 = this.a($$4, $$2);
-         if ($$6 == null) {
-            for ($$0 = gw.e($$0); $$6 == null; $$6 = this.a($$4, $$2)) {
-               if (++$$3 >= $$5) {
-                  return 15;
-               }
+   public boolean b() {
+      return this.a().c(this);
+   }
 
-               $$2 = hw.a($$2, ha.b);
+   public boolean a(eaf $$0) {
+      return this.e == $$0 && this.e.c(this);
+   }
+
+   public boolean c() {
+      return this.a().b();
+   }
+
+   public float a(cph $$0, gw $$1) {
+      return this.a().a(this, $$0, $$1);
+   }
+
+   public float d() {
+      return this.a().a(this);
+   }
+
+   public int e() {
+      return this.a().d(this);
+   }
+
+   public boolean b(cph $$0, gw $$1) {
+      for (int $$2 = -1; $$2 <= 1; $$2++) {
+         for (int $$3 = -1; $$3 <= 1; $$3++) {
+            gw $$4 = $$1.b($$2, 0, $$3);
+            eag $$5 = $$0.b_($$4);
+            if (!$$5.a().a(this.a()) && !$$0.a_($$4).i($$0, $$4)) {
+               return true;
             }
          }
-
-         return $$6.a(hw.b(gw.a($$0)), hw.b(gw.b($$0)), hw.b(gw.c($$0)));
-      } else {
-         return $$1 && !this.j($$2) ? 0 : 15;
-      }
-   }
-
-   @Override
-   protected void h(long $$0) {
-      int $$1 = hw.c($$0);
-      if (this.d.b > $$1) {
-         this.d.b = $$1;
-         this.d.c.defaultReturnValue(this.d.b);
       }
 
-      long $$2 = hw.f($$0);
-      int $$3 = this.d.c.get($$2);
-      if ($$3 < $$1 + 1) {
-         this.d.c.put($$2, $$1 + 1);
-      }
+      return false;
    }
 
-   @Override
-   protected void i(long $$0) {
-      long $$1 = hw.f($$0);
-      int $$2 = hw.c($$0);
-      if (this.d.c.get($$1) == $$2 + 1) {
-         long $$3;
-         for ($$3 = $$0; !this.b($$3) && this.a($$2); $$3 = hw.a($$3, ha.a)) {
-            $$2--;
-         }
-
-         if (this.b($$3)) {
-            this.d.c.put($$1, $$2 + 1);
-         } else {
-            this.d.c.remove($$1);
-         }
-      }
+   public void a(cqb $$0, gw $$1) {
+      this.a().b($$0, $$1, this);
    }
 
-   @Override
-   protected dhl g(long $$0) {
-      dhl $$1 = (dhl)this.g.get($$0);
-      if ($$1 != null) {
-         return $$1;
-      } else {
-         int $$2 = this.d.c.get(hw.f($$0));
-         if ($$2 != this.d.b && hw.c($$0) < $$2) {
-            long $$3 = hw.a($$0, ha.b);
-
-            dhl $$4;
-            while (($$4 = this.a($$3, true)) == null) {
-               $$3 = hw.a($$3, ha.b);
-            }
-
-            return a($$4);
-         } else {
-            return this.j($$0) ? new dhl(15) : new dhl();
-         }
-      }
+   public void a(cqb $$0, gw $$1, ash $$2) {
+      this.a().a($$0, $$1, this, $$2);
    }
 
-   private static dhl a(dhl $$0) {
-      if ($$0.c()) {
-         return $$0.b();
-      } else {
-         byte[] $$1 = $$0.a();
-         byte[] $$2 = new byte[2048];
-
-         for (int $$3 = 0; $$3 < 16; $$3++) {
-            System.arraycopy($$1, 0, $$2, $$3 * 128, 128);
-         }
-
-         return new dhl($$2);
-      }
+   public boolean f() {
+      return this.a().i();
    }
 
-   protected boolean a(int $$0) {
-      return $$0 >= this.d.b;
+   public void b(cqb $$0, gw $$1, ash $$2) {
+      this.a().b($$0, $$1, this, $$2);
    }
 
-   protected boolean l(long $$0) {
-      long $$1 = hw.f($$0);
-      int $$2 = this.d.c.get($$1);
-      return $$2 == this.d.b || hw.c($$0) >= $$2;
+   public ehh c(cph $$0, gw $$1) {
+      return this.a().a($$0, $$1, this);
    }
 
-   protected int m(long $$0) {
-      return this.d.c.get($$0);
+   public dfd g() {
+      return this.a().b(this);
    }
 
-   protected int c() {
-      return this.d.b;
+   @Nullable
+   public it h() {
+      return this.a().h();
    }
 
-   protected static final class a extends dzx<eag.a> {
-      int b;
-      final Long2IntOpenHashMap c;
+   public boolean a(aqk<eaf> $$0) {
+      return this.a().k().a($$0);
+   }
 
-      public a(Long2ObjectOpenHashMap<dhl> $$0, Long2IntOpenHashMap $$1, int $$2) {
-         super($$0);
-         this.c = $$1;
-         $$1.defaultReturnValue($$2);
-         this.b = $$2;
-      }
+   public boolean a(hi<eaf> $$0) {
+      return $$0.a(this.a().k());
+   }
 
-      public eag.a a() {
-         return new eag.a(this.a.clone(), this.c.clone(), this.b);
-      }
+   public boolean b(eaf $$0) {
+      return this.a() == $$0;
+   }
+
+   public float i() {
+      return this.a().c();
+   }
+
+   public boolean a(cph $$0, gw $$1, eaf $$2, ha $$3) {
+      return this.a().a(this, $$0, $$1, $$2, $$3);
+   }
+
+   public eia d(cph $$0, gw $$1) {
+      return this.a().b(this, $$0, $$1);
+   }
+
+   public he<eaf> j() {
+      return this.e.k();
+   }
+
+   public Stream<aqk<eaf>> k() {
+      return this.e.k().c();
    }
 }

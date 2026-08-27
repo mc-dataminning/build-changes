@@ -1,30 +1,16 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
 
-public record dqn(int b, int c, int d, he<dum> e) implements dqa {
-   public static final Codec<dqn> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               arf.j.fieldOf("tries").orElse(128).forGetter(dqn::a),
-               arf.i.fieldOf("xz_spread").orElse(7).forGetter(dqn::b),
-               arf.i.fieldOf("y_spread").orElse(3).forGetter(dqn::c),
-               dum.b.fieldOf("feature").forGetter(dqn::d)
-            )
-            .apply($$0, dqn::new)
-   );
+public class dqn implements dpu {
+   public static final Codec<dqn> a = arj.b(dug.c).fieldOf("features").xmap(dqn::new, $$0 -> $$0.b).codec();
+   public final hi<dug> b;
 
-   public int a() {
-      return this.b;
+   public dqn(hi<dug> $$0) {
+      this.b = $$0;
    }
 
-   public int b() {
-      return this.c;
-   }
-
-   public int c() {
-      return this.d;
-   }
-
-   public he<dum> d() {
-      return this.e;
+   @Override
+   public Stream<dnd<?, ?>> e() {
+      return this.b.a().flatMap($$0 -> $$0.a().a());
    }
 }

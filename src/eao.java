@@ -1,6 +1,8 @@
-public enum eao {
-   a,
-   b,
-   c,
-   d;
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface eao {
 }

@@ -1,24 +1,24 @@
-public abstract class fxa<T extends biq & bjt, M extends ffd<T>> extends fxp<T, M> {
-   public fxa(fvc<T, M> $$0) {
+import com.google.common.collect.Maps;
+import java.util.Map;
+
+public class fxa extends fxl<bwy, ffj<bwy>> {
+   private static final Map<bxa, aez> a = ac.a(Maps.newEnumMap(bxa.class), $$0 -> {
+      $$0.put(bxa.a, null);
+      $$0.put(bxa.b, new aez("textures/entity/horse/horse_markings_white.png"));
+      $$0.put(bxa.c, new aez("textures/entity/horse/horse_markings_whitefield.png"));
+      $$0.put(bxa.d, new aez("textures/entity/horse/horse_markings_whitedots.png"));
+      $$0.put(bxa.e, new aez("textures/entity/horse/horse_markings_blackdots.png"));
+   });
+
+   public fxa(fuy<bwy, ffj<bwy>> $$0) {
       super($$0);
    }
 
-   @Override
-   public void a(elp $$0, foe $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ($$3.a()) {
-         float $$10 = (float)$$3.ah + $$6;
-         ffd<T> $$11 = this.b();
-         $$11.a($$3, $$4, $$5, $$6);
-         this.c().a($$11);
-         elt $$12 = $$1.getBuffer(fom.a(this.a(), this.a($$10) % 1.0F, $$10 * 0.01F % 1.0F));
-         $$11.a($$3, $$4, $$5, $$7, $$8, $$9);
-         $$11.a($$0, $$12, $$2, fyv.d, 0.5F, 0.5F, 0.5F, 1.0F);
+   public void a(elj $$0, foa $$1, int $$2, bwy $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      aez $$10 = a.get($$3.ge());
+      if ($$10 != null && !$$3.cd()) {
+         eln $$11 = $$1.getBuffer(foi.i($$10));
+         this.c().a($$0, $$11, $$2, fue.c($$3, 0.0F), 1.0F, 1.0F, 1.0F, 1.0F);
       }
    }
-
-   protected abstract float a(float var1);
-
-   protected abstract aew a();
-
-   protected abstract ffd<T> b();
 }

@@ -1,104 +1,61 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
+import com.google.common.collect.Maps;
 import java.util.Map;
-import java.util.Map.Entry;
-import java.util.concurrent.CompletableFuture;
-import javax.annotation.Nullable;
 
-public class frl implements frn.a {
-   final eqv a;
-   private double b = Double.MIN_VALUE;
-   private final int c = 12;
-   @Nullable
-   private frl.a d;
+public class frl implements frj.a {
+   private static final float a = 0.02F;
+   private final Map<gw, frl.a> b = Maps.newHashMap();
 
-   public frl(eqv $$0) {
-      this.a = $$0;
+   public void a(gw $$0, int $$1, String $$2, int $$3) {
+      this.b.put($$0, new frl.a($$1, $$2, ac.b() + (long)$$3));
    }
 
    @Override
-   public void a(elp $$0, foe $$1, double $$2, double $$3, double $$4) {
-      double $$5 = (double)ac.c();
-      if ($$5 - this.b > 3.0E9) {
-         this.b = $$5;
-         gdd $$6 = this.a.T();
-         if ($$6 != null) {
-            this.d = new frl.a($$6, $$2, $$4);
-         } else {
-            this.d = null;
-         }
-      }
+   public void a() {
+      this.b.clear();
+   }
 
-      if (this.d != null) {
-         Map<cpc, String> $$7 = this.d.c.getNow(null);
-         double $$8 = this.a.j.m().b().d * 0.85;
+   @Override
+   public void a(elj $$0, foa $$1, double $$2, double $$3, double $$4) {
+      long $$5 = ac.b();
+      this.b.entrySet().removeIf($$1x -> $$5 > ((frl.a)$$1x.getValue()).c);
+      this.b.forEach(($$2x, $$3x) -> this.a($$0, $$1, $$2x, $$3x));
+   }
 
-         for (Entry<cpc, String> $$9 : this.d.b.entrySet()) {
-            cpc $$10 = $$9.getKey();
-            String $$11 = $$9.getValue();
-            if ($$7 != null) {
-               $$11 = $$11 + $$7.get($$10);
-            }
-
-            String[] $$12 = $$11.split("\n");
-            int $$13 = 0;
-
-            for (String $$14 : $$12) {
-               frn.a($$0, $$1, $$14, (double)hw.a($$10.e, 8), $$8 + (double)$$13, (double)hw.a($$10.f, 8), -1, 0.15F, true, 0.0F, true);
-               $$13 -= 2;
-            }
-         }
+   private void a(elj $$0, foa $$1, gw $$2, frl.a $$3) {
+      frj.a($$0, $$1, $$2, 0.02F, $$3.a(), $$3.b(), $$3.c(), $$3.d() * 0.75F);
+      if (!$$3.b.isEmpty()) {
+         double $$4 = (double)$$2.u() + 0.5;
+         double $$5 = (double)$$2.v() + 1.2;
+         double $$6 = (double)$$2.w() + 0.5;
+         frj.a($$0, $$1, $$3.b, $$4, $$5, $$6, -1, 0.01F, true, 0.0F, true);
       }
    }
 
-   final class a {
-      final Map<cpc, String> b;
-      final CompletableFuture<Map<cpc, String>> c;
+   static class a {
+      public int a;
+      public String b;
+      public long c;
 
-      a(gdd $$0, double $$1, double $$2) {
-         fix $$3 = frl.this.a.r;
-         aev<cpv> $$4 = $$3.ac();
-         int $$5 = hw.a($$1);
-         int $$6 = hw.a($$2);
-         Builder<cpc, String> $$7 = ImmutableMap.builder();
-         fit $$8 = $$3.i();
+      public a(int $$0, String $$1, long $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+      }
 
-         for (int $$9 = $$5 - 12; $$9 <= $$5 + 12; $$9++) {
-            for (int $$10 = $$6 - 12; $$10 <= $$6 + 12; $$10++) {
-               cpc $$11 = new cpc($$9, $$10);
-               String $$12 = "";
-               dhq $$13 = $$8.a($$9, $$10, false);
-               $$12 = $$12 + "Client: ";
-               if ($$13 == null) {
-                  $$12 = $$12 + "0n/a\n";
-               } else {
-                  $$12 = $$12 + ($$13.C() ? " E" : "");
-                  $$12 = $$12 + "\n";
-               }
+      public float a() {
+         return (float)(this.a >> 16 & 0xFF) / 255.0F;
+      }
 
-               $$7.put($$11, $$12);
-            }
-         }
+      public float b() {
+         return (float)(this.a >> 8 & 0xFF) / 255.0F;
+      }
 
-         this.b = $$7.build();
-         this.c = $$0.a(() -> {
-            akq $$4x = $$0.a($$4);
-            if ($$4x == null) {
-               return ImmutableMap.of();
-            } else {
-               Builder<cpc, String> $$5x = ImmutableMap.builder();
-               ako $$6x = $$4x.k();
+      public float c() {
+         return (float)(this.a & 0xFF) / 255.0F;
+      }
 
-               for (int $$7x = $$5 - 12; $$7x <= $$5 + 12; $$7x++) {
-                  for (int $$8x = $$6 - 12; $$8x <= $$6 + 12; $$8x++) {
-                     cpc $$9x = new cpc($$7x, $$8x);
-                     $$5x.put($$9x, "Server: " + $$6x.a($$9x));
-                  }
-               }
-
-               return $$5x.build();
-            }
-         });
+      public float d() {
+         return (float)(this.a >> 24 & 0xFF) / 255.0F;
       }
    }
 }

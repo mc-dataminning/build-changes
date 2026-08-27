@@ -1,210 +1,70 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
-import javax.annotation.Nullable;
+import org.joml.Vector3f;
 
-public class bzl extends byq implements byv, cbf {
-   private static final aee<Boolean> b = aeh.a(bzl.class, aeg.k);
-   private static final int e = 5;
-   private static final int bT = 300;
-   private static final float bU = 1.6F;
-   private final bhf bV = new bhf(5);
-
-   public bzl(biu<? extends bzl> $$0, cpv $$1) {
+public class bzl extends cah {
+   public bzl(bja<? extends bzl> $$0, cqb $$1) {
       super($$0, $$1);
    }
 
-   @Override
-   protected void z() {
-      super.z();
-      this.bO.a(0, new bpv(this));
-      this.bO.a(2, new cdc.a(this, 10.0F));
-      this.bO.a(3, new brc<>(this, 1.0, 8.0F));
-      this.bO.a(8, new bqy(this, 0.6));
-      this.bO.a(9, new bqj(this, cbu.class, 15.0F, 1.0F));
-      this.bO.a(10, new bqj(this, bji.class, 15.0F));
-      this.bP.a(1, new brt(this, cdc.class).a());
-      this.bP.a(2, new bru<>(this, cbu.class, true));
-      this.bP.a(3, new bru<>(this, cbc.class, false));
-      this.bP.a(3, new bru<>(this, bvd.class, true));
-   }
-
-   public static bkl.a t() {
-      return bzi.gj().a(bkm.d, 0.35F).a(bkm.a, 24.0).a(bkm.f, 5.0).a(bkm.b, 32.0);
+   public static boolean a(bja<bzl> $$0, cqq $$1, bjq $$2, gw $$3, ash $$4) {
+      return b($$0, $$1, $$2, $$3, $$4) && ($$2 == bjq.c || $$1.g($$3));
    }
 
    @Override
-   protected void a_() {
-      super.a_();
-      this.an.a(b, false);
+   protected boolean ab_() {
+      return false;
    }
 
    @Override
-   public boolean a(cjv $$0) {
-      return $$0 == cji.uZ;
-   }
-
-   public boolean gd() {
-      return this.an.b(b);
+   protected apf w() {
+      return apg.lx;
    }
 
    @Override
-   public void b(boolean $$0) {
-      this.an.b(b, $$0);
+   protected apf d(bhu $$0) {
+      return apg.lA;
    }
 
    @Override
-   public void a() {
-      this.bb = 0;
+   protected apf l_() {
+      return apg.lz;
    }
 
    @Override
-   public void b(qw $$0) {
-      super.b($$0);
-      this.a_($$0);
+   protected apf y() {
+      return apg.lB;
    }
 
    @Override
-   public byq.a s() {
-      if (this.gd()) {
-         return byq.a.f;
-      } else if (this.b(cji.uZ)) {
-         return byq.a.e;
-      } else {
-         return this.fV() ? byq.a.b : byq.a.h;
+   public boolean C(biw $$0) {
+      boolean $$1 = super.C($$0);
+      if ($$1 && this.eS().b() && $$0 instanceof bjm) {
+         float $$2 = this.dL().d_(this.dl()).b();
+         ((bjm)$$0).b(new bij(bil.q, 140 * (int)$$2), this);
+      }
+
+      return $$1;
+   }
+
+   @Override
+   protected boolean gf() {
+      return true;
+   }
+
+   @Override
+   protected void gh() {
+      this.b(bja.bp);
+      if (!this.aS()) {
+         this.dL().a(null, 1041, this.dl(), 0);
       }
    }
 
    @Override
-   public void a(qw $$0) {
-      super.a($$0);
-      this.c($$0);
-      this.s(true);
+   protected cjl ge() {
+      return cjl.b;
    }
 
    @Override
-   public float a(gw $$0, cpy $$1) {
-      return 0.0F;
-   }
-
-   @Override
-   public int fH() {
-      return 1;
-   }
-
-   @Nullable
-   @Override
-   public bjz a(cqk $$0, bgw $$1, bjk $$2, @Nullable bjz $$3, @Nullable qw $$4) {
-      asc $$5 = $$0.D_();
-      this.a($$5, $$1);
-      this.b($$5, $$1);
-      return super.a($$0, $$1, $$2, $$3, $$4);
-   }
-
-   @Override
-   protected void a(asc $$0, bgw $$1) {
-      this.a(biv.a, new cjf(cji.uZ));
-   }
-
-   @Override
-   protected void a(asc $$0, float $$1) {
-      super.a($$0, $$1);
-      if ($$0.a(300) == 0) {
-         cjf $$2 = this.eS();
-         if ($$2.a(cji.uZ)) {
-            Map<cno, Integer> $$3 = cnq.a($$2);
-            $$3.putIfAbsent(cns.K, 1);
-            cnq.a($$3, $$2);
-            this.a(biv.a, $$2);
-         }
-      }
-   }
-
-   @Override
-   public boolean s(biq $$0) {
-      if (super.s($$0)) {
-         return true;
-      } else {
-         return $$0 instanceof bjg && ((bjg)$$0).eR() == bjl.d ? this.cf() == null && $$0.cf() == null : false;
-      }
-   }
-
-   @Override
-   protected apc w() {
-      return apd.sj;
-   }
-
-   @Override
-   protected apc l_() {
-      return apd.sl;
-   }
-
-   @Override
-   protected apc d(bho $$0) {
-      return apd.sm;
-   }
-
-   @Override
-   public void a(bjg $$0, float $$1) {
-      this.b(this, 1.6F);
-   }
-
-   @Override
-   public void a(bjg $$0, cjf $$1, ccm $$2, float $$3) {
-      this.a(this, $$0, $$2, $$3, 1.6F);
-   }
-
-   @Override
-   public bhf y() {
-      return this.bV;
-   }
-
-   @Override
-   protected void b(byn $$0) {
-      cjf $$1 = $$0.q();
-      if ($$1.d() instanceof cgv) {
-         super.b($$0);
-      } else if (this.l($$1)) {
-         this.a($$0);
-         cjf $$2 = this.bV.a($$1);
-         if ($$2.b()) {
-            $$0.ak();
-         } else {
-            $$1.f($$2.L());
-         }
-      }
-   }
-
-   private boolean l(cjf $$0) {
-      return this.gs() && $$0.a(cji.tV);
-   }
-
-   @Override
-   public bjy a_(int $$0) {
-      int $$1 = $$0 - 300;
-      return $$1 >= 0 && $$1 < this.bV.b() ? bjy.a(this.bV, $$1) : super.a_($$0);
-   }
-
-   @Override
-   public void a(int $$0, boolean $$1) {
-      cdb $$2 = this.gr();
-      boolean $$3 = this.ag.i() <= $$2.w();
-      if ($$3) {
-         cjf $$4 = new cjf(cji.uZ);
-         Map<cno, Integer> $$5 = Maps.newHashMap();
-         if ($$0 > $$2.a(bgv.c)) {
-            $$5.put(cns.J, 2);
-         } else if ($$0 > $$2.a(bgv.b)) {
-            $$5.put(cns.J, 1);
-         }
-
-         $$5.put(cns.I, 1);
-         cnq.a($$5, $$4);
-         this.a(biv.a, $$4);
-      }
-   }
-
-   @Override
-   public apc ac_() {
-      return apd.sk;
+   protected Vector3f a(biw $$0, bix $$1, float $$2) {
+      return new Vector3f(0.0F, $$1.b + 0.125F * $$2, 0.0F);
    }
 }

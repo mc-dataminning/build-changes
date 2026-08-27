@@ -1,48 +1,22 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Optional;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
 
-public class boh extends bkx<cbh> {
-   private static final int c = 300;
-   private static final double d = 1.73;
-   private long e;
+public class boh {
+   private static final int a = 36;
 
-   public boh() {
-      super(ImmutableMap.of(bsh.c, bsi.a, bsh.n, bsi.c));
-   }
+   public static ble<bjm> a() {
+      return bop.a(
+         (Function<bop.b<bjm>, ? extends App<bop.c<bjm>, bos<bjm>>>)($$0 -> $$0.group($$0.a(bsn.x), $$0.a(bsn.y), $$0.a(bsn.A))
+               .apply($$0, ($$1, $$2, $$3) -> ($$4, $$5, $$6) -> {
+                     boolean $$7 = $$0.a($$1).isPresent() || $$0.a($$3).isPresent() || $$0.<bjm>a($$2).filter($$1xx -> $$1xx.f((biw)$$5) <= 36.0).isPresent();
+                     if (!$$7) {
+                        $$1.b();
+                        $$2.b();
+                        $$5.dN().a($$4.W(), $$4.V());
+                     }
 
-   protected boolean b(akq $$0, cbh $$1) {
-      if ($$0.V() - this.e < 300L) {
-         return false;
-      } else if ($$0.z.a(2) != 0) {
-         return false;
-      } else {
-         this.e = $$0.V();
-         hd $$2 = $$1.dN().c(bsh.c).get();
-         return $$2.a() == $$0.ac() && $$2.b().a($$1.dj(), 1.73);
-      }
-   }
-
-   protected void a(akq $$0, cbh $$1, long $$2) {
-      bkg<cbh> $$3 = $$1.dN();
-      $$3.a(bsh.I, $$2);
-      $$3.c(bsh.c).ifPresent($$1x -> $$3.a(bsh.n, new bla($$1x.b())));
-      $$1.gs();
-      this.a($$0, $$1);
-      if ($$1.gr()) {
-         $$1.gq();
-      }
-   }
-
-   protected void a(akq $$0, cbh $$1) {
-   }
-
-   protected boolean b(akq $$0, cbh $$1, long $$2) {
-      Optional<hd> $$3 = $$1.dN().c(bsh.c);
-      if ($$3.isEmpty()) {
-         return false;
-      } else {
-         hd $$4 = $$3.get();
-         return $$4.a() == $$0.ac() && $$4.b().a($$1.dj(), 1.73);
-      }
+                     return true;
+                  }))
+      );
    }
 }

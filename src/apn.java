@@ -1,98 +1,50 @@
-public class apn {
-   public static final apm<csv> a = a("mined", jb.f);
-   public static final apm<cja> b = a("crafted", jb.i);
-   public static final apm<cja> c = a("used", jb.i);
-   public static final apm<cja> d = a("broken", jb.i);
-   public static final apm<cja> e = a("picked_up", jb.i);
-   public static final apm<cja> f = a("dropped", jb.i);
-   public static final apm<biu<?>> g = a("killed", jb.h);
-   public static final apm<biu<?>> h = a("killed_by", jb.h);
-   public static final apm<aew> i = a("custom", jb.n);
-   public static final aew j = a("leave_game", apl.b);
-   public static final aew k = a("play_time", apl.e);
-   public static final aew l = a("total_world_time", apl.e);
-   public static final aew m = a("time_since_death", apl.e);
-   public static final aew n = a("time_since_rest", apl.e);
-   public static final aew o = a("sneak_time", apl.e);
-   public static final aew p = a("walk_one_cm", apl.d);
-   public static final aew q = a("crouch_one_cm", apl.d);
-   public static final aew r = a("sprint_one_cm", apl.d);
-   public static final aew s = a("walk_on_water_one_cm", apl.d);
-   public static final aew t = a("fall_one_cm", apl.d);
-   public static final aew u = a("climb_one_cm", apl.d);
-   public static final aew v = a("fly_one_cm", apl.d);
-   public static final aew w = a("walk_under_water_one_cm", apl.d);
-   public static final aew x = a("minecart_one_cm", apl.d);
-   public static final aew y = a("boat_one_cm", apl.d);
-   public static final aew z = a("pig_one_cm", apl.d);
-   public static final aew A = a("horse_one_cm", apl.d);
-   public static final aew B = a("aviate_one_cm", apl.d);
-   public static final aew C = a("swim_one_cm", apl.d);
-   public static final aew D = a("strider_one_cm", apl.d);
-   public static final aew E = a("jump", apl.b);
-   public static final aew F = a("drop", apl.b);
-   public static final aew G = a("damage_dealt", apl.c);
-   public static final aew H = a("damage_dealt_absorbed", apl.c);
-   public static final aew I = a("damage_dealt_resisted", apl.c);
-   public static final aew J = a("damage_taken", apl.c);
-   public static final aew K = a("damage_blocked_by_shield", apl.c);
-   public static final aew L = a("damage_absorbed", apl.c);
-   public static final aew M = a("damage_resisted", apl.c);
-   public static final aew N = a("deaths", apl.b);
-   public static final aew O = a("mob_kills", apl.b);
-   public static final aew P = a("animals_bred", apl.b);
-   public static final aew Q = a("player_kills", apl.b);
-   public static final aew R = a("fish_caught", apl.b);
-   public static final aew S = a("talked_to_villager", apl.b);
-   public static final aew T = a("traded_with_villager", apl.b);
-   public static final aew U = a("eat_cake_slice", apl.b);
-   public static final aew V = a("fill_cauldron", apl.b);
-   public static final aew W = a("use_cauldron", apl.b);
-   public static final aew X = a("clean_armor", apl.b);
-   public static final aew Y = a("clean_banner", apl.b);
-   public static final aew Z = a("clean_shulker_box", apl.b);
-   public static final aew aa = a("interact_with_brewingstand", apl.b);
-   public static final aew ab = a("interact_with_beacon", apl.b);
-   public static final aew ac = a("inspect_dropper", apl.b);
-   public static final aew ad = a("inspect_hopper", apl.b);
-   public static final aew ae = a("inspect_dispenser", apl.b);
-   public static final aew af = a("play_noteblock", apl.b);
-   public static final aew ag = a("tune_noteblock", apl.b);
-   public static final aew ah = a("pot_flower", apl.b);
-   public static final aew ai = a("trigger_trapped_chest", apl.b);
-   public static final aew aj = a("open_enderchest", apl.b);
-   public static final aew ak = a("enchant_item", apl.b);
-   public static final aew al = a("play_record", apl.b);
-   public static final aew am = a("interact_with_furnace", apl.b);
-   public static final aew an = a("interact_with_crafting_table", apl.b);
-   public static final aew ao = a("open_chest", apl.b);
-   public static final aew ap = a("sleep_in_bed", apl.b);
-   public static final aew aq = a("open_shulker_box", apl.b);
-   public static final aew ar = a("open_barrel", apl.b);
-   public static final aew as = a("interact_with_blast_furnace", apl.b);
-   public static final aew at = a("interact_with_smoker", apl.b);
-   public static final aew au = a("interact_with_lectern", apl.b);
-   public static final aew av = a("interact_with_campfire", apl.b);
-   public static final aew aw = a("interact_with_cartography_table", apl.b);
-   public static final aew ax = a("interact_with_loom", apl.b);
-   public static final aew ay = a("interact_with_stonecutter", apl.b);
-   public static final aew az = a("bell_ring", apl.b);
-   public static final aew aA = a("raid_trigger", apl.b);
-   public static final aew aB = a("raid_win", apl.b);
-   public static final aew aC = a("interact_with_anvil", apl.b);
-   public static final aew aD = a("interact_with_grindstone", apl.b);
-   public static final aew aE = a("target_hit", apl.b);
-   public static final aew aF = a("interact_with_smithing_table", apl.b);
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-   private static aew a(String $$0, apl $$1) {
-      aew $$2 = new aew($$0);
-      hq.a(jb.n, $$0, $$2);
-      i.a($$2, $$1);
-      return $$2;
+public class apn<T> extends eij {
+   private final apo n;
+   private final T o;
+   private final app<T> p;
+
+   protected apn(app<T> $$0, T $$1, apo $$2) {
+      super(a($$0, $$1));
+      this.p = $$0;
+      this.n = $$2;
+      this.o = $$1;
    }
 
-   private static <T> apm<T> a(String $$0, hq<T> $$1) {
-      tl $$2 = tl.c("stat_type.minecraft." + $$0);
-      return hq.a(jb.y, $$0, new apm<>($$1, $$2));
+   public static <T> String a(app<T> $$0, T $$1) {
+      return a(jb.y.b($$0)) + ":" + a($$0.a().b($$1));
+   }
+
+   private static <T> String a(@Nullable aez $$0) {
+      return $$0.toString().replace(':', '.');
+   }
+
+   public app<T> a() {
+      return this.p;
+   }
+
+   public T b() {
+      return this.o;
+   }
+
+   public String a(int $$0) {
+      return this.n.format($$0);
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      return this == $$0 || $$0 instanceof apn && Objects.equals(this.d(), ((apn)$$0).d());
+   }
+
+   @Override
+   public int hashCode() {
+      return this.d().hashCode();
+   }
+
+   @Override
+   public String toString() {
+      return "Stat{name=" + this.d() + ", formatter=" + this.n + "}";
    }
 }

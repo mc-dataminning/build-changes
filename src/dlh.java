@@ -1,62 +1,165 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.base.Charsets;
-import com.google.common.hash.HashFunction;
-import com.google.common.hash.Hashing;
-import com.google.common.primitives.Longs;
-import java.util.concurrent.atomic.AtomicLong;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.serialization.Lifecycle;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
+import java.util.Map.Entry;
+import java.util.stream.Stream;
 
-public final class dlh {
-   public static final long a = -7046029254386353131L;
-   public static final long b = 7640891576956012809L;
-   private static final HashFunction c = Hashing.md5();
-   private static final AtomicLong d = new AtomicLong(8682522807148012L);
+public record dlh(hq<din> b) {
+   public static final MapCodec<dlh> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(hs.b(jc.aJ, Lifecycle.stable(), din.a).fieldOf("dimensions").forGetter(dlh::d)).apply($$0, $$0.stable(dlh::new))
+   );
+   private static final Set<aey<din>> c = ImmutableSet.of(din.b, din.c, din.d);
+   private static final int d = c.size();
 
-   @VisibleForTesting
-   public static long a(long $$0) {
-      $$0 = ($$0 ^ $$0 >>> 30) * -4658895280553007687L;
-      $$0 = ($$0 ^ $$0 >>> 27) * -7723592293110705685L;
-      return $$0 ^ $$0 >>> 31;
+   public dlh(hq<din> b) {
+      din $$1 = b.a(din.b);
+      if ($$1 == null) {
+         throw new IllegalStateException("Overworld settings missing");
+      } else {
+         this.b = b;
+      }
    }
 
-   public static dlh.a b(long $$0) {
-      long $$1 = $$0 ^ 7640891576956012809L;
-      long $$2 = $$1 + -7046029254386353131L;
-      return new dlh.a($$1, $$2);
+   public static Stream<aey<din>> a(Stream<aey<din>> $$0) {
+      return Stream.concat(c.stream(), $$0.filter($$0x -> !c.contains($$0x)));
    }
 
-   public static dlh.a c(long $$0) {
-      return b($$0).a();
+   public dlh a(hr $$0, dha $$1) {
+      hq<dim> $$2 = $$0.d(jc.av);
+      hq<din> $$3 = a($$2, this.b, $$1);
+      return new dlh($$3);
    }
 
-   public static dlh.a a(String $$0) {
-      byte[] $$1 = c.hashString($$0, Charsets.UTF_8).asBytes();
-      long $$2 = Longs.fromBytes($$1[0], $$1[1], $$1[2], $$1[3], $$1[4], $$1[5], $$1[6], $$1[7]);
-      long $$3 = Longs.fromBytes($$1[8], $$1[9], $$1[10], $$1[11], $$1[12], $$1[13], $$1[14], $$1[15]);
-      return new dlh.a($$2, $$3);
+   public static hq<din> a(hq<dim> $$0, hq<din> $$1, dha $$2) {
+      din $$3 = $$1.a(din.b);
+      he<dim> $$4 = (he<dim>)($$3 == null ? $$0.f(dik.a) : $$3.a());
+      return a($$1, $$4, $$2);
    }
 
-   public static long a() {
-      return d.updateAndGet($$0 -> $$0 * 1181783497276652981L) ^ System.nanoTime();
-   }
+   public static hq<din> a(hq<din> $$0, he<dim> $$1, dha $$2) {
+      hz<din> $$3 = new hm<>(jc.aJ, Lifecycle.experimental());
+      $$3.a(din.b, new din($$1, $$2), Lifecycle.stable());
 
-   public static record a(long a, long b) {
-      public dlh.a a(long $$0, long $$1) {
-         return new dlh.a(this.a ^ $$0, this.b ^ $$1);
+      for (Entry<aey<din>, din> $$4 : $$0.g()) {
+         aey<din> $$5 = $$4.getKey();
+         if ($$5 != din.b) {
+            $$3.a($$5, $$4.getValue(), $$0.e($$4.getValue()));
+         }
       }
 
-      public dlh.a a(dlh.a $$0) {
-         return this.a($$0.a, $$0.b);
+      return $$3.l();
+   }
+
+   public dha a() {
+      din $$0 = this.b.a(din.b);
+      if ($$0 == null) {
+         throw new IllegalStateException("Overworld settings missing");
+      } else {
+         return $$0.b();
+      }
+   }
+
+   public Optional<din> a(aey<din> $$0) {
+      return this.b.d($$0);
+   }
+
+   public ImmutableSet<aey<cqb>> b() {
+      return this.d().g().stream().map(Entry::getKey).map(jc::a).collect(ImmutableSet.toImmutableSet());
+   }
+
+   public boolean c() {
+      return this.a() instanceof dkd;
+   }
+
+   private static ece.a b(hq<din> $$0) {
+      return $$0.d(din.b).map($$0x -> {
+         dha $$1 = $$0x.b();
+         if ($$1 instanceof dkd) {
+            return ece.a.c;
+         } else {
+            return $$1 instanceof dkh ? ece.a.b : ece.a.a;
+         }
+      }).orElse(ece.a.a);
+   }
+
+   static Lifecycle a(aey<din> $$0, din $$1) {
+      return b($$0, $$1) ? Lifecycle.stable() : Lifecycle.experimental();
+   }
+
+   private static boolean b(aey<din> $$0, din $$1) {
+      if ($$0 == din.b) {
+         return a($$1);
+      } else if ($$0 == din.c) {
+         return b($$1);
+      } else {
+         return $$0 == din.d ? c($$1) : false;
+      }
+   }
+
+   private static boolean a(din $$0) {
+      he<dim> $$1 = $$0.a();
+      if (!$$1.a(dik.a) && !$$1.a(dik.d)) {
+         return false;
+      } else {
+         if ($$0.b().c() instanceof crm $$2 && !$$2.a(cro.b)) {
+            return false;
+         }
+
+         return true;
+      }
+   }
+
+   private static boolean b(din $$0) {
+      return $$0.a().a(dik.b) && $$0.b() instanceof dkp $$1 && $$1.a(dkr.f) && $$1.c() instanceof crm $$2 && $$2.a(cro.a);
+   }
+
+   private static boolean c(din $$0) {
+      return $$0.a().a(dik.c) && $$0.b() instanceof dkp $$1 && $$1.a(dkr.g) && $$1.c() instanceof crq;
+   }
+
+   public dlh.b a(hq<din> $$0) {
+      Stream<aey<din>> $$1 = Stream.concat($$0.f().stream(), this.b.f().stream()).distinct();
+
+      record a(aey<din> a, din b) {
+
+         Lifecycle c() {
+            return dlh.a(this.a, this.b);
+         }
       }
 
-      public dlh.a a() {
-         return new dlh.a(dlh.a(this.a), dlh.a(this.b));
+      List<a> $$2 = new ArrayList<>();
+      a($$1).forEach($$2x -> $$0.d($$2x).or(() -> this.b.d($$2x)).ifPresent($$2xx -> $$2.add(new a($$2x, $$2xx))));
+      Lifecycle $$3 = $$2.size() == d ? Lifecycle.stable() : Lifecycle.experimental();
+      hz<din> $$4 = new hm<>(jc.aJ, $$3);
+      $$2.forEach($$1x -> $$4.a($$1x.a, $$1x.b, $$1x.c()));
+      hq<din> $$5 = $$4.l();
+      ece.a $$6 = b($$5);
+      return new dlh.b($$5.l(), $$6);
+   }
+
+   public hq<din> d() {
+      return this.b;
+   }
+
+   public static record b(hq<din> a, ece.a b) {
+      public Lifecycle a() {
+         return this.a.d();
       }
 
-      public long b() {
+      public hr.b b() {
+         return new hr.c(List.of(this.a)).c();
+      }
+
+      public hq<din> c() {
          return this.a;
       }
 
-      public long c() {
+      public ece.a d() {
          return this.b;
       }
    }

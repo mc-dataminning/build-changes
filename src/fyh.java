@@ -1,178 +1,159 @@
-public class fyh extends fui<fnd, fgi<fnd>> {
-   public fyh(fth.a $$0, boolean $$1) {
-      super($$0, new fgi<>($$0.a($$1 ? fib.aQ : fib.aM), $$1), 0.5F);
-      this.a(new fxf<>(this, new ffp($$0.a($$1 ? fib.aR : fib.aO)), new ffp($$0.a($$1 ? fib.aS : fib.aP)), $$0.g()));
-      this.a(new fxo<>(this, $$0.d()));
-      this.a(new fwn<>($$0, this));
-      this.a(new fwv(this));
-      this.a(new fwp(this));
-      this.a(new fwu<>(this, $$0.f(), $$0.d()));
-      this.a(new fwy<>(this, $$0.f()));
-      this.a(new fxm<>(this, $$0.f()));
-      this.a(new fxw<>(this, $$0.f()));
-      this.a(new fwo<>(this));
+import com.google.common.collect.Maps;
+import java.util.Map;
+import javax.annotation.Nullable;
+
+public class fyh {
+   private static final Map<aez, fyi> a = Maps.newHashMap();
+   private static final String b = "CustomModelData";
+   private static final aez c = new aez("damaged");
+   private static final aez d = new aez("damage");
+   private static final fyf e = ($$0x, $$1, $$2, $$3) -> $$0x.j() ? 1.0F : 0.0F;
+   private static final fyf f = ($$0x, $$1, $$2, $$3) -> asb.a((float)$$0x.k() / (float)$$0x.l(), 0.0F, 1.0F);
+   private static final Map<cjg, Map<aez, fyi>> g = Maps.newHashMap();
+
+   private static fyf a(aez $$0, fyf $$1) {
+      a.put($$0, $$1);
+      return $$1;
    }
 
-   public void a(fnd $$0, float $$1, float $$2, elp $$3, foe $$4, int $$5) {
-      this.b($$0);
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   private static void a(fyi $$0) {
+      a.put(new aez("custom_model_data"), $$0);
    }
 
-   public ehn a(fnd $$0, float $$1) {
-      return $$0.bW() ? new ehn(0.0, -0.125, 0.0) : super.a($$0, $$1);
+   private static void a(cjg $$0, aez $$1, fyf $$2) {
+      g.computeIfAbsent($$0, $$0x -> Maps.newHashMap()).put($$1, $$2);
    }
 
-   private void b(fnd $$0) {
-      fgi<fnd> $$1 = this.a();
-      if ($$0.M_()) {
-         $$1.c_(false);
-         $$1.k.k = true;
-         $$1.l.k = true;
-      } else {
-         $$1.c_(true);
-         $$1.l.k = $$0.a(cbv.g);
-         $$1.z.k = $$0.a(cbv.b);
-         $$1.x.k = $$0.a(cbv.e);
-         $$1.y.k = $$0.a(cbv.f);
-         $$1.b.k = $$0.a(cbv.c);
-         $$1.w.k = $$0.a(cbv.d);
-         $$1.t = $$0.bW();
-         ffq.a $$2 = a($$0, bgx.a);
-         ffq.a $$3 = a($$0, bgx.b);
-         if ($$2.a()) {
-            $$3 = $$0.eT().b() ? ffq.a.a : ffq.a.b;
+   @Nullable
+   public static fyi a(cjg $$0, aez $$1) {
+      if ($$0.n() > 0) {
+         if (d.equals($$1)) {
+            return f;
          }
 
-         if ($$0.fl() == bja.b) {
-            $$1.s = $$2;
-            $$1.r = $$3;
+         if (c.equals($$1)) {
+            return e;
+         }
+      }
+
+      fyi $$2 = a.get($$1);
+      if ($$2 != null) {
+         return $$2;
+      } else {
+         Map<aez, fyi> $$3 = g.get($$0);
+         return $$3 == null ? null : $$3.get($$1);
+      }
+   }
+
+   static {
+      a(new aez("lefthanded"), ($$0x, $$1, $$2, $$3) -> $$2 != null && $$2.fm() != bjg.b ? 1.0F : 0.0F);
+      a(new aez("cooldown"), ($$0x, $$1, $$2, $$3) -> $$2 instanceof cca ? ((cca)$$2).gn().a($$0x.d(), 0.0F) : 0.0F);
+      fyf $$0 = ($$0x, $$1, $$2, $$3) -> {
+         if (!$$0x.a(aqd.aH)) {
+            return Float.NEGATIVE_INFINITY;
          } else {
-            $$1.s = $$3;
-            $$1.r = $$2;
+            return $$1 == null ? 0.0F : cln.a($$1.G_(), $$0x, true).map(cln::b).map(he::a).map(clo::c).orElse(0.0F);
          }
-      }
-   }
-
-   private static ffq.a a(fnd $$0, bgx $$1) {
-      cjf $$2 = $$0.b($$1);
-      if ($$2.b()) {
-         return ffq.a.a;
-      } else {
-         if ($$0.fn() == $$1 && $$0.fp() > 0) {
-            cky $$3 = $$2.s();
-            if ($$3 == cky.d) {
-               return ffq.a.c;
-            }
-
-            if ($$3 == cky.e) {
-               return ffq.a.d;
-            }
-
-            if ($$3 == cky.f) {
-               return ffq.a.e;
-            }
-
-            if ($$3 == cky.g && $$1 == $$0.fn()) {
-               return ffq.a.f;
-            }
-
-            if ($$3 == cky.h) {
-               return ffq.a.h;
-            }
-
-            if ($$3 == cky.i) {
-               return ffq.a.i;
-            }
-
-            if ($$3 == cky.j) {
-               return ffq.a.j;
-            }
-         } else if (!$$0.aF && $$2.a(cji.uZ) && chn.d($$2)) {
-            return ffq.a.g;
+      };
+      a(kt.a, $$0);
+      a(($$0x, $$1, $$2, $$3) -> $$0x.u() ? (float)$$0x.v().h("CustomModelData") : 0.0F);
+      a(cjo.nG, new aez("pull"), ($$0x, $$1, $$2, $$3) -> {
+         if ($$2 == null) {
+            return 0.0F;
+         } else {
+            return $$2.fp() != $$0x ? 0.0F : (float)($$0x.r() - $$2.fq()) / 20.0F;
          }
+      });
+      a(cjo.wv, new aez("brushing"), ($$0x, $$1, $$2, $$3) -> $$2 != null && $$2.fp() == $$0x ? (float)($$2.fq() % 10) / 10.0F : 0.0F);
+      a(cjo.nG, new aez("pulling"), ($$0x, $$1, $$2, $$3) -> $$2 != null && $$2.fn() && $$2.fp() == $$0x ? 1.0F : 0.0F);
+      a(cjo.qg, new aez("filled"), ($$0x, $$1, $$2, $$3) -> chn.d($$0x));
+      a(cjo.qi, new aez("time"), new fyf() {
+         private double a;
+         private double b;
+         private long c;
 
-         return ffq.a.b;
-      }
-   }
+         @Override
+         public float unclampedCall(cjl $$0, @Nullable fis $$1, @Nullable bjm $$2, int $$3) {
+            biw $$4 = (biw)($$2 != null ? $$2 : $$0.H());
+            if ($$4 == null) {
+               return 0.0F;
+            } else {
+               if ($$1 == null && $$4.dL() instanceof fis) {
+                  $$1 = (fis)$$4.dL();
+               }
 
-   public aew a(fnd $$0) {
-      return $$0.b().a();
-   }
+               if ($$1 == null) {
+                  return 0.0F;
+               } else {
+                  double $$5;
+                  if ($$1.C_().j()) {
+                     $$5 = (double)$$1.f(1.0F);
+                  } else {
+                     $$5 = Math.random();
+                  }
 
-   protected void a(fnd $$0, elp $$1, float $$2) {
-      float $$3 = 0.9375F;
-      $$1.b(0.9375F, 0.9375F, 0.9375F);
-   }
-
-   protected void a(fnd $$0, tl $$1, elp $$2, foe $$3, int $$4) {
-      double $$5 = this.c.b($$0);
-      $$2.a();
-      if ($$5 < 100.0) {
-         eim $$6 = $$0.gg();
-         eij $$7 = $$6.a(eii.c);
-         if ($$7 != null) {
-            eil $$8 = $$6.c($$0.cx(), $$7);
-            super.a($$0, tl.b(Integer.toString($$8.b())).b(tk.u).b($$7.d()), $$2, $$3, $$4);
-            $$2.a(0.0F, 9.0F * 1.15F * 0.025F, 0.0F);
-         }
-      }
-
-      super.a($$0, $$1, $$2, $$3, $$4);
-      $$2.b();
-   }
-
-   public void a(elp $$0, foe $$1, int $$2, fnd $$3) {
-      this.a($$0, $$1, $$2, $$3, this.f.n, this.f.w);
-   }
-
-   public void b(elp $$0, foe $$1, int $$2, fnd $$3) {
-      this.a($$0, $$1, $$2, $$3, this.f.o, this.f.b);
-   }
-
-   private void a(elp $$0, foe $$1, int $$2, fnd $$3, fic $$4, fic $$5) {
-      fgi<fnd> $$6 = this.a();
-      this.b($$3);
-      $$6.c = 0.0F;
-      $$6.t = false;
-      $$6.u = 0.0F;
-      $$6.a($$3, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F);
-      $$4.e = 0.0F;
-      aew $$7 = $$3.b().a();
-      $$4.a($$0, $$1.getBuffer(fom.c($$7)), $$2, fyv.d);
-      $$5.e = 0.0F;
-      $$5.a($$0, $$1.getBuffer(fom.i($$7)), $$2, fyv.d);
-   }
-
-   protected void a(fnd $$0, elp $$1, float $$2, float $$3, float $$4) {
-      float $$5 = $$0.a($$4);
-      float $$6 = $$0.g($$4);
-      if ($$0.fv()) {
-         super.a($$0, $$1, $$2, $$3, $$4);
-         float $$7 = (float)$$0.fw() + $$4;
-         float $$8 = arw.a($$7 * $$7 / 100.0F, 0.0F, 1.0F);
-         if (!$$0.fi()) {
-            $$1.a(a.b.rotationDegrees($$8 * (-90.0F - $$6)));
+                  $$5 = this.a($$1, $$5);
+                  return (float)$$5;
+               }
+            }
          }
 
-         ehn $$9 = $$0.f($$4);
-         ehn $$10 = $$0.C($$4);
-         double $$11 = $$10.i();
-         double $$12 = $$9.i();
-         if ($$11 > 0.0 && $$12 > 0.0) {
-            double $$13 = ($$10.c * $$9.c + $$10.e * $$9.e) / Math.sqrt($$11 * $$12);
-            double $$14 = $$10.c * $$9.e - $$10.e * $$9.c;
-            $$1.a(a.d.rotation((float)(Math.signum($$14) * Math.acos($$13))));
+         private double a(cqb $$0, double $$1) {
+            if ($$0.V() != this.c) {
+               this.c = $$0.V();
+               double $$2 = $$1 - this.a;
+               $$2 = asb.c($$2 + 0.5, 1.0) - 0.5;
+               this.b += $$2 * 0.1;
+               this.b *= 0.9;
+               this.a = asb.c(this.a + this.b, 1.0);
+            }
+
+            return this.a;
          }
-      } else if ($$5 > 0.0F) {
-         super.a($$0, $$1, $$2, $$3, $$4);
-         float $$15 = $$0.aX() ? -90.0F - $$6 : -90.0F;
-         float $$16 = arw.i($$5, 0.0F, $$15);
-         $$1.a(a.b.rotationDegrees($$16));
-         if ($$0.bZ()) {
-            $$1.a(0.0F, -1.0F, 0.3F);
+      });
+      a(cjo.qe, new aez("angle"), new fyg(($$0x, $$1, $$2) -> chp.d($$1) ? chp.a($$1.w()) : chp.a($$0x)));
+      a(cjo.qf, new aez("angle"), new fyg(($$0x, $$1, $$2) -> $$2 instanceof cca $$3 ? $$3.gr().orElse(null) : null));
+      a(cjo.uZ, new aez("pull"), ($$0x, $$1, $$2, $$3) -> {
+         if ($$2 == null) {
+            return 0.0F;
+         } else {
+            return cht.d($$0x) ? 0.0F : (float)($$0x.r() - $$2.fq()) / (float)cht.k($$0x);
          }
-      } else {
-         super.a($$0, $$1, $$2, $$3, $$4);
-      }
+      });
+      a(cjo.uZ, new aez("pulling"), ($$0x, $$1, $$2, $$3) -> $$2 != null && $$2.fn() && $$2.fp() == $$0x && !cht.d($$0x) ? 1.0F : 0.0F);
+      a(cjo.uZ, new aez("charged"), ($$0x, $$1, $$2, $$3) -> cht.d($$0x) ? 1.0F : 0.0F);
+      a(cjo.uZ, new aez("firework"), ($$0x, $$1, $$2, $$3) -> cht.d($$0x) && cht.a($$0x, cjo.tA) ? 1.0F : 0.0F);
+      a(cjo.nh, new aez("broken"), ($$0x, $$1, $$2, $$3) -> cif.d($$0x) ? 0.0F : 1.0F);
+      a(cjo.qh, new aez("cast"), ($$0x, $$1, $$2, $$3) -> {
+         if ($$2 == null) {
+            return 0.0F;
+         } else {
+            boolean $$4 = $$2.eS() == $$0x;
+            boolean $$5 = $$2.eT() == $$0x;
+            if ($$2.eS().d() instanceof cir) {
+               $$5 = false;
+            }
+
+            return ($$4 || $$5) && $$2 instanceof cca && ((cca)$$2).ck != null ? 1.0F : 0.0F;
+         }
+      });
+      a(cjo.uy, new aez("blocking"), ($$0x, $$1, $$2, $$3) -> $$2 != null && $$2.fn() && $$2.fp() == $$0x ? 1.0F : 0.0F);
+      a(cjo.uV, new aez("throwing"), ($$0x, $$1, $$2, $$3) -> $$2 != null && $$2.fn() && $$2.fp() == $$0x ? 1.0F : 0.0F);
+      a(cjo.hg, new aez("level"), ($$0x, $$1, $$2, $$3) -> {
+         qw $$4 = $$0x.b("BlockStateTag");
+
+         try {
+            if ($$4 != null) {
+               rq $$5 = $$4.c(cxo.c.f());
+               if ($$5 != null) {
+                  return (float)Integer.parseInt($$5.r_()) / 16.0F;
+               }
+            }
+         } catch (NumberFormatException var6) {
+         }
+
+         return 1.0F;
+      });
+      a(cjo.vi, new aez("tooting"), ($$0x, $$1, $$2, $$3) -> $$2 != null && $$2.fn() && $$2.fp() == $$0x ? 1.0F : 0.0F);
    }
 }

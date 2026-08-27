@@ -1,255 +1,90 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.mojang.datafixers.util.Either;
-import java.util.List;
-import java.util.Map;
-import java.util.function.Function;
-import org.joml.Vector3f;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import java.lang.reflect.Type;
 
 public class fpj {
-   public static final List<String> a = Lists.newArrayList(new String[]{"layer0", "layer1", "layer2", "layer3", "layer4"});
-   private static final float b = 7.5F;
-   private static final float c = 8.5F;
+   public static final fpj a = new fpj();
+   public final fpi b;
+   public final fpi c;
+   public final fpi d;
+   public final fpi e;
+   public final fpi f;
+   public final fpi g;
+   public final fpi h;
+   public final fpi i;
 
-   public fpg a(Function<gbi, fze> $$0, fpg $$1) {
-      Map<String, Either<gbi, String>> $$2 = Maps.newHashMap();
-      List<fpc> $$3 = Lists.newArrayList();
+   private fpj() {
+      this(fpi.a, fpi.a, fpi.a, fpi.a, fpi.a, fpi.a, fpi.a, fpi.a);
+   }
 
-      for (int $$4 = 0; $$4 < a.size(); $$4++) {
-         String $$5 = a.get($$4);
-         if (!$$1.b($$5)) {
-            break;
+   public fpj(fpj $$0) {
+      this.b = $$0.b;
+      this.c = $$0.c;
+      this.d = $$0.d;
+      this.e = $$0.e;
+      this.f = $$0.f;
+      this.g = $$0.g;
+      this.h = $$0.h;
+      this.i = $$0.i;
+   }
+
+   public fpj(fpi $$0, fpi $$1, fpi $$2, fpi $$3, fpi $$4, fpi $$5, fpi $$6, fpi $$7) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.i = $$7;
+   }
+
+   public fpi a(cji $$0) {
+      return switch ($$0) {
+         case b -> this.b;
+         case c -> this.c;
+         case d -> this.d;
+         case e -> this.e;
+         case f -> this.f;
+         case g -> this.g;
+         case h -> this.h;
+         case i -> this.i;
+         default -> fpi.a;
+      };
+   }
+
+   public boolean b(cji $$0) {
+      return this.a($$0) != fpi.a;
+   }
+
+   protected static class a implements JsonDeserializer<fpj> {
+      public fpj a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         JsonObject $$3 = $$0.getAsJsonObject();
+         fpi $$4 = this.a($$2, $$3, cji.c);
+         fpi $$5 = this.a($$2, $$3, cji.b);
+         if ($$5 == fpi.a) {
+            $$5 = $$4;
          }
 
-         gbi $$6 = $$1.c($$5);
-         $$2.put($$5, Either.left($$6));
-         fyy $$7 = $$0.apply($$6).e();
-         $$3.addAll(this.a($$4, $$5, $$7));
-      }
-
-      $$2.put("particle", $$1.b("particle") ? Either.left($$1.c("particle")) : $$2.get("layer0"));
-      fpg $$8 = new fpg(null, $$3, $$2, false, $$1.c(), $$1.h(), $$1.e());
-      $$8.c = $$1.c;
-      return $$8;
-   }
-
-   private List<fpc> a(int $$0, String $$1, fyy $$2) {
-      Map<ha, fpd> $$3 = Maps.newHashMap();
-      $$3.put(ha.d, new fpd(null, $$0, $$1, new fpf(new float[]{0.0F, 0.0F, 16.0F, 16.0F}, 0)));
-      $$3.put(ha.c, new fpd(null, $$0, $$1, new fpf(new float[]{16.0F, 0.0F, 0.0F, 16.0F}, 0)));
-      List<fpc> $$4 = Lists.newArrayList();
-      $$4.add(new fpc(new Vector3f(0.0F, 0.0F, 7.5F), new Vector3f(16.0F, 16.0F, 8.5F), $$3, null, true));
-      $$4.addAll(this.a($$2, $$1, $$0));
-      return $$4;
-   }
-
-   private List<fpc> a(fyy $$0, String $$1, int $$2) {
-      float $$3 = (float)$$0.a();
-      float $$4 = (float)$$0.b();
-      List<fpc> $$5 = Lists.newArrayList();
-
-      for (fpj.a $$6 : this.a($$0)) {
-         float $$7 = 0.0F;
-         float $$8 = 0.0F;
-         float $$9 = 0.0F;
-         float $$10 = 0.0F;
-         float $$11 = 0.0F;
-         float $$12 = 0.0F;
-         float $$13 = 0.0F;
-         float $$14 = 0.0F;
-         float $$15 = 16.0F / $$3;
-         float $$16 = 16.0F / $$4;
-         float $$17 = (float)$$6.b();
-         float $$18 = (float)$$6.c();
-         float $$19 = (float)$$6.d();
-         fpj.b $$20 = $$6.a();
-         switch ($$20) {
-            case a:
-               $$11 = $$17;
-               $$7 = $$17;
-               $$9 = $$12 = $$18 + 1.0F;
-               $$13 = $$19;
-               $$8 = $$19;
-               $$10 = $$19;
-               $$14 = $$19 + 1.0F;
-               break;
-            case b:
-               $$13 = $$19;
-               $$14 = $$19 + 1.0F;
-               $$11 = $$17;
-               $$7 = $$17;
-               $$9 = $$12 = $$18 + 1.0F;
-               $$8 = $$19 + 1.0F;
-               $$10 = $$19 + 1.0F;
-               break;
-            case c:
-               $$11 = $$19;
-               $$7 = $$19;
-               $$9 = $$19;
-               $$12 = $$19 + 1.0F;
-               $$14 = $$17;
-               $$8 = $$17;
-               $$10 = $$13 = $$18 + 1.0F;
-               break;
-            case d:
-               $$11 = $$19;
-               $$12 = $$19 + 1.0F;
-               $$7 = $$19 + 1.0F;
-               $$9 = $$19 + 1.0F;
-               $$14 = $$17;
-               $$8 = $$17;
-               $$10 = $$13 = $$18 + 1.0F;
+         fpi $$6 = this.a($$2, $$3, cji.e);
+         fpi $$7 = this.a($$2, $$3, cji.d);
+         if ($$7 == fpi.a) {
+            $$7 = $$6;
          }
 
-         $$7 *= $$15;
-         $$9 *= $$15;
-         $$8 *= $$16;
-         $$10 *= $$16;
-         $$8 = 16.0F - $$8;
-         $$10 = 16.0F - $$10;
-         $$11 *= $$15;
-         $$12 *= $$15;
-         $$13 *= $$16;
-         $$14 *= $$16;
-         Map<ha, fpd> $$21 = Maps.newHashMap();
-         $$21.put($$20.a(), new fpd(null, $$2, $$1, new fpf(new float[]{$$11, $$13, $$12, $$14}, 0)));
-         switch ($$20) {
-            case a:
-               $$5.add(new fpc(new Vector3f($$7, $$8, 7.5F), new Vector3f($$9, $$8, 8.5F), $$21, null, true));
-               break;
-            case b:
-               $$5.add(new fpc(new Vector3f($$7, $$10, 7.5F), new Vector3f($$9, $$10, 8.5F), $$21, null, true));
-               break;
-            case c:
-               $$5.add(new fpc(new Vector3f($$7, $$8, 7.5F), new Vector3f($$7, $$10, 8.5F), $$21, null, true));
-               break;
-            case d:
-               $$5.add(new fpc(new Vector3f($$9, $$8, 7.5F), new Vector3f($$9, $$10, 8.5F), $$21, null, true));
-         }
+         fpi $$8 = this.a($$2, $$3, cji.f);
+         fpi $$9 = this.a($$2, $$3, cji.g);
+         fpi $$10 = this.a($$2, $$3, cji.h);
+         fpi $$11 = this.a($$2, $$3, cji.i);
+         return new fpj($$5, $$4, $$7, $$6, $$8, $$9, $$10, $$11);
       }
 
-      return $$5;
-   }
-
-   private List<fpj.a> a(fyy $$0) {
-      int $$1 = $$0.a();
-      int $$2 = $$0.b();
-      List<fpj.a> $$3 = Lists.newArrayList();
-      $$0.d().forEach($$4 -> {
-         for (int $$5 = 0; $$5 < $$2; $$5++) {
-            for (int $$6 = 0; $$6 < $$1; $$6++) {
-               boolean $$7 = !this.a($$0, $$4, $$6, $$5, $$1, $$2);
-               this.a(fpj.b.a, $$3, $$0, $$4, $$6, $$5, $$1, $$2, $$7);
-               this.a(fpj.b.b, $$3, $$0, $$4, $$6, $$5, $$1, $$2, $$7);
-               this.a(fpj.b.c, $$3, $$0, $$4, $$6, $$5, $$1, $$2, $$7);
-               this.a(fpj.b.d, $$3, $$0, $$4, $$6, $$5, $$1, $$2, $$7);
-            }
-         }
-      });
-      return $$3;
-   }
-
-   private void a(fpj.b $$0, List<fpj.a> $$1, fyy $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8) {
-      boolean $$9 = this.a($$2, $$3, $$4 + $$0.b(), $$5 + $$0.c(), $$6, $$7) && $$8;
-      if ($$9) {
-         this.a($$1, $$0, $$4, $$5);
-      }
-   }
-
-   private void a(List<fpj.a> $$0, fpj.b $$1, int $$2, int $$3) {
-      fpj.a $$4 = null;
-
-      for (fpj.a $$5 : $$0) {
-         if ($$5.a() == $$1) {
-            int $$6 = $$1.d() ? $$3 : $$2;
-            if ($$5.d() == $$6) {
-               $$4 = $$5;
-               break;
-            }
-         }
-      }
-
-      int $$7 = $$1.d() ? $$3 : $$2;
-      int $$8 = $$1.d() ? $$2 : $$3;
-      if ($$4 == null) {
-         $$0.add(new fpj.a($$1, $$8, $$7));
-      } else {
-         $$4.a($$8);
-      }
-   }
-
-   private boolean a(fyy $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      return $$2 >= 0 && $$3 >= 0 && $$2 < $$4 && $$3 < $$5 ? $$0.a($$1, $$2, $$3) : true;
-   }
-
-   static class a {
-      private final fpj.b a;
-      private int b;
-      private int c;
-      private final int d;
-
-      public a(fpj.b $$0, int $$1, int $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$1;
-         this.d = $$2;
-      }
-
-      public void a(int $$0) {
-         if ($$0 < this.b) {
-            this.b = $$0;
-         } else if ($$0 > this.c) {
-            this.c = $$0;
-         }
-      }
-
-      public fpj.b a() {
-         return this.a;
-      }
-
-      public int b() {
-         return this.b;
-      }
-
-      public int c() {
-         return this.c;
-      }
-
-      public int d() {
-         return this.d;
-      }
-   }
-
-   static enum b {
-      a(ha.b, 0, -1),
-      b(ha.a, 0, 1),
-      c(ha.f, -1, 0),
-      d(ha.e, 1, 0);
-
-      private final ha e;
-      private final int f;
-      private final int g;
-
-      private b(ha $$0, int $$1, int $$2) {
-         this.e = $$0;
-         this.f = $$1;
-         this.g = $$2;
-      }
-
-      public ha a() {
-         return this.e;
-      }
-
-      public int b() {
-         return this.f;
-      }
-
-      public int c() {
-         return this.g;
-      }
-
-      boolean d() {
-         return this == b || this == a;
+      private fpi a(JsonDeserializationContext $$0, JsonObject $$1, cji $$2) {
+         String $$3 = $$2.c();
+         return $$1.has($$3) ? (fpi)$$0.deserialize($$1.get($$3), fpi.class) : fpi.a;
       }
    }
 }

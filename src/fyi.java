@@ -1,8 +1,6 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import javax.annotation.Nullable;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface fyi {
+@Deprecated
+public interface fyi {
+   float call(cjl var1, @Nullable fis var2, @Nullable bjm var3, int var4);
 }

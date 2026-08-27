@@ -1,12 +1,13 @@
-public class geo implements geu {
-   private static final int a = 1200;
-   private static final tl b = tl.c("tutorial.craft_planks.title");
-   private static final tl c = tl.c("tutorial.craft_planks.description");
-   private final get d;
-   private euz e;
+public class geo implements geq {
+   private static final int a = 600;
+   private static final tl b = tl.c("tutorial.punch_tree.title");
+   private static final tl c = tl.a("tutorial.punch_tree.description", gep.a("attack"));
+   private final gep d;
+   private euu e;
    private int f;
+   private int g;
 
-   public geo(get $$0) {
+   public geo(gep $$0) {
       this.d = $$0;
    }
 
@@ -14,25 +15,25 @@ public class geo implements geu {
    public void a() {
       this.f++;
       if (!this.d.f()) {
-         this.d.a(gev.f);
+         this.d.a(ger.f);
       } else {
          if (this.f == 1) {
-            fng $$0 = this.d.e().s;
+            fnc $$0 = this.d.e().s;
             if ($$0 != null) {
-               if ($$0.fR().a(aqa.b)) {
-                  this.d.a(gev.f);
+               if ($$0.fS().a(aqd.r)) {
+                  this.d.a(ger.e);
                   return;
                }
 
-               if (a($$0, aqa.b)) {
-                  this.d.a(gev.f);
+               if (gel.a($$0)) {
+                  this.d.a(ger.e);
                   return;
                }
             }
          }
 
-         if (this.f >= 1200 && this.e == null) {
-            this.e = new euz(euz.a.e, b, c, false);
+         if ((this.f >= 600 || this.g > 3) && this.e == null) {
+            this.e = new euu(euu.a.c, b, c, true);
             this.d.e().ay().a(this.e);
          }
       }
@@ -47,19 +48,27 @@ public class geo implements geu {
    }
 
    @Override
-   public void a(cjf $$0) {
-      if ($$0.a(aqa.b)) {
-         this.d.a(gev.f);
+   public void a(fis $$0, gw $$1, dfd $$2, float $$3) {
+      boolean $$4 = $$2.a(apv.t);
+      if ($$4 && $$3 > 0.0F) {
+         if (this.e != null) {
+            this.e.a($$3);
+         }
+
+         if ($$3 >= 1.0F) {
+            this.d.a(ger.d);
+         }
+      } else if (this.e != null) {
+         this.e.a(0.0F);
+      } else if ($$4) {
+         this.g++;
       }
    }
 
-   public static boolean a(fng $$0, aqh<cja> $$1) {
-      for (he<cja> $$2 : jb.i.c($$1)) {
-         if ($$0.j().a(apn.b.b($$2.a())) > 0) {
-            return true;
-         }
+   @Override
+   public void a(cjl $$0) {
+      if ($$0.a(aqd.r)) {
+         this.d.a(ger.e);
       }
-
-      return false;
    }
 }

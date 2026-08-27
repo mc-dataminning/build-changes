@@ -1,48 +1,52 @@
-public class yh implements vd<ww> {
-   private final int a;
-   private final gw b;
-   private final int c;
-   private final boolean d;
+import java.util.BitSet;
+import javax.annotation.Nullable;
 
-   public yh(int $$0, gw $$1, int $$2, boolean $$3) {
-      this.a = $$0;
-      this.b = $$1.i();
-      this.c = $$2;
-      this.d = $$3;
+public class yh implements ve<wx> {
+   private final int a;
+   private final int b;
+   private final yg c;
+   private final yl d;
+
+   public yh(dhk $$0, dzv $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
+      cpi $$4 = $$0.f();
+      this.a = $$4.e;
+      this.b = $$4.f;
+      this.c = new yg($$0);
+      this.d = new yl($$4, $$1, $$2, $$3);
    }
 
    public yh(so $$0) {
       this.a = $$0.readInt();
-      this.b = $$0.e();
-      this.c = $$0.readInt();
-      this.d = $$0.readBoolean();
+      this.b = $$0.readInt();
+      this.c = new yg($$0, this.a, this.b);
+      this.d = new yl($$0, this.a, this.b);
    }
 
    @Override
    public void a(so $$0) {
       $$0.p(this.a);
-      $$0.a(this.b);
-      $$0.p(this.c);
-      $$0.a(this.d);
+      $$0.p(this.b);
+      this.c.a($$0);
+      this.d.a($$0);
    }
 
-   public void a(ww $$0) {
+   public void a(wx $$0) {
       $$0.a(this);
    }
 
-   public boolean a() {
-      return this.d;
-   }
-
-   public int d() {
+   public int a() {
       return this.a;
    }
 
-   public int e() {
+   public int d() {
+      return this.b;
+   }
+
+   public yg e() {
       return this.c;
    }
 
-   public gw f() {
-      return this.b;
+   public yl f() {
+      return this.d;
    }
 }

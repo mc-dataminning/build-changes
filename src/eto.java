@@ -1,18 +1,23 @@
-public class eto extends esq {
-   private final esd a;
-   private final tl b;
-   private final tl c;
+public class eto {
+   public static final eto a = new eto("Merry X-mas!");
+   public static final eto b = new eto("Happy new year!");
+   public static final eto c = new eto("OOoooOOOoooo! Spooky!");
+   private static final int d = 123;
+   private static final int e = 69;
+   private final String f;
 
-   public eto(int $$0, int $$1, int $$2, int $$3, tl $$4, esq.c $$5, esd $$6) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, o);
-      this.a = $$6;
-      this.b = $$4;
-      this.c = tn.a($$4.e(), uh.a.c(true));
+   public eto(String $$0) {
+      this.f = $$0;
    }
 
-   @Override
-   public void b(esf $$0, int $$1, int $$2, float $$3) {
-      tl $$4 = this.o() ? this.c : this.b;
-      $$0.b(this.a, $$4, this.r(), this.t(), 16777215 | arw.f(this.k * 255.0F) << 24);
+   public void a(erz $$0, int $$1, erx $$2, int $$3) {
+      $$0.c().a();
+      $$0.c().a((float)$$1 / 2.0F + 123.0F, 69.0F, 0.0F);
+      $$0.c().a(a.f.rotationDegrees(-20.0F));
+      float $$4 = 1.8F - asb.e(asb.a((float)(ac.b() % 1000L) / 1000.0F * (float) (Math.PI * 2)) * 0.1F);
+      $$4 = $$4 * 100.0F / (float)($$2.b(this.f) + 32);
+      $$0.c().b($$4, $$4, $$4);
+      $$0.a($$2, this.f, 0, -8, 16776960 | $$3);
+      $$0.c().b();
    }
 }

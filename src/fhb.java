@@ -1,33 +1,94 @@
-public class fhb<T extends biq> extends ffm<T> {
-   private final fic a;
+public class fhb<T extends cab> extends ffh<T> {
+   private static final String a = "right_bottom_bristle";
+   private static final String b = "right_middle_bristle";
+   private static final String f = "right_top_bristle";
+   private static final String g = "left_top_bristle";
+   private static final String h = "left_middle_bristle";
+   private static final String i = "left_bottom_bristle";
+   private final fhx j;
+   private final fhx k;
+   private final fhx l;
+   private final fhx m;
+   private final fhx n;
+   private final fhx o;
+   private final fhx p;
+   private final fhx q;
+   private final fhx r;
+   private final fhx s;
 
-   public fhb(fic $$0) {
-      this.a = $$0;
+   public fhb(fhx $$0) {
+      this.j = $$0;
+      this.k = $$0.b("right_leg");
+      this.l = $$0.b("left_leg");
+      this.m = $$0.b("body");
+      this.n = this.m.b("right_bottom_bristle");
+      this.o = this.m.b("right_middle_bristle");
+      this.p = this.m.b("right_top_bristle");
+      this.q = this.m.b("left_top_bristle");
+      this.r = this.m.b("left_middle_bristle");
+      this.s = this.m.b("left_bottom_bristle");
    }
 
-   public static fii b() {
-      fik $$0 = new fik();
-      fil $$1 = $$0.a();
-      $$1.a("cube", fih.c().a(0, 0).a(-4.0F, 16.0F, -4.0F, 8.0F, 8.0F, 8.0F), fie.a);
-      return fii.a($$0, 64, 32);
+   public static fid b() {
+      fif $$0 = new fif();
+      fig $$1 = $$0.a();
+      $$1.a("right_leg", fic.c().a(0, 32).a(-2.0F, 0.0F, -2.0F, 4.0F, 16.0F, 4.0F), fhz.a(-4.0F, 8.0F, 0.0F));
+      $$1.a("left_leg", fic.c().a(0, 55).a(-2.0F, 0.0F, -2.0F, 4.0F, 16.0F, 4.0F), fhz.a(4.0F, 8.0F, 0.0F));
+      fig $$2 = $$1.a("body", fic.c().a(0, 0).a(-8.0F, -6.0F, -8.0F, 16.0F, 14.0F, 16.0F), fhz.a(0.0F, 1.0F, 0.0F));
+      $$2.a("right_bottom_bristle", fic.c().a(16, 65).a(-12.0F, 0.0F, 0.0F, 12.0F, 0.0F, 16.0F, true), fhz.a(-8.0F, 4.0F, -8.0F, 0.0F, 0.0F, -1.2217305F));
+      $$2.a("right_middle_bristle", fic.c().a(16, 49).a(-12.0F, 0.0F, 0.0F, 12.0F, 0.0F, 16.0F, true), fhz.a(-8.0F, -1.0F, -8.0F, 0.0F, 0.0F, -1.134464F));
+      $$2.a("right_top_bristle", fic.c().a(16, 33).a(-12.0F, 0.0F, 0.0F, 12.0F, 0.0F, 16.0F, true), fhz.a(-8.0F, -5.0F, -8.0F, 0.0F, 0.0F, -0.87266463F));
+      $$2.a("left_top_bristle", fic.c().a(16, 33).a(0.0F, 0.0F, 0.0F, 12.0F, 0.0F, 16.0F), fhz.a(8.0F, -6.0F, -8.0F, 0.0F, 0.0F, 0.87266463F));
+      $$2.a("left_middle_bristle", fic.c().a(16, 49).a(0.0F, 0.0F, 0.0F, 12.0F, 0.0F, 16.0F), fhz.a(8.0F, -2.0F, -8.0F, 0.0F, 0.0F, 1.134464F));
+      $$2.a("left_bottom_bristle", fic.c().a(16, 65).a(0.0F, 0.0F, 0.0F, 12.0F, 0.0F, 16.0F), fhz.a(8.0F, 3.0F, -8.0F, 0.0F, 0.0F, 1.2217305F));
+      return fid.a($$0, 64, 128);
    }
 
-   public static fii c() {
-      fik $$0 = new fik();
-      fil $$1 = $$0.a();
-      $$1.a("cube", fih.c().a(0, 16).a(-3.0F, 17.0F, -3.0F, 6.0F, 6.0F, 6.0F), fie.a);
-      $$1.a("right_eye", fih.c().a(32, 0).a(-3.25F, 18.0F, -3.5F, 2.0F, 2.0F, 2.0F), fie.a);
-      $$1.a("left_eye", fih.c().a(32, 4).a(1.25F, 18.0F, -3.5F, 2.0F, 2.0F, 2.0F), fie.a);
-      $$1.a("mouth", fih.c().a(32, 8).a(0.0F, 21.0F, -3.5F, 1.0F, 1.0F, 1.0F), fie.a);
-      return fii.a($$0, 64, 32);
+   public void a(cab $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      $$2 = Math.min(0.25F, $$2);
+      if (!$$0.bO()) {
+         this.m.e = $$5 * (float) (Math.PI / 180.0);
+         this.m.f = $$4 * (float) (Math.PI / 180.0);
+      } else {
+         this.m.e = 0.0F;
+         this.m.f = 0.0F;
+      }
+
+      float $$6 = 1.5F;
+      this.m.g = 0.1F * asb.a($$1 * 1.5F) * 4.0F * $$2;
+      this.m.c = 2.0F;
+      this.m.c = this.m.c - 2.0F * asb.b($$1 * 1.5F) * 2.0F * $$2;
+      this.l.e = asb.a($$1 * 1.5F * 0.5F) * 2.0F * $$2;
+      this.k.e = asb.a($$1 * 1.5F * 0.5F + (float) Math.PI) * 2.0F * $$2;
+      this.l.g = (float) (Math.PI / 18) * asb.b($$1 * 1.5F * 0.5F) * $$2;
+      this.k.g = (float) (Math.PI / 18) * asb.b($$1 * 1.5F * 0.5F + (float) Math.PI) * $$2;
+      this.l.c = 8.0F + 2.0F * asb.a($$1 * 1.5F * 0.5F + (float) Math.PI) * 2.0F * $$2;
+      this.k.c = 8.0F + 2.0F * asb.a($$1 * 1.5F * 0.5F) * 2.0F * $$2;
+      this.n.g = -1.2217305F;
+      this.o.g = -1.134464F;
+      this.p.g = -0.87266463F;
+      this.q.g = 0.87266463F;
+      this.r.g = 1.134464F;
+      this.s.g = 1.2217305F;
+      float $$7 = asb.b($$1 * 1.5F + (float) Math.PI) * $$2;
+      this.n.g += $$7 * 1.3F;
+      this.o.g += $$7 * 1.2F;
+      this.p.g += $$7 * 0.6F;
+      this.q.g += $$7 * 0.6F;
+      this.r.g += $$7 * 1.2F;
+      this.s.g += $$7 * 1.3F;
+      float $$8 = 1.0F;
+      float $$9 = 1.0F;
+      this.n.g = this.n.g + 0.05F * asb.a($$3 * 1.0F * -0.4F);
+      this.o.g = this.o.g + 0.1F * asb.a($$3 * 1.0F * 0.2F);
+      this.p.g = this.p.g + 0.1F * asb.a($$3 * 1.0F * 0.4F);
+      this.q.g = this.q.g + 0.1F * asb.a($$3 * 1.0F * 0.4F);
+      this.r.g = this.r.g + 0.1F * asb.a($$3 * 1.0F * 0.2F);
+      this.s.g = this.s.g + 0.05F * asb.a($$3 * 1.0F * -0.4F);
    }
 
    @Override
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-   }
-
-   @Override
-   public fic a() {
-      return this.a;
+   public fhx a() {
+      return this.j;
    }
 }

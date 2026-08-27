@@ -1,67 +1,75 @@
-import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.ClientInfo;
-import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.RealmInfo;
-import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.ThirdPartyServerInfo;
-import java.util.Locale;
+import com.mojang.authlib.minecraft.report.AbuseReport;
+import com.mojang.authlib.minecraft.report.AbuseReportLimits;
+import com.mojang.authlib.minecraft.report.ReportedEntity;
+import com.mojang.datafixers.util.Either;
+import java.time.Instant;
+import java.util.Objects;
+import java.util.UUID;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringUtils;
 
-public record fjw(String a, @Nullable fjw.a b) {
-   public static fjw a() {
-      return a(null);
+public class fjw extends fjr {
+   final Supplier<gaa> f;
+
+   fjw(UUID $$0, Instant $$1, UUID $$2, Supplier<gaa> $$3) {
+      super($$0, $$1, $$2);
+      this.f = $$3;
    }
 
-   public static fjw a(String $$0) {
-      return a(new fjw.a.b($$0));
+   public Supplier<gaa> a() {
+      return this.f;
    }
 
-   public static fjw a(emw $$0) {
-      return a(new fjw.a.a($$0));
+   public fjw c() {
+      fjw $$0 = new fjw(this.a, this.b, this.c, this.f);
+      $$0.d = this.d;
+      $$0.e = this.e;
+      return $$0;
    }
 
-   public static fjw a(@Nullable fjw.a $$0) {
-      return new fjw(g(), $$0);
+   @Override
+   public eye a(eye $$0, fjv $$1) {
+      return new fci($$0, $$1, this);
    }
 
-   public ClientInfo b() {
-      return new ClientInfo(this.a, Locale.getDefault().toLanguageTag());
-   }
-
-   @Nullable
-   public ThirdPartyServerInfo c() {
-      return this.b instanceof fjw.a.b $$0 ? new ThirdPartyServerInfo($$0.a) : null;
-   }
-
-   @Nullable
-   public RealmInfo d() {
-      return this.b instanceof fjw.a.a $$0 ? new RealmInfo(String.valueOf($$0.a()), $$0.b()) : null;
-   }
-
-   private static String g() {
-      StringBuilder $$0 = new StringBuilder();
-      $$0.append("1.20.2");
-      if (eqv.e().a()) {
-         $$0.append(" (modded)");
+   public static class a extends fjr.a<fjw> {
+      public a(fjw $$0, AbuseReportLimits $$1) {
+         super($$0, $$1);
       }
 
-      return $$0.toString();
-   }
+      public a(UUID $$0, Supplier<gaa> $$1, AbuseReportLimits $$2) {
+         super(new fjw(UUID.randomUUID(), Instant.now(), $$0, $$1), $$2);
+      }
 
-   public String e() {
-      return this.a;
-   }
+      @Override
+      public boolean b() {
+         return StringUtils.isNotEmpty(this.g()) || this.h() != null;
+      }
 
-   @Nullable
-   public fjw.a f() {
-      return this.b;
-   }
-
-   public interface a {
-      public static record a(long a, int b) implements fjw.a {
-         public a(emw $$0) {
-            this($$0.a, $$0.n);
+      @Nullable
+      @Override
+      public fjr.b c() {
+         if (this.a.e == null) {
+            return fjr.b.a;
+         } else {
+            return this.a.d.length() > this.b.maxOpinionCommentsLength() ? fjr.b.d : null;
          }
       }
 
-      public static record b(String a) implements fjw.a {
+      @Override
+      public Either<fjr.c, fjr.b> a(fjv $$0) {
+         fjr.b $$1 = this.c();
+         if ($$1 != null) {
+            return Either.right($$1);
+         } else {
+            String $$2 = Objects.requireNonNull(this.a.e).a();
+            ReportedEntity $$3 = new ReportedEntity(this.a.c);
+            gaa $$4 = this.a.f.get();
+            String $$5 = $$4.b();
+            AbuseReport $$6 = AbuseReport.skin(this.a.d, $$2, $$5, $$3, this.a.b);
+            return Either.left(new fjr.c(this.a.a, fju.b, $$6));
+         }
       }
    }
 }

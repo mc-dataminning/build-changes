@@ -1,37 +1,39 @@
-public class fgu extends ffz {
-   private static final String a = "plate";
-   private static final String b = "handle";
-   private static final int c = 10;
-   private static final int d = 20;
-   private final fic e;
-   private final fic f;
-   private final fic g;
+public class fgu extends fgv {
+   private final fhx b;
+   protected final fhx a;
 
-   public fgu(fic $$0) {
-      super(fom::c);
-      this.e = $$0;
-      this.f = $$0.b("plate");
-      this.g = $$0.b("handle");
+   public fgu(fhx $$0) {
+      this.b = $$0;
+      this.a = $$0.b("head");
    }
 
-   public static fii a() {
-      fik $$0 = new fik();
-      fil $$1 = $$0.a();
-      $$1.a("plate", fih.c().a(0, 0).a(-6.0F, -11.0F, -2.0F, 12.0F, 22.0F, 1.0F), fie.a);
-      $$1.a("handle", fih.c().a(26, 0).a(-1.0F, -3.0F, -1.0F, 2.0F, 6.0F, 6.0F), fie.a);
-      return fii.a($$0, 64, 64);
+   public static fif a() {
+      fif $$0 = new fif();
+      fig $$1 = $$0.a();
+      $$1.a("head", fic.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F), fhz.a);
+      return $$0;
    }
 
-   public fic b() {
-      return this.f;
+   public static fid b() {
+      fif $$0 = a();
+      fig $$1 = $$0.a();
+      $$1.a("head").a("hat", fic.c().a(32, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new fib(0.25F)), fhz.a);
+      return fid.a($$0, 64, 64);
    }
 
-   public fic c() {
-      return this.g;
+   public static fid c() {
+      fif $$0 = a();
+      return fid.a($$0, 64, 32);
    }
 
    @Override
-   public void a(elp $$0, elt $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-      this.e.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   public void a(float $$0, float $$1, float $$2) {
+      this.a.f = $$1 * (float) (Math.PI / 180.0);
+      this.a.e = $$2 * (float) (Math.PI / 180.0);
+   }
+
+   @Override
+   public void a(elj $$0, eln $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
+      this.b.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 }

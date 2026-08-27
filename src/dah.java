@@ -1,52 +1,49 @@
-public class dah extends csv {
-   protected static final eig a = csv.a(0.0, 0.0, 0.0, 16.0, 14.0, 16.0);
-   private static final int b = 20;
+import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-   public dah(dfi.d $$0) {
+public class dah extends crw {
+   public static final MapCodec<dah> c = b(dah::new);
+
+   @Override
+   public MapCodec<dah> a() {
+      return c;
+   }
+
+   protected dah(dfc.d $$0) {
       super($$0);
    }
 
    @Override
-   public eig c(dfj $$0, cpb $$1, gw $$2, ehs $$3) {
-      return a;
+   public dcz a(gw $$0, dfd $$1) {
+      return new dek($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dcz> dda<T> a(cqb $$0, dfd $$1, ddb<T> $$2) {
+      return a($$0, $$2, ddb.B);
    }
 
    @Override
-   public eig b_(dfj $$0, cpb $$1, gw $$2) {
-      return eid.b();
-   }
-
-   @Override
-   public eig b(dfj $$0, cpb $$1, gw $$2, ehs $$3) {
-      return eid.b();
-   }
-
-   @Override
-   public void a(dfj $$0, akq $$1, gw $$2, asc $$3) {
-      cta.b($$1, $$2.c(), $$0);
-   }
-
-   @Override
-   public dfj a(dfj $$0, ha $$1, dfj $$2, cpw $$3, gw $$4, gw $$5) {
-      if ($$1 == ha.b && $$2.a(csw.G)) {
-         $$3.a($$4, this, 20);
+   protected void a(cqb $$0, gw $$1, cca $$2) {
+      dcz $$3 = $$0.c_($$1);
+      if ($$3 instanceof dek) {
+         $$2.a((bhh)$$3);
+         $$2.a(apq.at);
       }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public void b(dfj $$0, cpv $$1, gw $$2, dfj $$3, boolean $$4) {
-      $$1.a($$2, this, 20);
-   }
+   public void a(dfd $$0, cqb $$1, gw $$2, ash $$3) {
+      if ($$0.c(b)) {
+         double $$4 = (double)$$2.u() + 0.5;
+         double $$5 = (double)$$2.v();
+         double $$6 = (double)$$2.w() + 0.5;
+         if ($$3.j() < 0.1) {
+            $$1.a($$4, $$5, $$6, apg.wx, aph.e, 1.0F, 1.0F, false);
+         }
 
-   @Override
-   public boolean a(dfj $$0, cpb $$1, gw $$2, ebc $$3) {
-      return false;
-   }
-
-   @Override
-   public float b(dfj $$0, cpb $$1, gw $$2) {
-      return 0.2F;
+         $$1.a(iv.Z, $$4, $$5 + 1.1, $$6, 0.0, 0.0, 0.0);
+      }
    }
 }

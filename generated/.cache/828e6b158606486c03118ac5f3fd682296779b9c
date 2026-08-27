@@ -1,4 +1,4 @@
-// 1.20.2	2026-08-28T00:41:26.4272662	vanilla/Loot Tables
+// 23w40a	2026-08-28T00:43:26.8743978	vanilla/Loot Tables
 16627d78901fd7f72f23ebcc81e717877a2d5c67 data\minecraft\loot_tables\blocks\spruce_hanging_sign.json
 1fc86ccb339e075dc1ef8949f3f32cf0b63e6610 data\minecraft\loot_tables\blocks\deepslate.json
 747b419c8834a94b61e4bdd0a39e0f199bb60578 data\minecraft\loot_tables\archaeology\trail_ruins_common.json
@@ -373,8 +373,8 @@ a08def7e818a94901afab1a372cef256ab15c3cd data\minecraft\loot_tables\entities\str
 32ab1483b04b710d43e436c1adaddcbd4933f45c data\minecraft\loot_tables\blocks\orange_candle.json
 0e15f0ca95f7ccb909b31dfe1ba738b47392720c data\minecraft\loot_tables\blocks\oak_button.json
 c3611724c03a0e529f8c71dbd6802cf96425f305 data\minecraft\loot_tables\blocks\polished_diorite_slab.json
-1d97055c6b93bf1036536106dd2e5fdd12b50594 data\minecraft\loot_tables\blocks\detector_rail.json
 87c1be3dc8e7eb5f4397c268efcf81470f629f63 data\minecraft\loot_tables\entities\silverfish.json
+1d97055c6b93bf1036536106dd2e5fdd12b50594 data\minecraft\loot_tables\blocks\detector_rail.json
 c95c4c4c74e4db1f81db80d074d5529879e5cafe data\minecraft\loot_tables\blocks\spruce_leaves.json
 e4f62b90803b05e2b0477d507e5563eaaa2ed23d data\minecraft\loot_tables\entities\turtle.json
 482423cd59621fdfb3effe413170b16be37213af data\minecraft\loot_tables\blocks\deepslate_tile_stairs.json
@@ -777,7 +777,7 @@ a2a914987a78bc1a6b97a53ab047177c374148a6 data\minecraft\loot_tables\blocks\bambo
 3bcf4ca5237f63bfbb2cd3213a57bd9b3c1b268a data\minecraft\loot_tables\blocks\purple_concrete_powder.json
 686dc0d02eb090ade89102535cef71fe01650586 data\minecraft\loot_tables\blocks\lapis_block.json
 7da7b142eb41335a8080c4c67f5fdce64a42da2b data\minecraft\loot_tables\blocks\deepslate_brick_slab.json
-6249e94748097d2cc5456e225a5a7299192c3fd1 data\minecraft\loot_tables\blocks\decorated_pot.json
+1be5086d2f72c383131f76cdf33996db1f3ed0f1 data\minecraft\loot_tables\blocks\decorated_pot.json
 2a5aba33f14dffd4f19a1ce59e8fede0d3e4afe6 data\minecraft\loot_tables\blocks\dark_oak_sign.json
 6bea04db491a7369e4b522b7b74503800c739e59 data\minecraft\loot_tables\chests\village\village_armorer.json
 17b2a280ab834bbea4663d11517dcf32d0d150dd data\minecraft\loot_tables\blocks\polished_granite_stairs.json

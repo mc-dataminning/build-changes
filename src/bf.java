@@ -9,22 +9,22 @@ import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
-public record bf(List<dc<bhq>> b, Optional<bq> c, Optional<bq> d) {
+public record bf(List<dc<bhw>> b, Optional<bq> c, Optional<bq> d) {
    public static final Codec<bf> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               arf.a(dc.a(jc.p).listOf(), "tags", List.of()).forGetter(bf::b),
-               arf.a(bq.a, "direct_entity").forGetter(bf::c),
-               arf.a(bq.a, "source_entity").forGetter(bf::d)
+               arj.a(dc.a(jc.q).listOf(), "tags", List.of()).forGetter(bf::b),
+               arj.a(bq.a, "direct_entity").forGetter(bf::c),
+               arj.a(bq.a, "source_entity").forGetter(bf::d)
             )
             .apply($$0, bf::new)
    );
 
-   public boolean a(akr $$0, bho $$1) {
+   public boolean a(aku $$0, bhu $$1) {
       return this.a($$0.x(), $$0.dj(), $$1);
    }
 
-   public boolean a(akq $$0, ehn $$1, bho $$2) {
-      for (dc<bhq> $$3 : this.b) {
+   public boolean a(akt $$0, ehh $$1, bhu $$2) {
+      for (dc<bhw> $$3 : this.b) {
          if (!$$3.a($$2.k())) {
             return false;
          }
@@ -42,7 +42,7 @@ public record bf(List<dc<bhq>> b, Optional<bq> c, Optional<bq> d) {
    }
 
    public static class a {
-      private final Builder<dc<bhq>> a = ImmutableList.builder();
+      private final Builder<dc<bhw>> a = ImmutableList.builder();
       private Optional<bq> b = Optional.empty();
       private Optional<bq> c = Optional.empty();
 
@@ -50,7 +50,7 @@ public record bf(List<dc<bhq>> b, Optional<bq> c, Optional<bq> d) {
          return new bf.a();
       }
 
-      public bf.a a(dc<bhq> $$0) {
+      public bf.a a(dc<bhw> $$0) {
          this.a.add($$0);
          return this;
       }

@@ -1,104 +1,80 @@
+import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class czy extends csv implements czw {
-   public static final dgh<dgr> a = dfz.bh;
-   public static final dga b = dfz.C;
-   protected static final eig c = csv.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0);
-   protected static final eig d = csv.a(0.0, 8.0, 0.0, 16.0, 16.0, 16.0);
+public class czy extends ctl implements ctf, cxr {
+   public static final MapCodec<czy> a = b(czy::new);
+   protected static final float b = 6.0F;
+   protected static final eia c = ctc.a(2.0, 0.0, 2.0, 14.0, 12.0, 14.0);
 
-   public czy(dfi.d $$0) {
+   @Override
+   public MapCodec<czy> a() {
+      return a;
+   }
+
+   protected czy(dfc.d $$0) {
       super($$0);
-      this.k(this.n().a(a, dgr.b).a(b, Boolean.valueOf(false)));
    }
 
    @Override
-   public boolean g_(dfj $$0) {
-      return $$0.c(a) != dgr.c;
+   public eia a(dfd $$0, cph $$1, gw $$2, ehm $$3) {
+      return c;
    }
 
    @Override
-   protected void a(dfk.a<csv, dfj> $$0) {
-      $$0.a(a, b);
-   }
-
-   @Override
-   public eig a(dfj $$0, cpb $$1, gw $$2, ehs $$3) {
-      dgr $$4 = $$0.c(a);
-      switch ($$4) {
-         case c:
-            return eid.b();
-         case a:
-            return d;
-         default:
-            return c;
-      }
+   protected boolean d(dfd $$0, cph $$1, gw $$2) {
+      return $$0.d($$1, $$2, ha.b) && !$$0.a(cte.kJ);
    }
 
    @Nullable
    @Override
-   public dfj a(cln $$0) {
-      gw $$1 = $$0.a();
-      dfj $$2 = $$0.q().a_($$1);
-      if ($$2.a(this)) {
-         return $$2.a(a, dgr.c).a(b, Boolean.valueOf(false));
-      } else {
-         eam $$3 = $$0.q().b_($$1);
-         dfj $$4 = this.n().a(a, dgr.b).a(b, Boolean.valueOf($$3.a() == ean.c));
-         ha $$5 = $$0.k();
-         return $$5 != ha.a && ($$5 == ha.b || !($$0.l().d - (double)$$1.v() > 0.5)) ? $$4 : $$4.a(a, dgr.a);
+   public dfd a(clt $$0) {
+      eag $$1 = $$0.q().b_($$0.a());
+      return $$1.a(aqa.a) && $$1.e() == 8 ? super.a($$0) : null;
+   }
+
+   @Override
+   public dfd a(dfd $$0, ha $$1, dfd $$2, cqc $$3, gw $$4, gw $$5) {
+      dfd $$6 = super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      if (!$$6.i()) {
+         $$3.a($$4, eah.c, eah.c.a($$3));
+      }
+
+      return $$6;
+   }
+
+   @Override
+   public boolean b(cqe $$0, gw $$1, dfd $$2) {
+      return true;
+   }
+
+   @Override
+   public boolean a(cqb $$0, ash $$1, gw $$2, dfd $$3) {
+      return true;
+   }
+
+   @Override
+   public eag c_(dfd $$0) {
+      return eah.c.a(false);
+   }
+
+   @Override
+   public void a(akt $$0, ash $$1, gw $$2, dfd $$3) {
+      dfd $$4 = cte.bx.o();
+      dfd $$5 = $$4.a(dbg.d, dfz.a);
+      gw $$6 = $$2.c();
+      if ($$0.a_($$6).a(cte.G)) {
+         $$0.a($$2, $$4, 2);
+         $$0.a($$6, $$5, 2);
       }
    }
 
    @Override
-   public boolean a(dfj $$0, cln $$1) {
-      cjf $$2 = $$1.n();
-      dgr $$3 = $$0.c(a);
-      if ($$3 == dgr.c || !$$2.a(this.k())) {
-         return false;
-      } else if ($$1.c()) {
-         boolean $$4 = $$1.l().d - (double)$$1.a().v() > 0.5;
-         ha $$5 = $$1.k();
-         return $$3 == dgr.b ? $$5 == ha.b || $$4 && $$5.o().d() : $$5 == ha.a || !$$4 && $$5.o().d();
-      } else {
-         return true;
-      }
+   public boolean a(@Nullable cca $$0, cph $$1, gw $$2, dfd $$3, eaf $$4) {
+      return false;
    }
 
    @Override
-   public eam c_(dfj $$0) {
-      return $$0.c(b) ? ean.c.a(false) : super.c_($$0);
-   }
-
-   @Override
-   public boolean a(cpw $$0, gw $$1, dfj $$2, eam $$3) {
-      return $$2.c(a) != dgr.c ? czw.super.a($$0, $$1, $$2, $$3) : false;
-   }
-
-   @Override
-   public boolean a(@Nullable cbu $$0, cpb $$1, gw $$2, dfj $$3, eal $$4) {
-      return $$3.c(a) != dgr.c ? czw.super.a($$0, $$1, $$2, $$3, $$4) : false;
-   }
-
-   @Override
-   public dfj a(dfj $$0, ha $$1, dfj $$2, cpw $$3, gw $$4, gw $$5) {
-      if ($$0.c(b)) {
-         $$3.a($$4, ean.c, ean.c.a($$3));
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   public boolean a(dfj $$0, cpb $$1, gw $$2, ebc $$3) {
-      switch ($$3) {
-         case a:
-            return false;
-         case b:
-            return $$1.b_($$2).a(apx.a);
-         case c:
-            return false;
-         default:
-            return false;
-      }
+   public boolean a(cqc $$0, gw $$1, dfd $$2, eag $$3) {
+      return false;
    }
 }

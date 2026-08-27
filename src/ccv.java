@@ -1,81 +1,61 @@
-import javax.annotation.Nullable;
-
-public class ccv extends ccs {
-   public ccv(biu<? extends ccv> $$0, cpv $$1) {
+public class ccv extends ccm {
+   public ccv(bja<? extends ccv> $$0, cqb $$1) {
       super($$0, $$1);
    }
 
-   public ccv(cpv $$0, bjg $$1) {
-      super(biu.D, $$1, $$0);
+   public ccv(cqb $$0, bjm $$1, double $$2, double $$3, double $$4) {
+      super(bja.aM, $$1, $$2, $$3, $$4, $$0);
+   }
+
+   public ccv(cqb $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super(bja.aM, $$1, $$2, $$3, $$4, $$5, $$6, $$0);
    }
 
    @Override
-   protected cja s() {
-      return cji.rq;
-   }
-
-   @Override
-   protected void a(ehk $$0) {
+   protected void a(ehe $$0) {
       super.a($$0);
-      $$0.a().a(this.dM().b(this, this.v()), 0.0F);
-   }
-
-   @Override
-   protected void a(ehl $$0) {
-      super.a($$0);
-
-      for (int $$1 = 0; $$1 < 32; $$1++) {
-         this.dL().a(iv.X, this.dq(), this.ds() + this.ag.j() * 2.0, this.dw(), this.ag.k(), 0.0, this.ag.k());
-      }
-
-      if (!this.dL().B && !this.dG()) {
-         biq $$2 = this.v();
-         if ($$2 instanceof akr $$3) {
-            if ($$3.c.c() && $$3.dL() == this.dL() && !$$3.fC()) {
-               if (this.ag.i() < 0.05F && this.dL().X().b(cpr.e)) {
-                  byz $$4 = biu.F.a(this.dL());
-                  if ($$4 != null) {
-                     $$4.b($$2.dq(), $$2.ds(), $$2.dw(), $$2.dB(), $$2.dD());
-                     this.dL().b($$4);
-                  }
-               }
-
-               if ($$2.bN()) {
-                  $$3.a(this.dq(), this.ds(), this.dw());
-               } else {
-                  $$2.b(this.dq(), this.ds(), this.dw());
-               }
-
-               $$2.n();
-               $$2.a(this.dM().k(), 5.0F);
-            }
-         } else if ($$2 != null) {
-            $$2.b(this.dq(), this.ds(), this.dw());
-            $$2.n();
+      if (!this.dL().B) {
+         biw $$1 = $$0.a();
+         biw $$2 = this.v();
+         int $$3 = $$1.ax();
+         $$1.g(5);
+         if (!$$1.a(this.dM().a((ccm)this, $$2), 5.0F)) {
+            $$1.h($$3);
+         } else if ($$2 instanceof bjm) {
+            this.a((bjm)$$2, $$1);
          }
+      }
+   }
 
+   @Override
+   protected void a(ehd $$0) {
+      super.a($$0);
+      if (!this.dL().B) {
+         biw $$1 = this.v();
+         if (!($$1 instanceof bjo) || this.dL().X().b(cpx.c)) {
+            gw $$2 = $$0.a().a($$0.b());
+            if (this.dL().t($$2)) {
+               this.dL().b($$2, csp.a(this.dL(), $$2));
+            }
+         }
+      }
+   }
+
+   @Override
+   protected void a(ehf $$0) {
+      super.a($$0);
+      if (!this.dL().B) {
          this.ak();
       }
    }
 
    @Override
-   public void l() {
-      biq $$0 = this.v();
-      if ($$0 instanceof akr && !$$0.bv() && this.dL().X().b(cpr.U)) {
-         this.ak();
-      } else {
-         super.l();
-      }
+   public boolean br() {
+      return false;
    }
 
-   @Nullable
    @Override
-   public biq b(akq $$0) {
-      biq $$1 = this.v();
-      if ($$1 != null && $$1.dL().ac() != $$0.ac()) {
-         this.b(null);
-      }
-
-      return super.b($$0);
+   public boolean a(bhu $$0, float $$1) {
+      return false;
    }
 }

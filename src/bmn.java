@@ -1,29 +1,37 @@
-import com.google.common.collect.ImmutableMap;
+public abstract class bmn<E extends bjm> implements ble<E>, bos<E> {
+   private bld.a a;
 
-public class bmn extends bkx<bji> {
-   private final bgd c;
-   private final float d;
-   private final float e;
-   private final float f;
+   public bmn() {
+      this.a = bld.a.a;
+   }
 
-   public bmn(bgd $$0, float $$1, float $$2, float $$3) {
-      super(ImmutableMap.of(bsh.n, bsi.b, bsh.P, bsi.b));
-      if ($$2 > $$3) {
-         throw new IllegalArgumentException("Minimum pitch is larger than maximum pitch! " + $$2 + " > " + $$3);
+   @Override
+   public final bld.a a() {
+      return this.a;
+   }
+
+   @Override
+   public final boolean e(akt $$0, E $$1, long $$2) {
+      if (this.trigger($$0, $$1, $$2)) {
+         this.a = bld.a.b;
+         return true;
       } else {
-         this.c = $$0;
-         this.d = $$1;
-         this.e = $$2;
-         this.f = $$3 - $$2;
+         return false;
       }
    }
 
-   protected void a(akq $$0, bji $$1, long $$2) {
-      asc $$3 = $$1.ef();
-      float $$4 = arw.a($$3.i() * this.f + this.e, -90.0F, 90.0F);
-      float $$5 = arw.g($$1.dB() + 2.0F * $$3.i() * this.d - this.d);
-      ehn $$6 = ehn.a($$4, $$5);
-      $$1.dN().a(bsh.n, new bla($$1.bp().e($$6)));
-      $$1.dN().a(bsh.P, this.c.a($$3));
+   @Override
+   public final void f(akt $$0, E $$1, long $$2) {
+      this.g($$0, $$1, $$2);
+   }
+
+   @Override
+   public final void g(akt $$0, E $$1, long $$2) {
+      this.a = bld.a.a;
+   }
+
+   @Override
+   public String b() {
+      return this.getClass().getSimpleName();
    }
 }

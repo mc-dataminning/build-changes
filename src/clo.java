@@ -1,62 +1,41 @@
-public class clo extends cln {
-   private final ha b;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
 
-   public clo(cpv $$0, gw $$1, ha $$2, cjf $$3, ha $$4) {
-      super($$0, null, bgx.a, $$3, new ehj(ehn.c($$1), $$4, $$1, false));
-      this.b = $$2;
+public record clo(String c, he<cjg> d, float e, Map<cgx, String> f, tl g) {
+   public static final Codec<clo> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               arj.x.fieldOf("asset_name").forGetter(clo::a),
+               aew.a(jc.E).fieldOf("ingredient").forGetter(clo::b),
+               Codec.FLOAT.fieldOf("item_model_index").forGetter(clo::c),
+               Codec.unboundedMap(cgx.h, Codec.STRING).optionalFieldOf("override_armor_materials", Map.of()).forGetter(clo::d),
+               tn.a.fieldOf("description").forGetter(clo::e)
+            )
+            .apply($$0, clo::new)
+   );
+   public static final Codec<he<clo>> b = aev.a(jc.aE, a);
+
+   public static clo a(String $$0, cjg $$1, float $$2, tl $$3, Map<cgx, String> $$4) {
+      return new clo($$0, jb.i.d($$1), $$2, $$4, $$3);
    }
 
-   @Override
-   public gw a() {
-      return this.j().a();
+   public String a() {
+      return this.c;
    }
 
-   @Override
-   public boolean b() {
-      return this.q().a_(this.j().a()).a(this);
+   public he<cjg> b() {
+      return this.d;
    }
 
-   @Override
-   public boolean c() {
-      return this.b();
+   public float c() {
+      return this.e;
    }
 
-   @Override
-   public ha d() {
-      return ha.a;
+   public Map<cgx, String> d() {
+      return this.f;
    }
 
-   @Override
-   public ha[] f() {
-      switch (this.b) {
-         case a:
-         default:
-            return new ha[]{ha.a, ha.c, ha.f, ha.d, ha.e, ha.b};
-         case b:
-            return new ha[]{ha.a, ha.b, ha.c, ha.f, ha.d, ha.e};
-         case c:
-            return new ha[]{ha.a, ha.c, ha.f, ha.e, ha.b, ha.d};
-         case d:
-            return new ha[]{ha.a, ha.d, ha.f, ha.e, ha.b, ha.c};
-         case e:
-            return new ha[]{ha.a, ha.e, ha.d, ha.b, ha.c, ha.f};
-         case f:
-            return new ha[]{ha.a, ha.f, ha.d, ha.b, ha.c, ha.e};
-      }
-   }
-
-   @Override
-   public ha g() {
-      return this.b.o() == ha.a.b ? ha.c : this.b;
-   }
-
-   @Override
-   public boolean h() {
-      return false;
-   }
-
-   @Override
-   public float i() {
-      return (float)(this.b.e() * 90);
+   public tl e() {
+      return this.g;
    }
 }

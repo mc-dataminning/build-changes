@@ -1,88 +1,93 @@
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
+import it.unimi.dsi.fastutil.HashCommon;
+import java.util.Arrays;
+import java.util.Collection;
+import javax.annotation.Nullable;
 
-public class cei {
-   private final int a;
-   private final float b;
-   private final boolean c;
-   private final boolean d;
-   private final boolean e;
-   private final List<Pair<bid, Float>> f;
+public final class cei {
+   private static final cei b = new cei(null, 0L);
+   public static final int a = 64;
+   @Nullable
+   private final cej c;
+   private final long d;
 
-   cei(int $$0, float $$1, boolean $$2, boolean $$3, boolean $$4, List<Pair<bid, Float>> $$5) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
+   private cei(@Nullable cej $$0, long $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
-   public int a() {
-      return this.a;
+   static cei a(cej $$0, Collection<ceg> $$1) {
+      if ($$1.isEmpty()) {
+         return b;
+      } else {
+         long $$2 = a($$0, 0L, $$1);
+         return new cei($$0, $$2);
+      }
    }
 
-   public float b() {
-      return this.b;
+   public static cei a() {
+      return b;
    }
 
-   public boolean c() {
-      return this.c;
+   public static cei a(ceg $$0) {
+      return new cei($$0.a, $$0.b);
    }
 
-   public boolean d() {
-      return this.d;
+   public static cei a(ceg $$0, ceg... $$1) {
+      long $$2 = $$1.length == 0 ? $$0.b : a($$0.a, $$0.b, Arrays.asList($$1));
+      return new cei($$0.a, $$2);
    }
 
-   public boolean e() {
-      return this.e;
+   private static long a(cej $$0, long $$1, Iterable<ceg> $$2) {
+      for (ceg $$3 : $$2) {
+         if ($$0 != $$3.a) {
+            throw new IllegalStateException("Mismatched feature universe, expected '" + $$0 + "', but got '" + $$3.a + "'");
+         }
+
+         $$1 |= $$3.b;
+      }
+
+      return $$1;
    }
 
-   public List<Pair<bid, Float>> f() {
-      return this.f;
+   public boolean b(ceg $$0) {
+      return this.c != $$0.a ? false : (this.d & $$0.b) != 0L;
    }
 
-   public static class a {
-      private int a;
-      private float b;
-      private boolean c;
-      private boolean d;
-      private boolean e;
-      private final List<Pair<bid, Float>> f = Lists.newArrayList();
+   public boolean a(cei $$0) {
+      if (this.c == null) {
+         return true;
+      } else {
+         return this.c != $$0.c ? false : (this.d & ~$$0.d) == 0L;
+      }
+   }
 
-      public cei.a a(int $$0) {
-         this.a = $$0;
+   public cei b(cei $$0) {
+      if (this.c == null) {
+         return $$0;
+      } else if ($$0.c == null) {
          return this;
+      } else if (this.c != $$0.c) {
+         throw new IllegalArgumentException("Mismatched set elements: '" + this.c + "' != '" + $$0.c + "'");
+      } else {
+         return new cei(this.c, this.d | $$0.d);
       }
+   }
 
-      public cei.a a(float $$0) {
-         this.b = $$0;
-         return this;
-      }
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof cei $$1 && this.c == $$1.c && this.d == $$1.d) {
+            return true;
+         }
 
-      public cei.a a() {
-         this.c = true;
-         return this;
+         return false;
       }
+   }
 
-      public cei.a b() {
-         this.d = true;
-         return this;
-      }
-
-      public cei.a c() {
-         this.e = true;
-         return this;
-      }
-
-      public cei.a a(bid $$0, float $$1) {
-         this.f.add(Pair.of($$0, $$1));
-         return this;
-      }
-
-      public cei d() {
-         return new cei(this.a, this.b, this.c, this.d, this.e, this.f);
-      }
+   @Override
+   public int hashCode() {
+      return (int)HashCommon.mix(this.d);
    }
 }

@@ -1,41 +1,41 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
-public class dyf extends dyy {
+public class dyf extends dyi {
    public static final Codec<dyf> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               hs.a(jc.e).optionalFieldOf("rottable_blocks").forGetter($$0x -> $$0x.b),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("integrity").forGetter($$0x -> $$0x.c)
+               Codec.FLOAT.fieldOf("min_chance").orElse(0.0F).forGetter($$0x -> $$0x.b),
+               Codec.FLOAT.fieldOf("max_chance").orElse(0.0F).forGetter($$0x -> $$0x.d),
+               Codec.INT.fieldOf("min_dist").orElse(0).forGetter($$0x -> $$0x.e),
+               Codec.INT.fieldOf("max_dist").orElse(0).forGetter($$0x -> $$0x.f)
             )
             .apply($$0, dyf::new)
    );
-   private final Optional<hi<csv>> b;
-   private final float c;
+   private final float b;
+   private final float d;
+   private final int e;
+   private final int f;
 
-   public dyf(hi<csv> $$0, float $$1) {
-      this(Optional.of($$0), $$1);
-   }
-
-   public dyf(float $$0) {
-      this(Optional.empty(), $$0);
-   }
-
-   private dyf(Optional<hi<csv>> $$0, float $$1) {
-      this.c = $$1;
-      this.b = $$0;
-   }
-
-   @Nullable
-   @Override
-   public dzb.c a(cpy $$0, gw $$1, gw $$2, dzb.c $$3, dzb.c $$4, dyx $$5) {
-      asc $$6 = $$5.b($$4.a());
-      return (!this.b.isPresent() || $$3.b().a(this.b.get())) && !($$6.i() <= this.c) ? null : $$4;
+   public dyf(float $$0, float $$1, int $$2, int $$3) {
+      if ($$2 >= $$3) {
+         throw new IllegalArgumentException("Invalid range: [" + $$2 + "," + $$3 + "]");
+      } else {
+         this.b = $$0;
+         this.d = $$1;
+         this.e = $$2;
+         this.f = $$3;
+      }
    }
 
    @Override
-   protected dza<?> a() {
-      return dza.f;
+   public boolean a(gw $$0, gw $$1, gw $$2, ash $$3) {
+      int $$4 = $$1.k($$2);
+      float $$5 = $$3.i();
+      return $$5 <= asb.b(this.b, this.d, asb.g((float)$$4, (float)this.e, (float)this.f));
+   }
+
+   @Override
+   protected dyj<?> a() {
+      return dyj.b;
    }
 }

@@ -1,97 +1,42 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
-import java.util.Set;
-import java.util.stream.Collectors;
+import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
+import java.util.function.BiConsumer;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public class bnr extends bkx<cbh> {
-   private static final int c = 5;
-   private static final float d = 0.5F;
-   private Set<cja> e = ImmutableSet.of();
+public class bnr {
+   private static final int a = 200;
 
-   public bnr() {
-      super(ImmutableMap.of(bsh.q, bsi.a, bsh.h, bsi.a));
+   public static <E extends bjo> ble<E> a(BiConsumer<E, bjm> $$0) {
+      return a($$0x -> false, $$0, true);
    }
 
-   protected boolean a(akq $$0, cbh $$1) {
-      return bkz.a($$1.dN(), bsh.q, biu.bf);
+   public static <E extends bjo> ble<E> a(Predicate<bjm> $$0) {
+      return a($$0, ($$0x, $$1) -> {
+      }, true);
    }
 
-   protected boolean a(akq $$0, cbh $$1, long $$2) {
-      return this.a($$0, $$1);
+   public static <E extends bjo> ble<E> a() {
+      return a($$0 -> false, ($$0, $$1) -> {
+      }, true);
    }
 
-   protected void b(akq $$0, cbh $$1, long $$2) {
-      cbh $$3 = (cbh)$$1.dN().c(bsh.q).get();
-      bkz.a($$1, $$3, 0.5F);
-      this.e = a($$1, $$3);
-   }
-
-   protected void c(akq $$0, cbh $$1, long $$2) {
-      cbh $$3 = (cbh)$$1.dN().c(bsh.q).get();
-      if (!($$1.f($$3) > 5.0)) {
-         bkz.a($$1, $$3, 0.5F);
-         $$1.a($$0, $$3, $$2);
-         if ($$1.gv() && ($$1.go().b() == cbk.g || $$3.gw())) {
-            a($$1, cbh.bW.keySet(), $$3);
-         }
-
-         if ($$3.go().b() == cbk.g && $$1.y().a_(cji.oI) > cji.oI.l() / 2) {
-            a($$1, ImmutableSet.of(cji.oI), $$3);
-         }
-
-         if (!this.e.isEmpty() && $$1.y().a(this.e)) {
-            a($$1, this.e, $$3);
-         }
-      }
-   }
-
-   protected void d(akq $$0, cbh $$1, long $$2) {
-      $$1.dN().b(bsh.q);
-   }
-
-   private static Set<cja> a(cbh $$0, cbh $$1) {
-      ImmutableSet<cja> $$2 = $$1.go().b().d();
-      ImmutableSet<cja> $$3 = $$0.go().b().d();
-      return $$2.stream().filter($$1x -> !$$3.contains($$1x)).collect(Collectors.toSet());
-   }
-
-   private static void a(cbh $$0, Set<cja> $$1, bjg $$2) {
-      bhf $$3 = $$0.y();
-      cjf $$4 = cjf.b;
-      int $$5 = 0;
-
-      while ($$5 < $$3.b()) {
-         cjf $$6;
-         cja $$7;
-         int $$8;
-         label28: {
-            $$6 = $$3.a($$5);
-            if (!$$6.b()) {
-               $$7 = $$6.d();
-               if ($$1.contains($$7)) {
-                  if ($$6.L() > $$6.g() / 2) {
-                     $$8 = $$6.L() / 2;
-                     break label28;
+   public static <E extends bjo> ble<E> a(Predicate<bjm> $$0, BiConsumer<E, bjm> $$1, boolean $$2) {
+      return bop.a(
+         (Function<bop.b<E>, ? extends App<bop.c<E>, bos<E>>>)($$3 -> $$3.group($$3.b(bsn.o), $$3.a(bsn.E)).apply($$3, ($$4, $$5) -> ($$6, $$7, $$8) -> {
+                  bjm $$9 = $$3.b($$4);
+                  if ($$7.c($$9) && (!$$2 || !a($$7, $$3.a($$5))) && $$9.bv() && $$9.dL() == $$7.dL() && !$$0.test($$9)) {
+                     return true;
+                  } else {
+                     $$1.accept((E)$$7, $$9);
+                     $$4.b();
+                     return true;
                   }
+               }))
+      );
+   }
 
-                  if ($$6.L() > 24) {
-                     $$8 = $$6.L() - 24;
-                     break label28;
-                  }
-               }
-            }
-
-            $$5++;
-            continue;
-         }
-
-         $$6.h($$8);
-         $$4 = new cjf($$7, $$8);
-         break;
-      }
-
-      if (!$$4.b()) {
-         bkz.a($$0, $$4, $$2.dj());
-      }
+   private static boolean a(bjm $$0, Optional<Long> $$1) {
+      return $$1.isPresent() && $$0.dL().V() - $$1.get() > 200L;
    }
 }

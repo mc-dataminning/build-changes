@@ -1,60 +1,35 @@
-import javax.annotation.Nullable;
+public class cjz extends cku {
+   public static final String c = "SkullOwner";
 
-public class cjz extends cgy {
-   public cjz(csv $$0, cja.a $$1) {
-      super($$0, $$1);
+   public cjz(ctc $$0, ctc $$1, cjg.a $$2) {
+      super($$0, $$1, $$2, ha.a);
    }
 
-   @Nullable
    @Override
-   public cln b(cln $$0) {
-      gw $$1 = $$0.a();
-      cpv $$2 = $$0.q();
-      dfj $$3 = $$2.a_($$1);
-      csv $$4 = this.e();
-      if (!$$3.a($$4)) {
-         return czk.a($$2, $$1) == 7 ? null : $$0;
-      } else {
-         ha $$5;
-         if ($$0.h()) {
-            $$5 = $$0.m() ? $$0.k().g() : $$0.k();
-         } else {
-            $$5 = $$0.k() == ha.b ? $$0.g() : ha.b;
-         }
-
-         int $$7 = 0;
-         gw.a $$8 = $$1.j().c($$5);
-
-         while ($$7 < 7) {
-            if (!$$2.B && !$$2.j($$8)) {
-               cbu $$9 = $$0.o();
-               int $$10 = $$2.aj();
-               if ($$9 instanceof akr && $$8.v() >= $$10) {
-                  ((akr)$$9).b(tl.a("build.tooHigh", $$10 - 1).a(n.m), true);
-               }
-               break;
-            }
-
-            $$3 = $$2.a_($$8);
-            if (!$$3.a(this.e())) {
-               if ($$3.a($$0)) {
-                  return cln.a($$0, $$8, $$5);
-               }
-               break;
-            }
-
-            $$8.c($$5);
-            if ($$5.o().d()) {
-               $$7++;
+   public tl m(cjl $$0) {
+      if ($$0.a(cjo.tt) && $$0.u()) {
+         String $$1 = null;
+         qw $$2 = $$0.v();
+         if ($$2.b("SkullOwner", 8)) {
+            $$1 = $$2.l("SkullOwner");
+         } else if ($$2.b("SkullOwner", 10)) {
+            qw $$3 = $$2.p("SkullOwner");
+            if ($$3.b("Name", 8)) {
+               $$1 = $$3.l("Name");
             }
          }
 
-         return null;
+         if ($$1 != null) {
+            return tl.a(this.a() + ".named", $$1);
+         }
       }
+
+      return super.m($$0);
    }
 
    @Override
-   protected boolean d() {
-      return false;
+   public void b(qw $$0) {
+      super.b($$0);
+      dej.e($$0);
    }
 }

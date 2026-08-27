@@ -1,136 +1,45 @@
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import java.util.Map;
-import java.util.NoSuchElementException;
-import java.util.Set;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 import java.util.function.Consumer;
-import javax.annotation.Nullable;
 
-public class ecw {
-   private final akq a;
-   private final Map<eey<?>, Object> b;
-   private final Map<aew, ecw.b> c;
-   private final float d;
+public abstract class ecw extends edd {
+   protected final List<edd> d;
+   private final ecv a;
 
-   public ecw(akq $$0, Map<eey<?>, Object> $$1, Map<aew, ecw.b> $$2, float $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+   protected ecw(List<edd> $$0, List<efj> $$1) {
+      super($$1);
+      this.d = $$0;
+      this.a = this.a($$0);
    }
 
-   public akq a() {
-      return this.a;
-   }
+   @Override
+   public void a(ect $$0) {
+      super.a($$0);
+      if (this.d.isEmpty()) {
+         $$0.a("Empty children list");
+      }
 
-   public boolean a(eey<?> $$0) {
-      return this.b.containsKey($$0);
-   }
-
-   public <T> T b(eey<T> $$0) {
-      T $$1 = (T)this.b.get($$0);
-      if ($$1 == null) {
-         throw new NoSuchElementException($$0.a().toString());
-      } else {
-         return $$1;
+      for (int $$1 = 0; $$1 < this.d.size(); $$1++) {
+         this.d.get($$1).a($$0.b(".entry[" + $$1 + "]"));
       }
    }
 
-   @Nullable
-   public <T> T c(eey<T> $$0) {
-      return (T)this.b.get($$0);
+   protected abstract ecv a(List<? extends ecv> var1);
+
+   @Override
+   public final boolean expand(eck $$0, Consumer<edc> $$1) {
+      return !this.a($$0) ? false : this.a.expand($$0, $$1);
    }
 
-   @Nullable
-   public <T> T d(eey<T> $$0) {
-      return (T)this.b.get($$0);
-   }
-
-   public void a(aew $$0, Consumer<cjf> $$1) {
-      ecw.b $$2 = this.c.get($$0);
-      if ($$2 != null) {
-         $$2.add($$1);
-      }
-   }
-
-   public float b() {
-      return this.d;
-   }
-
-   public static class a {
-      private final akq a;
-      private final Map<eey<?>, Object> b = Maps.newIdentityHashMap();
-      private final Map<aew, ecw.b> c = Maps.newHashMap();
-      private float d;
-
-      public a(akq $$0) {
-         this.a = $$0;
-      }
-
-      public akq a() {
-         return this.a;
-      }
-
-      public <T> ecw.a a(eey<T> $$0, T $$1) {
-         this.b.put($$0, $$1);
-         return this;
-      }
-
-      public <T> ecw.a b(eey<T> $$0, @Nullable T $$1) {
-         if ($$1 == null) {
-            this.b.remove($$0);
-         } else {
-            this.b.put($$0, $$1);
-         }
-
-         return this;
-      }
-
-      public <T> T a(eey<T> $$0) {
-         T $$1 = (T)this.b.get($$0);
-         if ($$1 == null) {
-            throw new NoSuchElementException($$0.a().toString());
-         } else {
-            return $$1;
-         }
-      }
-
-      @Nullable
-      public <T> T b(eey<T> $$0) {
-         return (T)this.b.get($$0);
-      }
-
-      public ecw.a a(aew $$0, ecw.b $$1) {
-         ecw.b $$2 = this.c.put($$0, $$1);
-         if ($$2 != null) {
-            throw new IllegalStateException("Duplicated dynamic drop '" + this.c + "'");
-         } else {
-            return this;
-         }
-      }
-
-      public ecw.a a(float $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      public ecw a(eez $$0) {
-         Set<eey<?>> $$1 = Sets.difference(this.b.keySet(), $$0.b());
-         if (!$$1.isEmpty()) {
-            throw new IllegalArgumentException("Parameters not allowed in this parameter set: " + $$1);
-         } else {
-            Set<eey<?>> $$2 = Sets.difference($$0.a(), this.b.keySet());
-            if (!$$2.isEmpty()) {
-               throw new IllegalArgumentException("Missing required parameters: " + $$2);
-            } else {
-               return new ecw(this.a, this.b, this.c, this.d);
-            }
-         }
-      }
+   public static <T extends ecw> Codec<T> a(ecw.a<T> $$0) {
+      return RecordCodecBuilder.create(
+         $$1 -> $$1.group(arj.a(edb.a.listOf(), "children", List.of()).forGetter($$0xx -> $$0xx.d)).and(a($$1).t1()).apply($$1, $$0::create)
+      );
    }
 
    @FunctionalInterface
-   public interface b {
-      void add(Consumer<cjf> var1);
+   public interface a<T extends ecw> {
+      T create(List<edd> var1, List<efj> var2);
    }
 }

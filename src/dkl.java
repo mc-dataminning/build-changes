@@ -1,105 +1,26 @@
 import com.mojang.serialization.Codec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public interface dkl {
-   Codec<dkl> b = dkm.b;
-   Codec<he<dkl>> c = aes.a(jc.at, b);
-   Codec<dkl> d = c.xmap(dkm.j::new, $$0 -> (he)($$0 instanceof dkm.j $$1 ? $$1.j() : new he.a<>($$0)));
+public class dkl {
+   private static final Codec<Double> f = Codec.doubleRange(0.01, 50.0);
+   public static final Codec<dkl> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               f.fieldOf("filling").orElse(1.7).forGetter($$0x -> $$0x.b),
+               f.fieldOf("inner_layer").orElse(2.2).forGetter($$0x -> $$0x.c),
+               f.fieldOf("middle_layer").orElse(3.2).forGetter($$0x -> $$0x.d),
+               f.fieldOf("outer_layer").orElse(4.2).forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, dkl::new)
+   );
+   public final double b;
+   public final double c;
+   public final double d;
+   public final double e;
 
-   double a(dkl.b var1);
-
-   void a(double[] var1, dkl.a var2);
-
-   dkl a(dkl.f var1);
-
-   double a();
-
-   double b();
-
-   arq<? extends dkl> c();
-
-   default dkl a(double $$0, double $$1) {
-      return new dkm.g(this, $$0, $$1);
-   }
-
-   default dkl d() {
-      return dkm.a(this, dkm.k.a.a);
-   }
-
-   default dkl e() {
-      return dkm.a(this, dkm.k.a.b);
-   }
-
-   default dkl f() {
-      return dkm.a(this, dkm.k.a.c);
-   }
-
-   default dkl g() {
-      return dkm.a(this, dkm.k.a.d);
-   }
-
-   default dkl h() {
-      return dkm.a(this, dkm.k.a.e);
-   }
-
-   default dkl i() {
-      return dkm.a(this, dkm.k.a.f);
-   }
-
-   public interface a {
-      dkl.b a(int var1);
-
-      void a(double[] var1, dkl var2);
-   }
-
-   public interface b {
-      int a();
-
-      int b();
-
-      int c();
-
-      default dlu d() {
-         return dlu.a();
-      }
-   }
-
-   public static record c(he<dzp.a> b, @Nullable dzp c) {
-      public static final Codec<dkl.c> a = dzp.a.b.xmap($$0 -> new dkl.c($$0, null), dkl.c::b);
-
-      public c(he<dzp.a> $$0) {
-         this($$0, null);
-      }
-
-      public double a(double $$0, double $$1, double $$2) {
-         return this.c == null ? 0.0 : this.c.a($$0, $$1, $$2);
-      }
-
-      public double a() {
-         return this.c == null ? 2.0 : this.c.a();
-      }
-   }
-
-   public interface d extends dkl {
-      @Override
-      default void a(double[] $$0, dkl.a $$1) {
-         $$1.a($$0, this);
-      }
-
-      @Override
-      default dkl a(dkl.f $$0) {
-         return $$0.apply(this);
-      }
-   }
-
-   public static record e(int a, int b, int c) implements dkl.b {
-   }
-
-   public interface f {
-      dkl apply(dkl var1);
-
-      default dkl.c a(dkl.c $$0) {
-         return $$0;
-      }
+   public dkl(double $$0, double $$1, double $$2, double $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
    }
 }

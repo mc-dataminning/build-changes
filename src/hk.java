@@ -1,7 +1,7 @@
 import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenCustomHashMap;
+import it.unimi.dsi.fastutil.objects.Reference2IntMap;
+import it.unimi.dsi.fastutil.objects.Reference2IntOpenHashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
@@ -9,7 +9,7 @@ import javax.annotation.Nullable;
 
 public class hk<T> implements hj<T> {
    private int b;
-   private final Object2IntMap<T> c;
+   private final Reference2IntMap<T> c;
    private final List<T> d;
 
    public hk() {
@@ -18,7 +18,7 @@ public class hk<T> implements hj<T> {
 
    public hk(int $$0) {
       this.d = Lists.newArrayListWithExpectedSize($$0);
-      this.c = new Object2IntOpenCustomHashMap($$0, ac.k());
+      this.c = new Reference2IntOpenHashMap($$0);
       this.c.defaultReturnValue(-1);
    }
 

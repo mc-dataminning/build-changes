@@ -1,33 +1,69 @@
-public interface eit extends bgr {
-   @Override
-   default int b() {
-      return 1;
+import it.unimi.dsi.fastutil.Hash.Strategy;
+import java.util.Comparator;
+import javax.annotation.Nullable;
+
+public record eit<T>(T d, gw e, long f, eix g, long h) {
+   public static final Comparator<eit<?>> a = ($$0, $$1) -> {
+      int $$2 = Long.compare($$0.f, $$1.f);
+      if ($$2 != 0) {
+         return $$2;
+      } else {
+         $$2 = $$0.g.compareTo($$1.g);
+         return $$2 != 0 ? $$2 : Long.compare($$0.h, $$1.h);
+      }
+   };
+   public static final Comparator<eit<?>> b = ($$0, $$1) -> {
+      int $$2 = $$0.g.compareTo($$1.g);
+      return $$2 != 0 ? $$2 : Long.compare($$0.h, $$1.h);
+   };
+   public static final Strategy<eit<?>> c = new Strategy<eit<?>>() {
+      public int a(eit<?> $$0) {
+         return 31 * $$0.b().hashCode() + $$0.a().hashCode();
+      }
+
+      public boolean a(@Nullable eit<?> $$0, @Nullable eit<?> $$1) {
+         if ($$0 == $$1) {
+            return true;
+         } else {
+            return $$0 != null && $$1 != null ? $$0.a() == $$1.a() && $$0.b().equals($$1.b()) : false;
+         }
+      }
+   };
+
+   public eit(T $$0, gw $$1, long $$2, long $$3) {
+      this($$0, $$1, $$2, eix.d, $$3);
    }
 
-   @Override
-   default boolean af_() {
-      return this.av_().b();
+   public eit(T d, gw e, long f, eix g, long h) {
+      e = e.i();
+      this.d = d;
+      this.e = e;
+      this.f = f;
+      this.g = g;
+      this.h = h;
    }
 
-   @Override
-   default void a() {
-      this.j();
+   public static <T> eit<T> a(T $$0, gw $$1) {
+      return new eit<>($$0, $$1, 0L, eix.d, 0L);
    }
 
-   default cjf av_() {
-      return this.a(0);
+   public T a() {
+      return this.d;
    }
 
-   default cjf j() {
-      return this.b(0);
+   public gw b() {
+      return this.e;
    }
 
-   default void b(cjf $$0) {
-      this.a(0, $$0);
+   public long c() {
+      return this.f;
    }
 
-   @Override
-   default cjf b(int $$0) {
-      return this.a($$0, this.ag_());
+   public eix d() {
+      return this.g;
+   }
+
+   public long e() {
+      return this.h;
    }
 }

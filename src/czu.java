@@ -1,105 +1,37 @@
-import com.google.common.collect.Maps;
-import java.util.List;
-import java.util.Map;
+import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class czu extends csi {
-   private static final float c = 1.0F;
-   private static final eig d = csv.a(0.0, 15.0, 0.0, 16.0, 16.0, 16.0);
-   private static final eig e = csv.a(0.0, 0.0, 0.0, 16.0, 1.0, 16.0);
-   private static final eig f = csv.a(0.0, 0.0, 0.0, 1.0, 16.0, 16.0);
-   private static final eig g = csv.a(15.0, 0.0, 0.0, 16.0, 16.0, 16.0);
-   private static final eig h = csv.a(0.0, 0.0, 0.0, 16.0, 16.0, 1.0);
-   private static final eig i = csv.a(0.0, 0.0, 15.0, 16.0, 16.0, 16.0);
-   private static final Map<ha, eig> j = ac.a(Maps.newEnumMap(ha.class), $$0 -> {
-      $$0.put(ha.c, h);
-      $$0.put(ha.f, g);
-      $$0.put(ha.d, i);
-      $$0.put(ha.e, f);
-      $$0.put(ha.b, d);
-      $$0.put(ha.a, e);
-   });
-   public static final dgh<ha> a = cuu.a;
-   public static final aew b = new aew("contents");
-   @Nullable
-   private final cht k;
+public class czu extends cso implements dab {
+   public static final MapCodec<czu> a = b(czu::new);
+   public static final dfu b = dft.F;
+   public static final dfu c = dft.C;
+   public static final dfu d = dft.G;
+   protected static final eia e = ctc.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0);
+   public static final double f = e.c(ha.a.b);
 
-   public czu(@Nullable cht $$0, dfi.d $$1) {
-      super($$1);
-      this.k = $$0;
-      this.k(this.C.b().a(a, ha.b));
+   @Override
+   public MapCodec<czu> a() {
+      return a;
+   }
+
+   public czu(dfc.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(b, Boolean.valueOf(false)).a(c, Boolean.valueOf(false)).a(d, Boolean.valueOf(false)));
    }
 
    @Override
-   public dcv a(gw $$0, dfj $$1) {
-      return new dec(this.k, $$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dcv> dcw<T> a(cpv $$0, dfj $$1, dcx<T> $$2) {
-      return a($$2, dcx.x, dec::a);
+   protected void a(dfe.a<ctc, dfd> $$0) {
+      $$0.a(b);
+      $$0.a(c);
+      $$0.a(d);
    }
 
    @Override
-   public cza b_(dfj $$0) {
-      return cza.b;
-   }
-
-   @Override
-   public bgy a(dfj $$0, cpv $$1, gw $$2, cbu $$3, bgx $$4, ehj $$5) {
-      if ($$1.B) {
-         return bgy.a;
-      } else if ($$3.M_()) {
-         return bgy.b;
-      } else if ($$1.c_($$2) instanceof dec $$7) {
-         if (a($$0, $$1, $$2, $$7)) {
-            $$3.a($$7);
-            $$3.a(apn.aq);
-            cal.a($$3, true);
-         }
-
-         return bgy.b;
-      } else {
-         return bgy.d;
-      }
-   }
-
-   private static boolean a(dfj $$0, cpv $$1, gw $$2, dec $$3) {
-      if ($$3.i() != dec.a.a) {
-         return true;
-      } else {
-         ehi $$4 = bzo.a($$0.c(a), 0.0F, 0.5F).a($$2).h(1.0E-6);
-         return $$1.b($$4);
-      }
-   }
-
-   @Override
-   public dfj a(cln $$0) {
-      return this.n().a(a, $$0.k());
-   }
-
-   @Override
-   protected void a(dfk.a<csv, dfj> $$0) {
-      $$0.a(a);
-   }
-
-   @Override
-   public void a(cpv $$0, gw $$1, dfj $$2, cbu $$3) {
-      dcv $$4 = $$0.c_($$1);
-      if ($$4 instanceof dec $$5) {
-         if (!$$0.B && $$3.f() && !$$5.af_()) {
-            cjf $$6 = b(this.a());
-            $$4.e($$6);
-            if ($$5.ac()) {
-               $$6.a($$5.ad());
-            }
-
-            byn $$7 = new byn($$0, (double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, $$6);
-            $$7.t();
-            $$0.b($$7);
-         } else {
-            $$5.e($$3);
+   public void a(cqb $$0, gw $$1, dfd $$2, biw $$3) {
+      if ($$0 instanceof akt $$4) {
+         aku $$5 = def.a($$3);
+         if ($$5 != null) {
+            $$4.a($$1, ddb.L).ifPresent($$2x -> $$2x.a($$4, $$5));
          }
       }
 
@@ -107,173 +39,79 @@ public class czu extends csi {
    }
 
    @Override
-   public List<cjf> a(dfj $$0, ecw.a $$1) {
-      dcv $$2 = $$1.b(efb.h);
-      if ($$2 instanceof dec $$3) {
-         $$1 = $$1.a(b, $$1x -> {
-            for (int $$2x = 0; $$2x < $$3.b(); $$2x++) {
-               $$1x.accept($$3.a($$2x));
-            }
-         });
+   public void a(dfd $$0, cqb $$1, gw $$2, dfd $$3, boolean $$4) {
+      if ($$1 instanceof akt $$5 && $$0.c(b) && !$$0.a($$3.b())) {
+         $$5.a($$2, ddb.L).ifPresent($$1x -> $$1x.a($$5));
       }
 
-      return super.a($$0, $$1);
+      super.a($$0, $$1, $$2, $$3, $$4);
    }
 
    @Override
-   public void a(cpv $$0, gw $$1, dfj $$2, bjg $$3, cjf $$4) {
-      if ($$4.A()) {
-         dcv $$5 = $$0.c_($$1);
-         if ($$5 instanceof dec) {
-            ((dec)$$5).a($$4.y());
-         }
+   public void a(dfd $$0, akt $$1, gw $$2, ash $$3) {
+      if ($$0.c(b)) {
+         $$1.a($$2, $$0.a(b, Boolean.valueOf(false)), 3);
+         $$1.a($$2, ddb.L).ifPresent($$1x -> $$1x.a($$1));
       }
    }
 
    @Override
-   public void a(dfj $$0, cpv $$1, gw $$2, dfj $$3, boolean $$4) {
-      if (!$$0.a($$3.b())) {
-         dcv $$5 = $$1.c_($$2);
-         if ($$5 instanceof dec) {
-            $$1.c($$2, $$0.b());
-         }
-
-         super.a($$0, $$1, $$2, $$3, $$4);
-      }
+   public czg b_(dfd $$0) {
+      return czg.c;
    }
 
    @Override
-   public void a(cjf $$0, @Nullable cpb $$1, List<tl> $$2, ckw $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      qw $$4 = cgy.a($$0);
-      if ($$4 != null) {
-         if ($$4.b("LootTable", 8)) {
-            $$2.add(tl.c("container.shulkerBox.unknownContents"));
-         }
-
-         if ($$4.b("Items", 9)) {
-            hn<cjf> $$5 = hn.a(27, cjf.b);
-            bgs.b($$4, $$5);
-            int $$6 = 0;
-            int $$7 = 0;
-
-            for (cjf $$8 : $$5) {
-               if (!$$8.b()) {
-                  $$7++;
-                  if ($$6 <= 4) {
-                     $$6++;
-                     $$2.add(tl.a("container.shulkerBox.itemCount", $$8.y(), String.valueOf($$8.L())));
-                  }
-               }
-            }
-
-            if ($$7 - $$6 > 0) {
-               $$2.add(tl.a("container.shulkerBox.more", $$7 - $$6).a(n.u));
-            }
-         }
-      }
+   public eia c(dfd $$0, cph $$1, gw $$2, ehm $$3) {
+      return e;
    }
 
    @Override
-   public eig b_(dfj $$0, cpb $$1, gw $$2) {
-      if ($$1.c_($$2) instanceof dec $$4 && !$$4.v()) {
-         return j.get($$0.c(a).g());
-      }
-
-      return eid.b();
+   public eia f(dfd $$0, cph $$1, gw $$2) {
+      return e;
    }
 
    @Override
-   public eig a(dfj $$0, cpb $$1, gw $$2, ehs $$3) {
-      dcv $$4 = $$1.c_($$2);
-      return $$4 instanceof dec ? eid.a(((dec)$$4).a($$0)) : eid.b();
-   }
-
-   @Override
-   public boolean d_(dfj $$0) {
+   public boolean g_(dfd $$0) {
       return true;
    }
 
+   @Nullable
    @Override
-   public int a(dfj $$0, cpv $$1, gw $$2) {
-      return cel.a($$1.c_($$2));
+   public dcz a(gw $$0, dfd $$1) {
+      return new def($$0, $$1);
    }
 
    @Override
-   public cjf a(cpb $$0, gw $$1, dfj $$2) {
-      cjf $$3 = super.a($$0, $$1, $$2);
-      $$0.a($$1, dcx.x).ifPresent($$1x -> $$1x.e($$3));
-      return $$3;
+   public dfd a(dfd $$0, ha $$1, dfd $$2, cqc $$3, gw $$4, gw $$5) {
+      if ($$0.c(c)) {
+         $$3.a($$4, eah.c, eah.c.a($$3));
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Nullable
-   public static cht b(cja $$0) {
-      return a(csv.a($$0));
+   @Override
+   public dfd a(clt $$0) {
+      return this.o().a(c, Boolean.valueOf($$0.q().b_($$0.a()).a() == eah.c));
    }
 
-   @Nullable
-   public static cht a(csv $$0) {
-      return $$0 instanceof czu ? ((czu)$$0).a() : null;
+   @Override
+   public eag c_(dfd $$0) {
+      return $$0.c(c) ? eah.c.a(false) : super.c_($$0);
    }
 
-   public static csv a(@Nullable cht $$0) {
-      if ($$0 == null) {
-         return csw.kP;
-      } else {
-         switch ($$0) {
-            case a:
-               return csw.kQ;
-            case b:
-               return csw.kR;
-            case c:
-               return csw.kS;
-            case d:
-               return csw.kT;
-            case e:
-               return csw.kU;
-            case f:
-               return csw.kV;
-            case g:
-               return csw.kW;
-            case h:
-               return csw.kX;
-            case i:
-               return csw.kY;
-            case j:
-               return csw.kZ;
-            case k:
-            default:
-               return csw.la;
-            case l:
-               return csw.lb;
-            case m:
-               return csw.lc;
-            case n:
-               return csw.ld;
-            case o:
-               return csw.le;
-            case p:
-               return csw.lf;
-         }
+   @Override
+   public void a(dfd $$0, akt $$1, gw $$2, cjl $$3, boolean $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      if ($$4) {
+         this.a($$1, $$2, $$3, bgg.a(5));
       }
    }
 
    @Nullable
-   public cht a() {
-      return this.k;
-   }
-
-   public static cjf b(@Nullable cht $$0) {
-      return new cjf(a($$0));
-   }
-
    @Override
-   public dfj a(dfj $$0, czh $$1) {
-      return $$0.a(a, $$1.a($$0.c(a)));
-   }
-
-   @Override
-   public dfj a(dfj $$0, cxq $$1) {
-      return $$0.a($$1.a($$0.c(a)));
+   public <T extends dcz> dda<T> a(cqb $$0, dfd $$1, ddb<T> $$2) {
+      return !$$0.B ? cso.a($$2, ddb.L, ($$0x, $$1x, $$2x, $$3) -> djw.c.a($$0x, $$3.gg(), $$3.gh())) : null;
    }
 }

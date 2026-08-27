@@ -1,75 +1,23 @@
-import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
-import java.util.List;
 
-public class dsn extends dss {
-   public static final Codec<dsn> a = dsb.a.fieldOf("provider").xmap(dsn::new, $$0 -> $$0.b).codec();
-   private final dsb b;
+public class dsn<P extends dsm> {
+   public static final dsn<dso> a = a("trunk_vine", dso.a);
+   public static final dsn<dsl> b = a("leave_vine", dsl.a);
+   public static final dsn<dsk> c = a("cocoa", dsk.a);
+   public static final dsn<dsj> d = a("beehive", dsj.a);
+   public static final dsn<dsh> e = a("alter_ground", dsh.a);
+   public static final dsn<dsi> f = a("attached_to_leaves", dsi.a);
+   private final Codec<P> g;
 
-   public dsn(dsb $$0) {
-      this.b = $$0;
+   private static <P extends dsm> dsn<P> a(String $$0, Codec<P> $$1) {
+      return hq.a(jb.aa, $$0, new dsn<>($$1));
    }
 
-   @Override
-   protected dst<?> a() {
-      return dst.e;
+   private dsn(Codec<P> $$0) {
+      this.g = $$0;
    }
 
-   @Override
-   public void a(dss.a $$0) {
-      List<gw> $$1 = Lists.newArrayList();
-      List<gw> $$2 = $$0.e();
-      List<gw> $$3 = $$0.c();
-      if ($$2.isEmpty()) {
-         $$1.addAll($$3);
-      } else if (!$$3.isEmpty() && $$2.get(0).v() == $$3.get(0).v()) {
-         $$1.addAll($$3);
-         $$1.addAll($$2);
-      } else {
-         $$1.addAll($$2);
-      }
-
-      if (!$$1.isEmpty()) {
-         int $$4 = $$1.get(0).v();
-         $$1.stream().filter($$1x -> $$1x.v() == $$4).forEach($$1x -> {
-            this.a($$0, $$1x.g().e());
-            this.a($$0, $$1x.g(2).e());
-            this.a($$0, $$1x.g().e(2));
-            this.a($$0, $$1x.g(2).e(2));
-
-            for (int $$2x = 0; $$2x < 5; $$2x++) {
-               int $$3x = $$0.b().a(64);
-               int $$4x = $$3x % 8;
-               int $$5 = $$3x / 8;
-               if ($$4x == 0 || $$4x == 7 || $$5 == 0 || $$5 == 7) {
-                  this.a($$0, $$1x.b(-3 + $$4x, 0, -3 + $$5));
-               }
-            }
-         });
-      }
-   }
-
-   private void a(dss.a $$0, gw $$1) {
-      for (int $$2 = -2; $$2 <= 2; $$2++) {
-         for (int $$3 = -2; $$3 <= 2; $$3++) {
-            if (Math.abs($$2) != 2 || Math.abs($$3) != 2) {
-               this.b($$0, $$1.b($$2, 0, $$3));
-            }
-         }
-      }
-   }
-
-   private void b(dss.a $$0, gw $$1) {
-      for (int $$2 = 2; $$2 >= -3; $$2--) {
-         gw $$3 = $$1.b($$2);
-         if (dnw.a($$0.a(), $$3)) {
-            $$0.a($$3, this.b.a($$0.b(), $$1));
-            break;
-         }
-
-         if (!$$0.a($$3) && $$2 < 0) {
-            break;
-         }
-      }
+   public Codec<P> a() {
+      return this.g;
    }
 }

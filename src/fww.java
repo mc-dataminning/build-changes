@@ -1,25 +1,24 @@
-public class fww extends fxp<buz, fey<buz>> {
-   private final foa a;
-
-   public fww(fvc<buz, fey<buz>> $$0, foa $$1) {
+public abstract class fww<T extends biw & bjz, M extends fey<T>> extends fxl<T, M> {
+   public fww(fuy<T, M> $$0) {
       super($$0);
-      this.a = $$1;
    }
 
-   public void a(elp $$0, foe $$1, int $$2, buz $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      boolean $$10 = $$3.fl() == bja.b;
-      $$0.a();
-      float $$11 = 1.0F;
-      float $$12 = -1.0F;
-      float $$13 = arw.e($$3.dD()) / 60.0F;
-      if ($$3.dD() < 0.0F) {
-         $$0.a(0.0F, 1.0F - $$13 * 0.5F, -1.0F + $$13 * 0.5F);
-      } else {
-         $$0.a(0.0F, 1.0F + $$13 * 0.8F, -1.0F + $$13 * 0.2F);
+   @Override
+   public void a(elj $$0, foa $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if ($$3.a()) {
+         float $$10 = (float)$$3.ah + $$6;
+         fey<T> $$11 = this.b();
+         $$11.a($$3, $$4, $$5, $$6);
+         this.c().a($$11);
+         eln $$12 = $$1.getBuffer(foi.a(this.a(), this.a($$10) % 1.0F, $$10 * 0.01F % 1.0F));
+         $$11.a($$3, $$4, $$5, $$7, $$8, $$9);
+         $$11.a($$0, $$12, $$2, fyr.d, 0.5F, 0.5F, 0.5F, 1.0F);
       }
-
-      cjf $$14 = $$10 ? $$3.eS() : $$3.eT();
-      this.a.a($$3, $$14, cjc.h, false, $$0, $$1, $$2);
-      $$0.b();
    }
+
+   protected abstract float a(float var1);
+
+   protected abstract aez a();
+
+   protected abstract fey<T> b();
 }

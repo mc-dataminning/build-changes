@@ -3,15 +3,15 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import javax.annotation.Nullable;
 
 public record cy(cl.d c) implements br {
-   public static final MapCodec<cy> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(arf.a(cl.d.d, "size", cl.d.c).forGetter(cy::b)).apply($$0, cy::new));
+   public static final MapCodec<cy> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(arj.a(cl.d.d, "size", cl.d.c).forGetter(cy::b)).apply($$0, cy::new));
 
    public static cy a(cl.d $$0) {
       return new cy($$0);
    }
 
    @Override
-   public boolean a(biq $$0, akq $$1, @Nullable ehn $$2) {
-      return $$0 instanceof bzr $$3 ? this.c.d($$3.ge()) : false;
+   public boolean a(biw $$0, akt $$1, @Nullable ehh $$2) {
+      return $$0 instanceof bzx $$3 ? this.c.d($$3.gf()) : false;
    }
 
    @Override

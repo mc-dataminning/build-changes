@@ -1,80 +1,214 @@
-import com.google.common.collect.AbstractIterator;
-import java.util.function.BiFunction;
-import javax.annotation.Nullable;
+public class coz {
+   private final cjl a;
+   private final cjl b;
+   private final cjl c;
+   private int d;
+   private final int e;
+   private boolean f = true;
+   private int g;
+   private int h;
+   private float i;
+   private int j = 1;
 
-public class coz<T> extends AbstractIterator<T> {
-   private final ehi a;
-   private final ehs b;
-   private final gx c;
-   private final gw.a d;
-   private final eig e;
-   private final cpf f;
-   private final boolean g;
-   @Nullable
-   private cpb h;
-   private long i;
-   private final BiFunction<gw.a, eig, T> j;
-
-   public coz(cpf $$0, @Nullable biq $$1, ehi $$2, boolean $$3, BiFunction<gw.a, eig, T> $$4) {
-      this.b = $$1 == null ? ehs.a() : ehs.a($$1);
-      this.d = new gw.a();
-      this.e = eid.a($$2);
-      this.f = $$0;
-      this.a = $$2;
-      this.g = $$3;
-      this.j = $$4;
-      int $$5 = arw.a($$2.a - 1.0E-7) - 1;
-      int $$6 = arw.a($$2.d + 1.0E-7) + 1;
-      int $$7 = arw.a($$2.b - 1.0E-7) - 1;
-      int $$8 = arw.a($$2.e + 1.0E-7) + 1;
-      int $$9 = arw.a($$2.c - 1.0E-7) - 1;
-      int $$10 = arw.a($$2.f + 1.0E-7) + 1;
-      this.c = new gx($$5, $$7, $$9, $$6, $$8, $$10);
-   }
-
-   @Nullable
-   private cpb a(int $$0, int $$1) {
-      int $$2 = hw.a($$0);
-      int $$3 = hw.a($$1);
-      long $$4 = cpc.c($$2, $$3);
-      if (this.h != null && this.i == $$4) {
-         return this.h;
+   public coz(qw $$0) {
+      this.a = cjl.a($$0.p("buy"));
+      this.b = cjl.a($$0.p("buyB"));
+      this.c = cjl.a($$0.p("sell"));
+      this.d = $$0.h("uses");
+      if ($$0.b("maxUses", 99)) {
+         this.e = $$0.h("maxUses");
       } else {
-         cpb $$5 = this.f.c($$2, $$3);
-         this.h = $$5;
-         this.i = $$4;
-         return $$5;
+         this.e = 4;
+      }
+
+      if ($$0.b("rewardExp", 1)) {
+         this.f = $$0.q("rewardExp");
+      }
+
+      if ($$0.b("xp", 3)) {
+         this.j = $$0.h("xp");
+      }
+
+      if ($$0.b("priceMultiplier", 5)) {
+         this.i = $$0.j("priceMultiplier");
+      }
+
+      this.g = $$0.h("specialPrice");
+      this.h = $$0.h("demand");
+   }
+
+   public coz(cjl $$0, cjl $$1, int $$2, int $$3, float $$4) {
+      this($$0, cjl.b, $$1, $$2, $$3, $$4);
+   }
+
+   public coz(cjl $$0, cjl $$1, cjl $$2, int $$3, int $$4, float $$5) {
+      this($$0, $$1, $$2, 0, $$3, $$4, $$5);
+   }
+
+   public coz(cjl $$0, cjl $$1, cjl $$2, int $$3, int $$4, int $$5, float $$6) {
+      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, 0);
+   }
+
+   public coz(cjl $$0, cjl $$1, cjl $$2, int $$3, int $$4, int $$5, float $$6, int $$7) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.j = $$5;
+      this.i = $$6;
+      this.h = $$7;
+   }
+
+   private coz(coz $$0) {
+      this.a = $$0.a.p();
+      this.b = $$0.b.p();
+      this.c = $$0.c.p();
+      this.d = $$0.d;
+      this.e = $$0.e;
+      this.f = $$0.f;
+      this.g = $$0.g;
+      this.h = $$0.h;
+      this.i = $$0.i;
+      this.j = $$0.j;
+   }
+
+   public cjl a() {
+      return this.a;
+   }
+
+   public cjl b() {
+      if (this.a.b()) {
+         return cjl.b;
+      } else {
+         int $$0 = this.a.L();
+         int $$1 = Math.max(0, asb.d((float)($$0 * this.h) * this.i));
+         return this.a.c(asb.a($$0 + $$1 + this.g, 1, this.a.d().l()));
       }
    }
 
-   protected T computeNext() {
-      while (this.c.a()) {
-         int $$0 = this.c.b();
-         int $$1 = this.c.c();
-         int $$2 = this.c.d();
-         int $$3 = this.c.e();
-         if ($$3 != 3) {
-            cpb $$4 = this.a($$0, $$2);
-            if ($$4 != null) {
-               this.d.d($$0, $$1, $$2);
-               dfj $$5 = $$4.a_(this.d);
-               if ((!this.g || $$5.o($$4, this.d)) && ($$3 != 1 || $$5.f()) && ($$3 != 2 || $$5.a(csw.bQ))) {
-                  eig $$6 = $$5.b(this.f, this.d, this.b);
-                  if ($$6 == eid.b()) {
-                     if (this.a.a((double)$$0, (double)$$1, (double)$$2, (double)$$0 + 1.0, (double)$$1 + 1.0, (double)$$2 + 1.0)) {
-                        return this.j.apply(this.d, $$6.a((double)$$0, (double)$$1, (double)$$2));
-                     }
-                  } else {
-                     eig $$7 = $$6.a((double)$$0, (double)$$1, (double)$$2);
-                     if (!$$7.c() && eid.c($$7, this.e, ehr.i)) {
-                        return this.j.apply(this.d, $$7);
-                     }
-                  }
-               }
-            }
-         }
-      }
+   public cjl c() {
+      return this.b;
+   }
 
-      return (T)this.endOfData();
+   public cjl d() {
+      return this.c;
+   }
+
+   public void e() {
+      this.h = this.h + this.d - (this.e - this.d);
+   }
+
+   public cjl f() {
+      return this.c.p();
+   }
+
+   public int g() {
+      return this.d;
+   }
+
+   public void h() {
+      this.d = 0;
+   }
+
+   public int i() {
+      return this.e;
+   }
+
+   public void j() {
+      this.d++;
+   }
+
+   public int k() {
+      return this.h;
+   }
+
+   public void a(int $$0) {
+      this.g += $$0;
+   }
+
+   public void l() {
+      this.g = 0;
+   }
+
+   public int m() {
+      return this.g;
+   }
+
+   public void b(int $$0) {
+      this.g = $$0;
+   }
+
+   public float n() {
+      return this.i;
+   }
+
+   public int o() {
+      return this.j;
+   }
+
+   public boolean p() {
+      return this.d >= this.e;
+   }
+
+   public void q() {
+      this.d = this.e;
+   }
+
+   public boolean r() {
+      return this.d > 0;
+   }
+
+   public boolean s() {
+      return this.f;
+   }
+
+   public qw t() {
+      qw $$0 = new qw();
+      $$0.a("buy", this.a.b(new qw()));
+      $$0.a("sell", this.c.b(new qw()));
+      $$0.a("buyB", this.b.b(new qw()));
+      $$0.a("uses", this.d);
+      $$0.a("maxUses", this.e);
+      $$0.a("rewardExp", this.f);
+      $$0.a("xp", this.j);
+      $$0.a("priceMultiplier", this.i);
+      $$0.a("specialPrice", this.g);
+      $$0.a("demand", this.h);
+      return $$0;
+   }
+
+   public boolean a(cjl $$0, cjl $$1) {
+      return this.c($$0, this.b()) && $$0.L() >= this.b().L() && this.c($$1, this.b) && $$1.L() >= this.b.L();
+   }
+
+   private boolean c(cjl $$0, cjl $$1) {
+      if ($$1.b() && $$0.b()) {
+         return true;
+      } else {
+         cjl $$2 = $$0.p();
+         if ($$2.d().o()) {
+            $$2.b($$2.k());
+         }
+
+         return cjl.b($$2, $$1) && (!$$1.u() || $$2.u() && rj.a($$1.v(), $$2.v(), false));
+      }
+   }
+
+   public boolean b(cjl $$0, cjl $$1) {
+      if (!this.a($$0, $$1)) {
+         return false;
+      } else {
+         $$0.h(this.b().L());
+         if (!this.c().b()) {
+            $$1.h(this.c().L());
+         }
+
+         return true;
+      }
+   }
+
+   public coz u() {
+      return new coz(this);
    }
 }

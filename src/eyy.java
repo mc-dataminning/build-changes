@@ -1,38 +1,79 @@
-public enum eyy {
-   a(
-      new aew("advancements/box_obtained"),
-      new aew("advancements/task_frame_obtained"),
-      new aew("advancements/challenge_frame_obtained"),
-      new aew("advancements/goal_frame_obtained")
-   ),
-   b(
-      new aew("advancements/box_unobtained"),
-      new aew("advancements/task_frame_unobtained"),
-      new aew("advancements/challenge_frame_unobtained"),
-      new aew("advancements/goal_frame_unobtained")
-   );
+import javax.annotation.Nullable;
 
-   private final aew c;
-   private final aew d;
-   private final aew e;
-   private final aew f;
+public class eyy extends exx {
+   @Nullable
+   public eqn c;
+   public long k;
+   private eyx l;
+   private esk m;
 
-   private eyy(aew $$0, aew $$1, aew $$2, aew $$3) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
+   public eyy(eye $$0, eqt $$1) {
+      super($$0, $$1, tl.c("controls.keybinds.title"));
    }
 
-   public aew a() {
-      return this.c;
+   @Override
+   protected void aH_() {
+      this.l = new eyx(this, this.f);
+      this.e(this.l);
+      this.m = this.d(esk.a(tl.c("controls.resetAll"), $$0 -> {
+         for (eqn $$1 : this.b.X) {
+            $$1.b($$1.i());
+         }
+
+         this.l.d();
+      }).a(this.g / 2 - 155, this.h - 29, 150, 20).a());
+      this.d(esk.a(tk.d, $$0 -> this.f.a(this.a)).a(this.g / 2 - 155 + 160, this.h - 29, 150, 20).a());
    }
 
-   public aew a(ar $$0) {
-      return switch ($$0) {
-         case a -> this.d;
-         case b -> this.e;
-         case c -> this.f;
-      };
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      if (this.c != null) {
+         this.b.a(this.c, eke.b.c.a($$2));
+         this.c = null;
+         this.l.d();
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2);
+      }
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if (this.c != null) {
+         if ($$0 == 256) {
+            this.b.a(this.c, eke.bv);
+         } else {
+            this.b.a(this.c, eke.a($$0, $$1));
+         }
+
+         this.c = null;
+         this.k = ac.b();
+         this.l.d();
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2);
+      }
+   }
+
+   @Override
+   public void a(erz $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.l.a($$0, $$1, $$2, $$3);
+      $$0.a(this.i, this.e, this.g / 2, 8, 16777215);
+      boolean $$4 = false;
+
+      for (eqn $$5 : this.b.X) {
+         if (!$$5.l()) {
+            $$4 = true;
+            break;
+         }
+      }
+
+      this.m.i = $$4;
+   }
+
+   @Override
+   public void b(erz $$0, int $$1, int $$2, float $$3) {
+      this.b($$0);
    }
 }

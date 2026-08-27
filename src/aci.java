@@ -1,24 +1,40 @@
-public class aci implements vd<abc> {
-   private final aew a;
+public class aci implements ve<abd> {
+   private final cgc a;
+   private final boolean b;
+   private final boolean c;
 
-   public aci(cmk<?> $$0) {
-      this.a = $$0.a();
+   public aci(cgc $$0, boolean $$1, boolean $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
    public aci(so $$0) {
-      this.a = $$0.s();
+      this.a = $$0.b(cgc.class);
+      this.b = $$0.readBoolean();
+      this.c = $$0.readBoolean();
    }
 
    @Override
    public void a(so $$0) {
       $$0.a(this.a);
+      $$0.a(this.b);
+      $$0.a(this.c);
    }
 
-   public void a(abc $$0) {
+   public void a(abd $$0) {
       $$0.a(this);
    }
 
-   public aew a() {
+   public cgc a() {
       return this.a;
+   }
+
+   public boolean d() {
+      return this.b;
+   }
+
+   public boolean e() {
+      return this.c;
    }
 }

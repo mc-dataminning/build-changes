@@ -1,74 +1,78 @@
-import java.util.Set;
+import javax.annotation.Nullable;
 
-public class zc implements vd<ww> {
+public class zc implements ve<wx> {
    private final double a;
    private final double b;
    private final double c;
-   private final float d;
-   private final float e;
-   private final Set<bju> f;
-   private final int g;
+   private final int d;
+   private final ed.a e;
+   private final ed.a f;
+   private final boolean g;
 
-   public zc(double $$0, double $$1, double $$2, float $$3, float $$4, Set<bju> $$5, int $$6) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
-      this.g = $$6;
+   public zc(ed.a $$0, double $$1, double $$2, double $$3) {
+      this.e = $$0;
+      this.a = $$1;
+      this.b = $$2;
+      this.c = $$3;
+      this.d = 0;
+      this.g = false;
+      this.f = null;
+   }
+
+   public zc(ed.a $$0, biw $$1, ed.a $$2) {
+      this.e = $$0;
+      this.d = $$1.ah();
+      this.f = $$2;
+      ehh $$3 = $$2.a($$1);
+      this.a = $$3.c;
+      this.b = $$3.d;
+      this.c = $$3.e;
+      this.g = true;
    }
 
    public zc(so $$0) {
+      this.e = $$0.b(ed.a.class);
       this.a = $$0.readDouble();
       this.b = $$0.readDouble();
       this.c = $$0.readDouble();
-      this.d = $$0.readFloat();
-      this.e = $$0.readFloat();
-      this.f = bju.a($$0.readUnsignedByte());
-      this.g = $$0.m();
+      this.g = $$0.readBoolean();
+      if (this.g) {
+         this.d = $$0.n();
+         this.f = $$0.b(ed.a.class);
+      } else {
+         this.d = 0;
+         this.f = null;
+      }
    }
 
    @Override
    public void a(so $$0) {
+      $$0.a(this.e);
       $$0.a(this.a);
       $$0.a(this.b);
       $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
-      $$0.k(bju.a(this.f));
-      $$0.c(this.g);
+      $$0.a(this.g);
+      if (this.g) {
+         $$0.c(this.d);
+         $$0.a(this.f);
+      }
    }
 
-   public void a(ww $$0) {
+   public void a(wx $$0) {
       $$0.a(this);
    }
 
-   public double a() {
-      return this.a;
-   }
-
-   public double d() {
-      return this.b;
-   }
-
-   public double e() {
-      return this.c;
-   }
-
-   public float f() {
-      return this.d;
-   }
-
-   public float g() {
+   public ed.a a() {
       return this.e;
    }
 
-   public int h() {
-      return this.g;
-   }
-
-   public Set<bju> i() {
-      return this.f;
+   @Nullable
+   public ehh a(cqb $$0) {
+      if (this.g) {
+         biw $$1 = $$0.a(this.d);
+         return $$1 == null ? new ehh(this.a, this.b, this.c) : this.f.a($$1);
+      } else {
+         return new ehh(this.a, this.b, this.c);
+      }
    }
 }

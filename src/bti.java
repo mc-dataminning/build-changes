@@ -1,24 +1,56 @@
 import com.google.common.collect.ImmutableSet;
-import java.util.Comparator;
-import java.util.List;
+import com.mojang.datafixers.util.Pair;
+import it.unimi.dsi.fastutil.longs.Long2LongMap;
+import it.unimi.dsi.fastutil.longs.Long2LongOpenHashMap;
 import java.util.Optional;
 import java.util.Set;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
-public class bti extends btl<bjg> {
-   @Override
-   public Set<bsh<?>> a() {
-      return ImmutableSet.of(bsh.j, bsh.k, bsh.l);
+public class bti extends btr<bjo> {
+   private static final int a = 40;
+   private static final int c = 5;
+   private static final int d = 20;
+   private final Long2LongMap e = new Long2LongOpenHashMap();
+   private int f;
+   private long g;
+
+   public bti() {
+      super(20);
    }
 
    @Override
-   protected void a(akq $$0, bjg $$1) {
-      List<cbu> $$2 = $$0.v().stream().filter(bit.f).filter($$1x -> $$1.a($$1x, 16.0)).sorted(Comparator.comparingDouble($$1::f)).collect(Collectors.toList());
-      bkg<?> $$3 = $$1.dN();
-      $$3.a(bsh.j, $$2);
-      List<cbu> $$4 = $$2.stream().filter($$1x -> b($$1, $$1x)).collect(Collectors.toList());
-      $$3.a(bsh.k, $$4.isEmpty() ? null : $$4.get(0));
-      Optional<cbu> $$5 = $$4.stream().filter($$1x -> c($$1, $$1x)).findFirst();
-      $$3.a(bsh.l, $$5);
+   public Set<bsn<?>> a() {
+      return ImmutableSet.of(bsn.w);
+   }
+
+   protected void a(akt $$0, bjo $$1) {
+      if ($$1.m_()) {
+         this.f = 0;
+         this.g = $$0.V() + (long)$$0.D_().a(20);
+         bul $$2 = $$0.w();
+         Predicate<gw> $$3 = $$0x -> {
+            long $$1x = $$0x.a();
+            if (this.e.containsKey($$1x)) {
+               return false;
+            } else if (++this.f >= 5) {
+               return false;
+            } else {
+               this.e.put($$1x, this.g + 40L);
+               return true;
+            }
+         };
+         Set<Pair<he<buo>, gw>> $$4 = $$2.b($$0x -> $$0x.a(bup.n), $$3, $$1.dl(), 48, bul.b.c).collect(Collectors.toSet());
+         eav $$5 = bkw.a($$1, $$4);
+         if ($$5 != null && $$5.j()) {
+            gw $$6 = $$5.l();
+            Optional<he<buo>> $$7 = $$2.c($$6);
+            if ($$7.isPresent()) {
+               $$1.dN().a(bsn.w, $$6);
+            }
+         } else if (this.f < 5) {
+            this.e.long2LongEntrySet().removeIf($$0x -> $$0x.getLongValue() < this.g);
+         }
+      }
    }
 }

@@ -1,6 +1,6 @@
-import javax.annotation.Nullable;
+import java.io.IOException;
+import java.nio.file.Path;
 
-@Deprecated
 public interface fym {
-   float call(cjf var1, @Nullable fix var2, @Nullable bjg var3, int var4);
+   void a(aez var1, Path var2) throws IOException;
 }

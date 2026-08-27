@@ -16,8 +16,8 @@ public class jv implements ji {
    private static final Logger d = LogUtils.getLogger();
    private final Path e;
    private final CompletableFuture<hg.b> f;
-   private static final MapCodec<aev<cqt>> g = aev.a(jc.ap).fieldOf("biome");
-   private static final Codec<crc.c<aev<cqt>>> h = crc.c.a(g).fieldOf("biomes").codec();
+   private static final MapCodec<aey<cqz>> g = aey.a(jc.aq).fieldOf("biome");
+   private static final Codec<cri.c<aey<cqz>>> h = cri.c.a(g).fieldOf("biomes").codec();
 
    public jv(jk $$0, CompletableFuture<hg.b> $$1) {
       this.e = $$0.a(jk.b.c).resolve("biome_parameters");
@@ -27,9 +27,9 @@ public class jv implements ji {
    @Override
    public CompletableFuture<?> a(jg $$0) {
       return this.f.thenCompose($$1 -> {
-         DynamicOps<JsonElement> $$2 = aeu.a(JsonOps.INSTANCE, $$1);
+         DynamicOps<JsonElement> $$2 = aex.a(JsonOps.INSTANCE, $$1);
          List<CompletableFuture<?>> $$3 = new ArrayList<>();
-         crh.b().forEach(($$3x, $$4) -> $$3.add(a(this.a($$3x.b()), $$0, $$2, h, $$4)));
+         crn.b().forEach(($$3x, $$4) -> $$3.add(a(this.a($$3x.b()), $$0, $$2, h, $$4)));
          return CompletableFuture.allOf($$3.toArray(CompletableFuture[]::new));
       });
    }
@@ -39,7 +39,7 @@ public class jv implements ji {
       return $$5.isPresent() ? ji.a($$1, $$5.get(), $$0) : CompletableFuture.completedFuture(null);
    }
 
-   private Path a(aew $$0) {
+   private Path a(aez $$0) {
       return this.e.resolve($$0.b()).resolve($$0.a() + ".json");
    }
 

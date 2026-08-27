@@ -35,8 +35,8 @@ public class Main {
    public static void main(String[] $$0) {
       Stopwatch $$1 = Stopwatch.createStarted(Ticker.systemTicker());
       Stopwatch $$2 = Stopwatch.createStarted(Ticker.systemTicker());
-      gef.a.a(geb.z, $$1);
-      gef.a.a(geb.A, $$2);
+      geb.a.a(gdx.z, $$1);
+      geb.a.a(gdx.A, $$2);
       aa.a();
       aa.d();
       OptionParser $$3 = new OptionParser();
@@ -71,7 +71,7 @@ public class Main {
       OptionSpec<String> $$26 = $$3.accepts("userProperties").withRequiredArg().defaultsTo("{}", new String[0]);
       OptionSpec<String> $$27 = $$3.accepts("profileProperties").withRequiredArg().defaultsTo("{}", new String[0]);
       OptionSpec<String> $$28 = $$3.accepts("assetIndex").withRequiredArg();
-      OptionSpec<String> $$29 = $$3.accepts("userType").withRequiredArg().defaultsTo(erk.a.a.a(), new String[0]);
+      OptionSpec<String> $$29 = $$3.accepts("userType").withRequiredArg().defaultsTo(ere.a.a.a(), new String[0]);
       OptionSpec<String> $$30 = $$3.accepts("versionType").withRequiredArg().defaultsTo("release", new String[0]);
       OptionSpec<String> $$31 = $$3.nonOptions();
       OptionSet $$32 = $$3.parse($$0);
@@ -110,8 +110,8 @@ public class Main {
       boolean $$45 = $$32.has("disableChat");
       String $$46 = a($$32, $$21);
       Gson $$47 = new GsonBuilder().registerTypeAdapter(PropertyMap.class, new Serializer()).create();
-      PropertyMap $$48 = arn.a($$47, a($$32, $$26), PropertyMap.class);
-      PropertyMap $$49 = arn.a($$47, a($$32, $$27), PropertyMap.class);
+      PropertyMap $$48 = arr.a($$47, a($$32, $$26), PropertyMap.class);
+      PropertyMap $$49 = arr.a($$47, a($$32, $$27), PropertyMap.class);
       String $$50 = a($$32, $$30);
       File $$51 = a($$32, $$9);
       File $$52 = $$32.has($$10) ? a($$32, $$10) : new File($$51, "assets/");
@@ -125,34 +125,34 @@ public class Main {
       String $$60 = a(a($$32, $$7));
       String $$61 = a(a($$32, $$8));
       if ($$32.has($$4)) {
-         bdv.e.a(bdt.a);
+         beb.e.a(bdz.a);
       }
 
       o.h();
-      aey.a();
-      gef.a.a(aey.b.get());
-      aey.c();
-      ac.l();
+      afb.a();
+      geb.a.a(afb.b.get());
+      afb.c();
+      ac.k();
       String $$62 = (String)$$29.value($$32);
-      erk.a $$63 = erk.a.a($$62);
+      ere.a $$63 = ere.a.a($$62);
       if ($$63 == null) {
          a.warn("Unrecognized user type: {}", $$62);
       }
 
-      erk $$64 = new erk((String)$$16.value($$32), $$54, (String)$$20.value($$32), b($$56), b($$57), $$63);
-      fdw $$65 = new fdw(
-         new fdw.d($$64, $$48, $$49, $$35),
-         new ekg($$38, $$39, $$40, $$41, $$42),
-         new fdw.a($$51, $$53, $$52, $$55),
-         new fdw.b($$43, $$46, $$50, $$44, $$45),
-         new fdw.c($$58, $$59, $$60, $$61)
+      ere $$64 = new ere((String)$$16.value($$32), $$54, (String)$$20.value($$32), b($$56), b($$57), $$63);
+      fdr $$65 = new fdr(
+         new fdr.d($$64, $$48, $$49, $$35),
+         new eka($$38, $$39, $$40, $$41, $$42),
+         new fdr.a($$51, $$53, $$52, $$55),
+         new fdr.b($$43, $$46, $$50, $$44, $$45),
+         new fdr.c($$58, $$59, $$60, $$61)
       );
       Thread $$66 = new Thread("Client Shutdown Thread") {
          @Override
          public void run() {
-            eqv $$0 = eqv.O();
+            eqp $$0 = eqp.O();
             if ($$0 != null) {
-               gdd $$1 = $$0.T();
+               gcz $$1 = $$0.T();
                if ($$1 != null) {
                   $$1.a(true);
                }
@@ -162,22 +162,22 @@ public class Main {
       $$66.setUncaughtExceptionHandler(new r(a));
       Runtime.getRuntime().addShutdownHook($$66);
 
-      final eqv $$67;
+      final eqp $$67;
       try {
          Thread.currentThread().setName("Render thread");
          RenderSystem.initRenderThread();
          RenderSystem.beginInitialization();
-         $$67 = new eqv($$65);
+         $$67 = new eqp($$65);
          RenderSystem.finishInitialization();
-      } catch (fdx var81) {
+      } catch (fds var81) {
          a.warn("Failed to create window: ", var81);
          return;
       } catch (Throwable var82) {
          o $$70 = o.a(var82, "Initializing game");
          p $$71 = $$70.a("Initialization");
-         arx.a($$71);
-         eqv.a(null, null, $$65.d.b, null, $$70);
-         eqv.c($$70);
+         asc.a($$71);
+         eqp.a(null, null, $$65.d.b, null, $$70);
+         eqp.c($$70);
          return;
       }
 
@@ -209,7 +209,7 @@ public class Main {
          }
       }
 
-      ell.a();
+      elf.a();
 
       try {
          $$67.q();

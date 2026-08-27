@@ -1,24 +1,43 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
+public class ftx extends ftw<bzm> {
+   private static final aez a = new aez("textures/entity/illager/illusioner.png");
 
-public final class ftx extends fse<bws, ffo<bws>> {
-   private static final Map<bwz, aew> a = ac.a(Maps.newEnumMap(bwz.class), $$0 -> {
-      $$0.put(bwz.a, new aew("textures/entity/horse/horse_white.png"));
-      $$0.put(bwz.b, new aew("textures/entity/horse/horse_creamy.png"));
-      $$0.put(bwz.c, new aew("textures/entity/horse/horse_chestnut.png"));
-      $$0.put(bwz.d, new aew("textures/entity/horse/horse_brown.png"));
-      $$0.put(bwz.e, new aew("textures/entity/horse/horse_black.png"));
-      $$0.put(bwz.f, new aew("textures/entity/horse/horse_gray.png"));
-      $$0.put(bwz.g, new aew("textures/entity/horse/horse_darkbrown.png"));
-   });
-
-   public ftx(fth.a $$0) {
-      super($$0, new ffo<>($$0.a(fib.aj)), 1.1F);
-      this.a(new fxe(this));
-      this.a(new fxd(this, $$0.f()));
+   public ftx(ftd.a $$0) {
+      super($$0, new ffm<>($$0.a(fhw.ao)), 0.5F);
+      this.a(new fxe<bzm, ffm<bzm>>(this, $$0.d()) {
+         public void a(elj $$0, foa $$1, int $$2, bzm $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+            if ($$3.go() || $$3.fW()) {
+               super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
+            }
+         }
+      });
+      this.f.c().k = true;
    }
 
-   public aew a(bws $$0) {
-      return a.get($$0.t());
+   public aez a(bzm $$0) {
+      return a;
+   }
+
+   public void a(bzm $$0, float $$1, float $$2, elj $$3, foa $$4, int $$5) {
+      if ($$0.cd()) {
+         ehh[] $$6 = $$0.E($$2);
+         float $$7 = this.a($$0, $$2);
+
+         for (int $$8 = 0; $$8 < $$6.length; $$8++) {
+            $$3.a();
+            $$3.a(
+               $$6[$$8].c + (double)asb.b((float)$$8 + $$7 * 0.5F) * 0.025,
+               $$6[$$8].d + (double)asb.b((float)$$8 + $$7 * 0.75F) * 0.0125,
+               $$6[$$8].e + (double)asb.b((float)$$8 + $$7 * 0.7F) * 0.025
+            );
+            super.a($$0, $$1, $$2, $$3, $$4, $$5);
+            $$3.b();
+         }
+      } else {
+         super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      }
+   }
+
+   protected boolean b(bzm $$0) {
+      return true;
    }
 }

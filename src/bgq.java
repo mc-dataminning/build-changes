@@ -1,86 +1,49 @@
-public class bgq implements bgr {
-   private final bgr c;
-   private final bgr d;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-   public bgq(bgr $$0, bgr $$1) {
-      this.c = $$0;
-      this.d = $$1;
+public class bgq extends bgj {
+   public static final Codec<bgq> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(bfo.b(bgj.c).fieldOf("distribution").forGetter($$0x -> $$0x.b)).apply($$0, bgq::new)
+   );
+   private final bfo<bgj> b;
+   private final int f;
+   private final int g;
+
+   public bgq(bfo<bgj> $$0) {
+      this.b = $$0;
+      List<bfq.b<bgj>> $$1 = $$0.e();
+      int $$2 = Integer.MAX_VALUE;
+      int $$3 = Integer.MIN_VALUE;
+
+      for (bfq.b<bgj> $$4 : $$1) {
+         int $$5 = $$4.b().a();
+         int $$6 = $$4.b().b();
+         $$2 = Math.min($$2, $$5);
+         $$3 = Math.max($$3, $$6);
+      }
+
+      this.f = $$2;
+      this.g = $$3;
+   }
+
+   @Override
+   public int a(ash $$0) {
+      return this.b.a($$0).orElseThrow(IllegalStateException::new).a($$0);
+   }
+
+   @Override
+   public int a() {
+      return this.f;
    }
 
    @Override
    public int b() {
-      return this.c.b() + this.d.b();
+      return this.g;
    }
 
    @Override
-   public boolean af_() {
-      return this.c.af_() && this.d.af_();
-   }
-
-   public boolean a(bgr $$0) {
-      return this.c == $$0 || this.d == $$0;
-   }
-
-   @Override
-   public cjf a(int $$0) {
-      return $$0 >= this.c.b() ? this.d.a($$0 - this.c.b()) : this.c.a($$0);
-   }
-
-   @Override
-   public cjf a(int $$0, int $$1) {
-      return $$0 >= this.c.b() ? this.d.a($$0 - this.c.b(), $$1) : this.c.a($$0, $$1);
-   }
-
-   @Override
-   public cjf b(int $$0) {
-      return $$0 >= this.c.b() ? this.d.b($$0 - this.c.b()) : this.c.b($$0);
-   }
-
-   @Override
-   public void a(int $$0, cjf $$1) {
-      if ($$0 >= this.c.b()) {
-         this.d.a($$0 - this.c.b(), $$1);
-      } else {
-         this.c.a($$0, $$1);
-      }
-   }
-
-   @Override
-   public int ag_() {
-      return this.c.ag_();
-   }
-
-   @Override
-   public void e() {
-      this.c.e();
-      this.d.e();
-   }
-
-   @Override
-   public boolean a(cbu $$0) {
-      return this.c.a($$0) && this.d.a($$0);
-   }
-
-   @Override
-   public void d_(cbu $$0) {
-      this.c.d_($$0);
-      this.d.d_($$0);
-   }
-
-   @Override
-   public void c(cbu $$0) {
-      this.c.c($$0);
-      this.d.c($$0);
-   }
-
-   @Override
-   public boolean b(int $$0, cjf $$1) {
-      return $$0 >= this.c.b() ? this.d.b($$0 - this.c.b(), $$1) : this.c.b($$0, $$1);
-   }
-
-   @Override
-   public void a() {
-      this.c.a();
-      this.d.a();
+   public bgk<?> c() {
+      return bgk.e;
    }
 }

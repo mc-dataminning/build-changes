@@ -47,8 +47,8 @@ public abstract class qr {
          }
 
          @Override
-         public arj a(tp $$0) {
-            return $$1 -> $$0.a(($$1x, $$2xxx) -> aso.c($$2xxx, $$1x, $$1) ? Optional.empty() : tp.a, uh.a).isPresent();
+         public arn a(tq $$0) {
+            return $$1 -> $$0.a(($$1x, $$2xxx) -> ast.c($$2xxx, $$1x, $$1) ? Optional.empty() : tq.a, ui.a).isPresent();
          }
       };
    }
@@ -65,7 +65,7 @@ public abstract class qr {
       JsonObject $$2 = (JsonObject)c.fromJson(new InputStreamReader($$0, StandardCharsets.UTF_8), JsonObject.class);
 
       for (Entry<String, JsonElement> $$3 : $$2.entrySet()) {
-         String $$4 = d.matcher(arn.a($$3.getValue(), $$3.getKey())).replaceAll("%$1s");
+         String $$4 = d.matcher(arr.a($$3.getValue(), $$3.getKey())).replaceAll("%$1s");
          $$1.accept($$3.getKey(), $$4);
       }
    }
@@ -88,9 +88,9 @@ public abstract class qr {
 
    public abstract boolean b();
 
-   public abstract arj a(tp var1);
+   public abstract arn a(tq var1);
 
-   public List<arj> a(List<tp> $$0) {
+   public List<arn> a(List<tq> $$0) {
       return $$0.stream().map(this::a).collect(ImmutableList.toImmutableList());
    }
 }

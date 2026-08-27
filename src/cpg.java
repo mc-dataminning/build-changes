@@ -1,4 +1,2 @@
-@FunctionalInterface
-public interface cpg {
-   int getColor(cqt var1, double var2, double var4);
+public record cpg(gw a, ctc b, int c, int d) {
 }

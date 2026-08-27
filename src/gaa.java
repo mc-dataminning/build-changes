@@ -1,45 +1,37 @@
-import com.google.common.base.Splitter;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.mojang.logging.LogUtils;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.List;
-import java.util.Map.Entry;
-import org.slf4j.Logger;
+import javax.annotation.Nullable;
 
-public class gaa {
-   private static final Logger b = LogUtils.getLogger();
-   public static final Splitter a = Splitter.on('/');
+public record gaa(aez a, @Nullable String b, @Nullable aez c, @Nullable aez d, gaa.a e, boolean f) {
+   public static enum a {
+      a("slim"),
+      b("default");
 
-   public static Path a(Path $$0, String $$1) {
-      Path $$2 = $$0.resolve("objects");
-      amq.a $$3 = amq.c();
-      Path $$4 = $$0.resolve("indexes/" + $$1 + ".json");
+      private final String c;
 
-      try (BufferedReader $$5 = Files.newBufferedReader($$4, StandardCharsets.UTF_8)) {
-         JsonObject $$6 = arn.a($$5);
-         JsonObject $$7 = arn.a($$6, "objects", null);
-         if ($$7 != null) {
-            for (Entry<String, JsonElement> $$8 : $$7.entrySet()) {
-               JsonObject $$9 = (JsonObject)$$8.getValue();
-               String $$10 = $$8.getKey();
-               List<String> $$11 = a.splitToList($$10);
-               String $$12 = arn.i($$9, "hash");
-               Path $$13 = $$2.resolve($$12.substring(0, 2) + "/" + $$12);
-               $$3.a($$11, $$13);
-            }
-         }
-      } catch (JsonParseException var17) {
-         b.error("Unable to parse resource index file: {}", $$4);
-      } catch (IOException var18) {
-         b.error("Can't open the resource index file: {}", $$4);
+      private a(String $$0) {
+         this.c = $$0;
       }
 
-      return $$3.a("index-" + $$1).getPath("/");
+      public static gaa.a a(@Nullable String $$0) {
+         if ($$0 == null) {
+            return b;
+         } else {
+            byte var2 = -1;
+            switch ($$0.hashCode()) {
+               case 3533117:
+                  if ($$0.equals("slim")) {
+                     var2 = 0;
+                  }
+               default:
+                  return switch (var2) {
+                     case 0 -> a;
+                     default -> b;
+                  };
+            }
+         }
+      }
+
+      public String a() {
+         return this.c;
+      }
    }
 }

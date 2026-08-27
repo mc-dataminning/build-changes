@@ -1,42 +1,183 @@
-public class bir {
-   public final float a;
-   public final float b;
-   public final boolean c;
+import javax.annotation.Nullable;
 
-   public bir(float $$0, float $$1, boolean $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-   }
+public abstract class bir extends bjv {
+   private static final aef<Boolean> bT = aei.a(bir.class, aeh.k);
+   public static final int b = -24000;
+   private static final int bU = 40;
+   protected int c;
+   protected int d;
+   protected int e;
 
-   public ehi a(ehn $$0) {
-      return this.a($$0.c, $$0.d, $$0.e);
-   }
-
-   public ehi a(double $$0, double $$1, double $$2) {
-      float $$3 = this.a / 2.0F;
-      float $$4 = this.b;
-      return new ehi($$0 - (double)$$3, $$1, $$2 - (double)$$3, $$0 + (double)$$3, $$1 + (double)$$4, $$2 + (double)$$3);
-   }
-
-   public bir a(float $$0) {
-      return this.a($$0, $$0);
-   }
-
-   public bir a(float $$0, float $$1) {
-      return !this.c && ($$0 != 1.0F || $$1 != 1.0F) ? b(this.a * $$0, this.b * $$1) : this;
-   }
-
-   public static bir b(float $$0, float $$1) {
-      return new bir($$0, $$1, false);
-   }
-
-   public static bir c(float $$0, float $$1) {
-      return new bir($$0, $$1, true);
+   protected bir(bja<? extends bir> $$0, cqb $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public String toString() {
-      return "EntityDimensions w=" + this.a + ", h=" + this.b + ", fixed=" + this.c;
+   public bkf a(cqq $$0, bhc $$1, bjq $$2, @Nullable bkf $$3, @Nullable qw $$4) {
+      if ($$3 == null) {
+         $$3 = new bir.a(true);
+      }
+
+      bir.a $$5 = (bir.a)$$3;
+      if ($$5.c() && $$5.a() > 0 && $$0.D_().i() <= $$5.d()) {
+         this.c_(-24000);
+      }
+
+      $$5.b();
+      return super.a($$0, $$1, $$2, $$3, $$4);
+   }
+
+   @Nullable
+   public abstract bir a(akt var1, bir var2);
+
+   @Override
+   protected void a_() {
+      super.a_();
+      this.an.a(bT, false);
+   }
+
+   public boolean V_() {
+      return false;
+   }
+
+   public int h() {
+      if (this.dL().B) {
+         return this.an.b(bT) ? -1 : 1;
+      } else {
+         return this.c;
+      }
+   }
+
+   public void a(int $$0, boolean $$1) {
+      int $$2 = this.h();
+      $$2 += $$0 * 20;
+      if ($$2 > 0) {
+         $$2 = 0;
+      }
+
+      int $$4 = $$2 - $$2;
+      this.c_($$2);
+      if ($$1) {
+         this.d += $$4;
+         if (this.e == 0) {
+            this.e = 40;
+         }
+      }
+
+      if (this.h() == 0) {
+         this.c_(this.d);
+      }
+   }
+
+   public void b_(int $$0) {
+      this.a($$0, false);
+   }
+
+   public void c_(int $$0) {
+      int $$1 = this.h();
+      this.c = $$0;
+      if ($$1 < 0 && $$0 >= 0 || $$1 >= 0 && $$0 < 0) {
+         this.an.b(bT, $$0 < 0);
+         this.m();
+      }
+   }
+
+   @Override
+   public void b(qw $$0) {
+      super.b($$0);
+      $$0.a("Age", this.h());
+      $$0.a("ForcedAge", this.d);
+   }
+
+   @Override
+   public void a(qw $$0) {
+      super.a($$0);
+      this.c_($$0.h("Age"));
+      this.d = $$0.h("ForcedAge");
+   }
+
+   @Override
+   public void a(aef<?> $$0) {
+      if (bT.equals($$0)) {
+         this.i_();
+      }
+
+      super.a($$0);
+   }
+
+   @Override
+   public void b_() {
+      super.b_();
+      if (this.dL().B) {
+         if (this.e > 0) {
+            if (this.e % 4 == 0) {
+               this.dL().a(iv.K, this.d(1.0), this.dt() + 0.5, this.g(1.0), 0.0, 0.0, 0.0);
+            }
+
+            this.e--;
+         }
+      } else if (this.bv()) {
+         int $$0 = this.h();
+         if ($$0 < 0) {
+            this.c_(++$$0);
+         } else if ($$0 > 0) {
+            this.c_(--$$0);
+         }
+      }
+   }
+
+   protected void m() {
+      if (!this.m_() && this.bN() && this.cY() instanceof cdt $$0 && !$$0.a((biw)this)) {
+         this.aa();
+      }
+   }
+
+   @Override
+   public boolean m_() {
+      return this.h() < 0;
+   }
+
+   @Override
+   public void a(boolean $$0) {
+      this.c_($$0 ? -24000 : 0);
+   }
+
+   public static int d_(int $$0) {
+      return (int)((float)($$0 / 20) * 0.1F);
+   }
+
+   public static class a implements bkf {
+      private int a;
+      private final boolean b;
+      private final float c;
+
+      private a(boolean $$0, float $$1) {
+         this.b = $$0;
+         this.c = $$1;
+      }
+
+      public a(boolean $$0) {
+         this($$0, 0.05F);
+      }
+
+      public a(float $$0) {
+         this(true, $$0);
+      }
+
+      public int a() {
+         return this.a;
+      }
+
+      public void b() {
+         this.a++;
+      }
+
+      public boolean c() {
+         return this.b;
+      }
+
+      public float d() {
+         return this.c;
+      }
    }
 }

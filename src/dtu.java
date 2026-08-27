@@ -1,23 +1,26 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dtu extends dtp {
-   public static final Codec<dtu> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(bfi.b(dtp.c).fieldOf("distribution").forGetter($$0x -> $$0x.b)).apply($$0, dtu::new)
-   );
-   private final bfi<dtp> b;
+public class dtu extends dui {
+   private static final dtu c = new dtu();
+   public static Codec<dtu> a = Codec.unit(() -> c);
 
-   public dtu(bfi<dtp> $$0) {
-      this.b = $$0;
+   private dtu() {
+   }
+
+   public static dtu a() {
+      return c;
    }
 
    @Override
-   public int a(asc $$0, dlp $$1) {
-      return this.b.a($$0).orElseThrow(IllegalStateException::new).a($$0, $$1);
+   protected boolean a(duh $$0, ash $$1, gw $$2) {
+      dug $$3 = $$0.e()
+         .orElseThrow(() -> new IllegalStateException("Tried to biome check an unregistered feature, or a feature that should not restrict the biome"));
+      he<cqz> $$4 = $$0.d().s($$2);
+      return $$0.f().a($$4).a($$3);
    }
 
    @Override
-   public dtq<?> a() {
-      return dtq.f;
+   public duk<?> b() {
+      return duk.e;
    }
 }

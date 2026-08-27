@@ -1,25 +1,22 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public interface dza<P extends dyy> {
-   Codec<dyy> a = jb.ah.q().dispatch("processor_type", dyy::a, dza::codec);
-   Codec<dyz> b = a.listOf().xmap(dyz::new, dyz::a);
-   Codec<dyz> c = arf.e(b.fieldOf("processors").codec(), b);
-   Codec<he<dyz>> d = aes.a(jc.aA, c);
-   dza<dyd> e = a("block_ignore", dyd.a);
-   dza<dyf> f = a("block_rot", dyf.a);
-   dza<dyi> g = a("gravity", dyi.a);
-   dza<dyj> h = a("jigsaw_replacement", dyj.a);
-   dza<dyu> i = a("rule", dyu.a);
-   dza<dym> j = a("nop", dym.a);
-   dza<dyc> k = a("block_age", dyc.a);
-   dza<dyb> l = a("blackstone_replace", dyb.a);
-   dza<dyk> m = a("lava_submerged_block", dyk.a);
-   dza<dyr> n = a("protected_blocks", dyr.b);
-   dza<dyh> o = a("capped", dyh.a);
+public class dza implements dzd {
+   public static final Codec<dza> a = RecordCodecBuilder.create($$0 -> $$0.group(qw.a.fieldOf("data").forGetter($$0x -> $$0x.b)).apply($$0, dza::new));
+   private final qw b;
 
-   Codec<P> codec();
+   public dza(qw $$0) {
+      this.b = $$0;
+   }
 
-   static <P extends dyy> dza<P> a(String $$0, Codec<P> $$1) {
-      return hq.a(jb.ah, $$0, () -> $$1);
+   @Override
+   public qw a(ash $$0, @Nullable qw $$1) {
+      return $$1 == null ? this.b.h() : $$1.a(this.b);
+   }
+
+   @Override
+   public dze<?> a() {
+      return dze.c;
    }
 }

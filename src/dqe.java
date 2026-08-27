@@ -1,16 +1,13 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dqe implements dqa {
-   public static final Codec<dqe> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.intRange(0, dis.c).fieldOf("height").forGetter($$0x -> $$0x.b), dfj.b.fieldOf("state").forGetter($$0x -> $$0x.c))
-            .apply($$0, dqe::new)
+public class dqe implements dpu {
+   public static final Codec<dqe> k = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.floatRange(0.0F, 1.0F).fieldOf("probability").forGetter($$0x -> $$0x.l)).apply($$0, dqe::new)
    );
-   public final int b;
-   public final dfj c;
+   public final float l;
 
-   public dqe(int $$0, dfj $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public dqe(float $$0) {
+      this.l = $$0;
    }
 }

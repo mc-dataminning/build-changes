@@ -1,72 +1,45 @@
-import com.mojang.logging.LogUtils;
-import java.util.Collection;
-import java.util.stream.Stream;
-import org.slf4j.Logger;
+import java.util.UUID;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public class dje<T extends dja> {
-   private static final Logger a = LogUtils.getLogger();
-   private final aqs<T> b;
-   private djn c;
+public class dje<T extends diu> implements djd<T> {
+   private final diw<T> a;
+   private final diz<T> b;
 
-   public dje(Class<T> $$0, djn $$1) {
-      this.c = $$1;
-      this.b = new aqs<>($$0);
+   public dje(diw<T> $$0, diz<T> $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public void a(T $$0) {
-      this.b.add($$0);
+   @Nullable
+   @Override
+   public T a(int $$0) {
+      return this.a.a($$0);
    }
 
-   public boolean b(T $$0) {
-      return this.b.remove($$0);
+   @Nullable
+   @Override
+   public T a(UUID $$0) {
+      return this.a.a($$0);
    }
 
-   public aqn.a a(ehi $$0, aqn<T> $$1) {
-      for (T $$2 : this.b) {
-         if ($$2.cG().c($$0) && $$1.accept($$2).a()) {
-            return aqn.a.b;
-         }
-      }
-
-      return aqn.a.a;
+   @Override
+   public Iterable<T> a() {
+      return this.a.a();
    }
 
-   public <U extends T> aqn.a a(djh<T, U> $$0, ehi $$1, aqn<? super U> $$2) {
-      Collection<? extends T> $$3 = this.b.a($$0.a());
-      if ($$3.isEmpty()) {
-         return aqn.a.a;
-      } else {
-         for (T $$4 : $$3) {
-            U $$5 = (U)$$0.a($$4);
-            if ($$5 != null && $$4.cG().c($$1) && $$2.accept($$5).a()) {
-               return aqn.a.b;
-            }
-         }
-
-         return aqn.a.a;
-      }
+   @Override
+   public <U extends T> void a(djb<T, U> $$0, aqq<U> $$1) {
+      this.a.a($$0, $$1);
    }
 
-   public boolean a() {
-      return this.b.isEmpty();
+   @Override
+   public void a(ehc $$0, Consumer<T> $$1) {
+      this.b.b($$0, aqq.forConsumer($$1));
    }
 
-   public Stream<T> b() {
-      return this.b.stream();
-   }
-
-   public djn c() {
-      return this.c;
-   }
-
-   public djn a(djn $$0) {
-      djn $$1 = this.c;
-      this.c = $$0;
-      return $$1;
-   }
-
-   @asy
-   public int d() {
-      return this.b.size();
+   @Override
+   public <U extends T> void a(djb<T, U> $$0, ehc $$1, aqq<U> $$2) {
+      this.b.a($$0, $$1, $$2);
    }
 }

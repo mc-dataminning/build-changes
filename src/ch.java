@@ -5,7 +5,7 @@ import javax.annotation.Nullable;
 
 public record ch(cl.d c, Optional<bq> d) implements br {
    public static final MapCodec<ch> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(arf.a(cl.d.d, "blocks_set_on_fire", cl.d.c).forGetter(ch::b), arf.a(bq.a, "entity_struck").forGetter(ch::c)).apply($$0, ch::new)
+      $$0 -> $$0.group(arj.a(cl.d.d, "blocks_set_on_fire", cl.d.c).forGetter(ch::b), arj.a(bq.a, "entity_struck").forGetter(ch::c)).apply($$0, ch::new)
    );
 
    public static ch a(cl.d $$0) {
@@ -18,8 +18,8 @@ public record ch(cl.d c, Optional<bq> d) implements br {
    }
 
    @Override
-   public boolean a(biq $$0, akq $$1, @Nullable ehn $$2) {
-      return !($$0 instanceof bjf $$3) ? false : this.c.d($$3.s()) && (this.d.isEmpty() || $$3.t().anyMatch($$2x -> this.d.get().a($$1, $$2, $$2x)));
+   public boolean a(biw $$0, akt $$1, @Nullable ehh $$2) {
+      return !($$0 instanceof bjl $$3) ? false : this.c.d($$3.s()) && (this.d.isEmpty() || $$3.t().anyMatch($$2x -> this.d.get().a($$1, $$2, $$2x)));
    }
 
    public cl.d b() {

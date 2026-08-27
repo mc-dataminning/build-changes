@@ -2,36 +2,36 @@ import java.util.List;
 
 public class mh {
    private static final ht a = new ht()
-      .a(jc.au, nu::a)
-      .a(jc.ar, ns::a)
-      .a(jc.as, or::a)
-      .a(jc.ay, pg::a)
-      .a(jc.az, od::a)
-      .a(jc.aB, oc::a)
-      .a(jc.aA, nz::a)
-      .a(jc.aC, ny::a)
-      .a(jc.ap, oj::a)
-      .a(jc.aG, cri::a)
-      .a(jc.ax, nv::a)
-      .a(jc.at, dkz::a)
-      .a(jc.aw, dkx::a)
-      .a(jc.aF, duy::a)
-      .a(jc.av, dtk::a)
-      .a(jc.aq, th::a)
-      .a(jc.aE, cll::a)
-      .a(jc.aD, clj::a)
-      .a(jc.p, bhr::a);
+      .a(jc.av, nu::a)
+      .a(jc.as, ns::a)
+      .a(jc.at, or::a)
+      .a(jc.az, pg::a)
+      .a(jc.aA, od::a)
+      .a(jc.aC, oc::a)
+      .a(jc.aB, nz::a)
+      .a(jc.aD, ny::a)
+      .a(jc.aq, oj::a)
+      .a(jc.aH, cro::a)
+      .a(jc.ay, nv::a)
+      .a(jc.au, dkt::a)
+      .a(jc.ax, dkr::a)
+      .a(jc.aG, dus::a)
+      .a(jc.aw, dte::a)
+      .a(jc.ar, th::a)
+      .a(jc.aF, clr::a)
+      .a(jc.aE, clp::a)
+      .a(jc.q, bhx::a);
 
    private static void a(hg.b $$0) {
-      a($$0.b(jc.ay), $$0.b(jc.ap));
+      a($$0.b(jc.az), $$0.b(jc.aq));
    }
 
-   public static void a(hf<dum> $$0, hg<cqt> $$1) {
+   public static void a(hf<dug> $$0, hg<cqz> $$1) {
       $$1.b().forEach($$1x -> {
-         aew $$2 = $$1x.g().a();
-         List<hi<dum>> $$3 = ((cqt)$$1x.a()).d().b();
+         aez $$2 = $$1x.g().a();
+         List<hi<dug>> $$3 = ((cqz)$$1x.a()).d().b();
          $$3.stream().flatMap(hi::a).forEach($$3x -> $$3x.d().ifLeft($$2xx -> {
-               he.c<dum> $$3xx = $$0.b($$2xx);
+               he.c<dug> $$3xx = $$0.b($$2xx);
                if (!a($$3xx.a())) {
                   ac.a("Placed feature " + $$2xx.a() + " in biome " + $$2 + " is missing BiomeFilter.biome()");
                }
@@ -43,12 +43,12 @@ public class mh {
       });
    }
 
-   private static boolean a(dum $$0) {
-      return $$0.c().contains(dua.a());
+   private static boolean a(dug $$0) {
+      return $$0.c().contains(dtu.a());
    }
 
    public static hg.b a() {
-      hr.b $$0 = hr.a(jb.ap);
+      hr.b $$0 = hr.a(jb.aq);
       hg.b $$1 = a.a($$0);
       a($$1);
       return $$1;

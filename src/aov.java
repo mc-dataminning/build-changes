@@ -1,58 +1,33 @@
-import com.mojang.logging.LogUtils;
-import java.util.concurrent.atomic.AtomicInteger;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.nio.charset.StandardCharsets;
 
-public abstract class aov implements Runnable {
-   private static final Logger d = LogUtils.getLogger();
-   private static final AtomicInteger e = new AtomicInteger(0);
-   private static final int f = 5;
-   protected volatile boolean a;
-   protected final String b;
-   @Nullable
-   protected Thread c;
+public class aov {
+   public static final int a = 1460;
+   public static final char[] b = new char[]{'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'};
 
-   protected aov(String $$0) {
-      this.b = $$0;
-   }
+   public static String a(byte[] $$0, int $$1, int $$2) {
+      int $$3 = $$2 - 1;
+      int $$4 = $$1 > $$3 ? $$3 : $$1;
 
-   public synchronized boolean a() {
-      if (this.a) {
-         return true;
-      } else {
-         this.a = true;
-         this.c = new Thread(this, this.b + " #" + e.incrementAndGet());
-         this.c.setUncaughtExceptionHandler(new s(d));
-         this.c.start();
-         d.info("Thread {} started", this.b);
-         return true;
+      while (0 != $$0[$$4] && $$4 < $$3) {
+         $$4++;
       }
+
+      return new String($$0, $$1, $$4 - $$1, StandardCharsets.UTF_8);
    }
 
-   public synchronized void b() {
-      this.a = false;
-      if (null != this.c) {
-         int $$0 = 0;
-
-         while (this.c.isAlive()) {
-            try {
-               this.c.join(1000L);
-               if (++$$0 >= 5) {
-                  d.warn("Waited {} seconds attempting force stop!", $$0);
-               } else if (this.c.isAlive()) {
-                  d.warn("Thread {} ({}) failed to exit after {} second(s)", new Object[]{this, this.c.getState(), $$0, new Exception("Stack:")});
-                  this.c.interrupt();
-               }
-            } catch (InterruptedException var3) {
-            }
-         }
-
-         d.info("Thread {} stopped", this.b);
-         this.c = null;
-      }
+   public static int a(byte[] $$0, int $$1) {
+      return b($$0, $$1, $$0.length);
    }
 
-   public boolean c() {
-      return this.a;
+   public static int b(byte[] $$0, int $$1, int $$2) {
+      return 0 > $$2 - $$1 - 4 ? 0 : $$0[$$1 + 3] << 24 | ($$0[$$1 + 2] & 0xFF) << 16 | ($$0[$$1 + 1] & 0xFF) << 8 | $$0[$$1] & 0xFF;
+   }
+
+   public static int c(byte[] $$0, int $$1, int $$2) {
+      return 0 > $$2 - $$1 - 4 ? 0 : $$0[$$1] << 24 | ($$0[$$1 + 1] & 0xFF) << 16 | ($$0[$$1 + 2] & 0xFF) << 8 | $$0[$$1 + 3] & 0xFF;
+   }
+
+   public static String a(byte $$0) {
+      return "" + b[($$0 & 240) >>> 4] + b[$$0 & 15];
    }
 }

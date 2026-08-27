@@ -1,45 +1,53 @@
-public class acf implements vd<abc> {
-   private final int a;
-   private final acf.a b;
-   private final int c;
+public class acf implements ve<abd> {
+   private final gw a;
+   private final ha b;
+   private final acf.a c;
+   private final int d;
 
-   public acf(biq $$0, acf.a $$1) {
-      this($$0, $$1, 0);
+   public acf(acf.a $$0, gw $$1, ha $$2, int $$3) {
+      this.c = $$0;
+      this.a = $$1.i();
+      this.b = $$2;
+      this.d = $$3;
    }
 
-   public acf(biq $$0, acf.a $$1, int $$2) {
-      this.a = $$0.ah();
-      this.b = $$1;
-      this.c = $$2;
+   public acf(acf.a $$0, gw $$1, ha $$2) {
+      this($$0, $$1, $$2, 0);
    }
 
    public acf(so $$0) {
-      this.a = $$0.m();
-      this.b = $$0.b(acf.a.class);
-      this.c = $$0.m();
+      this.c = $$0.b(acf.a.class);
+      this.a = $$0.e();
+      this.b = ha.a($$0.readUnsignedByte());
+      this.d = $$0.n();
    }
 
    @Override
    public void a(so $$0) {
-      $$0.c(this.a);
-      $$0.a(this.b);
-      $$0.c(this.c);
+      $$0.a(this.c);
+      $$0.a(this.a);
+      $$0.k(this.b.d());
+      $$0.c(this.d);
    }
 
-   public void a(abc $$0) {
+   public void a(abd $$0) {
       $$0.a(this);
    }
 
-   public int a() {
+   public gw a() {
       return this.a;
    }
 
-   public acf.a d() {
+   public ha d() {
       return this.b;
    }
 
-   public int e() {
+   public acf.a e() {
       return this.c;
+   }
+
+   public int f() {
+      return this.d;
    }
 
    public static enum a {
@@ -49,8 +57,6 @@ public class acf implements vd<abc> {
       d,
       e,
       f,
-      g,
-      h,
-      i;
+      g;
    }
 }

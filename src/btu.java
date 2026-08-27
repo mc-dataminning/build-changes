@@ -1,25 +1,28 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSet;
+import java.util.List;
+import java.util.Set;
 
-public class btu {
-   @Nullable
-   public static ehn a(bjp $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6) {
-      boolean $$7 = btx.a($$0, $$1);
-      return bua.a($$0, () -> a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
+public class btu extends btr<bjm> {
+   @Override
+   public Set<bsn<?>> a() {
+      return ImmutableSet.of(bsn.i);
    }
 
-   @Nullable
-   public static gw a(bjp $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6, boolean $$7) {
-      gw $$8 = bua.a($$0.ef(), $$1, $$2, $$3, $$4, $$5, $$6);
-      if ($$8 == null) {
-         return null;
-      } else {
-         gw $$9 = bua.a($$0, $$1, $$0.ef(), $$8);
-         if (!btx.a($$9, $$0) && !btx.a($$7, $$0, $$9)) {
-            $$9 = bua.a($$9, $$0.dL().aj(), $$1x -> btx.c($$0, $$1x));
-            return btx.b($$0, $$9) ? null : $$9;
-         } else {
-            return null;
-         }
-      }
+   @Override
+   protected void a(akt $$0, bjm $$1) {
+      $$1.dN().a(bsn.i, this.a($$1));
+   }
+
+   private List<bjm> a(bjm $$0) {
+      return ImmutableList.copyOf(this.c($$0).b(this::b));
+   }
+
+   private boolean b(bjm $$0) {
+      return $$0.ag() == bja.bf && $$0.m_();
+   }
+
+   private bsp c(bjm $$0) {
+      return $$0.dN().c(bsn.h).orElse(bsp.a());
    }
 }

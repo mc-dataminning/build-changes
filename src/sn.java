@@ -15,15 +15,14 @@ import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
 public enum sn {
-   a("handshake", b().a(ve.b, new sn.b()).a(ve.a, new sn.b<adc>().a(adb.class, adb::new))),
+   a("handshake", b().a(vf.b, new sn.b()).a(vf.a, new sn.b<add>().a(adc.class, adc::new))),
    b(
       "play",
       b()
          .a(
-            ve.b,
-            new sn.b<ww>()
-               .b(xh.class, xh::new)
-               .a(wx.class, wx::new)
+            vf.b,
+            new sn.b<wx>()
+               .b(xi.class, xi::new)
                .a(wy.class, wy::new)
                .a(wz.class, wz::new)
                .a(xa.class, xa::new)
@@ -33,7 +32,7 @@ public enum sn {
                .a(xe.class, xe::new)
                .a(xf.class, xf::new)
                .a(xg.class, xg::new)
-               .a(xi.class, xi::new)
+               .a(xh.class, xh::new)
                .a(xj.class, xj::new)
                .a(xk.class, xk::new)
                .a(xl.class, xl::new)
@@ -46,11 +45,11 @@ public enum sn {
                .a(xs.class, xs::new)
                .a(xt.class, xt::new)
                .a(xu.class, xu::new)
-               .a(vh.class, vh::new)
                .a(xv.class, xv::new)
-               .a(xw.class, xw::new)
                .a(vi.class, vi::new)
+               .a(xw.class, xw::new)
                .a(xx.class, xx::new)
+               .a(vj.class, vj::new)
                .a(xy.class, xy::new)
                .a(xz.class, xz::new)
                .a(ya.class, ya::new)
@@ -58,24 +57,24 @@ public enum sn {
                .a(yc.class, yc::new)
                .a(yd.class, yd::new)
                .a(ye.class, ye::new)
-               .a(vj.class, vj::new)
-               .a(yg.class, yg::new)
+               .a(yf.class, yf::new)
+               .a(vk.class, vk::new)
                .a(yh.class, yh::new)
                .a(yi.class, yi::new)
                .a(yj.class, yj::new)
-               .a(yl.class, yl::new)
+               .a(yk.class, yk::new)
                .a(ym.class, ym::new)
                .a(yn.class, yn::new)
-               .a(yo.a.class, yo.a::b)
-               .a(yo.b.class, yo.b::b)
-               .a(yo.c.class, yo.c::b)
-               .a(yp.class, yp::new)
+               .a(yo.class, yo::new)
+               .a(yp.a.class, yp.a::b)
+               .a(yp.b.class, yp.b::b)
+               .a(yp.c.class, yp.c::b)
                .a(yq.class, yq::new)
                .a(yr.class, yr::new)
                .a(ys.class, ys::new)
-               .a(vk.class, vk::new)
-               .a(adx.class, adx::new)
                .a(yt.class, yt::new)
+               .a(vl.class, vl::new)
+               .a(ady.class, ady::new)
                .a(yu.class, yu::new)
                .a(yv.class, yv::new)
                .a(yw.class, yw::new)
@@ -88,8 +87,8 @@ public enum sn {
                .a(zd.class, zd::new)
                .a(ze.class, ze::new)
                .a(zf.class, zf::new)
-               .a(vl.class, vl::new)
                .a(zg.class, zg::new)
+               .a(vm.class, vm::new)
                .a(zh.class, zh::new)
                .a(zi.class, zi::new)
                .a(zj.class, zj::new)
@@ -134,12 +133,12 @@ public enum sn {
                .a(aaw.class, aaw::new)
                .a(aax.class, aax::new)
                .a(aay.class, aay::new)
-               .a(vm.class, vm::new)
+               .a(aaz.class, aaz::new)
+               .a(vn.class, vn::new)
          )
          .a(
-            ve.a,
-            new sn.b<abc>()
-               .a(abf.class, abf::new)
+            vf.a,
+            new sn.b<abd>()
                .a(abg.class, abg::new)
                .a(abh.class, abh::new)
                .a(abi.class, abi::new)
@@ -148,38 +147,38 @@ public enum sn {
                .a(abl.class, abl::new)
                .a(abm.class, abm::new)
                .a(abn.class, abn::new)
-               .a(vo.class, vo::new)
                .a(abo.class, abo::new)
+               .a(vp.class, vp::new)
                .a(abp.class, abp::new)
                .a(abq.class, abq::new)
                .a(abr.class, abr::new)
                .a(abs.class, abs::new)
-               .a(vp.class, vp::new)
                .a(abt.class, abt::new)
+               .a(vq.class, vq::new)
                .a(abu.class, abu::new)
                .a(abv.class, abv::new)
                .a(abw.class, abw::new)
-               .a(vq.class, vq::new)
                .a(abx.class, abx::new)
-               .a(aby.a.class, aby.a::b)
-               .a(aby.b.class, aby.b::b)
-               .a(aby.c.class, aby.c::b)
-               .a(aby.d.class, aby.d::b)
-               .a(abz.class, abz::new)
+               .a(vr.class, vr::new)
+               .a(aby.class, aby::new)
+               .a(abz.a.class, abz.a::b)
+               .a(abz.b.class, abz.b::b)
+               .a(abz.c.class, abz.c::b)
+               .a(abz.d.class, abz.d::b)
                .a(aca.class, aca::new)
                .a(acb.class, acb::new)
-               .a(aeb.class, aeb::new)
                .a(acc.class, acc::new)
+               .a(aec.class, aec::new)
                .a(acd.class, acd::new)
                .a(ace.class, ace::new)
                .a(acf.class, acf::new)
                .a(acg.class, acg::new)
-               .a(vr.class, vr::new)
                .a(ach.class, ach::new)
+               .a(vs.class, vs::new)
                .a(aci.class, aci::new)
                .a(acj.class, acj::new)
-               .a(vs.class, vs::new)
                .a(ack.class, ack::new)
+               .a(vt.class, vt::new)
                .a(acl.class, acl::new)
                .a(acm.class, acm::new)
                .a(acn.class, acn::new)
@@ -193,40 +192,41 @@ public enum sn {
                .a(acv.class, acv::new)
                .a(acw.class, acw::new)
                .a(acx.class, acx::new)
+               .a(acy.class, acy::new)
          )
    ),
    c(
       "status",
-      b().a(ve.a, new sn.b<aea>().a(aec.class, aec::new).a(aeb.class, aeb::new)).a(ve.b, new sn.b<adw>().a(ady.class, ady::new).a(adx.class, adx::new))
+      b().a(vf.a, new sn.b<aeb>().a(aed.class, aed::new).a(aec.class, aec::new)).a(vf.b, new sn.b<adx>().a(adz.class, adz::new).a(ady.class, ady::new))
    ),
    d(
       "login",
       b()
-         .a(ve.b, new sn.b<ade>().a(adj.class, adj::new).a(adh.class, adh::new).a(adg.class, adg::new).a(adi.class, adi::new).a(adf.class, adf::new))
-         .a(ve.a, new sn.b<adk>().a(adm.class, adm::new).a(adn.class, adn::new).a(adl.class, adl::b).a(ado.class, ado::new))
+         .a(vf.b, new sn.b<adf>().a(adk.class, adk::new).a(adi.class, adi::new).a(adh.class, adh::new).a(adj.class, adj::new).a(adg.class, adg::new))
+         .a(vf.a, new sn.b<adl>().a(adn.class, adn::new).a(ado.class, ado::new).a(adm.class, adm::b).a(adp.class, adp::new))
    ),
    e(
       "configuration",
       b()
          .a(
-            ve.b,
-            new sn.b<vg>()
-               .a(vh.class, vh::new)
+            vf.b,
+            new sn.b<vh>()
                .a(vi.class, vi::new)
-               .a(wq.class, wq::new)
                .a(vj.class, vj::new)
-               .a(vk.class, vk::new)
                .a(wr.class, wr::new)
+               .a(vk.class, vk::new)
                .a(vl.class, vl::new)
                .a(ws.class, ws::new)
                .a(vm.class, vm::new)
+               .a(wt.class, wt::new)
+               .a(vn.class, vn::new)
          )
-         .a(ve.a, new sn.b<vn>().a(vo.class, vo::new).a(vp.class, vp::new).a(wu.class, wu::new).a(vq.class, vq::new).a(vr.class, vr::new).a(vs.class, vs::new))
+         .a(vf.a, new sn.b<vo>().a(vp.class, vp::new).a(vq.class, vq::new).a(wv.class, wv::new).a(vr.class, vr::new).a(vs.class, vs::new).a(vt.class, vt::new))
    );
 
    public static final int f = -1;
    private final String g;
-   private final Map<ve, sn.a<?>> h;
+   private final Map<vf, sn.a<?>> h;
 
    private static sn.c b() {
       return new sn.c();
@@ -237,26 +237,26 @@ public enum sn {
       this.h = $$1.a(this);
    }
 
-   @asy
-   public Int2ObjectMap<Class<? extends vd<?>>> a(ve $$0) {
+   @atd
+   public Int2ObjectMap<Class<? extends ve<?>>> a(vf $$0) {
       return this.h.get($$0).d();
    }
 
-   @asy
+   @atd
    public String a() {
       return this.g;
    }
 
-   public sn.a<?> b(ve $$0) {
+   public sn.a<?> b(vf $$0) {
       return this.h.get($$0);
    }
 
-   public static class a<T extends su> implements vc.b {
+   public static class a<T extends su> implements vd.b {
       private final sn a;
-      private final ve b;
+      private final vf b;
       private final sn.b<T> c;
 
-      public a(sn $$0, ve $$1, sn.b<T> $$2) {
+      public a(sn $$0, vf $$1, sn.b<T> $$2) {
          this.a = $$0;
          this.b = $$1;
          this.c = $$2;
@@ -266,43 +266,43 @@ public enum sn {
          return this.a;
       }
 
-      public ve b() {
+      public vf b() {
          return this.b;
       }
 
-      public int a(vd<?> $$0) {
+      public int a(ve<?> $$0) {
          return this.c.a($$0.getClass());
       }
 
       @Override
-      public vc c() {
+      public vd c() {
          return this.c.a();
       }
 
-      Int2ObjectMap<Class<? extends vd<?>>> d() {
-         Int2ObjectMap<Class<? extends vd<?>>> $$0 = new Int2ObjectOpenHashMap();
+      Int2ObjectMap<Class<? extends ve<?>>> d() {
+         Int2ObjectMap<Class<? extends ve<?>>> $$0 = new Int2ObjectOpenHashMap();
          this.c.b.forEach(($$1, $$2) -> $$0.put($$2, $$1));
          return $$0;
       }
 
       @Nullable
-      public vd<?> a(int $$0, so $$1) {
+      public ve<?> a(int $$0, so $$1) {
          return this.c.a($$0, $$1);
       }
 
-      public boolean b(vd<?> $$0) {
+      public boolean b(ve<?> $$0) {
          return this.c.b($$0.getClass());
       }
    }
 
    static class b<T extends su> {
       private static final Logger a = LogUtils.getLogger();
-      final Object2IntMap<Class<? extends vd<? super T>>> b = ac.a(new Object2IntOpenHashMap(), $$0 -> $$0.defaultReturnValue(-1));
-      private final List<Function<so, ? extends vd<? super T>>> c = Lists.newArrayList();
-      private vc d = vc.b;
-      private final Set<Class<? extends vd<T>>> e = new HashSet<>();
+      final Object2IntMap<Class<? extends ve<? super T>>> b = ac.a(new Object2IntOpenHashMap(), $$0 -> $$0.defaultReturnValue(-1));
+      private final List<Function<so, ? extends ve<? super T>>> c = Lists.newArrayList();
+      private vd d = vd.b;
+      private final Set<Class<? extends ve<T>>> e = new HashSet<>();
 
-      public <P extends vd<? super T>> sn.b<T> a(Class<P> $$0, Function<so, P> $$1) {
+      public <P extends ve<? super T>> sn.b<T> a(Class<P> $$0, Function<so, P> $$1) {
          int $$2 = this.c.size();
          int $$3 = this.b.put($$0, $$2);
          if ($$3 != -1) {
@@ -315,13 +315,13 @@ public enum sn {
          }
       }
 
-      public <P extends vb<T>> sn.b<T> b(Class<P> $$0, Function<Iterable<vd<T>>, P> $$1) {
-         if (this.d != vc.b) {
+      public <P extends vc<T>> sn.b<T> b(Class<P> $$0, Function<Iterable<ve<T>>, P> $$1) {
+         if (this.d != vd.b) {
             throw new IllegalStateException("Bundle packet already configured");
          } else {
-            va<T> $$2 = new va<>();
-            this.a(va.class, $$1x -> $$2);
-            this.d = vc.a($$0, $$1, $$2);
+            vb<T> $$2 = new vb<>();
+            this.a(vb.class, $$1x -> $$2);
+            this.d = vd.a($$0, $$1, $$2);
             this.e.add($$0);
             return this;
          }
@@ -336,28 +336,28 @@ public enum sn {
       }
 
       @Nullable
-      public vd<?> a(int $$0, so $$1) {
-         Function<so, ? extends vd<? super T>> $$2 = this.c.get($$0);
-         return (vd<?>)($$2 != null ? $$2.apply($$1) : null);
+      public ve<?> a(int $$0, so $$1) {
+         Function<so, ? extends ve<? super T>> $$2 = this.c.get($$0);
+         return (ve<?>)($$2 != null ? $$2.apply($$1) : null);
       }
 
-      public vc a() {
+      public vd a() {
          return this.d;
       }
    }
 
    static class c {
-      private final Map<ve, sn.b<?>> a = Maps.newEnumMap(ve.class);
+      private final Map<vf, sn.b<?>> a = Maps.newEnumMap(vf.class);
 
-      public <T extends su> sn.c a(ve $$0, sn.b<T> $$1) {
+      public <T extends su> sn.c a(vf $$0, sn.b<T> $$1) {
          this.a.put($$0, $$1);
          return this;
       }
 
-      public Map<ve, sn.a<?>> a(sn $$0) {
-         Map<ve, sn.a<?>> $$1 = new EnumMap<>(ve.class);
+      public Map<vf, sn.a<?>> a(sn $$0) {
+         Map<vf, sn.a<?>> $$1 = new EnumMap<>(vf.class);
 
-         for (ve $$2 : ve.values()) {
+         for (vf $$2 : vf.values()) {
             sn.b<?> $$3 = this.a.get($$2);
             if ($$3 == null) {
                throw new IllegalStateException("Missing packets for flow " + $$2 + " in protocol " + $$0);

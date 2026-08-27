@@ -1,27 +1,32 @@
-import java.util.List;
+public class xu implements ve<wx> {
+   private final cjg a;
+   private final int b;
 
-public record xu(xu.a a, List<String> b) implements vd<ww> {
+   public xu(cjg $$0, int $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
+
    public xu(so $$0) {
-      this($$0.b(xu.a.class), $$0.a(so::r));
+      this.a = $$0.a(jb.i);
+      this.b = $$0.n();
    }
 
    @Override
    public void a(so $$0) {
-      $$0.a(this.a);
-      $$0.a(this.b, so::a);
+      $$0.a(jb.i, this.a);
+      $$0.c(this.b);
    }
 
-   public void a(ww $$0) {
+   public void a(wx $$0) {
       $$0.a(this);
    }
 
-   public List<String> d() {
-      return this.b;
+   public cjg a() {
+      return this.a;
    }
 
-   public static enum a {
-      a,
-      b,
-      c;
+   public int d() {
+      return this.b;
    }
 }

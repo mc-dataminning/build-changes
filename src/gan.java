@@ -1,8 +1,2 @@
-import javax.annotation.ParametersAreNonnullByDefault;
-
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface gan {
+public record gan(int a, int b) {
 }

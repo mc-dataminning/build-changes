@@ -1,93 +1,207 @@
-import org.joml.Matrix3f;
-import org.joml.Matrix4f;
-import org.joml.Vector3f;
-import org.joml.Vector4f;
+import java.util.function.Consumer;
 
-public class elq extends elo {
-   private final elt f;
-   private final Matrix4f g;
-   private final Matrix3f h;
-   private final float i;
-   private float j;
-   private float k;
-   private float l;
-   private int m;
-   private int n;
-   private int o;
-   private float p;
-   private float q;
-   private float r;
-
-   public elq(elt $$0, Matrix4f $$1, Matrix3f $$2, float $$3) {
-      this.f = $$0;
-      this.g = new Matrix4f($$1).invert();
-      this.h = new Matrix3f($$2).invert();
-      this.i = $$3;
-      this.a();
+public class elq {
+   public static eln a() {
+      throw new IllegalArgumentException();
    }
 
-   private void a() {
-      this.j = 0.0F;
-      this.k = 0.0F;
-      this.l = 0.0F;
-      this.m = 0;
-      this.n = 10;
-      this.o = 15728880;
-      this.p = 0.0F;
-      this.q = 1.0F;
-      this.r = 0.0F;
+   public static eln a(eln $$0) {
+      return $$0;
    }
 
-   @Override
-   public void e() {
-      Vector3f $$0 = this.h.transform(new Vector3f(this.p, this.q, this.r));
-      ha $$1 = ha.a($$0.x(), $$0.y(), $$0.z());
-      Vector4f $$2 = this.g.transform(new Vector4f(this.j, this.k, this.l, 1.0F));
-      $$2.rotateY((float) Math.PI);
-      $$2.rotateX((float) (-Math.PI / 2));
-      $$2.rotate($$1.b());
-      float $$3 = -$$2.x() * this.i;
-      float $$4 = -$$2.y() * this.i;
-      this.f.a((double)this.j, (double)this.k, (double)this.l).a(1.0F, 1.0F, 1.0F, 1.0F).a($$3, $$4).a(this.m, this.n).b(this.o).a(this.p, this.q, this.r).e();
-      this.a();
+   public static eln a(eln $$0, eln $$1) {
+      return new elq.a($$0, $$1);
    }
 
-   @Override
-   public elt a(double $$0, double $$1, double $$2) {
-      this.j = (float)$$0;
-      this.k = (float)$$1;
-      this.l = (float)$$2;
-      return this;
+   public static eln a(eln... $$0) {
+      return new elq.b($$0);
    }
 
-   @Override
-   public elt a(int $$0, int $$1, int $$2, int $$3) {
-      return this;
+   static class a implements eln {
+      private final eln a;
+      private final eln b;
+
+      public a(eln $$0, eln $$1) {
+         if ($$0 == $$1) {
+            throw new IllegalArgumentException("Duplicate delegates");
+         } else {
+            this.a = $$0;
+            this.b = $$1;
+         }
+      }
+
+      @Override
+      public eln a(double $$0, double $$1, double $$2) {
+         this.a.a($$0, $$1, $$2);
+         this.b.a($$0, $$1, $$2);
+         return this;
+      }
+
+      @Override
+      public eln a(int $$0, int $$1, int $$2, int $$3) {
+         this.a.a($$0, $$1, $$2, $$3);
+         this.b.a($$0, $$1, $$2, $$3);
+         return this;
+      }
+
+      @Override
+      public eln a(float $$0, float $$1) {
+         this.a.a($$0, $$1);
+         this.b.a($$0, $$1);
+         return this;
+      }
+
+      @Override
+      public eln a(int $$0, int $$1) {
+         this.a.a($$0, $$1);
+         this.b.a($$0, $$1);
+         return this;
+      }
+
+      @Override
+      public eln b(int $$0, int $$1) {
+         this.a.b($$0, $$1);
+         this.b.b($$0, $$1);
+         return this;
+      }
+
+      @Override
+      public eln a(float $$0, float $$1, float $$2) {
+         this.a.a($$0, $$1, $$2);
+         this.b.a($$0, $$1, $$2);
+         return this;
+      }
+
+      @Override
+      public void a(
+         float $$0,
+         float $$1,
+         float $$2,
+         float $$3,
+         float $$4,
+         float $$5,
+         float $$6,
+         float $$7,
+         float $$8,
+         int $$9,
+         int $$10,
+         float $$11,
+         float $$12,
+         float $$13
+      ) {
+         this.a.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10, $$11, $$12, $$13);
+         this.b.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10, $$11, $$12, $$13);
+      }
+
+      @Override
+      public void e() {
+         this.a.e();
+         this.b.e();
+      }
+
+      @Override
+      public void b(int $$0, int $$1, int $$2, int $$3) {
+         this.a.b($$0, $$1, $$2, $$3);
+         this.b.b($$0, $$1, $$2, $$3);
+      }
+
+      @Override
+      public void k() {
+         this.a.k();
+         this.b.k();
+      }
    }
 
-   @Override
-   public elt a(float $$0, float $$1) {
-      return this;
-   }
+   static class b implements eln {
+      private final eln[] a;
 
-   @Override
-   public elt a(int $$0, int $$1) {
-      this.m = $$0;
-      this.n = $$1;
-      return this;
-   }
+      public b(eln[] $$0) {
+         for (int $$1 = 0; $$1 < $$0.length; $$1++) {
+            for (int $$2 = $$1 + 1; $$2 < $$0.length; $$2++) {
+               if ($$0[$$1] == $$0[$$2]) {
+                  throw new IllegalArgumentException("Duplicate delegates");
+               }
+            }
+         }
 
-   @Override
-   public elt b(int $$0, int $$1) {
-      this.o = $$0 | $$1 << 16;
-      return this;
-   }
+         this.a = $$0;
+      }
 
-   @Override
-   public elt a(float $$0, float $$1, float $$2) {
-      this.p = $$0;
-      this.q = $$1;
-      this.r = $$2;
-      return this;
+      private void a(Consumer<eln> $$0) {
+         for (eln $$1 : this.a) {
+            $$0.accept($$1);
+         }
+      }
+
+      @Override
+      public eln a(double $$0, double $$1, double $$2) {
+         this.a($$3 -> $$3.a($$0, $$1, $$2));
+         return this;
+      }
+
+      @Override
+      public eln a(int $$0, int $$1, int $$2, int $$3) {
+         this.a($$4 -> $$4.a($$0, $$1, $$2, $$3));
+         return this;
+      }
+
+      @Override
+      public eln a(float $$0, float $$1) {
+         this.a($$2 -> $$2.a($$0, $$1));
+         return this;
+      }
+
+      @Override
+      public eln a(int $$0, int $$1) {
+         this.a($$2 -> $$2.a($$0, $$1));
+         return this;
+      }
+
+      @Override
+      public eln b(int $$0, int $$1) {
+         this.a($$2 -> $$2.b($$0, $$1));
+         return this;
+      }
+
+      @Override
+      public eln a(float $$0, float $$1, float $$2) {
+         this.a($$3 -> $$3.a($$0, $$1, $$2));
+         return this;
+      }
+
+      @Override
+      public void a(
+         float $$0,
+         float $$1,
+         float $$2,
+         float $$3,
+         float $$4,
+         float $$5,
+         float $$6,
+         float $$7,
+         float $$8,
+         int $$9,
+         int $$10,
+         float $$11,
+         float $$12,
+         float $$13
+      ) {
+         this.a($$14 -> $$14.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10, $$11, $$12, $$13));
+      }
+
+      @Override
+      public void e() {
+         this.a(eln::e);
+      }
+
+      @Override
+      public void b(int $$0, int $$1, int $$2, int $$3) {
+         this.a($$4 -> $$4.b($$0, $$1, $$2, $$3));
+      }
+
+      @Override
+      public void k() {
+         this.a(eln::k);
+      }
    }
 }

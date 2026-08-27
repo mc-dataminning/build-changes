@@ -1,95 +1,62 @@
-public abstract class bps extends bqb {
-   protected bji d;
-   protected gw e = gw.b;
-   protected boolean f;
-   private boolean a;
-   private float b;
-   private float c;
+import java.util.EnumSet;
 
-   public bps(bji $$0) {
-      this.d = $$0;
-      if (!btx.a($$0)) {
-         throw new IllegalArgumentException("Unsupported mob type for DoorInteractGoal");
-      }
-   }
+public class bps extends bqh {
+   private final bjv a;
 
-   protected boolean h() {
-      if (!this.f) {
-         return false;
-      } else {
-         dfj $$0 = this.d.dL().a_(this.e);
-         if (!($$0.b() instanceof cux)) {
-            this.f = false;
-            return false;
-         } else {
-            return $$0.c(cux.b);
-         }
-      }
-   }
-
-   protected void a(boolean $$0) {
-      if (this.f) {
-         dfj $$1 = this.d.dL().a_(this.e);
-         if ($$1.b() instanceof cux) {
-            ((cux)$$1.b()).a(this.d, this.d.dL(), $$1, this.e, $$0);
-         }
-      }
+   public bps(bjv $$0) {
+      this.a = $$0;
+      this.a(EnumSet.of(bqh.a.a, bqh.a.b));
    }
 
    @Override
    public boolean a() {
-      if (!btx.a(this.d)) {
-         return false;
-      } else if (!this.d.P) {
-         return false;
-      } else {
-         bso $$0 = (bso)this.d.L();
-         ebb $$1 = $$0.j();
-         if ($$1 != null && !$$1.c() && $$0.f()) {
-            for (int $$2 = 0; $$2 < Math.min($$1.f() + 2, $$1.e()); $$2++) {
-               eaz $$3 = $$1.a($$2);
-               this.e = new gw($$3.a, $$3.b + 1, $$3.c);
-               if (!(this.d.i((double)this.e.u(), this.d.ds(), (double)this.e.w()) > 2.25)) {
-                  this.f = cux.a(this.d.dL(), this.e);
-                  if (this.f) {
-                     return true;
-                  }
-               }
-            }
-
-            this.e = this.d.dl().c();
-            this.f = cux.a(this.d.dL(), this.e);
-            return this.f;
-         } else {
-            return false;
-         }
-      }
+      return this.a.ch() < 140;
    }
 
    @Override
    public boolean b() {
-      return !this.a;
+      return this.a();
+   }
+
+   @Override
+   public boolean P_() {
+      return false;
    }
 
    @Override
    public void c() {
-      this.a = false;
-      this.b = (float)((double)this.e.u() + 0.5 - this.d.dq());
-      this.c = (float)((double)this.e.w() + 0.5 - this.d.dw());
+      this.h();
    }
 
-   @Override
-   public boolean Q_() {
-      return true;
+   private void h() {
+      Iterable<gw> $$0 = gw.b(
+         asb.a(this.a.dq() - 1.0), this.a.dr(), asb.a(this.a.dw() - 1.0), asb.a(this.a.dq() + 1.0), asb.a(this.a.ds() + 8.0), asb.a(this.a.dw() + 1.0)
+      );
+      gw $$1 = null;
+
+      for (gw $$2 : $$0) {
+         if (this.a(this.a.dL(), $$2)) {
+            $$1 = $$2;
+            break;
+         }
+      }
+
+      if ($$1 == null) {
+         $$1 = gw.a(this.a.dq(), this.a.ds() + 8.0, this.a.dw());
+      }
+
+      this.a.L().a((double)$$1.u(), (double)($$1.v() + 1), (double)$$1.w(), 1.0);
    }
 
    @Override
    public void e() {
-      float $$0 = (float)((double)this.e.u() + 0.5 - this.d.dq());
-      float $$1 = (float)((double)this.e.w() + 0.5 - this.d.dw());
-      float $$2 = this.b * $$0 + this.c * $$1;
-      if ($$2 < 0.0F) {
-         this.a = true;
-      }
+      this.h();
+      this.a.a(0.02F, new ehh((double)this.a.bk, (double)this.a.bl, (double)this.a.bm));
+      this.a.a(bjs.a, this.a.do());
+   }
+
+   private boolean a(cqe $$0, gw $$1) {
+      dfd $$2 = $$0.a_($$1);
+      return ($$0.b_($$1).c() || $$2.a(cte.nd)) && $$2.a($$0, $$1, eaw.a);
    }
 }

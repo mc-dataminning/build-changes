@@ -1,71 +1,63 @@
-public class dlb {
-   public static final aev<dzp.a> a = a("temperature");
-   public static final aev<dzp.a> b = a("vegetation");
-   public static final aev<dzp.a> c = a("continentalness");
-   public static final aev<dzp.a> d = a("erosion");
-   public static final aev<dzp.a> e = a("temperature_large");
-   public static final aev<dzp.a> f = a("vegetation_large");
-   public static final aev<dzp.a> g = a("continentalness_large");
-   public static final aev<dzp.a> h = a("erosion_large");
-   public static final aev<dzp.a> i = a("ridge");
-   public static final aev<dzp.a> j = a("offset");
-   public static final aev<dzp.a> k = a("aquifer_barrier");
-   public static final aev<dzp.a> l = a("aquifer_fluid_level_floodedness");
-   public static final aev<dzp.a> m = a("aquifer_lava");
-   public static final aev<dzp.a> n = a("aquifer_fluid_level_spread");
-   public static final aev<dzp.a> o = a("pillar");
-   public static final aev<dzp.a> p = a("pillar_rareness");
-   public static final aev<dzp.a> q = a("pillar_thickness");
-   public static final aev<dzp.a> r = a("spaghetti_2d");
-   public static final aev<dzp.a> s = a("spaghetti_2d_elevation");
-   public static final aev<dzp.a> t = a("spaghetti_2d_modulator");
-   public static final aev<dzp.a> u = a("spaghetti_2d_thickness");
-   public static final aev<dzp.a> v = a("spaghetti_3d_1");
-   public static final aev<dzp.a> w = a("spaghetti_3d_2");
-   public static final aev<dzp.a> x = a("spaghetti_3d_rarity");
-   public static final aev<dzp.a> y = a("spaghetti_3d_thickness");
-   public static final aev<dzp.a> z = a("spaghetti_roughness");
-   public static final aev<dzp.a> A = a("spaghetti_roughness_modulator");
-   public static final aev<dzp.a> B = a("cave_entrance");
-   public static final aev<dzp.a> C = a("cave_layer");
-   public static final aev<dzp.a> D = a("cave_cheese");
-   public static final aev<dzp.a> E = a("ore_veininess");
-   public static final aev<dzp.a> F = a("ore_vein_a");
-   public static final aev<dzp.a> G = a("ore_vein_b");
-   public static final aev<dzp.a> H = a("ore_gap");
-   public static final aev<dzp.a> I = a("noodle");
-   public static final aev<dzp.a> J = a("noodle_thickness");
-   public static final aev<dzp.a> K = a("noodle_ridge_a");
-   public static final aev<dzp.a> L = a("noodle_ridge_b");
-   public static final aev<dzp.a> M = a("jagged");
-   public static final aev<dzp.a> N = a("surface");
-   public static final aev<dzp.a> O = a("surface_secondary");
-   public static final aev<dzp.a> P = a("clay_bands_offset");
-   public static final aev<dzp.a> Q = a("badlands_pillar");
-   public static final aev<dzp.a> R = a("badlands_pillar_roof");
-   public static final aev<dzp.a> S = a("badlands_surface");
-   public static final aev<dzp.a> T = a("iceberg_pillar");
-   public static final aev<dzp.a> U = a("iceberg_pillar_roof");
-   public static final aev<dzp.a> V = a("iceberg_surface");
-   public static final aev<dzp.a> W = a("surface_swamp");
-   public static final aev<dzp.a> X = a("calcite");
-   public static final aev<dzp.a> Y = a("gravel");
-   public static final aev<dzp.a> Z = a("powder_snow");
-   public static final aev<dzp.a> aa = a("packed_ice");
-   public static final aev<dzp.a> ab = a("ice");
-   public static final aev<dzp.a> ac = a("soul_sand_layer");
-   public static final aev<dzp.a> ad = a("gravel_layer");
-   public static final aev<dzp.a> ae = a("patch");
-   public static final aev<dzp.a> af = a("netherrack");
-   public static final aev<dzp.a> ag = a("nether_wart");
-   public static final aev<dzp.a> ah = a("nether_state_selector");
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.base.Charsets;
+import com.google.common.hash.HashFunction;
+import com.google.common.hash.Hashing;
+import com.google.common.primitives.Longs;
+import java.util.concurrent.atomic.AtomicLong;
 
-   private static aev<dzp.a> a(String $$0) {
-      return aev.a(jc.ax, new aew($$0));
+public final class dlb {
+   public static final long a = -7046029254386353131L;
+   public static final long b = 7640891576956012809L;
+   private static final HashFunction c = Hashing.md5();
+   private static final AtomicLong d = new AtomicLong(8682522807148012L);
+
+   @VisibleForTesting
+   public static long a(long $$0) {
+      $$0 = ($$0 ^ $$0 >>> 30) * -4658895280553007687L;
+      $$0 = ($$0 ^ $$0 >>> 27) * -7723592293110705685L;
+      return $$0 ^ $$0 >>> 31;
    }
 
-   public static dzp a(hf<dzp.a> $$0, dlf $$1, aev<dzp.a> $$2) {
-      he<dzp.a> $$3 = $$0.b($$2);
-      return dzp.b($$1.a($$3.e().orElseThrow().a()), $$3.a());
+   public static dlb.a b(long $$0) {
+      long $$1 = $$0 ^ 7640891576956012809L;
+      long $$2 = $$1 + -7046029254386353131L;
+      return new dlb.a($$1, $$2);
+   }
+
+   public static dlb.a c(long $$0) {
+      return b($$0).a();
+   }
+
+   public static dlb.a a(String $$0) {
+      byte[] $$1 = c.hashString($$0, Charsets.UTF_8).asBytes();
+      long $$2 = Longs.fromBytes($$1[0], $$1[1], $$1[2], $$1[3], $$1[4], $$1[5], $$1[6], $$1[7]);
+      long $$3 = Longs.fromBytes($$1[8], $$1[9], $$1[10], $$1[11], $$1[12], $$1[13], $$1[14], $$1[15]);
+      return new dlb.a($$2, $$3);
+   }
+
+   public static long a() {
+      return d.updateAndGet($$0 -> $$0 * 1181783497276652981L) ^ System.nanoTime();
+   }
+
+   public static record a(long a, long b) {
+      public dlb.a a(long $$0, long $$1) {
+         return new dlb.a(this.a ^ $$0, this.b ^ $$1);
+      }
+
+      public dlb.a a(dlb.a $$0) {
+         return this.a($$0.a, $$0.b);
+      }
+
+      public dlb.a a() {
+         return new dlb.a(dlb.a(this.a), dlb.a(this.b));
+      }
+
+      public long b() {
+         return this.a;
+      }
+
+      public long c() {
+         return this.b;
+      }
    }
 }

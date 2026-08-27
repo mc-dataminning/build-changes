@@ -1,25 +1,55 @@
-import javax.annotation.Nullable;
-
 public interface cqd {
-   boolean a(gw var1, dfj var2, int var3, int var4);
+   int I_();
 
-   default boolean a(gw $$0, dfj $$1, int $$2) {
-      return this.a($$0, $$1, $$2, 512);
+   int H_();
+
+   default int aj() {
+      return this.H_() + this.I_();
    }
 
-   boolean a(gw var1, boolean var2);
-
-   default boolean b(gw $$0, boolean $$1) {
-      return this.a($$0, $$1, null);
+   default int ak() {
+      return this.am() - this.al();
    }
 
-   default boolean a(gw $$0, boolean $$1, @Nullable biq $$2) {
-      return this.a($$0, $$1, $$2, 512);
+   default int al() {
+      return hw.a(this.H_());
    }
 
-   boolean a(gw var1, boolean var2, @Nullable biq var3, int var4);
+   default int am() {
+      return hw.a(this.aj() - 1) + 1;
+   }
 
-   default boolean b(biq $$0) {
-      return false;
+   default boolean r(gw $$0) {
+      return this.d($$0.v());
+   }
+
+   default boolean d(int $$0) {
+      return $$0 < this.H_() || $$0 >= this.aj();
+   }
+
+   default int e(int $$0) {
+      return this.f(hw.a($$0));
+   }
+
+   default int f(int $$0) {
+      return $$0 - this.al();
+   }
+
+   default int g(int $$0) {
+      return $$0 + this.al();
+   }
+
+   static cqd e(final int $$0, final int $$1) {
+      return new cqd() {
+         @Override
+         public int I_() {
+            return $$1;
+         }
+
+         @Override
+         public int H_() {
+            return $$0;
+         }
+      };
    }
 }

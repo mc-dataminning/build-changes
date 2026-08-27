@@ -1,59 +1,81 @@
-import com.google.common.collect.Lists;
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public class dwj extends dwp {
-   public static final Codec<dwj> a = RecordCodecBuilder.create($$0 -> $$0.group(dum.b.fieldOf("feature").forGetter($$0x -> $$0x.b), d()).apply($$0, dwj::new));
-   private final he<dum> b;
-   private final qw c;
+public abstract class dwj {
+   public static final Codec<dwj> e = jb.aj.q().dispatch("element_type", dwj::a, dwk::codec);
+   private static final he<dyt> a = he.a(new dyt(List.of()));
+   @Nullable
+   private volatile dwl.a b;
 
-   protected dwj(he<dum> $$0, dwr.a $$1) {
-      super($$1);
+   protected static <E extends dwj> RecordCodecBuilder<E, dwl.a> d() {
+      return dwl.a.c.fieldOf("projection").forGetter(dwj::e);
+   }
+
+   protected dwj(dwl.a $$0) {
       this.b = $$0;
-      this.c = this.b();
    }
 
-   private qw b() {
-      qw $$0 = new qw();
-      $$0.a("name", "minecraft:bottom");
-      $$0.a("final_state", "minecraft:air");
-      $$0.a("pool", "minecraft:empty");
-      $$0.a("target", "minecraft:empty");
-      $$0.a("joint", ddu.a.a.c());
-      return $$0;
+   public abstract hy a(dyw var1, czn var2);
+
+   public abstract List<dyv.c> a(dyw var1, gw var2, czn var3, ash var4);
+
+   public abstract duu a(dyw var1, gw var2, czn var3);
+
+   public abstract boolean a(dyw var1, cqv var2, cqt var3, dha var4, gw var5, gw var6, czn var7, duu var8, ash var9, boolean var10);
+
+   public abstract dwk<?> a();
+
+   public void a(cqc $$0, dyv.c $$1, gw $$2, czn $$3, ash $$4, duu $$5) {
    }
 
-   @Override
-   public hy a(dzc $$0, czh $$1) {
-      return hy.g;
+   public dwj a(dwl.a $$0) {
+      this.b = $$0;
+      return this;
    }
 
-   @Override
-   public List<dzb.c> a(dzc $$0, gw $$1, czh $$2, asc $$3) {
-      List<dzb.c> $$4 = Lists.newArrayList();
-      $$4.add(new dzb.c($$1, csw.pb.n().a(cwu.a, hc.a(ha.a, ha.d)), this.c));
-      return $$4;
+   public dwl.a e() {
+      dwl.a $$0 = this.b;
+      if ($$0 == null) {
+         throw new IllegalStateException();
+      } else {
+         return $$0;
+      }
    }
 
-   @Override
-   public dva a(dzc $$0, gw $$1, czh $$2) {
-      hy $$3 = this.a($$0, $$2);
-      return new dva($$1.u(), $$1.v(), $$1.w(), $$1.u() + $$3.u(), $$1.v() + $$3.v(), $$1.w() + $$3.w());
+   public int f() {
+      return 1;
    }
 
-   @Override
-   public boolean a(dzc $$0, cqp $$1, cqn $$2, dhg $$3, gw $$4, gw $$5, czh $$6, dva $$7, asc $$8, boolean $$9) {
-      return this.b.a().a($$1, $$3, $$8, $$4);
+   public static Function<dwl.a, dwc> g() {
+      return $$0 -> dwc.b;
    }
 
-   @Override
-   public dwq<?> a() {
-      return dwq.c;
+   public static Function<dwl.a, dwg> a(String $$0) {
+      return $$1 -> new dwg(Either.left(new aez($$0)), a, $$1);
    }
 
-   @Override
-   public String toString() {
-      return "Feature[" + this.b + "]";
+   public static Function<dwl.a, dwg> a(String $$0, he<dyt> $$1) {
+      return $$2 -> new dwg(Either.left(new aez($$0)), $$1, $$2);
+   }
+
+   public static Function<dwl.a, dwi> b(String $$0) {
+      return $$1 -> new dwi(Either.left(new aez($$0)), a, $$1);
+   }
+
+   public static Function<dwl.a, dwi> b(String $$0, he<dyt> $$1) {
+      return $$2 -> new dwi(Either.left(new aez($$0)), $$1, $$2);
+   }
+
+   public static Function<dwl.a, dwd> a(he<dug> $$0) {
+      return $$1 -> new dwd($$0, $$1);
+   }
+
+   public static Function<dwl.a, dwh> a(List<Function<dwl.a, ? extends dwj>> $$0) {
+      return $$1 -> new dwh($$0.stream().map($$1x -> (dwj)$$1x.apply($$1)).collect(Collectors.toList()), $$1);
    }
 }

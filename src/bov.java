@@ -1,35 +1,31 @@
 import com.google.common.collect.ImmutableMap;
 
-public class bov<E extends cay> extends bkx<E> {
-   private static final double c = 6.0;
-   private static final double d = 20.0;
-
+public class bov<E extends cbe> extends bld<E> {
    public bov(int $$0) {
-      super(ImmutableMap.of(bsh.aA, bsi.a, bsh.o, bsi.b, bsh.m, bsi.b, bsh.n, bsi.c, bsh.B, bsi.c, bsh.ay, bsi.c, bsh.aF, bsi.c), $$0);
+      super(ImmutableMap.of(bsn.o, bso.b, bsn.m, bso.b), $$0);
    }
 
-   protected boolean a(akq $$0, E $$1, long $$2) {
-      return true;
+   protected boolean a(akt $$0, E $$1, long $$2) {
+      return $$1.dH() == null;
    }
 
-   protected void b(akq $$0, E $$1, long $$2) {
-      $$1.a(apd.zK, 5.0F, 1.0F);
+   protected boolean a(akt $$0, E $$1) {
+      return $$1.aA() || $$1.aX() || $$1.bl();
    }
 
-   protected void c(akq $$0, E $$1, long $$2) {
-      if ($$1.c(bjs.m)) {
-         $$1.b(bjs.a);
+   protected void b(akt $$0, E $$1, long $$2) {
+      if ($$1.aA()) {
+         $$1.b(bjy.o);
+         $$1.a(apg.zA, 5.0F, 1.0F);
+      } else {
+         $$1.a(apg.zv, 5.0F, 1.0F);
+         this.c($$0, $$1, $$2);
       }
+   }
 
-      $$1.dN().b(bsh.aA);
-      $$1.dN().c(bsh.B).filter($$1::a).ifPresent($$1x -> {
-         if ($$1.a($$1x, 6.0, 20.0)) {
-            $$1.c($$1x);
-         }
-
-         if (!$$1.dN().a(bsh.ay)) {
-            caz.a($$1, $$1x.dl());
-         }
-      });
+   protected void c(akt $$0, E $$1, long $$2) {
+      if ($$1.dH() == null) {
+         $$1.a(biw.c.b);
+      }
    }
 }

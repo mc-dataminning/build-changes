@@ -1,42 +1,98 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
-import java.util.function.BiConsumer;
-import java.util.function.Function;
-import java.util.function.Predicate;
+import com.google.common.collect.Iterators;
+import com.google.common.collect.Lists;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.DynamicOps;
+import java.util.Comparator;
+import java.util.Iterator;
+import java.util.List;
+import java.util.stream.Stream;
 
-public class bnl {
-   private static final int a = 200;
+public class bnl<U> implements Iterable<U> {
+   protected final List<bnl.a<U>> a;
+   private final ash b = ash.a();
 
-   public static <E extends bji> bky<E> a(BiConsumer<E, bjg> $$0) {
-      return a($$0x -> false, $$0, true);
+   public bnl() {
+      this.a = Lists.newArrayList();
    }
 
-   public static <E extends bji> bky<E> a(Predicate<bjg> $$0) {
-      return a($$0, ($$0x, $$1) -> {
-      }, true);
+   private bnl(List<bnl.a<U>> $$0) {
+      this.a = Lists.newArrayList($$0);
    }
 
-   public static <E extends bji> bky<E> a() {
-      return a($$0 -> false, ($$0, $$1) -> {
-      }, true);
+   public static <U> Codec<bnl<U>> a(Codec<U> $$0) {
+      return bnl.a.a($$0).listOf().xmap(bnl::new, $$0x -> $$0x.a);
    }
 
-   public static <E extends bji> bky<E> a(Predicate<bjg> $$0, BiConsumer<E, bjg> $$1, boolean $$2) {
-      return boj.a(
-         (Function<boj.b<E>, ? extends App<boj.c<E>, bom<E>>>)($$3 -> $$3.group($$3.b(bsh.o), $$3.a(bsh.E)).apply($$3, ($$4, $$5) -> ($$6, $$7, $$8) -> {
-                  bjg $$9 = $$3.b($$4);
-                  if ($$7.c($$9) && (!$$2 || !a($$7, $$3.a($$5))) && $$9.bv() && $$9.dL() == $$7.dL() && !$$0.test($$9)) {
-                     return true;
-                  } else {
-                     $$1.accept((E)$$7, $$9);
-                     $$4.b();
-                     return true;
-                  }
-               }))
-      );
+   public bnl<U> a(U $$0, int $$1) {
+      this.a.add(new bnl.a<>($$0, $$1));
+      return this;
    }
 
-   private static boolean a(bjg $$0, Optional<Long> $$1) {
-      return $$1.isPresent() && $$0.dL().V() - $$1.get() > 200L;
+   public bnl<U> a() {
+      this.a.forEach($$0 -> $$0.a(this.b.i()));
+      this.a.sort(Comparator.comparingDouble(bnl.a::c));
+      return this;
+   }
+
+   public Stream<U> b() {
+      return this.a.stream().map(bnl.a::a);
+   }
+
+   @Override
+   public Iterator<U> iterator() {
+      return Iterators.transform(this.a.iterator(), bnl.a::a);
+   }
+
+   @Override
+   public String toString() {
+      return "ShufflingList[" + this.a + "]";
+   }
+
+   public static class a<T> {
+      final T a;
+      final int b;
+      private double c;
+
+      a(T $$0, int $$1) {
+         this.b = $$1;
+         this.a = $$0;
+      }
+
+      private double c() {
+         return this.c;
+      }
+
+      void a(float $$0) {
+         this.c = -Math.pow((double)$$0, (double)(1.0F / (float)this.b));
+      }
+
+      public T a() {
+         return this.a;
+      }
+
+      public int b() {
+         return this.b;
+      }
+
+      @Override
+      public String toString() {
+         return this.b + ":" + this.a;
+      }
+
+      public static <E> Codec<bnl.a<E>> a(final Codec<E> $$0) {
+         return new Codec<bnl.a<E>>() {
+            public <T> DataResult<Pair<bnl.a<E>, T>> decode(DynamicOps<T> $$0x, T $$1) {
+               Dynamic<T> $$2 = new Dynamic($$0, $$1);
+               return $$2.get("data").flatMap($$0::parse).map($$1x -> new bnl.a<>($$1x, $$2.get("weight").asInt(1))).map($$1x -> Pair.of($$1x, $$0.empty()));
+            }
+
+            public <T> DataResult<T> a(bnl.a<E> $$0x, DynamicOps<T> $$1, T $$2) {
+               return $$1.mapBuilder().add("weight", $$1.createInt($$0.b)).add("data", $$0.encodeStart($$1, $$0.a)).build($$2);
+            }
+         };
+      }
    }
 }

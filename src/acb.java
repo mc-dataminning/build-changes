@@ -1,24 +1,32 @@
-public class acb implements vd<abc> {
-   private final int a;
+public class acb implements ve<abd> {
+   private final boolean a;
+   private final boolean b;
 
-   public acb(int $$0) {
+   public acb(boolean $$0, boolean $$1) {
       this.a = $$0;
+      this.b = $$1;
    }
 
    public acb(so $$0) {
-      this.a = $$0.m();
+      this.a = $$0.readBoolean();
+      this.b = $$0.readBoolean();
    }
 
    @Override
    public void a(so $$0) {
-      $$0.c(this.a);
+      $$0.a(this.a);
+      $$0.a(this.b);
    }
 
-   public void a(abc $$0) {
+   public void a(abd $$0) {
       $$0.a(this);
    }
 
-   public int a() {
+   public boolean a() {
       return this.a;
+   }
+
+   public boolean d() {
+      return this.b;
    }
 }

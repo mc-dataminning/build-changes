@@ -1,93 +1,142 @@
-public interface bhr {
-   aev<bhq> a = aev.a(jc.p, new aew("in_fire"));
-   aev<bhq> b = aev.a(jc.p, new aew("lightning_bolt"));
-   aev<bhq> c = aev.a(jc.p, new aew("on_fire"));
-   aev<bhq> d = aev.a(jc.p, new aew("lava"));
-   aev<bhq> e = aev.a(jc.p, new aew("hot_floor"));
-   aev<bhq> f = aev.a(jc.p, new aew("in_wall"));
-   aev<bhq> g = aev.a(jc.p, new aew("cramming"));
-   aev<bhq> h = aev.a(jc.p, new aew("drown"));
-   aev<bhq> i = aev.a(jc.p, new aew("starve"));
-   aev<bhq> j = aev.a(jc.p, new aew("cactus"));
-   aev<bhq> k = aev.a(jc.p, new aew("fall"));
-   aev<bhq> l = aev.a(jc.p, new aew("fly_into_wall"));
-   aev<bhq> m = aev.a(jc.p, new aew("out_of_world"));
-   aev<bhq> n = aev.a(jc.p, new aew("generic"));
-   aev<bhq> o = aev.a(jc.p, new aew("magic"));
-   aev<bhq> p = aev.a(jc.p, new aew("wither"));
-   aev<bhq> q = aev.a(jc.p, new aew("dragon_breath"));
-   aev<bhq> r = aev.a(jc.p, new aew("dry_out"));
-   aev<bhq> s = aev.a(jc.p, new aew("sweet_berry_bush"));
-   aev<bhq> t = aev.a(jc.p, new aew("freeze"));
-   aev<bhq> u = aev.a(jc.p, new aew("stalagmite"));
-   aev<bhq> v = aev.a(jc.p, new aew("falling_block"));
-   aev<bhq> w = aev.a(jc.p, new aew("falling_anvil"));
-   aev<bhq> x = aev.a(jc.p, new aew("falling_stalactite"));
-   aev<bhq> y = aev.a(jc.p, new aew("sting"));
-   aev<bhq> z = aev.a(jc.p, new aew("mob_attack"));
-   aev<bhq> A = aev.a(jc.p, new aew("mob_attack_no_aggro"));
-   aev<bhq> B = aev.a(jc.p, new aew("player_attack"));
-   aev<bhq> C = aev.a(jc.p, new aew("arrow"));
-   aev<bhq> D = aev.a(jc.p, new aew("trident"));
-   aev<bhq> E = aev.a(jc.p, new aew("mob_projectile"));
-   aev<bhq> F = aev.a(jc.p, new aew("fireworks"));
-   aev<bhq> G = aev.a(jc.p, new aew("fireball"));
-   aev<bhq> H = aev.a(jc.p, new aew("unattributed_fireball"));
-   aev<bhq> I = aev.a(jc.p, new aew("wither_skull"));
-   aev<bhq> J = aev.a(jc.p, new aew("thrown"));
-   aev<bhq> K = aev.a(jc.p, new aew("indirect_magic"));
-   aev<bhq> L = aev.a(jc.p, new aew("thorns"));
-   aev<bhq> M = aev.a(jc.p, new aew("explosion"));
-   aev<bhq> N = aev.a(jc.p, new aew("player_explosion"));
-   aev<bhq> O = aev.a(jc.p, new aew("sonic_boom"));
-   aev<bhq> P = aev.a(jc.p, new aew("bad_respawn_point"));
-   aev<bhq> Q = aev.a(jc.p, new aew("outside_border"));
-   aev<bhq> R = aev.a(jc.p, new aew("generic_kill"));
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-   static void a(nr<bhq> $$0) {
-      $$0.a(a, new bhq("inFire", 0.1F, bhm.d));
-      $$0.a(b, new bhq("lightningBolt", 0.1F));
-      $$0.a(c, new bhq("onFire", 0.0F, bhm.d));
-      $$0.a(d, new bhq("lava", 0.1F, bhm.d));
-      $$0.a(e, new bhq("hotFloor", 0.1F, bhm.d));
-      $$0.a(f, new bhq("inWall", 0.0F));
-      $$0.a(g, new bhq("cramming", 0.0F));
-      $$0.a(h, new bhq("drown", 0.0F, bhm.c));
-      $$0.a(i, new bhq("starve", 0.0F));
-      $$0.a(j, new bhq("cactus", 0.1F));
-      $$0.a(k, new bhq("fall", bhn.b, 0.0F, bhm.a, bhs.b));
-      $$0.a(l, new bhq("flyIntoWall", 0.0F));
-      $$0.a(m, new bhq("outOfWorld", 0.0F));
-      $$0.a(n, new bhq("generic", 0.0F));
-      $$0.a(o, new bhq("magic", 0.0F));
-      $$0.a(p, new bhq("wither", 0.0F));
-      $$0.a(q, new bhq("dragonBreath", 0.0F));
-      $$0.a(r, new bhq("dryout", 0.1F));
-      $$0.a(s, new bhq("sweetBerryBush", 0.1F, bhm.e));
-      $$0.a(t, new bhq("freeze", 0.0F, bhm.f));
-      $$0.a(u, new bhq("stalagmite", 0.0F));
-      $$0.a(v, new bhq("fallingBlock", 0.1F));
-      $$0.a(w, new bhq("anvil", 0.1F));
-      $$0.a(x, new bhq("fallingStalactite", 0.1F));
-      $$0.a(y, new bhq("sting", 0.1F));
-      $$0.a(z, new bhq("mob", 0.1F));
-      $$0.a(A, new bhq("mob", 0.1F));
-      $$0.a(B, new bhq("player", 0.1F));
-      $$0.a(C, new bhq("arrow", 0.1F));
-      $$0.a(D, new bhq("trident", 0.1F));
-      $$0.a(E, new bhq("mob", 0.1F));
-      $$0.a(F, new bhq("fireworks", 0.1F));
-      $$0.a(H, new bhq("onFire", 0.1F, bhm.d));
-      $$0.a(G, new bhq("fireball", 0.1F, bhm.d));
-      $$0.a(I, new bhq("witherSkull", 0.1F));
-      $$0.a(J, new bhq("thrown", 0.1F));
-      $$0.a(K, new bhq("indirectMagic", 0.0F));
-      $$0.a(L, new bhq("thorns", 0.1F, bhm.b));
-      $$0.a(M, new bhq("explosion", bhn.c, 0.1F));
-      $$0.a(N, new bhq("explosion.player", bhn.c, 0.1F));
-      $$0.a(O, new bhq("sonic_boom", bhn.c, 0.0F));
-      $$0.a(P, new bhq("badRespawnPoint", bhn.c, 0.1F, bhm.a, bhs.c));
-      $$0.a(Q, new bhq("outsideBorder", 0.0F));
-      $$0.a(R, new bhq("genericKill", 0.0F));
+public class bhr {
+   public static final int a = 100;
+   public static final int b = 300;
+   private static final ui c = ui.a.a(new tj(tj.a.a, "https://bugs.mojang.com/browse/MCPE-28723")).a(new tr(tr.a.a, tl.b("MCPE-28723")));
+   private final List<bhp> d = Lists.newArrayList();
+   private final bjm e;
+   private int f;
+   private int g;
+   private int h;
+   private boolean i;
+   private boolean j;
+
+   public bhr(bjm $$0) {
+      this.e = $$0;
+   }
+
+   public void a(bhu $$0, float $$1) {
+      this.c();
+      bhz $$2 = bhz.a(this.e);
+      bhp $$3 = new bhp($$0, $$1, $$2, this.e.ab);
+      this.d.add($$3);
+      this.f = this.e.ah;
+      this.j = true;
+      if (!this.i && this.e.bv() && a($$0)) {
+         this.i = true;
+         this.g = this.e.ah;
+         this.h = this.g;
+         this.e.e_();
+      }
+   }
+
+   private static boolean a(bhu $$0) {
+      return $$0.d() instanceof bjm;
+   }
+
+   private tl a(biw $$0, tl $$1, String $$2, String $$3) {
+      cjl $$5 = $$0 instanceof bjm $$4 ? $$4.eS() : cjl.b;
+      return !$$5.b() && $$5.A() ? tl.a($$2, this.e.N_(), $$1, $$5.J()) : tl.a($$3, this.e.N_(), $$1);
+   }
+
+   private tl a(bhp $$0, @Nullable biw $$1) {
+      bhu $$2 = $$0.a();
+      if (!$$2.a(apx.m) && !$$2.a(apx.s)) {
+         tl $$4 = a($$1);
+         biw $$5 = $$2.d();
+         tl $$6 = a($$5);
+         if ($$6 != null && !$$6.equals($$4)) {
+            return this.a($$5, $$6, "death.fell.assist.item", "death.fell.assist");
+         } else {
+            return (tl)($$4 != null ? this.a($$1, $$4, "death.fell.finish.item", "death.fell.finish") : tl.a("death.fell.killer", this.e.N_()));
+         }
+      } else {
+         bhz $$3 = Objects.requireNonNullElse($$0.c(), bhz.a);
+         return tl.a($$3.a(), this.e.N_());
+      }
+   }
+
+   @Nullable
+   private static tl a(@Nullable biw $$0) {
+      return $$0 == null ? null : $$0.N_();
+   }
+
+   public tl a() {
+      if (this.d.isEmpty()) {
+         return tl.a("death.attack.generic", this.e.N_());
+      } else {
+         bhp $$0 = this.d.get(this.d.size() - 1);
+         bhu $$1 = $$0.a();
+         bhp $$2 = this.d();
+         bhy $$3 = $$1.j().e();
+         if ($$3 == bhy.b && $$2 != null) {
+            return this.a($$2, $$1.d());
+         } else if ($$3 == bhy.c) {
+            String $$4 = "death.attack." + $$1.e();
+            tl $$5 = to.a((tl)tl.c($$4 + ".link")).c(c);
+            return tl.a($$4 + ".message", this.e.N_(), $$5);
+         } else {
+            return $$1.a(this.e);
+         }
+      }
+   }
+
+   @Nullable
+   private bhp d() {
+      bhp $$0 = null;
+      bhp $$1 = null;
+      float $$2 = 0.0F;
+      float $$3 = 0.0F;
+
+      for (int $$4 = 0; $$4 < this.d.size(); $$4++) {
+         bhp $$5 = this.d.get($$4);
+         bhp $$6 = $$4 > 0 ? this.d.get($$4 - 1) : null;
+         bhu $$7 = $$5.a();
+         boolean $$8 = $$7.a(apx.s);
+         float $$9 = $$8 ? Float.MAX_VALUE : $$5.d();
+         if (($$7.a(apx.m) || $$8) && $$9 > 0.0F && ($$0 == null || $$9 > $$3)) {
+            if ($$4 > 0) {
+               $$0 = $$6;
+            } else {
+               $$0 = $$5;
+            }
+
+            $$3 = $$9;
+         }
+
+         if ($$5.c() != null && ($$1 == null || $$5.b() > $$2)) {
+            $$1 = $$5;
+            $$2 = $$5.b();
+         }
+      }
+
+      if ($$3 > 5.0F && $$0 != null) {
+         return $$0;
+      } else {
+         return $$2 > 5.0F && $$1 != null ? $$1 : null;
+      }
+   }
+
+   public int b() {
+      return this.i ? this.e.ah - this.g : this.h - this.g;
+   }
+
+   public void c() {
+      int $$0 = this.i ? 300 : 100;
+      if (this.j && (!this.e.bv() || this.e.ah - this.f > $$0)) {
+         boolean $$1 = this.i;
+         this.j = false;
+         this.i = false;
+         this.h = this.e.ah;
+         if ($$1) {
+            this.e.f_();
+         }
+
+         this.d.clear();
+      }
    }
 }

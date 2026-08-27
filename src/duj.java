@@ -1,23 +1,10 @@
 import com.mojang.serialization.Codec;
 import java.util.stream.Stream;
 
-public class duj extends dup {
-   private static final duj c = new duj();
-   public static final Codec<duj> a = Codec.unit(() -> c);
+public abstract class duj {
+   public static final Codec<duj> b = jb.V.q().dispatch(duj::b, duk::codec);
 
-   public static duj a() {
-      return c;
-   }
+   public abstract Stream<gw> a_(duh var1, ash var2, gw var3);
 
-   @Override
-   public Stream<gw> a_(dun $$0, asc $$1, gw $$2) {
-      int $$3 = $$1.a(16) + $$2.u();
-      int $$4 = $$1.a(16) + $$2.w();
-      return Stream.of(new gw($$3, $$2.v(), $$4));
-   }
-
-   @Override
-   public duq<?> b() {
-      return duq.m;
-   }
+   public abstract duk<?> b();
 }

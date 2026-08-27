@@ -25,10 +25,10 @@ public abstract class kz {
    }
 
    private void c() {
-      List<dgm<?>> $$0 = this.b();
+      List<dgg<?>> $$0 = this.b();
       Stream<la> $$1 = Stream.of(la.a());
 
-      for (dgm<?> $$2 : $$0) {
+      for (dgg<?> $$2 : $$0) {
          $$1 = $$1.flatMap($$1x -> $$2.c().map($$1x::a));
       }
 
@@ -38,41 +38,41 @@ public abstract class kz {
       }
    }
 
-   abstract List<dgm<?>> b();
+   abstract List<dgg<?>> b();
 
-   public static <T1 extends Comparable<T1>> kz.a<T1> a(dgm<T1> $$0) {
+   public static <T1 extends Comparable<T1>> kz.a<T1> a(dgg<T1> $$0) {
       return new kz.a<>($$0);
    }
 
-   public static <T1 extends Comparable<T1>, T2 extends Comparable<T2>> kz.b<T1, T2> a(dgm<T1> $$0, dgm<T2> $$1) {
+   public static <T1 extends Comparable<T1>, T2 extends Comparable<T2>> kz.b<T1, T2> a(dgg<T1> $$0, dgg<T2> $$1) {
       return new kz.b<>($$0, $$1);
    }
 
-   public static <T1 extends Comparable<T1>, T2 extends Comparable<T2>, T3 extends Comparable<T3>> kz.c<T1, T2, T3> a(dgm<T1> $$0, dgm<T2> $$1, dgm<T3> $$2) {
+   public static <T1 extends Comparable<T1>, T2 extends Comparable<T2>, T3 extends Comparable<T3>> kz.c<T1, T2, T3> a(dgg<T1> $$0, dgg<T2> $$1, dgg<T3> $$2) {
       return new kz.c<>($$0, $$1, $$2);
    }
 
    public static <T1 extends Comparable<T1>, T2 extends Comparable<T2>, T3 extends Comparable<T3>, T4 extends Comparable<T4>> kz.d<T1, T2, T3, T4> a(
-      dgm<T1> $$0, dgm<T2> $$1, dgm<T3> $$2, dgm<T4> $$3
+      dgg<T1> $$0, dgg<T2> $$1, dgg<T3> $$2, dgg<T4> $$3
    ) {
       return new kz.d<>($$0, $$1, $$2, $$3);
    }
 
    public static <T1 extends Comparable<T1>, T2 extends Comparable<T2>, T3 extends Comparable<T3>, T4 extends Comparable<T4>, T5 extends Comparable<T5>> kz.e<T1, T2, T3, T4, T5> a(
-      dgm<T1> $$0, dgm<T2> $$1, dgm<T3> $$2, dgm<T4> $$3, dgm<T5> $$4
+      dgg<T1> $$0, dgg<T2> $$1, dgg<T3> $$2, dgg<T4> $$3, dgg<T5> $$4
    ) {
       return new kz.e<>($$0, $$1, $$2, $$3, $$4);
    }
 
    public static class a<T1 extends Comparable<T1>> extends kz {
-      private final dgm<T1> a;
+      private final dgg<T1> a;
 
-      a(dgm<T1> $$0) {
+      a(dgg<T1> $$0) {
          this.a = $$0;
       }
 
       @Override
-      public List<dgm<?>> b() {
+      public List<dgg<?>> b() {
          return ImmutableList.of(this.a);
       }
 
@@ -98,16 +98,16 @@ public abstract class kz {
    }
 
    public static class b<T1 extends Comparable<T1>, T2 extends Comparable<T2>> extends kz {
-      private final dgm<T1> a;
-      private final dgm<T2> b;
+      private final dgg<T1> a;
+      private final dgg<T2> b;
 
-      b(dgm<T1> $$0, dgm<T2> $$1) {
+      b(dgg<T1> $$0, dgg<T2> $$1) {
          this.a = $$0;
          this.b = $$1;
       }
 
       @Override
-      public List<dgm<?>> b() {
+      public List<dgg<?>> b() {
          return ImmutableList.of(this.a, this.b);
       }
 
@@ -133,18 +133,18 @@ public abstract class kz {
    }
 
    public static class c<T1 extends Comparable<T1>, T2 extends Comparable<T2>, T3 extends Comparable<T3>> extends kz {
-      private final dgm<T1> a;
-      private final dgm<T2> b;
-      private final dgm<T3> c;
+      private final dgg<T1> a;
+      private final dgg<T2> b;
+      private final dgg<T3> c;
 
-      c(dgm<T1> $$0, dgm<T2> $$1, dgm<T3> $$2) {
+      c(dgg<T1> $$0, dgg<T2> $$1, dgg<T3> $$2) {
          this.a = $$0;
          this.b = $$1;
          this.c = $$2;
       }
 
       @Override
-      public List<dgm<?>> b() {
+      public List<dgg<?>> b() {
          return ImmutableList.of(this.a, this.b, this.c);
       }
 
@@ -174,12 +174,12 @@ public abstract class kz {
    }
 
    public static class d<T1 extends Comparable<T1>, T2 extends Comparable<T2>, T3 extends Comparable<T3>, T4 extends Comparable<T4>> extends kz {
-      private final dgm<T1> a;
-      private final dgm<T2> b;
-      private final dgm<T3> c;
-      private final dgm<T4> d;
+      private final dgg<T1> a;
+      private final dgg<T2> b;
+      private final dgg<T3> c;
+      private final dgg<T4> d;
 
-      d(dgm<T1> $$0, dgm<T2> $$1, dgm<T3> $$2, dgm<T4> $$3) {
+      d(dgg<T1> $$0, dgg<T2> $$1, dgg<T3> $$2, dgg<T4> $$3) {
          this.a = $$0;
          this.b = $$1;
          this.c = $$2;
@@ -187,7 +187,7 @@ public abstract class kz {
       }
 
       @Override
-      public List<dgm<?>> b() {
+      public List<dgg<?>> b() {
          return ImmutableList.of(this.a, this.b, this.c, this.d);
       }
 
@@ -238,13 +238,13 @@ public abstract class kz {
 
    public static class e<T1 extends Comparable<T1>, T2 extends Comparable<T2>, T3 extends Comparable<T3>, T4 extends Comparable<T4>, T5 extends Comparable<T5>>
       extends kz {
-      private final dgm<T1> a;
-      private final dgm<T2> b;
-      private final dgm<T3> c;
-      private final dgm<T4> d;
-      private final dgm<T5> e;
+      private final dgg<T1> a;
+      private final dgg<T2> b;
+      private final dgg<T3> c;
+      private final dgg<T4> d;
+      private final dgg<T5> e;
 
-      e(dgm<T1> $$0, dgm<T2> $$1, dgm<T3> $$2, dgm<T4> $$3, dgm<T5> $$4) {
+      e(dgg<T1> $$0, dgg<T2> $$1, dgg<T3> $$2, dgg<T4> $$3, dgg<T5> $$4) {
          this.a = $$0;
          this.b = $$1;
          this.c = $$2;
@@ -253,7 +253,7 @@ public abstract class kz {
       }
 
       @Override
-      public List<dgm<?>> b() {
+      public List<dgg<?>> b() {
          return ImmutableList.of(this.a, this.b, this.c, this.d, this.e);
       }
 

@@ -3,28 +3,40 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 import java.util.function.Consumer;
 
-public class edg extends edl {
+public class edg extends edf {
    public static final Codec<edg> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(jb.i.r().fieldOf("name").forGetter($$0x -> $$0x.j)).and(b($$0)).apply($$0, edg::new)
+      $$0 -> $$0.group(aez.a.fieldOf("name").forGetter($$0x -> $$0x.j)).and(b($$0)).apply($$0, edg::new)
    );
-   private final he<cja> j;
+   private final aez j;
 
-   private edg(he<cja> $$0, int $$1, int $$2, List<efp> $$3, List<eed> $$4) {
+   private edg(aez $$0, int $$1, int $$2, List<efj> $$3, List<edx> $$4) {
       super($$1, $$2, $$3, $$4);
       this.j = $$0;
    }
 
    @Override
-   public edk a() {
-      return edh.c;
+   public ede a() {
+      return edb.d;
    }
 
    @Override
-   public void a(Consumer<cjf> $$0, ecq $$1) {
-      $$0.accept(new cjf(this.j));
+   public void a(Consumer<cjl> $$0, eck $$1) {
+      ecs $$2 = $$1.a().getLootTable(this.j);
+      $$2.a($$1, $$0);
    }
 
-   public static edl.a<?> a(cpu $$0) {
-      return a(($$1, $$2, $$3, $$4) -> new edg($$0.k().j(), $$1, $$2, $$3, $$4));
+   @Override
+   public void a(ect $$0) {
+      ecm<ecs> $$1 = new ecm<>(ecp.c, this.j);
+      if ($$0.a($$1)) {
+         $$0.a("Table " + this.j + " is recursively called");
+      } else {
+         super.a($$0);
+         $$0.b().getElementOptional($$1).ifPresentOrElse($$2 -> $$2.a($$0.a("->{" + this.j + "}", $$1)), () -> $$0.a("Unknown loot table called " + this.j));
+      }
+   }
+
+   public static edf.a<?> a(aez $$0) {
+      return a(($$1, $$2, $$3, $$4) -> new edg($$0, $$1, $$2, $$3, $$4));
    }
 }

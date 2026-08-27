@@ -1,89 +1,119 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Objects;
+import com.google.common.annotations.VisibleForTesting;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
+import java.util.function.ToDoubleFunction;
+import javax.annotation.Nullable;
 
 public class bug {
-   private final gw a;
-   private final he<bui> b;
-   private int c;
-   private final Runnable d;
+   private static final int a = 10;
 
-   public static Codec<bug> a(Runnable $$0) {
-      return RecordCodecBuilder.create(
-         $$1 -> $$1.group(
-                  gw.a.fieldOf("pos").forGetter($$0xx -> $$0xx.a),
-                  aet.a(jc.S).fieldOf("type").forGetter($$0xx -> $$0xx.b),
-                  Codec.INT.fieldOf("free_tickets").orElse(0).forGetter($$0xx -> $$0xx.c),
-                  RecordCodecBuilder.point($$0)
-               )
-               .apply($$1, bug::new)
-      );
+   public static gw a(ash $$0, int $$1, int $$2) {
+      int $$3 = $$0.a(2 * $$1 + 1) - $$1;
+      int $$4 = $$0.a(2 * $$2 + 1) - $$2;
+      int $$5 = $$0.a(2 * $$1 + 1) - $$1;
+      return new gw($$3, $$4, $$5);
    }
 
-   private bug(gw $$0, he<bui> $$1, int $$2, Runnable $$3) {
-      this.a = $$0.i();
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-   }
-
-   public bug(gw $$0, he<bui> $$1, Runnable $$2) {
-      this($$0, $$1, $$1.a().b(), $$2);
-   }
-
-   @Deprecated
-   @asy
-   public int a() {
-      return this.c;
-   }
-
-   protected boolean b() {
-      if (this.c <= 0) {
-         return false;
+   @Nullable
+   public static gw a(ash $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6) {
+      double $$7 = asb.d($$5, $$4) - (float) (Math.PI / 2);
+      double $$8 = $$7 + (double)(2.0F * $$0.i() - 1.0F) * $$6;
+      double $$9 = Math.sqrt($$0.j()) * (double)asb.g * (double)$$1;
+      double $$10 = -$$9 * Math.sin($$8);
+      double $$11 = $$9 * Math.cos($$8);
+      if (!(Math.abs($$10) > (double)$$1) && !(Math.abs($$11) > (double)$$1)) {
+         int $$12 = $$0.a(2 * $$2 + 1) - $$2 + $$3;
+         return gw.a($$10, (double)$$12, $$11);
       } else {
-         this.c--;
-         this.d.run();
-         return true;
+         return null;
       }
    }
 
-   protected boolean c() {
-      if (this.c >= this.b.a().b()) {
-         return false;
+   @VisibleForTesting
+   public static gw a(gw $$0, int $$1, Predicate<gw> $$2) {
+      if (!$$2.test($$0)) {
+         return $$0;
       } else {
-         this.c++;
-         this.d.run();
-         return true;
+         gw $$3 = $$0.c();
+
+         while ($$3.v() < $$1 && $$2.test($$3)) {
+            $$3 = $$3.c();
+         }
+
+         return $$3;
       }
    }
 
-   public boolean d() {
-      return this.c > 0;
-   }
-
-   public boolean e() {
-      return this.c != this.b.a().b();
-   }
-
-   public gw f() {
-      return this.a;
-   }
-
-   public he<bui> g() {
-      return this.b;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
+   @VisibleForTesting
+   public static gw a(gw $$0, int $$1, int $$2, Predicate<gw> $$3) {
+      if ($$1 < 0) {
+         throw new IllegalArgumentException("aboveSolidAmount was " + $$1 + ", expected >= 0");
+      } else if (!$$3.test($$0)) {
+         return $$0;
       } else {
-         return $$0 != null && this.getClass() == $$0.getClass() ? Objects.equals(this.a, ((bug)$$0).a) : false;
+         gw $$4 = $$0.c();
+
+         while ($$4.v() < $$2 && $$3.test($$4)) {
+            $$4 = $$4.c();
+         }
+
+         gw $$5 = $$4;
+
+         while ($$5.v() < $$2 && $$5.v() - $$4.v() < $$1) {
+            gw $$6 = $$5.c();
+            if ($$3.test($$6)) {
+               break;
+            }
+
+            $$5 = $$6;
+         }
+
+         return $$5;
       }
    }
 
-   @Override
-   public int hashCode() {
-      return this.a.hashCode();
+   @Nullable
+   public static ehh a(bjv $$0, Supplier<gw> $$1) {
+      return a($$1, $$0::h);
+   }
+
+   @Nullable
+   public static ehh a(Supplier<gw> $$0, ToDoubleFunction<gw> $$1) {
+      double $$2 = Double.NEGATIVE_INFINITY;
+      gw $$3 = null;
+
+      for (int $$4 = 0; $$4 < 10; $$4++) {
+         gw $$5 = $$0.get();
+         if ($$5 != null) {
+            double $$6 = $$1.applyAsDouble($$5);
+            if ($$6 > $$2) {
+               $$2 = $$6;
+               $$3 = $$5;
+            }
+         }
+      }
+
+      return $$3 != null ? ehh.c($$3) : null;
+   }
+
+   public static gw a(bjv $$0, int $$1, ash $$2, gw $$3) {
+      int $$4 = $$3.u();
+      int $$5 = $$3.w();
+      if ($$0.fQ() && $$1 > 1) {
+         gw $$6 = $$0.fN();
+         if ($$0.dq() > (double)$$6.u()) {
+            $$4 -= $$2.a($$1 / 2);
+         } else {
+            $$4 += $$2.a($$1 / 2);
+         }
+
+         if ($$0.dw() > (double)$$6.w()) {
+            $$5 -= $$2.a($$1 / 2);
+         } else {
+            $$5 += $$2.a($$1 / 2);
+         }
+      }
+
+      return gw.a((double)$$4 + $$0.dq(), (double)$$3.v() + $$0.ds(), (double)$$5 + $$0.dw());
    }
 }

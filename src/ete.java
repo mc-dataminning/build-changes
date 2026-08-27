@@ -1,31 +1,69 @@
-import java.util.UUID;
+import java.util.OptionalInt;
 
-public class ete extends bgo {
-   private static final long j = 100L;
-   protected float h;
-   protected long i;
+public class ete extends esh {
+   private OptionalInt a = OptionalInt.empty();
+   private OptionalInt b = OptionalInt.empty();
+   private final asp<ete.a, etd> c;
+   private boolean d = false;
 
-   public ete(UUID $$0, tl $$1, float $$2, bgo.a $$3, bgo.b $$4, boolean $$5, boolean $$6, boolean $$7) {
-      super($$0, $$1, $$3, $$4);
-      this.h = $$2;
-      this.b = $$2;
-      this.i = ac.b();
-      this.a($$5);
-      this.b($$6);
-      this.c($$7);
+   public ete(tl $$0, erx $$1) {
+      this(0, 0, $$0, $$1);
+   }
+
+   public ete(int $$0, int $$1, tl $$2, erx $$3) {
+      super($$0, $$1, 0, 0, $$2, $$3);
+      this.c = ac.a($$1x -> $$1x.c.isPresent() ? etd.a($$3, $$1x.a, $$1x.b, $$1x.c.getAsInt()) : etd.a($$3, $$1x.a, $$1x.b));
+      this.i = false;
+   }
+
+   public ete i(int $$0) {
+      super.a($$0);
+      return this;
+   }
+
+   public ete j(int $$0) {
+      this.a = OptionalInt.of($$0);
+      return this;
+   }
+
+   public ete k(int $$0) {
+      this.b = OptionalInt.of($$0);
+      return this;
+   }
+
+   public ete b(boolean $$0) {
+      this.d = $$0;
+      return this;
    }
 
    @Override
-   public void a(float $$0) {
-      this.b = this.k();
-      this.h = $$0;
-      this.i = ac.b();
+   public int l() {
+      return this.c.a(this.e()).b();
    }
 
    @Override
-   public float k() {
-      long $$0 = ac.b() - this.i;
-      float $$1 = arw.a((float)$$0 / 100.0F, 0.0F, 1.0F);
-      return arw.i($$1, this.b, this.h);
+   public int i() {
+      return this.c.a(this.e()).a() * 9;
+   }
+
+   @Override
+   public void b(erz $$0, int $$1, int $$2, float $$3) {
+      etd $$4 = this.c.a(this.e());
+      int $$5 = this.r();
+      int $$6 = this.t();
+      int $$7 = 9;
+      int $$8 = this.b();
+      if (this.d) {
+         $$4.a($$0, $$5 + this.l() / 2, $$6, $$7, $$8);
+      } else {
+         $$4.b($$0, $$5, $$6, $$7, $$8);
+      }
+   }
+
+   private ete.a e() {
+      return new ete.a(this.m(), this.a.orElse(Integer.MAX_VALUE), this.b);
+   }
+
+   static record a(tl a, int b, OptionalInt c) {
    }
 }

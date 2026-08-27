@@ -1,50 +1,78 @@
-import com.google.common.collect.Maps;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.util.List;
-import java.util.Map;
+import com.mojang.serialization.Dynamic;
 
-public class cqf {
-   private final Long2ObjectMap<List<akr>> a = new Long2ObjectOpenHashMap();
-   private final Map<akr, cqf.a> b = Maps.newHashMap();
-   private final aka c;
+public final class cqf {
+   private final String a;
+   private final cpy b;
+   private final boolean c;
+   private final bhb d;
+   private final boolean e;
+   private final cpx f;
+   private final cqu g;
 
-   public cqf(aka $$0) {
-      this.c = $$0;
+   public cqf(String $$0, cpy $$1, boolean $$2, bhb $$3, boolean $$4, cpx $$5, cqu $$6) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
+      this.g = $$6;
    }
 
-   private List<akr> a(cpc $$0) {
-      return (List<akr>)this.a.computeIfAbsent($$0.a(), $$1 -> this.c.d($$0));
+   public static cqf a(Dynamic<?> $$0, cqu $$1) {
+      cpy $$2 = cpy.a($$0.get("GameType").asInt(0));
+      return new cqf(
+         $$0.get("LevelName").asString(""),
+         $$2,
+         $$0.get("hardcore").asBoolean(false),
+         $$0.get("Difficulty").asNumber().map($$0x -> bhb.a($$0x.byteValue())).result().orElse(bhb.c),
+         $$0.get("allowCommands").asBoolean($$2 == cpy.b),
+         new cpx($$0.get("GameRules")),
+         $$1
+      );
    }
 
-   public void a(cpc $$0, bjj $$1) {
-      for (akr $$2 : this.a($$0)) {
-         this.b.computeIfAbsent($$2, $$0x -> new cqf.a()).a($$1);
-      }
+   public String a() {
+      return this.a;
    }
 
-   public boolean a(bjj $$0, cpc $$1) {
-      for (akr $$2 : this.a($$1)) {
-         cqf.a $$3 = this.b.get($$2);
-         if ($$3 == null || $$3.b($$0)) {
-            return true;
-         }
-      }
-
-      return false;
+   public cpy b() {
+      return this.b;
    }
 
-   static class a {
-      private final Object2IntMap<bjj> a = new Object2IntOpenHashMap(bjj.values().length);
+   public boolean c() {
+      return this.c;
+   }
 
-      public void a(bjj $$0) {
-         this.a.computeInt($$0, ($$0x, $$1) -> $$1 == null ? 1 : $$1 + 1);
-      }
+   public bhb d() {
+      return this.d;
+   }
 
-      public boolean b(bjj $$0) {
-         return this.a.getOrDefault($$0, 0) < $$0.b();
-      }
+   public boolean e() {
+      return this.e;
+   }
+
+   public cpx f() {
+      return this.f;
+   }
+
+   public cqu g() {
+      return this.g;
+   }
+
+   public cqf a(cpy $$0) {
+      return new cqf(this.a, $$0, this.c, this.d, this.e, this.f, this.g);
+   }
+
+   public cqf a(bhb $$0) {
+      return new cqf(this.a, this.b, this.c, $$0, this.e, this.f, this.g);
+   }
+
+   public cqf a(cqu $$0) {
+      return new cqf(this.a, this.b, this.c, this.d, this.e, this.f, $$0);
+   }
+
+   public cqf h() {
+      return new cqf(this.a, this.b, this.c, this.d, this.e, this.f.b(), this.g);
    }
 }

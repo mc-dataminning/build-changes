@@ -1,42 +1,16 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-import org.slf4j.Logger;
+public class eev {
+   public static final ees<biw> a = a("this_entity");
+   public static final ees<cca> b = a("last_damage_player");
+   public static final ees<bhu> c = a("damage_source");
+   public static final ees<biw> d = a("killer_entity");
+   public static final ees<biw> e = a("direct_killer_entity");
+   public static final ees<ehh> f = a("origin");
+   public static final ees<dfd> g = a("block_state");
+   public static final ees<dcz> h = a("block_entity");
+   public static final ees<cjl> i = a("tool");
+   public static final ees<Float> j = a("explosion_radius");
 
-public class eev extends eec {
-   private static final Logger b = LogUtils.getLogger();
-   public static final Codec<eev> a = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, eev::new));
-
-   private eev(List<efp> $$0) {
-      super($$0);
-   }
-
-   @Override
-   public eee b() {
-      return eef.h;
-   }
-
-   @Override
-   public cjf a(cjf $$0, ecq $$1) {
-      if ($$0.b()) {
-         return $$0;
-      } else {
-         Optional<cmk<cmw>> $$2 = $$1.d().q().a(cmn.b, new bhf($$0), $$1.d());
-         if ($$2.isPresent()) {
-            cjf $$3 = $$2.get().b().a($$1.d().G_());
-            if (!$$3.b()) {
-               return $$3.c($$0.L());
-            }
-         }
-
-         b.warn("Couldn't smelt {} because there is no smelting recipe", $$0);
-         return $$0;
-      }
-   }
-
-   public static eec.a<?> c() {
-      return a(eev::new);
+   private static <T> ees<T> a(String $$0) {
+      return new ees<>(new aez($$0));
    }
 }

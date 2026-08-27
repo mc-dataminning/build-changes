@@ -1,264 +1,135 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.logging.LogUtils;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Function;
-import org.slf4j.Logger;
+import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-public class bxe {
-   private static final Logger c = LogUtils.getLogger();
-   private static final int d = 6;
-   static final List<btm<? extends btl<? super bxd>>> a = ImmutableList.of(btm.c, btm.f, btm.d, btm.w);
-   static final List<bsh<?>> b = ImmutableList.of(
-      bsh.n, bsh.m, bsh.E, bsh.t, bsh.Y, bsh.aQ, bsh.aR, bsh.aS, bsh.aF, bsh.aP, bsh.h, bsh.r, new bsh[]{bsh.N, bsh.O, bsh.Q}
-   );
-   private static final int e = 9600;
-   private static final float f = 1.0F;
-   private static final float g = 2.0F;
-   private static final float h = 1.25F;
-   private static final float i = 1.25F;
+public class bxe extends bwz {
+   private int bU = 47999;
 
-   public static cmg a() {
-      return cmg.a(cji.uo);
+   public bxe(bja<? extends bxe> $$0, cqb $$1) {
+      super($$0, $$1);
    }
 
-   protected static bkg<?> a(bkg<bxd> $$0) {
-      b($$0);
-      e($$0);
-      c($$0);
-      d($$0);
-      $$0.a(Set.of(cdf.a));
-      $$0.b(cdf.b);
-      $$0.f();
-      return $$0;
+   @Override
+   public boolean gn() {
+      return true;
    }
 
-   static bxd b(bxd $$0) {
-      $$0.dN().b(bsh.aR);
-      $$0.dN().b(bsh.aQ);
-      return $$0.a(bxd.a.a);
+   @Nullable
+   @Override
+   protected bwz gs() {
+      return bja.ba.a(this.dL());
    }
 
-   private static void b(bkg<bxd> $$0) {
-      $$0.a(cdf.a, 0, ImmutableList.of(new bnq(0.8F), new bks(2.0F) {
-         @Override
-         protected void b(akq $$0, bjp $$1, long $$2) {
-            bxe.b((bxd)$$1);
-            super.b($$0, $$1, $$2);
-         }
-      }, new bmg(500, 700), new bld(bsh.O)));
+   @Override
+   public void b(qw $$0) {
+      super.b($$0);
+      $$0.a("DespawnDelay", this.bU);
    }
 
-   private static void c(bkg<bxd> $$0) {
-      $$0.a(cdf.v, ImmutableList.of(Pair.of(0, new bxe.e())), Set.of(Pair.of(bsh.Y, bsi.b), Pair.of(bsh.aQ, bsi.a), Pair.of(bsh.m, bsi.a)));
-   }
-
-   private static void d(bkg<bxd> $$0) {
-      $$0.a(
-         cdf.z,
-         ImmutableList.of(Pair.of(0, new bxe.a(160, 180)), Pair.of(0, new bxe.c(40))),
-         Set.of(Pair.of(bsh.Y, bsi.b), Pair.of(bsh.m, bsi.b), Pair.of(bsh.aR, bsi.a))
-      );
-   }
-
-   private static void e(bkg<bxd> $$0) {
-      $$0.a(
-         cdf.b,
-         ImmutableList.of(
-            Pair.of(0, new bkr(biu.aN, 1.0F) {
-               @Override
-               protected void a(akq $$0, bur $$1, long $$2) {
-                  bxe.b((bxd)$$1);
-                  super.a($$0, $$1, $$2);
-               }
-            }),
-            Pair.of(1, new blk($$0x -> 1.25F, $$0x -> $$0x.m_() ? 2.5 : 3.5) {
-               @Override
-               protected void b(akq $$0, bjp $$1, long $$2) {
-                  bxe.b((bxd)$$1);
-                  super.b($$0, $$1, $$2);
-               }
-            }),
-            Pair.of(2, new bmc(45, 90)),
-            Pair.of(3, new bxe.b(40, 100)),
-            Pair.of(
-               4,
-               new bmt(
-                  ImmutableList.of(
-                     Pair.of(bnd.a(1.0F, 3), 2),
-                     Pair.of(new bxe.d(40, 80), 1),
-                     Pair.of(new bxe.f(40, 80), 1),
-                     Pair.of(bmv.a(biu.bt, 6.0F), 1),
-                     Pair.of(bmo.a(1.0F), 1),
-                     Pair.of(new blh(5, 20), 2)
-                  )
-               )
-            )
-         ),
-         Set.of(Pair.of(bsh.aR, bsi.b))
-      );
-   }
-
-   static void a(bxd $$0) {
-      $$0.dN().a(ImmutableList.of(cdf.z, cdf.v, cdf.b));
-   }
-
-   static class a extends bkx<bxd> {
-      a(int $$0, int $$1) {
-         super(Map.of(bsh.Y, bsi.b, bsh.m, bsi.b, bsh.aR, bsi.a, bsh.aF, bsi.b), $$0, $$1);
+   @Override
+   public void a(qw $$0) {
+      super.a($$0);
+      if ($$0.b("DespawnDelay", 99)) {
+         this.bU = $$0.h("DespawnDelay");
       }
+   }
 
-      protected boolean a(akq $$0, bxd $$1) {
-         return $$1.gd();
+   @Override
+   protected void z() {
+      super.z();
+      this.bO.a(1, new bra(this, 2.0));
+      this.bP.a(1, new bxe.a(this));
+   }
+
+   @Override
+   public void w(int $$0) {
+      this.bU = $$0;
+   }
+
+   @Override
+   protected void f(cca $$0) {
+      biw $$1 = this.fT();
+      if (!($$1 instanceof cbt)) {
+         super.f($$0);
       }
+   }
 
-      protected boolean a(akq $$0, bxd $$1, long $$2) {
-         return $$1.dN().c(bsh.aR).isPresent() && $$1.gl() && !$$1.gh();
+   @Override
+   public void b_() {
+      super.b_();
+      if (!this.dL().B) {
+         this.gU();
       }
+   }
 
-      protected void b(akq $$0, bxd $$1, long $$2) {
-         $$1.a(bxd.a.f);
-      }
-
-      protected void c(akq $$0, bxd $$1, long $$2) {
-         boolean $$3 = this.a($$2);
-         if ($$3) {
-            $$1.dN().a(bsh.aF, asx.a, 9600L);
-         } else {
-            bxe.b($$1);
+   private void gU() {
+      if (this.gV()) {
+         this.bU = this.gW() ? ((cbt)this.fT()).gn() - 1 : this.bU - 1;
+         if (this.bU <= 0) {
+            this.a(true, false);
+            this.ak();
          }
       }
    }
 
-   static class b extends bkx<bxd> {
-      b(int $$0, int $$1) {
-         super(Map.of(bsh.aS, bsi.a), $$0, $$1);
-      }
-
-      protected boolean a(akq $$0, bxd $$1, long $$2) {
-         return true;
-      }
-
-      protected void b(akq $$0, bxd $$1, long $$2) {
-         $$1.a(bxd.a.b);
-      }
-
-      protected void c(akq $$0, bxd $$1, long $$2) {
-         $$1.a(bxd.a.a);
-         $$1.dN().b(bsh.aS);
-      }
+   private boolean gV() {
+      return !this.gt() && !this.gX() && !this.cU();
    }
 
-   static class c extends bkx<bxd> {
-      c(int $$0) {
-         super(Map.of(bsh.Y, bsi.b, bsh.m, bsi.b, bsh.aR, bsi.a, bsh.aF, bsi.a), $$0, $$0);
-      }
-
-      protected boolean a(akq $$0, bxd $$1) {
-         return true;
-      }
-
-      protected boolean a(akq $$0, bxd $$1, long $$2) {
-         return $$1.dN().c(bsh.aR).isPresent();
-      }
-
-      protected void b(akq $$0, bxd $$1, long $$2) {
-         $$1.a(bxd.a.g);
-      }
-
-      protected void c(akq $$0, bxd $$1, long $$2) {
-         boolean $$3 = this.a($$2);
-         $$1.a(bxd.a.a).w($$3);
-         $$1.dN().b(bsh.aR);
-         $$1.dN().a(bsh.aS, true);
-      }
+   private boolean gW() {
+      return this.fT() instanceof cbt;
    }
 
-   static class d extends bkx<bxd> {
-      d(int $$0, int $$1) {
-         super(Map.of(bsh.Y, bsi.b, bsh.aR, bsi.b, bsh.aQ, bsi.b, bsh.aS, bsi.b, bsh.r, bsi.b), $$0, $$1);
-      }
-
-      protected boolean a(akq $$0, bxd $$1) {
-         return !$$1.y();
-      }
-
-      protected boolean a(akq $$0, bxd $$1, long $$2) {
-         return true;
-      }
-
-      protected void b(akq $$0, bxd $$1, long $$2) {
-         $$1.a(bxd.a.c);
-      }
-
-      protected void c(akq $$0, bxd $$1, long $$2) {
-         $$1.a(bxd.a.a);
-      }
+   private boolean gX() {
+      return this.fS() && !this.gW();
    }
 
-   static class e extends bkx<bxd> {
-      e() {
-         super(Map.of(bsh.m, bsi.a, bsh.Y, bsi.b, bsh.aQ, bsi.a), 600);
+   @Nullable
+   @Override
+   public bkf a(cqq $$0, bhc $$1, bjq $$2, @Nullable bkf $$3, @Nullable qw $$4) {
+      if ($$2 == bjq.h) {
+         this.c_(0);
       }
 
-      protected boolean a(akq $$0, bxd $$1) {
-         return $$1.gd();
+      if ($$3 == null) {
+         $$3 = new bir.a(false);
       }
 
-      protected boolean a(akq $$0, bxd $$1, long $$2) {
-         if (!$$1.gd()) {
-            $$1.a(bxd.a.a);
+      return super.a($$0, $$1, $$2, $$3, $$4);
+   }
+
+   protected static class a extends bsh {
+      private final bwz a;
+      private bjm b;
+      private int c;
+
+      public a(bwz $$0) {
+         super($$0, false);
+         this.a = $$0;
+         this.a(EnumSet.of(bqh.a.d));
+      }
+
+      @Override
+      public boolean a() {
+         if (!this.a.fS()) {
+            return false;
+         } else if (!(this.a.fT() instanceof cbt $$1)) {
             return false;
          } else {
-            Optional<gw> $$3 = $$1.dN().c(bsh.m).map(bsk::a).map(bmk::b);
-            Optional<gw> $$4 = $$1.dN().c(bsh.aQ);
-            return !$$3.isEmpty() && !$$4.isEmpty() ? $$4.get().equals($$3.get()) : false;
+            this.b = $$1.eg();
+            int $$2 = $$1.eh();
+            return $$2 != this.c && this.a(this.b, bty.a);
          }
       }
 
-      protected void b(akq $$0, bxd $$1, long $$2) {
-         $$1.a(bxd.a.e);
-      }
-
-      protected void c(akq $$0, bxd $$1, long $$2) {
-         if ($$1.gl() && $$1.gd()) {
-            $$1.dN().a(bsh.aR, true);
+      @Override
+      public void c() {
+         this.e.h(this.b);
+         biw $$0 = this.a.fT();
+         if ($$0 instanceof cbt) {
+            this.c = ((cbt)$$0).eh();
          }
 
-         $$1.dN().b(bsh.m);
-         $$1.dN().b(bsh.aQ);
-      }
-   }
-
-   static class f extends bkx<bxd> {
-      f(int $$0, int $$1) {
-         super(Map.of(bsh.m, bsi.b, bsh.aQ, bsi.b, bsh.aF, bsi.b), $$0, $$1);
-      }
-
-      protected boolean a(akq $$0, bxd $$1) {
-         return !$$1.m_() && $$1.gd();
-      }
-
-      protected boolean a(akq $$0, bxd $$1, long $$2) {
-         return $$1.gd();
-      }
-
-      protected void b(akq $$0, bxd $$1, long $$2) {
-         $$1.a(bxd.a.d);
-      }
-
-      protected void c(akq $$0, bxd $$1, long $$2) {
-         boolean $$3 = this.a($$2);
-         $$1.a(bxd.a.a);
-         if ($$3) {
-            $$1.gk().ifPresent($$1x -> {
-               $$1.dN().a(bsh.aQ, $$1x);
-               $$1.dN().a(bsh.m, new bsk($$1x, 1.25F, 0));
-            });
-         }
+         super.c();
       }
    }
 }

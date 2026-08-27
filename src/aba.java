@@ -1,93 +1,22 @@
-import java.util.UUID;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class aba {
-   private static final String[] a = new String[]{
-      "Slim",
-      "Far",
-      "River",
-      "Silly",
-      "Fat",
-      "Thin",
-      "Fish",
-      "Bat",
-      "Dark",
-      "Oak",
-      "Sly",
-      "Bush",
-      "Zen",
-      "Bark",
-      "Cry",
-      "Slack",
-      "Soup",
-      "Grim",
-      "Hook",
-      "Dirt",
-      "Mud",
-      "Sad",
-      "Hard",
-      "Crook",
-      "Sneak",
-      "Stink",
-      "Weird",
-      "Fire",
-      "Soot",
-      "Soft",
-      "Rough",
-      "Cling",
-      "Scar"
-   };
-   private static final String[] b = new String[]{
-      "Fox",
-      "Tail",
-      "Jaw",
-      "Whisper",
-      "Twig",
-      "Root",
-      "Finder",
-      "Nose",
-      "Brow",
-      "Blade",
-      "Fry",
-      "Seek",
-      "Wart",
-      "Tooth",
-      "Foot",
-      "Leaf",
-      "Stone",
-      "Fall",
-      "Face",
-      "Tongue",
-      "Voice",
-      "Lip",
-      "Mouth",
-      "Snail",
-      "Toe",
-      "Ear",
-      "Hair",
-      "Beard",
-      "Shirt",
-      "Fist"
-   };
-
-   public static String a(biq $$0) {
-      if ($$0 instanceof cbu) {
-         return $$0.ab().getString();
-      } else {
-         tl $$1 = $$0.ad();
-         return $$1 != null ? $$1.getString() : a($$0.cv());
-      }
+public record aba(aey<dim> a, aey<cqb> b, long c, cpy d, @Nullable cpy e, boolean f, boolean g, Optional<hd> h, int i) {
+   public aba(so $$0) {
+      this(
+         $$0.a(jc.av), $$0.a(jc.aI), $$0.readLong(), cpy.a($$0.readByte()), cpy.b($$0.readByte()), $$0.readBoolean(), $$0.readBoolean(), $$0.b(so::h), $$0.n()
+      );
    }
 
-   public static String a(UUID $$0) {
-      asc $$1 = b($$0);
-      return a($$1, a) + a($$1, b);
-   }
-
-   private static String a(asc $$0, String[] $$1) {
-      return ac.a($$1, $$0);
-   }
-
-   private static asc b(UUID $$0) {
-      return asc.a((long)($$0.hashCode() >> 2));
+   public void a(so $$0) {
+      $$0.b(this.a);
+      $$0.b(this.b);
+      $$0.b(this.c);
+      $$0.k(this.d.a());
+      $$0.k(cpy.a(this.e));
+      $$0.a(this.f);
+      $$0.a(this.g);
+      $$0.a(this.h, so::a);
+      $$0.c(this.i);
    }
 }

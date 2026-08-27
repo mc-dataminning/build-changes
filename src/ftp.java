@@ -1,27 +1,16 @@
-public class ftp extends fun<bvb, fff<bvb>> {
-   private static final aew a = new aew("textures/entity/fox/fox.png");
-   private static final aew i = new aew("textures/entity/fox/fox_sleep.png");
-   private static final aew j = new aew("textures/entity/fox/snow_fox.png");
-   private static final aew k = new aew("textures/entity/fox/snow_fox_sleep.png");
+public class ftp extends fvk<bje> {
+   private static final aez a = new aez("textures/entity/squid/glow_squid.png");
 
-   public ftp(fth.a $$0) {
-      super($$0, new fff<>($$0.a(fib.X)), 0.4F);
-      this.a(new fxc(this, $$0.d()));
+   public ftp(ftd.a $$0, fha<bje> $$1) {
+      super($$0, $$1);
    }
 
-   protected void a(bvb $$0, elp $$1, float $$2, float $$3, float $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      if ($$0.gj() || $$0.gd()) {
-         float $$5 = -arw.i($$4, $$0.O, $$0.dD());
-         $$1.a(a.b.rotationDegrees($$5));
-      }
+   public aez a(bje $$0) {
+      return a;
    }
 
-   public aew a(bvb $$0) {
-      if ($$0.t() == bvb.v.a) {
-         return $$0.fC() ? i : a;
-      } else {
-         return $$0.fC() ? k : j;
-      }
+   protected int a(bje $$0, gw $$1) {
+      int $$2 = (int)asb.b(0.0F, 15.0F, 1.0F - (float)$$0.y() / 10.0F);
+      return $$2 == 15 ? 15 : Math.max($$2, super.a($$0, $$1));
    }
 }

@@ -1,120 +1,210 @@
-import com.google.common.collect.Maps;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import java.util.Map;
+import java.util.Optional;
+import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class ebe extends eba {
-   private final boolean k;
-   private final Long2ObjectMap<eax> l = new Long2ObjectOpenHashMap();
+public class ebe {
+   private static final int c = 2;
+   public static final int a = 21;
+   private static final int d = 3;
+   public static final int b = 21;
+   private static final dfc.f e = ($$0, $$1, $$2) -> $$0.a(cte.co);
+   private static final float f = 4.0F;
+   private static final double g = 1.0;
+   private final cqc h;
+   private final ha.a i;
+   private final ha j;
+   private int k;
+   @Nullable
+   private gw l;
+   private int m;
+   private final int n;
 
-   public ebe(boolean $$0) {
-      this.k = $$0;
+   public static Optional<ebe> a(cqc $$0, gw $$1, ha.a $$2) {
+      return a($$0, $$1, $$0x -> $$0x.a() && $$0x.k == 0, $$2);
    }
 
-   @Override
-   public void a(cqi $$0, bji $$1) {
-      super.a($$0, $$1);
-      this.l.clear();
+   public static Optional<ebe> a(cqc $$0, gw $$1, Predicate<ebe> $$2, ha.a $$3) {
+      Optional<ebe> $$4 = Optional.of(new ebe($$0, $$1, $$3)).filter($$2);
+      if ($$4.isPresent()) {
+         return $$4;
+      } else {
+         ha.a $$5 = $$3 == ha.a.a ? ha.a.c : ha.a.a;
+         return Optional.of(new ebe($$0, $$1, $$5)).filter($$2);
+      }
    }
 
-   @Override
-   public void b() {
-      super.b();
-      this.l.clear();
-   }
-
-   @Override
-   public eaz a() {
-      return this.b(arw.a(this.b.cG().a), arw.a(this.b.cG().b + 0.5), arw.a(this.b.cG().c));
-   }
-
-   @Override
-   public ebf a(double $$0, double $$1, double $$2) {
-      return this.a(this.b(arw.a($$0), arw.a($$1), arw.a($$2)));
-   }
-
-   @Override
-   public int a(eaz[] $$0, eaz $$1) {
-      int $$2 = 0;
-      Map<ha, eaz> $$3 = Maps.newEnumMap(ha.class);
-
-      for (ha $$4 : ha.values()) {
-         eaz $$5 = this.a($$1.a + $$4.j(), $$1.b + $$4.k(), $$1.c + $$4.l());
-         $$3.put($$4, $$5);
-         if (this.b($$5)) {
-            $$0[$$2++] = $$5;
+   public ebe(cqc $$0, gw $$1, ha.a $$2) {
+      this.h = $$0;
+      this.i = $$2;
+      this.j = $$2 == ha.a.a ? ha.e : ha.d;
+      this.l = this.a($$1);
+      if (this.l == null) {
+         this.l = $$1;
+         this.n = 1;
+         this.m = 1;
+      } else {
+         this.n = this.d();
+         if (this.n > 0) {
+            this.m = this.e();
          }
       }
-
-      for (ha $$6 : ha.c.a) {
-         ha $$7 = $$6.h();
-         eaz $$8 = this.a($$1.a + $$6.j() + $$7.j(), $$1.b, $$1.c + $$6.l() + $$7.l());
-         if (this.a($$8, $$3.get($$6), $$3.get($$7))) {
-            $$0[$$2++] = $$8;
-         }
-      }
-
-      return $$2;
-   }
-
-   protected boolean b(@Nullable eaz $$0) {
-      return $$0 != null && !$$0.i;
-   }
-
-   protected boolean a(@Nullable eaz $$0, @Nullable eaz $$1, @Nullable eaz $$2) {
-      return this.b($$0) && $$1 != null && $$1.k >= 0.0F && $$2 != null && $$2.k >= 0.0F;
    }
 
    @Nullable
-   protected eaz a(int $$0, int $$1, int $$2) {
-      eaz $$3 = null;
-      eax $$4 = this.c($$0, $$1, $$2);
-      if (this.k && $$4 == eax.u || $$4 == eax.j) {
-         float $$5 = this.b.a($$4);
-         if ($$5 >= 0.0F) {
-            $$3 = this.b($$0, $$1, $$2);
-            $$3.l = $$4;
-            $$3.k = Math.max($$3.k, $$5);
-            if (this.a.b_(new gw($$0, $$1, $$2)).c()) {
-               $$3.k += 8.0F;
+   private gw a(gw $$0) {
+      int $$1 = Math.max(this.h.H_(), $$0.v() - 21);
+
+      while ($$0.v() > $$1 && a(this.h.a_($$0.d()))) {
+         $$0 = $$0.d();
+      }
+
+      ha $$2 = this.j.g();
+      int $$3 = this.a($$0, $$2) - 1;
+      return $$3 < 0 ? null : $$0.a($$2, $$3);
+   }
+
+   private int d() {
+      int $$0 = this.a(this.l, this.j);
+      return $$0 >= 2 && $$0 <= 21 ? $$0 : 0;
+   }
+
+   private int a(gw $$0, ha $$1) {
+      gw.a $$2 = new gw.a();
+
+      for (int $$3 = 0; $$3 <= 21; $$3++) {
+         $$2.g($$0).c($$1, $$3);
+         dfd $$4 = this.h.a_($$2);
+         if (!a($$4)) {
+            if (e.test($$4, this.h, $$2)) {
+               return $$3;
+            }
+            break;
+         }
+
+         dfd $$5 = this.h.a_($$2.c(ha.a));
+         if (!e.test($$5, this.h, $$2)) {
+            break;
+         }
+      }
+
+      return 0;
+   }
+
+   private int e() {
+      gw.a $$0 = new gw.a();
+      int $$1 = this.a($$0);
+      return $$1 >= 3 && $$1 <= 21 && this.a($$0, $$1) ? $$1 : 0;
+   }
+
+   private boolean a(gw.a $$0, int $$1) {
+      for (int $$2 = 0; $$2 < this.n; $$2++) {
+         gw.a $$3 = $$0.g(this.l).c(ha.b, $$1).c(this.j, $$2);
+         if (!e.test(this.h.a_($$3), this.h, $$3)) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   private int a(gw.a $$0) {
+      for (int $$1 = 0; $$1 < 21; $$1++) {
+         $$0.g(this.l).c(ha.b, $$1).c(this.j, -1);
+         if (!e.test(this.h.a_($$0), this.h, $$0)) {
+            return $$1;
+         }
+
+         $$0.g(this.l).c(ha.b, $$1).c(this.j, this.n);
+         if (!e.test(this.h.a_($$0), this.h, $$0)) {
+            return $$1;
+         }
+
+         for (int $$2 = 0; $$2 < this.n; $$2++) {
+            $$0.g(this.l).c(ha.b, $$1).c(this.j, $$2);
+            dfd $$3 = this.h.a_($$0);
+            if (!a($$3)) {
+               return $$1;
+            }
+
+            if ($$3.a(cte.ed)) {
+               this.k++;
             }
          }
       }
 
-      return $$3;
+      return 21;
    }
 
-   protected eax c(int $$0, int $$1, int $$2) {
-      return (eax)this.l.computeIfAbsent(gw.a($$0, $$1, $$2), $$3 -> this.a(this.a, $$0, $$1, $$2));
+   private static boolean a(dfd $$0) {
+      return $$0.i() || $$0.a(apv.aJ) || $$0.a(cte.ed);
    }
 
-   @Override
-   public eax a(cpb $$0, int $$1, int $$2, int $$3) {
-      return this.a($$0, $$1, $$2, $$3, this.b);
+   public boolean a() {
+      return this.l != null && this.n >= 2 && this.n <= 21 && this.m >= 3 && this.m <= 21;
    }
 
-   @Override
-   public eax a(cpb $$0, int $$1, int $$2, int $$3, bji $$4) {
-      gw.a $$5 = new gw.a();
+   public void b() {
+      dfd $$0 = cte.ed.o().a(cye.b, this.i);
+      gw.a(this.l, this.l.a(ha.b, this.m - 1).a(this.j, this.n - 1)).forEach($$1 -> this.h.a($$1, $$0, 18));
+   }
 
-      for (int $$6 = $$1; $$6 < $$1 + this.d; $$6++) {
-         for (int $$7 = $$2; $$7 < $$2 + this.e; $$7++) {
-            for (int $$8 = $$3; $$8 < $$3 + this.f; $$8++) {
-               eam $$9 = $$0.b_($$5.d($$6, $$7, $$8));
-               dfj $$10 = $$0.a_($$5.d($$6, $$7, $$8));
-               if ($$9.c() && $$10.a($$0, $$5.d(), ebc.b) && $$10.i()) {
-                  return eax.u;
-               }
+   public boolean c() {
+      return this.a() && this.k == this.n * this.m;
+   }
 
-               if (!$$9.a(apx.a)) {
-                  return eax.a;
-               }
-            }
-         }
+   public static ehh a(l.a $$0, ha.a $$1, ehh $$2, bix $$3) {
+      double $$4 = (double)$$0.b - (double)$$3.a;
+      double $$5 = (double)$$0.c - (double)$$3.b;
+      gw $$6 = $$0.a;
+      double $$8;
+      if ($$4 > 0.0) {
+         double $$7 = (double)$$6.a($$1) + (double)$$3.a / 2.0;
+         $$8 = asb.a(asb.c($$2.a($$1) - $$7, 0.0, $$4), 0.0, 1.0);
+      } else {
+         $$8 = 0.5;
       }
 
-      dfj $$11 = $$0.a_($$5);
-      return $$11.a($$0, $$5, ebc.b) ? eax.j : eax.a;
+      double $$11;
+      if ($$5 > 0.0) {
+         ha.a $$10 = ha.a.b;
+         $$11 = asb.a(asb.c($$2.a($$10) - (double)$$6.a($$10), 0.0, $$5), 0.0, 1.0);
+      } else {
+         $$11 = 0.0;
+      }
+
+      ha.a $$13 = $$1 == ha.a.a ? ha.a.c : ha.a.a;
+      double $$14 = $$2.a($$13) - ((double)$$6.a($$13) + 0.5);
+      return new ehh($$8, $$11, $$14);
+   }
+
+   public static ebd a(akt $$0, l.a $$1, ha.a $$2, ehh $$3, biw $$4, ehh $$5, float $$6, float $$7) {
+      gw $$8 = $$1.a;
+      dfd $$9 = $$0.a_($$8);
+      ha.a $$10 = $$9.d(dft.H).orElse(ha.a.a);
+      double $$11 = (double)$$1.b;
+      double $$12 = (double)$$1.c;
+      bix $$13 = $$4.a($$4.an());
+      int $$14 = $$2 == $$10 ? 0 : 90;
+      ehh $$15 = $$2 == $$10 ? $$5 : new ehh($$5.e, $$5.d, -$$5.c);
+      double $$16 = (double)$$13.a / 2.0 + ($$11 - (double)$$13.a) * $$3.a();
+      double $$17 = ($$12 - (double)$$13.b) * $$3.b();
+      double $$18 = 0.5 + $$3.c();
+      boolean $$19 = $$10 == ha.a.a;
+      ehh $$20 = new ehh((double)$$8.u() + ($$19 ? $$16 : $$18), (double)$$8.v() + $$17, (double)$$8.w() + ($$19 ? $$18 : $$16));
+      ehh $$21 = a($$20, $$0, $$4, $$13);
+      return new ebd($$21, $$15, $$6 + (float)$$14, $$7);
+   }
+
+   private static ehh a(ehh $$0, akt $$1, biw $$2, bix $$3) {
+      if (!($$3.a > 4.0F) && !($$3.b > 4.0F)) {
+         double $$4 = (double)$$3.b / 2.0;
+         ehh $$5 = $$0.b(0.0, $$4, 0.0);
+         eia $$6 = ehx.a(ehc.a($$5, (double)$$3.a, 0.0, (double)$$3.a).b(0.0, 1.0, 0.0).g(1.0E-6));
+         Optional<ehh> $$7 = $$1.a($$2, $$6, $$5, (double)$$3.a, (double)$$3.b, (double)$$3.a);
+         Optional<ehh> $$8 = $$7.map($$1x -> $$1x.a(0.0, $$4, 0.0));
+         return $$8.orElse($$0);
+      } else {
+         return $$0;
+      }
    }
 }

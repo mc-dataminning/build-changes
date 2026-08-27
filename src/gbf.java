@@ -1,20 +1,8 @@
-import java.util.List;
 import javax.annotation.Nullable;
 
 public interface gbf {
-   List<fpb> a(@Nullable dfj var1, @Nullable ha var2, asc var3);
+   gbm a(aez var1);
 
-   boolean a();
-
-   boolean b();
-
-   boolean c();
-
-   boolean d();
-
-   fze e();
-
-   fpn f();
-
-   fpl g();
+   @Nullable
+   gbb a(aez var1, gbj var2);
 }

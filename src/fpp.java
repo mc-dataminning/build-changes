@@ -1,46 +1,40 @@
-import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import java.lang.reflect.Type;
+import java.util.Collection;
+import java.util.List;
 import java.util.Objects;
+import java.util.Set;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public class fpp implements gbn {
-   private final aew a;
-   private final j b;
-   private final boolean c;
-   private final int d;
+public class fpp implements gbm {
+   private final dfe<ctc, dfd> a;
+   private final List<fpr> b;
 
-   public fpp(aew $$0, j $$1, boolean $$2, int $$3) {
+   public fpp(dfe<ctc, dfd> $$0, List<fpr> $$1) {
       this.a = $$0;
       this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
    }
 
-   public aew a() {
-      return this.a;
-   }
-
-   @Override
-   public j b() {
+   public List<fpr> a() {
       return this.b;
    }
 
-   @Override
-   public boolean c() {
-      return this.c;
-   }
+   public Set<fpk> b() {
+      Set<fpk> $$0 = Sets.newHashSet();
 
-   public int d() {
-      return this.d;
-   }
+      for (fpr $$1 : this.b) {
+         $$0.add($$1.a());
+      }
 
-   @Override
-   public String toString() {
-      return "Variant{modelLocation=" + this.a + ", rotation=" + this.b + ", uvLock=" + this.c + ", weight=" + this.d + "}";
+      return $$0;
    }
 
    @Override
@@ -48,63 +42,59 @@ public class fpp implements gbn {
       if (this == $$0) {
          return true;
       } else {
-         return !($$0 instanceof fpp $$1) ? false : this.a.equals($$1.a) && Objects.equals(this.b, $$1.b) && this.c == $$1.c && this.d == $$1.d;
+         return !($$0 instanceof fpp $$1) ? false : Objects.equals(this.a, $$1.a) && Objects.equals(this.b, $$1.b);
       }
    }
 
    @Override
    public int hashCode() {
-      int $$0 = this.a.hashCode();
-      $$0 = 31 * $$0 + this.b.hashCode();
-      $$0 = 31 * $$0 + Boolean.valueOf(this.c).hashCode();
-      return 31 * $$0 + this.d;
+      return Objects.hash(this.a, this.b);
+   }
+
+   @Override
+   public Collection<aez> f() {
+      return this.a().stream().flatMap($$0 -> $$0.a().f().stream()).collect(Collectors.toSet());
+   }
+
+   @Override
+   public void a(Function<aez, gbm> $$0) {
+      this.a().forEach($$1 -> $$1.a().a($$0));
+   }
+
+   @Nullable
+   @Override
+   public gbb a(gbf $$0, Function<gbe, fza> $$1, gbj $$2, aez $$3) {
+      gbk.a $$4 = new gbk.a();
+
+      for (fpr $$5 : this.a()) {
+         gbb $$6 = $$5.a().a($$0, $$1, $$2, $$3);
+         if ($$6 != null) {
+            $$4.a($$5.a(this.a), $$6);
+         }
+      }
+
+      return $$4.a();
    }
 
    public static class a implements JsonDeserializer<fpp> {
-      @VisibleForTesting
-      static final boolean a = false;
-      @VisibleForTesting
-      static final int b = 1;
-      @VisibleForTesting
-      static final int c = 0;
-      @VisibleForTesting
-      static final int d = 0;
+      private final fpd.a a;
+
+      public a(fpd.a $$0) {
+         this.a = $$0;
+      }
 
       public fpp a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         JsonObject $$3 = $$0.getAsJsonObject();
-         aew $$4 = this.b($$3);
-         gbg $$5 = this.a($$3);
-         boolean $$6 = this.d($$3);
-         int $$7 = this.c($$3);
-         return new fpp($$4, $$5.b(), $$6, $$7);
+         return new fpp(this.a.a(), this.a($$2, $$0.getAsJsonArray()));
       }
 
-      private boolean d(JsonObject $$0) {
-         return arn.a($$0, "uvlock", false);
-      }
+      private List<fpr> a(JsonDeserializationContext $$0, JsonArray $$1) {
+         List<fpr> $$2 = Lists.newArrayList();
 
-      protected gbg a(JsonObject $$0) {
-         int $$1 = arn.a($$0, "x", 0);
-         int $$2 = arn.a($$0, "y", 0);
-         gbg $$3 = gbg.a($$1, $$2);
-         if ($$3 == null) {
-            throw new JsonParseException("Invalid BlockModelRotation x: " + $$1 + ", y: " + $$2);
-         } else {
-            return $$3;
+         for (JsonElement $$3 : $$1) {
+            $$2.add((fpr)$$0.deserialize($$3, fpr.class));
          }
-      }
 
-      protected aew b(JsonObject $$0) {
-         return new aew(arn.i($$0, "model"));
-      }
-
-      protected int c(JsonObject $$0) {
-         int $$1 = arn.a($$0, "weight", 1);
-         if ($$1 < 1) {
-            throw new JsonParseException("Invalid weight " + $$1 + " found, expected integer >= 1");
-         } else {
-            return $$1;
-         }
+         return $$2;
       }
    }
 }

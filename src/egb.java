@@ -1,92 +1,53 @@
-import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Sets;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Set;
-import javax.annotation.Nullable;
 
-public class egb implements egd {
-   private static final String d = "block_entity";
-   private static final egb.a e = new egb.a() {
-      @Override
-      public rq a(ecq $$0) {
-         dcv $$1 = $$0.c(efb.h);
-         return $$1 != null ? $$1.m() : null;
-      }
+public record egb(ege b, ege c) implements ege {
+   public static final Codec<egb> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(egf.a.fieldOf("n").forGetter(egb::c), egf.a.fieldOf("p").forGetter(egb::d)).apply($$0, egb::new)
+   );
 
-      @Override
-      public String a() {
-         return "block_entity";
-      }
-
-      @Override
-      public Set<eey<?>> b() {
-         return ImmutableSet.of(efb.h);
-      }
-   };
-   public static final egb a = new egb(e);
-   private static final Codec<egb.a> f = Codec.STRING.xmap($$0 -> {
-      if ($$0.equals("block_entity")) {
-         return e;
-      } else {
-         ecq.b $$1 = ecq.b.a($$0);
-         return b($$1);
-      }
-   }, egb.a::a);
-   public static final Codec<egb> b = RecordCodecBuilder.create($$0 -> $$0.group(f.fieldOf("target").forGetter($$0x -> $$0x.g)).apply($$0, egb::new));
-   public static final Codec<egb> c = f.xmap(egb::new, $$0 -> $$0.g);
-   private final egb.a g;
-
-   private static egb.a b(final ecq.b $$0) {
-      return new egb.a() {
-         @Nullable
-         @Override
-         public rq a(ecq $$0x) {
-            biq $$1 = $$0.c($$0.a());
-            return $$1 != null ? cn.b($$1) : null;
-         }
-
-         @Override
-         public String a() {
-            return $$0.name();
-         }
-
-         @Override
-         public Set<eey<?>> b() {
-            return ImmutableSet.of($$0.a());
-         }
-      };
-   }
-
-   private egb(egb.a $$0) {
-      this.g = $$0;
+   @Override
+   public egd b() {
+      return egf.d;
    }
 
    @Override
-   public egc a() {
-      return ege.c;
+   public int a(eck $$0) {
+      int $$1 = this.b.a($$0);
+      float $$2 = this.c.b($$0);
+      ash $$3 = $$0.b();
+      int $$4 = 0;
+
+      for (int $$5 = 0; $$5 < $$1; $$5++) {
+         if ($$3.i() < $$2) {
+            $$4++;
+         }
+      }
+
+      return $$4;
    }
 
-   @Nullable
    @Override
-   public rq a(ecq $$0) {
-      return this.g.a($$0);
+   public float b(eck $$0) {
+      return (float)this.a($$0);
+   }
+
+   public static egb a(int $$0, float $$1) {
+      return new egb(egc.a((float)$$0), egc.a($$1));
    }
 
    @Override
-   public Set<eey<?>> b() {
-      return this.g.b();
+   public Set<ees<?>> a() {
+      return Sets.union(this.b.a(), this.c.a());
    }
 
-   public static egd a(ecq.b $$0) {
-      return new egb(b($$0));
+   public ege c() {
+      return this.b;
    }
 
-   interface a {
-      @Nullable
-      rq a(ecq var1);
-
-      String a();
-
-      Set<eey<?>> b();
+   public ege d() {
+      return this.c;
    }
 }

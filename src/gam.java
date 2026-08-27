@@ -1,74 +1,71 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.SortedMap;
-import java.util.TreeMap;
-import java.util.stream.Stream;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import org.apache.commons.lang3.Validate;
 
-public class gam implements anu {
-   private static final Logger a = LogUtils.getLogger();
-   private static final gal b = new gal("US", "English", false);
-   private Map<String, gal> c = ImmutableMap.of("en_us", b);
-   private String d;
+public class gam implements amw<gal> {
+   public gal b(JsonObject $$0) {
+      Builder<gak> $$1 = ImmutableList.builder();
+      int $$2 = arr.a($$0, "frametime", 1);
+      if ($$2 != 1) {
+         Validate.inclusiveBetween(1L, 2147483647L, (long)$$2, "Invalid default frame time");
+      }
 
-   public gam(String $$0) {
-      this.d = $$0;
-   }
-
-   private static Map<String, gal> a(Stream<amh> $$0) {
-      Map<String, gal> $$1 = Maps.newHashMap();
-      $$0.forEach($$1x -> {
+      if ($$0.has("frames")) {
          try {
-            gay $$2 = $$1x.a(gay.c);
-            if ($$2 != null) {
-               $$2.a().forEach($$1::putIfAbsent);
-            }
-         } catch (IOException | RuntimeException var3) {
-            a.warn("Unable to parse language metadata section of resourcepack: {}", $$1x.a(), var3);
-         }
-      });
-      return ImmutableMap.copyOf($$1);
-   }
+            JsonArray $$3 = arr.v($$0, "frames");
 
-   @Override
-   public void a(ant $$0) {
-      this.c = a($$0.b());
-      List<String> $$1 = new ArrayList<>(2);
-      boolean $$2 = b.d();
-      $$1.add("en_us");
-      if (!this.d.equals("en_us")) {
-         gal $$3 = this.c.get(this.d);
-         if ($$3 != null) {
-            $$1.add(this.d);
-            $$2 = $$3.d();
+            for (int $$4 = 0; $$4 < $$3.size(); $$4++) {
+               JsonElement $$5 = $$3.get($$4);
+               gak $$6 = this.a($$4, $$5);
+               if ($$6 != null) {
+                  $$1.add($$6);
+               }
+            }
+         } catch (ClassCastException var8) {
+            throw new JsonParseException("Invalid animation->frames: expected array, was " + $$0.get("frames"), var8);
          }
       }
 
-      gai $$4 = gai.a($$0, $$1, $$2);
-      gak.a($$4);
-      qr.a($$4);
-   }
+      int $$8 = arr.a($$0, "width", -1);
+      int $$9 = arr.a($$0, "height", -1);
+      if ($$8 != -1) {
+         Validate.inclusiveBetween(1L, 2147483647L, (long)$$8, "Invalid width");
+      }
 
-   public void a(String $$0) {
-      this.d = $$0;
-   }
+      if ($$9 != -1) {
+         Validate.inclusiveBetween(1L, 2147483647L, (long)$$9, "Invalid height");
+      }
 
-   public String a() {
-      return this.d;
-   }
-
-   public SortedMap<String, gal> b() {
-      return new TreeMap<>(this.c);
+      boolean $$10 = arr.a($$0, "interpolate", false);
+      return new gal($$1.build(), $$8, $$9, $$2, $$10);
    }
 
    @Nullable
-   public gal b(String $$0) {
-      return this.c.get($$0);
+   private gak a(int $$0, JsonElement $$1) {
+      if ($$1.isJsonPrimitive()) {
+         return new gak(arr.g($$1, "frames[" + $$0 + "]"));
+      } else if ($$1.isJsonObject()) {
+         JsonObject $$2 = arr.m($$1, "frames[" + $$0 + "]");
+         int $$3 = arr.a($$2, "time", -1);
+         if ($$2.has("time")) {
+            Validate.inclusiveBetween(1L, 2147483647L, (long)$$3, "Invalid frame time");
+         }
+
+         int $$4 = arr.o($$2, "index");
+         Validate.inclusiveBetween(0L, 2147483647L, (long)$$4, "Invalid frame index");
+         return new gak($$4, $$3);
+      } else {
+         return null;
+      }
+   }
+
+   @Override
+   public String a() {
+      return "animation";
    }
 }

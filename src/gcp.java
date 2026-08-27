@@ -1,52 +1,35 @@
-public class gcp {
-   public static class a extends gbv {
-      private final fng n;
+import com.google.common.collect.AbstractIterator;
+import com.google.common.collect.Iterators;
+import com.google.common.collect.PeekingIterator;
+import java.util.Comparator;
+import java.util.Iterator;
 
-      protected a(fng $$0, apc $$1) {
-         super($$1, ape.i, gcm.t());
-         this.n = $$0;
-         this.i = false;
-         this.j = 0;
-         this.d = 1.0F;
-         this.l = true;
-      }
+public class gcp<T> extends AbstractIterator<T> {
+   private final PeekingIterator<T> a;
+   private final PeekingIterator<T> b;
+   private final Comparator<T> c;
 
-      @Override
-      public void q() {
-         if (this.n.dG() || !this.n.bc()) {
-            this.n();
-         }
-      }
+   public gcp(Iterator<T> $$0, Iterator<T> $$1, Comparator<T> $$2) {
+      this.a = Iterators.peekingIterator($$0);
+      this.b = Iterators.peekingIterator($$1);
+      this.c = $$2;
    }
 
-   public static class b extends gbv {
-      public static final int n = 40;
-      private final fng o;
-      private int p;
+   protected T computeNext() {
+      while (this.a.hasNext() && this.b.hasNext()) {
+         int $$0 = this.c.compare((T)this.a.peek(), (T)this.b.peek());
+         if ($$0 == 0) {
+            this.b.next();
+            return (T)this.a.next();
+         }
 
-      public b(fng $$0) {
-         super(apd.z, ape.i, gcm.t());
-         this.o = $$0;
-         this.i = true;
-         this.j = 0;
-         this.d = 1.0F;
-         this.l = true;
-      }
-
-      @Override
-      public void q() {
-         if (!this.o.dG() && this.p >= 0) {
-            if (this.o.bc()) {
-               this.p++;
-            } else {
-               this.p -= 2;
-            }
-
-            this.p = Math.min(this.p, 40);
-            this.d = Math.max(0.0F, Math.min((float)this.p / 40.0F, 1.0F));
+         if ($$0 < 0) {
+            this.a.next();
          } else {
-            this.n();
+            this.b.next();
          }
       }
+
+      return (T)this.endOfData();
    }
 }

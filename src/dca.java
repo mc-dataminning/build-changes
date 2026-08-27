@@ -1,22 +1,35 @@
-public class dca extends dap implements dbx {
-   private final dbx.a F;
+import com.mojang.serialization.MapCodec;
 
-   public dca(dbx.a $$0, dfj $$1, dfi.d $$2) {
-      super($$1, $$2);
-      this.F = $$0;
+public class dca extends ctl {
+   public static final MapCodec<dca> a = b(dca::new);
+   protected static final eia b = ctc.a(1.0, 0.0, 1.0, 15.0, 1.5, 15.0);
+
+   @Override
+   public MapCodec<dca> a() {
+      return a;
+   }
+
+   protected dca(dfc.d $$0) {
+      super($$0);
    }
 
    @Override
-   public void b(dfj $$0, akq $$1, gw $$2, asc $$3) {
-      this.a_($$0, $$1, $$2, $$3);
+   public void a(dfd $$0, cqb $$1, gw $$2, biw $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if ($$1 instanceof akt && $$3 instanceof cdt) {
+         $$1.a(new gw($$2), true, $$3);
+      }
    }
 
    @Override
-   public boolean e_(dfj $$0) {
-      return dbx.c($$0.b()).isPresent();
+   public eia a(dfd $$0, cph $$1, gw $$2, ehm $$3) {
+      return b;
    }
 
-   public dbx.a g() {
-      return this.F;
+   @Override
+   protected boolean d(dfd $$0, cph $$1, gw $$2) {
+      eag $$3 = $$1.b_($$2);
+      eag $$4 = $$1.b_($$2.c());
+      return ($$3.a() == eah.c || $$0.b() instanceof cwy) && $$4.a() == eah.a;
    }
 }

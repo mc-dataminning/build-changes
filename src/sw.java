@@ -1,7 +1,7 @@
 import io.netty.util.Attribute;
 
 public interface sw {
-   static void a(Attribute<sn.a<?>> $$0, vd<?> $$1) {
+   static void a(Attribute<sn.a<?>> $$0, ve<?> $$1) {
       sn $$2 = $$1.c();
       if ($$2 != null) {
          sn.a<?> $$3 = (sn.a<?>)$$0.get();

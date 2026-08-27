@@ -1,23 +1,29 @@
-import javax.annotation.Nullable;
+public enum djh {
+   a(false, false),
+   b(true, false),
+   c(true, true);
 
-public interface djh<B, T extends B> {
-   static <B, T extends B> djh<B, T> a(final Class<T> $$0) {
-      return new djh<B, T>() {
-         @Nullable
-         @Override
-         public T a(B $$0x) {
-            return (T)($$0.isInstance($$0) ? $$0 : null);
-         }
+   private final boolean d;
+   private final boolean e;
 
-         @Override
-         public Class<? extends B> a() {
-            return $$0;
-         }
-      };
+   private djh(boolean $$0, boolean $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   @Nullable
-   T a(B var1);
+   public boolean a() {
+      return this.e;
+   }
 
-   Class<? extends B> a();
+   public boolean b() {
+      return this.d;
+   }
+
+   public static djh a(akm $$0) {
+      if ($$0.a(akm.d)) {
+         return c;
+      } else {
+         return $$0.a(akm.b) ? b : a;
+      }
+   }
 }

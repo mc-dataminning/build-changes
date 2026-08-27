@@ -1,25 +1,28 @@
 import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
 import java.util.function.Function;
 
 public class bnh {
-   private static final float a = 0.3F;
+   private static final int a = 1;
 
-   public static bmh<bjg> a() {
-      return boj.a(
-         (Function<boj.b<bjg>, ? extends App<boj.c<bjg>, bom<bjg>>>)($$0 -> $$0.group($$0.a(bsh.m), $$0.a(bsh.n), $$0.b(bsh.e), $$0.b(bsh.h), $$0.c(bsh.q))
-               .apply($$0, ($$1, $$2, $$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
-                     hd $$9 = $$0.b($$3);
-                     bsj $$10 = $$0.b($$4);
-                     if ($$6.D_().a(100) == 0 && $$6.ac() == $$9.a() && $$9.b().a($$7.dj(), 4.0) && $$10.d($$0xxx -> biu.bf.equals($$0xxx.ag()))) {
-                        $$10.a($$1xx -> biu.bf.equals($$1xx.ag()) && $$1xx.f((biq)$$7) <= 32.0).ifPresent($$3xx -> {
-                           $$5.a($$3xx);
-                           $$2.a(new bli($$3xx, true));
-                           $$1.a(new bsk(new bli($$3xx, false), 0.3F, 1));
-                        });
-                        return true;
+   public static ble<bjo> a(float $$0) {
+      return a($$1 -> $$0);
+   }
+
+   public static ble<bjo> a(Function<bjm, Float> $$0) {
+      return bop.a(
+         (Function<bop.b<bjo>, ? extends App<bop.c<bjo>, bos<bjo>>>)($$1 -> $$1.group($$1.a(bsn.m), $$1.a(bsn.n), $$1.b(bsn.o), $$1.a(bsn.h))
+               .apply($$1, ($$2, $$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
+                     bjm $$9 = $$1.b($$4);
+                     Optional<bsp> $$10 = $$1.a($$5);
+                     if ($$10.isPresent() && $$10.get().a($$9) && blf.a($$7, $$9, 1)) {
+                        $$2.b();
                      } else {
-                        return false;
+                        $$3.a(new blo($$9, true));
+                        $$2.a(new bsq(new blo($$9, false), $$0.apply($$7), 0));
                      }
+
+                     return true;
                   }))
       );
    }

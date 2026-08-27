@@ -1,56 +1,13 @@
-import com.mojang.brigadier.builder.ArgumentBuilder;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.suggestion.SuggestionProvider;
-import java.util.Locale;
-import java.util.function.Function;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
 
-public class ajj implements ajg {
-   static final SuggestionProvider<dt> b = ($$0, $$1) -> dw.a(a($$0).a(), $$1);
-   public static final Function<String, ajh.c> a = $$0 -> new ajh.c() {
-         @Override
-         public ajg a(CommandContext<dt> $$0x) {
-            return new ajj(ajj.a($$0), es.e($$0, $$0));
-         }
+public interface ajj {
+   void a(qw var1) throws CommandSyntaxException;
 
-         @Override
-         public ArgumentBuilder<dt, ?> a(ArgumentBuilder<dt, ?> $$0x, Function<ArgumentBuilder<dt, ?>, ArgumentBuilder<dt, ?>> $$1) {
-            return $$0.then(du.a("storage").then($$1.apply(du.a($$0, es.a()).suggests(ajj.b))));
-         }
-      };
-   private final ebz c;
-   private final aew d;
+   qw a() throws CommandSyntaxException;
 
-   static ebz a(CommandContext<dt> $$0) {
-      return ((dt)$$0.getSource()).l().aG();
-   }
+   tl b();
 
-   ajj(ebz $$0, aew $$1) {
-      this.c = $$0;
-      this.d = $$1;
-   }
+   tl a(rq var1);
 
-   @Override
-   public void a(qw $$0) {
-      this.c.a(this.d, $$0);
-   }
-
-   @Override
-   public qw a() {
-      return this.c.a(this.d);
-   }
-
-   @Override
-   public tl b() {
-      return tl.a("commands.data.storage.modified", this.d);
-   }
-
-   @Override
-   public tl a(rq $$0) {
-      return tl.a("commands.data.storage.query", this.d, rj.c($$0));
-   }
-
-   @Override
-   public tl a(ej.g $$0, double $$1, int $$2) {
-      return tl.a("commands.data.storage.get", $$0, this.d, String.format(Locale.ROOT, "%.2f", $$1), $$2);
-   }
+   tl a(ej.g var1, double var2, int var4);
 }

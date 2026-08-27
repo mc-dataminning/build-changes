@@ -22,9 +22,9 @@ public class ej implements ArgumentType<ej.g> {
    private static final Collection<String> d = Arrays.asList("foo", "foo.bar", "foo[0]", "[0]", "[]", "{foo=bar}");
    public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(tl.c("arguments.nbtpath.node.invalid"));
    public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(tl.c("arguments.nbtpath.too_deep"));
-   public static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> tl.a("arguments.nbtpath.nothing_found", $$0));
-   static final DynamicCommandExceptionType e = new DynamicCommandExceptionType($$0 -> tl.a("commands.data.modify.expected_list", $$0));
-   static final DynamicCommandExceptionType f = new DynamicCommandExceptionType($$0 -> tl.a("commands.data.modify.invalid_index", $$0));
+   public static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> tl.b("arguments.nbtpath.nothing_found", $$0));
+   static final DynamicCommandExceptionType e = new DynamicCommandExceptionType($$0 -> tl.b("commands.data.modify.expected_list", $$0));
+   static final DynamicCommandExceptionType f = new DynamicCommandExceptionType($$0 -> tl.b("commands.data.modify.invalid_index", $$0));
    private static final char g = '[';
    private static final char h = ']';
    private static final char i = '{';
@@ -593,7 +593,7 @@ public class ej implements ArgumentType<ej.g> {
       }
 
       public int a(rq $$0, rq $$1) throws CommandSyntaxException {
-         if (a($$1, this.a())) {
+         if (a($$1, this.b())) {
             throw ej.b.create();
          } else {
             rq $$2 = $$1.d();
@@ -615,7 +615,7 @@ public class ej implements ArgumentType<ej.g> {
          }
       }
 
-      private int a() {
+      private int b() {
          return this.c.length;
       }
 
@@ -625,7 +625,7 @@ public class ej implements ArgumentType<ej.g> {
          for (rq $$4 : $$2) {
             rq $$5 = $$4.d();
             $$3.add($$5);
-            if (a($$5, this.a())) {
+            if (a($$5, this.b())) {
                throw ej.b.create();
             }
          }
@@ -678,6 +678,10 @@ public class ej implements ArgumentType<ej.g> {
 
       @Override
       public String toString() {
+         return this.a;
+      }
+
+      public String a() {
          return this.a;
       }
    }

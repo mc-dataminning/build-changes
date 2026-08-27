@@ -1,26 +1,25 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
+import com.mojang.serialization.MapCodec;
 
-public class cyf extends dbu {
-   private static final Map<ha, eig> c = Maps.immutableEnumMap(
-      Map.of(
-         ha.c,
-         csv.a(3.0, 4.0, 8.0, 13.0, 12.0, 16.0),
-         ha.d,
-         csv.a(3.0, 4.0, 0.0, 13.0, 12.0, 8.0),
-         ha.f,
-         csv.a(0.0, 4.0, 3.0, 8.0, 12.0, 13.0),
-         ha.e,
-         csv.a(8.0, 4.0, 3.0, 16.0, 12.0, 13.0)
-      )
-   );
+public class cyf extends ctl {
+   public static final MapCodec<cyf> a = b(cyf::new);
+   protected static final eia b = ctc.a(2.0, 0.0, 2.0, 14.0, 3.0, 14.0);
 
-   public cyf(dfi.d $$0) {
-      super(czx.b.f, $$0);
+   @Override
+   public MapCodec<cyf> a() {
+      return a;
+   }
+
+   public cyf(dfc.d $$0) {
+      super($$0);
    }
 
    @Override
-   public eig a(dfj $$0, cpb $$1, gw $$2, ehs $$3) {
-      return c.get($$0.c(b));
+   public eia a(dfd $$0, cph $$1, gw $$2, ehm $$3) {
+      return b;
+   }
+
+   @Override
+   protected boolean d(dfd $$0, cph $$1, gw $$2) {
+      return $$0.a(apv.aK) || $$0.a(cte.dX) || super.d($$0, $$1, $$2);
    }
 }

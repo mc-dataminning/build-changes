@@ -1,67 +1,29 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 
-public class dno extends dnw<dpw> {
-   private static final ImmutableList<csv> a = ImmutableList.of(csw.F, csw.fn, csw.fo, csw.fp, csw.fq, csw.cv, csw.ct);
-   private static final ha[] b = ha.values();
-   private static final double c = 0.9;
-
-   public dno(Codec<dpw> $$0) {
+public class dno extends dnq<dqb> {
+   public dno(Codec<dqb> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dny<dpw> $$0) {
-      boolean $$1 = false;
-      asc $$2 = $$0.d();
-      cqp $$3 = $$0.b();
-      dpw $$4 = $$0.f();
-      gw $$5 = $$0.e();
-      boolean $$6 = $$2.j() < 0.9;
-      int $$7 = $$6 ? $$4.d().a($$2) : 0;
-      int $$8 = $$6 ? $$4.d().a($$2) : 0;
-      boolean $$9 = $$6 && $$7 != 0 && $$8 != 0;
-      int $$10 = $$4.c().a($$2);
-      int $$11 = $$4.c().a($$2);
-      int $$12 = Math.max($$10, $$11);
+   public boolean a(dns<dqb> $$0) {
+      cqv $$1 = $$0.b();
+      ash $$2 = $$0.d();
+      gw $$3 = $$0.e();
+      float $$4 = (float)$$2.a(3) + 4.0F;
 
-      for (gw $$13 : gw.a($$5, $$10, 0, $$11)) {
-         if ($$13.k($$5) > $$12) {
-            break;
-         }
-
-         if (a($$3, $$13, $$4)) {
-            if ($$9) {
-               $$1 = true;
-               this.a($$3, $$13, $$4.b());
-            }
-
-            gw $$14 = $$13.b($$7, 0, $$8);
-            if (a($$3, $$14, $$4)) {
-               $$1 = true;
-               this.a($$3, $$14, $$4.a());
+      for (int $$5 = 0; $$4 > 0.5F; $$5--) {
+         for (int $$6 = asb.d(-$$4); $$6 <= asb.f($$4); $$6++) {
+            for (int $$7 = asb.d(-$$4); $$7 <= asb.f($$4); $$7++) {
+               if ((float)($$6 * $$6 + $$7 * $$7) <= ($$4 + 1.0F) * ($$4 + 1.0F)) {
+                  this.a($$1, $$3.b($$6, $$5, $$7), cte.fz.o());
+               }
             }
          }
+
+         $$4 -= (float)$$2.a(2) + 0.5F;
       }
 
-      return $$1;
-   }
-
-   private static boolean a(cpw $$0, gw $$1, dpw $$2) {
-      dfj $$3 = $$0.a_($$1);
-      if ($$3.a($$2.a().b())) {
-         return false;
-      } else if (a.contains($$3.b())) {
-         return false;
-      } else {
-         for (ha $$4 : b) {
-            boolean $$5 = $$0.a_($$1.a($$4)).i();
-            if ($$5 && $$4 != ha.b || !$$5 && $$4 == ha.b) {
-               return false;
-            }
-         }
-
-         return true;
-      }
+      return true;
    }
 }

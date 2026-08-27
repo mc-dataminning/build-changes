@@ -1,65 +1,60 @@
-import java.time.Duration;
-import java.util.UUID;
 import javax.annotation.Nullable;
 
 public class ged {
-   private final UUID a = UUID.randomUUID();
-   private final gdy b;
-   private final geh c;
-   private final gej d = new gej();
-   private final geg e;
-   private final gei f;
+   private boolean a;
+   @Nullable
+   private gdx.b b;
+   @Nullable
+   private String c;
+   @Nullable
+   private final String d;
 
-   public ged(gdy $$0, boolean $$1, @Nullable Duration $$2, @Nullable String $$3) {
-      this.c = new geh($$3);
-      this.e = new geg();
-      this.f = new gei($$1, $$2);
-      this.b = $$0.decorate($$0x -> {
-         this.c.a($$0x);
-         $$0x.a(geb.i, this.a);
-      });
+   public ged(@Nullable String $$0) {
+      this.d = $$0;
    }
 
-   public void a() {
-      this.e.a(this.b);
+   public void a(gdy.a $$0) {
+      if (this.c != null) {
+         $$0.a(gdx.j, !this.c.equals("vanilla"));
+      }
+
+      $$0.a(gdx.k, this.a());
    }
 
-   public void a(cps $$0, boolean $$1) {
-      this.c.a($$0, $$1);
-      this.d.a();
-      this.b();
+   private gdx.c a() {
+      fjd $$0 = eqp.O().Q();
+      if ($$0 != null && $$0.e()) {
+         return gdx.c.a;
+      } else {
+         return eqp.O().S() ? gdx.c.b : gdx.c.c;
+      }
+   }
+
+   public boolean a(gdu $$0) {
+      if (!this.a && this.b != null && this.c != null) {
+         this.a = true;
+         $$0.send(gdv.b, $$0x -> {
+            $$0x.a(gdx.n, this.b);
+            if (this.d != null) {
+               $$0x.a(gdx.o, this.d);
+            }
+         });
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   public void a(cpy $$0, boolean $$1) {
+      this.b = switch ($$0) {
+         case a -> $$1 ? gdx.b.e : gdx.b.a;
+         case b -> gdx.b.b;
+         case c -> gdx.b.c;
+         case d -> gdx.b.d;
+      };
    }
 
    public void a(String $$0) {
-      this.c.a($$0);
-      this.b();
-   }
-
-   public void a(long $$0) {
-      this.d.a($$0);
-   }
-
-   public void b() {
-      if (this.c.a(this.b)) {
-         this.f.a(this.b);
-         this.e.a();
-      }
-   }
-
-   public void c() {
-      this.c.a(this.b);
-      this.e.d();
-      this.d.a(this.b);
-   }
-
-   public void a(cpv $$0, af $$1) {
-      aew $$2 = $$1.a();
-      if ($$1.b().h() && "minecraft".equals($$2.b())) {
-         long $$3 = $$0.V();
-         this.b.send(gdz.f, $$2x -> {
-            $$2x.a(geb.D, $$2.toString());
-            $$2x.a(geb.E, $$3);
-         });
-      }
+      this.c = $$0;
    }
 }

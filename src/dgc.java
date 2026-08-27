@@ -1,6 +1,6 @@
-public enum dgc implements asp {
-   a("compare"),
-   b("subtract");
+public enum dgc implements asu {
+   a("top"),
+   b("bottom");
 
    private final String c;
 

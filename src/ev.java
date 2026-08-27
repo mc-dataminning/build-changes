@@ -157,13 +157,13 @@ public class ev implements ArgumentType<ev.b> {
 
       @Override
       public Collection<String> getNames(dt $$0, Supplier<Collection<String>> $$1) throws CommandSyntaxException {
-         List<? extends biq> $$2 = this.a.b($$0);
+         List<? extends biw> $$2 = this.a.b($$0);
          if ($$2.isEmpty()) {
             throw ee.d.create();
          } else {
             List<String> $$3 = Lists.newArrayList();
 
-            for (biq $$4 : $$2) {
+            for (biw $$4 : $$2) {
                $$3.add($$4.cx());
             }
 

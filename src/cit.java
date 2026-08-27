@@ -1,58 +1,33 @@
-public class cit extends cja {
-   private static final int a = 40;
+public class cit<T extends biw & bjj> extends cjg {
+   private final bja<T> a;
+   private final int b;
 
-   public cit(cja.a $$0) {
+   public cit(cjg.a $$0, bja<T> $$1, int $$2) {
       super($$0);
+      this.a = $$1;
+      this.b = $$2;
    }
 
    @Override
-   public cjf a(cjf $$0, cpv $$1, bjg $$2) {
-      super.a($$0, $$1, $$2);
-      if ($$2 instanceof akr $$3) {
-         al.z.a($$3, $$0);
-         $$3.b(apn.c.b(this));
-      }
-
-      if (!$$1.B) {
-         $$2.d(bif.s);
-      }
-
-      if ($$0.b()) {
-         return new cjf(cji.rw);
+   public bhf<cjl> a(cqb $$0, cca $$1, bhd $$2) {
+      cjl $$3 = $$1.b($$2);
+      if ($$0.B) {
+         return bhf.c($$3);
       } else {
-         if ($$2 instanceof cbu $$4 && !$$4.fS().d) {
-            cjf $$5 = new cjf(cji.rw);
-            if (!$$4.fR().e($$5)) {
-               $$4.a($$5, false);
+         biw $$4 = $$1.cZ();
+         if ($$1.bN() && $$4 instanceof bjj $$5 && $$4.ag() == this.a && $$5.a()) {
+            $$3.a(this.b, $$1, $$1x -> $$1x.d($$2));
+            if ($$3.b()) {
+               cjl $$6 = new cjl(cjo.qh);
+               $$6.c($$3.v());
+               return bhf.a($$6);
             }
+
+            return bhf.a($$3);
          }
 
-         return $$0;
+         $$1.b(apq.c.b(this));
+         return bhf.c($$3);
       }
-   }
-
-   @Override
-   public int b(cjf $$0) {
-      return 40;
-   }
-
-   @Override
-   public cky c(cjf $$0) {
-      return cky.c;
-   }
-
-   @Override
-   public apc aj_() {
-      return apd.lb;
-   }
-
-   @Override
-   public apc ak_() {
-      return apd.lb;
-   }
-
-   @Override
-   public bgz<cjf> a(cpv $$0, cbu $$1, bgx $$2) {
-      return cjh.a($$0, $$1, $$2);
    }
 }

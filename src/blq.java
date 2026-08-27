@@ -1,28 +1,73 @@
-import com.mojang.datafixers.kinds.App;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
+import java.util.Optional;
 import java.util.function.Function;
 
-public class blq {
-   private static gw a(bji $$0, gw $$1) {
-      asc $$2 = $$0.dL().z;
-      return $$1.b(a($$2), 0, a($$2));
+public class blq extends bld<bjv> {
+   public static final int c = 100;
+   public static final double d = 2.5;
+   public static final double e = 3.5;
+   private final Function<bjm, Float> f;
+   private final Function<bjm, Double> g;
+
+   public blq(Function<bjm, Float> $$0) {
+      this($$0, $$0x -> 2.5);
    }
 
-   private static int a(asc $$0) {
-      return $$0.a(3) - 1;
+   public blq(Function<bjm, Float> $$0, Function<bjm, Double> $$1) {
+      super(ac.a(() -> {
+         Builder<bsn<?>, bso> $$0x = ImmutableMap.builder();
+         $$0x.put(bsn.n, bso.c);
+         $$0x.put(bsn.m, bso.c);
+         $$0x.put(bsn.O, bso.b);
+         $$0x.put(bsn.Q, bso.c);
+         $$0x.put(bsn.N, bso.a);
+         $$0x.put(bsn.r, bso.b);
+         $$0x.put(bsn.Y, bso.b);
+         return $$0x.build();
+      }));
+      this.f = $$0;
+      this.g = $$1;
    }
 
-   public static <E extends bji> bmh<E> a(bsh<gw> $$0, int $$1, float $$2) {
-      return boj.a(
-         (Function<boj.b<E>, ? extends App<boj.c<E>, bom<E>>>)($$3 -> $$3.group($$3.b($$0), $$3.c(bsh.o), $$3.c(bsh.m), $$3.a(bsh.n))
-               .apply($$3, ($$3x, $$4, $$5, $$6) -> ($$4x, $$5x, $$6x) -> {
-                     gw $$7 = $$3.b($$3x);
-                     boolean $$8 = $$7.a($$5x.dl(), (double)$$1);
-                     if (!$$8) {
-                        bkz.a($$5x, a($$5x, $$7), $$2, $$1);
-                     }
+   protected float a(bjv $$0) {
+      return this.f.apply($$0);
+   }
 
-                     return true;
-                  }))
-      );
+   private Optional<cca> b(bjv $$0) {
+      return $$0.dN().c(bsn.N);
+   }
+
+   @Override
+   protected boolean a(long $$0) {
+      return false;
+   }
+
+   protected boolean a(akt $$0, bjv $$1, long $$2) {
+      return this.b($$1).isPresent() && !$$1.dN().a(bsn.r) && !$$1.dN().a(bsn.Y);
+   }
+
+   protected void b(akt $$0, bjv $$1, long $$2) {
+      $$1.dN().a(bsn.Q, true);
+   }
+
+   protected void c(akt $$0, bjv $$1, long $$2) {
+      bkm<?> $$3 = $$1.dN();
+      $$3.a(bsn.O, 100);
+      $$3.a(bsn.Q, false);
+      $$3.b(bsn.m);
+      $$3.b(bsn.n);
+   }
+
+   protected void d(akt $$0, bjv $$1, long $$2) {
+      cca $$3 = this.b($$1).get();
+      bkm<?> $$4 = $$1.dN();
+      $$4.a(bsn.n, new blo($$3, true));
+      double $$5 = this.g.apply($$1);
+      if ($$1.f($$3) < asb.k($$5)) {
+         $$4.b(bsn.m);
+      } else {
+         $$4.a(bsn.m, new bsq(new blo($$3, false), this.a($$1), 2));
+      }
    }
 }

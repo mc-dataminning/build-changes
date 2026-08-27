@@ -1,14 +1,24 @@
-public record ady(adz a) implements vd<adw> {
+public class ady implements ve<si> {
+   private final long a;
+
+   public ady(long $$0) {
+      this.a = $$0;
+   }
+
    public ady(so $$0) {
-      this($$0.a(adz.a));
+      this.a = $$0.readLong();
    }
 
    @Override
    public void a(so $$0) {
-      $$0.a(adz.a, this.a);
+      $$0.b(this.a);
    }
 
-   public void a(adw $$0) {
+   public void a(si $$0) {
       $$0.a(this);
+   }
+
+   public long a() {
+      return this.a;
    }
 }

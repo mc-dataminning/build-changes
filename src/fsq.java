@@ -1,17 +1,11 @@
-public class fsq extends fvn<byt> {
-   private static final aew a = new aew("textures/entity/spider/cave_spider.png");
-   private static final float i = 0.7F;
+public class fsq extends fuj<bve, fer<bve>> {
+   private static final aez a = new aez("textures/entity/cow/cow.png");
 
-   public fsq(fth.a $$0) {
-      super($$0, fib.q);
-      this.d *= 0.7F;
+   public fsq(ftd.a $$0) {
+      super($$0, new fer<>($$0.a(fhw.A)), 0.7F);
    }
 
-   protected void a(byt $$0, elp $$1, float $$2) {
-      $$1.b(0.7F, 0.7F, 0.7F);
-   }
-
-   public aew a(byt $$0) {
+   public aez a(bve $$0) {
       return a;
    }
 }

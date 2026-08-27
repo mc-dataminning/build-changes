@@ -1,12 +1,12 @@
-public class zq implements vd<ww> {
+public class zq implements ve<wx> {
    private final int a;
 
-   public zq(dha $$0) {
-      this.a = $$0.r();
+   public zq(dgu $$0) {
+      this.a = $$0.q();
    }
 
    public zq(so $$0) {
-      this.a = $$0.m();
+      this.a = $$0.n();
    }
 
    @Override
@@ -14,7 +14,7 @@ public class zq implements vd<ww> {
       $$0.c(this.a);
    }
 
-   public void a(ww $$0) {
+   public void a(wx $$0) {
       $$0.a(this);
    }
 

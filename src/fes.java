@@ -1,64 +1,46 @@
-import com.google.common.collect.ImmutableList;
+public class fes<T extends biw> extends ffh<T> {
+   private final fhx a;
+   private final fhx b;
+   private final fhx f;
+   private final fhx g;
+   private final fhx h;
+   private final fhx i;
+   private static final int j = 6;
 
-public class fes<T extends biq> extends feb<T> {
-   public static final String a = "red_thing";
-   private final fic b;
-   private final fic f;
-   private final fic g;
-   private final fic h;
-   private final fic i;
-   private final fic j;
-   private final fic k;
-   private final fic l;
-
-   public fes(fic $$0) {
+   public fes(fhx $$0) {
+      this.a = $$0;
       this.b = $$0.b("head");
-      this.k = $$0.b("beak");
-      this.l = $$0.b("red_thing");
-      this.f = $$0.b("body");
-      this.g = $$0.b("right_leg");
-      this.h = $$0.b("left_leg");
-      this.i = $$0.b("right_wing");
-      this.j = $$0.b("left_wing");
+      this.g = $$0.b("right_hind_leg");
+      this.f = $$0.b("left_hind_leg");
+      this.i = $$0.b("right_front_leg");
+      this.h = $$0.b("left_front_leg");
    }
 
-   public static fii c() {
-      fik $$0 = new fik();
-      fil $$1 = $$0.a();
-      int $$2 = 16;
-      $$1.a("head", fih.c().a(0, 0).a(-2.0F, -6.0F, -2.0F, 4.0F, 6.0F, 3.0F), fie.a(0.0F, 15.0F, -4.0F));
-      $$1.a("beak", fih.c().a(14, 0).a(-2.0F, -4.0F, -4.0F, 4.0F, 2.0F, 2.0F), fie.a(0.0F, 15.0F, -4.0F));
-      $$1.a("red_thing", fih.c().a(14, 4).a(-1.0F, -2.0F, -3.0F, 2.0F, 2.0F, 2.0F), fie.a(0.0F, 15.0F, -4.0F));
-      $$1.a("body", fih.c().a(0, 9).a(-3.0F, -4.0F, -3.0F, 6.0F, 8.0F, 6.0F), fie.a(0.0F, 16.0F, 0.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
-      fih $$3 = fih.c().a(26, 0).a(-1.0F, 0.0F, -3.0F, 3.0F, 5.0F, 3.0F);
-      $$1.a("right_leg", $$3, fie.a(-2.0F, 19.0F, 1.0F));
-      $$1.a("left_leg", $$3, fie.a(1.0F, 19.0F, 1.0F));
-      $$1.a("right_wing", fih.c().a(24, 13).a(0.0F, 0.0F, -3.0F, 1.0F, 4.0F, 6.0F), fie.a(-4.0F, 13.0F, 0.0F));
-      $$1.a("left_wing", fih.c().a(24, 13).a(-1.0F, 0.0F, -3.0F, 1.0F, 4.0F, 6.0F), fie.a(4.0F, 13.0F, 0.0F));
-      return fii.a($$0, 64, 32);
+   public static fid a(fib $$0) {
+      fif $$1 = new fif();
+      fig $$2 = $$1.a();
+      $$2.a("head", fic.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$0), fhz.a(0.0F, 6.0F, 0.0F));
+      $$2.a("body", fic.c().a(16, 16).a(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F, $$0), fhz.a(0.0F, 6.0F, 0.0F));
+      fic $$3 = fic.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 6.0F, 4.0F, $$0);
+      $$2.a("right_hind_leg", $$3, fhz.a(-2.0F, 18.0F, 4.0F));
+      $$2.a("left_hind_leg", $$3, fhz.a(2.0F, 18.0F, 4.0F));
+      $$2.a("right_front_leg", $$3, fhz.a(-2.0F, 18.0F, -4.0F));
+      $$2.a("left_front_leg", $$3, fhz.a(2.0F, 18.0F, -4.0F));
+      return fid.a($$1, 64, 32);
    }
 
    @Override
-   protected Iterable<fic> a() {
-      return ImmutableList.of(this.b, this.k, this.l);
-   }
-
-   @Override
-   protected Iterable<fic> b() {
-      return ImmutableList.of(this.f, this.g, this.h, this.i, this.j);
+   public fhx a() {
+      return this.a;
    }
 
    @Override
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.b.e = $$5 * (float) (Math.PI / 180.0);
       this.b.f = $$4 * (float) (Math.PI / 180.0);
-      this.k.e = this.b.e;
-      this.k.f = this.b.f;
-      this.l.e = this.b.e;
-      this.l.f = this.b.f;
-      this.g.e = arw.b($$1 * 0.6662F) * 1.4F * $$2;
-      this.h.e = arw.b($$1 * 0.6662F + (float) Math.PI) * 1.4F * $$2;
-      this.i.g = $$3;
-      this.j.g = -$$3;
+      this.b.e = $$5 * (float) (Math.PI / 180.0);
+      this.f.e = asb.b($$1 * 0.6662F) * 1.4F * $$2;
+      this.g.e = asb.b($$1 * 0.6662F + (float) Math.PI) * 1.4F * $$2;
+      this.h.e = asb.b($$1 * 0.6662F + (float) Math.PI) * 1.4F * $$2;
+      this.i.e = asb.b($$1 * 0.6662F) * 1.4F * $$2;
    }
 }

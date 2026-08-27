@@ -1,5 +1,5 @@
 public interface su {
-   ve a();
+   vf a();
 
    sn b();
 
@@ -7,7 +7,7 @@ public interface su {
 
    boolean c();
 
-   default boolean a(vd<?> $$0) {
+   default boolean a(ve<?> $$0) {
       return this.c();
    }
 

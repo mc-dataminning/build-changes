@@ -1,12 +1,33 @@
-public class dcd extends cwh {
-   public static final eig d = csv.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   public dcd(dfi.d $$0) {
-      super($$0, ha.a, d, false);
+public class dcd extends dad implements dcb {
+   public static final MapCodec<dcd> f = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dcb.a.e.fieldOf("weathering_state").forGetter(cud::c), t()).apply($$0, dcd::new)
+   );
+   private final dcb.a g;
+
+   @Override
+   public MapCodec<dcd> a() {
+      return f;
+   }
+
+   public dcd(dcb.a $$0, dfc.d $$1) {
+      super($$1);
+      this.g = $$0;
    }
 
    @Override
-   protected cwi b() {
-      return (cwi)csw.oz;
+   public void b(dfd $$0, akt $$1, gw $$2, ash $$3) {
+      this.a_($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   public boolean e_(dfd $$0) {
+      return dcb.c($$0.b()).isPresent();
+   }
+
+   public dcb.a g() {
+      return this.g;
    }
 }

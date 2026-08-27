@@ -1,176 +1,175 @@
-import com.google.common.collect.Maps;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
+import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class cdd extends ebr {
-   private static final String a = "raids";
-   private final Map<Integer, cdb> b = Maps.newHashMap();
-   private final akq c;
-   private int d;
-   private int e;
+public class cdd extends ccy implements ccp {
+   public static final double b = 4.0;
+   private static final double d = 16.0;
+   public static final Predicate<bjm> c = $$0 -> $$0.fg() || $$0.bM();
 
-   public static ebr.a<cdd> a(akq $$0) {
-      return new ebr.a<>(() -> new cdd($$0), $$1 -> a($$0, $$1), ata.l);
+   public cdd(bja<? extends cdd> $$0, cqb $$1) {
+      super($$0, $$1);
    }
 
-   public cdd(akq $$0) {
-      this.c = $$0;
-      this.d = 1;
-      this.c();
+   public cdd(cqb $$0, bjm $$1) {
+      super(bja.aA, $$1, $$0);
    }
 
-   public cdb a(int $$0) {
-      return this.b.get($$0);
-   }
-
-   public void a() {
-      this.e++;
-      Iterator<cdb> $$0 = this.b.values().iterator();
-
-      while ($$0.hasNext()) {
-         cdb $$1 = $$0.next();
-         if (this.c.X().b(cpr.z)) {
-            $$1.n();
-         }
-
-         if ($$1.d()) {
-            $$0.remove();
-            this.c();
-         } else {
-            $$1.o();
-         }
-      }
-
-      if (this.e % 200 == 0) {
-         this.c();
-      }
-
-      abb.a(this.c, this.b.values());
-   }
-
-   public static boolean a(cdc $$0, cdb $$1) {
-      return $$0 != null && $$1 != null && $$1.i() != null ? $$0.bv() && $$0.gq() && $$0.ek() <= 2400 && $$0.dL().C_() == $$1.i().C_() : false;
-   }
-
-   @Nullable
-   public cdb a(akr $$0) {
-      if ($$0.M_()) {
-         return null;
-      } else if (this.c.X().b(cpr.z)) {
-         return null;
-      } else {
-         dis $$1 = $$0.dL().C_();
-         if (!$$1.c()) {
-            return null;
-         } else {
-            gw $$2 = $$0.dl();
-            List<bug> $$3 = this.c.w().c($$0x -> $$0x.a(aqc.b), $$2, 64, buf.b.b).toList();
-            int $$4 = 0;
-            ehn $$5 = ehn.b;
-
-            for (bug $$6 : $$3) {
-               gw $$7 = $$6.f();
-               $$5 = $$5.b((double)$$7.u(), (double)$$7.v(), (double)$$7.w());
-               $$4++;
-            }
-
-            gw $$8;
-            if ($$4 > 0) {
-               $$5 = $$5.a(1.0 / (double)$$4);
-               $$8 = gw.a($$5);
-            } else {
-               $$8 = $$2;
-            }
-
-            cdb $$10 = this.a($$0.x(), $$8);
-            boolean $$11 = false;
-            if (!$$10.j()) {
-               if (!this.b.containsKey($$10.u())) {
-                  this.b.put($$10.u(), $$10);
-               }
-
-               $$11 = true;
-            } else if ($$10.m() < $$10.l()) {
-               $$11 = true;
-            } else {
-               $$0.d(bif.E);
-               $$0.c.b(new xy($$0, (byte)43));
-            }
-
-            if ($$11) {
-               $$10.a((cbu)$$0);
-               $$0.c.b(new xy($$0, (byte)43));
-               if (!$$10.c()) {
-                  $$0.a(apn.aA);
-                  al.I.a($$0);
-               }
-            }
-
-            this.c();
-            return $$10;
-         }
-      }
-   }
-
-   private cdb a(akq $$0, gw $$1) {
-      cdb $$2 = $$0.c($$1);
-      return $$2 != null ? $$2 : new cdb(this.b(), $$0, $$1);
-   }
-
-   public static cdd a(akq $$0, qw $$1) {
-      cdd $$2 = new cdd($$0);
-      $$2.d = $$1.h("NextAvailableID");
-      $$2.e = $$1.h("Tick");
-      rc $$3 = $$1.c("Raids", 10);
-
-      for (int $$4 = 0; $$4 < $$3.size(); $$4++) {
-         qw $$5 = $$3.a($$4);
-         cdb $$6 = new cdb($$0, $$5);
-         $$2.b.put($$6.u(), $$6);
-      }
-
-      return $$2;
+   public cdd(cqb $$0, double $$1, double $$2, double $$3) {
+      super(bja.aA, $$1, $$2, $$3, $$0);
    }
 
    @Override
-   public qw a(qw $$0) {
-      $$0.a("NextAvailableID", this.d);
-      $$0.a("Tick", this.e);
-      rc $$1 = new rc();
+   protected cjg s() {
+      return cjo.uu;
+   }
 
-      for (cdb $$2 : this.b.values()) {
-         qw $$3 = new qw();
-         $$2.a($$3);
-         $$1.add($$3);
+   @Override
+   protected float w() {
+      return 0.05F;
+   }
+
+   @Override
+   protected void a(ehd $$0) {
+      super.a($$0);
+      if (!this.dL().B) {
+         cjl $$1 = this.q();
+         cli $$2 = clk.d($$1);
+         List<bij> $$3 = clk.a($$1);
+         boolean $$4 = $$2 == cll.c && $$3.isEmpty();
+         ha $$5 = $$0.b();
+         gw $$6 = $$0.a();
+         gw $$7 = $$6.a($$5);
+         if ($$4) {
+            this.a($$7);
+            this.a($$7.a($$5.g()));
+
+            for (ha $$8 : ha.c.a) {
+               this.a($$7.a($$8));
+            }
+         }
       }
-
-      $$0.a("Raids", $$1);
-      return $$0;
    }
 
-   public static String a(he<dis> $$0) {
-      return $$0.a(diq.c) ? "raids_end" : "raids";
+   @Override
+   protected void a(ehf $$0) {
+      super.a($$0);
+      if (!this.dL().B) {
+         cjl $$1 = this.q();
+         cli $$2 = clk.d($$1);
+         List<bij> $$3 = clk.a($$1);
+         boolean $$4 = $$2 == cll.c && $$3.isEmpty();
+         if ($$4) {
+            this.x();
+         } else if (!$$3.isEmpty()) {
+            if (this.y()) {
+               this.a($$1, $$2);
+            } else {
+               this.a($$3, $$0.c() == ehf.a.c ? ((ehe)$$0).a() : null);
+            }
+         }
+
+         int $$5 = $$2.b() ? 2007 : 2002;
+         this.dL().c($$5, this.dl(), clk.c($$1));
+         this.ak();
+      }
    }
 
-   private int b() {
-      return ++this.d;
-   }
+   private void x() {
+      ehc $$0 = this.cG().c(4.0, 2.0, 4.0);
 
-   @Nullable
-   public cdb a(gw $$0, int $$1) {
-      cdb $$2 = null;
-      double $$3 = (double)$$1;
+      for (bjm $$2 : this.dL().a(bjm.class, $$0, c)) {
+         double $$3 = this.f($$2);
+         if ($$3 < 16.0) {
+            if ($$2.fg()) {
+               $$2.a(this.dM().c(this, this.v()), 1.0F);
+            }
 
-      for (cdb $$4 : this.b.values()) {
-         double $$5 = $$4.t().j($$0);
-         if ($$4.v() && $$5 < $$3) {
-            $$2 = $$4;
-            $$3 = $$5;
+            if ($$2.bM() && $$2.bv()) {
+               $$2.aD();
+            }
          }
       }
 
-      return $$2;
+      for (bwe $$5 : this.dL().a(bwe.class, $$0)) {
+         $$5.s();
+      }
+   }
+
+   private void a(List<bij> $$0, @Nullable biw $$1) {
+      ehc $$2 = this.cG().c(4.0, 2.0, 4.0);
+      List<bjm> $$3 = this.dL().a(bjm.class, $$2);
+      if (!$$3.isEmpty()) {
+         biw $$4 = this.G();
+
+         for (bjm $$5 : $$3) {
+            if ($$5.fy()) {
+               double $$6 = this.f($$5);
+               if ($$6 < 16.0) {
+                  double $$7;
+                  if ($$5 == $$1) {
+                     $$7 = 1.0;
+                  } else {
+                     $$7 = 1.0 - Math.sqrt($$6) / 4.0;
+                  }
+
+                  for (bij $$9 : $$0) {
+                     bih $$10 = $$9.c();
+                     if ($$10.a()) {
+                        $$10.a(this, this.v(), $$5, $$9.e(), $$7);
+                     } else {
+                        int $$11 = $$9.a($$1x -> (int)($$7 * (double)$$1x + 0.5));
+                        bij $$12 = new bij($$10, $$11, $$9.e(), $$9.f(), $$9.g());
+                        if (!$$12.a(20)) {
+                           $$5.b($$12, $$4);
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      }
+   }
+
+   private void a(cjl $$0, cli $$1) {
+      bit $$2 = new bit(this.dL(), this.dq(), this.ds(), this.dw());
+      biw $$3 = this.v();
+      if ($$3 instanceof bjm) {
+         $$2.a((bjm)$$3);
+      }
+
+      $$2.a(3.0F);
+      $$2.b(-0.5F);
+      $$2.d(10);
+      $$2.c(-$$2.h() / (float)$$2.m());
+      $$2.a($$1);
+
+      for (bij $$4 : clk.b($$0)) {
+         $$2.a(new bij($$4));
+      }
+
+      qw $$5 = $$0.v();
+      if ($$5 != null && $$5.b("CustomPotionColor", 99)) {
+         $$2.a($$5.h("CustomPotionColor"));
+      }
+
+      this.dL().b($$2);
+   }
+
+   private boolean y() {
+      return this.q().a(cjo.ux);
+   }
+
+   private void a(gw $$0) {
+      dfd $$1 = this.dL().a_($$0);
+      if ($$1.a(apv.aJ)) {
+         this.dL().a($$0, false, this);
+      } else if (crt.c($$1)) {
+         crt.a(null, $$1, this.dL(), $$0);
+      } else if (ctq.g($$1)) {
+         this.dL().a(null, 1009, $$0, 0);
+         ctq.a(this.v(), this.dL(), $$0, $$1);
+         this.dL().b($$0, $$1.a(ctq.c, Boolean.valueOf(false)));
+      }
    }
 }

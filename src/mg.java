@@ -21,13 +21,13 @@ public class mg implements ji {
    @Override
    public CompletableFuture<?> a(jg $$0) {
       return this.f.thenCompose($$1 -> {
-         DynamicOps<JsonElement> $$2 = aeu.a(JsonOps.INSTANCE, $$1);
-         return CompletableFuture.allOf(aer.a.stream().flatMap($$3 -> this.a($$0, $$1, $$2, (aer.b<?>)$$3).stream()).toArray(CompletableFuture[]::new));
+         DynamicOps<JsonElement> $$2 = aex.a(JsonOps.INSTANCE, $$1);
+         return CompletableFuture.allOf(aeu.a.stream().flatMap($$3 -> this.a($$0, $$1, $$2, (aeu.b<?>)$$3).stream()).toArray(CompletableFuture[]::new));
       });
    }
 
-   private <T> Optional<CompletableFuture<?>> a(jg $$0, hg.b $$1, DynamicOps<JsonElement> $$2, aer.b<T> $$3) {
-      aev<? extends hq<T>> $$4 = $$3.a();
+   private <T> Optional<CompletableFuture<?>> a(jg $$0, hg.b $$1, DynamicOps<JsonElement> $$2, aeu.b<T> $$3) {
+      aey<? extends hq<T>> $$4 = $$3.a();
       return $$1.a($$4).map($$4x -> {
          jk.a $$5 = this.e.a(jk.b.a, $$4.a().a());
          return CompletableFuture.allOf($$4x.b().map($$4xx -> a($$5.a($$4xx.g().a()), $$0, $$2, $$3.b(), $$4xx.a())).toArray(CompletableFuture[]::new));

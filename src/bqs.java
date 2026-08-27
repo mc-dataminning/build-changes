@@ -1,49 +1,27 @@
-import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-public class bqs extends bqb {
-   private static final bts b = bts.b().a(6.0);
-   public static final int a = 400;
-   private final bvd c;
-   private cbh d;
-   private int e;
+public class bqs extends bre {
+   private static final int i = 10;
+   private static final int j = 7;
 
-   public bqs(bvd $$0) {
-      this.c = $$0;
-      this.a(EnumSet.of(bqb.a.a, bqb.a.b));
+   public bqs(bjv $$0, double $$1, boolean $$2) {
+      super($$0, $$1, 10, $$2);
    }
 
    @Override
    public boolean a() {
-      if (!this.c.dL().N()) {
-         return false;
-      } else if (this.c.ef().a(8000) != 0) {
-         return false;
-      } else {
-         this.d = this.c.dL().a(cbh.class, b, this.c, this.c.dq(), this.c.ds(), this.c.dw(), this.c.cG().c(6.0, 2.0, 6.0));
-         return this.d != null;
-      }
+      akt $$0 = (akt)this.b.dL();
+      gw $$1 = this.b.dl();
+      return $$0.b($$1) ? false : super.a();
    }
 
+   @Nullable
    @Override
-   public boolean b() {
-      return this.e > 0;
-   }
-
-   @Override
-   public void c() {
-      this.e = this.a(400);
-      this.c.w(true);
-   }
-
-   @Override
-   public void d() {
-      this.c.w(false);
-      this.d = null;
-   }
-
-   @Override
-   public void e() {
-      this.c.G().a(this.d, 30.0F, 30.0F);
-      this.e--;
+   protected ehh h() {
+      akt $$0 = (akt)this.b.dL();
+      gw $$1 = this.b.dl();
+      hw $$2 = hw.a($$1);
+      hw $$3 = blf.a($$0, $$2, 2);
+      return $$3 != $$2 ? buc.a(this.b, 10, 7, ehh.c($$3.q()), (float) (Math.PI / 2)) : null;
    }
 }

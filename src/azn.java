@@ -1,39 +1,40 @@
+import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.types.templates.TaggedChoice.TaggedChoiceType;
 import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
+import java.util.Locale;
+import java.util.Objects;
 
-public class azn extends DataFix {
-   public azn(Schema $$0) {
-      super($$0, false);
+public abstract class azn extends DataFix {
+   private final String a;
+
+   public azn(String $$0, Schema $$1, boolean $$2) {
+      super($$1, $$2);
+      this.a = $$0;
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(ayx.I);
-      OpticFinder<?> $$1 = $$0.findField("dimensions");
-      return this.fixTypeEverywhereTyped("StructureSettingsFlatten", $$0, $$1x -> $$1x.updateTyped($$1, $$1xx -> {
-            Dynamic<?> $$2 = (Dynamic<?>)$$1xx.write().result().orElseThrow();
-            Dynamic<?> $$3 = $$2.updateMapValues(azn::a);
-            return (Typed)((Pair)$$1.type().readTyped($$3).result().orElseThrow()).getFirst();
-         }));
+   public TypeRewriteRule makeRule() {
+      TaggedChoiceType<String> $$0 = this.getInputSchema().findChoiceType(azd.x);
+      TaggedChoiceType<String> $$1 = this.getOutputSchema().findChoiceType(azd.x);
+      Type<Pair<String, String>> $$2 = DSL.named(azd.v.typeName(), bal.a());
+      if (!Objects.equals(this.getOutputSchema().getType(azd.v), $$2)) {
+         throw new IllegalStateException("Entity name type is not what was expected.");
+      } else {
+         return TypeRewriteRule.seq(this.fixTypeEverywhere(this.a, $$0, $$1, $$2x -> $$2xx -> $$2xx.mapFirst($$2xxx -> {
+                  String $$3 = this.a($$2xxx);
+                  Type<?> $$4 = (Type<?>)$$0.types().get($$2xxx);
+                  Type<?> $$5 = (Type<?>)$$1.types().get($$3);
+                  if (!$$5.equals($$4, true, true)) {
+                     throw new IllegalStateException(String.format(Locale.ROOT, "Dynamic type check failed: %s not equal to %s", $$5, $$4));
+                  } else {
+                     return $$3;
+                  }
+               })), this.fixTypeEverywhere(this.a + " for entity name", $$2, $$0x -> $$0xx -> $$0xx.mapSecond(this::a)));
+      }
    }
 
-   private static Pair<Dynamic<?>, Dynamic<?>> a(Pair<Dynamic<?>, Dynamic<?>> $$0) {
-      Dynamic<?> $$1 = (Dynamic<?>)$$0.getSecond();
-      return Pair.of((Dynamic)$$0.getFirst(), $$1.update("generator", $$0x -> $$0x.update("settings", $$0xx -> $$0xx.update("structures", azn::a))));
-   }
-
-   private static Dynamic<?> a(Dynamic<?> $$0) {
-      Dynamic<?> $$1 = $$0.get("structures")
-         .orElseEmptyMap()
-         .updateMapValues($$1x -> $$1x.mapSecond($$1xx -> $$1xx.set("type", $$0.createString("minecraft:random_spread"))));
-      return (Dynamic<?>)DataFixUtils.orElse(
-         $$0.get("stronghold").result().map($$2 -> $$1.set("minecraft:stronghold", $$2.set("type", $$0.createString("minecraft:concentric_rings")))), $$1
-      );
-   }
+   protected abstract String a(String var1);
 }

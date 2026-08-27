@@ -1,159 +1,189 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Locale;
-import java.util.stream.IntStream;
+public class dzm {
+   protected static final int[][] a = new int[][]{
+      {1, 1, 0},
+      {-1, 1, 0},
+      {1, -1, 0},
+      {-1, -1, 0},
+      {1, 0, 1},
+      {-1, 0, 1},
+      {1, 0, -1},
+      {-1, 0, -1},
+      {0, 1, 1},
+      {0, -1, 1},
+      {0, 1, -1},
+      {0, -1, -1},
+      {1, 1, 0},
+      {0, -1, 1},
+      {-1, 1, 0},
+      {0, -1, -1}
+   };
+   private static final double e = Math.sqrt(3.0);
+   private static final double f = 0.5 * (e - 1.0);
+   private static final double g = (3.0 - e) / 6.0;
+   private final int[] h = new int[512];
+   public final double b;
+   public final double c;
+   public final double d;
 
-public class dzm implements dkl.d {
-   private static final Codec<Double> e = Codec.doubleRange(0.001, 1000.0);
-   private static final MapCodec<dzm> f = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               e.fieldOf("xz_scale").forGetter($$0x -> $$0x.p),
-               e.fieldOf("y_scale").forGetter($$0x -> $$0x.q),
-               e.fieldOf("xz_factor").forGetter($$0x -> $$0x.l),
-               e.fieldOf("y_factor").forGetter($$0x -> $$0x.m),
-               Codec.doubleRange(1.0, 8.0).fieldOf("smear_scale_multiplier").forGetter($$0x -> $$0x.n)
-            )
-            .apply($$0, dzm::a)
-   );
-   public static final arq<dzm> a = arq.a(f);
-   private final dzq g;
-   private final dzq h;
-   private final dzq i;
-   private final double j;
-   private final double k;
-   private final double l;
-   private final double m;
-   private final double n;
-   private final double o;
-   private final double p;
-   private final double q;
+   public dzm(ash $$0) {
+      this.b = $$0.j() * 256.0;
+      this.c = $$0.j() * 256.0;
+      this.d = $$0.j() * 256.0;
+      int $$1 = 0;
 
-   public static dzm a(double $$0, double $$1, double $$2, double $$3, double $$4) {
-      return new dzm(new dlt(0L), $$0, $$1, $$2, $$3, $$4);
-   }
-
-   private dzm(dzq $$0, dzq $$1, dzq $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-      this.g = $$0;
-      this.h = $$1;
-      this.i = $$2;
-      this.p = $$3;
-      this.q = $$4;
-      this.l = $$5;
-      this.m = $$6;
-      this.n = $$7;
-      this.j = 684.412 * this.p;
-      this.k = 684.412 * this.q;
-      this.o = $$0.a(this.k);
-   }
-
-   @VisibleForTesting
-   public dzm(asc $$0, double $$1, double $$2, double $$3, double $$4, double $$5) {
-      this(
-         dzq.a($$0, IntStream.rangeClosed(-15, 0)),
-         dzq.a($$0, IntStream.rangeClosed(-15, 0)),
-         dzq.a($$0, IntStream.rangeClosed(-7, 0)),
-         $$1,
-         $$2,
-         $$3,
-         $$4,
-         $$5
-      );
-   }
-
-   public dzm a(asc $$0) {
-      return new dzm($$0, this.p, this.q, this.l, this.m, this.n);
-   }
-
-   @Override
-   public double a(dkl.b $$0) {
-      double $$1 = (double)$$0.a() * this.j;
-      double $$2 = (double)$$0.b() * this.k;
-      double $$3 = (double)$$0.c() * this.j;
-      double $$4 = $$1 / this.l;
-      double $$5 = $$2 / this.m;
-      double $$6 = $$3 / this.l;
-      double $$7 = this.k * this.n;
-      double $$8 = $$7 / this.m;
-      double $$9 = 0.0;
-      double $$10 = 0.0;
-      double $$11 = 0.0;
-      boolean $$12 = true;
-      double $$13 = 1.0;
-
-      for (int $$14 = 0; $$14 < 8; $$14++) {
-         dzn $$15 = this.i.a($$14);
-         if ($$15 != null) {
-            $$11 += $$15.a(dzq.b($$4 * $$13), dzq.b($$5 * $$13), dzq.b($$6 * $$13), $$8 * $$13, $$5 * $$13) / $$13;
-         }
-
-         $$13 /= 2.0;
+      while ($$1 < 256) {
+         this.h[$$1] = $$1++;
       }
 
-      double $$16 = ($$11 / 10.0 + 1.0) / 2.0;
-      boolean $$17 = $$16 >= 1.0;
-      boolean $$18 = $$16 <= 0.0;
-      $$13 = 1.0;
+      for (int $$2 = 0; $$2 < 256; $$2++) {
+         int $$3 = $$0.a(256 - $$2);
+         int $$4 = this.h[$$2];
+         this.h[$$2] = this.h[$$3 + $$2];
+         this.h[$$3 + $$2] = $$4;
+      }
+   }
 
-      for (int $$19 = 0; $$19 < 16; $$19++) {
-         double $$20 = dzq.b($$1 * $$13);
-         double $$21 = dzq.b($$2 * $$13);
-         double $$22 = dzq.b($$3 * $$13);
-         double $$23 = $$7 * $$13;
-         if (!$$17) {
-            dzn $$24 = this.g.a($$19);
-            if ($$24 != null) {
-               $$9 += $$24.a($$20, $$21, $$22, $$23, $$2 * $$13) / $$13;
-            }
-         }
+   private int a(int $$0) {
+      return this.h[$$0 & 0xFF];
+   }
 
-         if (!$$18) {
-            dzn $$25 = this.h.a($$19);
-            if ($$25 != null) {
-               $$10 += $$25.a($$20, $$21, $$22, $$23, $$2 * $$13) / $$13;
-            }
-         }
+   protected static double a(int[] $$0, double $$1, double $$2, double $$3) {
+      return (double)$$0[0] * $$1 + (double)$$0[1] * $$2 + (double)$$0[2] * $$3;
+   }
 
-         $$13 /= 2.0;
+   private double a(int $$0, double $$1, double $$2, double $$3, double $$4) {
+      double $$5 = $$4 - $$1 * $$1 - $$2 * $$2 - $$3 * $$3;
+      double $$6;
+      if ($$5 < 0.0) {
+         $$6 = 0.0;
+      } else {
+         $$5 *= $$5;
+         $$6 = $$5 * $$5 * a(a[$$0], $$1, $$2, $$3);
       }
 
-      return arw.b($$9 / 512.0, $$10 / 512.0, $$16) / 128.0;
+      return $$6;
    }
 
-   @Override
-   public double a() {
-      return -this.b();
+   public double a(double $$0, double $$1) {
+      double $$2 = ($$0 + $$1) * f;
+      int $$3 = asb.a($$0 + $$2);
+      int $$4 = asb.a($$1 + $$2);
+      double $$5 = (double)($$3 + $$4) * g;
+      double $$6 = (double)$$3 - $$5;
+      double $$7 = (double)$$4 - $$5;
+      double $$8 = $$0 - $$6;
+      double $$9 = $$1 - $$7;
+      int $$10;
+      int $$11;
+      if ($$8 > $$9) {
+         $$10 = 1;
+         $$11 = 0;
+      } else {
+         $$10 = 0;
+         $$11 = 1;
+      }
+
+      double $$14 = $$8 - (double)$$10 + g;
+      double $$15 = $$9 - (double)$$11 + g;
+      double $$16 = $$8 - 1.0 + 2.0 * g;
+      double $$17 = $$9 - 1.0 + 2.0 * g;
+      int $$18 = $$3 & 0xFF;
+      int $$19 = $$4 & 0xFF;
+      int $$20 = this.a($$18 + this.a($$19)) % 12;
+      int $$21 = this.a($$18 + $$10 + this.a($$19 + $$11)) % 12;
+      int $$22 = this.a($$18 + 1 + this.a($$19 + 1)) % 12;
+      double $$23 = this.a($$20, $$8, $$9, 0.0, 0.5);
+      double $$24 = this.a($$21, $$14, $$15, 0.0, 0.5);
+      double $$25 = this.a($$22, $$16, $$17, 0.0, 0.5);
+      return 70.0 * ($$23 + $$24 + $$25);
    }
 
-   @Override
-   public double b() {
-      return this.o;
-   }
+   public double a(double $$0, double $$1, double $$2) {
+      double $$3 = 0.3333333333333333;
+      double $$4 = ($$0 + $$1 + $$2) * 0.3333333333333333;
+      int $$5 = asb.a($$0 + $$4);
+      int $$6 = asb.a($$1 + $$4);
+      int $$7 = asb.a($$2 + $$4);
+      double $$8 = 0.16666666666666666;
+      double $$9 = (double)($$5 + $$6 + $$7) * 0.16666666666666666;
+      double $$10 = (double)$$5 - $$9;
+      double $$11 = (double)$$6 - $$9;
+      double $$12 = (double)$$7 - $$9;
+      double $$13 = $$0 - $$10;
+      double $$14 = $$1 - $$11;
+      double $$15 = $$2 - $$12;
+      int $$16;
+      int $$17;
+      int $$18;
+      int $$19;
+      int $$20;
+      int $$21;
+      if ($$13 >= $$14) {
+         if ($$14 >= $$15) {
+            $$16 = 1;
+            $$17 = 0;
+            $$18 = 0;
+            $$19 = 1;
+            $$20 = 1;
+            $$21 = 0;
+         } else if ($$13 >= $$15) {
+            $$16 = 1;
+            $$17 = 0;
+            $$18 = 0;
+            $$19 = 1;
+            $$20 = 0;
+            $$21 = 1;
+         } else {
+            $$16 = 0;
+            $$17 = 0;
+            $$18 = 1;
+            $$19 = 1;
+            $$20 = 0;
+            $$21 = 1;
+         }
+      } else if ($$14 < $$15) {
+         $$16 = 0;
+         $$17 = 0;
+         $$18 = 1;
+         $$19 = 0;
+         $$20 = 1;
+         $$21 = 1;
+      } else if ($$13 < $$15) {
+         $$16 = 0;
+         $$17 = 1;
+         $$18 = 0;
+         $$19 = 0;
+         $$20 = 1;
+         $$21 = 1;
+      } else {
+         $$16 = 0;
+         $$17 = 1;
+         $$18 = 0;
+         $$19 = 1;
+         $$20 = 1;
+         $$21 = 0;
+      }
 
-   @VisibleForTesting
-   public void a(StringBuilder $$0) {
-      $$0.append("BlendedNoise{minLimitNoise=");
-      this.g.a($$0);
-      $$0.append(", maxLimitNoise=");
-      this.h.a($$0);
-      $$0.append(", mainNoise=");
-      this.i.a($$0);
-      $$0.append(
-            String.format(
-               Locale.ROOT,
-               ", xzScale=%.3f, yScale=%.3f, xzMainScale=%.3f, yMainScale=%.3f, cellWidth=4, cellHeight=8",
-               684.412,
-               684.412,
-               8.555150000000001,
-               4.277575000000001
-            )
-         )
-         .append('}');
-   }
-
-   @Override
-   public arq<? extends dkl> c() {
-      return a;
+      double $$52 = $$13 - (double)$$16 + 0.16666666666666666;
+      double $$53 = $$14 - (double)$$17 + 0.16666666666666666;
+      double $$54 = $$15 - (double)$$18 + 0.16666666666666666;
+      double $$55 = $$13 - (double)$$19 + 0.3333333333333333;
+      double $$56 = $$14 - (double)$$20 + 0.3333333333333333;
+      double $$57 = $$15 - (double)$$21 + 0.3333333333333333;
+      double $$58 = $$13 - 1.0 + 0.5;
+      double $$59 = $$14 - 1.0 + 0.5;
+      double $$60 = $$15 - 1.0 + 0.5;
+      int $$61 = $$5 & 0xFF;
+      int $$62 = $$6 & 0xFF;
+      int $$63 = $$7 & 0xFF;
+      int $$64 = this.a($$61 + this.a($$62 + this.a($$63))) % 12;
+      int $$65 = this.a($$61 + $$16 + this.a($$62 + $$17 + this.a($$63 + $$18))) % 12;
+      int $$66 = this.a($$61 + $$19 + this.a($$62 + $$20 + this.a($$63 + $$21))) % 12;
+      int $$67 = this.a($$61 + 1 + this.a($$62 + 1 + this.a($$63 + 1))) % 12;
+      double $$68 = this.a($$64, $$13, $$14, $$15, 0.6);
+      double $$69 = this.a($$65, $$52, $$53, $$54, 0.6);
+      double $$70 = this.a($$66, $$55, $$56, $$57, 0.6);
+      double $$71 = this.a($$67, $$58, $$59, $$60, 0.6);
+      return 32.0 * ($$68 + $$69 + $$70 + $$71);
    }
 }

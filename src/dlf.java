@@ -1,18 +1,47 @@
-import com.google.common.annotations.VisibleForTesting;
+import java.util.concurrent.atomic.AtomicLong;
 
-public interface dlf {
-   default asc a(gw $$0) {
-      return this.a($$0.u(), $$0.v(), $$0.w());
+@Deprecated
+public class dlf implements dkb {
+   private static final int d = 48;
+   private static final long e = 281474976710655L;
+   private static final long f = 25214903917L;
+   private static final long g = 11L;
+   private final AtomicLong h = new AtomicLong();
+   private final dko i = new dko(this);
+
+   public dlf(long $$0) {
+      this.b($$0);
    }
 
-   default asc a(aew $$0) {
-      return this.a($$0.toString());
+   @Override
+   public ash d() {
+      return new dlf(this.g());
    }
 
-   asc a(String var1);
+   @Override
+   public dkz e() {
+      return new dkn.a(this.g());
+   }
 
-   asc a(int var1, int var2, int var3);
+   @Override
+   public void b(long $$0) {
+      this.h.set(($$0 ^ 25214903917L) & 281474976710655L);
+   }
 
-   @VisibleForTesting
-   void a(StringBuilder var1);
+   @Override
+   public int c(int $$0) {
+      long $$1;
+      long $$2;
+      do {
+         $$1 = this.h.get();
+         $$2 = $$1 * 25214903917L + 11L & 281474976710655L;
+      } while (!this.h.compareAndSet($$1, $$2));
+
+      return (int)($$2 >>> 48 - $$0);
+   }
+
+   @Override
+   public double k() {
+      return this.i.b();
+   }
 }

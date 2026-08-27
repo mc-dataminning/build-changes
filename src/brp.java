@@ -1,99 +1,102 @@
 import java.util.EnumSet;
 import javax.annotation.Nullable;
 
-public class brp extends bqb {
-   private final bqb a;
-   private final int b;
-   private boolean c;
+public class brp extends bqh {
+   private static final bty c = bty.b().a(10.0).d();
+   private final bty d;
+   protected final bjv a;
+   private final double e;
+   private double f;
+   private double g;
+   private double h;
+   private double i;
+   private double j;
+   @Nullable
+   protected cca b;
+   private int k;
+   private boolean l;
+   private final cmm m;
+   private final boolean n;
 
-   public brp(int $$0, bqb $$1) {
-      this.b = $$0;
-      this.a = $$1;
-   }
-
-   public boolean a(brp $$0) {
-      return this.P_() && $$0.i() < this.i();
+   public brp(bjv $$0, double $$1, cmm $$2, boolean $$3) {
+      this.a = $$0;
+      this.e = $$1;
+      this.m = $$2;
+      this.n = $$3;
+      this.a(EnumSet.of(bqh.a.a, bqh.a.b));
+      this.d = c.c().a(this::a);
    }
 
    @Override
    public boolean a() {
-      return this.a.a();
+      if (this.k > 0) {
+         this.k--;
+         return false;
+      } else {
+         this.b = this.a.dL().a(this.d, this.a);
+         return this.b != null;
+      }
+   }
+
+   private boolean a(bjm $$0) {
+      return this.m.a($$0.eS()) || this.m.a($$0.eT());
    }
 
    @Override
    public boolean b() {
-      return this.a.b();
+      if (this.h()) {
+         if (this.a.f(this.b) < 36.0) {
+            if (this.b.i(this.f, this.g, this.h) > 0.010000000000000002) {
+               return false;
+            }
+
+            if (Math.abs((double)this.b.dD() - this.i) > 5.0 || Math.abs((double)this.b.dB() - this.j) > 5.0) {
+               return false;
+            }
+         } else {
+            this.f = this.b.dq();
+            this.g = this.b.ds();
+            this.h = this.b.dw();
+         }
+
+         this.i = (double)this.b.dD();
+         this.j = (double)this.b.dB();
+      }
+
+      return this.a();
    }
 
-   @Override
-   public boolean P_() {
-      return this.a.P_();
+   protected boolean h() {
+      return this.n;
    }
 
    @Override
    public void c() {
-      if (!this.c) {
-         this.c = true;
-         this.a.c();
-      }
+      this.f = this.b.dq();
+      this.g = this.b.ds();
+      this.h = this.b.dw();
+      this.l = true;
    }
 
    @Override
    public void d() {
-      if (this.c) {
-         this.c = false;
-         this.a.d();
-      }
-   }
-
-   @Override
-   public boolean Q_() {
-      return this.a.Q_();
-   }
-
-   @Override
-   protected int a(int $$0) {
-      return this.a.a($$0);
+      this.b = null;
+      this.a.L().n();
+      this.k = b(100);
+      this.l = false;
    }
 
    @Override
    public void e() {
-      this.a.e();
-   }
-
-   @Override
-   public void a(EnumSet<bqb.a> $$0) {
-      this.a.a($$0);
-   }
-
-   @Override
-   public EnumSet<bqb.a> j() {
-      return this.a.j();
-   }
-
-   public boolean h() {
-      return this.c;
-   }
-
-   public int i() {
-      return this.b;
-   }
-
-   public bqb k() {
-      return this.a;
-   }
-
-   @Override
-   public boolean equals(@Nullable Object $$0) {
-      if (this == $$0) {
-         return true;
+      this.a.G().a(this.b, (float)(this.a.Z() + 20), (float)this.a.Y());
+      if (this.a.f(this.b) < 6.25) {
+         this.a.L().n();
       } else {
-         return $$0 != null && this.getClass() == $$0.getClass() ? this.a.equals(((brp)$$0).a) : false;
+         this.a.L().a(this.b, this.e);
       }
    }
 
-   @Override
-   public int hashCode() {
-      return this.a.hashCode();
+   public boolean i() {
+      return this.l;
    }
 }

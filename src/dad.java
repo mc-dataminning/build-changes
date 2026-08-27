@@ -1,71 +1,111 @@
-public class dad extends csv {
-   public static final int a = 2;
-   public static final dgj b = dfz.aE;
-   private static final int c = 24000;
-   private static final int d = 12000;
-   private static final int e = 300;
-   private static final eig f = csv.a(1.0, 0.0, 2.0, 15.0, 16.0, 14.0);
+import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-   public dad(dfi.d $$0) {
+public class dad extends ctc implements dab {
+   public static final MapCodec<dad> a = b(dad::new);
+   public static final dgb<dgl> b = dft.bh;
+   public static final dfu c = dft.C;
+   protected static final eia d = ctc.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0);
+   protected static final eia e = ctc.a(0.0, 8.0, 0.0, 16.0, 16.0, 16.0);
+
+   @Override
+   public MapCodec<? extends dad> a() {
+      return a;
+   }
+
+   public dad(dfc.d $$0) {
       super($$0);
-      this.k(this.C.b().a(b, Integer.valueOf(0)));
+      this.k(this.o().a(b, dgl.b).a(c, Boolean.valueOf(false)));
    }
 
    @Override
-   protected void a(dfk.a<csv, dfj> $$0) {
-      $$0.a(b);
+   public boolean g_(dfd $$0) {
+      return $$0.c(b) != dgl.c;
    }
 
    @Override
-   public eig a(dfj $$0, cpb $$1, gw $$2, ehs $$3) {
-      return f;
-   }
-
-   public int h(dfj $$0) {
-      return $$0.c(b);
-   }
-
-   private boolean n(dfj $$0) {
-      return this.h($$0) == 2;
+   protected void a(dfe.a<ctc, dfd> $$0) {
+      $$0.a(b, c);
    }
 
    @Override
-   public void a(dfj $$0, akq $$1, gw $$2, asc $$3) {
-      if (!this.n($$0)) {
-         $$1.a(null, $$2, apd.wL, ape.e, 0.7F, 0.9F + $$3.i() * 0.2F);
-         $$1.a($$2, $$0.a(b, Integer.valueOf(this.h($$0) + 1)), 2);
+   public eia a(dfd $$0, cph $$1, gw $$2, ehm $$3) {
+      dgl $$4 = $$0.c(b);
+      switch ($$4) {
+         case c:
+            return ehx.b();
+         case a:
+            return e;
+         default:
+            return d;
+      }
+   }
+
+   @Nullable
+   @Override
+   public dfd a(clt $$0) {
+      gw $$1 = $$0.a();
+      dfd $$2 = $$0.q().a_($$1);
+      if ($$2.a(this)) {
+         return $$2.a(b, dgl.c).a(c, Boolean.valueOf(false));
       } else {
-         $$1.a(null, $$2, apd.wM, ape.e, 0.7F, 0.9F + $$3.i() * 0.2F);
-         $$1.b($$2, false);
-         bxd $$4 = biu.aN.a((cpv)$$1);
-         if ($$4 != null) {
-            ehn $$5 = $$2.b();
-            $$4.a(true);
-            $$4.b($$5.a(), $$5.b(), $$5.c(), arw.g($$1.z.i() * 360.0F), 0.0F);
-            $$1.b($$4);
-         }
+         eag $$3 = $$0.q().b_($$1);
+         dfd $$4 = this.o().a(b, dgl.b).a(c, Boolean.valueOf($$3.a() == eah.c));
+         ha $$5 = $$0.k();
+         return $$5 != ha.a && ($$5 == ha.b || !($$0.l().d - (double)$$1.v() > 0.5)) ? $$4 : $$4.a(b, dgl.a);
       }
    }
 
    @Override
-   public void b(dfj $$0, cpv $$1, gw $$2, dfj $$3, boolean $$4) {
-      boolean $$5 = a($$1, $$2);
-      if (!$$1.w_() && $$5) {
-         $$1.c(3009, $$2, 0);
+   public boolean a(dfd $$0, clt $$1) {
+      cjl $$2 = $$1.n();
+      dgl $$3 = $$0.c(b);
+      if ($$3 == dgl.c || !$$2.a(this.k())) {
+         return false;
+      } else if ($$1.c()) {
+         boolean $$4 = $$1.l().d - (double)$$1.a().v() > 0.5;
+         ha $$5 = $$1.k();
+         return $$3 == dgl.b ? $$5 == ha.b || $$4 && $$5.o().d() : $$5 == ha.a || !$$4 && $$5.o().d();
+      } else {
+         return true;
       }
-
-      int $$6 = $$5 ? 12000 : 24000;
-      int $$7 = $$6 / 3;
-      $$1.a(djt.i, $$2, djt.a.a($$0));
-      $$1.a($$2, this, $$7 + $$1.z.a(300));
    }
 
    @Override
-   public boolean a(dfj $$0, cpb $$1, gw $$2, ebc $$3) {
-      return false;
+   public eag c_(dfd $$0) {
+      return $$0.c(c) ? eah.c.a(false) : super.c_($$0);
    }
 
-   public static boolean a(cpb $$0, gw $$1) {
-      return $$0.a_($$1.d()).a(aps.ck);
+   @Override
+   public boolean a(cqc $$0, gw $$1, dfd $$2, eag $$3) {
+      return $$2.c(b) != dgl.c ? dab.super.a($$0, $$1, $$2, $$3) : false;
+   }
+
+   @Override
+   public boolean a(@Nullable cca $$0, cph $$1, gw $$2, dfd $$3, eaf $$4) {
+      return $$3.c(b) != dgl.c ? dab.super.a($$0, $$1, $$2, $$3, $$4) : false;
+   }
+
+   @Override
+   public dfd a(dfd $$0, ha $$1, dfd $$2, cqc $$3, gw $$4, gw $$5) {
+      if ($$0.c(c)) {
+         $$3.a($$4, eah.c, eah.c.a($$3));
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   public boolean a(dfd $$0, cph $$1, gw $$2, eaw $$3) {
+      switch ($$3) {
+         case a:
+            return false;
+         case b:
+            return $$1.b_($$2).a(aqa.a);
+         case c:
+            return false;
+         default:
+            return false;
+      }
    }
 }

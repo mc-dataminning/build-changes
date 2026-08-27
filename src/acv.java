@@ -1,15 +1,12 @@
-import java.util.UUID;
-import javax.annotation.Nullable;
+public class acv implements ve<abd> {
+   private final bhd a;
 
-public class acv implements vd<abc> {
-   private final UUID a;
-
-   public acv(UUID $$0) {
+   public acv(bhd $$0) {
       this.a = $$0;
    }
 
    public acv(so $$0) {
-      this.a = $$0.o();
+      this.a = $$0.b(bhd.class);
    }
 
    @Override
@@ -17,12 +14,11 @@ public class acv implements vd<abc> {
       $$0.a(this.a);
    }
 
-   public void a(abc $$0) {
+   public void a(abd $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public biq a(akq $$0) {
-      return $$0.a(this.a);
+   public bhd a() {
+      return this.a;
    }
 }

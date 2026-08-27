@@ -1,74 +1,59 @@
+import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.util.List;
 
-public class dwd extends dwf {
-   public static final Codec<dwd> a = arf.<dwd>a(
-         RecordCodecBuilder.mapCodec(
-            $$0 -> a($$0)
-                  .and(
-                     $$0.group(
-                        Codec.intRange(0, 4096).fieldOf("spacing").forGetter(dwd::a),
-                        Codec.intRange(0, 4096).fieldOf("separation").forGetter(dwd::b),
-                        dwe.c.optionalFieldOf("spread_type", dwe.a).forGetter(dwd::c)
-                     )
-                  )
-                  .apply($$0, dwd::new)
-         ),
-         dwd::a
-      )
-      .codec();
-   private final int c;
-   private final int d;
-   private final dwe e;
+public class dwd extends dwj {
+   public static final Codec<dwd> a = RecordCodecBuilder.create($$0 -> $$0.group(dug.b.fieldOf("feature").forGetter($$0x -> $$0x.b), d()).apply($$0, dwd::new));
+   private final he<dug> b;
+   private final qw c;
 
-   private static DataResult<dwd> a(dwd $$0) {
-      return $$0.c <= $$0.d ? DataResult.error(() -> "Spacing has to be larger than separation") : DataResult.success($$0);
+   protected dwd(he<dug> $$0, dwl.a $$1) {
+      super($$1);
+      this.b = $$0;
+      this.c = this.b();
    }
 
-   public dwd(hy $$0, dwf.c $$1, float $$2, int $$3, Optional<dwf.a> $$4, int $$5, int $$6, dwe $$7) {
-      super($$0, $$1, $$2, $$3, $$4);
-      this.c = $$5;
-      this.d = $$6;
-      this.e = $$7;
-   }
-
-   public dwd(int $$0, int $$1, dwe $$2, int $$3) {
-      this(hy.g, dwf.c.a, 1.0F, $$3, Optional.empty(), $$0, $$1, $$2);
-   }
-
-   public int a() {
-      return this.c;
-   }
-
-   public int b() {
-      return this.d;
-   }
-
-   public dwe c() {
-      return this.e;
-   }
-
-   public cpc a(long $$0, int $$1, int $$2) {
-      int $$3 = Math.floorDiv($$1, this.c);
-      int $$4 = Math.floorDiv($$2, this.c);
-      dlr $$5 = new dlr(new dkt(0L));
-      $$5.a($$0, $$3, $$4, this.i());
-      int $$6 = this.c - this.d;
-      int $$7 = this.e.a($$5, $$6);
-      int $$8 = this.e.a($$5, $$6);
-      return new cpc($$3 * this.c + $$7, $$4 * this.c + $$8);
+   private qw b() {
+      qw $$0 = new qw();
+      $$0.a("name", "minecraft:bottom");
+      $$0.a("final_state", "minecraft:air");
+      $$0.a("pool", "minecraft:empty");
+      $$0.a("target", "minecraft:empty");
+      $$0.a("joint", ddy.a.a.c());
+      return $$0;
    }
 
    @Override
-   protected boolean a(dhh $$0, int $$1, int $$2) {
-      cpc $$3 = this.a($$0.d(), $$1, $$2);
-      return $$3.e == $$1 && $$3.f == $$2;
+   public hy a(dyw $$0, czn $$1) {
+      return hy.g;
    }
 
    @Override
-   public dwg<?> e() {
-      return dwg.a;
+   public List<dyv.c> a(dyw $$0, gw $$1, czn $$2, ash $$3) {
+      List<dyv.c> $$4 = Lists.newArrayList();
+      $$4.add(new dyv.c($$1, cte.pb.o().a(cxc.b, hc.a(ha.a, ha.d)), this.c));
+      return $$4;
+   }
+
+   @Override
+   public duu a(dyw $$0, gw $$1, czn $$2) {
+      hy $$3 = this.a($$0, $$2);
+      return new duu($$1.u(), $$1.v(), $$1.w(), $$1.u() + $$3.u(), $$1.v() + $$3.v(), $$1.w() + $$3.w());
+   }
+
+   @Override
+   public boolean a(dyw $$0, cqv $$1, cqt $$2, dha $$3, gw $$4, gw $$5, czn $$6, duu $$7, ash $$8, boolean $$9) {
+      return this.b.a().a($$1, $$3, $$8, $$4);
+   }
+
+   @Override
+   public dwk<?> a() {
+      return dwk.c;
+   }
+
+   @Override
+   public String toString() {
+      return "Feature[" + this.b + "]";
    }
 }

@@ -1,35 +1,85 @@
-import it.unimi.dsi.fastutil.objects.Object2BooleanMap;
-import it.unimi.dsi.fastutil.objects.Object2BooleanOpenHashMap;
-import java.util.Set;
+public class akk extends akv {
+   public static final int a = 5;
+   public static final int b = 120500;
+   private boolean e;
+   private boolean f;
+   private int g;
+   private int h;
 
-public final class akk {
-   private final Object2BooleanMap<akr> a = new Object2BooleanOpenHashMap();
-
-   public Set<akr> a() {
-      return this.a.keySet();
+   public akk(aku $$0) {
+      super($$0);
    }
 
-   public void a(akr $$0, boolean $$1) {
-      this.a.put($$0, $$1);
+   @Override
+   public void a() {
+      super.a();
+      this.h++;
+      long $$0 = this.c.V();
+      long $$1 = $$0 / 24000L + 1L;
+      if (!this.e && this.h > 20) {
+         this.e = true;
+         this.d.c.b(new yc(yc.f, 0.0F));
+      }
+
+      this.f = $$0 > 120500L;
+      if (this.f) {
+         this.g++;
+      }
+
+      if ($$0 % 24000L == 500L) {
+         if ($$1 <= 6L) {
+            if ($$1 == 6L) {
+               this.d.c.b(new yc(yc.f, 104.0F));
+            } else {
+               this.d.a(tl.c("demo.day." + $$1));
+            }
+         }
+      } else if ($$1 == 1L) {
+         if ($$0 == 100L) {
+            this.d.c.b(new yc(yc.f, 101.0F));
+         } else if ($$0 == 175L) {
+            this.d.c.b(new yc(yc.f, 102.0F));
+         } else if ($$0 == 250L) {
+            this.d.c.b(new yc(yc.f, 103.0F));
+         }
+      } else if ($$1 == 5L && $$0 % 24000L == 22000L) {
+         this.d.a(tl.c("demo.day.warning"));
+      }
    }
 
-   public void a(akr $$0) {
-      this.a.removeBoolean($$0);
+   private void f() {
+      if (this.g > 100) {
+         this.d.a(tl.c("demo.reminder"));
+         this.g = 0;
+      }
    }
 
-   public void b(akr $$0) {
-      this.a.replace($$0, true);
+   @Override
+   public void a(gw $$0, acf.a $$1, ha $$2, int $$3, int $$4) {
+      if (this.f) {
+         this.f();
+      } else {
+         super.a($$0, $$1, $$2, $$3, $$4);
+      }
    }
 
-   public void c(akr $$0) {
-      this.a.replace($$0, false);
+   @Override
+   public bhe a(aku $$0, cqb $$1, cjl $$2, bhd $$3) {
+      if (this.f) {
+         this.f();
+         return bhe.d;
+      } else {
+         return super.a($$0, $$1, $$2, $$3);
+      }
    }
 
-   public boolean d(akr $$0) {
-      return this.a.getOrDefault($$0, true);
-   }
-
-   public boolean e(akr $$0) {
-      return this.a.getBoolean($$0);
+   @Override
+   public bhe a(aku $$0, cqb $$1, cjl $$2, bhd $$3, ehd $$4) {
+      if (this.f) {
+         this.f();
+         return bhe.d;
+      } else {
+         return super.a($$0, $$1, $$2, $$3, $$4);
+      }
    }
 }

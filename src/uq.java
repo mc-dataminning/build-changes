@@ -1,22 +1,10 @@
-import java.util.Optional;
+import java.util.function.Function;
+import java.util.function.Supplier;
 
-public record uq(String b) implements tm {
-   @Override
-   public <T> Optional<T> a(tp.a<T> $$0) {
-      return $$0.accept(this.b);
-   }
+public class uq {
+   static Function<String, Supplier<tl>> a = $$0 -> () -> tl.b($$0);
 
-   @Override
-   public <T> Optional<T> a(tp.b<T> $$0, uh $$1) {
-      return $$0.accept($$1, this.b);
-   }
-
-   @Override
-   public String toString() {
-      return "literal{" + this.b + "}";
-   }
-
-   public String a() {
-      return this.b;
+   public static void a(Function<String, Supplier<tl>> $$0) {
+      a = $$0;
    }
 }

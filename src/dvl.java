@@ -1,54 +1,26 @@
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
+import com.mojang.serialization.Codec;
 
-public class dvl extends ebr {
-   private static final String a = "Remaining";
-   private static final String b = "All";
-   private final LongSet c;
-   private final LongSet d;
+public interface dvl<S extends dvc> {
+   dvl<dwo> a = a("buried_treasure", dwo.d);
+   dvl<dwq> b = a("desert_pyramid", dwq.d);
+   dvl<dws> c = a("end_city", dws.d);
+   dvl<dxb> d = a("fortress", dxb.e);
+   dvl<dwu> e = a("igloo", dwu.d);
+   dvl<dwv> f = a("jigsaw", dwv.e);
+   dvl<dwx> g = a("jungle_temple", dwx.d);
+   dvl<dwz> h = a("mineshaft", dwz.d);
+   dvl<dxd> i = a("nether_fossil", dxd.d);
+   dvl<dxf> j = a("ocean_monument", dxf.d);
+   dvl<dxh> k = a("ocean_ruin", dxh.d);
+   dvl<dxj> l = a("ruined_portal", dxj.d);
+   dvl<dxl> m = a("shipwreck", dxl.d);
+   dvl<dxn> n = a("stronghold", dxn.d);
+   dvl<dxp> o = a("swamp_hut", dxp.d);
+   dvl<dxr> p = a("woodland_mansion", dxr.d);
 
-   public static ebr.a<dvl> a() {
-      return new ebr.a<>(dvl::new, dvl::b, ata.o);
-   }
+   Codec<S> codec();
 
-   private dvl(LongSet $$0, LongSet $$1) {
-      this.c = $$0;
-      this.d = $$1;
-   }
-
-   public dvl() {
-      this(new LongOpenHashSet(), new LongOpenHashSet());
-   }
-
-   public static dvl b(qw $$0) {
-      return new dvl(new LongOpenHashSet($$0.o("All")), new LongOpenHashSet($$0.o("Remaining")));
-   }
-
-   @Override
-   public qw a(qw $$0) {
-      $$0.a("All", this.c.toLongArray());
-      $$0.a("Remaining", this.d.toLongArray());
-      return $$0;
-   }
-
-   public void a(long $$0) {
-      this.c.add($$0);
-      this.d.add($$0);
-   }
-
-   public boolean b(long $$0) {
-      return this.c.contains($$0);
-   }
-
-   public boolean c(long $$0) {
-      return this.d.contains($$0);
-   }
-
-   public void d(long $$0) {
-      this.d.remove($$0);
-   }
-
-   public LongSet b() {
-      return this.c;
+   private static <S extends dvc> dvl<S> a(String $$0, Codec<S> $$1) {
+      return hq.a(jb.U, $$0, () -> $$1);
    }
 }

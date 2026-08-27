@@ -1,123 +1,119 @@
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
 
-public class cto extends cwo {
-   public static final dgd a = cwo.aC;
-   @Nullable
-   private dfo b;
-   @Nullable
-   private dfo c;
-   @Nullable
-   private dfo d;
-   @Nullable
-   private dfo e;
-   private static final Predicate<dfj> f = $$0 -> $$0 != null && ($$0.a(csw.ef) || $$0.a(csw.eg));
+public class cto extends ctc {
+   public static final MapCodec<cto> a = b(cto::new);
+   public static final int b = 6;
+   public static final dgd c = dft.ay;
+   public static final int d = b(0);
+   protected static final float e = 1.0F;
+   protected static final float f = 2.0F;
+   protected static final eia[] g = new eia[]{
+      ctc.a(1.0, 0.0, 1.0, 15.0, 8.0, 15.0),
+      ctc.a(3.0, 0.0, 1.0, 15.0, 8.0, 15.0),
+      ctc.a(5.0, 0.0, 1.0, 15.0, 8.0, 15.0),
+      ctc.a(7.0, 0.0, 1.0, 15.0, 8.0, 15.0),
+      ctc.a(9.0, 0.0, 1.0, 15.0, 8.0, 15.0),
+      ctc.a(11.0, 0.0, 1.0, 15.0, 8.0, 15.0),
+      ctc.a(13.0, 0.0, 1.0, 15.0, 8.0, 15.0)
+   };
 
-   protected cto(dfi.d $$0) {
+   @Override
+   public MapCodec<cto> a() {
+      return a;
+   }
+
+   protected cto(dfc.d $$0) {
       super($$0);
-      this.k(this.C.b().a(a, ha.c));
+      this.k(this.E.b().a(c, Integer.valueOf(0)));
    }
 
    @Override
-   public void b(dfj $$0, cpv $$1, gw $$2, dfj $$3, boolean $$4) {
-      if (!$$3.a($$0.b())) {
-         this.a($$1, $$2);
-      }
+   public eia a(dfd $$0, cph $$1, gw $$2, ehm $$3) {
+      return g[$$0.c(c)];
    }
 
-   public boolean a(cpy $$0, gw $$1) {
-      return this.a().a($$0, $$1) != null || this.u().a($$0, $$1) != null;
-   }
-
-   private void a(cpv $$0, gw $$1) {
-      dfo.b $$2 = this.g().a($$0, $$1);
-      if ($$2 != null) {
-         bvp $$3 = biu.aO.a($$0);
-         if ($$3 != null) {
-            a($$0, $$2, $$3, $$2.a(0, 2, 0).d());
-         }
-      } else {
-         dfo.b $$4 = this.v().a($$0, $$1);
-         if ($$4 != null) {
-            bvd $$5 = biu.ac.a($$0);
-            if ($$5 != null) {
-               $$5.x(true);
-               a($$0, $$4, $$5, $$4.a(1, 2, 0).d());
+   @Override
+   public bhe a(dfd $$0, cqb $$1, gw $$2, cca $$3, bhd $$4, ehd $$5) {
+      cjl $$6 = $$3.b($$4);
+      cjg $$7 = $$6.d();
+      if ($$6.a(aqd.ai) && $$0.c(c) == 0) {
+         ctc $$8 = ctc.a($$7);
+         if ($$8 instanceof ctr) {
+            if (!$$3.f()) {
+               $$6.h(1);
             }
+
+            $$1.a(null, $$2, apg.cK, aph.e, 1.0F, 1.0F);
+            $$1.b($$2, cts.a($$8));
+            $$1.a($$3, djn.c, $$2);
+            $$3.b(apq.c.b($$7));
+            return bhe.a;
          }
       }
-   }
 
-   private static void a(cpv $$0, dfo.b $$1, biq $$2, gw $$3) {
-      a($$0, $$1);
-      $$2.b((double)$$3.u() + 0.5, (double)$$3.v() + 0.05, (double)$$3.w() + 0.5, 0.0F, 0.0F);
-      $$0.b($$2);
+      if ($$1.B) {
+         if (a($$1, $$2, $$0, $$3).a()) {
+            return bhe.a;
+         }
 
-      for (akr $$4 : $$0.a(akr.class, $$2.cG().g(5.0))) {
-         al.n.a($$4, $$2);
-      }
-
-      b($$0, $$1);
-   }
-
-   public static void a(cpv $$0, dfo.b $$1) {
-      for (int $$2 = 0; $$2 < $$1.d(); $$2++) {
-         for (int $$3 = 0; $$3 < $$1.e(); $$3++) {
-            dfn $$4 = $$1.a($$2, $$3, 0);
-            $$0.a($$4.d(), csw.a.n(), 2);
-            $$0.c(2001, $$4.d(), csv.i($$4.a()));
+         if ($$6.b()) {
+            return bhe.b;
          }
       }
+
+      return a($$1, $$2, $$0, $$3);
    }
 
-   public static void b(cpv $$0, dfo.b $$1) {
-      for (int $$2 = 0; $$2 < $$1.d(); $$2++) {
-         for (int $$3 = 0; $$3 < $$1.e(); $$3++) {
-            dfn $$4 = $$1.a($$2, $$3, 0);
-            $$0.b($$4.d(), csw.a);
+   protected static bhe a(cqc $$0, gw $$1, dfd $$2, cca $$3) {
+      if (!$$3.t(false)) {
+         return bhe.d;
+      } else {
+         $$3.a(apq.U);
+         $$3.gc().a(2, 0.1F);
+         int $$4 = $$2.c(c);
+         $$0.a($$3, djn.m, $$1);
+         if ($$4 < 6) {
+            $$0.a($$1, $$2.a(c, Integer.valueOf($$4 + 1)), 3);
+         } else {
+            $$0.a($$1, false);
+            $$0.a($$3, djn.f, $$1);
          }
+
+         return bhe.a;
       }
    }
 
    @Override
-   public dfj a(cln $$0) {
-      return this.n().a(a, $$0.g().g());
+   public dfd a(dfd $$0, ha $$1, dfd $$2, cqc $$3, gw $$4, gw $$5) {
+      return $$1 == ha.a && !$$0.a($$3, $$4) ? cte.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected void a(dfk.a<csv, dfj> $$0) {
-      $$0.a(a);
+   public boolean a(dfd $$0, cqe $$1, gw $$2) {
+      return $$1.a_($$2.d()).e();
    }
 
-   private dfo a() {
-      if (this.b == null) {
-         this.b = dfp.a().a(" ", "#", "#").a('#', dfn.a(dfs.a(csw.dP))).b();
-      }
-
-      return this.b;
+   @Override
+   protected void a(dfe.a<ctc, dfd> $$0) {
+      $$0.a(c);
    }
 
-   private dfo g() {
-      if (this.c == null) {
-         this.c = dfp.a().a("^", "#", "#").a('^', dfn.a(f)).a('#', dfn.a(dfs.a(csw.dP))).b();
-      }
-
-      return this.c;
+   @Override
+   public int a(dfd $$0, cqb $$1, gw $$2) {
+      return b($$0.c(c));
    }
 
-   private dfo u() {
-      if (this.d == null) {
-         this.d = dfp.a().a("~ ~", "###", "~#~").a('#', dfn.a(dfs.a(csw.ci))).a('~', $$0 -> $$0.a().i()).b();
-      }
-
-      return this.d;
+   public static int b(int $$0) {
+      return (7 - $$0) * 2;
    }
 
-   private dfo v() {
-      if (this.e == null) {
-         this.e = dfp.a().a("~^~", "###", "~#~").a('^', dfn.a(f)).a('#', dfn.a(dfs.a(csw.ci))).a('~', $$0 -> $$0.a().i()).b();
-      }
+   @Override
+   public boolean d_(dfd $$0) {
+      return true;
+   }
 
-      return this.e;
+   @Override
+   public boolean a(dfd $$0, cph $$1, gw $$2, eaw $$3) {
+      return false;
    }
 }

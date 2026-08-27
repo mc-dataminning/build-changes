@@ -1,294 +1,176 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Maps;
-import com.mojang.datafixers.DSL;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.Sets;
 import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
 import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.Dynamic;
-import java.util.Map;
+import com.mojang.serialization.OptionalDynamic;
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
-import java.util.Map.Entry;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
+import java.util.function.Function;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.stream.Stream;
 
 public class azj extends DataFix {
-   private static final Set<String> a = Set.of(
-      "dummy",
-      "trigger",
-      "deathCount",
-      "playerKillCount",
-      "totalKillCount",
-      "health",
-      "food",
-      "air",
-      "armor",
-      "xp",
-      "level",
-      "killedByTeam.aqua",
-      "killedByTeam.black",
-      "killedByTeam.blue",
-      "killedByTeam.dark_aqua",
-      "killedByTeam.dark_blue",
-      "killedByTeam.dark_gray",
-      "killedByTeam.dark_green",
-      "killedByTeam.dark_purple",
-      "killedByTeam.dark_red",
-      "killedByTeam.gold",
-      "killedByTeam.gray",
-      "killedByTeam.green",
-      "killedByTeam.light_purple",
-      "killedByTeam.red",
-      "killedByTeam.white",
-      "killedByTeam.yellow",
-      "teamkill.aqua",
-      "teamkill.black",
-      "teamkill.blue",
-      "teamkill.dark_aqua",
-      "teamkill.dark_blue",
-      "teamkill.dark_gray",
-      "teamkill.dark_green",
-      "teamkill.dark_purple",
-      "teamkill.dark_red",
-      "teamkill.gold",
-      "teamkill.gray",
-      "teamkill.green",
-      "teamkill.light_purple",
-      "teamkill.red",
-      "teamkill.white",
-      "teamkill.yellow"
+   private static final Pattern a = Pattern.compile("\\[(\\d+)\\]");
+   private static final Set<String> b = Sets.newHashSet(
+      new String[]{"minecraft:jigsaw", "minecraft:nvi", "minecraft:pcp", "minecraft:bastionremnant", "minecraft:runtime"}
    );
-   private static final Set<String> b = ImmutableSet.builder()
-      .add("stat.craftItem.minecraft.spawn_egg")
-      .add("stat.useItem.minecraft.spawn_egg")
-      .add("stat.breakItem.minecraft.spawn_egg")
-      .add("stat.pickup.minecraft.spawn_egg")
-      .add("stat.drop.minecraft.spawn_egg")
-      .build();
-   private static final Map<String, String> c = ImmutableMap.builder()
-      .put("stat.leaveGame", "minecraft:leave_game")
-      .put("stat.playOneMinute", "minecraft:play_one_minute")
-      .put("stat.timeSinceDeath", "minecraft:time_since_death")
-      .put("stat.sneakTime", "minecraft:sneak_time")
-      .put("stat.walkOneCm", "minecraft:walk_one_cm")
-      .put("stat.crouchOneCm", "minecraft:crouch_one_cm")
-      .put("stat.sprintOneCm", "minecraft:sprint_one_cm")
-      .put("stat.swimOneCm", "minecraft:swim_one_cm")
-      .put("stat.fallOneCm", "minecraft:fall_one_cm")
-      .put("stat.climbOneCm", "minecraft:climb_one_cm")
-      .put("stat.flyOneCm", "minecraft:fly_one_cm")
-      .put("stat.diveOneCm", "minecraft:dive_one_cm")
-      .put("stat.minecartOneCm", "minecraft:minecart_one_cm")
-      .put("stat.boatOneCm", "minecraft:boat_one_cm")
-      .put("stat.pigOneCm", "minecraft:pig_one_cm")
-      .put("stat.horseOneCm", "minecraft:horse_one_cm")
-      .put("stat.aviateOneCm", "minecraft:aviate_one_cm")
-      .put("stat.jump", "minecraft:jump")
-      .put("stat.drop", "minecraft:drop")
-      .put("stat.damageDealt", "minecraft:damage_dealt")
-      .put("stat.damageTaken", "minecraft:damage_taken")
-      .put("stat.deaths", "minecraft:deaths")
-      .put("stat.mobKills", "minecraft:mob_kills")
-      .put("stat.animalsBred", "minecraft:animals_bred")
-      .put("stat.playerKills", "minecraft:player_kills")
-      .put("stat.fishCaught", "minecraft:fish_caught")
-      .put("stat.talkedToVillager", "minecraft:talked_to_villager")
-      .put("stat.tradedWithVillager", "minecraft:traded_with_villager")
-      .put("stat.cakeSlicesEaten", "minecraft:eat_cake_slice")
-      .put("stat.cauldronFilled", "minecraft:fill_cauldron")
-      .put("stat.cauldronUsed", "minecraft:use_cauldron")
-      .put("stat.armorCleaned", "minecraft:clean_armor")
-      .put("stat.bannerCleaned", "minecraft:clean_banner")
-      .put("stat.brewingstandInteraction", "minecraft:interact_with_brewingstand")
-      .put("stat.beaconInteraction", "minecraft:interact_with_beacon")
-      .put("stat.dropperInspected", "minecraft:inspect_dropper")
-      .put("stat.hopperInspected", "minecraft:inspect_hopper")
-      .put("stat.dispenserInspected", "minecraft:inspect_dispenser")
-      .put("stat.noteblockPlayed", "minecraft:play_noteblock")
-      .put("stat.noteblockTuned", "minecraft:tune_noteblock")
-      .put("stat.flowerPotted", "minecraft:pot_flower")
-      .put("stat.trappedChestTriggered", "minecraft:trigger_trapped_chest")
-      .put("stat.enderchestOpened", "minecraft:open_enderchest")
-      .put("stat.itemEnchanted", "minecraft:enchant_item")
-      .put("stat.recordPlayed", "minecraft:play_record")
-      .put("stat.furnaceInteraction", "minecraft:interact_with_furnace")
-      .put("stat.craftingTableInteraction", "minecraft:interact_with_crafting_table")
-      .put("stat.chestOpened", "minecraft:open_chest")
-      .put("stat.sleepInBed", "minecraft:sleep_in_bed")
-      .put("stat.shulkerBoxOpened", "minecraft:open_shulker_box")
-      .build();
-   private static final String d = "stat.mineBlock";
-   private static final String e = "minecraft:mined";
-   private static final Map<String, String> f = ImmutableMap.builder()
-      .put("stat.craftItem", "minecraft:crafted")
-      .put("stat.useItem", "minecraft:used")
-      .put("stat.breakItem", "minecraft:broken")
-      .put("stat.pickup", "minecraft:picked_up")
-      .put("stat.drop", "minecraft:dropped")
-      .build();
-   private static final Map<String, String> g = ImmutableMap.builder()
-      .put("stat.entityKilledBy", "minecraft:killed_by")
-      .put("stat.killEntity", "minecraft:killed")
-      .build();
-   private static final Map<String, String> h = ImmutableMap.builder()
-      .put("Bat", "minecraft:bat")
-      .put("Blaze", "minecraft:blaze")
-      .put("CaveSpider", "minecraft:cave_spider")
-      .put("Chicken", "minecraft:chicken")
-      .put("Cow", "minecraft:cow")
-      .put("Creeper", "minecraft:creeper")
-      .put("Donkey", "minecraft:donkey")
-      .put("ElderGuardian", "minecraft:elder_guardian")
-      .put("Enderman", "minecraft:enderman")
-      .put("Endermite", "minecraft:endermite")
-      .put("EvocationIllager", "minecraft:evocation_illager")
-      .put("Ghast", "minecraft:ghast")
-      .put("Guardian", "minecraft:guardian")
-      .put("Horse", "minecraft:horse")
-      .put("Husk", "minecraft:husk")
-      .put("Llama", "minecraft:llama")
-      .put("LavaSlime", "minecraft:magma_cube")
-      .put("MushroomCow", "minecraft:mooshroom")
-      .put("Mule", "minecraft:mule")
-      .put("Ozelot", "minecraft:ocelot")
-      .put("Parrot", "minecraft:parrot")
-      .put("Pig", "minecraft:pig")
-      .put("PolarBear", "minecraft:polar_bear")
-      .put("Rabbit", "minecraft:rabbit")
-      .put("Sheep", "minecraft:sheep")
-      .put("Shulker", "minecraft:shulker")
-      .put("Silverfish", "minecraft:silverfish")
-      .put("SkeletonHorse", "minecraft:skeleton_horse")
-      .put("Skeleton", "minecraft:skeleton")
-      .put("Slime", "minecraft:slime")
-      .put("Spider", "minecraft:spider")
-      .put("Squid", "minecraft:squid")
-      .put("Stray", "minecraft:stray")
-      .put("Vex", "minecraft:vex")
-      .put("Villager", "minecraft:villager")
-      .put("VindicationIllager", "minecraft:vindication_illager")
-      .put("Witch", "minecraft:witch")
-      .put("WitherSkeleton", "minecraft:wither_skeleton")
-      .put("Wolf", "minecraft:wolf")
-      .put("ZombieHorse", "minecraft:zombie_horse")
-      .put("PigZombie", "minecraft:zombie_pigman")
-      .put("ZombieVillager", "minecraft:zombie_villager")
-      .put("Zombie", "minecraft:zombie")
-      .build();
-   private static final String i = "minecraft:custom";
+   private static final Set<String> c = Sets.newHashSet(new String[]{"minecraft:tree", "minecraft:flower", "minecraft:block_pile", "minecraft:random_patch"});
 
-   public azj(Schema $$0, boolean $$1) {
-      super($$0, $$1);
-   }
-
-   @Nullable
-   private static azj.a a(String $$0) {
-      if (b.contains($$0)) {
-         return null;
-      } else {
-         String $$1 = c.get($$0);
-         if ($$1 != null) {
-            return new azj.a("minecraft:custom", $$1);
-         } else {
-            int $$2 = StringUtils.ordinalIndexOf($$0, ".", 2);
-            if ($$2 < 0) {
-               return null;
-            } else {
-               String $$3 = $$0.substring(0, $$2);
-               if ("stat.mineBlock".equals($$3)) {
-                  String $$4 = c($$0.substring($$2 + 1).replace('.', ':'));
-                  return new azj.a("minecraft:mined", $$4);
-               } else {
-                  String $$5 = f.get($$3);
-                  if ($$5 != null) {
-                     String $$6 = $$0.substring($$2 + 1).replace('.', ':');
-                     String $$7 = b($$6);
-                     String $$8 = $$7 == null ? $$6 : $$7;
-                     return new azj.a($$5, $$8);
-                  } else {
-                     String $$9 = g.get($$3);
-                     if ($$9 != null) {
-                        String $$10 = $$0.substring($$2 + 1).replace('.', ':');
-                        String $$11 = h.getOrDefault($$10, $$10);
-                        return new azj.a($$9, $$11);
-                     } else {
-                        return null;
-                     }
-                  }
-               }
-            }
-         }
-      }
+   public azj(Schema $$0) {
+      super($$0, false);
    }
 
    public TypeRewriteRule makeRule() {
-      return TypeRewriteRule.seq(this.a(), this.b());
+      return this.writeFixAndRead("SavedDataFeaturePoolElementFix", this.getInputSchema().getType(azd.C), this.getOutputSchema().getType(azd.C), azj::b);
    }
 
-   private TypeRewriteRule a() {
-      Type<?> $$0 = this.getInputSchema().getType(ayx.g);
-      Type<?> $$1 = this.getOutputSchema().getType(ayx.g);
-      return this.fixTypeEverywhereTyped(
-         "StatsCounterFix",
-         $$0,
-         $$1,
-         $$1x -> {
-            Dynamic<?> $$2 = (Dynamic<?>)$$1x.get(DSL.remainderFinder());
-            Map<Dynamic<?>, Dynamic<?>> $$3 = Maps.newHashMap();
-            Optional<? extends Map<? extends Dynamic<?>, ? extends Dynamic<?>>> $$4 = $$2.getMapValues().result();
-            if ($$4.isPresent()) {
-               for (Entry<? extends Dynamic<?>, ? extends Dynamic<?>> $$5 : $$4.get().entrySet()) {
-                  if ($$5.getValue().asNumber().result().isPresent()) {
-                     String $$6 = $$5.getKey().asString("");
-                     azj.a $$7 = a($$6);
-                     if ($$7 != null) {
-                        Dynamic<?> $$8 = $$2.createString($$7.a());
-                        Dynamic<?> $$9 = $$3.computeIfAbsent($$8, $$1xx -> $$2.emptyMap());
-                        $$3.put($$8, $$9.set($$7.b(), $$5.getValue()));
-                     }
-                  }
-               }
-            }
+   private static <T> Dynamic<T> b(Dynamic<T> $$0) {
+      return $$0.update("Children", azj::c);
+   }
 
-            return (Typed)((Pair)$$1.readTyped($$2.emptyMap().set("stats", $$2.createMap($$3)))
-                  .result()
-                  .orElseThrow(() -> new IllegalStateException("Could not parse new stats object.")))
-               .getFirst();
+   private static <T> Dynamic<T> c(Dynamic<T> $$0) {
+      return $$0.asStreamOpt().map(azj::a).map($$0::createList).result().orElse($$0);
+   }
+
+   private static Stream<? extends Dynamic<?>> a(Stream<? extends Dynamic<?>> $$0) {
+      return $$0.map(
+         $$0x -> {
+            String $$1 = $$0x.get("id").asString("");
+            if (!b.contains($$1)) {
+               return $$0x;
+            } else {
+               OptionalDynamic<?> $$2 = $$0x.get("pool_element");
+               return !$$2.get("element_type").asString("").equals("minecraft:feature_pool_element")
+                  ? $$0x
+                  : $$0x.update("pool_element", $$0xx -> $$0xx.update("feature", azj::a));
+            }
          }
       );
    }
 
-   private TypeRewriteRule b() {
-      Type<?> $$0 = this.getInputSchema().getType(ayx.D);
-      Type<?> $$1 = this.getOutputSchema().getType(ayx.D);
-      return this.fixTypeEverywhereTyped("ObjectiveStatFix", $$0, $$1, $$1x -> {
-         Dynamic<?> $$2 = (Dynamic<?>)$$1x.get(DSL.remainderFinder());
-         Dynamic<?> $$3 = $$2.update("CriteriaName", $$0xx -> (Dynamic)DataFixUtils.orElse($$0xx.asString().result().map($$0xxx -> {
-               if (a.contains($$0xxx)) {
-                  return $$0xxx;
+   private static <T> OptionalDynamic<T> a(Dynamic<T> $$0, String... $$1) {
+      if ($$1.length == 0) {
+         throw new IllegalArgumentException("Missing path");
+      } else {
+         OptionalDynamic<T> $$2 = $$0.get($$1[0]);
+
+         for (int $$3 = 1; $$3 < $$1.length; $$3++) {
+            String $$4 = $$1[$$3];
+            Matcher $$5 = a.matcher($$4);
+            if ($$5.matches()) {
+               int $$6 = Integer.parseInt($$5.group(1));
+               List<? extends Dynamic<T>> $$7 = $$2.asList(Function.identity());
+               if ($$6 >= 0 && $$6 < $$7.size()) {
+                  $$2 = new OptionalDynamic($$0.getOps(), DataResult.success($$7.get($$6)));
                } else {
-                  azj.a $$1xx = a($$0xxx);
-                  return $$1xx == null ? "dummy" : bau.b($$1xx.a) + ":" + bau.b($$1xx.b);
+                  $$2 = new OptionalDynamic($$0.getOps(), DataResult.error(() -> "Missing id:" + $$6));
                }
-            }).map($$0xx::createString), $$0xx));
-         return (Typed)((Pair)$$1.readTyped($$3).result().orElseThrow(() -> new IllegalStateException("Could not parse new objective object."))).getFirst();
-      });
+            } else {
+               $$2 = $$2.get($$4);
+            }
+         }
+
+         return $$2;
+      }
    }
 
-   @Nullable
-   private static String b(String $$0) {
-      return axj.a($$0, 0);
+   @VisibleForTesting
+   protected static Dynamic<?> a(Dynamic<?> $$0) {
+      Optional<String> $$1 = a(
+         a($$0, "type").asString(""),
+         a($$0, "name").asString(""),
+         a($$0, "config", "state_provider", "type").asString(""),
+         a($$0, "config", "state_provider", "state", "Name").asString(""),
+         a($$0, "config", "state_provider", "entries", "[0]", "data", "Name").asString(""),
+         a($$0, "config", "foliage_placer", "type").asString(""),
+         a($$0, "config", "leaves_provider", "state", "Name").asString("")
+      );
+      return $$1.isPresent() ? $$0.createString($$1.get()) : $$0;
    }
 
-   private static String c(String $$0) {
-      return aue.a($$0);
-   }
+   private static Optional<String> a(String $$0, String $$1, String $$2, String $$3, String $$4, String $$5, String $$6) {
+      String $$7;
+      if (!$$0.isEmpty()) {
+         $$7 = $$0;
+      } else {
+         if ($$1.isEmpty()) {
+            return Optional.empty();
+         }
 
-   static record a(String a, String b) {
+         if ("minecraft:normal_tree".equals($$1)) {
+            $$7 = "minecraft:tree";
+         } else {
+            $$7 = $$1;
+         }
+      }
+
+      if (c.contains($$7)) {
+         if ("minecraft:random_patch".equals($$7)) {
+            if ("minecraft:simple_state_provider".equals($$2)) {
+               if ("minecraft:sweet_berry_bush".equals($$3)) {
+                  return Optional.of("minecraft:patch_berry_bush");
+               }
+
+               if ("minecraft:cactus".equals($$3)) {
+                  return Optional.of("minecraft:patch_cactus");
+               }
+            } else if ("minecraft:weighted_state_provider".equals($$2) && ("minecraft:grass".equals($$4) || "minecraft:fern".equals($$4))) {
+               return Optional.of("minecraft:patch_taiga_grass");
+            }
+         } else if ("minecraft:block_pile".equals($$7)) {
+            if (!"minecraft:simple_state_provider".equals($$2) && !"minecraft:rotated_block_provider".equals($$2)) {
+               if ("minecraft:weighted_state_provider".equals($$2)) {
+                  if ("minecraft:packed_ice".equals($$4) || "minecraft:blue_ice".equals($$4)) {
+                     return Optional.of("minecraft:pile_ice");
+                  }
+
+                  if ("minecraft:jack_o_lantern".equals($$4) || "minecraft:pumpkin".equals($$4)) {
+                     return Optional.of("minecraft:pile_pumpkin");
+                  }
+               }
+            } else {
+               if ("minecraft:hay_block".equals($$3)) {
+                  return Optional.of("minecraft:pile_hay");
+               }
+
+               if ("minecraft:melon".equals($$3)) {
+                  return Optional.of("minecraft:pile_melon");
+               }
+
+               if ("minecraft:snow".equals($$3)) {
+                  return Optional.of("minecraft:pile_snow");
+               }
+            }
+         } else {
+            if ("minecraft:flower".equals($$7)) {
+               return Optional.of("minecraft:flower_plain");
+            }
+
+            if ("minecraft:tree".equals($$7)) {
+               if ("minecraft:acacia_foliage_placer".equals($$5)) {
+                  return Optional.of("minecraft:acacia");
+               }
+
+               if ("minecraft:blob_foliage_placer".equals($$5) && "minecraft:oak_leaves".equals($$6)) {
+                  return Optional.of("minecraft:oak");
+               }
+
+               if ("minecraft:pine_foliage_placer".equals($$5)) {
+                  return Optional.of("minecraft:pine");
+               }
+
+               if ("minecraft:spruce_foliage_placer".equals($$5)) {
+                  return Optional.of("minecraft:spruce");
+               }
+            }
+         }
+      }
+
+      return Optional.empty();
    }
 }

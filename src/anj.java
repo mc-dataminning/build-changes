@@ -1,4 +1,5 @@
-public interface anj extends ant, AutoCloseable {
-   @Override
-   void close();
+import java.util.function.Consumer;
+
+public interface anj {
+   void a(Consumer<ane> var1);
 }

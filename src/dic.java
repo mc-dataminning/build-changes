@@ -1,18 +1,109 @@
+import com.google.common.collect.ImmutableList;
+import com.mojang.datafixers.DataFixer;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
 import it.unimi.dsi.fastutil.longs.LongSet;
-import java.util.Map;
-import javax.annotation.Nullable;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.util.List;
+import java.util.Objects;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import org.slf4j.Logger;
 
-public interface dic {
-   @Nullable
-   dvq a(dvi var1);
+public class dic implements dix<biw> {
+   private static final Logger b = LogUtils.getLogger();
+   private static final String c = "Entities";
+   private static final String d = "Position";
+   private final akt e;
+   private final did f;
+   private final LongSet g = new LongOpenHashSet();
+   private final bfx<Runnable> h;
+   protected final DataFixer a;
 
-   void a(dvi var1, dvq var2);
+   public dic(akt $$0, Path $$1, DataFixer $$2, boolean $$3, Executor $$4) {
+      this.e = $$0;
+      this.a = $$2;
+      this.h = bfx.a($$4, "entity-deserializer");
+      this.f = new did($$1, $$3, "entities");
+   }
 
-   LongSet b(dvi var1);
+   @Override
+   public CompletableFuture<dis<biw>> a(cpi $$0) {
+      return this.g.contains($$0.a()) ? CompletableFuture.completedFuture(b($$0)) : this.f.a($$0).thenApplyAsync($$1 -> {
+         if ($$1.isEmpty()) {
+            this.g.add($$0.a());
+            return b($$0);
+         } else {
+            try {
+               cpi $$2 = a($$1.get());
+               if (!Objects.equals($$0, $$2)) {
+                  b.error("Chunk file at {} is in the wrong location. (Expected {}, got {})", new Object[]{$$0, $$0, $$2});
+               }
+            } catch (Exception var6) {
+               b.warn("Failed to parse chunk {} position info", $$0, var6);
+            }
 
-   void a(dvi var1, long var2);
+            qw $$4 = this.b($$1.get());
+            rc $$5 = $$4.c("Entities", 10);
+            List<biw> $$6 = bja.a($$5, this.e).collect(ImmutableList.toImmutableList());
+            return new dis<>($$0, $$6);
+         }
+      }, this.h::a);
+   }
 
-   Map<dvi, LongSet> h();
+   private static cpi a(qw $$0) {
+      int[] $$1 = $$0.n("Position");
+      return new cpi($$1[0], $$1[1]);
+   }
 
-   void b(Map<dvi, LongSet> var1);
+   private static void a(qw $$0, cpi $$1) {
+      $$0.a("Position", new ra(new int[]{$$1.e, $$1.f}));
+   }
+
+   private static dis<biw> b(cpi $$0) {
+      return new dis<>($$0, ImmutableList.of());
+   }
+
+   @Override
+   public void a(dis<biw> $$0) {
+      cpi $$1 = $$0.a();
+      if ($$0.c()) {
+         if (this.g.add($$1.a())) {
+            this.f.a($$1, null);
+         }
+      } else {
+         rc $$2 = new rc();
+         $$0.b().forEach($$1x -> {
+            qw $$2x = new qw();
+            if ($$1x.e($$2x)) {
+               $$2.add($$2x);
+            }
+         });
+         qw $$3 = rj.g(new qw());
+         $$3.a("Entities", $$2);
+         a($$3, $$1);
+         this.f.a($$1, $$3).exceptionally($$1x -> {
+            b.error("Failed to store chunk {}", $$1, $$1x);
+            return null;
+         });
+         this.g.remove($$1.a());
+      }
+   }
+
+   @Override
+   public void a(boolean $$0) {
+      this.f.a($$0).join();
+      this.h.a();
+   }
+
+   private qw b(qw $$0) {
+      int $$1 = rj.b($$0, -1);
+      return atg.s.a(this.a, $$0, $$1);
+   }
+
+   @Override
+   public void close() throws IOException {
+      this.f.close();
+   }
 }

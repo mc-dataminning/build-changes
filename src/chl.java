@@ -1,285 +1,113 @@
-import com.google.common.collect.Lists;
-import java.util.Collection;
-import java.util.List;
-import java.util.Set;
-import java.util.function.Consumer;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+public class chl extends cjg {
+   public static final int a = 10;
+   private static final int b = 200;
+   private static final double c = Math.sqrt(als.d) - 1.0;
 
-public class chl {
-   private final tl a;
-   String b = "items.png";
-   boolean c = true;
-   boolean d = true;
-   boolean e = false;
-   private final chl.f f;
-   private final int g;
-   private final chl.h h;
-   @Nullable
-   private cjf i;
-   private Collection<cjf> j = cjg.a();
-   private Set<cjf> k = cjg.a();
-   @Nullable
-   private Consumer<List<cjf>> l;
-   private final Supplier<cjf> m;
-   private final chl.b n;
-
-   chl(chl.f $$0, int $$1, chl.h $$2, tl $$3, Supplier<cjf> $$4, chl.b $$5) {
-      this.f = $$0;
-      this.g = $$1;
-      this.a = $$3;
-      this.m = $$4;
-      this.n = $$5;
-      this.h = $$2;
+   public chl(cjg.a $$0) {
+      super($$0);
    }
 
-   public static chl.a a(chl.f $$0, int $$1) {
-      return new chl.a($$0, $$1);
-   }
-
-   public tl a() {
-      return this.a;
-   }
-
-   public cjf b() {
-      if (this.i == null) {
-         this.i = this.m.get();
+   @Override
+   public bhe a(clv $$0) {
+      cca $$1 = $$0.o();
+      if ($$1 != null && this.a((bjm)$$1).c() == ehf.a.b) {
+         $$1.c($$0.p());
       }
 
-      return this.i;
+      return bhe.b;
    }
 
-   public String c() {
-      return this.b;
+   @Override
+   public cle c(cjl $$0) {
+      return cle.j;
    }
 
-   public boolean d() {
-      return this.d;
+   @Override
+   public int b(cjl $$0) {
+      return 200;
    }
 
-   public boolean e() {
-      return this.c;
-   }
+   @Override
+   public void a(cqb $$0, bjm $$1, cjl $$2, int $$3) {
+      if ($$3 >= 0 && $$1 instanceof cca $$4) {
+         ehf $$6 = this.a($$1);
+         if ($$6 instanceof ehd $$7 && $$6.c() == ehf.a.b) {
+            int $$9 = this.b($$2) - $$3 + 1;
+            boolean $$10 = $$9 % 10 == 5;
+            if ($$10) {
+               gw $$11 = $$7.a();
+               dfd $$12 = $$0.a_($$11);
+               bjg $$13 = $$1.fo() == bhd.a ? $$4.fm() : $$4.fm().e();
+               if ($$12.z() && $$12.l() != czg.a) {
+                  this.a($$0, $$7, $$12, $$1.f(0.0F), $$13);
+               }
 
-   public int f() {
-      return this.g;
-   }
+               apf $$15;
+               if ($$12.b() instanceof cth $$14) {
+                  $$15 = $$14.c();
+               } else {
+                  $$15 = apg.cl;
+               }
 
-   public chl.f g() {
-      return this.f;
-   }
-
-   public boolean h() {
-      return !this.j.isEmpty();
-   }
-
-   public boolean i() {
-      return this.h != chl.h.a || this.h();
-   }
-
-   public boolean j() {
-      return this.e;
-   }
-
-   public chl.h k() {
-      return this.h;
-   }
-
-   public void a(chl.d $$0) {
-      chl.c $$1 = new chl.c(this, $$0.a);
-      aev<chl> $$2 = jb.ao.c(this).orElseThrow(() -> new IllegalStateException("Unregistered creative tab: " + this));
-      this.n.accept($$0, $$1);
-      this.j = $$1.a;
-      this.k = $$1.b;
-      this.n();
-   }
-
-   public Collection<cjf> l() {
-      return this.j;
-   }
-
-   public Collection<cjf> m() {
-      return this.k;
-   }
-
-   public boolean a(cjf $$0) {
-      return this.k.contains($$0);
-   }
-
-   public void a(Consumer<List<cjf>> $$0) {
-      this.l = $$0;
-   }
-
-   public void n() {
-      if (this.l != null) {
-         this.l.accept(Lists.newArrayList(this.k));
-      }
-   }
-
-   public static class a {
-      private static final chl.b a = ($$0, $$1) -> {
-      };
-      private final chl.f b;
-      private final int c;
-      private tl d = tl.h();
-      private Supplier<cjf> e = () -> cjf.b;
-      private chl.b f = a;
-      private boolean g = true;
-      private boolean h = true;
-      private boolean i = false;
-      private chl.h j = chl.h.a;
-      private String k = "items.png";
-
-      public a(chl.f $$0, int $$1) {
-         this.b = $$0;
-         this.c = $$1;
-      }
-
-      public chl.a a(tl $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      public chl.a a(Supplier<cjf> $$0) {
-         this.e = $$0;
-         return this;
-      }
-
-      public chl.a a(chl.b $$0) {
-         this.f = $$0;
-         return this;
-      }
-
-      public chl.a a() {
-         this.i = true;
-         return this;
-      }
-
-      public chl.a b() {
-         this.h = false;
-         return this;
-      }
-
-      public chl.a c() {
-         this.g = false;
-         return this;
-      }
-
-      protected chl.a a(chl.h $$0) {
-         this.j = $$0;
-         return this;
-      }
-
-      public chl.a a(String $$0) {
-         this.k = $$0;
-         return this;
-      }
-
-      public chl d() {
-         if ((this.j == chl.h.c || this.j == chl.h.b) && this.f != a) {
-            throw new IllegalStateException("Special tabs can't have display items");
-         } else {
-            chl $$0 = new chl(this.b, this.c, this.j, this.d, this.e, this.f);
-            $$0.e = this.i;
-            $$0.d = this.h;
-            $$0.c = this.g;
-            $$0.b = this.k;
-            return $$0;
-         }
-      }
-   }
-
-   @FunctionalInterface
-   public interface b {
-      void accept(chl.d var1, chl.e var2);
-   }
-
-   static class c implements chl.e {
-      public final Collection<cjf> a = cjg.a();
-      public final Set<cjf> b = cjg.a();
-      private final chl c;
-      private final cec d;
-
-      public c(chl $$0, cec $$1) {
-         this.c = $$0;
-         this.d = $$1;
-      }
-
-      @Override
-      public void a(cjf $$0, chl.g $$1) {
-         if ($$0.L() != 1) {
-            throw new IllegalArgumentException("Stack size must be exactly 1");
-         } else {
-            boolean $$2 = this.a.contains($$0) && $$1 != chl.g.c;
-            if ($$2) {
-               throw new IllegalStateException(
-                  "Accidentally adding the same item stack twice " + $$0.J().getString() + " to a Creative Mode Tab: " + this.c.a().getString()
-               );
-            } else {
-               if ($$0.d().a(this.d)) {
-                  switch ($$1) {
-                     case a:
-                        this.a.add($$0);
-                        this.b.add($$0);
-                        break;
-                     case b:
-                        this.a.add($$0);
-                        break;
-                     case c:
-                        this.b.add($$0);
+               $$0.a($$4, $$11, $$15, aph.e);
+               if (!$$0.w_() && $$0.c_($$11) instanceof ddd $$17) {
+                  boolean $$18 = $$17.a($$0.V(), $$4, $$7.b());
+                  if ($$18) {
+                     bjb $$19 = $$2.equals($$4.c(bjb.b)) ? bjb.b : bjb.a;
+                     $$2.a(1, $$1, $$1x -> $$1x.d($$19));
                   }
                }
             }
+
+            return;
          }
+
+         $$1.fs();
+      } else {
+         $$1.fs();
       }
    }
 
-   public static record d(cec a, boolean b, hg.b c) {
+   private ehf a(bjm $$0) {
+      return cct.a($$0, $$0x -> !$$0x.M_() && $$0x.br(), c);
+   }
 
-      public boolean a(cec $$0, boolean $$1, hg.b $$2) {
-         return !this.a.equals($$0) || this.b != $$1 || this.c != $$2;
+   private void a(cqb $$0, ehd $$1, dfd $$2, ehh $$3, bjg $$4) {
+      double $$5 = 3.0;
+      int $$6 = $$4 == bjg.b ? 1 : -1;
+      int $$7 = $$0.D_().b(7, 12);
+      in $$8 = new in(iv.c, $$2);
+      ha $$9 = $$1.b();
+      chl.a $$10 = chl.a.a($$3, $$9);
+      ehh $$11 = $$1.e();
+
+      for (int $$12 = 0; $$12 < $$7; $$12++) {
+         $$0.a(
+            $$8,
+            $$11.c - (double)($$9 == ha.e ? 1.0E-6F : 0.0F),
+            $$11.d,
+            $$11.e - (double)($$9 == ha.c ? 1.0E-6F : 0.0F),
+            $$10.a() * (double)$$6 * 3.0 * $$0.D_().j(),
+            0.0,
+            $$10.c() * (double)$$6 * 3.0 * $$0.D_().j()
+         );
       }
    }
 
-   public interface e {
-      void a(cjf var1, chl.g var2);
+   static record a(double a, double b, double c) {
+      private static final double d = 1.0;
+      private static final double e = 0.1;
 
-      default void a(cjf $$0) {
-         this.a($$0, chl.g.a);
+      public static chl.a a(ehh $$0, ha $$1) {
+         double $$2 = 0.0;
+
+         return switch ($$1) {
+            case a, b -> new chl.a($$0.c(), 0.0, -$$0.a());
+            case c -> new chl.a(1.0, 0.0, -0.1);
+            case d -> new chl.a(-1.0, 0.0, 0.1);
+            case e -> new chl.a(-0.1, 0.0, -1.0);
+            case f -> new chl.a(0.1, 0.0, 1.0);
+         };
       }
-
-      default void a(cpu $$0, chl.g $$1) {
-         this.a(new cjf($$0), $$1);
-      }
-
-      default void a(cpu $$0) {
-         this.a(new cjf($$0), chl.g.a);
-      }
-
-      default void a(Collection<cjf> $$0, chl.g $$1) {
-         $$0.forEach($$1x -> this.a($$1x, $$1));
-      }
-
-      default void a(Collection<cjf> $$0) {
-         this.a($$0, chl.g.a);
-      }
-   }
-
-   public static enum f {
-      a,
-      b;
-   }
-
-   protected static enum g {
-      a,
-      b,
-      c;
-   }
-
-   public static enum h {
-      a,
-      b,
-      c,
-      d;
    }
 }

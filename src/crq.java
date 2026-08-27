@@ -1,91 +1,59 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
 
-public abstract class crq extends csi {
-   public static final dgd a = cwo.aC;
-   public static final dga b = dfz.r;
+public class crq extends crd {
+   public static final Codec<crq> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(aex.d(crg.ah), aex.d(crg.ai), aex.d(crg.aj), aex.d(crg.ak), aex.d(crg.al)).apply($$0, $$0.stable(crq::new))
+   );
+   private final he<cqz> c;
+   private final he<cqz> d;
+   private final he<cqz> e;
+   private final he<cqz> f;
+   private final he<cqz> g;
 
-   protected crq(dfi.d $$0) {
-      super($$0);
-      this.k(this.C.b().a(a, ha.c).a(b, Boolean.valueOf(false)));
+   public static crq a(hf<cqz> $$0) {
+      return new crq($$0.b(crg.ah), $$0.b(crg.ai), $$0.b(crg.aj), $$0.b(crg.ak), $$0.b(crg.al));
+   }
+
+   private crq(he<cqz> $$0, he<cqz> $$1, he<cqz> $$2, he<cqz> $$3, he<cqz> $$4) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
    }
 
    @Override
-   public bgy a(dfj $$0, cpv $$1, gw $$2, cbu $$3, bgx $$4, ehj $$5) {
-      if ($$1.B) {
-         return bgy.a;
+   protected Stream<he<cqz>> b() {
+      return Stream.of(this.c, this.d, this.e, this.f, this.g);
+   }
+
+   @Override
+   protected Codec<? extends crd> a() {
+      return b;
+   }
+
+   @Override
+   public he<cqz> getNoiseBiome(int $$0, int $$1, int $$2, cri.f $$3) {
+      int $$4 = hp.c($$0);
+      int $$5 = hp.c($$1);
+      int $$6 = hp.c($$2);
+      int $$7 = hw.a($$4);
+      int $$8 = hw.a($$6);
+      if ((long)$$7 * (long)$$7 + (long)$$8 * (long)$$8 <= 4096L) {
+         return this.c;
       } else {
-         this.a($$1, $$2, $$3);
-         return bgy.b;
-      }
-   }
-
-   protected abstract void a(cpv var1, gw var2, cbu var3);
-
-   @Override
-   public dfj a(cln $$0) {
-      return this.n().a(a, $$0.g().g());
-   }
-
-   @Override
-   public void a(cpv $$0, gw $$1, dfj $$2, bjg $$3, cjf $$4) {
-      if ($$4.A()) {
-         dcv $$5 = $$0.c_($$1);
-         if ($$5 instanceof dck) {
-            ((dck)$$5).a($$4.y());
-         }
-      }
-   }
-
-   @Override
-   public void a(dfj $$0, cpv $$1, gw $$2, dfj $$3, boolean $$4) {
-      if (!$$0.a($$3.b())) {
-         dcv $$5 = $$1.c_($$2);
-         if ($$5 instanceof dck) {
-            if ($$1 instanceof akq) {
-               bgu.a($$1, $$2, (dck)$$5);
-               ((dck)$$5).a((akq)$$1, ehn.b($$2));
-            }
-
-            super.a($$0, $$1, $$2, $$3, $$4);
-            $$1.c($$2, this);
+         int $$9 = (hw.a($$4) * 2 + 1) * 8;
+         int $$10 = (hw.a($$6) * 2 + 1) * 8;
+         double $$11 = $$3.e().a(new dkf.e($$9, $$5, $$10));
+         if ($$11 > 0.25) {
+            return this.d;
+         } else if ($$11 >= -0.0625) {
+            return this.e;
          } else {
-            super.a($$0, $$1, $$2, $$3, $$4);
+            return $$11 < -0.21875 ? this.f : this.g;
          }
       }
-   }
-
-   @Override
-   public boolean d_(dfj $$0) {
-      return true;
-   }
-
-   @Override
-   public int a(dfj $$0, cpv $$1, gw $$2) {
-      return cel.a($$1.c_($$2));
-   }
-
-   @Override
-   public cza b_(dfj $$0) {
-      return cza.c;
-   }
-
-   @Override
-   public dfj a(dfj $$0, czh $$1) {
-      return $$0.a(a, $$1.a($$0.c(a)));
-   }
-
-   @Override
-   public dfj a(dfj $$0, cxq $$1) {
-      return $$0.a($$1.a($$0.c(a)));
-   }
-
-   @Override
-   protected void a(dfk.a<csv, dfj> $$0) {
-      $$0.a(a, b);
-   }
-
-   @Nullable
-   protected static <T extends dcv> dcw<T> a(cpv $$0, dcx<T> $$1, dcx<? extends dck> $$2) {
-      return $$0.B ? null : a($$1, $$2, dck::a);
    }
 }

@@ -1,12 +1,11 @@
-public class fux extends fua<bzl> {
-   private static final aew a = new aew("textures/entity/illager/pillager.png");
+public class fux extends fuj<bzt, fgl> {
+   private static final aez a = new aez("textures/entity/illager/ravager.png");
 
-   public fux(fth.a $$0) {
-      super($$0, new ffr<>($$0.a(fib.aL)), 0.5F);
-      this.a(new fxi<>(this, $$0.d()));
+   public fux(ftd.a $$0) {
+      super($$0, new fgl($$0.a(fhw.aZ)), 1.1F);
    }
 
-   public aew a(bzl $$0) {
+   public aez a(bzt $$0) {
       return a;
    }
 }

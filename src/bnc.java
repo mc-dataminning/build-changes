@@ -1,42 +1,56 @@
 import com.mojang.datafixers.kinds.App;
 import java.util.Optional;
 import java.util.function.Function;
+import java.util.function.Predicate;
 
+@Deprecated
 public class bnc {
-   public static bmh<cbh> a(bsh<hd> $$0, float $$1, int $$2, int $$3, int $$4) {
-      return boj.a(
-         (Function<boj.b<cbh>, ? extends App<boj.c<cbh>, bom<cbh>>>)($$5 -> $$5.group($$5.a(bsh.E), $$5.c(bsh.m), $$5.b($$0))
-               .apply($$5, ($$6, $$7, $$8) -> ($$9, $$10, $$11) -> {
-                     hd $$12 = $$5.b($$8);
-                     Optional<Long> $$13 = $$5.a($$6);
-                     if ($$12.a() == $$9.ac() && (!$$13.isPresent() || $$9.V() - $$13.get() <= (long)$$4)) {
-                        if ($$12.b().k($$10.dl()) > $$3) {
-                           ehn $$14 = null;
-                           int $$15 = 0;
-                           int $$16 = 1000;
+   public static ble<bjm> a(float $$0, bgp $$1) {
+      return a($$0, $$1, $$0x -> true);
+   }
 
-                           while ($$14 == null || gw.a($$14).k($$10.dl()) > $$3) {
-                              $$14 = btw.a($$10, 15, 7, ehn.c($$12.b()), (float) (Math.PI / 2));
-                              if (++$$15 == 1000) {
-                                 $$10.a($$0);
-                                 $$8.b();
-                                 $$6.a($$11);
-                                 return true;
-                              }
-                           }
+   public static ble<bjm> a(bja<?> $$0, float $$1, bgp $$2) {
+      return a($$1, $$2, $$1x -> $$0.equals($$1x.ag()));
+   }
 
-                           $$7.a(new bsk($$14, $$1, $$2));
-                        } else if ($$12.b().k($$10.dl()) > $$2) {
-                           $$7.a(new bsk($$12.b(), $$1, $$2));
-                        }
+   private static ble<bjm> a(float $$0, bgp $$1, Predicate<bjm> $$2) {
+      float $$3 = $$0 * $$0;
+      bnc.a $$4 = new bnc.a($$1);
+      return bop.a(
+         (Function<bop.b<bjm>, ? extends App<bop.c<bjm>, bos<bjm>>>)($$3x -> $$3x.group($$3x.c(bsn.n), $$3x.b(bsn.h))
+               .apply($$3x, ($$4x, $$5) -> ($$6, $$7, $$8) -> {
+                     Optional<bjm> $$9 = $$3x.<bsp>b($$5).a($$2.and($$2xxxx -> $$2xxxx.f((biw)$$7) <= (double)$$3));
+                     if ($$9.isEmpty()) {
+                        return false;
+                     } else if (!$$4.a($$6.z)) {
+                        return false;
                      } else {
-                        $$10.a($$0);
-                        $$8.b();
-                        $$6.a($$11);
+                        $$4x.a(new blo($$9.get(), true));
+                        return true;
                      }
-
-                     return true;
                   }))
       );
+   }
+
+   public static final class a {
+      private final bgp a;
+      private int b;
+
+      public a(bgp $$0) {
+         if ($$0.a() <= 1) {
+            throw new IllegalArgumentException();
+         } else {
+            this.a = $$0;
+         }
+      }
+
+      public boolean a(ash $$0) {
+         if (this.b == 0) {
+            this.b = this.a.a($$0) - 1;
+            return false;
+         } else {
+            return --this.b == 0;
+         }
+      }
    }
 }

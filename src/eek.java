@@ -3,81 +3,127 @@ import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.UnaryOperator;
+import javax.annotation.Nullable;
 
-public class eek extends eec {
+public class eek extends edw {
    public static final Codec<eek> a = RecordCodecBuilder.create(
       $$0 -> a($$0)
-            .and($$0.group(jb.l.r().fieldOf("type").forGetter($$0x -> $$0x.b), edh.a.listOf().fieldOf("entries").forGetter($$0x -> $$0x.c)))
+            .and(
+               $$0.group(
+                  Codec.BOOL.fieldOf("replace").orElse(false).forGetter($$0x -> $$0x.b),
+                  tn.a.listOf().fieldOf("lore").forGetter($$0x -> $$0x.c),
+                  arj.a(eck.b.e, "entity").forGetter($$0x -> $$0x.d)
+               )
+            )
             .apply($$0, eek::new)
    );
-   private final he<dcx<?>> b;
-   private final List<edj> c;
+   private final boolean b;
+   private final List<tl> c;
+   private final Optional<eck.b> d;
 
-   eek(List<efp> $$0, he<dcx<?>> $$1, List<edj> $$2) {
+   public eek(List<efj> $$0, boolean $$1, List<tl> $$2, Optional<eck.b> $$3) {
       super($$0);
       this.b = $$1;
       this.c = List.copyOf($$2);
+      this.d = $$3;
    }
 
    @Override
-   public eee b() {
-      return eef.p;
+   public edy b() {
+      return edz.u;
    }
 
    @Override
-   public cjf a(cjf $$0, ecq $$1) {
-      if ($$0.b()) {
-         return $$0;
-      } else {
-         hn<cjf> $$2 = hn.a();
-         this.c.forEach($$2x -> $$2x.expand($$1, $$2xx -> $$2xx.a(ecy.a($$1.d(), $$2::add), $$1)));
-         qw $$3 = new qw();
-         bgs.a($$3, $$2);
-         qw $$4 = cgy.a($$0);
-         if ($$4 == null) {
-            $$4 = $$3;
-         } else {
-            $$4.a($$3);
+   public Set<ees<?>> a() {
+      return this.d.<Set<ees<?>>>map($$0 -> Set.of($$0.a())).orElseGet(Set::of);
+   }
+
+   @Override
+   public cjl a(cjl $$0, eck $$1) {
+      rc $$2 = this.a($$0, !this.c.isEmpty());
+      if ($$2 != null) {
+         if (this.b) {
+            $$2.clear();
          }
 
-         cgy.a($$0, this.b.a(), $$4);
-         return $$0;
+         UnaryOperator<tl> $$3 = eel.a($$1, this.d.orElse(null));
+         this.c.stream().map($$3).map(tl.a::a).map(ro::a).forEach($$2::add);
+      }
+
+      return $$0;
+   }
+
+   @Nullable
+   private rc a(cjl $$0, boolean $$1) {
+      qw $$2;
+      if ($$0.u()) {
+         $$2 = $$0.v();
+      } else {
+         if (!$$1) {
+            return null;
+         }
+
+         $$2 = new qw();
+         $$0.c($$2);
+      }
+
+      qw $$5;
+      if ($$2.b("display", 10)) {
+         $$5 = $$2.p("display");
+      } else {
+         if (!$$1) {
+            return null;
+         }
+
+         $$5 = new qw();
+         $$2.a("display", $$5);
+      }
+
+      if ($$5.b("Lore", 9)) {
+         return $$5.c("Lore", 8);
+      } else if ($$1) {
+         rc $$8 = new rc();
+         $$5.a("Lore", $$8);
+         return $$8;
+      } else {
+         return null;
       }
    }
 
-   @Override
-   public void a(ecz $$0) {
-      super.a($$0);
+   public static eek.a c() {
+      return new eek.a();
+   }
 
-      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
-         this.c.get($$1).a($$0.b(".entry[" + $$1 + "]"));
+   public static class a extends edw.a<eek.a> {
+      private boolean a;
+      private Optional<eck.b> b = Optional.empty();
+      private final Builder<tl> c = ImmutableList.builder();
+
+      public eek.a a(boolean $$0) {
+         this.a = $$0;
+         return this;
       }
-   }
 
-   public static eek.a a(dcx<?> $$0) {
-      return new eek.a($$0);
-   }
+      public eek.a a(eck.b $$0) {
+         this.b = Optional.of($$0);
+         return this;
+      }
 
-   public static class a extends eec.a<eek.a> {
-      private final Builder<edj> a = ImmutableList.builder();
-      private final dcx<?> b;
-
-      public a(dcx<?> $$0) {
-         this.b = $$0;
+      public eek.a a(tl $$0) {
+         this.c.add($$0);
+         return this;
       }
 
       protected eek.a a() {
          return this;
       }
 
-      public eek.a a(edj.a<?> $$0) {
-         this.a.add($$0.b());
-         return this;
-      }
-
       @Override
-      public eed b() {
-         return new eek(this.g(), this.b.a(), this.a.build());
+      public edx b() {
+         return new eek(this.g(), this.a, this.c.build(), this.b);
       }
    }
 }

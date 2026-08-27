@@ -1,46 +1,38 @@
-import it.unimi.dsi.fastutil.doubles.DoubleArrayList;
+import com.google.common.math.IntMath;
 import it.unimi.dsi.fastutil.doubles.DoubleList;
-import java.util.Arrays;
 
-public class ehp extends eig {
-   private final DoubleList b;
-   private final DoubleList c;
-   private final DoubleList d;
+public final class ehp implements eht {
+   private final ehn a;
+   private final int b;
+   private final int c;
 
-   protected ehp(ehw $$0, double[] $$1, double[] $$2, double[] $$3) {
-      this(
-         $$0,
-         DoubleArrayList.wrap(Arrays.copyOf($$1, $$0.b() + 1)),
-         DoubleArrayList.wrap(Arrays.copyOf($$2, $$0.c() + 1)),
-         DoubleArrayList.wrap(Arrays.copyOf($$3, $$0.d() + 1))
-      );
-   }
-
-   ehp(ehw $$0, DoubleList $$1, DoubleList $$2, DoubleList $$3) {
-      super($$0);
-      int $$4 = $$0.b() + 1;
-      int $$5 = $$0.c() + 1;
-      int $$6 = $$0.d() + 1;
-      if ($$4 == $$1.size() && $$5 == $$2.size() && $$6 == $$3.size()) {
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-      } else {
-         throw (IllegalArgumentException)ac.b(new IllegalArgumentException("Lengths of point arrays must be consistent with the size of the VoxelShape."));
-      }
+   ehp(int $$0, int $$1) {
+      this.a = new ehn((int)ehx.a($$0, $$1));
+      int $$2 = IntMath.gcd($$0, $$1);
+      this.b = $$0 / $$2;
+      this.c = $$1 / $$2;
    }
 
    @Override
-   protected DoubleList a(ha.a $$0) {
-      switch ($$0) {
-         case a:
-            return this.b;
-         case b:
-            return this.c;
-         case c:
-            return this.d;
-         default:
-            throw new IllegalArgumentException();
+   public boolean a(eht.a $$0) {
+      int $$1 = this.a.size() - 1;
+
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         if (!$$0.merge($$2 / this.c, $$2 / this.b, $$2)) {
+            return false;
+         }
       }
+
+      return true;
+   }
+
+   @Override
+   public int size() {
+      return this.a.size();
+   }
+
+   @Override
+   public DoubleList a() {
+      return this.a;
    }
 }

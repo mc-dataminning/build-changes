@@ -1,28 +1,49 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class drl extends drh {
-   public static final Codec<drl> c = RecordCodecBuilder.create($$0 -> a($$0).apply($$0, drl::new));
+public class drl extends drg {
+   public static final Codec<drl> a = RecordCodecBuilder.create(
+      $$0 -> b($$0)
+            .and(
+               $$0.group(
+                  bgj.b(1, 512).fieldOf("foliage_height").forGetter($$0x -> $$0x.b),
+                  Codec.intRange(0, 256).fieldOf("leaf_placement_attempts").forGetter($$0x -> $$0x.c)
+               )
+            )
+            .apply($$0, drl::new)
+   );
+   private final bgj b;
+   private final int c;
 
-   public drl(bgd $$0, bgd $$1, int $$2) {
-      super($$0, $$1, $$2);
+   public drl(bgj $$0, bgj $$1, bgj $$2, int $$3) {
+      super($$0, $$1);
+      this.b = $$2;
+      this.c = $$3;
    }
 
    @Override
-   protected drn<?> a() {
-      return drn.f;
+   protected drh<?> a() {
+      return drh.j;
    }
 
    @Override
-   protected void a(cqb $$0, drm.b $$1, asc $$2, dqw $$3, int $$4, drm.a $$5, int $$6, int $$7, int $$8) {
-      for (int $$9 = $$8; $$9 >= $$8 - $$6; $$9--) {
-         int $$10 = $$7 + ($$9 != $$8 && $$9 != $$8 - $$6 ? 1 : 0);
-         this.a($$0, $$1, $$2, $$3, $$5.a(), $$10, $$9, $$5.c());
+   protected void a(cqh $$0, drg.b $$1, ash $$2, dqq $$3, int $$4, drg.a $$5, int $$6, int $$7, int $$8) {
+      gw $$9 = $$5.a();
+      gw.a $$10 = $$9.j();
+
+      for (int $$11 = 0; $$11 < this.c; $$11++) {
+         $$10.a($$9, $$2.a($$7) - $$2.a($$7), $$2.a($$6) - $$2.a($$6), $$2.a($$7) - $$2.a($$7));
+         a($$0, $$1, $$2, $$3, $$10);
       }
    }
 
    @Override
-   protected boolean a(asc $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return arw.k((float)$$1 + 0.5F) + arw.k((float)$$3 + 0.5F) > (float)($$4 * $$4);
+   public int a(ash $$0, int $$1, dqq $$2) {
+      return this.b.a($$0);
+   }
+
+   @Override
+   protected boolean a(ash $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return false;
    }
 }

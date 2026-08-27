@@ -8,16 +8,16 @@ public record th(ti j, ti k) {
       $$0 -> $$0.group(ti.a.fieldOf("chat").forGetter(th::a), ti.a.fieldOf("narration").forGetter(th::b)).apply($$0, th::new)
    );
    public static final ti b = ti.a("chat.type.text");
-   public static final aev<th> c = a("chat");
-   public static final aev<th> d = a("say_command");
-   public static final aev<th> e = a("msg_command_incoming");
-   public static final aev<th> f = a("msg_command_outgoing");
-   public static final aev<th> g = a("team_msg_command_incoming");
-   public static final aev<th> h = a("team_msg_command_outgoing");
-   public static final aev<th> i = a("emote_command");
+   public static final aey<th> c = a("chat");
+   public static final aey<th> d = a("say_command");
+   public static final aey<th> e = a("msg_command_incoming");
+   public static final aey<th> f = a("msg_command_outgoing");
+   public static final aey<th> g = a("team_msg_command_incoming");
+   public static final aey<th> h = a("team_msg_command_outgoing");
+   public static final aey<th> i = a("emote_command");
 
-   private static aev<th> a(String $$0) {
-      return aev.a(jc.aq, new aew($$0));
+   private static aey<th> a(String $$0) {
+      return aey.a(jc.ar, new aez($$0));
    }
 
    public static void a(nr<th> $$0) {
@@ -30,16 +30,16 @@ public record th(ti j, ti k) {
       $$0.a(i, new th(ti.a("chat.type.emote"), ti.a("chat.type.emote")));
    }
 
-   public static th.a a(aev<th> $$0, biq $$1) {
+   public static th.a a(aey<th> $$0, biw $$1) {
       return a($$0, $$1.dL().G_(), $$1.N_());
    }
 
-   public static th.a a(aev<th> $$0, dt $$1) {
+   public static th.a a(aey<th> $$0, dt $$1) {
       return a($$0, $$1.v(), $$1.b());
    }
 
-   public static th.a a(aev<th> $$0, hr $$1, tl $$2) {
-      hq<th> $$3 = $$1.d(jc.aq);
+   public static th.a a(aey<th> $$0, hr $$1, tl $$2) {
+      hq<th> $$3 = $$1.d(jc.ar);
       return $$3.e($$0).a($$2);
    }
 
@@ -73,14 +73,14 @@ public record th(ti j, ti k) {
       }
 
       public th.b a(hr $$0) {
-         hq<th> $$1 = $$0.d(jc.aq);
+         hq<th> $$1 = $$0.d(jc.ar);
          return new th.b($$1.a(this.a), this.b, this.c);
       }
    }
 
    public static record b(int a, tl b, @Nullable tl c) {
       public b(so $$0) {
-         this($$0.m(), $$0.l(), $$0.c(so::l));
+         this($$0.n(), $$0.m(), $$0.c(so::m));
       }
 
       public void a(so $$0) {
@@ -90,7 +90,7 @@ public record th(ti j, ti k) {
       }
 
       public Optional<th.a> a(hr $$0) {
-         hq<th> $$1 = $$0.d(jc.aq);
+         hq<th> $$1 = $$0.d(jc.ar);
          th $$2 = $$1.a(this.a);
          return Optional.ofNullable($$2).map($$0x -> new th.a($$0x, this.b, this.c));
       }

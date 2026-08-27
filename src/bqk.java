@@ -1,18 +1,13 @@
-public class bqk extends bqj {
-   private final cbc h;
+import java.util.EnumSet;
 
-   public bqk(cbc $$0) {
-      super($$0, cbu.class, 8.0F);
-      this.h = $$0;
+public class bqk extends bqp {
+   public bqk(bjo $$0, Class<? extends bjm> $$1, float $$2) {
+      super($$0, $$1, $$2);
+      this.a(EnumSet.of(bqh.a.b, bqh.a.a));
    }
 
-   @Override
-   public boolean a() {
-      if (this.h.ge()) {
-         this.c = this.h.gd();
-         return true;
-      } else {
-         return false;
-      }
+   public bqk(bjo $$0, Class<? extends bjm> $$1, float $$2, float $$3) {
+      super($$0, $$1, $$2, $$3);
+      this.a(EnumSet.of(bqh.a.b, bqh.a.a));
    }
 }

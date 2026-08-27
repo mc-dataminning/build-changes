@@ -1,10 +1,39 @@
-import java.util.stream.Stream;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class duo extends dup {
-   @Override
-   public final Stream<gw> a_(dun $$0, asc $$1, gw $$2) {
-      return this.a($$0, $$1, $$2) ? Stream.of($$2) : Stream.of();
+public class duo extends dui {
+   public static final Codec<duo> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dkm.a.g.fieldOf("heightmap").forGetter($$0x -> $$0x.c),
+               Codec.INT.optionalFieldOf("min_inclusive", Integer.MIN_VALUE).forGetter($$0x -> $$0x.d),
+               Codec.INT.optionalFieldOf("max_inclusive", Integer.MAX_VALUE).forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, duo::new)
+   );
+   private final dkm.a c;
+   private final int d;
+   private final int e;
+
+   private duo(dkm.a $$0, int $$1, int $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
-   protected abstract boolean a(dun var1, asc var2, gw var3);
+   public static duo a(dkm.a $$0, int $$1, int $$2) {
+      return new duo($$0, $$1, $$2);
+   }
+
+   @Override
+   protected boolean a(duh $$0, ash $$1, gw $$2) {
+      long $$3 = (long)$$0.a(this.c, $$2.u(), $$2.w());
+      long $$4 = $$3 + (long)this.d;
+      long $$5 = $$3 + (long)this.e;
+      return $$4 <= (long)$$2.v() && (long)$$2.v() <= $$5;
+   }
+
+   @Override
+   public duk<?> b() {
+      return duk.c;
+   }
 }

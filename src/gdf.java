@@ -1,101 +1,87 @@
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.net.DatagramPacket;
-import java.net.InetAddress;
-import java.net.MulticastSocket;
-import java.net.SocketTimeoutException;
-import java.nio.charset.StandardCharsets;
-import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
+import com.google.common.collect.Sets;
+import java.util.Iterator;
+import java.util.Objects;
+import java.util.Set;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.function.Consumer;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
 public class gdf {
-   static final AtomicInteger a = new AtomicInteger(0);
-   static final Logger b = LogUtils.getLogger();
+   private final Set<gdf.a> a = Sets.newIdentityHashSet();
+   final ejf b;
+   final Executor c;
 
-   public static class a extends Thread {
-      private final gdf.b a;
-      private final InetAddress b;
-      private final MulticastSocket c;
-
-      public a(gdf.b $$0) throws IOException {
-         super("LanServerDetector #" + gdf.a.incrementAndGet());
-         this.a = $$0;
-         this.setDaemon(true);
-         this.setUncaughtExceptionHandler(new r(gdf.b));
-         this.c = new MulticastSocket(4445);
-         this.b = InetAddress.getByName("224.0.2.60");
-         this.c.setSoTimeout(5000);
-         this.c.joinGroup(this.b);
-      }
-
-      @Override
-      public void run() {
-         byte[] $$0 = new byte[1024];
-
-         while (!this.isInterrupted()) {
-            DatagramPacket $$1 = new DatagramPacket($$0, $$0.length);
-
-            try {
-               this.c.receive($$1);
-            } catch (SocketTimeoutException var5) {
-               continue;
-            } catch (IOException var6) {
-               gdf.b.error("Couldn't ping server", var6);
-               break;
-            }
-
-            String $$4 = new String($$1.getData(), $$1.getOffset(), $$1.getLength(), StandardCharsets.UTF_8);
-            gdf.b.debug("{}: {}", $$1.getAddress(), $$4);
-            this.a.a($$4, $$1.getAddress());
-         }
-
-         try {
-            this.c.leaveGroup(this.b);
-         } catch (IOException var4) {
-         }
-
-         this.c.close();
-      }
+   public gdf(ejf $$0, Executor $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public static class b {
-      private final List<gde> a = Lists.newArrayList();
-      private boolean b;
-
-      @Nullable
-      public synchronized List<gde> a() {
-         if (this.b) {
-            List<gde> $$0 = List.copyOf(this.a);
-            this.b = false;
-            return $$0;
+   public CompletableFuture<gdf.a> a(ejf.c $$0) {
+      CompletableFuture<gdf.a> $$1 = new CompletableFuture<>();
+      this.c.execute(() -> {
+         eje $$2 = this.b.a($$0);
+         if ($$2 != null) {
+            gdf.a $$3 = new gdf.a($$2);
+            this.a.add($$3);
+            $$1.complete($$3);
          } else {
-            return null;
+            $$1.complete(null);
          }
+      });
+      return $$1;
+   }
+
+   public void a(Consumer<Stream<eje>> $$0) {
+      this.c.execute(() -> $$0.accept(this.a.stream().map($$0xx -> $$0xx.b).filter(Objects::nonNull)));
+   }
+
+   public void a() {
+      this.c.execute(() -> {
+         Iterator<gdf.a> $$0 = this.a.iterator();
+
+         while ($$0.hasNext()) {
+            gdf.a $$1 = $$0.next();
+            $$1.b.j();
+            if ($$1.b.h()) {
+               $$1.b();
+               $$0.remove();
+            }
+         }
+      });
+   }
+
+   public void b() {
+      this.a.forEach(gdf.a::b);
+      this.a.clear();
+   }
+
+   public class a {
+      @Nullable
+      eje b;
+      private boolean c;
+
+      public boolean a() {
+         return this.c;
       }
 
-      public synchronized void a(String $$0, InetAddress $$1) {
-         String $$2 = gdg.a($$0);
-         String $$3 = gdg.b($$0);
-         if ($$3 != null) {
-            $$3 = $$1.getHostAddress() + ":" + $$3;
-            boolean $$4 = false;
+      public a(eje $$1) {
+         this.b = $$1;
+      }
 
-            for (gde $$5 : this.a) {
-               if ($$5.b().equals($$3)) {
-                  $$5.c();
-                  $$4 = true;
-                  break;
-               }
+      public void a(Consumer<eje> $$0) {
+         gdf.this.c.execute(() -> {
+            if (this.b != null) {
+               $$0.accept(this.b);
             }
+         });
+      }
 
-            if (!$$4) {
-               this.a.add(new gde($$2, $$3));
-               this.b = true;
-            }
-         }
+      public void b() {
+         this.c = true;
+         gdf.this.b.a(this.b);
+         this.b = null;
       }
    }
 }

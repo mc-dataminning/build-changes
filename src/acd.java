@@ -1,31 +1,40 @@
-public class acd implements vd<abc> {
-   private static final int a = 2;
-   private final boolean b;
+public class acd implements ve<abd> {
+   private final int a;
+   private final aez b;
+   private final boolean c;
 
-   public acd(cbr $$0) {
-      this.b = $$0.b;
+   public acd(int $$0, cmq<?> $$1, boolean $$2) {
+      this.a = $$0;
+      this.b = $$1.a();
+      this.c = $$2;
    }
 
    public acd(so $$0) {
-      byte $$1 = $$0.readByte();
-      this.b = ($$1 & 2) != 0;
+      this.a = $$0.readByte();
+      this.b = $$0.t();
+      this.c = $$0.readBoolean();
    }
 
    @Override
    public void a(so $$0) {
-      byte $$1 = 0;
-      if (this.b) {
-         $$1 = (byte)($$1 | 2);
-      }
-
-      $$0.k($$1);
+      $$0.k(this.a);
+      $$0.a(this.b);
+      $$0.a(this.c);
    }
 
-   public void a(abc $$0) {
+   public void a(abd $$0) {
       $$0.a(this);
    }
 
-   public boolean a() {
+   public int a() {
+      return this.a;
+   }
+
+   public aez d() {
       return this.b;
+   }
+
+   public boolean e() {
+      return this.c;
    }
 }

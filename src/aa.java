@@ -8,24 +8,24 @@ import javax.annotation.Nullable;
 
 public class aa {
    @Deprecated
-   public static final boolean a = false;
+   public static final boolean a = true;
    @Deprecated
-   public static final int b = 3578;
+   public static final int b = 3679;
    @Deprecated
    public static final String c = "main";
    @Deprecated
-   public static final String d = "1.20.2";
+   public static final String d = "23w40a";
    @Deprecated
    public static final int e = 764;
    @Deprecated
-   public static final int f = 153;
-   public static final int g = 3563;
+   public static final int f = 154;
+   public static final int g = 3678;
    private static final int bj = 30;
-   public static final boolean h = false;
+   public static final boolean h = true;
    @Deprecated
    public static final int i = 18;
    @Deprecated
-   public static final int j = 18;
+   public static final int j = 19;
    @Deprecated
    public static final int k = 1;
    public static final int l = 1;
@@ -178,17 +178,17 @@ public class aa {
    }
 
    public static int c() {
-      return 764;
+      return 1073741978;
    }
 
-   public static boolean a(cpc $$0) {
+   public static boolean a(cpi $$0) {
       int $$1 = $$0.d();
       int $$2 = $$0.e();
       return !aq ? false : $$1 > 8192 || $$1 < 0 || $$2 > 1024 || $$2 < 0;
    }
 
    public static void d() {
-      aU = ata.t;
+      aU = atg.t;
    }
 
    static {

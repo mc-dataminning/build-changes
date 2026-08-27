@@ -1,49 +1,76 @@
-public class ccr extends cca {
-   private int f = 200;
-
-   public ccr(biu<? extends ccr> $$0, cpv $$1) {
+public class ccr extends ccs {
+   public ccr(bja<? extends ccr> $$0, cqb $$1) {
       super($$0, $$1);
    }
 
-   public ccr(cpv $$0, bjg $$1) {
-      super(biu.aR, $$1, $$0);
-   }
-
-   public ccr(cpv $$0, double $$1, double $$2, double $$3) {
-      super(biu.aR, $$1, $$2, $$3, $$0);
+   public ccr(cqb $$0, bwz $$1) {
+      this(bja.ak, $$0);
+      this.b($$1);
+      this.e(
+         $$1.dq() - (double)($$1.df() + 1.0F) * 0.5 * (double)asb.a($$1.aU * (float) (Math.PI / 180.0)),
+         $$1.du() - 0.1F,
+         $$1.dw() + (double)($$1.df() + 1.0F) * 0.5 * (double)asb.b($$1.aU * (float) (Math.PI / 180.0))
+      );
    }
 
    @Override
    public void l() {
       super.l();
-      if (this.dL().B && !this.b) {
-         this.dL().a(iv.N, this.dq(), this.ds(), this.dw(), 0.0, 0.0, 0.0);
+      ehh $$0 = this.do();
+      ehf $$1 = cct.a(this, this::a);
+      this.a($$1);
+      double $$2 = this.dq() + $$0.c;
+      double $$3 = this.ds() + $$0.d;
+      double $$4 = this.dw() + $$0.e;
+      this.H();
+      float $$5 = 0.99F;
+      float $$6 = 0.06F;
+      if (this.dL().a(this.cG()).noneMatch(dfc.a::i)) {
+         this.ak();
+      } else if (this.ba()) {
+         this.ak();
+      } else {
+         this.f($$0.a(0.99F));
+         if (!this.aT()) {
+            this.f(this.do().b(0.0, -0.06F, 0.0));
+         }
+
+         this.e($$2, $$3, $$4);
       }
    }
 
    @Override
-   protected cjf w() {
-      return new cjf(cji.uv);
-   }
-
-   @Override
-   protected void a(bjg $$0) {
+   protected void a(ehe $$0) {
       super.a($$0);
-      bid $$1 = new bid(bif.x, this.f, 0);
-      $$0.b($$1, this.G());
-   }
-
-   @Override
-   public void a(qw $$0) {
-      super.a($$0);
-      if ($$0.e("Duration")) {
-         this.f = $$0.h("Duration");
+      if (this.v() instanceof bjm $$1) {
+         $$0.a().a(this.dM().a(this, $$1), 1.0F);
       }
    }
 
    @Override
-   public void b(qw $$0) {
-      super.b($$0);
-      $$0.a("Duration", this.f);
+   protected void a(ehd $$0) {
+      super.a($$0);
+      if (!this.dL().B) {
+         this.ak();
+      }
+   }
+
+   @Override
+   protected void a_() {
+   }
+
+   @Override
+   public void a(wy $$0) {
+      super.a($$0);
+      double $$1 = $$0.i();
+      double $$2 = $$0.j();
+      double $$3 = $$0.k();
+
+      for (int $$4 = 0; $$4 < 7; $$4++) {
+         double $$5 = 0.4 + 0.1 * (double)$$4;
+         this.dL().a(iv.ab, this.dq(), this.ds(), this.dw(), $$1 * $$5, $$2, $$3 * $$5);
+      }
+
+      this.o($$1, $$2, $$3);
    }
 }

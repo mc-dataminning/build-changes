@@ -1,81 +1,70 @@
-import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.HashMultimap;
 import com.google.common.collect.ImmutableMultimap;
+import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Multimap;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonElement;
-import com.mojang.logging.LogUtils;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
+import java.util.Set;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class ect implements ann, ecu {
-   private static final Logger b = LogUtils.getLogger();
-   private static final Gson c = new GsonBuilder().create();
-   public static final ecs<ecy> a = new ecs<>(ecv.c, eco.a);
-   private Map<ecs<?>, ?> d = Map.of();
-   private Multimap<ecv<?>, aew> e = ImmutableMultimap.of();
+public class ect {
+   private final Multimap<String, String> a;
+   private final Supplier<String> b;
+   private final eet c;
+   private final eco d;
+   private final Set<ecm<?>> e;
+   @Nullable
+   private String f;
 
-   @Override
-   public final CompletableFuture<Void> a(ann.a $$0, ant $$1, bdp $$2, bdp $$3, Executor $$4, Executor $$5) {
-      Map<ecv<?>, Map<aew, ?>> $$6 = new HashMap<>();
-      CompletableFuture<?>[] $$7 = ecv.b().map($$3x -> a($$3x, $$1, $$4, $$6)).toArray(CompletableFuture[]::new);
-      return CompletableFuture.allOf($$7).thenCompose($$0::a).thenAcceptAsync($$1x -> this.a($$6), $$5);
+   public ect(eet $$0, eco $$1) {
+      this(HashMultimap.create(), () -> "", $$0, $$1, ImmutableSet.of());
    }
 
-   private static <T> CompletableFuture<?> a(ecv<T> $$0, ant $$1, Executor $$2, Map<ecv<?>, Map<aew, ?>> $$3) {
-      Map<aew, T> $$4 = new HashMap<>();
-      $$3.put($$0, $$4);
-      return CompletableFuture.runAsync(() -> {
-         Map<aew, JsonElement> $$3x = new HashMap<>();
-         anx.a($$1, $$0.a(), c, $$3x);
-         $$3x.forEach(($$2xx, $$3xx) -> $$0.a($$2xx, $$3xx).ifPresent($$2xxx -> $$4.put($$2xx, (T)$$2xxx)));
-      }, $$2);
+   public ect(Multimap<String, String> $$0, Supplier<String> $$1, eet $$2, eco $$3, Set<ecm<?>> $$4) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
    }
 
-   private void a(Map<ecv<?>, Map<aew, ?>> $$0) {
-      Object $$1 = $$0.get(ecv.c).remove(eco.a);
-      if ($$1 != null) {
-         b.warn("Datapack tried to redefine {} loot table, ignoring", eco.a);
+   private String c() {
+      if (this.f == null) {
+         this.f = this.b.get();
       }
 
-      Builder<ecs<?>, Object> $$2 = ImmutableMap.builder();
-      com.google.common.collect.ImmutableMultimap.Builder<ecv<?>, aew> $$3 = ImmutableMultimap.builder();
-      $$0.forEach(($$2x, $$3x) -> $$3x.forEach(($$3xx, $$4x) -> {
-            $$2.put(new ecs($$2x, $$3xx), $$4x);
-            $$3.put($$2x, $$3xx);
-         }));
-      $$2.put(a, ecy.a);
-      final Map<ecs<?>, ?> $$4 = $$2.build();
-      ecz $$5 = new ecz(efa.n, new ecu() {
-         @Nullable
-         @Override
-         public <T> T getElement(ecs<T> $$0) {
-            return (T)$$4.get($$0);
-         }
-      });
-      $$4.forEach(($$1x, $$2x) -> a($$5, $$1x, $$2x));
-      $$5.a().forEach(($$0x, $$1x) -> b.warn("Found loot table element validation problem in {}: {}", $$0x, $$1x));
-      this.d = $$4;
-      this.e = $$3.build();
+      return this.f;
    }
 
-   private static <T> void a(ecz $$0, ecs<T> $$1, Object $$2) {
-      $$1.a().a($$0, $$1, (T)$$2);
+   public void a(String $$0) {
+      this.a.put(this.c(), $$0);
    }
 
-   @Nullable
-   @Override
-   public <T> T getElement(ecs<T> $$0) {
-      return (T)this.d.get($$0);
+   public ect b(String $$0) {
+      return new ect(this.a, () -> this.c() + $$0, this.c, this.d, this.e);
    }
 
-   public Collection<aew> a(ecv<?> $$0) {
-      return this.e.get($$0);
+   public ect a(String $$0, ecm<?> $$1) {
+      ImmutableSet<ecm<?>> $$2 = ImmutableSet.builder().addAll(this.e).add($$1).build();
+      return new ect(this.a, () -> this.c() + $$0, this.c, this.d, $$2);
+   }
+
+   public boolean a(ecm<?> $$0) {
+      return this.e.contains($$0);
+   }
+
+   public Multimap<String, String> a() {
+      return ImmutableMultimap.copyOf(this.a);
+   }
+
+   public void a(ecl $$0) {
+      this.c.a(this, $$0);
+   }
+
+   public eco b() {
+      return this.d;
+   }
+
+   public ect a(eet $$0) {
+      return new ect(this.a, this.b, $$0, this.d, this.e);
    }
 }

@@ -7,7 +7,7 @@ public class sx extends sm {
    private final int l;
 
    public sx(int $$0) {
-      super(ve.a);
+      super(vf.a);
       this.l = $$0;
    }
 
@@ -17,7 +17,7 @@ public class sx extends sm {
       float $$0 = this.q();
       if ($$0 > (float)this.l) {
          j.warn("Player exceeded rate-limit (sent {} packets per second)", $$0);
-         this.a(new vi(k), sv.a(() -> this.a(k)));
+         this.a(new vj(k), sv.a(() -> this.a(k)));
          this.o();
       }
    }

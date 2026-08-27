@@ -1,34 +1,24 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
 
-public class bnw {
-   public static bky<bjg> a(csv $$0) {
-      return boj.a(
-         (Function<boj.b<bjg>, ? extends App<boj.c<bjg>, bom<bjg>>>)($$1 -> $$1.group($$1.c(bsh.o), $$1.b(bsh.m), $$1.b(bsh.X))
-               .apply($$1, ($$1x, $$2, $$3) -> ($$2x, $$3x, $$4) -> {
-                     if (!$$3x.aX() && $$3x.aA()) {
-                        gw $$5 = $$3x.dl().d();
+public class bnw extends bld<bjo> {
+   private final float c;
 
-                        for (ha $$6 : ha.c.a) {
-                           gw $$7 = $$5.a($$6);
-                           if ($$2x.a_($$7).k($$2x, $$7).a(ha.b).c() && $$2x.b_($$7).b(ean.c)) {
-                              gw $$8 = $$7.c();
-                              if ($$2x.a_($$8).i()) {
-                                 dfj $$9 = $$0.n();
-                                 $$2x.a($$8, $$9, 3);
-                                 $$2x.a(djt.i, $$8, djt.a.a($$3x, $$9));
-                                 $$2x.a(null, $$3x, apd.iI, ape.e, 1.0F, 1.0F);
-                                 $$3.b();
-                                 return true;
-                              }
-                           }
-                        }
+   public bnw(float $$0) {
+      super(ImmutableMap.of());
+      this.c = $$0;
+   }
 
-                        return true;
-                     } else {
-                        return false;
-                     }
-                  }))
-      );
+   protected boolean a(akt $$0, bjo $$1) {
+      return $$1.aX() && $$1.b(aqa.a) > $$1.de() || $$1.bl();
+   }
+
+   protected boolean a(akt $$0, bjo $$1, long $$2) {
+      return this.a($$0, $$1);
+   }
+
+   protected void b(akt $$0, bjo $$1, long $$2) {
+      if ($$1.ef().i() < this.c) {
+         $$1.K().a();
+      }
    }
 }

@@ -1,11 +1,11 @@
 import com.google.gson.JsonObject;
 
 public interface ao<T extends ap> {
-   void a(afe var1, ao.a<T> var2);
+   void a(afh var1, ao.a<T> var2);
 
-   void b(afe var1, ao.a<T> var2);
+   void b(afh var1, ao.a<T> var2);
 
-   void a(afe var1);
+   void a(afh var1);
 
    T a(JsonObject var1, bg var2);
 
@@ -14,7 +14,7 @@ public interface ao<T extends ap> {
    }
 
    public static record a<T extends ap>(T a, af b, String c) {
-      public void a(afe $$0) {
+      public void a(afh $$0) {
          $$0.a(this.b, this.c);
       }
    }

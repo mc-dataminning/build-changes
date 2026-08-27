@@ -1,62 +1,57 @@
-import javax.annotation.Nullable;
+import java.util.BitSet;
+import java.util.Set;
 
-public class fra implements coy {
-   private final int c;
-   private final int d;
-   protected final fqz[][] a;
-   protected final cpv b;
+public class fra {
+   private static final int a = ha.values().length;
+   private final BitSet b = new BitSet(a * a);
 
-   fra(cpv $$0, int $$1, int $$2, fqz[][] $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.a = $$3;
+   public void a(Set<ha> $$0) {
+      for (ha $$1 : $$0) {
+         for (ha $$2 : $$0) {
+            this.a($$1, $$2, true);
+         }
+      }
+   }
+
+   public void a(ha $$0, ha $$1, boolean $$2) {
+      this.b.set($$0.ordinal() + $$1.ordinal() * a, $$2);
+      this.b.set($$1.ordinal() + $$0.ordinal() * a, $$2);
+   }
+
+   public void a(boolean $$0) {
+      this.b.set(0, this.b.size(), $$0);
+   }
+
+   public boolean a(ha $$0, ha $$1) {
+      return this.b.get($$0.ordinal() + $$1.ordinal() * a);
    }
 
    @Override
-   public dfj a_(gw $$0) {
-      int $$1 = hw.a($$0.u()) - this.c;
-      int $$2 = hw.a($$0.w()) - this.d;
-      return this.a[$$1][$$2].b($$0);
-   }
+   public String toString() {
+      StringBuilder $$0 = new StringBuilder();
+      $$0.append(' ');
 
-   @Override
-   public eam b_(gw $$0) {
-      int $$1 = hw.a($$0.u()) - this.c;
-      int $$2 = hw.a($$0.w()) - this.d;
-      return this.a[$$1][$$2].b($$0).u();
-   }
+      for (ha $$1 : ha.values()) {
+         $$0.append(' ').append($$1.toString().toUpperCase().charAt(0));
+      }
 
-   @Override
-   public float a(ha $$0, boolean $$1) {
-      return this.b.a($$0, $$1);
-   }
+      $$0.append('\n');
 
-   @Override
-   public eab x_() {
-      return this.b.x_();
-   }
+      for (ha $$2 : ha.values()) {
+         $$0.append($$2.toString().toUpperCase().charAt(0));
 
-   @Nullable
-   @Override
-   public dcv c_(gw $$0) {
-      int $$1 = hw.a($$0.u()) - this.c;
-      int $$2 = hw.a($$0.w()) - this.d;
-      return this.a[$$1][$$2].a($$0);
-   }
+         for (ha $$3 : ha.values()) {
+            if ($$2 == $$3) {
+               $$0.append("  ");
+            } else {
+               boolean $$4 = this.a($$2, $$3);
+               $$0.append(' ').append((char)($$4 ? 'Y' : 'n'));
+            }
+         }
 
-   @Override
-   public int a(gw $$0, cpg $$1) {
-      return this.b.a($$0, $$1);
-   }
+         $$0.append('\n');
+      }
 
-   @Override
-   public int H_() {
-      return this.b.H_();
-   }
-
-   @Override
-   public int I_() {
-      return this.b.I_();
+      return $$0.toString();
    }
 }

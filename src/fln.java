@@ -1,28 +1,36 @@
-public class fln extends fls {
-   private int a;
-   private final int b = 8;
+public class fln extends flq {
+   private final ffu a;
+   private final foi b = foi.i(fsw.a);
 
-   fln(fix $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+   fln(fis $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1, $$2, $$3);
+      this.a = new fff(eqp.O().aP().a(fhw.P));
+      this.u = 0.0F;
+      this.t = 30;
    }
 
    @Override
-   public void a() {
-      for (int $$0 = 0; $$0 < 6; $$0++) {
-         double $$1 = this.g + (this.r.j() - this.r.j()) * 4.0;
-         double $$2 = this.h + (this.r.j() - this.r.j()) * 4.0;
-         double $$3 = this.i + (this.r.j() - this.r.j()) * 4.0;
-         this.c.a(iv.x, $$1, $$2, $$3, (double)((float)this.a / (float)this.b), 0.0, 0.0);
-      }
-
-      this.a++;
-      if (this.a == this.b) {
-         this.k();
-      }
+   public flu b() {
+      return flu.e;
    }
 
-   public static class a implements flx<iy> {
-      public flu a(iy $$0, fix $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+   @Override
+   public void a(eln $$0, eqa $$1, float $$2) {
+      float $$3 = ((float)this.s + $$2) / (float)this.t;
+      float $$4 = 0.05F + 0.5F * asb.a($$3 * (float) Math.PI);
+      elj $$5 = new elj();
+      $$5.a($$1.f());
+      $$5.a(a.b.rotationDegrees(150.0F * $$3 - 60.0F));
+      $$5.b(-1.0F, -1.0F, 1.0F);
+      $$5.a(0.0F, -1.101F, 1.5F);
+      foa.a $$6 = eqp.O().aO().b();
+      eln $$7 = $$6.getBuffer(this.b);
+      this.a.a($$5, $$7, 15728880, fyr.d, 1.0F, 1.0F, 1.0F, $$4);
+      $$6.b();
+   }
+
+   public static class a implements flt<iy> {
+      public flq a(iy $$0, fis $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
          return new fln($$1, $$2, $$3, $$4);
       }
    }

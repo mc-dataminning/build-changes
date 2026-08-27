@@ -1,42 +1,55 @@
 import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-public class bqw extends bqb {
-   private final bji a;
-   private double b;
+public class bqw extends bqh {
+   private final bjv a;
+   @Nullable
+   private bjm b;
    private double c;
-   private int d;
+   private double d;
+   private double e;
+   private final double f;
+   private final float g;
 
-   public bqw(bji $$0) {
+   public bqw(bjv $$0, double $$1, float $$2) {
       this.a = $$0;
-      this.a(EnumSet.of(bqb.a.a, bqb.a.b));
+      this.f = $$1;
+      this.g = $$2;
+      this.a(EnumSet.of(bqh.a.a));
    }
 
    @Override
    public boolean a() {
-      return this.a.ef().i() < 0.02F;
+      this.b = this.a.q();
+      if (this.b == null) {
+         return false;
+      } else if (this.b.f(this.a) > (double)(this.g * this.g)) {
+         return false;
+      } else {
+         ehh $$0 = buc.a(this.a, 16, 7, this.b.dj(), (float) (Math.PI / 2));
+         if ($$0 == null) {
+            return false;
+         } else {
+            this.c = $$0.c;
+            this.d = $$0.d;
+            this.e = $$0.e;
+            return true;
+         }
+      }
    }
 
    @Override
    public boolean b() {
-      return this.d >= 0;
+      return !this.a.L().l() && this.b.bv() && this.b.f(this.a) < (double)(this.g * this.g);
+   }
+
+   @Override
+   public void d() {
+      this.b = null;
    }
 
    @Override
    public void c() {
-      double $$0 = (Math.PI * 2) * this.a.ef().j();
-      this.b = Math.cos($$0);
-      this.c = Math.sin($$0);
-      this.d = 20 + this.a.ef().a(20);
-   }
-
-   @Override
-   public boolean Q_() {
-      return true;
-   }
-
-   @Override
-   public void e() {
-      this.d--;
-      this.a.G().a(this.a.dq() + this.b, this.a.du(), this.a.dw() + this.c);
+      this.a.L().a(this.c, this.d, this.e, this.f);
    }
 }

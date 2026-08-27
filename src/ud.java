@@ -1,71 +1,64 @@
-import com.google.common.primitives.Ints;
-import com.google.common.primitives.Longs;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.nio.charset.StandardCharsets;
-import java.security.SignatureException;
-import java.time.Instant;
-import java.util.Optional;
+import com.mojang.brigadier.ParseResults;
+import com.mojang.brigadier.context.CommandContextBuilder;
+import com.mojang.brigadier.context.ParsedArgument;
+import com.mojang.brigadier.context.ParsedCommandNode;
+import com.mojang.brigadier.tree.ArgumentCommandNode;
+import com.mojang.brigadier.tree.CommandNode;
+import java.util.ArrayList;
+import java.util.List;
 
-public record ud(String b, Instant c, long d, tr e) {
-   public static final MapCodec<ud> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.STRING.fieldOf("content").forGetter(ud::a),
-               arf.m.fieldOf("time_stamp").forGetter(ud::b),
-               Codec.LONG.fieldOf("salt").forGetter(ud::c),
-               tr.a.optionalFieldOf("last_seen", tr.b).forGetter(ud::d)
-            )
-            .apply($$0, ud::new)
-   );
+public record ud<S>(List<ud.a<S>> a) {
+   public static <S> ud<S> a(ParseResults<S> $$0) {
+      String $$1 = $$0.getReader().getString();
+      CommandContextBuilder<S> $$2 = $$0.getContext();
+      CommandContextBuilder<S> $$3 = $$2;
+      List<ud.a<S>> $$4 = a($$1, $$2);
 
-   public static ud a(String $$0) {
-      return new ud($$0, Instant.now(), 0L, tr.b);
-   }
+      CommandContextBuilder<S> $$5;
+      while (($$5 = $$3.getChild()) != null) {
+         boolean $$6 = $$5.getRootNode() != $$2.getRootNode();
+         if (!$$6) {
+            break;
+         }
 
-   public void a(asg.a $$0) throws SignatureException {
-      $$0.update(Longs.toByteArray(this.d));
-      $$0.update(Longs.toByteArray(this.c.getEpochSecond()));
-      byte[] $$1 = this.b.getBytes(StandardCharsets.UTF_8);
-      $$0.update(Ints.toByteArray($$1.length));
-      $$0.update($$1);
-      this.e.a($$0);
-   }
-
-   public ud.a a(tx $$0) {
-      return new ud.a(this.b, this.c, this.d, this.e.a($$0));
-   }
-
-   public String a() {
-      return this.b;
-   }
-
-   public Instant b() {
-      return this.c;
-   }
-
-   public long c() {
-      return this.d;
-   }
-
-   public tr d() {
-      return this.e;
-   }
-
-   public static record a(String a, Instant b, long c, tr.a d) {
-      public a(so $$0) {
-         this($$0.d(256), $$0.v(), $$0.readLong(), new tr.a($$0));
+         $$4.addAll(a($$1, $$5));
+         $$3 = $$5;
       }
 
-      public void a(so $$0) {
-         $$0.a(this.a, 256);
-         $$0.a(this.b);
-         $$0.b(this.c);
-         this.d.a($$0);
+      return new ud<>($$4);
+   }
+
+   private static <S> List<ud.a<S>> a(String $$0, CommandContextBuilder<S> $$1) {
+      List<ud.a<S>> $$2 = new ArrayList<>();
+
+      for (ParsedCommandNode<S> $$3 : $$1.getNodes()) {
+         CommandNode $$5 = $$3.getNode();
+         if ($$5 instanceof ArgumentCommandNode) {
+            ArgumentCommandNode<S, ?> $$4 = (ArgumentCommandNode<S, ?>)$$5;
+            if ($$4.getType() instanceof ex) {
+               ParsedArgument<S, ?> $$5x = (ParsedArgument<S, ?>)$$1.getArguments().get($$4.getName());
+               if ($$5x != null) {
+                  String $$6 = $$5x.getRange().get($$0);
+                  $$2.add(new ud.a<>($$4, $$6));
+               }
+            }
+         }
       }
 
-      public Optional<ud> a(tx $$0) {
-         return this.d.a($$0).map($$0x -> new ud(this.a, this.b, this.c, $$0x));
+      return $$2;
+   }
+
+   public static record a<S>(ArgumentCommandNode<S, ?> a, String b) {
+      public String a() {
+         return this.a.getName();
+      }
+
+      public ArgumentCommandNode<S, ?> b() {
+         return this.a;
+      }
+
+      public String c() {
+         return this.b;
       }
    }
 }

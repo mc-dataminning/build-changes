@@ -1,27 +1,75 @@
+import com.google.common.collect.Sets;
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
 import java.util.Optional;
+import java.util.Set;
 
-public class avs extends axz {
-   public avs(Schema $$0) {
-      super($$0, false, "EntityPaintingFieldsRenameFix", ayx.x, "minecraft:painting");
+public class avs extends DataFix {
+   private static final Set<String> a = Sets.newHashSet(
+      new String[]{
+         "ArmorStand",
+         "Bat",
+         "Blaze",
+         "CaveSpider",
+         "Chicken",
+         "Cow",
+         "Creeper",
+         "EnderDragon",
+         "Enderman",
+         "Endermite",
+         "EntityHorse",
+         "Ghast",
+         "Giant",
+         "Guardian",
+         "LavaSlime",
+         "MushroomCow",
+         "Ozelot",
+         "Pig",
+         "PigZombie",
+         "Rabbit",
+         "Sheep",
+         "Shulker",
+         "Silverfish",
+         "Skeleton",
+         "Slime",
+         "SnowMan",
+         "Spider",
+         "Squid",
+         "Villager",
+         "VillagerGolem",
+         "Witch",
+         "WitherBoss",
+         "Wolf",
+         "Zombie"
+      }
+   );
+
+   public avs(Schema $$0, boolean $$1) {
+      super($$0, $$1);
    }
 
    public Dynamic<?> a(Dynamic<?> $$0) {
-      return this.a(this.a($$0, "Motive", "variant"), "Facing", "facing");
+      Optional<Number> $$1 = $$0.get("HealF").asNumber().result();
+      Optional<Number> $$2 = $$0.get("Health").asNumber().result();
+      float $$3;
+      if ($$1.isPresent()) {
+         $$3 = $$1.get().floatValue();
+         $$0 = $$0.remove("HealF");
+      } else {
+         if (!$$2.isPresent()) {
+            return $$0;
+         }
+
+         $$3 = $$2.get().floatValue();
+      }
+
+      return $$0.set("Health", $$0.createFloat($$3));
    }
 
-   private Dynamic<?> a(Dynamic<?> $$0, String $$1, String $$2) {
-      Optional<? extends Dynamic<?>> $$3 = $$0.get($$1).result();
-      Optional<? extends Dynamic<?>> $$4 = $$3.map($$3x -> $$0.remove($$1).set($$2, $$3x));
-      return (Dynamic<?>)DataFixUtils.orElse($$4, $$0);
-   }
-
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), this::a);
+   public TypeRewriteRule makeRule() {
+      return this.fixTypeEverywhereTyped("EntityHealthFix", this.getInputSchema().getType(azd.x), $$0 -> $$0.update(DSL.remainderFinder(), this::a));
    }
 }

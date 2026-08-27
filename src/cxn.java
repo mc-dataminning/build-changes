@@ -1,119 +1,139 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
 
-public class cxn extends czj implements czw {
-   public static final dgj a = dfz.at;
-   public static final int b = 4;
-   private static final eig[] g = new eig[]{
-      csv.a(7.0, 13.0, 7.0, 9.0, 16.0, 9.0),
-      csv.a(7.0, 10.0, 7.0, 9.0, 16.0, 9.0),
-      csv.a(7.0, 7.0, 7.0, 9.0, 16.0, 9.0),
-      csv.a(7.0, 3.0, 7.0, 9.0, 16.0, 9.0),
-      csv.a(7.0, 0.0, 7.0, 9.0, 16.0, 9.0)
-   };
-   private static final dga h = dfz.C;
-   public static final dga c = dfz.j;
-   private static final float i = 0.85F;
+public class cxn extends cvu {
+   public static final MapCodec<cxn> a = b(cxn::new);
+   public static final dfu b = dft.w;
+   protected static final int c = 6;
+   protected static final int d = 6;
+   protected static final int e = 8;
+   protected static final eia f = ctc.a(5.0, 4.0, 10.0, 11.0, 12.0, 16.0);
+   protected static final eia g = ctc.a(5.0, 4.0, 0.0, 11.0, 12.0, 6.0);
+   protected static final eia h = ctc.a(10.0, 4.0, 5.0, 16.0, 12.0, 11.0);
+   protected static final eia i = ctc.a(0.0, 4.0, 5.0, 6.0, 12.0, 11.0);
+   protected static final eia j = ctc.a(5.0, 0.0, 4.0, 11.0, 6.0, 12.0);
+   protected static final eia k = ctc.a(4.0, 0.0, 5.0, 12.0, 6.0, 11.0);
+   protected static final eia l = ctc.a(5.0, 10.0, 4.0, 11.0, 16.0, 12.0);
+   protected static final eia m = ctc.a(4.0, 10.0, 5.0, 12.0, 16.0, 11.0);
 
-   public cxn(dfi.d $$0) {
-      super(new dew(0.85F), $$0);
-      this.k(this.C.b().a(d, Integer.valueOf(0)).a(a, Integer.valueOf(0)).a(h, Boolean.valueOf(false)).a(c, Boolean.valueOf(false)));
+   @Override
+   public MapCodec<cxn> a() {
+      return a;
+   }
+
+   protected cxn(dfc.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(aE, ha.c).a(b, Boolean.valueOf(false)).a(K, dfo.b));
    }
 
    @Override
-   protected void a(dfk.a<csv, dfj> $$0) {
-      $$0.a(d).a(a).a(h).a(c);
-   }
-
-   @Override
-   protected boolean d(dfj $$0, cpb $$1, gw $$2) {
-      return super.d($$0, $$1, $$2) || $$0.a(csw.dR);
-   }
-
-   @Nullable
-   @Override
-   public dfj a(cln $$0) {
-      eam $$1 = $$0.q().b_($$0.a());
-      boolean $$2 = $$1.a() == ean.c;
-      return super.a($$0).a(h, Boolean.valueOf($$2)).a(a, Integer.valueOf(4));
-   }
-
-   @Override
-   public eig a(dfj $$0, cpb $$1, gw $$2, ehs $$3) {
-      ehn $$4 = $$0.n($$1, $$2);
-      eig $$5;
-      if (!$$0.c(c)) {
-         $$5 = g[4];
-      } else {
-         $$5 = g[$$0.c(a)];
+   public eia a(dfd $$0, cph $$1, gw $$2, ehm $$3) {
+      switch ((dfo)$$0.c(K)) {
+         case a:
+            switch ($$0.c(aE).o()) {
+               case a:
+                  return k;
+               case c:
+               default:
+                  return j;
+            }
+         case b:
+            switch ((ha)$$0.c(aE)) {
+               case f:
+                  return i;
+               case e:
+                  return h;
+               case d:
+                  return g;
+               case c:
+               default:
+                  return f;
+            }
+         case c:
+         default:
+            switch ($$0.c(aE).o()) {
+               case a:
+                  return m;
+               case c:
+               default:
+                  return l;
+            }
       }
-
-      return $$5.a($$4.c, $$4.d, $$4.e);
    }
 
    @Override
-   public boolean a(dfj $$0, cpy $$1, gw $$2) {
-      return h($$0) ? $$1.a_($$2.c()).a(csw.aL) : super.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public dfj a(dfj $$0, ha $$1, dfj $$2, cpw $$3, gw $$4, gw $$5) {
-      if ($$0.c(h)) {
-         $$3.a($$4, ean.c, ean.c.a($$3));
-      }
-
-      return $$1 == ha.b && !$$0.a($$3, $$4) ? csw.a.n() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   public eam c_(dfj $$0) {
-      return $$0.c(h) ? ean.c.a(false) : super.c_($$0);
-   }
-
-   @Override
-   public void b(dfj $$0, akq $$1, gw $$2, asc $$3) {
-      if (!h($$0)) {
-         if ($$3.a(7) == 0) {
-            this.a($$1, $$2, $$0, $$3);
+   public bhe a(dfd $$0, cqb $$1, gw $$2, cca $$3, bhd $$4, ehd $$5) {
+      if ($$1.B) {
+         dfd $$6 = $$0.a(b);
+         if ($$6.c(b)) {
+            a($$6, $$1, $$2, 1.0F);
          }
+
+         return bhe.a;
       } else {
-         if (!n($$0)) {
-            $$1.a($$2, $$0.a(a), 2);
+         dfd $$7 = this.d($$0, $$1, $$2);
+         float $$8 = $$7.c(b) ? 0.6F : 0.5F;
+         $$1.a(null, $$2, apg.ms, aph.e, 0.3F, $$8);
+         $$1.a($$3, $$7.c(b) ? djn.a : djn.e, $$2);
+         return bhe.b;
+      }
+   }
+
+   public dfd d(dfd $$0, cqb $$1, gw $$2) {
+      $$0 = $$0.a(b);
+      $$1.a($$2, $$0, 3);
+      this.e($$0, $$1, $$2);
+      return $$0;
+   }
+
+   private static void a(dfd $$0, cqc $$1, gw $$2, float $$3) {
+      ha $$4 = $$0.c(aE).g();
+      ha $$5 = h($$0).g();
+      double $$6 = (double)$$2.u() + 0.5 + 0.1 * (double)$$4.j() + 0.2 * (double)$$5.j();
+      double $$7 = (double)$$2.v() + 0.5 + 0.1 * (double)$$4.k() + 0.2 * (double)$$5.k();
+      double $$8 = (double)$$2.w() + 0.5 + 0.1 * (double)$$4.l() + 0.2 * (double)$$5.l();
+      $$1.a(new ip(ip.a, $$3), $$6, $$7, $$8, 0.0, 0.0, 0.0);
+   }
+
+   @Override
+   public void a(dfd $$0, cqb $$1, gw $$2, ash $$3) {
+      if ($$0.c(b) && $$3.i() < 0.25F) {
+         a($$0, $$1, $$2, 0.5F);
+      }
+   }
+
+   @Override
+   public void a(dfd $$0, cqb $$1, gw $$2, dfd $$3, boolean $$4) {
+      if (!$$4 && !$$0.a($$3.b())) {
+         if ($$0.c(b)) {
+            this.e($$0, $$1, $$2);
          }
+
+         super.a($$0, $$1, $$2, $$3, $$4);
       }
    }
 
    @Override
-   public boolean a(cpy $$0, gw $$1, dfj $$2) {
-      return !h($$2) || !n($$2);
+   public int a(dfd $$0, cph $$1, gw $$2, ha $$3) {
+      return $$0.c(b) ? 15 : 0;
    }
 
    @Override
-   public boolean a(cpv $$0, asc $$1, gw $$2, dfj $$3) {
-      return h($$3) ? !n($$3) : super.a($$0, $$1, $$2, $$3);
+   public int b(dfd $$0, cph $$1, gw $$2, ha $$3) {
+      return $$0.c(b) && h($$0) == $$3 ? 15 : 0;
    }
 
    @Override
-   public void a(akq $$0, asc $$1, gw $$2, dfj $$3) {
-      if (h($$3) && !n($$3)) {
-         $$0.a($$2, $$3.a(a), 2);
-      } else {
-         super.a($$0, $$1, $$2, $$3);
-      }
+   public boolean f_(dfd $$0) {
+      return true;
    }
 
-   private static boolean h(dfj $$0) {
-      return $$0.c(c);
+   private void e(dfd $$0, cqb $$1, gw $$2) {
+      $$1.a($$2, this);
+      $$1.a($$2.a(h($$0).g()), this);
    }
 
-   private static boolean n(dfj $$0) {
-      return $$0.c(a) == 4;
-   }
-
-   public static dfj b() {
-      return b(0);
-   }
-
-   public static dfj b(int $$0) {
-      return csw.E.n().a(c, Boolean.valueOf(true)).a(a, Integer.valueOf($$0));
+   @Override
+   protected void a(dfe.a<ctc, dfd> $$0) {
+      $$0.a(K, aE, b);
    }
 }

@@ -1,56 +1,24 @@
-import javax.annotation.Nullable;
+import java.util.function.IntFunction;
 
-public class bxa extends bwq {
-   public bxa(biu<? extends bxa> $$0, cpv $$1) {
-      super($$0, $$1);
+public enum bxa {
+   a(0),
+   b(1),
+   c(2),
+   d(3),
+   e(4);
+
+   private static final IntFunction<bxa> f = aqu.a(bxa::a, values(), aqu.a.b);
+   private final int g;
+
+   private bxa(int $$0) {
+      this.g = $$0;
    }
 
-   public static bkl.a s() {
-      return gD().a(bkm.a, 15.0).a(bkm.d, 0.2F);
+   public int a() {
+      return this.g;
    }
 
-   @Override
-   protected void a(asc $$0) {
-      this.a(bkm.n).a(a($$0::j));
-   }
-
-   @Override
-   public bjl eR() {
-      return bjl.b;
-   }
-
-   @Override
-   protected apc w() {
-      return apd.Bh;
-   }
-
-   @Override
-   protected apc l_() {
-      return apd.Bi;
-   }
-
-   @Override
-   protected apc d(bho $$0) {
-      return apd.Bj;
-   }
-
-   @Nullable
-   @Override
-   public bil a(akq $$0, bil $$1) {
-      return biu.bq.a((cpv)$$0);
-   }
-
-   @Override
-   public bgy b(cbu $$0, bgx $$1) {
-      return !this.gs() ? bgy.d : super.b($$0, $$1);
-   }
-
-   @Override
-   protected void gt() {
-   }
-
-   @Override
-   protected float a(bir $$0, float $$1) {
-      return $$0.b - (this.m_() ? 0.03125F : 0.28125F) * $$1;
+   public static bxa a(int $$0) {
+      return f.apply($$0);
    }
 }

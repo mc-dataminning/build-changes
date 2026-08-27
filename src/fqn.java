@@ -1,36 +1,39 @@
-public class fqn implements fqe<ddo> {
-   public static final gbi a = new gbi(fzd.e, new aew("entity/enchanting_table_book"));
-   private final fem b;
+public class fqn implements fqa<deg> {
+   private final fgr<?> a;
 
-   public fqn(fqf.a $$0) {
-      this.b = new fem($$0.a(fib.m));
+   public fqn(fqb.a $$0) {
+      this.a = new fgr($$0.a(fhw.be));
    }
 
-   public void a(ddo $$0, float $$1, elp $$2, foe $$3, int $$4, int $$5) {
+   public void a(deg $$0, float $$1, elj $$2, foa $$3, int $$4, int $$5) {
+      ha $$6 = ha.b;
+      if ($$0.l()) {
+         dfd $$7 = $$0.k().a_($$0.p());
+         if ($$7.b() instanceof czz) {
+            $$6 = $$7.c(czz.b);
+         }
+      }
+
+      chz $$8 = $$0.j();
+      gbe $$9;
+      if ($$8 == null) {
+         $$9 = foo.i;
+      } else {
+         $$9 = foo.j.get($$8.a());
+      }
+
       $$2.a();
-      $$2.a(0.5F, 0.75F, 0.5F);
-      float $$6 = (float)$$0.a + $$1;
-      $$2.a(0.0F, 0.1F + arw.a($$6 * 0.1F) * 0.01F, 0.0F);
-      float $$7 = $$0.h - $$0.i;
-
-      while ($$7 >= (float) Math.PI) {
-         $$7 -= (float) (Math.PI * 2);
-      }
-
-      while ($$7 < (float) -Math.PI) {
-         $$7 += (float) (Math.PI * 2);
-      }
-
-      float $$8 = $$0.i + $$7 * $$1;
-      $$2.a(a.d.rotation(-$$8));
-      $$2.a(a.f.rotationDegrees(80.0F));
-      float $$9 = arw.i($$1, $$0.c, $$0.b);
-      float $$10 = arw.h($$9 + 0.25F) * 1.6F - 0.3F;
-      float $$11 = arw.h($$9 + 0.75F) * 1.6F - 0.3F;
-      float $$12 = arw.i($$1, $$0.g, $$0.f);
-      this.b.a($$6, arw.a($$10, 0.0F, 1.0F), arw.a($$11, 0.0F, 1.0F), $$12);
-      elt $$13 = a.a($$3, fom::c);
-      this.b.b($$2, $$13, $$4, $$5, 1.0F, 1.0F, 1.0F, 1.0F);
+      $$2.a(0.5F, 0.5F, 0.5F);
+      float $$11 = 0.9995F;
+      $$2.b(0.9995F, 0.9995F, 0.9995F);
+      $$2.a($$6.b());
+      $$2.b(1.0F, -1.0F, -1.0F);
+      $$2.a(0.0F, -1.0F, 0.0F);
+      fhx $$12 = this.a.b();
+      $$12.a(0.0F, 24.0F - $$0.a($$1) * 0.5F * 16.0F, 0.0F);
+      $$12.f = 270.0F * $$0.a($$1) * (float) (Math.PI / 180.0);
+      eln $$13 = $$9.a($$3, foi::e);
+      this.a.a($$2, $$13, $$4, $$5, 1.0F, 1.0F, 1.0F, 1.0F);
       $$2.b();
    }
 }

@@ -1,134 +1,245 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.function.Function;
-import java.util.stream.Stream;
+import java.util.Optional;
+import java.util.OptionalInt;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
 public class crf {
-   private static final Logger d = LogUtils.getLogger();
-   private static final float e = 0.1F;
-   public static final bfm<crf.c> a = bfm.c();
-   public static final crf b = new crf.a().a();
-   public static final MapCodec<crf> c = RecordCodecBuilder.mapCodec(
+   public static final Codec<crf> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               Codec.floatRange(0.0F, 0.9999999F).optionalFieldOf("creature_spawn_probability", 0.1F).forGetter($$0x -> $$0x.f),
-               Codec.simpleMap(bjj.i, bfm.c(crf.c.a).promotePartial(ac.a("Spawn data: ", d::error)), asp.a(bjj.values()))
-                  .fieldOf("spawners")
-                  .forGetter($$0x -> $$0x.g),
-               Codec.simpleMap(jb.h.q(), crf.b.a, jb.h).fieldOf("spawn_costs").forGetter($$0x -> $$0x.h)
+               Codec.INT.fieldOf("fog_color").forGetter($$0x -> $$0x.b),
+               Codec.INT.fieldOf("water_color").forGetter($$0x -> $$0x.c),
+               Codec.INT.fieldOf("water_fog_color").forGetter($$0x -> $$0x.d),
+               Codec.INT.fieldOf("sky_color").forGetter($$0x -> $$0x.e),
+               Codec.INT.optionalFieldOf("foliage_color").forGetter($$0x -> $$0x.f),
+               Codec.INT.optionalFieldOf("grass_color").forGetter($$0x -> $$0x.g),
+               crf.b.d.optionalFieldOf("grass_color_modifier", crf.b.a).forGetter($$0x -> $$0x.h),
+               cqy.a.optionalFieldOf("particle").forGetter($$0x -> $$0x.i),
+               apf.b.optionalFieldOf("ambient_sound").forGetter($$0x -> $$0x.j),
+               cqx.a.optionalFieldOf("mood_sound").forGetter($$0x -> $$0x.k),
+               cqw.a.optionalFieldOf("additions_sound").forGetter($$0x -> $$0x.l),
+               apd.a.optionalFieldOf("music").forGetter($$0x -> $$0x.m)
             )
             .apply($$0, crf::new)
    );
-   private final float f;
-   private final Map<bjj, bfm<crf.c>> g;
-   private final Map<biu<?>, crf.b> h;
+   private final int b;
+   private final int c;
+   private final int d;
+   private final int e;
+   private final Optional<Integer> f;
+   private final Optional<Integer> g;
+   private final crf.b h;
+   private final Optional<cqy> i;
+   private final Optional<he<apf>> j;
+   private final Optional<cqx> k;
+   private final Optional<cqw> l;
+   private final Optional<apd> m;
 
-   crf(float $$0, Map<bjj, bfm<crf.c>> $$1, Map<biu<?>, crf.b> $$2) {
-      this.f = $$0;
-      this.g = ImmutableMap.copyOf($$1);
-      this.h = ImmutableMap.copyOf($$2);
+   crf(
+      int $$0,
+      int $$1,
+      int $$2,
+      int $$3,
+      Optional<Integer> $$4,
+      Optional<Integer> $$5,
+      crf.b $$6,
+      Optional<cqy> $$7,
+      Optional<he<apf>> $$8,
+      Optional<cqx> $$9,
+      Optional<cqw> $$10,
+      Optional<apd> $$11
+   ) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.i = $$7;
+      this.j = $$8;
+      this.k = $$9;
+      this.l = $$10;
+      this.m = $$11;
    }
 
-   public bfm<crf.c> a(bjj $$0) {
-      return this.g.getOrDefault($$0, a);
+   public int a() {
+      return this.b;
    }
 
-   @Nullable
-   public crf.b a(biu<?> $$0) {
-      return this.h.get($$0);
+   public int b() {
+      return this.c;
    }
 
-   public float a() {
+   public int c() {
+      return this.d;
+   }
+
+   public int d() {
+      return this.e;
+   }
+
+   public Optional<Integer> e() {
       return this.f;
    }
 
+   public Optional<Integer> f() {
+      return this.g;
+   }
+
+   public crf.b g() {
+      return this.h;
+   }
+
+   public Optional<cqy> h() {
+      return this.i;
+   }
+
+   public Optional<he<apf>> i() {
+      return this.j;
+   }
+
+   public Optional<cqx> j() {
+      return this.k;
+   }
+
+   public Optional<cqw> k() {
+      return this.l;
+   }
+
+   public Optional<apd> l() {
+      return this.m;
+   }
+
    public static class a {
-      private final Map<bjj, List<crf.c>> a = Stream.of(bjj.values()).collect(ImmutableMap.toImmutableMap($$0 -> $$0, $$0 -> Lists.newArrayList()));
-      private final Map<biu<?>, crf.b> b = Maps.newLinkedHashMap();
-      private float c = 0.1F;
+      private OptionalInt a = OptionalInt.empty();
+      private OptionalInt b = OptionalInt.empty();
+      private OptionalInt c = OptionalInt.empty();
+      private OptionalInt d = OptionalInt.empty();
+      private Optional<Integer> e = Optional.empty();
+      private Optional<Integer> f = Optional.empty();
+      private crf.b g = crf.b.a;
+      private Optional<cqy> h = Optional.empty();
+      private Optional<he<apf>> i = Optional.empty();
+      private Optional<cqx> j = Optional.empty();
+      private Optional<cqw> k = Optional.empty();
+      private Optional<apd> l = Optional.empty();
 
-      public crf.a a(bjj $$0, crf.c $$1) {
-         this.a.get($$0).add($$1);
+      public crf.a a(int $$0) {
+         this.a = OptionalInt.of($$0);
          return this;
       }
 
-      public crf.a a(biu<?> $$0, double $$1, double $$2) {
-         this.b.put($$0, new crf.b($$2, $$1));
+      public crf.a b(int $$0) {
+         this.b = OptionalInt.of($$0);
          return this;
       }
 
-      public crf.a a(float $$0) {
-         this.c = $$0;
+      public crf.a c(int $$0) {
+         this.c = OptionalInt.of($$0);
+         return this;
+      }
+
+      public crf.a d(int $$0) {
+         this.d = OptionalInt.of($$0);
+         return this;
+      }
+
+      public crf.a e(int $$0) {
+         this.e = Optional.of($$0);
+         return this;
+      }
+
+      public crf.a f(int $$0) {
+         this.f = Optional.of($$0);
+         return this;
+      }
+
+      public crf.a a(crf.b $$0) {
+         this.g = $$0;
+         return this;
+      }
+
+      public crf.a a(cqy $$0) {
+         this.h = Optional.of($$0);
+         return this;
+      }
+
+      public crf.a a(he<apf> $$0) {
+         this.i = Optional.of($$0);
+         return this;
+      }
+
+      public crf.a a(cqx $$0) {
+         this.j = Optional.of($$0);
+         return this;
+      }
+
+      public crf.a a(cqw $$0) {
+         this.k = Optional.of($$0);
+         return this;
+      }
+
+      public crf.a a(@Nullable apd $$0) {
+         this.l = Optional.ofNullable($$0);
          return this;
       }
 
       public crf a() {
          return new crf(
-            this.c,
-            this.a.entrySet().stream().collect(ImmutableMap.toImmutableMap(Entry::getKey, $$0 -> bfm.a((List)$$0.getValue()))),
-            ImmutableMap.copyOf(this.b)
+            this.a.orElseThrow(() -> new IllegalStateException("Missing 'fog' color.")),
+            this.b.orElseThrow(() -> new IllegalStateException("Missing 'water' color.")),
+            this.c.orElseThrow(() -> new IllegalStateException("Missing 'water fog' color.")),
+            this.d.orElseThrow(() -> new IllegalStateException("Missing 'sky' color.")),
+            this.e,
+            this.f,
+            this.g,
+            this.h,
+            this.i,
+            this.j,
+            this.k,
+            this.l
          );
       }
    }
 
-   public static record b(double b, double c) {
-      public static final Codec<crf.b> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(Codec.DOUBLE.fieldOf("energy_budget").forGetter($$0x -> $$0x.b), Codec.DOUBLE.fieldOf("charge").forGetter($$0x -> $$0x.c))
-               .apply($$0, crf.b::new)
-      );
+   public static enum b implements asu {
+      a("none") {
+         @Override
+         public int a(double $$0, double $$1, int $$2) {
+            return $$2;
+         }
+      },
+      b("dark_forest") {
+         @Override
+         public int a(double $$0, double $$1, int $$2) {
+            return ($$2 & 16711422) + 2634762 >> 1;
+         }
+      },
+      c("swamp") {
+         @Override
+         public int a(double $$0, double $$1, int $$2) {
+            double $$3 = cqz.e.a($$0 * 0.0225, $$1 * 0.0225, false);
+            return $$3 < -0.1 ? 5011004 : 6975545;
+         }
+      };
 
-      public double a() {
-         return this.b;
+      private final String e;
+      public static final Codec<crf.b> d = asu.a(crf.b::values);
+
+      public abstract int a(double var1, double var3, int var5);
+
+      b(String $$0) {
+         this.e = $$0;
       }
 
-      public double b() {
-         return this.c;
-      }
-   }
-
-   public static class c extends bfk.a {
-      public static final Codec<crf.c> a = arf.a(
-         RecordCodecBuilder.create(
-            $$0 -> $$0.group(
-                     jb.h.q().fieldOf("type").forGetter($$0x -> $$0x.b),
-                     bfj.a.fieldOf("weight").forGetter(bfk.a::a),
-                     arf.j.fieldOf("minCount").forGetter($$0x -> $$0x.c),
-                     arf.j.fieldOf("maxCount").forGetter($$0x -> $$0x.d)
-                  )
-                  .apply($$0, crf.c::new)
-         ),
-         (Function<crf.c, DataResult<crf.c>>)($$0 -> $$0.c > $$0.d
-               ? DataResult.error(() -> "minCount needs to be smaller or equal to maxCount")
-               : DataResult.success($$0))
-      );
-      public final biu<?> b;
-      public final int c;
-      public final int d;
-
-      public c(biu<?> $$0, int $$1, int $$2, int $$3) {
-         this($$0, bfj.a($$1), $$2, $$3);
-      }
-
-      public c(biu<?> $$0, bfj $$1, int $$2, int $$3) {
-         super($$1);
-         this.b = $$0.f() == bjj.h ? biu.av : $$0;
-         this.c = $$2;
-         this.d = $$3;
+      public String a() {
+         return this.e;
       }
 
       @Override
-      public String toString() {
-         return biu.a(this.b) + "*(" + this.c + "-" + this.d + "):" + this.a();
+      public String c() {
+         return this.e;
       }
    }
 }

@@ -1,186 +1,315 @@
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonSyntaxException;
 import com.mojang.blaze3d.systems.RenderSystem;
-import org.joml.Vector3f;
+import java.io.IOException;
+import java.io.Reader;
+import java.util.List;
+import java.util.Map;
+import javax.annotation.Nullable;
+import org.joml.Matrix4f;
 
 public class fod implements AutoCloseable {
-   public static final int a = 15728880;
-   public static final int b = 15728640;
-   public static final int c = 240;
-   private final fyr d;
-   private final ekq e;
-   private final aew f;
-   private boolean g;
-   private float h;
-   private final fnx i;
-   private final eqv j;
+   private static final String a = "minecraft:main";
+   private final ejv b;
+   private final anw c;
+   private final String d;
+   private final List<foe> e = Lists.newArrayList();
+   private final Map<String, ejv> f = Maps.newHashMap();
+   private final List<ejv> g = Lists.newArrayList();
+   private Matrix4f h;
+   private int i;
+   private int j;
+   private float k;
+   private float l;
 
-   public fod(fnx $$0, eqv $$1) {
-      this.i = $$0;
-      this.j = $$1;
-      this.d = new fyr(16, 16, false);
-      this.f = this.j.Y().a("light_map", this.d);
-      this.e = this.d.e();
+   public fod(fzb $$0, anw $$1, ejv $$2, aez $$3) throws IOException, JsonSyntaxException {
+      this.c = $$1;
+      this.b = $$2;
+      this.k = 0.0F;
+      this.l = 0.0F;
+      this.i = $$2.e;
+      this.j = $$2.f;
+      this.d = $$3.toString();
+      this.b();
+      this.a($$0, $$3);
+   }
 
-      for (int $$2 = 0; $$2 < 16; $$2++) {
-         for (int $$3 = 0; $$3 < 16; $$3++) {
-            this.e.a($$3, $$2, -1);
+   private void a(fzb $$0, aez $$1) throws IOException, JsonSyntaxException {
+      anu $$2 = this.c.getResourceOrThrow($$1);
+
+      try {
+         try (Reader $$3 = $$2.e()) {
+            JsonObject $$4 = arr.a($$3);
+            if (arr.d($$4, "targets")) {
+               JsonArray $$5 = $$4.getAsJsonArray("targets");
+               int $$6 = 0;
+
+               for (JsonElement $$7 : $$5) {
+                  try {
+                     this.a($$7);
+                  } catch (Exception var14) {
+                     afc $$9 = afc.a(var14);
+                     $$9.a("targets[" + $$6 + "]");
+                     throw $$9;
+                  }
+
+                  $$6++;
+               }
+            }
+
+            if (arr.d($$4, "passes")) {
+               JsonArray $$10 = $$4.getAsJsonArray("passes");
+               int $$11 = 0;
+
+               for (JsonElement $$12 : $$10) {
+                  try {
+                     this.a($$0, $$12);
+                  } catch (Exception var13) {
+                     afc $$14 = afc.a(var13);
+                     $$14.a("passes[" + $$11 + "]");
+                     throw $$14;
+                  }
+
+                  $$11++;
+               }
+            }
+         }
+      } catch (Exception var16) {
+         afc $$16 = afc.a(var16);
+         $$16.b($$1.a() + " (" + $$2.b() + ")");
+         throw $$16;
+      }
+   }
+
+   private void a(JsonElement $$0) throws afc {
+      if (arr.a($$0)) {
+         this.a($$0.getAsString(), this.i, this.j);
+      } else {
+         JsonObject $$1 = arr.m($$0, "target");
+         String $$2 = arr.i($$1, "name");
+         int $$3 = arr.a($$1, "width", this.i);
+         int $$4 = arr.a($$1, "height", this.j);
+         if (this.f.containsKey($$2)) {
+            throw new afc($$2 + " is already defined");
+         }
+
+         this.a($$2, $$3, $$4);
+      }
+   }
+
+   private void a(fzb $$0, JsonElement $$1) throws IOException {
+      JsonObject $$2 = arr.m($$1, "pass");
+      String $$3 = arr.i($$2, "name");
+      String $$4 = arr.i($$2, "intarget");
+      String $$5 = arr.i($$2, "outtarget");
+      ejv $$6 = this.b($$4);
+      ejv $$7 = this.b($$5);
+      if ($$6 == null) {
+         throw new afc("Input target '" + $$4 + "' does not exist");
+      } else if ($$7 == null) {
+         throw new afc("Output target '" + $$5 + "' does not exist");
+      } else {
+         foe $$8 = this.a($$3, $$6, $$7);
+         JsonArray $$9 = arr.a($$2, "auxtargets", null);
+         if ($$9 != null) {
+            int $$10 = 0;
+
+            for (JsonElement $$11 : $$9) {
+               try {
+                  JsonObject $$12 = arr.m($$11, "auxtarget");
+                  String $$13 = arr.i($$12, "name");
+                  String $$14 = arr.i($$12, "id");
+                  boolean $$15;
+                  String $$16;
+                  if ($$14.endsWith(":depth")) {
+                     $$15 = true;
+                     $$16 = $$14.substring(0, $$14.lastIndexOf(58));
+                  } else {
+                     $$15 = false;
+                     $$16 = $$14;
+                  }
+
+                  ejv $$19 = this.b($$16);
+                  if ($$19 == null) {
+                     if ($$15) {
+                        throw new afc("Render target '" + $$16 + "' can't be used as depth buffer");
+                     }
+
+                     aez $$20 = new aez("textures/effect/" + $$16 + ".png");
+                     this.c.getResource($$20).orElseThrow(() -> new afc("Render target or texture '" + $$16 + "' does not exist"));
+                     RenderSystem.setShaderTexture(0, $$20);
+                     $$0.a($$20);
+                     fyl $$21 = $$0.b($$20);
+                     int $$22 = arr.o($$12, "width");
+                     int $$23 = arr.o($$12, "height");
+                     boolean $$24 = arr.k($$12, "bilinear");
+                     if ($$24) {
+                        RenderSystem.texParameter(3553, 10241, 9729);
+                        RenderSystem.texParameter(3553, 10240, 9729);
+                     } else {
+                        RenderSystem.texParameter(3553, 10241, 9728);
+                        RenderSystem.texParameter(3553, 10240, 9728);
+                     }
+
+                     $$8.a($$13, $$21::a, $$22, $$23);
+                  } else if ($$15) {
+                     $$8.a($$13, $$19::g, $$19.c, $$19.d);
+                  } else {
+                     $$8.a($$13, $$19::f, $$19.c, $$19.d);
+                  }
+               } catch (Exception var26) {
+                  afc $$26 = afc.a(var26);
+                  $$26.a("auxtargets[" + $$10 + "]");
+                  throw $$26;
+               }
+
+               $$10++;
+            }
+         }
+
+         JsonArray $$27 = arr.a($$2, "uniforms", null);
+         if ($$27 != null) {
+            int $$28 = 0;
+
+            for (JsonElement $$29 : $$27) {
+               try {
+                  this.b($$29);
+               } catch (Exception var25) {
+                  afc $$31 = afc.a(var25);
+                  $$31.a("uniforms[" + $$28 + "]");
+                  throw $$31;
+               }
+
+               $$28++;
+            }
          }
       }
+   }
 
-      this.d.d();
+   private void b(JsonElement $$0) throws afc {
+      JsonObject $$1 = arr.m($$0, "uniform");
+      String $$2 = arr.i($$1, "name");
+      ela $$3 = this.e.get(this.e.size() - 1).b().a($$2);
+      if ($$3 == null) {
+         throw new afc("Uniform '" + $$2 + "' does not exist");
+      } else {
+         float[] $$4 = new float[4];
+         int $$5 = 0;
+
+         for (JsonElement $$7 : arr.v($$1, "values")) {
+            try {
+               $$4[$$5] = arr.e($$7, "value");
+            } catch (Exception var12) {
+               afc $$9 = afc.a(var12);
+               $$9.a("values[" + $$5 + "]");
+               throw $$9;
+            }
+
+            $$5++;
+         }
+
+         switch ($$5) {
+            case 0:
+            default:
+               break;
+            case 1:
+               $$3.a($$4[0]);
+               break;
+            case 2:
+               $$3.a($$4[0], $$4[1]);
+               break;
+            case 3:
+               $$3.a($$4[0], $$4[1], $$4[2]);
+               break;
+            case 4:
+               $$3.a($$4[0], $$4[1], $$4[2], $$4[3]);
+         }
+      }
+   }
+
+   public ejv a(String $$0) {
+      return this.f.get($$0);
+   }
+
+   public void a(String $$0, int $$1, int $$2) {
+      ejv $$3 = new ejw($$1, $$2, true, eqp.a);
+      $$3.a(0.0F, 0.0F, 0.0F, 0.0F);
+      this.f.put($$0, $$3);
+      if ($$1 == this.i && $$2 == this.j) {
+         this.g.add($$3);
+      }
    }
 
    @Override
    public void close() {
-      this.d.close();
-   }
-
-   public void a() {
-      this.h = this.h + (float)((Math.random() - Math.random()) * Math.random() * Math.random() * 0.1);
-      this.h *= 0.9F;
-      this.g = true;
-   }
-
-   public void b() {
-      RenderSystem.setShaderTexture(2, 0);
-   }
-
-   public void c() {
-      RenderSystem.setShaderTexture(2, this.f);
-      this.j.Y().a(this.f);
-      RenderSystem.texParameter(3553, 10241, 9729);
-      RenderSystem.texParameter(3553, 10240, 9729);
-   }
-
-   private float b(float $$0) {
-      if (this.j.s.a(bif.G)) {
-         bid $$1 = this.j.s.b(bif.G);
-         if ($$1 != null && $$1.a().isPresent()) {
-            return $$1.a().get().a(this.j.s, $$0);
-         }
+      for (ejv $$0 : this.f.values()) {
+         $$0.a();
       }
 
-      return 0.0F;
+      for (foe $$1 : this.e) {
+         $$1.close();
+      }
+
+      this.e.clear();
    }
 
-   private float a(bjg $$0, float $$1, float $$2) {
-      float $$3 = 0.45F * $$1;
-      return Math.max(0.0F, arw.b(((float)$$0.ah - $$2) * (float) Math.PI * 0.025F) * $$3);
+   public foe a(String $$0, ejv $$1, ejv $$2) throws IOException {
+      foe $$3 = new foe(this.c, $$0, $$1, $$2);
+      this.e.add(this.e.size(), $$3);
+      return $$3;
+   }
+
+   private void b() {
+      this.h = new Matrix4f().setOrtho(0.0F, (float)this.b.c, 0.0F, (float)this.b.d, 0.1F, 1000.0F);
+   }
+
+   public void a(int $$0, int $$1) {
+      this.i = this.b.c;
+      this.j = this.b.d;
+      this.b();
+
+      for (foe $$2 : this.e) {
+         $$2.a(this.h);
+      }
+
+      for (ejv $$3 : this.g) {
+         $$3.a($$0, $$1, eqp.a);
+      }
    }
 
    public void a(float $$0) {
-      if (this.g) {
-         this.g = false;
-         this.j.aG().a("lightTex");
-         fix $$1 = this.j.r;
-         if ($$1 != null) {
-            float $$2 = $$1.g(1.0F);
-            float $$3;
-            if ($$1.j() > 0) {
-               $$3 = 1.0F;
-            } else {
-               $$3 = $$2 * 0.95F + 0.05F;
-            }
+      if ($$0 < this.l) {
+         this.k = this.k + (1.0F - this.l);
+         this.k += $$0;
+      } else {
+         this.k = this.k + ($$0 - this.l);
+      }
 
-            float $$5 = this.j.m.ah().c().floatValue();
-            float $$6 = this.b($$0) * $$5;
-            float $$7 = this.a(this.j.s, $$6, $$0) * $$5;
-            float $$8 = this.j.s.A();
-            float $$9;
-            if (this.j.s.a(bif.p)) {
-               $$9 = fnx.a(this.j.s, $$0);
-            } else if ($$8 > 0.0F && this.j.s.a(bif.C)) {
-               $$9 = $$8;
-            } else {
-               $$9 = 0.0F;
-            }
+      this.l = $$0;
 
-            Vector3f $$12 = new Vector3f($$2, $$2, 1.0F).lerp(new Vector3f(1.0F, 1.0F, 1.0F), 0.35F);
-            float $$13 = this.h + 1.5F;
-            Vector3f $$14 = new Vector3f();
+      while (this.k > 20.0F) {
+         this.k -= 20.0F;
+      }
 
-            for (int $$15 = 0; $$15 < 16; $$15++) {
-               for (int $$16 = 0; $$16 < 16; $$16++) {
-                  float $$17 = a($$1.C_(), $$15) * $$3;
-                  float $$18 = a($$1.C_(), $$16) * $$13;
-                  float $$20 = $$18 * (($$18 * 0.6F + 0.4F) * 0.6F + 0.4F);
-                  float $$21 = $$18 * ($$18 * $$18 * 0.6F + 0.4F);
-                  $$14.set($$18, $$20, $$21);
-                  boolean $$22 = $$1.d().d();
-                  if ($$22) {
-                     $$14.lerp(new Vector3f(0.99F, 1.12F, 1.0F), 0.25F);
-                     a($$14);
-                  } else {
-                     Vector3f $$23 = new Vector3f($$12).mul($$17);
-                     $$14.add($$23);
-                     $$14.lerp(new Vector3f(0.75F, 0.75F, 0.75F), 0.04F);
-                     if (this.i.b($$0) > 0.0F) {
-                        float $$24 = this.i.b($$0);
-                        Vector3f $$25 = new Vector3f($$14).mul(0.7F, 0.6F, 0.6F);
-                        $$14.lerp($$25, $$24);
-                     }
-                  }
-
-                  if ($$9 > 0.0F) {
-                     float $$26 = Math.max($$14.x(), Math.max($$14.y(), $$14.z()));
-                     if ($$26 < 1.0F) {
-                        float $$27 = 1.0F / $$26;
-                        Vector3f $$28 = new Vector3f($$14).mul($$27);
-                        $$14.lerp($$28, $$9);
-                     }
-                  }
-
-                  if (!$$22) {
-                     if ($$7 > 0.0F) {
-                        $$14.add(-$$7, -$$7, -$$7);
-                     }
-
-                     a($$14);
-                  }
-
-                  float $$29 = this.j.m.al().c().floatValue();
-                  Vector3f $$30 = new Vector3f(this.c($$14.x), this.c($$14.y), this.c($$14.z));
-                  $$14.lerp($$30, Math.max(0.0F, $$29 - $$6));
-                  $$14.lerp(new Vector3f(0.75F, 0.75F, 0.75F), 0.04F);
-                  a($$14);
-                  $$14.mul(255.0F);
-                  int $$31 = 255;
-                  int $$32 = (int)$$14.x();
-                  int $$33 = (int)$$14.y();
-                  int $$34 = (int)$$14.z();
-                  this.e.a($$16, $$15, 0xFF000000 | $$34 << 16 | $$33 << 8 | $$32);
-               }
-            }
-
-            this.d.d();
-            this.j.aG().c();
-         }
+      for (foe $$1 : this.e) {
+         $$1.a(this.k / 20.0F);
       }
    }
 
-   private static void a(Vector3f $$0) {
-      $$0.set(arw.a($$0.x, 0.0F, 1.0F), arw.a($$0.y, 0.0F, 1.0F), arw.a($$0.z, 0.0F, 1.0F));
+   public final String a() {
+      return this.d;
    }
 
-   private float c(float $$0) {
-      float $$1 = 1.0F - $$0;
-      return 1.0F - $$1 * $$1 * $$1 * $$1;
-   }
-
-   public static float a(dis $$0, int $$1) {
-      float $$2 = (float)$$1 / 15.0F;
-      float $$3 = $$2 / (4.0F - 3.0F * $$2);
-      return arw.i($$0.s(), $$3, 1.0F);
-   }
-
-   public static int a(int $$0, int $$1) {
-      return $$0 << 4 | $$1 << 20;
-   }
-
-   public static int a(int $$0) {
-      return $$0 >> 4 & 65535;
-   }
-
-   public static int b(int $$0) {
-      return $$0 >> 20 & 65535;
+   @Nullable
+   private ejv b(@Nullable String $$0) {
+      if ($$0 == null) {
+         return null;
+      } else {
+         return $$0.equals("minecraft:main") ? this.b : this.f.get($$0);
+      }
    }
 }

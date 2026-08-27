@@ -1,28 +1,19 @@
-import com.mojang.serialization.Codec;
+public final class bhm implements bhh {
+   private final tl a;
+   private final cfv b;
 
-public enum bhm implements asp {
-   a("hurt", apd.sz),
-   b("thorns", apd.xK),
-   c("drowning", apd.sA),
-   d("burning", apd.sC),
-   e("poking", apd.sD),
-   f("freezing", apd.sB);
-
-   public static final Codec<bhm> g = asp.a(bhm::values);
-   private final String h;
-   private final apc i;
-
-   private bhm(String $$0, apc $$1) {
-      this.h = $$0;
-      this.i = $$1;
+   public bhm(cfv $$0, tl $$1) {
+      this.b = $$0;
+      this.a = $$1;
    }
 
    @Override
-   public String c() {
-      return this.h;
+   public tl N_() {
+      return this.a;
    }
 
-   public apc a() {
-      return this.i;
+   @Override
+   public cer createMenu(int $$0, cbz $$1, cca $$2) {
+      return this.b.createMenu($$0, $$1, $$2);
    }
 }

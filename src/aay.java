@@ -1,41 +1,92 @@
-import com.google.common.collect.Lists;
-import java.util.Collection;
-import java.util.List;
+import javax.annotation.Nullable;
 
-public class aay implements vd<ww> {
-   private final List<cmk<?>> a;
+public class aay implements ve<wx> {
+   private static final int a = 1;
+   private static final int b = 2;
+   private static final int c = 4;
+   private final int d;
+   private final bih e;
+   private final byte f;
+   private final int g;
+   private final byte h;
+   @Nullable
+   private final bij.a i;
 
-   public aay(Collection<cmk<?>> $$0) {
-      this.a = Lists.newArrayList($$0);
+   public aay(int $$0, bij $$1) {
+      this.d = $$0;
+      this.e = $$1.c();
+      this.f = (byte)($$1.e() & 0xFF);
+      this.g = $$1.d();
+      byte $$2 = 0;
+      if ($$1.f()) {
+         $$2 = (byte)($$2 | 1);
+      }
+
+      if ($$1.g()) {
+         $$2 = (byte)($$2 | 2);
+      }
+
+      if ($$1.h()) {
+         $$2 = (byte)($$2 | 4);
+      }
+
+      this.h = $$2;
+      this.i = $$1.a().orElse(null);
    }
 
    public aay(so $$0) {
-      this.a = $$0.a(aay::b);
+      this.d = $$0.n();
+      this.e = $$0.a(jb.e);
+      this.f = $$0.readByte();
+      this.g = $$0.n();
+      this.h = $$0.readByte();
+      this.i = $$0.c($$0x -> $$0x.a(ri.a, bij.a.a));
    }
 
    @Override
    public void a(so $$0) {
-      $$0.a(this.a, aay::a);
+      $$0.c(this.d);
+      $$0.a(jb.e, this.e);
+      $$0.k(this.f);
+      $$0.c(this.g);
+      $$0.k(this.h);
+      $$0.a(this.i, ($$0x, $$1) -> $$0x.a(ri.a, bij.a.a, $$1));
    }
 
-   public void a(ww $$0) {
+   public void a(wx $$0) {
       $$0.a(this);
    }
 
-   public List<cmk<?>> a() {
-      return this.a;
+   public int a() {
+      return this.d;
    }
 
-   private static cmk<?> b(so $$0) {
-      aew $$1 = $$0.s();
-      aew $$2 = $$0.s();
-      cmj<?> $$3 = jb.u.b($$1).orElseThrow(() -> new IllegalArgumentException("Unknown recipe serializer " + $$1)).a($$0);
-      return new cmk<>($$2, $$3);
+   public bih d() {
+      return this.e;
    }
 
-   public static <T extends cmj<?>> void a(so $$0, cmk<?> $$1) {
-      $$0.a(jb.u.b($$1.b().an_()));
-      $$0.a($$1.a());
-      ((cmm<cmj<?>>)$$1.b().an_()).a($$0, $$1.b());
+   public byte e() {
+      return this.f;
+   }
+
+   public int f() {
+      return this.g;
+   }
+
+   public boolean g() {
+      return (this.h & 2) == 2;
+   }
+
+   public boolean h() {
+      return (this.h & 1) == 1;
+   }
+
+   public boolean i() {
+      return (this.h & 4) == 4;
+   }
+
+   @Nullable
+   public bij.a j() {
+      return this.i;
    }
 }

@@ -1,26 +1,27 @@
 import org.joml.Vector2i;
 import org.joml.Vector2ic;
 
-public class fax implements fbb {
-   private final eso a;
+public class fax implements faw {
+   public static final faw a = new fax();
 
-   public fax(eso $$0) {
-      this.a = $$0;
+   private fax() {
    }
 
    @Override
    public Vector2ic a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      Vector2i $$6 = new Vector2i();
-      $$6.x = this.a.r() + 3;
-      $$6.y = this.a.t() + this.a.i() + 3 + 1;
-      if ($$6.y + $$5 + 3 > $$1) {
-         $$6.y = this.a.t() - $$5 - 3 - 1;
-      }
-
-      if ($$6.x + $$4 > $$0) {
-         $$6.x = Math.max(this.a.r() + this.a.l() - $$4 - 3, 4);
-      }
-
+      Vector2i $$6 = new Vector2i($$2, $$3).add(12, -12);
+      this.a($$0, $$1, $$6, $$4, $$5);
       return $$6;
+   }
+
+   private void a(int $$0, int $$1, Vector2i $$2, int $$3, int $$4) {
+      if ($$2.x + $$3 > $$0) {
+         $$2.x = Math.max($$2.x - 24 - $$3, 4);
+      }
+
+      int $$5 = $$4 + 3;
+      if ($$2.y + $$5 > $$1) {
+         $$2.y = $$1 - $$5;
+      }
    }
 }

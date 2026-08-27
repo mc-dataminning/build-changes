@@ -7,27 +7,27 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 public record cj(
-   Optional<cj.b> b, Optional<aev<cqt>> c, Optional<aev<dvi>> d, Optional<aev<cpv>> e, Optional<Boolean> f, Optional<cg> g, Optional<av> h, Optional<bx> i
+   Optional<cj.b> b, Optional<aey<cqz>> c, Optional<aey<dvc>> d, Optional<aey<cqb>> e, Optional<Boolean> f, Optional<cg> g, Optional<av> h, Optional<bx> i
 ) {
    public static final Codec<cj> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               arf.a(cj.b.a, "position").forGetter(cj::b),
-               arf.a(aev.a(jc.ap), "biome").forGetter(cj::c),
-               arf.a(aev.a(jc.az), "structure").forGetter(cj::d),
-               arf.a(aev.a(jc.aH), "dimension").forGetter(cj::e),
-               arf.a(Codec.BOOL, "smokey").forGetter(cj::f),
-               arf.a(cg.a, "light").forGetter(cj::g),
-               arf.a(av.a, "block").forGetter(cj::h),
-               arf.a(bx.a, "fluid").forGetter(cj::i)
+               arj.a(cj.b.a, "position").forGetter(cj::b),
+               arj.a(aey.a(jc.aq), "biome").forGetter(cj::c),
+               arj.a(aey.a(jc.aA), "structure").forGetter(cj::d),
+               arj.a(aey.a(jc.aI), "dimension").forGetter(cj::e),
+               arj.a(Codec.BOOL, "smokey").forGetter(cj::f),
+               arj.a(cg.a, "light").forGetter(cj::g),
+               arj.a(av.a, "block").forGetter(cj::h),
+               arj.a(bx.a, "fluid").forGetter(cj::i)
             )
             .apply($$0, cj::new)
    );
 
    private static Optional<cj> a(
       Optional<cj.b> $$0,
-      Optional<aev<cqt>> $$1,
-      Optional<aev<dvi>> $$2,
-      Optional<aev<cpv>> $$3,
+      Optional<aey<cqz>> $$1,
+      Optional<aey<dvc>> $$2,
+      Optional<aey<cqb>> $$3,
       Optional<Boolean> $$4,
       Optional<cg> $$5,
       Optional<av> $$6,
@@ -38,7 +38,7 @@ public record cj(
          : Optional.of(new cj($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
    }
 
-   public boolean a(akq $$0, double $$1, double $$2, double $$3) {
+   public boolean a(akt $$0, double $$1, double $$2, double $$3) {
       if (this.b.isPresent() && !this.b.get().a($$1, $$2, $$3)) {
          return false;
       } else if (this.e.isPresent() && this.e.get() != $$0.ac()) {
@@ -48,7 +48,7 @@ public record cj(
          boolean $$5 = $$0.o($$4);
          if (!this.c.isPresent() || $$5 && $$0.s($$4).a(this.c.get())) {
             if (!this.d.isPresent() || $$5 && $$0.a().a($$4, this.d.get()).b()) {
-               if (!this.f.isPresent() || $$5 && this.f.get() == cti.a($$0, $$4)) {
+               if (!this.f.isPresent() || $$5 && this.f.get() == ctq.a($$0, $$4)) {
                   if (this.g.isPresent() && !this.g.get().a($$0, $$4)) {
                      return false;
                   } else {
@@ -78,9 +78,9 @@ public record cj(
       private cl.c a;
       private cl.c b;
       private cl.c c;
-      private Optional<aev<cqt>> d;
-      private Optional<aev<dvi>> e;
-      private Optional<aev<cpv>> f;
+      private Optional<aey<cqz>> d;
+      private Optional<aey<dvc>> e;
+      private Optional<aey<cqb>> f;
       private Optional<Boolean> g;
       private Optional<cg> h;
       private Optional<av> i;
@@ -103,15 +103,15 @@ public record cj(
          return new cj.a();
       }
 
-      public static cj.a a(aev<cqt> $$0) {
+      public static cj.a a(aey<cqz> $$0) {
          return a().d($$0);
       }
 
-      public static cj.a b(aev<cpv> $$0) {
+      public static cj.a b(aey<cqb> $$0) {
          return a().f($$0);
       }
 
-      public static cj.a c(aev<dvi> $$0) {
+      public static cj.a c(aey<dvc> $$0) {
          return a().e($$0);
       }
 
@@ -134,17 +134,17 @@ public record cj(
          return this;
       }
 
-      public cj.a d(aev<cqt> $$0) {
+      public cj.a d(aey<cqz> $$0) {
          this.d = Optional.of($$0);
          return this;
       }
 
-      public cj.a e(aev<dvi> $$0) {
+      public cj.a e(aey<dvc> $$0) {
          this.e = Optional.of($$0);
          return this;
       }
 
-      public cj.a f(aev<cpv> $$0) {
+      public cj.a f(aey<cqb> $$0) {
          this.f = Optional.of($$0);
          return this;
       }
@@ -178,7 +178,7 @@ public record cj(
    static record b(cl.c b, cl.c c, cl.c d) {
       public static final Codec<cj.b> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
-                  arf.a(cl.c.d, "x", cl.c.c).forGetter(cj.b::a), arf.a(cl.c.d, "y", cl.c.c).forGetter(cj.b::b), arf.a(cl.c.d, "z", cl.c.c).forGetter(cj.b::c)
+                  arj.a(cl.c.d, "x", cl.c.c).forGetter(cj.b::a), arj.a(cl.c.d, "y", cl.c.c).forGetter(cj.b::b), arj.a(cl.c.d, "z", cl.c.c).forGetter(cj.b::c)
                )
                .apply($$0, cj.b::new)
       );

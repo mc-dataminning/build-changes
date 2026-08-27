@@ -1,58 +1,59 @@
-import java.io.BufferedInputStream;
-import java.io.FilterInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.ByteBuffer;
-import javax.sound.sampled.AudioFormat;
+import java.util.concurrent.locks.LockSupport;
 
-public class gdk implements gdi {
-   private final gdk.a a;
-   private gdi b;
-   private final BufferedInputStream c;
+public class gdk extends bfu<Runnable> {
+   private Thread a = this.b();
+   private volatile boolean b;
 
-   public gdk(gdk.a $$0, InputStream $$1) throws IOException {
-      this.a = $$0;
-      this.c = new BufferedInputStream($$1);
-      this.c.mark(Integer.MAX_VALUE);
-      this.b = $$0.create(new gdk.b(this.c));
+   public gdk() {
+      super("Sound executor");
+   }
+
+   private Thread b() {
+      Thread $$0 = new Thread(this::c);
+      $$0.setDaemon(true);
+      $$0.setName("Sound engine");
+      $$0.start();
+      return $$0;
    }
 
    @Override
-   public AudioFormat a() {
-      return this.b.a();
+   protected Runnable f(Runnable $$0) {
+      return $$0;
    }
 
    @Override
-   public ByteBuffer a(int $$0) throws IOException {
-      ByteBuffer $$1 = this.b.a($$0);
-      if (!$$1.hasRemaining()) {
-         this.b.close();
-         this.c.reset();
-         this.b = this.a.create(new gdk.b(this.c));
-         $$1 = this.b.a($$0);
-      }
-
-      return $$1;
+   protected boolean e(Runnable $$0) {
+      return !this.b;
    }
 
    @Override
-   public void close() throws IOException {
-      this.b.close();
-      this.c.close();
+   protected Thread au() {
+      return this.a;
    }
 
-   @FunctionalInterface
-   public interface a {
-      gdi create(InputStream var1) throws IOException;
+   private void c() {
+      while (!this.b) {
+         this.c(() -> this.b);
+      }
    }
 
-   static class b extends FilterInputStream {
-      b(InputStream $$0) {
-         super($$0);
+   @Override
+   protected void bq() {
+      LockSupport.park("waiting for tasks");
+   }
+
+   public void a() {
+      this.b = true;
+      this.a.interrupt();
+
+      try {
+         this.a.join();
+      } catch (InterruptedException var2) {
+         Thread.currentThread().interrupt();
       }
 
-      @Override
-      public void close() {
-      }
+      this.bo();
+      this.b = false;
+      this.a = this.b();
    }
 }

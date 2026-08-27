@@ -1,90 +1,63 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Streams;
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.DataFixUtils;
 import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.DSL.TypeReference;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.templates.List.ListType;
-import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
-import java.util.List;
-import java.util.Map;
 import java.util.function.Function;
 
-public class auj extends DataFix {
-   public auj(Schema $$0, boolean $$1) {
+public abstract class auj extends aui {
+   private final String a;
+
+   public auj(Schema $$0, String $$1) {
       super($$0, $$1);
+      this.a = $$1;
    }
 
+   @Override
    public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getOutputSchema().getType(ayx.c);
-      Type<?> $$1 = $$0.findFieldType("Level");
-      if (!($$1.findFieldType("TileEntities") instanceof ListType<?> $$3)) {
-         throw new IllegalStateException("Tile entity type is not a list type.");
-      } else {
-         return this.a($$1, $$3);
-      }
+      TypeReference $$0 = azd.s;
+      String $$1 = "minecraft:jigsaw";
+      OpticFinder<?> $$2 = DSL.namedChoice("minecraft:jigsaw", this.getInputSchema().getChoiceType($$0, "minecraft:jigsaw"));
+      TypeRewriteRule $$3 = this.fixTypeEverywhereTyped(
+         this.a + " for jigsaw state",
+         this.getInputSchema().getType($$0),
+         this.getOutputSchema().getType($$0),
+         $$2x -> $$2x.updateTyped(
+               $$2,
+               this.getOutputSchema().getChoiceType($$0, "minecraft:jigsaw"),
+               $$0xx -> $$0xx.update(
+                     DSL.remainderFinder(),
+                     $$0xxx -> $$0xxx.update("final_state", $$1xx -> (Dynamic)DataFixUtils.orElse($$1xx.asString().result().map($$0xxxxx -> {
+                              int $$1xxx = $$0xxxxx.indexOf(91);
+                              int $$2xx = $$0xxxxx.indexOf(123);
+                              int $$3x = $$0xxxxx.length();
+                              if ($$1xxx > 0) {
+                                 $$3x = Math.min($$3x, $$1xxx);
+                              }
+
+                              if ($$2xx > 0) {
+                                 $$3x = Math.min($$3x, $$2xx);
+                              }
+
+                              String $$4 = $$0xxxxx.substring(0, $$3x);
+                              String $$5 = this.a($$4);
+                              return $$5 + $$0xxxxx.substring($$3x);
+                           }).map($$0xxx::createString), $$1xx))
+                  )
+            )
+      );
+      return TypeRewriteRule.seq(super.makeRule(), $$3);
    }
 
-   private <TE> TypeRewriteRule a(Type<?> $$0, ListType<TE> $$1) {
-      Type<TE> $$2 = $$1.getElement();
-      OpticFinder<?> $$3 = DSL.fieldFinder("Level", $$0);
-      OpticFinder<List<TE>> $$4 = DSL.fieldFinder("TileEntities", $$1);
-      int $$5 = 416;
-      return TypeRewriteRule.seq(
-         this.fixTypeEverywhere(
-            "InjectBedBlockEntityType", this.getInputSchema().findChoiceType(ayx.s), this.getOutputSchema().findChoiceType(ayx.s), $$0x -> $$0xx -> $$0xx
-         ),
-         this.fixTypeEverywhereTyped(
-            "BedBlockEntityInjecter",
-            this.getOutputSchema().getType(ayx.c),
-            $$3x -> {
-               Typed<?> $$4x = $$3x.getTyped($$3);
-               Dynamic<?> $$5x = (Dynamic<?>)$$4x.get(DSL.remainderFinder());
-               int $$6 = $$5x.get("xPos").asInt(0);
-               int $$7 = $$5x.get("zPos").asInt(0);
-               List<TE> $$8 = Lists.newArrayList((Iterable)$$4x.getOrCreate($$4));
-
-               for (Dynamic<?> $$10 : $$5x.get("Sections").asList(Function.identity())) {
-                  int $$11 = $$10.get("Y").asInt(0);
-                  Streams.mapWithIndex($$10.get("Blocks").asIntStream(), ($$4xx, $$5xx) -> {
-                        if (416 == ($$4xx & 0xFF) << 4) {
-                           int $$6x = (int)$$5xx;
-                           int $$7x = $$6x & 15;
-                           int $$8x = $$6x >> 8 & 15;
-                           int $$9 = $$6x >> 4 & 15;
-                           Map<Dynamic<?>, Dynamic<?>> $$10x = Maps.newHashMap();
-                           $$10x.put($$10.createString("id"), $$10.createString("minecraft:bed"));
-                           $$10x.put($$10.createString("x"), $$10.createInt($$7x + ($$6 << 4)));
-                           $$10x.put($$10.createString("y"), $$10.createInt($$8x + ($$11 << 4)));
-                           $$10x.put($$10.createString("z"), $$10.createInt($$9 + ($$7 << 4)));
-                           $$10x.put($$10.createString("color"), $$10.createShort((short)14));
-                           return $$10x;
-                        } else {
-                           return null;
-                        }
-                     })
-                     .forEachOrdered(
-                        $$3xx -> {
-                           if ($$3xx != null) {
-                              $$8.add(
-                                 (TE)((Pair)$$2.read($$10.createMap($$3xx))
-                                       .result()
-                                       .orElseThrow(() -> new IllegalStateException("Could not parse newly created bed block entity.")))
-                                    .getFirst()
-                              );
-                           }
-                        }
-                     );
-               }
-
-               return !$$8.isEmpty() ? $$3x.set($$3, $$4x.set($$4, $$8)) : $$3x;
-            }
-         )
-      );
+   public static DataFix b(Schema $$0, String $$1, final Function<String, String> $$2) {
+      return new auj($$0, $$1) {
+         @Override
+         protected String a(String $$0) {
+            return $$2.apply($$0);
+         }
+      };
    }
 }

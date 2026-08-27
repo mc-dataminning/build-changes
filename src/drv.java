@@ -1,20 +1,17 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record drv(dsb b, float c) {
-   public static final Codec<drv> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dsb.a.fieldOf("above_root_provider").forGetter($$0x -> $$0x.b),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("above_root_placement_chance").forGetter($$0x -> $$0x.c)
-            )
-            .apply($$0, drv::new)
-   );
+public abstract class drv {
+   public static final Codec<drv> a = jb.W.q().dispatch(drv::a, drw::a);
 
-   public dsb a() {
-      return this.b;
+   public static dse a(dfd $$0) {
+      return new dse($$0);
    }
 
-   public float b() {
-      return this.c;
+   public static dse a(ctc $$0) {
+      return new dse($$0.o());
    }
+
+   protected abstract drw<?> a();
+
+   public abstract dfd a(ash var1, gw var2);
 }

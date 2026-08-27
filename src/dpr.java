@@ -1,53 +1,30 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 
-public record dpr(List<dpr.a> b, ha c, dlz d, boolean e) implements dqa {
+public record dpr(dsd b, dlt c, bgj d, int e) implements dpu {
    public static final Codec<dpr> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               dpr.a.a.listOf().fieldOf("layers").forGetter(dpr::a),
-               ha.g.fieldOf("direction").forGetter(dpr::b),
-               dlz.b.fieldOf("allowed_placement").forGetter(dpr::c),
-               Codec.BOOL.fieldOf("prioritize_tip").forGetter(dpr::d)
+               dsd.a.fieldOf("state_provider").forGetter(dpr::a),
+               dlt.b.fieldOf("target").forGetter(dpr::b),
+               bgj.b(0, 8).fieldOf("radius").forGetter(dpr::c),
+               Codec.intRange(0, 4).fieldOf("half_height").forGetter(dpr::d)
             )
             .apply($$0, dpr::new)
    );
 
-   public static dpr.a a(bgd $$0, dsb $$1) {
-      return new dpr.a($$0, $$1);
-   }
-
-   public static dpr b(bgd $$0, dsb $$1) {
-      return new dpr(List.of(a($$0, $$1)), ha.b, dlz.c, false);
-   }
-
-   public List<dpr.a> a() {
+   public dsd a() {
       return this.b;
    }
 
-   public ha b() {
+   public dlt b() {
       return this.c;
    }
 
-   public dlz c() {
+   public bgj c() {
       return this.d;
    }
 
-   public boolean d() {
+   public int d() {
       return this.e;
-   }
-
-   public static record a(bgd b, dsb c) {
-      public static final Codec<dpr.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(bgd.d.fieldOf("height").forGetter(dpr.a::a), dsb.a.fieldOf("provider").forGetter(dpr.a::b)).apply($$0, dpr.a::new)
-      );
-
-      public bgd a() {
-         return this.b;
-      }
-
-      public dsb b() {
-         return this.c;
-      }
    }
 }

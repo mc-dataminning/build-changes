@@ -1,188 +1,84 @@
-import java.util.Collection;
+import com.mojang.serialization.MapCodec;
 
-public class czr extends cxt implements czl, czw {
-   private static final dga b = dfz.C;
-   private final cxu c = new cxu(new czr.a(cxu.a));
-   private final cxu d = new cxu(new czr.a(cxu.e.a));
+public class czr extends cvk implements czq {
+   public static final MapCodec<czr> b = b(czr::new);
 
-   public czr(dfi.d $$0) {
-      super($$0);
-      this.k(this.n().a(b, Boolean.valueOf(false)));
+   @Override
+   public MapCodec<czr> a() {
+      return b;
+   }
+
+   public czr(dfc.d $$0) {
+      super(bgg.a(1), $$0);
    }
 
    @Override
-   public cxu b() {
-      return this.c;
-   }
-
-   public cxu g() {
-      return this.d;
-   }
-
-   public static boolean a(cpw $$0, gw $$1, dfj $$2, Collection<ha> $$3) {
-      boolean $$4 = false;
-      dfj $$5 = csw.qG.n();
-
-      for (ha $$6 : $$3) {
-         gw $$7 = $$1.a($$6);
-         if (a($$0, $$6, $$7, $$0.a_($$7))) {
-            $$5 = $$5.a(b($$6), Boolean.valueOf(true));
-            $$4 = true;
-         }
-      }
-
-      if (!$$4) {
-         return false;
-      } else {
-         if (!$$2.u().c()) {
-            $$5 = $$5.a(b, Boolean.valueOf(true));
-         }
-
-         $$0.a($$1, $$5, 3);
-         return true;
-      }
-   }
-
-   @Override
-   public void a(cpw $$0, dfj $$1, gw $$2, asc $$3) {
-      if ($$1.a(this)) {
-         for (ha $$4 : a) {
-            dga $$5 = b($$4);
-            if ($$1.c($$5) && $$0.a_($$2.a($$4)).a(csw.qF)) {
-               $$1 = $$1.a($$5, Boolean.valueOf(false));
-            }
-         }
-
-         if (!n($$1)) {
-            eam $$6 = $$0.b_($$2);
-            $$1 = ($$6.c() ? csw.a : csw.G).n();
-         }
-
-         $$0.a($$2, $$1, 3);
-         czl.super.a($$0, $$1, $$2, $$3);
-      }
-   }
-
-   @Override
-   public int a(czq.a $$0, cpw $$1, gw $$2, asc $$3, czq $$4, boolean $$5) {
-      if ($$5 && this.a($$4, $$1, $$0.a(), $$3)) {
-         return $$0.b() - 1;
-      } else {
-         return $$3.a($$4.f()) == 0 ? arw.d((float)$$0.b() * 0.5F) : $$0.b();
-      }
-   }
-
-   private boolean a(czq $$0, cpw $$1, gw $$2, asc $$3) {
-      dfj $$4 = $$1.a_($$2);
-      aqh<csv> $$5 = $$0.c();
-
-      for (ha $$6 : ha.a($$3)) {
-         if (a($$4, $$6)) {
-            gw $$7 = $$2.a($$6);
-            dfj $$8 = $$1.a_($$7);
-            if ($$8.a($$5)) {
-               dfj $$9 = csw.qF.n();
-               $$1.a($$7, $$9, 3);
-               csv.a($$8, $$9, $$1, $$7);
-               $$1.a(null, $$7, apd.ug, ape.e, 1.0F, 1.0F);
-               this.c.a($$9, $$1, $$7, $$0.h());
-               ha $$10 = $$6.g();
-
-               for (ha $$11 : a) {
-                  if ($$11 != $$10) {
-                     gw $$12 = $$7.a($$11);
-                     dfj $$13 = $$1.a_($$12);
-                     if ($$13.a(this)) {
-                        this.a($$1, $$13, $$12, $$3);
-                     }
-                  }
-               }
-
-               return true;
-            }
-         }
-      }
-
-      return false;
-   }
-
-   public static boolean a(cpw $$0, dfj $$1, gw $$2) {
-      if (!$$1.a(csw.qG)) {
-         return false;
-      } else {
-         for (ha $$3 : a) {
-            if (a($$1, $$3) && $$0.a_($$2.a($$3)).a(aps.bL)) {
-               return true;
-            }
-         }
-
-         return false;
-      }
-   }
-
-   @Override
-   public dfj a(dfj $$0, ha $$1, dfj $$2, cpw $$3, gw $$4, gw $$5) {
-      if ($$0.c(b)) {
-         $$3.a($$4, ean.c, ean.c.a($$3));
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   protected void a(dfk.a<csv, dfj> $$0) {
-      super.a($$0);
-      $$0.a(b);
-   }
-
-   @Override
-   public boolean a(dfj $$0, cln $$1) {
-      return !$$1.n().a(cji.fM) || super.a($$0, $$1);
-   }
-
-   @Override
-   public eam c_(dfj $$0) {
-      return $$0.c(b) ? ean.c.a(false) : super.c_($$0);
-   }
-
-   class a extends cxu.a {
-      private final cxu.e[] c;
-
-      public a(cxu.e... $$0) {
-         super(czr.this);
-         this.c = $$0;
-      }
-
-      @Override
-      public boolean a(cpb $$0, gw $$1, gw $$2, ha $$3, dfj $$4) {
-         dfj $$5 = $$0.a_($$2.a($$3));
-         if (!$$5.a(csw.qF) && !$$5.a(csw.qH) && !$$5.a(csw.bQ)) {
-            if ($$1.k($$2) == 2) {
-               gw $$6 = $$1.a($$3.g());
-               if ($$0.a_($$6).d($$0, $$6, $$3)) {
-                  return false;
-               }
+   public int a(czv.a $$0, cqc $$1, gw $$2, ash $$3, czv $$4, boolean $$5) {
+      int $$6 = $$0.b();
+      if ($$6 != 0 && $$3.a($$4.f()) == 0) {
+         gw $$7 = $$0.a();
+         boolean $$8 = $$7.a($$2, (double)$$4.e());
+         if (!$$8 && a($$1, $$7)) {
+            int $$9 = $$4.d();
+            if ($$3.a($$9) < $$6) {
+               gw $$10 = $$7.c();
+               dfd $$11 = this.a($$1, $$10, $$3, $$4.h());
+               $$1.a($$10, $$11, 3);
+               $$1.a(null, $$7, $$11.w().e(), aph.e, 1.0F, 1.0F);
             }
 
-            eam $$7 = $$4.u();
-            if (!$$7.c() && !$$7.b(ean.c)) {
-               return false;
-            } else {
-               return $$4.a(aps.aJ) ? false : $$4.r() || super.a($$0, $$1, $$2, $$3, $$4);
-            }
+            return Math.max(0, $$6 - $$9);
          } else {
-            return false;
+            return $$3.a($$4.g()) != 0 ? $$6 : $$6 - ($$8 ? 1 : a($$4, $$7, $$2, $$6));
          }
+      } else {
+         return $$6;
+      }
+   }
+
+   private static int a(czv $$0, gw $$1, gw $$2, int $$3) {
+      int $$4 = $$0.e();
+      float $$5 = asb.k((float)Math.sqrt($$1.j($$2)) - (float)$$4);
+      int $$6 = asb.h(24 - $$4);
+      float $$7 = Math.min(1.0F, $$5 / (float)$$6);
+      return Math.max(1, (int)((float)$$3 * $$7 * 0.5F));
+   }
+
+   private dfd a(cqc $$0, gw $$1, ash $$2, boolean $$3) {
+      dfd $$4;
+      if ($$2.a(11) == 0) {
+         $$4 = cte.qI.o().a(czu.d, Boolean.valueOf($$3));
+      } else {
+         $$4 = cte.qD.o();
       }
 
-      @Override
-      public cxu.e[] a() {
-         return this.c;
-      }
+      return $$4.b(dft.C) && !$$0.b_($$1).c() ? $$4.a(dft.C, Boolean.valueOf(true)) : $$4;
+   }
 
-      @Override
-      public boolean a(dfj $$0) {
-         return !$$0.a(csw.qG);
+   private static boolean a(cqc $$0, gw $$1) {
+      dfd $$2 = $$0.a_($$1.c());
+      if ($$2.i() || $$2.a(cte.G) && $$2.u().b(eah.c)) {
+         int $$3 = 0;
+
+         for (gw $$4 : gw.a($$1.b(-4, 0, -4), $$1.b(4, 2, 4))) {
+            dfd $$5 = $$0.a_($$4);
+            if ($$5.a(cte.qD) || $$5.a(cte.qI)) {
+               $$3++;
+            }
+
+            if ($$3 > 2) {
+               return false;
+            }
+         }
+
+         return true;
+      } else {
+         return false;
       }
+   }
+
+   @Override
+   public boolean d() {
+      return false;
    }
 }

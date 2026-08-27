@@ -1,50 +1,30 @@
-@FunctionalInterface
-public interface fqf<T extends dcv> {
-   fqe<T> create(fqf.a var1);
+public class fqf implements fqa<ddf> {
+   private static final float a = 0.375F;
+   private final fub b;
 
-   public static class a {
-      private final fqd a;
-      private final foy b;
-      private final fuf c;
-      private final ftf d;
-      private final fhy e;
-      private final esd f;
+   public fqf(fqb.a $$0) {
+      this.b = $$0.d();
+   }
 
-      public a(fqd $$0, foy $$1, fuf $$2, ftf $$3, fhy $$4, esd $$5) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$4;
-         this.f = $$5;
-      }
+   public void a(ddf $$0, float $$1, elj $$2, foa $$3, int $$4, int $$5) {
+      ha $$6 = $$0.q().c(ctq.f);
+      hn<cjl> $$7 = $$0.c();
+      int $$8 = (int)$$0.p().a();
 
-      public fqd a() {
-         return this.a;
-      }
-
-      public foy b() {
-         return this.b;
-      }
-
-      public ftf c() {
-         return this.d;
-      }
-
-      public fuf d() {
-         return this.c;
-      }
-
-      public fhy e() {
-         return this.e;
-      }
-
-      public fic a(fia $$0) {
-         return this.e.a($$0);
-      }
-
-      public esd f() {
-         return this.f;
+      for (int $$9 = 0; $$9 < $$7.size(); $$9++) {
+         cjl $$10 = $$7.get($$9);
+         if ($$10 != cjl.b) {
+            $$2.a();
+            $$2.a(0.5F, 0.44921875F, 0.5F);
+            ha $$11 = ha.b(($$9 + $$6.e()) % 4);
+            float $$12 = -$$11.p();
+            $$2.a(a.d.rotationDegrees($$12));
+            $$2.a(a.b.rotationDegrees(90.0F));
+            $$2.a(-0.3125F, -0.3125F, 0.0F);
+            $$2.b(0.375F, 0.375F, 0.375F);
+            this.b.a($$10, cji.i, $$4, $$5, $$2, $$3, $$0.k(), $$8 + $$9);
+            $$2.b();
+         }
       }
    }
 }

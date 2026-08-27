@@ -1,55 +1,94 @@
+import com.mojang.logging.LogUtils;
 import java.io.IOException;
+import java.nio.file.DirectoryStream;
+import java.nio.file.FileSystem;
+import java.nio.file.FileSystems;
 import java.nio.file.Files;
-import java.nio.file.LinkOption;
-import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
-import java.nio.file.attribute.BasicFileAttributes;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.function.BiConsumer;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public abstract class and<T> {
-   private final ehd a;
+public class and implements anj {
+   static final Logger a = LogUtils.getLogger();
+   private final Path b;
+   private final aml c;
+   private final ani d;
+   private final egx e;
 
-   protected and(ehd $$0) {
-      this.a = $$0;
+   public and(Path $$0, aml $$1, ani $$2, egx $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
    }
 
-   @Nullable
-   public T a(Path $$0, List<ehe> $$1) throws IOException {
-      Path $$2 = $$0;
+   private static String a(Path $$0) {
+      return $$0.getFileName().toString();
+   }
 
-      BasicFileAttributes $$3;
+   @Override
+   public void a(Consumer<ane> $$0) {
       try {
-         $$3 = Files.readAttributes($$0, BasicFileAttributes.class, LinkOption.NOFOLLOW_LINKS);
-      } catch (NoSuchFileException var6) {
-         return null;
+         v.c(this.b);
+         a(this.b, this.e, false, ($$1, $$2) -> {
+            String $$3 = a($$1);
+            ane $$4 = ane.a("file/" + $$3, tl.b($$3), false, $$2, this.c, ane.b.a, this.d);
+            if ($$4 != null) {
+               $$0.accept($$4);
+            }
+         });
+      } catch (IOException var3) {
+         a.warn("Failed to list packs in {}", this.b, var3);
       }
+   }
 
-      if ($$3.isSymbolicLink()) {
-         this.a.a($$0, $$1);
-         if (!$$1.isEmpty()) {
-            return null;
+   public static void a(Path $$0, egx $$1, boolean $$2, BiConsumer<Path, ane.c> $$3) throws IOException {
+      and.a $$4 = new and.a($$1, $$2);
+
+      try (DirectoryStream<Path> $$5 = Files.newDirectoryStream($$0)) {
+         for (Path $$6 : $$5) {
+            try {
+               List<egy> $$7 = new ArrayList<>();
+               ane.c $$8 = $$4.a($$6, $$7);
+               if (!$$7.isEmpty()) {
+                  a.warn("Ignoring potential pack entry: {}", egw.a($$6, $$7));
+               } else if ($$8 != null) {
+                  $$3.accept($$6, $$8);
+               } else {
+                  a.info("Found non-pack entry '{}', ignoring", $$6);
+               }
+            } catch (IOException var11) {
+               a.warn("Failed to read properties of '{}', ignoring", $$6, var11);
+            }
          }
+      }
+   }
 
-         $$2 = Files.readSymbolicLink($$0);
-         $$3 = Files.readAttributes($$2, BasicFileAttributes.class, LinkOption.NOFOLLOW_LINKS);
+   static class a extends ang<ane.c> {
+      private final boolean a;
+
+      protected a(egx $$0, boolean $$1) {
+         super($$0);
+         this.a = $$1;
       }
 
-      if ($$3.isDirectory()) {
-         this.a.b($$2, $$1);
-         if (!$$1.isEmpty()) {
+      @Nullable
+      protected ane.c a(Path $$0) {
+         FileSystem $$1 = $$0.getFileSystem();
+         if ($$1 != FileSystems.getDefault() && !($$1 instanceof amt)) {
+            and.a.info("Can't open pack archive at {}", $$0);
             return null;
          } else {
-            return !Files.isRegularFile($$2.resolve("pack.mcmeta")) ? null : this.c($$2);
+            return new ami.a($$0, this.a);
          }
-      } else {
-         return $$3.isRegularFile() && $$2.getFileName().toString().endsWith(".zip") ? this.d($$2) : null;
+      }
+
+      protected ane.c b(Path $$0) {
+         return new amm.a($$0, this.a);
       }
    }
-
-   @Nullable
-   protected abstract T d(Path var1) throws IOException;
-
-   @Nullable
-   protected abstract T c(Path var1) throws IOException;
 }

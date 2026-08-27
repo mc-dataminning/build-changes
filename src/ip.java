@@ -5,10 +5,10 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import org.joml.Vector3f;
 
 public class ip extends iq {
-   public static final Vector3f a = ehn.a(16711680).j();
+   public static final Vector3f a = ehh.a(16711680).j();
    public static final ip b = new ip(a, 1.0F);
    public static final Codec<ip> c = RecordCodecBuilder.create(
-      $$0 -> $$0.group(arf.d.fieldOf("color").forGetter($$0x -> $$0x.g), Codec.FLOAT.fieldOf("scale").forGetter($$0x -> $$0x.h)).apply($$0, ip::new)
+      $$0 -> $$0.group(arj.d.fieldOf("color").forGetter($$0x -> $$0x.g), Codec.FLOAT.fieldOf("scale").forGetter($$0x -> $$0x.h)).apply($$0, ip::new)
    );
    public static final it.a<ip> d = new it.a<ip>() {
       public ip a(iu<ip> $$0, StringReader $$1) throws CommandSyntaxException {

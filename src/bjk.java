@@ -1,18 +1,6 @@
-public enum bjk {
-   a,
-   b,
-   c,
-   d,
-   e,
-   f,
-   g,
-   h,
-   i,
-   j,
-   k,
-   l,
-   m,
-   n,
-   o,
-   p;
+import java.util.Map;
+import org.joml.Vector3f;
+
+public interface bjk {
+   Map<String, Vector3f> a();
 }

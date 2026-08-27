@@ -1,8 +1,9 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import com.mojang.blaze3d.systems.RenderSystem;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@ejj
-@eji
-interface ejw {
+public class ejw extends ejv {
+   public ejw(int $$0, int $$1, boolean $$2, boolean $$3) {
+      super($$2);
+      RenderSystem.assertOnRenderThreadOrInit();
+      this.a($$0, $$1, $$3);
+   }
 }

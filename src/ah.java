@@ -18,7 +18,7 @@ import javax.annotation.Nullable;
 
 public class ah implements Comparable<ah> {
    private static final DateTimeFormatter b = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss Z", Locale.ROOT);
-   private static final Codec<Instant> c = arf.a(b).xmap(Instant::from, $$0 -> $$0.atZone(ZoneId.systemDefault()));
+   private static final Codec<Instant> c = arj.a(b).xmap(Instant::from, $$0 -> $$0.atZone(ZoneId.systemDefault()));
    private static final Codec<Map<String, an>> d = Codec.unboundedMap(Codec.STRING, c)
       .xmap(
          $$0 -> $$0.entrySet().stream().collect(Collectors.toMap(Entry::getKey, $$0x -> new an((Instant)$$0x.getValue()))),
@@ -28,7 +28,7 @@ public class ah implements Comparable<ah> {
                .collect(Collectors.toMap(Entry::getKey, $$0x -> Objects.requireNonNull(((an)$$0x.getValue()).d())))
       );
    public static final Codec<ah> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(arf.a(d, "criteria", Map.of()).forGetter($$0x -> $$0x.e), Codec.BOOL.fieldOf("done").orElse(true).forGetter(ah::a))
+      $$0 -> $$0.group(arj.a(d, "criteria", Map.of()).forGetter($$0x -> $$0x.e), Codec.BOOL.fieldOf("done").orElse(true).forGetter(ah::a))
             .apply($$0, ($$0x, $$1) -> new ah(new HashMap<>($$0x)))
    );
    private final Map<String, an> e;
@@ -97,7 +97,7 @@ public class ah implements Comparable<ah> {
    }
 
    public static ah b(so $$0) {
-      Map<String, an> $$1 = $$0.a(so::r, an::b);
+      Map<String, an> $$1 = $$0.a(so::s, an::b);
       return new ah($$1);
    }
 

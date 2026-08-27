@@ -1,22 +1,41 @@
-import java.util.Optional;
-import javax.annotation.Nullable;
+import com.google.common.collect.Lists;
+import java.util.Collection;
+import java.util.List;
 
-public record aaz(aev<dis> a, aev<cpv> b, long c, cps d, @Nullable cps e, boolean f, boolean g, Optional<hd> h, int i) {
-   public aaz(so $$0) {
-      this(
-         $$0.a(jc.au), $$0.a(jc.aH), $$0.readLong(), cps.a($$0.readByte()), cps.b($$0.readByte()), $$0.readBoolean(), $$0.readBoolean(), $$0.b(so::h), $$0.m()
-      );
+public class aaz implements ve<wx> {
+   private final List<cmq<?>> a;
+
+   public aaz(Collection<cmq<?>> $$0) {
+      this.a = Lists.newArrayList($$0);
    }
 
+   public aaz(so $$0) {
+      this.a = $$0.a(aaz::b);
+   }
+
+   @Override
    public void a(so $$0) {
-      $$0.b(this.a);
-      $$0.b(this.b);
-      $$0.b(this.c);
-      $$0.k(this.d.a());
-      $$0.k(cps.a(this.e));
-      $$0.a(this.f);
-      $$0.a(this.g);
-      $$0.a(this.h, so::a);
-      $$0.c(this.i);
+      $$0.a(this.a, aaz::a);
+   }
+
+   public void a(wx $$0) {
+      $$0.a(this);
+   }
+
+   public List<cmq<?>> a() {
+      return this.a;
+   }
+
+   private static cmq<?> b(so $$0) {
+      aez $$1 = $$0.t();
+      aez $$2 = $$0.t();
+      cmp<?> $$3 = jb.u.b($$1).orElseThrow(() -> new IllegalArgumentException("Unknown recipe serializer " + $$1)).a($$0);
+      return new cmq<>($$2, $$3);
+   }
+
+   public static <T extends cmp<?>> void a(so $$0, cmq<?> $$1) {
+      $$0.a(jb.u.b($$1.b().an_()));
+      $$0.a($$1.a());
+      ((cms<cmp<?>>)$$1.b().an_()).a($$0, $$1.b());
    }
 }

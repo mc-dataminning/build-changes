@@ -1,23 +1,30 @@
 import com.mojang.serialization.Codec;
 
-public class dox extends dnw<dqo> {
-   public dox(Codec<dqo> $$0) {
+public class dox extends dnq<dqm> {
+   public dox(Codec<dqm> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(dny<dqo> $$0) {
-      cqp $$1 = $$0.b();
-      gw $$2 = $$0.e();
-      dqo $$3 = $$0.f();
+   public boolean a(dns<dqm> $$0) {
+      dqm $$1 = $$0.f();
+      cqv $$2 = $$0.b();
+      gw $$3 = $$0.e();
+      dfd $$4 = $$1.a().a($$0.d(), $$3);
+      if ($$4.a($$2, $$3)) {
+         if ($$4.b() instanceof cvi) {
+            if (!$$2.t($$3.c())) {
+               return false;
+            }
 
-      for (dqi.a $$4 : $$3.b) {
-         if ($$4.b.a($$1.a_($$2), $$0.d())) {
-            $$1.a($$2, $$4.c, 2);
-            break;
+            cvi.a($$2, $$4, $$3, 2);
+         } else {
+            $$2.a($$3, $$4, 2);
          }
-      }
 
-      return true;
+         return true;
+      } else {
+         return false;
+      }
    }
 }

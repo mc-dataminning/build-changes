@@ -8,8 +8,8 @@ public class cp extends cw<cp.a> {
       return new cp.a($$1, $$3, $$4);
    }
 
-   public void a(akr $$0, biq $$1, bho $$2, float $$3, float $$4, boolean $$5) {
-      ecq $$6 = bq.b($$0, $$1);
+   public void a(aku $$0, biw $$1, bhu $$2, float $$3, float $$4, boolean $$5) {
+      eck $$6 = bq.b($$0, $$1);
       this.a($$0, $$6x -> $$6x.a($$0, $$6, $$2, $$3, $$4, $$5));
    }
 
@@ -47,7 +47,7 @@ public class cp extends cw<cp.a> {
          return al.g.a(new cp.a(Optional.empty(), Optional.of($$0.b()), bq.a($$1)));
       }
 
-      public boolean a(akr $$0, ecq $$1, bho $$2, float $$3, float $$4, boolean $$5) {
+      public boolean a(aku $$0, eck $$1, bhu $$2, float $$3, float $$4, boolean $$5) {
          return this.a.isPresent() && !this.a.get().a($$0, $$2, $$3, $$4, $$5) ? false : !this.b.isPresent() || this.b.get().a($$1);
       }
 

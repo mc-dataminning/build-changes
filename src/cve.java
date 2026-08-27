@@ -1,55 +1,55 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
 
-public class cve extends csi {
-   protected cve(dfi.d $$0) {
+public class cve extends ctc {
+   public static final MapCodec<cve> a = b(cve::new);
+   protected static final eia b = cvx.c;
+
+   @Override
+   public MapCodec<cve> a() {
+      return a;
+   }
+
+   protected cve(dfc.d $$0) {
       super($$0);
    }
 
    @Override
-   public dcv a(gw $$0, dfj $$1) {
-      return new dej($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dcv> dcw<T> a(cpv $$0, dfj $$1, dcx<T> $$2) {
-      return a($$2, dcx.v, $$0.B ? dej::a : dej::b);
+   public boolean g_(dfd $$0) {
+      return true;
    }
 
    @Override
-   public void a(dfj $$0, cpv $$1, gw $$2, asc $$3) {
-      dcv $$4 = $$1.c_($$2);
-      if ($$4 instanceof dej) {
-         int $$5 = ((dej)$$4).g();
+   public dfd a(clt $$0) {
+      return !this.o().a((cqe)$$0.q(), $$0.a()) ? ctc.a(this.o(), cte.j.o(), $$0.q(), $$0.a()) : super.a($$0);
+   }
 
-         for (int $$6 = 0; $$6 < $$5; $$6++) {
-            double $$7 = (double)$$2.u() + $$3.j();
-            double $$8 = (double)$$2.v() + $$3.j();
-            double $$9 = (double)$$2.w() + $$3.j();
-            double $$10 = ($$3.j() - 0.5) * 0.5;
-            double $$11 = ($$3.j() - 0.5) * 0.5;
-            double $$12 = ($$3.j() - 0.5) * 0.5;
-            int $$13 = $$3.a(2) * 2 - 1;
-            if ($$3.h()) {
-               $$9 = (double)$$2.w() + 0.5 + 0.25 * (double)$$13;
-               $$12 = (double)($$3.i() * 2.0F * (float)$$13);
-            } else {
-               $$7 = (double)$$2.u() + 0.5 + 0.25 * (double)$$13;
-               $$10 = (double)($$3.i() * 2.0F * (float)$$13);
-            }
-
-            $$1.a(iv.X, $$7, $$8, $$9, $$10, $$11, $$12);
-         }
+   @Override
+   public dfd a(dfd $$0, ha $$1, dfd $$2, cqc $$3, gw $$4, gw $$5) {
+      if ($$1 == ha.b && !$$0.a($$3, $$4)) {
+         $$3.a($$4, this, 1);
       }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public cjf a(cpb $$0, gw $$1, dfj $$2) {
-      return cjf.b;
+   public void a(dfd $$0, akt $$1, gw $$2, ash $$3) {
+      cvx.a(null, $$0, $$1, $$2);
    }
 
    @Override
-   public boolean a(dfj $$0, eal $$1) {
+   public boolean a(dfd $$0, cqe $$1, gw $$2) {
+      dfd $$3 = $$1.a_($$2.c());
+      return !$$3.e() || $$3.b() instanceof cvz;
+   }
+
+   @Override
+   public eia a(dfd $$0, cph $$1, gw $$2, ehm $$3) {
+      return b;
+   }
+
+   @Override
+   public boolean a(dfd $$0, cph $$1, gw $$2, eaw $$3) {
       return false;
    }
 }

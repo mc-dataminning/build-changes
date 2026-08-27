@@ -1,71 +1,155 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.ints.IntArrayFIFOQueue;
+import it.unimi.dsi.fastutil.ints.IntPriorityQueue;
+import java.util.BitSet;
+import java.util.EnumSet;
+import java.util.Set;
 
-class fqz {
-   private final Map<gw, dcv> a;
-   @Nullable
-   private final List<dhy<dfj>> b;
-   private final boolean c;
-   private final dhq d;
+public class fqz {
+   private static final int a = 4;
+   private static final int b = 16;
+   private static final int c = 15;
+   private static final int d = 4096;
+   private static final int e = 0;
+   private static final int f = 4;
+   private static final int g = 8;
+   private static final int h = (int)Math.pow(16.0, 0.0);
+   private static final int i = (int)Math.pow(16.0, 1.0);
+   private static final int j = (int)Math.pow(16.0, 2.0);
+   private static final int k = -1;
+   private static final ha[] l = ha.values();
+   private final BitSet m = new BitSet(4096);
+   private static final int[] n = ac.a(new int[1352], $$0 -> {
+      int $$1 = 0;
+      int $$2 = 15;
+      int $$3 = 0;
 
-   fqz(dhq $$0) {
-      this.d = $$0;
-      this.c = $$0.F().af();
-      this.a = ImmutableMap.copyOf($$0.G());
-      if ($$0 instanceof dhm) {
-         this.b = null;
-      } else {
-         dhr[] $$1 = $$0.d();
-         this.b = new ArrayList<>($$1.length);
-
-         for (dhr $$2 : $$1) {
-            this.b.add($$2.c() ? null : $$2.h().d());
+      for (int $$4 = 0; $$4 < 16; $$4++) {
+         for (int $$5 = 0; $$5 < 16; $$5++) {
+            for (int $$6 = 0; $$6 < 16; $$6++) {
+               if ($$4 == 0 || $$4 == 15 || $$5 == 0 || $$5 == 15 || $$6 == 0 || $$6 == 15) {
+                  $$0[$$3++] = a($$4, $$5, $$6);
+               }
+            }
          }
+      }
+   });
+   private int o = 4096;
+
+   public void a(gw $$0) {
+      this.m.set(b($$0), true);
+      this.o--;
+   }
+
+   private static int b(gw $$0) {
+      return a($$0.u() & 15, $$0.v() & 15, $$0.w() & 15);
+   }
+
+   private static int a(int $$0, int $$1, int $$2) {
+      return $$0 << 0 | $$1 << 8 | $$2 << 4;
+   }
+
+   public fra a() {
+      fra $$0 = new fra();
+      if (4096 - this.o < 256) {
+         $$0.a(true);
+      } else if (this.o == 0) {
+         $$0.a(false);
+      } else {
+         for (int $$1 : n) {
+            if (!this.m.get($$1)) {
+               $$0.a(this.a($$1));
+            }
+         }
+      }
+
+      return $$0;
+   }
+
+   private Set<ha> a(int $$0) {
+      Set<ha> $$1 = EnumSet.noneOf(ha.class);
+      IntPriorityQueue $$2 = new IntArrayFIFOQueue();
+      $$2.enqueue($$0);
+      this.m.set($$0, true);
+
+      while (!$$2.isEmpty()) {
+         int $$3 = $$2.dequeueInt();
+         this.a($$3, $$1);
+
+         for (ha $$4 : l) {
+            int $$5 = this.a($$3, $$4);
+            if ($$5 >= 0 && !this.m.get($$5)) {
+               this.m.set($$5, true);
+               $$2.enqueue($$5);
+            }
+         }
+      }
+
+      return $$1;
+   }
+
+   private void a(int $$0, Set<ha> $$1) {
+      int $$2 = $$0 >> 0 & 15;
+      if ($$2 == 0) {
+         $$1.add(ha.e);
+      } else if ($$2 == 15) {
+         $$1.add(ha.f);
+      }
+
+      int $$3 = $$0 >> 8 & 15;
+      if ($$3 == 0) {
+         $$1.add(ha.a);
+      } else if ($$3 == 15) {
+         $$1.add(ha.b);
+      }
+
+      int $$4 = $$0 >> 4 & 15;
+      if ($$4 == 0) {
+         $$1.add(ha.c);
+      } else if ($$4 == 15) {
+         $$1.add(ha.d);
       }
    }
 
-   @Nullable
-   public dcv a(gw $$0) {
-      return this.a.get($$0);
-   }
-
-   public dfj b(gw $$0) {
-      int $$1 = $$0.u();
-      int $$2 = $$0.v();
-      int $$3 = $$0.w();
-      if (this.c) {
-         dfj $$4 = null;
-         if ($$2 == 60) {
-            $$4 = csw.hW.n();
-         }
-
-         if ($$2 == 70) {
-            $$4 = dkj.a($$1, $$3);
-         }
-
-         return $$4 == null ? csw.a.n() : $$4;
-      } else if (this.b == null) {
-         return csw.a.n();
-      } else {
-         try {
-            int $$5 = this.d.e($$2);
-            if ($$5 >= 0 && $$5 < this.b.size()) {
-               dhy<dfj> $$6 = this.b.get($$5);
-               if ($$6 != null) {
-                  return $$6.a($$1 & 15, $$2 & 15, $$3 & 15);
-               }
+   private int a(int $$0, ha $$1) {
+      switch ($$1) {
+         case a:
+            if (($$0 >> 8 & 15) == 0) {
+               return -1;
             }
 
-            return csw.a.n();
-         } catch (Throwable var8) {
-            o $$8 = o.a(var8, "Getting block state");
-            p $$9 = $$8.a("Block being got");
-            $$9.a("Location", () -> p.a(this.d, $$1, $$2, $$3));
-            throw new y($$8);
-         }
+            return $$0 - j;
+         case b:
+            if (($$0 >> 8 & 15) == 15) {
+               return -1;
+            }
+
+            return $$0 + j;
+         case c:
+            if (($$0 >> 4 & 15) == 0) {
+               return -1;
+            }
+
+            return $$0 - i;
+         case d:
+            if (($$0 >> 4 & 15) == 15) {
+               return -1;
+            }
+
+            return $$0 + i;
+         case e:
+            if (($$0 >> 0 & 15) == 0) {
+               return -1;
+            }
+
+            return $$0 - h;
+         case f:
+            if (($$0 >> 0 & 15) == 15) {
+               return -1;
+            }
+
+            return $$0 + h;
+         default:
+            return -1;
       }
    }
 }

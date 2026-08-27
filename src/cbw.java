@@ -1,19 +1,8 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.security.PrivateKey;
-import java.time.Instant;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public record cbw(PrivateKey b, cbx c, Instant d) {
-   public static final Codec<cbw> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               aqw.g.fieldOf("private_key").forGetter(cbw::b),
-               cbx.c.fieldOf("public_key").forGetter(cbw::c),
-               arf.m.fieldOf("refreshed_after").forGetter(cbw::d)
-            )
-            .apply($$0, cbw::new)
-   );
-
-   public boolean a() {
-      return this.d.isBefore(Instant.now());
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@u
+@w
+interface cbw {
 }

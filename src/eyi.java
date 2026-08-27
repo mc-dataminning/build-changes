@@ -1,71 +1,41 @@
-import javax.annotation.Nullable;
+import java.util.Arrays;
 
-public class eyi extends eyk implements asb {
-   @Nullable
-   private tl a;
-   @Nullable
-   private tl b;
-   private int c;
-   private boolean k;
-   private final boolean l;
+public class eyi extends exx {
+   private eth c;
 
-   public eyi(boolean $$0) {
-      super(eqn.a);
-      this.l = $$0;
+   private static eqs<?>[] a(eqt $$0) {
+      return new eqs[]{$$0.S(), $$0.T()};
+   }
+
+   public eyi(eye $$0, eqt $$1) {
+      super($$0, $$1, tl.c("options.sounds.title"));
    }
 
    @Override
-   public boolean ay_() {
-      return false;
+   protected void aH_() {
+      this.c = new eth(this.f, this.g, this.h, 32, this.h - 32, 25);
+      this.c.a(this.b.b(aph.a));
+      this.c.a(this.l());
+      this.c.a(this.b.ap());
+      this.c.a(a(this.b));
+      this.e(this.c);
+      this.d(esk.a(tk.d, $$0 -> {
+         this.f.m.ar();
+         this.f.a(this.a);
+      }).a(this.g / 2 - 100, this.h - 27, 200, 20).a());
+   }
+
+   private eqs<?>[] l() {
+      return Arrays.stream(aph.values()).filter($$0 -> $$0 != aph.a).map($$0 -> this.b.b($$0)).toArray(eqs[]::new);
    }
 
    @Override
-   protected boolean aG_() {
-      return false;
+   public void a(erz $$0, int $$1, int $$2, float $$3) {
+      this.a($$0, this.c, $$1, $$2, $$3);
    }
 
    @Override
-   public void a(tl $$0) {
+   public void b(erz $$0, int $$1, int $$2, float $$3) {
       this.b($$0);
-   }
-
-   @Override
-   public void b(tl $$0) {
-      this.a = $$0;
-      this.c(tl.c("menu.working"));
-   }
-
-   @Override
-   public void c(tl $$0) {
-      this.b = $$0;
-      this.a(0);
-   }
-
-   @Override
-   public void a(int $$0) {
-      this.c = $$0;
-   }
-
-   @Override
-   public void a() {
-      this.k = true;
-   }
-
-   @Override
-   public void a(esf $$0, int $$1, int $$2, float $$3) {
-      if (this.k) {
-         if (this.l) {
-            this.f.a(null);
-         }
-      } else {
-         super.a($$0, $$1, $$2, $$3);
-         if (this.a != null) {
-            $$0.a(this.i, this.a, this.g / 2, 70, 16777215);
-         }
-
-         if (this.b != null && this.c != 0) {
-            $$0.a(this.i, tl.h().b(this.b).f(" " + this.c + "%"), this.g / 2, 90, 16777215);
-         }
-      }
    }
 }

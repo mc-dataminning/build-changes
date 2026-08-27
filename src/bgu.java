@@ -1,35 +1,147 @@
-public class bgu {
-   public static void a(cpv $$0, gw $$1, bgr $$2) {
-      a($$0, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), $$2);
+import java.util.UUID;
+
+public abstract class bgu {
+   private final UUID h;
+   protected tl a;
+   protected float b;
+   protected bgu.a c;
+   protected bgu.b d;
+   protected boolean e;
+   protected boolean f;
+   protected boolean g;
+
+   public bgu(UUID $$0, tl $$1, bgu.a $$2, bgu.b $$3) {
+      this.h = $$0;
+      this.a = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.b = 1.0F;
    }
 
-   public static void a(cpv $$0, biq $$1, bgr $$2) {
-      a($$0, $$1.dq(), $$1.ds(), $$1.dw(), $$2);
+   public UUID i() {
+      return this.h;
    }
 
-   private static void a(cpv $$0, double $$1, double $$2, double $$3, bgr $$4) {
-      for (int $$5 = 0; $$5 < $$4.b(); $$5++) {
-         a($$0, $$1, $$2, $$3, $$4.a($$5));
+   public tl j() {
+      return this.a;
+   }
+
+   public void a(tl $$0) {
+      this.a = $$0;
+   }
+
+   public float k() {
+      return this.b;
+   }
+
+   public void a(float $$0) {
+      this.b = $$0;
+   }
+
+   public bgu.a l() {
+      return this.c;
+   }
+
+   public void a(bgu.a $$0) {
+      this.c = $$0;
+   }
+
+   public bgu.b m() {
+      return this.d;
+   }
+
+   public void a(bgu.b $$0) {
+      this.d = $$0;
+   }
+
+   public boolean n() {
+      return this.e;
+   }
+
+   public bgu a(boolean $$0) {
+      this.e = $$0;
+      return this;
+   }
+
+   public boolean o() {
+      return this.f;
+   }
+
+   public bgu b(boolean $$0) {
+      this.f = $$0;
+      return this;
+   }
+
+   public bgu c(boolean $$0) {
+      this.g = $$0;
+      return this;
+   }
+
+   public boolean p() {
+      return this.g;
+   }
+
+   public static enum a {
+      a("pink", n.m),
+      b("blue", n.j),
+      c("red", n.e),
+      d("green", n.k),
+      e("yellow", n.o),
+      f("purple", n.b),
+      g("white", n.p);
+
+      private final String h;
+      private final n i;
+
+      private a(String $$0, n $$1) {
+         this.h = $$0;
+         this.i = $$1;
+      }
+
+      public n a() {
+         return this.i;
+      }
+
+      public String b() {
+         return this.h;
+      }
+
+      public static bgu.a a(String $$0) {
+         for (bgu.a $$1 : values()) {
+            if ($$1.h.equals($$0)) {
+               return $$1;
+            }
+         }
+
+         return g;
       }
    }
 
-   public static void a(cpv $$0, gw $$1, hn<cjf> $$2) {
-      $$2.forEach($$2x -> a($$0, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), $$2x));
-   }
+   public static enum b {
+      a("progress"),
+      b("notched_6"),
+      c("notched_10"),
+      d("notched_12"),
+      e("notched_20");
 
-   public static void a(cpv $$0, double $$1, double $$2, double $$3, cjf $$4) {
-      double $$5 = (double)biu.ad.k();
-      double $$6 = 1.0 - $$5;
-      double $$7 = $$5 / 2.0;
-      double $$8 = Math.floor($$1) + $$0.z.j() * $$6 + $$7;
-      double $$9 = Math.floor($$2) + $$0.z.j() * $$6;
-      double $$10 = Math.floor($$3) + $$0.z.j() * $$6 + $$7;
+      private final String f;
 
-      while (!$$4.b()) {
-         byn $$11 = new byn($$0, $$8, $$9, $$10, $$4.a($$0.z.a(21) + 10));
-         float $$12 = 0.05F;
-         $$11.o($$0.z.a(0.0, 0.11485000171139836), $$0.z.a(0.2, 0.11485000171139836), $$0.z.a(0.0, 0.11485000171139836));
-         $$0.b($$11);
+      private b(String $$0) {
+         this.f = $$0;
+      }
+
+      public String a() {
+         return this.f;
+      }
+
+      public static bgu.b a(String $$0) {
+         for (bgu.b $$1 : values()) {
+            if ($$1.f.equals($$0)) {
+               return $$1;
+            }
+         }
+
+         return a;
       }
    }
 }

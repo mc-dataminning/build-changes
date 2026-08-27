@@ -1,44 +1,29 @@
-public record adb(int a, String b, int c, ada d) implements vd<adc> {
-   private static final int e = 255;
+public enum adb {
+   a,
+   b;
 
-   @Deprecated
-   public adb(int a, String b, int c, ada d) {
-      this.a = a;
-      this.b = b;
-      this.c = c;
-      this.d = d;
+   private static final int c = 1;
+   private static final int d = 2;
+
+   public static adb a(int $$0) {
+      return switch ($$0) {
+         case 1 -> a;
+         case 2 -> b;
+         default -> throw new IllegalArgumentException("Unknown connection intent: " + $$0);
+      };
    }
 
-   public adb(so $$0) {
-      this($$0.m(), $$0.d(255), $$0.readUnsignedShort(), ada.a($$0.m()));
+   public int a() {
+      return switch (this) {
+         case a -> 1;
+         case b -> 2;
+      };
    }
 
-   @Override
-   public void a(so $$0) {
-      $$0.c(this.a);
-      $$0.a(this.b);
-      $$0.l(this.c);
-      $$0.c(this.d.a());
-   }
-
-   public void a(adc $$0) {
-      $$0.a(this);
-   }
-
-   @Override
-   public sn c() {
-      return this.d.b();
-   }
-
-   public String d() {
-      return this.b;
-   }
-
-   public int e() {
-      return this.c;
-   }
-
-   public ada f() {
-      return this.d;
+   public sn b() {
+      return switch (this) {
+         case a -> sn.c;
+         case b -> sn.d;
+      };
    }
 }
