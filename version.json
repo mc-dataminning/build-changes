@@ -154,37 +154,37 @@
     ]
   },
   "assetIndex": {
-    "id": "24",
-    "sha1": "202e99c74867f9b5d9055d811371d4165cf7e754",
-    "size": 483183,
-    "totalSize": 426283998,
-    "url": "https://piston-meta.mojang.com/v1/packages/202e99c74867f9b5d9055d811371d4165cf7e754/24.json"
+    "id": "25",
+    "sha1": "d851d42fe3f3b7245a3df102c7846fb43cd19e00",
+    "size": 491089,
+    "totalSize": 447089652,
+    "url": "https://piston-meta.mojang.com/v1/packages/d851d42fe3f3b7245a3df102c7846fb43cd19e00/25.json"
   },
-  "assets": "24",
+  "assets": "25",
   "complianceLevel": 1,
   "downloads": {
     "client": {
-      "sha1": "0f3ed2e39938ccd178981f34f3f62ab7d08b399c",
-      "size": 35777365,
-      "url": "https://piston-data.mojang.com/v1/objects/0f3ed2e39938ccd178981f34f3f62ab7d08b399c/client.jar"
+      "sha1": "a12b375db4d067af9653557e7e3c8a61fa1016c5",
+      "size": 29132986,
+      "url": "https://piston-data.mojang.com/v1/objects/a12b375db4d067af9653557e7e3c8a61fa1016c5/client.jar"
     },
     "client_mappings": {
-      "sha1": "069c48e60d1923125e75a95bb4083aa5233e6dc6",
-      "size": 11036815,
-      "url": "https://piston-data.mojang.com/v1/objects/069c48e60d1923125e75a95bb4083aa5233e6dc6/client.txt"
+      "sha1": "2a8329ac1dece528e834ac79255d3d28638716d8",
+      "size": 10774784,
+      "url": "https://piston-data.mojang.com/v1/objects/2a8329ac1dece528e834ac79255d3d28638716d8/client.txt"
     },
     "server": {
-      "sha1": "4527a9019e37e001770787e4523b505f79cac4c5",
-      "size": 57816242,
-      "url": "https://piston-data.mojang.com/v1/objects/4527a9019e37e001770787e4523b505f79cac4c5/server.jar"
+      "sha1": "fed01fcdf4d2f37b3f847e08fd099714766533c3",
+      "size": 57378771,
+      "url": "https://piston-data.mojang.com/v1/objects/fed01fcdf4d2f37b3f847e08fd099714766533c3/server.jar"
     },
     "server_mappings": {
-      "sha1": "18910872683cd4ea9a9de28f3b9b68cf5d2ae99c",
-      "size": 8331561,
-      "url": "https://piston-data.mojang.com/v1/objects/18910872683cd4ea9a9de28f3b9b68cf5d2ae99c/server.txt"
+      "sha1": "0a5b698d19dcb090e15684e076e101d596d8fec5",
+      "size": 8086622,
+      "url": "https://piston-data.mojang.com/v1/objects/0a5b698d19dcb090e15684e076e101d596d8fec5/server.txt"
     }
   },
-  "id": "25w14craftmine",
+  "id": "25w15a",
   "javaVersion": {
     "component": "java-runtime-delta",
     "majorVersion": 21
@@ -1880,7 +1880,7 @@
   },
   "mainClass": "net.minecraft.client.main.Main",
   "minimumLauncherVersion": 21,
-  "releaseTime": "2025-04-01T15:50:09+00:00",
-  "time": "2025-04-01T15:50:09+00:00",
+  "releaseTime": "2025-04-08T12:16:59+00:00",
+  "time": "2025-04-08T12:16:59+00:00",
   "type": "snapshot"
 }
