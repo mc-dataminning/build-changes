@@ -12,7 +12,7 @@ public class flk<T extends cfj> extends fmk<T> {
    private final fpc n;
 
    public flk(fpc $$0) {
-      super(fvu::i);
+      super(fvt::i);
       this.g = $$0;
       this.j = $$0.b("wind_body");
       this.m = this.j.b("wind_bottom");

@@ -37,7 +37,7 @@ public record fqy(String a, @Nullable fqy.a b) {
 
    private static String g() {
       StringBuilder $$0 = new StringBuilder();
-      $$0.append("24w03a");
+      $$0.append("24w03b");
       if (exh.e().a()) {
          $$0.append(" (modded)");
       }

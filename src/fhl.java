@@ -25,9 +25,9 @@ public class fhl extends ezh {
    }
 
    @Override
-   public void a(gll $$0) {
+   public void a(glk $$0) {
       if (this.u) {
-         $$0.a(gkc.a(atk.cq, 1.0F));
+         $$0.a(gkb.a(atk.cq, 1.0F));
       }
    }
 }

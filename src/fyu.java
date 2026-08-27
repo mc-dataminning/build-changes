@@ -1,90 +1,104 @@
-import org.joml.Matrix4f;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.concurrent.CompletableFuture;
+import javax.annotation.Nullable;
 
-public class fyu implements fyx.a {
-   private final exh a;
-   private static final int b = avr.b.a(255, 0, 155, 155);
-   private static final int c = avr.b.a(255, 255, 255, 0);
+public class fyu implements fyw.a {
+   final exh a;
+   private double b = Double.MIN_VALUE;
+   private final int c = 12;
+   @Nullable
+   private fyu.a d;
 
    public fyu(exh $$0) {
       this.a = $$0;
    }
 
    @Override
-   public void a(esa $$0, fvm $$1, double $$2, double $$3, double $$4) {
-      bno $$5 = this.a.j.m().g();
-      float $$6 = (float)((double)this.a.r.J_() - $$3);
-      float $$7 = (float)((double)this.a.r.al() - $$3);
-      cuu $$8 = $$5.do();
-      float $$9 = (float)((double)$$8.d() - $$2);
-      float $$10 = (float)((double)$$8.e() - $$4);
-      ese $$11 = $$1.getBuffer(fvu.a(1.0));
-      Matrix4f $$12 = $$0.c().a();
-
-      for (int $$13 = -16; $$13 <= 32; $$13 += 16) {
-         for (int $$14 = -16; $$14 <= 32; $$14 += 16) {
-            $$11.a($$12, $$9 + (float)$$13, $$6, $$10 + (float)$$14).a(1.0F, 0.0F, 0.0F, 0.0F).e();
-            $$11.a($$12, $$9 + (float)$$13, $$6, $$10 + (float)$$14).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-            $$11.a($$12, $$9 + (float)$$13, $$7, $$10 + (float)$$14).a(1.0F, 0.0F, 0.0F, 0.5F).e();
-            $$11.a($$12, $$9 + (float)$$13, $$7, $$10 + (float)$$14).a(1.0F, 0.0F, 0.0F, 0.0F).e();
+   public void a(esa $$0, fvl $$1, double $$2, double $$3, double $$4) {
+      double $$5 = (double)ac.c();
+      if ($$5 - this.b > 3.0E9) {
+         this.b = $$5;
+         gkx $$6 = this.a.T();
+         if ($$6 != null) {
+            this.d = new fyu.a($$6, $$2, $$4);
+         } else {
+            this.d = null;
          }
       }
 
-      for (int $$15 = 2; $$15 < 16; $$15 += 2) {
-         int $$16 = $$15 % 4 == 0 ? b : c;
-         $$11.a($$12, $$9 + (float)$$15, $$6, $$10).a(1.0F, 1.0F, 0.0F, 0.0F).e();
-         $$11.a($$12, $$9 + (float)$$15, $$6, $$10).a($$16).e();
-         $$11.a($$12, $$9 + (float)$$15, $$7, $$10).a($$16).e();
-         $$11.a($$12, $$9 + (float)$$15, $$7, $$10).a(1.0F, 1.0F, 0.0F, 0.0F).e();
-         $$11.a($$12, $$9 + (float)$$15, $$6, $$10 + 16.0F).a(1.0F, 1.0F, 0.0F, 0.0F).e();
-         $$11.a($$12, $$9 + (float)$$15, $$6, $$10 + 16.0F).a($$16).e();
-         $$11.a($$12, $$9 + (float)$$15, $$7, $$10 + 16.0F).a($$16).e();
-         $$11.a($$12, $$9 + (float)$$15, $$7, $$10 + 16.0F).a(1.0F, 1.0F, 0.0F, 0.0F).e();
-      }
+      if (this.d != null) {
+         Map<cuu, String> $$7 = this.d.c.getNow(null);
+         double $$8 = this.a.j.m().b().d * 0.85;
 
-      for (int $$17 = 2; $$17 < 16; $$17 += 2) {
-         int $$18 = $$17 % 4 == 0 ? b : c;
-         $$11.a($$12, $$9, $$6, $$10 + (float)$$17).a(1.0F, 1.0F, 0.0F, 0.0F).e();
-         $$11.a($$12, $$9, $$6, $$10 + (float)$$17).a($$18).e();
-         $$11.a($$12, $$9, $$7, $$10 + (float)$$17).a($$18).e();
-         $$11.a($$12, $$9, $$7, $$10 + (float)$$17).a(1.0F, 1.0F, 0.0F, 0.0F).e();
-         $$11.a($$12, $$9 + 16.0F, $$6, $$10 + (float)$$17).a(1.0F, 1.0F, 0.0F, 0.0F).e();
-         $$11.a($$12, $$9 + 16.0F, $$6, $$10 + (float)$$17).a($$18).e();
-         $$11.a($$12, $$9 + 16.0F, $$7, $$10 + (float)$$17).a($$18).e();
-         $$11.a($$12, $$9 + 16.0F, $$7, $$10 + (float)$$17).a(1.0F, 1.0F, 0.0F, 0.0F).e();
-      }
+         for (Entry<cuu, String> $$9 : this.d.b.entrySet()) {
+            cuu $$10 = $$9.getKey();
+            String $$11 = $$9.getValue();
+            if ($$7 != null) {
+               $$11 = $$11 + $$7.get($$10);
+            }
 
-      for (int $$19 = this.a.r.J_(); $$19 <= this.a.r.al(); $$19 += 2) {
-         float $$20 = (float)((double)$$19 - $$3);
-         int $$21 = $$19 % 8 == 0 ? b : c;
-         $$11.a($$12, $$9, $$20, $$10).a(1.0F, 1.0F, 0.0F, 0.0F).e();
-         $$11.a($$12, $$9, $$20, $$10).a($$21).e();
-         $$11.a($$12, $$9, $$20, $$10 + 16.0F).a($$21).e();
-         $$11.a($$12, $$9 + 16.0F, $$20, $$10 + 16.0F).a($$21).e();
-         $$11.a($$12, $$9 + 16.0F, $$20, $$10).a($$21).e();
-         $$11.a($$12, $$9, $$20, $$10).a($$21).e();
-         $$11.a($$12, $$9, $$20, $$10).a(1.0F, 1.0F, 0.0F, 0.0F).e();
-      }
+            String[] $$12 = $$11.split("\n");
+            int $$13 = 0;
 
-      $$11 = $$1.getBuffer(fvu.a(2.0));
-
-      for (int $$22 = 0; $$22 <= 16; $$22 += 16) {
-         for (int $$23 = 0; $$23 <= 16; $$23 += 16) {
-            $$11.a($$12, $$9 + (float)$$22, $$6, $$10 + (float)$$23).a(0.25F, 0.25F, 1.0F, 0.0F).e();
-            $$11.a($$12, $$9 + (float)$$22, $$6, $$10 + (float)$$23).a(0.25F, 0.25F, 1.0F, 1.0F).e();
-            $$11.a($$12, $$9 + (float)$$22, $$7, $$10 + (float)$$23).a(0.25F, 0.25F, 1.0F, 1.0F).e();
-            $$11.a($$12, $$9 + (float)$$22, $$7, $$10 + (float)$$23).a(0.25F, 0.25F, 1.0F, 0.0F).e();
+            for (String $$14 : $$12) {
+               fyw.a($$0, $$1, $$14, (double)jb.a($$10.e, 8), $$8 + (double)$$13, (double)jb.a($$10.f, 8), -1, 0.15F, true, 0.0F, true);
+               $$13 -= 2;
+            }
          }
       }
+   }
 
-      for (int $$24 = this.a.r.J_(); $$24 <= this.a.r.al(); $$24 += 16) {
-         float $$25 = (float)((double)$$24 - $$3);
-         $$11.a($$12, $$9, $$25, $$10).a(0.25F, 0.25F, 1.0F, 0.0F).e();
-         $$11.a($$12, $$9, $$25, $$10).a(0.25F, 0.25F, 1.0F, 1.0F).e();
-         $$11.a($$12, $$9, $$25, $$10 + 16.0F).a(0.25F, 0.25F, 1.0F, 1.0F).e();
-         $$11.a($$12, $$9 + 16.0F, $$25, $$10 + 16.0F).a(0.25F, 0.25F, 1.0F, 1.0F).e();
-         $$11.a($$12, $$9 + 16.0F, $$25, $$10).a(0.25F, 0.25F, 1.0F, 1.0F).e();
-         $$11.a($$12, $$9, $$25, $$10).a(0.25F, 0.25F, 1.0F, 1.0F).e();
-         $$11.a($$12, $$9, $$25, $$10).a(0.25F, 0.25F, 1.0F, 0.0F).e();
+   final class a {
+      final Map<cuu, String> b;
+      final CompletableFuture<Map<cuu, String>> c;
+
+      a(gkx $$0, double $$1, double $$2) {
+         fpx $$3 = fyu.this.a.r;
+         aix<cvn> $$4 = $$3.ae();
+         int $$5 = jb.a($$1);
+         int $$6 = jb.a($$2);
+         Builder<cuu, String> $$7 = ImmutableMap.builder();
+         fpt $$8 = $$3.i();
+
+         for (int $$9 = $$5 - 12; $$9 <= $$5 + 12; $$9++) {
+            for (int $$10 = $$6 - 12; $$10 <= $$6 + 12; $$10++) {
+               cuu $$11 = new cuu($$9, $$10);
+               String $$12 = "";
+               dnm $$13 = $$8.a($$9, $$10, false);
+               $$12 = $$12 + "Client: ";
+               if ($$13 == null) {
+                  $$12 = $$12 + "0n/a\n";
+               } else {
+                  $$12 = $$12 + ($$13.C() ? " E" : "");
+                  $$12 = $$12 + "\n";
+               }
+
+               $$7.put($$11, $$12);
+            }
+         }
+
+         this.b = $$7.build();
+         this.c = $$0.a(() -> {
+            aov $$4x = $$0.a($$4);
+            if ($$4x == null) {
+               return ImmutableMap.of();
+            } else {
+               Builder<cuu, String> $$5x = ImmutableMap.builder();
+               aot $$6x = $$4x.l();
+
+               for (int $$7x = $$5 - 12; $$7x <= $$5 + 12; $$7x++) {
+                  for (int $$8x = $$6 - 12; $$8x <= $$6 + 12; $$8x++) {
+                     cuu $$9x = new cuu($$7x, $$8x);
+                     $$5x.put($$9x, "Server: " + $$6x.a($$9x));
+                  }
+               }
+
+               return $$5x.build();
+            }
+         });
       }
    }
 }

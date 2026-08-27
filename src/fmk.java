@@ -6,10 +6,10 @@ public abstract class fmk<E extends bno> extends fmb<E> {
    private static final Vector3f a = new Vector3f();
 
    public fmk() {
-      this(fvu::e);
+      this(fvt::e);
    }
 
-   public fmk(Function<aiy, fvu> $$0) {
+   public fmk(Function<aiy, fvt> $$0) {
       super($$0);
    }
 

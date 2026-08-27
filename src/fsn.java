@@ -1,8 +1,8 @@
-public class fsn extends fua {
+public class fsn extends ftz {
    static final awo a = awo.a();
-   private final ftv b;
+   private final ftu b;
 
-   fsn(fpx $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, ftv $$7) {
+   fsn(fpx $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, ftu $$7) {
       super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
       this.B = 0.96F;
       this.C = true;
@@ -13,8 +13,8 @@ public class fsn extends fua {
    }
 
    @Override
-   public fte b() {
-      return fte.c;
+   public ftd b() {
+      return ftd.c;
    }
 
    @Override
@@ -38,15 +38,15 @@ public class fsn extends fua {
       this.b(this.b);
    }
 
-   public static class a implements ftd<kc> {
+   public static class a implements ftc<kc> {
       private final double a = 0.25;
-      private final ftv b;
+      private final ftu b;
 
-      public a(ftv $$0) {
+      public a(ftu $$0) {
          this.b = $$0;
       }
 
-      public fta a(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      public fsz a(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
          fsn $$8 = new fsn($$1, $$2, $$3, $$4, 0.0, 0.0, 0.0, this.b);
          $$8.a(1.0F, 0.9F, 1.0F);
          $$8.b($$5 * 0.25, $$6 * 0.25, $$7 * 0.25);
@@ -57,14 +57,14 @@ public class fsn extends fua {
       }
    }
 
-   public static class b implements ftd<kc> {
-      private final ftv a;
+   public static class b implements ftc<kc> {
+      private final ftu a;
 
-      public b(ftv $$0) {
+      public b(ftu $$0) {
          this.a = $$0;
       }
 
-      public fta a(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      public fsz a(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
          fsn $$8 = new fsn($$1, $$2, $$3, $$4, 0.5 - fsn.a.j(), $$6, 0.5 - fsn.a.j(), this.a);
          if ($$1.z.h()) {
             $$8.a(0.6F, 1.0F, 0.8F);
@@ -83,15 +83,15 @@ public class fsn extends fua {
       }
    }
 
-   public static class c implements ftd<kc> {
+   public static class c implements ftc<kc> {
       private final double a = 0.01;
-      private final ftv b;
+      private final ftu b;
 
-      public c(ftv $$0) {
+      public c(ftu $$0) {
          this.b = $$0;
       }
 
-      public fta a(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      public fsz a(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
          fsn $$8 = new fsn($$1, $$2, $$3, $$4, 0.0, 0.0, 0.0, this.b);
          if ($$1.z.h()) {
             $$8.a(0.29F, 0.58F, 0.51F);
@@ -107,15 +107,15 @@ public class fsn extends fua {
       }
    }
 
-   public static class d implements ftd<kc> {
+   public static class d implements ftc<kc> {
       private final double a = 0.01;
-      private final ftv b;
+      private final ftu b;
 
-      public d(ftv $$0) {
+      public d(ftu $$0) {
          this.b = $$0;
       }
 
-      public fta a(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      public fsz a(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
          fsn $$8 = new fsn($$1, $$2, $$3, $$4, 0.0, 0.0, 0.0, this.b);
          $$8.a(1.0F, 0.9F, 1.0F);
          $$8.b($$5 * 0.01 / 2.0, $$6 * 0.01, $$7 * 0.01 / 2.0);
@@ -126,15 +126,15 @@ public class fsn extends fua {
       }
    }
 
-   public static class e implements ftd<kc> {
+   public static class e implements ftc<kc> {
       private final double a = 0.01;
-      private final ftv b;
+      private final ftu b;
 
-      public e(ftv $$0) {
+      public e(ftu $$0) {
          this.b = $$0;
       }
 
-      public fta a(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      public fsz a(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
          fsn $$8 = new fsn($$1, $$2, $$3, $$4, 0.0, 0.0, 0.0, this.b);
          $$8.a(0.91F, 0.55F, 0.08F);
          $$8.b($$5 * 0.01 / 2.0, $$6 * 0.01, $$7 * 0.01 / 2.0);

@@ -6,7 +6,7 @@ import javax.annotation.Nullable;
 
 public class fqg {
    private final GameProfile a;
-   private final Supplier<ght> b;
+   private final Supplier<ghs> b;
    private cvk c = cvk.e;
    private int d;
    @Nullable
@@ -18,18 +18,18 @@ public class fqg {
    public fqg(GameProfile $$0, boolean $$1) {
       this.a = $$0;
       this.g = b($$1);
-      Supplier<Supplier<ght>> $$2 = Suppliers.memoize(() -> a($$0));
+      Supplier<Supplier<ghs>> $$2 = Suppliers.memoize(() -> a($$0));
       this.b = () -> $$2.get().get();
    }
 
-   private static Supplier<ght> a(GameProfile $$0) {
+   private static Supplier<ghs> a(GameProfile $$0) {
       exh $$1 = exh.O();
-      ghu $$2 = $$1.al();
-      CompletableFuture<ght> $$3 = $$2.c($$0);
+      ght $$2 = $$1.al();
+      CompletableFuture<ghs> $$3 = $$2.c($$0);
       boolean $$4 = !$$1.b($$0.getId());
-      ght $$5 = ghm.a($$0);
+      ghs $$5 = ghl.a($$0);
       return () -> {
-         ght $$3x = $$3.getNow($$5);
+         ghs $$3x = $$3.getNow($$5);
          return $$4 && !$$3x.f() ? $$5 : $$3x;
       };
    }
@@ -81,7 +81,7 @@ public class fqg {
       this.d = $$0;
    }
 
-   public ght g() {
+   public ghs g() {
       return this.b.get();
    }
 

@@ -5,7 +5,7 @@ import java.util.concurrent.CompletableFuture;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class evb extends gmw {
+public class evb extends gmv {
    static final aiy a = new aiy("pending_invite/accept_highlighted");
    static final aiy b = new aiy("pending_invite/accept");
    static final aiy c = new aiy("pending_invite/reject_highlighted");
@@ -194,7 +194,7 @@ public class evb extends gmw {
       }
    }
 
-   class b extends gmv<evb.a> {
+   class b extends gmu<evb.a> {
       public b() {
          super(evb.this.g, evb.this.h - 72, 32, 36);
       }

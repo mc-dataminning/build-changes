@@ -8,7 +8,7 @@ public class cin extends cho implements chw {
    }
 
    public cin(bnu<? extends cin> $$0, cfj $$1, cvn $$2) {
-      super($$0, $$1.dr(), $$1.gi(), $$1.dx(), $$2);
+      super($$0, $$1.dr(), $$1.gh(), $$1.dx(), $$2);
       this.b($$1);
    }
 

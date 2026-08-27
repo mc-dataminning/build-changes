@@ -74,7 +74,6 @@ public class apu extends apr implements aes, apx, ve {
    public apu(MinecraftServer $$0, uo $$1, aow $$2, apk $$3) {
       super($$0, $$1, $$3);
       this.f = new apq($$1.e());
-      $$1.a(aer.a.bind(vb.a($$0.aZ())), this);
       this.e = $$2;
       $$2.d = this;
       $$2.X().a();

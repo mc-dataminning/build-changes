@@ -1,6 +1,6 @@
 import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
 
-public class eur extends gmw {
+public class eur extends gmv {
    protected BooleanConsumer a;
    private final vq b;
    private final vq c;

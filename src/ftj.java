@@ -1,11 +1,11 @@
-public class ftj extends fua {
-   private final ftv a;
+public class ftj extends ftz {
+   private final ftu a;
 
-   ftj(fpx $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, ftv $$7) {
+   ftj(fpx $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, ftu $$7) {
       super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
       this.B = 0.96F;
       this.a = $$7;
-      this.d(1.5F);
+      this.d(1.0F);
       this.n = false;
       this.b($$7);
    }
@@ -16,8 +16,8 @@ public class ftj extends fua {
    }
 
    @Override
-   public fte b() {
-      return fte.c;
+   public ftd b() {
+      return ftd.c;
    }
 
    @Override
@@ -26,14 +26,12 @@ public class ftj extends fua {
       this.b(this.a);
    }
 
-   public static record a(ftv a) implements ftd<ka> {
-      public fta a(ka $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+   public static record a(ftu a) implements ftc<kc> {
+      public fsz a(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
          ftj $$8 = new ftj($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
          $$8.e(1.0F);
          $$8.b($$5, $$6, $$7);
-         $$8.A = $$0.c();
-         $$8.z = $$0.c();
-         $$8.a($$1.z.a(12) + 8);
+         $$8.a($$1.z.a(4) + 6);
          return $$8;
       }
    }

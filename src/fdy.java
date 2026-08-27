@@ -36,7 +36,7 @@ public class fdy extends ffe {
          if ($$5 != null) {
             $$6 = vp.q;
          } else if ($$4) {
-            $$6 = fuv.a;
+            $$6 = fuu.a;
          } else {
             $$6 = vp.r;
          }
@@ -49,7 +49,7 @@ public class fdy extends ffe {
          $$1.y();
          $$1.aR();
          $$1.a(fqy.a($$3.b));
-         $$1.ba().a(fuw.c.b, $$3.b, $$3.a);
+         $$1.ba().a(fuv.c.b, $$3.b, $$3.a);
          $$1.a($$9);
          $$9.a($$1, $$2, $$3, $$5);
       }
@@ -123,11 +123,11 @@ public class fdy extends ffe {
             }
          }
 
-         private static gjn.c a(fqi.a $$0x) {
+         private static gjm.c a(fqi.a $$0x) {
             return switch ($$0) {
-               case a -> gjn.c.b;
-               case b -> gjn.c.c;
-               case c -> gjn.c.a;
+               case a -> gjm.c.b;
+               case b -> gjm.c.c;
+               case c -> gjm.c.a;
             };
          }
       };

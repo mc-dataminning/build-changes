@@ -8,7 +8,7 @@ public class fok extends fmk<cfb> implements flb {
    private final fpc j;
 
    public fok(fpc $$0) {
-      super(fvu::i);
+      super(fvt::i);
       this.a = $$0.b("root");
       this.b = this.a.b("body");
       this.f = this.b.b("right_arm");

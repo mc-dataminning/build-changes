@@ -1,4 +1,4 @@
-public class fru extends fua {
+public class fru extends ftz {
    private final float a;
    private final float b;
 
@@ -13,8 +13,8 @@ public class fru extends fua {
    }
 
    @Override
-   public fte b() {
-      return fte.a;
+   public ftd b() {
+      return ftd.a;
    }
 
    protected fru(fpx $$0, double $$1, double $$2, double $$3, coz $$4) {
@@ -46,20 +46,20 @@ public class fru extends fua {
       return this.E.c((this.b + 1.0F) / 4.0F);
    }
 
-   public static class a implements ftd<jv> {
-      public fta a(jv $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+   public static class a implements ftc<jv> {
+      public fsz a(jv $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
          return new fru($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$0.c());
       }
    }
 
-   public static class b implements ftd<kc> {
-      public fta a(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+   public static class b implements ftc<kc> {
+      public fsz a(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
          return new fru($$1, $$2, $$3, $$4, new coz(cpc.qP));
       }
    }
 
-   public static class c implements ftd<kc> {
-      public fta a(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+   public static class c implements ftc<kc> {
+      public fsz a(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
          return new fru($$1, $$2, $$3, $$4, new coz(cpc.qB));
       }
    }

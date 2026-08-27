@@ -1,27 +1,76 @@
-public class fst extends fsy {
-   fst(fpx $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.t = 8;
+public class fst extends fsz {
+   private static final int a = 3;
+   private final fvr b;
+   private final bno D;
+   private final bno E;
+   private int F;
+   private final gaq G;
+   private double H;
+   private double I;
+   private double J;
+   private double K;
+   private double L;
+   private double M;
+
+   public fst(gaq $$0, fvr $$1, fpx $$2, bno $$3, bno $$4) {
+      this($$0, $$1, $$2, $$3, $$4, $$3.dp());
+   }
+
+   private fst(gaq $$0, fvr $$1, fpx $$2, bno $$3, bno $$4, ens $$5) {
+      super($$2, $$3.dr(), $$3.dt(), $$3.dx(), $$5.c, $$5.d, $$5.e);
+      this.b = $$1;
+      this.D = this.a($$3);
+      this.E = $$4;
+      this.G = $$0;
+      this.c();
+      this.d();
+   }
+
+   private bno a(bno $$0) {
+      return (bno)(!($$0 instanceof cds) ? $$0 : ((cds)$$0).D());
+   }
+
+   @Override
+   public ftd b() {
+      return ftd.e;
+   }
+
+   @Override
+   public void a(ese $$0, ews $$1, float $$2) {
+      float $$3 = ((float)this.F + $$2) / 3.0F;
+      $$3 *= $$3;
+      double $$4 = awh.d((double)$$2, this.K, this.H);
+      double $$5 = awh.d((double)$$2, this.L, this.I);
+      double $$6 = awh.d((double)$$2, this.M, this.J);
+      double $$7 = awh.d((double)$$3, this.D.dr(), $$4);
+      double $$8 = awh.d((double)$$3, this.D.dt(), $$5);
+      double $$9 = awh.d((double)$$3, this.D.dx(), $$6);
+      fvl.a $$10 = this.b.c();
+      ens $$11 = $$1.b();
+      this.G.a(this.D, $$7 - $$11.a(), $$8 - $$11.b(), $$9 - $$11.c(), this.D.dC(), $$2, new esa(), $$10, this.G.a(this.D, $$2));
+      $$10.b();
    }
 
    @Override
    public void a() {
-      for (int $$0 = 0; $$0 < 6; $$0++) {
-         double $$1 = this.g + (this.r.j() - this.r.j()) * 4.0;
-         double $$2 = this.h + (this.r.j() - this.r.j()) * 4.0;
-         double $$3 = this.i + (this.r.j() - this.r.j()) * 4.0;
-         this.c.a(jz.x, $$1, $$2, $$3, (double)((float)this.s / (float)this.t), 0.0, 0.0);
-      }
-
-      this.s++;
-      if (this.s == this.t) {
+      this.F++;
+      if (this.F == 3) {
          this.k();
       }
+
+      this.d();
+      this.c();
    }
 
-   public static class a implements ftd<kc> {
-      public fta a(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fst($$1, $$2, $$3, $$4);
-      }
+   private void c() {
+      this.H = this.E.dr();
+      this.I = (this.E.dt() + this.E.dv()) / 2.0;
+      this.J = this.E.dx();
+   }
+
+   private void d() {
+      this.K = this.H;
+      this.L = this.I;
+      this.M = this.J;
    }
 }

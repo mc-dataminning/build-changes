@@ -1,4 +1,4 @@
-public class euu extends gmw {
+public class euu extends gmv {
    private final ffe a;
    private final euu.a b;
    private faa c = faa.a;

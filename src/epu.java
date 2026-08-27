@@ -15,7 +15,7 @@ public class epu {
    private final AtomicBoolean e = new AtomicBoolean(true);
    private int f = 16384;
    @Nullable
-   private gld g;
+   private glc g;
 
    @Nullable
    static epu a() {
@@ -118,7 +118,7 @@ public class epu {
       $$0.a().ifPresent($$0x -> AL10.alSourcei(this.d, 4105, $$0x));
    }
 
-   public void a(gld $$0) {
+   public void a(glc $$0) {
       this.g = $$0;
       AudioFormat $$1 = $$0.a();
       this.f = a($$1, 1);

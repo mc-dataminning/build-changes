@@ -10,14 +10,14 @@ import javax.annotation.Nullable;
 import org.apache.commons.lang3.StringUtils;
 
 public class frc extends fqx {
-   final Supplier<ght> f;
+   final Supplier<ghs> f;
 
-   frc(UUID $$0, Instant $$1, UUID $$2, Supplier<ght> $$3) {
+   frc(UUID $$0, Instant $$1, UUID $$2, Supplier<ghs> $$3) {
       super($$0, $$1, $$2);
       this.f = $$3;
    }
 
-   public Supplier<ght> a() {
+   public Supplier<ghs> a() {
       return this.f;
    }
 
@@ -38,7 +38,7 @@ public class frc extends fqx {
          super($$0, $$1);
       }
 
-      public a(UUID $$0, Supplier<ght> $$1, AbuseReportLimits $$2) {
+      public a(UUID $$0, Supplier<ghs> $$1, AbuseReportLimits $$2) {
          super(new frc(UUID.randomUUID(), Instant.now(), $$0, $$1), $$2);
       }
 
@@ -65,7 +65,7 @@ public class frc extends fqx {
          } else {
             String $$2 = Objects.requireNonNull(this.a.e).a();
             ReportedEntity $$3 = new ReportedEntity(this.a.c);
-            ght $$4 = this.a.f.get();
+            ghs $$4 = this.a.f.get();
             String $$5 = $$4.b();
             AbuseReport $$6 = AbuseReport.skin(this.a.d, $$2, $$5, $$3, this.a.b);
             return Either.left(new fqx.c(this.a.a, fra.b, $$6));

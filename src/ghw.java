@@ -1,42 +1,69 @@
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import org.slf4j.Logger;
 
-public abstract class ghw implements aru, AutoCloseable {
-   private final ggt a;
-   private final aiy b;
-   private final Set<ara<?>> c;
+public class ghw extends sr {
+   private static final Logger b = LogUtils.getLogger();
+   private final Map<String, String> c;
+   private final boolean d;
 
-   public ghw(ggv $$0, aiy $$1, aiy $$2) {
-      this($$0, $$1, $$2, ggp.a);
+   private ghw(Map<String, String> $$0, boolean $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
-   public ghw(ggv $$0, aiy $$1, aiy $$2, Set<ara<?>> $$3) {
-      this.b = $$2;
-      this.a = new ggt($$1);
-      $$0.a(this.a.g(), this.a);
-      this.c = $$3;
+   public static ghw a(asa $$0, List<String> $$1, boolean $$2) {
+      Map<String, String> $$3 = Maps.newHashMap();
+
+      for (String $$4 : $$1) {
+         String $$5 = String.format(Locale.ROOT, "lang/%s.json", $$4);
+
+         for (String $$6 : $$0.a()) {
+            try {
+               aiy $$7 = new aiy($$6, $$5);
+               a($$4, $$0.a($$7), $$3);
+            } catch (Exception var10) {
+               b.warn("Skipped language file: {}:{} ({})", new Object[]{$$6, $$5, var10.toString()});
+            }
+         }
+      }
+
+      return new ghw(ImmutableMap.copyOf($$3), $$2);
    }
 
-   protected ggu a(aiy $$0) {
-      return this.a.a($$0);
+   private static void a(String $$0, List<ary> $$1, Map<String, String> $$2) {
+      for (ary $$3 : $$1) {
+         try (InputStream $$4 = $$3.d()) {
+            sr.a($$4, $$2::put);
+         } catch (IOException var10) {
+            b.warn("Failed to load translations for {} from pack {}", new Object[]{$$0, $$3.b(), var10});
+         }
+      }
    }
 
    @Override
-   public final CompletableFuture<Void> a(aru.a $$0, asa $$1, bil $$2, bil $$3, Executor $$4, Executor $$5) {
-      return ggp.a(this.a).a($$1, this.b, 0, $$4, this.c).thenCompose(ggp.a::a).thenCompose($$0::a).thenAcceptAsync($$1x -> this.a($$1x, $$3), $$5);
-   }
-
-   private void a(ggp.a $$0, bil $$1) {
-      $$1.a();
-      $$1.a("upload");
-      this.a.a($$0);
-      $$1.c();
-      $$1.b();
+   public String a(String $$0, String $$1) {
+      return this.c.getOrDefault($$0, $$1);
    }
 
    @Override
-   public void close() {
-      this.a.f();
+   public boolean b(String $$0) {
+      return this.c.containsKey($$0);
+   }
+
+   @Override
+   public boolean b() {
+      return this.d;
+   }
+
+   @Override
+   public avt a(vv $$0) {
+      return ghx.a($$0, this.d);
    }
 }

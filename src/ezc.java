@@ -155,8 +155,8 @@ public abstract class ezc<E extends ezc.a<E>> extends eyz {
       $$0.f();
       if (this.r) {
          int $$7 = 4;
-         $$0.a(fvu.C(), this.B(), this.C(), this.D(), this.C() + 4, -16777216, 0, 0);
-         $$0.a(fvu.C(), this.B(), this.E() - 4, this.D(), this.E(), 0, -16777216, 0);
+         $$0.a(fvt.C(), this.B(), this.C(), this.D(), this.C() + 4, -16777216, 0, 0);
+         $$0.a(fvt.C(), this.B(), this.E() - 4, this.D(), this.E(), 0, -16777216, 0);
       }
 
       int $$8 = this.p();

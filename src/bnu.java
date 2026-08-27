@@ -74,7 +74,7 @@ public class bnu<T extends bno> implements cjp, dpd<bno, T> {
    public static final bnu<cel> ac = a("illusioner", bnu.a.a(cel::new, boj.a).a(0.6F, 1.95F).a(2.0F).b(-0.6F).a(8));
    public static final bnu<bob> ad = a("interaction", bnu.a.a(bob::new, boj.h).a(0.0F, 0.0F).a(10));
    public static final bnu<caf> ae = a("iron_golem", bnu.a.a(caf::new, boj.h).a(1.4F, 2.7F).a(10));
-   public static final bnu<cds> af = a("item", bnu.a.<cds>a(cds::new, boj.h).a(0.25F, 0.25F).a(0.1F).a(6).b(20));
+   public static final bnu<cds> af = a("item", bnu.a.<cds>a(cds::new, boj.h).a(0.25F, 0.25F).a(0.2125F).a(6).b(20));
    public static final bnu<bnn.g> ag = a("item_display", bnu.a.a(bnn.g::new, boj.h).a(0.0F, 0.0F).a(10).b(1));
    public static final bnu<cdl> ah = a("item_frame", bnu.a.<cdl>a(cdl::new, boj.h).a(0.5F, 0.5F).a(0.0F).a(10).b(Integer.MAX_VALUE));
    public static final bnu<chx> ai = a("fireball", bnu.a.<chx>a(chx::new, boj.h).a(1.0F, 1.0F).a(4).b(10));
@@ -82,7 +82,7 @@ public class bnu<T extends bno> implements cjp, dpd<bno, T> {
    public static final bnu<bof> ak = a("lightning_bolt", bnu.a.a(bof::new, boj.h).b().a(0.0F, 0.0F).a(16).b(Integer.MAX_VALUE));
    public static final bnu<cby> al = a("llama", bnu.a.a(cby::new, boj.b).a(0.9F, 1.87F).a(1.7765F).a(new ens(0.0, 1.37, -0.3)).a(10));
    public static final bnu<chy> am = a("llama_spit", bnu.a.<chy>a(chy::new, boj.h).a(0.25F, 0.25F).a(4).b(10));
-   public static final bnu<cem> an = a("magma_cube", bnu.a.a(cem::new, boj.a).c().a(2.04F, 2.04F).a(1.275F).a(8));
+   public static final bnu<cem> an = a("magma_cube", bnu.a.a(cem::new, boj.a).c().a(0.52F, 0.52F).a(0.325F).a(8));
    public static final bnu<boh> ao = a("marker", bnu.a.a(boh::new, boj.h).a(0.0F, 0.0F).a(0));
    public static final bnu<cjg> ap = a("minecart", bnu.a.<cjg>a(cjg::new, boj.h).a(0.98F, 0.7F).a(0.1875F).a(8));
    public static final bnu<cag> aq = a("mooshroom", bnu.a.a(cag::new, boj.b).a(0.9F, 1.4F).a(1.3F).a(1.36875F).a(10));

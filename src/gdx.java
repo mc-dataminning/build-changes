@@ -1,11 +1,9 @@
-public class gdx extends gbz<cff, fml<cff>> {
-   private static final aiy a = new aiy("textures/entity/hoglin/zoglin.png");
-
-   public gdx(gat.a $$0) {
-      super($$0, new fml<>($$0.a(fpb.ca)), 0.7F);
+public class gdx extends fzo<cfg, fou<cfg>> {
+   public gdx(gas.a $$0) {
+      this($$0, fpb.cb, fpb.ce, fpb.cf);
    }
 
-   public aiy a(cff $$0) {
-      return a;
+   public gdx(gas.a $$0, fpa $$1, fpa $$2, fpa $$3) {
+      super($$0, new fou<>($$0.a($$1)), new fou<>($$0.a($$2)), new fou<>($$0.a($$3)));
    }
 }

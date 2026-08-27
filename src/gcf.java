@@ -1,31 +1,24 @@
-public class gcf extends gbz<caj, fnb> {
-   private static final aiy a = new aiy("textures/entity/parrot/parrot_red_blue.png");
-   private static final aiy i = new aiy("textures/entity/parrot/parrot_blue.png");
-   private static final aiy j = new aiy("textures/entity/parrot/parrot_green.png");
-   private static final aiy k = new aiy("textures/entity/parrot/parrot_yellow_blue.png");
-   private static final aiy l = new aiy("textures/entity/parrot/parrot_grey.png");
+public class gcf extends gby<cep, fnc<cep>> {
+   private static final aiy a = new aiy("textures/entity/phantom.png");
 
-   public gcf(gat.a $$0) {
-      super($$0, new fnb($$0.a(fpb.aC)), 0.3F);
+   public gcf(gas.a $$0) {
+      super($$0, new fnc<>($$0.a(fpb.aD)), 0.75F);
+      this.a(new gfb<>(this));
    }
 
-   public aiy a(caj $$0) {
-      return a($$0.go());
+   public aiy a(cep $$0) {
+      return a;
    }
 
-   public static aiy a(caj.b $$0) {
-      return switch ($$0) {
-         case a -> a;
-         case b -> i;
-         case c -> j;
-         case d -> k;
-         case e -> l;
-      };
+   protected void a(cep $$0, esa $$1, float $$2) {
+      int $$3 = $$0.u();
+      float $$4 = 1.0F + 0.15F * (float)$$3;
+      $$1.b($$4, $$4, $$4);
+      $$1.a(0.0F, 1.3125F, 0.1875F);
    }
 
-   public float a(caj $$0, float $$1) {
-      float $$2 = awh.i($$1, $$0.bZ, $$0.bW);
-      float $$3 = awh.i($$1, $$0.bY, $$0.bX);
-      return (awh.a($$2) + 1.0F) * $$3;
+   protected void a(cep $$0, esa $$1, float $$2, float $$3, float $$4, float $$5) {
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      $$1.a(a.b.rotationDegrees($$0.dE()));
    }
 }

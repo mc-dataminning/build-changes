@@ -27,10 +27,10 @@ public class fmo<T extends bog> extends fkx<T> implements flb, fmj {
    public float u;
 
    public fmo(fpc $$0) {
-      this($$0, fvu::e);
+      this($$0, fvt::e);
    }
 
-   public fmo(fpc $$0, Function<aiy, fvu> $$1) {
+   public fmo(fpc $$0, Function<aiy, fvt> $$1) {
       super($$1, true, 16.0F, 0.0F, 2.0F, 2.0F, 24.0F);
       this.k = $$0.b("head");
       this.l = $$0.b("hat");

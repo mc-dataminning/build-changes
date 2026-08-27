@@ -8,7 +8,7 @@ public class fns extends fmx {
    private final fpc g;
 
    public fns(fpc $$0) {
-      super(fvu::c);
+      super(fvt::c);
       this.e = $$0;
       this.f = $$0.b("plate");
       this.g = $$0.b("handle");

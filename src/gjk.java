@@ -1,7 +1,20 @@
-import java.util.Map;
 import java.util.UUID;
-import java.util.function.Consumer;
 
 public interface gjk {
-   void a(Map<UUID, aqk.c> var1, Consumer<aqk.b> var2);
+   void a(UUID var1, gjk.b var2);
+
+   void a(UUID var1, gjk.a var2);
+
+   public static enum a {
+      a,
+      b,
+      c,
+      d,
+      e;
+   }
+
+   public static enum b {
+      a,
+      b;
+   }
 }

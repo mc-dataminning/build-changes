@@ -12,7 +12,7 @@ public class flj extends fmx {
    private final fpc k;
 
    public flj(fpc $$0) {
-      super(fvu::c);
+      super(fvt::c);
       this.e = $$0;
       this.f = $$0.b("left_lid");
       this.g = $$0.b("right_lid");

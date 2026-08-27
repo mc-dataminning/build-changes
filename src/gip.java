@@ -1,8 +1,20 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public class gip {
+   public static final giq a = new giq();
+   public static final boolean b = false;
+   public static final boolean c = false;
+   private final boolean d;
+   private final boolean e;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface gip {
+   public gip(boolean $$0, boolean $$1) {
+      this.d = $$0;
+      this.e = $$1;
+   }
+
+   public boolean a() {
+      return this.d;
+   }
+
+   public boolean b() {
+      return this.e;
+   }
 }

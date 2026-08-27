@@ -1,12 +1,16 @@
-public class gcj extends gbm<ceq> {
-   private static final aiy a = new aiy("textures/entity/illager/pillager.png");
+public class gcj extends gby<cal, fnh<cal>> {
+   private static final aiy a = new aiy("textures/entity/bear/polarbear.png");
 
-   public gcj(gat.a $$0) {
-      super($$0, new fmp<>($$0.a(fpb.aN)), 0.5F);
-      this.a(new gex<>(this, $$0.d()));
+   public gcj(gas.a $$0) {
+      super($$0, new fnh<>($$0.a(fpb.aW)), 0.9F);
    }
 
-   public aiy a(ceq $$0) {
+   public aiy a(cal $$0) {
       return a;
+   }
+
+   protected void a(cal $$0, esa $$1, float $$2) {
+      $$1.b(1.2F, 1.2F, 1.2F);
+      super.a($$0, $$1, $$2);
    }
 }

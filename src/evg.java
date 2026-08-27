@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class evg extends gmw {
+public class evg extends gmv {
    private static final Logger b = LogUtils.getLogger();
    public static final vq a = vq.c("mco.upload.select.world.title");
    private static final vq c = vq.c("selectWorld.unable_to_load");
@@ -58,9 +58,9 @@ public class evg extends gmw {
       this.D = this.d(ezh.a(vq.c("mco.upload.button.name"), $$0 -> this.H()).a(this.g / 2 - 154, this.h - 32, 153, 20).a());
       this.D.j = this.F >= 0 && this.F < this.E.size();
       this.d(ezh.a(vp.k, $$0 -> this.f.a(this.A)).a(this.g / 2 + 6, this.h - 32, 153, 20).a());
-      this.a(new gmu(vq.c("mco.upload.select.world.subtitle"), this.g / 2, g(-1), -6250336));
+      this.a(new gmt(vq.c("mco.upload.select.world.subtitle"), this.g / 2, g(-1), -6250336));
       if (this.E.isEmpty()) {
-         this.a(new gmu(vq.c("mco.upload.select.world.none"), this.g / 2, this.h / 2 - 20, -1));
+         this.a(new gmt(vq.c("mco.upload.select.world.none"), this.g / 2, this.h / 2 - 20, -1));
       }
    }
 
@@ -155,7 +155,7 @@ public class evg extends gmw {
       }
    }
 
-   class b extends gmv<evg.a> {
+   class b extends gmu<evg.a> {
       public b() {
          super(evg.this.g, evg.this.h - 40 - evg.g(0), evg.g(0), 36);
       }

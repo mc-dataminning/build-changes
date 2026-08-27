@@ -89,7 +89,7 @@ public class fhh extends fgd<clg> {
          $$0.c().b(0.6666667F, -0.6666667F, -0.6666667F);
          this.P.e = 0.0F;
          this.P.c = -32.0F;
-         fxh.a($$0.c(), $$0.d(), 15728880, ggl.d, this.P, giz.f, true, this.Q);
+         fxg.a($$0.c(), $$0.d(), 15728880, ggk.d, this.P, giy.f, true, this.Q);
          $$0.c().b();
          $$0.e();
       } else if (this.V) {
@@ -148,7 +148,7 @@ public class fhh extends fgd<clg> {
       this.P.e = 0.0F;
       this.P.c = -32.0F;
       List<Pair<ij<dik>, cnn>> $$9 = dij.a(cnn.h, dij.a($$6));
-      fxh.a($$7, $$0.d(), 15728880, ggl.d, this.P, giz.f, true, $$9);
+      fxg.a($$7, $$0.d(), 15728880, ggk.d, this.P, giy.f, true, $$9);
       $$7.b();
       $$0.e();
    }
@@ -167,7 +167,7 @@ public class fhh extends fgd<clg> {
                int $$9 = $$5 + this.Y;
                int $$10 = $$9 * 4 + $$6;
                if ($$7 >= 0.0 && $$8 >= 0.0 && $$7 < 14.0 && $$8 < 14.0 && this.p.b(this.f.s, $$10)) {
-                  exh.O().ai().a(gkc.a(atk.zK, 1.0F));
+                  exh.O().ai().a(gkb.a(atk.zK, 1.0F));
                   this.f.q.a(this.p.j, $$10);
                   return true;
                }

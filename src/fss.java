@@ -1,49 +1,27 @@
-public class fss extends fua {
-   private final ftv a;
-
-   protected fss(fpx $$0, double $$1, double $$2, double $$3, double $$4, ftv $$5) {
+public class fss extends fsx {
+   fss(fpx $$0, double $$1, double $$2, double $$3) {
       super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.t = 6 + this.r.a(4);
-      float $$6 = this.r.i() * 0.6F + 0.4F;
-      this.v = $$6;
-      this.w = $$6;
-      this.x = $$6;
-      this.D = 2.0F * (1.0F - (float)$$4 * 0.5F);
-      this.a = $$5;
-      this.b($$5);
-   }
-
-   @Override
-   public int a(float $$0) {
-      return 15728880;
+      this.t = 8;
    }
 
    @Override
    public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
+      for (int $$0 = 0; $$0 < 6; $$0++) {
+         double $$1 = this.g + (this.r.j() - this.r.j()) * 4.0;
+         double $$2 = this.h + (this.r.j() - this.r.j()) * 4.0;
+         double $$3 = this.i + (this.r.j() - this.r.j()) * 4.0;
+         this.c.a(jz.x, $$1, $$2, $$3, (double)((float)this.s / (float)this.t), 0.0, 0.0);
+      }
+
+      this.s++;
+      if (this.s == this.t) {
          this.k();
-      } else {
-         this.b(this.a);
       }
    }
 
-   @Override
-   public fte b() {
-      return fte.d;
-   }
-
-   public static class a implements ftd<kc> {
-      private final ftv a;
-
-      public a(ftv $$0) {
-         this.a = $$0;
-      }
-
-      public fta a(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fss($$1, $$2, $$3, $$4, $$5, this.a);
+   public static class a implements ftc<kc> {
+      public fsz a(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fss($$1, $$2, $$3, $$4);
       }
    }
 }

@@ -4,9 +4,9 @@ import java.util.List;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class eux extends gmw {
+public class eux extends gmv {
    private static final Logger a = LogUtils.getLogger();
-   private static final gmx b = new gmx(Duration.ofSeconds(5L));
+   private static final gmw b = new gmw(Duration.ofSeconds(5L));
    private final List<ewh> c;
    private final ffe v;
    private final fcx w = fcx.d();

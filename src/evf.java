@@ -4,7 +4,7 @@ import java.util.List;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class evf extends gmw {
+public class evf extends gmv {
    static final Logger c = LogUtils.getLogger();
    private static final vq v = vq.c("mco.selectServer.create");
    private static final vq w = vq.c("mco.selectServer.create.subtitle");

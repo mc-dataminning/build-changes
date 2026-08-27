@@ -5,7 +5,7 @@ import java.util.UUID;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class evc extends gmw {
+public class evc extends gmv {
    private static final Logger a = LogUtils.getLogger();
    private static final aiy b = new aiy("minecraft", "textures/gui/options_background.png");
    private static final vq c = vq.c("mco.question");
@@ -225,7 +225,7 @@ public class evc extends gmw {
       }
    }
 
-   class b extends gmv<evc.a> {
+   class b extends gmu<evc.a> {
       public b() {
          super(evc.this.D + 10, evc.g(12) + 20, evc.g(1), 13);
       }

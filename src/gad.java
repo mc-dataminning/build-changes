@@ -1,17 +1,17 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import java.util.Map;
+public class gad extends gby<bzy, flq<bzy>> {
+   private static final aiy a = new aiy("textures/entity/chicken.png");
 
-public class gad<T extends cbu> extends fzo<T, flp<T>> {
-   private static final Map<bnu<?>, aiy> a = Maps.newHashMap(
-      ImmutableMap.of(bnu.y, new aiy("textures/entity/horse/donkey.png"), bnu.ar, new aiy("textures/entity/horse/mule.png"))
-   );
-
-   public gad(gat.a $$0, float $$1, fpa $$2) {
-      super($$0, new flp<>($$0.a($$2)), $$1);
+   public gad(gas.a $$0) {
+      super($$0, new flq<>($$0.a(fpb.v)), 0.3F);
    }
 
-   public aiy a(T $$0) {
-      return a.get($$0.ai());
+   public aiy a(bzy $$0) {
+      return a;
+   }
+
+   protected float a(bzy $$0, float $$1) {
+      float $$2 = awh.i($$1, $$0.bX, $$0.bT);
+      float $$3 = awh.i($$1, $$0.bW, $$0.bU);
+      return (awh.a($$2) + 1.0F) * $$3;
    }
 }

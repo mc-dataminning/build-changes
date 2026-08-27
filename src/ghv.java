@@ -1,56 +1,42 @@
-import com.google.common.collect.Lists;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.util.Calendar;
-import java.util.Collections;
-import java.util.Date;
-import java.util.List;
-import java.util.Locale;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+import java.util.Set;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
 
-public class ghv extends asf<List<String>> {
-   private static final aiy a = new aiy("texts/splashes.txt");
-   private static final awo b = awo.a();
-   private final List<String> c = Lists.newArrayList();
-   private final exw d;
+public abstract class ghv implements aru, AutoCloseable {
+   private final ggs a;
+   private final aiy b;
+   private final Set<ara<?>> c;
 
-   public ghv(exw $$0) {
-      this.d = $$0;
+   public ghv(ggu $$0, aiy $$1, aiy $$2) {
+      this($$0, $$1, $$2, ggo.a);
    }
 
-   protected List<String> a(asa $$0, bil $$1) {
-      try {
-         List var4;
-         try (BufferedReader $$2 = exh.O().Z().openAsReader(a)) {
-            var4 = $$2.lines().map(String::trim).filter($$0x -> $$0x.hashCode() != 125780783).collect(Collectors.toList());
-         }
-
-         return var4;
-      } catch (IOException var8) {
-         return Collections.emptyList();
-      }
+   public ghv(ggu $$0, aiy $$1, aiy $$2, Set<ara<?>> $$3) {
+      this.b = $$2;
+      this.a = new ggs($$1);
+      $$0.a(this.a.g(), this.a);
+      this.c = $$3;
    }
 
-   protected void a(List<String> $$0, asa $$1, bil $$2) {
-      this.c.clear();
-      this.c.addAll($$0);
+   protected ggt a(aiy $$0) {
+      return this.a.a($$0);
    }
 
-   @Nullable
-   public fal a() {
-      Calendar $$0 = Calendar.getInstance();
-      $$0.setTime(new Date());
-      if ($$0.get(2) + 1 == 12 && $$0.get(5) == 24) {
-         return fal.a;
-      } else if ($$0.get(2) + 1 == 1 && $$0.get(5) == 1) {
-         return fal.b;
-      } else if ($$0.get(2) + 1 == 10 && $$0.get(5) == 31) {
-         return fal.c;
-      } else if (this.c.isEmpty()) {
-         return null;
-      } else {
-         return this.d != null && b.a(this.c.size()) == 42 ? new fal(this.d.c().toUpperCase(Locale.ROOT) + " IS YOU") : new fal(this.c.get(b.a(this.c.size())));
-      }
+   @Override
+   public final CompletableFuture<Void> a(aru.a $$0, asa $$1, bil $$2, bil $$3, Executor $$4, Executor $$5) {
+      return ggo.a(this.a).a($$1, this.b, 0, $$4, this.c).thenCompose(ggo.a::a).thenCompose($$0::a).thenAcceptAsync($$1x -> this.a($$1x, $$3), $$5);
+   }
+
+   private void a(ggo.a $$0, bil $$1) {
+      $$1.a();
+      $$1.a("upload");
+      this.a.a($$0);
+      $$1.c();
+      $$1.b();
+   }
+
+   @Override
+   public void close() {
+      this.a.f();
    }
 }

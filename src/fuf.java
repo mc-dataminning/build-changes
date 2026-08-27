@@ -1,24 +1,21 @@
-public class fuf extends fua {
-   private final ftv a;
+public class fuf extends ftz {
+   private float a;
 
-   fuf(fpx $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, ftv $$7) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.a = $$7;
-      this.j *= 0.3F;
-      this.k = Math.random() * 0.2F + 0.1F;
-      this.l *= 0.3F;
-      this.b(0.01F, 0.01F);
-      this.t = (int)(8.0 / (Math.random() * 0.8 + 0.2));
-      this.b($$7);
-      this.u = 0.0F;
-      this.j = $$4;
-      this.k = $$5;
-      this.l = $$6;
+   fuf(fpx $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1, $$2, $$3);
+      this.t = (int)(Math.random() * 60.0) + 30;
+      this.n = false;
+      this.j = 0.0;
+      this.k = -0.05;
+      this.l = 0.0;
+      this.b(0.02F, 0.02F);
+      this.D = this.D * (this.r.i() * 0.6F + 0.2F);
+      this.u = 0.002F;
    }
 
    @Override
-   public fte b() {
-      return fte.b;
+   public ftd b() {
+      return ftd.b;
    }
 
    @Override
@@ -26,30 +23,34 @@ public class fuf extends fua {
       this.d = this.g;
       this.e = this.h;
       this.f = this.i;
-      int $$0 = 60 - this.t;
-      if (this.t-- <= 0) {
+      if (this.s++ >= this.t) {
          this.k();
       } else {
-         this.k = this.k - (double)this.u;
+         float $$0 = 0.6F;
+         this.j = this.j + (double)(0.6F * awh.b(this.a));
+         this.l = this.l + (double)(0.6F * awh.a(this.a));
+         this.j *= 0.07;
+         this.l *= 0.07;
          this.a(this.j, this.k, this.l);
-         this.j *= 0.98F;
-         this.k *= 0.98F;
-         this.l *= 0.98F;
-         float $$1 = (float)$$0 * 0.001F;
-         this.b($$1, $$1);
-         this.a(this.a.a($$0 % 4, 4));
+         if (!this.c.b_(hz.a(this.g, this.h, this.i)).a(aue.a) || this.m) {
+            this.k();
+         }
+
+         this.a += 0.08F;
       }
    }
 
-   public static class a implements ftd<kc> {
-      private final ftv a;
+   public static class a implements ftc<kc> {
+      private final ftu a;
 
-      public a(ftv $$0) {
+      public a(ftu $$0) {
          this.a = $$0;
       }
 
-      public fta a(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new fuf($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+      public fsz a(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         fuf $$8 = new fuf($$1, $$2, $$3, $$4);
+         $$8.a(this.a);
+         return $$8;
       }
    }
 }

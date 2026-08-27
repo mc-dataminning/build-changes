@@ -112,7 +112,7 @@ public class fhq extends fgd<cma> {
             double $$8 = $$0 - (double)($$3 + $$7 % 4 * 16);
             double $$9 = $$1 - (double)($$4 + $$7 / 4 * 18);
             if ($$8 >= 0.0 && $$9 >= 0.0 && $$8 < 16.0 && $$9 < 18.0 && this.p.b(this.f.s, $$6)) {
-               exh.O().ai().a(gkc.a(atk.zO, 1.0F));
+               exh.O().ai().a(gkb.a(atk.zO, 1.0F));
                this.f.q.a(this.p.j, $$6);
                return true;
             }

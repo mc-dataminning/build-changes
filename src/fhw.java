@@ -17,7 +17,7 @@ public interface fhw {
 
    int a(eys var1);
 
-   default void a(eys $$0, int $$1, int $$2, Matrix4f $$3, fvm.a $$4) {
+   default void a(eys $$0, int $$1, int $$2, Matrix4f $$3, fvl.a $$4) {
    }
 
    default void a(eys $$0, int $$1, int $$2, eyu $$3) {

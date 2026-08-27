@@ -1,40 +1,23 @@
-public class gde<T extends bno & chw> extends gas<T> {
-   private static final float a = 12.25F;
-   private final gbr f;
-   private final float g;
-   private final boolean h;
+public class gde extends gar<cim> {
+   public static final aiy a = new aiy("textures/entity/trident.png");
+   private final fog f;
 
-   public gde(gat.a $$0, float $$1, boolean $$2) {
+   public gde(gas.a $$0) {
       super($$0);
-      this.f = $$0.b();
-      this.g = $$1;
-      this.h = $$2;
+      this.f = new fog($$0.a(fpb.bE));
    }
 
-   public gde(gat.a $$0) {
-      this($$0, 1.0F, false);
+   public void a(cim $$0, float $$1, float $$2, esa $$3, fvl $$4, int $$5) {
+      $$3.a();
+      $$3.a(a.d.rotationDegrees(awh.i($$2, $$0.M, $$0.dC()) - 90.0F));
+      $$3.a(a.f.rotationDegrees(awh.i($$2, $$0.N, $$0.dE()) + 90.0F));
+      ese $$6 = gbq.c($$4, this.f.a(this.a($$0)), false, $$0.H());
+      this.f.a($$3, $$6, $$5, ggk.d, 1.0F, 1.0F, 1.0F, 1.0F);
+      $$3.b();
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   @Override
-   protected int a(T $$0, hz $$1) {
-      return this.h ? 15 : super.a($$0, $$1);
-   }
-
-   @Override
-   public void a(T $$0, float $$1, float $$2, esa $$3, fvm $$4, int $$5) {
-      if ($$0.ag >= 2 || !(this.c.b.g().f($$0) < 12.25)) {
-         $$3.a();
-         $$3.b(this.g, this.g, this.g);
-         $$3.a(this.c.b());
-         $$3.a(a.d.rotationDegrees(180.0F));
-         this.f.a($$0.q(), cow.h, $$5, ggl.d, $$3, $$4, $$0.dM(), $$0.aj());
-         $$3.b();
-         super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      }
-   }
-
-   @Override
-   public aiy a(bno $$0) {
-      return ggt.e;
+   public aiy a(cim $$0) {
+      return a;
    }
 }

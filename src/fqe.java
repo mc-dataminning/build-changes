@@ -159,7 +159,7 @@ public class fqe {
             this.f = this.f + $$3.a(this.b.s, this.b.s.dM(), $$0);
             if (this.g % 4.0F == 0.0F) {
                dga $$4 = $$3.w();
-               this.b.ai().a(new gkc($$4.f(), atl.e, ($$4.a() + 1.0F) / 8.0F, $$4.b() * 0.5F, gkh.t(), $$0));
+               this.b.ai().a(new gkb($$4.f(), atl.e, ($$4.a() + 1.0F) / 8.0F, $$4.b() * 0.5F, gkg.t(), $$0));
             }
 
             this.g++;
@@ -213,7 +213,7 @@ public class fqe {
       }
    }
 
-   public blu a(fuo $$0, blt $$1, eno $$2) {
+   public blu a(fun $$0, blt $$1, eno $$2) {
       this.m();
       if (!this.b.r.D_().a($$2.a())) {
          return blu.e;
@@ -227,7 +227,7 @@ public class fqe {
       }
    }
 
-   private blu b(fuo $$0, blt $$1, eno $$2) {
+   private blu b(fun $$0, blt $$1, eno $$2) {
       hz $$3 = $$2.a();
       coz $$4 = $$0.b($$1);
       if (this.j == cvk.d) {
@@ -300,12 +300,12 @@ public class fqe {
       }
    }
 
-   public fuo a(fpx $$0, atv $$1, ewu $$2) {
+   public fun a(fpx $$0, atv $$1, ewu $$2) {
       return this.a($$0, $$1, $$2, false, false);
    }
 
-   public fuo a(fpx $$0, atv $$1, ewu $$2, boolean $$3, boolean $$4) {
-      return new fuo(this.b, $$0, this.c, $$1, $$2, $$3, $$4);
+   public fun a(fpx $$0, atv $$1, ewu $$2, boolean $$3, boolean $$4) {
+      return new fun(this.b, $$0, this.c, $$1, $$2, $$3, $$4);
    }
 
    public void a(chh $$0, bno $$1) {

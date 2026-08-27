@@ -35,8 +35,8 @@ public class Main {
    public static void main(String[] $$0) {
       Stopwatch $$1 = Stopwatch.createStarted(Ticker.systemTicker());
       Stopwatch $$2 = Stopwatch.createStarted(Ticker.systemTicker());
-      gma.a.a(glw.z, $$1);
-      gma.a.a(glw.A, $$2);
+      glz.a.a(glv.z, $$1);
+      glz.a.a(glv.A, $$2);
       aa.a();
       aa.d();
       OptionParser $$3 = new OptionParser();
@@ -132,7 +132,7 @@ public class Main {
 
       try {
          aja.a();
-         gma.a.a(aja.b.get());
+         glz.a.a(aja.b.get());
          aja.c();
       } catch (Throwable var84) {
          o $$63 = o.a(var84, "Bootstrap");
@@ -163,7 +163,7 @@ public class Main {
          public void run() {
             exh $$0 = exh.O();
             if ($$0 != null) {
-               gky $$1 = $$0.T();
+               gkx $$1 = $$0.T();
                if ($$1 != null) {
                   $$1.a(true);
                }

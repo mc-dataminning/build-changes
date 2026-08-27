@@ -7,7 +7,7 @@ import java.util.stream.Stream;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class euo extends gmw {
+public class euo extends gmv {
    private static final aiy a = new aiy("widget/slot_frame");
    private static final Logger b = LogUtils.getLogger();
    private static final int c = 80;

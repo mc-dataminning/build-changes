@@ -1,4 +1,4 @@
-public class frt extends fua {
+public class frt extends ftz {
    frt(fpx $$0, double $$1, double $$2, double $$3, dlf $$4) {
       super($$0, $$1, $$2, $$3);
       this.a(exh.O().an().a().a($$4));
@@ -8,8 +8,8 @@ public class frt extends fua {
    }
 
    @Override
-   public fte b() {
-      return fte.a;
+   public ftd b() {
+      return ftd.a;
    }
 
    @Override
@@ -17,8 +17,8 @@ public class frt extends fua {
       return 0.5F;
    }
 
-   public static class a implements ftd<jr> {
-      public fta a(jr $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+   public static class a implements ftc<jr> {
+      public fsz a(jr $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
          return new frt($$1, $$2, $$3, $$4, $$0.c());
       }
    }

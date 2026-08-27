@@ -2,10 +2,10 @@ import java.util.function.Function;
 
 public abstract class fmt<E extends bno> extends fmb<E> {
    public fmt() {
-      this(fvu::e);
+      this(fvt::e);
    }
 
-   public fmt(Function<aiy, fvu> $$0) {
+   public fmt(Function<aiy, fvt> $$0) {
       super($$0);
    }
 

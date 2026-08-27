@@ -74,7 +74,7 @@ public class RenderSystem {
    private static float shaderLineWidth = 1.0F;
    private static String apiDescription = "Unknown";
    @Nullable
-   private static fwa shader;
+   private static fvz shader;
    private static final AtomicLong pollEventsWaitStart = new AtomicLong();
    private static final AtomicBoolean pollingEvents = new AtomicBoolean(false);
 
@@ -461,7 +461,7 @@ public class RenderSystem {
       shaderLightDirections[1] = $$1;
    }
 
-   public static void setupShaderLights(fwa $$0) {
+   public static void setupShaderLights(fvz $$0) {
       assertOnRenderThread();
       if ($$0.h != null) {
          $$0.h.a(shaderLightDirections[0]);
@@ -758,7 +758,7 @@ public class RenderSystem {
       }
    }
 
-   public static void setShader(Supplier<fwa> $$0) {
+   public static void setShader(Supplier<fvz> $$0) {
       if (!isOnRenderThread()) {
          recordRenderCall(() -> shader = $$0.get());
       } else {
@@ -767,7 +767,7 @@ public class RenderSystem {
    }
 
    @Nullable
-   public static fwa getShader() {
+   public static fvz getShader() {
       assertOnRenderThread();
       return shader;
    }
@@ -782,8 +782,8 @@ public class RenderSystem {
 
    public static void _setShaderTexture(int $$0, aiy $$1) {
       if ($$0 >= 0 && $$0 < shaderTextures.length) {
-         ggv $$2 = exh.O().Y();
-         ggf $$3 = $$2.b($$1);
+         ggu $$2 = exh.O().Y();
+         gge $$3 = $$2.b($$1);
          shaderTextures[$$0] = $$3.a();
       }
    }

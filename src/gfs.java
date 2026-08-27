@@ -1,24 +1,18 @@
-public class gfs extends gep<cdg, fos<cdg>> {
-   private static final aiy a = new aiy("textures/entity/wither/wither_armor.png");
-   private final fos<cdg> b;
+public class gfs extends gfd<caw, fot<caw>> {
+   private final fot<caw> a;
 
-   public gfs(gco<cdg, fos<cdg>> $$0, foy $$1) {
+   public gfs(gcn<caw, fot<caw>> $$0, foy $$1) {
       super($$0);
-      this.b = new fos<>($$1.a(fpb.bS));
+      this.a = new fot<>($$1.a(fpb.bZ));
    }
 
-   @Override
-   protected float a(float $$0) {
-      return awh.b($$0 * 0.02F) * 3.0F;
-   }
-
-   @Override
-   protected aiy a() {
-      return a;
-   }
-
-   @Override
-   protected fmb<cdg> b() {
-      return this.b;
+   public void a(esa $$0, fvl $$1, int $$2, caw $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if ($$3.gq()) {
+         this.c().a(this.a);
+         this.a.a($$3, $$4, $$5, $$6);
+         this.a.a($$3, $$4, $$5, $$7, $$8, $$9);
+         ese $$10 = $$1.getBuffer(fvt.e(((cmi)cpc.oq).b()));
+         this.a.a($$0, $$10, $$2, ggk.d, 1.0F, 1.0F, 1.0F, 1.0F);
+      }
    }
 }

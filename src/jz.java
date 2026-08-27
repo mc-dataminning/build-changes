@@ -101,10 +101,9 @@ public class jz {
    public static final jy<kb> aS = a("shriek", false, kb.c, $$0 -> kb.a, $$0 -> kb.b);
    public static final kc aT = a("egg_crack", false);
    public static final kc aU = a("dust_plume", false);
-   public static final kc aV = a("gust_dust", false);
-   public static final kc aW = a("trial_spawner_detection", true);
-   public static final Codec<jx> aX = kf.j.q().dispatch("type", jx::b, jy::e);
-   public static final xo<vb, jx> aY = xm.a(kg.S).b(jx::b, jy::f);
+   public static final kc aV = a("trial_spawner_detection", true);
+   public static final Codec<jx> aW = kf.j.q().dispatch("type", jx::b, jy::e);
+   public static final xo<vb, jx> aX = xm.a(kg.S).b(jx::b, jy::f);
 
    private static kc a(String $$0, boolean $$1) {
       return iv.a(kf.j, $$0, new kc($$1));

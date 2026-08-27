@@ -1,7 +1,8 @@
-public interface gln<T> {
-   int e();
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   T b(awo var1);
-
-   void a(gli var1);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface gln {
 }

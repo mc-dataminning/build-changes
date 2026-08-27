@@ -1,22 +1,63 @@
-public class gmu implements fak {
-   private final vq a;
-   private final int b;
-   private final int c;
-   private final int d;
+import java.util.Collection;
 
-   public gmu(vq $$0, int $$1, int $$2, int $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+public abstract class gmu<E extends fad.a<E>> extends fad<E> {
+   protected gmu(int $$0, int $$1, int $$2, int $$3) {
+      super(exh.O(), $$0, $$1, $$2, $$3);
+   }
+
+   public void p(int $$0) {
+      if ($$0 == -1) {
+         this.a(null);
+      } else if (super.n() != 0) {
+         this.a(this.d($$0));
+      }
    }
 
    @Override
-   public void a(eyu $$0, int $$1, int $$2, float $$3) {
-      $$0.a(exh.O().h, this.a, this.b, this.c, this.d);
+   public void a(int $$0) {
+      this.p($$0);
    }
 
-   public vq a() {
-      return this.a;
+   @Override
+   public int a() {
+      return 0;
+   }
+
+   @Override
+   public int c() {
+      return this.q() + this.b();
+   }
+
+   @Override
+   public int b() {
+      return (int)((double)this.g * 0.6);
+   }
+
+   @Override
+   public void a(Collection<E> $$0) {
+      super.a($$0);
+   }
+
+   @Override
+   public int n() {
+      return super.n();
+   }
+
+   @Override
+   public int g(int $$0) {
+      return super.g($$0);
+   }
+
+   @Override
+   public int q() {
+      return super.q();
+   }
+
+   public int a(E $$0) {
+      return super.b($$0);
+   }
+
+   public void H() {
+      this.m();
    }
 }

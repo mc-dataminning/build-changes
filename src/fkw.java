@@ -5,10 +5,10 @@ public abstract class fkw<E extends bno> extends fmk<E> {
    private final float b;
 
    public fkw(float $$0, float $$1) {
-      this($$0, $$1, fvu::e);
+      this($$0, $$1, fvt::e);
    }
 
-   public fkw(float $$0, float $$1, Function<aiy, fvu> $$2) {
+   public fkw(float $$0, float $$1, Function<aiy, fvt> $$2) {
       super($$2);
       this.b = $$1;
       this.a = $$0;

@@ -5,7 +5,7 @@ public class fdp extends ffe {
    private static final vq a = vq.c("accessibility.onboarding.screen.narrator");
    private static final int b = 4;
    private static final int c = 16;
-   private final fvo k = new fvo(ffj.b);
+   private final fvn k = new fvn(ffj.b);
    private final ezy l;
    private final exl m;
    private final boolean n;

@@ -1,107 +1,74 @@
-import com.google.common.collect.Maps;
-import java.util.HashMap;
+import com.google.common.collect.ImmutableList;
+import java.util.Collections;
 import java.util.List;
-import java.util.Map;
+import java.util.function.DoubleSupplier;
 
-public class fzi implements fyx.a {
+public class fzi implements fyw.a {
    private final exh a;
-   private final Map<aix<cvn>, Map<String, eaw>> b = Maps.newIdentityHashMap();
-   private final Map<aix<cvn>, Map<String, zm.a>> c = Maps.newIdentityHashMap();
-   private static final int d = 500;
+   private double b = Double.MIN_VALUE;
+   private List<bno> c = Collections.emptyList();
 
    public fzi(exh $$0) {
       this.a = $$0;
    }
 
    @Override
-   public void a(esa $$0, fvm $$1, double $$2, double $$3, double $$4) {
-      ews $$5 = this.a.j.m();
-      aix<cvn> $$6 = this.a.r.ae();
-      hz $$7 = hz.a($$5.b().c, 0.0, $$5.b().e);
-      ese $$8 = $$1.getBuffer(fvu.w());
-      if (this.b.containsKey($$6)) {
-         for (eaw $$9 : this.b.get($$6).values()) {
-            if ($$7.a($$9.g(), 500.0)) {
-               fvk.a(
-                  $$0,
-                  $$8,
-                  (double)$$9.h() - $$2,
-                  (double)$$9.i() - $$3,
-                  (double)$$9.j() - $$4,
-                  (double)($$9.k() + 1) - $$2,
-                  (double)($$9.l() + 1) - $$3,
-                  (double)($$9.m() + 1) - $$4,
-                  1.0F,
-                  1.0F,
-                  1.0F,
-                  1.0F,
-                  1.0F,
-                  1.0F,
-                  1.0F
-               );
-            }
-         }
+   public void a(esa $$0, fvl $$1, double $$2, double $$3, double $$4) {
+      double $$5 = (double)ac.c();
+      if ($$5 - this.b > 1.0E8) {
+         this.b = $$5;
+         bno $$6 = this.a.j.m().g();
+         this.c = ImmutableList.copyOf($$6.dM().a_($$6, $$6.cH().g(16.0)));
       }
 
-      Map<String, zm.a> $$10 = this.c.get($$6);
-      if ($$10 != null) {
-         for (zm.a $$11 : $$10.values()) {
-            eaw $$12 = $$11.a();
-            if ($$7.a($$12.g(), 500.0)) {
-               if ($$11.b()) {
-                  fvk.a(
-                     $$0,
-                     $$8,
-                     (double)$$12.h() - $$2,
-                     (double)$$12.i() - $$3,
-                     (double)$$12.j() - $$4,
-                     (double)($$12.k() + 1) - $$2,
-                     (double)($$12.l() + 1) - $$3,
-                     (double)($$12.m() + 1) - $$4,
-                     0.0F,
-                     1.0F,
-                     0.0F,
-                     1.0F,
-                     0.0F,
-                     1.0F,
-                     0.0F
-                  );
-               } else {
-                  fvk.a(
-                     $$0,
-                     $$8,
-                     (double)$$12.h() - $$2,
-                     (double)$$12.i() - $$3,
-                     (double)$$12.j() - $$4,
-                     (double)($$12.k() + 1) - $$2,
-                     (double)($$12.l() + 1) - $$3,
-                     (double)($$12.m() + 1) - $$4,
-                     0.0F,
-                     0.0F,
-                     1.0F,
-                     1.0F,
-                     0.0F,
-                     0.0F,
-                     1.0F
-                  );
-               }
-            }
+      chh $$7 = this.a.s;
+      if ($$7 != null && $$7.aC.isPresent()) {
+         this.a($$0, $$1, $$2, $$3, $$4, $$7, () -> 0.0, 1.0F, 0.0F, 0.0F);
+      }
+
+      for (bno $$8 : this.c) {
+         if ($$8 != $$7) {
+            this.a($$0, $$1, $$2, $$3, $$4, $$8, () -> this.a($$8), 0.0F, 1.0F, 0.0F);
          }
       }
    }
 
-   public void a(eaw $$0, List<zm.a> $$1, aix<cvn> $$2) {
-      this.b.computeIfAbsent($$2, $$0x -> new HashMap<>()).put($$0.toString(), $$0);
-      Map<String, zm.a> $$3 = this.c.computeIfAbsent($$2, $$0x -> new HashMap<>());
-
-      for (zm.a $$4 : $$1) {
-         $$3.put($$4.a().toString(), $$4);
-      }
+   private void a(esa $$0, fvl $$1, double $$2, double $$3, double $$4, bno $$5, DoubleSupplier $$6, float $$7, float $$8, float $$9) {
+      $$5.aC.ifPresent($$10 -> {
+         double $$11 = $$6.getAsDouble();
+         hz $$12 = $$5.aJ();
+         this.a($$12, $$0, $$2, $$3, $$4, $$1, 0.02 + $$11, $$7, $$8, $$9);
+         hz $$13 = $$5.aH();
+         if (!$$13.equals($$12)) {
+            this.a($$13, $$0, $$2, $$3, $$4, $$1, 0.04 + $$11, 0.0F, 1.0F, 1.0F);
+         }
+      });
    }
 
-   @Override
-   public void a() {
-      this.b.clear();
-      this.c.clear();
+   private double a(bno $$0) {
+      return 0.02 * (double)(String.valueOf((double)$$0.aj() + 0.132453657).hashCode() % 1000) / 1000.0;
+   }
+
+   private void a(hz $$0, esa $$1, double $$2, double $$3, double $$4, fvl $$5, double $$6, float $$7, float $$8, float $$9) {
+      double $$10 = (double)$$0.u() - $$2 - 2.0 * $$6;
+      double $$11 = (double)$$0.v() - $$3 - 2.0 * $$6;
+      double $$12 = (double)$$0.w() - $$4 - 2.0 * $$6;
+      double $$13 = $$10 + 1.0 + 4.0 * $$6;
+      double $$14 = $$11 + 1.0 + 4.0 * $$6;
+      double $$15 = $$12 + 1.0 + 4.0 * $$6;
+      fvj.a($$1, $$5.getBuffer(fvt.w()), $$10, $$11, $$12, $$13, $$14, $$15, $$7, $$8, $$9, 0.4F);
+      fvj.a(
+         $$1,
+         $$5.getBuffer(fvt.w()),
+         this.a.r.a_($$0).b(this.a.r, $$0, enx.a()).a((double)$$0.u(), (double)$$0.v(), (double)$$0.w()),
+         -$$2,
+         -$$3,
+         -$$4,
+         $$7,
+         $$8,
+         $$9,
+         1.0F,
+         false
+      );
    }
 }

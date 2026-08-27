@@ -3,7 +3,7 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 
 public class cwl {
    public static final Codec<cwl> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(jz.aX.fieldOf("options").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("probability").forGetter($$0x -> $$0x.c)).apply($$0, cwl::new)
+      $$0 -> $$0.group(jz.aW.fieldOf("options").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("probability").forGetter($$0x -> $$0x.c)).apply($$0, cwl::new)
    );
    private final jx b;
    private final float c;

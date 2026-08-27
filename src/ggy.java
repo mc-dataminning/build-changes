@@ -1,25 +1,75 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.JsonOps;
+import java.io.BufferedReader;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.function.Function;
 import java.util.function.Predicate;
+import org.slf4j.Logger;
 
-public interface ggy {
-   air a = new air("textures", ".png");
+public class ggy {
+   private static final Logger a = LogUtils.getLogger();
+   private static final air b = new air("atlases", ".json");
+   private final List<ggx> c;
 
-   void a(asa var1, ggy.a var2);
-
-   gha a();
-
-   public interface a {
-      default void a(aiy $$0, ary $$1) {
-         this.a($$0, $$2 -> $$2.loadSprite($$0, $$1));
-      }
-
-      void a(aiy var1, ggy.b var2);
-
-      void a(Predicate<aiy> var1);
+   private ggy(List<ggx> $$0) {
+      this.c = $$0;
    }
 
-   public interface b extends Function<ggx, ggo> {
-      default void a() {
+   public List<Function<ggw, ggn>> a(asa $$0) {
+      final Map<aiy, ggx.b> $$1 = new HashMap<>();
+      ggx.a $$2 = new ggx.a() {
+         @Override
+         public void a(aiy $$0, ggx.b $$1x) {
+            ggx.b $$2 = $$1.put($$0, $$1);
+            if ($$2 != null) {
+               $$2.a();
+            }
+         }
+
+         @Override
+         public void a(Predicate<aiy> $$0) {
+            Iterator<Entry<aiy, ggx.b>> $$1 = $$1.entrySet().iterator();
+
+            while ($$1.hasNext()) {
+               Entry<aiy, ggx.b> $$2 = $$1.next();
+               if ($$0.test($$2.getKey())) {
+                  $$2.getValue().a();
+                  $$1.remove();
+               }
+            }
+         }
+      };
+      this.c.forEach($$2x -> $$2x.a($$0, $$2));
+      Builder<Function<ggw, ggn>> $$3 = ImmutableList.builder();
+      $$3.add((Function<ggw, ggn>)$$0x -> ggj.a());
+      $$3.addAll($$1.values());
+      return $$3.build();
+   }
+
+   public static ggy a(asa $$0, aiy $$1) {
+      aiy $$2 = b.a($$1);
+      List<ggx> $$3 = new ArrayList<>();
+
+      for (ary $$4 : $$0.a($$2)) {
+         try (BufferedReader $$5 = $$4.e()) {
+            Dynamic<JsonElement> $$6 = new Dynamic(JsonOps.INSTANCE, JsonParser.parseReader($$5));
+            $$3.addAll((Collection<? extends ggx>)gha.h.parse($$6).getOrThrow(false, a::error));
+         } catch (Exception var11) {
+            a.warn("Failed to parse atlas definition {} in pack {}", new Object[]{$$2, $$4.b(), var11});
+         }
       }
+
+      return new ggy($$3);
    }
 }

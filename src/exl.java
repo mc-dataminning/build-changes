@@ -128,7 +128,7 @@ public class exl {
          () -> exh.O().q() && exh.O().ah().h(),
          ($$0x, $$1x) -> {
             exh $$2x = exh.O();
-            fvg $$3x = $$2x.ah();
+            fvf $$3x = $$2x.ah();
             if ($$1x == exa.c && $$3x.b()) {
                $$3x.d();
             } else {
@@ -236,7 +236,7 @@ public class exl {
       "options.attackIndicator", exk.a(), exk.b(), new exk.e<>(Arrays.asList(ewr.values()), Codec.INT.xmap(ewr::a, ewr::a)), ewr.b, $$0x -> {
       }
    );
-   public gmq r = gmq.a;
+   public gmp r = gmp.a;
    public boolean s = false;
    public boolean t = false;
    private final exk<Integer> ba = new exk<>("options.biomeBlendRadius", exk.a(), ($$0x, $$1x) -> {
@@ -294,9 +294,9 @@ public class exl {
    private static final vq bu = vq.c("options.directionalAudio.on.tooltip");
    private static final vq bv = vq.c("options.directionalAudio.off.tooltip");
    private final exk<Boolean> bw = exk.a("options.directionalAudio", $$0x -> $$0x ? fas.a(bu) : fas.a(bv), false, $$0x -> {
-      gll $$1x = exh.O().ai();
+      glk $$1x = exh.O().ai();
       $$1x.k();
-      $$1x.a(gkc.a(atk.zJ, 1.0F));
+      $$1x.a(gkb.a(atk.zJ, 1.0F));
    });
    private final exk<Boolean> bx = new exk<>(
       "options.accessibility.text_background",
@@ -503,7 +503,7 @@ public class exl {
          if ("".equals($$1x)) {
             return vq.c("options.audioDevice.default");
          } else {
-            return $$1x.startsWith("OpenAL Soft on ") ? vq.b($$1x.substring(gli.c)) : vq.b($$1x);
+            return $$1x.startsWith("OpenAL Soft on ") ? vq.b($$1x.substring(glh.c)) : vq.b($$1x);
          }
       },
       new exk.h<>(
@@ -513,9 +513,9 @@ public class exl {
       ),
       "",
       $$0x -> {
-         gll $$1x = exh.O().ai();
+         glk $$1x = exh.O().ai();
          $$1x.k();
-         $$1x.a(gkc.a(atk.zJ, 1.0F));
+         $$1x.a(gkb.a(atk.zJ, 1.0F));
       }
    );
    public boolean ae = true;
@@ -950,7 +950,7 @@ public class exl {
       $$0.a("mainHand", this.aQ);
       $$0.a("attackIndicator", this.aZ);
       $$0.a("narrator", this.cf);
-      this.r = $$0.a("tutorialStep", this.r, gmq::a, gmq::a);
+      this.r = $$0.a("tutorialStep", this.r, gmp::a, gmp::a);
       $$0.a("mouseWheelSensitivity", this.bb);
       $$0.a("rawMouseInput", this.bc);
       this.u = $$0.a("glDebugVerbosity", this.u);

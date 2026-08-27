@@ -1,29 +1,46 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicReference;
 
-public class ghd implements ggy {
-   public static final Codec<ghd> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.STRING.fieldOf("source").forGetter($$0x -> $$0x.c), Codec.STRING.fieldOf("prefix").forGetter($$0x -> $$0x.d)).apply($$0, ghd::new)
-   );
-   private final String c;
-   private final String d;
+public class ghd {
+   private final aiy a;
+   private final ary b;
+   private final AtomicReference<erb> c = new AtomicReference<>();
+   private final AtomicInteger d;
 
-   public ghd(String $$0, String $$1) {
-      this.c = $$0;
-      this.d = $$1;
+   public ghd(aiy $$0, ary $$1, int $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.d = new AtomicInteger($$2);
    }
 
-   @Override
-   public void a(asa $$0, ggy.a $$1) {
-      air $$2 = new air("textures/" + this.c, ".png");
-      $$2.a($$0).forEach(($$2x, $$3) -> {
-         aiy $$4 = $$2.b($$2x).d(this.d);
-         $$1.a($$4, $$3);
-      });
+   public erb a() throws IOException {
+      erb $$0 = this.c.get();
+      if ($$0 == null) {
+         synchronized (this) {
+            $$0 = this.c.get();
+            if ($$0 == null) {
+               try (InputStream $$1 = this.b.d()) {
+                  $$0 = erb.a($$1);
+                  this.c.set($$0);
+               } catch (IOException var9) {
+                  throw new IOException("Failed to load image " + this.a, var9);
+               }
+            }
+         }
+      }
+
+      return $$0;
    }
 
-   @Override
-   public gha a() {
-      return ghb.b;
+   public void b() {
+      int $$0 = this.d.decrementAndGet();
+      if ($$0 <= 0) {
+         erb $$1 = this.c.getAndSet(null);
+         if ($$1 != null) {
+            $$1.close();
+         }
+      }
    }
 }

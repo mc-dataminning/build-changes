@@ -68,22 +68,22 @@ public class exh extends bko<Runnable> implements erf {
    private final long K = Double.doubleToLongBits(Math.PI);
    private final Path L;
    private final CompletableFuture<ProfileResult> M;
-   private final ggv N;
+   private final ggu N;
    private final DataFixer O;
-   private final fwe P;
+   private final fwd P;
    private final ere Q;
    private final exu R = new exu(20.0F, 0L, this::a);
-   private final fvs S;
-   public final fvk f;
-   private final gar T;
-   private final gbr U;
-   public final ftc g;
-   private final gkt V = new gkt();
+   private final fvr S;
+   public final fvj f;
+   private final gaq T;
+   private final gbq U;
+   public final ftb g;
+   private final gks V = new gks();
    private final exw W;
    public final eys h;
    public final eys i;
-   public final fvf j;
-   public final fyx k;
+   public final fve j;
+   public final fyw k;
    private final AtomicReference<api> X = new AtomicReference<>();
    public final eyt l;
    public final exl m;
@@ -102,45 +102,45 @@ public class exh extends bko<Runnable> implements erf {
    private final boolean ah;
    private final arx ai;
    private final aqr aj;
-   private final gjj ak;
+   private final gji ak;
    private final arl al;
-   private final gib am;
+   private final gia am;
    private final eyl an;
    private final eyp ao;
    private final eqm ap;
-   private final gll aq;
-   private final glg ar;
+   private final glk aq;
+   private final glf ar;
    private final fbw as;
-   private final ghv at;
-   private final fvg au;
+   private final ghu at;
+   private final fvf au;
    private final exn av = new exn(H, exh::b);
    private final YggdrasilAuthenticationService aw;
    private final MinecraftSessionService ax;
    private final UserApiService ay;
    private final CompletableFuture<UserProperties> az;
-   private final ghu aA;
-   private final gja aB;
-   private final fwg aC;
-   private final ghs aD;
-   private final ghr aE;
+   private final ght aA;
+   private final giz aB;
+   private final fwf aC;
+   private final ghr aD;
+   private final ghq aE;
    private final eyv aF;
    private final fbr aG;
-   private final gmo aH;
+   private final gmn aH;
    private final fjm aI;
    private final foy aJ;
-   private final fxl aK;
-   private final glp aL;
+   private final fxk aK;
+   private final glo aL;
    private final fqh aM;
    private final eug aN;
-   private final fuw aO;
+   private final fuv aO;
    @Nullable
    public fqe q;
    @Nullable
    public fpx r;
    @Nullable
-   public fuo s;
+   public fun s;
    @Nullable
-   private gky aP;
+   private gkx aP;
    @Nullable
    private uo aQ;
    private boolean aR;
@@ -213,8 +213,8 @@ public class exh extends bko<Runnable> implements erf {
       this.ab = $$0.d.c;
       Path $$2 = this.p.toPath();
       this.bx = eil.a($$2.resolve("allowed_symlinks.txt"));
-      ghl $$3 = new ghl($$0.c.a(), this.bx);
-      this.ak = new gjj(this, $$2.resolve("downloads"), $$0.a);
+      ghk $$3 = new ghk($$0.c.a(), this.bx);
+      this.ak = new gji(this, $$2.resolve("downloads"), $$0.a);
       arn $$4 = new arh(this.L, aqp.a, arm.b, this.bx);
       this.al = new arl($$3, this.ak.a(), $$4);
       this.aj = $$3.a();
@@ -246,7 +246,7 @@ public class exh extends bko<Runnable> implements erf {
       this.m = new exl(this, this.p);
       RenderSystem.setShaderGlintAlpha(this.m.ak().c());
       this.bb = true;
-      this.aH = new gmo(this, this.m);
+      this.aH = new gmn(this, this.m);
       this.Y = new exd($$2, this.O);
       F.info("Backend library: {}", RenderSystem.getBackendDescription());
       eqr $$5;
@@ -257,10 +257,10 @@ public class exh extends bko<Runnable> implements erf {
       }
 
       ac.b = RenderSystem.initBackendSystem();
-      this.P = new fwe(this);
+      this.P = new fwd(this);
       this.Q = this.P.a($$5, this.m.k, this.be());
       this.a(true);
-      gma.a.b(glw.A);
+      glz.a.b(glv.A);
 
       try {
          this.Q.a(this.aj, aa.b().g() ? equ.a : equ.b);
@@ -280,46 +280,46 @@ public class exh extends bko<Runnable> implements erf {
       this.ai = new arx(aqp.a);
       this.al.a();
       this.m.b(this.al);
-      this.am = new gib(this.m.ad);
+      this.am = new gia(this.m.ad);
       this.ai.a(this.am);
-      this.N = new ggv(this.ai);
+      this.N = new ggu(this.ai);
       this.ai.a(this.N);
-      this.aA = new ghu(this.N, $$1.toPath().resolve("skins"), this.ax, this);
+      this.aA = new ght(this.N, $$1.toPath().resolve("skins"), this.ax, this);
       this.ad = new eil($$2.resolve("saves"), $$2.resolve("backups"), this.bx, this.O);
       this.bw = new eww($$2);
-      this.aq = new gll(this.m);
+      this.aq = new glk(this.m);
       this.ai.a(this.aq);
-      this.at = new ghv(this.W);
+      this.at = new ghu(this.W);
       this.ai.a(this.at);
-      this.ar = new glg(this);
+      this.ar = new glf(this);
       this.as = new fbw(this.N);
       this.h = this.as.a();
       this.i = this.as.b();
       this.ai.a(this.as);
       this.b(this.j());
-      this.ai.a(new gho());
       this.ai.a(new ghn());
+      this.ai.a(new ghm());
       this.Q.a("Startup");
       RenderSystem.setupDefaultState(0, 0, this.Q.k(), this.Q.l());
       this.Q.a("Post startup");
       this.an = eyl.a();
       this.ao = eyp.a(this.an);
-      this.aB = new gja(this.N, this.an, this.m.A().c());
+      this.aB = new giz(this.N, this.an, this.m.A().c());
       this.ai.a(this.aB);
       this.aJ = new foy();
       this.ai.a(this.aJ);
-      this.aK = new fxl(this.h, this.aJ, this::an, this::aq, this::ao);
+      this.aK = new fxk(this.h, this.aJ, this::an, this::aq, this::ao);
       this.ai.a(this.aK);
-      fuz $$8 = new fuz(this.aK, this.aJ);
+      fuy $$8 = new fuy(this.aK, this.aJ);
       this.ai.a($$8);
-      this.U = new gbr(this, this.N, this.aB, this.ao, $$8);
+      this.U = new gbq(this, this.N, this.aB, this.ao, $$8);
       this.ai.a(this.U);
 
       try {
          int $$9 = Runtime.getRuntime().availableProcessors();
          int $$10 = this.af() ? $$9 : Math.min($$9, 4);
          esc.a();
-         this.S = new fvs($$10);
+         this.S = new fvr($$10);
       } catch (OutOfMemoryError var12) {
          TinyFileDialogs.tinyfd_messageBox(
             "Minecraft",
@@ -332,29 +332,29 @@ public class exh extends bko<Runnable> implements erf {
       }
 
       this.aI = new fjm(this, this.ay);
-      this.aC = new fwg(this.aB.b(), $$8, this.an);
+      this.aC = new fwf(this.aB.b(), $$8, this.an);
       this.ai.a(this.aC);
-      this.T = new gar(this, this.N, this.U, this.aC, this.h, this.m, this.aJ);
+      this.T = new gaq(this, this.N, this.U, this.aC, this.h, this.m, this.aJ);
       this.ai.a(this.T);
-      this.j = new fvf(this, this.T.d(), this.ai, this.S);
+      this.j = new fve(this, this.T.d(), this.ai, this.S);
       this.ai.a(this.j.e());
-      this.f = new fvk(this, this.T, this.aK, this.S);
+      this.f = new fvj(this, this.T, this.aK, this.S);
       this.ai.a(this.f);
       this.bg();
       this.ai.a(this.V);
-      this.g = new ftc(this.r, this.N);
+      this.g = new ftb(this.r, this.N);
       this.ai.a(this.g);
-      this.aD = new ghs(this.N);
+      this.aD = new ghr(this.N);
       this.ai.a(this.aD);
-      this.aE = new ghr(this.N);
+      this.aE = new ghq(this.N);
       this.ai.a(this.aE);
       this.aF = new eyv(this.N);
       this.ai.a(this.aF);
-      this.au = new fvg();
+      this.au = new fvf();
       this.ai.a(this.au);
       this.ai.a(this.av);
       this.l = new eyt(this);
-      this.k = new fyx(this);
+      this.k = new fyw(this);
       esq $$12 = esq.a(this);
       this.aN = new eug($$12);
       RenderSystem.setErrorCallback(this::a);
@@ -382,7 +382,7 @@ public class exh extends bko<Runnable> implements erf {
       this.Q.c();
       this.a();
       this.j.a(this.aj.c());
-      this.aL = new glp(this, this.ay, this.W);
+      this.aL = new glo(this, this.ay, this.W);
       this.aM = fqh.a(this.ay, this.W, $$2);
       this.bs = new exp(this);
       this.bt = new ewz(this);
@@ -395,7 +395,7 @@ public class exh extends bko<Runnable> implements erf {
       List<aqo> $$14 = this.al.g();
       this.bo.a(exr.b.a, $$14);
       arw $$15 = this.ai.a(ac.f(), this, I, $$14);
-      gma.a.a(glw.C);
+      glz.a.a(glv.C);
       exh.b $$16 = new exh.b($$12, $$0.e);
       this.a(new feq(this, $$15, $$1x -> ac.a($$1x, $$1xx -> this.a($$1xx, $$16), () -> {
             if (aa.aU) {
@@ -405,7 +405,7 @@ public class exh extends bko<Runnable> implements erf {
             this.bo.a();
             this.a($$16);
          }), false));
-      this.aO = fuw.a($$0.e.b());
+      this.aO = fuv.a($$0.e.b());
    }
 
    private void a(@Nullable exh.b $$0) {
@@ -417,9 +417,9 @@ public class exh extends bko<Runnable> implements erf {
 
    private void b(@Nullable exh.b $$0) {
       Runnable $$1 = this.c($$0);
-      gma.a.b(glw.C);
-      gma.a.b(glw.z);
-      gma.a.a(this.aL.a());
+      glz.a.b(glv.C);
+      glz.a.b(glv.z);
+      glz.a.a(this.aL.a());
       $$1.run();
    }
 
@@ -432,7 +432,7 @@ public class exh extends bko<Runnable> implements erf {
       this.a($$1);
       Runnable $$2 = () -> {
          if ($$0 != null && $$0.b().a()) {
-            fuv.a(this, $$0.b(), $$0.a());
+            fuu.a(this, $$0.b(), $$0.a());
          } else {
             this.a(new ffj(true));
          }
@@ -501,13 +501,13 @@ public class exh extends bko<Runnable> implements erf {
          $$0.append(" - ");
          fqi $$2 = this.Q();
          if (this.aP != null && !this.aP.p()) {
-            $$0.append(ghz.a("title.singleplayer"));
+            $$0.append(ghy.a("title.singleplayer"));
          } else if ($$2 != null && $$2.e()) {
-            $$0.append(ghz.a("title.multiplayer.realms"));
+            $$0.append(ghy.a("title.multiplayer.realms"));
          } else if (this.aP == null && ($$2 == null || !$$2.d())) {
-            $$0.append(ghz.a("title.multiplayer.other"));
+            $$0.append(ghy.a("title.multiplayer.other"));
          } else {
-            $$0.append(ghz.a("title.multiplayer.lan"));
+            $$0.append(ghy.a("title.multiplayer.lan"));
          }
       }
 
@@ -607,18 +607,18 @@ public class exh extends bko<Runnable> implements erf {
    private void bg() {
       this.V
          .a(
-            gkt.a,
-            $$0 -> new gkm<>(
+            gks.a,
+            $$0 -> new gkl<>(
                   $$0x -> $$0x.a(null, cqq.a.a.c()).stream().map($$0xx -> n.a($$0xx.getString()).trim()).filter($$0xx -> !$$0xx.isEmpty()),
                   $$0x -> Stream.of(kf.h.b($$0x.d())),
                   $$0
                )
          );
-      this.V.a(gkt.b, $$0 -> new gkn<>($$0x -> $$0x.f().map(auo::b), $$0));
+      this.V.a(gks.b, $$0 -> new gkm<>($$0x -> $$0x.f().map(auo::b), $$0));
       this.V
          .a(
-            gkt.c,
-            $$0 -> new gkm<>(
+            gks.c,
+            $$0 -> new gkl<>(
                   $$0x -> $$0x.e()
                         .stream()
                         .flatMap($$1 -> $$1.b().a($$0x.a()).a(null, cqq.a.a).stream())
@@ -629,8 +629,8 @@ public class exh extends bko<Runnable> implements erf {
                )
          );
       cng.e().a($$0 -> {
-         this.a(gkt.a, $$0);
-         this.a(gkt.b, $$0);
+         this.a(gks.a, $$0);
+         this.a(gks.b, $$0);
       });
    }
 
@@ -748,8 +748,8 @@ public class exh extends bko<Runnable> implements erf {
 
    private void bj() {
       boolean $$0 = false;
-      fwf $$1 = this.an().a();
-      giu $$2 = $$1.a().a();
+      fwe $$1 = this.an().a();
+      git $$2 = $$1.a().a();
 
       for (cyo $$3 : kf.e) {
          UnmodifiableIterator $$10 = $$3.n().a().iterator();
@@ -757,7 +757,7 @@ public class exh extends bko<Runnable> implements erf {
          while ($$10.hasNext()) {
             dlf $$4 = (dlf)$$10.next();
             if ($$4.l() == det.c) {
-               giu $$5 = $$1.b($$4);
+               git $$5 = $$1.b($$4);
                if ($$5 == $$2) {
                   F.debug("Missing model for: {}", $$4);
                   $$0 = true;
@@ -766,14 +766,14 @@ public class exh extends bko<Runnable> implements erf {
          }
       }
 
-      ggu $$6 = $$2.e();
+      ggt $$6 = $$2.e();
 
       for (cyo $$7 : kf.e) {
          UnmodifiableIterator var17 = $$7.n().a().iterator();
 
          while (var17.hasNext()) {
             dlf $$8 = (dlf)var17.next();
-            ggu $$9 = $$1.a($$8);
+            ggt $$9 = $$1.a($$8);
             if (!$$8.i() && $$9 == $$6) {
                F.debug("Missing particle icon for: {}", $$8);
             }
@@ -790,7 +790,7 @@ public class exh extends bko<Runnable> implements erf {
       }
 
       $$0 |= fer.a();
-      $$0 |= gau.a();
+      $$0 |= gat.a();
       if ($$0) {
          throw new IllegalStateException("Your game data is foobar, fix the errors above!");
       }
@@ -983,7 +983,7 @@ public class exh extends bko<Runnable> implements erf {
 
       RenderSystem.clear(16640, a);
       this.ap.a(true);
-      fve.a();
+      fvd.a();
       this.bj.a("display");
       RenderSystem.enableCull();
       this.bj.b("mouse");
@@ -1205,7 +1205,7 @@ public class exh extends bko<Runnable> implements erf {
             $$5 = $$6::complete;
          }
 
-         this.bn = bju.a(new fut(ac.b, this.f), ac.b, ac.g(), new bka("client"), $$1x -> {
+         this.bn = bju.a(new fus(ac.b, this.f), ac.b, ac.g(), new bka("client"), $$1x -> {
             this.bn = bjv.a;
             $$1.accept($$1x);
          }, $$5);
@@ -1292,7 +1292,7 @@ public class exh extends bko<Runnable> implements erf {
       List<bin> $$2 = $$1.a(this.bB);
       bin $$3 = $$2.remove(0);
       RenderSystem.clear(256, a);
-      RenderSystem.setShader(fvf::q);
+      RenderSystem.setShader(fve::q);
       Matrix4f $$4 = new Matrix4f().setOrtho(0.0F, (float)this.Q.k(), (float)this.Q.l(), 0.0F, 1000.0F, 3000.0F);
       RenderSystem.setProjectionMatrix($$4, esi.b);
       esa $$5 = RenderSystem.getModelViewStack();
@@ -1550,7 +1550,7 @@ public class exh extends bko<Runnable> implements erf {
       }
    }
 
-   public glg r() {
+   public glf r() {
       return this.ar;
    }
 
@@ -1639,7 +1639,7 @@ public class exh extends bko<Runnable> implements erf {
          if (!this.aT) {
             if (!this.m.s && this.by()) {
                vq $$2 = vq.c("tutorial.socialInteractions.title");
-               vq $$3 = vq.a("tutorial.socialInteractions.description", gmo.a("socialInteractions"));
+               vq $$3 = vq.a("tutorial.socialInteractions.description", gmn.a("socialInteractions"));
                this.bi = new fbs(fbs.a.f, $$2, $$3, true);
                this.aH.a(this.bi, 160);
                this.m.s = true;
@@ -1797,7 +1797,7 @@ public class exh extends bko<Runnable> implements erf {
       this.e(this.y == null && !$$4 && this.m.I.e() && this.n.h());
    }
 
-   public glp t() {
+   public glo t() {
       return this.aL;
    }
 
@@ -1824,14 +1824,14 @@ public class exh extends bko<Runnable> implements erf {
          $$5.f().a(this);
          dke.a($$5, this);
          asj.a(false);
-         this.aP = MinecraftServer.a((Function<Thread, gky>)($$4x -> new gky($$4x, this, $$0, $$1, $$2, $$5, $$0xx -> {
+         this.aP = MinecraftServer.a((Function<Thread, gkx>)($$4x -> new gkx($$4x, this, $$0, $$1, $$2, $$5, $$0xx -> {
                api $$1xx = api.b($$0xx + 0);
                this.X.set($$1xx);
                return aph.a($$1xx, this.bg::add);
             })));
          this.aR = true;
          this.a(fqy.a());
-         this.aO.a(fuw.c.a, $$0.d(), $$2.d().e());
+         this.aO.a(fuv.c.a, $$0.d(), $$2.d().e());
       } catch (Throwable var11) {
          o $$7 = o.a(var11, "Starting integrated server");
          p $$8 = $$7.a("Starting integrated server");
@@ -1905,7 +1905,7 @@ public class exh extends bko<Runnable> implements erf {
          this.bn();
       }
 
-      gky $$3 = this.aP;
+      gkx $$3 = this.aP;
       this.aP = null;
       this.j.i();
       this.q = null;
@@ -2170,7 +2170,7 @@ public class exh extends bko<Runnable> implements erf {
       return $$0;
    }
 
-   public static void a(@Nullable exh $$0, @Nullable gib $$1, String $$2, @Nullable exl $$3, o $$4) {
+   public static void a(@Nullable exh $$0, @Nullable gia $$1, String $$2, @Nullable exl $$3, o $$4) {
       ab $$5 = $$4.g();
       a($$5, $$0, $$1, $$2, $$3);
    }
@@ -2186,7 +2186,7 @@ public class exh extends bko<Runnable> implements erf {
       $$0.a("Client ticks", () -> String.format(Locale.ROOT, "%d ticks / %.3fs", this.bA, (double)this.bA / 20.0));
    }
 
-   private static ab a(ab $$0, @Nullable exh $$1, @Nullable gib $$2, String $$3, @Nullable exl $$4) {
+   private static ab a(ab $$0, @Nullable exh $$1, @Nullable gia $$2, String $$3, @Nullable exl $$4) {
       $$0.a("Launched Version", () -> $$3);
       String $$5 = bd();
       if ($$5 != null) {
@@ -2267,12 +2267,12 @@ public class exh extends bko<Runnable> implements erf {
    }
 
    @Nullable
-   public gky T() {
+   public gkx T() {
       return this.aP;
    }
 
    public boolean U() {
-      gky $$0 = this.T();
+      gkx $$0 = this.T();
       return $$0 != null && !$$0.p();
    }
 
@@ -2293,7 +2293,7 @@ public class exh extends bko<Runnable> implements erf {
       return this.ac;
    }
 
-   public ggv Y() {
+   public ggu Y() {
       return this.N;
    }
 
@@ -2309,7 +2309,7 @@ public class exh extends bko<Runnable> implements erf {
       return this.aj;
    }
 
-   public gjj ac() {
+   public gji ac() {
       return this.ak;
    }
 
@@ -2317,11 +2317,11 @@ public class exh extends bko<Runnable> implements erf {
       return this.L;
    }
 
-   public gib ae() {
+   public gia ae() {
       return this.am;
    }
 
-   public Function<aiy, ggu> a(aiy $$0) {
+   public Function<aiy, ggt> a(aiy $$0) {
       return this.aB.a($$0)::a;
    }
 
@@ -2333,11 +2333,11 @@ public class exh extends bko<Runnable> implements erf {
       return this.aT;
    }
 
-   public fvg ah() {
+   public fvf ah() {
       return this.au;
    }
 
-   public gll ai() {
+   public glk ai() {
       return this.aq;
    }
 
@@ -2365,7 +2365,7 @@ public class exh extends bko<Runnable> implements erf {
       return this.ax;
    }
 
-   public ghu al() {
+   public ght al() {
       return this.aA;
    }
 
@@ -2398,27 +2398,27 @@ public class exh extends bko<Runnable> implements erf {
       return true;
    }
 
-   public fwg an() {
+   public fwf an() {
       return this.aC;
    }
 
-   public gar ao() {
+   public gaq ao() {
       return this.T;
    }
 
-   public fxl ap() {
+   public fxk ap() {
       return this.aK;
    }
 
-   public gbr aq() {
+   public gbq aq() {
       return this.U;
    }
 
-   public <T> gku<T> a(gkt.a<T> $$0) {
+   public <T> gkt<T> a(gks.a<T> $$0) {
       return this.V.a($$0);
    }
 
-   public <T> void a(gkt.a<T> $$0, List<T> $$1) {
+   public <T> void a(gks.a<T> $$0, List<T> $$1) {
       this.V.a($$0, $$1);
    }
 
@@ -2446,7 +2446,7 @@ public class exh extends bko<Runnable> implements erf {
       return this.aG;
    }
 
-   public gmo az() {
+   public gmn az() {
       return this.aH;
    }
 
@@ -2458,15 +2458,15 @@ public class exh extends bko<Runnable> implements erf {
       return this.Y;
    }
 
-   public gja aC() {
+   public giz aC() {
       return this.aB;
    }
 
-   public ghs aD() {
+   public ghr aD() {
       return this.aD;
    }
 
-   public ghr aE() {
+   public ghq aE() {
       return this.aE;
    }
 
@@ -2570,7 +2570,7 @@ public class exh extends bko<Runnable> implements erf {
 
          for (int $$10 = ($$4 - 1) / $$2 * $$2; $$10 >= 0; $$10 -= $$2) {
             for (int $$11 = 0; $$11 < $$3; $$11 += $$1) {
-               RenderSystem.setShaderTexture(0, ggt.e);
+               RenderSystem.setShaderTexture(0, ggs.e);
                float $$12 = (float)($$3 - $$1) / 2.0F * 2.0F - (float)($$11 * 2);
                float $$13 = (float)($$4 - $$2) / 2.0F * 2.0F - (float)($$10 * 2);
                $$12 /= (float)$$1;
@@ -2605,7 +2605,7 @@ public class exh extends bko<Runnable> implements erf {
       return this.X.get();
    }
 
-   public ghv aI() {
+   public ghu aI() {
       return this.at;
    }
 
@@ -2630,7 +2630,7 @@ public class exh extends bko<Runnable> implements erf {
       return this.l.k();
    }
 
-   public fvs aO() {
+   public fvr aO() {
       return this.S;
    }
 
@@ -2688,7 +2688,7 @@ public class exh extends bko<Runnable> implements erf {
       return this.aN;
    }
 
-   public fuw ba() {
+   public fuv ba() {
       return this.aO;
    }
 

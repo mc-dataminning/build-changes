@@ -782,12 +782,6 @@ public class rr {
       }
    }
 
-   public <N extends Number> void a(N $$0, N $$1, String $$2) {
-      if (!$$0.equals($$1)) {
-         throw new rk("Expected " + $$2 + " to be " + $$1 + ", but was " + $$0);
-      }
-   }
-
    public void b(boolean $$0, String $$1) {
       if ($$0) {
          throw new rk($$1);

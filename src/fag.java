@@ -12,7 +12,7 @@ public class fag {
    public static final int i = 64;
    public static final int j = 64;
 
-   public static void a(eyu $$0, ght $$1, int $$2, int $$3, int $$4) {
+   public static void a(eyu $$0, ghs $$1, int $$2, int $$3, int $$4) {
       a($$0, $$1.a(), $$2, $$3, $$4);
    }
 

@@ -155,7 +155,7 @@ public class fgh extends fgd<cke> {
       private final boolean c;
       protected final int a;
       private ij<bmz> d;
-      private ggu f;
+      private ggt f;
 
       public d(int $$0, int $$1, ij<bmz> $$2, boolean $$3, int $$4) {
          super($$0, $$1);

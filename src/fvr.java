@@ -1,70 +1,62 @@
+import it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap;
+import java.util.SortedMap;
+
 public class fvr {
-   private int a;
-   private int b;
-   private int c;
-   private int d;
+   private final fvw a = new fvw();
+   private final fvx b;
+   private final fvl.a c;
+   private final fvl.a d;
+   private final fvm e;
 
-   public fvr(int $$0, int $$1, int $$2, int $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+   public fvr(int $$0) {
+      this.b = fvx.a($$0);
+      SortedMap<fvt, erv> $$1 = ac.a(new Object2ObjectLinkedOpenHashMap(), $$0x -> {
+         $$0x.put(fwa.h(), this.a.a(fvt.c()));
+         $$0x.put(fwa.i(), this.a.a(fvt.e()));
+         $$0x.put(fwa.a(), this.a.a(fvt.d()));
+         $$0x.put(fwa.k(), this.a.a(fvt.f()));
+         a($$0x, fwa.b());
+         a($$0x, fwa.c());
+         a($$0x, fwa.d());
+         a($$0x, fwa.e());
+         a($$0x, fwa.f());
+         $$0x.put(fwa.g(), new erv(786432));
+         a($$0x, fvt.j());
+         a($$0x, fvt.k());
+         a($$0x, fvt.m());
+         a($$0x, fvt.n());
+         a($$0x, fvt.l());
+         a($$0x, fvt.o());
+         a($$0x, fvt.p());
+         a($$0x, fvt.i());
+         giy.l.forEach($$1x -> a($$0x, $$1x));
+      });
+      this.d = fvl.a(new erv(1536));
+      this.c = fvl.a($$1, new erv(786432));
+      this.e = new fvm(this.c);
    }
 
-   public fvr a(fvr $$0) {
-      int $$1 = this.a;
-      int $$2 = this.b;
-      int $$3 = this.a + this.c;
-      int $$4 = this.b + this.d;
-      int $$5 = $$0.a();
-      int $$6 = $$0.b();
-      int $$7 = $$5 + $$0.c();
-      int $$8 = $$6 + $$0.d();
-      this.a = Math.max($$1, $$5);
-      this.b = Math.max($$2, $$6);
-      this.c = Math.max(0, Math.min($$3, $$7) - this.a);
-      this.d = Math.max(0, Math.min($$4, $$8) - this.b);
-      return this;
+   private static void a(Object2ObjectLinkedOpenHashMap<fvt, erv> $$0, fvt $$1) {
+      $$0.put($$1, new erv($$1.G()));
    }
 
-   public int a() {
+   public fvw a() {
       return this.a;
    }
 
-   public int b() {
+   public fvx b() {
       return this.b;
    }
 
-   public void a(int $$0) {
-      this.a = $$0;
-   }
-
-   public void b(int $$0) {
-      this.b = $$0;
-   }
-
-   public int c() {
+   public fvl.a c() {
       return this.c;
    }
 
-   public int d() {
+   public fvl.a d() {
       return this.d;
    }
 
-   public void c(int $$0) {
-      this.c = $$0;
-   }
-
-   public void d(int $$0) {
-      this.d = $$0;
-   }
-
-   public void a(int $$0, int $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
-
-   public boolean b(int $$0, int $$1) {
-      return $$0 >= this.a && $$0 <= this.a + this.c && $$1 >= this.b && $$1 <= this.b + this.d;
+   public fvm e() {
+      return this.e;
    }
 }

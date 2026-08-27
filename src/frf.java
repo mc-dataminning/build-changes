@@ -7,7 +7,7 @@ public class frf implements AutoCloseable {
    private int b;
    private boolean c;
 
-   public void a(hz $$0, dlf $$1, fuo $$2) {
+   public void a(hz $$0, dlf $$1, fun $$2) {
       this.a.compute($$0.a(), ($$2x, $$3) -> $$3 != null ? $$3.a(this.b) : new frf.a(this.b, $$1, $$2.dk()));
    }
 

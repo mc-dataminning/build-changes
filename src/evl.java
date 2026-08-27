@@ -1,7 +1,7 @@
 import com.mojang.logging.LogUtils;
 import org.slf4j.Logger;
 
-public class evl extends gmw {
+public class evl extends gmv {
    private static final Logger a = LogUtils.getLogger();
    private static final vq b = vq.c("mco.terms.title");
    private static final vq c = vq.c("mco.terms.sentence.1");

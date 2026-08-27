@@ -18,7 +18,7 @@ public class fhv implements fhw {
    }
 
    @Override
-   public void a(eys $$0, int $$1, int $$2, Matrix4f $$3, fvm.a $$4) {
+   public void a(eys $$0, int $$1, int $$2, Matrix4f $$3, fvl.a $$4) {
       $$0.a(this.a, (float)$$1, (float)$$2, -1, true, $$3, $$4, eys.a.a, 0, 15728880);
    }
 }

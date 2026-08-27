@@ -1,17 +1,24 @@
-public class gdz extends gbk<cfh, fov<cfh>> {
-   private static final aiy a = new aiy("textures/entity/zombie_villager/zombie_villager.png");
+public class gdz<T extends bog, M extends fng<T>> extends gfm<T, M> {
+   private final gaq a;
 
-   public gdz(gat.a $$0) {
-      super($$0, new fov<>($$0.a(fpb.cg)), 0.5F);
-      this.a(new geu<>(this, new fov($$0.a(fpb.ch)), new fov($$0.a(fpb.ci)), $$0.g()));
-      this.a(new gfp<>(this, $$0.e(), "zombie_villager"));
+   public gdz(gas.a $$0, gbt<T, M> $$1) {
+      super($$1);
+      this.a = $$0.a();
    }
 
-   public aiy a(cfh $$0) {
-      return a;
+   @Override
+   protected int a(T $$0) {
+      return $$0.eP();
    }
 
-   protected boolean b(cfh $$0) {
-      return super.a($$0) || $$0.gq();
+   @Override
+   protected void a(esa $$0, fvl $$1, int $$2, bno $$3, float $$4, float $$5, float $$6, float $$7) {
+      float $$8 = awh.c($$4 * $$4 + $$6 * $$6);
+      chp $$9 = new chp($$3.dM(), $$3.dr(), $$3.dt(), $$3.dx(), coz.h);
+      $$9.r((float)(Math.atan2((double)$$4, (double)$$6) * 180.0F / (float)Math.PI));
+      $$9.s((float)(Math.atan2((double)$$5, (double)$$8) * 180.0F / (float)Math.PI));
+      $$9.M = $$9.dC();
+      $$9.N = $$9.dE();
+      this.a.a($$9, 0.0, 0.0, 0.0, 0.0F, $$7, $$0, $$1, $$2);
    }
 }

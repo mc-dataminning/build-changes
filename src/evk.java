@@ -6,7 +6,7 @@ import java.util.TimeZone;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class evk extends gmw {
+public class evk extends gmv {
    static final Logger a = LogUtils.getLogger();
    private static final vq b = vq.c("mco.configure.world.subscription.title");
    private static final vq c = vq.c("mco.configure.world.subscription.start");

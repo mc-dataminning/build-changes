@@ -1,88 +1,136 @@
-import com.mojang.datafixers.util.Pair;
 import java.util.List;
+import org.joml.Matrix3f;
+import org.joml.Matrix4f;
 
-public class fxh implements fxm<dij> {
-   private static final int b = 20;
-   private static final int c = 40;
-   private static final int d = 16;
-   public static final String a = "flag";
-   private static final String e = "pole";
-   private static final String f = "bar";
-   private final fpc g;
-   private final fpc h;
-   private final fpc i;
+public class fxh implements fxl<dio> {
+   public static final aiy a = new aiy("textures/entity/beacon_beam.png");
+   public static final int b = 1024;
 
-   public fxh(fxn.a $$0) {
-      fpc $$1 = $$0.a(fpb.g);
-      this.g = $$1.b("flag");
-      this.h = $$1.b("pole");
-      this.i = $$1.b("bar");
+   public fxh(fxm.a $$0) {
    }
 
-   public static fpi a() {
-      fpk $$0 = new fpk();
-      fpl $$1 = $$0.a();
-      $$1.a("flag", fph.c().a(0, 0).a(-10.0F, 0.0F, -2.0F, 20.0F, 40.0F, 1.0F), fpe.a);
-      $$1.a("pole", fph.c().a(44, 0).a(-1.0F, -30.0F, -1.0F, 2.0F, 42.0F, 2.0F), fpe.a);
-      $$1.a("bar", fph.c().a(0, 42).a(-10.0F, -32.0F, -1.0F, 20.0F, 2.0F, 2.0F), fpe.a);
-      return fpi.a($$0, 64, 64);
-   }
+   public void a(dio $$0, float $$1, esa $$2, fvl $$3, int $$4, int $$5) {
+      long $$6 = $$0.i().X();
+      List<dio.a> $$7 = $$0.c();
+      int $$8 = 0;
 
-   public void a(dij $$0, float $$1, esa $$2, fvm $$3, int $$4, int $$5) {
-      List<Pair<ij<dik>, cnn>> $$6 = $$0.c();
-      float $$7 = 0.6666667F;
-      boolean $$8 = $$0.i() == null;
-      $$2.a();
-      long $$9;
-      if ($$8) {
-         $$9 = 0L;
-         $$2.a(0.5F, 0.5F, 0.5F);
-         this.h.k = true;
-      } else {
-         $$9 = $$0.i().X();
-         dlf $$11 = $$0.r();
-         if ($$11.b() instanceof cxt) {
-            $$2.a(0.5F, 0.5F, 0.5F);
-            float $$12 = -dml.b($$11.c(cxt.b));
-            $$2.a(a.d.rotationDegrees($$12));
-            this.h.k = true;
-         } else {
-            $$2.a(0.5F, -0.16666667F, 0.5F);
-            float $$13 = -$$11.c(dhj.b).p();
-            $$2.a(a.d.rotationDegrees($$13));
-            $$2.a(0.0F, -0.3125F, -0.4375F);
-            this.h.k = false;
-         }
+      for (int $$9 = 0; $$9 < $$7.size(); $$9++) {
+         dio.a $$10 = $$7.get($$9);
+         a($$2, $$3, $$1, $$6, $$8, $$9 == $$7.size() - 1 ? 1024 : $$10.c(), $$10.b());
+         $$8 += $$10.c();
       }
-
-      $$2.a();
-      $$2.b(0.6666667F, -0.6666667F, -0.6666667F);
-      ese $$14 = giz.f.a($$3, fvu::c);
-      this.h.a($$2, $$14, $$4, $$5);
-      this.i.a($$2, $$14, $$4, $$5);
-      hz $$15 = $$0.aE_();
-      float $$16 = ((float)Math.floorMod((long)($$15.u() * 7 + $$15.v() * 9 + $$15.w() * 13) + $$9, 100L) + $$1) / 100.0F;
-      this.g.e = (-0.0125F + 0.01F * awh.b((float) (Math.PI * 2) * $$16)) * (float) Math.PI;
-      this.g.c = -32.0F;
-      a($$2, $$3, $$4, $$5, this.g, giz.f, true, $$6);
-      $$2.b();
-      $$2.b();
    }
 
-   public static void a(esa $$0, fvm $$1, int $$2, int $$3, fpc $$4, gix $$5, boolean $$6, List<Pair<ij<dik>, cnn>> $$7) {
-      a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, false);
+   private static void a(esa $$0, fvl $$1, float $$2, long $$3, int $$4, int $$5, float[] $$6) {
+      a($$0, $$1, a, $$2, 1.0F, $$3, $$4, $$5, $$6, 0.2F, 0.25F);
    }
 
-   public static void a(esa $$0, fvm $$1, int $$2, int $$3, fpc $$4, gix $$5, boolean $$6, List<Pair<ij<dik>, cnn>> $$7, boolean $$8) {
-      $$4.a($$0, $$5.a($$1, fvu::c, $$8), $$2, $$3);
+   public static void a(esa $$0, fvl $$1, aiy $$2, float $$3, float $$4, long $$5, int $$6, int $$7, float[] $$8, float $$9, float $$10) {
+      int $$11 = $$6 + $$7;
+      $$0.a();
+      $$0.a(0.5, 0.0, 0.5);
+      float $$12 = (float)Math.floorMod($$5, 40) + $$3;
+      float $$13 = $$7 < 0 ? $$12 : -$$12;
+      float $$14 = awh.h($$13 * 0.2F - (float)awh.d($$13 * 0.1F));
+      float $$15 = $$8[0];
+      float $$16 = $$8[1];
+      float $$17 = $$8[2];
+      $$0.a();
+      $$0.a(a.d.rotationDegrees($$12 * 2.25F - 45.0F));
+      float $$18 = 0.0F;
+      float $$21 = 0.0F;
+      float $$22 = -$$9;
+      float $$23 = 0.0F;
+      float $$24 = 0.0F;
+      float $$25 = -$$9;
+      float $$26 = 0.0F;
+      float $$27 = 1.0F;
+      float $$28 = -1.0F + $$14;
+      float $$29 = (float)$$7 * $$4 * (0.5F / $$9) + $$28;
+      a($$0, $$1.getBuffer(fvt.e($$2, false)), $$15, $$16, $$17, 1.0F, $$6, $$11, 0.0F, $$9, $$9, 0.0F, $$22, 0.0F, 0.0F, $$25, 0.0F, 1.0F, $$29, $$28);
+      $$0.b();
+      $$18 = -$$10;
+      float $$31 = -$$10;
+      $$21 = -$$10;
+      $$22 = -$$10;
+      $$26 = 0.0F;
+      $$27 = 1.0F;
+      $$28 = -1.0F + $$14;
+      $$29 = (float)$$7 * $$4 + $$28;
+      a($$0, $$1.getBuffer(fvt.e($$2, true)), $$15, $$16, $$17, 0.125F, $$6, $$11, $$18, $$31, $$10, $$21, $$22, $$10, $$10, $$10, 0.0F, 1.0F, $$29, $$28);
+      $$0.b();
+   }
 
-      for (int $$9 = 0; $$9 < 17 && $$9 < $$7.size(); $$9++) {
-         Pair<ij<dik>, cnn> $$10 = $$7.get($$9);
-         float[] $$11 = ((cnn)$$10.getSecond()).d();
-         ((ij)$$10.getFirst())
-            .e()
-            .map($$1x -> $$6 ? fwb.a($$1x) : fwb.b($$1x))
-            .ifPresent($$6x -> $$4.a($$0, $$6x.a($$1, fvu::m), $$2, $$3, $$11[0], $$11[1], $$11[2], 1.0F));
-      }
+   private static void a(
+      esa $$0,
+      ese $$1,
+      float $$2,
+      float $$3,
+      float $$4,
+      float $$5,
+      int $$6,
+      int $$7,
+      float $$8,
+      float $$9,
+      float $$10,
+      float $$11,
+      float $$12,
+      float $$13,
+      float $$14,
+      float $$15,
+      float $$16,
+      float $$17,
+      float $$18,
+      float $$19
+   ) {
+      esa.a $$20 = $$0.c();
+      Matrix4f $$21 = $$20.a();
+      Matrix3f $$22 = $$20.b();
+      a($$21, $$22, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10, $$11, $$16, $$17, $$18, $$19);
+      a($$21, $$22, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$14, $$15, $$12, $$13, $$16, $$17, $$18, $$19);
+      a($$21, $$22, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$10, $$11, $$14, $$15, $$16, $$17, $$18, $$19);
+      a($$21, $$22, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$12, $$13, $$8, $$9, $$16, $$17, $$18, $$19);
+   }
+
+   private static void a(
+      Matrix4f $$0,
+      Matrix3f $$1,
+      ese $$2,
+      float $$3,
+      float $$4,
+      float $$5,
+      float $$6,
+      int $$7,
+      int $$8,
+      float $$9,
+      float $$10,
+      float $$11,
+      float $$12,
+      float $$13,
+      float $$14,
+      float $$15,
+      float $$16
+   ) {
+      a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$8, $$9, $$10, $$14, $$15);
+      a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$9, $$10, $$14, $$16);
+      a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$11, $$12, $$13, $$16);
+      a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$8, $$11, $$12, $$13, $$15);
+   }
+
+   private static void a(Matrix4f $$0, Matrix3f $$1, ese $$2, float $$3, float $$4, float $$5, float $$6, int $$7, float $$8, float $$9, float $$10, float $$11) {
+      $$2.a($$0, $$8, (float)$$7, $$9).a($$3, $$4, $$5, $$6).a($$10, $$11).c(ggk.d).b(15728880).a($$1, 0.0F, 1.0F, 0.0F).e();
+   }
+
+   public boolean a(dio $$0) {
+      return true;
+   }
+
+   @Override
+   public int aT_() {
+      return 256;
+   }
+
+   public boolean a(dio $$0, ens $$1) {
+      return ens.b($$0.aE_()).d(1.0, 0.0, 1.0).a((it)$$1.d(1.0, 0.0, 1.0), (double)this.aT_());
    }
 }

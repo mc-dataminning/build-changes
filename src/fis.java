@@ -157,7 +157,7 @@ public class fis implements ail<cry>, fak, fbd, fda, fix {
       $$2.removeIf($$0x -> !$$0x.d());
       String $$3 = this.t.a();
       if (!$$3.isEmpty()) {
-         ObjectSet<fiw> $$4 = new ObjectLinkedOpenHashSet(this.h.a(gkt.c).search($$3.toLowerCase(Locale.ROOT)));
+         ObjectSet<fiw> $$4 = new ObjectLinkedOpenHashSet(this.h.a(gks.c).search($$3.toLowerCase(Locale.ROOT)));
          $$2.removeIf($$1x -> !$$4.contains($$1x));
       }
 
@@ -399,9 +399,9 @@ public class fis implements ail<cry>, fak, fbd, fda, fix {
 
    private void a(String $$0) {
       if ("excitedze".equals($$0)) {
-         gib $$1 = this.h.ae();
+         gia $$1 = this.h.ae();
          String $$2 = "en_pt";
-         gia $$3 = $$1.b("en_pt");
+         ghz $$3 = $$1.b("en_pt");
          if ($$3 == null || $$1.a().equals("en_pt")) {
             return;
          }

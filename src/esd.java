@@ -100,7 +100,7 @@ public class esd implements AutoCloseable {
       return $$0 != null ? $$0.a() : this.g;
    }
 
-   public void a(Matrix4f $$0, Matrix4f $$1, fwa $$2) {
+   public void a(Matrix4f $$0, Matrix4f $$1, fvz $$2) {
       if (!RenderSystem.isOnRenderThread()) {
          RenderSystem.recordRenderCall(() -> this.b(new Matrix4f($$0), new Matrix4f($$1), $$2));
       } else {
@@ -108,7 +108,7 @@ public class esd implements AutoCloseable {
       }
    }
 
-   private void b(Matrix4f $$0, Matrix4f $$1, fwa $$2) {
+   private void b(Matrix4f $$0, Matrix4f $$1, fvz $$2) {
       for (int $$3 = 0; $$3 < 12; $$3++) {
          int $$4 = RenderSystem.getShaderTexture($$3);
          $$2.a("Sampler" + $$3, $$4);

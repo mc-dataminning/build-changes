@@ -1,4 +1,4 @@
-public class eup extends gmw {
+public class eup extends gmv {
    private static final vq a = vq.c("mco.client.incompatible.title");
    private static final vq[] b = new vq[]{
       vq.c("mco.client.incompatible.msg.line1"), vq.c("mco.client.incompatible.msg.line2"), vq.c("mco.client.incompatible.msg.line3")

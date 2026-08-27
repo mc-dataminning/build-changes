@@ -34,7 +34,7 @@ public class fks {
       }
 
       public Path a() {
-         return this.d == null ? this.c.toPath() : ghp.a(this.c.toPath(), this.d);
+         return this.d == null ? this.c.toPath() : gho.a(this.c.toPath(), this.d);
       }
    }
 

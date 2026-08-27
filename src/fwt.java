@@ -1,111 +1,96 @@
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.util.List;
-import java.util.Objects;
-import javax.annotation.Nullable;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import java.lang.reflect.Type;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
 
 public class fwt {
-   public static final fwt a = new fwt();
-   public static final float b = Float.NEGATIVE_INFINITY;
-   private final fwt.a[] c;
-   private final aiy[] d;
+   public static final fwt a = new fwt(new Vector3f(), new Vector3f(), new Vector3f(1.0F, 1.0F, 1.0F));
+   public final Vector3f b;
+   public final Vector3f c;
+   public final Vector3f d;
 
-   private fwt() {
-      this.c = new fwt.a[0];
-      this.d = new aiy[0];
+   public fwt(Vector3f $$0, Vector3f $$1, Vector3f $$2) {
+      this.b = new Vector3f($$0);
+      this.c = new Vector3f($$1);
+      this.d = new Vector3f($$2);
    }
 
-   public fwt(giy $$0, fwo $$1, List<fws> $$2) {
-      this.d = $$2.stream().flatMap(fws::b).map(fws.b::a).distinct().toArray(aiy[]::new);
-      Object2IntMap<aiy> $$3 = new Object2IntOpenHashMap();
-
-      for (int $$4 = 0; $$4 < this.d.length; $$4++) {
-         $$3.put(this.d[$$4], $$4);
-      }
-
-      List<fwt.a> $$5 = Lists.newArrayList();
-
-      for (int $$6 = $$2.size() - 1; $$6 >= 0; $$6--) {
-         fws $$7 = $$2.get($$6);
-         giu $$8 = this.a($$0, $$1, $$7);
-         fwt.b[] $$9 = $$7.b().map($$1x -> {
-            int $$2x = $$3.getInt($$1x.a());
-            return new fwt.b($$2x, $$1x.b());
-         }).toArray(fwt.b[]::new);
-         $$5.add(new fwt.a($$9, $$8));
-      }
-
-      this.c = $$5.toArray(new fwt.a[0]);
-   }
-
-   @Nullable
-   private giu a(giy $$0, fwo $$1, fws $$2) {
-      gjf $$3 = $$0.a($$2.a());
-      return Objects.equals($$3, $$1) ? null : $$0.a($$2.a(), giv.a);
-   }
-
-   @Nullable
-   public giu a(giu $$0, coz $$1, @Nullable fpx $$2, @Nullable bog $$3, int $$4) {
-      if (this.c.length != 0) {
-         cou $$5 = $$1.d();
-         int $$6 = this.d.length;
-         float[] $$7 = new float[$$6];
-
-         for (int $$8 = 0; $$8 < $$6; $$8++) {
-            aiy $$9 = this.d[$$8];
-            ggc $$10 = ggb.a($$5, $$9);
-            if ($$10 != null) {
-               $$7[$$8] = $$10.call($$1, $$2, $$3, $$4);
-            } else {
-               $$7[$$8] = Float.NEGATIVE_INFINITY;
-            }
+   public void a(boolean $$0, esa $$1) {
+      if (this != a) {
+         float $$2 = this.b.x();
+         float $$3 = this.b.y();
+         float $$4 = this.b.z();
+         if ($$0) {
+            $$3 = -$$3;
+            $$4 = -$$4;
          }
 
-         for (fwt.a $$11 : this.c) {
-            if ($$11.a($$7)) {
-               giu $$12 = $$11.b;
-               if ($$12 == null) {
-                  return $$0;
+         int $$5 = $$0 ? -1 : 1;
+         $$1.a((float)$$5 * this.c.x(), this.c.y(), this.c.z());
+         $$1.a(new Quaternionf().rotationXYZ($$2 * (float) (Math.PI / 180.0), $$3 * (float) (Math.PI / 180.0), $$4 * (float) (Math.PI / 180.0)));
+         $$1.b(this.d.x(), this.d.y(), this.d.z());
+      }
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if (this.getClass() != $$0.getClass()) {
+         return false;
+      } else {
+         fwt $$1 = (fwt)$$0;
+         return this.b.equals($$1.b) && this.d.equals($$1.d) && this.c.equals($$1.c);
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      int $$0 = this.b.hashCode();
+      $$0 = 31 * $$0 + this.c.hashCode();
+      return 31 * $$0 + this.d.hashCode();
+   }
+
+   protected static class a implements JsonDeserializer<fwt> {
+      private static final Vector3f c = new Vector3f(0.0F, 0.0F, 0.0F);
+      private static final Vector3f d = new Vector3f(0.0F, 0.0F, 0.0F);
+      private static final Vector3f e = new Vector3f(1.0F, 1.0F, 1.0F);
+      public static final float a = 5.0F;
+      public static final float b = 4.0F;
+
+      public fwt a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         JsonObject $$3 = $$0.getAsJsonObject();
+         Vector3f $$4 = this.a($$3, "rotation", c);
+         Vector3f $$5 = this.a($$3, "translation", d);
+         $$5.mul(0.0625F);
+         $$5.set(awh.a($$5.x, -5.0F, 5.0F), awh.a($$5.y, -5.0F, 5.0F), awh.a($$5.z, -5.0F, 5.0F));
+         Vector3f $$6 = this.a($$3, "scale", e);
+         $$6.set(awh.a($$6.x, -4.0F, 4.0F), awh.a($$6.y, -4.0F, 4.0F), awh.a($$6.z, -4.0F, 4.0F));
+         return new fwt($$4, $$5, $$6);
+      }
+
+      private Vector3f a(JsonObject $$0, String $$1, Vector3f $$2) {
+         if (!$$0.has($$1)) {
+            return $$2;
+         } else {
+            JsonArray $$3 = avx.v($$0, $$1);
+            if ($$3.size() != 3) {
+               throw new JsonParseException("Expected 3 " + $$1 + " values, found: " + $$3.size());
+            } else {
+               float[] $$4 = new float[3];
+
+               for (int $$5 = 0; $$5 < $$4.length; $$5++) {
+                  $$4[$$5] = avx.e($$3.get($$5), $$1 + "[" + $$5 + "]");
                }
 
-               return $$12;
+               return new Vector3f($$4[0], $$4[1], $$4[2]);
             }
          }
-      }
-
-      return $$0;
-   }
-
-   static class a {
-      private final fwt.b[] a;
-      @Nullable
-      final giu b;
-
-      a(fwt.b[] $$0, @Nullable giu $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      boolean a(float[] $$0) {
-         for (fwt.b $$1 : this.a) {
-            float $$2 = $$0[$$1.a];
-            if ($$2 < $$1.b) {
-               return false;
-            }
-         }
-
-         return true;
-      }
-   }
-
-   static class b {
-      public final int a;
-      public final float b;
-
-      b(int $$0, float $$1) {
-         this.a = $$0;
-         this.b = $$1;
       }
    }
 }

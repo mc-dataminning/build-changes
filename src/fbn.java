@@ -40,7 +40,7 @@ public class fbn implements fbq {
          if (!this.f && $$2 > 0L) {
             this.f = true;
             if ($$3.e() == al.b) {
-               $$1.b().ai().a(gkc.a(atk.zP, 1.0F, 1.0F));
+               $$1.b().ai().a(gkb.a(atk.zP, 1.0F, 1.0F));
             }
          }
 

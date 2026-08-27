@@ -103,10 +103,12 @@ public final class dkp {
                            return Optional.empty();
                         }
 
-                        if ($$3.a().f() == 1 && $$3.a().b("id", 8)) {
+                        boolean $$15 = $$3.a().f() == 1 && $$3.a().b("id", 8);
+                        if ($$15) {
                            $$14.a($$0, $$0.d_($$14.dm()), bok.q, null, null);
-                           $$14.fL();
                         }
+
+                        $$14.fL();
                      }
 
                      if (!$$0.e($$13)) {
@@ -207,7 +209,7 @@ public final class dkp {
          double $$7 = (double)$$1.u() + 0.5 + $$5;
          double $$8 = (double)$$1.v() + 0.1 + (double)$$2.i() * 0.8;
          double $$9 = (double)$$1.w() + 0.5 + $$6;
-         $$0.a(jz.aW, $$7, $$8, $$9, 0.0, 0.0, 0.0);
+         $$0.a(jz.aV, $$7, $$8, $$9, 0.0, 0.0, 0.0);
       }
    }
 

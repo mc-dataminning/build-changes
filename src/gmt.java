@@ -1,95 +1,22 @@
-import com.mojang.logging.LogUtils;
-import java.net.InetSocketAddress;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public class gmt implements fak {
+   private final vq a;
+   private final int b;
+   private final int c;
+   private final int d;
 
-public class gmt {
-   static final Logger a = LogUtils.getLogger();
-   final ffe b;
-   volatile boolean c;
-   @Nullable
-   uo d;
-
-   public gmt(ffe $$0) {
-      this.b = $$0;
+   public gmt(vq $$0, int $$1, int $$2, int $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   public void a(final eth $$0, frk $$1) {
-      final exh $$2 = exh.O();
-      $$2.aR();
-      $$2.aW().c(vq.c("mco.connect.success"));
-      final String $$3 = $$1.a();
-      final int $$4 = $$1.b();
-      (new Thread("Realms-connect-task") {
-         @Override
-         public void run() {
-            InetSocketAddress $$0 = null;
-
-            try {
-               $$0 = new InetSocketAddress($$3, $$4);
-               if (gmt.this.c) {
-                  return;
-               }
-
-               gmt.this.d = uo.a($$0, $$2.m.aw(), $$2.aN().l());
-               if (gmt.this.c) {
-                  return;
-               }
-
-               fpw $$1 = new fpw(gmt.this.d, $$2, $$0.e($$3), gmt.this.b, false, null, $$0xx -> {
-               }, null);
-               if ($$0.m == eth.d.b) {
-                  $$1.a($$0.o);
-               }
-
-               if (gmt.this.c) {
-                  return;
-               }
-
-               gmt.this.d.a($$3, $$4, $$1);
-               if (gmt.this.c) {
-                  return;
-               }
-
-               gmt.this.d.a(new ahg($$2.V().c(), $$2.V().b()));
-               $$2.a(fqy.a($$0));
-               $$2.ba().a(fuw.c.c, String.valueOf($$0.a), $$0.c);
-               $$2.ac().a(gmt.this.d, gjn.c.b);
-            } catch (Exception var5) {
-               $$2.ac().i();
-               if (gmt.this.c) {
-                  return;
-               }
-
-               gmt.a.error("Couldn't connect to world", var5);
-               String $$3 = var5.toString();
-               if ($$0 != null) {
-                  String $$4 = $$0 + ":" + $$4;
-                  $$3 = $$3.replaceAll($$4, "");
-               }
-
-               gms $$5 = new gms(gmt.this.b, vp.r, vq.a("disconnect.genericReason", $$3));
-               $$2.execute(() -> $$2.a($$5));
-            }
-         }
-      }).start();
+   @Override
+   public void a(eyu $$0, int $$1, int $$2, float $$3) {
+      $$0.a(exh.O().h, this.a, this.b, this.c, this.d);
    }
 
-   public void a() {
-      this.c = true;
-      if (this.d != null && this.d.i()) {
-         this.d.a(vq.c("disconnect.genericReason"));
-         this.d.n();
-      }
-   }
-
-   public void b() {
-      if (this.d != null) {
-         if (this.d.i()) {
-            this.d.b();
-         } else {
-            this.d.n();
-         }
-      }
+   public vq a() {
+      return this.a;
    }
 }

@@ -1,13 +1,19 @@
-public class gec extends gfe<cfj, flk<cfj>> {
-   private static final fvu a = fvu.q(new aiy("textures/entity/breeze/breeze_eyes.png"));
+public class gec extends gfd<cfj, flk<cfj>> {
+   private static final aiy a = new aiy("textures/entity/breeze/breeze_wind.png");
+   private static final flk<cfj> b = new flk<>(flk.a(128, 128).a());
 
-   public gec(gco<cfj, flk<cfj>> $$0) {
+   public gec(gcn<cfj, flk<cfj>> $$0) {
       super($$0);
    }
 
-   public void a(esa $$0, fvm $$1, int $$2, cfj $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      ese $$10 = $$1.getBuffer(a);
-      flk<cfj> $$11 = this.c();
-      fzz.a($$11, $$11.b(), $$11.c()).a($$0, $$10, $$2, ggl.d, 1.0F, 1.0F, 1.0F, 1.0F);
+   public void a(esa $$0, fvl $$1, int $$2, cfj $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      float $$10 = (float)$$3.ag + $$6;
+      ese $$11 = $$1.getBuffer(fvt.a(a, this.a($$10) % 1.0F, 0.0F));
+      b.a($$3, $$4, $$5, $$7, $$8, $$9);
+      fzy.a(b, b.e()).a($$0, $$11, $$2, ggk.d, 1.0F, 1.0F, 1.0F, 1.0F);
+   }
+
+   private float a(float $$0) {
+      return $$0 * 0.02F;
    }
 }

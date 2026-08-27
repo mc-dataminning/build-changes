@@ -5,22 +5,22 @@ public class fej implements AutoCloseable {
    private static final aiy a = new aiy("textures/misc/unknown_server.png");
    private static final int b = 64;
    private static final int c = 64;
-   private final ggv d;
+   private final ggu d;
    private final aiy e;
    @Nullable
-   private ggh f;
+   private ggg f;
    private boolean g;
 
-   private fej(ggv $$0, aiy $$1) {
+   private fej(ggu $$0, aiy $$1) {
       this.d = $$0;
       this.e = $$1;
    }
 
-   public static fej a(ggv $$0, String $$1) {
+   public static fej a(ggu $$0, String $$1) {
       return new fej($$0, new aiy("minecraft", "worlds/" + ac.a($$1, aiy::b) + "/" + Hashing.sha1().hashUnencodedChars($$1) + "/icon"));
    }
 
-   public static fej b(ggv $$0, String $$1) {
+   public static fej b(ggu $$0, String $$1) {
       return new fej($$0, new aiy("minecraft", "servers/" + Hashing.sha1().hashUnencodedChars($$1) + "/icon"));
    }
 
@@ -29,7 +29,7 @@ public class fej implements AutoCloseable {
          try {
             this.c();
             if (this.f == null) {
-               this.f = new ggh($$0);
+               this.f = new ggg($$0);
             } else {
                this.f.a($$0);
                this.f.d();

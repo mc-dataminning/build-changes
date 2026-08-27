@@ -13,7 +13,7 @@ public class ffj extends ffe {
    private static final Logger c = LogUtils.getLogger();
    private static final vq k = vq.c("narrator.screen.title");
    public static final vq a = vq.c("title.credits");
-   public static final fva b = new fva(new aiy("textures/gui/title/background/panorama"));
+   public static final fuz b = new fuz(new aiy("textures/gui/title/background/panorama"));
    private static final aiy l = new aiy("textures/gui/title/background/panorama_overlay.png");
    private static final String m = "Demo_World";
    @Nullable
@@ -21,7 +21,7 @@ public class ffj extends ffe {
    private ezh o;
    @Nullable
    private euz p;
-   private final fvo q = new fvo(b);
+   private final fvn q = new fvn(b);
    private final boolean r;
    private long t;
    @Nullable
@@ -55,7 +55,7 @@ public class ffj extends ffe {
       this.f.aS().a(this);
    }
 
-   public static CompletableFuture<Void> a(ggv $$0, Executor $$1) {
+   public static CompletableFuture<Void> a(ggu $$0, Executor $$1) {
       return CompletableFuture.allOf($$0.a(ezy.a, $$1), $$0.a(ezy.c, $$1), $$0.a(l, $$1), b.a($$0, $$1));
    }
 
@@ -220,7 +220,7 @@ public class ffj extends ffe {
          }
 
          if (exh.e().a()) {
-            $$7 = $$7 + ghz.a("menu.modded");
+            $$7 = $$7 + ghy.a("menu.modded");
          }
 
          $$0.b(this.i, $$7, 2, this.h - 10, 16777215 | $$6);

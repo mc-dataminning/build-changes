@@ -121,7 +121,7 @@ public class fpy extends fpu implements aag, ve {
       this.a.s.z();
       this.a.s.e($$0.b());
       this.q.c(this.a.s);
-      this.a.s.cr = new fun(this.a.m);
+      this.a.s.cr = new fum(this.a.m);
       this.a.q.a(this.a.s);
       this.a.t = this.a.s;
       this.a(this.a.s, this.q);
@@ -171,7 +171,7 @@ public class fpy extends fpu implements aag, ve {
             i.warn("Server attempted to add player prior to sending player info (Player id {})", $$0.e());
             return null;
          } else {
-            return new fup(this.q, $$2.a());
+            return new fuo(this.q, $$2.a());
          }
       } else {
          return $$1.a((cvn)this.q);
@@ -180,17 +180,17 @@ public class fpy extends fpu implements aag, ve {
 
    private void a(bno $$0) {
       if ($$0 instanceof cja $$1) {
-         this.a.ai().a((gkh)(new gka($$1)));
+         this.a.ai().a((gkg)(new gjz($$1)));
       } else if ($$0 instanceof bzu $$2) {
          boolean $$3 = $$2.aa_();
-         gju $$4;
+         gjt $$4;
          if ($$3) {
-            $$4 = new gjs($$2);
+            $$4 = new gjr($$2);
          } else {
-            $$4 = new gjt($$2);
+            $$4 = new gjs($$2);
          }
 
-         this.a.ai().a((gki)$$4);
+         this.a.ai().a((gkh)$$4);
       }
    }
 
@@ -503,7 +503,7 @@ public class fpy extends fpu implements aag, ve {
             this.q.a($$1.dr(), $$1.dt(), $$1.dx(), atk.nd, atl.h, 0.2F, (this.z.i() - this.z.i()) * 1.4F + 2.0F, false);
          }
 
-         this.a.g.a(new fsu(this.a.ao(), this.a.aO(), this.q, $$1, $$2));
+         this.a.g.a(new fst(this.a.ao(), this.a.aO(), this.q, $$1, $$2));
          if ($$1 instanceof cds $$3) {
             coz $$4 = $$3.q();
             if (!$$4.b()) {
@@ -686,7 +686,7 @@ public class fpy extends fpu implements aag, ve {
       if ($$1 != null) {
          switch ($$0.b()) {
             case 21:
-               this.a.ai().a((gkh)(new gjz((cej)$$1)));
+               this.a.ai().a((gkg)(new gjy((cej)$$1)));
                break;
             case 35:
                int $$2 = 40;
@@ -697,7 +697,7 @@ public class fpy extends fpu implements aag, ve {
                }
                break;
             case 63:
-               this.a.ai().a((gkh)(new gkd((cci)$$1)));
+               this.a.ai().a((gkg)(new gkc((cci)$$1)));
                break;
             default:
                $$1.b($$0.b());
@@ -734,7 +734,7 @@ public class fpy extends fpu implements aag, ve {
       aen $$1 = $$0.b();
       aix<cvn> $$2 = $$1.b();
       ij<doo> $$3 = this.E.d(kg.ay).f($$1.a());
-      fuo $$4 = this.a.s;
+      fun $$4 = this.a.s;
       if ($$2 != $$4.dM().ae()) {
          Map<String, ehz> $$5 = this.q.l();
          boolean $$6 = $$1.f();
@@ -751,7 +751,7 @@ public class fpy extends fpu implements aag, ve {
          $$4.r();
       }
 
-      fuo $$9;
+      fun $$9;
       if ($$0.a((byte)2)) {
          $$9 = this.a.q.a(this.q, $$4.j(), $$4.m(), $$4.bS(), $$4.bY());
       } else {
@@ -780,7 +780,7 @@ public class fpy extends fpu implements aag, ve {
       $$9.z();
       this.q.c($$9);
       $$9.r(-180.0F);
-      $$9.cr = new fun(this.a.m);
+      $$9.cr = new fum(this.a.m);
       this.a.q.a($$9);
       $$9.t($$4.gj());
       $$9.b($$4.o());
@@ -807,7 +807,7 @@ public class fpy extends fpu implements aag, ve {
    public void a(abn $$0) {
       ya.a($$0, this, this.a);
       if (this.q.a($$0.f()) instanceof cbv $$2) {
-         fuo $$3 = this.a.s;
+         fun $$3 = this.a.s;
          bmd $$4 = new bmd($$0.e());
          clb $$5 = new clb($$0.b(), $$3.fT(), $$4, $$2);
          $$3.bW = $$5;
@@ -994,7 +994,7 @@ public class fpy extends fpu implements aag, ve {
       }
    }
 
-   private void a(fuo $$0, fpx $$1) {
+   private void a(fun $$0, fpx $$1) {
       this.M = new fqd($$0, $$1, this.a.f);
       this.a.a(new ffc(this.M::b));
    }
@@ -1067,7 +1067,7 @@ public class fpy extends fpu implements aag, ve {
       this.B.a($$0.b());
       ewu $$1 = this.a.s.m();
       $$1.a(this.B.b(), this.a.r.I_());
-      this.a.a(gkt.c, $$1.b());
+      this.a.a(gks.c, $$1.b());
    }
 
    @Override
@@ -1477,20 +1477,20 @@ public class fpy extends fpu implements aag, ve {
       if ($$0 instanceof zh $$1) {
          this.a.k.a.a($$1.b(), $$1.c(), $$1.d());
       } else if ($$0 instanceof zg $$2) {
-         ((fze)this.a.k.g).a($$2.b(), $$2.c());
+         ((fzd)this.a.k.g).a($$2.b(), $$2.c());
       } else if ($$0 instanceof zm $$3) {
          this.a.k.h.a($$3.c(), $$3.d(), $$3.b());
       } else if ($$0 instanceof zo $$4) {
-         ((fzm)this.a.k.j).a($$4.b(), $$4.c(), $$4.d(), $$4.e(), $$4.f(), $$4.g());
+         ((fzl)this.a.k.j).a($$4.b(), $$4.c(), $$4.d(), $$4.e(), $$4.f(), $$4.g());
       } else if ($$0 instanceof zk $$5) {
          this.a.k.m.a($$5.b(), $$5.c());
       } else if ($$0 instanceof zi $$6) {
-         fys.a $$7 = new fys.a($$6.b(), $$6.c(), $$6.d());
+         fyr.a $$7 = new fyr.a($$6.b(), $$6.c(), $$6.d());
          this.a.k.m.a($$7);
       } else if ($$0 instanceof zj $$8) {
          this.a.k.m.a($$8.b());
       } else if ($$0 instanceof zn $$9) {
-         fzk $$10 = this.a.k.n;
+         fzj $$10 = this.a.k.n;
          $$9.b().forEach($$10::a);
          $$9.c().forEach($$10::b);
       } else if ($$0 instanceof ze $$11) {

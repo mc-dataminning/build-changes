@@ -1,6 +1,6 @@
 import javax.annotation.Nullable;
 
-public class eva extends gmw {
+public class eva extends gmv {
    private static final vq a = vq.c("mco.account.privacy.information");
    private static final int b = 15;
    private final fcx c = fcx.d();

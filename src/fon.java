@@ -22,7 +22,7 @@ public class fon<T extends cgl> extends fmk<T> {
    private final List<fpc> u;
 
    public fon(fpc $$0) {
-      super(fvu::e);
+      super(fvt::e);
       this.q = $$0;
       this.a = $$0.b("bone");
       this.b = this.a.b("body");

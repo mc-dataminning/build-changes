@@ -1,50 +1,59 @@
-import com.google.common.collect.ImmutableList;
-import javax.annotation.Nullable;
+import com.mojang.blaze3d.systems.RenderSystem;
 
-public final class ggk {
-   private static final int a = 16;
-   private static final int b = 16;
-   private static final String c = "missingno";
-   private static final aiy d = new aiy("missingno");
-   private static final asc e = new asc.a().a(gie.a, new gie(ImmutableList.of(new gid(0, -1)), 16, 16, 1, false)).a();
-   @Nullable
-   private static ggh f;
+public class ggk implements AutoCloseable {
+   private static final int e = 16;
+   public static final int a = 0;
+   public static final int b = 3;
+   public static final int c = 10;
+   public static final int d = a(0, 10);
+   private final ggg f = new ggg(16, 16, false);
 
-   private static erb a(int $$0, int $$1) {
-      erb $$2 = new erb($$0, $$1, false);
-      int $$3 = -16777216;
-      int $$4 = -524040;
+   public ggk() {
+      erb $$0 = this.f.e();
 
-      for (int $$5 = 0; $$5 < $$1; $$5++) {
-         for (int $$6 = 0; $$6 < $$0; $$6++) {
-            if ($$5 < $$1 / 2 ^ $$6 < $$0 / 2) {
-               $$2.a($$6, $$5, -524040);
+      for (int $$1 = 0; $$1 < 16; $$1++) {
+         for (int $$2 = 0; $$2 < 16; $$2++) {
+            if ($$1 < 8) {
+               $$0.a($$2, $$1, -1308622593);
             } else {
-               $$2.a($$6, $$5, -16777216);
+               int $$3 = (int)((1.0F - (float)$$2 / 15.0F * 0.75F) * 255.0F);
+               $$0.a($$2, $$1, $$3 << 24 | 16777215);
             }
          }
       }
 
-      return $$2;
+      RenderSystem.activeTexture(33985);
+      this.f.c();
+      $$0.a(0, 0, 0, 0, 0, $$0.a(), $$0.b(), false, true, false, false);
+      RenderSystem.activeTexture(33984);
    }
 
-   public static ggo a() {
-      erb $$0 = a(16, 16);
-      return new ggo(d, new gig(16, 16), $$0, e);
+   @Override
+   public void close() {
+      this.f.close();
    }
 
-   public static aiy b() {
-      return d;
+   public void a() {
+      RenderSystem.setupOverlayColor(this.f::a, 16);
    }
 
-   public static ggh c() {
-      if (f == null) {
-         erb $$0 = a(16, 16);
-         $$0.i();
-         f = new ggh($$0);
-         exh.O().Y().a(d, f);
-      }
+   public static int a(float $$0) {
+      return (int)($$0 * 15.0F);
+   }
 
-      return f;
+   public static int a(boolean $$0) {
+      return $$0 ? 3 : 10;
+   }
+
+   public static int a(int $$0, int $$1) {
+      return $$0 | $$1 << 16;
+   }
+
+   public static int a(float $$0, boolean $$1) {
+      return a(a($$0), a($$1));
+   }
+
+   public void b() {
+      RenderSystem.teardownOverlayColor();
    }
 }

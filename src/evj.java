@@ -2,7 +2,7 @@ import com.google.common.collect.ImmutableList;
 import java.util.List;
 import java.util.function.Consumer;
 
-public class evj extends gmw {
+public class evj extends gmv {
    private static final int v = 2;
    public static final List<blr> a = ImmutableList.of(blr.a, blr.b, blr.c, blr.d);
    private static final int w = 0;
@@ -95,7 +95,7 @@ public class evj extends gmw {
             $$1 = vq.c("mco.configure.world.edit.subscreen.experience");
          }
 
-         this.a(new gmu($$1, this.g / 2, 26, 16711680));
+         this.a(new gmt($$1, this.g / 2, 26, 16711680));
       }
 
       this.A = new ezq(this.f.h, this.B, g(1), this.C, 20, null, vq.c("mco.configure.world.edit.slot.name"));

@@ -118,7 +118,8 @@ public abstract class cup {
                         continue;
                      }
 
-                     if ($$4.a().f() == 1 && $$4.a().b("id", 8)) {
+                     boolean $$18 = $$4.a().f() == 1 && $$4.a().b("id", 8);
+                     if ($$18) {
                         ((boi)$$15).a($$0, $$0.d_($$15.dm()), bok.c, null, null);
                      }
                   }

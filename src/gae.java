@@ -1,17 +1,21 @@
-public class gae extends gbz<bzy, flq<bzy>> {
-   private static final aiy a = new aiy("textures/entity/chicken.png");
+public class gae extends gby<bzz, flr<bzz>> {
+   private static final aiy a = new aiy("textures/entity/fish/cod.png");
 
-   public gae(gat.a $$0) {
-      super($$0, new flq<>($$0.a(fpb.v)), 0.3F);
+   public gae(gas.a $$0) {
+      super($$0, new flr<>($$0.a(fpb.w)), 0.3F);
    }
 
-   public aiy a(bzy $$0) {
+   public aiy a(bzz $$0) {
       return a;
    }
 
-   protected float a(bzy $$0, float $$1) {
-      float $$2 = awh.i($$1, $$0.bX, $$0.bT);
-      float $$3 = awh.i($$1, $$0.bW, $$0.bU);
-      return (awh.a($$2) + 1.0F) * $$3;
+   protected void a(bzz $$0, esa $$1, float $$2, float $$3, float $$4, float $$5) {
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      float $$6 = 4.3F * awh.a(0.6F * $$2);
+      $$1.a(a.d.rotationDegrees($$6));
+      if (!$$0.aZ()) {
+         $$1.a(0.1F, 0.1F, -0.1F);
+         $$1.a(a.f.rotationDegrees(90.0F));
+      }
    }
 }

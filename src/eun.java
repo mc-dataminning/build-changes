@@ -7,7 +7,7 @@ import java.util.List;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class eun extends gmw {
+public class eun extends gmv {
    static final Logger a = LogUtils.getLogger();
    static final vq b = vq.c("mco.backup.button.restore");
    static final vq c = vq.c("mco.backup.changes.tooltip");
@@ -142,7 +142,7 @@ public class eun extends gmw {
       this.C.j = !this.F;
    }
 
-   class a extends gmv<eun.b> {
+   class a extends gmu<eun.b> {
       public a() {
          super(eun.this.g - 150, eun.this.h - 47, 32, 36);
       }

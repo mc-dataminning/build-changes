@@ -5,13 +5,13 @@ import org.joml.Matrix4f;
 
 public class eyx implements AutoCloseable {
    private static final aiy a = new aiy("textures/map/map_icons.png");
-   static final fvu b = fvu.t(a);
+   static final fvt b = fvt.t(a);
    private static final int c = 128;
    private static final int d = 128;
-   final ggv e;
+   final ggu e;
    private final Int2ObjectMap<eyx.a> f = new Int2ObjectOpenHashMap();
 
-   public eyx(ggv $$0) {
+   public eyx(ggu $$0) {
       this.e = $$0;
    }
 
@@ -19,7 +19,7 @@ public class eyx implements AutoCloseable {
       this.b($$0, $$1).a();
    }
 
-   public void a(esa $$0, fvm $$1, int $$2, ehz $$3, boolean $$4, int $$5) {
+   public void a(esa $$0, fvl $$1, int $$2, ehz $$3, boolean $$4, int $$5) {
       this.b($$2, $$3).a($$0, $$1, $$4, $$5);
    }
 
@@ -52,15 +52,15 @@ public class eyx implements AutoCloseable {
 
    class a implements AutoCloseable {
       private ehz b;
-      private final ggh c;
-      private final fvu d;
+      private final ggg c;
+      private final fvt d;
       private boolean e = true;
 
       a(int $$0, ehz $$1) {
          this.b = $$1;
-         this.c = new ggh(128, 128, true);
+         this.c = new ggg(128, 128, true);
          aiy $$2 = eyx.this.e.a("map/" + $$0, this.c);
-         this.d = fvu.t($$2);
+         this.d = fvt.t($$2);
       }
 
       void a(ehz $$0) {
@@ -84,7 +84,7 @@ public class eyx implements AutoCloseable {
          this.c.d();
       }
 
-      void a(esa $$0, fvm $$1, boolean $$2, int $$3) {
+      void a(esa $$0, fvl $$1, boolean $$2, int $$3) {
          if (this.e) {
             this.b();
             this.e = false;

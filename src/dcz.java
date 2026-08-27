@@ -69,9 +69,8 @@ public class dcz {
    public static final int ap = 3007;
    public static final int aq = 3008;
    public static final int ar = 3009;
-   public static final int as = 3010;
-   public static final int at = 3011;
-   public static final int au = 3012;
-   public static final int av = 3013;
-   public static final int aw = 3014;
+   public static final int as = 3011;
+   public static final int at = 3012;
+   public static final int au = 3013;
+   public static final int av = 3014;
 }

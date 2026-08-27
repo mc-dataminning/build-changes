@@ -1,11 +1,28 @@
-public class gag extends gbz<caa, flu<caa>> {
-   private static final aiy a = new aiy("textures/entity/cow/cow.png");
+public class gag extends gby<cdz, flv<cdz>> {
+   private static final aiy a = new aiy("textures/entity/creeper/creeper.png");
 
-   public gag(gat.a $$0) {
-      super($$0, new flu<>($$0.a(fpb.C)), 0.7F);
+   public gag(gas.a $$0) {
+      super($$0, new flv<>($$0.a(fpb.D)), 0.5F);
+      this.a(new geg(this, $$0.f()));
    }
 
-   public aiy a(caa $$0) {
+   protected void a(cdz $$0, esa $$1, float $$2) {
+      float $$3 = $$0.E($$2);
+      float $$4 = 1.0F + awh.a($$3 * 100.0F) * $$3 * 0.01F;
+      $$3 = awh.a($$3, 0.0F, 1.0F);
+      $$3 *= $$3;
+      $$3 *= $$3;
+      float $$5 = (1.0F + $$3 * 0.4F) * $$4;
+      float $$6 = (1.0F + $$3 * 0.1F) / $$4;
+      $$1.b($$5, $$6, $$5);
+   }
+
+   protected float a(cdz $$0, float $$1) {
+      float $$2 = $$0.E($$1);
+      return (int)($$2 * 10.0F) % 2 == 0 ? 0.0F : awh.a($$2, 0.5F, 1.0F);
+   }
+
+   public aiy a(cdz $$0) {
       return a;
    }
 }

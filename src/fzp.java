@@ -1,16 +1,16 @@
-public abstract class fzp<T extends cfg, M extends fou<T>> extends gbk<T, M> {
-   private static final aiy a = new aiy("textures/entity/zombie/zombie.png");
+public class fzp extends gby<cax, fky> {
+   private static final aiy a = new aiy("textures/entity/allay/allay.png");
 
-   protected fzp(gat.a $$0, M $$1, M $$2, M $$3) {
-      super($$0, $$1, 0.5F);
-      this.a(new geu<>(this, $$2, $$3, $$0.g()));
+   public fzp(gas.a $$0) {
+      super($$0, new fky($$0.a(fpb.a)), 0.4F);
+      this.a(new gew<>(this, $$0.d()));
    }
 
-   public aiy a(cfg $$0) {
+   public aiy a(cax $$0) {
       return a;
    }
 
-   protected boolean b(T $$0) {
-      return super.a($$0) || $$0.gn();
+   protected int a(cax $$0, hz $$1) {
+      return 15;
    }
 }

@@ -1,19 +1,19 @@
-public class gbd extends gbz<ceh, fmf<ceh>> {
-   private static final aiy a = new aiy("textures/entity/ghast/ghast.png");
-   private static final aiy i = new aiy("textures/entity/ghast/ghast_shooting.png");
+public class gbd extends gby<cei, fmo<cei>> {
+   private static final aiy a = new aiy("textures/entity/zombie/zombie.png");
+   private final float i;
 
-   public gbd(gat.a $$0) {
-      super($$0, new fmf<>($$0.a(fpb.ac)), 1.5F);
+   public gbd(gas.a $$0, float $$1) {
+      super($$0, new fmg($$0.a(fpb.ad)), 0.5F * $$1);
+      this.i = $$1;
+      this.a(new gew<>(this, $$0.d()));
+      this.a(new get<>(this, new fmg($$0.a(fpb.ae)), new fmg($$0.a(fpb.af)), $$0.g()));
    }
 
-   public aiy a(ceh $$0) {
-      return $$0.u() ? i : a;
+   protected void a(cei $$0, esa $$1, float $$2) {
+      $$1.b(this.i, this.i, this.i);
    }
 
-   protected void a(ceh $$0, esa $$1, float $$2) {
-      float $$3 = 1.0F;
-      float $$4 = 4.5F;
-      float $$5 = 4.5F;
-      $$1.b(4.5F, 4.5F, 4.5F);
+   public aiy a(cei $$0) {
+      return a;
    }
 }

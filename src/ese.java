@@ -53,11 +53,11 @@ public interface ese {
       return this.a($$0 & 65535, $$0 >> 16 & 65535);
    }
 
-   default void a(esa.a $$0, fwj $$1, float $$2, float $$3, float $$4, int $$5, int $$6) {
+   default void a(esa.a $$0, fwi $$1, float $$2, float $$3, float $$4, int $$5, int $$6) {
       this.a($$0, $$1, new float[]{1.0F, 1.0F, 1.0F, 1.0F}, $$2, $$3, $$4, new int[]{$$5, $$5, $$5, $$5}, $$6, false);
    }
 
-   default void a(esa.a $$0, fwj $$1, float[] $$2, float $$3, float $$4, float $$5, int[] $$6, int $$7, boolean $$8) {
+   default void a(esa.a $$0, fwi $$1, float[] $$2, float $$3, float $$4, float $$5, int[] $$6, int $$7, boolean $$8) {
       float[] $$9 = new float[]{$$2[0], $$2[1], $$2[2], $$2[3]};
       int[] $$10 = new int[]{$$6[0], $$6[1], $$6[2], $$6[3]};
       int[] $$11 = $$1.b();

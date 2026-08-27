@@ -1,79 +1,48 @@
 import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.objects.Reference2ObjectOpenHashMap;
-import java.util.BitSet;
-import java.util.Collections;
+import com.google.common.collect.Maps;
 import java.util.List;
 import java.util.Map;
-import java.util.function.Predicate;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.tuple.Pair;
 
-public class gjd implements giu {
-   private final List<Pair<Predicate<dlf>, giu>> g;
-   protected final boolean a;
-   protected final boolean b;
+public class gjd implements git {
+   protected final List<fwi> a;
+   protected final Map<ie, List<fwi>> b;
    protected final boolean c;
-   protected final ggu d;
-   protected final fwv e;
-   protected final fwt f;
-   private final Map<dlf, BitSet> h = new Reference2ObjectOpenHashMap();
+   protected final boolean d;
+   protected final boolean e;
+   protected final ggt f;
+   protected final fwu g;
+   protected final fws h;
 
-   public gjd(List<Pair<Predicate<dlf>, giu>> $$0) {
-      this.g = $$0;
-      giu $$1 = (giu)$$0.iterator().next().getRight();
-      this.a = $$1.a();
-      this.b = $$1.b();
-      this.c = $$1.c();
-      this.d = $$1.e();
-      this.e = $$1.f();
-      this.f = $$1.g();
+   public gjd(List<fwi> $$0, Map<ie, List<fwi>> $$1, boolean $$2, boolean $$3, boolean $$4, ggt $$5, fwu $$6, fws $$7) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$4;
+      this.e = $$3;
+      this.f = $$5;
+      this.g = $$6;
+      this.h = $$7;
    }
 
    @Override
-   public List<fwj> a(@Nullable dlf $$0, @Nullable ie $$1, awo $$2) {
-      if ($$0 == null) {
-         return Collections.emptyList();
-      } else {
-         BitSet $$3 = this.h.get($$0);
-         if ($$3 == null) {
-            $$3 = new BitSet();
-
-            for (int $$4 = 0; $$4 < this.g.size(); $$4++) {
-               Pair<Predicate<dlf>, giu> $$5 = this.g.get($$4);
-               if (((Predicate)$$5.getLeft()).test($$0)) {
-                  $$3.set($$4);
-               }
-            }
-
-            this.h.put($$0, $$3);
-         }
-
-         List<fwj> $$6 = Lists.newArrayList();
-         long $$7 = $$2.g();
-
-         for (int $$8 = 0; $$8 < $$3.length(); $$8++) {
-            if ($$3.get($$8)) {
-               $$6.addAll(((giu)this.g.get($$8).getRight()).a($$0, $$1, awo.a($$7)));
-            }
-         }
-
-         return $$6;
-      }
+   public List<fwi> a(@Nullable dlf $$0, @Nullable ie $$1, awo $$2) {
+      return $$1 == null ? this.a : this.b.get($$1);
    }
 
    @Override
    public boolean a() {
-      return this.a;
+      return this.c;
    }
 
    @Override
    public boolean b() {
-      return this.b;
+      return this.d;
    }
 
    @Override
    public boolean c() {
-      return this.c;
+      return this.e;
    }
 
    @Override
@@ -82,29 +51,71 @@ public class gjd implements giu {
    }
 
    @Override
-   public ggu e() {
-      return this.d;
-   }
-
-   @Override
-   public fwv f() {
-      return this.e;
-   }
-
-   @Override
-   public fwt g() {
+   public ggt e() {
       return this.f;
    }
 
-   public static class a {
-      private final List<Pair<Predicate<dlf>, giu>> a = Lists.newArrayList();
+   @Override
+   public fwu f() {
+      return this.g;
+   }
 
-      public void a(Predicate<dlf> $$0, giu $$1) {
-         this.a.add(Pair.of($$0, $$1));
+   @Override
+   public fws g() {
+      return this.h;
+   }
+
+   public static class a {
+      private final List<fwi> a = Lists.newArrayList();
+      private final Map<ie, List<fwi>> b = Maps.newEnumMap(ie.class);
+      private final fws c;
+      private final boolean d;
+      private ggt e;
+      private final boolean f;
+      private final boolean g;
+      private final fwu h;
+
+      public a(fwn $$0, fws $$1, boolean $$2) {
+         this($$0.b(), $$0.c().a(), $$2, $$0.h(), $$1);
       }
 
-      public giu a() {
-         return new gjd(this.a);
+      private a(boolean $$0, boolean $$1, boolean $$2, fwu $$3, fws $$4) {
+         for (ie $$5 : ie.values()) {
+            this.b.put($$5, Lists.newArrayList());
+         }
+
+         this.c = $$4;
+         this.d = $$0;
+         this.f = $$1;
+         this.g = $$2;
+         this.h = $$3;
+      }
+
+      public gjd.a a(ie $$0, fwi $$1) {
+         this.b.get($$0).add($$1);
+         return this;
+      }
+
+      public gjd.a a(fwi $$0) {
+         this.a.add($$0);
+         return this;
+      }
+
+      public gjd.a a(ggt $$0) {
+         this.e = $$0;
+         return this;
+      }
+
+      public gjd.a a() {
+         return this;
+      }
+
+      public git b() {
+         if (this.e == null) {
+            throw new RuntimeException("Missing particle!");
+         } else {
+            return new gjd(this.a, this.b, this.d, this.f, this.g, this.e, this.h, this.c);
+         }
       }
    }
 }

@@ -1,13 +1,13 @@
 import java.util.function.Function;
 
 public abstract class fmx {
-   protected final Function<aiy, fvu> v;
+   protected final Function<aiy, fvt> v;
 
-   public fmx(Function<aiy, fvu> $$0) {
+   public fmx(Function<aiy, fvt> $$0) {
       this.v = $$0;
    }
 
-   public final fvu a(aiy $$0) {
+   public final fvt a(aiy $$0) {
       return this.v.apply($$0);
    }
 

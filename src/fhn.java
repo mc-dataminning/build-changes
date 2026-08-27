@@ -6,7 +6,7 @@ public class fhn extends fgf {
    public static final float c = 0.9765628F;
    private static final Vector3f k = new Vector3f(0.9765628F, 0.9765628F, 0.9765628F);
    @Nullable
-   private fya.a l;
+   private fxz.a l;
 
    public fhn(dkc $$0, boolean $$1, boolean $$2) {
       super($$0, $$1, $$2);
@@ -15,7 +15,7 @@ public class fhn extends fgf {
    @Override
    protected void aQ_() {
       super.aQ_();
-      this.l = fya.a(this.f.aP(), this.a);
+      this.l = fxz.a(this.f.aP(), this.a);
    }
 
    @Override
@@ -33,10 +33,10 @@ public class fhn extends fgf {
          boolean $$2 = $$1.b() instanceof dgi;
          $$0.c().a(0.0F, 31.0F, 0.0F);
          $$0.c().b(62.500004F, 62.500004F, -62.500004F);
-         gix $$3 = fwb.a(this.a);
+         giw $$3 = fwa.a(this.a);
          ese $$4 = $$3.a($$0.d(), this.l::a);
          this.l.b.k = $$2;
-         this.l.a.a($$0.c(), $$4, 15728880, ggl.d);
+         this.l.a.a($$0.c(), $$4, 15728880, ggk.d);
       }
    }
 

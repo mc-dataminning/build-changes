@@ -1,87 +1,58 @@
-import com.google.common.collect.Sets;
-import java.util.Iterator;
-import java.util.Objects;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.function.Consumer;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+import java.io.BufferedInputStream;
+import java.io.FilterInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.ByteBuffer;
+import javax.sound.sampled.AudioFormat;
 
-public class gle {
-   private final Set<gle.a> a = Sets.newIdentityHashSet();
-   final epv b;
-   final Executor c;
+public class gle implements glc {
+   private final gle.a a;
+   private glc b;
+   private final BufferedInputStream c;
 
-   public gle(epv $$0, Executor $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public gle(gle.a $$0, InputStream $$1) throws IOException {
+      this.a = $$0;
+      this.c = new BufferedInputStream($$1);
+      this.c.mark(Integer.MAX_VALUE);
+      this.b = $$0.create(new gle.b(this.c));
    }
 
-   public CompletableFuture<gle.a> a(epv.c $$0) {
-      CompletableFuture<gle.a> $$1 = new CompletableFuture<>();
-      this.c.execute(() -> {
-         epu $$2 = this.b.a($$0);
-         if ($$2 != null) {
-            gle.a $$3 = new gle.a($$2);
-            this.a.add($$3);
-            $$1.complete($$3);
-         } else {
-            $$1.complete(null);
-         }
-      });
+   @Override
+   public AudioFormat a() {
+      return this.b.a();
+   }
+
+   @Override
+   public ByteBuffer a(int $$0) throws IOException {
+      ByteBuffer $$1 = this.b.a($$0);
+      if (!$$1.hasRemaining()) {
+         this.b.close();
+         this.c.reset();
+         this.b = this.a.create(new gle.b(this.c));
+         $$1 = this.b.a($$0);
+      }
+
       return $$1;
    }
 
-   public void a(Consumer<Stream<epu>> $$0) {
-      this.c.execute(() -> $$0.accept(this.a.stream().map($$0xx -> $$0xx.b).filter(Objects::nonNull)));
+   @Override
+   public void close() throws IOException {
+      this.b.close();
+      this.c.close();
    }
 
-   public void a() {
-      this.c.execute(() -> {
-         Iterator<gle.a> $$0 = this.a.iterator();
-
-         while ($$0.hasNext()) {
-            gle.a $$1 = $$0.next();
-            $$1.b.j();
-            if ($$1.b.h()) {
-               $$1.b();
-               $$0.remove();
-            }
-         }
-      });
+   @FunctionalInterface
+   public interface a {
+      glc create(InputStream var1) throws IOException;
    }
 
-   public void b() {
-      this.a.forEach(gle.a::b);
-      this.a.clear();
-   }
-
-   public class a {
-      @Nullable
-      epu b;
-      private boolean c;
-
-      public boolean a() {
-         return this.c;
+   static class b extends FilterInputStream {
+      b(InputStream $$0) {
+         super($$0);
       }
 
-      public a(epu $$1) {
-         this.b = $$1;
-      }
-
-      public void a(Consumer<epu> $$0) {
-         gle.this.c.execute(() -> {
-            if (this.b != null) {
-               $$0.accept(this.b);
-            }
-         });
-      }
-
-      public void b() {
-         this.c = true;
-         gle.this.b.a(this.b);
-         this.b = null;
+      @Override
+      public void close() {
       }
    }
 }

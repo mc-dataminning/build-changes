@@ -207,7 +207,7 @@ public class fke {
       }
    }
 
-   public CompletableFuture<Void> a(gjj $$0, eil.c $$1) {
+   public CompletableFuture<Void> a(gji $$0, eil.c $$1) {
       Path $$2 = $$1.a(eij.k);
       if (Files.exists($$2) && !Files.isDirectory($$2)) {
          $$0.f();
@@ -245,7 +245,7 @@ public class fke {
       boolean $$10 = $$9.y().e();
       boolean $$11 = $$9.B() != Lifecycle.stable();
       if (!$$3 || !$$10 && !$$11) {
-         gjj $$12 = this.c.ac();
+         gji $$12 = this.c.ac();
          this.a($$12, $$0).thenApply($$0x -> true).exceptionallyComposeAsync($$0x -> {
             a.warn("Failed to load pack: ", $$0x);
             return this.a();

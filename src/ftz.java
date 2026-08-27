@@ -1,67 +1,45 @@
-public class ftz extends fua {
-   private final hz a;
-   private final float b;
-   private final float F;
+public abstract class ftz extends ftm {
+   protected ggt E;
 
-   public ftz(fpx $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, dlf $$7) {
-      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, hz.a($$1, $$2, $$3));
+   protected ftz(fpx $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1, $$2, $$3);
    }
 
-   public ftz(fpx $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, dlf $$7, hz $$8) {
+   protected ftz(fpx $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
       super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      this.a = $$8;
-      this.a(exh.O().an().a().a($$7));
-      this.u = 1.0F;
-      this.v = 0.6F;
-      this.w = 0.6F;
-      this.x = 0.6F;
-      if (!$$7.a(cyq.i)) {
-         int $$9 = exh.O().au().a($$7, $$0, $$8, 0);
-         this.v *= (float)($$9 >> 16 & 0xFF) / 255.0F;
-         this.w *= (float)($$9 >> 8 & 0xFF) / 255.0F;
-         this.x *= (float)($$9 & 0xFF) / 255.0F;
-      }
-
-      this.D /= 2.0F;
-      this.b = this.r.i() * 3.0F;
-      this.F = this.r.i() * 3.0F;
    }
 
-   @Override
-   public fte b() {
-      return fte.a;
+   protected void a(ggt $$0) {
+      this.E = $$0;
    }
 
    @Override
    protected float c() {
-      return this.E.a((this.b + 1.0F) / 4.0F);
+      return this.E.c();
    }
 
    @Override
    protected float d() {
-      return this.E.a(this.b / 4.0F);
+      return this.E.d();
    }
 
    @Override
    protected float e() {
-      return this.E.c(this.F / 4.0F);
+      return this.E.g();
    }
 
    @Override
    protected float f() {
-      return this.E.c((this.F + 1.0F) / 4.0F);
+      return this.E.h();
    }
 
-   @Override
-   public int a(float $$0) {
-      int $$1 = super.a($$0);
-      return $$1 == 0 && this.c.B(this.a) ? fvk.a(this.c, this.a) : $$1;
+   public void a(ftu $$0) {
+      this.a($$0.a(this.r));
    }
 
-   public static class a implements ftd<jr> {
-      public fta a(jr $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         dlf $$8 = $$0.c();
-         return !$$8.i() && !$$8.a(cyq.bQ) && $$8.z() ? new ftz($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8) : null;
+   public void b(ftu $$0) {
+      if (!this.o) {
+         this.a($$0.a(this.s, this.t));
       }
    }
 }

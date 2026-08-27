@@ -20,7 +20,7 @@ public class fng<T extends bog> extends fmo<T> {
    private final boolean I;
 
    public fng(fpc $$0, boolean $$1) {
-      super($$0, fvu::i);
+      super($$0, fvt::i);
       this.I = $$1;
       this.H = $$0.b("ear");
       this.G = $$0.b("cloak");

@@ -3,7 +3,7 @@ import java.util.concurrent.CompletableFuture;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class euv extends gmw {
+public class euv extends gmv {
    private static final Logger a = LogUtils.getLogger();
    private static final vq b = vq.c("mco.configure.world.invite.profile.name").b(-6250336);
    private static final vq c = vq.c("mco.configure.world.players.inviting").b(-6250336);

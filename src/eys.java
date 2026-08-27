@@ -38,23 +38,23 @@ public class eys {
       }
    }
 
-   public int a(String $$0, float $$1, float $$2, int $$3, boolean $$4, Matrix4f $$5, fvm $$6, eys.a $$7, int $$8, int $$9) {
+   public int a(String $$0, float $$1, float $$2, int $$3, boolean $$4, Matrix4f $$5, fvl $$6, eys.a $$7, int $$8, int $$9) {
       return this.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, this.a());
    }
 
-   public int a(String $$0, float $$1, float $$2, int $$3, boolean $$4, Matrix4f $$5, fvm $$6, eys.a $$7, int $$8, int $$9, boolean $$10) {
+   public int a(String $$0, float $$1, float $$2, int $$3, boolean $$4, Matrix4f $$5, fvl $$6, eys.a $$7, int $$8, int $$9, boolean $$10) {
       return this.b($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10);
    }
 
-   public int a(vq $$0, float $$1, float $$2, int $$3, boolean $$4, Matrix4f $$5, fvm $$6, eys.a $$7, int $$8, int $$9) {
+   public int a(vq $$0, float $$1, float $$2, int $$3, boolean $$4, Matrix4f $$5, fvl $$6, eys.a $$7, int $$8, int $$9) {
       return this.a($$0.g(), $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
    }
 
-   public int a(avt $$0, float $$1, float $$2, int $$3, boolean $$4, Matrix4f $$5, fvm $$6, eys.a $$7, int $$8, int $$9) {
+   public int a(avt $$0, float $$1, float $$2, int $$3, boolean $$4, Matrix4f $$5, fvl $$6, eys.a $$7, int $$8, int $$9) {
       return this.b($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
    }
 
-   public void a(avt $$0, float $$1, float $$2, int $$3, int $$4, Matrix4f $$5, fvm $$6, int $$7) {
+   public void a(avt $$0, float $$1, float $$2, int $$3, int $$4, Matrix4f $$5, fvl $$6, int $$7) {
       int $$8 = a($$4);
       eys.b $$9 = new eys.b($$6, 0.0F, 0.0F, $$8, false, $$5, eys.a.a, $$7);
 
@@ -86,7 +86,7 @@ public class eys {
       return ($$0 & -67108864) == 0 ? $$0 | 0xFF000000 : $$0;
    }
 
-   private int b(String $$0, float $$1, float $$2, int $$3, boolean $$4, Matrix4f $$5, fvm $$6, eys.a $$7, int $$8, int $$9, boolean $$10) {
+   private int b(String $$0, float $$1, float $$2, int $$3, boolean $$4, Matrix4f $$5, fvl $$6, eys.a $$7, int $$8, int $$9, boolean $$10) {
       if ($$10) {
          $$0 = this.a($$0);
       }
@@ -102,7 +102,7 @@ public class eys {
       return (int)$$1 + ($$4 ? 1 : 0);
    }
 
-   private int b(avt $$0, float $$1, float $$2, int $$3, boolean $$4, Matrix4f $$5, fvm $$6, eys.a $$7, int $$8, int $$9) {
+   private int b(avt $$0, float $$1, float $$2, int $$3, boolean $$4, Matrix4f $$5, fvl $$6, eys.a $$7, int $$8, int $$9) {
       $$3 = a($$3);
       Matrix4f $$10 = new Matrix4f($$5);
       if ($$4) {
@@ -114,13 +114,13 @@ public class eys {
       return (int)$$1 + ($$4 ? 1 : 0);
    }
 
-   private float b(String $$0, float $$1, float $$2, int $$3, boolean $$4, Matrix4f $$5, fvm $$6, eys.a $$7, int $$8, int $$9) {
+   private float b(String $$0, float $$1, float $$2, int $$3, boolean $$4, Matrix4f $$5, fvl $$6, eys.a $$7, int $$8, int $$9) {
       eys.b $$10 = new eys.b($$6, $$1, $$2, $$3, $$4, $$5, $$7, $$9);
       axb.c($$0, wn.a, $$10);
       return $$10.a($$8, $$1);
    }
 
-   private float c(avt $$0, float $$1, float $$2, int $$3, boolean $$4, Matrix4f $$5, fvm $$6, eys.a $$7, int $$8, int $$9) {
+   private float c(avt $$0, float $$1, float $$2, int $$3, boolean $$4, Matrix4f $$5, fvl $$6, eys.a $$7, int $$8, int $$9) {
       eys.b $$10 = new eys.b($$6, $$1, $$2, $$3, $$4, $$5, $$7, $$9);
       $$0.accept($$10);
       return $$10.a($$8, $$1);
@@ -184,7 +184,7 @@ public class eys {
    }
 
    class b implements avu {
-      final fvm a;
+      final fvl a;
       private final boolean c;
       private final float d;
       private final float e;
@@ -207,7 +207,7 @@ public class eys {
          this.n.add($$0);
       }
 
-      public b(fvm $$0, float $$1, float $$2, int $$3, boolean $$4, Matrix4f $$5, eys.a $$6, int $$7) {
+      public b(fvl $$0, float $$1, float $$2, int $$3, boolean $$4, Matrix4f $$5, eys.a $$6, int $$7) {
          this.a = $$0;
          this.l = $$1;
          this.m = $$2;

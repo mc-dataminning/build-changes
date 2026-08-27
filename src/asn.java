@@ -86,6 +86,7 @@ public abstract class asn {
       eih $$14 = $$11.B_();
       $$1.c($$8.orElse(null));
       apu $$15 = new apu(this.k, $$0, $$1, $$2);
+      $$0.a(aer.a.bind(vb.a(this.k.aZ())), $$15);
       cvj $$16 = $$11.Z();
       boolean $$17 = $$16.b(cvj.D);
       boolean $$18 = $$16.b(cvj.q);

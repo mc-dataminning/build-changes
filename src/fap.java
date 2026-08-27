@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class fap implements glk {
+public class fap implements glj {
    private static final long a = 3000L;
    private final exh b;
    private final List<fap.a> c = Lists.newArrayList();
@@ -15,7 +15,7 @@ public class fap implements glk {
    }
 
    public void a(eyu $$0) {
-      gll $$1 = this.b.ai();
+      glk $$1 = this.b.ai();
       if (!this.d && this.b.m.T().c()) {
          $$1.a(this);
          this.d = true;
@@ -90,7 +90,7 @@ public class fap implements glk {
    }
 
    @Override
-   public void a(gkh $$0, glm $$1, float $$2) {
+   public void a(gkg $$0, gll $$1, float $$2) {
       if ($$1.a() != null) {
          vq $$3 = $$1.a();
          if (!this.c.isEmpty()) {

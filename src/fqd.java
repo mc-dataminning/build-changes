@@ -1,10 +1,10 @@
 public class fqd {
-   private final fuo a;
+   private final fun a;
    private final fpx b;
-   private final fvk c;
+   private final fvj c;
    private fqd.a d = fqd.a.a;
 
-   public fqd(fuo $$0, fpx $$1, fvk $$2) {
+   public fqd(fun $$0, fpx $$1, fvj $$2) {
       this.a = $$0;
       this.b = $$1;
       this.c = $$2;

@@ -1,10 +1,10 @@
 import javax.annotation.Nullable;
 
-public class fsk extends fua {
+public class fsk extends ftz {
    private final float a;
-   private final ftv b;
+   private final ftu b;
 
-   fsk(fpx $$0, double $$1, double $$2, double $$3, float $$4, float $$5, float $$6, ftv $$7) {
+   fsk(fpx $$0, double $$1, double $$2, double $$3, float $$4, float $$5, float $$6, ftu $$7) {
       super($$0, $$1, $$2, $$3);
       this.b = $$7;
       this.v = $$4;
@@ -20,8 +20,8 @@ public class fsk extends fua {
    }
 
    @Override
-   public fte b() {
-      return fte.b;
+   public ftd b() {
+      return ftd.b;
    }
 
    @Override
@@ -50,15 +50,15 @@ public class fsk extends fua {
       }
    }
 
-   public static class a implements ftd<jr> {
-      private final ftv a;
+   public static class a implements ftc<jr> {
+      private final ftu a;
 
-      public a(ftv $$0) {
+      public a(ftu $$0) {
          this.a = $$0;
       }
 
       @Nullable
-      public fta a(jr $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      public fsz a(jr $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
          dlf $$8 = $$0.c();
          if (!$$8.i() && $$8.l() == det.a) {
             return null;

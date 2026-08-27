@@ -1,5 +1,5 @@
-public class fsi extends ftm {
-   fsi(fpx $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, ftv $$7) {
+public class fsi extends ftl {
+   fsi(fpx $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, ftu $$7) {
       super($$0, $$1, $$2, $$3, $$7, 0.0125F);
       this.j = $$4;
       this.k = $$5;
@@ -16,14 +16,14 @@ public class fsi extends ftm {
       this.l();
    }
 
-   public static class a implements ftd<kc> {
-      private final ftv a;
+   public static class a implements ftc<kc> {
+      private final ftu a;
 
-      public a(ftv $$0) {
+      public a(ftu $$0) {
          this.a = $$0;
       }
 
-      public fta a(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      public fsz a(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
          return new fsi($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
       }
    }

@@ -1,245 +1,464 @@
 import com.google.common.collect.ImmutableList;
-import com.google.common.collect.UnmodifiableIterator;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.blaze3d.platform.GlStateManager;
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.Objects;
+import java.util.List;
 import java.util.Optional;
 import java.util.OptionalDouble;
-import java.util.function.Supplier;
-import org.apache.commons.lang3.tuple.Triple;
-import org.joml.Matrix4f;
+import java.util.function.BiFunction;
+import java.util.function.Function;
 
-public abstract class fvt {
-   private static final float aS = 0.99975586F;
-   public static final double a = 8.0;
-   protected final String b;
-   private final Runnable aT;
-   private final Runnable aU;
-   protected static final fvt.p c = new fvt.p("no_transparency", () -> RenderSystem.disableBlend(), () -> {
+public abstract class fvt extends fvs {
+   private static final int aX = 1048576;
+   public static final int aS = 4194304;
+   public static final int aT = 786432;
+   public static final int aU = 1536;
+   private static final fvt aY = a("solid", ery.j, esf.b.h, 4194304, true, false, fvt.b.a().a(as).a(p).a(am).a(true));
+   private static final fvt aZ = a("cutout_mipped", ery.j, esf.b.h, 4194304, true, false, fvt.b.a().a(as).a(q).a(am).a(true));
+   private static final fvt ba = a("cutout", ery.j, esf.b.h, 786432, true, false, fvt.b.a().a(as).a(r).a(an).a(true));
+   private static final fvt bb = a("translucent", ery.j, esf.b.h, 786432, true, true, a(s));
+   private static final fvt bc = a("translucent_moving_block", ery.j, esf.b.h, 786432, false, true, O());
+   private static final Function<aiy, fvt> bd = ac.b($$0 -> a("armor_cutout_no_cull", $$0, false));
+   private static final Function<aiy, fvt> be = ac.b($$0 -> {
+      fvt.b $$1 = fvt.b.a().a(v).a(new fvs.n($$0, false, false)).a(c).a(as).a(au).a(true);
+      return a("entity_solid", ery.k, esf.b.h, 1536, true, false, $$1);
    });
-   protected static final fvt.p d = new fvt.p("additive_transparency", () -> {
-      RenderSystem.enableBlend();
-      RenderSystem.blendFunc(GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ONE);
-   }, () -> {
-      RenderSystem.disableBlend();
-      RenderSystem.defaultBlendFunc();
+   private static final Function<aiy, fvt> bf = ac.b($$0 -> {
+      fvt.b $$1 = fvt.b.a().a(w).a(new fvs.n($$0, false, false)).a(c).a(as).a(au).a(true);
+      return a("entity_cutout", ery.k, esf.b.h, 1536, true, false, $$1);
    });
-   protected static final fvt.p e = new fvt.p("lightning_transparency", () -> {
-      RenderSystem.enableBlend();
-      RenderSystem.blendFunc(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE);
-   }, () -> {
-      RenderSystem.disableBlend();
-      RenderSystem.defaultBlendFunc();
+   private static final BiFunction<aiy, Boolean, fvt> bg = ac.a(($$0, $$1) -> {
+      fvt.b $$2 = fvt.b.a().a(x).a(new fvs.n($$0, false, false)).a(c).a(ax).a(as).a(au).a($$1);
+      return a("entity_cutout_no_cull", ery.k, esf.b.h, 1536, true, false, $$2);
    });
-   protected static final fvt.p f = new fvt.p(
-      "glint_transparency",
-      () -> {
-         RenderSystem.enableBlend();
-         RenderSystem.blendFuncSeparate(
-            GlStateManager.SourceFactor.SRC_COLOR, GlStateManager.DestFactor.ONE, GlStateManager.SourceFactor.ZERO, GlStateManager.DestFactor.ONE
-         );
-      },
-      () -> {
-         RenderSystem.disableBlend();
-         RenderSystem.defaultBlendFunc();
-      }
+   private static final BiFunction<aiy, Boolean, fvt> bh = ac.a(($$0, $$1) -> {
+      fvt.b $$2 = fvt.b.a().a(y).a(new fvs.n($$0, false, false)).a(c).a(ax).a(as).a(au).a(aH).a($$1);
+      return a("entity_cutout_no_cull_z_offset", ery.k, esf.b.h, 1536, true, false, $$2);
+   });
+   private static final Function<aiy, fvt> bi = ac.b($$0 -> {
+      fvt.b $$1 = fvt.b.a().a(z).a(new fvs.n($$0, false, false)).a(h).a(aO).a(as).a(au).a(fvs.aC).a(true);
+      return a("item_entity_translucent_cull", ery.k, esf.b.h, 1536, true, true, $$1);
+   });
+   private static final Function<aiy, fvt> bj = ac.b($$0 -> {
+      fvt.b $$1 = fvt.b.a().a(A).a(new fvs.n($$0, false, false)).a(h).a(as).a(au).a(true);
+      return a("entity_translucent_cull", ery.k, esf.b.h, 1536, true, true, $$1);
+   });
+   private static final BiFunction<aiy, Boolean, fvt> bk = ac.a(($$0, $$1) -> {
+      fvt.b $$2 = fvt.b.a().a(B).a(new fvs.n($$0, false, false)).a(h).a(ax).a(as).a(au).a($$1);
+      return a("entity_translucent", ery.k, esf.b.h, 1536, true, true, $$2);
+   });
+   private static final BiFunction<aiy, Boolean, fvt> bl = ac.a(($$0, $$1) -> {
+      fvt.b $$2 = fvt.b.a().a(C).a(new fvs.n($$0, false, false)).a(h).a(ax).a(aD).a(au).a($$1);
+      return a("entity_translucent_emissive", ery.k, esf.b.h, 1536, true, true, $$2);
+   });
+   private static final Function<aiy, fvt> bm = ac.b($$0 -> {
+      fvt.b $$1 = fvt.b.a().a(D).a(new fvs.n($$0, false, false)).a(ax).a(as).a(true);
+      return a("entity_smooth_cutout", ery.k, esf.b.h, 1536, $$1);
+   });
+   private static final BiFunction<aiy, Boolean, fvt> bn = ac.a(($$0, $$1) -> {
+      fvt.b $$2 = fvt.b.a().a(E).a(new fvs.n($$0, false, false)).a($$1 ? h : c).a($$1 ? aD : aC).a(false);
+      return a("beacon_beam", ery.j, esf.b.h, 1536, false, true, $$2);
+   });
+   private static final Function<aiy, fvt> bo = ac.b($$0 -> {
+      fvt.b $$1 = fvt.b.a().a(F).a(new fvs.n($$0, false, false)).a(az).a(ax).a(as).a(au).a(false);
+      return a("entity_decal", ery.k, esf.b.h, 1536, $$1);
+   });
+   private static final Function<aiy, fvt> bp = ac.b($$0 -> {
+      fvt.b $$1 = fvt.b.a().a(G).a(new fvs.n($$0, false, false)).a(h).a(ax).a(as).a(au).a(aD).a(false);
+      return a("entity_no_outline", ery.k, esf.b.h, 1536, false, true, $$1);
+   });
+   private static final Function<aiy, fvt> bq = ac.b($$0 -> {
+      fvt.b $$1 = fvt.b.a().a(H).a(new fvs.n($$0, false, false)).a(h).a(aw).a(as).a(au).a(aD).a(aA).a(aH).a(false);
+      return a("entity_shadow", ery.k, esf.b.h, 1536, false, false, $$1);
+   });
+   private static final Function<aiy, fvt> br = ac.b($$0 -> {
+      fvt.b $$1 = fvt.b.a().a(I).a(new fvs.n($$0, false, false)).a(ax).a(true);
+      return a("entity_alpha", ery.k, esf.b.h, 1536, $$1);
+   });
+   private static final BiFunction<aiy, fvs.p, fvt> bs = ac.a(($$0, $$1) -> {
+      fvs.n $$2 = new fvs.n($$0, false, false);
+      return a("eyes", ery.k, esf.b.h, 1536, false, true, fvt.b.a().a(J).a($$2).a($$1).a(aD).a(false));
+   });
+   private static final fvt bt = a("leash", ery.p, esf.b.f, 1536, fvt.b.a().a(L).a(ao).a(ax).a(as).a(false));
+   private static final fvt bu = a("water_mask", ery.m, esf.b.h, 1536, fvt.b.a().a(M).a(ao).a(aE).a(false));
+   private static final fvt bv = a(
+      "armor_glint", ery.q, esf.b.h, 1536, fvt.b.a().a(O).a(new fvs.n(gbq.a, true, false)).a(aD).a(ax).a(az).a(f).a(aq).a(aH).a(false)
    );
-   protected static final fvt.p g = new fvt.p(
-      "crumbling_transparency",
-      () -> {
-         RenderSystem.enableBlend();
-         RenderSystem.blendFuncSeparate(
-            GlStateManager.SourceFactor.DST_COLOR, GlStateManager.DestFactor.SRC_COLOR, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO
-         );
-      },
-      () -> {
-         RenderSystem.disableBlend();
-         RenderSystem.defaultBlendFunc();
-      }
+   private static final fvt bw = a(
+      "armor_entity_glint", ery.q, esf.b.h, 1536, fvt.b.a().a(P).a(new fvs.n(gbq.a, true, false)).a(aD).a(ax).a(az).a(f).a(ar).a(aH).a(false)
    );
-   protected static final fvt.p h = new fvt.p(
-      "translucent_transparency",
-      () -> {
-         RenderSystem.enableBlend();
-         RenderSystem.blendFuncSeparate(
-            GlStateManager.SourceFactor.SRC_ALPHA,
-            GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA,
-            GlStateManager.SourceFactor.ONE,
-            GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA
-         );
-      },
-      () -> {
-         RenderSystem.disableBlend();
-         RenderSystem.defaultBlendFunc();
-      }
+   private static final fvt bx = a(
+      "glint_translucent", ery.q, esf.b.h, 1536, fvt.b.a().a(Q).a(new fvs.n(gbq.b, true, false)).a(aD).a(ax).a(az).a(f).a(aq).a(aO).a(false)
    );
-   protected static final fvt.m i = new fvt.m();
-   protected static final fvt.m j = new fvt.m(fvf::v);
-   protected static final fvt.m k = new fvt.m(fvf::p);
-   protected static final fvt.m l = new fvt.m(fvf::r);
-   protected static final fvt.m m = new fvt.m(fvf::s);
-   protected static final fvt.m n = new fvt.m(fvf::w);
-   protected static final fvt.m o = new fvt.m(fvf::q);
-   protected static final fvt.m p = new fvt.m(fvf::z);
-   protected static final fvt.m q = new fvt.m(fvf::A);
-   protected static final fvt.m r = new fvt.m(fvf::B);
-   protected static final fvt.m s = new fvt.m(fvf::C);
-   protected static final fvt.m t = new fvt.m(fvf::D);
-   protected static final fvt.m u = new fvt.m(fvf::E);
-   protected static final fvt.m v = new fvt.m(fvf::F);
-   protected static final fvt.m w = new fvt.m(fvf::G);
-   protected static final fvt.m x = new fvt.m(fvf::H);
-   protected static final fvt.m y = new fvt.m(fvf::I);
-   protected static final fvt.m z = new fvt.m(fvf::J);
-   protected static final fvt.m A = new fvt.m(fvf::K);
-   protected static final fvt.m B = new fvt.m(fvf::L);
-   protected static final fvt.m C = new fvt.m(fvf::M);
-   protected static final fvt.m D = new fvt.m(fvf::N);
-   protected static final fvt.m E = new fvt.m(fvf::O);
-   protected static final fvt.m F = new fvt.m(fvf::P);
-   protected static final fvt.m G = new fvt.m(fvf::Q);
-   protected static final fvt.m H = new fvt.m(fvf::R);
-   protected static final fvt.m I = new fvt.m(fvf::S);
-   protected static final fvt.m J = new fvt.m(fvf::T);
-   protected static final fvt.m K = new fvt.m(fvf::U);
-   protected static final fvt.m L = new fvt.m(fvf::W);
-   protected static final fvt.m M = new fvt.m(fvf::X);
-   protected static final fvt.m N = new fvt.m(fvf::Y);
-   protected static final fvt.m O = new fvt.m(fvf::Z);
-   protected static final fvt.m P = new fvt.m(fvf::aa);
-   protected static final fvt.m Q = new fvt.m(fvf::ab);
-   protected static final fvt.m R = new fvt.m(fvf::ac);
-   protected static final fvt.m S = new fvt.m(fvf::ad);
-   protected static final fvt.m T = new fvt.m(fvf::ae);
-   protected static final fvt.m U = new fvt.m(fvf::af);
-   protected static final fvt.m V = new fvt.m(fvf::ar);
-   protected static final fvt.m W = new fvt.m(fvf::ag);
-   protected static final fvt.m X = new fvt.m(fvf::ah);
-   protected static final fvt.m Y = new fvt.m(fvf::ai);
-   protected static final fvt.m Z = new fvt.m(fvf::aj);
-   protected static final fvt.m aa = new fvt.m(fvf::ak);
-   protected static final fvt.m ab = new fvt.m(fvf::al);
-   protected static final fvt.m ac = new fvt.m(fvf::am);
-   protected static final fvt.m ad = new fvt.m(fvf::an);
-   protected static final fvt.m ae = new fvt.m(fvf::ao);
-   protected static final fvt.m af = new fvt.m(fvf::ap);
-   protected static final fvt.m ag = new fvt.m(fvf::aq);
-   protected static final fvt.m ah = new fvt.m(fvf::as);
-   protected static final fvt.m ai = new fvt.m(fvf::at);
-   protected static final fvt.m aj = new fvt.m(fvf::au);
-   protected static final fvt.m ak = new fvt.m(fvf::av);
-   protected static final fvt.m al = new fvt.m(fvf::V);
-   protected static final fvt.n am = new fvt.n(ggt.e, false, true);
-   protected static final fvt.n an = new fvt.n(ggt.e, false, false);
-   protected static final fvt.e ao = new fvt.e();
-   protected static final fvt.o ap = new fvt.o("default_texturing", () -> {
-   }, () -> {
+   private static final fvt by = a("glint", ery.q, esf.b.h, 1536, fvt.b.a().a(R).a(new fvs.n(gbq.b, true, false)).a(aD).a(ax).a(az).a(f).a(aq).a(false));
+   private static final fvt bz = a("glint_direct", ery.q, esf.b.h, 1536, fvt.b.a().a(S).a(new fvs.n(gbq.b, true, false)).a(aD).a(ax).a(az).a(f).a(aq).a(false));
+   private static final fvt bA = a(
+      "entity_glint", ery.q, esf.b.h, 1536, fvt.b.a().a(T).a(new fvs.n(gbq.a, true, false)).a(aD).a(ax).a(az).a(f).a(aO).a(ar).a(false)
+   );
+   private static final fvt bB = a(
+      "entity_glint_direct", ery.q, esf.b.h, 1536, fvt.b.a().a(U).a(new fvs.n(gbq.a, true, false)).a(aD).a(ax).a(az).a(f).a(ar).a(false)
+   );
+   private static final Function<aiy, fvt> bC = ac.b($$0 -> {
+      fvs.n $$1 = new fvs.n($$0, false, false);
+      return a("crumbling", ery.j, esf.b.h, 1536, false, true, fvt.b.a().a(V).a($$1).a(g).a(aD).a(aG).a(false));
    });
-   protected static final fvt.o aq = new fvt.o("glint_texturing", () -> a(8.0F), () -> RenderSystem.resetTextureMatrix());
-   protected static final fvt.o ar = new fvt.o("entity_glint_texturing", () -> a(0.16F), () -> RenderSystem.resetTextureMatrix());
-   protected static final fvt.g as = new fvt.g(true);
-   protected static final fvt.g at = new fvt.g(false);
-   protected static final fvt.l au = new fvt.l(true);
-   protected static final fvt.l av = new fvt.l(false);
-   protected static final fvt.c aw = new fvt.c(true);
-   protected static final fvt.c ax = new fvt.c(false);
-   protected static final fvt.d ay = new fvt.d("always", 519);
-   protected static final fvt.d az = new fvt.d("==", 514);
-   protected static final fvt.d aA = new fvt.d("<=", 515);
-   protected static final fvt.d aB = new fvt.d(">", 516);
-   protected static final fvt.q aC = new fvt.q(true, true);
-   protected static final fvt.q aD = new fvt.q(true, false);
-   protected static final fvt.q aE = new fvt.q(false, true);
-   protected static final fvt.f aF = new fvt.f("no_layering", () -> {
-   }, () -> {
-   });
-   protected static final fvt.f aG = new fvt.f("polygon_offset_layering", () -> {
-      RenderSystem.polygonOffset(-1.0F, -10.0F);
-      RenderSystem.enablePolygonOffset();
-   }, () -> {
-      RenderSystem.polygonOffset(0.0F, 0.0F);
-      RenderSystem.disablePolygonOffset();
-   });
-   protected static final fvt.f aH = new fvt.f("view_offset_z_layering", () -> {
-      esa $$0 = RenderSystem.getModelViewStack();
-      $$0.a();
-      $$0.b(0.99975586F, 0.99975586F, 0.99975586F);
-      RenderSystem.applyModelViewMatrix();
-   }, () -> {
-      esa $$0 = RenderSystem.getModelViewStack();
-      $$0.b();
-      RenderSystem.applyModelViewMatrix();
-   });
-   protected static final fvt.k aI = new fvt.k("main_target", () -> {
-   }, () -> {
-   });
-   protected static final fvt.k aJ = new fvt.k("outline_target", () -> exh.O().f.s().a(false), () -> exh.O().g().a(false));
-   protected static final fvt.k aK = new fvt.k("translucent_target", () -> {
-      if (exh.M()) {
-         exh.O().f.t().a(false);
-      }
-   }, () -> {
-      if (exh.M()) {
-         exh.O().g().a(false);
-      }
-   });
-   protected static final fvt.k aL = new fvt.k("particles_target", () -> {
-      if (exh.M()) {
-         exh.O().f.v().a(false);
-      }
-   }, () -> {
-      if (exh.M()) {
-         exh.O().g().a(false);
-      }
-   });
-   protected static final fvt.k aM = new fvt.k("weather_target", () -> {
-      if (exh.M()) {
-         exh.O().f.w().a(false);
-      }
-   }, () -> {
-      if (exh.M()) {
-         exh.O().g().a(false);
-      }
-   });
-   protected static final fvt.k aN = new fvt.k("clouds_target", () -> {
-      if (exh.M()) {
-         exh.O().f.x().a(false);
-      }
-   }, () -> {
-      if (exh.M()) {
-         exh.O().g().a(false);
-      }
-   });
-   protected static final fvt.k aO = new fvt.k("item_entity_target", () -> {
-      if (exh.M()) {
-         exh.O().f.u().a(false);
-      }
-   }, () -> {
-      if (exh.M()) {
-         exh.O().g().a(false);
-      }
-   });
-   protected static final fvt.h aP = new fvt.h(OptionalDouble.of(1.0));
-   protected static final fvt.b aQ = new fvt.b("no_color_logic", () -> RenderSystem.disableColorLogicOp(), () -> {
-   });
-   protected static final fvt.b aR = new fvt.b("or_reverse", () -> {
-      RenderSystem.enableColorLogicOp();
-      RenderSystem.logicOp(GlStateManager.g.n);
-   }, () -> RenderSystem.disableColorLogicOp());
+   private static final Function<aiy, fvt> bD = ac.b(
+      $$0 -> a("text", ery.t, esf.b.h, 786432, false, true, fvt.b.a().a(W).a(new fvs.n($$0, false, false)).a(h).a(as).a(false))
+   );
+   private static final fvt bE = a("text_background", ery.p, esf.b.h, 1536, false, true, fvt.b.a().a(X).a(ao).a(h).a(as).a(false));
+   private static final Function<aiy, fvt> bF = ac.b(
+      $$0 -> a("text_intensity", ery.t, esf.b.h, 786432, false, true, fvt.b.a().a(Y).a(new fvs.n($$0, false, false)).a(h).a(as).a(false))
+   );
+   private static final Function<aiy, fvt> bG = ac.b(
+      $$0 -> a("text_polygon_offset", ery.t, esf.b.h, 1536, false, true, fvt.b.a().a(W).a(new fvs.n($$0, false, false)).a(h).a(as).a(aG).a(false))
+   );
+   private static final Function<aiy, fvt> bH = ac.b(
+      $$0 -> a("text_intensity_polygon_offset", ery.t, esf.b.h, 1536, false, true, fvt.b.a().a(Y).a(new fvs.n($$0, false, false)).a(h).a(as).a(aG).a(false))
+   );
+   private static final Function<aiy, fvt> bI = ac.b(
+      $$0 -> a("text_see_through", ery.t, esf.b.h, 1536, false, true, fvt.b.a().a(Z).a(new fvs.n($$0, false, false)).a(h).a(as).a(ay).a(aD).a(false))
+   );
+   private static final fvt bJ = a("text_background_see_through", ery.p, esf.b.h, 1536, false, true, fvt.b.a().a(aa).a(ao).a(h).a(as).a(ay).a(aD).a(false));
+   private static final Function<aiy, fvt> bK = ac.b(
+      $$0 -> a("text_intensity_see_through", ery.t, esf.b.h, 1536, false, true, fvt.b.a().a(ab).a(new fvs.n($$0, false, false)).a(h).a(as).a(ay).a(aD).a(false))
+   );
+   private static final fvt bL = a("lightning", ery.n, esf.b.h, 1536, false, true, fvt.b.a().a(ac).a(aC).a(e).a(aM).a(false));
+   private static final fvt bM = a("tripwire", ery.j, esf.b.h, 1536, true, true, P());
+   private static final fvt bN = a(
+      "end_portal", ery.m, esf.b.h, 1536, false, false, fvt.b.a().a(ae).a(fvs.i.d().a(fye.a, false, false).a(fye.b, false, false).a()).a(false)
+   );
+   private static final fvt bO = a(
+      "end_gateway", ery.m, esf.b.h, 1536, false, false, fvt.b.a().a(af).a(fvs.i.d().a(fye.a, false, false).a(fye.b, false, false).a()).a(false)
+   );
+   public static final fvt.a aV = a("lines", ery.o, esf.b.a, 1536, fvt.b.a().a(ag).a(new fvs.h(OptionalDouble.empty())).a(aH).a(h).a(aO).a(aC).a(ax).a(false));
+   public static final fvt.a aW = a(
+      "line_strip", ery.o, esf.b.b, 1536, fvt.b.a().a(ag).a(new fvs.h(OptionalDouble.empty())).a(aH).a(h).a(aO).a(aC).a(ax).a(false)
+   );
+   private static final Function<Double, fvt.a> bP = ac.b(
+      $$0 -> a("debug_line_strip", ery.n, esf.b.d, 1536, fvt.b.a().a(o).a(new fvs.h(OptionalDouble.of($$0))).a(c).a(ax).a(false))
+   );
+   private static final fvt.a bQ = a("debug_filled_box", ery.n, esf.b.f, 1536, false, true, fvt.b.a().a(o).a(aH).a(h).a(false));
+   private static final fvt.a bR = a("debug_quads", ery.n, esf.b.h, 1536, false, true, fvt.b.a().a(o).a(h).a(ax).a(false));
+   private static final fvt.a bS = a("debug_section_quads", ery.n, esf.b.h, 1536, false, true, fvt.b.a().a(o).a(aH).a(h).a(aw).a(false));
+   private static final fvt.a bT = a("gui", ery.n, esf.b.h, 786432, fvt.b.a().a(ah).a(h).a(aA).a(false));
+   private static final fvt.a bU = a("gui_overlay", ery.n, esf.b.h, 1536, fvt.b.a().a(ai).a(h).a(ay).a(aD).a(false));
+   private static final fvt.a bV = a("gui_text_highlight", ery.n, esf.b.h, 1536, fvt.b.a().a(aj).a(h).a(ay).a(aR).a(false));
+   private static final fvt.a bW = a("gui_ghost_recipe_overlay", ery.n, esf.b.h, 1536, fvt.b.a().a(ak).a(h).a(aB).a(aD).a(false));
+   private static final ImmutableList<fvt> bX = ImmutableList.of(c(), d(), e(), f(), t());
+   private final esf bY;
+   private final esf.b bZ;
+   private final int ca;
+   private final boolean cb;
+   private final boolean cc;
+   private final Optional<fvt> cd;
 
-   public fvt(String $$0, Runnable $$1, Runnable $$2) {
-      this.b = $$0;
-      this.aT = $$1;
-      this.aU = $$2;
+   public static fvt c() {
+      return aY;
    }
 
-   public void a() {
-      this.aT.run();
+   public static fvt d() {
+      return aZ;
    }
 
-   public void b() {
-      this.aU.run();
+   public static fvt e() {
+      return ba;
+   }
+
+   private static fvt.b a(fvs.m $$0) {
+      return fvt.b.a().a(as).a($$0).a(am).a(h).a(aK).a(true);
+   }
+
+   public static fvt f() {
+      return bb;
+   }
+
+   private static fvt.b O() {
+      return fvt.b.a().a(as).a(t).a(am).a(h).a(aO).a(true);
+   }
+
+   public static fvt g() {
+      return bc;
+   }
+
+   private static fvt.a a(String $$0, aiy $$1, boolean $$2) {
+      fvt.b $$3 = fvt.b.a().a(u).a(new fvs.n($$1, false, false)).a(c).a(ax).a(as).a(au).a(aH).a($$2 ? az : aA).a(true);
+      return a($$0, ery.k, esf.b.h, 1536, true, false, $$3);
+   }
+
+   public static fvt a(aiy $$0) {
+      return bd.apply($$0);
+   }
+
+   public static fvt b(aiy $$0) {
+      return a("armor_decal_cutout_no_cull", $$0, true);
+   }
+
+   public static fvt c(aiy $$0) {
+      return be.apply($$0);
+   }
+
+   public static fvt d(aiy $$0) {
+      return bf.apply($$0);
+   }
+
+   public static fvt a(aiy $$0, boolean $$1) {
+      return bg.apply($$0, $$1);
+   }
+
+   public static fvt e(aiy $$0) {
+      return a($$0, true);
+   }
+
+   public static fvt b(aiy $$0, boolean $$1) {
+      return bh.apply($$0, $$1);
+   }
+
+   public static fvt f(aiy $$0) {
+      return b($$0, true);
+   }
+
+   public static fvt g(aiy $$0) {
+      return bi.apply($$0);
+   }
+
+   public static fvt h(aiy $$0) {
+      return bj.apply($$0);
+   }
+
+   public static fvt c(aiy $$0, boolean $$1) {
+      return bk.apply($$0, $$1);
+   }
+
+   public static fvt i(aiy $$0) {
+      return c($$0, true);
+   }
+
+   public static fvt d(aiy $$0, boolean $$1) {
+      return bl.apply($$0, $$1);
+   }
+
+   public static fvt j(aiy $$0) {
+      return d($$0, true);
+   }
+
+   public static fvt k(aiy $$0) {
+      return bm.apply($$0);
+   }
+
+   public static fvt e(aiy $$0, boolean $$1) {
+      return bn.apply($$0, $$1);
+   }
+
+   public static fvt l(aiy $$0) {
+      return bo.apply($$0);
+   }
+
+   public static fvt m(aiy $$0) {
+      return bp.apply($$0);
+   }
+
+   public static fvt n(aiy $$0) {
+      return bq.apply($$0);
+   }
+
+   public static fvt o(aiy $$0) {
+      return br.apply($$0);
+   }
+
+   public static fvt p(aiy $$0) {
+      return bs.apply($$0, d);
+   }
+
+   public static fvt q(aiy $$0) {
+      return bl.apply($$0, false);
+   }
+
+   public static fvt a(aiy $$0, float $$1, float $$2) {
+      return a(
+         "breeze_wind",
+         ery.k,
+         esf.b.h,
+         1536,
+         false,
+         true,
+         fvt.b.a().a(al).a(new fvs.n($$0, false, false)).a(new fvs.j($$1, $$2)).a(h).a(ax).a(as).a(av).a(false)
+      );
+   }
+
+   public static fvt b(aiy $$0, float $$1, float $$2) {
+      return a(
+         "energy_swirl",
+         ery.k,
+         esf.b.h,
+         1536,
+         false,
+         true,
+         fvt.b.a().a(K).a(new fvs.n($$0, false, false)).a(new fvs.j($$1, $$2)).a(d).a(ax).a(as).a(au).a(false)
+      );
+   }
+
+   public static fvt h() {
+      return bt;
+   }
+
+   public static fvt i() {
+      return bu;
+   }
+
+   public static fvt r(aiy $$0) {
+      return fvt.a.aX.apply($$0, ax);
+   }
+
+   public static fvt j() {
+      return bv;
+   }
+
+   public static fvt k() {
+      return bw;
+   }
+
+   public static fvt l() {
+      return bx;
+   }
+
+   public static fvt m() {
+      return by;
+   }
+
+   public static fvt n() {
+      return bz;
+   }
+
+   public static fvt o() {
+      return bA;
+   }
+
+   public static fvt p() {
+      return bB;
+   }
+
+   public static fvt s(aiy $$0) {
+      return bC.apply($$0);
+   }
+
+   public static fvt t(aiy $$0) {
+      return bD.apply($$0);
+   }
+
+   public static fvt q() {
+      return bE;
+   }
+
+   public static fvt u(aiy $$0) {
+      return bF.apply($$0);
+   }
+
+   public static fvt v(aiy $$0) {
+      return bG.apply($$0);
+   }
+
+   public static fvt w(aiy $$0) {
+      return bH.apply($$0);
+   }
+
+   public static fvt x(aiy $$0) {
+      return bI.apply($$0);
+   }
+
+   public static fvt r() {
+      return bJ;
+   }
+
+   public static fvt y(aiy $$0) {
+      return bK.apply($$0);
+   }
+
+   public static fvt s() {
+      return bL;
+   }
+
+   private static fvt.b P() {
+      return fvt.b.a().a(as).a(ad).a(am).a(h).a(aM).a(true);
+   }
+
+   public static fvt t() {
+      return bM;
+   }
+
+   public static fvt u() {
+      return bN;
+   }
+
+   public static fvt v() {
+      return bO;
+   }
+
+   public static fvt w() {
+      return aV;
+   }
+
+   public static fvt x() {
+      return aW;
+   }
+
+   public static fvt a(double $$0) {
+      return bP.apply($$0);
+   }
+
+   public static fvt y() {
+      return bQ;
+   }
+
+   public static fvt z() {
+      return bR;
+   }
+
+   public static fvt A() {
+      return bS;
+   }
+
+   public static fvt B() {
+      return bT;
+   }
+
+   public static fvt C() {
+      return bU;
+   }
+
+   public static fvt D() {
+      return bV;
+   }
+
+   public static fvt E() {
+      return bW;
+   }
+
+   public fvt(String $$0, esf $$1, esf.b $$2, int $$3, boolean $$4, boolean $$5, Runnable $$6, Runnable $$7) {
+      super($$0, $$6, $$7);
+      this.bY = $$1;
+      this.bZ = $$2;
+      this.ca = $$3;
+      this.cb = $$4;
+      this.cc = $$5;
+      this.cd = Optional.of(this);
+   }
+
+   static fvt.a a(String $$0, esf $$1, esf.b $$2, int $$3, fvt.b $$4) {
+      return a($$0, $$1, $$2, $$3, false, false, $$4);
+   }
+
+   private static fvt.a a(String $$0, esf $$1, esf.b $$2, int $$3, boolean $$4, boolean $$5, fvt.b $$6) {
+      return new fvt.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+   }
+
+   public void a(erv $$0, esi $$1) {
+      if ($$0.k()) {
+         if (this.cc) {
+            $$0.a($$1);
+         }
+
+         erv.b $$2 = $$0.d();
+         this.a();
+         erw.a($$2);
+         this.b();
+      }
    }
 
    @Override
@@ -247,293 +466,254 @@ public abstract class fvt {
       return this.b;
    }
 
-   private static void a(float $$0) {
-      long $$1 = (long)((double)ac.b() * exh.O().m.aj().c() * 8.0);
-      float $$2 = (float)($$1 % 110000L) / 110000.0F;
-      float $$3 = (float)($$1 % 30000L) / 30000.0F;
-      Matrix4f $$4 = new Matrix4f().translation(-$$2, $$3, 0.0F);
-      $$4.rotateZ((float) (Math.PI / 18)).scale($$0);
-      RenderSystem.setTextureMatrix($$4);
+   public static List<fvt> F() {
+      return bX;
    }
 
-   static class a extends fvt {
-      private final boolean aS;
+   public int G() {
+      return this.ca;
+   }
 
-      public a(String $$0, Runnable $$1, Runnable $$2, boolean $$3) {
-         super($$0, $$1, $$2);
-         this.aS = $$3;
+   public esf H() {
+      return this.bY;
+   }
+
+   public esf.b I() {
+      return this.bZ;
+   }
+
+   public Optional<fvt> J() {
+      return Optional.empty();
+   }
+
+   public boolean K() {
+      return false;
+   }
+
+   public boolean L() {
+      return this.cb;
+   }
+
+   public boolean M() {
+      return !this.bZ.l;
+   }
+
+   public Optional<fvt> N() {
+      return this.cd;
+   }
+
+   static final class a extends fvt {
+      static final BiFunction<aiy, fvs.c, fvt> aX = ac.a(
+         ($$0, $$1) -> fvt.a("outline", ery.r, esf.b.h, 1536, fvt.b.a().a(N).a(new fvs.n($$0, false, false)).a($$1).a(ay).a(aJ).a(fvt.c.b))
+      );
+      private final fvt.b aY;
+      private final Optional<fvt> aZ;
+      private final boolean ba;
+
+      a(String $$0, esf $$1, esf.b $$2, int $$3, boolean $$4, boolean $$5, fvt.b $$6) {
+         super($$0, $$1, $$2, $$3, $$4, $$5, () -> $$6.o.forEach(fvs::a), () -> $$6.o.forEach(fvs::b));
+         this.aY = $$6;
+         this.aZ = $$6.n == fvt.c.c ? $$6.a.c().map($$1x -> aX.apply($$1x, $$6.e)) : Optional.empty();
+         this.ba = $$6.n == fvt.c.b;
+      }
+
+      @Override
+      public Optional<fvt> J() {
+         return this.aZ;
+      }
+
+      @Override
+      public boolean K() {
+         return this.ba;
+      }
+
+      protected final fvt.b O() {
+         return this.aY;
       }
 
       @Override
       public String toString() {
-         return this.b + "[" + this.aS + "]";
+         return "RenderType[" + this.b + ":" + this.aY + "]";
       }
    }
 
-   protected static class b extends fvt {
-      public b(String $$0, Runnable $$1, Runnable $$2) {
-         super($$0, $$1, $$2);
-      }
-   }
+   protected static final class b {
+      final fvs.e a;
+      private final fvs.m b;
+      private final fvs.p c;
+      private final fvs.d d;
+      final fvs.c e;
+      private final fvs.g f;
+      private final fvs.l g;
+      private final fvs.f h;
+      private final fvs.k i;
+      private final fvs.o j;
+      private final fvs.q k;
+      private final fvs.h l;
+      private final fvs.b m;
+      final fvt.c n;
+      final ImmutableList<fvs> o;
 
-   protected static class c extends fvt.a {
-      public c(boolean $$0) {
-         super("cull", () -> {
-            if (!$$0) {
-               RenderSystem.disableCull();
-            }
-         }, () -> {
-            if (!$$0) {
-               RenderSystem.enableCull();
-            }
-         }, $$0);
-      }
-   }
-
-   protected static class d extends fvt {
-      private final String aS;
-
-      public d(String $$0, int $$1) {
-         super("depth_test", () -> {
-            if ($$1 != 519) {
-               RenderSystem.enableDepthTest();
-               RenderSystem.depthFunc($$1);
-            }
-         }, () -> {
-            if ($$1 != 519) {
-               RenderSystem.disableDepthTest();
-               RenderSystem.depthFunc(515);
-            }
-         });
-         this.aS = $$0;
+      b(
+         fvs.e $$0,
+         fvs.m $$1,
+         fvs.p $$2,
+         fvs.d $$3,
+         fvs.c $$4,
+         fvs.g $$5,
+         fvs.l $$6,
+         fvs.f $$7,
+         fvs.k $$8,
+         fvs.o $$9,
+         fvs.q $$10,
+         fvs.h $$11,
+         fvs.b $$12,
+         fvt.c $$13
+      ) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+         this.f = $$5;
+         this.g = $$6;
+         this.h = $$7;
+         this.i = $$8;
+         this.j = $$9;
+         this.k = $$10;
+         this.l = $$11;
+         this.m = $$12;
+         this.n = $$13;
+         this.o = ImmutableList.of(this.a, this.b, this.c, this.d, this.e, this.f, this.g, this.h, this.i, this.j, this.k, this.m, new fvs[]{this.l});
       }
 
       @Override
       public String toString() {
-         return this.b + "[" + this.aS + "]";
-      }
-   }
-
-   protected static class e extends fvt {
-      public e(Runnable $$0, Runnable $$1) {
-         super("texture", $$0, $$1);
+         return "CompositeState[" + this.o + ", outlineProperty=" + this.n + "]";
       }
 
-      e() {
-         super("texture", () -> {
-         }, () -> {
-         });
+      public static fvt.b.a a() {
+         return new fvt.b.a();
       }
 
-      protected Optional<aiy> c() {
-         return Optional.empty();
-      }
-   }
+      public static class a {
+         private fvs.e a = fvs.ao;
+         private fvs.m b = fvs.i;
+         private fvs.p c;
+         private fvs.d d;
+         private fvs.c e;
+         private fvs.g f;
+         private fvs.l g;
+         private fvs.f h;
+         private fvs.k i;
+         private fvs.o j;
+         private fvs.q k;
+         private fvs.h l;
+         private fvs.b m;
 
-   protected static class f extends fvt {
-      public f(String $$0, Runnable $$1, Runnable $$2) {
-         super($$0, $$1, $$2);
-      }
-   }
+         a() {
+            this.c = fvs.c;
+            this.d = fvs.aA;
+            this.e = fvs.aw;
+            this.f = fvs.at;
+            this.g = fvs.av;
+            this.h = fvs.aF;
+            this.i = fvs.aI;
+            this.j = fvs.ap;
+            this.k = fvs.aC;
+            this.l = fvs.aP;
+            this.m = fvs.aQ;
+         }
 
-   protected static class g extends fvt.a {
-      public g(boolean $$0) {
-         super("lightmap", () -> {
-            if ($$0) {
-               exh.O().j.n().c();
-            }
-         }, () -> {
-            if ($$0) {
-               exh.O().j.n().b();
-            }
-         }, $$0);
-      }
-   }
-
-   protected static class h extends fvt {
-      private final OptionalDouble aS;
-
-      public h(OptionalDouble $$0) {
-         super("line_width", () -> {
-            if (!Objects.equals($$0, OptionalDouble.of(1.0))) {
-               if ($$0.isPresent()) {
-                  RenderSystem.lineWidth((float)$$0.getAsDouble());
-               } else {
-                  RenderSystem.lineWidth(Math.max(2.5F, (float)exh.O().aM().k() / 1920.0F * 2.5F));
-               }
-            }
-         }, () -> {
-            if (!Objects.equals($$0, OptionalDouble.of(1.0))) {
-               RenderSystem.lineWidth(1.0F);
-            }
-         });
-         this.aS = $$0;
-      }
-
-      @Override
-      public String toString() {
-         return this.b + "[" + (this.aS.isPresent() ? this.aS.getAsDouble() : "window_scale") + "]";
-      }
-   }
-
-   protected static class i extends fvt.e {
-      private final Optional<aiy> aS;
-
-      i(ImmutableList<Triple<aiy, Boolean, Boolean>> $$0) {
-         super(() -> {
-            int $$1 = 0;
-            UnmodifiableIterator var2 = $$0.iterator();
-
-            while (var2.hasNext()) {
-               Triple<aiy, Boolean, Boolean> $$2 = (Triple<aiy, Boolean, Boolean>)var2.next();
-               ggv $$3 = exh.O().Y();
-               $$3.b((aiy)$$2.getLeft()).a((Boolean)$$2.getMiddle(), (Boolean)$$2.getRight());
-               RenderSystem.setShaderTexture($$1++, (aiy)$$2.getLeft());
-            }
-         }, () -> {
-         });
-         this.aS = $$0.stream().findFirst().map(Triple::getLeft);
-      }
-
-      @Override
-      protected Optional<aiy> c() {
-         return this.aS;
-      }
-
-      public static fvt.i.a d() {
-         return new fvt.i.a();
-      }
-
-      public static final class a {
-         private final Builder<Triple<aiy, Boolean, Boolean>> a = new Builder();
-
-         public fvt.i.a a(aiy $$0, boolean $$1, boolean $$2) {
-            this.a.add(Triple.of($$0, $$1, $$2));
+         public fvt.b.a a(fvs.e $$0) {
+            this.a = $$0;
             return this;
          }
 
-         public fvt.i a() {
-            return new fvt.i(this.a.build());
+         public fvt.b.a a(fvs.m $$0) {
+            this.b = $$0;
+            return this;
+         }
+
+         public fvt.b.a a(fvs.p $$0) {
+            this.c = $$0;
+            return this;
+         }
+
+         public fvt.b.a a(fvs.d $$0) {
+            this.d = $$0;
+            return this;
+         }
+
+         public fvt.b.a a(fvs.c $$0) {
+            this.e = $$0;
+            return this;
+         }
+
+         public fvt.b.a a(fvs.g $$0) {
+            this.f = $$0;
+            return this;
+         }
+
+         public fvt.b.a a(fvs.l $$0) {
+            this.g = $$0;
+            return this;
+         }
+
+         public fvt.b.a a(fvs.f $$0) {
+            this.h = $$0;
+            return this;
+         }
+
+         public fvt.b.a a(fvs.k $$0) {
+            this.i = $$0;
+            return this;
+         }
+
+         public fvt.b.a a(fvs.o $$0) {
+            this.j = $$0;
+            return this;
+         }
+
+         public fvt.b.a a(fvs.q $$0) {
+            this.k = $$0;
+            return this;
+         }
+
+         public fvt.b.a a(fvs.h $$0) {
+            this.l = $$0;
+            return this;
+         }
+
+         public fvt.b.a a(fvs.b $$0) {
+            this.m = $$0;
+            return this;
+         }
+
+         public fvt.b a(boolean $$0) {
+            return this.a($$0 ? fvt.c.c : fvt.c.a);
+         }
+
+         public fvt.b a(fvt.c $$0) {
+            return new fvt.b(this.a, this.b, this.c, this.d, this.e, this.f, this.g, this.h, this.i, this.j, this.k, this.l, this.m, $$0);
          }
       }
    }
 
-   protected static final class j extends fvt.o {
-      public j(float $$0, float $$1) {
-         super("offset_texturing", () -> RenderSystem.setTextureMatrix(new Matrix4f().translation($$0, $$1, 0.0F)), () -> RenderSystem.resetTextureMatrix());
-      }
-   }
+   static enum c {
+      a("none"),
+      b("is_outline"),
+      c("affects_outline");
 
-   protected static class k extends fvt {
-      public k(String $$0, Runnable $$1, Runnable $$2) {
-         super($$0, $$1, $$2);
-      }
-   }
+      private final String d;
 
-   protected static class l extends fvt.a {
-      public l(boolean $$0) {
-         super("overlay", () -> {
-            if ($$0) {
-               exh.O().j.o().a();
-            }
-         }, () -> {
-            if ($$0) {
-               exh.O().j.o().b();
-            }
-         }, $$0);
-      }
-   }
-
-   protected static class m extends fvt {
-      private final Optional<Supplier<fwa>> aS;
-
-      public m(Supplier<fwa> $$0) {
-         super("shader", () -> RenderSystem.setShader($$0), () -> {
-         });
-         this.aS = Optional.of($$0);
-      }
-
-      public m() {
-         super("shader", () -> RenderSystem.setShader(() -> null), () -> {
-         });
-         this.aS = Optional.empty();
+      private c(String $$0) {
+         this.d = $$0;
       }
 
       @Override
       public String toString() {
-         return this.b + "[" + this.aS + "]";
-      }
-   }
-
-   protected static class n extends fvt.e {
-      private final Optional<aiy> aS;
-      private final boolean aT;
-      private final boolean aU;
-
-      public n(aiy $$0, boolean $$1, boolean $$2) {
-         super(() -> {
-            ggv $$3 = exh.O().Y();
-            $$3.b($$0).a($$1, $$2);
-            RenderSystem.setShaderTexture(0, $$0);
-         }, () -> {
-         });
-         this.aS = Optional.of($$0);
-         this.aT = $$1;
-         this.aU = $$2;
-      }
-
-      @Override
-      public String toString() {
-         return this.b + "[" + this.aS + "(blur=" + this.aT + ", mipmap=" + this.aU + ")]";
-      }
-
-      @Override
-      protected Optional<aiy> c() {
-         return this.aS;
-      }
-   }
-
-   protected static class o extends fvt {
-      public o(String $$0, Runnable $$1, Runnable $$2) {
-         super($$0, $$1, $$2);
-      }
-   }
-
-   protected static class p extends fvt {
-      public p(String $$0, Runnable $$1, Runnable $$2) {
-         super($$0, $$1, $$2);
-      }
-   }
-
-   protected static class q extends fvt {
-      private final boolean aS;
-      private final boolean aT;
-
-      public q(boolean $$0, boolean $$1) {
-         super("write_mask_state", () -> {
-            if (!$$1) {
-               RenderSystem.depthMask($$1);
-            }
-
-            if (!$$0) {
-               RenderSystem.colorMask($$0, $$0, $$0, $$0);
-            }
-         }, () -> {
-            if (!$$1) {
-               RenderSystem.depthMask(true);
-            }
-
-            if (!$$0) {
-               RenderSystem.colorMask(true, true, true, true);
-            }
-         });
-         this.aS = $$0;
-         this.aT = $$1;
-      }
-
-      @Override
-      public String toString() {
-         return this.b + "[writeColor=" + this.aS + ", writeDepth=" + this.aT + "]";
+         return this.d;
       }
    }
 }

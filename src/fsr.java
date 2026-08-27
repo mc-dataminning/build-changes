@@ -1,53 +1,49 @@
-public class fsr extends fua {
-   fsr(fpx $$0, double $$1, double $$2, double $$3) {
+public class fsr extends ftz {
+   private final ftu a;
+
+   protected fsr(fpx $$0, double $$1, double $$2, double $$3, double $$4, ftu $$5) {
       super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.C = true;
-      this.B = 0.86F;
-      this.j *= 0.01F;
-      this.k *= 0.01F;
-      this.l *= 0.01F;
-      this.k += 0.1;
-      this.D *= 1.5F;
-      this.t = 16;
-      this.n = false;
+      this.t = 6 + this.r.a(4);
+      float $$6 = this.r.i() * 0.6F + 0.4F;
+      this.v = $$6;
+      this.w = $$6;
+      this.x = $$6;
+      this.D = 2.0F * (1.0F - (float)$$4 * 0.5F);
+      this.a = $$5;
+      this.b($$5);
    }
 
    @Override
-   public fte b() {
-      return fte.b;
+   public int a(float $$0) {
+      return 15728880;
    }
 
    @Override
-   public float b(float $$0) {
-      return this.D * awh.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
-   }
-
-   public static class a implements ftd<kc> {
-      private final ftv a;
-
-      public a(ftv $$0) {
-         this.a = $$0;
-      }
-
-      public fta a(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fsr $$8 = new fsr($$1, $$2, $$3 + 0.5, $$4);
-         $$8.a(this.a);
-         $$8.a(1.0F, 1.0F, 1.0F);
-         return $$8;
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
+         this.k();
+      } else {
+         this.b(this.a);
       }
    }
 
-   public static class b implements ftd<kc> {
-      private final ftv a;
+   @Override
+   public ftd b() {
+      return ftd.d;
+   }
 
-      public b(ftv $$0) {
+   public static class a implements ftc<kc> {
+      private final ftu a;
+
+      public a(ftu $$0) {
          this.a = $$0;
       }
 
-      public fta a(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fsr $$8 = new fsr($$1, $$2, $$3, $$4);
-         $$8.a(this.a);
-         return $$8;
+      public fsz a(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fsr($$1, $$2, $$3, $$4, $$5, this.a);
       }
    }
 }

@@ -31,7 +31,7 @@ public class euj extends ezh {
       this.a(this.A, $$0.o);
    }
 
-   private void a(euj.b $$0, String $$1) {
+   private void a(euj.b $$0, @Nullable String $$1) {
       vq $$2 = switch ($$0.c) {
          case c -> v;
          case b -> $$0.b ? w : x;
@@ -42,7 +42,7 @@ public class euj extends ezh {
       }
 
       we $$3 = vq.b($$0.e);
-      if ($$0.b) {
+      if ($$0.b && $$1 != null) {
          $$3 = $$3.b(vp.v).f($$1);
       }
 

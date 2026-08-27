@@ -85,14 +85,14 @@ public class eto extends etw {
 
    public String a(int $$0) {
       if (ac.b(this.o)) {
-         return this.n ? ghz.a("mco.configure.world.slot.empty") : this.b($$0);
+         return this.n ? ghy.a("mco.configure.world.slot.empty") : this.b($$0);
       } else {
          return this.o;
       }
    }
 
    public String b(int $$0) {
-      return ghz.a("mco.configure.world.slot", $$0);
+      return ghy.a("mco.configure.world.slot", $$0);
    }
 
    public String c() {

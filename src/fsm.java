@@ -1,11 +1,11 @@
-public class fsm extends fti {
+public class fsm extends fth {
    fsm(fpx $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
       super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
    }
 
    @Override
-   public fte b() {
-      return fte.b;
+   public ftd b() {
+      return ftd.b;
    }
 
    @Override
@@ -35,28 +35,28 @@ public class fsm extends fti {
       return $$3 | $$4 << 16;
    }
 
-   public static class a implements ftd<kc> {
-      private final ftv a;
+   public static class a implements ftc<kc> {
+      private final ftu a;
 
-      public a(ftv $$0) {
+      public a(ftu $$0) {
          this.a = $$0;
       }
 
-      public fta a(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      public fsz a(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
          fsm $$8 = new fsm($$1, $$2, $$3, $$4, $$5, $$6, $$7);
          $$8.a(this.a);
          return $$8;
       }
    }
 
-   public static class b implements ftd<kc> {
-      private final ftv a;
+   public static class b implements ftc<kc> {
+      private final ftu a;
 
-      public b(ftv $$0) {
+      public b(ftu $$0) {
          this.a = $$0;
       }
 
-      public fta a(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      public fsz a(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
          fsm $$8 = new fsm($$1, $$2, $$3, $$4, $$5, $$6, $$7);
          $$8.a(this.a);
          $$8.d(0.5F);

@@ -1,74 +1,53 @@
-import com.google.common.base.Stopwatch;
-import com.google.common.base.Ticker;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.OptionalLong;
-import java.util.concurrent.TimeUnit;
-import java.util.function.Function;
-import org.slf4j.Logger;
+import it.unimi.dsi.fastutil.longs.LongArrayList;
+import it.unimi.dsi.fastutil.longs.LongList;
 
-public class gma {
-   public static final gma a = new gma(Ticker.systemTicker());
-   private static final Logger b = LogUtils.getLogger();
-   private final Ticker c;
-   private final Map<glw<gma.a>, Stopwatch> d = new HashMap<>();
-   private OptionalLong e = OptionalLong.empty();
+public final class gma extends gly {
+   private static final long a = a(Runtime.getRuntime().maxMemory());
+   private final LongList b = new LongArrayList();
+   private final LongList c = new LongArrayList();
+   private final LongList d = new LongArrayList();
 
-   protected gma(Ticker $$0) {
-      this.c = $$0;
-   }
-
-   public synchronized void a(glw<gma.a> $$0) {
-      this.a($$0, (Function<glw<gma.a>, Stopwatch>)($$0x -> Stopwatch.createStarted(this.c)));
-   }
-
-   public synchronized void a(glw<gma.a> $$0, Stopwatch $$1) {
-      this.a($$0, (Function<glw<gma.a>, Stopwatch>)($$1x -> $$1));
-   }
-
-   private synchronized void a(glw<gma.a> $$0, Function<glw<gma.a>, Stopwatch> $$1) {
-      this.d.computeIfAbsent($$0, $$1);
-   }
-
-   public synchronized void b(glw<gma.a> $$0) {
-      Stopwatch $$1 = this.d.get($$0);
-      if ($$1 == null) {
-         b.warn("Attempted to end step for {} before starting it", $$0.b());
-      } else {
-         if ($$1.isRunning()) {
-            $$1.stop();
-         }
+   @Override
+   public void a(gls $$0) {
+      if (exh.O().A()) {
+         super.a($$0);
       }
    }
 
-   public void a(glt $$0) {
-      $$0.send(glu.g, $$0x -> {
-         synchronized (this) {
-            this.d.forEach(($$1, $$2) -> {
-               if (!$$2.isRunning()) {
-                  long $$3 = $$2.elapsed(TimeUnit.MILLISECONDS);
-                  $$0x.a((glw<gma.a>)$$1, new gma.a((int)$$3));
-               } else {
-                  b.warn("Measurement {} was discarded since it was still ongoing when the event {} was sent.", $$1.b(), glu.g.a());
-               }
-            });
-            this.e.ifPresent($$1 -> $$0x.a(glw.B, new gma.a((int)$$1)));
-            this.d.clear();
-         }
+   private void g() {
+      this.b.clear();
+      this.c.clear();
+      this.d.clear();
+   }
+
+   @Override
+   public void f() {
+      this.b.add((long)exh.O().n());
+      this.h();
+      this.c.add(exh.O().o());
+   }
+
+   private void h() {
+      long $$0 = Runtime.getRuntime().totalMemory();
+      long $$1 = Runtime.getRuntime().freeMemory();
+      long $$2 = $$0 - $$1;
+      this.d.add(a($$2));
+   }
+
+   @Override
+   public void b(gls $$0) {
+      $$0.send(glt.c, $$0x -> {
+         $$0x.a(glv.r, new LongArrayList(this.b));
+         $$0x.a(glv.s, new LongArrayList(this.c));
+         $$0x.a(glv.t, new LongArrayList(this.d));
+         $$0x.a(glv.u, this.e());
+         $$0x.a(glv.v, exh.O().m.aA());
+         $$0x.a(glv.w, (int)a);
       });
+      this.g();
    }
 
-   public synchronized void a(long $$0) {
-      this.e = OptionalLong.of($$0);
-   }
-
-   public static record a(int b) {
-      public static final Codec<gma.a> a = Codec.INT.xmap(gma.a::new, $$0 -> $$0.b);
-
-      public int a() {
-         return this.b;
-      }
+   private static long a(long $$0) {
+      return $$0 / 1000L;
    }
 }

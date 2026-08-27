@@ -10,7 +10,7 @@ public class ffl extends few {
    private static final vq m = vq.c("options.graphics.warning.accept");
    private static final vq n = vq.c("options.graphics.warning.cancel");
    private fae o;
-   private final fvg p;
+   private final fvf p;
    private final int q;
 
    private static exk<?>[] a(exl $$0) {

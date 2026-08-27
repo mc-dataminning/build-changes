@@ -1,50 +1,39 @@
-public class fxy implements fxm<dlb> {
-   private final fwg a;
+public class fxy implements fxl<dkb> {
+   private final fnu<?> a;
 
-   public fxy(fxn.a $$0) {
-      this.a = $$0.b();
+   public fxy(fxm.a $$0) {
+      this.a = new fnu($$0.a(fpb.bg));
    }
 
-   public void a(dlb $$0, float $$1, esa $$2, fvm $$3, int $$4, int $$5) {
-      cvn $$6 = $$0.i();
-      if ($$6 != null) {
-         hz $$7 = $$0.aE_().a($$0.g().g());
-         dlf $$8 = $$0.k();
-         if (!$$8.i()) {
-            fwi.a();
-            $$2.a();
-            $$2.a($$0.b($$1), $$0.c($$1), $$0.d($$1));
-            if ($$8.a(cyq.bz) && $$0.a($$1) <= 4.0F) {
-               $$8 = $$8.a(dkz.d, Boolean.valueOf($$0.a($$1) <= 0.5F));
-               this.a($$7, $$8, $$2, $$3, $$6, false, $$5);
-            } else if ($$0.f() && !$$0.c()) {
-               dmh $$9 = $$8.a(cyq.br) ? dmh.b : dmh.a;
-               dlf $$10 = cyq.bz.o().a(dkz.c, $$9).a(dkz.a, $$8.c(dky.a));
-               $$10 = $$10.a(dkz.d, Boolean.valueOf($$0.a($$1) >= 0.5F));
-               this.a($$7, $$10, $$2, $$3, $$6, false, $$5);
-               hz $$11 = $$7.a($$0.g());
-               $$2.b();
-               $$2.a();
-               $$8 = $$8.a(dky.c, Boolean.valueOf(true));
-               this.a($$11, $$8, $$2, $$3, $$6, true, $$5);
-            } else {
-               this.a($$7, $$8, $$2, $$3, $$6, false, $$5);
-            }
-
-            $$2.b();
-            fwi.b();
+   public void a(dkb $$0, float $$1, esa $$2, fvl $$3, int $$4, int $$5) {
+      ie $$6 = ie.b;
+      if ($$0.n()) {
+         dlf $$7 = $$0.i().a_($$0.aE_());
+         if ($$7.b() instanceof dfm) {
+            $$6 = $$7.c(dfm.b);
          }
       }
-   }
 
-   private void a(hz $$0, dlf $$1, esa $$2, fvm $$3, cvn $$4, boolean $$5, int $$6) {
-      fvu $$7 = fvh.b($$1);
-      ese $$8 = $$3.getBuffer($$7);
-      this.a.b().a($$4, this.a.a($$1), $$1, $$0, $$2, $$8, $$5, awo.a(), $$1.a($$0), $$6);
-   }
+      cnn $$8 = $$0.w();
+      giw $$9;
+      if ($$8 == null) {
+         $$9 = fwa.i;
+      } else {
+         $$9 = fwa.j.get($$8.a());
+      }
 
-   @Override
-   public int aT_() {
-      return 68;
+      $$2.a();
+      $$2.a(0.5F, 0.5F, 0.5F);
+      float $$11 = 0.9995F;
+      $$2.b(0.9995F, 0.9995F, 0.9995F);
+      $$2.a($$6.b());
+      $$2.b(1.0F, -1.0F, -1.0F);
+      $$2.a(0.0F, -1.0F, 0.0F);
+      fpc $$12 = this.a.b();
+      $$12.a(0.0F, 24.0F - $$0.a($$1) * 0.5F * 16.0F, 0.0F);
+      $$12.f = 270.0F * $$0.a($$1) * (float) (Math.PI / 180.0);
+      ese $$13 = $$9.a($$3, fvt::e);
+      this.a.a($$2, $$13, $$4, $$5, 1.0F, 1.0F, 1.0F, 1.0F);
+      $$2.b();
    }
 }

@@ -390,13 +390,13 @@ public class fgj extends ffe {
       }
    }
 
-   private void a(eyu $$0, fvr[] $$1) {
-      for (fvr $$2 : $$1) {
+   private void a(eyu $$0, fvq[] $$1) {
+      for (fvq $$2 : $$1) {
          int $$3 = $$2.a();
          int $$4 = $$2.b();
          int $$5 = $$3 + $$2.c();
          int $$6 = $$4 + $$2.d();
-         $$0.a(fvu.D(), $$3, $$4, $$5, $$6, -16776961);
+         $$0.a(fvt.D(), $$3, $$4, $$5, $$6, -16776961);
       }
    }
 
@@ -509,7 +509,7 @@ public class fgj extends ffe {
             $$10 = new fgj.c($$12, $$11 * 9);
          }
 
-         List<fvr> $$14 = Lists.newArrayList();
+         List<fvq> $$14 = Lists.newArrayList();
          if ($$1 != $$2) {
             int $$15 = Math.min($$1, $$2);
             int $$16 = Math.max($$1, $$2);
@@ -534,7 +534,7 @@ public class fgj extends ffe {
             }
          }
 
-         return new fgj.a($$0, $$10, $$9, $$8, $$4.toArray(new fgj.b[0]), $$14.toArray(new fvr[0]));
+         return new fgj.a($$0, $$10, $$9, $$8, $$4.toArray(new fgj.b[0]), $$14.toArray(new fvq[0]));
       }
    }
 
@@ -543,7 +543,7 @@ public class fgj extends ffe {
       return $$2 < 0 ? -($$2 + 2) : $$2;
    }
 
-   private fvr a(String $$0, ext $$1, int $$2, int $$3, int $$4, int $$5) {
+   private fvq a(String $$0, ext $$1, int $$2, int $$3, int $$4, int $$5) {
       String $$6 = $$0.substring($$5, $$2);
       String $$7 = $$0.substring($$5, $$3);
       fgj.c $$8 = new fgj.c((int)$$1.a($$6), $$4);
@@ -551,26 +551,26 @@ public class fgj extends ffe {
       return this.a($$8, $$9);
    }
 
-   private fvr a(fgj.c $$0, fgj.c $$1) {
+   private fvq a(fgj.c $$0, fgj.c $$1) {
       fgj.c $$2 = this.b($$0);
       fgj.c $$3 = this.b($$1);
       int $$4 = Math.min($$2.a, $$3.a);
       int $$5 = Math.max($$2.a, $$3.a);
       int $$6 = Math.min($$2.b, $$3.b);
       int $$7 = Math.max($$2.b, $$3.b);
-      return new fvr($$4, $$6, $$5 - $$4, $$7 - $$6);
+      return new fvq($$4, $$6, $$5 - $$4, $$7 - $$6);
    }
 
    static class a {
-      static final fgj.a a = new fgj.a("", new fgj.c(0, 0), true, new int[]{0}, new fgj.b[]{new fgj.b(wn.a, "", 0, 0)}, new fvr[0]);
+      static final fgj.a a = new fgj.a("", new fgj.c(0, 0), true, new int[]{0}, new fgj.b[]{new fgj.b(wn.a, "", 0, 0)}, new fvq[0]);
       private final String b;
       final fgj.c c;
       final boolean d;
       private final int[] e;
       final fgj.b[] f;
-      final fvr[] g;
+      final fvq[] g;
 
-      public a(String $$0, fgj.c $$1, boolean $$2, int[] $$3, fgj.b[] $$4, fvr[] $$5) {
+      public a(String $$0, fgj.c $$1, boolean $$2, int[] $$3, fgj.b[] $$4, fvq[] $$5) {
          this.b = $$0;
          this.c = $$1;
          this.d = $$2;

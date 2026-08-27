@@ -1,7 +1,7 @@
-public class frr extends fua {
-   private final ftv a;
+public class frr extends ftz {
+   private final ftu a;
 
-   frr(fpx $$0, double $$1, double $$2, double $$3, double $$4, ftv $$5) {
+   frr(fpx $$0, double $$1, double $$2, double $$3, double $$4, ftu $$5) {
       super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
       this.a = $$5;
       this.t = 4;
@@ -31,18 +31,18 @@ public class frr extends fua {
    }
 
    @Override
-   public fte b() {
-      return fte.d;
+   public ftd b() {
+      return ftd.d;
    }
 
-   public static class a implements ftd<kc> {
-      private final ftv a;
+   public static class a implements ftc<kc> {
+      private final ftu a;
 
-      public a(ftv $$0) {
+      public a(ftu $$0) {
          this.a = $$0;
       }
 
-      public fta a(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      public fsz a(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
          return new frr($$1, $$2, $$3, $$4, $$5, this.a);
       }
    }

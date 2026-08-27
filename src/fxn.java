@@ -1,50 +1,50 @@
-@FunctionalInterface
-public interface fxn<T extends dit> {
-   fxm<T> create(fxn.a var1);
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.google.common.collect.ImmutableMap.Builder;
+import java.util.Map;
 
-   public static class a {
-      private final fxl a;
-      private final fwg b;
-      private final gbr c;
-      private final gar d;
-      private final foy e;
-      private final eys f;
+public class fxn {
+   private static final Map<div<?>, fxm<?>> a = Maps.newHashMap();
 
-      public a(fxl $$0, fwg $$1, gbr $$2, gar $$3, foy $$4, eys $$5) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$4;
-         this.f = $$5;
-      }
+   private static <T extends dit> void a(div<? extends T> $$0, fxm<T> $$1) {
+      a.put($$0, $$1);
+   }
 
-      public fxl a() {
-         return this.a;
-      }
+   public static Map<div<?>, fxl<?>> a(fxm.a $$0) {
+      Builder<div<?>, fxl<?>> $$1 = ImmutableMap.builder();
+      a.forEach(($$2, $$3) -> {
+         try {
+            $$1.put($$2, $$3.create($$0));
+         } catch (Exception var5) {
+            throw new IllegalStateException("Failed to create model for " + kf.k.b((div<?>)$$2), var5);
+         }
+      });
+      return $$1.build();
+   }
 
-      public fwg b() {
-         return this.b;
-      }
-
-      public gar c() {
-         return this.d;
-      }
-
-      public gbr d() {
-         return this.c;
-      }
-
-      public foy e() {
-         return this.e;
-      }
-
-      public fpc a(fpa $$0) {
-         return this.e.a($$0);
-      }
-
-      public eys f() {
-         return this.f;
-      }
+   static {
+      a(div.h, fxz::new);
+      a(div.i, fxv::new);
+      a(div.j, fyb::new);
+      a(div.k, fxx::new);
+      a(div.b, fxr::new);
+      a(div.d, fxr::new);
+      a(div.c, fxr::new);
+      a(div.m, fxu::new);
+      a(div.D, fxw::new);
+      a(div.n, fye::new);
+      a(div.v, fyd::new);
+      a(div.o, fxh::new);
+      a(div.p, fya::new);
+      a(div.t, fxg::new);
+      a(div.u, fyc::new);
+      a(div.x, fxy::new);
+      a(div.y, fxi::new);
+      a(div.z, fxs::new);
+      a(div.E, fxj::new);
+      a(div.G, fxq::new);
+      a(div.N, fxp::new);
+      a(div.O, fxt::new);
+      a(div.Q, fyf::new);
    }
 }

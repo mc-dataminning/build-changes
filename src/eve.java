@@ -2,7 +2,7 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.function.Consumer;
 
-public class eve extends gmw {
+public class eve extends gmv {
    private static final vq b = vq.c("mco.reset.world.seed");
    public static final vq a = vq.c("mco.reset.world.generate");
    private static final int c = 10;

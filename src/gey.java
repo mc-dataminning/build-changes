@@ -1,46 +1,52 @@
-public class gey extends gfe<cby, fmu<cby>> {
-   private static final aiy[] a = new aiy[]{
-      new aiy("textures/entity/llama/decor/white.png"),
-      new aiy("textures/entity/llama/decor/orange.png"),
-      new aiy("textures/entity/llama/decor/magenta.png"),
-      new aiy("textures/entity/llama/decor/light_blue.png"),
-      new aiy("textures/entity/llama/decor/yellow.png"),
-      new aiy("textures/entity/llama/decor/lime.png"),
-      new aiy("textures/entity/llama/decor/pink.png"),
-      new aiy("textures/entity/llama/decor/gray.png"),
-      new aiy("textures/entity/llama/decor/light_gray.png"),
-      new aiy("textures/entity/llama/decor/cyan.png"),
-      new aiy("textures/entity/llama/decor/purple.png"),
-      new aiy("textures/entity/llama/decor/blue.png"),
-      new aiy("textures/entity/llama/decor/brown.png"),
-      new aiy("textures/entity/llama/decor/green.png"),
-      new aiy("textures/entity/llama/decor/red.png"),
-      new aiy("textures/entity/llama/decor/black.png")
-   };
-   private static final aiy b = new aiy("textures/entity/llama/decor/trader_llama.png");
-   private final fmu<cby> c;
+public class gey<T extends cag> extends gfd<T, flu<T>> {
+   private final fwf a;
 
-   public gey(gco<cby, fmu<cby>> $$0, foy $$1) {
+   public gey(gcn<T, flu<T>> $$0, fwf $$1) {
       super($$0);
-      this.c = new fmu<>($$1.a(fpb.au));
+      this.a = $$1;
    }
 
-   public void a(esa $$0, fvm $$1, int $$2, cby $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      cnn $$10 = $$3.gt();
-      aiy $$11;
-      if ($$10 != null) {
-         $$11 = a[$$10.a()];
-      } else {
-         if (!$$3.gp()) {
-            return;
+   public void a(esa $$0, fvl $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if (!$$3.o_()) {
+         exh $$10 = exh.O();
+         boolean $$11 = $$10.b($$3) && $$3.ce();
+         if (!$$3.ce() || $$11) {
+            dlf $$12 = $$3.w().a();
+            int $$13 = gbt.c($$3, 0.0F);
+            git $$14 = this.a.a($$12);
+            $$0.a();
+            $$0.a(0.2F, -0.35F, 0.5F);
+            $$0.a(a.d.rotationDegrees(-48.0F));
+            $$0.b(-1.0F, -1.0F, 1.0F);
+            $$0.a(-0.5F, -0.5F, -0.5F);
+            this.a($$0, $$1, $$2, $$11, $$12, $$13, $$14);
+            $$0.b();
+            $$0.a();
+            $$0.a(0.2F, -0.35F, 0.5F);
+            $$0.a(a.d.rotationDegrees(42.0F));
+            $$0.a(0.1F, 0.0F, -0.6F);
+            $$0.a(a.d.rotationDegrees(-48.0F));
+            $$0.b(-1.0F, -1.0F, 1.0F);
+            $$0.a(-0.5F, -0.5F, -0.5F);
+            this.a($$0, $$1, $$2, $$11, $$12, $$13, $$14);
+            $$0.b();
+            $$0.a();
+            this.c().d().a($$0);
+            $$0.a(0.0F, -0.7F, -0.2F);
+            $$0.a(a.d.rotationDegrees(-78.0F));
+            $$0.b(-1.0F, -1.0F, 1.0F);
+            $$0.a(-0.5F, -0.5F, -0.5F);
+            this.a($$0, $$1, $$2, $$11, $$12, $$13, $$14);
+            $$0.b();
          }
-
-         $$11 = b;
       }
+   }
 
-      this.c().a(this.c);
-      this.c.a($$3, $$4, $$5, $$7, $$8, $$9);
-      ese $$14 = $$1.getBuffer(fvu.e($$11));
-      this.c.a($$0, $$14, $$2, ggl.d, 1.0F, 1.0F, 1.0F, 1.0F);
+   private void a(esa $$0, fvl $$1, int $$2, boolean $$3, dlf $$4, int $$5, git $$6) {
+      if ($$3) {
+         this.a.b().a($$0.c(), $$1.getBuffer(fvt.r(ggs.e)), $$4, $$6, 0.0F, 0.0F, 0.0F, $$2, $$5);
+      } else {
+         this.a.a($$4, $$0, $$1, $$2, $$5);
+      }
    }
 }

@@ -1,58 +1,62 @@
-import java.io.BufferedInputStream;
-import java.io.FilterInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.ByteBuffer;
-import javax.sound.sampled.AudioFormat;
+import javax.annotation.Nullable;
 
-public class glf implements gld {
-   private final glf.a a;
-   private gld b;
-   private final BufferedInputStream c;
+public class glf {
+   private static final int a = 100;
+   private final awo b = awo.a();
+   private final exh c;
+   @Nullable
+   private gkg d;
+   private int e = 100;
 
-   public glf(glf.a $$0, InputStream $$1) throws IOException {
-      this.a = $$0;
-      this.c = new BufferedInputStream($$1);
-      this.c.mark(Integer.MAX_VALUE);
-      this.b = $$0.create(new glf.b(this.c));
+   public glf(exh $$0) {
+      this.c = $$0;
    }
 
-   @Override
-   public AudioFormat a() {
-      return this.b.a();
-   }
+   public void a() {
+      ath $$0 = this.c.aj();
+      if (this.d != null) {
+         if (!$$0.a().a().a().equals(this.d.a()) && $$0.d()) {
+            this.c.ai().b(this.d);
+            this.e = awh.a(this.b, 0, $$0.b() / 2);
+         }
 
-   @Override
-   public ByteBuffer a(int $$0) throws IOException {
-      ByteBuffer $$1 = this.b.a($$0);
-      if (!$$1.hasRemaining()) {
-         this.b.close();
-         this.c.reset();
-         this.b = this.a.create(new glf.b(this.c));
-         $$1 = this.b.a($$0);
+         if (!this.c.ai().c(this.d)) {
+            this.d = null;
+            this.e = Math.min(this.e, awh.a(this.b, $$0.b(), $$0.c()));
+         }
       }
 
-      return $$1;
+      this.e = Math.min(this.e, $$0.c());
+      if (this.d == null && this.e-- <= 0) {
+         this.a($$0);
+      }
    }
 
-   @Override
-   public void close() throws IOException {
-      this.b.close();
-      this.c.close();
-   }
-
-   @FunctionalInterface
-   public interface a {
-      gld create(InputStream var1) throws IOException;
-   }
-
-   static class b extends FilterInputStream {
-      b(InputStream $$0) {
-         super($$0);
+   public void a(ath $$0) {
+      this.d = gkb.a($$0.a().a());
+      if (this.d.b() != glk.a) {
+         this.c.ai().a(this.d);
       }
 
-      @Override
-      public void close() {
+      this.e = Integer.MAX_VALUE;
+   }
+
+   public void b(ath $$0) {
+      if (this.c($$0)) {
+         this.b();
       }
+   }
+
+   public void b() {
+      if (this.d != null) {
+         this.c.ai().b(this.d);
+         this.d = null;
+      }
+
+      this.e += 100;
+   }
+
+   public boolean c(ath $$0) {
+      return this.d == null ? false : $$0.a().a().a().equals(this.d.a());
    }
 }

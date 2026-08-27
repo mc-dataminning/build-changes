@@ -37,6 +37,7 @@ public class eth extends etw {
    public int l;
    public eth.d m;
    public int n;
+   @Nullable
    public String o;
    public int p;
    public String q;
@@ -55,6 +56,7 @@ public class eth extends etw {
       return this.c;
    }
 
+   @Nullable
    public String c() {
       return this.o;
    }

@@ -8,7 +8,7 @@ public class fnu<T extends cet> extends fmt<T> {
    private final fpc h;
 
    public fnu(fpc $$0) {
-      super(fvu::f);
+      super(fvt::f);
       this.g = $$0.b("lid");
       this.f = $$0.b("base");
       this.h = $$0.b("head");

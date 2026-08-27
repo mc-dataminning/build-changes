@@ -36,7 +36,7 @@ public class fbk {
          }
 
          if ($$1) {
-            exh.O().ai().a(gkc.a(atk.zJ, 1.0F));
+            exh.O().ai().a(gkb.a(atk.zJ, 1.0F));
          }
       }
    }

@@ -13,7 +13,7 @@ import org.lwjgl.stb.STBVorbisInfo;
 import org.lwjgl.system.MemoryStack;
 import org.lwjgl.system.MemoryUtil;
 
-public class epy implements gld {
+public class epy implements glc {
    private static final int a = 8192;
    private long b;
    private final AudioFormat c;

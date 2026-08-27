@@ -213,7 +213,7 @@ public class fjv extends ffe {
                String $$7 = $$0.b() + ".description";
                List<avt> $$10;
                String $$11;
-               if (ghz.a($$7)) {
+               if (ghy.a($$7)) {
                   Builder<avt> $$8 = ImmutableList.builder().add($$3.g());
                   vq $$9 = vq.c($$7);
                   fjv.this.i.c($$9, 150).forEach($$8::add);

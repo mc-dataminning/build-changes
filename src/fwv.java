@@ -1,90 +1,85 @@
+import com.google.common.collect.Lists;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import java.lang.reflect.Type;
+import java.util.Collection;
+import java.util.List;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public class fwv {
-   public static final fwv a = new fwv();
-   public final fwu b;
-   public final fwu c;
-   public final fwu d;
-   public final fwu e;
-   public final fwu f;
-   public final fwu g;
-   public final fwu h;
-   public final fwu i;
+public class fwv implements gje {
+   private final List<fww> a;
 
-   private fwv() {
-      this(fwu.a, fwu.a, fwu.a, fwu.a, fwu.a, fwu.a, fwu.a, fwu.a);
+   public fwv(List<fww> $$0) {
+      this.a = $$0;
    }
 
-   public fwv(fwv $$0) {
-      this.b = $$0.b;
-      this.c = $$0.c;
-      this.d = $$0.d;
-      this.e = $$0.e;
-      this.f = $$0.f;
-      this.g = $$0.g;
-      this.h = $$0.h;
-      this.i = $$0.i;
+   public List<fww> a() {
+      return this.a;
    }
 
-   public fwv(fwu $$0, fwu $$1, fwu $$2, fwu $$3, fwu $$4, fwu $$5, fwu $$6, fwu $$7) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = $$7;
-   }
-
-   public fwu a(cow $$0) {
-      return switch ($$0) {
-         case b -> this.b;
-         case c -> this.c;
-         case d -> this.d;
-         case e -> this.e;
-         case f -> this.f;
-         case g -> this.g;
-         case h -> this.h;
-         case i -> this.i;
-         default -> fwu.a;
-      };
-   }
-
-   public boolean b(cow $$0) {
-      return this.a($$0) != fwu.a;
-   }
-
-   protected static class a implements JsonDeserializer<fwv> {
-      public fwv a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         JsonObject $$3 = $$0.getAsJsonObject();
-         fwu $$4 = this.a($$2, $$3, cow.c);
-         fwu $$5 = this.a($$2, $$3, cow.b);
-         if ($$5 == fwu.a) {
-            $$5 = $$4;
-         }
-
-         fwu $$6 = this.a($$2, $$3, cow.e);
-         fwu $$7 = this.a($$2, $$3, cow.d);
-         if ($$7 == fwu.a) {
-            $$7 = $$6;
-         }
-
-         fwu $$8 = this.a($$2, $$3, cow.f);
-         fwu $$9 = this.a($$2, $$3, cow.g);
-         fwu $$10 = this.a($$2, $$3, cow.h);
-         fwu $$11 = this.a($$2, $$3, cow.i);
-         return new fwv($$5, $$4, $$7, $$6, $$8, $$9, $$10, $$11);
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return $$0 instanceof fwv $$1 ? this.a.equals($$1.a) : false;
       }
+   }
 
-      private fwu a(JsonDeserializationContext $$0, JsonObject $$1, cow $$2) {
-         String $$3 = $$2.c();
-         return $$1.has($$3) ? (fwu)$$0.deserialize($$1.get($$3), fwu.class) : fwu.a;
+   @Override
+   public int hashCode() {
+      return this.a.hashCode();
+   }
+
+   @Override
+   public Collection<aiy> f() {
+      return this.a().stream().map(fww::a).collect(Collectors.toSet());
+   }
+
+   @Override
+   public void a(Function<aiy, gje> $$0) {
+      this.a().stream().map(fww::a).distinct().forEach($$1 -> $$0.apply($$1).a($$0));
+   }
+
+   @Nullable
+   @Override
+   public git a(gix $$0, Function<giw, ggt> $$1, gjb $$2, aiy $$3) {
+      if (this.a().isEmpty()) {
+         return null;
+      } else {
+         gjf.a $$4 = new gjf.a();
+
+         for (fww $$5 : this.a()) {
+            git $$6 = $$0.a($$5.a(), $$5);
+            $$4.a($$6, $$5.d());
+         }
+
+         return $$4.a();
+      }
+   }
+
+   public static class a implements JsonDeserializer<fwv> {
+      public fwv a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         List<fww> $$3 = Lists.newArrayList();
+         if ($$0.isJsonArray()) {
+            JsonArray $$4 = $$0.getAsJsonArray();
+            if ($$4.size() == 0) {
+               throw new JsonParseException("Empty variant array");
+            }
+
+            for (JsonElement $$5 : $$4) {
+               $$3.add((fww)$$2.deserialize($$5, fww.class));
+            }
+         } else {
+            $$3.add((fww)$$2.deserialize($$0, fww.class));
+         }
+
+         return new fwv($$3);
       }
    }
 }

@@ -13,10 +13,10 @@ public abstract class fkx<E extends bno> extends fmb<E> {
    }
 
    protected fkx(boolean $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this(fvu::e, $$0, $$1, $$2, $$3, $$4, $$5);
+      this(fvt::e, $$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   protected fkx(Function<aiy, fvu> $$0, boolean $$1, float $$2, float $$3, float $$4, float $$5, float $$6) {
+   protected fkx(Function<aiy, fvt> $$0, boolean $$1, float $$2, float $$3, float $$4, float $$5, float $$6) {
       super($$0);
       this.a = $$1;
       this.b = $$2;

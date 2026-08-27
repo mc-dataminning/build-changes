@@ -1,4 +1,4 @@
-public class evi extends gmw {
+public class evi extends gmv {
    private static final int a = 212;
    private static final vq b = vq.c("mco.configure.world.name");
    private static final vq c = vq.c("mco.configure.world.description");

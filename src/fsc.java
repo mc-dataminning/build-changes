@@ -1,4 +1,4 @@
-public class fsc extends fua {
+public class fsc extends ftz {
    private final ego b;
    protected boolean a;
 
@@ -14,8 +14,8 @@ public class fsc extends fua {
    }
 
    @Override
-   public fte b() {
-      return fte.b;
+   public ftd b() {
+      return ftd.b;
    }
 
    @Override
@@ -57,35 +57,35 @@ public class fsc extends fua {
    protected void i() {
    }
 
-   public static fua a(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+   public static ftz a(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
       fsc $$8 = new fsc.b($$1, $$2, $$3, $$4, egq.c, jz.n);
       $$8.a(0.2F, 0.3F, 1.0F);
       return $$8;
    }
 
-   public static fua b(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+   public static ftz b(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
       fsc $$8 = new fsc.e($$1, $$2, $$3, $$4, egq.c, jz.aj);
       $$8.a(0.2F, 0.3F, 1.0F);
       return $$8;
    }
 
-   public static fua c(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+   public static ftz c(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
       return new fsc.a($$1, $$2, $$3, $$4, egq.e, jz.k);
    }
 
-   public static fua d(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+   public static ftz d(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
       fsc $$8 = new fsc.e($$1, $$2, $$3, $$4, egq.e, jz.l);
       $$8.a(1.0F, 0.2857143F, 0.083333336F);
       return $$8;
    }
 
-   public static fua e(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+   public static ftz e(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
       fsc $$8 = new fsc.c($$1, $$2, $$3, $$4, egq.e);
       $$8.a(1.0F, 0.2857143F, 0.083333336F);
       return $$8;
    }
 
-   public static fua f(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+   public static ftz f(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
       fsc.b $$8 = new fsc.b($$1, $$2, $$3, $$4, egq.a, jz.at);
       $$8.u *= 0.01F;
       $$8.t = 100;
@@ -93,43 +93,43 @@ public class fsc extends fua {
       return $$8;
    }
 
-   public static fua g(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+   public static ftz g(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
       fsc $$8 = new fsc.g($$1, $$2, $$3, $$4, egq.a, jz.au);
       $$8.u = 0.01F;
       $$8.a(0.582F, 0.448F, 0.082F);
       return $$8;
    }
 
-   public static fua h(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+   public static ftz h(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
       fsc $$8 = new fsc.c($$1, $$2, $$3, $$4, egq.a);
       $$8.t = (int)(128.0 / (Math.random() * 0.8 + 0.2));
       $$8.a(0.522F, 0.408F, 0.082F);
       return $$8;
    }
 
-   public static fua i(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+   public static ftz i(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
       fsc $$8 = new fsc.b($$1, $$2, $$3, $$4, egq.c, jz.aL);
       $$8.a(0.2F, 0.3F, 1.0F);
       return $$8;
    }
 
-   public static fua j(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+   public static ftz j(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
       fsc $$8 = new fsc.d($$1, $$2, $$3, $$4, egq.c, jz.aj);
       $$8.a(0.2F, 0.3F, 1.0F);
       return $$8;
    }
 
-   public static fua k(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+   public static ftz k(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
       return new fsc.a($$1, $$2, $$3, $$4, egq.e, jz.aJ);
    }
 
-   public static fua l(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+   public static ftz l(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
       fsc $$8 = new fsc.d($$1, $$2, $$3, $$4, egq.e, jz.l);
       $$8.a(1.0F, 0.2857143F, 0.083333336F);
       return $$8;
    }
 
-   public static fua m(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+   public static ftz m(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
       fsc $$8 = new fsc.f($$1, $$2, $$3, $$4, egq.a);
       $$8.t = (int)(16.0 / (Math.random() * 0.8 + 0.2));
       $$8.u = 0.007F;
@@ -137,7 +137,7 @@ public class fsc extends fua {
       return $$8;
    }
 
-   public static fua n(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+   public static ftz n(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
       int $$8 = (int)(64.0F / awh.b($$1.F_(), 0.1F, 0.9F));
       fsc $$9 = new fsc.f($$1, $$2, $$3, $$4, egq.a, $$8);
       $$9.u = 0.005F;
@@ -145,7 +145,7 @@ public class fsc extends fua {
       return $$9;
    }
 
-   public static fua o(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+   public static ftz o(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
       fsc.b $$8 = new fsc.b($$1, $$2, $$3, $$4, egq.a, jz.aC);
       $$8.a = true;
       $$8.u *= 0.01F;
@@ -154,7 +154,7 @@ public class fsc extends fua {
       return $$8;
    }
 
-   public static fua p(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+   public static ftz p(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
       fsc $$8 = new fsc.e($$1, $$2, $$3, $$4, egq.a, jz.aD);
       $$8.a = true;
       $$8.u = 0.01F;
@@ -162,7 +162,7 @@ public class fsc extends fua {
       return $$8;
    }
 
-   public static fua q(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+   public static ftz q(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
       fsc $$8 = new fsc.c($$1, $$2, $$3, $$4, egq.a);
       $$8.a = true;
       $$8.t = (int)(28.0 / (Math.random() * 0.8 + 0.2));

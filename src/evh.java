@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class evh extends gmw {
+public class evh extends gmv {
    static final Logger a = LogUtils.getLogger();
    static final aiy b = new aiy("widget/slot_frame");
    private static final vq c = vq.c("mco.template.button.select");
@@ -130,7 +130,7 @@ public class evh extends gmw {
                   if ($$2.right().isPresent()) {
                      evh.a.error("Couldn't fetch templates", (Throwable)$$2.right().get());
                      if (evh.this.B.d()) {
-                        evh.this.J = evy.a(ghz.a("mco.template.select.failure"));
+                        evh.this.J = evy.a(ghy.a("mco.template.select.failure"));
                      }
 
                      return null;
@@ -143,8 +143,8 @@ public class evh extends gmw {
 
                      if ($$1x.a.isEmpty()) {
                         if (evh.this.B.d()) {
-                           String $$3 = ghz.a("mco.template.select.none", "%link");
-                           evy.b $$4 = evy.b.a(ghz.a("mco.template.select.none.linkTitle"), "https://aka.ms/MinecraftRealmsContentCreator");
+                           String $$3 = ghy.a("mco.template.select.none", "%link");
+                           evy.b $$4 = evy.b.a(ghy.a("mco.template.select.none.linkTitle"), "https://aka.ms/MinecraftRealmsContentCreator");
                            evh.this.J = evy.a($$3, $$4);
                         }
 
@@ -291,7 +291,7 @@ public class evh extends gmw {
       }
    }
 
-   class b extends gmv<evh.a> {
+   class b extends gmu<evh.a> {
       public b() {
          this(Collections.emptyList());
       }

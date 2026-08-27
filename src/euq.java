@@ -5,7 +5,7 @@ import java.util.function.Supplier;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class euq extends gmw {
+public class euq extends gmv {
    private static final aiy a = new aiy("realm_status/expired");
    private static final aiy b = new aiy("realm_status/expires_soon");
    private static final aiy c = new aiy("realm_status/open");
@@ -155,7 +155,10 @@ public class euq extends gmw {
          int $$8 = Math.min(this.a(2, 3) + 80 - 11, this.g / 2 + $$5 / 2 + $$7 / 2 + 10);
          this.a($$0, $$8, 7, $$1, $$2);
          if (this.I()) {
-            $$0.a(this.i, vq.a("mco.configure.world.minigame", this.I.c()), this.K + 80 + 20 + 10, g(13), -1, false);
+            String $$9 = this.I.c();
+            if ($$9 != null) {
+               $$0.a(this.i, vq.a("mco.configure.world.minigame", $$9), this.K + 80 + 20 + 10, g(13), -1, false);
+            }
          }
       }
    }

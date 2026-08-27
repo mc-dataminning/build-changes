@@ -59,7 +59,7 @@ public class fly<T extends bog> extends fkx<T> {
       }
 
       this.b.c = $$8;
-      if ($$0 instanceof ful $$13) {
+      if ($$0 instanceof fuk $$13) {
          $$13.c = $$13.c + ($$6 - $$13.c) * 0.1F;
          $$13.d = $$13.d + ($$9 - $$13.d) * 0.1F;
          $$13.e = $$13.e + ($$7 - $$13.e) * 0.1F;

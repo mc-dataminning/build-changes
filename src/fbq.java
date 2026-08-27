@@ -30,8 +30,8 @@ public interface fbq {
          this.c = $$0;
       }
 
-      public void a(gll $$0) {
-         $$0.a(gkc.a(this.c, 1.0F, 1.0F));
+      public void a(glk $$0) {
+         $$0.a(gkb.a(this.c, 1.0F, 1.0F));
       }
    }
 }

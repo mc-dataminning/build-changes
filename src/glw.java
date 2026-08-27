@@ -1,165 +1,110 @@
-import com.mojang.authlib.minecraft.TelemetryPropertyContainer;
 import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.longs.LongArrayList;
-import it.unimi.dsi.fastutil.longs.LongList;
-import java.time.Instant;
-import java.time.ZoneId;
-import java.time.ZoneOffset;
-import java.time.format.DateTimeFormatter;
-import java.util.UUID;
-import java.util.function.Function;
-import java.util.stream.Collectors;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.MapLike;
+import com.mojang.serialization.RecordBuilder;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectOpenHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public record glw<T>(String F, String G, Codec<T> H, glw.a<T> I) {
-   private static final DateTimeFormatter J = DateTimeFormatter.ISO_OFFSET_DATE_TIME.withZone(ZoneId.from(ZoneOffset.UTC));
-   public static final glw<String> a = b("user_id", "userId");
-   public static final glw<String> b = b("client_id", "clientId");
-   public static final glw<UUID> c = e("minecraft_session_id", "deviceSessionId");
-   public static final glw<String> d = b("game_version", "buildDisplayName");
-   public static final glw<String> e = b("operating_system", "buildPlatform");
-   public static final glw<String> f = b("platform", "platform");
-   public static final glw<Boolean> g = a("client_modded", "clientModded");
-   public static final glw<String> h = b("launcher_name", "launcherName");
-   public static final glw<UUID> i = e("world_session_id", "worldSessionId");
-   public static final glw<Boolean> j = a("server_modded", "serverModded");
-   public static final glw<glw.c> k = a("server_type", "serverType", glw.c.d, ($$0, $$1, $$2) -> $$0.addProperty($$1, $$2.c()));
-   public static final glw<Boolean> l = a("opt_in", "isOptional");
-   public static final glw<Instant> m = a("event_timestamp_utc", "eventTimestampUtc", avp.m, ($$0, $$1, $$2) -> $$0.addProperty($$1, J.format($$2)));
-   public static final glw<glw.b> n = a("game_mode", "playerGameMode", glw.b.f, ($$0, $$1, $$2) -> $$0.addProperty($$1, $$2.a()));
-   public static final glw<String> o = b("realms_map_content", "realmsMapContent");
-   public static final glw<Integer> p = c("seconds_since_load", "secondsSinceLoad");
-   public static final glw<Integer> q = c("ticks_since_load", "ticksSinceLoad");
-   public static final glw<LongList> r = g("frame_rate_samples", "serializedFpsSamples");
-   public static final glw<LongList> s = g("render_time_samples", "serializedRenderTimeSamples");
-   public static final glw<LongList> t = g("used_memory_samples", "serializedUsedMemoryKbSamples");
-   public static final glw<Integer> u = c("number_of_samples", "numSamples");
-   public static final glw<Integer> v = c("render_distance", "renderDistance");
-   public static final glw<Integer> w = c("dedicated_memory_kb", "dedicatedMemoryKb");
-   public static final glw<Integer> x = c("world_load_time_ms", "worldLoadTimeMs");
-   public static final glw<Boolean> y = a("new_world", "newWorld");
-   public static final glw<gma.a> z = f("load_time_total_time_ms", "loadTimeTotalTimeMs");
-   public static final glw<gma.a> A = f("load_time_pre_window_ms", "loadTimePreWindowMs");
-   public static final glw<gma.a> B = f("load_time_bootstrap_ms", "loadTimeBootstrapMs");
-   public static final glw<gma.a> C = f("load_time_loading_overlay_ms", "loadTimeLoadingOverlayMs");
-   public static final glw<String> D = b("advancement_id", "advancementId");
-   public static final glw<Long> E = d("advancement_game_time", "advancementGameTime");
+public class glw {
+   final Map<glv<?>, Object> a;
 
-   public static <T> glw<T> a(String $$0, String $$1, Codec<T> $$2, glw.a<T> $$3) {
-      return new glw<>($$0, $$1, $$2, $$3);
+   glw(Map<glv<?>, Object> $$0) {
+      this.a = $$0;
    }
 
-   public static glw<Boolean> a(String $$0, String $$1) {
-      return a($$0, $$1, Codec.BOOL, TelemetryPropertyContainer::addProperty);
+   public static glw.a a() {
+      return new glw.a();
    }
 
-   public static glw<String> b(String $$0, String $$1) {
-      return a($$0, $$1, Codec.STRING, TelemetryPropertyContainer::addProperty);
+   public static Codec<glw> a(final List<glv<?>> $$0) {
+      return (new MapCodec<glw>() {
+         public <T> RecordBuilder<T> a(glw $$0x, DynamicOps<T> $$1, RecordBuilder<T> $$2) {
+            RecordBuilder<T> $$3 = $$2;
+
+            for (glv<?> $$4 : $$0) {
+               $$3 = this.a($$0, $$3, $$4);
+            }
+
+            return $$3;
+         }
+
+         private <T, V> RecordBuilder<T> a(glw $$0x, RecordBuilder<T> $$1, glv<V> $$2) {
+            V $$3 = $$0.a($$2);
+            return $$3 != null ? $$1.add($$2.b(), $$3, $$2.d()) : $$1;
+         }
+
+         public <T> DataResult<glw> decode(DynamicOps<T> $$0x, MapLike<T> $$1) {
+            DataResult<glw.a> $$2 = DataResult.success(new glw.a());
+
+            for (glv<?> $$3 : $$0) {
+               $$2 = this.a($$2, $$0, $$1, $$3);
+            }
+
+            return $$2.map(glw.a::a);
+         }
+
+         private <T, V> DataResult<glw.a> a(DataResult<glw.a> $$0x, DynamicOps<T> $$1, MapLike<T> $$2, glv<V> $$3) {
+            T $$4 = (T)$$2.get($$3.b());
+            if ($$4 != null) {
+               DataResult<V> $$5 = $$3.d().parse($$1, $$4);
+               return $$0.apply2stable(($$1x, $$2x) -> $$1x.a($$3, (V)$$2x), $$5);
+            } else {
+               return $$0;
+            }
+         }
+
+         public <T> Stream<T> keys(DynamicOps<T> $$0x) {
+            return $$0.stream().map(glv::b).map($$0::createString);
+         }
+      }).codec();
    }
 
-   public static glw<Integer> c(String $$0, String $$1) {
-      return a($$0, $$1, Codec.INT, TelemetryPropertyContainer::addProperty);
-   }
-
-   public static glw<Long> d(String $$0, String $$1) {
-      return a($$0, $$1, Codec.LONG, TelemetryPropertyContainer::addProperty);
-   }
-
-   public static glw<UUID> e(String $$0, String $$1) {
-      return a($$0, $$1, jc.c, ($$0x, $$1x, $$2) -> $$0x.addProperty($$1x, $$2.toString()));
-   }
-
-   public static glw<gma.a> f(String $$0, String $$1) {
-      return a($$0, $$1, gma.a.a, ($$0x, $$1x, $$2) -> $$0x.addProperty($$1x, $$2.a()));
-   }
-
-   public static glw<LongList> g(String $$0, String $$1) {
-      return a(
-         $$0,
-         $$1,
-         Codec.LONG.listOf().xmap(LongArrayList::new, Function.identity()),
-         ($$0x, $$1x, $$2) -> $$0x.addProperty($$1x, $$2.longStream().mapToObj(String::valueOf).collect(Collectors.joining(";")))
-      );
-   }
-
-   public void a(glx $$0, TelemetryPropertyContainer $$1) {
-      T $$2 = $$0.a(this);
-      if ($$2 != null) {
-         this.I.apply($$1, this.G, $$2);
-      } else {
-         $$1.addNullProperty(this.G);
-      }
-   }
-
-   public we a() {
-      return vq.c("telemetry.property." + this.F + ".title");
+   @Nullable
+   public <T> T a(glv<T> $$0) {
+      return (T)this.a.get($$0);
    }
 
    @Override
    public String toString() {
-      return "TelemetryProperty[" + this.F + "]";
+      return this.a.toString();
    }
 
-   public String b() {
-      return this.F;
+   public Set<glv<?>> b() {
+      return this.a.keySet();
    }
 
-   public String c() {
-      return this.G;
-   }
+   public static class a {
+      private final Map<glv<?>, Object> a = new Reference2ObjectOpenHashMap();
 
-   public Codec<T> d() {
-      return this.H;
-   }
-
-   public glw.a<T> e() {
-      return this.I;
-   }
-
-   public interface a<T> {
-      void apply(TelemetryPropertyContainer var1, String var2, T var3);
-   }
-
-   public static enum b implements axc {
-      a("survival", 0),
-      b("creative", 1),
-      c("adventure", 2),
-      d("spectator", 6),
-      e("hardcore", 99);
-
-      public static final Codec<glw.b> f = axc.a(glw.b::values);
-      private final String g;
-      private final int h;
-
-      private b(String $$0, int $$1) {
-         this.g = $$0;
-         this.h = $$1;
+      a() {
       }
 
-      public int a() {
-         return this.h;
+      public <T> glw.a a(glv<T> $$0, T $$1) {
+         this.a.put($$0, $$1);
+         return this;
       }
 
-      @Override
-      public String c() {
-         return this.g;
-      }
-   }
+      public <T> glw.a b(glv<T> $$0, @Nullable T $$1) {
+         if ($$1 != null) {
+            this.a.put($$0, $$1);
+         }
 
-   public static enum c implements axc {
-      a("realm"),
-      b("local"),
-      c("server");
-
-      public static final Codec<glw.c> d = axc.a(glw.c::values);
-      private final String e;
-
-      private c(String $$0) {
-         this.e = $$0;
+         return this;
       }
 
-      @Override
-      public String c() {
-         return this.e;
+      public glw.a a(glw $$0) {
+         this.a.putAll($$0.a);
+         return this;
+      }
+
+      public glw a() {
+         return new glw(this.a);
       }
    }
 }

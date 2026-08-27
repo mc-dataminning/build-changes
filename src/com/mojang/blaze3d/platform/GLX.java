@@ -106,7 +106,7 @@ public class GLX {
       RenderSystem.assertOnRenderThread();
       GlStateManager._depthMask(false);
       GlStateManager._disableCull();
-      RenderSystem.setShader(fvf::aq);
+      RenderSystem.setShader(fve::aq);
       esc $$4 = RenderSystem.renderThreadTesselator();
       erv $$5 = $$4.d();
       RenderSystem.lineWidth(4.0F);

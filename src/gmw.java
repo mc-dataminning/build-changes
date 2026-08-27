@@ -1,34 +1,29 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.stream.Collectors;
+import com.google.common.util.concurrent.RateLimiter;
+import java.time.Duration;
+import java.util.concurrent.atomic.AtomicReference;
 
-public abstract class gmw extends ffe {
-   protected static final int k = 17;
-   protected static final int l = 7;
-   protected static final long m = 5368709120L;
-   protected static final int n = 5000268;
-   protected static final int o = 7105644;
-   protected static final int p = 8388479;
-   protected static final int q = 3368635;
-   protected static final int r = 7107012;
-   protected static final int t = 8226750;
-   protected static final int u = 8;
-   private final List<gmu> a = Lists.newArrayList();
+public class gmw {
+   private final float a;
+   private final AtomicReference<gmw.a> b = new AtomicReference<>();
 
-   public gmw(vq $$0) {
-      super($$0);
+   public gmw(Duration $$0) {
+      this.a = 1000.0F / (float)$$0.toMillis();
    }
 
-   protected static int g(int $$0) {
-      return 40 + $$0 * 13;
+   public void a(ewz $$0, vq $$1) {
+      gmw.a $$2 = this.b.updateAndGet($$1x -> $$1x != null && $$1.equals($$1x.a) ? $$1x : new gmw.a($$1, RateLimiter.create((double)this.a)));
+      if ($$2.b.tryAcquire(1)) {
+         $$0.c($$1);
+      }
    }
 
-   protected gmu a(gmu $$0) {
-      this.a.add($$0);
-      return this.a($$0);
-   }
+   static class a {
+      final vq a;
+      final RateLimiter b;
 
-   public vq o() {
-      return vp.a(this.a.stream().map(gmu::a).collect(Collectors.toList()));
+      a(vq $$0, RateLimiter $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
    }
 }

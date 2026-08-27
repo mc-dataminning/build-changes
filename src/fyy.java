@@ -1,151 +1,61 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.Optional;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-public class fyy implements fyx.a {
-   private final exh a;
-   private static final int b = 32;
-   private static final float c = 1.0F;
-   private final List<fyy.a> d = Lists.newArrayList();
-   private final List<fyy.b> e = Lists.newArrayList();
+public class fyy implements fyw.a {
+   private static final float a = 0.02F;
+   private final Map<hz, fyy.a> b = Maps.newHashMap();
 
-   public fyy(exh $$0) {
-      this.a = $$0;
+   public void a(hz $$0, int $$1, String $$2, int $$3) {
+      this.b.put($$0, new fyy.a($$1, $$2, ac.b() + (long)$$3));
    }
 
    @Override
-   public void a(esa $$0, fvm $$1, double $$2, double $$3, double $$4) {
-      cvn $$5 = this.a.r;
-      if ($$5 == null) {
-         this.d.clear();
-         this.e.clear();
-      } else {
-         ens $$6 = new ens($$2, 0.0, $$4);
-         this.d.removeIf(fyy.a::a);
-         this.e.removeIf($$2x -> $$2x.a($$5, $$6));
-         ese $$7 = $$1.getBuffer(fvu.w());
+   public void a() {
+      this.b.clear();
+   }
 
-         for (fyy.b $$8 : this.e) {
-            $$8.a($$5).ifPresent($$6x -> {
-               double $$7x = $$6x.a() - (double)$$8.b();
-               double $$8x = $$6x.b() - (double)$$8.b();
-               double $$9 = $$6x.c() - (double)$$8.b();
-               double $$10 = $$6x.a() + (double)$$8.b();
-               double $$11 = $$6x.b() + (double)$$8.b();
-               double $$12x = $$6x.c() + (double)$$8.b();
-               fvk.a($$0, $$7, eoi.a(new enn($$7x, $$8x, $$9, $$10, $$11, $$12x)), -$$2, -$$3, -$$4, 1.0F, 1.0F, 0.0F, 0.35F, true);
-            });
-         }
+   @Override
+   public void a(esa $$0, fvl $$1, double $$2, double $$3, double $$4) {
+      long $$5 = ac.b();
+      this.b.entrySet().removeIf($$1x -> $$5 > ((fyy.a)$$1x.getValue()).c);
+      this.b.forEach(($$2x, $$3x) -> this.a($$0, $$1, $$2x, $$3x));
+   }
 
-         ese $$9 = $$1.getBuffer(fvu.y());
-
-         for (fyy.b $$10 : this.e) {
-            $$10.a($$5)
-               .ifPresent(
-                  $$5x -> fvk.b(
-                        $$0,
-                        $$9,
-                        $$5x.a() - 0.25 - $$2,
-                        $$5x.b() - $$3,
-                        $$5x.c() - 0.25 - $$4,
-                        $$5x.a() + 0.25 - $$2,
-                        $$5x.b() - $$3 + 1.0,
-                        $$5x.c() + 0.25 - $$4,
-                        1.0F,
-                        1.0F,
-                        0.0F,
-                        0.35F
-                     )
-               );
-         }
-
-         for (fyy.b $$11 : this.e) {
-            $$11.a($$5).ifPresent($$2x -> {
-               fyx.a($$0, $$1, "Listener Origin", $$2x.a(), $$2x.b() + 1.8F, $$2x.c(), -1, 0.025F);
-               fyx.a($$0, $$1, hz.a($$2x).toString(), $$2x.a(), $$2x.b() + 1.5, $$2x.c(), -6959665, 0.025F);
-            });
-         }
-
-         for (fyy.a $$12 : this.d) {
-            ens $$13 = $$12.c;
-            double $$14 = 0.2F;
-            double $$15 = $$13.c - 0.2F;
-            double $$16 = $$13.d - 0.2F;
-            double $$17 = $$13.e - 0.2F;
-            double $$18 = $$13.c + 0.2F;
-            double $$19 = $$13.d + 0.2F + 0.5;
-            double $$20 = $$13.e + 0.2F;
-            a($$0, $$1, new enn($$15, $$16, $$17, $$18, $$19, $$20), 1.0F, 1.0F, 1.0F, 0.2F);
-            fyx.a($$0, $$1, $$12.b.a().toString(), $$13.c, $$13.d + 0.85F, $$13.e, -7564911, 0.0075F);
-         }
+   private void a(esa $$0, fvl $$1, hz $$2, fyy.a $$3) {
+      fyw.a($$0, $$1, $$2, 0.02F, $$3.a(), $$3.b(), $$3.c(), $$3.d() * 0.75F);
+      if (!$$3.b.isEmpty()) {
+         double $$4 = (double)$$2.u() + 0.5;
+         double $$5 = (double)$$2.v() + 1.2;
+         double $$6 = (double)$$2.w() + 0.5;
+         fyw.a($$0, $$1, $$3.b, $$4, $$5, $$6, -1, 0.01F, true, 0.0F, true);
       }
    }
 
-   private static void a(esa $$0, fvm $$1, enn $$2, float $$3, float $$4, float $$5, float $$6) {
-      ews $$7 = exh.O().j.m();
-      if ($$7.h()) {
-         ens $$8 = $$7.b().e();
-         fyx.a($$0, $$1, $$2.c($$8), $$3, $$4, $$5, $$6);
-      }
-   }
+   static class a {
+      public int a;
+      public String b;
+      public long c;
 
-   public void a(aix<dpp> $$0, ens $$1) {
-      this.d.add(new fyy.a(ac.b(), $$0, $$1));
-   }
-
-   public void a(dpt $$0, int $$1) {
-      this.e.add(new fyy.b($$0, $$1));
-   }
-
-   static record a(long a, aix<dpp> b, ens c) {
-
-      public boolean a() {
-         return ac.b() - this.a > 3000L;
-      }
-
-      public long b() {
-         return this.a;
-      }
-
-      public aix<dpp> c() {
-         return this.b;
-      }
-
-      public ens d() {
-         return this.c;
-      }
-   }
-
-   static class b implements dpr {
-      public final dpt a;
-      public final int b;
-
-      public b(dpt $$0, int $$1) {
+      public a(int $$0, String $$1, long $$2) {
          this.a = $$0;
          this.b = $$1;
+         this.c = $$2;
       }
 
-      public boolean a(cvn $$0, ens $$1) {
-         return this.a.a($$0).filter($$1x -> $$1x.g($$1) <= 1024.0).isPresent();
+      public float a() {
+         return (float)(this.a >> 16 & 0xFF) / 255.0F;
       }
 
-      public Optional<ens> a(cvn $$0) {
-         return this.a.a($$0);
+      public float b() {
+         return (float)(this.a >> 8 & 0xFF) / 255.0F;
       }
 
-      @Override
-      public dpt a() {
-         return this.a;
+      public float c() {
+         return (float)(this.a & 0xFF) / 255.0F;
       }
 
-      @Override
-      public int b() {
-         return this.b;
-      }
-
-      @Override
-      public boolean a(aov $$0, ij<dpp> $$1, dpp.a $$2, ens $$3) {
-         return false;
+      public float d() {
+         return (float)(this.a >> 24 & 0xFF) / 255.0F;
       }
    }
 }

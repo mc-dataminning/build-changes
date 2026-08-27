@@ -1,69 +1,41 @@
-import java.nio.file.FileSystems;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.Map;
-import java.util.Optional;
-import java.util.function.BiConsumer;
-import java.util.function.Function;
-import javax.annotation.Nullable;
+import com.mojang.authlib.GameProfile;
+import java.util.UUID;
 
-public class ghl extends arg {
-   private static final arc c = new arc(vq.c("resourcePack.vanilla.description"), aa.b().a(aqp.a), Optional.empty());
-   private static final aqh d = aqh.a(arc.b, c);
-   private static final vq e = vq.c("resourcePack.vanilla.name");
-   public static final String b = "high_contrast";
-   private static final Map<String, vq> f = Map.of(
-      "programmer_art", vq.c("resourcePack.programmer_art.name"), "high_contrast", vq.c("resourcePack.high_contrast.name")
-   );
-   private static final aiy g = new aiy("minecraft", "resourcepacks");
-   @Nullable
-   private final Path h;
+public class ghl {
+   private static final ghs[] a = new ghs[]{
+      a("textures/entity/player/slim/alex.png", ghs.a.a),
+      a("textures/entity/player/slim/ari.png", ghs.a.a),
+      a("textures/entity/player/slim/efe.png", ghs.a.a),
+      a("textures/entity/player/slim/kai.png", ghs.a.a),
+      a("textures/entity/player/slim/makena.png", ghs.a.a),
+      a("textures/entity/player/slim/noor.png", ghs.a.a),
+      a("textures/entity/player/slim/steve.png", ghs.a.a),
+      a("textures/entity/player/slim/sunny.png", ghs.a.a),
+      a("textures/entity/player/slim/zuri.png", ghs.a.a),
+      a("textures/entity/player/wide/alex.png", ghs.a.b),
+      a("textures/entity/player/wide/ari.png", ghs.a.b),
+      a("textures/entity/player/wide/efe.png", ghs.a.b),
+      a("textures/entity/player/wide/kai.png", ghs.a.b),
+      a("textures/entity/player/wide/makena.png", ghs.a.b),
+      a("textures/entity/player/wide/noor.png", ghs.a.b),
+      a("textures/entity/player/wide/steve.png", ghs.a.b),
+      a("textures/entity/player/wide/sunny.png", ghs.a.b),
+      a("textures/entity/player/wide/zuri.png", ghs.a.b)
+   };
 
-   public ghl(Path $$0, eni $$1) {
-      super(aqp.a, b($$0), g, $$1);
-      this.h = this.a($$0);
+   public static aiy a() {
+      return a[6].a();
    }
 
-   @Nullable
-   private Path a(Path $$0) {
-      if (aa.aU && $$0.getFileSystem() == FileSystems.getDefault()) {
-         Path $$1 = $$0.getParent().resolve("resourcepacks");
-         if (Files.isDirectory($$1)) {
-            return $$1;
-         }
-      }
-
-      return null;
+   public static ghs a(UUID $$0) {
+      return a[Math.floorMod($$0.hashCode(), a.length)];
    }
 
-   private static aqr b(Path $$0) {
-      aqs $$1 = new aqs().a(d).a("minecraft", "realms");
-      return $$1.b().a().a(aqp.a, $$0).c();
+   public static ghs a(GameProfile $$0) {
+      return a($$0.getId());
    }
 
-   @Override
-   protected vq a(String $$0) {
-      vq $$1 = f.get($$0);
-      return (vq)($$1 != null ? $$1 : vq.b($$0));
-   }
-
-   @Nullable
-   @Override
-   protected ari a(aqo $$0) {
-      return ari.a("vanilla", e, true, b($$0), aqp.a, ari.b.b, arm.c);
-   }
-
-   @Nullable
-   @Override
-   protected ari a(String $$0, ari.c $$1, vq $$2) {
-      return ari.a($$0, $$2, false, $$1, aqp.a, ari.b.a, arm.c);
-   }
-
-   @Override
-   protected void a(BiConsumer<String, Function<String, ari>> $$0) {
-      super.a($$0);
-      if (this.h != null) {
-         this.a(this.h, $$0);
-      }
+   private static ghs a(String $$0, ghs.a $$1) {
+      return new ghs(new aiy($$0), null, null, null, $$1, true);
    }
 }

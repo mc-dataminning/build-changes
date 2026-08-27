@@ -74,7 +74,7 @@ public class ffq {
       $$0.c($$1, $$2, $$1 + 234, $$2 + 113);
       $$0.c().a();
       $$0.c().a((float)$$1, (float)$$2, 0.0F);
-      aiy $$3 = this.f.d().orElse(ggv.a);
+      aiy $$3 = this.f.d().orElse(ggu.a);
       int $$4 = awh.a(this.k);
       int $$5 = awh.a(this.l);
       int $$6 = $$4 % 16;

@@ -1,4 +1,4 @@
-public class eus extends gmw {
+public class eus extends gmv {
    private static final vq a = vq.c("mco.selectServer.create");
    private static final vq b = vq.c("mco.configure.world.name");
    private static final vq c = vq.c("mco.configure.world.description");

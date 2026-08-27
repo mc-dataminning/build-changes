@@ -1,25 +1,13 @@
-public class gel extends gfe<cab, flw<cab>> {
-   private final fvi a;
+public class gel<T extends ceb> extends gfd<T, flx<T>> {
+   private static final aiy a = new aiy("textures/entity/zombie/drowned_outer_layer.png");
+   private final flx<T> b;
 
-   public gel(gco<cab, flw<cab>> $$0, fvi $$1) {
+   public gel(gcn<T, flx<T>> $$0, foy $$1) {
       super($$0);
-      this.a = $$1;
+      this.b = new flx<>($$1.a(fpb.Q));
    }
 
-   public void a(esa $$0, fvm $$1, int $$2, cab $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      boolean $$10 = $$3.fm() == boa.b;
-      $$0.a();
-      float $$11 = 1.0F;
-      float $$12 = -1.0F;
-      float $$13 = awh.e($$3.dE()) / 60.0F;
-      if ($$3.dE() < 0.0F) {
-         $$0.a(0.0F, 1.0F - $$13 * 0.5F, -1.0F + $$13 * 0.5F);
-      } else {
-         $$0.a(0.0F, 1.0F + $$13 * 0.8F, -1.0F + $$13 * 0.2F);
-      }
-
-      coz $$14 = $$10 ? $$3.eT() : $$3.eU();
-      this.a.a($$3, $$14, cow.h, false, $$0, $$1, $$2);
-      $$0.b();
+   public void a(esa $$0, fvl $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      a(this.c(), this.b, a, $$0, $$1, $$2, $$3, $$4, $$5, $$7, $$8, $$9, $$6, 1.0F, 1.0F, 1.0F);
    }
 }

@@ -61,7 +61,7 @@ public class feq extends fey {
          }
 
          int $$9 = awh.f((1.0F - awh.a($$7 - 1.0F, 0.0F, 1.0F)) * 255.0F);
-         $$0.a(fvu.C(), 0, 0, $$4, $$5, a(f.getAsInt(), $$9));
+         $$0.a(fvt.C(), 0, 0, $$4, $$5, a(f.getAsInt(), $$9));
          $$10 = 1.0F - awh.a($$7 - 1.0F, 0.0F, 1.0F);
       } else if (this.p) {
          if (this.m.y != null && $$8 < 1.0F) {
@@ -69,7 +69,7 @@ public class feq extends fey {
          }
 
          int $$11 = awh.c(awh.a((double)$$8, 0.15, 1.0) * 255.0);
-         $$0.a(fvu.C(), 0, 0, $$4, $$5, a(f.getAsInt(), $$11));
+         $$0.a(fvt.C(), 0, 0, $$4, $$5, a(f.getAsInt(), $$11));
          $$10 = awh.a($$8, 0.0F, 1.0F);
       } else {
          int $$13 = f.getAsInt();
@@ -141,27 +141,27 @@ public class feq extends fey {
       return true;
    }
 
-   static class a extends ggn {
+   static class a extends ggm {
       public a() {
          super(feq.c);
       }
 
       @Override
-      protected ggn.a b(asa $$0) {
+      protected ggm.a b(asa $$0) {
          aqr $$1 = exh.O().ab();
          ars<InputStream> $$2 = $$1.a(aqp.a, feq.c);
          if ($$2 == null) {
-            return new ggn.a(new FileNotFoundException(feq.c.toString()));
+            return new ggm.a(new FileNotFoundException(feq.c.toString()));
          } else {
             try {
-               ggn.a var5;
+               ggm.a var5;
                try (InputStream $$3 = $$2.get()) {
-                  var5 = new ggn.a(new giq(true, true), erb.a($$3));
+                  var5 = new ggm.a(new gip(true, true), erb.a($$3));
                }
 
                return var5;
             } catch (IOException var9) {
-               return new ggn.a(var9);
+               return new ggm.a(var9);
             }
          }
       }

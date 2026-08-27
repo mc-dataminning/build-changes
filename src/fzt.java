@@ -1,60 +1,19 @@
-import org.joml.Matrix3f;
-import org.joml.Matrix4f;
+import com.google.common.collect.Maps;
+import java.util.Locale;
+import java.util.Map;
 
-public abstract class fzt<T extends chn> extends gas<T> {
-   public fzt(gat.a $$0) {
-      super($$0);
+public class fzt extends gby<cbd, fle<cbd>> {
+   private static final Map<cbd.d, aiy> a = ac.a(Maps.newHashMap(), $$0 -> {
+      for (cbd.d $$1 : cbd.d.values()) {
+         $$0.put($$1, new aiy(String.format(Locale.ROOT, "textures/entity/axolotl/axolotl_%s.png", $$1.b())));
+      }
+   });
+
+   public fzt(gas.a $$0) {
+      super($$0, new fle<>($$0.a(fpb.f)), 0.5F);
    }
 
-   public void a(T $$0, float $$1, float $$2, esa $$3, fvm $$4, int $$5) {
-      $$3.a();
-      $$3.a(a.d.rotationDegrees(awh.i($$2, $$0.M, $$0.dC()) - 90.0F));
-      $$3.a(a.f.rotationDegrees(awh.i($$2, $$0.N, $$0.dE())));
-      int $$6 = 0;
-      float $$7 = 0.0F;
-      float $$8 = 0.5F;
-      float $$9 = 0.0F;
-      float $$10 = 0.15625F;
-      float $$11 = 0.0F;
-      float $$12 = 0.15625F;
-      float $$13 = 0.15625F;
-      float $$14 = 0.3125F;
-      float $$15 = 0.05625F;
-      float $$16 = (float)$$0.e - $$2;
-      if ($$16 > 0.0F) {
-         float $$17 = -awh.a($$16 * 3.0F) * $$16;
-         $$3.a(a.f.rotationDegrees($$17));
-      }
-
-      $$3.a(a.b.rotationDegrees(45.0F));
-      $$3.b(0.05625F, 0.05625F, 0.05625F);
-      $$3.a(-4.0F, 0.0F, 0.0F);
-      ese $$18 = $$4.getBuffer(fvu.d(this.a($$0)));
-      esa.a $$19 = $$3.c();
-      Matrix4f $$20 = $$19.a();
-      Matrix3f $$21 = $$19.b();
-      this.a($$20, $$21, $$18, -7, -2, -2, 0.0F, 0.15625F, -1, 0, 0, $$5);
-      this.a($$20, $$21, $$18, -7, -2, 2, 0.15625F, 0.15625F, -1, 0, 0, $$5);
-      this.a($$20, $$21, $$18, -7, 2, 2, 0.15625F, 0.3125F, -1, 0, 0, $$5);
-      this.a($$20, $$21, $$18, -7, 2, -2, 0.0F, 0.3125F, -1, 0, 0, $$5);
-      this.a($$20, $$21, $$18, -7, 2, -2, 0.0F, 0.15625F, 1, 0, 0, $$5);
-      this.a($$20, $$21, $$18, -7, 2, 2, 0.15625F, 0.15625F, 1, 0, 0, $$5);
-      this.a($$20, $$21, $$18, -7, -2, 2, 0.15625F, 0.3125F, 1, 0, 0, $$5);
-      this.a($$20, $$21, $$18, -7, -2, -2, 0.0F, 0.3125F, 1, 0, 0, $$5);
-
-      for (int $$22 = 0; $$22 < 4; $$22++) {
-         $$3.a(a.b.rotationDegrees(90.0F));
-         this.a($$20, $$21, $$18, -8, -2, 0, 0.0F, 0.0F, 0, 1, 0, $$5);
-         this.a($$20, $$21, $$18, 8, -2, 0, 0.5F, 0.0F, 0, 1, 0, $$5);
-         this.a($$20, $$21, $$18, 8, 2, 0, 0.5F, 0.15625F, 0, 1, 0, $$5);
-         this.a($$20, $$21, $$18, -8, 2, 0, 0.0F, 0.15625F, 0, 1, 0, $$5);
-      }
-
-      $$3.b();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   public void a(Matrix4f $$0, Matrix3f $$1, ese $$2, int $$3, int $$4, int $$5, float $$6, float $$7, int $$8, int $$9, int $$10, int $$11) {
-      $$2.a($$0, (float)$$3, (float)$$4, (float)$$5).a(255, 255, 255, 255).a($$6, $$7).c(ggl.d).b($$11).a($$1, (float)$$8, (float)$$10, (float)$$9).e();
+   public aiy a(cbd $$0) {
+      return a.get($$0.gg());
    }
 }

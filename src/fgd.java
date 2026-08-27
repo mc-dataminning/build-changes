@@ -135,7 +135,7 @@ public abstract class fgd<T extends ckb> extends ffe implements fhi<T> {
    }
 
    public static void a(eyu $$0, int $$1, int $$2, int $$3) {
-      $$0.a(fvu.C(), $$1, $$2, $$1 + 16, $$2 + 16, -2130706433, -2130706433, $$3);
+      $$0.a(fvt.C(), $$1, $$2, $$1 + 16, $$2 + 16, -2130706433, -2130706433, $$3);
    }
 
    protected void a(eyu $$0, int $$1, int $$2) {
@@ -201,7 +201,7 @@ public abstract class fgd<T extends ckb> extends ffe implements fhi<T> {
       if ($$4.b() && $$1.d()) {
          Pair<aiy, aiy> $$12 = $$1.c();
          if ($$12 != null) {
-            ggu $$13 = this.f.a((aiy)$$12.getFirst()).apply((aiy)$$12.getSecond());
+            ggt $$13 = this.f.a((aiy)$$12.getFirst()).apply((aiy)$$12.getSecond());
             $$0.a($$2, $$3, 0, 16, 16, $$13);
             $$6 = true;
          }

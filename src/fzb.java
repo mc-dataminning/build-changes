@@ -1,64 +1,41 @@
-import java.util.Map.Entry;
-import org.joml.Vector3f;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
 
-public class fzb implements fyx.a {
+public class fzb implements fyw.a {
    private final exh a;
-   private static final int b = 2;
-   private static final float c = 0.09375F;
+   private static final int b = 10;
 
    public fzb(exh $$0) {
       this.a = $$0;
    }
 
    @Override
-   public void a(esa $$0, fvm $$1, double $$2, double $$3, double $$4) {
-      cvo $$5 = this.a.r;
-      ese $$6 = $$1.getBuffer(fvu.y());
-      hz $$7 = hz.a($$2, 0.0, $$4);
+   public void a(esa $$0, fvl $$1, double $$2, double $$3, double $$4) {
+      cvn $$5 = this.a.r;
+      hz $$6 = hz.a($$2, $$3, $$4);
+      LongSet $$7 = new LongOpenHashSet();
 
-      for (int $$8 = -2; $$8 <= 2; $$8++) {
-         for (int $$9 = -2; $$9 <= 2; $$9++) {
-            dnb $$10 = $$5.y($$7.b($$8 * 16, 0, $$9 * 16));
+      for (hz $$8 : hz.a($$6.b(-10, -10, -10), $$6.b(10, 10, 10))) {
+         int $$9 = $$5.a(cvw.a, $$8);
+         float $$10 = (float)(15 - $$9) / 15.0F * 0.5F + 0.16F;
+         int $$11 = awh.h($$10, 0.9F, 0.9F);
+         long $$12 = jb.e($$8.a());
+         if ($$7.add($$12)) {
+            fyw.a(
+               $$0,
+               $$1,
+               $$5.L().p().a(cvw.a, jb.a($$12)),
+               (double)jb.a(jb.b($$12), 8),
+               (double)jb.a(jb.c($$12), 8),
+               (double)jb.a(jb.d($$12), 8),
+               16711680,
+               0.3F
+            );
+         }
 
-            for (Entry<dqo.a, dqo> $$11 : $$10.e()) {
-               dqo.a $$12 = $$11.getKey();
-               cuu $$13 = $$10.f();
-               Vector3f $$14 = this.a($$12);
-
-               for (int $$15 = 0; $$15 < 16; $$15++) {
-                  for (int $$16 = 0; $$16 < 16; $$16++) {
-                     int $$17 = jb.a($$13.e, $$15);
-                     int $$18 = jb.a($$13.f, $$16);
-                     float $$19 = (float)((double)((float)$$5.a($$12, $$17, $$18) + (float)$$12.ordinal() * 0.09375F) - $$3);
-                     fvk.b(
-                        $$0,
-                        $$6,
-                        (double)((float)$$17 + 0.25F) - $$2,
-                        (double)$$19,
-                        (double)((float)$$18 + 0.25F) - $$4,
-                        (double)((float)$$17 + 0.75F) - $$2,
-                        (double)($$19 + 0.09375F),
-                        (double)((float)$$18 + 0.75F) - $$4,
-                        $$14.x(),
-                        $$14.y(),
-                        $$14.z(),
-                        1.0F
-                     );
-                  }
-               }
-            }
+         if ($$9 != 15) {
+            fyw.a($$0, $$1, String.valueOf($$9), (double)$$8.u() + 0.5, (double)$$8.v() + 0.25, (double)$$8.w() + 0.5, $$11);
          }
       }
-   }
-
-   private Vector3f a(dqo.a $$0) {
-      return switch ($$0) {
-         case a -> new Vector3f(1.0F, 1.0F, 0.0F);
-         case c -> new Vector3f(1.0F, 0.0F, 1.0F);
-         case b -> new Vector3f(0.0F, 0.7F, 0.0F);
-         case d -> new Vector3f(0.0F, 0.0F, 0.5F);
-         case e -> new Vector3f(0.0F, 0.3F, 0.3F);
-         case f -> new Vector3f(0.0F, 0.5F, 0.5F);
-      };
    }
 }

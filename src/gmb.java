@@ -1,53 +1,60 @@
-import it.unimi.dsi.fastutil.longs.LongArrayList;
-import it.unimi.dsi.fastutil.longs.LongList;
+import javax.annotation.Nullable;
 
-public final class gmb extends glz {
-   private static final long a = a(Runtime.getRuntime().maxMemory());
-   private final LongList b = new LongArrayList();
-   private final LongList c = new LongArrayList();
-   private final LongList d = new LongArrayList();
+public class gmb {
+   private boolean a;
+   @Nullable
+   private glv.b b;
+   @Nullable
+   private String c;
+   @Nullable
+   private final String d;
 
-   @Override
-   public void a(glt $$0) {
-      if (exh.O().A()) {
-         super.a($$0);
+   public gmb(@Nullable String $$0) {
+      this.d = $$0;
+   }
+
+   public void a(glw.a $$0) {
+      if (this.c != null) {
+         $$0.a(glv.j, !this.c.equals("vanilla"));
+      }
+
+      $$0.a(glv.k, this.a());
+   }
+
+   private glv.c a() {
+      fqi $$0 = exh.O().Q();
+      if ($$0 != null && $$0.e()) {
+         return glv.c.a;
+      } else {
+         return exh.O().S() ? glv.c.b : glv.c.c;
       }
    }
 
-   private void g() {
-      this.b.clear();
-      this.c.clear();
-      this.d.clear();
+   public boolean a(gls $$0) {
+      if (!this.a && this.b != null && this.c != null) {
+         this.a = true;
+         $$0.send(glt.b, $$0x -> {
+            $$0x.a(glv.n, this.b);
+            if (this.d != null) {
+               $$0x.a(glv.o, this.d);
+            }
+         });
+         return true;
+      } else {
+         return false;
+      }
    }
 
-   @Override
-   public void f() {
-      this.b.add((long)exh.O().n());
-      this.h();
-      this.c.add(exh.O().o());
+   public void a(cvk $$0, boolean $$1) {
+      this.b = switch ($$0) {
+         case a -> $$1 ? glv.b.e : glv.b.a;
+         case b -> glv.b.b;
+         case c -> glv.b.c;
+         case d -> glv.b.d;
+      };
    }
 
-   private void h() {
-      long $$0 = Runtime.getRuntime().totalMemory();
-      long $$1 = Runtime.getRuntime().freeMemory();
-      long $$2 = $$0 - $$1;
-      this.d.add(a($$2));
-   }
-
-   @Override
-   public void b(glt $$0) {
-      $$0.send(glu.c, $$0x -> {
-         $$0x.a(glw.r, new LongArrayList(this.b));
-         $$0x.a(glw.s, new LongArrayList(this.c));
-         $$0x.a(glw.t, new LongArrayList(this.d));
-         $$0x.a(glw.u, this.e());
-         $$0x.a(glw.v, exh.O().m.aA());
-         $$0x.a(glw.w, (int)a);
-      });
-      this.g();
-   }
-
-   private static long a(long $$0) {
-      return $$0 / 1000L;
+   public void a(String $$0) {
+      this.c = $$0;
    }
 }

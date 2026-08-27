@@ -172,7 +172,7 @@ public class fai {
             GameProfile $$43 = $$41.a();
             if ($$21) {
                chh $$44 = this.q.r.b($$43.getId());
-               boolean $$45 = $$44 != null && gbu.e($$44);
+               boolean $$45 = $$44 != null && gbt.e($$44);
                boolean $$46 = $$44 != null && $$44.a(chi.g);
                fag.a($$0, $$41.g().a(), $$39, $$40, 8, $$46, $$45);
                $$39 += 9;

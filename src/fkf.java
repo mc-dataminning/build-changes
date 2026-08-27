@@ -89,7 +89,7 @@ public class fkf extends fad<fkf.a> {
          Optional<fkf.c> $$3 = this.d();
          if ($$3.isPresent()) {
             if ($$3.get().b()) {
-               this.c.ai().a(gkc.a(atk.zJ, 1.0F));
+               this.c.ai().a(gkb.a(atk.zJ, 1.0F));
                $$3.get().c();
             }
 
@@ -316,7 +316,7 @@ public class fkf extends fad<fkf.a> {
          }
 
          if (StringUtils.isEmpty($$10)) {
-            $$10 = ghz.a("selectWorld.world") + " " + ($$1 + 1);
+            $$10 = ghy.a("selectWorld.world") + " " + ($$1 + 1);
          }
 
          vq $$13 = this.f.s();
@@ -385,7 +385,7 @@ public class fkf extends fad<fkf.a> {
                return true;
             } else {
                if (this.b()) {
-                  this.d.ai().a(gkc.a(atk.zJ, 1.0F));
+                  this.d.ai().a(gkb.a(atk.zJ, 1.0F));
                   this.c();
                }
 

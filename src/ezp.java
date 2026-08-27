@@ -153,7 +153,7 @@ public class ezp {
    }
 
    protected List<String> b() {
-      gky $$0 = this.f.T();
+      gkx $$0 = this.f.T();
       fpy $$1 = this.f.J();
       uo $$2 = $$1.m();
       float $$3 = $$2.p();
@@ -321,7 +321,7 @@ public class ezp {
             }
          }
 
-         fvp $$47 = this.f.j.g();
+         fvo $$47 = this.f.j.g();
          if ($$47 != null) {
             $$25.add("Shader: " + $$47.a());
          }
@@ -337,7 +337,7 @@ public class ezp {
 
    @Nullable
    private aov n() {
-      gky $$0 = this.f.T();
+      gkx $$0 = this.f.T();
       return $$0 != null ? $$0.a(this.f.r.ae()) : null;
    }
 

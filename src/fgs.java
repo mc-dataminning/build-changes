@@ -367,13 +367,13 @@ public class fgs extends fgv<fgs.b> {
       if ($$0.isEmpty()) {
          this.p.k.addAll(O.l());
       } else {
-         gku<coz> $$1;
+         gkt<coz> $$1;
          if ($$0.startsWith("#")) {
             $$0 = $$0.substring(1);
-            $$1 = this.f.a(gkt.b);
+            $$1 = this.f.a(gks.b);
             this.a($$0);
          } else {
-            $$1 = this.f.a(gkt.a);
+            $$1 = this.f.a(gks.a);
          }
 
          this.p.k.addAll($$1.search($$0.toLowerCase(Locale.ROOT)));
@@ -457,7 +457,7 @@ public class fgs extends fgv<fgs.b> {
          exd $$2 = this.f.aB();
 
          for (int $$3 = 0; $$3 < 9; $$3++) {
-            fuq $$4 = $$2.a($$3);
+            fup $$4 = $$2.a($$3);
             if ($$4.isEmpty()) {
                for (int $$5 = 0; $$5 < 9; $$5++) {
                   if ($$5 == $$3) {
@@ -729,9 +729,9 @@ public class fgs extends fgv<fgs.b> {
    }
 
    public static void a(exh $$0, int $$1, boolean $$2, boolean $$3) {
-      fuo $$4 = $$0.s;
+      fun $$4 = $$0.s;
       exd $$5 = $$0.aB();
-      fuq $$6 = $$5.a($$1);
+      fup $$6 = $$5.a($$1);
       if ($$2) {
          for (int $$7 = 0; $$7 < chg.g(); $$7++) {
             coz $$8 = (coz)$$6.get($$7);

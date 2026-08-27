@@ -338,7 +338,7 @@ public class ezq extends ezf implements fak {
    }
 
    @Override
-   public void a(gll $$0) {
+   public void a(glk $$0) {
    }
 
    @Override
@@ -386,7 +386,7 @@ public class ezq extends ezf implements fak {
 
          if ($$9) {
             if ($$15) {
-               $$0.a(fvu.C(), $$16, $$11 - 1, $$16 + 1, $$11 + 1 + 9, -3092272);
+               $$0.a(fvt.C(), $$16, $$11 - 1, $$16 + 1, $$11 + 1 + 9, -3092272);
             } else {
                $$0.b(this.o, "_", $$16, $$11, $$5);
             }
@@ -420,7 +420,7 @@ public class ezq extends ezf implements fak {
          $$1 = this.B() + this.g;
       }
 
-      $$0.a(fvu.D(), $$1, $$2, $$3, $$4, -16776961);
+      $$0.a(fvt.D(), $$1, $$2, $$3, $$4, -16776961);
    }
 
    public void f(int $$0) {

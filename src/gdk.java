@@ -1,16 +1,17 @@
-public class gdk extends gbz<cau, foj<cau>> {
-   private static final aiy a = new aiy("textures/entity/turtle/big_sea_turtle.png");
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   public gdk(gat.a $$0) {
-      super($$0, new foj<>($$0.a(fpb.bJ)), 0.7F);
+public class gdk extends fzn<cbv, fmm<cbv>> {
+   private static final Map<bnu<?>, aiy> a = Maps.newHashMap(
+      ImmutableMap.of(bnu.bt, new aiy("textures/entity/horse/horse_zombie.png"), bnu.aM, new aiy("textures/entity/horse/horse_skeleton.png"))
+   );
+
+   public gdk(gas.a $$0, fpa $$1) {
+      super($$0, new fmm<>($$0.a($$1)), 1.0F);
    }
 
-   protected float a(cau $$0) {
-      float $$1 = super.b($$0);
-      return $$0.o_() ? $$1 * 0.83F : $$1;
-   }
-
-   public aiy b(cau $$0) {
-      return a;
+   public aiy a(cbv $$0) {
+      return a.get($$0.ai());
    }
 }

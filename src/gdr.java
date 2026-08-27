@@ -1,25 +1,22 @@
-public class gdr extends gas<cin> {
-   private static final aiy a = new aiy("textures/entity/projectiles/wind_charge.png");
-   private final fop f;
+public class gdr extends gby<cfd, foq<cfd>> {
+   private static final aiy a = new aiy("textures/entity/witch.png");
 
-   public gdr(gat.a $$0) {
-      super($$0);
-      this.f = new fop($$0.a(fpb.bP));
+   public gdr(gas.a $$0) {
+      super($$0, new foq<>($$0.a(fpb.bQ)), 0.5F);
+      this.a(new gfq<>(this, $$0.d()));
    }
 
-   public void a(cin $$0, float $$1, float $$2, esa $$3, fvm $$4, int $$5) {
-      float $$6 = (float)$$0.ag + $$2;
-      ese $$7 = $$4.getBuffer(fvu.a(a, this.a($$6) % 1.0F, 0.0F));
-      this.f.a($$0, 0.0F, 0.0F, $$6, 0.0F, 0.0F);
-      this.f.a($$3, $$7, $$5, ggl.d, 1.0F, 1.0F, 1.0F, 1.0F);
+   public void a(cfd $$0, float $$1, float $$2, esa $$3, fvl $$4, int $$5) {
+      this.f.b(!$$0.eT().b());
       super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   protected float a(float $$0) {
-      return $$0 * 0.03F;
+   public aiy a(cfd $$0) {
+      return a;
    }
 
-   public aiy a(cin $$0) {
-      return a;
+   protected void a(cfd $$0, esa $$1, float $$2) {
+      float $$3 = 0.9375F;
+      $$1.b(0.9375F, 0.9375F, 0.9375F);
    }
 }

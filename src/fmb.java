@@ -6,10 +6,10 @@ public abstract class fmb<T extends bno> extends fmx {
    public boolean e = true;
 
    protected fmb() {
-      this(fvu::e);
+      this(fvt::e);
    }
 
-   protected fmb(Function<aiy, fvu> $$0) {
+   protected fmb(Function<aiy, fvt> $$0) {
       super($$0);
    }
 

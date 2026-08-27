@@ -36,6 +36,6 @@ public class ezs extends fab {
    }
 
    @Override
-   public void a(gll $$0) {
+   public void a(glk $$0) {
    }
 }

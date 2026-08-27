@@ -78,11 +78,11 @@ public class fig extends fad<fig.a> {
       this.e();
    }
 
-   public void a(List<gkz> $$0) {
+   public void a(List<gky> $$0) {
       int $$1 = $$0.size() - this.Q.size();
       this.Q.clear();
 
-      for (gkz $$2 : $$0) {
+      for (gky $$2 : $$0) {
          this.Q.add(new fig.c(this.N, $$2));
       }
 
@@ -141,10 +141,10 @@ public class fig extends fad<fig.a> {
       private static final vq e = vq.c("selectServer.hiddenAddress");
       private final fic f;
       protected final exh a;
-      protected final gkz b;
+      protected final gky b;
       private long g;
 
-      protected c(fic $$0, gkz $$1) {
+      protected c(fic $$0, gky $$1) {
          this.f = $$0;
          this.b = $$1;
          this.a = exh.O();
@@ -172,7 +172,7 @@ public class fig extends fad<fig.a> {
          return false;
       }
 
-      public gkz b() {
+      public gky b() {
          return this.b;
       }
 

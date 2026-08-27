@@ -51,10 +51,10 @@ public class fkp implements fkk, fkl {
 
    static class a implements fkl {
       private final eor a;
-      private final Supplier<ght> b;
+      private final Supplier<ghs> b;
       private final List<fqg> c;
 
-      private a(eor $$0, List<fqg> $$1, Supplier<ght> $$2) {
+      private a(eor $$0, List<fqg> $$1, Supplier<ghs> $$2) {
          this.a = $$0;
          this.c = $$1;
          this.b = $$2;
@@ -74,7 +74,7 @@ public class fkp implements fkk, fkl {
             return Optional.empty();
          } else {
             GameProfile $$5 = $$2.get(awo.a().a($$2.size())).a();
-            Supplier<ght> $$6 = $$0.al().a($$5);
+            Supplier<ghs> $$6 = $$0.al().a($$5);
             return Optional.of(new fkp.a($$1, $$2, $$6));
          }
       }

@@ -1,118 +1,36 @@
-import java.util.EnumSet;
-import java.util.Objects;
-import javax.annotation.Nullable;
+public class fxu implements fxl<djn> {
+   public static final giw a = new giw(ggs.e, new aiy("entity/enchanting_table_book"));
+   private final flj b;
 
-public class fxu implements fxm<djj> {
-   private static final String a = "neck";
-   private static final String b = "front";
-   private static final String c = "back";
-   private static final String d = "left";
-   private static final String e = "right";
-   private static final String f = "top";
-   private static final String g = "bottom";
-   private final fpc h;
-   private final fpc i;
-   private final fpc j;
-   private final fpc k;
-   private final fpc l;
-   private final fpc m;
-   private final fpc n;
-   private final gix o = Objects.requireNonNull(fwb.c(djk.a));
-   private static final float p = 0.125F;
-
-   public fxu(fxn.a $$0) {
-      fpc $$1 = $$0.a(fpb.G);
-      this.h = $$1.b("neck");
-      this.m = $$1.b("top");
-      this.n = $$1.b("bottom");
-      fpc $$2 = $$0.a(fpb.H);
-      this.i = $$2.b("front");
-      this.j = $$2.b("back");
-      this.k = $$2.b("left");
-      this.l = $$2.b("right");
+   public fxu(fxm.a $$0) {
+      this.b = new flj($$0.a(fpb.n));
    }
 
-   public static fpi b() {
-      fpk $$0 = new fpk();
-      fpl $$1 = $$0.a();
-      fpg $$2 = new fpg(0.2F);
-      fpg $$3 = new fpg(-0.1F);
-      $$1.a(
-         "neck",
-         fph.c().a(0, 0).a(4.0F, 17.0F, 4.0F, 8.0F, 3.0F, 8.0F, $$3).a(0, 5).a(5.0F, 20.0F, 5.0F, 6.0F, 1.0F, 6.0F, $$2),
-         fpe.a(0.0F, 37.0F, 16.0F, (float) Math.PI, 0.0F, 0.0F)
-      );
-      fph $$4 = fph.c().a(-14, 13).a(0.0F, 0.0F, 0.0F, 14.0F, 0.0F, 14.0F);
-      $$1.a("top", $$4, fpe.a(1.0F, 16.0F, 1.0F, 0.0F, 0.0F, 0.0F));
-      $$1.a("bottom", $$4, fpe.a(1.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F));
-      return fpi.a($$0, 32, 32);
-   }
-
-   public static fpi c() {
-      fpk $$0 = new fpk();
-      fpl $$1 = $$0.a();
-      fph $$2 = fph.c().a(1, 0).a(0.0F, 0.0F, 0.0F, 14.0F, 16.0F, 0.0F, EnumSet.of(ie.c));
-      $$1.a("back", $$2, fpe.a(15.0F, 16.0F, 1.0F, 0.0F, 0.0F, (float) Math.PI));
-      $$1.a("left", $$2, fpe.a(1.0F, 16.0F, 1.0F, 0.0F, (float) (-Math.PI / 2), (float) Math.PI));
-      $$1.a("right", $$2, fpe.a(15.0F, 16.0F, 15.0F, 0.0F, (float) (Math.PI / 2), (float) Math.PI));
-      $$1.a("front", $$2, fpe.a(1.0F, 16.0F, 15.0F, (float) Math.PI, 0.0F, 0.0F));
-      return fpi.a($$0, 16, 16);
-   }
-
-   @Nullable
-   private static gix a(cou $$0) {
-      gix $$1 = fwb.c(djk.a($$0));
-      if ($$1 == null) {
-         $$1 = fwb.c(djk.a(cpc.qK));
-      }
-
-      return $$1;
-   }
-
-   public void a(djj $$0, float $$1, esa $$2, fvm $$3, int $$4, int $$5) {
+   public void a(djn $$0, float $$1, esa $$2, fvl $$3, int $$4, int $$5) {
       $$2.a();
-      ie $$6 = $$0.l();
-      $$2.a(0.5, 0.0, 0.5);
-      $$2.a(a.d.rotationDegrees(180.0F - $$6.p()));
-      $$2.a(-0.5, 0.0, -0.5);
-      djj.b $$7 = $$0.i;
-      if ($$7 != null && $$0.i() != null) {
-         float $$8 = ((float)($$0.i().X() - $$0.h) + $$1) / (float)$$7.c;
-         if ($$8 >= 0.0F && $$8 <= 1.0F) {
-            if ($$7 == djj.b.a) {
-               float $$9 = 0.015625F;
-               float $$10 = $$8 * (float) (Math.PI * 2);
-               float $$11 = -1.5F * (awh.b($$10) + 0.5F) * awh.a($$10 / 2.0F);
-               $$2.a(a.b.rotation($$11 * 0.015625F), 0.5F, 0.0F, 0.5F);
-               float $$12 = awh.a($$10);
-               $$2.a(a.f.rotation($$12 * 0.015625F), 0.5F, 0.0F, 0.5F);
-            } else {
-               float $$13 = awh.a(-$$8 * 3.0F * (float) Math.PI) * 0.125F;
-               float $$14 = 1.0F - $$8;
-               $$2.a(a.d.rotation($$13 * $$14), 0.5F, 0.0F, 0.5F);
-            }
-         }
+      $$2.a(0.5F, 0.75F, 0.5F);
+      float $$6 = (float)$$0.a + $$1;
+      $$2.a(0.0F, 0.1F + awh.a($$6 * 0.1F) * 0.01F, 0.0F);
+      float $$7 = $$0.h - $$0.i;
+
+      while ($$7 >= (float) Math.PI) {
+         $$7 -= (float) (Math.PI * 2);
       }
 
-      ese $$15 = this.o.a($$3, fvu::c);
-      this.h.a($$2, $$15, $$4, $$5);
-      this.m.a($$2, $$15, $$4, $$5);
-      this.n.a($$2, $$15, $$4, $$5);
-      djj.a $$16 = $$0.m();
-      this.a(this.i, $$2, $$3, $$4, $$5, a($$16.e()));
-      this.a(this.j, $$2, $$3, $$4, $$5, a($$16.b()));
-      this.a(this.k, $$2, $$3, $$4, $$5, a($$16.c()));
-      this.a(this.l, $$2, $$3, $$4, $$5, a($$16.d()));
+      while ($$7 < (float) -Math.PI) {
+         $$7 += (float) (Math.PI * 2);
+      }
+
+      float $$8 = $$0.i + $$7 * $$1;
+      $$2.a(a.d.rotation(-$$8));
+      $$2.a(a.f.rotationDegrees(80.0F));
+      float $$9 = awh.i($$1, $$0.c, $$0.b);
+      float $$10 = awh.h($$9 + 0.25F) * 1.6F - 0.3F;
+      float $$11 = awh.h($$9 + 0.75F) * 1.6F - 0.3F;
+      float $$12 = awh.i($$1, $$0.g, $$0.f);
+      this.b.a($$6, awh.a($$10, 0.0F, 1.0F), awh.a($$11, 0.0F, 1.0F), $$12);
+      ese $$13 = a.a($$3, fvt::c);
+      this.b.b($$2, $$13, $$4, $$5, 1.0F, 1.0F, 1.0F, 1.0F);
       $$2.b();
-   }
-
-   private void a(fpc $$0, esa $$1, fvm $$2, int $$3, int $$4, @Nullable gix $$5) {
-      if ($$5 == null) {
-         $$5 = a(cpc.qK);
-      }
-
-      if ($$5 != null) {
-         $$0.a($$1, $$5.a($$2, fvu::c), $$3, $$4);
-      }
    }
 }

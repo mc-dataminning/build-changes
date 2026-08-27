@@ -1,53 +1,41 @@
-public class fxj implements fxm<dip> {
-   private final fpc a;
-   private final fpc b;
+public class fxj implements fxl<dir> {
+   public static final giw a = new giw(ggs.e, new aiy("entity/bell/bell_body"));
+   private static final String b = "bell_body";
+   private final fpc c;
 
-   public fxj(fxn.a $$0) {
-      this.a = $$0.a(fpb.j);
-      this.b = $$0.a(fpb.i);
+   public fxj(fxm.a $$0) {
+      fpc $$1 = $$0.a(fpb.l);
+      this.c = $$1.b("bell_body");
    }
 
    public static fpi b() {
       fpk $$0 = new fpk();
       fpl $$1 = $$0.a();
-      $$1.a("main", fph.c().a(0, 0).a(0.0F, 0.0F, 0.0F, 16.0F, 16.0F, 6.0F), fpe.a);
-      $$1.a("left_leg", fph.c().a(50, 6).a(0.0F, 6.0F, 0.0F, 3.0F, 3.0F, 3.0F), fpe.b((float) (Math.PI / 2), 0.0F, (float) (Math.PI / 2)));
-      $$1.a("right_leg", fph.c().a(50, 18).a(-16.0F, 6.0F, 0.0F, 3.0F, 3.0F, 3.0F), fpe.b((float) (Math.PI / 2), 0.0F, (float) Math.PI));
-      return fpi.a($$0, 64, 64);
+      fpl $$2 = $$1.a("bell_body", fph.c().a(0, 0).a(-3.0F, -6.0F, -3.0F, 6.0F, 7.0F, 6.0F), fpe.a(8.0F, 12.0F, 8.0F));
+      $$2.a("bell_base", fph.c().a(0, 13).a(4.0F, 4.0F, 4.0F, 8.0F, 2.0F, 8.0F), fpe.a(-8.0F, -12.0F, -8.0F));
+      return fpi.a($$0, 32, 32);
    }
 
-   public static fpi c() {
-      fpk $$0 = new fpk();
-      fpl $$1 = $$0.a();
-      $$1.a("main", fph.c().a(0, 22).a(0.0F, 0.0F, 0.0F, 16.0F, 16.0F, 6.0F), fpe.a);
-      $$1.a("left_leg", fph.c().a(50, 0).a(0.0F, 6.0F, -16.0F, 3.0F, 3.0F, 3.0F), fpe.b((float) (Math.PI / 2), 0.0F, 0.0F));
-      $$1.a("right_leg", fph.c().a(50, 12).a(-16.0F, 6.0F, -16.0F, 3.0F, 3.0F, 3.0F), fpe.b((float) (Math.PI / 2), 0.0F, (float) (Math.PI * 3.0 / 2.0)));
-      return fpi.a($$0, 64, 64);
-   }
-
-   public void a(dip $$0, float $$1, esa $$2, fvm $$3, int $$4, int $$5) {
-      gix $$6 = fwb.p[$$0.d().a()];
-      cvn $$7 = $$0.i();
-      if ($$7 != null) {
-         dlf $$8 = $$0.r();
-         dav.c<? extends dip> $$9 = dav.a(div.y, cyh::h, cyh::g, czr.c, $$8, $$7, $$0.aE_(), ($$0x, $$1x) -> false);
-         int $$10 = $$9.apply(new fxp<>()).get($$4);
-         this.a($$2, $$3, $$8.c(cyh.b) == dls.a ? this.a : this.b, $$8.c(cyh.aE), $$6, $$10, $$5, false);
-      } else {
-         this.a($$2, $$3, this.a, ie.d, $$6, $$4, $$5, false);
-         this.a($$2, $$3, this.b, ie.d, $$6, $$4, $$5, true);
+   public void a(dir $$0, float $$1, esa $$2, fvl $$3, int $$4, int $$5) {
+      float $$6 = (float)$$0.a + $$1;
+      float $$7 = 0.0F;
+      float $$8 = 0.0F;
+      if ($$0.b) {
+         float $$9 = awh.a($$6 / (float) Math.PI) / (4.0F + $$6 / 3.0F);
+         if ($$0.c == ie.c) {
+            $$7 = -$$9;
+         } else if ($$0.c == ie.d) {
+            $$7 = $$9;
+         } else if ($$0.c == ie.f) {
+            $$8 = -$$9;
+         } else if ($$0.c == ie.e) {
+            $$8 = $$9;
+         }
       }
-   }
 
-   private void a(esa $$0, fvm $$1, fpc $$2, ie $$3, gix $$4, int $$5, int $$6, boolean $$7) {
-      $$0.a();
-      $$0.a(0.0F, 0.5625F, $$7 ? -1.0F : 0.0F);
-      $$0.a(a.b.rotationDegrees(90.0F));
-      $$0.a(0.5F, 0.5F, 0.5F);
-      $$0.a(a.f.rotationDegrees(180.0F + $$3.p()));
-      $$0.a(-0.5F, -0.5F, -0.5F);
-      ese $$8 = $$4.a($$1, fvu::c);
-      $$2.a($$0, $$8, $$5, $$6);
-      $$0.b();
+      this.c.e = $$7;
+      this.c.g = $$8;
+      ese $$10 = a.a($$3, fvt::c);
+      this.c.a($$2, $$10, $$4, $$5);
    }
 }

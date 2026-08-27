@@ -1,13 +1,16 @@
-public abstract class fzo<T extends cbv, M extends fmm<T>> extends gbz<T, M> {
-   private final float a;
+public abstract class fzo<T extends cfg, M extends fou<T>> extends gbj<T, M> {
+   private static final aiy a = new aiy("textures/entity/zombie/zombie.png");
 
-   public fzo(gat.a $$0, M $$1, float $$2) {
-      super($$0, $$1, 0.75F);
-      this.a = $$2;
+   protected fzo(gas.a $$0, M $$1, M $$2, M $$3) {
+      super($$0, $$1, 0.5F);
+      this.a(new get<>(this, $$2, $$3, $$0.g()));
    }
 
-   protected void a(T $$0, esa $$1, float $$2) {
-      $$1.b(this.a, this.a, this.a);
-      super.a($$0, $$1, $$2);
+   public aiy a(cfg $$0) {
+      return a;
+   }
+
+   protected boolean b(T $$0) {
+      return super.a($$0) || $$0.gn();
    }
 }

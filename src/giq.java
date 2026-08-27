@@ -1,20 +1,14 @@
-public class giq {
-   public static final gir a = new gir();
-   public static final boolean b = false;
-   public static final boolean c = false;
-   private final boolean d;
-   private final boolean e;
+import com.google.gson.JsonObject;
 
-   public giq(boolean $$0, boolean $$1) {
-      this.d = $$0;
-      this.e = $$1;
+public class giq implements ara<gip> {
+   public gip b(JsonObject $$0) {
+      boolean $$1 = avx.a($$0, "blur", false);
+      boolean $$2 = avx.a($$0, "clamp", false);
+      return new gip($$1, $$2);
    }
 
-   public boolean a() {
-      return this.d;
-   }
-
-   public boolean b() {
-      return this.e;
+   @Override
+   public String a() {
+      return "texture";
    }
 }

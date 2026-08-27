@@ -1,11 +1,12 @@
-public class gcw extends gbz<cci, foa<cci>> {
-   private static final aiy a = new aiy("textures/entity/sniffer/sniffer.png");
+public class gcw extends gby<car, fob<car>> {
+   private static final aiy a = new aiy("textures/entity/snow_golem.png");
 
-   public gcw(gat.a $$0) {
-      super($$0, new foa<>($$0.a(fpb.bq)), 1.1F);
+   public gcw(gas.a $$0) {
+      super($$0, new fob<>($$0.a(fpb.br)), 0.5F);
+      this.a(new gfi(this, $$0.c(), $$0.b()));
    }
 
-   public aiy a(cci $$0) {
+   public aiy a(car $$0) {
       return a;
    }
 }

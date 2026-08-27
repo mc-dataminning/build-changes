@@ -221,7 +221,7 @@ public class fil extends ffe {
       return $$0.stream().map(Path::getFileName).map(Path::toString);
    }
 
-   private aiy a(ggv $$0, ari $$1) {
+   private aiy a(ggu $$0, ari $$1) {
       try {
          aiy var9;
          try (aqo $$2 = $$1.e()) {
@@ -235,7 +235,7 @@ public class fil extends ffe {
 
             try (InputStream $$6 = $$3.get()) {
                erb $$7 = erb.a($$6);
-               $$0.a($$5, new ggh($$7));
+               $$0.a($$5, new ggg($$7));
                var9 = $$5;
             }
          }

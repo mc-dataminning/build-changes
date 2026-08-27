@@ -167,8 +167,8 @@ public abstract class ezf implements fak, fbd, fcv, fda {
       return this.j && this.k && $$0 >= (double)this.B() && $$1 >= (double)this.C() && $$0 < (double)(this.B() + this.g) && $$1 < (double)(this.C() + this.h);
    }
 
-   public void a(gll $$0) {
-      $$0.a(gkc.a(atk.zJ, 1.0F));
+   public void a(glk $$0) {
+      $$0.a(gkb.a(atk.zJ, 1.0F));
    }
 
    @Override

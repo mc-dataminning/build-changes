@@ -1,7 +1,7 @@
-public class fsj extends fua {
-   private final ftv a;
+public class fsj extends ftz {
+   private final ftu a;
 
-   protected fsj(fpx $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, ftv $$7) {
+   protected fsj(fpx $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, ftu $$7) {
       super($$0, $$1, $$2, $$3);
       this.u = -0.1F;
       this.B = 0.9F;
@@ -19,8 +19,8 @@ public class fsj extends fua {
    }
 
    @Override
-   public fte b() {
-      return fte.b;
+   public ftd b() {
+      return ftd.b;
    }
 
    @Override
@@ -29,14 +29,14 @@ public class fsj extends fua {
       this.b(this.a);
    }
 
-   public static class a implements ftd<kc> {
-      private final ftv a;
+   public static class a implements ftc<kc> {
+      private final ftu a;
 
-      public a(ftv $$0) {
+      public a(ftu $$0) {
          this.a = $$0;
       }
 
-      public fta a(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      public fsz a(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
          return new fsj($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
       }
    }

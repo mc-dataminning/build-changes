@@ -1,29 +1,29 @@
 import javax.annotation.Nullable;
 
 public class fsl {
-   public static class a implements ftd<kc> {
-      private final ftv a;
+   public static class a implements ftc<kc> {
+      private final ftu a;
 
-      public a(ftv $$0) {
+      public a(ftu $$0) {
          this.a = $$0;
       }
 
-      public fta a(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      public fsz a(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
          fsl.b $$8 = new fsl.b($$1, $$2, $$3, $$4);
          $$8.a(this.a);
          return $$8;
       }
    }
 
-   public static class b extends fua {
+   public static class b extends ftz {
       b(fpx $$0, double $$1, double $$2, double $$3) {
          super($$0, $$1, $$2, $$3);
          this.t = 4;
       }
 
       @Override
-      public fte b() {
-         return fte.c;
+      public ftd b() {
+         return ftd.c;
       }
 
       @Override
@@ -38,16 +38,16 @@ public class fsl {
       }
    }
 
-   static class c extends ftm {
+   static class c extends ftl {
       private boolean b;
       private boolean F;
-      private final ftc G;
+      private final ftb G;
       private float H;
       private float I;
       private float J;
       private boolean K;
 
-      c(fpx $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, ftc $$7, ftv $$8) {
+      c(fpx $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, ftb $$7, ftu $$8) {
          super($$0, $$1, $$2, $$3, $$8, 0.1F);
          this.j = $$4;
          this.k = $$5;
@@ -94,27 +94,27 @@ public class fsl {
       }
    }
 
-   public static class d implements ftd<kc> {
-      private final ftv a;
+   public static class d implements ftc<kc> {
+      private final ftu a;
 
-      public d(ftv $$0) {
+      public d(ftu $$0) {
          this.a = $$0;
       }
 
-      public fta a(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      public fsz a(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
          fsl.c $$8 = new fsl.c($$1, $$2, $$3, $$4, $$5, $$6, $$7, exh.O().g, this.a);
          $$8.e(0.99F);
          return $$8;
       }
    }
 
-   public static class e extends fsy {
+   public static class e extends fsx {
       private int a;
-      private final ftc b;
+      private final ftb b;
       private tc D;
       private boolean E;
 
-      public e(fpx $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, ftc $$7, @Nullable sw $$8) {
+      public e(fpx $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, ftb $$7, @Nullable sw $$8) {
          super($$0, $$1, $$2, $$3);
          this.j = $$4;
          this.k = $$5;
@@ -237,7 +237,7 @@ public class fsl {
             float $$14 = (float)(($$13 & 0xFF0000) >> 16) / 255.0F;
             float $$15 = (float)(($$13 & 0xFF00) >> 8) / 255.0F;
             float $$16 = (float)(($$13 & 0xFF) >> 0) / 255.0F;
-            fta $$17 = this.b.a(jz.L, this.g, this.h, this.i, 0.0, 0.0, 0.0);
+            fsz $$17 = this.b.a(jz.L, this.g, this.h, this.i, 0.0, 0.0, 0.0);
             $$17.a($$14, $$15, $$16);
          }
 

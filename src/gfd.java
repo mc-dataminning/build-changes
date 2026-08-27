@@ -1,33 +1,48 @@
-public class gfd<T extends chh, M extends fmb<T> & flb & fmj> extends gex<T, M> {
-   private final fvi a;
-   private static final float b = (float) (-Math.PI / 6);
-   private static final float c = (float) (Math.PI / 2);
+public abstract class gfd<T extends bno, M extends fmb<T>> {
+   private final gcn<T, M> a;
 
-   public gfd(gco<T, M> $$0, fvi $$1) {
-      super($$0, $$1);
-      this.a = $$1;
+   public gfd(gcn<T, M> $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   protected void a(bog $$0, coz $$1, cow $$2, boa $$3, esa $$4, fvm $$5, int $$6) {
-      if ($$1.a(cpc.qW) && $$0.fp() == $$1 && $$0.aH == 0) {
-         this.a($$0, $$1, $$3, $$4, $$5, $$6);
-      } else {
-         super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+   protected static <T extends bog> void a(
+      fmb<T> $$0,
+      fmb<T> $$1,
+      aiy $$2,
+      esa $$3,
+      fvl $$4,
+      int $$5,
+      T $$6,
+      float $$7,
+      float $$8,
+      float $$9,
+      float $$10,
+      float $$11,
+      float $$12,
+      float $$13,
+      float $$14,
+      float $$15
+   ) {
+      if (!$$6.ce()) {
+         $$0.a($$1);
+         $$1.a($$6, $$7, $$8, $$12);
+         $$1.a($$6, $$7, $$8, $$9, $$10, $$11);
+         a($$1, $$2, $$3, $$4, $$5, $$6, $$13, $$14, $$15);
       }
    }
 
-   private void a(bog $$0, coz $$1, boa $$2, esa $$3, fvm $$4, int $$5) {
-      $$3.a();
-      fpc $$6 = this.c().d();
-      float $$7 = $$6.e;
-      $$6.e = awh.a($$6.e, (float) (-Math.PI / 6), (float) (Math.PI / 2));
-      $$6.a($$3);
-      $$6.e = $$7;
-      gej.a($$3, false);
-      boolean $$8 = $$2 == boa.a;
-      $$3.a(($$8 ? -2.5F : 2.5F) / 16.0F, -0.0625F, 0.0F);
-      this.a.a($$0, $$1, cow.f, false, $$3, $$4, $$5);
-      $$3.b();
+   protected static <T extends bog> void a(fmb<T> $$0, aiy $$1, esa $$2, fvl $$3, int $$4, T $$5, float $$6, float $$7, float $$8) {
+      ese $$9 = $$3.getBuffer(fvt.e($$1));
+      $$0.a($$2, $$9, $$4, gbt.c($$5, 0.0F), $$6, $$7, $$8, 1.0F);
    }
+
+   public M c() {
+      return this.a.a();
+   }
+
+   protected aiy a(T $$0) {
+      return this.a.a($$0);
+   }
+
+   public abstract void a(esa var1, fvl var2, int var3, T var4, float var5, float var6, float var7, float var8, float var9, float var10);
 }

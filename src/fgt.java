@@ -39,7 +39,7 @@ public class fgt {
    }
 
    private void a(clw $$0, aiy $$1, float $$2, eyu $$3, int $$4, int $$5) {
-      ggu $$6 = exh.O().a(ggt.e).apply($$1);
+      ggt $$6 = exh.O().a(ggs.e).apply($$1);
       $$3.a($$4 + $$0.f, $$5 + $$0.g, 0, 16, 16, $$6, 1.0F, 1.0F, 1.0F, $$2);
    }
 

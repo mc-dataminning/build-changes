@@ -2,7 +2,7 @@ import com.mojang.blaze3d.platform.TextureUtil;
 import java.nio.file.Path;
 import javax.annotation.Nullable;
 
-public class fby extends ggf implements ggg {
+public class fby extends gge implements ggf {
    private static final int e = 256;
    private final fbz f;
    private final boolean g;

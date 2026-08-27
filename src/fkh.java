@@ -3,7 +3,7 @@ import java.util.function.Supplier;
 
 public class fkh implements fkl {
    private final GameProfile a;
-   private final Supplier<ght> b;
+   private final Supplier<ghs> b;
    private final vq c;
 
    public fkh(GameProfile $$0) {

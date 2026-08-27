@@ -1,5 +1,5 @@
-public class frs extends fua {
-   private final ftv a;
+public class frs extends ftz {
+   private final ftu a;
 
    protected frs(
       fpx $$0,
@@ -13,7 +13,7 @@ public class frs extends fua {
       double $$8,
       double $$9,
       float $$10,
-      ftv $$11,
+      ftu $$11,
       float $$12,
       int $$13,
       float $$14,
@@ -42,8 +42,8 @@ public class frs extends fua {
    }
 
    @Override
-   public fte b() {
-      return fte.b;
+   public ftd b() {
+      return ftd.b;
    }
 
    @Override

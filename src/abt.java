@@ -34,7 +34,7 @@ public class abt implements xx<aag> {
       this.g = $$0.readFloat();
       this.h = $$0.readFloat();
       this.i = $$0.readInt();
-      this.k = jz.aY.decode($$0);
+      this.k = jz.aX.decode($$0);
    }
 
    private void a(vb $$0) {
@@ -47,7 +47,7 @@ public class abt implements xx<aag> {
       $$0.a(this.g);
       $$0.a(this.h);
       $$0.p(this.i);
-      jz.aY.encode($$0, this.k);
+      jz.aX.encode($$0, this.k);
    }
 
    @Override

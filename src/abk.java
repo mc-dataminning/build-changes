@@ -57,8 +57,8 @@ public class abk implements xx<aag> {
       this.h = $$0.readFloat();
       this.i = $$0.readFloat();
       this.l = $$0.b(cvf.a.class);
-      this.j = jz.aY.decode($$0);
-      this.k = jz.aY.decode($$0);
+      this.j = jz.aX.decode($$0);
+      this.k = jz.aX.decode($$0);
       this.m = atj.d.decode($$0);
    }
 
@@ -82,8 +82,8 @@ public class abk implements xx<aag> {
       $$0.a(this.h);
       $$0.a(this.i);
       $$0.a(this.l);
-      jz.aY.encode($$0, this.j);
-      jz.aY.encode($$0, this.k);
+      jz.aX.encode($$0, this.j);
+      jz.aX.encode($$0, this.k);
       atj.d.encode($$0, this.m);
    }
 

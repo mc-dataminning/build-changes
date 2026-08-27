@@ -1,34 +1,48 @@
-public abstract class gfn<T extends bog, M extends fng<T>> extends gfe<T, M> {
-   public gfn(gbu<T, M> $$0) {
+public class gfn extends gfd<cat, flt<cat>> {
+   private static final aiy a = new aiy("textures/entity/fish/tropical_a_pattern_1.png");
+   private static final aiy b = new aiy("textures/entity/fish/tropical_a_pattern_2.png");
+   private static final aiy c = new aiy("textures/entity/fish/tropical_a_pattern_3.png");
+   private static final aiy d = new aiy("textures/entity/fish/tropical_a_pattern_4.png");
+   private static final aiy e = new aiy("textures/entity/fish/tropical_a_pattern_5.png");
+   private static final aiy f = new aiy("textures/entity/fish/tropical_a_pattern_6.png");
+   private static final aiy g = new aiy("textures/entity/fish/tropical_b_pattern_1.png");
+   private static final aiy h = new aiy("textures/entity/fish/tropical_b_pattern_2.png");
+   private static final aiy i = new aiy("textures/entity/fish/tropical_b_pattern_3.png");
+   private static final aiy j = new aiy("textures/entity/fish/tropical_b_pattern_4.png");
+   private static final aiy k = new aiy("textures/entity/fish/tropical_b_pattern_5.png");
+   private static final aiy l = new aiy("textures/entity/fish/tropical_b_pattern_6.png");
+   private final foh<cat> m;
+   private final foi<cat> n;
+
+   public gfn(gcn<cat, flt<cat>> $$0, foy $$1) {
       super($$0);
+      this.m = new foh<>($$1.a(fpb.bI));
+      this.n = new foi<>($$1.a(fpb.bG));
    }
 
-   protected abstract int a(T var1);
+   public void a(esa $$0, fvl $$1, int $$2, cat $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      cat.b $$10 = $$3.gr();
 
-   protected abstract void a(esa var1, fvm var2, int var3, bno var4, float var5, float var6, float var7, float var8);
+      fmb<cat> $$11 = (fmb<cat>)(switch ($$10.a()) {
+         case a -> this.m;
+         case b -> this.n;
+      });
 
-   public void a(esa $$0, fvm $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      int $$10 = this.a($$3);
-      awo $$11 = awo.a((long)$$3.aj());
-      if ($$10 > 0) {
-         for (int $$12 = 0; $$12 < $$10; $$12++) {
-            $$0.a();
-            fpc $$13 = this.c().a($$11);
-            fpc.a $$14 = $$13.a($$11);
-            $$13.a($$0);
-            float $$15 = $$11.i();
-            float $$16 = $$11.i();
-            float $$17 = $$11.i();
-            float $$18 = awh.i($$15, $$14.a, $$14.d) / 16.0F;
-            float $$19 = awh.i($$16, $$14.b, $$14.e) / 16.0F;
-            float $$20 = awh.i($$17, $$14.c, $$14.f) / 16.0F;
-            $$0.a($$18, $$19, $$20);
-            $$15 = -1.0F * ($$15 * 2.0F - 1.0F);
-            $$16 = -1.0F * ($$16 * 2.0F - 1.0F);
-            $$17 = -1.0F * ($$17 * 2.0F - 1.0F);
-            this.a($$0, $$1, $$2, $$3, $$15, $$16, $$17, $$6);
-            $$0.b();
-         }
-      }
+      aiy $$12 = switch ($$10) {
+         case a -> a;
+         case b -> b;
+         case c -> c;
+         case d -> d;
+         case e -> e;
+         case f -> f;
+         case g -> g;
+         case h -> h;
+         case i -> i;
+         case j -> j;
+         case k -> k;
+         case l -> l;
+      };
+      float[] $$13 = $$3.gq().d();
+      a(this.c(), $$11, $$12, $$0, $$1, $$2, $$3, $$4, $$5, $$7, $$8, $$9, $$6, $$13[0], $$13[1], $$13[2]);
    }
 }

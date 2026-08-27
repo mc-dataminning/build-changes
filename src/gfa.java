@@ -1,25 +1,25 @@
-public class gfa extends gfe<cai, fna<cai>> {
-   private final fvi a;
+public class gfa<T extends chh> extends gfd<T, fng<T>> {
+   private final fnb a;
 
-   public gfa(gco<cai, fna<cai>> $$0, fvi $$1) {
+   public gfa(gcn<T, fng<T>> $$0, foy $$1) {
       super($$0);
-      this.a = $$1;
+      this.a = new fnb($$1.a(fpb.aC));
    }
 
-   public void a(esa $$0, fvm $$1, int $$2, cai $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      coz $$10 = $$3.c(bnv.a);
-      if ($$3.A() && !$$3.gy()) {
-         float $$11 = -0.6F;
-         float $$12 = 1.4F;
-         if ($$3.gm()) {
-            $$11 -= 0.2F * awh.a($$7 * 0.6F) + 0.2F;
-            $$12 -= 0.09F * awh.a($$7 * 0.6F);
-         }
+   public void a(esa $$0, fvl $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      this.a($$0, $$1, $$2, $$3, $$4, $$5, $$8, $$9, true);
+      this.a($$0, $$1, $$2, $$3, $$4, $$5, $$8, $$9, false);
+   }
 
+   private void a(esa $$0, fvl $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, boolean $$8) {
+      sw $$9 = $$8 ? $$3.gk() : $$3.gl();
+      bnu.a($$9.l("id")).filter($$0x -> $$0x == bnu.av).ifPresent($$10 -> {
          $$0.a();
-         $$0.a(0.1F, $$12, $$11);
-         this.a.a($$3, $$10, cow.h, false, $$0, $$1, $$2);
+         $$0.a($$8 ? 0.4F : -0.4F, $$3.bX() ? -1.3F : -1.5F, 0.0F);
+         caj.b $$11 = caj.b.a($$9.h("Variant"));
+         ese $$12 = $$1.getBuffer(this.a.a(gce.a($$11)));
+         this.a.a($$0, $$12, $$2, ggk.d, $$4, $$5, $$6, $$7, $$3.ag);
          $$0.b();
-      }
+      });
    }
 }

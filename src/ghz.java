@@ -1,26 +1,17 @@
-import java.util.IllegalFormatException;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ghz {
-   private static volatile sr a = sr.a();
+public record ghz(String b, String c, boolean d) {
+   public static final Codec<ghz> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               avp.v.fieldOf("region").forGetter(ghz::b),
+               avp.v.fieldOf("name").forGetter(ghz::c),
+               Codec.BOOL.optionalFieldOf("bidirectional", false).forGetter(ghz::d)
+            )
+            .apply($$0, ghz::new)
+   );
 
-   private ghz() {
-   }
-
-   static void a(sr $$0) {
-      a = $$0;
-   }
-
-   public static String a(String $$0, Object... $$1) {
-      String $$2 = a.a($$0);
-
-      try {
-         return String.format($$2, $$1);
-      } catch (IllegalFormatException var4) {
-         return "Format error: " + $$2;
-      }
-   }
-
-   public static boolean a(String $$0) {
-      return a.b($$0);
+   public vq a() {
+      return vq.b(this.c + " (" + this.b + ")");
    }
 }

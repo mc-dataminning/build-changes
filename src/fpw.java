@@ -143,7 +143,7 @@ public class fpw implements agw {
    public void a(vq $$0) {
       vq $$1 = this.k ? vp.q : vp.r;
       if (this.c != null && this.c.e()) {
-         this.b.a(new gms(this.d, $$1, $$0));
+         this.b.a(new gmr(this.d, $$1, $$0));
       } else {
          this.b.a(new feg(this.d, $$1, $$0));
       }
@@ -172,7 +172,7 @@ public class fpw implements agw {
       this.f.a(new ahf($$0.b(), null));
    }
 
-   public void a(String $$0) {
+   public void a(@Nullable String $$0) {
       this.i = $$0;
    }
 

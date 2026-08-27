@@ -1,64 +1,41 @@
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.io.IOException;
-import java.util.Optional;
-import java.util.function.UnaryOperator;
+import java.util.List;
 
-public class gfp<T extends bog & cgw, M extends fmb<T> & fol> extends gfe<T, M> {
-   private static final Int2ObjectMap<aiy> a = ac.a(new Int2ObjectOpenHashMap(), $$0 -> {
-      $$0.put(1, new aiy("stone"));
-      $$0.put(2, new aiy("iron"));
-      $$0.put(3, new aiy("gold"));
-      $$0.put(4, new aiy("emerald"));
-      $$0.put(5, new aiy("diamond"));
-   });
-   private final Object2ObjectMap<cgz, gih.a> b = new Object2ObjectOpenHashMap();
-   private final Object2ObjectMap<cgx, gih.a> c = new Object2ObjectOpenHashMap();
-   private final asa d;
-   private final String e;
+public class gfp<T extends cgl, M extends fon<T>> extends gfd<T, M> {
+   private final aiy a;
+   private final gfp.a<T> b;
+   private final gfp.b<T, M> c;
 
-   public gfp(gco<T, M> $$0, asa $$1, String $$2) {
+   public gfp(gcn<T, M> $$0, aiy $$1, gfp.a<T> $$2, gfp.b<T, M> $$3) {
       super($$0);
-      this.d = $$1;
-      this.e = $$2;
+      this.a = $$1;
+      this.b = $$2;
+      this.c = $$3;
    }
 
-   public void a(esa $$0, fvm $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+   public void a(esa $$0, fvl $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
       if (!$$3.ce()) {
-         cgv $$10 = $$3.gr();
-         cgz $$11 = $$10.a();
-         cgx $$12 = $$10.b();
-         gih.a $$13 = this.a(this.b, "type", kf.y, $$11);
-         gih.a $$14 = this.a(this.c, "profession", kf.z, $$12);
-         M $$15 = this.c();
-         $$15.a($$14 == gih.a.a || $$14 == gih.a.b && $$13 != gih.a.c);
-         aiy $$16 = this.a("type", kf.y.b($$11));
-         a($$15, $$16, $$0, $$1, $$2, $$3, 1.0F, 1.0F, 1.0F);
-         $$15.a(true);
-         if ($$12 != cgx.b && !$$3.o_()) {
-            aiy $$17 = this.a("profession", kf.z.b($$12));
-            a($$15, $$17, $$0, $$1, $$2, $$3, 1.0F, 1.0F, 1.0F);
-            if ($$12 != cgx.m) {
-               aiy $$18 = this.a("profession_level", (aiy)a.get(awh.a($$10.c(), 1, a.size())));
-               a($$15, $$18, $$0, $$1, $$2, $$3, 1.0F, 1.0F, 1.0F);
-            }
-         }
+         this.a();
+         ese $$10 = $$1.getBuffer(fvt.j(this.a));
+         this.c().a($$0, $$10, $$2, gbt.c($$3, 0.0F), 1.0F, 1.0F, 1.0F, this.b.apply($$3, $$6, $$7));
+         this.b();
       }
    }
 
-   private aiy a(String $$0, aiy $$1) {
-      return $$1.a((UnaryOperator<String>)($$1x -> "textures/entity/" + this.e + "/" + $$0 + "/" + $$1x + ".png"));
+   private void a() {
+      List<fpc> $$0 = this.c.getPartsToDraw(this.c());
+      this.c().a().e().forEach($$0x -> $$0x.l = true);
+      $$0.forEach($$0x -> $$0x.l = false);
    }
 
-   public <K> gih.a a(Object2ObjectMap<K, gih.a> $$0, String $$1, id<K> $$2, K $$3) {
-      return (gih.a)$$0.computeIfAbsent($$3, $$3x -> this.d.getResource(this.a($$1, $$2.b($$3))).flatMap($$0xx -> {
-            try {
-               return $$0xx.f().a(gih.a).map(gih::a);
-            } catch (IOException var2x) {
-               return Optional.empty();
-            }
-         }).orElse(gih.a.a));
+   private void b() {
+      this.c().a().e().forEach($$0 -> $$0.l = false);
+   }
+
+   public interface a<T extends cgl> {
+      float apply(T var1, float var2, float var3);
+   }
+
+   public interface b<T extends cgl, M extends fmb<T>> {
+      List<fpc> getPartsToDraw(M var1);
    }
 }

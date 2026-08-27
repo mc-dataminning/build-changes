@@ -1,4 +1,4 @@
-public class fry extends fua {
+public class fry extends ftz {
    fry(fpx $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, boolean $$7) {
       super($$0, $$1, $$2, $$3);
       this.d(3.0F);
@@ -34,18 +34,18 @@ public class fry extends fua {
    }
 
    @Override
-   public fte b() {
-      return fte.c;
+   public ftd b() {
+      return ftd.c;
    }
 
-   public static class a implements ftd<kc> {
-      private final ftv a;
+   public static class a implements ftc<kc> {
+      private final ftu a;
 
-      public a(ftv $$0) {
+      public a(ftu $$0) {
          this.a = $$0;
       }
 
-      public fta a(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      public fsz a(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
          fry $$8 = new fry($$1, $$2, $$3, $$4, $$5, $$6, $$7, false);
          $$8.e(0.9F);
          $$8.a(this.a);
@@ -53,14 +53,14 @@ public class fry extends fua {
       }
    }
 
-   public static class b implements ftd<kc> {
-      private final ftv a;
+   public static class b implements ftc<kc> {
+      private final ftu a;
 
-      public b(ftv $$0) {
+      public b(ftu $$0) {
          this.a = $$0;
       }
 
-      public fta a(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      public fsz a(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
          fry $$8 = new fry($$1, $$2, $$3, $$4, $$5, $$6, $$7, true);
          $$8.e(0.95F);
          $$8.a(this.a);

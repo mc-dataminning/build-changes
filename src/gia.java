@@ -1,17 +1,74 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.SortedMap;
+import java.util.TreeMap;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public record gia(String b, String c, boolean d) {
-   public static final Codec<gia> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               avp.v.fieldOf("region").forGetter(gia::b),
-               avp.v.fieldOf("name").forGetter(gia::c),
-               Codec.BOOL.optionalFieldOf("bidirectional", false).forGetter(gia::d)
-            )
-            .apply($$0, gia::new)
-   );
+public class gia implements asb {
+   private static final Logger a = LogUtils.getLogger();
+   private static final ghz b = new ghz("US", "English", false);
+   private Map<String, ghz> c = ImmutableMap.of("en_us", b);
+   private String d;
 
-   public vq a() {
-      return vq.b(this.c + " (" + this.b + ")");
+   public gia(String $$0) {
+      this.d = $$0;
+   }
+
+   private static Map<String, ghz> a(Stream<aqo> $$0) {
+      Map<String, ghz> $$1 = Maps.newHashMap();
+      $$0.forEach($$1x -> {
+         try {
+            gim $$2 = $$1x.a(gim.c);
+            if ($$2 != null) {
+               $$2.a().forEach($$1::putIfAbsent);
+            }
+         } catch (IOException | RuntimeException var3) {
+            a.warn("Unable to parse language metadata section of resourcepack: {}", $$1x.a(), var3);
+         }
+      });
+      return ImmutableMap.copyOf($$1);
+   }
+
+   @Override
+   public void a(asa $$0) {
+      this.c = a($$0.b());
+      List<String> $$1 = new ArrayList<>(2);
+      boolean $$2 = b.d();
+      $$1.add("en_us");
+      if (!this.d.equals("en_us")) {
+         ghz $$3 = this.c.get(this.d);
+         if ($$3 != null) {
+            $$1.add(this.d);
+            $$2 = $$3.d();
+         }
+      }
+
+      ghw $$4 = ghw.a($$0, $$1, $$2);
+      ghy.a($$4);
+      sr.a($$4);
+   }
+
+   public void a(String $$0) {
+      this.d = $$0;
+   }
+
+   public String a() {
+      return this.d;
+   }
+
+   public SortedMap<String, ghz> b() {
+      return new TreeMap<>(this.c);
+   }
+
+   @Nullable
+   public ghz b(String $$0) {
+      return this.c.get($$0);
    }
 }

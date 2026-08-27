@@ -12,7 +12,7 @@ import java.util.Set;
 public class fbx implements AutoCloseable {
    private static final awo a = awo.a();
    private static final float b = 32.0F;
-   private final ggv c;
+   private final ggu c;
    private final aiy d;
    private fcb e;
    private fcb f;
@@ -22,7 +22,7 @@ public class fbx implements AutoCloseable {
    private final Int2ObjectMap<IntList> j = new Int2ObjectOpenHashMap();
    private final List<fby> k = Lists.newArrayList();
 
-   public fbx(ggv $$0, aiy $$1) {
+   public fbx(ggu $$0, aiy $$1) {
       this.c = $$0;
       this.d = $$1;
    }

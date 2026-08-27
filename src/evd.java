@@ -3,7 +3,7 @@ import java.util.Collection;
 import java.util.List;
 import javax.annotation.Nullable;
 
-public class evd extends gmw {
+public class evd extends gmv {
    private static final vq a = vq.c("mco.selectServer.popup");
    private static final vq b = vq.c("mco.selectServer.close");
    private static final aiy c = new aiy("popup/background");

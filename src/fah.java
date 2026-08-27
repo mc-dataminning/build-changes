@@ -11,11 +11,11 @@ public class fah extends ezf {
    private static final float f = 30.0F;
    private static final float m = 50.0F;
    private final fah.a n;
-   private final Supplier<ght> o;
+   private final Supplier<ghs> o;
    private float p = -5.0F;
    private float q = 30.0F;
 
-   public fah(int $$0, int $$1, foy $$2, Supplier<ght> $$3) {
+   public fah(int $$0, int $$1, foy $$2, Supplier<ghs> $$3) {
       super(0, 0, $$0, $$1, vp.a);
       this.n = fah.a.a($$2);
       this.o = $$3;
@@ -42,7 +42,7 @@ public class fah extends ezf {
    }
 
    @Override
-   public void a(gll $$0) {
+   public void a(glk $$0) {
    }
 
    @Override
@@ -69,15 +69,15 @@ public class fah extends ezf {
          return new fah.a($$1, $$2);
       }
 
-      public void a(eyu $$0, ght $$1) {
+      public void a(eyu $$0, ghs $$1) {
          $$0.e();
          eqw.c();
          $$0.c().a();
          $$0.c().a(new Matrix4f().scaling(1.0F, 1.0F, -1.0F));
          $$0.c().a(0.0F, -1.5F, 0.0F);
-         fng<?> $$2 = $$1.e() == ght.a.a ? this.b : this.a;
-         fvu $$3 = $$2.a($$1.a());
-         $$2.a($$0.c(), $$0.d().getBuffer($$3), 15728880, ggl.d, 1.0F, 1.0F, 1.0F, 1.0F);
+         fng<?> $$2 = $$1.e() == ghs.a.a ? this.b : this.a;
+         fvt $$3 = $$2.a($$1.a());
+         $$2.a($$0.c(), $$0.d().getBuffer($$3), 15728880, ggk.d, 1.0F, 1.0F, 1.0F, 1.0F);
          $$0.c().b();
          $$0.e();
          eqw.b();

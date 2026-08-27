@@ -21,19 +21,19 @@ public class fpx extends cvn {
    final dpc e = new dpc();
    private final dpi<bno> f = new dpi<>(bno.class, new fpx.b());
    private final fpy D;
-   private final fvk E;
+   private final fvj E;
    private final fpx.a F;
-   private final fvb G;
+   private final fva G;
    private final bmf H;
    private final exh I = exh.O();
-   final List<ful> J = Lists.newArrayList();
+   final List<fuk> J = Lists.newArrayList();
    private final Map<String, ehz> K = Maps.newHashMap();
    private static final long L = 16777215L;
    private int M;
    private final Object2ObjectArrayMap<cuy, eym> N = ac.a(new Object2ObjectArrayMap(3), $$0x -> {
-      $$0x.put(fuy.a, new eym($$0xx -> this.b($$0xx, fuy.a)));
-      $$0x.put(fuy.b, new eym($$0xx -> this.b($$0xx, fuy.b)));
-      $$0x.put(fuy.c, new eym($$0xx -> this.b($$0xx, fuy.c)));
+      $$0x.put(fux.a, new eym($$0xx -> this.b($$0xx, fux.a)));
+      $$0x.put(fux.b, new eym($$0xx -> this.b($$0xx, fux.b)));
+      $$0x.put(fux.c, new eym($$0xx -> this.b($$0xx, fux.c)));
    });
    private final fpt O;
    private final Deque<Runnable> P = Queues.newArrayDeque();
@@ -81,14 +81,14 @@ public class fpx extends cvn {
       }
    }
 
-   public fpx(fpy $$0, fpx.a $$1, aix<cvn> $$2, ij<doo> $$3, int $$4, int $$5, Supplier<bil> $$6, fvk $$7, boolean $$8, long $$9) {
+   public fpx(fpy $$0, fpx.a $$1, aix<cvn> $$2, ij<doo> $$3, int $$4, int $$5, Supplier<bil> $$6, fvj $$7, boolean $$8, long $$9) {
       super($$1, $$2, $$0.f(), $$3, $$6, true, $$8, $$9, 1000000);
       this.D = $$0;
       this.O = new fpt(this, $$4);
       this.H = new bmf();
       this.F = $$1;
       this.E = $$7;
-      this.G = fvb.a($$3.a());
+      this.G = fva.a($$3.a());
       this.a(new hz(8, 64, 8), 0.0F);
       this.Q = $$5;
       this.S();
@@ -117,7 +117,7 @@ public class fpx extends cvn {
       return this.P.isEmpty();
    }
 
-   public fvb d() {
+   public fva d() {
       return this.G;
    }
 
@@ -362,13 +362,13 @@ public class fpx extends cvn {
    @Override
    public void a(@Nullable chh $$0, bno $$1, ij<atj> $$2, atl $$3, float $$4, float $$5, long $$6) {
       if ($$0 == this.I.s) {
-         this.I.ai().a((gkh)(new gjy($$2.a(), $$3, $$4, $$5, $$1, $$6)));
+         this.I.ai().a((gkg)(new gjx($$2.a(), $$3, $$4, $$5, $$1, $$6)));
       }
    }
 
    @Override
    public void a(bno $$0, atj $$1, atl $$2, float $$3, float $$4) {
-      this.I.ai().a((gkh)(new gjy($$1, $$2, $$3, $$4, $$0, this.z.g())));
+      this.I.ai().a((gkg)(new gjx($$1, $$2, $$3, $$4, $$0, this.z.g())));
    }
 
    @Override
@@ -378,7 +378,7 @@ public class fpx extends cvn {
 
    private void a(double $$0, double $$1, double $$2, atj $$3, atl $$4, float $$5, float $$6, boolean $$7, long $$8) {
       double $$9 = this.I.j.m().b().c($$0, $$1, $$2);
-      gkc $$10 = new gkc($$3, $$4, $$5, $$6, awo.a($$8), $$0, $$1, $$2);
+      gkb $$10 = new gkb($$3, $$4, $$5, $$6, awo.a($$8), $$0, $$1, $$2);
       if ($$7 && $$9 > 100.0) {
          double $$11 = Math.sqrt($$9) / 40.0;
          this.I.ai().a($$10, (int)($$11 * 20.0));
@@ -505,7 +505,7 @@ public class fpx extends cvn {
    }
 
    @Override
-   public List<ful> x() {
+   public List<fuk> x() {
       return this.J;
    }
 
@@ -847,8 +847,8 @@ public class fpx extends cvn {
       }
 
       public void e(bno $$0) {
-         if ($$0 instanceof ful) {
-            fpx.this.J.add((ful)$$0);
+         if ($$0 instanceof fuk) {
+            fpx.this.J.add((fuk)$$0);
          }
       }
 

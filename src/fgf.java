@@ -115,7 +115,7 @@ public abstract class fgf extends ffe {
       $$0.c().a(0.0F, 0.0F, 4.0F);
       Vector3f $$1 = this.o();
       $$0.c().b($$1.x(), $$1.y(), $$1.z());
-      int $$2 = this.c.a() ? this.c.b().g() : fya.a(this.c);
+      int $$2 = this.c.a() ? this.c.b().g() : fxz.a(this.c);
       boolean $$3 = this.m / 6 % 2 == 0;
       int $$4 = this.o.g();
       int $$5 = this.o.h();
@@ -157,7 +157,7 @@ public abstract class fgf extends ffe {
                int $$20 = this.i.b($$14.substring(0, $$18)) - this.i.b($$14) / 2;
                int $$21 = Math.min($$19, $$20);
                int $$22 = Math.max($$19, $$20);
-               $$0.a(fvu.D(), $$21, $$7, $$22, $$7 + this.b.c(), -16776961);
+               $$0.a(fvt.D(), $$21, $$7, $$22, $$7 + this.b.c(), -16776961);
             }
          }
       }

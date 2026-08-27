@@ -45,7 +45,7 @@ public class fjx extends ffe {
 
    private static vq a(ari $$0) {
       String $$1 = "dataPack." + $$0.f() + ".name";
-      return (vq)(ghz.a($$1) ? vq.c($$1) : $$0.a());
+      return (vq)(ghy.a($$1) ? vq.c($$1) : $$0.a());
    }
 
    @Override

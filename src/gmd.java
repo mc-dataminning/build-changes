@@ -1,22 +1,37 @@
 import java.time.Duration;
-import javax.annotation.Nullable;
+import java.time.Instant;
+import java.util.Optional;
 
 public class gmd {
-   private final boolean a;
-   @Nullable
-   private final Duration b;
+   private static final int a = -1;
+   private Optional<Instant> b = Optional.empty();
+   private long c;
+   private long d;
 
-   public gmd(boolean $$0, @Nullable Duration $$1) {
-      this.b = $$1;
-      this.a = $$0;
+   public void a() {
+      this.d = -1L;
+      if (this.b.isEmpty()) {
+         this.b = Optional.of(Instant.now());
+      }
    }
 
-   public void a(glt $$0) {
-      if (this.b != null) {
-         $$0.send(glu.d, $$0x -> {
-            $$0x.a(glw.x, (int)this.b.toMillis());
-            $$0x.a(glw.y, this.a);
-         });
+   public void a(long $$0) {
+      if (this.d != -1L) {
+         this.c = this.c + Math.max(0L, $$0 - this.d);
       }
+
+      this.d = $$0;
+   }
+
+   private int a(Instant $$0) {
+      Duration $$1 = Duration.between($$0, Instant.now());
+      return (int)$$1.toSeconds();
+   }
+
+   public void a(gls $$0) {
+      this.b.ifPresent($$1 -> $$0.send(glt.e, $$1x -> {
+            $$1x.a(glv.p, this.a($$1));
+            $$1x.a(glv.q, (int)this.c);
+         }));
    }
 }

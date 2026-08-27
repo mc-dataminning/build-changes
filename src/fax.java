@@ -26,7 +26,7 @@ public class fax extends faw {
 
    private void a(eyu $$0, int $$1, int $$2, int $$3, String $$4) {
       this.a($$0, $$4, $$1 + 1, $$3 + 1);
-      $$0.a(fvu.C(), $$1, $$1 + $$2 - 1, $$3, -1);
+      $$0.a(fvt.C(), $$1, $$1 + $$2 - 1, $$3, -1);
    }
 
    @Override

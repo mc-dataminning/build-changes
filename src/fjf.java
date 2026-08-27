@@ -367,7 +367,7 @@ public class fjf extends ffe {
       public class e extends fjf.a.b {
          private static final int c = 12;
          private final vq d;
-         private final Supplier<ght> e;
+         private final Supplier<ghs> e;
          private final boolean f;
 
          public e(GameProfile $$1, vq $$2, boolean $$3) {

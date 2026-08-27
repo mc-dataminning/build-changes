@@ -1,4 +1,4 @@
-public class frz extends fua {
+public class frz extends ftz {
    private static final float a = 0.0025F;
    private static final int b = 300;
    private static final int F = 300;
@@ -8,7 +8,7 @@ public class frz extends fua {
    private final float J;
    private final float K;
 
-   protected frz(fpx $$0, double $$1, double $$2, double $$3, ftv $$4) {
+   protected frz(fpx $$0, double $$1, double $$2, double $$3, ftu $$4) {
       super($$0, $$1, $$2, $$3);
       this.a($$4.a(this.r.a(12), 12));
       this.I = (float)Math.toRadians(this.r.h() ? -30.0 : 30.0);
@@ -23,8 +23,8 @@ public class frz extends fua {
    }
 
    @Override
-   public fte b() {
-      return fte.b;
+   public ftd b() {
+      return ftd.b;
    }
 
    @Override

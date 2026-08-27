@@ -1,6 +1,6 @@
 import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
 
-public class euw extends gmw {
+public class euw extends gmv {
    static final vq b = vq.c("mco.warning");
    static final vq c = vq.c("mco.info");
    private final euw.a v;

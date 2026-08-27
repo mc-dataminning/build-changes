@@ -130,7 +130,7 @@ public class ffn extends ffe implements ffo {
       public a(exh $$0) {
          super($$0, ffn.this.g, ffn.this.h - 96, 32, 10);
          ObjectArrayList<atr<aiy>> $$1 = new ObjectArrayList(atu.i.iterator());
-         $$1.sort(Comparator.comparing($$0x -> ghz.a(ffn.a($$0x))));
+         $$1.sort(Comparator.comparing($$0x -> ghy.a(ffn.a($$0x))));
          ObjectListIterator var4 = $$1.iterator();
 
          while (var4.hasNext()) {
@@ -273,7 +273,7 @@ public class ffn extends ffe implements ffo {
 
          if (this.n >= 0) {
             this.a(this.a(this.n));
-            this.c.ai().a(gkc.a(atk.zJ, 1.0F));
+            this.c.ai().a(gkb.a(atk.zJ, 1.0F));
             return true;
          } else {
             return super.a($$0, $$1);

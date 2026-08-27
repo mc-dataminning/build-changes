@@ -32,7 +32,7 @@ public abstract class euk {
 
    public abstract void a(int var1);
 
-   public static void a(eyu $$0, List<euk> $$1, gmv<?> $$2, int $$3, int $$4, int $$5, int $$6) {
+   public static void a(eyu $$0, List<euk> $$1, gmu<?> $$2, int $$3, int $$4, int $$5, int $$6) {
       for (euk $$7 : $$1) {
          if ($$2.b() > $$7.a()) {
             $$7.a($$0, $$3, $$4, $$5, $$6);
@@ -40,7 +40,7 @@ public abstract class euk {
       }
    }
 
-   public static void a(gmv<?> $$0, fad.a<?> $$1, List<euk> $$2, int $$3, double $$4, double $$5) {
+   public static void a(gmu<?> $$0, fad.a<?> $$1, List<euk> $$2, int $$3, double $$4, double $$5) {
       int $$6 = $$0.l().indexOf($$1);
       if ($$6 > -1) {
          $$0.a($$6);

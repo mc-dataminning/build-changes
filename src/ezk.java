@@ -352,7 +352,7 @@ public class ezk {
    }
 
    public class a {
-      private final fvr b;
+      private final fvq b;
       private final String c;
       private final List<Suggestion> d;
       private int e;
@@ -364,7 +364,7 @@ public class ezk {
       a(int $$1, int $$2, int $$3, List<Suggestion> $$4, boolean $$5) {
          int $$6 = $$1 - (ezk.this.g.f() ? 0 : 1);
          int $$7 = ezk.this.m ? $$2 - 3 - Math.min($$4.size(), ezk.this.l) * 12 : $$2 - (ezk.this.g.f() ? 1 : 0);
-         this.b = new fvr($$6, $$7, $$3 + 1, Math.min($$4.size(), ezk.this.l) * 12);
+         this.b = new fvq($$6, $$7, $$3 + 1, Math.min($$4.size(), ezk.this.l) * 12);
          this.c = ezk.this.g.a();
          this.i = $$5 ? -1 : 0;
          this.d = $$4;

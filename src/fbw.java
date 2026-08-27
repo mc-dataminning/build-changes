@@ -38,10 +38,10 @@ public class fbw implements aru, AutoCloseable {
    private final fbx f;
    private final List<eqd> g = new ArrayList<>();
    private final Map<aiy, fbx> h = new HashMap<>();
-   private final ggv i;
+   private final ggu i;
    private Map<aiy, aiy> j = ImmutableMap.of();
 
-   public fbw(ggv $$0) {
+   public fbw(ggu $$0) {
       this.i = $$0;
       this.f = ac.a(new fbx($$0, a), $$0x -> $$0x.a(Lists.newArrayList(new eqd[]{new fbu()})));
    }

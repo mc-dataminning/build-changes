@@ -1,19 +1,82 @@
+import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.Streams;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import java.lang.reflect.Type;
 import java.util.List;
+import java.util.Set;
+import java.util.Map.Entry;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
-public class fxc implements fwz {
-   public static final String a = "OR";
-   private final Iterable<? extends fwz> d;
+public class fxc {
+   private final fwy a;
+   private final fwv b;
 
-   public fxc(Iterable<? extends fwz> $$0) {
-      this.d = $$0;
+   public fxc(fwy $$0, fwv $$1) {
+      if ($$0 == null) {
+         throw new IllegalArgumentException("Missing condition for selector");
+      } else if ($$1 == null) {
+         throw new IllegalArgumentException("Missing variant for selector");
+      } else {
+         this.a = $$0;
+         this.b = $$1;
+      }
+   }
+
+   public fwv a() {
+      return this.b;
+   }
+
+   public Predicate<dlf> a(dlg<cyo, dlf> $$0) {
+      return this.a.getPredicate($$0);
    }
 
    @Override
-   public Predicate<dlf> getPredicate(dlg<cyo, dlf> $$0) {
-      List<Predicate<dlf>> $$1 = Streams.stream(this.d).map($$1x -> $$1x.getPredicate($$0)).collect(Collectors.toList());
-      return $$1x -> $$1.stream().anyMatch($$1xx -> $$1xx.test($$1x));
+   public boolean equals(Object $$0) {
+      return this == $$0;
+   }
+
+   @Override
+   public int hashCode() {
+      return System.identityHashCode(this);
+   }
+
+   public static class a implements JsonDeserializer<fxc> {
+      public fxc a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         JsonObject $$3 = $$0.getAsJsonObject();
+         return new fxc(this.b($$3), (fwv)$$2.deserialize($$3.get("apply"), fwv.class));
+      }
+
+      private fwy b(JsonObject $$0) {
+         return $$0.has("when") ? a(avx.u($$0, "when")) : fwy.b;
+      }
+
+      @VisibleForTesting
+      static fwy a(JsonObject $$0) {
+         Set<Entry<String, JsonElement>> $$1 = $$0.entrySet();
+         if ($$1.isEmpty()) {
+            throw new JsonParseException("No elements found in selector");
+         } else if ($$1.size() == 1) {
+            if ($$0.has("OR")) {
+               List<fwy> $$2 = Streams.stream(avx.v($$0, "OR")).map($$0x -> a($$0x.getAsJsonObject())).collect(Collectors.toList());
+               return new fxb($$2);
+            } else if ($$0.has("AND")) {
+               List<fwy> $$3 = Streams.stream(avx.v($$0, "AND")).map($$0x -> a($$0x.getAsJsonObject())).collect(Collectors.toList());
+               return new fwx($$3);
+            } else {
+               return a($$1.iterator().next());
+            }
+         } else {
+            return new fwx($$1.stream().map(fxc.a::a).collect(Collectors.toList()));
+         }
+      }
+
+      private static fwy a(Entry<String, JsonElement> $$0) {
+         return new fwz($$0.getKey(), $$0.getValue().getAsString());
+      }
    }
 }

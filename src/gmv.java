@@ -1,63 +1,34 @@
-import java.util.Collection;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.stream.Collectors;
 
-public abstract class gmv<E extends fad.a<E>> extends fad<E> {
-   protected gmv(int $$0, int $$1, int $$2, int $$3) {
-      super(exh.O(), $$0, $$1, $$2, $$3);
+public abstract class gmv extends ffe {
+   protected static final int k = 17;
+   protected static final int l = 7;
+   protected static final long m = 5368709120L;
+   protected static final int n = 5000268;
+   protected static final int o = 7105644;
+   protected static final int p = 8388479;
+   protected static final int q = 3368635;
+   protected static final int r = 7107012;
+   protected static final int t = 8226750;
+   protected static final int u = 8;
+   private final List<gmt> a = Lists.newArrayList();
+
+   public gmv(vq $$0) {
+      super($$0);
    }
 
-   public void p(int $$0) {
-      if ($$0 == -1) {
-         this.a(null);
-      } else if (super.n() != 0) {
-         this.a(this.d($$0));
-      }
+   protected static int g(int $$0) {
+      return 40 + $$0 * 13;
    }
 
-   @Override
-   public void a(int $$0) {
-      this.p($$0);
+   protected gmt a(gmt $$0) {
+      this.a.add($$0);
+      return this.a($$0);
    }
 
-   @Override
-   public int a() {
-      return 0;
-   }
-
-   @Override
-   public int c() {
-      return this.q() + this.b();
-   }
-
-   @Override
-   public int b() {
-      return (int)((double)this.g * 0.6);
-   }
-
-   @Override
-   public void a(Collection<E> $$0) {
-      super.a($$0);
-   }
-
-   @Override
-   public int n() {
-      return super.n();
-   }
-
-   @Override
-   public int g(int $$0) {
-      return super.g($$0);
-   }
-
-   @Override
-   public int q() {
-      return super.q();
-   }
-
-   public int a(E $$0) {
-      return super.b($$0);
-   }
-
-   public void H() {
-      this.m();
+   public vq o() {
+      return vp.a(this.a.stream().map(gmt::a).collect(Collectors.toList()));
    }
 }

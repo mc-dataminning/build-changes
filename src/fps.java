@@ -9,7 +9,7 @@ import org.slf4j.Logger;
 public class fps {
    private static final Logger a = LogUtils.getLogger();
    private final exh b;
-   private final gly c;
+   private final glx c;
    private final ak d = new ak();
    private final Map<af, ah> e = new Object2ObjectOpenHashMap();
    @Nullable
@@ -17,7 +17,7 @@ public class fps {
    @Nullable
    private af g;
 
-   public fps(exh $$0, gly $$1) {
+   public fps(exh $$0, glx $$1) {
       this.b = $$0;
       this.c = $$1;
    }

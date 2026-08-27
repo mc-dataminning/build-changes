@@ -1,16 +1,15 @@
-public class gjs extends gju {
+public class gjs extends gjt {
    public gjs(bzu $$0) {
-      super($$0, atk.bN, atl.g);
-      this.j = 0;
+      super($$0, atk.bO, atl.g);
    }
 
    @Override
-   protected gjq o() {
-      return new gjt(this.n);
+   protected gjp o() {
+      return new gjr(this.n);
    }
 
    @Override
    protected boolean p() {
-      return !this.n.aa_();
+      return this.n.aa_();
    }
 }

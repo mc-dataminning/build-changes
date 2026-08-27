@@ -1,94 +1,125 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Sets;
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
-import java.util.Set;
 
-public interface fvm {
-   static fvm.a a(erv $$0) {
-      return a(ImmutableMap.of(), $$0);
+public class fvm implements fvl {
+   private final fvl.a a;
+   private final fvl.a b = fvl.a(new erv(1536));
+   private int c = 255;
+   private int d = 255;
+   private int e = 255;
+   private int f = 255;
+
+   public fvm(fvl.a $$0) {
+      this.a = $$0;
    }
 
-   static fvm.a a(Map<fvu, erv> $$0, erv $$1) {
-      return new fvm.a($$1, $$0);
+   @Override
+   public ese getBuffer(fvt $$0) {
+      if ($$0.K()) {
+         ese $$1 = this.b.getBuffer($$0);
+         return new fvm.a($$1, this.c, this.d, this.e, this.f);
+      } else {
+         ese $$2 = this.a.getBuffer($$0);
+         Optional<fvt> $$3 = $$0.J();
+         if ($$3.isPresent()) {
+            ese $$4 = this.b.getBuffer($$3.get());
+            fvm.a $$5 = new fvm.a($$4, this.c, this.d, this.e, this.f);
+            return esh.a($$5, $$2);
+         } else {
+            return $$2;
+         }
+      }
    }
 
-   ese getBuffer(fvu var1);
+   public void a(int $$0, int $$1, int $$2, int $$3) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+   }
 
-   public static class a implements fvm {
-      protected final erv a;
-      protected final Map<fvu, erv> b;
-      protected Optional<fvu> c = Optional.empty();
-      protected final Set<erv> d = Sets.newHashSet();
+   public void a() {
+      this.b.b();
+   }
 
-      protected a(erv $$0, Map<fvu, erv> $$1) {
-         this.a = $$0;
-         this.b = $$1;
+   static class a extends erz {
+      private final ese f;
+      private double g;
+      private double h;
+      private double i;
+      private float j;
+      private float k;
+
+      a(ese $$0, int $$1, int $$2, int $$3, int $$4) {
+         this.f = $$0;
+         super.b($$1, $$2, $$3, $$4);
       }
 
       @Override
-      public ese getBuffer(fvu $$0) {
-         Optional<fvu> $$1 = $$0.N();
-         erv $$2 = this.b($$0);
-         if (!Objects.equals(this.c, $$1) || !$$0.M()) {
-            if (this.c.isPresent()) {
-               fvu $$3 = this.c.get();
-               if (!this.b.containsKey($$3)) {
-                  this.a($$3);
-               }
-            }
-
-            if (this.d.add($$2)) {
-               $$2.a($$0.I(), $$0.H());
-            }
-
-            this.c = $$1;
-         }
-
-         return $$2;
+      public void b(int $$0, int $$1, int $$2, int $$3) {
       }
 
-      private erv b(fvu $$0) {
-         return this.b.getOrDefault($$0, this.a);
+      @Override
+      public void l() {
       }
 
-      public void a() {
-         if (this.c.isPresent()) {
-            fvu $$0 = this.c.get();
-            if (!this.b.containsKey($$0)) {
-               this.a($$0);
-            }
-
-            this.c = Optional.empty();
-         }
+      @Override
+      public ese a(double $$0, double $$1, double $$2) {
+         this.g = $$0;
+         this.h = $$1;
+         this.i = $$2;
+         return this;
       }
 
-      public void b() {
-         this.c.ifPresent($$0x -> {
-            ese $$1 = this.getBuffer($$0x);
-            if ($$1 == this.a) {
-               this.a($$0x);
-            }
-         });
-
-         for (fvu $$0 : this.b.keySet()) {
-            this.a($$0);
-         }
+      @Override
+      public ese a(int $$0, int $$1, int $$2, int $$3) {
+         return this;
       }
 
-      public void a(fvu $$0) {
-         erv $$1 = this.b($$0);
-         boolean $$2 = Objects.equals(this.c, $$0.N());
-         if ($$2 || $$1 != this.a) {
-            if (this.d.remove($$1)) {
-               $$0.a($$1, RenderSystem.getVertexSorting());
-               if ($$2) {
-                  this.c = Optional.empty();
-               }
-            }
-         }
+      @Override
+      public ese a(float $$0, float $$1) {
+         this.j = $$0;
+         this.k = $$1;
+         return this;
+      }
+
+      @Override
+      public ese a(int $$0, int $$1) {
+         return this;
+      }
+
+      @Override
+      public ese b(int $$0, int $$1) {
+         return this;
+      }
+
+      @Override
+      public ese a(float $$0, float $$1, float $$2) {
+         return this;
+      }
+
+      @Override
+      public void a(
+         float $$0,
+         float $$1,
+         float $$2,
+         float $$3,
+         float $$4,
+         float $$5,
+         float $$6,
+         float $$7,
+         float $$8,
+         int $$9,
+         int $$10,
+         float $$11,
+         float $$12,
+         float $$13
+      ) {
+         this.f.a((double)$$0, (double)$$1, (double)$$2).a(this.b, this.c, this.d, this.e).a($$7, $$8).e();
+      }
+
+      @Override
+      public void e() {
+         this.f.a(this.g, this.h, this.i).a(this.b, this.c, this.d, this.e).a(this.j, this.k).e();
       }
    }
 }

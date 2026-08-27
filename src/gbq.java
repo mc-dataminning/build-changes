@@ -1,109 +1,191 @@
-import java.util.OptionalInt;
+import com.google.common.collect.Sets;
+import java.util.List;
+import java.util.Set;
+import javax.annotation.Nullable;
 
-public class gbq<T extends cdl> extends gas<T> {
-   private static final gjb g = gjb.c("item_frame", "map=false");
-   private static final gjb h = gjb.c("item_frame", "map=true");
-   private static final gjb i = gjb.c("glow_item_frame", "map=false");
-   private static final gjb j = gjb.c("glow_item_frame", "map=true");
-   public static final int a = 5;
-   public static final int f = 30;
-   private final gbr k;
-   private final fwg l;
+public class gbq implements asb {
+   public static final aiy a = new aiy("textures/misc/enchanted_glint_entity.png");
+   public static final aiy b = new aiy("textures/misc/enchanted_glint_item.png");
+   private static final Set<cou> k = Sets.newHashSet(new cou[]{cpc.a});
+   public static final int c = 8;
+   public static final int d = 8;
+   public static final int e = 200;
+   public static final float f = 0.5F;
+   public static final float g = 0.75F;
+   public static final float h = 0.0078125F;
+   private static final gja l = gja.c("trident", "inventory");
+   public static final gja i = gja.c("trident_in_hand", "inventory");
+   private static final gja m = gja.c("spyglass", "inventory");
+   public static final gja j = gja.c("spyglass_in_hand", "inventory");
+   private final exh n;
+   private final fvi o;
+   private final ggu p;
+   private final eyp q;
+   private final fuy r;
 
-   public gbq(gat.a $$0) {
-      super($$0);
-      this.k = $$0.b();
-      this.l = $$0.c();
+   public gbq(exh $$0, ggu $$1, giz $$2, eyp $$3, fuy $$4) {
+      this.n = $$0;
+      this.p = $$1;
+      this.o = new fvi($$2);
+      this.r = $$4;
+
+      for (cou $$5 : kf.h) {
+         if (!k.contains($$5)) {
+            this.o.a($$5, new gja(kf.h.b($$5), "inventory"));
+         }
+      }
+
+      this.q = $$3;
    }
 
-   protected int a(T $$0, hz $$1) {
-      return $$0.ai() == bnu.U ? Math.max(5, super.a($$0, $$1)) : super.a($$0, $$1);
+   public fvi a() {
+      return this.o;
    }
 
-   public void a(T $$0, float $$1, float $$2, esa $$3, fvm $$4, int $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      $$3.a();
-      ie $$6 = $$0.cE();
-      ens $$7 = this.a($$0, $$2);
-      $$3.a(-$$7.a(), -$$7.b(), -$$7.c());
-      double $$8 = 0.46875;
-      $$3.a((double)$$6.j() * 0.46875, (double)$$6.k() * 0.46875, (double)$$6.l() * 0.46875);
-      $$3.a(a.b.rotationDegrees($$0.dE()));
-      $$3.a(a.d.rotationDegrees(180.0F - $$0.dC()));
-      boolean $$9 = $$0.ce();
-      coz $$10 = $$0.G();
-      if (!$$9) {
-         gja $$11 = this.l.a().a();
-         gjb $$12 = this.a($$0, $$10);
+   private void a(git $$0, coz $$1, int $$2, int $$3, esa $$4, ese $$5) {
+      awo $$6 = awo.a();
+      long $$7 = 42L;
+
+      for (ie $$8 : ie.values()) {
+         $$6.b(42L);
+         this.a($$4, $$5, $$0.a(null, $$8, $$6), $$1, $$2, $$3);
+      }
+
+      $$6.b(42L);
+      this.a($$4, $$5, $$0.a(null, null, $$6), $$1, $$2, $$3);
+   }
+
+   public void a(coz $$0, cow $$1, boolean $$2, esa $$3, fvl $$4, int $$5, int $$6, git $$7) {
+      if (!$$0.b()) {
          $$3.a();
+         boolean $$8 = $$1 == cow.g || $$1 == cow.h || $$1 == cow.i;
+         if ($$8) {
+            if ($$0.a(cpc.vL)) {
+               $$7 = this.o.a().a(l);
+            } else if ($$0.a(cpc.qW)) {
+               $$7 = this.o.a().a(m);
+            }
+         }
+
+         $$7.f().a($$1).a($$2, $$3);
          $$3.a(-0.5F, -0.5F, -0.5F);
-         this.l.b().a($$3.c(), $$4.getBuffer(fwb.h()), null, $$11.a($$12), 1.0F, 1.0F, 1.0F, $$5, ggl.d);
+         if (!$$7.d() && (!$$0.a(cpc.vL) || $$8)) {
+            boolean $$10;
+            if ($$1 != cow.g && !$$1.b() && $$0.d() instanceof cms) {
+               cyo $$9 = ((cms)$$0.d()).e();
+               $$10 = !($$9 instanceof dce) && !($$9 instanceof dgg);
+            } else {
+               $$10 = true;
+            }
+
+            fvt $$12 = fvg.a($$0, $$10);
+            ese $$14;
+            if (a($$0) && $$0.C()) {
+               $$3.a();
+               esa.a $$13 = $$3.c();
+               if ($$1 == cow.g) {
+                  f.a($$13.a(), 0.5F);
+               } else if ($$1.b()) {
+                  f.a($$13.a(), 0.75F);
+               }
+
+               if ($$10) {
+                  $$14 = b($$4, $$12, $$13);
+               } else {
+                  $$14 = a($$4, $$12, $$13);
+               }
+
+               $$3.b();
+            } else if ($$10) {
+               $$14 = c($$4, $$12, true, $$0.C());
+            } else {
+               $$14 = b($$4, $$12, true, $$0.C());
+            }
+
+            this.a($$7, $$0, $$5, $$6, $$3, $$14);
+         } else {
+            this.r.a($$0, $$1, $$3, $$4, $$5, $$6);
+         }
+
          $$3.b();
       }
+   }
 
-      if (!$$10.b()) {
-         OptionalInt $$13 = $$0.H();
-         if ($$9) {
-            $$3.a(0.0F, 0.0F, 0.5F);
-         } else {
-            $$3.a(0.0F, 0.0F, 0.4375F);
+   private static boolean a(coz $$0) {
+      return $$0.a(auh.aD) || $$0.a(cpc.qV);
+   }
+
+   public static ese a(fvl $$0, fvt $$1, boolean $$2, boolean $$3) {
+      return $$3 ? esh.a($$0.getBuffer($$2 ? fvt.j() : fvt.k()), $$0.getBuffer($$1)) : $$0.getBuffer($$1);
+   }
+
+   public static ese a(fvl $$0, fvt $$1, esa.a $$2) {
+      return esh.a(new esb($$0.getBuffer(fvt.m()), $$2.a(), $$2.b(), 0.0078125F), $$0.getBuffer($$1));
+   }
+
+   public static ese b(fvl $$0, fvt $$1, esa.a $$2) {
+      return esh.a(new esb($$0.getBuffer(fvt.n()), $$2.a(), $$2.b(), 0.0078125F), $$0.getBuffer($$1));
+   }
+
+   public static ese b(fvl $$0, fvt $$1, boolean $$2, boolean $$3) {
+      if ($$3) {
+         return exh.M() && $$1 == fwa.j()
+            ? esh.a($$0.getBuffer(fvt.l()), $$0.getBuffer($$1))
+            : esh.a($$0.getBuffer($$2 ? fvt.m() : fvt.o()), $$0.getBuffer($$1));
+      } else {
+         return $$0.getBuffer($$1);
+      }
+   }
+
+   public static ese c(fvl $$0, fvt $$1, boolean $$2, boolean $$3) {
+      return $$3 ? esh.a($$0.getBuffer($$2 ? fvt.n() : fvt.p()), $$0.getBuffer($$1)) : $$0.getBuffer($$1);
+   }
+
+   private void a(esa $$0, ese $$1, List<fwi> $$2, coz $$3, int $$4, int $$5) {
+      boolean $$6 = !$$3.b();
+      esa.a $$7 = $$0.c();
+
+      for (fwi $$8 : $$2) {
+         int $$9 = -1;
+         if ($$6 && $$8.c()) {
+            $$9 = this.q.a($$3, $$8.d());
          }
 
-         int $$14 = $$13.isPresent() ? $$0.J() % 4 * 2 : $$0.J();
-         $$3.a(a.f.rotationDegrees((float)$$14 * 360.0F / 8.0F));
-         if ($$13.isPresent()) {
-            $$3.a(a.f.rotationDegrees(180.0F));
-            float $$15 = 0.0078125F;
-            $$3.b(0.0078125F, 0.0078125F, 0.0078125F);
-            $$3.a(-64.0F, -64.0F, 0.0F);
-            ehz $$16 = cpg.a($$13.getAsInt(), $$0.dM());
-            $$3.a(0.0F, 0.0F, -1.0F);
-            if ($$16 != null) {
-               int $$17 = this.a($$0, 15728850, $$5);
-               exh.O().j.j().a($$3, $$4, $$13.getAsInt(), $$16, true, $$17);
-            }
-         } else {
-            int $$18 = this.a($$0, 15728880, $$5);
-            $$3.b(0.5F, 0.5F, 0.5F);
-            this.k.a($$10, cow.i, $$18, ggl.d, $$3, $$4, $$0.dM(), $$0.aj());
-         }
+         float $$10 = (float)($$9 >> 16 & 0xFF) / 255.0F;
+         float $$11 = (float)($$9 >> 8 & 0xFF) / 255.0F;
+         float $$12 = (float)($$9 & 0xFF) / 255.0F;
+         $$1.a($$7, $$8, $$10, $$11, $$12, $$4, $$5);
       }
-
-      $$3.b();
    }
 
-   private int a(T $$0, int $$1, int $$2) {
-      return $$0.ai() == bnu.U ? $$1 : $$2;
-   }
-
-   private gjb a(T $$0, coz $$1) {
-      boolean $$2 = $$0.ai() == bnu.U;
-      if ($$1.a(cpc.rT)) {
-         return $$2 ? j : h;
+   public git a(coz $$0, @Nullable cvn $$1, @Nullable bog $$2, int $$3) {
+      git $$4;
+      if ($$0.a(cpc.vL)) {
+         $$4 = this.o.a().a(i);
+      } else if ($$0.a(cpc.qW)) {
+         $$4 = this.o.a().a(j);
       } else {
-         return $$2 ? i : g;
+         $$4 = this.o.a($$0);
+      }
+
+      fpx $$7 = $$1 instanceof fpx ? (fpx)$$1 : null;
+      git $$8 = $$4.g().a($$4, $$0, $$7, $$2, $$3);
+      return $$8 == null ? this.o.a().a() : $$8;
+   }
+
+   public void a(coz $$0, cow $$1, int $$2, int $$3, esa $$4, fvl $$5, @Nullable cvn $$6, int $$7) {
+      this.a(null, $$0, $$1, false, $$4, $$5, $$6, $$2, $$3, $$7);
+   }
+
+   public void a(@Nullable bog $$0, coz $$1, cow $$2, boolean $$3, esa $$4, fvl $$5, @Nullable cvn $$6, int $$7, int $$8, int $$9) {
+      if (!$$1.b()) {
+         git $$10 = this.a($$1, $$6, $$0, $$9);
+         this.a($$1, $$2, $$3, $$4, $$5, $$7, $$8, $$10);
       }
    }
 
-   public ens a(T $$0, float $$1) {
-      return new ens((double)((float)$$0.cE().j() * 0.3F), -0.25, (double)((float)$$0.cE().l() * 0.3F));
-   }
-
-   public aiy a(T $$0) {
-      return ggt.e;
-   }
-
-   protected boolean b(T $$0) {
-      if (exh.K() && !$$0.G().b() && $$0.G().B() && this.c.c == $$0) {
-         double $$1 = this.c.b($$0);
-         float $$2 = $$0.bV() ? 32.0F : 64.0F;
-         return $$1 < (double)($$2 * $$2);
-      } else {
-         return false;
-      }
-   }
-
-   protected void a(T $$0, vq $$1, esa $$2, fvm $$3, int $$4, float $$5) {
-      super.a($$0, $$0.G().z(), $$2, $$3, $$4, $$5);
+   @Override
+   public void a(asa $$0) {
+      this.o.b();
    }
 }

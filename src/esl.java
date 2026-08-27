@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 
-public class esl extends gmw {
+public class esl extends gmv {
    static final aiy a = new aiy("icon/info");
    static final aiy b = new aiy("icon/new_realm");
    static final aiy c = new aiy("realm_status/expired");
@@ -666,7 +666,7 @@ public class esl extends gmw {
       }
 
       private void c() {
-         esl.this.f.ai().a(gkc.a(atk.zJ, 1.0F));
+         esl.this.f.ai().a(gkb.a(atk.zJ, 1.0F));
          esl.this.f
             .a(
                new faj.a(esl.this, vq.c("mco.snapshot.createSnapshotPopup.title"))
@@ -980,7 +980,7 @@ public class esl extends gmw {
       }
    }
 
-   class j extends gmv<esl.e> {
+   class j extends gmu<esl.e> {
       public j() {
          super(esl.this.g, esl.this.h, 0, 36);
       }
@@ -1053,21 +1053,22 @@ public class esl extends gmw {
          int $$3 = this.b($$2);
          int $$4 = this.a($$1);
          int $$5 = this.c($$4);
-         if (this.d.m == eth.d.b) {
-            vq $$6 = vq.b(this.d.c()).a(n.h);
-            $$0.a(esl.this.i, vq.a("mco.selectServer.minigameName", $$6).b(-171), $$3, $$5, -1, false);
+         String $$6 = this.d.c();
+         if (this.d.m == eth.d.b && $$6 != null) {
+            vq $$7 = vq.b($$6).a(n.h);
+            $$0.a(esl.this.i, vq.a("mco.selectServer.minigameName", $$7).b(-171), $$3, $$5, -1, false);
          } else {
             $$0.a(esl.this.i, this.d.a(), $$3, this.c($$4), -8355712, false);
          }
       }
 
       private void d() {
-         esl.this.f.ai().a(gkc.a(atk.zJ, 1.0F));
+         esl.this.f.ai().a(gkb.a(atk.zJ, 1.0F));
          esl.a(this.d, esl.this);
       }
 
       private void e() {
-         esl.this.f.ai().a(gkc.a(atk.zJ, 1.0F));
+         esl.this.f.ai().a(gkb.a(atk.zJ, 1.0F));
          eus $$0 = new eus(esl.this, this.d);
          esl.this.f.a($$0);
       }

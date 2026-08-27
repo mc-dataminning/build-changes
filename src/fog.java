@@ -3,7 +3,7 @@ public class fog extends fmx {
    private final fpc b;
 
    public fog(fpc $$0) {
-      super(fvu::c);
+      super(fvt::c);
       this.b = $$0;
    }
 

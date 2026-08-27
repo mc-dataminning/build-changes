@@ -57,7 +57,7 @@ public class fiu extends fan {
       }
    }
 
-   private void a(eyu $$0, gbr $$1) {
+   private void a(eyu $$0, gbq $$1) {
       List<coz> $$2 = this.d.a();
       int $$3 = this.b ? -2 : 0;
       if ($$2.size() == 1) {

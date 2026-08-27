@@ -1,23 +1,24 @@
-public class gfr<T extends bog> extends gei<T, foq<T>> {
-   public gfr(gco<T, foq<T>> $$0, fvi $$1) {
-      super($$0, $$1);
+public class gfr extends geo<cdg, fos<cdg>> {
+   private static final aiy a = new aiy("textures/entity/wither/wither_armor.png");
+   private final fos<cdg> b;
+
+   public gfr(gcn<cdg, fos<cdg>> $$0, foy $$1) {
+      super($$0);
+      this.b = new fos<>($$1.a(fpb.bS));
    }
 
    @Override
-   public void a(esa $$0, fvm $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      coz $$10 = $$3.eT();
-      $$0.a();
-      if ($$10.a(cpc.sj)) {
-         this.c().d().a($$0);
-         this.c().e().a($$0);
-         $$0.a(0.0625F, 0.25F, 0.0F);
-         $$0.a(a.f.rotationDegrees(180.0F));
-         $$0.a(a.b.rotationDegrees(140.0F));
-         $$0.a(a.f.rotationDegrees(10.0F));
-         $$0.a(0.0F, -0.4F, 0.4F);
-      }
+   protected float a(float $$0) {
+      return awh.b($$0 * 0.02F) * 3.0F;
+   }
 
-      super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
-      $$0.b();
+   @Override
+   protected aiy a() {
+      return a;
+   }
+
+   @Override
+   protected fmb<cdg> b() {
+      return this.b;
    }
 }

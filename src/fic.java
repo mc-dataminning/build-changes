@@ -17,9 +17,9 @@ public class fic extends ffe {
    private ezh r;
    private ezh t;
    private fqi u;
-   private gla.b v;
+   private gkz.b v;
    @Nullable
-   private gla.a w;
+   private gkz.a w;
    private boolean x;
 
    public fic(ffe $$0) {
@@ -35,10 +35,10 @@ public class fic extends ffe {
          this.x = true;
          this.p = new fqj(this.f);
          this.p.a();
-         this.v = new gla.b();
+         this.v = new gkz.b();
 
          try {
-            this.w = new gla.a(this.v);
+            this.w = new gkz.a(this.v);
             this.w.start();
          } catch (Exception var8) {
             m.warn("Unable to start LAN server detection: {}", var8.getMessage());
@@ -51,11 +51,11 @@ public class fic extends ffe {
       this.d(this.l);
       this.r = this.d(ezh.a(vq.c("selectServer.select"), $$0 -> this.o()).a(100).a());
       ezh $$1 = this.d(ezh.a(vq.c("selectServer.direct"), $$0 -> {
-         this.u = new fqi(ghz.a("selectServer.defaultName"), "", fqi.c.c);
+         this.u = new fqi(ghy.a("selectServer.defaultName"), "", fqi.c.c);
          this.f.a(new fef(this, this::g, this.u));
       }).a(100).a());
       ezh $$2 = this.d(ezh.a(vq.c("selectServer.add"), $$0 -> {
-         this.u = new fqi(ghz.a("selectServer.defaultName"), "", fqi.c.c);
+         this.u = new fqi(ghy.a("selectServer.defaultName"), "", fqi.c.c);
          this.f.a(new feh(this, this::f, this.u));
       }).a(100).a());
       this.q = this.d(ezh.a(vq.c("selectServer.edit"), $$0 -> {
@@ -106,7 +106,7 @@ public class fic extends ffe {
    @Override
    public void e() {
       super.e();
-      List<gkz> $$0 = this.v.a();
+      List<gky> $$0 = this.v.a();
       if ($$0 != null) {
          this.l.a($$0);
       }
@@ -218,7 +218,7 @@ public class fic extends ffe {
       if ($$0 instanceof fig.d) {
          this.a(((fig.d)$$0).c());
       } else if ($$0 instanceof fig.c) {
-         gkz $$1 = ((fig.c)$$0).b();
+         gky $$1 = ((fig.c)$$0).b();
          this.a(new fqi($$1.a(), $$1.b(), fqi.c.a));
       }
    }

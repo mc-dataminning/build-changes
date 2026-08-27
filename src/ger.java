@@ -1,45 +1,34 @@
-public class ger extends gfe<cad, fmd<cad>> {
-   private final fvi a;
+public class ger extends gfd<cbx, fmm<cbx>> {
+   private final fmm<cbx> a;
 
-   public ger(gco<cad, fmd<cad>> $$0, fvi $$1) {
+   public ger(gcn<cbx, fmm<cbx>> $$0, foy $$1) {
       super($$0);
-      this.a = $$1;
+      this.a = new fmm<>($$1.a(fpb.am));
    }
 
-   public void a(esa $$0, fvm $$1, int $$2, cad $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      boolean $$10 = $$3.fD();
-      boolean $$11 = $$3.o_();
-      $$0.a();
-      if ($$11) {
-         float $$12 = 0.75F;
-         $$0.b(0.75F, 0.75F, 0.75F);
-         $$0.a(0.0F, 0.5F, 0.209375F);
-      }
-
-      $$0.a(this.c().a.b / 16.0F, this.c().a.c / 16.0F, this.c().a.d / 16.0F);
-      float $$13 = $$3.E($$6);
-      $$0.a(a.f.rotation($$13));
-      $$0.a(a.d.rotationDegrees($$8));
-      $$0.a(a.b.rotationDegrees($$9));
-      if ($$3.o_()) {
-         if ($$10) {
-            $$0.a(0.4F, 0.26F, 0.15F);
+   public void a(esa $$0, fvl $$1, int $$2, cbx $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      coz $$10 = $$3.u();
+      if ($$10.d() instanceof cmi $$11 && $$11.d() == cmi.a.a) {
+         this.c().a(this.a);
+         this.a.a($$3, $$4, $$5, $$6);
+         this.a.a($$3, $$4, $$5, $$7, $$8, $$9);
+         float $$15;
+         float $$16;
+         float $$14;
+         if ($$11 instanceof cnp) {
+            int $$13 = ((cnp)$$11).e_($$10);
+            $$14 = (float)($$13 >> 16 & 0xFF) / 255.0F;
+            $$15 = (float)($$13 >> 8 & 0xFF) / 255.0F;
+            $$16 = (float)($$13 & 0xFF) / 255.0F;
          } else {
-            $$0.a(0.06F, 0.26F, -0.5F);
+            $$14 = 1.0F;
+            $$15 = 1.0F;
+            $$16 = 1.0F;
          }
-      } else if ($$10) {
-         $$0.a(0.46F, 0.26F, 0.22F);
-      } else {
-         $$0.a(0.06F, 0.27F, -0.5F);
-      }
 
-      $$0.a(a.b.rotationDegrees(90.0F));
-      if ($$10) {
-         $$0.a(a.f.rotationDegrees(90.0F));
+         ese $$20 = $$1.getBuffer(fvt.e($$11.b()));
+         this.a.a($$0, $$20, $$2, ggk.d, $$14, $$15, $$16, 1.0F);
+         return;
       }
-
-      coz $$14 = $$3.c(bnv.a);
-      this.a.a($$3, $$14, cow.h, false, $$0, $$1, $$2);
-      $$0.b();
    }
 }

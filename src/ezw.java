@@ -23,7 +23,7 @@ public class ezw extends ezf {
    }
 
    @Override
-   public void a(gll $$0) {
+   public void a(glk $$0) {
    }
 
    @Override

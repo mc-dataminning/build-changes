@@ -69,7 +69,7 @@ public class fqa implements dz {
 
    @Override
    public boolean c(int $$0) {
-      fuo $$1 = this.b.s;
+      fun $$1 = this.b.s;
       return $$1 != null ? $$1.m($$0) : $$0 == 0;
    }
 

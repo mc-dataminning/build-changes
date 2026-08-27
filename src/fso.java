@@ -1,41 +1,23 @@
-import org.joml.Vector3f;
+public class fso extends ftz {
+   private final ftu a;
 
-public class fso extends fua {
-   private final Vector3f a = new Vector3f(0.5F, 0.5F, 0.5F);
-   private final Vector3f b = new Vector3f(1.0F, 1.0F, 1.0F);
-
-   fso(fpx $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+   protected fso(fpx $$0, double $$1, double $$2, double $$3, ftu $$4) {
       super($$0, $$1, $$2, $$3);
-      this.n = false;
-      this.j = $$4 + (double)awh.b(this.r, -0.4F, 0.4F);
-      this.l = $$6 + (double)awh.b(this.r, -0.4F, 0.4F);
-      double $$7 = Math.random() * 2.0;
-      double $$8 = Math.sqrt(this.j * this.j + this.k * this.k + this.l * this.l);
-      this.j = this.j / $$8 * $$7 * 0.4F;
-      this.l = this.l / $$8 * $$7 * 0.4F;
-      this.D *= 2.5F;
-      this.j *= 0.08F;
-      this.l *= 0.08F;
-      this.t = 18 + this.r.a(4);
+      this.a = $$4;
+      this.b($$4);
+      this.t = 12 + this.r.a(4);
+      this.D = 1.0F;
+      this.b(1.0F, 1.0F);
    }
 
    @Override
-   public void a(ese $$0, ews $$1, float $$2) {
-      this.f($$2);
-      super.a($$0, $$1, $$2);
-   }
-
-   private void f(float $$0) {
-      float $$1 = ((float)this.s + $$0) / (float)(this.t + 1);
-      Vector3f $$2 = new Vector3f(this.a).lerp(this.b, $$1);
-      this.v = $$2.x();
-      this.w = $$2.y();
-      this.x = $$2.z();
+   public ftd b() {
+      return ftd.d;
    }
 
    @Override
-   public fte b() {
-      return fte.c;
+   public int a(float $$0) {
+      return 15728880;
    }
 
    @Override
@@ -43,25 +25,19 @@ public class fso extends fua {
       if (this.s++ >= this.t) {
          this.k();
       } else {
-         this.d = this.g;
-         this.f = this.i;
-         this.a(this.j, 0.0, this.l);
-         this.j *= 0.99;
-         this.l *= 0.99;
+         this.b(this.a);
       }
    }
 
-   public static class a implements ftd<kc> {
-      private final ftv a;
+   public static class a implements ftc<kc> {
+      private final ftu a;
 
-      public a(ftv $$0) {
+      public a(ftu $$0) {
          this.a = $$0;
       }
 
-      public fta a(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         fso $$8 = new fso($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         return $$8;
+      public fsz a(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new fso($$1, $$2, $$3, $$4, this.a);
       }
    }
 }

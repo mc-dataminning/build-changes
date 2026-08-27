@@ -1,15 +1,71 @@
-public class fzx extends gbz<cdx, flh<cdx>> {
-   private static final aiy a = new aiy("textures/entity/blaze.png");
+import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.util.Pair;
+import java.util.Map;
+import java.util.stream.Stream;
+import org.joml.Quaternionf;
 
-   public fzx(gat.a $$0) {
-      super($$0, new flh<>($$0.a(fpb.m)), 0.5F);
+public class fzx extends gar<cjc> {
+   private final Map<cjc.b, Pair<aiy, fmt<cjc>>> a;
+
+   public fzx(gas.a $$0, boolean $$1) {
+      super($$0);
+      this.d = 0.8F;
+      this.a = Stream.of(cjc.b.values()).collect(ImmutableMap.toImmutableMap($$0x -> $$0x, $$2 -> Pair.of(new aiy(a($$2, $$1)), this.a($$0, $$2, $$1))));
    }
 
-   protected int a(cdx $$0, hz $$1) {
-      return 15;
+   private fmt<cjc> a(gas.a $$0, cjc.b $$1, boolean $$2) {
+      fpa $$3 = $$2 ? fpb.d($$1) : fpb.c($$1);
+      fpc $$4 = $$0.a($$3);
+      if ($$1 == cjc.b.i) {
+         return (fmt<cjc>)($$2 ? new flo($$4) : new fnn($$4));
+      } else {
+         return (fmt<cjc>)($$2 ? new fln($$4) : new fli($$4));
+      }
    }
 
-   public aiy a(cdx $$0) {
-      return a;
+   private static String a(cjc.b $$0, boolean $$1) {
+      return $$1 ? "textures/entity/chest_boat/" + $$0.a() + ".png" : "textures/entity/boat/" + $$0.a() + ".png";
+   }
+
+   public void a(cjc $$0, float $$1, float $$2, esa $$3, fvl $$4, int $$5) {
+      $$3.a();
+      $$3.a(0.0F, 0.375F, 0.0F);
+      $$3.a(a.d.rotationDegrees(180.0F - $$1));
+      float $$6 = (float)$$0.O() - $$2;
+      float $$7 = $$0.N() - $$2;
+      if ($$7 < 0.0F) {
+         $$7 = 0.0F;
+      }
+
+      if ($$6 > 0.0F) {
+         $$3.a(a.b.rotationDegrees(awh.a($$6) * $$6 * $$7 / 10.0F * (float)$$0.P()));
+      }
+
+      float $$8 = $$0.a($$2);
+      if (!awh.a($$8, 0.0F)) {
+         $$3.a(new Quaternionf().setAngleAxis($$0.a($$2) * (float) (Math.PI / 180.0), 1.0F, 0.0F, 1.0F));
+      }
+
+      Pair<aiy, fmt<cjc>> $$9 = this.a.get($$0.y());
+      aiy $$10 = (aiy)$$9.getFirst();
+      fmt<cjc> $$11 = (fmt<cjc>)$$9.getSecond();
+      $$3.b(-1.0F, -1.0F, 1.0F);
+      $$3.a(a.d.rotationDegrees(90.0F));
+      $$11.a($$0, $$2, 0.0F, -0.1F, 0.0F, 0.0F);
+      ese $$12 = $$4.getBuffer($$11.a($$10));
+      $$11.a($$3, $$12, $$5, ggk.d, 1.0F, 1.0F, 1.0F, 1.0F);
+      if (!$$0.be()) {
+         ese $$13 = $$4.getBuffer(fvt.i());
+         if ($$11 instanceof foo $$14) {
+            $$14.c().a($$3, $$13, $$5, ggk.d);
+         }
+      }
+
+      $$3.b();
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   public aiy a(cjc $$0) {
+      return (aiy)this.a.get($$0.y()).getFirst();
    }
 }

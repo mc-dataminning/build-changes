@@ -20,7 +20,7 @@ public class fjl extends ezn.a<fjl> {
    private final List<ezf> l;
    private final UUID m;
    private final String n;
-   private final Supplier<ght> o;
+   private final Supplier<ghs> o;
    private boolean p;
    private boolean q;
    private final boolean r;
@@ -51,7 +51,7 @@ public class fjl extends ezn.a<fjl> {
    public static final int d = avr.b.a(255, 255, 255, 255);
    public static final int e = avr.b.a(140, 255, 255, 255);
 
-   public fjl(exh $$0, fjo $$1, UUID $$2, String $$3, Supplier<ght> $$4, boolean $$5) {
+   public fjl(exh $$0, fjo $$1, UUID $$2, String $$3, Supplier<ghs> $$4, boolean $$5) {
       this.k = $$0;
       this.m = $$2;
       this.n = $$3;
@@ -171,7 +171,7 @@ public class fjl extends ezn.a<fjl> {
       return this.m;
    }
 
-   public Supplier<ght> d() {
+   public Supplier<ghs> d() {
       return this.o;
    }
 

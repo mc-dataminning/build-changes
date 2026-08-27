@@ -9,7 +9,7 @@ public class flf extends fmk<bzo> {
    private final fpc k;
 
    public flf(fpc $$0) {
-      super(fvu::d);
+      super(fvt::d);
       this.a = $$0;
       this.f = $$0.b("body");
       this.b = $$0.b("head");

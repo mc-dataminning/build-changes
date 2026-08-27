@@ -121,7 +121,7 @@ public class fgx extends fgd<ckv> {
       float $$9 = awh.a(awh.h($$5 + 0.75F) * 1.6F - 0.3F, 0.0F, 1.0F);
       this.M.a(0.0F, $$8, $$9, $$4);
       ese $$10 = $$0.d().getBuffer(this.M.a(K));
-      this.M.a($$0.c(), $$10, 15728880, ggl.d, 1.0F, 1.0F, 1.0F, 1.0F);
+      this.M.a($$0.c(), $$10, 15728880, ggk.d, 1.0F, 1.0F, 1.0F, 1.0F);
       $$0.e();
       $$0.c().b();
       eqw.b();

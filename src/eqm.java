@@ -210,7 +210,7 @@ public abstract class eqm {
       }
 
       exh $$3 = exh.O();
-      fwa $$4 = $$3.j.e;
+      fvz $$4 = $$3.j.e;
       $$4.a("DiffuseSampler", this.i);
       Matrix4f $$5 = new Matrix4f().setOrtho(0.0F, (float)$$0, (float)$$1, 0.0F, 1000.0F, 3000.0F);
       RenderSystem.setProjectionMatrix($$5, esi.b);

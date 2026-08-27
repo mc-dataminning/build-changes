@@ -1,73 +1,110 @@
-public class gmk implements gmp {
-   private static final int a = 6000;
-   private static final vq b = vq.c("tutorial.find_tree.title");
-   private static final vq c = vq.c("tutorial.find_tree.description");
-   private final gmo d;
-   private fbs e;
-   private int f;
+public class gmk implements gmo {
+   private static final int a = 40;
+   private static final int b = 40;
+   private static final int c = 100;
+   private static final int d = 20;
+   private static final int e = -1;
+   private static final vq f = vq.a("tutorial.move.title", gmn.a("forward"), gmn.a("left"), gmn.a("back"), gmn.a("right"));
+   private static final vq g = vq.a("tutorial.move.description", gmn.a("jump"));
+   private static final vq h = vq.c("tutorial.look.title");
+   private static final vq i = vq.c("tutorial.look.description");
+   private final gmn j;
+   private fbs k;
+   private fbs l;
+   private int m;
+   private int n;
+   private int o;
+   private boolean p;
+   private boolean q;
+   private int r = -1;
+   private int s = -1;
 
-   public gmk(gmo $$0) {
-      this.d = $$0;
+   public gmk(gmn $$0) {
+      this.j = $$0;
    }
 
    @Override
    public void a() {
-      this.f++;
-      if (!this.d.f()) {
-         this.d.a(gmq.f);
-      } else {
-         if (this.f == 1) {
-            fuo $$0 = this.d.e().s;
-            if ($$0 != null && (b($$0) || a($$0))) {
-               this.d.a(gmq.e);
-               return;
-            }
+      this.m++;
+      if (this.p) {
+         this.n++;
+         this.p = false;
+      }
+
+      if (this.q) {
+         this.o++;
+         this.q = false;
+      }
+
+      if (this.r == -1 && this.n > 40) {
+         if (this.k != null) {
+            this.k.c();
+            this.k = null;
          }
 
-         if (this.f >= 6000 && this.e == null) {
-            this.e = new fbs(fbs.a.c, b, c, false);
-            this.d.e().ay().a(this.e);
+         this.r = this.m;
+      }
+
+      if (this.s == -1 && this.o > 40) {
+         if (this.l != null) {
+            this.l.c();
+            this.l = null;
+         }
+
+         this.s = this.m;
+      }
+
+      if (this.r != -1 && this.s != -1) {
+         if (this.j.f()) {
+            this.j.a(gmp.b);
+         } else {
+            this.j.a(gmp.f);
+         }
+      }
+
+      if (this.k != null) {
+         this.k.a((float)this.n / 40.0F);
+      }
+
+      if (this.l != null) {
+         this.l.a((float)this.o / 40.0F);
+      }
+
+      if (this.m >= 100) {
+         if (this.r == -1 && this.k == null) {
+            this.k = new fbs(fbs.a.a, f, g, true);
+            this.j.e().ay().a(this.k);
+         } else if (this.r != -1 && this.m - this.r >= 20 && this.s == -1 && this.l == null) {
+            this.l = new fbs(fbs.a.b, h, i, true);
+            this.j.e().ay().a(this.l);
          }
       }
    }
 
    @Override
    public void b() {
-      if (this.e != null) {
-         this.e.c();
-         this.e = null;
+      if (this.k != null) {
+         this.k.c();
+         this.k = null;
+      }
+
+      if (this.l != null) {
+         this.l.c();
+         this.l = null;
       }
    }
 
    @Override
-   public void a(fpx $$0, enq $$1) {
-      if ($$1.c() == enq.a.b) {
-         dlf $$2 = $$0.a_(((eno)$$1).a());
-         if ($$2.a(atz.ai)) {
-            this.d.a(gmq.c);
-         }
+   public void a(ful $$0) {
+      if ($$0.c || $$0.d || $$0.e || $$0.f || $$0.g) {
+         this.p = true;
       }
    }
 
    @Override
-   public void a(coz $$0) {
-      if ($$0.a(auh.al)) {
-         this.d.a(gmq.e);
+   public void a(double $$0, double $$1) {
+      if (Math.abs($$0) > 0.01 || Math.abs($$1) > 0.01) {
+         this.q = true;
       }
-   }
-
-   private static boolean b(fuo $$0) {
-      return $$0.fT().a_($$0x -> $$0x.a(auh.al));
-   }
-
-   public static boolean a(fuo $$0) {
-      for (ij<cyo> $$1 : kf.e.c(atz.ai)) {
-         cyo $$2 = $$1.a();
-         if ($$0.j().a(atu.a.b($$2)) > 0) {
-            return true;
-         }
-      }
-
-      return false;
    }
 }

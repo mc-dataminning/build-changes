@@ -1,84 +1,320 @@
-public class fwg implements asb {
-   private final fwf a;
-   private final fwi b;
-   private final fuz c;
-   private final fwh d;
-   private final awo e = awo.a();
-   private final eyl f;
+public class fwg {
+   private static final float a = 0.8888889F;
+   private final ggt[] b = new ggt[2];
+   private final ggt[] c = new ggt[2];
+   private ggt d;
 
-   public fwg(fwf $$0, fuz $$1, eyl $$2) {
-      this.a = $$0;
-      this.c = $$1;
-      this.f = $$2;
-      this.b = new fwi(this.f);
-      this.d = new fwh();
+   protected void a() {
+      this.b[0] = exh.O().aC().b().b(cyq.H.o()).e();
+      this.b[1] = giy.c.c();
+      this.c[0] = exh.O().aC().b().b(cyq.G.o()).e();
+      this.c[1] = giy.d.c();
+      this.d = giy.e.c();
    }
 
-   public fwf a() {
-      return this.a;
+   private static boolean a(egp $$0, egp $$1) {
+      return $$1.a().a($$0.a());
    }
 
-   public void a(dlf $$0, hz $$1, cuq $$2, esa $$3, ese $$4) {
-      if ($$0.l() == det.c) {
-         giu $$5 = this.a.b($$0);
-         long $$6 = $$0.a($$1);
-         this.b.a($$2, $$5, $$0, $$1, $$3, $$4, true, this.e, $$6, ggl.d);
+   private static boolean a(cut $$0, ie $$1, float $$2, hz $$3, dlf $$4) {
+      if ($$4.p()) {
+         eol $$5 = eoi.a(0.0, 0.0, 0.0, 1.0, (double)$$2, 1.0);
+         eol $$6 = $$4.c($$0, $$3);
+         return eoi.a($$5, $$6, $$1);
+      } else {
+         return false;
       }
    }
 
-   public void a(dlf $$0, hz $$1, cuq $$2, esa $$3, ese $$4, boolean $$5, awo $$6) {
-      try {
-         det $$7 = $$0.l();
-         if ($$7 == det.c) {
-            this.b.a($$2, this.a($$0), $$0, $$1, $$3, $$4, $$5, $$6, $$0.a($$1), ggl.d);
+   private static boolean a(cut $$0, hz $$1, ie $$2, float $$3, dlf $$4) {
+      return a($$0, $$2, $$3, $$1.a($$2), $$4);
+   }
+
+   private static boolean a(cut $$0, hz $$1, dlf $$2, ie $$3) {
+      return a($$0, $$3.g(), 1.0F, $$1, $$2);
+   }
+
+   public static boolean a(cuq $$0, hz $$1, egp $$2, dlf $$3, ie $$4, egp $$5) {
+      return !a($$0, $$1, $$3, $$4) && !a($$2, $$5);
+   }
+
+   public void a(cuq $$0, hz $$1, ese $$2, dlf $$3, egp $$4) {
+      boolean $$5 = $$4.a(aue.b);
+      ggt[] $$6 = $$5 ? this.b : this.c;
+      int $$7 = $$5 ? 16777215 : fux.c($$0, $$1);
+      float $$8 = (float)($$7 >> 16 & 0xFF) / 255.0F;
+      float $$9 = (float)($$7 >> 8 & 0xFF) / 255.0F;
+      float $$10 = (float)($$7 & 0xFF) / 255.0F;
+      dlf $$11 = $$0.a_($$1.a(ie.a));
+      egp $$12 = $$11.u();
+      dlf $$13 = $$0.a_($$1.a(ie.b));
+      egp $$14 = $$13.u();
+      dlf $$15 = $$0.a_($$1.a(ie.c));
+      egp $$16 = $$15.u();
+      dlf $$17 = $$0.a_($$1.a(ie.d));
+      egp $$18 = $$17.u();
+      dlf $$19 = $$0.a_($$1.a(ie.e));
+      egp $$20 = $$19.u();
+      dlf $$21 = $$0.a_($$1.a(ie.f));
+      egp $$22 = $$21.u();
+      boolean $$23 = !a($$4, $$14);
+      boolean $$24 = a($$0, $$1, $$4, $$3, ie.a, $$12) && !a($$0, $$1, ie.a, 0.8888889F, $$11);
+      boolean $$25 = a($$0, $$1, $$4, $$3, ie.c, $$16);
+      boolean $$26 = a($$0, $$1, $$4, $$3, ie.d, $$18);
+      boolean $$27 = a($$0, $$1, $$4, $$3, ie.e, $$20);
+      boolean $$28 = a($$0, $$1, $$4, $$3, ie.f, $$22);
+      if ($$23 || $$24 || $$28 || $$27 || $$25 || $$26) {
+         float $$29 = $$0.a(ie.a, true);
+         float $$30 = $$0.a(ie.b, true);
+         float $$31 = $$0.a(ie.c, true);
+         float $$32 = $$0.a(ie.e, true);
+         ego $$33 = $$4.a();
+         float $$34 = this.a($$0, $$33, $$1, $$3, $$4);
+         float $$35;
+         float $$36;
+         float $$37;
+         float $$38;
+         if ($$34 >= 1.0F) {
+            $$35 = 1.0F;
+            $$36 = 1.0F;
+            $$37 = 1.0F;
+            $$38 = 1.0F;
+         } else {
+            float $$39 = this.a($$0, $$33, $$1.e(), $$15, $$16);
+            float $$40 = this.a($$0, $$33, $$1.f(), $$17, $$18);
+            float $$41 = this.a($$0, $$33, $$1.h(), $$21, $$22);
+            float $$42 = this.a($$0, $$33, $$1.g(), $$19, $$20);
+            $$35 = this.a($$0, $$33, $$34, $$39, $$41, $$1.a(ie.c).a(ie.f));
+            $$36 = this.a($$0, $$33, $$34, $$39, $$42, $$1.a(ie.c).a(ie.e));
+            $$37 = this.a($$0, $$33, $$34, $$40, $$41, $$1.a(ie.d).a(ie.f));
+            $$38 = this.a($$0, $$33, $$34, $$40, $$42, $$1.a(ie.d).a(ie.e));
          }
-      } catch (Throwable var11) {
-         o $$9 = o.a(var11, "Tesselating block in world");
-         p $$10 = $$9.a("Block being tesselated");
-         p.a($$10, $$2, $$1, $$0);
-         throw new y($$9);
-      }
-   }
 
-   public void a(hz $$0, cuq $$1, ese $$2, dlf $$3, egp $$4) {
-      try {
-         this.d.a($$1, $$0, $$2, $$3, $$4);
-      } catch (Throwable var9) {
-         o $$6 = o.a(var9, "Tesselating liquid in world");
-         p $$7 = $$6.a("Block being tesselated");
-         p.a($$7, $$1, $$0, null);
-         throw new y($$6);
-      }
-   }
+         double $$47 = (double)($$1.u() & 15);
+         double $$48 = (double)($$1.v() & 15);
+         double $$49 = (double)($$1.w() & 15);
+         float $$50 = 0.001F;
+         float $$51 = $$24 ? 0.001F : 0.0F;
+         if ($$23 && !a($$0, $$1, ie.b, Math.min(Math.min($$36, $$38), Math.min($$37, $$35)), $$13)) {
+            $$36 -= 0.001F;
+            $$38 -= 0.001F;
+            $$37 -= 0.001F;
+            $$35 -= 0.001F;
+            ens $$52 = $$4.c($$0, $$1);
+            float $$54;
+            float $$56;
+            float $$58;
+            float $$60;
+            float $$55;
+            float $$57;
+            float $$59;
+            float $$61;
+            if ($$52.c == 0.0 && $$52.e == 0.0) {
+               ggt $$53 = $$6[0];
+               $$54 = $$53.a(0.0F);
+               $$55 = $$53.c(0.0F);
+               $$56 = $$54;
+               $$57 = $$53.c(1.0F);
+               $$58 = $$53.a(1.0F);
+               $$59 = $$57;
+               $$60 = $$58;
+               $$61 = $$55;
+            } else {
+               ggt $$62 = $$6[1];
+               float $$63 = (float)awh.d($$52.e, $$52.c) - (float) (Math.PI / 2);
+               float $$64 = awh.a($$63) * 0.25F;
+               float $$65 = awh.b($$63) * 0.25F;
+               float $$66 = 0.5F;
+               $$54 = $$62.a(0.5F + (-$$65 - $$64));
+               $$55 = $$62.c(0.5F + -$$65 + $$64);
+               $$56 = $$62.a(0.5F + -$$65 + $$64);
+               $$57 = $$62.c(0.5F + $$65 + $$64);
+               $$58 = $$62.a(0.5F + $$65 + $$64);
+               $$59 = $$62.c(0.5F + ($$65 - $$64));
+               $$60 = $$62.a(0.5F + ($$65 - $$64));
+               $$61 = $$62.c(0.5F + (-$$65 - $$64));
+            }
 
-   public fwi b() {
-      return this.b;
-   }
+            float $$75 = ($$54 + $$56 + $$58 + $$60) / 4.0F;
+            float $$76 = ($$55 + $$57 + $$59 + $$61) / 4.0F;
+            float $$77 = $$6[0].k();
+            $$54 = awh.i($$77, $$54, $$75);
+            $$56 = awh.i($$77, $$56, $$75);
+            $$58 = awh.i($$77, $$58, $$75);
+            $$60 = awh.i($$77, $$60, $$75);
+            $$55 = awh.i($$77, $$55, $$76);
+            $$57 = awh.i($$77, $$57, $$76);
+            $$59 = awh.i($$77, $$59, $$76);
+            $$61 = awh.i($$77, $$61, $$76);
+            int $$78 = this.a($$0, $$1);
+            float $$79 = $$30 * $$8;
+            float $$80 = $$30 * $$9;
+            float $$81 = $$30 * $$10;
+            this.a($$2, $$47 + 0.0, $$48 + (double)$$36, $$49 + 0.0, $$79, $$80, $$81, $$54, $$55, $$78);
+            this.a($$2, $$47 + 0.0, $$48 + (double)$$38, $$49 + 1.0, $$79, $$80, $$81, $$56, $$57, $$78);
+            this.a($$2, $$47 + 1.0, $$48 + (double)$$37, $$49 + 1.0, $$79, $$80, $$81, $$58, $$59, $$78);
+            this.a($$2, $$47 + 1.0, $$48 + (double)$$35, $$49 + 0.0, $$79, $$80, $$81, $$60, $$61, $$78);
+            if ($$4.b($$0, $$1.c())) {
+               this.a($$2, $$47 + 0.0, $$48 + (double)$$36, $$49 + 0.0, $$79, $$80, $$81, $$54, $$55, $$78);
+               this.a($$2, $$47 + 1.0, $$48 + (double)$$35, $$49 + 0.0, $$79, $$80, $$81, $$60, $$61, $$78);
+               this.a($$2, $$47 + 1.0, $$48 + (double)$$37, $$49 + 1.0, $$79, $$80, $$81, $$58, $$59, $$78);
+               this.a($$2, $$47 + 0.0, $$48 + (double)$$38, $$49 + 1.0, $$79, $$80, $$81, $$56, $$57, $$78);
+            }
+         }
 
-   public giu a(dlf $$0) {
-      return this.a.b($$0);
-   }
+         if ($$24) {
+            float $$82 = $$6[0].c();
+            float $$83 = $$6[0].d();
+            float $$84 = $$6[0].g();
+            float $$85 = $$6[0].h();
+            int $$86 = this.a($$0, $$1.d());
+            float $$87 = $$29 * $$8;
+            float $$88 = $$29 * $$9;
+            float $$89 = $$29 * $$10;
+            this.a($$2, $$47, $$48 + (double)$$51, $$49 + 1.0, $$87, $$88, $$89, $$82, $$85, $$86);
+            this.a($$2, $$47, $$48 + (double)$$51, $$49, $$87, $$88, $$89, $$82, $$84, $$86);
+            this.a($$2, $$47 + 1.0, $$48 + (double)$$51, $$49, $$87, $$88, $$89, $$83, $$84, $$86);
+            this.a($$2, $$47 + 1.0, $$48 + (double)$$51, $$49 + 1.0, $$87, $$88, $$89, $$83, $$85, $$86);
+         }
 
-   public void a(dlf $$0, esa $$1, fvm $$2, int $$3, int $$4) {
-      det $$5 = $$0.l();
-      if ($$5 != det.a) {
-         switch ($$5) {
-            case c:
-               giu $$6 = this.a($$0);
-               int $$7 = this.f.a($$0, null, null, 0);
-               float $$8 = (float)($$7 >> 16 & 0xFF) / 255.0F;
-               float $$9 = (float)($$7 >> 8 & 0xFF) / 255.0F;
-               float $$10 = (float)($$7 & 0xFF) / 255.0F;
-               this.b.a($$1.c(), $$2.getBuffer(fvh.a($$0, false)), $$0, $$6, $$8, $$9, $$10, $$3, $$4);
-               break;
-            case b:
-               this.c.a(new coz($$0.b()), cow.a, $$1, $$2, $$3, $$4);
+         int $$90 = this.a($$0, $$1);
+
+         for (ie $$91 : ie.c.a) {
+            float $$92;
+            float $$93;
+            double $$94;
+            double $$96;
+            double $$95;
+            double $$97;
+            boolean $$98;
+            switch ($$91) {
+               case c:
+                  $$92 = $$36;
+                  $$93 = $$35;
+                  $$94 = $$47;
+                  $$95 = $$47 + 1.0;
+                  $$96 = $$49 + 0.001F;
+                  $$97 = $$49 + 0.001F;
+                  $$98 = $$25;
+                  break;
+               case d:
+                  $$92 = $$37;
+                  $$93 = $$38;
+                  $$94 = $$47 + 1.0;
+                  $$95 = $$47;
+                  $$96 = $$49 + 1.0 - 0.001F;
+                  $$97 = $$49 + 1.0 - 0.001F;
+                  $$98 = $$26;
+                  break;
+               case e:
+                  $$92 = $$38;
+                  $$93 = $$36;
+                  $$94 = $$47 + 0.001F;
+                  $$95 = $$47 + 0.001F;
+                  $$96 = $$49 + 1.0;
+                  $$97 = $$49;
+                  $$98 = $$27;
+                  break;
+               default:
+                  $$92 = $$35;
+                  $$93 = $$37;
+                  $$94 = $$47 + 1.0 - 0.001F;
+                  $$95 = $$47 + 1.0 - 0.001F;
+                  $$96 = $$49;
+                  $$97 = $$49 + 1.0;
+                  $$98 = $$28;
+            }
+
+            if ($$98 && !a($$0, $$1, $$91, Math.max($$92, $$93), $$0.a_($$1.a($$91)))) {
+               hz $$120 = $$1.a($$91);
+               ggt $$121 = $$6[1];
+               if (!$$5) {
+                  cyo $$122 = $$0.a_($$120).b();
+                  if ($$122 instanceof dce || $$122 instanceof dcx) {
+                     $$121 = this.d;
+                  }
+               }
+
+               float $$123 = $$121.a(0.0F);
+               float $$124 = $$121.a(0.5F);
+               float $$125 = $$121.c((1.0F - $$92) * 0.5F);
+               float $$126 = $$121.c((1.0F - $$93) * 0.5F);
+               float $$127 = $$121.c(0.5F);
+               float $$128 = $$91.o() == ie.a.c ? $$31 : $$32;
+               float $$129 = $$30 * $$128 * $$8;
+               float $$130 = $$30 * $$128 * $$9;
+               float $$131 = $$30 * $$128 * $$10;
+               this.a($$2, $$94, $$48 + (double)$$92, $$96, $$129, $$130, $$131, $$123, $$125, $$90);
+               this.a($$2, $$95, $$48 + (double)$$93, $$97, $$129, $$130, $$131, $$124, $$126, $$90);
+               this.a($$2, $$95, $$48 + (double)$$51, $$97, $$129, $$130, $$131, $$124, $$127, $$90);
+               this.a($$2, $$94, $$48 + (double)$$51, $$96, $$129, $$130, $$131, $$123, $$127, $$90);
+               if ($$121 != this.d) {
+                  this.a($$2, $$94, $$48 + (double)$$51, $$96, $$129, $$130, $$131, $$123, $$127, $$90);
+                  this.a($$2, $$95, $$48 + (double)$$51, $$97, $$129, $$130, $$131, $$124, $$127, $$90);
+                  this.a($$2, $$95, $$48 + (double)$$93, $$97, $$129, $$130, $$131, $$124, $$126, $$90);
+                  this.a($$2, $$94, $$48 + (double)$$92, $$96, $$129, $$130, $$131, $$123, $$125, $$90);
+               }
+            }
          }
       }
    }
 
-   @Override
-   public void a(asa $$0) {
-      this.d.a();
+   private float a(cuq $$0, ego $$1, float $$2, float $$3, float $$4, hz $$5) {
+      if (!($$4 >= 1.0F) && !($$3 >= 1.0F)) {
+         float[] $$6 = new float[2];
+         if ($$4 > 0.0F || $$3 > 0.0F) {
+            float $$7 = this.a($$0, $$1, $$5);
+            if ($$7 >= 1.0F) {
+               return 1.0F;
+            }
+
+            this.a($$6, $$7);
+         }
+
+         this.a($$6, $$2);
+         this.a($$6, $$4);
+         this.a($$6, $$3);
+         return $$6[0] / $$6[1];
+      } else {
+         return 1.0F;
+      }
+   }
+
+   private void a(float[] $$0, float $$1) {
+      if ($$1 >= 0.8F) {
+         $$0[0] += $$1 * 10.0F;
+         $$0[1] += 10.0F;
+      } else if ($$1 >= 0.0F) {
+         $$0[0] += $$1;
+         $$0[1]++;
+      }
+   }
+
+   private float a(cuq $$0, ego $$1, hz $$2) {
+      dlf $$3 = $$0.a_($$2);
+      return this.a($$0, $$1, $$2, $$3, $$3.u());
+   }
+
+   private float a(cuq $$0, ego $$1, hz $$2, dlf $$3, egp $$4) {
+      if ($$1.a($$4.a())) {
+         dlf $$5 = $$0.a_($$2.c());
+         return $$1.a($$5.u().a()) ? 1.0F : $$4.d();
+      } else {
+         return !$$3.e() ? 0.0F : -1.0F;
+      }
+   }
+
+   private void a(ese $$0, double $$1, double $$2, double $$3, float $$4, float $$5, float $$6, float $$7, float $$8, int $$9) {
+      $$0.a($$1, $$2, $$3).a($$4, $$5, $$6, 1.0F).a($$7, $$8).b($$9).a(0.0F, 1.0F, 0.0F).e();
+   }
+
+   private int a(cuq $$0, hz $$1) {
+      int $$2 = fvj.a($$0, $$1);
+      int $$3 = fvj.a($$0, $$1.c());
+      int $$4 = $$2 & 0xFF;
+      int $$5 = $$3 & 0xFF;
+      int $$6 = $$2 >> 16 & 0xFF;
+      int $$7 = $$3 >> 16 & 0xFF;
+      return ($$4 > $$5 ? $$4 : $$5) | ($$6 > $$7 ? $$6 : $$7) << 16;
    }
 }

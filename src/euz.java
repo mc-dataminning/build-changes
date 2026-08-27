@@ -2,7 +2,7 @@ import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
 import javax.annotation.Nullable;
 
-public class euz extends gmw {
+public class euz extends gmv {
    private static final aiy a = new aiy("icon/unseen_notification");
    private static final aiy b = new aiy("icon/news");
    private static final aiy c = new aiy("icon/invite");

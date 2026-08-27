@@ -35,7 +35,7 @@ public class evx {
    public static void a(eyu $$0, int $$1, int $$2, int $$3, UUID $$4) {
       exh $$5 = exh.O();
       ProfileResult $$6 = $$5.ak().fetchProfile($$4, false);
-      ght $$7 = $$6 != null ? $$5.al().b($$6.profile()) : ghm.a($$4);
+      ghs $$7 = $$6 != null ? $$5.al().b($$6.profile()) : ghl.a($$4);
       fag.a($$0, $$7.a(), $$1, $$2, $$3);
    }
 }

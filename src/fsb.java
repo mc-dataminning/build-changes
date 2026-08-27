@@ -1,4 +1,4 @@
-public class fsb extends fua {
+public class fsb extends ftz {
    private static final int a = 11993298;
    private static final int b = 14614777;
    private static final float F = 0.7176471F;
@@ -8,9 +8,9 @@ public class fsb extends fua {
    private static final float J = 0.0F;
    private static final float K = 0.9764706F;
    private boolean L;
-   private final ftv M;
+   private final ftu M;
 
-   fsb(fpx $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, ftv $$7) {
+   fsb(fpx $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, ftu $$7) {
       super($$0, $$1, $$2, $$3);
       this.B = 0.96F;
       this.j = $$4;
@@ -60,8 +60,8 @@ public class fsb extends fua {
    }
 
    @Override
-   public fte b() {
-      return fte.b;
+   public ftd b() {
+      return ftd.b;
    }
 
    @Override
@@ -69,14 +69,14 @@ public class fsb extends fua {
       return this.D * awh.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
    }
 
-   public static class a implements ftd<kc> {
-      private final ftv a;
+   public static class a implements ftc<kc> {
+      private final ftu a;
 
-      public a(ftv $$0) {
+      public a(ftu $$0) {
          this.a = $$0;
       }
 
-      public fta a(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      public fsz a(kc $$0, fpx $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
          return new fsb($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
       }
    }

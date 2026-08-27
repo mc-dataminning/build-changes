@@ -1,24 +1,17 @@
-public class geh extends gep<cdz, flv<cdz>> {
-   private static final aiy a = new aiy("textures/entity/creeper/creeper_armor.png");
-   private final flv<cdz> b;
+public class geh<T extends bog, M extends fmb<T>> extends gfd<T, M> {
+   private final fvh a;
 
-   public geh(gco<cdz, flv<cdz>> $$0, foy $$1) {
+   public geh(gcn<T, M> $$0, fvh $$1) {
       super($$0);
-      this.b = new flv<>($$1.a(fpb.E));
+      this.a = $$1;
    }
 
-   @Override
-   protected float a(float $$0) {
-      return $$0 * 0.01F;
-   }
-
-   @Override
-   protected aiy a() {
-      return a;
-   }
-
-   @Override
-   protected fmb<cdz> b() {
-      return this.b;
+   public void a(esa $$0, fvl $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      $$0.a();
+      $$0.a(0.0F, 0.4F, -0.4F);
+      $$0.a(a.b.rotationDegrees(180.0F));
+      coz $$10 = $$3.c(bnv.a);
+      this.a.a($$3, $$10, cow.h, false, $$0, $$1, $$2);
+      $$0.b();
    }
 }

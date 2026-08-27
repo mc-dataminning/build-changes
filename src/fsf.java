@@ -1,7 +1,7 @@
-public class fsf<T extends ju> extends fua {
-   private final ftv a;
+public class fsf<T extends ju> extends ftz {
+   private final ftu a;
 
-   protected fsf(fpx $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, T $$7, ftv $$8) {
+   protected fsf(fpx $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, T $$7, ftu $$8) {
       super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
       this.B = 0.96F;
       this.C = true;
@@ -24,8 +24,8 @@ public class fsf<T extends ju> extends fua {
    }
 
    @Override
-   public fte b() {
-      return fte.b;
+   public ftd b() {
+      return ftd.b;
    }
 
    @Override

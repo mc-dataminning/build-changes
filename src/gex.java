@@ -1,39 +1,46 @@
-public class gex<T extends bog, M extends fmb<T> & flb> extends gfe<T, M> {
-   private final fvi a;
+public class gex extends gfd<cby, fmu<cby>> {
+   private static final aiy[] a = new aiy[]{
+      new aiy("textures/entity/llama/decor/white.png"),
+      new aiy("textures/entity/llama/decor/orange.png"),
+      new aiy("textures/entity/llama/decor/magenta.png"),
+      new aiy("textures/entity/llama/decor/light_blue.png"),
+      new aiy("textures/entity/llama/decor/yellow.png"),
+      new aiy("textures/entity/llama/decor/lime.png"),
+      new aiy("textures/entity/llama/decor/pink.png"),
+      new aiy("textures/entity/llama/decor/gray.png"),
+      new aiy("textures/entity/llama/decor/light_gray.png"),
+      new aiy("textures/entity/llama/decor/cyan.png"),
+      new aiy("textures/entity/llama/decor/purple.png"),
+      new aiy("textures/entity/llama/decor/blue.png"),
+      new aiy("textures/entity/llama/decor/brown.png"),
+      new aiy("textures/entity/llama/decor/green.png"),
+      new aiy("textures/entity/llama/decor/red.png"),
+      new aiy("textures/entity/llama/decor/black.png")
+   };
+   private static final aiy b = new aiy("textures/entity/llama/decor/trader_llama.png");
+   private final fmu<cby> c;
 
-   public gex(gco<T, M> $$0, fvi $$1) {
+   public gex(gcn<cby, fmu<cby>> $$0, foy $$1) {
       super($$0);
-      this.a = $$1;
+      this.c = new fmu<>($$1.a(fpb.au));
    }
 
-   public void a(esa $$0, fvm $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      boolean $$10 = $$3.fm() == boa.b;
-      coz $$11 = $$10 ? $$3.eU() : $$3.eT();
-      coz $$12 = $$10 ? $$3.eT() : $$3.eU();
-      if (!$$11.b() || !$$12.b()) {
-         $$0.a();
-         if (this.c().e) {
-            float $$13 = 0.5F;
-            $$0.a(0.0F, 0.75F, 0.0F);
-            $$0.b(0.5F, 0.5F, 0.5F);
+   public void a(esa $$0, fvl $$1, int $$2, cby $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      cnn $$10 = $$3.gt();
+      aiy $$11;
+      if ($$10 != null) {
+         $$11 = a[$$10.a()];
+      } else {
+         if (!$$3.gp()) {
+            return;
          }
 
-         this.a($$3, $$12, cow.c, boa.b, $$0, $$1, $$2);
-         this.a($$3, $$11, cow.b, boa.a, $$0, $$1, $$2);
-         $$0.b();
+         $$11 = b;
       }
-   }
 
-   protected void a(bog $$0, coz $$1, cow $$2, boa $$3, esa $$4, fvm $$5, int $$6) {
-      if (!$$1.b()) {
-         $$4.a();
-         this.c().a($$3, $$4);
-         $$4.a(a.b.rotationDegrees(-90.0F));
-         $$4.a(a.d.rotationDegrees(180.0F));
-         boolean $$7 = $$3 == boa.a;
-         $$4.a((float)($$7 ? -1 : 1) / 16.0F, 0.125F, -0.625F);
-         this.a.a($$0, $$1, $$2, $$7, $$4, $$5, $$6);
-         $$4.b();
-      }
+      this.c().a(this.c);
+      this.c.a($$3, $$4, $$5, $$7, $$8, $$9);
+      ese $$14 = $$1.getBuffer(fvt.e($$11));
+      this.c.a($$0, $$14, $$2, ggk.d, 1.0F, 1.0F, 1.0F, 1.0F);
    }
 }

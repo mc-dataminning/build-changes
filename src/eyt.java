@@ -159,7 +159,7 @@ public class eyt {
          }
 
          int $$4 = (int)(220.0F * $$3) << 24 | 1052704;
-         $$0.a(fvu.C(), 0, 0, $$0.a(), $$0.b(), $$4);
+         $$0.a(fvt.C(), 0, 0, $$0.a(), $$0.b(), $$4);
          this.X.aG().c();
       }
    }
@@ -358,7 +358,7 @@ public class eyt {
          RenderSystem.enableBlend();
          int $$4 = 0;
          int $$5 = 0;
-         ghr $$6 = this.X.aE();
+         ghq $$6 = this.X.aE();
          List<Runnable> $$7 = Lists.newArrayListWithExpectedSize($$2.size());
 
          for (bnb $$8 : Ordering.natural().reverse().sortedCopy($$2)) {
@@ -392,7 +392,7 @@ public class eyt {
                   }
                }
 
-               ggu $$15 = $$6.a($$9);
+               ggt $$15 = $$6.a($$9);
                int $$16 = $$10;
                int $$17 = $$11;
                float $$18 = $$12;
@@ -906,15 +906,15 @@ public class eyt {
       RenderSystem.enableBlend();
       $$0.a(I, $$7, $$8, -90, 0.0F, 0.0F, $$5, $$6, $$5, $$6);
       RenderSystem.disableBlend();
-      $$0.a(fvu.C(), 0, $$10, $$0.a(), $$0.b(), -90, -16777216);
-      $$0.a(fvu.C(), 0, 0, $$0.a(), $$8, -90, -16777216);
-      $$0.a(fvu.C(), 0, $$8, $$7, $$10, -90, -16777216);
-      $$0.a(fvu.C(), $$9, $$8, $$0.a(), $$10, -90, -16777216);
+      $$0.a(fvt.C(), 0, $$10, $$0.a(), $$0.b(), -90, -16777216);
+      $$0.a(fvt.C(), 0, 0, $$0.a(), $$8, -90, -16777216);
+      $$0.a(fvt.C(), 0, $$8, $$7, $$10, -90, -16777216);
+      $$0.a(fvt.C(), $$9, $$8, $$0.a(), $$10, -90, -16777216);
    }
 
    private void a(bno $$0) {
       hz $$1 = hz.a($$0.dr(), $$0.dv(), $$0.dx());
-      float $$2 = fvl.a($$0.dM().E_(), $$0.dM().A($$1));
+      float $$2 = fvk.a($$0.dM().E_(), $$0.dM().A($$1));
       float $$3 = awh.a(1.0F - $$2, 0.0F, 1.0F);
       this.a = this.a + ($$3 - this.a) * 0.01F;
    }
@@ -965,7 +965,7 @@ public class eyt {
       RenderSystem.depthMask(false);
       RenderSystem.enableBlend();
       $$0.a(1.0F, 1.0F, 1.0F, $$1);
-      ggu $$2 = this.X.an().a().a(cyq.ed.o());
+      ggt $$2 = this.X.an().a().a(cyq.ed.o());
       $$0.a(0, 0, -90, $$0.a(), $$0.b(), $$2);
       RenderSystem.disableBlend();
       RenderSystem.depthMask(true);

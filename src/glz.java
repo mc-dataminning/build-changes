@@ -1,51 +1,74 @@
-import java.time.Duration;
-import java.time.Instant;
-import javax.annotation.Nullable;
+import com.google.common.base.Stopwatch;
+import com.google.common.base.Ticker;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.OptionalLong;
+import java.util.concurrent.TimeUnit;
+import java.util.function.Function;
+import org.slf4j.Logger;
 
-public abstract class glz {
-   private static final int a = 60000;
-   private static final int b = 10;
-   private int c;
-   private boolean d = false;
-   @Nullable
-   private Instant e;
+public class glz {
+   public static final glz a = new glz(Ticker.systemTicker());
+   private static final Logger b = LogUtils.getLogger();
+   private final Ticker c;
+   private final Map<glv<glz.a>, Stopwatch> d = new HashMap<>();
+   private OptionalLong e = OptionalLong.empty();
 
-   public void a() {
-      this.d = true;
-      this.e = Instant.now();
-      this.c = 0;
+   protected glz(Ticker $$0) {
+      this.c = $$0;
    }
 
-   public void a(glt $$0) {
-      if (this.b()) {
-         this.f();
-         this.c++;
-         this.e = Instant.now();
+   public synchronized void a(glv<glz.a> $$0) {
+      this.a($$0, (Function<glv<glz.a>, Stopwatch>)($$0x -> Stopwatch.createStarted(this.c)));
+   }
+
+   public synchronized void a(glv<glz.a> $$0, Stopwatch $$1) {
+      this.a($$0, (Function<glv<glz.a>, Stopwatch>)($$1x -> $$1));
+   }
+
+   private synchronized void a(glv<glz.a> $$0, Function<glv<glz.a>, Stopwatch> $$1) {
+      this.d.computeIfAbsent($$0, $$1);
+   }
+
+   public synchronized void b(glv<glz.a> $$0) {
+      Stopwatch $$1 = this.d.get($$0);
+      if ($$1 == null) {
+         b.warn("Attempted to end step for {} before starting it", $$0.b());
+      } else {
+         if ($$1.isRunning()) {
+            $$1.stop();
+         }
       }
+   }
 
-      if (this.c()) {
-         this.b($$0);
-         this.c = 0;
+   public void a(gls $$0) {
+      $$0.send(glt.g, $$0x -> {
+         synchronized (this) {
+            this.d.forEach(($$1, $$2) -> {
+               if (!$$2.isRunning()) {
+                  long $$3 = $$2.elapsed(TimeUnit.MILLISECONDS);
+                  $$0x.a((glv<glz.a>)$$1, new glz.a((int)$$3));
+               } else {
+                  b.warn("Measurement {} was discarded since it was still ongoing when the event {} was sent.", $$1.b(), glt.g.a());
+               }
+            });
+            this.e.ifPresent($$1 -> $$0x.a(glv.B, new glz.a((int)$$1)));
+            this.d.clear();
+         }
+      });
+   }
+
+   public synchronized void a(long $$0) {
+      this.e = OptionalLong.of($$0);
+   }
+
+   public static record a(int b) {
+      public static final Codec<glz.a> a = Codec.INT.xmap(glz.a::new, $$0 -> $$0.b);
+
+      public int a() {
+         return this.b;
       }
    }
-
-   public boolean b() {
-      return this.d && this.e != null && Duration.between(this.e, Instant.now()).toMillis() > 60000L;
-   }
-
-   public boolean c() {
-      return this.c >= 10;
-   }
-
-   public void d() {
-      this.d = false;
-   }
-
-   protected int e() {
-      return this.c;
-   }
-
-   public abstract void f();
-
-   public abstract void b(glt var1);
 }

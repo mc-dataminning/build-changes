@@ -1,28 +1,16 @@
-public class gdt extends gbz<cdg, fos<cdg>> {
-   private static final aiy a = new aiy("textures/entity/wither/wither_invulnerable.png");
-   private static final aiy i = new aiy("textures/entity/wither/wither.png");
+public class gdt extends gct {
+   private static final aiy a = new aiy("textures/entity/skeleton/wither_skeleton.png");
 
-   public gdt(gat.a $$0) {
-      super($$0, new fos<>($$0.a(fpb.bR)), 1.0F);
-      this.a(new gfs(this, $$0.f()));
+   public gdt(gas.a $$0) {
+      super($$0, fpb.bT, fpb.bU, fpb.bV);
    }
 
-   protected int a(cdg $$0, hz $$1) {
-      return 15;
+   @Override
+   public aiy a(cdw $$0) {
+      return a;
    }
 
-   public aiy a(cdg $$0) {
-      int $$1 = $$0.A();
-      return $$1 > 0 && ($$1 > 80 || $$1 / 5 % 2 != 1) ? a : i;
-   }
-
-   protected void a(cdg $$0, esa $$1, float $$2) {
-      float $$3 = 2.0F;
-      int $$4 = $$0.A();
-      if ($$4 > 0) {
-         $$3 -= ((float)$$4 - $$2) / 220.0F * 0.5F;
-      }
-
-      $$1.b($$3, $$3, $$3);
+   protected void a(cdw $$0, esa $$1, float $$2) {
+      $$1.b(1.2F, 1.2F, 1.2F);
    }
 }

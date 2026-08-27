@@ -8,7 +8,7 @@ public class exd {
    public static final int a = 9;
    private final Path c;
    private final DataFixer d;
-   private final fuq[] e = new fuq[9];
+   private final fup[] e = new fup[9];
    private boolean f;
 
    public exd(Path $$0, DataFixer $$1) {
@@ -16,7 +16,7 @@ public class exd {
       this.d = $$1;
 
       for (int $$2 = 0; $$2 < 9; $$2++) {
-         this.e[$$2] = new fuq();
+         this.e[$$2] = new fup();
       }
    }
 
@@ -52,7 +52,7 @@ public class exd {
       }
    }
 
-   public fuq a(int $$0) {
+   public fup a(int $$0) {
       if (!this.f) {
          this.b();
          this.f = true;

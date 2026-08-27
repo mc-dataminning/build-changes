@@ -1,20 +1,25 @@
-public class gdq extends gbz<cgl, fon<cgl>> {
-   private static final aiy a = new aiy("textures/entity/warden/warden.png");
-   private static final aiy i = new aiy("textures/entity/warden/warden_bioluminescent_layer.png");
-   private static final aiy j = new aiy("textures/entity/warden/warden_heart.png");
-   private static final aiy k = new aiy("textures/entity/warden/warden_pulsating_spots_1.png");
-   private static final aiy l = new aiy("textures/entity/warden/warden_pulsating_spots_2.png");
+public class gdq extends gar<cin> {
+   private static final aiy a = new aiy("textures/entity/projectiles/wind_charge.png");
+   private final fop f;
 
-   public gdq(gat.a $$0) {
-      super($$0, new fon<>($$0.a(fpb.bN)), 0.9F);
-      this.a(new gfq<>(this, i, ($$0x, $$1, $$2) -> 1.0F, fon::e));
-      this.a(new gfq<>(this, k, ($$0x, $$1, $$2) -> Math.max(0.0F, awh.b($$2 * 0.045F) * 0.25F), fon::f));
-      this.a(new gfq<>(this, l, ($$0x, $$1, $$2) -> Math.max(0.0F, awh.b($$2 * 0.045F + (float) Math.PI) * 0.25F), fon::f));
-      this.a(new gfq<>(this, a, ($$0x, $$1, $$2) -> $$0x.E($$1), fon::c));
-      this.a(new gfq<>(this, j, ($$0x, $$1, $$2) -> $$0x.F($$1), fon::d));
+   public gdq(gas.a $$0) {
+      super($$0);
+      this.f = new fop($$0.a(fpb.bP));
    }
 
-   public aiy a(cgl $$0) {
+   public void a(cin $$0, float $$1, float $$2, esa $$3, fvl $$4, int $$5) {
+      float $$6 = (float)$$0.ag + $$2;
+      ese $$7 = $$4.getBuffer(fvt.a(a, this.a($$6) % 1.0F, 0.0F));
+      this.f.a($$0, 0.0F, 0.0F, $$6, 0.0F, 0.0F);
+      this.f.a($$3, $$7, $$5, ggk.d, 1.0F, 1.0F, 1.0F, 1.0F);
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   protected float a(float $$0) {
+      return $$0 * 0.03F;
+   }
+
+   public aiy a(cin $$0) {
       return a;
    }
 }

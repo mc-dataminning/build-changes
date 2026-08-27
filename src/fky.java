@@ -11,7 +11,7 @@ public class fky extends fmk<cax> implements flb {
    private static final float m = (float) (-Math.PI / 3);
 
    public fky(fpc $$0) {
-      super(fvu::i);
+      super(fvt::i);
       this.a = $$0.b("root");
       this.b = this.a.b("head");
       this.f = this.a.b("body");

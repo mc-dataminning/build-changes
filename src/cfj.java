@@ -58,7 +58,7 @@ public class cfj extends cen {
    @Override
    public void a(aie<?> $$0) {
       if (this.dM().y_() && ar.equals($$0)) {
-         this.gj();
+         this.gi();
          bor $$1 = this.ap();
          switch ($$1) {
             case q:
@@ -75,7 +75,7 @@ public class cfj extends cen {
       super.a($$0);
    }
 
-   private void gj() {
+   private void gi() {
       this.bT.a();
       this.b.a();
       this.bU.a();
@@ -95,7 +95,7 @@ public class cfj extends cen {
             this.b(20);
             break;
          case g:
-            this.gg();
+            this.A();
       }
 
       if ($$0 != bor.p && this.c.c()) {
@@ -105,7 +105,7 @@ public class cfj extends cen {
 
       this.cf = this.cf == 0 ? this.af.a(1, 80) : this.cf - 1;
       if (this.cf == 0) {
-         this.gh();
+         this.gg();
       }
 
       super.l();
@@ -116,17 +116,7 @@ public class cfj extends cen {
       return this;
    }
 
-   public cfj A() {
-      ens $$0 = this.dk().b(0.0, 0.1F, 0.0);
-
-      for (int $$1 = 0; $$1 < 20; $$1++) {
-         this.dM().a(jz.aV, $$0.c, $$0.d, $$0.e, 0.0, 0.0, 0.0);
-      }
-
-      return this;
-   }
-
-   public void gg() {
+   public void A() {
       if (++this.ce <= 5) {
          dlf $$0 = !this.dn().i() ? this.dn() : this.bk();
          ens $$1 = this.dp();
@@ -158,7 +148,7 @@ public class cfj extends cen {
       }
    }
 
-   public void gh() {
+   public void gg() {
       float $$0 = 0.7F + 0.4F * this.af.i();
       float $$1 = 0.8F + 0.2F * this.af.i();
       this.dM().a(this, atk.cH, this.db(), $$1, $$0);
@@ -226,7 +216,7 @@ public class cfj extends cen {
       return 25;
    }
 
-   public double gi() {
+   public double gh() {
       return this.dv() - 0.4;
    }
 

@@ -1,9 +1,9 @@
 public class fen extends few {
    private static final vq c = vq.c("options.languageAccuracyWarning").a(n.h);
    private fen.a k;
-   final gib l;
+   final gia l;
 
-   public fen(ffe $$0, exl $$1, gib $$2) {
+   public fen(ffe $$0, exl $$1, gia $$2) {
       super($$0, $$1, vq.c("options.language.title"));
       this.l = $$2;
    }
@@ -84,7 +84,7 @@ public class fen extends few {
          private final vq c;
          private long d;
 
-         public a(String $$1, gia $$2) {
+         public a(String $$1, ghz $$2) {
             this.b = $$1;
             this.c = $$2.a();
          }

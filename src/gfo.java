@@ -1,48 +1,64 @@
-public class gfo extends gfe<cat, flt<cat>> {
-   private static final aiy a = new aiy("textures/entity/fish/tropical_a_pattern_1.png");
-   private static final aiy b = new aiy("textures/entity/fish/tropical_a_pattern_2.png");
-   private static final aiy c = new aiy("textures/entity/fish/tropical_a_pattern_3.png");
-   private static final aiy d = new aiy("textures/entity/fish/tropical_a_pattern_4.png");
-   private static final aiy e = new aiy("textures/entity/fish/tropical_a_pattern_5.png");
-   private static final aiy f = new aiy("textures/entity/fish/tropical_a_pattern_6.png");
-   private static final aiy g = new aiy("textures/entity/fish/tropical_b_pattern_1.png");
-   private static final aiy h = new aiy("textures/entity/fish/tropical_b_pattern_2.png");
-   private static final aiy i = new aiy("textures/entity/fish/tropical_b_pattern_3.png");
-   private static final aiy j = new aiy("textures/entity/fish/tropical_b_pattern_4.png");
-   private static final aiy k = new aiy("textures/entity/fish/tropical_b_pattern_5.png");
-   private static final aiy l = new aiy("textures/entity/fish/tropical_b_pattern_6.png");
-   private final foh<cat> m;
-   private final foi<cat> n;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import java.io.IOException;
+import java.util.Optional;
+import java.util.function.UnaryOperator;
 
-   public gfo(gco<cat, flt<cat>> $$0, foy $$1) {
+public class gfo<T extends bog & cgw, M extends fmb<T> & fol> extends gfd<T, M> {
+   private static final Int2ObjectMap<aiy> a = ac.a(new Int2ObjectOpenHashMap(), $$0 -> {
+      $$0.put(1, new aiy("stone"));
+      $$0.put(2, new aiy("iron"));
+      $$0.put(3, new aiy("gold"));
+      $$0.put(4, new aiy("emerald"));
+      $$0.put(5, new aiy("diamond"));
+   });
+   private final Object2ObjectMap<cgz, gig.a> b = new Object2ObjectOpenHashMap();
+   private final Object2ObjectMap<cgx, gig.a> c = new Object2ObjectOpenHashMap();
+   private final asa d;
+   private final String e;
+
+   public gfo(gcn<T, M> $$0, asa $$1, String $$2) {
       super($$0);
-      this.m = new foh<>($$1.a(fpb.bI));
-      this.n = new foi<>($$1.a(fpb.bG));
+      this.d = $$1;
+      this.e = $$2;
    }
 
-   public void a(esa $$0, fvm $$1, int $$2, cat $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      cat.b $$10 = $$3.gr();
+   public void a(esa $$0, fvl $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if (!$$3.ce()) {
+         cgv $$10 = $$3.gr();
+         cgz $$11 = $$10.a();
+         cgx $$12 = $$10.b();
+         gig.a $$13 = this.a(this.b, "type", kf.y, $$11);
+         gig.a $$14 = this.a(this.c, "profession", kf.z, $$12);
+         M $$15 = this.c();
+         $$15.a($$14 == gig.a.a || $$14 == gig.a.b && $$13 != gig.a.c);
+         aiy $$16 = this.a("type", kf.y.b($$11));
+         a($$15, $$16, $$0, $$1, $$2, $$3, 1.0F, 1.0F, 1.0F);
+         $$15.a(true);
+         if ($$12 != cgx.b && !$$3.o_()) {
+            aiy $$17 = this.a("profession", kf.z.b($$12));
+            a($$15, $$17, $$0, $$1, $$2, $$3, 1.0F, 1.0F, 1.0F);
+            if ($$12 != cgx.m) {
+               aiy $$18 = this.a("profession_level", (aiy)a.get(awh.a($$10.c(), 1, a.size())));
+               a($$15, $$18, $$0, $$1, $$2, $$3, 1.0F, 1.0F, 1.0F);
+            }
+         }
+      }
+   }
 
-      fmb<cat> $$11 = (fmb<cat>)(switch ($$10.a()) {
-         case a -> this.m;
-         case b -> this.n;
-      });
+   private aiy a(String $$0, aiy $$1) {
+      return $$1.a((UnaryOperator<String>)($$1x -> "textures/entity/" + this.e + "/" + $$0 + "/" + $$1x + ".png"));
+   }
 
-      aiy $$12 = switch ($$10) {
-         case a -> a;
-         case b -> b;
-         case c -> c;
-         case d -> d;
-         case e -> e;
-         case f -> f;
-         case g -> g;
-         case h -> h;
-         case i -> i;
-         case j -> j;
-         case k -> k;
-         case l -> l;
-      };
-      float[] $$13 = $$3.gq().d();
-      a(this.c(), $$11, $$12, $$0, $$1, $$2, $$3, $$4, $$5, $$7, $$8, $$9, $$6, $$13[0], $$13[1], $$13[2]);
+   public <K> gig.a a(Object2ObjectMap<K, gig.a> $$0, String $$1, id<K> $$2, K $$3) {
+      return (gig.a)$$0.computeIfAbsent($$3, $$3x -> this.d.getResource(this.a($$1, $$2.b($$3))).flatMap($$0xx -> {
+            try {
+               return $$0xx.f().a(gig.a).map(gig::a);
+            } catch (IOException var2x) {
+               return Optional.empty();
+            }
+         }).orElse(gig.a.a));
    }
 }

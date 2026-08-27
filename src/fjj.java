@@ -15,7 +15,7 @@ public class fjj extends fjc<frc.a> {
       super(v, $$0, $$1, $$2);
    }
 
-   public fjj(ffe $$0, frb $$1, UUID $$2, Supplier<ght> $$3) {
+   public fjj(ffe $$0, frb $$1, UUID $$2, Supplier<ghs> $$3) {
       this($$0, $$1, new frc.a($$2, $$3, $$1.a().b()));
    }
 

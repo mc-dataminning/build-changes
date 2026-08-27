@@ -1,27 +1,24 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Map;
+public class gev extends gfd<caf, fmq<caf>> {
+   private final fwf a;
 
-public class gev extends gfe<caf, fmq<caf>> {
-   private static final Map<caf.a, aiy> a = ImmutableMap.of(
-      caf.a.b,
-      new aiy("textures/entity/iron_golem/iron_golem_crackiness_low.png"),
-      caf.a.c,
-      new aiy("textures/entity/iron_golem/iron_golem_crackiness_medium.png"),
-      caf.a.d,
-      new aiy("textures/entity/iron_golem/iron_golem_crackiness_high.png")
-   );
-
-   public gev(gco<caf, fmq<caf>> $$0) {
+   public gev(gcn<caf, fmq<caf>> $$0, fwf $$1) {
       super($$0);
+      this.a = $$1;
    }
 
-   public void a(esa $$0, fvm $$1, int $$2, caf $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if (!$$3.ce()) {
-         caf.a $$10 = $$3.w();
-         if ($$10 != caf.a.a) {
-            aiy $$11 = a.get($$10);
-            a(this.c(), $$11, $$0, $$1, $$2, $$3, 1.0F, 1.0F, 1.0F);
-         }
+   public void a(esa $$0, fvl $$1, int $$2, caf $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if ($$3.gg() != 0) {
+         $$0.a();
+         fpc $$10 = this.c().c();
+         $$10.a($$0);
+         $$0.a(-1.1875F, 1.0625F, -0.9375F);
+         $$0.a(0.5F, 0.5F, 0.5F);
+         float $$11 = 0.5F;
+         $$0.b(0.5F, 0.5F, 0.5F);
+         $$0.a(a.b.rotationDegrees(-90.0F));
+         $$0.a(-0.5F, -0.5F, -0.5F);
+         this.a.a(cyq.bT.o(), $$0, $$1, $$2, ggk.d);
+         $$0.b();
       }
    }
 }
