@@ -162,27 +162,27 @@
   "complianceLevel": 1,
   "downloads": {
     "client": {
-      "sha1": "610425569f31560b0189a768864963669012c3c7",
-      "size": 31152775,
-      "url": "https://piston-data.mojang.com/v1/objects/610425569f31560b0189a768864963669012c3c7/client.jar"
+      "sha1": "ba2df812c2d12e0219c489c4cd9a5e1f0760f5bd",
+      "size": 31152600,
+      "url": "https://piston-data.mojang.com/v1/objects/ba2df812c2d12e0219c489c4cd9a5e1f0760f5bd/client.jar"
     },
     "client_mappings": {
-      "sha1": "becc6b2f01c8d84acc9976afbf9101c3a5963c3e",
+      "sha1": "031a68bebf55d824f66d6573d8c752f0e1bf232a",
       "size": 11779287,
-      "url": "https://piston-data.mojang.com/v1/objects/becc6b2f01c8d84acc9976afbf9101c3a5963c3e/client.txt"
+      "url": "https://piston-data.mojang.com/v1/objects/031a68bebf55d824f66d6573d8c752f0e1bf232a/client.txt"
     },
     "server": {
-      "sha1": "2119f94fb84e2f4c38b5a8a7e5acb45840b3fad6",
-      "size": 56326726,
-      "url": "https://piston-data.mojang.com/v1/objects/2119f94fb84e2f4c38b5a8a7e5acb45840b3fad6/server.jar"
+      "sha1": "64bb6d763bed0a9f1d632ec347938594144943ed",
+      "size": 56327581,
+      "url": "https://piston-data.mojang.com/v1/objects/64bb6d763bed0a9f1d632ec347938594144943ed/server.jar"
     },
     "server_mappings": {
-      "sha1": "84146da5a247d8b70465841e788ba39a4c82f7cc",
+      "sha1": "5621e9253f05fd57872bbe7f8ddf5f9a7d525955",
       "size": 8678606,
-      "url": "https://piston-data.mojang.com/v1/objects/84146da5a247d8b70465841e788ba39a4c82f7cc/server.txt"
+      "url": "https://piston-data.mojang.com/v1/objects/5621e9253f05fd57872bbe7f8ddf5f9a7d525955/server.txt"
     }
   },
-  "id": "1.21.11-rc3",
+  "id": "1.21.11",
   "javaVersion": {
     "component": "java-runtime-delta",
     "majorVersion": 21
@@ -1836,7 +1836,7 @@
   },
   "mainClass": "net.minecraft.client.main.Main",
   "minimumLauncherVersion": 21,
-  "releaseTime": "2025-12-08T13:17:37+00:00",
-  "time": "2025-12-08T13:17:37+00:00",
-  "type": "snapshot"
+  "releaseTime": "2025-12-09T12:23:30+00:00",
+  "time": "2025-12-09T12:23:30+00:00",
+  "type": "release"
 }
